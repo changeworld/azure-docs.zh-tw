@@ -5,15 +5,14 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
-ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: ba0311da88f1fe0cbc0bf885197785db10b1bac2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60616484"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564849"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>存取 Azure Data Lake Analytics 的診斷記錄
 
@@ -25,7 +24,7 @@ ms.locfileid: "60616484"
 
 ## <a name="enable-logging"></a>啟用記錄
 
-1. 登入[Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
 2. 開啟 Data Lake Analytics 帳戶，然後從 [監視]____ 區段選取 [診斷記錄]****。 接下來，選取 [開啟診斷]____。
 
@@ -46,7 +45,7 @@ ms.locfileid: "60616484"
 
    * 針對 [封存至儲存體帳戶]____，請指定要保留資料的天數。
 
-   * 按一下 __[儲存]__ 。
+   * 按一下 [檔案] 。
 
         > [!NOTE]
         > 您必須先選取 [封存至儲存體帳戶]____、[串流至事件中樞]____ 或 [傳送至 Log Analytics]____，再按一下 [儲存]____ 按鈕。
@@ -60,32 +59,34 @@ ms.locfileid: "60616484"
 
 2. 在這些容器中，記錄都會儲存在下列結構底下：
 
-        resourceId=/
-          SUBSCRIPTIONS/
-            <<SUBSCRIPTION_ID>>/
-              RESOURCEGROUPS/
-                <<RESOURCE_GRP_NAME>>/
-                  PROVIDERS/
-                    MICROSOFT.DATALAKEANALYTICS/
-                      ACCOUNTS/
-                        <DATA_LAKE_ANALYTICS_NAME>>/
-                          y=####/
-                            m=##/
-                              d=##/
-                                h=##/
-                                  m=00/
-                                    PT1H.json
+   ```text
+   resourceId=/
+     SUBSCRIPTIONS/
+       <<SUBSCRIPTION_ID>>/
+         RESOURCEGROUPS/
+           <<RESOURCE_GRP_NAME>>/
+             PROVIDERS/
+               MICROSOFT.DATALAKEANALYTICS/
+                 ACCOUNTS/
+                   <DATA_LAKE_ANALYTICS_NAME>>/
+                     y=####/
+                       m=##/
+                         d=##/
+                           h=##/
+                             m=00/
+                               PT1H.json
+   ```
 
    > [!NOTE]
    > [Blob 服務] `##` 項目包含記錄檔的建立年、月、日和小時。 Data Lake Analytics 每小時會建立一個檔案，因此 `m=` 一律會包含 `00` 值。
 
     例如，稽核記錄檔的完整路徑可能是：
 
-        https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json
+    `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
 
     同樣的，要求記錄檔的完整路徑可能是：
 
-        https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
+    `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="log-structure"></a>記錄檔結構
 
@@ -95,37 +96,39 @@ ms.locfileid: "60616484"
 
 以下是採用 JSON 格式之要求記錄中的範例項目。 每個 Blob 會一個名為 **記錄** 的根物件，其中包含記錄檔物件的陣列。
 
+```json
+{
+"records":
+  [
+    . . . .
+    ,
     {
-    "records":
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
-             "category": "Requests",
-             "operationName": "GetAggregatedJobHistory",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {
-                 "HttpMethod":"POST",
-                 "Path":"/JobAggregatedHistory",
-                 "RequestContentLength":122,
-                 "ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8",
-                 "StartTime":"2016-07-07T21:02:52.472Z",
-                 "EndTime":"2016-07-07T21:02:53.456Z"
-                 }
-        }
-        ,
-        . . . .
-      ]
+         "time": "2016-07-07T21:02:53.456Z",
+         "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
+         "category": "Requests",
+         "operationName": "GetAggregatedJobHistory",
+         "resultType": "200",
+         "callerIpAddress": "::ffff:1.1.1.1",
+         "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+         "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+         "properties": {
+             "HttpMethod":"POST",
+             "Path":"/JobAggregatedHistory",
+             "RequestContentLength":122,
+             "ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8",
+             "StartTime":"2016-07-07T21:02:52.472Z",
+             "EndTime":"2016-07-07T21:02:53.456Z"
+             }
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="request-log-schema"></a>要求記錄的結構描述
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | Description |
 | --- | --- | --- |
 | time |String |記錄的時間戳記 (UTC 時間) |
 | resourceId |String |執行作業所在資源的識別碼 |
@@ -139,10 +142,10 @@ ms.locfileid: "60616484"
 
 #### <a name="request-log-properties-schema"></a>要求記錄屬性結構描述
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | Description |
 | --- | --- | --- |
 | HttpMethod |String |作業使用的 HTTP 方法。 例如，GET。 |
-| Path |String |執行作業的所在路徑 |
+| 路徑 |String |執行作業的所在路徑 |
 | RequestContentLength |int |HTTP 要求的內容長度 |
 | ClientRequestId |String |可唯一識別此要求的識別碼 |
 | StartTime |String |伺服器接收到要求的時間 |
@@ -152,32 +155,30 @@ ms.locfileid: "60616484"
 
 以下是採用 JSON 格式之稽核記錄中的範例項目。 每個 Blob 會一個名為 **記錄** 的根物件，其中包含記錄檔物件的陣列。
 
+```json
+{
+"records":
+  [
     {
-    "records":
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-28T19:15:16.245Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
-             "category": "Audit",
-             "operationName": "JobSubmitted",
-             "identity": "user@somewhere.com",
-             "properties": {
-                 "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
-                 "JobName": "New Job",
-                 "JobRuntimeName": "default",
-                 "SubmitTime": "7/28/2016 7:14:57 PM"
-                 }
-        }
-        ,
-        . . . .
-      ]
+         "time": "2016-07-28T19:15:16.245Z",
+         "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
+         "category": "Audit",
+         "operationName": "JobSubmitted",
+         "identity": "user@somewhere.com",
+         "properties": {
+             "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
+             "JobName": "New Job",
+             "JobRuntimeName": "default",
+             "SubmitTime": "7/28/2016 7:14:57 PM"
+             }
     }
+  ]
+}
+```
 
 #### <a name="audit-log-schema"></a>稽核記錄的結構描述
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | Description |
 | --- | --- | --- |
 | time |String |記錄的時間戳記 (UTC 時間) |
 | resourceId |String |執行作業所在資源的識別碼 |
@@ -185,7 +186,7 @@ ms.locfileid: "60616484"
 | operationName |String |記錄的作業名稱。 例如，JobSubmitted。 |
 | resultType |String |作業狀態 (operationName) 的子狀態。 |
 | resultSignature |String |作業狀態 (operationName) 的其他詳細資料。 |
-| 身分識別 |String |要求作業的使用者。 例如，susan@contoso.com。 |
+| 身分識別 |String |要求作業的使用者。 例如： susan@contoso.com 。 |
 | properties |JSON |請參閱下一節 (稽核記錄檔屬性結構描述) 以取得詳細資訊 |
 
 > [!NOTE]
@@ -195,7 +196,7 @@ ms.locfileid: "60616484"
 
 #### <a name="audit-log-properties-schema"></a>稽核記錄屬性結構描述
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | Description |
 | --- | --- | --- |
 | JobId |String |指派給作業的識別碼 |
 | JobName |String |為作業提供的名稱 |
@@ -210,7 +211,8 @@ ms.locfileid: "60616484"
 
 ## <a name="process-the-log-data"></a>處理記錄資料
 
-Azure Data Lake Analytics 會提供有關如何處理和分析記錄資料的範例。 您可以在[https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)找到此範例。
+Azure Data Lake Analytics 會提供有關如何處理和分析記錄資料的範例。 您可以在找到此範例 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) 。
 
 ## <a name="next-steps"></a>後續步驟
-* [Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
+
+[Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)

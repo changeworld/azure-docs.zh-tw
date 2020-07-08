@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 004f1ea55bcda68485d8b11ed472b6cab2ca7545
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758118"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562492"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>將自動完成和建議新增至用戶端應用程式
 
@@ -34,7 +34,7 @@ ms.locfileid: "81758118"
 要求的元素包含其中一個搜尋型別 Api、一個部分查詢和一個建議工具。 下列腳本說明要求的元件，使用 [自動完成] REST API 做為範例。
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"
@@ -68,10 +68,10 @@ Api 不會強加部分查詢的最小長度需求;它可以只是一個字元。
 
 | 參數 | 使用方式 |
 |-----------|-------|
-| **$select** | 如果您在建議工具中有多個**sourceFields** ，請使用 **$select**來選擇哪些欄位會`$select=GameTitle`提供值（）。 |
+| **$select** | 如果您在建議工具中有多個**sourceFields** ，請使用 **$select**來選擇哪些欄位會提供值（ `$select=GameTitle` ）。 |
 | **searchFields** | 將查詢限制為特定欄位。 |
-| **$filter** | 將比對準則套用至結果集`$filter=Category eq 'ActionAdventure'`（）。 |
-| **$top** | 將結果限制為特定數目（`$top=5`）。|
+| **$filter** | 將比對準則套用至結果集（ `$filter=Category eq 'ActionAdventure'` ）。 |
+| **$top** | 將結果限制為特定數目（ `$top=5` ）。|
 
 ## <a name="add-user-interaction-code"></a>新增使用者互動程式碼
 
@@ -116,7 +116,7 @@ $(function () {
 });
 ```
 
-會`source`告訴 JQuery UI 自動完成函式，在何處取得要在搜尋方塊底下顯示的專案清單。 由於此專案是 MVC 專案，因此它會呼叫**HomeController.cs**中的**建議**函式，其中包含傳回查詢建議的邏輯。 此函式也會傳遞幾個參數來控制醒目提示、模糊比對和字詞。 自動完成 JavaScript API 會新增字詞參數。
+會 `source` 告訴 JQUERY UI 自動完成函式，在何處取得要在搜尋方塊底下顯示的專案清單。 由於此專案是 MVC 專案，因此它會呼叫**HomeController.cs**中的**建議**函式，其中包含傳回查詢建議的邏輯。 此函式也會傳遞幾個參數來控制醒目提示、模糊比對和字詞。 自動完成 JavaScript API 會新增字詞參數。
 
 `minLength: 3`可確保只有在搜尋方塊中至少有三個字元時，才會顯示建議。
 

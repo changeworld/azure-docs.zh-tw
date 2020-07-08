@@ -1,6 +1,6 @@
 ---
 title: 將 Palo Alto 網路資料連線到 Azure Sentinel |Microsoft Docs
-description: 瞭解如何將 Palo Alto 網路資料連線到 Azure Sentinel。
+description: 瞭解如何使用 Palo Alto Networks data connector，輕鬆地將您的 Palo Alto 網路記錄與 Azure Sentinel 連線。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: a79b7a1448e1decb377aa0072261df068c366567
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 245db436fc3216fe5c8c8f51c50c0ac03190f9eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588122"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564561"
 ---
 # <a name="connect-palo-alto-networks-to-azure-sentinel"></a>將 Palo Alto 網路連線到 Azure Sentinel
 
@@ -34,7 +34,7 @@ ms.locfileid: "77588122"
 設定 Palo Alto 網路，以透過 Syslog 代理程式將 Syslog 訊息以 CEF 格式轉送至您的 Azure 工作區：
 1.  前往[一般事件格式（CEF）設定指南](https://docs.paloaltonetworks.com/resources/cef)，並下載適用于您裝置類型的 pdf。 遵循指南中的所有指示，設定您的 Palo Alto 網路設備來收集 CEF 事件。 
 
-1.  移至 [[設定 Syslog 監視](https://aka.ms/asi-syslog-paloalto-forwarding)]，然後遵循步驟2和3來設定從 Palo Alto 網路應用裝置到 AZURE SENTINEL 的 CEF 事件轉送。
+1.  移至 [[設定 Syslog 監視](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/configure-syslog-monitoring)]，然後遵循步驟2和3來設定從 Palo Alto 網路應用裝置到 AZURE SENTINEL 的 CEF 事件轉送。
 
     1. 請務必將**Syslog 伺服器格式**設定為**BSD**。
 
@@ -54,6 +54,6 @@ ms.locfileid: "77588122"
 在本檔中，您已瞭解如何將 Palo Alto 網路設備連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
 
 

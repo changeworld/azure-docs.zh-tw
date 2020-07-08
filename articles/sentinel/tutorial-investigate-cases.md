@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Sentinel 調查事件 |Microsoft Docs
-description: 使用此教學課程來瞭解如何使用 Azure Sentinel 調查事件。
+description: 在本教學課程中，您將瞭解如何使用 Azure Sentinel 來建立可產生事件的高階警示規則，以供您指派和調查。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: ecd8c508d05bfeb541a6cb5efbcdf2fffd3c78d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 564041da0be6874acae1bec69e4ab2d744d89323
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587187"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565232"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教學課程：使用 Azure Sentinel 調查事件
 
@@ -39,7 +39,7 @@ ms.locfileid: "77587187"
 
 事件可以包含多個警示。 它是特定調查的所有相關辨識項的匯總。 系統會根據您在 [**分析**] 頁面中建立的分析規則來建立事件。 與警示相關的屬性（例如嚴重性和狀態）會在事件層級設定。 當您讓 Azure Sentinel 知道您要尋找的威脅種類，以及如何尋找它們之後，您可以藉由調查事件來監視偵測到的威脅。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 只有當您在設定分析規則時使用實體對應欄位，才能夠調查事件。 調查圖表需要您的原始事件包含實體。
 
 ## <a name="how-to-investigate-incidents"></a>如何調查事件
@@ -97,7 +97,7 @@ ms.locfileid: "77587187"
 
     ![查看相關警示](media/tutorial-investigate-cases/related-alerts.png)
 
-1. 針對每個探索查詢，您可以選取 [**事件\>**] 來開啟用於記錄分析中的原始事件結果和查詢的選項。
+1. 針對每個探索查詢，您可以選取 [**事件 \> **] 來開啟用於記錄分析中的原始事件結果和查詢的選項。
 
 1. 為了瞭解事件，圖形提供平行的時間軸。
 
@@ -107,7 +107,21 @@ ms.locfileid: "77587187"
 
     ![在地圖中使用時間表來調查警示](media/tutorial-investigate-cases/use-timeline.png)
 
+## <a name="closing-an-incident"></a>關閉事件
 
+一旦您解決了特定事件（例如，當您的調查已達到其結論時），您應該將事件的狀態設定為 [**已關閉**]。 當您這麼做時，系統會要求您將事件分類，方法是指定您要關閉的原因。 此為必要步驟。 按一下 [**選取分類**]，然後從下拉式清單中選擇下列其中一項：
+
+- 真肯定-可疑活動
+- 良性肯定-可疑但預期
+- 錯誤正面-不正確的警示邏輯
+- 錯誤的正面-不正確的資料
+- 確定
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{alt-text}":::
+
+選擇適當的分類之後，請在 [**批註**] 欄位中新增一些描述性文字。 當您需要回頭參考此事件時，這會很有用。 當**您**完成時，按一下 [套用]，事件將會關閉。
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
 
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已瞭解如何使用 Azure Sentinel 開始調查事件。 繼續進行教學課程，以瞭解[如何使用自動化的操作手冊來回應威脅](tutorial-respond-threats-playbook.md)。

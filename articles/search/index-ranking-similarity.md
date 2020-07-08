@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: 1975c13162316b4132bae34659b1c5af8e416573
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5597528d395c2c8facd4a1b916b1378b659a646
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565292"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Azure 認知搜尋中的排名演算法
 
 > [!IMPORTANT]
 > 從2020年7月15日開始，新建立的搜尋服務會自動使用 BM25 排名函式，這在大部分情況下已證實，可提供比目前預設排名更適合使用者期望的搜尋排名。 除了高階排名之外，BM25 也會根據檔案大小等因素，啟用微調結果的設定選項。  
 >
-> 有了這項變更，您很可能會看到搜尋結果的排序有些許變更。 對於想要測試此變更影響的使用者，BM25 演算法會在 api 版本 2019-05-06-Preview 中提供。  
+> 有了這項變更，您很可能會看到搜尋結果的排序有些許變更。 對於想要測試此變更影響的使用者，BM25 演算法會在 api 版本 2019-05-06-Preview 和2020-06-30 中提供。  
 
 本文說明如何在現有的搜尋服務上使用新的 BM25 排名演算法，以取得使用預覽 API 建立及查詢的新索引。
 
@@ -30,7 +30,7 @@ Azure 認知搜尋正在採用官方 Lucene 實 Okapi BM25 演算法*BM25Similar
 
 ## <a name="how-to-test-bm25-today"></a>如何立即測試 BM25
 
-當您建立新的索引時，您可以設定**相似性**屬性來指定演算法。 您將需要使用`api-version=2019-05-06-Preview`，如下所示。
+當您建立新的索引時，您可以設定**相似性**屬性來指定演算法。 您可以使用 `api-version=2019-05-06-Preview` ，如下所示或 `api-version=2020-06-30` 。
 
 ```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
@@ -61,11 +61,11 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 當這兩種演算法都可供使用時，**相似性**屬性在這段期間很有用，僅適用于現有的服務。 
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |----------|-------------|
-| 相似度 | 選擇性。 有效值包括 *"#Microsoft ClassicSimilarity"* 或 *"#Microsoft". BM25Similarity "*。 <br/> 在`api-version=2019-05-06-Preview` 2020 年7月15日前建立的搜尋服務上需要或更新版本。 |
+| 相似度 | 選擇性。 有效值包括 *"#Microsoft ClassicSimilarity"* 或 *"#Microsoft". BM25Similarity "*。 <br/> `api-version=2019-05-06-Preview`在2020年7月15日前建立的搜尋服務上需要或更新版本。 |
 
-如果是在2020年7月15日之後建立的新服務，則會自動使用 BM25，而且它是唯一的相似性演算法。 如果您嘗試`ClassicSimilarity`在新的服務上設定**相似性**，則會傳回400錯誤，因為新的服務不支援該演算法。
+如果是在2020年7月15日之後建立的新服務，則會自動使用 BM25，而且它是唯一的相似性演算法。 如果您嘗試**similarity** `ClassicSimilarity` 在新的服務上設定相似性，則會傳回400錯誤，因為新的服務不支援該演算法。
 
 針對在2020年7月15日前建立的現有服務，傳統的相似性仍然是預設演算法。 如果已省略**相似性**屬性或將其設定為 null，則索引會使用傳統演算法。 如果您想要使用新的演算法，您將需要設定**相似性**，如上所述。
 
@@ -103,7 +103,7 @@ BM25 相似性會加入兩個使用者可自訂的參數，以控制所計算的
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
-## <a name="see-also"></a>請參閱  
+## <a name="see-also"></a>另請參閱  
 
 + [REST API 參考](https://docs.microsoft.com/rest/api/searchservice/)   
 + [將評分設定檔新增至您的索引](index-add-scoring-profiles.md)    

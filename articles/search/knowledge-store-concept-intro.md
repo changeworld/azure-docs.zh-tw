@@ -1,28 +1,25 @@
 ---
-title: 知識存放區簡介 (預覽)
+title: 知識存放區概念
 titleSuffix: Azure Cognitive Search
-description: 將擴充文件傳送到 Azure 儲存體，以便從該處檢視、調整及取用 Azure 認知搜尋和其他應用程式中的擴充文件。 這項功能處於公開預覽狀態。
+description: 將擴充文件傳送到 Azure 儲存體，以便從該處檢視、調整及取用 Azure 認知搜尋和其他應用程式中的擴充文件。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 20819bc6ec091eddf5d65b1c0d7aa57c821b2fc1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.date: 06/30/2020
+ms.openlocfilehash: 75ecfcca24aa801c2ec277e810f60dbc0a9167fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858807"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565266"
 ---
-# <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 認知搜尋中的知識存放區簡介
+# <a name="knowledge-store-in-azure-cognitive-search"></a>Azure 認知搜尋中的知識存放區
 
-> [!IMPORTANT] 
-> 知識存放區目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供預覽功能。 目前的入口網站支援有限，而且沒有 .NET SDK 支援。
+知識存放區是 Azure 認知搜尋中的一項功能，可保存 [AI 擴充管線](cognitive-search-concept-intro.md)的輸出，以進行獨立分析或下游處理。 *擴充的文件*是管線的輸出，從使用 AI 程序進行擷取、結構化及分析的內容建立而來。 在標準 AI 管線中，擴充的文件是暫時性的，只會在編製索引期間使用，其後即捨棄。 選擇建立知識存放區，可讓您保留擴充的檔。 
 
-知識存放區是 Azure 認知搜尋中的一項功能，可保存 [AI 擴充管線](cognitive-search-concept-intro.md)的輸出，以進行獨立分析或下游處理。 *擴充的文件*是管線的輸出，從使用 AI 程序進行擷取、結構化及分析的內容建立而來。 在標準 AI 管線中，擴充的文件是暫時性的，只會在編製索引期間使用，其後即捨棄。 透過知識存放區，擴充的文件得以保留。 
-
-如果過去使用過認知技能，您已經知道該「技能集」會透過一連串的擴充來移動文件。 其結果可能會產生搜尋索引，或 (此預覽版中的新功能) 知識存放區中的投射。 這兩個輸出 (搜尋索引和知識存放區) 是相同管線的產品；衍生自相同輸入，但會導致產生以非常不同的方式來結構化、儲存及使用的輸出。
+如果過去使用過認知技能，您已經知道該「技能集」會透過一連串的擴充來移動文件。 結果可以是搜尋索引，或在知識存放區中的投影。 這兩個輸出 (搜尋索引和知識存放區) 是相同管線的產品；衍生自相同輸入，但會導致產生以非常不同的方式來結構化、儲存及使用的輸出。
 
 實際上，知識存放區是 [Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-account-overview)，可能會以 Azure 資料表儲存體和 (或) Azure Blob 儲存體的形式存在。 任何可連線至 Azure 儲存體的工具或程序都可以取用知識存放區的內容。
 
@@ -103,7 +100,7 @@ ms.locfileid: "82858807"
 
 ## <a name="how-to-create-a-knowledge-store"></a>如何建立知識存放區
 
-若要建立知識存放區，請使用入口網站或預覽 REST API (`api-version=2019-05-06-Preview`)。
+若要建立知識存放區，請使用入口網站或 REST API （ `api-version=2020-06-30` ）。
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
@@ -117,13 +114,11 @@ ms.locfileid: "82858807"
 
 1. 執行精靈。 在最後一個步驟中進行擷取、擴充及儲存。
 
-### <a name="use-create-skillset-and-the-preview-rest-api"></a>使用建立技能集和預覽 REST API
+### <a name="use-create-skillset-rest-api"></a>使用 Create 技能集（REST API）]
 
 `knowledgeStore` 是在[技能集](cognitive-search-working-with-skillsets.md)內定義，而[索引子](search-indexer-overview.md)接著會叫用技能集。 在擴充期間，Azure 認知搜尋會在 Azure 儲存體帳戶中建立一個空間，並視設定將擴充文件投影為 Blob 或投影到資料表中，。
 
-目前，預覽 REST API 是可供以程式設計方式建立知識存放區的唯一機制。 簡單的探索方法是[使用 Postman 和 REST API 來建立第一個知識存放區](knowledge-store-create-rest.md)。
-
-此預覽功能其參考內容位於本文的 [API 參考](#kstore-rest-api)一節中。 
+REST API 是您可以用程式設計方式建立知識存放區的一種機制。 簡單的探索方法是[使用 Postman 和 REST API 來建立第一個知識存放區](knowledge-store-create-rest.md)。
 
 <a name="tools-and-apps"></a>
 
@@ -141,17 +136,17 @@ ms.locfileid: "82858807"
 
 ## <a name="api-reference"></a>API 參考資料
 
-REST API 版本 `2019-05-06-Preview` 會透過技能集的其他定義來提供知識存放區。 除了參考以外，另請參閱[使用 Postman 建立知識存放區](knowledge-store-create-rest.md)，以取得如何呼叫 API 的詳細資料。
+REST API 版本 `2020-06-30` 會透過技能集的其他定義來提供知識存放區。 除了參考以外，另請參閱[使用 Postman 建立知識存放區](knowledge-store-create-rest.md)，以取得如何呼叫 API 的詳細資料。
 
-+ [建立技能集 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
-+ [更新技能集 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
++ [建立技能集（api 版本 = 2020-06-30）](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/create-skillset)
++ [Update 技能集（api 版本 = 2020-06-30）](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/update-skillset)
 
 
 ## <a name="next-steps"></a>後續步驟
 
 知識存放區可提供擴充文件的持續性，在設計技能集時，或是在建立新結構和內容供任何能夠存取 Azure 儲存體帳戶的用戶端應用程式使用時，將可發揮作用。
 
-若要建立擴充文件，最簡單的方法是[透過入口網站](knowledge-store-create-portal.md)，但您也可以使用 Postman 和 REST API，這在想要深入了解物件的建立和參考方式時會更有用。
+建立擴充檔的最簡單方法是[透過入口網站](knowledge-store-create-portal.md)，但您也可以使用 Postman 和 REST API，如果您想要深入瞭解如何建立和參考物件，這會更有用。
 
 > [!div class="nextstepaction"]
 > [使用 Postman 和 REST 建立知識存放區](knowledge-store-create-rest.md)

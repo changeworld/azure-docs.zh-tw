@@ -1,7 +1,7 @@
 ---
 title: 匯入期間用於編目資料的索引子
 titleSuffix: Azure Cognitive Search
-description: 爬網 Azure SQL database、Azure Cosmos DB 或 Azure 儲存體，以將可搜尋的資料解壓縮並填入 Azure 認知搜尋索引。
+description: 爬網 Azure SQL Database、SQL 受控執行個體、Azure Cosmos DB 或 Azure 儲存體，以解壓縮可搜尋的資料並填入 Azure 認知搜尋索引。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a728eff7addc7f835f82e795457e722fd60d2e30
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564587"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 認知搜尋中的索引子
 
@@ -48,16 +48,16 @@ Azure 認知搜尋中的*索引子*是一種編目程式，它會從外部 Azure
 
 * [Azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) （處於預覽階段）
-* [Azure 表格儲存體](search-howto-indexing-azure-tables.md)
+* [Azure 資料表儲存體](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure SQL Database 和 SQL 受控執行個體](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure 虛擬機器上的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
-* [Azure 上的 SQL 受控實例](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
+* [SQL 受控執行個體](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="basic-configuration-steps"></a>基本組態步驟
 索引子可以提供資料來源特有的功能。 在這方面，索引子或資料來源組態的某些層面會因索引子類型而所有不同。 不過，所有索引子都有共用的的基本組成和需求。 下文涵蓋所有的索引子的通用步驟。
 
-### <a name="step-1-create-a-data-source"></a>步驟 1：建立資料來源
+### <a name="step-1-create-a-data-source"></a>步驟 1:建立資料來源
 索引子會從*資料來源*物件取得資料來源連接。 資料來源定義會提供連接字串，以及可能的認證。 呼叫[建立資料來源](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API 或 [DataSource 類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource)來建立資源。
 
 資料來源和使用資料來源的索引子是各自獨立設定與管理，這表示多個索引子可使用同一個資料來源來一次載入多個索引。
@@ -77,7 +77,7 @@ Azure 認知搜尋中的*索引子*是一種編目程式，它會從外部 Azure
 
 雖然排程編制索引很常見，但也可以在需要時使用[Run 命令](https://docs.microsoft.com/rest/api/searchservice/run-indexer)叫用索引子：
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
     api-key: [Search service admin key]
 
 > [!NOTE]
@@ -92,7 +92,7 @@ Azure 認知搜尋中的*索引子*是一種編目程式，它會從外部 Azure
 您可以透過[取得索引子狀態命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)來抓取索引子的狀態和執行歷程記錄：
 
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
     api-key: [Search service admin key]
 
 回應包含整體索引子的狀態、最後 (或進行中) 的索引子叫用，以及最新的索引子叫用歷程記錄。
@@ -128,9 +128,9 @@ Azure 認知搜尋中的*索引子*是一種編目程式，它會從外部 Azure
 ## <a name="next-steps"></a>後續步驟
 既然您已瞭解基本概念，下一個步驟是檢閱需求和每個資料來源類型特有的工作。
 
-* [Azure SQL Database 或 Azure 虛擬機器中的 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure 虛擬機器上的 Azure SQL Database、SQL 受控執行個體或 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)
-* [Azure 表格儲存體](search-howto-indexing-azure-tables.md)
+* [Azure 資料表儲存體](search-howto-indexing-azure-tables.md)
 * [使用 Azure 認知搜尋 Blob 索引子編制 CSV blob 的索引](search-howto-index-csv-blobs.md)
 * [使用 Azure 認知搜尋 Blob 索引子編制索引 JSON blob](search-howto-index-json-blobs.md)

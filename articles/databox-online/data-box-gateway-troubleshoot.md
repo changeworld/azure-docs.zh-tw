@@ -5,25 +5,26 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: b452362744d7fbf655ea043127a15f5173d04e4c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 9688df6c27717cc74c874c75a9df0b47ffd24853
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562452"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564013"
 ---
-# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>針對 Azure 資料箱閘道問題進行疑難排解 
+# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>針對 Azure 資料箱閘道問題進行疑難排解
 
-本文說明如何針對 Azure 資料箱閘道問題進行疑難排解。 在本文中，您將學會如何：
+本文說明如何針對 Azure 資料箱閘道問題進行疑難排解。
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
+>
 > * 執行診斷
 > * 收集支援套件
 > * 使用記錄進行疑難排解
-
 
 ## <a name="run-diagnostics"></a>執行診斷
 

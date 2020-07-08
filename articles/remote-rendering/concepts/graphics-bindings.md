@@ -9,12 +9,12 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: 4854d5ff9d697a2bf082a788c0e761a2152b0294
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: d29500db5efd0abde4c9555fde9a7e3d5bbe070a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758702"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564984"
 ---
 # <a name="graphics-binding"></a>圖形繫結
 
@@ -27,7 +27,7 @@ ms.locfileid: "83758702"
 在 Unity 中，整個繫結程序是由傳遞至 `RemoteManagerUnity.InitializeManager` 的 `RemoteUnityClientInit` 結構處理。 若要設定圖形模式，`GraphicsApiType` 欄位必須設定為所選的繫結。 系統會依據 XRDevice 是否存在而自動填入欄位。 您可以使用下列行為來手動覆寫行為：
 
 * **HoloLens 2**：一律使用 [Windows Mixed Reality](#windows-mixed-reality) 圖形繫結。
-* **平面 UWP 傳統型應用程式**：一律使用[模擬](#simulation)。 若要使用此模式，請務必遵循[教學課程：從頭開始設定 Unity 專案](../tutorials/unity/project-setup.md)。
+* **平面 UWP 傳統型應用程式**：一律使用[模擬](#simulation)。
 * **Unity 編輯器**：除非連接 WMR VR 頭戴式裝置，否則一律使用[模擬](#simulation)。在前述情況下會停用 ARR，以允許對應用程式的非 ARR 相關部分進行偵錯。 並請參閱[全像攝影遠端處理](../how-tos/unity/holographic-remoting.md)。
 
 Unity 另外唯一相關的部分是存取[基本繫結](#access)，至於以下所有其他章節則可略過。
@@ -233,4 +233,4 @@ else
 
 ## <a name="next-steps"></a>後續步驟
 
-* [教學課程：從頭開始設定 Unity 專案](../tutorials/unity/project-setup.md)
+* [教學課程：觀看遠端呈現的模型](../tutorials/unity/view-remote-models/view-remote-models.md)

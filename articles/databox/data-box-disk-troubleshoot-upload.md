@@ -6,15 +6,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 7c14988706ef193ef5da868c55f6c4f55e7d98f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7225b04908753bb7c07ac89510859bac9db5b89c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565024"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>瞭解記錄以對 Azure 資料箱磁碟中的資料上傳問題進行疑難排解
 
@@ -22,7 +22,7 @@ ms.locfileid: "79260133"
 
 ## <a name="about-upload-logs"></a>關於上傳記錄
 
-當資料在資料中心上傳至 Azure 時， `_error.xml` `_verbose.xml`會為每個儲存體帳戶產生檔案。 這些記錄會上傳至用來上傳資料的相同儲存體帳戶。 
+當資料在資料中心上傳至 Azure 時， `_error.xml` `_verbose.xml` 會為每個儲存體帳戶產生檔案。 這些記錄會上傳至用來上傳資料的相同儲存體帳戶。 
 
 這兩個記錄都採用相同的格式，並包含將資料從磁碟複製到 Azure 儲存體帳戶時所發生事件的 XML 描述。
 
@@ -46,7 +46,7 @@ ms.locfileid: "79260133"
 
 ## <a name="sample-upload-logs"></a>範例上傳記錄
 
-的範例`_verbose.xml`如下所示。 在此情況下，訂單已順利完成，沒有錯誤。
+的範例 `_verbose.xml` 如下所示。 在此情況下，訂單已順利完成，沒有錯誤。
 
 ```xml
 
@@ -91,7 +91,7 @@ ms.locfileid: "79260133"
 </DriveLog>
 ```
 
-依照相同的順序，的範例`_error.xml`如下所示。
+依照相同的順序，的範例 `_error.xml` 如下所示。
 
 ```xml
 
@@ -110,13 +110,13 @@ ms.locfileid: "79260133"
 </DriveLog>
 ```
 
-的範例`_error.xml`如下所示，其中的訂單已完成，但發生錯誤。 
+的範例 `_error.xml` 如下所示，其中的訂單已完成，但發生錯誤。 
 
-在此情況下，錯誤檔案有`Summary`一個區段和另一個區段，其中包含所有檔案層級錯誤。 
+在此情況下，錯誤檔案有一個 `Summary` 區段和另一個區段，其中包含所有檔案層級錯誤。 
 
-`Summary`包含`ValidationErrors`和`CopyErrors`。 在此情況下，已將8個檔案或資料夾上傳至 Azure，但沒有任何驗證錯誤。 當資料複製到 Azure 儲存體帳戶時，已成功上傳5個檔案或資料夾。 其餘3個檔案或資料夾已根據 Azure 容器命名慣例重新命名，然後成功上傳至 Azure。
+`Summary`包含 `ValidationErrors` 和 `CopyErrors` 。 在此情況下，已將8個檔案或資料夾上傳至 Azure，但沒有任何驗證錯誤。 當資料複製到 Azure 儲存體帳戶時，已成功上傳5個檔案或資料夾。 其餘3個檔案或資料夾已根據 Azure 容器命名慣例重新命名，然後成功上傳至 Azure。
 
-檔案層級狀態為`BlobStatus` ，其中描述上傳 blob 所採取的任何動作。 在此情況下，會重新命名三個容器，因為複製資料的目的檔案夾不符合適用于容器的 Azure 命名慣例。 針對在這些容器中上傳的 blob，會包含新的容器名稱、Azure 中的 blob 路徑、原始的無效檔案路徑，以及 blob 大小。
+檔案層級狀態為 `BlobStatus` ，其中描述上傳 blob 所採取的任何動作。 在此情況下，會重新命名三個容器，因為複製資料的目的檔案夾不符合適用于容器的 Azure 命名慣例。 針對在這些容器中上傳的 blob，會包含新的容器名稱、Azure 中的 blob 路徑、原始的無效檔案路徑，以及 blob 大小。
     
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
@@ -168,17 +168,17 @@ ms.locfileid: "79260133"
 |`ManagedDiskCreationTerminalFailure` | 無法上傳為受控磁片。 檔案會以分頁 blob 的形式存在於暫存的儲存體帳戶中。 您可以手動將分頁 blob 轉換成受控磁片。  |
 |`DiskConversionNotStartedTierInfoMissing` | 因為 VHD 檔案已複製到預先建立層資料夾之外，所以未建立受控磁片。 檔案會以分頁 blob 的形式上傳至暫存的儲存體帳戶，如建立順序期間所指定。 您可以手動將它轉換為受控磁片。|
 |`InvalidWorkitem` | 無法上傳資料，因為它不符合 Azure 命名和限制慣例。|
-|`InvalidPageBlobUploadAsBlockBlob` | 在具有前置`databoxdisk-invalid-pb-`詞的容器中，上傳為區塊 blob。|
-|`InvalidAzureFileUploadAsBlockBlob` | 在具有前置`databoxdisk-invalid-af`詞的容器中，上傳為區塊 blob。|
-|`InvalidManagedDiskUploadAsBlockBlob` | 在具有前置`databoxdisk-invalid-md`詞的容器中，上傳為區塊 blob。|
-|`InvalidManagedDiskUploadAsPageBlob` |以分頁 blob 的形式上傳至具有`databoxdisk-invalid-md-`前置詞的容器中。 |
-|`MovedToOverflowShare` |已將檔案上傳到新的共用，因為原始共用大小超過最大 Azure 大小限制。 新的檔案共用名稱的原始名稱會加`-2`上尾碼。   |
-|`MovedToDefaultAzureShare` |已將不屬於任何資料夾的檔案上傳至預設共用。 共用名稱的開頭為`databox-`。 |
-|`ContainerRenamed` |這些檔案的容器不符合 Azure 命名慣例，而且已重新命名。 新名稱以開頭`databox-` ，並以原始名稱的 SHA1 雜湊做為尾碼 |
-|`ShareRenamed` |這些檔案的共用不符合 Azure 命名慣例，而且已重新命名。 新名稱的開頭為`databox-` ，並以原始名稱的 SHA1 雜湊做為尾碼。 |
-|`BlobRenamed` |這些檔案不符合 Azure 命名慣例，而且已重新命名。 檢查新`BlobPath`名稱的欄位。 |
-|`FileRenamed` |這些檔案不符合 Azure 命名慣例，而且已重新命名。 檢查新`FileStoragePath`名稱的欄位。 |
-|`DiskRenamed` |這些檔案不符合 Azure 命名慣例，而且已重新命名。 檢查新`BlobPath`名稱的欄位。 |
+|`InvalidPageBlobUploadAsBlockBlob` | 在具有前置詞的容器中，上傳為區塊 blob `databoxdisk-invalid-pb-` 。|
+|`InvalidAzureFileUploadAsBlockBlob` | 在具有前置詞的容器中，上傳為區塊 blob `databoxdisk-invalid-af` 。|
+|`InvalidManagedDiskUploadAsBlockBlob` | 在具有前置詞的容器中，上傳為區塊 blob `databoxdisk-invalid-md` 。|
+|`InvalidManagedDiskUploadAsPageBlob` |以分頁 blob 的形式上傳至具有前置詞的容器中 `databoxdisk-invalid-md-` 。 |
+|`MovedToOverflowShare` |已將檔案上傳到新的共用，因為原始共用大小超過最大 Azure 大小限制。 新的檔案共用名稱的原始名稱會加上尾碼 `-2` 。   |
+|`MovedToDefaultAzureShare` |已將不屬於任何資料夾的檔案上傳至預設共用。 共用名稱的開頭為 `databox-` 。 |
+|`ContainerRenamed` |這些檔案的容器不符合 Azure 命名慣例，而且已重新命名。 新名稱以開頭 `databox-` ，並以原始名稱的 SHA1 雜湊做為尾碼 |
+|`ShareRenamed` |這些檔案的共用不符合 Azure 命名慣例，而且已重新命名。 新名稱的開頭為 `databox-` ，並以原始名稱的 SHA1 雜湊做為尾碼。 |
+|`BlobRenamed` |這些檔案不符合 Azure 命名慣例，而且已重新命名。 檢查 `BlobPath` 新名稱的欄位。 |
+|`FileRenamed` |這些檔案不符合 Azure 命名慣例，而且已重新命名。 檢查 `FileStoragePath` 新名稱的欄位。 |
+|`DiskRenamed` |這些檔案不符合 Azure 命名慣例，而且已重新命名。 檢查 `BlobPath` 新名稱的欄位。 |
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 74e58c316651a1604984ac14c70a3a65d46d6d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70026173d1cb932d30a59ea2b876ef22217a81bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73518199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563668"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure 防火牆規則處理邏輯
 
@@ -20,7 +20,7 @@ Azure 防火牆具有 NAT 規則、網路規則和應用程式規則。 規則�
 
 ## <a name="network-rules-and-applications-rules"></a>網路規則和應用程式規則
 
-首先會套用網路規則，然後套用應用程式規則。 之後規則就會終止。 因此，如果在網路規則中找到相符項目，就不會處理應用程式規則。  如果沒有符合的網路規則，而且如果封包通訊協定是 HTTP/HTTPS，則封包會由應用程式規則評估。 如果仍然找不到符合的規則，那麼封包會根據基礎結構規則集合進行評估。 如果仍然沒有相符項目，則封包預設會遭到拒絕。
+首先會套用網路規則，然後套用應用程式規則。 之後規則就會終止。 因此，如果在網路規則中找到相符的項，則不會處理應用程式規則。  如果沒有符合的網路規則，而且如果封包通訊協定是 HTTP/HTTPS，則封包會由應用程式規則進行評估。 如果仍然找不到符合的規則，那麼封包會根據基礎結構規則集合進行評估。 如果仍然沒有相符的值，則封包預設會遭到拒絕。
 
 ## <a name="nat-rules"></a>NAT 規則
 
@@ -34,4 +34,4 @@ Azure 防火牆具有 NAT 規則、網路規則和應用程式規則。 規則�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [深入瞭解 Azure 防火牆管理員預覽](overview.md)
+- [深入瞭解 Azure 防火牆管理員](overview.md)

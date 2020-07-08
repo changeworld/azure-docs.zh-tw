@@ -3,12 +3,12 @@ title: 服務健康狀態概觀 | Microsoft Docs
 description: 目前和未來的 Azure 服務問題和維修如何影響 Azure 應用程式的個人化資訊。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc1d07fdbba6da3540336438973fb1cfbb0c356b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146934"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563407"
 ---
 # <a name="service-health-overview"></a>服務健康狀態總覽
 
@@ -21,7 +21,7 @@ ms.locfileid: "82146934"
 1. **服務的問題** - 立即影響 Azure 服務的問題。 
 2. **規劃的維護** - 未來可能影響服務可用性的後續維修。  
 3. **健康情況摘要報告** - 需要注意的 Azure 服務變更。 範例包括取代 Azure 功能或升級需求（例如升級為支援的 PHP 架構）。
-4. 資訊安全摘要報告 **（預覽）** -可能會影響 Azure 服務可用性的安全性相關通知。
+4. **安全性**摘要報告-可能會影響 Azure 服務可用性的安全性相關通知或違規。
 
 > [!NOTE]
 > 若要查看服務健康狀態事件，使用者必須被[授與](../role-based-access-control/role-assignments-portal.md)訂用帳戶的「讀者」角色。
@@ -36,11 +36,11 @@ ms.locfileid: "82146934"
 
 **服務問題**檢視會顯示 Azure 服務中任何正在發生並影響資源的問題。 您可以了解問題開始發生的時間，以及受影響的服務和區域。 您也可以參閱最新的更新，以了解 Azure 如何解決問題。 
 
-![管理服務問題](./media/service-health-overview/azure-service-health-overview-2.png)
+[![管理服務問題](./media/service-health-overview/azure-service-health-overview-2.png)](./media/service-health-overview/azure-service-health-overview-2.png#lightbox)
 
 選擇 [潛在影響]**** 索引標籤，查看將受問題影響而且您擁有的資源列出的特定清單。 您可以下載這些資源的 CSV 清單，以便與小組共用。
 
-![管理服務問題 - 影響](./media/service-health-overview/azure-service-health-overview-4.png)
+[![管理服務問題 - 影響](./media/service-health-overview/azure-service-health-overview-4.png)](./media/service-health-overview/azure-service-health-overview-4.png#lightbox)
 
 ## <a name="see-emerging-issues-which-may-impact-your-services"></a>查看可能會對您的服務造成影響的新興問題
 
@@ -52,7 +52,7 @@ ms.locfileid: "82146934"
 
 您可以取得問題的連結，以便在您的問題管理系統中使用。 您可以下載 PDF 和有時 CSV 檔案，與沒有 Azure 入口網站存取權的人員共用。   
 
-![管理服務問題 - 問題管理](./media/service-health-overview/azure-service-health-overview-3.png)
+[![管理服務問題 - 問題管理](./media/service-health-overview/azure-service-health-overview-3.png)](./media/service-health-overview/azure-service-health-overview-3.png#lightbox)
 
 ## <a name="get-support-from-microsoft"></a>獲得 Microsoft 的支援
 
@@ -62,7 +62,7 @@ ms.locfileid: "82146934"
 
 篩選服務健康情況，以便顯示您的商務關鍵訂用帳戶、區域和資源類型。 儲存篩選條件，並將個人化健康情況世界地圖釘選在入口網站儀表板。 
 
-![篩選個人化健康情況地圖](./media/service-health-overview/azure-service-health-overview-6a.png)
+[![篩選個人化健康情況地圖](./media/service-health-overview/azure-service-health-overview-6a.png)](./media/service-health-overview/azure-service-health-overview-6a.png#lightbox)
 
 ![釘選個人化健康情況地圖](./media/service-health-overview/azure-service-health-overview-6b.png)
 

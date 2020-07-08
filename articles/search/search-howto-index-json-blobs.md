@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 37fc78971124240077a59d4ad99aa06cc408dbae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9448b7df8855f7cf2883f6cf8bd7f2ce465038cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563556"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用 Blob 索引子編制 JSON blob 的索引
 
@@ -22,7 +22,7 @@ ms.locfileid: "74533961"
 
 您可以使用[入口網站](#json-indexer-portal)、[REST API](#json-indexer-rest) 或 [.NET SDK](#json-indexer-dotnet) 為 JSON 內容編製索引。 所有方法的常見情況是，JSON 檔位於 Azure 儲存體帳戶的 blob 容器中。 如需從其他非 Azure 平臺推送 JSON 檔的指引，請參閱[Azure 認知搜尋中的資料匯入](search-what-is-data-import.md)。
 
-Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔（剖析模式是`json`）或 json 實體的集合。 針對集合，blob 可能會有格式正確的 JSON 專案**陣列**（剖析模式為`jsonArray`）。 Blob 也可以由多個以分行符號分隔的個別 JSON 實體組成（剖析模式為`jsonLines`）。 要求上的**parsingMode**參數會決定輸出結構。
+Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔（剖析模式是 `json` ）或 json 實體的集合。 針對集合，blob 可能會有格式正確的 JSON 專案**陣列**（剖析模式為 `jsonArray` ）。 Blob 也可以由多個以分行符號分隔的個別 JSON 實體組成（剖析模式為 `jsonLines` ）。 要求上的**parsingMode**參數會決定輸出結構。
 
 > [!NOTE]
 > 如需有關從單一 blob 對多個搜尋檔編制索引的詳細資訊，請參閱[一對多索引](search-howto-index-one-to-many-blobs.md)。
@@ -145,11 +145,11 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 ### <a name="2---create-a-data-source"></a>2-建立資料來源
 
-此步驟提供索引子所使用的資料來源連接資訊。 資料來源是 Azure 認知搜尋中名為的物件，可保存連接資訊。 資料來源類型`azureblob`會決定索引子叫用哪些資料提取行為。 
+此步驟提供索引子所使用的資料來源連接資訊。 資料來源是 Azure 認知搜尋中名為的物件，可保存連接資訊。 資料來源類型 `azureblob` 會決定索引子叫用哪些資料提取行為。 
 
 以有效的值取代 [服務名稱]、[管理金鑰]、[儲存體帳戶] 和 [帳戶金鑰] 預留位置。
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -168,7 +168,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 下列範例說明[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index)要求。 索引會有可搜尋的 `content` 欄位，以供儲存從 Blob 擷取到的文字︰   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -185,7 +185,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 如同索引和資料來源，和索引子也是您在 Azure 認知搜尋服務上建立及重複使用的已命名物件。 建立索引子的完整指定要求看起來可能如下所示：
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -199,7 +199,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 索引子設定是在要求的主體中。 它需要有一個資料來源和一個已存在於 Azure 認知搜尋中的空目標索引。 
 
-排程和參數是選擇性的。 如果您省略它們，則會使用`json`做為剖析模式，立即執行索引子。
+排程和參數是選擇性的。 如果您省略它們，則會使用 `json` 做為剖析模式，立即執行索引子。
 
 這個特定的索引子不包含欄位對應。 在索引子定義中，如果來源 JSON 檔的屬性符合目標搜尋索引的欄位，您就可以省略**欄位**對應。 
 
@@ -212,7 +212,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 所有索引子都需要提供連接資訊給現有資料的資料來源物件。 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -228,7 +228,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 所有索引子都需要接收資料的目標索引。 要求的主體會定義索引架構（由欄位所組成），其屬性化是支援可搜尋索引中所需的行為。 當您執行索引子時，此索引應該是空的。 
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -247,7 +247,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 在 Azure 認知搜尋上建立索引子會觸發資料匯入。 它會立即執行，如果您提供了一個排程，則會在之後進行。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -282,18 +282,18 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 JSON blob 可以採用多個表單。 JSON 索引子上的**parsingMode**參數會決定 json blob 內容在 Azure 認知搜尋索引中的剖析與結構化方式：
 
-| parsingMode | 描述 |
+| parsingMode | Description |
 |-------------|-------------|
-| `json`  | 將每個 blob 編制索引為單一檔。 這是預設值。 |
+| `json`  | 將每個 blob 編制索引為單一檔。 此為預設值。 |
 | `jsonArray` | 如果您的 blob 包含 JSON 陣列，而且您需要陣列的每個元素成為 Azure 認知搜尋中的個別檔，請選擇這個模式。 |
 |`jsonLines` | 如果您的 blob 包含多個以新行分隔的 JSON 實體，而且您需要每個實體成為 Azure 認知搜尋中的個別檔，請選擇這個模式。 |
 
-您可以將文件視為搜尋結果中的單一項目。 如果您想要陣列中的每個元素在搜尋結果中顯示為獨立專案，請適當地`jsonArray`使用`jsonLines`或選項。
+您可以將文件視為搜尋結果中的單一項目。 如果您想要陣列中的每個元素在搜尋結果中顯示為獨立專案，請 `jsonArray` `jsonLines` 適當地使用或選項。
 
-在索引子定義中，您可以選擇性地使用[欄位對應](search-indexer-field-mappings.md)，以選擇用來填入目標搜尋索引的來源 JSON 文件屬性。 針對`jsonArray`剖析模式，如果陣列以較低層級的屬性存在，您可以設定檔根目錄，指出陣列放在 blob 中的位置。
+在索引子定義中，您可以選擇性地使用[欄位對應](search-indexer-field-mappings.md)，以選擇用來填入目標搜尋索引的來源 JSON 文件屬性。 針對 `jsonArray` 剖析模式，如果陣列以較低層級的屬性存在，您可以設定檔根目錄，指出陣列放在 blob 中的位置。
 
 > [!IMPORTANT]
-> 當您使用`json` `jsonArray`或`jsonLines`剖析模式時，Azure 認知搜尋會假設您資料來源中的所有 blob 都包含 JSON。 如果您需要支援在相同的資料來源中混用 JSON 和非 JSON Blob，請在 [UserVoice 網站](https://feedback.azure.com/forums/263029-azure-search)上讓我們知道。
+> 當您使用 `json` `jsonArray` 或 `jsonLines` 剖析模式時，Azure 認知搜尋會假設您資料來源中的所有 BLOB 都包含 JSON。 如果您需要支援在相同的資料來源中混用 JSON 和非 JSON Blob，請在 [UserVoice 網站](https://feedback.azure.com/forums/263029-azure-search)上讓我們知道。
 
 
 <a name="parsing-single-blobs"></a>
@@ -328,7 +328,7 @@ Blob 索引子會將 JSON 檔剖析成單一 Azure 認知搜尋檔。 索引子�
 
 若為 JSON 陣列，索引子定義看起來應該像下列範例。 請注意，parsingMode 參數會指定 `jsonArray` 剖析器。 指定正確的剖析器並擁有正確的資料輸入，是索引 JSON blob 唯一的兩個數組特有的需求。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -345,7 +345,7 @@ Blob 索引子會將 JSON 檔剖析成單一 Azure 認知搜尋檔。 索引子�
 <a name="nested-json-arrays"></a>
 
 ## <a name="parse-nested-arrays"></a>剖析嵌套陣列
-針對具有嵌套元素的 JSON 陣列，您可以指定`documentRoot`來表示多層結構。 例如，如果您的 Blob 看起來像這樣︰
+針對具有嵌套元素的 JSON 陣列，您可以指定 `documentRoot` 來表示多層結構。 例如，如果您的 Blob 看起來像這樣︰
 
     {
         "level1" : {
@@ -375,7 +375,7 @@ Blob 索引子會將 JSON 檔剖析成單一 Azure 認知搜尋檔。 索引子�
 
 針對 JSON 行，索引子定義看起來應該類似下列範例。 請注意，parsingMode 參數會指定 `jsonLines` 剖析器。 
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -387,7 +387,7 @@ Blob 索引子會將 JSON 檔剖析成單一 Azure 認知搜尋檔。 索引子�
       "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
     }
 
-同樣地，請注意，欄位對應可能會省略，類似`jsonArray`于剖析模式。
+同樣地，請注意，欄位對應可能會省略，類似于 `jsonArray` 剖析模式。
 
 ## <a name="add-field-mappings"></a>新增欄位對應
 

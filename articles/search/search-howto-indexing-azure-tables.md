@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0a711b9239e1a76774d8e75f035e6c862218c82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74112992"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563139"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>如何使用 Azure 認知搜尋為 Azure 資料表儲存體中的資料表編制索引
 
@@ -26,7 +26,7 @@ ms.locfileid: "74112992"
 
 * [Azure 入口網站](https://ms.portal.azure.com)
 * Azure 認知搜尋[REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure 認知搜尋[.NET SDK](https://aka.ms/search-sdk)
+* Azure 認知搜尋[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
 我們會在此使用 REST API 示範流程。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "74112992"
 
 若要建立資料來源：
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -67,9 +67,9 @@ ms.locfileid: "74112992"
 
 您可以採取下列其中一種方式提供資料表的認證︰ 
 
-- **完整存取儲存體帳戶連接字串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`您可以移至**儲存體帳戶** > 的 [分頁] [**設定** > ] [索引**鍵**] （適用于傳統儲存體帳戶）或 [**設定** > ] [**存取金鑰**] （適用于 Azure Resource Manager 儲存體帳戶），以從 Azure 入口網站取得連接字串。
-- **儲存體帳戶共用存取**簽章連接字串`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` ：共用存取簽章應該有容器（在此案例中為數據表）和物件（資料表資料列）的 [清單] 和 [讀取] 許可權。
--  **資料表共用存取**簽章`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` ：共用存取簽章應該有資料表的查詢（讀取）許可權。
+- **完整存取儲存體帳戶連接字串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 您可以移至**儲存體帳戶**的 [分頁] [設定] [索引  >  **Settings**  >  **鍵**] （適用于傳統儲存體帳戶）或 [**設定**] [  >  **存取金鑰**] （適用于 Azure Resource Manager 儲存體帳戶），以從 Azure 入口網站取得連接字串。
+- **儲存體帳戶共用存取簽章連接字串**： `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 共用存取簽章應該有容器（在此案例中為數據表）和物件（資料表資料列）的 [清單] 和 [讀取] 許可權。
+-  **資料表共用存取**簽章： `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共用存取簽章應該有資料表的查詢（讀取）許可權。
 
 如需儲存體共用存取簽章的詳細資訊，請參閱[使用共用存取簽章](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
@@ -81,7 +81,7 @@ ms.locfileid: "74112992"
 
 若要建立索引：
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -100,7 +100,7 @@ ms.locfileid: "74112992"
 
 建立索引和資料來源之後，您就可以開始建立索引子︰
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -115,7 +115,7 @@ ms.locfileid: "74112992"
 
 如需建立索引子 API 的詳細資訊，請參閱[建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
-如需定義索引子排程的詳細資訊，請參閱[如何排定 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
+如需有關定義索引子排程的詳細資訊，請參閱[如何排程 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
 
 ## <a name="deal-with-different-field-names"></a>處理不同的欄位名稱
 有時候，現有索引中的欄位名稱與資料表中的屬性名稱不同。 您可以使用欄位對應，將資料表中的屬性名稱對應至您搜尋索引中的欄位名稱。 若要深入瞭解欄位對應，請參閱[Azure 認知搜尋索引子欄位對應會橋接資料來源和搜尋索引之間的差異](search-indexer-field-mappings.md)。
@@ -123,7 +123,7 @@ ms.locfileid: "74112992"
 ## <a name="handle-document-keys"></a>處理文件索引鍵
 在 Azure 認知搜尋中，檔索引鍵會唯一識別檔。 每個搜尋索引必須確實具有一個 `Edm.String`類型的索引鍵欄位。 要新增至索引的每個文件都需要有索引鍵欄位。 (實際上它是唯一必要的欄位。)
 
-因為資料表資料列具有複合索引鍵，所以 Azure 認知搜尋會產生名`Key`為的綜合欄位，其為分割區索引鍵和資料列索引鍵值的串連。 例如，如果資料列的 PartitionKey 為 `PK1` 且 RowKey 是 `RK1`，則 `Key` 欄位的值是 `PK1RK1`。
+因為資料表資料列具有複合索引鍵，所以 Azure 認知搜尋會產生名為的綜合欄位，其 `Key` 為分割區索引鍵和資料列索引鍵值的串連。 例如，如果資料列的 PartitionKey 為 `PK1` 且 RowKey 是 `RK1`，則 `Key` 欄位的值是 `PK1RK1`。
 
 > [!NOTE]
 > `Key` 值可能包含在文件索引鍵中無效的字元，例如連字號。 您可以使用 `base64Encode` [欄位對應函式](search-indexer-field-mappings.md#base64EncodeFunction)來處理無效字元。 如果您這樣做，請記得在 API 呼叫 (例如查閱) 中傳遞文件索引鍵時，也使用 URL 安全 Base64 編碼。
@@ -135,7 +135,7 @@ ms.locfileid: "74112992"
 
 若要指示必須從索引中移除特定文件，您可以使用虛刪除策略。 新增屬性來表示它已遭到刪除，而非刪除資料列，並在資料來源上設定虛刪除偵測原則。 例如，如果資料列有屬性 `IsDeleted` 的值為 `"true"`，則下列原則會認為已刪除資料列：
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -150,7 +150,7 @@ ms.locfileid: "74112992"
 <a name="Performance"></a>
 ## <a name="performance-considerations"></a>效能考量
 
-根據預設，Azure 認知搜尋會使用下列查詢篩選： `Timestamp >= HighWaterMarkValue`。 因為 Azure 資料表的 `Timestamp` 欄位沒有次要索引，這種類型的查詢需要完整的資料表掃描，因此若是大型資料表就會變慢。
+根據預設，Azure 認知搜尋會使用下列查詢篩選： `Timestamp >= HighWaterMarkValue` 。 因為 Azure 資料表的 `Timestamp` 欄位沒有次要索引，這種類型的查詢需要完整的資料表掃描，因此若是大型資料表就會變慢。
 
 
 以下是加強資料表索引效能兩個可能的做法。 這兩種做法都依賴使用資料表資料分割︰ 

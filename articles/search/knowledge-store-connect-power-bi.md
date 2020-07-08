@@ -1,24 +1,21 @@
 ---
-title: 使用 Power BI 連線至知識存放區 (預覽)
+title: 使用 Power BI 連線至知識存放區
 titleSuffix: Azure Cognitive Search
-description: 使用 Power BI 連接 Azure 認知搜尋知識存放區 (預覽)，以進行分析和探索。
+description: 使用 Power BI 連接 Azure 認知搜尋知識存放區，以進行分析和探索。
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: e67bd688d720ed3d7549a86c9cff752bc19fb2fc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 06/30/2020
+ms.openlocfilehash: 438d8cbc4bf03fa9e03d0d2e1920522768ba9127
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858809"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565350"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 連線到知識存放區
-
-> [!IMPORTANT] 
-> 知識存放區目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供預覽功能。 目前的入口網站支援有限，而且沒有 .NET SDK 支援。
 
 在本文中，了解如何使用 Power BI Desktop 應用程式中的 Power Query 來連線及探索知識存放區。 您可以透過範本更快地開始使用，或從頭開始建立自訂儀表板。 下面這段簡短的影片示範如何使用 Azure 認知搜尋搭配 Power BI，來豐富您的資料體驗。
 
@@ -60,7 +57,7 @@ ms.locfileid: "82858809"
    
    + REST 逐步解說的資料表名稱為 *hotelReviewsDocument*、*hotelReviewsPages*、*hotelReviewsKeyPhrases* 和 *hotelReviewsSentiment*。
 
-1. 按一下 [**載入**]。
+1. 按一下 [載入]。
 
 1. 在頂端的功能區中，按一下 [編輯查詢]**** 以開啟 [Power Query 編輯器]****。
 
@@ -115,7 +112,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 使用您自己的訂用帳戶時，在專案結束後確認您是否還需要您建立的資源，是很好的做法。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
 
-您可以使用左導覽窗格中的 [所有資源]  或 [資源群組]  連結，在入口網站中尋找和管理資源。
+您可以使用左導覽窗格中的 [所有資源]**** 或 [資源群組]**** 連結，在入口網站中尋找和管理資源。
 
 如果您使用免費服務，請記住您會有三個索引、索引子和資料來源的限制。 您可以在入口網站中刪除個別項目，以避免超出限制。
 

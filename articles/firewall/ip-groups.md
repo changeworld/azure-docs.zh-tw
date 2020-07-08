@@ -5,19 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80757156"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565553"
 ---
-# <a name="ip-groups-preview-in-azure-firewall"></a>Azure 防火牆中的 IP 群組（預覽）
-
-> [!IMPORTANT]
-> 此公開預覽版是在沒有服務等級協定的情況下提供，不得用於生產工作負載。 可能不支援特定功能、可能已經限制功能，或者可能無法在所有 Azure 位置提供使用。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="ip-groups-in-azure-firewall"></a>Azure 防火牆中的 IP 群組
 
 IP 群組可讓您以下列方式來分組和管理 Azure 防火牆規則的 IP 位址：
 
@@ -40,7 +37,7 @@ IP 群組可以有單一 IP 位址、多個 IP 位址，或一或多個 IP 位�
 
 ## <a name="create-an-ip-group"></a>建立 IP 群組
 
-您可以使用 Azure 入口網站、Azure CLI 或 REST API 來建立 IP 群組。 如需詳細資訊，請參閱[建立 IP 群組（預覽）](create-ip-group.md)。
+您可以使用 Azure 入口網站、Azure CLI 或 REST API 來建立 IP 群組。 如需詳細資訊，請參閱[建立 IP 群組](create-ip-group.md)。
 
 ## <a name="browse-ip-groups"></a>流覽 IP 群組
 1. 在 [Azure 入口網站搜尋] 列中，輸入**IP 群組**並加以選取。 您可以看到 IP 群組的清單，或選取 [**新增**] 來建立新的 ip 群組。
@@ -64,9 +61,6 @@ IP 群組可以有單一 IP 位址、多個 IP 位址，或一或多個 IP 位�
 ## <a name="use-an-ip-group"></a>使用 IP 群組
 
 當您建立 Azure 防火牆 DNAT、應用程式或網路規則時，您現在可以選取**Ip 群組**做為 ip 位址的**來源類型**或**目的地類型**。
-
-> [!NOTE]
-> 防火牆原則中不支援 IP 群組。 目前僅支援傳統的防火牆規則。
 
 ![防火牆中的 IP 群組](media/ip-groups/fw-ipgroup.png)
 
@@ -128,4 +122,4 @@ IP 群組適用于所有公用雲端區域。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解如何[部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)。
+- 瞭解如何[部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)。

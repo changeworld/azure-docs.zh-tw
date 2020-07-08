@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f2eb7cff5d8fe77a56117a0be57f0edb86889a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191009"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562306"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure 認知搜尋中的篩選 
 
@@ -71,10 +71,10 @@ ms.locfileid: "77191009"
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
+GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2020-06-30&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
 
 # Option 2: Use filter for POST and pass it in the request body
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "*",
     "filter": "Rooms/any(room: room/BaseRate lt 150.0)",
@@ -109,7 +109,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
   search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
    ```
 
-+ 複合式查詢 (以 "or" 分隔)，每個均有自己的篩選條件準則 (例如，'dog' 中的 'beagles' 或 'cat' 中的 'siamese')。 與`or`結合的運算式會個別進行評估，並具有符合回應中傳回之每個運算式的檔聯集。 此使用模式是透過`search.ismatchscoring`函式來達成。 您也可以使用非計分版本`search.ismatch`。
++ 複合式查詢 (以 "or" 分隔)，每個均有自己的篩選條件準則 (例如，'dog' 中的 'beagles' 或 'cat' 中的 'siamese')。 與結合的運算式 `or` 會個別進行評估，並具有符合回應中傳回之每個運算式的檔聯集。 此使用模式是透過函式來達成 `search.ismatchscoring` 。 您也可以使用非計分版本 `search.ismatch` 。
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
@@ -119,7 +119,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
    $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
-  您`search.ismatchscoring`也可以使用`and` （而不是`or`）將全文檢索搜尋與篩選結合，但這在功能上相當於在搜尋`search`要求`$filter`中使用和參數。 例如，下列兩個查詢會產生相同的結果：
+  您也可以使用（而不是）將全文檢索搜尋 `search.ismatchscoring` 與篩選結合 `and` `or` ，但這在功能上相當於 `search` `$filter` 在搜尋要求中使用和參數。 例如，下列兩個查詢會產生相同的結果：
 
   ```
   $filter=search.ismatchscoring('pool') and Rating ge 4
@@ -137,7 +137,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 在 REST API 中，簡單欄位的可篩選預設為 [*開啟*]。 可篩選的欄位會增加索引大小；請務必針對您不打算在篩選條件中實際使用的欄位設定 `"filterable": false`。 如需適用於欄位定義之設定的詳細資訊，請參閱[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index) \(英文\)。
 
-在 .NET SDK 中，可篩選預設為 *off*。 您可以將對應[欄位](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet)物件的`true` [IsFilterable 屬性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)設定為，以篩選欄位。 您也可以使用[IsFilterable 屬性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)，以宣告方式執行這項操作。 在下列範例中，屬性是在對應至索引`BaseRate`定義之模型類別的屬性上設定。
+在 .NET SDK 中，可篩選預設為 *off*。 您可以將對應[欄位](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet)物件的[IsFilterable 屬性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)設定為，以篩選欄位 `true` 。 您也可以使用[IsFilterable 屬性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)，以宣告方式執行這項操作。 在下列範例中，屬性是在 `BaseRate` 對應至索引定義之模型類別的屬性上設定。
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -150,15 +150,15 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="text-filter-fundamentals"></a>文字篩選條件基本概念
 
-文字篩選準則會比對字串欄位與您在篩選準則中提供的常值字串。 不同于全文檢索搜尋，文字篩選不會有任何詞法分析或斷詞，因此比較僅適用于完全相符的專案。 例如，假設欄位*f*包含 "sunny day"， `$filter=f eq 'Sunny'`不符合，但`$filter=f eq 'sunny day'`會是。 
+文字篩選準則會比對字串欄位與您在篩選準則中提供的常值字串。 不同于全文檢索搜尋，文字篩選不會有任何詞法分析或斷詞，因此比較僅適用于完全相符的專案。 例如，假設欄位*f*包含 "sunny day"，不 `$filter=f eq 'Sunny'` 符合，但 `$filter=f eq 'sunny day'` 會是。 
 
-文字字串會區分大小寫。 大小寫不太大寫的單字： `$filter=f eq 'Sunny day'`將找不到 "sunny day"。
+文字字串會區分大小寫。 大小寫不太大寫的單字： `$filter=f eq 'Sunny day'` 將找不到 "sunny day"。
 
 ### <a name="approaches-for-filtering-on-text"></a>篩選文字的方法
 
 | 方法 | 描述 | 使用時機 |
 |----------|-------------|-------------|
-| [`search.in`](search-query-odata-search-in-function.md) | 符合欄位的函式，可針對字串的分隔清單。 | 建議用於[安全性篩選](search-security-trimming-for-azure-search.md)和任何篩選準則，其中有許多原始文字值需要與字串欄位相符。 **Search.in**函數是針對速度而設計的，比使用`eq`和`or`針對每個字串明確比較欄位更快。 | 
+| [`search.in`](search-query-odata-search-in-function.md) | 符合欄位的函式，可針對字串的分隔清單。 | 建議用於[安全性篩選](search-security-trimming-for-azure-search.md)和任何篩選準則，其中有許多原始文字值需要與字串欄位相符。 **Search.in**函數是針對速度而設計的，比使用和針對每個字串明確比較欄位更 `eq` 快 `or` 。 | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | 此函式可讓您在相同的篩選條件運算式中，混用全文檢索搜尋作業以及純布林值篩選作業。 | 當您想要在一個要求中有多個搜尋篩選器組合時，請使用**ismatch** （或其評分對等的**ismatchscoring**）。 您也可以將它用於 *contains* 篩選條件，以篩選較大字串內的部分字串。 |
 | [`$filter=field operator string`](search-query-odata-comparison-operators.md) | 使用者定義的運算式，由欄位、運算子和值所組成。 | 當您想要在字串欄位與字串值之間尋找完全相符專案時，請使用此專案。 |
 
@@ -195,7 +195,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 若要使用更多範例，請參閱 [OData 篩選條件運算式語法 > 範例](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples) \(英文\)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [全文檢索搜尋如何在 Azure 認知搜尋中運作](search-lucene-query-architecture.md)
 + [搜尋檔 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)

@@ -1,5 +1,5 @@
 ---
-title: AI 擴充簡介
+title: AI 擴充概念
 titleSuffix: Azure Cognitive Search
 description: 內容解壓縮、自然語言處理（NLP）和影像處理是用來在 Azure 認知搜尋索引中，使用預先定義的認知技能和自訂 AI 演算法來建立可搜尋的內容。
 manager: nitinme
@@ -7,17 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/24/2020
-ms.openlocfilehash: a41dcc9c7ec86f41c64a69ea1aba762b960b2633
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: cb9214dcd79e45b4c587c7ab47e425f2fdd8714c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283016"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564425"
 ---
-# <a name="getting-started-with-ai-enrichment"></a>AI 擴充入門
+# <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 擴充
 
-AI 擴充是 Azure 認知搜尋索引編制的功能，可用來從影像、blob 和其他非結構化資料來源中解壓縮文字。 擴充和解壓縮可讓您的內容在[索引](search-what-is-an-index.md)或[知識存放區](knowledge-store-concept-intro.md)中更容易搜尋。 系統會使用附加至索引管線的*認知技能*來執行提取和擴充。 服務內建的認知技能可分為下列幾個類別： 
+AI 擴充是[索引子](search-indexer-overview.md)的延伸模組，可以用來從影像、blob 和其他非結構化資料來源中解壓縮文字。 擴充和解壓縮可讓您的內容在索引子輸出物件（[搜尋索引](search-what-is-an-index.md)或[知識存放區](knowledge-store-concept-intro.md)）中更容易搜尋。 
+
+系統會使用附加至索引子驅動管線的*認知技能*來執行提取和擴充。 您可以使用 Microsoft 內建的技能，或將外部處理內嵌至您所建立的[*自訂技能*](cognitive-search-create-custom-skill-example.md)。 自訂技能的範例可能是以特定領域為目標（例如財務、科學刊物或醫藥）的自訂實體模組或檔分類器。
+
+內建技能屬於下列類別： 
 
 + **自然語言處理**技術，包括[實體辨識](cognitive-search-skill-entity-recognition.md)、[語言偵測](cognitive-search-skill-language-detection.md)、[關鍵片語擷取](cognitive-search-skill-keyphrases.md)、文字操作、[情感偵測](cognitive-search-skill-sentiment.md)和 [PII 偵測](cognitive-search-skill-pii-detection.md)。 有了這些技能，非結構化的文字會對應為索引中的可搜尋且可篩選的欄位。
 
@@ -25,9 +29,9 @@ AI 擴充是 Azure 認知搜尋索引編制的功能，可用來從影像、blob
 
 ![擴充管線圖表](./media/cognitive-search-intro/cogsearch-architecture.png "擴充管線概觀")
 
-Azure 認知搜尋中的認知技能是以認知服務 API：[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)和[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)中預先定型的機器學習模型為基礎。 
+Azure 認知搜尋中的內建技能是以認知服務 API：[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)和[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)中預先定型的機器學習模型為基礎。 如果您想要在內容處理期間利用這些資源，您可以附加認知服務資源。
 
-在資料擷取階段中會套用自然語言和影像處理，且其結果會在 Azure 認知搜尋服務的可搜尋索引中成為文件撰寫的一部分。 資料會作為 Azure 資料集的來源，然後使用您所需的[內建技能](cognitive-search-predefined-skills.md)透過索引管線推送出去。 其架構是可延伸的，因此如果內建技能不敷使用，您可以建立及附加[自訂技能](cognitive-search-create-custom-skill-example.md)，以整合自訂處理。 其範例包括以特定領域為目標 (例如金融、科學出版品或醫藥) 的自訂實體模組或文件分類器。
+在資料擷取階段中會套用自然語言和影像處理，且其結果會在 Azure 認知搜尋服務的可搜尋索引中成為文件撰寫的一部分。 資料會作為 Azure 資料集的來源，然後使用您所需的[內建技能](cognitive-search-predefined-skills.md)透過索引管線推送出去。  
 
 ## <a name="when-to-use-ai-enrichment"></a>使用 AI 擴充的時機
 
@@ -55,8 +59,7 @@ Azure 認知搜尋中的認知技能是以認知服務 API：[電腦視覺](http
 
 自訂技能可支援更複雜的案例 (例如辨識表單) 或使用您在[自訂技能 Web 介面](cognitive-search-custom-skill-interface.md)中提供及包裝的模型來進行自訂實體偵測。 自訂技能的幾個範例包括[表單辨識器](/azure/cognitive-services/form-recognizer/overview)、[Bing 實體搜尋 API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example) 的整合，以及[自訂實體辨識](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)。
 
-
-## <a name="steps-in-an-enrichment-pipeline"></a>擴充管線中的步驟
+<a name="enrichment-steps"># # 擴充管線中的步驟</a>
 
 擴充管線是以[*索引子*](search-indexer-overview.md)為基礎。 索引子會根據索引和資料來源之間的欄位對欄位對應填入索引，以進行檔破解。 現在已附加至索引子的技能，會根據您定義的技能集來攔截和擴充檔。 完成索引編製後，您即可使用 [Azure 認知搜尋服務所支援的所有查詢類型](search-query-overview.md)，透過搜尋要求來存取內容。  如果您不熟悉索引子，本節將引導您逐步完成相關步驟。
 
@@ -80,7 +83,7 @@ Azure 認知搜尋中的認知技能是以認知服務 API：[電腦視覺](http
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>新增 knowledgeStore 元素以儲存擴充
 
-[搜尋 REST api-version=2019-05-06-Preview](search-api-preview.md) 可利用提供 Azure 儲存體連線的 `knowledgeStore` 定義，以及描述擴充儲存方式的投影，來擴展技能集。 這是您的索引以外的其他功能。 在標準 AI 管線中，擴充的文件是暫時性的，只會在編製索引期間使用，其後即捨棄。 透過知識存放區，擴充的文件得以保留。 如需詳細資訊，請參閱[知識存放區 (預覽版)](knowledge-store-concept-intro.md)。
+[搜尋 REST api-version = 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/)擴充技能集與 `knowledgeStore` 提供 Azure 儲存體連線的定義，以及描述擴充儲存方式的預測。 這是您的索引以外的其他功能。 在標準 AI 管線中，擴充的文件是暫時性的，只會在編製索引期間使用，其後即捨棄。 透過知識存放區，擴充的文件得以保留。 如需詳細資訊，請參閱[知識存放區](knowledge-store-concept-intro.md)。
 
 ### <a name="step-3-search-index-and-query-based-access"></a>步驟3：搜尋索引和以查詢為基礎的存取
 
@@ -102,7 +105,7 @@ Azure 認知搜尋中的認知技能是以認知服務 API：[電腦視覺](http
 
 1. 定義[索引結構描述](https://docs.microsoft.com/rest/api/searchservice/create-index)。 *欄位*集合包含來源資料中的欄位。 您也應該清除多餘的欄位，以保存為擴充期間建立的內容產生的值。
 
-1. 定義參考資料來源、技能集和索引的[索引子](https://docs.microsoft.com/rest/api/searchservice/create-skillset)。
+1. 定義參考資料來源、技能集和索引的[索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
 1. 在索引子內新增 *outputFieldMappings*。 這部分會將技能集的輸出 (在步驟 3 中) 對應至索引結構描述中的輸入欄位 (在步驟 4 中)。
 
@@ -118,6 +121,6 @@ Azure 認知搜尋中的認知技能是以認知服務 API：[電腦視覺](http
 + [範例：建立 AI 擴充的自訂技能（c #）](cognitive-search-create-custom-skill-example.md)
 + [快速入門：在入口網站中試用 AI 擴充逐步解說](cognitive-search-quickstart-blob.md)
 + [教學課程：瞭解 AI 擴充 Api](cognitive-search-tutorial-blob.md)
-+ [知識存放區 (預覽)](knowledge-store-concept-intro.md)
++ [知識存放區](knowledge-store-concept-intro.md)
 + [在 REST 中建立知識存放區](knowledge-store-create-rest.md)
 + [疑難排解秘訣](cognitive-search-concept-troubleshooting.md)

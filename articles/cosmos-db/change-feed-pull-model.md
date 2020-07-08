@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: c47016d0b82a4e4ed084f5d82394d91fd2b46be1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 8916f4b9824f88361fdeb9d866f84adb71e8138e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563797"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的變更摘要提取模型
 
@@ -164,7 +164,7 @@ FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIte
 
 以下是變更摘要處理器與提取模型之間的一些主要差異：
 
-|  | 變更摘要處理器| 提取模型 |
+|功能  | 變更摘要處理器| 提取模型 |
 | --- | --- | --- |
 | 追蹤處理變更摘要的目前時間點 | 租用 (儲存在 Azure Cosmos DB 容器中) | 接續權杖 (儲存在記憶體中或以手動方式保存) |
 | 重新執行過去變更的能力 | 是，使用推送模型 | 是，使用提取模型|

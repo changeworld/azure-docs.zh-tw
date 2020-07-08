@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 7eb2988628d60fa72c7d83b81a58a1e0fae5de33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a0798ee923624aef9f29c1e9cc30f38b55770a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565323"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議工具，以在查詢中啟用自動完成和建議的結果
 
@@ -41,7 +41,7 @@ ms.locfileid: "81770091"
 
 + 僅使用字串欄位
 
-+ 在欄位上使用預設的標準`"analyzer": null`Lucene 分析器（）或[語言分析器](index-add-language-analyzers.md)（例如`"analyzer": "en.Microsoft"`，）
++ 在欄位上使用預設的標準 Lucene 分析器（ `"analyzer": null` ）或[語言分析器](index-add-language-analyzers.md)（例如， `"analyzer": "en.Microsoft"` ）
 
 ### <a name="choose-fields"></a>選擇欄位
 
@@ -133,11 +133,11 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 ## <a name="property-reference"></a>屬性參考
 
-|屬性      |描述      |
+|屬性      |說明      |
 |--------------|-----------------|
 |`name`        |建議工具的名稱。|
-|`searchMode`  |用來搜尋候選片語的策略。 目前唯一支援的模式是`analyzingInfixMatching`，其目前符合詞彙開頭的。|
-|`sourceFields`|建議之內容來源的一或多個欄位清單。 欄位的類型`Edm.String`必須是和`Collection(Edm.String)`。 如果在欄位上指定分析器，則[此清單](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)中必須是名稱為 analyzer （不是自訂分析器）。<p/> 最佳做法是只指定那些會讓自己成為預期和適當回應的欄位，不論它是搜尋列或下拉式清單中的完整字串。<p/>飯店名稱是很好的候選，因為它有精確度。 詳細資訊欄位（如描述和批註）太密集。 同樣地，重複的欄位（例如分類和標記）比較不有效率。 在範例中，我們仍會包含「類別」，以示範您可以包含多個欄位。 |
+|`searchMode`  |用來搜尋候選片語的策略。 目前唯一支援的模式是 `analyzingInfixMatching` ，其目前符合詞彙開頭的。|
+|`sourceFields`|建議之內容來源的一或多個欄位清單。 欄位的類型必須是 `Edm.String` 和 `Collection(Edm.String)` 。 如果在欄位上指定分析器，則[此清單](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)中必須是名稱為 analyzer （不是自訂分析器）。<p/> 最佳做法是只指定那些會讓自己成為預期和適當回應的欄位，不論它是搜尋列或下拉式清單中的完整字串。<p/>飯店名稱是很好的候選，因為它有精確度。 詳細資訊欄位（如描述和批註）太密集。 同樣地，重複的欄位（例如分類和標記）比較不有效率。 在範例中，我們仍會包含「類別」，以示範您可以包含多個欄位。 |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -155,7 +155,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 下列 [自動完成] REST API 的呼叫中會說明 API 的使用方式。 這個範例有兩個優點。 首先，如同所有查詢，作業是針對索引的檔集合，而查詢則包含**搜尋**參數，在此案例中會提供部分查詢。 第二，您必須將**suggesterName**新增至要求。 如果索引中未定義建議工具，則對自動完成或建議的呼叫將會失敗。
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"

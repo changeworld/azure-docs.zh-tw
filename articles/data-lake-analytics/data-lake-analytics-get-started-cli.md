@@ -7,25 +7,25 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: d9fc9bee98391f7272a417324b9c3a540b6adbe6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8de36cca8386ed2a8ddba5782b7b48f248192e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79474504"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564827"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>使用 Azure CLI 開始使用 Azure Data Lake Analytics
+
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-本文說明如何使用 Azure CLI 命令列介面，來建立 Azure Data Lake Analytics 帳戶、提交 U-SQL 作業和目錄。 此作業可讀取定位字元分隔值 (TSV) 檔案，並將該檔案轉換為逗點分隔值 (CSV) 檔案。 
+本文說明如何使用 Azure CLI 命令列介面，來建立 Azure Data Lake Analytics 帳戶、提交 U-SQL 作業和目錄。 此作業可讀取定位字元分隔值 (TSV) 檔案，並將該檔案轉換為逗點分隔值 (CSV) 檔案。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
+
 在開始之前，您需要下列項目：
 
-* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* 本文需要您執行 Azure CLI 2.0 版或更新版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
-
-
+* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* 本文需要您執行 Azure CLI 2.0 版或更新版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -46,6 +46,7 @@ az account set --subscription <subscription id>
 ```
 
 ## <a name="create-data-lake-analytics-account"></a>建立 Data Lake Analytics 帳戶
+
 您需要 Data Lake Analytics 帳戶，才能執行作業。 若要建立 Data Lake Analytics 帳戶，您必須指定下列項目：
 
 * **Azure 資源群組**。 Data Lake Analytics 帳戶必須建立在 Azure 資源群組內。 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 可讓您將應用程式中的資源做為群組使用。 您可以透過單一、協調的作業，將應用程式的所有資源進行部署、更新或刪除。  
@@ -88,10 +89,11 @@ az dla account create --account "<Data Lake Analytics Account Name>" --resource-
 
 ```azurecli
 az dla account list
-az dla account show --account "<Data Lake Analytics Account Name>"            
+az dla account show --account "<Data Lake Analytics Account Name>"
 ```
 
 ## <a name="upload-data-to-data-lake-store"></a>將資料上傳至 Data Lake Store
+
 在本教學課程中，您會處理一些搜尋記錄。  搜尋記錄檔可以儲存在 Data Lake Store 或 Azure Blob 儲存體中。
 
 Azure 入口網站會提供使用者介面，可將範例資料檔案複製到預設的 Data Lake Store 存放區帳戶，其中包括搜尋記錄檔案。 若要將資料上傳至預設 Data Lake Store 帳戶，請參閱 [準備來源資料](data-lake-analytics-get-started-portal.md) 。
@@ -106,19 +108,20 @@ az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 Data Lake Analytics 也可存取 Azure Blob 儲存體。  若要將資料上傳至 Azure Blob 儲存體，請參閱 [使用 Azure CLI 搭配 Azure 儲存體](../storage/common/storage-azure-cli.md)。
 
 ## <a name="submit-data-lake-analytics-jobs"></a>提交 Data Lake Analytics 工作
+
 Data Lake Analytics 工作是以 U-SQL 語言撰寫。 若要深入了解 U-SQL，請參閱[開始使用 U-SQL 語言](data-lake-analytics-u-sql-get-started.md)和 [U-SQL 語言參考](https://docs.microsoft.com/u-sql/)。
 
-**建立 Data Lake Analytics 工作指令碼**
+### <a name="to-create-a-data-lake-analytics-job-script"></a>建立 Data Lake Analytics 工作指令碼
 
 使用下列 U-SQL 指令碼建立文字檔，並將該檔案儲存到您的工作站：
 
-```
-@a  = 
-    SELECT * FROM 
+```usql
+@a  =
+    SELECT * FROM
         (VALUES
             ("Contoso", 1500.0),
             ("Woodgrove", 2700.0)
-        ) AS 
+        ) AS
               D( customer, amount );
 OUTPUT @a
     TO "/data.csv"
@@ -131,22 +134,22 @@ OUTPUT @a
 
 使用儲存在預設 Data Lake Store 帳戶中檔案的相對路徑，是比較容易的方法。 您也可以使用絕對路徑。  例如：
 
-```
+```usql
 adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
 ```
 
 您必須使用絕對路徑存取連結儲存體帳戶中的檔案。  儲存在連結 Azure 儲存體帳戶中之檔案的語法是：
 
-```
+```usql
 wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 ```
 
 > [!NOTE]
-> 不支援使用公用 blob 的 Azure Blob 容器。      
-> 不支援使用公用容器的 Azure Blob 容器。      
+> 不支援使用公用 blob 的 Azure Blob 容器。
+> 不支援使用公用容器的 Azure Blob 容器。
 >
 
-**提交作業**
+### <a name="to-submit-jobs"></a>提交作業
 
 使用以下語法提交作業。
 
@@ -160,14 +163,14 @@ az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Jo
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
 ```
 
-**若要列出作業並顯示作業詳細資料**
+### <a name="to-list-jobs-and-show-job-details"></a>若要列出作業並顯示作業詳細資料
 
 ```azurecli
 az dla job list --account "<Data Lake Analytics Account Name>"
 az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
-**取消作業**
+### <a name="to-cancel-jobs"></a>取消作業
 
 ```azurecli
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"

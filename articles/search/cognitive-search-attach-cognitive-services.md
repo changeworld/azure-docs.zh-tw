@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffb52cd34d56c227fc689ea70146e99983e17c0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77472446"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564448"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>將認知服務資源連結至 Azure 認知搜尋中的技能集 
 
@@ -29,7 +29,7 @@ Azure 認知搜尋相依于認知服務，包括影像分析和光學字元辨�
 
 + Azure 認知搜尋會使用您在技能集上提供的認知服務資源金鑰來計費影像和文字擴充。 計費技能的執行是認知服務的[隨用隨付價格](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
-+ 影像解壓縮是一種 Azure 認知搜尋作業，會在擴充之前先解開檔時進行。 影像解壓縮是可計費的。 如需影像解壓縮的價格，請參閱[Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)。
++ 影像解壓縮是一種 Azure 認知搜尋作業，會在擴充之前先解開檔時進行。 影像解壓縮是可計費的。 如需影像解壓縮的價格，請參閱[Azure 認知搜尋定價頁面](https://azure.microsoft.com/pricing/details/search/)。
 
 + 文字解壓縮也會在檔破解片語期間發生。 這不是可計費的。
 
@@ -110,10 +110,10 @@ Azure 認知搜尋相依于認知服務，包括影像分析和光學字元辨�
 
 透過程式設計方式定義技能時，請將 `cognitiveServices` 區段新增至該技能。 在該區段中，包含您要與技能集建立關聯之認知服務資源的索引鍵。 請記住，資源必須與您的 Azure 認知搜尋資源位於相同的區域。 以及包含 `@odata.type`，並將它設定為 `#Microsoft.Azure.Search.CognitiveServicesByKey`。
 
-下列範例示範了此模式。 請注意`cognitiveServices`定義結尾的區段。
+下列範例示範了此模式。 請注意 `cognitiveServices` 定義結尾的區段。
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```

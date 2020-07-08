@@ -5,16 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: de3f127d97803ea920d61d748a1af0c80a1a1afc
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: 4b87008f4172e58440c32e4ff92a3ee1f4d5efae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565870"
 ---
 # <a name="textures"></a>紋理
 
-紋理是不可變的[共用資源](../concepts/lifetime.md)。 紋理可以從 [Blob 儲存體](../how-tos/conversion/blob-storage.md)載入並直接套用至模型，如[教學課程：變更環境與材質](../tutorials/unity/changing-environment-and-materials.md)中所示。 但最常見的是，紋理會成為[轉換後模型](../how-tos/conversion/model-conversion.md)的一部分，並會由其[材質](materials.md)加以參考。
+紋理是不可變的[共用資源](../concepts/lifetime.md)。 紋理可以從 [Blob 儲存體](../how-tos/conversion/blob-storage.md)載入並直接套用至模型，如[教學課程：變更環境與材質](../tutorials/unity/materials-lighting-effects/materials-lighting-effects.md)中所示。 但最常見的是，紋理會成為[轉換後模型](../how-tos/conversion/model-conversion.md)的一部分，並會由其[材質](materials.md)加以參考。
 
 ## <a name="texture-types"></a>紋理類型
 

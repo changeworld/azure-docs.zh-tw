@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bf600890bfed570e712a159005b8ef5267298cc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 580c6294856145530e354b6e5cced955dbaa9f9c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76122316"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565555"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>如何使用 delimitedText 剖析模式與 Azure 認知搜尋中的 Blob 索引子編制 CSV blob 的索引
 
@@ -24,13 +24,13 @@ ms.locfileid: "76122316"
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-在本文中，您將瞭解如何藉由設定`delimitedText`剖析模式，使用 Azure 認知搜尋 blob 索引子來剖析 CSV blob。 
+在本文中，您將瞭解如何藉由設定剖析模式，使用 Azure 認知搜尋 blob 索引子來剖析 CSV blob `delimitedText` 。 
 
 > [!NOTE]
 > 依照[一對多索引](search-howto-index-one-to-many-blobs.md)中的索引子設定建議，從一個 Azure blob 輸出多個搜尋檔。
 
 ## <a name="setting-up-csv-indexing"></a>設定 CSV 編製索引
-若要對 CSV blob 編制索引，請在`delimitedText` [建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)要求上，使用剖析模式建立或更新索引子定義：
+若要對 CSV blob 編制索引，請 `delimitedText` 在[建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)要求上，使用剖析模式建立或更新索引子定義：
 
     {
       "name" : "my-csv-indexer",
@@ -60,7 +60,7 @@ ms.locfileid: "76122316"
 
 資料來源： 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -73,7 +73,7 @@ ms.locfileid: "76122316"
 
 索引子：
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

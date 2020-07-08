@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: e522291bdf1982ff65a62f028107b15b3249898c
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 0b7ca2654fb8b7bdcca6dcb5f2fd354a138f2fcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847407"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564363"
 ---
 # <a name="evaluate-model-module"></a>評估模型模組
 
@@ -122,7 +122,7 @@ ms.locfileid: "83847407"
   
      如果指派給叢集的資料點數目小於可用的資料點總數，則表示無法將資料點指派給叢集。  
   
--   **與叢集中心的最大距離**資料行中的分數，表示每個點和該點的叢集距心之間距離的總和。  
+-   資料行中的分數（**與叢集中心**的最大距離）代表每個點和該點的叢集距心之間的距離上限。  
   
      如果這個值很高，就可能表示叢集分散很廣。 您應該將此統計資料與**叢集中心的平均距離**放在一起檢閱，以判斷叢集的散佈。   
 

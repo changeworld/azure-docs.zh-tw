@@ -5,18 +5,16 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: d93c3b47c518962bf45762b846eaf53e490ae8f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56e0d40bcbfb97f57b63dc82da1a6604f83dffad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73518433"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563626"
 ---
 # <a name="what-is-a-secured-virtual-hub"></a>什麼是安全虛擬中樞？
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
 虛擬中樞是受 Microsoft 管理的虛擬網路，可讓您從其他資源連線。 從 Azure 入口網站中的虛擬 WAN 建立虛擬中樞時，會建立虛擬中樞 VNet 和閘道（選擇性）作為其元件。
 
@@ -26,7 +24,7 @@ ms.locfileid: "73518433"
 
 您也可以使用受保護的虛擬中樞作為完整虛擬 WAN 架構的一部分。 此架構提供與 Azure 之間的安全、優化且自動分支連線能力。 您可以選擇服務來保護和管理您的網路流量，包括 Azure 防火牆和其他協力廠商安全性即服務（SECaaS）提供者。
 
-## <a name="create-a-secured-virtual-hub"></a>建立受保護的虛擬中樞
+## <a name="create-a-secured-virtual-hub"></a>建立安全虛擬中樞
 
 在 Azure 入口網站中使用防火牆管理員，您可以建立新的安全虛擬中樞，或轉換您先前使用 Azure 虛擬 WAN 建立的現有虛擬中樞。
 

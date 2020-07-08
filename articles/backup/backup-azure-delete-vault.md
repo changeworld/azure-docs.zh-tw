@@ -2,13 +2,13 @@
 title: 刪除 Microsoft Azure 復原服務保存庫
 description: 在本文中，瞭解如何移除相依性，然後刪除 Azure 備份復原服務保存庫。
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 5fcf8004cd5792b30ec57537d5d8ab0bc085dfb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: e6aaab80cabbdd8a58d8adc64409bf1bcd8ebf03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183750"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563107"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>刪除 Azure 備份復原服務保存庫
 
@@ -16,33 +16,41 @@ ms.locfileid: "82183750"
 
 ## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
-您無法刪除具有相依性的復原服務保存庫（例如受保護的伺服器或備份管理伺服器）與其相關聯。
+您無法刪除具有下列任何相依性的復原服務保存庫：
 
-- 包含備份資料的保存庫無法刪除（即使已停止保護，但仍保留備份資料）。
+- 您無法刪除包含受保護資料來源的保存庫（例如 IaaS Vm、SQL 資料庫、Azure 檔案共用等）  
+- 您無法刪除包含備份資料的保存庫。 一旦刪除備份資料後，就會進入虛刪除狀態。
+- 您無法刪除包含已虛刪除狀態之備份資料的保存庫。
+- 您無法刪除已註冊儲存體帳戶的保存庫。
 
-- 如果您刪除包含相依性的保存庫，則會出現下列訊息：
+如果您嘗試刪除保存庫但未移除相依性，您將會遇到下列其中一個錯誤訊息：
 
-  ![刪除保存庫錯誤。](./media/backup-azure-delete-vault/error.png)
+- 保存庫無法刪除，因為其中仍有既有資源。 請確定沒有與此保存庫相關聯的備份專案、受保護的伺服器或備份管理伺服器。 請先取消註冊與此保存庫相關聯的下列容器，再繼續進行刪除。
 
-- 如果您從包含相依性的入口網站刪除內部部署受保護專案，就會出現警告訊息：
+- 無法刪除復原服務保存庫，因為保存庫中有處於虛刪除狀態的備份項目。 刪除作業14天后，會永久刪除虛刪除的專案。 請在永久刪除備份專案之後，嘗試刪除保存庫，而且保存庫中沒有任何已虛刪除狀態的專案。 如需詳細資訊，請參閱[Azure 備份的虛刪除](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)。
 
-  ![刪除受保護的伺服器錯誤。](./media/backup-azure-delete-vault/error-message.jpg)
+## <a name="proper-way-to-delete-a-vault"></a>刪除保存庫的適當方式
 
-- 如果備份專案處於虛刪除狀態，則會出現下列警告訊息，而且您必須等到它們永久刪除為止。 如需詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)。
+>[!WARNING]
+>下列作業是破壞性的作業，無法復原。 將永久刪除所有與受保護伺服器相關聯的備份資料和備份專案。 繼續進行時請小心。
 
-   ![刪除保存庫錯誤。](./media/backup-azure-delete-vault/error-message-soft-delete.png)
+若要正確地刪除保存庫，您必須依照下列循序執行步驟：
 
-- 無法刪除具有已註冊之儲存體帳戶的保存庫。 若要瞭解如何取消註冊帳戶，請參閱[取消註冊儲存體帳戶](manage-afs-backup.md#unregister-a-storage-account)。
-  
-若要刪除保存庫，請選擇符合您設定的案例，並遵循建議的步驟：
+- **步驟 1**：停用虛刪除功能。 如需停用虛刪除的步驟，[請參閱這裡](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete)。
 
-狀況 | 移除相依性以刪除保存庫的步驟 |
--- | --
-我有使用 Azure 備份代理程式保護的內部部署檔案和資料夾，並備份至 Azure | 執行[從 MARS 管理主控台刪除備份專案](#delete-backup-items-from-the-mars-management-console)中的步驟
-我有使用 MABS （Microsoft Azure 備份 Server）或 DPM （System Center Data Protection Manager）保護的內部部署機器至 Azure | 執行[從 MABS 管理主控台刪除備份專案](#delete-backup-items-from-the-mabs-management-console)中的步驟
-我在雲端中有受保護的專案（例如，laaS 虛擬機器或 Azure 檔案儲存體共用）  | 執行[刪除雲端中受保護專案](#delete-protected-items-in-the-cloud)中的步驟
-我在內部部署和雲端都有受保護的專案 | 依照下列循序執行下列所有章節中的步驟： <br> 1.[刪除雲端中受保護的專案](#delete-protected-items-in-the-cloud)<br> 2.[從 MARS 管理主控台刪除備份專案](#delete-backup-items-from-the-mars-management-console) <br> 3.[從 MABS 管理主控台刪除備份專案](#delete-backup-items-from-the-mabs-management-console)
-我在內部部署或雲端沒有任何受保護的專案;不過，我仍在取得保存庫刪除錯誤 | 執行刪除復原服務保存庫中的步驟，[方法是使用 Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager) <br><br> 確定沒有向保存庫註冊的儲存體帳戶。 若要瞭解如何取消註冊帳戶，請參閱[取消註冊儲存體帳戶](manage-afs-backup.md#unregister-a-storage-account)。
+- **步驟 2**：停用虛刪除之後，請檢查是否有任何先前已在「虛刪除」狀態中保留的專案。 如果專案處於「虛刪除」狀態，則您必須重新*刪除並將*它們*刪除*。 [請遵循下列步驟](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items)來尋找虛刪除專案，並永久刪除它們。
+
+- **步驟 3**：您必須檢查下列三個位置，以確認是否有任何受保護的專案：
+
+  - **受雲端保護的專案**：前往保存庫儀表板功能表 >**備份專案**]。 您必須移除此處所列的所有專案，其中包含 [**停止備份**] 或 [**刪除備份資料**] 及其備份資料。  [請遵循下列步驟](#delete-protected-items-in-the-cloud)來移除這些專案。
+  - **受 MARS 保護的伺服器**：移至保存庫儀表板功能表 >**備份基礎結構**  >  **保護的伺服器**。 如果您有 MARS 保護的伺服器，則此處所列的所有專案都必須連同其備份資料一併刪除。 [請遵循下列步驟](#delete-protected-items-on-premises)來刪除 MARS 受保護的伺服器。
+  - **MABS 或 DPM 管理伺服器**：移至 [保存庫] 儀表板功能表，>**備份基礎結構**] [  >  **備份管理伺服器**]。 如果您有 DPM 或 Azure 備份伺服器（MABS），則在此列出的所有專案都必須連同其備份資料一起刪除或取消註冊。 [請遵循下列步驟](#delete-protected-items-on-premises)來刪除管理伺服器。
+
+- **步驟 4**：您必須確定所有已註冊的儲存體帳戶都已刪除。 前往保存庫的 [儀表板] 功能表，>**備份基礎結構**  >  **儲存體帳戶**]。 如果您有此處所列的儲存體帳戶，則必須將其取消註冊。 若要瞭解如何取消註冊帳戶，請參閱[取消註冊儲存體帳戶](manage-afs-backup.md#unregister-a-storage-account)。
+
+完成這些步驟之後，您可以繼續[刪除保存庫](#delete-the-recovery-services-vault)。
+
+如果您在內部部署或雲端沒有任何受保護的專案，但仍在取得保存庫刪除錯誤，請[使用 Azure Resource Manager 來執行刪除復原服務保存庫](#delete-the-recovery-services-vault-by-using-azure-resource-manager)中的步驟。
 
 ## <a name="delete-protected-items-in-the-cloud"></a>刪除雲端中受保護的專案
 
@@ -60,11 +68,11 @@ ms.locfileid: "82183750"
 
         ![[停止備份] 窗格。](./media/backup-azure-delete-vault/stop-backup-item.png)
 
-    - 如果出現 [**刪除備份資料**] 窗格，請輸入備份專案的名稱（此欄位會區分大小寫），然後從下拉式功能表中選取原因。 輸入您的批註（如果有的話）。 然後選取 [**刪除**]。
+    - 如果出現 [**刪除備份資料**] 窗格，請輸入備份專案的名稱（此欄位會區分大小寫），然後從下拉式功能表中選取原因。 輸入您的批註（如果有的話）。 然後，選取 [刪除]。
 
          ![[刪除備份資料] 窗格。](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-3. 檢查**通知**圖示： ![通知圖示。](./media/backup-azure-delete-vault/messages.png) 在此程式完成之後，服務會顯示下列訊息： [*正在停止備份並刪除備份資料] 的*[備份專案 *]*。 *已成功完成*作業。
+3. 檢查**通知**圖示： ![ 通知圖示。](./media/backup-azure-delete-vault/messages.png) 在此程式完成之後，服務會顯示下列訊息： [*正在停止備份並刪除備份資料] 的*[備份專案 *]*。 *已成功完成*作業。
 4. 選取 [**備份專案**] 功能表**上的 [** 重新整理]，確認已刪除備份專案。
 
       ![[刪除備份專案] 頁面。](./media/backup-azure-delete-vault/empty-items-list.png)
@@ -82,7 +90,7 @@ ms.locfileid: "82183750"
 
       - 針對 MABS 或 DPM，請選取 [**備份管理伺服器**]。 然後，選取您想要刪除的伺服器。
 
-          ![針對 [MABS]，選取您的保存庫以開啟其儀表板。](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
+          ![針對 [MABS] 或 [DPM]，選取您的保存庫以開啟其儀表板。](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
 3. [**刪除**] 窗格隨即出現，並顯示警告訊息。
 
@@ -97,18 +105,24 @@ ms.locfileid: "82183750"
 
 4. 選取 [同意] 核取方塊，然後選取 [**刪除**]。
 
-5. 檢查**通知**圖示![[刪除備份資料](./media/backup-azure-delete-vault/messages.png)]。 作業完成後，服務會顯示訊息： [*正在停止備份並刪除備份資料] 的 [備份專案]。* *已成功完成*作業。
+5. 檢查**通知**圖示 [ ![ 刪除備份資料] ](./media/backup-azure-delete-vault/messages.png) 。 作業完成後，服務會顯示訊息： [*正在停止備份並刪除備份資料] 的 [備份專案]。* *已成功完成*作業。
 6. 選取 [**備份專案**] 功能表**上的 [** 重新整理]，確認已刪除備份專案。
+
+>[!NOTE]
+>如果您從包含相依性的入口網站刪除內部部署受保護專案，您會收到一則警告，指出「刪除伺服器的註冊是破壞性作業，而且無法復原。 所有備份資料（還原資料所需的復原點），以及與受保護伺服器相關聯的備份專案，將會永久刪除。」
 
 完成此程式之後，您可以從管理主控台刪除備份專案：
 
 - [從 MARS 管理主控台刪除備份專案](#delete-backup-items-from-the-mars-management-console)
-- [從 MABS 管理主控台刪除備份專案](#delete-backup-items-from-the-mabs-management-console)
+- [從 MABS 或 DPM 管理主控台刪除備份專案](#delete-backup-items-from-the-mabs-or-dpm-management-console)
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>從 MARS 管理主控台刪除備份專案
 
+>[!NOTE]
+>如果您刪除或遺失來源機器而不停止備份，則下一個排定的備份將會失敗。 舊的復原點會根據原則過期，但最後一個復原點一律會保留，直到您停止備份並刪除資料為止。 您可以遵循本節中的步驟來執行[這項操作](#delete-protected-items-on-premises)。
+
 1. 開啟 MARS 管理主控台，移至 [**動作**] 窗格，然後選取 [**排程備份**]。
-2. 從 [**修改或停止排程備份**] 頁面，選取 [**停止使用此備份排程] 並刪除所有儲存的備份**。 然後，選取 [下一步]  。
+2. 從 [**修改或停止排程備份**] 頁面，選取 [**停止使用此備份排程] 並刪除所有儲存的備份**。 然後，選取 [下一步]。
 
     ![修改或停止排定的備份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 
@@ -116,7 +130,7 @@ ms.locfileid: "82183750"
 
     ![停止排程的備份。](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. 系統會提示您輸入您必須手動產生的安全性 PIN 碼（個人識別碼）。 若要這麼做，請先登入 Azure 入口網站。
-5. 移至 [復原**服務保存庫** > ] [**設定** > ] [**屬性**]。
+5. 移至 [復原**服務保存庫**] [設定] [  >  **Settings**  >  **屬性**]。
 6. 在 [**安全性 PIN**] 底下，選取 [**產生**]。 複製此 PIN。 PIN 僅適用于五分鐘。
 7. 在管理主控台中，貼上 PIN，然後選取 **[確定]**。
 
@@ -128,9 +142,12 @@ ms.locfileid: "82183750"
 
 刪除內部部署備份專案之後，請遵循入口網站中的後續步驟。
 
-### <a name="delete-backup-items-from-the-mabs-management-console"></a>從 MABS 管理主控台刪除備份專案
+### <a name="delete-backup-items-from-the-mabs-or-dpm-management-console"></a>從 MABS 或 DPM 管理主控台刪除備份專案
 
-有兩種方法可用來從 MABS 管理主控台刪除備份專案。
+>[!NOTE]
+>如果您刪除或遺失來源機器而不停止備份，則下一個排定的備份將會失敗。 舊的復原點會根據原則過期，但最後一個復原點一律會保留，直到您停止備份並刪除資料為止。 您可以遵循本節中的步驟來執行[這項操作](#delete-protected-items-on-premises)。
+
+有兩種方法可用來從 MABS 或 DPM 管理主控台刪除備份專案。
 
 #### <a name="method-1"></a>方法 1
 
@@ -154,7 +171,7 @@ ms.locfileid: "82183750"
 
 #### <a name="method-2"></a>方法 2
 
-開啟**MABS 管理**主控台。 在 [**選取資料保護方式**] 下，清除 [**我想要線上保護**] 核取方塊。
+開啟 [ **MABS 管理**] 或 [ **DPM 管理**主控台]。 在 [**選取資料保護方式**] 下，清除 [**我想要線上保護**] 核取方塊。
 
   ![選取資料保護方式。](./media/backup-azure-delete-vault/data-protection-method.png)
 
@@ -194,7 +211,7 @@ ms.locfileid: "82183750"
 
   [深入瞭解](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0)如何停用受 Azure 備份保護專案的保護。
 
-- 停止保護並刪除雲端中所有受備份保護專案的資料（例如 laaS VM、Azure 檔案共用等）：
+- 停止保護並刪除雲端中所有受備份保護專案的資料（例如： IaaS VM、Azure 檔案共用等等）：
 
     ```PowerShell
        Disable-AzRecoveryServicesBackupProtection
@@ -208,7 +225,7 @@ ms.locfileid: "82183750"
        [<CommonParameters>]
     ```
 
-    [深入瞭解](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)停用受備份保護專案的保護。 
+    [深入瞭解](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)  關於停用受備份保護專案的保護。
 
 - 針對使用備份至 Azure Azure 備份代理程式（MARS）保護的內部部署檔案和資料夾，請使用下列 PowerShell 命令來刪除每個 MARS PowerShell 模組中的已備份資料：
 
@@ -218,9 +235,9 @@ ms.locfileid: "82183750"
 
     出現下列提示的文章：
 
-    *Microsoft Azure 備份您確定要移除此備份原則嗎？已刪除的備份資料將會保留14天。在這段時間之後，備份資料將會永久刪除。<br/> [Y] 是 [A] 全部都是 [N] 否 [L] 否全部 [S] 暫停 [？]說明（預設為 "Y"）：*
+    *Microsoft Azure 備份您確定要移除此備份原則嗎？已刪除的備份資料將會保留14天。在這段時間之後，備份資料將會永久刪除。<br/>[Y] 是 [A] 全部都是 [N] 否 [L] 否全部 [S] 暫停 [？]說明（預設為 "Y"）：*
 
-- 對於使用 MABS （Microsoft Azure 備份 Server）或 DPM 至 Azure （System Center Data Protection Manager）保護的內部部署機器，請使用下列命令來刪除 Azure 中的備份資料。
+- 若為使用 MABS （Microsoft Azure 備份 Server）或 DPM （System Center Data Protection Manager）保護的內部部署機器至 Azure，請使用下列命令來刪除 Azure 中已備份的資料。
 
     ```powershell
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
@@ -352,5 +369,5 @@ ms.locfileid: "82183750"
 
 ## <a name="next-steps"></a>後續步驟
 
-[瞭解復原服務保存庫](backup-azure-recovery-services-vault-overview.md)<br/>
+[瞭解復原服務保存庫](backup-azure-recovery-services-vault-overview.md) 
 [瞭解如何監視和管理復原服務保存庫](backup-azure-manage-windows-server.md)

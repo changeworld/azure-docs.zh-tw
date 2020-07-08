@@ -1,17 +1,17 @@
 ---
-title: 跨訂用帳戶、資源群組或區域遷移邏輯應用程式
+title: 跨訂用帳戶、資源群組或區域移動邏輯應用程式
 description: 將邏輯應用程式或整合帳戶遷移至其他 Azure 訂用帳戶、資源群組或位置（區域）
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 065bbc62d65d7e91728b10cd9f95b2e73ea03abc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d420f244b0d1e5ccf9a7aaa78c10f613cdbad38f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564264"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>將邏輯應用程式資源移到其他 Azure 資源群組、區域或訂用帳戶
 
@@ -27,7 +27,7 @@ ms.locfileid: "80878726"
 
 * 您只能將[整合服務環境（ISE）](connect-virtual-network-vnet-isolated-environment-overview.md)移至存在於相同 Azure 區域或 Azure 訂用帳戶中的另一個資源群組。 您無法將 ISE 移至位於不同 Azure 區域或 Azure 訂用帳戶中的資源群組。 此外，在這類移動之後，您必須在邏輯應用程式工作流程、整合帳戶、連接等中更新 ISE 的所有參考。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 相同的 Azure 訂用帳戶，用來建立您要移動的邏輯應用程式或整合帳戶
 

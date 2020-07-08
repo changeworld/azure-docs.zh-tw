@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 56757d1c2810efe608601c231946b2242df82b19
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 4bc5897401a62d45e8b1c987d7ef50e0c8a6de08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890168"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565359"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>將評分設定檔新增至 Azure 認知搜尋服務索引
 
@@ -61,23 +61,23 @@ ms.locfileid: "82890168"
  若要使用此評分設定檔，您的查詢會依公式調整以指定查詢字串的設定檔。 在下列查詢中，請留意要求中的查詢參數 `scoringProfile=geo`。  
 
 ```  
-GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2019-05-06 
+GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2020-06-30 
 ```  
 
- 此查詢會搜尋 ’inn’ 一詞，並傳入目前的位置。 請注意，此查詢包含其他參數，例如`scoringParameter`。 查詢參數會在[搜尋檔中說明 &#40;Azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。  
+ 此查詢會搜尋 ’inn’ 一詞，並傳入目前的位置。 請注意，此查詢包含其他參數，例如 `scoringParameter` 。 查詢參數會在[搜尋檔中說明 &#40;Azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。  
 
  按一下 [範例](#bkmk_ex) ，可檢閱更多評分設定檔的詳細範例。  
 
 ## <a name="what-is-default-scoring"></a>什麼是預設計分？  
  計分會計算排名排序的結果集中每個項目的搜尋分數。 搜尋結果集中的每個項目會被指派一個搜尋分數，然後從最高排名到最低。 具有較高分數的項目會傳回給應用程式。 依預設會傳回前 50 名，但您可以使用 `$top` 參數，以傳回較少或更多的項目數目 (單一回應中最多 1000 個)。  
 
-搜尋分數會根據資料和查詢的統計屬性來計算。 Azure 認知搜尋會在查詢字串中尋找包含搜尋詞彙的檔（部分或全部，視而`searchMode`定），優先列出包含多個搜尋詞彙實例的檔。 如果詞彙在資料索引中很罕見，但在檔中是常見的，搜尋分數會更高。 這種計算相關性的方法基礎稱為 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) (或 term frequency-inverse document frequency)。  
+搜尋分數會根據資料和查詢的統計屬性來計算。 Azure 認知搜尋會在查詢字串中尋找包含搜尋詞彙的檔（部分或全部，視而定 `searchMode` ），優先列出包含多個搜尋詞彙實例的檔。 如果字詞在資料索引間很少見，但在文件內很常見，搜尋分數會更高。 這種計算相關性的方法基礎稱為[TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)或「詞彙頻率-反向檔頻率」。  
 
  假設沒有任何自訂排序，結果會先依搜尋分數排名，再傳回給呼叫的應用程式。 若未指定 $top，則會傳回具有最高搜尋分數的 50 個項目。  
 
  搜尋分數值可以在整個結果集內重複。 例如，您可以有 10 個項目的分數為 1.2、20 個項目的分數為 1.0，20 個項目的分數為 0.5。 有多個命中具有相同的搜尋分數時，分數相同的項目並未定義順序，因此順序是不穩定的。 若再次執行查詢，您可能會發現項目的位置有所更換。 若有兩個項目的分數完全相同，則無法保證哪個項目先出現。  
 
-## <a name="when-to-use-custom-scoring"></a>使用自訂計分的時機  
+## <a name="when-to-add-scoring-logic"></a>新增評分邏輯的時機 
  當預設排名行為不足以因應您的商業目標時，您應建立一或多個評分設定檔。 例如，您可以決定讓新增的項目具有較高的搜尋相關性。 同樣地，您可以讓某個欄位包含毛利率，或讓其他欄位指出潛在營收。 提高為企業帶來利益的命中率，是決定使用評分設定檔時的重要因素。  
 
  此外也會透過評分設定檔實作以相關性為基礎的排序。 請考量您過去曾經使用、讓您依價格、日期、評等或相關性排序的搜尋結果頁面。 在「Azure 認知搜尋」中，評分設定檔會驅動「相關性」選項。 相關性的定義由您控制，取決於商業目標和您要提供的搜尋經驗類型。  
@@ -163,8 +163,8 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
 |||  
 |-|-|  
-|**權數**|指定將相對權數指派給欄位的名稱值組。 在此[範例](#bkmk_ex)中，albumTitle、內容類型和 artistName 欄位分別為1.5、5和2的提升。 為何內容類型提升的程度遠比其他多？ 如果是對帶有同質性的資料進行搜尋 (如同 `musicstoreindex` 中的 ’genre')，則相對加權可能需要較大的變異數。 例如，在 `musicstoreindex`中，'rock' 不僅以類型的形式出現，也出現在相同措詞的類型說明中。 如果您要讓類型的權數高於類型說明，則類型欄位需要更高的相對權數。|  
-|**函式**|在特定內容需要額外計算時使用。 有效值為 `freshness`、`magnitude`、`distance` 和 `tag`。 每個函數都有對其唯一的參數。<br /><br /> -   `freshness` 應使用於當您想要依項目的新舊程度進行提升時。 此函式僅適用於 `datetime` 欄位 (edm.DataTimeOffset)。 請注意`boostingDuration` ，屬性僅`freshness`適用于函式。<br />-   `magnitude` 應使用於當您想要依數值的高低程度進行提升時。 呼叫此函數的案例，包含依毛利率、最高價格、最低價格或下載次數進行提升。 此函數僅可用於雙精度浮點數和整數欄位。<br />     針對 `magnitude` 函式，若您想要反轉高至低的模式 (例如，比高價格項目優先提升低價格的項目)，則可將範圍反轉。 假設價格範圍為 $100 美元到 $1 美元，您會將 `boostingRangeStart` 設定為 100，並將 `boostingRangeEnd` 設定為 1，以在較低的價格項目提升。<br />-   `distance` 應使用於當您想要依鄰近性或地理位置進行提升時。 此函數僅適用於 `Edm.GeographyPoint` 欄位。<br />-   `tag` 。 此函數僅適用於 `Edm.String` 和 `Collection(Edm.String)` 欄位。<br /><br /> **使用函式的規則**<br /><br /> 函式類型 (`freshness`、`magnitude`、`distance`)、`tag` 必須是小寫。<br /><br /> 函數不可包含 null 或空值。 明確而言，如果您包含欄位名稱，則必須加以設定。<br /><br /> 函數只能套用至可篩選的欄位。 如需可篩選欄位的詳細資訊，請參閱[Create Index &#40;Azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) 。<br /><br /> 函數只能套用至索引的欄位集合中定義的欄位。|  
+|**負荷**|指定將相對權數指派給欄位的名稱值組。 在此[範例](#bkmk_ex)中，albumTitle、內容類型和 artistName 欄位分別為1.5、5和2的提升。 為何內容類型提升的程度遠比其他多？ 如果是對帶有同質性的資料進行搜尋 (如同 `musicstoreindex` 中的 ’genre')，則相對加權可能需要較大的變異數。 例如，在 `musicstoreindex`中，'rock' 不僅以類型的形式出現，也出現在相同措詞的類型說明中。 如果您要讓類型的權數高於類型說明，則類型欄位需要更高的相對權數。|  
+|**函式**|在特定內容需要額外計算時使用。 有效值為 `freshness`、`magnitude``distance` 及 `tag`。 每個函數都有對其唯一的參數。<br /><br /> -   `freshness` 應使用於當您想要依項目的新舊程度進行提升時。 此函式僅適用於 `datetime` 欄位 (edm.DataTimeOffset)。 請注意，屬性僅適用于函式 `boostingDuration` `freshness` 。<br />-   `magnitude` 應使用於當您想要依數值的高低程度進行提升時。 呼叫此函數的案例，包含依毛利率、最高價格、最低價格或下載次數進行提升。 此函數僅可用於雙精度浮點數和整數欄位。<br />     針對 `magnitude` 函式，若您想要反轉高至低的模式 (例如，比高價格項目優先提升低價格的項目)，則可將範圍反轉。 假設價格範圍為 $100 美元到 $1 美元，您會將 `boostingRangeStart` 設定為 100，並將 `boostingRangeEnd` 設定為 1，以在較低的價格項目提升。<br />-   `distance` 應使用於當您想要依鄰近性或地理位置進行提升時。 此函數僅適用於 `Edm.GeographyPoint` 欄位。<br />-   `tag` 。 此函數僅適用於 `Edm.String` 和 `Collection(Edm.String)` 欄位。<br /><br /> **使用函式的規則**<br /><br /> 函式類型 (`freshness`、`magnitude`、`distance`)、`tag` 必須是小寫。<br /><br /> 函數不可包含 null 或空值。 明確而言，如果您包含欄位名稱，則必須加以設定。<br /><br /> 函數只能套用至可篩選的欄位。 如需可篩選欄位的詳細資訊，請參閱[Create Index &#40;Azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) 。<br /><br /> 函數只能套用至索引的欄位集合中定義的欄位。|  
 
  索引定義之後，請上傳索引結構描述 (接著上傳文件)，以建置索引。 如需這些作業的指示，請參閱[建立索引 &#40;Azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)以及[新增、更新或刪除檔 &#40;azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 。 索引建置後，您應會有可運作的評分設定檔可處理您的搜尋資料。  
 

@@ -9,21 +9,21 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdafb4288bf818928aba43d09f15d4dd75092b24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564245"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>更換 StorSimple 裝置上的 EBOD 控制器
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程說明如何更換 Microsoft Azure StorSimple 裝置上故障的 EBOD 控制器模組。 若要更換 EBOD 控制器模組，您必須：
 
 * 取下故障的 EBOD 控制器
@@ -35,14 +35,14 @@ ms.locfileid: "79254881"
 * EBOD 控制器是可熱交換，而且可以取下或更換。 請勿取下故障的模組，除非您有更換模組。 當起始更換程序時，您必須在 10 分鐘內完成。
 
 > [!IMPORTANT]
-> 在嘗試取下或更換任何 StorSimple 元件之前，請確定先閱讀[安全圖示慣例](storsimple-safety.md#safety-icon-conventions)和其他[安全性預防措施](storsimple-safety.md)。
+> 在嘗試取下或更換任何 StorSimple 元件之前，請確定先閱讀[安全圖示慣例](storsimple-8000-safety.md#safety-icon-conventions)和其他[安全性預防措施](storsimple-8000-safety.md)。
 
 ## <a name="remove-an-ebod-controller"></a>取下 EBOD 控制器
 在取下 StorSimple 裝置中故障的 EBOD 控制器模組之前，請確定另一個 EBOD 控制器模組作用中且執行中。 下列程序和資料表說明如何取下 EBOD 控制器模組。
 
 #### <a name="to-remove-an-ebod-module"></a>若要取下 EBOD 模組
 1. 開啟 Azure 入口網站。
-2. 移至您的裝置，並流覽至 [**設定** > ] [**硬體健全狀況**]，並確認作用中 EBOD 控制器模組的 led 狀態為綠色，而故障的 EBOD 控制器模組的 led 為紅色。
+2. 移至您的裝置，並流覽至 [**設定**]  >  [**硬體健全狀況**]，並確認作用中 EBOD 控制器模組的 led 狀態為綠色，而故障的 EBOD 控制器模組的 led 為紅色。
 3. 在裝置背面找出故障的 EBOD 控制器模組。
 4. 先取下將 EBOD 控制器模組連接到控制器的纜線，再從系統取出 EBOD 模組。
 5. 記下已連接至控制器之 EBOD 控制器模組的確切 SAS 連接埠。 在更換 EBOD 模組之後，您必須將系統還原至這個組態。

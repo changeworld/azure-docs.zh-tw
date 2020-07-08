@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78899f44ba6610f17d19b025f61d968a629c8ad6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133137"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565878"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中樞術語詞彙
 
@@ -94,7 +94,7 @@ Azure IoT 中樞中的自動裝置管理，可將管理大群大型裝置的許�
 
 意指從 IoT 中樞傳送到連線裝置的訊息。 這些訊息通常是指示裝置採取行動的命令。 如需詳細資訊，請參閱[使用 IoT 中樞傳送及接收訊息](iot-hub-devguide-messaging.md)。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 在[自動裝置設定](iot-hub-auto-device-config.md)的內容中，IoT 中樞內的設定會為一組裝置對應項定義所需的設定，並提供一組計量來報告狀態與進度。
 
@@ -222,7 +222,7 @@ IoT 中樞是一項完全受控的 Azure 服務，可在數百萬個裝置和一
 
 ## <a name="iot-hub-query-language"></a>IoT 中樞查詢語言
 
-[IoT 中樞查詢語言](iot-hub-devguide-query-language.md)是一種類似 SQL 的語言，可讓您查詢 [](#job) 和裝置對應項。
+[IoT 中樞查詢語言](iot-hub-devguide-query-language.md)是一種類似 SQL 的語言，可讓您查詢[作業](#job)和裝置 twins。
 
 ## <a name="iot-hub-resource-rest-api"></a>IoT 中樞資源 REST API
 
@@ -240,7 +240,7 @@ Azure IoT 解決方案加速器將多個 Azure 服務封裝在一起成為解決
 
 您的解決方案後端可以使用[作業](iot-hub-devguide-jobs.md)來排程和追蹤已向 IoT 中樞註冊的一組裝置上的活動。 活動包括更新裝置對應項[所需屬性](#desired-properties)、更新裝置對應項[標記](#tags)，以及叫用[直接方法](#direct-method)。 [IoT 中樞](#iot-hub)也可使用作業從[身分識別登錄](#identity-registry)[匯入和匯出](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)資料。
 
-## <a name="modules"></a>模組
+## <a name="modules"></a>單元
 
 在裝置端，IoT 中樞裝置 SDK 可讓您建立會個別向 IoT 中樞建立獨立連線的[模組](iot-hub-devguide-module-twins.md)。 這項功能可讓您針對裝置上的不同元件使用不同的命名空間。
 
@@ -318,7 +318,7 @@ SASL PLAIN 是 AMQP 通訊協定用來傳輸安全性權杖的通訊協定。
 
 為了方便起見，許多 IoT 中樞教學課程都使用模擬裝置，讓您在本機電腦上執行範例。 相反地，[實體裝置](#physical-device)是實際的裝置，例如連接到 IoT 中樞的 Raspberry Pi。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 _方案_可意指包含一或多個專案的 Visual Studio 方案。 _方案_也可意指包含裝置、[裝置應用程式](#device-app)、IoT 中樞、其他 Azure 服務和[後端應用程式](#back-end-app)等元素的 IoT 方案。
 
 ## <a name="subscription"></a>訂用帳戶
@@ -343,7 +343,7 @@ Azure 訂用帳戶是發生帳單的地方。 您建立的每個 Azure 資源，
 
 ## <a name="twin-queries"></a>對應項查詢
 
-[裝置與模組對應項查詢](iot-hub-devguide-query-language.md)使用類似 SQL 的 IoT 中樞查詢語言，從裝置對應項或模組對應項擷取資訊。 您可以使用相同的 IoT 中樞查詢語言，來對在 IoT 中樞執行的 [](#job)擷取相關資訊。
+[裝置與模組對應項查詢](iot-hub-devguide-query-language.md)使用類似 SQL 的 IoT 中樞查詢語言，從裝置對應項或模組對應項擷取資訊。 您可以使用相同的 IoT 中樞查詢語言，來抓取在 IoT 中樞內執行之[作業](#job)的相關資訊。
 
 ## <a name="twin-synchronization"></a>對應項同步處理
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: b7489c49b7469feacfd5b982615419741d286998
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/11/2020
+ms.openlocfilehash: a4faab9ac6d5e1c39c1120e09dae792b95892d60
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849700"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564413"
 ---
 # <a name="release-notes"></a>版本資訊
 
@@ -23,61 +23,64 @@ ms.locfileid: "83849700"
 
 Azure HDInsight 是最受企業客戶歡迎的其中一項服務，可供 Azure 上的開放原始碼分析使用。
 
-## <a name="release-date-01092020"></a>發行日期：2020/1/09
+## <a name="release-date-06112020"></a>發行日期：06/11/2020
 
-此發行適用於 HDInsight 3.6 和 4.0。 在數天內，所有區域都可以使用 HDInsight 發行版本。 此處的發行日期為第一個區域發行日期。 如果您沒有看到下列變更，請稍作等待，幾天後將在您的區域發行。
-
-> [!IMPORTANT]  
-> Linux 是唯一使用於 HDInsight 3.4 版或更新版本的作業系統。 如需詳細資訊，請參閱 [HDInsight 版本控制文件](hdinsight-component-versioning.md)。
+此發行適用於 HDInsight 3.6 和 4.0。 在數天內，所有區域都可以使用 HDInsight 發行版本。 此處的發行日期為第一個區域發行日期。 如果您沒有看到下列變更，請在數天內等待發行在您的區域中上線。
 
 ## <a name="new-features"></a>新功能
-### <a name="tls-12-enforcement"></a>TLS 1.2 強制執行
-傳輸層安全性 (TLS) 和安全通訊端層 (SSL) 是密碼編譯通訊協定，可透過電腦網路提供通訊安全性。 進一步了解 [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)。 HDInsight 在公用 HTTPS 端點上使用 TLS 1.2，但仍支援 TLS 1.1 以提供回溯相容性。 
-
-在此發行版本中，客戶只能對所有透過公用叢集端點的連線加入宣告 TLS 1.2。 為了支援這一點，引進 了新的屬性 **minSupportedTlsVersion**，並可在叢集建立期間指定。 如未設定此屬性，叢集仍然支援 TLS 1.0、1.1 和 1.2，如同目前的行為。 客戶可以將此屬性的值設定為 "1.2"，這表示叢集僅支援 TLS 1.2 和更新版本。 如需詳細資訊，請參閱[傳輸層安全性](./transport-layer-security.md)。
-
-### <a name="bring-your-own-key-for-disk-encryption"></a>攜帶您自己的金鑰進行磁碟加密
-HDInsight 中的所有受控磁碟都會使用 Azure 儲存體服務加密 (SSE) 來加以保護。 根據預設，這些磁碟上的資料會使用 Microsoft 所管理的金鑰來加密。 從這個發行版本開始，您可以攜帶您自己的金鑰 (BYOK) 進行磁碟加密，並使用 Azure Key Vault 管理它。 BYOK 加密是單一步驟的設定，可在叢集建立期間免費進行。 只要使用 Azure Key Vault 將 HDInsight 註冊為受控識別，並在建立叢集時新增加密金鑰即可。 如需詳細資訊，請參閱[客戶管理的金鑰磁碟加密](https://docs.microsoft.com/azure/hdinsight/disk-encryption)。
-
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>移至 Azure 虛擬機器擴展集
+HDInsight 會使用 Azure 虛擬機器立即布建叢集。 在此版本中，新建立的 HDInsight 叢集會開始使用 Azure 虛擬機器擴展集。 變更會逐步推出。 您預期不會有重大變更。 深入瞭解[Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+ 
+### <a name="reboot-vms-in-hdinsight-cluster"></a>重新開機 HDInsight 叢集中的 Vm
+在此版本中，我們支援重新開機 HDInsight 叢集中的 Vm，以重新開機沒有回應的節點。 目前您只能透過 API 來執行此動作，PowerShell 和 CLI 支援也是如此。 如需有關 API 的詳細資訊，請參閱[此](https://github.com/Azure/azure-rest-api-specs/codeowners/master/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2018-06-01-preview/virtualMachines.json)檔。
+ 
 ## <a name="deprecation"></a>淘汰
-此發行版本沒有淘汰任何功能。 若要為近期將發生的淘汰做準備，請參閱[即將推出的變更](#upcoming-changes)。
-
-## <a name="behavior-changes"></a>行為變更
-此發行版本沒有任何行為變更。 若要為近期將發生的變更做準備，請參閱[即將推出的變更](#upcoming-changes)。
-
-## <a name="upcoming-changes"></a>即將推出的變更
-即將發行的版本中將會發生下列變更。 
-
 ### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>淘汰 HDInsight 3.6 Spark 叢集中的 Spark 2.1 和 2.2
-自 2020 年 7 月 1 日開始，客戶將無法在 HDInsight 3.6 上使用 Spark 2.1 和 2.2 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 3.6 上移至 Spark 2.3，以避免潛在的系統/支援中斷。
-
+從 1 2020 年7月開始，客戶無法在 HDInsight 3.6 上使用 Spark 2.1 和2.2 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 3.6 上移至 Spark 2.3，以避免潛在的系統/支援中斷。
+ 
 ### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>淘汰 HDInsight 4.0 Spark 叢集中的 Spark 2.3
-自 2020 年 7 月 1 日開始，客戶將無法在 HDInsight 4.0 上使用 Spark 2.3 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Spark 2.4，以避免潛在的系統/支援中斷。
-
+從 1 2020 年7月開始，客戶將無法使用 Spark 2.3 on HDInsight 4.0 來建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Spark 2.4，以避免潛在的系統/支援中斷。
+ 
 ### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>淘汰 HDInsight 4.0 Kafka 叢集中的 Kafka 1.1
 自 2020 年 7 月 1 日開始，客戶將無法在 HDInsight 4.0 上使用 Kafka 1.1 建立新的 Kafka 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Kafka 2.1，以避免潛在的系統/支援中斷。
-
-### <a name="hbase-20-to-216"></a>HBase 2.0 升級至 2.1.6
-在即將推出的 HDInsight 4.0 發行版本中，HBase 版本將從 2.0 版升級至2.1.6。
-
-### <a name="spark-240-to-244"></a>Spark 2.4.0 升級至 2.4.4
-在即將推出的 HDInsight 4.0 發行版本中，Spark 版本將從 2.4.0 版升級至2.4.4。
-
-### <a name="kafka-210-to-211"></a>Kafka 2.1.0 升級至 2.1.1
-在即將推出的 HDInsight 4.0 發行版本中，Kafka 版本將從 2.1.0 版升級至2.1.1。
-
+ 
+## <a name="behavior-changes"></a>行為變更
+### <a name="esp-spark-cluster-head-node-size-change"></a>ESP Spark 叢集前端節點大小變更 
+ESP Spark 叢集所允許的最小前端節點大小會變更為 Standard_D13_V2。 具有低核心和記憶體作為前端節點的 Vm，可能會因為 CPU 和記憶體容量相對較低而造成 ESP 叢集問題。 從版本開始，請使用高於 Standard_D13_V2 的 Sku，並 Standard_E16_V3 作為 ESP Spark 叢集的前端節點。
+ 
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>前端節點必須至少有 4 核心 VM 
 前端節點必須至少有 4 核心 VM，才能確保 HDInsight 叢集的高可用性和可靠性。 自 2020 年 4 月 6 日起，客戶只能選擇 4 核心或以上的 VM 作為新 HDInsight 叢集的前端節點。 現有的叢集將會繼續如預期般執行。 
+ 
+### <a name="cluster-worker-node-provisioning-change"></a>叢集背景工作節點布建變更
+當80% 的背景工作節點準備就緒時，叢集會進入**操作**階段。 在這個階段，客戶可以執行所有的資料平面作業，例如執行腳本和工作。 但客戶無法執行任何控制平面作業，例如相應增加/減少。 只支援刪除。
+ 
+在**操作**階段之後，叢集會等待剩餘20% 背景工作角色節點有另一個60分鐘的時間。 在此60分鐘結束時，叢集會移至**執行中的階段，** 即使所有背景工作節點仍無法使用。 一旦叢集進入**執行階段之後**，您就可以像平常一樣使用它。 這兩個控制計畫作業（例如相應增加/減少）和通話方案作業（例如執行腳本和工作）都已被接受。 如果部分要求的背景工作節點無法使用，叢集將會標示為「部分成功」。 系統會針對已成功部署的節點向您收費。 
+ 
+### <a name="create-new-service-principal-through-hdinsight"></a>透過 HDInsight 建立新的服務主體
+先前在建立叢集時，客戶可以建立新的服務主體，以在 Azure 入口網站中存取已連線的 ADLS Gen 1 帳戶。 自 15 2020 年6月起，客戶無法在 HDInsight 建立工作流程中建立新的服務主體，只支援現有的服務主體。 請參閱[使用 Azure Active Directory 建立服務主體和憑證](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
-### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark 叢集節點大小變更 
-在即將推出的發行版本中，ESP Spark 叢集允許的最小節點大小會變更為 Standard_D13_V2。 A 系列 VM 因為 CPU 和記憶體容量相對較低，可能會造成 ESP 叢集問題。 未來將無法再使用 A 系列 VM建立新的 ESP 叢集。
-
-### <a name="moving-to-azure-virtual-machine-scale-sets"></a>移至 Azure 虛擬機器擴展集
-HDInsight 現在會使用 Azure 虛擬機器來佈建叢集。 在即將推出的發行版本中，HDInsight 會改為使用 Azure 虛擬機器擴展集。 請深入了解 Azure 虛擬機器擴展集。
-
+### <a name="time-out-for-script-actions-with-cluster-creation"></a>建立叢集的腳本動作的時間輸出
+HDInsight 支援在建立叢集時執行腳本動作。 在此版本中，所有具有叢集建立的腳本動作都必須在**60 分鐘**內完成，否則就會超時。提交至執行中叢集的腳本動作不會受到影響。 如需詳細資訊，請參閱[此處](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process)。
+ 
+## <a name="upcoming-changes"></a>即將推出的變更
+您不需要留意即將推出的重大變更。
+ 
 ## <a name="bug-fixes"></a>錯誤修正
 HDInsight 會持續改善叢集的可靠性和效能。 
-
+ 
 ## <a name="component-version-change"></a>元件版本變更
-此發行版本沒有任何元件版本變更。 您可以在這裡找到 HDInsight 4.0 和 HDInsight 3.6 的目前元件版本。
+### <a name="hbase-20-to-216"></a>HBase 2.0 升級至 2.1.6
+HBase 版本會從2.0 版升級至2.1.6。
+ 
+### <a name="spark-240-to-244"></a>Spark 2.4.0 升級至 2.4.4
+Spark 版本會從版本2.4.0 升級至2.4.4。
+ 
+### <a name="kafka-210-to-211"></a>Kafka 2.1.0 升級至 2.1.1
+Kafka 版本已從版本2.1.0 升級至2.1.1。
+ 
+您可以在[本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)檔中找到 hdinsight 4.0 ad hdinsight 3.6 的目前元件版本
 
+## <a name="known-issues"></a>已知問題
+
+### <a name="hive-warehouse-connector-issue"></a>Hive 倉儲連接器問題
+此版本中的 Hive 倉儲連接器發生問題。 下一版將會包含修正程式。 在此版本之前建立的現有叢集不會受到影響。 盡可能避免 droping 並重新建立叢集。 如果您需要進一步協助，請開啟支援票證。

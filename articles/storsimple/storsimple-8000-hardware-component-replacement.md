@@ -9,29 +9,29 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60321678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564296"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更換 StorSimple 8000 系列裝置上的硬體元件
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 硬體元件更換教學課程將說明 Microsoft Azure StorSimple 8000 系列裝置的硬體元件，以及取下並更換這些元件所需的步驟。 本文說明安全圖示、提供詳細教學課程的重點，並列出可替換的元件。
 
 > [!IMPORTANT]
-> 在嘗試取下或更換任何 StorSimple 元件之前，請確定先閱讀[安全圖示慣例](#safety-icon-conventions)和其他[安全性預防措施](storsimple-safety.md)。
-
+> 在嘗試取下或更換任何 StorSimple 元件之前，請確定先閱讀[安全圖示慣例](#safety-icon-conventions)和其他[安全性預防措施](storsimple-8000-safety.md)。
 
 ### <a name="safety-icon-conventions"></a>安全性圖示慣例
+
 下表說明本教學課程中使用的安全性圖示。 當您瀏覽取下並更換裝置元件的步驟時，請密切注意這些安全性圖示。
 
 | 圖示 | Text | 其他資訊 |
@@ -47,7 +47,8 @@ ms.locfileid: "60321678"
 | ![傾倒危險圖示](./media/storsimple-hardware-component-replacement/TipHazard.png) |**傾倒危險** | |
 
 ### <a name="before-you-begin"></a>開始之前
-讓您自己熟悉有關裝置的安全性資訊，以及本教學課程中使用的安全性圖示。 如需完整資訊，請移至 [安全地安裝和操作您的 StorSimple 裝置](storsimple-safety.md) 。 請務必閱讀 [安全性預防措施](storsimple-safety.md#handling-precautions) ，然後再處理 StorSimple 裝置。
+
+讓您自己熟悉有關裝置的安全性資訊，以及本教學課程中使用的安全性圖示。 如需完整資訊，請移至 [安全地安裝和操作您的 StorSimple 裝置](storsimple-8000-safety.md) 。 請務必閱讀 [安全性預防措施](storsimple-8000-safety.md#handling-precautions) ，然後再處理 StorSimple 裝置。
 
 在嘗試更換元件之前，請考量下列資訊。
 
@@ -61,23 +62,24 @@ ms.locfileid: "60321678"
 當更換模組時， **決不在機箱背面留下空白機架**。 在取下問題組件之前，請取得更換或空白模組。
 
 ## <a name="hardware-component-replacement-procedures"></a>硬體元件更換程序
+
 StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式模組所組成。 8100 具有單一主要機箱，而 8600 是具有主要機箱與 EBOD 機箱的雙重機箱裝置。
 
 下表彙總裝置中的主要硬體元件。 按一下 [更換程序] **** 資料行中的連結，即可移到相關聯的教學課程。
 
-| 元件 | # Present | 外掛程式模組？ | 更換程序 |
+| 單元 | # Present | 外掛程式模組？ | 更換程序 |
 |:--- |:--- |:--- |:--- |
 | 底座 |1 |否 |[更換 StorSimple 裝置上的底座](storsimple-8000-chassis-replacement.md) |
 | 主要控制器 |2 |是 |[更換 StorSimple 裝置上的控制器模組](storsimple-8000-controller-replacement.md) |
 | 764 瓦電源和冷卻模組 (PCM) |2 |是 |[更換 StorSimple 裝置上的電源和冷卻模組](storsimple-8000-power-cooling-module-replacement.md) |
 | 備用電池 |2 |是 |[更換 StorSimple 裝置上的備份電池模組](storsimple-8000-battery-replacement.md) |
-| 磁碟機 |12 |是 |[更換 StorSimple 裝置上的磁碟機](storsimple-8000-disk-drive-replacement.md) |
+| 磁碟機 |12 |Yes |[更換 StorSimple 裝置上的磁碟機](storsimple-8000-disk-drive-replacement.md) |
 
 **表 1** 主要機箱中的硬體元件
 
 主要機箱和 EBOD 機箱在其 I/O 模組中各有不同。 此外，PCM 有具不同的瓦數。 主要機箱中的 PCM 為 764 瓦，而 EBOD 機箱中的 PCM 則為 580 瓦。主要機箱中的 PCM 也包含備用電池模組。
 
-| 元件 | # Present | 外掛程式模組？ | 更換程序 |
+| 單元 | # Present | 外掛程式模組？ | 更換程序 |
 |:--- |:--- |:--- |:--- |
 | 底座 |1 |否 |[更換 StorSimple 裝置上的底座](storsimple-8000-chassis-replacement.md) |
 | EBOD 控制器 |2 |是 |[更換 StorSimple 裝置上的 EBOD 控制器](storsimple-8000-ebod-controller-replacement.md) |
@@ -121,6 +123,7 @@ StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式�
 | 4 |EBOD 控制器 1 |
 
 ## <a name="field-replaceable-units"></a>現場可更換裝置
+
 下列現場可更換裝置 (FRU) 可供您的 StorSimple 裝置使用：
 
 * 底座 (包括整合的操作面板)
@@ -135,5 +138,5 @@ StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式�
 請[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)，以訂購其中任何更換裝置。
 
 ## <a name="next-steps"></a>後續步驟
-請先閱讀所有 [安全資訊](storsimple-safety.md) ，再嘗試更換 StorSimple 硬體元件。
 
+請先閱讀所有 [安全資訊](storsimple-8000-safety.md) ，再嘗試更換 StorSimple 硬體元件。

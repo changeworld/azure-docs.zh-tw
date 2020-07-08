@@ -1,24 +1,21 @@
 ---
-title: 知識存放區中的投影（預覽）
+title: 預測概念
 titleSuffix: Azure Cognitive Search
-description: 儲存 AI 擴充索引管線中的擴充資料，並將其塑造到知識存放區，以供全文檢索搜尋以外的案例使用。 知識存放區目前為公開預覽狀態。
+description: 儲存 AI 擴充索引管線中的擴充資料，並將其塑造到知識存放區，以供全文檢索搜尋以外的案例使用。
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: 22db4f95bacd926208ac7edf3306cd136d81b00e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565185"
 ---
-# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure 認知搜尋中知識存放區的投影
-
-> [!IMPORTANT] 
-> 知識存放區目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供預覽功能。 目前的入口網站支援有限，而且沒有 .NET SDK 支援。
+# <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Azure 認知搜尋中的知識存放區「投影」
 
 Azure 認知搜尋可讓您透過內建的認知技能和自訂技能來擴充內容，做為編制索引的一部分。 擴充會建立先前不存在的新資訊：從影像中解壓縮資訊、偵測情感、關鍵字組，以及從文字中找出實體等等。 擴充也會將結構新增至無差異文字。 所有這些程式都會產生檔，讓全文檢索搜尋更有效率。 在許多情況下，擴充的檔適用于搜尋以外的案例，例如知識發掘。
 
@@ -69,7 +66,7 @@ Azure 認知搜尋可讓您透過內建的認知技能和自訂技能來擴充�
 
 ### <a name="defining-a-table-projection"></a>定義資料表投射
 
-在技能集的`knowledgeStore`元素內定義資料表投影時，請先將擴充樹狀目錄上的節點對應到資料表來源。 此節點通常是您加入至技能清單中，以產生您需要投影到資料表的特定圖形之**塑造技能的**輸出。 您選擇要加入至專案的節點可以切割成多個資料表。 資料表定義是您想要投影的資料表清單。
+在技能集的元素內定義資料表投影時 `knowledgeStore` ，請先將擴充樹狀目錄上的節點對應到資料表來源。 此節點通常是您加入至技能清單中，以產生您需要投影到資料表的特定圖形之**塑造技能的**輸出。 您選擇要加入至專案的節點可以切割成多個資料表。 資料表定義是您想要投影的資料表清單。
 
 每個資料表都需要三個屬性：
 
@@ -157,7 +154,7 @@ Azure 認知搜尋可讓您透過內建的認知技能和自訂技能來擴充�
 
 ## <a name="file-projection"></a>檔案投射
 
-檔案投射類似物件投影，而且只對`normalized_images`集合採取動作。 與物件投射類似，檔案投影會儲存在 blob 容器中，其中資料夾前置詞為檔識別碼的 base64 編碼值。 檔案投射無法與物件投影共用相同的容器，而且必須投射到不同的容器中。
+檔案投射類似物件投影，而且只對集合採取動作 `normalized_images` 。 與物件投射類似，檔案投影會儲存在 blob 容器中，其中資料夾前置詞為檔識別碼的 base64 編碼值。 檔案投射無法與物件投影共用相同的容器，而且必須投射到不同的容器中。
 
 ```json
 {
@@ -212,7 +209,7 @@ Azure 認知搜尋可讓您透過內建的認知技能和自訂技能來擴充�
 > [!div class="nextstepaction"]
 > [在 REST 中建立知識存放區](knowledge-store-create-rest.md)。
 
-如需涵蓋切割、內嵌成形和關聯性等先進預測概念的教學課程，請從[在知識存放區中定義投影](knowledge-store-projections-examples.md)開始
+如需涵蓋配量、內嵌塑形及關聯性等進階投影概念的教學課程，請從[在知識存放區中定義投影](knowledge-store-projections-examples.md)開始
 
 > [!div class="nextstepaction"]
 > [定義知識存放區中的投影](knowledge-store-projections-examples.md)

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 699b5a4e5a7f10c883667ca5030dd971855467f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02a0de7760c660a7cce1bbd9cd36d4bb2a1180e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74112987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565780"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何監視 Azure 認知搜尋索引子的狀態和結果
 
@@ -82,7 +82,7 @@ Azure 認知搜尋提供有關每個索引子的目前和歷程記錄執行狀�
 
 您可以使用[取得索引子狀態命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)來抓取索引子的狀態和執行歷程記錄：
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
     api-key: [Search service admin key]
 
 回應包含整體索引子的狀態、最後 (或進行中) 的索引子叫用，以及最新的索引子叫用歷程記錄。
@@ -180,6 +180,6 @@ static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchServic
 
 如需有關狀態碼和索引子監視資訊的詳細資訊，請參閱 REST API 中的[GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) 。
 
-您可以藉由列舉清單`IndexerExecutionResult.Errors`和`IndexerExecutionResult.Warnings`來抓取檔特定錯誤或警告的詳細資料。
+您可以藉由列舉清單和來抓取檔特定錯誤或警告的詳細資料 `IndexerExecutionResult.Errors` `IndexerExecutionResult.Warnings` 。
 
 如需用來監視索引子之 .NET SDK 類別的詳細資訊，請參閱[IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet)和[IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)。

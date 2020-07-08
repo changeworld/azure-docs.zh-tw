@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a0256470892d634361498f1632027aff562c7761
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a4033088a9152363a91c368109136062cace4ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74871800"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563509"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>陣列函數（Azure Cosmos DB）
 
@@ -21,11 +21,14 @@ ms.locfileid: "74871800"
 ## <a name="functions"></a>函式
 
 下列純量函數會對陣列輸入值執行運算，並傳回數值、布林值或陣列值：
+
+* [ARRAY_CONCAT](sql-query-array-concat.md)
+* [ARRAY_CONTAINS](sql-query-array-contains.md)
+* [ARRAY_LENGTH](sql-query-array-length.md)
+* [ARRAY_SLICE](sql-query-array-slice.md)
+
+
   
-||||  
-|-|-|-|  
-|[ARRAY_CONCAT](sql-query-array-concat.md)|[ARRAY_CONTAINS](sql-query-array-contains.md)|[ARRAY_LENGTH](sql-query-array-length.md)|  
-|[ARRAY_SLICE](sql-query-array-slice.md)|||  
   
 
 ## <a name="next-steps"></a>後續步驟

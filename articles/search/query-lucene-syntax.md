@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 06/23/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f4c3330b23b8b724cdbf5d7e09eec8a8dd5b8cfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bf9dc0e69707eaed8c2a844f6ed3169e65a5342
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81258978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564090"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 Lucene 查詢語法
 
-您可以根據特殊化查詢格式的豐富[Lucene 查詢](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)剖析器語法，針對 Azure 認知搜尋撰寫查詢：萬用字元、模糊搜尋、鄰近搜尋、正則運算式是一些範例。 大部分的 Lucene 查詢剖析器語法會[在 Azure 認知搜尋中原封不動地執行](search-lucene-query-architecture.md)，但*範圍搜尋*例外，這項功能是透過`$filter`運算式在 Azure 認知搜尋中所建立。 
+您可以根據特殊化查詢格式的豐富[Lucene 查詢](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)剖析器語法，針對 Azure 認知搜尋撰寫查詢：萬用字元、模糊搜尋、鄰近搜尋、正則運算式是一些範例。 大部分的 Lucene 查詢剖析器語法會[在 Azure 認知搜尋中原封不動地執行](search-lucene-query-architecture.md)，但*範圍搜尋*例外，這項功能是透過運算式在 Azure 認知搜尋中所建立 `$filter` 。 
 
 > [!NOTE]
 > 完整 Lucene 語法會用於在[搜尋檔](https://docs.microsoft.com/rest/api/searchservice/search-documents)API 的**搜尋**參數中傳遞的查詢運算式，而不會與用於該 api 之[$filter](search-filters.md)參數的[OData 語法](query-odata-filter-orderby-syntax.md)混淆。 這些不同的語法有自己的規則，可用於建立查詢、逸出字元串等等。
@@ -46,13 +46,13 @@ ms.locfileid: "81258978"
 `searchMode=all` 參數在此範例中具有相關性。 每當在查詢上使用運算子時，您通常都應設定 `searchMode=all`，以確保*所有*的準則均相符。
 
 ```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2019-05-06&querytype=full
+GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2020-06-30&querytype=full
 ```
 
  或者，可以使用 POST：  
 
 ```
-POST /indexes/hotels/docs/search?api-version=2019-05-06
+POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
   "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",
@@ -81,7 +81,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 ### <a name="escaping-special-characters"></a>逸出特殊字元
 
-若要使用任何搜尋運算子做為搜尋文字的一部分，請在字元前面加上一個反斜線（`\`）來將它取消。 例如，針對上`https://`的萬用字元搜尋，其中`://`是查詢字串的一部分，您可以指定。 `search=https\:\/\/*` 同樣地，經過轉義的電話號碼模式可能如下`\+1 \(800\) 642\-7676`所示。
+若要使用任何搜尋運算子做為搜尋文字的一部分，請在字元前面加上一個反斜線（）來將它取消 `\` 。 例如，針對上的萬用字元搜尋 `https://` ，其中 `://` 是查詢字串的一部分，您可以指定 `search=https\:\/\/*` 。 同樣地，經過轉義的電話號碼模式可能如下所示 `\+1 \(800\) 642\-7676` 。
 
 需要進行轉義的特殊字元包括下列各項：  
 `+ - & | ! ( ) { } [ ] ^ " ~ * ? : \ /`  
@@ -119,19 +119,19 @@ AND 運算子是 & 符號或加號。 例如：`wifi && luxury` 會搜尋同時�
 
 ### <a name="not-operator-not--or--"></a>NOT 運算子 `NOT`、`!` 或 `-`
 
-NOT 運算子是負號。 例如， `wifi –luxury`會搜尋具有和/或不具有`wifi` `luxury`該詞彙的檔。
+NOT 運算子是負號。 例如， `wifi –luxury` 會搜尋具有 `wifi` 和/或不具有該詞彙的檔 `luxury` 。
 
-查詢要求上的**searchMode**參數會控制是否要在查詢中使用 NOT 運算子來以 and 連結或 ORed 詞彙（假設其他詞彙沒有`+`或`|`運算子）。 有效值包括 `any` 或 `all`。
+查詢要求上的**searchMode**參數會控制是否要在查詢中使用 NOT 運算子來以 and 連結或 ORed 詞彙（假設 `+` `|` 其他詞彙沒有或運算子）。 有效值包括 `any` 或 `all`。
 
-`searchMode=any`藉由包含更多結果來增加查詢的召回率， `-`且依預設會將其視為「或不」。 例如，`wifi -luxury` 會比對出包含 `wifi` 一詞的文件，或不含 `luxury` 一詞的文件。
+`searchMode=any`藉由包含更多結果來增加查詢的召回率，且依預設會將其視為「 `-` 或不」。 例如，`wifi -luxury` 會比對出包含 `wifi` 一詞的文件，或不含 `luxury` 一詞的文件。
 
-`searchMode=all`藉由包含較少的結果來增加查詢的精確度，而且根據預設，會轉譯為 "AND NOT"。 例如，`wifi -luxury` 會比對出包含 `wifi` 一詞且不含 "luxury" 一詞的文件。 就 `-` 運算子而言，這算是較直覺化的行為。 因此， `searchMode=any`如果您想要`searchMode=all`優化搜尋精確度而不是回收，而您的使用者經常在搜尋中使用`-` *運算子，您*應該考慮使用而不是。
+`searchMode=all`藉由包含較少的結果來增加查詢的精確度，而且根據預設，會轉譯為 "AND NOT"。 例如，`wifi -luxury` 會比對出包含 `wifi` 一詞且不含 "luxury" 一詞的文件。 就 `-` 運算子而言，這算是較直覺化的行為。 因此， `searchMode=all` `searchMode=any` 如果您想要優化搜尋精確度而不是回收，*而*您的使用者經常 `-` 在搜尋中使用運算子，您應該考慮使用而不是。
 
 在決定**searchMode**設定時，請考慮各種應用程式中查詢的使用者互動模式。 搜尋資訊的使用者較可能在查詢中包含運算子，而不是具有更多內建導覽結構的電子商務網站。
 
 ##  <a name="fielded-search"></a><a name="bkmk_fields"></a>回復搜尋
 
-您可以使用`fieldName:searchExpression`語法定義回復搜尋作業，其中搜尋運算式可以是單一單字或片語，或是以括弧括住的更複雜運算式（選擇性地使用布林運算子）。 部分範例如下：  
+您可以使用語法定義回復搜尋作業 `fieldName:searchExpression` ，其中搜尋運算式可以是單一單字或片語，或是以括弧括住的更複雜運算式（選擇性地使用布林運算子）。 部分範例如下：  
 
 - genre:jazz NOT history  
 
@@ -142,7 +142,7 @@ NOT 運算子是負號。 例如， `wifi –luxury`會搜尋具有和/或不具
 `fieldName:searchExpression` 中指定的欄位必須是 `searchable` 欄位。  如需欄位定義中索引屬性使用方式的詳細資訊，請參閱[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index)。  
 
 > [!NOTE]
-> 使用回復搜尋運算式時，您不需要使用`searchFields`參數，因為每個回復搜尋運算式都已明確指定功能變數名稱。 不過，如果您想要執行`searchFields`查詢，其中某些部分的範圍設定為特定欄位，則您仍然可以使用參數，其餘的可能會套用至數個欄位。 例如， `search=genre:jazz NOT history&searchFields=description`查詢只符合`jazz` `genre`欄位，而與`NOT history` `description`欄位相符。 中`fieldName:searchExpression`提供的功能變數名稱一律優先于`searchFields`參數，這就是為什麼在此範例中，我們不需要在`genre` `searchFields`參數中包含。
+> 使用回復搜尋運算式時，您不需要使用 `searchFields` 參數，因為每個回復搜尋運算式都已明確指定功能變數名稱。 不過， `searchFields` 如果您想要執行查詢，其中某些部分的範圍設定為特定欄位，則您仍然可以使用參數，其餘的可能會套用至數個欄位。 例如，查詢 `search=genre:jazz NOT history&searchFields=description` `jazz` 只符合 `genre` 欄位，而 `NOT history` 與 `description` 欄位相符。 中提供的功能變數名稱 `fieldName:searchExpression` 一律優先于 `searchFields` 參數，這就是為什麼在此範例中，我們不需要 `genre` 在參數中包含 `searchFields` 。
 
 ##  <a name="fuzzy-search"></a><a name="bkmk_fuzzy"></a>模糊搜尋
 
@@ -166,28 +166,30 @@ NOT 運算子是負號。 例如， `wifi –luxury`會搜尋具有和/或不具
  若要提升字詞，請使用插入號 "^"，並在搜尋字詞的結尾加上提升係數 (數字)。 您也可以提升片語。 提升係數越高，該詞彙相對於其他搜尋詞彙的關聯性也越高。 根據預設，提升係數為 1。 雖然提升係數必須是正數，但是它可能會小於 1 (例如，0.20)。  
 
 ##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a>規則運算式搜尋  
- 規則運算式搜尋會根據正斜線 "/" 之間的內容尋找相符項目，如 [RegExp 類別](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所記錄。  
+ 正則運算式搜尋會根據在 Apache Lucene 下有效的模式尋找相符項，如[RegExp 類別](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所述。 在 Azure 認知搜尋中，正則運算式會以正斜線括住 `/` 。
 
  例如，若要尋找包含 "motel" 或 "hotel" 的文件，請指定 `/[mh]otel/`。 規則運算式搜尋會比對單字。
 
-有些工具和語言會有額外的換用字元需求。 若為 JSON，包含正斜線的字串會以反斜線進行轉義： "microsoft.com/azure/" 會`search=/.*microsoft.com\/azure\/.*/`變成`search=/.* <string-placeholder>.*/`設定正則運算式的位置， `microsoft.com\/azure\/`而則是具有反斜線正斜線的字串。
+有些工具和語言會有額外的換用字元需求。 若為 JSON，包含正斜線的字串會以反斜線進行轉義： "microsoft.com/azure/" 會 `search=/.*microsoft.com\/azure\/.*/` 變成 `search=/.* <string-placeholder>.*/` 設定正則運算式的位置，而 `microsoft.com\/azure\/` 則是具有反斜線正斜線的字串。
 
-##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>萬用字元搜尋  
+##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>萬用字元搜尋
 
-您可以使用一般辨識語法進行多個 (*) 或單一 (?) 字元的萬用字元搜尋。 請注意，Lucene 查詢剖析器支援搭配使用這些符號與單一詞彙，而不是片語。
+您可以針對多個（ `*` ）或單一（ `?` ）字元的萬用字元搜尋使用一般辨識的語法。 例如，的查詢運算式會傳回「英數位元」 `search=alpha*` 或「字母順序」。 請注意，Lucene 查詢剖析器支援搭配使用這些符號與單一詞彙，而不是片語。
 
-前置詞搜尋也會使用星號`*`（）字元。 例如，的查詢運算式`search=note*`會傳回 "筆記本" 或 "notepad"。 首碼搜尋不需要完整的 Lucene 語法。 簡單的語法支援此案例。
+Full Lucene 語法支援前置詞、中置和尾碼比對。 不過，如果您只需要前置詞比對，則可以使用簡單語法（兩者都支援前置詞比對）。
 
-尾碼搜尋（在`*`字串`?`的 where 或之前）需要完整的 Lucene 語法和正則運算式（您無法使用 * 或？ 符號做為搜尋的第一個字元）。 假設「英數位元」一詞，（`search=/.*numeric.*/`）的查詢運算式會尋找相符的。
+尾碼比對、 `*` `?` 字串位置（如中所示 `search=/.*numeric./` ）或中綴比對需要完整 Lucene 語法，以及正則運算式正斜線 `/` 分隔符號。 您無法使用 * 或 ? 符號當做詞彙的第一個字元，或在一個詞彙內，但不含 `/` 。 
 
 > [!NOTE]  
+> 做為規則，模式比對很慢，因此您可能會想要探索替代方法，例如，邊緣 n-語法 token 化，它會針對詞彙中的字元序列建立權杖。 索引會較大，但查詢的執行速度可能會比較快，這取決於模式結構和您要編制索引的字串長度。
+>
 > 在查詢剖析期間，會將編寫為前置詞、尾碼、萬用字元或正則運算式的查詢，依原樣傳遞至查詢樹狀結構，略過[詞法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)。 只有在索引包含以您的查詢指定的格式表示的字串時，才會找到相符專案。 在大部分情況下，您在編制索引期間會需要替代的分析器，以保留字元串完整性，使部分詞彙和模式比對成功。 如需詳細資訊，請參閱[Azure 認知搜尋查詢中的部分詞彙搜尋](search-query-partial-matching.md)。
 
 ##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a>萬用字元和 regex 查詢的評分
 
 Azure 認知搜尋會使用以頻率為基礎的評分（[TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)）來查詢文字。 不過，針對字詞範圍可能很廣泛的萬用字元和 regex 查詢，則會忽略頻率因素，以防止罕見字詞的相符項目誤獲較高的排名。 系統對於萬用字元和 regex 搜尋的所有相符項目，會同等視之。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [簡單搜尋的查詢範例](search-query-simple-examples.md)
 + [完整 Lucene 搜尋的查詢範例](search-query-lucene-examples.md)

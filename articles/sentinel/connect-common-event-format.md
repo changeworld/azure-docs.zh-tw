@@ -1,6 +1,6 @@
 ---
 title: 將 CEF 資料連線至 Azure Sentinel 預覽 |Microsoft Docs
-description: 瞭解如何將 CEF 資料連線到 Azure Sentinel。
+description: 連接外部解決方案，以使用 Linux 電腦作為 proxy，將一般事件格式（CEF）訊息傳送至 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 8314614616c6b8969832d52fc684d47ba1bf0fe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34091e0c9f18cb87a240054f534f474710eb421d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563935"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用一般事件格式來連接您的外部解決方案
 
@@ -49,7 +49,7 @@ ms.locfileid: "77588343"
 若要在安全性解決方案和 Syslog 電腦之間使用 TLS 通訊，您必須將 Syslog daemon （rsyslog 或 Syslog）設定為在 TLS 中進行通訊：[使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，[並使用 tls-Syslog-ng 加密記錄檔訊息](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
 
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 請確定您用來做為 proxy 的 Linux 機器正在執行下列其中一個作業系統：
 
 - 64 位元

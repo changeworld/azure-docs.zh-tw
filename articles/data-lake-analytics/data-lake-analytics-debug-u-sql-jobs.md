@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 72239fc1679d2ebbfd9c9b5be6b79b58efb760cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 292ceccd5a3687488c0e8b03f4a8cd351d611dce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71315805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564898"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>對 U-SQL 失敗作業的使用者定義 C# 程式碼進行偵錯
 
@@ -80,7 +80,7 @@ U-SQL 提供使用 C# 的擴充性模型。 在 U-SQL 指令碼中，可以輕�
 
 2. 取得 **FailedVertexDebugHost** 專案的專案資料夾路徑。 
 
-3. 以滑鼠右鍵按一下新增的組件原始程式碼專案 > [屬性]****，選取左側的 [建置]**** 索引標籤，並將結尾為 \bin\debug 的複製路徑貼上為 [輸出] > [輸出路徑]****。 最終的輸出路徑類似`<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`。
+3. 以滑鼠右鍵按一下新增的組件原始程式碼專案 > [屬性]****，選取左側的 [建置]**** 索引標籤，並將結尾為 \bin\debug 的複製路徑貼上為 [輸出] > [輸出路徑]****。 最終的輸出路徑類似 `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` 。
 
     ![Azure Data Lake Analytics U-SQL 偵錯設定 pdb 路徑](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
@@ -93,7 +93,7 @@ U-SQL 提供使用 C# 的擴充性模型。 在 U-SQL 指令碼中，可以輕�
 
 偵錯之後，如果專案成功完成，[輸出] 視窗就會顯示下列訊息：
 
-    The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
+`The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).`
 
 ![Azure Data Lake Analytics U-SQL 偵錯成功](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
 

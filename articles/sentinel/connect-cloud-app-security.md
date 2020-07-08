@@ -1,6 +1,6 @@
 ---
 title: 將 Cloud App Security 資料連線到 Azure Sentinel |Microsoft Docs
-description: 瞭解如何將 Cloud App Security 資料連線到 Azure Sentinel。
+description: 瞭解如何使用 Microsoft Cloud App Security （MCAS）連接器將警示和 Cloud Discovery 記錄從 MCAS 串流至 Azure Sentinel。 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,20 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 266d97e834247088d40837cbec1436e00d0f4be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8439c8f7aa4e75abd727d2ce2e80d98e6fce5411
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563955"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>從 Microsoft Cloud App Security 連接資料 
 
-
-
 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) （MCAS）連接器可讓您將警示和[CLOUD DISCOVERY 記錄](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)從 MCAS 串流至 Azure Sentinel。 這可讓您深入瞭解您的雲端應用程式、取得精密的分析來識別和對抗網路威脅，以及控制資料的傳輸方式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您的使用者必須具有工作區的 [讀取] 和 [寫入] 許可權。
 - 您的使用者必須具有工作區租使用者的全域管理員或安全性系統管理員許可權。
@@ -50,7 +48,9 @@ ms.locfileid: "80422150"
 
 1. 按一下 [套用變更]****。
 
-1. 若要在 Log Analytics 中使用適用于 Cloud App Security 警示的相關`SecurityAlert`架構，請在查詢視窗中輸入。 針對 [Cloud Discovery 記錄] 架構， `McasShadowItReporting`輸入。
+1. 您可以選取是否要讓警示 Azure 資訊安全中心在 Azure Sentinel 中自動產生事件。 在 [**建立事件**] 底下，選取 [**已啟用**] 以開啟自動從警示建立事件的預設分析規則。 接著，您可以在 [作用中**規則**] 索引標籤中的 [**分析**] 底下編輯此規則。
+
+1. 若要在 Log Analytics 中使用適用于 Cloud App Security 警示的相關架構，請 `SecurityAlert` 在查詢視窗中輸入。 針對 [Cloud Discovery 記錄] 架構，輸入 `McasShadowItReporting` 。
 
 > [!NOTE]
 > Cloud Discovery 藉由匯總雲端應用程式的基礎使用者連線資料，協助偵測及識別趨勢。
