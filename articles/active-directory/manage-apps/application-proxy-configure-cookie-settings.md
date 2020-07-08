@@ -2,22 +2,21 @@
 title: 應用程式 Proxy Cookie 設定 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) 有可透過「應用程式 Proxy」存取內部部署應用程式的存取和工作階段 Cookie。 在本文中，您將了解如何使用及設定 Cookie 設定。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcedb24a0efdbabaaef150fc3d5aff07d210ce23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481359"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764888"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Azure Active Directory 中用於存取內部部署網站的 Cookie 設定
 
@@ -49,11 +48,11 @@ Azure Active Directory (Azure AD) 有可透過「應用程式 Proxy」存取內�
 使用 Azure 入口網站來設定 Cookie 設定：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
-2. 流覽至**Azure Active Directory** > **企業應用** >程式] [ **所有應用程式**]。
+2. 流覽至**Azure Active Directory**   >  **企業應用**程式] [   >  **所有應用程式**]。
 3. 選取您要啟用 Cookie 設定的應用程式。
 4. 按一下 [**應用程式 Proxy**]。
 5. 在 [其他設定]**** 底下，將 Cookie 設定設為 [是]**** 或 [否]****。
-6. 按一下 [儲存]**** 套用變更。 
+6. 按一下 [儲存] 套用變更。 
 
 ## <a name="view-current-cookie-settings---powershell"></a>查看目前的 cookie 設定-PowerShell
 
@@ -65,7 +64,7 @@ Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl *
 
 ## <a name="set-cookie-settings---powershell"></a>設定 cookie 設定-PowerShell
 
-在下列 PowerShell 命令中， ```<ObjectId>```是應用程式的 ObjectId。 
+在下列 PowerShell 命令中， ```<ObjectId>``` 是應用程式的 ObjectId。 
 
 **僅限 Http Cookie** 
 

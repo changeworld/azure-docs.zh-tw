@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770487"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>從內部部署容錯移轉之後連線至 Azure Vm 
 
@@ -45,7 +44,7 @@ ms.locfileid: "79281986"
 
 4. 若要在容錯移轉後透過網際網路存取 Azure VM，請在內部部署機器上的 Windows 防火牆中，允許公用設定檔中的 TCP 和 UDP，並將 RDP 設定為所有設定檔的允許應用程式。
 
-5. 如果您想要在容錯移轉後透過站對站 VPN 存取 Azure VM，請在內部部署機器上的 Windows 防火牆中，針對網域和私人設定檔允許 RDP。 [了解](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)如何允許 RDP 流量。
+5. 如果您想要在容錯移轉後透過站對站 VPN 存取 Azure VM，請在內部部署機器上的 Windows 防火牆中，針對網域和私人設定檔允許 RDP。 [瞭解](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)如何允許 RDP 流量。
 6. 當您觸發容錯移轉時，請確定內部部署 VM 上沒有擱置中的 Windows 更新。 如果有，更新可能會在容錯移轉後於 Azure VM 上開始安裝，而且您將無法登入 VM，直到更新完成為止。
 
 ### <a name="prepare-linux-machines"></a>準備 Linux 電腦
@@ -62,7 +61,7 @@ ms.locfileid: "79281986"
 
 1. 若要透過網際網路連線至 VM，請將公用 IP 位址指派給 VM。 您無法針對用於內部部署電腦的 Azure VM 使用相同的公用 IP 位址。 [深入了解](../virtual-network/virtual-network-public-ip-address.md)
 2. 檢查 VM 上的網路安全性群組 (NSG) 規則是否允許連至 RDP 或 SSH 連接埠的連入連線。
-3. 檢查 [的開機診斷](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) 以查看 VM。
+3. 請核取 [[開機診斷](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine)] 以查看 VM。
 
 
 > [!NOTE]
@@ -96,7 +95,7 @@ Site Recovery 可讓您在容錯移轉至 Azure 時保留相同的 IP 位址。 
 
 ### <a name="failover-example"></a>容錯移轉範例
 
-讓我們看看以下範例。
+讓我們來看看範例。
 
 - 虛構的公司 Woodgrove Bank 主控其在 Azure 中裝載其行動應用程式的內部部署商務應用程式。
 - 他們會透過站對站 VPN 從內部部署連線至 Azure。 
@@ -149,11 +148,21 @@ Site Recovery 可讓您在容錯移轉至 Azure 時保留相同的 IP 位址。 
 
 ## <a name="get-new-ip-addresses"></a>取得新的 IP 位址
 
-在此案例中，Azure VM 會在容錯移轉之後取得新的 IP 位址。 DNS 更新，用來更新已故障通過機器的記錄，以指向 Azure VM 的 IP 位址。
+在此案例中，Azure VM 會在容錯移轉之後取得新的 IP 位址。 若要為在容錯移轉後建立的虛擬機器設定新的 IP 位址，可以參考下列步驟-
 
+1. 移至 [已複寫的**專案**]。
+2. 選取所需的 Azure 虛擬機器。
+3. 選取 [**計算與網路**]，然後選取 [**編輯**]。
 
+     ![自訂容錯移轉網路設定](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+
+4. 若要更新容錯移轉網路設定，請針對您要設定的 NIC 選取 [**編輯**]。 在開啟的下一個頁面中，于測試容錯移轉和容錯移轉位置提供對應的預先建立 IP 位址。
+
+    ![編輯 NIC 設定](media/azure-to-azure-customize-networking/nic-drilldown.png)
+
+5. 選取 [確定]。
+
+Site Recovery 現在會接受這些設定，並確保容錯移轉上的虛擬機器透過對應的 IP 位址（如果目標 IP 範圍中有提供的話）連線到選取的資源。 在此案例中，不需要容錯移轉整個子網。 必須要有 DNS 更新，才能將已故障的電腦的記錄更新為指向虛擬機器的新 IP 位址。
 
 ## <a name="next-steps"></a>後續步驟
 [瞭解](site-recovery-active-directory.md)如何將內部部署 ACTIVE DIRECTORY 和 DNS 複寫到 Azure。
-
-

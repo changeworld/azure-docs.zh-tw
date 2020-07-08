@@ -3,25 +3,24 @@ title: 轉譯連結和 URL Azure AD Application Proxy | Microsoft Docs
 description: 涵蓋 Azure AD 應用程式 Proxy 連接器的基本概念。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/15/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69533692"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764837"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>重新導向使用 Azure AD Application Proxy 發佈之應用程式的硬式編碼連結
 
@@ -88,7 +87,7 @@ Azure AD Application Proxy 讓您的內部部署應用程式可供遠端使用�
 
 應用程式 Proxy 支援連結轉譯的 HTML 程式碼標記完整清單包括：
 * a
-* audio
+* 音訊
 * base
 * 按鈕
 * div
@@ -103,11 +102,11 @@ Azure AD Application Proxy 讓您的內部部署應用程式可供遠端使用�
 * link
 * menuitem
 * meta
-* 物件
-* 指令碼 (script)
+* 物件 (object)
+* 指令碼
 * source
 * 追蹤
-* video
+* 影片
 
 此外，在 CSS 內也會轉譯 URL 屬性。
 
@@ -136,8 +135,8 @@ Azure AD Application Proxy 讓您的內部部署應用程式可供遠端使用�
 
 開始使用連結轉譯很簡單，按一下按鈕即可：
 
-1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
-2. 移至 [ **Azure Active Directory** > **企業應用** > 程式] [**所有應用程式**] > 選取您要 >**應用程式 proxy**管理的應用程式。
+1. 以系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
+2. 移至 [ **Azure Active Directory**  >  **企業應用**程式]  >  [**所有應用程式**] > 選取您要 >**應用程式 proxy**管理的應用程式。
 3. 將 [轉譯應用程式主體中的 URL]**** 切換為 [是]****。
 
    ![選取 [是] 可轉譯應用程式主體中的 URL](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)

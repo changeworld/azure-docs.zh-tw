@@ -8,15 +8,14 @@ ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.custom: seodec18
-ms.openlocfilehash: a58ea58ebf6fdc7d8521d204ac42fcbadeca39a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 93418369724286e8b8c967754b2fb37135094008
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189295"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027584"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 為您的模型微調超參數
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,6 +108,7 @@ Azure Machine Learning 可讓您以有效率的方式來自動化超參數探索
 
 ```Python
 from azureml.train.hyperdrive import RandomParameterSampling
+from azureml.train.hyperdrive import normal, uniform, choice
 param_sampling = RandomParameterSampling( {
         "learning_rate": normal(10, 3),
         "keep_probability": uniform(0.05, 0.1),
@@ -123,6 +123,7 @@ param_sampling = RandomParameterSampling( {
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
+from azureml.train.hyperdrive import choice
 param_sampling = GridParameterSampling( {
         "num_hidden_layers": choice(1, 2, 3),
         "batch_size": choice(16, 32)
@@ -136,10 +137,11 @@ param_sampling = GridParameterSampling( {
 
 使用貝氏取樣時，同時執行的數目會影響微調程序有效性。 一般而言，較少的並行執行數目可產生較好的取樣收斂，因為較低程度的平行處理可讓更多執行受益於先前已完成的執行。
 
-貝氏取樣只會`choice`在`uniform`搜尋空間`quniform`上支援、和分佈。
+貝氏取樣只會 `choice` 在 `uniform` `quniform` 搜尋空間上支援、和分佈。
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
+from azureml.train.hyperdrive import uniform, choice
 param_sampling = BayesianParameterSampling( {
         "learning_rate": uniform(0.05, 0.1),
         "batch_size": choice(16, 32, 64, 128)
@@ -313,7 +315,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name`是您要指派給超參數微調實驗的名稱，而`workspace`是您要在其中建立實驗的工作區（如需實驗的詳細資訊，請參閱[Azure Machine Learning 如何運作？](concept-azure-machine-learning-architecture.md)）
+`experiment_name`是您要指派給超參數微調實驗的名稱，而 `workspace` 是您要在其中建立實驗的工作區（如需實驗的詳細資訊，請參閱[Azure Machine Learning 如何運作？](concept-azure-machine-learning-architecture.md)）
 
 ## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>暖啟動您的超參數微調實驗（選擇性）
 
@@ -329,7 +331,7 @@ warmstart_parent_2 = HyperDriveRun(experiment, "warmstart_parent_run_ID_2")
 warmstart_parents_to_resume_from = [warmstart_parent_1, warmstart_parent_2]
 ```
 
-此外，在某些情況下，可能會因為預算條件約束而取消了超參數微調實驗的個別定型執行，或因其他原因而失敗。 現在可以從最後一個檢查點繼續進行這類個別的定型執行（假設您的定型腳本會處理檢查點）。 繼續個別的定型回合將會使用相同的超參數設定，並裝載該執行所使用的輸出檔案夾。 定型腳本應該接受`resume-from`引數，其中包含要從中繼續定型執行的檢查點或模型檔案。 您可以使用下列程式碼片段繼續個別的定型回合：
+此外，在某些情況下，可能會因為預算條件約束而取消了超參數微調實驗的個別定型執行，或因其他原因而失敗。 現在可以從最後一個檢查點繼續進行這類個別的定型執行（假設您的定型腳本會處理檢查點）。 繼續個別的定型回合將會使用相同的超參數設定，並裝載該執行所使用的輸出檔案夾。 定型腳本應該接受 `resume-from` 引數，其中包含要從中繼續定型執行的檢查點或模型檔案。 您可以使用下列程式碼片段繼續個別的定型回合：
 
 ```Python
 from azureml.core.run import Run
@@ -339,7 +341,7 @@ resume_child_run_2 = Run(experiment, "resume_child_run_ID_2")
 child_runs_to_resume = [resume_child_run_1, resume_child_run_2]
 ```
 
-您可以將您的超參數微調實驗設定為從先前的實驗中暖啟動，或使用設定中的`resume_from`選擇性`resume_child_runs`參數和繼續個別的定型回合：
+您可以將您的超參數微調實驗設定為從先前的實驗中暖啟動，或使用設定中的選擇性參數和繼續個別的定型回合 `resume_from` `resume_child_runs` ：
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
@@ -402,4 +404,4 @@ print('\n batch size:',parameter_values[7])
 
 ## <a name="next-steps"></a>後續步驟
 * [追蹤實驗](how-to-track-experiments.md)
-* [部署已完成訓練的模型](how-to-deploy-and-where.md)
+* [部署定型的模型](how-to-deploy-and-where.md)

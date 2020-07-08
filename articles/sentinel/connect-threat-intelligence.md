@@ -5,19 +5,19 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: security-center
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: eec07a01edc6b126bb7cd3a814912ea5c5b14195
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8036203e33fd63a25ecfa7c4ea720e01259be04a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529105"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84769868"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>從威脅情報提供者連接資料
 
@@ -58,7 +58,7 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，這可以增強�
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>將 Azure Sentinel 連接到您的威脅情報平臺
 
-## <a name="prerequisites"></a>先決條件  
+## <a name="prerequisites"></a>必要條件  
 
 - 全域管理員或安全性系統管理員的 Azure AD 角色，以授與許可權給您的 TIP 產品或自訂應用程式，其使用與 Microsoft Graph Security tiIndicators API 的直接整合。
 
@@ -70,7 +70,7 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，這可以增強�
 
 2. 設定已註冊應用程式的[API 許可權](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph)：將 Microsoft Graph 應用程式許可權**OwnedBy**新增至已註冊的應用程式。
 
-3. 要求您的 Azure Active Directory 租使用者系統管理員將管理員同意授與貴組織已註冊的應用程式。 從 Azure 入口網站： **Azure Active Directory** > **應用程式註冊** > **\<_應用程式名稱_>** > **View API 許可權** > **租使用者\<_名稱_>授與系統管理員同意**。
+3. 要求您的 Azure Active Directory 租使用者系統管理員將管理員同意授與貴組織已註冊的應用程式。 從 Azure 入口網站： **Azure Active Directory**  >  **應用程式註冊**  >  **\<_app name_>**  >  **View API 許可權**授與系統  >  **管理員同意 \<_tenant name_> **。
 
 4. 設定您的 TIP 產品或應用程式，使用與 Microsoft Graph Security tiIndicators API 的直接整合，藉由指定下列各項，將指標傳送給 Azure Sentinel：
     
@@ -80,15 +80,15 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，這可以增強�
     
     c. 針對 [動作]，指定 [警示]。
 
-5. 在 [Azure 入口網站中，流覽至 [ **Azure Sentinel** > **資料連線器**]，然後選取 [**威脅情報平臺（預覽）** ] 連接器。
+5. 在 [Azure 入口網站中，流覽至 [ **Azure Sentinel**  >  **資料連線器**]，然後選取 [**威脅情報平臺（預覽）** ] 連接器。
 
 6. 選取 [**開啟連接器] 頁面**，然後按一下 **[連接]**。
 
-7. 若要查看匯入 Azure Sentinel 的威脅指標，請流覽至 [ **Azure Sentinel 記錄** > ]**SecurityInsights**，然後展開 [ **ThreatIntelligenceIndicator**]。
+7. 若要查看匯入 Azure Sentinel 的威脅指標，請流覽至 [ **Azure Sentinel 記錄**]  >  **SecurityInsights**，然後展開 [ **ThreatIntelligenceIndicator**]。
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>將 Azure Sentinel 連線至 TAXII 伺服器
 
-## <a name="prerequisites"></a>先決條件  
+## <a name="prerequisites"></a>必要條件  
 
 - [Azure Sentinel] 工作區的 [讀取] 和 [寫入] 許可權，以儲存您的威脅指示器。
 
@@ -96,7 +96,7 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，這可以增強�
 
 ## <a name="instructions"></a>Instructions
 
-1. 在 [Azure 入口網站中，流覽至 [ **Azure Sentinel** > **資料連線器**]，然後選取 [**威脅情報-TAXII （預覽）** ] 連接器。
+1. 在 [Azure 入口網站中，流覽至 [ **Azure Sentinel**  >  **資料連線器**]，然後選取 [**威脅情報-TAXII （預覽）** ] 連接器。
 
 2. 選取 [**開啟連接器] 頁面**。
 
@@ -106,7 +106,7 @@ Azure Sentinel 可讓您匯入組織所使用的威脅指標，這可以增強�
 
 5. 如果您有其他 TAXII 2.0 伺服器：請重複步驟3和4。
 
-6. 若要查看匯入 Azure Sentinel 的威脅指標，請流覽至 [ **Azure Sentinel 記錄** > ]**SecurityInsights**，然後展開 [ **ThreatIntelligenceIndicator**]。
+6. 若要查看匯入 Azure Sentinel 的威脅指標，請流覽至 [ **Azure Sentinel 記錄**]  >  **SecurityInsights**，然後展開 [ **ThreatIntelligenceIndicator**]。
 
 ## <a name="next-steps"></a>後續步驟
 

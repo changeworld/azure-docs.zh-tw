@@ -8,12 +8,11 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273055"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920077"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常見的雲端服務啟動工作
 本文提供一些常見的啟動工作範例，做為您在雲端服務中執行的參考。 您可以利用啟動工作，在角色啟動之前執行作業。 您可能想要執行的作業包括安裝元件、註冊 COM 元件、設定登錄機碼，或啟動長時間執行的處理序。 
@@ -300,7 +299,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 
 在 [ServiceDefinition.csdef] 檔案中建立環境變數，即可在計算模擬器和雲端上完成執行不同動作的作業。 然後，您會在啟動工作中測試該環境變數的值。
 
-若要建立環境變數，請新增[變數]/[RoleInstanceValue]元素，並建立的`/RoleEnvironment/Deployment/@emulated`XPath 值。 在計算模擬器上執行時，**%ComputeEmulatorRunning%** 環境變數的值會是 `true`；在雲端上執行時則為 `false`。
+若要建立環境變數，請新增[變數] / [RoleInstanceValue]元素，並建立的 XPath 值 `/RoleEnvironment/Deployment/@emulated` 。 在計算模擬器上執行時，**%ComputeEmulatorRunning%** 環境變數的值會是 `true`；在雲端上執行時則為 `false`。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -377,9 +376,7 @@ EXIT /B 0
 為 Web 或背景工作角色設定工作時，應該遵循的最佳作法如下。
 
 ### <a name="always-log-startup-activities"></a>務必記錄啟動活動
-Visual Studio 並未提供可逐步執行批次檔的偵錯工具，因此最好盡可能取得越多批次檔作業上的資料。 記錄批次檔的輸出 (包括 **stdout** 和 **stderr**)，在您嘗試偵錯及修正批次檔時，這些資料可以提供重要資訊。 若要將 **stdout** 和 **stderr** 記錄到 **%TEMP%** 環境變數所指目錄中的 StartupLog.txt 檔案，請在您想要記錄的特定行結尾加上 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 文字。 例如，執行 **%PathToApp1Install%** 目錄中的 setup.exe 時：
-
-    "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
+Visual Studio 並未提供可逐步執行批次檔的偵錯工具，因此最好盡可能取得越多批次檔作業上的資料。 記錄批次檔的輸出 (包括 **stdout** 和 **stderr**)，在您嘗試偵錯及修正批次檔時，這些資料可以提供重要資訊。 若要將 **stdout** 和 **stderr** 記錄到 **%TEMP%** 環境變數所指目錄中的 StartupLog.txt 檔案，請在您想要記錄的特定行結尾加上 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 文字。 例如，若要在 **% PathToApp1Install%** 目錄中執行 setup.exe：`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 若要簡化您的 XML，您可以建立包裝函式 *cmd* 檔案，該檔案會呼叫您的所有啟動工作與記錄，並確保每項子工作都共用相同的環境變數。
 
@@ -483,7 +480,7 @@ EXIT %ERRORLEVEL%
 啟動批次檔的結尾遺漏 `EXIT /B 0` ，是角色無法啟動的常見原因。
 
 > [!NOTE]
-> 我注意到使用 `/B` 參數時，巢狀批次檔有時會停滯。 您可能想要確定另一個批次檔呼叫目前的批次檔時，不會發生此停滯問題，就像是使用[記錄包裝函式](#always-log-startup-activities)一般。 在此案例中，您可以省略 `/B` 參數。
+> 我注意到使用參數時，嵌套的批次檔有時會停止回應 `/B` 。 如果另一個批次檔呼叫目前的批次檔（例如使用[記錄包裝](#always-log-startup-activities)函式），您可能會想要確保不會發生此問題。 在此案例中，您可以省略 `/B` 參數。
 > 
 > 
 
@@ -505,13 +502,10 @@ EXIT %ERRORLEVEL%
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [環境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[變數]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
+[變]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 [端點]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-
-
-

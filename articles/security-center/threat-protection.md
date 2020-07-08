@@ -8,14 +8,13 @@ manager: rkarlin
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/15/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744166"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037183"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 資訊安全中心內的威脅防護
 
@@ -106,36 +105,18 @@ Azure 資訊安全中心可與 Azure 服務整合，用以監視及保護您的 
 
 
 
-## <a name="threat-protection-for-azure-containers"></a>Azure 容器的威脅防護 <a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>容器的威脅防護<a name="azure-containers"></a>
 
-> [!NOTE]
-> 此服務目前無法在 Azure 政府和主權雲端區域中使用。
+### <a name="availability"></a>可用性
 
-資訊安全中心可為您的容器化環境提供即時威脅防護，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
+- 發行狀態：**公開上市**
+- 必要角色：**安全性系統管理員**可以關閉警示。 **安全性讀取者**可以查看結果。
+- 雲端：<br>
+    ✔ 商用雲端<br>
+    ✘ US Gov<br>
+    ✘中國 Gov，其他 Gov
 
-資訊安全中心提供不同層級的威脅防護： 
-
-* **主機層級** - 資訊安全中心的代理程式 (適用於標準層，請參閱[定價](security-center-pricing.md)以取得詳細資訊) 可監視 Linux 是否有可疑活動。 此代理程式會針對源自節點或執行於其上之容器的可疑活動觸發警示。 這類活動的範例包括 Web 殼層偵測，以及與已知可疑 IP 位址的連線。
-
-    為了深入了解容器化環境的安全性，代理程式會監視容器特有的分析。 其會針對多種事件觸發警示，例如，建立具特殊權限的容器、對 API 伺服器進行可疑的存取，以及在 Docker 容器內執行安全殼層 (SSH) 伺服器。
-
-    >[!IMPORTANT]
-    > 如果您選擇不在主機上安裝此代理程式，則只會收到部分的威脅防護權益和安全性警示。 您仍會收到與網路分析以及與惡意伺服器通訊有關的警示。
-
-    如需主機層級警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-containerhost)。
-
-
-* 在 **AKS 叢集層級**，威脅防護立基於對 Kubernetes 稽核記錄的分析。 若要啟用此**無代理程式**監視，請從 [定價和設定] 頁面將 Kubernetes 選項新增至您的訂用帳戶 (請參閱[定價](security-center-pricing.md))。 為了在此層級產生警示，資訊安全中心會使用 AKS 所擷取的記錄來監視受 AKS 管理的服務。 此層級的事件範例包括公開 Kubernetes 儀表板、建立高特殊權限的角色，以及建立敏感性裝載。
-
-    >[!NOTE]
-    > 資訊安全中心會針對在訂用帳戶設定上啟用 Kubernetes 選項後所發生的 Azure Kubernetes Service 動作和部署產生安全性警示。 
-
-    如需 AKS 叢集層級警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-akscluster)。
-
-此外，我們的全球安全性研究小組會持續監視威脅的態勢。 他們會在發現容器特有的警示和弱點時加以新增。
-
-> [!TIP]
-> 您可以依照[此部落格文章](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)中的指示來模擬容器警示。
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
 
@@ -150,9 +131,9 @@ Azure 資訊安全中心可與 Azure 服務整合，用以監視及保護您的 
 
 有可疑的資料庫活動、潛在弱點或 SQL 插入式攻擊，以及異常的資料庫存取和查詢模式時，您將會看到警示。
 
-Azure SQL Database 和 SQL 的進階威脅防護是[進階資料安全性 (ADS) ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) 的 SQL 安全性功能整合套件的一部分，其範圍涵蓋 Azure SQL Database、Azure SQL Database 受控執行個體、Azure SQL 資料倉儲資料庫，和 Azure 虛擬機器上的 SQL 伺服器。
+適用于 Azure SQL Database 和 SQL 的先進威脅防護屬於先進 SQL 安全性功能的[先進資料安全性（ADS）](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)整合套件，涵蓋 Azure SQL Database、Azure SQL 受控實例、Azure SQL 資料倉儲資料庫和 azure 虛擬機器上的 SQL server。
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 * [如何啟用 Azure SQL 資料庫的進階威脅防護](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [如何為 Azure 虛擬機器上的 SQL 伺服器啟用進階威脅防護](security-center-iaas-advanced-data.md)
@@ -162,21 +143,58 @@ Azure SQL Database 和 SQL 的進階威脅防護是[進階資料安全性 (ADS) 
 
 ## <a name="threat-protection-for-azure-storage"></a>Azure 儲存體的威脅防護 <a name="azure-storage"></a>
 
-儲存體的進階威脅防護可偵測儲存體帳戶中異常而且可能有害的存取或攻擊意圖。 這一層保護可讓您直接解決威脅，而無須成為安全性專家，並且可協助您管理安全性監視系統。
+### <a name="availability"></a>可用性
 
-Azure 儲存體的進階威脅防護目前僅適用於 [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)。 
+- 發行狀態：
+    - [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)（公開上市）
+    - [Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)（預覽）
+    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) （預覽）
+- 雲端：<br>
+    ✔ 商用雲端<br>
+    ✔ US Gov<br>
+    ✘中國 Gov，其他 Gov
 
-這項服務適用於所有的公用雲端和美國政府雲端，但不是用於其他主權或 Azure Government 雲端區域。
+### <a name="whats-protected"></a>受保護的內容為何？
+
+Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的活動。 您的資料可以受到保護，不論其儲存為 blob 容器、檔案共用或資料 lake。
+
+這一層保護可讓您解決威脅，*而不*需要您成為安全性專家，並協助您管理安全性監視系統。
+
+您的儲存體帳戶受到保護 
+
+### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Azure 儲存體提供威脅防護的警示類型為何？
+
+當有下列情況時，會觸發安全性警示：
+
+- **可疑活動**-例如，已成功從 Tor 的 active exit 節點的 IP 位址存取儲存體帳戶
+- **異常行為**-例如，對儲存體帳戶的存取模式變更
+- **潛在的惡意程式碼上傳**-雜湊信譽分析指出上傳的檔案包含惡意程式碼
+
+警示包含觸發它們的事件詳細資料，以及如何調查和修復威脅的建議。
+
+### <a name="what-is-hash-reputation-analysis-for-malware"></a>什麼是適用于惡意程式碼的雜湊信譽分析？
+
+若要判斷上傳的檔案是否可疑，Azure 儲存體的威脅防護會使用[Microsoft 威脅情報](https://go.microsoft.com/fwlink/?linkid=2128684)所支援的雜湊信譽分析。 威脅防護工具不會掃描已上傳的檔案，而是會檢查存放裝置記錄，並將新上傳檔案的雜湊與已知病毒、特洛伊程式、間諜軟體和勒索軟體的雜湊進行比較。 
+
+當可疑檔案包含惡意程式碼時，資訊安全中心會顯示警示，並可選擇性地以電子郵件傳送給存放裝置擁有者，以核准刪除可疑的檔案。 若要設定這項自動移除雜湊信譽分析指出包含惡意程式碼的檔案，請部署[工作流程自動化，以觸發包含「已上傳至儲存體帳戶的潛在惡意](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005)代碼」的警示。
+
+
+
+### <a name="next-steps"></a>後續步驟 
 
 如需定價詳細資料 (包含 30 天免費試用)，請參閱 [Azure 資訊安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 * [如何啟用 Azure 儲存體的進階威脅防護](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Azure 儲存體的威脅防護警示清單](alerts-reference.md#alerts-azurestorage)
+* [Microsoft 的威脅情報功能](https://go.microsoft.com/fwlink/?linkid=2128684)
 
 > [!TIP]
-> 您可以依照[此部落格文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的指示來模擬 Azure 儲存體警示。
+> 您可以遵循[這篇 blog 文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的指示來模擬儲存體警示。
+
+
+
 
 
 
@@ -224,14 +242,17 @@ Azure Cosmos DB 警示是因為以不尋常且有危害意圖的方式嘗試存�
 >[!NOTE]
 > 前述的幾項分析由 Microsoft Cloud App Security 提供技術支援。 若要受益於這些分析，您必須啟用 Cloud App Security 授權。 如果您有 Cloud App Security 授權，則依預設會啟用這些警示。 若要停用警示：
 >
-> 1. 在 [資訊安全中心] 刀鋒視窗中，選取 [安全性原則]。 針對您要變更的訂用帳戶，選取 [編輯設定]。
-> 2. 選取 [威脅偵測]。
-> 3. 在 [啟用整合] 下方，清除 [允許 Microsoft Cloud App Security 存取我的資料]，然後選取 [儲存]。
+> 1. 從資訊安全中心的功能表中，選取 [**定價] & 設定**]。
+> 1. 選取您想變更的訂用帳戶。
+> 1. 選取 [威脅偵測]。
+> 1. 清除 [**允許 Microsoft Cloud App Security 存取我的資料**]，然後選取 [**儲存**]。
 
 >[!NOTE]
 >資訊安全中心會將關乎安全性的客戶資料儲存在與其資源相同的地理位置。 如果 Microsoft 尚未在資源的地理位置部署資訊安全中心，則會將資料儲存在美國。 啟用 Cloud App Security 時，會根據 Cloud App Security 的地理位置規則來儲存這項資訊。 如需詳細資訊，請參閱[非區域服務的資料儲存體](https://azuredatacentermap.azurewebsites.net/)。
 
+1. 設定您要安裝代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
 
+1. 設定標準定價層，然後選取 [**儲存**]。
 
 
 

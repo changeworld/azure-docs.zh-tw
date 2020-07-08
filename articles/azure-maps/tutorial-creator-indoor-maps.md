@@ -3,17 +3,16 @@ title: 使用建立工具建立室內地圖
 description: 使用 Azure 地圖服務建立工具建立室內地圖。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 06/17/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: c3c34ea9e32e100d5756a3930ce9d0147363e379
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745928"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027873"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>使用建立工具建立室內地圖
 
@@ -39,6 +38,9 @@ ms.locfileid: "83745928"
 
 本教學課程使用 [Postman](https://www.postman.com/) 應用程式，但您可以選擇不同的 API 開發環境。
 
+>[!IMPORTANT]
+> 本檔中的 API url 可能必須根據您的建立者資源的位置進行調整。 如需詳細資訊，請參閱[Creator 服務的存取權](how-to-manage-creator.md#access-to-creator-services)。
+
 ## <a name="upload-a-drawing-package"></a>上傳繪圖套件
 
 使用[資料上傳 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)，將繪圖套件上傳至 Azure 地圖服務資源。
@@ -61,25 +63,30 @@ ms.locfileid: "83745928"
 
 5. 按一下藍色的 [傳送] 按鈕，然後等候系統處理要求。 在要求完成後，移至回應的 [標頭] 索引標籤。 複製 [位置] 索引鍵的值，也就是 `status URL`。
 
-6. 若要檢查 API 呼叫的狀態，請對 `status URL` 建立 GET HTTP 要求。 您必須將主要訂用帳戶金鑰附加至 URL，以進行驗證。
+6. 若要檢查 API 呼叫的狀態，請在上建立**GET** HTTP 要求 `status URL` 。 您必須將主要訂用帳戶金鑰附加至 URL，以進行驗證。 **GET**要求應類似下列 URL：
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/{operationsId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/mapData/operations/{operationId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-7. 當 **GET** HTTP 要求順利完成時，您可以在下一個步驟中使用 `resourceLocation` URL 來擷取此資源中的中繼資料。
+7. 當**GET** HTTP 要求成功完成時，它會傳回 `resourceLocation` 。 `resourceLocation`包含 `udid` 上傳內容的唯一。 （選擇性）您可以 `resourceLocation` 在下一個步驟中使用此 URL 來抓取此資源的中繼資料。
 
     ```json
     {
-        "operationId": "{operationId}",
         "status": "Succeeded",
-        "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{upload-udid}?api-version=1.0"
+        "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
     }
     ```
 
-8. 若要擷取內容中繼資料，請對您在步驟 7 中複製的 `resourceLocation` URL 建立 **GET** HTTP 要求。 回應本文包含上傳內容的唯一 `udid`、未來存取/下載內容的位置，以及一些關於內容的其他中繼資料，例如建立/更新日期、大小等等。 整體回應的範例如下：
+8. 若要取出內容中繼資料，請在步驟7中所抓取的 URL 上建立**GET** HTTP 要求 `resourceLocation` 。 請務必將您的主要訂用帳戶金鑰附加至 URL 以進行驗證。 **GET**要求應類似下列 URL：
 
-     ```json
+    ```http
+   https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    ```
+
+9. 當**GET** HTTP 要求成功完成時，回應主體將會包含 `udid` 步驟7中所指定的 `resourceLocation` 、未來存取/下載內容的位置，以及一些關於內容的其他中繼資料，例如建立/更新日期、大小等等。 整體回應的範例如下：
+
+    ```json
     {
         "udid": "{udid}",
         "location": "https://atlas.microsoft.com/mapData/{udid}?api-version=1.0",
@@ -99,8 +106,10 @@ ms.locfileid: "83745928"
 2. 在 [產生器] 索引標籤中選取 **POST** HTTP 方法，然後輸入下列 URL，以將您上傳的繪圖套件轉換成地圖資料。 請使用上傳套件的 `udid`。
 
     ```http
-    https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={upload-udid}&inputType=DWG
+    https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
+    >[!IMPORTANT]
+    > 本檔中的 API url 可能必須根據您的建立者資源的位置進行調整。 如需詳細資訊，請參閱[Creator 服務的存取權](how-to-manage-creator.md#access-to-creator-services)。
 
 3. 按一下 [傳送] 按鈕，然後等候系統處理要求。 在要求完成後，移至回應的 [標頭] 索引標籤，並尋找 [位置] 索引鍵。 複製 [位置] 索引鍵的值，此為轉換要求的 `status URL`。
 
@@ -160,7 +169,7 @@ ms.locfileid: "83745928"
 4. 對 `statusURL` 提出 **GET** 要求，以取得 `datasetId`。 請附加您的 Azure 地圖服務主要訂用帳戶金鑰，以進行驗證。 要求應會類似於下列 URL：
 
     ```http
-    https://atlas.microsoft.com/dataset/operations/{operationsId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/dataset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 5. 在 **GET** HTTP 要求順利完成後，回應標頭將會包含已建立之資料集的 `datasetId`。 複製 `datasetId`。 您必須使用 `datasetId` 來建立圖格集。
@@ -189,7 +198,7 @@ ms.locfileid: "83745928"
 3. 對圖格集的 `statusURL` 提出 **GET** 要求。 請附加您的 Azure 地圖服務主要訂用帳戶金鑰，以進行驗證。 要求應會類似於下列 URL：
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/{operationsId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 4. 在 **GET** HTTP 要求順利完成後，回應標頭將會包含已建立之圖格集的 `tilesetId`。 複製 `tilesetId`。
@@ -418,7 +427,7 @@ ms.locfileid: "83745928"
 > [資料集](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
-> [圖格集](creator-indoor-maps.md#tilesets)
+> [地圖底圖集](creator-indoor-maps.md#tilesets)
 
 > [!div class="nextstepaction"]
 > [功能狀態集](creator-indoor-maps.md#feature-statesets)

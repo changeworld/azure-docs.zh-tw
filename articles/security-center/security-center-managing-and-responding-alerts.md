@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 8e44ce594375deeac47f037515d96c57d15c8359
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398395"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84769760"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>在 Azure 資訊安全中心管理和回應安全性警示
 
@@ -58,21 +57,26 @@ ms.locfileid: "80398395"
 
 1. 查看資訊之後，請按一下受攻擊的資源。
 
+    [安全性警示] 頁面的左窗格會顯示與安全性警示相關的高階資訊： [標題]、[嚴重性]、[狀態]、[啟用時間]、[可疑活動的描述] 和受影響的資源。 與受影響的資源一起是與資源相關的 Azure 標記。 調查警示時，請使用這些來推斷資源的組織內容。
+
+    右窗格包含 [**警示詳細資料**] 索引標籤，其中包含警示的進一步詳細資料，以協助您調查問題： IP 位址、檔案、處理常式等等。
+     
     ![關於如何處理安全性警示的建議](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    [**一般資訊**] 區段可以提供觸發安全性警示的深入解析。 它會顯示如目標資源、來源 IP 位址（如果適用的話）、警示是否仍在作用中的資訊，以及有關如何補救的建議。  
+    此外，右窗格中也會有 [**採取動作**] 索引標籤。使用此索引標籤可針對安全性警示採取進一步的動作。 動作，例如：
+    - *緩和威脅*-針對此安全性警示提供手動補救步驟
+    - *預防未來的攻擊*-提供安全性建議，以協助減少受攻擊面、增加安全性狀態，進而防止未來的攻擊
+    - *觸發程式自動化回應*-提供選項來觸發邏輯應用程式，以回應此安全性警示
+    - *隱藏類似警示*-提供選項，以在警示與您的組織無關時，抑制具有類似特性的未來警示
 
-    > [!NOTE]
-    >在某些情況下，來源 IP 位址無法使用，某些 Windows 安全性事件記錄檔不會包含 IP 位址。
+    ![[採取動作] 索引標籤](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
 
-1. 資訊安全中心會根據安全性警訊，建議您不同的補救步驟。 針對每個警示遵循這些步驟。 
 
-    在某些情況下，為了減輕安全性警示，您可能必須使用其他 Azure 控制項或服務來執行建議的補救措施。 
 
-## <a name="see-also"></a>請參閱
 
-在本文件中，您了解到如何在資訊安全中心設定安全性原則。 如要深入了解資訊安全中心，請參閱下列主題：
+## <a name="see-also"></a>另請參閱
 
-- [Microsoft Learn 模組，說明如何使用 Azure 資訊安全中心的警示功能來監看和回應威脅](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
-* [Azure 資訊安全中心中的安全性警示](security-center-alerts-overview.md)。
-* [處理安全性事件](security-center-incident.md)
+在本檔中，您已瞭解如何查看安全性警示。 如需相關資料，請參閱下列頁面：
+
+- [設定警示隱藏規則](alerts-suppression-rules.md)
+- [使用工作流程自動化將警示和建議的回應自動化](workflow-automation.md)

@@ -11,13 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/10/2020
+ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414132"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770946"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>針對複製活動效能進行疑難排解
 
@@ -40,6 +39,7 @@ ms.locfileid: "81414132"
 | 特定的資料存放區   | 將資料載入**Azure Synpase Analytics （先前為 SQL DW）**：建議使用 POLYBASE 或 COPY 語句（如果未使用）。 |
 | &nbsp;                | 將資料從/複製到**Azure SQL Database**：當 DTU 處於高使用率的情況下，建議升級為較高的層級。 |
 | &nbsp;                | 將資料從/複製到**Azure Cosmos DB**：當 RU 處於高使用率時，建議您升級至較大的 ru。 |
+|                       | 從**SAP 資料表**複製資料：複製大量資料時，建議利用 SAP 連接器的分割區選項來啟用並行載入，並增加最大分割區數目。 |
 | &nbsp;                | 從**Amazon Redshift**內嵌資料：建議使用 [卸載] （如果未使用的話）。 |
 | 資料存放區節流 | 如果在複製期間，資料存放區會對一些讀取/寫入作業進行節流處理，建議檢查並增加資料存放區允許的要求率，或減少並行工作負載。 |
 | 整合執行時間  | 如果您使用**自我裝載的 Integration Runtime （IR）** ，而佇列中的複製活動等待時間很長，直到 IR 有可用的資源可執行為止，建議相應放大/相應放大您的 ir。 |
@@ -52,11 +52,11 @@ ms.locfileid: "81414132"
 
 [複製活動監視] 視圖底部的 [執行詳細資料] 和 [持續時間] 會說明複製活動所經歷的主要階段（請參閱本文開頭的範例），這對於疑難排解複製效能特別有用。 複製執行的瓶頸是持續時間最長的一個。 請參閱下表中每個階段的定義，並瞭解如何[針對 Azure IR 上的複製活動進行疑難排解](#troubleshoot-copy-activity-on-azure-ir)，以及如何在自我裝載 IR 上使用這類資訊[進行複製活動的疑難排解](#troubleshoot-copy-activity-on-self-hosted-ir)。
 
-| 階段           | 描述                                                  |
+| 階段           | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
 | 佇列           | 已耗用的時間，直到「複製」活動實際開始于整合執行時間為止。 |
 | 複製前腳本 | 從 IR 和複製活動開始，在接收資料存放區中執行預先複製腳本的複製活動之間經過的時間。 當您設定資料庫接收的預先複製腳本時套用，例如將資料寫入 Azure SQL Database 在複製新資料之前進行清除。 |
-| 傳送        | 上一個步驟結束與 IR 將所有資料從來源傳輸到接收之間經過的時間。 「傳輸」下的子步驟會以平行方式執行。<br><br>- **第一個位元組時間：** 上一個步驟結束與紅外線從來源資料存放區接收第一個位元組之間經過的時間。 適用于非以檔案為基礎的來源。<br>- **列出來源：** 用來列舉來源檔案或資料分割的時間量。 當您設定資料庫來源的分割區選項時（例如，從 Oracle/SAP Hana/Teradata/Netezza 等資料庫複製資料時），會套用後者。<br/>-**從來源讀取：** 從來源資料存放區抓取資料所花費的時間量。<br/>- **寫入接收：** 將資料寫入至接收資料存放區所花費的時間量。 |
+| 傳送        | 上一個步驟結束與 IR 將所有資料從來源傳輸到接收之間經過的時間。 <br/>請注意，[傳輸] 下的子步驟會以平行方式執行，而且某些作業現在不會顯示，例如剖析/產生檔案格式。<br><br/>- **第一個位元組時間：** 上一個步驟結束與紅外線從來源資料存放區接收第一個位元組之間經過的時間。 適用于非以檔案為基礎的來源。<br>- **列出來源：** 用來列舉來源檔案或資料分割的時間量。 當您設定資料庫來源的分割區選項時（例如，從 Oracle/SAP Hana/Teradata/Netezza 等資料庫複製資料時），會套用後者。<br/>-**從來源讀取：** 從來源資料存放區抓取資料所花費的時間量。<br/>- **寫入接收：** 將資料寫入至接收資料存放區所花費的時間量。 請注意，某些連接器目前沒有此計量，包括 Azure 認知搜尋、Azure 資料總管、Azure 資料表儲存體、Oracle、SQL Server、Common Data Service、Dynamics 365、Dynamics CRM、Salesforce/Salesforce 服務雲端。 |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>針對 Azure IR 上的複製活動進行疑難排解
 
@@ -69,8 +69,7 @@ ms.locfileid: "81414132"
 - 「**傳輸時間到第一位元組」的工作持續時間很長**：這表示您的來源查詢會花很長的時間來傳回任何資料。 檢查查詢或伺服器並加以優化。 如果您需要進一步的協助，請洽詢您的資料存放區小組。
 
 - 「**傳輸-列出來源」有很長的工作持續時間**：這表示列舉來源檔案或源資料庫資料分割的速度很慢。
-
-  - 從以檔案為基礎的來源複製資料時，如果您在資料夾路徑或檔案名（或`wildcardFileName`）`wildcardFolderPath`上使用**萬用字元篩選器**，或使用 [檔案**上次修改時間] 篩選器**（`modifiedDatetimeStart`或`modifiedDatetimeEnd`），請注意這類篩選會導致複製活動將指定資料夾下的所有檔案都列出至用戶端，然後套用篩選。 這類檔案列舉可能會成為瓶頸，尤其是只有一小部分的檔案符合篩選規則時。
+  - 從以檔案為基礎的來源複製資料時，如果您在資料夾路徑或檔案名（或）上使用**萬用字元篩選器** `wildcardFolderPath` `wildcardFileName` ，或使用 [檔案**上次修改時間] 篩選器**（ `modifiedDatetimeStart` 或），請 `modifiedDatetimeEnd` 注意這類篩選會導致複製活動將指定資料夾下的所有檔案都列出至用戶端，然後套用篩選。 這類檔案列舉可能會成為瓶頸，尤其是只有一小部分的檔案符合篩選規則時。
 
     - 檢查是否可以根據[日期時間分割的檔案路徑或名稱來複製](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)檔案。 這種方式不會造成列出來源端的負擔。
 
@@ -124,7 +123,7 @@ ms.locfileid: "81414132"
 
   - 檢查自我裝載 IR 機器是否有低延遲連線到來源資料存放區。 如果您的來源位於 Azure 中，您可以使用[此工具](http://www.azurespeed.com/Azure/Latency)來檢查從自我裝載 IR 機器到 azure 區域的延遲，越不會越好。
 
-  - 從以檔案為基礎的來源複製資料時，如果您在資料夾路徑或檔案名（或`wildcardFileName`）`wildcardFolderPath`上使用**萬用字元篩選器**，或使用 [檔案**上次修改時間] 篩選器**（`modifiedDatetimeStart`或`modifiedDatetimeEnd`），請注意這類篩選會導致複製活動將指定資料夾下的所有檔案都列出至用戶端，然後套用篩選。 這類檔案列舉可能會成為瓶頸，尤其是只有一小部分的檔案符合篩選規則時。
+  - 從以檔案為基礎的來源複製資料時，如果您在資料夾路徑或檔案名（或）上使用**萬用字元篩選器** `wildcardFolderPath` `wildcardFileName` ，或使用 [檔案**上次修改時間] 篩選器**（ `modifiedDatetimeStart` 或），請 `modifiedDatetimeEnd` 注意這類篩選會導致複製活動將指定資料夾下的所有檔案都列出至用戶端，然後套用篩選。 這類檔案列舉可能會成為瓶頸，尤其是只有一小部分的檔案符合篩選規則時。
 
     - 檢查是否可以根據[日期時間分割的檔案路徑或名稱來複製](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)檔案。 這種方式不會造成列出來源端的負擔。
 
@@ -181,13 +180,13 @@ ms.locfileid: "81414132"
 * Azure SQL Database：您可以[監視效能](../sql-database/sql-database-single-database-monitor.md)，並檢查資料庫交易單位（DTU）百分比。
 * Azure SQL 資料倉儲：其功能會以資料倉儲單位（Dwu）來測量。 請參閱[管理 Azure SQL 資料倉儲中的計算能力（總覽）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 * Azure Cosmos DB： [Azure Cosmos DB 中的效能層級](../cosmos-db/performance-levels.md)。
-* 內部部署 SQL Server：[效能的監視和微調](https://msdn.microsoft.com/library/ms189081.aspx)。
+* SQL Server：[效能的監視和微調](https://msdn.microsoft.com/library/ms189081.aspx)。
 * 內部部署檔案伺服器：[檔案伺服器的效能微調](https://msdn.microsoft.com/library/dn567661.aspx)。
 
 ## <a name="next-steps"></a>後續步驟
 請參閱其他複製活動文章：
 
-- [複製活動總覽](copy-activity-overview.md)
+- [複製活動概觀](copy-activity-overview.md)
 - [複製活動效能和擴充性指南](copy-activity-performance.md)
 - [複製活動效能優化功能](copy-activity-performance-features.md)
 - [使用 Azure Data Factory 將資料從您的 data lake 或資料倉儲遷移至 Azure](data-migration-guidance-overview.md)

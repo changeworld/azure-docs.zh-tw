@@ -10,10 +10,9 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp
 ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733382"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>開始使用 IoT 中樞模組身分識別和模組對應項（.NET）
@@ -32,11 +31,11 @@ ms.locfileid: "81733382"
 > [!NOTE]
 > 如需可用來建置兩個應用程式，以在裝置與您的解決方案後端執行之 Azure IoT SDK 的相關資訊，請參閱 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Visual Studio。
 
-* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
 
 ## <a name="create-a-hub"></a>建立中樞
 
@@ -58,7 +57,7 @@ ms.locfileid: "81733382"
 
    ![Azure 入口網站模組詳細資料](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-1. 在 Visual Studio 中 **，選取** > [檔案] [**新增** > ] [**專案**]，將新的專案加入至您的方案。 在 [建立新專案] 中，選取 [**主控台應用程式（.NET Framework）**]，然後選取 **[下一步]**。
+1. 在 Visual Studio 中，選取 [檔案] [新增] [專案]，**將新的**專案加入至您的方案  >  **New**  >  ** **。 在 [建立新專案] 中，選取 [**主控台應用程式（.NET Framework）**]，然後選取 **[下一步]**。
 
 1. 將專案命名為 *UpdateModuleTwinReportedProperties*。 針對 [**方案**]，選取 [**新增至方案**]。 確定 .NET Framework 為 4.6.1 或更新版本。
 
@@ -66,13 +65,13 @@ ms.locfileid: "81733382"
 
 1. 選取 [**建立**] 以建立您的專案。
 
-1. 在 Visual Studio 中，開啟 [**工具** > ] [**nuget 套件管理員** > ] [**管理方案的 nuget 套件**]。 選取 [瀏覽]**** 索引標籤。
+1. 在 Visual Studio 中，開啟 [**工具**] [  >  **nuget 套件管理員**] [  >  **管理方案的 nuget 套件**]。 選取 [瀏覽]**** 索引標籤。
 
 1. 搜尋並選取 [ **Microsoft. Azure**]，然後選取 [**安裝**]。
 
     ![安裝 Azure IoT 中樞 .NET 服務 SDK 目前版本](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
-1. 在 Program.cs 檔案`using`的頂端新增下列語句： **Program.cs**
+1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -152,7 +151,7 @@ ms.locfileid: "81733382"
 
     此程式碼範例顯示如何擷取模組對應項，並使用 AMQP 通訊協定更新報告的屬性。 在公開預覽中，我們只支援 AMQP 進行模組對應項作業。
 
-1. （選擇性）您可以將這些語句新增至**Main**方法，以從您的模組將事件傳送至 IoT 中樞。 將這些行放在`try catch`區塊底下。
+1. （選擇性）您可以將這些語句新增至**Main**方法，以從您的模組將事件傳送至 IoT 中樞。 將這些行放在 `try catch` 區塊底下。
 
     ```csharp
     Byte[] bytes = new Byte[2];

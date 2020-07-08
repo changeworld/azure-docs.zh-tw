@@ -4,17 +4,16 @@ description: 為儲存體帳戶設定多層式的網路安全性。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 01/21/2020
+ms.topic: how-to
+ms.date: 06/04/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4b72f94548a5222fcb950141e983007efde7fe4e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 75f2e20db6ad1155e62691b711d8084a1feb5bae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513337"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
 
@@ -223,7 +222,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
     ```
 
     > [!TIP]
-    > 當 VNet 屬於另一個 Azure AD 租用戶時，若要為其中子網路新增規則，請使用完整的子網路識別碼，格式為 "/subscriptions/\<subscription-ID\>/resourceGroups/\<resourceGroup-Name\>/providers/Microsoft.Network/virtualNetworks/\<vNet-name\>/subnets/\<subnet-name\>"。
+    > 若要在屬於另一個 Azure AD 租使用者的 VNet 中新增子網的規則，請使用 "/subscriptions/ \<subscription-ID\> /ResourceGroups/ \<resourceGroup-Name\> /providers/Microsoft.Network/virtualNetworks/ \<vNet-name\> /subnets/" 格式的完整子網識別碼 \<subnet-name\> 。
     >
     > 您可以使用 **subscription** 參數，為屬於另一個 Azure AD 租用戶的 VNet 擷取子網路識別碼。
 
@@ -374,14 +373,14 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 |:------------------------ |:-------------------------- |:---------------------------------- |
 | Azure 備份             | Microsoft.RecoveryServices | 在 IAAS 虛擬機器中執行未受控磁碟備份與還原。 (若為受控磁碟則非必要)。 [深入了解](/azure/backup/backup-introduction-to-azure-backup)。 |
 | Azure 資料箱           | Microsoft.DataBox          | 可讓您使用資料箱將資料匯入至 Azure。 [深入了解](/azure/databox/data-box-overview)。 |
-| Azure DevTest Labs       | Microsoft.DevTestLab       | 自訂映像建立和成品安裝。 [深入了解](/azure/devtest-lab/devtest-lab-overview)。 |
+| Azure DevTest Labs       | Microsoft.DevTestLab       | 自訂映像建立和成品安裝。 [深入了解](../../devtest-labs/devtest-lab-overview.md)。 |
 | Azure Event Grid         | Microsoft.EventGrid        | 啟用 Blob 儲存體事件發佈，並允許事件方格發佈到儲存體佇列。 深入了解 [Blob 儲存體事件](/azure/event-grid/event-sources)及[發佈至佇列](/azure/event-grid/event-handlers)。 |
 | Azure 事件中心         | Microsoft.EventHub         | 使用事件中樞擷取封存資料。 [深入了解](/azure/event-hubs/event-hubs-capture-overview)。 |
 | Azure 檔案同步          | Microsoft.StorageSync      | 可讓您將內部部署檔案伺服器轉換為 Azure 檔案共用的快取。 允許多網站同步處理、快速災害復原，以及雲端備份。 [深入了解](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | 為新的 HDInsight 叢集佈建預設檔案系統的初始內容。 [深入了解](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
 | Azure 匯入匯出      | Microsoft.ImportExport     | 可讓您使用匯入/匯出服務將資料匯入至 Azure，以及從 Azure 匯出資料。 [深入了解](/azure/storage/common/storage-import-export-service)。  |
 | Azure 監視器            | Microsoft.Insights         | 允許將監視資料寫入至受保護的儲存體帳戶，包括資源記錄、Azure Active Directory 登入和稽核記錄，以及 Microsoft Intune 記錄。 [深入了解](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
-| Azure 網路         | Microsoft.Network          | 儲存及分析網路流量記錄。 [深入了解](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
+| Azure 網路         | Microsoft.Network          | 儲存和分析網路流量記錄，包括透過網路監看員和流量分析服務。 [深入了解](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | 當使用已啟用防火牆的快取、來源或目標儲存體帳戶時，啟用複寫以進行 Azure IaaS 虛擬機器的災害復原。  [深入了解](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
 如果您為該資源執行個體明確地[指派 RBAC 角色](storage-auth-aad.md#assign-rbac-roles-for-access-rights)給[系統指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，則 [允許受信任的 Microsoft 服務] 設定也會允許下列服務的特定執行個體存取儲存體帳戶。 在此情況下，執行個體的存取範圍會對應至指派給受控識別的 RBAC 角色。

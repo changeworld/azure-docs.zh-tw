@@ -3,25 +3,24 @@ title: Azure AD 應用程式 Proxy 中的自訂網域 | Microsoft Docs
 description: 在 Azure AD 應用程式 Proxy 中設定和管理自訂網域。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
-ms.reviewer: harshja
+ms.author: kenwith
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736478"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764905"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 設定自訂網域
 
@@ -138,7 +137,7 @@ ms.locfileid: "83736478"
 
 所有憑證管理都是透過個別的應用程式頁面進行。 移至應用程式的 [應用程式 Proxy] 頁面，以存取 [憑證] 欄位。
 
-您可對多個應用程式使用相同的憑證。 如果已上傳的憑證適用於另一個應用程式，則會自動套用。 當您新增或設定應用程式時，系統不會提示您再次上傳憑證。 
+一旦將憑證上傳至應用程式，它也會自動套用至使用相同憑證設定的**新**應用程式。 您必須重新上傳租使用者中現有應用程式的憑證。
 
 您會在憑證到期時收到警告，告知您上傳另一個憑證。 如果已撤銷憑證，使用者在存取應用程式時可能會看到安全性警告。 若要更新應用程式的憑證，請瀏覽至應用程式的 [應用程式 Proxy] 頁面，選取 [憑證]，然後上傳新的憑證。 如果其他應用程式並未使用舊憑證，則系統會自動予以刪除。 
 

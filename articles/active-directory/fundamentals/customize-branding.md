@@ -7,29 +7,28 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/24/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e0fc3cb450c253882ed34a2c4f5748efe55d0ec
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 14e1e84fa96b1e6b686d039abedd38e080b5720e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982032"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603905"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>將商標新增至組織的 Azure Active Directory 登入頁面
 使用您組織的標誌和自訂色彩配置，在 Azure Active Directory (Azure AD) 登入頁面上展現一致的外觀與風格。 當使用者登入貴組織的 Web 應用程式 (如 Office 365)，且該應用程式使用 Azure AD 做為識別提供者時，即會顯示您的登入頁面。
 
->[!Note]
+>[!NOTE]
 >新增自訂商標需要使用 Azure Active Directory Premium 1、Premium 2 或 Basic 版本，或需有 Office 365 授權。 如需授權和版本的詳細資訊，請參閱[註冊 Azure AD Premium](active-directory-get-started-premium.md)。<br><br>Azure AD Premium 和 Basic 版本適用於使用全球 Azure Active Directory 執行個體的中國客戶。 由 21Vianet 在中國營運的 Azure 服務目前不支援 Azure AD Premium 和 Basic 版本。 如需詳細資訊，請使用 [Azure Active Directory 論壇](https://feedback.azure.com/forums/169401-azure-active-directory/) (英文) 與我們連絡。
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>自訂 Azure AD 登入頁面
 您可以自訂 Azure AD 登入頁面，該頁面會在使用者登入您組織的租用戶特定應用程式 (例如 `https://outlook.com/contoso.com`) 時或傳遞網域變數 (例如 `https://passwordreset.microsoftonline.com/?whr=contoso.com`) 時出現。
 
-當您的使用者前往 www\.office.com 之類的網站時，您的自訂商標不會立即出現。 使用者必須先登入，您的自訂商標才會出現。 在使用者登入之後，商標可能需要15分鐘或更長的時間才會出現。 
+當您的使用者前往 www office.com 之類的網站時，您的自訂商標不會立即出現 \. 。 使用者必須先登入，您的自訂商標才會出現。 在使用者登入之後，商標可能需要15分鐘或更長的時間才會出現。 
 
 > [!NOTE]
 > 所有商標元素均為選擇性使用。 舉例而言，如果您指定的橫幅標誌沒有背景影像，登入頁面會顯示您的標誌和目的地網站 (例如，Office 365) 的預設背景影像。<br><br>此外，登入頁面商標不會攜帶至個人 Microsoft 帳戶。 如果使用者或商務來賓使用個人 Microsoft 帳戶登入，其登入頁面將不會出現貴組織的商標。
@@ -43,7 +42,7 @@ ms.locfileid: "82982032"
 
 3. 請在 [設定公司商標]**** 頁面上，提供下列部分或全部資訊。
 
-    >[!Important]
+    >[!IMPORTANT]
     >在此頁面新增的所有自訂影像均有其影像大小 (像素) 限制，而且可能有檔案大小 (KB) 限制。 由於有所限制，很可能必須使用相片編輯程式來建立適當大小的影像。
 
     - **一般設定**
@@ -62,7 +61,17 @@ ms.locfileid: "82982032"
 
         - **使用者名稱提示。** 輸入使用者忘記使用者名稱時，就會向使用者顯示的提示文字。 此文字必須是 Unicode，不可含有任何連結或程式碼，而且不可超過 64 個字元。 如果來賓是登入您的應用程式，建議不要加入此提示。
 
-        - **登入頁面文字。** 請輸入會在登入頁面底部出現的文字。 您可以使用此文字來提供其他資訊，例如技術支援中心的電話號碼或法律聲明。 此文字必須是 Unicode，而且不可超過 256 個字元。
+        - **登入頁面文字和格式設定。** 請輸入會在登入頁面底部出現的文字。 您可以使用此文字來提供其他資訊，例如技術支援中心的電話號碼或法律聲明。 此文字必須是 Unicode，且不能超過1024個字元。
+
+           您可以自訂您所輸入的登入頁面文字。 若要開始新的段落，請使用 enter 鍵兩次。 您也可以變更文字格式，以包含粗體、斜體、底線或可點按的連結。 使用下列語法將格式加入至文字： 
+
+          > 超```[text](link)``` 
+          
+          > 粗體： ``` **text** ``` 或``` __text__ ``` 
+          
+          > 斜體： ``` *text* ``` 或``` _text_ ``` 
+          
+          > 線``` ++text++ ``` 
 
     - **Advanced 設定**
             
@@ -77,8 +86,10 @@ ms.locfileid: "82982032"
         - **方形標誌影像、暗色調佈景主題。** 與上述的方形標誌影像相同。 此標誌影像會取代深色背景下的方形標誌影像，例如，在全新體驗 (OOBE) 期間出現的 Windows 10 Azure AD 連結畫面。  如果您的標誌在白色、深藍色和黑色背景上看起來不錯，您就不需要加入此影像。 
         
         - **顯示保持登入選項。** 您可以選擇讓使用者保持登入 Azure AD，直到明確登出為止。如果您選擇 [**否**]，則會隱藏此選項，而且使用者必須在每次關閉並重新開啟瀏覽器時登入。
+
+            若要深入瞭解如何設定和疑難排解讓您保持登入的選項，請參閱[Azure AD 帳戶設定 [保持登入？] 提示](keep-me-signed-in.md)
         
-            >[!Note]
+            >[!NOTE]
             >SharePoint Online 和 Office 2010 的某些功能取決於能夠選擇此選項以保持登入的使用者。 如果您將此選項設定為 [否]****，使用者可能就會在登入時看見額外和非預期的提示。
    
 
@@ -86,7 +97,7 @@ ms.locfileid: "82982032"
 
     如果此流程建立的是您第一個自訂商標設定，則會成為租用戶的預設值。 如果您有其他設定，則可以選擇預設設定。
     
-    >[!Important]
+    >[!IMPORTANT]
     >若要將更多公司商標設定新增給您的租用戶，必須選擇 [Contoso - 公司商標]**** 頁面上的 [新增語言]****。 這會開啟 [設定公司商標]**** 頁面，可在此按照上述相同步驟進行。
 
 ## <a name="update-your-custom-branding"></a>更新您的自訂商標
@@ -101,7 +112,7 @@ ms.locfileid: "82982032"
 
 3. 請在 [設定公司商標]**** 頁面上，按照本文的[自訂您的 Azure AD 登入頁面](#customize-your-azure-ad-sign-in-page)一節的說明，新增、移除或變更任何資訊。
 
-4. 選取 [儲存]  。
+4. 選取 [儲存]。
 
    您對登入頁面商標所做的任何變更可能最多需要一個小時才會顯示。
 
@@ -118,7 +129,7 @@ ms.locfileid: "82982032"
 
 3. 請在 [設定公司商標]**** 頁面上，選取您的語言 (例如，法文)，然後按照本文的[自訂您的 Azure AD 登入頁面](#customize-your-azure-ad-sign-in-page)一節的說明，新增經過翻譯的資訊。
 
-4. 選取 [儲存]  。
+4. 選取 [儲存]。
 
     [Contoso - 公司商標]**** 頁面會更新，以顯示新的法文設定。
 
@@ -134,5 +145,3 @@ ms.locfileid: "82982032"
 
 **原始 URL：** https://aka.ms/SSPR<br>
 **自訂 URL：**`https://passwordreset.microsoftonline.com/?whr=contoso.com`
-
- 

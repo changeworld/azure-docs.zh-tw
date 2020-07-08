@@ -5,13 +5,12 @@ author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/09/2020
+ms.openlocfilehash: 57a5f3046ce7a1f968bb823a0e13008d076b78c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849020"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636558"
 ---
 # <a name="getting-paid-in-the-commercial-marketplace"></a>在商業市集中獲得報酬
 
@@ -27,21 +26,6 @@ ms.locfileid: "83849020"
 費用會在 [Microsoft Azure Marketplace 發行者合約](https://go.microsoft.com/fwlink/p/?LinkID=699560) \(英文\) 中正式定義。 如果您有任何問題，請務必檢閱該文件。
 
 Store 費用會套用至商業市集所收集的所有供應項目銷售量，包括附加元件。
-
-## <a name="price-tiers"></a>價格區間
-
-您所選取的價格區間會在您選擇散發供應項目的所有國家/地區中設定銷售價格。 您也可以使用額外的定價功能，例如為不同市場選擇不同的價格。
-
-您可以免費提供您的應用程式，也可以挑選客戶必須付費以取得供應項目的價格。 價格區間起價為 .99 美元，並有額外增量 (1.09 美元、1.19 美元，依此類推)。 價格上漲時，價格區間之間的增量會增加。
-
-> [!NOTE] 
-> 這些價格區間也適用於您在供應項目中提供的任何附加元件。
-
-每個價格區間在 Store 所提供的每個貨幣中都有對應的值。 我們使用這些值來協助您以全球可比較的價格點銷售您的供應項目。 但是，由於匯率的變更，確切的銷售金額在各貨幣之間可能會略有不同。
-
-您也可以選擇以特定市場的當地貨幣，輸入自由選擇的價格。 當您這麼做時，除非您提交具有新價格的更新，否則不會調整價格 (即使轉換率變更)。 
-
-請記住，您所選取的價格可能包括您的客戶必須支付的銷售或加值稅。 如需詳細資訊，請參閱[付費供應項目稅賦詳細資訊](tax-details-paid-transactions.md)。
 
 ## <a name="payout-reporting"></a>付款報告
 

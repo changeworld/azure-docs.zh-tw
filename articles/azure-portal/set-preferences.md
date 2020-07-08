@@ -6,15 +6,14 @@ keywords: 設定、超時、語言、地區
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/19/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310674"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763953"
 ---
 # <a name="set-your-azure-portal-preferences"></a>設定您的 Azure 入口網站喜好設定
 
@@ -71,7 +70,7 @@ ms.locfileid: "76310674"
 入口網站功能表的預設模式控制入口網站功能表在頁面上佔用的空間量。
 
 * 當入口網站功能表處於**飛出**視窗模式時，在您需要的時候才會隱藏。 選取功能表圖示以開啟或關閉功能表。
-* 如果**您選擇 [** 停駐模式] 作為入口網站功能表，則一律會顯示。 您可以折迭功能表來提供更多的工作空間。 
+* 如果**您選擇 [** 停駐模式] 作為入口網站功能表，則一律會顯示。 您可以摺疊功能表來提供更多的工作空間。 
 
 ### <a name="choose-a-theme"></a>選擇佈景主題
 
@@ -79,7 +78,7 @@ ms.locfileid: "76310674"
 
    ![顯示已醒目提示主題之 Azure 入口網站設定的螢幕擷取畫面](./media/set-preferences/theme.png)
 
-您可以改為選擇其中一個高對比主題。 [高對比] 設定可讓您更容易閱讀對視力受損使用者的 Azure 入口網站，並覆寫所有其他主題選取專案。 如需詳細資訊，請參閱[開啟高對比或變更主題](azure-portal-change-theme-high-contrast.md)。
+您可以改為選擇其中一個高對比主題。 高對比設定讓具有視覺障礙的人更容易閱讀 Azure 入口網站，並覆寫所有其他主題選取專案。 如需詳細資訊，請參閱[開啟高對比或變更主題](azure-portal-change-theme-high-contrast.md)。
 
 ### <a name="enable-or-disable-pop-up-notifications"></a>啟用或停用快顯通知
 

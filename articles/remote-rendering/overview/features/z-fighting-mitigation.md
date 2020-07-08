@@ -5,16 +5,15 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 69774c0014aac26c7266620bbe7d06ba37d6023b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: f4c49be5f5a0f2c89831891dc2640b64fee9fc44
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758804"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84022413"
 ---
 # <a name="z-fighting-mitigation"></a>Z-fighting 緩和措施
 
-當兩個表面重疊時，會不確定應將哪個表面轉譯在另一個表面上。 甚至每個像素的結果都有所差異，導致產生依賴視角的成品。 因此當相機或網格移動時，圖樣會明顯閃爍。 這樣的成品稱為「Z-fighting」。 AR 和 VR 應用程式會加重這種問題，這是因為頭戴式裝置會原本就會持續移動。 為了預防檢視人員身體不適，Azure 遠端轉譯提供 Z-fighting 緩和功能。
+當兩個表面重疊時，會不確定應將哪個表面轉譯在另一個表面上。 結果甚至會因為每個圖元而有所不同，因而導致相機視圖相依的成品。 因此當相機或網格移動時，圖樣會明顯閃爍。 這樣的成品稱為「Z-fighting」。 AR 和 VR 應用程式會加重這種問題，這是因為頭戴式裝置會原本就會持續移動。 為了預防檢視人員身體不適，Azure 遠端轉譯提供 Z-fighting 緩和功能。
 
 ## <a name="z-fighting-mitigation-modes"></a>Z-fighting 緩和措施模式
 

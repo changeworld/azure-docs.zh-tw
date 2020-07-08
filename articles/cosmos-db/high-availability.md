@@ -4,33 +4,32 @@ description: 這篇文章說明 Azure Cosmos DB 如何提供高可用性
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ae20a0372c5808cc2265a4fae63b79ef2bb71605
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 2f464a0b519dd7f378790c135a05d04e02704ac8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125497"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027727"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB 的高可用性
 
-Azure Cosmos DB 會以透明方式，在與 Cosmos 帳戶相關聯的所有 Azure 區域之間複寫您的資料。 Cosmos DB 針對您的資料採用多層備援，如下圖所示：
+Azure Cosmos DB 在與您的 Azure Cosmos 帳戶相關聯的所有 Azure 區域中，以透明方式複寫您的資料。 Azure Cosmos DB 針對您的資料採用多層的重複，如下圖所示：
 
-![實體資料分割](./media/high-availability/cosmosdb-data-redundancy.png)
+:::image type="content" source="./media/high-availability/cosmosdb-data-redundancy.png" alt-text="實體資料分割" border="false":::
 
-- Cosmos 容器內的資料會以[水準方式分割](partitioning-overview.md)。
+- Azure Cosmos 容器內的資料會以[水準方式分割](partitioning-overview.md)。
 
-- 在每個區域內，每個分割區都會受到一個複本集所保護，而且所有寫入都會由大多數複本所複寫且永久認可。 複本會分散到多達 10-20 個容錯網域中。
+- 分割集是多個複本集的集合。 在每個區域內，每個分割區都會受到一個複本集所保護，而且所有寫入都會由大多數複本所複寫且永久認可。 複本會分散到多達 10-20 個容錯網域中。
 
-- 所有區域中的每個分割區都會複寫。 每個區域都包含 Cosmos 容器的所有資料分割區，並且可以接受寫入與處理讀取。  
+- 所有區域中的每個分割區都會複寫。 每個區域都包含 Azure Cosmos 容器的所有資料分割，並可接受寫入和服務讀取。  
 
-如果您的 Cosmos 帳戶分佈在*N*個 Azure 區域中，則所有資料至少會有*N* x 4 個複本。 除了在與您的 Cosmos 帳戶相關聯的區域之間提供低延遲的資料存取和調整寫入/讀取輸送量之外，還有更多區域（更高*N*）可進一步改善可用性。  
+如果您的 Azure Cosmos 帳戶分佈在*N*個 azure 區域中，則所有資料至少會有*N* x 4 個複本。 通常在2個以上的區域中擁有 Azure Cosmos 帳戶可改善應用程式的可用性，並在相關聯的區域之間提供低延遲。 
 
 ## <a name="slas-for-availability"></a>用於提供可用性的 SLA
 
-作為全域散發的資料庫，Cosmos DB 會提供全方位的 SLA，以包含輸送量、第 99 個百分位數的延遲、一致性和高可用性。 下表說明 Cosmos DB 針對單一和多重區域帳戶所提供的高可用性相關保證。 若要獲得高可用性，請一律將您的 Cosmos 帳戶設定為具有多個寫入區域。
+作為全域散發的資料庫，Azure Cosmos DB 提供完整的 Sla，其中包含輸送量、第99百分位數的延遲、一致性和高可用性。 下表顯示單一和多重區域帳戶 Azure Cosmos DB 所提供的高可用性保證。 若要獲得高可用性，請一律將您的 Azure Cosmos 帳戶設定為具有多個寫入區域（也稱為「多主機」）。
 
 |作業類型  | 單一區域 |多重區域 (單一區域寫入)|多重區域 (多重區域寫入) |
 |---------|---------|---------|-------|
@@ -40,19 +39,19 @@ Azure Cosmos DB 會以透明方式，在與 Cosmos 帳戶相關聯的所有 Azur
 > [!NOTE]
 > 實際上，限定過期、會話、一致前置詞和最終一致性模型的實際寫入可用性，明顯高於已發行的 Sla。 所有一致性層級的實際讀取可用性，明顯高於已發行的 SLA。
 
-## <a name="high-availability-with-cosmos-db-in-the-event-of-regional-outages"></a>Cosmos DB 在發生區域性中斷時的高可用性
+## <a name="high-availability-with-azure-cosmos-db-in-the-event-of-regional-outages"></a>發生區域中斷時，Azure Cosmos DB 的高可用性
 
-區域性中斷並不罕見，Azure Cosmos DB 可確保您的資料庫永遠具有高度可用性。 下列詳細資料會根據您的 Cosmos 帳戶設定，在中斷期間捕捉 Cosmos DB 的行為：
+在區域性中斷的罕見情況下，Azure Cosmos DB 確保您的資料庫永遠都是高可用性。 下列詳細資料會根據您的 Azure Cosmos 帳戶設定，在中斷期間捕捉 Azure Cosmos DB 的行為：
 
-- 使用 Cosmos DB，將寫入作業認可至用戶端之前，資料會由接受寫入作業之區域內的複本仲裁進行永久認可。
+- 使用 Azure Cosmos DB，在將寫入作業認可至用戶端之前，資料會由接受寫入作業之區域內的複本仲裁進行永久認可。
 
-- 使用多重寫入區域設定的多重區域帳戶，將針對寫入和讀取維持高可用性。 區域性容錯移轉是即時的，不需要對應用程式進行任何變更。
+- 使用多個寫入區域/多宿主設定的多重區域帳戶，將高度可用來進行寫入和讀取。 區域性容錯移轉是即時的，不需要對應用程式進行任何變更。
 
-- 單一區域帳戶可能會在區域性中斷之後失去可用性。 一律建議使用您的 Cosmos 帳戶設定**至少兩個區域**（最好是至少兩個寫入區域），以確保所有時候都能有高可用性。
+- 單一區域帳戶可能會在區域性中斷之後失去可用性。 一律建議使用您的 Azure Cosmos 帳戶設定**至少兩個區域**（最好是至少兩個寫入區域），以確保所有時間都能達到高可用性。
 
 ### <a name="multi-region-accounts-with-a-single-write-region-write-region-outage"></a>具有單一寫入區域的多重區域帳戶（寫入區域中斷）
 
-- 在寫入區域中斷期間，當 Azure Cosmos 帳戶上設定了 [**啟用自動容錯移轉**] 時，Cosmos 帳戶會自動將次要區域升級為新的主要寫入區域。 啟用時，容錯移轉將會依照您指定的區域優先順序順序，在另一個區域進行。
+- 在寫入區域中斷期間，Azure Cosmos 帳戶會在 Azure Cosmos 帳戶上設定 [**啟用自動容錯移轉**] 時，自動將次要區域升級為新的主要寫入區域。 啟用時，容錯移轉將會依照您指定的區域優先順序順序，在另一個區域進行。
 - 當先前受影響的區域重新上線時，任何未在區域失敗時複寫的寫入資料，都可透過[衝突](how-to-manage-conflicts.md#read-from-conflict-feed)摘要取得。 應用程式可以讀取衝突摘要、根據應用程式特定邏輯解決衝突，並適當地將更新的資料寫回 Azure Cosmos 容器。
 - 一旦先前受影響的寫入區域復原，它將自動作為讀取區域使用。 您可以切換回已復原的區域做為寫入區域。 您可以使用[PowerShell、Azure CLI 或 Azure 入口網站](how-to-manage-database-account.md#manual-failover)來切換區域。 在您切換寫入區域的期間或之後，以及您的應用程式持續成為高可用性之前，不會**遺失任何資料或可用性**。
 
@@ -61,16 +60,13 @@ Azure Cosmos DB 會以透明方式，在與 Cosmos 帳戶相關聯的所有 Azur
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>具有單一寫入區域的多重區域帳戶（讀取區域中斷）
 
-- 在讀取區域中斷期間，使用任何一致性層級的 Cosmos 帳戶或具有三個或更多讀取區域的強式一致性，將保持高可用性，以進行讀取和寫入。
+- 在讀取區域中斷期間，使用任何一致性層級的 Azure Cosmos 帳戶或具有三個或更多讀取區域的強式一致性，都將保持高可用性，以進行讀取和寫入。
+- 使用強式一致性與兩個或更少讀取區域（包括讀取 & 寫入區域）的 Azure Cosmos 帳戶將會在讀取區域中斷期間失去寫入可用性，但會維護剩餘區域的讀取可用性。
 - 受影響的區域會自動中斷連線，並標示為離線。 [Azure Cosmos DB sdk](sql-api-sdk-dotnet.md)會將讀取呼叫重新導向至慣用區域清單中下一個可用的區域。
 - 如果慣用區域清單中的區域都無法使用，呼叫會自動切換回目前的寫入區域。
 - 不需要對應用程式的程式碼做任何變更來處理讀取區域中斷。 當受影響的讀取區域恢復上線時，它會自動與目前的寫入區域同步處理，並可再次供使用以提供讀取要求。
-- 後續的讀取會被重新導向至復原的區域，不需要對應用程式的程式碼做任何變更。 在先前失敗的區域的容錯移轉和重新加入期間，Cosmos DB 會繼續接受讀取一致性保證。
-
-> [!IMPORTANT]
-> 搭配兩個或更少讀取區域使用強式一致性的 Azure Cosmos 帳戶將會在讀取區域中斷期間失去寫入可用性，但會維護剩餘區域的讀取可用性。
-
-- 即使在罕見且可惜的事件中，當 Azure 區域永久無法復原時，如果您的多重區域 Cosmos 帳戶已設定*強*式一致性，則不會遺失資料。 在永久無法復原的寫入區域中，使用限定過期一致性設定的多重區域 Cosmos 帳戶，可能的資料遺失時間範圍僅限於過期時段（*k*或*t*），其中 K = 100000 更新和 T = 5 分鐘。 針對會話、一致前置詞和最終一致性層級，可能的資料遺失時間長度上限為15分鐘。 如需 Azure Cosmos DB 的 RTO 和 RPO 目標的詳細資訊，請參閱[一致性層級和資料持久性](consistency-levels-tradeoffs.md#rto)
+- 後續的讀取會被重新導向至復原的區域，不需要對應用程式的程式碼做任何變更。 在先前失敗的區域的容錯移轉和重新加入期間，Azure Cosmos DB 會繼續接受讀取一致性保證。
+- 即使在罕見且可惜的事件中，當 Azure 區域永久無法復原時，如果您的多區域 Azure Cosmos 帳戶已設定*強*式一致性，則不會遺失資料。 在永久無法復原的寫入區域（使用限定過期一致性設定的多重區域 Azure Cosmos 帳戶）中，可能的資料遺失時間範圍僅限於過期時段（*k*或*t*），其中 K = 100000 更新和 T = 5 分鐘。 針對會話、一致前置詞和最終一致性層級，可能的資料遺失時間長度上限為15分鐘。 如需 Azure Cosmos DB 的 RTO 和 RPO 目標的詳細資訊，請參閱[一致性層級和資料持久性](consistency-levels-tradeoffs.md#rto)
 
 ## <a name="availability-zone-support"></a>可用性區域支援
 
@@ -78,11 +74,11 @@ Azure Cosmos DB 會以透明方式，在與 Cosmos 帳戶相關聯的所有 Azur
 
 透過可用性區域支援，Azure Cosmos DB 將確保複本會放在指定區域內的多個區域，以在區域性失敗期間提供高可用性和復原能力。 此設定不會變更延遲和其他 Sla。 在單一區域失敗的情況下，區域冗余會提供具有 RPO = 0 的完整資料持久性，以及具有 RTO = 0 的可用性。
 
-區域冗余是[多重主要](how-to-multi-master.md)複寫功能的*補充功能*。 無法依賴區域冗余來達到區域復原。 例如，在區域中斷或跨區域的低延遲存取的情況下，建議除了區域冗余以外，還有多個寫入區域。
+區域冗余是[在多重區域寫入功能中](how-to-multi-master.md)複寫的*補充功能*。 無法依賴區域冗余來達到區域復原。 例如，在區域中斷或跨區域的低延遲存取的情況下，建議除了區域冗余以外，還有多個寫入區域。
 
 為您的 Azure Cosmos 帳戶設定多區域寫入時，您可以加入宣告區域冗余，而不需要額外付費。 否則，請參閱下面的注意事項，瞭解區域冗余支援的定價。 您可以在 Azure Cosmos 帳戶的現有區域上啟用區域冗余，方法是移除區域，並在啟用區域冗余後將其重新加入。
 
-這項功能適用于：*英國南部、東南亞、美國東部、美國東部2、美國中部、西歐、美國西部2、澳大利亞東部、日本東部、歐洲北部、法國中部*區域。
+這項功能適用于：*英國南部、東南亞、美國東部、美國東部2、美國中部、西歐、美國西部2、日本東部、北歐、法國中部*區域。
 
 > [!NOTE]
 > 針對單一區域 Azure Cosmos 帳戶啟用可用性區域，會產生相當於將額外區域新增至您帳戶的費用。 如需定價的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)和[Azure Cosmos DB 文章中的多區域成本](optimize-cost-regions.md)。
@@ -98,12 +94,12 @@ Azure Cosmos DB 會以透明方式，在與 Cosmos 帳戶相關聯的所有 Azur
 |區域失敗–可用性 | 可用性損失 | 無可用性損失 | 無可用性損失 |
 |讀取延遲 | 跨區域 | 跨區域 | 低 |
 |寫入延遲 | 跨區域 | 跨區域 | 低 |
-|區域中斷-資料遺失 | 資料遺失 |  資料遺失 | 資料遺失 <br/><br/> 搭配多個主要和多個區域使用限定過期一致性時，資料遺失僅限於您帳戶上設定的限定過期 <br /><br />藉由設定多個區域的強式一致性，您可以避免在區域性中斷期間遺失資料。 此選項包含會影響可用性和效能的取捨。 只能在設定單一區域寫入的帳戶上進行設定。 |
+|區域中斷-資料遺失 | 資料遺失 |  資料遺失 | 資料遺失 <br/><br/> 搭配多個寫入區域和多個區域使用限定過期一致性時，資料遺失僅限於您帳戶上設定的限定過期 <br /><br />藉由設定多個區域的強式一致性，您可以避免在區域性中斷期間遺失資料。 此選項包含會影響可用性和效能的取捨。 只能在設定單一區域寫入的帳戶上進行設定。 |
 |區域中斷-可用性 | 可用性損失 | 可用性損失 | 無可用性損失 |
 |Throughput | X RU/秒布建輸送量 | X RU/秒布建輸送量 | 2倍 RU/秒布建輸送量 <br/><br/> 相較于具有可用性區域的單一區域，此設定模式需要兩倍的輸送量，因為有兩個區域。 |
 
 > [!NOTE]
-> 若要啟用多重區域 Azure Cosmos 帳戶的可用性區域支援，帳戶必須啟用多宿主寫入。
+> 若要啟用多重區域 Azure Cosmos 帳戶的可用性區域支援，帳戶必須啟用多重區域寫入寫入。
 
 將區域新增至新的或現有的 Azure Cosmos 帳戶時，您可以啟用區域冗余。 若要在您的 Azure Cosmos 帳戶上啟用區域冗余，您應該 `isZoneRedundant` `true` 針對特定位置將旗標設定為。 您可以在 [位置] 屬性中設定此旗標。 例如，下列 PowerShell 程式碼片段會啟用「東南亞」區域的區域冗余：
 
@@ -128,13 +124,13 @@ az cosmosdb create \
 
 建立 Azure Cosmos 帳戶時，您可以使用 Azure 入口網站來啟用可用性區域。 當您建立帳戶時，請務必啟用 [**異地冗余**]、[**多重區域寫入**]，然後選擇支援可用性區域的區域：
 
-![使用 Azure 入口網站啟用可用性區域](./media/high-availability/enable-availability-zones-using-portal.png) 
+:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="使用 Azure 入口網站啟用可用性區域"::: 
 
 ## <a name="building-highly-available-applications"></a>高度可用的應用程式
 
-- 若要確保寫入和讀取高可用性，請將 Cosmos 帳戶設定為跨越至少兩個具有多重寫入區域的區域。 此設定會針對 Sla 所支援的讀取和寫入，提供最高的可用性、最低延遲和最佳擴充性。 若要深入了解，請參閱如何[使用多重寫入區域設定您的 Cosmos 帳戶](tutorial-global-distribution-sql-api.md)。
+- 若要確保高寫入和讀取可用性，請將您的 Azure Cosmos 帳戶設定為跨越至少兩個具有多重寫入區域的區域。 此設定會針對 Sla 所支援的讀取和寫入，提供最高的可用性、最低延遲和最佳擴充性。 若要深入瞭解，請參閱如何[使用多個寫入區域來設定您的 Azure Cosmos 帳戶](tutorial-global-distribution-sql-api.md)。
 
-- 針對使用單一寫入區域設定的多重區域 Cosmos 帳戶，[使用 Azure CLI 或 Azure 入口網站啟用自動容錯移轉](how-to-manage-database-account.md#automatic-failover)。 啟用自動容錯移轉之後，只要發生區域性災難，Cosmos DB 就會自動容錯移轉您的帳戶。  
+- 針對使用單一寫入區域設定的多重區域 Azure Cosmos 帳戶，[使用 Azure CLI 或 Azure 入口網站啟用自動容錯移轉](how-to-manage-database-account.md#automatic-failover)。 啟用自動容錯移轉之後，只要發生區域性災難，Cosmos DB 就會自動容錯移轉您的帳戶。  
 
 - 即使您的 Azure Cosmos 帳戶具有高度可用性，您的應用程式仍可能無法正確設計以維持高可用性。 若要測試應用程式的端對端高可用性，作為應用程式測試或嚴重損壞修復（DR）演練的一部分，請暫時停用帳戶的自動容錯移轉、[使用 PowerShell 叫用手動容錯移轉、Azure CLI 或 Azure 入口網站](how-to-manage-database-account.md#manual-failover)，然後監視應用程式的容錯移轉。 完成後，您可以容錯回復到主要區域，並還原帳戶的自動容錯移轉。
 

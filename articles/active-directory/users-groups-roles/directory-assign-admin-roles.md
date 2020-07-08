@@ -14,12 +14,11 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3abf7b4acfae5e90d0b3f6781b8fbbf0f6f1427d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
+ms.openlocfilehash: 70d53bf3d97f27caae7d3dee7cd03a4606d6761c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921756"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -173,7 +172,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 具備此角色的使用者可以管理電腦分析及 Office 自訂和原則服務。 在電腦分析中，此角色能夠檢視資產清查、建立部署計畫、檢視部署和健康狀態。 對於 Office 自訂和原則服務，此角色可讓使用者管理 Office 原則。
 
-### <a name="device-administrator"></a>[裝置管理員](#device-administrators-permissions)
+### <a name="device-administrators"></a>[裝置系統管理員](#device-administrators-permissions)
 
 此角色是只能指派為[裝置設定](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)中的其他本機系統管理員。 具有此角色的使用者，會在已加入 Azure Active Directory 的所有 Windows 10 裝置上，成為本機電腦系統管理員。 它們並沒有在 Azure Active Directory 中管理裝置物件的能力。
 
@@ -209,7 +208,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 ### <a name="external-id-user-flow-administrator"></a>[外部識別碼使用者流程管理員](#external-id-user-flow-administrator-permissions)
 
-具備此角色的使用者可以建立和管理 Azure 入口網站中的 B2C 使用者流程 (也稱為「內建」原則)。 這些使用者可藉由建立或編輯使用者流程，來變更使用者體驗的 html/CSS/javascript 內容、變更每個使用者流程的 MFA 需求、變更權杖中的宣告，以及調整 Azure AD 組織中所有原則的工作階段設定。 另一方面，此角色不包含檢閱使用者資料，或對組織結構描述內含屬性進行變更的能力。 變更 Identity Experience Framework (也稱為「自訂」) 原則也不在此角色的範圍內。
+具有此角色的使用者可以建立和管理 Azure 入口網站中的使用者流程（也稱為「內建」原則）。 這些使用者可以自訂 HTML/CSS/JavaScript 內容、變更 MFA 需求、選取權杖中的宣告、管理 API 連接器，以及為 Azure AD 組織中的所有使用者流程設定會話設定。 另一方面，此角色並不包括檢查使用者資料的能力，或對組織架構中包含的屬性進行變更。 Identity Experience Framework 原則的變更（也稱為自訂原則）也不在此角色的範圍內。
 
 ### <a name="external-id-user-flow-attribute-administrator"></a>[外部識別碼使用者流程屬性管理員](#external-id-user-flow-attribute-administrator-permissions)
 
@@ -224,7 +223,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 ### <a name="global-administrator--company-administrator"></a>[全域管理員 / 公司管理員](#company-administrator-permissions)
 
-具有此角色的使用者可以存取 Azure Active Directory 中所有的系統管理功能，以及使用 Azure Active Directory 身分識別的服務，例如 Microsoft 365 資訊安全中心、Microsoft 365 合規性中心、Exchange Online、SharePoint Online 和商務用 Skype Online。 註冊 Azure AD 組織的人員會變成全域管理員。 您的公司可以有多位全域管理員。 全域系統管理員可以為任何使用者和所有其他系統管理員重設密碼。
+具有此角色的使用者可以存取 Azure Active Directory 中所有的系統管理功能，以及使用 Azure Active Directory 身分識別的服務，例如 Microsoft 365 資訊安全中心、Microsoft 365 合規性中心、Exchange Online、SharePoint Online 和商務用 Skype Online。 此外，全域管理員可以[提升其存取權](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)，以管理所有 Azure 訂用帳戶和管理群組。 這可讓全域管理員使用各自的 Azure AD 租使用者，取得所有 Azure 資源的完整存取權。 註冊 Azure AD 組織的人員會變成全域管理員。 您的公司可以有多位全域管理員。 全域系統管理員可以為任何使用者和所有其他系統管理員重設密碼。
 
 > [!NOTE]
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，會將此角色識別為「公司管理員」。 它是 [Azure 入口網站](https://portal.azure.com)中的「全域管理員」。
@@ -238,6 +237,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 > [!NOTE]
 > 全域讀取者角色現在有幾項限制：
 >
+>- [Onedrive 系統管理中心](https://admin.onedrive.com/)-onedrive 系統管理中心不支援全域讀取者角色
 >- [M365 系統管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage) - 全域讀取者無法讀取客戶加密箱要求。 在 M365 系統管理中心的左窗格中，您找不到 [支援] 底下的 [客戶加密箱要求] 索引標籤。
 >- [Office 安全性與合規性中心](https://sip.protection.office.com/homepage) - 全域讀取者無法讀取 SCC 稽核記錄、進行內容搜尋，或查看安全分數。
 >- [Teams 系統管理中心](https://admin.teams.microsoft.com) - 全域讀取者無法讀取 **Teams 生命週期**、**分析與報告**、**IP 電話裝置管理**和**應用程式目錄**。
@@ -388,7 +388,7 @@ Modern Commerce 管理員角色可讓特定使用者有權存取 Microsoft 365 �
 
 ### <a name="search-administrator"></a>[搜尋管理員](#search-administrator-permissions)
 
-具備此角色的使用者具有 Microsoft 365 系統管理中心內所有 Microsoft 搜尋管理功能的完整存取權。 搜尋管理員可以將 [搜尋管理員] 和 [搜尋編輯者] 角色委派給使用者，以及建立和管理內容，例如書籤、問與答和位置。 此外，這些使用者可以檢視訊息中心、監視服務健康情況，以及建立服務要求。
+具備此角色的使用者具有 Microsoft 365 系統管理中心內所有 Microsoft 搜尋管理功能的完整存取權。 此外，這些使用者可以檢視訊息中心、監視服務健康情況，以及建立服務要求。
 
 ### <a name="search-editor"></a>[搜尋編輯者](#search-editor-permissions)
 
@@ -457,6 +457,9 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 > [!NOTE]
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，會將此角色識別為「SharePoint 服務管理員」。 在 [Azure 入口網站](https://portal.azure.com)中則是「SharePoint 管理員」。
+
+> [!NOTE]
+> 此角色也會將範圍許可權授與適用于 Microsoft Intune 的 Microsoft Graph API，讓您能夠管理和設定與 Sharepoint 和 Onedrive 資源相關的原則。
 
 ### <a name="skype-for-business--lync-administrator"></a>[商務用 Skype / Lync 管理員](#lync-service-administrator-permissions)
 
@@ -1345,8 +1348,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | --- | --- |
 | microsoft.commerce.billing/partners/read | 讀取 O365 計費的合作夥伴屬性。 |
 | microsoft.commerce.volumeLicenseServiceCenter/allEntities/allTasks | 管理大量授權服務中心的所有層面。 |
-| microsoft.directory/organization/basic/update | 更新 Azure Active Directory 中 organization 的基本屬性。 |
-| microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 建立和觀看自己的 Office 365 支援票證。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 
 
@@ -1939,4 +1941,4 @@ User | 未顯示，因為不能使用 | NA
 
 * 若要深入了解如何將使用者指派為 Azure 訂用帳戶的系統管理員，請參閱[使用 Azure 角色 (Azure RBAC) 管理存取權](../../role-based-access-control/role-assignments-portal.md)
 * 若要深入了解如何在 Microsoft Azure 中控制資源存取，請參閱[了解不同角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* 如需有關 Azure Active Directory 與您的 Azure 訂用帳戶產生關聯之方式的詳細資訊，請參閱 [Azure 訂用帳戶如何與 Azure Active Directory 產生關聯](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* 如需訂用帳戶和 Azure AD 租使用者之間關聯性的詳細資訊，或如需相關指示或新增訂閱的指示，請參閱[將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租使用者](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

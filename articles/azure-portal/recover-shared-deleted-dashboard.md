@@ -5,23 +5,22 @@ services: azure-portal
 author: mgblythe
 ms.author: mblythe
 ms.date: 01/21/2020
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: af0c72f0bc5dd8f3a3cbae7b82b1ac56447cbb08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7b3cc088a87731d2a118a4fe5183831e4d1bd6cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77133283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763970"
 ---
-# <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>復原 Azure 入口網站中已刪除的儀表板
+# <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>在 Azure 入口網站中復原已刪除的儀表板
 
 如果您使用的是公用 Azure 雲端，而您刪除了 Azure 入口網站中_已發佈_的儀表板，您可以在刪除後的14天內復原該儀表板。 如果您是在 Azure 政府雲端中，或儀表板未發佈，您就無法加以復原，而且必須重建。 如需發佈儀表板的詳細資訊，請參閱[發行儀表板](azure-portal-dashboard-share-access.md#publish-dashboard)。 請遵循下列步驟來復原已發佈的儀表板：
 
 1. 從 [Azure 入口網站] 功能表中，選取 [**資源群組**]，然後選取您發佈儀表板的資源群組（預設為 [**儀表板**]）。
 
-1. 在 [**活動記錄**] 底下，展開 [**刪除儀表板**] 作業。 選取 [**變更歷程記錄**] 索引標籤，然後選取** \<[已刪除的資源\>**]。
+1. 在 [**活動記錄**] 底下，展開 [**刪除儀表板**] 作業。 選取 [**變更歷程記錄**] 索引標籤，然後選取 [] **\<deleted resource\>** 。
 
     ![[變更歷程記錄] 索引標籤的螢幕擷取畫面](media/recover-shared-deleted-dashboard/change-history-tab.png)
 

@@ -3,25 +3,24 @@ title: 雲端解決方案提供者方案考量
 description: 對於 CSP 合作夥伴，Azure 委派的資源管理可藉由啟用細微的權限劃分來協助改善安全性與控管。
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 66ea74751f12a499a1e2d9e083497da31746e3c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 15b66568ae468d772c0fb7141a10e336cd94afc3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456921"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921622"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse 與雲端解決方案提供者計畫
 
-如果您是 [CSP (雲端解決方案提供者)](https://docs.microsoft.com/partner-center/csp-overview) 合作夥伴，則您可能已使用[管理代表 (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 功能，存取透過 CSP 計畫為您的客戶建立的 Azure 訂用帳戶。 此存取權可讓您直接支援、設定及管理客戶的訂用帳戶。
+如果您是 [CSP (雲端解決方案提供者)](/partner-center/csp-overview) 合作夥伴，則您可能已使用[管理代表 (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 功能，存取透過 CSP 計畫為您的客戶建立的 Azure 訂用帳戶。 此存取權可讓您直接支援、設定及管理客戶的訂用帳戶。
 
 透過[Azure 燈塔](../overview.md)，您可以搭配 AOBO 使用 azure 委派的資源管理。 這有助於您為使用者啟用更精細的權限來改善安全性，以及減少不必要的存取。 此外，效率和延展性也得以提高，因為使用者可在您的租用戶中使用單一登入跨多個客戶訂用帳戶工作。
 
 > [!TIP]
-> 若要協助保護客戶資源，請務必檢閱並遵循我們的[建議安全做法](recommended-security-practices.md)及[合作夥伴安全性需求](https://docs.microsoft.com/partner-center/partner-security-requirements)。
+> 若要協助保護客戶資源，請務必檢閱並遵循我們的[建議安全做法](recommended-security-practices.md)及[合作夥伴安全性需求](/partner-center/partner-security-requirements)。
 
 ## <a name="administer-on-behalf-of-aobo"></a>管理代表 (AOBO)
 
-若使用 AOBO，則您租用戶中有[系統管理代理人](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles)角色的任何使用者，都能使用 AOBO 來存取您透過 CSP 計畫建立的 Azure 訂用帳戶。 需要存取任何客戶訂用帳戶的任何使用者，都必須是此群組的成員。 AOBO 不允許建立搭配不同客戶來使用的不同群組，或為群組或使用者建立不同角色的彈性設定。
+若使用 AOBO，則您租用戶中有[系統管理代理人](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles)角色的任何使用者，都能使用 AOBO 來存取您透過 CSP 計畫建立的 Azure 訂用帳戶。 需要存取任何客戶訂用帳戶的任何使用者，都必須是此群組的成員。 AOBO 不允許建立搭配不同客戶來使用的不同群組，或為群組或使用者建立不同角色的彈性設定。
 
 ![使用 AOBO 進行租用戶管理](../media/csp-1.jpg)
 
@@ -34,7 +33,7 @@ ms.locfileid: "75456921"
 ![使用 AOBO 和 Azure 委派的資源管理進行租用戶管理](../media/csp-2.jpg)
 
 > [!NOTE]
-> Azure 入口網站中的 [ [**我的客戶**] 頁面](../how-to/view-manage-customers.md)現在包含 [**雲端解決方案提供者（預覽）** ] 區段，其中會顯示已[簽署 Microsoft 客戶合約（MCA）](https://docs.microsoft.com/partner-center/confirm-customer-agreement)且位於[Azure 方案](https://docs.microsoft.com/partner-center/azure-plan-get-started)底下之 CSP 客戶的帳單資訊和資源。 如需詳細資訊，請參閱[開始使用您的 Microsoft 合作夥伴合約計費帳戶](../../billing/mpa-overview.md)。
+> Azure 入口網站中的 [ [**我的客戶**] 頁面](../how-to/view-manage-customers.md)現在包含 [**雲端解決方案提供者（預覽）** ] 區段，其中會顯示已[簽署 Microsoft 客戶合約（MCA）](/partner-center/confirm-customer-agreement)且位於[Azure 方案](/partner-center/azure-plan-get-started)底下之 CSP 客戶的帳單資訊和資源。 如需詳細資訊，請參閱[開始使用您的 Microsoft 合作夥伴合約計費帳戶](../../billing/mpa-overview.md)。
 >
 > CSP 客戶可能會出現在本節中，不論他們是否也已針對 Azure 委派的資源管理上架。 如果有，它們也會出現在 [**客戶**] 區段中，如[查看和管理客戶和委派的資源](../how-to/view-manage-customers.md)中所述。 同樣地，CSP 客戶不需要出現在 [**我的客戶**] 的 [**雲端解決方案提供者（預覽）** ] 區段中，讓您將其上線以進行 Azure 委派的資源管理。
 
@@ -42,4 +41,4 @@ ms.locfileid: "75456921"
 
 - 了解[跨租用戶管理體驗](cross-tenant-management-experience.md)。
 - 了解如何[讓訂用帳戶在 Azure 委派的資源管理中上線](../how-to/onboard-customer.md)。
-- 了解[雲端解決方案提供者計畫](https://docs.microsoft.com/partner-center/csp-overview)。
+- 了解[雲端解決方案提供者計畫](/partner-center/csp-overview)。

@@ -11,12 +11,11 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dd7a74ff775e6e07d1c32ed198ff028765fce45d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254244"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037285"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>使用事件中樞將事件傳送至時間序列深入解析環境
 
@@ -55,13 +54,13 @@ ms.locfileid: "79254244"
 
 ## <a name="add-a-time-series-insights-instance"></a>新增時間序列深入解析執行個體
 
-時間序列深入解析更新會使用執行個體，將內容資料新增至傳入的遙測資料。 資料會在查詢期間透過使用 [時間序列識別碼]****.加入。 我們稍後在本文中使用之範例風車專案的**時間序列識別碼**為`id`。 若要深入瞭解時間序列深入解析實例和**時間序列識別碼**，請參閱[時間序列模型](./time-series-insights-update-tsm.md)。
+時間序列深入解析更新會使用執行個體，將內容資料新增至傳入的遙測資料。 資料會在查詢期間透過使用 [時間序列識別碼]****.加入。 我們稍後在本文中使用之範例風車專案的**時間序列識別碼**為 `id` 。 若要深入瞭解時間序列深入解析實例和**時間序列識別碼**，請參閱[時間序列模型](./concepts-model-overview.md)。
 
 ### <a name="create-a-time-series-insights-event-source"></a>建立時間序列深入解析事件來源
 
 1. 如果您尚未建立事件來源，請完成這些步驟以[建立事件來源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 
-1. 設定 `timeSeriesId` 的值。 若要深入瞭解**時間序列識別碼**，請參閱[時間序列模型](./time-series-insights-update-tsm.md)。
+1. 設定 `timeSeriesId` 的值。 若要深入瞭解**時間序列識別碼**，請參閱[時間序列模型](./concepts-model-overview.md)。
 
 ### <a name="push-events-to-windmills-sample"></a>將事件推送至風車範例
 
@@ -69,7 +68,7 @@ ms.locfileid: "79254244"
 
 1. 選取您的事件中樞實例。
 
-1. 移至 [**共用存取原則** > ]**MySendPolicy**。 複製 [**連接字串-主要金鑰**] 的值。
+1. 移至 [**共用存取原則**]  >  **MySendPolicy**。 複製 [**連接字串-主要金鑰**] 的值。
 
     [![複製主索引鍵連接字串的值](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 

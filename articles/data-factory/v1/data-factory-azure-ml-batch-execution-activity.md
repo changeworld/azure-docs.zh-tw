@@ -11,12 +11,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: eba5df587d6bd6dda6083314cfb94836c6669393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c40b58dfb63ac6bf1b5532eb06bfd2ad0cdccde9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73683133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84022022"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure Machine Learning 和 Azure Data Factory 來建立預測管線
 
@@ -29,7 +28,7 @@ ms.locfileid: "73683133"
 > * [Machine Learning 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics 的 U-SQL 活動](data-factory-usql-activity.md)
+> * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
 
 ## <a name="introduction"></a>簡介
@@ -45,7 +44,7 @@ ms.locfileid: "73683133"
 3. **將其部署為 Web 服務**。 只要按一下，您就可以將評分實驗當做 Azure Web 服務發佈。 您可以透過此 Web 服務端點將資料傳送給您的模型，並從模型接收結果預測。
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
-Data Factory 是雲端架構資料整合服務，用來協調以及自動**移動**和**轉換**資料。 您可以使用 Azure Data Factory 建立資料整合方案，以從各種資料存放區內嵌資料、轉換/處理資料，並將結果資料發佈至資料存放區。
+Data Factory 是以雲端為基礎的資料整合服務，可協調及自動**移動**和**轉換**資料。 您可以使用 Azure Data Factory 建立資料整合方案，以從各種資料存放區內嵌資料、轉換/處理資料，並將結果資料發佈至資料存放區。
 
 Data Factory 服務可讓您建立資料管線，以移動和轉換資料，然後依指定的排程 (每小時、每天、每週等) 執行管線。 它也提供豐富的視覺效果來顯示資料管線之間的歷程和相依性，並可透過單一整合檢視監視您所有的資料管線，以輕鬆地找出問題並設定監視警示。
 
@@ -80,7 +79,7 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的[Azure Mac
 > [!IMPORTANT]
 > 如果 Web 服務接受多個輸入，請使用 **webServiceInputs** 屬性，而不要使用 **webServiceInput**。 如需如何使用 webServiceInputs 屬性的範例，請參閱 [Web 服務需要多個輸入](#web-service-requires-multiple-inputs) 一節。
 >
-> **WebServiceInput**/**webServiceInputs**和**webServiceOutputs**屬性（在**typeProperties**中）所參考的資料集也必須包含在活動**輸入**和**輸出**中。
+> **WebServiceInput** / **webServiceInputs**和**webServiceOutputs**屬性（在**typeProperties**中）所參考的資料集也必須包含在活動**輸入**和**輸出**中。
 >
 > 在您的 Azure Machine Learning Studio 實驗中，Web 服務輸入和輸出連接埠及全域參數具有您可以自訂的預設名稱 ("input1"、"input2")。 您用於 webServiceInputs、webServiceOutputs 及 globalParameters 設定的名稱必須與實驗中的名稱完全相同。 您可以檢視您 Azure Machine Learning Studio 端點之 [批次執行說明] 頁面上的範例要求承載，來確認預期的對應。
 >
@@ -311,7 +310,7 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的[Azure Mac
 ### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>案例：使用讀取器/寫入器模組參考各種儲存體資料的實驗
 建立 Azure Machine Learning Studio 實驗時的另一個常見案例是使用「讀取器」和「寫入器」模組。 讀取器模組是用來將資料載入實驗，而寫入器模組則是用於儲存您的實驗資料。 如需讀取器和寫入器模組的詳細資料，請參閱 MSDN Library 上的[讀取器](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[寫入器](https://msdn.microsoft.com/library/azure/dn905984.aspx)主題。
 
-使用讀取器和寫入器模組時，較好的做法是針對這些讀取器/寫入器模組的每一個屬性，使用 Web 服務參數。 這些 Web 參數可讓您在執行階段設定值。 例如，建立實驗時，您可以利用讀取器模組使用 Azure SQL Database：XXX.database.windows.net。 部署 Web 服務之後，您需要啟用 Web 服務的取用者，藉此指定另一個稱為 YYY.database.windows.net 的 Azure SQL Server。 您可以使用 Web 服務參數來設定此值。
+使用讀取器和寫入器模組時，較好的做法是針對這些讀取器/寫入器模組的每一個屬性，使用 Web 服務參數。 這些 Web 參數可讓您在執行階段設定值。 例如，建立實驗時，您可以利用讀取器模組使用 Azure SQL Database：XXX.database.windows.net。 部署 web 服務之後，您想要讓 web 服務的取用者指定另一個名為 YYY.database.windows.net 的邏輯 SQL server。 您可以使用 Web 服務參數來設定此值。
 
 > [!NOTE]
 > Web 服務的輸入和輸出與 Web 服務參數不同。 在第一個案例中，您已了解如何為 Azure Machine Learning Studio Web 服務指定輸入和輸出。 在此案例中，您會傳遞 Web 服務的參數，以對應至讀取器/寫入器模組的屬性。
@@ -555,7 +554,7 @@ Azure Machine Learning Studio Web 服務的讀取器和寫入器模組可能已�
 ## <a name="frequently-asked-questions"></a>常見問題集
 **問：** 我擁有巨量資料管線所產生的多個檔案。 我可以使用 AzureMLBatchExecution 活動來處理所有檔案嗎？
 
-**答：** 是的。 如需詳細資料，請參閱 **使用讀取器模組讀取 Azure Blob 中多個檔案的資料** 一節。
+**答：** 是。 如需詳細資料，請參閱 **使用讀取器模組讀取 Azure Blob 中多個檔案的資料** 一節。
 
 ## <a name="azure-machine-learning-studio-batch-scoring-activity"></a>Azure Machine Learning Studio 批次評分活動
 如果您使用 **AzureMLBatchScoring** 活動來與 Azure Machine Learning 整合，建議您使用最新的 **AzureMLBatchExecution** 活動。

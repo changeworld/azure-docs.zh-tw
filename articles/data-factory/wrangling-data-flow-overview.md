@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3b8632eaf7662d705235adaad7cd03d2e7e4904b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 203e5fcaa99f7aebeda34e6968f636ed72851ec8
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921540"
 ---
 # <a name="what-are-wrangling-data-flows"></a>什麼是整頓的資料流程？
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 組織需要進行資料準備和整頓，以精確分析每日持續成長的複雜資料。 需要進行資料準備，讓組織可以使用各種商務程式中的資料，並縮短價值的時間。
 
@@ -25,6 +25,9 @@ Azure Data Factory 中的整頓資料流程可讓您以雲端規模反復執行�
 整頓資料流程會將 Power Query 線上混合編輯器產生的 M 轉譯為 spark 程式碼，以進行雲端規模的執行。
 
 整頓資料流程特別適用于資料工程師或「公民資料整合者」。
+
+> [!NOTE]
+> 整頓資料流程目前已供于公開預覽
 
 ## <a name="use-cases"></a>使用案例
 

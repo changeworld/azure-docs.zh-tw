@@ -4,25 +4,24 @@ description: 本文可協助您瞭解解決 SSTP 的128並行連線限制的方�
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e98fd0d57219599fb1c3934638a928542e4311a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398372"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983345"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>從 SSTP 轉換至 OpenVPN 通訊協定或 IKEv2
 
 點對站 (P2S) VPN 閘道連線可讓您建立從個別用戶端電腦到您的虛擬網路的安全連線。 P2S 連線的建立方式是從用戶端電腦開始。 本文適用于 Resource Manager 部署模型，並討論如何藉由轉換成 OpenVPN 通訊協定或 IKEv2，來克服128的並行連線限制的方法。
 
-## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S 使用哪種通訊協定？
+## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S 使用何種通訊協定？
 
 店對站 VPN 可以使用下列其中一個通訊協定：
 
-* **OpenVPN&reg;通訊協定**（SSL/TLS 型 VPN 通訊協定）。 SSL VPN 解決方案可以滲透防火牆，因為大部分的防火牆都會開啟 TCP 埠443輸出，而 SSL 會使用這些通訊埠。 OpenVPN 可以用來從 Android、iOS （11.0 版和更新版本）、Windows、Linux 和 Mac 裝置（OSX 10.13 版和更新版本）進行連接。
+* **OpenVPN &reg;通訊協定**，以 SSL/TLS 為基礎的 VPN 通訊協定。 SSL VPN 解決方案可以滲透防火牆，因為大部分的防火牆都會開啟 TCP 埠443輸出，而 SSL 會使用這些通訊埠。 OpenVPN 可以用來從 Android、iOS （11.0 版和更新版本）、Windows、Linux 和 Mac 裝置（OSX 10.13 版和更新版本）進行連接。
 
 * **安全通訊端通道通訊協定（SSTP）**，這是以 SSL 為基礎的專屬 VPN 通訊協定。 SSL VPN 解決方案可以滲透防火牆，因為大部分的防火牆都會開啟 TCP 埠443輸出，而 SSL 會使用這些通訊埠。 SSTP 僅在 Microsoft 裝置上提供支援。 Azure 支援所有具有 SSTP (Windows 7 及更新版本) 的 Windows 版本。 **無論閘道 SKU 為何，SSTP 最多僅支援128個並行**連線。
 

@@ -8,12 +8,11 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: eec5de7521c98e8147a8439844fd2a2a6b1bd2bc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73494526"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037489"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 叢集已知問題
 
@@ -30,13 +29,17 @@ ms.locfileid: "73494526"
 
 2. 執行下列命令，以尋找透過 Livy 啟動之互動式作業的應用程式識別碼。
 
-        yarn application –list
+   ```bash
+   yarn application –list
+   ```
 
     如果使用 Livy 互動式工作階段啟動工作時沒有明確指定名稱，則預設作業名稱會是 Livy。 針對[Jupyter Notebook](https://jupyter.org/)啟動的 Livy 會話，作業名稱的開頭為 `remotesparkmagics_*` 。
 
 3. 執行下列命令以刪除這些作業。
 
-        yarn application –kill <Application ID>
+   ```bash
+   yarn application –kill <Application ID>
+   ```
 
 新的作業開始執行。
 

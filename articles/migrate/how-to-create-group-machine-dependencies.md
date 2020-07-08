@@ -2,37 +2,42 @@
 title: 在 Azure Migrate Server 評估中設定以代理程式為基礎的相依性分析
 description: 本文說明如何在 Azure Migrate Server 評估中設定以代理程式為基礎的相依性分析。
 ms.topic: how-to
-ms.date: 2/24/2020
-ms.openlocfilehash: 47fd7e7c864e82400288bb67da952a18b648849e
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.date: 6/09/2020
+ms.openlocfilehash: 1271a45843a3775d4e1444321faad194edad2f23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996883"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770572"
 ---
 # <a name="set-up-dependency-visualization"></a>設定相依性視覺效果
 
-本文說明如何在 Azure Migrate： Server 評估中設定以代理程式為基礎的相依性分析。 相依性[分析](concepts-dependency-visualization.md)可協助您找出並瞭解您想要評估並遷移至 Azure 的機器之間的相依性。
+本文說明如何在 Azure Migrate：伺服器評估中設定無代理程式相依性分析。 相依性[分析](concepts-dependency-visualization.md)可協助您找出並瞭解您想要評估並遷移至 Azure 的機器之間的相依性。
 
 ## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
-- [瞭解](concepts-dependency-visualization.md#agent-based-analysis)以代理程式為基礎的相依性分析。
-- 請參閱設定適用于[VMware vm](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements)、[實體伺服器](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)和[hyper-v vm](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)之代理程式型相依性視覺效果的必要條件和支援需求。
-- 請確定您已[建立](how-to-add-tool-first-time.md)Azure Migrate 專案。
-- 如果您已經建立專案，請確定您已[新增](how-to-assess.md)Azure Migrate：伺服器評估工具。
-- 請確定您已設定[Azure Migrate 設備](migrate-appliance.md)，以探索您的內部部署機器。 瞭解如何為[VMware](how-to-set-up-appliance-vmware.md)、 [hyper-v](how-to-set-up-appliance-hyper-v.md)或[實體伺服器](how-to-set-up-appliance-physical.md)設定設備。 設備會探索內部部署機器，並將資料、效能資料傳送至 Azure Migrate：伺服器評量。
+- 如需瞭解代理程式相依性分析的支援和部署需求，請參閱：
+    - [VMware VM](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
+    - [實體伺服器](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
+    - [Hyper-v vm](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)。
+- 請確定您已執行下列動作：
+    - 具有 Azure Migrate 專案。 如果您沒有這麼做，請立即[建立](how-to-add-tool-first-time.md)一個。
+    - 請確認您已將 [Azure Migrate：伺服器評估工具][新增](how-to-assess.md)至專案。
+    - 設定[Azure Migrate 設備](migrate-appliance.md)以探索內部部署機器。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 設定設備以進行下列動作：
+        - [VMware](how-to-set-up-appliance-vmware.md)Vm.
+        - [Hyper-v](how-to-set-up-appliance-hyper-v.md)Vm.
+        - [實體伺服器](how-to-set-up-appliance-physical.md)。
 - 若要使用相依性視覺效果，您可以將[Log Analytics 工作區](../azure-monitor/platform/manage-access.md)與 Azure Migrate 專案產生關聯：
     - 只有在設定 Azure Migrate 設備及探索 Azure Migrate 專案中的機器之後，才可以附加工作區。
     - 請確定您在訂用帳戶中有一個包含 Azure Migrate 專案的工作區。
-    - 工作區必須位於 [美國東部]、[東南亞] 或 [西歐] 區域。 其他區域中的工作區無法與專案相關聯。
-    - 工作區必須位於[支援服務對應](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)的區域中。
+    - 此工作區必須位於「美國東部」、「東南亞」或「西歐」區域。 其他區域中的工作區則無法與專案相關聯。
+    - 此工作區必須位於[支援服務對應](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)的區域中。
     - 您可以將新的或現有的 Log Analytics 工作區與 Azure Migrate 專案建立關聯。
-    - 您第一次設定電腦的相依性視覺效果時，會附加工作區。 加入 Azure Migrate 專案的工作區之後，就無法修改它。
-    - 在 Log Analytics 中，與 Azure Migrate 相關聯的工作區會以遷移專案金鑰和專案名稱標記。
+    - 您第一次設定電腦的相依性視覺效果時，會附加工作區。 Azure Migrate 專案的工作區在新增之後就無法進行修改。
+    - 在 Log Analytics 中，與 Azure Migrate 相關聯的工作區會標記上遷移專案金鑰和專案名稱。
 
 ## <a name="associate-a-workspace"></a>建立工作區的關聯
 
-1. 探索要評估的機器之後，請在 [**伺服器** > **Azure Migrate：伺服器評估**] 中按一下 **[總覽**]。  
+1. 探索要評估的機器之後，請在 [**伺服器**  >  **Azure Migrate：伺服器評估**] 中按一下 **[總覽**]。  
 2. 在 [ **Azure Migrate：伺服器評估**] 中，按一下 [**基本**]。
 3. 在 [ **OMS 工作區**] 中，按一下 [**需要**設定]。
 
@@ -70,10 +75,10 @@ ms.locfileid: "82996883"
 在 Windows 電腦上安裝代理程式：
 
 1. 按兩下下載的代理程式。
-2. 在 [歡迎]**** 頁面上，按 [下一步]****。 在 [**授權條款**] 頁面上，按一下 [**我同意**接受授權]。
+2. 在 [歡迎] 頁面中按 [下一步]。 在 [**授權條款**] 頁面上，按一下 [**我同意**接受授權]。
 3. 在 [目的地資料夾]**** 中，保留或修改預設的安裝資料夾 > [下一步]****。
 4. 在 [代理程式安裝選項]**** 中，選取 [Azure Log Analytics]**** > [下一步]****。
-5. 按一下 [新增]**** 以新增 Log Analytics 工作區。 貼上您從入口網站複製的工作區識別碼和金鑰。 按一下 [下一步]  。
+5. 按一下 [新增]**** 以新增 Log Analytics 工作區。 貼上您從入口網站複製的工作區識別碼和金鑰。 按 [下一步] 。
 
 您可以從命令列或使用自動化方法（例如 Configuration Manager 或[Intigua](https://www.intigua.com/intigua-for-azure-migration)）來安裝代理程式。
 - [了解更多](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)有關如何使用這些方法來安裝 MMA 代理程式。
