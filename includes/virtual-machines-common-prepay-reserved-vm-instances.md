@@ -5,10 +5,10 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 03/27/2020
 ms.openlocfilehash: d41affc55134ad34c325c12ab4a14f4013c58f9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80371656"
 ---
 當您認可至 Azure 保留的 VM 實例時，可以節省成本。 保留項目折扣會自動套用到符合保留項目範圍和屬性之執行中虛擬機器的數目。 您不需要將保留指派給虛擬機器來取得折扣。 保留實例購買僅涵蓋 VM 使用量的計算部分。 對於 Windows Vm，使用量計量會分割成兩個不同的計量。 有一個計算計量器，它與 Linux 計量和 Windows IP 計量器相同。 當您進行購買時，您所看到的費用僅限於計算成本。 費用並不包含 Windows 軟體成本。 如需軟體成本的詳細資訊，請參閱[不包含在 Azure 保留的 VM 執行個體中的軟體成本](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)。
@@ -57,7 +57,7 @@ ms.locfileid: "80371656"
 
 ### <a name="analyze-your-usage-information"></a>分析您的使用量資訊
 
-分析您的使用量資訊，以協助判斷您應該購買的保留。 使用量資料可在使用方式檔案和 Api 中取得。 一起使用以判斷要購買的保留。 檢查每日有高使用量的 VM 實例，以判斷要購買的保留數量。 避免使用`Meter`方式資料`Product`中的子類別目錄和欄位。 它們不會區分使用 premium 儲存體的 VM 大小。 如果您使用這些欄位來決定保留購買的 VM 大小，可能會購買錯誤的大小。 如此一來，您就不會得到預期的保留折扣。 相反地，請參閱`AdditionalInfo`使用量檔案或使用量 API 中的欄位，以判斷正確的 VM 大小。
+分析您的使用量資訊，以協助判斷您應該購買的保留。 使用量資料可在使用方式檔案和 Api 中取得。 一起使用以判斷要購買的保留。 檢查每日有高使用量的 VM 實例，以判斷要購買的保留數量。 避免 `Meter` 使用方式資料中的子類別目錄和 `Product` 欄位。 它們不會區分使用 premium 儲存體的 VM 大小。 如果您使用這些欄位來決定保留購買的 VM 大小，可能會購買錯誤的大小。 如此一來，您就不會得到預期的保留折扣。 相反地，請參閱 `AdditionalInfo` 使用量檔案或使用量 API 中的欄位，以判斷正確的 VM 大小。
 
 您的使用量檔案會依計費期間和每日使用量來顯示費用。 如需有關下載使用量檔案的詳細資訊，請參閱[查看及下載您的 Azure 使用量和費用](../articles/cost-management-billing/understand/download-azure-daily-usage.md)。 然後，藉由使用使用方式檔案資訊，您可以[決定要購買的保留](../articles/cost-management-billing/reservations/determine-reservation-purchase.md)。
 
@@ -87,7 +87,7 @@ ms.locfileid: "80371656"
 若要購買執行個體：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 選取 [**所有服務** > ] [**保留**]。
+1. 選取 [所有服務] > [保留]。
 1. 選取 [**新增**] 以購買新的保留區，然後按一下 [**虛擬機器**]。
 1. 輸入必要欄位。 符合您選取之屬性的執行中 VM 執行個體符合取得保留項目折扣的資格。 取得折扣的 VM 執行個體實際數目取決於選取的範圍和數量。
 
@@ -133,7 +133,7 @@ ms.locfileid: "80371656"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 
-您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱[Azure 保留的自助交換和退款](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
+您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
@@ -141,10 +141,10 @@ ms.locfileid: "80371656"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要瞭解如何管理保留，請參閱[管理 Azure 保留](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)。
+- 若要了解如何管理保留項目，請參閱[管理 Azure 保留項目](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)。
 - 若要深入了解 Azure 保留項目，請參閱下列文章：
-    - [什麼是 Azure 保留專案？](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
-    - [在 Azure 中管理保留](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)
+    - [什麼是 Azure 保留項目？](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+    - [管理 Azure 中的保留](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)
     - [了解保留項目折扣的套用方式](../articles/cost-management-billing/manage/understand-vm-reservation-charges.md)
     - [了解採用隨用隨付費率的訂用帳戶的保留使用量](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)
     - [了解 Enterprise 註冊的保留項目使用量](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)

@@ -4,20 +4,20 @@ description: 瞭解如何使用現有的 Azure Load Balancer 來設定虛擬機�
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: b2a83b226a4b2ddbbd554783de6a2b5c85c92f0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e55b2a87813da802ec1b00c610b33da4461c008
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349713"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809449"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>使用 Azure 入口網站設定具有現有 Azure Load Balancer 的虛擬機器擴展集
 
 在本文中，您將瞭解如何使用現有的 Azure Load Balancer 來設定虛擬機器擴展集。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶。
 - 訂用帳戶中的現有標準 sku 負載平衡器，將會在其中部署虛擬機器擴展集。
@@ -36,9 +36,9 @@ ms.locfileid: "80349713"
 > [!NOTE]
 > 下列步驟假設先前已部署名為**myVNet**的虛擬網路和名為**myLoadBalancer**的 Azure 負載平衡器。
 
-1. 在畫面的左上方，按一下 [**建立資源** > ] [**計算** > ] [**虛擬機器擴展集**] 或 [在 marketplace 搜尋中搜尋**虛擬機器擴展集**]。
+1. 在畫面的左上方，按一下 [**建立資源**] [計算] [  >  **Compute**  >  **虛擬機器擴展集**] 或 [在 marketplace 搜尋中搜尋**虛擬機器擴展集**]。
 
-2. 選取 [建立]  。
+2. 選取 [建立]。
 
 3. 在 [**建立虛擬機器擴展集**] 的 [**基本**] 索引標籤中，輸入或選取這項資訊：
 
@@ -54,7 +54,7 @@ ms.locfileid: "80349713"
     | **執行個體詳細資料**           |                                                                                                       |
     | Image                          | 選取**Ubuntu Server 18.04 LTS**                                                                    |
     | Azure 點實例            | 選取 [否]****                                                                                         |
-    | Size                           | 保留為預設值                                                                                      |
+    | 大小                           | 保留為預設值                                                                                      |
     | **系統管理員帳戶**      |                                                                                                       |
     | 驗證類型            | 選取**密碼**                                                                                   |
     | 使用者名稱                       | 輸入您的系統管理員使用者名稱        |
@@ -64,7 +64,7 @@ ms.locfileid: "80349713"
 
     :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-01.png" alt-text="建立虛擬機器擴展集。" border="true":::
 
-4. 選取 [**網路**] 索引標籤。
+4. 選取 [網路] 索引標籤。
 
 5. 在 [**網路**功能] 索引標籤中，輸入或選取這項資訊：
 

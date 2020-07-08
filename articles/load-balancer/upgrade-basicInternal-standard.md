@@ -4,15 +4,15 @@ description: 本文說明如何將 Azure 內部 Load Balancer 從基本 SKU 升�
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 960897abca67bf2a43c4c056b8dfa8cce0119faa
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 801f57c8d5b67e31bd6b3ac25d845dc2e13e365c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809323"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>升級 Azure 內部 Load Balancer-不需要輸出連線
 [Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)。
@@ -53,10 +53,10 @@ ms.locfileid: "82871592"
 
 有兩個選項可供您選擇，視您的本機 PowerShell 環境設定和偏好而定：
 
-* 如果您未安裝 Azure Az 模組，或不想卸載 Azure Az 模組，最好的方法是使用`Install-Script`選項來執行腳本。
+* 如果您未安裝 Azure Az 模組，或不想卸載 Azure Az 模組，最好的方法是使用 `Install-Script` 選項來執行腳本。
 * 如果您需要保留 Azure Az 模組，最好是下載並直接執行腳本。
 
-若要判斷您是否已安裝 Azure Az 模組，請`Get-InstalledModule -Name az`執行。 如果您看不到任何已安裝的`Install-Script` Az 模組，則可以使用方法。
+若要判斷您是否已安裝 Azure Az 模組，請執行 `Get-InstalledModule -Name az` 。 如果您看不到任何已安裝的 Az 模組，則可以使用 `Install-Script` 方法。
 
 ### <a name="install-using-the-install-script-method"></a>使用安裝腳本方法進行安裝
 
@@ -74,9 +74,9 @@ ms.locfileid: "82871592"
 
 執行指令碼：
 
-1. 使用`Connect-AzAccount`來連接到 Azure。
+1. 使用 `Connect-AzAccount` 來連接到 Azure。
 
-1. 使用`Import-Module Az`匯入 Az 模組。
+1. 使用匯 `Import-Module Az` 入 Az 模組。
 
 1. 檢查必要的參數：
 
@@ -96,7 +96,7 @@ ms.locfileid: "82871592"
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell 腳本是否有任何限制，可將設定從 v1 遷移至 v2？
 
-可以。 請參閱[警告/限制](#caveatslimitations)。
+是。 請參閱[警告/限制](#caveatslimitations)。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 腳本是否也會將來自我的基本 Load Balancer 的流量切換到新建立的 Standard Load Balancer？
 
@@ -104,7 +104,7 @@ ms.locfileid: "82871592"
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我在使用此腳本時遇到一些問題。 如何取得協助？
   
-您可以將電子郵件傳送slbupgradesupport@microsoft.com至，並使用 Azure 支援服務開啟支援案例，或同時執行這兩項操作。
+您可以將電子郵件傳送至 slbupgradesupport@microsoft.com ，並使用 Azure 支援服務開啟支援案例，或同時執行這兩項操作。
 
 ## <a name="next-steps"></a>後續步驟
 

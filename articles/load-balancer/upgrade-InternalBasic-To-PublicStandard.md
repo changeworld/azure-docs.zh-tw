@@ -4,15 +4,15 @@ description: 本文說明如何將 Azure 基本內部 Load Balancer 升級至標
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: df7b8e6243bc45b5d5bdd8a9a72e81b0946454ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6b4d2a5cf441eb702bc33fc862fec9cc28a998b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858405"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809358"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>升級 Azure 內部 Load Balancer-需要輸出連線
 [Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)。 由於 Standard Internal Load Balancer 並不提供輸出連線，因此我們提供了一個解決方案，改為建立標準的公用 Load Balancer。
@@ -47,10 +47,10 @@ ms.locfileid: "82858405"
 
 有兩個選項可供您選擇，視您的本機 PowerShell 環境設定和偏好而定：
 
-* 如果您未安裝 Azure Az 模組，或不想卸載 Azure Az 模組，最好的方法是使用`Install-Script`選項來執行腳本。
+* 如果您未安裝 Azure Az 模組，或不想卸載 Azure Az 模組，最好的方法是使用 `Install-Script` 選項來執行腳本。
 * 如果您需要保留 Azure Az 模組，最好是下載並直接執行腳本。
 
-若要判斷您是否已安裝 Azure Az 模組，請`Get-InstalledModule -Name az`執行。 如果您看不到任何已安裝的`Install-Script` Az 模組，則可以使用方法。
+若要判斷您是否已安裝 Azure Az 模組，請執行 `Get-InstalledModule -Name az` 。 如果您看不到任何已安裝的 Az 模組，則可以使用 `Install-Script` 方法。
 
 ### <a name="install-using-the-install-script-method"></a>使用安裝腳本方法進行安裝
 
@@ -68,9 +68,9 @@ ms.locfileid: "82858405"
 
 執行指令碼：
 
-1. 使用`Connect-AzAccount`來連接到 Azure。
+1. 使用 `Connect-AzAccount` 來連接到 Azure。
 
-1. 使用`Import-Module Az`匯入 Az 模組。
+1. 使用匯 `Import-Module Az` 入 Az 模組。
 
 1. 檢查必要的參數：
 
@@ -104,7 +104,7 @@ ms.locfileid: "82858405"
    
     1. 選取符合基本 Load Balancer 後端集區的後端集區，然後選取下列值： 
       - **虛擬機器**：下拉並從基本 Load Balancer 的相符後端集區中選取 vm。
-    1. 選取 [儲存]  。
+    1. 選取 [儲存]。
     >[!NOTE]
     >針對具有公用 Ip 的 Vm，您必須先建立標準 IP 位址，而不保證會有相同的 IP 位址。 將 Vm 與基本 Ip 解除關聯，並將它們與新建立的標準 IP 位址建立關聯。 接著，您將能夠遵循指示，將 Vm 新增至 Standard Load Balancer 的後端集區。 
 
@@ -124,15 +124,15 @@ ms.locfileid: "82858405"
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell 腳本是否有任何限制，可將設定從 v1 遷移至 v2？
 
-可以。 請參閱[警告/限制](#caveatslimitations)。
+是。 請參閱[警告/限制](#caveatslimitations)。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 腳本是否也會將來自我的基本 Load Balancer 的流量切換到新建立的 Standard Load Balancer？
 
-不需要。 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
+否。 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我在使用此腳本時遇到一些問題。 如何取得協助？
   
-您可以將電子郵件傳送slbupgradesupport@microsoft.com至，並使用 Azure 支援服務開啟支援案例，或同時執行這兩項操作。
+您可以將電子郵件傳送至 slbupgradesupport@microsoft.com ，並使用 Azure 支援服務開啟支援案例，或同時執行這兩項操作。
 
 ## <a name="next-steps"></a>後續步驟
 

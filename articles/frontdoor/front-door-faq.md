@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: a0946da7ff516aa241a0c6d845723c43618ce70e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594129"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809487"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front 的常見問題
 
@@ -46,7 +46,7 @@ Azure Front 門板支援動態網站加速（DSA）、TLS/SSL 卸載和端對端
 
 - Front 門板只能在全域層級執行路徑型負載平衡，但如果您想要在其虛擬網路（VNET）內進一步平衡流量負載，則應該使用應用程式閘道。
 - 因為 Front 門無法在 VM/容器層級運作，所以無法進行連線清空。 不過，應用程式閘道可讓您清空連接。 
-- 在 AFD 背後的應用程式閘道之後，可以達到100% 的 TLS/SSL 卸載，並只在其虛擬網路（VNET）中路由傳送 HTTP 要求。
+- 使用前方的應用程式閘道，可以達到100% 的 TLS/SSL 卸載，並只在其虛擬網路（VNET）內路由傳送 HTTP 要求。
 - Front 和應用程式閘道都支援會話親和性。 雖然 Front 門可以將使用者會話的後續流量導向至指定區域中的相同叢集或後端，應用程式閘道可以將流量導向到叢集中的相同伺服器。  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>我們可以在前門後方部署 Azure Load Balancer 嗎？
@@ -79,7 +79,7 @@ Azure Front 大門是全域散發的多租使用者服務。 因此，Front 的�
 
 ### <a name="is-http-https-redirection-supported"></a>是否支援 HTTP->HTTPS 重新導向？
 
-可以。 事實上，Azure Front 門板支援主機、路徑和查詢字串重新導向，以及 URL 重新導向的一部分。 深入瞭解[URL](front-door-url-redirect.md)重新導向。 
+是。 事實上，Azure Front 門板支援主機、路徑和查詢字串重新導向，以及 URL 重新導向的一部分。 深入瞭解[URL](front-door-url-redirect.md)重新導向。 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>路由規則的處理順序為何？
 
@@ -93,12 +93,12 @@ Azure Front 大門是全域散發的多租使用者服務。 因此，Front 的�
  
     - 如需前端的 IPv4 後端 IP 位址範圍，請參閱[AZURE IP 範圍和服務](https://www.microsoft.com/download/details.aspx?id=56519)標籤中的*AzureFrontDoor*一節，或者您也可以使用[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中的服務標記*AzureFrontDoor。*
     - 在服務標籤中涵蓋的前端**IPv6**後端 IP 空間，不會列在 Azure IP 範圍 JSON 檔案中。 如果您要尋找明確的 IPv6 位址範圍，則目前限制為`2a01:111:2050::/44`
-    - 透過虛擬化主機 IP 位址的 Azure[基本基礎結構服務](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)： `168.63.129.16`和`169.254.169.254`
+    - 透過虛擬化主機 IP 位址的 Azure[基本基礎結構服務](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)： `168.63.129.16` 和`169.254.169.254`
 
     > [!WARNING]
     > 前端的後端 IP 空間可能會在稍後變更，不過我們會在這之前，確保我們已整合[AZURE IP 範圍和服務](https://www.microsoft.com/download/details.aspx?id=56519)標籤。 我們建議您訂閱[AZURE IP 範圍和服務](https://www.microsoft.com/download/details.aspx?id=56519)標籤，以進行任何變更或更新。
 
--    在您的 Front 門上，使用 API 版本或更`2020-01-01`高版本執行取得作業。 在 API 呼叫中，尋找 [ `frontdoorID` ] 欄位。 以欄位`frontdoorID`的值，篩選由 Front 門傳送給您後端的連入標頭 '**X-Azure-FDID**'。 
+-    在您的 Front 門上，使用 API 版本或更高版本執行取得作業 `2020-01-01` 。 在 API 呼叫中，尋找 [] `frontdoorID` 欄位。 以欄位的值，篩選由 Front 門傳送給您後端的連入標頭 '**X-Azure-FDID**' `frontdoorID` 。 您也可以在 `Front Door ID` Front 入口網站頁面的 [總覽] 區段下找到 [值]。 
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>可以在我的 Front 生命週期內變更任意傳播 IP 嗎？
 
@@ -123,7 +123,7 @@ Azure Front 大門是全域散發的多租使用者服務。 因此，Front 的�
 對路由或後端集區進行的任何更新等都是順暢的，而且會導致零停機（如果新的設定是正確的）。 憑證更新也不可部分完成，而且不會造成任何中斷，除非從「AFD 受控」切換到「使用您自己的憑證」，反之亦然。
 
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure Front 門板是否可以在虛擬網路內進行負載平衡或路由流量？
 
@@ -213,7 +213,7 @@ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_
 
 若要讓您的後端能夠順利進行 HTTPS 連線，不論是針對健康情況探查或轉送要求，HTTPS 流量可能會失敗的原因有兩個：
 
-1. **憑證主體名稱不符**：若為 HTTPS 連線，Front 門會預期您的後端會從有效的 CA 出示符合後端主機名稱的憑證。 例如，如果您的後端主機名稱設定為`myapp-centralus.contosonews.net` ，而您的後端在 TLS 交握`myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net`期間所提供的憑證沒有主體名稱，則前端會拒絕連線並產生錯誤。 
+1. **憑證主體名稱不符**：若為 HTTPS 連線，Front 門會預期您的後端會從有效的 CA 出示符合後端主機名稱的憑證。 例如，如果您的後端主機名稱設定為 `myapp-centralus.contosonews.net` ，而您的後端在 TLS 交握期間所提供的憑證沒有 `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` 主體名稱，則前端會拒絕連線並產生錯誤。 
     1. **解決方案**：雖然不建議從合規性的觀點來看，您可以藉由停用 Front 的憑證主體名稱檢查來解決此錯誤。 這會出現在 Azure 入口網站的 [設定] 和 API 的 [BackendPoolsSettings] 底下。
 2. **來自無效 ca 的後端裝載憑證**：只有來自[有效 ca](/azure/frontdoor/front-door-troubleshoot-allowed-ca)的憑證可以在後端使用 Front。 不允許來自內部 Ca 或自我簽署憑證的憑證。
 

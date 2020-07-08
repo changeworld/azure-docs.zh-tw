@@ -9,10 +9,10 @@ ms.date: 06/22/2018
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: 5e5ef3084fa4e13035fe562dd3c5ed2a37b76be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334885"
 ---
 Azure Data Lake Storage Gen1 是容納巨量資料分析工作負載的企業級超大規模存放庫。 您可以使用 Data Lake Storage Gen1，在單一位置針對作業和探索性分析，捕捉任何大小、類型和內嵌速度的資料。 您可以在 Data Lake Storage Gen1 帳戶中儲存的資料量沒有限制。

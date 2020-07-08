@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
 ms.openlocfilehash: f64892193eb6cfcce8f948b54e5557b5fa3d90ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80878235"
 ---
 ```json
@@ -21,7 +21,7 @@ ms.locfileid: "80878235"
 }
 ```
 
-下列屬性可用於`extensionBundle`：
+下列屬性可用於 `extensionBundle` ：
 
 | 屬性 | 描述 |
 | -------- | ----------- |
@@ -30,4 +30,4 @@ ms.locfileid: "80878235"
 
 配套版本隨著套件在配套中的增加而變更。 當配套中的套件以主要版本遞增時，就會發生主要版本變更。 套件組合中的主要版本變更通常會與函式執行時間的主要版本變更一致。  
 
-預設配套所安裝的目前延伸模組集合會在此[副檔名 json](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)檔案中列舉。
+預設配套所安裝的目前擴充功能集，會在此[extensions.js](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)檔案中列舉。

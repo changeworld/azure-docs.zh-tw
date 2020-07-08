@@ -4,20 +4,20 @@ description: 瞭解如何使用現有的 Azure Load Balancer 來設定虛擬機�
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/26/2020
-ms.openlocfilehash: 0db09083a2197ce72e6d6eed2381b0308239586e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 858315008434f511e3adc0a91d591d924634fc39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809492"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>使用 Azure PowerShell 設定具有現有 Azure Load Balancer 的虛擬機器擴展集
 
 在本文中，您將瞭解如何使用現有的 Azure Load Balancer 來設定虛擬機器擴展集。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶。
 - 訂用帳戶中的現有標準 sku 負載平衡器，將會在其中部署虛擬機器擴展集。
