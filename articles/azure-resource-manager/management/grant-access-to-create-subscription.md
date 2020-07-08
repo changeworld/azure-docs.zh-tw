@@ -6,16 +6,15 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: b77efd7e5cf7ff016605e0ba2e74cff9ea8dab89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6a03d5e67e859a29cb18e29223fe74134aef75fb
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75478873"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057614"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>授與建立 Azure 企業版訂用帳戶的權限 (預覽)
 
-因為您是 [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 上的 Azure 客戶，所以可以授與另一位使用者或服務主體建立由您帳戶付費的訂用帳戶。 在本文中，您將了解如何使用[角色型存取控制 (RBAC)](../../active-directory/role-based-access-control-configure.md)來共用建立訂用帳戶的能力，以及稽核訂用帳戶建立的方法。 您對於要共用的帳戶必須具有「擁有者」角色。
+因為您是 [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 上的 Azure 客戶，所以可以授與另一位使用者或服務主體建立由您帳戶付費的訂用帳戶。 在本文中，您將了解如何使用[角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md)來共用建立訂用帳戶的能力，以及稽核訂用帳戶建立的方法。 您對於要共用的帳戶必須具有「擁有者」角色。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -60,7 +59,7 @@ ms.locfileid: "75478873"
     }
     ```
 
-    使用`principalName`屬性來識別您想要授與 RBAC 擁有者存取權的帳戶。 `name`複製該帳戶的。 例如，如果您想要將 RBAC 擁有者存取權授SignUpEngineering@contoso.com與註冊帳戶，您可以```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```複製。 這是註冊帳戶的物件識別碼。 將此值貼入某處，讓您可以在下一個步驟中`enrollmentAccountObjectId`使用它做為。
+    使用 `principalName` 屬性來識別您想要授與 RBAC 擁有者存取權的帳戶。 複製 `name` 該帳戶的。 例如，如果您想要將 RBAC 擁有者存取權授與 SignUpEngineering@contoso.com 註冊帳戶，您可以複製 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` 。 這是註冊帳戶的物件識別碼。 將此值貼入某處，讓您可以在下一個步驟中使用它做為 `enrollmentAccountObjectId` 。
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -78,7 +77,7 @@ ms.locfileid: "75478873"
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    使用`principalName`屬性來識別您想要授與 RBAC 擁有者存取權的帳戶。 `ObjectId`複製該帳戶的。 例如，如果您想要將 RBAC 擁有者存取權授SignUpEngineering@contoso.com與註冊帳戶，您可以```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```複製。 將此物件識別碼貼入某處，讓您可以在下一個步驟中使用`enrollmentAccountObjectId`它做為。
+    使用 `principalName` 屬性來識別您想要授與 RBAC 擁有者存取權的帳戶。 複製 `ObjectId` 該帳戶的。 例如，如果您想要將 RBAC 擁有者存取權授與 SignUpEngineering@contoso.com 註冊帳戶，您可以複製 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` 。 將此物件識別碼貼入某處，讓您可以在下一個步驟中使用它做為 `enrollmentAccountObjectId` 。
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -109,14 +108,14 @@ ms.locfileid: "75478873"
 
     ---
 
-    使用`principalName`屬性來識別您想要授與 RBAC 擁有者存取權的帳戶。 `name`複製該帳戶的。 例如，如果您想要將 RBAC 擁有者存取權授SignUpEngineering@contoso.com與註冊帳戶，您可以```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```複製。 這是註冊帳戶的物件識別碼。 將此值貼入某處，讓您可以在下一個步驟中`enrollmentAccountObjectId`使用它做為。
+    使用 `principalName` 屬性來識別您想要授與 RBAC 擁有者存取權的帳戶。 複製 `name` 該帳戶的。 例如，如果您想要將 RBAC 擁有者存取權授與 SignUpEngineering@contoso.com 註冊帳戶，您可以複製 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` 。 這是註冊帳戶的物件識別碼。 將此值貼入某處，讓您可以在下一個步驟中使用它做為 `enrollmentAccountObjectId` 。
 
 1. <a id="userObjectId"></a>取得您想要授與 RBAC 擁有者角色之使用者或群組的物件識別碼
 
     1. 在 [Azure 入口網站中，搜尋**Azure Active Directory**。
     1. 如果您想要授與使用者存取權，請按一下左側功能表中的 [**使用者**]。 如果您想要授與群組的存取權，請按一下 [**群組**]。
     1. 選取您想要授與 RBAC 擁有者角色的使用者或群組。
-    1. 如果您選取了使用者，您會在 [設定檔] 頁面中找到物件識別碼。 如果您已選取群組，物件識別碼會在 [總覽] 頁面中。 按一下文字方塊右邊的圖示來複製**ObjectID** 。 將此貼入某處，讓您可以在下一個步驟中`userObjectId`使用它做為。
+    1. 如果您選取了使用者，您會在 [設定檔] 頁面中找到物件識別碼。 如果您已選取群組，物件識別碼會在 [總覽] 頁面中。 按一下文字方塊右邊的圖示來複製**ObjectID** 。 將此貼入某處，讓您可以在下一個步驟中使用它做為 `userObjectId` 。
 
 1. 將註冊帳戶上的 RBAC 擁有者角色授與使用者或群組
 
@@ -124,7 +123,7 @@ ms.locfileid: "75478873"
 
     # <a name="rest"></a>[REST](#tab/rest-2)
 
-    執行下列命令，將取代```<enrollmentAccountObjectId>```為您`name`在第一個步驟中複製的```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```（）。 將```<userObjectId>```取代為您從第二個步驟複製的物件識別碼。
+    執行下列命令，將取代 ```<enrollmentAccountObjectId>``` 為 `name` 您在第一個步驟中複製的（ ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ）。 將取代 ```<userObjectId>``` 為您從第二個步驟複製的物件識別碼。
 
     ```json
     PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
@@ -158,7 +157,7 @@ ms.locfileid: "75478873"
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell-2)
 
-    執行下列[new-azroleassignment](../../active-directory/role-based-access-control-manage-access-powershell.md)命令，並將取代```<enrollmentAccountObjectId>```為第一個`ObjectId`步驟中所收集的（```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```）。 取代```<userObjectId>```為第二個步驟中所收集的物件識別碼。
+    執行下列[new-azroleassignment](../../role-based-access-control/role-assignments-powershell.md)命令，並將取代 ```<enrollmentAccountObjectId>``` 為 `ObjectId` 第一個步驟中所收集的（ ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ）。 取代為 ```<userObjectId>``` 第二個步驟中所收集的物件識別碼。
 
     ```azurepowershell-interactive
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -166,7 +165,7 @@ ms.locfileid: "75478873"
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-2)
 
-    執行下列[az role 指派 create](../../active-directory/role-based-access-control-manage-access-azure-cli.md)命令，並將```<enrollmentAccountObjectId>```取代為`name`您在第一個步驟中複製```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```的（）。 取代```<userObjectId>```為第二個步驟中所收集的物件識別碼。
+    執行下列[az role 指派 create](../../role-based-access-control/role-assignments-cli.md)命令，並將取代 ```<enrollmentAccountObjectId>``` 為 `name` 您在第一個步驟中複製的（ ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ）。 取代為 ```<userObjectId>``` 第二個步驟中所收集的物件識別碼。
 
     ```azurecli-interactive
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -180,7 +179,7 @@ ms.locfileid: "75478873"
 
 若要追蹤透過此 API 建立的訂用帳戶，請使用[租用戶活動記錄 API](/rest/api/monitor/tenantactivitylogs)。 目前無法使用 PowerShell、CLI 或 Azure 入口網站來追蹤訂用帳戶的建立。
 
-1. 以 Azure AD 租用戶的租用戶管理員身分[提高存取權](../../active-directory/role-based-access-control-tenant-admin-access.md)，然後將 `/providers/microsoft.insights/eventtypes/management`範圍的「讀者」角色指派給稽核使用者。
+1. 以 Azure AD 租用戶的租用戶管理員身分[提高存取權](../../role-based-access-control/elevate-access-global-admin.md)，然後將 `/providers/microsoft.insights/eventtypes/management`範圍的「讀者」角色指派給稽核使用者。
 1. 以稽核使用者身分呼叫[租用戶活動記錄 API](/rest/api/monitor/tenantactivitylogs)，以查看訂用帳戶建立活動。 範例：
 
     ```

@@ -6,17 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 368276f75128c80b8df326a26acf26c841e9f68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f7c7358dc405b3db2b3f014bb99a96fa56580314
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742684"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213919"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中分割資料表
 
@@ -237,7 +236,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>在一個步驟中將新資料載入包含資料的分割區
 
-將資料載入分割區切換是一個方便的方式，可讓使用者在新的資料中看到新資料時，不會看見該資料表中的新資料。  在忙碌的系統上處理與分割區切換相關聯的鎖定爭用時，可能會造成挑戰。  若要清除分割區中的現有資料，則`ALTER TABLE`需要用來切換移出資料。  然後， `ALTER TABLE`另一個則需要在新資料中切換。  在 Synapse SQL 集區中`TRUNCATE_TARGET` ， `ALTER TABLE`命令支援此選項。  With `TRUNCATE_TARGET` `ALTER TABLE`命令會使用新的資料來覆寫分割區中的現有資料。  以下範例會使用`CTAS`來建立包含現有資料的新資料表、插入新資料，然後將所有資料切換回目標資料表，並覆寫現有的資料。
+將資料載入分割區切換是一個方便的方式，可讓使用者在新的資料中看到新資料時，不會看見該資料表中的新資料。  在忙碌的系統上處理與分割區切換相關聯的鎖定爭用時，可能會造成挑戰。  若要清除分割區中的現有資料，則 `ALTER TABLE` 需要用來切換移出資料。  然後，另一個則 `ALTER TABLE` 需要在新資料中切換。  在 Synapse SQL 集區中， `TRUNCATE_TARGET` 命令支援此選項 `ALTER TABLE` 。  With `TRUNCATE_TARGET` 命令會使用 `ALTER TABLE` 新的資料來覆寫分割區中的現有資料。  以下範例會使用 `CTAS` 來建立包含現有資料的新資料表、插入新資料，然後將所有資料切換回目標資料表，並覆寫現有的資料。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]

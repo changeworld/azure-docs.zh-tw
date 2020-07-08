@@ -9,12 +9,11 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: e69b041a2e4c8a0715adb6ab126a3aede42f7dde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 5044993e04dabc363a7a4ee49abb66285bcd7521
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338253"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何擴充虛擬機器的 OS 磁碟機
 
@@ -160,7 +159,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>調整資料磁碟大小
 
-本文主要著重於擴充 VM 的 OS 磁碟，但指令碼也可用於擴充連結到 VM 的資料磁碟。 例如，若要擴充連接至 VM 的第一個資料磁碟，請將 `StorageProfile` 的 `OSDisk` 物件取代成 `DataDisks` 陣列，並使用數值索引取得第一個連接的資料磁碟的參考，如下所示︰
+本文主要著重於擴充 VM 的 OS 磁碟，但指令碼也可用於擴充連結到 VM 的資料磁碟。 如果只展開資料磁片，則**不**需要解除配置 VM。 例如，若要擴充連接至 VM 的第一個資料磁碟，請將 `StorageProfile` 的 `OSDisk` 物件取代成 `DataDisks` 陣列，並使用數值索引取得第一個連接的資料磁碟的參考，如下所示︰
 
 **受控磁碟**
 
@@ -201,9 +200,9 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 2.  開啟命令提示字元，然後鍵入 **diskpart**。
 
-2.  在 **DISKPART** 提示處，鍵入 `list volume`。 記下您想要擴充的磁碟區。
+2.  在 **DISKPART** 提示中鍵入 `list volume`。 記下您想要擴充的磁碟區。
 
-3.  在 **DISKPART** 提示處，鍵入 `select volume <volumenumber>`。 如此會選取您想在相同磁碟上擴充成連續空間的磁碟區 *volumenumber*。
+3.  在 **DISKPART** 提示中鍵入 `select volume <volumenumber>`。 如此會選取您想在相同磁碟上擴充成連續空間的磁碟區 *volumenumber*。
 
 4.  在 **DISKPART** 提示處，鍵入 `extend [size=<size>]`。 如此會以 *size* (MB) 為單位，擴充選取的磁碟區。
 

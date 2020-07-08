@@ -4,12 +4,11 @@ description: 描述如何使用 Azure 部署管理員在許多區域中部署服
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 424cd79a6c63200e1f101cf178b1fd2c9083161e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76152522"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057920"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>使用 Azure Deployment Manager 啟用安全部署實務（公開預覽）
 
@@ -30,7 +29,7 @@ Azure Deployment Manager 處於預覽狀態。 提供[意見](https://aka.ms/adm
 
 其他資源：
 
-- [Azure 部署管理員 REST API 參考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
+- [Azure 部署管理員 REST API 參考](/rest/api/deploymentmanager/)。
 - [教學課程：使用 Azure Deployment Manager 搭配 Resource Manager 範本](./deployment-manager-tutorial.md)。
 - [教學課程：在 Azure Deployment Manager 中使用健康情況檢查](./deployment-manager-tutorial-health-check.md)。
 - [Azure 部署管理員範例](https://github.com/Azure-Samples/adm-quickstart)。
@@ -193,7 +192,7 @@ Azure Deployment Manager 處於預覽狀態。 提供[意見](https://aka.ms/adm
 
 ### <a name="steps"></a>步驟
 
-您可以定義要在部署作業之前或之後執行的步驟。 目前只有`wait`步驟和 ' healthCheck ' 步驟可供使用。
+您可以定義要在部署作業之前或之後執行的步驟。 目前只有 `wait` 步驟和 ' healthCheck ' 步驟可供使用。
 
 在繼續進行之前，等候步驟會暫停部署。 這可讓您確認在部署下一個服務單位之前，您的服務正在如預期般執行。 下列範例顯示等候步驟的一般格式。
 
@@ -300,7 +299,7 @@ Azure Deployment Manager 處於預覽狀態。 提供[意見](https://aka.ms/adm
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "deployPackageUri": {

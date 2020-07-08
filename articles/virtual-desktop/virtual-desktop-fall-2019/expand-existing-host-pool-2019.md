@@ -4,21 +4,20 @@ description: 如何在 Windows 虛擬桌面中使用新的工作階段主機擴�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4313f36a0b250be9646c6658b98f15037374729
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615522"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214276"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的工作階段主機擴充現有的主機集區
 
 >[!IMPORTANT]
->此內容適用于不支援 Azure Resource Manager Windows 虛擬桌面物件的秋季2019版。 如果您嘗試管理春季2020更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../expand-existing-host-pool.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../expand-existing-host-pool.md)。
 
 當您在主機集區中增加使用量時，您可能需要使用新的工作階段主機擴充現有的主機集區，以處理新的負載。
 
@@ -57,12 +56,12 @@ ms.locfileid: "82615522"
      - 如果您已建立具有 Azure Marketplace 供應專案的原始主機集區，請選取 [以**wvd**開頭的部署]。
      - 如果您已建立具有 GitHub Azure Resource Manager 範本的原始主機集區，請選取名為 [ **Microsoft 範本**] 的部署。
 6. 選取 [重新**部署**]。
-     
+
      >[!NOTE]
      >如果您在選取 [重新**部署**] 時不會自動重新部署範本，請在瀏覽器左側的面板中選取 [**範本**]，然後選取 [**部署**]。
 
 7. 選取包含現有主機集區中目前工作階段主機 Vm 的資源群組。
-     
+
      >[!NOTE]
      >如果您看到錯誤訊息，指出您所輸入的資源群組是正確的，則請選取其他資源群組，然後選取原始的資源群組。
 
@@ -85,7 +84,7 @@ ms.locfileid: "82615522"
 3.    針對 [*地區*]，選取現有主機集區工作階段主機 vm 所在的相同區域。
 4.    在 [ *Hostpool 名稱*] 中，輸入現有主機集區的名稱。
 5.    針對 [*桌上型電腦類型*]，選取符合現有主機集區的桌面類型。
-6.    針對 [*預設桌面使用者*]，請輸入以逗號分隔的清單，其中列出您想要登入 Windows 虛擬桌面用戶端的任何其他使用者，並在 Azure Marketplace 供應專案完成後存取桌面。 例如，如果您想要user3@contoso.com指派和user4@contoso.com存取，請輸入user3@contoso.com、user4@contoso.com。
+6.    針對 [*預設桌面使用者*]，請輸入以逗號分隔的清單，其中列出您想要登入 Windows 虛擬桌面用戶端的任何其他使用者，並在 Azure Marketplace 供應專案完成後存取桌面。 例如，如果您想要指派 user3@contoso.com 和 user4@contoso.com 存取，請輸入 user3@contoso.com 、 user4@contoso.com 。
 7.    選取 **[下一步：設定虛擬機器]**。
 
 >[!NOTE]
@@ -96,7 +95,7 @@ ms.locfileid: "82615522"
 此區段中的所有參數值都應該符合您第一次建立主機集區和工作階段主機 Vm 時所提供的內容，但 Vm 總數除外。 您輸入的 Vm 數目會是擴充主機集區中的 Vm 數目：
 
 1. 選取符合現有工作階段主機 Vm 的 VM 大小。
-    
+
     >[!NOTE]
     >如果您要尋找的特定 VM 大小未出現在 VM 大小選取器中，原因是我們尚未將其上架到 Azure Marketplace 工具中。 若要要求某個 VM 大小，請在 [Windows 虛擬桌面 UserVoice 論壇](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)中建立要求或附議現有要求。
 
@@ -117,8 +116,8 @@ ms.locfileid: "82615522"
 
 此區段中的所有參數值都應該符合您第一次建立主機集區和工作階段主機 Vm 時所提供的內容：
 
-1. 針對 [Windows 虛擬桌面租用戶群組名稱]**，輸入包含您租用戶的租用戶群組。 除非系統將特定租用戶群組名稱提供給您，否則將它保留為預設值。
-2. 針對 [Windows 虛擬桌面租用戶名稱]**，輸入您將在其中建立此主機集區的租用戶名稱。
+1. 針對 [Windows 虛擬桌面租用戶群組名稱]  ，輸入包含您租用戶的租用戶群組。 除非系統將特定租用戶群組名稱提供給您，否則將它保留為預設值。
+2. 針對 [Windows 虛擬桌面租用戶名稱]  ，輸入您將在其中建立此主機集區的租用戶名稱。
 3. 指定您第一次建立主機集區和工作階段主機 Vm 時所使用的相同認證。 如果您使用服務主體，請輸入您的服務主體所在之 Azure Active Directory 實例的識別碼。
 4. 選取 **[下一步]： [檢查 + 建立]**。
 

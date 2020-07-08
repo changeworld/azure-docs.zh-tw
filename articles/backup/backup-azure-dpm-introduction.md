@@ -2,13 +2,12 @@
 title: 準備 DPM 服務器以備份工作負載
 description: 在本文中，您將瞭解如何使用 Azure 備份服務，為 Azure 的 System Center Data Protection Manager （DPM）備份做準備。
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: 2119d46ca6102286ca879777058a49938b501ad6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/11/2020
+ms.openlocfilehash: 7c2b811685ec9ea5f8fe752a5a1c73611a624b62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84718320"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>準備使用 System Center DPM 將工作負載備份到 Azure
 
@@ -42,13 +41,13 @@ Azure VM 上的 DPM | System Center 2012 R2 (含 DPM 2012 R2 更新彙總套件 
 實體伺服器上的 DPM | System Center 2012 SP1 或更新版本；System Center 2012 R2。
 Hyper-V VM 上的 DPM | System Center 2012 SP1 或更新版本；System Center 2012 R2。
 VMware VM 上的 DPM | System Center 2012 R2 (含更新彙總套件 5 或更新版本)。
-元件 | DPM 服務器應該已安裝 Windows PowerShell 和 .NET Framework 4.5。
+單元 | DPM 服務器應該已安裝 Windows PowerShell 和 .NET Framework 4.5。
 支援的應用程式 | [了解](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) DPM 可備份的項目。
 支援的檔案類型 | 以下是可使用 Azure 備份來備份的檔案類型：加密 (僅限完整備份)；壓縮 (支援增量備份)；疏鬆 (支援增量備份)；壓縮和疏鬆 (視為疏鬆來處理)。
 不支援的檔案類型 | 區分大小寫檔案系統上的伺服器；永久連結 (略過)；重新剖析點 (略過)；加密和壓縮 (略過)；加密和疏鬆 (略過)；壓縮資料流；剖析資料流。
 本機儲存體 | 您想要備份的每部電腦都必須有本機可用儲存空間，這至少是所備份資料大小的5%。 例如，備份 100GB 的資料時，在臨時位置中至少需要 5 GB 的可用空間。
 保存庫儲存體 | 您可以備份到 Azure 備份保存庫的資料量沒有限制，但是資料來源（例如虛擬機器或資料庫）的大小不應超過 54400 GB。
-Azure ExpressRoute | 如果 Azure ExpressRoute 設定了私人或 Microsoft 對等互連，則無法用來將資料備份至 Azure。<br/><br/> 如果 Azure ExpressRoute 已設定公用對等互連，則可用於將資料備份至 Azure。<br/><br/> **注意：** 新線路的公用對等互連已被取代。
+Azure ExpressRoute | 您可以使用公用對等互連（適用于舊的線路）和 Microsoft 對等互連，透過 Azure ExpressRoute 來備份您的資料。 不支援透過私用對等互連進行備份。<br/><br/> **使用公用對等互連**：請確認存取下列網域/位址：<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **使用 Microsoft 對等互連**，選取下列服務/區域和相關的 [社區] 值：<br/><br/>-Azure Active Directory （12076:5060）<br/><br/>-Microsoft Azure 區域（根據復原服務保存庫的位置）<br/><br/>-Azure 儲存體（根據您的復原服務保存庫的位置）<br/><br/>如需詳細資訊，請參閱[ExpressRoute 路由需求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。<br/><br/>**注意**：新線路的公用對等互連已被取代。
 Azure 備份代理程式 | 如果 DPM 執行於 System Center 2012 SP1 上，請為 DPM SP1 安裝彙總套件 2 或更新版本。 這是代理程式安裝的必要條件。<br/><br/> 本文將說明如何部署最新版的 Azure 備份代理程式，也就是 Microsoft Azure 復原服務 (MARS) 代理程式。 如果您已部署舊版，請更新為最新版本，以確保備份可如預期運作。
 
 開始之前，您必須具有已啟用 Azure 備份功能的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 請閱讀 [Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
@@ -103,7 +102,7 @@ Azure 備份代理程式 | 如果 DPM 執行於 System Center 2012 SP1 上，請
 
     ![開啟保存庫功能表](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 
-4. 在 [**屬性** > **備份認證**] 中，按一下 [**下載**]。 入口網站會使用保存庫名稱和目前日期的組合來產生保存庫認證檔，並使其可供下載。
+4. 在 [**屬性**  >  **備份認證**] 中，按一下 [**下載**]。 入口網站會使用保存庫名稱和目前日期的組合來產生保存庫認證檔，並使其可供下載。
 
     ![下載](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
@@ -131,7 +130,7 @@ Azure 備份所備份的每部電腦都必須安裝備份代理程式，也就�
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>在保存庫中註冊 DPM 伺服器
 
-1. 在 [DPM 管理員主控台] > [管理]**** 中，按一下 [線上]****。 選取 [註冊]  。 [註冊伺服器精靈] 隨即開啟。
+1. 在 [DPM 管理員主控台] > [管理]**** 中，按一下 [線上]****。 選取 [註冊]。 [註冊伺服器精靈] 隨即開啟。
 2. 在 [Proxy 組態]**** 中，視需要指定 Proxy 設定。
 
     ![Proxy 組態](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)

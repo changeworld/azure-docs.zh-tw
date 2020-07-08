@@ -4,9 +4,7 @@ description: 了解如何從 Azure 將安全的推播通知傳送至 iOS 應用�
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
@@ -16,12 +14,11 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 96d1dd514f6fb9c11d7194714337583d6b4387cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aa84ad9f48f79a77bad1445dadc8c5c965b13655
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75530743"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248695"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure 通知中心安全推播
 
@@ -30,7 +27,7 @@ ms.locfileid: "75530743"
 > * [iOS](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)
 > * [Android](notification-hubs-aspnet-backend-android-secure-google-gcm-push-notification.md)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平台的大規模推播基礎結構，因而可大幅簡化消費者和企業應用程式在行動平台上的推播通知實作。
 
@@ -50,7 +47,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 本安全推播教學課程說明如何以安全的方式傳送推播通知。 本教學課程會以 [通知使用者](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) 教學課程為基礎，因此您應先完成該教學課程中的步驟。
 
 > [!NOTE]
-> 本教學課程假設您已建立並設定通知中樞，如 [開始使用通知中樞 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md)中所述。
+> 本教學課程假設您已建立並設定通知中樞，如[使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)中所述。
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 

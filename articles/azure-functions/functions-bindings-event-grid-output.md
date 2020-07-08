@@ -5,17 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 4df0faf3f74ef3423dcd42c2c76af8b39a889a92
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.custom: fasttrack-edit, tracking-python
+ms.openlocfilehash: 2eaa2202ac6c2f0fac0f53c6eeb2f5d08c764f1e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773957"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413343"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>適用於 Azure Functions 的 Azure 事件方格輸出繫結
 
-使用事件方格輸出繫結，以將事件寫入至自訂事件。 您必須具有[適用於自訂主題的有效存取金鑰](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)。
+使用事件方格輸出繫結，以將事件寫入至自訂事件。 您必須具有[適用於自訂主題的有效存取金鑰](../event-grid/security-authenticate-publishing-clients.md)。
 
 如需安裝和設定詳細資料的相關資訊，請參閱[概觀](./functions-bindings-event-grid.md)。
 
@@ -162,7 +161,7 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例示範 *function.json* 檔案中的觸發程序繫結，以及使用此繫結的 [Python 函式](functions-reference-python.md)。 然後，其會在事件中傳送至自訂事件方格主題，如 `topicEndpointUri` 所指定。
+下列範例示範 *function.json* 檔案中的觸發程序繫結，以及使用此繫結的 [Python 函式](functions-reference-python.md)。 然後，它會將事件傳送至自訂主題，如所指定 `topicEndpointUri` 。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -187,7 +186,7 @@ module.exports = function(context) {
 }
 ```
 
-以下是透過設定 `EventGridOutputEvent`，將事件傳送至自訂事件方格主題的 Python 範例：
+以下是透過設定，將事件傳送至自訂主題的 Python 範例 `EventGridOutputEvent` ：
 
 ```python
 import logging

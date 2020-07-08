@@ -11,7 +11,6 @@ ms.reviewer: zivr
 ms.custom: mimckitt
 ms.openlocfilehash: 8e455d4d016f97a466838c07fc7af2422f72cc00
 ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83727092"

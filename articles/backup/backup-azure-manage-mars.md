@@ -4,12 +4,11 @@ description: 瞭解如何使用 Azure 備份服務來管理和監視 Microsoft A
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025096"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057818"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 備份服務管理 Microsoft Azure 復原服務（MARS）代理程式備份
 
@@ -22,7 +21,7 @@ ms.locfileid: "82025096"
 - [**新增專案**] 僅使用此選項來新增要備份的新專案。 若要移除現有的專案，請使用 [**移除專案**] 或 [**排除設定**] 選項。  
 - [**移除專案**] 使用此選項可移除要備份的專案。
   - 使用**排除設定**來移除磁片區中的所有專案，而不是**移除專案**。
-  - 清除磁片區中的所有選取專案時，會在最後一次備份時，根據保留設定保留舊的專案備份，而不需要修改範圍。
+  - 清除磁片區中的所有選取專案時，會根據上一次備份時的保留設定來保留舊的專案備份，而不需要修改範圍。
   - 重新選取這些專案，會導致第一次完整備份，而新的原則變更不會套用到舊的備份。
   - 取消取消全磁片區會保留過去的備份，而不需要任何範圍來修改保留原則。
 - **排除設定**使用此選項可排除要備份的特定專案。
@@ -106,7 +105,7 @@ ms.locfileid: "82025096"
 1. 在 [**選取原則專案**] 頁面中，選取 [**修改檔案和資料夾的備份排程**]，然後按 **[下一步]**。
 
     ![修改或停止排定的備份。](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. 從 [**修改或停止排程備份**] 頁面，選取 [**停止使用此備份排程]，但保留儲存的備份，直到重新開機排程為止**。 然後，選取 [下一步]  。
+1. 從 [**修改或停止排程備份**] 頁面，選取 [**停止使用此備份排程]，但保留儲存的備份，直到重新開機排程為止**。 然後，選取 [下一步]。
 
     ![修改或停止排定的備份。](./media/backup-azure-manage-mars/stop-schedule-backup.png)
 1. 在 [**暫停排程備份**] 中，查看資訊，然後按一下 **[完成]**。
@@ -117,7 +116,7 @@ ms.locfileid: "82025096"
 ### <a name="stop-protection-and-delete-backup-data"></a>停止保護並刪除備份資料
 
 1. 開啟 MARS 管理主控台，移至 [**動作**] 窗格，然後選取 [**排程備份**]。
-2. 從 [**修改或停止排程備份**] 頁面，選取 [**停止使用此備份排程] 並刪除所有儲存的備份**。 然後，選取 [下一步]  。
+2. 從 [**修改或停止排程備份**] 頁面，選取 [**停止使用此備份排程] 並刪除所有儲存的備份**。 然後，選取 [下一步]。
 
     ![修改或停止排定的備份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 
@@ -125,7 +124,7 @@ ms.locfileid: "82025096"
 
     ![停止排程的備份。](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. 系統會提示您輸入您必須手動產生的安全性 PIN 碼（個人識別碼）。 若要這麼做，請先登入 Azure 入口網站。
-5. 移至 [復原**服務保存庫** > ] [**設定** > ] [**屬性**]。
+5. 移至 [復原**服務保存庫**] [設定] [  >  **Settings**  >  **屬性**]。
 6. 在 [**安全性 PIN**] 底下，選取 [**產生**]。 複製此 PIN。 PIN 僅適用于五分鐘。
 7. 在管理主控台中，貼上 PIN，然後選取 **[確定]**。
 
@@ -156,7 +155,7 @@ ms.locfileid: "82025096"
 
 複雜密碼是用來加密和解密資料，同時使用 MARS 代理程式在 Azure 中備份或還原內部部署或本機電腦。 如果遺失或忘記複雜密碼，您可以依照下列步驟重新產生複雜密碼（前提是您的電腦仍已向復原服務保存庫註冊，並已設定備份）：
 
-- 從 MARS 代理程式主控台，移至 [**動作] 窗格** > **變更屬性**>]。 然後移至 [**加密]** 索引標籤。<br>
+- 從 MARS 代理程式主控台，移至 [**動作] 窗格**  >  **變更屬性**>]。 然後移至 [**加密]** 索引標籤。<br>
 - 選取 [**變更複雜密碼**] 核取方塊。<br>
 - 輸入新的複雜密碼，或按一下 [**產生複雜密碼**]。
 - 按一下 **[流覽]** 以儲存新的複雜密碼。
@@ -167,6 +166,27 @@ ms.locfileid: "82025096"
 
     ![產生複雜密碼。](./media/backup-azure-manage-mars/passphrase2.png)
 - 確保複雜密碼安全地儲存在替代位置（來源機器以外），最好是在 Azure Key Vault 中。 如果您有多部電腦要使用 MARS 代理程式進行備份，請追蹤所有的複雜密碼。
+
+## <a name="managing-backup-data-for-unavailable-machines"></a>管理無法使用之機器的備份資料
+
+本節討論使用 MARS 保護的來源機器已無法再使用的案例，因為它已被刪除、損毀、感染惡意程式碼/勒索軟體或已解除委任。
+
+對於這些機器，Azure 備份服務會根據備份原則中指定的保留規則，確保最後一個復原點不會過期（也就是不會被剪除）。 因此，您可以安全地還原電腦。  請考慮您可以對已備份資料執行的下列案例：
+
+### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>案例1：來源電腦無法使用，而且您不再需要保留備份資料
+
+- 您可以使用本文中所列的步驟，從 Azure 入口網站刪除已備份的[資料。](backup-azure-delete-vault.md#delete-protected-items-on-premises)
+
+### <a name="scenario-2-the-source-machine-is-unavailable-and-you-need-to-retain-backup-data"></a>案例2：來源電腦無法使用，而且您需要保留備份資料
+
+管理 MARS 的備份原則是透過 MARS 主控台完成，而不是透過入口網站。 如果您需要在現有復原點到期之前延伸保留設定，則需要還原電腦、安裝 MARS 主控台，並擴充原則。
+
+- 若要還原電腦，請執行下列步驟：
+  - [將 VM 還原至替代目的電腦](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  - 使用與來源電腦相同的主機名稱來重新建立目的電腦
+  - 安裝代理程式，並使用相同的複雜密碼重新註冊到相同的保存庫
+  - 啟動 MARS 用戶端，以根據您的需求擴充保留期間
+- 您剛還原的電腦（以 MARS 保護）將繼續進行備份。  
 
 ## <a name="next-steps"></a>後續步驟
 

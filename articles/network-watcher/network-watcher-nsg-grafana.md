@@ -9,17 +9,16 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: f038412079ad0620a445b85e4bbc3c325e1aa211
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4d07feb54a689c32e119d997275416a5dd8f0aad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84725081"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>使用網路監看員和 Grafana 來管理和分析網路安全性群組流量記錄
 
@@ -27,7 +26,7 @@ ms.locfileid: "82100102"
 
 您可以在已啟用流量記錄的網路中擁有許多個 NSG。 這樣的記錄資料量會讓您在剖析以及從記錄中取得見解時變得很麻煩。 本文提供了可使用 Grafana (開放原始碼的繪圖工具)、ElasticSearch (分散式的搜尋和分析引擎) 以及 Logstash (開放原始碼的伺服器端資料處理管線) 來集中管理這些 NSG 流量記錄的解決方案。  
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 NSG 流量記錄可使用網路監看員來啟用，並且會儲存在 Azure Blob 儲存體中。 Logstash 外掛程式可用來從 Blob 儲存體連線和處理流量記錄，並將記錄傳送到 ElasticSearch。  流量記錄儲存在 ElasticSearch 後，就可供進行分析並於 Grafana 的自訂儀表板中視覺化呈現。
 

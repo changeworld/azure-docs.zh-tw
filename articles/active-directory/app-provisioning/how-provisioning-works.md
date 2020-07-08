@@ -2,21 +2,20 @@
 title: 了解 Azure AD 佈建的運作方式 | Microsoft Docs
 description: 了解 Azure AD 佈建的運作方式
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/20/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 533e38206b9a85b449880d88c9ff969c051fac53
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 38ddfad179a8ef459b5c10f84619a836193ee092
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712225"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781645"
 ---
 # <a name="how-provisioning-works"></a>佈建運作方式
 
@@ -172,7 +171,7 @@ Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在�
 
 當使用者不應再有存取權時，Azure AD 佈建服務會藉由取消佈建帳戶，將來源和目標系統保持同步。 
 
-當應用程式支援虛刪除 (active = false 的更新要求)，且發生下列任何事件時，Azure AD 佈建服務會將應用程式中的使用者虛刪除：
+當應用程式支援虛刪除（具有 active = false 的 update 要求）且發生下列任何事件時，Azure AD 布建服務會將應用程式中的使用者虛刪除：
 
 * 在中 Azure AD 刪除使用者帳戶
 *   從應用程式取消指派使用者

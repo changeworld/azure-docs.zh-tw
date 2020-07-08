@@ -9,21 +9,20 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 462f8dafdffa7ee01e6ccf7945a1abfdff90db42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dc23a0a68471b82c990d5d8a3086e2e71e88d0c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513932"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>使用 StorSimple 裝置管理員服務來檢視和管理作業 (Update 3 和更新版本)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 [作業]**** 刀鋒視窗提供單一中央入口網站，可針對連接到 StorSimple 裝置管理員服務的裝置，檢視及管理在裝置上啟動的作業。 您可以針對多個裝置，檢視已排程、執行中、完成、已取消和失敗的工作。 結果會以表格式格式呈現。
 
 ![[作業] 刀鋒視窗](./media/storsimple-8000-manage-jobs-u2/jobs1.png)

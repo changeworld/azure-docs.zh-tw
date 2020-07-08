@@ -2,23 +2,23 @@
 title: 將應用程式驗證從 AD FS 移至 Azure Active Directory
 description: 本文旨在協助組織了解如何將應用程式移至 Azure AD (內容著重於同盟 SaaS 應用程式)。
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 04/01/2020
-ms.author: baselden
+ms.author: kenwith
+ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b777cce9b704be558460edf20cf243258c160b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 33b67c836be3395061e33b5988a4bb06fa5ee20f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608546"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>將應用程式驗證從 Active Directory 同盟服務移至 Azure Active Directory
 
@@ -224,7 +224,7 @@ LOB 應用程式是由您的組織在內部開發，或以已安裝在您資料�
 
 | 元素| 設定值 |
 | - | - |
-| 識別提供者簽發者| HTTPs：\//sts.windows.net/{tenant-id}/ |
+| 識別提供者簽發者| HTTPs： \/ /sts.windows.net/{tenant-id}/ |
 | 識別提供者登入 URL| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
 | 識別提供者登出 URL| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
 | 同盟中繼資料位置| [https://login.windows.net/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={application-id}](https://login.windows.net/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={application-id}) |
@@ -239,8 +239,8 @@ SaaS 應用程式必須知道要將驗證要求傳送到何處，以及如何驗
 | **IdP 登入 URL** <p>從應用程式的觀點來看，IdP 的登入 URL （使用者會被重新導向以進行登入）。| AD FS 登入 URL 是 AD FS federation service 名稱後面接著 "/adfs/ls/." <p>例如：`https://fs.contoso.com/adfs/ls/`| 以您的租使用者識別碼取代 {tenant-id}。 <p> 針對使用 SAML-P 通訊協定的應用程式：[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>針對使用 WS-同盟通訊協定的應用程式：[https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
 | **IdP 登出 URL**<p>從應用程式的觀點來看，IdP 的登出 URL （使用者選擇登出應用程式時會重新導向）。| 「登出 URL」與「登入 URL」相同，或附加 "wa = wsignout1.0 1.0" 的相同 URL。 例如：`https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| 以您的租使用者識別碼取代 {tenant-id}。<p>針對使用 SAML-P 通訊協定的應用程式：<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> 針對使用 WS-同盟通訊協定的應用程式：[https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
 | **權杖簽署憑證**<p>IdP 會使用憑證的私密金鑰來簽署已發行的權杖。 它會驗證權杖是否來自應用程式設定要信任的相同 IdP。| 在 AD FS 管理的 [憑證]**** 之下可找到 AD FS 權杖簽署憑證。| 在 [ **SAML 簽署憑證**] 標頭底下，于應用程式的 [**單一登入] 屬性**的 Azure 入口網站中找到它。 您可以在該處下載憑證以便上傳至應用程式。  <p>如果應用程式有一個以上的憑證，您可以在同盟中繼資料 XML 檔案中找到所有憑證。 |
-| **識別碼/「簽發者」**<p>從應用程式觀點來看的 IdP 識別碼（有時稱為「簽發者識別碼」）。<p>在 SAML 權杖中，值會顯示為 Issuer 元素。| AD FS 的識別碼通常是**服務 > 編輯同盟服務屬性**] 下 AD FS 管理中的同盟服務識別碼。 例如：`http://fs.contoso.com/adfs/services/trust`| 以您的租使用者識別碼取代 {tenant-id}。<p>HTTPs：\//sts.windows.net/{tenant-id}/ |
-| **IdP 同盟中繼資料**<p>IdP 的公開可用同盟中繼資料位置。 (有些應用程式會使用同盟中繼資料，作為系統管理員個別設定 URL、識別碼和權杖簽署憑證的替代方式)。| 在 [服務 > 端點] 下的 AD FS 管理中，尋找 AD FS 的同盟中繼資料 URL **> 中繼資料 > 類型：同盟中繼資料**。 例如：`https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Azure AD 的對應值會遵循模式[https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml)。 將 {TenantDomainName} 取代為您的租使用者名稱，格式為 "contoso.onmicrosoft.com"。   <p>如需詳細資訊，請參閱[同盟中繼資料](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)。 |
+| **識別碼/「簽發者」**<p>從應用程式觀點來看的 IdP 識別碼（有時稱為「簽發者識別碼」）。<p>在 SAML 權杖中，值會顯示為 Issuer 元素。| AD FS 的識別碼通常是**服務 > 編輯同盟服務屬性**] 下 AD FS 管理中的同盟服務識別碼。 例如：`http://fs.contoso.com/adfs/services/trust`| 以您的租使用者識別碼取代 {tenant-id}。<p>HTTPs： \/ /sts.windows.net/{tenant-id}/ |
+| **IdP 同盟中繼資料**<p>IdP 的公開可用同盟中繼資料位置。 (有些應用程式會使用同盟中繼資料，作為系統管理員個別設定 URL、識別碼和權杖簽署憑證的替代方式)。| 在 [服務 > 端點] 下的 AD FS 管理中，尋找 AD FS 的同盟中繼資料 URL **> 中繼資料 > 類型：同盟中繼資料**。 例如：`https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Azure AD 的對應值會遵循模式 [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) 。 將 {TenantDomainName} 取代為您的租使用者名稱，格式為 "contoso.onmicrosoft.com"。   <p>如需詳細資訊，請參閱[同盟中繼資料](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)。 |
 
 
 ## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>代表 Azure AD 中 AD FS 安全性原則
@@ -397,7 +397,7 @@ AD FS 2016 有數個內建的存取控制原則可供您選擇：
 在此表中，我們列出了一些實用的 [允許] 和 [例外] 選項，以及它們如何對應到 Azure AD。 
 
 
-| | 如何在 Azure AD 中設定允許選項？| 如何在 Azure AD 中設定 Except 選項？ |
+| 選項 | 如何在 Azure AD 中設定允許選項？| 如何在 Azure AD 中設定 Except 選項？ |
 | - | - | - |
 | 從特定網路| 對應至 Azure AD 中的[命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)| 針對[信任的位置](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)使用**排除**選項 |
 | 從特定群組| [設定使用者/群組指派](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| 在使用者和群組中使用**排除**選項 |
@@ -421,7 +421,7 @@ AD FS 2016 有數個內建的存取控制原則可供您選擇：
 
 ### <a name="setup-user-self-provisioning"></a>設定使用者自我布建 
 
-某些 SaaS 應用程式支援在第一次登入應用程式時自行布建使用者的能力。 在 Azure Active Directory （Azure AD）中，應用程式布建一詞指的是在使用者需要存取的雲端（[SaaS](https://azure.microsoft.com/overview/what-is-saas/)）應用程式中自動建立使用者身分識別和角色。 已遷移的使用者在 SaaS 應用程式中將會有一個帳戶。 在遷移後新增的任何新使用者都必須布建。 在應用程式遷移之後，測試[SaaS 應用](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)程式布建。
+某些 SaaS 應用程式支援在第一次登入應用程式時自行布建使用者的能力。 在 Azure Active Directory (Azure AD) 中，應用程式佈建一詞是指在使用者需要存取的雲端 ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) 應用程式中，自動建立使用者身分識別和角色。 已遷移的使用者在 SaaS 應用程式中將會有一個帳戶。 在遷移後新增的任何新使用者都必須布建。 在應用程式遷移之後，測試[SaaS 應用](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)程式布建。
 
 ### <a name="sync-external-users-in-azure-ad"></a>同步 Azure AD 中的外部使用者
 
@@ -446,11 +446,11 @@ AD FS 2016 有數個內建的存取控制原則可供您選擇：
 請遵循這篇文章中詳述的遷移程式。
 
 然後移至 [ [Azure 入口網站](https://aad.portal.azure.com/)]，測試遷移是否成功。 請遵循下列指示：
-1. 從清單中選取 [**企業應用程式** > ] [**所有應用程式**] 並尋找您的應用程式。
+1. 從清單中選取 [**企業應用程式**] [  >  **所有應用程式**] 並尋找您的應用程式。
 
-1. 選取 [**管理** > **使用者和群組**]，將至少一個使用者或群組指派給應用程式。
+1. 選取 [**管理**  >  **使用者和群組**]，將至少一個使用者或群組指派給應用程式。
 
-1. 選取 [**管理** > **條件式存取**]。 檢查您的原則清單，並確定您不會封鎖具有[條件式存取原則](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)的應用程式存取。
+1. 選取 [**管理**  >  **條件式存取**]。 檢查您的原則清單，並確定您不會封鎖具有[條件式存取原則](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)的應用程式存取。
 
 根據您設定應用程式的方式，確認 SSO 運作正常。 
 
@@ -460,9 +460,9 @@ AD FS 2016 有數個內建的存取控制原則可供您選擇：
 ‎ |
 | 以 SAML 為基礎的 SSO| 使用在 [**單一登入**] 下找到的 [[測試 SAML 設定](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues)] 按鈕。  
 ‎ |
-| 以密碼為基礎的 SSO| 下載並安裝[MyApps Secure](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)登[入延伸](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)模組。 此延伸模組可協助您啟動貴組織的任何雲端應用程式，並要求您使用 SSO 進程。  
+| 以密碼為基礎的 SSO| 下載並安裝[MyApps Secure](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)登 [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [入延伸](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)模組。 此延伸模組可協助您啟動貴組織的任何雲端應用程式，並要求您使用 SSO 進程。  
 ‎ |
-| 應用程式 Proxy| 請確定您的連接器正在執行，並已指派給您的應用程式。 請流覽[應用程式 Proxy 疑難排解指南](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)[ ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)以取得進一步的協助。  
+| 應用程式 Proxy| 請確定您的連接器正在執行，並已指派給您的應用程式。 請流覽[應用程式 Proxy 疑難排解指南](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)以取得進一步的協助。  
 ‎ |
 
 > [!NOTE]

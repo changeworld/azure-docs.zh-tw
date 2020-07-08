@@ -9,21 +9,20 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: baa035269f4a5b2f39263264f23183b308264ead
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267764"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513942"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>管理 StorSimple 裝置控制器
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程描述可在 StorSimple 裝置控制器上執行的不同作業。 StorSimple 裝置中的控制器在主動-被動組態中是備援 (對等) 控制器。 在指定的時間中，只能有一個控制器在主動模式，並處理所有磁碟和網路作業。 另一個控制器處於被動模式。 如果主動控制器故障，被動控制器會自動變成主動。
 

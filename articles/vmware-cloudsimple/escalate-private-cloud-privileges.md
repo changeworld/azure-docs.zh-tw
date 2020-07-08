@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870463"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>從 CloudSimple 入口網站提升私用雲端 vCenter 許可權
@@ -31,7 +30,7 @@ ms.locfileid: "81870463"
 
 ## <a name="escalate-privileges"></a>提升權限
 
-1. 存取[CloudSimple 入口網站](access-cloudsimple-portal.md)。
+1. 存取 [CloudSimple 入口網站](access-cloudsimple-portal.md)。
 
 2. 開啟 [**資源**] 頁面，選取您想要提升許可權的私人雲端。
 
@@ -39,7 +38,7 @@ ms.locfileid: "81870463"
 
     ![變更 vSphere 許可權](media/escalate-private-cloud-privilege.png)
 
-4. 選取 [vSphere] 使用者類型。  只有`CloudOwner@cloudsimple.local`本機使用者可以升級。
+4. 選取 [vSphere] 使用者類型。  只有 `CloudOwner@cloudsimple.local` 本機使用者可以升級。
 
 5. 從下拉式選單中選取 [呈報時間間隔]。 選擇可讓您完成工作的最短時間。
 
@@ -47,7 +46,7 @@ ms.locfileid: "81870463"
 
     ![呈報許可權對話方塊](media/escalate-private-cloud-privilege-dialog.png)
 
-7. 按一下 [確定]  。
+7. 按一下 [確定]。
 
 8. 擴大程式可能需要幾分鐘的時間。 完成時，按一下 **[確定]**。
 
@@ -63,7 +62,7 @@ ms.locfileid: "81870463"
 
 如果您需要額外的時間來完成您的工作，您可以擴充許可權擴大期間。  選擇可讓您完成系統管理工作的額外呈報時間間隔。
 
-1. 在 CloudSimple 入口網站的 [**資源** > ] [**私人**雲端] 中，選取您要擴充許可權提升的私人雲端。
+1. 在 CloudSimple 入口網站的 [**資源**] [  >  **私人**雲端] 中，選取您要擴充許可權提升的私人雲端。
 
 2. 按一下 [摘要] 索引標籤底部附近的 [**擴充許可權擴大**]。
 
@@ -77,11 +76,11 @@ ms.locfileid: "81870463"
 
 系統管理工作完成後，您應該解除許可權的升級。  
 
-1. 在 CloudSimple 入口網站的 [**資源** > ] [**私人**雲端] 中，選取您想要對其取消升級許可權的私人雲端。
+1. 在 CloudSimple 入口網站的 [**資源**] [  >  **私人**雲端] 中，選取您想要對其取消升級許可權的私人雲端。
 
 2. 按一下 [**取消呈報**]。
 
-3. 按一下 [確定]  。
+3. 按一下 [確定]。
 
 > [!IMPORTANT]
 > 若要避免發生任何錯誤，請登出 vCenter，並在取消升級許可權後重新登入。

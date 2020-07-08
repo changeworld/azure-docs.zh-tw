@@ -7,17 +7,16 @@ author: damendo
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7a69610d1ac176354a9d7e388a12ccc7f064d848
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d72a981749af87e1b73625bdce2e0fd2d24fff0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84724912"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>使用 Azure CLI，利用 Azure 網路監看員管理封包擷取
 
@@ -52,7 +51,7 @@ ms.locfileid: "80382710"
 
 ### <a name="step-1"></a>步驟 1
 
-執行`az vm extension set`命令以在來賓虛擬機器上安裝封包捕獲代理程式。
+執行 `az vm extension set` 命令以在來賓虛擬機器上安裝封包捕獲代理程式。
 
 若為 Windows 虛擬機器：
 
@@ -68,7 +67,7 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 
 ### <a name="step-2"></a>步驟 2
 
-若要確定已安裝代理程式，請執行`vm extension show`命令，並將資源群組和虛擬機器名稱傳遞給它。 檢查結果清單以確定代理程式已安裝。
+若要確定已安裝代理程式，請執行 `vm extension show` 命令，並將資源群組和虛擬機器名稱傳遞給它。 檢查結果清單以確定代理程式已安裝。
 
 若為 Windows 虛擬機器：
 
@@ -124,7 +123,7 @@ az storage account list
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-下列範例是執行`az network watcher packet-capture create`命令的預期輸出。
+下列範例是執行命令的預期輸出 `az network watcher packet-capture create` 。
 
 ```json
 {
@@ -179,13 +178,13 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>取得封包擷取
 
-執行`az network watcher packet-capture show-status`命令時，會抓取目前正在執行或已完成之封包捕獲的狀態。
+`az network watcher packet-capture show-status`執行命令時，會抓取目前正在執行或已完成之封包捕獲的狀態。
 
 ```azurecli-interactive
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-下列範例是`az network watcher packet-capture show-status`命令的輸出。 下列範例是擷取停止 (Stopped) 的時候，其中 StopReason 為 TimeExceeded。
+下列範例是命令的輸出 `az network watcher packet-capture show-status` 。 下列範例是擷取停止 (Stopped) 的時候，其中 StopReason 為 TimeExceeded。
 
 ```
 {
@@ -204,7 +203,7 @@ cketCaptures/packetCaptureName",
 
 ## <a name="stop-a-packet-capture"></a>停止封包擷取
 
-藉由執行`az network watcher packet-capture stop`命令，如果 capture 會話正在進行中，就會停止。
+藉由 `az network watcher packet-capture stop` 執行命令，如果 capture 會話正在進行中，就會停止。
 
 ```azurecli-interactive
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus

@@ -12,16 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ddd8e1c64f4db8221937abc54e88d9a884acf3e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 7494f8e65f0b92540fec3ddc1f07e59004227625
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207239"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338183"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>針對 Azure AD 權利管理進行疑難排解
 
@@ -45,7 +44,7 @@ ms.locfileid: "82207239"
 
 * 如果已將使用者指派給您想透過存取套件管理的資源，請確定已將使用者指派給具有適當原則的存取套件。 例如，您可以在存取套件中納入群組中已經有使用者的群組。 如果群組中的使用者需要繼續保有存取權，則必須擁有適當的存取套件原則，才能繼續存取群組。 您可以要求使用者要求包含該資源的存取套件，或直接將其指派給存取套件，以指派存取套件。 如需詳細資訊，請參閱[變更存取套件的要求和核准設定](entitlement-management-access-package-request-policy.md)。
 
-* 移除小組成員時，也會從 Office 365 群組中將其移除。 移除小組的交談功能方面可能會延遲。 如需詳細資訊，請參閱[群組成員資格](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
+* 當您移除小組成員時，也會從 Microsoft 365 群組中移除。 移除小組的交談功能方面可能會延遲。 如需詳細資訊，請參閱[群組成員資格](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
 
 * 請確定您的目錄未設定為多地理位置。 權利管理目前不支援 SharePoint Online 的多地理位置。 SharePoint Online 網站必須位於預設地理位置，才能與權利管理一同控管。 如需詳細資訊，請參閱[OneDrive 和 SharePoint Online 中的多地理位置功能](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)。
 

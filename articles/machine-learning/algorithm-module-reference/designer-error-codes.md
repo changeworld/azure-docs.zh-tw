@@ -5,16 +5,15 @@ description: 使用錯誤碼對 Azure Machine Learning 設計工具中的模組�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: reference
+ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: bfb70aaa092cc62fbff87e9e3e327ee7364f8701
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 2e84d2f7c1a45f1ef18e5dc32b58d75bb17e2516
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833808"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213749"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>設計工具 (預覽) 的例外狀況和錯誤碼
 
@@ -1106,7 +1105,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
  如果模組例外狀況回報了 SQL 產生的訊息，請根據回報的錯誤採取動作。 例如，錯誤訊息有時會對可能的錯誤提供特定指引：
 + *沒有這類資料行或遺失的資料庫*，表示您可能輸入了不正確的資料行名稱。 如果您確定資料行名稱正確無誤，請嘗試使用方括弧或引號括住資料行識別碼。
-+ *\<SQL 關鍵字\>附近有 SQL 邏輯錯誤*，表示您指定的關鍵字前面可能有語法錯誤
++ *接近 \<SQL keyword\> SQL 邏輯錯誤*，表示您在指定的關鍵字之前可能有語法錯誤
 
   
 |例外狀況訊息|
@@ -1500,7 +1499,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 
 ## <a name="error-0159"></a>錯誤 0159
- 如果傳至模組的模型目錄無效，就會發生例外狀況。 
+ 如果模組模型目錄無效，就會發生例外狀況。 
 
 |例外狀況訊息|
 |------------------------------------------------------------|
@@ -1515,7 +1514,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 提供此錯誤的用意，是為了擷取其他未處理的內部引擎錯誤。 因此，此錯誤的成因可能隨著產生錯誤的模組而有所不同。  
 
-如需更多協助，建議您將錯誤附帶的詳細訊息張貼至 Azure Machine Learning 論壇，並附上案例的說明，包括作為輸入的資料。 這樣的意見反應可協助我們設定錯誤的優先順序，並找出最重要的問題以進一步處理。  
+若要取得更多協助，建議您將伴隨錯誤的詳細訊息張貼至[Azure Machine Learning 論壇](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)，連同案例的描述，包括當做輸入使用的資料。 這樣的意見反應可協助我們設定錯誤的優先順序，並找出最重要的問題以進一步處理。  
 
 |例外狀況訊息|
 |------------------------|

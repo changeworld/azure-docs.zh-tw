@@ -5,12 +5,11 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 72f976071a5fc65c8e96f6b3cd5c0094785e287b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: d6b68a8448d8b644500b62e54ab763838d707c66
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726837"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956656"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 來建置和部署 HPC 解決方案
 
@@ -28,8 +27,8 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
 
 若要遵循本文中的步驟，您需要 Azure DevOps 組織和小組專案。
 
-* [建立 Azure DevOps 組織](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-* [在 Azure DevOps 中建立專案](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
+* [建立 Azure DevOps 組織](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
+* [在 Azure DevOps 中建立專案](/azure/devops/organizations/projects/create-project?view=azure-devops)
 
 ### <a name="source-control-for-your-environment"></a>您環境的原始檔控制
 
@@ -48,7 +47,7 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
 
 本節假設您已熟悉版本控制和設計 Resource Manager 範本。 如果您不熟悉這些概念，請參閱下列頁面以取得詳細資訊。
 
-* [什麼是原始檔控制？](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
+* [什麼是原始檔控制？](/azure/devops/user-guide/source-control?view=azure-devops)
 * [了解 Azure Resource Manager 範本的結構和語法](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure 資源管理員範本
@@ -62,7 +61,7 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
 
 ![使用 Azure Resource Manager 範本的連結範本結構範例](media/batch-ci-cd/ARMTemplateHierarchy.png)
 
-我們將查看的第一個範本是 Azure 儲存體帳戶。 我們的解決方案需要儲存體帳戶，才能將應用程式部署至我們的 Batch 帳戶。 在建立儲存體帳戶的 Resource Manager 範本時，值得留意 [Microsoft.Storage 資源類型的 Resource Manager 範本參考指南](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions)。
+我們將查看的第一個範本是 Azure 儲存體帳戶。 我們的解決方案需要儲存體帳戶，才能將應用程式部署至我們的 Batch 帳戶。 在建立儲存體帳戶的 Resource Manager 範本時，值得留意 [Microsoft.Storage 資源類型的 Resource Manager 範本參考指南](/azure/templates/microsoft.storage/allversions)。
 
 ```json
 {
@@ -102,7 +101,7 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
 }
 ```
 
-接下來，我們將探討 Azure Batch 帳戶範本。 Azure Batch 帳戶可作為跨集區 (機器群組) 執行許多應用程式的平台。 在建立 Batch 帳戶的 Resource Manager 範本時，值得留意 [Microsoft.Batch 資源類型的 Resource Manager 範本參考指南](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions)。
+接下來，我們將探討 Azure Batch 帳戶範本。 Azure Batch 帳戶可作為跨集區 (機器群組) 執行許多應用程式的平台。 在建立 Batch 帳戶的 Resource Manager 範本時，值得留意 [Microsoft.Batch 資源類型的 Resource Manager 範本參考指南](/azure/templates/microsoft.batch/allversions)。
 
 ```json
 {
@@ -141,7 +140,7 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
 }
 ```
 
-下一個範本顯示建立 Azure Batch 集區 (用來處理應用程式的後端機器) 的範例。 在建立 Batch 帳戶集區的 Resource Manager 範本時，值得留意 [Microsoft.Batch 資源類型的 Resource Manager 範本參考指南](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions)。
+下一個範本顯示建立 Azure Batch 集區 (用來處理應用程式的後端機器) 的範例。 在建立 Batch 帳戶集區的 Resource Manager 範本時，值得留意 [Microsoft.Batch 資源類型的 Resource Manager 範本參考指南](/azure/templates/microsoft.batch/allversions)。
 
 ```json
 {
@@ -309,7 +308,7 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
 
 ## <a name="continuous-integration"></a>持續整合
 
-[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/?view=azure-devops) 位於 Azure DevOps Services 內，可協助您為應用程式實作建置、測試和部署管線。
+[Azure Pipelines](/azure/devops/pipelines/get-started/?view=azure-devops) 位於 Azure DevOps Services 內，可協助您為應用程式實作建置、測試和部署管線。
 
 在您管線的這個階段中，通常會執行測試來驗證程式代碼，並建置適當的軟體片段。 測試的數目和類型，以及您所執行的任何其他工作，都將取決於您更廣泛的建置和發行策略。
 
@@ -323,9 +322,9 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
 
 1. 您有兩個選項可用來建立建置管線：
 
-    a. [使用視覺化設計工具](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav)。 若要使用此工具，請按一下 [新管線] 頁面上的 [使用視覺化設計工具]。
+    a. [使用視覺化設計工具](/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav)。 若要使用此工具，請按一下 [新管線] 頁面上的 [使用視覺化設計工具]。
 
-    b. [使用 YAML 組建](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops)。 您可以按一下 [新管線] 頁面上的 Azure Repos 或 GitHub 選項，建立新的 YAML 管線。 或者，可以將下列範例儲存在原始檔控制中，按一下 [視覺化設計工具]，然後使用 YAML 範本來參考現有的 YAML 檔案。
+    b. [使用 YAML 組建](/azure/devops/pipelines/get-started-yaml?view=azure-devops)。 您可以按一下 [新管線] 頁面上的 Azure Repos 或 GitHub 選項，建立新的 YAML 管線。 或者，可以將下列範例儲存在原始檔控制中，按一下 [視覺化設計工具]，然後使用 YAML 範本來參考現有的 YAML 檔案。
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -357,11 +356,11 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
     ![檢視您組建的即時輸出](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> 如果您使用用戶端應用程式來執行 HPC Batch 應用程式，您需要為該應用程式建立個別的組建定義。 您可以在 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops) 文件中找到許多操作指南。
+> 如果您使用用戶端應用程式來執行 HPC Batch 應用程式，您需要為該應用程式建立個別的組建定義。 您可以在 [Azure Pipelines](/azure/devops/pipelines/get-started/index?view=azure-devops) 文件中找到許多操作指南。
 
 ## <a name="continuous-deployment"></a>連續部署
 
-Azure Pipelines 也用來部署您的應用程式和基礎結構。 [發行管線](https://docs.microsoft.com/azure/devops/pipelines/release)是一個可啟用持續部署以及將發行程序自動化的元件。
+Azure Pipelines 也用來部署您的應用程式和基礎結構。 [發行管線](/azure/devops/pipelines/release)是一個可啟用持續部署以及將發行程序自動化的元件。
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>部署您的應用程式和基礎結構
 

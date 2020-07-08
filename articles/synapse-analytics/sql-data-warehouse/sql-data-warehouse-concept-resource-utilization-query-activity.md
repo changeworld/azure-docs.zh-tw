@@ -6,17 +6,16 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7c09e9d9f93ead6f894c954f647ebe33918cf41d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 4dc054d26f0cb64a8f7faf2ffa4b2b688562f404
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653008"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213545"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>監視 Azure Synapse Analytics 中的資源使用率和查詢活動
 
@@ -49,7 +48,7 @@ Azure Synapse Analytics 在 Azure 入口網站中提供豐富的監視體驗，�
 在檢視計量和設定警示時要考量的事項：
 
 - 使用的 DWU 只代表 SQL 集區之間**使用量的高階表示法**，而不是完整的使用率指標。 若要判斷要擴大或縮小，請考量會受到 DWU 影響的所有因素，例如並行存取、記憶體、tempdb 和調適型快取容量。 建議[在不同的 DWU 設定中執行您的工作負載](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units)，以判斷最符合您營運目標的方式。
-- 系統會針對特定的資料倉儲報告失敗和成功的連線，而非針對邏輯伺服器
+- 系統會針對特定資料倉儲報告失敗和成功的連線，而不是針對伺服器本身。
 - 即使資料倉儲處於閒置狀態，記憶體百分比也會反映使用率，而不會反映使用中工作負載記憶體耗用量。 使用並追蹤此計量，以及其他項目 (tempdb、gen2 快取)，在調整額外快取容量會增加工作負載效能的情況下，制定整體決策以符合您的需求。
 
 ## <a name="query-activity"></a>查詢活動

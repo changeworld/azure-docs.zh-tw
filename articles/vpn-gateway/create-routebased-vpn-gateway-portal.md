@@ -5,15 +5,14 @@ description: 使用 Azure 入口網站來建立路由型 VPN 閘道
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6156d689a29ee348f9b1974d1520eb7d186a8d8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4409df576c23e0dbc3e663cc348b45bc23ad5460
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78331344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987712"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>使用 Azure 入口網站建立路由型 VPN 閘道
 
@@ -42,7 +41,7 @@ ms.locfileid: "78331344"
 
 1. 建立閘道之後，瀏覽至入口網站中的 VNet1。 VPN 閘道會在 [概觀] 頁面上顯示為連線的裝置。
 
-   ![連線的裝置](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "連接的裝置")
+   ![連線的裝置](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "已連線的裝置")
 
 2. 在裝置清單中，按一下 [VNet1GW]**** 以檢視詳細資訊。
 

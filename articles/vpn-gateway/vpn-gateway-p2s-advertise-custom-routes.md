@@ -4,15 +4,14 @@ description: 將自訂路由公告至您的點對站用戶端的步驟
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3588755e2aab1c84d443e917eca8c7fca280b49a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ad007514e48ea751257884ba6e9ccb3965442d36
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756892"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987575"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>公告 P2S VPN 用戶端的自訂路由
 
@@ -22,7 +21,7 @@ ms.locfileid: "80756892"
 
 ## <a name="to-advertise-custom-routes"></a>公告自訂路由
 
-若要通告自訂路由， `Set-AzVirtualNetworkGateway cmdlet`請使用。 下列範例說明如何公告[Contoso 儲存體帳戶資料表](https://contoso.table.core.windows.net)的 IP。
+若要通告自訂路由，請使用 `Set-AzVirtualNetworkGateway cmdlet` 。 下列範例說明如何公告[Contoso 儲存體帳戶資料表](https://contoso.table.core.windows.net)的 IP。
 
 1. Ping *contoso.table.core.windows.net*並記下 IP 位址。 例如：
 

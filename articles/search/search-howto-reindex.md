@@ -7,13 +7,12 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/18/2020
+ms.openlocfilehash: 96177686e78a0595ac4ad49b9969b22d862facd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77498370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85051723"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中重建索引
 
@@ -21,13 +20,23 @@ ms.locfileid: "77498370"
 
 「重建」** 是指卸除並重新建立與索引 (包括所有欄位型反向索引) 相關聯的實體資料結構。 在 Azure 認知搜尋中，您無法卸載並重新建立個別的欄位。 若要重建索引，必須刪除所有的欄位儲存體，根據現有的或修訂過的索引結構描述來重新建立，然後填入推送至索引的資料，或從外部來源提取的資料。 
 
-在開發期間重建索引十分常見，但您可能也需要重建生產層級的索引以配合結構變更 (如新增複雜類型或新增欄位至建議工具等等)。
+當您逐一查看索引設計時，通常會在開發期間重建索引，但您可能也需要重建生產層級的索引以配合結構變更，例如新增複雜類型或將欄位加入至建議工具。
+
+## <a name="rebuild-versus-refresh"></a>「重建」與「重新整理」
+
+重建不應與使用新的、修改或刪除的檔重新整理索引的內容混淆。 重新整理搜尋主體幾乎是在每個搜尋應用程式中指定的，在某些情況下需要最新的更新（例如，當搜尋主體需要反映線上銷售應用程式中的清查變更時）。
+
+只要您不變更索引的結構，就可以使用您最初用來載入索引的相同技巧來重新整理索引：
+
+* 針對推播模式索引編制，請呼叫[新增、更新或刪除檔](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)，將變更推送至索引。
+
+* 針對索引子，您可以[排程索引子執行](search-howto-schedule-indexers.md)，並使用變更追蹤或時間戳記來識別差異。 如果更新的反映速度比排程器可以管理的還要快，您可以改用推播模式索引。
 
 ## <a name="rebuild-conditions"></a>重建條件
 
 如果下列任一條件成立，請卸載並重新建立索引。 
 
-| 狀況 | 說明 |
+| 條件 | 說明 |
 |-----------|-------------|
 | 變更欄位定義 | 修改欄位名稱、資料類型或特定[索引屬性](https://docs.microsoft.com/rest/api/searchservice/create-index) \(英文\) (可搜尋、可篩選、可排序、可面向化) 需要完整重建。 |
 | 將分析器指派給欄位 | [分析器](search-analyzers.md)定義在索引中，之後指派給欄位。 您可以隨時將新分析器定義新增至索引，但當欄位建立後，您只能*指派*分析器。 這適用於 **analyzer** 和 **indexAnalyzer** 屬性。 **searchAnalyzer** 屬性是例外狀況 (您可以將此屬性指派給現有欄位)。 |
@@ -85,7 +94,7 @@ ms.locfileid: "77498370"
 
 如果您已新增或重新命名欄位，請使用[$select](search-query-odata-select.md)來傳回該欄位：`search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [索引子概觀](search-indexer-overview.md)
 + [大規模索引大型資料集](search-howto-large-index.md)

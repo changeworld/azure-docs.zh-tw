@@ -5,20 +5,20 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 19d0be6a032868c6683cd5b6bbfa7f07306171fb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683431"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85242152"
 ---
 | 資源 | 基本 | 標準 | Premium |
 |---|---|---|---|
-| 儲存體<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
-| 映像層大小上限 | 200 GiB | 200 GiB | 200 GiB |
+| 內含儲存體<sup>1</sup> （GiB） | 10 | 100 | 500 |
+| 儲存體限制（TiB） | 20| 20 | 20 |
+| 影像圖層大小上限（GiB） | 200 | 200 | 200 |
 | 每分鐘的 ReadOps<sup>2, 3</sup> | 1,000 | 3,000 | 10,000 |
 | 每分鐘的 WriteOps<sup>2, 4</sup> | 100 | 500 | 2,000 |
 | 下載頻寬 Mbps<sup>2</sup> | 30 | 60 | 100 |
@@ -35,7 +35,7 @@ ms.locfileid: "83683431"
 | &bull; 每個範圍對應的存放庫 | N/A | N/A | 500 |
 
 
-<sup>1</sup>指定的儲存體限制為每個層級內含的儲存體數量。 對於超過這些限制的影像儲存，您需要依每 GiB 的每日費率另外支付費用。 如需費率資訊，請參閱 [Azure Container Registry 定價][pricing]。
+每一層的每日費率包含<sup>1</sup>個儲存體。 針對其他儲存體，您需支付每個 GiB 的額外每日費率，最高可達儲存體限制。 如需費率資訊，請參閱 [Azure Container Registry 定價][pricing]。
 
 <sup>2</sup>*ReadOps*、*WriteOps* 和「頻寬」是最小預估值。 Azure Container Registry 致力於改善需要使用時的效能。
 

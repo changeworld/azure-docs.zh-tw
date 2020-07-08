@@ -1,10 +1,9 @@
 ---
-title: 設定可用性群組接聽程式與負載平衡器 (PowerShell)
-description: 使用具有一個或多個 IP 位址的內部負載平衡器，在 Azure Resource Manager 模型上設定可用性群組接聽程式。
+title: 設定可用性群組接聽程式和負載平衡器（PowerShell）
+description: 使用具有一或多個 IP 位址的內部負載平衡器，在 Azure Resource Manager 模型上設定可用性群組接聽程式。
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 ms.assetid: 14b39cde-311c-4ddf-98f3-8694e01a7d3b
 ms.service: virtual-machines-sql
@@ -14,27 +13,25 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 63f8c9a1e47c5885132cb4a613924e9f1ed81166
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 8f2a2ecb499a88ac8e33b6d281ccde4e5adffebd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037219"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669372"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>設定一或多個 Always On 可用性群組接聽程式 - Resource Manager
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
+本檔說明如何使用 PowerShell 來執行下列其中一項工作：
+- 建立負載平衡器
+- 將 IP 位址新增至 SQL Server 可用性群組的現有負載平衡器。
 
-本主題說明如何：
+可用性群組接聽程式是用戶端連接以進行資料庫存取的虛擬網路名稱。 在 Azure 虛擬機器上，負載平衡器會保留接聽程式的 IP 位址。 負載平衡器會將流量路由傳送至在探查連接埠上進行接聽的 SQL Server 執行個體。 通常，可用性群組會使用內部負載平衡器。 Azure 內部負載平衡器可以裝載一或多個 IP 位址。 每個 IP 位址皆使用特定的探查連接埠。 
 
-* 使用 PowerShell Cmdlet 為 SQL Server 可用性群組建立內部負載平衡器。
-* 將其他 IP 位址新增至多個可用性群組的負載平衡器。 
+將多個 IP 位址指派給內部負載平衡器的功能，是 Azure 的新手，而且只能在 Resource Manager 模型中使用。 若要完成這項工作，您需要在 Resource Manager 模型中的 Azure 虛擬機器上部署 SQL Server 可用性群組。 這兩部 SQL Server 虛擬機器必須屬於相同的可用性設定組。 您可以使用 [Microsoft 範本](availability-group-azure-marketplace-template-configure.md) 在 Azure Resource Manager 中自動建立可用性群組。 此範本會自動為您建立可用性群組，包括內部負載平衡器。 如果您想要的話，也可以[手動設定 Always On 可用性群組](availability-group-manually-configure-tutorial.md)。
 
-可用性群組接聽程式是用戶端連接以進行資料庫存取的虛擬網路名稱。 在 Azure 虛擬機器上，負載平衡器會保有接聽程式的 IP 位址。 負載平衡器會將流量路由傳送至在探查連接埠上進行接聽的 SQL Server 執行個體。 通常，可用性群組會使用內部負載平衡器。 Azure 內部負載平衡器可以裝載一或多個 IP 位址。 每個 IP 位址皆使用特定的探查連接埠。 本文件說明如何使用 PowerShell 來建立負載平衡器，或將 IP 位址新增至 SQL Server 可用性群組的現有負載平衡器。 
-
-將多個 IP 位址指派給內部負載平衡器是一項新的 Azure 功能，而且只有在 Resource Manager 模型中才可使用。 若要完成這項工作，您必須在 Resource Manager 模型中的 Azure 虛擬機器上部署 SQL Server 可用性群組。 這兩部 SQL Server 虛擬機器必須屬於相同的可用性設定組。 您可以使用 [Microsoft 範本](availability-group-azure-marketplace-template-configure.md) 在 Azure Resource Manager 中自動建立可用性群組。 此範本會自動為您建立可用性群組，包括內部負載平衡器。 如果您想要的話，也可以[手動設定 Always On 可用性群組](availability-group-manually-configure-tutorial.md)。
-
-本主題會要求您已經設定可用性群組。  
+若要完成本文中的步驟，您必須已設定您的可用性群組。  
 
 相關主題包括：
 
@@ -49,7 +46,7 @@ ms.locfileid: "84037219"
 
 本文中的範例使用 Azure PowerShell 模組 5.4.1 版進行測試。
 
-請確認您的 PowerShell 模組是否為 5.4.1 版或更新版本。
+確認您的 PowerShell 模組為5.4.1 版或更新版本。
 
 請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
@@ -61,13 +58,13 @@ ms.locfileid: "84037219"
 
 ## <a name="determine-the-load-balancer-sku-required"></a>判斷所需的負載平衡器 SKU
 
-[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) 有 2 種 SKU：基本和標準。 建議使用標準負載平衡器。 如果虛擬機器在可用性設定組中，則允許使用基本負載平衡器。 如果虛擬機器在可用性區域中，則必須使用標準負載平衡器。 標準負載平衡器會要求所有 VM 的 IP 位址使用標準的 IP 位址。
+[Azure 負載平衡器](../../../load-balancer/load-balancer-overview.md)提供兩種 Sku：基本 & 標準。 建議使用標準負載平衡器。 如果虛擬機器在可用性設定組中，則允許使用基本負載平衡器。 如果虛擬機器在可用性區域中，則必須使用標準負載平衡器。 標準負載平衡器會要求所有 VM 的 IP 位址使用標準的 IP 位址。
 
 可用性群組的目前 [Microsoft 範本](availability-group-azure-marketplace-template-configure.md)會使用基本 IP 位址的基本負載平衡器。
 
    > [!NOTE]
    > 若將標準負載平衡器和 Azure 儲存體用於雲端見證，則需要設定[服務端點](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。 
-
+   > 
 
 本文中的範例會指定標準負載平衡器。 在範例中，指令碼包含 `-sku Standard`。
 
@@ -86,7 +83,7 @@ $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $
 > [!NOTE]
 > 如果您使用了 [Microsoft 範本](availability-group-azure-marketplace-template-configure.md)來建立可用性群組，則已經建立內部負載平衡器。
 
-下列 PowerShell 指令碼會建立內部負載平衡器、設定負載平衡規則，以及設定負載平衡器的 IP 位址。 若要執行此指令碼，請開啟 Windows PowerShell ISE，然後將指令碼貼到 [指令碼] 窗格中。 請使用 `Connect-AzAccount` 來登入 PowerShell。 如果您有多個 Azure 訂用帳戶，請使用 `Select-AzSubscription` 來設定訂用帳戶。 
+下列 PowerShell 腳本會建立內部負載平衡器、設定負載平衡規則，以及設定負載平衡器的 IP 位址。 若要執行腳本，請開啟 Windows PowerShell ISE，然後將腳本貼到腳本窗格中。 請使用 `Connect-AzAccount` 來登入 PowerShell。 如果您有多個 Azure 訂用帳戶，請使用 `Select-AzSubscription` 來設定訂用帳戶。 
 
 ```powershell
 # Connect-AzAccount
@@ -137,7 +134,8 @@ foreach($VMName in $VMNames)
 ```
 
 ## <a name="example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a>範例指令碼：使用 PowerShell 將 IP 位址新增至現有的負載平衡器
-若要使用多個可用性群組，請將額外的 IP 位址新增至負載平衡器。 每個 IP 位址都需要有自己的負載平衡規則、探查連接埠及前端連接埠。
+
+若要使用多個可用性群組，請將額外的 IP 位址新增至負載平衡器。 每個 IP 位址都需要它自己的負載平衡規則、探查埠和前端埠。
 
 前端連接埠是應用程式用來連線到 SQL Server 執行個體的連接埠。 不同可用性群組的 IP 位址可以使用相同的前端連接埠。
 
@@ -147,7 +145,7 @@ foreach($VMName in $VMNames)
 * 如需有關負載平衡器限制的資訊，請參閱[網路限制 - Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits) 底下的「每個負載平衡器的私人前端 IP」。
 * 如需有關可用性群組限制的資訊，請參閱[限制 (可用性群組)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG)。
 
-下列指令碼會將新的 IP 位址新增至現有的負載平衡器。 ILB 會使用接聽程式連接埠作為負載平衡前端連接埠。 此連接埠可以是 SQL Server 正在接聽的連接埠。 就預設的 SQL Server 執行個體而言，連接埠是 1433。 可用性群組的負載平衡規則需要浮動 IP (伺服器直接回傳)，因此後端連接埠與前端連接埠相同。 請更新您環境的變數。 
+下列指令碼會將新的 IP 位址新增至現有的負載平衡器。 ILB 會使用接聽程式埠作為負載平衡前端埠。 此連接埠可以是 SQL Server 正在接聽的連接埠。 就預設的 SQL Server 執行個體而言，連接埠是 1433。 可用性群組的負載平衡規則需要浮動 IP （伺服器直接回傳），因此後端埠與前端埠相同。 請更新您環境的變數。 
 
 ```powershell
 # Connect-AzAccount
@@ -196,17 +194,17 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. 啟動 SQL Server Management Studio，然後連接到主要複本。
 
-1. 瀏覽至 [AlwaysOn 高可用性] | [可用性群組] | [可用性群組接聽程式]。 
+1. 瀏覽至 [AlwaysOn 高可用性] > [可用性群組] > [可用性群組接聽程式]。 
 
-1. 您現在應該會看到在容錯移轉叢集管理員中建立的接聽程式名稱。 以滑鼠右鍵按一下接聽程式名稱，然後按一下 [屬性] 。
+1. 您現在應該會看到在容錯移轉叢集管理員中建立的接聽程式名稱。 以滑鼠右鍵按一下接聽程式名稱，然後選取 [**屬性**]。
 
-1. 在 [連接埠] 方塊中，使用您稍早所用的 $EndpointPort (預設值是 1433) 來指定可用性群組接聽程式的連接埠號碼，然後按一下 [確定]。
+1. 在 [**埠**] 方塊中，使用您稍早使用的 $EndpointPort 來指定可用性群組接聽程式的埠號碼（預設為1433），然後選取 **[確定]**。
 
 ## <a name="test-the-connection-to-the-listener"></a>測試接聽程式的連線
 
 若要測試連線︰
 
-1. 透過 RDP 連接到相同虛擬網路中不擁有複本的 SQL Server。 這可以是叢集中的其他 SQL Server。
+1. 使用遠端桌面通訊協定（RDP）連接到位於相同虛擬網路中的 SQL Server，但不擁有複本。 它可能是叢集中的其他 SQL Server。
 
 1. 使用 **sqlcmd** 公用程式來測試連線。 例如，下列指令碼會透過接聽程式搭配 Windows 驗證，建立與主要複本的 **sqlcmd** 連線︰
    
@@ -223,24 +221,29 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 SQLCMD 連線會自動連線到任何一個裝載主要複本的 SQL Server 執行個體。 
 
 > [!NOTE]
-> 確定您指定的連接埠在兩部 SQL Server 在防火牆上開啟。 這兩部伺服器需要您使用的 TCP 連接埠的輸入規則。 如需詳細資訊，請參閱 [新增或編輯防火牆規則](https://technet.microsoft.com/library/cc753558.aspx) 。 
-> 
+> 確定您指定的連接埠在兩部 SQL Server 在防火牆上開啟。 這兩部伺服器需要您使用的 TCP 連接埠的輸入規則。 如需詳細資訊，請參閱[新增或編輯防火牆規則](https://technet.microsoft.com/library/cc753558.aspx)。 
 > 
 
 ## <a name="guidelines-and-limitations"></a>指導方針和限制
+
 請注意，下列關於 Azure 中使用內部負載平衡器之可用性群組接聽程式的指導方針：
 
 * 使用內部負載平衡器時，您只會從相同的虛擬網路內存取接聽程式。
 
-* 如果您使用 Azure 網路安全性群組來限制存取，請確定允許規則包含後端 SQL Server VM IP 位址和 AG 接聽程式的負載平衡器浮動 IP 位址，以及叢集核心 IP 位址 (如果適用的話)。
+* 如果您要使用 Azure 網路安全性群組來限制存取，請確定允許規則包括：
+  - 後端 SQL Server VM IP 位址
+  - AG 接聽程式的負載平衡器浮動 IP 位址
+  - 叢集核心 IP 位址（如果適用的話）。
 
 * 將標準負載平衡器與 Azure 儲存體用於雲端見證時，請建立服務端點。 如需詳細資訊，請參閱[授與虛擬網路存取權](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。
 
 ## <a name="for-more-information"></a>取得詳細資訊
+
 如需詳細資訊，請參閱[在 Azure VM 中手動設定 Always On 可用性群組](availability-group-manually-configure-tutorial.md)。
 
 ## <a name="powershell-cmdlets"></a>PowerShell Cmdlet
-請使用下列 PowerShell Cmdlet 為 Azure 虛擬機器建立內部負載平衡器。
+
+使用下列 PowerShell Cmdlet 來建立 Azure 虛擬機器的內部負載平衡器。
 
 * [New-AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) 會建立負載平衡器。 
 * [New-AzLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) 會建立負載平衡器的前端 IP 設定。 

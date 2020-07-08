@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 8b8362a4d5ad742f29637ed03133bc6983bd5dd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: eca054d2db5eca1948d1085e105e91af19fc132e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80285141"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057954"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>更新商業市集中的現有供應項目
 
@@ -37,20 +36,29 @@ ms.locfileid: "80285141"
 > [!IMPORTANT]
 > 您必須在供應專案預覽正式運作後加以審查，**並選取 [上線]** 將更新的供應專案發佈給您的目標物件（公用或私用）。
 
+## <a name="add-a-plan-to-an-existing-offer"></a>將方案新增至現有的供應專案
+
+若要在您已發行的現有供應專案內加入新的方案：
+
+1. 在您現有供應專案的 [**供應專案總覽**] 頁面開啟時，移至 [計畫] [**總覽**] 頁面，然後選取 [**建立新方案**]。
+1. 使用**現有的方案定價模型**，根據[方針](./create-new-saas-offer.md#plan-overview)建立新的方案。
+1. 變更方案名稱之後，請選取 [**儲存草稿**]。 
+1. 當您準備好要發佈更新時，請選取 [**發佈**]。 [**[審查與發佈](#review-and-publish-an-updated-offer)**] 頁面隨即開啟，並提供更新的完成狀態。
+
 ## <a name="update-a-plan-within-an-existing-offer"></a>更新現有供應專案中的方案
 
 若要在您已發行的現有供應專案中變更方案：
 
-- 在 [**供應專案總覽**] 頁面開啟您現有的供應專案後，選擇您要變更的方案。 如果無法從**計畫總覽**清單存取方案，請選取 [**查看所有方案**]。
-- 您可以選擇 [方案**名稱**]、[**計價模式**] 或 [**可用性**]。 *目前的方案僅提供英文（美國）*。
-- 對方案名稱、描述、價格或物件可用性進行任何必要的變更後，請選取 [**儲存**]。 
-- 準備好發佈更新之後，請選取 [**發佈**]。 [**[審查與發佈](#review-and-publish-an-updated-offer)**] 頁面隨即開啟，並提供更新的完成狀態。
+1. 在您現有供應專案的 [**供應專案總覽**] 頁面開啟的情況下，選擇您要變更的方案。 如果計畫無法從**計畫總覽**清單存取，請選取 [**查看所有方案**]。
+1. 您可以選擇 [方案**名稱**]、[**計價模式**] 或 [**可用性**]。 *目前，方案僅適用于英文（美國）*。
+1. 對方案名稱、描述或物件可用性進行任何必要的變更後，請選取 [**儲存**]。 
+1. 當您準備好要發佈更新時，請選取 [**發佈**]。 [**[審查與發佈](#review-and-publish-an-updated-offer)**] 頁面隨即開啟，並提供更新的完成狀態。
 
 ## <a name="compare-changes-to-marketplace-offers"></a>比較 marketplace 供應專案的變更
 
-您可以使用 [**比較**] 讓您對[已發行](#compare-changes-to-published-offer)或[預覽](#compare-changes-to-a-preview-offer)的供應專案進行變更之前，先對其進行審核。
+您可以使用 [**比較**] 讓您對[已發行](#compare-changes-to-published-offer)或[預覽](#compare-changes-to-a-preview-offer)的供應專案進行變更，然後再將其上線。
 
->[!NOTE]
+> [!NOTE]
 > 已發佈的供應專案是已成功發行至預覽或即時狀態的供應專案。
 
 如需一般的審核資訊，請參閱以下內容：
@@ -122,9 +130,9 @@ ms.locfileid: "80285141"
 
 若要取消具有 [**發行進行中**] 狀態的供應專案：
 
-- 選取供應專案名稱，以開啟 [**供應專案總覽**] 頁面。
-- 選取頁面右上角的 [**取消發佈**]。
-- 確認您想要停止發佈供應專案。
+1. 選取供應專案名稱，以開啟 [**供應專案總覽**] 頁面。
+1. 從頁面右上角選取 [**取消發佈**]。
+1. 確認您想要停止發佈供應專案。
 
 如果您稍後想要發佈供應專案，您必須在上啟動發佈程式。
 

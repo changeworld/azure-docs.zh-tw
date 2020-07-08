@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 99a2f32c3f76d7fec475c9b299f7208b4db29cfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fd2c58b07f3be5d5fa6d99d0c8c64906b81e7de4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650918"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036979"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>使用 Azure 時間序列深入解析為事件塑形
 
@@ -33,7 +32,7 @@ ms.locfileid: "77650918"
 為了獲得最佳查詢效能，請遵守下列經驗法則：
 
 * 請勿傳送不必要的屬性。 時間序列深入解析依使用量預覽帳單。 最好只儲存和處理您要查詢的資料。
-* 為統計資料使用執行個體欄位。 這種作法有助於避免透過網路傳送靜態資料。 實例欄位是時間序列模型的元件，其運作方式就像是時間序列深入解析服務中正式推出的參考資料。 若要深入瞭解實例欄位，請參閱[時間序列模型](./time-series-insights-update-tsm.md)。
+* 為統計資料使用執行個體欄位。 這種作法有助於避免透過網路傳送靜態資料。 實例欄位是時間序列模型的元件，其運作方式就像是時間序列深入解析服務中正式推出的參考資料。 若要深入瞭解實例欄位，請參閱[時間序列模型](./concepts-model-overview.md)。
 * 在兩個或更多事件之間共用維度屬性。 此實務可協助您更有效率地透過網路傳送資料。
 * 請勿使用深層陣列巢狀結構。 時間序列深入解析 Preview 最多支援兩個包含物件的嵌套陣列層級。 時間序列深入解析會將訊息中的陣列壓平合併為具有屬性值組的多個事件。
 * 如果所有或大部分的事件只存在少數的量值，最好將這些量值當作相同物件內的個別屬性來傳送。 將它們分開傳送可減少事件數目，而且可能會改善查詢效能，因為需要處理的事件較少。
@@ -50,11 +49,11 @@ ms.locfileid: "77650918"
    },
    ```
 
-   會變成`data_flow` ：壓平合併時。
+   會變成： `data_flow` 壓平合併時。
 
 > [!IMPORTANT]
-> * Azure 時間序列深入解析 Preview 會針對資料`_`行略圖使用底線（）。
-> * 請注意，與使用句號（`.`）相反的公開上市差異。
+> * Azure 時間序列深入解析 Preview 會針對資料 `_` 行略圖使用底線（）。
+> * 請注意，與使用句號（）相反的公開上市差異 `.` 。
 
 更複雜的案例如下所示。
 
@@ -95,7 +94,7 @@ ms.locfileid: "77650918"
 
 **優點**
 
-* 範例 JSON 具有外部陣列，其使用[時間序列實例](./time-series-insights-update-tsm.md#time-series-model-instances)資料來提高訊息的效率。 即使時間序列實例裝置中繼資料不太可能變更，它通常會提供有用的資料分析屬性。
+* 範例 JSON 具有外部陣列，其使用[時間序列實例](./concepts-model-overview.md#time-series-model-instances)資料來提高訊息的效率。 即使時間序列實例裝置中繼資料不太可能變更，它通常會提供有用的資料分析屬性。
 
 * JSON 會將兩個或多個訊息（每個裝置一個）合併成一段時間後的頻寬儲存。
 
@@ -106,7 +105,7 @@ ms.locfileid: "77650918"
 
 #### <a name="time-series-instance"></a>時間序列執行個體 
 
-讓我們進一步瞭解如何使用[時間序列實例](./time-series-insights-update-tsm.md#time-series-model-instances)，以更理想的方式塑造您的 JSON。 
+讓我們進一步瞭解如何使用[時間序列實例](./concepts-model-overview.md#time-series-model-instances)，以更理想的方式塑造您的 JSON。 
 
 > [!NOTE]
 > 以下的[時間序列識別碼](./time-series-insights-update-how-to-id.md)為*deviceIds*。
@@ -180,7 +179,7 @@ ms.locfileid: "77650918"
 }
 ```
 
-在上述範例中，簡維`data["flow"]`屬性會顯示與`data_flow`屬性的命名衝突。
+在上述範例中，簡維 `data["flow"]` 屬性會顯示與屬性的命名衝突 `data_flow` 。
 
 在此情況下，*最新*的屬性值會覆寫較舊的內容。 
 

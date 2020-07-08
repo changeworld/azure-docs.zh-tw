@@ -9,17 +9,16 @@ editor: amsriva
 ms.assetid: caa8eb19-825a-4031-8b49-18fbf3ebc04e
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: c1a75630c6419816b048495ee87d24c81979af16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b9154b124f89a8b672c58d5e7bce28c0833e8a8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84988033"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>從傳統 VPN 閘道到 Resource Manager 移轉
 VPN 閘道現在可以用來從傳統移轉至 Resource Manager 部署模型。 您可以進一步了解 Azure Resource Manager [功能和優點](../azure-resource-manager/management/overview.md)。 在本文中，我們會詳細說明如何從傳統部署移轉至較新的 Resource Manager 為基礎模型。 

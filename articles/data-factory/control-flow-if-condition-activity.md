@@ -11,17 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417159"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414601"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory 中的 If Condition 活動
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中提供的功能相同。 它能在條件評估為 `true` 時執行一系列的活動，並在條件評估為 `false` 時執行另一系列的活動。 
+If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中提供的功能相同。 當條件評估為時，它會執行一組活動 `true` ，而當條件評估為時，會執行另一組活動 `false` 。 
 
 ## <a name="syntax"></a>語法
 
@@ -67,9 +66,9 @@ If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-名稱 | If-Condition 活動的名稱。 | String | 是
-type | 必須設為 [IfCondition]**** | String | 是
-expression | 必須評估為 true 或 false 的運算式 | 結果類型為布林的運算式 | 是
+NAME | If-Condition 活動的名稱。 | String | Yes
+type | 必須設為 [IfCondition]**** | String | Yes
+expression | 必須評估為 true 或 false 的運算式 | 結果類型為布林的運算式 | Yes
 ifTrueActivities | 會在運算式評估為 `true` 時執行的一系列活動。 | Array | 是
 ifFalseActivities | 會在運算式評估為 `false` 時執行的一系列活動。 | Array | 是
 
@@ -294,4 +293,4 @@ $result.Error -join "`r`n"
 - [For Each 活動](control-flow-for-each-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
-- [網路活動](control-flow-web-activity.md)
+- [Web 活動](control-flow-web-activity.md)

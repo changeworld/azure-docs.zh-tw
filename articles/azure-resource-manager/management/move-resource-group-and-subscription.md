@@ -3,12 +3,11 @@ title: 將資源移到新的訂用帳戶或資源群組
 description: 使用 Azure Resource Manager 將資源移到新的資源群組或訂用帳戶。
 ms.topic: conceptual
 ms.date: 03/02/2020
-ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 036def01ef8ae5732d372dd995ad8f425c36cad9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631511"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057835"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>將資源移至新的資源群組或訂用帳戶
 
@@ -53,7 +52,7 @@ ms.locfileid: "80631511"
 
    如果來源和目的地訂用帳戶的租用戶識別碼不相同，請使用下列方法來協調租用戶識別碼：
 
-   * [將 Azure 訂用帳戶的擁有權轉移給另一個帳戶](../../billing/billing-subscription-transfer.md)
+   * [將 Azure 訂用帳戶的擁有權轉移給另一個帳戶](../../cost-management-billing/manage/billing-subscription-transfer.md)
    * [如何將 Azure 訂用帳戶關聯或新增至 Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. 必須針對要移動之資源的資源提供者註冊其目的地訂用帳戶。 否則，您會收到錯誤，指出 **未針對資源類型註冊訂用帳戶**。 將資源移至新的訂用帳戶時，可能會因為不曾以指定的資源類型使用過該訂用帳戶，因而出現此錯誤。

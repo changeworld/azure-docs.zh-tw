@@ -3,14 +3,13 @@ title: 管理 Azure 自動化中的 Runbook
 description: 此文章說明如何管理 Azure 自動化中的 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/14/2019
+ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 93b34af0baed89fd312948aeffe8ea4ac8ef806c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 9202eae49175615c4fffcd0b006ddda6e8281292
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84718303"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>管理 Azure 自動化中的 Runbook
 
@@ -46,7 +45,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>匯入 Runbook
 
-您可以匯入 PowerShell 或 PowerShell 工作流程 (**ps1**) 指令碼、圖形化 Runbook ( **.graphrunbook**) 或 Python 2 指令碼 ( **.py**) 來製作自己的 Runbook。  您必須指定匯入期間建立的 [Runbook 類型](automation-runbook-types.md)，並考量下列事項。
+您可以匯入 PowerShell 或 PowerShell 工作流程 (**ps1**) 指令碼、圖形化 Runbook ( **.graphrunbook**) 或 Python 2 指令碼 ( **.py**) 來製作自己的 Runbook。 您必須指定匯入期間建立的 [Runbook 類型](automation-runbook-types.md)，並考量下列事項。
 
 * 您可以將不包含工作流程的 **.ps1** 檔案匯入至 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 或 [PowerShell 工作流程 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 您將其匯入 PowerShell 工作流程 Runbook，其會轉換成工作流程。 在此情況下，Runbook 中會包含註解來描述所做的變更。
 
@@ -54,7 +53,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 * 請勿將包含 PowerShell 工作流程的 **.ps1** 檔案匯入 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks)，因為 PowerShell 指令碼引擎無法加以辨識。
 
-* 只將 **.graphrunbook** 檔案匯入新的[圖形化 Runbook](automation-runbook-types.md#graphical-runbooks)。 
+* 只將 **.graphrunbook** 檔案匯入新的[圖形化 Runbook](automation-runbook-types.md#graphical-runbooks)。
 
 ### <a name="import-a-runbook-from-the-azure-portal"></a>從 Azure 入口網站匯入 Runbook
 
@@ -161,7 +160,7 @@ $connection = Get-AutomationConnection -Name AzureRunAsConnection
 Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 -ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
 
-$AzContext = Select-AzSubscription -SubscriptionId $connection.SubscriptionID
+$AzureContext = Get-AzSubscription -SubscriptionId $connection.SubscriptionID
 
 # Check for already running or new runbooks
 $runbookName = "<RunbookName>"
@@ -192,7 +191,7 @@ If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Stat
 
 ## <a name="work-with-multiple-subscriptions"></a>使用多個訂用帳戶
 
-您的 Runbook 必須能夠搭配[訂用帳戶](automation-runbook-execution.md#subscriptions)運作。 例如，若要處理多個訂用帳戶，Runbook 會使用 [Disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) \(英文\) Cmdlet。 此 Cmdlet 可確保系統不會從在相同沙箱中執行的另一個 Runbook 擷取驗證內容。 Runbook 也會在 Az 模組 Cmdlet 上使用 `AzContext` 參數，並傳遞適當的內容給其。
+您的 Runbook 必須能夠搭配[訂用帳戶](automation-runbook-execution.md#subscriptions)運作。 例如，若要處理多個訂用帳戶，Runbook 會使用 [Disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) \(英文\) Cmdlet。 此 Cmdlet 可確保系統不會從在相同沙箱中執行的另一個 Runbook 擷取驗證內容。 Runbook 也會使用 `Get-AzContext` Cmdlet 來取出目前會話的內容，並將它指派給變數 `$AzureContext` 。
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -204,7 +203,7 @@ Connect-AzAccount -ServicePrincipal `
 -ApplicationId $Conn.ApplicationID `
 -CertificateThumbprint $Conn.CertificateThumbprint
 
-$context = Get-AzContext
+$AzureContext = Get-AzContext
 
 $ChildRunbookName = 'ChildRunbookDemo'
 $AutomationAccountName = 'myAutomationAccount'
@@ -214,7 +213,7 @@ Start-AzAutomationRunbook `
     -ResourceGroupName $ResourceGroupName `
     -AutomationAccountName $AutomationAccountName `
     -Name $ChildRunbookName `
-    -DefaultProfile $context
+    -DefaultProfile $AzureContext
 ```
 
 ## <a name="work-with-a-custom-script"></a>使用自訂指令碼

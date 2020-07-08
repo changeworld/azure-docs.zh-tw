@@ -2,23 +2,22 @@
 title: 使用活動報告將 AD FS 應用程式移至 Azure Active Directory |Microsoft Docs '
 description: Active Directory 同盟服務（AD FS）應用程式活動報告可讓您快速地將應用程式從 AD FS 遷移至 Azure Active Directory （Azure AD）。 這個用於 AD FS 的遷移工具會識別與 Azure AD 的相容性，並提供遷移指引。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 01/14/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333e440fdd5f5062dda45fb12a83543c63e66c04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 59502e01a96b603067bd80b92bcf49136f8cef4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339157"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>使用 AD FS 應用程式活動報告（預覽），將應用程式遷移至 Azure AD
 
@@ -32,12 +31,13 @@ Azure 入口網站中的 AD FS 應用程式活動報告（預覽）可讓您快�
 
 AD FS 的應用程式活動資料可供指派給任何系統管理員角色的使用者使用：全域管理員、報告讀取者、安全性讀取者、應用程式系統管理員或雲端應用程式系統管理員。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 您的組織目前必須使用 AD FS 來存取應用程式。
 * 必須在您的 Azure AD 租使用者中啟用 Azure AD Connect Health。
+* 必須安裝 AD FS 代理程式的 Azure AD Connect Health。
    * [深入瞭解 Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)
-   * [開始設定 Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
+   * [開始設定 Azure AD Connect Health 並安裝 AD FS 代理程式](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>探索可遷移 AD FS 應用程式 
 
@@ -73,7 +73,7 @@ AD FS 的應用程式活動資料可供指派給任何系統管理員角色的�
 
 下表列出在 AD FS 應用程式上執行的所有設定測試。
 
-|結果  |通過/警告/失敗  |說明  |
+|結果  |通過/警告/失敗  |Description  |
 |---------|---------|---------|
 |測試-ADFSRPAdditionalAuthenticationRules <br> 在 AdditionalAuthentication 中偵測到至少一個非可移轉的規則。       | 通過/警告          | 信賴憑證者的規則會提示多重要素驗證（MFA）。 若要移至 Azure AD，請將這些規則轉譯為條件式存取原則。 如果您使用的是內部部署 MFA，建議您移至 Azure MFA。 [深入瞭解條件式存取](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)。        |
 |測試-ADFSRPAdditionalWSFedEndpoint <br> 信賴憑證者的 AdditionalWSFedEndpoint 設為 true。       | 通過/失敗          | AD FS 中的信賴憑證者允許多個 WS-ADDRESSING 宣告端點。目前，Azure AD 只支援一個。如果您有此結果封鎖遷移的案例，請[讓我們知道](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints)。     |

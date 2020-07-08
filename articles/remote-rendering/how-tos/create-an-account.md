@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844500"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057665"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>建立 Azure 遠端轉譯帳戶
 
@@ -28,20 +27,24 @@ ms.locfileid: "83844500"
     1. 將 [資源名稱] 設為帳戶名稱
     1. 如有需要，請更新「訂閱」
     1. 將「資源群組」設為您要選擇的資源群組
+    1. 從 [位置] 下拉式清單中選取要在其中建立此資源的區域。 請參閱下列[帳戶區域](create-an-account.md#account-regions)的備註。
 1. 建立帳戶之後，請瀏覽至該頁面並：
     1. 在 [總覽] 索引標籤中，記下「帳戶識別碼」
     1. 在 [設定] > [存取金鑰] 索引標籤中，記下 [主要金鑰] - 這是帳戶的秘密帳戶金鑰
+
+### <a name="account-regions"></a>帳戶區域
+帳戶在帳戶建立期間指定的位置會決定要指派給帳戶資源的區域。 這在建立之後就無法變更。 不過，不論帳戶的位置為何，帳戶都可以用來連接到任何[支援區域](./../reference/regions.md)中的遠端轉譯會話。
 
 ### <a name="retrieve-the-account-information"></a>擷取帳戶資訊
 
 範例和教學課程會要求您提供帳戶識別碼和金鑰。 例如，在用於 PowerShell 範例指令碼的 **arrconfig.json** 檔案中：
 
 ```json
-    "accountSettings": {
-        "arrAccountId": "<fill in the account ID from the Azure portal>",
-        "arrAccountKey": "<fill in the account key from the Azure portal>",
-        "region": "<select from available regions>"
-    },
+"accountSettings": {
+    "arrAccountId": "<fill in the account ID from the Azure portal>",
+    "arrAccountKey": "<fill in the account key from the Azure portal>",
+    "region": "<select from available regions>"
+},
 ```
 
 如需填寫 [區域] 選項，請參閱[可用區域清單](../reference/regions.md)。
@@ -89,6 +92,7 @@ ms.locfileid: "83844500"
 > 如果系統未列出您的遠端轉譯帳戶，請參閱此[疑難排解一節](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account)。
 
 針對 [角色] 下拉式清單中的個別選項，再次重複新增角色兩次：
+
 * **儲存體帳戶參與者**
 * **儲存體 Blob 資料參與者**
 

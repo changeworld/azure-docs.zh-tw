@@ -11,13 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/09/2020
-ms.openlocfilehash: fd7844340553809e1429097a9dda70f6bdb3e075
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/15/2020
+ms.openlocfilehash: dfd439affe488805b4645211477c6d32bbbe7489
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414198"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770929"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>複製活動效能優化功能
 
@@ -29,20 +28,20 @@ ms.locfileid: "81414198"
 
 資料整合單位是一種量值，代表 Azure Data Factory 中單一單位的能力（CPU、記憶體和網路資源分配的組合）。 資料整合單位僅適用于[Azure 整合運行](concepts-integration-runtime.md#azure-integration-runtime)時間，但不會套用至[自我裝載整合運行](concepts-integration-runtime.md#self-hosted-integration-runtime)時間。
 
-允許複製活動執行的 Diu，是**介於2到256之間**。 如果未指定，或您在 UI 上選擇 [自動]，Data Factory 根據您的來源接收組和資料模式，動態套用最佳 DIU 設定。 下表列出不同複製案例中支援的 DIU 範圍和預設行為：
+允許複製活動執行的 Diu，是**介於2到256之間**。 如果未指定或在 UI 上選擇 [自動]，Data Factory 會根據您的來源接收配對和資料模式，動態套用最佳 DIU 設定。 下表列出不同複製案例中支援的 DIU 範圍和預設行為：
 
 | 複製案例 | 支援的 DIU 範圍 | 服務決定的預設 DIU |
 |:--- |:--- |---- |
 | 在檔案存放區之間 |- **從或複製到單一**檔案：2-4 <br>- **從和複製到多個**檔案：2-256，視檔案的數目和大小而定 <br><br>例如，如果您從含有4個大型檔案的資料夾複製資料，並選擇保留階層，則最大有效 DIU 為 16;當您選擇合併檔案時，最大有效 DIU 為4。 |根據檔案的數目和大小，介於4到32之間 |
 | 從檔案存放區到非檔案存放區 |- **從單一檔案複製**：2-4 <br/>- **從多個檔案複製**：2-256，視檔案的數目和大小而定 <br/><br/>例如，如果您從含有4個大型檔案的資料夾複製資料，最大有效 DIU 就是16。 |- **複製到 Azure SQL Database 或 Azure Cosmos DB**：介於4到16之間，視接收層（dtu/ru）和來源檔案模式而定<br>- 使用 PolyBase 或 COPY 語句來**複製到 Azure Synapse 分析**：2<br>-其他案例：4 |
-| 從非檔案存放區到檔案存放區 |- **從已啟用分割選項的資料存放區**（包括[Oracle](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata](connector-teradata.md#teradata-as-source)）複製：寫入資料夾時為2-256，寫入至單一檔案時則是2-4。 請注意，每個來源資料分割最多可使用4個 Diu。<br>- **其他案例**：2-4 |- **從 REST 複製或 HTTP**：1<br/>- 使用 UNLOAD**從 Amazon Redshift 複製**：2<br>- **其他案例**：4 |
-| 在非檔案存放區之間 |- **從已啟用分割選項的資料存放區**（包括[Oracle](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata](connector-teradata.md#teradata-as-source)）複製：寫入資料夾時為2-256，寫入至單一檔案時則是2-4。 請注意，每個來源資料分割最多可使用4個 Diu。<br/>- **其他案例**：2-4 |- **從 REST 複製或 HTTP**：1<br>- **其他案例**：4 |
+| 從非檔案存放區到檔案存放區 |- **從已啟用分割選項的資料存放區**（包括[Oracle](connector-oracle.md#oracle-as-source) / [Netezza](connector-netezza.md#netezza-as-source) / [Teradata](connector-teradata.md#teradata-as-source)）複製：寫入資料夾時為2-256，寫入至單一檔案時則是2-4。 請注意，每個來源資料分割最多可使用4個 Diu。<br>- **其他案例**：2-4 |- **從 REST 複製或 HTTP**：1<br/>- 使用 UNLOAD**從 Amazon Redshift 複製**：2<br>- **其他案例**：4 |
+| 在非檔案存放區之間 |- **從已啟用分割選項的資料存放區**（包括[Oracle](connector-oracle.md#oracle-as-source) / [Netezza](connector-netezza.md#netezza-as-source) / [Teradata](connector-teradata.md#teradata-as-source)）複製：寫入資料夾時為2-256，寫入至單一檔案時則是2-4。 請注意，每個來源資料分割最多可使用4個 Diu。<br/>- **其他案例**：2-4 |- **從 REST 複製或 HTTP**：1<br>- **其他案例**：4 |
 
-您可以在 [複製活動監視] 視圖或 [活動輸出] 中看到用於每個複製執行的 Diu。 如需詳細資訊，請參閱[複製活動監視](copy-activity-monitoring.md)。 若要覆寫此預設值，請如下`dataIntegrationUnits`所示指定屬性的值。 根據您的資料模式，複製作業會在執行階段使用的 *實際 DIU 數目* 等於或小於所設定的值。
+您可以在 [複製活動監視] 視圖或 [活動輸出] 中看到用於每個複製執行的 Diu。 如需詳細資訊，請參閱[複製活動監視](copy-activity-monitoring.md)。 若要覆寫此預設值，請如下所示指定屬性的值 `dataIntegrationUnits` 。 根據您的資料模式，複製作業會在執行階段使用的 *實際 DIU 數目* 等於或小於所設定的值。
 
-您將以 **# 個已使用的\* diu 複製\*持續時間單位價格/DIU 小時**計費。 請在[這裡](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)查看目前的價格。 每個訂用帳戶類型可能會套用當地貨幣和個別折扣。
+您將以 **# 個已使用的 diu \* 複製持續時間 \* 單位價格/DIU 小時**計費。 請在[這裡](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)查看目前的價格。 每個訂用帳戶類型可能會套用當地貨幣和個別折扣。
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -78,11 +77,11 @@ ms.locfileid: "81414198"
 
 ## <a name="parallel-copy"></a>平行複製
 
-您可以設定 [複製活動`parallelCopies` ] 上的 [平行複製（屬性）]，以指出您想要複製活動使用的平行處理原則。 您可以將此屬性視為複製活動內的最大執行緒數目，這會從來源讀取或以平行方式寫入接收資料存放區。
+您可以設定 [複製活動] 上的 [平行複製（ `parallelCopies` 屬性）]，以指出您想要複製活動使用的平行處理原則。 您可以將此屬性視為複製活動內的最大執行緒數目，這會從來源讀取或以平行方式寫入接收資料存放區。
 
 平行複製正交于[資料整合單位](#data-integration-units)或[自我裝載 IR 節點](#self-hosted-integration-runtime-scalability)。 它會在所有 Diu 或自我裝載的 IR 節點上計算。
 
-根據預設，針對每個複製活動執行，Azure Data Factory 以您的來源接收配對和資料模式為基礎，動態套用最佳的平行複製設定。 
+根據預設，針對每個複製活動執行，Azure Data Factory 會根據您的來源接收配對和資料模式，動態套用最佳的平行複製設定。 
 
 > [!TIP]
 > 平行複製的預設行為通常會提供最佳的輸送量，這是根據您的來源接收組、資料模式和 Diu 數目，或自我裝載 IR 的 CPU/記憶體/節點計數，由 ADF 自動決定。 請參閱針對何時微調平行複製[進行複製活動效能疑難排解](copy-activity-performance-troubleshooting.md)。
@@ -96,11 +95,11 @@ ms.locfileid: "81414198"
 | 從非檔案存放區到檔案存放區 | -從已啟用分割選項的資料存放區（包括[Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [Teradata](connector-teradata.md#teradata-as-source)、 [SAP Hana](connector-sap-hana.md#sap-hana-as-source)、 [sap 資料表](connector-sap-table.md#sap-table-as-source)和[sap 開放式中樞](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)）複製資料時，預設的平行複製為4。 在執行時間，實際使用的平行複製活動數目不會超過您擁有的資料分割數目。 當您使用自我裝載的 Integration Runtime 並複製到 Azure Blob/ADLS Gen2 時，請注意每個 IR 節點的最大有效平行複本是4或5。<br>-針對其他案例，平行複製不會生效。 即使已指定平行處理原則，也不會套用。 |
 | 在非檔案存放區之間 | -將資料複製到 Azure SQL Database 或 Azure Cosmos DB 時，預設的平行複製也取決於接收層（Dtu/ru 的數目）。<br/>-從已啟用分割選項的資料存放區（包括[Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [Teradata](connector-teradata.md#teradata-as-source)、 [SAP Hana](connector-sap-hana.md#sap-hana-as-source)、 [sap 資料表](connector-sap-table.md#sap-table-as-source)和[sap 開放式中樞](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)）複製資料時，預設的平行複製為4。<br>-將資料複製到 Azure 資料表時，預設的平行複製會是4。 |
 
-若要控制裝載資料存放區之電腦上的負載，或調整複製效能，您可以覆寫預設值並指定`parallelCopies`屬性的值。 值必須是大於或等於 1 的整數。 在執行時間，為了達到最佳效能，複製活動會使用小於或等於您所設定之值的值。
+若要控制裝載資料存放區之電腦上的負載，或調整複製效能，您可以覆寫預設值並指定屬性的值 `parallelCopies` 。 值必須是大於或等於 1 的整數。 在執行時間，為了達到最佳效能，複製活動會使用小於或等於您所設定之值的值。
 
-當您指定`parallelCopies`屬性的值時，會將來源和接收資料存放區的負載增加納入考慮。 也請考慮將負載增加至自我裝載整合執行時間（如果複製活動由它所擁有）。 當您對相同的資料存放區執行相同活動的多個活動或並存執行時，就會發生這種負載增加的情況。 如果您注意到資料存放區或自我裝載整合執行時間已負擔負載，請減少此`parallelCopies`值以減輕負載。
+當您指定屬性的值時 `parallelCopies` ，會將來源和接收資料存放區的負載增加納入考慮。 也請考慮將負載增加至自我裝載整合執行時間（如果複製活動由它所擁有）。 當您對相同的資料存放區執行相同活動的多個活動或並存執行時，就會發生這種負載增加的情況。 如果您注意到資料存放區或自我裝載整合執行時間已負擔負載，請減少此 `parallelCopies` 值以減輕負載。
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -126,9 +125,9 @@ ms.locfileid: "81414198"
 
 從來源資料存放區將資料複製到接收資料存放區時，您可以選擇使用 Blob 儲存體做為過渡暫存存放區。 暫存在下列情況下特別有用︰
 
-- **您想要透過 PolyBase 將資料從各種資料存放區內嵌到 SQL 資料倉儲。** SQL 資料倉儲使用 PolyBase 做為高輸送量機制，將大量資料載入 SQL 資料倉儲。 來源資料必須位於 Blob 儲存體或 Azure Data Lake 存放區中，而且必須符合其他準則。 當您從 Blob 儲存體或 Azure Data Lake Store 以外的資料存放區載入資料時，您可以啟用透過過渡暫存 Blob 儲存體的資料複製。 在此情況下，Azure Data Factory 會執行必要的資料轉換，以確保它符合 PolyBase 的需求。 然後，它會使用 PolyBase 將資料有效率地載入到 SQL 資料倉儲。 如需詳細資訊，請參閱[使用 PolyBase 將資料載入 Azure SQL 資料倉儲](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。
+- **您想要透過 PolyBase 將資料從各種資料存放區內嵌到 Azure Synapse Analytics （先前稱為 SQL 資料倉儲）。** Azure Synapse 分析會使用 PolyBase 做為高輸送量的機制，將大量資料載入 Azure Synapse 分析。 來源資料必須位於 Blob 儲存體或 Azure Data Lake 存放區中，而且必須符合其他準則。 當您從 Blob 儲存體或 Azure Data Lake Store 以外的資料存放區載入資料時，您可以啟用透過過渡暫存 Blob 儲存體的資料複製。 在此情況下，Azure Data Factory 會執行必要的資料轉換，以確保它符合 PolyBase 的需求。 然後，它會使用 PolyBase 有效率地將資料載入 Azure Synapse 分析。 如需詳細資訊，請參閱[使用 PolyBase 將資料載入 Azure SQL 資料倉儲](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。
 - **有時候，執行混合式資料移動（也就是從內部部署資料存放區複製到雲端資料存放區）時，會需要一些時間才能透過低速網路連線。** 若要改善效能，您可以使用分段複製來壓縮內部部署資料，以便將資料移至雲端中的暫存資料存放區所需的時間較短。 接著，您可以在載入至目的地資料存放區之前，先解壓縮臨時存儲區中的資料。
-- **您不想要在防火牆中開啟埠80和埠443以外的通訊埠，因為公司的 IT 原則。** 例如，從內部部署資料存放區將資料複製到 Azure SQL Database 接收或 Azure SQL 資料倉儲接收時，您必須針對 Windows 防火牆和公司防火牆啟用連接埠 1433 上的輸出 TCP 通訊。 在此案例中，分段複製可以利用自我裝載整合執行時間，先透過 HTTP 或 HTTPS 在埠443上將資料複製到 Blob 儲存體暫存實例。 然後，它可以將資料從 Blob 儲存體暫存載入 SQL Database 或 SQL 資料倉儲。 在此流程中，您不需要啟用連接埠 1433。
+- **您不想要在防火牆中開啟埠80和埠443以外的通訊埠，因為公司的 IT 原則。** 例如，當您將資料從內部部署資料存放區複製到 Azure SQL Database 接收或 Azure Synapse 分析接收時，您必須在 Windows 防火牆和公司防火牆的埠1433上啟用輸出 TCP 通訊。 在此案例中，分段複製可以利用自我裝載整合執行時間，先透過 HTTP 或 HTTPS 在埠443上將資料複製到 Blob 儲存體暫存實例。 然後，它可以將資料從 Blob 儲存體暫存載入 SQL Database 或 Azure Synapse 分析。 在此流程中，您不需要啟用連接埠 1433。
 
 ### <a name="how-staged-copy-works"></a>分段複製的運作方式
 
@@ -140,16 +139,16 @@ ms.locfileid: "81414198"
 
 目前，您無法在透過不同自我裝載的 IRs 連線的兩個數據存放區之間複製資料，不論是否有分段複製也不會。 針對這種情況，您可以設定兩個明確連結的複製活動，從來源複製到預備環境，然後從暫存到接收。
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
-設定 [複製] 活動中的 [ **enableStaging** ] 設定，指定在將資料載入目的地資料存放區之前，是否要在 Blob 儲存體中暫存資料。 當您將**enableStaging**設定`TRUE`為時，請指定下表所列的其他屬性。 您也需要建立 Azure 儲存體或儲存體共用存取簽章連結服務，以供暫存（如果您沒有的話）。
+設定 [複製] 活動中的 [ **enableStaging** ] 設定，指定在將資料載入目的地資料存放區之前，是否要在 Blob 儲存體中暫存資料。 當您將**enableStaging**設定為時 `TRUE` ，請指定下表所列的其他屬性。 您也需要建立 Azure 儲存體或儲存體共用存取簽章連結服務，以供暫存（如果您沒有的話）。
 
 | 屬性 | 描述 | 預設值 | 必要 |
 | --- | --- | --- | --- |
 | enableStaging |指定您是否要透過過渡暫存存放區複製資料。 |False |否 |
-| linkedServiceName |指定 [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) 連結服務的名稱，以代表您用來做為過渡暫存存放區的儲存體執行個體。 <br/><br/> 您無法使用具有共用存取簽章的儲存體，透過 PolyBase 將資料載入 SQL 資料倉儲。 您可以將它用於其他所有案例。 |N/A |是，當 **enableStaging** 設為 TRUE |
+| linkedServiceName |指定 [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) 連結服務的名稱，以代表您用來做為過渡暫存存放區的儲存體執行個體。 <br/><br/> 您無法使用具有共用存取簽章的儲存體，透過 PolyBase 將資料載入至 Azure Synapse 分析。 您可以將它用於其他所有案例。 |N/A |是，當 **enableStaging** 設為 TRUE |
 | 路徑 |指定要包含分段資料的 Blob 儲存體路徑。 如果您未提供路徑，服務會建立容器來儲存暫存資料。 <br/><br/> 只有在使用具有共用存取簽章的儲存體時，或需要讓暫存資料位於特定位置時，才指定路徑。 |N/A |否 |
-| enableCompression |指定是否應該先壓縮資料，再將它複製到目的地。 此設定可減少傳輸的資料量。 |False |否 |
+| enableCompression |指定是否應該先壓縮資料，再將它複製到目的地。 此設定可減少傳輸的資料量。 |False |No |
 
 >[!NOTE]
 > 如果您在啟用壓縮的情況下使用分段複製，則不支援暫存 blob 連結服務的服務主體或 MSI 驗證。
@@ -194,7 +193,7 @@ ms.locfileid: "81414198"
 ## <a name="next-steps"></a>後續步驟
 請參閱其他複製活動文章：
 
-- [複製活動總覽](copy-activity-overview.md)
+- [複製活動概觀](copy-activity-overview.md)
 - [複製活動效能和擴充性指南](copy-activity-performance.md)
 - [針對複製活動效能進行疑難排解](copy-activity-performance-troubleshooting.md)
 - [使用 Azure Data Factory 將資料從您的 data lake 或資料倉儲遷移至 Azure](data-migration-guidance-overview.md)

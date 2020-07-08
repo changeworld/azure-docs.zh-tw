@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: a21828413b8d8750827fafa077002863439f8643
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 9e5361c1082424a76699affee653b4b9fc798116
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569585"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339752"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge"></a>使用 Azure 入口網站來管理 Azure Stack Edge 上的頻寬排程  
 
@@ -44,7 +43,7 @@ ms.locfileid: "82569585"
    2. 如果此排程應該整天執行，請勾選 [全天]****。
    3. [頻寬速率]**** 是以 MB / 秒 (Mbps) 為單位的頻寬，由您的裝置使用於涉及雲端的作業 (上傳與下載)。 提供一個介於 20 到 1,000,000,007 之間的數目給此欄位。
    4. 如果您不想節流處理上傳和下載日期，請勾選 [無限制]**** 頻寬。
-   5. 選取 [新增]  。
+   5. 選取 [新增]。
 
       ![新增排程](media/azure-stack-edge-manage-bandwidth-schedules/add-schedule-2.png)
 

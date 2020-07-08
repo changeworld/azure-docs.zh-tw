@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
 ms.openlocfilehash: 33d530181f4cc389f81ea83dc42b774ccfc8fd85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869629"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows 虛擬機器的常見問題
@@ -46,7 +45,7 @@ Azure 儲存體帳戶也提供作業系統磁碟和任何資料磁碟的儲存�
 您可以透過移動分頁檔並重新指派磁碟機代號來變更磁碟機代號，但必須確定會以特定的順序執行這些步驟。 如需相關指示，請參閱 [變更 Windows 暫存磁碟的磁碟機代號](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>我是否可以將現有的 VM 新增到可用性設定組？
-否。 如果您希望 VM 屬於可用性設定組的一部分，就必須在設定組當中建立 VM。 目前不支援在建立 VM 之後，再將其加入可用性設定組。
+不可以。 如果您希望 VM 屬於可用性設定組的一部分，就必須在設定組當中建立 VM。 目前不支援在建立 VM 之後，再將其加入可用性設定組。
 
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>我是否可以將虛擬機器上傳到 Azure？
 是。 如需指示，請參閱[移轉內部部署 VM 至 Azure](on-prem-to-azure.md)。

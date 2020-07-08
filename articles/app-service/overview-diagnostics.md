@@ -8,10 +8,9 @@ ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
 ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869952"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service 診斷概觀
@@ -24,7 +23,7 @@ App Service 診斷不僅適用於 Windows 上您的應用程式，也適用於 [
 
 ## <a name="open-app-service-diagnostics"></a>開啟 App Service 診斷
 
-若要存取 App Service 診斷，請流覽至您的 App Service web 應用程式，或[Azure 入口網站](https://portal.azure.com)中的 App Service 環境。 在左方導覽列中，按一下 [診斷並解決問題]****。
+若要存取 App Service 診斷，請流覽至您的 App Service web 應用程式，或[Azure 入口網站](https://portal.azure.com)中的 App Service 環境。 在左方導覽列中，按一下 [診斷並解決問題]。
 
 針對 Azure Functions，請流覽至您的函式應用程式，然後在頂端導覽中，按一下 [**平臺功能**]，然後從 [**資源管理**] 區段中選取 [**診斷並解決問題**]。
 
@@ -38,11 +37,11 @@ App Service 診斷不僅適用於 Windows 上您的應用程式，也適用於 [
 
 ## <a name="interactive-interface"></a>互動式介面
 
-一旦您選取最符合應用程式問題的首頁類別，App Service 診斷的互動式介面 Genie，就可以引導您完成應用程式的診斷和解決問題。 您可以使用 Genie 所提供的磚快捷方式，來查看您感興趣之問題類別的完整診斷報告。 磚快捷方式可讓您直接存取診斷計量。
+一旦您選取最符合應用程式問題的首頁類別，App Service 診斷的互動式介面 Genie，就可以引導您完成應用程式的診斷和解決問題。 您可以使用 Genie 所提供的磚快捷方式，來查看您感興趣之問題類別的完整診斷報告。 圖格快速鍵可讓您直接存取診斷計量。
 
 ![圖格快速鍵](./media/app-service-diagnostics/tile-shortcuts-2.png)
 
-按一下這些磚之後，您可以看到與磚中所述問題相關的主題清單。 這些主題提供完整報告中值得注意的資訊片段。 您可以按一下其中任何一個主題，進一步調查問題。 此外，您也可以按一下 [ **View Full Report** ]，以流覽單一頁面上的所有主題。
+按一下這些磚之後，您可以看到與磚中所述問題相關的主題清單。 這些主題會提供完整報告中值得注意的資訊片段。 您可以按一下其中任何一個主題，進一步調查問題。 此外，您也可以按一下 [ **View Full Report** ]，以流覽單一頁面上的所有主題。
 
 ![主題](./media/app-service-diagnostics/application-logs-insights-3.png)
 

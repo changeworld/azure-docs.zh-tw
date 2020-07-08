@@ -13,7 +13,6 @@ ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: ff83a9a4e4bfd4c27dd3f8d3f212e489c3772eb4
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83741621"
@@ -62,7 +61,7 @@ ms.locfileid: "83741621"
 1. 使用適當的電子郵件地址 (例如 alain@outlook.com) 登入個人帳戶，然後選取 [下一步]。
 
     >[!Note]
-    >如果您沒有個人 Microsoft 帳戶，[則可建立一個](https://account.microsoft.com/account/Account?refd=www.bing.com&ru=https%3A%2F%2Faccount.microsoft.com%2F%3Frefd%3Dwww.bing.com&destrt=home-index)。
+    >如果您沒有個人 Microsoft 帳戶，[則可建立一個](https://account.microsoft.com/account/Account?refd=www.bing.com&ru=https%3A%2F%2Faccount.microsoft.com%2F%3Frefd%3D www.bing.com&destrt=home-index)。
 
 1. 輸入密碼，然後選取 [登入]。 您的個人帳戶會新增至 Microsoft Authenticator 應用程式。
 

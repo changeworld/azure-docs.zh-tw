@@ -8,12 +8,11 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: de8574cd691c77bb764c7e695db1e7c2f23c5f3a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85242179"
 ---
 此文章將回答有關 Azure 受控磁碟和 Azure 進階 SSD 磁碟的一些常見問題。
 
@@ -451,7 +450,7 @@ Azure 備份支援的最大磁碟大小為 32 TiB (4 TiB 用於加密磁碟)。 
 
 **是否支援在所在磁碟大小上啟用主機快取？**
 
-我們在小於 4 TiB 的磁碟大小上支援唯讀和讀取/寫入的主機快取。 針對超過 4 TiB 的磁碟大小，我們只支援設定為 [無] 的快取選項。 建議您利用快取較小型磁碟大小的方式，以便您透過快取到 VM 的資料增進效能。
+小於 4 TiB 的磁片大小支援主機快取（唯讀和讀取/寫入）。 這表示任何布建到 4095 GiB 的磁片都可以利用主機快取。 對於大於或等於 4096 GiB 的磁片大小，不支援主機快取。 例如，布建于 4095 GiB 的 P50 premium 磁片可以利用主機快取，而布建于 4096 GiB 的 P50 磁片則無法利用主機快取。 建議您利用快取較小型磁碟大小的方式，以便您透過快取到 VM 的資料增進效能。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果這裡沒有解答我的問題該怎麼辦？
 
