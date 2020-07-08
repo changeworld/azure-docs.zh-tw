@@ -5,16 +5,15 @@ description: 設定 VS Code Remote，以互動方式使用 Azure Machine Learnin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 19d4b6e7994450eacacab51e9a01cbf58eab803a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77169744"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84433128"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>以互動方式在具有 VS Code 遠端的 Azure Machine Learning 計算實例上進行偵錯工具
 
@@ -34,7 +33,7 @@ ms.locfileid: "77169744"
 
 ## <a name="get-ip-and-ssh-port"></a>取得 IP 和 SSH 埠 
 
-1. 前往 Azure Machine Learning studio https://ml.azure.com/。
+1. 前往 Azure Machine Learning studio https://ml.azure.com/ 。
 
 2. 選取您的[工作區](concept-workspace.md)。
 1. 按一下 [**計算實例**] 索引標籤。
@@ -70,7 +69,7 @@ ms.locfileid: "77169744"
 
 ## <a name="add-instance-as-a-host"></a>將實例新增為主機 
 
-在編輯器中`~/.ssh/config`開啟檔案（Linux `C:\Users<username>.ssh\config` ）或（Windows），並新增類似以下的專案：
+`~/.ssh/config`在編輯器中開啟檔案（Linux）或 `C:\Users<username>.ssh\config` （Windows），並新增類似以下的專案：
 
 ```
 Host azmlci1 
@@ -86,15 +85,15 @@ Host azmlci1
 
 以下是欄位的一些詳細資料： 
 
-|欄位|描述|
+|欄位|說明|
 |----|---------|
 |主機|針對計算實例使用您喜歡的任何縮寫 |
 |HostName|這是計算實例的 IP 位址 |
-|連接埠|這是上述 SSH 對話方塊上顯示的埠 |
-|User|這必須是 `azureuser` |
+|Port|這是上述 SSH 對話方塊上顯示的埠 |
+|使用者|這必須是 `azureuser` |
 |IdentityFile|應該指向您儲存私密金鑰的檔案 |
 
-現在，您應該能夠使用上述所用的縮寫， `ssh azmlci1`以 ssh 連線到您的計算實例。 
+現在，您應該能夠使用上述所用的縮寫，以 ssh 連線到您的計算實例 `ssh azmlci1` 。 
 
 ## <a name="connect-vs-code-to-the-instance"></a>將 VS Code 連接到實例 
 
@@ -114,4 +113,4 @@ Host azmlci1
 
 既然您已設定 Visual Studio Code 遠端，您就可以使用計算實例做為 Visual Studio Code 的遠端計算，以互動方式來對程式碼進行驗證。 
 
-[教學課程：將您的第一個 ML 模型定型](tutorial-1st-experiment-sdk-train.md)示範如何使用具有整合式筆記本的計算實例。
+[教學課程：進行第一個 ML 模型的定型](tutorial-1st-experiment-sdk-train.md)會示範如何搭配使用計算執行個體與整合式筆記本。

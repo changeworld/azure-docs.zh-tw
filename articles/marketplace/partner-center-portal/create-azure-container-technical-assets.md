@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 87c915330fdc0d59d0d32c0747c7dc7647c342ba
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 8f32313529da965573a6c9884daee678e3bc64cc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700975"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958594"
 ---
 # <a name="create-an-azure-container-offer"></a>建立 Azure 容器供應項目
 
@@ -20,7 +19,7 @@ ms.locfileid: "83700975"
 
 ## <a name="before-you-begin"></a>開始之前
 
-請參閱 [Azure 容器執行個體文件](https://docs.microsoft.com/azure/container-instances)，取得快速入門、教學課程和範例。
+請參閱 [Azure 容器執行個體文件](../../container-instances/index.yml)，取得快速入門、教學課程和範例。
 
 ## <a name="fundamental-technical-knowledge"></a>基本技術知識
 
@@ -43,7 +42,7 @@ ms.locfileid: "83700975"
 
 建議您將這些工具新增至開發環境：
 
-- [Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
+- [Azure 儲存體總管](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - 擴充功能：[Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) \(英文\)
   - 擴充功能：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify) \(英文\)
@@ -55,9 +54,9 @@ ms.locfileid: "83700975"
 
 如需詳細資訊，請參閱下列教學課程：
 
-- [教學課程：建立容器影像以部署至 Azure 容器執行個體](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-- [教學課程：使用 Azure Container Registry 工作在雲端中建置和部署容器映像](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)。
+- [教學課程：建立容器影像以部署至 Azure 容器執行個體](../../container-instances/container-instances-tutorial-prepare-app.md)
+- [教學課程：使用 Azure Container Registry 工作在雲端中建置和部署容器映像](../../container-registry/container-registry-tutorial-quick-task.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [建立容器供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)。
+- [建立容器供應項目](create-azure-container-offer.md)。

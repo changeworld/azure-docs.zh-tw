@@ -8,16 +8,15 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 454420d9b2f4e3cf834490da79f3571691f25bc1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 8cd9c1ba85666a6556e24e4966e1e6cb9b7ef124
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121111"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84449301"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理儲存體帳戶金鑰
 
-Azure 儲存體帳戶使用由帳戶名稱和金鑰組成的認證。 金鑰會自動產生並作為密碼，而不是做為加密金鑰。 Key Vault 會將儲存體帳戶金鑰儲存為 Key Vault 秘密來加以管理。 
+Azure 儲存體帳戶使用由帳戶名稱和金鑰組成的認證。 金鑰會自動產生並作為密碼，而不是做為加密金鑰。 Key Vault 會在儲存體帳戶中定期重新產生儲存體帳戶金鑰，並提供共用存取簽章權杖，以供委派存取您儲存體帳戶中的資源。
 
 您可以使用 Key Vault 受控儲存體帳戶金鑰功能來列出（同步）金鑰與 Azure 儲存體帳戶，並定期重新產生（輪替）金鑰。 您可以管理儲存體帳戶和傳統儲存體帳戶的金鑰。
 
@@ -43,13 +42,13 @@ Azure AD 租使用者會提供每個已註冊的應用程式與[服務主體](/a
 
 Key Vault 是在所有 Azure AD 租使用者中預先註冊的 Microsoft 應用程式。 Key Vault 會在每個 Azure 雲端中的相同應用程式識別碼下註冊。
 
-| 租用戶 | 雲端 | 應用程式識別碼 |
+| 租用戶 | Cloud | 應用程式識別碼 |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure 公用 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成本指南，您必須先執行下列動作：
 
@@ -122,7 +121,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-如果 Key Vault 在您的儲存體帳戶上已經被新增至該角色，您將會收到「角色指派已存在。」** 的錯誤。 您也可以使用 Azure 入口網站中該儲存體帳戶的 [存取控制 (IAM)] 頁面來驗證角色指派。  
+如果 Key Vault 在您的儲存體帳戶上已經被新增至該角色，您將會收到「角色指派已存在。」** 錯誤內容。 您也可以使用 Azure 入口網站中該儲存體帳戶的 [存取控制 (IAM)] 頁面來驗證角色指派。  
 
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>將使用者帳戶使用權限授與受控儲存體帳戶
 

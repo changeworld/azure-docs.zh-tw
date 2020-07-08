@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
-ms.openlocfilehash: b59f933fedd5f1d3ed3f7972b1a1fe653df31be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75893902"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84434364"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>對 Microsoft Azure Site Recovery Provider 升級失敗進行疑難排解
 
@@ -65,4 +64,16 @@ ms.locfileid: "75893902"
 
 1. 使用 [工作管理員] 來監視安裝進度。 當 CX_THIRDPARTY_SETUP.EXE 的處理序已不再顯示在 [工作管理員] 中時，請繼續進行下一個步驟。
 1. 確認 C:\thirdparty 存在且該資料夾包含 RRD 程式庫。
-1. 返回您下載整合安裝的資料夾，然後執行 MicrosoftAzureSiteRecoveryUnifiedSetup.exe 以完成升級。 
+1. 返回您下載整合安裝的資料夾，然後執行 MicrosoftAzureSiteRecoveryUnifiedSetup.exe 以完成升級。
+
+## <a name="upgrade-failure-due-to-master-target-installation-failure"></a>因為主要目標安裝失敗，所以升級失敗
+
+升級 Microsoft Azure Site Recovery 提供者（DRA）時，主要目標安裝失敗，並出現錯誤「安裝位置不存在和/或沒有 1 GB 的可用空間和/或不存在於固定磁片磁碟機上。」。
+
+這可能是因為登錄機碼中的參數出現 null 值。 解決問題-
+
+1. 啟動 [登錄編輯程式] （regedit.exe），然後開啟 [HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4] 分支。
+1. 檢查 ' InstallDirectory ' 金鑰值。如果它是 null，則新增 [目前的安裝目錄] 值。
+1. 同樣地，在 [登錄編輯程式] 中開啟 [HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5] 分支。
+1. 檢查 ' InstallDirectory ' 索引鍵值，並新增目前的安裝目錄值。
+1. 重新執行整合安裝安裝程式。

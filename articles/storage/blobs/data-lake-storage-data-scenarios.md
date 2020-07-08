@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b0ebe6cb505fa2a145dd3cbb94398912f2933a4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77369707"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84193499"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 處理巨量資料需求
 
@@ -52,7 +51,7 @@ ms.locfileid: "77369707"
 
 以下是您可用來擷取串流資料的工具清單。
 
-|工具 | 指導 |
+|工具 | 指引 |
 |---|--|
 |Azure 串流分析|[快速入門：使用 Azure 入口網站建立串流分析作業](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Azure Data Lake Gen2 的輸出](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
 |Azure HDInsight Storm | [從 HDInsight 上的 Apache Storm 寫入 Apache Hadoop HDFS](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
@@ -63,7 +62,7 @@ ms.locfileid: "77369707"
 
 以下是您可用來擷取關聯式資料的工具清單。
 
-|工具 | 指導 |
+|工具 | 指引 |
 |---|--|
 |Azure Data Factory | [Azure Data Factory 中的複製活動](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 
@@ -73,7 +72,7 @@ ms.locfileid: "77369707"
 
 以下是您可用來擷取網頁伺服器記錄資料的工具清單。
 
-|工具 | 指導 |
+|工具 | 指引 |
 |---|--|
 |Azure Data Factory | [Azure Data Factory 中的複製活動](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
 |Azure CLI|[Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
@@ -87,7 +86,7 @@ ms.locfileid: "77369707"
 
 以下是您可用來擷取 HDInsight 叢集相關資料的工具清單。
 
-|工具 | 指導 |
+|工具 | 指引 |
 |---|--|
 |Apache DistCp | [使用 DistCp 在 Azure 儲存體 Blob 與 Azure Data Lake Storage Gen2 之間複製資料](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
 |AzCopy 工具 | [使用 AzCopy 轉送資料](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
@@ -116,7 +115,7 @@ Azure ExpressRoute 可讓您在 Azure 資料中心與內部部署的基礎結構
 
 以下是您可用來對儲存在 Data Lake Storage Gen2 中的資料執行資料分析工作的工具清單。
 
-|工具 | 指導 |
+|工具 | 指引 |
 |---|--|
 |Azure HDInsight | [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) \(部分機器翻譯\)<br><br>[快速入門：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的資料](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[教學課程：使用 Azure Databrick 擷取、轉換和載入資料](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
@@ -129,7 +128,7 @@ Azure ExpressRoute 可讓您在 Azure 資料中心與內部部署的基礎結構
 
 在以下案例中，您可能也會想要從 Azure Data Lake Storage Gen2 下載資料或移動資料：
 
-* 將資料移動到其他儲存機制，以便與現有的資料處理管線連結。 例如，您可能會想要將資料從 Data Lake Storage Gen2 移動到 Azure SQL Database 或內部部署 SQL Server。
+* 將資料移動到其他儲存機制，以便與現有的資料處理管線連結。 例如，您可能會想要將資料從 Data Lake Storage Gen2 移至 Azure SQL Database 或 SQL Server 實例。
 
 * 在建置應用程式原型時，將資料下載到本機電腦，以便在 IDE 環境中處理。
 
@@ -137,7 +136,7 @@ Azure ExpressRoute 可讓您在 Azure 資料中心與內部部署的基礎結構
 
 以下是您可用來從 Data Lake Storage Gen2 下載資料的工具清單。
 
-|工具 | 指導 |
+|工具 | 指引 |
 |---|--|
 |Azure Data Factory | [Azure Data Factory 中的複製活動](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCp | [使用 DistCp 在 Azure 儲存體 Blob 與 Azure Data Lake Storage Gen2 之間複製資料](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

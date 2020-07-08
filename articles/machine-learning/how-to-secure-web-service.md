@@ -5,20 +5,19 @@ description: 瞭解如何啟用 HTTPS，以保護透過 Azure Machine Learning �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a58b0120feaba907c62bc646f4f85d9185227fed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cb766a81cda822377eeda09cab75d19111523bef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80287334"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84432866"
 ---
-# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>透過 Azure Machine Learning 使用 TLS 來保護 web 服務
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 來透過 Azure Machine Learning 保護 Web 服務
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文說明如何保護透過 Azure Machine Learning 部署的 web 服務。
@@ -54,7 +53,7 @@ TLS 和 SSL 都依賴*數位憑證*，這有助於加密和身分識別驗證。
 
 ## <a name="get-a-domain-name"></a>取得網域名稱
 
-如果您還沒有功能變數名稱，請向*網域註冊機構*購買一個名稱。 「註冊機構」之間的程式和價格各不相同。 註冊機構會提供工具來管理功能變數名稱。 您可以使用這些工具，將完整功能變數名稱（FQDN）（例如 www\.contoso.com）對應至裝載 web 服務的 IP 位址。
+如果您還沒有功能變數名稱，請向*網域註冊機構*購買一個名稱。 「註冊機構」之間的程式和價格各不相同。 註冊機構會提供工具來管理功能變數名稱。 您可以使用這些工具，將完整功能變數名稱（FQDN）（例如 www \. contoso.com）對應至裝載 web 服務的 IP 位址。
 
 ## <a name="get-a-tlsssl-certificate"></a>取得 TLS/SSL 憑證
 
@@ -63,7 +62,7 @@ TLS 和 SSL 都依賴*數位憑證*，這有助於加密和身分識別驗證。
 * **憑證**。 憑證必須包含完整的憑證鏈，而且必須是「PEM 編碼」。
 * **金鑰**。 金鑰也必須以 PEM 編碼。
 
-當您要求憑證時，必須提供您計畫用於 web 服務之位址的 FQDN （例如，www\.contoso.com）。 相較于驗證 web 服務的身分識別，會比較在憑證中加上戳記的位址，以及用戶端所使用的位址。 如果這些位址不相符，用戶端會收到錯誤訊息。
+當您要求憑證時，必須提供您計畫用於 web 服務之位址的 FQDN （例如，www \. contoso.com）。 相較于驗證 web 服務的身分識別，會比較在憑證中加上戳記的位址，以及用戶端所使用的位址。 如果這些位址不相符，用戶端會收到錯誤訊息。
 
 > [!TIP]
 > 如果憑證授權單位單位無法提供憑證和金鑰做為 PEM 編碼的檔案，您可以使用[OpenSSL](https://www.openssl.org/)之類的公用程式來變更格式。
@@ -87,7 +86,7 @@ TLS 和 SSL 都依賴*數位憑證*，這有助於加密和身分識別驗證。
 
 **Enable_ssl**方法可以使用由 Microsoft 提供的憑證，或您購買的憑證。
 
-  * 當您使用 Microsoft 的憑證時，您必須使用*leaf_domain_label*參數。 此參數會產生服務的 DNS 名稱。 例如，"contoso" 的值會建立 "contoso\<6 個隨機字元> 的功能變數名稱。\<azureregion>. cloudapp.azure.com "，其中\<azureregion> 是包含服務的區域。 （選擇性）您可以使用*overwrite_existing_domain*參數來覆寫現有的*leaf_domain_label*。
+  * 當您使用 Microsoft 的憑證時，您必須使用*leaf_domain_label*參數。 此參數會產生服務的 DNS 名稱。 例如，"contoso" 的值會建立功能變數名稱 "contoso \<six-random-characters> . \<azureregion> .。cloudapp.azure.com "，其中 \<azureregion> 是包含服務的區域。 （選擇性）您可以使用*overwrite_existing_domain*參數來覆寫現有的*leaf_domain_label*。
 
     若要在啟用 TLS 的情況下部署（或重新部署）服務，請將*ssl_enabled*參數設為 "True" （不論其適用的位置）。 將*ssl_certificate*參數設定為*憑證*檔案的值。 將*ssl_key*設定為*金鑰*檔的值。
 
@@ -172,6 +171,10 @@ TLS/SSL 憑證過期，必須更新。 通常每年都會發生這種情況。 �
 
 如果憑證原本是由 Microsoft 產生（使用*leaf_domain_label*來建立服務），請使用下列其中一個範例來更新憑證：
 
+> [!IMPORTANT]
+> * 如果現有的憑證仍然有效，請使用 `renew=True` （SDK）或 `--ssl-renew` （CLI）強制設定進行更新。 例如，如果現有的憑證仍然有效10天，而您未使用 `renew=True` ，則憑證可能不會更新。
+> * 最初部署服務時， `leaf_domain_label` 會用來建立使用模式的 DNS 名稱 `<leaf-domain-label>######.<azure-region>.cloudapp.azure.net` 。 若要保留現有的名稱（包括最初產生的6個數字），請使用原始 `leaf_domain_label` 值。 請勿包含所產生的6個數字。
+
 **使用 SDK**
 
 ```python
@@ -183,7 +186,7 @@ from azureml.core.compute.aks import SslConfiguration
 aks_target = AksCompute(ws, clustername)
 
 # Update the existing certificate by referencing the leaf domain label
-ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True)
+ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True, renew=True)
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
 ```
@@ -191,7 +194,7 @@ aks_target.update(update_config)
 **使用 CLI**
 
 ```azurecli
-az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True
+az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True --ssl-renew
 ```
 
 如需詳細資訊，請參閱下列參考檔：
@@ -241,7 +244,7 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 ## <a name="disable-tls"></a>停用 TLS
 
-若要針對部署至 Azure Kubernetes Service 的模型停`SslConfiguration`用 TLS，請`status="Disabled"`使用建立，然後執行更新：
+若要針對部署至 Azure Kubernetes Service 的模型停用 TLS，請 `SslConfiguration` 使用建立 `status="Disabled"` ，然後執行更新：
 
 ```python
 from azureml.core.compute import AksCompute
@@ -259,5 +262,5 @@ aks_target.update(update_config)
 
 ## <a name="next-steps"></a>後續步驟
 了解如何：
-+ [使用部署為 Web 服務的機器學習模型](how-to-consume-web-service.md)
++ [使用部署為 web 服務的機器學習模型](how-to-consume-web-service.md)
 + [在 Azure 虛擬網路內安全地執行實驗和推斷](how-to-enable-virtual-network.md)

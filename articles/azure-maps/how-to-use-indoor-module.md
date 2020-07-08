@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9b2a47cde4d79671aada7c280c2bffd9bb8fe759
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: c0b043bdb20cad508950a11853403958340acadf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594027"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84434208"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>使用 Azure 地圖服務室內地圖模組
 
@@ -33,12 +32,12 @@ Azure 地圖服務 Web SDK 包括「Azure 室內地圖服務」模組。 「Azur
 
 若要使用「Azure 室內地圖服務」模組的全球裝載 Azure 內容傳遞網路版本，請參考 HTML 檔案之 `<head>` 元素中的下列 JavaScript 和樣式表參考：
 
-  ```html
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-    <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
-  ```
+```html
+<script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+```
 
  或者，您可以下載「Azure 室內地圖服務」模組。 「Azure 室內地圖服務」模組包含用來存取 Azure 地圖服務各項服務的用戶端程式庫。 請遵循下列步驟，將「室內」模組安裝並載入至您的 Web 應用程式。  
   
@@ -47,8 +46,8 @@ Azure 地圖服務 Web SDK 包括「Azure 室內地圖服務」模組。 「Azur
   2. 安裝 NPM 套件。 請務必在主控台中使用管理員權限：
 
       ```powershell
-        >npm install azure-maps-control
-        >npm install azure-maps-indoor
+      >npm install azure-maps-control
+      >npm install azure-maps-indoor
       ```
 
   3. 在 HTML 檔案的 `<head>` 元素中，參考「Azure 室內地圖服務」模組 JavaScript 和樣式表：
@@ -63,16 +62,20 @@ Azure 地圖服務 Web SDK 包括「Azure 室內地圖服務」模組。 「Azur
 首先，建立「地圖物件」。 「地圖物件」將在下一個步驟中用來具現化「室內管理工具」物件。  下列程式碼示範如何將「地圖物件」具現化：
 
 ```javascript
-  const subscriptionKey = "<your Azure Maps Primary Subscription Key>";
+const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
 
-  const map = new atlas.Map("map-id", {
-    //use your facility's location
-    center: [-122.13315, 47.63637],
-    //or, you can use bounds: [#,#,#,#] and replace # with your map's bounds
-    style: "blank",
-    subscriptionKey,
-    zoom: 19,
-  });
+const map = new atlas.Map("map-id", {
+  //use your facility's location
+  center: [-122.13315, 47.63637],
+  //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
+  style: "blank",
+  view: 'Auto',
+  authOptions: { 
+      authType: 'subscriptionKey',
+      subscriptionKey: subscriptionKey
+  },
+  zoom: 19,
+});
 ```
 
 ## <a name="instantiate-the-indoor-manager"></a>將室內管理工具具現化
@@ -92,7 +95,6 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 若要啟用您提供的狀態資料輪詢，必須提供 `statesetId` 並呼叫 `indoorManager.setDynamicStyling(true)`。 輪詢狀態資料可讓您以動態方式更新動態屬性狀態或和各種狀態。 例如，空間之類的功能可以有一個動態屬性 (「狀態」)，稱為 `occupancy`。 您的應用程式可能想要輪詢任何「狀態」 變更，以反映視覺效果地圖內的變更。 下列程式碼說明如何啟用狀態輪詢：
 
 ```javascript
-
 const tilesetId = "";
 const statesetId = "";
 
@@ -104,7 +106,6 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 if (statesetId.length > 0) {
     indoorManager.setDynamicStyling(true);
 }
-
 ```
 
 ## <a name="indoor-level-picker-control"></a>室內層級選擇器控制項
@@ -123,14 +124,14 @@ indoorManager.setOptions({ levelControl });
 ```javascript
 map.events.add("levelchanged", indoorManager, (eventData) => {
 
-    //code that you want to run after a level has been changed
-    console.log("The level has changed: ", eventData);
-
+  //code that you want to run after a level has been changed
+  console.log("The level has changed: ", eventData);
 });
+
 map.events.add("facilitychanged", indoorManager, (eventData) => {
 
-    //code that you want to run after a facility has been changed
-    console.log("The facility has changed: ", eventData);
+  //code that you want to run after a facility has been changed
+  console.log("The facility has changed: ", eventData);
 });
 ```
 
@@ -149,7 +150,7 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 4. 將「地圖物件」初始化。 「地圖物件」支援下列選項：
     - `Subscription key`是您的 Azure 地圖服務主要訂用帳戶金鑰。
     - `center` 定義室內地圖中心位置的緯度和經度。 如果不想提供 `bounds` 值，請提供 `center` 值。 格式應為 `center`: [-122.13315, 47.63637]。
-    - `bounds` 是用來括住地圖底圖集地圖資料的最小矩形形狀。 如果不想設定 `center` 值，請設定 `bounds` 值。 您可以呼叫[地圖底圖集清單 API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)，尋找您的地圖界限。 地圖底圖清單 API 會傳回 `bbox`，您可以剖析並指派給 `bounds`。 格式應為 `bounds`: [#,#,#,#]。
+    - `bounds` 是用來括住地圖底圖集地圖資料的最小矩形形狀。 如果不想設定 `center` 值，請設定 `bounds` 值。 您可以呼叫[地圖底圖集清單 API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)，尋找您的地圖界限。 地圖底圖清單 API 會傳回 `bbox`，您可以剖析並指派給 `bounds`。 格式應顯示為 `bounds` ： [# west，# 南部，# 東部，# 北部]。
     - `style` 可讓您設定背景的色彩。 若要顯示白色背景，請將 `style` 定義為「空白」。
     - `zoom` 可讓您指定地圖的最小和最大縮放層級。
 
@@ -168,10 +169,13 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, user-scalable=no" />
       <title>Indoor Maps App</title>
-       <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-        <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+
+      <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+        
       <style>
         html,
         body {
@@ -191,16 +195,20 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
     <body>
       <div id="map-id"></div>
       <script>
-        const subscriptionKey = "<your Azure Maps Primary Subscription Key>";
+        const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
         const tilesetId = "<your tilesetId>";
         const statesetId = "<your statesetId>";
 
         const map = new atlas.Map("map-id", {
           //use your facility's location
           center: [-122.13315, 47.63637],
-          //or, you can use bounds: [ # , # , # , # ] and replace # with your Map bounds
+          //or, you can use bounds: [# west, # south, # east, # north] and replace # with your Map bounds
           style: "blank",
-          subscriptionKey,
+          view: 'Auto',
+          authOptions: { 
+              authType: 'subscriptionKey',
+              subscriptionKey: subscriptionKey
+          },
           zoom: 19,
         });
 

@@ -1,19 +1,18 @@
 ---
 title: 驗證和授權
 description: 了解應用程式或服務可向 Azure 空間錨點進行驗證的各種方式，以及存取 Azure 空間錨點所需的控制層級。
-author: julianparismorgan
+author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
-ms.author: pmorgan
+ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9a3b326f97246ffac386ad43cfa08ce413eea899
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: baf5252a6b158855739546c2a03e63dceee6701e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84456499"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空間錨點的驗證和授權
 
@@ -39,7 +38,6 @@ ms.locfileid: "83653366"
 使用帳戶金鑰存取您的 Azure 空間錨點帳戶，是最簡單的入門方式。 您會在 Azure 入口網站上找到帳戶金鑰。 瀏覽至您的帳戶，然後選取 [金鑰] 索引標籤。
 
 ![Azure 空間錨點的驗證概觀](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
-
 
 有兩個金鑰可供使用，這兩個金鑰可同時用於存取空間錨點帳戶。 建議您定期更新用來存取帳戶的金鑰 (擁有兩個不同的有效金鑰，可在不停機的情況下啟用這類更新)，您只需要更新主要金鑰和次要金鑰。
 
@@ -175,13 +173,14 @@ Azure AD 存取權杖的擷取方式是使用 [MSAL 程式庫](../../active-dire
         1.  在 Azure 入口網站中，瀏覽至 **Azure Active Directory**，然後選取 [應用程式註冊]
         2.  選取 [新增應用程式註冊]
         3.  輸入應用程式的名稱，選取 [Web 應用程式/API] 作為 [應用程式類型]，然後輸入服務的驗證 URL。 然後點擊 [建立]。
-        4.  在該應用程式上，點擊 [設定]，然後選取 [金鑰] 索引標籤。輸入您的金鑰名稱、選取持續時間，然後點擊 [儲存]。 請務必儲存該時間所顯示的金鑰值，因為您必須將其包含在 Web 服務的程式碼中。
+        4.  在該應用程式上，按 [**設定**]，然後選取 [**憑證和秘密**] 索引標籤。建立新的用戶端密碼，選取持續時間，然後點擊 [**新增**]。 請務必儲存秘密值，因為您必須將它包含在 web 服務的程式碼中。
     2.  對您的應用程式及 (或) 使用者授與資源的存取權：
         1.  在 Azure 入口網站中瀏覽至您的空間錨點資源
         2.  切換至 [存取控制 (IAM)] 索引標籤
         3.  點擊 [新增角色指派]
         1.  [選取角色](#role-based-access-control)
         2.  在 [選取] 欄位中，輸入您所建立，並且要對其指派存取權的應用程式名稱。 如果您想要讓應用程式的使用者以不同角色存取空間錨點帳戶，您應該在 Azure AD 中註冊多個應用程式，並將不同角色指派給每個應用程式。 然後執行您的授權邏輯，為您的使用者使用正確的角色。
+        3.  注意-在 [**新增角色指派**] 選取專案中，您想要將 [**指派存取**權] 設定為 [Azure AD 使用者、群組或服務主體]。
     3.  按 [儲存]。
 2.  在您的程式碼中 (注意：您可以使用 GitHub 上所包含的服務範例)：
     1.  請務必使用您 Azure AD 應用程式的應用程式識別碼、應用程式祕密和重新導向 URI 作為 MSAL 中的 client ID、secret 和 RedirectUri 參數

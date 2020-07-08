@@ -1,5 +1,5 @@
 ---
-title: 將 Raspberry Pi web 模擬器連線至 Azure IoT 中樞（node.js）
+title: 將 Raspberry Pi web 模擬器連線至 Azure IoT 中樞（Node.js）
 description: 將 Raspberry Pi Web 模擬器連線至 Azure IoT Hub，以便 Raspberry Pi 將資料傳送至 Azure 雲端。
 author: wesmc7777
 manager: philmea
@@ -10,12 +10,11 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: efbe41be6c923f3547df86fd6faeb56bff5e0802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0c1e56eced3ed675a70cc1ec2461038c80cff233
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84449782"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>將 Raspberry Pi 線上模擬器連線至 Azure IoT Hub (Node.js)
 
@@ -23,18 +22,20 @@ ms.locfileid: "73954520"
 
 在本教學課程中，您首先會了解使用 Raspberry Pi 線上模擬器的基本知識。 接著會了解如何使用 [Azure IoT 中樞](about-iot-hub.md)順暢地將 Pi 模擬器連線至雲端。
 
-如果您有實體裝置，請瀏覽[將 Raspberry Pi 連線至 Azure IoT 中樞](iot-hub-raspberry-pi-kit-node-get-started.md)開始著手。
-
 <p>
 <div id="diag" style="width:100%; text-align:center">
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#getstarted" target="_blank">
 <img src="media/iot-hub-raspberry-pi-web-simulator/3-banner.png" alt="Connect Raspberry Pi web simulator to Azure IoT Hub" width="400">
 </div>
+</p>
 <p>
 <div id="button" style="width:100%; text-align:center">
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted" target="_blank">
+<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#getstarted" target="_blank">
 <img src="media/iot-hub-raspberry-pi-web-simulator/6-button-default.png" alt="Start Raspberry Pi simulator" width="400" onmouseover="this.src='media/iot-hub-raspberry-pi-web-simulator/5-button-click.png';" onmouseout="this.src='media/iot-hub-raspberry-pi-web-simulator/6-button-default.png';">
+</a>
 </div>
+</p>
+
+如果您有實體裝置，請瀏覽[將 Raspberry Pi 連線至 Azure IoT 中樞](iot-hub-raspberry-pi-kit-node-get-started.md)開始著手。
 
 ## <a name="what-you-do"></a>您要做什麼
 
@@ -96,7 +97,7 @@ Web 模擬器中有三個區域。
 1. 
    ![取代裝置連接字串](media/iot-hub-raspberry-pi-web-simulator/1-connectionstring.png)
 
-2. 選取 [**執行**] `npm start`或 [輸入] 以執行應用程式。
+2. 選取 [**執行**] 或 [輸入] `npm start` 以執行應用程式。
 
 您應該會看見下列輸出，顯示傳送至 IoT 中樞的感應器資料和訊息 ![輸出 - 從 Raspberry Pi 傳送至 IoT 中樞的感應器資料](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
 

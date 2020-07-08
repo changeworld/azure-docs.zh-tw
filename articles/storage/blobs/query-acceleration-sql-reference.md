@@ -10,12 +10,11 @@ ms.date: 04/21/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: cea5fb507225f063e2d48c56fae254e123a8f72b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81772115"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84193398"
 ---
 # <a name="query-acceleration-sql-language-reference-preview"></a>查詢加速 SQL 語言參考（預覽）
 
@@ -32,7 +31,7 @@ ms.locfileid: "81772115"
 SELECT * FROM table [WHERE expression] [LIMIT limit]
 ```
 
-若是 CSV 格式的資料，*資料表*必須是`BlobStorage`。  這表示查詢將會針對 REST 呼叫中指定的任何 blob 來執行。
+若是 CSV 格式的資料，*資料表*必須是 `BlobStorage` 。  這表示查詢將會針對 REST 呼叫中指定的任何 blob 來執行。
 針對 JSON 格式的資料，*資料表*是「資料表描述元」。   請參閱本文的[資料表描述](#table-descriptors)項一節。
 
 在下列範例中，針對 WHERE*運算式*傳回 true 的每個資料列，這個語句會傳回從評估每個投影運算式所建立的新資料列。
@@ -54,7 +53,7 @@ SELECT aggregate_expression FROM table [WHERE expression] [LIMIT limit]
 SELECT sys.split(split_size)FROM BlobStorage
 ```
 
-<a id="data-types" />
+<a id="data-types"></a>
 
 ## <a name="data-types"></a>資料類型
 
@@ -76,7 +75,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 在 CSV 格式的資料中，欄位也可以由序數參考，並以底線（_）字元作為首碼。  例如，第一個欄位可能會被參考為 _1，或第十個欄位可能會被視為 _11。  依序數參考欄位適用于不包含標頭資料列的 CSV 格式資料，在此情況下，參考特定欄位的唯一方式是依序數。
 
-### <a name="operators"></a>運算子
+### <a name="operators"></a>操作員
 
 支援下列標準 SQL 運算子：
 
@@ -109,7 +108,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
 
-[LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15)函數可協助您搜尋模式。 以下是一些使用[LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15)函數搜尋資料字串``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i ``的範例。
+[LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15)函數可協助您搜尋模式。 以下是一些使用[LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15)函數搜尋資料字串的範例 ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i `` 。
 
 |查詢|範例|
 |--|--|
@@ -129,7 +128,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 #### <a name="date_add-function"></a>DATE_ADD 函式
 
-查詢加速 SQL 語言支援``DATE_ADD``函數的年、月、日、小時、分鐘、秒。
+查詢加速 SQL 語言支援函數的年、月、日、小時、分鐘、秒 ``DATE_ADD`` 。
 
 範例：
 
@@ -140,7 +139,7 @@ DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
 
 #### <a name="date_diff-function"></a>DATE_DIFF 函式
 
-查詢加速 SQL 語言支援``DATE_DIFF``函數的年、月、日、小時、分鐘、秒。
+查詢加速 SQL 語言支援函數的年、月、日、小時、分鐘、秒 ``DATE_DIFF`` 。
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -149,7 +148,7 @@ DATE_DIFF('hour','2018-11-09T00:00+05:30','2018-11-09T01:00:23-08:00')
 
 #### <a name="extract-function"></a>解壓縮函式
 
-針對函式所支援``DATE_ADD``的日期部分的摘錄，查詢加速 SQL 語言支援 timezone_hour 和 timezone_minute 為日期部分。
+針對函式所支援的日期部分的摘錄 ``DATE_ADD`` ，查詢加速 SQL 語言支援 timezone_hour 和 timezone_minute 為日期部分。
 
 範例：
 
@@ -167,7 +166,7 @@ TO_STRING(TimeStamp , format)
 TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 ```
 
-下表描述您可以用來指定``TO_STRING``函數輸出格式的字串。
+下表描述您可以用來指定函數輸出格式的字串 ``TO_STRING`` 。
 
 |格式字串    |輸出                               |
 |-----------------|-------------------------------------|
@@ -211,16 +210,16 @@ TO_TIMESTAMP('2007T')
 ```
 
 > [!NOTE]
-> 您也可以使用``UTCNOW``函數來取得系統時間。
+> 您也可以使用 ``UTCNOW`` 函數來取得系統時間。
 
 
 ## <a name="aggregate-expressions"></a>匯總運算式
 
 SELECT 語句可能包含一個或多個投射運算式或單一匯總運算式。  支援下列匯總運算式：
 
-|運算是|描述|
+|運算式|描述|
 |--|--|
-|[COUNT （\*）](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |傳回符合述詞運算式的記錄數目。|
+|[COUNT （ \* ）](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |傳回符合述詞運算式的記錄數目。|
 |[計數（運算式）](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |傳回運算式為非 null 的記錄數目。|
 |[平均（運算式）](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |傳回 expression 的非 null 值的平均值。|
 |[最小值（運算式）](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |傳回 expression 的最小非 null 值。|
@@ -229,13 +228,13 @@ SELECT 語句可能包含一個或多個投射運算式或單一匯總運算式�
 
 ### <a name="missing"></a>遺漏
 
-``IS MISSING``運算子是查詢加速 SQL 語言支援的唯一非標準。  針對 JSON 資料，如果特定輸入記錄中遺漏某個欄位，[運算式] 欄位``IS MISSING``將會評估為布林值 true。
+``IS MISSING``運算子是查詢加速 SQL 語言支援的唯一非標準。  針對 JSON 資料，如果特定輸入記錄中遺漏某個欄位，[運算式] 欄位 ``IS MISSING`` 將會評估為布林值 true。
 
-<a id="table-descriptors" />
+<a id="table-descriptors"></a>
 
 ## <a name="table-descriptors"></a>資料表描述項
 
-若是 CSV 資料，資料表名稱一律`BlobStorage`為。  例如：
+若是 CSV 資料，資料表名稱一律為 `BlobStorage` 。  例如：
 
 ```sql
 SELECT * FROM BlobStorage
@@ -279,7 +278,7 @@ SELECT * FROM BlobStorage[*].path
 }
 ```
 
-您可能只對上述資料中`warehouses`的 JSON 物件感興趣。 `warehouses`物件是 JSON 陣列型別，因此您可以在 from 子句中提及。 您的範例查詢看起來會像這樣。
+您可能只對 `warehouses` 上述資料中的 JSON 物件感興趣。 `warehouses`物件是 JSON 陣列型別，因此您可以在 from 子句中提及。 您的範例查詢看起來會像這樣。
 
 ```sql
 SELECT latitude FROM BlobStorage[*].warehouses[*]
@@ -287,22 +286,22 @@ SELECT latitude FROM BlobStorage[*].warehouses[*]
 
 查詢會取得所有欄位，但只會選取緯度。
 
-如果您只想要存取`dimensions` JSON 物件值，您可以在查詢中使用參考該物件。 例如：
+如果您只想要存取 `dimensions` JSON 物件值，您可以在查詢中使用參考該物件。 例如：
 
 ```sql
 SELECT length FROM BlobStorage[*].dimensions
 ```
 
-這也會限制您對`dimensions`物件成員的存取。 如果您想要存取 json 欄位的其他成員和 JSON 物件的內部值，則您可以使用如下列範例所示的查詢：
+這也會限制您對物件成員的存取 `dimensions` 。 如果您想要存取 json 欄位的其他成員和 JSON 物件的內部值，則您可以使用如下列範例所示的查詢：
 
 ```sql
 SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 ```
 
 > [!NOTE]
-> BlobStorage 和 BlobStorage [\*] 都會參考整個物件。 不過，如果您在 FROM 子句中有路徑，則必須使用 BlobStorage [\*]. path
+> BlobStorage 和 BlobStorage [ \* ] 都會參考整個物件。 不過，如果您在 FROM 子句中有路徑，則必須使用 BlobStorage [ \* ]. path
 
-<a id="sys-split" />
+<a id="sys-split"></a>
 
 ## <a name="syssplit"></a>Sys. Split
 
@@ -314,14 +313,14 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 當您想要以批次方式下載並處理 CSV 資料記錄時，請使用此語句。 如此一來，您就可以平行處理記錄，而不需要一次下載所有記錄。 此語句不會從 CSV 檔案傳回記錄。 相反地，它會傳回批次大小的集合。 然後，您可以使用每個批次大小來取出一批資料記錄。 
 
-使用*split_size*參數來指定您想要每個批次包含的位元組數目。 例如，如果您只想要一次處理 10 MB 的資料，您的語句看起來會像這樣： `SELECT sys.split(10485760)FROM BlobStorage`因為 10 mb 等於10485760個位元組。 每個批次最多會包含符合這 10 MB 的記錄。 
+使用*split_size*參數來指定您想要每個批次包含的位元組數目。 例如，如果您只想要一次處理 10 MB 的資料，您的語句看起來會像這樣： `SELECT sys.split(10485760)FROM BlobStorage` 因為 10 mb 等於10485760個位元組。 每個批次最多會包含符合這 10 MB 的記錄。 
 
 在大部分情況下，每個批次的大小會稍微高於您指定的數目。 這是因為批次不能包含部分記錄。 如果批次中的最後一筆記錄在臨界值結束之前開始，批次將會變大，使其可以包含完整的記錄。 最後一個批次的大小可能會小於您指定的大小。
 
 >[!NOTE]
 > Split_size 至少必須為 10 MB （10485760）。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [Azure Data Lake Storage 查詢加速（預覽）](data-lake-storage-query-acceleration.md)
 - [使用 Azure Data Lake Storage 查詢加速來篩選資料（預覽）](data-lake-storage-query-acceleration-how-to.md)

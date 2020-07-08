@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 65aa83731be97b59a36a5baf60ea308690a0dcf8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515032"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>使用 StorSimple 裝置管理員服務來管理儲存體帳戶認證
 
@@ -77,7 +76,7 @@ StorSimple 裝置管理員服務的刀鋒視窗中，[設定]**** 區段會顯�
 
 1. 請瀏覽至您的 StorSimple 裝置管理員服務，選取它並按兩下。 這會開啟 [概觀]**** 刀鋒視窗。
 2. 在 [設定]**** 區段內選取 [儲存體帳戶認證]****。 這樣會列出與 StorSimple 裝置管理員服務相關聯的任何現有儲存體帳戶認證。
-3. 按一下 [加入]  。
+3. 按一下 **[新增]** 。
 4. 在 [新增儲存體帳戶認證]**** 刀鋒視窗中，執行下列步驟︰
    
     1. 在 [訂用帳戶]**** 中，選取 [其他]****。
@@ -88,7 +87,7 @@ StorSimple 裝置管理員服務的刀鋒視窗中，[設定]**** 區段會顯�
    
     4. 若要啟用 TLS，請按一下 [**啟用**] 按鈕，為您的 StorSimple Device Manager 服務與雲端之間的網路通訊建立安全通道。 只有當您在私人雲端內操作時，才按一下 [停用]**** 按鈕。
    
-    5. 按一下 [加入]  。 成功建立儲存體帳戶認證之後會通知您。
+    5. 按一下 **[新增]** 。 成功建立儲存體帳戶認證之後會通知您。
 
 5. 新建立的儲存體帳戶認證會顯示在 [StorSimple 設定裝置管理員服務] 刀鋒視窗的 [儲存體帳戶認證]**** 下方。
    

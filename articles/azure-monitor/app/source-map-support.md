@@ -4,18 +4,17 @@ description: 瞭解如何使用 Application Insights 將來源對應上傳至您
 ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
-ms.date: 03/04/2020
-ms.openlocfilehash: 4b452b31338760a8f53eed54420319101836bc00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: d5f01bb3034ab060227230071a21284177840e83
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79474878"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249732"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript 應用程式的來源對應支援
 
 Application Insights 支援將來源對應上傳至您自己的儲存體帳戶 Blob 容器。
-來源對應可以用來 unminify 在端對端交易詳細資料頁面上找到的呼叫堆疊。 [JAVASCRIPT sdk][ApplicationInsights-JS]或 node.js [sdk][ApplicationInsights-Node.js]所傳送的任何例外狀況，都可以使用來源對應來 unminified。
+來源對應可以用來 unminify 在端對端交易詳細資料頁面上找到的呼叫堆疊。 [JAVASCRIPT SDK][ApplicationInsights-JS]或[Node.js SDK][ApplicationInsights-Node.js]所傳送的任何例外狀況，都可以使用來源對應來 unminified。
 
 ![藉由連結儲存體帳戶來 Unminify 呼叫堆疊](./media/source-map-support/details-unminify.gif)
 
@@ -24,14 +23,16 @@ Application Insights 支援將來源對應上傳至您自己的儲存體帳戶 B
 如果您已經有現有的儲存體帳戶或 blob 容器，您可以略過此步驟。
 
 1. [建立新的儲存體帳戶][create storage account]
-2. 在您的儲存體帳戶內[建立 blob 容器][create blob container]。 請務必將 [公用存取層級] 設定為`Private`，以確保您的來源對應不是可公開存取的。
+2. 在您的儲存體帳戶內[建立 blob 容器][create blob container]。 請務必將 [公用存取層級] 設定為 `Private` ，以確保您的來源對應不是可公開存取的。
 
 > [!div class="mx-imgBorder"]
 >![您的容器存取層級必須設定為 [私人]](./media/source-map-support/container-access-level.png)
 
 ## <a name="push-your-source-maps-to-your-blob-container"></a>將您的來源對應推送至 Blob 容器
 
-您應該將持續部署管線與您的儲存體帳戶整合，方法是將它設定為自動將您的來源對應上傳至已設定的 Blob 容器。 您不應該將來源對應上傳至 Blob 容器中的子資料夾;目前，只會從根資料夾提取來源對應。
+您應該將持續部署管線與您的儲存體帳戶整合，方法是將它設定為自動將您的來源對應上傳至已設定的 Blob 容器。
+
+您可以使用與一起部署 & 的資料夾結構，將來源對應上傳到您的 Blob 儲存體容器。 常見的使用案例是在部署資料夾及其版本前面加上前置詞，例如 `1.2.3/static/js/main.js` 。 透過名為的 Azure Blob 容器 unminifying 時 `sourcemaps` ，它會嘗試提取位於的來源對應 `sourcemaps/1.2.3/static/js/main.js.map` 。
 
 ### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>透過 Azure Pipelines 上傳來源對應（建議）
 
@@ -74,8 +75,8 @@ Application Insights 支援將來源對應上傳至您自己的儲存體帳戶 B
 ### <a name="source-map-not-found"></a>找不到來源對應
 
 1. 確認對應的來源對應已上傳至正確的 blob 容器
-2. 確認來源對應檔案是在其對應的 JavaScript 檔案之後命名，並加`.map`上尾碼。
-    - 例如， `/static/js/main.4e2ca5fa.chunk.js`會搜尋名為的 blob`main.4e2ca5fa.chunk.js.map`
+2. 確認來源對應檔案是在其對應的 JavaScript 檔案之後命名，並加上尾碼 `.map` 。
+    - 例如， `/static/js/main.4e2ca5fa.chunk.js` 會搜尋名為的 blob`main.4e2ca5fa.chunk.js.map`
 3. 檢查瀏覽器的主控台，查看是否已記錄任何錯誤。 將此納入任何支援票證。
 
 ## <a name="next-steps"></a>後續步驟

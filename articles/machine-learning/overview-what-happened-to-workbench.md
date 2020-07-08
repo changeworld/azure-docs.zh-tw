@@ -5,17 +5,16 @@ description: 了解沒有 Workbench 應用程式的可能情況，以及支援�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
-ms.openlocfilehash: 9b49eb6237346a76903202a118331383c5a8f623
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 53f8fb79e965c09ad59ada085b9cfd27014bd140
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84433065"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 發生什麼事？
 
@@ -87,7 +86,7 @@ run = exp.submit(source_directory=script_folder,
 
 在最新版本中，模型會以 Web 服務形式部署至「Azure 容器執行個體」(ACI) 或 Azure Kubernetes Service (AKS) 叢集。 您也可以部署至 FPGA 或 Azure IoT Edge。
 
-請在下列文章中深入了解：
+深入了解下列文章：
 + [部署模型的位置和方式](how-to-deploy-and-where.md)
 + [教學課程：使用 Azure Machine Learning 部署模型](tutorial-deploy-models-with-aml.md)
 

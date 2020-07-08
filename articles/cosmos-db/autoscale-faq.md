@@ -6,12 +6,11 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: b398f739189232f39a2fee06fc6e6ff0d53348f0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656620"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84449510"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 中自動調整佈建輸送量的常見問題集
 
@@ -86,6 +85,10 @@ ms.locfileid: "83656620"
 
 ### <a name="what-is-the-number-of-allowed-containers-per-shared-throughput-database-when-autoscale-is-enabled"></a>啟用自動調整時，每個共用輸送量資料庫允許的容器數目為何？
 Azure Cosmos DB 在共用輸送量資料庫中可強制執行最多 25 個容器，其適用於具有自動調整或標準 (手動) 輸送量的資料庫。 
+
+### <a name="what-is-the-impact-of-autoscale-on-database-consistency-level"></a>自動調整對資料庫一致性層級的影響為何？
+資料庫的一致性層級不會受到自動調整的影響。
+如需有關可用一致性層級的詳細資訊，請參閱[一致性層級](consistency-levels.md)一文。
 
 ### <a name="what-is-the-storage-limit-associated-with-each-max-rus-option"></a>與每個最大 RU/秒選項相關聯的儲存體限制為何？  
 每個最大 RU/秒的儲存體限制 (GB) 為：資料庫或容器的最大 RU/秒 / 100。 例如，如果最大 RU/秒為 20,000 RU/秒，則資源可以支援 200 GB 的儲存體。 如需可用的最大 RU/秒和儲存體選項，請參閱[自動調整限制](provision-throughput-autoscale.md#autoscale-limits)一文。 

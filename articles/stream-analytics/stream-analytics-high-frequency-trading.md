@@ -5,15 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 06a4bdb8a8ee5d458347d30b53f740952151799e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2196fe825570c371f4590868e994780b16a9c552
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426214"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040940"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>使用串流分析進行高頻率交易模擬
 Azure 串流分析中的 SQL 語言、JavaScript 使用者定義函式 (UDF) 和使用者定義彙總 (UDA) 組合，讓使用者能夠執行進階分析。 進階分析可能包含線上機器學習訓練和評分，以及可設定狀態的程序模擬。 本文說明如何在 Azure 串流分析作業中執行線性迴歸，以在高頻率的交易案例中進行連續訓練和評分。

@@ -1,23 +1,22 @@
 ---
-title: Python
+title: 在設計工具中執行 Python 腳本
 titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure Machine Learning 設計工具中使用 Python 來轉換資料。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.custom: designer
-ms.openlocfilehash: e27844f9f534ea4db1aba53c12fb3947e7269846
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.custom: designer, tracking-python
+ms.openlocfilehash: 31028ba0417f312aa0caaf49cb4b2d432f89979f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644458"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041008"
 ---
-# <a name="execute-python-code-in-azure-machine-learning-designer"></a>在 Azure Machine Learning 設計工具中執行 Python 程式碼
+# <a name="run-python-code-in-azure-machine-learning-designer"></a>在 Azure Machine Learning 設計工具中執行 Python 程式碼
 
 在本文中，您將了解如何使用[執行 Python 指令碼](algorithm-module-reference/execute-python-script.md)模組，將自訂邏輯新增至 Azure Machine Learning 設計工具。 在下列操作說明中，您將使用 Pandas 程式庫執行簡單的特徵工程。
 

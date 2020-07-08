@@ -4,16 +4,15 @@ description: 此頁面提供 ExpressRoute 路線的端對端連線確認和疑�
 services: expressroute
 author: rambk
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 58ae39e8dfdf918ae14ca9bb8dac28405828999e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 827d68a5f0f35e42acae1fa225646eb509f69c89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78330952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84729314"
 ---
 # <a name="verifying-expressroute-connectivity"></a>確認 ExpressRoute 連線
 本文將協助您確認 ExpressRoute 連線及針對連線問題進行疑難排解。 ExpressRoute 透過連線提供者經常提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 ExpressRoute 連線通常牽涉到三個不同的網路區域，如下所示：
@@ -34,9 +33,9 @@ ms.locfileid: "78330952"
 >
 >
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 下圖顯示使用 ExpressRoute 從客戶網路連至 Microsoft 網路的邏輯連線。
-[![sha-1]][1]
+[![1]][1]
 
 在上圖中，數字指出重要的網路點。 這些網路點會依其相關聯的數目，在本文中參照。 根據 ExpressRoute 連線模型--雲端 Exchange 共置、點對點乙太網路連線或任何對任何（IPVPN），網路點3和4可能是交換器（第2層裝置）或路由器（第3層裝置）。 在直接連線模型中，沒有任何網路點3和4。相反地，CEs （2）會透過暗光纖直接連線到 Msee。 圖中的重要網路點分別是︰
 

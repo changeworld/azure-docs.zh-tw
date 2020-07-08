@@ -11,12 +11,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 18a5e11d2341fb020fc442d2f9ce7c1d44de9d0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1865e1a2ff9a01f75b9849fb340dc0d080feabc1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248279"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory 中的資料集
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -32,13 +31,13 @@ ms.locfileid: "79260432"
 > 如果您不熟悉 Data Factory，請參閱 [Azure Data Factory 簡介](data-factory-introduction.md)來概略了解。 如果您沒有建立 Data Factory 的實作經驗，可以閱讀[資料轉換教學課程](data-factory-build-your-first-pipeline.md)和[資料移動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)來進一步了解。
 
 ## <a name="overview"></a>概觀
-資料處理站可以有一或多個管線。 **管線**是**活動**的邏輯群組，可一起執行工作。 管線中的活動會定義要在資料上執行的動作。 例如，您可以使用複製活動將資料從內部部署 SQL Server 複製到 Azure Blob 儲存體。 接著，您可以使用在 Azure HDInsight 叢集上執行 Hive 指令碼的 Hive 活動，來處理來自 Blob 儲存體的資料以產生輸出資料。 最後，您可以使用第二個複製活動將輸出資料複製到「Azure SQL 資料倉儲」，以在該處建置商業智慧 (BI) 報表解決方案。 如需管線和活動的詳細資訊，請參閱[Azure Data Factory 中的管線和活動](data-factory-create-pipelines.md)。
+資料處理站可以有一或多個管線。 「管線」是一起執行某個工作的「活動」所組成的邏輯群組。 管線中的活動會定義要在資料上執行的動作。 例如，您可以使用複製活動，將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體。 接著，您可以使用在 Azure HDInsight 叢集上執行 Hive 指令碼的 Hive 活動，來處理來自 Blob 儲存體的資料以產生輸出資料。 最後，您可以使用第二個複製活動將輸出資料複製到「Azure SQL 資料倉儲」，以在該處建置商業智慧 (BI) 報表解決方案。 如需管線和活動的詳細資訊，請參閱[Azure Data Factory 中的管線和活動](data-factory-create-pipelines.md)。
 
 活動可以接受零個或多個輸入**資料集**，並產生一或多個輸出資料集。 輸入資料集代表管線中活動的輸入，輸出資料集則代表活動的輸出。 資料集可識別資料表、檔案、資料夾和文件等各種資料存放區中的資料。 例如，Azure Blob 資料集會指定管線應從中讀取資料之 Blob 儲存體中的 Blob 容器和資料夾。
 
 在您建立資料集之前，請先建立一個「已連結的服務」****，以將資料存放區連結到 Data Factory。 已連結的服務非常類似連接字串，可定義 Data Factory 連接到外部資源所需的連線資訊。 資料集可識別已連結的資料存放區內的資料，例如 SQL 資料表、檔案、資料夾及文件。 例如，「Azure 儲存體」已連結服務會將儲存體帳戶連結到 Data Factory。 Azure Blob 資料集代表包含要處理之輸入 Blob 的 Blob 容器和資料夾。
 
-以下是一個範例案例。 若要將資料從 Blob 儲存體複製到 SQL 資料庫，您需建立兩個已連結的服務：「Azure 儲存體」和 Azure SQL Database。 接著，建立兩個資料集：Azure Blob 資料集 (此資料集參考「Azure 儲存體」已連結服務) 和「Azure SQL 資料表」資料集 (此資料集參考 Azure SQL Database 已連結服務)。 「Azure 儲存體」和 Azure SQL Database 已連結服務包含 Data Factory 在執行階段分別用來連接到「Azure 儲存體」和 Azure SQL Database 的連接字串。 Azure Blob 資料集會指定包含 Blob 儲存體中輸入 Blob 的 Blob 容器和 Blob 資料夾。 「Azure SQL 資料表」資料集會指定作為資料複製目的地的 SQL Database 中 SQL 資料表。
+以下是一個範例案例。 若要將資料從 Blob 儲存體複製到 SQL Database，您會建立兩個連結服務： Azure 儲存體和 Azure SQL Database。 接著，建立兩個資料集：Azure Blob 資料集 (此資料集參考 Azure 儲存體連結服務) 和 Azure SQL 資料表資料集 (此資料集參考 Azure SQL Database 連結服務)。 「Azure 儲存體」和 Azure SQL Database 已連結服務包含 Data Factory 在執行階段分別用來連接到「Azure 儲存體」和 Azure SQL Database 的連接字串。 Azure Blob 資料集會指定包含 Blob 儲存體中輸入 Blob 的 Blob 容器和 Blob 資料夾。 「Azure SQL 資料表」資料集會指定作為資料複製目的地的 SQL Database 中 SQL 資料表。
 
 下圖顯示 Data Factory 中管線、活動、資料集及已連結服務之間的關聯性：
 
@@ -77,15 +76,15 @@ Data Factory 中的資料集會以 JSON 格式定義如下：
 
 下表描述上述 JSON 的屬性：
 
-| 屬性 | 描述 | 必要 | 預設 |
+| 屬性 | 說明 | 必要 | 預設 |
 | --- | --- | --- | --- |
-| NAME |資料集的名稱。 請參閱 [Azure Data Factory - 命名規則](data-factory-naming-rules.md) ，以了解命名規則。 |是 |NA |
-| type |資料集的類型。 指定 Data Factory 支援的其中一種類型 (例如︰AzureBlob、AzureSqlTable)。 <br/><br/>如需詳細資訊，請參閱[資料集類型](#Type)。 |是 |NA |
-| structure |資料集的結構描述。<br/><br/>如需詳細資訊，請參閱[資料集結構](#Structure)。 |否 |NA |
-| typeProperties | 每個類型 (例如：Azure Blob、Azure SQL 資料表) 的類型屬性都不同。 如需有關支援的類型及其屬性的詳細資訊，請參閱[資料集類型](#Type)。 |是 |NA |
-| external | 用來指定資料集是否由 Data Factory 管線明確產生的布林值旗標。 如果活動的輸入資料集不是由目前的管線所產生，請將此旗標設定為 true。 請針對管線中第一個活動的輸入資料集，將此旗標設定為 true。  |否 |false |
-| availability | 定義處理時段 (例如每小時或每天) 或用於產生資料集的切割模型。 活動執行取用和產生的每個資料單位稱為資料配量。 如果將輸出資料集的可用性設定為每天 (frequency - Day，interval - 1)，就會每天產生配量。 <br/><br/>如需詳細資料，請參閱「資料集可用性」。 <br/><br/>如需有關資料集切割模型的詳細資料，請參閱[排程和執行](data-factory-scheduling-and-execution.md)一文。 |是 |NA |
-| 原則 |定義資料集配量必須符合的準則或條件。 <br/><br/>如需詳細資料，請參閱[資料集原則](#Policy)一節。 |否 |NA |
+| NAME |資料集的名稱。 請參閱 [Azure Data Factory - 命名規則](data-factory-naming-rules.md) ，以了解命名規則。 |Yes |NA |
+| type |資料集的類型。 指定 Data Factory 支援的其中一種類型 (例如︰AzureBlob、AzureSqlTable)。 <br/><br/>如需詳細資訊，請參閱[資料集類型](#Type)。 |Yes |NA |
+| structure |資料集的結構描述。<br/><br/>如需詳細資訊，請參閱[資料集結構](#Structure)。 |No |NA |
+| typeProperties | 每個類型的類型屬性都不同 (例如：Azure Blob、Azure SQL 資料表)。 如需有關支援的類型及其屬性的詳細資料，請參閱[資料集類型](#Type)。 |是 |NA |
+| external | 用來指定資料集是否由 Data Factory 管線明確產生的布林值旗標。 如果活動的輸入資料集不是由目前的管線所產生，請將此旗標設定為 true。 請針對管線中第一個活動的輸入資料集，將此旗標設定為 true。  |No |false |
+| availability | 定義處理時段 (例如每小時或每天) 或用於產生資料集的切割模型。 活動執行取用和產生的每個資料單位稱為資料配量。 如果將輸出資料集的可用性設定為每天 (frequency - Day，interval - 1)，就會每天產生配量。 <br/><br/>如需詳細資料，請參閱「資料集可用性」。 <br/><br/>如需有關資料集切割模型的詳細資料，請參閱[排程和執行](data-factory-scheduling-and-execution.md)一文。 |Yes |NA |
+| 原則 |定義資料集配量必須符合的準則或條件。 <br/><br/>如需詳細資料，請參閱[資料集原則](#Policy)一節。 |No |NA |
 
 ## <a name="dataset-example"></a>資料集範例
 在下列範例中，資料集代表 SQL database 中名為**MyTable**的資料表。
@@ -112,7 +111,7 @@ Data Factory 中的資料集會以 JSON 格式定義如下：
 請注意下列幾點：
 
 * **類型**設定為 AzureSqlTable。
-* **tableName** 類型屬性 (AzureSqlTable 類型特定) 是設定為 MyTable。
+* **tableName**類型屬性（特定于 AzureSqlTable 類型）設定為 MyTable。
 * **linkedServiceName**是指 AzureSqlDatabase 類型的連結服務，其定義于下一個 JSON 程式碼片段中。
 * **availability frequency** 是設定為 Day，**interval** 是設定為 1。 這意謂著會每天產生資料集配量。
 
@@ -149,7 +148,7 @@ Data Factory 中的資料集會以 JSON 格式定義如下：
 > [!NOTE]
 > 帶有 * 的資料存放區可以位於內部部署環境或 Azure 基礎結構即服務 (IaaS) 上。 這些資料存放區會要求您安裝[資料管理閘道](data-factory-data-management-gateway.md)。
 
-在上一節的範例中，資料集的類型是設定為 **AzureSqlTable**。 同樣地，針對 Azure Blob 資料集，資料集的類型會設定為**AzureBlob**，如下列 JSON 所示：
+在上一節的範例中，資料集的類型是設定為 **AzureSqlTable**。 同樣地，針對 Azure Blob 資料集，資料集的類型是設定為 **AzureBlob**，如以下 JSON 所示：
 
 ```json
 {
@@ -189,12 +188,12 @@ structure:
 
 structure 中的每個資料行都包含下列屬性︰
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | NAME |資料行的名稱。 |是 |
 | type |資料行的資料類型。  |否 |
 | culture |當類型為 .NET 類型 (`Datetime` 或 `Datetimeoffset`) 時，所要使用的 .NET 型文化特性。 預設值為 `en-us`。 |否 |
-| format |當類型為 .NET 類型 (`Datetime` 或 `Datetimeoffset`) 時，所要使用的格式字串。 |否 |
+| format |當類型為 .NET 類型 (`Datetime` 或 `Datetimeoffset`) 時，所要使用的格式字串。 |No |
 
 下列方針可協助您判斷何時要包括 structure 資訊，以及在 **structure** 區段中要包含哪些資訊。
 
@@ -231,13 +230,13 @@ Data Factory 會在將資料從來源資料存放區移到接收資料存放區�
 
 下表描述您可以在 [可用性] 區段中使用的屬性：
 
-| 屬性 | 描述 | 必要 | 預設 |
+| 屬性 | 說明 | 必要 | 預設 |
 | --- | --- | --- | --- |
-| frequency |指定資料集配量生產的時間單位。<br/><br/><b>支援的頻率</b>：Minute、Hour、Day、Week、Month |是 |NA |
-| interval |指定頻率的倍數。<br/><br/>「頻率 x 間隔」會決定產生配量的頻率。 例如，如果您需要將資料集以每小時為單位來切割，請將 <b>frequency</b> 設定為 <b>Hour</b>，將 <b>interval</b> 設定為 <b>1</b>。<br/><br/>請注意，如果您將 **frequency** 指定為 **Minute**，則應該將 interval 設定為不小於 15。 |是 |NA |
-| style |指定應該在間隔的開始還是結束時產生配量。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>如果將 **frequency** 設定為 **Month**，並將 **style** 設定為 **EndOfInterval**，就會在當月的最後一天產生配量。 如果將 **style** 設定為 **StartOfInterval**，則會在當月的第一天產生配量。<br/><br/>如果將 **frequency** 設定為 **Day**，並將 **style** 設定為 **EndOfInterval**，就會在當天的最後一小時產生配量。<br/><br/>如果 **frequency** 設定為 **Hour**，並將 **style** 設定為 **EndOfInterval**，則會在該小時結束時產生配量。 例如，就下午 1 點 - 2 點期間的配量而言，會在下午 2 點產生配量。 |否 |EndOfInterval |
-| anchorDateTime |定義排程器用來計算資料集配量界限的時間絕對位置。 <br/><br/>請注意，如果此屬性具有比指定頻率更細微的日期部分，則會忽略更細微的部分。 例如，如果 **interval** 為 **hourly** (frequency: hour 且 interval: 1)，而且 **anchorDateTime** 包含**分鐘和秒鐘**，則系統會忽略 **anchorDateTime** 的分鐘和秒鐘部分。 |否 |01/01/0001 |
-| Offset |所有資料集配量的開始和結束移位所依據的時間範圍。 <br/><br/>請注意，如果同時指定 **anchorDateTime** 和 **offset**，則結果會是合併的位移。 |否 |NA |
+| frequency |指定資料集配量生產的時間單位。<br/><br/><b>支援的頻率</b>：Minute、Hour、Day、Week、Month |Yes |NA |
+| interval |指定頻率的倍數。<br/><br/>「頻率 x 間隔」會決定產生配量的頻率。 例如，如果您需要將資料集以每小時為單位來切割，請將 <b>frequency</b> 設定為 <b>Hour</b>，將 <b>interval</b> 設定為 <b>1</b>。<br/><br/>請注意，如果您將 **frequency** 指定為 **Minute**，則應該將 interval 設定為不小於 15。 |Yes |NA |
+| 樣式 |指定應該在間隔的開始還是結束時產生配量。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>如果將 **frequency** 設定為 **Month**，並將 **style** 設定為 **EndOfInterval**，就會在當月的最後一天產生配量。 如果將 **style** 設定為 **StartOfInterval**，則會在當月的第一天產生配量。<br/><br/>如果將 **frequency** 設定為 **Day**，並將 **style** 設定為 **EndOfInterval**，就會在當天的最後一小時產生配量。<br/><br/>如果 **frequency** 設定為 **Hour**，並將 **style** 設定為 **EndOfInterval**，則會在該小時結束時產生配量。 例如，就下午 1 點 - 2 點期間的配量而言，會在下午 2 點產生配量。 |No |EndOfInterval |
+| anchorDateTime |定義排程器用來計算資料集配量界限的時間絕對位置。 <br/><br/>請注意，如果此屬性具有比指定頻率更細微的日期部分，則會忽略更細微的部分。 例如，如果 **interval** 為 **hourly** (frequency: hour 且 interval: 1)，而且 **anchorDateTime** 包含**分鐘和秒鐘**，則系統會忽略 **anchorDateTime** 的分鐘和秒鐘部分。 |No |01/01/0001 |
+| Offset |所有資料集配量的開始和結束移位所依據的時間範圍。 <br/><br/>請注意，如果同時指定 **anchorDateTime** 和 **offset**，則結果會是合併的位移。 |No |NA |
 
 ### <a name="offset-example"></a>位移範例
 根據預設，每日 (`"frequency": "Day", "interval": 1`) 配量的開始時間是「國際標准時間」(UTC) 上午 12 點 (午夜)。 如果您希望將開始時間改為 UTC 時間上午 6 點，請依照下列程式碼片段所示設定位移：
@@ -278,10 +277,10 @@ Data Factory 會在將資料從來源資料存放區移到接收資料存放區�
 資料集定義中的 **policy** 區段會定義資料集配量必須符合的準則或條件。
 
 ### <a name="validation-policies"></a>驗證原則
-| 原則名稱 | 描述 | 適用於 | 必要 | 預設 |
+| 原則名稱 | Description | 適用於 | 必要 | 預設 |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |驗證「Azure Blob 儲存體」**** 中的資料是否符合大小下限需求 (以 MB 為單位)。 |Azure Blob 儲存體 |否 |NA |
-| minimumRows |驗證 **Azure SQL 資料庫**或 **Azure 資料表**中的資料是否包含最小的資料列數。 |<ul><li>Azure SQL 資料庫</li><li>Azure 資料表</li></ul> |否 |NA |
+| minimumSizeMB |驗證「Azure Blob 儲存體」**** 中的資料是否符合大小下限需求 (以 MB 為單位)。 |Azure Blob 儲存體 |No |NA |
+| minimumRows |驗證 **Azure SQL 資料庫**或 **Azure 資料表**中的資料是否包含最小的資料列數。 |<ul><li>Azure SQL Database</li><li>Azure 資料表</li></ul> |No |NA |
 
 #### <a name="examples"></a>範例
 **minimumSizeMB：**
@@ -314,12 +313,12 @@ Data Factory 會在將資料從來源資料存放區移到接收資料存放區�
 
 除非資料集是由 Data Factory 所產生，否則應該標示為「外部」****。 除非會使用活動或管線鏈結，否則此設定通常會套用到管線中第一個活動的輸入。
 
-| 名稱 | 描述 | 必要 | 預設值 |
+| Name | 說明 | 必要 | 預設值 |
 | --- | --- | --- | --- |
-| dataDelay |要延遲所指定配量之外部資料可用性檢查的時間。 例如，您可以使用此設定來延遲每小時檢查。<br/><br/>此設定僅適用於當前的時間。 例如，如果現在時間是下午 1:00，且此值是 10 分鐘，驗證就會在下午 1:10 開始。<br/><br/>請注意，此設定不會影響過去的配量。 配量**結束時間** + **dataDelay** < 的配量**現在**會在沒有任何延遲的情況下處理。<br/><br/>時間如果大於 23:59 小時，應該使用 `day.hours:minutes:seconds` 格式來指定。 例如，若要指定 24 小時，不要使用 24:00:00。 請改用 1.00:00:00。 如果您使用 24:00:00，這會視同 24 天 (24.00:00:00)。 如為 1 天又 4 小時，請指定 1:04:00:00。 |否 |0 |
-| retryInterval |失敗與下一次嘗試之間的等待時間。 此設定適用於當前的時間。 如果上一次嘗試失敗，則下一次嘗試將會在 **retryInterval** 期間之後。 <br/><br/>如果現在是下午 1:00，我們會開始第一次嘗試。 如果完成第一次驗證檢查的持續時間是 1 分鐘且作業失敗，則下一次重試會在 1:00 + 1 分鐘 (持續時間) + 1 分鐘 (重試間隔) = 下午 1:02。 <br/><br/>若是過去的配量，則不會有任何延遲。 重試會立即發生。 |否 |00:01:00 (1 分鐘) |
-| retryTimeout |每次重試嘗試的逾時。<br/><br/>如果此屬性是設定為 10 分鐘，則應該在 10 分鐘內完成驗證。 如果花超過 10 分鐘來執行驗證，則重試會逾時。<br/><br/>如果所有驗證嘗試都逾時，配量就會標示為 **TimedOut**。 |否 |00:10:00 (10 分鐘) |
-| maximumRetry |檢查外部資料可用性的次數。 允許的最大值為 10。 |否 |3 |
+| dataDelay |要延遲所指定配量之外部資料可用性檢查的時間。 例如，您可以使用此設定來延遲每小時檢查。<br/><br/>此設定僅適用於當前的時間。 例如，如果現在時間是下午 1:00，且此值是 10 分鐘，驗證就會在下午 1:10 開始。<br/><br/>請注意，此設定不會影響過去的配量。 配量**結束時間**dataDelay 的配量  +  **dataDelay**  <  **現在**會在沒有任何延遲的情況下處理。<br/><br/>時間如果大於 23:59 小時，應該使用 `day.hours:minutes:seconds` 格式來指定。 例如，若要指定 24 小時，不要使用 24:00:00。 請改用 1.00:00:00。 如果您使用 24:00:00，這會視同 24 天 (24.00:00:00)。 如為 1 天又 4 小時，請指定 1:04:00:00。 |No |0 |
+| retryInterval |失敗與下一次嘗試之間的等待時間。 此設定適用於當前的時間。 如果上一次嘗試失敗，則下一次嘗試將會在 **retryInterval** 期間之後。 <br/><br/>如果現在是下午 1:00，我們會開始第一次嘗試。 如果完成第一次驗證檢查的持續時間是 1 分鐘且作業失敗，則下一次重試會在 1:00 + 1 分鐘 (持續時間) + 1 分鐘 (重試間隔) = 下午 1:02。 <br/><br/>若是過去的配量，則不會有任何延遲。 重試會立即發生。 |No |00:01:00 (1 分鐘) |
+| retryTimeout |每次重試嘗試的逾時。<br/><br/>如果此屬性是設定為 10 分鐘，則應該在 10 分鐘內完成驗證。 如果花超過 10 分鐘來執行驗證，則重試會逾時。<br/><br/>如果所有驗證嘗試都逾時，配量就會標示為 **TimedOut**。 |No |00:10:00 (10 分鐘) |
+| maximumRetry |檢查外部資料可用性的次數。 允許的最大值為 10。 |No |3 |
 
 
 ## <a name="create-datasets"></a>建立資料集

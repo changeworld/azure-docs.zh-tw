@@ -5,25 +5,21 @@ description: 瞭解如何在 Azure Blob 儲存體中收集 Azure Machine Learnin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: laobri
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 75402c71316f7cc7d068c12a240f3123569a00ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475437"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84432987"
 ---
 # <a name="collect-data-for-models-in-production"></a>在生產環境中收集模型資料
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
->[!IMPORTANT]
-> Azure Machine Learning 的監視 SDK 即將淘汰。 SDK 仍適用于目前使用 SDK 來監視模型中資料漂移的開發人員。 但對於新的客戶，我們建議使用簡化的[資料監視與 Application Insights](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)。
 
 本文說明如何從 Azure Machine Learning 收集輸入模型資料。 它也會示範如何將輸入資料部署到 Azure Kubernetes Service （AKS）叢集，並將輸出資料儲存在 Azure Blob 儲存體中。
 
@@ -56,9 +52,9 @@ Blob 中輸出資料的路徑遵循此語法：
 ```
 
 >[!NOTE]
-> 在 0.1.0 a16 之前的 Azure Machine Learning SDK for Python 版本中， `designation`引數名為。 `identifier` 如果您使用較舊的版本開發程式碼，則需要據以更新。
+> 在 0.1.0 a16 之前的 Azure Machine Learning SDK for Python 版本中， `designation` 引數名為 `identifier` 。 如果您使用較舊的版本開發程式碼，則需要據以更新。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://aka.ms/AMLFree)。
 
@@ -125,7 +121,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 開啟工作區。
 
-1. 選取 [**部署** > ]**選取 [服務** > **編輯**]。
+1. 選取 [**部署**]  >  **選取 [服務**  >  **編輯**]。
 
    ![編輯服務](././media/how-to-enable-data-collection/EditService.PNG)
 
@@ -143,7 +139,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 開啟工作區。
 
-1. 選取 [**部署** > ]**選取 [服務** > **編輯**]。
+1. 選取 [**部署**]  >  **選取 [服務**  >  **編輯**]。
 
    [![選取 [編輯] 選項](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
@@ -170,7 +166,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 開啟工作區。
 
-1. 選取 [**儲存體**]。
+1. 選取 [儲存體] 。
 
     [![選取儲存體選項](./media/how-to-enable-data-collection/StorageLocation.png)](././media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
@@ -189,7 +185,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
     [![Power BI blob 設定](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. 新增您的儲存體帳戶名稱並輸入您的儲存體金鑰。 您可以藉由選取 blob 中的 [**設定** > ] [**存取金鑰**] 來尋找此資訊。
+1. 新增您的儲存體帳戶名稱並輸入您的儲存體金鑰。 您可以藉由選取 blob 中的 [**設定**] [  >  **存取金鑰**] 來尋找此資訊。
 
 1. 選取**模型資料**容器，然後選取 [**編輯**]。
 
@@ -199,7 +195,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 在篩選準則中輸入您的模型路徑。 如果您只想要查看特定一年或一個月的檔案，只要展開篩選路徑即可。 例如，若只要查看三月份資料，請使用此篩選器路徑：
 
-   /modeldata/\<subscriptionid>/\<resourcegroupname>/\<workspacename>/\<webservicename>/\<modelname>/\<modelversion>/\<指定>/\<年>/3
+   /modeldata/ \<subscriptionid> / \<resourcegroupname> / \<workspacename> / \<webservicename> / \<modelname> / \<modelversion> / \<designation> / \<year> /3
 
 1. 根據**名稱**值篩選與您相關的資料。 如果您儲存了預測和輸入，就必須為每個建立查詢。
 
@@ -207,7 +203,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
     [![Power BI 內容](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. 選取 [確定]  。 預先載入的資料。
+1. 選取 [確定]。 預先載入的資料。
 
     [![Power BI 合併檔案](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
@@ -227,7 +223,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
     [![選取 Databricks 上傳資料選項](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. 選取 [**建立新資料表**]，然後選取 [**其他資料來源** > ]**Azure Blob 儲存體** > **在筆記本中建立資料表**。
+1. 選取 [**建立新資料表**]，然後選取 [**其他資料來源**]  >  **Azure Blob 儲存體**  >  **在筆記本中建立資料表**。
 
     [![建立 Databricks 資料表](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 

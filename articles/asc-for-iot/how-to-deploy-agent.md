@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311208"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84456788"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>在 IoT 裝置上選取並部署安全性代理程式
 
@@ -44,7 +43,7 @@ IoT 安全性代理程式類別的每個 Azure 資訊安全中心都提供一組
 
 |     | 以 C 為基礎的安全性代理程式 | 以 c # 為基礎的安全性代理程式 |
 | --- | ----------- | --------- |
-| 開放原始碼 | 適用于[GitHub](https://aka.ms/iot-security-github-cs)中的[MIT 授權](https://en.wikipedia.org/wiki/MIT_License) | 適用于[GitHub](https://aka.ms/iot-security-github-c)中的[MIT 授權](https://en.wikipedia.org/wiki/MIT_License) |
+| 開放原始碼 | 適用于[GitHub](https://aka.ms/iot-security-github-c)中的[MIT 授權](https://en.wikipedia.org/wiki/MIT_License) | 適用于[GitHub](https://aka.ms/iot-security-github-cs)中的[MIT 授權](https://en.wikipedia.org/wiki/MIT_License) |
 | 開發語言    | C | C# |
 | 支援的 Windows 平臺？ | 否 | 是 |
 | Windows 必要條件 | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
@@ -52,15 +51,15 @@ IoT 安全性代理程式類別的每個 Azure 資訊安全中心都提供一組
 | Linux 必要條件 | libunwind8、libcurl3、uuid-runtime、auditd、audispd-外掛程式 | libunwind8、libcurl3、uuid-runtime、auditd、audispd-外掛程式、sudo、netstat、iptables |
 | 磁片使用量 | 10.5 MB | 90 MB |
 | 記憶體使用量（平均） | 5.5 MB | 33 MB |
-| IoT 中樞的[驗證](concept-security-agent-authentication-methods.md) | 是 | 是 |
-| 安全性資料[收集](how-to-agent-configuration.md#supported-security-events) | 是 | 是 |
-| 事件彙總 | 是 | 是 |
-| 透過[安全性模組](concept-security-module.md)對應項進行遠端設定 | 是 | 是 |
+| IoT 中樞的[驗證](concept-security-agent-authentication-methods.md) | 是 | Yes |
+| 安全性資料[收集](how-to-agent-configuration.md#supported-security-events) | 是 | Yes |
+| 事件彙總 | 是 | Yes |
+| 透過[安全性模組](concept-security-module.md)對應項進行遠端設定 | 是 | Yes |
 |
 
 ## <a name="security-agent-installation-guidelines"></a>安全性代理程式安裝指導方針
 
-針對**Windows**：必須從系統管理員的 PowerShell 視窗執行安裝 SecurityAgent 腳本。
+針對**Windows**：安裝 SecurityAgent.ps1 腳本必須從系統管理員的 PowerShell 視窗執行。
 
 針對**Linux**： InstallSecurityAgent.sh 必須以超級使用者身分執行。 我們建議您在安裝命令前面加上 "sudo"。
 
@@ -97,7 +96,7 @@ IoT 安全性代理程式類別的每個 Azure 資訊安全中心都提供一組
 |C#|Ubuntu 18.04    |x64、ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
-|C#|Windows 10 IoT 核心版，組建17763    |x64|
+|C#|Windows 10 IoT 核心版，組建 17763    |x64|
 |
 
 ## <a name="next-steps"></a>後續步驟

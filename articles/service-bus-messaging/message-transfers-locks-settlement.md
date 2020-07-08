@@ -1,24 +1,13 @@
 ---
 title: Azure 服務匯流排訊息傳輸、鎖定和結算
 description: 本文提供 Azure 服務匯流排訊息傳輸、鎖定和結算作業的總覽。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
-ms.author: aschhab
-ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 22be139fccdeecee846c204a8035804fb897ae5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341159"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>訊息傳輸、鎖定和安置
 

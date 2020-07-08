@@ -9,16 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 0a9728e05aee27e74054a77e2c9be7dc08968207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4aec156821a7d38907602cc1def0459dbf996b24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455854"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84447555"
 ---
 # <a name="train-model-module"></a>訓練模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 使用此模組來定型分類或回歸模型。 定型會在您定義模型並設定其參數之後進行，而且需要已標記的資料。 您也可以使用**訓練模型**，以新的資料重新定型現有的模型。 
 
@@ -64,7 +63,7 @@ ms.locfileid: "79455854"
   
 5.  提交管線。 如果您有大量資料，這可能需要一些時間。
 
-## <a name="results"></a><a name="bkmk_results"></a>更
+## <a name="results"></a>結果
 
 定型模型之後：
 
@@ -76,4 +75,4 @@ ms.locfileid: "79455854"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

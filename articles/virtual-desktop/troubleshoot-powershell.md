@@ -5,22 +5,21 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ce19c670df5062a11bf86e9c383a322f9033818d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: 6e4459eea07f60d90dad692d6625dd45c5038093
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612005"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84456958"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows 虛擬桌面 PowerShell
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。 如果您使用的是 Windows 虛擬桌面不含 Azure Resource Manager 物件的2019版，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)。
 >
-> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用這篇文章來解決搭配 Windows 虛擬桌面使用 PowerShell 時的錯誤和問題。 如需遠端桌面服務 PowerShell 的詳細資訊，請參閱[Windows 虛擬桌面 powershell](/powershell/module/windowsvirtualdesktop/)。
@@ -36,7 +35,7 @@ ms.locfileid: "82612005"
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>錯誤： New-azroleassignment：提供的資訊未對應到 AD 物件識別碼
 
 ```powershell
-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
 ```
 
 **原因：** 在系結至 Windows 虛擬桌面環境的 Azure Active Directory 中找不到 *-SignInName*參數所指定的使用者。 
@@ -73,15 +72,15 @@ New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not a
 New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool
 ```
 
-**原因：** 位置不相符。 所有主機集區、應用程式群組和工作區都有儲存服務中繼資料的位置。 您建立且彼此相關聯的任何物件都必須位於相同的位置。 例如，如果主機集區位於`eastus`，則您也必須在中`eastus`建立應用程式群組。 如果您建立工作區來註冊這些應用程式群組，該工作區也必須在`eastus`中。
+**原因：** 位置不相符。 所有主機集區、應用程式群組和工作區都有儲存服務中繼資料的位置。 您建立且彼此相關聯的任何物件都必須位於相同的位置。 例如，如果主機集區位於，則 `eastus` 您也必須在中建立應用程式群組 `eastus` 。 如果您建立工作區來註冊這些應用程式群組，該工作區也必須在中 `eastus` 。
 
 **修正：** 抓取主機集區建立所在的位置，然後將您要建立的應用程式群組指派至相同的位置。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需疑難排解 Windows 虛擬桌面和擴大追蹤的總覽，請參閱[疑難排解總覽、意見反應和支援](troubleshoot-set-up-overview.md)。
+- 如需 Windows 虛擬桌面疑難排解和擴大追蹤的概觀，請參閱[疑難排解概觀、意見反應和支援](troubleshoot-set-up-overview.md)。
 - 若要針對設定 Windows 虛擬桌面環境和主機集區的問題進行疑難排解，請參閱[環境和主機集區建立](troubleshoot-set-up-issues.md)。
-- 若要在 Windows 虛擬桌面中設定虛擬機器（VM）時針對問題進行疑難排解，請參閱[工作階段主機虛擬機器](troubleshoot-vm-configuration.md)設定。
+- 若要針對在 Windows 虛擬桌面中設定虛擬機器 (VM) 時的問題進行疑難排解，請參閱[工作階段主機虛擬機器設定](troubleshoot-vm-configuration.md)。
 - 若要針對 Windows 虛擬桌面用戶端連接的問題進行疑難排解，請參閱[Windows 虛擬桌面服務連接](troubleshoot-service-connection.md)。
 - 若要疑難排解遠端桌面用戶端的問題，請參閱針對[遠端桌面用戶端進行疑難排解](troubleshoot-client.md)
 - 若要深入瞭解此服務，請參閱[Windows 虛擬桌面環境](environment-setup.md)。

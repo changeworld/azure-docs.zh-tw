@@ -6,14 +6,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 60fde4ca1d8aaf47367fcdb4b5dc7c73753b7496
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834759"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040770"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 串流分析中的即時 Twitter 情感分析
 
@@ -159,7 +158,7 @@ ms.locfileid: "83834759"
    |**設定**  |**建議的值**  |**說明**  |
    |---------|---------|---------|
    |輸入別名| *TwitterStream* | 指定輸入的別名。 |
-   |訂用帳戶  | \<您的訂用帳戶\> |  選取您要使用的 Azure 訂用帳戶。 |
+   |訂用帳戶  | \<Your subscription\> |  選取您要使用的 Azure 訂用帳戶。 |
    |事件中樞命名空間 | *asa-twitter-eventhub* |
    |事件中樞名稱 | *socialtwitter-eh* | 選擇 [使用現有項目]。 然後選取您剛才建立的事件中樞。|
    |事件壓縮類型| GZip | 資料壓縮類型。|
@@ -225,7 +224,7 @@ ms.locfileid: "83834759"
 3. 在 [啟動作業] 頁面的 [作業輸出開始時間] 中，選取 [現在]，然後選取 [啟動]。
 
 ## <a name="get-support"></a>取得支援
-如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需進一步的協助，請嘗試 [Microsoft 的 Azure 串流分析問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)

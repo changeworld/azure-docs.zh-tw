@@ -7,12 +7,11 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f503b21d5a7d0fdfbee79354c198775789c0b91
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: afe97fd1736fbaa6858adb2fc658b4ab34546f84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888789"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84456841"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解適用於事件格線訂用帳戶的事件篩選
 
@@ -121,7 +120,7 @@ ms.locfileid: "82888789"
 
 所有字串比較都**不**區分大小寫。
 
-### <a name="key"></a>機碼
+### <a name="key"></a>答案
 
 針對事件格線結構描述中的事件，請使用下列值作為索引鍵：
 
@@ -155,7 +154,7 @@ ms.locfileid: "82888789"
 
 進階篩選有下列限制：
 
-* 每個事件格線訂用帳戶只能有五個進階篩選
+* 每個事件方格訂用帳戶的所有篩選都有5個高級篩選和25個篩選值
 * 每個字串值只能有 512 個字元
 * **in** 和 **not in** 運算子個別只能有五個值
 * 其中包含** `.` （點）** 字元的索引鍵。 例如：`http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com`。 目前不支援索引鍵中的 escape 字元。 

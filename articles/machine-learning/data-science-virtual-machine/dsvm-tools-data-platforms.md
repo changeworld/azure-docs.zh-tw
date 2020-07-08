@@ -10,12 +10,11 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: cd787881957d78f179107e46b2650de4618c7724
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ccb95064f756ef035b7da92d029680f1c195982b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282319"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958730"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>資料科學虛擬機器上所支援的資料平台
 
@@ -39,13 +38,15 @@ DSVM 支援下列資料平臺工具。
 
 ### <a name="setup"></a>安裝程式
 
-資料庫伺服器已經預先設定，而且與 SQL Server 相關的 Windows 服務（例如`SQL Server (MSSQLSERVER)`）會設為自動執行。 唯一的手動步驟包括使用 Microsoft Machine Learning Server 啟用資料庫內分析。 您可以藉由在 SQL Server Management Studio （SSMS）中執行下列命令，做為一次性動作來啟用分析。 當您以電腦系統管理員身分登入、在 SSMS 中開啟新的查詢，並確定選取的資料庫為下列情況時`master`，請執行此命令：
+資料庫伺服器已經預先設定，而且與 SQL Server 相關的 Windows 服務（例如 `SQL Server (MSSQLSERVER)` ）會設為自動執行。 唯一的手動步驟包括使用 Microsoft Machine Learning Server 啟用資料庫內分析。 您可以藉由在 SQL Server Management Studio （SSMS）中執行下列命令，做為一次性動作來啟用分析。 當您以電腦系統管理員身分登入、在 SSMS 中開啟新的查詢，並確定選取的資料庫為下列情況時，請執行此命令 `master` ：
 
-        CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
+```sql
+CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
+```
 
-        (Replace %COMPUTERNAME% with your VM name.)
-       
-若要執行 SQL Server Management Studio，您可以在程式清單中搜尋「SQL Server Management Studio」，或使用 Windows 搜尋來尋找並執行。 當系統提示您輸入認證時，請選取 [ **Windows 驗證**] ```localhost``` ，並使用電腦名稱稱或在 [ **SQL Server 名稱**] 欄位中。
+（請以您的 VM 名稱取代% COMPUTERNAME%。）
+
+若要執行 SQL Server Management Studio，您可以在程式清單中搜尋「SQL Server Management Studio」，或使用 Windows 搜尋來尋找並執行。 當系統提示您輸入認證時，請選取 [ **Windows 驗證**]，並使用電腦名稱稱或 ```localhost``` 在 [ **SQL Server 名稱**] 欄位中。
 
 ### <a name="how-to-use-and-run-it"></a>如何使用並加以執行
 
@@ -55,7 +56,7 @@ DSVM 支援下列資料平臺工具。
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>它如何在 DSVM 上進行設定和安裝？ 
 
- SQL Server 是以標準方式安裝。 它位於 `C:\Program Files\Microsoft SQL Server`。 在中，可找到資料庫內 Machine Learning Server 實例`C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`。 DSVM 也有個別的獨立 Machine Learning Server 實例，其安裝位置`C:\Program Files\Microsoft\R Server\R_SERVER`為。 這兩個 Machine Learning Server 實例不會共用程式庫。
+ SQL Server 是以標準方式安裝。 它位於 `C:\Program Files\Microsoft SQL Server`。 在中，可找到資料庫內 Machine Learning Server 實例 `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES` 。 DSVM 也有個別的獨立 Machine Learning Server 實例，其安裝位置為 `C:\Program Files\Microsoft\R Server\R_SERVER` 。 這兩個 Machine Learning Server 實例不會共用程式庫。
 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (獨立)
@@ -69,24 +70,26 @@ DSVM 支援下列資料平臺工具。
 | DSVM 上的相關工具       | PySpark、Scala<br/>Jupyter (Spark/PySpark 核心)<br/>Microsoft Machine Learning Server、SparkR、Sparklyr <br />Apache 深入探詢      |
 
 ### <a name="how-to-use-it"></a>用法
-您可以執行`spark-submit`或`pyspark`命令，在命令列上提交 Spark 作業。 您也可以使用 Spark 核心建立新的 Notebook，以便建立 Jupyter Notebook。
+您可以執行或命令，在命令列上提交 Spark `spark-submit` 作業 `pyspark` 。 您也可以使用 Spark 核心建立新的 Notebook，以便建立 Jupyter Notebook。
 
 您可以使用 SparkR、Sparklyr 和 Microsoft Machine Learning Server 等程式庫（可在 DSVM 上取得），從 R 使用 Spark。 請參閱上表中範例的指標。
 
 ### <a name="setup"></a>安裝程式
 在 Ubuntu Linux DSVM edition 的 Microsoft Machine Learning Server Spark 內容中執行之前，您必須完成一次性設定步驟，以啟用本機單一節點 Hadoop HDFS 和 Yarn 實例。 根據預設，Hadoop 服務已安裝但是在 DSVM 上已停用。 若要啟用它們，請在第一次時以 root 身分執行下列命令：
 
-    echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
-    cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
-    chmod 0600 ~hadoop/.ssh/authorized_keys
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
-    chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
-    systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+```bash
+echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
+cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
+chmod 0600 ~hadoop/.ssh/authorized_keys
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
+chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
+systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+```
 
-當您不再需要 Hadoop 相關服務時，可以藉由執行來停止```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```。
+當您不再需要 Hadoop 相關服務時，可以藉由執行來停止 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 。
 
-此`/dsvm/samples/MRS`範例示範如何在遠端 Spark 內容中開發和測試 MRS （這是 DSVM 上的獨立 Spark 實例），並可在目錄中使用。
+此範例示範如何在遠端 Spark 內容中開發和測試 MRS （這是 DSVM 上的獨立 Spark 實例），並可在目錄中使用 `/dsvm/samples/MRS` 。
 
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>它如何在 DSVM 上進行設定和安裝？ 
@@ -97,7 +100,7 @@ DSVM 支援下列資料平臺工具。
 
 使用 Microsoft MMLSpark 機器學習程式庫，從 Azure Blob 儲存體或 Azure Data Lake Storage 存取資料的程式庫，會預先安裝在 $SPARK _HOME/jars。 Spark 啟動時，這些 JAR 會自動載入。 根據預設，Spark 會使用本機磁片上的資料。 
 
-若要讓 DSVM 上的 Spark 實例存取 Blob 儲存體或 Azure Data Lake Storage 中儲存的資料，您必須根據 $SPARK _HOME `core-site.xml` /conf/core-site.xml.template. 中找到的範本來建立和設定檔案。 您也必須具有適當的認證，才能存取 Blob 儲存體和 Azure Data Lake Storage。 （請注意，範本檔案會使用 Blob 儲存體和 Azure Data Lake Storage 設定的預留位置）。
+若要讓 DSVM 上的 Spark 實例存取儲存在 Blob 儲存體或 Azure Data Lake Storage 中的資料，您必須根據 `core-site.xml` $SPARK _HOME/conf/core-site.xml 範本中找到的範本來建立和設定檔案。 您也必須具有適當的認證，才能存取 Blob 儲存體和 Azure Data Lake Storage。 （請注意，範本檔案會使用 Blob 儲存體和 Azure Data Lake Storage 設定的預留位置）。
 
-如需建立 Azure Data Lake Storage 服務認證的詳細資訊，請參閱[使用 Azure Data Lake Storage Gen1 進行驗證](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)。 在 core-site.xml 中輸入 Blob 儲存體或 Azure Data Lake Storage 的認證之後，您可以透過 wasb://或 adl://的 URI 前置詞來參考儲存在這些來源中的資料。
+如需建立 Azure Data Lake Storage 服務認證的詳細資訊，請參閱[使用 Azure Data Lake Storage Gen1 進行驗證](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)。 在 core-site.xml 檔案中輸入 Blob 儲存體或 Azure Data Lake Storage 的認證之後，您可以透過 URI 前置詞 wasb://或 adl://，參考儲存在這些來源中的資料。
 

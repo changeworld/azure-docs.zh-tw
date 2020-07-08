@@ -9,16 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 56d8cad05a42da8de680ade487dddee9a97aab3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 361199bd380b126ec41fb8a5587a2ebd78cd6f24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80364185"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84447606"
 ---
-# <a name="score-model-module"></a>Score Model module
+# <a name="score-model"></a>計分模型
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 使用此模組可使用定型的分類或回歸模型來產生預測。
 
@@ -52,4 +51,4 @@ ms.locfileid: "80364185"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

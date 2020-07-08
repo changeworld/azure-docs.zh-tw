@@ -13,24 +13,23 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: ae9d219c376aa704be34088a4f7c48c35baa9669
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509494"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85444449"
 ---
 # <a name="virtual-network-service-endpoints"></a>虛擬網路服務端點
 
-虛擬網路（VNet）服務端點會擴充您的虛擬網路私人位址空間。 端點也會透過直接連線，將您 VNet 的身分識別延伸至 Azure 服務。 端點可讓您將重要的 Azure 服務資源只放到您的虛擬網路保護。 從您的 VNet 到 Azure 服務的流量一定會保留在 Microsoft Azure 骨幹網路上。
+虛擬網路（VNet）服務端點可透過 Azure 骨幹網路上的優化路由，為 Azure 服務提供安全且直接的連線能力。 端點可讓您將重要的 Azure 服務資源只放到您的虛擬網路保護。 服務端點可讓 VNet 中的私人 IP 位址連接到 Azure 服務的端點，而不需要 VNet 上的公用 IP 位址。
 
-這項功能適用于下列 Azure 服務和區域。 *Microsoft.\* *資源是以括弧括住。 設定服務的服務端點時，在子網中啟用此資源：
+這項功能適用于下列 Azure 服務和區域。 *Microsoft. \* *資源是以括弧括住。 設定服務的服務端點時，在子網中啟用此資源：
 
 **正式推出**
 
 - **[Azure 儲存體](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)**（*Microsoft 儲存體*）：已在所有 Azure 區域中正式推出。
-- **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** （*Microsoft .sql*）：已在所有 Azure 區域中正式推出。
-- **[Azure SQL 資料倉儲](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**（*Microsoft .sql*）：已在所有 Azure 區域中正式推出。
+- **[Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** （*Microsoft .sql*）：已在所有 Azure 區域中正式推出。
+- **[Azure SQL 資料倉儲](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**（*Microsoft .sql*）：已在所有 Azure 區域中正式推出。
 - **[適用於 PostgreSQL 的 Azure 資料庫 server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** （*Microsoft .sql*）：已在可用資料庫服務的 Azure 區域中正式運作。
 - **[適用於 MySQL 的 Azure 資料庫 server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** （*Microsoft .sql*）：已在可用資料庫服務的 Azure 區域中正式運作。
 - **[適用於 MariaDB 的 Azure 資料庫](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)**（*Microsoft .sql*）：已在可用資料庫服務的 Azure 區域中正式推出。
@@ -39,7 +38,7 @@ ms.locfileid: "82509494"
 - **[Azure 服務匯流排](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**（*Microsoft 執行匯流排*）：已在所有 Azure 區域正式推出。
 - **[Azure 事件中樞](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**（*Microsoft EventHub*）：已在所有 Azure 區域中正式推出。
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** （*AzureActiveDirectory*）：已在可用 ADLS Gen1 的所有 Azure 區域中正式推出。
-- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)**：已在可用 App Service 的所有 Azure 區域中正式運作。
+- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** （*Microsoft Web*）：已在 App Service 可用的所有 Azure 區域中正式推出。
 
 **公開預覽**
 
@@ -80,7 +79,7 @@ ms.locfileid: "82509494"
 
 ![將 Azure 服務放到虛擬網路保護](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 - 在虛擬網路中的子網上設定服務端點。 端點會使用在子網路內執行之任何類型的計算執行個體。
 - 您可以為子網上的所有支援的 Azure 服務（例如 Azure 儲存體或 Azure SQL Database）設定多個服務端點。
@@ -90,7 +89,7 @@ ms.locfileid: "82509494"
 
 ### <a name="considerations"></a>考量
 
-- 啟用服務端點之後，子網中虛擬機器的來源 IP 位址會切換。 來源 IP 位址會在與該子網中的服務進行通訊時，從使用公用 IPv4 位址切換為使用其私人 IPv4 位址。 在此切換期間，會關閉該服務的任何現有開放 TCP 連線。 在啟用或停用子網路服務的服務端點時，確定沒有任何重要工作正在執行中。 此外，確保在 IP 位址切換之後，您的應用程式可以自動連線到 Azure 服務。
+- 啟用服務端點之後，來源 IP 位址會在與該子網中的服務進行通訊時，從使用公用 IPv4 位址切換為使用其私人 IPv4 位址。 在此切換期間，會關閉該服務的任何現有開放 TCP 連線。 在啟用或停用子網路服務的服務端點時，確定沒有任何重要工作正在執行中。 此外，確保在 IP 位址切換之後，您的應用程式可以自動連線到 Azure 服務。
 
   IP 位址切換只會影響來自您虛擬網路的服務流量。 對指派給虛擬機器的公用 IPv4 位址的任何其他流量，並不會有任何影響。 對於 Azure 服務，如果您有使用 Azure 公用 IP 位址的現有防火牆規則，則這些規則會停止使用切換至虛擬網路私人位址。
 - 透過服務端點，Azure 服務的 DNS 專案會保持現狀，並繼續解析為指派給 Azure 服務的公用 IP 位址。
@@ -147,8 +146,8 @@ VNet 服務端點原則可讓您篩選 Azure 服務的虛擬網路流量。 此�
 
 - [設定虛擬網路服務端點](tutorial-restrict-network-access-to-resources.md)
 - [保護虛擬網路的 Azure 儲存體帳戶](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [保護虛擬網路的 Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [保護虛擬網路的 Azure SQL 資料倉儲](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
+- [保護虛擬網路的 Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [保護虛擬網路的 Azure SQL 資料倉儲](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [虛擬網路中的 Azure 服務整合](virtual-network-for-azure-services.md)
 - [虛擬網路服務端點原則](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 - [Azure Resource Manager 範本](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
