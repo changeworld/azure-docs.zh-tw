@@ -7,10 +7,9 @@ ms.date: 3/9/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: 58259b0d19d68c468779a579bd9c86e77106c18d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77083512"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services 概觀
@@ -74,7 +73,7 @@ Reliable Services 與先前已撰寫的服務不同，因為 Service Fabric 提�
 
 不儲存任何內部狀態會讓此範例計算機變得較簡單。 不過大多數服務並不是真正無狀態。 相反地，它們是將狀態外部化到其他某些存放區  (例如，任何依賴在備份存放區或快取中保留工作階段狀態的 Web 應用程式便不是無狀態)。
 
-Service Fabric 中常見的無狀態服務使用範例是做為前端，其公開 Web 應用程式的公用 API。 前端服務接著和具狀態服務交談，以完成使用者的要求。 在此情況下，用戶端的呼叫會導向至無狀態服務接聽的已知連接埠 (例如 80)。 這個無狀態服務收到呼叫，並判斷呼叫是否來自受信任的合作對象，以及其預定為哪些服務。  然後，無狀態服務將呼叫轉送至正確的具狀態服務分割，並等候回應。 當無狀態服務收到回應時，它會回覆原始用戶端。 這類服務的其中一個範例是*Service Fabric 消費者入門*範例（[c #](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [JAVA](https://github.com/Azure-Samples/service-fabric-java-getting-started)），以及該存放庫中的其他 Service Fabric 範例。
+Service Fabric 中常見的無狀態服務使用範例是做為前端，其公開 Web 應用程式的公用 API。 前端服務接著和具狀態服務交談，以完成使用者的要求。 在此情況下，用戶端的呼叫會導向至無狀態服務接聽的已知連接埠 (例如 80)。 這個無狀態服務收到呼叫，並判斷呼叫是否來自受信任的合作對象，以及其預定為哪些服務。  然後，無狀態服務將呼叫轉送至正確的具狀態服務分割，並等候回應。 當無狀態服務收到回應時，它會回覆原始用戶端。 這類服務的其中一個範例是*Service Fabric 消費者入門*範例（[c #](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)  /  [JAVA](https://github.com/Azure-Samples/service-fabric-java-getting-started)），以及該存放庫中的其他 Service Fabric 範例。
 
 ### <a name="stateful-reliable-services"></a>具狀態可靠的服務
 
@@ -82,11 +81,11 @@ Service Fabric 中常見的無狀態服務使用範例是做為前端，其公�
 
 現在的大部分服務會在外部儲存其狀態，因為外部存放區為該狀態提供可靠性、可用性、延展性和一致性。 在 Service Fabric 中，服務不需要將狀態儲存在外部。 Service Fabric 會為服務程式碼和服務狀態來處理這些需求。
 
-假設我們想要撰寫一個處理映像的服務。 在做法上，這個服務需要取得映像和要在該映像上執行的一系列轉換。 此服務會傳回一個通訊接聽程式 (假設是 WebAPI)，其中公開一個像 `ConvertImage(Image i, IList<Conversion> conversions)` 的 API。 當它收到要求時，服務會將它儲存在`IReliableQueue`中，並將某個識別碼傳回給用戶端，讓它可以追蹤要求。
+假設我們想要撰寫一個處理映像的服務。 在做法上，這個服務需要取得映像和要在該映像上執行的一系列轉換。 此服務會傳回一個通訊接聽程式 (假設是 WebAPI)，其中公開一個像 `ConvertImage(Image i, IList<Conversion> conversions)` 的 API。 當它收到要求時，服務會將它儲存在中 `IReliableQueue` ，並將某個識別碼傳回給用戶端，讓它可以追蹤要求。
 
 在這個服務中，`RunAsync()` 可能較為複雜。 服務的 `RunAsync()` 內有一個迴圈會從 `IReliableQueue` 提取要求，並執行所要求的轉換。 結果會儲存在 `IReliableDictionary` 中，當用戶端回來時，便可取得轉換後的映像。 為了確保即使發生失敗，也不會遺失映像，這個 Reliable Services 會從佇列提取、執行轉換，並將整個結果儲存在單一交易中。 在此情況下，只有在轉換完成時，才會從佇列移除訊息並將結果儲存在結果字典中。 或者，服務也可能從佇列提取映像，並立即將它儲存在遠端存放區。 這樣可以減少服務必須管理的狀態，但會增加複雜性，因為服務必須保留必要的中繼資料，以管理遠端存放區。 不論採取何種方法，如果中途發生失敗，要求會保留在佇列中等候處理。
 
-雖然這項服務聽起來像是一般的 .NET 服務，但不同之處在于使用的`IReliableQueue`資料`IReliableDictionary`結構（和）是由 Service Fabric 所提供，而且高度可靠、可供使用且一致。
+雖然這項服務聽起來像是一般的 .NET 服務，但不同之處在于使用的資料結構（ `IReliableQueue` 和 `IReliableDictionary` ）是由 Service Fabric 所提供，而且高度可靠、可供使用且一致。
 
 ## <a name="when-to-use-reliable-services-apis"></a>使用 Reliable Services API 的時機
 

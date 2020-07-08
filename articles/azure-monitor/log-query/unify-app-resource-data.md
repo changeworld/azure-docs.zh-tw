@@ -8,10 +8,9 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77137488"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>整合多個 Azure 監視器 Application Insights 資源 
@@ -70,43 +69,43 @@ applicationsScoping
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | itemCount |
 | AvailabilityDuration | duration |
-| AvailabilityMessage | 訊息 |
+| AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | 名稱 |
+| AvailabilityTestName | NAME |
 | AvailabilityTimestamp | timestamp |
 | 瀏覽器 | client_browser |
 | City | client_city |
 | ClientIP | client_IP |
 | 電腦 | cloud_RoleInstance | 
-| Country | client_CountryOrRegion | 
+| 國家/地區 | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | 名稱 | 
+| CustomEventName | NAME | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
-| ExceptionMessage | 訊息 | 
-| ExceptionType | type |
+| ExceptionMessage | message | 
+| ExceptionType | 類型 |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | OS | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
-| PageViewName | 名稱 | 
+| PageViewName | NAME | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
 | RequestID | id | 
-| RequestName | 名稱 | 
+| RequestName | NAME | 
 | RequestSuccess | 成功 | 
 | ResponseCode | ResultCode | 
-| [角色] | cloud_RoleName |
+| 角色 | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryTYpe | type |
+| TelemetryTYpe | 類型 |
 | URL | url |
 | UserAccountId | user_AccountId |
 

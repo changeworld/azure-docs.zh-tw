@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77120679"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>在 App Service 上的 Windows 容器中設定 Azure 檔案儲存體
@@ -20,7 +19,7 @@ ms.locfileid: "77120679"
 
 本指南說明如何在 Windows 容器中存取 Azure 儲存體。 僅支援[Azure 檔案儲存體共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli)和[Premium 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-premium-fileshare)。 您在本操作說明中使用 Azure 檔案儲存體共用。 好處包括受保護的內容、內容可攜性、可存取多個應用程式，以及多個傳輸方法。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 或更新版本)。
 - [Azure App Service 中的現有 Windows 容器應用程式](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container)
@@ -43,7 +42,7 @@ ms.locfileid: "77120679"
 
 ## <a name="link-storage-to-your-web-app-preview"></a>將儲存體連結到您的 Web 應用程式 (預覽)
 
- 若要將 Azure 檔案儲存體共用掛接至 App Service 應用程式中的目錄，請使用[`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add)命令。 儲存體類型必須是 AzureFiles。
+ 若要將 Azure 檔案儲存體共用掛接至 App Service 應用程式中的目錄，請使用 [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) 命令。 儲存體類型必須是 AzureFiles。
 
 ```azurecli
 az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureFiles --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory of form c:<directory name> >
@@ -51,7 +50,7 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 
 您應該針對想要連結到 Azure 檔案儲存體共用的其他目錄執行此動作。
 
-## <a name="verify"></a>Verify
+## <a name="verify"></a>確認
 
 當 Azure 檔案儲存體共用連結至 web 應用程式之後，您可以執行下列命令來確認：
 

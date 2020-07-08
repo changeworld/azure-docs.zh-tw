@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77190003"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>使用來自 Azure API 管理服務的外部服務
@@ -104,7 +103,7 @@ API 管理的主要功能是保護後端資源。 如果您的 API 所使用的�
 
 或者，如果授權伺服器未包含 [作用中] 欄位來指示權杖是否有效，請使用 Postman 之類的工具來判斷哪些屬性是在有效的權杖中設定。 例如，如果有效的權杖回應包含名為 "expires_in" 的屬性，請以這種方式檢查授權伺服器回應中是否有此屬性名稱：
 
-當 condition = "@ （（IResponse） coNtext 時 <。變數 ["tokenstate"]）。Body.As<JObject>（）。Property （"expires_in"） = = null） ">
+當 condition = "@ （（IResponse） coNtext 時 <。變數 ["tokenstate"]）。Body.As <JObject> （）。Property （"expires_in"） = = null） ">
 
 ### <a name="reporting-failure"></a>報告失敗
 您可以使用 `<choose>` 原則來偵測權杖是否無效，如果無效，則會傳回 401 回應。
@@ -285,6 +284,6 @@ API 管理的主要功能是保護後端資源。 如果您的 API 所使用的�
 
 在預留位置作業的組態中，您可以設定要快取儀表板資源至少一小時。 
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 Azure API 管理服務提供彈性的原則，可以選擇性地套用到 HTTP 流量，並且能夠組合後端服務。 不論您是否想要使用警示功能、確認、驗證功能或根據多個後端服務建立新的複合資源來增強您的 API 閘道器， `send-request` 及相關原則都會開啟各種可能性。
 

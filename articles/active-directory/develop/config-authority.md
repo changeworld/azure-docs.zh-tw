@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77085219"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>如何：將 MSAL 用於 iOS 和 macOS，以使用不同的身分識別提供者
@@ -26,7 +25,7 @@ ms.locfileid: "77085219"
 
 ## <a name="default-authority-configuration"></a>預設授權設定
 
-`MSALPublicClientApplication`是使用的預設授權 URL 來設定`https://login.microsoftonline.com/common`，這適用于大部分的 AZURE ACTIVE DIRECTORY （AAD）案例。 除非您要執行像是國家雲端的 advanced 案例，或使用 B2C，否則您不需要變更它。
+`MSALPublicClientApplication`是使用的預設授權 URL 來設定 `https://login.microsoftonline.com/common` ，這適用于大部分的 Azure Active Directory （AAD）案例。 除非您要執行像是國家雲端的 advanced 案例，或使用 B2C，否則您不需要變更它。
 
 > [!NOTE]
 > 不支援以 Active Directory 同盟服務身分識別提供者（ADFS）進行新式驗證（如需詳細資訊，請參閱[適用于開發人員的 adfs](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) ）。 ADFS 受到同盟的支援。
@@ -37,9 +36,9 @@ ms.locfileid: "77085219"
 
 ### <a name="b2c"></a>B2C
 
-若要使用 B2C， [Microsoft 驗證程式庫（MSAL）](reference-v2-libraries.md)需要不同的授權設定。 MSAL 會將一個授權單位 URL 格式視為 B2C 本身。 例如`https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`，可辨識的 B2C `https://<host>/tfp/<tenant>/<policy>`授權單位格式為。 不過，您也可以明確地將授權單位宣告為 B2C 授權單位，藉以使用任何其他支援的 B2C 授權 Url。
+若要使用 B2C， [Microsoft 驗證程式庫（MSAL）](reference-v2-libraries.md)需要不同的授權設定。 MSAL 會將一個授權單位 URL 格式視為 B2C 本身。 例如，可辨識的 B2C 授權單位格式為 `https://<host>/tfp/<tenant>/<policy>` `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy` 。 不過，您也可以明確地將授權單位宣告為 B2C 授權單位，藉以使用任何其他支援的 B2C 授權 Url。
 
-若要支援 B2C 的任意 URL 格式， `MSALB2CAuthority`可以使用任意 url 來設定，如下所示：
+若要支援 B2C 的任意 URL 格式， `MSALB2CAuthority` 可以使用任意 url 來設定，如下所示：
 
 Objective-C
 ```objc
@@ -76,7 +75,7 @@ b2cApplicationConfig.knownAuthorities = [b2cAuthority]
 
 當您的應用程式要求新的原則時，必須變更授權單位 URL，因為每個原則的授權單位 URL 都不同。 
 
-若要設定 B2C 應用程式， `@property MSALAuthority *authority`請`MSALB2CAuthority`在建立`MSALPublicClientApplicationConfig` `MSALPublicClientApplication`之前，使用中的實例進行設定，如下所示：
+若要設定 B2C 應用程式，請 `@property MSALAuthority *authority` 在建立之前，使用中的實例進行設定 `MSALB2CAuthority` `MSALPublicClientApplicationConfig` `MSALPublicClientApplication` ，如下所示：
 
 Objective-C
 ```ObjC
@@ -129,7 +128,7 @@ do{
 
 ### <a name="sovereign-clouds"></a>主權雲端
 
-如果您的應用程式在主權雲端中執行，您可能需要變更中的授權單位`MSALPublicClientApplication`URL。 下列範例會設定授權單位 URL 以與德國 AAD 雲端搭配使用：
+如果您的應用程式在主權雲端中執行，您可能需要變更中的授權單位 URL `MSALPublicClientApplication` 。 下列範例會設定授權單位 URL 以與德國 AAD 雲端搭配使用：
 
 Objective-C
 ```objc
@@ -174,13 +173,13 @@ do{
 }
 ```
 
-您可能需要將不同的範圍傳遞給每個主權雲端。 要傳送的範圍取決於您所使用的資源。 例如，您可以在全球`"https://graph.microsoft.com/user.read"`雲端和`"https://graph.microsoft.de/user.read"`德文雲端中使用。
+您可能需要將不同的範圍傳遞給每個主權雲端。 要傳送的範圍取決於您所使用的資源。 例如，您可以 `"https://graph.microsoft.com/user.read"` 在全球雲端和 `"https://graph.microsoft.de/user.read"` 德文雲端中使用。
 
 ### <a name="signing-a-user-into-a-specific-tenant"></a>將使用者登入特定租使用者
 
-當授權單位 URL 設定為`"login.microsoftonline.com/common"`時，使用者將會登入其主租使用者。 不過，某些應用程式可能需要將使用者登入不同的租使用者，而某些應用程式只能與單一租使用者搭配使用。
+當授權單位 URL 設定為時 `"login.microsoftonline.com/common"` ，使用者將會登入其主租使用者。 不過，某些應用程式可能需要將使用者登入不同的租使用者，而某些應用程式只能與單一租使用者搭配使用。
 
-若要將使用者登入特定租使用者， `MSALPublicClientApplication`請使用特定授權單位進行設定。 例如：
+若要將使用者登入特定租使用者，請 `MSALPublicClientApplication` 使用特定授權單位進行設定。 例如：
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 
@@ -232,19 +231,19 @@ do{
 
 ### <a name="msalauthority"></a>MSALAuthority
 
-`MSALAuthority`類別是 MSAL 授權單位類別的基底抽象類別。 請不要嘗試使用`alloc`或`new`來建立其實例。 相反地，請直接建立其中一個子類別`MSALAADAuthority`（ `MSALB2CAuthority`、），或使用 factory `authorityWithURL:error:`方法來建立使用授權單位 URL 的子類別。
+`MSALAuthority`類別是 MSAL 授權單位類別的基底抽象類別。 請不要嘗試使用或來建立其 `alloc` 實例 `new` 。 相反地，請直接建立其中一個子類別（ `MSALAADAuthority` 、 `MSALB2CAuthority` ），或使用 factory 方法 `authorityWithURL:error:` 來建立使用授權單位 URL 的子類別。
 
-使用`url`屬性，即可取得正規化的授權單位 URL。 不屬於授權單位的額外參數和路徑元件或片段，將不會出現在傳回的正規化授權 URL 中。
+使用 `url` 屬性，即可取得正規化的授權單位 URL。 不屬於授權單位的額外參數和路徑元件或片段，將不會出現在傳回的正規化授權 URL 中。
 
-以下是您可以根據`MSALAuthority`要使用的授權單位來具現化的子類別。
+以下是 `MSALAuthority` 您可以根據要使用的授權單位來具現化的子類別。
 
 ### <a name="msalaadauthority"></a>MSALAADAuthority
 
-`MSALAADAuthority`代表 AAD 授權單位。 授權單位 url 應採用下列格式，其中`<port>`是選擇性的：`https://<host>:<port>/<tenant>`
+`MSALAADAuthority`代表 AAD 授權單位。 授權單位 url 應採用下列格式，其中 `<port>` 是選擇性的：`https://<host>:<port>/<tenant>`
 
 ### <a name="msalb2cauthority"></a>MSALB2CAuthority
 
-`MSALB2CAuthority`代表 B2C 授權單位。 根據預設，B2C 授權單位 url 應為下列格式，其中`<port>`是選擇性的：。 `https://<host>:<port>/tfp/<tenant>/<policy>` 不過，MSAL 也支援其他任意 B2C 授權單位格式。
+`MSALB2CAuthority`代表 B2C 授權單位。 根據預設，B2C 授權單位 url 應為下列格式，其中 `<port>` 是選擇性的： `https://<host>:<port>/tfp/<tenant>/<policy>` 。 不過，MSAL 也支援其他任意 B2C 授權單位格式。
 
 ## <a name="next-steps"></a>後續步驟
 

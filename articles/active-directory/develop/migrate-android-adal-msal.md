@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77084048"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>適用于 Android 的 MSAL 遷移指南的 ADAL
@@ -40,19 +39,19 @@ ADAL 適用于 Azure Active Directory v1.0 端點。 Microsoft 驗證程式庫�
 MSAL 公用 API 引進重要的變更，包括：
 
 - 用於存取權杖的新模型：
-  - ADAL 可讓您透過代表伺服器`AuthenticationContext`的來存取權杖。 MSAL 可讓您透過代表客戶`PublicClientApplication`端的來存取權杖。 用戶端開發人員不需要為他們`PublicClientApplication`需要與之互動的每個授權單位建立新的實例。 只需要`PublicClientApplication`一個設定。
+  - ADAL 可讓您透過代表伺服器的來存取權杖 `AuthenticationContext` 。 MSAL 可讓您透過代表用戶端的來存取權杖 `PublicClientApplication` 。 用戶端開發人員不需要為 `PublicClientApplication` 他們需要與之互動的每個授權單位建立新的實例。 只需要一個設定 `PublicClientApplication` 。
   - 除了資源識別碼之外，還支援使用範圍來要求存取權杖。
   - 支援累加式同意。 開發人員可以要求範圍，因為使用者會在應用程式中存取更多的功能，包括在應用程式註冊期間未包含的功能。
   - 授權單位不會再于執行時間進行驗證。 相反地，開發人員會在開發期間宣告「已知授權單位」清單。
 - 權杖 API 變更：
-  - 在 ADAL 中`AcquireToken()` ，會先發出無訊息要求。 失敗了，它會提出互動式要求。 這種行為會導致某些開發人員僅`AcquireToken`依賴，而導致使用者意外地收到認證的提示。 MSAL 需要開發人員知道使用者何時收到 UI 提示。
+  - 在 ADAL 中， `AcquireToken()` 會先發出無訊息要求。 失敗了，它會提出互動式要求。 這種行為會導致某些開發人員僅依賴 `AcquireToken` ，而導致使用者意外地收到認證的提示。 MSAL 需要開發人員知道使用者何時收到 UI 提示。
     - `AcquireTokenSilent`一律會產生成功或失敗的無訊息要求。
     - `AcquireToken`一律會產生透過 UI 提示使用者的要求。
 - MSAL 支援從預設瀏覽器或內嵌的 web view 登入：
   - 根據預設，會使用裝置上的預設瀏覽器。 這可讓 MSAL 使用一或多個已登入帳戶可能已經存在的驗證狀態（cookie）。 如果沒有驗證狀態，透過 MSAL 在授權期間進行驗證，會導致在相同瀏覽器中使用其他 web 應用程式的優點，而建立驗證狀態（cookie）。
 - 新的例外狀況模型：
   - 例外狀況更清楚地定義發生的錯誤類型，以及開發人員需要採取哪些動作來解決它。
-- MSAL 支援和`AcquireTokenSilent`呼叫的`AcquireToken`參數物件。
+- MSAL 支援和呼叫的參數物件 `AcquireToken` `AcquireTokenSilent` 。
 - MSAL 支援的宣告式設定：
   - 用戶端識別碼，重新導向 URI。
   - 內嵌與預設瀏覽器
@@ -83,10 +82,10 @@ MSAL 公用 API 引進重要的變更，包括：
 
 ### <a name="authenticate-and-request-authorization-for-all-permissions-on-first-use"></a>第一次使用時，驗證和要求擁有權限的授權
 
-如果您目前使用 ADAL，而不需要使用累加式同意，開始使用 MSAL 最簡單的方式就是使用新`acquireToken` `AcquireTokenParameter`的物件來提出要求，並設定資源識別碼值。
+如果您目前使用 ADAL，而不需要使用累加式同意，開始使用 MSAL 最簡單的方式就是 `acquireToken` 使用新的物件來提出 `AcquireTokenParameter` 要求，並設定資源識別碼值。
 
 > [!CAUTION]
-> 您不能同時設定範圍和資源識別碼。嘗試同時設定這兩個會導致`IllegalArgumentException`。
+> 您不能同時設定範圍和資源識別碼。嘗試同時設定這兩個會導致 `IllegalArgumentException` 。
 
  這會產生您所使用的相同 v1 行為。 在您的應用程式註冊中要求的擁有權限，會在其第一次互動期間向使用者要求。
 
@@ -108,15 +107,15 @@ MSAL 公用 API 引進重要的變更，包括：
 
 ### <a name="constructing-publicclientapplication"></a>建立 PublicClientApplication
 
-當您使用 MSAL 時，會具`PublicClientApplication`現化。 此物件會建立應用程式身分識別的模型，並用來對一個或多個授權單位提出要求。 您將使用此物件來設定用戶端身分識別、重新導向 URI、預設授權單位、是否使用裝置瀏覽器與內嵌 web 視圖、記錄層級等等。
+當您使用 MSAL 時，會具現化 `PublicClientApplication` 。 此物件會建立應用程式身分識別的模型，並用來對一個或多個授權單位提出要求。 您將使用此物件來設定用戶端身分識別、重新導向 URI、預設授權單位、是否使用裝置瀏覽器與內嵌 web 視圖、記錄層級等等。
 
 您可以使用 JSON 來以宣告方式設定此物件，這會以檔案或存放區的形式提供給 APK 中的資源。
 
-雖然此物件不是 singleton，但在內部，它`Executors`會針對互動式和無訊息要求使用 shared。
+雖然此物件不是 singleton，但在內部，它會 `Executors` 針對互動式和無訊息要求使用 shared。
 
 ### <a name="business-to-business"></a>企業對企業
 
-在 ADAL 中，您從要求存取權杖的每個組織都需要個別的`AuthenticationContext`實例。 在 MSAL 中，這不再是必要條件。 您可以指定要在無訊息或互動式要求中要求權杖的授權單位。
+在 ADAL 中，您從要求存取權杖的每個組織都需要個別的實例 `AuthenticationContext` 。 在 MSAL 中，這不再是必要條件。 您可以指定要在無訊息或互動式要求中要求權杖的授權單位。
 
 ### <a name="migrate-from-authority-validation-to-known-authorities"></a>從授權驗證遷移至已知的授權單位
 
@@ -125,7 +124,7 @@ MSAL 沒有用來啟用或停用授權單位驗證的旗標。 授權單位驗�
 > [!TIP]
 > 如果您是 Azure 企業對消費者（B2C）使用者，這表示您不再需要停用授權驗證。 相反地，請將每個支援的 Azure AD B2C 原則納入為 MSAL 設定中的授權單位。
 
-如果您嘗試使用 Microsoft 不知道且未包含在設定中的授權單位，您會收到`UnknownAuthorityException`。
+如果您嘗試使用 Microsoft 不知道且未包含在設定中的授權單位，您會收到 `UnknownAuthorityException` 。
 
 ### <a name="logging"></a>記錄
 您現在可以用宣告方式將記錄設定為設定的一部分，如下所示：
@@ -140,7 +139,7 @@ MSAL 沒有用來啟用或停用授權單位驗證的旗標。 授權單位驗�
 
 ## <a name="migrate-from-userinfo-to-account"></a>從使用者資訊遷移至帳戶
 
-在 ADAL 中， `AuthenticationResult`會提供`UserInfo`物件，用來抓取已驗證帳戶的相關資訊。 「使用者」一詞（代表人類或軟體代理程式）是以難以溝通的方式來套用，因為有些應用程式支援具有多個帳戶的單一使用者（不論是人類或軟體代理程式）。
+在 ADAL 中，會 `AuthenticationResult` 提供 `UserInfo` 物件，用來抓取已驗證帳戶的相關資訊。 「使用者」一詞（代表人類或軟體代理程式）是以難以溝通的方式來套用，因為有些應用程式支援具有多個帳戶的單一使用者（不論是人類或軟體代理程式）。
 
 請考慮使用銀行帳戶。 您在多個金融機構中可能有一個以上的帳戶。 當您開啟帳戶時，您（使用者）會發出認證，例如，用來存取每個帳戶的餘額、帳單款項等等的 ATM 卡 & PIN。 這些認證只能在發行他們的金融機構使用。
 
@@ -152,13 +151,13 @@ Sam 適用于 Contoso.com，但會管理屬於 Fabrikam.com 的 Azure 虛擬機�
 
 將 Sam 的 Contoso.com 帳戶新增為 Fabrikam.com 的成員，會導致在 Fabrikam .com 的 Azure Active Directory 中建立新的記錄，以供 Sam 使用。 Sam 在 Azure Active Directory 中的記錄稱為「使用者物件」。 在此情況下，該使用者物件會在 Contoso.com 中指向 Sam 的使用者物件。 Sam 的 Fabrikam user 物件是 Sam 的本機標記法，會用來儲存與 Sam 相關聯之帳戶的資訊，在 Fabrikam.com 的內容中。 在 Contoso.com 中，Sam 的職稱是資深 DevOps 顧問。 在 Fabrikam 中，Sam 的標題是「承包商-虛擬機器」。 在 Contoso.com 中，Sam 不會負責管理虛擬機器，也不會獲得授權。 在 Fabrikam.com 中，這是他唯一的工作功能。 但是 Sam 仍然只有一組認證可以追蹤，這是 Contoso.com 所發行的認證。
 
-一旦成功`acquireToken`呼叫之後，您就會看到可在後續`IAccount` `acquireTokenSilent`要求中使用之物件的參考。
+一旦成功 `acquireToken` 呼叫之後，您就會看到 `IAccount` 可在後續要求中使用之物件的參考 `acquireTokenSilent` 。
 
 ### <a name="imultitenantaccount"></a>IMultiTenantAccount
 
-如果您的應用程式會從代表帳戶的每個租使用者存取帳戶的宣告，您可以將物件轉換`IAccount`為。 `IMultiTenantAccount` 此介面提供以租使用者`ITenantProfiles`識別碼做為索引鍵的對應，可讓您從相對於目前的帳戶，存取您已向其要求權杖之每個租使用者中的帳戶所屬的宣告。
+如果您的應用程式會從代表帳戶的每個租使用者存取帳戶的宣告，您可以將 `IAccount` 物件轉換為 `IMultiTenantAccount` 。 此介面提供以租使用者識別碼做為索引鍵的對應 `ITenantProfiles` ，可讓您從相對於目前的帳戶，存取您已向其要求權杖之每個租使用者中的帳戶所屬的宣告。
 
-位於根目錄的宣告`IAccount` ， `IMultiTenantAccount`一律包含來自主要租使用者的宣告。 如果您尚未對 home 租使用者內的權杖提出要求，此集合會是空的。
+位於根目錄的宣告 `IAccount` ， `IMultiTenantAccount` 一律包含來自主要租使用者的宣告。 如果您尚未對 home 租使用者內的權杖提出要求，此集合會是空的。
 
 ## <a name="other-changes"></a>其他變更
 
@@ -235,12 +234,12 @@ public interface SilentAuthenticationCallback {
 
 ## <a name="migrate-to-the-new-exceptions"></a>遷移至新的例外狀況
 
-在 ADAL 中，有一種類型的例外`AuthenticationException`狀況，其中包含用來抓取`ADALError`列舉值的方法。
+在 ADAL 中，有一種類型的例外狀況， `AuthenticationException` 其中包含用來抓取 `ADALError` 列舉值的方法。
 在 MSAL 中，有一個例外狀況階層，而且每個都有一組相關聯的特定錯誤碼。
 
 MSAL 例外狀況的清單
 
-|例外狀況  | 描述  |
+|例外狀況  | Description  |
 |---------|---------|
 | `MsalException`     | MSAL 擲回的預設核取例外狀況。  |
 | `MsalClientException`     | 如果錯誤是用戶端，則擲回。 |

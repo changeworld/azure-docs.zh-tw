@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
 ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77111776"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>在 ACR 工作中使用受 Azure 管理的身分識別 
@@ -50,9 +49,9 @@ ms.locfileid: "77111776"
 
 ### <a name="2-enable-identity-on-an-acr-task"></a>2. 在 ACR 工作上啟用身分識別
 
-當您建立 ACR 工作時，可以選擇性地啟用使用者指派的身分識別、系統指派的身分識別，或兩者。 例如，當您在`--assign-identity` Azure CLI 中執行[az acr task create][az-acr-task-create]命令時，請傳遞參數。
+當您建立 ACR 工作時，可以選擇性地啟用使用者指派的身分識別、系統指派的身分識別，或兩者。 例如， `--assign-identity` 當您在 Azure CLI 中執行[az acr task create][az-acr-task-create]命令時，請傳遞參數。
 
-若要啟用系統指派的身分識別， `--assign-identity`請傳遞沒有值`assign-identity [system]`或的。 下列範例命令會從公用 GitHub 存放庫建立 Linux 工作，以建立`hello-world`映射並啟用系統指派的受控識別：
+若要啟用系統指派的身分識別，請傳遞 `--assign-identity` 沒有值或的 `assign-identity [system]` 。 下列範例命令會從公用 GitHub 存放庫建立 Linux 工作，以建立 `hello-world` 映射並啟用系統指派的受控識別：
 
 ```azurecli
 az acr task create \
@@ -64,7 +63,7 @@ az acr task create \
     --assign-identity
 ```
 
-若要啟用使用者指派的身分識別， `--assign-identity`請使用身分識別的*資源識別碼*值來傳遞。 下列範例命令會從公用 GitHub 存放庫建立 Linux 工作，以建立`hello-world`映射並啟用使用者指派的受控識別：
+若要啟用使用者指派的身分識別，請 `--assign-identity` 使用身分識別的*資源識別碼*值來傳遞。 下列範例命令會從公用 GitHub 存放庫建立 Linux 工作，以建立 `hello-world` 映射並啟用使用者指派的受控識別：
 
 ```azurecli
 az acr task create \
@@ -103,9 +102,9 @@ az role assignment create \
 
 ### <a name="4-optional-add-credentials-to-the-task"></a>4. （選擇性）將認證新增至工作
 
-如果您的工作需要認證，才能將映射提取或推送至另一個自訂登錄，或存取其他資源，請將認證新增至工作。 執行[az acr task credential add][az-acr-task-credential-add]命令來新增認證，並傳遞`--use-identity`參數來指出身分識別可以存取認證。 
+如果您的工作需要認證，才能將映射提取或推送至另一個自訂登錄，或存取其他資源，請將認證新增至工作。 執行[az acr task credential add][az-acr-task-credential-add]命令來新增認證，並傳遞 `--use-identity` 參數來指出身分識別可以存取認證。 
 
-例如，若要為系統指派的身分識別新增認證以向 Azure container registry *targetregistry*進行驗證，請`use-identity [system]`傳遞：
+例如，若要為系統指派的身分識別新增認證以向 Azure container registry *targetregistry*進行驗證，請傳遞 `use-identity [system]` ：
 
 ```azurecli
 az acr task credential add \
@@ -115,7 +114,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-若要為使用者指派的身分識別新增認證，以向登錄*targetregistry*進行驗證`use-identity` ，請使用識別的*用戶端識別碼*值來傳遞。 例如：
+若要為使用者指派的身分識別新增認證，以向登錄*targetregistry*進行驗證，請 `use-identity` 使用識別的*用戶端識別碼*值來傳遞。 例如：
 
 ```azurecli
 az acr task credential add \
@@ -125,7 +124,7 @@ az acr task credential add \
     --use-identity <clientID>
 ```
 
-您可以藉由執行[az identity show][az-identity-show]命令，取得身分識別的用戶端識別碼。 [用戶端識別碼] 是表單`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`的 GUID。
+您可以藉由執行[az identity show][az-identity-show]命令，取得身分識別的用戶端識別碼。 [用戶端識別碼] 是表單的 GUID `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 。
 
 ### <a name="5-run-the-task"></a>5. 執行工作
 

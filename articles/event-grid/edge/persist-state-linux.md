@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 12655d2ceb4a1124376d9bddf82194472c98ebb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086664"
 ---
 # <a name="persist-state-in-linux"></a>在 Linux 中保存狀態
@@ -25,7 +24,7 @@ ms.locfileid: "77086664"
 本文提供在 Linux 部署中部署具有持續性之事件方格模組的步驟。
 
 > [!NOTE]
->事件方格模組會以具有 UID `2000`和 name `eventgriduser`的低許可權使用者身分執行。
+>事件方格模組會以具有 UID 和 name 的低許可權使用者身分執行 `2000` `eventgriduser` 。
 
 ## <a name="persistence-via-volume-mount"></a>透過磁片區掛接進行持續性
 
@@ -170,7 +169,7 @@ ms.locfileid: "77086664"
 * 事件持續性會在建立時于事件訂用帳戶上設定，而且在建立事件訂閱之後就無法修改。 若要切換事件持續性，您必須刪除並重新建立事件訂閱。
 * 保存事件幾乎總是比記憶體中的作業慢，不過速度的差異會高度依賴磁片磁碟機的特性。 速度和可靠性之間的取捨是所有訊息系統固有的，但通常只有大規模才會明顯。
 
-若要在事件訂用帳戶上啟用事件`persistencePolicy`持續`true`性，請將設定為：
+若要在事件訂用帳戶上啟用事件持續性，請將設定 `persistencePolicy` 為 `true` ：
 
  ```json
         {

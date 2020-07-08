@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77087136"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>設定 CloudSimple 私人雲端的 VPN 連線
@@ -57,7 +56,7 @@ VPN 閘道可讓您從內部部署網路和從遠端用戶端電腦連線到 Clo
 
 2. 在您的電腦上開啟 Viscosity。
 
-3. 按一下**+** 圖示，然後選取 [**從**檔案匯**入連接** > ]。
+3. 按一下 **+** 圖示，然後選取 [從檔案匯**入連接**]  >  ** **。
 
     ![從檔案匯入 VPN 設定](media/import-p2s-vpn-config.png)
 
@@ -79,7 +78,7 @@ VPN 閘道可讓您從內部部署網路和從遠端用戶端電腦連線到 Clo
 
 1. 啟動[CloudSimple 入口網站](access-cloudsimple-portal.md)。
 
-2. 流覽至 [**資源** > ] [**私人**雲端]，然後選取您想要連線的私人雲端。
+2. 流覽至 [**資源**  >  ] [**私人**雲端]，然後選取您想要連線的私人雲端。
 
 3. 在私人雲端的 [**摘要**] 頁面上，複製 [**基本資訊**] 底下的 [私人雲端 DNS 伺服器 IP 位址]。
 
@@ -97,7 +96,7 @@ VPN 閘道可讓您從內部部署網路和從遠端用戶端電腦連線到 Clo
 
     ![編輯 VPN 連線](media/viscosity-edit-connection.png)
 
-7. 按一下 [**網路**] 索引標籤，並輸入以逗號或空格分隔的私人雲端 DNS 伺服器 IP 位址， ```cloudsimple.io```以及網域。  選取 [**略過 VPN 伺服器傳送的 DNS 設定**]。
+7. 按一下 [**網路**] 索引標籤，並輸入以逗號或空格分隔的私人雲端 DNS 伺服器 IP 位址，以及網域 ```cloudsimple.io``` 。  選取 [**略過 VPN 伺服器傳送的 DNS 設定**]。
 
     ![VPN 網路功能](media/viscosity-edit-connection-networking.png)
 

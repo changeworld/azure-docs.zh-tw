@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77083143"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>將 CloudSimple 私用雲端設定為內部部署 VMware 工作負載的損毀修復網站
@@ -46,12 +45,12 @@ CloudSimple 解決方案：
 3. [在 CloudSimple 私用雲端上設定 ZVM 和 VRA](#set-up-zvm-and-vra-on-your-private-cloud)
 4. [設定 Zerto 虛擬保護群組](#set-up-zerto-virtual-protection-group)
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 若要啟用從內部部署環境到私人雲端的 Zerto 虛擬複寫，請完成下列必要條件。
 
 1. [在您的內部部署網路與 CloudSimple 私人雲端之間設定站對站 VPN](set-up-vpn.md)連線。
-2. [設定 DNS 查閱，以便將私人雲端管理元件轉送到私人雲端 DNS 伺服器](on-premises-dns-setup.md)。  若要啟用 DNS 查閱的轉送，請在您的內部部署 DNS 伺服器中建立轉送區域`*.cloudsimple.io`專案，以 CloudSimple DNS 伺服器。
+2. [設定 DNS 查閱，以便將私人雲端管理元件轉送到私人雲端 DNS 伺服器](on-premises-dns-setup.md)。  若要啟用 DNS 查閱的轉送，請在您的內部部署 DNS 伺服器中建立轉送區域專案， `*.cloudsimple.io` 以 CLOUDSIMPLE DNS 伺服器。
 3. 設定 DNS 查閱，以便將內部部署 vCenter 元件轉送至內部部署 DNS 伺服器。  您必須透過站對站 VPN，從您的 CloudSimple 私用雲端連線到 DNS 伺服器。 如需協助，請提交[支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，並提供下列資訊。  
 
     * 內部部署 DNS 功能變數名稱

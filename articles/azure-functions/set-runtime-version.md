@@ -4,10 +4,9 @@ description: Azure Functions 支援多個執行階段版本。 了解如何指�
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77151950"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何設定 Azure Functions 執行階段目標版本
@@ -16,16 +15,16 @@ ms.locfileid: "77151950"
 
 ## <a name="automatic-and-manual-version-updates"></a>自動和手動版本更新
 
-Azure Functions 可讓您使用函數應用程式中的`FUNCTIONS_EXTENSION_VERSION`應用程式設定，以特定版本的執行時間為目標。 函式應用程式會保留在指定的主要版本上，直到您明確選擇移至新版本為止。
+Azure Functions 可讓您使用 `FUNCTIONS_EXTENSION_VERSION` 函數應用程式中的應用程式設定，以特定版本的執行時間為目標。 函式應用程式會保留在指定的主要版本上，直到您明確選擇移至新版本為止。
 
 如果您只指定主要版本，則函式應用程式會在執行時間可供使用時，自動更新為新的次要版本。 新的次要版本不應引進重大變更。 如果您指定次要版本 (例如 "2.0.12345")，則函式應用程式會釘選到該特定版本，直到您明確地變更它。
 
 > [!NOTE]
-> 如果您釘選到特定版本的 Azure Functions，然後嘗試使用 Visual Studio 來發行至 Azure，則會顯示對話方塊視窗，提示您更新至最新版本或取消發行。 若要避免這個情況， `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>`請在您`.csproj`的檔案中新增屬性。
+> 如果您釘選到特定版本的 Azure Functions，然後嘗試使用 Visual Studio 來發行至 Azure，則會顯示對話方塊視窗，提示您更新至最新版本或取消發行。 若要避免這個情況，請 `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` 在您的檔案中新增屬性 `.csproj` 。
 
 有新版本公開發行時，入口網站會提示您向上移至該版本。 移至新版本之後，您隨時可以使用 `FUNCTIONS_EXTENSION_VERSION` 應用程式設定移回舊版。
 
-下表顯示每個`FUNCTIONS_EXTENSION_VERSION`主要版本的值，以啟用自動更新：
+下表顯示 `FUNCTIONS_EXTENSION_VERSION` 每個主要版本的值，以啟用自動更新：
 
 | 主要版本 | `FUNCTIONS_EXTENSION_VERSION` 值 |
 | ------------- | ----------------------------------- |

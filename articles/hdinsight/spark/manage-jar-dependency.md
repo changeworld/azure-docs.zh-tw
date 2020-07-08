@@ -9,15 +9,14 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.openlocfilehash: da3387dd9846847f7643ded43c8cbff8ed8b166e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77135729"
 ---
 # <a name="jar-dependency-management-best-practices"></a>JAR 相依性管理最佳作法
 
-安裝在 HDInsight 叢集上的元件會相依于協力廠商程式庫。 通常，這些內建元件會參考 Guava 之類的通用模組特定版本。 當您提交具有相依性的應用程式時，可能會導致相同模組的不同版本之間發生衝突。 如果您先在路徑類型中參考的元件版本，內建元件可能會因為版本不相容而擲回例外狀況。 不過，如果內建元件會先將其相依性插入至路徑，您的應用程式可能`NoSuchMethod`會擲回類似的錯誤。
+安裝在 HDInsight 叢集上的元件會相依于協力廠商程式庫。 通常，這些內建元件會參考 Guava 之類的通用模組特定版本。 當您提交具有相依性的應用程式時，可能會導致相同模組的不同版本之間發生衝突。 如果您先在路徑類型中參考的元件版本，內建元件可能會因為版本不相容而擲回例外狀況。 不過，如果內建元件會先將其相依性插入至路徑，您的應用程式可能會擲回類似的錯誤 `NoSuchMethod` 。
 
 為避免版本衝突，請考慮為應用程式相依性加上陰影。
 
@@ -32,9 +31,9 @@ Uber 是單一的 jar 檔案，其中包含應用程式 jar 和其相依性。 U
 ### <a name="shade-package-using-maven"></a>使用 Maven 為封裝加上陰影
 Maven 可以建立以 JAVA 和 Scala 撰寫的應用程式。 Maven-陰影-外掛程式可協助您輕鬆建立陰影的 uber jar。
 
-下列範例顯示`pom.xml`已更新的檔案，可使用 maven-陰影-外掛程式來為封裝加上陰影。  XML 區段`<relocation>…</relocation>`會藉由移動對應`com.google.guava`的 JAR `com.google.shaded.guava`檔案專案並重寫受影響的位元組程式碼，將類別從封裝移至封裝中。
+下列範例顯示已更新的檔案 `pom.xml` ，可使用 maven-陰影-外掛程式來為封裝加上陰影。  XML 區段會藉 `<relocation>…</relocation>` `com.google.guava` `com.google.shaded.guava` 由移動對應的 JAR 檔案專案並重寫受影響的位元組程式碼，將類別從封裝移至封裝中。
 
-變更`pom.xml`之後，您可以執行`mvn package`來建立陰影的 uber jar。
+變更之後 `pom.xml` ，您可以執行 `mvn package` 來建立陰影的 uber jar。
 
 ```xml
   <build>
@@ -65,9 +64,9 @@ Maven 可以建立以 JAVA 和 Scala 撰寫的應用程式。 Maven-陰影-外�
 ```
 
 ### <a name="shade-package-using-sbt"></a>使用 SBT 為封裝加上陰影
-SBT 也是 Scala 和 JAVA 的組建工具。 SBT 沒有如 maven-陰影-外掛程式的陰影外掛程式。 您可以修改`build.sbt`檔案來為封裝加上陰影。 
+SBT 也是 Scala 和 JAVA 的組建工具。 SBT 沒有如 maven-陰影-外掛程式的陰影外掛程式。 您可以修改檔案 `build.sbt` 來為封裝加上陰影。 
 
-例如，若要為`com.google.guava`網底，您可以將下列命令新增至`build.sbt`檔案：
+例如，若要為網底 `com.google.guava` ，您可以將下列命令新增至檔案 `build.sbt` ：
 
 ```scala
 assemblyShadeRules in assembly := Seq(
@@ -75,7 +74,7 @@ assemblyShadeRules in assembly := Seq(
 )
 ```
 
-接著，您可以`sbt clean`執行`sbt assembly`和以建立陰影的 jar 檔案。 
+接著，您可以執行 `sbt clean` 和 `sbt assembly` 以建立陰影的 jar 檔案。 
 
 ## <a name="next-steps"></a>後續步驟
 

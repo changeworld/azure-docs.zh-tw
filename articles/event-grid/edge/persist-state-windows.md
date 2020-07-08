@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086620"
 ---
 # <a name="persist-state-in-windows"></a>在 Windows 中保存狀態
@@ -73,9 +72,9 @@ ms.locfileid: "77086620"
     1. 啟動 [檔案瀏覽器]。
     1. 流覽至 [**裝入**點] 所指向的資料夾。
     1. 以滑鼠右鍵按一下，然後選取 [**屬性**]。
-    1. 選取 [**安全性**]。
+    1. 選取 [安全性]。
     1. 在 [群組或使用者名稱] 底下，選取 [**編輯**]。
-    1. 選取 [**新增**] `Users`，輸入，選取 [**檢查名稱**]，然後選取 **[確定]**。
+    1. 選取 [**新增**]，輸入 `Users` ，選取 [**檢查名稱**]，然後選取 **[確定]**。
     1. 在 [*使用者的許可權*] 底下，選取 [**修改**]，然後選取 **[確定]**。
 1. 使用 [系結] 來掛接此磁片**區，並**從 Azure 入口網站重新部署事件方格模組
 
@@ -112,7 +111,7 @@ ms.locfileid: "77086620"
     ```
 
    >[!IMPORTANT]
-   >請勿變更 bind 值的第二個部分。 它會指向模組中的特定位置。 針對 windows 上的事件方格模組，它必須是**C：\\app\\metadataDb**。
+   >請勿變更 bind 值的第二個部分。 它會指向模組中的特定位置。 針對 windows 上的事件方格模組，它必須是**C： \\ app \\ metadataDb**。
 
 
     例如，
@@ -176,7 +175,7 @@ ms.locfileid: "77086620"
     ```
 
     >[!IMPORTANT]
-    >請勿變更 bind 值的第二個部分。 它會指向模組中的特定位置。 針對 windows 上的事件方格模組，它必須是**C：\\app\\metadataDb**。
+    >請勿變更 bind 值的第二個部分。 它會指向模組中的特定位置。 針對 windows 上的事件方格模組，它必須是**C： \\ app \\ metadataDb**。
 
     例如，
 
@@ -220,7 +219,7 @@ ms.locfileid: "77086620"
 * 事件持續性會在建立時于事件訂用帳戶上設定，而且在建立事件訂閱之後就無法修改。 若要切換事件持續性，您必須刪除並重新建立事件訂閱。
 * 保存事件幾乎總是比記憶體中的作業慢，不過速度的差異會高度依賴磁片磁碟機的特性。 速度和可靠性之間的取捨是所有訊息系統固有的，但只有大規模才會明顯。
 
-若要在事件訂用帳戶上啟用事件`persistencePolicy`持續`true`性，請將設定為：
+若要在事件訂用帳戶上啟用事件持續性，請將設定 `persistencePolicy` 為 `true` ：
 
  ```json
         {

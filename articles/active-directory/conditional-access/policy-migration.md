@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77185917"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>條件式存取傳統原則遷移
@@ -33,7 +32,7 @@ ms.locfileid: "77185917"
 
 ## <a name="classic-policies"></a>傳統原則
 
-在[Azure 入口網站](https://portal.azure.com)中，可以在**Azure Active Directory** > **安全性** > **條件式存取**底下找到條件式存取原則。 您的組織可能也會有較舊的條件式存取原則，而不是使用此頁面建立。 這些原則也稱為「傳統原則」**。 傳統原則是您在中建立的條件式存取原則：
+在[Azure 入口網站](https://portal.azure.com)中，可以在**Azure Active Directory**  >  **安全性**  >  **條件式存取**底下找到條件式存取原則。 您的組織可能也會有較舊的條件式存取原則，而不是使用此頁面建立。 這些原則稱為「*傳統原則」*。 傳統原則是您在中建立的條件式存取原則：
 
 - Azure 傳統入口網站
 - Intune 傳統入口網站

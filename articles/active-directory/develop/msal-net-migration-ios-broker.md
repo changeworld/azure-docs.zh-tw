@@ -13,10 +13,9 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77185836"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>將使用 Microsoft Authenticator 從 ADAL.NET 到 MSAL.NET 的 iOS 應用程式遷移
@@ -25,7 +24,7 @@ ms.locfileid: "77185836"
 
 您應該從何處著手？ 本文可協助您將 Xamarin iOS 應用程式從 ADAL 遷移至 MSAL。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 本文假設您已經有與 iOS broker 整合的 Xamarin iOS 應用程式。 如果您沒有這麼做，請直接移至 MSAL.NET，並在該處開始執行代理程式。 如需如何使用新的應用程式在 MSAL.NET 中叫用 iOS broker 的詳細資訊，請參閱[此檔](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications)。
 
 ## <a name="background"></a>背景
@@ -49,7 +48,7 @@ ms.locfileid: "77185836"
 <tr><td>
 在 ADAL.NET 中，已根據每個驗證內容來啟用 broker 支援。 此功能預設為停用。 您必須設定 
 
-`useBroker`在用來呼叫訊息`PlatformParameters`代理程式的函式中，將旗標設為 true：
+`useBroker`在用來呼叫訊息代理程式的函式中，將旗標設為 true `PlatformParameters` ：
 
 ```csharp
 public PlatformParameters(
@@ -98,7 +97,7 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-2-set-a-uiviewcontroller"></a>步驟2：設定 UIViewController （）
-在 ADAL.NET 中，您會在中傳入 UIViewController `PlatformParameters`。 （請參閱步驟1中的範例）。在 MSAL.NET 中，為了讓開發人員有更大的彈性，會使用物件視窗，但是一般 iOS 使用方式並不需要。 若要使用訊息代理程式，請設定 [物件] 視窗，以便傳送和接收來自訊息代理程式的回應。 
+在 ADAL.NET 中，您會在中傳入 UIViewController `PlatformParameters` 。 （請參閱步驟1中的範例）。在 MSAL.NET 中，為了讓開發人員有更大的彈性，會使用物件視窗，但是一般 iOS 使用方式並不需要。 若要使用訊息代理程式，請設定 [物件] 視窗，以便傳送和接收來自訊息代理程式的回應。 
 <table>
 <tr><td>目前的 ADAL 程式碼：</td><td>MSAL 對應：</td></tr>
 <tr><td>
@@ -115,8 +114,8 @@ page.BrokerParameters = new PlatformParameters(
 </td><td>
 在 MSAL.NET 中，您會執行兩件事來設定 iOS 的物件視窗：
 
-1. 在`AppDelegate.cs`中， `App.RootViewController`將設定為`UIViewController()`新的。 此指派可確保有 UIViewController 與訊息代理程式的呼叫。 如果設定不正確，您可能會收到此錯誤：`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
-1. 在 AcquireTokenInteractive 呼叫上，使用`.WithParentActivityOrWindow(App.RootViewController)`，並傳入您將使用之物件視窗的參考。
+1. 在中 `AppDelegate.cs` ，將設定 `App.RootViewController` 為新的 `UIViewController()` 。 此指派可確保有 UIViewController 與訊息代理程式的呼叫。 如果設定不正確，您可能會收到此錯誤：`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
+1. 在 AcquireTokenInteractive 呼叫上，使用 `.WithParentActivityOrWindow(App.RootViewController)` ，並傳入您將使用之物件視窗的參考。
 
 **例如：**
 
@@ -139,19 +138,19 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>步驟3：更新 AppDelegate 以處理回呼
-ADAL 和 MSAL 都會呼叫 broker，而訊息代理程式會透過`OpenUrl` `AppDelegate`類別的方法，再次呼叫您的應用程式。 如需詳細資訊，請參閱[此檔](msal-net-use-brokers-with-xamarin-apps.md#step-3-update-appdelegate-to-handle-the-callback)。
+ADAL 和 MSAL 都會呼叫 broker，而訊息代理程式會透過類別的方法，再次呼叫您的應用程式 `OpenUrl` `AppDelegate` 。 如需詳細資訊，請參閱[此檔](msal-net-use-brokers-with-xamarin-apps.md#step-3-update-appdelegate-to-handle-the-callback)。
 
 ADAL.NET 與 MSAL.NET 之間沒有任何變更。
 
 ### <a name="step-4-register-a-url-scheme"></a>步驟4：註冊 URL 配置
-ADAL.NET 和 MSAL.NET 會使用 Url 叫用訊息代理程式，並將 broker 回應傳回給應用程式。 在應用程式的`Info.plist`檔案中註冊 URL 配置，如下所示：
+ADAL.NET 和 MSAL.NET 會使用 Url 叫用訊息代理程式，並將 broker 回應傳回給應用程式。 在應用程式的檔案中註冊 URL 配置 `Info.plist` ，如下所示：
 
 <table>
 <tr><td>目前的 ADAL 程式碼：</td><td>MSAL 對應：</td></tr>
 <tr><td>
 URL 配置對您的應用程式而言是唯一的。
 </td><td>
-此 
+必須提供 
 
 `CFBundleURLSchemes`名稱必須包含 
 
@@ -184,7 +183,7 @@ URL 配置對您的應用程式而言是唯一的。
 
 ### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>步驟5：將 broker 識別碼新增至 LSApplicationQueriesSchemes 區段
 
-ADAL.NET 和 MSAL.NET 都用`-canOpenURL:`來檢查代理程式是否已安裝在裝置上。 將 iOS 代理程式的正確識別碼新增至 plist 檔案的 LSApplicationQueriesSchemes 區段，如下所示：
+ADAL.NET 和 MSAL.NET 都用 `-canOpenURL:` 來檢查代理程式是否已安裝在裝置上。 將 iOS 代理程式的正確識別碼新增至 plist 檔案的 LSApplicationQueriesSchemes 區段，如下所示：
 
 <table>
 <tr><td>目前的 ADAL 程式碼：</td><td>MSAL 對應：</td></tr>

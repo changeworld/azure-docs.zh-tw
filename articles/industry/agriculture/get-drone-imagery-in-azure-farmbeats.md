@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77132040"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>從無人機合作夥伴取得無人機影像
@@ -35,7 +34,7 @@ ms.locfileid: "77132040"
  - 用戶端識別碼
  - 用戶端密碼
 
-依照下列步驟進行。
+請遵循下列步驟。
 
 1. 下載此[腳本](https://aka.ms/farmbeatspartnerscript)，並將它解壓縮至您的本機磁片磁碟機。 Zip 檔案中有兩個檔案。
 2. 登入 [Azure 入口網站](https://portal.azure.com/)並開啟 Azure Cloud Shell。 在入口網站右上角的工具列上，可以使用此選項。

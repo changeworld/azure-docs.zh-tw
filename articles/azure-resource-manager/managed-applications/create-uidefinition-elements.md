@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: 12bf5d131001d95a3f4327f95c24125dbf3fb510
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086714"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition 元素
@@ -36,13 +35,13 @@ ms.locfileid: "77086714"
 | 屬性 | 必要 | 描述 |
 | -------- | -------- | ----------- |
 | NAME | 是 | 要參考元素特定執行個體的內部識別碼。 元素名稱的最常見用法是在 `outputs`，其中指定元素的輸出值會對應到範本的參數。 您也可以使用它，將元素的輸出值繫結至另一個元素的 `defaultValue`。 |
-| type | 是 | 要呈現元素的 UI 控制項。 如需支援類型的清單，請參閱[元素](#elements)。 |
-| 標籤 | 是 | 元素的顯示文字。 某些元素類型會包含多個標籤，因此值可能是包含多個字串的物件。 |
-| defaultValue | 否 | 元素的預設值。 某些元素類型支援複雜的預設值，因此值可能是物件。 |
-| 工具提示 | 否 | 要顯示在元素之工具提示的文字。 類似於 `label`，某些元素可支援多個工具提示字串。 您可以使用 Markdown 語法將內嵌連結進行內嵌。
-| 條件約束 | 否 | 用於自訂元素驗證行為的一個或多個屬性。 支援的條件約束屬性會依元素類型而有所不同。 某些元素類型不支援自訂驗證行為，因此沒有任何 constraints 屬性。 |
-| 選項 | 否 | 自訂元素行為的其他屬性。 類似於 `constraints`，支援的屬性會依元素類型而有所不同。 |
-| 可見 | 否 | 指出是否要顯示元素。 如果為 `true`，就會顯示元素和適用的子元素。 預設值是 `true`。 使用[邏輯函式](create-uidefinition-functions.md#logical-functions)以動態方式控制這個屬性的值。
+| 類型 | Yes | 要呈現元素的 UI 控制項。 如需支援類型的清單，請參閱[元素](#elements)。 |
+| 標籤 | Yes | 元素的顯示文字。 某些元素類型會包含多個標籤，因此值可能是包含多個字串的物件。 |
+| defaultValue | No | 元素的預設值。 某些元素類型支援複雜的預設值，因此值可能是物件。 |
+| 工具提示 | No | 要顯示在元素之工具提示的文字。 類似於 `label`，某些元素可支援多個工具提示字串。 您可以使用 Markdown 語法將內嵌連結進行內嵌。
+| 條件約束 | No | 用於自訂元素驗證行為的一個或多個屬性。 支援的條件約束屬性會依元素類型而有所不同。 某些元素類型不支援自訂驗證行為，因此沒有任何 constraints 屬性。 |
+| 選項 | No | 自訂元素行為的其他屬性。 類似於 `constraints`，支援的屬性會依元素類型而有所不同。 |
+| 可見 | No | 指出是否要顯示元素。 如果為 `true`，就會顯示元素和適用的子元素。 預設值為 `true`。 使用[邏輯函式](create-uidefinition-functions.md#logical-functions)以動態方式控制這個屬性的值。
 
 ## <a name="elements"></a>元素
 

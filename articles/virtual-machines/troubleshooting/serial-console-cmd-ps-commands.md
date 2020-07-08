@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77167035"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
@@ -320,7 +319,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 `test-netconnection`
 
 > [!NOTE]
-> 寫入進度 Cmdlet 可能無法與此命令搭配使用。 作為緩和措施，您可以在`$ProgressPreference = "SilentlyContinue"` PowerShell 中執行來停用進度列。
+> 寫入進度 Cmdlet 可能無法與此命令搭配使用。 作為緩和措施，您可以 `$ProgressPreference = "SilentlyContinue"` 在 PowerShell 中執行來停用進度列。
 
 或
 
@@ -479,5 +478,5 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 
 ## <a name="next-steps"></a>後續步驟
 * 主要序列主控台 Windows 文件頁面位於[這裡](serial-console-windows.md)。
-* 序列主控台也適用于[Linux](serial-console-linux.md) vm。
-* 深入瞭解[開機診斷](boot-diagnostics.md)。
+* 序列主控台也適用於 [Linux](serial-console-linux.md) VM。
+* 深入了解[開機診斷](boot-diagnostics.md)。

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
 ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77121729"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常見問題集
@@ -42,7 +41,7 @@ Azure 保證有效的 DNS 要求 100% 的時間都至少會從一部 Azure DNS �
 
 網域是網域名稱系統中的唯一名稱。 例如 contoso.com。
 
-DNS 區域用來裝載特定網域的 DNS 記錄。 例如，contoso.com 網域可能包含數筆 DNS 記錄。 記錄可能包括電子郵件伺服器的 mail.contoso.com 和網站的\.www contoso.com。 這些記錄會裝載在 contoso.com DNS 區域中。
+DNS 區域用來裝載特定網域的 DNS 記錄。 例如，contoso.com 網域可能包含數筆 DNS 記錄。 記錄可能包括電子郵件伺服器的 mail.contoso.com 和網站的 www \. contoso.com。 這些記錄會裝載在 contoso.com DNS 區域中。
 
 網域名稱「只是一個名稱」**。 DNS 區域則是包含網域名稱 DNS 記錄的資料資源。 您可以使用 Azure DNS 來裝載 DNS 區域，並在 Azure 中管理網域的 DNS 記錄。 它也提供 DNS 名稱伺服器以回應來自網際網路的 DNS 查詢。
 

@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 15af18177cea217612a4d5276d130abe02d339f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77160754"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET 中的 Active Directory 同盟服務支援
@@ -35,7 +34,7 @@ MSAL.NET 支援連接到 Azure AD，以登入受管理使用者（在 Azure AD �
 您在此案例中使用的[授權](msal-client-application-configuration.md#authority)單位是一般授權（授權主機名稱 + 租使用者、通用或組織）。
 
 ### <a name="acquiring-a-token-interactively"></a>以互動方式取得權杖
-當您呼叫`AcquireTokenInteractive`方法時，使用者體驗通常是：
+當您呼叫 `AcquireTokenInteractive` 方法時，使用者體驗通常是：
 
 1. 使用者輸入其帳戶識別碼。
 2. Azure AD 會短暫顯示「帶您前往貴組織的頁面」的訊息。
@@ -44,10 +43,10 @@ MSAL.NET 支援連接到 Azure AD，以登入受管理使用者（在 Azure AD �
 此同盟案例中支援的 AD FS 版本包括 AD FS v2、AD FS v3 （Windows Server 2012 R2）和 AD FS v4 （AD FS 2016）。
 
 ### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>使用 AcquireTokenByIntegratedAuthentication 或 AcquireTokenByUsernamePassword 取得權杖
-使用`AcquireTokenByIntegratedAuthentication`或`AcquireTokenByUsernamePassword`方法取得權杖時，MSAL.NET 會根據使用者名稱取得身分識別提供者。  MSAL.NET 會在聯繫識別提供者之後收到[SAML 1.1 token](reference-saml-tokens.md) 。  然後，MSAL.NET 會將 SAML 權杖提供給 Azure AD 做為使用者判斷提示（類似于代理者[流程](msal-authentication-flows.md#on-behalf-of)）以取回 JWT。
+使用或方法取得權杖時，MSAL.NET 會根據使用者名稱取得身分 `AcquireTokenByIntegratedAuthentication` `AcquireTokenByUsernamePassword` 識別提供者。  MSAL.NET 會在聯繫識別提供者之後收到[SAML 1.1 token](reference-saml-tokens.md) 。  然後，MSAL.NET 會將 SAML 權杖提供給 Azure AD 做為使用者判斷提示（類似于代理者[流程](msal-authentication-flows.md#on-behalf-of)）以取回 JWT。
 
 ## <a name="msal-connects-directly-to-ad-fs"></a>MSAL 直接連接到 AD FS
-MSAL.NET 支援連接到 AD FS 2019，這是與 Open ID Connect 相容，並瞭解 PKCE 和範圍。 這種支援需要將 Service Pack [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481)套用到 Windows Server。 當直接連接到 AD FS 時，您要用來建立應用程式的授權單位與類似`https://mysite.contoso.com/adfs/`。
+MSAL.NET 支援連接到 AD FS 2019，這是與 Open ID Connect 相容，並瞭解 PKCE 和範圍。 這種支援需要將 Service Pack [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481)套用到 Windows Server。 當直接連接到 AD FS 時，您要用來建立應用程式的授權單位與類似 `https://mysite.contoso.com/adfs/` 。
 
 目前，沒有任何計畫可支援直接連接至：
 

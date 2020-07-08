@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
 ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162203"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 上的 Apache Hadoop 架構
@@ -66,7 +65,7 @@ NodeManagers 會執行組成應用程式的各項工作，然後將其進度和�
 
 ## <a name="trash-purging"></a>垃圾桶清除
 
-來自`fs.trash.interval` **HDFS** > **Advanced core-site**的屬性應該保留預設值`0` ，因為您不應該將任何資料儲存在本機檔案系統上。 此值不會影響遠端儲存體帳戶（WASB、ADLS GEN1、ABFS）
+`fs.trash.interval`來自**HDFS**  >  **Advanced core-site**的屬性應該保留預設值， `0` 因為您不應該將任何資料儲存在本機檔案系統上。 此值不會影響遠端儲存體帳戶（WASB、ADLS GEN1、ABFS）
 
 ## <a name="next-steps"></a>後續步驟
 

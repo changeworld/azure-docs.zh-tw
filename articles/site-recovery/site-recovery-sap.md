@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77190785"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>設定多層式 SAP NetWeaver 應用程式部署的災害復原
@@ -24,7 +23,7 @@ ms.locfileid: "77190785"
 
 您可以使用[Azure Site Recovery](site-recovery-overview.md)來保護 SAP NetWeaver 應用程式部署。 本文涵蓋當您使用 Site Recovery 複寫至另一個 Azure 資料中心時，在 Azure 上保護三層式 SAP NetWeaver 部署的最佳作法。 本文說明支援的案例和設定，以及如何執行測試容錯移轉（嚴重損壞修復演練）和實際的容錯移轉。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在開始之前，請確定您了解如何執行下列工作：
 
@@ -119,7 +118,7 @@ SMLG 交易會管理 ABAP 應用程式伺服器的登入群組。 它會使用�
 
 ## <a name="networking-configuration"></a>網路設定
 
-如果您使用靜態 IP 位址，您可以指定您想要虛擬機器使用的 IP 位址。 若要設定 IP 位址，請移至 [**計算和網路設定** > ] [**網路介面卡**]。
+如果您使用靜態 IP 位址，您可以指定您想要虛擬機器使用的 IP 位址。 若要設定 IP 位址，請移至 [**計算和網路設定**] [  >  **網路介面卡**]。
 
 ![示範如何在 Site Recovery 網路介面卡窗格設定私人 IP 位址的螢幕擷取畫面](./media/site-recovery-sap/sap-static-ip.png)
 

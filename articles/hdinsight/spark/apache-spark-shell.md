@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: f8737f645df2aefbf9ce544199f0cc45ce6a3d60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162798"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>從 Spark Shell 執行 Apache Spark
@@ -21,7 +20,7 @@ ms.locfileid: "77162798"
 
 ## <a name="run-an-apache-spark-shell"></a>執行 Apache Spark Shell
 
-1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的叢集。 以您叢集的名稱取代 CLUSTERNAME，然後輸入命令，以編輯下面的命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 CLUSTERNAME 取代為您叢集的名稱，然後輸入命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -59,7 +58,7 @@ ms.locfileid: "77162798"
     textFile.filter(textFile.value.contains("apple")).show()
     ```
 
-1. 查詢 CSV 檔案。 請注意，下列語言適用`spark-shell`于`pyspark`和。
+1. 查詢 CSV 檔案。 請注意，下列語言適用于 `spark-shell` 和 `pyspark` 。
 
     ```scala
     spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
@@ -87,7 +86,7 @@ ms.locfileid: "77162798"
     data.select("BuildingID", "Country").show(10)
     ```
 
-1. Exit
+1. 結束
 
     ```spark-shell
     :q
@@ -105,9 +104,9 @@ ms.locfileid: "77162798"
 
 ## <a name="important-shell-parameters"></a>重要的殼層參數
 
-Spark Shell 命令（`spark-shell`或`pyspark`）支援許多命令列參數。 若要查看完整的參數清單，請使用參數 `--help` 啟動 Spark Shell。 其中某些參數可能只適用`spark-submit`于 Spark Shell 所包裝的。
+Spark Shell 命令（ `spark-shell` 或 `pyspark` ）支援許多命令列參數。 若要查看完整的參數清單，請使用參數 `--help` 啟動 Spark Shell。 其中某些參數可能只適用于 `spark-submit` Spark Shell 所包裝的。
 
-| switch | description | 範例 |
+| 參數 | description | 範例 |
 | --- | --- | --- |
 | --master MASTER_URL | 指定主要 URL。 在 HDInsight 中，此值一律為 `yarn`。 | `--master yarn`|
 | --jars JAR_LIST | 本機 Jar 的逗號分隔清單，用來包含在驅動程式和執行程式 Classpath 中。 在 HDInsight 中，此清單是由 Azure 儲存體或 Data Lake Storage 中的預設檔案系統路徑組成。 | `--jars /path/to/examples.jar` |

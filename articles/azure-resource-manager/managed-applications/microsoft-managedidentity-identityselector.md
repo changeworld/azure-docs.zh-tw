@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: cb66a2684e0b83f4f0cc01a07cc724f6beab4d68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77087540"
 ---
 # <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft.managedidentity. IdentitySelector UI 元素
@@ -69,7 +68,7 @@ ms.locfileid: "77087540"
 
 ## <a name="remarks"></a>備註
 
-- 使用**systemAssignedIdentity**來設定系統指派的身分識別選項控制項的初始值。 預設值為**Off**。 允許下列值：
+- 使用**defaultValue.systemAssignedIdentity**來設定系統指派的身分識別選項控制項的初始值。 預設值為**Off**。 允許下列值：
   - **On** –系統指派的身分識別會指派給資源。
   - **關閉**–系統指派的身分識別不會指派給資源。
   - **OnOnly** –系統指派的身分識別會指派給資源。 在部署期間，使用者無法編輯此值。
