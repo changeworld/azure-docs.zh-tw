@@ -10,16 +10,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75386726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255223"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>開始使用 Azure 雲端服務和 ASP.NET
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程示範如何建立具有 ASP.NET MVC 前端的多層式 .NET 應用程式，並將它部署到 [Azure 雲端服務](cloud-services-choose-me.md)。 應用程式會使用 [Azure SQL Database](/previous-versions/azure/ee336279(v=azure.100))、[Azure Blob 服務](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 佇列服務](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 您可以從 MSDN Code Gallery [下載 Visual Studio 專案](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) 。
 
 本教學課程將示範如何在本機建置並執行應用程式、如何將應用程式部署至 Azure 並且在雲端執行，以及如何從頭建置應用程式。 之後，如果需要，也可以自從頭建置應用程式開始，然後執行測試和部署步驟。
@@ -42,7 +42,7 @@ ms.locfileid: "75386726"
 * 如何上傳檔案並將檔案儲存在 Azure Blob 服務。
 * 如何將 Azure 佇列服務用於層級之間的通訊。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 本教學課程假設您了解 [Azure 雲端服務的基本概念](cloud-services-choose-me.md)，例如「Web 角色」** 和「背景工作角色」** 術語。  同時也假設您知道如何在 Visual Studio 中使用 [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) 或 [Web Form](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) 專案。 範例應用程式使用 MVC，但大多數的教學課程內容亦適用於 Web Form。
 
 您不需 Azure 訂用帳戶即可在本機執行應用程式，但需要訂用帳戶才能將應用程式部署至雲端。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668)或是[申請免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668)。
@@ -104,16 +104,16 @@ ms.locfileid: "75386726"
 您將執行下列步驟，在雲端中執行應用程式：
 
 * 建立 Azure 雲端服務。
-* 建立 Azure SQL 資料庫。
+* 在 Azure SQL Database 中建立資料庫。
 * 建立 Azure 儲存體帳戶。
-* 將方案設定為在 Azure 中執行時使用 Azure SQL 資料庫。
+* 將解決方案設定為在 Azure 中執行時使用您的資料庫。
 * 將方案設定為在 Azure 中執行時使用 Azure 儲存體帳戶。
 * 將專案部署至 Azure 雲端服務。
 
 ### <a name="create-an-azure-cloud-service"></a>建立 Azure 雲端服務
 Azure 雲端服務是應用程式將執行所在的環境。
 
-1. 在您的瀏覽器中，開啟 [ [Azure 入口網站](https://portal.azure.com)]。
+1. 在瀏覽器中，開啟 [Azure 入口網站](https://portal.azure.com)。
 2. 按一下 [建立資源] > [計算] > [雲端服務]****。
 
 3. 在 [DNS 名稱] 輸入方塊中，輸入雲端服務的 URL 前置詞。
@@ -124,13 +124,13 @@ Azure 雲端服務是應用程式將執行所在的環境。
 5. 選擇您要部署應用程式的區域。
 
     此欄位會指定將託管您的雲端服務的資料中心。 針對生產應用程式，您應該選擇距離客戶最近的區域。 針對此教學課程，請選擇離您最近的區域。
-5. 按一下頁面底部的 [新增]  。
+5. 按一下 [建立]。
 
     在下面的影像中，已建立 URL 為 CSvccontosoads.cloudapp.net 的雲端服務。
 
     ![New Cloud Service](./media/cloud-services-dotnet-get-started/newcs.png)
 
-### <a name="create-an-azure-sql-database"></a>建立 Azure SQL 資料庫
+### <a name="create-a-database-in-azure-sql-database"></a>在 Azure SQL Database 中建立資料庫
 應用程式在雲端中執行時，將會使用雲端式資料庫。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，按一下 [建立資源] > [資料庫] > [SQL Database]****。
@@ -152,8 +152,8 @@ Azure 雲端服務是應用程式將執行所在的環境。
 8. 勾選 [允許 Azure 服務存取 SQL Server]****。
 9. 對新的伺服器按一下 [選取]****。
 
-    ![新的 SQL Database 伺服器](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. 按一下頁面底部的 [新增]  。
+    ![New server](./media/cloud-services-dotnet-get-started/newdbserver.png)
+10. 按一下 [建立]。
 
 ### <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 Azure 儲存體帳戶可提供在雲端中儲存佇列和 Blob 資料的資源。
@@ -176,14 +176,15 @@ Azure 儲存體帳戶可提供在雲端中儲存佇列和 Blob 資料的資源�
     當雲端服務與儲存體帳戶位於不同的資料中心 (不同的區域) 時，延遲時間會增加，而且您將由於使用資料中心外的頻寬而付費。 資料中心內的頻寬則是免費的。
 
     Azure 同質群組提供一種機制，可將資料中心內的資源之間的距離縮至最短，因而可以減少延遲時間。 本教學課程不會使用同質群組。 如需詳細資訊，請參閱 [如何在 Azure 中建立同質群組](/previous-versions/azure/reference/gg715317(v=azure.100))(英文)。
-7. 按一下頁面底部的 [新增]  。
+7. 按一下 [建立]。
 
     ![New storage account](./media/cloud-services-dotnet-get-started/newstorage.png)
 
     在影像中，已建立 URL 為 `csvccontosoads.core.windows.net`的儲存體帳戶。
 
-### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>將方案設定為在 Azure 中執行時使用 Azure SQL 資料庫
-每個 Web 專案和背景工作角色專案都有自己的資料庫連接字串，在 Azure 中執行應用程式時，每個都必須指向 Azure SQL 資料庫。
+### <a name="configure-the-solution-to-use-your-database-in-azure-sql-database-when-it-runs-in-azure"></a>設定解決方案在 Azure 中執行時，在 Azure SQL Database 中使用您的資料庫
+
+Web 專案和背景工作角色專案各自有自己的資料庫連接字串，而且每個都需要指向應用程式在 Azure 中執行時 Azure SQL Database 中的資料庫。
 
 您將對 Web 角色使用 [Web.config 轉換](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) ，以及對背景工作角色使用雲端服務環境設定。
 
@@ -353,7 +354,7 @@ Web 角色專案和背景工作角色專案的 Azure 儲存體帳戶連接字串
 6. 尋找 *Microsoft.WindowsAzure.ConfigurationManager* NuGet 封裝，並在背景工作角色專案中安裝。
 
 ### <a name="set-project-references"></a>設定專案參考
-1. 在 ContosoAdsWeb 專案中，設定 ContosoAdsCommon 專案的參考。 以滑鼠右鍵按一下 [ContosoAdsWeb] 專案，然後按一下 [**參考** - ] [**新增參考**]。 在 [參考管理員]**** 對話方塊中，於左側窗格選取 [方案 - 專案]****，選取 [ContosoAdsCommon]****，然後按一下 [確定]****。
+1. 在 ContosoAdsWeb 專案中，設定 ContosoAdsCommon 專案的參考。 以滑鼠右鍵按一下 [ContosoAdsWeb] 專案，然後按一下 [**參考**] [  -  **新增參考**]。 在 [參考管理員]**** 對話方塊中，於左側窗格選取 [方案 - 專案]****，選取 [ContosoAdsCommon]****，然後按一下 [確定]****。
 2. 在 ContosoAdsWorker 專案中，設定 ContosoAdsCommon 專案的參考。
 
     ContosoAdsCommon 將包含將由前端與後端使用的 Entity Framework 資料模型和內容類別。
@@ -398,7 +399,7 @@ Web 角色專案和背景工作角色專案的 Azure 儲存體帳戶連接字串
 ### <a name="add-code-files"></a>加入程式碼檔案
 在本節中，您會將檔案從所下載的方案複製到新方案。 下一節將示範和說明此程式碼的重要部分。
 
-若要將檔案加入至專案或資料夾，請以滑鼠右鍵按一下專案或資料夾，然後按一下 [**加入** - **現有專案**]。 選取您需要的檔案，然後按一下 [加入] ****。 如果詢問您是否要取代現有的檔案，請按一下 [是] ****。
+若要將檔案加入至專案或資料夾，請以滑鼠右鍵按一下專案或資料夾，然後按一下 [**加入**  -  **現有專案**]。 選取您需要的檔案，然後按一下 [加入] ****。 如果詢問您是否要取代現有的檔案，請按一下 [是] ****。
 
 1. 在 ContosoAdsCommon 專案中，刪除 *Class1.cs* 檔案，並在其位置新增來自所下載專案的 *Ad.cs* 和 *ContosoAdscontext.cs* 檔案。
 2. 在 ContosoAdsWeb 專案中，從所下載的專案加入下列檔案。
@@ -530,7 +531,7 @@ Views\Home\Index.cshtml** 檔案在首頁上顯示類別連結。 連結會將�
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
 在 AdController.cs** 檔案中，建構函式會呼叫 `InitializeStorage` 方法來建立 Azure 儲存體用戶端程式庫物件，該物件可提供用於處理 Blob 和佇列的 API。
 
-然後，程式碼會取得*images* blob 容器的參考，如您稍早在*Global.asax.cs*中所見。 在執行該動作時，它會設定適用 Web 應用程式的預設 [重試原則](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) 。 預設指數輪詢重試原則，可能會因為對暫時性的錯誤進行反覆重試，使得 Web 應用程式停止回應超過一分鐘。 此處指定的重試原則會在每次嘗試後等候 3 秒，最多嘗試 3 次。
+然後，程式碼會取得*images* blob 容器的參考，如您稍早在*Global.asax.cs*中所見。 在執行該動作時，它會設定適用 Web 應用程式的預設 [重試原則](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) 。 預設的指數輪詢重試原則可能會導致 web 應用程式在暫時性錯誤的重複重試期間停止回應超過一分鐘。 此處指定的重試原則會在每次嘗試後等候 3 秒，最多嘗試 3 次。
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -776,6 +777,3 @@ Contoso Ads 應用程式特意保持簡潔，以做為入門的教學課程。 �
 * [如何管理雲端服務](cloud-services-how-to-manage-portal.md)
 * [Azure 儲存體](https://docs.microsoft.com/azure/storage/)
 * [如何選擇雲端服務提供者](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
-
-
-

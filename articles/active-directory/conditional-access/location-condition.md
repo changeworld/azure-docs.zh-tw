@@ -4,71 +4,75 @@ description: 了解如何使用位置條件，以根據使用者的網路位置�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.workload: identity
-ms.date: 11/21/2019
+ms.topic: conceptual
+ms.date: 06/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 915675af1e646f2cb77e36c0018ed372ff9496fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 7db7e64840d248b66a61ff310f9441800e1afc31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263227"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253217"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 條件式存取中的位置條件為何？ 
+# <a name="using-the-location-condition-in-a-conditional-access-policy"></a>在條件式存取原則中使用位置條件 
 
-透過[Azure Active Directory （Azure AD）條件式存取](../active-directory-conditional-access-azure-portal.md)，您可以控制授權使用者如何存取您的雲端應用程式。 條件式存取原則的位置條件可讓您將存取控制設定與使用者的網路位置結合。
+如[總覽一文](overview.md)所述，條件式存取原則是最基本的 if then 語句結合信號、進行決策，以及強制執行組織原則。 其中一個可以併入決策制定流程的信號是網路位置。
 
-本文提供設定位置條件所需的資訊。
+![概念性的條件式訊號加上決策，然後強制執行](./media/location-condition/conditional-access-signal-decision-enforcement.png)
 
-## <a name="locations"></a>位置
-
-Azure AD 可讓您從公用網際網路上的任何地方單一登入裝置、應用程式和服務。 使用位置條件，您可以根據使用者的網路位置來控制雲端應用程式的存取。 位置條件的常見使用案例如下：
+組織可以使用此網路位置進行一般工作，例如： 
 
 - 針對從公司網路外存取服務的使用者要求使用多重要素驗證。
 - 封鎖從特定國家或地區存取服務之使用者的存取權。
 
-「位置」（location）是網路位置的標籤，代表名為「位置」或「多重要素驗證」信任的 Ip。
+網路位置取決於用戶端提供給 Azure Active Directory 的公用 IP 位址。 條件式存取原則預設適用于所有 IPv4 和 IPv6 位址。 
+
+> [!TIP]
+> 只有**[命名位置（預覽）](#preview-features)** 介面支援 IPv6 範圍。 
 
 ## <a name="named-locations"></a>具名位置
 
-使用已命名的位置，您可以建立 IP 位址範圍或國家和地區的邏輯群組。
+位置會在 Azure 入口網站的**Azure Active Directory**  >  **安全性**  >  **條件式存取**（  >  **名為位置**）底下指定。 這些名為的網路位置可能包括組織的總部網路範圍、VPN 網路範圍或您想要封鎖的範圍等位置。 
 
-您可以在 [條件式存取] 頁面的 [**管理**] 區段中，存取您的命名位置。
+![Azure 入口網站中的命名位置](./media/location-condition/new-named-location.png)
 
-![條件式存取中的命名位置](./media/location-condition/02.png)
-
-具名位置具有下列元件：
-
-![建立新的命名位置](./media/location-condition/42.png)
-
-- **名稱** - 具名位置的顯示名稱。
-- **IP 範圍** - CIDR 格式的一或多個 IPv4 位址範圍。 不支援指定 IPv6 位址範圍。
-
-   > [!NOTE]
-   > IPv6 位址範圍目前不能包含在已命名的位置中。 這表示無法從條件式存取原則中排除 IPv6 範圍。
-
-- **標記為信任位置** - 您可以為具名位置設定旗標，以指出信任的位置。 一般而言，信任的位置是由您的 IT 部門所控制的網路區域。 除了條件式存取以外，Azure Identity Protection 也會使用受信任的命名位置，並 Azure AD 的安全性報告來減少[誤報](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)。
-- **國家/地區** - 此選項可讓您選取一或多個國家或地區，以定義具名位置。
-- **包含未知區域**-某些 IP 位址未對應至特定國家或地區。 此選項可讓您選擇這些 IP 位址是否應包含在具名位置中。 當使用具名位置的原則應套用到未知位置時，請使用此設定。
+若要設定位置，您必須至少提供一個**名稱**和 IP 範圍。 
 
 您可以設定的具名位置數目受到 Azure AD 中相關物件大小的限制。 您可以根據下列限制設定位置：
 
-- 一個具名位置最多有 1200 個 IP 範圍。
+- 一個名為的位置，最多1200個 IPv4 範圍。
 - 最多 90 個具名位置，每個位置皆指派一個 IP 範圍。
 
-條件式存取原則會套用至 IPv4 和 IPv6 流量。 目前命名的位置不允許設定 IPv6 範圍。 這項限制會導致下列情況：
+> [!TIP]
+> 只有**[命名位置（預覽）](#preview-features)** 介面支援 IPv6 範圍。 
 
-- 條件式存取原則無法以特定 IPv6 範圍為目標
-- 條件式存取原則無法排除特定的 IPV6 範圍
+### <a name="trusted-locations"></a>信任的位置
 
-如果原則設定為套用至「任何位置」，則會套用至 IPv4 和 IPv6 流量。 針對指定的國家和地區所設定的命名位置僅支援 IPv4 位址。 只有在選取 [包含不明區域] 選項時，才會包含 IPv6 流量。
+建立網路位置時，系統管理員可以選擇將位置標示為信任的位置。 
 
-## <a name="trusted-ips"></a>信任的 IP
+![Azure 入口網站中的信任位置](./media/location-condition/new-trusted-location.png)
+
+此選項可納入條件式存取原則，例如，您可能需要從信任的網路位置註冊多重要素驗證。 它也會影響 Azure AD Identity Protection 的風險計算，並在來自標示為信任的位置時，降低使用者的登入風險。
+
+### <a name="countries-and-regions"></a>國家和地區
+
+有些組織可能會選擇將整個國家或地區的 IP 界限定義為條件式存取原則的命名位置。 當封鎖不必要的流量時，他們可能會使用這些位置，因為他們知道有效的使用者永遠都不會來自如北韓國的位置。 這些 IP 位址與國家/地區的對應會定期更新。 
+
+> [!NOTE]
+> 國家/地區不包含 IPv6 位址範圍、僅限已知的 IPv4 位址範圍，且無法標示為受信任。
+
+![在 Azure 入口網站中建立新的國家/地區或區域型位置](./media/location-condition/new-named-location-country-region.png)
+
+#### <a name="include-unknown-areas"></a>包含未知區域
+
+某些 IP 位址未對應到特定的國家或地區。 若要捕獲這些 IP 位置，請核取 [定義位置時**包含不明區域**] 方塊。 此選項可讓您選擇這些 IP 位址是否應包含在具名位置中。 當使用具名位置的原則應套用到未知位置時，請使用此設定。
+
+### <a name="configure-mfa-trusted-ips"></a>設定 MFA 信任的 Ip
 
 您也可以在[多重要素驗證服務設定](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)中設定代表您組織的近端內部網路的 IP 位址範圍。 這項功能可讓您設定最多 50 個 IP 位址範圍。 IP 位址範圍是 CIDR 格式。 如需詳細資訊，請參閱[信任的 ip](../authentication/howto-mfa-mfasettings.md#trusted-ips)。  
 
@@ -83,19 +87,44 @@ Azure AD 可讓您從公用網際網路上的任何地方單一登入裝置、�
 針對具有長期會話存留期的行動和桌面應用程式，會定期重新評估條件式存取。 預設值是一小時一次。 當只有在初始驗證才會發出位於公司網路內宣告時，Azure AD 可能不會有可信任 IP 範圍清單。 在此情況下，較難判斷使用者是否仍在公司網路上：
 
 1. 檢查使用者的 IP 位址是否在其中一個信任的 IP 範圍內。
-2. 檢查使用者 IP 位址的前三個八位是否符合初始驗證 IP 位址的前三個八位。 當原始發出公司網路宣告且使用者位置已通過驗證時，IP 位址會與初始驗證進行比較。
+1. 檢查使用者 IP 位址的前三個八位是否符合初始驗證 IP 位址的前三個八位。 當原始發出公司網路宣告且使用者位置已通過驗證時，IP 位址會與初始驗證進行比較。
 
 如果這兩個步驟均失敗，會將使用者視為不再位於信任的 IP。
 
-## <a name="location-condition-configuration"></a>位置條件組態
+## <a name="preview-features"></a>預覽功能
+
+除了正式推出的「命名位置」功能之外，還有一個命名位置（預覽）。 您可以使用目前 [命名位置] 分頁上方的橫幅來存取命名位置預覽。
+
+![試用命名位置預覽](./media/location-condition/preview-features.png)
+
+有了命名位置預覽，您就能夠
+
+- 設定最多195名的位置
+- 針對每個命名位置設定最多2000個 IP 範圍
+- 設定 IPv6 位址與 IPv4 位址
+
+我們也已新增一些額外的檢查，以協助減少設定錯誤的變更。
+
+- 無法再設定私人 IP 範圍
+- 可以包含在範圍內的 IP 位址數目有限。 設定 IP 範圍時，只會允許大於/8 的 CIDR 遮罩。
+
+在預覽中，現在有兩個建立選項： 
+
+- **國家/地區位置**
+- **IP 範圍位置**
+
+> [!NOTE]
+> 國家/地區不包含 IPv6 位址範圍、僅限已知的 IPv4 位址範圍，且無法標示為受信任。
+
+![命名位置預覽介面](./media/location-condition/named-location-preview.png)
+
+## <a name="location-condition-in-policy"></a>原則中的位置條件
 
 當您設定位置條件時，您可以區別：
 
 - 任何位置
 - 所有信任的位置
 - 選取的位置
-
-![位置條件組態](./media/location-condition/01.png)
 
 ### <a name="any-location"></a>任何位置
 
@@ -112,7 +141,31 @@ Azure AD 可讓您從公用網際網路上的任何地方單一登入裝置、�
 
 使用此選項，您可以選取一或多個具名位置。 將套用的原則若有此設定，使用者必須從任一選取的位置連線。 當您按一下 [選取]**** 時，顯示具名網路清單的具名網路選取控制項隨即開啟。 此清單也會顯示網路位置是否已標示為受信任。 稱為 [MFA 信任的 IP]**** 的具名位置是用來包含可在多重要素驗證服務設定頁面中設定的 IP 設定。
 
-## <a name="what-you-should-know"></a>您應該知道的事項
+## <a name="ipv6-traffic"></a>IPv6 流量
+
+根據預設，條件式存取原則會套用至所有 IPv6 流量。 使用[命名位置預覽](#preview-features)時，您可以從條件式存取原則中排除特定的 IPv6 位址範圍。 當您不想要針對特定 IPv6 範圍強制執行原則時，此選項非常有用。 例如，如果您不想強制執行公司網路上使用的原則，而且您的公司網路是裝載在公用 IPv6 範圍上。  
+
+### <a name="when-will-my-tenant-have-ipv6-traffic"></a>我的租使用者何時會有 IPv6 流量？
+
+Azure Active Directory （Azure AD）目前不支援使用 IPv6 的直接網路連線。 不過，在某些情況下，驗證流量會透過另一個服務來代理。 在這些情況下，將會在原則評估期間使用 IPv6 位址。
+
+大部分以 proxy 傳送至 Azure AD 的 IPv6 流量都是來自 Microsoft Exchange Online。 當可用時，Exchange 會偏好使用 IPv6 連線。 **因此，如果您有任何 Exchange 的條件式存取原則已針對特定 IPv4 範圍進行設定，您會想要確定您也已新增組織的 IPv6 範圍。** 在下列兩種情況下，不包含 IPv6 範圍會導致非預期的行為：
+
+- 當使用郵件用戶端以舊版驗證連線到 Exchange Online 時，Azure AD 可能會收到 IPv6 位址。 初始驗證要求會前往 Exchange，然後再 proxy 傳送至 Azure AD。
+- 在瀏覽器中使用 Outlook Web 存取（OWA）時，它會定期驗證所有條件式存取原則是否繼續滿足。 這種檢查是用來攔截使用者可能已從允許的 IP 位址移至新位置的情況，像是在街道下的咖啡廳。 在此情況下，如果使用 IPv6 位址，而且 IPv6 位址不在設定的範圍內，則使用者可能會中斷其會話，並將其導向回到 Azure AD 重新驗證。 
+
+這些是您在命名位置中設定 IPv6 範圍時可能需要的最常見原因。 此外，如果您使用 Azure Vnet，則會有來自 IPv6 位址的流量。 如果您有條件式存取原則封鎖的 VNet 流量，請檢查您的 Azure AD 登入記錄。 一旦識別出流量之後，您就可以取得使用的 IPv6 位址，並將它從原則中排除。 
+
+> [!NOTE]
+> 如果您想要指定單一位址的 IP CIDR 範圍，請套用/32 位元遮罩。 如果您說出 IPv6 位址2607： fb90： b27a：6f69： f8d5： dea0： fb39：74a，而且想要將該單一位址排除成一個範圍，您會使用2607： fb90： b27a：6f69： f8d5： dea0： fb39： 74a/32。
+
+### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>識別 Azure AD 登入活動報告中的 IPv6 流量
+
+您可以藉由將[Azure AD 登入活動報告](../reports-monitoring/concept-sign-ins.md)，探索您租使用者中的 IPv6 流量。 當活動報表開啟之後，請新增 [IP 位址] 資料行。 此欄可讓您識別 IPv6 流量。
+
+您也可以按一下報表中的資料列，然後前往登入活動詳細資料中的 [位置] 索引標籤，來尋找用戶端 IP。 
+
+## <a name="what-you-should-know"></a>您應該知道的事情
 
 ### <a name="when-is-a-location-evaluated"></a>何時會評估位置？
 
@@ -129,12 +182,9 @@ Azure AD 可讓您從公用網際網路上的任何地方單一登入裝置、�
 
 使用於原則評估的 IP 位址是使用者的公用 IP 位址。 對於私人網路上的裝置，此 IP 位址不是內部網路上使用者裝置的用戶端 IP，而是網路用來連線到公用網際網路的位址。
 
-> [!WARNING]
-> 如果您的裝置只有 IPv6 位址，則不支援設定位置條件。
-
 ### <a name="bulk-uploading-and-downloading-of-named-locations"></a>大量上傳與下載具名位置
 
-當您建立或更新具名位置時，您可以上傳或下載包含 IP 範圍的 CSV 檔案來進行大量更新。 上傳會使用檔案中的 IP 範圍取代清單中的 IP 範圍。 檔案的每個資料列均包含一個 CIDR 格式的 IP 位址範圍。
+當您建立或更新具名位置時，您可以上傳或下載包含 IP 範圍的 CSV 檔案來進行大量更新。 [上傳] 會將清單中的 IP 範圍取代為檔案中的範圍。 檔案的每個資料列均包含一個 CIDR 格式的 IP 位址範圍。
 
 ### <a name="cloud-proxies-and-vpns"></a>雲端 Proxy 和 VPN
 
@@ -144,9 +194,9 @@ Azure AD 可讓您從公用網際網路上的任何地方單一登入裝置、�
 
 ### <a name="api-support-and-powershell"></a>API 支援與 PowerShell
 
-尚未針對命名位置或條件式存取原則，支援 API 和 PowerShell。
+已命名的位置尚不支援 API 和 PowerShell。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果您想要知道如何設定條件式存取原則，請參閱[使用 Azure Active Directory 條件式存取來要求特定應用程式的 MFA](app-based-mfa.md)。
-- 如果您已準備好設定環境的條件式存取原則，請參閱[Azure Active Directory 中條件式存取的最佳做法](best-practices.md)。
+- 如果您想要知道如何設定條件式存取原則，請參閱[建立條件式存取原則一](concept-conditional-access-policies.md)文。
+- 使用位置條件來尋找範例原則嗎？ 請參閱條件式[存取：依位置封鎖存取](howto-conditional-access-policy-location.md)一文

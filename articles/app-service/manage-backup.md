@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45a313318bc8005b433536d1b109f6153bc79e01
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: HT
+ms.openlocfilehash: d611be27d8d576748019dee46022ca4cb70e966a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170608"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253438"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中備份應用程式
 [Azure App Service](overview.md) 中的「備份與還原」功能可讓您以手動或透過排程方式，輕鬆建立應用程式備份。 您可以將備份設定為無限期保留。 您可以透過覆寫現有的應用程式或還原到另一個應用程式，將應用程式還原到先前狀態的快照。
@@ -74,7 +74,7 @@ App Service 可以將下列資訊備份到您已設定讓應用程式使用的 A
 
 4. 選取 [儲存體帳戶] 和 [容器]，以選擇您的備份目的地。 此儲存體帳戶必須與您要備份之應用程式隸屬於相同的訂用帳戶。 如果您希望的話，也可以在個別頁面中，建立新的儲存體帳戶或新的容器。 完成後，按一下 [選取] 。
 
-5. 在仍處於開啟狀態的 [備份設定] 頁面中，您可以設定 [備份資料庫]，然後選取您想要包含在備份中的資料庫 (SQL Database 或 MySQL)，然後按一下 [確定]。
+5. 在仍處於開啟狀態的 [**備份**設定] 頁面中，您可以設定 [**備份資料庫**]，然後選取您想要包含在備份中的資料庫（SQL Database 或 MySQL），然後按一下 **[確定]**。
 
     ![Choose storage account](./media/manage-backup/configure-database.png)
 
@@ -150,7 +150,7 @@ App Service 可以將下列資訊備份到您已設定讓應用程式使用的 A
 ## <a name="how-backups-are-stored"></a>備份的儲存方式
 在您為應用程式建立一或多個備份之後，這些備份就會顯示在您儲存體帳戶及應用程式的 [容器] 頁面中。 在儲存體帳戶中，每個備份都是由一個 `.zip` 檔案 (包含備份資料) 和一個 `.xml` 檔案 (包含 `.zip` 檔案內容的資訊清單) 所組成。 如果您要存取備份而不實際執行應用程式還原，則可以將這些檔案解壓縮並加以瀏覽。
 
-應用程式的資料庫備份則儲存在 .zip 檔案的根目錄中。 若是 SQL 資料庫，這會是 BACPAC 檔案 (無副檔名)，而且可以匯入。 若要根據 BACPAC 匯出內容建立的 SQL Database，請參閱[匯入 BACPAC 檔案以建立新的使用者資料庫](https://technet.microsoft.com/library/hh710052.aspx)。
+應用程式的資料庫備份則儲存在 .zip 檔案的根目錄中。 針對 SQL Database，這是 BACPAC 檔案（無副檔名），而且可以匯入。 若要根據 BACPAC 匯出在 Azure SQL Database 中建立資料庫，請參閱匯[入 bacpac 檔案以在 Azure SQL Database 中建立資料庫](../azure-sql/database/database-import.md)。
 
 > [!WARNING]
 > 對 **websitebackups** 容器中的檔案進行任何變更，都可能導致備份失效，進而無法還原。

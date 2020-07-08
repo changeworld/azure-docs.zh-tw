@@ -3,16 +3,16 @@ title: 設定資源的部署順序
 description: 說明如何在部署期間，將某個資源設定為相依於另一個資源，確保以正確的順序部署資源。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255206"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>定義在 ARM 範本中部署資源的順序
 
-部署資源時，您可能需要先確定其他資源存在，然後再進行部署。 例如，在部署 SQL database 之前，您需要 SQL server。 您可以將一個資源標示為相依於其他資源，來定義此關聯性。 您可以使用 **dependsOn** 元素或使用 **reference** 函式定義相依性。
+部署資源時，您可能需要先確定其他資源存在，然後再進行部署。 例如，在部署資料庫之前，您需要邏輯 SQL server。 您可以將一個資源標示為相依於其他資源，來定義此關聯性。 您可以使用 **dependsOn** 元素或使用 **reference** 函式定義相依性。
 
 資源管理員會評估資源之間的相依性，並依其相依順序進行部署。 如果資源並未彼此相依，Resource Manager 就會平行部署資源。 您只需要針對部署在相同範本中的資源定義相依性。
 
@@ -59,7 +59,7 @@ resources 屬性可讓您指定與所定義的資源相關的子資源。 定義
 
 每個父資源只接受特定的資源類型做為子資源。 可接受的資源類型是在父資源的 [範本結構描述](https://github.com/Azure/azure-resource-manager-schemas) 中指定。 子資源類型的名稱包含父資源類型的名稱，例如 **Microsoft.Web/sites/config** 和 **Microsoft.Web/sites/extensions** 兩者皆為 **Microsoft.Web/sites** 的子資源。
 
-下列範例示範 SQL 伺服器和 SQL 資料庫。 請注意，SQL 資料庫與 SQL 伺服器之間定義明確相依性，即使資料庫是伺服器的子系也是一樣。
+下列範例顯示邏輯 SQL server 和資料庫。 請注意，即使資料庫是伺服器的子系，資料庫和伺服器之間還是會定義明確的相依性。
 
 ```json
 "resources": [

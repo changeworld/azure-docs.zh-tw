@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e0b641cb05b25486bd1b11c2d313898d694f8c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253489"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影響 Azure AD Connect 效能的因素
 
@@ -29,7 +29,7 @@ Azure AD Connect 會將 Active Directory 同步處理至 Azure AD。 此伺服�
 | 拓撲| Azure AD Connect 必須在網路上管理的端點和元件發佈。 |
 | 調整| 要由 Azure AD Connect 管理的使用者、群組和 OU 等物件的數目。 |
 | 硬體| Azure AD Connect 的硬體 (實體或虛擬) 以及每個硬體元件 (包括 CPU、記憶體、網路和硬碟組態) 的相依效能容量。 |
-| 設定| Azure AD Connect 處理目錄和資訊的方式。 |
+| 組態| Azure AD Connect 處理目錄和資訊的方式。 |
 | 載入| 物件的變更頻率。 一小時、一天或一週期間的負載可能各不相同。 視元件而定，您可能必須針對尖峰負載或平均負載進行設計。 |
 
 本文件的目的是要說明影響 Azure AD Connect 佈建引擎效能的因素。 大型或複雜的組織 (佈建超過 100,000 個物件的組織) 如果遇到本文件所述的任何效能問題，可使用文件中的建議來獲得最佳的 Azure AD Connect 實作。 Azure AD Connect 的其他元件 (例如 [Azure AD Connect Health](how-to-connect-health-agent-install.md)) 和代理程式不在本文件的討論範圍。
@@ -96,7 +96,7 @@ Azure AD Connect 會使用下列臨時區域、規則和程序，來允許從 Ac
 > [!NOTE]
 > 對 Active Directory 或 Azure AD 中的許多物件進行大量更新時，務必要做好仔細規劃。 因為許多物件有所變更，所以大量更新會導致差異同步處理程序在匯入時花費更多的時間。 即使大量更新未影響同步處理程序，仍可能會拉長匯入時間。 例如，將授權指派給 Azure AD 中的許多使用者會造成從 Azure AD 進行匯入的週期拉長，但不會導致 Active Directory 中的任何屬性有所變更。
 
-### <a name="synchronization"></a>Synchronization
+### <a name="synchronization"></a>同步處理
 
 同步處理程序執行階段具有下列效能特性：
 
@@ -105,7 +105,7 @@ Azure AD Connect 會使用下列臨時區域、規則和程序，來允許從 Ac
 * 匯出也是線性的。
 * 根據參考其他物件的物件數目，同步處理會以指數方式增加。 群組成員資格和巢狀群組會有主要的效能影響，因為其成員會參考使用者物件或其他群組。 必須找到這些參考，且必須參考到 MV 中的實際物件，才能完成同步處理週期。
 
-### <a name="filtering"></a>Filtering
+### <a name="filtering"></a>篩選
 
 您想要匯入的 Active Directory 拓撲大小，是會影響效能和佈建引擎內部元件所需整體時間的首要因素。
 
@@ -143,7 +143,7 @@ Active Directory CS 中有許多持續的[中斷器物件](concept-azure-ad-conn
 
 ## <a name="azure-ad-connect-dependency-factors"></a>Azure AD Connect 相依性因素
 
-Azure AD Connect 的效能取決於其匯入和匯出時的目標連線目錄效能。 例如，其需要匯入的 Active Directory 大小或 Azure AD 服務的網路延遲。 佈建引擎所使用的 SQL 資料庫也會影響同步處理週期的整體效能。
+Azure AD Connect 的效能取決於其匯入和匯出時的目標連線目錄效能。 例如，其需要匯入的 Active Directory 大小或 Azure AD 服務的網路延遲。 布建引擎所使用的 SQL database 也會影響同步處理週期的整體效能。
 
 ### <a name="active-directory-factors"></a>Active Directory 因素
 
@@ -172,7 +172,7 @@ Azure AD 會使用節流功能來防止雲端服務遭受拒絕服務 (DoS) 的�
 
 - 使用者人數超過 100,000 的組織可以在相同的伺服器上共置 SQL 資料庫和佈建引擎，從而減少網路延遲。
 - 因為同步處理程序需要較高的磁碟輸入和輸出 (I/O)，請對佈建引擎的 SQL 資料庫使用固態硬碟 (SSD)，以獲得最佳結果，如果無法做到，請考慮使用 RAID 0 或 RAID 1 組態。
-- 請勿事先執行完整同步處理；這麼做會導致不必要的變換並拉長回應時間。
+- 請勿執行完整同步處理事先;這會造成不必要的變換和較慢的回應時間。
 
 ## <a name="conclusion"></a>結論
 

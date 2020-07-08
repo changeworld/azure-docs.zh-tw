@@ -5,8 +5,6 @@ services: notification-hubs
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
@@ -16,19 +14,19 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3fec04a1a45f8b154e27a1e5303e44111f4cb421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a36fdbb985711887baa04320bb75e1a85cab84fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71211865"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253863"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>使用 ASP.NET 來註冊目前使用者以取得推播通知
 
 > [!div class="op_single_selector"]
 > * [iOS](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本主題將說明以 ASP.NET Web API 執行註冊時，應如何向 Azure 通知中心要求推播通知註冊。 這是 [使用通知中心來通知使用者]教學課程的延伸主題。 您必須已完成該教學課程中的必要步驟，才能建立已驗證的行動服務。 如需通知使用者案例的詳細資訊，請參閱 [使用通知中心來通知使用者]。
 
@@ -124,7 +122,7 @@ ms.locfileid: "71211865"
     這會設定要求的裝置權杖。
 
    > [!NOTE]
-   > 此時，此方法中不應有任何其他程式碼。 如果您已呼叫您在完成[開始使用通知中樞](notification-hubs-ios-apple-push-notification-apns-get-started.md)教學課程時所新增的 `registerNativeWithDeviceToken` 方法，您必須註解化或移除該呼叫。
+   > 此時，此方法中不應有任何其他程式碼。 如果您已經呼叫 `registerNativeWithDeviceToken` 當您完成[使用 Azure 將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)時所新增的方法通知中樞教學課程，您必須將該呼叫批註掉或移除。
 
 8. 在 `PushToUserAppDelegate.m` 檔案中，新增下列處理常式方法：
 
@@ -258,4 +256,4 @@ ms.locfileid: "71211865"
 
 <!-- URLs. -->
 [使用通知中心來通知使用者]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-[開始使用通知中心]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[開始使用通知中心]: ios-sdk-get-started.md

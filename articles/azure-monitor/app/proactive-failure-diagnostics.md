@@ -4,12 +4,12 @@ description: 針對 Web 應用程式失敗要求比率的不尋常變化對您�
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: e4a629b4c33c22bf5663d6f8e8b9d0ba11ac24dc
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 35c1769672e11cd7d1ec2f628b9d763dc8b90ac3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700782"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254781"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智慧型偵測 - 失敗異常
 當 Web 應用程式的失敗要求比率異常增加時，[Application Insights](../../azure-monitor/app/app-insights-overview.md) 會以幾乎即時的方式自動向您發出警示。 它偵測到回報為失敗的 HTTP 要求率異常提高或相依性呼叫。 對於要求，失敗的要求通常會有 400 或更高的回應碼。 為了協助您分級並診斷問題，警示詳細資料中會提供失敗的特性分析與相關應用程式資料。 其中也有 Application Insights 入口網站的連結，以供進一步診斷。 不需要設定該功能，因為它是使用機器學習演算法來預測一般失敗率。
@@ -304,7 +304,7 @@ ms.locfileid: "83700782"
 
 在多數情況下，您可以根據要求名稱、例外狀況、相依性失敗及提供的追蹤資料來快速診斷問題。
 
-在此範例中，由於已達到要求限制，SQL 資料庫擲回例外狀況。
+在此範例中，由於達到要求限制，SQL Database 發生例外狀況。
 
 [![](./media/proactive-failure-diagnostics/052.png "Failed request details")](./media/proactive-failure-diagnostics/052.png#lightbox)
 

@@ -8,22 +8,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254407"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>處理 Data Factory 對應資料流程中的 SQL 截斷錯誤資料列
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-使用對應資料流程時 Data Factory 的常見案例是將已轉換的資料寫入 Azure SQL 資料庫。 在此案例中，您必須避免的常見錯誤條件是可能的資料行截斷。 請遵循下列步驟來記錄不符合目標字串資料行的資料行，讓您的資料流程在這些情況下繼續進行。
+使用對應資料流程時 Data Factory 的常見案例是將轉換後的資料寫入至 Azure SQL Database 中的資料庫。 在此案例中，您必須避免的常見錯誤條件是可能的資料行截斷。 請遵循下列步驟來記錄不符合目標字串資料行的資料行，讓您的資料流程在這些情況下繼續進行。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
-1. 我們的目標 Azure SQL database 資料表具有名為```nvarchar(5)``` "name" 的資料行。
+1. 我們的目標資料庫資料表具有 ```nvarchar(5)``` 名為 "name" 的資料行。
 
 2. 在我們的資料流程內部，我們想要將接收的電影標題對應到該目標「名稱」資料行。
 
@@ -40,9 +40,9 @@ ms.locfileid: "81732693"
 
     ![條件式分割](media/data-flow/error1.png)
 
-2. 此「條件式分割」轉換會將「標題」的最大長度定義為五個。 小於或等於5的任何資料列都會進入```GoodRows```資料流程。 大於五的任何資料列都會進入```BadRows```資料流程。
+2. 此「條件式分割」轉換會將「標題」的最大長度定義為五個。 小於或等於5的任何資料列都會進入 ```GoodRows``` 資料流程。 大於五的任何資料列都會進入 ```BadRows``` 資料流程。
 
-3. 現在，我們需要記錄失敗的資料列。 將「接收」轉換新增```BadRows```至串流以進行記錄。 在這裡，我們將「自動對應」所有欄位，讓我們記錄完整的交易記錄。 這是以文字分隔的 CSV 檔案輸出到 Blob 儲存體中的單一檔案。 我們會通話記錄檔 "badrows"。
+3. 現在，我們需要記錄失敗的資料列。 將「接收」轉換新增至 ```BadRows``` 串流以進行記錄。 在這裡，我們將「自動對應」所有欄位，讓我們記錄完整的交易記錄。 這是以文字分隔的 CSV 檔案輸出到 Blob 儲存體中的單一檔案。 我們會通話記錄檔「badrows.csv」。
 
     ![錯誤的資料列](media/data-flow/error3.png)
     

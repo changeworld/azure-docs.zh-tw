@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7c15312b48e7118517894d8ffd4807e4892e03a3
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: HT
+ms.openlocfilehash: e323c56f22c3a7d32bda5afe03a3462d3263f0d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254067"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>使用 Azure 串流分析作業搭配 SQL Edge
 
@@ -52,7 +52,7 @@ Azure SQL Edge 具備串流分析執行階段的原生實作。 此實作可讓�
     |欄位      | 描述 |
     |---------------|-------------|
     |輸出別名 | 輸出別名的名稱。|
-    |資料庫 | SQL 資料庫的名稱。 必須是存在於 SQL Edge 執行個體中資料庫的有效名稱。|
+    |資料庫 | 資料庫的名稱。 必須是存在於 SQL Edge 執行個體中資料庫的有效名稱。|
     |伺服器名稱 | SQL 執行個體的名稱 (或 IP 位址) 和連接埠號碼詳細資料。 針對 SQL Edge 部署，您可以使用 **tcp:.,1433** 作為伺服器名稱。|
     |使用者名稱 | 具有您稍早指定之資料庫的資料讀取器和資料寫入器存取權的 SQL 登入帳戶。|
     |密碼 | 您稍早指定之 SQL 登入帳戶的密碼。|

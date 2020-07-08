@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: d3a2dfba98f83d34c3e83ec865e3b692f7dbacd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3240151937a8ad758e4afe765341261069fd60e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254218"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254560"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 計費
 
@@ -94,7 +94,7 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 - Azure 媒體服務
 - Azure 虛擬機器
 - 虛擬網路
-- 負載平衡器
+- Load Balancer
 - 應用程式閘道
 - Azure DNS
 - ExpressRoute
@@ -114,7 +114,8 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 - Azure Cosmos DB
 - Azure Data Lake Store
 - Azure Machine Learning 
-- Azure SQL 資料庫
+- Azure SQL Database
+- Azure SQL 受控執行個體
 - Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>管理成本最有效的方法是什麼？

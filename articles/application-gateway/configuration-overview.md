@@ -4,15 +4,15 @@ description: 本文說明如何設定 Azure 應用程式閘道的元件
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254662"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
 
@@ -20,7 +20,7 @@ Azure 應用程式閘道是由數個元件所組成，您可以在不同的案�
 
 ![應用程式閘道元件流程圖](./media/configuration-overview/configuration-overview1.png)
 
-此圖說明具有三個接聽程式的應用程式。 前兩個分別是和`http://acme.com/*` `http://fabrikam.com/*`的多網站接聽程式。 兩者都在埠80上接聽。 第三個是具有端對端傳輸層安全性（TLS）終止的基本接聽程式，先前稱為安全通訊端層（SSL）終止。
+此圖說明具有三個接聽程式的應用程式。 前兩個分別是和的多網站接聽程式 `http://acme.com/*` `http://fabrikam.com/*` 。 兩者都在埠80上接聽。 第三個是具有端對端傳輸層安全性（TLS）終止的基本接聽程式，先前稱為安全通訊端層（SSL）終止。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -48,7 +48,7 @@ Azure 也會在每個子網中保留五個 IP 位址供內部使用：前四個�
 
 應用程式閘道支援網路安全性群組（Nsg）。 但有一些限制：
 
-- 您必須允許應用程式閘道 v1 SKU 的 TCP 埠65503-65534 上的連入網際網路流量，以及使用目的地子網做為**Any**和 Source as **GatewayManager**服務標籤的 v2 sku 的 tcp 埠65200-65535。 Azure 基礎結構通訊需要此連接埠範圍。 這些埠會受到 Azure 憑證的保護（鎖定）。 外部實體（包括這些閘道的客戶）無法在這些端點上進行通訊。
+- 針對應用程式閘道 v1 SKU 的 TCP 通訊埠 65503-65534，以及 v2 SKU 的 TCP 通訊埠 65200-65535，您必須允許目的地子網路為 **Any** 且來源為 **GatewayManager** 服務標記的連入網際網路流量。 Azure 基礎結構通訊需要此連接埠範圍。 這些埠會受到 Azure 憑證的保護（鎖定）。 外部實體（包括這些閘道的客戶）無法在這些端點上進行通訊。
 
 - 無法封鎖輸出網際網路連線。 NSG 中的預設輸出規則允許網際網路連線能力。 建議您：
 
@@ -219,14 +219,12 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 當您建立規則時，您可以選擇 [ [*基本*] 和 [*路徑型*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules)]。
 
-- 如果您想要將相關接聽程式（例如， * <i> </i>contoso.com/\*）* 的所有要求轉送到單一後端集區，請選擇 [基本]。
+- 如果您想要將相關接聽程式（例如， * <i></i> contoso.com/ \* ）* 的所有要求轉送到單一後端集區，請選擇 [基本]。
 - 如果您想要將來自特定 URL 路徑的要求路由至特定後端集區，請選擇路徑型。 路徑模式只會套用至 URL 的路徑，而不會套用至其查詢參數。
 
 #### <a name="order-of-processing-rules"></a>處理規則的順序
 
-就 v1 SKU 而言，傳入要求的模式比對是以路徑為基礎之規則的 URL 路徑對應中列出路徑的順序來處理。 如果要求與路徑對應中的兩個或多個路徑中的模式相符，則會比對第一個列出的路徑。 然後將要求轉送至與該路徑相關聯的後端。
-
-針對 v2 SKU，完全符合的優先順序高於 URL 路徑對應中的路徑順序。 如果要求符合兩個或多個路徑中的模式，則會將要求轉送至與完全符合要求的路徑相關聯的後端。 如果傳入要求中的路徑與對應中的任何路徑不完全相符，則會在路徑型規則的路徑對應順序清單中處理要求的模式比對。
+就 v1 和 v2 SKU 而言，傳入要求的模式比對是以路徑為基礎之規則的 URL 路徑對應中列出路徑的順序來處理。 如果要求與路徑對應中的兩個或多個路徑中的模式相符，則會比對第一個列出的路徑。 然後將要求轉送至與該路徑相關聯的後端。
 
 ### <a name="associated-listener"></a>相關聯的接聽程式
 
@@ -250,7 +248,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="redirection-setting"></a>重新導向設定
 
-如果已針對基本規則設定重新導向，則相關聯接聽程式上的所有要求都會重新導向至目標。 這是*全域*重新導向。 如果已針對以路徑為基礎的規則設定重新導向，則只會重新導向特定網站區域中的要求。 例如， */cart/\** 所表示的購物車區域。 這是以*路徑為基礎的重新導向*。
+如果已針對基本規則設定重新導向，則相關聯接聽程式上的所有要求都會重新導向至目標。 這是*全域*重新導向。 如果已針對以路徑為基礎的規則設定重新導向，則只會重新導向特定網站區域中的要求。 例如， */cart/ \* *所表示的購物車區域。 這是以*路徑為基礎的重新導向*。
 
 如需重新導向的詳細資訊，請參閱[應用程式閘道重新導向總覽](redirect-overview.md)。
 
@@ -283,7 +281,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 #### <a name="rewrite-the-http-header-setting"></a>重寫 HTTP 標頭設定
 
-此設定會在要求和回應封包于用戶端與後端集區之間移動時，新增、移除或更新 HTTP 要求和回應標頭。 如需詳細資訊，請參閱
+此設定會在要求和回應封包于用戶端與後端集區之間移動時，新增、移除或更新 HTTP 要求和回應標頭。 如需詳細資訊，請參閱：
 
  - [重寫 HTTP 標頭總覽](rewrite-http-headers.md)
  - [設定 HTTP 標頭重寫](rewrite-http-headers-portal.md)
@@ -309,7 +307,7 @@ Azure 應用程式閘道會使用閘道管理的 cookie 來維護使用者會話
 
 ### <a name="connection-draining"></a>清空連線
 
-清空連線可協助您在規劃的服務更新期間，正常地移除後端集區成員。 您可以在建立規則時，將此設定套用至後端集區的所有成員。 它可確保後端集區的所有取消註冊實例繼續維持現有的連線，並提供可設定的超時時間的要求，而且不會收到任何新的要求或連接。 唯一的例外是因為閘道管理的會話親和性，而系結至取消註冊實例的要求，而且會繼續轉送到取消註冊的實例。 清空連接會套用至從後端集區明確移除的後端實例。
+清空連線可協助您在規劃的服務更新期間，正常地移除後端集區成員。 您可以藉由啟用 HTTP 設定的連線清空，將這項設定套用至後端集區的所有成員。 它可確保後端集區的所有取消註冊實例繼續維持現有的連線，並提供可設定的超時時間的要求，而且不會收到任何新的要求或連接。 唯一的例外是因為閘道管理的會話親和性，而系結至取消註冊實例的要求，而且會繼續轉送到取消註冊的實例。 清空連接會套用至從後端集區明確移除的後端實例。
 
 ### <a name="protocol"></a>通訊協定
 
@@ -378,7 +376,7 @@ Azure 應用程式閘道會使用閘道管理的 cookie 來維護使用者會話
 
 這項功能會以您指定的主機名稱取代應用程式閘道上的傳入要求中的*主機*標頭。
 
-例如，如果在 [**主機名稱**] 設定中指定*www.contoso.com* ，則將要求轉寄`https://appgw.eastus.cloudapp.azure.com/path1`至後端伺服器`https://www.contoso.com/path1`時，原始要求 * 會變更為 * *。
+例如，如果在 [**主機名稱**] 設定中指定*www.contoso.com* ，則將 `https://appgw.eastus.cloudapp.azure.com/path1` `https://www.contoso.com/path1` 要求轉寄至後端伺服器時，原始要求 * 會變更為 * *。
 
 ## <a name="back-end-pool"></a>後端集區
 

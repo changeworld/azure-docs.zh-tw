@@ -4,19 +4,19 @@ description: 瞭解您在設定條件式存取原則時應該知道的事項，�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4560a514ddb9949c8cc07864b2319a5878b245e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d63cb1d7e2b0086a3d9ef6e3917ebefa11c7ccba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295349"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253370"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的條件式存取最佳做法
 
@@ -41,7 +41,7 @@ ms.locfileid: "80295349"
 | **使用者和群組** | 選取至少一個已獲授權存取您所選雲端應用程式的使用者或群組。 | 不會觸發未指派使用者和群組的條件式存取原則。 |
 | **存取控制** | 選取至少一個存取控制。 | 如果滿足您的條件，您的原則處理器需要知道該怎麼辦。 |
 
-## <a name="what-you-should-know"></a>您應該知道的事項
+## <a name="what-you-should-know"></a>您應該知道的事情
 
 ### <a name="how-are-conditional-access-policies-applied"></a>條件式存取原則的套用方式為何？
 
@@ -102,7 +102,7 @@ Azure Active Directory 會強制執行這兩個原則，而且只有在符合所
 
 ## <a name="what-you-should-avoid-doing"></a>您應該避免做的事
 
-條件式存取架構為您提供絕佳的設定彈性。 不過，絕佳的彈性也意謂著您應該先仔細地檢閱每個設定原則，然後才發行它，以避免產生不想要的結果。 在此情況下，您應該特別注意影響整個集合的指派，例如 **all users / groups / cloud apps**。
+條件式存取架構可為您提供絕佳的設定彈性。 不過，絕佳的彈性也意謂著您應該先仔細地檢閱每個設定原則，然後才發行它，以避免產生不想要的結果。 在此情況下，您應該特別注意影響整個集合的指派，例如 **all users / groups / cloud apps**。
 
 在您的環境中，應該避免使用下列組態：
 

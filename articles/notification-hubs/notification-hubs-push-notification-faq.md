@@ -5,9 +5,7 @@ services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
 manager: femila
-editor: jwargo
 keywords: 推播通知, 推播通知, iOS 推播通知, android 推播通知, ios 推播, android 推播
-ms.assetid: 7b385713-ef3b-4f01-8b1f-ffe3690bbd40
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
@@ -17,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76263824"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255121"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中樞推播通知：常見問題集 (FAQ)
 
@@ -56,7 +54,7 @@ Azure 通知中樞有兩個資源層級：中樞和命名空間。 中樞是單�
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>如何將中樞或命名空間升級或降級為不同層級？
 
-移至**[Azure 入口網站]** > **通知中樞命名空間**或**通知中樞**。 選取您要更新的資源，並移至**定價層**。 請注意下列需求：
+移至**[Azure 入口網站]**  >  **通知中樞命名空間**或**通知中樞**。 選取您要更新的資源，並移至**定價層**。 請注意下列需求：
 
 * 更新後的定價層會套用至您正在使用的命名空間中所有** 中樞。
 * 如果您要降級至某一層，而您的裝置數量超過該層的限制，則必須要先刪除裝置才能降級。
@@ -69,7 +67,7 @@ Azure 通知中樞有兩個資源層級：中樞和命名空間。 中樞是單�
 
 ### <a name="which-client-platforms-do-you-support"></a>支援哪些用戶端平台？
 
-推播通知支援[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、 [Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、 [Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、 [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、 [Android China （透過百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin （[iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和 Android，以及[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)）。 如需詳細資訊，請移至[通知中樞入門教學課程]頁面。
+推播通知支援[iOS](ios-sdk-get-started.md)、 [Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、 [Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、 [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、 [Android China （透過百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin [iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和[Android](xamarin-notification-hubs-push-notifications-android-gcm.md)，以及[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)。 如需詳細資訊，請參閱[通知中樞消費者入門教學](ios-sdk-get-started.md)課程頁面。
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>你們是否支援簡訊、電子郵件、或 Web 通知？
 
@@ -79,7 +77,7 @@ Azure 通知中樞有兩個資源層級：中樞和命名空間。 中樞是單�
 
 如需支援的裝置數目詳細資訊，請參閱[通知中樞價格]頁面。
 
-如果您需要支援超過10000000個已註冊的裝置，您必須將裝置分割到多個中樞。
+如果您需要支援超過10000000個已註冊的裝置，您必須在多個命名空間中分割您的裝置。
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>我可以傳送多少推播通知？
 
@@ -153,7 +151,7 @@ Azure 通知中樞使用[共用存取簽章](../storage/common/storage-dotnet-sh
 
 若要傳送機密乘載，我們建議您使用「安全推播」模式。 傳送者會傳送 Ping 通知與訊息識別碼給裝置 (不含機密承載)。 當裝置上的應用程式收到此承載時，就能夠直接呼叫安全 API 以擷取訊息詳細資料。 您可以在[通知中樞安全推播教學課程]頁面上，取得如何實作此模式的指南。
 
-## <a name="operations"></a>作業
+## <a name="operations"></a>Operations
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>我可以得到哪些災害復原支援？
 
@@ -206,7 +204,6 @@ Azure 通知中樞提供數個功能以進行疑難排解，特別是在已捨�
 [通知中樞價格]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [通知中樞 REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[通知中樞入門教學課程]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [後端註冊指引]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [後端註冊指導方針 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx

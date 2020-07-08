@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7fc0b2822195d952c2a4f9c02bf3758c0e2b809a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf731b09115558fc4280fe322d7e952ccb420c03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260497"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254866"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>使用 Azure Data Factory 從 Azure SQL Database 來回複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -51,8 +51,8 @@ Azure SQL Database 連接器支援基本驗證。
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
 1. 建立**資料**處理站。 資料處理站可包含一或多個管線。
-2. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。 例如，如果您將資料從 Azure Blob 儲存體複製到 Azure SQL 資料庫，您會建立兩個連結服務，將 Azure 儲存體帳戶和 Azure SQL 資料庫連結至資料處理站。 有關 Azure SQL Database 專屬的連結服務屬性，請參閱[連結服務屬性](#linked-service-properties)一節。
-3. 建立**資料集**來代表複製作業的輸入和輸出資料。 在上一個步驟所述的範例中，您會建立資料集來指定 blob 容器和包含輸入資料的資料夾。 同時建立另一個資料集來指定 Azure SQL 資料庫中的 SQL 資料表，以保存從 Blob 儲存體複製的資料。 有關 Azure Data Lake Store 專屬的資料集屬性，請參閱[資料集屬性](#dataset-properties)一節。
+2. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。 例如，如果您要將資料從 Azure blob 儲存體複製到 Azure SQL Database，您會建立兩個連結服務，以連結您的 Azure 儲存體帳戶，並 Azure SQL Database 至您的 data factory。 有關 Azure SQL Database 專屬的連結服務屬性，請參閱[連結服務屬性](#linked-service-properties)一節。
+3. 建立**資料集**來代表複製作業的輸入和輸出資料。 在上一個步驟所述的範例中，您會建立資料集來指定 blob 容器和包含輸入資料的資料夾。 此外，您會建立另一個資料集來指定 Azure SQL Database 中的 SQL 資料表，以保存從 blob 儲存體複製的資料。 有關 Azure Data Lake Store 專屬的資料集屬性，請參閱[資料集屬性](#dataset-properties)一節。
 4. 建立具有複製活動的**管線**，以將資料集作為輸入，並使用資料集做為輸出。 在稍早所述的範例中，您使用 BlobSource 作為來源，以及使用 SqlSink 作為複製活動的接收器。 同樣地，如果您是從 Azure SQL Database 複製到 Azure Blob 儲存體，則需要在複製活動中使用 SqlSource 和 BlobSink。 有關 Azure SQL Database 專屬的複製活動屬性，請參閱[複製活動屬性](#copy-activity-properties)一節。 如需有關如何使用資料存放區作為來源或接收器的詳細資訊，按一下上一節中資料存放區的連結。
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。 如需相關範例，其中含有用來將資料複製到 Azure SQL Database (或從 Azure SQL Database 複製資料) 之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例](#json-examples-for-copying-data-to-and-from-sql-database)一節。
@@ -60,18 +60,18 @@ Azure SQL Database 連接器支援基本驗證。
 下列各節提供 JSON 屬性的相關詳細資料，這些屬性是用來定義 Azure SQL Database 特定的 Data Factory 實體：
 
 ## <a name="linked-service-properties"></a>連結服務屬性
-Azure SQL 已連結服務可將 Azure SQL 資料庫連結到您的 Data Factory。 下表提供 Azure SQL 連結服務專屬 JSON 元素的描述。
+Azure SQL 連結服務會將 Azure SQL Database 連結至您的 data factory。 下表提供 Azure SQL 連結服務專屬 JSON 元素的描述。
 
 | 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | type |type 屬性必須設為： **AzureSqlDatabase** |是 |
-| connectionString |針對 connectionString 屬性指定連接到 Azure SQL Database 執行個體所需的資訊。 僅支援基本驗證。 |是 |
+| connectionString |針對 connectionString 屬性指定連接到 Azure SQL Database 執行個體所需的資訊。 僅支援基本驗證。 |Yes |
 
 > [!IMPORTANT]
 > 設定 [Azure SQL Database 防火牆](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)和資料庫伺服器，以[允許 Azure 服務存取伺服器](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 此外，如果您要從 Azure 外部 (包括從具有 Fata Factory 閘道器的內部部署資料來源) 將資料複製到 Azure SQL Database，請為傳送資料到 Azure SQL Database 的機器設定適當的 IP 位址範圍。
 
 ## <a name="dataset-properties"></a>資料集屬性
-若要指定資料集以代表 Azure SQL 資料庫中的輸入或輸出資料，您需將資料集的類型屬性設定成：**AzureSqlTable**。 請將資料集的 **linkedServiceName** 屬性設定成 Azure SQL 已連結服務的名稱。
+若要指定資料集來代表 Azure SQL Database 中的輸入或輸出資料，請將資料集的 type 屬性設定為： **AzureSqlTable**。 請將資料集的 **linkedServiceName** 屬性設定成 Azure SQL 已連結服務的名稱。
 
 如需定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
 
@@ -79,7 +79,7 @@ Azure SQL 已連結服務可將 Azure SQL 資料庫連結到您的 Data Factory�
 
 | 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| tableName |Azure SQL Database 執行個體中連結服務所參考的資料表或檢視的名稱。 |是 |
+| tableName |Azure SQL Database 執行個體中連結服務所參考的資料表或檢視的名稱。 |Yes |
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 如需定義活動的區段和屬性完整清單，請參閱[建立管線](data-factory-create-pipelines.md)一文。 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) 適用於所有類型的活動。
@@ -89,14 +89,14 @@ Azure SQL 已連結服務可將 Azure SQL 資料庫連結到您的 Data Factory�
 
 而活動的 **typeProperties** 區段中，可用的屬性會隨著每個活動類型而有所不同。 就「複製活動」而言，這些屬性會根據來源和接收器的類型而有所不同。
 
-如果您要將資料從 Azure SQL 資料庫移出，請將複製活動中的來源類型設定為 **SqlSource**。 同樣的，如果您要將資料移進 Azure SQL 資料庫，請將複製活動中的接收器類型設定為 **SqlSink**。 本節提供 SqlSource 和 SqlSink 支援的屬性清單。
+如果您要移動 Azure SQL Database 的資料，請將複製活動中的來源類型設定為**SqlSource**。 同樣地，如果您要將資料移至 Azure SQL Database，請將複製活動中的接收類型設定為**SqlSink**。 本節提供 SqlSource 和 SqlSink 支援的屬性清單。
 
 ### <a name="sqlsource"></a>SqlSource
 在複製活動中，如果來源的類型為 **SqlSource**，則 **typeProperties** 區段有下列可用屬性：
 
-| 屬性 | 說明 | 允許的值 | 必要 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| sqlReaderQuery |使用自訂查詢來讀取資料。 |SQL 查詢字串。 範例： `select * from MyTable`. |否 |
+| sqlReaderQuery |使用自訂查詢來讀取資料。 |SQL 查詢字串。 範例： `select * from MyTable`. |No |
 | sqlReaderStoredProcedureName |從來源資料表讀取資料的預存程序名稱。 |預存程序的名稱。 最後一個 SQL 陳述式必須是預存程序中的 SELECT 陳述式。 |否 |
 | storedProcedureParameters |預存程序的參數。 |名稱/值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 |否 |
 
@@ -144,15 +144,15 @@ GO
 ### <a name="sqlsink"></a>管線
 **SqlSink** 支援下列屬性：
 
-| 屬性 | 說明 | 允許的值 | 必要 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |在逾時前等待批次插入作業完成的時間。 |時間範圍<br/><br/> 範例：“00:30:00” (30 分鐘)。 |否 |
 | writeBatchSize |當緩衝區大小達到 writeBatchSize 時，將資料插入 SQL 資料表中 |整數 (資料列數目) |否 (預設值：10000) |
-| sqlWriterCleanupScript |指定要讓「複製活動」執行的查詢，以便清除特定分割的資料。 如需詳細資訊，請參閱[可重複複製](#repeatable-copy)。 |查詢陳述式。 |否 |
-| sliceIdentifierColumnName |指定要讓「複製活動」以自動產生的分割識別碼填入的資料行名稱，這可在重新執行時用來清除特定分割的資料。 如需詳細資訊，請參閱[可重複複製](#repeatable-copy)。 |資料類型為 binary(32) 之資料行的資料行名稱。 |否 |
+| sqlWriterCleanupScript |指定要讓「複製活動」執行的查詢，以便清除特定分割的資料。 如需詳細資訊，請參閱[可重複複製](#repeatable-copy)。 |查詢陳述式。 |No |
+| sliceIdentifierColumnName |指定要讓「複製活動」以自動產生的分割識別碼填入的資料行名稱，這可在重新執行時用來清除特定分割的資料。 如需詳細資訊，請參閱[可重複複製](#repeatable-copy)。 |資料類型為 binary(32) 之資料行的資料行名稱。 |No |
 | sqlWriterStoredProcedureName |預存程序的名稱，此預存程序定義如何將來源資料套用至目標資料表，例如使用您自己的商務邏輯來執行更新插入或轉換。 <br/><br/>請注意，將會**依批次叫用**此預存程序。 如果您想要進行只執行一次且與來源資料無關的作業 (例如刪除/截斷)，請使用 `sqlWriterCleanupScript` 屬性。 |預存程序的名稱。 |否 |
 | storedProcedureParameters |預存程序的參數。 |名稱/值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 |否 |
-| sqlWriterTableType |指定要在預存程序中使用的資料表類型名稱。 複製活動可讓正在移動的資料可用於此資料表類型的暫存資料表。 然後，預存程序程式碼可以合併正在複製的資料與現有的資料。 |資料表類型名稱。 |否 |
+| sqlWriterTableType |指定要在預存程序中使用的資料表類型名稱。 複製活動可讓正在移動的資料可用於此資料表類型的暫存資料表。 然後，預存程序程式碼可以合併正在複製的資料與現有的資料。 |資料表類型名稱。 |No |
 
 #### <a name="sqlsink-example"></a>SqlSink 範例
 
@@ -183,7 +183,7 @@ GO
 4. [Azure Blob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
 5. 具有使用 [SqlSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之「複製活動」的[管線](data-factory-create-pipelines.md)。
 
-此範例會每小時將時間序列資料 (每小時、每日等等) 從 Azure SQL 資料庫中的資料表複製到 Blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
+此範例會每小時將時間序列資料（每小時、每天等）從 Azure SQL Database 中的資料表複製到 blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
 **Azure SQL Database 連結的服務：**
 
@@ -375,7 +375,7 @@ GO
 4. [AzureSqlTable](#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
 5. 具有使用 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 和 [SqlSink](#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
 
-此範例會每小時將時間序列資料 (每小時、每日等等) 從 Azure Blob 複製到 Azure SQL 資料庫中的資料表。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
+此範例會每隔一小時將時間序列資料（每小時、每天等）從 Azure blob 複製到 Azure SQL Database 資料表。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
 **Azure SQL 連結服務：**
 

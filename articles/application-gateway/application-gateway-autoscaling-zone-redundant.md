@@ -4,16 +4,16 @@ description: 本文介紹 Azure 應用程式 Standard_v2 和 WAF_v2 SKU，其包
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 03/24/2020
+ms.topic: conceptual
+ms.date: 06/06/2020
 ms.author: victorh
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 18bcd57c804746da5cff2efe8713616174fc794d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.custom: fasttrack-edit, references_regions
+ms.openlocfilehash: 4caed3f330dd3e50fe2652a2cd33c0e4249f2fd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739476"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254339"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動調整規模和區域備援應用程式閘道 v2 
 
@@ -32,7 +32,7 @@ ms.locfileid: "83739476"
 - **效能增強功能**：相較於標準/WAF SKU，v2 SKU 提供最多 5 倍的 TLS 卸載效能提升。
 - **更快的佈建和更新速度**：與標準/WAF SKU 相比，v2 SKU 提供更快的佈建和更新速度。 這也包括 WAF 設定變更。
 
-![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+![自動調整區域的圖表。](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>支援區域
 
@@ -45,7 +45,7 @@ Standard_v2 和 WAF_v2 SKU 可在下列區域取得：美國中北部、美國�
 - **固定價格** - 這是佈建 Standard_v2 或 WAF_v2 閘道的每小時 (或部分小時) 價格。 請注意，0 個額外的最低執行個體仍會確保服務高可用性，這一律包含於固定價格。
 - **容量單位價格** - 這是以耗用量計費的成本，且加計固定成本。 容量單位費用也是依每小時或部分小時的方式計算。 容量單位有三個維度：計算單位、持續連線數和輸送量。 計算單位是已耗用多少處理器容量的量值。 影響計算單位的因素包括 TLS 連線數/秒、URL 重寫計算，以及 WAF 規則處理。 持續連線數是在指定的計費期間，對應用程式閘道建立的 TCP 連線數量值。 「輸送量」是在指定的計費期間，系統處理的平均 MB/秒。  計費是針對保留執行個體計數以上的任何項目，在容量單位層級上完成。
 
-每個容量單位最多包含：1 個「計算單位」或 2500 個「持續連線數」，或 2.22-Mbps 的「輸送量」。
+每個容量單位最多包含：1個計算單位、2500持續連線，以及 2.22-Mbps 的輸送量。
 
 計算單位指引：
 

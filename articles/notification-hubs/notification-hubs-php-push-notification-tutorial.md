@@ -5,8 +5,6 @@ services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 0156f994-96d0-4878-b07b-49b7be4fd856
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: php
@@ -16,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c4bf0569d6e2e595eb03c85abba7224b25b1864
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76263841"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255444"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>如何從 PHP 使用通知中樞
 
@@ -32,7 +30,7 @@ ms.locfileid: "76263841"
 在本主題中，我們將說明如何：
 
 * 在 PHP 中建置通知中心功能的 REST 用戶端；
-* 請遵循[開始使用教學](notification-hubs-ios-apple-push-notification-apns-get-started.md)課程，以瞭解您所選擇的行動平臺，並在 PHP 中執行後端部分。
+* 遵循[使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)，以供您選擇的行動平臺，在 PHP 中執行後端部分。
 
 ## <a name="client-interface"></a>用戶端介面
 
@@ -55,7 +53,7 @@ ms.locfileid: "76263841"
 
 ## <a name="implementation"></a>實作
 
-如果您還沒有這麼做，請遵循開始使用[教學]課程，直到您必須執行後端的最後一節。
+如果您還沒有這麼做，請遵循 [快速入門教學課程]，直到您必須執行後端的最後一節。
 另外，若有需要，您可以使用 [PHP REST 包裝函式範例]的程式碼，並直接移至[完成教學課程](#complete-tutorial)一節。
 
 您可以在 [MSDN](https://msdn.microsoft.com/library/dn530746.aspx)上找到所有實作完整 REST 包裝函式的詳細資料。 在本節中，我們將針對存取通知中心 REST 端點所需主要步驟的 PHP 實作進行說明：
@@ -222,7 +220,7 @@ ms.locfileid: "76263841"
 
 現在您可以透過從 PHP 後端傳送通知，來完成開始使用教學課程。
 
-初始化您的通知中樞用戶端 (請依 [開始使用教學課程]中的指示替換連接字串和中心名稱)：
+初始化您的通知中樞用戶端（以 [快速入門教學課程] 中指示的方式取代連接字串和中樞名稱）：
 
     ```php
     $hub = new NotificationHub("connection string", "hubname");
@@ -282,7 +280,7 @@ ms.locfileid: "76263841"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本主題中，我們會說明如何為通知中心建立簡單的 Java REST 用戶端。 從這裡，您可以：
+在本主題中，我們會說明如何為通知中心建立簡單的 Java REST 用戶端。 從這裡您可以：
 
 * 下載完整的 [PHP REST 包裝函式範例]，其中包含上述所有程式碼。
 * 繼續了解 [即時新聞教學課程] 中的通知中心標記功能
@@ -291,4 +289,5 @@ ms.locfileid: "76263841"
 如需詳細資訊，另請參閱 [PHP 開發人員中心](https://azure.microsoft.com/develop/php/)。
 
 [PHP REST 包裝函式範例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
-[開始使用教學課程]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md))
+

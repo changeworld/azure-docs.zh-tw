@@ -4,12 +4,12 @@ description: 使用 Azure 備份和 PowerShell 來備份和還原 Azure Vm 中�
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 9608b02869b1d41d901ec77a42cfaa6d882040e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 862455175497fe5496c7eea459c32772074671ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131818"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255138"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>使用 PowerShell 備份和還原 Azure Vm 中的 SQL 資料庫
 
@@ -335,7 +335,7 @@ SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32
 * 將 SQL DB 還原為另一個 SQL VM 中另一個 SQL 實例的新資料庫-AlternateWorkloadRestore
 * 將 SQL DB 還原為 .bak 檔案-RestoreAsFiles
 
-在提取相關的復原點（相異或記錄時間點）之後，請使用[AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS Cmdlet 來根據所需的復原方案來提取復原設定物件。
+在提取相關的復原點（相異或記錄時間點）之後，請使用[AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS Cmdlet，根據所需的復原方案來提取復原設定物件。
 
 #### <a name="original-workload-restore"></a>原始工作負載還原
 
@@ -499,7 +499,7 @@ MSSQLSERVER/m... Backup               InProgress           3/18/2019 8:41:27 PM 
 
 ### <a name="change-policy-for-backup-items"></a>變更備份專案的原則
 
-使用者可以修改現有的原則，或將備份專案的原則從 Policy1 變更為 Policy2。 若要切換已備份專案的原則，請提取相關的原則和備份專案，並使用[AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0)命令搭配備份專案作為參數。
+使用者可以將備份專案的原則從 Policy1 變更為 Policy2。 若要切換已備份專案的原則，請提取相關的原則和備份專案，並使用[AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0)命令搭配備份專案作為參數。
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -513,6 +513,19 @@ Enable-AzRecoveryServicesBackupProtection -Item $anotherBkpItem -Policy $TargetP
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 master           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
+```
+
+### <a name="edit-an-existing-backup-policy"></a>編輯現有的備份原則
+
+若要編輯現有的原則，請使用[使用 get-azrecoveryservicesbackupprotectionpolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-3.8.0)命令。
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
+```
+經過一段時間之後，請檢查備份作業，以追蹤任何失敗。 如果有，您必須修正問題。 然後，使用**FixForInconsistentItems**參數重新執行 [編輯原則] 命令，以重試編輯先前操作失敗的所有備份專案的原則。
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -FixForInconsistentItems
 ```
 
 ### <a name="re-register-sql-vms"></a>重新註冊 SQL Vm
@@ -597,4 +610,4 @@ Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWo
 
 當[備份容器列出](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)時，sql-server-0、sql-server-1 也會列為 "AzureVMAppContainer"。
 
-只要提取相關的 SQL 資料庫，即可[啟用備份](#configuring-backup)，而[隨選備份](#on-demand-backup)和[還原 PS Cmdlet](#restore-sql-dbs)則相同。
+只要提取相關的資料庫，即可[啟用備份](#configuring-backup)，而[隨選備份](#on-demand-backup)和[還原 PS Cmdlet](#restore-sql-dbs)則相同。

@@ -3,12 +3,12 @@ title: 使用 Azure 入口網站部署資源
 description: 使用 Azure 入口網站和 Azure 資源管理，將您的資源部署至訂用帳戶中的資源群組。
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: ea2faf810b3a5d1b8fa46575201022a501cc7d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255257"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>使用 ARM 範本和 Azure 入口網站部署資源
 
@@ -35,13 +35,13 @@ ms.locfileid: "80153432"
 
 1. 選取或輸入下列屬性值：
 
-    - 訂用帳戶  ：選取 Azure 訂用帳戶。
+    - 訂用帳戶：選取 Azure 訂用帳戶。
     - **資源群組**：為資源群組指定名稱。
     - **區域**：指定 Azure 位置。 這是資源群組用來儲存資源相關中繼資料的位置。 為了符合法規，您可能會想要指定中繼資料的儲存位置。 一般情況下，我們建議您指定大部分資源所在的位置。 使用相同位置可簡化範本。
 
    ![設定群組值](./media/deploy-portal/set-group-properties.png)
 
-1. 選取 [檢閱 + 建立]  。
+1. 選取 [檢閱 + 建立]。
 1. 檢查值，然後選取 [**建立**]。
 1. 選取 **[** 重新整理]，您才可以在清單中看到新的資源群組。
 
@@ -82,11 +82,11 @@ ms.locfileid: "80153432"
 
    ![搜尋範本部署](./media/deploy-portal/search-template.png)
 
-1. 選取 [建立]  。
+1. 選取 [建立]。
 1. 您會看到數個建立範本的選項：
 
     - **在編輯器中建立您自己的範本**：使用入口網站範本編輯器建立範本。  編輯器能夠加入資源範本架構。
-    - **一般範本**：建立 Linux 虛擬機器、Windows 虛擬機器、web 應用程式和 Azure SQL 資料庫共有四個常見的範本。
+    - **通用範本**：有四個常用的範本，用來建立 Linux 虛擬機器、Windows 虛擬機器、web 應用程式，以及 Azure SQL Database 中的資料庫。
     - **載入 GitHub 快速入門範本**：使用現有的[快速入門範本](https://azure.microsoft.com/resources/templates/)。
 
    ![檢視選項](./media/deploy-portal/see-options.png)
@@ -110,17 +110,17 @@ ms.locfileid: "80153432"
     "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"
     ```
 
-1. 選取 [儲存]  。 現在您會看到入口網站範本部署介面。 請注意您在範本中定義的兩個參數。
+1. 選取 [儲存]。 現在您會看到入口網站範本部署介面。 請注意您在範本中定義的兩個參數。
 1. 輸入或選取屬性值：
 
-    - 訂用帳戶  ：選取 Azure 訂用帳戶。
+    - 訂用帳戶：選取 Azure 訂用帳戶。
     - **資源群組**：選取 [**新建**] 並指定名稱。
     - **位置**：選取 Azure 位置。
     - **儲存體帳戶類型**：使用預設值。
     - **位置**：使用預設值。
-    - **我同意上方所述的條款及條件**：(選取)
+    - **我同意上方所述的條款及條件**：（選取）
 
-1. 選取 [購買]  。
+1. 選取 [購買]。
 
 ## <a name="next-steps"></a>後續步驟
 

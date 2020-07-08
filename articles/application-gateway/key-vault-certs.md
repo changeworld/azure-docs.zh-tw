@@ -1,22 +1,22 @@
 ---
 title: Azure Key Vault 憑證的 TLS 終止
-description: 瞭解如何將 Azure 應用程式閘道與連結到啟用 HTTPS 的接聽程式之伺服器憑證的 Key Vault 整合。
+description: 了解 Azure 應用程式閘道如何與 Key Vault 整合，以使用連結到 HTTPS 所支援接聽程式的伺服器憑證。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 780f2774cb37e3d6d43ed5137c29119c0f63fd0a
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: a214dae7c80cbc520fc6aff5a492466a77261167
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743703"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255359"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Key Vault 憑證的 TLS 終止
 
-[Azure Key Vault](../key-vault/general/overview.md)是平臺管理的秘密存放區，可讓您用來保護秘密、金鑰和 TLS/SSL 憑證。 Azure 應用程式閘道支援與 Key Vault 整合連接到已啟用 HTTPS 之接聽程式的伺服器憑證。 這項支援僅限於應用程式閘道的 v2 SKU。
+[Azure Key Vault](../key-vault/general/overview.md) 是平台管理的祕密存放區，可讓您用來保護祕密、金鑰和 TLS/SSL 憑證。 Azure 應用程式閘道支援與 Key Vault 整合，以使用連結到 HTTPS 所支援接聽程式的伺服器憑證。 這項支援僅限於應用程式閘道的 v2 SKU。
 
 Key Vault 整合為 TLS 終止提供兩種模型：
 
@@ -43,7 +43,7 @@ Key Vault 整合為 TLS 終止提供兩種模型：
 
 1. **建立使用者指派的受控識別**
 
-   您建立或重複使用現有使用者指派的受控識別，應用程式閘道用來代表您取出 Key Vault 的憑證。 如需詳細資訊，請參閱[什麼是適用于 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md)。 此步驟會在 Azure Active Directory 租使用者中建立新的身分識別。 身分識別受到用來建立身分識別的訂用帳戶所信任。
+   您建立或重複使用現有使用者指派的受控識別，應用程式閘道用來代表您取出 Key Vault 的憑證。 如需詳細資訊，請參閱[什麼是適用於 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md)。 此步驟會在 Azure Active Directory 租使用者中建立新的身分識別。 身分識別受到用來建立身分識別的訂用帳戶所信任。
 
 1. **設定您的金鑰保存庫**
 
@@ -52,7 +52,7 @@ Key Vault 整合為 TLS 終止提供兩種模型：
    > [!NOTE]
    > 如果您透過 ARM 範本部署應用程式閘道，不論是使用 Azure CLI 或 PowerShell，或是透過從 Azure 入口網站部署的 Azure 應用程式，SSL 憑證都會以 base64 編碼的 PFX 檔案形式儲存在金鑰保存庫中。 您必須完成使用 Azure Key Vault 中的步驟[，以在部署期間傳遞安全的參數值](../azure-resource-manager/templates/key-vault-parameter.md)。 
    >
-   > 特別重要的是將設定`enabledForTemplateDeployment`為`true`。 憑證可能是無密碼的，或者它可能有密碼。 在具有密碼的憑證案例中，下列範例會顯示應用程式閘道的 ARM 範本`sslCertificates`設定中， `properties`專案的可能設定。 `appGatewaySSLCertificateData`和的值會`appGatewaySSLCertificatePassword`從金鑰保存庫查閱，如[參考具有動態識別碼的秘密](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id)一節中所述。 請遵循中`parameters('secretName')`的反向參考，以查看查閱的發生方式。 如果憑證是無密碼，請省略該`password`專案。
+   > 特別重要的是將設定 `enabledForTemplateDeployment` 為 `true` 。 憑證可能是無密碼的，或者它可能有密碼。 在具有密碼的憑證案例中，下列範例會顯示 `sslCertificates` `properties` 應用程式閘道的 ARM 範本設定中，專案的可能設定。 和的值 `appGatewaySSLCertificateData` `appGatewaySSLCertificatePassword` 會從金鑰保存庫查閱，如[參考具有動態識別碼的秘密](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id)一節中所述。 請遵循中的反向參考 `parameters('secretName')` ，以查看查閱的發生方式。 如果憑證是無密碼，請省略該 `password` 專案。
    >   
    > ```
    > "sslCertificates": [

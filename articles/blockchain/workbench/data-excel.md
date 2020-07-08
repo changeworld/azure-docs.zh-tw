@@ -2,14 +2,14 @@
 title: 在 Microsoft Excel 中使用 Azure Blockchain Workbench 資料
 description: 瞭解如何在 Microsoft Excel 中載入和觀看 Azure Blockchain Workbench Preview SQL DB 資料。
 ms.date: 09/05/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: mmercuri
-ms.openlocfilehash: a84858ead83782cc9b6ef1b1d7f905172600fb8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4dd941abdded6a93510f4a71119769cd73855bcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74326056"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253540"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>使用 Microsoft Excel 檢視 Azure Blockchain Workbench 資料
 
@@ -27,7 +27,7 @@ ms.locfileid: "74326056"
 2. 在 [資料]**** 索引標籤上，選擇 [取得資料]****。
 3. 選取 [從 Azure]****，然後選取 [從 Azure SQL 資料庫]****。
 
-   ![連線到 Azure SQL 資料庫](./media/data-excel/connect-sql-db.png)
+   ![連線到 Azure SQL Database](./media/data-excel/connect-sql-db.png)
 
 4. 在 [SQL Server 資料庫]**** 對話方塊中：
 

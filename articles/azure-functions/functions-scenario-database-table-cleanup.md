@@ -4,12 +4,12 @@ description: 使用 Azure Functions 排程可連接到 Azure SQL Database 以定
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 2e3f53943d45e90b8aff8e386ce8d0e28670673f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366799"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254271"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 連接到 Azure SQL Database
 
@@ -17,17 +17,17 @@ ms.locfileid: "79366799"
 
 如果這是您第一次使用 C# Functions，則您應該先閱讀 [Azure Functions C# 開發人員參考資料](functions-dotnet-class-library.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 + 完成[使用 Visual Studio 建立您的第一個](functions-create-your-first-function-visual-studio.md)函式一文中的步驟，以建立以2.x 版或更新版本的執行時間為目標的區域函式應用程式。 您還必須已將專案發佈至 Azure 中的函數應用程式。
 
-+ 本文章將示範在 AdventureWorksLT 範例資料庫的 **SalesOrderHeader** 資料表中執行大量清除作業的 Transact-SQL 命令。 若要建立 AdventureWorksLT 範例資料庫，請完成[在 Azure 入口網站中建立 Azure SQL 資料庫](../sql-database/sql-database-get-started-portal.md)一文中的步驟。
++ 本文章將示範在 AdventureWorksLT 範例資料庫的 **SalesOrderHeader** 資料表中執行大量清除作業的 Transact-SQL 命令。 若要建立 AdventureWorksLT 範例資料庫，請完成[使用 Azure 入口網站在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文中的步驟。
 
-+ 在此快速入門中，您必須加入您所使用電腦的公用 IP 位址[伺服器層級防火牆規則](../sql-database/sql-database-get-started-portal-firewall.md)。 需要此規則才能從本機電腦存取 SQL Database 執行個體。  
++ 在此快速入門中，您必須加入您所使用電腦的公用 IP 位址[伺服器層級防火牆規則](../sql-database/sql-database-get-started-portal-firewall.md)。 需要此規則才能從您的本機電腦存取 SQL Database 實例。  
 
 ## <a name="get-connection-information"></a>取得連線資訊
 
-完成[在 Azure 入口網站中建立 Azure SQL 資料庫](../sql-database/sql-database-get-started-portal.md)時，您必須取得所建立之資料庫的連接字串。
+當您[使用 Azure 入口網站在 Azure SQL Database 中完成建立資料庫](../azure-sql/database/single-database-create-quickstart.md)時，您必須取得所建立資料庫的連接字串。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "79366799"
 
 您必須先將應用程式發佈至 Azure。 如果您尚未這麼做，請[將您的函式應用程式發行至 Azure](functions-develop-vs.md#publish-to-azure)。
 
-1. 在方案總管中，以滑鼠右鍵按一下函式應用程式專案，然後選擇 [**發佈** > **編輯 Azure App Service 設定**]。 在 [新增應用程式設定名稱]**** 中選取 [新增設定]****，輸入 `sqldb_connection`，然後選取 [確定]****。
+1. 在方案總管中，以滑鼠右鍵按一下函式應用程式專案，然後選擇 [**發佈**  >  **編輯 Azure App Service 設定**]。 在 [新增應用程式設定名稱]**** 中選取 [新增設定]****，輸入 `sqldb_connection`，然後選取 [確定]****。
 
     ![函數應用程式的應用程式設定。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "79366799"
 
 ## <a name="add-the-sqlclient-package-to-the-project"></a>將 SqlClient 套件加入專案
 
-您需要新增包含 SqlClient 程式庫的 NuGet 套件。 連接到 SQL Database 需要此資料存取程式庫。
+您需要新增包含 SqlClient 程式庫的 NuGet 套件。 需要此資料存取程式庫才能連接到 SQL Database。
 
 1. 在 Visual Studio 2019 中開啟您的本機函數應用程式專案。
 
@@ -73,7 +73,7 @@ ms.locfileid: "79366799"
 
 ## <a name="add-a-timer-triggered-function"></a>新增計時器觸發函式
 
-1. 在方案總管中，以滑鼠右鍵按一下函數應用程式專案，然後選擇 [**加入** > **新的 Azure 函數**]。
+1. 在方案總管中，以滑鼠右鍵按一下函數應用程式專案，然後選擇 [**加入**  >  **新的 Azure 函數**]。
 
 1. 選取 **Azure Functions** 範本後，將新的項目命名為 `DatabaseCleanup.cs`，然後選取 [新增]****。
 

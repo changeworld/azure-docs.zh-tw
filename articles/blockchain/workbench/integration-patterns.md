@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench Preview 中的智慧合約整合模式�
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: f9626edd5bd655e3de5d0f9648041faf832e3b84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74325960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254628"
 ---
 # <a name="smart-contract-integration-patterns"></a>智慧合約整合模式
 
@@ -31,7 +31,7 @@ Azure Blockchain Workbench 產生的 Web 應用程式所包含的功能，可透
 
 REST API 主要用於互動式用戶端，例如 Web、行動和 Bot 應用程式。
 
-本節探討的模式著重在可將交易傳送至分散式總帳的 REST API 層面，以及可從 Azure Blockchain Workbench 的*鏈結關閉* SQL 資料庫查詢交易相關資料的模式。
+本節探討的模式著重于將交易傳送至分散式總帳的 REST API 層面，以及從 Azure Blockchain Workbench 的「*關閉鏈*」資料庫查詢交易相關資料的模式。
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>從外部系統將交易傳送至分散式總帳
 
@@ -204,7 +204,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 
 -   Azure Blockchain Workbench 會儲存關於應用程式、工作流程、合約和交易的中繼資料，這是其正常作業行為的一部分。
 -   外部系統或工具會提供一或多個對話方塊，以利收集資料庫的相關資訊，例如資料庫伺服器名稱、資料庫名稱、驗證類型、登入認證，以及所要使用的資料庫檢視。
--   系統會根據 SQL 資料庫檢視撰寫查詢，以方便外部系統、服務、報告、開發人員工具和企業生產力工具的下游使用。
+-   查詢是針對資料庫檢視而撰寫，以協助外部系統、服務、報告、開發人員工具和企業生產力工具的下游耗用量。
 
 ## <a name="storage-integration"></a>儲存體整合
 
