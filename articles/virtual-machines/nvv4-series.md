@@ -1,18 +1,19 @@
 ---
-title: NVv4 系列-Azure 虛擬機器
+title: NVv4 系列
 description: NVv4 系列 Vm 的規格。
 services: virtual-machines
-author: vikancha
+ms.subservice: sizes
+author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 0295ed7d44d64fcc1aeb68e1beaa37987b177edb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: e12124ee2d87a14c6e7cb1704fbe50c6300c1240
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273851"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045717"
 ---
 # <a name="nvv4-series"></a>NVv4 系列 
 
@@ -28,12 +29,12 @@ NVv4 系列虛擬機器是由[Amd Radeon 直覺 MI25](https://www.amd.com/en/pro
 
 記憶體保留更新：不支援
 
-| Size | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大 NIC |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大 NIC/預期的網路頻寬 (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 |
-| Standard_NV8as_v4 |8 |28 |176 | 1/4 | 4 | 8 | 4 |
-| Standard_NV16as_v4 |16 |56 |352 | 1/2 | 8 | 16 | 8 |
-| Standard_NV32as_v4 |32 |112 |704 | 1 | 16 | 32 | 8 |
+| Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 / 1000 |
+| Standard_NV8as_v4 |8 |28 |176 | 1/4 | 4 | 8 | 4 / 2000 |
+| Standard_NV16as_v4 |16 |56 |352 | 1/2 | 8 | 16 | 8 / 4000 |
+| Standard_NV32as_v4 |32 |112 |704 | 1 | 16 | 32 | 8 / 8000 |
 
 <sup>1</sup>個 NVv4 系列 VM 功能 AMD 同時多執行緒技術
 
@@ -52,7 +53,7 @@ NVv4 系列虛擬機器是由[Amd Radeon 直覺 MI25](https://www.amd.com/en/pro
 - [儲存體最佳化](sizes-storage.md)
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
-- [上一代](sizes-previous-gen.md)
+- [前幾代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>後續步驟
 

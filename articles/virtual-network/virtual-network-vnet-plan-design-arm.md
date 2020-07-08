@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 4601a7f5da8d6e4eda2ee433fe52d08a6341ce6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 416ca556e298fa088916a554860d05725bc1cf72
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186011"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045496"
 ---
 # <a name="plan-virtual-networks"></a>規劃虛擬網路
 
@@ -61,7 +61,7 @@ ms.locfileid: "82186011"
 - 每個子網路於虛擬網路的位址空間內都必須具有唯一的位址範圍 (以 CIDR 格式指定)。 此位址範圍不能與虛擬網路內的其他子網路重疊。
 - 如果您打算將一些 Azure 服務資源部署到虛擬網路中，它們可能需要 (或會建立) 自己的子網路，因此必須要有足夠的未配置空間以供它們進行。 若要判斷 Azure 服務是否會建立自己的子網路，請參閱針對每個[可部署到虛擬網路的 Azure 服務](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)的資訊。 例如，如果您使用 Azure VPN 閘道將虛擬網路連線到內部部署網路，該虛擬網路針對閘道必須有專用的子網路。 深入了解[閘道子網路](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)。
 - 根據預設，Azure 會在虛擬網路中的所有子網路之間路由傳送網路流量。 您可以覆寫 Azure 的預設路由，以避免 Azure 在子網路之間進行路由傳送，或透過網路虛擬設備路由傳送子網路之間的流量。 如果您需要相同虛擬網路中資源間的流量流經網路虛擬設備 (NVA)，請將資源部署到不同的子網路。 深入了解[安全性](#security)。
-- 您可以將針對 Azure 資源 (例如 Azure 儲存體帳戶或 Azure SQL 資料庫) 的存取，限制為具備虛擬網路服務端點的特定子網路。 此外，您可以拒絕來自網際網路的資源存取。 您可以建立多個子網路，並只針對某些子網路啟用某個服務端點。 深入了解[服務端點](virtual-network-service-endpoints-overview.md)，以及您可以針對它們啟用的 Azure 資源。
+- 您可以使用虛擬網路服務端點，將 azure 資源（例如 Azure 儲存體帳戶或 Azure SQL Database）的存取許可權制為特定子網。 此外，您可以拒絕來自網際網路的資源存取。 您可以建立多個子網路，並只針對某些子網路啟用某個服務端點。 深入了解[服務端點](virtual-network-service-endpoints-overview.md)，以及您可以針對它們啟用的 Azure 資源。
 - 您可以將零或一個網路安全性群組關聯至虛擬網路中的每個子網路。 您可以將相同或不同的網路安全性群組關聯至每個子網路。 每個網路安全性群組都包含規則，能允許或拒絕進出來源與目的地的流量。 深入了解[網路安全性群組](#traffic-filtering)。
 
 ## <a name="security"></a>安全性

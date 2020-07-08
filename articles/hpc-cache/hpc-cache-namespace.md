@@ -1,17 +1,17 @@
 ---
-title: 建立 Azure HPC Cache
+title: 建立 Azure HPC 快取實例
 description: 如何建立 Azure HPC Cache 執行個體
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73582187"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045802"
 ---
 # <a name="plan-the-aggregated-namespace"></a>規劃彙總的命名空間
 
@@ -29,14 +29,14 @@ Azure HPC 快取可讓用戶端透過會隱藏後端儲存系統詳細資料的�
 
 範本資料會儲存在資料中心，而此作業所需的資訊會儲存在這些子目錄中：
 
-    /goldline/templates/acme2017/sku798
-    /goldline/templates/acme2017/sku980 
+* */goldline/templates/acme2017/sku798*
+* */goldline/templates/acme2017/sku980* 
 
 資料中心儲存體系統會公開這些匯出：
 
-    /
-    /goldline
-    /goldline/templates
+* */*
+* */goldline*
+* */goldline/templates*
 
 使用[CLFSLoad 公用程式](hpc-cache-ingest.md#pre-load-data-in-blob-storage-with-clfsload)，將要分析的資料複製到名為 "sourcecollection" 的 Azure Blob 儲存體容器。
 
@@ -57,7 +57,7 @@ NFS 儲存體目標可以有多個虛擬命名空間路徑，前提是每一個�
 | *IP 位址或主機名稱* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP 位址或主機名稱* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-用戶端應用程式可以掛接快取，並輕鬆地存取匯總的``/source``命名``/templates/sku798``空間檔案``/templates/sku980``路徑、和。
+用戶端應用程式可以掛接快取，並輕鬆地存取匯總的命名空間檔案路徑 ``/source`` 、 ``/templates/sku798`` 和 ``/templates/sku980`` 。
 
 ## <a name="next-steps"></a>後續步驟
 

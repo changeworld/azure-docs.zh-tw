@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 11e68aaa7c70d4f888c0009bc28d9bb90f431f3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56fb677ca80c047fb90c58a3e0aedb41e6d4a3f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75354450"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045088"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 串流分析 CI/CD NuGet 套件進行整合和開發 
 本文說明如何使用 Azure 串流分析 CI/CD NuGet 封裝來設定持續整合和部署程式。
@@ -34,13 +34,17 @@ Nuget 套件可供使用：[Microsoft.Azure.Stream Analytics.CICD](https://www.n
 
 串流分析 Visual Studio 專案建置成功時，會在 **bin/[Debug/Retail]/Deploy** 資料夾下方產生下列兩個 Azure Resource Manager 範本檔案： 
 
-*  Resource Manager 範本檔案
+* Resource Manager 範本檔案
 
-       [ProjectName].JobTemplate.json 
+   ```
+   [ProjectName].JobTemplate.json 
+   ```
 
-*  Resource Manager 參數檔案
-
-       [ProjectName].JobTemplate.parameters.json   
+* Resource Manager 參數檔案
+   
+   ```
+   [ProjectName].JobTemplate.parameters.json
+   ```
 
 parameters.json 檔案中的預設參數來自 Visual Studio 專案中的設定。 如果您想要部署到其他環境，請據以取代參數。
 

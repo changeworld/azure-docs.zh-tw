@@ -3,12 +3,12 @@ title: 如何建立 Windows 的客體設定原則
 description: 了解如何建立 Windows 的 Azure 原則客體設定原則。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a8231840cc20f03da44d489ae5226e7a0b4e0d48
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: b53c8ec8189516305de8b0b8c05b2be8ea49f7f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835949"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045122"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何建立 Windows 的客體設定原則
 
@@ -84,11 +84,14 @@ ms.locfileid: "83835949"
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>客體設定模組與 Windows PowerShell DSC 模組有何不同
 
-當客體設定稽核電腦時：
+當來賓設定審核電腦時，事件的順序會與 Windows PowerShell DSC 中的不同。
 
 1. 代理程式會先執行 `Test-TargetResource` 來判斷設定是否處於正確狀態。
 1. 函式所傳回布林值會判斷客體指派的 Azure Resource Manager 狀態是否符合規範。
 1. 提供者會執行 `Get-TargetResource` 以傳回每個設定的目前狀態，藉此得知為何電腦不符合規範以及確認目前的狀態是否符合規範，這兩項詳細資料。
+
+在 Azure 原則中，將值傳遞給來賓設定指派的參數必須是_字串_類型。
+即使 DSC 資源支援陣列，也無法透過參數傳遞陣列。
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource 需求
 
@@ -138,7 +141,7 @@ class ResourceName : OMI_BaseResource
 
 ### <a name="configuration-requirements"></a>組態需求
 
-自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔案名稱、MOF 檔案中的設定名稱，以及 Resource Manager 範本中的客體指派名稱，都必須相同。
+自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔案名稱、MOF 檔案中的設定名稱，以及 Azure Resource Manager 範本（ARM 範本）中的來賓指派名稱必須相同。
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>為客體設定專案建立結構
 
@@ -163,7 +166,7 @@ PowerShell Cmdlet 可協助建立此套件，
 ### <a name="storing-guest-configuration-artifacts"></a>儲存客體設定成品
 
 .zip 套件必須儲存於受控虛擬機器可存取的位置。
-例如 GitHub 存放庫、Azure 存放庫或 Azure 儲存體。 如果不想讓套件公開，您可在 URL 中包含 [SAS 權杖](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+例如 GitHub 存放庫、Azure 存放庫或 Azure 儲存體。 如果不想讓套件公開，您可在 URL 中包含 [SAS 權杖](../../../storage/common/storage-sas-overview.md)。
 您也可以為私人網路中的電腦實作[服務端點](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)，但此設定僅適用於存取套件，且無法與服務通訊。
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>逐步建立 Windows 的自訂客體設定稽核原則
@@ -408,7 +411,7 @@ New-AzRoleDefinition -Role $role
 
 客體設定支援在執行階段覆寫設定的屬性。 這項功能表示套件中 MOF 檔案的值不一定要被視為靜態。 覆寫值是透過 Azure 原則提供，且不會影響撰寫或編譯設定的方式。
 
-Cmdlet `New-GuestConfigurationPolicy` 與 `Test-GuestConfigurationPolicyPackage` 包含名為 **Parameters** 的參數。 此參數會採納雜湊表定義，包括每個參數的所有詳細資料，並為每個檔案建立必要區段，以用於 Azure 原則定義。
+Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名為**參數**的參數。 此參數會採納雜湊表定義，包括每個參數的所有詳細資料，並為每個檔案建立必要區段，以用於 Azure 原則定義。
 
 下列範例會建立原則定義來稽核服務，使用者可在原則指派時從清單中進行選取。
 
@@ -431,15 +434,15 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Windows Service.' `
     -Description 'Audit if a Windows Service is not enabled on Windows machine.' `
     -Path '.\policyDefinitions' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 
 ## <a name="extending-guest-configuration-with-third-party-tools"></a>使用第三方工具來擴充客體設定
 
 > [!Note]
-> 此功能處於預覽狀態，且需要客體設定模組版本 1.20.1，此版本可使用 `Install-Module GuestConfiguration -AllowPrerelease` 來安裝。
-> 在版本 1.20.1 中，這項功能僅適用於稽核 Windows 電腦的原則定義
+> 這項功能目前為預覽狀態，需要來賓設定模組版本1.20.3，可以使用進行安裝 `Install-Module GuestConfiguration -AllowPrerelease` 。
+> 在 [版本 1.20.3] 中，這項功能僅適用于用於審查 Windows 機器的原則定義
 
 您可擴充客體設定的成品套件，以包含第三方工具。
 擴充客體設定需要開發兩種元件。
@@ -465,7 +468,14 @@ New-GuestConfigurationPolicy
 在開發環境中安裝所需的模組：
 
 ```azurepowershell-interactive
-Install-Module GuestConfiguration, gcInSpec
+# Update PowerShellGet if needed to allow installing PreRelease versions of modules
+Install-Module PowerShellGet -Force
+
+# Install GuestConfiguration module prerelease version
+Install-Module GuestConfiguration -allowprerelease
+
+# Install commmunity supported gcInSpec module
+Install-Module gcInSpec
 ```
 
 首先，建立 InSpec 所使用的 YaML 檔案。 該檔案會提供有關環境的基本資訊。 範例如下所示：
@@ -482,7 +492,7 @@ supports:
   - os-family: windows
 ```
 
-將此檔案儲存到專案目錄中名為 `wmi_service` 的資料夾。
+將名為的檔案儲存 `wmi_service.yml` 在專案目錄中名為的資料夾中 `wmi_service` 。
 
 接下來，使用用於稽核電腦的 InSpec 語言抽象來建立 Ruby 檔案。
 
@@ -501,7 +511,7 @@ end
 
 ```
 
-將此檔案儲存在 `wmi_service` 目錄內名為 `controls` 的新資料夾中。
+將此檔案儲存 `wmi_service.rb` 在目錄內名為的新資料夾中 `controls` `wmi_service` 。
 
 最後，建立設定、匯入 **GuestConfiguration** 資源模組，並使用 `gcInSpec` 資源來設定 InSpec 設定檔的名稱。
 
@@ -509,7 +519,7 @@ end
 # Define the configuration and import GuestConfiguration
 Configuration wmi_service
 {
-    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.0.0'}
+    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.1.0'}
     node 'wmi_service'
     {
         gcInSpec wmi_service
@@ -552,7 +562,8 @@ wmi_service -out ./Config
 New-GuestConfigurationPackage `
   -Name 'wmi_service' `
   -Configuration './Config/wmi_service.mof' `
-  -FilesToInclude './wmi_service'
+  -FilesToInclude './wmi_service'  `
+  -Path './package' 
 ```
 
 ## <a name="policy-lifecycle"></a>原則生命週期

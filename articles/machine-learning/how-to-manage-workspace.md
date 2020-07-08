@@ -1,23 +1,23 @@
 ---
-title: 在入口網站中建立 Azure Machine Learning 工作區
+title: 在入口網站中建立工作區
 titleSuffix: Azure Machine Learning
 description: 瞭解如何在 Azure 入口網站中建立、查看和刪除 Azure Machine Learning 的工作區。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71bb85c5812a3e779570cdd87c5092e5b0de52f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81269718"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045700"
 ---
-# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>建立和管理 Azure 入口網站中的 Azure Machine Learning 工作區
+# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理 Azure Machine Learning 工作區
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本文中，您將會在[Azure Machine Learning](overview-what-is-azure-ml.md)的 Azure 入口網站中建立、查看和刪除[**Azure Machine Learning 的工作區**](concept-workspace.md)。  入口網站是開始使用工作區的最簡單方式，但隨著您的需求變更或自動化的需求增加，您也可以[使用 CLI](reference-azure-machine-learning-cli.md)、Python 程式[代碼](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)或透過[VS Code 延伸](tutorial-setup-vscode-extension.md)模組來建立和刪除工作區。
@@ -40,7 +40,7 @@ ms.locfileid: "81269718"
 
 1. 提供下列資訊來設定新的工作區：
 
-   欄位|描述 
+   欄位|說明 
    ---|---
    工作區名稱 |輸入可識別您工作區的唯一名稱。 在此範例中，我們使用 **docs-ws**。 名稱必須是整個資源群組中唯一的。 請使用可輕鬆回想並且與其他人建立的工作區有所區別的名稱。 工作區名稱不區分大小寫。
    訂用帳戶 |選取您要使用的 Azure 訂用帳戶。
@@ -80,7 +80,7 @@ ms.locfileid: "81269718"
 
 1. 選取頁面右上方的 [**深入瞭解**]。
 
-   [![升級工作區](./media/how-to-manage-workspace/upgrade.png)](./media/how-to-manage-workspace/upgrade.png#lightbox)
+   [![升級工作區 ](./media/how-to-manage-workspace/upgrade.png)](./media/how-to-manage-workspace/upgrade.png#lightbox)
 
 1. 在出現的視窗中選取 [**升級**]。
 
@@ -121,11 +121,11 @@ ms.locfileid: "81269718"
 ### <a name="moving-the-workspace"></a>移動工作區
 
 > [!WARNING]
-> 不支援將您的 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新的租使用者。 這麼做可能會導致錯誤。
+> 不支援將 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新租用戶。 這麼做可能會導致錯誤。
 
 ### <a name="deleting-the-azure-container-registry"></a>刪除 Azure Container Registry
 
-Azure Machine Learning 工作區會使用 Azure Container Registry （ACR）進行某些作業。 當 ACR 實例第一次需要時，它會自動建立。
+Azure Machine Learning 工作區會使用 Azure Container Registry (ACR) 進行某些作業。 它會在第一次需要 ACR 執行個體時自動建立一個。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 

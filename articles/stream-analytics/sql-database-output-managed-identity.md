@@ -4,14 +4,14 @@ description: 本文說明如何使用受控識別向 Azure SQL DB 輸出驗證 A
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: a8699b3942fe3a4b23f1d72036b7364cdab36f8e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 757dd7280867e9b31fdc0750fc0848de8f266770
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651958"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045615"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>使用受控識別從 Azure 串流分析作業 (預覽) 存取 Azure SQL Database
 
@@ -70,7 +70,7 @@ Azure 串流分析支援 Azure SQL Database 輸出接收的[受控識別驗證](
 
 接下來，您會在 SQL Database 中建立對應至 Azure Active Directory 身分識別的自主資料庫使用者。 自主資料庫使用者沒有 master 資料庫的登入，但是會對應至目錄中與資料庫相關聯的身分識別。 Azure Active Directory 身分識別可以是個別的使用者帳戶或群組。 在此情況下，您想要為串流分析作業建立自主資料庫使用者。 
 
-1. 使用 SQL Server Management Studio 連線至 SQL 資料庫。 [使用者名稱] 是具有 [改變任何使用者] 權限的 Azure Active Directory 使用者。 您在 SQL Server 上設定的管理員即為範例。 使用 [Azure Active Directory - MFA 通用] 驗證。 
+1. 使用 SQL Server Management Studio 連接到 SQL Database。 [使用者名稱] 是具有 [改變任何使用者] 權限的 Azure Active Directory 使用者。 您在 SQL Server 上設定的管理員即為範例。 使用 [Azure Active Directory - MFA 通用] 驗證。 
 
    ![連接至 SQL Server](./media/sql-db-output-managed-identity/connect-sql-server.png)
 
@@ -96,7 +96,7 @@ Azure 串流分析支援 Azure SQL Database 輸出接收的[受控識別驗證](
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
 
-1. 為了讓 Microsoft 的 Azure Active Directory 確認串流分析作業是否可存取 SQL Database，我們必須給予 Azure Active Directory 與資料庫通訊的權限。 若要這麼做，請再次移至 Azure 入口網站中的 [防火牆和虛擬網路] 頁面，並啟用 [允許 Azure 服務和資源存取這部伺服器]。 
+1. 為了讓 Microsoft 的 Azure Active Directory 確認串流分析作業是否可存取 SQL Database，我們必須給予 Azure Active Directory 與資料庫通訊的權限。 若要這麼做，請再次前往 Azure 入口網站中的 [防火牆和虛擬網路] 頁面，並啟用 [允許 Azure 服務和資源存取這部伺服器]。 
 
    ![防火牆與虛擬網路](./media/sql-db-output-managed-identity/allow-access.png)
 

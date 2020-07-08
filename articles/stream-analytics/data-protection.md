@@ -4,14 +4,14 @@ description: 本文說明如何加密 Azure 串流分析作業所使用的私用
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
-ms.openlocfilehash: 8d201beb2ff4aba815749b12a506d2292779cb82
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 637ac97d1e054599ec297344ff0c5fff600c8487
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857279"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045343"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 中的資料保護串流分析 
 
@@ -36,7 +36,7 @@ Azure 串流分析是完全受控的平臺即服務，可讓您建立即時分�
 
 1. 選取 Azure 入口網站左上角的 [建立資源]  。 
 
-1. 從 [結果] 清單中選取 [ **Analytics** > **串流分析作業** ]。 
+1.  **Analytics**   >  **Stream Analytics job**   從 [結果] 清單中選取 [Analytics 串流分析作業]。 
 
 1. 在 [串流分析作業] 頁面中填入必要的詳細資料，例如名稱、區域和尺規。 
 

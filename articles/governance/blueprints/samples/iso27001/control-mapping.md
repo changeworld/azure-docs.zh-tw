@@ -3,12 +3,12 @@ title: ISO 27001 藍圖範例控制項
 description: ISO 27001 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 1f4998a84d7079b55e2668a43b7e7359429d54d8
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 013a871b52a9e81d7051c3b148c258cecc139070
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919212"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044663"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 藍圖範例的控制項對應
 
@@ -28,7 +28,7 @@ ms.locfileid: "85919212"
 
 ## <a name="a821-classification-of-information"></a>A.8.2.1 資訊分類
 
-Azure 的 [SQL 弱點評量服務](/azure/sql-database/sql-vulnerability-assessment)可協助您探索資料庫中所儲存的敏感性資料，並納入該資料的分類建議。 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以稽核在修復 SQL 弱點評量掃描期間所識別出的弱點。
+Azure 的 [SQL 弱點評量服務](../../../../azure-sql/database/sql-vulnerability-assessment.md)可協助您探索資料庫中所儲存的敏感性資料，並納入該資料的分類建議。 此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以稽核在修復 SQL 弱點評量掃描期間所識別出的弱點。
 
 - \[預覽\]：監視 Azure 資訊安全中心內的 SQL 弱點評定結果
 

@@ -5,21 +5,21 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 07f109b3d5539f7cd87a12fb42a36803573c2bdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44b84c03dd9c070fd7ca3764a0dc50e8caa9e1fc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75354559"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045156"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>使用 Visual Studio 工具來開發串流分析 Edge 作業
 
 在本教學課程中，您將瞭解如何使用適用于 Visual Studio 的串流分析工具。 您將瞭解如何撰寫、debug 和建立您的串流分析 Edge 作業。 建立和測試作業之後，您可以前往 Azure 入口網站將其部署到您的裝置。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，您需要下列必要條件：
 
@@ -29,7 +29,7 @@ ms.locfileid: "75354559"
  
 ## <a name="create-a-stream-analytics-edge-project"></a>建立串流分析 Edge 專案 
 
-從**Visual Studio 選取** > [檔案] [**新增** > ] [**專案**]。 巡覽至左側 [範本]**** 清單 > 展開 [Azure 串流分析]**** > [串流分析 Edge]**** > [Azure 串流分析 Edge 應用程式]****。 為您的專案提供名稱、位置及解決方案名稱，然後選取 [確定]****。
+從**Visual Studio 選取 [** 檔案] [新增] [  >  **New**  >  **專案**]。 巡覽至左側 [範本]**** 清單 > 展開 [Azure 串流分析]**** > [串流分析 Edge]**** > [Azure 串流分析 Edge 應用程式]****。 為您的專案提供名稱、位置及解決方案名稱，然後選取 [確定]****。
 
 ![Visual Studio 中新的串流分析 Edge 專案](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 

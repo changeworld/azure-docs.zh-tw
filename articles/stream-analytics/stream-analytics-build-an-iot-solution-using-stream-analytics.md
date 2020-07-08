@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426449"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044578"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>利用串流分析來建置 IoT 解決方案
 
@@ -28,7 +28,7 @@ ms.locfileid: "75426449"
 * 有自信地使用串流分析來為客戶開發串流解決方案。
 * 利用監視和記錄的經驗來排解問題。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要完成本解決方案，您需要滿足下列必要條件：
 * [Azure 訂用帳戶](https://azure.microsoft.com/pricing/free-trial/)
 
@@ -43,11 +43,11 @@ ms.locfileid: "75426449"
 ### <a name="entry-data-stream"></a>入口資料流
 入口資料流包含車輛進入收費站的相關資訊。 出口資料事件會從包含在範例應用程式中的 Web 應用程式即時串流到事件中樞佇列。
 
-| TollID | EntryTime | LicensePlate | State | 請確定 | 模型 | VehicleType | VehicleWeight | Toll | Tag |
+| TollID | EntryTime | LicensePlate | State | 請確定 | 型號 | VehicleType | VehicleWeight | Toll | Tag |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
-| 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Taurus |1 |0 |5 |456789123 |
+| 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |福特 |Taurus |1 |0 |5 |456789123 |
 | 2 |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
 | 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |CRV |1 |0 |5 |789123456 |
 | 2 |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1 |0 |6 |321987654 |
@@ -61,7 +61,7 @@ ms.locfileid: "75426449"
 | LicensePlate |車輛的車牌號碼 |
 | State |美國的某個洲 |
 | 請確定 |車輛的製造商 |
-| 模型 |車輛的型號 |
+| 型號 |車輛的型號 |
 | VehicleType |1 代表載客車或 2 代表商用車 |
 | WeightType |車輛的重量，單位為噸；0 代表客車 |
 | Toll |通行費，單位為美元 |
@@ -113,7 +113,7 @@ ms.locfileid: "75426449"
 請務必依照這篇文章結尾處＜清理您的 Azure 帳戶＞一節中的步驟來進行，讓您能充分利用您的免費 Azure 點數。
 
 ## <a name="deploy-the-sample"></a>部署範例
-只要按幾下，就可以輕鬆將數個資源一起部署在資源群組中。 解決方案定義裝載于 GitHub 存放庫，網址[https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)為。
+只要按幾下，就可以輕鬆將數個資源一起部署在資源群組中。 解決方案定義裝載于 GitHub 存放庫，網址為 [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp) 。
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>在 Azure 入口網站中部署 TollApp 範本
 1. 若要將 TollApp 環境部署至 Azure，請使用這個連結來[部署 TollApp Azure 範本](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json)。
@@ -185,11 +185,11 @@ ms.locfileid: "75426449"
 ## <a name="review-the-cosmosdb-output-data"></a>檢閱 CosmosDB 輸出資料
 1. 尋找包含 TollApp 資源的資源群組。
 
-2. 選取名稱模式為 **tollapp\<隨機\>-cosmos** 的 Azure Cosmos DB 帳戶。
+2. 選取名稱模式為 **tollapp\<random\>-cosmos** 的 Azure Cosmos DB 帳戶。
 
 3. 選取 [資料總管]**** 標題以開啟 [資料總管] 頁面。
 
-4. 展開**tollAppDatabase** > **]** > **檔**。
+4. 展開**tollAppDatabase**  >  **]**  >  **檔**。
 
 5. Azure 串流分析經悉心設計，能彈性調整以便於處理大量的資料。
 
@@ -303,7 +303,7 @@ GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 3. 在串流作業的 CONFIGURE 標題下，選取 [縮放]****。
 
-4. 將 [串流單位]**** 滑桿從 1 滑動到 6。 串流單位會定義作業所能接收的計算能力量。 選取 [儲存]  。
+4. 將 [串流單位]**** 滑桿從 1 滑動到 6。 串流單位會定義作業所能接收的計算能力量。 選取 [儲存]。
 
 5. **啟動**串流作業以示範額外的縮放。 Azure 串流分析可將工作分送給更多計算資源以改善輸送量，並使用 PARTITION BY 子句中指定的資料行，將工作分割給各個資源。
 
@@ -319,7 +319,7 @@ GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 2. 尋找資源群組，當中包含八個與 TollApp 範本相關的資源。
 
-3. 選取 [刪除資源群組]  。 輸入資源群組名稱以確認刪除。
+3. 選取 [刪除資源群組]。 輸入資源群組名稱以確認刪除。
 
 ## <a name="conclusion"></a>結論
 本解決方案向您介紹了 Azure 串流分析服務。 課程中示範了如何為串流分析工作設定輸入和輸出。 解決方案中還利用付費資料案例，來解釋在資料空間會不斷變化時所引發的常見問題類型，以及如何在 Azure 串流分析中利用類似 SQL 的簡單查詢來解決這些問題。 解決方案說明了要用來處理時態性資料的 SQL 擴充功能建構。 課程示範了如何聯結不同的資料流，以及如何利用靜態參考資料來豐富資料流的內容，以及如何相應放大查詢來達到更高的輸送量。

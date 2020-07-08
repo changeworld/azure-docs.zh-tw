@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: 18831832f82cdbc8cec69e368f006f7acd4836c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb795a9d7100019b2b1820c592f87025b77f5878
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205257"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045853"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>針對 Azure HDInsight 中的 Apache Oozie 進行疑難排解
 
@@ -32,7 +32,9 @@ ms.locfileid: "82205257"
 
 作業狀態會變更為 **SUSPENDED**。 作業的詳細資料會將 `RunHiveScript` 狀態顯示為 **START_MANUAL**。 選取該動作會顯示下列錯誤訊息：
 
-    JA009: Cannot initialize Cluster. Please check your configuration for map
+```output
+JA009: Cannot initialize Cluster. Please check your configuration for map
+```
 
 ### <a name="cause"></a>原因
 
@@ -50,7 +52,9 @@ ms.locfileid: "82205257"
 
 作業狀態會變更為 **SUSPENDED**。 作業的詳細資料會將 `RunHiveScript` 狀態顯示為 **START_MANUAL**。 如果您選取該動作，它將會顯示下列錯誤訊息：
 
-    JA002: User: oozie is not allowed to impersonate <USER>
+```output
+JA002: User: oozie is not allowed to impersonate <USER>
+```
 
 ### <a name="cause"></a>原因
 
@@ -60,7 +64,9 @@ ms.locfileid: "82205257"
 
 Oozie 可以模擬群組中的使用者 **`users`** 。 使用 `groups USERNAME` 查看使用者帳戶所屬的群組。 如果使用者不是群組的成員 **`users`** ，請使用下列命令將使用者新增至群組：
 
-    sudo adduser USERNAME users
+```bash
+sudo adduser USERNAME users
+```
 
 > [!NOTE]  
 > 這可能需要幾分鐘，HDInsight 才能辨識出使用者已新增至該群組。
@@ -73,7 +79,9 @@ Oozie 可以模擬群組中的使用者 **`users`** 。 使用 `groups USERNAME`
 
 作業狀態會變更為 **KILLED**。 作業的詳細資料會將 `RunSqoopExport` 狀態顯示為 **ERROR**。 如果您選取該動作，它將會顯示下列錯誤訊息：
 
-    Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
+```output
+Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
+```
 
 ### <a name="cause"></a>原因
 

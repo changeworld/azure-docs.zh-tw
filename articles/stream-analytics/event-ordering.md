@@ -5,18 +5,18 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2019
-ms.openlocfilehash: c0a108565a6a0f62c6252113f984e8b10967c5db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9617018b06d4f62b49946ae5593bd51805355e0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75461185"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044561"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>設定 Azure 串流分析的事件順序原則
 
-本文說明如何在 Azure 串流分析中設定和使用延遲抵達和順序不限的事件原則。 只有當您在查詢中使用[TIMESTAMP by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)子句時，才會套用這些原則。
+本文說明如何在 Azure 串流分析中設定和使用延遲抵達和順序不限的事件原則。 只有當您在查詢中使用[TIMESTAMP by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)子句，而且只適用于雲端輸入來源時，才會套用這些原則。
 
 ## <a name="event-time-and-arrival-time"></a>事件時間和抵達時間
 

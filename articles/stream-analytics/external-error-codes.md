@@ -3,15 +3,15 @@ title: 外部錯誤碼 - Azure 串流分析
 description: 針對出現外部錯誤碼的 Azure 串流分析問題進行疑難排解。
 ms.author: mamccrea
 author: mamccrea
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: fad0794a3628e6a89d1c2b2c80bb27d70937db95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: f963f4c3538146b7f9929960092a18294659be5d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650042"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045241"
 ---
 # <a name="azure-stream-analytics-external-error-codes"></a>Azure 串流分析外部錯誤碼
 
@@ -96,5 +96,5 @@ ms.locfileid: "83650042"
 * [對輸入連線進行疑難排解](stream-analytics-troubleshoot-input.md)
 * [對 Azure 串流分析輸出進行疑難排解](stream-analytics-troubleshoot-output.md)
 * [對 Azure 串流分析查詢進行疑難排解](stream-analytics-troubleshoot-query.md)
-* [使用資料記錄對 Azure 串流分析進行疑難排解](stream-analytics-job-diagnostic-logs.md)
+* [使用資源記錄對 Azure 串流分析進行疑難排解](stream-analytics-job-diagnostic-logs.md)
 * [Azure 串流分析資料錯誤](data-errors.md)

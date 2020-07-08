@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525527"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044374"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 串流分析中的異常偵測
 
@@ -117,7 +117,7 @@ FROM AnomalyDetectionStep
 * 歷程**記錄大小**-這些模型會以**記錄大小**線性執行。 記錄大小愈久，模型為新事件評分所需的時間愈久。 這是因為模型會將新的事件與歷程記錄緩衝區中的每個過去事件進行比較。
 * **視窗持續時間**-**視窗持續時間**應該會反映接收記錄大小所指定的事件數目所花費的時間。 在視窗中沒有該多個事件時，Azure 串流分析會插補遺漏值。 因此，CPU 耗用量是歷程記錄大小的功能。
 * **事件裝載**-**事件裝載**愈大，模型所執行的工作越多，這會影響 CPU 耗用量。 此作業可以藉由讓它成為窘迫平行來相應放大，假設商務邏輯使用更多輸入資料分割是合理的。
-* **函數層級** - 的資料分割函式**層級資料分割**是在異常偵測函式呼叫中使用```PARTITION BY``` 。 這種類型的資料分割會增加額外負荷，因為必須同時維護多個模型的狀態。 在裝置層級分割之類的案例中，會使用函式層級的分割功能。
+* **函數層級資料分割**  - 函式**層級**的資料分割是在 ```PARTITION BY``` 異常偵測函式呼叫中使用完成。 這種類型的資料分割會增加額外負荷，因為必須同時維護多個模型的狀態。 在裝置層級分割之類的案例中，會使用函式層級的分割功能。
 
 ### <a name="relationship"></a>關聯性
 記錄大小、視窗持續時間和事件總負載會以下列方式相關：
@@ -152,13 +152,13 @@ windowDuration （以毫秒為單位） = 1000 * historySize/（每秒輸入事�
 > 如需更精確的評估，請自訂範例以符合您的案例。
 
 ### <a name="identifying-bottlenecks"></a>找出瓶頸
-使用 Azure 串流分析作業中的 [計量] 窗格，來識別管線中的瓶頸。 檢查輸送量的**輸入/輸出事件**和「[浮水印延遲](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)」或待處理的**事件**，以查看作業是否與輸入速率保持一致。 針對事件中樞計量，尋找已**節流的要求**，並據以調整閾值單位。 如 Cosmos DB 計量，請參閱輸送量之下**每個分割區索引鍵範圍的最大使用 RU/秒**，以確保您的資料分割索引鍵範圍會一致地取用。 若為 Azure SQL DB，請監視**記錄 IO**和**CPU**。
+使用您 Azure 串流分析作業中的 [計量] 窗格來找出管線中的瓶頸。 檢閱 [輸入/輸出事件] 來了解輸送量，並檢閱[「浮水印延遲」](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) \(英文\) 或 [待處理的事件] 來查看作業是否能與輸入速率保持一致。 針對事件中樞計量，請尋找 [節流的要求] 並據以調整閾值單位。 針對 Cosmos DB 計量，請檢閱 [輸送量] 底下的 [每個分割區索引鍵範圍每秒取用的 RU 上限]，以確保系統會一致地取用您的分割區索引鍵範圍。 針對 Azure SQL DB，請監視 [記錄 IO] 和 [CPU]。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
+* [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

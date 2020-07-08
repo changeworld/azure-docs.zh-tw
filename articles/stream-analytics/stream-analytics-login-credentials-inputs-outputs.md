@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3ae639dd7c5a42fc6880240988f0fb2817b09f43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75425980"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044408"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>針對串流分析作業的輸入和輸出替換登入認證
 
@@ -49,11 +49,11 @@ ms.locfileid: "75425980"
 
 ### <a name="sql-database"></a>SQL Database
 
-您必須連線到 SQL 資料庫以更新現有使用者的登入認證。 您可以使用 Azure 入口網站或用戶端工具 (例如 SQL Server Management Studio) 來更新認證。 本節將示範使用 Azure 入口網站更新認證的程序。
+您必須連接到 SQL Database，以更新現有使用者的登入認證。 您可以使用 Azure 入口網站或用戶端工具 (例如 SQL Server Management Studio) 來更新認證。 本節將示範使用 Azure 入口網站更新認證的程序。
 
 1. 登入 Azure 入口網站 > 瀏覽至您作為串流分析輸入/輸出使用的 SQL 資料庫。    
 2. 從 [資料總管]****，登入/連線到您的資料庫 > 將 [驗證類型] 選取為 [SQL Server 驗證]**** > 輸入您的 [登入]**** 和 [密碼]**** 詳細資料 > 選取 [確定]****。  
-   ![重新產生 SQL 資料庫的認證](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
+   ![重新產生 SQL Database 的認證](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. 在查詢索引標籤中，執行下列查詢以修改其中一個使用者的密碼 (請務必將 `<user_name>` 取代為您的使用者名稱，並將 `<new_password>` 取代為您的新密碼)：  
 
@@ -64,7 +64,7 @@ ms.locfileid: "75425980"
 
 4. 記下新的密碼。    
 5. 在 Azure 入口網站中，瀏覽至您的串流分析作業 > 選取 [停止]****，並等候作業停止。    
-6. 找出您要替換認證的 SQL 資料庫輸出。 更新密碼並儲存變更。    
+6. 找出您要輪替認證的 SQL Database 輸出。 更新密碼並儲存變更。    
 7. 當您儲存所做的變更時，系統會自動測試連線，以保證萬無一失。    
 8. 繼續進行[從上次停止的時間啟動您的作業](#start-your-job-from-the-last-stopped-time)一節。
 
@@ -82,7 +82,7 @@ ms.locfileid: "75425980"
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
+* [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

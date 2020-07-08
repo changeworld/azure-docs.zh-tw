@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: deb6c2439cc84f196b7f42fd9f49d3ebfd057cbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a7fe3f7e1c39837106471d118a8b1bb770a524e
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76962146"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045819"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>使用 CI/CD npm 套件部署 Azure 串流分析作業 
 
@@ -25,9 +25,9 @@ ms.locfileid: "76962146"
 
 您可以使用**mslearn-streamanalytics-cicd** npm 套件來啟用 Azure 串流分析作業的持續整合和部署。 Npm 套件提供工具來產生[串流分析 Visual Studio Code 專案](quick-create-vs-code.md)的 Azure Resource Manager 範本。 它可以在 Windows、macOS 和 Linux 上使用，而不需要安裝 Visual Studio Code。
 
-您可以直接[下載套件](https://www.npmjs.com/package/azure-streamanalytics-cicd)，或透過`npm install -g azure-streamanalytics-cicd`命令以[全域](https://docs.npmjs.com/downloading-and-installing-packages-globally)方式進行安裝。 這是建議的方法，它也可以在**Azure Pipelines**的組建管線的 PowerShell 或 Azure CLI 腳本工作中使用。
+您可以直接[下載套件](https://www.npmjs.com/package/azure-streamanalytics-cicd)，或透過命令以[全域](https://docs.npmjs.com/downloading-and-installing-packages-globally)方式進行安裝 `npm install -g azure-streamanalytics-cicd` 。 這是建議的方法，它也可以在**Azure Pipelines**的組建管線的 PowerShell 或 Azure CLI 腳本工作中使用。
 
-安裝套件之後，請使用下列命令來輸出 Azure Resource Manager 範本。 **ScriptPath**引數是您專案中**script.asaql**檔案的絕對路徑。 請確定 asaproj.json 和 Jobconfig.json 檔案位於與腳本檔案相同的資料夾中。 如果未指定**outputPath** ，範本會放在專案**bin**資料夾下的 [**部署**] 資料夾中。
+安裝套件之後，請使用下列命令來輸出 Azure Resource Manager 範本。 **ScriptPath**引數是您專案中**script.asaql**檔案的絕對路徑。 請確定檔案上的 asaproj.js和 JobConfig.js位於與腳本檔案相同的資料夾中。 如果未指定**outputPath** ，範本會放在專案**bin**資料夾下的 [**部署**] 資料夾中。
 
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
@@ -39,15 +39,19 @@ azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/sc
 
 當串流分析 Visual Studio Code 專案成功建立時，它會在**bin/[Debug/Retail]/Deploy**資料夾下產生下列兩個 Azure Resource Manager 範本檔案： 
 
-*  Resource Manager 範本檔案
+* Resource Manager 範本檔案
 
-       [ProjectName].JobTemplate.json 
+   ```
+   [ProjectName].JobTemplate.json 
+   ```
 
-*  Resource Manager 參數檔案
+* Resource Manager 參數檔案
 
-       [ProjectName].JobTemplate.parameters.json   
+   ```
+   [ProjectName].JobTemplate.parameters.json
+   ```   
 
-Parameters. json 檔案中的預設參數是來自 Visual Studio Code 專案中的設定。 如果您想要部署到其他環境，請據以取代參數。
+檔案中 parameters.js的預設參數是來自 Visual Studio Code 專案中的設定。 如果您想要部署到其他環境，請據以取代參數。
 
 > [!NOTE]
 > 對於所有認證，預設值都會設為 null。 部署至雲端之前，「必須」**** 設定這些值。
@@ -70,7 +74,7 @@ Parameters. json 檔案中的預設參數是來自 Visual Studio Code 專案中�
 
 2. 選取 **[使用傳統編輯器**建立管線但不 YAML]。
 
-3. 選取您的 [來源類型]、[team 專案] 和 [存放庫]。 接著，選取 [繼續]  。
+3. 選取您的 [來源類型]、[team 專案] 和 [存放庫]。 然後選取 [繼續]。
 
    ![選取 Azure 串流分析專案](./media/setup-cicd-vs-code/select-repo.png)
 
@@ -110,7 +114,7 @@ Parameters. json 檔案中的預設參數是來自 Visual Studio Code 專案中�
    |-|-|
    |顯示名稱|將檔案複製到： $ （build. artifactstagingdirectory）|
    |來源資料夾|`$(system.defaultworkingdirectory)`| 
-   |內容| `**\Deploy\**` |
+   |目錄| `**\Deploy\**` |
    |目的檔案夾| `$(build.artifactstagingdirectory)`|
 
    ![輸入複製工作的設定](./media/setup-cicd-vs-code/copy-config.png)
@@ -155,10 +159,10 @@ Parameters. json 檔案中的預設參數是來自 Visual Studio Code 專案中�
    |資源群組| 選擇將包含您串流分析作業的測試資源群組的名稱。|
    |位置|選擇測試資源群組的位置。|
    |範本位置| *連結的成品*|
-   |[範本]| $ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.json |
-   |範本參數|（$ （Build. ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.parameters.json|
+   |[範本]| $ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.js于 |
+   |範本參數|（$ （Build. ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.parameters.js于|
    |覆寫範本參數|-Input_IoTHub1_iotHubNamespace $ （test_eventhubname）|
-   |部署模式|累加|
+   |部署模式|增量|
 
 3. 從 [工作] 下拉式清單中，選取 [**將作業部署到生產環境**]。
 
@@ -172,10 +176,10 @@ Parameters. json 檔案中的預設參數是來自 Visual Studio Code 專案中�
    |資源群組| 選擇將包含您串流分析作業的生產資源群組的名稱。|
    |位置|選擇您的生產資源群組的位置。|
    |範本位置| *連結的成品*|
-   |[範本]| $ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.json |
-   |範本參數|（$ （Build. ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.parameters.json|
+   |[範本]| $ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.js于 |
+   |範本參數|（$ （Build. ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.parameters.js于|
    |覆寫範本參數|-Input_IoTHub1_iotHubNamespace $ （eventhubname）|
-   |部署模式|累加|
+   |部署模式|增量|
 
 ### <a name="create-release"></a>建立發行
 

@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: b33aeeee03fa57d87a60fd4c1904d5e4a86dd004
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c7a9a4c31ad7282782f45a8e2a4457cd159ee77
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80067081"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044442"
 ---
 # <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>使用 Azure 串流分析和 Azure Machine Learning Studio 執行情感分析（傳統）
 
@@ -148,7 +148,7 @@ ms.locfileid: "80067081"
 
    ![新串流分析作業輸入設定](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案] 。
 
 ### <a name="configure-the-job-output"></a>設定工作輸出
 工作會將結果傳送至取得輸入的相同 Blob 儲存體。 
@@ -168,7 +168,7 @@ ms.locfileid: "80067081"
 
    ![新串流分析作業輸出設定](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
 
-4. 按一下 **[儲存]** 。   
+4. 按一下 [檔案] 。   
 
 
 ### <a name="add-the-machine-learning-function"></a>新增機器學習服務函數 
@@ -190,7 +190,7 @@ ms.locfileid: "80067081"
   
    ![將機器學習服務函式新增至串流分析作業的設定](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
-4. 按一下 **[儲存]** 。
+4. 按一下 [檔案] 。
 
 ### <a name="create-a-query-to-transform-the-data"></a>建立查詢來轉換資料
 

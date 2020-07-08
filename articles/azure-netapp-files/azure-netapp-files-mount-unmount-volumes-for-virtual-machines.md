@@ -5,14 +5,14 @@ author: b-juche
 ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: d02ceda9dc2c6a822d45c2a31fe91a976610292b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.topic: how-to
+ms.date: 07/06/2020
+ms.openlocfilehash: 4bfd90be2a469c5ab94172769729095069f53cd7
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610848"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045649"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>對 Windows 或 Linux 虛擬機器掛接或取消掛接磁碟區 
 
@@ -26,11 +26,11 @@ ms.locfileid: "82610848"
 
     ![裝載指示 NFS](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
 
-    ![裝載指示 SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
-    
-    如果您使用 NFSv 4.1，請使用下列命令來掛接檔案系統：`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
+    ![裝載指示 SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)  
+    * 如果您要掛接 NFS 磁片區，請確定您在 `vers` 命令中使用選項， `mount` 以指定對應至您要掛接之磁片區的 NFS 通訊協定版本。 
+    * 如果您使用 NFSv 4.1，請使用下列命令來掛接檔案系統：`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
 
-3. 如果您想要在 Azure VM 啟動或重新開機時自動掛接 NFS 磁片區，請將專案新增至主機`/etc/fstab`上的檔案。 
+3. 如果您想要在 Azure VM 啟動或重新開機時自動掛接 NFS 磁片區，請將專案新增至 `/etc/fstab` 主機上的檔案。 
 
     例如：`$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
@@ -41,11 +41,11 @@ ms.locfileid: "82610848"
 4. 如果您想要使用 NFS 將磁片區掛接到 Windows：
 
     a. 請先將磁片區掛接到 Unix 或 Linux VM。  
-    b. 針對磁片`chmod 777`區`chmod 775`執行或命令。  
+    b. `chmod 777`針對磁片區執行或 `chmod 775` 命令。  
     c. 透過 Windows 上的 NFS 用戶端掛接磁片區。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [針對 Azure NetApp Files 設定 NFSv4.1 預設網域](azure-netapp-files-configure-nfsv41-domain.md)
-* [NFS 常見問題](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
+* [NFS 常見問題集](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
 * [網路檔案系統概觀](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)

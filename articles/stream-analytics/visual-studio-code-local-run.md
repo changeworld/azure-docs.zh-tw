@@ -5,19 +5,19 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
-ms.topic: conceptual
-ms.openlocfilehash: c29d0d9ecd856ee9611df21d23b1b2b763e24652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: a47b641f4f5049beb605490122a33d407ac3e222
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75486465"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044357"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>使用 Visual Studio Code 和範例資料在本機測試串流分析查詢
 
 您可以使用適用于 Visual Studio Code 的 Azure 串流分析工具，以範例資料在本機測試您的串流分析作業。 您可以在專案的**LocalRunOutputs**資料夾中，找到 JSON 檔案中的查詢結果。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 安裝[.net CORE SDK](https://dotnet.microsoft.com/download)並重新啟動 Visual Studio Code。
 
@@ -35,7 +35,7 @@ ms.locfileid: "75486465"
 
 ## <a name="define-a-local-input"></a>定義本機輸入
 
-1. 在串流分析專案的 [輸入] 資料夾底下，按一下 [**輸入]。** 然後選取頂端一行的 [**新增本機輸入**]。
+1. 在串流分析專案的 [輸入] 資料夾底下，按一下 [ **input.js** ]。 然後選取頂端一行的 [**新增本機輸入**]。
 
     ![從專案新增本機輸入](./media/quick-create-vs-code/add-input-from-project.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "75486465"
 
     ![新增 ASA 本機輸入別名](./media/vscode-local-run/new-local-input-alias.png)
 
-5. 在新產生的**LocalInput_Input json**檔案中，輸入本機資料檔案所在的檔案路徑。
+5. 在 [新產生的**LocalInput_Input.js**檔案] 中，輸入本機資料檔案所在的檔案路徑。
 
     ![在 Visual Studio 中輸入本機檔案路徑](./media/vscode-local-run/local-file-path.png)
 

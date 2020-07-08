@@ -2,13 +2,13 @@
 title: 將 Azure Vm 移至新的訂用帳戶或資源群組
 description: 使用 Azure Resource Manager 將虛擬機器移至新的資源群組或訂用帳戶。
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: e5bd004b6619db9c9882b8e9e6005309317b8ca5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/06/2020
+ms.openlocfilehash: c85ec175d802a29de7a8a87ee7a51c0916762a5a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744644"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044544"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>適用于虛擬機器的移動指引
 
@@ -24,6 +24,18 @@ ms.locfileid: "82744644"
 * 當您不移動虛擬網路中的所有資源時，無法將現有虛擬網路中的虛擬機器移至新的訂用帳戶。
 * 低優先順序的虛擬機器和低優先順序的虛擬機器擴展集無法在資源群組或訂用帳戶之間移動。
 * 無法個別移動可用性設定組中的虛擬機器。
+
+## <a name="azure-disk-encryption"></a>Azure 磁碟加密
+
+您無法移動與金鑰保存庫整合的虛擬機器，以執行[適用于 Linux vm 的 Azure 磁碟加密](../../../virtual-machines/linux/disk-encryption-overview.md)或[適用于 Windows vm 的 Azure 磁碟加密](../../../virtual-machines/windows/disk-encryption-overview.md)。 若要移動 VM，您必須停用加密。
+
+```azurecli-interactive
+az vm encryption disable --resource-group demoRG --name myVm1
+```
+
+```azurepowershell-interactive
+Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
+```
 
 ## <a name="virtual-machines-with-azure-backup"></a>具有 Azure 備份的虛擬機器
 

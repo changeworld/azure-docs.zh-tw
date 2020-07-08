@@ -3,12 +3,12 @@ title: 部署 IRS 1075 藍圖範例
 description: IRS 1075 (Rev.11-2016) 藍圖範例的部署步驟，其中包括藍圖成品參數的詳細資料。
 ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 7faf1042f695ac43b2fa22d2685149426cb1ed80
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59e9194e3f7839ce0826717e2f8fcef35de7decb
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653094"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044765"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>部署 IRS 1075 藍圖範例
 
@@ -94,7 +94,7 @@ ms.locfileid: "83653094"
 |成品名稱|成品類型|參數名稱|描述|
 |-|-|-|-|
 |稽核 IRS 1075 (Rev.11-2016) 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應設定 VM 的 Log Analytics 工作區識別碼|這是應設定 VM 的 Log Analytics 工作區識別碼 (GUID)。|
-|稽核 IRS 1075 (Rev.11-2016) 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應啟用診斷記錄的資源類型清單|診斷記錄設定未啟用時，可稽核的資源類型清單。 您可以在 [Azure 監視器診斷記錄結構描述](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中找到可用值。|
+|稽核 IRS 1075 (Rev.11-2016) 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應啟用診斷記錄的資源類型清單|診斷記錄設定未啟用時，可稽核的資源類型清單。 您可以在 [Azure 監視器診斷記錄結構描述](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)中找到可用值。|
 |稽核 IRS 1075 (Rev.11-2016) 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應從 Windows VM 系統管理員群組中排除的使用者清單|應從系統管理員本機群組中排除之成員的分號分隔清單。 例如：Administrator; myUser1; myUser2|
 |稽核 IRS 1075 (Rev.11-2016) 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應納入 Windows VM 系統管理員群組中的使用者清單|應納入系統管理員本機群組中之成員的分號分隔清單。 例如：Administrator; myUser1; myUser2|
 |為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式|原則指派|Linux VM 擴展集 (VMSS) 的 Log Analytics 工作區|如果工作區是在指派的範圍之外，您必須手動將「Log Analytics 參與者」權限 (或類似權限) 授與原則指派的主體識別碼。|

@@ -3,12 +3,12 @@ title: CAF 移轉登陸區域藍圖範例概觀
 description: 適用於 Azure 移轉登陸區域藍圖範例之雲端採用架構 (CAF) 的概觀和結構
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: c4720ec3e94ee928553cd62017831e5158ac9b97
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 45479fd6fa3a49d2639e587d3dba2aaaf567d0b1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459860"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044816"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>適用於 Azure 的 Microsoft 雲端採用架構，移轉登陸區域藍圖範例的概觀
 
@@ -28,7 +28,7 @@ CAF 移轉登陸區域藍圖範例會在 Azure 中部署基礎結構資源，供
 - 部署 [Log Analytics](../../../../azure-monitor/overview.md)，以確保當您開始進行安全部署時，所有動作和服務皆會記錄到中央位置
 - 部署 [Azure資訊安全中心](../../../../security-center/security-center-intro.md) (標準版)，為您遷移的工作負載提供威脅防護。
 - 部署 [Azure 虛擬網路](../../../../virtual-network/virtual-networks-overview.md)，為您的虛擬機器提供隔離的網路和子網路。
-- 部署 [Azure Migrate 專案](../../../..//migrate/migrate-overview.md)以進行探索和評估。 我們正在新增伺服器評估、伺服器移轉、資料庫評估和資料庫移轉的工具。  
+- 部署 [Azure Migrate 專案](../../../../migrate/migrate-services-overview.md)以進行探索和評估。 我們正在新增伺服器評估、伺服器移轉、資料庫評估和資料庫移轉的工具。  
 
 
 所有這些項目皆遵循 [Azure 架構中心 - 參考架構](/azure/architecture/reference-architectures/)中所發佈且經過實證的做法。

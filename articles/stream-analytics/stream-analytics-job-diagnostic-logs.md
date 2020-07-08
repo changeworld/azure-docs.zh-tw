@@ -5,16 +5,16 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: 40b57af95f9ea4d4212756634c721ddd55f85d7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: troubleshooting
+ms.date: 06/18/2020
+ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127759"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044510"
 ---
-# <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用資源記錄針對 Azure 串流分析進行疑難排解
+# <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用資源記錄對 Azure 串流分析進行疑難排解
 
 有時候，Azure 串流分析作業會非預期地停止處理。 請務必要設法解決這類事件的問題。 錯誤發生的原因可能是非預期的查詢結果、裝置的連線狀況，或未預期的服務中斷。 串流分析中的資源記錄可協助您識別發生問題的原因，並縮短復原時間。
 
@@ -59,23 +59,23 @@ ms.locfileid: "82127759"
 
 強烈建議您開啟資源記錄，並將它們傳送至 Azure 監視器記錄。 預設為**關閉**。 若要開啟它們，請完成下列步驟：
 
-1.  登入 Azure 入口網站，然後瀏覽至您的 Stream Analytics 作業。 在 [監視]**** 下，選取 [診斷記錄]****。 然後選取 [開啟診斷]****。
+1.  如果您還沒有[Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)，請建立一個。 建議您將 Log Analytics 工作區與串流分析作業位於相同的區域。
+
+2.  登入 Azure 入口網站，然後瀏覽至您的 Stream Analytics 作業。 在 [監視]**** 下，選取 [診斷記錄]****。 然後選取 [開啟診斷]****。
 
     ![流覽至資源記錄的 Blade](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  在 [診斷設定]**** 中建立 [名稱]****，然後核取 [傳送至 Log Analytics]**** 旁邊的方塊。 然後，新增現有的 Log Analytics 工作區或建立新的 **Log Analytics 工作區**。 核取 [記錄]**** 下的 [執行]**** 和 [編寫]****，以及 [計量]**** 下的 [AllMetrics]**** 核取方塊。 按一下 **[儲存]** 。 建議您在與串流分析作業相同的 Azure 區域中使用 Log Analytics 工作區，以避免額外的成本。
+2.  **在 [****診斷設定名稱**] 中提供**名稱**，並核取 [**記錄**] 底下的 [**執行**] 和 [**撰寫**中] 方塊，然後**AllMetrics** [計量] 然後選取 [**傳送至 Log Analytics** ]，然後選擇您的工作區。 按一下 [檔案] 。
 
-    ![資源記錄的設定](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
+    ![資源記錄的設定](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
 3. 當您的串流分析作業開始時，資源記錄會路由傳送至您的 Log Analytics 工作區。 若要查看作業的資源記錄，請選取 [**監視**] 區段下的 [**記錄**]。
 
    ![監視中的資源記錄](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. 串流分析提供預先定義的查詢，可讓您輕鬆地搜尋您感興趣的記錄。 3個類別是**一般**、**輸入資料錯誤**和**輸出資料錯誤**。 例如，若要查看過去7天內作業的所有錯誤摘要，您可以選取 [**執行**適當的預先定義查詢]。 
+4. 串流分析提供預先定義的查詢，可讓您輕鬆地搜尋您感興趣的記錄。 您可以在左窗格中選取任何預先定義的查詢，然後選取 [**執行**]。 您會在下方窗格中看到查詢的結果。 
 
-   ![監視中的資源記錄](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
-
-   ![記錄檔的結果](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
+   ![監視中的資源記錄](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
 ## <a name="resource-log-categories"></a>資源記錄檔類別
 
@@ -94,14 +94,14 @@ Azure 串流分析會捕獲兩種資源記錄類別：
 
 所有記錄會儲存為 JSON 格式。 每個項目皆包含下列常見的字串欄位︰
 
-Name | 描述
+Name | 說明
 ------- | -------
 time | 記錄的時間戳記 (UTC 時間)。
 resourceId | 作業執行資源的識別碼 (大寫)。 其中包含訂用帳戶識別碼、資源群組，以及作業名稱。 例如，**/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**。
 category | 記錄類別 (**執行**或**編寫**)。
 operationName | 記錄的作業名稱。 例如，**傳送事件： SQL 輸出寫入失敗到 mysqloutput**。
 status | 作業的狀態。 例如，**失敗**或**成功**。
-層級 | 記錄層級。 例如，**錯誤**、**警告**或**資訊**。
+等級 | 記錄層級。 例如，**錯誤**、**警告**或**資訊**。
 properties | 記錄項目特定詳細資料 (序列化為 JSON 字串)。 如需詳細資訊，請參閱本文中下列幾節。
 
 ### <a name="execution-log-properties-schema"></a>執行記錄屬性結構描述
@@ -133,7 +133,7 @@ Name | 描述
 
 一般事件涵蓋所有其他事件。
 
-Name | 描述
+Name | 說明
 -------- | --------
 錯誤 | (選用) 錯誤資訊。 這通常是例外狀況資訊 (如果有的話)。
 訊息| 記錄訊息。

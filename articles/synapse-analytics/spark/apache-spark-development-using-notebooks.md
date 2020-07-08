@@ -1,24 +1,25 @@
 ---
-title: 建立、開發及維護 Azure Synapse Studio (預覽) 筆記本
+title: Synapse Studio 筆記本
 description: 在本文中，您將瞭解如何建立及開發 Azure Synapse Studio (預覽) 筆記本，以進行資料準備和視覺化。
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702107"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045683"
 ---
-# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>建立、開發及維護 Azure Synapse Studio (預覽) 筆記本
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio （預覽）筆記本
 
-Azure Synapse Studio (預覽) 筆記本是一個 Web 介面，可讓您建立檔案，其中包含即時程式碼、視覺效果和敘述文字。 筆記本是驗證想法和使用快速實驗從您的資料取得見解的絕佳位置。 筆記本也廣泛用於資料準備、資料視覺效果、機器學習和其他巨量資料案例。
+Synapse Studio （預覽）筆記本是一個 web 介面，可讓您建立檔案，其中包含即時程式碼、視覺效果和敘述文字。 筆記本是驗證想法和使用快速實驗從您的資料取得見解的絕佳位置。 筆記本也廣泛用於資料準備、資料視覺效果、機器學習和其他巨量資料案例。
 
 使用 Azure Synapse Studio 筆記本，您可以：
 
@@ -109,7 +110,7 @@ Azure Synapse Studio 筆記本支援四種 Apache Spark 語言：
 
 ### <a name="ide-style-intellisense"></a>整合式開發環境 (IDE) 樣式的 IntelliSense
 
-Azure Synapse Studio 與 Monaco 編輯器整合，可將整合式開發環境樣式的 IntelliSense 帶入儲存格編輯器。 語法醒目提示、錯誤標記和自動程式碼完成可協助您撰寫程式碼並更快速地識別問題。
+Azure Synapse Studio 與 Monaco 編輯器整合，可將整合式開發環境樣式的 IntelliSense 帶入儲存格編輯器。 語法醒目提示、錯誤標記和自動程式碼完成可協助您撰寫程式碼並更快速地找出問題。
 
 IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來檢視支援的功能。
 
@@ -343,7 +344,7 @@ displayHTML(html)
 
    ![command-mode](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. 編輯模式會以文字游標指示，提示您在編輯器區域中輸入。 儲存格處於編輯模式時，您無法在儲存格中輸入。 按下 `Enter` 或使用滑鼠按一下儲存格的編輯器區域，以進入編輯模式。
+2. 編輯模式會以文字游標指示，提示您在編輯器區域中輸入。 當儲存格處於編輯模式時，您可以在資料格中輸入。 按下 `Enter` 或使用滑鼠按一下儲存格的編輯器區域，以進入編輯模式。
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 

@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 106b1f0b765700803d2cd55b5e049fae5be3dfad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76847195"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045394"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>使用 Visual Studio 中的工作圖表在本機上進行 Azure 串流分析查詢的調試
 
@@ -20,7 +20,7 @@ ms.locfileid: "76847195"
 
 ## <a name="debug-a-query-using-job-diagram"></a>使用作業圖表來進行查詢的調試
 
-Azure 串流分析腳本是用來將輸入資料轉換成輸出資料。 作業圖表會顯示從輸入來源（事件中樞、IoT 中樞等）到多個查詢步驟的資料流程，最後是輸出接收的方式。 每個查詢步驟都會對應至使用`WITH`語句在腳本中定義的暫存結果集。 您可以在每個中繼結果集中查看資料以及每個查詢步驟的度量，以找出問題的來源。
+Azure 串流分析腳本是用來將輸入資料轉換成輸出資料。 作業圖表會顯示從輸入來源（事件中樞、IoT 中樞等）到多個查詢步驟的資料流程，最後是輸出接收的方式。 每個查詢步驟都會對應至使用語句在腳本中定義的暫存結果集 `WITH` 。 您可以在每個中繼結果集中查看資料以及每個查詢步驟的度量，以找出問題的來源。
 
 > [!NOTE]
 > 此作業圖表只會在單一節點中顯示本機測試的資料和計量。 它不應該用來進行效能調整和疑難排解。

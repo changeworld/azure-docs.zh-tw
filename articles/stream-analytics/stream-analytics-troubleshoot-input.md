@@ -5,15 +5,15 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9d8d87e0a2fb21603802f533a3566aa6743a9a79
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 3cac20e33ff865058ce41799ae8841a05716edc9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831886"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045071"
 ---
 # <a name="troubleshoot-input-connections"></a>針對輸入連線進行疑難排解
 
@@ -139,9 +139,31 @@ FROM data
 
 如果查詢中有三個以上的輸入與同一個事件中樞取用者群組連線，請建立個別的取用者群組。 這需要建立其他串流分析輸入。
 
+### <a name="create-separate-inputs-with-different-consumer-groups"></a>使用不同的取用者群組來建立個別的輸入
+
+您可以針對相同的事件中樞，使用不同的取用者群組來建立不同的輸入。 下列聯集查詢是一個範例，其中*InputOne*和*InputTwo*指的是相同的事件中樞來源。 任何查詢都可以具有不同的取用者群組的個別輸入。 UNION 查詢只是其中一個範例。
+
+```sql
+WITH 
+DataOne AS 
+(
+SELECT * FROM InputOne 
+),
+
+DataTwo AS 
+(
+SELECT * FROM InputTwo 
+),
+
+SELECT foo FROM DataOne
+UNION 
+SELECT foo FROM DataTwo
+
+```
+
 ## <a name="get-help"></a>取得說明
 
-如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) \(英文\)。
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 

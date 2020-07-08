@@ -3,12 +3,12 @@ title: 分割 Service Fabric 服務
 description: 描述如何分割 Service Fabric 具狀態服務。 資料分割可讓資料儲存在本機電腦上，因此可以一起調整資料和計算。
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e395fc31550dfdbedf963db0d648191453d016b2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115152"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045411"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>分割 Service Fabric 可靠服務
 這篇文章介紹分割 Azure Service Fabric 可靠服務的基本概念。 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)上也提供本文中使用的原始碼。
@@ -21,11 +21,11 @@ ms.locfileid: "81115152"
 
 ![無狀態服務](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-實際上有兩種無狀態服務解決方案。 第一種是將狀態保存在外部的服務，例如 Azure SQL 資料庫 (例如儲存工作階段資訊和資料的網站)。 第二種是僅限計算的服務 (例如計算機或影像縮圖)，不管理任何持續性狀態。
+實際上有兩種無狀態服務解決方案。 第一個是在外部保存其狀態的服務，例如在 Azure SQL Database 的資料庫中（如儲存會話資訊和資料的網站）。 第二種是僅限計算的服務 (例如計算機或影像縮圖)，不管理任何持續性狀態。
 
 在任一情況下，分割無狀態服務是很少見的情況，通常是藉由新增更多執行個體來達成延展性和可用性。 當您必須符合特殊的路由要求時，才會想要考慮對無狀態服務執行個體使用多個資料分割。
 
-例如，試想有一個情況，其中識別碼在某個範圍內的使用者應只由特定的服務執行個體來服務。 另一個您會分割無狀態服務的例子是當您有真正分割的後端時 (例如分區化 SQL 資料庫)，而且您想要控制哪一個服務執行個體應該寫入資料庫分區，或在需要有後端中使用的相同分割資訊的無狀態服務內執行其他準備工作。 這幾種情況也可以透過不同方式解決，不一定需要服務分割。
+例如，試想有一個情況，其中識別碼在某個範圍內的使用者應只由特定的服務執行個體來服務。 當您可以分割無狀態服務時，另一個範例是當您有真正分割的後端（例如 SQL Database 中的分區化資料庫），而且您想要控制哪些服務實例應該寫入資料庫分區時，或在無狀態服務內執行其他準備工作（需要與後端中使用的相同資料分割資訊）。 這幾種情況也可以透過不同方式解決，不一定需要服務分割。
 
 本逐步解說的其餘部分著重於具狀態服務。
 
@@ -115,7 +115,7 @@ Service Fabric 有三個資料分割配置可選擇：
 > 
 > 
 
-1. 開啟**Visual Studio** > **File**Visual Studio > 檔案] [**新增** > **專案**]。
+1. 開啟**Visual Studio**檔案] [  >  **File**  >  **新增**  >  **專案**]。
 2. 在 [新增專案] **** 對話方塊中，選擇 Service Fabric 應用程式
 3. 將專案命名為 "AlphabetPartitions"。
 4. 在 [建立服務]**** 對話方塊中，選擇 [具狀態]**** 服務並且命名為 "Alphabet.Processing"。
