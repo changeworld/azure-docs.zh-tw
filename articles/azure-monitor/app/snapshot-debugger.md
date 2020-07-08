@@ -5,14 +5,13 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
 ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84692014"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 應用程式中的例外狀況偵錯快照集
-發生例外狀況時，您可以自動從即時 Web 應用程式收集偵錯快照集。 快照集會顯示擲回例外狀況時原始程式碼和變數的狀態。 [Azure 應用程式 Insights](../../azure-monitor/app/app-insights-overview.md)中的快照偵錯工具會監視來自 web 應用程式的例外狀況遙測。 它會收集前幾個擲回例外狀況的快照集，讓您取得診斷生產環境中問題所需的資訊。 在您的應用程式中包含[快照集收集器 NuGet 套件](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)，並選擇性地設定[ApplicationInsights](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中的集合參數。快照集會出現在 Application Insights 入口網站的[例外](../../azure-monitor/app/asp-net-exceptions.md)狀況中。
+發生例外狀況時，您可以自動從即時 Web 應用程式收集偵錯快照集。 快照集會顯示擲回例外狀況時原始程式碼和變數的狀態。 [Azure 應用程式 Insights](../../azure-monitor/app/app-insights-overview.md)中的快照偵錯工具會監視來自 web 應用程式的例外狀況遙測。 它會收集前幾個擲回例外狀況的快照集，讓您取得診斷生產環境中問題所需的資訊。 在您的應用程式中包含[快照集收集器 NuGet 套件](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)，並選擇性地在[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中設定集合參數。快照集會出現在 Application Insights 入口網站的[例外](../../azure-monitor/app/asp-net-exceptions.md)狀況中。
 
 您可以檢視入口網站中的偵錯快照集，以查看呼叫堆疊並檢查每個呼叫堆疊框架的變數。 若要使用原始程式碼取得更強大的偵錯工具體驗，請使用 Visual Studio 2019 Enterprise 開啟快照集。 在 Visual Studio 中，您也可以[設定貼齊點以互動方式建立快照集](https://aka.ms/snappoint)，而不需等待例外狀況。
 
@@ -46,7 +45,7 @@ ms.locfileid: "79275759"
 訂用帳戶擁有者應將 `Application Insights Snapshot Debugger` 角色指派給將會檢查快照集的使用者。 這個角色可以由目標 Application Insights 資源或其資源群組或訂用帳戶的訂用帳戶擁有者，指派給個別使用者或群組。
 
 1. 在 Azure 入口網站中巡覽到 Application Insights 資源。
-1. 按一下 **[存取控制（IAM）**]。
+1. 按一下 [存取控制 (IAM)]。
 1. 按一下 [+新增角色指派]**** 按鈕。
 1. 從 [角色]**** 下拉式清單中選取 [Application Insights 快照集偵錯工具]****。
 1. 搜尋並輸入要新增的使用者名稱。
@@ -73,9 +72,9 @@ ms.locfileid: "79275759"
 快照集可能包含機密資訊，依預設為不可檢視。 若要檢視快照集，您必須有指派給您的 `Application Insights Snapshot Debugger` 角色。
 
 ## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>查看 Visual Studio 2017 Enterprise 或更新版本中的快照集
-1. 按一下 [**下載快照**集] 按鈕， `.diagsession`下載可由 Visual Studio Enterprise 開啟的檔。
+1. 按一下 [**下載快照**集] 按鈕 `.diagsession` ，下載可由 Visual Studio Enterprise 開啟的檔。
 
-2. 若要開啟`.diagsession`檔案，您必須安裝快照偵錯工具 Visual Studio 元件。 快照偵錯工具元件是 Visual Studio 中 ASP.net 工作負載的必要元件，而且可以從 Visual Studio 安裝程式中的個別元件清單中選取。 如果您使用 Visual Studio 2017 15.5 版之前的 Visual Studio 版本，您必須從[Visual Studio Marketplace](https://aka.ms/snapshotdebugger)安裝延伸模組。
+2. 若要開啟檔案 `.diagsession` ，您必須安裝快照偵錯工具 Visual Studio 元件。 快照偵錯工具元件是 Visual Studio 中 ASP.net 工作負載的必要元件，而且可以從 Visual Studio 安裝程式中的個別元件清單中選取。 如果您使用 Visual Studio 2017 15.5 版之前的 Visual Studio 版本，您必須從[Visual Studio Marketplace](https://aka.ms/snapshotdebugger)安裝延伸模組。
 
 3. 開啟快照集檔案之後，Visual Studio 中的 [小型傾印偵錯] 分頁隨即出現。 按一下 [偵錯受控碼]**** 以開始偵錯快照集。 快照集會開啟至擲回例外狀況的程式碼行，您可將程序的目前狀態進行偵錯。
 

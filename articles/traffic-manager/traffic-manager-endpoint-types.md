@@ -4,7 +4,6 @@ description: 本文說明可搭配 Azure 流量管理員使用的各類型端點
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +11,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: rohink
-ms.openlocfilehash: 3d8f899a7899243129d31c2620a51dc764a8e917
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cd5c6968425c64bd670e56bbe7ae016c59662169
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84698660"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理員端點
 
@@ -38,7 +36,7 @@ Microsoft Azure 流量管理員可讓您控制如何將網路流量分散到在�
 在流量管理員中，Azure 端點用於以 Azure 為基礎的服務。 支援下列的 Azure 資源類型︰
 
 * PaaS 雲端服務
-* Web 應用程式
+* Web Apps
 * Web 應用程式位置
 * PublicIPAddress 資源 (可以直接或透過 Azure Load Balancer 連接至 VM)。 PublicIpAddress 必須已獲指派 DNS 名稱，才能在流量管理員設定檔中使用。
 

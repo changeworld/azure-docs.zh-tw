@@ -6,13 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/24/2020
-ms.openlocfilehash: 0a83117d6d58f45d6ee1de2b8d61c2157738fc75
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.date: 06/10/2020
+ms.openlocfilehash: feb1cc132bf5463550a2e7921f347c8f2f48260e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667993"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本啟用更新管理
 
@@ -23,12 +22,9 @@ ms.locfileid: "83830986"
 * 將自動化帳戶連結至 Log Analytics 工作區 (如果尚未連結)。
 * 啟用更新管理。
 
-此範本不會自動啟用一或多個 Azure 或非 Azure VM。
+此範本不會自動化在一或多個 Azure 或非 Azure Vm 上啟用更新管理。
 
-如果您已在訂用帳戶的支援區域中部署 Log Analytics 工作區和自動化帳戶，則不會與其連結。 工作區尚未啟用更新管理。 使用此範本可成功建立連結，並為您的 VM 部署更新管理。 
-
->[!NOTE]
->在 Linux 上作為更新管理一部分啟用的 **nxautomation** 使用者，只會執行已簽署的 Runbook。
+如果您已在訂用帳戶的支援區域中部署 Log Analytics 工作區和自動化帳戶，則不會與其連結。 使用此範本會成功建立連結並部署更新管理。
 
 ## <a name="api-versions"></a>API 版本
 
@@ -36,8 +32,8 @@ ms.locfileid: "83830986"
 
 | 資源 | 資源類型 | API 版本 |
 |:---|:---|:---|
-| 工作區 | workspaces | 2017-03-15-preview |
-| 自動化帳戶 | automation | 2015-10-31 | 
+| 工作區 | workspaces | 2020-03-01-預覽 |
+| 自動化帳戶 | automation | 2018-06-30 | 
 | 解決方法 | solutions | 2015-11-01-preview |
 
 ## <a name="before-using-the-template"></a>使用範本之前
@@ -48,10 +44,11 @@ ms.locfileid: "83830986"
 
 JSON 範本已設定為提示您輸入：
 
-* 工作區的名稱
-* 要在其中建立工作區的區域
-* 自動化帳戶的名稱
-* 要在其中建立帳戶的區域
+* 工作區的名稱。
+* 要在其中建立工作區的區域。
+* 以啟用資源或工作區許可權。
+* 自動化帳戶的名稱。
+* 要在其中建立帳戶的區域。
 
 JSON 範本會針對您的環境中可能用於標準設定的其他參數，指定預設值。 您可以將範本儲存在 Azure 儲存體帳戶中，以在組織內共用存取。 如需使用範本的詳細資訊，請參閱[使用 Resource Manager 範本和 Azure CLI 部署資源](../azure-resource-manager/templates/deploy-cli.md)。
 
@@ -59,7 +56,6 @@ JSON 範本會針對您的環境中可能用於標準設定的其他參數，指
 
 * SKU - 預設為在 2018 年 4 月定價模型中發行的全新每 GB 定價層
 * 資料保留 - 預設為三十天
-* 容量保留 - 預設為 100 GB
 
 >[!WARNING]
 >如果在已選擇加入 2018 年 4 月全新定價模型的訂用帳戶中建立或設定 Log Analytics 工作區，則唯一有效的 Log Analytics 定價層是 **PerGB2018**。
@@ -114,18 +110,17 @@ JSON 範本會針對您的環境中可能用於標準設定的其他參數，指
                 "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
             }
         },
-        "immediatePurgeDataOn30Days": {
-            "type": "bool",
-            "defaultValue": "[bool('false')]",
-            "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
-            }
-        },
         "location": {
             "type": "string",
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
+        },
+        "resourcePermissions": {
+              "type": "bool",
+              "metadata": {
+                "description": "true to use resource or workspace permissions. false to require workspace permissions."
+              }
         },
         "automationAccountName": {
             "type": "string",
@@ -150,13 +145,11 @@ JSON 範本會針對您的環境中可能用於標準設定的其他參數，指
         {
         "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2020-03-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "Name": "[parameters('sku')]",
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                    "name": "[parameters('sku')]",
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -168,7 +161,7 @@ JSON 範本會針對您的環境中可能用於標準設定的其他參數，指
             "resources": [
                 {
                     "apiVersion": "2015-11-01-preview",
-                    "location": "[resourceGroup().location]",
+                    "location": "[parameters('location')]",
                     "name": "[variables('Updates').name]",
                     "type": "Microsoft.OperationsManagement/solutions",
                     "id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.OperationsManagement/solutions/', variables('Updates').name)]",
@@ -189,7 +182,7 @@ JSON 範本會針對您的環境中可能用於標準設定的其他參數，指
         },
         {
             "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "2015-01-01-preview",
+            "apiVersion": "2018-06-30",
             "name": "[parameters('automationAccountName')]",
             "location": "[parameters('automationAccountLocation')]",
             "dependsOn": [],
@@ -201,10 +194,10 @@ JSON 範本會針對您的環境中可能用於標準設定的其他參數，指
             },
         },
         {
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2020-03-01-preview",
             "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
             "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
                 "[concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"
@@ -242,8 +235,7 @@ JSON 範本會針對您的環境中可能用於標準設定的其他參數，指
 ## <a name="next-steps"></a>後續步驟
 
 * 若要使用 VM 的更新管理，請參閱[管理 Azure VM 的更新和修補程式](automation-tutorial-update-management.md)。
+
 * 如果您不再需要 Log Analytics 工作區，請參閱[從更新管理的自動化帳戶取消連結工作區](automation-unlink-workspace-update-management.md)中的指示。
+
 * 若要從更新管理中刪除 VM，請參閱[從更新管理中移除 VM](automation-remove-vms-from-update-management.md)。
-* 若要針對一般更新管理錯誤進行疑難排解，請參閱[針對更新管理問題進行疑難排解](troubleshoot/update-management.md)。
-* 若要針對 Windows 更新代理程式的問題進行疑難排解，請參閱[針對 Windows 更新代理程式問題進行疑難排解](troubleshoot/update-agent-issues.md)。
-* 若要針對 Linux 更新代理程式的問題進行疑難排解，請參閱[針對 Linux 更新代理程式問題進行疑難排解](troubleshoot/update-agent-issues-linux.md)。

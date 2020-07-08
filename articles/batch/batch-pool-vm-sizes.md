@@ -1,15 +1,14 @@
 ---
 title: 選擇集區的 VM 大小
 description: 如何為 Azure Batch 集區中的計算節點選取可用的 VM 大小
-ms.topic: how-to
-ms.date: 09/12/2019
+ms.topic: conceptual
+ms.date: 06/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2e0d403f405d58c0d7488ac6d0c306be2f2d79ea
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: c1621bbbe6676144176636346f3f5c34db169b7a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779157"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84693153"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>為 Azure Batch 集區中的運算節點選擇 VM 大小
 
@@ -35,9 +34,13 @@ ms.locfileid: "83779157"
 | DC | None |
 | Dv2、DSv2 | 所有大小 |
 | Dv3、Dsv3 | 所有大小 |
-| Dav4、Dasv4 | 無 - 尚未提供 |
+| Dav4<sup>1</sup> | 無 - 尚未提供 |
+| Dasv4<sup>1</sup> | 除了 Standard_D48as_v4、Standard_D64as_v4、Standard_D96as_v4 以外的所有大小 |
+| Ddv4, Ddsv4 |  無 - 尚未提供 |
 | Ev3、Esv3 | E64is_v3 和 E64i_v3 以外的所有大小 |
-| Eav4、Easv4 | 無 - 尚未提供 |
+| Eav4<sup>1</sup> | 除了 Standard_E48a_v4、Standard_E64a_v4、Standard_E96a_v4 以外的所有大小 |
+| Easv4<sup>1</sup> | 除了 Standard_E48as_v4、Standard_E64as_v4、Standard_E96as_v4 以外的所有大小 |
+| Edv4, Edsv4 |  無 - 尚未提供 |
 | F、Fs | 所有大小 |
 | Fsv2 | 所有大小 |
 | G、Gs | 所有大小 |
@@ -46,8 +49,8 @@ ms.locfileid: "83779157"
 | HBv2<sup>1</sup> | 所有大小 |
 | HC<sup>1</sup> | 所有大小 |
 | Ls | 所有大小 |
-| Lsv2 | 無 - 尚未提供 |
-| M<sup>1</sup> | M64、M64m、M128、M128m 以外的所有大小 |
+| Lsv2<sup>1</sup> | 所有大小 |
+| M<sup>1</sup> | 所有大小 |
 | Mv2 | 無 - 尚未提供 |
 | NC | 所有大小 |
 | NCv2<sup>1</sup> | 所有大小 |

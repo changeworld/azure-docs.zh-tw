@@ -5,21 +5,18 @@ description: 如何將訓練實驗轉換成預測實驗、準備部署，然後�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 4cbc17e0352b9dfed3df9bbbd1480b9846f7ae75
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208477"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696383"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure Machine Learning Studio （傳統） web 服務
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Azure Machine Learning Studio （傳統）可讓您建立和測試預測性分析解決方案。 您接著可以將解決方案部署為 Web 服務。
 
@@ -42,7 +39,7 @@ BES 的輸入就像 RRS 使用的資料輸入。 主要差異在於，BES 會從
 
 若要定型預測性分析模型，您可以使用 Azure Machine Learning Studio （傳統）來建立訓練實驗，其中包含各種模組來載入訓練資料、視需要準備資料、套用機器學習演算法，以及評估結果。 您可以逐一查看實驗，並且嘗試不同的機器學習演算法以比較及評估結果。
 
-關於建立和管理訓練實驗的處理，其他地方有更詳盡的說明。 如需詳細資訊，請參閱這些文章：
+關於建立和管理訓練實驗的處理，其他地方有更詳盡的說明。 如需詳細資訊，請參閱下列文章：
 
 * [在 Azure Machine Learning Studio 中建立簡單的實驗（傳統）](create-experiment.md)
 * [使用 Azure Machine Learning Studio 開發預測性解決方案（傳統）](tutorial-part1-credit-risk.md)
@@ -212,7 +209,7 @@ RRS 測試頁面會顯示輸入、輸出以及任何您已為實驗定義的全�
 6. 從 [資源群組] **** 下拉式清單中，選取方案的資源群組。 如需資源群組的詳細資訊，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。
 7. 在 [方案名稱] **** 中，輸入方案的名稱。
 8. 在 [方案選項] **** 下，按一下新方案的計費層級。
-9. 按一下 [建立]  。
+9. 按一下 [建立]。
 
 #### <a name="deploy-the-web-service-to-another-region"></a>將 Web 服務部署到另一個區域
 

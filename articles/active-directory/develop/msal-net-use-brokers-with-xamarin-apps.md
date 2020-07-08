@@ -13,11 +13,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1a57173311278c5e3e0304aeb12d4d6999379eb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262785"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84692320"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 應用程式上使用 Microsoft Authenticator 或 Intune 公司入口網站
 
@@ -27,7 +26,7 @@ ms.locfileid: "79262785"
 - **裝置識別**：訊息代理程式會存取裝置憑證。 此憑證會在加入工作場所的裝置上建立。
 - **應用程式識別驗證**：當應用程式呼叫訊息代理程式時，它會傳遞其重新導向 URL。 訊息代理程式會驗證 URL。
 
-若要啟用其中一項功能，請`WithBroker()`在呼叫`PublicClientApplicationBuilder.CreateApplication`方法時使用參數。 根據`.WithBroker()`預設，參數會設定為 true。 
+若要啟用其中一項功能，請在 `WithBroker()` 呼叫方法時使用 `PublicClientApplicationBuilder.CreateApplication` 參數。 `.WithBroker()`根據預設，參數會設定為 true。 
 
 此外，請使用下列各節中的指示來設定[iOS](#brokered-authentication-for-ios)應用程式或[Android](#brokered-authentication-for-android)應用程式的代理驗證。
 
@@ -36,7 +35,7 @@ ms.locfileid: "79262785"
 請使用下列步驟來啟用您的 Xamarin iOS 應用程式，以與[Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458)應用程式交談。
 
 ### <a name="step-1-enable-broker-support"></a>步驟1：啟用訊息代理程式支援
-您必須針對個別的`PublicClientApplication`實例啟用 broker 支援。 預設會停用支援。 當您透過`PublicClientApplication` `PublicClientApplicationBuilder`建立時，請`WithBroker()`使用參數，如下列範例所示。 根據`WithBroker()`預設，參數會設定為 true。
+您必須針對個別的實例啟用 broker 支援 `PublicClientApplication` 。 預設會停用支援。 當您透過建立時 `PublicClientApplication` `PublicClientApplicationBuilder` ，請使用 `WithBroker()` 參數，如下列範例所示。 `WithBroker()`根據預設，參數會設定為 true。
 
 ```csharp
 var app = PublicClientApplicationBuilder
@@ -48,7 +47,7 @@ var app = PublicClientApplicationBuilder
 
 ### <a name="step-2-enable-keychain-access"></a>步驟2：啟用 keychain 存取
 
-若要啟用 keychain 存取，您的應用程式必須擁有 keychain 存取群組。 當您建立應用`WithIosKeychainSecurityGroup()`程式時，可以使用 API 來設定您的 keychain 存取群組：
+若要啟用 keychain 存取，您的應用程式必須擁有 keychain 存取群組。 `WithIosKeychainSecurityGroup()`當您建立應用程式時，可以使用 API 來設定您的 keychain 存取群組：
 
 ```csharp
 var builder = PublicClientApplicationBuilder
@@ -61,7 +60,7 @@ var builder = PublicClientApplicationBuilder
 如需詳細資訊，請參閱[Enable keychain access](msal-net-xamarin-ios-considerations.md#enable-keychain-access)。
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>步驟3：更新 AppDelegate 以處理回呼
-當適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）呼叫訊息代理程式時，訊息代理程式會`OpenUrl`透過`AppDelegate`類別的方法來回呼您的應用程式。 因為 MSAL 會等待 broker 的回應，所以您的應用程式需要合作以呼叫 MSAL.NET 回來。 若要啟用這項合作， `AppDelegate.cs`請更新檔案以覆寫下列方法。
+當適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）呼叫訊息代理程式時，訊息代理程式會透過類別的方法來回呼您的應用程式 `OpenUrl` `AppDelegate` 。 因為 MSAL 會等待 broker 的回應，所以您的應用程式需要合作以呼叫 MSAL.NET 回來。 若要啟用這項合作，請更新檔案 `AppDelegate.cs` 以覆寫下列方法。
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, 
@@ -86,14 +85,14 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 每次啟動應用程式時，就會叫用這個方法。 它是用來處理來自訊息代理程式之回應的機會，並完成 MSAL.NET 所啟動的驗證流程。
 
 ### <a name="step-4-set-uiviewcontroller"></a>步驟4：設定 UIViewController （）
-仍然在檔案`AppDelegate.cs`中，您必須設定 [物件] 視窗。 一般來說，在 Xamarin iOS 中，您不需要設定 [物件] 視窗。 但是您需要一個物件視窗，才能傳送和接收來自訊息代理程式的回應。 
+仍然在檔案中 `AppDelegate.cs` ，您必須設定 [物件] 視窗。 一般來說，在 Xamarin iOS 中，您不需要設定 [物件] 視窗。 但是您需要一個物件視窗，才能傳送和接收來自訊息代理程式的回應。 
 
 若要設定物件視窗： 
-1. `AppDelegate.cs`在檔案中，將`App.RootViewController`設定為新`UIViewController()`的。 此指派可確保對 broker 的呼叫包含`UIViewController`。 如果未正確指派此設定，您可能會收到此錯誤：
+1. 在檔案中 `AppDelegate.cs` ，將設定 `App.RootViewController` 為新的 `UIViewController()` 。 此指派可確保對 broker 的呼叫包含 `UIViewController` 。 如果未正確指派此設定，您可能會收到此錯誤：
 
       `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 
-1. 在`AcquireTokenInteractive`呼叫上，使用`.WithParentActivityOrWindow(App.RootViewController)` ，然後將參考傳入您將使用的物件視窗。
+1. 在 `AcquireTokenInteractive` 呼叫上，使用， `.WithParentActivityOrWindow(App.RootViewController)` 然後將參考傳入您將使用的物件視窗。
 
     在 `App.cs` 中：
 
@@ -108,7 +107,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
        App.RootViewController = new UIViewController();
     ```
 
-    在`AcquireToken`呼叫中：
+    在 `AcquireToken` 呼叫中：
 
     ```csharp
     result = await app.AcquireTokenInteractive(scopes)
@@ -117,11 +116,11 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
     ```
 
 ### <a name="step-5-register-a-url-scheme"></a>步驟5：註冊 URL 配置
-MSAL.NET 使用 Url 叫用訊息代理程式，然後將 broker 回應傳回給您的應用程式。 若要完成來回行程，請在檔案中`Info.plist`註冊您應用程式的 URL 配置。
+MSAL.NET 使用 Url 叫用訊息代理程式，然後將 broker 回應傳回給您的應用程式。 若要完成來回行程，請在檔案中註冊您應用程式的 URL 配置 `Info.plist` 。
 
-`CFBundleURLSchemes`名稱必須包含`msauth.`做為前置詞。 在前置詞後面`CFBundleURLName`加上。 
+`CFBundleURLSchemes`名稱必須包含 `msauth.` 做為前置詞。 在前置詞後面加上 `CFBundleURLName` 。 
 
-在 URL 配置中， `BundleId`可唯一識別應用程式`$"msauth.(BundleId)"`：。 因此， `BundleId`如果`com.yourcompany.xforms`是，則 URL 配置是`msauth.com.yourcompany.xforms`。
+在 URL 配置中，可 `BundleId` 唯一識別應用程式： `$"msauth.(BundleId)"` 。 因此 `BundleId` ，如果是 `com.yourcompany.xforms` ，則 URL 配置是 `msauth.com.yourcompany.xforms` 。
 
 > [!NOTE]
 > 此 URL 配置會成為重新導向 URI 的一部分，它會在收到來自訊息代理程式的回應時，唯一識別您的應用程式。
@@ -144,9 +143,9 @@ MSAL.NET 使用 Url 叫用訊息代理程式，然後將 broker 回應傳回給�
 
 ### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>步驟6：將 broker 識別碼新增至 LSApplicationQueriesSchemes 區段
 
-MSAL 使用`–canOpenURL:`檢查代理程式是否已安裝在裝置上。 在 iOS 9 中，Apple 已鎖定應用程式可以查詢的配置。 
+MSAL 使用 `–canOpenURL:` 檢查代理程式是否已安裝在裝置上。 在 iOS 9 中，Apple 已鎖定應用程式可以查詢的配置。 
 
-將`msauthv2`新增至`LSApplicationQueriesSchemes`檔案的區段`Info.plist` ，如下列範例所示：
+將新增 `msauthv2` 至檔案的 `LSApplicationQueriesSchemes` 區段 `Info.plist` ，如下列範例所示：
 
 ```XML
 <key>LSApplicationQueriesSchemes</key>
@@ -170,7 +169,7 @@ $"msauth.{BundleId}://auth"
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```
 
-請注意，[重新導向 URI `CFBundleURLSchemes` ] 符合您在檔案中`Info.plist`包含的名稱。
+請注意，[重新導向 URI] 符合 `CFBundleURLSchemes` 您在檔案中包含的名稱 `Info.plist` 。
 
 ### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>步驟8：確認重新導向 URI 已向您的應用程式註冊
 
@@ -180,7 +179,7 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 若要計算重新導向 URI：
 
-1. 在應用程式註冊入口網站中，選擇 [**驗證** > ]**試用新的體驗**。
+1. 在應用程式註冊入口網站中，選擇 [**驗證**]  >  **試用新的體驗**。
 
    ![試用新的應用程式註冊體驗](media/msal-net-use-brokers-with-xamarin-apps/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
@@ -204,7 +203,7 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 ### <a name="step-1-enable-broker-support"></a>步驟1：啟用訊息代理程式支援
 
-代理程式支援是以每個 PublicClientApplication 為基礎來啟用。 此功能預設為停用。 透過建立`WithBroker()`時，請使用參數（預設設定為 true） `PublicClientApplicationBuilder` `IPublicClientApplication`
+代理程式支援是以每個 PublicClientApplication 為基礎來啟用。 此功能預設為停用。 `WithBroker()`透過建立時，請使用參數（預設設定為 true） `IPublicClientApplication` `PublicClientApplicationBuilder` 。
 
 ```CSharp
 var app = PublicClientApplicationBuilder
@@ -217,7 +216,7 @@ var app = PublicClientApplicationBuilder
 ### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>步驟2：更新 AppDelegate 以處理回呼
 
 當 MSAL.NET 呼叫 broker 時，訊息代理程式會接著使用 OnActivityResult （）方法回呼您的應用程式。 由於 MSAL 會等待來自訊息代理程式的回應，因此您的應用程式需要將結果路由傳送至 MSAL.NET。
-這可以藉由覆寫 OnActivityResult （）方法`SetAuthenticationContinuationEventArgs(int requestCode, Result resultCode, Intent data)` （如下所示），將結果路由傳送至來達到此目的
+這可以藉由覆 `SetAuthenticationContinuationEventArgs(int requestCode, Result resultCode, Intent data)` 寫 OnActivityResult （）方法（如下所示），將結果路由傳送至來達到此目的
 
 ```CSharp
 protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -233,7 +232,7 @@ protected override void OnActivityResult(int requestCode, Result resultCode, Int
 
 若要讓代理驗證能夠正常執行，您必須設定活動，讓 MSAL 可以傳送和接收來自訊息代理程式的回應。
 
-若要這樣做，您必須將活動（通常是 MainActivity）提供給`WithParentActivityOrWindow(object parent)`做為父物件。 
+若要這樣做，您必須將活動（通常是 MainActivity）提供給 `WithParentActivityOrWindow(object parent)` 做為父物件。 
 
 **例如：**
 
@@ -256,7 +255,7 @@ MSAL 使用 Url 叫用訊息代理程式，然後返回您的應用程式。 若
 Example: msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
 ```
 
-URI `hgbUYHVBYUTvuvT&Y6tr554365466=`的最後部分是 APK 簽署的簽章，以 base64 編碼。
+URI 的最後部分 `hgbUYHVBYUTvuvT&Y6tr554365466=` 是 APK 簽署的簽章，以 base64 編碼。
 不過，在使用 Visual Studio 的應用程式開發階段期間，如果您要在未以特定憑證簽署 apk 的情況下，對您的程式碼進行偵錯工具，Visual Studio 會為您簽署 apk，以供您進行調試，讓 APK 為其建立所在之電腦的唯一簽章。 因此，每次您在不同的電腦上建立應用程式時，您都必須更新應用程式代碼中的重新導向 URI 和 Azure 入口網站中的應用程式註冊，才能使用 MSAL 進行驗證。 
 
 在偵錯工具中，您可能會遇到 MSAL 例外狀況（或記錄訊息），指出所提供的重新導向 URI 不正確。 **這個例外狀況也會提供**您在目前正在進行偵錯工具的電腦上使用的重新導向 URI。 您可以使用此重新導向 URI 繼續開發時間。

@@ -13,11 +13,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244013"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84690178"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理的頁面控制項
 Azure API 管理提供下列可在開發人員入口網站範本中使用的控制項。  
@@ -41,7 +40,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
 -   [app-actions](#app-actions)  
 -   [basic-signin](#basic-signin)  
 -   [分頁控制](#paging-control)  
--   [都會](#providers)  
+-   [提供者](#providers)  
 -   [搜尋-控制項](#search-control)  
 -   [sign-up](#sign-up)  
 -   [訂閱-按鈕](#subscribe-button)  
@@ -60,7 +59,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 ### <a name="parameters"></a>參數  
   
-|參數|描述|  
+|參數|說明|  
 |---------------|-----------------|  
 |appId|應用程式的識別碼。|  
   
@@ -168,7 +167,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
 ### <a name="developer-portal-templates"></a>開發人員入口網站範本  
  `sign-up` 控制項可用於下列開發人員入口網站範本：  
   
--   [註冊](api-management-page-templates.md#SignUp)  
+-   [登記](api-management-page-templates.md#SignUp)  
   
 ##  <a name="subscribe-button"></a><a name="subscribe-button"></a>subscribe-button  
  `subscribe-button` 會提供用來為使用者訂閱產品的控制項。  
@@ -187,7 +186,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
 ### <a name="developer-portal-templates"></a>開發人員入口網站範本  
  `subscribe-button` 控制項可用於下列開發人員入口網站範本：  
   
--   [基礎](api-management-product-templates.md#Product)  
+-   [產品](api-management-product-templates.md#Product)  
   
 ##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a>subscription-cancel  
  `subscription-cancel` 控制項會提供可在開發人員入口網站的 [使用者設定檔] 頁面中取消產品訂閱的控制項。  
@@ -212,7 +211,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
 ### <a name="developer-portal-templates"></a>開發人員入口網站範本  
  `subscription-cancel` 控制項可用於下列開發人員入口網站範本：  
   
--   [基礎](api-management-product-templates.md#Product)
+-   [產品](api-management-product-templates.md#Product)
 
 ## <a name="next-steps"></a>後續步驟
 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](api-management-developer-portal-templates.md)。

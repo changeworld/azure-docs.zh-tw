@@ -1,26 +1,25 @@
 ---
 title: 記憶體優化 Dv2 和 DSv2 系列 Vm-Azure 虛擬機器
 description: Dv2 和 DSv2 系列 Vm 的規格。
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 66e415070e60676df5602078aff50c7b68920f1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: 7dbc1f111225ecbe40329594479a8469f8bd8418
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77914036"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694703"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>記憶體優化 Dv2 和 Dsv2 系列
 
-Dv2 和 Dsv2 系列是原始 D 系列的後續操作，具備功能更強大的 CPU。 DSv2 系列大小執行于 Intel®的® 8171M 2.1 GHz （Skylake）或 Intel®的® E5-2673 v4 2.3 g h z （Broadwell）或 Intel®的® E5-2673 v3 2.4 GHz （Haswell）處理器上。 Dv2 系列的記憶體和磁碟組態和 D 系列一樣。
+Dv2 和 Dsv2 系列是原始 D 系列的後續操作，具備功能更強大的 CPU。 DSv2 系列大小是在 Intel®的®白金8272CL （串聯 Lake）、Intel®的® 8171M 2.1 GHz （Skylake），或 Intel®的最大® E5-2673 v4 2.3 GHz （Broadwell）或 Intel®的® E5-2673 v3 2.4 GHz （Haswell）處理器上執行。 Dv2 系列的記憶體和磁碟組態和 D 系列一樣。
 
 ## <a name="dv2-series-11-15"></a>Dv2 系列 11-15
 
-Dv2 系列大小執行于 Intel®的® 8171M 2.1 GHz （Skylake）或 Intel®的® E5-2673 v4 2.3 g h z （Broadwell）或 Intel®的® E5-2673 v3 2.4 GHz （Haswell）處理器上。
+Dv2 系列大小是在 Intel®的®白金8272CL （串聯 Lake）、Intel®的® 8171M 2.1 GHz （Skylake），或 Intel®的最大® E5-2673 v4 2.3 GHz （Broadwell）或 Intel®的® E5-2673 v3 2.4 GHz （Haswell）處理器上執行。
 
 ACU：210 - 250
 
@@ -28,7 +27,7 @@ ACU：210 - 250
 
 進階儲存體快取：不支援
 
-| Size | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 Nic/預期的網路頻寬（Mbps） |
 |---|---|---|---|---|---|---|
 | Standard_D11_v2 | 2  | 14  | 100 | 6000/93/46    | 8/8x500   | 2/1500  |
 | Standard_D12_v2 | 4  | 28  | 200 | 12000/187/93  | 16/16x500 | 4/3000  |
@@ -41,7 +40,7 @@ ACU：210 - 250
 
 ## <a name="dsv2-series-11-15"></a>DSv2 系列 11-15
 
-DSv2 系列大小執行于 Intel®的® 8171M 2.1 GHz （Skylake）或 Intel®的® E5-2673 v4 2.3 g h z （Broadwell）或 Intel®的® E5-2673 v3 2.4 GHz （Haswell）處理器上。
+DSv2 系列大小是在 Intel®的®白金8272CL （串聯 Lake）、Intel®的® 8171M 2.1 GHz （Skylake），或 Intel®的最大® E5-2673 v4 2.3 GHz （Broadwell）或 Intel®的® E5-2673 v3 2.4 GHz （Haswell）處理器上執行。
 
 ACU：210 - 250 <sup>1</sup>
 
@@ -49,7 +48,7 @@ ACU：210 - 250 <sup>1</sup>
 
 進階儲存體快取：支援
 
-| Size | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大未快取的磁片輸送量： IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2 <sup>3</sup> | 2  | 14  | 28  | 8  | 8000/64 （72）    | 6400/96   | 2/1500  |
 | Standard_DS12_v2 <sup>3</sup> | 4  | 28  | 56  | 16 | 16000/128 （144） | 12800/192 | 4/3000  |
@@ -71,7 +70,7 @@ ACU：210 - 250 <sup>1</sup>
 - [儲存體最佳化](sizes-storage.md)
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
-- [上一代](sizes-previous-gen.md)
+- [前幾代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>後續步驟
 

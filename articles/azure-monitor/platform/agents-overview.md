@@ -8,11 +8,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249083"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84686659"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽
 
@@ -33,7 +32,7 @@ ms.locfileid: "79249083"
 |:---|:---|:---|:---|
 | 支援的環境 | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | 
 | 代理程式需求  | None | None | 需要 Log Analytics 代理程式 |
-| 收集的資料 | 事件記錄<br>ETW 事件<br>效能<br>以檔案為基礎的記錄檔<br>IIS 記錄<br>.NET 應用程式記錄檔<br>損毀傾印<br>代理程式診斷記錄 | 事件記錄<br>效能<IIS logs><br>以檔案為基礎的記錄檔<br>見解和解決方案<br>其他服務 | 進程詳細資料和相依性<br>網路連接計量 |
+| 收集的資料 | 事件記錄<br>ETW 事件<br>效能<br>檔案型記錄<br>IIS 記錄<br>.NET 應用程式記錄檔<br>損毀傾印<br>代理程式診斷記錄 | 事件記錄<br>效能<IIS logs><br>檔案型記錄<br>見解和解決方案<br>其他服務 | 進程詳細資料和相依性<br>網路連接計量 |
 | 資料傳送至 | Azure 儲存體<br>Azure 監視器計量<br>事件中樞 | Azure 監視器記錄 | Azure 監視器記錄 |
 
 
@@ -118,5 +117,5 @@ Azure 診斷延伸模組的限制包括：
 取得每個代理程式的詳細資料，如下所示：
 
 - [Log Analytics 代理程式總覽](log-analytics-agent.md)
-- [Azure 診斷延伸模組總覽](diagnostics-extension-overview.md)
+- [Azure 診斷延伸模組概觀](diagnostics-extension-overview.md)
 - [使用 InfluxData Telegraf 代理程式收集 Linux VM 的自訂計量](collect-custom-metrics-linux-telegraf.md)

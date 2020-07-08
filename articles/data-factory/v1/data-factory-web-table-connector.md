@@ -13,11 +13,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689753"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure Data Factory 來移動 Web 資料表的資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -34,7 +33,7 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 > [!IMPORTANT]
 > 此 Web 連接器目前只支援從 HTML 網頁擷取資料表內容。 若要從 HTTP/s 端點擷取資料，請改用 [HTTP 連接器](data-factory-http-connector.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要使用此 Web 資料表連接器，您需要設定自我裝載 Integration Runtime (也稱為 Data Management Gateway)，並在接收連結服務中設定 `gatewayName` 屬性。 例如，若要從 Web 資料表複製至 Azure Blob 儲存體，請設定 Azure 儲存體連結的服務，如下所示：
 
@@ -70,11 +69,11 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 ## <a name="linked-service-properties"></a>連結服務屬性
 下表提供 Web 連結服務專屬 JSON 元素的說明。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| type |類型屬性必須設為： **Web** |是 |
-| Url |Web 來源的 URL |是 |
-| authenticationType |匿名。 |是 |
+| type |類型屬性必須設為： **Web** |Yes |
+| Url |Web 來源的 URL |Yes |
+| authenticationType |匿名。 |Yes |
 
 ### <a name="using-anonymous-authentication"></a>使用匿名驗證
 
@@ -98,13 +97,13 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 
 每個資料集類型的**typeProperties**區段都不同，並提供資料存放區中資料位置的相關資訊。 **WebTable** 類型資料集的 typeProperties 區段有下列屬性
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type |資料集的類型。 必須設定為 **WebTable** |是 |
-| 路徑 |包含資料表之資源的相對 URL。 |否。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
-| 索引 |資源中資料表的索引。 如需取得 HTML 網頁中資料表索引的步驟，請參閱[取得 html 網頁中資料表的索引](#get-index-of-a-table-in-an-html-page)一節。 |是 |
+| path |包含資料表之資源的相對 URL。 |否。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
+| 索引 |資源中資料表的索引。 如需取得 HTML 網頁中資料表索引的步驟，請參閱[取得 html 網頁中資料表的索引](#get-index-of-a-table-in-an-html-page)一節。 |Yes |
 
-**範例：**
+**範例︰**
 
 ```json
 {

@@ -7,11 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243688"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694900"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>建立 Azure Red Hat OpenShift 的 Azure AD 租使用者
 
@@ -28,12 +27,12 @@ Microsoft Azure Red Hat OpenShift 需要一個[Azure Active Directory （Azure A
 3. 提供**組織名稱**。
 4. 提供**初始功能變數名稱**。 這會附加*onmicrosoft.com* 。 您可以在這裡重複使用 [*組織名稱*] 的值。
 5. 選擇將建立租使用者的國家或地區。
-6. 按一下 [建立]  。
+6. 按一下 [建立]。
 7. 建立 Azure AD 租使用者之後，請選取 [**按一下這裡以管理您的新目錄**] 連結。 您的新租使用者名稱應該會顯示在 Azure 入口網站的右上方：  
 
     ![入口網站的螢幕擷取畫面，其中顯示右上方的租使用者名稱][tenantcallout]  
 
-8. 記下 [*租使用者識別碼*]，讓您稍後可以指定要建立 Azure Red Hat OpenShift 叢集的位置。 在入口網站中，您現在應該會看到新租使用者的 [Azure Active Directory 總覽] 分頁。 選取 [**屬性**]，並複製**目錄識別碼**的值。 我們將`TENANT`在[建立 Azure Red Hat OpenShift](tutorial-create-cluster.md)叢集教學課程中參考此值。
+8. 記下 [*租使用者識別碼*]，讓您稍後可以指定要建立 Azure Red Hat OpenShift 叢集的位置。 在入口網站中，您現在應該會看到新租使用者的 [Azure Active Directory 總覽] 分頁。 選取 [**屬性**]，並複製**目錄識別碼**的值。 我們將 `TENANT` 在[建立 Azure Red Hat OpenShift](tutorial-create-cluster.md)叢集教學課程中參考此值。
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 

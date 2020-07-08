@@ -3,15 +3,14 @@ title: 使用 Azure PowerShell 將 Azure 網路安全性群組（NSG）移至另
 description: 使用 Azure Resource Manager 範本，使用 Azure PowerShell 將 Azure 網路安全性群組從一個 Azure 區域移至另一個區域。
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75641463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688444"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>使用 Azure PowerShell 將 Azure 網路安全性群組（NSG）移至另一個區域
 
@@ -20,7 +19,7 @@ ms.locfileid: "75641463"
 Azure 安全性群組無法從一個區域移至另一個區域。 不過，您可以使用 Azure Resource Manager 範本來匯出 NSG 的現有設定和安全性規則。  接著，您可以將 NSG 匯出至範本、修改參數以符合目的地區域，然後將範本部署到新的區域，藉此將資源放在另一個區域中。  如需 Resource Manager 和範本的詳細資訊，請參閱[將資源群組匯出至範本](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 請確定 Azure 網路安全性群組位於您要移動的 Azure 區域中。
 
@@ -35,15 +34,15 @@ Azure 安全性群組無法從一個區域移至另一個區域。 不過，您�
 - 請確定您的訂用帳戶有足夠的資源，可支援在此程式中新增 Nsg。  請參閱 [Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 
-## <a name="prepare-and-move"></a>準備和移動
+## <a name="prepare-and-move"></a>準備及移動
 下列步驟示範如何使用 Resource Manager 範本來準備用於設定和安全性規則的網路安全性群組，以及使用 Azure PowerShell 將 NSG 設定和安全性規則移至目的地區域。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="export-the-template-and-deploy-from-a-script"></a>匯出範本並從腳本部署
+### <a name="export-the-template-and-deploy-from-a-script"></a>匯出範本並從指令碼部署
 
-1. 使用[disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0)命令登入您的 Azure 訂用帳戶，並遵循畫面上的指示：
+1. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登入 Azure 訂用帳戶，並遵循畫面上的指示操作：
     
     ```azurepowershell-interactive
     Connect-AzAccount
@@ -61,7 +60,7 @@ Azure 安全性群組無法從一個區域移至另一個區域。 不過，您�
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. 下載的檔案將會以匯出資源的來源資源群組命名。  找出從名為** \<[資源-群組-名稱>** ] 的命令匯出的檔案，並在您選擇的編輯器中開啟它：
+4. 下載檔案會以匯出資源的來源資源群組命名。  找出從命令匯出名為 **\<resource-group-name>.json** 的檔案，然後在所選編輯器中將其開啟：
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -99,16 +98,16 @@ Azure 安全性群組無法從一個區域移至另一個區域。 不過，您�
             }
     ```
   
-7. 若要取得區域位置代碼，您可以藉由執行下列命令來使用 Azure PowerShell Cmdlet [get-azlocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) ：
+7. 若要取得區域位置代碼，您可執行下列命令來使用 Azure PowerShell Cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0)：
 
     ```azurepowershell-interactive
 
     Get-AzLocation | format-table
     
     ```
-8. 您也可以根據您的需求，變更** \<資源群組名稱>** 中的其他參數，而且是選擇性的：
+8. 如果您選擇，您也可以變更** \<resource-group-name> json**中的其他參數，而且是選擇性的，視您的需求而定：
 
-    * **安全性規則**-您可以藉由新增或移除 NSG 的** \<資源群組-名稱> json**檔案中的**securityRules**區段，編輯要部署到目標的規則：
+    * **安全性規則**-您可以在** \<resource-group-name> json**檔案的**securityRules**區段中新增或移除規則，以編輯要部署到目標 NSG 的規則：
 
         ```json
            "resources": [
@@ -144,7 +143,7 @@ Azure 安全性群組無法從一個區域移至另一個區域。 不過，您�
             
         ```
 
-        若要完成目標 NSG 中的規則新增或移除，您也必須以下列範例的格式，在** \<資源群組名稱>. json**檔案結尾編輯自訂規則類型：
+        若要完成目標 NSG 中的規則新增或移除，您也必須以下列範例的格式，在** \<resource-group-name> json**檔案的結尾編輯自訂規則類型：
 
         ```json
            {
@@ -171,7 +170,7 @@ Azure 安全性群組無法從一個區域移至另一個區域。 不過，您�
             }
         ```
 
-9. 將** \<資源群組名稱儲存> json**檔案。
+9. 儲存 **\<resource-group-name>.json** 檔案。
 
 10. 使用[remove-azresourcegroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)，在目的地區域中建立要部署之目標 NSG 的資源群組：
     
@@ -179,7 +178,7 @@ Azure 安全性群組無法從一個區域移至另一個區域。 不過，您�
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. 使用[new-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)，將已編輯** \<的資源群組名稱>. json**檔案部署到在上一個步驟中建立的資源群組：
+11. 使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)，將已編輯 **\<resource-group-name>.json** 檔案部署至上一個步驟中建立的資源群組：
 
     ```azurepowershell-interactive
 
@@ -203,7 +202,7 @@ Azure 安全性群組無法從一個區域移至另一個區域。 不過，您�
 
 ## <a name="discard"></a>捨棄 
 
-部署之後，如果您想要開始或捨棄目標中的 NSG，請刪除在目標中建立的資源群組，然後將刪除已移動的 NSG。  若要移除資源群組，請使用[remove-azresourcegroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
+部署之後，如果您想要開始或捨棄目標中的 NSG，請刪除在目標中建立的資源群組，然後將刪除已移動的 NSG。  若要移除資源群組，請使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
 
 ```azurepowershell-interactive
 
@@ -229,8 +228,8 @@ Remove-AzNetworkSecurityGroup -Name <source-nsg-name> -ResourceGroupName <source
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已將 Azure 網路安全性群組從一個區域移至另一個區域，並清除來源資源。  若要深入瞭解如何在 Azure 中的區域和嚴重損壞修復之間移動資源，請參閱：
+在本教學課程中，您已將 Azure 網路安全性群組從一個區域移至另一個區域，並清除來源資源。  若要深入了解如何在 Azure 中的區域之間移動資源和災害復原，請參閱：
 
 
 - [將資源移至新的資源群組或訂用帳戶](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [將 Azure VM 移動到另一個區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [將 Azure VM 移至其他區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

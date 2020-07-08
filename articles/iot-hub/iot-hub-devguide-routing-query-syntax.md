@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
 ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271105"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688954"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中樞訊息路由查詢語法
 
@@ -56,7 +55,7 @@ IoT 中樞會針對所有裝置到雲端訊息定義[常見格式](iot-hub-devgu
 | contentEncoding | 字串 | 使用者會指定訊息的編碼類型。 允許的值為 UTF-8、UTF-16、UTF-32 (若 contentType 是設為 application/JSON)。 |
 | iothub-connection-device-id | 字串 | 此值是由 IoT 中樞設定，並能識別裝置的識別碼。 若要查詢，請使用 `$connectionDeviceId`。 |
 | iothub-enqueuedtime | 字串 | 此值是由 IoT 中樞設定，並代表將訊息加入佇列的實際時間 (以 UTC 表示)。 若要查詢，請使用 `enqueuedTime`。 |
-| iothub-介面-名稱 | 字串 | 這個值是由使用者設定，代表實作為遙測訊息的數位對應項介面名稱。 若要查詢，請使用 `$interfaceName`。 這項功能可做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。 |
+| iothub-interface-name | 字串 | 這個值是由使用者設定，代表實作為遙測訊息的數位對應項介面名稱。 若要查詢，請使用 `$interfaceName`。 這項功能可做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。 |
 
 如 [IoT 中樞訊息](iot-hub-devguide-messages-construct.md)中所述，訊息中還有其他系統屬性。 除了**contentType**、 **contentEncoding**和**Enqueuedtime 之外**，也可以查詢**connectionDeviceId**和**connectionModuleId** 。
 
@@ -200,7 +199,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>查詢運算式
 
-訊息對應項的查詢前面必須加上`$twin`。 您的查詢運算式也可以將對應項標記或屬性參考和內文參考、訊息系統屬性，以及訊息應用程式屬性參考進行結合。 我們建議在標記和屬性中使用唯一名稱，因為查詢不會區分大小寫。 這同時適用于裝置 twins 和模組 twins。 此外，也請避免使用 `twin`、`$twin`、`body` 或 `$body` 作為屬性名稱。 例如，以下是所有有效的查詢運算式： 
+訊息對應項的查詢前面必須加上 `$twin` 。 您的查詢運算式也可以將對應項標記或屬性參考和內文參考、訊息系統屬性，以及訊息應用程式屬性參考進行結合。 我們建議在標記和屬性中使用唯一名稱，因為查詢不會區分大小寫。 這同時適用于裝置 twins 和模組 twins。 此外，也請避免使用 `twin`、`$twin`、`body` 或 `$body` 作為屬性名稱。 例如，以下是所有有效的查詢運算式： 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

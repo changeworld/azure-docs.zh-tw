@@ -11,12 +11,11 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c238600d412e53ad665214492e292aa395655b78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79497529"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689039"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 裝置管理常見問題集
 
@@ -43,9 +42,9 @@ ms.locfileid: "79497529"
 - 針對舊版 OS 版本，請執行`%programFiles%\Microsoft Workplace Join\autoworkplace.exe`。
 
 **答：** 如需疑難排解資訊，請參閱下列文章：
-- [使用 dsregcmd.exe 命令針對裝置進行疑難排解](troubleshoot-device-dsregcmd.md)
+- [使用 dsregcmd 命令針對裝置進行疑難排解](troubleshoot-device-dsregcmd.md)
 - [針對已加入混合式 Azure Active Directory 的 Windows 10 和 Windows Server 2016 裝置進行疑難排解](troubleshoot-hybrid-join-windows-current.md)
-- [針對混合式 Azure Active Directory 已聯結下層裝置進行疑難排解](troubleshoot-hybrid-join-windows-legacy.md)
+- [針對已加入混合式 Azure Active Directory 的下層裝置進行疑難排解](troubleshoot-hybrid-join-windows-legacy.md)
 
 ---
 
@@ -94,13 +93,13 @@ ms.locfileid: "79497529"
       若為已加入 Azure AD 的裝置 Windows 10 裝置，請執行下列步驟：
 
       1. 以系統管理員身分開啟命令提示字元
-      1. 輸入`dsregcmd /forcerecovery` （注意：您必須是系統管理員才能執行此動作）。
+      1. 輸入 `dsregcmd /forcerecovery` （注意：您必須是系統管理員才能執行此動作）。
       1. 在開啟的對話方塊中按一下 [登入]，然後繼續進行登入程式。
       1. 登出並登入裝置以完成復原。
 
       針對 Azure AD 已註冊的 Windows 10 裝置，請執行下列步驟：
 
-      1. 前往 [**設定** > ] [**帳戶** > ] [**存取公司或學校**]。 
+      1. 前往 [**設定**] [帳戶] [  >  **Accounts**  >  **存取公司或學校**]。 
       1. 選取帳戶，然後選取 **[中斷連線]**。
       1. 按一下 [+ 連接]，然後透過登入程式重新註冊裝置。
 
@@ -148,13 +147,13 @@ ms.locfileid: "79497529"
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>問：如何? 在裝置本機退出已加入 Azure AD 的裝置嗎？
 
-**答：** 針對純 Azure AD 加入的裝置，請確定您具有離線的本機系統管理員帳戶，或建立一個。 您無法使用任何 Azure AD 使用者認證來登入。 接下來，移至 [**設定** > ] [**帳戶** > ] [**存取公司或學校**]。 選取您的帳戶，然後選取 [中斷連線]****。 遵循提示，然後在系統提示您時提供本機系統管理員認證。 重新啟動裝置以完成退出程序。
+**答：** 針對純 Azure AD 加入的裝置，請確定您具有離線的本機系統管理員帳戶，或建立一個。 您無法使用任何 Azure AD 使用者認證來登入。 接下來，移至 [**設定**] [帳戶] [  >  **Accounts**  >  **存取公司或學校**]。 選取您的帳戶，然後選取 [中斷連線]****。 遵循提示，然後在系統提示您時提供本機系統管理員認證。 重新啟動裝置以完成退出程序。
 
 ---
 
 ### <a name="q-can-my-users-sign-in-to-azure-ad-joined-devices-that-are-deleted-or-disabled-in-azure-ad"></a>問：我的使用者是否可以登入已在 Azure AD 中刪除或停用 Azure AD 加入的裝置？
 
-**答：** 是的。 Windows 具有快取使用者名稱和密碼的功能，可讓先前曾登入的使用者即使沒有網路連線，也能快速存取桌面。 
+**答：** 是。 Windows 具有快取使用者名稱和密碼的功能，可讓先前曾登入的使用者即使沒有網路連線，也能快速存取桌面。 
 
 當裝置在 Azure AD 中被刪除或停用時，Windows 裝置並不知道此狀況。 所以先前曾登入的使用者能夠繼續以快取的使用者名稱和密碼存取桌面。 但當裝置遭到刪除或停用時，使用者將無法存取任何受裝置型條件式存取保護的資源。 
 
@@ -175,6 +174,8 @@ ms.locfileid: "79497529"
 ### <a name="q-why-do-my-users-have-issues-on-azure-ad-joined-devices-after-changing-their-upn"></a>問：為什麼我的使用者在變更其 UPN 之後，會在 Azure AD 加入的裝置上發生問題？
 
 **答：** 目前，在已加入 Azure AD 的裝置上，不完全支援 UPN 變更。 因此，他們在變更其 UPN 之後，會在向 Azure AD 驗證時失敗。 所以使用者會在其裝置上遇到 SSO 和條件式存取的問題。 目前，使用者必須透過 [其他使用者] 圖格以其新的 UPN 登入 Windows 來解決此問題。 我們目前正努力解決此問題。 不過，使用 Windows Hello 企業版來登入的使用者不會遇到這個問題。 
+
+Windows 10 2004 update 支援 UPN 變更。 具有此更新之裝置上的使用者在變更其 Upn 之後，將不會有任何問題
 
 ---
 
@@ -253,7 +254,7 @@ ms.locfileid: "79497529"
 **答：** 如需疑難排解資訊，請參閱下列文章：
 
 - [針對已加入混合式 Azure Active Directory 的 Windows 10 和 Windows Server 2016 裝置進行疑難排解](troubleshoot-hybrid-join-windows-current.md)
-- [針對混合式 Azure Active Directory 已聯結下層裝置進行疑難排解](troubleshoot-hybrid-join-windows-legacy.md)
+- [針對已加入混合式 Azure Active Directory 的下層裝置進行疑難排解](troubleshoot-hybrid-join-windows-legacy.md)
  
 ### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>問：為什麼我會在 [Azure AD 裝置] 清單中看到 Windows 10 混合式 Azure AD 已加入裝置的重複 Azure AD 註冊的記錄？
 
@@ -266,6 +267,8 @@ ms.locfileid: "79497529"
 ### <a name="q-why-do-my-users-have-issues-on-windows-10-hybrid-azure-ad-joined-devices-after-changing-their-upn"></a>問：為什麼我的使用者在變更其 UPN 之後，會在 Windows 10 混合式 Azure AD 加入的裝置上發生問題？
 
 **答：** 目前，混合式 Azure AD 加入的裝置不完全支援 UPN 變更。 雖然使用者可以登入裝置，並存取其內部部署應用程式，但在變更 UPN 之後，向 Azure AD 進行驗證會失敗。 所以使用者會在其裝置上遇到 SSO 和條件式存取的問題。 此時，您必須從 Azure AD 退出裝置（以較高的許可權執行 "dsregcmd.exe/leave"），然後重新加入（會自動進行）以解決問題。 我們目前正努力解決此問題。 不過，使用 Windows Hello 企業版來登入的使用者不會遇到這個問題。 
+
+Windows 10 2004 update 支援 UPN 變更。 具有此更新之裝置上的使用者在變更其 Upn 之後，將不會有任何問題
 
 ---
 
@@ -286,8 +289,8 @@ ms.locfileid: "79497529"
 ### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>問：如何? 在本機移除裝置的 Azure AD 已註冊狀態嗎？
 
 **為** 
-- 若為 Windows 10 Azure AD 註冊的裝置，請移至 [**設定** > ] [**帳戶** > ] [**存取公司或學校**]。 選取您的帳戶，然後選取 [中斷連線]****。 裝置註冊是 Windows 10 上的每個使用者設定檔。
-- 針對 iOS 和 Android，您可以使用 [Microsoft Authenticator 應用程式**設定** > ]**裝置註冊**，然後選取 [**取消註冊裝置**]。
+- 若為 Windows 10 Azure AD 註冊的裝置，請移至 [**設定**] [帳戶] [  >  **Accounts**  >  **存取公司或學校**]。 選取您的帳戶，然後選取 [中斷連線]****。 裝置註冊是 Windows 10 上的每個使用者設定檔。
+- 針對 iOS 和 Android，您可以使用 [Microsoft Authenticator 應用程式**設定**]  >  **裝置註冊**，然後選取 [**取消註冊裝置**]。
 - 針對 macOS，您可以使用 Microsoft Intune 公司入口網站應用程式，將裝置從管理中取消註冊，並移除任何註冊。 
 
 ---
@@ -307,7 +310,7 @@ ms.locfileid: "79497529"
 
 **答：** 請執行下列步驟：
 
-1.    [建立裝置相容性原則](/intune/compliance-policy-create-mac-os)
+1.    [建立合規性政策](/intune/compliance-policy-create-mac-os)
 1.    [定義 macOS 裝置的條件式存取原則](../active-directory-conditional-access-azure-portal.md) 
 
 **標記**

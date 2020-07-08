@@ -14,11 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249499"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689982"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API 管理中的範本資源
 Azure API 管理提供下列類型的資源，用於開發人員入口網站的範本。  
@@ -122,7 +121,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |Name|Text|  
 |----------|----------|  
 |WebApplicationsDetailsTitle|應用程式預覽|  
-|WebApplicationsRequirementsHeader|需求|  
+|WebApplicationsRequirementsHeader|規格需求|  
 |WebApplicationsScreenshotAlt|螢幕擷取畫面|  
 |WebApplicationsScreenshotsHeader|螢幕擷取畫面|  
   
@@ -139,7 +138,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |WebDevelopersEditLink|編輯|  
 |WebDevelopersRegisterAppLink|註冊應用程式|  
 |WebDevelopersRemoveLink|移除|  
-|WebDevelopersSubmitLink|提交|  
+|WebDevelopersSubmitLink|送出|  
 |WebDevelopersYourApplicationsHeader|您的應用程式|  
   
 ###  <a name="appstrings"></a><a name="AppStrings"></a>AppStrings  
@@ -169,9 +168,9 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |NoItemsToDisplay|沒有可顯示的項目。|  
 |PagerButtonLabelFirst|First|  
 |PagerButtonLabelLast|Last|  
-|PagerButtonLabelNext|下一頁|  
+|PagerButtonLabelNext|下一個|  
 |PagerButtonLabelPrevious|上一頁|  
-|PagerLabelPageNOfM|第 {0}/{1} 頁|  
+|PagerLabelPageNOfM|第 {1} 之 {0} 頁|  
 |PasswordTooShort|密碼太短|  
 |EmailAsPassword|請勿使用您的電子郵件做為您的密碼|  
 |PasswordSameAsUserName|密碼不可包含您的使用者名稱|  
@@ -322,14 +321,14 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |TooltipTextDoubleClickToSelectAll|按兩下以全部選取。|  
 |TooltipTextHideRevealSecret|顯示/隱藏|  
 |ButtonLinkOpenConsole|試試看|  
-|SectionHeadingRequestBody|要求本文|  
+|SectionHeadingRequestBody|Request body|  
 |SectionHeadingRequestParameters|要求參數|  
 |SectionHeadingRequestUrl|要求 URL|  
 |SectionHeadingResponse|回應|  
 |SectionHeadingRequestHeaders|要求標頭|  
 |FormLabelSubtextOptional|選用|  
 |SectionHeadingCodeSamples|程式碼範例|  
-|TextblockOpenidConnectHeaderDescription|從 <i\> {0}</I\>取得的 OpenID connect 識別碼權杖。 支援的授與類型︰<i\>{1}</i\>。|  
+|TextblockOpenidConnectHeaderDescription|從 <i</I 取得的 OpenID Connect 識別碼權杖 \> {0} \> 。 支援的授與類型︰<i\>{1}</i\>。|  
   
 ###  <a name="errorpagestrings"></a><a name="ErrorPageStrings"></a>ErrorPageStrings  
   
@@ -380,7 +379,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |Name|Text|  
 |----------|----------|  
 |WebProductsAgreement|訂閱 {0} 產品即表示我同意 `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`。|  
-|WebProductsLegalTermsLink|使用條款|  
+|WebProductsLegalTermsLink|使用規定|  
 |WebProductsSubscribeButton|訂閱|  
 |WebProductsUsageLimitsHeader|使用限制|  
 |WebProductsYouAreNotSubscribed|您已訂閱此產品。|  
@@ -401,7 +400,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
   
 |Name|Text|  
 |----------|----------|  
-|PageTitleProducts|Products|  
+|PageTitleProducts|產品|  
   
 ###  <a name="providerinfostrings"></a><a name="ProviderInfoStrings"></a>ProviderInfoStrings  
   
@@ -423,7 +422,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |ValidationErrorSpecificEmailInvalid|電子郵件 '{0}' 無效|  
 |ValidationErrorPasswordInvalid|密碼無效。 請更正錯誤，然後再試一次。|  
 |PropertyTooShort|{0} 太短|  
-|WebAuthenticationAddresserEmailInvalidErrorMessage|電子郵件地址無效。|  
+|WebAuthenticationAddresserEmailInvalidErrorMessage|無效的電子郵件地址。|  
 |ValidationMessageNewPasswordConfirmationRequired|確認新密碼|  
 |ValidationErrorPasswordConfirmationRequired|確認密碼為空白|  
 |WebAuthenticationEmailChangeNotice|已將變更確認電子郵件傳送到 {0}。 請遵循其中的指示確認您的新電子郵件地址。 如果您的收件匣在接下來的幾分鐘內沒有收到電子郵件，請檢查垃圾郵件資料夾。|  
@@ -433,7 +432,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |ValidationErrorEmailAlreadyExists|電子郵件已經存在|  
 |ValidationErrorEmailInvalid|電子郵件地址無效|  
 |TextboxLabelEmail|電子郵件|  
-|ValidationErrorEmailRequired|電子郵件為必填欄位。|  
+|ValidationErrorEmailRequired|需要電子郵件。|  
 |WebAuthenticationErrorNoticeHeader|錯誤|  
 |WebAuthenticationFieldLengthErrorMessage|{0} 的長度上限是 {1}|  
 |TextboxLabelEmailFirstName|名字|  
@@ -504,7 +503,7 @@ Azure API 管理提供下列類型的資源，用於開發人員入口網站的�
 |WebAuthenticationNoAadTenantConfigured|服務未設定 Azure Active Directory 租用戶。|  
 |CheckboxLabelUserRegistrationTermsConsentRequired|我同意 `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`。|  
 |TextblockUserRegistrationTermsProvided|請檢閱 `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
-|DialogHeadingTermsOfUse|使用條款|  
+|DialogHeadingTermsOfUse|使用規定|  
 |ValidationMessageConsentNotAccepted|您必須同意使用條款才可以繼續。|  
   
 ###  <a name="signinstrings"></a><a name="SigninStrings"></a>SigninStrings  

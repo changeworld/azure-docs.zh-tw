@@ -4,11 +4,10 @@ description: 本文說明如何還原在 Azure VM 上執行，並使用 Azure �
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252450"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687424"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>在 Azure VM 上還原 SQL Server 資料庫
 
@@ -23,7 +22,7 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
 - 使用交易記錄備份還原到特定的日期或時間（到第二個）。 Azure 備份會自動決定適當的完整差異備份，以及根據所選時間還原所需的記錄備份鏈。
 - 還原特定的完整或差異備份，以還原到特定的復原點。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在還原資料庫之前，請注意下列事項：
 
@@ -84,7 +83,7 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
 2. 選取您要在其中還原資料庫的目的地 SQL Server 名稱和執行個體。
 3. 在 [還原的 DB 名稱]**** 方塊中，輸入目標資料庫的名稱。
 4. 如果適用的話，請選取 [Overwrite if the DB with the same name already exists on selected SQL instance] \(若選取的 SQL 執行個體上已存在相同名稱的 DB 則覆寫\)****。
-5. 選取 [確定]  。
+5. 選取 [確定]。
 
     ![提供 [還原設定] 功能表的值](./media/backup-azure-sql-database/restore-configuration.png)
 
@@ -95,7 +94,7 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
 
 ### <a name="restore-and-overwrite"></a>還原並覆寫資料庫
 
-1. 在 [**還原**設定] 功能表的 [**要還原的位置**] 底下，選取 [**覆寫 DB** > **正常]**。
+1. 在 [**還原**設定] 功能表的 [**要還原的位置**] 底下，選取 [**覆寫 DB**  >  **正常]**。
 
     ![選取 [覆寫 DB]](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
 
@@ -114,13 +113,13 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
 
     >若要在裝載于目標的已註冊 VM 上的 Azure 檔案共用上還原資料庫備份檔案，請確定 NT AUTHORITY\SYSTEM 具有檔案共用的存取權。 您可以執行下列步驟，將讀取/寫入權限授與在 VM 上裝載的 AFS：
     >
-    >- 執行`PsExec -s cmd`以進入 NT AUTHORITY\SYSTEM shell
+    >- 執行 `PsExec -s cmd` 以進入 NT AUTHORITY\SYSTEM shell
     >   - 執行 `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`
     >   - 驗證存取`dir \\<storageacct>.file.core.windows.net\<filesharename>`
-    >- 開始將備份保存庫`\\<storageacct>.file.core.windows.net\<filesharename>`中的檔案還原為路徑<BR>
+    >- 開始將備份保存庫中的檔案還原為 `\\<storageacct>.file.core.windows.net\<filesharename>` 路徑<BR>
     您可以透過下載 Psexec<https://docs.microsoft.com/sysinternals/downloads/psexec>
 
-4. 選取 [確定]  。
+4. 選取 [確定]。
 
     ![選取還原為檔案](./media/backup-azure-sql-database/restore-as-files.png)
 
@@ -142,13 +141,13 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
     ![開啟行事曆](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
 
 1. 選取日期之後，時間軸圖表會顯示連續範圍中可用的復原點。
-1. 在時間軸圖形上指定復原的時間，或選取時間。 然後選取 [確定]  。
+1. 在時間軸圖形上指定復原的時間，或選取時間。 然後選取 [確定]。
 
     ![選取還原時間](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
 1. 在 [ **Advanced Configuration** ] 功能表上，如果您想要在還原後保留資料庫 nonoperational，請啟用 [**使用 NORECOVERY 還原**]。
 1. 如果您要變更目的地伺服器上的還原位置，請輸入新的目標路徑。
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
     ![進階設定功能表](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 
@@ -170,7 +169,7 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
 
 1. 在 [ **Advanced Configuration** ] 功能表上，如果您想要在還原後保留資料庫 nonoperational，請啟用 [**使用 NORECOVERY 還原**]。
 1. 如果您要變更目的地伺服器上的還原位置，請輸入新的目標路徑。
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
     ![進階設定功能表](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 

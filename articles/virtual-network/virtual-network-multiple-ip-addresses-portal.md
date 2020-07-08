@@ -8,17 +8,16 @@ manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 97d78b5bc77fef30bf7e3ad082a70f16a2ec74d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6118763bf76795e30e862826f8f5b847f3382a5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146601"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687968"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>使用 Azure 入口網站將多個 IP 位址指派給虛擬機器
 
@@ -52,8 +51,8 @@ ms.locfileid: "82146601"
 
 完成下列步驟，以新增私人 IP 位址：
 
-1. 完成本文的[核心步驟](#coreadd)一節中的步驟。
-2. 按一下 [加入]  。 在所顯示的 [新增 IP 設定]**** 窗格中，建立名為 *IPConfig-4* 並以 *10.0.0.7* 作為「靜態」** 私人 IP 位址的 IP 組態，然後按一下 [確定]****。
+1. 完成本文的[核心步驟](#coreadd)一節中的步驟，並確定您位於 VM 網路介面的 [ **IP**設定] 區段中。  檢查顯示為預設值的子網（例如 10.0.0.0/24）。
+2. 按一下 **[新增]** 。 在出現的 [**新增 ip**設定] 窗格中，以新的*靜態*私人 IP 位址建立名為*IPConfig-4*的 IP 設定，方法是挑選最後八位的新號碼，然後按一下 **[確定]**。  （針對 10.0.0.0/24 子網，範例 IP 會是*10.0.0.7*）。
 
     > [!NOTE]
     > 新增靜態 IP 位址時，您必須在 NIC 所連接的子網路上指定未使用的有效位址。 如果您選取的位址無法使用，入口網站會針對 IP 位址顯示 X，而您必須選取不同的位址。
@@ -75,7 +74,7 @@ ms.locfileid: "82146601"
 公用 IP 位址是公用 IP 位址資源的其中一項設定 如果您的公用 IP 位址資源目前並未關聯至您想要產生關聯的 IP 組態，請略過下列步驟，並視需要完成後續其中一節的步驟。 如果您沒有可用的公用 IP 位址資源，請完成下列步驟來建立一個︰
 
 1. 瀏覽至 Azure 入口網站 (https://portal.azure.com) 並視需要進行登入。
-3. 在入口網站中，按一下 [**建立資源** > ] [**網路** > ] [**公用 IP 位址**]。
+3. 在入口網站中，按一下 [**建立資源**] [網路] [  >  **Networking**  >  **公用 IP 位址**]。
 4. 在顯示的 [建立公用 IP 位址]**** 窗格中，輸入 [名稱]****，選取 [IP 位址指派]**** 類型、[訂用帳戶]****、[資源群組]**** 和 [位置]****，然後按一下 [建立]****，如下圖所示︰
 
     ![建立公用 IP 位址資源](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
@@ -85,7 +84,7 @@ ms.locfileid: "82146601"
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>將公用 IP 位址資源與新的 IP 組態產生關聯
 
 1. 完成本文的[核心步驟](#coreadd)一節中的步驟。
-2. 按一下 [加入]  。 在顯示的 [新增 IP 組態]**** 窗格中，建立名為 IPConfig-4** 的 IP 組態。 啟用 [公用 IP 位址]****，然後從顯示的 [選擇公用 IP 位址]**** 窗格中，選取現有的可用公用 IP 位址資源。
+2. 按一下 **[新增]** 。 在顯示的 [新增 IP 組態]**** 窗格中，建立名為 IPConfig-4** 的 IP 組態。 啟用 [公用 IP 位址]****，然後從顯示的 [選擇公用 IP 位址]**** 窗格中，選取現有的可用公用 IP 位址資源。
 
     選取公用 IP 位址資源後，請按一下 [確定]****，窗格便會關閉。 如果您沒有現有的公用 IP 位址，您可以完成[建立公用 IP 位址資源](#create-public-ip)一節中的步驟，加以建立。 
 

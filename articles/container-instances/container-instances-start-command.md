@@ -4,15 +4,14 @@ description: 設定命令列，以在部署 Azure 容器實例時覆寫容器映
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247120"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84693051"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>在容器實例中設定命令列，以覆寫預設的命令列操作
 
-當您建立容器實例時，可選擇性地指定命令，將預設命令列指令內建覆寫至容器映射。 這個行為類似于的`--entrypoint`命令列引數。 `docker run`
+當您建立容器實例時，可選擇性地指定命令，將預設命令列指令內建覆寫至容器映射。 這個行為類似于的 `--entrypoint` 命令列引數 `docker run` 。
 
 如同設定容器實例的[環境變數](container-instances-environment-variables.md)，指定起始命令列對於需要使用工作特定設定動態準備每個容器的批次作業很有用。
 
@@ -32,7 +31,7 @@ ms.locfileid: "79247120"
 
 * 視容器設定而定，您可能需要設定命令列可執行檔或引數的完整路徑。
 
-* 根據命令列是否指定長時間執行的工作或一次性的工作，設定容器實例的適當[重新開機原則](container-instances-restart-policy.md)。 例如，針對執行一次工作`Never` ， `OnFailure`建議使用或的重新開機原則。 
+* 根據命令列是否指定長時間執行的工作或一次性的工作，設定容器實例的適當[重新開機原則](container-instances-restart-policy.md)。 例如， `Never` `OnFailure` 針對執行一次工作，建議使用或的重新開機原則。 
 
 * 如果您需要在容器映射中設定預設進入點的相關資訊，請使用[docker 映射檢查](https://docs.docker.com/engine/reference/commandline/image_inspect/)命令。
 
@@ -40,13 +39,13 @@ ms.locfileid: "79247120"
 
 命令列語法會根據用來建立實例的 Azure API 或工具而有所不同。 如果您指定 shell 環境，也請觀察 shell 的命令語法慣例。
 
-* [az container create][az-container-create]命令：使用`--command-line`參數傳遞字串。 範例： `--command-line "python myscript.py arg1 arg2"`）。
+* [az container create][az-container-create]命令：使用參數傳遞字串 `--command-line` 。 範例： `--command-line "python myscript.py arg1 arg2"` ）。
 
-* [新增-get-azurermcontainergroup][new-azurermcontainergroup]Azure PowerShell Cmdlet：傳遞具有`-Command`參數的字串。 範例： `-Command "echo hello"`.
+* [新增-get-azurermcontainergroup][new-azurermcontainergroup]Azure PowerShell Cmdlet：傳遞具有參數的字串 `-Command` 。 範例： `-Command "echo hello"`.
 
-* Azure 入口網站：在容器設定的 [**命令覆寫**] 屬性中，提供以逗號分隔的字串清單，不含引號。 範例： `python, myscript.py, arg1, arg2`）。 
+* Azure 入口網站：在容器設定的 [**命令覆寫**] 屬性中，提供以逗號分隔的字串清單，不含引號。 範例： `python, myscript.py, arg1, arg2` ）。 
 
-* Resource Manager 範本或 YAML 檔案，或其中一個 Azure Sdk：指定命令列屬性做為字串陣列。 範例： Resource Manager 範本中`["python", "myscript.py", "arg1", "arg2"]`的 JSON 陣列。 
+* Resource Manager 範本或 YAML 檔案，或其中一個 Azure Sdk：指定命令列屬性做為字串陣列。 範例： `["python", "myscript.py", "arg1", "arg2"]` Resource Manager 範本中的 JSON 陣列。 
 
   如果您很熟悉[Dockerfile](https://docs.docker.com/engine/reference/builder/)語法，此格式類似于 CMD 指令的*exec*形式。
 

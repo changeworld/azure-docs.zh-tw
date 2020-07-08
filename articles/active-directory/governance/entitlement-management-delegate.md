@@ -17,11 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261836"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84692133"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD 權利管理中的委派和角色
 
@@ -65,18 +64,18 @@ ms.locfileid: "79261836"
 
 委派之後，行銷部門可能會有類似下表的角色。
 
-| User | 作業角色 | Azure AD 角色 | 權利管理角色 |
+| 使用者 | 作業角色 | Azure AD 角色 | 權利管理角色 |
 | --- | --- | --- | --- |
 | Hana | IT 管理員 | 全域管理員或使用者管理員 |  |
-| Mamta | 行銷經理 | User | 目錄建立者和目錄擁有者 |
-| Bob | 行銷組長 | User | 目錄擁有者 |
-| Jessica | 行銷專案經理 | User | 存取套件管理員 |
+| Mamta | 行銷經理 | 使用者 | 目錄建立者和目錄擁有者 |
+| Bob | 行銷組長 | 使用者 | 目錄擁有者 |
+| Jessica | 行銷專案經理 | 使用者 | 存取套件管理員 |
 
 ## <a name="entitlement-management-roles"></a>權利管理角色
 
 權利管理具有下列專屬於權利管理的角色。
 
-| 權利管理角色 | 描述 |
+| 權利管理角色 | Description |
 | --- | --- |
 | 目錄建立者 | 建立和管理目錄。 通常是不是全域管理員的 IT 系統管理員，或是資源集合的資源擁有者。 建立類別目錄的人員會自動成為目錄的第一個目錄擁有者，而且可以新增其他目錄擁有者。 目錄建立者無法管理或查看其未擁有的類別目錄，也無法將其本身未擁有的資源新增至目錄。 如果目錄建立者需要管理另一個類別目錄，或新增其未擁有的資源，他們可以要求成為該目錄或資源的共同擁有者。 |
 | 目錄擁有者 | 編輯和管理現有的目錄。 通常是 IT 系統管理員或資源擁有者，或是目錄擁有者已指定的使用者。 |
@@ -84,14 +83,14 @@ ms.locfileid: "79261836"
 
 此外，指定的核准者和存取套件的要求者也具有許可權，但它們並不是角色。
 
-| Right | 描述 |
+| Right | Description |
 | --- | --- |
 | 核准者 | 由原則授權以核准或拒絕存取封裝的要求，但無法變更存取套件定義。 |
 | 要求者 | 由存取封裝的原則授權，以要求該存取封裝。 |
 
 下表列出權利管理角色可以執行的工作。
 
-| 工作 | 系統管理員 | 目錄建立者 | 目錄擁有者 | 存取套件管理員 |
+| Task | 系統管理員 | 目錄建立者 | 目錄擁有者 | 存取套件管理員 |
 | --- | :---: | :---: | :---: | :---: |
 | [委派給目錄建立者](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [新增已連線的組織](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |
@@ -123,14 +122,14 @@ ms.locfileid: "79261836"
 | Azure AD 目錄角色 | 權利管理角色 | 可以新增安全性群組 | 可以新增 Office 365 群組 | 可以新增應用程式 | 可以新增 SharePoint Online 網站 |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [全域管理員](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [使用者系統管理員](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [使用者管理員](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Intune 管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Exchange 管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  | :heavy_check_mark: |  |  |
 | [Microsoft Teams 服務管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  | :heavy_check_mark: |  |  |
 | [SharePoint 管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  | :heavy_check_mark: |  | :heavy_check_mark: |
-| [應用程式系統管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
+| [應用程式管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
 | [雲端應用程式管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
-| User | 目錄擁有者 | 只有在群組擁有者 | 只有在群組擁有者 | 只有應用程式擁有者 |  |
+| 使用者 | 目錄擁有者 | 只有在群組擁有者 | 只有在群組擁有者 | 只有應用程式擁有者 |  |
 
 若要判斷工作的最低特殊許可權角色，您也可以[在 Azure Active Directory 中，依管理工作參考系統管理員角色](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)。
 

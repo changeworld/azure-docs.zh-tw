@@ -14,11 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4e3e430874f9d5b64f717b6ebb1cacb0eae46b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243948"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84690059"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API 管理中的使用者設定檔範本
 「Azure API 管理」可讓您使用一組可設定開發人員入口網站頁面內容的範本，來自訂那些頁面的內容。 使用這些範本時，您可以運用 [DotLiquid](http://dotliquidmarkup.org/) 語法和您選擇的編輯器 (例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers))，以及一組提供的當地語系化[字串資源](api-management-template-resources.md#strings)、[字符資源](api-management-template-resources.md#glyphs)和[頁面控制項](api-management-page-controls.md)，依照您的想法自由靈活地設定頁面內容。  
@@ -27,7 +26,7 @@ ms.locfileid: "79243948"
   
 -   [設定檔](#Profile)  
   
--   [訂閱](#Subscriptions)  
+-   [訂用帳戶](#Subscriptions)  
   
 -   [應用程式](#Applications)  
   
@@ -105,7 +104,7 @@ ms.locfileid: "79243948"
 > [!NOTE]
 >  [設定檔](#Profile)、[應用程式](#Applications)、[訂用帳戶](#Subscriptions)範本共用相同的資料模型，並接收相同的範本資料。  
   
-|屬性|類型|描述|  
+|屬性|類型|Description|  
 |--------------|----------|-----------------|  
 |`firstName`|字串|目前使用者的名字。|  
 |`lastName`|字串|目前使用者的姓氏。|  
@@ -326,7 +325,7 @@ ms.locfileid: "79243948"
 > [!NOTE]
 >  [設定檔](#Profile)、[應用程式](#Applications)、[訂用帳戶](#Subscriptions)範本共用相同的資料模型，並接收相同的範本資料。  
   
-|屬性|類型|描述|  
+|屬性|類型|Description|  
 |--------------|----------|-----------------|  
 |`firstName`|字串|目前使用者的名字。|  
 |`lastName`|字串|目前使用者的姓氏。|  
@@ -489,7 +488,7 @@ ms.locfileid: "79243948"
 > [!NOTE]
 >  [設定檔](#Profile)、[應用程式](#Applications)、[訂用帳戶](#Subscriptions)範本共用相同的資料模型，並接收相同的範本資料。  
   
-|屬性|類型|描述|  
+|屬性|類型|Description|  
 |--------------|----------|-----------------|  
 |`firstName`|字串|目前使用者的名字。|  
 |`lastName`|字串|目前使用者的姓氏。|  

@@ -6,11 +6,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277878"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84697702"
 ---
 # <a name="durable-functions-types-and-features"></a>Durable Functions 類型和功能
 
@@ -36,7 +35,7 @@ Azure Functions 中目前有四個長期函式類型： activity、orchestrator�
 > [!NOTE]
 > 由於活動功能只保證*至少一次*執行，因此建議您盡可能讓活動函式邏輯為*等冪*。
 
-使用[活動觸發](durable-functions-bindings.md#activity-trigger)程式來定義活動函數。 .NET 函數會接收`DurableActivityContext`做為參數。 您也可以將觸發程式系結到任何其他的 JSON 可序列化物件，以將輸入傳遞至函式。 在 JavaScript 中，您可以透過[ `context.bindings`物件](../functions-reference-node.md#bindings)上的`<activity trigger binding name>`屬性來存取輸入。 活動函式只能傳遞一個值給它們。 若要傳遞多個值，您必須使用元組、陣列或複雜類型。
+使用[活動觸發](durable-functions-bindings.md#activity-trigger)程式來定義活動函數。 .NET 函數會接收 `DurableActivityContext` 做為參數。 您也可以將觸發程式系結到任何其他的 JSON 可序列化物件，以將輸入傳遞至函式。 在 JavaScript 中，您可以透過 `<activity trigger binding name>` [ `context.bindings` 物件](../functions-reference-node.md#bindings)上的屬性來存取輸入。 活動函式只能傳遞一個值給它們。 若要傳遞多個值，您必須使用元組、陣列或複雜類型。
 
 > [!NOTE]
 > 您只能從協調器函式觸發活動函數。

@@ -9,11 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271638"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84695329"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT 中心架構
 
@@ -168,7 +167,7 @@ Azure IoT 中心內的安全性功能包括：
 UI Shell 是現代化、回應式、HTML5 瀏覽器型應用程式。
 系統管理員可以自訂應用程式的 UI，方法是套用自訂主題，並修改說明連結，以指向您自己的自訂説明資源。 若要深入瞭解 UI 自訂，請參閱[自訂 Azure IOT CENTRAL UI](howto-customize-ui.md)文章。
 
-操作員可以建立個人化的應用程式儀表板。 您可以有數個顯示不同資料的儀表板，並在兩者之間切換。
+操作員可以建立個人化的應用程式儀表板。 您可以具有多個顯示不同資料的儀表板，並在它們之間進行切換。
 
 ## <a name="next-steps"></a>後續步驟
 

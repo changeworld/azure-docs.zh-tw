@@ -3,12 +3,11 @@ title: 定義變數的多個實例
 description: 在 Azure Resource Manager 範本中使用複製作業，在建立變數時反復執行多次。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 4fbe392e8a0fb477b6986fc9c7584291590eb4e7
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: aca69dd858c7a940592e74123b97b8d364d9e11c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583381"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678438"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM 範本中的變數反復專案
 
@@ -16,7 +15,7 @@ ms.locfileid: "82583381"
 
 您也可以使用 [複製[資源](copy-resources.md)]、[資源中的屬性](copy-properties.md)和 [[輸出](copy-outputs.md)]。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 Copy 元素具有下列一般格式：
 
@@ -240,7 +239,7 @@ Copy 元素具有下列一般格式：
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {

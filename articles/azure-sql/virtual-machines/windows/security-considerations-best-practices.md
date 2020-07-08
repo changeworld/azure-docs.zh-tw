@@ -1,10 +1,9 @@
 ---
-title: Azure 中的 SQL Server 安全性考量 | Microsoft Docs
-description: 本主題提供一般指導方針來保護在 Azure 虛擬機器中執行的 SQL Server。
+title: 安全性考慮 |Microsoft Docs
+description: 本主題提供保護在 Azure 虛擬機器中執行之 SQL Server 的一般指引。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-service-management
 ms.assetid: d710c296-e490-43e7-8ca9-8932586b71da
@@ -15,14 +14,13 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f04620430571a1f86d601eac2b1b662c77499a76
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 4421b30d672cc026a033febb34b8b31afa0ef3c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034279"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668790"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虛擬機器中的 SQL Server 安全性考量
+# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上 SQL Server 的安全性考慮
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 本主題包含整體安全性指導方針，可協助制定 Azure 虛擬機器 (VM) 中 SQL Server 執行個體的存取安全。
@@ -31,7 +29,7 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="control-access-to-the-sql-vm"></a>控制 SQL VM 的存取
+## <a name="control-access-to-the-sql-virtual-machine"></a>控制 SQL 虛擬機器的存取權
 
 當您建立 SQL Server 虛擬機器時，請考慮如何仔細控制誰可以存取電腦和 SQL Server。 一般而言，您應該執行下列作業：
 
@@ -46,7 +44,7 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 ![SQL Server 連線](./media/security-considerations-best-practices/sql-vm-connectivity-option.png)
 
-如需最佳的安全性，請為您的案例選擇最嚴格的選項。 例如，如果您執行的應用程式可存取相同 VM 上的 SQL Server，則 [本機] 是最安全的選擇。 如果您執行的 Azure 應用程式需要存取 SQL Server，則 [私人] 只可保護指定之 [Azure 虛擬網路](../../../virtual-network/virtual-networks-overview.md) 內的 SQL Server 通訊。 如果您需要 SQL Server VM的 [公用] \(網際網路) 存取，請務必遵循本主題中的其他最佳做法，以縮寫受攻擊面。
+如需最佳的安全性，請為您的案例選擇最嚴格的選項。 例如，如果您執行的應用程式可存取相同 VM 上的 SQL Server，則 [本機] 是最安全的選擇。 如果您執行的 Azure 應用程式需要存取 SQL Server，則**私**用只能保護在指定的[Azure 虛擬網路](../../../virtual-network/virtual-networks-overview.md)內 SQL Server 的通訊。 如果您需要 SQL Server VM的 [公用] \(網際網路) 存取，請務必遵循本主題中的其他最佳做法，以縮寫受攻擊面。
 
 入口網站中選取的選項會使用 VM [網路安全性群組](../../../active-directory/identity-protection/security-overview.md) (NSG) 上的輸入安全性規則來允許或拒絕虛擬機器的網路流量。 您可以修改或建立新的輸入 NSG 規則，以允許 SQL Server 連接埠 (預設值 1433) 的流量。 您也可以指定允許透過此連接埠通訊的特定 IP 位址。
 
@@ -54,13 +52,13 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 除了可限制網路流量的 NSG 規則，您也可以在虛擬機器上使用 Windows 防火牆。
 
-使用您使用端點搭配傳統部署模型，如果虛擬機器上有任何不使用的端點，請將它們全部移除。 如需有關在端點中使用 ACL 的指示，請參閱 [在端點上管理 ACL](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)。 使用 Resource Manager 的 VM 不需要這麼做。
+使用您使用端點搭配傳統部署模型，如果虛擬機器上有任何不使用的端點，請將它們全部移除。 如需有關在端點中使用 ACL 的指示，請參閱 [在端點上管理 ACL](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)。 使用 Azure Resource Manager 的 Vm 不需要這麼做。
 
 最後，請考慮對 Azure 虛擬機器中的 SQL Server Database Engine 執行個體啟用已加密的連線。 使用簽署的憑證設定 SQL Server 執行個體。 如需詳細資訊，請參閱[啟用 Database Engine 的加密連接](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)和[連接字串語法](https://msdn.microsoft.com/library/ms254500.aspx)。
 
 ## <a name="encryption"></a>加密
 
-受控磁碟提供伺服器端加密及 Azure 磁碟加密。 [伺服器端加密](/azure/virtual-machines/windows/disk-encryption)提供待用加密並保護資料安全，以符合組織的安全性和合規性承諾。 [Azure 磁碟加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)會使用 Bitlocker 或 DM Crypt 技術並與 Azure Key Vault 整合，以加密 OS 和資料磁碟。 
+受控磁片提供伺服器端加密，並 Azure 磁碟加密。 [伺服器端加密](/azure/virtual-machines/windows/disk-encryption)提供待用加密，並保護您的資料，以符合您的組織安全性和合規性承諾。 [Azure 磁碟加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)會使用 Bitlocker 或 DM Crypt 技術並與 Azure Key Vault 整合，以加密 OS 和資料磁碟。 
 
 ## <a name="use-a-non-default-port"></a>使用非預設連接埠
 
@@ -109,7 +107,7 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您也想了解關於效能的最佳作法，請參閱 [Azure 虛擬機器中 SQL Server 的效能最佳作法](performance-guidelines-best-practices.md)。
+如果您也想瞭解關於效能的最佳作法，請參閱[Azure 虛擬機器上 SQL Server 的效能最佳作法](performance-guidelines-best-practices.md)。
 
 如需在 Azure VM 中執行 SQL Server 的其他相關主題，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](sql-server-on-azure-vm-iaas-what-is-overview.md)。 如果您有 SQL Server 虛擬機器的相關問題，請參閱[常見問題集](frequently-asked-questions-faq.md)。
 

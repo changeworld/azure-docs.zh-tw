@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699051"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>執行測試容錯移轉（嚴重損壞修復演練）至 Azure 
 
@@ -28,10 +27,10 @@ ms.locfileid: "79257520"
 ![Test Failover](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
-1. 在 Azure 入口網站的 Site Recovery 中，按一下 [復原**計畫** > *] recoveryplan_name* > [**測試容錯移轉**]。
+1. 在 Azure 入口網站的 Site Recovery 中，按一下 [復原**計畫**]  >  *recoveryplan_name*[  >  **測試容錯移轉**]。
 2. 選取要對其進行容錯移轉的 [復原點]****。 您可以使用下列其中一個選項：
-    - **最近處理**：此選項會將計劃中所有 VM 容錯移轉到 Site Recovery 所處理的最新復原點。 若要查看特定 VM 的最新復原點，請檢查 VM 設定中的**最新復原點**。 此選項提供低 RTO (復原時間目標)，因為無須花費時間處理未處理的資料。
-    - **最新應用程式一致**：此選項會將計劃中所有 VM 容錯移轉到 Site Recovery 所處理的最新應用程式一致復原點。 若要查看特定 VM 的最新復原點，請檢查 VM 設定中的**最新復原點**。
+    - **最近處理**：此選項會將計劃中所有 VM 容錯移轉到 Site Recovery 所處理的最新復原點。 若要查看特定 VM 的最新復原點，請檢查 VM 設定中的 [最新復原點]。 此選項提供低 RTO (復原時間目標)，因為無須花費時間處理未處理的資料。
+    - **最新應用程式一致**：此選項會將計劃中所有 VM 容錯移轉到 Site Recovery 所處理的最新應用程式一致復原點。 若要查看特定 VM 的最新復原點，請檢查 VM 設定中的 [最新復原點]。
     - **最新**︰此選項會先處理已傳送到 Site Recovery 服務的所有資料，先為每部 VM 建立復原點後再進行容錯移轉。 此選項會提供最低的 RPO (復原點目標)，因為在容錯移轉後建立的 VM 具有在觸發容錯移轉時複寫到 Site Recovery 的所有資料。
     - **已處理最新多部 VM**：此選項適用於一或多部 VM 已啟用多部 VM 一致性的復原計劃。 啟用這項設定的 VM 會容錯移轉至最新的一般多部 VM 一致復原點。 其他 VM 會容錯移轉至最新的已處理復原點。  
     - **最新多部 VM 應用程式一致**：此選項適用於一或多部 VM 已啟用多部 VM 一致性的復原計劃。 屬於最新一般多部 VM 應用程式一致復原點的複寫群組容錯移轉一部分的 VM。 對於最新應用程式一致復原點進行的其他 VM 容錯移轉。
@@ -45,7 +44,7 @@ ms.locfileid: "79257520"
 5. 在 [**工作**] 索引標籤上追蹤容錯移轉進度。您應該能夠在 Azure 入口網站中看到測試複本電腦。
 6. 若要在 Azure VM 上初始化 RDP 連線，您必須在容錯移轉之 VM 的網路介面上[新增公用 IP 位址](https://aka.ms/addpublicip)。
 7. 當一切都如預期般運作時，請按一下 [清除測試容錯移轉]****。 這樣會刪除在測試容錯移轉期間所建立的 VM。
-8. 在 [記事]  中，記錄並儲存關於測試容錯移轉的任何觀察。
+8. 在 [記事] 中，記錄並儲存關於測試容錯移轉的任何觀察。
 
 
 ![Test Failover](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
@@ -105,7 +104,7 @@ ms.locfileid: "79257520"
 
 **容錯移轉** | **位置** | **動作**
 --- | --- | ---
-**執行 Windows 的 Azure VM** | 在容錯移轉前的內部部署機器 | 若要透過網際網路存取 Azure VM，請啟用 RDP，並確定已針對 [公用]**** 新增 TCP 和 UDP 規則，且在 [Windows 防火牆]**** > [允許的應用程式]**** 中已針對所有設定檔允許 RDP。<br/><br/> 若要透過站對站連線來存取 Azure VM，請在機器上啟用 rdp，並確定在 [ **Windows 防火牆** -> ] [**允許的應用程式和功能**] 中，針對 [**網域] 和 [私人**] 網路允許 rdp。<br/><br/>  確定作業系統的 SAN 原則已設為 **OnlineAll**。 [深入了解](https://support.microsoft.com/kb/3031135)。<br/><br/> 觸發容錯移轉時，請確定 VM 上沒有任何暫止的 Windows 更新。 容錯移轉時，可能會啟動 Windows 更新，必須等到更新完成，才能登入 VM。
+**執行 Windows 的 Azure VM** | 在容錯移轉前的內部部署機器 | 若要透過網際網路存取 Azure VM，請啟用 RDP，並確定已針對 [公用]**** 新增 TCP 和 UDP 規則，且在 [Windows 防火牆]**** > [允許的應用程式]**** 中已針對所有設定檔允許 RDP。<br/><br/> 若要透過站對站連線來存取 Azure VM，請在機器上啟用 rdp，並確定在 [ **Windows 防火牆**] [  ->  **允許的應用程式和功能**] 中，針對 [**網域] 和 [私人**] 網路允許 rdp。<br/><br/>  確定作業系統的 SAN 原則已設為 **OnlineAll**。 [深入了解](https://support.microsoft.com/kb/3031135)。<br/><br/> 觸發容錯移轉時，請確定 VM 上沒有任何暫止的 Windows 更新。 容錯移轉時，可能會啟動 Windows 更新，必須等到更新完成，才能登入 VM。
 **執行 Windows 的 Azure VM** | 容錯移轉後的 Azure VM |  [新增 VM 的公用 IP 位址](https://aka.ms/addpublicip)。<br/><br/> 已容錯移轉的 VM 上的網路安全性群組規則 (以及它所連線的 Azure 子網路) 必須允許 RDP 連接埠的連入連線。<br/><br/> 勾選 [開機診斷]**** 以確認 VM 的螢幕擷取畫面。<br/><br/> 如果您無法連線，請檢查 VM 是否正在執行，並檢閱這些[疑難排解祕訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 **執行 Linux 的 Azure VM** | 在容錯移轉前的內部部署機器 | 確定 VM 上的安全殼層服務已設定為在系統開機時自動啟動。<br/><br/> 請檢查防火牆規則是否允許 SSH 連線。
 **執行 Linux 的 Azure VM** | 容錯移轉後的 Azure VM | 已容錯移轉的 VM 上的網路安全性群組規則 (以及它所連線的 Azure 子網路) 必須允許 SSH 連接埠的連入連線。<br/><br/> [新增 VM 的公用 IP 位址](https://aka.ms/addpublicip)。<br/><br/> 勾選 [開機診斷]**** 以檢視 VM 的螢幕擷取畫面。<br/><br/>

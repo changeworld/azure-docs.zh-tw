@@ -4,11 +4,10 @@ description: 搜尋和篩選 Web 應用程式傳送的原始遙測。
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275980"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84695652"
 ---
 # <a name="using-search-in-application-insights"></a>在 Application Insights 中使用搜尋
 
@@ -56,12 +55,12 @@ ms.locfileid: "79275980"
 
 事件類型包括：
 
-* **追蹤** - [診斷記錄](../../azure-monitor/app/asp-net-trace-logs.md)，包括 TrackTrace、log4Net、NLog 和呼叫。
+* **追蹤**  - [診斷記錄](../../azure-monitor/app/asp-net-trace-logs.md)，包括 TrackTrace、Log4Net、NLog 和呼叫。
 * **要求** - 伺服器應用程式收到的 HTTP 要求，包括頁面、指令碼、影像、樣式檔案和資料。 這些事件是用來建立要求和回應概觀圖表。
-* **Page View**  - 網頁[用戶端傳送](../../azure-monitor/app/javascript.md)的頁面流覽遙測，用來建立頁面流覽報表。
+* **網頁檢視**  - [由 web 用戶端傳送的遙測](../../azure-monitor/app/javascript.md)資料，用來建立頁面流覽報表。
 * **自訂事件** - 如果您插入 TrackEvent() 呼叫來[監視使用量](../../azure-monitor/app/api-custom-events-metrics.md)，則可以在這裡搜尋它們。
 * **例外**狀況-伺服器中未攔截到[的例外](../../azure-monitor/app/asp-net-exceptions.md)狀況，以及您使用 TrackException （）來記錄的例外狀況。
-* **Dependency**從您[的伺服器應用程式](../../azure-monitor/app/asp-net-dependencies.md)到其他服務的相依性呼叫，例如 REST api 或資料庫，以及來自[用戶端程式代碼](../../azure-monitor/app/javascript.md)的 AJAX 呼叫。 - 
+* 相依性**Dependency**  - [從您的伺服器應用程式呼叫](../../azure-monitor/app/asp-net-dependencies.md)其他服務（例如 REST api 或資料庫），以及來自[用戶端程式代碼](../../azure-monitor/app/javascript.md)的 AJAX 呼叫。
 * **可用性** - [可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)的結果。
 
 ## <a name="filter-on-property-values"></a>依據屬性值篩選
@@ -92,7 +91,7 @@ ms.locfileid: "79275980"
 
 請搜尋完整單字，而不是子字串。 使用引號來括住的特殊字元。
 
-| 字串 | 找*不*到 | 已找到 |
+| String | 找*不*到 | 已找到 |
 | --- | --- | --- |
 | HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |美國|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`

@@ -20,17 +20,16 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282883"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84692796"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 OData $filter 語法
 
 Azure 認知搜尋會使用[OData 篩選條件運算式](query-odata-filter-orderby-syntax.md)，將額外的準則套用至除了全文檢索搜尋詞彙以外的搜尋查詢。 本文詳細說明篩選準則的語法。 如需有關哪些篩選準則，以及如何使用它們來實現特定查詢案例的一般資訊，請參閱[Azure 認知搜尋中的篩選](search-filters.md)。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 OData 語言中的篩選是布林運算式，它可以是數種運算式類型的其中一種，如下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）所示：
 
@@ -60,15 +59,15 @@ variable ::= identifier | field_path
 
 布林運算式的類型包括：
 
-- 使用`any`或`all`的集合篩選運算式。 這些會將篩選準則套用至集合欄位。 如需詳細資訊，請參閱[Azure 認知搜尋中的 OData 集合運算子](search-query-odata-collection-operators.md)。
-- 使用運算子`and`、 `or`和`not`結合其他布林運算式的邏輯運算式。 如需詳細資訊，請參閱[Azure 認知搜尋中的 OData 邏輯運算子](search-query-odata-logical-operators.md)。
-- 比較運算式，這會`eq`使用運算子、 `ne`、 `gt`、 `lt` `ge`、和`le`，比較欄位或範圍變數與常數值。 如需詳細資訊，請參閱[Azure 認知搜尋中的 OData 比較運算子](search-query-odata-comparison-operators.md)。 比較運算式也用來比較地理空間座標之間使用函數的`geo.distance`距離。 如需詳細資訊，請參閱[Azure 認知搜尋中的 OData 地理空間函式](search-query-odata-geo-spatial-functions.md)。
-- 布林常`true`值和`false`。 這些常數有時在以程式設計方式產生篩選時很有用，但通常不會在實務中使用。
+- 使用或的集合篩選運算式 `any` `all` 。 這些會將篩選準則套用至集合欄位。 如需詳細資訊，請參閱[Azure 認知搜尋中的 OData 集合運算子](search-query-odata-collection-operators.md)。
+- 使用運算子、和結合其他布林運算式的邏輯 `and` 運算式 `or` `not` 。 如需詳細資訊，請參閱[Azure 認知搜尋中的 OData 邏輯運算子](search-query-odata-logical-operators.md)。
+- 比較運算式，這會使用運算子、、、、和，比較欄位或範圍變數與常數值 `eq` `ne` `gt` `lt` `ge` `le` 。 如需詳細資訊，請參閱[Azure 認知搜尋中的 OData 比較運算子](search-query-odata-comparison-operators.md)。 比較運算式也用來比較地理空間座標之間使用函數的距離 `geo.distance` 。 如需詳細資訊，請參閱[Azure 認知搜尋中的 OData 地理空間函式](search-query-odata-geo-spatial-functions.md)。
+- 布林常值 `true` 和 `false` 。 這些常數有時在以程式設計方式產生篩選時很有用，但通常不會在實務中使用。
 - 對布耳函數的呼叫，包括：
   - `geo.intersects`，用來測試指定的點是否在指定的多邊形內。 如需詳細資訊，請參閱[Azure 認知搜尋中的 OData 地理空間函式](search-query-odata-geo-spatial-functions.md)。
-  - `search.in`，它會比較欄位或範圍變數與值清單中的每個值。 如需詳細資訊，請參閱[Azure 認知搜尋中的`search.in` OData 函數](search-query-odata-search-in-function.md)。
-  - `search.ismatch`和`search.ismatchscoring`，它會在篩選內容中執行全文檢索搜尋作業。 如需詳細資訊，請參閱[Azure 認知搜尋中的 OData 全文檢索搜尋功能](search-query-odata-full-text-search-functions.md)。
-- 類型`Edm.Boolean`的欄位路徑或範圍變數。 例如，如果您的索引有一個名`IsEnabled`為的布林值欄位，而您想要傳回此欄位`true`所在的所有檔，則您的篩選`IsEnabled`運算式可以是名稱。
+  - `search.in`，它會比較欄位或範圍變數與值清單中的每個值。 如需詳細資訊，請參閱[ `search.in` Azure 認知搜尋中的 OData 函數](search-query-odata-search-in-function.md)。
+  - `search.ismatch`和 `search.ismatchscoring` ，它會在篩選內容中執行全文檢索搜尋作業。 如需詳細資訊，請參閱[Azure 認知搜尋中的 OData 全文檢索搜尋功能](search-query-odata-full-text-search-functions.md)。
+- 類型的欄位路徑或範圍變數 `Edm.Boolean` 。 例如，如果您的索引有一個名為的布林值欄位， `IsEnabled` 而您想要傳回此欄位所在的所有檔 `true` ，則您的篩選運算式可以是名稱 `IsEnabled` 。
 - 括弧中的布林運算式。 使用括弧有助於明確判斷篩選準則中的作業順序。 如需 OData 運算子之預設優先順序的詳細資訊，請參閱下一節。
 
 ### <a name="operator-precedence-in-filters"></a>篩選中的運算子優先順序
@@ -82,7 +81,7 @@ variable ::= identifier | field_path
 | 邏輯運算子 | `and` |
 | 邏輯運算子 | `or` |
 
-上表中較高的運算子會將「系結更緊密」地「系結」到其運算元，而不是其他運算子。 例如， `and`的優先順序高於`or`，而比較運算子的優先順序高於其中之一，因此下列兩個運算式是相等的：
+上表中較高的運算子會將「系結更緊密」地「系結」到其運算元，而不是其他運算子。 例如， `and` 的優先順序高於 `or` ，而比較運算子的優先順序高於其中之一，因此下列兩個運算式是相等的：
 
     Rating gt 0 and Rating lt 3 or Rating gt 7 and Rating lt 10
     ((Rating gt 0) and (Rating lt 3)) or ((Rating gt 7) and (Rating lt 10))
@@ -95,7 +94,7 @@ variable ::= identifier | field_path
 
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
 
-這個錯誤發生的原因是，運算子只與`Rating`欄位相關聯，其類型`Edm.Int32`為，而不是整個比較運算式。 修正方法是將的運算元放`not`在括弧中：
+這個錯誤發生的原因是，運算子只與欄位相關聯 `Rating` ，其類型為 `Edm.Int32` ，而不是整個比較運算式。 修正方法是將的運算元放 `not` 在括弧中：
 
     not (Rating gt 5)
 
@@ -106,7 +105,7 @@ variable ::= identifier | field_path
 您可以傳送至「Azure 認知搜尋」的篩選條件運算式大小和複雜度有所限制。 這些限制大致上取決於篩選運算式中的子句數目。 一個不錯的指導方針是，如果您有數百個子句，就會有超過限制的風險。 我們建議您將應用程式設計成不會產生未受限制大小的篩選器。
 
 > [!TIP]
-> 使用[ `search.in`函數](search-query-odata-search-in-function.md)，而不是長 disjunctions 的相等比較，有助於避免篩選子句的限制，因為函式呼叫會計算為單一子句。
+> 使用[ `search.in` 函數](search-query-odata-search-in-function.md)，而不是長 disjunctions 的相等比較，有助於避免篩選子句的限制，因為函式呼叫會計算為單一子句。
 
 ## <a name="examples"></a>範例
 
@@ -134,7 +133,7 @@ variable ::= identifier | field_path
 
     $filter=(Category eq 'Luxury' or ParkingIncluded eq true) and Rating eq 5
 
-在至少一個房間中尋找所有具有標記 "wifi" 的飯店（其中每個房間都有儲存在`Collection(Edm.String)`欄位中的標記）：  
+在至少一個房間中尋找所有具有標記 "wifi" 的飯店（其中每個房間都有儲存在欄位中的標記 `Collection(Edm.String)` ）：  
 
     $filter=Rooms/any(room: room/Tags/any(tag: tag eq 'wifi'))
 
@@ -146,11 +145,11 @@ variable ::= identifier | field_path
 
     $filter=not Rooms/any()
 
-尋找在指定參考點的10公里內的所有旅館（ `Location`其中是類型`Edm.GeographyPoint`的欄位）：
+尋找在指定參考點的10公里內的所有旅館（其中 `Location` 是類型的欄位 `Edm.GeographyPoint` ）：
 
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
 
-尋找指定的範圍內的所有旅館，並以多邊形（ `Location`其中是 GeographyPoint 類型的欄位）的形式來說明。 多邊形必須關閉，表示第一個和最後一個點集合必須相同。 此外，[這些點必須以逆時針順序列出](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
+尋找指定的範圍內的所有旅館，並以多邊形（其中 `Location` 是 GeographyPoint 類型的欄位）的形式來說明。 多邊形必須關閉，表示第一個和最後一個點集合必須相同。 此外，[這些點必須以逆時針順序列出](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
 
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
@@ -178,7 +177,7 @@ variable ::= identifier | field_path
 
     $filter=search.ismatchscoring('waterfront')
 
-尋找含有「青年旅館」一詞、且評分為 4 或以上的文件，或含有「汽車旅館」一詞、且評分為 5 的文件。 無法以`search.ismatchscoring`函數表示此要求，因為它會使用`or`將全文檢索搜尋與篩選作業結合。
+尋找含有「青年旅館」一詞、且評分為 4 或以上的文件，或含有「汽車旅館」一詞、且評分為 5 的文件。 無法以函數表示此要求， `search.ismatchscoring` 因為它會使用將全文檢索搜尋與篩選作業結合 `or` 。
 
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
 
@@ -186,7 +185,7 @@ variable ::= identifier | field_path
 
     $filter=not search.ismatch('luxury')
 
-尋找含有「海景」一詞或評分為 5 的文件。 `search.ismatchscoring` 查詢只會對欄位 `HotelName` 和 `Description` 執行。 只會傳回比對之第二個子句相符的檔，也會傳回`Rating`等於5的飯店。 這些檔會以等於零的分數傳回，使其清楚指出不符合運算式的任何計分部分。
+尋找含有「海景」一詞或評分為 5 的文件。 `search.ismatchscoring` 查詢只會對欄位 `HotelName` 和 `Description` 執行。 只會傳回比對之第二個子句相符的檔，也會傳回 `Rating` 等於5的飯店。 這些檔會以等於零的分數傳回，使其清楚指出不符合運算式的任何計分部分。
 
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5
 

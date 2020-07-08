@@ -5,21 +5,18 @@ description: 若要使用 Azure Machine Learning Studio （傳統），您需要
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 7b01e7667392d475bcab70dcd3dfaad2c3956e8f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: ede84fefed7db9d2afcc0ad65833ab2c0fefbc03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208528"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696519"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>建立和共用 Azure Machine Learning Studio （傳統）工作區
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 若要使用 Azure Machine Learning Studio （傳統），您需要有 Machine Learning Studio （傳統）工作區。 此工作區包含您建立、管理及發行實驗所需的工具。
 
@@ -45,7 +42,7 @@ ms.locfileid: "82208528"
 
      ![建立新的 Studio （傳統）工作區](./media/create-workspace/create-new-workspace.png)
 
-5. 按一下 [建立]  。
+5. 按一下 [建立]。
 
    機器學習服務目前可用於數量有限的區域。 如果您的訂用帳戶不包含其中一個區域，您可能會看到錯誤訊息「您在允許的區域中沒有任何訂用帳戶。」  為了要求將區域新增至您的訂用帳戶，請從 Azure 入口網站中建立新的 Microsoft 支援要求，選取 [計費]**** 做為問題類型，並遵照提示來提交您的要求。
 
@@ -56,7 +53,7 @@ ms.locfileid: "82208528"
 
 部署工作區之後，您就可以在 Machine Learning Studio （傳統）中開啟它。
 
-1. 流覽至 Machine Learning Studio （傳統）， [https://studio.azureml.net/](https://studio.azureml.net/)網址為。
+1. 流覽至 Machine Learning Studio （傳統），網址為 [https://studio.azureml.net/](https://studio.azureml.net/) 。
 
 2. 選取您右上角的工作區。
 

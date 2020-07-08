@@ -3,12 +3,11 @@ title: 父資源錯誤
 description: 描述如何解決在 Azure Resource Manager 範本中使用父資源時的錯誤。
 ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.openlocfilehash: f1847389d60ddf3c6abc70bc3309940c2246084e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 474cb85d16382136e24e5502b87ba8a1a65488ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76154035"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673655"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>解決父代資源的錯誤
 
@@ -38,7 +37,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 如果父代資源已經存在，但未部署在相同的範本中，當 Resource Manager 無法讓子資源與父代產生關聯時，您會發生此錯誤。 子資源不是正確的格式，或子資源部署與父代資源資源群組不同的資源群組時，可能會發生此錯誤。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 當父代和子資源部署在相同的範本時，若要解決這個錯誤，請包含相依性。
 
@@ -52,7 +51,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "sqlServerName": {

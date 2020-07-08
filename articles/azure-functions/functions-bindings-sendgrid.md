@@ -6,11 +6,10 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277462"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84697352"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 繫結
 
@@ -100,7 +99,7 @@ public class OutgoingEmail
 
 若您在名為「AzureWebJobsSendGridApiKey」的應用程式設定中有 API 金鑰，則可以省略設定屬性的 `ApiKey` 內容。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 下列範例說明 *function.json* 檔案中的 SendGrid 輸出繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。
 
@@ -203,7 +202,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例顯示 HTTP 觸發的函式，它會使用 SendGrid 系結來傳送電子郵件。 您可以在系結設定中提供預設值。 例如，在函式中設定了*from*電子郵件地址 *。* 
+下列範例顯示 HTTP 觸發的函式，它會使用 SendGrid 系結來傳送電子郵件。 您可以在系結設定中提供預設值。 例如，中的 [*發件*人] 電子郵件地址會在*function.js*中設定。 
 
 ```json
 {
@@ -260,7 +259,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
 
 # <a name="java"></a>[Java](#tab/java)
 
-下列範例會使用 JAVA `@SendGridOutput`函式執行時間連結[庫](/java/api/overview/azure/functions/runtime)中的注釋，以使用 SendGrid 輸出系結來傳送電子郵件。
+下列範例會使用 JAVA 函式執行時間連結 `@SendGridOutput` [庫](/java/api/overview/azure/functions/runtime)中的注釋，以使用 SendGrid 輸出系結來傳送電子郵件。
 
 ```java
 package com.function;
@@ -312,7 +311,7 @@ public class HttpTriggerSendGrid {
 
 ---
 
-## <a name="attributes-and-annotations"></a>屬性和注釋
+## <a name="attributes-and-annotations"></a>屬性和註釋
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -330,11 +329,11 @@ public static void Run(
 }
 ```
 
-如需完整範例，請參閱 [C# 範例](#example)。
+如需完整範例，請參閱[c # 範例](#example)。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-C # 腳本不支援屬性。
+C# 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -342,28 +341,28 @@ JavaScript 不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支援屬性。
+Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/SendGridOutput.java)注釋可讓您藉由提供設定值，以宣告方式設定 SendGrid 系結。 如需詳細資訊，請參閱[範例](#example)[和設定](#configuration)章節。
+[SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/SendGridOutput.java)注釋可讓您藉由提供設定值，以宣告方式設定 SendGrid 系結。 如需詳細資訊，請參閱[範例](#example)和[設定](#configuration)區段。
 
 ---
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
-下表列出*函數. json*檔案和`SendGrid`屬性/注釋中可用的系結設定屬性。
+下表列出 [檔案] 和 [屬性/注釋] 的*function.js*中可用的系結設定屬性 `SendGrid` 。
 
-| *function. json*屬性 | 屬性/注釋屬性 | 描述 | 選擇性 |
+| 屬性*上的function.js* | 屬性/注釋屬性 | 說明 | 選用 |
 |--------------------------|-------------------------------|-------------|----------|
-| type |n/a| 必須設為 `sendGrid`。| 否 |
+| 類型 |n/a| 必須設為 `sendGrid`。| No |
 | direction |n/a| 必須設為 `out`。| 否 |
-| 名稱 |n/a| 函數程式碼中用於要求或要求主體的變數名稱。 當只有一個傳回值時，此值為 `$return`。 | 否 |
-| apiKey | ApiKey | 包含您 API 金鑰的應用程式設定名稱。 如果未設定，預設的應用程式設定名稱是*AzureWebJobsSendGridApiKey*。| 否 |
-| to| 至 | 收件者的電子郵件地址。 | 是 |
-| 從| 從 | 寄件者的電子郵件地址。 |  是 |
-| subject| 主體 | 電子郵件的主旨。 | 是 |
-| text| Text | 電子郵件內容。 | 是 |
+| NAME |n/a| 函數程式碼中用於要求或要求主體的變數名稱。 當只有一個傳回值時，此值為 `$return`。 | No |
+| apiKey | ApiKey | 包含您 API 金鑰的應用程式設定名稱。 如果未設定，預設的應用程式設定名稱是*AzureWebJobsSendGridApiKey*。| No |
+| to| 至 | 收件者的電子郵件地址。 | Yes |
+| 從| 從 | 寄件者的電子郵件地址。 |  Yes |
+| subject| 主體 | 電子郵件的主旨。 | Yes |
+| text| Text | 電子郵件內容。 | Yes |
 
 選擇性屬性可能會在系結中定義預設值，並以程式設計方式新增或覆寫。
 
@@ -373,7 +372,7 @@ Python 不支援屬性。
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-本節說明2.x 版和更高版本中可供此系結使用的全域設定。 下面的範例 host. json 檔案僅包含此系結的2.x 版和設定。 如需有關2.x 版和更早版本中的全域設定的詳細資訊，請參閱[Azure Functions 的 host. json 參考](functions-host-json.md)。
+本節說明2.x 版和更高版本中可供此系結使用的全域設定。 以下檔案的範例 host.js僅包含此系結的2.x 版 + 設定。 如需有關2.x 版和更早版本中的全域設定的詳細資訊，請參閱[Azure Functions 的參考host.js](functions-host-json.md)。
 
 > [!NOTE]
 > 有關 Functions 1.x 中 host.json 的參考，請參閱[適用於 Azure Functions 1.x 的 host.json 參考](functions-host-json-v1.md)。

@@ -12,11 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687441"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>在 Azure 機器學習中的進階分析案例
 本文概述可以運用 [Team Data Science Process (TDSP)](overview.md)來處理的各種範例資料來源和目標案例。 TDSP 提供系統化的方法，可讓小組共同建置智慧型應用程式。 此處呈現的案例將根據資料特性、來源位置和在 Azure 中的目標儲存機制，來說明資料處理工作流程中可用的選項。
@@ -35,7 +34,7 @@ ms.locfileid: "79251618"
 > 
 > 
 
-## <a name="scenario-1-small-to-medium-tabular-dataset-in-local-files"></a><a name="smalllocal"></a>案例\#1：本機檔案中的中小型表格式資料集
+## <a name="scenario-1-small-to-medium-tabular-dataset-in-local-files"></a><a name="smalllocal"></a>案例 \# 1：本機檔案中的中小型表格式資料集
 ![中小型本機檔案][1]
 
 #### <a name="additional-azure-resources-none"></a>其他 Azure 資源：無
@@ -43,7 +42,7 @@ ms.locfileid: "79251618"
 1. 上傳資料集。
 1. 建置從上傳的資料集開始的 Azure 機器學習實驗流程。
 
-## <a name="scenario-2-small-to-medium-dataset-of-local-files-that-require-processing"></a><a name="smalllocalprocess"></a>案例\#2：本機檔案中需要處理的小型到中型資料集
+## <a name="scenario-2-small-to-medium-dataset-of-local-files-that-require-processing"></a><a name="smalllocalprocess"></a>案例 \# 2：本機檔案中需要處理的小型到中型資料集
 ![需要處理的中小型本機檔案][2]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 資源：Azure 虛擬機器 (IPython Notebook 伺服器)
@@ -56,7 +55,7 @@ ms.locfileid: "79251618"
 1. 使用[匯入資料][import-data]模組從 Azure Blob 讀取資料。
 1. 建置從內嵌的資料集開始的 Azure 機器學習實驗流程。
 
-## <a name="scenario-3-large-dataset-of-local-files-targeting-azure-blobs"></a><a name="largelocal"></a>案例\#3：本機檔案的大型資料集，以 Azure blob 為目標
+## <a name="scenario-3-large-dataset-of-local-files-targeting-azure-blobs"></a><a name="largelocal"></a>案例 \# 3：本機檔案的大型資料集，以 Azure blob 為目標
 ![大型本機檔案][3]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 資源：Azure 虛擬機器 (IPython Notebook 伺服器)
@@ -101,7 +100,7 @@ ms.locfileid: "79251618"
 1. 使用[匯入資料][import-data]模組直接從 SQL Server 讀取資料。 如有需要，請在匯[入資料][import-data]查詢中，貼上抽取欄位、建立功能及範例資料的必要查詢。
 1. 建置從內嵌的資料集開始的 Azure 機器學習實驗流程。
 
-## <a name="scenario-5-large-dataset-in-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>案例\#5：本機檔案中的大型資料集、Azure VM 中的目標 SQL Server
+## <a name="scenario-5-large-dataset-in-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>案例 \# 5：本機檔案中的大型資料集、AZURE VM 中的目標 SQL Server
 ![大型本機檔案至 Azure 中的 SQL DB][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 資源：Azure 虛擬機器 (SQL Server / IPython Notebook 伺服器)
@@ -138,7 +137,7 @@ ms.locfileid: "79251618"
 1. 使用[匯入資料][import-data]模組直接從 SQL Server 讀取資料。 如有需要，請在匯[入資料][import-data]查詢中，貼上抽取欄位、建立功能及範例資料的必要查詢。
 1. 從上傳的資料集開始的簡單 Azure Machine Learning 實驗流程
 
-## <a name="scenario-6-large-dataset-in-a-sql-server-database-on-premises-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>案例\#6：內部部署 SQL Server 資料庫中的大型資料集，以 Azure 虛擬機器中的 SQL Server 為目標
+## <a name="scenario-6-large-dataset-in-a-sql-server-database-on-premises-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>案例 \# 6：內部部署 SQL Server 資料庫中的大型資料集，以 Azure 虛擬機器中的 SQL Server 為目標
 ![大型 SQL DB 內部部署至 Azure 中的 SQL DB][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 資源：Azure 虛擬機器 (SQL Server / IPython Notebook 伺服器)
@@ -186,7 +185,7 @@ ms.locfileid: "79251618"
 
 [使用卸離與附加移動資料庫 (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
-## <a name="scenario-7-big-data-in-local-files-target-hive-database-in-azure-hdinsight-hadoop-clusters"></a><a name="largedbtohive"></a>案例\#7：本機檔案中的大型資料，以 Azure HDInsight Hadoop 叢集中的 Hive 資料庫為目標
+## <a name="scenario-7-big-data-in-local-files-target-hive-database-in-azure-hdinsight-hadoop-clusters"></a><a name="largedbtohive"></a>案例 \# 7：本機檔案中的大型資料，以 Azure HDInsight Hadoop 叢集中的 Hive 資料庫為目標
 ![本機目標 Hive 中的巨量資料][9]
 
 #### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 資源：Azure HDInsight Hadoop 叢集和 Azure 虛擬機器 (IPython Notebook 伺服器)

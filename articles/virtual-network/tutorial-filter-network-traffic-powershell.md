@@ -11,18 +11,17 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 08031bc2ac29ea77374e21c4ce6f7bcf6151bcad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3b941b81feb54ae6eed0333a9dcb4863cc885686
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66730024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688110"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>使用 PowerShell 透過網路安全性群組篩選網路流量
 
@@ -257,7 +256,7 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-開啟所下載的 RDP 檔案。 如果出現提示，請選取 [連接]  。
+開啟所下載的 RDP 檔案。 如果出現提示，請選取 [連接]。
 
 輸入您在建立虛擬機器時指定的使用者名稱和密碼 (您可能需要選取 [更多選擇]****，然後選取 [使用不同的帳戶]**** 以指定您在建立虛擬機器時輸入的認證)，然後選取 [確定]****。 您可能會在登入過程中收到憑證警告。 選取 [是]**** 以繼續進行連線。
 
@@ -277,7 +276,7 @@ mstsc /v:myvmWeb
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-完成 IIS 安裝之後，請將 myVmWeb** VM 中斷連線，以留在 myVmMgmt** VM 遠端桌面連線中。 若要查看 IIS 歡迎畫面，請開啟網際網路瀏覽器並流覽至 HTTP\/：/myVmWeb。
+完成 IIS 安裝之後，請將 myVmWeb** VM 中斷連線，以留在 myVmMgmt** VM 遠端桌面連線中。 若要查看 IIS 歡迎畫面，請開啟網際網路瀏覽器並流覽至 HTTP： \/ /myVmWeb。
 
 從 myVmMgmt** VM 中斷連線。
 

@@ -5,21 +5,18 @@ description: 瞭解如何使用 [執行 Python 腳本] 模組，在 Machine Lear
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.custom: tracking-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: c79f6bd63fa5d8d8c6b22ff271d8ca513a94fd64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4afb6dca94642ab9b908a4f07ff5de56677626f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218090"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696298"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>以 Azure Machine Learning Studio 執行 Python 機器學習服務腳本（傳統）
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Python 是許多資料科學家工具櫃中的重要工具。 它用於一般機器學習工作流程的每個階段，包括資料探索、功能解壓縮、模型定型和驗證，以及部署。
 
@@ -27,7 +24,7 @@ Python 是許多資料科學家工具櫃中的重要工具。 它用於一般機
 
 ## <a name="using-the-execute-python-script-module"></a>使用執行 Python 腳本模組
 
-Studio （傳統）中的 Python 主要介面是透過[執行 Python 腳本][execute-python-script]模組。 它最多接受三個輸入，並產生最多兩個輸出，類似于[執行 R 腳本][execute-r-script]模組。 透過名`azureml_main`為的特殊命名進入點函式，在參數方塊中輸入 Python 程式碼。
+Studio （傳統）中的 Python 主要介面是透過[執行 Python 腳本][execute-python-script]模組。 它最多接受三個輸入，並產生最多兩個輸出，類似于[執行 R 腳本][execute-r-script]模組。 透過名為的特殊命名進入點函式，在參數方塊中輸入 Python 程式碼 `azureml_main` 。
 
 ![執行 Python 腳本模組](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -43,13 +40,13 @@ Python 模組的輸入會公開為 Pandas 資料框架。 `azureml_main`函數�
 - 第二個輸入連接埠 (如果連接) 會對應至函式的第二個參數。
 - 第三個輸入是用來匯[入其他的 Python 模組](#import-modules)。
 
-以下顯示輸入埠如何對應至函式參數`azureml_main`的更詳細語義。
+以下顯示輸入埠如何對應至函式參數的更詳細語義 `azureml_main` 。
 
 ![輸入埠設定和產生的 Python 簽章的資料表](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
 ### <a name="output-return-values"></a>輸出傳回值
 
-`azureml_main`函式必須傳回以 Python[序列](https://docs.python.org/2/c-api/sequence.html)（例如元組、清單或 NumPy 陣列）封裝的單一 Pandas 資料框架。 此順序的第一個元素會傳回至模組的第一個輸出埠。 模組的第二個輸出埠會用於[視覺效果](#visualizations)，而不需要傳回值。 此配置如下所示。
+函式 `azureml_main` 必須傳回以 Python[序列](https://docs.python.org/2/c-api/sequence.html)（例如元組、清單或 NumPy 陣列）封裝的單一 Pandas 資料框架。 此順序的第一個元素會傳回至模組的第一個輸出埠。 模組的第二個輸出埠會用於[視覺效果](#visualizations)，而不需要傳回值。 此配置如下所示。
 
 ![將輸入埠對應至參數並將值傳回輸出埠](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
@@ -62,7 +59,7 @@ Studio 資料集與 Panda 資料框架不同。 因此，Studio （傳統）中�
 | 字串和數值| 已轉譯為 |
 | Pandas ' NA ' | 轉譯為「遺漏值」 |
 | 索引向量 | 不支援 |
-| 非字串資料行名稱 | 在`str`資料行名稱上呼叫 |
+| 非字串資料行名稱 | `str`在資料行名稱上呼叫 |
 | 重複的資料行名稱 | 新增數值尾碼：（1）、（2）、（3）等等。
 
 **Python 函式中的所有輸入資料框架一律具有64位的數值索引，從0到資料列數目減1*
@@ -81,9 +78,9 @@ Studio 資料集與 Panda 資料框架不同。 因此，Studio （傳統）中�
 
 ![包含使用者定義 Python 程式碼的 Zip 檔案](./media/execute-python-scripts/figure5.png)
 
-將 zip 檔案當做資料集上傳至 Studio （傳統）。 然後，藉由將您的 Python 程式碼附加至 [**執行 Python 腳本**] 模組的第三個輸入埠，來建立並執行使用該檔案的實驗，如下圖所示。
+將 zip 檔案當做資料集上傳至 Studio （傳統）。 然後，在 Hello.zip 檔案中建立並執行使用 Python 程式碼的實驗，方法是將它附加到**執行 Python 腳本**模組的第三個輸入埠，如下圖所示。
 
-![使用 Hello .zip 做為執行 Python 腳本模組輸入的範例實驗](./media/execute-python-scripts/figure6a.png)
+![以 Hello.zip 做為執行 Python 腳本模組輸入的範例實驗](./media/execute-python-scripts/figure6a.png)
 
 ![以 zip 檔案上傳的使用者定義 Python 程式碼](./media/execute-python-scripts/figure6b.png)
 

@@ -1,19 +1,16 @@
 ---
 title: 將與維護設定相關聯的資源移至另一個區域
 description: 瞭解如何將與 VM 維護設定相關聯的資源移至另一個 Azure 區域
-services: virtual-machines
 author: shants123
 ms.service: virtual-machines
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 3e271e2467b495e79a93ce5eab5edee36e65e619
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: baf7201176fc3d6c70881817ff21b44c2615241a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78304442"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676886"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>將維護控制設定中的資源移至另一個區域
 
@@ -25,7 +22,7 @@ ms.locfileid: "78304442"
 - 若要移動維護控制設定，而不是與設定相關聯的資源，請遵循[這些指示](move-region-maintenance-configuration.md)。
 - 若要移動維護設定和其相關聯的資源，請先遵循[這些指示](move-region-maintenance-configuration.md)。 然後，依照這篇文章中的指示進行。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始移動與維護控制設定相關聯的資源之前：
 
@@ -42,7 +39,7 @@ ms.locfileid: "78304442"
 
 1. 開始之前，請先定義這些變數。 我們已提供每個的範例。
 
-    **變數** | **詳細資料** | **範例**
+    **變** | **詳細資料** | **範例**
     --- | ---
     $subId | 包含維護設定之訂用帳戶的識別碼 | 「我們的訂用帳戶識別碼」
     $rsrcGroupName | 資源組名（Azure VM） | VMResourceGroup
@@ -84,7 +81,7 @@ ms.locfileid: "78304442"
 2. 資源移動之後，視您是否移動維護設定而定，將維護設定重新套用至新區域中的資源。 您可以使用[PowerShell](../virtual-machines/maintenance-control-powershell.md)或[CLI](../virtual-machines/maintenance-control-cli.md)將維護設定套用至資源。
 
 
-## <a name="verify-the-move"></a>驗證移動
+## <a name="verify-the-move"></a>確認移動
 
 確認新區域中的資源，並確認新區域中資源的相關設定。 
 

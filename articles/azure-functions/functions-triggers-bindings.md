@@ -6,11 +6,10 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276500"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687645"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 觸發程序和繫結概念
 
@@ -28,10 +27,10 @@ ms.locfileid: "79276500"
 
 | 範例案例 | 觸發程序 | 輸入系結 | 輸出系結 |
 |-------------|---------|---------------|----------------|
-| 新的佇列訊息抵達，其會執行函式以寫入至另一個佇列。 | 佇列<sup>*</sup> | *無* | 佇列<sup>*</sup> |
+| 新的佇列訊息抵達，其會執行函式以寫入至另一個佇列。 | 佇列<sup>*</sup> | *None* | 佇列<sup>*</sup> |
 |排程工作會讀取 Blob 儲存體內容，並建立新的 Cosmos DB 檔。 | 計時器 | Blob 儲存體 | Cosmos DB |
-|事件方格是用來從 Blob 儲存體中讀取影像，並使用來自 Cosmos DB 的檔來傳送電子郵件。 | Event Grid | Blob 儲存體和 Cosmos DB | SendGrid |
-| 使用 Microsoft Graph 來更新 Excel 工作表的 webhook。 | HTTP | *無* | Microsoft Graph |
+|事件方格是用來從 Blob 儲存體中讀取影像，並使用來自 Cosmos DB 的檔來傳送電子郵件。 | 事件方格 | Blob 儲存體和 Cosmos DB | SendGrid |
+| 使用 Microsoft Graph 來更新 Excel 工作表的 webhook。 | HTTP | *None* | Microsoft Graph |
 
 <sup>\*</sup>代表不同的佇列
 
@@ -44,11 +43,11 @@ ms.locfileid: "79276500"
 | 平台 | 觸發程式和系結是由設定的 .。。 |
 |-------------|--------------------------------------------|
 | C# 類別庫 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用 c # 屬性裝飾方法和參數 |
-| 所有其他專案（包括 Azure 入口網站） | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正在更新[函數. json](./functions-reference.md) （[架構](http://json.schemastore.org/function)） |
+| 所有其他專案（包括 Azure 入口網站） | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新（[架構](http://json.schemastore.org/function)）[上的function.js](./functions-reference.md) |
 
 入口網站會提供此設定的 UI，但是您可以透過函式的 [**整合**] 索引標籤開啟可用的 [ **Advanced editor** ]，直接編輯檔案。
 
-在 .NET 中，參數類型會定義輸入資料的資料類型。 例如，使用`string`系結至佇列觸發程式的文字、要讀取為二進位的位元組陣列，以及要還原序列化為物件的自訂類型。
+在 .NET 中，參數類型會定義輸入資料的資料類型。 例如，使用系結 `string` 至佇列觸發程式的文字、要讀取為二進位的位元組陣列，以及要還原序列化為物件的自訂類型。
 
 對於 JavaScript 等具有動態類型的語言，則會使用 *function.json* 檔案中的 `dataType` 屬性。 例如，若要讀取二進位格式的 HTTP 要求內容，請將 `dataType` 設定為 `binary`：
 
@@ -69,7 +68,7 @@ ms.locfileid: "79276500"
 
 - 對於觸發程序，方向一律為 `in`
 - 輸入和輸出繫結使用 `in` 和 `out`
-- 某些繫結支援特殊方向 `inout`。 如果您使用`inout`，則只能透過入口網站中的 [**整合**] 索引標籤使用 [ **Advanced editor** ]。
+- 某些繫結支援特殊方向 `inout`。 如果您使用 `inout` ，則只能透過入口網站中的 [**整合**] 索引標籤使用 [ **Advanced editor** ]。
 
 當您使用[類別庫中的屬性](functions-dotnet-class-library.md)來設定觸發程序和繫結時，請在屬性建構函式中提供方向，或從參數類型推斷方向。
 

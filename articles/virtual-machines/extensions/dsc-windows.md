@@ -14,19 +14,18 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689481"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 延伸模組
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Microsoft 已發佈並支援適用於 Windows 的 PowerShell DSC 擴充功能。 此擴充功能會在 Azure VM 上，上傳並套用 PowerShell DSC 設定。 DSC 擴充功能會呼叫 PowerShell DSC，以便在 VM 上套用所收到的 DSC 設定。 本文件詳述適用於 Windows 的 DSC 虛擬機器擴充功能所支援的平台、組態和部署選項。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 
@@ -97,7 +96,7 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 
 ### <a name="property-values"></a>屬性值
 
-| Name | 值 / 範例 | 資料類型 |
+| 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
 | publisher | Microsoft.Powershell.DSC | 字串 |
@@ -115,7 +114,7 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 | settings.configurationArguments | 集合 | 定義任何您想要傳遞至 DSC 組態的參數。 此屬性將不會經過加密。
 | settings.configurationData.url | 字串 | 指定 URL，從中下載您的組態資料 (.pds1) 檔案以做為 DSC 組態的輸入。 如果提供的 URL 需要 SAS 權杖才能存取，您必須將 protectedSettings.configurationDataUrlSasToken 屬性設定為 SAS 權杖的值。
 | settings.privacy.dataEnabled | 字串 | 啟用或停用遙測收集。 此屬性只有下列可能值：‘Enable’、‘Disable’ 或 $null。 將此屬性保留空白或 null 將會啟用遙測
-| settings.advancedOptions.forcePullAndApply | Bool | 這項設定是設計用來增強使用擴充功能向 Azure 自動化 DSC 註冊節點的經驗。  如果值為`$true`，延伸模組會等待第一次執行從服務提取的設定，然後才傳回成功/失敗。  如果將此值設定為 $false，延伸模組傳回的狀態只會參考是否已成功向 Azure 自動化狀態設定註冊節點，而且在註冊期間將不會執行節點設定。
+| settings.advancedOptions.forcePullAndApply | Bool | 這項設定是設計用來增強使用擴充功能向 Azure 自動化 DSC 註冊節點的經驗。  如果值為 `$true` ，延伸模組會等待第一次執行從服務提取的設定，然後才傳回成功/失敗。  如果將此值設定為 $false，延伸模組傳回的狀態只會參考是否已成功向 Azure 自動化狀態設定註冊節點，而且在註冊期間將不會執行節點設定。
 | settings.advancedOptions.downloadMappings | 集合 | 定義下載相依性 (例如 WMF 和 .NET) 的替代位置
 
 ### <a name="protected-settings-property-values"></a>受保護的設定屬性值
@@ -172,4 +171,4 @@ C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，您可以與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家聯繫。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

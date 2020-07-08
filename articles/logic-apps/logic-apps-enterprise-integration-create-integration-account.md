@@ -9,13 +9,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84691752"
 ---
-# <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立和管理 B2B 企業整合的整合帳戶
+# <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立和管理供 B2B 企業整合運用的整合帳戶
 
 若要使用 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 來建置[企業整合和 B2B 解決方案](../logic-apps/logic-apps-enterprise-integration-overview.md)，您必須先建立整合帳戶，這是個別的 Azure 資源，可提供安全、可調整和可管理的容器，以供放置您使用邏輯應用程式工作流程所定義及搭配使用的整合成品。
 
@@ -33,7 +32,7 @@ ms.locfileid: "79270325"
 * 將整合帳戶移到另一個 Azure 資源群組或訂用帳戶。
 * 刪除整合帳戶。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -57,15 +56,15 @@ ms.locfileid: "79270325"
 
    | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
-   | **名稱** | 是 | <*整合-帳戶-名稱*> | 您的整合帳戶名稱，其中只能包含字母、數位、連字號（`-`）、底線（`_`）、括弧（`(`， `)`）和句點（`.`）。 這個範例會使用「Fabrikam-整合」。 |
-   | **訂用帳戶** | 是 | <*Azure-訂用帳戶-名稱*> | Azure 訂用帳戶的名稱 |
-   | **資源群組** | 是 | <*Azure-資源群組-名稱*> | 用來組織相關資源之[Azure 資源群組](../azure-resource-manager/management/overview.md)的名稱。 針對此範例，請建立名為 "FabrikamIntegration-RG" 的新資源群組。 |
-   | 定價層  | 是 | <*定價層級*> | 整合帳戶的定價層，您可于稍後變更。 針對此範例，請選取 [**免費**]。 如需詳細資訊，請參閱下列主題： <p>- [Logic Apps 計價模式](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps 限制和設定](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **位置** | 是 | <*Azure-區域*> | 要儲存整合帳戶中繼資料的區域。 請選取與邏輯應用程式相同的位置，或在與整合帳戶相同的位置中建立邏輯應用程式。 在此範例中，請使用「美國西部」。 <p>**注意**：若要在[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)內建立整合帳戶，請選取該 ISE 作為位置。 如需詳細資訊，請參閱[在 ISE 中建立整合帳戶](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。 |
-   | **Log Analytics** | 否 | Off、On | 針對此範例，請保留 [**關閉**] 設定。 |
+   | **名稱** | Yes | <*整合-帳戶-名稱*> | 您的整合帳戶名稱，其中只能包含字母、數位、連字號（ `-` ）、底線（ `_` ）、括弧（ `(` ， `)` ）和句點（ `.` ）。 這個範例會使用「Fabrikam-整合」。 |
+   | **訂用帳戶** | Yes | <*Azure-subscription-name*> | Azure 訂用帳戶的名稱 |
+   | **資源群組** | Yes | <*Azure-resource-group-name*> | 用來組織相關資源之[Azure 資源群組](../azure-resource-manager/management/overview.md)的名稱。 針對此範例，請建立名為 "FabrikamIntegration-RG" 的新資源群組。 |
+   | 定價層 | Yes | <*定價層級*> | 整合帳戶的定價層，您可于稍後變更。 針對此範例，請選取 [**免費**]。 如需詳細資訊，請參閱下列主題： <p>- [Logic Apps 計價模式](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps 限制和設定](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **位置** | 是 | <*Azure-region*> | 要儲存整合帳戶中繼資料的區域。 請選取與邏輯應用程式相同的位置，或在與整合帳戶相同的位置中建立邏輯應用程式。 在此範例中，請使用「美國西部」。 <p>**注意**：若要在[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)內建立整合帳戶，請選取該 ISE 作為位置。 如需詳細資訊，請參閱[在 ISE 中建立整合帳戶](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。 |
+   | **Log Analytics** | No | Off、On | 針對此範例，請保留 [**關閉**] 設定。 |
    |||||
 
-1. 當您完成時，請選取 [**建立**]。
+1. 完成之後，選取 [建立]。
 
    部署完成之後，Azure 會開啟您的整合帳戶。
 
@@ -83,7 +82,7 @@ ms.locfileid: "79270325"
 
 1. 在[Azure 入口網站](https://portal.azure.com)中，開啟現有的邏輯應用程式，或建立新的邏輯應用程式。
 
-1. 在邏輯應用程式功能表的 [設定]**** 底下，選取 [工作流程設定]****。 在 [**整合帳戶**] 下，開啟 [**選取整合帳戶**] 清單。 選取整合帳戶以連結至您的邏輯應用程式。
+1. 在邏輯應用程式功能表的 [設定] 底下，選取 [工作流程設定]。 在 [**整合帳戶**] 下，開啟 [**選取整合帳戶**] 清單。 選取整合帳戶以連結至您的邏輯應用程式。
 
    ![選取您的整合帳戶](./media/logic-apps-enterprise-integration-create-integration-account/select-integration-account.png)
 
@@ -138,13 +137,13 @@ ms.locfileid: "79270325"
 
    ![開啟 Azure Cloud Shell](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. 在命令提示字元中，輸入[ **az resource**命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)，並將`skuName`設定為您想要的較高層級。
+1. 在命令提示字元中，輸入[ **az resource**命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)，並將設定 `skuName` 為您想要的較高層級。
 
    ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
    ```
   
-   例如，如果您有基本層，您可以將設定`skuName`為： `Standard`
+   例如，如果您有基本層，您可以將設定 `skuName` 為 `Standard` ：
 
    ```azurecli
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Standard
@@ -162,13 +161,13 @@ ms.locfileid: "79270325"
 
    ![開啟 Azure Cloud Shell](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. 在命令提示字元中，輸入[ **az resource**命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)，並`skuName`將設定為您想要的較低層。
+1. 在命令提示字元中，輸入[ **az resource**命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)，並將設定 `skuName` 為您想要的較低層。
 
    ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
    ```
   
-   例如，如果您有標準層，您可以將設定`skuName`為： `Basic`
+   例如，如果您有標準層，您可以將設定 `skuName` 為 `Basic` ：
 
    ```azurecli
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Basic
@@ -178,7 +177,7 @@ ms.locfileid: "79270325"
 
 如果您想要將邏輯應用程式連結至另一個整合帳戶，或不再將整合帳戶與邏輯應用程式搭配使用，請使用 Azure 資源總管刪除連結。
 
-1. 開啟瀏覽器視窗，然後移至[Azure 資源總管（https://resources.azure.com)](https://resources.azure.com)）。 使用相同的 Azure 帳號憑證登入。
+1. 開啟瀏覽器視窗，然後移至[Azure 資源總管（ https://resources.azure.com) ](https://resources.azure.com)）。 使用相同的 Azure 帳號憑證登入。
 
    ![Azure 資源總管](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer.png)
 
@@ -194,7 +193,7 @@ ms.locfileid: "79270325"
 
    ![在 [資料] 索引標籤上，選取 [編輯]](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-select-edit.png)
 
-1. 在編輯器中，尋找`integrationAccount`物件，並刪除該屬性，其格式如下：
+1. 在編輯器中，尋找 `integrationAccount` 物件，並刪除該屬性，其格式如下：
 
    ```json
    {

@@ -14,11 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
 ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250617"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84698507"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>適用于 Linux 的 DSC 擴充功能（Microsoft.ostcextensions.customscriptforlinux. DSCForLinux）
 
@@ -38,7 +37,7 @@ DSCForLinux 延伸模組是由 Microsoft 發行並受到支援。 此擴充功�
 
  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 
@@ -287,7 +286,7 @@ $publicConfig = '{
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
 ### <a name="use-azure-cliazure-cli"></a>使用 [Azure CLI] [Azure-CLI]
-部署 DSCForLinux 擴充功能之前，請先根據`public.json`第`protected.json` 3 節中的不同案例設定和。
+部署 DSCForLinux 擴充功能之前，請先 `public.json` `protected.json` 根據第3節中的不同案例設定和。
 
 #### <a name="classic"></a>傳統
 
@@ -322,7 +321,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> 在 Azure Resource Manager 模式中`azure vm extension list` ，目前無法使用。
+> 在 Azure Resource Manager 模式中， `azure vm extension list` 目前無法使用。
 >
 
 ### <a name="use-azure-powershellazure-powershell"></a>使用 [Azure PowerShell] [Azure-PowerShell]
@@ -412,7 +411,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ### <a name="troubleshoot"></a>疑難排解
 
-您可以從 Azure 入口網站和使用 Azure CLI，抓取有關擴充功能部署狀態的資料。 若要查看指定 VM 的擴充功能部署狀態，請使用 Azure CLI 執行下列命令。
+您可以使用 Azure CLI 從 Azure 入口網站擷取有關擴充功能部署狀態的資料。 若要查看指定 VM 的擴充功能部署狀態，請使用 Azure CLI 執行下列命令。
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
@@ -431,7 +430,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，請洽詢[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 azure 專家。 或者，您也可以提出 Azure 支援事件。 前往[Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。 如需使用 Azure 支援的相關資訊，請參閱[Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。
+如果您在此文章中有任何需要協助的地方，請連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 前往[Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。 如需使用 Azure 支援的相關資訊，請參閱[Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>後續步驟
 如需擴充功能的詳細資訊，請參閱[虛擬機器擴充功能和 Linux 功能](features-linux.md)。

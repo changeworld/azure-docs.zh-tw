@@ -9,27 +9,26 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 00efc2754948d53d4f80a6261dbd4041b358185b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 77ea14097538f722569acb5a0371674776aac8e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74896365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687798"
 ---
 # <a name="test-vm-network-latency"></a>測試 VM 網路延遲
 
-若要達到最精確的結果，請使用專為工作設計的工具來測量您的 Azure 虛擬機器（VM）網路延遲。 公開可用的工具，例如 SockPerf （適用于 Linux）和 latte （適用于 Windows）可以隔離並測量網路延遲，同時排除其他類型的延遲，例如應用程式延遲。 這些工具著重于影響應用程式效能的網路流量類型（亦即，傳輸控制通訊協定 [TCP] 和使用者資料包協定 [UDP] 流量）。 
+若要達到最精確的結果，請使用專為工作設計的工具來測量您的 Azure 虛擬機器（VM）網路延遲。 公開可用的工具（例如 SockPerf （適用于 Linux）和 latte.exe （適用于 Windows）可以隔離並測量網路延遲，同時排除其他類型的延遲，例如應用程式延遲。 這些工具著重于影響應用程式效能的網路流量類型（亦即，傳輸控制通訊協定 [TCP] 和使用者資料包協定 [UDP] 流量）。 
 
 其他常見的連線工具（例如 Ping）可能會測量延遲，但其結果可能不代表實際工作負載中所使用的網路流量。 這是因為大部分的這些工具都採用網際網路控制訊息通訊協定（ICMP），其處理方式不同于應用程式流量，而其結果可能不適用於使用 TCP 和 UDP 的工作負載。 
 
-針對大部分應用程式所使用的通訊協定進行精確的網路延遲測試，SockPerf （適用于 Linux）和 latte （適用于 Windows）會產生最相關的結果。 本文涵蓋這兩種工具。
+針對大部分應用程式所使用的通訊協定，若要進行精確的網路延遲測試，SockPerf （適用于 Linux）和 latte.exe （適用于 Windows）會產生最相關的結果。 本文涵蓋這兩種工具。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 藉由使用兩個 Vm （一個作為傳送者，另一個做為接收者），您可以建立雙向通道。 使用這種方法，您可以雙向傳送和接收封包，並測量來回時間（RTT）。
 
@@ -45,7 +44,7 @@ ms.locfileid: "74896365"
 ### <a name="tools-for-testing"></a>測試控管
 若要測量延遲，您有兩個不同的工具選項：
 
-* Windows 型系統： [latte .exe （windows）](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Windows 型系統： [latte.exe （windows）](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
 * 針對以 Linux 為基礎的系統： [SockPerf （Linux）](https://github.com/mellanox/sockperf)
 
 藉由使用這些工具，您可以協助確保只有 TCP 或 UDP 承載傳遞時間會經過測量，而不是應用程式使用的 ICMP （Ping）或其他封包類型，而且不會影響其效能。
@@ -69,29 +68,29 @@ ms.locfileid: "74896365"
 
 ## <a name="test-vms-that-are-running-windows"></a>測試正在執行 Windows 的 Vm
 
-### <a name="get-latteexe-onto-the-vms"></a>在 Vm 上取得 latte
+### <a name="get-latteexe-onto-the-vms"></a>取得 Vm 上的 latte.exe
 
-下載[最新版本的 latte](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)。
+下載[最新版本的 latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)。
 
-請考慮將 latte 放在不同的資料夾中，例如*c:\tools*。
+請考慮將 latte.exe 放在不同的資料夾中，例如*c:\tools*。
 
-### <a name="allow-latteexe-through-windows-defender-firewall"></a>允許 latte 透過 Windows Defender 防火牆
+### <a name="allow-latteexe-through-windows-defender-firewall"></a>允許透過 Windows Defender 防火牆 latte.exe
 
-在*接收者*上，于 Windows Defender 防火牆上建立允許規則，以允許 latte 流量抵達。 最簡單的方式是依名稱允許整個 latte 程式，而不是允許特定的 TCP 埠輸入。
+在*接收者*上，于 Windows Defender 防火牆上建立允許規則，以允許 latte.exe 流量抵達。 最簡單的方式是依名稱允許整個 latte.exe 程式，而不是允許特定的 TCP 埠輸入。
 
-藉由執行下列命令來允許 latte 到 Windows Defender 防火牆：
+藉由執行下列命令，允許透過 Windows Defender 防火牆進行 latte.exe：
 
 ```cmd
 netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY
 ```
 
-例如，如果您將 latte 複製到*c:\tools*資料夾，這會是命令：
+例如，如果您將 latte.exe 複製到*c:\tools*資料夾，這會是命令：
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
 ### <a name="run-latency-tests"></a>執行延遲測試
 
-* 在*接收者*上，啟動 latte （從 CMD 視窗執行，而不是從 PowerShell）：
+* 在*接收者*上，啟動 latte.exe （從 CMD 視窗執行，而不是從 PowerShell）：
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
@@ -105,13 +104,13 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* 在*寄件者*上，啟動 latte （從 CMD 視窗執行，而不是從 PowerShell）：
+* 在 [*寄件者*] 上，啟動 latte.exe （從 CMD 視窗執行，而不是從 PowerShell）：
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    產生的命令與接收者相同，但新增&nbsp;*-c*表示這是*用戶端*或*寄件者*：
+    產生的命令與接收者相同，但新增 &nbsp; *-c*表示這是*用戶端*或*寄件者*：
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 

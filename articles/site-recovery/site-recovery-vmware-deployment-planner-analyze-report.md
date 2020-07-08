@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257507"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699187"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析部署規劃工具報告以進行 VMware 嚴重損壞修復至 Azure
 
@@ -178,7 +177,7 @@ ms.locfileid: "79257507"
 
 **VM 名稱**：產生報告時，使用於 VMListFile 的 VM 名稱或 IP 位址。 此資料行也會列出連結至 VM 的磁碟 (VMDK)。 為了區分具有重複名稱或 IP 位址的 vCenter VM，名稱中包含 ESXi 主機名稱。 所列的 ESXi 主機是此工具在分析期間探索到 VM 時其所在位置的主機。
 
-**VM 相容性**：值為 **[是]** 和 **[是\*]**。 **[是]** \*適用于 VM 適合[premium ssd](../virtual-machines/windows/disks-types.md)的實例。 在此情況下，剖析的高變換 / IOPS 磁碟符合 P20 或 P30 類別，但磁碟大小會導致它向下對應至 P10 或 P20。 儲存體帳戶會根據磁碟大小，決定磁碟所要對應至的進階儲存體大小類型。 例如：
+**VM 相容性**：值為 **[是]** 和 **[是\*]**。 **是** \*適用于 VM 適合[Premium ssd](../virtual-machines/windows/disks-types.md)的實例。 在此情況下，剖析的高變換 / IOPS 磁碟符合 P20 或 P30 類別，但磁碟大小會導致它向下對應至 P10 或 P20。 儲存體帳戶會根據磁碟大小，決定磁碟所要對應至的進階儲存體大小類型。 例如：
 * <128 GB 為 P10。
 * 128 GB 至 256 GB 為 P15。
 * 256 GB 至 512 GB 為 P20。
@@ -186,7 +185,7 @@ ms.locfileid: "79257507"
 * 1025 GB 至 2048 GB 為 P40。
 * 2049 GB 至 4095 GB 為 P50。
 
-例如，如果磁片的工作負載特性放在 [P20] 或 [P30] 類別中，但大小會將它對應到較低的 premium 儲存體磁片類型，此工具會將該 VM 標示為 **[是]**\*。 此工具也建議您變更來源磁碟大小，以符合建議的進階儲存體磁碟類型，或變更容錯移轉後的目標磁碟類型。
+例如，如果磁片的工作負載特性放在 [P20] 或 [P30] 類別中，但大小會將它對應到較低的 premium 儲存體磁片類型，此工具會將該 VM 標示為 **[是]** \* 。 此工具也建議您變更來源磁碟大小，以符合建議的進階儲存體磁碟類型，或變更容錯移轉後的目標磁碟類型。
 
 **儲存體類型**：標準或進階。
 
@@ -260,16 +259,16 @@ ms.locfileid: "79257507"
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery 限制
 下表提供 Azure Site Recovery 限制。 上述限制是以我們的測試為基礎，但無法涵蓋所有可能的應用程式 I/O 組合。 實際的結果會隨著您的應用程式 I/O 混合而有所不同。 為了獲得最佳結果，即使在部署規劃之後，仍一律建議發出測試容錯移轉來執行廣泛的應用程式測試，以了解應用程式真正的效能情況。
 
-**複寫儲存體目標** | **平均來源磁片 i/o 大小** |**平均來源磁片資料變換** | **每天的來源磁片資料變換總計**
+**複寫儲存體目標** | **平均來源磁片 i/o 大小** |**平均來源磁碟資料變換** | **每日的來源磁碟資料變換總計**
 ---|---|---|---
 標準儲存體 | 8 KB | 2 MB/秒 | 每個磁碟 168 GB
 進階 P10 或 P15 磁碟 | 8 KB  | 2 MB/秒 | 每個磁碟 168 GB
 進階 P10 或 P15 磁碟 | 16 KB | 4 MB/秒 |  每個磁碟 336 GB
 進階 P10 或 P15 磁碟 | 32 KB 或更大 | 8 MB/秒 | 每個磁碟 672 GB
 進階 P20、P30、P40 或 P50 磁碟 | 8 KB    | 5 MB/秒 | 每個磁碟 421 GB
-進階 P20、P30、P40 或 P50 磁碟 | 16 KB 或更大 | 20 MB/秒 | 每個磁片 1684 GB
+進階 P20、P30、P40 或 P50 磁碟 | 16 KB 或更大 | 20 MB/秒 | 每個磁碟 1684 GB
 
-**來源資料變換** | **最大限制**
+**來源資料變換** | **上限**
 ---|---
 VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 處理序伺服器支援的每日資料變換上限 | 2 TB

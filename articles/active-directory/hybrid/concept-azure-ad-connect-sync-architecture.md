@@ -17,11 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261615"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689209"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同步處理：了解架構
 本主題涵蓋 Azure AD Connect 同步處理的基本架構。在許多方面，它類似于其前身的 MIIS 2003、ILM 2007 和 FIM 2010。 Azure AD Connect 同步處理是這些技術的進化。 如果您很熟悉上述任何較早期的技術，也會對本主題的內容感到熟悉。 如果您是同步處理的新手，這個主題很適合您。 但是，不一定需要了解本主題的詳細資料，才能成功地自訂 Azure AD Connect 同步處理 (在本主題中稱為「同步處理引擎」)。
@@ -146,7 +145,7 @@ Metaverse 物件包含同步處理引擎具有的連接器空間中預備物件�
 身分識別管理程序可控制在不同的連接資料來源之間更新身分識別資訊的方式。 身分識別管理可分為三個程序：
 
 * 匯入
-* Synchronization
+* 同步處理
 * 匯出
 
 在匯入過程中，同步處理引擎會評估從連接的資料來源傳入的身分識別資訊。 偵測到變更時，它會在連接器空間中建立新的預備物件或更新現有預備物件以便進行同步處理。
@@ -224,7 +223,7 @@ Metaverse 物件包含同步處理引擎具有的連接器空間中預備物件�
 輸出同步處理有三個程序：
 
 * **佈建**
-* **解除佈建**
+* **撤銷**
 * **匯出屬性流程**
 
 佈建和解除佈建都是物件層級的作業。 解除佈建相依於佈建，因為只有佈建可以啟始它。 當佈建移除 Metaverse 物件與匯出物件之間的連結時，就會觸發解除佈建。
