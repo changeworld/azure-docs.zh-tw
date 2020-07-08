@@ -1,7 +1,7 @@
 ---
 title: 片語清單-語音服務
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何透過使用`PhraseListGrammar`物件的片語清單來提供語音服務，以改善語音轉換文字辨識結果。
+description: 瞭解如何透過使用物件的片語清單來提供語音服務， `PhraseListGrammar` 以改善語音轉換文字辨識結果。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-one-nomore-no-go
-ms.openlocfilehash: d6418a863e8af75e4f2f063d9e6151e19a0e7e6e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 7347fee0cd8bdaae73467a84806819c913599a51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977578"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834007"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>語音轉換文字的片語清單
 
@@ -31,7 +31,7 @@ ms.locfileid: "82977578"
 
 ## <a name="how-to-use-phrase-lists"></a>如何使用片語清單
 
-下列範例說明如何使用`PhraseListGrammar`物件來建立片語清單。
+下列範例說明如何使用物件來建立片語清單 `PhraseListGrammar` 。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -91,7 +91,7 @@ phraseListGrammar.addPhrase("Move to Ted");
 >[!Note]
 > 語音服務將用來比對語音的片語清單數目上限為1024個片語。
 
-您也可以藉`PhraseListGrammar`由呼叫 clear （），清除與相關聯的片語。
+您也可以藉 `PhraseListGrammar` 由呼叫 clear （），清除與相關聯的片語。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -134,7 +134,7 @@ phraseListGrammar.clear();
 ::: zone-end
 
 > [!NOTE]
-> 對`PhraseListGrammar`物件所做的變更會在下一次辨識或重新連線到語音服務之後生效。
+> 對物件所做 `PhraseListGrammar` 的變更會在下一次辨識或重新連線到語音服務之後生效。
 
 ## <a name="next-steps"></a>後續步驟
 

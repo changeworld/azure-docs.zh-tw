@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: ce40a46d4c1da627930ef8de8813936b71dcc281
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: 14da272ce5ce7c078719909345961f6ddf57f37b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833786"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 觸發程序
 
@@ -497,7 +498,9 @@ public HttpResponseMessage<String> HttpTrigger(
 
 根據預設，當您為 HTTP 觸發程序建立函式時，將可透過下列形式的路由來定址該函式：
 
-    http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```http
+http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```
 
 您可以在 HTTP 觸發程序的輸入繫結上使用選擇性的 `route` 屬性來自訂此路由。 舉例來說，下列 *function.json* 檔案定義了 HTTP 觸發程序的 `route` 屬性：
 
@@ -634,12 +637,14 @@ public class HttpTriggerJava {
 
 ---
 
-所有函式路由預設前面都會加上 *api*。 您也可以在 [host.json](functions-host-json.md) 檔案中使用 `http.routePrefix` 屬性來自訂或移除前置詞。 下列範例會在 *host.json* 檔案中使用空字串作為前置詞來移除 *api* 路由前置詞。
+所有函式路由預設前面都會加上 *api*。 您也可以在 [host.json](functions-host-json.md) 檔案中使用 `extensions.http.routePrefix` 屬性來自訂或移除前置詞。 下列範例會在 *host.json* 檔案中使用空字串作為前置詞來移除 *api* 路由前置詞。
 
 ```json
 {
-    "http": {
-    "routePrefix": ""
+    "extensions": {
+        "http": {
+            "routePrefix": ""
+        }
     }
 }
 ```
@@ -749,9 +754,6 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="function-access-keys"></a><a name="authorization-keys"></a>函式存取金鑰
 
-> [!IMPORTANT]
-> 雖然金鑰可能有助於在開發期間遮蔽您的 HTTP 端點，但這並不適合用來作為在生產環境中保護 HTTP 觸發程序的方式。 若要深入了解，請參閱[在生產環境中保護 HTTP 端點](#secure-an-http-endpoint-in-production)。
-
 [!INCLUDE [functions-authorization-keys](../../includes/functions-authorization-keys.md)]
 
 ## <a name="obtaining-keys"></a>取得金鑰
@@ -766,7 +768,9 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 大多數 HTTP 觸發程序範本都會要求在要求中有 API 金鑰。 因此，您的 HTTP 要求通常看起來會像以下 URL：
 
-    https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```http
+https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```
 
 金鑰可包含在名為 `code` 的查詢字串變數中，如以上所示。 它也可以包含在 `x-functions-key` HTTP 標頭中。 金鑰的值可以是針對函式定義的任何函式金鑰，或是任何主機金鑰。
 
@@ -809,6 +813,14 @@ Webhook 授權是由 Webhook 接收器元件 (HTTP 觸發程序的一部分) 處
 
 * **查詢字串**：提供者會在 `clientid` 查詢字串參數中傳遞金鑰名稱，例如 `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`。
 * **要求標頭**：提供者會在 `x-functions-clientid` 標頭中傳遞金鑰名稱。
+
+## <a name="content-types"></a>內容類型
+
+將二進位和表單資料傳遞至非 C # 函式需要使用適當的 content-type 標頭。 支援的內容類型包括 `octet-stream` 二進位資料和[多部分類型](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)。
+
+### <a name="known-issues"></a>已知問題
+
+在非 C # 函式中，以 content-type 傳送的要求會 `image/jpeg` 產生 `string` 傳遞給函數的值。 在這類情況下，您可以手動將 `string` 值轉換成位元組陣列，以存取未經處理的二進位資料。
 
 ## <a name="limits"></a>限制
 

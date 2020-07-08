@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846571"
 ---
 # <a name="manage-process-servers"></a>管理處理序伺服器
 
@@ -23,7 +23,7 @@ ms.locfileid: "79257247"
 - 針對大型部署，您可能需要額外的內部部署處理序伺服器才能調整容量。
 - 若要從 Azure 容錯回復至內部部署，您必須在 Azure 中設定暫時性的進程伺服器。 容錯回復完成後，您可以刪除此 VM。 
 
-深入瞭解進程伺服器。
+深入了解處理序伺服器。
 
 
 ## <a name="upgrade-a-process-server"></a>升級處理序伺服器
@@ -47,8 +47,8 @@ ms.locfileid: "79257247"
 
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
-2. 按一下 [**選取機器**]，然後選擇您想要從目前的電腦移至目標進程伺服器的機器。 系統會針對每個虛擬機器顯示平均資料變更的詳細資料。 然後按一下 [ **確定**]。 
-3. 在保存庫中，監視 [**監視** > ]**Site Recovery [作業**] 底下的作業進度。
+2. 按一下 [**選取機器**]，然後選擇您想要從目前的電腦移至目標進程伺服器的機器。 系統會針對每個虛擬機器顯示平均資料變更的詳細資料。 然後按一下 [確定] 。 
+3. 在保存庫中，監視 [監視] Site Recovery [ **Monitoring**  >  **作業**] 底下的作業進度。
 
 需要大約15分鐘的時間，變更才會反映在入口網站中。 如需更快速的效果，請重新整理設定[伺服器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。
 
@@ -61,9 +61,9 @@ ms.locfileid: "79257247"
 3. 按一下您要切換工作負載的進程伺服器。
 4. 按一下 [**切換**]，選取您想要將工作負載移至其中的目標進程伺服器。 然後按一下 **[確定]**
 
-    ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
+    ![參數](media/vmware-azure-manage-process-server/Switch.PNG)
 
-5. 在保存庫中，監視 [**監視** > ]**Site Recovery [作業**] 底下的作業進度。
+5. 在保存庫中，監視 [監視] Site Recovery [ **Monitoring**  >  **作業**] 底下的作業進度。
 
 需要大約15分鐘的時間，變更才會反映在入口網站中。 如需更快速的效果，請重新整理設定[伺服器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。
 

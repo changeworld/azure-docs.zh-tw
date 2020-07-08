@@ -4,11 +4,11 @@ description: 了解如何使用靜態連線用戶端來避免 Azure Functions �
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276448"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846761"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的連接
 
@@ -16,7 +16,7 @@ ms.locfileid: "79276448"
 
 ## <a name="connection-limit"></a>連接限制
 
-可用的連線數目有限，部分原因是函式應用程式會在[沙箱環境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)中執行。 沙箱對您程式碼施加的其中一項限制是輸出連線數目的限制，這是目前每個實例600個作用中（1200 total）個連線。 當您達到此限制時，函數執行時間會將下列訊息寫入至記錄`Host thresholds exceeded: Connections`檔：。 如需詳細資訊，請參閱[函數服務限制](functions-scale.md#service-limits)。
+可用的連線數目有限，部分原因是函式應用程式會在[沙箱環境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)中執行。 沙箱對您程式碼施加的其中一項限制是輸出連線數目的限制，這是目前每個實例600個作用中（1200 total）個連線。 當您達到此限制時，函數執行時間會將下列訊息寫入至記錄檔： `Host thresholds exceeded: Connections` 。 如需詳細資訊，請參閱[函數服務限制](functions-scale.md#service-limits)。
 
 這是每個實例的限制。 當[調整控制器新增函式應用程式實例](functions-scale.md#how-the-consumption-and-premium-plans-work)來處理更多要求時，每個實例都有獨立的連接限制。 這表示沒有全域連線限制，而且在所有作用中的實例上，您可以擁有超過600個作用中的連接。
 
@@ -52,13 +52,13 @@ public static async Task Run(string input)
 }
 ```
 
-在 .NET 中[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)的常見問題是「我應該處置我的用戶端嗎？」 一般來說，您會處置完成使用時所`IDisposable`執行的物件。 但是您不會處置靜態用戶端，因為在函式結束時不會使用它。 您希望靜態用戶端在您應用程式的使用期間存留。
+在 .NET 中[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)的常見問題是「我應該處置我的用戶端嗎？」 一般來說，您會處置完成使用時所執行的物件 `IDisposable` 。 但是您不會處置靜態用戶端，因為在函式結束時不會使用它。 您希望靜態用戶端在您應用程式的使用期間存留。
 
 ### <a name="http-agent-examples-javascript"></a>HTTP 代理程式範例（JavaScript）
 
-因為它提供更好的連接管理選項，所以您應該[`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent)使用原生類別，而不是原生方法`node-fetch` （例如模組）。 連接參數是透過類別上的`http.agent`選項進行設定。 如需 HTTP 代理程式可用的詳細選項，請參閱[新\[的\]代理程式（選項）](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)。
+因為它提供更好的連接管理選項，所以您應該使用原生 [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) 類別，而不是原生方法（例如 `node-fetch` 模組）。 連接參數是透過類別上的選項進行設定 `http.agent` 。 如需 HTTP 代理程式可用的詳細選項，請參閱[新的代理程式（ \[ 選項 \] ）](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)。
 
-使用`http.request()`的`http.globalAgent`全域類別，會將這些值全都設定為各自的預設值。 在 Functions 中設定連線限制的建議方式是全域設定最大數目。 下列範例會針對函式應用程式設定通訊端數目上限：
+使用的全域類別，會 `http.globalAgent` `http.request()` 將這些值全都設定為各自的預設值。 在 Functions 中設定連線限制的建議方式是全域設定最大數目。 下列範例會針對函式應用程式設定通訊端數目上限：
 
 ```js
 http.globalAgent.maxSockets = 200;

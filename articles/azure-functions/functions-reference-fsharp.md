@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846735"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開發人員參考
 
@@ -48,7 +48,7 @@ FunctionsProject
 
 其中有一個可用來設定函數應用程式的共用 [host.json](functions-host-json.md) 檔案。 每個函式都具有本身的程式碼檔案 (.fsx) 和繫結設定檔 (function.json)。
 
-在[版本2.x 和更新版本](functions-versions.md)的函式執行時間中所需的系結延伸模組， `extensions.csproj`是在檔案中定義，實際的連結`bin`庫檔案位於資料夾中。 在本機開發時，您必須[註冊繫結擴充功能](./functions-bindings-register.md#extension-bundles)。 開發 Azure 入口網站中的函式時，就會為您完成這項註冊。
+在函式執行階段 [2.x 版和更新版本](functions-versions.md)中所需的繫結延伸模組，是以 `bin` 資料夾中的實際程式庫檔案在 `extensions.csproj` 檔案中所定義。 在本機開發時，您必須[註冊繫結擴充功能](./functions-bindings-register.md#extension-bundles)。 開發 Azure 入口網站中的函式時，就會為您完成這項註冊。
 
 ## <a name="binding-to-arguments"></a>繫結至引數
 如 [Azure Functions 觸發程序和繫結開發人員參考](functions-triggers-bindings.md)所述，每個繫結都支援某幾組引數。 例如，Blob 觸發程序支援的其中一個引數繫結是可使用 F# 記錄來表示的 POCO。 例如：
@@ -98,7 +98,7 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
     output <- input
 ```
 
-## <a name="async"></a>Async
+## <a name="async"></a>非同步處理
 可以使用 `async` 工作流程，但結果需要傳回 `Task`。 這可以透過 `Async.StartAsTask`來完成，例如︰
 
 ```fsharp
@@ -109,7 +109,7 @@ let Run(req: HttpRequestMessage) =
 ```
 
 ## <a name="cancellation-token"></a>取消權杖
-如果您的[`CancellationToken`](/dotnet/api/system.threading.cancellationtoken)函式需要正常地處理關閉，您可以為其指定引數。 這可與 `async`結合，例如︰
+如果您的函式需要正常地處理關閉，您可以為其指定 [`CancellationToken`](/dotnet/api/system.threading.cancellationtoken) 引數。 這可與 `async`結合，例如︰
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)

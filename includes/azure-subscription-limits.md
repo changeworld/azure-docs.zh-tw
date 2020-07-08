@@ -1,20 +1,7 @@
 ---
-title: 包含檔案
-description: 包含檔案
-services: billing
-author: rothja
-ms.service: cost-management-billing
-ms.topic: include
-ms.date: 05/18/2018
-ms.author: jroth
-ms.custom: include file
-ms.openlocfilehash: f49d91a2dffbd02067efd82b88963b5cb6eaa8b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76021160"
+ title： include file description： include file author： rothja ms. 服務： azure-資源管理員 ms. 主題： include ms. date： 05/18/2018 ms. author： jroth ms-chap： include file
 ---
+
 | 資源 | 預設限制 | 上限 |
 | --- | --- | --- |
 | 每一[訂用帳戶](../articles/billing-buy-sign-up-azure-subscription.md)的 vCPU<sup>1</sup> |20 |10,000 |

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846710"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer 規格
 
@@ -34,7 +34,7 @@ ms.locfileid: "79264722"
 
 ![FXT 底座中某個硬碟機擴充插槽的相片，其中顯示了磁碟機編號和容量標籤](media/fxt-drives-photo.png)
 
-| 磁碟機編號    |  使用   |  規格 |
+| 磁碟機編號    |  用途   |  規格 |
 |------------------|--------|-----------------|
 | 0、1             | OS     | 480 GB SATA SSD |
 | 2、3、4、5、6、7、8、9 | 資料   | FXT 6600： 3.2 TB NVMe SSD <br> FXT 6400： 1.6 TB NVMe SSD |
@@ -154,7 +154,7 @@ Azure FXT Edge Filer 節點使用變速風扇，因此功率取決於溫度和�
 | 可運作的震盪         | 6 G，持續 11 毫秒 (於 6 個方向進行測試) |
 | 無法運作的震盪     | 71 G，持續 2 毫秒 (於 6 個方向進行測試) |
 | 可運作的振動     | 0.26 G<sub>RMS</sub> 5 Hz 至 350 Hz 隨機         |
-| 無法運作的振動 | 1.88 G<sub>RMS</sub> 10 Hz 至 500 Hz，持續 15 分鐘 (六側皆測試)  |
+| 無法運作的振動 | 1.88 G<sub>RMS</sub> 10 hz 至 500 hz 15 分鐘（所有六方測試）  |
 
 ## <a name="safety-regulation-compliance"></a>安全法規合規性 
 

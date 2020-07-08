@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244663"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846871"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>設定私人雲端的防火牆資料表和規則
 
@@ -49,7 +49,7 @@ ms.locfileid: "79244663"
     * 建立防火牆資料表時，請按一下 [**新增規則**]。
     * 在 [**網路 > 防火牆資料表]** 頁面上選取特定的防火牆資料表，然後按一下 [**建立新的防火牆規則**]。
 2. 設定規則，如下所示：
-    * **名稱**。 為規則命名。
+    * [名稱]。 為規則命名。
     * **優先順序**。 指派規則的優先順序。 數位較低的規則會先執行。
     * **流量類型**。 選取此規則適用于私人雲端、網際網路或 VPN 流量（無狀態），或適用于公用 IP 位址（具狀態）。
     * **通訊協定**。 選取規則所涵蓋的通訊協定（TCP、UDP 或任何通訊協定）。
@@ -72,8 +72,8 @@ ms.locfileid: "79244663"
 
 定義防火牆資料表之後，您可以指定受限於資料表中規則的子網。
 
-1. 在 [**網路** > **防火牆資料表]** 頁面上，選取 [防火牆] 資料表。
+1. 在 [**網路**  >  **防火牆資料表]** 頁面上，選取 [防火牆] 資料表。
 2. 開啟 [**附加的 vlan/子網**] 索引標籤。
 3. 按一下 [**附加至 VLAN/子網**]。
 4. 選取 [私人雲端] 和 [VLAN]。 會顯示相關聯的子網名稱和 CIDR 區塊。
-5. 按一下 [提交]  。
+5. 按一下 [提交] 。

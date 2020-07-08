@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: key-vault
 ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 8247b1cedc2c5ebc8577af6be485aed0fcd5d6af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01b3c9584f3ecddbcdcc6938f5eb469510a47a4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838694"
 ---
 ### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>金鑰交易（每個區域的每個保存庫在10秒內允許的最大交易數<sup>1</sup>）：
 
@@ -28,7 +28,7 @@ ms.locfileid: "81768770"
 >
 > 節流臨界值為加權，強制執行于其總和。 例如，如上表所示，當您在 RSA HSM 金鑰上執行 GET 作業時，使用4096位金鑰比2048位金鑰更昂貴。 這是因為 1000/125 = 8。
 >
-> 在指定的10秒間隔內，Azure Key Vault 用戶端只能在遇到`429`節流 HTTP 狀態碼之前，執行下列*其中一項*作業：
+> 在指定的10秒間隔內，Azure Key Vault 用戶端只能在遇到節流 HTTP 狀態碼之前，執行下列*其中一項*作業 `429` ：
 > - 2000 RSA 2048 位軟體-金鑰取得交易
 > - 1000 RSA 2048-位 HSM-金鑰取得交易
 > - 125 RSA 4096-位 HSM-金鑰取得交易
@@ -46,7 +46,10 @@ ms.locfileid: "81768770"
 
 ### <a name="azure-private-link-integration"></a>Azure 私人連結整合
 
+> [!NOTE]
+> 每個訂閱所啟用私人端點的金鑰保存庫數目屬於可調整的限制。 以下顯示的限制為預設限制。 如果您想要求增加服務的限制，請傳送電子郵件至 akv-privatelink@microsoft.com。 我們會根據個案核准這些要求。
+
 | 資源 | 限制 |
 | -------- | ----- |
 | 每個金鑰保存庫的私人端點 | 64 |
-| 每個訂用帳戶具有私人端點的金鑰保存庫 | 64 |
+| 每個訂用帳戶具有私人端點的金鑰保存庫 | 400 |

@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265151"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846837"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 區域和記錄的概觀
 
@@ -24,7 +24,7 @@ ms.locfileid: "79265151"
 
 網域名稱系統是網域階層。 階層從「根」網域開始，其名稱只是 '**.**'。  下面接著最上層網域，例如 'com'、'net'、'org'、'uk' 或 'jp'。  再往下是第二層網域，例如 'org.uk' 或 'co.jp'。 DNS 階層中的網域散佈在全球，裝載在世界各地的 DNS 名稱伺服器上。
 
-網域註冊機構是一種組織，可讓您購買功能變數名稱，例如`contoso.com`。  購買功能變數名稱可讓您控制該名稱底下的 DNS 階層，例如，讓您將名稱`www.contoso.com`導向公司網站。 可以讓該註冊機構代表您，將網域裝載在其自有的名稱伺服器上；或允許您指定替代的名稱伺服器。
+網域註冊機構是一種組織，可讓您購買功能變數名稱，例如 `contoso.com` 。  購買功能變數名稱可讓您控制該名稱底下的 DNS 階層，例如，讓您將名稱導向 `www.contoso.com` 公司網站。 可以讓該註冊機構代表您，將網域裝載在其自有的名稱伺服器上；或允許您指定替代的名稱伺服器。
 
 Azure DNS 提供散佈全球、高可用性的名稱伺服器基礎結構，可用來裝載您的網域。 只要將您的網域裝載於 Azure DNS 中，就可以像管理其他 Azure 服務一樣，使用相同的認證、API、工具、計費方式和支援來管理 DNS 記錄。
 
@@ -129,7 +129,7 @@ Azure DNS 使用 Etag 以安全地處理相同資源的並行變更。 Etag 與[
 
 | 頁首 | 行為 |
 | --- | --- |
-| 無 |PUT 一定成功 (沒有 Etag 檢查) |
+| None |PUT 一定成功 (沒有 Etag 檢查) |
 | If-match \<etag> |唯有當資源存在且 Etag 符合時，PUT 才會成功 |
 | If-match * |唯有當資源存在時，PUT 才會成功 |
 | If-none-match * |唯有當資源不存在時，PUT 才會成功 |

@@ -1,21 +1,21 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: af0f7ef04ce746c502a8ddf7b0d3971f13a42484
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 469138da19248bc7872028508f3080de5fae4a52
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844598"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85839015"
 ---
-| 資源 | 免費 | Shared | 基本 | 標準 | 進階 (v2) | 隔離 </th> |
+| 資源 | 免費 | 共用 | 基本 | 標準 | 進階 (v2) | 隔離 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | 每個[Azure App Service 方案](../articles/app-service/overview-hosting-plans.md)<sup>1</sup>的[Web、行動或 API 應用程式](https://azure.microsoft.com/services/app-service/) |10 |100 |無限制<sup>2</sup> |無限制<sup>2</sup> |無限制<sup>2</sup> |無限制<sup>2</sup>|
 | [App Service 計劃](../articles/app-service/overview-hosting-plans.md) |每個區域 10 個 |每個資源群組 10 個 |每個資源群組 100 個 |每個資源群組 100 個 |每個資源群組 100 個 |每個資源群組 100 個|
-| 計算執行個體類型 |Shared |Shared |專用<sup>3</sup> |專用<sup>3</sup> |專用<sup>3</sup></p> |專用<sup>3</sup>|
+| 計算執行個體類型 |共用 |共用 |專用<sup>3</sup> |專用<sup>3</sup> |專用<sup>3</sup></p> |專用<sup>3</sup>|
 | [相應](../articles/app-service/manage-scale-up.md)放大（最大實例） |1 個共用 |1 個共用 |3 個專用<sup>3</sup> |10 個專用<sup>3</sup> |30專用<sup>3</sup>|100 個專用<sup>4</sup>|
 | 儲存體<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> 若超過 250 GB，請提交支援要求。 |1 TB<sup>5</sup> <br/><br/> 可用的儲存配額為 999 GB。 |
 | CPU 時間（5分鐘）<sup>6</sup> |3 分鐘 |3 分鐘 |無限制，以標準[費率](https://azure.microsoft.com/pricing/details/app-service/)付費</a> |無限制，以標準[費率](https://azure.microsoft.com/pricing/details/app-service/)付費</a> |無限制，以標準[費率](https://azure.microsoft.com/pricing/details/app-service/)付費</a> |無限制，以標準[費率](https://azure.microsoft.com/pricing/details/app-service/)付費</a>|
@@ -45,7 +45,7 @@ ms.locfileid: "82844598"
 <sup>4</sup>要求時可以有更多的。  
 <sup>5</sup>儲存體限制是相同 App service 方案中所有應用程式的總內容大小。 單一資源群組和區域中所有 App service 方案的所有應用程式的內容大小總計不能超過500GB。  
 <sup>6</sup>這些資源都會受到專用執行個體 (執行個體大小和執行個體數目) 上的實體資源限制。  
-<sup>7</sup>如果您將基本層的一個應用程式調整為兩個執行個體，則其中每個執行個體有 350 個並行連線。 針對標準層和以上版本，web 通訊端沒有理論上的限制，但其他因素可能會限制 web 通訊端的數目。 例如，允許的最大並行要求數（ `maxConcurrentRequestsPerCpu`由定義）為：每個小型 vm 7500、每中型 vm 15000 （7500 x 2 核心）和每個大型 vm 75000 （18750 x 4 核心）。  
+<sup>7</sup>如果您將基本層的一個應用程式調整為兩個執行個體，則其中每個執行個體有 350 個並行連線。 針對標準層和以上版本，web 通訊端沒有理論上的限制，但其他因素可能會限制 web 通訊端的數目。 例如，允許的最大並行要求數（由定義 `maxConcurrentRequestsPerCpu` ）為：每個小型 vm 7500、每中型 vm 15000 （7500 x 2 核心）和每個大型 vm 75000 （18750 x 4 核心）。  
 <sup>8</sup>IP 連線數目上限為每個實例，且取決於實例大小：1920每 B1/S1/P1V2 實例，每個 B2/S2/P2V2 實例3968，8064每個 B3/S3/P3V2 實例。  
 <sup>9</sup>每個訂用帳戶的 App Service 憑證配額限制可以透過支援要求增加為200的最大限制。  
 <sup>10</sup>App Service 隔離式方案 Sku 可以透過 Azure Load Balancer 進行內部負載平衡（ILB），因此沒有網際網路的公用連線能力。 因此，ILB 隔離式 App Service 的某些功能必須從具有 ILB 網路端點直接存取權的電腦才能使用。  

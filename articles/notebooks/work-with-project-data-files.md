@@ -3,18 +3,18 @@ title: 使用 Azure Notebooks 預覽的專案匯入和匯出資料
 description: 瞭解如何將資料從外部來源帶入 Azure Notebooks 預覽專案，以及如何從專案匯出資料。
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3669128582d3bdd6a3c4506a040856ab7b07e9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646971"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834109"
 ---
 # <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>使用 Azure Notebooks 預覽專案中的資料檔案
 
-資料是許多的 Jupyter Notebook 的命脈，特別是用於資料科學的 Notebook。 使用 Azure Notebooks，您可以輕鬆地從各種來源匯入專案中，然後從 Notebook 使用該資料。 您也可以讓 Notebooks 產生儲存在專案中的資料，再下載用於其他地方。
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+資料是許多的 Jupyter Notebook 的命脈，特別是用於資料科學的 Notebook。 使用 Azure Notebooks，您可以輕鬆地從各種來源匯入專案中，然後從 Notebook 使用該資料。 您也可以讓 Notebooks 產生儲存在專案中的資料，再下載用於其他地方。
 
 執行中 Notebook 內的 [資料]**** 功能表，也提供 [上傳]**** 與 [下載]**** 命令，可使用專案中的檔案以及目前 Notebook 工作階段的暫存檔案。
 
@@ -46,7 +46,7 @@ ms.locfileid: "75646971"
 
 ### <a name="import-files-from-the-file-menu-in-a-notebook"></a>從 Notebook 的 [檔案] 功能表匯入檔案
 
-1. 在執行中的筆記本內，**選取 [** > 檔案**上傳**] 命令：
+1. 在執行中的筆記本內，**選取 [檔案**  >  **上傳**] 命令：
 
     ![Notebook 內的 [檔案上傳] 功能表命令](media/file-menu-upload.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "75646971"
 
 1. 在顯示的 [上傳狀態]**** 快顯視窗中，從下拉式清單中選取 [目的資料夾]****：
 
-    - 會話資料夾（*~/* ）：將檔案上傳到目前的筆記本會話，但不會在專案中建立檔案。 工作階段資料夾與專案資料夾是對等資料夾，但在工作階段結束之後即不存在。 若要存取程式碼中的工作階段檔案，請在檔案名稱前面加上相對路徑 *.../*。
+    - 會話資料夾（ *~/* ）：將檔案上傳到目前的筆記本會話，但不會在專案中建立檔案。 工作階段資料夾與專案資料夾是對等資料夾，但在工作階段結束之後即不存在。 若要存取程式碼中的工作階段檔案，請在檔案名稱前面加上相對路徑 *.../*。
 
         使用工作階段資料夾可幫助進行實驗，並避免而長期來說可有可無的檔案造成專案過於凌亂。 您也可以將檔案上傳到專案中包含同名檔案的資料夾中，而不會造成衝突，也無需將檔案重新命名。 例如，假設專案中已有一個版本的*data.csv*，但您想要試驗不同版本的*data.csv*。 將檔案上傳到工作階段資料夾，您就可以使用所上傳檔案中的資料來執行 Notebook (使用 *.../data.csv* 在程式碼中參考)，而不是專案檔中的資料。
 
@@ -100,7 +100,7 @@ wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 
 ## <a name="export-files-from-the-data-menu-in-a-notebook"></a>從 Notebook 的 [資料] 功能表匯出檔案
 
-1. 選取 [ ** **  > 檔案**下載**] 功能表命令：
+1. 選取 [**檔案**  >  **下載**] 功能表命令：
 
     ![Notebook 內的 [資料下載] 功能表命令](media/file-menu-download.png)
 

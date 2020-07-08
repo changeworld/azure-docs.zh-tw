@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/8/2020
-ms.openlocfilehash: c4790585d089ab287260f74001a8aa3f1cb7e5f7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: a7b2e2b14c6358d0dd9a6f8934e88c0fa89c8bd8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647510"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833803"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解來自 Azure 串流分析的輸出
 
@@ -51,7 +51,7 @@ Azure China 21Vianet 和 Azure 德國 (T-Systems International) 區域目前無�
 
 如果資料的本質上具備關聯性，或者應用程式所需的內容需由關聯式資料庫提供時，您可以使用 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 作為資料輸出。 串流分析作業會寫入至 SQL Database 中的現有資料表。 資料表結構描述必須完全符合作業輸出中的欄位及其類型。 您也可以透過 SQL Database 輸出選項，將 [Azure SQL 資料倉儲](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)指定為輸出。 若要深入了解如何改善寫入輸送量，請參閱[使用 Azure SQL Database 作為輸出的串流分析](stream-analytics-sql-output-perf.md)一文。
 
-您也可以使用 [Azure SQL Database 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)作為輸出。 您必須[在 Azure SQL Database 受控執行個體中設定公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)，然後在 Azure 串流分析中手動設定下列設定。 以附加資料庫執行 SQL Server 的 Azure 虛擬機器，也可以透過手動進行下列設定來支援。
+您也可以使用[AZURE SQL 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)做為輸出。 您必須[在 SQL 受控執行個體中設定公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)，然後在 Azure 串流分析中手動設定下列設定。 以附加資料庫執行 SQL Server 的 Azure 虛擬機器，也可以透過手動進行下列設定來支援。
 
 下表列出屬性名稱及其描述以建立 SQL Database 輸出。
 
@@ -59,7 +59,7 @@ Azure China 21Vianet 和 Azure 德國 (T-Systems International) 區域目前無�
 | --- | --- |
 | 輸出別名 |此為易記名稱，用於在查詢中將查詢輸出指向這個資料庫。 |
 | 資料庫 | 您傳送輸出的目標資料庫名稱。 |
-| 伺服器名稱 | SQL Database 伺服器名稱。 針對 Azure SQL Database 受控執行個體，必須指定連接埠 3342。 例如，「sampleserver.public.database.windows.net,3342」 |
+| 伺服器名稱 | 邏輯 SQL server 名稱或受控實例名稱。 針對 SQL 受控執行個體，必須指定埠3342。 例如，「sampleserver.public.database.windows.net,3342」 |
 | 使用者名稱 | 具有資料庫寫入存取權的使用者名稱。 串流分析只支援 SQL 驗證。 |
 | 密碼 | 連線到資料庫的密碼。 |
 | Table | 要在其中寫入輸出的資料表名稱。 表格名稱會區分大小寫。 這個資料表的結構描述應該完全符合您作業輸出所產生的欄位數目及其類型。 |
@@ -107,12 +107,12 @@ Data Lake Storage Gen2 讓 Azure 儲存體成為在 Azure 上打造企業 Data L
 | 儲存體帳戶     | 您傳送輸出的儲存體帳戶名稱。               |
 | 儲存體帳戶金鑰 | 與儲存體帳戶相關聯的密碼金鑰。                              |
 | 儲存體容器   | 針對儲存在 Azure Blob 服務中 Blob 的邏輯群組。 當您將 blob 上傳至 Blob 服務時，您必須指定該 blob 的容器。 |
-| 路徑模式 | 選擇性。 用來在指定容器中寫入 Blob 的檔案路徑模式。 <br /><br /> 在路徑模式中，您可以選擇使用日期時間變數的一或多個執行個體，來指定 blob 的寫入頻率： <br /> {date}、{time} <br /><br />您可以使用自訂 Blob 資料分割，指定事件資料中的一個自訂 {field} 名稱來分割 Blob。 欄位名稱是英數字元，可以包含空格、連字號和底線。 自訂欄位的限制包含下列各項： <ul><li>欄位名稱不區分大小寫。 例如，服務無法分辨資料行 "ID" 和資料行 "id"。</li><li>不允許使用巢狀欄位。 改為在作業查詢中使用別名來「壓平」欄位。</li><li>運算式不能作為欄位名稱使用。</li></ul> <br />這項功能允許在路徑中使用自訂日期/時間格式的指定名稱設定。 自訂日期和時間格式一次只能指定一項，兩側必須加上 {datetime:\<specifier>} 關鍵字。 允許輸入的 \<specifier> 為 yyyy、MM、M、dd、d、HH、H、mm、m、ss 或 s。 {datetime:\<specifier>} 關鍵字可以在路徑中使用多次，以構成自訂日期/時間設定。 <br /><br />範例： <ul><li>範例 1：cluster1/logs/{date}/{time}</li><li>範例 2：cluster1/logs/{date}</li><li>範例 3：cluster1/{client_id}/{date}/{time}</li><li>範例 4：cluster1/{datetime:ss}/{myField}，其中查詢為：SELECT data.myField AS myField FROM Input;</li><li>範例 5：cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />所建立資料夾結構的時間戳記遵循 UTC 而非當地時間。<br /><br />檔案命名會使用下列慣例： <br /><br />{路徑前置詞模式}/schemaHashcode_Guid_Number.extension<br /><br />範例輸出檔案︰<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />如需有關這項功能的詳細資訊，請參閱 [Azure 串流分析自訂 Blob 輸出資料分割](stream-analytics-custom-path-patterns-blob-storage-output.md)。 |
+| 路徑模式 | 選擇性。 用來在指定容器中寫入 Blob 的檔案路徑模式。 <br /><br /> 在路徑模式中，您可以選擇使用日期時間變數的一或多個執行個體，來指定 blob 的寫入頻率： <br /> {date}、{time} <br /><br />您可以使用自訂 Blob 資料分割，指定事件資料中的一個自訂 {field} 名稱來分割 Blob。 欄位名稱是英數字元，可以包含空格、連字號和底線。 自訂欄位的限制包含下列各項： <ul><li>欄位名稱不區分大小寫。 例如，服務無法分辨資料行 "ID" 和資料行 "id"。</li><li>不允許使用巢狀欄位。 改為在作業查詢中使用別名來「壓平」欄位。</li><li>運算式不能作為欄位名稱使用。</li></ul> <br />這項功能允許在路徑中使用自訂日期/時間格式的指定名稱設定。 自訂日期和時間格式必須一次指定一個，並以 {datetime： \<specifier> } 關鍵字括住。 允許的輸入為 \<specifier> yyyy、MM、M、dd、d、HH、H、MM、M、ss 或 s。 {Datetime： \<specifier> } 關鍵字可以在路徑中多次使用，以形成自訂日期/時間設定。 <br /><br />範例： <ul><li>範例 1：cluster1/logs/{date}/{time}</li><li>範例 2：cluster1/logs/{date}</li><li>範例 3：cluster1/{client_id}/{date}/{time}</li><li>範例 4：cluster1/{datetime:ss}/{myField}，其中查詢為：SELECT data.myField AS myField FROM Input;</li><li>範例 5：cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />所建立資料夾結構的時間戳記遵循 UTC 而非當地時間。<br /><br />檔案命名會使用下列慣例： <br /><br />{路徑前置詞模式}/schemaHashcode_Guid_Number.extension<br /><br />範例輸出檔案︰<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />如需有關這項功能的詳細資訊，請參閱 [Azure 串流分析自訂 Blob 輸出資料分割](stream-analytics-custom-path-patterns-blob-storage-output.md)。 |
 | 日期格式 | 選擇性。 如果前置詞路徑中使用日期權杖，您可以選取組織檔案要用的日期格式。 範例：YYYY/MM/DD |
 | 時間格式 | 選擇性。 如果前置詞路徑中使用時間權杖，請指定組織檔案要用的時間格式。 目前唯一支援的值為 HH。 |
 | 事件序列化格式 | 輸出資料的序列化格式。 支援 JSON、CSV、Avro 和 Parquet。 |
-|資料列下限 (僅限 Parquet)|這是每一批次中的資料列數目下限。 針對 Parquet，每個批次都會建立新的檔案。 目前的預設值為 2,000 個資料列，允許的上限為 10,000 個資料列。|
-|時間上限 (僅限 Parquet)|每個批次的等候時間上限。 在此時間後，即使未符合資料列下限需求，也會將批次寫入輸出。 目前的預設值為 1 分鐘，允許的上限為 2 小時。 如果您的 Blob 輸出具有路徑模式頻率，則等候時間不得高於分割區時間範圍。|
+|最少資料列 |這是每一批次中的資料列數目下限。 針對 Parquet，每個批次都會建立新的檔案。 目前的預設值為 2,000 個資料列，允許的上限為 10,000 個資料列。|
+|時間上限 |每個批次的等候時間上限。 在此時間後，即使未符合資料列下限需求，也會將批次寫入輸出。 目前的預設值為 1 分鐘，允許的上限為 2 小時。 如果您的 Blob 輸出具有路徑模式頻率，則等候時間不得高於分割區時間範圍。|
 | 編碼    | 如果您使用 CSV 或 JSON 格式，則必須指定編碼。 UTF-8 是目前唯一支援的編碼格式。 |
 | 分隔符號   | 僅適用於 CSV 序列化。 串流分析可支援多種序列化 CSV 資料常用的分隔符號。 支援的值是逗號、分號、空格、索引標籤和分隔號。 |
 | [格式]      | 僅適用於 JSON 序列化。 **分隔的行**會指定輸出的格式化方式為利用新行分隔每個 JSON 物件。 如果您選取**分隔的行**，JSON 會一次讀取一個物件。 整個內容本身不是有效的 JSON。 **陣列**會指定輸出將會格式化為 JSON 物件的陣列。 只有在作業停止或串流分析已移動到下一個時間範圍時，才會關閉這個陣列。 一般情況下，最好使用分行的 JSON，因為其不需要任何特殊處理，同時仍會寫入輸出檔案。 |
@@ -353,7 +353,7 @@ Azure 串流分析針對已成功處理的批次，預期來自 Functions 應用
 | --- | --- | --- | --- |
 | Azure Data Lake Store | 是 | 在路徑前置詞模式中使用 {date} 和 {time} 權杖。 選擇日期格式，例如 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY。 HH 用於時間格式。 | 遵循[完整可平行化查詢](stream-analytics-scale-jobs.md)的輸入資料分割。 |
 | Azure SQL Database | 是，必須啟用。 | 以查詢中的 PARTITION BY 子句為依據。 | 啟用 [繼承資料分割] 選項時，會遵循[完整可平行化查詢](stream-analytics-scale-jobs.md)的輸入資料分割。 若要深入了解如何在將資料載入 Azure SQL Database 時達到更佳寫入輸送量效能，請參閱 [Azure 串流分析輸出至 Azure SQL Database](stream-analytics-sql-output-perf.md)。 |
-| Azure Blob 儲存體 | 是 | 使用來自路徑模式中事件欄位的 {date} 和 {time} 權杖。 選擇日期格式，例如 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY。 HH 用於時間格式。 您可依照單一自訂事件屬性 {fieldname} 或 {datetime:\<specifier>} 分割 Blob 輸出。 | 遵循[完整可平行化查詢](stream-analytics-scale-jobs.md)的輸入資料分割。 |
+| Azure Blob 儲存體 | 是 | 使用來自路徑模式中事件欄位的 {date} 和 {time} 權杖。 選擇日期格式，例如 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY。 HH 用於時間格式。 Blob 輸出可以由單一自訂事件屬性 {fieldname} 或 {datetime：} 進行分割 \<specifier> 。 | 遵循[完整可平行化查詢](stream-analytics-scale-jobs.md)的輸入資料分割。 |
 | Azure 事件中心 | 是 | 是 | 根據分割區對齊方式而有所不同。<br /> 當事件中樞輸出中的分割區索引鍵與上游 (先前的) 查詢步驟同等對齊時，寫入器的數目將會和事件中樞輸出中的分割區數目相同。 每個寫入器都會使用 [EventHubSender 類別](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)來將事件傳送至特定的分割區。 <br /> 當事件中樞輸出中的分割區索引鍵沒有與上游 (先前的) 查詢步驟同等對齊時，寫入器的數目將會和先前步驟中的分割區數目相同。 每個寫入器會使用 **EventHubClient** 中的 [SendBatchAsync 類別](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)，將事件傳送至所有輸出分割區。 |
 | Power BI | 否 | None | 不適用。 |
 | Azure 資料表儲存體 | 是 | 任何輸出資料行。  | 遵循[完整平行化查詢](stream-analytics-scale-jobs.md)的輸入資料分割。 |
