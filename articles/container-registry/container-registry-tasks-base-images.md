@@ -3,12 +3,12 @@ title: 基底映射更新-工作
 description: 瞭解應用程式容器映射的基底映射，以及基底映射更新如何觸發 Azure Container Registry 工作。
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 017c8f8a3a15896bd6e14a54136ba713e9f9c499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35933c4cdbbf2762f7a54bd945f8a8ffa55b9f21
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617927"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918512"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>關於 ACR 工作的基底映射更新
 
@@ -37,7 +37,14 @@ ACR 工作會在建立容器映射時動態探索基底映射相依性。 因此
 * Docker Hub 中的公用存放庫 
 * Microsoft 容器登錄中的公用存放庫
 
-如果`FROM`語句中指定的基底映射位於這些位置的其中一個，則 ACR 工作會加入勾點，以確保在其基底更新時重建映射。
+如果語句中指定的基底映射 `FROM` 位於這些位置的其中一個，則 ACR 工作會加入勾點，以確保在其基底更新時重建映射。
+
+## <a name="base-image-notifications"></a>基底映射通知
+
+更新基底映射和觸發相依工作之間的時間，取決於基底映射位置：
+
+* **Docker Hub 或 MCR 中公用**存放庫的基底映射-針對公用儲存機制中的基底映射，ACR 工作會以介於10到60分鐘之間的隨機間隔來檢查映射更新。 相依工作會據以執行。
+* **來自 azure container registry 的基底**映射-針對 azure 容器登錄中的基底映射，ACR 工作會在其基底映射更新時立即觸發執行。 基底映射可能位於工作執行所在的同一個 ACR 中，或位於任何區域中的不同 ACR。
 
 ## <a name="additional-considerations"></a>其他考量
 
@@ -51,7 +58,7 @@ ACR 工作會在建立容器映射時動態探索基底映射相依性。 因此
 
 * 用**來追蹤**相依性的觸發程式-若要讓 ACR 工作判斷和追蹤容器映射的相依性（包括其基底映射），您必須先觸發工作**至少建立一次**映射。 例如，使用 [az acr task run][az-acr-task-run] 命令以手動觸發工作。
 
-* **基底映射的穩定**標籤-若要在基底映射更新時觸發工作，基底映射必須具有*穩定*的`node:9-alpine`標記，例如。 這個標籤通常適用於隨著 OS 和架構修補程式更新到最新穩定版本的基底映像。 如果基底映像是隨著新版本標籤更新，它就不會觸發工作。 如需有關映像標籤的詳細資訊，請參閱[最佳做法指引](container-registry-image-tag-version.md)。 
+* **基底映射的穩定**標籤-若要在基底映射更新時觸發工作，基底映射必須具有*穩定*的標記，例如 `node:9-alpine` 。 這個標籤通常適用於隨著 OS 和架構修補程式更新到最新穩定版本的基底映像。 如果基底映像是隨著新版本標籤更新，它就不會觸發工作。 如需有關映像標籤的詳細資訊，請參閱[最佳做法指引](container-registry-image-tag-version.md)。 
 
 * **其他工作觸發**程式-在基底映射更新所觸發的工作中，您也可以根據[原始碼認可](container-registry-tutorial-build-task.md)或[排程](container-registry-tasks-scheduled.md)來啟用觸發程式。 基底映射更新也可以觸發[多步驟](container-registry-tasks-multi-step.md)工作。
 

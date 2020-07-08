@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: b95ee80a7a99009918f4869b62a3e3768e6e58d3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: f0fba815cdc8425f016b74be7df36e5b28dfee3d
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828265"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856969"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis 常見問題集
 了解 Azure Redis 快取常見問題、模式及最佳做法的解答。
@@ -100,7 +100,7 @@ Azure Cache for Redis 會以廣受使用的開放原始碼軟體 [Redis](https:/
 * **網路效能**：如果您的工作負載需要高輸送量，與「標準」層或「基本」層相比，「進階」層可提供更大的頻寬。 此外，因為每一層內有裝載快取的基礎 VM，較大型快取還有更大頻寬。 如需詳細資訊，請參閱[下列表格](#cache-performance)。
 * **輸送量**：「進階」層提供最大的可用輸送量。 如果快取伺服器或用戶端達到頻寬限制，您在用戶端可能會收到逾時。 如需詳細資訊，請參閱下列表格。
 * **高可用性/SLA**：「Azure Redis 快取」保證「標準」/「進階」快取的可用性時間不低於 99.9%。 若要深入了解我們的 SLA，請參閱 [Azure Redis 快取價格](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)。 SLA 的範圍僅涵蓋與快取端點的連線。 SLA 未涵蓋資料遺失防護。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。
-* **Redis 資料永續性**：高階層可讓您將快取資料保存在 Azure 儲存體帳戶中。 在基本/標準快取中，所有資料都只儲存在記憶體中。 基礎結構發生問題，可能會導致資料遺失。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。 「Azure Redis 快取」在 Redis 持續性中提供 RDB 和 AOF (即將推出) 選項。 如需詳細資訊，請參閱[如何設定進階 Azure Redis 快取的持續性](cache-how-to-premium-persistence.md)。
+* **Redis 資料永續性**：高階層可讓您將快取資料保存在 Azure 儲存體帳戶中。 在基本/標準快取中，所有資料都只儲存在記憶體中。 基礎結構發生問題，可能會導致資料遺失。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。 Azure Cache for Redis 在 Redis 持續性中提供 RDB 和 AOF （預覽）選項。 如需詳細資訊，請參閱[如何設定進階 Azure Redis 快取的持續性](cache-how-to-premium-persistence.md)。
 * **Redis 叢集**：若要建立大於 120 GB 的快取，或要跨多個 Redis 節點將資料分區，您可以使用「進階」層所提供的 Redis 叢集功能。 每個節點均包含一個主要/複本快取組以提供高可用性。 如需詳細資訊，請參閱 [如何設定進階 Azure Redis 快取的叢集功能](cache-how-to-premium-clustering.md)。
 * **增強的安全性與網路隔離**：「Azure 虛擬網路」(VNET) 部署除了為「Azure Redis 快取」提供子網路、存取控制原則及其他可進一步限制存取的功能之外，也提供增強的安全性與隔離環境。 如需詳細資訊，請參閱[如何設定進階 Azure Cache for Redis 的虛擬網路支援](cache-how-to-premium-vnet.md)。
 * **設定 Redis**：不論是在「標準」層還是「進階」層中，您都可以設定 Redis 以接收 Keyspace 通知。
@@ -213,22 +213,23 @@ Redis 最大的好處是，有許多用戶端支援許多不同的開發語言�
 ### <a name="is-there-a-local-emulator-for-azure-cache-for-redis"></a>Azure Redis 快取是否有本機模擬器？
 「Azure Redis 快取」沒有本機模擬器，但您可以從本機電腦的 [Redis 命令列工具](https://github.com/MSOpenTech/redis/releases/)執行 MSOpenTech 版本的 redis-server.exe，然後與其連線以取得類似本機快取模擬器的體驗，如以下範例所示：
 
-    private static Lazy<ConnectionMultiplexer>
-          lazyConnection = new Lazy<ConnectionMultiplexer>
-        (() =>
-        {
-            // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
-            return ConnectionMultiplexer.Connect("127.0.0.1:6379");
-        });
+```csharp
+private static Lazy<ConnectionMultiplexer>
+      lazyConnection = new Lazy<ConnectionMultiplexer>
+    (() =>
+    {
+        // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
+        return ConnectionMultiplexer.Connect("127.0.0.1:6379");
+    });
 
-        public static ConnectionMultiplexer Connection
+    public static ConnectionMultiplexer Connection
+    {
+        get
         {
-            get
-            {
-                return lazyConnection.Value;
-            }
+            return lazyConnection.Value;
         }
-
+    }
+```
 
 如有需要，您也可以依選擇設定 [redis.conf](https://redis.io/topics/config) 檔案，以更符合線上「Azure Redis 快取」的[預設快取設定](cache-configure.md#default-redis-server-configuration)。
 
@@ -289,7 +290,7 @@ Redis 伺服器並未原生支援 SSL，但 Azure Cache for Redis 則可支援�
 >
 >
 
-Redis 工具 (例如 `redis-cli`) 未使用 TLS 連接埠，但您可以遵循[宣佈 Redis 預覽版本的 ASP.NET 工作階段狀態供應器](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)部落格文章中的指示，使用公用程式 (例如 `stunnel`) 將工具安全地連線至 TLS 連接埠。
+Redis 工具 (例如 `redis-cli`) 未使用 TLS 連接埠，但您可以遵循[宣佈 Redis 預覽版本的 ASP.NET 工作階段狀態供應器](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)部落格文章中的指示，使用公用程式 (例如 `stunnel`) 將工具安全地連線至 TLS 連接埠。
 
 如需下載 Redis 工具的指示，請參閱 [如何執行 Redis 命令？](#cache-commands) 小節。
 
@@ -366,10 +367,12 @@ CLR 執行緒集區有兩種類型的執行緒：「背景工作」和「I/O 完
 
 如果我們查看來自 StackExchange.Redis (建置 1.0.450 或更新版本) 的範例錯誤訊息，您會看到它現在會列印執行緒集區統計資料 (請參閱以下的 IOCP 和背景工作詳細資料)。
 
+```output
     System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
     queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
     IOCP: (Busy=6,Free=994,Min=4,Max=1000),
     WORKER: (Busy=3,Free=997,Min=4,Max=1000)
+```
 
 在上述範例中，您可以看到 IOCP 執行緒有六個忙碌執行緒，而系統設定成允許最低四個執行緒。 在此情況下，用戶端就可能會看到兩個 500 毫秒延遲，因為 6 > 4。
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: e7efdb7244e2c7e4651a4507b538123f8d320c1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da0c00f0b4a8f2c49996fbcb9b34ee4a1ab65273
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856639"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>線上遷移到 Azure SQL Database 的已知問題/遷移限制
 
@@ -40,7 +40,7 @@ ms.locfileid: "77650770"
 
 **因應措施**
 
-使用下列步驟。
+請使用下列步驟。
 
 1. 請使用以下的查詢，在您的來源結構描述中尋找時態表。
 
@@ -66,7 +66,7 @@ ms.locfileid: "77650770"
 
 **因應措施**
 
-使用下列步驟。
+請使用下列步驟。
 
 1. 請使用以下查詢，尋找使用者資料表，該資料表包含具有 hierarchyid 資料類型的資料行。
 
@@ -82,7 +82,7 @@ ms.locfileid: "77650770"
 
 **因應措施**
 
-使用下列步驟。
+請使用下列步驟。
 
 1. 請使用以下查詢，尋找來源資料庫中目前使用中的觸發程序：
 
@@ -142,7 +142,9 @@ Azure 資料庫移轉服務不會遷移來源時間戳記值;相反地，Azure �
 
 遷移失敗，並出現包含下列文字的錯誤訊息：
 
-     “** encountered a fatal error”, "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode."
+```output
+"** encountered a fatal error", "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode.
+```
 
 **因應措施**
 
@@ -154,7 +156,9 @@ Azure 資料庫移轉服務不會遷移來源時間戳記值;相反地，Azure �
 
 遷移失敗，並出現包含下列文字的錯誤訊息：
 
-    Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+```output
+Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+```
 
 **因應措施**
 

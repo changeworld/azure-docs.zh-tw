@@ -3,15 +3,15 @@ title: 將大型資料集上傳至 Azure Data Lake Storage Gen1 離線方法
 description: 使用匯入/匯出服務，將資料從 Azure Blob 儲存體複製到 Azure Data Lake Storage Gen1
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: aa3eb0bcd9ddd2a094563efe326f7af7e9e8708a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73839300"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855684"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>使用 Azure 匯入/匯出服務將資料離線複製到 Data Lake Storage Gen1
 
@@ -19,11 +19,11 @@ ms.locfileid: "73839300"
 
 Azure 匯入/匯出服務可讓您將硬碟運送到 Azure 資料中心，更安全地傳輸大量資料至 Azure Blob 儲存體。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，您必須具備下列條件：
 
-* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure 儲存體帳戶**。
 * **Azure Data Lake Storage Gen1 帳戶**。 如需有關如何建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)。
 
@@ -31,17 +31,16 @@ Azure 匯入/匯出服務可讓您將硬碟運送到 Azure 資料中心，更安
 
 開始使用「匯入/匯出服務」之前，請將要傳輸的資料檔分割成大小**小於 200 GB 的複本**。 匯入工具不適用於大於 200 GB 的檔案。 在本文中，我們會將檔案分割成每個 100 GB 的區塊。 您可以使用 [Cygwin](https://cygwin.com/install.html) 來達成此目的。 Cygwin 支援 Linux 命令。 在此情況下，請使用下列命令：
 
-    split -b 100m 319GB.tsv
+```console
+split -b 100m 319GB.tsv
+```
 
 分割作業會建立帶有以下名稱的檔案。
 
-    319GB.tsv-part-aa
-
-    319GB.tsv-part-ab
-
-    319GB.tsv-part-ac
-
-    319GB.tsv-part-ad
+* *319 GB tsv-第 aa 部分*
+* *319 GB tsv-第 ab*
+* *319 GB tsv-第-部分-ac*
+* *319 GB tsv-部分-ad*
 
 ## <a name="get-disks-ready-with-data"></a>備妥資料磁碟
 

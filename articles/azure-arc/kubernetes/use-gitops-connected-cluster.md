@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 針對已啟用 Azure Arc 的叢集設定使用 GitOps (預覽)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes Service, 容器
-ms.openlocfilehash: 954c77503e8adacc4cd27b25b68b50cac1f80458
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 890b35aac33a6fa207a71d76143997a1b93116bf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779719"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856977"
 ---
 # <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>針對已啟用 Azure Arc 的設定使用 GitOps (預覽)
 
@@ -167,7 +167,7 @@ az k8sconfiguration show --resource-group AzureArcTest --name cluster-config --c
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 {
   "complianceStatus": {
-    "complianceState": "Compliant",
+    "complianceState": "Installed",
     "lastConfigApplied": "2019-12-05T05:34:41.481000",
     "message": "...",
     "messageLevel": "3"
@@ -201,8 +201,8 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 當佈建程序發生時，`sourceControlConfiguration` 將歷經數個狀態變更。 使用上述 `az k8sconfiguration show ...` 命令來監視進度：
 
 1. `complianceStatus` -> `Pending`：代表初始和進行中狀態
-1. `complianceStatus` -> `Compliant`：`config-agent` 能夠順利設定叢集並部署 `flux`，而不會發生錯誤
-1. `complianceStatus` -> `Noncompliant`：`config-agent` 在部署 `flux` 時發生錯誤，`complianceStatus.message` 回應本文中應該會提供詳細資料
+1. `complianceStatus` -> `Installed`：`config-agent` 能夠順利設定叢集並部署 `flux`，而不會發生錯誤
+1. `complianceStatus` -> `Failed`：`config-agent` 在部署 `flux` 時發生錯誤，`complianceStatus.message` 回應本文中應該會提供詳細資料
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>套用來自私人 Git 存放庫的設定
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2821ee637b2562b5287dd3d59cf943b3dcb7ef97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae829336c5328bec4b620217c34c69fa5931b3a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010880"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856856"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Cache for Redis 的虛擬網路支援
 Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快取大小和功能，包括叢集功能、持續性及虛擬網路支援等「進階」層功能。 VNet 是雲端中的私人網路。 當 Azure Cache for Redis 執行個體是以 VNet 設定時，它將無法公開定址，而只能從 VNet 中的虛擬機器和應用程式存取。 本文說明如何設定進階 Azure Cache for Redis 執行個體的虛擬網路支援。
@@ -59,24 +59,26 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 
 若要在使用 VNet 時連線到 Azure Cache for Redis 執行個體，請在連接字串中指定您的快取主機名稱，如下列範例所示：
 
-    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-    {
-        return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
-    });
+```csharp
+private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+{
+    return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
+});
 
-    public static ConnectionMultiplexer Connection
+public static ConnectionMultiplexer Connection
+{
+    get
     {
-        get
-        {
-            return lazyConnection.Value;
-        }
+        return lazyConnection.Value;
     }
+}
+```
 
 ## <a name="azure-cache-for-redis-vnet-faq"></a>Azure Cache for Redis VNet 常見問題集
 下列清單包含 Azure Cache for Redis 調整相關常見問題的解答。
 
 * Azure Cache for Redis 和 VNet 的某些常見錯誤設定有哪些？
-* [如何確認我的快取是在 VNET 中運作？](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
+* [如何確認我的快取在 VNET 中運作？](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * 當我嘗試連線到 VNET 中的 Azure Cache for Redis 時，為什麼會收到錯誤，指出遠端憑證不正確呢？
 * [可以搭配標準或基本快取使用 VNet 嗎？](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * 為什麼無法在某些子網路中建立 Azure Cache for Redis，但其他的可以？
@@ -98,7 +100,7 @@ Azure Cache for Redis 裝載在 VNet 時，會使用下表中的連接埠。
 
 有九個輸出埠需求。 這些範圍內的輸出要求可能會輸出到其他需要的服務，以供快取運作或內部 Redis 子網進行節點間通訊。 針對異地複寫，主要與次要快取的子網之間的通訊有額外的輸出需求。
 
-| 連接埠 | 方向 | 傳輸通訊協定 | 目的 | 本機 IP | 遠端 IP |
+| 連接埠 | Direction | 傳輸通訊協定 | 目的 | 本機 IP | 遠端 IP |
 | --- | --- | --- | --- | --- | --- |
 | 80、443 |輸出 |TCP |Azure 儲存體/PKI 上 Redis 的相依項目 (網際網路) | (Redis 子網路) |* |
 | 443 | 輸出 | TCP | Azure Key Vault 的 Redis 相依性 | (Redis 子網路) | AzureKeyVault <sup>1</sup> |
@@ -124,7 +126,7 @@ Azure Cache for Redis 裝載在 VNet 時，會使用下表中的連接埠。
 
 有八項輸入連接埠範圍需求。 在這些範圍的輸入要求如下：從相同 VNET 中裝載的其他服務輸入，或是 Redis 子網路內部通訊。
 
-| 連接埠 | 方向 | 傳輸通訊協定 | 目的 | 本機 IP | 遠端 IP |
+| 連接埠 | Direction | 傳輸通訊協定 | 目的 | 本機 IP | 遠端 IP |
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |輸入 |TCP |對 Redis 進行的用戶端通訊，Azure 負載平衡 | (Redis 子網路) | （Redis 子網），虛擬網路，Azure Load Balancer <sup>1</sup> |
 | 8443 |輸入 |TCP |Redis 內部通訊 | (Redis 子網路) |(Redis 子網路) |
@@ -141,7 +143,7 @@ Azure Cache for Redis 裝載在 VNet 時，會使用下表中的連接埠。
 
 在虛擬網路中，可能一開始就不符合 Azure Cache for Redis 的一些網路連線需求。 Azure Cache for Redis 需要下列所有項目，在虛擬網路內使用時才能正確運作。
 
-* 全球 Azure 儲存體端點的輸出網路連線。 這包括位於與 Azure Cache for Redis 執行個體相同區域中的端點，以及位於 **其他** Azure 區域的儲存體端點。 Azure 儲存體端點在下列 DNS 網域之下解析：table.core.windows.net**、blob.core.windows.net**、queue.core.windows.net** 和 file.core.windows.net**。 
+* 全球 Azure 儲存體端點的輸出網路連線。 這包括位於與 Azure Cache for Redis 執行個體相同區域中的端點，以及位於 **其他** Azure 區域的儲存體端點。 Azure 儲存體端點會在下列 DNS 網域之下解析： *table.core.windows.net*、 *blob.core.windows.net*、 *queue.core.windows.net*和*file.core.windows.net*。 
 * *ocsp.msocsp.com*、*mscrl.microsoft.com* 和 *crl.microsoft.com* 的輸出網路連線。 這是支援 TLS/SSL 功能所需的連線能力。
 * 虛擬網路的 DNS 設定必須能夠解析前面幾點所提到的所有端點和網域。 確定已針對虛擬網路設定及維護有效的 DNS 基礎結構，即可符合 DNS 需求。
 * 在下列 DNS 網域下解析之下列 Azure 監視端點的輸出網路連線︰shoebox2-black.shoebox2.metrics.nsatc.net、north-prod2.prod2.metrics.nsatc.net、azglobal-black.azglobal.metrics.nsatc.net、shoebox2-red.shoebox2.metrics.nsatc.net、east-prod2.prod2.metrics.nsatc.net、azglobal-red.azglobal.metrics.nsatc.net。

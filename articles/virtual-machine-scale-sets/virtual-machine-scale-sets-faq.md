@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: faq
-ms.date: 05/24/2019
+ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: a3074fdd10ef960a1c0b58b973d57da14d888af4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200169"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855593"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虛擬機器擴展集常見問題集
 
@@ -64,7 +64,7 @@ ms.locfileid: "83200169"
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>擴展集是否可與 Azure 可用性區域搭配使用？
 
-可以！ 如需詳細資訊，請參閱[擴展集區域文件](./virtual-machine-scale-sets-use-availability-zones.md)。
+是的！ 如需詳細資訊，請參閱[擴展集區域文件](./virtual-machine-scale-sets-use-availability-zones.md)。
 
 
 ## <a name="autoscale"></a>Autoscale
@@ -224,9 +224,9 @@ az sf cluster create -h
 }
 ```
 
-linuxConfiguration 元素名稱 | 必要 | 類型 | 說明
+linuxConfiguration 元素名稱 | 必要 | 類型 | Description
 --- | --- | --- | ---
-ssh | 否 | 集合 | 指定 Linux OS 的 SSH 金鑰組態
+ssh | No | 集合 | 指定 Linux OS 的 SSH 金鑰組態
 路徑 | 是 | String | 指定 SSH 金鑰或憑證必須位於的 Linux 檔案路徑
 keyData | 是 | String | 指定 base64 編碼的 SSH 公開金鑰
 
@@ -234,7 +234,7 @@ keyData | 是 | String | 指定 base64 編碼的 SSH 公開金鑰
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>當我在從相同金鑰保存庫新增一個以上的憑證之後執行 `Update-AzVmss` 時，我會看到下列錯誤︰
 
->Get-azvmss：列出秘密包含/subscriptions/ \< 我的訂用帳戶識別碼>/resourcegroups/internal-rg-dev/providers/microsoft.keyvault/vaults/internal-keyvault-dev 的重複實例，這是不允許的。
+>Get-azvmss： List secret 包含重複的/subscriptions/ \<my-subscription-id> /resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev 實例，這是不允許的。
 
 如果您嘗試重新新增相同的保存庫，而不是對現有的來源保存庫使用新的保存庫憑證，就會發生這種情形。 如果您要新增其他密碼，`Add-AzVmssSecret` 命令無法正常運作。
 
@@ -332,7 +332,7 @@ CRP 元件不會保存客戶密碼。 如果您對虛擬機器擴展集中的所
 
 就相容性的觀點而言，虛擬機器擴展集是 Azure 計算平台的基本部分。 它們會與 CRP 本身共用一個小組、工具、程序、部署方法、安全性控制、Just-In-Time (JIT) 編譯、監控、警示等。 虛擬機器擴展集符合支付卡產業 (PCI) 規範，因為 CRP 是目前 PCI 資料安全標準 (DSS) 證明的一部分。
 
-如需詳細資訊，請參閱 [Microsoft 信任中心](https://www.microsoft.com/TrustCenter/Compliance/PCI)。
+如需詳細資訊，請參閱[Microsoft 信任中心](https://www.microsoft.com/TrustCenter/Compliance/PCI)。
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>[Azure 資源的受控識別](https://docs.microsoft.com/azure/active-directory/msi-overview)是否可以與虛擬機器擴展集搭配運作？
 
@@ -523,7 +523,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>我可以搭配加速的網路使用擴展集嗎？
 
-是。 若要使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將enableAcceleratedNetworking 設為 true。 例如：
+是。 若要使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將enableAcceleratedNetworking 設為 true。 例如
 
 ```json
 "networkProfile": {

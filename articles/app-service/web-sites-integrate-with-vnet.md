@@ -4,29 +4,25 @@ description: 將 Azure App Service 中的應用程式與 Azure 虛擬網路整�
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9b7df06ea7ff07907a292bdcc32e66aafa44ae68
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: HT
+ms.openlocfilehash: 7b6b310cdc03cb45fba6ba06dbcf2add9818f6cf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170778"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857036"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>將您的應用程式與 Azure 虛擬網路整合
 
-此文章說明 Azure App Service VNet 整合功能，以及如何使用 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中的應用程式來加以設定。 使用 [Azure 虛擬網路][VNETOverview] (VNet)，您可以將許多 Azure 資源放在非網際網路可路由的網路中。
+此文章說明 Azure App Service VNet 整合功能，以及如何使用 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中的應用程式來加以設定。 使用 [Azure 虛擬網路][VNETOverview] (VNet)，您可以將許多 Azure 資源放在非網際網路可路由的網路中。 VNet 整合功能可讓您的應用程式透過 VNet 存取中的資源。 VNet 整合並不會讓您的應用程式私下存取。
 
-Azure App Service 具有兩種變化：
+Azure App Service 在 VNet 整合功能上有兩種變化：
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 ## <a name="enable-vnet-integration"></a>啟用 VNet 整合
-
-> [!NOTE]
-> 如果您 Linux 應用程式的功能表中已停用 [網路] 刀鋒視窗 (呈現灰色)，表示該功能目前無法使用。
->
 
 1. 請在 App Service 入口網站中，移至 [網路] UI。 在 [VNet 整合] 下，選取 [按一下這裡可設定]。
 
@@ -75,8 +71,8 @@ App Service 中的應用程式會裝載在背景工作角色上。 基本與較�
 
 您無法使用需要閘道的 VNet 整合：
 
-* 來與 Linux 應用程式搭配使用。
 * 來與 Azure ExpressRoute 連線的 VNet 搭配使用。
+* 從 Linux 應用程式
 * 存取服務端點安全資源。
 * 與同時支援 ExpressRoute 和點對站或站對站 VPN 的共存閘道搭配使用。
 
@@ -155,25 +151,27 @@ VNet 中所定義的路由用於將流量從您的應用程式導向至 VNet。 
 
 CLI 支援可用於區域 VNet 整合。 若要存取下列命令，請[安裝 Azure CLI][installCLI]。
 
-        az webapp vnet-integration --help
+```azurecli
+az webapp vnet-integration --help
 
-        Group
-            az webapp vnet-integration : Methods that list, add, and remove virtual network integrations
-            from a webapp.
-                This command group is in preview. It may be changed/removed in a future release.
-        Commands:
-            add    : Add a regional virtual network integration to a webapp.
-            list   : List the virtual network integrations on a webapp.
-            remove : Remove a regional virtual network integration from webapp.
+Group
+    az webapp vnet-integration : Methods that list, add, and remove virtual network
+    integrations from a webapp.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    add    : Add a regional virtual network integration to a webapp.
+    list   : List the virtual network integrations on a webapp.
+    remove : Remove a regional virtual network integration from webapp.
 
-        az appservice vnet-integration --help
+az appservice vnet-integration --help
 
-        Group
-            az appservice vnet-integration : A method that lists the virtual network integrations used in an
-            appservice plan.
-                This command group is in preview. It may be changed/removed in a future release.
-        Commands:
-            list : List the virtual network integrations used in an appservice plan.
+Group
+    az appservice vnet-integration : A method that lists the virtual network
+    integrations used in an appservice plan.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    list : List the virtual network integrations used in an appservice plan.
+```
 
 針對需要閘道的 VNet 整合，您可以使用 PowerShell 將 App Service 與 Azure 虛擬網路整合。 如需隨時可執行的指令碼，請參閱[將 Azure App Service 中的應用程式連線到 Azure 虛擬網路](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3) \(英文\)。
 

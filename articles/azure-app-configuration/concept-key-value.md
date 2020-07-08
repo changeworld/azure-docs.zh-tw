@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 0b83a35d912c97ae25bc2d69d076e8eae8ca490f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77523599"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856677"
 ---
 # <a name="keys-and-values"></a>索引鍵和值
 
@@ -25,19 +25,23 @@ Azure 應用程式設定會將設定資料儲存為索引鍵/值組。 索引鍵
 
 * 以元件服務為基礎
 
+```aspx
         AppName:Service1:ApiEndpoint
         AppName:Service2:ApiEndpoint
+```
 
 * 以部署區域為基礎
 
+```aspx
         AppName:Region1:DbEndpoint
         AppName:Region2:DbEndpoint
+```
 
-在應用程式架構內使用設定資料時，可能會針對索引鍵值指定特定的命名配置。 例如，JAVA 的春天雲端架構會定義`Environment`可提供設定給春季應用程式的資源。  這些是由包含*應用程式名稱*和*設定檔*的變數參數化。 Spring Cloud 相關設定資料的索引鍵通常會以這兩個元素開頭，並以分隔符號隔開。
+在應用程式架構內使用設定資料時，可能會針對索引鍵值指定特定的命名配置。 例如，JAVA 的春天雲端架構會定義 `Environment` 可提供設定給春季應用程式的資源。  這些是由包含*應用程式名稱*和*設定檔*的變數參數化。 Spring Cloud 相關設定資料的索引鍵通常會以這兩個元素開頭，並以分隔符號隔開。
 
 儲存在應用程式設定中的索引鍵是 Unicode 字串 (需區分大小寫)。 在應用程式組態存放區中，索引鍵 app1** 和 App1** 是不同的。 當您在應用程式內使用組態設定時，務必記得這一點，因為部分架構會以不區分大小寫的方式處理設定索引鍵。 我們不建議使用 case 來區分金鑰。
 
-您可以使用索引鍵名稱中的`*`任何 unicode 字元， `,`但、 `\`和除外。  如果您需要包含其中一個保留字元，請使用`\{Reserved Character}`來將它換成。 
+您可以使用索引鍵名稱中的任何 unicode 字元 `*` ，但、 `,` 和除外 `\` 。  如果您需要包含其中一個保留字元，請使用來將它換成 `\{Reserved Character}` 。 
 
 索引鍵/值組上有 10 KB 的結合大小限制。 此限制包括索引鍵中的所有字元、索引鍵的值及所有相關聯的選擇性屬性。 在此限制中，您可以有許多索引鍵階層層級。
 
@@ -53,13 +57,15 @@ Azure 應用程式設定會將設定資料儲存為索引鍵/值組。 索引鍵
 
 ### <a name="label-keys"></a>標籤索引鍵
 
-應用程式設定中的索引鍵值可選擇性地使用標籤屬性。 標籤會用來區分具有相同索引鍵的索引鍵值。 具有標籤 A** 和 B** 的索引鍵 app1**，會在應用程式組態存放區中形成兩個個別的索引鍵。 根據預設值，索引鍵值沒有標籤。 若要明確參考不含標籤的金鑰值`\0` ，請使用（ `%00`URL 編碼為）。
+應用程式設定中的索引鍵值可選擇性地使用標籤屬性。 標籤會用來區分具有相同索引鍵的索引鍵值。 具有標籤 A** 和 B** 的索引鍵 app1**，會在應用程式組態存放區中形成兩個個別的索引鍵。 根據預設值，索引鍵值沒有標籤。 若要明確參考不含標籤的金鑰值，請使用 `\0` （URL 編碼為 `%00` ）。
 
 標籤可提供便利的方式來建立索引鍵變體。 標籤的常見用法是為相同索引鍵指定多個環境：
 
+```aspx
     Key = AppName:DbEndpoint & Label = Test
     Key = AppName:DbEndpoint & Label = Staging
     Key = AppName:DbEndpoint & Label = Production
+```
 
 ### <a name="version-key-values"></a>版本索引鍵值
 
@@ -71,7 +77,7 @@ Azure 應用程式設定會將設定資料儲存為索引鍵/值組。 索引鍵
 
 透過索引鍵和標籤 (可以是 `null`)，即可識別每個唯一的索引鍵值。 您可以藉由指定模式來查詢應用程式組態存放區的索引鍵值。 應用程式組態存放區會傳回符合模式的索引鍵值，以及其對應的值和屬性。 在對應用程式設定發出的 REST API 呼叫中，請使用下列索引鍵模式：
 
-| Key | |
+| 答案 | |
 |---|---|
 | 省略 `key` 或使用 `key=*` | 符合所有索引鍵 |
 | `key=abc` | 完全符合索引鍵名稱 **abc** |

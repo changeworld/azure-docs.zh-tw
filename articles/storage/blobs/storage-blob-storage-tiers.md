@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: c803d489b70cda6910865f6096d21c2021c4ae3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14e8b3e28115fb191760382ed2a9fbd5c5a04114
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919910"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 儲存體︰經常性存取、非經常性存取和封存存取層
 
-Azure 儲存體提供不同的存取層，可讓您以最符合成本效益的方式儲存 blob 物件資料。 可用的存取層包括：
+Azure 儲存體提供不同的存取層，可讓您以最符合成本效益的方式儲存 Blob 物件資料。 可用的存取層包括：
 
 - **熱**優化，用於儲存經常存取的資料。
 - **Cool**針對儲存不常存取且至少儲存30天的資料而優化。
@@ -59,9 +59,9 @@ Blob 儲存體和 GPv2 帳戶會在帳戶層級公開 [**存取層**] 屬性。 
 
 ## <a name="archive-access-tier"></a>封存存取層
 
-封存存取層具有最低的儲存成本。 但相較于經常性存取和非經常性存取層，其資料抓取成本會更高。 封存層中的資料可能需要幾個小時的時間才能取得。 資料必須保留在封存層中至少180天，或受限於提早刪除費用。
+封存存取層具有最低的儲存成本。 但相較于經常性存取和非經常性存取層，其資料抓取成本會更高。 資料必須保留在封存層中至少180天，或受限於提早刪除費用。 封存層中的資料可能需要幾個小時的時間來抓取，視解除凍結的優先順序而定。 針對小型物件，高優先順序的解除凍結可能會在1小時內從封存中抓取物件。 若要深入瞭解，請參閱[從封存層解除凍結 blob 資料](storage-blob-rehydration.md)。
 
-當 blob 位於封存儲存體時，blob 資料會離線，而且無法讀取、覆寫或修改。 若要讀取或下載封存中的 blob，您必須先將它解除凍結到線上層。 您無法在封存儲存體中拍攝 blob 的快照集。 不過，Blob 中繼資料會保持連線且可以取得，讓您可列出 Blob 和其屬性。 針對封存中的 blob，唯一有效的作業是 GetBlobProperties、GetBlobMetadata、ListBlobs、SetBlobTier、CopyBlob 和 DeleteBlob。 若要深入瞭解，請參閱[從封存層解除凍結 blob 資料](storage-blob-rehydration.md)。
+當 blob 位於封存儲存體時，blob 資料會離線，而且無法讀取、覆寫或修改。 若要讀取或下載封存中的 blob，您必須先將它解除凍結到線上層。 您無法在封存儲存體中拍攝 blob 的快照集。 不過，blob 中繼資料會保持連線並可供使用，讓您可以列出 blob、其屬性、中繼資料和 blob 索引標記。 不允許在封存時設定或修改 blob 中繼資料;不過，您可以設定和修改 blob 索引標記。 針對封存中的 blob，唯一有效的作業是 GetBlobProperties、GetBlobMetadata、SetBlobTags、GetBlobTags、FindBlobsByTags、ListBlobs、SetBlobTier、CopyBlob 和 DeleteBlob。
 
 封存存取層的使用案例範例包括：
 
@@ -82,7 +82,7 @@ Blob 層級的階層處理可讓您使用[Put blob](/rest/api/storageservices/pu
 最後一個 blob 層變更的時間會透過 [存取層變更時間]**** blob 屬性公開。 當覆寫經常性存取或非經常性存取層中的 blob 時，新建立的 blob 會繼承已覆寫的 blob 層，除非在建立時明確設定新的 blob 存取層。 如果 blob 位於封存層中，則無法覆寫，因此在此情況下不允許上傳相同的 blob。 
 
 > [!NOTE]
-> 封存儲存體與 Blob 層級階層處理只支援區塊 blob。 您目前也無法變更具有快照集之區塊 blob 的層級。
+> 封存儲存體與 Blob 層級階層處理只支援區塊 blob。
 
 ### <a name="blob-lifecycle-management"></a>Blob 生命週期管理
 
@@ -119,10 +119,10 @@ Blob 儲存體生命週期管理提供豐富、以規則為基礎的原則，可
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **可用性**                          | 99.9%                     | 99.9%        | 99%                 | 離線           |
 | **可用性** <br> **(RA-GRS 讀取)**  | N/A                       | 99.99%       | 99.9%               | 離線           |
-| **使用費用**                         | 儲存成本較高，存取和交易成本較低 | 儲存成本較高，存取和交易成本較低 | 儲存成本較低，存取和交易成本較高 | 儲存成本最低，存取和交易成本最高 |
+| **使用費用**                         | 較高的儲存體成本、較低的存取和交易成本 | 儲存成本較高，存取和交易成本較低 | 儲存成本較低，存取和交易成本較高 | 儲存成本最低，存取和交易成本最高 |
 | **最小物件大小**                   | N/A                       | N/A          | N/A                 | N/A               |
 | **最小儲存持續時間**              | N/A                       | N/A          | 30天<sup>1</sup> | 180 天
-| **Latency** <br> **(距第一位元組時間)** | 單一位數的毫秒數 | 毫秒 | 毫秒        | 時數<sup>2</sup> |
+| **延遲** <br> **(距第一位元組時間)** | 單一位數的毫秒數 | 毫秒 | 毫秒        | 時數<sup>2</sup> |
 
 在 GPv2 帳戶的非經常性存取層中，有<sup>1</sup>個物件的保留期間至少為30天。 Blob 儲存體帳戶不會有非經常性存取層的最小保留期間。
 
@@ -133,7 +133,7 @@ Blob 儲存體生命週期管理提供豐富、以規則為基礎的原則，可
 
 ## <a name="quickstart-scenarios"></a>快速入門案例
 
-在本節中，會使用 Azure 入口網站和 powershell 來示範下列案例：
+在本節中，會使用 Azure 入口網站和 PowerShell 來示範下列案例：
 
 - 如何變更 GPv2 或 Blob 儲存體帳戶的預設帳戶存取層。
 - 如何在 GPv2 或 Blob 儲存體帳戶中變更 Blob 的存取層。
@@ -143,7 +143,7 @@ Blob 儲存體生命週期管理提供豐富、以規則為基礎的原則，可
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在 [Azure 入口網站中，搜尋並選取 [**所有資源**]。
+1. 在 Azure 入口網站中，搜尋並選取 [所有資源]。
 
 1. 選取您的儲存體帳戶。
 
@@ -155,8 +155,8 @@ Blob 儲存體生命週期管理提供豐富、以規則為基礎的原則，可
 
 ![變更儲存體帳戶層](media/storage-tiers/account-tier.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
-下列 PowerShell 腳本可以用來變更帳戶層。 `$rgName`變數必須使用您的資源組名進行初始化。 `$accountName`變數必須使用您的儲存體帳戶名稱進行初始化。 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+下列 PowerShell 腳本可以用來變更帳戶層。 `$rgName` 變數必須以您的資源群組名稱進行初始化。 `$accountName` 變數必須以您的儲存體帳戶名稱進行初始化。 
 ```powershell
 #Initialize the following with your resource group and storage account names
 $rgName = ""
@@ -171,22 +171,22 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在 [Azure 入口網站中，搜尋並選取 [**所有資源**]。
+1. 在 Azure 入口網站中，搜尋並選取 [所有資源]。
 
 1. 選取您的儲存體帳戶。
 
-1. 選取您的容器，然後選取您的 blob。
+1. 選取容器，然後選取您的 Blob。
 
-1. 在 [ **Blob 屬性**] 中，選取 [**變更層**]。
+1. 在 [Blob 屬性] 中，選取 [變更階層]。
 
 1. 選取 [**經常性**存取 **]、**[ **Archive**非經常性存取] 或 [封存] 存取層。 如果您的 blob 目前在封存中，而您想要解除凍結至線上層，您也可以選取 [**標準**] 或 [**高**] 的解除凍結優先權。
 
-1. 選取底部的 [**儲存**]。
+1. 在底部選取 [儲存]。
 
 ![變更儲存體帳戶層](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
-下列 PowerShell 腳本可以用來變更 blob 層。 `$rgName`變數必須使用您的資源組名進行初始化。 `$accountName`變數必須使用您的儲存體帳戶名稱進行初始化。 `$containerName`變數必須使用您的容器名稱進行初始化。 `$blobName`變數必須使用您的 blob 名稱進行初始化。 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+下列 PowerShell 腳本可以用來變更 blob 層。 `$rgName` 變數必須以您的資源群組名稱進行初始化。 `$accountName` 變數必須以您的儲存體帳戶名稱進行初始化。 `$containerName` 變數必須以您的容器名稱進行初始化。 `$blobName` 變數必須以您的 Blob 名稱進行初始化。 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
@@ -230,7 +230,7 @@ GPv1 與 GPv2 帳戶之間的價格結構不同，客戶在決定使用 GPv2 帳
 
 **我可以在同一個帳戶中，儲存所有三個（經常性存取、非經常性存取和封存）存取層中的物件嗎？**
 
-可以。 在帳戶層級設定的 [**存取層**] 屬性是套用至該帳戶中所有物件的預設帳戶層（沒有明確設定的層級）。 Blob 層級的階層處理可讓您在物件層級上設定存取層，而不論帳戶上設定的存取層為何。 三個存取層（經常性、非經常性或封存）中的 blob 可能存在於相同的帳戶內。
+是。 在帳戶層級設定的 [**存取層**] 屬性是套用至該帳戶中所有物件的預設帳戶層（沒有明確設定的層級）。 Blob 層級的階層處理可讓您在物件層級上設定存取層，而不論帳戶上設定的存取層為何。 三個存取層（經常性、非經常性或封存）中的 blob 可能存在於相同的帳戶內。
 
 **我可以變更 Blob 或 GPv2 儲存體帳戶的預設存取層嗎？**
 
@@ -238,7 +238,7 @@ GPv1 與 GPv2 帳戶之間的價格結構不同，客戶在決定使用 GPv2 帳
 
 **我可以將我的預設帳戶存取層設定為封存嗎？**
 
-不需要。 只有經常性存取和非經常性存取層可以設定為預設帳戶存取層。 封存只能設定於物件層級。 在 blob 上傳時，不論預設帳戶層為何，您都可以將選擇的存取層指定為經常性、非經常性或封存。 這項功能可讓您直接將資料寫入封存層，以在您于 blob 儲存體中建立資料的時間，實現節省成本。
+否。 只有經常性存取和非經常性存取層可以設定為預設帳戶存取層。 封存只能設定於物件層級。 在 blob 上傳時，不論預設帳戶層為何，您都可以將選擇的存取層指定為經常性、非經常性或封存。 這項功能可讓您直接將資料寫入封存層，以在您于 blob 儲存體中建立資料的時間，實現節省成本。
 
 **在哪些區域中可以使用經常性、非經常性和封存存取層？**
 
@@ -252,7 +252,7 @@ GPv1 與 GPv2 帳戶之間的價格結構不同，客戶在決定使用 GPv2 帳
 
 **經常性存取、非經常性存取和封存層之間的作業是否相同？**
 
-經常性存取與非經常性存取之間的所有作業都完全一致。 所有有效的封存作業（包括 GetBlobProperties、GetBlobMetadata、ListBlobs、SetBlobTier 和 DeleteBlob）都與經常性存取和非經常性存取100% 一致。 在封存層中，無法讀取或修改 Blob 資料，直到解除凍結;封存時僅支援 blob 中繼資料讀取作業。
+經常性存取與非經常性存取之間的所有作業都完全一致。 所有有效的封存作業（包括 GetBlobProperties、GetBlobMetadata、SetBlobTags、GetBlobTags、FindBlobsByTags、ListBlobs、SetBlobTier 和 DeleteBlob）都與經常性存取和非經常性存取100% 一致。 在封存層中，無法讀取或修改 Blob 資料，直到解除凍結;封存時僅支援 blob 中繼資料讀取作業。 不過，您可以在封存時讀取、設定或修改 blob 索引標記。
 
 **將 blob 從封存層解除凍結至經常性存取或非經常性存取層時，如何知道解除凍結何時完成？**
 
@@ -283,5 +283,5 @@ Azure 入口網站、PowerShell 和 CLI 工具，以及 .NET、Java、Python 和
 - [瞭解如何從封存層解除凍結 blob 資料](storage-blob-rehydration.md)
 - [判斷 premium 效能是否能讓您的應用程式獲益](storage-blob-performance-tiers.md)
 - [啟用 Azure 儲存體計量以評估您目前的儲存體帳戶使用量](../common/storage-enable-and-view-metrics.md)
-- [依區域檢查 Blob 儲存體和 GPv2 帳戶中的經常性存取、非經常性存取和封存價格](https://azure.microsoft.com/pricing/details/storage/)
+- [依照區域檢查 Blob 儲存體和 GPv2 帳戶中的經常性存取、非經常性存取和封存價格](https://azure.microsoft.com/pricing/details/storage/)
 - [檢查資料傳輸價格](https://azure.microsoft.com/pricing/details/data-transfers/)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: baa0ad790491351a17b638ba9d8eb75ed1f355b0
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758617"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855896"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 身分識別管理和存取控制安全性最佳作法
 
@@ -167,7 +167,7 @@ ms.locfileid: "83758617"
 * 要求所有使用者都要透過 Microsoft Authenticator 進行 MFA 挑戰
 * 限制舊版的驗證通訊協定。
 
-此方法適用於所有授權層級，但不能與現有的條件式存取原則混合使用。 您可以在 Azure AD 安全性預設值中找到詳細資訊
+此方法適用於所有授權層級，但不能與現有的條件式存取原則混合使用。 您可以在[Azure AD 安全性預設值](/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)中找到詳細資訊
 
 **選項 2**：[藉由變更使用者狀態來啟用 Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-userstates.md)。   
 **優點**：這是要求使用雙步驟驗證的傳統方法。 同時適用於[雲端與 Azure Multi-Factor Authentication Server 中的 Azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-whichversion)。 如果使用這種方法，則會要求使用者在每次登入時執行雙步驟驗證，並且會覆寫條件式存取原則。
@@ -189,7 +189,7 @@ ms.locfileid: "83758617"
 這個方法使用 Azure AD Identity Protection 風險評估，根據所有雲端應用程式的使用者和登入風險來判斷是否需要雙步驟驗證。 這個方法需要 Azure Active Directory P2 授權。 您可以在 [Azure Active Directory Identity Protection](/azure/active-directory/identity-protection/overview) 中找到這個方法的詳細資訊。
 
 > [!Note]
-> 選項 1，藉由變更使用者狀態來啟用 Multi-Factor Authentication，進而覆寫條件式存取原則。 選項 2 和 3 會使用條件式存取原則，所以您無法使用選項 1 來搭配它們。
+> 選項2：藉由變更使用者狀態來啟用多重要素驗證，會覆寫條件式存取原則。 因為選項3和4使用條件式存取原則，所以您無法對其使用選項2。
 
 未新增額外身分識別保護層 (例如雙步驟驗證) 的組織比較容易遭受認證竊取攻擊。 認證竊取攻擊可能會導致資料洩漏。
 

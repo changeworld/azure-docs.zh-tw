@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 843cd74c85c619dbbd2b11a32fccf75d030b5613
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772959"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855949"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 資訊安全中心的資料收集
 資訊安全中心會從您的 Azure 虛擬機器 (VM)、虛擬機器擴展集、IaaS 容器和非 Azure (包括內部部署機器) 電腦收集資料，以監視是否有安全性弱點和威脅。 資料是使用 Log Analytics 代理程式收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。 這類資料的範例包括︰作業系統類型和版本、作業系統記錄 (Windows 事件記錄)、執行中程序、電腦名稱、IP 位址和已登入的使用者。
@@ -199,7 +199,7 @@ ms.locfileid: "83772959"
 <br>
 對於 Linux 機器尚不支援代理程式多路連接 - 因此，如果偵測到現有的代理程式安裝，將不會進行自動佈建，且不會改變機器的設定。
 <br>
-訂用帳戶若在 2019-03-17 之前上線到資訊安全中心，則對於該訂用帳戶上的現有機器，在偵測到現有的代理程式時，將不會安裝 Log Analytics 代理程式擴充功能，且機器將不受影響。 針對這類機器，請參閱「請解決機器上的 Monitoring Agent 健康情況問題」的建議，以解決這些機器上的代理程式安裝問題。
+針對訂用帳戶上上架到2019年3月17日之前資訊安全中心的現有機器，當偵測到現有的代理程式時，將不會安裝 Log Analytics 代理程式延伸模組，且電腦不會受到影響。 針對這類機器，請參閱「請解決機器上的 Monitoring Agent 健康情況問題」的建議，以解決這些機器上的代理程式安裝問題。
 
   
 - System Center Operations Manager 代理程式安裝在機器上<br>
@@ -237,58 +237,44 @@ ms.locfileid: "83772959"
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Operations Management Suite VM 擴充功能部署 
 
 您可以手動安裝 Log Analytics 代理程式，讓資訊安全中心能夠收集您 VM 所傳來的安全性資料，並提供建議和警示。
-1. 選取自動佈建 – 關閉。
-2. 針對您要設定 Log Analytics 代理程式的工作區，建立工作區及設定定價層：
 
-   a.  在 [資訊安全中心] 主功能表中，選取 [安全性原則]。
-     
-   b.  選取您要在其中連線代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
-       ![選取工作區][8]
-3. 設定定價層。
-   ![選取定價層][9] 
-   >[!NOTE]
-   >如果工作區已經啟用 **Security** 或 **SecurityCenterFree** 解決方案，將會自動設定定價。 
+1. 停用自動布建。
+
+1. （選擇性）建立工作區。
+
+1. 將您要安裝 Log Analytics 代理程式的工作區設定為標準定價層：
+
+    1. 從資訊安全中心的功能表中，選取 [**定價] & 設定**]。
+
+    1. 設定您要安裝代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
+
+    1. 設定標準定價層，然後選取 [**儲存**]。
+
+        ![將工作區設定為標準定價層](.\media\security-center-enable-data-collection\workspace-to-standard-tier.gif)
+
+       >[!NOTE]
+       >如果工作區已經啟用 **Security** 或 **SecurityCenterFree** 解決方案，將會自動設定定價。 
    > 
 
-4. 如果您想要使用 Resource Manager 範本在新的 VM 上部署代理程式，請安裝 OMS 虛擬機器擴充功能：
+1. 如果您想要使用 Resource Manager 範本在新的 Vm 上部署代理程式，請安裝 Log Analytics 代理程式：
 
-   a.  [安裝適用於 Windows 的 OMS 虛擬機器擴充功能](../virtual-machines/extensions/oms-windows.md)
+   a.  [安裝適用于 Windows 的 Log Analytics 代理程式](../virtual-machines/extensions/oms-windows.md)
     
-   b.  [安裝適用於 Linux 的 OMS 虛擬機器擴充功能](../virtual-machines/extensions/oms-linux.md)
-5. 若要在現有的 VM 上部署擴充功能，請遵循[收集有關 Azure 虛擬機器的資料](../azure-monitor/learn/quick-collect-azurevm.md)中的指示。
+   b.  [安裝適用于 Linux 的 Log Analytics 代理程式](../virtual-machines/extensions/oms-linux.md)
+
+1. 若要在現有的 VM 上部署擴充功能，請遵循[收集有關 Azure 虛擬機器的資料](../azure-monitor/learn/quick-collect-azurevm.md)中的指示。
 
    > [!NOTE]
    > **收集事件和效能資料**一節是選擇性的。
    >
-6. 若要使用 PowerShell 來部署擴充功能，請使用下列 PowerShell 範例︰
-   
-   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-   
-   1. 移至 **Log Analytics** ，然後按一下 [進階設定]。
-    
-      ![設定記錄分析][11]
 
-   2. 複製 [工作區識別碼] 和 [主索引鍵] 的值。
-  
-      ![複製值][12]
+1. 若要使用 PowerShell 來部署擴充功能，請使用虛擬機器檔中的指示：
 
-   3. 在公用組態和私用組態中填入下列值：
-     
-           $PublicConf = @{
-               "workspaceId"= "<WorkspaceID value>"
-           }
- 
-           $PrivateConf = @{
-               "workspaceKey"= "<Primary key value>"
-           }
+    - [Windows 電腦](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
 
-      - 在 Windows VM 上安裝時：
-        
-            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -settings $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
-    
-      - 在 Linux VM 上安裝時：
-        
-            Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+    - [Linux 電腦](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
+
+
 
 > [!NOTE]
 > 如需有關如何使用 PowerShell 上架資訊安全中心的說明，請參閱[使用 PowerShell 自動化上架 Azure 資訊安全中心](security-center-powershell-onboarding.md)。

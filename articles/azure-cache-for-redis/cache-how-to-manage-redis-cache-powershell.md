@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 838835cf44b5ca5048ea6cb7bc1bba582b2a0926
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 74308ae79b899a55db4682474e3dcd9dab26db98
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856926"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Cache for Redis
 > [!div class="op_single_selector"]
@@ -31,22 +31,29 @@ ms.locfileid: "83647977"
 ## <a name="prerequisites"></a>Prerequisites
 如果您已安裝 Azure PowerShell，其必須是 Azure PowerShell 1.0.0 或更新的版本。 您可以在 Azure PowerShell 命令提示字元下使用這個命令來檢查已安裝的 Azure PowerShell 版本。
 
+```azurepowershell
     Get-Module Az | format-table version
-
+```
 
 首先，您必須使用此命令登入 Azure。
 
+```azurepowershell
     Connect-AzAccount
+```
 
 在 [Microsoft Azure 登入] 對話方塊中，指定 Azure 帳戶的電子郵件地址和密碼。
 
 接下來，如果您有多個 Azure 訂用帳戶，請設定 Azure 訂用帳戶。 如果想查看目前的訂用帳戶清單，請執行這個命令。
 
+```azurepowershell
     Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
+```
 
 若要指定訂用帳戶，請執行下列命令。 在下列範例中，訂用帳戶的名稱為 `ContosoSubscription`。
 
+```azurepowershell
     Select-AzSubscription -SubscriptionName ContosoSubscription
+```
 
 在將 Windows PowerShell 與 Azure 資源管理員搭配使用之前，您需要下列項目：
 
@@ -54,11 +61,15 @@ ms.locfileid: "83647977"
 
 若要取得您在本教學課程中任何所見 Cmdlet 的詳細說明，請使用 Get-Help Cmdlet。
 
+```azurepowershell
     Get-Help <cmdlet-name> -Detailed
+```
 
 例如，如需取得 `New-AzRedisCache` Cmdlet 的說明，請輸入：
 
+```azurepowershell
     Get-Help New-AzRedisCache -Detailed
+```
 
 ### <a name="how-to-connect-to-other-clouds"></a>如何連線到其他雲端
 根據預設，Azure 環境是 `AzureCloud`，其代表全域 Azure 雲端執行個體。 若要連線至不同的執行個體，請使用 `Connect-AzAccount` 命令搭配 `-Environment` 或使用 -`EnvironmentName` 命令列參數搭配所需的環境或環境名稱。
@@ -68,11 +79,15 @@ ms.locfileid: "83647977"
 ### <a name="to-connect-to-the-azure-government-cloud"></a>連線到 Azure Government 雲端
 如果要連線到 Azure Government 雲端，請使用下列其中一個命令。
 
+```azurepowershell
     Connect-AzAccount -EnvironmentName AzureUSGovernment
+```
 
 或
 
+```azurepowershell
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureUSGovernment)
+```
 
 如果要在 Azure Government 雲端建立快取，請使用下列其中一個位置。
 
@@ -84,11 +99,15 @@ ms.locfileid: "83647977"
 ### <a name="to-connect-to-the-azure-china-cloud"></a>連線到 Azure 中國雲端
 如果要連線到 Azure 中國雲端，請使用下列其中一個命令。
 
+```azurepowershell
     Connect-AzAccount -EnvironmentName AzureChinaCloud
+```
 
 或
 
+```azurepowershell
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureChinaCloud)
+```
 
 如果要在 Azure 中國雲端建立快取，請使用下列其中一個位置。
 
@@ -100,12 +119,15 @@ ms.locfileid: "83647977"
 ### <a name="to-connect-to-microsoft-azure-germany"></a>連線到 Microsoft Azure (德國)
 若要連線到 Microsoft Azure (德國)，請使用下列其中一個命令。
 
+```azurepowershell
     Connect-AzAccount -EnvironmentName AzureGermanCloud
-
+```
 
 或
 
+```azurepowershell
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureGermanCloud)
+```
 
 若要在 Microsoft Azure (德國) 中建立快取，請使用下列其中一個位置。
 
@@ -161,6 +183,7 @@ ms.locfileid: "83647977"
 
 若要查看 `New-AzRedisCache`的可用參數清單及其說明，請執行下列命令。
 
+```azurepowershell
     PS C:\> Get-Help New-AzRedisCache -detailed
 
     NAME
@@ -232,27 +255,36 @@ ms.locfileid: "83647977"
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 若要使用預設參數建立快取，請執行下列命令。
 
+```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
+```
 
 `ResourceGroupName`、`Name` 和 `Location` 是必要參數，其餘則為選擇性的而且有預設值。 執行先前的命令會建立標準 SKU Azure Cache for Redis 執行個體，具有指定的名稱、位置和資源群組，大小為 1 GB，且停用非 SSL 連接埠。
 
 若要建立進階快取，請指定大小為 P1 (6 GB - 60 GB)、P2 (13 GB - 130 GB)、P3 (26 GB - 260 GB) 或 P4 (53 GB - 530 GB)。 若要啟用叢集，使用 `ShardCount` 參數指定分區計數。 下列範例會建立具有 3 個分區的 P1 進階快取。 P1 進階快取的大小為 6 GB，因為我們指定三個分區，大小總計為 18 GB (3 x 6 GB)。
 
+```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
+```
 
 若要指定 `RedisConfiguration` 參數的值，以索引鍵/值組的方式將值括在 `{}` 內，例如 `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}`。 下列範例會建立標準 1 GB 快取，具有 `allkeys-random` maxmemory 原則，且 keyspace 通知設為 `KEA`。 如需詳細資訊，請參閱 [Keyspace 通知 (進階設定)](cache-configure.md#keyspace-notifications-advanced-settings) 和[記憶體原則](cache-configure.md#memory-policies)。
 
+```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}
+```
 
 <a name="databases"></a>
 
 ## <a name="to-configure-the-databases-setting-during-cache-creation"></a>在快取建立期間設定資料庫設定
 `databases` 設定僅可以在快取建立期間設定。 下列範例會使用 [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCache) Cmdlet 來建立具有 48 個資料庫的進階 P3 (26 GB) 快取。
 
+```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
+```
 
 如需 `databases` 屬性的詳細資訊，請參閱 [預設的 Azure Cache for Redis 伺服器組態](cache-configure.md#default-redis-server-configuration)。 如需有關使用 [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) Cmdlet 來建立快取的詳細資訊，請參閱先前的＜建立 Azure Redis 快取＞一節。
 
@@ -261,6 +293,7 @@ ms.locfileid: "83647977"
 
 若要查看 `Set-AzRedisCache`的可用參數清單及其說明，請執行下列命令。
 
+```azurepowershell
     PS C:\> Get-Help Set-AzRedisCache -detailed
 
     NAME
@@ -312,12 +345,15 @@ ms.locfileid: "83647977"
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 `Set-AzRedisCache` Cmdlet 可用來更新屬性，例如 `Size`、`Sku`、`EnableNonSslPort` 和 `RedisConfiguration` 的值。 
 
 下列命令會更新名為 myCache 的 Azure Cache for Redis 的 maxmemory-policy。
 
+```azurepowershell
     Set-AzRedisCache -ResourceGroupName "myGroup" -Name "myCache" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
+```
 
 <a name="scale"></a>
 
@@ -340,10 +376,13 @@ ms.locfileid: "83647977"
 
 下列範例示範如何將名為 `myCache` 的快取調整為 2.5 GB 快取。 請注意，此命令可用於基本或標準快取。
 
+```azurepowershell
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+```
 
 發出此命令之後，會傳回快取的狀態 (類似於呼叫 `Get-AzRedisCache`)。 請注意，`ProvisioningState` 為 `Scaling`。
 
+```azurepowershell
     PS C:\> Set-AzRedisCache -Name myCache -ResourceGroupName myGroup -Size 2.5GB
 
 
@@ -370,16 +409,20 @@ ms.locfileid: "83647977"
     StaticIP           :
     TenantSettings     : {}
     ShardCount         :
+```
 
 當調整作業完成時，`ProvisioningState` 會變更為 `Succeeded`。 如果您需要進行後續的調整作業，例如先從基本變更為標準，然後再變更大小，您必須等到先前作業完成，否則會收到類似下列的錯誤。
 
+```azurepowershell
     Set-AzRedisCache : Conflict: The resource '...' is not in a stable state, and is currently unable to accept the update request.
+```
 
 ## <a name="to-get-information-about-an-azure-cache-for-redis"></a>取得 Azure Cache for Redis 的相關資訊
 您可以使用 [Get-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/get-azrediscache) Cmdlet 來擷取快取的相關資訊。
 
 若要查看 `Get-AzRedisCache`的可用參數清單及其說明，請執行下列命令。
 
+```azurepowershell
     PS C:\> Get-Help Get-AzRedisCache -detailed
 
     NAME
@@ -416,17 +459,23 @@ ms.locfileid: "83647977"
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 若要傳回目前訂用帳戶中所有快取的相關資訊，請不帶任何參數執行 `Get-AzRedisCache`。
 
+```azurepowershell
     Get-AzRedisCache
+```
 
 若要傳回特定資源群組中所有快取的相關資訊，請執行 `Get-AzRedisCache` 並使用 `ResourceGroupName` 參數。
 
+```azurepowershell
     Get-AzRedisCache -ResourceGroupName myGroup
+```
 
 若要傳回特定快取的相關資訊，請執行 `Get-AzRedisCache`，並使用 `Name` 參數包含快取名稱，和 `ResourceGroupName` 參數包含快取的資源群組。
 
+```azurepowershell
     PS C:\> Get-AzRedisCache -Name myCache -ResourceGroupName myGroup
 
     Name               : mycache
@@ -450,12 +499,14 @@ ms.locfileid: "83647977"
     StaticIP           :
     TenantSettings     : {}
     ShardCount         :
+```
 
 ## <a name="to-retrieve-the-access-keys-for-an-azure-cache-for-redis"></a>擷取 Azure Cache for Redis 的存取金鑰
 若要擷取您快取的存取金鑰，您可以使用 [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-azRedisCacheKey) Cmdlet。
 
 若要查看 `Get-AzRedisCacheKey`的可用參數清單及其說明，請執行下列命令。
 
+```azurepowershell
     PS C:\> Get-Help Get-AzRedisCacheKey -detailed
 
     NAME
@@ -483,19 +534,23 @@ ms.locfileid: "83647977"
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 若要擷取您快取的金鑰，請呼叫 `Get-AzRedisCacheKey` Cmdlet，並傳入快取的名稱以及包含快取的資源群組名稱。
 
+```azurepowershell
     PS C:\> Get-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup
 
     PrimaryKey   : b2wdt43sfetlju4hfbryfnregrd9wgIcc6IA3zAO1lY=
     SecondaryKey : ABhfB757JgjIgt785JgKH9865eifmekfnn649303JKL=
+```
 
 ## <a name="to-regenerate-access-keys-for-your-azure-cache-for-redis"></a>重新產生 Azure Cache for Redis 的存取金鑰
 若要重新產生您快取的存取金鑰，您可以使用 [New-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCacheKey) Cmdlet。
 
 若要查看 `New-AzRedisCacheKey`的可用參數清單及其說明，請執行下列命令。
 
+```azurepowershell
     PS C:\> Get-Help New-AzRedisCacheKey -detailed
 
     NAME
@@ -528,9 +583,11 @@ ms.locfileid: "83647977"
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 若要重新產生快取的主要或次要金鑰，請呼叫 `New-AzRedisCacheKey` Cmdlet，並傳入名稱、資源群組，且針對 `KeyType` 參數指定 `Primary` 或 `Secondary`。 在下列範例中，會重新產生快取的次要存取金鑰。
 
+```azurepowershell
     PS C:\> New-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup -KeyType Secondary
 
     Confirm
@@ -540,12 +597,14 @@ ms.locfileid: "83647977"
 
     PrimaryKey   : b2wdt43sfetlju4hfbryfnregrd9wgIcc6IA3zAO1lY=
     SecondaryKey : c53hj3kh4jhHjPJk8l0jji785JgKH9865eifmekfnn6=
+```
 
 ## <a name="to-delete-an-azure-cache-for-redis"></a>刪除 Azure Cache for Redis
 若要刪除「Azure Redis 快取」，請使用 [Remove-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/remove-azrediscache) Cmdlet。
 
 若要查看 `Remove-AzRedisCache`的可用參數清單及其說明，請執行下列命令。
 
+```azurepowershell
     PS C:\> Get-Help Remove-AzRedisCache -detailed
 
     NAME
@@ -579,14 +638,17 @@ ms.locfileid: "83647977"
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 在下列範例中，會移除名為 `myCache` 的快取。
 
+```azurepowershell
     PS C:\> Remove-AzRedisCache -Name myCache -ResourceGroupName myGroup
 
     Confirm
     Are you sure you want to remove Azure Cache for Redis 'myCache'?
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+```
 
 
 ## <a name="to-import-an-azure-cache-for-redis"></a>匯入 Azure Cache for Redis
@@ -599,6 +661,7 @@ ms.locfileid: "83647977"
 
 若要查看 `Import-AzRedisCache`的可用參數清單及其說明，請執行下列命令。
 
+```azurepowershell
     PS C:\> Get-Help Import-AzRedisCache -detailed
 
     NAME
@@ -643,11 +706,14 @@ ms.locfileid: "83647977"
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 
 以下命令可將資料從 SAS URI 所指定的 Blob 匯入 Azure Cache for Redis 中。
 
+```azurepowershell
     PS C:\>Import-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Files @("https://mystorageaccount.blob.core.windows.net/mycontainername/blobname?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd") -Force
+```
 
 ## <a name="to-export-an-azure-cache-for-redis"></a>匯出 Azure Cache for Redis
 您可以使用 `Export-AzRedisCache` Cmdlet 從 Azure Cache for Redis 執行個體匯出資料。
@@ -659,6 +725,7 @@ ms.locfileid: "83647977"
 
 若要查看 `Export-AzRedisCache`的可用參數清單及其說明，請執行下列命令。
 
+```azurepowershell
     PS C:\> Get-Help Export-AzRedisCache -detailed
 
     NAME
@@ -702,13 +769,16 @@ ms.locfileid: "83647977"
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 
 以下命令可將資料從 Azure Cache for Redis 執行個體匯出到 SAS URI 所指定的容器中。
 
-        PS C:\>Export-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprefix"
-        -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7
-        pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
+```azurepowershell
+    PS C:\>Export-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprefix"
+    -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7
+    pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
+```
 
 ## <a name="to-reboot-an-azure-cache-for-redis"></a>重新啟動 Azure Cache for Redis
 您可以使用 `Reset-AzRedisCache` Cmdlet 將 Azure Cache for Redis 執行個體重新啟動。
@@ -720,6 +790,7 @@ ms.locfileid: "83647977"
 
 若要查看 `Reset-AzRedisCache`的可用參數清單及其說明，請執行下列命令。
 
+```azurepowershell
     PS C:\> Get-Help Reset-AzRedisCache -detailed
 
     NAME
@@ -763,12 +834,15 @@ ms.locfileid: "83647977"
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 
 以下命令會重新啟動指定快取的兩個節點。
 
-        PS C:\>Reset-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -RebootType "AllNodes"
-        -Force
+```azurepowershell
+    PS C:\>Reset-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -RebootType "AllNodes"
+    -Force
+```
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -779,5 +853,5 @@ ms.locfileid: "83647977"
 * [使用資源群組來管理您的 Azure 資源](../azure-resource-manager/templates/deploy-portal.md)：了解如何在 Azure 入口網站中建立和管理資源群組。
 * [Azure 部落格](https://azure.microsoft.com/blog/)：了解 Azure 的新功能。
 * [Windows PowerShell 部落格](https://devblogs.microsoft.com/powershell/)：了解 Windows PowerShell 的新功能。
-* ["Hey, Scripting Guy!"部落格](https://blogs.technet.com/b/heyscriptingguy/)：從 Windows PowerShell 社群中取得實際的秘訣及訣竅。
+* ["Hey, Scripting Guy!"部落格](https://blogs.technet.microsoft.com/heyscriptingguy/author/the-scripting-guys/)：從 Windows PowerShell 社群中取得實際的秘訣及訣竅。
 

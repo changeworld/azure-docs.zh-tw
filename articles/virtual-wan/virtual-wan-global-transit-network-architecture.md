@@ -5,15 +5,15 @@ description: 瞭解適用于虛擬 WAN 的全球傳輸網路架構
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 72a96e04d308dbb2774d5b8f8aa909ab81bebee3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195670"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856381"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全球傳輸網路架構和虛擬 WAN
 
@@ -47,7 +47,7 @@ Azure 虛擬 WAN 可讓您在 Vnet、分公司、SaaS 和 PaaS 應用程式和�
 
 您可以建立虛擬 WAN，方法是在擁有最多輪輻（分支、Vnet、使用者）的區域中建立單一虛擬 WAN 中樞，然後將其他區域中的輪輻連接到中樞。 當企業的使用量大多在具有一些遠端輪輻的一個區域中時，這是個不錯的選項。  
   
-## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>中樞對中樞連線能力（預覽）
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>中樞對中樞連線能力
 
 企業雲端的使用量可以跨越多個雲端區域，而且最好是從最接近其實體網站和使用者的區域存取雲端的最佳（延遲）。 全球傳輸網路架構的其中一個主要原則，是啟用所有雲端和內部部署網路端點之間的跨區域連線。 這表示從一個區域中連線到雲端的分支流量，可以使用[Azure 全域網路](https://azure.microsoft.com/global-infrastructure/global-network/)所啟用的中樞對中樞連線，連接到不同區域中的另一個分支或 VNet。
 

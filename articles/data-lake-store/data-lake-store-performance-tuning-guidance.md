@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 2521700e0f07691541ee6cbbf085a8be72f08129
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 51716bdd6ab7f5b5102ccba3e6d57855dee5df33
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73904616"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855909"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>微調 Azure Data Lake Storage Gen1 效能
 
@@ -65,15 +65,11 @@ Data Lake Storage Gen1 可以調整以提供所有分析情節的必要輸送量
 
 針對 Hive 和 ADLA 工作負載，時間序列資料的分割區剪除可以協助某些查詢唯讀取資料的子集，進而改善效能。
 
-這些管線會內嵌時間序列資料，通常會將其檔案與檔案和資料夾的結構化命名放在一起。 以下是我們針對以日期結構化的資料所見的常見範例：
-
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+這些管線會內嵌時間序列資料，通常會將其檔案與檔案和資料夾的結構化命名放在一起。 以下是我們針對以日期為結構化的資料所見的常見範例： *\dataset\yyyy\mm\dd\ datafile_YYYY_MM_DD tsv*。
 
 請注意，日期時間資訊會同時在資料夾和檔案名稱中顯示。
 
-對於日期和時間，以下是常見的模式
-
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+對於日期和時間，以下是常見的模式： *\dataset\yyyy\mm\dd\hh\mm\ datafile_YYYY_MM_DD_HH_mm tsv*。
 
 同樣地，您對於資料夾和檔案組織的選擇，應該針對較大的檔案大小以及每個資料夾中合理的檔案數目進行最佳化。
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: b86429c90f436007116a45c6dbab443d6cc889e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 96cd16c08421a4e365391c0db0b257f71a06551f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919801"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure 原則來限制 Windows VM 上的延伸模組安裝
 
@@ -88,7 +88,6 @@ nano $home/clouddrive/parameters.json
         "type": "Array",
         "metadata": {
             "description": "The list of extensions that will be denied.",
-            "strongType": "type",
             "displayName": "Denied extension"
         }
     }
@@ -97,7 +96,7 @@ nano $home/clouddrive/parameters.json
 
 完成時，按 **Ctrl + O**，然後按 **Enter** 以儲存檔案。 按 **Ctrl + X** 以關閉檔案並結束。
 
-## <a name="create-the-policy"></a>建立原則
+## <a name="create-the-policy"></a>建立政策
 
 原則定義是一個用來儲存您所要使用之設定的物件。 原則定義會使用規則檔和參數檔來定義原則。 請使用 [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) Cmdlet 來建立原則定義。
 

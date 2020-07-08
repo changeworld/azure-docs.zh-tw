@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 27229d36dbe9592b6ad6fc2740f7714f99fd6857
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856840"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>評估自訂語音精確度
 
@@ -23,7 +23,7 @@ ms.locfileid: "84629048"
 
 ## <a name="what-is-word-error-rate-wer"></a>什麼是文字錯誤率（WER）？
 
-用來測量模型精確度的業界標準是「*單字錯誤率*」（WER）。 WER 會計算辨識期間所識別的不正確單字數目，然後除以人為標記的文字記錄中所提供的單字總數。 最後，該數位會乘以100% 來計算 WER。
+用來測量模型精確度的業界標準是「*單字錯誤率*」（WER）。 WER 會計算辨識期間所識別的不正確單字數目，然後除以人類加上標籤的文字記錄中所提供的單字總數（如下所示為 N）。 最後，該數位會乘以100% 來計算 WER。
 
 ![WER 公式](./media/custom-speech/custom-speech-wer-formula.png)
 
@@ -33,7 +33,7 @@ ms.locfileid: "84629048"
 * 刪除（D）：假設文字記錄中未偵測到的字詞
 * 替代（S）：在參考與假設之間取代的單字
 
-範例如下：
+以下是範例：
 
 ![不正確識別的單字範例](./media/custom-speech/custom-speech-dis-words.png)
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 42717b1e9b4ba12c2fe42dbd13ef44223ef2ba43
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220206"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856729"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>認知服務和機器學習
 
@@ -73,7 +73,7 @@ ms.locfileid: "84220206"
 
 ### <a name="no-additional-training-data-required"></a>不需要其他定型資料
 
-提供完整定型模型的服務可以視為_黑色_方塊。 您不需要知道它們的工作方式，或使用哪些資料來進行定型。 您可以將資料帶入經過完整訓練的模型，以取得預測。 
+提供完整定型模型的服務可視為不_透明_的方塊。 您不需要知道它們的工作方式，或使用哪些資料來進行定型。 您可以將資料帶入經過完整訓練的模型，以取得預測。 
 
 ### <a name="some-or-all-training-data-required"></a>需要部分或所有定型資料
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 52a08661ffa25bf2105791c1217cfc460034502a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f9713c0ce2df2533a49086c6c4a95aeaa24c48e
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188564"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919820"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>使用 Azure 原則來限制 Linux VM 上的延伸模組安裝
 
@@ -87,7 +87,6 @@ vim ~/clouddrive/azurepolicy.parameters.json
         "type": "Array",
         "metadata": {
             "description": "The list of extensions that will be denied. Example: CustomScriptForLinux, VMAccessForLinux etc.",
-            "strongType": "type",
             "displayName": "Denied extension"
         }
     }
@@ -96,7 +95,7 @@ vim ~/clouddrive/azurepolicy.parameters.json
 
 完成時，按 **Esc** 鍵，然後輸入 **:wq** 以儲存並關閉檔案。
 
-## <a name="create-the-policy"></a>建立原則
+## <a name="create-the-policy"></a>建立政策
 
 原則定義是一個用來儲存您所要使用之設定的物件。 原則定義會使用規則檔和參數檔來定義原則。 請使用 [az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest) 來建立原則定義。
 

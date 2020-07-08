@@ -3,15 +3,15 @@ title: 使用 Data Lake Storage Gen1 入口網站建立 Azure HDInsight 叢集
 description: 使用 Azure 入口網站建立和使用搭配 Azure Data Lake Storage Gen1 運作的 HDInsight 叢集
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1d1368ef8ffb474c6bec1240f567f043961597fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3e54b037485a85d836e7e7e67c9af2d9d140986
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856822"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>使用 Azure 入口網站建立搭配 Azure Data Lake Storage Gen1 的 HDInsight 叢集
 
@@ -25,11 +25,11 @@ ms.locfileid: "79265567"
 
 了解如何利用 Azure 入口網站，建立使用 Azure Data Lake Storage Gen1 帳戶作為預設儲存體或其他儲存體的 HDInsight 叢集。 雖然 HDInsight 叢集的其他儲存體是選擇性的，但建議您將商務資料儲存在其他儲存體帳戶中。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您已符合下列需求：
 
-* **Azure 訂**用帳戶。 請移至[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**。 請移至[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Data Lake Storage Gen1 帳戶**。 遵循[使用 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 的指示操作。 您也必須在此帳戶上建立根資料夾。  在本文中，會使用名為 __/clusters__的根資料夾。
 * **Azure Active Directory 服務主體**。 本操作指南提供如何在 Azure Active Directory （Azure AD）中建立服務主體的指示。 不過，您必須是 Azure AD 系統管理員，才能建立服務主體。 如果您是系統管理員，您可以略過此必要條件並繼續。
 
@@ -130,7 +130,7 @@ ms.locfileid: "79265567"
 
 1. 按一下頁面底部的 [選取]****。
 1. 選取 [**執行**] 以指派許可權。
-1. 選取 [完成]  。
+1. 選取 [完成] 。
 
 若要在 HDInsight 叢集根層級指派許可權：
 
@@ -139,8 +139,8 @@ ms.locfileid: "79265567"
 1. 選取 HDInsight 叢集儲存體根目錄左邊的核取方塊，即可選取該資料夾。 根據先前的螢幕擷取畫面，叢集儲存體根目錄為您在選取 Data Lake Storage Gen1 作為預設儲存體時所指定的 __/clusters__ 資料夾。
 1. 設定資料夾的權限。  根據預設，讀取、寫入和執行會全部選取。
 1. 按一下頁面底部的 [選取]****。
-1. 選取 [執行]  。
-1. 選取 [完成]  。
+1. 選取 [執行]****。
+1. 選取 [完成] 。
 
 如果您使用 Data Lake Storage Gen1 作為額外儲存體，則必須僅針對您想要從 HDInsight 叢集存取的資料夾指派權限。 例如，在下方的螢幕擷取畫面中，您僅會將存取提供給 Data Lake Storage Gen1 帳戶中的 **mynewfolder** 資料夾。
 
@@ -170,7 +170,9 @@ ms.locfileid: "79265567"
 
 如果您使用以 Data Lake Storage Gen1 做為主要儲存體而建立的叢集，則資料路徑為︰adl://<data_lake_storage_gen1_account_name>/azuredatalakestore.net/path/to/file**。 從 Data Lake Storage Gen1 帳戶中儲存的範例資料建立資料表的 Hive 查詢，類似於下列陳述式：
 
-    CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
+```console
+CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
+```
 
 說明：
 
@@ -195,7 +197,7 @@ ms.locfileid: "79265567"
 
 您可以使用 Data Lake Storage Gen1 帳戶從 Storm 拓撲寫入資料。 如需有關如何達到這種情況的指示，請參閱[搭配使用 Azure Data Lake Storage Gen1 與 HDInsight 上的 Apache Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen1](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [PowerShell：建立 HDInsight 叢集以使用 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-powershell.md)

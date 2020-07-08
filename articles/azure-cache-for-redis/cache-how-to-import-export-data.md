@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84abbe8d9958bf41768f3706a700ae0ecad6b44f
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857000"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Cache for Redis 中匯入與匯出資料
 「匯入/匯出」是 Azure Cache for Redis 的資料管理作業，可讓您從進階快取將「Azure Cache for Redis 資料庫」(RDB) 快照集匯入和匯出至 Azure 儲存體帳戶中的 Blob，以將資料匯入 Azure Cache for Redis 或從 Azure Cache for Redis 匯出資料。
@@ -142,11 +142,13 @@ Azure Cache for Redis 持續性讓您將儲存在 Redis 快取中的資料存留
 ### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>我在匯入/匯出作業期間收到逾時錯誤。 這代表什麼意思？
 如果您在初始化作業之前停留在 [匯入資料]**** 或 [匯出資料]**** 刀鋒視窗超過 15 分鐘，您會收到類似下列範例錯誤訊息的錯誤：
 
-    The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```output
+The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```
 
 若要解決此問題，請在經過 15 分鐘之前起始匯入或匯出作業。
 
-### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>我將資料匯出至 Azure Blob 儲存體時收到錯誤。 發生什麼情形？
+### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>我將資料匯出至 Azure Blob 儲存體時收到錯誤。 發生什麼事？
 匯出只能使用儲存為分頁 blob 的 RDB 檔案。 目前不支援其他的 Blob 類型，包括經常性存取及非經常性存取層的 Blob 儲存體帳戶。 如需詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../storage/common/storage-account-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟

@@ -6,15 +6,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 516c7f50f7ff9fe947475b12120a527fc69353bc
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 26746a477da301eb352f002e105e883f992aaf0a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926845"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857207"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 針對 Azure App Service 中的應用程式進行疑難排解
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程示範如何使用 Visual Studio 工具，協助針對 [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中的應用程式進行偵錯，方法是以[偵錯模式](https://docs.microsoft.com/visualstudio/debugger/)從遠端執行，或者檢視應用程式記錄與 Web 伺服器記錄。
 
 您將了解：
@@ -271,7 +271,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 如需如何在 WebJobs 中建立應用程式記錄的詳細資訊，請參閱 [如何運用 WebJobs SDK 來使用 Azure 佇列儲存體 - 如何寫入記錄](https://github.com/Azure/azure-webjobs-sdk/wiki)。 下列有關在 Azure 中檢視記錄和控制記錄儲存方式的指示也同樣適用於 WebJobs 所建立的應用程式記錄。
 
 ### <a name="add-tracing-statements-to-the-application"></a>將追蹤陳述式新增至應用程式
-1. 開啟*Controllers\HomeController.cs*，並以下列`Index`程式`About` `System.Diagnostics`代碼取代`Contact` 、和方法，以便加入`Trace`語句和的`using`語句：
+1. 開啟*Controllers\HomeController.cs*，並以 `Index` `About` 下列程式碼取代、和方法，以便 `Contact` 加入 `Trace` 語句和的 `using` 語句 `System.Diagnostics` ：
 
     ```csharp
     public ActionResult Index()
@@ -337,7 +337,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
     ```
 
 1. 按 CTRL+F5 執行應用程式。
-1. 在瀏覽器視窗的網址列中，將*trace.axd*新增至 URL，然後按 ENTER （url 類似`http://localhost:53370/trace.axd`）。
+1. 在瀏覽器視窗的網址列中，將*trace.axd*新增至 URL，然後按 ENTER （url 類似 `http://localhost:53370/trace.axd` ）。
 1. 在 [應用程式追蹤]**** 頁面上，按一下第一行 (不是 BrowserLink 行) 上的 [檢視詳細資料]****。
 
     ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
@@ -348,7 +348,9 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
     根據預設， `trace.axd` 只能在本機使用。 如果您想從遠端應用程式使用它，可以將 `localOnly="false"` 加入 *Web.config* 檔案中的 `trace` 元素，如以下範例所示：
 
-        <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+    ```xml
+    <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+    ```
 
     不過基於安全性考量，建議您不要在生產應用程式中啟用 `trace.axd`。 在以下各節中，您會看到讀取 App Service 應用程式中追蹤記錄的更輕鬆方式。
 

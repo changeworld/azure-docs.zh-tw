@@ -3,23 +3,23 @@ title: 效能微調-Azure Data Lake Storage Gen1 上的 Hive
 description: HdInsight 上的 Hive 和 Azure Data Lake Storage Gen1 的效能微調方針。
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 2e44332ddab9387c05a45d15101ccd2bdec3ada4
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: c49388d50b79b037b0a0923f2c5e9ac72105c54e
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690513"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855759"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight 和 Azure Data Lake Storage Gen1 上的 Hive 效能微調指導方針
 
 預設設定已設定好，以便在許多不同的使用案例中提供良好的效能。  針對 I/O 密集的查詢，Hive 可進行微調，以在 Azure Data Lake Storage Gen1 取得更佳效能。  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Data Lake Storage Gen1 帳戶**。 如需如何建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * 可存取 Data Lake Storage Gen1 帳戶的 **Azure HDInsight 叢集**。 請參閱[建立搭配 Data Lake Storage Gen1 的 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-portal.md)。 請確實為叢集啟用遠端桌面。
 * **在 HDInsight 上執行 Hive**。  若要了解如何在 HDInsight 上執行 Hive 作業，請參閱[ HDInsight 上使用 Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
@@ -55,17 +55,15 @@ I/O 密集工作負載可以透過減少 Tez 容器大小，而從更符合平�
 
 並行執行的工作數或平行處理原則會受到 YARN 記憶體總數的限制。  YARN 容器數目會決定可以執行多少並行工作。  若要尋找每個節點的 YARN 記憶體，您可以前往 Ambari。  流覽至 YARN，並查看 [[]] 索引標籤。 YARN 記憶體會顯示在此視窗中。  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+> 總 YARN 記憶體 = 節點 * YARN 容器的每個節點的 YARN 記憶體數 = YARN 記憶體/Tez 容器大小總計
+
 使用 Data Lake Storage Gen1 來改善效能的關鍵是盡可能地增加並行能力。  Tez 會自動計算應該建立的工作數目，因此您並不需要設定。   
 
 ## <a name="example-calculation"></a>範例計算
 
 假設您有 8 節點的 D14 叢集。  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+> Total YARN memory = node * 每個節點的 YARN 記憶體總計 YARN 記憶體 = 8 個節點 * 96GB = 768GB 的 YARN 容器數目 = 768GB/3072MB = 256
 
 ## <a name="limitations"></a>限制
 

@@ -3,20 +3,20 @@ title: 限制和界限 - QnA Maker
 description: QnA Maker 知識庫和服務的某些部分有中繼資料的限制。 請務必將您的知識庫保持在這些限制範圍內，以便進行測試及發佈。
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: 6375a6c6efc0c7016d9947e04e9479385aa80af5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a600bcb25bc524cda38d1e35a777d23d47b15c9
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855557"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知識庫的限制和界限
 
-以下提供的 QnA Maker 限制是[Azure 認知搜尋定價層限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)和[QnA Maker 定價層限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)的組合。 您必須知道這兩組限制，以瞭解您可以為每個資源建立多少知識庫，以及每個知識庫可成長的大小。
+以下提供的 QnA Maker 限制是[Azure 認知搜尋定價層限制](../../search/search-limits-quotas-capacity.md)和[QnA Maker 定價層限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)的組合。 您必須知道這兩組限制，以瞭解您可以為每個資源建立多少知識庫，以及每個知識庫可成長的大小。
 
 ## <a name="knowledge-bases"></a>知識庫
 
-知識庫的最大數目是以[Azure 認知搜尋層限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)為基礎。
+知識庫的最大數目是以[Azure 認知搜尋層限制](../../search/search-limits-quotas-capacity.md)為基礎。
 
 |**Azure 認知搜尋層** | **免費** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -55,11 +55,11 @@ ms.locfileid: "78273341"
 
 ## <a name="metadata-limits"></a>中繼資料限制
 
-中繼資料是以文字為基礎的索引鍵：值配對來呈現`product:windows 10`，例如。 它會儲存並在小寫中進行比較。
+中繼資料是以文字為基礎的索引鍵：值配對來呈現，例如 `product:windows 10` 。 它會儲存並在小寫中進行比較。
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure 認知搜尋定價層
 
-每個知識庫的元資料欄位數目上限是以您的**[Azure 認知搜尋層限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** 為基礎。
+每個知識庫的元資料欄位數目上限是以您的**[Azure 認知搜尋層限制](../../search/search-limits-quotas-capacity.md)** 為基礎。
 
 |**Azure 認知搜尋層** | **免費** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -81,11 +81,11 @@ ms.locfileid: "78273341"
 * 問題文字的長度：1,000
 * 中繼資料索引鍵/值文字的長度：100
 * 中繼資料名稱的支援字元：字母、數位和`_`
-* 中繼資料值的支援字元：除了`:`和以外`|`
+* 中繼資料值的支援字元：除了 `:` 和以外`|`
 * 檔案名稱的長度：200
 * 支援的檔案格式：".tsv"、".pdf"、".txt"、".docx"、".xlsx"。
 * 替代問題的最大數目：300
-* 問答組的最大數目：取決於選擇的**[Azure 認知搜尋層](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)**。 問答組會對應至 Azure 認知搜尋索引上的檔。
+* 問答組的最大數目：取決於選擇的**[Azure 認知搜尋層](../../search/search-limits-quotas-capacity.md#document-limits)**。 問答組會對應至 Azure 認知搜尋索引上的檔。
 * URL/HTML 頁面：1000000個字元
 
 ## <a name="create-knowledge-base-call-limits"></a>建立知識庫呼叫限制：
