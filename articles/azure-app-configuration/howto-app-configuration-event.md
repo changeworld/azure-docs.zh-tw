@@ -10,17 +10,16 @@ ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: da64f22981cc33772783093cfe75daa3eac5cef1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672148"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>使用 Azure CLI 將 Azure 應用程式組態事件路由傳送至 Web 端點
 
 在本文中，您將瞭解如何設定 Azure 應用程式組態事件訂用帳戶，將索引鍵/值修改事件傳送至 web 端點。 Azure 應用程式組態使用者可以訂閱每次修改索引鍵/值時所發出的事件。 這些事件可以觸發 web 勾點、Azure Functions、Azure 儲存體的佇列，或 Azure 事件方格所支援的任何其他事件處理常式。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 不過，若要簡化這篇文章，您可將事件傳送至可收集及顯示訊息的 Web 應用程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶-[免費建立一個](https://azure.microsoft.com/free/)。 您可以選擇性地使用 Azure Cloud Shell。
 
@@ -44,7 +43,7 @@ az group create --name <resource_group_name> --location westus
 
 ## <a name="create-an-app-configuration-store"></a>建立應用程式組態存放區
 
-請`<appconfig_name>`以您的設定存放區的唯一名稱取代`<resource_group_name>` ，並以您稍早建立的資源群組取代。 此名稱必須是唯一的，因為它會當作 DNS 項目使用。
+請以您的設定 `<appconfig_name>` 存放區的唯一名稱取代，並 `<resource_group_name>` 以您稍早建立的資源群組取代。 此名稱必須是唯一的，因為它會當作 DNS 項目使用。
 
 ```azurecli-interactive
 az appconfig create \

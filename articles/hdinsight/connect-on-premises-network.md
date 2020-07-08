@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 2ed7a5b9c81d1b50f80f379a88688b69c49ed382
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78897935"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>將 HDInsight 連線至內部部署網路
@@ -24,7 +23,7 @@ ms.locfileid: "78897935"
 * 設定網路安全性群組來限制網際網路存取 HDInsight。
 * HDInsight 在虛擬網路上提供的連接埠。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 若要允許聯結網路中的 HDInsight 和資源依名稱進行通訊，您必須執行下列動作：
 
@@ -65,11 +64,11 @@ ms.locfileid: "78897935"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
   
-1. 從頂端功能表中，選取 [ **+ 建立資源**]。
+1. 在頂端功能表中，選取 [+ 建立資源]  。
 
     ![建立 Ubuntu 虛擬機器](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-1. 選取 [**計算** > ] [**虛擬機器**]，移至 [**建立虛擬機器**] 頁面。
+1. 選取 [**計算**]  >  [**虛擬機器**]，移至 [**建立虛擬機器**] 頁面。
 
 1. 在 [基本]____ 索引標籤中，輸入下列資訊：  
   
@@ -84,7 +83,7 @@ ms.locfileid: "78897935"
     |驗證類型 | __密碼__或__SSH 公開金鑰__： ssh 帳戶的驗證方法。 我們建議使用公開金鑰，因為這些金鑰較安全。 這個範例會使用**Password**。  如需詳細資訊，請參閱[建立及使用適用於 Linux VM 的 SSH 金鑰](../virtual-machines/linux/mac-create-ssh-keys.md)文件。|
     |使用者名稱 |輸入虛擬機器的系統管理員使用者名稱。  此範例使用 **sshuser**。|
     |密碼或 SSH 公開金鑰 | 可用的欄位取決於您選擇的**驗證類型**而定。  輸入適當的值。|
-    |公用輸入連接埠|選取 [允許選取的連接埠]  。 然後從 [**選取輸入埠**] 下拉式清單中選取 [ **SSH （22）** ]。|
+    |公用輸入連接埠|選取 [允許選取的連接埠]。 然後從 [**選取輸入埠**] 下拉式清單中選取 [ **SSH （22）** ]。|
 
     ![虛擬機器基本設定](./media/connect-on-premises-network/virtual-machine-basics.png)
 
@@ -116,7 +115,7 @@ ms.locfileid: "78897935"
 
 ### <a name="install-and-configure-bind-dns-software"></a>安裝並設定 Bind (DNS 軟體)
 
-1. 使用 SSH 連線至虛擬機器的__公用 IP 位址__。 將`sshuser`取代為您在建立 VM 時所指定的 SSH 使用者帳戶。 下列範例會連線到 40.68.254.142 的虛擬機器：
+1. 使用 SSH 連線至虛擬機器的__公用 IP 位址__。 `sshuser`將取代為您在建立 VM 時所指定的 SSH 使用者帳戶。 下列範例會連線到 40.68.254.142 的虛擬機器：
 
     ```bash
     ssh sshuser@40.68.254.142
@@ -129,7 +128,7 @@ ms.locfileid: "78897935"
     sudo apt-get install bind9 -y
     ```
 
-3. 若要將系結設定為將名稱解析要求轉寄到內部部署 DNS 伺服器，請使用下列文字做為`/etc/bind/named.conf.options`檔案的內容：
+3. 若要將系結設定為將名稱解析要求轉寄到內部部署 DNS 伺服器，請使用下列文字做為檔案的內容 `/etc/bind/named.conf.options` ：
 
         acl goodclients {
             10.0.0.0/16; # Replace with the IP address range of the virtual network
@@ -234,7 +233,7 @@ ms.locfileid: "78897935"
 
 若要將虛擬網路設定為使用自訂的 DNS 伺服器，而不使用 Azure 遞迴解析程式，請從 [Azure 入口網站](https://portal.azure.com)使用下列步驟：
 
-1. 從左側功能表中，流覽至 [**所有服務** > ] [**網路** > ] [**虛擬網路**]。
+1. 從左側功能表中，流覽至 [**所有服務**] [網路] [  >  **Networking**  >  **虛擬網路**]。
 
 2. 從清單中選取虛擬網路，將會為您的虛擬網路開啟預設檢視。  
 
@@ -242,7 +241,7 @@ ms.locfileid: "78897935"
 
 4. 選取 [自訂]____，並輸入自訂 DNS 伺服器的**私人 IP 位址**。
 
-5. 選取 [儲存]  。  <br />  
+5. 選取 [儲存]。  <br />  
 
     ![設定網路的自訂 DNS 伺服器](./media/connect-on-premises-network/configure-custom-dns.png)
 
@@ -263,7 +262,7 @@ ms.locfileid: "78897935"
 
 如需有關在 **Windows Server 2016** 上使用 DNS 的資訊，請參閱 [Add-DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) 文件...
 
-設定內部部署 DNS 伺服器之後，您可以從內部部署網路使用`nslookup` ，以確認您可以在虛擬網路中解析名稱。 下列範例 
+設定內部部署 DNS 伺服器之後，您可以 `nslookup` 從內部部署網路使用，以確認您可以在虛擬網路中解析名稱。 下列範例 
 
 ```bash
 nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.4
@@ -343,4 +342,4 @@ HDInsight 上大部分的文件都假設您透過網際網路擁有叢集存取�
 
 * 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
 
-* 如需使用者定義路由的詳細資訊，請參閱[使用者定義的路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。
+* 如需使用者定義路由的詳細資訊，請參閱[使用者定義路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。

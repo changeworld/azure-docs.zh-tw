@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302911"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray （Azure Cosmos DB）
@@ -37,7 +36,7 @@ StringToArray(<str_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例顯示不同類型`StringToArray`的行為。 
+  下列範例顯示 `StringToArray` 不同類型的行為。 
   
  以下是具有有效輸入的範例。
 
@@ -59,7 +58,7 @@ SELECT
 以下是無效輸入的範例。 
    
  陣列中的單引號不是有效的 JSON。
-雖然它們在查詢中是有效的，但它們不會剖析為有效的陣列。 陣列字串中的字串必須是轉義 "[\\"\\"]"，或周圍的引號必須是單一 ' [""] '。
+雖然它們在查詢中是有效的，但它們不會剖析為有效的陣列。 陣列字串中的字串必須是轉義 "[ \\ " " \\ ]"，或周圍的引號必須是單一 ' [""] '。
 
 ```sql
 SELECT

@@ -17,10 +17,9 @@ ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78675614"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性區域的 SAP 工作負載設定
@@ -34,7 +33,7 @@ SAP 應用層會部署在一個 Azure[可用性設定組](https://docs.microsoft
 
 - [使用叢集共用磁片在 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 實例叢集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
 - [使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
-- [SUSE Linux Enterprise Server 上 Azure VM 的 SAP NetWeaver 高可用性 (適用於 SAP 應用程式)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
+- [SAP NetWeaver 在適用於 SAP 應用程式之 SUSE Linux Enterprise Server 上的 Azure VM 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
 - [SAP NetWeaver on Red Hat Enterprise Linux 的 Azure 虛擬機器高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
 
 類似的架構同樣也適用於 SAP NetWeaver、S/4HANA 或混合式系統的 DBMS 層。 您部署主動/被動模式的 DBMS 層以及容錯移轉叢集解決方案，以保護免於基礎結構或軟體失敗。 容錯移轉叢集解決方案可以是 DBMS 特定容錯移轉架構、Windows Server 容錯移轉叢集或 Pacemaker。

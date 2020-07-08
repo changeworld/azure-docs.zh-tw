@@ -8,10 +8,9 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 073efbd91e637a17693617b16c7787d61e150ad7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78304237"
 ---
 # <a name="trim-azure-cosmos-db"></a>TRIM （Azure Cosmos DB）
@@ -26,7 +25,7 @@ TRIM(<str_expr>)
 ## <a name="arguments"></a>引數
   
 *str_expr*  
-   這是字串運算式。  
+   是字串運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -34,7 +33,7 @@ TRIM(<str_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例顯示如何在查詢內`TRIM`使用。  
+  下列範例顯示如何 `TRIM` 在查詢內使用。  
   
 ```sql
 SELECT TRIM("   abc") AS t1, TRIM("   abc   ") AS t2, TRIM("abc   ") AS t3, TRIM("abc") AS t4

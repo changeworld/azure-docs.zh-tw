@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8bad33f593bae2679c83d59ae4567dcab4a64809
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78304220"
 ---
 # <a name="trunc-azure-cosmos-db"></a>TRUNC （Azure Cosmos DB）
@@ -48,7 +47,7 @@ SELECT TRUNC(2.4) AS t1, TRUNC(2.6) AS t2, TRUNC(2.5) AS t3, TRUNC(-2.4) AS t4, 
 
 ## <a name="remarks"></a>備註
 
-這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
+此系統函數將受益於[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 

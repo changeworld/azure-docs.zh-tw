@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78933747"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>在 Azure 入口網站中管理 StorSimple 資料管理員服務
@@ -48,7 +47,7 @@ ms.locfileid: "78933747"
     
    5. 若要在儀表板上取得此服務的連結，請選取 [釘選到儀表板]****。
     
-   6. 按一下 [建立]  。
+   6. 按一下 [建立]。
 
       ![建立 StorSimple 資料管理員服務 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -104,7 +103,7 @@ ms.locfileid: "78933747"
 
    4. 資料轉換服務僅適用于推送至 Azure 之資料的最新快照集。
 
-   5. 按一下 [確定]  。
+   5. 按一下 [確定]。
 
       ![設定來源資料存放庫 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -121,7 +120,7 @@ ms.locfileid: "78933747"
     
     1. 從 [目標帳戶名稱]**** 的下拉式清單中，選取您建立的存放庫作為目標。
 
-    2. 選擇 [Blob] 或 [檔案] 儲存體類型。 指定已轉換資料所在的儲存體容器名稱。 按一下 [確定]  。
+    2. 選擇 [Blob] 或 [檔案] 儲存體類型。 指定已轉換資料所在的儲存體容器名稱。 按一下 [確定]。
 
         ![設定目標資料存放庫儲存體帳戶](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 

@@ -4,10 +4,9 @@ description: 在本教學課程中，您將瞭解如何藉由設定一或多個�
 ms.topic: article
 ms.date: 06/27/2019
 ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78402873"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>依定義的排程執行 ACR 工作
@@ -32,7 +31,7 @@ ms.locfileid: "78402873"
 
 * **使用 cron 運算式觸發**-工作的計時器觸發程式會使用*cron 運算式*。 運算式是一個字串，其中包含五個欄位，指定要觸發工作的分鐘、小時、日、月和星期幾。 支援每分鐘最多一次的頻率。
 
-  例如，運算式`"0 12 * * Mon-Fri"`會在每個工作日的中午 UTC 觸發工作。 請參閱本文稍後的[詳細資料](#cron-expressions)。
+  例如，運算式會在 `"0 12 * * Mon-Fri"` 每個工作日的中午 UTC 觸發工作。 請參閱本文稍後的[詳細資料](#cron-expressions)。
 * **多個計時器觸發**程式-只要排程不同，就可以將多個計時器新增至工作。
     * 當您建立工作時指定多個計時器觸發程式，或在稍後新增。
     * 選擇性地為觸發程式命名以方便管理，或 ACR 工作會提供預設的觸發程式名稱。
@@ -41,9 +40,9 @@ ms.locfileid: "78402873"
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>建立具有計時器觸發程式的工作
 
-當您使用[az acr task create][az-acr-task-create]命令來建立工作時，您可以選擇性地新增計時器觸發程式。 新增`--schedule`參數，並傳遞計時器的 cron 運算式。
+當您使用[az acr task create][az-acr-task-create]命令來建立工作時，您可以選擇性地新增計時器觸發程式。 新增 `--schedule` 參數，並傳遞計時器的 cron 運算式。
 
-作為簡單的範例，下列命令會在每天 21:00 `hello-world` UTC 觸發從 Docker Hub 執行映射。 工作會在沒有原始程式碼內容的情況下執行。
+作為簡單的範例，下列命令會 `hello-world` 在每天 21:00 UTC 觸發從 Docker Hub 執行映射。 工作會在沒有原始程式碼內容的情況下執行。
 
 ```azurecli
 az acr task create \
@@ -54,7 +53,7 @@ az acr task create \
   --context /dev/null
 ```
 
-執行[az acr task show][az-acr-task-show]命令，以查看計時器觸發程式是否已設定。 根據預設，基底映射更新觸發程式也會啟用。
+執行 [az acr task show][az-acr-task-show] 命令來查看計時器觸發程序是否已設定。 根據預設，基底映射更新觸發程式也會啟用。
 
 ```azurecli
 az acr task show --name mytask --registry registry --output table
@@ -174,7 +173,7 @@ ACR 工作使用[NCronTab](https://github.com/atifaziz/NCrontab)程式庫來解�
 與 cron 運算式搭配使用的時區是國際標準時間（UTC）。 小時是24小時制的格式。
 
 > [!NOTE]
-> ACR 工作不支援 cron 運算式`{second}`中`{year}`的或欄位。 如果您複製另一個系統中所使用的 cron 運算式，請務必移除這些欄位（如果有使用的話）。
+> ACR 工作不支援 `{second}` `{year}` cron 運算式中的或欄位。 如果您複製另一個系統中所使用的 cron 運算式，請務必移除這些欄位（如果有使用的話）。
 
 每個欄位可以具備下列類型的值：
 

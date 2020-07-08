@@ -8,10 +8,9 @@ ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 03/05/2020
 ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78943959"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>案例： Apache Hive 記錄檔會填滿前端節點上的磁碟空間 Azure HDInsight
@@ -25,7 +24,7 @@ ms.locfileid: "78943959"
 1. 因為前端節點上沒有空間，所以 SSH 存取失敗。
 2. Ambari 提供*HTTP 錯誤：503服務無法使用*。
 
-當`ambari-agent`問題發生時，記錄會顯示下列各項。
+`ambari-agent`當問題發生時，記錄會顯示下列各項。
 ```
 ambari_agent - Controller.py - [54697] - Controller - ERROR - Error:[Errno 28] No space left on device
 ```
@@ -39,13 +38,13 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="resolution"></a>解決方案
 
-1. 流覽至 Ambari 入口網站上的 [Hive 元件摘要`Configs` ]，然後按一下 [索引標籤]。
+1. 流覽至 Ambari 入口網站上的 [Hive 元件摘要]，然後按一下 [索引標籤 `Configs` ]。
 
-2. 移至 [ `Advanced hive-log4j`高級設定] 中的區段。
+2. 移至 [ `Advanced hive-log4j` 高級設定] 中的區段。
 
-3. 將`log4j.appender.RFA`參數設定為 RollingFileAppender。 
+3. 將 `log4j.appender.RFA` 參數設定為 RollingFileAppender。 
 
-4. 設定`log4j.appender.RFA.MaxFileSize` ， `log4j.appender.RFA.MaxBackupIndex`如下所示。
+4. 設定 `log4j.appender.RFA.MaxFileSize` ，如下 `log4j.appender.RFA.MaxBackupIndex` 所示。
 
 ```
 log4jhive.log.maxfilesize=1024MB
@@ -58,7 +57,7 @@ log4j.appender.RFA.MaxBackupIndex=${log4jhive.log.maxbackupindex}
 log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
 log4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n
 ```
-5. 將`hive.root.logger`設定`INFO,RFA`為，如下所示。 預設設定為 DEBUG，這會使記錄檔變得非常大。
+5. 將設定 `hive.root.logger` 為， `INFO,RFA` 如下所示。 預設設定為 DEBUG，這會使記錄檔變得非常大。
 
 ```
 # Define some default values that can be overridden by system properties
@@ -74,8 +73,8 @@ hive.log.file=hive.log
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-* 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
-* 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，藉由將 Azure 社區連接至適當的資源來改善客戶體驗：解答、支援及專家。
+* 與 [@AzureSupport](https://twitter.com/azuresupport) 聯繫 - 專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，例如解答、支援及專家等。
 
-* 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 在功能表列選取 [支援] 或開啟 [說明 + 支援] 中心。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) (機器翻譯)。 您可透過 Microsoft Azure 訂用帳戶來存取訂用帳戶管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

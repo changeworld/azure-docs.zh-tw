@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302707"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 搭配 HDInsight 上的 Apache Hadoop 執行 MapReduce 作業
@@ -22,7 +21,7 @@ ms.locfileid: "78302707"
 > [!NOTE]  
 > 如果您已熟悉 Linux 型 Hadoop 伺服器的用法，但不熟悉 HDInsight，請參閱 [Linux 型 HDInsight 上的 Apache Hadoop 須知](../hdinsight-hadoop-linux-information.md)文件。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 Apache Hadoop 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop](../hdinsight-hadoop-create-linux-clusters-portal.md)叢集。
 
@@ -77,7 +76,7 @@ ms.locfileid: "78302707"
 
     URI 結尾 (/mapreduce/jar) 會告訴 WebHCat，此要求會從 jar 檔案中的類別啟動 MapReduce 作業。 此命令中使用的參數如下：
 
-   * **-d**： `-G`未使用，因此要求會預設為 POST 方法。 `-d` 可指定與要求一起傳送的資料值。
+   * **-d**： `-G` 未使用，因此要求會預設為 POST 方法。 `-d` 可指定與要求一起傳送的資料值。
      * **user.name**：執行命令的使用者
      * **jar**：包含要執行之類別的 jar 檔案位置
      * **class**：包含 MapReduce 邏輯的類別
@@ -87,7 +86,7 @@ ms.locfileid: "78302707"
 
        job_1415651640909_0026
 
-1. 若要檢查工作的狀態，請使用下列命令。 將的值取代`JOBID`為上一個步驟中所傳回的**實際**值。 視需要修改**jq**的位置。
+1. 若要檢查工作的狀態，請使用下列命令。 將的值取代為 `JOBID` 上一個步驟中所傳回的**實際**值。 視需要修改**jq**的位置。
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -98,7 +97,7 @@ ms.locfileid: "78302707"
 
 ### <a name="powershell"></a>PowerShell
 
-1. 為了方便使用，請設定下列變數。 將`CLUSTERNAME`取代為您實際的叢集名稱。 執行命令，並在出現提示時輸入叢集登入密碼。
+1. 為了方便使用，請設定下列變數。 `CLUSTERNAME`將取代為您實際的叢集名稱。 執行命令，並在出現提示時輸入叢集登入密碼。
 
     ```powershell
     $clusterName="CLUSTERNAME"

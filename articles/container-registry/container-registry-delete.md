@@ -4,10 +4,9 @@ description: 有關如何使用 Azure CLI 命令來刪除容器映射資料，�
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78403351"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>使用 Azure CLI 刪除 Azure Container Registry 中的容器映射
@@ -117,7 +116,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 識別過時的資訊清單摘要之後，您可以執行下列 Bash 腳本，以刪除比指定時間戳記更舊的資訊清單摘要。 它需要 Azure CLI 和 **xargs**。 根據預設，此指令碼不會執行任何刪除。 將 `ENABLE_DELETE` 值變更為 `true`，以啟用映像刪除。
 
 > [!WARNING]
-> 請小心使用下列範例腳本--已刪除的映射資料無法復原。 如果您有依資訊清單摘要提取映射的系統（相對於映射名稱），則不應該執行這些腳本。 刪除資訊清單摘要將會導致這些系統無法從您的登錄中提取映射。 請考慮採用「唯一標記」** 配置(這是[建議的最佳做法](container-registry-image-tag-version.md))，而不是依照資訊清單提取。 
+> 請小心使用下列範例腳本--已刪除的映射資料無法復原。 如果您有依資訊清單摘要提取映射的系統（相對於映射名稱），則不應該執行這些腳本。 刪除資訊清單摘要將會導致這些系統無法從您的登錄中提取映射。 請考慮採用「唯一標記」配置 (這是[建議的最佳做法](container-registry-image-tag-version.md))，而不是依照資訊清單提取。 
 
 ```bash
 #!/bin/bash
@@ -199,7 +198,7 @@ fi
    ]
    ```
 
-如您在序列中最後一個步驟的輸出中所見，現在有一個孤立的資訊清單， `"tags"`其屬性為空白清單。 此資訊清單以及它所參考的任何唯一層次資料，仍存在於登錄中。 **若要刪除這類孤立映像及其層次資料，您必須依資訊清單摘要刪除**。
+如您在序列中最後一個步驟的輸出中所見，現在有一個孤立的資訊清單，其 `"tags"` 屬性為空白清單。 此資訊清單以及它所參考的任何唯一層次資料，仍存在於登錄中。 **若要刪除這類孤立映像及其層次資料，您必須依資訊清單摘要刪除**。
 
 ## <a name="delete-all-untagged-images"></a>刪除所有已取消標記的映像
 
@@ -212,7 +211,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 在腳本中使用此命令，您可以刪除存放庫中的所有未標記映射。
 
 > [!WARNING]
-> 請小心使用下列範例指令碼--無法復原已刪除的映像資料。 如果您有依資訊清單摘要提取映射的系統（相對於映射名稱），則不應該執行這些腳本。 刪除已取消標記的映像，會導致這些系統無法從登錄中提取映像。 請考慮採用「唯一標記」** 配置(這是[建議的最佳做法](container-registry-image-tag-version.md))，而不是依照資訊清單提取。
+> 請小心使用下列範例指令碼--無法復原已刪除的映像資料。 如果您有依資訊清單摘要提取映射的系統（相對於映射名稱），則不應該執行這些腳本。 刪除已取消標記的映像，會導致這些系統無法從登錄中提取映像。 請考慮採用「唯一標記」配置 (這是[建議的最佳做法](container-registry-image-tag-version.md))，而不是依照資訊清單提取。
 
 **Bash 中的 Azure CLI**
 

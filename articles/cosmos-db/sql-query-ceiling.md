@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 81f113aa51a7f739b506ec7e3eb5bf2cb9f49a03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302639"
 ---
 # <a name="ceiling-azure-cosmos-db"></a>上限（Azure Cosmos DB）
@@ -34,7 +33,7 @@ CEILING (<numeric_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例會使用`CEILING`函數來顯示正數、負數和零值。  
+  下列範例會使用函數來顯示正數、負數和零值 `CEILING` 。  
   
 ```sql
 SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3  
@@ -48,7 +47,7 @@ SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3
 
 ## <a name="remarks"></a>備註
 
-這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
+此系統函數將受益於[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 

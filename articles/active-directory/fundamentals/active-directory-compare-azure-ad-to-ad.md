@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
 ms.openlocfilehash: 5075ae57df6a7306f0c860690931c846e52c2a89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78926892"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>比較 Active Directory 與 Azure Active Directory
@@ -37,7 +36,7 @@ Azure AD 藉由為組織提供身分識別即服務（IDaaS）解決方案，跨
 | **應用程式**|||
 | 基礎結構應用程式|Active Directory 形成許多基礎結構內部部署元件（例如 DNS、DHCP、IPSec、WiFi、NPS 和 VPN 存取）的基礎|在新的雲端環境中，Azure AD 是用來存取應用程式的新控制平面，而不是依賴網路控制。 當使用者進行驗證時，[條件式存取（CA）](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)會控制哪些使用者可以存取所需條件下的哪些應用程式。|
 | 傳統和繼承應用程式| 大部分的內部部署應用程式會使用 LDAP、Windows 整合式驗證（NTLM 和 Kerberos），或以標頭為基礎的驗證來控制使用者的存取權。| Azure AD 可以使用內部部署執行[Azure AD 應用程式 proxy 代理程式](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)，來提供這些內部部署應用程式類型的存取權。 使用此方法 Azure AD 可以在您遷移或需要與繼承應用程式並存時，使用 Kerberos 驗證內部部署的 Active Directory 使用者。 |
-| SaaS 應用程式|Active Directory 不會以原生方式支援 SaaS 應用程式，而且需要同盟系統，例如 AD FS。|支援 OAuth2、SAML 和 WS\*驗證的 SaaS 應用程式可以整合，以使用 Azure AD 進行驗證。 |
+| SaaS 應用程式|Active Directory 不會以原生方式支援 SaaS 應用程式，而且需要同盟系統，例如 AD FS。|支援 OAuth2、SAML 和 WS 驗證的 SaaS 應用程式 \* 可以整合，以使用 Azure AD 進行驗證。 |
 | 具有新式驗證的企業營運（LOB）應用程式|組織可以搭配 Active Directory 使用 AD FS，以支援需要新式驗證的 LOB 應用程式。| 需要新式驗證的 LOB 應用程式可以設定為使用 Azure AD 進行驗證。 |
 | 中層/後臺服務|在內部部署環境中執行的服務通常會使用 AD 服務帳戶或群組受管理的服務帳戶（gMSA）來執行。 然後，這些應用程式會繼承服務帳戶的許可權。| Azure AD 提供[受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)識別，以在雲端中執行其他工作負載。 這些身分識別的生命週期是由 Azure AD 管理，而且系結至資源提供者無法用於其他目的，以取得後門程式存取權。|
 | **裝置**|||

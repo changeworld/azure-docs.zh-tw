@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 0eac35a91e4d5158335d6797d49a09f8f6f391e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303744"
 ---
 # <a name="left-azure-cosmos-db"></a>左方（Azure Cosmos DB）
@@ -51,7 +50,7 @@ SELECT LEFT("abc", 1) AS l1, LEFT("abc", 2) AS l2
 
 ## <a name="remarks"></a>備註
 
-這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
+此系統函數將受益於[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 

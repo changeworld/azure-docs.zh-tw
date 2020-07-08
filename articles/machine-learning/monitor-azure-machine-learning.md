@@ -10,10 +10,9 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78399110"
 ---
 # <a name="monitoring-azure-machine-learning"></a>監視 Azure Machine Learning
@@ -40,7 +39,7 @@ Azure Machine Learning 使用 Azure 監視器來記錄監視資料，這是 Azur
 
 Azure Machine Learning 會收集與其他 Azure 資源相同的監視資料類型，如[從 Azure 資源監視資料](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data)中所述。 如需 Azure Machine Learning 所建立之記錄和計量的詳細參考，請參閱[Azure Machine Learning 監視資料參考](monitor-resource-reference.md)。
 
-## <a name="analyzing-metric-data"></a>分析度量資料
+## <a name="analyzing-metric-data"></a>分析計量資料
 
 您可以從 [ **Azure 監視器**] 功能表開啟 [**計量**]，來分析 Azure Machine Learning 的計量。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](/azure/azure-monitor/platform/metrics-getting-started)。
 
@@ -50,7 +49,7 @@ Azure Machine Learning 的所有計量都在命名空間**Machine Learning 服�
 
 ### <a name="filtering-and-splitting"></a>篩選和分割
 
-針對支援維度的計量，您可以使用維度值來套用篩選。 例如，篩選的叢集**名稱**的使用中`cpu-cluster`**核心**。 
+針對支援維度的計量，您可以使用維度值來套用篩選。 例如，篩選的叢集**名稱**的使用中**核心** `cpu-cluster` 。 
 
 您也可以依維度分割計量，以視覺化計量的不同區段彼此之間的比較。 例如，分割**管線步驟類型**，以查看管線中使用的步驟類型計數。
 
@@ -62,13 +61,13 @@ Azure Machine Learning 的所有計量都在命名空間**Machine Learning 服�
 
 下表列出 Azure Machine Learning 的一般和建議計量警示規則：
 
-| 警示類型 | 狀況 | 說明 |
+| 警示類型 | 條件 | 說明 |
 |:---|:---|:---|
-| 模型部署失敗 | 匯總類型： Total、Operator：大於、臨界值：0 | 當一或多個模型部署失敗時 |
-| 配額使用量百分比 | 匯總類型：平均值，運算子：大於，臨界值：90| 當配額使用率百分比大於90% 時 |
+| 失敗的模型部署 | 匯總類型： Total、Operator：大於、臨界值：0 | 當一或多個模型部署失敗時 |
+| 配額使用率百分比 | 匯總類型：平均值，運算子：大於，臨界值：90| 當配額使用率百分比大於90% 時 |
 | 無法使用的節點 | 匯總類型： Total、Operator：大於、臨界值：0 | 當有一或多個無法使用的節點時 |
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 > [!IMPORTANT]
 > __不需要設定 Azure Machine Learning 的計量__，它們會自動收集，並可在計量瀏覽器中用來進行監視和警示。
@@ -85,7 +84,7 @@ Azure Machine Learning 的所有計量都在命名空間**Machine Learning 服�
 
 您可以為 Azure Machine Learning 設定下列記錄：
 
-| 類別 | 說明 |
+| 類別 | Description |
 |:---|:---|
 | AmlComputeClusterEvent | 來自 Azure Machine Learning 計算叢集的事件。 |
 | AmlComputeClusterNodeEvent | Azure Machine Learning 計算叢集中的節點事件。 |
@@ -100,14 +99,14 @@ Azure Machine Learning 的所有計量都在命名空間**Machine Learning 服�
 
 Azure 監視器記錄檔中的資料會儲存在資料表中，而且每個資料表都有一組專屬的唯一屬性。 Azure Machine Learning 會將資料儲存在下列資料表中：
 
-| Table | 說明 |
+| 資料表 | Description |
 |:---|:---|
 | AmlComputeClusterEvent | 來自 Azure Machine Learning 計算叢集的事件。 |
 | AmlComputeClusterNodeEvent | Azure Machine Learning 計算叢集中的節點事件。 |
 | AmlComputeJobEvent | Azure Machine Learning 計算上執行之作業的事件。 |
 
 > [!IMPORTANT]
-> 當您從 [Azure Machine Learning] 功能表中選取 [**記錄**] 時，會開啟 Log Analytics，並將查詢範圍設定為目前的工作區。 這表示記錄查詢只會包含來自該資源的資料。 如果您想要執行的查詢包含來自其他資料庫的資料或來自其他 Azure 服務的資料，請從 [ **Azure 監視器**] 功能表中選取 [**記錄**]。 如需詳細資訊，請參閱[Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍](/azure/azure-monitor/log-query/scope/)。
+> 當您從 [Azure Machine Learning] 功能表中選取 [**記錄**] 時，會開啟 Log Analytics，並將查詢範圍設定為目前的工作區。 這表示記錄查詢只會包含來自該資源的資料。 如果您想要執行包含其他資料庫資料或其他 Azure 服務資料的查詢，請從 [Azure 監視器] 功能表中選取 [記錄]。 如需詳細資訊，請參閱 [Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍](/azure/azure-monitor/log-query/scope/)。
 
 如需記錄和計量的詳細參考，請參閱[Azure Machine Learning 監視資料參考](monitor-resource-reference.md)。
 

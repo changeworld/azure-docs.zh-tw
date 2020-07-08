@@ -8,10 +8,9 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 5129b4fffafb6918f655263cac2f5564635acf36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303965"
 ---
 # <a name="upper-azure-cosmos-db"></a>上限（Azure Cosmos DB）
@@ -28,7 +27,7 @@ UPPER(<str_expr>)
 ## <a name="arguments"></a>引數
   
 *str_expr*  
-   這是字串運算式。  
+   是字串運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -36,7 +35,7 @@ UPPER(<str_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例顯示如何在查詢中`UPPER`使用  
+  下列範例顯示如何 `UPPER` 在查詢中使用  
   
 ```sql
 SELECT UPPER("Abc") AS upper  

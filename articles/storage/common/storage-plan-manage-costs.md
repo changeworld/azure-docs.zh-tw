@@ -10,10 +10,9 @@ ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
 ms.openlocfilehash: aa0b789b31f50c8b1ccf5450700874a02ad4664c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78304520"
 ---
 # <a name="plan-and-manage-costs-for-azure-storage"></a>規劃和管理 Azure 儲存體的成本
@@ -22,7 +21,7 @@ ms.locfileid: "78304520"
 
 請記住，Azure 儲存體的成本只是 Azure 帳單中每月成本的一部分。 雖然本文說明如何規劃和管理 Azure 儲存體的成本，您仍需支付 Azure 訂用帳戶所使用的所有 Azure 服務和資源，包括協力廠商服務。 在您熟悉如何管理 Azure 儲存體的成本之後，您可以套用類似的方法來管理您的訂用帳戶中所使用之所有 Azure 服務的成本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 成本分析支援不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../../cost-management-billing/costs/understand-cost-mgt-data.md)。 若要檢視成本資料，您至少需要 Azure 帳戶的讀取存取。 如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](../../cost-management-billing/costs/assign-access-acm-data.md)。
 
@@ -46,7 +45,7 @@ ms.locfileid: "78304520"
 
 ## <a name="use-budgets-and-cost-alerts"></a>使用預算和成本警示
 
-您可以建立[預算](../../cost-management-billing/costs/tutorial-acm-create-budgets.md)來管理成本，以及建立警示，以在出現異常消費和超支風險時自動通知利害關係人。 警示是以支出為基礎 (相較於預算和成本閾值)。 預算和警示是針對 Azure 訂用帳戶和資源群組所建立，因此在整體成本監視策略中相當有用。 不過，它們的功能可能有限，可以管理個別的 Azure 服務成本，例如 Azure 儲存體的成本，因為它們是設計來追蹤較高層級的成本。
+您可以建立[預算](../../cost-management-billing/costs/tutorial-acm-create-budgets.md)來管理成本，以及建立警示，以便在出現異常消費和超支風險時自動通知利害關係人。 警示是以支出為基礎 (相較於預算和成本閾值)。 預算和警示是針對 Azure 訂用帳戶和資源群組所建立，因此在整體成本監視策略中相當有用。 不過，它們的功能可能有限，可以管理個別的 Azure 服務成本，例如 Azure 儲存體的成本，因為它們是設計來追蹤較高層級的成本。
 
 ## <a name="monitor-costs"></a>監視成本
 
@@ -56,7 +55,7 @@ ms.locfileid: "78304520"
 
 若要在成本分析中查看 Azure 儲存體成本：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入[Azure 入口網站](https://portal.azure.com)。
 
 2. 開啟 [**成本管理 + 計費**] 視窗，從功能表中選取 [**成本管理**]，然後選取 [**成本分析**]。 然後，您可以從 [**範圍**] 下拉式清單中變更特定訂用帳戶的範圍。
 

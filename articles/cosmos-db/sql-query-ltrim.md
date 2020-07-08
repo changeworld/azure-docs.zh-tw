@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 08c069de70684a8562e86963ddb2e84ee889e7cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302248"
 ---
 # <a name="ltrim-azure-cosmos-db"></a>LTRIM （Azure Cosmos DB）
@@ -26,7 +25,7 @@ LTRIM(<str_expr>)
 ## <a name="arguments"></a>引數
   
 *str_expr*  
-   這是字串運算式。  
+   是字串運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -34,7 +33,7 @@ LTRIM(<str_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例顯示如何在查詢內`LTRIM`使用。  
+  下列範例顯示如何 `LTRIM` 在查詢內使用。  
   
 ```sql
 SELECT LTRIM("  abc") AS l1, LTRIM("abc") AS l2, LTRIM("abc   ") AS l3 

@@ -4,10 +4,9 @@ description: 瞭解如何升級 Microsoft Azure 復原服務（MARS）代理程�
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 49daf438b855d19961519d93b6c3ec535de4756f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672822"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>升級 Microsoft Azure 復原服務（MARS）代理程式
@@ -60,7 +59,7 @@ ms.locfileid: "78672822"
     -- | ---
     Azure 雲端（公用） |   `https://login.windows.net`
     Azure 中國世紀雲端   | `https://login.chinacloudapi.cn`
-    Azure 美國政府雲端 |   `https://login.microsoftonline.us`
+    Azure US Government Cloud |   `https://login.microsoftonline.us`
     Azure 德國雲端  |  `https://login.microsoftonline.de`
 
 1. 將 Azure 備份代理程式更新安裝程式複製到伺服器。
@@ -71,7 +70,7 @@ ms.locfileid: "78672822"
 
     ![Microsoft Azure 復原服務代理程式升級嚮導](./media/upgrade-mars-agent/agent-upgrade-wizard.png)
 
-1. 按 [下一步]  。
+1. 按 [下一步] 。
 
 1. 按一下 **[升級]**。
 

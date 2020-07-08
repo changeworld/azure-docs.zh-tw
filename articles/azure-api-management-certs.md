@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
 ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78329114"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>上傳 Azure 服務管理憑證
@@ -42,14 +41,14 @@ ms.locfileid: "78329114"
 3. 務必選取您想要用來與憑證建立關聯的正確訂用帳戶。     
 4. 當您選取正確的訂用帳戶之後，按下 [設定]__ 群組中的 [管理憑證]****。
 
-    ![Settings](./media/azure-api-management-certs/mgmtcerts_menu.png)
+    ![設定](./media/azure-api-management-certs/mgmtcerts_menu.png)
 
 5. 按 [上傳] **** 按鈕。
 
     ![憑證頁面的 [上傳]](./media/azure-api-management-certs/certificates_page.png)
 6. 填寫對話方塊資訊，然後按下 [上傳]****。
 
-    ![Settings](./media/azure-api-management-certs/certificate_details.png)
+    ![設定](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>後續步驟
 既然您已經擁有與訂用帳戶建立關聯的管理憑證，您就能 (在本機安裝相符的憑證之後) 以程式設計方式連線到[傳統部署模型 REST API](/azure/?pivot=sdkstools)，並將同樣與該訂用帳戶建立關聯的各種 Azure 資源自動化。

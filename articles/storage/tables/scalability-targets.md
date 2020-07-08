@@ -10,10 +10,9 @@ ms.date: 03/09/2020
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: b6455733e4955bd1fb5b27e3551e41e5f711df21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78943538"
 ---
 # <a name="scalability-and-performance-targets-for-table-storage"></a>資料表儲存體的延展性和效能目標
@@ -24,7 +23,7 @@ ms.locfileid: "78943538"
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [表格儲存體的效能和延展性檢查清單](storage-performance-checklist.md)
 - [標準儲存體帳戶的擴充性目標](../common/scalability-targets-standard-account.md)

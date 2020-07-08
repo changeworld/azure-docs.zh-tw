@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
 ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78673388"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>使用 Azure IoT SDK 針對 Android Things 平台進行開發
@@ -20,7 +19,7 @@ ms.locfileid: "78673388"
 
 本教學課程說明使用 Azure IoT Java SDK 在 Android Things 上建置裝置端應用程式的步驟。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 支援 Android Things 的硬體，且可執行 Android Things OS。  您可以依循 [Android Things 文件](https://developer.android.com/things/get-started/kits#flash-at)，以了解如何刷新 Android Things OS。  請確定您的 Android Things 裝置已連接必要週邊設備 (例如鍵盤、顯示器和滑鼠) 並已連線到網際網路。  本教學課程使用 Raspberry Pi 3。
 
@@ -49,7 +48,7 @@ ms.locfileid: "78673388"
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. 在 Azure Cloud Shell 中執行下列命令，以取得您剛註冊之裝置的*裝置連接字串*。 以`YourIoTHubName`您為 IoT 中樞選擇的名稱取代下列程式。
+2. 在 Azure Cloud Shell 中執行下列命令，以取得您剛註冊之裝置的*裝置連接字串*。 `YourIoTHubName`以您為 IoT 中樞選擇的名稱取代下列程式。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table

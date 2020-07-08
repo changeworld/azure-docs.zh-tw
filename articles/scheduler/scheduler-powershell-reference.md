@@ -9,20 +9,19 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78898490"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Azure 排程器 PowerShell Cmdlet 參考
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 將會取代[即將淘汰的 Azure 排程器](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
 >
-> 排程器已無法在 Azure 入口網站中使用，但[REST API](/rest/api/scheduler)和 Azure 排程器[PowerShell Cmdlet](scheduler-powershell-reference.md)目前仍可供使用，讓您可以管理您的作業和工作集合。
+> Azure 入口網站中已不再提供排程器，但目前仍然提供 [REST API](/rest/api/scheduler) 和 [Azure 排程器 PowerShell Cmdlets](scheduler-powershell-reference.md)，以便您管理作業和作業集合。
 
-若要撰寫用於建立及管理排程器作業與作業集合的指令碼，您可以使用 PowerShell Cmdlet。 此文章列出主要 Azure 排程器的 PowerShell Cmdlet，並提供其參考文章的連結。 若要為 Azure 訂用帳戶安裝 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。 如需 [Azure Resource Manager Cmdlet](/powershell/azure/overview) 的詳細資訊，請參閱[搭配使用 Azure PowerShell 與 Azure Resource Manager](../powershell-azure-resource-manager.md)。
+若要撰寫用於建立及管理排程器作業與作業集合的指令碼，您可以使用 PowerShell Cmdlet。 此文章列出主要 Azure 排程器的 PowerShell Cmdlet，並提供其參考文章的連結。 若要為 Azure 訂用帳戶安裝 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。 如需[Azure Resource Manager Cmdlet](/powershell/azure/overview)的詳細資訊，請參閱搭配[使用 Azure PowerShell 與 Azure Resource Manager](../powershell-azure-resource-manager.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

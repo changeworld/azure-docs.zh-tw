@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303693"
 ---
 # <a name="substring-azure-cosmos-db"></a>SUBSTRING （Azure Cosmos DB）
@@ -26,7 +25,7 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
 ## <a name="arguments"></a>引數
   
 *str_expr*  
-   這是字串運算式。
+   是字串運算式。
   
 *num_expr1*  
    這是用來表示起始字元的數值運算式。 值為0是*str_expr*的第一個字元。
@@ -54,7 +53,7 @@ SELECT SUBSTRING("abc", 1, 1) AS substring
 
 ## <a name="remarks"></a>備註
 
-如果開始位置是`0`，則這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
+如果開始位置是，則這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy) `0` 。
 
 ## <a name="next-steps"></a>後續步驟
 

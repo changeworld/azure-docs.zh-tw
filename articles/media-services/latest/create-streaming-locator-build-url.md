@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 2972c60aa5874c21a6f7bce21020ad58b5f3b556
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78304559"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>建立串流定位器並建置 URL
@@ -160,7 +159,7 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 
 請參閱完整的程式碼範例： [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [使用 .NET 建立篩選器](filters-dynamic-manifest-dotnet-howto.md)
 * [使用 REST 建立篩選器](filters-dynamic-manifest-rest-howto.md)

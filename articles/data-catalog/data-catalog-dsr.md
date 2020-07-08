@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78898154"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 資料目錄中支援的資料來源
@@ -26,7 +25,7 @@ ms.locfileid: "78898154"
        <td><b>手動輸入</b></td>
        <td><b>註冊工具</b></td>
        <td><b>開啟工具</b></td>
-       <td><b>附註</b></td>
+       <td><b>備註</b></td>
     </tr>
     <tr>
       <td>Azure Data Lake 存放區目錄（僅限 Gen 1）</td>
@@ -457,7 +456,7 @@ ms.locfileid: "78898154"
     <tr>
       <td>Azure Data Lake Store</td>
       <td>容器</td>
-      <td>資料湖</td>
+      <td>Data Lake</td>
       <td>
         
             Protocol: webhdfs

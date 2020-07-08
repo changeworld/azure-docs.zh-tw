@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a717f343b0f46522a3ce2bb56c32e3f15998d777
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303761"
 ---
 # <a name="is_string-azure-cosmos-db"></a>IS_STRING （Azure Cosmos DB）
@@ -34,7 +33,7 @@ IS_STRING(<expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例會使用`IS_STRING`函式，檢查 JSON 布林值的物件、數位、字串、null、物件、陣列以及未定義的類型。  
+  下列範例會使用函式，檢查 JSON 布林值的物件、數位、字串、null、物件、陣列以及未定義的類型 `IS_STRING` 。  
   
 ```sql
 SELECT   
@@ -55,7 +54,7 @@ SELECT
 
 ## <a name="remarks"></a>備註
 
-這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
+此系統函數將受益於[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ae1371a8f025fd5e5722d483323fbe937538eb15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78939214"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>使用媒體服務 v2 來執行容錯移轉串流
@@ -50,7 +49,7 @@ ms.locfileid: "78939214"
 * 儲存體加密資產 (AssetCreationOptions.StorageEncrypted) 不支援複寫 (因為兩個媒體服務帳戶中的加密金鑰不同)。 
 * 如果您想要利用動態封裝，請確定您想要從中串流內容的串流端點是處於 [執行中]**** 狀態。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 在新的或現有的 Azure 訂用帳戶中有兩個媒體服務帳戶。 請參閱 [如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 * 作業系統：Windows 7、Windows 2008 R2 或 Windows 8。
@@ -62,8 +61,8 @@ ms.locfileid: "78939214"
 在本節中，您會建立 C# Console Application 專案。
 
 1. 使用 Visual Studio 建立一個包含 C# Console Application 專案的新方案。 在 [名稱] 中輸入**handleredundancyforondemandstreaming 做**，然後按一下 **[確定]**。
-2. 在與**handleredundancyforondemandstreaming 做**專案檔相同的層級上建立**SupportFiles**資料夾。 在**SupportFiles**資料夾底下，建立**OutputFiles**和**MP4Files**資料夾。 將 .mp4 檔案複製到 **MP4Files** 資料夾  （在此範例中，會使用**ignite。** ） 
-3. 使用**NuGet**將參考新增至與媒體服務相關的 dll。 在**Visual Studio 主功能表**中，選取 [**工具** > ] [**NuGet 套件管理員** > ] [**套件管理員主控台**]。 在主控台視窗中，輸入**Install-Package windowsazure.storage. windowsazure.mediaservices.extensions**，然後按 enter。
+2. 在與**handleredundancyforondemandstreaming 做**專案檔相同的層級上建立**SupportFiles**資料夾。 在**SupportFiles**資料夾底下，建立**OutputFiles**和**MP4Files**資料夾。 將 .mp4 檔案複製到 **MP4Files** 資料夾  （在此範例中，會使用**ignite.mp4**檔案）。 
+3. 使用**NuGet**將參考新增至與媒體服務相關的 dll。 在**Visual Studio 主功能表**中，選取 [**工具**] [  >  **NuGet 套件管理員**] [  >  **套件管理員主控台**]。 在主控台視窗中，輸入**Install-Package windowsazure.storage. windowsazure.mediaservices.extensions**，然後按 enter。
 4. 新增此專案所需的其他參考： System.object、序列化和 System.web。
 5. 以下列方式取代預設新增至**Programs.cs**檔案的**using**語句：
 
@@ -752,7 +751,7 @@ using System.Runtime.Serialization.Json;
 
 如需內容保護的詳細資訊，請參閱[使用 AES-128 動態加密和金鑰傳遞服務](media-services-protect-with-aes128.md)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [使用 Azure Webhook 來監視媒體服務作業通知](media-services-dotnet-check-job-progress-with-webhooks.md)
 
