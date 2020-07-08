@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204977"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse 分析（先前為 SQL DW）容量限制
 
@@ -30,8 +30,8 @@ Azure Synapse 的各種元件所允許的最大值。
 | [資料倉儲單位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每一部伺服器的預設 DTU |54,000<br></br>根據預設，每個 SQL server （例如 myserver.database.windows.net）的 DTU 配額為54000，最多可達 DW5000c。 此配額僅是安全限制。 您可以藉由[建立支援票證](sql-data-warehouse-get-started-create-support-ticket.md)，並選取 [*配額*] 做為要求類型來增加配額。  若要計算 DTU 需求，請將7.5 乘以所需的總 DWU，或將9.5 乘以所需的總 cDWU。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW5000c x 9.5 = 47500 Dtu。<br></br>您可以在入口網站的 [SQL Server] 選項中檢視目前的 DTU 耗用量。 已暫停和未暫停的資料庫都會計入 DTU 配額。 |
 | 資料庫連接 |並行開啟的會話數上限 |1024<br/><br/>並行開啟的會話數目會根據選取的 DWU 而有所不同。 DWU600c 和更新版本支援最多1024個開啟的會話。 DWU500c 和以下支援最大並行開啟會話限制512。 請注意，可同時執行的查詢數目有所限制。 超過並行存取限制時，要求會進入內部佇列以等待處理。 |
 | 資料庫連接 |準備陳述式的最大記憶體 |20 MB |
-| [工作負載管理](resource-classes-for-workload-management.md) |並行查詢數目上限 |128<br/><br/>  最多會執行128個並行查詢，而且剩餘的查詢將會排入佇列。<br/><br/>將使用者指派給較高的資源類別，或當[資料倉儲單位](memory-concurrency-limits.md)設定降低時，並行查詢的數目可能會降低。 系統總是會允許某些查詢 (例如 DMV 查詢) 執行，而不影響並行查詢限制。 如需並行查詢執行的詳細資訊，請參閱[並行最大值](memory-concurrency-limits.md)一文。 |
-| [tempdb](sql-data-warehouse-tables-temporary.md) |GB 上限 |每個 DW100c 399 GB。 因此，在 DWU1000c，tempdb 的大小會調整為 3.99 TB。 |
+| [工作負載管理](resource-classes-for-workload-management.md) |並行查詢數目上限 |128<br/><br/>  最多會執行128個並行查詢，而且剩餘的查詢將會排入佇列。<br/><br/>將使用者指派給較高的資源類別，或當[資料倉儲單位](memory-concurrency-limits.md)設定降低時，並行查詢的數目可能會降低。 系統總是會允許某些查詢 (例如 DMV 查詢) 執行，而不影響並行查詢限制。 如需並行查詢執行的詳細資訊，請參閱[並行](memory-concurrency-limits.md)最大的一文。 |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |GB 上限 |每個 DW100c 399 GB。 在 DWU1000c，tempdb 的大小會調整為 3.99 TB。 |
 ||||
 
 ## <a name="database-objects"></a>資料庫物件
@@ -39,13 +39,13 @@ Azure Synapse 的各種元件所允許的最大值。
 | 類別 | 描述 | 最大值 |
 |:--- |:--- |:--- |
 | 資料庫 |大小上限 | Gen1：在磁碟上壓縮後 240 TB。 此空間與 tempdb 或記錄檔空間無關，因此此空間為供永久資料表專用。  叢集資料行存放區壓縮估計為 5 X。  當所有資料表都是叢集資料行存放區 (預設的資料表類型) 時，這個壓縮可讓資料庫成長約 1 PB。 <br/><br/> Gen2：資料行存放區資料表的無限制儲存。  資料庫的 Rowstore 部分仍然限制在磁片上壓縮的 240 TB。 |
-| Table |大小上限 |資料行存放區資料表的大小不限。 <br>60 TB，適用于在磁片上壓縮的 rowstore 資料表。 |
-| Table |每個資料庫的資料表數 | 100,000 |
-| Table |資料表的資料行數 |1024 個資料行 |
-| Table |每個資料行的位元組 |相依於資料行[資料類型](sql-data-warehouse-tables-data-types.md)。 char 資料類型的限制為 8000、nvarchar 為 4000 或 MAX 資料類型為 2 GB。 |
-| Table |每個資料列的位元組，已定義的大小 |8060 個位元組<br/><br/>每個資料列的位元組數目計算方式和使用頁面壓縮的 SQL Server 所使用的方式相同。 如同 SQL Server，支援資料列溢位儲存體，可讓**可變長度**資料行以非資料列的方式推送。 可變長度的資料列會發送至超出資料列，只有 24 位元組的根會儲存在主要記錄中。 如需詳細資訊，請參閱[超過 8-KB 的資料列溢位資料](https://msdn.microsoft.com/library/ms186981.aspx)。 |
-| Table |每個資料表的資料分割 |15,000<br/><br/>為了獲得高效能，建議在仍能支援業務需求的情況下，將您需要的資料分割數目降至最低。 隨著資料分割數目增加，資料定義語言 (DDL) 和資料操作語言 (DML) 作業的負荷會加重，導致效能變慢。 |
-| Table |每個資料分割界限值的字元。 |4000 |
+| 資料表 |大小上限 |資料行存放區資料表的大小不限。 <br>60 TB，適用于在磁片上壓縮的 rowstore 資料表。 |
+| 資料表 |每個資料庫的資料表數 | 100,000 |
+| 資料表 |資料表的資料行數 |1024 個資料行 |
+| 資料表 |每個資料行的位元組 |相依於資料行[資料類型](sql-data-warehouse-tables-data-types.md)。 char 資料類型的限制為 8000、nvarchar 為 4000 或 MAX 資料類型為 2 GB。 |
+| 資料表 |每個資料列的位元組，已定義的大小 |8060 個位元組<br/><br/>每個資料列的位元組數目計算方式和使用頁面壓縮的 SQL Server 所使用的方式相同。 如同 SQL Server，支援資料列溢位儲存體，可讓**可變長度**資料行以非資料列的方式推送。 可變長度的資料列會發送至超出資料列，只有 24 位元組的根會儲存在主要記錄中。 如需詳細資訊，請參閱[超過 8 KB 的資料列溢位資料](https://msdn.microsoft.com/library/ms186981.aspx)。 |
+| 資料表 |每個資料表的資料分割 |15,000<br/><br/>為了獲得高效能，建議在仍能支援業務需求的情況下，將您需要的資料分割數目降至最低。 隨著資料分割數目增加，資料定義語言 (DDL) 和資料操作語言 (DML) 作業的負荷會加重，導致效能變慢。 |
+| 資料表 |每個資料分割界限值的字元。 |4000 |
 | 索引 |每個資料表的非叢集索引。 |50<br/><br/>僅適用於資料列存放區資料表。 |
 | 索引 |每個資料表的叢集索引。 |1<br><br/>適用於資料列存放區資料表和資料行存放區資料表。 |
 | 索引 |索引鍵的大小。 |900 個位元組。<br/><br/>僅適用於資料列存放區索引。<br/><br/>建立索引時，如果資料行中的現有資料沒有超過 900 個位元組，就可以在 varchar 資料行上建立大小上限超過 900 個位元組的索引。 不過，後續在資料行上執行 INSERT 或 UPDATE 動作時，如果總計大小超過 900 個位元組，將會失敗。 |

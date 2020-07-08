@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c964a7bde0b7db9357c73fc79d2df3170075fcc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29eddbcfb7c0da98e5438f968dd3976b77a44680
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186381"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203090"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -23,7 +23,7 @@ ms.locfileid: "78186381"
 
 自訂原則以一或多個 XML 格式的檔案表示，各檔案在階層鏈中彼此參考。 XML 元素會定義原則的元素，例如宣告結構描述、宣告轉換、內容定義、宣告提供者、技術設定檔、使用者旅程圖，和協調流程步驟。 每個原則檔定義在原則檔之 **TrustFrameworkPolicy** 元素的最上層。
 
-```XML
+```xml
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
@@ -38,15 +38,15 @@ ms.locfileid: "78186381"
 
 **TrustFrameworkPolicy** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | 是 | 用來執行此原則的結構描述版本。 值必須是 `0.3.0.0` |
-| TenantObjectId | 否 | Azure Active Directory B2C （Azure AD B2C）租使用者的唯一物件識別碼。 |
-| TenantId | 是 | 此原則所屬之租用戶的唯一識別碼。 |
-| PolicyId | 是 | 原則的唯一識別碼。 此識別碼必須加上前置詞 *B2C_1A_* |
-| PublicPolicyUri | 是 | 原則的 URI，也就是租用戶識別碼和原則識別碼的組合。 |
-| DeploymentMode | 否 | 可能的值`Production`：、 `Development`或。 `Production` 為預設值。 使用此屬性以偵錯您的原則。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
-| UserJourneyRecorderEndpoint | 否 | 當 **DeploymentMode** 設為 `Development` 時，可使用端點。 值必須是 `urn:journeyrecorder:applicationinsights`。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
+| PolicySchemaVersion | Yes | 用來執行此原則的結構描述版本。 值必須是 `0.3.0.0` |
+| TenantObjectId | No | Azure Active Directory B2C （Azure AD B2C）租使用者的唯一物件識別碼。 |
+| TenantId | Yes | 此原則所屬之租用戶的唯一識別碼。 |
+| PolicyId | Yes | 原則的唯一識別碼。 此識別碼必須加上前置詞 *B2C_1A_* |
+| PublicPolicyUri | Yes | 原則的 URI，也就是租用戶識別碼和原則識別碼的組合。 |
+| DeploymentMode | No | 可能的值： `Production` 、或 `Development` 。 `Production` 是預設值。 使用此屬性以偵錯您的原則。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
+| UserJourneyRecorderEndpoint | No | 當 **DeploymentMode** 設為 `Development` 時，可使用端點。 值必須是 `urn:journeyrecorder:applicationinsights`。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
 
 
 下列範例顯示如何指定 **TrustFrameworkPolicy** 元素：
@@ -88,7 +88,7 @@ ms.locfileid: "78186381"
 
 **BasePolicy** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C 租用戶的識別碼。 |
 | PolicyId | 1:1 | 父代原則的識別碼。 |
@@ -122,7 +122,7 @@ ms.locfileid: "78186381"
 
 B2C_1A_signup_signin 原則：
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn">
   ...
@@ -130,7 +130,7 @@ B2C_1A_signup_signin 原則：
 
 B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 
-```XML
+```xml
 <UserJourneys>
   <UserJourney Id="SignUpOrSignIn">
   ...

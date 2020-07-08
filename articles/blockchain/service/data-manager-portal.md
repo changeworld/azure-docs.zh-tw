@@ -2,14 +2,14 @@
 title: 使用 Azure 入口網站設定區塊鏈資料管理員-Azure 區塊鏈 Service
 description: 使用 Azure 入口網站建立和管理 Azure 區塊鏈服務的區塊鏈資料管理員。
 ms.date: 03/30/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260593"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200676"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>使用 Azure 入口網站設定區塊鏈資料管理員
 
@@ -20,7 +20,7 @@ ms.locfileid: "81260593"
 * 建立 Azure 區塊鏈 Service 交易節點的區塊鏈資料管理員實例
 * 新增您的區塊鏈應用程式
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 完成[快速入門：使用 Azure 入口網站或快速入門建立區塊鏈成員](create-member.md) [：使用 Azure CLI 建立 Azure 區塊鏈 Service 區塊鏈成員](create-member-cli.md)。 使用區塊鏈資料管理員時，建議您使用 Azure 區塊鏈 Service*標準*層。
 * 建立[事件方格主題](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
@@ -34,7 +34,7 @@ ms.locfileid: "81260593"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 移至您想要連接到區塊鏈資料管理員的 Azure 區塊鏈服務成員。 選取 [區塊鏈資料管理員]****。
-1. 選取 [新增]  。
+1. 選取 [新增]。
 
     ![新增區塊鏈資料管理員](./media/data-manager-portal/add-instance.png)
 
@@ -42,12 +42,12 @@ ms.locfileid: "81260593"
 
     設定 | 描述
     --------|------------
-    名稱 | 為已連線的區塊鏈資料管理員輸入唯一名稱。 區塊鏈資料管理員名稱可包含小寫字母和數位，最大長度為20個字元。
+    Name | 為已連線的區塊鏈資料管理員輸入唯一名稱。 區塊鏈資料管理員名稱可包含小寫字母和數位，最大長度為20個字元。
     交易節點 | 選擇交易節點。 只會列出您擁有讀取權限的交易節點。
     連接名稱 | 為用來傳送區塊鏈交易資料的輸出連線輸入唯一名稱。
     事件方格端點 | 在與區塊鏈資料管理員實例相同的訂用帳戶中，選擇事件方格主題。
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
     區塊鏈資料管理員執行個體不到一分鐘即可建立。 執行個體在部署後將會自動啟動。 執行中的區塊鏈資料管理員實例會從交易節點中捕捉區塊鏈事件，並將資料傳送至輸出連線。
 
@@ -108,18 +108,18 @@ ms.locfileid: "81260593"
 
     ![建立儲存體帳戶容器](./media/data-manager-portal/create-container.png)
 
-    | 欄位 | 描述 |
+    | 欄位 | 說明 |
     |-------|-------------|
-    | 名稱  | 為容器命名。 例如 *smartcontract* |
+    | Name  | 為容器命名。 例如 *smartcontract* |
     | 公用存取層級 | 選擇 [私人 (沒有匿名存取)]** |
 
-1. 選取 [確定]  以建立容器。
+1. 選取 [確定] 以建立容器。
 1. 選取容器，然後選取 [上傳]****。
 1. 選擇您在[取得合約 ABI 和位元組程式碼](#get-contract-abi-and-bytecode)一節中所建立的兩個 JSON 檔案。
 
     ![上傳 Blob](./media/data-manager-portal/upload-blobs.png)
 
-    選取 [上傳]****。
+    選取 [上傳] 。
 
 #### <a name="generate-url"></a>產生 URL
 
@@ -138,19 +138,19 @@ ms.locfileid: "81260593"
 
 1. 從執行個體清單中，選取您的區塊鏈資料管理員執行個體。
 1. 選取 [區塊鏈應用程式]****。
-1. 選取 [新增]  。
+1. 選取 [新增]。
 
     ![新增區塊鏈應用程式](./media/data-manager-portal/add-application.png)
 
     輸入區塊鏈應用程式的名稱，以及智慧型合約 ABI 和位元組程式碼 URL。
 
-    設定 | 描述
+    設定 | 說明
     --------|------------
-    名稱 | 輸入要追蹤的區塊鏈應用程式的唯一名稱。
+    Name | 輸入要追蹤的區塊鏈應用程式的唯一名稱。
     合約 ABI | 合約 ABI 檔案的 URL 路徑。 如需詳細資訊，請參閱[建立合約 ABI 和位元組程式碼 URL](#create-contract-abi-and-bytecode-url)。
     合約位元組程式碼 | 位元組程式碼檔案的 URL 路徑。 如需詳細資訊，請參閱[建立合約 ABI 和位元組程式碼 URL](#create-contract-abi-and-bytecode-url)。
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
     應用程式建立後，應用程式會出現在區塊鏈應用程式清單中。
 

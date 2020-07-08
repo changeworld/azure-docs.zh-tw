@@ -4,12 +4,12 @@ description: 提供疑難排解指導方針，以協助您診斷 Azure 備份效
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: c229bd836029226a1e042de9bfe706654f97dc26
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: d65eca685748499f52a990c7ac588bf44cbbba31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658921"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194020"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>疑難排解 Azure 備份的檔案和資料夾備份速度緩慢問題
 
@@ -96,7 +96,7 @@ Windows 提供了稱為 [效能監視器](https://techcommunity.microsoft.com/t5
 * **UI 正在顯示資料傳輸的進度**。 資料仍在傳輸中。 網路頻寬或資料大小可能會造成延遲。
 * **UI 未顯示資料傳輸的進度**。 請開啟位於 C:\Program Files\Microsoft Azure 復原服務代理程式\Temp 的記錄，然後查看記錄中是否有 FileProvider::EndData 項目。 此項目表示資料傳輸完成，且目錄作業正在進行中。 請勿取消備份工作。 請稍微多等待一些時間讓目錄作業完成。 若問題持續發生，請連絡 [Azure 支援](https://portal.azure.com/#create/Microsoft.Support)。
 
-如果您嘗試備份大型磁碟，建議使用 [Azure 資料箱](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box) 進行第一次備份 (初始複寫)。  如果您無法使用資料箱，則在透過網路進行長時間資料傳輸期間，環境中發生的任何暫時性網路問題都會導致備份失敗。  若要避免這些失敗，您可以將幾個資料夾新增至初始備份，並持續以增量方式新增更多資料夾，直到所有資料夾都成功備份至 Azure 為止。  後續的增量備份將會相對較快。
+如果您嘗試備份大型磁片，建議您在第一次備份時使用[Azure 資料箱](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box)（初始複寫）。  如果您無法使用資料箱，則在透過網路進行長時間資料傳輸期間，環境中發生的任何暫時性網路問題都會導致備份失敗。  若要避免這些失敗，您可以將幾個資料夾新增至初始備份，並持續以增量方式新增更多資料夾，直到所有資料夾都成功備份至 Azure 為止。  後續的增量備份將會相對較快。
 
 ## <a name="next-steps"></a>後續步驟
 

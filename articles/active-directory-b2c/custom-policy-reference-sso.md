@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4aa9f4839c8bfc04cee4bb03ea0eac98cb8b25c0
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926114"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202563"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的單一登入工作階段管理
 
@@ -26,9 +26,9 @@ ms.locfileid: "82926114"
 
 Azure AD B2C 已定義許多可使用的 SSO 工作階段提供者：
 
-|會話提供者  |範圍  |
+|會話提供者  |影響範圍  |
 |---------|---------|
-|[NoopSSOSessionProvider](#noopssosessionprovider)     |  無       |       
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  None       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C 內部會話管理員。      |       
 |[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C 和 OAuth1、OAuth2 或 OpenId Connect 識別提供者之間。        |         |
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | 在 OAuth2 或 OpenId connect 信賴憑證者應用程式和 Azure AD B2C 之間。        |        
@@ -41,7 +41,7 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 ## <a name="input-claims"></a>輸入宣告
 
-元素`InputClaims`是空的或不存在。
+`InputClaims`元素是空的或不存在。
 
 ## <a name="persisted-claims"></a>保存的宣告
 
@@ -55,9 +55,9 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-顧名思議，此提供者不會執行任何作業。 此提供者可以用於隱藏特定技術設定檔的 SSO 行為。 下列`SM-Noop`技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。
+顧名思議，此提供者不會執行任何作業。 此提供者可以用於隱藏特定技術設定檔的 SSO 行為。 下列 `SM-Noop` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Noop">
   <DisplayName>Noop Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.NoopSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -66,9 +66,9 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-此提供者可以用於儲存工作階段中的宣告。 此提供者通常會在用來管理本機和同盟帳戶的技術設定檔中參考。 下列`SM-AAD`技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。
+此提供者可以用於儲存工作階段中的宣告。 此提供者通常會在用來管理本機和同盟帳戶的技術設定檔中參考。 下列 `SM-AAD` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。
 
-```XML
+```xml
 <TechnicalProfile Id="SM-AAD">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -87,9 +87,9 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 ```
 
 
-下列`SM-MFA`技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`中。 此技術設定檔會管理多因素驗證會話。
+下列 `SM-MFA` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中 `SocialAndLocalAccountsWithMfa` 。 此技術設定檔會管理多因素驗證會話。
 
-```XML
+```xml
 <TechnicalProfile Id="SM-MFA">
   <DisplayName>Session Mananagement Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -104,9 +104,9 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-此提供者是用來隱藏 [選擇識別提供者] 畫面，以及從同盟識別提供者登出。 通常會在為同盟識別提供者（例如 Facebook）或 Azure Active Directory 設定的技術設定檔中參考它。 下列`SM-SocialLogin`技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。
+此提供者是用來隱藏 [選擇識別提供者] 畫面，以及從同盟識別提供者登出。 通常會在為同盟識別提供者（例如 Facebook）或 Azure Active Directory 設定的技術設定檔中參考它。 下列 `SM-SocialLogin` 技術設定檔包含在[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)中。
 
-```XML
+```xml
 <TechnicalProfile Id="SM-SocialLogin">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -121,9 +121,9 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述|
+| 屬性 | 必要 | 說明|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | 否 | 目前未使用，可以忽略。 |
+| AlwaysFetchClaimsFromProvider | No | 目前未使用，可以忽略。 |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -138,9 +138,9 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-此提供者是用來管理信賴憑證者應用程式或同盟 SAML 識別提供者之間的 Azure AD B2C SAML 會話。 使用 SSO 提供者來儲存 SAML 識別提供者會話時， `RegisterServiceProviders`必須將設定為。 `false` 下列`SM-Saml-idp`技術設定檔是由[SAML 識別提供者技術設定檔](saml-identity-provider-technical-profile.md)所使用。
+此提供者是用來管理信賴憑證者應用程式或同盟 SAML 識別提供者之間的 Azure AD B2C SAML 會話。 使用 SSO 提供者來儲存 SAML 識別提供者會話時， `RegisterServiceProviders` 必須將設定為 `false` 。 下列 `SM-Saml-idp` 技術設定檔是由[SAML 識別提供者技術設定檔](saml-identity-provider-technical-profile.md)所使用。
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -150,11 +150,11 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 </TechnicalProfile>
 ```
 
-使用提供者來儲存 B2C SAML 會話時， `RegisterServiceProviders`必須將設定為。 `true` SAML 工作階段登出需要 `SessionIndex` 和 `NameID` 才能完成。
+使用提供者來儲存 B2C SAML 會話時， `RegisterServiceProviders` 必須將設定為 `true` 。 SAML 工作階段登出需要 `SessionIndex` 和 `NameID` 才能完成。
 
 `SM-Saml-issuer` [SAML 簽發者技術設定檔](saml-issuer-technical-profile.md)會使用下列技術設定檔
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-issuer">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
@@ -163,10 +163,10 @@ SSO 管理類別是使用技術設定檔的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述|
+| 屬性 | 必要 | 說明|
 | --- | --- | --- |
-| IncludeSessionIndex | 否 | 目前未使用，可以忽略。|
-| RegisterServiceProviders | 否 | 指出提供者應該註冊所有已發行判斷提示的 SAML 服務提供者。 可能的值：`true` (預設) 或 `false`。|
+| IncludeSessionIndex | No | 目前未使用，可以忽略。|
+| RegisterServiceProviders | No | 指出提供者應該註冊所有已發行判斷提示的 SAML 服務提供者。 可能的值：`true` (預設) 或 `false`。|
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c2291d4d2eca2abd11ef9c0f18f3fda52424ab93
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: d22d0da692516c89f6dd5ca7377ec83d7c430280
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203430"
 ---
 # <a name="string-claims-transformations"></a>字串宣告轉換
 
@@ -41,7 +41,7 @@ ms.locfileid: "83739068"
 
 您可以使用此宣告轉換來確定兩個 ClaimTypes 具有相同的值。 如果沒有，則會擲回錯誤訊息。 下列範例會檢查 **strongAuthenticationEmailAddress** ClaimType 等於 **email** ClaimType。 否則會擲回錯誤訊息。
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="strongAuthenticationEmailAddress" TransformationClaimType="inputClaim1" />
@@ -55,7 +55,7 @@ ms.locfileid: "83739068"
 
 
 **login-NonInteractive** 驗證技術設定檔會呼叫 **AssertEmailAndStrongAuthenticationEmailAddressAreEqual** 宣告轉換。
-```XML
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -66,7 +66,7 @@ ms.locfileid: "83739068"
 
 自我判斷技術設定檔會呼叫驗證 **login-NonInteractive** 技術設定檔。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationStringsAreNotEqual">Custom error message the email addresses you provided are not the same.</Item>
@@ -98,7 +98,7 @@ ms.locfileid: "83739068"
 
 使用此宣告轉換來將任何字串 ClaimType 變更為小寫或大寫字母。
 
-```XML
+```xml
 <ClaimsTransformation Id="ChangeToLower" TransformationMethod="ChangeCase">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim1" />
@@ -132,7 +132,7 @@ ms.locfileid: "83739068"
 
 使用此宣告轉換來設定字串 ClaimType 值。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateTermsOfService" TransformationMethod="CreateStringClaim">
   <InputParameters>
     <InputParameter Id="value" DataType="string" Value="Contoso terms of service..." />
@@ -164,7 +164,7 @@ ms.locfileid: "83739068"
 
 使用此宣告轉換來檢查某個宣告是否等於另一個宣告。 例如，下列宣告轉換會檢查 **email** 宣告的值是否等於 **Verified.Email** 宣告。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckEmail" TransformationMethod="CompareClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="Email" TransformationClaimType="inputClaim1" />
@@ -205,7 +205,7 @@ ms.locfileid: "83739068"
 
 您可以使用此宣告轉換來檢查某個宣告是否等於您指定的值。 例如，下列宣告轉換會檢查 **termsOfUseConsentVersion** 宣告的值是否等於 `v1`。
 
-```XML
+```xml
 <ClaimsTransformation Id="IsTermsOfUseConsentRequiredForVersion" TransformationMethod="CompareClaimToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="termsOfUseConsentVersion" TransformationClaimType="inputClaim1" />
@@ -246,7 +246,7 @@ ms.locfileid: "83739068"
 
 下列範例會產生全域唯一識別碼。 此宣告轉換可用來建立隨機的 UPN (使用者主體名稱)。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateRandomUPNUserName" TransformationMethod="CreateRandomString">
   <InputParameters>
     <InputParameter Id="randomGeneratorType" DataType="string" Value="GUID" />
@@ -265,7 +265,7 @@ ms.locfileid: "83739068"
 
 下列範例會產生介於 0 到 1000 之間的整數隨機值。 此值會格式化為 OTP_{隨機值}。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetRandomNumber" TransformationMethod="CreateRandomString">
   <InputParameters>
     <InputParameter Id="randomGeneratorType" DataType="string" Value="INTEGER" />
@@ -302,7 +302,7 @@ ms.locfileid: "83739068"
 
 使用此宣告轉換，利用一個參數 {0} 來將任何字串格式化。 下列範例會建立 **userPrincipalName**。 所有社交識別提供者技術設定檔 (例如 `Facebook-OAUTH`) 會呼叫 **CreateUserPrincipalName** 來產生 **userPrincipalName**。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="upnUserName" TransformationClaimType="inputClaim" />
@@ -338,7 +338,7 @@ ms.locfileid: "83739068"
 
 使用此宣告轉換，利用兩個參數 ({0} 和 {1}) 來將任何字串格式化。 下列範例會使用指定的格式來建立 **displayName**：
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateDisplayNameFromFirstNameAndLastName" TransformationMethod="FormatStringMultipleClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="inputClaim1" />
@@ -385,7 +385,7 @@ ms.locfileid: "83739068"
 
 定義英文 (預設) 和西班牙文的當地語系化字串。
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
     <SupportedLanguage>en</SupportedLanguage>
@@ -413,7 +413,7 @@ ms.locfileid: "83739068"
 
 宣告轉換會將宣告類型 *subject* 的值，設定為 `StringId` *email_subject* 的值。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
@@ -444,7 +444,7 @@ ms.locfileid: "83739068"
 
 下列範例會根據錯誤索引鍵查詢錯誤訊息說明。 **ResponseMsg** 宣告會包含要呈現給使用者或傳送到信賴憑證者的錯誤訊息集合。
 
-```XML
+```xml
 <ClaimType Id="responseMsg">
   <DisplayName>Error message: </DisplayName>
   <DataType>string</DataType>
@@ -458,7 +458,7 @@ ms.locfileid: "83739068"
 ```
 宣告轉換會查詢項目的文字並傳回其值。 如果限制會使用 `<LocalizedCollection>` 進行當地語系化，則宣告轉換會傳回當地語系化的值。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetResponseMsgMappedToResponseCode" TransformationMethod="GetMappedValueFromLocalizedCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
@@ -489,7 +489,7 @@ ms.locfileid: "83739068"
 
 下列範例會查詢其中一個 inpuParameters 集合中的網域名稱。 宣告轉換會查詢識別項中的網域名稱，並傳回其值 (應用程式識別碼)。
 
-```XML
+```xml
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
@@ -524,7 +524,7 @@ ms.locfileid: "83739068"
 
 下列範例會查詢其中一個 inpuParameters 集合中的網域名稱。 宣告轉換會查詢識別項中的網域名稱，並傳回其值 (應用程式識別碼)，或顯示錯誤訊息。
 
-```XML
+```xml
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
@@ -564,7 +564,7 @@ ms.locfileid: "83739068"
 
 使用此宣告轉換將不必要的資料從宣告屬性包中移除，因此工作階段 Cookie 將變小。 下列範例會移除 `TermsOfService` 宣告類型的值。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
   <OutputClaims>
   <OutputClaim ClaimTypeReferenceId="TermsOfService" TransformationClaimType="claim_to_null" />
@@ -588,7 +588,7 @@ ms.locfileid: "83739068"
 
 使用此宣告轉換來剖析使用者 @ 符號之後的網域名稱。 下列宣告轉換示範如何從 **email** 宣告中剖析網域名稱。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="emailAddress" />
@@ -624,7 +624,7 @@ ms.locfileid: "83739068"
 
 根據電話號碼的規則運算式模式，檢查提供的電話號碼是否有效。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
@@ -653,7 +653,7 @@ ms.locfileid: "83739068"
 
 檢查提供的電子郵件地址是否有效，並傳回電子郵件別名。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
@@ -699,7 +699,7 @@ ms.locfileid: "83739068"
 
 您可以使用此宣告轉換來檢查某個宣告是否等於您指定的值。 例如，下列宣告轉換會檢查 **termsOfUseConsentVersion** 宣告的值是否等於 `v1`。 如果是，將值變更為 `v2`。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="termsOfUseConsentVersion" TransformationClaimType="inputClaim" />
@@ -746,7 +746,7 @@ ms.locfileid: "83739068"
 
 例如，下列宣告轉換會檢查 **ageGroup** 宣告的值是否等於 `Minor`。 如果是，會將值傳回到 `B2C_V1_90001`。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="ageGroup" TransformationClaimType="claimToMatch" />
@@ -789,7 +789,7 @@ ms.locfileid: "83739068"
 
 使用此宣告轉換來檢查某個字串宣告類型是否包含子字串。 下列範例會檢查 `roles` 字串宣告類型是否包含 **admin** 的值。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
@@ -828,7 +828,7 @@ ms.locfileid: "83739068"
 例如，取得電話號碼的國家/地區首碼。
 
 
-```XML
+```xml
 <ClaimsTransformation Id="GetPhonePrefix" TransformationMethod="StringSubstring">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
@@ -866,7 +866,7 @@ ms.locfileid: "83739068"
 例如，藉由移除 `-` 字元來將電話號碼標準化
 
 
-```XML
+```xml
 <ClaimsTransformation Id="NormalizePhoneNumber" TransformationMethod="StringReplace">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
@@ -902,7 +902,7 @@ ms.locfileid: "83739068"
 
 下列範例會採用使用者角色的字串集合，並將它轉換成逗號分隔符號字串。 您可以使用這個方法將字串集合儲存在 Azure AD 使用者帳戶中。 之後，當您從目錄讀取帳戶時，請使用 `StringSplit` 將逗號分隔符號字串轉換回字串集合。
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">
   <InputClaims>
    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim" />
@@ -938,7 +938,7 @@ ms.locfileid: "83739068"
 
 下列範例會採用使用者角色的逗號分隔符號字串，並將該字串轉換成字串集合。
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="rolesCommaDelimiter" TransformationClaimType="inputClaim" />

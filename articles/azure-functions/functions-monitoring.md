@@ -4,12 +4,13 @@ description: 了解如何使用 Azure Application Insights 搭配 Azure Function
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 2aaf52a528f929f183c9bf4565d9f0da4918f146
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 578e1580bdaafb1b309a7af44353602cc31cb5a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757750"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207002"
 ---
 # <a name="monitor-azure-functions"></a>監視 Azure Functions
 
@@ -245,7 +246,7 @@ v2.x 版和更新版本的 Functions 執行階段會使用 [.NET Core 記錄篩�
 
 ## <a name="configure-sampling"></a>設定取樣
 
-Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，可以提供保護，以避免在尖峰負載期間完成的執行中產生過多的遙測資料。 當傳入執行速率超過指定的閾值時，Application Insights 就會開始隨機忽略某些傳入執行。 每秒執行次數上限的預設值為 20 (在 1.x 版中為五)。 您可以在 [host.json] 中設定取樣。  以下是範例：
+Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，可以提供保護，以避免在尖峰負載期間完成的執行中產生過多的遙測資料。 當傳入執行速率超過指定的閾值時，Application Insights 就會開始隨機忽略某些傳入執行。 每秒執行次數上限的預設值為 20 (在 1.x 版中為五)。 您可以在 [host.json](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights) 中設定取樣。  以下是範例：
 
 ### <a name="version-2x-and-later"></a>2\.x 版和更新版本
 
@@ -255,12 +256,15 @@ Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，�
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "maxTelemetryItemsPerSecond" : 20
+        "maxTelemetryItemsPerSecond" : 20,
+        "excludedTypes": "Request"
       }
     }
   }
 }
 ```
+
+在2.x 版中，您可以從取樣中排除特定類型的遙測。 在上述範例中， `Request` 會從取樣中排除類型的資料。 這可確保記錄*所有*的函式執行（要求），而其他類型的遙測仍會受到取樣。
 
 ### <a name="version-1x"></a>1\.x 版 
 
@@ -313,7 +317,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 
 ```json
 {
-  customDimensions: {
+  "customDimensions": {
     "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
     "Category":"Function",
     "LogLevel":"Information",
@@ -683,6 +687,28 @@ Get-AzSubscription
 Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
+
+## <a name="scale-controller-logs"></a>調整控制器記錄
+
+[Azure Functions 縮放控制器](./functions-scale.md#runtime-scaling)會監視執行應用程式的函式主機實例，並決定何時加入或移除函式主控制項實例。 如果您需要瞭解調整控制器在應用程式中進行的決策，您可以將它設定為將記錄發出至 Application Insights 或 Blob 儲存體。
+
+> [!WARNING]
+> 這項功能處於預覽狀態。 我們不建議您讓這項功能無限期地啟用，而且您應該改為在需要所收集的資訊時加以啟用，然後再加以停用。
+
+若要啟用這項功能，請新增名為的應用程式設定 `SCALE_CONTROLLER_LOGGING_ENABLED` 。 此設定的值必須是格式 `{Destination}:{Verbosity}` ，其中：
+* `{Destination}`指定要傳送到之記錄的目的地，而且必須是 `AppInsights` 或 `Blob` 。
+* `{Verbosity}`指定您想要的記錄層級，而且必須是 `None` 、 `Warning` 或其中之一 `Verbose` 。
+
+例如，若要將詳細資訊從縮放控制器記錄到 Application Insights，請使用值 `AppInsights:Verbose` 。
+
+> [!NOTE]
+> 如果您啟用 `AppInsights` 目的地類型，您必須確定您已設定[函數應用程式的 Application Insights](#enable-application-insights-integration)。
+
+如果您將目的地設為 `Blob` ，則會在 `azure-functions-scale-controller` 應用程式設定中設定的儲存體帳戶中，建立名為的 blob 容器中的記錄 `AzureWebJobsStorage` 。
+
+如果您將詳細資訊設定為 `Verbose` ，調整控制器會記錄背景工作計數中每項變更的原因，以及參與調整控制器決策之觸發程式的相關資訊。 例如，記錄會包含觸發程式警告，以及在縮放控制器執行之前和之後的觸發程式所使用的雜湊。
+
+若要停用縮放控制器記錄，請將的值設定 `{Verbosity}` 為， `None` 或移除 `SCALE_CONTROLLER_LOGGING_ENABLED` 應用程式設定。
 
 ## <a name="disable-built-in-logging"></a>停用內建記錄
 

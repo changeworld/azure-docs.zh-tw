@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 部署 Azure IoT Edge 工作負載
 keywords: Kubernetes、Arc、Azure、K8s、容器
-ms.openlocfilehash: d82c93783d80060bc3443131191b7cec32dc4878
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 2a688a221b2f4865d51bca2ebf4aaa0b1f714290
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193782"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>部署 Azure IoT Edge 工作負載 (預覽)
 
@@ -29,7 +29,7 @@ Azure Arc 和 Azure IoT Edge 之間的互補性很好。 Azure Arc 為叢集操�
 
 * 使用 [[適用於 Kubernetes 的 IoT Edge 支援]](https://aka.ms/edgek8sdoc)，透過 Azure Arc 的 Flux 運算子以進行部署。
 
-* 針對 IoT Edge Helm 圖表下載 [**values.yaml**](https://github.com/Azure/iotedge/blob/master/kubernetes/charts/edge-kubernetes/values.yaml) 檔案，並使用步驟 1 記錄的預留位置取代檔案結尾的 **deviceConnectionString** 預留位置。 您可以視需要設定任何其他支援的圖表安裝選項。 為 IoT Edge 工作負載建立命名空間，並在其中建立新增秘密：
+* 針對 IoT Edge Helm 圖表下載 [**values.yaml**](https://github.com/Azure/iotedge/blob/master/kubernetes/charts/edge-kubernetes/values.yaml) 檔案，並使用步驟 1 記錄的預留位置取代檔案結尾的 **deviceConnectionString** 預留位置。 您可以視需要設定任何其他支援的圖表安裝選項。 建立 IoT Edge 工作負載的命名空間，並在其中建立密碼：
 
     ```
     $ kubectl create ns iotedge

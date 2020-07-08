@@ -4,16 +4,16 @@ description: 如何使用 Windows 桌面用戶端連接到 Windows 虛擬桌面�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2b16818856ca8196b82eb8f618cf22b5fc1b6854
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d333b2f8bbb660e9fd71339159d942c0520f4f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612685"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201543"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>與 Windows 桌面用戶端連線
 
@@ -22,7 +22,7 @@ ms.locfileid: "82612685"
 您可以使用 Windows 桌面用戶端，存取 Windows 7、Windows 10 和 Windows 10 IoT 企業版裝置上的 Windows 虛擬桌面資源。
 
 >[!NOTE]
->Windows 用戶端會自動預設為 Windows 虛擬桌面秋季2019版。 不過，如果用戶端偵測到使用者也有 Azure Resource Manager 資源，它會自動新增資源，或通知使用者其可用。 
+>Windows 用戶端會自動預設為 Windows 虛擬桌面秋季2019版。 不過，如果用戶端偵測到使用者也有 Azure Resource Manager 資源，它會自動新增資源，或通知使用者其可用。
 
 > [!IMPORTANT]
 > Windows 虛擬桌面不支援 RemoteApp 和桌面連線 (RADC) 用戶端或遠端桌面連線 (MSTSC) 用戶端。

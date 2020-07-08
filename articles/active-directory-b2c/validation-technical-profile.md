@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1eaf159149bb353b1cf0474aad5bc233decddc5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d4c538a9292698fecc8b44c055ab201748e292c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202988"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的驗證技術設定檔
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-驗證技術設定檔是任何通訊協定的一般技術設定檔，例如 [Azure Active Directory](active-directory-technical-profile.md) 或 [REST API](restful-technical-profile.md)。 驗證技術設定檔會傳回輸出宣告，或傳回 4xx HTTP 狀態碼，並包含下列資料。 如需詳細資訊，請參閱傳回[錯誤訊息](restful-technical-profile.md#returning-error-message)
+驗證技術設定檔是任何通訊協定的一般技術設定檔，例如 [Azure Active Directory](active-directory-technical-profile.md) 或 [REST API](restful-technical-profile.md)。 驗證技術設定檔會傳回輸出宣告，或傳回 4xx HTTP 狀態碼，並包含下列資料。 如需詳細資訊，請參閱傳回[錯誤訊息](restful-technical-profile.md#returning-validation-error-message)
 
-```JSON
+```json
 {
     "version": "1.0.0",
     "status": 409,
@@ -47,7 +47,7 @@ ms.locfileid: "79481563"
 
 **ValidationTechnicalProfiles** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | 技術設定檔可用於驗證參考技術設定檔的部分或所有輸出宣告。 |
 
@@ -55,13 +55,13 @@ ms.locfileid: "79481563"
 
 | 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| ReferenceId | 是 | 已在原則或父原則中定義之技術設定檔的識別碼。 |
-|ContinueOnError|否| 指出當此驗證技術設定檔引發錯誤時，是否應該繼續進行任何後續驗證技術設定檔的驗證。 可能的值：`true` 或 `false` (預設值，進一步驗證設定檔的處理將停止，並傳回錯誤)。 |
-|ContinueOnSuccess | 否 | 表示如果此驗證設定檔成功，任何後續驗證技術設定檔的驗證是否應該繼續。 可能的值：`true` 或 `false`。 預設值是 `true`，表示進一步驗證設定檔的處理會繼續。 |
+| ReferenceId | Yes | 已在原則或父原則中定義之技術設定檔的識別碼。 |
+|ContinueOnError|No| 指出當此驗證技術設定檔引發錯誤時，是否應該繼續進行任何後續驗證技術設定檔的驗證。 可能的值：`true` 或 `false` (預設值，進一步驗證設定檔的處理將停止，並傳回錯誤)。 |
+|ContinueOnSuccess | No | 表示如果此驗證設定檔成功，任何後續驗證技術設定檔的驗證是否應該繼續。 可能的值：`true` 或 `false`。 預設值是 `true`，表示進一步驗證設定檔的處理會繼續。 |
 
 **ValidationTechnicalProfile** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | 先決條件 | 0:1 | 必須滿足才能使驗證技術設定檔執行的先決條件清單。 |
 
@@ -69,8 +69,8 @@ ms.locfileid: "79481563"
 
 | 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| `Type` | 是 | 要針對此先決條件執行的檢查或查詢類型。 `ClaimsExist` 指定如果指定的宣告存在於使用者目前的宣告組中，就應執行動作，或 `ClaimEquals` 指定如果指定宣告存在且其值等於指定的值，就應執行動作。 |
-| `ExecuteActionsIf` | 是 | 指出如果測試為 True 或 False，是否應執行先決條件中的動作。 |
+| `Type` | Yes | 要針對此先決條件執行的檢查或查詢類型。 `ClaimsExist` 指定如果指定的宣告存在於使用者目前的宣告組中，就應執行動作，或 `ClaimEquals` 指定如果指定宣告存在且其值等於指定的值，就應執行動作。 |
+| `ExecuteActionsIf` | Yes | 指出如果測試為 True 或 False，是否應執行先決條件中的動作。 |
 
 **Precondition** 元素包含下列元素：
 
@@ -87,7 +87,7 @@ ms.locfileid: "79481563"
 2. 如果 userType 宣告不存在，或 userType 值是 `Partner`，則下一個驗證技術設定檔不會執行。 驗證技術設定檔是嘗試讀取內部客戶資料庫中的使用者設定檔，而且，如果發生錯誤，例如無法使用 REST API 服務或任何內部錯誤，仍會繼續讀取。
 3. 如果 userType 宣告不存在，或 userType 值是 `Customer`，則最後一個驗證技術設定檔不會執行。 驗證技術設定檔是嘗試讀取內部夥伴資料庫中的使用者設定檔，而且，如果發生錯誤，例如無法使用 REST API 服務或任何內部錯誤，仍會繼續讀取。
 
-```XML
+```xml
 <ValidationTechnicalProfiles>
   <ValidationTechnicalProfile ReferenceId="login-NonInteractive" ContinueOnError="false" />
   <ValidationTechnicalProfile ReferenceId="REST-ReadProfileFromCustomertsDatabase" ContinueOnError="true" >

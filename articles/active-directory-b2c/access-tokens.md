@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 36027583d64ac91432888d866440932c6e1bdd07
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: de5c478ac6641fe5b1e342c063d134f70084b2ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635438"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201441"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>要求 Azure Active Directory B2C 中的存取權杖
 
@@ -29,7 +29,7 @@ ms.locfileid: "83635438"
 ## <a name="prerequisites"></a>Prerequisites
 
 - [建立使用者流程](tutorial-create-user-flows.md)，讓使用者註冊並登入您的應用程式。
-- [將 Web API 應用程式新增至您的 Azure Active Directory B2C 租用戶](add-web-application.md) (如果您尚未這麼做)。
+- [將 Web API 應用程式新增至您的 Azure Active Directory B2C 租用戶](add-web-api-application.md) (如果您尚未這麼做)。
 
 ## <a name="scopes"></a>範圍
 
@@ -49,7 +49,7 @@ scope=https://contoso.onmicrosoft.com/api/read openid offline_access
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-如果您要求的範圍比針對用戶端應用程式授與的數目多，但至少已授與一個權限，則呼叫會成功。 在產生的存取權杖中，**scp** 宣告只會填入成功授與的權限。 OpenID Connect 標準會指定數個特殊的範圍值。 下列範圍代表存取使用者設定檔的權限︰
+如果您要求的範圍比針對用戶端應用程式授與的數目多，但至少已授與一個權限，則呼叫會成功。 在產生的存取權杖中，**scp** 宣告只會填入成功授與的權限。 OpenID Connect 標準會指定數個特殊的範圍值。 下列範圍代表存取使用者設定檔的許可權：
 
 - **openid** - 要求識別碼權杖。
 - **offline_access** - 使用[授權碼流程](authorization-code-flow.md)要求重新整理權杖。
@@ -67,7 +67,7 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_acce
 - `<application-ID>` - 您註冊以支援使用者流程之 Web 應用程式的應用程式識別碼。
 - `<redirect-uri>` - 您註冊用戶端應用程式時所輸入的 [重新導向 URI]。
 
-```HTTP
+```http
 GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
@@ -84,7 +84,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 
 成功接收授權碼後，您可以將其用來要求存取權杖：
 
-```HTTP
+```http
 POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
@@ -99,7 +99,7 @@ grant_type=authorization_code
 
 您應該會看到類似下列回應的內容：
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrN...",
     "token_type": "Bearer",
@@ -113,7 +113,7 @@ grant_type=authorization_code
 
 使用 https://jwt.ms 檢查傳回的存取權杖時，您應該會看到類似下列範例的內容：
 
-```JSON
+```json
 {
   "typ": "JWT",
   "alg": "RS256",

@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6f3418d73496ae25782b57a43e3357dc0bc7131a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660030"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201696"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中使用複寫資料表的設計指引
 
@@ -126,7 +126,7 @@ WHERE d.FiscalYear = 2004
 
 SQL 集區是透過維護資料表的主要版本來實作複寫資料表。 會將主要版本複製到每個計算節點上的第一個散發資料庫。 當有變更時，會先更新主要版本，然後再重建每個計算節點上的資料表。 重建複寫資料表包括將資料表複製到每個計算節點，然後建立索引。  例如，DW2000c 上的複寫資料表有 5 份資料。  主要複本以及每個計算節點上的完整複本。  所有資料都會儲存在散發資料庫中。 SQL 集區會使用這個模型支援更快的資料修改陳述式和彈性調整作業。
 
-在執行下列動作之後，必須進行重建：
+在下列情況之後，會針對複寫資料表的第一個查詢觸發非同步重建：
 
 - 載入或修改資料
 - Synapse SQL 執行個體會調整為不同的層級

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 789d70f77558bbade854ba31fd10ecd2b8e7b853
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194700"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 儲存體生命週期
 
@@ -49,7 +49,7 @@ ms.locfileid: "82692134"
 * [Azure 入口網站](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [REST APIs](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
 原則可以完整讀取或寫入。 不支援部分更新。 
 
@@ -124,13 +124,13 @@ ms.locfileid: "82692134"
    }
    ```
 
-5. 選取 [儲存]  。
+5. 選取 [儲存]。
 
 6. 如需有關此 JSON 範例的詳細資訊，請參閱[原則](#policy)和[規則](#rules)章節。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-下列 PowerShell 腳本可以用來將原則新增至您的儲存體帳戶。 `$rgname`變數必須使用您的資源組名進行初始化。 `$accountName`變數必須使用您的儲存體帳戶名稱進行初始化。
+下列 PowerShell 腳本可以用來將原則新增至您的儲存體帳戶。 `$rgname` 變數必須以您的資源群組名稱進行初始化。 `$accountName` 變數必須以您的儲存體帳戶名稱進行初始化。
 
 ```powershell
 #Install the latest module
@@ -226,17 +226,17 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 原則是一組規則：
 
-| 參數名稱 | 參數類型 | 備忘錄 |
+| 參數名稱 | 參數類型 | 備註 |
 |----------------|----------------|-------|
 | `rules`        | 規則物件的陣列 | 原則中至少需要一個規則。 您最多可以在原則中定義100個規則。|
 
 原則中的每個規則都有數個參數：
 
-| 參數名稱 | 參數類型 | 備忘錄 | 必要 |
+| 參數名稱 | 參數類型 | 備註 | 必要 |
 |----------------|----------------|-------|----------|
 | `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。  它在原則內必須是唯一的。 | True |
 | `enabled`      | Boolean | 選擇性布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | False | 
-| `type`         | 列舉值 | 目前的有效類型為`Lifecycle`。 | True |
+| `type`         | 列舉值 | 目前的有效類型為 `Lifecycle` 。 | True |
 | `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | True |
 
 ## <a name="rules"></a>規則
@@ -245,7 +245,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 ### <a name="sample-rule"></a>範例規則
 
-下列範例規則會篩選帳戶，以針對存在於內`container1`且開頭為`foo`的物件執行動作。  
+下列範例規則會篩選帳戶，以針對存在於內 `container1` 且開頭為的物件執行動作 `foo` 。  
 
 >[!NOTE]
 >生命週期管理僅支援區塊 blob 類型。  
@@ -289,14 +289,14 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 篩選器包括：
 
-| 篩選名稱 | 篩選類型 | 備忘錄 | 必要 |
+| 篩選名稱 | 篩選類型 | 備註 | 必要 |
 |-------------|-------------|-------|-------------|
-| blobTypes   | 預先定義的列舉值陣列。 | 目前的版本支援`blockBlob`。 | 是 |
-| prefixMatch | 要比對之前置詞的字串陣列。 每個規則最多可以定義10個首碼。 前置詞字串必須以容器名稱開頭。 例如，如果您想要比`https://myaccount.blob.core.windows.net/container1/foo/...`對底下的所有 blob，則 prefixMatch 為。 `container1/foo` | 如果您未定義 prefixMatch，此規則會套用至儲存體帳戶內的所有 blob。  | 否 |
-| blobIndexMatch | 包含要比對之 Blob 索引標記索引鍵和值條件的字典值陣列。 每個規則最多可以定義10個 Blob 索引標記條件。 例如，如果您想要將規則的所有 blob `Project = Contoso`與`https://myaccount.blob.core.windows.net/`下的進行比對，則`{"name": "Project","op": "==","value": "Contoso"}`blobIndexMatch 為。 | 如果您未定義 blobIndexMatch，此規則會套用至儲存體帳戶內的所有 blob。 | 否 |
+| blobTypes   | 預先定義的列舉值陣列。 | 目前的版本支援 `blockBlob` 。 | Yes |
+| prefixMatch | 要比對之前置詞的字串陣列。 每個規則最多可以定義10個首碼。 前置詞字串必須以容器名稱開頭。 例如，如果您想要比對底下的所有 blob `https://myaccount.blob.core.windows.net/container1/foo/...` ，則 prefixMatch 為 `container1/foo` 。 | 如果您未定義 prefixMatch，此規則會套用至儲存體帳戶內的所有 blob。  | No |
+| blobIndexMatch | 包含要比對之 Blob 索引標記索引鍵和值條件的字典值陣列。 每個規則最多可以定義10個 Blob 索引標記條件。 例如，如果您想要將規則的所有 blob 與 `Project = Contoso` 下的 `https://myaccount.blob.core.windows.net/` 進行比對，則 blobIndexMatch 為 `{"name": "Project","op": "==","value": "Contoso"}` 。 | 如果您未定義 blobIndexMatch，此規則會套用至儲存體帳戶內的所有 blob。 | No |
 
 > [!NOTE]
-> Blob 索引處於公開預覽狀態，並可在**法國中部**和**法國南部**區域中取得。 若要深入瞭解這項功能以及已知問題和限制，請參閱[使用 Blob 索引在 Azure Blob 儲存體上管理和尋找資料（預覽）](storage-manage-find-blobs.md)。
+> Blob 索引處於公開預覽狀態，並適用於**法國中部**和**法國南部**區域。 若要深入了解這項功能以及已知的問題和限制，請參閱[使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)。
 
 ### <a name="rule-actions"></a>規則動作
 
@@ -315,7 +315,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 執行條件是以年齡為基礎。 基底 Blob 使用上次修改時間來追蹤存在時間，而 Blob 快照集使用快照集建立時間來追蹤存在時間。
 
-| 動作執行條件             | 條件值                          | 描述                             |
+| 動作執行條件             | 條件值                          | Description                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | 表示存在時間的整數值 (以天數為單位) | 基底 blob 動作的條件     |
 | daysAfterCreationGreaterThan     | 表示存在時間的整數值 (以天數為單位) | Blob 快照集動作的條件 |
@@ -354,10 +354,10 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 ### <a name="archive-data-after-ingest"></a>內嵌後保存資料
 
-有些資料在雲端維持閒置狀態，而且儲存後就很少存取。 下列生命週期原則設定為在內嵌後不久就封存資料。 這個範例會將容器`archivecontainer`內儲存體帳戶中的區塊 blob 轉換成封存層。 轉換的完成方式是在上次修改時間的0天后對 blob 採取行動：
+有些資料在雲端維持閒置狀態，而且儲存後就很少存取。 下列生命週期原則設定為在內嵌後不久就封存資料。 這個範例會將容器內儲存體帳戶中的區塊 blob 轉換 `archivecontainer` 成封存層。 轉換的完成方式是在上次修改時間的0天后對 blob 採取行動：
 
 > [!NOTE] 
-> 建議您直接將 blob 上傳到封存層，以提高效率。 您可以使用[PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob)或[PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list)的 x-ms-訪問層標頭搭配 REST 2018-11-09 和更新版本，或我們最新的 blob 儲存體用戶端程式庫。 
+> 建議您直接將 blob 上傳到封存層，以提高效率。 您可以使用[PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob)或[PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list)的 x 毫秒存取層標頭搭配 REST 2018-11-09 和更新版本，或我們最新的 blob 儲存體用戶端程式庫。 
 
 ```json
 {
@@ -410,7 +410,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 ```
 
 ### <a name="delete-data-with-blob-index-tags"></a>使用 Blob 索引標記來刪除資料
-只有在明確標示為刪除時，某些資料才會過期。 您可以設定生命週期管理原則，使標記為 blob 索引鍵/值屬性的資料過期。 下列範例顯示的原則會刪除標記為的`Project = Contoso`所有區塊 blob。 若要深入瞭解 Blob 索引，請參閱[使用 Blob 索引來管理和尋找 Azure Blob 儲存體上的資料（預覽）](storage-manage-find-blobs.md)。
+只有在明確標示為刪除時，某些資料才會過期。 您可以設定生命週期管理原則，使標記為 blob 索引鍵/值屬性的資料過期。 下列範例顯示的原則會刪除標記為的所有區塊 blob `Project = Contoso` 。 若要深入了解 Blob 索引，請參閱[使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)。
 
 ```json
 {

@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 91435c2c5ca825793988e002c1ab9f6caacf2b17
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 7df9c40980d7a35c1eab0f892c3aca0a30938f57
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652561"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194105"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>使用 Azure Active Directory 向 PostgreSQL 進行驗證
 
@@ -54,21 +54,19 @@ ms.locfileid: "83652561"
 
 使用者/應用程式為了使用 Azure AD 進行驗證所必須執行的步驟如下所述：
 
+### <a name="prerequisites"></a>必要條件
+
+您可以依照 Azure Cloud Shell、Azure VM 或本機電腦上的指示進行。 請確定您已[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>步驟 1:使用 Azure AD 進行驗證
 
-請確定您已[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+一開始請先使用 Azure CLI 工具向 Azure AD 進行驗證。 Azure Cloud Shell 中不需要這個步驟。
 
-叫用 Azure CLI 工具，以向 Azure AD 進行驗證。 您需要向 Azure AD 提供使用者識別碼和密碼。
-
-```azurecli-interactive
+```
 az login
 ```
 
-此命令會啟動瀏覽器視窗並顯示 Azure AD 驗證頁面。
-
-> [!NOTE]
-> 您也可以使用 Azure Cloud Shell 來執行這些步驟。
-> 請注意，在 Azure Cloud Shell 中擷取 Azure AD 存取權杖時，您必須明確地呼叫 `az login` 並重新登入 (使用程式碼在另一個視窗中進行)。 之後請登入，`get-access-token` 命令就會如預期般運作。
+此命令將會啟動瀏覽器視窗至 Azure AD 驗證頁面。 您需要提供 Azure AD 的使用者識別碼和密碼。
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>步驟 2:擷取 Azure AD 存取權杖
 
@@ -117,8 +115,12 @@ az account get-access-token --resource-type oss-rdbms
 
 Windows 範例：
 
-```shell
+```cmd
 set PGPASSWORD=<copy/pasted TOKEN value from step 2>
+```
+
+```PowerShell
+$env:PGPASSWORD='<copy/pasted TOKEN value from step 2>'
 ```
 
 Linux/macOS 範例：
@@ -132,6 +134,15 @@ export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```shell
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
+
+連接時的重要考慮事項：
+
+* `user@tenant.onmicrosoft.com`這是您嘗試連接的 Azure AD 使用者或群組的名稱
+* 請一律在 Azure AD 的使用者/組名後面附加伺服器名稱（例如 `@mydb` ）
+* 請務必使用正確的 Azure AD 使用者或組名的拼寫方式
+* Azure AD 使用者和組名會區分大小寫
+* 以群組方式連接時，只使用組名（例如 `GroupName@mydb` ）
+* 如果名稱包含空格，請 `\` 在每個空格前面使用來將它取消
 
 您現在已使用 Azure AD 驗證向 PostgreSQL 伺服器進行驗證。
 
@@ -169,7 +180,7 @@ CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
 
 「適用於 PostgreSQL 的 Azure 資料庫」中的 Azure AD 驗證可確保使用者存在於 PostgreSQL 伺服器中，並藉由驗證權杖的內容來檢查權杖是否有效。 所會執行的權杖驗證步驟下列：
 
-- 權杖由 Azure AD 簽署，而且尚未遭到篡改
+- 由 Azure AD 簽署權杖，而且尚未遭到篡改
 - Azure AD 針對與伺服器相關聯的租用戶發出權杖
 - 權杖尚未過期
 - 權杖適用於「適用於 PostgreSQL 的 Azure 資料庫」資源 (而不是另一個 Azure 資源)

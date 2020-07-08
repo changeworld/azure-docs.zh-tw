@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 066a6489e6244369453ec5d9f21d5e1e83fcd6c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187673"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201745"
 ---
 # <a name="integer-claims-transformations"></a>整數宣告轉換
 
@@ -28,14 +28,14 @@ ms.locfileid: "78187673"
 
 將 Lng 資料類型轉換為字串資料類型。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | long | 要轉換為字串的 ClaimType。 |
 | OutputClaim | outputClaim | 字串 | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
 
 在此範例中，值類型為 Long 的 `numericUserId` 宣告會轉換為值類型為 String (字串) 的 `UserId` 宣告。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateUserId" TransformationMethod="ConvertNumberToStringClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="numericUserId" TransformationClaimType="inputClaim" />

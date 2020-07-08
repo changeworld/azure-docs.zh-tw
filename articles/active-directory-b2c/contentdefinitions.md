@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 074a0a39090e22a29f778fc1c99060848c6bfd99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80051501"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202852"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -30,7 +30,7 @@ ms.locfileid: "80051501"
 
 下列範例顯示內容定義識別碼和當地語系化資源的定義：
 
-```XML
+```xml
 <ContentDefinition Id="api.localaccountsignup">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -46,7 +46,7 @@ ms.locfileid: "80051501"
 
 **LocalAccountSignUpWithLogonEmail** 自我判斷技術設定檔的中繼資料包含設為 `api.localaccountsignup` 的內容定義識別碼 **ContentDefinitionReferenceId**
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -61,16 +61,16 @@ ms.locfileid: "80051501"
 
 **ContentDefinition** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| Id | 是 | 內容定義的識別碼。 此值是本頁面後面的**內容定義識別碼**區段中指定的值。 |
+| Id | Yes | 內容定義的識別碼。 此值是本頁面後面的**內容定義識別碼**區段中指定的值。 |
 
 **ContentDefinition** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | 此字串包含內容定義之 HTML5 頁面的 URL。 |
-| RecoveryUri | 1:1 | 此字串包含 HTML 頁面的 URL，以顯示與內容定義相關的錯誤。 目前未使用，值必須是`~/common/default_page_error.html`。 |
+| RecoveryUri | 1:1 | 此字串包含 HTML 頁面的 URL，以顯示與內容定義相關的錯誤。 目前未使用，值必須是 `~/common/default_page_error.html` 。 |
 | DataUri | 1:1 | 此字串包含 HTML 檔案的相對 URL，該檔案為步驟提供了要叫用的使用者體驗。 |
 | 中繼資料 | 0:1 | 包含內容定義使用之中繼資料的機碼值組的集合。 |
 | LocalizedResourcesReferences | 0:1 | 當地語系化資源參考的集合。 使用此元素以自訂使用者介面的當地語系化與宣告屬性。 |
@@ -79,7 +79,7 @@ ms.locfileid: "80051501"
 
 **DataUri** 元素用於指定頁面識別碼。 Azure AD B2C 使用頁面識別碼以載入並初始化 UI 元素與用戶端 JavaScript。 值的格式為 `urn:com:microsoft:aad:b2c:elements:page-name:version`。 下表列出您可以使用的頁面識別碼。
 
-| 頁面識別碼 | 描述 |
+| 頁面識別碼 | Description |
 | ----- | ----------- |
 | `globalexception` | 發生例外狀況或錯誤時，會顯示錯誤頁面。 |
 | `providerselection`, `idpselection` | 列出使用者可以在登入期間選擇的識別提供者。  |
@@ -90,13 +90,13 @@ ms.locfileid: "80051501"
 
 ### <a name="select-a-page-layout"></a>選取頁面配置
 
-您可以在和頁面類型之間`contract` `elements`插入，藉以啟用[JavaScript 用戶端程式代碼](javascript-samples.md)。 例如： `urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
+您可以在和頁面類型之間插入，藉以啟用[JavaScript 用戶端程式代碼](javascript-samples.md) `contract` `elements` 。 例如： `urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-的[版本](page-layout.md)部分會針對`DataUri`原則中的使用者介面元素，指定包含 HTML、CSS 和 JavaScript 的內容套件。 如果您想要啟用 JavaScript 用戶端程式代碼，則您的 JavaScript 所依據的元素必須是不可變的。 如果它們不是固定的，任何變更都可能會在使用者頁面上造成非預期的行為。 若要避免這些問題，請強制使用頁面配置，並指定頁面配置版本。 這麼做可確保您根據 JavaScript 的所有內容定義都是不可變的。 即使您不想要啟用 JavaScript，仍然需要為頁面指定頁面配置版本。
+的[版本](page-layout.md)部分會 `DataUri` 針對原則中的使用者介面元素，指定包含 HTML、CSS 和 JavaScript 的內容套件。 如果您想要啟用 JavaScript 用戶端程式代碼，則您的 JavaScript 所依據的元素必須是不可變的。 如果它們不是固定的，任何變更都可能會在使用者頁面上造成非預期的行為。 若要避免這些問題，請強制使用頁面配置，並指定頁面配置版本。 這麼做可確保您根據 JavaScript 的所有內容定義都是不可變的。 即使您不想要啟用 JavaScript，仍然需要為頁面指定頁面配置版本。
 
-下列範例顯示`selfasserted`版本`1.2.0`的**DataUri** ：
+下列範例顯示版本的**DataUri** `selfasserted` `1.2.0` ：
 
 ```xml
 <ContentDefinition Id="api.localaccountpasswordreset">
@@ -111,7 +111,7 @@ ms.locfileid: "80051501"
 
 #### <a name="migrating-to-page-layout"></a>遷移至頁面配置
 
-值的格式必須包含 word `contract`： _urn： com： microsoft： aad： b2c： elements：**合約**:p 年齡-name： version_。 若要在使用舊**DataUri**值的自訂原則中指定頁面配置，請使用下表來遷移至新的格式。
+值的格式必須包含 word `contract` ： _urn： com： microsoft： aad： b2c： elements：**合約**:p 年齡-name： version_。 若要在使用舊**DataUri**值的自訂原則中指定頁面配置，請使用下表來遷移至新的格式。
 
 | 舊的 DataUri 值 | 新的 DataUri 值 |
 | ----------------- | ----------------- |
@@ -131,42 +131,42 @@ ms.locfileid: "80051501"
 
 **Metadata** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | 項目 | 0:n | 與內容定義相關的中繼資料。 |
 
 **Metadata** 元素的 **Item** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| Key | 是 | 中繼資料索引鍵。  |
+| Key | Yes | 中繼資料索引鍵。  |
 
 #### <a name="metadata-keys"></a>中繼資料索引鍵
 
 內容定義支援下列中繼資料專案：
 
-| Key | 必要 | 描述 |
+| 答案 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| DisplayName | 否 | 包含內容定義名稱的字串。 |
+| DisplayName | No | 包含內容定義名稱的字串。 |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 **LocalizedResourcesReferences** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | 內容定義的當地語系化資源參考清單。 |
 
 **LocalizedResourcesReference**元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| Language | 是 | 此字串針對每個 RFC 5646 - 標記的原則包含支援的語言，以進行識別語言。 |
-| LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的識別碼。 |
+| 語言 | Yes | 此字串針對每個 RFC 5646 - 標記的原則包含支援的語言，以進行識別語言。 |
+| LocalizedResourcesReferenceId | Yes | **LocalizedResources** 元素的識別碼。 |
 
 下列範例顯示的是註冊或登入內容定義，其參考英文、法文和西班牙文的當地語系化：
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -188,7 +188,7 @@ ms.locfileid: "80051501"
 
 **ContentDefinition** 元素的識別碼屬性會指定與內容定義相關的頁面類型。 此元素會定義自訂 HTML5/CSS 範本即將套用的內容。 下表說明身分識別體驗架構所能辨識之內容定義識別碼的集合，以及這些識別碼的相關頁面類型。 您可以使用任意識別碼建立自己的內容定義。
 
-| 識別碼 | 預設範本 | 描述 |
+| 識別碼 | 預設範本 | Description |
 | -- | ---------------- | ----------- |
 | api.error**** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **錯誤頁面** - 發生例外狀況或錯誤時，會顯示錯誤頁面。 |
 | api.idpselections**** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **識別提供者選取頁面** - 列出使用者可以在登入期間選擇的識別提供者。 這些選項通常是企業識別提供者、社交識別提供者 (如 Facebook 和 Google+) 或本機帳戶。 |

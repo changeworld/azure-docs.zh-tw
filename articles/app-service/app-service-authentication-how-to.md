@@ -4,12 +4,12 @@ description: 瞭解如何在不同案例的 App Service 中自訂驗證和授權
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6efa5461fab9faf3ce1599a01540cf314b34281b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280829"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85205640"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中進階使用驗證和授權
 
@@ -35,7 +35,7 @@ ms.locfileid: "79280829"
 
 在登入頁面或導覽列、或是您應用程式的任何其他位置中，將登入連結新增至您啟用的每個提供者 (`/.auth/login/<provider>`)。 例如：
 
-```HTML
+```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
 <a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
@@ -47,7 +47,7 @@ ms.locfileid: "79280829"
 
 若要將登入後的使用者重新導向至自訂 URL，請使用 `post_login_redirect_url` 查詢字串參數 (請勿與您身分識別提供者組態中的重新導向 URI 混淆)。 例如，若要在使用者登入之後，將他們導向 `/Home/Index`，請使用下列 HTML 程式碼：
 
-```HTML
+```html
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
 ```
 
@@ -66,7 +66,7 @@ Content-Type: application/json
 
 權杖的格式會隨著提供者而稍有不同。 如需詳細資訊，請參閱下表︰
 
-| 提供者值 | 要求本文中需要 | 評價 |
+| 提供者值 | 要求本文中需要 | 註解 |
 |-|-|-|
 | `aad` | `{"access_token":"<access_token>"}` | |
 | `microsoftaccount` | `{"access_token":"<token>"}` | `expires_in` 是選用屬性。 <br/>從即時服務要求權杖時，請一律要求 `wl.basic` 範圍。 |
@@ -103,7 +103,7 @@ X-ZUMO-AUTH: <authenticationToken_value>
 
 以下是網頁中的簡單登出連結：
 
-```HTML
+```html
 <a href="/.auth/logout">Sign out</a>
 ```
 
@@ -176,9 +176,9 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
 - **Microsoft 帳戶**：當您[設定 Microsoft 帳戶驗證設定](configure-authentication-provider-microsoft.md)時，請選取 `wl.offline_access` 範圍。
 - **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中，執行下列步驟：
     1. 在頁面的頂端，選取 [讀取/寫入]****。
-    2. 在左側瀏覽器中，流覽**至** > **_\<訂\_用帳戶訂閱名稱_** > **resourceGroups** > **_\<\_\_資源組名>_** **providers**  >   > 提供者**Microsoft. Web** > **sites** > **_\<應用程式\_名稱>_**  >  **config** > **authsettings**。 
-    3. 按一下 **[編輯]**。
-    4. 修改下列屬性。 以您想要存取之服務的 Azure Active Directory 應用程式識別碼取代_ \<應用程式\_識別碼>_ 。
+    2. 在左側瀏覽器中，流覽**至 [** 訂用帳戶] > * *_ \<subscription\_name_** > **resourceGroups** > *_* * * \<resource\_group\_name> _>**提供者**  >  **Microsoft**  >  **網站**> * *_ \<app\_name> _ * * > **config**  >  **authsettings**。 
+    3. 按一下 **[編輯]** 。
+    4. 修改下列屬性。 將取代 _\<app\_id>_ 為您想要存取之服務的 Azure Active Directory 應用程式識別碼。
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
@@ -188,9 +188,9 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
 
 設定好提供者之後，您可以在權杖存放區中[尋找重新整理權杖和存取權杖的到期時間](#retrieve-tokens-in-app-code)。 
 
-若要隨時重新整理您的存取權杖，只要`/.auth/refresh`以任何語言呼叫即可。 下列程式碼片段會使用 jQuery 來重新整理 JavaScript 用戶端的存取權杖。
+若要隨時重新整理您的存取權杖，只要 `/.auth/refresh` 以任何語言呼叫即可。 下列程式碼片段會使用 jQuery 來重新整理 JavaScript 用戶端的存取權杖。
 
-```JavaScript
+```javascript
 function refreshTokens() {
   let refreshUrl = "/.auth/refresh";
   $.ajax(refreshUrl) .done(function() {
@@ -221,20 +221,20 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>限制登入帳戶的網域
 
-Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 例如，Microsoft 帳戶允許 _outlook.com_、_live.com_ 和 _hotmail.com_ 帳戶。 Azure AD 允許登入帳戶有任意數目的自訂網域。 不過，您可能會想要將使用者直接帶到您自己的品牌 Azure AD 登入頁面（例如`contoso.com`）。 若要建議登入帳戶的功能變數名稱，請遵循下列步驟。
+Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 例如，Microsoft 帳戶允許 _outlook.com_、_live.com_ 和 _hotmail.com_ 帳戶。 Azure AD 允許登入帳戶有任意數目的自訂網域。 不過，您可能會想要將使用者直接帶到您自己的品牌 Azure AD 登入頁面（例如 `contoso.com` ）。 若要建議登入帳戶的功能變數名稱，請遵循下列步驟。
 
-在[https://resources.azure.com](https://resources.azure.com)中，流覽至**訂閱** > **_\<訂\__** 用帳戶名稱**resourceGroups** > **_\<\_resourceGroups 資源組\_名>_**  > **提供者** > **Microsoft. Web** > **sites** > **_\<應用程式\_名稱>_** ** **  >  ** **config authsettings。  >   >  
+在中，流覽至 [訂用帳戶] [https://resources.azure.com](https://resources.azure.com) > * *_ \<subscription\_name_** > **resourceGroups** > *_* * * **subscriptions** \<resource\_group\_name> _>**提供者**  >  **Microsoft**  >  **網站**> * *_ \<app\_name> _ * * > **config**  >  **authsettings**。 
 
-按一下 [編輯]****、修改下列屬性，然後按一下 [放置]****。 請務必以您想要的網域取代_ \<功能變數名稱\_>_ 。
+按一下 [編輯]****、修改下列屬性，然後按一下 [放置]****。 請務必將取代為 _\<domain\_name>_ 您想要的網域。
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
 
-此設定會將`domain_hint`查詢字串參數附加至登入重新導向 URL。 
+此設定會將 `domain_hint` 查詢字串參數附加至登入重新導向 URL。 
 
 > [!IMPORTANT]
-> 用戶端可以在收到重新導向 URL 之後`domain_hint`移除參數，然後再以不同的網域登入。 因此，雖然此函式很方便，但它並不是安全性功能。
+> 用戶端可以 `domain_hint` 在收到重新導向 URL 之後移除參數，然後再以不同的網域登入。 因此，雖然此函式很方便，但它並不是安全性功能。
 >
 
 ## <a name="authorize-or-deny-users"></a>授權或拒絕使用者
@@ -247,13 +247,13 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 
 ### <a name="server-level-windows-apps-only"></a>伺服器層級（僅限 Windows 應用程式）
 
-針對任何 Windows 應用程式，您可以藉由編輯*web.config*檔案來定義 IIS web 伺服器的授權行為。 Linux 應用程式不會使用 IIS，也無法*透過 web.config 進行設定。*
+針對任何 Windows 應用程式，您可以藉由編輯*Web.config*檔案來定義 IIS web 伺服器的授權行為。 Linux 應用程式不會使用 IIS，而且無法透過*Web.config*來設定。
 
 1. 巡覽到 `https://<app-name>.scm.azurewebsites.net/DebugConsole`
 
-1. 在 App Service 檔案的瀏覽器中，流覽至 [ *site/wwwroot*]。 如果*web.config*不存在，請選取**+**  > [**新增**檔案] 加以建立。 
+1. 在 App Service 檔案的瀏覽器中，流覽至 [ *site/wwwroot*]。 如果*Web.config*不存在，請選取 [新增檔案] 加以建立 **+**  >  ** **。 
 
-1. 選取*web.config 的鉛筆來編輯*它。 新增下列設定程式碼，然後按一下 [**儲存**]。 如果*web.config*已經存在，只需要在其中新增`<authorization>`專案。 在`<allow>`元素中新增您想要允許的帳戶。
+1. 選取*Web.config*的鉛筆來編輯它。 新增下列設定程式碼，然後按一下 [**儲存**]。 如果*Web.config*已經存在，只需要 `<authorization>` 在其中新增專案。 在元素中新增您想要允許的帳戶 `<allow>` 。
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -281,5 +281,5 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [教學課程：端對端驗證和授權使用者（Windows）](app-service-web-tutorial-auth-aad.md)
+> [教學課程：端對端驗證和授權使用者（Windows）](app-service-web-tutorial-auth-aad.md) 
 > [教學課程：端對端驗證和授權使用者（Linux）](containers/tutorial-auth-aad.md)

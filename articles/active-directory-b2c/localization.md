@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 94ff7ddda41f2df2634d927a7dbf8a5a0d4fc1d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69368ecd7234912bcaf5eb606545f62ddb7b30a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204178"
 ---
 # <a name="localization"></a>當地語系化
 
@@ -26,7 +26,7 @@ ms.locfileid: "81681406"
 - 設定原則中可支援語言的明確清單，然後選擇預設語言。
 - 提供特定語言的字串和集合。
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
     <SupportedLanguage>en</SupportedLanguage>
@@ -39,13 +39,13 @@ ms.locfileid: "81681406"
 
 **Localization** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| 啟用 | 否 | 可能的值：`true` 或 `false`。 |
+| 已啟用 | No | 可能的值：`true` 或 `false`。 |
 
 **Localization** 元素包含下列 XML 元素
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1:n | 支援語言清單。 |
 | LocalizedResources | 0:n | 當地語系化資源的清單。 |
@@ -54,16 +54,16 @@ ms.locfileid: "81681406"
 
 **SupportedLanguages** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| DefaultLanguage | 是 | 用來做為當地語系化資源的預設語言。 |
-| MergeBehavior | 否 | 列舉值，這些值是與具有相同識別碼之父代原則中存在的 ClaimType 合併的值。 在覆寫基本原則中指定的宣告時，請使用這個屬性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值指定應該在父代原則中指定的集合結尾後，附加上存在的資料集合。 `Prepend` 值指定應該在父代原則中指定的集合之前，新增存在的資料集合。 `ReplaceAll` 值指定應該忽略父代原則中定義的資料集合，而改用目前原則中定義的資料。 |
+| DefaultLanguage | Yes | 用來做為當地語系化資源的預設語言。 |
+| MergeBehavior | No | 列舉值，這些值是與具有相同識別碼之父代原則中存在的 ClaimType 合併的值。 在覆寫基本原則中指定的宣告時，請使用這個屬性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值指定應該在父代原則中指定的集合結尾後，附加上存在的資料集合。 `Prepend` 值指定應該在父代原則中指定的集合之前，新增存在的資料集合。 `ReplaceAll` 值指定應該忽略父代原則中定義的資料集合，而改用目前原則中定義的資料。 |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
 
 **SupportedLanguages** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1:n | 根據 RFC 5646 顯示符合語言標記的內容 - 識別語言的標記。 |
 
@@ -71,13 +71,13 @@ ms.locfileid: "81681406"
 
 **LocalizedResources** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| Id | 是 | 用來唯一識別當地語系化資源的識別碼。 |
+| Id | Yes | 用來唯一識別當地語系化資源的識別碼。 |
 
 **LocalizedResources** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0:n | 定義不同文化中的整個集合。 對於不同的文化特性，集合可以有不同數量的項目和不同的字串。 集合範例會包含宣告類型中出現的列舉。 例如在下拉式清單中，會向使用者顯示國家/地區清單。 |
 | LocalizedStrings | 0:n | 定義各種文化特性中的所有字串，出現在集合中的字串除外。 |
@@ -86,7 +86,7 @@ ms.locfileid: "81681406"
 
 **LocalizedCollections** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1:n | 支援語言清單。 |
 
@@ -94,29 +94,29 @@ ms.locfileid: "81681406"
 
 **LocalizedCollection** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| ElementType | 是 | 參考原則檔中的 ClaimType 元素或使用者介面元素。 |
-| ElementId | 是 | 此字串包含對 ClaimsSchema 區段中已定義的宣告類型，如果 **ElementType** 設為 ClaimType，則會使用該字串。 |
-| TargetCollection | 是 | 目標集合。 |
+| ElementType | Yes | 參考原則檔中的 ClaimType 元素或使用者介面元素。 |
+| ElementId | Yes | 此字串包含對 ClaimsSchema 區段中已定義的宣告類型，如果 **ElementType** 設為 ClaimType，則會使用該字串。 |
+| TargetCollection | Yes | 目標集合。 |
 
 **LocalizedCollection** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | 項目 | 0:n | 定義在使用者介面中可供使用者選取的某個宣告選項，例如下拉式清單中的值。 |
 
 **Item** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| Text | 是 | 此選項應會在使用者介面中向使用者顯示的易記顯示字串。 |
-| 值 | 是 | 與選取此選項相關聯的字串宣告值。 |
-| SelectByDefault | 否 | 指出預設是否應該在 UI 中選取此選項。 可能的值：True 或 False。 |
+| Text | Yes | 此選項應會在使用者介面中向使用者顯示的易記顯示字串。 |
+| 值 | Yes | 與選取此選項相關聯的字串宣告值。 |
+| SelectByDefault | No | 指出預設是否應該在 UI 中選取此選項。 可能的值：True 或 False。 |
 
 下列範例顯示 **LocalizedCollections** 元素的用法。 其包含兩個 **LocalizedCollection** 元素，一個適用於英文，另一個適用於西班牙文。 兩者皆會使用英文和西班牙文的項目清單，設定宣告 `Gender` 的**限制**集合。
 
-```XML
+```xml
 <LocalizedResources Id="api.selfasserted.en">
  <LocalizedCollections>
    <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
@@ -138,17 +138,17 @@ ms.locfileid: "81681406"
 
 **LocalizedStrings** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1:n | 當地語系化的字串。 |
 
 **LocalizedString** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| ElementType | 是 | 可能的值[： ClaimsProvider](#claimsprovider)、 [ClaimType](#claimtype)、 [ErrorMessage](#errormessage)、GetLocalizedStringsTransformationClaimType [、述](#predicate)詞、 [InputValidation](#inputvalidation)或[UxElement](#uxelement)。 [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype)   | 
-| ElementId | 是 | 如果**ElementType**設為`ClaimType`、 `Predicate`或`InputValidation`，則這個元素會包含已在 ClaimsSchema 區段中定義之宣告類型的參考。 |
-| StringId | 是 | 如果 **ElementType** 設為 `ClaimType`，則此元素會包含對宣告類型之屬性的參考。 可能的值：`DisplayName`、`AdminHelpText` 或 `PatternHelpText`。 `DisplayName` 值用於設定宣告顯示名稱。 `AdminHelpText` 值用於設定宣告使用者的說明文字名稱。 `PatternHelpText` 值用於設定宣告模式說明文字。 如果 **ElementType** 設為 `UxElement`，則此元素會包含使用者介面元素之屬性的參考。 如果 **ElementType** 設為 `ErrorMessage`，則此元素會指定錯誤訊息的識別碼。 如需 `UxElement` 識別碼的完整清單，請參閱[當地語系化字串識別碼](localization-string-ids.md)。|
+| ElementType | Yes | 可能的值[： ClaimsProvider](#claimsprovider)、 [ClaimType](#claimtype)、 [ErrorMessage](#errormessage)、GetLocalizedStringsTransformationClaimType [、述](#predicate)詞、 [InputValidation](#inputvalidation)或[UxElement](#uxelement)。 [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype)   | 
+| ElementId | Yes | 如果**ElementType**設為 `ClaimType` 、 `Predicate` 或，則 `InputValidation` 這個元素會包含已在 ClaimsSchema 區段中定義之宣告類型的參考。 |
+| StringId | Yes | 如果 **ElementType** 設為 `ClaimType`，則此元素會包含對宣告類型之屬性的參考。 可能的值：`DisplayName`、`AdminHelpText` 或 `PatternHelpText`。 `DisplayName` 值用於設定宣告顯示名稱。 `AdminHelpText` 值用於設定宣告使用者的說明文字名稱。 `PatternHelpText` 值用於設定宣告模式說明文字。 如果 **ElementType** 設為 `UxElement`，則此元素會包含使用者介面元素之屬性的參考。 如果 **ElementType** 設為 `ErrorMessage`，則此元素會指定錯誤訊息的識別碼。 如需 `UxElement` 識別碼的完整清單，請參閱[當地語系化字串識別碼](localization-string-ids.md)。|
 
 ## <a name="elementtype"></a>ElementType
 
@@ -157,10 +157,10 @@ ms.locfileid: "81681406"
 | 要當地語系化的元素 | ElementType | ElementId |StringId |
 | --------- | -------- | ----------- |----------- |
 | 識別提供者名稱 |`ClaimsProvider`| | ClaimsExchange 元素的識別碼|
-| 宣告類型屬性|`ClaimType`|宣告類型的名稱| 要當地語系化之宣告的屬性。 可能的值`AdminHelpText`： `DisplayName`、 `PatternHelpText`、和`UserHelpText`。|
+| 宣告類型屬性|`ClaimType`|宣告類型的名稱| 要當地語系化之宣告的屬性。 可能的值： `AdminHelpText` 、 `DisplayName` 、 `PatternHelpText` 和 `UserHelpText` 。|
 |錯誤訊息|`ErrorMessage`||錯誤訊息的識別碼 |
 |將當地語系化的字串複製到宣告中|`GetLocalizedStringsTra nsformationClaimType`||輸出宣告的名稱|
-|述詞使用者訊息|`Predicate`|述詞的名稱| 要當地語系化之述詞的屬性。 可能的值`HelpText`：。|
+|述詞使用者訊息|`Predicate`|述詞的名稱| 要當地語系化之述詞的屬性。 可能的值： `HelpText` 。|
 |述詞群組使用者訊息|`InputValidation`|PredicateValidation 元素的識別碼。|PredicateGroup 元素的識別碼。 述詞群組必須是述詞驗證元素的子系，如 ElementId 中所定義。|
 |使用者介面元素 |`UxElement` | | 要當地語系化之使用者介面元素的識別碼。|
 
@@ -205,7 +205,7 @@ ClaimType 值是用來將其中一個宣告屬性當地語系化。
 
 下列範例顯示如何將電子郵件宣告類型的 DisplayName、UserHelpText 和 PatternHelpText 屬性當地語系化。
 
-```XML
+```xml
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
@@ -228,7 +228,7 @@ ErrorMessage 值是用來將其中一個系統錯誤訊息當地語系化。
 下列範例顯示如何將 UserMessageIfClaimsPrincipalAlreadyExists 錯誤訊息當地語系化。
 
 
-```XML
+```xml
 <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
 ```
 
@@ -319,7 +319,7 @@ InputValidation 值是用來將其中一個[PredicateValidation](predicates.md)�
 
 下列範例示範如何將述詞驗證群組的解說文字當地語系化。
 
-```XML
+```xml
 <LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
 ```
 
@@ -327,7 +327,7 @@ InputValidation 值是用來將其中一個[PredicateValidation](predicates.md)�
 
 UxElement 值是用來將其中一個使用者介面專案當地語系化。 下列範例顯示如何將 [繼續] 和 [取消] 按鈕當地語系化。
 
-```XML
+```xml
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```

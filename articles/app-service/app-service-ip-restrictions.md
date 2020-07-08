@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77172aacc4c58e6430339328410744cc866def3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639275"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207119"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service 存取限制
 
@@ -30,7 +30,7 @@ ms.locfileid: "81639275"
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>在入口網站中新增和編輯存取限制規則 ##
 
-若要將存取限制規則新增至您的應用程式，請使用功能表來開啟 [**網路**>**存取限制**]，然後按一下 [**設定存取限制**]。
+若要將存取限制規則新增至您的應用程式，請使用功能表來開啟 [**網路** > **存取限制**]，然後按一下 [**設定存取限制**]。
 
 ![App Service 網路功能選項](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -59,6 +59,10 @@ ms.locfileid: "81639275"
 服務端點不能用來限制對 App Service 環境中執行之應用程式的存取。 當您的應用程式在 App Service 環境時，您可以使用 IP 存取規則來控制對應用程式的存取。 
 
 透過服務端點，您可以使用應用程式閘道或其他 WAF 裝置來設定您的應用程式。 您也可以使用安全後端來設定多層式應用程式。 如需某些可能性的詳細資訊，請參閱[網路功能和 App Service](networking-features.md) ，以及[與服務端點的應用程式閘道整合](networking/app-gateway-with-service-endpoints.md)。
+
+> [!NOTE]
+> 使用 IP SSL 虛擬 IP （VIP）的 web 應用程式目前不支援服務端點。 
+>
 
 ## <a name="managing-access-restriction-rules"></a>管理存取限制規則
 

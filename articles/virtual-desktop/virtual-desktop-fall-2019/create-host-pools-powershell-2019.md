@@ -4,16 +4,16 @@ description: 如何使用 PowerShell Cmdlet 在 Windows 虛擬桌面中建立主
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1d312417017676d0b0bc53e3e16e229e45f1aa17
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 79bd13deb66998c8a1acde28774b47fd567d368c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659424"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204705"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 建立主機集區
 
@@ -71,7 +71,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 >[!NOTE]
 >如果要使用 Windows 7 作為主機 OS 來部署虛擬機器，則建立和部署程序會略有不同。 如需詳細資料，請參閱[在 Windows 虛擬桌面上部署 Windows 7 虛擬機器](deploy-windows-7-virtual-machine.md)。
 
-建立工作階段主機虛擬機器之後，[將 Windows 授權套用至工作階段主機 VM](../apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm)，不用支付其他授權費用即可執行 Windows 或 Windows Server 虛擬機器。 
+建立工作階段主機虛擬機器之後，[將 Windows 授權套用至工作階段主機 VM](../apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm)，不用支付其他授權費用即可執行 Windows 或 Windows Server 虛擬機器。
 
 ## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations"></a>準備虛擬機器以安裝 Windows 虛擬桌面代理程式
 

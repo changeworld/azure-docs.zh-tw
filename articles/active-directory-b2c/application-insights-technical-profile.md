@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f50373b0841b7626bc405f121015c15ae1587a97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77bb53e2605913fcee6999284acb04616efc53af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80108571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201407"
 ---
 # <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自訂原則中定義 Application Insights 技術設定檔
 
@@ -45,9 +45,9 @@ Azure Active Directory B2C （Azure AD B2C）支援使用提供給 Azure AD B2C 
 
 ## <a name="input-claims"></a>輸入宣告
 
-**InputClaims**元素包含要傳送至 Application Insights 的宣告清單。 您也可以將宣告的名稱對應至您想要在 Application Insights 中顯示的名稱。 下列範例顯示如何將遙測傳送至 Application Insights。 事件的屬性會透過語法`{property:NAME}`加入，其中 NAME 是要新增至事件的屬性。 DefaultValue 可以是靜態值，或由其中[一個支援的宣告解析程式](claim-resolver-overview.md)解析的值。
+**InputClaims**元素包含要傳送至 Application Insights 的宣告清單。 您也可以將宣告的名稱對應至您想要在 Application Insights 中顯示的名稱。 下列範例顯示如何將遙測傳送至 Application Insights。 事件的屬性會透過語法加入 `{property:NAME}` ，其中 NAME 是要新增至事件的屬性。 DefaultValue 可以是靜態值，或由其中[一個支援的宣告解析程式](claim-resolver-overview.md)解析的值。
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
   <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" DefaultValue="{Context:CorrelationId}" />
@@ -73,11 +73,11 @@ Azure Active Directory B2C （Azure AD B2C）支援使用提供給 Azure AD B2C 
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| InstrumentationKey| 是 | Application Insights[檢測金鑰](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key)，將用來記錄事件。 | 
-| DeveloperMode| 否 | 布林值，指出是否已啟用開發人員模式。 可能的值`true` ： `false`或（預設）。 此中繼資料會控制如何緩衝處理事件。 在具有最少事件量的開發環境中，啟用開發人員模式會導致事件立即傳送到 Application Insights。|  
-|DisableTelemetry |否 |布林值，指出是否應該啟用遙測。 可能的值`true` ： `false`或（預設）。| 
+| InstrumentationKey| Yes | Application Insights[檢測金鑰](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key)，將用來記錄事件。 | 
+| DeveloperMode| No | 布林值，指出是否已啟用開發人員模式。 可能的值： `true` 或 `false` （預設）。 此中繼資料會控制如何緩衝處理事件。 在具有最少事件量的開發環境中，啟用開發人員模式會導致事件立即傳送到 Application Insights。|  
+|DisableTelemetry |No |布林值，指出是否應該啟用遙測。 可能的值： `true` 或 `false` （預設）。| 
 
 
 ## <a name="next-steps"></a>後續步驟

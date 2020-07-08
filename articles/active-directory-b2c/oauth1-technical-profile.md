@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184072"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204076"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 OAuth1 技術設定檔
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C （Azure AD B2C）提供[OAuth 1.0 通訊協定](http
 
 **Protocol** 元素的 **Name** 屬性必須設定為 `OAuth1`。 例如，**Twitter-OAUTH1** 技術設定檔的通訊協定是 `OAuth1`。
 
-```XML
+```xml
 <TechnicalProfile Id="Twitter-OAUTH1">
   <DisplayName>Twitter</DisplayName>
   <Protocol Name="OAuth1" />
@@ -70,21 +70,21 @@ Azure Active Directory B2C （Azure AD B2C）提供[OAuth 1.0 通訊協定](http
 
 | 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| client_id | 是 | 識別提供者的應用程式識別碼。 |
-| ProviderName | 否 | 識別提供者的名稱。 |
-| request_token_endpoint | 是 | 依據 RFC 5849 的要求權杖端點 URL。 |
-| authorization_endpoint | 是 | 依據 RFC 5849 的授權端點 URL。 |
-| access_token_endpoint | 是 | 依據 RFC 5849 的權杖端點 URL。 |
-| ClaimsEndpoint | 否 | 使用者資訊端點的 URL。 |
-| ClaimsResponseFormat | 否 | 宣告回應格式。|
+| client_id | Yes | 識別提供者的應用程式識別碼。 |
+| ProviderName | No | 識別提供者的名稱。 |
+| request_token_endpoint | Yes | 依據 RFC 5849 的要求權杖端點 URL。 |
+| authorization_endpoint | Yes | 依據 RFC 5849 的授權端點 URL。 |
+| access_token_endpoint | Yes | 依據 RFC 5849 的權杖端點 URL。 |
+| ClaimsEndpoint | No | 使用者資訊端點的 URL。 |
+| ClaimsResponseFormat | No | 宣告回應格式。|
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
 **CryptographicKeys** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| client_secret | 是 | 識別提供者應用程式的用戶端密碼。   |
+| client_secret | Yes | 識別提供者應用程式的用戶端密碼。   |
 
 ## <a name="redirect-uri"></a>重新導向 URI
 

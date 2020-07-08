@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188540"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202215"
 ---
 # <a name="general-claims-transformations"></a>一般宣告轉換
 
@@ -28,14 +28,14 @@ ms.locfileid: "78188540"
 
 將宣告的值複製到另一個。 這兩個宣告必須來自相同的類型。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | string、int | 要複製的宣告類型。 |
 | OutputClaim | outputClaim | string、int | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
 
 使用此宣告轉換，將字串或數值宣告中的值複製到另一個宣告。 下列範例會將 externalEmail 宣告值複製到電子郵件宣告。
 
-```XML
+```xml
 <ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
@@ -57,14 +57,14 @@ ms.locfileid: "78188540"
 
 檢查 **inputClaim** 是否存在，並據以將 **outputClaim** 設定為 True 或 False。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |任意 | 必須驗證其存在的輸入宣告。 |
 | OutputClaim | outputClaim | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
 
 使用此宣告轉換來檢查某個宣告是否存在或包含任何值。 傳回值是布林值，會指出宣告是否存在。 下列範例會檢查電子郵件地址是否存在。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim" />
@@ -86,14 +86,14 @@ ms.locfileid: "78188540"
 
 使用 salt 和祕密，針對提供的純文字進行雜湊處理。 使用的雜湊演算法是 SHA-256。
 
-| 項目 | TransformationClaimType | 資料類型 | 注意 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | plaintext | 字串 | 要加密的輸入宣告 |
 | InputClaim | salt | 字串 | Salt 參數。 您可以使用 `CreateRandomString` 宣告轉換來建立隨機值。 |
-| InputParameter | randomizerSecret | 字串 | 指向現有的 Azure AD B2C**原則金鑰**。 若要建立新的原則金鑰：在您的 Azure AD B2C 租使用者的 [**管理**] 底下，選取 [ **Identity Experience Framework**]。 選取 [原則] [**金鑰**] 以查看您的租使用者中可用的金鑰。 選取 [新增]  。 針對 [選項]****，選取 [手動]****。 提供名稱（可能會自動新增*B2C_1A_* 前置詞）。 在 [**密碼**] 文字方塊中，輸入您想要使用的任何密碼，例如1234567890。 針對 [金鑰使用方法]**** 選取 [簽章]****。 選取 [建立]  。 |
-| OutputClaim | 雜湊 | 字串 | 叫用此宣告轉換之後所產生的 ClaimType。 設定於 `plaintext` inputClaim 中的宣告。 |
+| InputParameter | randomizerSecret | 字串 | 指向現有的 Azure AD B2C**原則金鑰**。 若要建立新的原則金鑰：在您的 Azure AD B2C 租使用者的 [**管理**] 底下，選取 [ **Identity Experience Framework**]。 選取 [原則] [**金鑰**] 以查看您的租使用者中可用的金鑰。 選取 [新增]。 針對 [選項]，選取 [手動]。 提供名稱（可能會自動新增*B2C_1A_* 前置詞）。 在 [**密碼**] 文字方塊中，輸入您想要使用的任何密碼，例如1234567890。 針對 [金鑰使用方法] 選取 [簽章]。 選取 [建立]。 |
+| OutputClaim | hash | 字串 | 叫用此宣告轉換之後所產生的 ClaimType。 設定於 `plaintext` inputClaim 中的宣告。 |
 
-```XML
+```xml
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="password" TransformationClaimType="plaintext" />

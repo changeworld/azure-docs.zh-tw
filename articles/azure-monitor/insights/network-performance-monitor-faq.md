@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c672caaedd3e5cc591659f24c73f54f399c73de
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096219"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193998"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>網路效能監控解決方案常見問題集
 
@@ -149,19 +149,19 @@ NPM 只會識別來源 IP 和目的地 IP 之間的基礎網路躍點 (交換器
 
     NetworkMonitoring 
      | where SubType == "ERMSPeeringUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond 
     
 如需私用對等互連層級資訊，請在記錄搜尋中使用下列所述的查詢
 
     NetworkMonitoring 
      | where SubType == "ERVNetConnectionUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond
   
 如需線路層級資訊，請在記錄搜尋中使用下列所述的查詢
 
     NetworkMonitoring 
         | where SubType == "ERCircuitTotalUtilization"
-        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | project CircuitName, BitsInPerSecond, BitsOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>NPM 的效能監控支援哪些區域？
 NPM 可以從其中一個[支援區域](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)中裝載的工作區中，監控世界各地網路之間的連線情形
@@ -213,7 +213,7 @@ HopLatencyValues 是來源到端點。
 * 若要驗證中繼網路防火牆或 Azure NSG 是否未封鎖所需連接埠上的通訊，請依照以下說明使用第三方 PsPing 公用程式：
   * 可以在[這裡](https://technet.microsoft.com/sysinternals/psping.aspx)下載 psping 公用程式 
   * 從來源節點執行下列命令。
-    * psping -n 15 \<destination node IPAddress\>:portNumber 依預設，NPM 使用 8084 連接埠。 如果已使用 EnableRules.ps1 指令碼明確變更了此設定，請輸入您正在使用的自訂連接埠號碼。 這是從 Azure 機器到內部部署的 Ping
+    * psping-n 15 \<destination node IPAddress\> :P ortnumber 預設為 NPM 使用8084埠。 如果已使用 EnableRules.ps1 指令碼明確變更了此設定，請輸入您正在使用的自訂連接埠號碼。 這是從 Azure 機器到內部部署的 Ping
 * 檢查 Ping 是否成功。 如果未成功，則表示中繼網路防火牆或 Azure NSG 目前封鎖了此連接埠上的流量。
 * 現在請從目的地節點到來源節點 IP 執行命令。
 
@@ -222,9 +222,9 @@ HopLatencyValues 是來源到端點。
 因為 A 到 B 之間的網路路徑可能與 B 到 A 之間的網路路徑不同，所以會發現到不同的遺失和延遲值。
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>為何探索不到我所有的 ExpressRoute 線路和對等互連連線？
-NPM 現在會在使用者有權存取的所有訂用帳戶中，探索 ExpressRoute 線路和對等互連連線。 選擇您 Express Route 資源所連結的所有訂用帳戶，並針對每個探索到的資源啟用監視。 NPM 會在探索私用對等互連時尋找連線物件，因此，請檢查 VNET 是否會與您的對等互連相關聯。
+NPM 現在會在使用者有權存取的所有訂用帳戶中，探索 ExpressRoute 線路和對等互連連線。 選擇您 Express Route 資源所連結的所有訂用帳戶，並針對每個探索到的資源啟用監視。 NPM 會在探索私用對等互連時尋找連線物件，因此，請檢查 VNET 是否會與您的對等互連相關聯。 NPM 不會偵測到來自 Log Analytics 工作區的不同租使用者中的線路和對等互連。
 
-### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>ER 監控功能出現「流量未通過任何線路」的診斷訊息。 這是什麼意思？
+### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>ER 監控功能出現「流量未通過任何線路」的診斷訊息。 這代表什麼？
 
 這種情況可能是，內部部署和 Azure 節點之間存在狀況良好的連線，但是流量並未流至由 NPM 監控的 ExpressRoute 線路。 
 
@@ -233,6 +233,12 @@ NPM 現在會在使用者有權存取的所有訂用帳戶中，探索 ExpressRo
 * ER 線路關閉。
 * 因為路由篩選條件設定方式的關係，導致其優先順序高於欲使用的 ExpressRoute 線路上的其他路由 (例如 VPN 連線或其他 ExpressRoute 線路)。 
 * 監視設定中，選擇用於監控 ExpressRoute 線路的內部部署和 Azure 節點，並未在欲使用的 ExpressRoute 線路上相互連線。 請確定您選擇的是正確的節點，而這些節點有透過您要監控的 ExpressRoute 線路相互連線。
+
+### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>為什麼 ExpressRoute 監視器會在可用並傳遞資料時，將我的線路/對等互連報告為狀況不良。
+ExpressRoute 監視會比較代理程式/服務所報告的網路效能值（遺失、延遲和頻寬使用率），以及設定期間所設定的閾值。 若為線路，如果所報告的頻寬使用率大於設定的閾值，線路就會標示為狀況不良。 針對對等互連，如果報告的 [遺失]、[延遲] 或 [頻寬使用率] 大於設定的 [閾值]，則對等互連會標示為 [狀況不良]。 NPM 不會利用計量或任何其他形式的資料，以 deicde 健全狀況狀態。
+
+### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>為什麼 ExpressRoute Monitor'bandwidth 使用率會回報從計量位 in/out differrent 的值
+針對 ExpressRoute 監視器，頻寬 utiliation 是過去20分鐘內連入和連出頻寬的平均，以位/碼錶示。針對 Express Route 計量，位 in/out 是每分鐘的資料點。兩者在內部使用的資料集都相同，但在 NPM 與 ER 計量之間的匯總 valies。 針對細微、分分鐘監視和快速警示，建議您直接在 ER 計量上設定警示
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>在設定監視我的 ExpressRoute 線路時，並未偵測 Azure 節點。
 如果透過 Operations Manager 連線 Azure 節點，則會發生此情況。 ExpressRoute 監控功能僅支援以直接代理程式連線的 Azure 節點。

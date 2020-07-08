@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 125d89301e9d2cc3fc863bffb9b9e6c41e0c129e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 16fdc38d6235ddd0f72c7a35a3d71973ce01a4be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229930"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203209"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的技術設定檔
 
@@ -49,7 +49,7 @@ ms.locfileid: "82229930"
 所有類型的技術設定檔都共用相同的概念。 您傳送輸入宣告、執行宣告轉換，然後與已設定的對象 (例如識別提供者、REST API 或 Azure AD 目錄服務) 進行通訊。 完成此程式之後，技術設定檔會傳回輸出宣告，而且可能會執行輸出宣告轉換。 下圖說明技術設定檔中所參考轉換和對應的處理方式。 不論技術設定檔的互動對象是誰，在執行任何宣告轉換之後，技術設定檔的輸出宣告都會立即儲存在宣告包中。
 
 ![說明技術設定檔流程的圖表](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
- 
+
 1. **單一登入（SSO）會話管理**-使用[SSO 會話管理](custom-policy-reference-sso.md)來還原技術設定檔的會話狀態。
 1. **輸入宣告轉換**-每個輸入[宣告轉換](claimstransformations.md)的輸入宣告都會從宣告包中挑選。  輸入宣告轉換的輸出宣告可以作為後續輸入宣告轉換的輸入宣告。
 1. **輸入宣告**-從宣告包中挑選宣告，並用於技術設定檔。 例如，[自我判斷技術設定檔](self-asserted-technical-profile.md)會使用輸入宣告來預先填入使用者所提供的輸出宣告。 REST API 技術設定檔會使用輸入宣告將輸入參數傳送給 REST API 端點。 Azure Active Directory 會使用輸入宣告作為唯一識別碼來讀取、更新或刪除帳戶。
@@ -68,9 +68,9 @@ ms.locfileid: "82229930"
 
 技術設定檔可以包含另一個技術設定檔，以變更設定或新增功能。  `IncludeTechnicalProfile`元素是基礎技術設定檔的參考，其衍生技術設定檔。 在層數上並無限制。
 
-例如，**AAD-UserReadUsingAlternativeSecurityId-NoError** 技術設定檔包含 **AAD-UserReadUsingAlternativeSecurityId**。 此技術設定檔會`RaiseErrorIfClaimsPrincipalDoesNotExist`將中繼資料`true`專案設定為，而且如果社交帳戶不存在於目錄中，則會引發錯誤。 **AAD-aad-userreadusingalternativesecurityid-noerror-aad-userreadusingalternativesecurityid-noerror**會覆寫此行為，並停用該錯誤訊息。
+例如，**AAD-UserReadUsingAlternativeSecurityId-NoError** 技術設定檔包含 **AAD-UserReadUsingAlternativeSecurityId**。 此技術設定檔 `RaiseErrorIfClaimsPrincipalDoesNotExist` 會將中繼資料專案設定為 `true` ，而且如果社交帳戶不存在於目錄中，則會引發錯誤。 **AAD-aad-userreadusingalternativesecurityid-noerror-aad-userreadusingalternativesecurityid-noerror**會覆寫此行為，並停用該錯誤訊息。
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
   <Metadata>
     <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">false</Item>
@@ -81,7 +81,7 @@ ms.locfileid: "82229930"
 
 **AAD-UserReadUsingAlternativeSecurityId** 包含 `AAD-Common` 技術設定檔。
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">Read</Item>
@@ -105,7 +105,7 @@ ms.locfileid: "82229930"
 
 **Aad-aad-userreadusingalternativesecurityid-noerror-aad-userreadusingalternativesecurityid-noerror**和**aad aad-userreadusingalternativesecurityid-noerror**不會指定所需的**通訊協定**元素，因為它是在**AAD 通用**技術設定檔中指定。
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-Common">
   <DisplayName>Azure Active Directory</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

@@ -4,16 +4,16 @@ description: 如何設定 Windows 虛擬桌面個人桌面主機集區的指派�
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ddfd9346f4a72ceb2e8bf5c336fb3de9b5c8c5c7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 376f9d78f508c245bec2d066863566ace68eff0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827466"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204858"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>設定個人桌面主機集區指派類型
 
@@ -31,7 +31,7 @@ ms.locfileid: "83827466"
 
 若要自動指派使用者，請先將其指派給個人桌面主機集區，使其可以在自己的摘要中看見桌面。 當指派的使用者在自己的摘要中啟動桌面時，如果他們尚未連線到完成指派程式的主機集區，則將宣告可用的工作階段主機。
 
-開始之前，請先[下載並匯入 Windows 虛擬桌面 PowerShell 模組](/powershell/windows-virtual-desktop/overview/) (如果您還沒這麼做的話)。 
+開始之前，請先[下載並匯入 Windows 虛擬桌面 PowerShell 模組](/powershell/windows-virtual-desktop/overview/) (如果您還沒這麼做的話)。
 
 > [!NOTE]
 > 遵循這些指示之前，請確定您已安裝 Windows 虛擬桌面 PowerShell 模組 1.0.1534.2001 或更新版本。

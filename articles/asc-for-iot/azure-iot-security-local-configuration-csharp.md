@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc869a8ab905275c8082c4fd375f8f6d6d48d97e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311669"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85205453"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>瞭解本機設定檔案（c # 代理程式）
 
@@ -30,9 +30,9 @@ IoT 安全性代理程式的 Azure 資訊安全中心會使用本機設定檔案
 
 C # 安全性代理程式會使用多個設定檔：
 
-- **一般 .config** -代理程式相關設定。
-- **驗證 .config** -驗證相關設定（包括驗證詳細資料）。
-- **SecurityIotInterface** -IoT 相關設定。
+- **General.config**代理程式的相關設定。
+- **Authentication.config** -驗證相關設定（包括驗證詳細資料）。
+- **SecurityIotInterface.config** IoT 相關設定。
 
 設定檔包含預設設定。 驗證設定會在代理程式安裝期間填入，而當代理程式重新開機時，系統會對設定檔進行變更。
 
@@ -40,13 +40,13 @@ C # 安全性代理程式會使用多個設定檔：
 
 若為 Linux：
 
-- 作業系統設定檔位於`/var/ASCIoTAgent`。
+- 作業系統設定檔位於 `/var/ASCIoTAgent` 。
 
 若為 Windows：
 
 - 作業系統設定檔位於安全性代理程式的目錄中。
 
-### <a name="generalconfig-configurations"></a>一般 .config 設定
+### <a name="generalconfig-configurations"></a>General.config 設定
 
 | 設定名稱 | 可能值 | 詳細資料 |
 |:-----------|:---------------|:--------|
@@ -62,9 +62,9 @@ C # 安全性代理程式會使用多個設定檔：
 | logFilePath | 檔案的路徑 | 如果 fileLogLevel > Off，記錄檔就會寫入這個檔案。 |
 | defaultEventPriority | 「高」、「低」、「關閉」 | 預設事件優先順序。 |
 
-### <a name="generalconfig-example"></a>一般 .config 範例
+### <a name="generalconfig-example"></a>General.config 範例
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <General>
   <add key="agentId" value="da00006c-dae9-4273-9abc-bcb7b7b4a987" />
@@ -81,7 +81,7 @@ C # 安全性代理程式會使用多個設定檔：
 </General>
 ```
 
-### <a name="authenticationconfig"></a>驗證 .config
+### <a name="authenticationconfig"></a>Authentication.config
 
 | 組態名稱 | 可能值 | 詳細資料 |
 |:-----------|:---------------|:--------|
@@ -89,16 +89,16 @@ C # 安全性代理程式會使用多個設定檔：
 | deviceId | 字串 | 裝置的識別碼（如 Azure IoT 中樞中所註冊）。 || schedulerInterval | TimeSpan 字串 | 內部排程器間隔。 |
 | gatewayHostname | 字串 | Azure Iot 中樞的主機名稱。 通常 <我的中樞>。 azure-devices.net |
 | filePath | 字串-檔案的路徑 | 包含驗證密碼之檔案的路徑。|
-| type | "SymmetricKey"、"SelfSignedCertificate" | 用於驗證的使用者密碼。 如果使用者密碼是對稱金鑰，請選擇 [ *SymmetricKey* ]，如果密碼是自我簽署憑證，請選擇 [*自我簽署憑證*]。 |
+| 類型 | "SymmetricKey"、"SelfSignedCertificate" | 用於驗證的使用者密碼。 如果使用者密碼是對稱金鑰，請選擇 [ *SymmetricKey* ]，如果密碼是自我簽署憑證，請選擇 [*自我簽署憑證*]。 |
 | 身分識別 | 「DPS」、「模組」、「裝置」 | 驗證身分識別-如果驗證是透過 DPS、模組（如果使用模組認證進行驗證，則為），或在使用裝置認證進行驗證時為裝置。
 | certificateLocationKind |  "LocalFile"、"Store" | LocalFile 如果憑證儲存在檔案中，則儲存憑證是否位於憑證存放區中。 |
 | idScope | 字串 | DPS 的識別碼範圍 |
 | registrationId | 字串  | DPS 裝置註冊識別碼。 |
 |
 
-### <a name="authenticationconfig-example"></a>Authentication .config 範例
+### <a name="authenticationconfig-example"></a>Authentication.config 範例
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
   <add key="moduleName" value="azureiotsecurity"/>
@@ -113,16 +113,16 @@ C # 安全性代理程式會使用多個設定檔：
 </Authentication>
 ```
 
-### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface .config
+### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
 | 設定名稱 | 可能值 | 詳細資料 |
 |:-----------|:---------------|:--------|
 | transportType | "Ampq" "Mqtt" | IoT 中樞傳輸類型。 |
 |
 
-### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface .config 範例
+### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface.config 範例
 
-```XML
+```xml
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
   <add key="transportType" value="Amqp"/>

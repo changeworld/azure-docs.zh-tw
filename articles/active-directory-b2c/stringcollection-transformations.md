@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729707"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203243"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 宣告轉換
 
@@ -28,7 +28,7 @@ ms.locfileid: "81729707"
 
 將字串宣告加入至新的唯一值 stringCollection 宣告。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | 字串 | 要新增至輸出宣告的 ClaimType。 |
 | InputClaim | collection | stringCollection | [選擇性] 如果指定，宣告轉換就會複製此集合中的項目，並將項目新增至輸出集合宣告的結尾。 |
@@ -38,7 +38,7 @@ ms.locfileid: "81729707"
 
 下列宣告轉換會將 **email** ClaimType 新增至 **otherMails** ClaimType。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="item" />
@@ -53,16 +53,16 @@ ms.locfileid: "81729707"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **集合**： ["someone@outlook.com"]
-  - **專案**： "admin@contoso.com"
+  - **集合**： ["" someone@outlook.com ]
+  - **專案**： " admin@contoso.com "
 - 輸出宣告：
-  - **collection**： ["someone@outlook.com"，"admin@contoso.com"]
+  - **collection**： ["" someone@outlook.com ，" admin@contoso.com "]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
 將字串參數新增至新的唯一值 stringCollection 宣告。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | [選擇性] 如果指定，宣告轉換就會複製此集合中的項目，並將項目新增至輸出集合宣告的結尾。 |
 | InputParameter | item | 字串 | 要新增至輸出宣告的值。 |
@@ -70,7 +70,7 @@ ms.locfileid: "81729707"
 
 使用此宣告轉換來將字串值新增至新的或現有的 stringCollection。 下列範例會將常數的電子郵件地址 (admin@contoso.com) 新增至 **otherMails** 宣告。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -87,24 +87,24 @@ ms.locfileid: "81729707"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **集合**： ["someone@outlook.com"]
+  - **集合**： ["" someone@outlook.com ]
 - 輸入參數
-  - **專案**： "admin@contoso.com"
+  - **專案**： " admin@contoso.com "
 - 輸出宣告：
-  - **collection**： ["someone@outlook.com"，"admin@contoso.com"]
+  - **collection**： ["" someone@outlook.com ，" admin@contoso.com "]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
 從提供的字串集合中取得第一個項目。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | 宣告轉換用來取得項目的 ClaimType。 |
 | OutputClaim | extractedItem | 字串 | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 集合中的第一個項目。 |
 
 下列範例會讀取 **otherMails** 宣告，並將第一個項目傳回到 **email** 宣告。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -118,25 +118,25 @@ ms.locfileid: "81729707"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **collection**： ["someone@outlook.com"，"someone@contoso.com"]
+  - **collection**： ["" someone@outlook.com ，" someone@contoso.com "]
 - 輸出宣告：
-  - **extractedItem**： "someone@outlook.com"
+  - **extractedItem**： " someone@outlook.com "
 
 
 ## <a name="stringcollectioncontains"></a>StringCollectionContains
 
 檢查 StringCollection 宣告類型是否包含元素
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | stringCollection | 要搜尋的宣告類型。 |
 |InputParameter|item|字串|要搜尋的值。|
 |InputParameter|ignoreCase|字串|指定這個比較是否應忽略要比較之字串的大小寫。|
 | OutputClaim | outputClaim | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 如果集合包含這類字串，則為布林值指標 |
 
-下列範例會檢查`roles` stringCollection 宣告類型是否包含**admin**的值。
+下列範例會檢查 `roles` stringCollection 宣告類型是否包含**admin**的值。
 
-```XML
+```xml
 <ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
@@ -163,16 +163,16 @@ ms.locfileid: "81729707"
 
 檢查 StringCollection 宣告類型是否包含宣告值。
 
-| 項目 | TransformationClaimType | 資料類型 | 備忘錄 |
+| Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | 要搜尋的宣告類型。 |
 | InputClaim | item|字串| 包含要搜尋之值的宣告類型。|
 |InputParameter|ignoreCase|字串|指定這個比較是否應忽略要比較之字串的大小寫。|
 | OutputClaim | outputClaim | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 如果集合包含這類字串，則為布林值指標 |
 
-下列範例會檢查`roles` stringCollection 宣告類型是否包含宣告類型的值`role` 。
+下列範例會檢查 `roles` stringCollection 宣告類型是否包含宣告類型的值 `role` 。
 
-```XML
+```xml
 <ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 007d613a1f170a0ee278a838c92ade2fce9c6dec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 7c292f939339add06168c55236f8666651e4aace
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529192"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201271"
 ---
 # <a name="boolean-claims-transformations"></a>布林值宣告轉換
 
@@ -36,7 +36,7 @@ ms.locfileid: "80529192"
 
 下列宣告轉換示範如何 And 兩個布林值 ClaimType：`isEmailNotExist` 和 `isSocialAccount`。 如果這兩個輸入宣告的值均為 `true`，就會將輸出宣告 `presentEmailSelfAsserted` 設定為 `true`。 在協調流程步驟中，只有在社交帳戶電子郵件為空白時，才能使用先決條件來預設自我判斷頁面。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isEmailNotExist" TransformationClaimType="inputClaim1" />
@@ -48,7 +48,7 @@ ms.locfileid: "80529192"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>範例
+### <a name="example-of-andclaims"></a>AndClaims 的範例
 
 - 輸入宣告：
     - **inputClaim1**：true
@@ -72,7 +72,7 @@ ms.locfileid: "80529192"
 
 下列宣告轉換示範如何使用 `true` 值來檢查布林值 ClaimType 的值。 如果 `accountEnabled` ClaimType 的值是 False，就會擲回錯誤訊息。
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertAccountEnabledIsTrue" TransformationMethod="AssertBooleanClaimIsEqualToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="accountEnabled" TransformationClaimType="inputClaim" />
@@ -85,7 +85,8 @@ ms.locfileid: "80529192"
 
 
 `login-NonInteractive` 驗證技術設定檔會呼叫 `AssertAccountEnabledIsTrue` 宣告轉換。
-```XML
+
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -96,7 +97,7 @@ ms.locfileid: "80529192"
 
 自我判斷技術設定檔會呼叫驗證 **login-NonInteractive** 技術設定檔。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Custom error message if account is disabled.</Item>
@@ -107,7 +108,7 @@ ms.locfileid: "80529192"
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>範例
+### <a name="example-of-assertbooleanclaimisequaltovalue"></a>AssertBooleanClaimIsEqualToValue 的範例
 
 - 輸入宣告：
     - **inputClaim**：false
@@ -124,10 +125,9 @@ ms.locfileid: "80529192"
 | InputParameter |valueToCompareTo | boolean | 要比較的值 (True 或 False)。 |
 | OutputClaim | compareResult | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
 
-
 下列宣告轉換示範如何使用 `true` 值來檢查布林值 ClaimType 的值。 如果 `IsAgeOver21Years` ClaimType 的值等於 `true`，則宣告轉換會傳回 `true`否則傳回 `false`。
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
@@ -141,7 +141,7 @@ ms.locfileid: "80529192"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>範例
+### <a name="example-of-comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue 的範例
 
 - 輸入宣告：
     - **inputClaim**：false
@@ -149,8 +149,6 @@ ms.locfileid: "80529192"
     - **valueToCompareTo**：true
 - 輸出宣告：
     - **compareResult**：false
-
-
 
 ## <a name="notclaims"></a>NotClaims
 
@@ -163,7 +161,7 @@ ms.locfileid: "80529192"
 
 使用此宣告轉換來執行宣告上的邏輯否定。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="NotClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userExists" TransformationClaimType="inputClaim" />
@@ -174,7 +172,7 @@ ms.locfileid: "80529192"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>範例
+### <a name="example-of-notclaims"></a>NotClaims 的範例
 
 - 輸入宣告：
     - **inputClaim**：false
@@ -193,7 +191,7 @@ ms.locfileid: "80529192"
 
 下列宣告轉換示範如何 `Or` 兩個布林值 ClaimType。 在協調流程步驟中，只有在其中一個宣告的值為 `true` 時，才能使用先決條件來預設自我判斷頁面。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="OrClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isLastTOSAcceptedNotExists" TransformationClaimType="inputClaim1" />
@@ -205,7 +203,7 @@ ms.locfileid: "80529192"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>範例
+### <a name="example-of-orclaims"></a>OrClaims 的範例
 
 - 輸入宣告：
     - **inputClaim1**：true

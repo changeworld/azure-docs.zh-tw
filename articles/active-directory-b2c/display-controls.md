@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188727"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202291"
 ---
 # <a name="display-controls"></a>顯示控制項
 
@@ -30,11 +30,11 @@ ms.locfileid: "78188727"
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
- 在[自我判斷技術設定檔](self-asserted-technical-profile.md)的[中繼資料](self-asserted-technical-profile.md#metadata)區段中，參考的[ContentDefinition](contentdefinitions.md)必須`DataUri`設定為頁面合約版本2.0.0 或更高。 例如：
+ 在[自我判斷技術設定檔](self-asserted-technical-profile.md)的[中繼資料](self-asserted-technical-profile.md#metadata)區段中，參考的[ContentDefinition](contentdefinitions.md)必須 `DataUri` 設定為頁面合約版本2.0.0 或更高。 例如：
 
-```XML
+```xml
 <ContentDefinition Id="api.selfasserted">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -46,14 +46,14 @@ ms.locfileid: "78188727"
 
 [ **DisplayControl** ] 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| Id | 是 | 用於顯示控制項的識別碼。 它可以被[參考](#referencing-display-controls)。 |
-| UserInterfaceControlType | 是 | 顯示控制項的類型。 目前支援[VerificationControl](display-control-verification.md) |
+| Id | Yes | 用於顯示控制項的識別碼。 它可以被[參考](#referencing-display-controls)。 |
+| UserInterfaceControlType | Yes | 顯示控制項的類型。 目前支援[VerificationControl](display-control-verification.md) |
 
 [ **DisplayControl** ] 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | InputClaims | 0:1 | **InputClaims**是用來預先填入要從使用者收集的宣告值。 |
 | DisplayClaims | 0:1 | **DisplayClaims**是用來代表要從使用者收集的宣告。 |
@@ -66,7 +66,7 @@ ms.locfileid: "78188727"
 
 下列範例會會預先填入電子郵件地址，以使用已存在的位址進行驗證。
 
-```XML
+```xml
 <DisplayControl Id="emailControl" UserInterfaceControlType="VerificationControl">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="emailAddress" />
@@ -78,11 +78,11 @@ ms.locfileid: "78188727"
 
 每種類型的顯示控制項都需要一組不同的顯示宣告、[輸出宣告](#output-claims)，以及要執行的[動作](#display-control-actions)。
 
-類似于[自我判斷技術設定檔](self-asserted-technical-profile.md#display-claims)中所定義的**顯示宣告**，顯示宣告代表要在顯示控制項中從使用者收集的宣告。 參考的**ClaimType**元素必須為 Azure AD B2C 支援的使用者輸入類型指定**UserInputType**元素，例如`TextBox`或。 `DropdownSingleSelect` 如果**動作**需要顯示宣告值，請將**必要**的屬性設為`true` ，以強制使用者提供該特定顯示宣告的值。
+類似于[自我判斷技術設定檔](self-asserted-technical-profile.md#display-claims)中所定義的**顯示宣告**，顯示宣告代表要在顯示控制項中從使用者收集的宣告。 參考的**ClaimType**元素必須為 Azure AD B2C 支援的使用者輸入類型指定**UserInputType**元素，例如 `TextBox` 或 `DropdownSingleSelect` 。 如果**動作**需要顯示宣告值，請將**必要**的屬性設為， `true` 以強制使用者提供該特定顯示宣告的值。
 
 某些顯示宣告為特定類型的顯示控制項所需。 例如， **VerificationControl**類型的顯示控制項需要**VerificationCode** 。 使用屬性**ControlClaimType**來指定要為該必要宣告指定的 DisplayClaim。 例如：
 
-```XML
+```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
 ```
 
@@ -100,7 +100,7 @@ ms.locfileid: "78188727"
 
 下列範例會根據使用者選取的**mfaType**宣告，在電子郵件或 SMS 中傳送程式碼。
 
-```XML
+```xml
 <Action Id="SendCode">
   <ValidationClaimsExchange>
     <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AzureMfa-SendSms">
@@ -131,7 +131,7 @@ ms.locfileid: "78188727"
 
 例如：
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
   ...
   <DisplayClaims>

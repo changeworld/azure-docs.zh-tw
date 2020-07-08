@@ -4,22 +4,23 @@ description: 如何設定 Windows 虛擬桌面的 MSIX 應用程式附加。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a222e5a0602a676872eb8119e565f243f2ecc1b4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204466"
 ---
 # <a name="set-up-msix-app-attach"></a>設定 MSIX 應用程式附加
 
 > [!IMPORTANT]
-> MSIX 應用程式附加目前為個人預覽版。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> MSIX 應用程式附加目前為公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 此主題將逐步解說如何在 Windows 虛擬桌面環境中設定 MSIX 應用程式附加。
 
@@ -28,13 +29,32 @@ ms.locfileid: "83742926"
 在您開始之前，設定 MSIX 應用程式附加會需要下列項目：
 
 - 存取 Windows 測試人員入口網站以取得支援 MSIX 應用程式附加 API 的 Windows 10 版本。
-- 運作中的 Windows 虛擬桌面部署。 如需詳細資訊，請參閱[在 Windows 虛擬桌面中建立租用戶](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。
-- MSIX 封裝工具
-- 在 Windows 虛擬桌面部署中的網路共用，MSIX 套件將會儲存在該位置
+- 運作中的 Windows 虛擬桌面部署。 若要瞭解如何部署 Windows 虛擬桌面秋季2019版，請參閱[在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。 若要瞭解如何部署 Windows 虛擬桌面春季2020版，請參閱[使用 Azure 入口網站建立主機集](./create-host-pools-azure-marketplace.md)區。
+- MSIX 封裝工具。
+- Windows 虛擬桌面部署中將儲存 MSIX 套件的網路共用。
 
 ## <a name="get-the-os-image"></a>取得 OS 映像
 
-首先，您將必須取得將用於 MSIX 應用程式的 OS 映像。 取得 OS 映像：
+首先，您必須取得 OS 映射。 您可以透過 Azure 入口網站取得 OS 映射。 不過，如果您是 Windows 測試人員程式的成員，您可以選擇改為使用 Windows 測試人員入口網站。
+
+### <a name="get-the-os-image-from-the-azure-portal"></a>從 Azure 入口網站取得 OS 映射
+
+若要從 Azure 入口網站取得 OS 映射：
+
+1. 開啟[Azure 入口網站](https://portal.azure.com)並登入。
+
+2. 移至 [**建立虛擬機器**]。
+
+3. 在 [**基本**] 索引標籤中，選取 [ **Windows 10 企業版] [多重會話，版本 2004**]。
+
+4. 請遵循其餘指示來完成虛擬機器的建立。
+
+     >[!NOTE]
+     >您可以使用此 VM 來直接測試 MSIX 應用程式附加。 若要深入瞭解，請直接跳至[產生適用于 MSIX 的 VHD 或 VHDX 套件](#generate-a-vhd-or-vhdx-package-for-msix)。 否則，請繼續閱讀本節。
+
+### <a name="get-the-os-image-from-the-windows-insider-portal"></a>從 Windows 測試人員入口網站取得 OS 映射
+
+若要從 Windows 測試人員入口網站取得 OS 映射：
 
 1. 開啟 [Windows 測試人員入口網站](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) \(英文\) 並登入。
 
@@ -44,15 +64,15 @@ ms.locfileid: "83742926"
 2. 向下捲動到 [Select edition] \(選取版本\) 區段，然後選取 [Windows 10 Insider Preview Enterprise (FAST) – Build 19041] 或更新版本。
 
 3. 選取 [Confirm] \(確認\)，然後選取您想要使用的語言，然後再次選取 [確認]。
-    
+
      >[!NOTE]
      >目前，英文是使用此功能進行測試的唯一語言。 您可以選取其他語言，但可能不會如預期顯示。
-    
+
 4. 當下載連結產生時，請選取 [64 位元下載]，並將其儲存到您的本機硬碟。
 
-## <a name="prepare-the-vhd-image-for-azure"></a>準備適用於 Azure 的 VHD 映像 
+## <a name="prepare-the-vhd-image-for-azure"></a>準備適用於 Azure 的 VHD 映像
 
-開始之前，您將必須先建立主要 VHD 映像。 如果您尚未建立主要 VHD 映像，請移至[準備和自訂主要 VHD 映像](set-up-customize-master-image.md)，並依照該處的指示進行。 
+接下來，您必須建立主要 VHD 映射。 如果您尚未建立主要 VHD 映像，請移至[準備和自訂主要 VHD 映像](set-up-customize-master-image.md)，並依照該處的指示進行。
 
 建立主要 VHD 映像之後，您必須停用 MSIX 應用程式附加應用程式的自動更新。 若要停用自動更新，您將必須在提升權限的命令提示字元中執行下列命令：
 
@@ -74,10 +94,10 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-停用自動更新之後，您必須啟用 Hyper-V，因為您將會使用 Mound-VHD 命令來暫存 VHD，並使用 Dismount-VHD 來取消暫存。 
+停用自動更新之後，您必須啟用 Hyper-v，因為您會使用掛接 VHD 命令來將 VHD 預備和卸載至「移至容器」。
 
 ```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 >[!NOTE]
 >此變更需要您重新啟動虛擬機器。
@@ -86,7 +106,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
 
 將 VHD 上傳至 Azure 之後，請遵循[使用 Azure Marketplace 建立主機集區](create-host-pools-azure-marketplace.md)教學課程中的指示，建立以這個新映像為基礎的主機集區。
 
-## <a name="prepare-the-application-for-msix-app-attach"></a>準備要進行 MSIX 應用程式附加的應用程式 
+## <a name="prepare-the-application-for-msix-app-attach"></a>準備要進行 MSIX 應用程式附加的應用程式
 
 如果您已經有 MSIX 套件，請直接跳至[設定 Windows 虛擬桌面基礎結構](#configure-windows-virtual-desktop-infrastructure)。 如果您想要測試舊版應用程式，請遵循[在 VM 上從桌面安裝程式建立 MSIX 套件](/windows/msix/packaging-tool/create-app-package-msi-vm/)中的指示，將舊版應用程式轉換成 MSIX 套件。
 
@@ -169,7 +189,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
 - 共用與 SMB 相容。
 - 屬於工作階段主機集區一部分的 VM 有共用的 NTFS 權限。
 
-### <a name="set-up-an-msix-app-attach-share"></a>設定 MSIX 應用程式附加共用 
+### <a name="set-up-an-msix-app-attach-share"></a>設定 MSIX 應用程式附加共用
 
 在您的 Windows 虛擬桌面環境中，建立網路共用並將套件移至該處。
 
@@ -410,16 +430,16 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="use-packages-offline"></a>離線使用套件
 
-如果在您的網路內或在未連線到網際網路的裝置上使用來自[商務用 Microsoft Store](https://businessstore.microsoft.com/) 或[教育用 Microsoft Store](https://educationstore.microsoft.com/) 的套件，您必須從 Microsoft Store 取得套件授權並在您的裝置上加以安裝，才能成功執行應用程式。 如果您的裝置已在線上，而且可以連線到商務用 Microsoft Store，則系統會自動下載所需授權，但如果您已離線，則必須手動設定授權。 
+如果在您的網路內或在未連線到網際網路的裝置上使用來自[商務用 Microsoft Store](https://businessstore.microsoft.com/) 或[教育用 Microsoft Store](https://educationstore.microsoft.com/) 的套件，您必須從 Microsoft Store 取得套件授權並在您的裝置上加以安裝，才能成功執行應用程式。 如果您的裝置已在線上，而且可以連線到商務用 Microsoft Store，則系統會自動下載所需授權，但如果您已離線，則必須手動設定授權。
 
-若要安裝授權檔案，您將必須使用會呼叫 WMI 橋接器提供者中 MDM_EnterpriseModernAppManagement_StoreLicenses02_01 類別的 PowerShell 指令碼。  
+若要安裝授權檔案，您將必須使用會呼叫 WMI 橋接器提供者中 MDM_EnterpriseModernAppManagement_StoreLicenses02_01 類別的 PowerShell 指令碼。
 
-以下是如何設定授權以便離線使用的方法： 
+以下是如何設定授權以便離線使用的方法：
 
 1. 從商務用 Microsoft Store 下載應用程式套件、授權與所需架構。 您同時需要已編碼與未編碼的授權檔案。 您可以在[這裡](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)找到詳細的下載指示。
 2. 在步驟 3 的指令碼中，更新下列變數：
       1. `$contentID` 是來自「未編碼」授權檔案 (.xml) 的 ContentID 值。 您可以在您選擇的文字編輯器中開啟授權檔案。
-      2. `$licenseBlob` 是「已編碼」授權檔案 (.bin) 中授權 Blob 的整個字串。 您可以在您選擇的文字編輯器中開啟已編碼授權檔案。 
+      2. `$licenseBlob` 是「已編碼」授權檔案 (.bin) 中授權 Blob 的整個字串。 您可以在您選擇的文字編輯器中開啟已編碼授權檔案。
 3. 從系統管理員 PowerShell 提示字元執行下列指令碼。 執行授權安裝的最佳位置是在[暫存指令碼](#stage-the-powershell-script) \(也需要從系統管理員提示字元執行\) 的結尾。
 
 ```powershell
@@ -434,14 +454,14 @@ $contentID = "{'ContentID'_in_unencoded_license_file}"
 #TODO - Update $licenseBlob with the entire String in the encoded license file (.bin)
 $licenseBlob = "{Entire_String_in_encoded_license_file}"
 
-$session = New-CimSession 
+$session = New-CimSession
 
 #The final string passed into the AddLicenseMethod should be of the form <License Content="encoded license blob" />
-$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />' 
+$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />'
 
 $params = New-Object Microsoft.Management.Infrastructure.CimMethodParametersCollection
 $param = [Microsoft.Management.Infrastructure.CimMethodParameter]::Create("param",$licenseString ,"String", "In")
-$params.Add($param) 
+$params.Add($param)
 
 
 try
@@ -453,7 +473,7 @@ try
 catch [Exception]
 {
      write-host $_ | out-string
-}  
+}
 ```
 
 ## <a name="next-steps"></a>後續步驟

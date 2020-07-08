@@ -4,16 +4,16 @@ description: 如何設定 Windows 虛擬桌面環境的負載平衡方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 447de339d3ceef7aeb1c232605b0e30bbbb1e7d8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d5c39ff867add80833ee522ef173506fa1c642c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612430"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204335"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>設定 Windows 虛擬桌面負載平衡方法
 
@@ -22,7 +22,7 @@ ms.locfileid: "82612430"
 >[!NOTE]
 > 這不會套用至持續性桌面主機集區，因為使用者一律會有1:1 對應到主機集區中的工作階段主機。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已遵循[設定 Windows 虛擬桌面 powershell 模組](powershell-module.md)中的指示，下載並安裝 powershell 模組，並登入您的 Azure 帳戶。
 
@@ -33,15 +33,15 @@ ms.locfileid: "82612430"
 若要設定主機集區以執行廣度優先的負載平衡，而不調整最大會話限制，請執行下列 PowerShell Cmdlet：
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst' 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst'
 ```
 
-之後，若要確定您已設定廣度優先的負載平衡方法，請執行下列 Cmdlet： 
+之後，若要確定您已設定廣度優先的負載平衡方法，請執行下列 Cmdlet：
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType
 
-Name             : hostpoolname 
+Name             : hostpoolname
 LoadBalancerType : BreadthFirst
 ```
 
@@ -58,13 +58,13 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 若要設定主機集區以執行深度優先的負載平衡，請執行下列 PowerShell Cmdlet：
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ### 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
 
 若要確定設定已更新，請執行此 Cmdlet：
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit
 
 Name             : hostpoolname
 LoadBalancerType : DepthFirst
@@ -77,10 +77,10 @@ MaxSessionLimit  : 6
 
 若要設定負載平衡：
 
-1. 登入 Azure 入口網站 https://portal.azure.com。 
-2. 搜尋並選取 [服務] 底下的**Windows 虛擬桌面**。 
+1. 登入 Azure 入口網站 https://portal.azure.com。
+2. 搜尋並選取 [服務] 底下的**Windows 虛擬桌面**。
 3. 在 [Windows 虛擬桌面] 頁面中，選取 [**主機**集區]。
 4. 選取您想要編輯的主機集區名稱。
-5. 選取 [屬性]  。
+5. 選取 [屬性] 。
 6. 在欄位中輸入 [**最大會話限制**]，然後在下拉式功能表中選取您想要用於此主機集區的**負載平衡演算法**。
-7. 選取 [儲存]  。 這會套用新的負載平衡設定。
+7. 選取 [儲存]。 這會套用新的負載平衡設定。

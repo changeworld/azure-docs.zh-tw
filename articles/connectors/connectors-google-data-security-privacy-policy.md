@@ -4,18 +4,18 @@ description: 瞭解 Google 安全性和隱私權原則對 Google 連接器的影
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
-ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: 590ad6a52d768c7e59d8d97691e146205e43cadd
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.topic: conceptual
+ms.date: 06/05/2020
+ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628703"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194963"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則
 
-自**2020 年5月1日**起，由於 Google 的[資料安全性和隱私權原則](https://www.blog.google/technology/safety-security/project-strobe/)所做的變更，可能會影響使用[Gmail 連接器](https://docs.microsoft.com/connectors/gmail/)的邏輯應用程式工作流程。 如果您的邏輯應用程式使用 Gmail 連接器搭配 Gmail 取用者帳戶（以@gmail.com或@googlemail.com結尾的電子郵件地址），則您的邏輯應用程式只能使用特定[的 Google 核准觸發程式、動作和連接器](#approved-connectors)。 
+自**2020 年5月1日**起，由於 Google 的[資料安全性和隱私權原則](https://www.blog.google/technology/safety-security/project-strobe/)所做的變更，可能會影響使用[Gmail 連接器](https://docs.microsoft.com/connectors/gmail/)的邏輯應用程式工作流程。 如果您的邏輯應用程式使用 Gmail 連接器搭配 Gmail 取用者帳戶（以或結尾的電子郵件地址 @gmail.com @googlemail.com ），則您的邏輯應用程式只能使用特定[的 Google 核准觸發程式、動作和連接器](#approved-connectors)。
 
 > [!NOTE]
 > 如果您的邏輯應用程式搭配使用 Gmail 連接器與 G Suite 商務帳戶（具有自訂網域的電子郵件地址），則您的邏輯應用程式不會受到影響，且不會限制使用 Gmail 連接器。
@@ -36,11 +36,31 @@ ms.locfileid: "82628703"
 
 * Logic Apps 內建觸發程式和動作：批次、控制項、資料作業、日期時間、一般檔案、液體、要求、排程、變數和 XML
 
+  未由 Google 核准的內建觸發程式和動作（例如 HTTP、Azure Functions、Azure Logic Apps 等），會使邏輯應用程式不符合 Gmail 連接器的規範，因為應用程式可以從任何地方傳送或接收資料。
+
 * Google 服務： Gmail、Google 行事曆、Google 連絡人、Google 雲端硬碟、Google 試算表和 Google Tasks
 
 * 核准的 Microsoft 服務： Dynamics 365、Excel Online、Microsoft 小組、Office 365、OneDrive 和 SharePoint Online
 
 * 客戶管理的資料來源連接器： FTP、RSS、SFTP、SMTP 和 SQL Server
+
+## <a name="non-compliant-examples"></a>不符合規範的範例
+
+以下範例會使用 Gmail 連接器搭配內建觸發程式和動作，或未由 Google 核准的受管理連接器：
+
+* 此邏輯應用程式會使用 Gmail 連接器搭配 HTTP 內建觸發程式：
+
+  ![不符合規範的邏輯應用程式-範例1](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-1.png)
+  
+  邏輯應用程式也會使用已核准的 Google 日曆連接器。
+
+* 此邏輯應用程式會使用 Gmail 連接器搭配 Azure Blob 儲存體連接器：
+
+  ![不符合規範的邏輯應用程式-範例2](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-2.png)
+
+* 此邏輯應用程式會使用 Gmail 連接器搭配 Twitter 連接器：
+
+  ![不符合規範的邏輯應用程式-範例3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
 如需最新資訊，請參閱[Gmail 連接器的技術參考檔](https://docs.microsoft.com/connectors/gmail/)。
 
@@ -68,21 +88,21 @@ ms.locfileid: "82628703"
 
 若要從您的 Gmail 觸發程式或動作中的 Google 用戶端應用程式使用用戶端識別碼和用戶端密碼，請遵循下列步驟：
 
-1. 在[Azure 入口網站](https://portal.azure.com)中，于邏輯應用程式設計工具中開啟邏輯應用程式。
+1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
 
-1. 如果您要加入新的 Gmail 觸發程式或動作，並建立全新的連線，請繼續進行下一個步驟。 否則，請在 Gmail 觸發程式或動作中，選取 [**變更** > 連線] [**新增**]，例如：
+1. 如果您要加入新的 Gmail 觸發程式或動作，並建立全新的連線，請繼續進行下一個步驟。 否則，請在 Gmail 觸發程式或動作中，選取 [**變更**連線] [  >  **新增**]，例如：
 
    ![選取 [變更連接] > [加入新的]](./media/connectors-google-data-security-privacy-policy/change-gmail-connection.png)
 
 1. 提供您的連接資訊，例如：
 
-   ![提供連接資訊](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
+   ![提供連線資訊](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
 
-   | 屬性 | 值 | 描述 |
+   | 屬性 | 值 | 說明 |
    |----------|-------|-------------|
    | **驗證類型** | **攜帶您自己的應用程式** | 指定您將使用自己的用戶端應用程式進行驗證。 |
-   | **用戶端識別碼** | <*用戶端識別碼*> | 來自 Google 用戶端應用程式的用戶端識別碼 |
-   | **用戶端密碼** | <*用戶端密碼*> | 來自 Google 用戶端應用程式的用戶端密碼 |
+   | **用戶端識別碼** | <*client-ID*> | 來自 Google 用戶端應用程式的用戶端識別碼 |
+   | **用戶端祕密** | <*client-secret*> | 來自 Google 用戶端應用程式的用戶端密碼 |
    ||||
 
 1. 當您完成時，請選取 [登**入**]。

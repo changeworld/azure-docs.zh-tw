@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6553b9ec120ca0e1e479b400495b61bc68c88cf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189781"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201203"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的宣告轉換技術設定檔
 
@@ -30,7 +30,7 @@ ms.locfileid: "78189781"
 
 下列範例顯示的是宣告轉換技術設定檔：
 
-```XML
+```xml
 <TechnicalProfile Id="Facebook-OAUTH-UnLink">
     <DisplayName>Unlink Facebook</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -52,7 +52,7 @@ ms.locfileid: "78189781"
 
 **OutputClaimsTransformations** 元素可能含有 **OutputClaimsTransformation** 的集合，用於修改宣告或產生新的宣告。 下列技術設定檔會呼叫 **RemoveAlternativeSecurityIdByIdentityProvider** 宣告轉換。 此宣告轉換會從 **AlternativeSecurityIds** 的集合中移除社交身分識別。 此技術設定檔的輸出宣告是 **identityProvider2** (設為 `facebook.com`)，以及 **AlternativeSecurityIds**，該宣告含有移除 facebook.com 身分識別後，與該使用者有所關聯的社交身分識別清單。
 
-```XML
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider"
 TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
@@ -84,7 +84,7 @@ TransformationClaimType="collection" />
 
 宣告轉換技術設定檔可讓您從任何使用者旅程圖協調流程步驟執行宣告轉換。 在下列範例中，協調流程步驟會呼叫其中一個取消連結的技術設定檔，例如 **UnLink-Facebook-OAUTH**。 此技術設定檔會呼叫宣告轉換技術設定檔 **RemoveAlternativeSecurityIdByIdentityProvider**，其會產生含有使用者社交身分識別清單的全新 **AlternativeSecurityIds2** 宣告，同時從集合中移除 Facebook 身分識別。
 
-```XML
+```xml
 <UserJourney Id="AccountUnLink">
   <OrchestrationSteps>
     ...
@@ -102,15 +102,15 @@ TransformationClaimType="collection" />
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值`true`：、 `false`  或（預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將`true`此設定為。 |
+| IncludeClaimResolvingInClaimsHandling  | No | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true` 、或 `false`   （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
 
 ## <a name="use-a-validation-technical-profile"></a>使用驗證技術設定檔
 
 宣告轉換技術設定檔可用來驗證資訊。 在下列範例中，名稱為 **LocalAccountSignUpWithLogonEmail** 的[自我判斷技術設定檔](self-asserted-technical-profile.md)會要求使用者輸入兩次電子郵件，然後呼叫名稱為 **Validate-Email** 的[驗證技術設定檔](validation-technical-profile.md)，以驗證電子郵件。 **Validate-Email** 技術設定檔會呼叫宣告轉換 **AssertEmailAreEqual**，以比較兩個宣告 **email** 和 **emailRepeat**，如果根據指定的比較不相等，則會擲回例外狀況。
 
-```XML
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="AssertEmailAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
     <InputClaims>
@@ -126,7 +126,7 @@ TransformationClaimType="collection" />
 
 宣告轉換技術設定檔會呼叫 **AssertEmailAreEqual** 宣告轉換，其會判斷使用者提供的電子郵件是否相同。
 
-```XML
+```xml
 <TechnicalProfile Id="Validate-Email">
   <DisplayName>Unlink Facebook</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -145,7 +145,7 @@ TransformationClaimType="collection" />
 
 自我判斷技術設定檔可以呼叫驗證技術設定檔，並顯示 **UserMessageIfClaimsTransformationStringsAreNotEqual** 中繼資料中指定的錯誤訊息。
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>User ID signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

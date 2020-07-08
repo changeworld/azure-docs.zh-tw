@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: faeab07ce7ec057981d23228461c2fa07600cdc1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 1b73b82b4367d50cc5fbe9881a67e0afa041db86
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660018"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201153"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL 集區的資料載入策略
 
@@ -46,15 +46,13 @@ ms.locfileid: "83660018"
 5. 轉換資料。
 6. 將資料插入生產資料表。
 
-如需 PolyBase 載入教學課程，請參閱[使用 PolyBase 從 Azure Blob 儲存體載入資料](load-data-from-azure-blob-storage-using-polybase.md)。
-
-如需詳細資訊，請參閱[載入模式部落格](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)。
+如需載入教學課程，請參閱[從 Azure blob 儲存體載入資料](load-data-from-azure-blob-storage-using-polybase.md)。
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1.將來源資料擷取至文字檔
 
-從來源系統取得資料視儲存位置而定。  目標是將資料移至 PolyBase 和 COPY 支援的分隔符號文字檔或 CSV 檔案。
+從來源系統取得資料視儲存位置而定。 目標是將資料移至支援的分隔文字或 CSV 檔案。
 
-### <a name="polybase-and-copy-external-file-formats"></a>PolyBase 和 COPY 外部檔案格式
+### <a name="supported-file-formats"></a>支援的檔案格式
 
 使用 PolyBase 和 COPY 陳述式，您可以從 UTF-8 和 UTF-16 編碼的分隔符號文字檔或 CSV 檔案載入資料。 除了分隔符號文字檔或 CSV 檔案，會從 Hadoop 檔案格式 (例如 ORC 和 Parquet) 載入。 PolyBase 和 COPY 陳述式也可以從 Gzip 和 Snappy 壓縮檔案載入資料。
 
@@ -74,11 +72,11 @@ ms.locfileid: "83660018"
 
 在載入之前，您可能需要在儲存體帳戶中準備及清除資料。 資料準備可以在您的資料是在來源中、當您將資料匯出到文字檔時，或是在資料在 Azure 儲存體之後執行。  盡可能儘早在程序中使用資料最簡單。  
 
-### <a name="define-external-tables"></a>定義外部資料表
+### <a name="define-the-tables"></a>定義資料表
 
-如果您使用 PolyBase，您必須先在 SQL 集區中定義外部資料表，然後再載入。 COPY 陳述式不需要外部資料表。 PolyBase 使用外部資料表以定義及存取 Azure 儲存體中的資料。
+使用 COPY 語句時，您必須先在 SQL 集區中定義要載入的資料表。
 
-外部資料表類似於資料表檢視。 外部資料表包含資料表結構描述，並指向儲存在 SQL 集區外部的資料。
+如果您使用 PolyBase，您必須先在 SQL 集區中定義外部資料表，然後再載入。 PolyBase 使用外部資料表以定義及存取 Azure 儲存體中的資料。 外部資料表類似於資料表檢視。 外部資料表包含資料表結構描述，並指向儲存在 SQL 集區外部的資料。
 
 定義外部資料表牽涉到指定資料來源、文字檔格式和資料表定義。 您需要的 T-SQL 語法參考文章如下：
 
@@ -86,12 +84,12 @@ ms.locfileid: "83660018"
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-載入 Parquet 時，SQL 資料類型對應為：
+載入 Parquet 檔時，請使用下列 SQL 資料類型對應：
 
 |                         Parquet 類型                         |   Parquet 邏輯類型 (註釋)   |  SQL 資料類型   |
 | :----------------------------------------------------------: | :-----------------------------------: | :--------------: |
 |                           BOOLEAN                            |                                       |       bit        |
-|                     BINARY / BYTE_ARRAY                      |                                       |    varbinary     |
+|                     BINARY/BYTE_ARRAY                      |                                       |    varbinary     |
 |                            DOUBLE                            |                                       |      FLOAT       |
 |                            FLOAT                             |                                       |       real       |
 |                            INT32                             |                                       |       int        |
@@ -115,7 +113,7 @@ ms.locfileid: "83660018"
 |                            INT32                             |           INT(32, false)            |      BIGINT      |
 |                            INT32                             |                 日期                  |       date       |
 |                            INT32                             |                DECIMAL                |     decimal      |
-|                            INT32                             |            TIME (MILLIS )             |       time       |
+|                            INT32                             |            TIME (MILLIS)             |       time       |
 |                            INT64                             |            INT(64, true)            |      BIGINT      |
 |                            INT64                             |           INT(64, false)            |  decimal(20,0)   |
 |                            INT64                             |                DECIMAL                |     decimal      |
@@ -126,7 +124,7 @@ ms.locfileid: "83660018"
 
 
 
-如需建立外部物件的範例，請參閱載入教學課程中的[建立外部資料表](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data)步驟。
+如需建立外部物件的範例，請參閱[建立外部資料表](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)。
 
 ### <a name="format-text-files"></a>格式化文字檔
 
@@ -139,17 +137,16 @@ ms.locfileid: "83660018"
 
 ## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4.使用 PolyBase 或 COPY 陳述式載入資料
 
-這是將資料載入暫存資料表的最佳做法。 暫存資料表可讓您處理錯誤，而不會干擾生產資料表。 暫存表格也可讓您在將資料插入生產資料表之前，先使用 SQL 集區 MPP 進行資料轉換。
+這是將資料載入暫存資料表的最佳做法。 暫存資料表可讓您處理錯誤，而不會干擾生產資料表。 臨時表也讓您有機會在將資料插入生產資料表之前，先使用 SQL 集區平行處理架構進行資料轉換。
 
-使用 COPY 載入至暫存表格時，必須預先建立資料表。
+### <a name="options-for-loading"></a>載入選項
 
-### <a name="options-for-loading-with-polybase-and-copy-statement"></a>使用 PolyBase 和 COPY 陳述式載入的選項
+若要載入資料，您可以使用下列任何一種載入選項：
 
-若要使用 PolyBase 載入資料，您可以使用任何一種載入選項：
-
-- [PolyBase 與 T-SQL](load-data-from-azure-blob-storage-using-polybase.md) 非常適合於當您的資料是在 Azure Blob 儲存體或 Azure Data Lake Store 中的時候。 它給予您對於載入程序最多的控制權，但是也需要您定義外部資料物件。 其他方法會在您將來源資料表對應至目的地資料表時，在幕後定義這些物件。  若要協調 T-SQL 載入，您可以使用 Azure Data Factory、SSIS 或 Azure 函式。
-- [PolyBase 與 SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 非常適合於當您的來源資料是在 SQL Server 中的時候，無論是 SQL Server 內部部署或是在雲端。 SSIS 會定義來源至目的地資料表對應，也會協調載入。 如果您已經有 SSIS 套件，您可以將套件修改為搭配新的資料倉儲目的地。
+- [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)是建議的載入公用程式，因為它可讓您順暢且靈活地載入資料。 此語句有許多 PolyBase 未提供的額外載入功能。 
+- [PolyBase 與 t-sql](load-data-from-azure-blob-storage-using-polybase.md)需要您定義外部資料物件。
 - [搭配使用 PolyBase 和 COPY 陳述式與 Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 是另一個協調工具。  它會定義管線並排程作業。
+- 當您的來源資料在 SQL Server 時[，使用 SSIS 的 PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)會良好運作。 SSIS 會定義來源至目的地資料表對應，也會協調載入。 如果您已經有 SSIS 套件，您可以將套件修改為搭配新的資料倉儲目的地。
 - [搭配使用 PolyBase 與 Azure DataBricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)，可以使用 PolyBase 將資料從資料表移轉到 Databricks 資料框架和/或將資料從 Databricks 資料框架寫入至資料表。
 
 ### <a name="other-loading-options"></a>其他載入選項

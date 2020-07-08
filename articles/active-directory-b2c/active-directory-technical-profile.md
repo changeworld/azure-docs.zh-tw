@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7db47eda47850c1c080b6a49256c8a0b37bb0d3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330377"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201509"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 Azure Active Directory 技術設定檔
 
@@ -41,7 +41,7 @@ Azure Active Directory B2C （Azure AD B2C）提供 Azure Active Directory 使�
 
 下列範例顯示 **AAD-Common** 技術設定檔：
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-Common">
   <DisplayName>Azure Active Directory</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -96,7 +96,7 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 
 **AAD-UserWriteUsingLogonEmail** 技術設定檔，可建立新的本機帳戶，持續使用下列宣告：
 
-```XML
+```xml
   <PersistedClaims>
     <!-- Required claims -->
     <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
@@ -126,7 +126,7 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 
 **讀取**作業可讀取單一使用者帳戶的相關資料。 以下技術設定檔會利用使用者的 objectId 讀取使用者帳戶的相關資料：
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
   <Metadata>
     <Item Key="Operation">Read</Item>
@@ -156,7 +156,7 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 
 **寫入**作業可建立或更新單一使用者帳戶。 下列技術設定檔會建立新的社交帳戶：
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">Write</Item>
@@ -196,7 +196,7 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 
 **DeleteClaims** 作業會清除提供之宣告清單中的資訊。 下列技術設定檔會刪除宣告：
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaims</Item>
@@ -217,7 +217,7 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 
 **DeleteClaimsPrincipal** 作業會將單一使用者帳戶從目錄中刪除。 下列技術設定檔會使用使用者主體名稱，將使用者帳戶從目錄中刪除：
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>
@@ -232,7 +232,7 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 
 下列技術設定檔使用 **alternativeSecurityId** 刪除社交使用者帳戶：
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>
@@ -246,23 +246,23 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 ```
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| 作業 | 是 | 要執行的作業。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果使用者物件不存在目錄中，會發生錯誤。 可能的值：`true` 或 `false`。 |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | 否 | 如果使用者物件已存在，則會引發錯誤。 可能的值：`true` 或 `false`。|
-| ApplicationObjectId | 否 | 擴充屬性的應用程式物件識別碼。 值：應用程式的 ObjectId。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md)。 |
-| ClientId | 否 | 以協力廠商身分存取租用戶的用戶端識別碼。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值`true`：、 `false`  或（預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將`true`此設定為。 |
+| 操作 | Yes | 要執行的作業。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | No | 如果使用者物件不存在目錄中，會發生錯誤。 可能的值：`true` 或 `false`。 |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | No | 如果使用者物件已存在，則會引發錯誤。 可能的值：`true` 或 `false`。|
+| ApplicationObjectId | No | 擴充屬性的應用程式物件識別碼。 值：應用程式的 ObjectId。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md)。 |
+| ClientId | No | 以協力廠商身分存取租用戶的用戶端識別碼。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | No | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true` 、或 `false`   （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
 
 ### <a name="ui-elements"></a>UI 元素
  
-下列設定可用於設定失敗時顯示的錯誤訊息。 應該在[自我](self-asserted-technical-profile.md)判斷技術設定檔中設定中繼資料。 可以將錯誤訊息[當地語系化](localization.md)。
+下列設定可用於設定失敗時顯示的錯誤訊息。 應該在[自我](self-asserted-technical-profile.md)判斷技術設定檔中設定中繼資料。 錯誤訊息可以[當地語系化](localization.md)。
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalAlreadyExists 屬性說明)，請指定當使用者物件存在時，要向使用者顯示的訊息。 |
-| UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalDoesNotExist 屬性的說明)，請指定當使用者物件不存在時，要向使用者顯示的訊息。 |
+| UserMessageIfClaimsPrincipalAlreadyExists | No | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalAlreadyExists 屬性說明)，請指定當使用者物件存在時，要向使用者顯示的訊息。 |
+| UserMessageIfClaimsPrincipalDoesNotExist | No | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalDoesNotExist 屬性的說明)，請指定當使用者物件不存在時，要向使用者顯示的訊息。 |
 
 
 ## <a name="next-steps"></a>後續步驟

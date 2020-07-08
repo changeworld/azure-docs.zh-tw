@@ -6,17 +6,17 @@ author: anumjs
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7e0980a9142dc966916d5a4df898ea53b0ddeae5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b7e980f2ffd31bd10b481fe4fc8e0617c40717a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745072"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85205079"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL 集區的異地還原
 
@@ -26,7 +26,7 @@ ms.locfileid: "80745072"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**請驗證您的 DTU 容量。** 每個 SQL 集區都是由具有預設 DTU 配額的 SQL server （例如 myserver.database.windows.net）所主控。 確認 SQL server 有足夠的剩餘 DTU 配額可供要還原的資料庫之用。 若要了解如何計算所需 DTU 或要求更多 DTU，請參閱 [要求 DTU 配額變更](sql-data-warehouse-get-started-create-support-ticket.md)。
+**請驗證您的 DTU 容量。** 每個 SQL 集區都是由具有預設 DTU 配額的[邏輯 SQL 伺服器](../../azure-sql/database/logical-servers.md)（例如，myserver.database.windows.net）所主控。 確認 SQL server 有足夠的剩餘 DTU 配額可供要還原的資料庫之用。 若要了解如何計算所需 DTU 或要求更多 DTU，請參閱 [要求 DTU 配額變更](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>透過 PowerShell 從 Azure 地理區域還原
 
@@ -49,7 +49,7 @@ ms.locfileid: "80745072"
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
-$TargetResourceGroupName="<YourTargetResourceGroupName>" # Restore to a different logical server.
+$TargetResourceGroupName="<YourTargetResourceGroupName>" # Restore to a different server.
 $TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"  
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
@@ -81,7 +81,7 @@ $GeoRestoredDatabase.status
 
    ![新的 DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-3. 依序按一下 [**資料庫**] 和 [Azure Synapse 分析] （先前為 SQL DW） * *。
+3. 依序按一下 [**資料庫**] 和 [ **Azure Synapse 分析] （先前為 SQL DW）**。
 
    ![新 DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 
@@ -89,7 +89,7 @@ $GeoRestoredDatabase.status
 
    ![基本概念](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. 針對 [**使用現有的資料**] 參數，選取 [**備份**]，然後從 [向下] 選項中選取適當的備份。 按一下 [**檢查 + 建立**]。
+5. 針對 [**使用現有的資料**] 參數，選取 [**備份**]，然後從 [向下] 選項中選取適當的備份。 按一下 [檢閱 + 建立]。
 
    ![備份 (backup)](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 

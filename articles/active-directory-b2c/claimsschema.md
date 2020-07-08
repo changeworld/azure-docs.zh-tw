@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4c3b3318e941723ec333597c7e4b3e48710152d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78397795"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201356"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -23,7 +23,7 @@ ms.locfileid: "78397795"
 
 **ClaimsSchema** 元素會定義可當作原則一部分進行參考的宣告類型。 宣告結構描述是可在其中宣告您的宣告的位置。 宣告可以是名字、姓氏、顯示名稱、電話號碼及其他項目。 ClaimsSchema 元素包含 **ClaimType** 元素的清單。 **ClaimType** 元素包含 **Id** 屬性，此為宣告名稱。
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <ClaimType Id="Id">
@@ -44,7 +44,7 @@ ms.locfileid: "78397795"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | 是 | 要用於宣告類型的識別碼。 其他元素可以在原則中使用這個識別碼。 |
+| Id | Yes | 要用於宣告類型的識別碼。 其他元素可以在原則中使用這個識別碼。 |
 
 **ClaimType** 元素包含下列元素：
 
@@ -66,12 +66,12 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 **DataType**元素支援下列值：
 
-| 類型 | 說明 |
+| 類型 | Description |
 | ------- | ----------- |
 |boolean|代表布林值 (`true` 或 `false`)。|
 |date| 表示時間的瞬間，通常以一天的日期表示。 日期的值遵循 ISO 8601 慣例。|
 |dateTime|表示時間的瞬間，通常以一天的日期和時間表示。 日期的值遵循 ISO 8601 慣例。|
-|duration|代表以年、月、日、小時、分鐘和秒為單位的時間間隔。 的格式為`PnYnMnDTnHnMnS`，其中`P`表示正數或`N`負數值。 `nY`這是後接常`Y`值的年份數。 `nMo`這是後面接著常`Mo`值的月數。 `nD`這是常`D`值後面接著的天數。 範例： `P21Y`代表21年。 `P1Y2Mo`代表一年，以及兩個月。 `P1Y2Mo5D`代表一年、兩個月和五天。  `P1Y2M5DT8H5M620S`代表一年、兩個月、五天、八小時、五分鐘和20秒。  |
+|duration|代表以年、月、日、小時、分鐘和秒為單位的時間間隔。 的格式為 `PnYnMnDTnHnMnS` ，其中 `P` 表示正數或 `N` 負數值。 `nY`這是後接常值的年份數 `Y` 。 `nMo`這是後面接著常值的月數 `Mo` 。 `nD`這是常值後面接著的天數 `D` 。 範例： `P21Y` 代表21年。 `P1Y2Mo`代表一年，以及兩個月。 `P1Y2Mo5D`代表一年、兩個月和五天。  `P1Y2M5DT8H5M620S`代表一年、兩個月、五天、八小時、五分鐘和20秒。  |
 |phoneNumber|代表電話號碼。 |
 |int| 代表介於-2147483648 和2147483647之間的數位|
 |long| 代表介於-9223372036854775808 到9223372036854775807之間的數位 |
@@ -84,20 +84,20 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 **DefaultPartnerClaimTypes** 可能包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | 通訊協定 | 1:n | 含有其預設夥伴宣告類型名稱的通訊協定清單。 |
 
 **Protocol** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| 名稱 | 是 | Azure AD B2C 所支援的有效通訊協定名稱。 可能的值為： OAuth1、OAuth2、SAML2、OpenIdConnect。 |
-| PartnerClaimType | 是 | 要使用的宣告類型名稱。 |
+| Name | Yes | Azure AD B2C 所支援的有效通訊協定名稱。 可能的值為： OAuth1、OAuth2、SAML2、OpenIdConnect。 |
+| PartnerClaimType | Yes | 要使用的宣告類型名稱。 |
 
 在下列範例中，當識別體驗架構與 SAML2 識別提供者或信賴憑證者應用程式進行互動時，會將 **surname** 宣告對應至 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`，與 OpenIdConnect 和 OAuth2 互動時，則會將宣告對應至 `family_name`。
 
-```XML
+```xml
 <ClaimType Id="surname">
   <DisplayName>Surname</DisplayName>
   <DataType>string</DataType>
@@ -111,7 +111,7 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 因此，Azure AD B2C 所發出的 JWT 權杖會略過 `family_name`，而不會略過 ClaimType 名稱 **surname**。
 
-```JSON
+```json
 {
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
   "auth_time": 1535013501,
@@ -125,14 +125,14 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 **Mask** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| `Type` | 是 | 宣告遮罩的類型。 可能的值：`Simple` 或 `Regex`。 `Simple` 值表示會將簡單的文字遮罩套用到字串宣告的前置部分。 `Regex` 值表示會將規則運算式套用到整個字串宣告。  如果指定 `Regex` 值，也必須透過要使用的規則運算式來定義選擇性屬性。 |
-| `Regex` | 否 | 如果**`Type`** 設定為`Regex`，請指定要使用的正則運算式。
+| `Type` | Yes | 宣告遮罩的類型。 可能的值：`Simple` 或 `Regex`。 `Simple` 值表示會將簡單的文字遮罩套用到字串宣告的前置部分。 `Regex` 值表示會將規則運算式套用到整個字串宣告。  如果指定 `Regex` 值，也必須透過要使用的規則運算式來定義選擇性屬性。 |
+| `Regex` | No | 如果 **`Type`** 設定為 `Regex` ，請指定要使用的正則運算式。
 
 下列範例會使用 `Simple` 遮罩來設定 **PhoneNumber** 宣告：
 
-```XML
+```xml
 <ClaimType Id="PhoneNumber">
   <DisplayName>Phone Number</DisplayName>
   <DataType>string</DataType>
@@ -147,7 +147,7 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 下列範例會使用 `Regex` 遮罩來設定 **AlternateEmail** 宣告：
 
-```XML
+```xml
 <ClaimType Id="AlternateEmail">
   <DisplayName>Please verify the secondary email linked to your account</DisplayName>
   <DataType>string</DataType>
@@ -165,32 +165,32 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 **Restriction** 元素可以包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| MergeBehavior | 否 | 此方法可用來合併列舉值與具備相同識別碼之父代原則中的 ClaimType。 當您覆寫基本原則中指定的宣告時，請使用這個屬性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值是資料集合，應該附加至父代原則中指定的集合結尾。 `Prepend` 值是資料集合，應該新增到父代原則中指定的集合之前。 `ReplaceAll` 值是父代原則中應忽略的指定資料集合。 |
+| MergeBehavior | No | 此方法可用來合併列舉值與具備相同識別碼之父代原則中的 ClaimType。 當您覆寫基本原則中指定的宣告時，請使用這個屬性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值是資料集合，應該附加至父代原則中指定的集合結尾。 `Prepend` 值是資料集合，應該新增到父代原則中指定的集合之前。 `ReplaceAll` 值是父代原則中應忽略的指定資料集合。 |
 
 **Restriction** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | 列舉型別 | 1:n | 使用者介面中使用者可用來針對宣告進行選取的可用選項，例如下拉式清單中的值。 |
 | 模式 | 1:1 | 要使用的規則運算式。 |
 
 #### <a name="enumeration"></a>列舉型別
 
-**列舉**元素會定義使用者可用的選項，以在使用者介面中選取宣告（例如`CheckboxMultiSelect`、 `DropdownSingleSelect`或`RadioSingleSelect`中的值）。 或者，您可以使用[LocalizedCollections](localization.md#localizedcollections)元素來定義和當地語系化可用的選項。 若要從宣告**列舉**集合中查閱專案，請使用[GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection)宣告轉換。
+**列舉**元素會定義使用者可用的選項，以在使用者介面中選取宣告（例如、或中的值） `CheckboxMultiSelect` `DropdownSingleSelect` `RadioSingleSelect` 。 或者，您可以使用[LocalizedCollections](localization.md#localizedcollections)元素來定義和當地語系化可用的選項。 若要從宣告**列舉**集合中查閱專案，請使用[GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection)宣告轉換。
 
 **Enumeration** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| Text | 是 | 針對此選項，要在使用者介面中顯示給使用者的顯示字串。 |
-|值 | 是 | 與選取此選項相關聯的宣告值。 |
-| SelectByDefault | 否 | 指出預設是否應該在 UI 中選取此選項。 可能的值：True 或 False。 |
+| Text | Yes | 針對此選項，要在使用者介面中顯示給使用者的顯示字串。 |
+|值 | Yes | 與選取此選項相關聯的宣告值。 |
+| SelectByDefault | No | 指出預設是否應該在 UI 中選取此選項。 可能的值：True 或 False。 |
 
 下列範例會設定**城市**下拉式清單宣告，並將預設值設定為 `New York`：
 
-```XML
+```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
   <DataType>string</DataType>
@@ -211,14 +211,14 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 **Pattern** 元素可以包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| RegularExpression | 是 | 此類型的宣告必須符合才能生效的規則運算式。 |
-| HelpText | 否 | 如果正則運算式檢查失敗，則為使用者提供錯誤訊息。 |
+| RegularExpression | Yes | 此類型的宣告必須符合才能生效的規則運算式。 |
+| HelpText | No | 如果正則運算式檢查失敗，則為使用者提供錯誤訊息。 |
 
 下列範例會設定 **email** 宣告，並提供規則運算式輸入驗證和說明文字：
 
-```XML
+```xml
 <ClaimType Id="email">
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
@@ -243,7 +243,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
 
 **UserInputType**元素可用的使用者輸入類型：
 
-| UserInputType | 支援的 ClaimType | 描述 |
+| UserInputType | 支援的 ClaimType | Description |
 | --------- | -------- | ----------- |
 |CheckboxMultiSelect| `string` |多重選取下拉式方塊。 宣告值會以所選值的逗號分隔字串表示。 |
 |DateTimeDropdown | `date`, `dateTime` |下拉式清單，以選取 [日]、[月] 和 [年]。 |
@@ -262,7 +262,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
 
 ![顯示宣告類型中指定之屬性的文字方塊](./media/claimsschema/textbox.png)
 
-```XML
+```xml
 <ClaimType Id="displayName">
   <DisplayName>Display Name</DisplayName>
   <DataType>string</DataType>
@@ -277,7 +277,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
 
 ![EmailBox 顯示宣告類型中指定的屬性](./media/claimsschema/emailbox.png)
 
-```XML
+```xml
 <ClaimType Id="email">
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
@@ -295,7 +295,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
 
 ![搭配使用宣告類型與 Password](./media/claimsschema/password.png)
 
-```XML
+```xml
 <ClaimType Id="password">
   <DisplayName>Password</DisplayName>
   <DataType>string</DataType>
@@ -310,7 +310,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
 
 ![搭配使用宣告類型與 DateTimeDropdown](./media/claimsschema/datetimedropdown.png)
 
-```XML
+```xml
 <ClaimType Id="dateOfBirth">
   <DisplayName>Date Of Birth</DisplayName>
   <DataType>date</DataType>
@@ -325,7 +325,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
 
 ![搭配使用宣告類型和 RadioSingleSelect](./media/claimsschema/radiosingleselect.png)
 
-```XML
+```xml
 <ClaimType Id="color">
   <DisplayName>Preferred color</DisplayName>
   <DataType>string</DataType>
@@ -344,7 +344,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
 
 ![搭配使用宣告類型和 DropdownSingleSelect](./media/claimsschema/dropdownsingleselect.png)
 
-```XML
+```xml
 <ClaimType Id="city">
   <DisplayName>City where you work</DisplayName>
   <DataType>string</DataType>
@@ -363,7 +363,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
 
 ![搭配使用宣告類型和 CheckboxMultiSelect](./media/claimsschema/checkboxmultiselect.png)
 
-```XML
+```xml
 <ClaimType Id="languages">
   <DisplayName>Languages you speak</DisplayName>
   <DataType>string</DataType>
@@ -382,7 +382,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
 
 ![搭配使用宣告類型與 Readonly](./media/claimsschema/readonly.png)
 
-```XML
+```xml
 <ClaimType Id="membershipNumber">
   <DisplayName>Membership number</DisplayName>
   <DataType>string</DataType>
@@ -394,11 +394,11 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
 
 #### <a name="paragraph"></a>Paragraph
 
-**Paragraph** 使用者輸入類型會用來提供只能在段落標記中顯示文字的欄位。  例如，&lt;p&gt;text&lt;/p&gt;。 自動**Paragraph**判斷技術設定檔`OutputClaim`的段落使用者輸入類型，必須設定`Required`屬性`false` （預設值）。
+**Paragraph** 使用者輸入類型會用來提供只能在段落標記中顯示文字的欄位。  例如，&lt;p&gt;text&lt;/p&gt;。 自動判斷技術設定檔的**段落**使用者輸入類型 `OutputClaim` ，必須設定 `Required` 屬性 `false` （預設值）。
 
 ![搭配使用宣告類型與 Paragraph](./media/claimsschema/paragraph.png)
 
-```XML
+```xml
 <ClaimType Id="responseMsg">
   <DisplayName>Error message: </DisplayName>
   <DataType>string</DataType>

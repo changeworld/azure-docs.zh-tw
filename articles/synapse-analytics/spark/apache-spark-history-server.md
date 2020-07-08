@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 4f03033942517f4778192e0b12f84610df8fd469
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194989"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用擴充的 Apache Spark 歷程記錄伺服器來對 Apache Spark 的應用程式進行 debug 和診斷
 
@@ -56,7 +56,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 選取您想要查看之作業的作業識別碼。 然後選取 [工具] 功能表上的 [**資料**] 來取得資料檢視。 本節說明如何在 [資料] 索引標籤中執行各種工作。
 
-* 個別選取索引標籤，以檢查 [輸入]****、[輸出]**** 和 [資料表作業]****。
+* 個別選取索引標籤，以檢查 [輸入]、[輸出] 和 [資料表作業]。
 
     ![Spark 應用程式索引標籤的資料](./media/apache-spark-history-server/apache-spark-data-tabs.png)
 
@@ -106,7 +106,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 ![Spark 應用程式和作業圖形作業識別碼](./media/apache-spark-history-server/apache-spark-graph-jobid.png)
 
-### <a name="display"></a>顯示器
+### <a name="display"></a>顯示
 
 預設會選取 [**進度**] 顯示。 您可以選取 [**顯示**] 下拉式清單中的 [**讀取**] 或 [**寫入**]，以檢查資料流程。
 
@@ -157,7 +157,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 在 [作業圖表] 索引標籤上，如果有符合下列條件的工作，階段就會顯示工具提示和小圖示：
 
-|狀況|說明|
+|條件|說明|
 |-|-|
 |資料扭曲|資料讀取大小 > 此階段中所有工作的平均資料讀取大小 * 2 和資料讀取大小 > 10 MB|
 |時間誤差|執行時間 > 此階段中所有工作的平均執行時間 * 2，而執行時間 > 2 分鐘|
@@ -190,9 +190,9 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 ## <a name="explore-the-diagnosis-tab-in-apache-spark-history-server"></a>流覽 Apache Spark 歷程記錄伺服器中的 [診斷] 索引標籤
 
-若要存取 [診斷] 索引標籤，請選取作業識別碼。 然後選取 [工具] 功能表上的 [**診斷**]，以取得 [作業診斷] 視圖。 [診斷] 索引標籤包括 [資料扭曲]****、[時間扭曲]**** 和 [執行程式使用狀況分析]****。
+若要存取 [診斷] 索引標籤，請選取作業識別碼。 然後選取 [工具] 功能表上的 [**診斷**]，以取得 [作業診斷] 視圖。 [診斷] 索引標籤包括 [資料扭曲]、[時間扭曲] 和 [執行程式使用狀況分析]。
 
-透過個別選取索引標籤，檢查 [資料扭曲]****、[時間扭曲]**** 和 [執行程式使用狀況分析]****。
+透過個別選取索引標籤，檢查 [資料扭曲]、[時間扭曲] 和 [執行程式使用狀況分析]。
 
 ![再次 SparkUI 診斷資料扭曲索引標籤](./media/apache-spark-history-server/sparkui-diagnosis-tabs.png)
 
@@ -212,9 +212,9 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 ### <a name="time-skew"></a>時間扭曲
 
-[時間扭曲]**** 索引標籤會根據工作執行時間顯示扭曲的工作。
+[時間扭曲] 索引標籤會根據工作執行時間顯示扭曲的工作。
 
-* **指定參數**-第一個區段會顯示用來偵測時間誤差的參數。 偵測時間扭曲的預設準則是：工作執行時間大於平均執行時間的三倍，而工作執行時間大於 30 秒。 您可以根據您的需求變更參數。 [扭曲階段] **** 和 [扭曲圖表]**** 會顯示對應的階段和工作資訊，就像上面的 [資料扭曲]**** 索引標籤一樣。
+* **指定參數** - 第一個區段會顯示用來偵測時間扭曲的參數。 偵測時間扭曲的預設準則是：工作執行時間大於平均執行時間的三倍，而工作執行時間大於 30 秒。 您可以根據您的需求變更參數。 [扭曲階段] 和 [扭曲圖表] 會顯示對應的階段和工作資訊，就像上面的 [資料扭曲] 索引標籤一樣。
 
 * 選取 [**時間誤差**]，然後根據 [**指定參數**] 區段中所設定的參數，在 [**扭曲階段**] 區段中顯示篩選的結果。 在 [**扭曲階段**] 區段中選取一個專案，然後對應的圖表會在 [section3] 中繪製，而且工作詳細資料會顯示在右下方面板中。
 

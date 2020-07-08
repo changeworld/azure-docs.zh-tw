@@ -8,12 +8,12 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7540c5a82220eef61b8f1cf470697315496cd6bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81db9c7e729aa0be67a807d9d77a3cccb8f41604
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194785"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>了解單一裝置或大規模的 IoT Edge 自動部署
 
@@ -69,7 +69,7 @@ IoT Edge 自動部署會指派 IoT Edge 模組映像，在一組目標 IoT Edge 
 * tags.environment ='prod'
 * tags.environment = 'prod' AND tags.location = 'westus'
 * tags.environment = 'prod' OR tags.location = 'westus'
-* tags.operator = 'John' AND tags.environment = 'prod' NOT deviceId = 'linuxprod1'
+* 標記。 operator = ' John ' 和標籤。環境 = ' 生產 ' 且不是 deviceId = ' linuxprod1 '
 * 屬性。已回報。 devicemodel 傳遞 = ' 4000x '
 
 當您建立目標條件時，請考慮下列條件約束：
@@ -142,7 +142,7 @@ IoT Edge 裝置只能套用一種標準自動部署，但它可以套用多層�
 }
 ```
 
-在以部分或所有相同裝置為目標的分層部署中，您可以新增屬性，告知模擬感應器傳送1000訊息，然後停止。 您不想要覆寫現有的屬性，因此您會在所需的屬性（名`layeredProperties`為）中建立新的區段，其中包含新的屬性：
+在以部分或所有相同裝置為目標的分層部署中，您可以新增屬性，告知模擬感應器傳送1000訊息，然後停止。 您不想要覆寫現有的屬性，因此您會在所需的屬性（名為）中建立新的區段 `layeredProperties` ，其中包含新的屬性：
 
 ```json
 "SimulatedTemperatureSensor": {
@@ -166,7 +166,7 @@ IoT Edge 裝置只能套用一種標準自動部署，但它可以套用多層�
 }
 ```
 
-如果您在多層`properties.desired`式部署中設定模組對應項的欄位，它會在任何較低優先順序的部署中，覆寫該模組所需的屬性。
+如果您在多 `properties.desired` 層式部署中設定模組對應項的欄位，它會在任何較低優先順序的部署中，覆寫該模組所需的屬性。
 
 ## <a name="phased-rollout"></a>階段式推出
 

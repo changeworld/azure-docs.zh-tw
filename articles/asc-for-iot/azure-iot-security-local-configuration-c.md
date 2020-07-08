@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cd344b9bebb69af210c482f46af6b2dd7edf7816
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 842a69c27ceb0d56df5a7b49eb9922b88d8d4b32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311697"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206932"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>了解 LocalConfiguration.json 檔案 - C 代理程式
 
@@ -29,7 +29,7 @@ IoT 安全性代理程式的 Azure 資訊安全中心會使用本機設定檔案
 本機設定檔中找到的設定包含驗證設定和其他代理程式相關設定。
 此檔案包含以 JSON 標記法的「機碼/值」組設定，並在安裝代理程式時填入設定。
 
-根據預設，檔案位於：/var/ASCIoTAgent/LocalConfiguration.json
+根據預設，檔案位於：/var/ASCIoTAgent/LocalConfiguration.js開啟
 
 當代理程式重新開機時，就會變更設定檔案。
 
@@ -55,7 +55,7 @@ IoT 安全性代理程式的 Azure 資訊安全中心會使用本機設定檔案
 
 ## <a name="security-agent-configurations-code-example"></a>安全性代理程式設定程式碼範例
 
-```JSON
+```json
 {
     "Configuration" : {
         "AgentId" : "b97faf0a-0f57-471f-9dab-46a8e1764946",

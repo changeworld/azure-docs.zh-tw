@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff2a8ad05e26ea31fc8100d4000171313881f4e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e42c889277f937a33e72eaf57819385166d6a409
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188778"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202309"
 ---
 # <a name="verification-display-control"></a>驗證顯示控制項
 
@@ -40,12 +40,12 @@ ms.locfileid: "78188778"
 
 **VerificationControl**必須包含下列元素：
 
-- 的類型`DisplayControl`為`VerificationControl`。
+- 的類型 `DisplayControl` 為 `VerificationControl` 。
 - `DisplayClaims`
   - **傳送到**-一或多個宣告，指定要將驗證碼傳送至何處。 例如，*電子郵件*或*國家/地區代碼*和*電話號碼*。
-  - **驗證碼**-在傳送程式碼之後，使用者所提供的驗證碼宣告。 此宣告必須設定為必要，且`ControlClaimType`必須設定為。 `VerificationCode`
+  - **驗證碼**-在傳送程式碼之後，使用者所提供的驗證碼宣告。 此宣告必須設定為必要，且 `ControlClaimType` 必須設定為 `VerificationCode` 。
 - 在使用者完成驗證程式之後，要傳回自我判斷頁的輸出宣告（選擇性）。 例如，*電子郵件*或*國家/地區代碼*和*電話號碼*。 自我判斷技術設定檔會使用宣告來保存資料，或將輸出宣告向上升到下一個協調流程步驟。
-- 具有`Action`下列名稱的兩個：
+- `Action`具有下列名稱的兩個：
   - **SendCode** -將程式碼傳送給使用者。 此動作通常包含兩個驗證技術設定檔，以產生程式碼並傳送它。
   - **VerifyCode** -驗證程式代碼。 此動作通常包含單一驗證技術設定檔。
 
@@ -53,7 +53,7 @@ ms.locfileid: "78188778"
 
 然後，使用者輸入**verificationCode**並選取 [ **VerifyCode** ]，以在後端觸發**VerifyCode**動作。 如果所有驗證都通過，則會將**VerificationControl**視為完成，使用者可以繼續進行下一個步驟。
 
-```XML
+```xml
 <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
   <DisplayClaims>
     <DisplayClaim ClaimTypeReferenceId="email"  Required="true" />
