@@ -6,14 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, tracking-python
 ms.date: 04/27/2020
-ms.openlocfilehash: 48bd53160c3d2e76dccd1f22723c30c2c7e00d7a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: c67e8a79e2339c4a329e276c52703bd749137037
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559946"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608412"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 建置機器學習應用程式及分析資料集
 
@@ -30,7 +29,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
 
 ## <a name="understand-classification-and-logistic-regression"></a>了解分類和羅吉斯迴歸
 
-分類** 是常見的機器學習工作，是指將輸入資料依類別排序的程序。 分類演算法的工作是要找出如何將「標籤」指派給您所提供的輸入資料。 例如，您可以將機器學習演算法視為接受庫存資訊做為輸入。 然後將股票分成兩個類別：您應該銷售的股票和您應該保留的股票。
+分類是常見的機器學習工作，是指將輸入資料依類別排序的程序。 分類演算法的工作是要找出如何將「標籤」指派給您所提供的輸入資料。 例如，您可以將機器學習演算法視為接受庫存資訊做為輸入。 然後將股票分成兩個類別：您應該銷售的股票和您應該保留的股票。
 
 羅吉斯迴歸是您用於分類的演算法。 Spark 的羅吉斯迴歸 API 可用於*二元分類*，或用來將輸入資料歸類到兩個群組之一。 如需羅吉斯迴歸的詳細資訊，請參閱 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)。
 
@@ -38,7 +37,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>食品檢查資料的預測分析範例
 
-在此範例中，您會使用 Spark 來對食物檢查資料（**Food_Inspections1 .csv**）進行一些預測性分析。 透過[芝加哥資料入口網站的城市取得的](https://data.cityofchicago.org/)資料。 此資料集包含在芝加哥進行的食物建立檢查的相關資訊。 包括每個建立的相關資訊、找到的違規（如果有的話），以及檢查結果。 與叢集相關聯的儲存體帳戶已有 CSV 資料檔，此叢集位於 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**。
+在此範例中，您會使用 Spark 來對食物檢查資料（**Food_Inspections1.csv**）進行一些預測性分析。 透過[芝加哥資料入口網站的城市取得的](https://data.cityofchicago.org/)資料。 此資料集包含在芝加哥進行的食物建立檢查的相關資訊。 包括每個建立的相關資訊、找到的違規（如果有的話），以及檢查結果。 與叢集相關聯的儲存體帳戶已有 CSV 資料檔，此叢集位於 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**。
 
 在下列步驟中，您會開發一個模型來觀察能否通過食品檢查的標準為何。
 
@@ -207,7 +206,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
 
      具有其他結果（「商務不存在」或「企業營運」）的資料並不實用，而且仍然會產生一小部分的結果。
 
-4. 執行下列程式碼，可將現有資料框架 (`df`) 轉換為新的資料框架，其中每項檢查都以一組「標籤-違規」來表示。 在此情況下，的卷`0.0`標代表失敗，標籤`1.0`代表成功，而標籤則代表這`-1.0`兩個結果以外的某些結果。
+4. 執行下列程式碼，可將現有資料框架 (`df`) 轉換為新的資料框架，其中每項檢查都以一組「標籤-違規」來表示。 在此情況下，的標籤 `0.0` 代表失敗，標籤 `1.0` 代表成功，而標籤則代表這 `-1.0` 兩個結果以外的某些結果。
 
     ```PySpark
     def labelForResults(s):

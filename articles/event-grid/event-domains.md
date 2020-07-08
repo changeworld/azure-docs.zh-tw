@@ -2,17 +2,16 @@
 title: Azure 事件方格中的事件網域
 description: 本文說明如何使用事件網域，來管理自訂事件到您各種不同商業組織、客戶或應用程式的流程。
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
-ms.author: babanisa
+ms.author: femila
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 11ecf5c2a7bea8a9ef2047bdabcbfd4d844c5a3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898873"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559500"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用於管理事件方格主題的事件網域
 
@@ -29,7 +28,7 @@ ms.locfileid: "78898873"
 
 事件網域可讓您使用 Azure 服務 (例如，儲存體和 IoT 中樞) 所使用的相同架構來發行它們的事件。 它們讓您能夠將事件發行到數千個主題。 網域也會為您提供對每個主題的授權和驗證控制，讓您能夠分割租用戶。
 
-### <a name="example-use-case"></a>使用案例範例
+### <a name="example-use-case"></a>範例使用案例
 
 說明事件網域最容易的方式是使用範例。 假設您執行的是 Contoso 結構機械，您可以在其中製造 tractors、深入探討設備和其他繁重的機械。 在業務營運的過程中，您會為客戶推送有關設備維護、系統健康情況、合約更新等即時資訊。 此資訊全都會傳送到各種端點，包括您的應用程式、客戶端點，以及客戶已設定的其他基礎結構。
 
@@ -105,7 +104,7 @@ ms.locfileid: "78898873"
 - 50網域範圍訂閱 
 - 5000每秒事件的內嵌速率（在網域中）
 
-如果這些限制不符合您的需要，請開啟支援票證或傳送電子郵件給，以與[askgrid@microsoft.com](mailto:askgrid@microsoft.com)產品小組聯繫。 
+如果這些限制不符合您的需要，請開啟支援票證或傳送電子郵件給，以與產品小組聯繫 [askgrid@microsoft.com](mailto:askgrid@microsoft.com) 。 
 
 ## <a name="pricing"></a>定價
 事件網域會使用事件方格中所有其他功能所使用的相同[作業定價](https://azure.microsoft.com/pricing/details/event-grid/)。

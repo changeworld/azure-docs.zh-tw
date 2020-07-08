@@ -6,16 +6,15 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0e81d48f4e709a9a0bb8ebb33c7029d3841167b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665216"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609041"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure 監視器中的記錄警示
 
-此文章提供記錄警示的詳細資料，記錄警示是 [Azure 警示](../../azure-monitor/platform/alerts-overview.md) 內所支援的其中一種警示類型，可讓使用者使用 Azure 的分析平台來作為基礎警示。
+記錄警示是[Azure 警示](../../azure-monitor/platform/alerts-overview.md)中支援的其中一種警示類型。 記錄警示可讓使用者使用 Azure 分析平臺做為警示的基礎。
 
 記錄警示包含針對 [Azure 監視器記錄](../../azure-monitor/learn/tutorial-viewdata.md)或 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 所建立的記錄搜尋規則。 若要深入了解其使用方式，請參閱[在 Azure 中建立記錄警示](../../azure-monitor/platform/alerts-log.md)
 
@@ -162,7 +161,7 @@ Azure 警示會建立記錄搜尋規則，以自動定期執行指定的記錄�
 - 使用者可以在 [Log Analytics 工作區上切換警示規則的 API 喜好設定](../../azure-monitor/platform/alerts-log-api-switch.md)，並且不會遺失警示規則或監視移至 Azure Resource Manager 規範 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)。 因此可排除為計費建立虛擬隱藏警示規則的需求。
 - 或者，如果使用者不想切換 API 喜好設定，使用者則必須使用[舊版 Log Analytics API](api-alerts.md) 來**刪除**原始排程和警示動作，或在 [Azure 入口網站刪除原始警示動作](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)。
 
-此外，針對使用[舊版 Log ANALYTICS API](api-alerts.md)來計費警示規則而建立的隱藏 scheduleQueryRules 資源，任何修改作業（例如 PUT）都會失敗。 因為`microsoft.insights/scheduledqueryrules`型別虛擬規則是用來計費使用[舊版 Log Analytics API](api-alerts.md)建立的警示規則。 您應該使用[舊版 Log ANALYTICS API](api-alerts.md) （或）來修改任何警示規則，使用者也可以將[警示規則的 API 喜好設定切換](../../azure-monitor/platform/alerts-log-api-switch.md)為改用[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 。
+此外，針對使用[舊版 Log ANALYTICS API](api-alerts.md)來計費警示規則而建立的隱藏 scheduleQueryRules 資源，任何修改作業（例如 PUT）都會失敗。 因為 `microsoft.insights/scheduledqueryrules` 型別虛擬規則是用來計費使用[舊版 LOG Analytics API](api-alerts.md)建立的警示規則。 您應該使用[舊版 Log ANALYTICS API](api-alerts.md) （或）來修改任何警示規則，使用者也可以將[警示規則的 API 喜好設定切換](../../azure-monitor/platform/alerts-log-api-switch.md)為改用[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 。
 
 ## <a name="next-steps"></a>後續步驟
 

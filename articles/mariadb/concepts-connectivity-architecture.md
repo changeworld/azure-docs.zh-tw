@@ -5,13 +5,12 @@ author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 38b6f797541ef07fa3fb5e1dc71029a4cbcf5d22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 6/8/2020
+ms.openlocfilehash: 3f0df02b58835ce4b43d6ba172e79f872a9fae1e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608378"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的連線架構
 本文說明適用於 MariaDB 的 Azure 資料庫連線架構，以及如何從 Azure 內部和外部的用戶端，將流量導向至您的適用於 MariaDB 的 Azure 資料庫實例。
@@ -46,6 +45,7 @@ ms.locfileid: "80546299"
 | 美國東部 | 40.121.158.30, 191.238.6.43  |
 | 美國東部 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | 法國中部 | 40.79.137.0, 40.79.129.1  |
+| 法國南部 | 40.79.177.0     |
 | 德國中部 | 51.4.144.100     |
 | 德國東北部 | 51.5.144.179  |
 | 印度中部 | 104.211.96.159     |
@@ -70,6 +70,17 @@ ms.locfileid: "80546299"
 | 美國西部 | 104.42.238.205, 23.99.34.75  |
 | 美國西部 2 | 13.66.226.202  |
 ||||
+
+## <a name="connection-redirection"></a>連接重新導向
+
+適用於 MariaDB 的 Azure 資料庫支援額外的連線原則「重新導向 **」，協助**減少用戶端應用程式與適用于 mariadb 伺服器之間的網路延遲。 使用這項功能，在適用於 MariaDB 的 Azure 資料庫伺服器建立初始 TCP 會話之後，伺服器會將裝載適用于 mariadb 伺服器之節點的後端位址傳回給用戶端。 之後，所有後續封包都會直接流向伺服器，略過閘道。 當封包直接流向伺服器時，延遲和輸送量會提升效能。
+
+具有引擎版本10.2 和10.3 的適用於 MariaDB 的 Azure 資料庫伺服器支援這項功能。
+
+PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)延伸模組提供重新導向的支援，由 Microsoft 所開發，並可在[PECL](https://pecl.php.net/package/mysqlnd_azure)上取得。 如需如何在您的應用程式中使用重新導向的詳細資訊，請參閱設定重新導向[一文。](./howto-redirection.md)
+
+> [!IMPORTANT]
+> PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) \(英文\) 延伸模組中的重新導向支援目前為預覽狀態。
 
 ## <a name="next-steps"></a>後續步驟
 

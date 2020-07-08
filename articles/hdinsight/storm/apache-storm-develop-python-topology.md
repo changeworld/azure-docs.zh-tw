@@ -6,14 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017, tracking-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 71709e2f1dcbab188646241eaeb4809e168d5697
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77460019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608769"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>在 HDInsight 上使用 Python 開發 Apache Storm 拓撲
 
@@ -22,7 +21,7 @@ ms.locfileid: "77460019"
 > [!IMPORTANT]  
 > 本文件中的資訊已使用 Storm on HDInsight 3.6 進行測試。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * HDInsight 上的 Apache Storm 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [Storm]**** 作為 [叢集類型]****。
 
@@ -36,7 +35,7 @@ ms.locfileid: "77460019"
 
 ## <a name="storm-multi-language-support"></a>Storm 多語言支援
 
-Apache Storm 專門用來搭配以任何程式設計語言撰寫的元件。 這些元件必須了解如何使用 Storm 的 Thrift 定義。 在 Python 中，Apache Storm 專案隨附一個模組，可讓您輕鬆地與 Strom 互動。 您可以在[https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py)找到此課程模組。
+Apache Storm 專門用來搭配以任何程式設計語言撰寫的元件。 這些元件必須了解如何使用 Storm 的 Thrift 定義。 在 Python 中，Apache Storm 專案隨附一個模組，可讓您輕鬆地與 Strom 互動。 您可以在找到此課程模組 [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py) 。
 
 Storm 是在 Java 虛擬機器 (JVM) 上執行的 Java 程序。 以其他語言撰寫的元件會以子流程執行。 Storm 會使用透過 stdin/stdout 傳送的 JSON 訊息，與這些子流程進行通訊。 如需各元件之間通訊的詳細資訊，請參閱 [多語言通訊協定](https://storm.apache.org/releases/current/Multilang-protocol.html) 文件。
 
@@ -70,13 +69,13 @@ Flux 要求 Python 指令碼位於拓撲所在之 jar 檔案內的 `/resources` 
 </resource>
 ```
 
-如先前所述，有一個`storm.py`檔案會執行 Thrift 的電流定義。 建置專案時，Flux 架構會自動包含 `storm.py`，因此您不必擔心要包含它。
+如先前所述，有一個檔案 `storm.py` 會執行 Thrift 的電流定義。 建置專案時，Flux 架構會自動包含 `storm.py`，因此您不必擔心要包含它。
 
 ## <a name="build-the-project"></a>建置專案
 
-1. 從[https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount)下載專案。
+1. 從下載專案 [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) 。
 
-1. 開啟命令提示字元，並流覽至專案根目錄： `hdinsight-python-storm-wordcount-master`。 輸入下列命令：
+1. 開啟命令提示字元，並流覽至專案根目錄： `hdinsight-python-storm-wordcount-master` 。 輸入下列命令：
 
     ```cmd
     mvn clean compile package
@@ -86,7 +85,7 @@ Flux 要求 Python 指令碼位於拓撲所在之 jar 檔案內的 `/resources` 
 
 ## <a name="run-the-storm-topology-on-hdinsight"></a>在 HDInsight 上執行 Storm 拓撲
 
-1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)，將檔案`WordCount-1.0-SNAPSHOT.jar`複製到您的 HDInsight 叢集上的風暴。 以您叢集的名稱取代 CLUSTERNAME，然後輸入命令，以編輯下面的命令：
+1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)，將檔案複製 `WordCount-1.0-SNAPSHOT.jar` 到您的 HDInsight 叢集上的風暴。 編輯以下命令並將 CLUSTERNAME 取代為您叢集的名稱，然後輸入命令：
 
     ```cmd
     scp target/WordCount-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:

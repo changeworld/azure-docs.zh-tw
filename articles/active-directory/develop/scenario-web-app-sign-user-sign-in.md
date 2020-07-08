@@ -10,13 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: df02c7d2ace6c58d86f4044607eca386f1790e1d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 41124e7237c2c16034fe8cce1fa89fa0132d09b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734309"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558928"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>登入使用者的 Web 應用程式：登入和登出
 
@@ -33,7 +32,7 @@ ms.locfileid: "82734309"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET Core 中，針對 Microsoft 身分識別平臺應用程式，[登**入**] `Views\Shared\_LoginPartial.cshtml`按鈕會公開于（適用于`Pages\Shared\_LoginPartial.cshtm` MVC 應用程式）或（適用于 Razor 應用程式）。 只有在使用者未經過驗證時才會顯示。 也就是說，當使用者尚未登入或登出時，就會顯示它。相反地，當使用者已登入時，就會顯示 [**登出**] 按鈕。 請注意，帳戶控制器定義于名為**MicrosoftIdentity**的區域中的**Microsoft. IDENTITY. Web UI** NuGet 套件中。
+在 ASP.NET Core 中，針對 Microsoft 身分識別平臺應用程式，[登**入**] 按鈕會公開于 `Views\Shared\_LoginPartial.cshtml` （適用于 MVC 應用程式）或 `Pages\Shared\_LoginPartial.cshtm` （適用于 Razor 應用程式）。 只有在使用者未經過驗證時才會顯示。 也就是說，當使用者尚未登入或登出時，就會顯示它。相反地，當使用者已登入時，就會顯示 [**登出**] 按鈕。 請注意，帳戶控制器定義于名為**MicrosoftIdentity**的區域中的**Microsoft. IDENTITY. Web UI** NuGet 套件中。
 
 ```html
 <ul class="navbar-nav">
@@ -57,7 +56,7 @@ ms.locfileid: "82734309"
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在 ASP.NET MVC 中，會在中`Views\Shared\_LoginPartial.cshtml`公開 [登出] 按鈕。 只有在有已驗證的帳戶時才會顯示。 也就是說，當使用者先前已登入時，就會顯示它。
+在 ASP.NET MVC 中，會在中公開 [登出] 按鈕 `Views\Shared\_LoginPartial.cshtml` 。 只有在有已驗證的帳戶時才會顯示。 也就是說，當使用者先前已登入時，就會顯示它。
 
 ```html
 @if (Request.IsAuthenticated)
@@ -74,7 +73,7 @@ else
 
 # <a name="java"></a>[Java](#tab/java)
 
-在我們的 JAVA 快速入門中，[登入] 按鈕位於[main/resources/templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/resources/templates/index.html)檔案中。
+在我們的 JAVA 快速入門中，[登入] 按鈕位於[主要/資源/範本/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/resources/templates/index.html)檔案中。
 
 ```html
 <!DOCTYPE html>
@@ -112,13 +111,13 @@ def index():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET 中，選取 web 應用程式中的 [登**入**] 按鈕`SignIn`會在`AccountController`控制器上觸發動作。 在舊版的 ASP.NET core 範本中， `Account`控制器已內嵌在 web 應用程式中。 這已不再是原因，因為控制器現在是**Microsoft. WEB UI** NuGet 套件的一部分。 如需詳細資訊，請參閱[AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) 。
+在 ASP.NET 中，選取 web 應用程式中的 [登**入**] 按鈕會在 `SignIn` 控制器上觸發動作 `AccountController` 。 在舊版的 ASP.NET core 範本中， `Account` 控制器已內嵌在 web 應用程式中。 這已不再是原因，因為控制器現在是**Microsoft. WEB UI** NuGet 套件的一部分。 如需詳細資訊，請參閱[AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) 。
 
 此控制器也會處理 Azure AD B2C 應用程式。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在 ASP.NET 中，登出是從控制器上`SignOut()`的方法觸發（例如， [AccountController .cs # l16 也-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)）。 這個方法不是 ASP.NET 架構的一部分（相對於 ASP.NET Core 所發生的情況）。 在建議重新導向 URI 之後，它會傳送 OpenID 登入挑戰。
+在 ASP.NET 中，登出是從 `SignOut()` 控制器上的方法觸發（例如， [AccountController .Cs # L16 也-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)）。 這個方法不是 ASP.NET 架構的一部分（相對於 ASP.NET Core 所發生的情況）。 在建議重新導向 URI 之後，它會傳送 OpenID 登入挑戰。
 
 ```csharp
 public void SignIn()
@@ -133,7 +132,7 @@ public void SignIn()
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 JAVA 中，登出的處理方式是直接呼叫 Microsoft 身分識別`logout`平臺端點，並提供`post_logout_redirect_uri`值。 如需詳細資訊，請參閱[AuthPageController. java # L30-L48](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L30-L48)。
+在 JAVA 中，登出的處理方式是直接呼叫 Microsoft 身分識別平臺 `logout` 端點，並提供 `post_logout_redirect_uri` 值。 如需詳細資訊，請參閱[AuthPageController. java # L30-L48](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L30-L48)。
 
 ```Java
 @Controller
@@ -175,7 +174,7 @@ def login():
     return "<a href='%s'>Login with Microsoft Identity</a>" % auth_url
 ```
 
-`_build_msal_app()`方法定義于[.py # L81-L88](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L81-L88)中，如下所示：
+`_build_msal_app()`方法定義于[.Py # L81-L88](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L81-L88)中，如下所示：
 
 ```Python
 def _load_cache():
@@ -211,9 +210,9 @@ def _get_token_from_cache(scope=None):
 ## <a name="sign-out"></a>登出
 
 登出 web 應用程式牽涉到從 web 應用程式的狀態中移除登入帳戶的相關資訊。
-Web 應用程式也必須將使用者重新導向至 Microsoft 身分識別`logout`平臺端點，才能登出。
+Web 應用程式也必須將使用者重新導向至 Microsoft 身分識別平臺 `logout` 端點，才能登出。
 
-當您的 web 應用程式將使用者重新`logout`導向至端點時，此端點會清除瀏覽器中的使用者會話。 如果您的應用程式未移`logout`至端點，則使用者會重新驗證您的應用程式，而不需要再次輸入其認證。 這是因為他們會有有效的單一登入會話與 Microsoft 身分識別平臺端點。
+當您的 web 應用程式將使用者重新導向至 `logout` 端點時，此端點會清除瀏覽器中的使用者會話。 如果您的應用程式未移至 `logout` 端點，則使用者會重新驗證您的應用程式，而不需要再次輸入其認證。 這是因為他們會有有效的單一登入會話與 Microsoft 身分識別平臺端點。
 
 若要深入瞭解，請參閱[Microsoft 身分識別平臺和 OpenID connect 通訊協定](v2-protocols-oidc.md)檔中的[傳送登出要求](v2-protocols-oidc.md#send-a-sign-out-request)一節。
 
@@ -221,15 +220,15 @@ Web 應用程式也必須將使用者重新導向至 Microsoft 身分識別`logo
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在應用程式註冊期間，您會註冊登出後的 URI。 在我們的教學課程中`https://localhost:44321/signout-oidc` ，您已在 [**驗證**] 頁面上 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱[註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)。
+在應用程式註冊期間，您會註冊登出後的 URI。 在我們的教學課程中，您已 `https://localhost:44321/signout-oidc` 在 [**驗證**] 頁面上 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱[註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在應用程式註冊期間，您會註冊登出後的 URI。 在我們的教學課程中`https://localhost:44308/Account/EndSession` ，您已在 [**驗證**] 頁面上 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱[註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)。
+在應用程式註冊期間，您會註冊登出後的 URI。 在我們的教學課程中，您已 `https://localhost:44308/Account/EndSession` 在 [**驗證**] 頁面上 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱[註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在應用程式註冊期間，您會註冊登出後的 URI。 在我們的教學課程中`http://localhost:8080/msal4jsample/sign_out` ，您已在 [**驗證**] 頁面上 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。
+在應用程式註冊期間，您會註冊登出後的 URI。 在我們的教學課程中，您已 `http://localhost:8080/msal4jsample/sign_out` 在 [**驗證**] 頁面上 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -241,7 +240,7 @@ Web 應用程式也必須將使用者重新導向至 Microsoft 身分識別`logo
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET 中，選取 web 應用程式中的 [**登出**] 按鈕`SignOut`會觸發`AccountController`控制器上的動作（請參閱下文）
+在 ASP.NET 中，選取 web 應用程式中的 [**登出**] 按鈕會觸發 `SignOut` 控制器上的動作 `AccountController` （請參閱下文）
 
 ```html
 <ul class="navbar-nav">
@@ -265,7 +264,7 @@ Web 應用程式也必須將使用者重新導向至 Microsoft 身分識別`logo
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在 ASP.NET MVC 中，會在中`Views\Shared\_LoginPartial.cshtml`公開 [登出] 按鈕。 只有在有已驗證的帳戶時才會顯示。 也就是說，當使用者先前已登入時，就會顯示它。
+在 ASP.NET MVC 中，會在中公開 [登出] 按鈕 `Views\Shared\_LoginPartial.cshtml` 。 只有在有已驗證的帳戶時才會顯示。 也就是說，當使用者先前已登入時，就會顯示它。
 
 ```html
 @if (Request.IsAuthenticated)
@@ -291,7 +290,7 @@ else
 
 # <a name="java"></a>[Java](#tab/java)
 
-在我們的 JAVA 快速入門中，[登出] 按鈕位於 main/resources/templates/auth_page.html 檔案中。
+在我們的 JAVA 快速入門中，[登出] 按鈕位於主要/資源/範本/auth_page.html 檔案中。
 
 ```html
 <!DOCTYPE html>
@@ -306,7 +305,7 @@ else
 
 # <a name="python"></a>[Python](#tab/python)
 
-在 Python 快速入門中，[登出] 按鈕位於[templates/index .html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10)檔案中。
+在 Python 快速入門中，[登出] 按鈕位於[templates/index.html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10)檔案中。
 
 ```html
 <!DOCTYPE html>
@@ -329,17 +328,17 @@ else
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在舊版的 ASP.NET core 範本中， `Account`控制器已內嵌在 web 應用程式中。 這已不再是原因，因為控制器現在是**Microsoft. WEB UI** NuGet 套件的一部分。 如需詳細資訊，請參閱[AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) 。
+在舊版的 ASP.NET core 範本中， `Account` 控制器已內嵌在 web 應用程式中。 這已不再是原因，因為控制器現在是**Microsoft. WEB UI** NuGet 套件的一部分。 如需詳細資訊，請參閱[AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) 。
 
-- 將 OpenID 重新導向 URI 設定`/Account/SignedOut`為，以便在 Azure AD 完成登出時呼叫控制器。
-- 呼叫`Signout()`，可讓 OpenID connect 中介軟體與 Microsoft 身分識別平臺`logout`端點聯繫。 然後，端點會：
+- 將 OpenID 重新導向 URI 設定為， `/Account/SignedOut` 以便在 Azure AD 完成登出時呼叫控制器。
+- 呼叫 `Signout()` ，可讓 OpenID connect 中介軟體與 Microsoft 身分識別平臺 `logout` 端點聯繫。 然後，端點會：
 
   - 從瀏覽器清除會話 cookie。
-  - 回撥登出 URL。 [登出 URL] 預設會顯示 [已登出] 視圖頁面[SignedOut](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml)。 此頁面也會提供做為 MIcrosoft. Identity. Web 的一部分。
+  - 回撥登出 URL。 [登出 URL] 預設會顯示 [已登出] 視圖頁面[SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml)。 此頁面也會提供做為 MIcrosoft. Identity. Web 的一部分。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在 ASP.NET 中，登出是從控制器上`SignOut()`的方法觸發（例如， [AccountController .cs # L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)）。 這個方法不是 ASP.NET 架構的一部分，與 ASP.NET Core 中發生的情況相反。 這樣
+在 ASP.NET 中，登出是從 `SignOut()` 控制器上的方法觸發（例如， [AccountController .Cs # L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)）。 這個方法不是 ASP.NET 架構的一部分，與 ASP.NET Core 中發生的情況相反。 這樣
 
 - 傳送 OpenID 登出挑戰。
 - 清除快取。
@@ -360,7 +359,7 @@ public void SignOut()
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 JAVA 中，登出的處理方式是直接呼叫 Microsoft 身分識別`logout`平臺端點，並提供`post_logout_redirect_uri`值。 如需詳細資訊，請參閱[AuthPageController. java # L50-L60](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L50-L60)。
+在 JAVA 中，登出的處理方式是直接呼叫 Microsoft 身分識別平臺 `logout` 端點，並提供 `post_logout_redirect_uri` 值。 如需詳細資訊，請參閱[AuthPageController. java # L50-L60](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L50-L60)。
 
 ```Java
 @RequestMapping("/msal4jsample/sign_out")
@@ -391,13 +390,13 @@ def logout():
 
 ---
 
-### <a name="intercepting-the-call-to-the-logout-endpoint"></a>攔截對`logout`端點的呼叫
+### <a name="intercepting-the-call-to-the-logout-endpoint"></a>攔截對端點的呼叫 `logout`
 
 登出後的 URI 可讓應用程式參與全域登出。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core OpenID Connect 中介軟體可讓您的應用程式藉由提供名為`logout` `OnRedirectToIdentityProviderForSignOut`的 OpenID connect 事件來攔截對 Microsoft 身分識別平臺端點的呼叫。 這會由 Microsoft 自動處理（這會在您的 web 應用程式呼叫 web api 的情況下清除帳戶）
+ASP.NET Core OpenID Connect 中介軟體可讓您的應用程式藉 `logout` 由提供名為的 OpenID connect 事件來攔截對 Microsoft 身分識別平臺端點的呼叫 `OnRedirectToIdentityProviderForSignOut` 。 這會由 Microsoft 自動處理（這會在您的 web 應用程式呼叫 web api 的情況下清除帳戶）
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -418,11 +417,11 @@ public class AccountController : Controller
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 JAVA 快速入門中，登出後重新導向 URI 只會顯示 [.html] 頁面。
+在 JAVA 快速入門中，登出後重新導向 URI 只會顯示 index.html 頁面。
 
 # <a name="python"></a>[Python](#tab/python)
 
-在 Python 快速入門中，登出後重新導向 URI 只會顯示 [.html] 頁面。
+在 Python 快速入門中，登出後重新導向 URI 只會顯示 index.html 頁面。
 
 ---
 
@@ -433,4 +432,4 @@ public class AccountController : Controller
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [移動至生產環境](scenario-web-app-sign-user-production.md)
+> [移至生產環境](scenario-web-app-sign-user-production.md)

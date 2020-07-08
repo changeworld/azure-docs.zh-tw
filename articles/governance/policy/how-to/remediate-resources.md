@@ -1,14 +1,13 @@
 ---
 title: 補救不相容的資源
 description: 本指南會逐步引導您補救不符合「Azure 原則」中原則規範的資源。
-ms.date: 02/26/2020
+ms.date: 06/09/2020
 ms.topic: how-to
-ms.openlocfilehash: acdb067e888ecbe68e3221944568b202f2510c41
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636303"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>補救不符合 Azure 原則規範的資源
 
@@ -17,7 +16,7 @@ ms.locfileid: "83849955"
 ## <a name="how-remediation-security-works"></a>補救安全性的運作方式
 
 當「Azure 原則」執行 **deployIfNotExists** 原則定義中的範本時，會使用[受控識別](../../../active-directory/managed-identities-azure-resources/overview.md)來執行。
-「Azure 原則」會為每個指派項目建立受控識別，但您必須提供有關要將哪些角色授與受控識別的詳細資料。 如果受控識別缺少角色，在指派原則或方案時，就會顯示此錯誤。 使用入口網站時，在開始指派之後，「Azure 原則」會自動將所列出的角色授與受控識別。 受控識別的_位置_不會影響其對「Azure 原則」的作業。
+「Azure 原則」會為每個指派項目建立受控識別，但您必須提供有關要將哪些角色授與受控識別的詳細資料。 如果受控識別缺少角色，在指派原則或方案時，就會顯示此錯誤。 使用入口網站時，在開始指派之後，「Azure 原則」會自動將所列出的角色授與受控識別。 受控識別的_位置_不會影響其對 Azure 原則的操作。
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="受控識別 - 遺漏角色" border="false":::
 
@@ -51,9 +50,6 @@ az role definition list --name 'Contributor'
 - 使用 SDK (例如 Azure PowerShell) 時
 - 當範本修改指派範圍外的資源時
 - 當範本讀取指派範圍外的資源時
-
-> [!NOTE]
-> 目前支援此功能的 SDK 只有 Azure PowerShell 和 .NET。
 
 ### <a name="create-managed-identity-with-powershell"></a>使用 PowerShell 來建立受控識別
 
@@ -183,7 +179,7 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 
 ### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>在 Azure 入口網站中於原則指派期間建立補救工作
 
-建立補救工作的簡化方式是在原則指派期間從 Azure 入口網站執行此動作。 如果要指派的原則定義是 **deployIfNotExists** 或 **Modify** 效果，則 [補救] 索引標籤上的精靈會提供 [建立補救工作] 選項。 如果選取此選項，則會在原則指派的同時建立補救工作。
+建立補救工作的簡化方式是在原則指派期間從 Azure 入口網站執行此動作。 如果要指派的原則定義是**deployIfNotExists**或**修改**效果，[**補救**] 索引標籤上的 wizard 會提供 [_建立補救_工作] 選項。 如果選取此選項，則會在原則指派的同時建立補救工作。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,13 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.custom: seodec18
-ms.openlocfilehash: 3a7a00e59db677e156037c007537ab1b54c1cfaf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 82bdf4cd25d486d48f4f2adda222197a600434d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559581"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 中的 Web Apps 相關開放原始碼技術常見問題集
 
@@ -26,15 +25,15 @@ ms.locfileid: "82159961"
 
 若要開啟 PHP 記錄：
 
-1. 登入您的**Kudu 網站**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
-2. 在頂端功能表中，選取 [**偵錯主控台** > **CMD**]。
+1. 登入您的**Kudu 網站**（ `https://*yourwebsitename*.scm.azurewebsites.net` ）。
+2. 在頂端功能表中，選取 [**偵錯主控台**  >  **CMD**]。
 3. 選取 [網站]**** 資料夾。
 4. 選取 [wwwroot]**** 資料夾。
-5. 選取圖示**+** ，然後選取 [**新增**檔案]。
+5. 選取 **+** 圖示，然後選取 [**新增**檔案]。
 6. 將檔案名稱設定為 **.user.ini**。
 7. 選取 **.user.ini** 旁邊的鉛筆圖示。
 8. 在檔案中，新增下列程式碼：`log_errors=on`
-9. 選取 [儲存]  。
+9. 選取 [儲存]。
 10. 選取 **wp-config.php** 旁邊的鉛筆圖示。
 11. 將文字變更為下列程式碼：
     ```php
@@ -56,7 +55,7 @@ ms.locfileid: "82159961"
   1. 在 Azure 入口網站中，移至您的 Web 應用程式。
   2. 在 [設定]**** 刀鋒視窗上，選取 [應用程式設定]****。
   3. 在 [應用程式設定]**** 中，您可以包含 WEBSITE_NODE_DEFAULT_VERSION 做為索引鍵，並包含所需的 Node.js 版本做為值。
-  4. 移至您的**Kudu 主控台**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
+  4. 移至您的**Kudu 主控台**（ `https://*yourwebsitename*.scm.azurewebsites.net` ）。
   5. 若要檢查 Node.js 版本，請輸入下列命令：  
      ```
      node -v
@@ -91,7 +90,7 @@ ms.locfileid: "82159961"
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>如何對於 App Service 中裝載的 Node.js 應用程式進行偵錯？
 
-1.  移至您的**Kudu 主控台**（`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`）。
+1.  移至您的**Kudu 主控台**（ `https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole` ）。
 2.  移至應用程式記錄資料夾 (D:\home\LogFiles\Application)。
 3.  在 Logging_errors.txt 檔案中檢查內容。
 
@@ -138,7 +137,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 1. 從 app/lib 資料夾移除 sqljdbc*.jar 檔案。
 2. 如果您使用自訂的 Tomcat 或 Azure Marketplace Tomcat Web 伺服器，請將此 .jar 檔案複製到 Tomcat lib 資料夾。
-3. 如果您要從 Azure 入口網站啟用 java （選取 [ **JAVA 1.8** > **Tomcat 伺服器**]），請複製與您的應用程式平行的資料夾中的 sqljdbc.jar. * jar 檔案。 然後，將下列 classpath 設定新增到 web.config 檔案：
+3. 如果您要從 Azure 入口網站啟用 java （選取 [ **JAVA 1.8**  >  **Tomcat 伺服器**]），請複製與您的應用程式平行的資料夾中的 sqljdbc.jar. * jar 檔案。 然後，將下列 classpath 設定新增到 web.config 檔案：
 
     ```xml
     <httpPlatform>

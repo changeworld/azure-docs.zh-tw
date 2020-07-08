@@ -5,27 +5,27 @@ author: normesta
 ms.service: storage
 ms.date: 04/10/2020
 ms.author: normesta
-ms.topic: article
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a79f3110206a01b9b974952f0ec0d299644be11f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: f5ff33d021f27f2c5dfb86ca87f2579602f0d1cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559142"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Python 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
 本文說明如何使用 Python 來建立和管理已啟用階層命名空間（HNS）之儲存體帳戶中的目錄、檔案和許可權。 
 
-[封裝（Python 套件索引）](https://pypi.org/project/azure-storage-file-datalake/) | [範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API 參考](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html) | [Gen1 至 Gen2 對應](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [提供意見](https://github.com/Azure/azure-sdk-for-python/issues)反應
+[封裝（Python 套件索引）](https://pypi.org/project/azure-storage-file-datalake/)  | [範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)  | [API 參考](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html)  | [Gen1 至 Gen2 對應](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供意見](https://github.com/Azure/azure-sdk-for-python/issues)反應
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-> * 已啟用階層命名空間（HNS）的儲存體帳戶。 請遵循[這些](data-lake-storage-quickstart-create-account.md)指示來建立一個。
+> * 已啟用階層命名空間 (HNS) 的儲存體帳戶。 遵循[下列](data-lake-storage-quickstart-create-account.md)指示以建立帳戶。
 
 ## <a name="set-up-your-project"></a>設定專案
 
@@ -44,7 +44,7 @@ from azure.core._match_conditions import MatchConditions
 from azure.storage.filedatalake._models import ContentSettings
 ```
 
-## <a name="connect-to-the-account"></a>連接到帳戶
+## <a name="connect-to-the-account"></a>連線到帳戶
 
 若要使用本文中的程式碼片段，您必須建立代表儲存體帳戶的**DataLakeServiceClient**實例。 
 
@@ -67,7 +67,7 @@ except Exception as e:
  
 - 使用您的儲存體帳戶名稱取代 `storage_account_name` 預留位置值。
 
-- 將`storage_account_key`預留位置值取代為您的儲存體帳戶存取金鑰。
+- 將 `storage_account_key` 預留位置值取代為您的儲存體帳戶存取金鑰。
 
 ### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory （AD）進行連接
 
@@ -95,9 +95,9 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 
 ## <a name="create-a-file-system"></a>建立檔案系統
 
-檔案系統作為檔案的容器。 您可以藉由呼叫 FileSystemDataLakeServiceClient 來建立一個。 **create_file_system**方法。
+檔案系統可做為您的檔案的容器。 您可以藉由呼叫 FileSystemDataLakeServiceClient 來建立一個。 **create_file_system**方法。
 
-這個範例會建立名為`my-file-system`的檔案系統。
+此範例會建立名為 `my-file-system` 的檔案系統。
 
 ```python
 def create_file_system():
@@ -115,7 +115,7 @@ def create_file_system():
 
 藉由呼叫 FileSystemClient 來建立目錄參考。 **create_directory**方法。
 
-這個範例會將名`my-directory`為的目錄新增至檔案系統。 
+這個範例會將名為的目錄新增 `my-directory` 至檔案系統。 
 
 ```python
 def create_directory():
@@ -126,11 +126,11 @@ def create_directory():
      print(e) 
 ```
 
-## <a name="rename-or-move-a-directory"></a>重新命名目錄或移動目錄
+## <a name="rename-or-move-a-directory"></a>重新命名或移動目錄
 
 藉由呼叫 DataLakeDirectoryClient 來重新命名或移動目錄 **。 rename_directory**方法。 傳遞所需目錄的路徑 a 參數。 
 
-這個範例會將子目錄重新命名為名稱`my-subdirectory-renamed`。
+這個範例會將子目錄重新命名為名稱 `my-subdirectory-renamed` 。
 
 ```python
 def rename_directory():
@@ -150,7 +150,7 @@ def rename_directory():
 
 藉由呼叫 DataLakeDirectoryClient 來刪除目錄。 **delete_directory**方法。
 
-這個範例會刪除名為`my-directory`的目錄。  
+此範例刪除名為 `my-directory` 的目錄。  
 
 ```python
 def delete_directory():
@@ -168,9 +168,9 @@ def delete_directory():
 藉由呼叫**Get_access_control DataLakeDirectoryClient**方法來取得目錄的存取控制清單（ACL），並藉由呼叫**set_access_control DataLakeDirectoryClient**方法來設定 ACL。
 
 > [!NOTE]
-> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入瞭解如何套用 ACL 許可權，以及變更它們的影響，請參閱[Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
 
-這個範例會取得並設定名為`my-directory`之目錄的 ACL。 此字串`rwxr-xrw-`提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供所有其他讀取和寫入權限。
+這個範例會取得並設定名為之目錄的 ACL `my-directory` 。 此字串 `rwxr-xrw-` 提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供所有其他讀取和寫入權限。
 
 ```python
 def manage_directory_permissions():
@@ -195,11 +195,11 @@ def manage_directory_permissions():
      print(e) 
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>將檔案上傳到目錄 
+## <a name="upload-a-file-to-a-directory"></a>將檔案上傳至目錄 
 
 首先，建立**DataLakeFileClient**類別的實例，以建立目標目錄中的檔案參考。 藉由呼叫 DataLakeFileClient 來上傳檔案。 **append_data**方法。 請務必呼叫 DataLakeFileClient 來完成上傳 **。 flush_data**方法。
 
-這個範例會將文字檔上傳至名為`my-directory`的目錄。   
+這個範例會將文字檔上傳至名為的目錄 `my-directory` 。   
 
 ```python
 def upload_file_to_directory():
@@ -254,9 +254,9 @@ def upload_file_to_directory_bulk():
 藉由呼叫**Get_access_control DataLakeFileClient**方法來取得檔案的存取控制清單（ACL），並藉由呼叫**set_access_control DataLakeFileClient**方法來設定 ACL。
 
 > [!NOTE]
-> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入瞭解如何套用 ACL 許可權，以及變更它們的影響，請參閱[Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
 
-這個範例會取得並設定名為`my-file.txt`之檔案的 ACL。 此字串`rwxr-xrw-`提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供所有其他讀取和寫入權限。
+這個範例會取得並設定名為之檔案的 ACL `my-file.txt` 。 此字串 `rwxr-xrw-` 提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供所有其他讀取和寫入權限。
 
 ```python
 def manage_file_permissions():
@@ -313,7 +313,7 @@ def download_file_from_directory():
 
 藉由呼叫**Get_paths FileSystemClient**方法來列出目錄內容，然後逐一列舉結果。
 
-這個範例會列印位於名為`my-directory`的目錄中的每個子目錄和檔案的路徑。
+這個範例會列印位於名為的目錄中的每個子目錄和檔案的路徑 `my-directory` 。
 
 ```python
 def list_directory_contents():
@@ -330,7 +330,7 @@ def list_directory_contents():
      print(e) 
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [API 參考文件](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
 * [封裝（Python 套件索引）](https://pypi.org/project/azure-storage-file-datalake/)

@@ -6,12 +6,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: cbefe2e2b25db7ce16a7a1bde423f60fda412590
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608361"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理程式概觀
 開發 Azure Log Analytics 代理程式是為了能夠全面管理任何雲端中的虛擬機器、內部部署機器，以及 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) 所監視的機器。 Windows 和 Linux 代理程式會將從不同來源收集而來的資料傳送至 Azure 監視器中的 Log Analytics 工作區，以及監視解決方案中所定義的任何唯一記錄或計量。 Log Analytics 代理程式也支援 Azure 監視器中的深入解析和其他服務，例如[適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md)、[Azure 資訊安全中心](/azure/security-center/)和 [Azure 自動化](../../automation/automation-intro.md)。
@@ -114,6 +113,24 @@ Windows 代理程式正式支援下列 Windows 作業系統版本：
 >[!NOTE]
 >如果您使用的散發版本或版本目前不受支援，且不符合支援模型，建議您為此存放庫建立分支，以認可 Microsoft 支援服務將不會對分支代理程式版本提供協助。
 
+
+### <a name="python-2-requirement"></a>Python 2 需求
+ Log Analytics 代理程式需要 Python 2。 如果您的虛擬機器使用預設不包含 Python 2 的散發版本，則您必須安裝它。 下列範例命令會在不同的散發版本上安裝 Python 2。
+
+ - Red Hat、CentOS、Oracle：`yum install -y python2`
+ - Ubuntu、Debian：`apt-get install -y python2`
+ - SUSE：`zypper install -y python2`
+
+Python2 可執行檔必須使用下列命令，以別名為 "python"：
+
+```
+alternatives --set python /usr/sbin/python2
+```
+
+### <a name="supported-distros"></a>支援的發行版
+
+Linux 代理程式正式支援下列 Linux 作業系統版本：
+
 * Amazon Linux 2017.09 (x64)
 * CentOS Linux 6 (x64) 和 7 (x64)  
 * Oracle Linux 6 和 7 (x64) 
@@ -190,7 +207,7 @@ Windows 和 Linux 代理程式支援使用 HTTPS 通訊協定，透過 Proxy 伺
 > [!NOTE]
 > 若您的 Proxy 伺服器不要求您進行驗證，Linux 代理程式仍會要求提供虛擬使用者/密碼。 這可以是任何使用者名稱或密碼。
 
-|屬性| 描述 |
+|屬性| 說明 |
 |--------|-------------|
 |通訊協定 | https |
 |user | 用於驗證 Proxy 的選擇性使用者名稱 |
@@ -210,4 +227,3 @@ Windows 和 Linux 代理程式支援使用 HTTPS 通訊協定，透過 Proxy 伺
 * 檢閱[資料來源](agent-data-sources.md)以了解可用於從您的 Windows 或 Linux 系統收集資料的資料來源。 
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。 
 * 了解可將功能新增至 Azure 監視器，並會將資料收集到 Log Analytics 工作區的[監視解決方案](../insights/solutions.md)。
-

@@ -8,16 +8,15 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c97dafa80adedd64d45666eb98ef6b1e69850719
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397901"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629400"
 ---
 # <a name="workflow-automation"></a>工作流程自動化
 
-每個安全性程式都包含事件回應的多個工作流程。 這些流程可能包括通知相關的專案關係人、啟動變更管理程式，以及套用特定的補救步驟。 安全性專家建議您盡可能地自動化這些程式的許多步驟。 自動化可減少額外負荷。 它也可以藉由確保按照您預先定義的需求快速、一致地完成程式步驟，來改善您的安全性。
+每個安全性程式都包含事件回應的多個工作流程。 這些流程可能包括通知相關的專案利害關係人、啟動變更管理程式，以及套用特定的補救步驟。 安全性專家建議您盡可能自動化這些程式的許多步驟。 自動化可減少額外負荷。 它也可以藉由確保按照您預先定義的需求快速、一致地完成程式步驟，來改善您的安全性。
 
 本文說明 Azure 資訊安全中心的工作流程自動化功能。 這項功能可以觸發安全性警示和建議的 Logic Apps。 例如，您可能會想要資訊安全中心在警示發生時，以電子郵件傳送特定的使用者。 您也將瞭解如何使用[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)建立 Logic Apps。
 
@@ -25,15 +24,25 @@ ms.locfileid: "80397901"
 > 如果您先前已使用提要欄位上的 [腳本（預覽）] 視圖，您會在 [新增工作流程自動化] 頁面中找到相同的功能和擴充的功能。
 
 
-## <a name="requirements"></a>需求
 
-* 若要使用 Azure Logic Apps 工作流程，您必須具有下列 Logic Apps 角色/許可權：
+## <a name="availability"></a>可用性
 
-    * [邏輯應用程式操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)許可權是必要的或邏輯應用程式讀取/觸發程式存取（此角色無法建立或編輯邏輯應用程式; 只*執行*現有的）
+- 發行階段：**正式推出**
+- 必要的角色和許可權：
+    - 包含匯出設定之訂用帳戶上的**讀取器**
+    - 資源群組（或**擁有**者）上的**安全性系統管理員角色**
+    - 也必須具有目標資源的寫入權限
+    - 此外，若要使用 Azure Logic Apps 工作流程，您必須具有下列 Logic Apps 角色/許可權：
 
-    * 邏輯應用程式的建立和修改必須要有[邏輯應用程式參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)許可權
+        * [邏輯應用程式操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)許可權是必要的或邏輯應用程式讀取/觸發程式存取（此角色無法建立或編輯邏輯應用程式; 只*執行*現有的）
 
-* 如果您想要使用邏輯應用程式連接器，您可能需要額外的認證來登入其各自的服務（例如，您的 Outlook/小組/時差實例）
+        * 邏輯應用程式的建立和修改必須要有[邏輯應用程式參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)許可權
+
+        * 如果您想要使用邏輯應用程式連接器，您可能需要額外的認證來登入其各自的服務（例如，您的 Outlook/小組/時差實例）
+- 雲端： 
+    - ✔ 商用雲端
+    - ✔ US Gov
+    - ✘中國 Gov，其他 Gov
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>建立邏輯應用程式，並定義應該自動執行的時機 

@@ -2,13 +2,12 @@
 title: 檢視和管理服務提供者
 description: 客戶可以使用 Azure 入口網站中的 [服務提供者] 頁面，檢視服務提供者、服務提供者供應項目與委派的資源的相關資訊。
 ms.date: 04/24/2020
-ms.topic: conceptual
-ms.openlocfilehash: 7e0522d1cd13ab1a4be589bc0c22c4ebfcf24d3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 8b48fb9c92cf6922cea62fe04943ae76d3d3b590
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636456"
 ---
 # <a name="view-and-manage-service-providers"></a>檢視和管理服務提供者
 

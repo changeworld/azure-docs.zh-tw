@@ -5,17 +5,17 @@ description: 瞭解如何使用 Azure Machine Learning 將模型部署至 Azure 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.openlocfilehash: 104e0892e2ad6bc6a0b3212722781f9498eee219
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 3afe5d0993f7e647cbae1281cb9e7387df6e2f50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560400"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>將機器學習模型部署到 Azure Functions （預覽）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -97,7 +97,7 @@ pip install azureml-contrib-functions
 若要建立部署到 Azure Functions 的 Docker 映射，請使用[contrib](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)或您想要使用之觸發程式的特定封裝功能。 下列程式碼片段示範如何從模型和推斷設定建立具有 blob 觸發程式的新封裝：
 
 > [!NOTE]
-> 此程式碼片段假設`model`包含已註冊的模型，而且`inference_config`包含推斷環境的設定。 如需詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
+> 此程式碼片段假設 `model` 包含已註冊的模型，而且 `inference_config` 包含推斷環境的設定。 如需詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
 ```python
 from azureml.contrib.functions import package
@@ -108,7 +108,7 @@ blob.wait_for_creation(show_output=True)
 print(blob.location)
 ```
 
-若`show_output=True`為，則會顯示 Docker 組建進程的輸出。 程式完成後，就會在您工作區的 Azure Container Registry 中建立映射。 建立映射之後，就會顯示 Azure Container Registry 中的位置。 傳回的位置格式`<acrinstance>.azurecr.io/package@sha256:<imagename>`為。
+若 `show_output=True` 為，則會顯示 Docker 組建進程的輸出。 程式完成後，就會在您工作區的 Azure Container Registry 中建立映射。 建立映射之後，就會顯示 Azure Container Registry 中的位置。 傳回的位置格式為 `<acrinstance>.azurecr.io/package@sha256:<imagename>` 。
 
 > [!NOTE]
 > 封裝功能目前支援 HTTP 觸發程式、Blob 觸發程式和服務匯流排觸發程式。 如需觸發程式的詳細資訊，請參閱[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns)系結。
@@ -118,7 +118,7 @@ print(blob.location)
 
 ## <a name="deploy-image-as-a-web-app"></a>將映射部署為 web 應用程式
 
-1. 使用下列命令來取得包含映射之 Azure Container Registry 的登入認證。 將`<myacr>`取代為先前從`package.location`傳回的值： 
+1. 使用下列命令來取得包含映射之 Azure Container Registry 的登入認證。 `<myacr>`將取代為先前從傳回的值 `package.location` ： 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -151,12 +151,12 @@ print(blob.location)
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    在此範例中，會使用_Linux 基本_定價`--sku B1`層（）。
+    在此範例中，會使用_Linux 基本_定價層（ `--sku B1` ）。
 
     > [!IMPORTANT]
-    > Azure Machine Learning 所建立的映射會使用 Linux，因此您必須`--is-linux`使用參數。
+    > Azure Machine Learning 所建立的映射會使用 Linux，因此您必須使用 `--is-linux` 參數。
 
-1. 建立要用於 web 作業儲存體的儲存體帳戶，並取得其連接字串。 取代`<webjobStorage>`為您要使用的名稱。
+1. 建立要用於 web 作業儲存體的儲存體帳戶，並取得其連接字串。 取代為 `<webjobStorage>` 您要使用的名稱。
 
     ```azurecli-interactive
     az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
@@ -165,7 +165,7 @@ print(blob.location)
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
 
-1. 若要建立函數應用程式，請使用下列命令。 取代`<app-name>`為您要使用的名稱。 將`<acrinstance>`和`<imagename>`取代為先前傳回`package.location`的值。 將`<webjobStorage>`取代為上一個步驟中的儲存體帳戶名稱：
+1. 若要建立函數應用程式，請使用下列命令。 取代為 `<app-name>` 您要使用的名稱。 `<acrinstance>`將和取代 `<imagename>` 為先前傳回的值 `package.location` 。 將取代 `<webjobStorage>` 為上一個步驟中的儲存體帳戶名稱：
 
     ```azurecli-interactive
     az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
@@ -174,7 +174,7 @@ print(blob.location)
     > [!IMPORTANT]
     > 此時，已建立函數應用程式。 不過，由於您尚未將 blob 觸發程式或認證的連接字串提供給包含該影像的 Azure Container Registry，因此函式應用程式不是作用中。 在接下來的步驟中，您會提供容器登錄的連接字串和驗證資訊。 
 
-1. 建立要用於 blob 觸發程式儲存體的儲存體帳戶，並取得其連接字串。 取代`<triggerStorage>`為您要使用的名稱。
+1. 建立要用於 blob 觸發程式儲存體的儲存體帳戶，並取得其連接字串。 取代為 `<triggerStorage>` 您要使用的名稱。
 
     ```azurecli-interactive
     az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
@@ -184,7 +184,7 @@ print(blob.location)
     ```
     記錄此連接字串，以提供給函式應用程式。 我們稍後會在要求時使用`<triggerConnectionString>`
 
-1. 在儲存體帳戶中建立輸入和輸出的容器。 以`<triggerConnectionString>`先前傳回的連接字串取代：
+1. 在儲存體帳戶中建立輸入和輸出的容器。 `<triggerConnectionString>`以先前傳回的連接字串取代：
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -193,19 +193,19 @@ print(blob.location)
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. 若要將觸發程式連接字串與函數應用程式產生關聯，請使用下列命令。 以`<app-name>`函數應用程式的名稱取代。 以`<triggerConnectionString>`先前傳回的連接字串取代：
+1. 若要將觸發程式連接字串與函數應用程式產生關聯，請使用下列命令。 `<app-name>`以函數應用程式的名稱取代。 `<triggerConnectionString>`以先前傳回的連接字串取代：
 
     ```azurecli-interactive
     az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
     ```
-1. 您將需要使用下列命令來抓取與所建立容器相關聯的標記。 將`<username>`取代為先前從容器登錄中傳回的使用者名稱：
+1. 您將需要使用下列命令來抓取與所建立容器相關聯的標記。 將取代 `<username>` 為先前從容器登錄中傳回的使用者名稱：
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    儲存傳回的值，將`imagetag`在下一個步驟中用來做為。
+    儲存傳回的值，將 `imagetag` 在下一個步驟中用來做為。
 
-1. 若要為函數應用程式提供存取容器登錄所需的認證，請使用下列命令。 以`<app-name>`函數應用程式的名稱取代。 將`<acrinstance>`和`<imagetag>`取代為上一個步驟中 AZ CLI 呼叫的值。 將`<username>`和`<password>`取代為先前抓取的 ACR 登入資訊：
+1. 若要為函數應用程式提供存取容器登錄所需的認證，請使用下列命令。 `<app-name>`以函數應用程式的名稱取代。 將 `<acrinstance>` 和取代為 `<imagetag>` 上一個步驟中 AZ CLI 呼叫的值。 `<username>`將和取代為 `<password>` 先前抓取的 ACR 登入資訊：
 
     ```azurecli-interactive
     az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -260,7 +260,7 @@ print(blob.location)
     > [!IMPORTANT]
     > 資料的格式取決於您的 score.py 和模型所預期的內容。
 
-2. 使用下列命令，將此檔案上傳至稍早建立的觸發儲存體 blob 中的輸入容器。 取代`<file>`為包含資料的檔案名。 取代`<triggerConnectionString>`為稍早傳回的連接字串。 在此範例中`input` ，是稍早建立的輸入容器名稱。 如果您使用不同的名稱，請取代此值：
+2. 使用下列命令，將此檔案上傳至稍早建立的觸發儲存體 blob 中的輸入容器。 取代 `<file>` 為包含資料的檔案名。 取代 `<triggerConnectionString>` 為稍早傳回的連接字串。 在此範例中， `input` 是稍早建立的輸入容器名稱。 如果您使用不同的名稱，請取代此值：
 
     ```azurecli-interactive
     az storage blob upload --container-name input --file <file> --name <file> --connection-string <triggerConnectionString>
@@ -275,15 +275,15 @@ print(blob.location)
     }
     ```
 
-3. 若要查看函式所產生的輸出，請使用下列命令來列出所產生的輸出檔。 取代`<triggerConnectionString>`為稍早傳回的連接字串。 在此範例中`output` ，是稍早建立的輸出容器名稱。 如果您使用不同的名稱，請取代此值：
+3. 若要查看函式所產生的輸出，請使用下列命令來列出所產生的輸出檔。 取代 `<triggerConnectionString>` 為稍早傳回的連接字串。 在此範例中， `output` 是稍早建立的輸出容器名稱。 如果您使用不同的名稱，請取代此值：
 
     ```azurecli-interactive
     az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv
     ```
 
-    此命令的輸出類似`sample_input_out.json`。
+    此命令的輸出類似 `sample_input_out.json` 。
 
-4. 若要下載檔案並檢查內容，請使用下列命令。 取代`<file>`為上一個命令所傳回的檔案名。 以`<triggerConnectionString>`先前傳回的連接字串取代： 
+4. 若要下載檔案並檢查內容，請使用下列命令。 取代 `<file>` 為上一個命令所傳回的檔案名。 `<triggerConnectionString>`以先前傳回的連接字串取代： 
 
     ```azurecli-interactive
     az storage blob download --container-name output --file <file> --name <file> --connection-string <triggerConnectionString>

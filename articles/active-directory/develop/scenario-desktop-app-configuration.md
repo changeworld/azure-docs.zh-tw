@@ -10,13 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: d07add7950da531330fe9f64629299cef9fad1ac
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: f197dd5063f8584968277d8d55298c03d9d71ea6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558836"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>呼叫 web Api 的桌面應用程式：程式碼設定
 
@@ -39,7 +38,7 @@ ms.locfileid: "82734581"
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-您將需要建立和操作 MSAL.NET `IPublicClientApplication`。
+您將需要建立和操作 MSAL.NET `IPublicClientApplication` 。
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
@@ -52,7 +51,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-如果您想要使用互動式驗證或裝置程式碼流程（如先前所示） `.WithRedirectUri` ，請使用修飾詞。
+如果您想要使用互動式驗證或裝置程式碼流程（如先前所示），請使用 `.WithRedirectUri` 修飾詞。
 
 ```csharp
 IPublicClientApplication app;
@@ -107,12 +106,12 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 若要深入瞭解如何設定 MSAL.NET 桌面應用程式：
 
-- 如需上`PublicClientApplicationBuilder`可用的所有修飾詞清單，請參閱參考檔[PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)。
-- 如需中`PublicClientApplicationOptions`公開之所有選項的說明，請參閱參考檔中的[PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) 。
+- 如需上可用的所有修飾詞清單 `PublicClientApplicationBuilder` ，請參閱參考檔[PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)。
+- 如需中公開之所有選項的說明 `PublicClientApplicationOptions` ，請參閱參考檔中的[PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) 。
 
 ### <a name="complete-example-with-configuration-options"></a>含設定選項的完整範例
 
-假設有一個具有下列`appsettings.json`設定檔的 .net Core 主控台應用程式：
+假設有一個具有下列設定檔的 .NET Core 主控台應用程式 `appsettings.json` ：
 
 ```json
 {
@@ -180,7 +179,7 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-在呼叫`.Build()`方法之前，您可以使用方法的呼叫來`.WithXXX`覆寫您的設定，如先前所示。
+在呼叫 `.Build()` 方法之前，您可以使用方法的呼叫來覆寫您的設定 `.WithXXX` ，如先前所示。
 
 # <a name="java"></a>[Java](#tab/java)
 

@@ -6,15 +6,20 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/2/2020
-ms.openlocfilehash: 1b79a49b2fb87ebf180aaaa40447f40c5a982c2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0db446c90589e8ff3262656b1e49e4b1631f4468
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608735"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在適用於 MariaDB 的 Azure 資料庫中建立使用者 
 本文描述如何在適用於 MariaDB 的 Azure 資料庫中建立使用者。
+
+> [!NOTE]
+> 偏差-免費通訊
+>
+> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對_一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+>
 
 當您第一次建立適用於 MariaDB 的 Azure 資料庫時，您提供了伺服器管理員登入使用者名稱和密碼。 如需詳細資訊，您可以遵循[快速入門](quickstart-create-mariadb-server-database-using-azure-portal.md)。 您可以從 Azure 入口網站找出您的伺服器管理員登入使用者名稱。
 

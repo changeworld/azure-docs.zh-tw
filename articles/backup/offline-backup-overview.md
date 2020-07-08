@@ -3,12 +3,11 @@ title: 離線備份概觀
 description: 了解離線備份的元件。 其中包括以 Azure 資料箱為基礎的離線備份，和以 Microsoft Azure 匯入/匯出服務為基礎的離線備份。
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628339"
 ---
 # <a name="overview-of-offline-backup"></a>離線備份概觀
 
@@ -60,7 +59,7 @@ Microsoft Azure 備份伺服器 (MABS)、System Center Data Protection Manager (
 
 若要透過 MARS 代理程式使用以 Azure 匯入/匯出服務為基礎的離線備份，請參閱 [Azure 備份中的離線備份工作流程](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)。
 
-若要使用 MABS 或 DPM-A 執行相同的作業，請參閱 [DPM 和 Azure 備份伺服器的離線備份工作流程](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-)。
+若要使用 MABS 或 DPM-A 執行相同的作業，請參閱 [DPM 和 Azure 備份伺服器的離線備份工作流程](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export)。
 
 ## <a name="offline-backup-support-summary"></a>離線備份支援摘要
 
@@ -83,4 +82,4 @@ Microsoft Azure 備份伺服器 (MABS)、System Center Data Protection Manager (
 
 - [使用 Azure 資料箱進行 Azure 備份離線備份](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
 - [Azure 備份中的離線備份工作流程](backup-azure-backup-import-export.md)
-- [適用於 DPM 和 Azure 備份伺服器的離線備份工作流程](backup-azure-backup-server-import-export-.md)
+- [適用於 DPM 和 Azure 備份伺服器的離線備份工作流程](backup-azure-backup-server-import-export.md)

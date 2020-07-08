@@ -8,12 +8,11 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 6f543b3f5c2bb7d4949c431580771c4b0d965e4d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 4bcd8deef28f8e0123e6e2171b3ab24d6ac49292
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125298"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84634994"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>在 Azure Key Vault 中使用客戶管理的金鑰 Azure 資料箱
 
@@ -23,7 +22,7 @@ Azure 資料箱保護用來透過加密金鑰鎖定裝置的裝置解除鎖定�
 
 本文說明如何在[Azure 入口網站](https://portal.azure.com/)中使用客戶管理的金鑰搭配 Azure 資料箱。 本文適用于 Azure 資料箱裝置和 Azure Data Box Heavy 裝置。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在您開始前，請確定：
 
@@ -59,7 +58,7 @@ Azure 資料箱保護用來透過加密金鑰鎖定裝置的裝置解除鎖定�
 
     ![建立新的 Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-31.png)
 
-    您也可以選取 [**建立新**的] 來建立新的金鑰保存庫。 在 [**建立金鑰保存庫**] 分頁中，輸入資源群組和金鑰保存庫名稱。 請確定已啟用虛**刪除**和**清除保護**。 接受所有其他預設值。 選取 [檢閱 + 建立]  。
+    您也可以選取 [**建立新**的] 來建立新的金鑰保存庫。 在 [**建立金鑰保存庫**] 分頁中，輸入資源群組和金鑰保存庫名稱。 請確定已啟用虛**刪除**和**清除保護**。 接受所有其他預設值。 選取 [檢閱 + 建立]****。
 
     ![建立新的 Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
@@ -103,7 +102,7 @@ Azure 資料箱保護用來透過加密金鑰鎖定裝置的裝置解除鎖定�
 
 如果您收到與客戶管理的金鑰相關的任何錯誤，請使用下表進行疑難排解。
 
-| 錯誤碼| 錯誤訊息| 詳細資料|
+| 錯誤碼| 錯誤詳細資料| 升高?|
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| 因為客戶管理的金鑰已停用，所以無法提取金鑰。| 是，藉由啟用金鑰版本。|
 | SsemUserErrorEncryptionKeyExpired| 因為客戶管理的金鑰已過期，所以無法提取金鑰。| 是，藉由啟用金鑰版本。|

@@ -6,16 +6,15 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659707"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何建立和設定 Azure 整合執行階段
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -29,7 +28,7 @@ Azure IR 提供完全受控的計算，以原生方式執行資料移動並將�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="default-azure-ir"></a>預設 Azure IR
-根據預設，每個資料處理站的後端都有 Azure IR，可支援在雲端資料存放區和在公用網路內計算服務的作業。 該 Azure IR 的位置是自動解析的。 如果連結的服務定義中並未指定 **connectVia** 屬性，則會使用預設的 Azure IR。 只有在您要明確定義 IR 位置，或是基於管理目的而以虛擬方式將不同 IR 上的活動執行作業分組時，才需要明確地建立 Azure IR。 
+根據預設，每個資料處理站的後端都有 Azure IR，可支援在雲端資料存放區和在公用網路內計算服務的作業。 該 Azure IR 的位置是自動解析。 如果連結的服務定義中並未指定 **connectVia** 屬性，則會使用預設的 Azure IR。 只有在您要明確定義 IR 位置，或是基於管理目的而以虛擬方式將不同 IR 上的活動執行作業分組時，才需要明確地建立 Azure IR。 
 
 ## <a name="create-azure-ir"></a>建立 Azure IR
 
@@ -48,13 +47,13 @@ Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -N
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>透過 Azure Data Factory UI 建立 Azure IR
 使用下列步驟，使用 Azure Data Factory UI 來建立 Azure IR。
 
-1. 在 Azure Data Factory UI 的 **[開始使用] 頁面上**，選取左窗格中的 [**作者**] 索引標籤。
+1. 在 Azure Data Factory UI 的 [開始吧] 頁面上，從最左邊窗格中選取 [[管理] 索引標籤](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
 
-   ![首頁作者按鈕](media/doc-common-process/get-started-page-author-button.png)
+   ![首頁的 [管理] 按鈕](media/doc-common-process/get-started-page-manage-button.png)
 
-1. 選取左窗格底部**的 [** **連接**]，然後選取 [連線] 視窗中的 [**整合運行**時間]。 選取 [ **+ 新增**]。
+1. 在左窗格上選取 [整合執行階段]，然後選取 [+ 新增]。
 
-   ![建立整合執行階段](media/create-azure-integration-runtime/new-integration-runtime.png)
+   ![建立整合執行階段](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. 在 [**整合執行時間設定**] 頁面上，選取 [ **Azure]、[自我**裝載]，然後選取 [**繼續**]。 
 
@@ -90,6 +89,6 @@ Azure IR 建立之後，您可以在「已連結的服務」定義中參考它�
 ## <a name="next-steps"></a>後續步驟
 若要了解如何建立其他類型的整合執行階段，請參閱下列文章：
 
-- [建立自我裝載整合執行時間](create-self-hosted-integration-runtime.md)
+- [建立自我裝載的整合執行階段](create-self-hosted-integration-runtime.md)
 - [建立 Azure-SSIS 整合執行階段](create-azure-ssis-integration-runtime.md)
  

@@ -6,12 +6,11 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a3d13919a54e170d410abba5da66172c2029d9b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73490519"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636269"
 ---
 # <a name="monitor-azure-data-share"></a>監視 Azure Data Share  
 
@@ -40,13 +39,17 @@ ms.locfileid: "73490519"
 
 ## <a name="snapshot-history"></a>快照集歷程記錄 
 
-在 [歷程記錄] 索引標籤中，您可以查看已複製到資料取用者的租使用者中的快照集。 您可以監視每個快照間隔的頻率和持續時間。 
+在共用的 [歷程**記錄**] 索引標籤中，您可以查看何時將資料從資料提供者複製到資料取用者的資料存放區。 您可以監視每個快照的頻率、持續時間和狀態。 
 
 ![快照集歷程記錄](./media/sent-shares.png "快照集歷程記錄") 
 
-按一下 [執行] 開始日期，即可查看每個快照集執行的更多詳細資料。 
+按一下 [執行] 開始日期，即可查看每個快照集執行的更多詳細資料。 然後按一下每個資料集的狀態，以查看傳輸的資料量、複製的檔案/記錄數目、快照集的持續時間、已使用的虛擬核心數目和錯誤訊息（如果有的話）。 
 
-根據預設，最多會顯示30天的快照集歷程記錄。 如果您需要查看超過30天的歷程記錄，請流覽至 [監視]-> [診斷設定]，然後選取 [**新增診斷設定**]。 您必須選取要用來儲存這些記錄的儲存體帳戶。 
+最多會顯示30天的快照集歷程記錄。 如果您需要儲存並看到超過30天的歷程記錄，您可以利用診斷設定。
+
+## <a name="diagnostic-setting"></a>診斷設定
+
+您可以設定診斷設定來儲存記錄資料或事件。 流覽至 [監視]-> [診斷設定]，然後選取 [**新增診斷設定**]。 選取您感興趣的記錄檔資料，以及您要儲存或傳送的事件。 
 
 ![快照集歷程記錄](./media/diagnostic-settings.png "診斷設定") 
 

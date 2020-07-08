@@ -5,17 +5,17 @@ description: 瞭解如何在使用 Azure Machine Learning SDK 時，取得機器
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: 39d2bf0e527d43e2a5fb9437720f249e54b4dff3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 32b33eed6b4dba303993f4c16fbd2ad42b3902f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983630"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560211"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>使用 interpretability 套件來說明 Python 中 & 預測的 ML 模型
 
@@ -41,7 +41,7 @@ ms.locfileid: "82983630"
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>在您的個人電腦上產生功能重要性值 
 下列範例顯示如何在您的個人電腦上使用 interpretability 套件，而不需要聯絡 Azure 服務。
 
-1. 安裝`azureml-interpret`和`azureml-contrib-interpret`套件。
+1. 安裝 `azureml-interpret` 和 `azureml-contrib-interpret` 套件。
     ```bash
     pip install azureml-interpret
     pip install azureml-contrib-interpret
@@ -71,8 +71,8 @@ ms.locfileid: "82983630"
    * 若要初始化說明物件，請將您的模型和一些定型資料傳遞至說明的函式。
    * 若要讓您的說明和視覺效果更具資訊性，您可以在執行分類時選擇傳入功能名稱和輸出類別名稱。
 
-   下列程式碼區塊示範如何使用、 `TabularExplainer` `MimicExplainer`和`PFIExplainer`在本機具現化說明物件。
-   * `TabularExplainer`呼叫底下三個 SHAP explainers 的其中一個`TreeExplainer`（ `DeepExplainer`、或`KernelExplainer`）。
+   下列程式碼區塊示範如何使用、和在本機具現化說明物件 `TabularExplainer` `MimicExplainer` `PFIExplainer` 。
+   * `TabularExplainer`呼叫底下三個 SHAP explainers 的其中一個（ `TreeExplainer` 、 `DeepExplainer` 或 `KernelExplainer` ）。
    * `TabularExplainer`會自動為您的使用案例選取最適合的一個，但是您可以直接呼叫它的三個基礎 explainers。
 
     ```python
@@ -159,11 +159,11 @@ sorted_local_importance_values = local_explanation.get_ranked_local_values()
 
 ### <a name="raw-feature-transformations"></a>原始功能轉換
 
-您可以選擇根據原始的未轉換功能，而不是設計的功能來取得說明。 在此選項中，您會將功能轉換管線傳遞至中`train_explain.py`的說明。 否則，說明會提供工程化功能的說明。
+您可以選擇根據原始的未轉換功能，而不是設計的功能來取得說明。 在此選項中，您會將功能轉換管線傳遞至中的說明 `train_explain.py` 。 否則，說明會提供工程化功能的說明。
 
 支援的轉換格式與[sklearn-pandas](https://github.com/scikit-learn-contrib/sklearn-pandas)中所述相同。 一般而言，只要作業在單一資料行上運作，就可以支援任何轉換，讓它們清楚地是一對多的。
 
-使用`sklearn.compose.ColumnTransformer`或搭配合適的轉換器元組清單，取得原始功能的說明。 下列範例會使用`sklearn.compose.ColumnTransformer`。
+使用 `sklearn.compose.ColumnTransformer` 或搭配合適的轉換器元組清單，取得原始功能的說明。 下列範例會使用 `sklearn.compose.ColumnTransformer` 。
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -233,12 +233,12 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="generate-feature-importance-values-via-remote-runs"></a>透過遠端執行產生功能重要性值
 
-下列範例會示範如何使用`ExplanationClient`類別來啟用遠端執行的模型 interpretability。 它在概念上類似于本機進程，不同之處在于：
+下列範例會示範如何使用 `ExplanationClient` 類別來啟用遠端執行的模型 interpretability。 它在概念上類似于本機進程，不同之處在于：
 
-* 使用遠端`ExplanationClient`執行中的來上傳 interpretability 內容。
+* 使用 `ExplanationClient` 遠端執行中的來上傳 interpretability 內容。
 * 稍後在本機環境中下載內容。
 
-1. 安裝`azureml-interpret`和`azureml-contrib-interpret`套件。
+1. 安裝 `azureml-interpret` 和 `azureml-contrib-interpret` 套件。
     ```bash
     pip install azureml-interpret
     pip install azureml-contrib-interpret
@@ -303,7 +303,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 下圖提供定型模型的整體觀點，以及其預測和說明。
 
-|標|描述|
+|圖|Description|
 |----|-----------|
 |資料探索| 顯示資料集和預測值的總覽。|
 |全球重要性|匯總個別資料點的特徵重要性值，以顯示模型的整體主要 K （可設定的 K）重要功能。 有助於瞭解基礎模型的整體行為。|
@@ -317,7 +317,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 您可以按一下任何一種整體繪圖中的任何個別資料點，為任何資料點載入個別功能的重要性圖。
 
-|標|描述|
+|圖|Description|
 |----|-----------|
 |本機重要性|顯示個別預測的前 K 個（可設定的 K）重要功能。 協助說明特定資料點上基礎模型的本機行為。|
 |Perturbation 探索（如果分析）|允許變更所選資料點的功能值，並觀察對預測值所產生的變更。|
@@ -379,7 +379,7 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 您可以部署說明和原始模型，並在推斷時使用它，針對新的任何新的時間點提供個別功能的重要性值（本機說明）。 我們也提供較輕量的評分 explainers，以在推斷階段改善 interpretability 效能。 部署較輕量計分說明的程式類似于部署模型，並包含下列步驟：
 
-1. 建立說明物件。 例如，您可以使用`TabularExplainer`：
+1. 建立說明物件。 例如，您可以使用 `TabularExplainer` ：
 
    ```python
     from interpret.ext.blackbox import TabularExplainer

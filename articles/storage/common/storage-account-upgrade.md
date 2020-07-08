@@ -8,12 +8,11 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: 9afbade408d6f95fcd3a61aa1ba65bc09c7a875b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 725c319e4abb6cc65e1e6a900218393ace2d4d16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067222"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629570"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升級至一般用途 v2 儲存體帳戶
 
@@ -60,7 +59,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>指定 Blob 資料的存取層
 
-一般用途 v2 帳戶可支援所有 Azure 儲存體服務和資料物件，但存取層僅適用于 Blob 儲存體中的區塊 blob。 當您升級至一般用途 v2 儲存體帳戶時，您可以指定經常性或非經常性的預設帳戶存取層，這表示您的 blob 資料將上傳的預設層，如同未指定個別的 blob 存取層參數。
+一般用途 v2 帳戶支援所有的 Azure 儲存體服務和資料物件，但存取層僅適用于 Blob 儲存體中的區塊 blob。 當您升級至一般用途 v2 儲存體帳戶時，您可以指定經常性或非經常性的預設帳戶存取層，這表示您的 blob 資料將上傳的預設層，如同未指定個別的 blob 存取層參數。
 
 Blob 存取層可讓您根據預期的使用模式，選擇最符合成本效益的儲存體。 區塊 blob 可以儲存在經常性存取、非經常性存取或封存層中。 如需存取層的詳細資訊，請參閱 [Azure Blob 儲存體︰經常性存取、非經常性存取和封存儲存層](../blobs/storage-blob-storage-tiers.md)。
 
@@ -73,7 +72,7 @@ Blob 存取層可讓您根據預期的使用模式，選擇最符合成本效益
 
 ## <a name="pricing-and-billing"></a>價格和計費
 
-將 v1 儲存體帳戶升級至一般用途 v2 帳戶是免費的。 在升級過程中，您可以指定所需的帳戶層級。 如果升級時未指定帳戶層，則升級帳戶的預設帳戶層將是`Hot`。 不過，在升級後變更儲存體存取層可能會導致您的帳單變更，因此建議您在升級期間指定新的帳戶層。
+將 v1 儲存體帳戶升級至一般用途 v2 帳戶是免費的。 在升級過程中，您可以指定所需的帳戶層級。 如果升級時未指定帳戶層，則升級帳戶的預設帳戶層將是 `Hot` 。 不過，在升級後變更儲存體存取層可能會導致您的帳單變更，因此建議您在升級期間指定新的帳戶層。
 
 所有儲存體帳戶會對以每個 Blob 層為基礎的 Blob 儲存體使用價格模型。 使用儲存體帳戶時，需考量下列計費資訊：
 

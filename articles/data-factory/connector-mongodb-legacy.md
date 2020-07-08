@@ -2,7 +2,6 @@
 title: 使用舊版從 MongoDB 複製資料
 description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料從 MongoDB 複製到支援的接收資料存放區。
 services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
 manager: shwang
@@ -12,14 +11,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 803e34a93e8019cfc2577bfaab3ba13c409c6b01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558174"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure Data Factory 從 MongoDB 複製資料
+# <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>使用 Azure Data Factory （舊版）從 MongoDB 複製資料
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](v1/data-factory-on-premises-mongodb-connector.md)
@@ -40,7 +38,7 @@ ms.locfileid: "81418162"
 - MongoDB **2.4、2.6、3.0、3.2、3.4、3.6 版**。
 - 使用 **Basic** (基本) 或 **Anonymous** (匿名) 驗證來複製資料。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -56,21 +54,21 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 
 以下是針對 MongoDB 已連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type |類型屬性必須設定為：**MongoDb** |是 |
-| 伺服器 |MongoDB 伺服器的 IP 位址或主機名稱。 |是 |
+| type |類型屬性必須設定為：**MongoDb** |Yes |
+| 伺服器 |MongoDB 伺服器的 IP 位址或主機名稱。 |Yes |
 | 連接埠 |MongoDB 伺服器用來接聽用戶端連線的 TCP 連接埠。 |否 (預設值為 27017) |
 | databaseName |您想要存取之 MongoDB 資料庫的名稱。 |是 |
-| authenticationType | 用來連線到 MongoDB 資料庫的驗證類型。<br/>允許的值為：**基本**和**匿名**。 |是 |
+| authenticationType | 用來連線到 MongoDB 資料庫的驗證類型。<br/>允許的值為：**基本**和**匿名**。 |Yes |
 | username |用來存取 MongoDB 的使用者帳戶。 |是 (如果使用基本驗證)。 |
-| password |使用者的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 (如果使用基本驗證)。 |
+| 密碼 |使用者的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 (如果使用基本驗證)。 |
 | authSource |您想要用來檢查驗證所用之認證的 MongoDB 資料庫名稱。 |否。 就基本驗證而言，預設會使用以 databaseName 屬性指定的系統管理員帳戶和資料庫。 |
-| enableSsl | 指定是否使用 TLS 來加密與伺服器的連接。 預設值為 false。  | 否 |
-| allowSelfSignedServerCert | 指定是否允許來自伺服器的自我簽署憑證。 預設值為 false。  | 否 |
-| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入瞭解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
+| enableSsl | 指定是否使用 TLS 來加密與伺服器的連接。 預設值為 false。  | No |
+| allowSelfSignedServerCert | 指定是否允許來自伺服器的自我簽署憑證。 預設值為 false。  | No |
+| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入了解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -99,12 +97,12 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 
 如需定義資料集的區段和屬性完整清單，請參閱[資料集和連結服務](concepts-datasets-linked-services.md)。 以下是針對 MongoDB 資料集支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為：**MongoDbCollection** | 是 |
-| collectionName |MongoDB 資料庫中集合的名稱。 |是 |
+| type | 資料集的類型屬性必須設定為：**MongoDbCollection** | Yes |
+| collectionName |MongoDB 資料庫中集合的名稱。 |Yes |
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -128,14 +126,14 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 
 ### <a name="mongodb-as-source"></a>MongoDB 作為來源
 
-複製活動的 [**來源**] 區段支援下列屬性：
+複製活動的 **source** 區段支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設定為：**MongoDbSource** | 是 |
+| type | 複製活動來源的類型屬性必須設定為：**MongoDbSource** | Yes |
 | 查詢 |使用自訂的 SQL-92 查詢來讀取資料。 例如：select * from MyTable。 |否 (如果已指定資料集中 "collectionName") |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -186,8 +184,8 @@ Azure Data Factory 服務會使用集合中**最新的100檔**，從 MongoDB 集
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |字串 |
-| 字串 |字串 |
+| ObjectID |String |
+| String |String |
 | UUID |Guid |
 | Object |以 "_" 作為巢狀分隔符號來重新標準化為壓平合併資料行 |
 

@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 22fd67797bbec516317aadaa4b33371c5d335b36
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609449"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>使用 Azure 入口網站來管理您的 Azure 資料箱和 Azure Data Box Heavy
 
@@ -48,7 +47,7 @@ ms.locfileid: "79259990"
 
     ![複製訂單 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」**。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 [建立]  。
+2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」**。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 [建立]。
 
 會在幾分鐘內建立複製，且入口網站更新會顯示新的訂單。
 
@@ -197,7 +196,7 @@ ms.locfileid: "79259990"
 
 當入口網站中的裝置狀態出現變更時，系統會以電子郵件通知您。
 
-|訂單狀態 |描述 |
+|訂單狀態 |Description |
 |---------|---------|
 |訂購時間     | 已成功下單。 <br>如果裝置可供使用，Microsoft 會識別要寄送的裝置，並準備該裝置。 <br> 如果裝置無法立即提供使用，系統將會在裝置可供使用時處理該訂單。 訂單的處理可能需花費數天到數個月的時間。 如果無法在 90 天內完成訂單，系統將會取消該訂單並通知您。         |
 |已處理     | 訂單處理已完成。 裝置已根據您的訂單在資料中心做好寄送準備。         |
@@ -206,7 +205,7 @@ ms.locfileid: "79259990"
 |已取貨     |您寄回的裝置已經由快遞公司收取並掃描。         |
 |已收到     | 您的裝置已由 Azure 資料中心收到並掃描。 <br> 確認裝置之後，裝置上傳便會開始。      |
 |資料複製     | 資料複製進行中。 在 Azure 入口網站中追蹤您訂單的複製進度。 <br> 等候資料複製完成。 |
-|Completed       |已順利完成訂單。<br> 從伺服器刪除內部部署資料之前，請確認資料已位於 Azure 中。         |
+|已完成       |已順利完成訂單。<br> 從伺服器刪除內部部署資料之前，請確認資料已位於 Azure 中。         |
 |已完成，但發生錯誤| 資料複製已完成，但在複製期間發生錯誤。 <br> 使用 Azure 入口網站中提供的路徑來檢閱複製記錄。 請參閱[上傳完成但發生錯誤的複製記錄範例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)。   |
 |已完成，但出現警告| 資料複製已完成，但您的資料已修改。 資料有非關鍵性的 blob 或檔案名錯誤，已藉由變更檔案或 blob 名稱來修正。 <br> 使用 Azure 入口網站中提供的路徑來檢閱複製記錄。 請記下您資料中的修改。 請參閱[上傳完成時複製記錄檔的範例，但出現警告](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)。   |
 |已取消            |訂單便會取消。 <br> 可能是您取消訂單或發現錯誤，而服務將訂單取消。 如果無法在 90 天內完成訂單，系統也將會取消該訂單並通知您。     |

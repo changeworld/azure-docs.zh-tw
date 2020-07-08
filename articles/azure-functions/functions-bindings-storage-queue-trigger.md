@@ -5,13 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 74ca984232bef979062221a451d0ee10a6965bc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: cc996988-fb4f-47, tracking-python
+ms.openlocfilehash: 4759541966de1d436c72cce4aaa46c2bd1235599
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277371"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559922"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions 的 Azure 佇列儲存體觸發程式
 
@@ -42,7 +41,7 @@ public static class QueueFunctions
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 下列範例示範的是 *function.json* 檔案中的佇列觸發程序繫結，以及使用該繫結的 [C# 指令碼 (.csx)](functions-reference-csharp.md) 程式碼。 此函式會輪詢 `myqueue-items` 佇列，並在每次處理佇列項目時寫入記錄。
 
@@ -146,7 +145,7 @@ module.exports = async function (context, message) {
 
 下列範例示範如何讀取透過觸發程式傳遞至函式的佇列訊息。
 
-儲存體佇列觸發程式定義于函式 *. json*中，其中*類型*設定`queueTrigger`為。
+「儲存體佇列」觸發程式是在 [*類型*] 設定為的*function.js*中定義 `queueTrigger` 。
 
 ```json
 {
@@ -163,7 +162,7 @@ module.exports = async function (context, message) {
 }
 ```
 
-程式碼* _ \_ _ \_.py*會將參數宣告為`func.ServiceBusMessage`，這可讓您讀取函數中的佇列訊息。
+程式碼* _ \_ _ \_ .py*會將參數宣告為 `func.ServiceBusMessage` ，這可讓您讀取函數中的佇列訊息。
 
 ```python
 import logging
@@ -192,7 +191,7 @@ def main(msg: func.QueueMessage):
 
 # <a name="java"></a>[Java](#tab/java)
 
-下列 JAVA 範例顯示儲存體佇列觸發程式函式，此函式會記錄放入佇列`myqueuename`中的已觸發訊息。
+下列 JAVA 範例顯示儲存體佇列觸發程式函式，此函式會記錄放入佇列中的已觸發訊息 `myqueuename` 。
 
  ```java
  @FunctionName("queueprocessor")
@@ -208,7 +207,7 @@ def main(msg: func.QueueMessage):
 
  ---
 
-## <a name="attributes-and-annotations"></a>屬性和注釋
+## <a name="attributes-and-annotations"></a>屬性和註釋
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -228,7 +227,7 @@ def main(msg: func.QueueMessage):
   }
   ```
 
-  您可以設定`Connection`屬性來指定應用程式設定，其中包含要使用的儲存體帳戶連接字串，如下列範例所示：
+  您可以設定 `Connection` 屬性來指定應用程式設定，其中包含要使用的儲存體帳戶連接字串，如下列範例所示：
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -266,9 +265,9 @@ def main(msg: func.QueueMessage):
 * `StorageAccount` 屬性套用至該類別。
 * 「AzureWebJobsStorage」應用程式設定。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-C # 腳本不支援屬性。
+C# 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -276,11 +275,11 @@ JavaScript 不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支援屬性。
+Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`QueueTrigger`批註可讓您存取觸發函數的佇列。 下列範例會透過`message`參數，將佇列訊息提供給函式。
+`QueueTrigger`批註可讓您存取觸發函數的佇列。 下列範例會透過參數，將佇列訊息提供給函式 `message` 。
 
 ```java
 package com.function;
@@ -299,7 +298,7 @@ public class QueueTriggerDemo {
 }
 ```
 
-| 屬性    | 描述 |
+| 屬性    | 說明 |
 |-------------|-----------------------------|
 |`name`       | 宣告函式簽章中的參數名稱。 觸發函式時，這個參數的值會有佇列訊息的內容。 |
 |`queueName`  | 宣告儲存體帳戶中的佇列名稱。 |
@@ -307,25 +306,25 @@ public class QueueTriggerDemo {
 
 ---
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
-下表說明您在*函數 json*檔案和`QueueTrigger`屬性中設定的系結設定屬性。
+下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `QueueTrigger` 屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type** | n/a| 必須設為 `queueTrigger`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
-|**方向**| n/a | 僅限在 *function.json* 檔案中。 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
+|**direction**| n/a | 僅限在 *function.json* 檔案中。 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
 |**name** | n/a |在函式程式碼中包含佇列項目承載的變數名稱。  |
 |**queueName** | **QueueName**| 要輪詢的佇列名稱。 |
-|**connection** | **建立** |應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定`connection`為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
+|**connection** | **[連接]** |應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-使用方法參數（例如） `string paramName`來存取訊息資料。 您可以繫結至下列任何類型：
+使用方法參數（例如）來存取訊息資料 `string paramName` 。 您可以繫結至下列任何類型：
 
 * 物件：Functions 執行階段會將 JSON 裝載還原序列化為程式碼中所定義之任意類別的執行個體。 
 * `string`
@@ -334,9 +333,9 @@ public class QueueTriggerDemo {
 
 如果您嘗試繫結至 `CloudQueueMessage`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-使用方法參數（例如） `string paramName`來存取訊息資料。 `paramName`是在`name` *函數*的屬性中指定的值。 您可以繫結至下列任何類型：
+使用方法參數（例如）來存取訊息資料 `string paramName` 。 `paramName`是在function.js的屬性中指定的 `name` 值*function.json*。 您可以繫結至下列任何類型：
 
 * 物件：Functions 執行階段會將 JSON 裝載還原序列化為程式碼中所定義之任意類別的執行個體。 
 * `string`
@@ -347,7 +346,7 @@ public class QueueTriggerDemo {
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-佇列專案裝載可透過取得`context.bindings.<NAME>` ，其中`<NAME>`符合在函式中定義的名稱。 *function.json* 如果裝載是 JSON，此值會還原序列化為物件。
+佇列專案裝載可以透過 `context.bindings.<NAME>` ，其中 `<NAME>` 符合*function.js*中定義的名稱。 如果裝載是 JSON，此值會還原序列化為物件。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -363,9 +362,9 @@ public class QueueTriggerDemo {
 
 佇列觸發程序提供數個[中繼資料屬性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 這些屬性可作為其他繫結中繫結運算式的一部分或程式碼中的參數使用。 屬性是[CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)類別的成員。
 
-|屬性|類型|描述|
+|屬性|類型|Description|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|佇列承載 (如果為有效字串)。 如果佇列訊息裝載是字串， `QueueTrigger`其值與`name` *函數. json*中的屬性所命名的變數相同。|
+|`QueueTrigger`|`string`|佇列承載 (如果為有效字串)。 如果佇列訊息裝載是字串， `QueueTrigger` 其值與中的屬性所命名的變數相同， `name` *function.js開啟*。|
 |`DequeueCount`|`int`|此訊息已從佇列清除的次數。|
 |`ExpirationTime`|`DateTimeOffset`|訊息到期時間。|
 |`Id`|`string`|佇列訊息識別碼。|
@@ -375,7 +374,7 @@ public class QueueTriggerDemo {
 
 ## <a name="poison-messages"></a>有害訊息
 
-當佇列觸發程序函數失敗時，Azure Functions 會針對指定的佇列訊息重試該函數最多五次，包括第一次嘗試。 如果所有五個嘗試都失敗，則函式執行時間會將訊息新增至名為* &lt;originalqueuename>-有害*的佇列。 您可以撰寫函數，透過記錄或傳送通知表示需要手動處理，來處理有害佇列中的訊息。
+當佇列觸發程序函數失敗時，Azure Functions 會針對指定的佇列訊息重試該函數最多五次，包括第一次嘗試。 如果所有五個嘗試都失敗，則函式執行時間會將訊息新增至名為* &lt; originalqueuename>-有害*的佇列。 您可以撰寫函數，透過記錄或傳送通知表示需要手動處理，來處理有害佇列中的訊息。
 
 若要手動處理有害訊息，請檢查佇列訊息的 [dequeueCount](#message-metadata)。
 
@@ -402,9 +401,9 @@ public class QueueTriggerDemo {
 
 佇列觸發程序會自動防止函式處理佇列訊息多次；不需將函式撰寫成等冪函式。
 
-## <a name="hostjson-properties"></a>host. json 屬性
+## <a name="hostjson-properties"></a>屬性上的 host.js
 
-[host.json](functions-host-json.md#queues) 檔案包含控制佇列觸發程序行為的設定。 如需可用設定的詳細資訊，請參閱[host. json 設定](functions-bindings-storage-queue-output.md#hostjson-settings)一節。
+[host.json](functions-host-json.md#queues) 檔案包含控制佇列觸發程序行為的設定。 如需有關可用設定的詳細資訊，請參閱[設定上的host.js](functions-bindings-storage-queue-output.md#hostjson-settings)一節。
 
 ## <a name="next-steps"></a>後續步驟
 

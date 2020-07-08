@@ -5,15 +5,14 @@ services: databox
 author: priestlg
 ms.service: databox
 ms.subservice: disk
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 2933eb216b7faed7b28fb53d79fec2f50bc4458d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 99c7021744467484656c52cf72378c6f553c3913
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748927"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608582"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure 資料箱的自我管理寄送
 
@@ -41,7 +40,7 @@ ms.locfileid: "83748927"
 3. 在您提供交貨地址之後，您必須驗證該地址並完成您的訂單。
    ![自我管理寄送](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. 裝置備妥後，您就可以安排取貨時間。
+4. 備妥裝置並收到電子郵件通知之後，您就可以排程取貨。
 
    在您的 Azure 資料箱訂單中，移至 [概觀]，然後選取 [排程取貨]。
 
@@ -57,7 +56,7 @@ ms.locfileid: "83748927"
 
    ![檢視您的授權碼](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   請記下此**授權碼**。 根據安全性需求，在排程取貨和送貨時間時，必須提供前往取貨和送貨的人員姓名。
+   請記下此**授權碼**。 根據安全性需求，在排程挑選時，必須為要取得挑選的人員，出示名稱，才會出現。
 
    您也必須提供將前往資料中心取貨人員的詳細資料。 您或連絡人必須攜帶政府核准使用附相片的身分證，以供資料中心驗證。
 

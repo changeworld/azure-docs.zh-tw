@@ -3,12 +3,11 @@ title: 概念-儲存體
 description: 瞭解 Azure VMware 解決方案（AVS） Preview 私人雲端中的金鑰儲存體功能。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7e58a829a40d590b7936a58ccdc866211a4f5cb4
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-ms.translationtype: MT
+ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740352"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84604111"
 ---
 # <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware 解決方案（AVS）預覽儲存體概念
 
@@ -21,7 +20,7 @@ AVS 私用雲端以 VMware vSAN 提供原生、全叢集的儲存體。 叢集�
 叢集主機中的本機儲存體會用於全叢集的 vSAN 資料存放區。 所有資料存放區都會建立為私人雲端部署的一部分，並可立即使用。 Cloudadmin 使用者和 CloudAdmin 群組中的所有使用者都可以使用這些 vSAN 許可權來管理資料存放區：
 - Datastore.AllocateSpace
 - Datastore.Browse
-- 資料存放區 .Config
+- Datastore.Config
 - 資料存放區. DeleteFile
 - 資料存放區. FileManagement
 - 資料存放區. UpdateVirtualMachineMetadata
@@ -32,7 +31,7 @@ vSAN 資料存放區預設會使用待用資料加密。 加密解決方案是�
 
 ## <a name="scaling"></a>調整大小
 
-將主機新增至叢集，即可調整原生叢集儲存容量。 對於使用主機的叢集，原始叢集範圍的容量會隨著每個額外的主機而增加 15.4 TB。 使用 GP 主機建立的叢集，其原始容量會隨著每個額外的主機而增加 7.7 TB。 在這兩種類型的叢集中，主機大約需要10分鐘的時間才能新增至叢集。 如需調整叢集規模的指示，請參閱 [調整私用雲端教學課程] [教學課程-調整-私人-雲端]。
+將主機新增至叢集，即可調整原生叢集儲存容量。 對於使用主機的叢集，原始叢集範圍的容量會隨著每個額外的主機而增加 15.4 TB。 使用 GP 主機建立的叢集，其原始容量會隨著每個額外的主機而增加 7.7 TB。 在這兩種類型的叢集中，主機大約需要10分鐘的時間才能新增至叢集。 如需調整叢集規模的指示，請參閱[調整私用雲端教學][tutorial-scale-private-cloud]課程。
 
 ## <a name="azure-storage-integration"></a>Azure 儲存體整合
 
@@ -45,5 +44,5 @@ vSAN 資料存放區預設會使用待用資料加密。 加密解決方案是�
 <!-- LINKS - external-->
 
 <!-- LINKS - internal -->
-[tutorials-scale-private-cloud]: ./tutorials-scale-private-cloud.md
+[tutorial-scale-private-cloud]: ./tutorial-scale-private-cloud.md
 [concepts-identity]: ./concepts-identity.md

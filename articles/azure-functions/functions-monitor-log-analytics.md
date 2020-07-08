@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 4b21912de95ccba1d97d187922bfada4d9dc2c56
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 44de63ccd90ca8a76835fabe48d6047139ddc634
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121613"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84561720"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>使用 Azure 監視器記錄監視 Azure Functions
 
@@ -124,4 +124,4 @@ FunctionAppLogs
 
 - 請參閱[Azure Functions 總覽](functions-overview.md)。
 - 深入瞭解[Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md)。
-- 深入瞭解[查詢語言](../azure-monitor/log-query/get-started-queries.md)。
+- 深入了解[查詢語言](../azure-monitor/log-query/get-started-queries.md)。

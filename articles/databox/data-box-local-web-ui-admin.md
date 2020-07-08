@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: cf7cf0a7aa2812d7a93c282cbda5f82dd83aac29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77560179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608242"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本機 web UI 來管理您的資料箱和 Data Box Heavy
 
@@ -175,7 +174,7 @@ ms.locfileid: "77560179"
     ![停用總和檢查碼](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. [停用]**** 總和檢查碼驗證
-3. 按一下 [套用]  。
+3. 按一下 [套用]。
 
 ## <a name="next-steps"></a>後續步驟
 

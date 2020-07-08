@@ -2,14 +2,13 @@
 title: Microsoft Azure 備份伺服器 v3 版本資訊
 description: 本文提供 Microsoft Azure 備份 Server （MABS） v3 的已知問題和因應措施的相關資訊。
 ms.topic: conceptual
-ms.date: 11/22/2018
+ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: a5c99bcb95fde39bddc9e9db9ab000881c89081a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185620"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629122"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 備份伺服器版本資訊
 
@@ -71,6 +70,40 @@ ms.locfileid: "82185620"
 
 9. 啟動 MSDPM 服務。
 
+## <a name="after-installing-ur1-the-mabs-reports-arent-updated-with-new-rdl-files"></a>安裝 UR1 之後，MABS 報表不會以新的 RDL 檔案更新
+
+**描述**：使用 UR1 時，會修正已更新的 RDL 檔案的 MABS 報告格式問題。 新的 RDL 檔案不會自動取代為現有的檔案。
+
+因應**措施：若**要取代 RDL 檔案，請遵循下列步驟：
+
+1. 在 MABS 電腦上，開啟 SQL Reporting Services Web 入口網站 URL]。
+1. 在入口網站 URL 上，DPMReports 資料夾的格式會是**`DPMReports_<GUID>`**
+
+    >[!NOTE]
+    >一律只有一個資料夾具有此命名慣例。 如果 MABS 是從舊版升級，可能也會有另一個較舊的資料夾，但您將無法開啟它。
+
+    ![DPMReports 資料夾](./media/backup-mabs-release-notes-v3/dpm-reports-folder.png)
+
+1. 選取並開啟 **`DPMReports_<GUID>`** 資料夾。 個別的報告檔案將會列出，如下所示。
+
+    ![個別報表檔案的清單](./media/backup-mabs-release-notes-v3/individual-report-files.png)
+
+1. 選取不是以**報表**結尾的報表檔案，並以滑鼠右鍵按一下 [**選項**]，然後選取 [**管理**]。
+
+    ![針對報表檔案選取 [管理]](./media/backup-mabs-release-notes-v3/manage-files.png)
+
+1. 在 [新增] 頁面中，選取 [**取代**] 選項，以最新的報表檔案取代檔案。
+
+    您可以在路徑中找到最新的報告檔案`<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+
+    例如：`C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+
+    ![以最新的報表檔案取代檔案](./media/backup-mabs-release-notes-v3/replace-files.png)
+
+    取代檔案之後，請確定**名稱**和**描述**都是完整的，而且不是空的。
+
+1. 取代檔案之後，請重新開機 MABS 服務，並使用報告檔案。
+
 ## <a name="next-steps"></a>後續步驟
 
-[MABS V3 的新功能](backup-mabs-whats-new-mabs.md)
+[MABS 的新功能](backup-mabs-whats-new-mabs.md)

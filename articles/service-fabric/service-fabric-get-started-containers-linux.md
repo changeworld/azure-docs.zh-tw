@@ -3,12 +3,12 @@ title: 在 Linux 上建立 Azure Service Fabric 容器應用程式
 description: 在 Azure Service Fabric 上建立第一個 Linux 容器應用程式。 使用您的應用程式建置 Docker 映像、將映像推送到容器登錄，建置和部署 Service Fabric 容器應用程式。
 ms.topic: conceptual
 ms.date: 1/4/2019
-ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 07e3682ec1787ceb350ac72c8b80d86eed80b339
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75457967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560654"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 建立第一個 Service Fabric 容器應用程式
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "75457967"
 > [!NOTE]
 > 本文適用於 Linux 開發環境。  Service Fabric 叢集執行階段與 Docker 執行階段必須在相同的作業系統上執行。  您無法在 Windows 叢集上執行 Linux 容器。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 * 執行下列項目的開發電腦︰
   * [SERVICE FABRIC SDK 和工具](service-fabric-get-started-linux.md)。
   * [Docker CE for Linux](https://docs.docker.com/engine/installation/#prior-releases). 
@@ -113,7 +113,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 name** - 提供執行中容器的名稱 (而不是容器識別碼)。
 
-連線到執行中的容器。 開啟網頁瀏覽器，指向埠4000上傳回的 IP 位址，例如 "HTTP：\//localhost： 4000"。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
+連線到執行中的容器。 開啟網頁瀏覽器，指向埠4000上傳回的 IP 位址，例如 "HTTP： \/ /localhost： 4000"。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
 
 ![Hello World!][hello-world]
 
@@ -132,7 +132,7 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>將映像推送至容器登錄
 確認應用程式在 Docker 中執行後，將映像推送至 Azure Container Registry 中您的登錄。
 
-執行`docker login` ，以使用您的登錄[認證](../container-registry/container-registry-authentication.md)登入您的 container registry。
+執行 `docker login` ，以使用您的登錄[認證](../container-registry/container-registry-authentication.md)登入您的 container registry。
 
 下列範例會傳遞 Azure Active Directory [service principal](../active-directory/develop/app-objects-and-service-principals.md) 的識別碼和密碼。 例如，您可能基於自動化案例已指派服務主體到您的登錄庫。 或者，您可以使用登錄使用者名稱和密碼來登入。
 
@@ -256,9 +256,9 @@ sfctl cluster select --endpoint http://localhost:19080
 ./install.sh
 ```
 
-開啟瀏覽器並流覽至 Service Fabric Explorer，網址為\/HTTP：/localhost： 19080/Explorer （如果在 Mac OS X 上使用 Vagrant，請以 VM 的私人 IP 取代 localhost）。 展開 [應用程式] 節點，請注意，您的應用程式類型現在有一個項目，而另一個則是該類型的第一個執行個體。
+開啟瀏覽器並流覽至 Service Fabric Explorer，網址為 HTTP： \/ /localhost： 19080/Explorer （如果在 Mac OS X 上使用 Vagrant，請以 VM 的私人 IP 取代 localhost）。 展開 [應用程式] 節點，請注意，您的應用程式類型現在有一個項目，而另一個則是該類型的第一個執行個體。
 
-連線到執行中的容器。 開啟網頁瀏覽器，指向埠4000上傳回的 IP 位址，例如 "HTTP：\//localhost： 4000"。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
+連線到執行中的容器。 開啟網頁瀏覽器，指向埠4000上傳回的 IP 位址，例如 "HTTP： \/ /localhost： 4000"。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
 
 ![Hello World!][hello-world]
 

@@ -1,19 +1,18 @@
 ---
 title: 事件處理常式和目的地-Azure Event Grid IoT Edge |Microsoft Docs
 description: 邊緣上事件方格中的事件處理常式和目的地
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.reviewer: spelluru
 ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 35bf5af90aa5f0456aa8d68f0e4e8aaacc6cf84f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4e144461b80dca2cf02c0cc06d7feee882293848
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76849743"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84557643"
 ---
 # <a name="event-handlers-and-destinations-in-event-grid-on-edge"></a>邊緣上事件方格中的事件處理常式和目的地
 
@@ -23,7 +22,7 @@ ms.locfileid: "76849743"
 
 ## <a name="webhook"></a>WebHook
 
-若要發行至 WebHook 端點，請將`endpointType`設定`WebHook`為，並提供：
+若要發行至 WebHook 端點，請將設定 `endpointType` 為， `WebHook` 並提供：
 
 * endpointUrl： WebHook 端點 URL
 
@@ -42,7 +41,7 @@ ms.locfileid: "76849743"
 
 ## <a name="azure-event-grid"></a>Azure Event Grid
 
-若要發佈至 Azure 事件方格雲端端點，請將`endpointType`設定`eventGrid`為，並提供：
+若要發佈至 Azure 事件方格雲端端點，請將設定 `endpointType` 為， `eventGrid` 並提供：
 
 * endpointUrl：雲端中的事件方格主題 URL
 * sasKey：事件方格主題的 SAS 金鑰
@@ -65,7 +64,7 @@ ms.locfileid: "76849743"
 
 ## <a name="iot-edge-hub"></a>IoT Edge 中樞
 
-若要發佈至 Edge 中樞模組，請將`endpointType`設定`edgeHub`為，並提供：
+若要發佈至 Edge 中樞模組，請將設定 `endpointType` 為， `edgeHub` 並提供：
 
 * outputName：事件方格模組會將符合此訂用帳戶的事件路由至 edgeHub 的輸出。 例如，符合下列訂用帳戶的事件會寫入至/messages/modules/eventgridmodule/outputs/sampleSub4。
 
@@ -84,7 +83,7 @@ ms.locfileid: "76849743"
 
 ## <a name="event-hubs"></a>事件中樞
 
-若要發佈至事件中樞，請將`endpointType`設定`eventHub`為，並提供：
+若要發佈至事件中樞，請將設定 `endpointType` 為， `eventHub` 並提供：
 
 * connectionString：透過共用存取原則產生的特定事件中樞的連接字串。
 
@@ -106,7 +105,7 @@ ms.locfileid: "76849743"
 
 ## <a name="service-bus-queues"></a>服務匯流排佇列
 
-若要發行至服務匯流排的佇列，請`endpointType`將`serviceBusQueue`設定為，並提供：
+若要發行至服務匯流排的佇列，請將設定 `endpointType` 為， `serviceBusQueue` 並提供：
 
 * connectionString：透過共用存取原則所設定的目標特定服務匯流排佇列的連接字串。
 
@@ -128,7 +127,7 @@ ms.locfileid: "76849743"
 
 ## <a name="service-bus-topics"></a>服務匯流排主題
 
-若要發行至服務匯流排主題，請將`endpointType`設定`serviceBusTopic`為，並提供：
+若要發行至服務匯流排主題，請將設定 `endpointType` 為， `serviceBusTopic` 並提供：
 
 * connectionString：您透過共用存取原則所設定的目標特定服務匯流排主題的連接字串。
 
@@ -150,7 +149,7 @@ ms.locfileid: "76849743"
 
 ## <a name="storage-queues"></a>儲存體佇列
 
-若要發行至儲存體佇列，請將`endpointType`設定`storageQueue`為，並提供：
+若要發行至儲存體佇列，請將設定 `endpointType` 為， `storageQueue` 並提供：
 
 * queueName：您要發行的儲存體佇列的名稱。
 * connectionString：儲存體佇列所在儲存體帳戶的連接字串。

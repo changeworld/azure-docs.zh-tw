@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: menchi
-ms.openlocfilehash: f846af548913e0cb3e872560e4b8438da306a255
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: f324b04dd87f84a07c07394f2ee7c3efdc30c3e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80757014"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84607069"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>開始使用 IoT 中樞模組身分識別和模組對應項（Python）
 
@@ -33,7 +33,7 @@ ms.locfileid: "80757014"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -51,7 +51,7 @@ ms.locfileid: "80757014"
 
 在本節中，您會建立 Python 服務應用程式，以在 IoT 中樞的身分識別登錄中建立裝置身分識別和模組身分識別。 裝置或模組無法連線到 IoT 中樞，除非它在身分識別登錄中具有專案。 如需詳細資訊，請參閱[瞭解 IoT 中樞的身分識別登錄](iot-hub-devguide-identity-registry.md)。 當您執行此主控台應用程式時，它會針對裝置和模組產生唯一的識別碼和金鑰。 當裝置和模組將裝置到雲端的訊息傳送給 IoT 中樞時，裝置和模組會使用這些值來識別自己。 識別碼會區分大小寫。
 
-1. 在命令提示字元中，執行下列命令來安裝**azure iot 中樞**套件：
+1. 在命令提示字元中，執行下列命令以安裝 **azure-iot-hub** 套件：
 
     ```cmd/sh
     pip install azure-iot-hub
@@ -190,7 +190,7 @@ ms.locfileid: "80757014"
 
    ![Azure 入口網站模組詳細資料](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
 
-1. 在命令提示字元中，執行下列命令來安裝**azure iot 裝置**套件：
+1. 在命令提示字元中，執行下列命令以安裝 **azure-iot-device** 套件：
 
     ```cmd/sh
     pip install azure-iot-device

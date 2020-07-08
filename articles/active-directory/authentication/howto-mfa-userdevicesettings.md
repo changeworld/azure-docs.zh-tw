@@ -11,12 +11,11 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 048224a55c2bbcbc99281d070d88d34e2dc77168
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 295738ee5943a6cf54bc7e1e3ce4bba621dbe29f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309763"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658677"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>管理 Azure 多重要素驗證的使用者設定
 
@@ -27,10 +26,14 @@ ms.locfileid: "81309763"
 如果您已獲指派「*驗證系統管理員*」角色，您可以要求使用者重設其密碼、重新註冊 MFA，或從使用者物件撤銷現有的 MFA 會話。 若要管理使用者設定，請完成下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左側，選取 [ **Azure Active Directory** > **使用者** > ] [**所有使用者**]。
+1. 在左側，選取 [ **Azure Active Directory**  >  **使用者**] [  >  **所有使用者**]。
 1. 選擇您想要對其執行動作的使用者，然後選取 [**驗證方法**]。 在視窗頂端，為使用者選擇下列其中一個選項：
    - [**重設密碼**] 會重設使用者的密碼，並指派必須在下次登入時變更的暫時密碼。
    - [**需要重新註冊 MFA** ] 會讓使用者在下一次登入時，要求他們設定新的 MFA 驗證方法。
+   
+      > [!NOTE]
+      > 當系統管理員需要重新註冊 MFA 時，使用者目前註冊的驗證方法不會被刪除。 使用者重新註冊 MFA 之後，建議您檢查其安全性資訊，並刪除任何先前已註冊且已無法使用的驗證方法。
+   
    - **撤銷 Mfa 會話**會清除使用者已記住的 mfa 會話，並要求他們在裝置上的原則需要時執行 mfa。
 
    ![從 Azure 入口網站管理驗證方法](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
@@ -42,10 +45,10 @@ ms.locfileid: "81309763"
 若要刪除使用者的應用程式密碼，請完成下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左側，選取 [ **Azure Active Directory** > **使用者** > ] [**所有使用者**]。
-1. 選取 [**多重要素驗證**]。 您可能需要向右移動，才能看到此功能表選項。 選取以下的範例螢幕擷取畫面，以查看完整的 Azure 入口網站視窗和功能表位置：[![](media/howto-mfa-userstates/selectmfa-cropped.png "從 Azure AD 的 [使用者] 視窗中選取 [多重要素驗證]")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. 在左側，選取 [ **Azure Active Directory**  >  **使用者**] [  >  **所有使用者**]。
+1. 選取 [多重要素驗證]。 您可能必須捲動到右邊才能看到此功能表選項。 選取以下的範例螢幕擷取畫面，以查看完整的 Azure 入口網站視窗和功能表位置：[![](media/howto-mfa-userstates/selectmfa-cropped.png "從 Azure AD 中的 [使用者] 視窗選取 [Multi-Factor Authentication]")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. 勾選您想要管理之使用者旁邊的方塊。 快速步驟選項的清單會出現在右側。
-1. 選取 [**管理使用者設定**]，然後核取 [**刪除選取的使用者產生的所有現有應用程式密碼**] 方塊，如下列範例![所示：刪除所有現有的應用程式密碼](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. 選取 [**管理使用者設定**]，然後核取 [**刪除選取的使用者產生的所有現有應用程式密碼**] 方塊，如下列範例所示： ![ 刪除所有現有的應用程式密碼](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 1. 選取 [**儲存**]，然後按一下 [**關閉**]。
 
 ## <a name="next-steps"></a>後續步驟

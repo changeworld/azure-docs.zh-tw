@@ -3,12 +3,12 @@ title: 建立 Azure Service Fabric 容器應用程式
 description: 在 Azure Service Fabric 上建立第一個 Windows 容器應用程式。 使用 Python 應用程式建立 Docker 映射、將映射推送至容器登錄，然後建立容器並將其部署至 Azure Service Fabric。
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: d7076226b63fa3b45eaae82c2964997d3065ed88
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258469"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560656"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 建立第一個 Service Fabric 容器應用程式
 
@@ -24,7 +24,7 @@ ms.locfileid: "79258469"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 執行下列項目的開發電腦︰
   * Visual Studio 2015 或 Visual Studio 2019。
@@ -142,12 +142,12 @@ name** - 提供執行中容器的名稱 (而不是容器識別碼)。
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-如果該命令未傳回任何專案，請執行下列命令，並檢查 IP 位址的**NetworkSettings**->**Networks**元素：
+如果該命令未傳回任何專案，請執行下列命令，並檢查 IP 位址的**NetworkSettings** -> **Networks**元素：
 ```
 docker inspect my-web-site
 ```
 
-連線到執行中的容器。 開啟 web 瀏覽器並指向傳回的 IP 位址，例如 "HTTP：\//172.31.194.61"。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
+連線到執行中的容器。 開啟 web 瀏覽器並指向傳回的 IP 位址，例如 "HTTP： \/ /172.31.194.61"。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
 
 若要停止您的容器，請執行︰
 
@@ -166,7 +166,7 @@ docker rm my-web-site
 
 確認容器在開發電腦上執行後，將映像發送到 Azure Container Registry 中您的登錄。
 
-執行``docker login`` ，以使用您的登錄[認證](../container-registry/container-registry-authentication.md)登入您的 container registry。
+執行 ``docker login`` ，以使用您的登錄[認證](../container-registry/container-registry-authentication.md)登入您的 container registry。
 
 下列範例會傳遞 Azure Active Directory [service principal](../active-directory/develop/app-objects-and-service-principals.md) 的識別碼和密碼。 例如，您可能基於自動化案例已指派服務主體到您的登錄庫。 或者，您可以使用登錄使用者名稱和密碼來登入。
 
@@ -189,7 +189,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>在 Visual Studio 中建立容器化服務
 Service Fabric SDK 和工具會提供一個服務範本，協助您建立容器化應用程式。
 
-1. 啟動 Visual Studio。  > 選取 **[** 檔案] [**新增** > **專案**]。
+1. 啟動 Visual Studio。 選取 [File] \(檔案\) >  [New] \(新增\) >  [Project] \(專案\)。
 2. 選取 [Service Fabric 應用程式]****，將它命名為 "MyFirstContainer"，然後按一下 [確定]****。
 3. 從 [服務範本]**** 的清單中選取 [容器]****。
 4. 在 [映像名稱]**** 中輸入 "myregistry.azurecr.io/samples/helloworldapp"，也就是您推送至容器存放庫的映像。
@@ -496,7 +496,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>在容器被迫終止前設定時間間隔
 
-您可以在啟動服務刪除 (或移至另一個節點) 之後，設定執行階段在容器移除前所要等候的間隔時間。 設定時間間隔可將 `docker stop <time in seconds>` 命令傳送至容器。  如需更多詳細資訊，請參閱 [docker stop](https://docs.docker.com/engine/reference/commandline/stop/)。 所要等候的時間間隔指定於 `Hosting` 區段之下。 您`Hosting`可以在建立叢集時或稍後於設定升級中新增區段。 下列叢集資訊清單程式碼片段示範如何設定等候間隔：
+您可以在啟動服務刪除 (或移至另一個節點) 之後，設定執行階段在容器移除前所要等候的間隔時間。 設定時間間隔可將 `docker stop <time in seconds>` 命令傳送至容器。  如需更多詳細資訊，請參閱 [docker stop](https://docs.docker.com/engine/reference/commandline/stop/)。 所要等候的時間間隔指定於 `Hosting` 區段之下。 您 `Hosting` 可以在建立叢集時或稍後於設定升級中新增區段。 下列叢集資訊清單程式碼片段示範如何設定等候間隔：
 
 ```json
 "fabricSettings": [

@@ -11,16 +11,21 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: c5d2ad481124f5ae048d010cdf632ee661bbd6ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 40c7b1b0ae2065ed00cf21f99ab2046e25970237
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609432"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>針對常見的 Azure 資料庫移轉服務問題和錯誤進行疑難排解
 
 本文說明 Azure 資料庫移轉服務使用者可能會遇到的一些常見問題和錯誤。 本文也包含如何解決這些問題和錯誤的相關資訊。
+
+> [!NOTE]
+> 偏差-免費通訊
+>
+> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對_一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+>
 
 ## <a name="migration-activity-in-queued-state"></a>已排入佇列狀態的遷移活動
 
@@ -32,7 +37,7 @@ ms.locfileid: "77649102"
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>已選取要進行遷移的資料庫數目上限
 
-建立資料庫移轉專案的活動以移至 Azure SQL Database 或 Azure SQL Database 受控實例時，發生下列錯誤：
+建立資料庫移轉專案的活動以移至 Azure SQL Database 或 Azure SQL 受控執行個體時發生下列錯誤：
 
 * **錯誤**：遷移設定驗證錯誤 "，" errorDetail "：" 已選取多個 ' 資料庫 ' 的最大數目 ' 4 ' 物件進行遷移。 "
 
@@ -58,7 +63,7 @@ ms.locfileid: "77649102"
 
 | 原因         | 解決方案 |
 | ------------- | ------------- |
-| 當您嘗試停止的服務實例包含仍在執行或存在於遷移專案中的活動時，就會顯示此錯誤。 <br><br><br><br><br><br> | 請確定在您嘗試停止的 Azure 資料庫移轉服務實例中，沒有任何活動正在執行。 您也可以在嘗試停止服務之前刪除活動或專案。 下列步驟說明如何藉由刪除所有執行中的工作，來移除專案以清除遷移服務實例：<br>1. Install-Module-Name AzureRM. Microsoft.datamigration <br>2. 登入-AzureRmAccount <br>3. Select-AzureRmSubscription-SubscriptionName "\<>" <br> 4. 移除-AzureRmDataMigrationProject-Name \<專案名稱>- \<ResourceGroupName rgName>- \<ServiceName servicename>-DeleteRunningTask |
+| 當您嘗試停止的服務實例包含仍在執行或存在於遷移專案中的活動時，就會顯示此錯誤。 <br><br><br><br><br><br> | 請確定在您嘗試停止的 Azure 資料庫移轉服務實例中，沒有任何活動正在執行。 您也可以在嘗試停止服務之前刪除活動或專案。 下列步驟說明如何藉由刪除所有執行中的工作，來移除專案以清除遷移服務實例：<br>1. Install-Module-Name AzureRM. Microsoft.datamigration <br>2. 登入-AzureRmAccount <br>3. Select-AzureRmSubscription-SubscriptionName " \<subName> " <br> 4. AzureRmDataMigrationProject-Name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>嘗試啟動 Azure 資料庫移轉服務時發生錯誤
 
@@ -72,13 +77,13 @@ ms.locfileid: "77649102"
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>將 SQL 遷移至 Azure SQL DB 受控實例時還原資料庫時發生錯誤
 
-當您執行從 SQL Server 到 Azure SQL Database 受控實例的線上遷移時，轉換會失敗，並出現下列錯誤：
+當您執行從 SQL Server 到 Azure SQL 受控執行個體的線上遷移時，轉換會失敗，並出現下列錯誤：
 
 * **錯誤**：作業識別碼 ' operationId ' 的還原作業失敗。 程式碼 ' AuthorizationFailed '，訊息 ' 具有物件識別碼 ' objectId ' 的用戶端 ' clientId ' 沒有授權可執行 ' Microsoft. Sql/位置/managedDatabaseRestoreAzureAsyncOperation/read ' 範圍 '/subscriptions/subscriptionId '. ' 的動作。
 
 | 原因         | 解決方案    |
 | ------------- | ------------- |
-| 此錯誤表示從 SQL Server 到 Azure SQL Database 受控實例的線上遷移所使用的應用程式主體，沒有訂用帳戶的「參與」許可權。 目前有受控執行個體的特定 API 呼叫需要訂用帳戶上的此許可權，才能進行還原作業。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | 在錯誤`Get-AzureADServicePrincipal`訊息中使用`-ObjectId` PowerShell Cmdlet 搭配 [可用]，列出所使用之應用程式識別碼的顯示名稱。<br><br> 驗證此應用程式的許可權，並確定它在訂用帳戶層級具有「[參與者」角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)。 <br><br> Azure 資料庫移轉服務工程小組正致力於限制訂用帳戶上的目前參與角色所需的存取權。 如果您的商務需求不允許使用「參與」角色，請聯絡 Azure 支援以取得其他協助。 |
+| 此錯誤表示用於從 SQL Server 到 SQL 受控執行個體進行線上遷移的應用程式主體，沒有訂用帳戶的「參與」許可權。 目前有受控執行個體的特定 API 呼叫需要訂用帳戶上的此許可權，才能進行還原作業。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | 在 `Get-AzureADServicePrincipal` 錯誤訊息中使用 PowerShell Cmdlet 搭配 [ `-ObjectId` 可用]，列出所使用之應用程式識別碼的顯示名稱。<br><br> 驗證此應用程式的許可權，並確定它在訂用帳戶層級具有「[參與者」角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)。 <br><br> Azure 資料庫移轉服務工程小組正致力於限制訂用帳戶上的目前參與角色所需的存取權。 如果您的商務需求不允許使用「參與」角色，請聯絡 Azure 支援以取得其他協助。 |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>刪除與 Azure 資料庫移轉服務相關聯的 NIC 時發生錯誤
 

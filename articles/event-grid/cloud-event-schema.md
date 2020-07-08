@@ -1,26 +1,25 @@
 ---
 title: 將 Azure 事件方格用於 CloudEvents 結構描述中的事件
-description: 說明如何在 Azure 事件方格中使用事件的 CloudEvents 架構。 服務支援在雲端事件的 JSON 實行中的事件。
+description: 說明如何在 Azure 事件方格中將 CloudEvents 結構描述用於事件。 此服務支援雲端事件的 JSON 實作中的事件。
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 127095bef2c67a93097bf90bea54ca1b44b16c58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: femila
+ms.openlocfilehash: 57827b1c5a43a3408d374e8bddb7b91113b2929a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81394380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560700"
 ---
 # <a name="cloudevents-v10-schema-with-event-grid"></a>具有事件方格的 CloudEvents v1.0 架構
 
-除了其[預設事件架構](event-schema.md)之外，Azure 事件方格原本就支援 CloudEvents V1.0 和[HTTP 通訊協定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)系結的[JSON 實](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)值中的事件。 [CloudEvents](https://cloudevents.io/) 是用來說明事件資料的[開放式規格](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
+除了[預設事件結構描述](event-schema.md)以外，Azure 事件方格在本質上也支援 [CloudEvents v1.0 的 JSON 實作](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 通訊協定繫結](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)中的事件。 [CloudEvents](https://cloudevents.io/) 是用來說明事件資料的[開放式規格](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
 
 CloudEvents 提供用以發佈和取用雲端型事件的常見事件結構描述，可簡化互通性。 此結構描述可支援統一的工具、路由和處理事件的標準方式，以及將外部事件結構描述還原序列化的通用方式。 透過通用結構描述，您將可更輕鬆地跨平台整合工作。
 
-目前有數個[共同作業者](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (包括 Microsoft) 正透過 [Cloud Native Computing Foundation](https://www.cncf.io/) 建置 CloudEvents。 它目前以1.0 版的形式提供。
+目前有數個[共同作業者](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (包括 Microsoft) 正透過 [Cloud Native Computing Foundation](https://www.cncf.io/) 建置 CloudEvents。 目前可用的版本為 1.0。
 
 本文說明具有事件方格的 CloudEvents 架構。
 
@@ -54,7 +53,7 @@ CloudEvents 提供用以發佈和取用雲端型事件的常見事件結構描�
 }
 ```
 
-如需可用欄位、其類型和定義的詳細說明，請參閱[這裡](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)： CloudEvents v1.0。
+如需 CloudEvents v1.0 中的可用欄位、其類型和定義的詳細說明，請參閱[這裡](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)。
 
 在 CloudEvents 結構描述中傳遞的事件標頭值與事件方格結構描述的該值相同，不同之處在於 `content-type`。 針對 CloudEvents 結構描述，該標頭值是 `"content-type":"application/cloudevents+json; charset=utf-8"`。 針對事件方格結構描述，該標頭值是 `"content-type":"application/json; charset=utf-8"`。
 

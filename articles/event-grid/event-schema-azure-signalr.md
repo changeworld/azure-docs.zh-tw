@@ -2,17 +2,16 @@
 title: 作為事件方格來源的 Azure SignalR
 description: 說明使用 Azure 事件方格為 Azure SignalR 事件提供的屬性
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.author: babanisa
-ms.openlocfilehash: e4ebae9597d750cea6f292655e9f03dd65ccc3f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: femila
+ms.openlocfilehash: 8fbae3fad4aeb85022c804e1ac648060360c6531
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560621"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>適用于 SignalR Service 的 Azure 事件方格事件架構
 
@@ -76,20 +75,20 @@ SignalR Service 會發出下列事件種類：
 
 事件具有下列的最高層級資料：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
 | subject | 字串 | 發行者定義事件主體的路徑。 |
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | id | 字串 | 事件的唯一識別碼。 |
-| data | 物件 | SignalR Service 事件資料。 |
+| data | 物件 (object) | SignalR Service 事件資料。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | timestamp | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | hubName | 字串 | 用戶端連接所屬的中樞。 |
@@ -98,7 +97,7 @@ SignalR Service 會發出下列事件種類：
 | errorMessage | 字串 | 導致連線中斷連接的錯誤。 |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
-|Title | 描述 |
+|Title | Description |
 |---------|---------|
 | [使用事件方格來回應 Azure SignalR Service 事件](../azure-signalr/signalr-concept-event-grid-integration.md) | 整合 Azure SignalR Service 與事件方格的總覽。 |
 | [如何將 Azure SignalR Service 事件傳送至事件方格](../azure-signalr/signalr-howto-event-grid-integration.md) | 說明如何透過事件方格將 Azure SignalR Service 事件傳送至應用程式。 |

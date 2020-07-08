@@ -8,13 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 0bb1371de827fbb68afd5d114f49afa4acec0deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 142ac150e863b69a4580812478828062c1f5c6c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84605590"
 ---
 # <a name="get-started-with-device-twins-python"></a>開始使用裝置對應項 (Python)
 
@@ -28,11 +27,11 @@ ms.locfileid: "81759729"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例使用 MQTT 通訊協定，它會透過埠8883進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -69,7 +68,7 @@ ms.locfileid: "81759729"
    from azure.iot.hub.models import Twin, TwinProperties, QuerySpecification, QueryResult
    ```
 
-4. 加入下列程式碼。 將`[IoTHub Connection String]`取代為您在[取得 iot 中樞連接字串](#get-the-iot-hub-connection-string)中複製的 iot 中樞連接字串。 將`[Device Id]`取代為您在[IoT 中樞註冊新裝置](#register-a-new-device-in-the-iot-hub)中註冊的裝置識別碼。
+4. 加入下列程式碼。 將 `[IoTHub Connection String]` 取代為在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中複製的 IoT 中樞連接字串。 將取代 `[Device Id]` 為您在[IoT 中樞註冊新裝置](#register-a-new-device-in-the-iot-hub)中註冊的裝置識別碼。
   
     ```python
     IOTHUB_CONNECTION_STRING = "[IoTHub Connection String]"
@@ -158,7 +157,7 @@ ms.locfileid: "81759729"
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. 加入下列程式碼。 將`[IoTHub Device Connection String]`預留位置值取代為您在[IoT 中樞註冊新裝置](#register-a-new-device-in-the-iot-hub)中所複製的裝置連接字串。
+4. 加入下列程式碼。 將 `[IoTHub Device Connection String]` 預留位置值取代為您在[IoT 中樞註冊新裝置](#register-a-new-device-in-the-iot-hub)中所複製的裝置連接字串。
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -239,7 +238,7 @@ ms.locfileid: "81759729"
 
 使用下列資源來了解如何：
 
-* 使用[開始使用 IoT 中樞](quickstart-send-telemetry-python.md)教學課程，從裝置傳送遙測。
+* 利用[開始使用 IoT 中樞](quickstart-send-telemetry-python.md)教學課程，傳送裝置的遙測資料。
 
 * 使用裝置對應項的所需屬性搭配[使用所需的屬性來設定裝置](tutorial-device-twins.md)教學課程來設定裝置。
 

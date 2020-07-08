@@ -6,14 +6,13 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: a171dc795e685655b5a3c73d088d3963c2aaa4ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 308098bd1ac49510afccf0a7964face726906332
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312311"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628681"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>應用程式閘道支援多租使用者後端（例如 App service）
 
@@ -42,7 +41,7 @@ ms.locfileid: "81312311"
 
 ### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>具有多租使用者服務的 TLS 終止和端對端 TLS
 
-多租使用者服務都支援 TLS 終止和端對端 TLS 加密。 針對應用程式閘道上的 TLS 終止，TLS 憑證會繼續新增至應用程式閘道接聽程式。 不過，如果是端對端 TLS，受信任的 Azure 服務（例如 Azure App 服務 web apps）不需要允許清單應用程式閘道中的後端。 因此，不需要新增任何驗證憑證。 
+多租使用者服務都支援 TLS 終止和端對端 TLS 加密。 針對應用程式閘道上的 TLS 終止，TLS 憑證會繼續新增至應用程式閘道接聽程式。 不過，如果是端對端 TLS，受信任的 Azure 服務（例如 Azure App 服務 web apps）不需要允許應用程式閘道上的後端。 因此，不需要新增任何驗證憑證。 
 
 ![端對端 TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 

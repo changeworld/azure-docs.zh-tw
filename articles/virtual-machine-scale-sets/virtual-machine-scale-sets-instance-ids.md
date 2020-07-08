@@ -9,12 +9,11 @@ ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6ffc92fe8d17970e1408262387140331189d6e51
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 430c08fc318a89c4d11575eab90ee524b88a979a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84607341"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 擴展集 VM 的執行個體識別碼
 本文說明擴展集的執行個體識別碼和它們呈現的各種方式。
@@ -23,7 +22,7 @@ ms.locfileid: "83200133"
 
 擴展集中的每個 VM 都會取得唯一識別本身的執行個體識別碼。 這個執行個體識別碼使用於擴展集 API 中，以在擴展集中的特定 VM 上執行作業。 例如，當您使用重新安裝映像 API 時，可以指定要重新安裝映像的特定執行個體識別碼：
 
-REST API：`POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` (如需詳細資訊，請參閱 [REST API 文件](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) \(英文\))
+REST API：`POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}` (如需詳細資訊，請參閱 [REST API 文件](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/reimage) \(英文\))
 
 Powershell：`Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (如需詳細資訊，請參閱 [Powershell 文件](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm) \(英文\))
 

@@ -11,26 +11,25 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7e809def048c95b6688a13ac99783615eb045d11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 53a84bd970d564411ec9a56b54159e5a96717a6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558754"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>單一頁面應用程式：登入和登出
 
 瞭解如何將登入新增至單一頁面應用程式的程式碼。
 
-在您可以取得權杖以存取應用程式中的 Api 之前，您需要已驗證的使用者內容。 您可以透過兩種方式，在 MSAL 中將使用者登入您的應用程式：
+在您可以取得權杖以存取應用程式中的 Api 之前，您需要已驗證的使用者內容。 您可以透過兩種方式，在 MSAL.js 中將使用者登入您的應用程式：
 
-* [快顯視窗](#sign-in-with-a-pop-up-window)，使用`loginPopup`方法
-* [Redirect](#sign-in-with-redirect)使用`loginRedirect`方法重新導向
+* [快顯視窗](#sign-in-with-a-pop-up-window)，使用 `loginPopup` 方法
+* 使用方法重新[導向](#sign-in-with-redirect) `loginRedirect`
 
 您也可以選擇性地傳遞您在登入時需要使用者同意的 Api 範圍。
 
 > [!NOTE]
-> 如果您的應用程式已可存取已驗證的使用者內容或識別碼權杖，您可以略過登入步驟並直接取得權杖。 如需詳細資訊，請參閱[不含 MSAL 的 SSO 登](msal-js-sso.md#sso-without-msaljs-login)入。
+> 如果您的應用程式已可存取已驗證的使用者內容或識別碼權杖，您可以略過登入步驟並直接取得權杖。 如需詳細資訊，請參閱[SSO 而不 MSAL.js 登](msal-js-sso.md#sso-without-msaljs-login)入。
 
 ## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>在快顯或重新導向體驗之間進行選擇
 
@@ -45,22 +44,34 @@ ms.locfileid: "80885184"
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const loginRequest = {
-    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
+
+const config = {
+    auth: {
+        clientId: 'your_app_id',
+        redirectUri: "your_app_redirect_uri", //defaults to application start page
+        postLogoutRedirectUri: "your_app_logout_redirect_uri"
+    }
 }
 
-userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
-    //login success
-    let idToken = loginResponse.idToken;
-}).catch(function (error) {
-    //login failure
-    console.log(error);
-});
+const loginRequest = {
+    scopes: ["User.ReadWrite"]
+}
+
+const myMsal = new userAgentApplication(config);
+
+myMsal.loginPopup(loginRequest)
+    .then(function (loginResponse) {
+        //login success
+        let idToken = loginResponse.idToken;
+    }).catch(function (error) {
+        //login failure
+        console.log(error);
+    });
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-MSAL 角度包裝函式可讓您藉由新增`MsalGuard`至路由定義來保護應用程式中的特定路由。 此防護會叫用方法，以在存取該路由時登入。
+MSAL 角度包裝函式可讓您藉由新增至路由定義來保護應用程式中的特定路由 `MsalGuard` 。 此防護會叫用方法，以在存取該路由時登入。
 
 ```javascript
 // In app-routing.module.ts
@@ -91,7 +102,7 @@ const routes: Routes = [
 export class AppRoutingModule { }
 ```
 
-如需快顯視窗體驗，請啟用 [ `popUp`設定] 選項。 您也可以傳遞需要同意的範圍，如下所示：
+如需快顯視窗體驗，請啟用 [設定] `popUp` 選項。 您也可以傳遞需要同意的範圍，如下所示：
 
 ```javascript
 // In app.module.ts
@@ -103,7 +114,7 @@ export class AppRoutingModule { }
             }
         }, {
             popUp: true,
-            consentScopes: ["https://graph.microsoft.com/User.ReadWrite"]
+            consentScopes: ["User.ReadWrite"]
         })
     ]
 })
@@ -117,17 +128,28 @@ export class AppRoutingModule { }
 重新導向方法不會傳回承諾，因為會離開主要應用程式。 若要處理和存取傳回的權杖，您必須先註冊成功和錯誤回呼，再呼叫重新導向方法。
 
 ```javascript
+
+const config = {
+    auth: {
+        clientId: 'your_app_id',
+        redirectUri: "your_app_redirect_uri", //defaults to application start page
+        postLogoutRedirectUri: "your_app_logout_redirect_uri"
+    }
+}
+
+const loginRequest = {
+    scopes: ["User.ReadWrite"]
+}
+
+const myMsal = new userAgentApplication(config);
+
 function authCallback(error, response) {
     //handle redirect response
 }
 
-userAgentApplication.handleRedirectCallback(authCallback);
+myMsal.handleRedirectCallback(authCallback);
 
-const loginRequest = {
-    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
-}
-
-userAgentApplication.loginRedirect(loginRequest);
+myMsal.loginRedirect(loginRequest);
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)
@@ -141,9 +163,9 @@ userAgentApplication.loginRedirect(loginRequest);
 
 ## <a name="sign-out"></a>登出
 
-MSAL 程式庫提供的`logout`方法會清除瀏覽器儲存體中的快取，並將登出要求傳送至 Azure Active Directory （Azure AD）。 登出之後，程式庫預設會重新導向回到應用程式起始頁。
+MSAL 程式庫提供的 `logout` 方法會清除瀏覽器儲存體中的快取，並將登出要求傳送至 Azure Active Directory （Azure AD）。 登出之後，程式庫預設會重新導向回到應用程式起始頁。
 
-您可以設定`postLogoutRedirectUri`，在登出後將其重新導向的 URI 設定為。 此 URI 也應該在您的應用程式註冊中註冊為登出 URI。
+您可以設定，在登出後將其重新導向的 URI 設定為 `postLogoutRedirectUri` 。 此 URI 也應該在您的應用程式註冊中註冊為登出 URI。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -156,9 +178,9 @@ const config = {
     }
 }
 
-const userAgentApplication = new UserAgentApplication(config);
-userAgentApplication.logout();
+const myMsal = new UserAgentApplication(config);
 
+myMsal.logout();
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)

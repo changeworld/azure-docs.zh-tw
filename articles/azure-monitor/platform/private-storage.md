@@ -6,16 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 7213cb10936fc1c2117b2c5c3fc32a6bfea02d30
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: HT
+ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610061"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure 監視器中可供記錄擷取的客戶自有儲存體帳戶
 
-Azure 監視器在某些資料類型的擷取程序中會使用儲存體帳戶，例如[自訂記錄](data-sources-custom-logs.md)，以及部份的[ Azure 記錄](azure-storage-iis-table.md)。 在擷取程序中，系統會先將記錄傳送到儲存體帳戶，並於稍後擷取到 Log Analytics 或 Application Insights。 如果您想要在擷取期間控制資料，您可以使用自己的儲存體帳戶，而非服務管理的儲存體。 使用自己的儲存體帳戶，可讓您在擷取期間控制記錄的存取、內容、加密及保留。 我們將此稱為「自備儲存體」或 BYOS。 
+Azure 監視器在某些資料類型的擷取程序中會使用儲存體帳戶，例如[自訂記錄](data-sources-custom-logs.md)，以及部份的[ Azure 記錄](azure-storage-iis-table.md)。 在擷取程序中，系統會先將記錄傳送到儲存體帳戶，並於稍後擷取到 Log Analytics 或 Application Insights。 如果您想要在擷取期間控制資料，您可以使用自己的儲存體帳戶，而非服務管理的儲存體。 使用您自己的儲存體帳戶，可讓您在內嵌期間控制記錄的存取、內容、加密及保留。 我們將此稱為「自備儲存體」或 BYOS。 
 
 透過 Private Link 進行網路隔離時，即是需要 BYOS 的狀況之一。 在使用 VNet 時，通常需要網路隔離，而且公用網際網路的存取會受到限制。 在這種情況下，存取 Azure 監視器服務儲存體來擷取記錄的做法會完全遭到封鎖，或視為不正確的做法。 請改為透過 VNet 內部的客戶自有儲存體帳戶來擷取記錄，或可從中輕鬆存取。
 
@@ -210,7 +209,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="replace-a-storage-account"></a>取代儲存體帳戶
 
-若要取代用於擷取的儲存體帳戶，請先建立新儲存體帳戶的連結。 記錄代理程式也會取得更新後的設定，並開始將資料傳送至新的儲存體。
+若要取代用於擷取的儲存體帳戶，請先建立新儲存體帳戶的連結。 記錄代理程式也會取得更新的設定，並開始將資料傳送至新的儲存體。
 
 接下來，請將舊儲存體帳戶取消連結，以便讓代理程式停止寫入已移除的帳戶。 擷取程序會繼續讀取此帳戶的資料，直到全部擷取完畢為止。 除非您看到所有記錄都已擷取，否則請勿刪除儲存體帳戶。
 
@@ -232,4 +231,4 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需關於設定私人連結的詳細資訊，請參閱 [使用 Azure Private Link 將網路安全連線至 Azure 監視器}(private-link-security.md)(英文)
+- 如需設定私人連結的詳細資訊，請參閱[使用 Azure 私人連結將網路安全地連接到 Azure 監視器](private-link-security.md)

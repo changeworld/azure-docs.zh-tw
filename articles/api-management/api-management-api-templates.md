@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 467d8b89ef5c114d647a257053ed3367d6336bdc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265957"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559344"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 範本
 
@@ -89,7 +89,7 @@ ms.locfileid: "79265957"
   
 ### <a name="data-model"></a>資料模型  
   
-|屬性|類型|描述|  
+|屬性|類型|Description|  
 |--------------|----------|-----------------|  
 |`apis`|[API 摘要](api-management-template-data-model-reference.md#APISummary)實體的集合。|目前使用者可看見的 API。|  
   
@@ -344,7 +344,7 @@ ms.locfileid: "79265957"
   
 ### <a name="data-model"></a>資料模型  
   
-|屬性|類型|描述|  
+|屬性|類型|Description|  
 |--------------|----------|-----------------|  
 |`apiId`|字串|目前 API 的識別碼。|  
 |`apiName`|字串|API 的名稱。|  
@@ -717,7 +717,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-### <a name="c"></a><a name="CSharp"></a>C#  
+### <a name="c"></a><a name="CSharp"></a> C#  
  **DocumentationSamplesCsharp** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  
@@ -1283,7 +1283,7 @@ catch (HttpException $ex)
 }  
 ```  
   
-### <a name="python"></a><a name="Python"></a>Python  
+### <a name="python"></a><a name="Python"></a> Python  
  **DocumentationSamplesPython** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  

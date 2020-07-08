@@ -8,12 +8,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: a9468f437a89a85f28b6ce869b948ca2a4aff7bf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: d941f3e13e99accadc59c5836d88a824182329b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629723"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 至 Azure 災害復原架構
 
@@ -34,7 +33,7 @@ ms.locfileid: "82983324"
 **快取儲存體帳戶** | 您必須要有位於來源網路中的快取儲存體帳戶。 在複寫期間，VM 變更會先儲存在快取中，再傳送至目標儲存體。  快取儲存體帳戶必須是標準。<br/><br/> 使用快取可確保在 VM 上執行的生產應用程式所受到的影響會降到最低。<br/><br/> [深入了解](azure-to-azure-support-matrix.md#cache-storage)快取儲存體需求。 
 **目標資源** | 在複寫期間和執行容錯移轉時，都會使用目標資源。 Site Recovery 可依預設進行目標資源設定，您也可自行加以建立/自訂。<br/><br/> 在目標區域中，請確認您能夠建立 VM，且您的訂用帳戶有足夠的資源可支援目標區域中所需的 VM 大小。 
 
-![來源和目標複寫](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![來源和目標複寫](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>目標資源
 
@@ -62,7 +61,7 @@ ms.locfileid: "82983324"
 
 當您啟用 Azure VM 複寫時，Site Recovery 依預設會以下表中摘要說明的預設設定建立新的複寫原則。
 
-**原則設定** | **詳細資料** | **預設**
+**原則設定** | **詳細資料** | **預設值**
 --- | --- | ---
 **復原點保留期** | 指定 Site Recovery 會保留復原點多久 | 24 小時
 **應用程式一致的快照頻率** | Site Recovery 建立應用程式一致快照集的頻率。 | 每四個小時
@@ -96,13 +95,13 @@ Site Recovery 會依照下列方式建立快照集：
 
 ### <a name="crash-consistent"></a>絕對一致
 
-**說明** | **詳細資料** | **建議**
+**描述** | **詳細資料** | **建議**
 --- | --- | ---
 絕對一致的快照集會擷取在快照建立時位於磁碟上的資料。 其中不含記憶體中的任何資料。<br/><br/> 其中所含的資料，相當於設若在建立快照集時發生 VM 當機的狀況，或從伺服器上拔開電源線，所將存在於磁碟上的資料。<br/><br/> 「絕對一致」並不保證資料在作業系統上或 VM 的應用程式間可保有一致性。 | Site Recovery 依預設會每五分鐘建立一次絕對一致復原點。 此設定無法修改。<br/><br/>  | 現在，大部分的應用程式都可以從絕對一致復原點妥善復原。<br/><br/> 對作業系統的複寫，以及 DHCP 伺服器和列印伺服器之類的應用程式而言，使用絕對一致復原點通常就已足夠。
 
 ### <a name="app-consistent"></a>應用程式一致
 
-**說明** | **詳細資料** | **建議**
+**描述** | **詳細資料** | **建議**
 --- | --- | ---
 應用程式一致復原點可從應用程式一致快照集建立。<br/><br/> 應用程式一致的快照集包含絕對一致快照集中的所有資訊，以及記憶體和進行中的交易所包含的所有資料。 | 應用程式一致快照集會使用磁碟區陰影複製服務 (VSS)：<br/><br/>   1) 在起始快照集時，VSS 會在磁碟區上執行「寫入時複製」(COW) 作業。<br/><br/>   2) 在執行 COW 之前，VSS 會通知機器上的每個應用程式它需要將其記憶體常駐資料排清到磁碟。<br/><br/>   3) 接著，VSS 會允許備份/災害復原應用程式 (在此案例中為 Site Recovery) 讀取快照集資料並繼續執行。 | 應用程式一致快照集會依據您指定的頻率建立。 此頻率一律應小於您的保留復原點設定。 例如，如果您使用預設設定 24 小時來保留復原點，您所設定的頻率就應該小於 24 小時。<br/><br/>此類快照集比絕對一致快照集更複雜，且需要較長的時間才能完成。<br/><br/> 在 VM 上執行且已啟用複寫的應用程式，效能將會受其影響。 
 
@@ -116,7 +115,7 @@ Site Recovery 會依照下列方式建立快照集：
 4. Site Recovery 會處理快取中的資料，並將資料傳送到目標儲存體帳戶或複本受控磁碟。
 5. 資料處理完成後，會每五分鐘產生一次絕對一致復原點。 此外匯根據複寫原則中指定的設定產生應用程式一致復原點。
 
-![啟用複寫程序，步驟 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![啟用複寫程序，步驟 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **複寫程序**
 
@@ -146,9 +145,9 @@ Site Recovery 會依照下列方式建立快照集：
 
 **規則** |  **詳細資料** | **服務標記**
 --- | --- | --- 
-允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域儲存體帳戶的範圍 | 容量.\<區功能變數名稱稱>
+允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域儲存體帳戶的範圍 | 容量.\<region-name>
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Active Directory 的範圍（Azure AD）  | AzureActiveDirectory
-允許 HTTPS 輸出：連接埠 443 | 允許對應至目的地區域中事件中樞的範圍。 | EventsHub.\<區功能變數名稱稱>
+允許 HTTPS 輸出：連接埠 443 | 允許對應至目的地區域中事件中樞的範圍。 | EventsHub.\<region-name>
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Site Recovery 的範圍  | AzureSiteRecovery
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Key Vault 的範圍（這只有在啟用啟用 ADE 的虛擬機器透過入口網站複寫時才需要） | AzureKeyVault
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure 自動化控制器的範圍（只有針對透過入口網站啟用複寫專案的行動代理程式自動升級時才需要） | GuestAndHybridManagement
@@ -157,9 +156,9 @@ Site Recovery 會依照下列方式建立快照集：
 
 **規則** |  **詳細資料** | **服務標記**
 --- | --- | --- 
-允許 HTTPS 輸出：連接埠 443 | 允許與目的地區域中的儲存體帳戶對應的範圍 | 容量.\<區功能變數名稱稱>
+允許 HTTPS 輸出：連接埠 443 | 允許與目的地區域中的儲存體帳戶對應的範圍 | 容量.\<region-name>
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure AD 的範圍  | AzureActiveDirectory
-允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域中事件中樞的範圍。 | EventsHub.\<區功能變數名稱稱>
+允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域中事件中樞的範圍。 | EventsHub.\<region-name>
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Site Recovery 的範圍  | AzureSiteRecovery
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Key Vault 的範圍（這只有在啟用啟用 ADE 的虛擬機器透過入口網站複寫時才需要） | AzureKeyVault
 允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure 自動化控制器的範圍（只有針對透過入口網站啟用複寫專案的行動代理程式自動升級時才需要） | GuestAndHybridManagement
@@ -191,7 +190,7 @@ Site Recovery 會依照下列方式建立快照集：
 
 您起始容錯移轉時，系統會在目標資源群組、目標虛擬網路，目標子網路和目標可用性設定組中建立 VM。 在容錯移轉時，您可以使用任何復原點。
 
-![容錯移轉程序](./media/concepts-azure-to-azure-architecture/failover.png)
+![容錯移轉程序](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>後續步驟
 

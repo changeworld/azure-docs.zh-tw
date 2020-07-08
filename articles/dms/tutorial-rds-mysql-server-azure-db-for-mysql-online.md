@@ -11,13 +11,12 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: c34de48d0184057f42d1b779abee56e1fa9ac169
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/09/2020
+ms.openlocfilehash: 8cfe8d1a87b8b52c21927696101704bd01b7641a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255155"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609245"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>教學課程：使用 DMS 將 RDS MySQL 遷移至適用於 MySQL 的 Azure 資料庫 online
 
@@ -67,6 +66,7 @@ ms.locfileid: "78255155"
 
 1. 若要建立新的參數群組，請遵循 AWS 在 [MySQL 資料庫記錄檔](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.Concepts.MySQL.html)一文中提供的指示 (位於**二進位記錄格式**一節)。
 2. 使用下列組態建立新的參數群組：
+    * log_bin = 開啟
     * binlog_format = row
     * binlog_checksum = NONE
 3. 儲存新的參數群組。
@@ -139,11 +139,11 @@ ms.locfileid: "78255155"
 
    ![顯示入口網站訂用帳戶](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-select-subscription1.png)
 
-2. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的訂用帳戶，然後選取 [資源提供者]****。
+2. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的訂用帳戶，然後選取 [資源提供者]。
 
     ![顯示資源提供者](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-select-resource-provider.png)
 
-3. 搜尋 [遷移]，然後在 [ **microsoft.datamigration**] 的右邊，選取 [**註冊**]。
+3. 搜尋移轉，然後在 [Microsoft.DataMigration] 的右邊，選取 [註冊]。
 
     ![註冊資源提供者](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-register-resource-provider.png)
 
@@ -197,7 +197,7 @@ ms.locfileid: "78255155"
     > [!NOTE]
     > 或者，您可以選擇 [僅建立專案]**** 以立即建立移轉專案，並於後續再執行移轉。
 
-6. 選取 [儲存]  。
+6. 選取 [儲存]。
 
 7. 選取 [建立及執行活動]****，以建立專案並執行移轉活動。
 

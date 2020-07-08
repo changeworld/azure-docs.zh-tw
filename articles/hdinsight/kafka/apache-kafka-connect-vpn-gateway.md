@@ -6,14 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, tracking-python
 ms.date: 03/04/2020
-ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d8bf80cad86f45c24a475799a840b861c23fc28a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272119"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610911"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>透過 Azure 虛擬網路連線到 HDInsight 上的 Apache Kafka
 
@@ -242,23 +241,23 @@ HDInsight 不允許透過公用網際網路直接連線至 Kafka。 Kafka 用戶
 
 Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶端。 這個設定不會使用 VPN 軟體用戶端，因為它無法為虛擬網路中的實體使用名稱解析。 針對此設定，使用下列步驟來設定 Kafka 以公告 IP 位址而不是網域名稱：
 
-1. 使用網頁瀏覽器，移至 `https://CLUSTERNAME.azurehdinsight.net`。 以`CLUSTERNAME` Kafka on HDInsight 叢集的名稱取代。
+1. 使用網頁瀏覽器，移至 `https://CLUSTERNAME.azurehdinsight.net`。 `CLUSTERNAME`以 Kafka On HDInsight 叢集的名稱取代。
 
     出現提示時，請使用叢集的 HTTPS 使用者名稱和密碼。 此時會顯示叢集的 Ambari Web UI。
 
-2. 若要檢視 Kafka 上的資訊，請從左邊的清單選取 [Kafka]____。
+2. 若要檢視 Kafka 上的資訊，請從左邊的清單選取 [Kafka]。
 
     ![反白顯示 Kafka 的服務清單](./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png)
 
-3. 若要檢視 Kafka 組態，請從正上方選取 [Configs (設定)]____。
+3. 若要檢視 Kafka 組態，請從正上方選取 [Configs (設定)]。
 
-    ![Apache Ambari services 設定](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    ![Apache Ambari 服務設定](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. 若要找出 __kafka-env__ 組態，請在右上角的 [Filter (篩選)]____ 欄位中輸入 `kafka-env`。
+4. 若要找出 __kafka-env__ 組態，請在右上角的 [Filter (篩選)] 欄位中輸入 `kafka-env`。
 
     ![Kafka 組態，找出 kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
-5. 若要設定 Kafka 公告 IP 位址，請在 [kafka-env-template]____ 欄位的底部加入下列文字︰
+5. 若要設定 Kafka 公告 IP 位址，請在 [kafka-env-template] 欄位的底部加入下列文字︰
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -268,23 +267,23 @@ Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶�
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. 若要設定 Kafka 接聽的介面，請在右上角的 [Filter (篩選)]____ 欄位中輸入 `listeners`。
+6. 若要設定 Kafka 接聽的介面，請在右上角的 [Filter (篩選)] 欄位中輸入 `listeners`。
 
-7. 若要設定 Kafka 在所有網路介面上接聽，請將 [listeners (接聽程式)]____ 欄位的值變更為 `PLAINTEXT://0.0.0.0:9092`。
+7. 若要設定 Kafka 在所有網路介面上接聽，請將 [listeners (接聽程式)] 欄位的值變更為 `PLAINTEXT://0.0.0.0:9092`。
 
-8. 若要儲存組態變更，請使用 [Save (儲存)]____ 按鈕。 輸入描述變更的文字訊息。 儲存變更後，請選取 [OK (確定)]____。
+8. 若要儲存組態變更，請使用 [Save (儲存)] 按鈕。 輸入描述變更的文字訊息。 儲存變更後，請選取 [OK (確定)]。
 
     ![Apache Ambari 儲存設定](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
-9. 若要避免重新啟動 Kafka 時發生錯誤，請使用 [Service Actions (服務動作)]____ 按鈕，然後選取 [Turn On Maintenance Mode (開啟維護模式)]____。 選取 [OK (確定)] 以完成此作業。
+9. 若要避免重新啟動 Kafka 時發生錯誤，請使用 [Service Actions (服務動作)] 按鈕，然後選取 [Turn On Maintenance Mode (開啟維護模式)]。 選取 [OK (確定)] 以完成此作業。
 
     ![服務動作，反白顯示開啟維護](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
 
-10. 若要重新啟動 Kafka，請使用 [Restart (重新啟動)]____ 按鈕，然後選取 [Restart All Affected (重新啟動所有受影響項目)]____。 確認重新啟動，然後在作業完成之後使用 [OK (確定)]____ 按鈕。
+10. 若要重新啟動 Kafka，請使用 [Restart (重新啟動)] 按鈕，然後選取 [Restart All Affected (重新啟動所有受影響項目)]。 確認重新啟動，然後在作業完成之後使用 [OK (確定)] 按鈕。
 
     ![重新啟動按鈕，反白顯示重新啟動所有受影響項目](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
-11. 若要停用維護模式，請使用 [Service Actions (服務動作)]____ 按鈕，然後選取 [Turn Off Maintenance Mode (關閉維護模式)]____。 選取 **[確定]** 以完成此操作。
+11. 若要停用維護模式，請使用 [Service Actions (服務動作)] 按鈕，然後選取 [Turn Off Maintenance Mode (關閉維護模式)]。 選取 [OK (確定)] 以完成此作業。
 
 ### <a name="connect-to-the-vpn-gateway"></a>連線到 VPN 閘道
 

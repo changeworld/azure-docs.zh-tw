@@ -7,16 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74069636"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609160"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight 支援高可用性服務
 
  為了為您的分析元件提供最佳的可用性層級，HDInsight 是以獨特的架構來開發，以確保重要服務的高可用性（HA）。 此架構的某些元件是由 Microsoft 所開發，以提供自動容錯移轉。 其他元件則是部署來支援特定服務的標準 Apache 元件。 本文說明 HDInsight 中 HA 服務模型的架構、HDInsight 如何支援 HA 服務的容錯移轉，以及從其他服務中斷中復原的最佳作法。
+ 
+> [!NOTE]
+> 偏差-免費通訊
+>
+> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對_一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+>
+
 
 ## <a name="high-availability-infrastructure"></a>高可用性基礎結構
 
@@ -48,7 +54,7 @@ HDInsight 提供自訂的基礎結構，以確保四個主要服務具有自動�
 
 Microsoft 會在 HDInsight 叢集的下表中提供這四種 Apache 服務的支援。 為了與 Apache 中元件所支援的高可用性服務區別，它們稱為「 *HDINSIGHT HA 服務*」。
 
-| Service | 叢集節點 | 叢集類型 | 目的 |
+| 服務 | 叢集節點 | 叢集類型 | 目的 |
 |---|---|---|---|
 | Apache Ambari 伺服器| 現用前端節點 | 全部 | 監視及管理叢集。|
 | 適用于 Apache YARN 的應用程式時間軸伺服器 | 現用前端節點 | 除了 Kafka 以外的所有 | 維護有關在叢集上執行之 YARN 作業的調試資訊。|

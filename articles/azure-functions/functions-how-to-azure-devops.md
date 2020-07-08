@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 5e2fc8fb06248e2cdad9067c56647da6d9626b50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 0e47078e9f7620e72524ccf91e942d4e15a6b5bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559111"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 的持續傳遞
 
@@ -25,7 +25,7 @@ ms.locfileid: "78255762"
 
 若要建立以 YAML 為基礎的管線，請先建立您的應用程式，然後再部署應用程式。
 
-### <a name="build-your-app"></a>建置您的應用程式
+### <a name="build-your-app"></a>建置應用程式
 
 在 Azure Pipelines 中建立應用程式的方式，取決於您應用程式的程式設計語言。 每種語言都有建立部署成品的特定組建步驟。 部署成品是用來在 Azure 中部署函數應用程式。
 
@@ -215,7 +215,7 @@ steps:
 
 Azure DevOps 中的範本是預先定義的工作群組，可建立或部署應用程式。
 
-### <a name="build-your-app"></a>建置您的應用程式
+### <a name="build-your-app"></a>建置應用程式
 
 在 Azure Pipelines 中建立應用程式的方式，取決於您應用程式的程式設計語言。 每種語言都有建立部署成品的特定組建步驟。 部署成品用來更新 Azure 中的函數應用程式。
 
@@ -247,7 +247,7 @@ Azure DevOps 中的範本是預先定義的工作群組，可建立或部署應�
 
 ## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>使用 Azure CLI 建立組建管線
 
-若要在 Azure 中建立組建管線，請`az functionapp devops-pipeline create`使用[命令](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)。 建立組建管線以建立和發行您的存放庫中所做的任何程式碼變更。 命令會產生新的 YAML 檔案，以定義組建和發行管線，然後將其認可至您的存放庫。 此命令的必要條件取決於您的程式碼位置。
+若要在 Azure 中建立組建管線，請使用 `az functionapp devops-pipeline create` [命令](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)。 建立組建管線以建立和發行您的存放庫中所做的任何程式碼變更。 命令會產生新的 YAML 檔案，以定義組建和發行管線，然後將其認可至您的存放庫。 此命令的必要條件取決於您的程式碼位置。
 
 - 如果您的程式碼位於 GitHub：
 

@@ -2,17 +2,16 @@
 title: 使用 Azure 事件方格發佈事件網域的事件
 description: 顯示如何使用事件網域管理 Azure 事件方格中的大量主題集合，並將事件發佈到這些主題中。
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
-ms.author: babanisa
+ms.author: femila
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.openlocfilehash: 10a0b138c702d4e4d09608c42959c68e97790f81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72786546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560979"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件網域管理主題並發佈事件
 

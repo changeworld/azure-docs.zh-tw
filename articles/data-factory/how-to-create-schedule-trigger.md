@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: a0a01dad5ae86cf20d57ade845326838f8fd686a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 360d01d01c163e494340c2da3182192dc15612a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641596"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560806"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>建立依排程執行管線的觸發程序
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,11 +66,11 @@ ms.locfileid: "81641596"
 
     ![發佈按鈕](./media/how-to-create-schedule-trigger/publish-2.png)
 
-1. 切換至左側的 [**管線執行**] 索引標籤，**然後選取 [** 重新整理] 來更新清單。 您會看到已排程的觸發程式所觸發的管線執行。 請留意 [觸發方式]**** 資料行中的值。 如果您使用 [**立即觸發**] 選項，您會在清單中看到手動觸發程式執行。 
+1. 切換至左側的 [**管線執行**] 索引標籤，**然後選取 [** 重新整理] 來更新清單。 您會看到已排程的觸發程式所觸發的管線執行。 請注意 [**觸發者**] 資料行中的值。 如果您使用 [**立即觸發**] 選項，您會在清單中看到手動觸發程式執行。 
 
     ![監視已觸發的執行](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
 
-1. 切換至 [觸發程序執行]**** 檢視。 
+1. 切換至 [**觸發程式執行**] 視圖。 
 
     ![監視觸發程序執行](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -319,14 +319,14 @@ ms.locfileid: "81641596"
 ### <a name="schema-overview"></a>結構描述概觀
 下表提供與觸發程序之週期和排程相關的主要結構描述元素概觀：
 
-| JSON 屬性 | 描述 |
+| JSON 屬性 | Description |
 |:--- |:--- |
 | **時間** | 日期時間值。 在簡易排程中，**startTime** 屬性的值會套用至第一個發生項目。 在複雜的排程中，觸發程序會在到了指定的 **startTime** 值才啟動。 |
 | **endTime** | 觸發程序的結束日期和時間。 觸發程序在指定的結束日期和時間之後便不再執行。 此屬性的值不可以是過去的時間。 這是選用屬性。 |
 | **時區** | 時區。 目前僅支援 UTC 時區。 |
 | **定期** | 指定觸發程序之週期規則的 recurrence 物件。 recurrence 物件支援 **frequency**、**interval**、**endTime**、**count** 及 **schedule** 元素。 定義 recurrence 物件時，必須一併定義 **frequency** 元素。 其他 recurrence 物件元素則為選用元素。 |
 | **frequency** | 觸發程序重複執行時的頻率單位。 支援的值包括 "minute"、"hour"、"day"、"week" 及 "month"。 |
-| **interval** | 代表 **frequency** 值之間隔的整數值，用來決定觸發程序執行的頻率。 例如，如果 **interval** 為 3，而 **frequency** 為 "week"，觸發程序就會每隔 3 週重複執行一次。 |
+| **期間** | 代表 **frequency** 值之間隔的整數值，用來決定觸發程序執行的頻率。 例如，如果 **interval** 為 3，而 **frequency** 為 "week"，觸發程序就會每隔 3 週重複執行一次。 |
 | **任務** | 觸發程序的週期排程。 具有指定之 **frequency** 值的觸發程序會根據週期排程來改變其週期。 **schedule** 屬性會根據分鐘、小時、星期幾、月日及週數來修改週期。
 
 
@@ -334,11 +334,11 @@ ms.locfileid: "81641596"
 
 | JSON 屬性 | 類型 | 必要 | 預設值 | 有效值 | 範例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **時間** | String | 是 | 無 | ISO 8601 日期時間 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **定期** | Object | 是 | 無 | Recurrence 物件 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | 數字 | 否 | 1 | 1 到 1,000 | `"interval":10` |
-| **endTime** | String | 是 | 無 | 代表未來時間的日期時間值。 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **任務** | Object | 否 | 無 | Schedule 物件 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **時間** | String | Yes | None | ISO 8601 日期時間 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **定期** | Object | 是 | None | Recurrence 物件 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **期間** | Number | No | 1 | 1 到 1,000 | `"interval":10` |
+| **endTime** | String | Yes | None | 代表未來時間的日期時間值。 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **任務** | Object | 否 | None | Schedule 物件 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime 屬性
 下表說明 **startTime** 屬性如何控制觸發程序執行：
@@ -366,7 +366,7 @@ ms.locfileid: "81641596"
 下表詳細說明 **schedule** 元素：
 
 
-| JSON 元素 | 描述 | 有效值 |
+| JSON 元素 | Description | 有效值 |
 |:--- |:--- |:--- |
 | **細節** | 一小時內觸發程序執行的分鐘數。 | <ul><li>整數</li><li>一連串整數</li></ul>
 | **多少** | 一天內觸發程序執行的小時數。 | <ul><li>整數</li><li>一連串整數</li></ul> |

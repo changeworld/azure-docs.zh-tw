@@ -3,16 +3,15 @@ title: 轉換 standard 和 premium SSD 之間的受控磁片儲存體
 description: 如何使用 Azure CLI，將 Azure 受控磁片儲存體從標準轉換至高階或高階至標準版。
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: cd9bb92b3ed86c3a57b5fc70411a4593335acedb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 51ebecf784b7a3ec38f84703a74e96d277afa70c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75431496"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658203"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>將 Azure 受控磁片儲存體從標準轉換至 Premium 或 Premium 至 Standard
 

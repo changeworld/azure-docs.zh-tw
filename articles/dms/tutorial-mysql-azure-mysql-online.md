@@ -12,12 +12,11 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 7c8087a01bb71657e816be89b6a562dd4783b271
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e9fc2913a526e01ea5279c476e3deab779db88c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609228"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教學課程：使用 DMS 在線上將 MySQL 移轉至適用於 MySQL 的 Azure 資料庫
 
@@ -38,7 +37,14 @@ ms.locfileid: "80240748"
 > [!IMPORTANT]
 > 為了獲得最佳的移轉體驗，Microsoft 建議在目標資料庫所在的同一個 Azure 區域中，建立 Azure 資料庫移轉服務的執行個體。 跨區域或地理位置移動資料可能使移轉程序變慢，並產生錯誤。
 
-## <a name="prerequisites"></a>先決條件
+> [!NOTE]
+> 偏差-免費通訊
+>
+> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對_一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+>
+
+
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 
@@ -71,7 +77,7 @@ ms.locfileid: "80240748"
 * 使用下列組態，在來源資料庫的 my.ini (Windows) 或 my.cnf (Unix) 檔案中啟用二進位記錄：
 
   * **server_id** = 1 或更大 (僅與 MySQL 5.6 有關)
-  * **log-bin** =\<path> (relevant only for MySQL 5.6)    例如：log-bin = E:\MySQL_logs\BinLog
+  * **記錄檔-bin** = \<path>（僅適用于 MySQL 5.6）   例如： log-bin = E:\ MySQL_logs \BinLog
   * **binlog_format** = row
   * **Expire_logs_days** = 5 (建議不要使用零；僅與 MySQL 5.6 有關)
   * **Binlog_row_image** = full (僅與 MySQL 5.6 有關)
@@ -150,11 +156,11 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
    ![顯示入口網站訂用帳戶](media/tutorial-mysql-to-azure-mysql-online/portal-select-subscriptions.png)
 
-2. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的訂用帳戶，然後選取 [資源提供者]****。
+2. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的訂用帳戶，然後選取 [資源提供者]。
 
     ![顯示資源提供者](media/tutorial-mysql-to-azure-mysql-online/portal-select-resource-provider.png)
 
-3. 搜尋 [遷移]，然後在 [ **microsoft.datamigration**] 的右邊，選取 [**註冊**]。
+3. 搜尋移轉，然後在 [Microsoft.DataMigration] 的右邊，選取 [註冊]。
 
     ![註冊資源提供者](media/tutorial-mysql-to-azure-mysql-online/portal-register-resource-provider.png)
 

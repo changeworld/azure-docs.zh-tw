@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 7945b3b0aeba7f5135665f4413d304eb225ac749
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77210460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84604689"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>範例：使用 Python 建立自訂技能
 
@@ -21,7 +21,7 @@ ms.locfileid: "77210460"
 
 自訂技能的設計很簡單（它會串連兩個字串），因此您可以專注于用於 Python 中自訂技能開發的工具和技術。 當您成功完成簡單的技能之後，您可以使用更複雜的案例來進行分支。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 + 請參閱[自訂技能介面](cognitive-search-custom-skill-interface.md)，以取得自訂技能應實行的輸入/輸出介面簡介。
 
@@ -29,9 +29,9 @@ ms.locfileid: "77210460"
 
   + [Python 3.75](https://www.python.org/downloads/release/python-375/)
   + [Visual Studio Code](https://code.visualstudio.com/)
-  + [適用于 Visual Studio Code 的 Python 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+  + [適用於 Visual Studio Code 的 Python 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-python.python) \(英文\)
   + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
-  + [適用於 Visual Studio Code 的 Azure Functions 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+  + [Visual Studio Code 的 Azure Functions 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
 ## <a name="create-an-azure-function"></a>建立 Azure 函式
 
@@ -57,7 +57,7 @@ Visual Studio Code 中的 Azure Functions 專案範本會建立可發佈至 Azur
 
 Visual Studio Code 會在新的工作區中建立函式應用程式專案。 此專案包含 [host.json](../azure-functions/functions-host-json.md) 和 [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) 組態檔，以及任何特定語言的專案檔。 
 
-也會在函式應用程式專案的**Concatenator**資料夾中建立新的 HTTP 觸發函式。 裡面會有一個名為 init__ "\_\_.py" 的檔案，其中包含下列內容：
+也會在函式應用程式專案的**Concatenator**資料夾中建立新的 HTTP 觸發函式。 裡面會有一個名為 \_ \_ init__ ".py" 的檔案，其中包含下列內容：
 
 ```py
 import logging
@@ -231,7 +231,7 @@ POST [Function URL you copied above]
 
 ## <a name="connect-to-your-pipeline"></a>連線到您的管線
 
-有了新的自訂技能之後，就可以將它加入您的技能集。 下列範例示範如何呼叫技能，將檔的標題和作者串連到我們呼叫 merged_title_author 的單一欄位中。 將`[your-function-url-here]`取代為新 Azure 函式的 URL。
+有了新的自訂技能之後，就可以將它加入您的技能集。 下列範例示範如何呼叫技能，將檔的標題和作者串連到我們呼叫 merged_title_author 的單一欄位中。 將取代 `[your-function-url-here]` 為新 Azure 函式的 URL。
 
 ```json
 {

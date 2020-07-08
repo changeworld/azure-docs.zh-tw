@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: a386c7d44cf5ba7eda895006cda7ce1fa9b798ac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663706"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610214"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>複製活動中的資料一致性驗證 (驗證)
 
@@ -93,9 +92,8 @@ path | 記錄檔的路徑。 | 指定您想要儲存記錄檔的路徑。 如不
 
 >[!NOTE]
 >- 暫存複製情節中不支援資料一致性。 
->- 將二進位檔案從任何儲存體存放區複製到 Azure Blob 儲存體或 Azure Data Lake Storage Gen2 時，複製活動會執行檔案大小和 MD5 總和檢查碼驗證，以確保來源與目的地存放區之間的資料一致性。 
->- 將二進位檔案從任何儲存體存放區複製到 Azure Blob 儲存體或 Azure Data Lake Storage Gen2 以外的任何儲存體存放區時，複製活動會執行檔案大小驗證，以確保來源與目的地存放區之間的資料一致性。
-
+>- 將檔案從或複製到 Azure Blob 或 Azure Data Lake Storage Gen2 時，ADF 會利用[Azure BLOB API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy)和[Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)來封鎖層級的 MD5 總和檢查碼驗證。 如果 ContentMD5 檔案存在於 Azure Blob 或 Azure Data Lake Storage Gen2 做為資料來源，ADF 也會在讀取檔案後進行檔案層級的 MD5 總和檢查碼驗證。 將檔案複製到 Azure Blob 或 Azure Data Lake Storage Gen2 做為資料目的地之後，ADF 會將 ContentMD5 寫入 Azure Blob 或 Azure Data Lake Storage Gen2，以便下游應用程式進一步取用以進行資料一致性驗證。
+>- ADF 會在任何存放裝置存放區之間複製檔案時進行檔案大小驗證。
 
 ## <a name="monitoring"></a>監視
 

@@ -5,18 +5,18 @@ description: 瞭解如何開始、設定狀態、標記和組織您的機器學�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: d6dc2eeb572eeed17281677945c93067bbadee94
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: c6d2e05104e2801129544b1cc91d3d7a00161f86
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628566"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560160"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中啟動、監視和取消定型執行
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "82628566"
 * 建立子執行。
 * 標記和尋找執行。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您將需要下列專案：
 
@@ -63,7 +63,7 @@ ws = Workspace.from_config()
 exp = Experiment(workspace=ws, name="explore-runs")
 ```
 
-使用[`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-)方法來啟動執行和其記錄處理常式。
+使用方法來啟動執行和其記錄處理常式 [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) 。
 
 ```python
 notebook_run = exp.start_logging()
@@ -82,30 +82,30 @@ notebook_run.log(name="message", value="Hello from run!")
     
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-1. 將工作區設定附加至包含定型腳本的資料夾。 將`myworkspace`取代為您的 Azure Machine Learning 工作區。 將`myresourcegroup`取代為包含您工作區的 Azure 資源群組：
+1. 將工作區設定附加至包含定型腳本的資料夾。 `myworkspace`將取代為您的 Azure Machine Learning 工作區。 `myresourcegroup`將取代為包含您工作區的 Azure 資源群組：
 
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    此命令會建立`.azureml`一個子目錄，其中包含範例 runconfig 和 conda 環境檔案。 它也包含`config.json`用來與您的 Azure Machine Learning 工作區通訊的檔案。
+    此命令會建立一個 `.azureml` 子目錄，其中包含範例 runconfig 和 conda 環境檔案。 它也包含用來與 Azure Machine Learning 工作區通訊的 `config.json` 檔案。
 
-    如需詳細資訊，請參閱[az ml folder attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach)。
+    如需詳細資訊，請參閱 [az ml folder attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach)。
 
-2. 若要開始執行，請使用下列命令。 使用此命令時，請指定 runconfig 檔案的名稱（如果您要查看\*檔案系統，則為 runconfig），並針對-c 參數。
+2. 若要開始執行，請使用下列命令。 使用此命令時，請對應 -c 參數指定 runconfig 檔案的名稱 (如果您是在檔案系統中查看，則為 \*.runconfig 前面的文字)。
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
     > [!TIP]
-    > `az ml folder attach`命令已建立一個`.azureml`子目錄，其中包含兩個範例 runconfig 檔案。
+    > `az ml folder attach`命令已建立一個 `.azureml` 子目錄，其中包含兩個範例 runconfig 檔案。
     >
-    > 如果您有以程式設計方式建立回合設定物件的 Python 腳本，您可以使用[RunConfig （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-)將它儲存為 RunConfig 檔案。
+    > 如果您有使用程式設計方式建立執行設定物件的 Python 指令碼，則可以使用 [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) 以將其儲存為 runconfig 檔案。
     >
-    > 如需更多範例 runconfig 檔案[https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/)，請參閱。
+    > 如需更多範例 runconfig 檔案，請參閱 [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) 。
 
-    如需詳細資訊，請參閱[az ml 執行提交-腳本](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
+    如需詳細資訊，請參閱 [az ml run submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
 
 ### <a name="using-azure-machine-learning-studio"></a>使用 Azure Machine Learning studio
 
@@ -121,26 +121,26 @@ notebook_run.log(name="message", value="Hello from run!")
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
-使用[`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--)方法取得執行的狀態。
+使用方法取得執行的狀態 [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) 。
 
 ```python
 print(notebook_run.get_status())
 ```
 
-若要取得回合識別碼、執行時間，以及有關執行的其他詳細資料，請[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--)使用方法。
+若要取得回合識別碼、執行時間，以及有關執行的其他詳細資料，請使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) 方法。
 
 ```python
 print(notebook_run.get_details())
 ```
 
-當您的[`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-)回合成功完成時，請使用方法將其標示為已完成。
+當您的回合成功完成時，請使用 [`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) 方法將其標示為已完成。
 
 ```python
 notebook_run.complete()
 print(notebook_run.get_status())
 ```
 
-如果您使用 Python 的`with...as`設計模式，執行會在執行超出範圍時，自動將其本身標示為已完成。 您不需要手動將執行標示為已完成。
+如果您使用 Python 的 `with...as` 設計模式，執行會在執行超出範圍時，自動將其本身標示為已完成。 您不需要手動將執行標示為已完成。
 
 ```python
 with exp.start_logging() as notebook_run:
@@ -152,7 +152,7 @@ print(notebook_run.get_status())
 
 ### <a name="using-the-cli"></a>使用 CLI
 
-1. 若要查看實驗的執行清單，請使用下列命令。 將`experiment`取代為您的實驗名稱：
+1. 若要查看實驗的執行清單，請使用下列命令。 將取代 `experiment` 為您的實驗名稱：
 
     ```azurecli-interactive
     az ml run list --experiment-name experiment
@@ -160,9 +160,9 @@ print(notebook_run.get_status())
 
     此命令會傳回 JSON 檔，其中列出此實驗執行的相關資訊。
 
-    如需詳細資訊，請參閱[az ml 實驗清單](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list)。
+    如需詳細資訊，請參閱 [az ml experiment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list)。
 
-2. 若要查看特定執行的資訊，請使用下列命令。 以`runid`執行的識別碼取代：
+2. 若要查看特定執行的資訊，請使用下列命令。 `runid`以執行的識別碼取代：
 
     ```azurecli-interactive
     az ml run show -r runid
@@ -194,7 +194,7 @@ print(notebook_run.get_status())
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
-若要使用 SDK 取消執行，請使用[`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--)方法：
+若要使用 SDK 取消執行，請使用 [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) 方法：
 
 ```python
 run_config = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
@@ -205,7 +205,7 @@ local_script_run.cancel()
 print(local_script_run.get_status())
 ```
 
-如果您的執行已完成，但它包含錯誤（例如，使用了不正確的定型腳本），您可以使用[`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-)方法將其標示為失敗。
+如果您的執行已完成，但它包含錯誤（例如，使用了不正確的定型腳本），您可以使用 [`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-) 方法將其標示為失敗。
 
 ```python
 local_script_run = exp.submit(run_config)
@@ -215,7 +215,7 @@ print(local_script_run.get_status())
 
 ### <a name="using-the-cli"></a>使用 CLI
 
-若要使用 CLI 取消執行，請使用下列命令。 取代`runid`為執行的識別碼
+若要使用 CLI 取消執行，請使用下列命令。 取代 `runid` 為執行的識別碼
 
 ```azurecli-interactive
 az ml run cancel -r runid -w workspace_name -e experiment_name
@@ -241,7 +241,7 @@ az ml run cancel -r runid -w workspace_name -e experiment_name
 > [!NOTE]
 > 只能使用 SDK 來建立子系執行。
 
-此程式碼範例會`hello_with_children.py`使用腳本，從已提交的執行中，使用[`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-)方法來建立五個子回合的批次：
+此程式碼範例會使用 `hello_with_children.py` 腳本，從已提交的執行中，使用方法來建立五個子回合的批次 [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) ：
 
 ```python
 !more hello_with_children.py
@@ -260,16 +260,16 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > 當它們移出範圍時，子回合會自動標示為已完成。
 
-若要有效率地建立多個子執行， [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-)請使用方法。 因為每個建立都會導致網路呼叫，所以建立一批回合比逐一建立執行更有效率。
+若要有效率地建立多個子執行，請使用 [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) 方法。 因為每個建立都會導致網路呼叫，所以建立一批回合比逐一建立執行更有效率。
 
 ### <a name="submit-child-runs"></a>提交子回合
 
 子系執行也可以從父執行提交。 這可讓您建立父系和子系執行的階層。 
 
-您可能想要讓子系執行使用與父執行不同的回合設定。 例如，您可以針對父系使用較不強大的 CPU 型設定，同時針對您的子系使用 GPU 型設定。 另一個常見的需求是傳遞每個子系不同的引數和資料。 若要自訂子回合，請`RunConfiguration`將物件傳遞至子`ScriptRunConfig`系的函式。 這個程式碼範例是父`ScriptRunConfig`物件腳本的一部分：
+您可能想要讓子系執行使用與父執行不同的回合設定。 例如，您可以針對父系使用較不強大的 CPU 型設定，同時針對您的子系使用 GPU 型設定。 另一個常見的需求是傳遞每個子系不同的引數和資料。 若要自訂子回合，請將 `RunConfiguration` 物件傳遞至子系的函式 `ScriptRunConfig` 。 這個程式碼範例是父 `ScriptRunConfig` 物件腳本的一部分：
 
-- 建立`RunConfiguration`正在抓取已命名計算資源的`"gpu-compute"`
-- 逐一查看要傳遞至子`ScriptRunConfig`物件的不同引數值
+- 建立 `RunConfiguration` 正在抓取已命名計算資源的`"gpu-compute"`
+- 逐一查看要傳遞至子物件的不同引數值 `ScriptRunConfig`
 - 使用自訂計算資源和引數，建立並提交新的子系執行
 - 封鎖直到所有子系執行完成
 
@@ -298,7 +298,7 @@ for child in run.get_children():
     child.wait_for_completion()
 ```
 
-若要有效率地建立具有相同設定、引數和輸入的許多子回合[`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) ，請使用方法。 因為每個建立都會導致網路呼叫，所以建立一批回合比逐一建立執行更有效率。
+若要有效率地建立具有相同設定、引數和輸入的許多子回合，請使用 [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) 方法。 因為每個建立都會導致網路呼叫，所以建立一批回合比逐一建立執行更有效率。
 
 在子執行中，您可以查看父代執行識別碼：
 
@@ -310,7 +310,7 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>查詢子執行
 
-若要查詢特定父系的子執行，請使用[`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-)方法。 ``recursive = True``引數可讓您查詢子系和孫系的嵌套樹狀結構。
+若要查詢特定父系的子執行，請使用 [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) 方法。 ``recursive = True``引數可讓您查詢子系和孫系的嵌套樹狀結構。
 
 ```python
 print(parent_run.get_children())
@@ -324,14 +324,14 @@ print(parent_run.get_children())
 
 #### <a name="using-the-sdk"></a>使用 SDK
 
-若要將可搜尋的中繼資料加入至[`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-)執行中，請使用方法。 例如，下列程式碼會將`"author"`屬性新增至執行：
+若要將可搜尋的中繼資料加入至執行中，請使用 [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) 方法。 例如，下列程式碼會將 `"author"` 屬性新增至執行：
 
 ```Python
 local_script_run.add_properties({"author":"azureml-user"})
 print(local_script_run.get_properties())
 ```
 
-屬性是不可變的，因此它們會建立永久記錄以供審核之用。 下列程式碼範例會產生錯誤，因為我們已經在前面`"azureml-user"`的程式`"author"`代碼中新增做為屬性值：
+屬性是不可變的，因此它們會建立永久記錄以供審核之用。 下列程式碼範例會產生錯誤，因為我們已經 `"azureml-user"` 在前面的程式 `"author"` 代碼中新增做為屬性值：
 
 ```Python
 try:
@@ -340,7 +340,7 @@ except Exception as e:
     print(e)
 ```
 
-不同于屬性，標記是可變動的。 若要為實驗的取用者新增可搜尋且有意義的[`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-)資訊，請使用方法。
+不同于屬性，標記是可變動的。 若要為實驗的取用者新增可搜尋且有意義的資訊，請使用 [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) 方法。
 
 ```Python
 local_script_run.tag("quality", "great run")
@@ -350,7 +350,7 @@ local_script_run.tag("quality", "fantastic run")
 print(local_script_run.get_tags())
 ```
 
-您也可以加入簡單的字串標記。 當這些標記以索引鍵的形式出現在標記字典中時，它們`None`的值為。
+您也可以加入簡單的字串標記。 當這些標記以索引鍵的形式出現在標記字典中時，它們的值為 `None` 。
 
 ```Python
 local_script_run.tag("worth another look")
@@ -383,7 +383,7 @@ list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"
 
 #### <a name="using-the-cli"></a>使用 CLI
 
-Azure CLI 支援[JMESPath](http://jmespath.org)查詢，可以用來根據屬性和標記篩選執行。 若要搭配 Azure CLI 使用 JMESPath 查詢，請使用`--query`參數來指定它。 下列範例顯示使用屬性和標記的基本查詢：
+Azure CLI 支援[JMESPath](http://jmespath.org)查詢，可以用來根據屬性和標記篩選執行。 若要搭配 Azure CLI 使用 JMESPath 查詢，請使用參數來指定它 `--query` 。 下列範例顯示使用屬性和標記的基本查詢：
 
 ```azurecli-interactive
 # list runs where the author property = 'azureml-user'

@@ -2,13 +2,12 @@
 title: 檢視服務提供者活動
 description: 客戶可以查看已記錄的活動，以查看服務提供者透過 Azure 委派的資源管理所執行的動作。
 ms.date: 01/15/2020
-ms.topic: conceptual
-ms.openlocfilehash: a923a57ecc94ac15af207c2b8dc8998708b708d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 42af2aa7fca5031eb50bd421a5207320858b70cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649631"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636439"
 ---
 # <a name="view-service-provider-activity"></a>檢視服務提供者活動
 
@@ -45,5 +44,5 @@ ms.locfileid: "77649631"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解[Azure 監視器](../../azure-monitor/index.yml)。
+- 深入了解 [Azure 監視器](../../azure-monitor/index.yml)。
 - 瞭解如何在 Azure 入口網站中[查看及管理服務提供者供應](view-manage-service-providers.md)專案。

@@ -7,12 +7,11 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: a7dfc58258c8c7c6e8bbf7567d743abf90d3a7e5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: HT
+ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194904"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609925"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 儲存體中裝載靜態網站
 
@@ -153,13 +152,10 @@ ms.locfileid: "84194904"
 
 將物件從來源目錄上傳至 *$web* 容器。
 
-> [!NOTE]
-> 若使用 Azure Cloud Shell，請確認在指向 `$web` 容器時新增 `\` 逸出字元 (例如：`\$web`)。 若使用 Azure CLI 的本機安裝，則不需要使用逸出字元。
-
 此範例假設您正在從 Azure Cloud Shell 工作階段執行命令。
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
+az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-account-name>
 ```
 
 > [!NOTE] 

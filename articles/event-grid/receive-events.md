@@ -2,18 +2,17 @@
 title: 從 Azure 事件格線接收 HTTP 端點的事件
 description: 描述如何驗證 HTTP 端點，然後從 Azure 事件格線接收和還原序列化事件
 services: event-grid
-author: banisadr
+author: femila
 manager: darosa
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
-ms.author: babanisa
-ms.openlocfilehash: 7c363fd4e55fdd6fe04a099ac833a256bbfd2eb2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.author: femila
+ms.openlocfilehash: dd7535030ea4f6d6769630e463618faab62944a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558462"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>接收 HTTP 端點的事件
 
@@ -22,7 +21,7 @@ ms.locfileid: "83116963"
 > [!NOTE]
 > **強烈**建議您在使用事件格線觸發 Azure Function 時使用[事件格線觸發程序](../azure-functions/functions-bindings-event-grid.md)。 這裡使用的泛型 WebHook 觸發程序是示範。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您需要具有 HTTP 觸發函式的函數應用程式。
 

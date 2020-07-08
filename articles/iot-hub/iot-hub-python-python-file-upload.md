@@ -8,13 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 47fb7c615389e24322450ed1785aa7da9ec50db6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 9a3782c0d5791f20f14aabb53d486fc012518c1f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759702"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608497"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中樞（Python）將檔案從裝置上傳至雲端
 
@@ -26,7 +25,7 @@ ms.locfileid: "81759702"
 
 * 使用 Python 用戶端透過 IoT 中樞上傳檔案。
 
-將[遙測資料從裝置傳送至 IoT 中樞](quickstart-send-telemetry-python.md)快速入門會示範 IoT 中樞的基本裝置到雲端訊息功能。 不過，在某些情況下，您無法輕易地將裝置傳送的資料對應到 IoT 中樞接受且相對較小的裝置到雲端訊息。 當您需要從裝置上傳檔案時，您仍然可以使用安全可靠的 IoT 中樞。
+[將遙測從裝置傳送至 IoT 中樞](quickstart-send-telemetry-python.md)快速入門會示範 IoT 中樞的基本裝置到雲端傳訊功能。 不過，在某些情況下，您無法輕易地將裝置傳送的資料對應到 IoT 中樞接受且相對較小的裝置到雲端訊息。 當您需要從裝置上傳檔案時，您仍然可以使用安全可靠的 IoT 中樞。
 
 在本教學課程結尾，您會執行 Python 主控台應用程式：
 
@@ -34,11 +33,11 @@ ms.locfileid: "81759702"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [iot-hub-include-python-v2-async-installation-notes](../../includes/iot-hub-include-python-v2-async-installation-notes.md)]
 
-* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例使用 MQTT 通訊協定，它會透過埠8883進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -75,7 +74,7 @@ ms.locfileid: "81759702"
     PATH_TO_FILE = r"[Full path to local file]"
     ```
 
-1. 在您的檔案中，將 `[Device Connection String]` 更換為您 IoT 中樞裝置的連接字串。 取代`[Full path to local file]`為您所建立之測試檔案的路徑，或您要上傳之裝置上的任何檔案。
+1. 在您的檔案中，將 `[Device Connection String]` 更換為您 IoT 中樞裝置的連接字串。 取代為您所建立之測試檔案的 `[Full path to local file]` 路徑，或您要上傳之裝置上的任何檔案。
 
 1. 建立函式以將檔案上傳至 blob 儲存體：
 

@@ -2,18 +2,17 @@
 title: Azure Event Grid 安全性與驗證
 description: 說明 Azure Event Grid 與其概念。
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.author: babanisa
-ms.openlocfilehash: 5f8b0a779e6cb70537d126c251e1e065892934a9
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.author: femila
+ms.openlocfilehash: 87d436024dae21b0122bf6b861b8a3ae4299db73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559018"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>授權存取事件方格資源
 Azure Event Grid 讓您能控制給予不同使用者進行各種管理作業的存取層級，這些作業包含列出事件訂閱、建立新訂閱及產生金鑰等等。 事件格線會使用 Azure 的角色型存取控制 (RBAC)。
@@ -182,7 +181,7 @@ Azure Event Grid 讓您能控制給予不同使用者進行各種管理作業的
 
 ### <a name="encryption-at-rest"></a>待用加密
 
-由「事件方格」服務寫入磁片的所有事件或資料都會由 Microsoft 管理的金鑰加密，以確保它會在待用時加密。 此外，事件或資料保留的最長時間為24小時，遵循[事件方格重試原則](delivery-and-retry.md)。 事件方格會在24小時或事件存留時間之後自動刪除所有事件或資料，以較少者為准。
+由事件方格服務寫入磁片的所有事件或資料都會由 Microsoft 管理的金鑰加密，以確保其會在待用時加密。 此外，遵循[事件方格重試原則](delivery-and-retry.md)，事件或資料的保留時間上限為 24 小時。 事件方格會在 24 小時或事件存留時間 (以較短者為準) 之後自動刪除所有事件或資料。
 
 ## <a name="permissions-for-event-subscriptions"></a>事件訂閱的許可權
 如果您使用的事件處理常式不是 WebHook (例如事件中樞或佇列儲存體)，您將需要該資源的寫入存取權。 此權限檢查可防止未經授權的使用者將事件傳送至您的資源。

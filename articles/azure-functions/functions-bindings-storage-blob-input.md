@@ -5,18 +5,18 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 33db9a8d86e02db2076cdb85170d466697930b96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 1dbd3765b691d1ba7b958d765a59f6451f380a2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559080"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體輸入系結
 
 輸入系結可讓您讀取 blob 儲存體資料，做為 Azure 函數的輸入。
 
-如需安裝和設定詳細資料的相關資訊，請參閱[總覽](./functions-bindings-storage-blob.md)。
+如需安裝和設定詳細資料的相關資訊，請參閱[概觀](./functions-bindings-storage-blob.md)。
 
 ## <a name="example"></a>範例
 
@@ -35,7 +35,7 @@ public static void Run(
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -244,7 +244,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
 
 ---
 
-## <a name="attributes-and-annotations"></a>屬性和注釋
+## <a name="attributes-and-annotations"></a>屬性和註釋
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -279,9 +279,9 @@ public static void Run(
 
 您可以使用 `StorageAccount` 屬性來指定類別、方法或參數層級的儲存體帳戶。 如需詳細資訊，請參閱[觸發程式-屬性和注釋](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations)。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-C # 腳本不支援屬性。
+C# 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -289,42 +289,42 @@ JavaScript 不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支援屬性。
+Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobInput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將`dataType`設定`binary`為。 如需詳細資訊，請參閱[輸入範例](#example)。
+`@BlobInput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱[輸入範例](#example)。
 
 ---
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
-下表說明您在*函數 json*檔案和`Blob`屬性中設定的系結設定屬性。
+下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `Blob` 屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type** | n/a | 必須設為 `blob`。 |
-|**方向** | n/a | 必須設為 `in`。 例外狀況在[使用方式](#usage)一節中會加以說明。 |
+|**direction** | n/a | 必須設為 `in`。 例外狀況在[使用方式](#usage)一節中會加以說明。 |
 |**name** | n/a | 表示函式程式碼中 Blob 的變數名稱。|
 |**path** |**BlobPath** | blob 的路徑。 |
-|**connection** |**建立**| 應用程式設定的名稱，其中包含要用於此系結的[儲存體連接字串](../storage/common/storage-configure-connection-string.md)。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定`connection`為 "MyStorage"，函數執行時間會尋找名為 "AzureWebJobsMyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須為一般用途的儲存體帳戶，不可為[僅限 Blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|**connection** |**[連接]**| 應用程式設定的名稱，其中包含要用於此系結的[儲存體連接字串](../storage/common/storage-configure-connection-string.md)。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "AzureWebJobsMyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須為一般用途的儲存體帳戶，不可為[僅限 Blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 |n/a | **存取** | 指出您是否將讀取或寫入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用來`context.bindings.<NAME>`存取 blob 資料`<NAME>` ，其中會符合*函數. json*中所定義的值。
+使用來存取 blob 資料 `context.bindings.<NAME>` ，其中會 `<NAME>` 符合在*function.js*中定義的值。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -332,7 +332,7 @@ Python 不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobInput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將`dataType`設定`binary`為。 如需詳細資訊，請參閱[輸入範例](#example)。
+`@BlobInput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱[輸入範例](#example)。
 
 ---
 

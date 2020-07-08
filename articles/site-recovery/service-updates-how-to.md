@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 483d2152f3af13c82830528ea73e837fe3788ca4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257819"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629377"
 ---
 # <a name="service-updates-in-site-recovery"></a>Site Recovery 中的服務更新
 
@@ -48,7 +47,7 @@ Site Recovery 會透過電子郵件（如果您已訂閱電子郵件通知），
 
 電子郵件通知的傳送方式如下。
 
-**階段** | **頻率**
+**Time** | **頻率**
 --- | ---
 元件到期前60天 | Bi-每週
 未來53天 | 一週一次
@@ -90,14 +89,13 @@ Site Recovery 會透過電子郵件（如果您已訂閱電子郵件通知），
 - 在啟用複寫過程中。
 - 藉由在保存庫內設定擴充功能更新設定。
 
-如果您想要手動管理更新，請執行下列動作：
+如果您想要手動管理更新，可以選擇下列其中一個選項：
 
-1. 在保存庫 >**已**複寫的專案中，按一下畫面頂端的此通知： 
+1. 當有新的代理程式更新可用時，Site Recovery 會在保存庫中提供通知，指向頁面頂端。 在保存庫 >**已**複寫的專案中，按一下畫面頂端的此通知： 
     
-    **有新的 Site Recovery 複寫代理程式更新可供使用。按一下以安裝->**
+    **有新的 Site Recovery 複寫代理程式更新可供使用。按一下以安裝->** <br/><br/>選取您要套用更新的 Vm，然後按一下 **[確定]**。
 
-4. 選取您要套用更新的 Vm，然後按一下 **[確定]**。
-
+2. 在 [VM 嚴重損壞修復總覽] 頁面上，如果代理程式是因為過期，您會發現「代理程式狀態」欄位會顯示「重大升級」。 按一下該檔案，並遵循後續指示以手動升級虛擬機器。
 
 ## <a name="vmware-vmphysical-server-disaster-recovery-to-azure"></a>VMware VM/實體伺服器嚴重損壞修復至 Azure
 

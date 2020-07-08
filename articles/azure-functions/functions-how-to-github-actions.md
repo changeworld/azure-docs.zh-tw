@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: dedca6912fd9d9e7b6f5089d02de9e4020e4e0ef
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 1a7cc37f297f902fb5de473303f1dc260cbea9ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122321"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559098"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 動作進行持續傳遞
 
@@ -18,7 +18,7 @@ ms.locfileid: "83122321"
 
 在 GitHub 動作中，[工作流程](https://help.github.com/articles/about-github-actions#workflow)是您在 github 存放庫中定義的自動化進程。 此程式會告訴 GitHub 如何在 GitHub 上建立及部署函式應用程式專案。 
 
-工作流程是由存放庫中路徑內的 YAML （. yml）檔案所定義 `/.github/workflows/` 。 此定義包含組成工作流程的各種步驟和參數。 
+工作流程是由您存放庫內 `/.github/workflows/` 路徑中的 YAML (. yml) 檔案所定義的。 此定義包含組成工作流程的各種步驟與參數。 
 
 若為 Azure Functions 工作流程，檔案有三個區段： 
 
@@ -33,16 +33,16 @@ ms.locfileid: "83122321"
 
 ## <a name="create-a-service-principal"></a>建立服務主體
 
-您可以使用[Azure CLI](/cli/azure/)中的[az ad sp create-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 您可以使用 Azure 入口網站中的[Azure Cloud Shell](https://shell.azure.com)或選取 [**試試看**] 按鈕來執行此命令。
+您可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 您可以使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com)，或選取 [試試看] 按鈕來執行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
 ```
 
-在此範例中，將資源中的預留位置取代為您的訂用帳戶識別碼、資源群組和函數應用程式名稱。 輸出是可提供函數應用程式存取權的角色指派認證。 複製這個 JSON 物件，您可以使用它從 GitHub 進行驗證。
+在此範例中，將資源中的預留位置取代為您的訂用帳戶識別碼、資源群組和函數應用程式名稱。 輸出是可提供函數應用程式存取權的角色指派認證。 複製這個 JSON 物件，您可以用它從 GitHub 進行驗證。
 
 > [!IMPORTANT]
-> 授與最小存取權一律是最佳作法。 這就是為什麼上述範例中的範圍僅限於特定的函式應用程式，而非整個資源群組。
+> 授與最小存取權永遠是最佳作法。 這就是為什麼上述範例中的範圍僅限於特定的函式應用程式，而非整個資源群組。
 
 ## <a name="download-the-publishing-profile"></a>下載發行設定檔
 
@@ -54,7 +54,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 1. 儲存並複製發佈設定檔案的內容。
 
-## <a name="configure-the-github-secret"></a>設定 GitHub 秘密
+## <a name="configure-the-github-secret"></a>設定 GitHub 密碼
 
 1. 在[GitHub](https://github.com)中，流覽至您的存放庫，選取 [**設定**] [秘密] [新增  >  **Secrets**  >  **密碼**]。
 
@@ -203,8 +203,8 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 
 |參數 |說明  |
 |---------|---------|
-|**_應用程式名稱_** | 不必函數應用程式的名稱。 |
-|_**位置名稱**_ | 選擇性您想要部署的[部署](functions-deployment-slots.md)位置名稱。 位置必須已在您的函式應用程式中定義。 |
+|**_app-name_** | 不必函數應用程式的名稱。 |
+|_**slot-name**_ | 選擇性您想要部署的[部署](functions-deployment-slots.md)位置名稱。 位置必須已在您的函式應用程式中定義。 |
 
 
 下列範例會使用的第1版 `functions-action` ：

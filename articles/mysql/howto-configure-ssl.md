@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/7/2020
-ms.openlocfilehash: 18004ba474eb354f6723538a29f9eb90b23fbff2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 7286887b10661d291f6c6d2b6c067dd7e1bf43aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925859"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559230"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MySQL 的 Azure 資料庫
 適用於 MySQL 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將適用於 MySQL 的 Azure 資料庫伺服器連線至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。
 
 ## <a name="step-1-obtain-ssl-certificate"></a>步驟 1：取得 SSL 憑證
-下載透過 SSL 與您的適用於 MySQL 的 Azure 資料庫伺服器進行通訊所需的[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)憑證，並將憑證檔案儲存到本機磁片磁碟機（例如，本教學課程使用 c:\ssl）。
+下載透過 SSL 與您的適用於 MySQL 的 Azure 資料庫伺服器進行通訊所需的憑證 [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) ，並將憑證檔案儲存到本機磁片磁碟機（例如，本教學課程使用 c:\ssl）。
 **針對 Microsoft Internet Explorer 和 Microsoft Edge：** 在下載完成後，請將憑證重新命名為 BaltimoreCyberTrustRoot.crt.pem。
 
 ## <a name="step-2-bind-ssl"></a>步驟 2：繫結 SSL

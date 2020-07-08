@@ -7,13 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/28/2020
-ms.openlocfilehash: 9f280aafabd59878ee24a9c3fe809dd027a97284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/09/2020
+ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187846"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84635115"
 ---
 # <a name="what-are-mapping-data-flows"></a>什麼是對應資料流程？
 
@@ -22,6 +21,8 @@ ms.locfileid: "82187846"
 對應資料流程會以視覺化方式設計 Azure Data Factory 中的資料轉換。 資料流程可讓資料工程師開發圖形化資料轉換邏輯，而不需要撰寫程式碼。 產生的資料流程會當做使用向外延展 Apache Spark 叢集 Azure Data Factory 管線內的活動來執行。 資料流程活動可以透過現有的 Data Factory 排程、控制、流程和監視功能來參與。
 
 對應資料流程可提供完全視覺化的體驗，而不需要撰寫任何程式碼。 您的資料流程會在執行叢集上執行，以進行相應放大的資料處理。 Azure Data Factory 會處理所有的程式碼轉譯、路徑優化，以及資料流程作業的執行。
+
+![架構](media/data-flow/adf-data-flows.png "架構")
 
 ## <a name="getting-started"></a>開始使用
 
@@ -35,13 +36,13 @@ ms.locfileid: "82187846"
 
 資料流程畫布分成三個部分：頂端列、圖形和設定面板。 
 
-![Canvas](media/data-flow/canvas1.png "Canvas")
+![畫布](media/data-flow/canvas1.png "畫布")
 
 ### <a name="graph"></a>圖形
 
 圖形會顯示轉換資料流程。 它會顯示來源資料流入一或多個接收時的歷程。 若要新增來源，請選取 [新增**來源**]。 若要加入新的轉換，請選取現有轉換右下方的加號。
 
-![Canvas](media/data-flow/canvas2.png "Canvas")
+![畫布](media/data-flow/canvas2.png "畫布")
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Azure 整合執行時間資料流程屬性
 
@@ -93,7 +94,7 @@ ms.locfileid: "82187846"
 
 [**優化**] 索引標籤包含用於設定資料分割配置的設定。
 
-![最優化](media/data-flow/optimize1.png "最佳化")
+![最佳化](media/data-flow/optimize1.png "最佳化")
 
 預設設定為 [**使用目前**的資料分割]，這會指示 Azure Data Factory 使用在 Spark 上執行之資料流程的原生資料分割配置。 在大部分的情況下，我們建議這項設定。
 
@@ -123,7 +124,7 @@ Azure Data Factory 會產生資料行的雜湊來產生統一的分割區，讓�
 
 建立運算式，為分割資料行內的值提供固定範圍。 若要避免分割區扭曲，您應該先充分瞭解您的資料，再使用此選項。 您為運算式輸入的值會當做資料分割函數的一部分來使用。 您可以設定實體分割區的數目。
 
-##### <a name="key"></a>Key
+##### <a name="key"></a>答案
 
 如果您對資料的基數有充分的瞭解，則索引鍵分割可能是很好的策略。 索引鍵分割會針對資料行中的每個唯一值建立資料分割。 您無法設定分割區數目，因為此數目是以資料中的唯一值為基礎。
 

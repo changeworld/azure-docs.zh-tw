@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 1ff8c382813654b1dee38a99bf2cc0ca67afbedd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: e94448debe3e846e37dcffa81a6a6a28f0f7d757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76313822"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84561188"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何透過 Python 使用通知中樞
 
@@ -447,7 +447,7 @@ hub.send_template_notification(template_payload)
 
 ## <a name="next-steps"></a>後續步驟
 
-本主題會說明如何針對通知中樞建立 Python REST 用戶端。 從這裡，您可以：
+本主題會說明如何針對通知中樞建立 Python REST 用戶端。 從這裡您可以：
 
 - 下載完整的 [Python REST 包裝函式範例]，其中包含本文章的所有程式碼。
 - 繼續了解 [即時新聞教學課程]

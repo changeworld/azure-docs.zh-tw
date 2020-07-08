@@ -5,18 +5,18 @@ description: 瞭解如何在定型中使用資料集
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 04/20/2020
-ms.openlocfilehash: cd72ce9fed7f821807b8604f68068c64a38293e3
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: a9b9faed111e6126bfdb30e4237a988afd947823
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996668"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560128"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure Machine Learning 中的資料集進行定型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "82996668"
 
 Azure Machine Learning 資料集提供與 Azure Machine Learning 訓練產品（例如[ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[估計工具](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)、 [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py)和[Azure Machine Learning 管線](how-to-create-your-first-pipeline.md)）的完美整合。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要使用資料集來建立和定型，您需要：
 
@@ -42,7 +42,7 @@ Azure Machine Learning 資料集提供與 Azure Machine Learning 訓練產品（
 
 您可以從工作區上實驗的定型腳本存取現有的 TabularDataset，並將該資料集載入 pandas 資料框架，以進一步探索您的本機環境。
 
-下列程式碼會使用[`get_context()`]() [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py)類別中的方法，來存取定型腳本中現有`titanic`的輸入 TabularDataset。 接著會使用[`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--)方法，將該資料集載入至 pandas 資料框架，以便在定型之前進一步進行資料探索和準備。
+下列程式碼會使用 [`get_context()`]() 類別中的方法， [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) 來存取 `titanic` 定型腳本中現有的輸入 TabularDataset。 接著會使用 [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法，將該資料集載入至 pandas 資料框架，以便在定型之前進一步進行資料探索和準備。
 
 > [!Note]
 > 當您使用 to_pandas_dataframe （）時，如果原始資料來源包含 NaN、空字串或空白值，則會將這些值取代為*Null*值。 
@@ -66,7 +66,7 @@ df = dataset.to_pandas_dataframe()
 
 如果您的結構化資料尚未註冊為資料集，請建立 TabularDataset，並直接在您的本機或遠端實驗訓練腳本中使用它。
 
-在此範例中，您會建立未註冊的[TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) ，並使用它做為`estimator`物件的直接輸入來進行定型。 如果您想要將此 TabularDataset 與工作區中的其他實驗重複使用，請參閱[如何將資料集註冊到您的工作區](how-to-create-register-datasets.md#register-datasets)。
+在此範例中，您會建立未註冊的[TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) ，並使用它做為物件的直接輸入來 `estimator` 進行定型。 如果您想要將此 TabularDataset 與工作區中的其他實驗重複使用，請參閱[如何將資料集註冊到您的工作區](how-to-create-register-datasets.md#register-datasets)。
 
 ### <a name="create-a-tabulardataset"></a>建立 TabularDataset
 
@@ -85,11 +85,11 @@ TabularDataset 物件可讓您將 TabularDataset 中的資料載入 pandas 或 s
 
 [估計工具](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)物件是用來提交實驗執行。 Azure Machine Learning 已針對常見的機器學習架構和一般估計工具，預先設定估算器。
 
-此程式碼會建立泛型估計工具物件`est`，它會指定
+此程式碼會建立泛型估計工具物件， `est` 它會指定
 
 * 腳本的腳本目錄。 在此目錄中的所有檔案都會上傳到叢集節點以便執行。
 * 定型腳本， *train_titanic .py*。
-* 用於定型的輸入資料集`titanic_ds`。 `as_named_input()`是必要的，以便在定型腳本中，由指派的名稱`titanic`來參考輸入資料集。 
+* 用於定型的輸入資料集 `titanic_ds` 。 `as_named_input()`是必要的，以便在定型腳本中，由指派的名稱來參考輸入資料集 `titanic` 。 
 * 實驗的計算目標。
 * 實驗的環境定義。
 
@@ -130,9 +130,9 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>設定估計工具
 
-建議您在裝載時，將資料集當做引數傳遞。 除了透過估計工具中的`inputs`參數傳遞資料集之外，您也可以透過`script_params`引數傳遞資料集，並取得定型腳本中的資料路徑（掛接點）。 如此一來，您就可以在任何雲端平臺上使用相同的訓練腳本進行本機的偵錯工具和遠端訓練。
+建議您在裝載時，將資料集當做引數傳遞。 除了透過估計工具中的參數傳遞資料集之外 `inputs` ，您也可以透過引數傳遞資料集， `script_params` 並取得定型腳本中的資料路徑（掛接點）。 如此一來，您就可以在任何雲端平臺上使用相同的訓練腳本進行本機的偵錯工具和遠端訓練。
 
-[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)估計工具物件是用來提交 scikit-learn-學習實驗的執行。 提交執行之後，資料`mnist`集所參考的資料檔案將會掛接至計算目標。 深入瞭解如何使用[SKlearn 估計工具](how-to-train-scikit-learn.md)進行訓練。
+[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)估計工具物件是用來提交 scikit-learn-學習實驗的執行。 提交執行之後，資料集所參考的資料檔案 `mnist` 將會掛接至計算目標。 深入瞭解如何使用[SKlearn 估計工具](how-to-train-scikit-learn.md)進行訓練。
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -201,7 +201,7 @@ y_test = load_data(y_test, True).reshape(-1)
 
 如果您的腳本會處理資料集所參考的所有檔案，且您的計算磁片可以符合您的完整資料集，則建議下載，以避免從儲存體服務串流資料的額外負荷。 如果您的資料大小超過計算磁片大小，則無法下載。 針對此案例，我們建議您掛接，因為在處理時只會載入腳本所使用的資料檔案。
 
-下列程式碼會`dataset`裝載至的臨時目錄`mounted_path`
+下列程式碼會裝載 `dataset` 至的臨時目錄`mounted_path`
 
 ```python
 import tempfile

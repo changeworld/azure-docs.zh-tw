@@ -6,16 +6,16 @@ keywords: 資料科學工具、資料科學虛擬機器、資料科學工具、l
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: d8a5cf428f41b130e6faf68ac87a075c15211099
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 25ce99d3dced3caf1ec4bcce13b062b28774642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270065"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84557491"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>適用于 Azure 資料科學 VM 的深度學習和 AI 架構
 下面列出 DSVM 的深度學習架構。
@@ -26,8 +26,8 @@ ms.locfileid: "79270065"
 | ------------- | ------------- |
 | 支援的版本 | |
 | 支援的 DSVM 版本      | Linux (Ubuntu)     |
-| 它是如何在 DSVM 上設定/安裝的？  | Caffe 是安裝在 `/opt/caffe` 中。   範例位於`/opt/caffe/examples`。|
-| 如何執行它      | 使用 X2Go 登入您的 VM，然後啟動新的終端機並輸入下列內容：<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>具有範例筆記本的新瀏覽器視窗將會開啟。 二進位檔安裝在 /opt/caffe/build/install/bin。<br/><br/>已安裝的 Caffe 版本需要 Python 2.7，而且無法與預設啟用的 Python 3.5 搭配使用。 若要切換至 Python 2.7， `source activate root`請執行以切換至 Anaconda 環境。|    
+| 它是如何在 DSVM 上設定/安裝的？  | Caffe 是安裝在 `/opt/caffe` 中。   範例位於 `/opt/caffe/examples` 。|
+| 如何執行它      | 使用 X2Go 登入您的 VM，然後啟動新的終端機並輸入下列內容：<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>具有範例筆記本的新瀏覽器視窗將會開啟。 二進位檔安裝在 /opt/caffe/build/install/bin。<br/><br/>已安裝的 Caffe 版本需要 Python 2.7，而且無法與預設啟用的 Python 3.5 搭配使用。 若要切換至 Python 2.7，請執行 `source activate root` 以切換至 Anaconda 環境。|    
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
@@ -45,7 +45,7 @@ ms.locfileid: "79270065"
 | 支援的版本 | 5.2 |
 | 支援的 DSVM 版本      | Linux (Ubuntu)     |
 | 它是如何在 DSVM 上設定/安裝的？  | Chainer 安裝在 Python 3.5 中。 |
-| 如何執行它      | 終端機：啟用 Python 3.5 環境、執行`python`，然後`import chainer`。 <br/> * JupyterHub：[連接到 JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然後移至 Chainer 目錄以尋找範例筆記本。| 
+| 如何執行它      | 終端機：啟用 Python 3.5 環境、執行 `python` ，然後 `import chainer` 。 <br/> * JupyterHub：[連接到 JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然後移至 Chainer 目錄以尋找範例筆記本。| 
 
 ## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA、cuDNN、NVIDIA 驅動程式](https://developer.nvidia.com/cuda-toolkit)
 
@@ -89,8 +89,8 @@ ms.locfileid: "79270065"
 | ------------- | ------------- |
 | 支援的版本 | 1.3.0 |
 | 支援的 DSVM 版本      | Windows 與 Linux   |
-| 它是如何在 DSVM 上設定/安裝的？  | MXNet 是安裝在`C:\dsvm\tools\mxnet` Windows 和`/dsvm/tools/mxnet` Ubuntu 上的。 Python 系結會安裝在[Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition)上的 python 3.6 和[Linux](./dsvm-tools-languages.md#python-linux-edition)上的 python 3.5 中，而 Ubuntu DSVM 也會包含 R 系結。 |
-| 如何執行它      | 終端機：啟用正確的 conda 環境，然後`import mxnet`執行。 <br/>Jupyter：連接到[Jupyter](provision-vm.md#access-the-dsvm)或[JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然後開啟`mxnet`目錄以取得範例。 |
+| 它是如何在 DSVM 上設定/安裝的？  | MXNet 是安裝在 `C:\dsvm\tools\mxnet` Windows 和 `/dsvm/tools/mxnet` Ubuntu 上的。 Python 系結會安裝在[Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition)上的 python 3.6 和[Linux](./dsvm-tools-languages.md#python-linux-edition)上的 python 3.5 中，而 Ubuntu DSVM 也會包含 R 系結。 |
+| 如何執行它      | 終端機：啟用正確的 conda 環境，然後執行 `import mxnet` 。 <br/>Jupyter：連接到[Jupyter](provision-vm.md#access-the-dsvm)或[JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然後開啟 `mxnet` 目錄以取得範例。 |
 
 ## <a name="mxnet-model-server"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
@@ -99,7 +99,7 @@ ms.locfileid: "79270065"
 | 支援的版本 | 1.0.1 |
 | 支援的 DSVM 版本      | Windows 與 Linux   |
 | 它是如何在 DSVM 上設定/安裝的？  | MXNet 模型伺服器安裝在[Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition)上的 python 3.6 和[Linux](./dsvm-tools-languages.md#python-linux-edition)上的 python 3.5 中 |
-| 如何執行它      | 終端機： `sudo systemctl stop jupyterhub`執行以停止 JupyterHub 服務，因為這兩者都是在相同的埠上接聽。 然後啟動正確的 conda 環境並執行`mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
+| 如何執行它      | 終端機：執行 `sudo systemctl stop jupyterhub` 以停止 JupyterHub 服務，因為這兩者都是在相同的埠上接聽。 然後啟動正確的 conda 環境並執行`mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
 
 ## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia 系統管理介面（nvidia-smi-s）](https://developer.nvidia.com/nvidia-system-management-interface)
 
@@ -109,7 +109,7 @@ ms.locfileid: "79270065"
 | 支援的 DSVM 版本      | Windows 與 Linux   |
 | 其用途為何？ | 用來查詢 GPU 活動的 NVIDIA 工具 |
 | 它是如何在 DSVM 上設定/安裝的？  | `nvidia-smi`位於系統路徑上。 |
-| 如何執行它      | 在**具有 GPU 的**虛擬機器上，開啟命令提示字元（在 Windows 上）或終端機（在 Linux 上），然後`nvidia-smi`執行。 |
+| 如何執行它      | 在**具有 GPU 的**虛擬機器上，開啟命令提示字元（在 Windows 上）或終端機（在 Linux 上），然後執行 `nvidia-smi` 。 |
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 

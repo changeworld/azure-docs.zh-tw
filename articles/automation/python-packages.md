@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: c2871c4c988675dd9a1a5749d908805994b6b309
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: f3ba52c1396928d8c76fb85fda3f29c625e60919
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84561857"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>管理 Azure 自動化中的 Python 2 封裝
 
@@ -48,10 +48,10 @@ C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 
  若要取得 Runbook，請從資源庫[將 Python 2 套件從 pypi 匯入至您的 Azure 自動化自動化帳戶](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509)。 請確定 [回合設定] 已設定為 **Azure**，並使用參數啟動 Runbook。 使用 Runbook 時，必須要有執行身分帳戶，自動化帳戶才能運作。 對於每個參數，請確實使用參數加以啟動，如下列清單和影像所示：
 
-* -s \<subscriptionId\>
-* -g \<resourceGroup\>
-* -a \<automationAccount\>
-* -m \<modulePackage\>
+* -s\<subscriptionId\>
+* -g\<resourceGroup\>
+* -a\<automationAccount\>
+* -m\<modulePackage\>
 
 ![套件清單](media/python-packages/import-python-runbook.png)
 

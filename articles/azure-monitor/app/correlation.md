@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 2e862410e2bf12e09e1a6388bbb6f7105b5b2edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: ca186fa62605953bfb90c1a4669fc8283eb78469
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405258"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559786"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
 
@@ -21,11 +21,11 @@ ms.locfileid: "81405258"
 
 ## <a name="data-model-for-telemetry-correlation"></a>遙測相互關聯的資料模型
 
-Application Insights 會定義分散遙測相互關聯的[資料模型](../../azure-monitor/app/data-model.md)。 為了讓遙測與邏輯作業產生關聯，每個遙測專案都有一個`operation_Id`稱為的內容欄位。 每個遙測項目會在分散式追蹤內共用這個識別碼。 因此，即使您遺失單一層的遙測，仍然可以將其他元件所報告的遙測相關聯。
+Application Insights 會定義分散遙測相互關聯的[資料模型](../../azure-monitor/app/data-model.md)。 為了讓遙測與邏輯作業產生關聯，每個遙測專案都有一個稱為的內容欄位 `operation_Id` 。 每個遙測項目會在分散式追蹤內共用這個識別碼。 因此，即使您遺失單一層的遙測，仍然可以將其他元件所報告的遙測相關聯。
 
-分散式邏輯作業通常包含一組較小的作業，這是由其中一個元件所處理的要求。 這些作業是由[要求遙測](../../azure-monitor/app/data-model-request-telemetry.md)所定義。 每個要求遙測專案都有`id`自己的唯一和全域識別。 與要求相關聯的所有遙測專案（例如追蹤和例外狀況）都應該將設定`operation_parentId`為要求`id`的值。
+分散式邏輯作業通常包含一組較小的作業，這是由其中一個元件所處理的要求。 這些作業是由[要求遙測](../../azure-monitor/app/data-model-request-telemetry.md)所定義。 每個要求遙測專案都有自己 `id` 的唯一和全域識別。 與要求相關聯的所有遙測專案（例如追蹤和例外狀況）都應該將設定 `operation_parentId` 為要求的值 `id` 。
 
-每個連出作業 (例如對另一個元件的 HTTP 呼叫) 都會由[相依性遙測](../../azure-monitor/app/data-model-dependency-telemetry.md)代表。 相依性遙測也會定義`id`它自己的全域唯一的。 由這個相依性呼叫起始的要求遙測會使用 這個 `id` 作為其 `operation_parentId`。
+每個連出作業 (例如對另一個元件的 HTTP 呼叫) 都會由[相依性遙測](../../azure-monitor/app/data-model-dependency-telemetry.md)代表。 相依性遙測也會定義它自己 `id` 的全域唯一的。 由這個相依性呼叫起始的要求遙測會使用 這個 `id` 作為其 `operation_parentId`。
 
 您可以將 `operation_Id`、`operation_parentId` 和 `request.id` 與 `dependency.id` 搭配使用，來建置分散式邏輯作業的檢視。 這些欄位也會定義遙測呼叫的因果順序。
 
@@ -33,7 +33,7 @@ Application Insights 會定義分散遙測相互關聯的[資料模型](../../az
 
 ## <a name="example"></a>範例
 
-讓我們看看以下範例。 名為「股票價格」的應用程式會使用稱為「庫存」的外部 API 來顯示股票的目前市場價格。 股票價格應用程式有一個名為 [Stock] 頁面的頁面，而用戶端`GET /Home/Stock`網頁瀏覽器會使用它開啟。 應用程式會使用 HTTP 呼叫`GET /api/stock/value`來查詢股票 API。
+讓我們來看看範例。 名為「股票價格」的應用程式會使用稱為「庫存」的外部 API 來顯示股票的目前市場價格。 股票價格應用程式有一個名為 [Stock] 頁面的頁面，而用戶端網頁瀏覽器會使用它開啟 `GET /Home/Stock` 。 應用程式會使用 HTTP 呼叫來查詢股票 API `GET /api/stock/value` 。
 
 您可以執行查詢來分析產生的遙測︰
 
@@ -43,16 +43,16 @@ Application Insights 會定義分散遙測相互關聯的[資料模型](../../az
 | project timestamp, itemType, name, id, operation_ParentId, operation_Id
 ```
 
-在結果中，請注意，所有遙測項目都共用 `operation_Id` 這個根。 從頁面進行 Ajax 呼叫時，會將新的唯一識別碼（`qJSXU`）指派給相依性遙測，並使用 PAGEVIEW 的識別碼作為。 `operation_ParentId` 接著，伺服器要求會使用 Ajax 識別碼作為 `operation_ParentId`。
+在結果中，請注意，所有遙測項目都共用 `operation_Id` 這個根。 從頁面進行 Ajax 呼叫時，會將新的唯一識別碼（ `qJSXU` ）指派給相依性遙測，並使用 pageView 的識別碼作為 `operation_ParentId` 。 接著，伺服器要求會使用 Ajax 識別碼作為 `operation_ParentId`。
 
-| itemType   | 名稱                      | 識別碼           | operation_ParentId | operation_Id |
+| itemType   | NAME                      | 識別碼           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock 頁面                |              | STYz               | STYz         |
 | 相依性 | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
 | 要求    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | 相依性 | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
-對外部服務`GET /api/stock/value`進行呼叫時，您需要知道該伺服器的身分識別，才能適當地設定`dependency.target`欄位。 當外部服務不支援監視時，`target` 會設定為服務的主機名稱 (例如 `stock-prices-api.com`)。 但是，如果服務藉由傳回預先定義的 HTTP 標頭`target`來識別自己，則會包含服務識別，讓 Application Insights 藉由查詢來自該服務的遙測，來建立分散式追蹤。
+對 `GET /api/stock/value` 外部服務進行呼叫時，您需要知道該伺服器的身分識別，才能 `dependency.target` 適當地設定欄位。 當外部服務不支援監視時，`target` 會設定為服務的主機名稱 (例如 `stock-prices-api.com`)。 但是，如果服務藉由傳回預先定義的 HTTP 標頭來識別自己，則會 `target` 包含服務識別，讓 Application Insights 藉由查詢來自該服務的遙測，來建立分散式追蹤。
 
 ## <a name="correlation-headers"></a>相互關聯標頭
 
@@ -68,16 +68,16 @@ Application Insights 正在轉換為[W3C 追蹤內容](https://w3c.github.io/tra
 - `Request-Id`：會攜帶呼叫的全域唯一識別碼。
 - `Correlation-Context`：會攜帶分散式追蹤屬性的名稱/值組集合。
 
-Application Insights 也會定義相互關聯 HTTP 通訊協定的[延伸](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)。 它會使用 `Request-Context` 名稱值組，來傳播立即呼叫端或被呼叫端所使用的屬性集合。 Application Insights SDK 會使用此標頭來設定`dependency.target`和`request.source`欄位。
+Application Insights 也會定義相互關聯 HTTP 通訊協定的[延伸](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)。 它會使用 `Request-Context` 名稱值組，來傳播立即呼叫端或被呼叫端所使用的屬性集合。 Application Insights SDK 會使用此標頭來設定 `dependency.target` 和 `request.source` 欄位。
 
 ### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>啟用傳統 ASP.NET 應用程式的 W3C 分散式追蹤支援
  
   > [!NOTE]
-  >  從`Microsoft.ApplicationInsights.Web`和`Microsoft.ApplicationInsights.DependencyCollector`開始，不需要進行任何設定。
+  >  從 `Microsoft.ApplicationInsights.Web` 和開始 `Microsoft.ApplicationInsights.DependencyCollector` ，不需要進行任何設定。
 
 W3C 追蹤內容支援是以後向相容的方式來執行。 相互關聯應使用舊版 SDK 所檢測的應用程式（不含 W3C 支援）。
 
-如果您想要繼續使用舊版`Request-Id`通訊協定，可以使用此設定來停用追蹤內容：
+如果您想要繼續使用舊版 `Request-Id` 通訊協定，可以使用此設定來停用追蹤內容：
 
 ```csharp
   Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
@@ -85,12 +85,12 @@ W3C 追蹤內容支援是以後向相容的方式來執行。 相互關聯應使
 ```
 
 如果您執行較舊版本的 SDK，建議您更新它，或套用下列設定以啟用追蹤內容。
-從 2.8.0-Beta1 版本開始`Microsoft.ApplicationInsights.Web` ， `Microsoft.ApplicationInsights.DependencyCollector`和套件中都有提供這項功能。
-此功能預設為停用。 若要啟用它，請進行下列`ApplicationInsights.config`變更：
+`Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.DependencyCollector` 從 2.8.0-Beta1 版本開始，和套件中都有提供這項功能。
+此功能預設為停用。 若要啟用它，請進行下列變更 `ApplicationInsights.config` ：
 
-- 在`RequestTrackingTelemetryModule`底下，新增`EnableW3CHeadersExtraction`專案，並將其值`true`設定為。
-- 在`DependencyTrackingTelemetryModule`底下，新增`EnableW3CHeadersInjection`專案，並將其值`true`設定為。
-- 在`W3COperationCorrelationTelemetryInitializer` `TelemetryInitializers`底下新增。 看起來會像這個範例：
+- 在底下 `RequestTrackingTelemetryModule` ，新增專案 `EnableW3CHeadersExtraction` ，並將其值設定為 `true` 。
+- 在底下 `DependencyTrackingTelemetryModule` ，新增專案 `EnableW3CHeadersInjection` ，並將其值設定為 `true` 。
+- 在底下新增 `W3COperationCorrelationTelemetryInitializer` `TelemetryInitializers` 。 看起來會像這個範例：
 
 ```xml
 <TelemetryInitializers>
@@ -102,11 +102,11 @@ W3C 追蹤內容支援是以後向相容的方式來執行。 相互關聯應使
 ### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>啟用 ASP.NET Core 應用程式的 W3C 分散式追蹤支援
 
  > [!NOTE]
-  > 從`Microsoft.ApplicationInsights.AspNetCore`版本2.8.0 開始，不需要進行任何設定。
+  > 從 `Microsoft.ApplicationInsights.AspNetCore` 版本2.8.0 開始，不需要進行任何設定。
  
 W3C 追蹤內容支援是以後向相容的方式來執行。 相互關聯應使用舊版 SDK 所檢測的應用程式（不含 W3C 支援）。
 
-如果您想要繼續使用舊版`Request-Id`通訊協定，可以使用此設定來停用追蹤內容：
+如果您想要繼續使用舊版 `Request-Id` 通訊協定，可以使用此設定來停用追蹤內容：
 
 ```csharp
   Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
@@ -136,7 +136,7 @@ public void ConfigureServices(IServiceCollection services)
 #### <a name="java-sdk"></a>Java SDK
 - **連入設定**
 
-  - 針對 JAVA EE 應用程式，請將下列內容`<TelemetryModules>`新增至 ApplicationInsights 中的標記：
+  - 針對 JAVA EE 應用程式，請將下列內容新增至 `<TelemetryModules>` ApplicationInsights.xml 中的標記：
 
     ```xml
     <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule>
@@ -172,7 +172,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>啟用 Web 應用程式的 W3C 分散式追蹤支援
 
-這項功能在`Microsoft.ApplicationInsights.JavaScript`中。 此功能預設為停用。 若要啟用它， `distributedTracingMode`請使用 config。AI_AND_W3C 是為了與 Application Insights 所檢測的任何舊版服務回溯相容性而提供。
+這項功能在中 `Microsoft.ApplicationInsights.JavaScript` 。 此功能預設為停用。 若要啟用它，請使用 `distributedTracingMode` config。AI_AND_W3C 是為了與 Application Insights 所檢測的任何舊版服務回溯相容性而提供。
 
 - **npm 設定（如果使用程式碼片段設定則忽略）**
 
@@ -221,7 +221,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python 中的遙測相互關聯
 
-OpenCensus Python 遵循先前`OpenTracing`所述的資料模型規格。 它也支援[W3C 追蹤內容](https://w3c.github.io/trace-context/)，而不需要任何設定。
+OpenCensus Python 遵循 `OpenTracing` 先前所述的資料模型規格。 它也支援[W3C 追蹤內容](https://w3c.github.io/trace-context/)，而不需要任何設定。
 
 ### <a name="incoming-request-correlation"></a>連入要求相互關聯
 
@@ -248,7 +248,7 @@ if __name__ == '__main__':
     app.run(host='localhost', port=8080, threaded=True)
 ```
 
-此程式碼會在您的本機電腦上執行範例 Flask 應用程式`8080`，並接聽埠。 若要使追蹤內容相互關聯，您可以將要求傳送至端點。 在此範例中，您可以使用`curl`命令：
+此程式碼會在您的本機電腦上執行範例 Flask 應用程式，並接聽埠 `8080` 。 若要使追蹤內容相互關聯，您可以將要求傳送至端點。 在此範例中，您可以使用 `curl` 命令：
 ```
 curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
 ```
@@ -266,13 +266,13 @@ curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7
 
 ![在記錄中要求遙測（分析）](./media/opencensus-python/0011-correlation.png)
 
-`id`欄位的格式`<trace-id>.<span-id>`為，其中`trace-id`是取自要求中所傳遞的追蹤標頭，而`span-id`是為此範圍產生的8位元組陣列。
+`id`欄位的格式為 `<trace-id>.<span-id>` ，其中 `trace-id` 是取自要求中所傳遞的追蹤標頭，而 `span-id` 是為此範圍產生的8位元組陣列。
 
-`operation_ParentId`欄位的格式`<trace-id>.<parent-id>`為，其中`trace-id`和`parent-id`都取自要求中所傳遞的追蹤標頭。
+`operation_ParentId`欄位的格式為 `<trace-id>.<parent-id>` ，其中 `trace-id` 和 `parent-id` 都取自要求中所傳遞的追蹤標頭。
 
 ### <a name="log-correlation"></a>記錄相互關聯
 
-OpenCensus Python 可讓您將追蹤識別碼、span 識別碼和取樣旗標新增至記錄檔記錄，藉以建立記錄的相互關聯。 您可以藉由安裝 OpenCensus[記錄整合](https://pypi.org/project/opencensus-ext-logging/)來新增這些屬性。 下列屬性`LogRecord`會加入至 Python 物件： `traceId`、 `spanId`和。 `traceSampled` 請注意，這只會對在整合後所建立的記錄器生效。
+OpenCensus Python 可讓您將追蹤識別碼、span 識別碼和取樣旗標新增至記錄檔記錄，藉以建立記錄的相互關聯。 您可以藉由安裝 OpenCensus[記錄整合](https://pypi.org/project/opencensus-ext-logging/)來新增這些屬性。 下列屬性會加入至 Python `LogRecord` 物件： `traceId` 、 `spanId` 和 `traceSampled` 。 請注意，這只會對在整合後所建立的記錄器生效。
 
 以下是示範這種情況的範例應用程式：
 
@@ -299,9 +299,9 @@ logger.warning('After the span')
 2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
 2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
 ```
-請注意，範圍內`spanId`有記錄訊息的存在。 這與屬於名`spanId` `hello`為的範圍相同。
+請注意， `spanId` 範圍內有記錄訊息的存在。 這與 `spanId` 屬於名為的範圍相同 `hello` 。
 
-您可以使用`AzureLogHandler`來匯出記錄檔資料。 如需詳細資訊，請參閱 [本篇文章](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)。
+您可以使用來匯出記錄檔資料 `AzureLogHandler` 。 如需詳細資訊，請參閱[這篇文章](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)。
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遙測相互關聯
 
@@ -312,9 +312,9 @@ logger.warning('After the span')
 - `ILogger`使用[記錄範圍](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。
 - Windows Communication Foundation (WCF) 與 HTTP 連接起了「目前」的內容傳播。
 
-但這些方法並未啟用自動分散式追蹤支援。 `DiagnosticSource`支援自動跨電腦相互關聯。 .NET 程式庫`DiagnosticSource`支援並允許透過傳輸（例如 HTTP）自動跨電腦傳播相互關聯內容。
+但這些方法並未啟用自動分散式追蹤支援。 `DiagnosticSource`支援自動跨電腦相互關聯。 .NET 程式庫支援 `DiagnosticSource` 並允許透過傳輸（例如 HTTP）自動跨電腦傳播相互關聯內容。
 
-中`DiagnosticSource`的[活動使用者指南](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)說明追蹤活動的基本概念。
+中的[活動使用者指南](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) `DiagnosticSource` 說明追蹤活動的基本概念。
 
 ASP.NET Core 2.0 支援提取 HTTP 標頭和啟動新的活動。
 
@@ -327,7 +327,7 @@ Application Insights SDK 從 2.4.0-beta1 版開始，會使用 `DiagnosticSource
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>JAVA 中的遙測相互關聯
 
-[JAVA 代理程式](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)以及[java SDK](../../azure-monitor/app/java-get-started.md) version 2.0.0 或更新版本都支援遙測的自動相互關聯。 它會自動`operation_id`填入在要求範圍內發出的所有遙測（例如追蹤、例外狀況和自訂事件）。 如果已設定[JAVA SDK 代理程式](../../azure-monitor/app/java-agent.md)，它也會透過 HTTP 傳播服務對服務呼叫的相互關聯標頭（如前文所述）。
+[JAVA 代理程式](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)以及[java SDK](../../azure-monitor/app/java-get-started.md) version 2.0.0 或更新版本都支援遙測的自動相互關聯。 它會自動填入在 `operation_id` 要求範圍內發出的所有遙測（例如追蹤、例外狀況和自訂事件）。 如果已設定[JAVA SDK 代理程式](../../azure-monitor/app/java-agent.md)，它也會透過 HTTP 傳播服務對服務呼叫的相互關聯標頭（如前文所述）。
 
 > [!NOTE]
 > Application Insights JAVA 代理程式會自動收集 JMS、Kafka、Netty/Webflux 等等的要求和相依性。 針對 JAVA SDK，相互關聯功能僅支援透過 Apache HttpClient 所提出的呼叫。 SDK 不支援跨訊息技術（例如 Kafka、RabbitMQ 和 Azure 服務匯流排）的自動內容傳播。 
@@ -337,7 +337,7 @@ Application Insights SDK 從 2.4.0-beta1 版開始，會使用 `DiagnosticSource
 
 ### <a name="role-names"></a>角色名稱
 
-您可能想要自訂群組件名稱在[應用程式對應](../../azure-monitor/app/app-map.md)中的顯示方式。 若要這樣做，您可以採取下列`cloud_RoleName`其中一個動作手動設定：
+您可能想要自訂群組件名稱在[應用程式對應](../../azure-monitor/app/app-map.md)中的顯示方式。 若要這樣做，您可以 `cloud_RoleName` 採取下列其中一個動作手動設定：
 
 - 針對 Application Insights JAVA 代理程式3.0，請設定雲端角色名稱，如下所示：
 
@@ -350,9 +350,9 @@ Application Insights SDK 從 2.4.0-beta1 版開始，會使用 `DiagnosticSource
       }
     }
     ```
-    您也可以使用環境變數`APPLICATIONINSIGHTS_ROLE_NAME`來設定雲端角色名稱。
+    您也可以使用環境變數來設定雲端角色名稱 `APPLICATIONINSIGHTS_ROLE_NAME` 。
 
-- 透過 Application Insights JAVA SDK 2.5.0 和更新版本，您可以藉`cloud_RoleName`由將`<RoleName>`新增至 ApplicationInsights，來指定：
+- 透過 Application Insights JAVA SDK 2.5.0 和更新版本，您可以藉 `cloud_RoleName` 由新增 `<RoleName>` 至您的 ApplicationInsights.xml 檔案來指定：
 
   ```XML
   <?xml version="1.0" encoding="utf-8"?>
@@ -367,7 +367,7 @@ Application Insights SDK 從 2.4.0-beta1 版開始，會使用 `DiagnosticSource
 
   `spring.application.name=<name-of-app>`
 
-  彈簧開機 Starter 會自動指派`cloudRoleName`給您為`spring.application.name`屬性輸入的值。
+  彈簧開機 Starter 會自動指派 `cloudRoleName` 給您為屬性輸入的值 `spring.application.name` 。
 
 ## <a name="next-steps"></a>後續步驟
 

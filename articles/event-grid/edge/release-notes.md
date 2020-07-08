@@ -1,19 +1,18 @@
 ---
 title: 版本資訊-Azure Event Grid IoT Edge |Microsoft Docs
 description: IoT Edge 版本資訊上的 Azure 事件方格
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.reviewer: spelluru
 ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 18a4fb9a979841bbf6cd0090fc67a77327c61596
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 71c3df1f990f7cbe4cb4d7dda581f355ca0d518a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76849704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560426"
 ---
 # <a name="release-notes-azure-event-grid-on-iot-edge"></a>版本資訊： IoT Edge 上的 Azure 事件方格
 
@@ -47,4 +46,4 @@ IoT Edge 新增 Azure 事件方格的預覽2：
 * 發佈至服務匯流排主題作為目的地
 * 發佈至儲存體佇列作為目的地
 
-標記： `1.0.0-preview2`、 `1.0`、`latest`
+標記： `1.0.0-preview2` 、 `1.0` 、`latest`

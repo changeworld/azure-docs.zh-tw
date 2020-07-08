@@ -6,12 +6,11 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 624bb45de3e2ff184326949611d437f71f3e2def
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e0daa2b02c16d8d5a65b5e7e0f983a4f47181d40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501800"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84635963"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure 資料共用中支援的資料存放區
 
@@ -38,16 +37,17 @@ Azure 資料共用可在決定資料存放區以接受中的資料時，為數�
 
 下表詳細說明資料取用者在接受和設定其資料共用時所擁有的不同組合和選擇。 如需如何設定資料集對應的詳細資訊，請參閱[如何設定資料集](how-to-configure-mapping.md)對應。
 
-|  | Azure Blob 儲存體 | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Database | Azure Synapse Analytics 
-|:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob 儲存體 | ✓ || ✓|
-| Azure Data Lake Storage Gen1 | ✓ | | ✓|
-| Azure Data Lake Storage Gen2 | ✓ | | ✓|
-| Azure SQL Database | ✓ | | ✓| ✓| ✓|
-| Azure Synapse 分析（先前稱為 Azure SQL DW） | ✓ | | ✓| ✓| ✓|
+|  | Azure Blob 儲存體 | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Database | Azure Synapse Analytics | Azure 資料總管
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure Blob 儲存體 | ✓ || ✓ ||
+| Azure Data Lake Storage Gen1 | ✓ | | ✓ ||
+| Azure Data Lake Storage Gen2 | ✓ | | ✓ ||
+| Azure SQL Database | ✓ | | ✓ | ✓ | ✓ ||
+| Azure Synapse 分析（先前稱為 Azure SQL DW） | ✓ | | ✓ | ✓ | ✓ ||
+| Azure 資料總管 |||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>從儲存體帳戶共用
-Azure 資料共用支援從 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共用檔案、資料夾和檔案系統。 它也支援從 Azure Blob 儲存體共用 blob、資料夾和容器。 目前僅支援區塊 blob。 當資料夾是以快照集為基礎的共用共用時，資料取用者可以選擇建立共用資料的完整複本，或利用增量快照集功能來只複製新的或更新的檔案。 將會覆寫具有相同名稱的現有檔案。
+Azure 資料共用支援從 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共用檔案、資料夾和檔案系統。 它也支援從 Azure Blob 儲存體共用 blob、資料夾和容器。 目前僅支援區塊 blob。 當檔案系統、容器或資料夾在以快照集為基礎的共用中共用時，資料取用者可以選擇建立共用資料的完整複本，或利用增量快照集功能來只複製新的或更新的檔案。 增量快照集會以檔案的上次修改時間為基礎。 將會覆寫具有相同名稱的現有檔案。
 
 ## <a name="share-from-a-sql-based-source"></a>從以 SQL 為基礎的來源共用
 Azure 資料共用支援從 Azure SQL Database 和 Azure Synapse Analytics （先前稱為 Azure SQL DW）共用資料表或 views。 資料取用者可以選擇將資料接受 Azure Data Lake 存放區 Gen2，或 Azure Blob 儲存體 csv 或 parquet 檔案。 請注意，根據預設，檔案格式為 csv。 資料取用者可以視需要選擇接收 parquet 格式的資料。 這可以在接收資料時，于資料集對應設定中完成。 

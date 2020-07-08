@@ -12,13 +12,12 @@ ms.workload: identity
 ms.date: 11/11/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 58697cc535357710c6889f05060b5e04e129ae7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 300b7e4fe3e3c150a78fee5b63458feab266aafe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558682"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL 應用程式中的記錄
 
@@ -50,7 +49,7 @@ MSAL 提供數種層級的記錄詳細資料：
 
 - `Level`可讓您決定您想要的記錄層級。 將它設定為 Errors 將只會取得錯誤
 - `PiiLoggingEnabled`如果設定為 true，則可讓您記錄個人和組織的資料。 此參數預設為 false，這會使您的應用程式不會記錄個人資料。
-- `LogCallback`設定為執行記錄的委派。 如果`PiiLoggingEnabled`為 true，則這個方法會接收兩次訊息：一次`containsPii` ，參數等於 false，而不含個人資料的訊息，第二次`containsPii`的參數等於 true，而訊息可能包含個人資料。 在某些情況下 (當訊息不包含個人資料時)，這兩個訊息將會相同。
+- `LogCallback`設定為執行記錄的委派。 如果 `PiiLoggingEnabled` 為 true，則這個方法會接收兩次訊息：一次， `containsPii` 參數等於 false，而不含個人資料的訊息，第二次的 `containsPii` 參數等於 true，而訊息可能包含個人資料。 在某些情況下 (當訊息不包含個人資料時)，這兩個訊息將會相同。
 - `DefaultLoggingEnabled`啟用平臺的預設記錄。 根據預設，它是 false。 如果您將它設定為 true，它會使用桌面/UWP 應用程式中的事件追蹤、iOS 上的 NSLog，以及 Android 上的 logcat。
 
 ```csharp
@@ -87,9 +86,9 @@ class Program
 藉由建立記錄回呼，在應用程式建立時開啟登入。 回呼會採用下列參數：
 
 - `tag`是程式庫傳遞給回呼的字串。 它會與記錄專案相關聯，並可用於排序記錄訊息。
-- `logLevel`可讓您決定您想要的記錄層級。 支援的記錄層級為`Error`： `Warning`、 `Info`、和`Verbose`。
+- `logLevel`可讓您決定您想要的記錄層級。 支援的記錄層級為： `Error` 、 `Warning` 、 `Info` 和 `Verbose` 。
 - `message`這是記錄專案的內容。
-- `containsPII`指定是否記錄包含個人資料或組織資料的訊息。 根據預設，這會設定為 false，讓您的應用程式不會記錄個人資料。 如果`containsPII`為`true`，則這個方法會接收兩次訊息：一次`containsPII`是將參數`false`設定為`message` ，而不使用個人資料，第二次`containsPii`是將參數`true`設定為，而訊息可能包含個人資料。 在某些情況下 (當訊息不包含個人資料時)，這兩個訊息將會相同。
+- `containsPII`指定是否記錄包含個人資料或組織資料的訊息。 根據預設，這會設定為 false，讓您的應用程式不會記錄個人資料。 如果 `containsPII` 為 `true` ，則這個方法會接收兩次訊息：一次是將 `containsPII` 參數設定為 `false` ，而不使用 `message` 個人資料，第二次是將 `containsPii` 參數設定為，而 `true` 訊息可能包含個人資料。 在某些情況下 (當訊息不包含個人資料時)，這兩個訊息將會相同。
 
 ```java
 private StringBuilder mLogs;
@@ -126,10 +125,10 @@ Logger.getInstance().setEnableLogcatLog(true);
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
- 藉由在建立`UserAgentApplication`實例的設定期間傳遞記錄器物件，在 MSAL 中啟用記錄功能。 此記錄器物件具有下列屬性：
+ 在建立實例的設定期間傳遞記錄器物件，以在 MSAL.js （JavaScript）中啟用記錄 `UserAgentApplication` 。 此記錄器物件具有下列屬性：
 
 - `localCallback`：可由開發人員提供的回呼實例，以自訂的方式取用和發行記錄。 請依您想要將記錄重新導向的方式實作 localCallback 方法。
-- `level`（選擇性）：可設定的記錄層級。 支援的記錄層級為`Error`： `Warning`、 `Info`、和`Verbose`。 預設值為 `Info`。
+- `level`（選擇性）：可設定的記錄層級。 支援的記錄層級為： `Error` 、 `Warning` 、 `Info` 和 `Verbose` 。 預設值為 `Info`。
 - `piiLoggingEnabled`（選擇性）：如果設定為 true，則會記錄個人和組織資料。 根據預設，此值為 false，因此您的應用程式不會記錄個人資料。 個人資料記錄永遠不會被寫入如 Console、Logcat 或 NSLog 等的預設輸出。
 - `correlationId`（選擇性）：唯一識別碼，用來將要求對應至用於進行偵錯工具的回應。 預設為 RFC4122 4 版 guid (128 位元)。
 
@@ -194,7 +193,7 @@ typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL cont
 
 ### <a name="personal-data"></a>個人資料
 
-根據預設，MSAL 不會捕捉或記錄任何個人資料（PII）。 程式庫可讓應用程式開發人員透過 MSALLogger 類別中的屬性來開啟此功能。 藉由開啟`pii.Enabled`，應用程式會負責安全地處理高度敏感的資料，並遵循法規需求。
+根據預設，MSAL 不會捕捉或記錄任何個人資料（PII）。 程式庫可讓應用程式開發人員透過 MSALLogger 類別中的屬性來開啟此功能。 藉由開啟 `pii.Enabled` ，應用程式會負責安全地處理高度敏感的資料，並遵循法規需求。
 
 ```objc
 // By default, the `MSALLogger` doesn't capture any PII
@@ -271,7 +270,7 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 
 ### <a name="personal-data"></a>個人資料
 
-根據預設，MSAL 不會捕捉或記錄任何個人資料（PII）。 程式庫可讓應用程式開發人員透過 MSALLogger 類別中的屬性來開啟此功能。 藉由開啟`pii.Enabled`，應用程式會負責安全地處理高度敏感的資料，並遵循法規需求。
+根據預設，MSAL 不會捕捉或記錄任何個人資料（PII）。 程式庫可讓應用程式開發人員透過 MSALLogger 類別中的屬性來開啟此功能。 藉由開啟 `pii.Enabled` ，應用程式會負責安全地處理高度敏感的資料，並遵循法規需求。
 
 ```swift
 // By default, the `MSALLogger` doesn't capture any PII
@@ -350,7 +349,7 @@ SLF4J 會在部署階段自動系結至 Logback。 MSAL 記錄將會寫入主控
             .build();
 ```
 
-在用戶端應用程式產生器上設定`logPii()` ，以開啟個人和組織資料記錄。 如果您開啟個人或組織資料記錄，您的應用程式必須負責安全地處理高度敏感的資料，並遵守任何法規需求。
+在用戶端應用程式產生器上設定，以開啟個人和組織資料記錄 `logPii()` 。 如果您開啟個人或組織資料記錄，您的應用程式必須負責安全地處理高度敏感的資料，並遵守任何法規需求。
 
 在下列範例中，會啟用記錄個人或組織資料：
 
@@ -365,7 +364,7 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
 
 ## <a name="msal-for-python-logging"></a>適用于 Python 記錄的 MSAL
 
-MSAL Python 中的記錄會使用標準的 Python 記錄機制， `logging.info("msg")`例如，您可以依照下列方式設定 MSAL 記錄（並在[username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)中查看其運作方式）：
+MSAL Python 中的記錄會使用標準的 Python 記錄機制，例如， `logging.info("msg")` 您可以依照下列方式設定 MSAL 記錄（並在[username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)中查看其運作方式）：
 
 ### <a name="enable-debug-logging-for-all-modules"></a>啟用所有模組的偵錯工具記錄
 

@@ -13,13 +13,12 @@ ms.workload: identity
 ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
-ms.custom: aaddev
-ms.openlocfilehash: a3f95383979fd47b3baaec946f724533461729b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 0cf711f9a295abaf20cd284e819cf062c462c668
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128052"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558695"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>適用于 Python 的 MSAL 遷移指南的 ADAL
 
@@ -44,13 +43,13 @@ ADAL 適用于 Azure Active Directory （Azure AD） v1.0 端點。 Microsoft �
 
 ADAL Python 會取得資源的權杖，但 MSAL Python 會取得範圍的權杖。 MSAL Python 中的 API 介面已不再有資源參數。 您需要提供範圍做為字串清單，以宣告所需的許可權和所要求的資源。 若要查看範圍的一些範例，請參閱[Microsoft Graph 的範圍](https://docs.microsoft.com/graph/permissions-reference)。
 
-您可以將`/.default`範圍尾碼新增至資源，以協助將您的應用程式從 v1.0 端點（ADAL）遷移至 Microsoft 身分識別平臺端點（MSAL）。 例如，針對的資源值`https://graph.microsoft.com`，對等的範圍值為。 `https://graph.microsoft.com/.default`  如果資源不是在 URL 表單中，而是表單`XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`的資源識別碼，您仍然可以使用範圍值做為`XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`。
+您可以將 `/.default` 範圍尾碼新增至資源，以協助將您的應用程式從 v1.0 端點（ADAL）遷移至 Microsoft 身分識別平臺端點（MSAL）。 例如，針對的資源值 `https://graph.microsoft.com` ，對等的範圍值為 `https://graph.microsoft.com/.default` 。  如果資源不是在 URL 表單中，而是表單的資源識別碼 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` ，您仍然可以使用範圍值做為 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` 。
 
 如需不同類型範圍的詳細資訊，請參閱[Microsoft 身分識別平臺中的許可權和同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)和[接受 V1.0 權杖的 Web API 範圍一](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes)文。
 
 ### <a name="error-handling"></a>錯誤處理
 
-適用于 Python 的 Azure Active Directory Authentication Library （ADAL）會`AdalError`使用例外狀況來表示發生問題。 MSAL for Python 通常會改為使用錯誤碼。 如需詳細資訊，請參閱[MSAL For Python error 處理](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python)。
+適用于 Python 的 Azure Active Directory Authentication Library （ADAL）會使用例外狀況 `AdalError` 來表示發生問題。 MSAL for Python 通常會改為使用錯誤碼。 如需詳細資訊，請參閱[MSAL For Python error 處理](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python)。
 
 ### <a name="api-changes"></a>API 變更
 
@@ -77,30 +76,48 @@ Microsoft 驗證程式庫（MSAL）會抽象化重新整理權杖的概念。 MS
 
 下列程式碼將協助您將由另一個 OAuth2 程式庫（包括但不限於 ADAL Python）所管理的重新整理權杖，遷移至 MSAL for Python 管理。 遷移這些重新整理權杖的其中一個原因是，當您將應用程式遷移至適用于 Python 的 MSAL 時，讓現有使用者不需要再次登入。
 
-遷移重新整理權杖的方法是使用適用于 Python 的 MSAL，以使用先前的重新整理權杖來取得新的存取權杖。 傳回新的重新整理權杖時，適用于 Python 的 MSAL 會將它儲存在快取中。 以下是如何執行此動作的範例：
+遷移重新整理權杖的方法是使用適用于 Python 的 MSAL，以使用先前的重新整理權杖來取得新的存取權杖。 傳回新的重新整理權杖時，適用于 Python 的 MSAL 會將它儲存在快取中。
+由於 MSAL Python 1.3.0，我們在 MSAL 中為此目的提供了 API。
+請參閱下列程式碼片段，[並以使用 MSAL Python 遷移重新整理權杖的完整範例](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.3.0/sample/migrate_rt.py#L28-L67)括住
 
 ```python
-from msal import PublicClientApplication
+import msal
+def get_preexisting_rt_and_their_scopes_from_elsewhere():
+    # Maybe you have an ADAL-powered app like this
+    #   https://github.com/AzureAD/azure-activedirectory-library-for-python/blob/1.2.3/sample/device_code_sample.py#L72
+    # which uses a resource rather than a scope,
+    # you need to convert your v1 resource into v2 scopes
+    # See https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison#scopes-not-resources
+    # You may be able to append "/.default" to your v1 resource to form a scope
+    # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-def get_preexisting_rt_and_their_scopes_from_elsewhere(...):
-    raise NotImplementedError("You will need to implement this by yourself")
+    # Or maybe you have an app already talking to Microsoft identity platform v2,
+    # powered by some 3rd-party auth library, and persist its tokens somehow.
 
-app = PublicClientApplication(..., token_cache=...)
+    # Either way, you need to extract RTs from there, and return them like this.
+    return [
+        ("old_rt_1", ["scope1", "scope2"]),
+        ("old_rt_2", ["scope3", "scope4"]),
+        ]
 
-for old_rt, old_scope in get_preexisting_rt_and_their_scopes_from_elsewhere(...):
-    # Assuming the old scope could be a space-delimited string.
-    # MSAL expects a list, like ["scope1", "scope2"].
-    scopes = old_scope.split()
-        # If your old refresh token came from ADAL for Python, which uses a resource rather than a scope,
-        # you need to convert your v1 resource into v2 scopes
-        # See https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison#scopes-not-resources
-        # You may be able to append "/.default" to your v1 resource to form a scope
-        # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-    result = app.client.obtain_token_by_refresh_token(old_rt, scope=scopes)
-    # When this call returns the new token(s), a new refresh token is issued by the Microsoft identity platform and MSAL for Python
-    # stores it in the token cache.
+# We will migrate all the old RTs into a new app powered by MSAL
+app = msal.PublicClientApplication(
+    "client_id", authority="...",
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+
+# We choose a migration strategy of migrating all RTs in one loop
+for old_rt, scopes in get_preexisting_rt_and_their_scopes_from_elsewhere():
+    result = app.acquire_token_by_refresh_token(old_rt, scopes)
+    if "error" in result:
+        print("Discarding unsuccessful RT. Error: ", json.dumps(result, indent=2))
+
+print("Migration completed")
 ```
+
 
 ## <a name="next-steps"></a>後續步驟
 

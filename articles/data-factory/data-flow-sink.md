@@ -8,42 +8,55 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 4b10a4c98abd6bec4074bf35764a9cbb85d5b157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/03/2020
+ms.openlocfilehash: 143c94527b947495709d2e94f107dc578e7f2866
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605973"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610163"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>對應資料流程中的接收轉換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-轉換資料之後，您可以將資料接收到目的地資料集。 每個資料流程都需要至少一個接收轉換，但是您可以視需要寫入至多個接收器來完成轉換流程。 若要寫入其他接收，請透過新的分支和條件式分割來建立新的資料流程。
+在您完成資料的轉換後，請使用「接收」轉換將資料寫入目的地存放區。 每個資料流程都需要至少一個接收轉換，但是您可以視需要寫入至多個接收器來完成轉換流程。 若要寫入其他接收，請透過新的分支和條件式分割來建立新的資料流程。
 
-每個接收轉換只會與一個 Data Factory 資料集相關聯。 資料集會定義您想要寫入之資料的形狀和位置。
+每個接收轉換只會與一個 Azure Data Factory 資料集物件或連結服務相關聯。 「接收」轉換會決定您想要寫入之資料的形狀和位置。
 
-## <a name="supported-sink-connectors-in-mapping-data-flow"></a>對應資料流程中支援的接收連接器
+## <a name="inline-datasets"></a>內嵌資料集
 
-下列資料集目前可用於接收轉換：
-    
-* [Azure Blob 儲存體](connector-azure-blob-storage.md#mapping-data-flow-properties)（JSON、Avro、Text、Parquet）
-* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) （JSON、Avro、Text、Parquet）
-* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) （JSON、Avro、Text、Parquet）
-* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
+建立接收轉換時，請選擇您的接收資訊是在資料集物件內或在接收轉換內定義。 大部分的格式僅適用于其中一種。 請參考適當的連接器檔，以瞭解如何使用特定的連接器。
 
-這些連接器的特定設定位於 [**設定**] 索引標籤中。這些設定的相關資訊位於連接器檔中。 
+當內嵌和 dataset 物件都支援格式時，兩者都有其優點。 Dataset 物件是可重複使用的實體，可以在其他資料流程和活動（例如複製）中運用。 這些在使用強化的架構時特別有用。 資料集不是以 Spark 為基礎，有時候您可能需要覆寫接收轉換中的特定設定或架構投射。
 
-Azure Data Factory 可以存取超過[90 的原生連接器](connector-overview.md)。 若要將資料從您的資料流程寫入其他來源，請使用複製活動，在資料流程完成後，從其中一個支援的臨時區域載入該資料。
+使用彈性架構、一次性接收實例或參數化接收時，建議您使用內嵌資料集。 如果您的接收是高度參數化的，內嵌資料集可讓您不建立「虛擬」物件。 內嵌資料集是以 spark 為基礎，而其屬性是資料流程的原生。
+
+若要使用內嵌資料集，請在 [**接收器類型**] 選取器中選取想要的格式。 您不需要選取接收資料集，而是選取您想要連接的連結服務。
+
+![內嵌資料集](media/data-flow/inline-selector.png "內嵌資料集")
+
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a>支援的接收類型
+
+對應資料流程遵循「解壓縮」、「載入」、「轉換」（ELT）方法，並適用于所有 Azure 中的*臨時*資料集。 目前，下列資料集可以用於來源轉換：
+
+| 連接器 | 格式 | 資料集/內嵌 |
+| --------- | ------ | -------------- |
+| [Azure Blob 儲存體](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) \(部分機器翻譯\) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Common Data Model （預覽）](format-common-data-model.md#sink-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB （SQL API）](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+
+這些連接器的特定設定位於 [**設定**] 索引標籤中。這些設定的資訊和資料流程腳本範例位於連接器檔中。 
+
+Azure Data Factory 可以存取超過 [90 種原生連接器](connector-overview.md)。 若要將資料從您的資料流程寫入其他來源，請使用複製活動從支援的接收載入該資料。
 
 ## <a name="sink-settings"></a>接收設定
 
 新增接收之後，請透過 [**接收**] 索引標籤進行設定。您可以在這裡挑選或建立接收所寫入的資料集。 以下影片解說文字分隔檔案類型的數個不同接收選項：
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
 ![接收設定](media/data-flow/sink-settings.png "接收設定")
 

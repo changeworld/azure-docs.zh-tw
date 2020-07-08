@@ -7,14 +7,14 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/31/2020
-ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77580622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560167"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 建立、執行及刪除 Azure ML 資源
 
@@ -32,12 +32,12 @@ ms.locfileid: "77580622"
 > * 使用刪除要求來清除資源 
 > * 使用以金鑰為基礎的授權來評分已部署的模型
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您具有系統管理許可權的**Azure 訂**用帳戶。 如果您沒有這類訂用帳戶，請試用[免費或付費的個人訂](https://aka.ms/AMLFree)用帳戶
 - [Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
 - 系統管理 REST 要求會使用服務主體驗證。 依照[設定 Azure Machine Learning 資源和工作流程的驗證](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)中的步驟，在您的工作區中建立服務主體
-- **捲曲**的公用程式。 **捲曲**的程式可在適用于[Linux 的 Windows 子系統](https://aka.ms/wslinstall/)或任何 UNIX 發佈中取得。 在 PowerShell 中，**捲曲**是**WebRequest**的別名，並`curl -d "key=val" -X POST uri`成為。 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` 
+- **捲曲**的公用程式。 **捲曲**的程式可在適用于[Linux 的 Windows 子系統](https://aka.ms/wslinstall/)或任何 UNIX 發佈中取得。 在 PowerShell 中，**捲曲**是**WebRequest**的別名，並 `curl -d "key=val" -X POST uri` 成為 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` 。 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>取出服務主體驗證權杖
 
@@ -53,7 +53,7 @@ ms.locfileid: "77580622"
 
 1. 開啟終端機視窗
 1. 在命令列中輸入下列程式碼
-1. 以您自己的`{your-tenant-id}`值取代`{your-client-id}`、和`{your-client-secret}`。 在本文中，以大括弧括住的字串是您必須以自己的適當值取代的變數。
+1. 以您自己的值取代 `{your-tenant-id}` 、 `{your-client-id}` 和 `{your-client-secret}` 。 在本文中，以大括弧括住的字串是您必須以自己的適當值取代的變數。
 1. 執行命令
 
 ```bash
@@ -91,7 +91,7 @@ curl -h "Authentication: Bearer {your-access-token}" ...more args...
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups?api-version=2019-11-01 -H "Authorization:Bearer {your-access-token}"
 ```
 
-在 Azure 中，許多 REST Api 都會發佈。 每個服務提供者會以自己的步調更新其 API，但不會中斷現有的程式。 服務提供者會使用`api-version`引數來確保相容性。 自`api-version`變數會因服務而異。 例如，如果是 Machine Learning 服務，則目前的 API 版本為`2019-11-01`。 若為儲存體帳戶，則`2019-06-01`為。 針對金鑰保存庫，則`2019-09-01`是。 所有 REST 呼叫都應該將`api-version`引數設定為預期的值。 您可以依賴指定版本的語法和語義，即使 API 持續演進也一樣。 如果您在沒有`api-version`引數的情況下將要求傳送給提供者，回應將會包含人們可讀取的支援值清單。 
+在 Azure 中，許多 REST Api 都會發佈。 每個服務提供者會以自己的步調更新其 API，但不會中斷現有的程式。 服務提供者會使用 `api-version` 引數來確保相容性。 自 `api-version` 變數會因服務而異。 例如，如果是 Machine Learning 服務，則目前的 API 版本為 `2019-11-01` 。 若為儲存體帳戶，則為 `2019-06-01` 。 針對金鑰保存庫，則是 `2019-09-01` 。 所有 REST 呼叫都應該將 `api-version` 引數設定為預期的值。 您可以依賴指定版本的語法和語義，即使 API 持續演進也一樣。 如果您在沒有引數的情況下將要求傳送給提供者 `api-version` ，回應將會包含人們可讀取的支援值清單。 
 
 上述呼叫會產生格式為的壓縮 JSON 回應： 
 
@@ -123,7 +123,7 @@ curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceG
 
 ## <a name="drill-down-into-workspaces-and-their-resources"></a>向下切入工作區和其資源
 
-若要取得資源群組中的工作區集合，請執行下列動作， `{your-subscription-id}`並`{your-resource-group}`以、 `{your-access-token}`和取代： 
+若要取得資源群組中的工作區集合，請執行下列動作， `{your-subscription-id}` 並以、 `{your-resource-group}` 和取代 `{your-access-token}` ： 
 
 ```
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/?api-version=2019-11-01 \
@@ -166,7 +166,7 @@ curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceG
 }
 ```
 
-若要使用工作區中的資源，您會從一般**management.azure.com**伺服器切換到工作區位置特定的 REST API 伺服器。 請注意上述 JSON 回應`discoveryUrl`中的金鑰值。 如果您取得該 URL，您會收到類似下列的回應：
+若要使用工作區中的資源，您會從一般**management.azure.com**伺服器切換到工作區位置特定的 REST API 伺服器。 請注意 `discoveryUrl` 上述 JSON 回應中的金鑰值。 如果您取得該 URL，您會收到類似下列的回應：
 
 ```json
 {
@@ -183,7 +183,7 @@ curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceG
 }
 ```
 
-`api`回應的值是您將用於其他要求之伺服器的 URL。 例如，若要列出實驗，請傳送下列命令。 取代`regional-api-server`為`api`回應的值（例如， `centralus.api.azureml.ms`）。 同時也`your-subscription-id`以`your-resource-group`平常`your-workspace-name`的方式`your-access-token`取代、、和：
+回應的值 `api` 是您將用於其他要求之伺服器的 URL。 例如，若要列出實驗，請傳送下列命令。 取代 `regional-api-server` 為回應的值 `api` （例如， `centralus.api.azureml.ms` ）。 同時也 `your-subscription-id` `your-resource-group` 以平常的方式取代、、 `your-workspace-name` 和 `your-access-token` ：
 
 ```bash
 curl https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -199,11 +199,11 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-請注意，若要列出實驗，一`history/v1.0`開始是以列出模型，路徑的開頭`modelmanagement/v1.0`為。 REST API 分成數個作業群組，每個都有不同的路徑。 下列連結中的 API 參考檔會列出各種作業的作業、參數和回應碼。
+請注意，若要列出實驗，一開始是 `history/v1.0` 以列出模型，路徑的開頭為 `modelmanagement/v1.0` 。 REST API 分成數個作業群組，每個都有不同的路徑。 下列連結中的 API 參考檔會列出各種作業的作業、參數和回應碼。
 
-|區域|Path|參考|
+|區域|路徑|參考|
 |-|-|-|
-|構件|成品/v2.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|Artifacts|成品/v2.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
 |資料存放區|資料存放區/v1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/datastores)|
 |超參數微調|hyperdrive/v1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
 |模型|modelmanagement/v1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
@@ -235,7 +235,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-若要建立或覆寫已命名的計算資源，您將使用 PUT 要求。 `your-subscription-id`在下列中，除了、、和`your-resource-group` `your-workspace-name` `your-access-token`的現在熟悉的替代，替代`your-compute-name`、 `location` `vmSize`、 `vmPriority`、 `scaleSettings`、 `adminUserName`和`adminUserPassword`的值。 如[Machine Learning Compute-建立或更新 SDK 參考](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)的參考中所指定，下列命令會建立專用的單一節點 Standard_D1 （基本的 CPU 計算資源），在30分鐘後相應減少：
+若要建立或覆寫已命名的計算資源，您將使用 PUT 要求。 在下列中，除了、、和的現在熟悉的替代 `your-subscription-id` ， `your-resource-group` 替代、、、 `your-workspace-name` `your-access-token` `your-compute-name` `location` `vmSize` `vmPriority` `scaleSettings` 、 `adminUserName` 和 `adminUserPassword` 的值。 如[Machine Learning Compute-建立或更新 SDK 參考](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)的參考中所指定，下列命令會建立專用的單一節點 Standard_D1 （基本的 CPU 計算資源），在30分鐘後相應減少：
 
 ```bash
 curl -X PUT \
@@ -264,13 +264,13 @@ curl -X PUT \
 ```
 
 > [!Note]
-> 在 Windows 終端機中，您可能必須在傳送 JSON 資料時，將雙引號符號換成引號。 也就是說，之類的文字`"location"`就會`\"location\"`變成。 
+> 在 Windows 終端機中，您可能必須在傳送 JSON 資料時，將雙引號符號換成引號。 也就是說，之類的文字 `"location"` 就會變成 `\"location\"` 。 
 
-成功的要求會得到`201 Created`回應，但請注意，此回應只是表示布建程式已開始。 您必須輪詢（或使用入口網站）以確認其成功完成。
+成功的要求會得到 `201 Created` 回應，但請注意，此回應只是表示布建程式已開始。 您必須輪詢（或使用入口網站）以確認其成功完成。
 
 ### <a name="create-an-experimental-run"></a>建立實驗性執行
 
-若要在實驗內開始執行，您需要一個 ZIP 檔案夾，其中包含您的定型腳本和相關檔案，以及一個執行定義 JSON 檔案。 Zip 資料夾的根目錄中必須有 Python 輸入檔。 例如，將簡單的 Python 程式（如下列所示）壓縮成名為**火車**的資料夾。
+若要在實驗內開始執行，您需要一個 ZIP 檔案夾，其中包含您的定型腳本和相關檔案，以及一個執行定義 JSON 檔案。 Zip 資料夾的根目錄中必須有 Python 輸入檔。 例如，將簡單的 Python 程式（例如下列專案）壓縮成名為**train.zip**的資料夾。
 
 ```python
 # hello.py
@@ -278,7 +278,7 @@ curl -X PUT \
 print("Hello, REST!")
 ```
 
-將此下一個程式碼片段儲存為**定義. json**。 確認「腳本」值符合您剛剛壓縮的 Python 檔案名。 確認「目標」值符合可用計算資源的名稱。 
+將此下一個程式碼片段儲存為**definition.js在上**。 確認「腳本」值符合您剛剛壓縮的 Python 檔案名。 確認「目標」值符合可用計算資源的名稱。 
 
 ```json
 {
@@ -320,7 +320,7 @@ print("Hello, REST!")
 }
 ```
 
-使用`multipart/form-data`內容將這些檔案張貼到伺服器：
+使用內容將這些檔案張貼到伺服器 `multipart/form-data` ：
 
 ```bash
 curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/experiments/{your-experiment-name}/startrun?api-version=2019-11-01 \
@@ -331,7 +331,7 @@ curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscripti
   -F runDefinitionFile=@runDefinition.json
 ```
 
-成功的 POST 要求將會產生`200 OK`狀態，並具有回應主體，其中包含所建立之執行的識別碼：
+成功的 POST 要求將會產生 `200 OK` 狀態，並具有回應主體，其中包含所建立之執行的識別碼：
 
 ```json
 {
@@ -359,7 +359,7 @@ curl
 
 ## <a name="use-rest-to-score-a-deployed-model"></a>使用 REST 來評分已部署的模型
 
-雖然可以部署模型，以便使用服務主體進行驗證，但大部分用戶端對向部署都會使用以金鑰為基礎的驗證。 在 Studio 的 [**端點**] 索引標籤中，您可以在部署的頁面中找到適當的金鑰。 相同的位置會顯示您端點的評分 URI。 您的模型輸入必須模型化為名為`data`的 JSON 陣列：
+雖然可以部署模型，以便使用服務主體進行驗證，但大部分用戶端對向部署都會使用以金鑰為基礎的驗證。 在 Studio 的 [**端點**] 索引標籤中，您可以在部署的頁面中找到適當的金鑰。 相同的位置會顯示您端點的評分 URI。 您的模型輸入必須模型化為名為的 JSON 陣列 `data` ：
 
 ```bash
 curl 'https://{scoring-uri}' \
@@ -372,7 +372,7 @@ curl 'https://{scoring-uri}' \
 
 每個 Azure ML 工作區都有其他四個 Azure 資源的相依性：已啟用管理的容器登錄、金鑰保存庫、Application Insights 資源和儲存體帳戶。 在這些資源存在之前，您無法建立工作區。 如需建立這類資源的詳細資訊，請參閱 REST API 參考。
 
-若要建立工作區，請將與下列類似的呼叫`management.azure.com`放到。 雖然此呼叫需要您設定大量的變數，但其結構與本文所討論的其他呼叫相同。 
+若要建立工作區，請將與下列類似的呼叫放到 `management.azure.com` 。 雖然此呼叫需要您設定大量的變數，但其結構與本文所討論的其他呼叫相同。 
 
 ```bash
 curl -X PUT \
@@ -400,7 +400,7 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 }'
 ```
 
-您應該會在`202 Accepted`傳回的標頭中收到一個回應， `Location`以及一個 URI。 您可以取得此 URI 以取得部署的相關資訊，包括有用的偵錯工具資訊（如果您的其中一個相依資源有問題的話）（例如，如果您忘記在容器登錄上啟用系統管理員存取）。 
+您應該會 `202 Accepted` 在傳回的標頭中收到一個回應，以及一個 `Location` URI。 您可以取得此 URI 以取得部署的相關資訊，包括有用的偵錯工具資訊（如果您的其中一個相依資源有問題的話）（例如，如果您忘記在容器登錄上啟用系統管理員存取）。 
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -411,11 +411,11 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ### <a name="moving-the-workspace"></a>移動工作區
 
 > [!WARNING]
-> 不支援將您的 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新的租使用者。 這麼做可能會導致錯誤。
+> 不支援將 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新租用戶。 這麼做可能會導致錯誤。
 
 ### <a name="deleting-the-azure-container-registry"></a>刪除 Azure Container Registry
 
-Azure Machine Learning 工作區會使用 Azure Container Registry （ACR）進行某些作業。 當 ACR 實例第一次需要時，它會自動建立。
+Azure Machine Learning 工作區會使用 Azure Container Registry (ACR) 進行某些作業。 它會在第一次需要 ACR 執行個體時自動建立一個。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 

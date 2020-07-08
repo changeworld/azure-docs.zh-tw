@@ -10,13 +10,12 @@ ms.author: abnarain
 author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
-ms.date: 10/31/2018
-ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 06/10/2020
+ms.openlocfilehash: 8422d6978c21744696e3d37c34fdd867b014a19e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106605"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84655721"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中建立共用的自我裝載整合執行階段
 
@@ -28,21 +27,19 @@ ms.locfileid: "82106605"
 
 若要使用 Azure Data Factory UI 建立共用的自我裝載 IR，您可採取下列步驟：
 
-1. 在要共用的自我裝載 IR 中，將權限授與您要建立連結 IR 的資料處理站。
+1. 在要共用的自我裝載 IR 中，選取 [**授與許可權給另一個 Data factory** ]，然後在 [整合執行時間設定] 頁面中，選取您要在其中建立連結 IR 的 Data factory。
       
-    ![在 [共用] 索引標籤上的權限授與按鈕](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
-      
-    ![指派權限的選取項目](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    ![在 [共用] 索引標籤上的權限授與按鈕](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
     
-2. 請記下要共用的自我裝載 IR 的資源識別碼。
-      
-   ![資源識別碼的位置](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
-    
+2. 請注意，並複製自我裝載 IR 的上述「資源識別碼」以供共用。
+         
 3. 在已授與權限的資料處理站中，建立新的自我裝載 IR (已連結) 並輸入資源識別碼。
       
-   ![建立已連結自我裝載整合執行階段的按鈕](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
-      
-    ![名稱和資源識別碼方塊](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+    ![用來建立自我裝載整合執行時間的按鈕](media/create-self-hosted-integration-runtime/create-linkedir-1.png)
+   
+    ![建立已連結自我裝載整合執行階段的按鈕](media/create-self-hosted-integration-runtime/create-linkedir-2.png) 
+
+    ![名稱和資源識別碼方塊](media/create-self-hosted-integration-runtime/create-linkedir-3.png)
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>使用 Azure PowerShell 建立共用的自我裝載 IR
 

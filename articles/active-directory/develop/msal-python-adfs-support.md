@@ -12,13 +12,12 @@ ms.workload: identity
 ms.date: 11/23/2019
 ms.author: abpati
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 01d4cb626aabc83117e864b75b49eec63a6c0af0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 2e5df49ea681eefeccaf621739de185767c0aa16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76699541"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558638"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>MSAL for Python 中的 Active Directory 同盟服務支援
 
@@ -35,7 +34,7 @@ Windows Server 中的 Active Directory 同盟服務（AD FS）可讓您使用適
 
 無論您是直接連接到 Active Directory 同盟服務（AD FS）還是透過 Active Directory，都適用下列情況。
 
-當您呼叫`acquire_token_by_authorization_code`或`acquire_token_by_device_flow`時，使用者體驗通常如下所示：
+當您呼叫 `acquire_token_by_authorization_code` 或時 `acquire_token_by_device_flow` ，使用者體驗通常如下所示：
 
 1. 使用者輸入其帳戶識別碼。
 2. Azure AD 會短暫顯示「將您帶到您的組織頁面」的訊息，並將使用者重新導向至身分識別提供者的登入頁面。 登入頁面通常會以組織的標誌進行自訂。
@@ -49,7 +48,7 @@ Windows Server 中的 Active Directory 同盟服務（AD FS）可讓您使用適
 
 無論您是直接連接到 Active Directory 同盟服務（AD FS）還是透過 Active Directory，都適用下列情況。
 
-當您使用`acquire_token_by_username_password`取得權杖時，MSAL Python 會根據使用者名稱，取得要聯繫的識別提供者。 MSAL Python 會從識別提供者取得[SAML 1.1 權杖](reference-saml-tokens.md)，然後提供給傳回 JSON Web 權杖（JWT）的 Azure AD。
+當您使用取得權杖時 `acquire_token_by_username_password` ，MSAL Python 會根據使用者名稱，取得要聯繫的識別提供者。 MSAL Python 會從識別提供者取得[SAML 1.1 權杖](reference-saml-tokens.md)，然後提供給傳回 JSON Web 權杖（JWT）的 Azure AD。
 
 ## <a name="connecting-directly-to-ad-fs"></a>直接連接到 AD FS
 

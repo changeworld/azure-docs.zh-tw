@@ -10,13 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: ead39343cca9943ba55d66509bd9917402efb8cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558555"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>呼叫 web Api 的 Daemon 應用程式-程式碼設定
 
@@ -38,7 +37,7 @@ Daemon 應用程式會使用應用程式許可權，而不是委派的許可權�
 
 因此，應用程式設定中指定的授權單位應該是租使用者（指定租使用者識別碼或與您組織相關聯的功能變數名稱）。
 
-如果您是 ISV，而且想要提供多租使用者工具，您可以`organizations`使用。 但請記住，您也必須向客戶說明如何授與系統管理員同意。 如需詳細資訊，請參閱[要求對整個租使用者的同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 此外，目前在 MSAL 中有一項限制`organizations` ：只有在用戶端認證是應用程式密碼（而非憑證）時，才允許使用。
+如果您是 ISV，而且想要提供多租使用者工具，您可以使用 `organizations` 。 但請記住，您也必須向客戶說明如何授與系統管理員同意。 如需詳細資訊，請參閱[要求對整個租使用者的同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 此外，目前在 MSAL 中有一項限制： `organizations` 只有在用戶端認證是應用程式密碼（而非憑證）時，才允許使用。
 
 ## <a name="configure-and-instantiate-the-application"></a>設定並具現化應用程式
 
@@ -57,7 +56,7 @@ Daemon 應用程式會使用應用程式許可權，而不是委派的許可權�
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[.Net Core 主控台](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)背景程式範例中的[appsettings。](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json)
+從[.Net Core 主控台](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)背景程式範例中的[appsettings.js](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) 。
 
 ```json
 {
@@ -69,11 +68,11 @@ Daemon 應用程式會使用應用程式許可權，而不是委派的許可權�
 }
 ```
 
-您會提供`ClientSecret`或`CertificateName`。 這些設定是獨佔的。
+您會提供 `ClientSecret` 或 `CertificateName` 。 這些設定是獨佔的。
 
 # <a name="python"></a>[Python](#tab/python)
 
-當您使用用戶端密碼建立機密用戶端時， [Python](https://github.com/Azure-Samples/ms-identity-python-daemon)背景程式範例中的[參數. json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json)設定檔如下所示：
+當您使用用戶端密碼建立機密用戶端時， [Python](https://github.com/Azure-Samples/ms-identity-python-daemon)背景程式範例中的設定檔[上的parameters.js](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json)如下所示：
 
 ```Json
 {
@@ -85,7 +84,7 @@ Daemon 應用程式會使用應用程式許可權，而不是委派的許可權�
 }
 ```
 
-當您建立具有憑證的機密用戶端時， [Python](https://github.com/Azure-Samples/ms-identity-python-daemon)背景程式範例中的[參數. json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json)設定檔如下所示：
+當您建立具有憑證的機密用戶端時， [Python](https://github.com/Azure-Samples/ms-identity-python-daemon)背景程式範例中的設定檔[parameters.js](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json)如下所示：
 
 ```Json
 {
@@ -122,7 +121,7 @@ Daemon 應用程式會使用應用程式許可權，而不是委派的許可權�
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 將[IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet 套件新增至您的應用程式。
-在 MSAL.NET 中，機密用戶端應用程式是以`IConfidentialClientApplication`介面表示。
+在 MSAL.NET 中，機密用戶端應用程式是以 `IConfidentialClientApplication` 介面表示。
 在原始程式碼中使用 MSAL.NET 命名空間。
 
 ```csharp
@@ -267,7 +266,7 @@ MSAL.NET 有兩種方法可將已簽署的判斷提示提供給機密用戶端�
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-當您使用`WithClientAssertion`時，您需要提供已簽署的 JWT。 此 advanced 案例詳述于[用戶端判斷](msal-net-client-assertions.md)提示。
+當您使用時 `WithClientAssertion` ，您需要提供已簽署的 JWT。 此 advanced 案例詳述于[用戶端判斷](msal-net-client-assertions.md)提示。
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -276,7 +275,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-當您使用`WithClientClaims`時，MSAL.NET 會產生一個帶正負號的判斷提示，其中包含 Azure AD 所預期的宣告，以及其他您想要傳送的用戶端宣告。
+當您使用時 `WithClientClaims` ，MSAL.NET 會產生一個帶正負號的判斷提示，其中包含 Azure AD 所預期的宣告，以及其他您想要傳送的用戶端宣告。
 這段程式碼會示範如何執行此動作：
 
 ```csharp
@@ -293,7 +292,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 # <a name="python"></a>[Python](#tab/python)
 
-在 MSAL Python 中，您可以使用將由這個`ConfidentialClientApplication`私密金鑰簽署的宣告，來提供用戶端宣告。
+在 MSAL Python 中，您可以使用將由這個私密金鑰簽署的宣告，來提供用戶端宣告 `ConfidentialClientApplication` 。
 
 ```Python
 config = json.load(open(sys.argv[1]))

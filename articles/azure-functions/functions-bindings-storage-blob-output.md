@@ -5,18 +5,18 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: c6e15c9a99a78f0f3637f718b35462fe49fd5ee6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 56c11c2ae867769eb5eab00a2a6a3ecb616449b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560010"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體輸出系結
 
 輸出系結可讓您修改和刪除 Azure 函式中的 blob 儲存體資料。
 
-如需安裝和設定詳細資料的相關資訊，請參閱[總覽](./functions-bindings-storage-blob.md)。
+如需安裝和設定詳細資料的相關資訊，請參閱[概觀](./functions-bindings-storage-blob.md)。
 
 ## <a name="example"></a>範例
 
@@ -73,7 +73,7 @@ public class ResizeImages
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -293,7 +293,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
 
 ---
 
-## <a name="attributes-and-annotations"></a>屬性和注釋
+## <a name="attributes-and-annotations"></a>屬性和註釋
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -323,9 +323,9 @@ public static void Run(
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-C # 腳本不支援屬性。
+C# 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -333,11 +333,11 @@ JavaScript 不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支援屬性。
+Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobOutput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將`dataType`設定`binary`為。 如需詳細資訊，請參閱[輸出範例](#example)。
+`@BlobOutput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱[輸出範例](#example)。
 
 ---
 
@@ -345,28 +345,28 @@ Python 不支援屬性。
 
 您可以使用 `StorageAccount` 屬性來指定類別、方法或參數層級的儲存體帳戶。 如需詳細資訊，請參閱[觸發程序 - 屬性](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations)。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
-下表說明您在*函數 json*檔案和`Blob`屬性中設定的系結設定屬性。
+下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `Blob` 屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type** | n/a | 必須設為 `blob`。 |
-|**方向** | n/a | 必須針對輸出繫結設定為 `out`。 例外狀況在[使用方式](#usage)一節中會加以說明。 |
+|**direction** | n/a | 必須針對輸出繫結設定為 `out`。 例外狀況在[使用方式](#usage)一節中會加以說明。 |
 |**name** | n/a | 表示函式程式碼中 Blob 的變數名稱。  設為 `$return` 以參考函式傳回值。|
 |**path** |**BlobPath** | Blob 容器的路徑。 |
-|**connection** |**建立**| 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將 `connection` 設定為「MyStorage」，則函式執行階段會尋找名稱為「AzureWebJobsMyStorage」的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須為一般用途的儲存體帳戶，不可為[僅限 Blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|**connection** |**[連接]**| 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將 `connection` 設定為「MyStorage」，則函式執行階段會尋找名稱為「AzureWebJobsMyStorage」的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須為一般用途的儲存體帳戶，不可為[僅限 Blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 |n/a | **存取** | 指出您是否將讀取或寫入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
@@ -385,13 +385,13 @@ Python 不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobOutput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將`dataType`設定`binary`為。 如需詳細資訊，請參閱[輸出範例](#example)。
+`@BlobOutput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱[輸出範例](#example)。
 
 ---
 
 ## <a name="exceptions-and-return-codes"></a>例外狀況和傳回碼
 
-| 繫結 |  參考資料 |
+| 繫結 |  參考 |
 |---|---|
 | Blob | [Blob 錯誤碼](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | Bob、資料表、佇列 |  [儲存體錯誤碼](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

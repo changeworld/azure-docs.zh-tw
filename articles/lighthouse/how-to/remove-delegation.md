@@ -2,13 +2,12 @@
 title: 移除委派的存取權
 description: 瞭解如何對已委派給 Azure 委派資源管理的服務提供者的資源，移除其存取權。
 ms.date: 04/24/2020
-ms.topic: conceptual
-ms.openlocfilehash: d0db809eb057f8b4bb48bdf9dd127f4d488f0406
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 2a8024a47b3f7ea461e4ea7648db7003889552cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82149446"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636490"
 ---
 # <a name="remove-access-to-a-delegation"></a>移除委派的存取權
 
@@ -95,4 +94,4 @@ az managedservices assignment delete --assignment <id or full resourceId>
 ## <a name="next-steps"></a>後續步驟
 
 - 了解 [Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)。
-- 前往 Azure 入口網站中的 [我的客戶]****，以[檢視及管理客戶](view-manage-customers.md)。
+- 前往 Azure 入口網站中的 [我的客戶]，以[檢視及管理客戶](view-manage-customers.md)。
