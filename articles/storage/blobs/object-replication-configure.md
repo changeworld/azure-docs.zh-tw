@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 89a4c934a0245c39f6015a43d9de16db800691d8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: HT
+ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170625"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888123"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>設定區塊 Blob 的物件複寫 (預覽)
 
@@ -28,7 +28,9 @@ ms.locfileid: "84170625"
 
 在您設定物件複寫之前，請先建立來源和目的地儲存體帳戶 (如果尚未建立)。 這兩個帳戶都必須為一般用途 v2 儲存體帳戶。 如需詳細資訊，請參閱[建立 Azure 儲存體帳戶](../common/storage-account-create.md)。
 
-此外，請確定已註冊下列功能預覽：
+儲存體帳戶最多可作為兩個目的地帳戶的來源帳戶。 而目的地帳戶可能不會有兩個以上的來源帳戶。 來源和目的地帳戶可能都在不同的區域中。 您可以設定個別的複寫原則，將資料複寫到每個目的地帳戶。
+
+開始之前，請確定您已註冊下列功能預覽：
 
 - [物件複寫 (預覽)](object-replication-overview.md)
 - [Blob 版本設定 (預覽)](versioning-overview.md)
@@ -41,7 +43,7 @@ ms.locfileid: "84170625"
 若要在 Azure 入口網站中建立複寫原則，請遵循下列步驟：
 
 1. 巡覽至 Azure 入口網站的 [來源儲存體帳戶]。
-1. 在 [設定] 下，選取 [物件複寫]。
+1. 在 [ **Blob 服務**] 底下，選取 [**物件**複寫]。
 1. 選取 [設定複寫]。
 1. 選取 [目的地訂用帳戶] 和 [目的地儲存體帳戶]。
 1. 在 [容器配對] 區段中，從來源帳戶中選取 [來源容器]，並從目的地帳戶中選取 [目的地容器]。 每個複寫原則最多可建立 10 組容器配對。

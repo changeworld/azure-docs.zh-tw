@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: be6c1fdc5deb6d541656c198469822dae0a5f7c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 142fdf27fde100385140baacdeba9249b2e7989b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77463202"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887903"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Azure HDInsight 中的企業安全性一般資訊和指導方針
 
@@ -43,9 +43,9 @@ ms.locfileid: "77463202"
 
 * 透過啟用授權的服務來進行資料存取時：
   * 會叫用 Ranger 授權外掛程式並指定要求的內容。
-  * Ranger 會套用針對服務所設定的原則。 如果 Ranger 原則失敗，則會將存取檢查延後至檔案系統。 某些服務（例如 MapReduce）只會檢查正在提交要求的同一位使用者所擁有的檔案/資料夾。 Hive 之類的服務，檢查擁有權是否符合或適當的檔`rwx`系統許可權（）。
+  * Ranger 會套用針對服務所設定的原則。 如果 Ranger 原則失敗，則會將存取檢查延後至檔案系統。 某些服務（例如 MapReduce）只會檢查正在提交要求的同一位使用者所擁有的檔案/資料夾。 Hive 之類的服務，檢查擁有權是否符合或適當的檔案系統許可權（ `rwx` ）。
 
-* 針對 Hive，除了擁有建立/更新/刪除許可權的許可權之外，使用者還應該擁有`rwx`儲存體和所有子目錄上目錄的許可權。
+* 針對 Hive，除了擁有建立/更新/刪除許可權的許可權之外，使用者還應該擁有 `rwx` 儲存體和所有子目錄上目錄的許可權。
 
 * 原則可以套用至群組（較理想），而不是個人。
 
@@ -66,14 +66,14 @@ ms.locfileid: "77463202"
 
 ### <a name="default-hdfs-permissions"></a>預設 HDFS 許可權
 
-* 根據預設，使用者無法存取 HDFS 上的**/** 資料夾（他們必須在儲存體 blob 擁有者角色中，才能成功存取）。
-* 針對 mapreduce 和其他專案的臨時目錄，會建立並提供許可權給`sticky _wx`使用者特定目錄。 使用者可以在底下建立檔案和資料夾，但無法查看其他專案。
+* 根據預設，使用者無法存取 **/** HDFS 上的資料夾（他們必須在儲存體 blob 擁有者角色中，才能成功存取）。
+* 針對 mapreduce 和其他專案的臨時目錄，會建立並提供許可權給使用者特定目錄 `sticky _wx` 。 使用者可以在底下建立檔案和資料夾，但無法查看其他專案。
 
 ### <a name="url-auth"></a>URL 驗證
 
 如果已啟用 url 驗證：
 
-* 此設定會包含 url 驗證中涵蓋的首碼（例如`adl://`）。
+* 此設定會包含 url 驗證中涵蓋的首碼（例如 `adl://` ）。
 * 如果此 url 的存取權，則 Ranger 會檢查使用者是否在允許清單中。
 * Ranger 不會檢查任何精細的原則。
 
@@ -119,7 +119,7 @@ HDInsight 無法依賴內部部署網域控制站或自訂網域控制站，因�
 
 ### <a name="azure-ad-ds-instance"></a>Azure AD DS 實例
 
-* 使用建立實例`.onmicrosoft.com domain`。 如此一來，就不會有多部 DNS 伺服器為網域提供服務。
+* 使用建立實例 `.onmicrosoft.com domain` 。 如此一來，就不會有多部 DNS 伺服器為網域提供服務。
 * 建立 LDAPS 的自我簽署憑證，並將它上傳至 Azure AD DS。
 * 使用對等互連虛擬網路來部署叢集（當您有許多小組部署 HDInsight ESP 叢集時，這會很有説明）。 這可確保您不需要在具有網域控制站的虛擬網路上開啟埠（Nsg）。
 * 適當地設定虛擬網路的 DNS （Azure AD DS 功能變數名稱應解析，而不需要任何主機檔案專案）。
@@ -159,6 +159,17 @@ Azure AD DS 會定期從 Azure AD 同步處理物件。 Azure 入口網站上的
 * Nsg 太過限制，因此無法加入網域。
 * 受控識別沒有足夠的許可權。
 * 在前六個字元（與另一個即時叢集或已刪除的叢集）上，叢集名稱不是唯一的。
+
+## <a name="authentication-setup-and-configuration"></a>驗證安裝和設定
+
+### <a name="user-principal-name-upn"></a>使用者主要名稱 (UPN)
+
+* 所有服務都請使用小寫-Upn 在 ESP 叢集中不區分大小寫，但
+* UPN 前置詞應符合 Azure AD DS 中的 SAMAccountName。 不需要與 [郵件] 欄位相符。
+
+### <a name="ldap-properties-in-ambari-configuration"></a>Ambari 設定中的 LDAP 屬性
+
+如需影響 HDInsight 叢集設定之 Ambari 屬性的完整清單，請參閱[AMBARI LDAP 驗證安裝](https://ambari.apache.org/1.2.1/installing-hadoop-using-ambari/content/ambari-chap2-4.html)。
 
 ## <a name="next-steps"></a>後續步驟
 

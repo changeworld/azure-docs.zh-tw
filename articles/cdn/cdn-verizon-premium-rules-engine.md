@@ -4,15 +4,15 @@ description: 規則引擎可供自訂 Verizon Premium Azure CDN 處理 HTTP 要�
 services: cdn
 author: asudbring
 ms.service: azure-cdn
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: 2e5e4265f30631f8e68d8f9e7156ea578ae85e7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 3c61407b2a0c9d0423d1f856101400771e27d846
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887412"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>使用 Verizon Premium 規則引擎的 Azure CDN 覆寫 HTTP 行為
 

@@ -5,20 +5,23 @@ services: automation
 ms.subservice: update-management
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/11/2019
+ms.date: 06/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: ae8c4f09c0133dde7b0a73b7c2fcd0a28aa22ae3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 2bcf2518ab7f4e5a3648b508e42868fd5bb1a863
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013192"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84817215"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>整合更新管理與 Windows Endpoint Configuration Manager
 
 投資了 Microsoft Endpoint Configuration Manager 以管理電腦、伺服器和行動裝置的客戶，也需仰賴其管理軟體更新的強度和成熟度，作為軟體更新管理 (SUM) 週期的一部分。
 
 您可以透過在 Windows Endpoint Configuration Manager 中建置並預先暫存軟體更新部署，並使用[更新管理](automation-update-management.md)取得所完成更新部署的詳細狀態，藉此報告及更新受控 Windows 伺服器。 如果您將 Windows Endpoint Configuration Manager 用於更新合規性報告，而不是用於管理 Windows 伺服器的更新部署，您可以繼續向 Configuration Manager 報告，同時安全性更新則是使用 Azure 自動化更新管理來進行管理。
+
+>[!NOTE]
+>雖然更新管理支援 Windows Server 2008 R2 的更新評估和修補，但它不支援執行此作業系統的端點所管理的用戶端 Configuration Manager。
 
 ## <a name="prerequisites"></a>必要條件
 

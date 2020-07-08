@@ -5,10 +5,10 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: b6ab3e80c7a27263039de3d371adea3d49ddfcc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75437001"
 ---
 |  | **私人對等互連** | **Microsoft 對等互連** |  **公用對等互連** (已被取代，不適用新線路) |
@@ -18,4 +18,4 @@ ms.locfileid: "75437001"
 | **AS 編號需求** |私密和公用 AS 編號。 您必須擁有公用 AS 編號，才能選擇使用其中一個編號。 |私密和公用 AS 編號。 不過，您必須證明公用 IP 位址的擁有權。 |私密和公用 AS 編號。 不過，您必須證明公用 IP 位址的擁有權。 |
 | **支援的 IP 通訊協定**| IPv4 |  IPv4、IPv6 | IPv4 |
 | **路由介面 IP 位址** |RFC1918 和公用 IP 位址 |在路由註冊中向您註冊的公用 IP 位址。 |在路由註冊中向您註冊的公用 IP 位址。 |
-| **MD5 雜湊支援** |是 |是 |是 |
+| **MD5 雜湊支援** |Yes |是 |是 |

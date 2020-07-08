@@ -1,15 +1,14 @@
 ---
 title: 備份 Azure VM 中的 SQL Server 資料庫
 description: 在本文中，您將瞭解如何使用 Azure 備份來備份 Azure 虛擬機器上的 SQL Server 資料庫。
-ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 3fd94dc6332d96f875c164dfeadff3a8ab2cad4e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84817539"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>備份 Azure VM 中的 SQL Server 資料庫
 
@@ -34,9 +33,10 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
 備份 SQL Server 資料庫之前，請先檢查下列條件：
 
 1. 在與裝載 SQL Server 執行個體的 VM 相同的區域和訂用帳戶中識別或[建立](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)復原服務保存庫。
-2. 確認 VM 具有[網路連線](backup-sql-server-database-azure-vms.md#establish-network-connectivity)。
-3. 確認 SQL Server 資料庫的命名符合 [Azure 備份的資料庫命名方針](#database-naming-guidelines-for-azure-backup)。
-4. 檢查您未針對資料庫啟用任何其他備份解決方案。 在備份資料庫前，請停用所有其他的SQL Server 備份。
+1. 確認 VM 具有[網路連線](backup-sql-server-database-azure-vms.md#establish-network-connectivity)。
+1. 確認 SQL Server 資料庫的命名符合 [Azure 備份的資料庫命名方針](#database-naming-guidelines-for-azure-backup)。
+1. 請確定 Azure Resource Manager （ARM） Vm （或傳統 Vm 的77個字元）的 SQL Server VM 名稱和資源組名的組合長度不能超過84個字元。 之所以有此限制，是因為服務會保留某些字元。
+1. 檢查您未針對資料庫啟用任何其他備份解決方案。 在備份資料庫前，請停用所有其他的SQL Server 備份。
 
 > [!NOTE]
 > 您可以同時為 Azure VM 以及在該 VM 上執行的SQL Server 資料庫啟用 Azure 備份，而不會發生任何衝突。
@@ -67,7 +67,7 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
 
 1. 在 [所有服務] 中，移至 [網路安全性群組]，然後選取網路安全性群組。
 
-1. 選取 [設定] 底下的 [輸出安全性規則]。
+1. 選取 [設定]**** 底下的 [輸出安全性規則]****。
 
 1. 選取 [新增]。 輸入可供用於建立新規則的所有必要詳細資料，如[安全性規則設定](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 請確定 [目的地] 選項已設定為 [服務標籤]，且 [目的地服務標籤] 已設定為 [AzureBackup]。
 
@@ -258,13 +258,13 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
 14. 完成備份原則的編輯之後，請選取 [確定]。
 
 > [!NOTE]
-> 每個記錄備份都會連結到先前的完整備份，以形成復原鏈結。 系統會保留此完整備份，直到最後一個記錄備份的保留期到期為止。 這可能表示完整備份會保留一段額外的時間，以確保可以復原所有記錄。 假設使用者已設定每週進行完整備份、每日進行差異備份和每 2 小時進行記錄備份。 所有這些項目都會保留 30 天。 但是，只有在下一次的完整備份可以使用之後 (也就是 30 + 7 天之後)，才能真正清除/刪除每週的完整備份。 比方說，每週的完整備份會在 11 月 16 日執行。 根據保留原則，備份應該保留到 12 月 16 日為止。 此完整備份的最後一個記錄備份會在下一次排定的完整備份 (也就是 11 月 22 日) 之前進行。 直到 12 月 22 日，也就是此記錄備份到期之前，您都無法刪除 11 月 16 日的完整備份。 因此，11 月 16 日的完整備份會保留到 12 月 22 日。
+> 每個記錄備份都會連結到先前的完整備份，以形成復原鏈結。 系統會保留此完整備份，直到最後一個記錄備份的保留期到期為止。 這可能表示完整備份會保留一段額外的時間，以確保可以復原所有記錄。 假設使用者已設定每週進行完整備份、每日進行差異備份和每 2 小時進行記錄備份。 所有這些項目都會保留 30 天。 但是，只有在下一次的完整備份可以使用之後 (也就是 30 + 7 天之後)，才能真正清除/刪除每週的完整備份。 比方說，每週的完整備份會在 11 月 16 日執行。 根據保留原則，它應該保留到12月16日為止。 此完整備份的最後一個記錄備份會在下一次排定的完整備份 (也就是 11 月 22 日) 之前進行。 直到 12 月 22 日，也就是此記錄備份到期之前，您都無法刪除 11 月 16 日的完整備份。 因此，11 月 16 日的完整備份會保留到 12 月 22 日。
 
 ## <a name="enable-auto-protection"></a>啟用自動保護  
 
 您可以啟用自動保護，將所有現有和未來的資料庫自動備份至獨立 SQL Server 執行個體或 Always On 可用性群組。
 
-* 您可以一次選取不限數量的資料庫，使其受到自動保護。
+* 您一次可以選取自動保護的資料庫數目沒有限制。 探索通常會每隔八小時執行一次。 不過，如果您藉由選取 [重新探索**db** ] 選項來手動執行探索，則可以立即探索並保護新的資料庫。
 * 啟用自動保護時，您無法選擇保護或排除執行個體中的資料庫不受保護。
 * 如果您的執行個體已包含一些受保護的資料庫，即使在您開啟自動保護之後，這些資料庫仍會在其各自的原則之下受到保護。 稍後新增的所有未受保護資料庫，只會具有在啟用自動保護時所定義的單一原則 (列在 [設定備份] 底下)。 不過，您可以在稍後變更與自動保護資料庫建立關聯的原則。  
 

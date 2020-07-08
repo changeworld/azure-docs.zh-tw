@@ -10,21 +10,21 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887717"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>建立 Azure CDN 端點
 此文章說明在現有 CDN 設定檔中建立 [Azure 內容傳遞網路 (CDN)](cdn-overview.md) 端點的所有設定。 建立設定檔與端點之後，即可開始將內容傳遞給您的客戶。 如需建立設定檔與端點的快速入門，請參閱[快速入門：建立 Azure CDN 設定檔和端點](cdn-create-new-endpoint.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 建立 CDN 端點之前，您必須至少建立一個 CDN 設定檔，其中可包含一或多個 CDN 端點。 若要依網際網路網域、Web 應用程式或其他準則來組織您的 CDN 端點，您可以使用多個設定檔。 由於 CDN 定價會套用於 CDN 設定檔層級，因此，如果您想要使用混合的 Azure CDN 定價層，就必須建立多個 CDN 設定檔。 若要建立 CDN 設定檔，請查看[建立新的 CDN 設定檔](cdn-create-new-endpoint.md#create-a-new-cdn-profile)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登入 Azure 入口網站
@@ -36,7 +36,7 @@ ms.locfileid: "81254010"
    
     此時會顯示 [CDN 設定檔] 窗格。
 
-2. 選取 [端點]****。
+2. 選取 [**端點**]。
    
     ![CDN 選取端點](./media/cdn-create-endpoint-how-to/cdn-select-endpoint.png)
    
@@ -44,7 +44,7 @@ ms.locfileid: "81254010"
    
     ![新增端點頁面](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. 針對 [名稱]****，輸入新 CDN 端點的唯一名稱。 這個名稱會用來存取位於網域_ \<端點>_. azureedge.net 的快取資源。
+3. 針對 [名稱]****，輸入新 CDN 端點的唯一名稱。 這個名稱是用來存取位於網域的快取資源 _\<endpointname>_ 。 azureedge.net。
 
 4. 針對 [來源類型]****，選擇下列其中一個來源類型： 
    - 適用於 Azure 儲存體的**儲存體**
@@ -62,7 +62,7 @@ ms.locfileid: "81254010"
    > 某些類型的原始來源 (例如 Azure 儲存體和 Web Apps) 要求主機標頭必須符合原始來源的網域。 除非您的原始來源需要與其網域不同的主機標頭，否則您應該保留預設值。
    > 
     
-8. 針對 [通訊協定]**** 與 [來源連接埠]****，指定通訊協定與連接埠以用來存取原始伺服器上的資源。 至少必須選取一個通訊協定 (HTTP 或 HTTPS)。 使用 CDN 提供的網域（_\<端點>_. azureedge.net）來存取 HTTPS 內容。 
+8. 針對 [通訊協定]**** 與 [來源連接埠]****，指定通訊協定與連接埠以用來存取原始伺服器上的資源。 至少必須選取一個通訊協定 (HTTP 或 HTTPS)。 使用 CDN 提供的網域（ _\<endpointname>_ . azureedge.net）來存取 HTTPS 內容。 
    
    > [!NOTE]
    > [來源連接埠]**** 值只會決定端點用來從原始伺服器擷取資訊的連接埠。 不論 [原始連接埠]**** 的值為何，端點本身只會透過預設 HTTP 和 HTTPS 連接埠 (80 和 443) 提供給終端用戶端使用。  
@@ -88,7 +88,7 @@ ms.locfileid: "81254010"
        - [**大型檔案下載**](cdn-optimization-overview.md#large-file-download)
        - [**動態網站加速**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
-10. 選取 [新增]**** 來建立新的端點。
+10. 選取 [新增] 來建立新的端點。
    
     端點建立之後，即會出現在設定檔的端點清單中。
     

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74085228"
 ---
 要診斷 Microsoft Azure 雲端服務的問題，必須在問題發生時收集服務在虛擬機器上的記錄檔。 您可以視需要使用 AzureLogCollector 延伸模組，從一或多個雲端服務虛擬機器 (從 Web 角色和背景工作角色) 執行一次性的記錄收集作業，並將收集到的檔案傳輸到 Azure 儲存體帳戶，完全不必遠端登入任何虛擬機器。
@@ -26,7 +26,7 @@ ms.locfileid: "74085228"
   * 系統和應用程式事件記錄
   * HTTP 錯誤記錄
   * IIS 記錄
-  * 安裝記錄
+  * 安裝程式記錄
   * 其他系統記錄
 
 在這兩種收集模式中，都可以使用下列結構的集合來指定其他資料收集資料夾：
@@ -36,7 +36,7 @@ ms.locfileid: "74085228"
 * **SearchPattern**：要收集之檔案的名稱模式。 預設值為 “\*”
 * **遞迴**：如果要收集的檔案以遞迴方式位於指定位置底下。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 

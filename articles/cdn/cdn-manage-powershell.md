@@ -11,20 +11,20 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/20/2019
 ms.author: allensu
-ms.openlocfilehash: 22602a1ea64e3dbca34d0c366cf6aa0dc6f35662
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba67ea9455c8d7f077eae87f582f05b5c2672735
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887619"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>使用 PowerShell 管理 Azure CDN
 PowerShell 提供一種最具彈性的方法，以管理您的 Azure CDN 設定檔和端點。  您可以用互動方式使用 PowerShell 或透過撰寫指令碼來自動進行管理工作。  本教學課程會示範數個您可透過 PowerShell 完成的最常見工作，以管理 Azure CDN 設定檔和端點。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -251,7 +251,7 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Start-AzCdnEndpoint
 ```
 
 ## <a name="creating-standard-rules-engine-policy-and-applying-to-an-existing-cdn-endpoint"></a>建立標準規則引擎原則並套用至現有的 CDN 端點
-`New-AzCdnDeliveryRule`、 `New=AzCdnDeliveryRuleCondition`和`New-AzCdnDeliveryRuleAction`可以用來在來自 Microsoft 的 azure cdn 設定檔中設定 azure cdn 標準規則引擎。 
+`New-AzCdnDeliveryRule`、 `New=AzCdnDeliveryRuleCondition` 和 `New-AzCdnDeliveryRuleAction` 可以用來在來自 Microsoft 的 azure cdn 設定檔中設定 Azure Cdn 標準規則引擎。 
 
 ```powershell
 # Create a new http to https redirect rule

@@ -11,20 +11,20 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67593907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887711"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>在 Microsoft Azure CDN 中分析邊緣節點效能
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 邊緣效能分析詳細提供 CDN 的資訊流量和頻寬使用量。 這項資訊可用來產生趨勢統計資料，讓您深入了解您的資產如何放入快取中和傳遞到您的用戶端。 這進而可讓您產生策略來設法最佳化內容傳遞，以及決定應該解決什麼問題以充分利用 CDN。 如此一來，不僅能夠改善資料傳遞的效能，還能夠減少 CDN 成本。
 
 > [!NOTE]
@@ -84,14 +84,14 @@ ms.locfileid: "67593907"
   * 降低營運成本。
 * 加速資料傳遞，因為將直接從 CDN 提供更多要求。
 
-| 欄位 | 描述 |
+| 欄位 | 說明 |
 | --- | --- |
 | 快取效率 |表示從快取提供傳輸的資料百分比。 這個度量會測量所要求內容的快取版本何時直接從 CDN (邊緣伺服器) 提供給要求者 (例如網頁瀏覽器) |
 | 命中率 |表示從快取提供的要求百分比。 這個度量會測量所要求內容的快取版本何時直接從 CDN (邊緣伺服器) 提供給要求者 (例如網頁瀏覽器)。 |
 | 遠端位元組 % - 無快取組態 |表示從原始伺服器提供給 CDN (邊緣伺服器) 的流量百分比，這些流量不會由於「略過快取」功能 (HTTP 規則引擎) 而快取。 |
 | 遠端位元組 % - 過期的快取 |指出由於重新驗證過時內容，而從原始伺服器提供給 CDN (邊緣伺服器) 的流量百分比。 |
 
-#### <a name="usage-metrics"></a>用量度量
+#### <a name="usage-metrics"></a>使用計量
 這些度量的用途在於讓您深入了解下列成本削減措施：
 
 * 透過 CDN 將營運成本降至最低。
@@ -102,7 +102,7 @@ ms.locfileid: "67593907"
 > 
 > 
 
-| 欄位 | 描述 |
+| 欄位 | 說明 |
 | --- | --- |
 | 平均輸出位元組 |表示從 CDN (邊緣伺服器) 提供給要求者 (例如網頁瀏覽器) 的每個要求所平均傳輸的位元組數。 |
 | 無快取組態位元組速率 |表示從 CDN (邊緣伺服器) 提供給的要求者 (例如網頁瀏覽器) 的流量百分比，這些流量不會由於「略過快取」功能而快取。 |
@@ -114,7 +114,7 @@ ms.locfileid: "67593907"
 #### <a name="performance-metrics"></a>效能度量
 這些度量的用途在於追蹤您的流量的整體 CDN 效能。
 
-| 欄位 | 描述 |
+| 欄位 | 說明 |
 | --- | --- |
 | 傳輸速率 |表示內容從 CDN 傳輸至要求者的平均速率。 |
 | Duration |表示將資產傳遞至要求者 (例如網頁瀏覽器) 所花費的平均時間 (毫秒)。 |
@@ -126,7 +126,7 @@ ms.locfileid: "67593907"
 #### <a name="secure-traffic-metrics"></a>安全流量度量
 這些度量的用途在於追蹤 HTTPS 流量的 CDN 效能。
 
-| 欄位 | 描述 |
+| 欄位 | 說明 |
 | --- | --- |
 | 安全快取效率 |表示從快取提供的 HTTPS 要求所傳輸的資料百分比。 這個度量會測量所要求內容的快取版本何時直接從 CDN (邊緣伺服器) 透過 HTTPS 提供給要求者 (例如網頁瀏覽器)。 |
 | 安全傳輸速率 |表示內容從 CDN (邊緣伺服器) 透過 HTTPS 傳輸至要求者 (例如網頁瀏覽器) 的平均速率。 |
@@ -147,7 +147,7 @@ ms.locfileid: "67593907"
    
     邊緣節點分析報告畫面隨即顯示。
 
-| Report | 描述 |
+| 報表 | 描述 |
 | --- | --- |
 | 每日摘要 |可讓您檢視一段指定期間內的每日流量趨勢。 此圖形上的每個橫條都代表特定日期。 橫條大小表示那一天發生的點擊總數。 |
 | 每小時摘要 |可讓您檢視一段指定期間內的每小時流量趨勢。 此圖形上的每個橫條都代表特定日期的單一小時。 橫條大小表示那一小時發生的點擊總數。 |

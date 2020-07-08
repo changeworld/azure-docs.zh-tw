@@ -7,15 +7,15 @@ manager: danielgi
 ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: sohamnc
-ms.openlocfilehash: f4693cdac2d5d3a57987cc692797756314ded11e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: a2522eba17574246ab99a0d47a42f128d5f61ace
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747308"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888645"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>Azure CDN HTTP 原始記錄
 原始記錄可提供豐富的作業與錯誤資訊，這些資訊對於稽核和疑難排解來說很重要。 原始記錄與活動記錄不同。 活動記錄可讓您看見在 Azure 資源上完成的作業。 原始記錄則提供您資源的作業記錄。
@@ -33,7 +33,7 @@ ms.locfileid: "83747308"
 
 若要為 Microsoft 設定檔中的 Azure CDN 設定原始記錄： 
 
-1. 從 Azure 入口網站功能表中選取 [所有資源] >>  **\<your-CDN-profile>** 。
+1. 從 [Azure 入口網站] 功能表中，選取 [**所有資源**]  >>  **\<your-CDN-profile>** 。
 
 2. 在 [監視] 下方選取 [診斷設定]。
 

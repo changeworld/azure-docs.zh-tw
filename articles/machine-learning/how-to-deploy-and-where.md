@@ -5,18 +5,18 @@ description: 瞭解部署 Azure Machine Learning 模型的方式和位置，包�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 04/28/2020
-ms.custom: seoapril2019
-ms.openlocfilehash: f9558431d65a9c0f4fecf34141d9148afa514d86
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 06/12/2020
+ms.custom: seoapril2019, tracking-python
+ms.openlocfilehash: bc9ab6ddf3a9032fd1919b70d830f0d65cdc06ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208562"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84817987"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "82208562"
 
 如需部署工作流程中相關概念的詳細資訊，請參閱[使用 Azure Machine Learning 來管理、部署和監視模型](concept-model-management-and-deployment.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure Machine Learning 工作區。 如需詳細資訊，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "82208562"
 
 + **使用 CLI**
 
-   使用 CLI 時，請使用`-w`或`--workspace-name`參數來指定命令的工作區。
+   使用 CLI 時，請使用 `-w` 或 `--workspace-name` 參數來指定命令的工作區。
 
 + **使用 Visual Studio Code**
 
@@ -63,12 +63,12 @@ ms.locfileid: "82208562"
 
 ## <a name="register-your-model"></a><a id="registermodel"></a>註冊您的模型
 
-已註冊的模型是組成模型的一或多個檔案的邏輯容器。 例如，如果您有儲存在多個檔案中的模型，您可以在工作區中將其註冊為單一模型。 註冊檔案之後，您就可以下載或部署已註冊的模型，並接收您註冊的所有檔案。
+已註冊的模型是組成模型的一或多個檔案所在的邏輯容器。 例如，如果您有儲存在多個檔案中的模型，您可以在工作區中將其註冊為單一模型。 註冊檔案之後，您就可以下載或部署已註冊的模型，並接收您註冊的所有檔案。
 
 > [!TIP]
 > 當您註冊模型時，您會提供雲端位置（從定型回合）或本機目錄的路徑。 此路徑只是為了在註冊過程中，尋找要上傳的檔案。 它不需要符合輸入腳本中使用的路徑。 如需詳細資訊，請參閱[在您的輸入腳本中尋找模型](#load-model-files-in-your-entry-script)檔案。
 
-機器學習模型會在您的 Azure Machine Learning 工作區中註冊。 模型可以來自 Azure Machine Learning 或其他地方。 註冊模型時，您可以選擇性地提供有關模型的中繼資料。 接著`tags` ， `properties`您可以將套用至模型註冊的和字典用於篩選模型。
+機器學習模型會在您的 Azure Machine Learning 工作區中註冊。 模型可以來自 Azure Machine Learning 或其他地方。 註冊模型時，您可以選擇性地提供有關模型的中繼資料。 `tags`接著， `properties` 您可以將套用至模型註冊的和字典用於篩選模型。
 
 下列範例示範如何註冊模型。
 
@@ -77,13 +77,13 @@ ms.locfileid: "82208562"
 本節中的程式碼片段會示範如何從定型回合註冊模型：
 
 > [!IMPORTANT]
-> 若要使用這些程式碼片段，您必須先執行定型回合，而且必須能夠存取`Run`物件（SDK 範例）或執行識別碼值（CLI 範例）。 如需定型模型的詳細資訊，請參閱[設定模型定型的計算目標](how-to-set-up-training-targets.md)。
+> 若要使用這些程式碼片段，您必須先執行定型回合，而且必須能夠存取 `Run` 物件（SDK 範例）或執行識別碼值（CLI 範例）。 如需定型模型的詳細資訊，請參閱[設定模型定型的計算目標](how-to-set-up-training-targets.md)。
 
 + **使用 SDK**
 
   當您使用 SDK 來定型模型時，您可以接收[執行](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py)物件或[AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun)物件，視您如何訓練模型而定。 每個物件都可以用來註冊實驗執行所建立的模型。
 
-  + 從`azureml.core.Run`物件註冊模型：
+  + 從物件註冊模型 `azureml.core.Run` ：
  
     ```python
     model = run.register_model(model_name='sklearn_mnist',
@@ -92,9 +92,9 @@ ms.locfileid: "82208562"
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    `model_path`參數會參考模型的雲端位置。 在此範例中，會使用單一檔案的路徑。 若要在模型註冊中包含多個檔案`model_path` ，請將設定為包含檔案的資料夾路徑。 如需詳細資訊，請參閱[Run. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)檔。
+    `model_path`參數會參考模型的雲端位置。 在此範例中，會使用單一檔案的路徑。 若要在模型註冊中包含多個檔案，請將設定 `model_path` 為包含檔案的資料夾路徑。 如需詳細資訊，請參閱[Run. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)檔。
 
-  + 從`azureml.train.automl.run.AutoMLRun`物件註冊模型：
+  + 從物件註冊模型 `azureml.train.automl.run.AutoMLRun` ：
 
     ```python
         description = 'My AutoML Model'
@@ -104,7 +104,7 @@ ms.locfileid: "82208562"
         print(run.model_id)
     ```
 
-    在此範例中， `metric`未`iteration`指定和參數，因此將會註冊具有最佳主要度量的反復專案。 會`model_id`使用從執行傳回的值，而不是模型名稱。
+    在此範例中， `metric` `iteration` 未指定和參數，因此將會註冊具有最佳主要度量的反復專案。 `model_id`會使用從執行傳回的值，而不是模型名稱。
 
     如需詳細資訊，請參閱[AutoMLRun。 register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-)檔。
 
@@ -116,7 +116,7 @@ ms.locfileid: "82208562"
 
   [!INCLUDE [install extension](../../includes/machine-learning-service-install-extension.md)]
 
-  `--asset-path`參數會參考模型的雲端位置。 在此範例中，會使用單一檔案的路徑。 若要在模型註冊中包含多個檔案`--asset-path` ，請將設定為包含檔案的資料夾路徑。
+  `--asset-path`參數會參考模型的雲端位置。 在此範例中，會使用單一檔案的路徑。 若要在模型註冊中包含多個檔案，請將設定 `--asset-path` 為包含檔案的資料夾路徑。
 
 + **使用 Visual Studio Code**
 
@@ -146,7 +146,7 @@ ms.locfileid: "82208562"
                             description = "MNIST image classification CNN from ONNX Model Zoo",)
     ```
 
-  若要在模型註冊中包含多個檔案`model_path` ，請將設定為包含檔案的資料夾路徑。
+  若要在模型註冊中包含多個檔案，請將設定 `model_path` 為包含檔案的資料夾路徑。
 
 + **使用 CLI**
 
@@ -154,7 +154,7 @@ ms.locfileid: "82208562"
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
 
-  若要在模型註冊中包含多個檔案`-p` ，請將設定為包含檔案的資料夾路徑。
+  若要在模型註冊中包含多個檔案，請將設定 `-p` 為包含檔案的資料夾路徑。
 
 **估計時間**：大約10秒。
 
@@ -185,7 +185,7 @@ Azure ML 支援在單一端點後方部署單一或多個模型。
 
 推斷設定會說明如何設定包含模型的 web 服務。 稍後當您部署模型時，就會用到它。
 
-推斷設定會使用 Azure Machine Learning 環境來定義您的部署所需的軟體相依性。 環境可讓您建立、管理及重複使用定型和部署所需的軟體相依性。 您可以從自訂相依性檔案建立環境，或使用其中一個策劃 Azure Machine Learning 環境。 下列 YAML 是用於推斷的 Conda 相依性檔案範例。 請注意，您必須以 pip 相依性的形式來表示版本 >= 1.0.45 的 azureml 預設值，因為它包含裝載模型做為 web 服務所需的功能。 如果您想要使用自動產生架構，您的輸入腳本也必須匯`inference-schema`入封裝。
+推斷設定會使用 Azure Machine Learning 環境來定義您的部署所需的軟體相依性。 環境可讓您建立、管理及重複使用定型和部署所需的軟體相依性。 您可以從自訂相依性檔案建立環境，或使用其中一個策劃 Azure Machine Learning 環境。 下列 YAML 是用於推斷的 Conda 相依性檔案範例。 請注意，您必須以 pip 相依性的形式來表示版本 >= 1.0.45 的 azureml 預設值，因為它包含裝載模型做為 web 服務所需的功能。 如果您想要使用自動產生架構，您的輸入腳本也必須匯入 `inference-schema` 封裝。
 
 ```YAML
 name: project_environment
@@ -203,7 +203,7 @@ dependencies:
 >
 > 如需詳細資訊，請參閱[瞭解 Conda 和 Pip](https://www.anaconda.com/understanding-conda-and-pip/)。
 >
-> 若要檢查您的相依性是否可透過 Conda 取得`conda search <package-name>` ，請使用命令，或使用[https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo)和[https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)中的封裝索引。
+> 若要檢查您的相依性是否可透過 Conda 取得，請使用 `conda search <package-name>` 命令，或使用和中的封裝索引 [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo) 。
 
 您可以使用相依性檔案來建立環境物件，並將它儲存到您的工作區，以供日後使用：
 
@@ -239,7 +239,7 @@ AZUREML_MODEL_DIR 是在服務部署期間建立的環境變數。 您可以使�
 | 部署 | 環境變數值 |
 | ----- | ----- |
 | 單一模型 | 包含模型的資料夾路徑。 |
-| 多個模型 | 包含所有模型之資料夾的路徑。 模型是以名稱和版本的形式在此資料夾`$MODEL_NAME/$VERSION`中找到（） |
+| 多個模型 | 包含所有模型之資料夾的路徑。 模型是以名稱和版本的形式在此資料夾中找到（ `$MODEL_NAME/$VERSION` ） |
 
 在模型註冊和部署期間，模型會放在 AZUREML_MODEL_DIR 路徑中，並保留其原始檔案名。
 
@@ -255,9 +255,34 @@ file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'skl
 ```
 
 **多個模型範例**
+
+在此案例中，會向工作區註冊兩個模型：
+
+* `my_first_model`：包含一個檔案（ `my_first_model.pkl` ），而且只有一個版本（ `1` ）。
+* `my_second_model`：包含一個檔案（ `my_second_model.pkl` ），而且有兩個版本， `1` 和 `2` 。
+
+部署服務時，會在部署作業中提供這兩個模型：
+
+```python
+first_model = Model(ws, name="my_first_model", version=1)
+second_model = Model(ws, name="my_second_model", version=2)
+service = Model.deploy(ws, "myservice", [first_model, second_model], inference_config, deployment_config)
+```
+
+在裝載服務的 Docker 映射中， `AZUREML_MODEL_DIR` 環境變數會包含模型所在的目錄。
+在此目錄中，每個模型都位於的目錄路徑中 `MODEL_NAME/VERSION` 。 其中， `MODEL_NAME` 是已註冊模型的名稱，而 `VERSION` 是模型的版本。 組成已註冊模型的檔案會儲存在這些目錄中。
+
+在此範例中，路徑會是 `$AZUREML_MODEL_DIR/my_first_model/1/my_first_model.pkl` 和 `$AZUREML_MODEL_DIR/my_second_model/2/my_second_model.pkl` 。
+
+
 ```python
 # Example when the model is a file, and the deployment contains multiple models
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
+first_model_name = 'my_first_model'
+first_model_version = '1'
+first_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), first_model_name, first_model_version, 'my_first_model.pkl')
+second_model_name = 'my_second_model'
+second_model_version = '2'
+second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_name, second_model_version, 'my_second_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path
@@ -277,7 +302,7 @@ model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 
 * `pyspark`
 * 標準 Python 物件
 
-若要使用架構產生，請在相依性`inference-schema`檔案中包含開放原始碼套件。 如需此套件的詳細資訊， [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)請參閱。 在`input_sample`和`output_sample`變數中定義輸入和輸出範例格式，其代表 web 服務的要求和回應格式。 在函式的 input 和 output 函數裝飾專案`run()`中使用這些範例。 下列 scikit-learn 學習範例會使用架構產生。
+若要使用架構產生，請在相依性檔案中包含開放原始碼 `inference-schema` 套件。 如需此套件的詳細資訊，請參閱 [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) 。 在和變數中定義輸入和輸出範例 `input_sample` 格式 `output_sample` ，其代表 web 服務的要求和回應格式。 在函式的 input 和 output 函數裝飾專案中使用這些範例 `run()` 。 下列 scikit-learn 學習範例會使用架構產生。
 
 ##### <a name="example-entry-script"></a>範例專案腳本
 
@@ -322,7 +347,9 @@ def run(data):
         return error
 ```
 
-下列範例示範如何使用資料框架，將輸入資料定義為`<key: value>`字典。 此方法支援從 Power BI 使用已部署的 web 服務。 （[深入瞭解如何使用 Power BI 的 web 服務](https://docs.microsoft.com/power-bi/service-machine-learning-integration)）。
+##### <a name="power-bi-compatible-endpoint"></a>Power BI 相容端點 
+
+下列範例示範如何使用資料框架，將輸入資料定義為 `<key: value>` 字典。 此方法支援從 Power BI 使用已部署的 web 服務。 （[深入瞭解如何使用 Power BI 的 web 服務](https://docs.microsoft.com/power-bi/service-machine-learning-integration)）。
 
 ```python
 import json
@@ -358,8 +385,9 @@ input_sample = pd.DataFrame(data=[{
 # This is an integer type sample. Use the data type that reflects the expected result.
 output_sample = np.array([0])
 
-
-@input_schema('data', PandasParameterType(input_sample))
+# To indicate that we support a variable length of data input,
+# set enforce_shape=False
+@input_schema('data', PandasParameterType(input_sample, enforce_shape=False))
 @output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
@@ -378,7 +406,7 @@ def run(data):
 * [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
-* [Binary Data](#binary)
+* [二進位資料](#binary)
 * [CORS](#cors)
 
 ### <a name="3-define-inference-configuration"></a><a id="script"></a>3. 定義推斷設定
@@ -496,7 +524,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 ```
 
 > [!TIP]
-> 若要保存分析所傳回的資訊，請使用模型的標記或屬性。 使用標記或屬性，會將資料與模型儲存在模型登錄中。 下列範例示範如何新增包含`requestedCpu`和`requestedMemoryInGb`資訊的新標記：
+> 若要保存分析所傳回的資訊，請使用模型的標記或屬性。 使用標記或屬性，會將資料與模型儲存在模型登錄中。 下列範例示範如何新增包含和資訊的新 `requestedCpu` 標記 `requestedMemoryInGb` ：
 >
 > ```python
 > model.add_tags({'requestedCpu': details['requestedCpu'],
@@ -531,7 +559,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
-本機、Azure 容器實例和 AKS web 服務的類別可以從下列來源`azureml.core.webservice`匯入：
+本機、Azure 容器實例和 AKS web 服務的類別可以從下列來源匯入 `azureml.core.webservice` ：
 
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
@@ -560,7 +588,7 @@ print(service.state)
 
 #### <a name="using-the-cli"></a>使用 CLI
 
-若要使用 CLI 部署模型，請使用下列命令。 以`mymodel:1`已註冊模型的名稱和版本取代：
+若要使用 CLI 部署模型，請使用下列命令。 `mymodel:1`以已註冊模型的名稱和版本取代：
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
@@ -576,13 +604,13 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 下表描述不同的服務狀態：
 
-| Webservice 狀態 | 描述 | 最終狀態？
+| Webservice 狀態 | Description | 最終狀態？
 | ----- | ----- | ----- |
-| 正在 | 服務正在進行部署。 | 否 |
-| Unhealthy | 服務已部署，但目前無法連線。  | 否 |
-| 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | 否 |
-| Failed | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
-| Healthy | 服務狀況良好，且端點可供使用。 | 是 |
+| 正在 | 服務正在進行部署。 | No |
+| 狀況不良 | 服務已部署，但目前無法連線。  | No |
+| 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | No |
+| 失敗 | 因為發生錯誤或損毀，所以服務無法部署。 | Yes |
+| Healthy | 服務狀況良好，且端點可供使用。 | Yes |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>計算實例 web 服務（開發/測試）
 
@@ -608,7 +636,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 主要差異在於**金鑰是靜態的，而且可以手動**重新產生，而且**權杖必須在到期時**重新整理。 Azure 容器實例和 Azure Kubernetes Service 部署的 web 服務支援以金鑰為基礎的驗證，而權杖型驗證**僅**適用于 Azure Kubernetes Service 部署。 如需詳細資訊和特定程式碼範例，請參閱操作[說明](how-to-setup-authentication.md#web-service-authentication)驗證。
 
 > [!TIP]
-> 您可以在部署服務之後，取得架構 JSON 檔。 使用已部署 web 服務的 [ [swagger_uri] 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)（例如， `service.swagger_uri`）來取得本機 web 服務之 swagger 檔案的 uri。
+> 您可以在部署服務之後，取得架構 JSON 檔。 使用已部署 web 服務的 [ [swagger_uri] 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)（例如， `service.swagger_uri` ）來取得本機 Web 服務之 SWAGGER 檔案的 uri。
 
 ### <a name="request-response-consumption"></a>要求-回應耗用量
 
@@ -642,7 +670,7 @@ print(response.json())
 
 ### <a name="web-service-schema-openapi-specification"></a>Web 服務架構（OpenAPI 規格）
 
-如果您在部署中使用自動產生架構，您可以使用[swagger_uri 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)取得服務的 OpenAPI 規格位址。 （例如， `print(service.swagger_uri)`）。使用 GET 要求，或在瀏覽器中開啟 URI 以取得規格。
+如果您在部署中使用自動產生架構，您可以使用[swagger_uri 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)取得服務的 OpenAPI 規格位址。 （例如， `print(service.swagger_uri)` ）。使用 GET 要求，或在瀏覽器中開啟 URI 以取得規格。
 
 下列 JSON 檔是針對部署所產生的架構（OpenAPI 規格）範例：
 
@@ -925,13 +953,18 @@ output = service.run(input_payload)
 print(output)
 ```
 
-注意：這些相依性會包含在預先建立的 sklearn 推斷容器中：
+注意：這些相依性包含在預先建立的 scikit-learn-學習推斷容器中：
 
 ```yaml
+    - dill
     - azureml-defaults
     - inference-schema[numpy-support]
     - scikit-learn
     - numpy
+    - joblib
+    - pandas
+    - scipy
+    - sklearn_pandas
 ```
 
 ## <a name="package-models"></a>封裝模型
@@ -961,24 +994,24 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-建立封裝之後，您可以使用`package.pull()`將映射提取到您的本機 Docker 環境。 此命令的輸出會顯示映射的名稱。 例如： 
+建立封裝之後，您可以使用 `package.pull()` 將映射提取到您的本機 Docker 環境。 此命令的輸出會顯示映射的名稱。 例如： 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
-下載模型之後，請使用`docker images`命令來列出本機映射：
+下載模型之後，請使用 `docker images` 命令來列出本機映射：
 
 ```text
 REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
 myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43 GB
 ```
 
-若要根據此映射啟動本機容器，請使用下列命令，從 shell 或命令列啟動已命名的容器。 將`<imageid>`值取代為`docker images`命令所傳回的映射識別碼。
+若要根據此映射啟動本機容器，請使用下列命令，從 shell 或命令列啟動已命名的容器。 將值取代為 `<imageid>` 命令所傳回的映射識別碼 `docker images` 。
 
 ```bash
 docker run -p 6789:5001 --name mycontainer <imageid>
 ```
 
-此命令會啟動名為`myimage`的最新映射版本。 它會將本機埠6789對應至 web 服務所接聽之容器中的埠（5001）。 它也會將名稱`mycontainer`指派給容器，讓容器更容易停止。 啟動容器之後，您可以將要求提交至`http://localhost:6789/score`。
+此命令會啟動名為的最新映射版本 `myimage` 。 它會將本機埠6789對應至 web 服務所接聽之容器中的埠（5001）。 它也會將名稱指派 `mycontainer` 給容器，讓容器更容易停止。 啟動容器之後，您可以將要求提交至 `http://localhost:6789/score` 。
 
 ### <a name="generate-a-dockerfile-and-dependencies"></a>產生 Dockerfile 和相依性
 
@@ -996,23 +1029,23 @@ print("Username:", acr.username)
 print("Password:", acr.password)
 ```
 
-此程式碼會將建立映射所需的檔案下載`imagefiles`到目錄。 儲存檔案中所包含的 Dockerfile 會參考存放在 Azure container registry 中的基底映射。 當您在本機 Docker 安裝上建立映射時，您必須使用位址、使用者名稱和密碼來向登錄進行驗證。 使用下列步驟，使用本機 Docker 安裝來建立映射：
+此程式碼會將建立映射所需的檔案下載到 `imagefiles` 目錄。 儲存檔案中所包含的 Dockerfile 會參考存放在 Azure container registry 中的基底映射。 當您在本機 Docker 安裝上建立映射時，您必須使用位址、使用者名稱和密碼來向登錄進行驗證。 使用下列步驟，使用本機 Docker 安裝來建立映射：
 
-1. 在 shell 或命令列會話中，使用下列命令來向 Azure container registry 驗證 Docker。 以`<address>`所`<username>`取出的`<password>`值取代、和`package.get_container_registry()`。
+1. 在 shell 或命令列會話中，使用下列命令來向 Azure container registry 驗證 Docker。 `<address>` `<username>` `<password>` 以所取出的值取代、和 `package.get_container_registry()` 。
 
     ```bash
     docker login <address> -u <username> -p <password>
     ```
 
-2. 若要建立映射，請使用下列命令。 將`<imagefiles>`取代為`package.save()`儲存檔案的目錄路徑。
+2. 若要建立映射，請使用下列命令。 將取代為儲存檔案的 `<imagefiles>` 目錄路徑 `package.save()` 。
 
     ```bash
     docker build --tag myimage <imagefiles>
     ```
 
-    此命令會將映射名稱設定`myimage`為。
+    此命令會將映射名稱設定為 `myimage` 。
 
-若要驗證映射是否已建立，請使用`docker images`命令。 您應該會在`myimage`清單中看到影像：
+若要驗證映射是否已建立，請使用 `docker images` 命令。 您應該會 `myimage` 在清單中看到影像：
 
 ```text
 REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
@@ -1026,7 +1059,7 @@ myimage         latest              739f22498d64        3 minutes ago       1.43
 docker run -p 6789:5001 --name mycontainer myimage:latest
 ```
 
-此命令會啟動名為`myimage`的最新映射版本。 它會將本機埠6789對應至 web 服務所接聽之容器中的埠（5001）。 它也會將名稱`mycontainer`指派給容器，讓容器更容易停止。 啟動容器之後，您可以將要求提交至`http://localhost:6789/score`。
+此命令會啟動名為的最新映射版本 `myimage` 。 它會將本機埠6789對應至 web 服務所接聽之容器中的埠（5001）。 它也會將名稱指派 `mycontainer` 給容器，讓容器更容易停止。 啟動容器之後，您可以將要求提交至 `http://localhost:6789/score` 。
 
 ### <a name="example-client-to-test-the-local-container"></a>測試本機容器的範例用戶端
 
@@ -1081,9 +1114,9 @@ docker kill mycontainer
 
 ### <a name="binary-data"></a>二進位資料
 
-如果您的模型接受二進位資料（例如影像），您必須修改`score.py`用於部署的檔案，以接受原始的 HTTP 要求。 若要接受原始資料，請`AMLRequest`在您的輸入腳本中使用類別`@rawhttp` ，並將`run()`裝飾專案新增至函式。
+如果您的模型接受二進位資料（例如影像），您必須修改 `score.py` 用於部署的檔案，以接受原始的 HTTP 要求。 若要接受原始資料，請 `AMLRequest` 在您的輸入腳本中使用類別，並將裝飾專案新增至函式 `@rawhttp` `run()` 。
 
-以下是`score.py`可接受二進位資料的範例：
+以下是 `score.py` 可接受二進位資料的範例：
 
 ```python
 from azureml.contrib.services.aml_request import AMLRequest, rawhttp
@@ -1129,7 +1162,7 @@ import requests
 # Load image data
 data = open('example.jpg', 'rb').read()
 # Post raw data to scoring URI
-res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
+res = requests.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
 ```
 
 <a id="cors"></a>
@@ -1138,9 +1171,9 @@ res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'app
 
 跨原始資源分享是允許從另一個網域要求網頁上資源的一種方式。 CORS 的運作方式是透過與用戶端要求一起傳送的 HTTP 標頭，並傳回服務回應。 如需 CORS 和有效標頭的詳細資訊，請參閱維琪百科中的[跨原始資源分享](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
 
-若要將您的模型部署設定為支援 CORS `AMLResponse` ，請在您的輸入腳本中使用類別。 這個類別可讓您在回應物件上設定標頭。
+若要將您的模型部署設定為支援 CORS，請 `AMLResponse` 在您的輸入腳本中使用類別。 這個類別可讓您在回應物件上設定標頭。
 
-下列範例會從專案`Access-Control-Allow-Origin`腳本設定回應的標頭：
+下列範例會 `Access-Control-Allow-Origin` 從專案腳本設定回應的標頭：
 
 ```python
 from azureml.contrib.services.aml_request import AMLRequest, rawhttp
@@ -1189,8 +1222,8 @@ def run(request):
 
 * [如何使用自訂 Docker 映射部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑難排解](how-to-troubleshoot-deployment.md)
-* [透過 Azure Machine Learning 使用 TLS 來保護 web 服務](how-to-secure-web-service.md)
-* [使用部署為 Web 服務的 Azure Machine Learning 模型](how-to-consume-web-service.md)
+* [使用 TLS 來透過 Azure Machine Learning 保護 Web 服務](how-to-secure-web-service.md)
+* [使用部署為 web 服務的 Azure Machine Learning 模型](how-to-consume-web-service.md)
 * [使用 Application Insights 監視您的 Azure Machine Learning 模型](how-to-enable-app-insights.md)
 * [在生產環境中收集模型資料](how-to-enable-data-collection.md)
 * [建立模型部署的事件警示和觸發程式](how-to-use-event-grid.md)

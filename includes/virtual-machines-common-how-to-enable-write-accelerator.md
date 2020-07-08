@@ -9,10 +9,10 @@ ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
 ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74566225"
 ---
 寫入加速器在具有 Azure 受控磁碟的進階儲存體上，是 M 系列虛擬機器 (VM) 專屬的磁碟功能。 如同名稱所示，這個功能的目的是針對 Azure 進階儲存體改善寫入的 I/O 延遲。 需要記錄檔更新，才能以高效能的方式保存到新式資料庫的磁碟時，寫入加速器是最理想的選擇。
@@ -60,7 +60,7 @@ IOPS 限制是針對每部虛擬機器而「不是」** 每個磁碟。 所有�
 
 接下來的幾節將說明如何在 Azure 進階儲存體 VHD 上啟用寫入加速器。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 以下先決條件適用於本文撰寫時的寫入加速器使用：
 

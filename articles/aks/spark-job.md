@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 2e399c1a7b0f9bbc2aac375fe8af969a2b9e0e48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 962d0d6dd51bb30f5df9ca0b609acf932777ebcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80877622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887529"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 上執行 Apache Spark 作業
 
-[Apache Spark][apache-spark]是大規模資料處理的快速引擎。 從 [Spark 2.3.0 版][spark-latest-release] 開始，Apache Spark 支援與 Kubernetes 叢集的原生整合。 Azure Kubernetes Service (AKS) 是在 Azure 中執行的受控 Kubernetes 環境。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上準備和執行 Apache Spark 作業的做法。
+[Apache Spark][apache-spark]是大規模資料處理的快速引擎。 從 [Spark 2.3.0 版][spark-kubernetes-earliest-version] 開始，Apache Spark 支援與 Kubernetes 叢集的原生整合。 Azure Kubernetes Service (AKS) 是在 Azure 中執行的受控 Kubernetes 環境。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上準備和執行 Apache Spark 作業的做法。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 為了要完成本文中的步驟，您需要下列項目。
 
@@ -25,6 +25,7 @@ ms.locfileid: "80877622"
 * [Docker Hub][docker-hub] 帳戶，或 [Azure Container Registry][acr-create]。
 * 在您的開發系統上[安裝][azure-cli] Azure CLI。
 * 在您的系統上安裝 [JDK 8][java-install]。
+* 已在您的系統上安裝[Apache Maven][maven-install] 。
 * 在您的系統上安裝 SBT ([Scala 建置工具][sbt-install])。
 * 在您的系統上安裝 Git 命令列工具。
 
@@ -46,7 +47,7 @@ az group create --name mySparkCluster --location eastus
 az ad sp create-for-rbac --name SparkSP
 ```
 
-建立 AKS 叢集，其中包含大小`Standard_D3_v2`為的節點，以及做為服務主體和用戶端秘密參數傳遞的 appId 和密碼值。
+建立 AKS 叢集，其中包含大小為的節點 `Standard_D3_v2` ，以及做為服務主體和用戶端秘密參數傳遞的 appId 和密碼值。
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
@@ -293,7 +294,7 @@ Pi is roughly 3.152155760778804
 
 在上述範例中，Spark jar 檔案已上傳至 Azure 儲存體。 另一個選項是將 jar 檔案封裝至自訂建置的 Docker 映像。
 
-若要這樣做，請找出 Spark 映像 (位於 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` 目錄) 的 `dockerfile`。 在和`ADD` `ENTRYPOINT`宣告之間`WORKDIR`的某處`jar`新增 Spark 作業的語句。
+若要這樣做，請找出 Spark 映像 (位於 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` 目錄) 的 `dockerfile`。 `ADD`在和宣告之間的某處新增 Spark 作業的語句 `jar` `WORKDIR` `ENTRYPOINT` 。
 
 將 jar 路徑更新為您的開發系統上 `SparkPi-assembly-0.1.0-SNAPSHOT.jar` 檔案的位置。 您也可以使用自己的自訂 jar 檔案。
 
@@ -340,9 +341,10 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
 [java-install]: https://aka.ms/azure-jdks
+[maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
-[spark-latest-release]: https://spark.apache.org/releases/spark-release-2-3-0.html
+[spark-kubernetes-earliest-version]: https://spark.apache.org/releases/spark-release-2-3-0.html
 [spark-quickstart]: https://spark.apache.org/docs/latest/quick-start.html
 
 

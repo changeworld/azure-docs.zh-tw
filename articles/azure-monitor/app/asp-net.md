@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 設定 ASP.NET 的 Web 應用程式分�
 description: 針對裝載在內部部署環境或 Azure 的 ASP.NET 網站，設定效能、可用性及使用者行為分析工具。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: aa4449a0229ba156dbeed37c10ed21f8b1b5f201
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 7dd60be0a3f2ee7e1a0d306fa007bed166746115
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84886825"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>設定 ASP.NET 網站的 Application Insights
 
@@ -54,7 +54,7 @@ Application Insights 設定畫面：
 
  在偵錯期間和您發佈應用程式之後，遙測會傳送至 [Azure 入口網站](https://portal.azure.com)。
 > [!NOTE]
-> 如果您不想在您偵錯時將遙測傳送到入口網站，而只將 Application Insights SDK 新增至您的應用程式，但不在入口網站中設定資源。 您在偵錯時可在 Visual Studio 中檢視遙測。 稍後，您可以回到此設定頁面，或等到部署您的應用程式之後，[在執行階段開啟遙測](../../azure-monitor/app/monitor-performance-live-website-now.md)。
+> 如果您不想在您偵錯時將遙測傳送到入口網站，而只將 Application Insights SDK 新增至您的應用程式，但不在入口網站中設定資源。 您在偵錯時可在 Visual Studio 中檢視遙測。 稍後，您可以回到此設定頁面，或等到部署您的應用程式之後，[在執行階段開啟遙測](../../azure-monitor/app/status-monitor-v2-overview.md)。
 
 ## <a name="step-2-run-your-app"></a><a name="run"></a> 步驟 2：執行您的應用程式
 按 F5 執行您的應用程式。 開啟不同的頁面來產生一些遙測。

@@ -5,38 +5,67 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 06/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 190c6ccb13a0853913c96ac5d2d3f5faf4594433
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393159"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887919"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure 事件方格中的系統主題
-當您建立 Azure 事件來源的第一個事件訂用帳戶時，Azure 事件方格服務會建立系統主題。 目前，事件方格不會針對在 Mar、15、2020之前建立的主題來源建立系統主題。 針對您在此日期或之後建立的所有主題來源，事件方格會自動建立系統主題。 本文說明 Azure 事件方格中的**系統主題**。
+事件方格中的系統主題代表 Azure 服務（例如 Azure 儲存體和 Azure 事件中樞）所發佈的一個或多個事件。 例如，系統主題可能代表**所有 blob 事件**，或是只為**特定儲存體帳戶**發佈**的 blob 和** **blob 刪除**事件。 在此範例中，將 blob 上傳至儲存體帳戶時，Azure 儲存體服務會將**blob 建立**的事件發佈至事件方格中的系統主題，然後將事件轉寄給接收和處理事件的主題[訂閱者](event-handlers.md)。 
 
-> [!NOTE]
-> 此功能目前未針對 Azure Government 雲端啟用。 
+> [!NOTE] 
+> 只有 Azure 服務可以將事件發佈至系統主題。 因此，您不會取得可用來發佈事件的端點或便捷鍵，就像自訂主題或網域一樣。
 
-## <a name="overview"></a>總覽
-當您建立 Azure 事件來源的第一個事件訂用帳戶（例如 Azure 儲存體帳戶）時，訂用帳戶的布建程式會建立**EventGrid/systemTopics**類型的其他資源。 刪除 Azure 事件來源的最後一個事件訂用帳戶時，系統主題會自動刪除。
+## <a name="azure-services-that-support-system-topics"></a>支援系統主題的 Azure 服務
+以下是目前支援在其上建立系統主題的 Azure 服務清單。
 
-系統主題不適用於自訂主題案例，也就是「事件方格」主題和「事件方格」網域。 
+- [Azure 應用程式組態](event-schema-app-configuration.md)
+- [Azure App Service](event-schema-app-service.md)
+- [Azure Blob 儲存體](event-schema-blob-storage.md)
+- [Azure Container Registry](event-schema-container-registry.md)
+- [Azure 事件中樞](event-schema-event-hubs.md)
+- [Azure IoT 中心](event-schema-iot-hub.md)
+- [Azure 金鑰保存庫](event-schema-key-vault.md)
+- [Azure Machine Learning](event-schema-machine-learning.md)
+- [Azure 地圖服務](event-schema-azure-maps.md)
+- [Azure 媒體服務](event-schema-media-services.md)
+- [Azure 資源群組](event-schema-resource-groups.md)
+- [Azure 服務匯流排](event-schema-service-bus.md)
+- [Azure SignalR](event-schema-azure-signalr.md)
+- [Azure 訂用帳戶](event-schema-subscriptions.md)
 
-## <a name="location"></a>位置
+## <a name="system-topics-as-azure-resources"></a>做為 Azure 資源的系統主題
+在過去，系統主題是隱含的，而且不會為了簡單起見而公開。 系統主題現在會顯示為 Azure 資源，並提供下列功能：
+
+- [查看 Azure 入口網站中的系統主題](create-view-manage-system-topics.md#view-all-system-topics)
+- 匯出 Azure 入口網站中系統主題和事件訂閱 Resource Manager 範本
+- [設定系統主題的診斷記錄](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-a-system-topic)
+- 設定發佈和傳遞失敗的警示 
+
+## <a name="lifecycle-of-system-topics"></a>系統主題的生命週期
+您可以透過兩種方式建立系統主題： 
+
+- 在[Azure 資源上建立事件訂用帳戶作為擴充功能資源](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate)，這會自動建立名稱為的系統主題，格式為： `<Azure resource name>-<GUID>` 。 當主題的最後一個事件訂用帳戶被刪除時，會自動刪除以這種方式建立的系統主題。 
+- 建立 Azure 資源的系統主題，然後建立該系統主題的事件訂用帳戶。 當您使用這個方法時，可以指定系統主題的名稱。 刪除最後一個事件訂用帳戶時，系統主題不會自動刪除。 您必須手動刪除它。 
+
+    當您使用 Azure 入口網站時，一律會使用這個方法。 當您使用 Azure 資源的 [ [**事件**] 頁面](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage)建立事件訂用帳戶時，系統會先建立該主題，然後才會建立該主題的訂用帳戶。 您可以先使用[**事件方格系統主題**頁面](create-view-manage-system-topics.md#create-a-system-topic)明確建立系統主題，然後建立該主題的訂用帳戶。 
+
+當您使用[CLI](create-view-manage-system-topics-cli.md)、 [REST](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate)或[Azure Resource Manager 範本](create-view-manage-system-topics-arm.md)時，您可以選擇上述任一種方法。 我們建議您先建立系統主題，然後在主題上建立訂用帳戶，因為這是建立系統主題的最新方式。
+
+如果您已設定 Azure 原則，讓事件方格服務無法建立它，則系統主題建立會失敗。 例如，您可能會有一個原則，允許只在訂用帳戶中建立特定類型的資源（例如： Azure 儲存體、Azure 事件中樞等）。 
+
+## <a name="location-and-resource-group-for-a-system-topic"></a>系統主題的位置和資源群組
 針對特定區域/位置中的 Azure 事件來源，系統主題會建立在與 Azure 事件來源相同的位置中。 例如，如果您為美國東部的 Azure blob 儲存體建立事件訂用帳戶，系統主題會建立在美國東部。 對於全域 Azure 事件來源（例如 Azure 訂用帳戶、資源群組或 Azure 地圖服務），事件方格會在**全域**位置中建立系統主題。 
 
-## <a name="resource-group"></a>資源群組 
 一般而言，系統主題會建立在 Azure 事件來源所在的相同資源群組中。 針對在 Azure 訂用帳戶範圍建立的事件訂閱，系統主題會建立在資源群組**預設-EventGrid**之下。 如果資源群組不存在，Azure 事件方格會先建立它，再建立系統主題。 
-
-當您嘗試使用儲存體帳戶刪除資源群組時，您會在受影響的資源清單中看到 [系統] 主題。  
-
-![刪除資源群組](./media/system-topics/delete-resource-group.png)
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章： 
 
-- [自訂主題](custom-topics.md)
-- [網域](event-domains.md)
+- [使用 Azure 入口網站建立、查看和管理系統主題](create-view-manage-system-topics.md)。
+- [使用 Azure CLI 建立、查看和管理事件方格系統主題](create-view-manage-system-topics-cli.md)
+- [使用 Azure Resource Manager 範本來建立 Event Grid 系統主題](create-view-manage-system-topics-arm.md)

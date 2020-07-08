@@ -11,18 +11,18 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 0b0eec2425f8a1663eb7a09c83a6bad037d1d79c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594098"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84886063"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>使用 Azure CDN 進階 HTTP 報告分析使用量統計資料
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本文件說明 Microsoft Azure CDN 中的進階 HTTP 報告。 這些報告提供有關 CDN 活動的詳細資訊。
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "67594098"
 
 下面提供每一種以地圖為基礎的地理位置報告的簡短描述。
 
-| 報表名稱 | 描述 |
+| 報表名稱 | Description |
 | --- | --- |
 | 世界地圖 |此報告可讓您檢視全球對您的 CDN 內容的需求。 全球地圖上的每個國家/地區都會以色彩標示，以指出來自該區域的點擊百分比。 |
 | 美國地圖 |此報告可讓您檢視美國對您的 CDN 內容的需求。 此地圖上以色彩標示每個州，指出來自該區域的點擊百分比。 |
@@ -71,7 +71,7 @@ ms.locfileid: "67594098"
 
 下面提供這兩種報告的簡短描述。
 
-| 報表名稱 | 描述 |
+| 報表名稱 | Description |
 | --- | --- |
 | 前幾名城市 |此報告根據來自該地區的點擊次數來排名城市。 |
 | 前幾名國家/地區 |此報表會根據來自該國家/地區的點擊次數來排名國家/地區。 |

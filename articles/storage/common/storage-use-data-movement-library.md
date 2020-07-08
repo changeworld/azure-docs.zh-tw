@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bab78d60e5007d9c3eb61afa7bc63a9b44e47aa1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942914"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888038"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>透過資料移動程式庫傳輸資料
 
@@ -49,7 +49,7 @@ Azure 儲存體資料手機連結庫是一種跨平臺的開放原始碼程式�
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>將資料手機連結庫新增至您的專案
 
-1. 將最新版本的資料手機連結庫新增至`dependencies`檔案的區段`<project-name>.csproj` 。 撰寫本文時，此版本為 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+1. 將最新版本的資料手機連結庫新增至檔案的 `dependencies` 區段 `<project-name>.csproj` 。 撰寫本文時，此版本為 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
 2. 您應該會看到提示顯示以還原專案。 按一下 [還原] 按鈕。 您也可以在專案目錄的根目錄中輸入命令 `dotnet restore`，來從命令列還原專案。
 
 修改 `<project-name>.csproj`：
@@ -525,7 +525,7 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
     ConsoleKeyInfo keyinfo;
     try
     {
-        task = TransferManager.CopyAsync(sourceBlob, destinationBlob, true, null, context, cancellationSource.Token);
+        task = TransferManager.CopyAsync(sourceBlob, destinationBlob, CopyMethod.ServiceSideAsyncCopy, null, context, cancellationSource.Token);
         while(!task.IsCompleted)
         {
             if(Console.KeyAvailable)

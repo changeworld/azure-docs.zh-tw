@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 10ea0002b2e99c4675f56e48a638f3c1cb87e6c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 0d8f6069193607d19e10c013f3d9cb1cf00a7de6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399017"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84816728"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "81399017"
 
 * [Visual Studio Code](#vscode)：如果您使用 Visual Studio Code， [Azure Machine Learning 延伸](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)模組包含 Python 的廣泛語言支援，以及可讓您更方便且更有效率地使用 Azure Machine Learning 的功能。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。 您只需要工作區，就能開始使用自己的[雲端式筆記本伺服器](#compute-instance)、 [DSVM](#dsvm)或[Azure Databricks](#aml-databricks)。
 
@@ -59,7 +59,7 @@ Azure Machine Learning[計算實例（預覽）](concept-compute-instance.md)是
 
 不需要為計算實例安裝或設定任何內容。  從您的 Azure Machine Learning 工作區中隨時建立一個。 只提供名稱，並指定 Azure VM 類型。 請在本教學課程中立即試用[：設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
 
-深入瞭解[計算實例](concept-compute-instance.md)。
+若要深入瞭解計算實例，包括如何安裝套件，請參閱[計算實例](concept-compute-instance.md)。
 
 若要停止產生計算費用，請[停止計算實例](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。
 
@@ -136,7 +136,7 @@ Azure Machine Learning SDK 適用於 Ubuntu 或 Windows版本的 DSVM。 但如�
 
 ## <a name="local-computer"></a><a id="local"></a>本機電腦
 
-當您使用本機電腦（也可能是遠端虛擬機器）時，請建立 Anaconda 環境並安裝 SDK。 範例如下：
+當您使用本機電腦（也可能是遠端虛擬機器）時，請建立 Anaconda 環境並安裝 SDK。 以下是範例：
 
 1. 如果您還沒有[Anaconda](https://www.anaconda.com/distribution/#download-section) （Python 3.7 版本），請下載並安裝。
 
@@ -145,7 +145,7 @@ Azure Machine Learning SDK 適用於 Ubuntu 或 Windows版本的 DSVM。 但如�
     執行下列命令來建立環境。
 
     ```bash
-    conda create -n myenv python=3.6.5
+    conda create -n myenv python=3.7.7
     ```
 
     然後啟用環境。
@@ -154,7 +154,7 @@ Azure Machine Learning SDK 適用於 Ubuntu 或 Windows版本的 DSVM。 但如�
     conda activate myenv
     ```
 
-    這個範例會使用 python 3.6.5 建立環境，但是可以選擇任何特定的 subversions。 SDK 相容性可能無法保證某些主要版本（建議使用 3.5 +），如果遇到錯誤，建議您在 Anaconda 環境中嘗試不同的版本/subversion。 建立環境可能需要幾分鐘的時間，因為需要下載元件和套件。
+    這個範例會使用 python 3.7.7 建立環境，但是可以選擇任何特定的 subversions。 SDK 相容性可能無法保證某些主要版本（建議使用 3.5 +），如果遇到錯誤，建議您在 Anaconda 環境中嘗試不同的版本/subversion。 建立環境可能需要幾分鐘的時間，因為需要下載元件和套件。
 
 1. 在您的新環境中執行下列命令，以啟用環境特定的 IPython 核心。 這可確保在 Anaconda 環境中使用 Jupyter 筆記本時，預期的核心和套件匯入行為：
 
@@ -170,7 +170,7 @@ Azure Machine Learning SDK 適用於 Ubuntu 或 Windows版本的 DSVM。 但如�
 
 1. 使用下列命令來安裝套件：
 
-    此命令會使用筆記本和`automl`額外專案來安裝基底 Azure Machine Learning SDK。 額外`automl`的是大型安裝，如果您不想要執行自動化機器學習實驗，可以從括弧中移除。 額外`automl`的也包含 Azure Machine Learning 資料準備 SDK，預設為相依性。
+    此命令會使用筆記本和額外專案來安裝基底 Azure Machine Learning SDK `automl` 。 `automl`額外的是大型安裝，如果您不想要執行自動化機器學習實驗，可以從括弧中移除。 `automl`額外的也包含 Azure Machine Learning 資料準備 SDK，預設為相依性。
 
     ```bash
     pip install azureml-sdk[notebooks,automl]
@@ -189,13 +189,13 @@ Azure Machine Learning SDK 適用於 Ubuntu 或 Windows版本的 DSVM。 但如�
 
 1. 為您的機器學習實驗安裝其他套件。
 
-    使用下列其中一個命令，並將* \<新的封裝>* 取代為您要安裝的套件。 透過安裝套件`conda install`時，套件必須是目前通道的一部分（可以在 Anaconda Cloud 中新增新的通道）。
+    使用下列其中一個命令，並將取代為 *\<new package>* 您要安裝的套件。 透過安裝套件 `conda install` 時，套件必須是目前通道的一部分（可以在 Anaconda Cloud 中新增新的通道）。
 
     ```bash
     conda install <new package>
     ```
 
-    或者，您也可以透過安裝`pip`套件。
+    或者，您也可以透過安裝套件 `pip` 。
 
     ```bash
     pip install <new package>
@@ -234,7 +234,7 @@ Jupyter Notebook 是 [Jupyter 專案](https://jupyter.org/)的一部分。 它�
     azureml.core.VERSION
     ```
 
-1. 如果您在匯入模組和接收時`ModuleNotFoundError`遇到問題，請在 [筆記本] 儲存格中執行下列程式碼，以確保您的 Jupyter 核心已連接到您環境的正確路徑。
+1. 如果您在匯入模組和接收時遇到問題 `ModuleNotFoundError` ，請在 [筆記本] 儲存格中執行下列程式碼，以確保您的 Jupyter 核心已連接到您環境的正確路徑。
 
     ```python
     import sys
@@ -285,7 +285,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 
 使用下列設定：
 
-| 設定 |適用對象| 值 |
+| 設定 |適用於| 值 |
 |----|---|---|
 | 叢集名稱 |always| yourclustername |
 | Databricks 執行階段 |always|非 ML 執行時間6.5 （scala 2.11、spark 2.4.3） |
@@ -299,11 +299,11 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>將正確的 SDK 安裝到 Databricks 程式庫
 叢集執行之後，請[建立程式庫](https://docs.databricks.com/user-guide/libraries.html#create-a-library)，以將適當的 Azure Machine Learning SDK 套件附加至您的叢集。
 
-1. 以滑鼠右鍵按一下您要儲存程式庫的目前工作區資料夾。 選取 [**建立** > 連結**庫**]。
+1. 以滑鼠右鍵按一下您要儲存程式庫的目前工作區資料夾。 選取 [**建立**連結  >  **庫**]。
 
 1. **只選擇一個**選項（不支援其他 SDK 安裝）
 
-   |SDK&nbsp;套件&nbsp;額外專案|來源|PyPi&nbsp;名稱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |SDK &nbsp; 套件 &nbsp; 額外專案|來源|PyPi &nbsp; 名稱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |針對 Databricks| 上傳 Python Egg 或 PyPI | azureml-sdk[databricks]|
    |針對 Databricks-with-<br> 自動化 ML 功能| 上傳 Python Egg 或 PyPI | azureml-sdk [automl]|
@@ -329,21 +329,21 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 
 如果安裝成功，則匯入的程式庫看起來應該像下列其中一項：
 
-SDK for Databricks，**_不含_** 自動化![機器學習服務 Azure Machine Learning sdk for Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+SDK for Databricks，**_不含_** 自動化機器學習服務 ![ Azure Machine Learning sdk for Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-SDK **For Databricks 搭配**自動化機器學習![服務 Sdk，並在 Databricks 上安裝自動化機器學習服務](./media/how-to-configure-environment/automlonadb.png)
+SDK **For Databricks 搭配**自動化機器學習服務 ![ sdk，並在 Databricks 上安裝自動化機器學習服務](./media/how-to-configure-environment/automlonadb.png)
 
 ### <a name="start-exploring"></a>開始探索
 
 現在就試試看：
 + 雖然有許多範例筆記本可供使用，但**只有[這些範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)適用于 Azure Databricks。**
 
-+ 直接從您的工作區匯入這些範例。 請參閱下列![內容：](./media/how-to-configure-environment/azure-db-screenshot.png)
-![選取匯入匯入面板](./media/how-to-configure-environment/azure-db-import.png)
++ 直接從您的工作區匯入這些範例。 請參閱下列內容：選取匯入匯 ![ ](./media/how-to-configure-environment/azure-db-screenshot.png)
+ ![ 入面板](./media/how-to-configure-environment/azure-db-import.png)
 
 + 瞭解如何[使用 Databricks 作為訓練計算來建立管線](how-to-create-your-first-pipeline.md)。
 
-## <a name="create-a-workspace-configuration-file"></a><a id="workspace"></a>建立工作區組態檔
+## <a name="create-a-workspace-configuration-file"></a><a id="workspace"></a>建立工作區設定檔
 
 工作區設定檔是一種 JSON 檔案，可告知 SDK 如何與您的 Azure Machine Learning 工作區進行通訊。 檔案名稱為 *config.json*，其格式如下：
 
@@ -361,9 +361,9 @@ SDK **For Databricks 搭配**自動化機器學習![服務 Sdk，並在 Databric
 
 您可以透過三種方式建立組態檔：
 
-* **使用[ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**：寫入*config.xml*檔案。 此檔案包含您工作區的組態資訊。 您可以將此 *config.json* 下載或複製到其他開發環境。
+* **使用[ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**：*在檔案上寫入config.js* 。 此檔案包含您工作區的組態資訊。 您可以將此 *config.json* 下載或複製到其他開發環境。
 
-* **下載檔案**：在[Azure 入口網站](https://ms.portal.azure.com)中，從工作區的 [**總覽**] 區段中選取 [**下載 config.xml** ]。
+* **下載檔案**：在[Azure 入口網站](https://ms.portal.azure.com)中，從工作區的 [**總覽**] 區段選取 [**下載 config.js** ]。
 
      ![Azure 入口網站](./media/how-to-configure-environment/configure.png)
 
@@ -384,7 +384,7 @@ SDK **For Databricks 搭配**自動化機器學習![服務 Sdk，並在 Databric
         print('Workspace not found')
     ```
 
-    此程式碼會將設定檔寫入*azureml/config json*檔案。
+    此程式碼會將設定檔寫入檔案*上的 azureml/config.js* 。
 
 ## <a name="next-steps"></a>後續步驟
 

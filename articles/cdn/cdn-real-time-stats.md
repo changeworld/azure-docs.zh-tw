@@ -11,20 +11,20 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d56007e5a196a0857f3b69ac51f5e3b5a88c4f6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3af2e849aa6658e539b0b5bdbda4428cc28e5ce5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67593499"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887232"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN 中的即時統計資料
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本文件說明 Microsoft Azure CDN 中的即時統計資料。  在將內容傳遞給您的用戶端時，這項功能會提供即時資料 (例如頻寬、快取狀態和並行連線) 給您的 CDN 設定檔。 這可讓您隨時連續監視服務的健全狀況，包括上線事件。
 
 可用圖表如下︰

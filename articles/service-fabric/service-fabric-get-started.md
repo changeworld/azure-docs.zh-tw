@@ -3,14 +3,14 @@ title: 設定 Windows 開發環境
 description: 安裝執行階段、SDK 和工具，並建立本機開發叢集。 完成此設定之後，您就可以開始在 Windows 上建置應用程式。
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 06/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: 1b43c838537e46ffbaf6c4adcfb117f6718bd046
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e059a503a29872ee6241fe00ff5c7ec94ae30308
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888095"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上準備您的開發環境
 
@@ -23,7 +23,7 @@ ms.locfileid: "81731762"
 
 若要在您的 Windows 開發機器上建置並執行 [Azure Service Fabric 應用程式][1]，請安裝 Service Fabric 執行階段、SDK 和工具。 您也需要啟用 SDK 中包含[的 Windows PowerShell 腳本執行](#enable-powershell-script-execution)功能。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="supported-operating-system-versions"></a>支援的作業系統版本
 
@@ -68,8 +68,8 @@ Service Fabric 工具是 Visual Studio 2017 和2019中的 Azure 開發工作負�
 
 目前的版本如下︰
 
-* Service Fabric SDK 和工具4.1.409
-* Service Fabric 執行時間7.1.409
+* Service Fabric SDK 和工具4.1.416
+* Service Fabric 執行時間7.1.417
 
 如需支援版本的清單，請參閱[Service Fabric 版本](service-fabric-versions.md)
 

@@ -10,20 +10,20 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
-ms.openlocfilehash: 874ec75fb9173b6cee50bf8880510464fa13e9d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f30943eb0cc72f677785d1228b47b65764c1e7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254235"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887859"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>使用快取規則來控制 Azure CDN 快取行為
 
 > [!NOTE] 
-> 快取規則僅適用於「**來自 Verizon 的 Azure CDN 標準**」和「**來自 Akamai 的 Azure CDN 標準**」的設定檔。 針對**來自 Microsoft 的 Azure CDN** 設定檔，您必須使用 [標準規則引擎](cdn-standard-rules-engine-reference.md)。針對**來自 Verizon 的 Azure CDN 進階**設定檔，您必須使用 [管理]**** 入口網站中的 [Verizon 進階規則引擎](cdn-rules-engine.md)來執行類似功能。
+> 快取規則僅適用於「**來自 Verizon 的 Azure CDN 標準**」和「**來自 Akamai 的 Azure CDN 標準**」的設定檔。 針對**來自 Microsoft 的 Azure CDN** 設定檔，您必須使用 [標準規則引擎](cdn-standard-rules-engine-reference.md)。針對**來自 Verizon 的 Azure CDN 進階**設定檔，您必須使用 [管理] 入口網站中的 [Verizon 進階規則引擎](cdn-rules-engine.md)來執行類似功能。
  
 「Azure 內容傳遞網路」(CDN) 提供兩種方式來控制如何快取檔案： 
 
@@ -42,11 +42,11 @@ ms.locfileid: "81254235"
 
 1. 開啟 Azure 入口網站，選取 CDN 設定檔，然後選取端點。
 
-2. 在左窗格的 [設定] 下方，選取 [快取規則]****。
+2. 在左窗格的 [設定] 下方，選取 [快取規則]。
 
    ![CDN [快取規則] 按鈕](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
-   [快取規則]**** 頁面隨即出現。
+   [快取規則] 頁面隨即出現。
 
    ![CDN 快取規則頁面](./media/cdn-caching-rules/cdn-caching-rules-page.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "81254235"
    - 快取行為：**缺少時才設定**
    - 快取到期期間：3 天
 
-設定這些規則時， _ &lt;端點主機名稱&gt;_. azureedge.net/home/index.html 的要求會觸發自訂快取規則 #2，這會設定為：**如果遺漏則設定**為3天。 因此，如果 index.html** 檔案具有 `Cache-Control` 或 `Expires` HTTP 標頭，則會優先採用它們，否則，如果未設定這些標頭，就會將檔案快取 3 天。
+設定這些規則時， _ &lt; 端點 hostname &gt; _. azureedge.net/home/index.html 的要求會觸發自訂快取規則 #2，這會設定為： [若**遺漏則設定**] 和 [3 天]。 因此，如果 index.html** 檔案具有 `Cache-Control` 或 `Expires` HTTP 標頭，則會優先採用它們，否則，如果未設定這些標頭，就會將檔案快取 3 天。
 
 > [!NOTE] 
 > 在規則變更之前快取的檔案會維持其原始的快取持續時間設定。 若要重設它們的快取持續時間，您必須[清除檔案](cdn-purge-endpoint.md)。 
@@ -113,7 +113,7 @@ ms.locfileid: "81254235"
 > - 若為**來自 Verizon 的標準 Azure CDN** 設定檔，則通常會在 10 分鐘內完成傳播。  
 >
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [快取的運作方式](cdn-how-caching-works.md)
 - [教學課程：設定 Azure CDN 快取規則](cdn-caching-rules-tutorial.md)

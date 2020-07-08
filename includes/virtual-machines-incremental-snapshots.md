@@ -9,10 +9,10 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74014534"
 ---
 ## <a name="overview"></a>概觀
@@ -73,7 +73,7 @@ Blob 快照是在某個時間點擷取的 Blob 唯讀版本。 一旦建立快�
 
 在下一節中，我們將詳細說明如何使用增量快照複製維護磁碟的備份
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 在本節中，我們會使用快照說明涉及虛擬機器磁碟的自訂備份策略的案例。
 
 請考慮使用連接進階儲存體 P30 磁碟的 DS 系列 Azure VM。 稱為 *mypremiumdisk* 的 P30 磁碟會儲存在稱為 *mypremiumaccount* 的進階儲存體帳戶中。 稱為 *mybackupstdaccount* 的標準儲存體帳戶用於儲存 *mypremiumdisk* 的備份。 我們想要每 12 小時保留一個 *mypremiumdisk* 的快照集。

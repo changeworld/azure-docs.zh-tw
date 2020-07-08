@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
 ms.openlocfilehash: 6668d9753d0b93ab907d37cdeff8315f488cff7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73935899"
 ---
 **上次檔更新**：12年11月 2019 10:00 AM PST。
@@ -74,7 +74,7 @@ Azure 會盡可能使用[記憶體保留維護](https://docs.microsoft.com/azure
 
 **步驟1：停用 VM 上的超執行緒**-在超執行緒 vm 上執行不受信任程式碼的客戶，必須停用超執行緒，或移至非超執行緒 vm 大小。 如需超執行緒 VM 大小的清單，請參閱[此](https://docs.microsoft.com/azure/virtual-machines/windows/acu)檔（VCPU 與 Core 的比率為2:1）。 若要檢查您的 VM 是否已啟用超執行緒，請從 VM 內使用 Windows 命令列參閱下列腳本。
 
-鍵入`wmic`以輸入互動式介面。 然後輸入下列資訊，以查看 VM 上的實體和邏輯處理器數量。
+鍵入 `wmic` 以輸入互動式介面。 然後輸入下列資訊，以查看 VM 上的實體和邏輯處理器數量。
 
 ```console
 CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
@@ -101,17 +101,17 @@ Windows OS support for MDS mitigation is enabled: True
 Windows OS support for TAA mitigation is enabled: True
 ```
 
-如果輸出顯示`MDS mitigation is enabled: False`，請[聯絡 Azure 支援](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)以取得可用的緩和選項。
+如果輸出顯示 `MDS mitigation is enabled: False` ，請[聯絡 Azure 支援](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)以取得可用的緩和選項。
 
 
 
-**步驟 3**：若要啟用核心虛擬位址陰影（KVAS）和分支目標插入（BTI） OS 支援，請遵循[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution)中的指示，使用`Session Manager`登錄機碼來啟用保護。 需要重新開機。
+**步驟 3**：若要啟用核心虛擬位址陰影（KVAS）和分支目標插入（BTI） OS 支援，請遵循[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution)中的指示，使用登錄機碼來啟用保護 `Session Manager` 。 需要重新開機。
 
 
 **步驟 4**：針對使用「[嵌套虛擬化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)」的部署（僅限 D3 和 E3）：這些指示適用于您用來做為 hyper-v 主機的 VM 中。
 
-1.  遵循[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution)中的指示，使用`MinVmVersionForCpuBasedMitigations`登錄機碼來啟用保護。
-2.  依照此處的指示，將`Core` [程式管理器[here](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)排程器] 類型設定為。
+1.  遵循[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution)中的指示，使用登錄機碼來啟用保護 `MinVmVersionForCpuBasedMitigations` 。
+2.  依照 `Core` [此處](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)的指示，將 [程式管理器排程器] 類型設定為。
 
 
 ### <a name="linux"></a>Linux
@@ -119,11 +119,11 @@ Windows OS support for TAA mitigation is enabled: True
 <a name="linux"></a>若要在內部啟用一組額外安全性功能，目標作業系統必須完全是最新版本。 有些防護功能會預設為啟用。 下節會描述預設為關閉的功能，以及 (或) 相依於硬體支援 (微碼) 的功能。 啟用這些功能可能會對效能造成影響。 請參閱作業系統提供者的文件，以取得進一步的指示
 
 
-**步驟1：停用 vm 上的超執行緒**-在超執行緒 vm 上執行不受信任程式碼的客戶，必須停用超執行緒，或移至非超執行緒 vm。  如需超執行緒 VM 大小的清單，請參閱[此](https://docs.microsoft.com/azure/virtual-machines/linux/acu)檔（VCPU 與 Core 的比率為2:1）。 若要檢查您是否正在執行超執行緒 VM，請在 Linux `lscpu` VM 中執行命令。 
+**步驟1：停用 vm 上的超執行緒**-在超執行緒 vm 上執行不受信任程式碼的客戶，必須停用超執行緒，或移至非超執行緒 vm。  如需超執行緒 VM 大小的清單，請參閱[此](https://docs.microsoft.com/azure/virtual-machines/linux/acu)檔（VCPU 與 Core 的比率為2:1）。 若要檢查您是否正在執行超執行緒 VM，請 `lscpu` 在 LINUX VM 中執行命令。 
 
-如果`Thread(s) per core = 2`為，則已啟用超執行緒。 
+如果為 `Thread(s) per core = 2` ，則已啟用超執行緒。 
 
-如果`Thread(s) per core = 1`為，則會停用超執行緒。 
+如果為 `Thread(s) per core = 1` ，則會停用超執行緒。 
 
  
 已啟用超執行緒之 VM 的範例輸出： 
@@ -156,7 +156,7 @@ NUMA node(s):          1
 
 建立超執行緒 VM 時，Azure 會為每個核心配置2個執行緒-這些是稱為個 vcpu。 停用超執行緒時，Azure 會移除執行緒，並表面化單一執行緒核心（實體核心）。 VCPU 與 CPU 的比率為2:1，因此一旦停用超執行緒，VM 中的 CPU 計數就會顯示為已減少一半。 例如，D8_v3 VM 是在8個 vcpu （每個核心2個執行緒 x 4 核心）上執行的超執行緒 VM。  停用超執行緒時，Cpu 會降至4個實體核心，每個核心1個執行緒。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 本文提供適用于下列會影響許多新式處理器之理論式執行端通道攻擊的指引：
 

@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c432b28250dca382f69a992de73d633b5ea45b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84883978"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診斷記錄
 
@@ -87,7 +87,7 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
 5. 當您完成診斷記錄設定之後，選取 [儲存]****。
 
-### <a name="logging-with-azure-monitor"></a>使用 Azure 監視器記錄
+### <a name="logging-with-azure-monitor"></a>使用 Azure 監視器進行記錄
 
 若要使用 Azure 監視器來儲存記錄，請遵循下列步驟：
 
@@ -117,7 +117,7 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
 5. 針對 [訂用帳戶]****，從下拉式清單中選取現有的訂用帳戶。 
 
-6. 針對 [資源群組]  ，建立新的資源群組，或選取現有的資源群組。
+6. 針對 [資源群組]，建立新的資源群組，或選取現有的資源群組。
 
 7. 針對 [位置]****，從清單中選取位置。
 
@@ -189,15 +189,15 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
 **欄位說明：**
 
-|值|描述|
+|值|說明|
 |-------|---------|
 |訂用帳戶識別碼    |使用 GUID 格式的 Azure 訂用帳戶識別碼。|
 |資源群組名稱 |CDN 資源所屬資源群組的名稱。|
 |設定檔名稱 |CDN 設定檔名稱|
 |端點名稱 |CDN 端點名稱|
-|Year|  四位數的年份表示法，例如 2017|
+|年|  四位數的年份表示法，例如 2017|
 |Month| 兩位數的月份表示法。 01 = 一月 .。。12 = 十二月|
-|Day|   兩位數的當月日期表示法|
+|天|   兩位數的當月日期表示法|
 |PT1H.json| 儲存分析資料的實際 JSON 檔案|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>將 Core Analytics 資料匯出至 CSV 檔案
@@ -325,32 +325,32 @@ Microsoft 目前僅提供核心分析記錄，其中包含的計量會顯示 HTT
 
 |計量                     | 描述 | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
-| RequestCountTotal         | 這段期間要求命中總數。 | 是 | 是 |是 |
-| RequestCountHttpStatus2xx | 產生 2xx HTTP 代碼 (例如 200、202) 的所有要求計數。 | 是 | 是 |是 |
-| RequestCountHttpStatus3xx | 產生 3xx HTTP 代碼 (例如 300、302) 的所有要求計數。 | 是 | 是 |是 |
-| RequestCountHttpStatus4xx | 產生 4xx HTTP 代碼 (例如 400、404) 的所有要求計數。 | 是 | 是 |是 |
-| RequestCountHttpStatus5xx | 產生 5xx HTTP 代碼 (例如 500、504) 的所有要求計數。 | 是 | 是 |是 |
-| RequestCountHttpStatusOthers | 所有其他 HTTP 代碼 (2xx-5xx 以外) 的計數。 | 是 | 是 |是 |
+| RequestCountTotal         | 這段期間要求命中總數。 | Yes | Yes |Yes |
+| RequestCountHttpStatus2xx | 產生 2xx HTTP 代碼 (例如 200、202) 的所有要求計數。 | Yes | Yes |Yes |
+| RequestCountHttpStatus3xx | 產生 3xx HTTP 代碼 (例如 300、302) 的所有要求計數。 | Yes | Yes |Yes |
+| RequestCountHttpStatus4xx | 產生 4xx HTTP 代碼 (例如 400、404) 的所有要求計數。 | Yes | Yes |Yes |
+| RequestCountHttpStatus5xx | 產生 5xx HTTP 代碼 (例如 500、504) 的所有要求計數。 | Yes | Yes |Yes |
+| RequestCountHttpStatusOthers | 所有其他 HTTP 代碼 (2xx-5xx 以外) 的計數。 | Yes | Yes |Yes |
 | RequestCountHttpStatus200 | 產生 200 HTTP 代碼回應的所有要求計數。 | 是 | 否  |是 |
 | RequestCountHttpStatus206 | 產生 206 HTTP 代碼回應的所有要求計數。 | 是 | 否  |是 |
 | RequestCountHttpStatus302 | 產生 302 HTTP 代碼回應的所有要求計數。 | 是 | 否  |是 |
 | RequestCountHttpStatus304 | 產生 304 HTTP 代碼回應的所有要求計數。 | 是 | 否  |是 |
 | RequestCountHttpStatus404 | 產生 404 HTTP 代碼回應的所有要求計數。 | 是 | 否  |是 |
-| RequestCountCacheHit | 產生快取命中之所有要求的計數。 資產是從 POP 直接提供給用戶端。 | 是 | 是 | 否  |
-| RequestCountCacheMiss | 產生快取遺漏之所有要求的計數。 快取遺漏表示在最靠近用戶端的 POP 上找不到資產，因此會從來源擷取。 | 是 | 是 | 否 |
-| RequestCountCacheNoCache | 因為邊緣上的使用者組態之故，而無法予以快取的所有資產要求計數。 | 是 | 是 | 否 |
-| RequestCountCacheUncacheable | 無法由資產的 Cache-Control 與 Expires 標頭快取的所有資產要求計數，這表示不應在 POP 上或由 HTTP 用戶端快取要求。 | 是 | 是 | 否 |
+| RequestCountCacheHit | 產生快取命中之所有要求的計數。 資產是從 POP 直接提供給用戶端。 | Yes | 是 | 否  |
+| RequestCountCacheMiss | 產生快取遺漏之所有要求的計數。 快取遺漏表示在最靠近用戶端的 POP 上找不到資產，因此會從來源擷取。 | Yes | 是 | 否 |
+| RequestCountCacheNoCache | 因為邊緣上的使用者組態之故，而無法予以快取的所有資產要求計數。 | Yes | 是 | 否 |
+| RequestCountCacheUncacheable | 無法由資產的 Cache-Control 與 Expires 標頭快取的所有資產要求計數，這表示不應在 POP 上或由 HTTP 用戶端快取要求。 | Yes | 是 | 否 |
 | RequestCountCacheOthers | 非上述快取狀態的所有要求計數。 | 否 | 是 | 否  |
-| EgressTotal | 輸出資料傳輸 (單位 GB) | 是 |是 |是 |
-| EgressHttpStatus2xx | 狀態代碼為 2xx HTTP 之回應的輸出資料傳輸* (單位為 GB)。 | 是 | 是 | 否  |
-| EgressHttpStatus3xx | 狀態代碼為 3xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | 是 | 是 | 否  |
-| EgressHttpStatus4xx | 狀態代碼為 4xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | 是 | 是 | 否  |
-| EgressHttpStatus5xx | 狀態代碼為 5xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | 是 | 是 | 否 |
-| EgressHttpStatusOthers | 狀態代碼為其他 HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | 是 | 是 | 否  |
-| EgressCacheHit | 直接從 CDN POP/邊緣上 CDN 快取所傳遞回應的輸出資料傳輸。 | 是 | 是 | 否 |
-| EgressCacheMiss。 | 在最靠近的 POP 伺服器上找不到和從原始伺服器擷取之回應的輸出資料傳輸。 | 是 | 是 | 否 |
-| EgressCacheNoCache | 因為邊緣上使用者組態之故而無法予以快取的資產輸出資料傳輸。 | 是 | 是 | 否 |
-| EgressCacheUncacheable | 無法由資產的 Cache-Control 和/或 Expires 標頭快取的資產輸出資料傳輸。 表示應該不會在 POP 上加以快取或由 HTTP 用戶端進行快取。 | 是 | 是 | 否 |
+| EgressTotal | 輸出資料傳輸 (單位 GB) | Yes |Yes |Yes |
+| EgressHttpStatus2xx | 狀態代碼為 2xx HTTP 之回應的輸出資料傳輸* (單位為 GB)。 | Yes | 是 | 否  |
+| EgressHttpStatus3xx | 狀態代碼為 3xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | Yes | 是 | 否  |
+| EgressHttpStatus4xx | 狀態代碼為 4xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | Yes | 是 | 否  |
+| EgressHttpStatus5xx | 狀態代碼為 5xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | Yes | 是 | 否 |
+| EgressHttpStatusOthers | 狀態代碼為其他 HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | Yes | 是 | 否  |
+| EgressCacheHit | 直接從 CDN POP/邊緣上 CDN 快取所傳遞回應的輸出資料傳輸。 | Yes | 是 | 否 |
+| EgressCacheMiss。 | 在最靠近的 POP 伺服器上找不到和從原始伺服器擷取之回應的輸出資料傳輸。 | Yes | 是 | 否 |
+| EgressCacheNoCache | 因為邊緣上使用者組態之故而無法予以快取的資產輸出資料傳輸。 | Yes | 是 | 否 |
+| EgressCacheUncacheable | 無法由資產的 Cache-Control 和/或 Expires 標頭快取的資產輸出資料傳輸。 表示應該不會在 POP 上加以快取或由 HTTP 用戶端進行快取。 | Yes | 是 | 否 |
 | EgressCacheOthers | 其他快取案例的輸出資料傳輸。 | 否 | 是 | 否 |
 
 *輸出資料傳輸是指從 CDN POP 伺服器傳遞到用戶端的流量。

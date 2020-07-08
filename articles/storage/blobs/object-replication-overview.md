@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f633c1816e9e2e977c52ab99b66a26f7d2c4d8e2
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888057"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>區塊 Blob 的物件複寫 (預覽)
 
@@ -44,7 +44,7 @@ ms.locfileid: "83800755"
 
 當您設定物件複寫時，會透過 Azure 儲存體資源提供者，在來源帳戶和目的地帳戶上建立複寫原則。 複寫原則是以原則識別碼進行識別。 來源和目的地帳戶上的原則必須擁有相同的原則識別碼，才能進行複寫。
 
-儲存體帳戶最多可作為兩個目的地帳戶的來源帳戶。 來源和目的地帳戶可能都在不同的區域中。 您可以設定個別的複寫原則，將資料複寫到每個目的地帳戶。
+儲存體帳戶最多可作為兩個目的地帳戶的來源帳戶。 而目的地帳戶可能不會有兩個以上的來源帳戶。 來源和目的地帳戶可能都在不同的區域中。 您可以設定個別的複寫原則，將資料複寫到每個目的地帳戶。
 
 ### <a name="replication-rules"></a>複寫規則
 
@@ -54,7 +54,7 @@ ms.locfileid: "83800755"
 
 您也可以指定一或多個篩選作為複製規則的一部分，以依前置詞篩選區塊 Blob。 當您指定前置詞時，只有符合來源容器中該前置詞的 Blob 才會複製到目的地容器。
 
-來源和目的地容器必須同時存在，您才能在規則中加以指定。 建立複寫原則之後，目的地容器會變成唯讀。 任何寫入目的地容器的嘗試都會失敗，錯誤碼為 409 (衝突)。 不過，您可以在目的地容器中的 Blob 上呼叫 [設定 Blob 層](/rest/api/storageservices/set-blob-tier)作業，將其移至不同的存取層。 例如，您可以將目的地容器中的 Blob 移至封存層，以節省成本。
+來源和目的地容器必須同時存在，您才能在規則中加以指定。 建立複寫原則之後，目的地容器會變成唯讀。 任何寫入目的地容器的嘗試都會失敗，錯誤碼為 409 (衝突)。 不過，您可以在目的地容器中的 blob 上呼叫「[設定 Blob 層](/rest/api/storageservices/set-blob-tier)」作業，以將其移至封存層。 如需封存層的詳細資訊，請參閱[Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](storage-blob-storage-tiers.md#archive-access-tier)。
 
 ## <a name="about-the-preview"></a>關於預覽
 
@@ -73,7 +73,9 @@ ms.locfileid: "83800755"
 
 ### <a name="prerequisites-for-object-replication"></a>物件複寫的必要條件
 
-物件複寫需要啟用下列 Azure 儲存體功能：
+物件複寫需要啟用下列 Azure 儲存體功能： 
+- [變更摘要](storage-blob-change-feed.md)
+- [版本控制](versioning-overview.md)
 
 在您設定物件複寫之前，請先啟用其必要條件。 必須在來源帳戶上啟用變更摘要，且必須在來源和目的地帳戶上皆啟用 Blob 版本設定。 如需啟用這些功能的詳細資訊，請參閱下列文章：
 
@@ -157,3 +159,5 @@ az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning
 ## <a name="next-steps"></a>後續步驟
 
 - [設定物件複寫 (預覽)](object-replication-configure.md)
+- [Azure Blob 儲存體中的變更摘要支援 (預覽)](storage-blob-change-feed.md)
+- [啟用和管理 Blob 版本設定](versioning-enable.md)

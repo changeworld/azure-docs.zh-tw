@@ -9,15 +9,15 @@ ms.date: 09/25/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5104c3b4446a8d3747ce7cc1648ef05dd117eb3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74013785"
 ---
 儲存體總管1.10.0 可讓使用者上傳、下載及複製受控磁片，以及建立快照集。 由於這些額外的功能，您可以使用儲存體總管將資料從內部部署遷移至 Azure，以及跨 Azure 區域遷移資料。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文，您需要下列專案：
 - Azure 訂用帳戶
@@ -50,7 +50,7 @@ ms.locfileid: "74013785"
 
     ![選取資源群組1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. 選取 [上傳]****。
+1. 選取 [上傳] 。
 
     ![選取上傳](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-button.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "74013785"
 
     ![建立快照集](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
 
-1. 在 [**建立快照**集] 中，指定快照集的名稱以及您想要在其中建立的資源群組。 然後選取 [建立]  。
+1. 在 [**建立快照**集] 中，指定快照集的名稱以及您想要在其中建立的資源群組。 然後選取 [建立]。
 
     ![建立快照集對話方塊](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
 

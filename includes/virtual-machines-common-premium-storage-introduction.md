@@ -9,10 +9,10 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 86d03e980a233a60e4f3a6541462264dae0862af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74005568"
 ---
 這篇文章提供使用 Azure 進階儲存體來建置高效能應用程式的指導方針。 您可以使用這份文件所提供的指示，並根據您的應用程式所採用的技術，結合適合的效能最佳作法。 為了說明指導方針，在這整份文件中，我們以進階儲存體上執行的 SQL Server 為範例。

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77911730"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84817722"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure 資料箱安全性和資料保護
 
@@ -45,7 +45,6 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 資料箱裝置受到下列功能保護：
 
 - 堅固耐用的裝置外殼，可承受衝擊、不利的運輸狀況以及環境條件。 
-- 防竄改封條，可指出運輸過程中是否有任何對裝置的竄改。
 - 硬體及軟體竄改偵測，可防止進一步的裝置作業。
 - 只能執行資料箱專用軟體。
 - 在鎖定狀態下開機。
@@ -57,7 +56,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 流入及流出資料箱的資料會受到下列功能保護：
 
 - 待用資料的 AES 256 位元加密。
-- 可用於資料傳輸的加密通訊協定。
+- 可用於資料傳輸的加密通訊協定。 我們建議您在從資料伺服器複製資料時，使用 SMB 3.0 搭配加密來保護資料。
 - 將資料上傳至 Azure 完成之後，安全清除裝置中的資料。 資料清除是依據[附錄 A：NIST 800-88r1 標準中的 ATA 硬碟](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)中的指導方針進行。 資料清除事件記錄在[訂購記錄](data-box-logs.md#download-order-history)中。
 
 ### <a name="data-box-service-protection"></a>資料箱服務保護
@@ -100,7 +99,7 @@ Azure 資料箱會在服務中收集並顯示下列金鑰執行個體的個人�
 
 資料箱中會實作下列安全性指導方針： 
 
-|指導方針   |說明   |
+|指導方針   |Description   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | 適用於防水防塵         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 適用於不利的運輸條件耐久性          |

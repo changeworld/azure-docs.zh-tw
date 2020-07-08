@@ -2,16 +2,14 @@
 title: 在 Azure Kubernetes Service 中輪替憑證（AKS）
 description: 瞭解如何在 Azure Kubernetes Service （AKS）叢集中輪替您的憑證。
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
-ms.author: zarhoads
-ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 715771c7a1704e0d39f790d018980c4b39ba351b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84817455"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中輪替憑證（AKS）
 
@@ -37,48 +35,47 @@ AKS 會產生並使用下列憑證、憑證授權單位單位和服務帳戶：
 * `kubectl`用戶端具有與 AKS 叢集通訊的憑證。
 
 > [!NOTE]
-> 在2019年3月之前建立的 AKS 叢集，其憑證會在兩年後到期。 2019年3月之後建立的任何叢集，或任何已輪替其憑證的叢集，其叢集 CA 憑證會在30年後到期。 所有其他憑證會在兩年後到期。 若要確認叢集的建立時間，請`kubectl get nodes`使用來查看節點集區的*存留期*。
+> 在2019年3月之前建立的 AKS 叢集，其憑證會在兩年後到期。 2019年3月之後建立的任何叢集，或任何已輪替其憑證的叢集，其叢集 CA 憑證會在30年後到期。 所有其他憑證會在兩年後到期。 若要確認叢集的建立時間，請使用 `kubectl get nodes` 來查看節點集區的*存留期*。
 > 
 > 此外，您可以檢查叢集憑證的到期日。 例如，下列命令會顯示*myAKSCluster*叢集的憑證詳細資料。
 > ```console
-> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
-> openssl x509 -in my-cert.crt -text
+> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```
 
 ## <a name="rotate-your-cluster-certificates"></a>旋轉您的叢集憑證
 
 > [!WARNING]
-> 使用`az aks rotate-certs`輪替憑證可能會對您的 AKS 叢集造成最多30分鐘的停機時間。
+> 使用輪替憑證 `az aks rotate-certs` 可能會對您的 AKS 叢集造成最多30分鐘的停機時間。
 
-使用[az aks get-認證][az-aks-get-credentials]來登入您的 aks 叢集。 此命令也會在您的`kubectl`本機電腦上下載並設定用戶端憑證。
+使用[az aks get-認證][az-aks-get-credentials]來登入您的 aks 叢集。 此命令也會 `kubectl` 在您的本機電腦上下載並設定用戶端憑證。
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
-用`az aks rotate-certs`來輪替您叢集上的所有憑證、CAs 和 SAs。
+用 `az aks rotate-certs` 來輪替您叢集上的所有憑證、CAs 和 SAs。
 
 ```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 > [!IMPORTANT]
-> 最多可能需要30分鐘的`az aks rotate-certs`時間才能完成。 如果命令在完成前失敗，請`az aks show`使用來確認叢集的狀態為 [*憑證輪替*]。 如果叢集處於失敗狀態，請重新`az aks rotate-certs`執行以再次輪替您的憑證。
+> 最多可能需要30分鐘的時間 `az aks rotate-certs` 才能完成。 如果命令在完成前失敗，請使用 `az aks show` 來確認叢集的狀態為 [*憑證輪替*]。 如果叢集處於失敗狀態，請重新執行 `az aks rotate-certs` 以再次輪替您的憑證。
 
-執行`kubectl`命令，確認舊憑證已不再有效。 由於您尚未更新所使用的憑證`kubectl`，因此您會看到錯誤。  例如：
+執行命令，確認舊憑證已不再有效 `kubectl` 。 由於您尚未更新所使用的憑證，因此 `kubectl` 您會看到錯誤。  例如：
 
 ```console
 $ kubectl get no
 Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "ca")
 ```
 
-執行，以更新所`kubectl`使用的`az aks get-credentials`憑證。
+執行，以更新所使用的憑證 `kubectl` `az aks get-credentials` 。
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-藉由執行`kubectl`命令來確認憑證已更新，這現在將會成功。 例如：
+藉由執行命令來確認憑證已更新 `kubectl` ，這現在將會成功。 例如：
 
 ```console
 kubectl get no

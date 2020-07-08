@@ -4,16 +4,16 @@ description: 攜帶您自己的金鑰（BYOK）來加密 AKS OS 和資料磁片�
 services: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.openlocfilehash: bb6ba5e6dd4ace9e33043079c0f435c10baf5cb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fd04b44be969e03eec2ed18f618068316572066
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596499"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84882522"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中攜帶您自己的金鑰（BYOK）與 Azure 磁片
 
-Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，資料會使用 Microsoft 管理的金鑰進行加密。 若要進一步控制加密金鑰，您可以為 AKS 叢集的 OS 和資料磁片提供[客戶管理的金鑰][customer-managed-keys]，以用於待用加密。
+Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，資料是以使用 Microsoft 管理的金鑰加密。 若要進一步控制加密金鑰，您可以為 AKS 叢集的 OS 和資料磁片提供[客戶管理的金鑰][customer-managed-keys]，以用於待用加密。
 
 > [!NOTE]
 > 在支援 Azure 受控磁片之伺服器端加密的[azure 區域][supported-regions]中，會提供 BYOK Linux 和 Windows 型的 AKS 叢集。
@@ -34,7 +34,7 @@ Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設�
 
 ## <a name="install-latest-aks-cli-preview-extension"></a>安裝最新的 AKS CLI preview 擴充功能
 
-若要使用客戶管理的金鑰，您需要*aks-preview* CLI 擴充功能版本0.4.26 或更高版本。 使用[az extension add][az-extension-add]命令來安裝*aks-preview* Azure CLI 擴充功能，然後使用[az extension update][az-extension-update]命令檢查是否有任何可用的更新：
+若要使用客戶管理的金鑰，您需要*aks-preview* CLI 擴充功能版本0.4.26 或更高版本。 請使用 [az extension add][az-extension-add] 命令安裝 aks-preview Azure CLI 擴充功能，然後使用 [az extension update][az-extension-update] 命令檢查是否有任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -88,9 +88,6 @@ desIdentity=$(az disk-encryption-set show -n myDiskEncryptionSetName  -g myResou
 
 # Update security policy settings
 az keyvault set-policy -n myKeyVaultName -g myResourceGroup --object-id $desIdentity --key-permissions wrapkey unwrapkey get
-
-# Assign the reader role
-az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId
 ```
 
 ## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk"></a>建立新的 AKS 叢集，並將 OS 磁片加密
@@ -108,14 +105,13 @@ diskEncryptionSetId=$(az resource show -n mydiskEncryptionSetName -g myResourceG
 az group create -n myResourceGroup -l myAzureRegionName
 
 # Create the AKS cluster
-az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version 1.17.0 --generate-ssh-keys
+az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version KUBERNETES_VERSION --generate-ssh-keys
 ```
 
 將新的節點集區新增至上面建立的叢集時，會使用在建立期間提供的客戶管理金鑰來加密 OS 磁片。
 
-## <a name="encrypt-your-aks-cluster-data-disk"></a>加密您的 AKS 叢集資料磁片
-
-您也可以使用自己的金鑰來加密 AKS 資料磁片。
+## <a name="encrypt-your-aks-cluster-data-diskoptional"></a>加密您的 AKS 叢集資料磁片（選擇性）
+如果未針對1.17.2 的資料磁片提供金鑰，則 OS 磁片加密金鑰將用來加密資料磁片，而且您也可以使用其他金鑰將 AKS 資料磁片加密。
 
 > [!IMPORTANT]
 > 請確定您有適當的 AKS 認證。 服務主體必須具有部署 diskencryptionset 之資源群組的參與者存取權。 否則，您會收到錯誤，建議服務主體沒有許可權。
@@ -169,11 +165,9 @@ kubectl apply -f byok-azure-disk.yaml
 ## <a name="limitations"></a>限制
 
 * BYOK 目前僅適用于特定[Azure 區域][supported-regions]中的 GA 和預覽
-* Kubernetes 1.17 版和更新版本支援的 OS 磁片加密   
+* Kubernetes 1.17 版和更新版本支援的資料磁片加密   
 * 僅適用于支援 BYOK 的區域
 * 使用客戶管理的金鑰加密目前僅適用于新的 AKS 叢集，無法升級現有的叢集
-* 需要使用虛擬機器擴展集的 AKS 叢集，不支援虛擬機器可用性設定組
-
 
 ## <a name="next-steps"></a>後續步驟
 

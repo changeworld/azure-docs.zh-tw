@@ -12,15 +12,15 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: f28282a802e4b38fadc05c7090fa2a2af154de54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c41e14490842068895aea383d384007f308e9e1c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74083164"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887682"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>在 Azure CDN 中管理 Azure Blob 儲存體的到期
 > [!div class="op_single_selector"]
@@ -51,11 +51,11 @@ Azure 儲存體中的 [Blob 儲存體服務](../storage/common/storage-introduct
 
 1. 在 Azure 入口網站中，選取 CDN 設定檔，然後選取 blob 的端點。
 
-2. 在左窗格的 [設定] 下方，選取 [快取規則]****。
+2. 在左窗格的 [設定] 下方，選取 [快取規則]。
 
    ![CDN 快取規則按鈕](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
 
-   [快取規則]**** 頁面隨即出現。
+   [快取規則] 頁面隨即出現。
 
    ![CDN 快取頁面](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
 
@@ -70,7 +70,7 @@ Azure 儲存體中的 [Blob 儲存體服務](../storage/common/storage-introduct
 
    這個全域快取規則會設定一小時的快取期間，並影響針對端點的所有要求。 它會覆寫由端點指定之原始伺服器所傳送的任何 `Cache-Control` 或 `Expires` HTTP 標頭。   
 
-3. 選取 [儲存]  。
+3. 選取 [儲存]。
  
 **使用自訂快取規則設定 blob 檔案的 Cache-Control 標頭：**
 
@@ -84,7 +84,7 @@ Azure 儲存體中的 [Blob 儲存體服務](../storage/common/storage-introduct
 
     第一個自訂快取規則會替您的端點指定之來源伺服器上 `/blobcontainer1` 資料夾中的所有 blob 檔案，設定四個小時的快取期間。 第二個規則只會針對 `blob1.txt` blob 檔案覆寫第一個規則，為其設定兩個小時的快取期間。
 
-2. 選取 [儲存]  。
+2. 選取 [儲存]。
 
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>使用 Azure PowerShell 設定 Cache-Control 標頭
@@ -173,9 +173,9 @@ azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .
 ### <a name="azure-storage-services-rest-api"></a>Azure 儲存體服務 REST API
 您可以使用 [Azure 儲存體服務 REST API](/rest/api/storageservices/) \(英文\)，在要求上使用下列作業來明確設定 *x-ms-blob-cache-control* 屬性：
   
-   - [Put Blob](/rest/api/storageservices/Put-Blob) \(英文\)
-   - [Put Block List](/rest/api/storageservices/Put-Block-List) \(英文\)
-   - [Set Blob Properties](/rest/api/storageservices/Set-Blob-Properties) \(英文\)
+   - [放置 Blob](/rest/api/storageservices/Put-Blob)
+   - [放置區塊清單](/rest/api/storageservices/Put-Block-List)
+   - [設定 Blob 屬性](/rest/api/storageservices/Set-Blob-Properties)
 
 ## <a name="testing-the-cache-control-header"></a>測試 Cache-Control 標頭
 您可以輕鬆地驗證 Blob 的 TTL 設定。 使用瀏覽器的[開發人員工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，測試 blob 是否包含 `Cache-Control` 的回應標頭。 您也可以使用[Wget](https://www.gnu.org/software/wget/)、 [Postman](https://www.getpostman.com/)或[Fiddler](https://www.telerik.com/fiddler)等工具來檢查回應標頭。

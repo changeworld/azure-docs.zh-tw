@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: ebbb0dd059ce2bcf4a3bc260ed6d426d5be09dfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1946da6a18956b420684f4c2ffe86f35d0084eaf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887304"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>清除 Azure CDN 端點
 ## <a name="overview"></a>總覽
@@ -52,7 +52,7 @@ Azure CDN 邊緣節點會快取資產，直到資產的存留時間 (TTL) 到期
    > 
    > 
 4. 選取您希望從邊緣節點清除的資產。  如果您想要清除所有資產，請按一下 [全部**清除**] 核取方塊。  或者，在 [路徑]**** 文字方塊中輸入每個您想要清除之資產的路徑。 路徑支援下列格式。
-    1. **單一 URL 清除**：藉由指定完整 URL （包含或不含副檔名）來清除個別資產，例如，`/pictures/strasbourg.png`;`/pictures/strasbourg`
+    1. **單一 URL 清除**：藉由指定完整 URL （包含或不含副檔名）來清除個別資產，例如， `/pictures/strasbourg.png` ;`/pictures/strasbourg`
     2. **萬用字元清除**︰星號 (\*) 可作為萬用字元。 清除路徑中有 `/*` 之端點下的所有資料夾、子資料夾和檔案，或指定後接 `/*` 的資料夾來清除特定資料夾下的所有子資料夾和檔案，例如 `/pictures/*`。  請注意，來自 Akamai 的 Azure CDN 目前不支援萬用字元清除。 
     3. **根網域清除**︰清除路徑中有 "/" 之端點的根目錄。
    
@@ -73,7 +73,7 @@ Azure CDN 邊緣節點會快取資產，直到資產的存留時間 (TTL) 到期
 > 
 > 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [在 Azure CDN 端點上預先載入資產](cdn-preload-endpoint.md)
 * [Azure CDN REST API 參考資料 - 清除或預先載入端點](/rest/api/cdn/endpoints)
 

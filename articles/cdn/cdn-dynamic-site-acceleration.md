@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bae131c086e8fbf062015ee27c563bb988731cad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888549"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>透過 Azure CDN 進行動態網站加速
 
@@ -44,7 +44,7 @@ ms.locfileid: "81253827"
 
    ![新增 CDN 端點](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
-   此時會顯示 [新增端點]**** 窗格。
+   此時會顯示 [新增端點] 窗格。
 
 2. 在 [最佳化]**** 之下，選取 [動態網站加速]****。
 
@@ -147,7 +147,7 @@ TCP「慢速啟動」** 是 TCP 通訊協定的演算法，可藉由限制透過
 --- | ---  
 JPEG 壓縮 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
-## <a name="caching"></a>Caching
+## <a name="caching"></a>快取
 
 若使用 DSA，CDN 預設會關閉快取功能，即使來源在回應中納入 `Cache-Control` 或 `Expires` 標頭也是如此。 DSA 通常用於不得快取的動態資產，因為這類資產對每個用戶端都是唯一的。 快取可能會破壞此行為。
 
@@ -169,7 +169,7 @@ JPEG 壓縮 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
 存取規則引擎：
     
-1. 在 [ **CDN 設定檔**] 頁面中，選取 [**管理**]。  
+1. 從 [CDN 設定檔] 頁面選取 [管理]。  
     
     ![CDN 設定檔管理按鈕](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 6e361d23860ce8f40abba5c246242cf345bb974c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84886635"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>對應資料流程中的架構漂移
 
@@ -37,7 +37,7 @@ Azure Data Factory 原本就支援從執行變更為執行的彈性架構，讓�
 
 ## <a name="schema-drift-in-source"></a>來源中的架構漂移
 
-從來源定義傳入資料流程的資料行會定義為 "漂移"，但不存在於您的來源投射中。 您可以從來源轉換中的 [投射] 索引標籤，查看您的來源投射。 當您選取來源的資料集時，ADF 會自動從資料集取得架構，並從該資料集架構定義建立專案。
+從來源定義傳入資料流程的資料行會定義為 "漂移"，但不存在於您的來源投射中。 您可以從來源轉換中的 [投射] 索引標籤，查看您的來源投射。 當您選取來源的資料集時，ADF 會自動從資料集取得架構，並從該資料集架構定義建立投射。
 
 在來源轉換中，架構漂移定義為讀取未定義資料集架構的資料行。 若要啟用架構漂移，請選取 [允許來源轉換中的**架構漂移**]。
 
@@ -59,7 +59,7 @@ Azure Data Factory 原本就支援從執行變更為執行的彈性架構，讓�
 
 當您的資料流程具有漂移資料行時，您可以使用下列方法在轉換中存取它們：
 
-* 使用`byPosition`和`byName`運算式，依名稱或位置號碼明確參考資料行。
+* 使用 `byPosition` 和 `byName` 運算式，依名稱或位置號碼明確參考資料行。
 * 在衍生的資料行或匯總轉換中加入資料行模式，以符合名稱、資料流程、位置或類型的任何組合
 * 在 Select 或 Sink 轉換中新增以規則為基礎的對應，以透過模式將漂移的資料行與資料行的別名進行比對
 
@@ -71,7 +71,7 @@ Azure Data Factory 原本就支援從執行變更為執行的彈性架構，讓�
 
 ![地圖漂移](media/data-flow/mapdrifted1.png "地圖漂移")
 
-在產生的「衍生的資料行」轉換中，每個漂移資料行都會對應到其偵測到的名稱和資料類型。 在上述資料預覽中，會偵測到資料行 ' movieId ' 為整數。 按一下**對應漂移**之後，movieId 就會在衍生的資料行中`toInteger(byName('movieId'))`定義為，並包含在下游轉換的架構視圖中。
+在產生的「衍生的資料行」轉換中，每個漂移資料行都會對應到其偵測到的名稱和資料類型。 在上述資料預覽中，會偵測到資料行 ' movieId ' 為整數。 按一下**對應漂移**之後，movieId 就會在衍生的資料行中定義為 `toInteger(byName('movieId'))` ，並包含在下游轉換的架構視圖中。
 
 ![地圖漂移](media/data-flow/mapdrifted2.png "地圖漂移")
 

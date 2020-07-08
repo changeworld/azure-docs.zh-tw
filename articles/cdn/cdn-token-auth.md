@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
 ms.service: azure-cdn
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 3539c101b8bf146e9feee6dfc4e90f859f0ef142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745451"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887441"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>使用權杖驗證保護 Azure CDN 資產
 
@@ -173,17 +173,17 @@ ms.locfileid: "83745451"
 3. 在 [HTTP 大型] 底下，選取 [規則引擎]。 您需使用此規則引擎來定義路徑，以套用功能、啟用權杖驗證功能，以及啟用其他與權杖驗證相關的功能。 如需詳細資訊，請參閱[規則引擎參考](cdn-rules-engine-reference.md)。
 
    1. 選取現有規則或建立新規則，以定義您想要套用權杖驗證的資產或路徑。 
-   2. 若要在規則啟用權杖驗證，請從 **功能** 清單中選取 **[Token Auth](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** 權杖驗證，然後選取 **已啟用**。 如果您要更新規則，請選取 [更新]，或如果您要建立規則，請選取 [新增]。
+   2. 若要在規則啟用權杖驗證，請從 **功能** 清單中選取 **[Token Auth](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** 權杖驗證，然後選取 **已啟用**。 如果您要更新規則，請選取 [更新]，或如果您要建立規則，請選取 [新增]。
         
       ![CDN 規則引擎權杖驗證啟用範例](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. 在規則引擎中，您還可以啟用其他權杖驗證相關功能。 若要啟用下列任何功能，請從 [功能] 清單中選取該功能，然後選取 [已啟用]。
     
-   - **[權杖驗證拒絕代碼](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)** ：決定當要求遭拒時傳回給使用者的回應類型。 這裡設定的規則會覆寫權杖型驗證頁面之 [Custom Denial Handling] \(自訂拒絕處理\) 區段中設定的回應碼。
+   - **[權杖驗證拒絕代碼](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)** ：決定當要求遭拒時傳回給使用者的回應類型。 這裡設定的規則會覆寫權杖型驗證頁面之 [Custom Denial Handling] \(自訂拒絕處理\) 區段中設定的回應碼。
 
-   - **[權杖驗證會忽略 URL 的大小寫](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)** ：決定用來驗證權杖的 URL 是否區分大小寫。
+   - **[權杖驗證會忽略 URL 的大小寫](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)** ：決定用來驗證權杖的 URL 是否區分大小寫。
 
-   - **[權杖驗證參數](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)** ：會將出現在所要求 URL 中的權杖驗證查詢字串參數重新命名。 
+   - **[權杖驗證參數](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)** ：會將出現在所要求 URL 中的權杖驗證查詢字串參數重新命名。 
         
      ![CDN 規則引擎權杖驗證設定範例](./media/cdn-token-auth/cdn-rules-engine2.png)
 

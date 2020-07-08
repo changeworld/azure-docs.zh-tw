@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
-ms.openlocfilehash: 7ae7224efdaa281106dfbe2118ab0092c8284c6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260151"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887025"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>依國家/地區限制 Azure CDN 內容
 
@@ -59,8 +59,8 @@ ms.locfileid: "81260151"
 - **封鎖**：來自指定國家/地區的使用者會被拒絕存取從遞迴路徑要求的資產。 如果尚未針對該位置設定其他國家/地區篩選選項，則會允許所有其他使用者存取。
 
 例如，用於封鎖 /Photos/Strasbourg/** 路徑的地區篩選規則會篩選出下列檔案：     
-*HTTP\<：\//端點>。 azureedge.net/Photos/Strasbourg/1000.jpg*
-*HTTP：\//\<端點>. azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
+*HTTP： \/ / \<endpoint> . azureedge.net/Photos/Strasbourg/1000.jpg* 
+ *HTTP： \/ / \<endpoint> . azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countriesregions"></a>定義國家/地區
 從 [**國家/地區代碼**] 清單中，選取您想要封鎖或允許路徑的國家/地區。 
