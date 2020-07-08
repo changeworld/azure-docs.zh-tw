@@ -1,14 +1,14 @@
 ---
 title: NIST SP 800-53 R4 藍圖範例概觀
-description: NIST SP 800-53 R4 藍圖範例概觀。 此藍圖範例可協助客戶評定特定 NIST SP 800-53 R4 控制項。
+description: NIST SP 800-53 R4 藍圖範例概觀。 此藍圖範例可協助客戶評定特定 NIST SP 800-53 R4 控制措施。
 ms.date: 05/14/2020
 ms.topic: sample
-ms.openlocfilehash: e7ad29904b87a20f59d2867d277d806331614461
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 20ea6e81746a07db85a00a0881744340b2a24d1f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739458"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042657"
 ---
 # <a name="nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 藍圖範例
 
@@ -102,7 +102,7 @@ NIST SP 800-53 R4 藍圖範例提供使用 [Azure 原則](../../policy/overview.
 |成品名稱|成品類型|參數名稱|描述|
 |-|-|-|-|
 |\[預覽\]：稽核 NIST SP 800-53 R4 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應設定 VM 的 Log Analytics 工作區識別碼|這是應設定 VM 的 Log Analytics 工作區識別碼 (GUID)。|
-|\[預覽\]：稽核 NIST SP 800-53 R4 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應啟用診斷記錄的資源類型清單|診斷記錄設定未啟用時，可稽核的資源類型清單。 您可以在 [Azure 監視器診斷記錄結構描述](../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中找到可用值。|
+|\[預覽\]：稽核 NIST SP 800-53 R4 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應啟用診斷記錄的資源類型清單|診斷記錄設定未啟用時，可稽核的資源類型清單。 您可以在 [Azure 監視器診斷記錄結構描述](../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)中找到可用值。|
 |\[預覽\]：稽核 NIST SP 800-53 R4 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應從 Windows VM 系統管理員群組中排除的使用者清單|應從系統管理員本機群組中排除之成員的分號分隔清單。 例如：Administrator; myUser1; myUser2|
 |\[預覽\]：稽核 NIST SP 800-53 R4 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應納入 Windows VM 系統管理員群組中的使用者清單|應納入系統管理員本機群組中之成員的分號分隔清單。 例如：Administrator; myUser1; myUser2|
 |\[預覽\]：為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式|原則指派|Linux VM 擴展集 (VMSS) 的 Log Analytics 工作區|如果工作區是在指派的範圍之外，您必須手動將「Log Analytics 參與者」權限 (或類似權限) 授與原則指派的主體識別碼。|

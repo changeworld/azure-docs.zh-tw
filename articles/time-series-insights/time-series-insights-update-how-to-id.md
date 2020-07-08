@@ -1,21 +1,21 @@
 ---
 title: 選擇時間序列識別碼的最佳做法-Azure 時間序列深入解析 |Microsoft Docs
 description: 瞭解在 Azure 時間序列深入解析 Preview 中選擇時間序列識別碼時的最佳作法。
-author: deepakpalled
-ms.author: dpalled
-manager: cshankar
+author: shipramishra
+ms.author: shmishr
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 05/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 312bb9bac93ea30d01e1c3138709325ee1aa6173
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838717"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042164"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>選擇時間序列識別碼的最佳做法
 
@@ -37,9 +37,10 @@ ms.locfileid: "82838717"
 遵循的主要最佳做法包括：
 
 * 挑選具有許多相異值的分割區索引鍵（例如，上百或上千）。 在許多情況下，這可能是您的 JSON 中的裝置識別碼、感應器識別碼或標記識別項。
-* 在您[時間序列模型](./time-series-insights-update-tsm.md).的分葉節點層級，時間序列識別碼應該是唯一的。
+* 在您[時間序列模型](./concepts-model-overview.md).的分葉節點層級，時間序列識別碼應該是唯一的。
 * 時間序列識別碼的屬性名稱字串的字元限制為128。 若為時間序列識別碼的屬性值，字元限制為1024。
 * 如果遺漏時間序列識別碼的唯一屬性值，則會將它視為 null 值，並遵循唯一性條件約束的相同規則。
+* 如果您的時間序列識別碼是嵌套在複雜的 JSON 物件中，請務必在提供您的屬性名稱時遵循輸入簡維[規則](./concepts-json-flattening-escaping-rules.md)。 請參閱範例[B](concepts-json-flattening-escaping-rules.md#example-b)。 
 * 您也可以選取最多*三個*索引鍵屬性作為時間序列識別碼。 其組合會是代表時間序列識別碼的複合索引鍵。  
   > [!NOTE]
   > 您的三個索引鍵屬性必須是字串。
@@ -75,12 +76,10 @@ ms.locfileid: "82838717"
 
 在 Azure 入口網站中，您可以接著輸入複合索引鍵，如下所示：
 
-```JSON
-[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
-```
+[![設定環境的時間序列識別碼。](media/v2-how-to-tsid/configure-environment-key.png)](media/v2-how-to-tsid/configure-environment-key.png#lightbox)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[資料模型](./time-series-insights-update-tsm.md)化。
+* 閱讀 JSON 簡維[和「轉義規則](./concepts-json-flattening-escaping-rules.md)」，以瞭解事件的儲存方式。
 
 * 規劃您的[Azure 時間序列深入解析預覽環境](./time-series-insights-update-plan.md)。

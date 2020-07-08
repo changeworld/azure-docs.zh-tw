@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 04/13/2020
-ms.openlocfilehash: a566c55d2ac51efc5ff2650ad682f10dae2bdc31
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5bc160076e6a06c7ddcc99d989eb6d9c7fb3fe0f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81271993"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042283"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>快速入門：探索 Azure 時間序列深入解析
 
@@ -23,7 +23,7 @@ ms.locfileid: "81271993"
 
 「Azure 時間序列深入解析」是一項完全受控的分析、儲存體及視覺化服務，可讓您更輕鬆地同時探索及分析數十億個 IoT 事件。 它可為您提供全域資料檢視來讓您快速驗證 IoT 解決方案，並避免關鍵任務裝置發生成本高昂的停機狀況。 Azure 時間序列深入解析可讓您以近乎即時的方式探索隱藏趨勢、找出異常狀況，並進行根本原因分析。
 
-如需額外的彈性，您還可以將「Azure 時間序列深入解析」透過其強大的 [REST API](./time-series-insights-update-tsq.md) 和[用戶端 SDK](https://github.com/microsoft/tsiclient) 新增至既存的應用程式。 您可以使用 API 來儲存、查詢和取用所選用戶端應用程式中的時間序列資料。 您也可以使用用戶端 SDK 將 UI 元件新增至現有的應用程式。
+如需額外的彈性，您還可以將「Azure 時間序列深入解析」透過其強大的 [REST API](./concepts-query-overview.md) 和[用戶端 SDK](https://github.com/microsoft/tsiclient) 新增至既存的應用程式。 您可以使用 API 來儲存、查詢和取用所選用戶端應用程式中的時間序列資料。 您也可以使用用戶端 SDK 將 UI 元件新增至現有的應用程式。
 
 此時間序列深入解析總管快速入門可提供正式運作功能的導覽。
 

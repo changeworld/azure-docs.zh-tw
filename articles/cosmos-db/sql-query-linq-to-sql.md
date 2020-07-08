@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8753518e1d54ddba4fc15a5a030308d0c112a1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75441261"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042487"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 至 SQL 轉譯
 
-Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢的最佳工作對應。 下列描述假設對 LINQ 有基本的熟悉度。
+Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢的最佳工作對應。 如果您想要取得已轉譯為 LINQ 的 SQL 查詢，請 `ToString()` 在產生的物件上使用方法 `IQueryable` 。 下列描述假設對 LINQ 有基本的熟悉度。
 
 查詢提供者類型系統僅支援 JSON 基本類型：數值、布林值、字串和 null。
 
@@ -59,18 +59,18 @@ Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢�
 包含在 SQL .NET SDK 中的 LINQ 提供者支援下列運算子：
 
 - **Select**：投影會轉譯為 SQL Select，包括物件結構。
-- **Where**：篩選器會轉譯為 sql，其中、和`&&`支援`||`將、 `!`和之間的轉譯為 sql 運算子
+- **Where**：篩選器會轉譯為 SQL，其中、和支援將、和之間 `&&` `||` 的轉譯 `!` 為 sql 運算子
 - **SelectMany**：可讓陣列回溯到 SQL JOIN 子句。 使用來連鎖或嵌套運算式，以篩選陣列元素。
 - **OrderBy**和**OrderByDescending**：轉譯為 ORDER BY 加上 ASC 或 DESC。
 - 彙總的 **Count**、**Sum**、**Min**、**Max** 與 **Average** 運算子，以及其非同步對應項 **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync** 與 **AverageAsync**。
 - **CompareTo**：轉譯為範圍比較。 通常用於字串，因為它們在 .NET 中無法比較。
 - **Skip**和**Take**：轉譯為 SQL 位移和限制，以限制查詢的結果並執行分頁。
-- **Math 函數**：支援`Abs`從 .net、 `Acos`、 `Asin`、 `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Truncate` 、、、、、、、、、、、、和轉換為對等的 SQL 內建函數。 `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan`
-- **字串函數** `Concat`：支援從 .net、 `Contains`、 `Count`、 `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `TrimStart` 、、、、、、、、和轉換為對等的 SQL 內建函數。 `ToLower` `ToUpper` `TrimEnd`
-- **陣列函數**：支援從 .net `Concat`、 `Contains`和`Count`轉換為對等的 SQL 內建函數。
-- **地理空間擴充功能**：支援從存根方法`Distance`、 `IsValid` `IsValidDetailed`、和`Within`轉換為對等的 SQL 內建函數。
-- **使用者定義函數擴充函數**：支援從 stub 方法`UserDefinedFunctionProvider.Invoke`到對應的使用者定義函數的轉譯。
-- **其他**：支援和條件`Coalesce`運算子的轉譯。 視內容`Contains`而定，可以轉譯成中的字串 CONTAINS、ARRAY_CONTAINS 或 SQL。
+- **Math 函數**：支援從 .net、、、、、、、、、、、、、、、 `Abs` `Acos` 和轉換 `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` 為對 `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` `Truncate` 等的 SQL 內建函數。
+- **字串函數**：支援從 .net、、、、、、、、、、、 `Concat` `Contains` 和轉換 `Count` `EndsWith` 為對 `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` `TrimStart` 等的 SQL 內建函數。
+- **陣列函數**：支援從 .net `Concat` 、 `Contains` 和轉換 `Count` 為對等的 SQL 內建函數。
+- **地理空間擴充功能**：支援從存根方法 `Distance` 、 `IsValid` 、 `IsValidDetailed` 和轉換 `Within` 為對等的 SQL 內建函數。
+- **使用者定義函數擴充函數**：支援從 stub 方法 `UserDefinedFunctionProvider.Invoke` 到對應的使用者定義函數的轉譯。
+- **其他**：支援 `Coalesce` 和條件運算子的轉譯。 視內容而定，可以轉譯 `Contains` 成中的字串 CONTAINS、ARRAY_CONTAINS 或 SQL。
 
 ## <a name="examples"></a>範例
 
@@ -192,7 +192,7 @@ Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢�
 
 ### <a name="concatenation"></a>串連
 
-語法為 `input(.|.SelectMany())(.Select()|.Where())*`。 串連查詢的開頭可以是選擇性`SelectMany`查詢，後面接著多個`Select` or `Where`運算子。
+語法為 `input(.|.SelectMany())(.Select()|.Where())*`。 串連查詢的開頭可以是選擇性 `SelectMany` 查詢，後面接著多個 `Select` or `Where` 運算子。
 
 **串連，範例1：**
 
@@ -264,7 +264,7 @@ Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢�
 
 ### <a name="nesting"></a>巢狀
 
-語法為`input.SelectMany(x=>x.Q())` `Q` `Select`，其中是、 `SelectMany`或`Where`運算子。
+語法為 `input.SelectMany(x=>x.Q())` ，其中 `Q` 是 `Select` 、 `SelectMany` 或 `Where` 運算子。
 
 嵌套的查詢會將內部查詢套用至外部容器的每個元素。 其中一個重要的功能是，內部查詢可以參考外部容器中元素的欄位，例如自我聯結。
 

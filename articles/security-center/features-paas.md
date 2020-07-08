@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78209359"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042351"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>Azure PaaS 服務的功能涵蓋範圍<a name="paas-services"></a>
 
 下表顯示支援的 Azure PaaS 資源的 Azure 資訊安全中心功能可用性。
 
-|Service|建議（免費）|安全性警示（標準）|弱點評估（標準）|
+|服務|建議（免費）|安全性警示（標準）|弱點評估（標準）|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
 |Azure 自動化帳戶|✔|-|-|
@@ -45,7 +45,8 @@ ms.locfileid: "78209359"
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
-|Azure SQL 資料庫|✔|✔|✔|
+|Azure SQL Database|✔|✔|✔|
+|Azure SQL 受控執行個體|✔|✔|✔|
 |Azure 服務匯流排命名空間|✔|-|-|
 |Azure Service Fabric 帳戶|✔|-|-|
 |Azure 儲存體帳戶|✔|-|-|
