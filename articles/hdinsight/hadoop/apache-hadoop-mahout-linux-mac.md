@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: ab4c2984bbaef84684432c660baadc78f3ef8e16
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f533b2baa3e1e748edfc723a60734daedf3d0a18
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656322"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086019"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Mahout 產生推薦
 
