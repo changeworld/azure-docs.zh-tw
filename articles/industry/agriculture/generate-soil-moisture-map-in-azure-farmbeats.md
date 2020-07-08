@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75482565"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>產生土料濕度熱度圖
@@ -51,7 +50,7 @@ ms.locfileid: "75482565"
 將您的感應器帳戶連結至 Azure FarmBeats 之後，您必須將「土裡濕度感應器」指派給感對的伺服器陣列。
 
 1.  在首頁中，從功能表中選取 [**伺服器**陣列]，隨即會顯示 [**伺服器**陣列清單] 頁面。
-2.  選取 [ **MyFarm** > ] [**新增裝置**]。
+2.  選取 [ **MyFarm**] [  >  **新增裝置**]。
 3.  [**新增裝置**] 視窗隨即顯示。 選取連結至您伺服器陣列之土濕度感應器的任何裝置。
 
     ![專案 FarmBeats](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
@@ -81,13 +80,13 @@ ms.locfileid: "75482565"
 
 ### <a name="download-the-soil-moisture-heatmap"></a>下載土裡濕度熱度圖
 
-使用下列步驟：
+請使用下列步驟：
 
 1. 在 [**作業**] 頁面中，檢查您在上一個程式中建立之作業的**作業狀態**。
 2. 當 [作業狀態] 顯示為 [**成功**] 時，請選取功能表上的 [**對應**]。
 3. 依 <土 moisture_MyFarm_YYYY-MM-DD> 的格式，搜尋其建立日期的對應。
 4. 在 [**名稱**] 資料行中選取一個對應，就會顯示一個快顯視窗，其中包含所選取對應的預覽。
-5. 選取 [下載]  。 對應會下載並儲存到您電腦的本機資料夾。
+5. 選取 [下載]。 對應會下載並儲存到您電腦的本機資料夾。
 
     ![專案 FarmBeats](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
 

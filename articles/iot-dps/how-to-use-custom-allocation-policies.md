@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 87ffca1957d4ec449753f1966ed05cf3948f5ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75453948"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自訂配置原則
@@ -122,7 +121,7 @@ ms.locfileid: "75453948"
 
 4. 在 [**摘要**] 頁面上，選取 [**建立**] 以建立函數應用程式。 部署可能需要數分鐘的時間。 完成時，選取 [**移至資源**]。
 
-5. 在 [函數應用程式**總覽**] 頁面的左窗格上**+** ，選取 [函式]**旁邊的 [** 加入新函數]。
+5. 在 [函數應用程式**總覽**] 頁面的左窗格上，選取 [函式 **+** ] 旁邊**的**[加入新函數]。
 
     ![將函式新增至函數應用程式](./media/how-to-use-custom-allocation-policies/create-function.png)
 
@@ -436,7 +435,7 @@ ms.locfileid: "75453948"
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    如果`cmake`找不到您的 c + + 編譯器，您可能會在執行命令時收到組建錯誤。 如果發生這種情況，請嘗試在[Visual Studio 命令提示](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)字元中執行命令。
+    如果 `cmake` 找不到您的 c + + 編譯器，您可能會在執行命令時收到組建錯誤。 如果發生這種情況，請嘗試在[Visual Studio 命令提示](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)字元中執行命令。
 
     建置成功後，最後幾行輸出會類似於下列輸出：
 
@@ -456,7 +455,7 @@ ms.locfileid: "75453948"
 
 ## <a name="simulate-the-devices"></a>模擬裝置
 
-在本節中，您會更新位於先前設定的 Azure IoT C SDK 中名為**prov\_\_dev client\_sample**的布建範例。
+在本節中，您會更新位於先前設定的 Azure IoT C SDK 中名為**prov \_ dev \_ client \_ sample**的布建範例。
 
 此範例程式碼會模擬將佈建要求傳送至裝置佈建服務執行個體的裝置開機順序。 此開機順序會使烤箱裝置接受辨識，並使用自訂配置原則指派給 IoT 中樞。
 

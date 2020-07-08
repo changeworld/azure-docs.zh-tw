@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: cde24657cc8ed78b91e72df16d51df4077a6e030
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463086"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>使用 EventFlow 的事件彙總與集合
@@ -147,6 +146,6 @@ servicefabric:/<section-name>/<setting-name>
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 Application Insights 進行事件分析和視覺效果](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Application Insights 的事件分析和視覺效果](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Azure 監視器記錄檔進行事件分析和視覺效果](service-fabric-diagnostics-event-analysis-oms.md)
 * [EventFlow 文件](https://github.com/Azure/diagnostics-eventflow)

@@ -4,10 +4,9 @@ description: 說明如何使用 Service Fabric Explorer，對執行中的 Servic
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458176"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>檢視 Service Fabric 容器服務的記錄
@@ -16,7 +15,7 @@ Azure Service Fabric 是一種容器協調器，可支援 [Linux 和 Windows 容
 ## <a name="access-the-logs-of-a-running-container"></a>存取執行中容器的記錄
 您可以使用 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 來存取容器記錄。  在 Web 瀏覽器中瀏覽至 `http://mycluster.region.cloudapp.azure.com:19080/Explorer`，從叢集的管理端點開啟 Service Fabric Explorer。  
 
-容器記錄位於執行容器服務執行個體所在的叢集節點上。 例如，您可以取得 [Linux 投票範例應用程式](service-fabric-quickstart-containers-linux.md)的 Web 前端容器記錄。 在樹狀檢視中 **，展開**>[叢集**應用程式**>] [**VotingType**>**fabric：/投票/azurevotefront**]。  然後展開分割區 (在此範例中為 d1aa737e-f22a-e347-be16-eec90be24bc1)，並查看叢集節點 _lnxvm_0** 上執行的容器。
+容器記錄位於執行容器服務執行個體所在的叢集節點上。 例如，您可以取得 [Linux 投票範例應用程式](service-fabric-quickstart-containers-linux.md)的 Web 前端容器記錄。 在樹狀檢視中 **，展開 [** 叢集 > **應用程式**] [ > **VotingType** > **fabric：/投票/azurevotefront**]。  然後展開分割區 (在此範例中為 d1aa737e-f22a-e347-be16-eec90be24bc1)，並查看叢集節點 _lnxvm_0** 上執行的容器。
 
 在樹狀結構檢視中尋找 _lnxvm_0** 節點上的程式碼套件，請展開 [Nodes]\(節點\)****>[_lnxvm_0]****>[fabric:/Voting]****>[azurevotfrontPkg]****>[Code Packages]\(程式碼套件\)****>[code]\(程式碼\)****。  然後選取 [容器記錄]**** 選項以顯示容器記錄。
 

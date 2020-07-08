@@ -9,10 +9,9 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75457637"
 ---
 # <a name="design-for-querying"></a>查詢的設計
@@ -35,13 +34,13 @@ ms.locfileid: "75457637"
 ## <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>您選擇的 PartitionKey 和 RowKey 對查詢效能有何影響
 下列範例假設表格服務會以下列結構儲存員工實體 (為求簡潔，大部分的範例皆省略 **Timestamp** 屬性)：  
 
-| *資料行名稱* | *資料類型* |
+| *資料行名稱* | *Data type* |
 | --- | --- |
 | **PartitionKey** (部門名稱) |String |
 | **RowKey** (員工識別碼) |String |
-| **姓** |String |
-| **LastName** |String |
-| **存在** |整數 |
+| **名字** |String |
+| **姓氏** |String |
+| **Age** |整數 |
 | **EmailAddress** |String |
 
 ＜[Azure 表格儲存體概觀](table-storage-overview.md) ＞一文將說明某些對查詢設計有直接影響的重要 Azure 表格服務功能。 這些功能產生了設計資料表服務查詢的一般指導方針。 請注意，下列範例中使用的篩選語法來自於表格服務 REST API，如需詳細資訊，請參閱 [查詢實體](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)。  

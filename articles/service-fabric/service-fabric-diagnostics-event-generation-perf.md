@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464713"
 ---
 # <a name="performance-metrics"></a>效能度量
@@ -22,16 +21,16 @@ ms.locfileid: "75464713"
 
 | 計數器類別 | 計數器名稱 |
 | --- | --- |
-| Logical Disk | 邏輯磁碟可用空間 |
+| 邏輯磁碟 | 邏輯磁碟可用空間 |
 | PhysicalDisk(per Disk) | 平均磁片讀取佇列長度 |
 | PhysicalDisk(per Disk) | 平均磁片寫入佇列長度 |
-| PhysicalDisk(per Disk) | Avg. Disk sec/Read |
-| PhysicalDisk(per Disk) | Avg. Disk sec/Write |
-| PhysicalDisk(per Disk) | Disk Reads/sec  |
-| PhysicalDisk(per Disk) | Disk Read Bytes/sec  |
+| PhysicalDisk(per Disk) | Avg.Disk sec/Read |
+| PhysicalDisk(per Disk) | Avg.Disk sec/Write |
+| PhysicalDisk(per Disk) | Disk Reads/sec |
+| PhysicalDisk(per Disk) | Disk Read Bytes/sec |
 | PhysicalDisk(per Disk) | Disk Writes/sec |
 | PhysicalDisk(per Disk) | Disk Write Bytes/sec |
-| 記憶體 | 可用的 MB |
+| Memory | 可用的 MB |
 | PagingFile | % 使用量 |
 | Processor(Total) | % Processor Time |
 | Process (per service) | % Processor Time |

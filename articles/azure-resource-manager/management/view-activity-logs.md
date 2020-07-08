@@ -4,10 +4,9 @@ description: 使用活動記錄檢閱使用者動作和錯誤。 顯示 Azure �
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75478132"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>查看活動記錄以監視資源上的動作
@@ -20,7 +19,7 @@ ms.locfileid: "75478132"
 * 作業的狀態
 * 其他可能協助您研究作業的屬性值
 
-活動記錄包含資源的所有寫入作業（PUT、POST、DELETE）。 不包含讀取作業 (GET)。 如需資源動作的清單，請參閱 [Azure Resource Manager 資源提供者作業](../../role-based-access-control/resource-provider-operations.md)。 您可以使用活動記錄在進行疑難排解時發現錯誤，或是監視貴組織使用者修改資源的方式。
+活動記錄包含針對您資源執行的所有寫入作業 (PUT、POST、DELETE)。 不包含讀取作業 (GET)。 如需資源動作的清單，請參閱 [Azure Resource Manager 資源提供者作業](../../role-based-access-control/resource-provider-operations.md)。 您可以使用活動記錄在進行疑難排解時發現錯誤，或是監視貴組織使用者修改資源的方式。
 
 活動記錄會保留 90 天。 您可以查詢任何的日期範圍，只要開始日期不是在過去 90 天以前。
 

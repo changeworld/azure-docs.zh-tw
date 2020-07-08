@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463335"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>將 Web 角色和背景工作角色轉換成 Service Fabric 無狀態服務的指南
@@ -32,7 +31,7 @@ ms.locfileid: "75463335"
 
 | **應用程式** | **支援** | **移轉路徑** |
 | --- | --- | --- |
-| ASP.NET Web Forms |否 |轉換為 ASP.NET Core 1 MVC |
+| ASP.NET Web Forms |No |轉換為 ASP.NET Core 1 MVC |
 | ASP.NET MVC |移轉 |升級至 ASP.NET Core 1 MVC |
 | ASP.NET Web API |移轉 |使用自我裝載的伺服器或 ASP.NET Core 1 |
 | ASP.NET Core 1 |是 |N/A |

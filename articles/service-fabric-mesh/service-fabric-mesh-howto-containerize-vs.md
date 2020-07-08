@@ -6,10 +6,9 @@ ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75462045"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>將 Service Fabric Mesh 的現有 .NET 應用程式容器化
@@ -21,7 +20,7 @@ ms.locfileid: "75462045"
 > [!NOTE]
 > 目前不支援 .NET **Core** 專案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，您可以在開始前[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

@@ -4,10 +4,9 @@ description: 描述 Azure Resource Manager 處理跨租用戶驗證要求的方�
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 7a13ba6f6cbfc10c52484c45e4011da7a0d8ee4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75478821"
 ---
 # <a name="authenticate-requests-across-tenants"></a>跨租用戶驗證要求
@@ -18,10 +17,10 @@ ms.locfileid: "75478821"
 
 要求具有下列驗證標頭值：
 
-| 標頭名稱 | 描述 | 範例值 |
+| 標頭名稱 | Description | 範例值 |
 | ----------- | ----------- | ------------ |
 | 授權 | 主要權杖 | Bearer &lt;primary-token&gt; |
-| x-ms-authorization-auxiliary | 輔助權杖 | 持有&lt;人輔助 token1&gt;、EncryptedBearer &lt;輔助 token2&gt;、持有&lt;人輔助 token3&gt; |
+| x-ms-authorization-auxiliary | 輔助權杖 | 持有人 &lt; 輔助 token1 &gt; 、EncryptedBearer &lt; 輔助 token2 &gt; 、持有人 &lt; 輔助 token3&gt; |
 
 輔助標頭最多可以持有三個輔助權杖。 
 

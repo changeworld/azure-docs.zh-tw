@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/31/2019
 ms.author: vaaga
 ms.openlocfilehash: e049a2b914cbf9c4f0ca0f3a1dd0281d58f881b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75486816"
 ---
 # <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>針對因卸離磁片而進行的虛擬機器部署進行疑難排解
@@ -83,7 +82,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>步驟2：將失敗磁片的旗標設為 "true"。
 
-在步驟1中傳回的承載中，將失敗磁片的**toBeDetached**旗標設定為 true。 請注意：針對 Get 和 Put 呼叫所指定的 API 版本必須是`2019-03-01`或大於。
+在步驟1中傳回的承載中，將失敗磁片的**toBeDetached**旗標設定為 true。 請注意：針對 Get 和 Put 呼叫所指定的 API 版本必須是 `2019-03-01` 或大於。
 
 **範例要求本文**
 

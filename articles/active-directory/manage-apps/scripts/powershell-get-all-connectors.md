@@ -13,13 +13,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53af7f3f9049edc23ed4226f43e7fe67398c29f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75482110"
 ---
-# <a name="get-all-connector-groups-and-connectors-in-the-directory"></a>取得目錄中的所有連接器群組和連接器
+# <a name="get-all-connector-groups-and-connectors-in-the-directory"></a>取得目錄中所有的連接器群組和連接器
 
 此 PowerShell 腳本範例會列出目錄中的所有 Azure Active Directory （Azure AD）應用程式 Proxy 連接器群組和連接器。
 

@@ -9,10 +9,9 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75457556"
 ---
 # <a name="modeling-relationships"></a>將關聯性模型化
@@ -100,7 +99,7 @@ ms.locfileid: "75457556"
 
 也有可能會導致您在表格服務中實作一對一關聯性的實作考量：  
 
-* 處理大型實體 (如需詳細資訊，請參閱 [大型實體模式](table-storage-design-patterns.md#large-entities-pattern))。  
+* 處理大型實體（如需詳細資訊，請參閱[大型實體模式](table-storage-design-patterns.md#large-entities-pattern)）。  
 * 實作存取控制 (如需詳細資訊，請參閱使用共用存取簽章控制存取)。  
 
 ## <a name="join-in-the-client"></a>用戶端中的聯結

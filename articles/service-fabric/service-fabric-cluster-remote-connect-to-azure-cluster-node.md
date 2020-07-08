@@ -4,10 +4,9 @@ description: 了解如何從遠端連線擴展集執行個體 (Service Fabric �
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458328"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>遠端連線到虛擬機器擴展集執行個體或叢集節點
@@ -19,7 +18,7 @@ ms.locfileid: "75458328"
 
     在叢集中定義的每個節點類型通常都有它自己的虛擬 IP 位址和專用負載平衡器。 根據預設，節點類型的負載平衡器名稱採用下列格式：LB-{cluster-name}-{node-type}**；例如，LB-mycluster-FrontEnd**。 
     
-    在 Azure 入口網站的負載平衡器頁面上，選取 [**設定** > ] [**輸入 NAT 規則**]： 
+    在 Azure 入口網站的負載平衡器頁面上，選取 [**設定**] [  >  **輸入 NAT 規則**]： 
 
     ![負載平衡器輸入 NAT 規則](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 

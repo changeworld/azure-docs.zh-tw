@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
 ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463106"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>使用 Service Fabric 診斷一般程式碼套件錯誤
@@ -41,7 +40,7 @@ The process/container terminated with exit code: XXXXXXXX. Please look at your a
 >[!NOTE]
 > 如果您的進程或容器終止的結束代碼不是下表中的代碼，Service Fabric 不負責終止它。
 
-結束代碼 | 描述
+結束碼 | Description
 --------- | -----------
 7147 | 指出 Service Fabric 藉由傳送 Ctrl + C 信號的方式，正常關閉進程或容器。
 7148 | 表示 Service Fabric 終止進程或容器。 有時，此錯誤碼表示進程或容器在傳送 Ctrl + C 信號之後，未及時回應，而且必須終止。
@@ -49,7 +48,7 @@ The process/container terminated with exit code: XXXXXXXX. Please look at your a
 
 ## <a name="other-common-error-codes-and-their-potential-fixes"></a>其他常見的錯誤碼及其可能的修正
 
-結束代碼 | 十六進位值 | 簡短描述 | 根本原因 | 可能的修正
+結束碼 | 十六進位值 | 簡短描述 | 根本原因 | 可能的修正
 --------- | --------- | ----------------- | ---------- | -------------
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | 此錯誤有時表示電腦已用盡桌面堆積空間。 如果您有許多屬於在節點上執行之應用程式的進程，則此問題特別可能發生。 | 如果您的程式不是為了回應 Ctrl + C 信號而建立，您可以在叢集資訊清單中啟用**EnableActivateNoWindow**設定。 啟用這項設定表示您的程式碼封裝會在沒有 GUI 視窗的情況下執行，而且不會收到 Ctrl + C 信號。 此動作也會減少每個進程耗用的桌面堆積空間數量。 如果您的程式碼套件需要接收 Ctrl + C 信號，您可以增加節點的桌面堆積大小。
 3762504530 | 0xe0434352 | N/A | 此值代表 managed 程式碼（也就是 .NET）中未處理之例外狀況的錯誤碼。 | 這個結束代碼會指出您的應用程式引發了例外狀況，而此例外狀況會保持未處理，並終止進程。 在判斷觸發此錯誤的第一個步驟中，請將應用程式的記錄檔和傾印檔案加以調試。

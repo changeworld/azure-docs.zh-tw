@@ -9,17 +9,16 @@ ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
 ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75497867"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>將複寫的實體伺服器容錯移轉及容錯回復至 Azure
 
 本教學課程說明如何故障切換使用[Azure Site Recovery](site-recovery-overview.md)複寫到 Azure 的內部部署實體伺服器。 容錯回復之後，您可以從 Azure 容錯回復到您的內部部署網站（如果有的話）。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - [瞭解](failover-failback-overview.md)嚴重損壞修復中的容錯移轉程式。
 - 如果您想要故障處理多部電腦，請[瞭解](recovery-plan-overview.md)如何在復原方案中一起收集機器。
@@ -49,7 +48,7 @@ ms.locfileid: "75497867"
    - **最新應用程式一致**：此選項會將機器容錯移轉到 Site Recovery 所處理的最近應用程式一致復原點。
    - **自訂**：指定任何復原點。
 
-3. 如果想在觸發容錯移轉之前，讓 Site Recovery 嘗試將來源 VM 關機，請選取 [先將機器關機再開始容錯移轉]****。 即使關機失敗，仍會繼續容錯移轉。 您可以 [作業]  頁面上追蹤容錯移轉進度。
+3. 如果想在觸發容錯移轉之前，讓 Site Recovery 嘗試將來源 VM 關機，請選取 [先將機器關機再開始容錯移轉]****。 即使關機失敗，仍會繼續容錯移轉。 您可以 [作業] 頁面上追蹤容錯移轉進度。
 4. 如果您已準備好連線到 Azure VM，請進行連線以在容錯移轉之後加以驗證。
 5. 驗證之後，請 [認可]**** 容錯移轉。 這會刪除所有可用的復原點。
 
@@ -95,7 +94,7 @@ ms.locfileid: "75497867"
 
 此程式假設內部部署 VM 無法使用。
 
-1. 在保存庫中 > [**設定** > ] [複寫的**專案**] 中，以滑鼠右鍵按一下已容錯回復的機器，>**重新保護**]。
+1. 在保存庫中 > [**設定**] [複寫的  >  **專案**] 中，以滑鼠右鍵按一下已容錯回復的機器，>**重新保護**]。
 2. 在 [重新保護]**** 中，確認已選取 [Azure 到內部部署]****。
 3. 指定內部部署主要目標伺服器，以及處理序伺服器。
 4. 在 [資料存放區]**** 中，選取您要將內部部署磁碟復原至的主要目標資料存放區。

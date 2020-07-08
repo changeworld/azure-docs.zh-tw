@@ -6,20 +6,19 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458429"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Azure Service Fabric 中的隨選備份
 
 您可備份可靠具狀態服務和 Reliable Actors 的資料，以處理災害或資料遺失情況。
 
-Azure Service Fabric 具有用來[定期備份資料](service-fabric-backuprestoreservice-quickstart-azurecluster.md)及依照需求備份資料的功能。 隨選備份很有用，因為它會防止_資料遺失_/_資料損毀_，因為基礎服務或其環境中有規劃的變更。
+Azure Service Fabric 具有用來[定期備份資料](service-fabric-backuprestoreservice-quickstart-azurecluster.md)及依照需求備份資料的功能。 隨選備份很有用，因為它會防止_資料遺失_ / _資料損毀_，因為基礎服務或其環境中有規劃的變更。
 
 在您手動觸發服務或服務環境作業之前，隨選備份功能對於擷取服務狀態很有幫助。 例如，如果您在升級或降級服務時變更了服務二進位檔。 在此情況下，隨選備份可協助防範由應用程式程式碼錯誤 (bug) 造成的資料損毀。
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 安裝 ServiceFabric 模組 [在預覽中] 以進行設定呼叫。
 
@@ -27,7 +26,7 @@ Azure Service Fabric 具有用來[定期備份資料](service-fabric-backupresto
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- 請先使用`Connect-SFCluster`命令來確定叢集已連線，再使用 ServiceFabric 模組進行任何設定要求。
+- 請先使用命令來確定叢集已連線， `Connect-SFCluster` 再使用 ServiceFabric 模組進行任何設定要求。
 
 ```powershell
 

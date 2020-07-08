@@ -7,10 +7,9 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
 ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75453502"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用內嵌程式碼來新增和執行程式碼片段
@@ -21,10 +20,10 @@ ms.locfileid: "75453502"
 * 在5秒或更少的時間內完成執行。
 * 處理大小上限為 50 MB 的資料。
 * 不需要使用尚未支援的[**變數**動作](../logic-apps/logic-apps-create-variables-store-values.md)。
-* 使用 node.js 版本建議使用8.11.1。 如需詳細資訊，請參閱[標準的內建物件](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。 
+* 使用 Node.js 版本建議使用8.11.1。 如需詳細資訊，請參閱[標準的內建物件](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。 
 
   > [!NOTE]
-  > 執行`require()` JavaScript 的**內嵌程式碼**動作不支援函數。
+  > `require()`執行 JavaScript 的**內嵌程式碼**動作不支援函數。
 
 此動作會執行程式碼片段，並將該片段的輸出當做名為**Result**的 token 傳回，以供您在邏輯應用程式的後續動作中使用。 針對您想要為程式碼建立函式的其他案例，請嘗試在您的邏輯應用程式中[建立和呼叫 Azure 函數](../logic-apps/logic-apps-azure-functions.md)。
 
@@ -32,11 +31,11 @@ ms.locfileid: "75453502"
 
 ![範例總覽](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* 您想要在其中新增程式碼片段的邏輯應用程式，包括觸發程式。 如果您沒有邏輯應用程式，請參閱[快速入門：建立您的第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 您想要在其中新增程式碼片段的邏輯應用程式，包括觸發程式。 如果沒有邏輯應用程式，請參閱[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
    本主題中的範例邏輯應用程式會使用此 Office 365 Outlook 觸發程式：**當新的電子郵件送達時**
 
@@ -53,7 +52,7 @@ ms.locfileid: "75453502"
 
    * 若要在工作流程結尾處新增動作，請選擇 [**新增步驟**]。
 
-   * 若要在現有步驟之間新增動作，請將滑鼠指標移到連接這些步驟的箭號上。 選擇加號（**+**），然後選取 [**新增動作**]。
+   * 若要在現有步驟之間新增動作，請將滑鼠指標移到連接這些步驟的箭號上。 選擇加號（ **+** ），然後選取 [**新增動作**]。
 
    這個範例會在 Office 365 Outlook 觸發程式下加入**內嵌程式碼**動作。
 
@@ -79,11 +78,11 @@ ms.locfileid: "75453502"
 
    若要讓觸發程式的結果和先前的動作更容易參考，動態內容清單會在游標位於 [**代碼**] 方塊內時出現。 在此範例中，清單會顯示來自觸發程式的可用結果，包括**主體**權杖，您現在可以選取此功能。
 
-   當您**選取 [內**文] token 之後，內嵌程式碼動作會將`workflowContext` token 解析成參考該電子`Body`郵件屬性值的物件：
+   當您**選取 [內**文] token 之後，內嵌程式碼動作會將 token 解析成 `workflowContext` 參考該電子郵件 `Body` 屬性值的物件：
 
    ![選取結果](./media/logic-apps-add-run-inline-code/inline-code-example-select-outputs.png)
 
-   在 [程式**代碼**] 方塊中，您的程式碼片段可以`workflowContext`使用唯讀物件做為輸入。 這個物件具有子屬性，可讓您的程式碼存取來自觸發程式的結果，以及工作流程中的先前動作。
+   在 [程式**代碼**] 方塊中，您的程式碼片段可以使用唯讀 `workflowContext` 物件做為輸入。 這個物件具有子屬性，可讓您的程式碼存取來自觸發程式的結果，以及工作流程中的先前動作。
    如需詳細資訊，請參閱本主題稍後的此節：[在您的程式碼中參考觸發程式和動作結果](#workflowcontext)。
 
    > [!NOTE]
@@ -96,8 +95,8 @@ ms.locfileid: "75453502"
    > `// Incorrect`</br>
    > `workflowContext.actions.my.action.name.body`
 
-   內嵌程式碼動作不需要`return`語句，但是可以透過**結果**token， `return`在後續動作中參考語句的結果。 
-   例如，程式碼片段會藉由呼叫`match()`函式來傳回結果，該函式會在電子郵件內文中尋找符合正則運算式的相符專案。 **撰寫**動作會使用**結果**token 來參考內嵌程式碼動作的結果，並建立單一結果。
+   內嵌程式碼動作不需要 `return` 語句，但是 `return` 可以透過**結果**token，在後續動作中參考語句的結果。 
+   例如，程式碼片段會藉由呼叫函式來傳回結果，該函式會 `match()` 在電子郵件內文中尋找符合正則運算式的相符專案。 **撰寫**動作會使用**結果**token 來參考內嵌程式碼動作的結果，並建立單一結果。
 
    ![完成的邏輯應用程式](./media/logic-apps-add-run-inline-code/inline-code-complete-example.png)
 
@@ -107,7 +106,7 @@ ms.locfileid: "75453502"
 
 ### <a name="reference-trigger-and-action-results-in-your-code"></a>程式碼中的參考觸發程式和動作結果
 
-`workflowContext`物件具有這個結構，其中包括`actions`、 `trigger`和`workflow`子屬性：
+`workflowContext`物件具有這個結構，其中包括 `actions` 、和子 `trigger` `workflow` 屬性：
 
 ```json
 {
@@ -128,14 +127,14 @@ ms.locfileid: "75453502"
 
 此資料表包含這些子屬性的詳細資訊：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 |----------|------|-------|
-| `actions` | 物件集合 | 在您的程式碼片段執行之前執行之動作的結果物件。 每個物件都有索引*鍵/值*組，其中索引鍵是動作的名稱，而值相當於呼叫[actions （）](../logic-apps/workflow-definition-language-functions-reference.md#actions)函式`@actions('<action-name>')`。 動作的名稱會使用在基礎工作流程定義中使用的相同動作名稱，這會以底線（_）取代動作名稱中的空格（""）。 這個物件可讓您從目前的工作流程實例執行存取動作屬性值。 |
+| `actions` | 物件集合 | 在您的程式碼片段執行之前執行之動作的結果物件。 每個物件都有索引*鍵/值*組，其中索引鍵是動作的名稱，而值相當於呼叫[actions （）](../logic-apps/workflow-definition-language-functions-reference.md#actions)函式 `@actions('<action-name>')` 。 動作的名稱會使用在基礎工作流程定義中使用的相同動作名稱，這會以底線（_）取代動作名稱中的空格（""）。 這個物件可讓您從目前的工作流程實例執行存取動作屬性值。 |
 | `trigger` | Object | 來自觸發程式的結果物件，相當於呼叫[trigger （）函數](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 這個物件可讓您從目前的工作流程實例執行，存取觸發程式的屬性值。 |
 | `workflow` | Object | 工作流程物件，相當於呼叫[workflow （）函數](../logic-apps/workflow-definition-language-functions-reference.md#workflow)。 這個物件可讓您從目前的工作流程實例執行，存取工作流程屬性值，例如工作流程名稱、執行識別碼等等。 |
 |||
 
-在本主題的範例中， `workflowContext`物件具有您的程式碼可以存取的下列屬性：
+在本主題的範例中， `workflowContext` 物件具有您的程式碼可以存取的下列屬性：
 
 ```json
 {
@@ -212,7 +211,7 @@ ms.locfileid: "75453502"
 > [!TIP]
 > 如果您打算重複使用您的程式碼，請使用 [程式**代碼**] 方塊加入屬性的參考，讓您的程式碼包含已解析的 token 參考，而不是將觸發程式或動作新增為明確相依性。
 
-例如，假設您的程式碼會從 Office 365 Outlook 連接器的 [**傳送核准電子郵件**] 動作中參考**SelectedOption**結果。 在建立期間，Logic Apps 引擎會分析您的程式碼，以判斷您是否已參考任何觸發程式或動作結果，並自動包含這些結果。 在執行時間，如果您在指定`workflowContext`的物件中無法取得參考的觸發程式或動作結果，您可以將該觸發程式或動作當做明確的相依性來加入。 在此範例中，您會新增 [**動作**] 參數，並指定**內嵌程式碼**動作明確包含 [**傳送核准電子郵件**] 動作的結果。
+例如，假設您的程式碼會從 Office 365 Outlook 連接器的 [**傳送核准電子郵件**] 動作中參考**SelectedOption**結果。 在建立期間，Logic Apps 引擎會分析您的程式碼，以判斷您是否已參考任何觸發程式或動作結果，並自動包含這些結果。 在執行時間，如果您在指定的物件中無法取得參考的觸發程式或動作結果 `workflowContext` ，您可以將該觸發程式或動作當做明確的相依性來加入。 在此範例中，您會新增 [**動作**] 參數，並指定**內嵌程式碼**動作明確包含 [**傳送核准電子郵件**] 動作的結果。
 
 若要新增這些參數，請開啟 [**加入新的參數**] 清單，然後選取您想要的參數：
 
@@ -246,9 +245,9 @@ ms.locfileid: "75453502"
 
   `My.Action.Name`
 
-1. 在設計工具工具列上，選擇 [程式**代碼視圖**]， `actions`然後在屬性內搜尋動作名稱。
+1. 在設計工具工具列上，選擇 [程式**代碼視圖**]，然後在屬性內搜尋 `actions` 動作名稱。
 
-   例如， `Send_approval_email_`是**傳送核准電子郵件**動作的 JSON 名稱。
+   例如， `Send_approval_email_` 是**傳送核准電子郵件**動作的 JSON 名稱。
 
    ![尋找 JSON 中的動作名稱](./media/logic-apps-add-run-inline-code/find-action-name-json.png)
 

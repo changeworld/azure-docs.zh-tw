@@ -6,15 +6,14 @@ ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
 ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75459012"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Service Fabric Mesh 的 Maven 外掛程式
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Java SDK
 - Maven
@@ -36,7 +35,7 @@ ms.locfileid: "75459012"
 - 以提供的閘道名稱在 `appresources` 資料夾中產生 `gateway` YAML。 
 
 #### `azure-sfmesh:addvolume`
-- 在`appresources`資料夾`volume`中產生具有所提供磁片區名稱的 YAML。
+- `volume`在資料夾中產生具有所提供磁片區名稱的 YAML `appresources` 。
 
 ### `azure-sfmesh:addsecret`
 - 以提供的祕密名稱在 `appresources` 資料夾中產生 `secret` YAML 

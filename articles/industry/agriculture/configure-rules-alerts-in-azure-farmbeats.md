@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 02373da114b6dc4663cd3ffc9a0780ac6a7a9e23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75482981"
 ---
 # <a name="configure-rules-and-manage-alerts"></a>設定規則和管理警示
@@ -114,4 +113,4 @@ ms.locfileid: "75482981"
 
     ![專案 FarmBeats](./media/configure-rules-and-alerts-in-azure-farmbeats/delete-rule-1.png)
 
-4. [**刪除規則**] 對話方塊隨即顯示。 選取 [刪除]  。
+4. [**刪除規則**] 對話方塊隨即顯示。 選取 [刪除] 。

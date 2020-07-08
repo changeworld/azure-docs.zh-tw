@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
 ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458368"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>獨立 Windows 叢集的組態設定
@@ -19,9 +18,9 @@ ms.locfileid: "75458368"
 
 * ClusterConfig.Unsecure.DevCluster.json 和 ClusterConfig.Unsecure.MultiMachine.json 分別示範如何建立不安全的測試或生產叢集。
 
-* Clusterconfig.x509.multimachine.json 會示範如何使用[Windows 安全性](service-fabric-windows-cluster-windows-security.md)來建立受保護的測試或實際執行叢集（clusterconfig.x509.multimachine.json）。
+* ClusterConfig.Windows.DevCluster.js開啟和 ClusterConfig.Windows.MultiMachine.js，說明如何使用[Windows 安全性](service-fabric-windows-cluster-windows-security.md)來建立受保護的測試或生產叢集。
 
-* Clusterconfig.x509.multimachine.json 會示範如何使用以[X509 憑證為基礎的安全性](service-fabric-windows-cluster-x509-security.md)來建立受保護的測試或實際執行叢集。
+* ClusterConfig.X509.DevCluster.js開啟和 ClusterConfig.X509.MultiMachine.js，說明如何使用[X509 憑證安全性](service-fabric-windows-cluster-x509-security.md)來建立受保護的測試或生產叢集。
 
 現在，讓我們檢視 ClusterConfig.json 檔案的各個區段。
 
@@ -62,7 +61,7 @@ ms.locfileid: "75458368"
 
 Service Fabric 叢集至少必須包含 3 個節點。 您可以根據您的設定，在此區段中新增更多節點。 下表說明每個節點的組態設定：
 
-| **節點設定** | **說明** |
+| **節點設定** | **描述** |
 | --- | --- |
 | nodeName |您可以為節點提供易記名稱。 |
 | iPAddress |開啟命令視窗並輸入 `ipconfig`，以找出節點的 IP 位址。 記下 IPV4 位址，並將它指派給 iPAddress 變數。 |
@@ -199,7 +198,7 @@ name 是此特定節點類型的易記名稱。 若要建立此節點類型的�
 若要啟用獨立叢集的 Windows Server 容器和 Hyper-V 容器的容器支援，必須啟用 DnsService 附加功能。
 
 ## <a name="next-steps"></a>後續步驟
-當您根據獨立叢集安裝程式設定完整的*clusterconfig.x509.multimachine.json json*檔案之後，就可以部署叢集。 請遵循[建立獨立 Service Fabric 叢集](service-fabric-cluster-creation-for-windows-server.md)中的步驟來進行。 
+當您已根據獨立叢集安裝程式設定完整*的檔案ClusterConfig.js*之後，就可以部署叢集。 請遵循[建立獨立 Service Fabric 叢集](service-fabric-cluster-creation-for-windows-server.md)中的步驟來進行。 
 
 如果您已部署獨立叢集，您也可以[升級獨立叢集的組態](service-fabric-cluster-config-upgrade-windows-server.md)。 
 

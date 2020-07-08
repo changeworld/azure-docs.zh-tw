@@ -4,10 +4,9 @@ description: 以下是可用 Service Fabric 網格範例應用程式的索引。
 ms.date: 12/03/2018
 ms.topic: conceptual
 ms.openlocfilehash: c944ddc26f2e2d099cf9552acb8287c363d0c768
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75461899"
 ---
 # <a name="find-service-fabric-mesh-samples"></a>尋找 Service Fabric Mesh 範例

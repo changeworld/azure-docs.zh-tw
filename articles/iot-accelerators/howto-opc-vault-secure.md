@@ -9,17 +9,16 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75454200"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>使用 OPC 保存庫憑證管理服務
 
 本文說明如何註冊應用程式，以及如何為您的 OPC UA 裝置發行已簽署的應用程式憑證。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="deploy-the-certificate-management-service"></a>部署憑證管理服務
 
@@ -36,7 +35,7 @@ ms.locfileid: "75454200"
 > [!IMPORTANT]
 > 必須要有寫入器角色，才能註冊應用程式。
 
-1. 在`https://myResourceGroup-app.azurewebsites.net`中開啟您的憑證服務，然後登入。
+1. 在中開啟您的憑證服務 `https://myResourceGroup-app.azurewebsites.net` ，然後登入。
 2. 移至 [**註冊新**的]。 若為應用程式註冊，使用者至少必須指派寫入者角色。
 2. 輸入表單會遵循 OPC UA 中的命名慣例。 例如，在下列螢幕擷取畫面中，會顯示 OPC UA .NET Standard 堆疊中的[OPC Ua 參照伺服器](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference)範例設定：
 
@@ -71,7 +70,7 @@ ms.locfileid: "75454200"
 8. 在安全地下載並儲存私密金鑰之後，您可以選取 [**刪除私密金鑰**]。 具有公開金鑰的憑證仍然可供日後使用。
 9. 由於使用 CA 簽署的憑證，因此也應該在這裡下載 CA 憑證和憑證撤銷清單（CRL）。
 
-現在它取決於 OPC UA 裝置如何套用新的金鑰組。 CA 憑證和 CRL 通常會複製到`trusted`資料夾，而應用程式憑證的公開和私密金鑰則會套用到憑證存放區中的`own`資料夾。 某些裝置可能已支援伺服器推送以進行憑證更新。 請參閱 OPC UA 裝置的檔。
+現在它取決於 OPC UA 裝置如何套用新的金鑰組。 CA 憑證和 CRL 通常會複製到 `trusted` 資料夾，而應用程式憑證的公開和私密金鑰則會套用到 `own` 憑證存放區中的資料夾。 某些裝置可能已支援伺服器推送以進行憑證更新。 請參閱 OPC UA 裝置的檔。
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>要求具有 CSR 的新憑證 
 
@@ -96,7 +95,7 @@ ms.locfileid: "75454200"
 10. 安全地下載並儲存憑證之後，您可以選取 [**刪除憑證**]。
 11. 由於使用 CA 簽署的憑證，因此也應該在這裡下載 CA cert 和 CRL。
 
-現在它取決於 OPC UA 裝置如何套用新憑證。 通常會將 CA 憑證和 CRL 複製到`trusted`資料夾，而應用程式憑證會套用至憑證存放區中`own`的資料夾。 某些裝置可能已支援伺服器推送以進行憑證更新。 請參閱 OPC UA 裝置的檔。
+現在它取決於 OPC UA 裝置如何套用新憑證。 通常會將 CA 憑證和 CRL 複製到 `trusted` 資料夾，而應用程式憑證會套用至 `own` 憑證存放區中的資料夾。 某些裝置可能已支援伺服器推送以進行憑證更新。 請參閱 OPC UA 裝置的檔。
 
 ### <a name="step-3-device-secured"></a>步驟3：裝置安全
 

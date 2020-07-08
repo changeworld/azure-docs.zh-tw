@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 3c1a6cfa5227369bf1cde4af087019727c22c0c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75462945"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>如何使用 Reliable Services 通訊 API

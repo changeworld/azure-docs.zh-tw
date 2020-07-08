@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/23/2019
 ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75494981"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>使用 Azure HDInsight IO 快取來改善 Apache Spark 工作負載的效能
@@ -67,7 +66,7 @@ Azure HDInsight IO 快取在預覽版中預設是停用的。 您可以在 Azure
 
 1. 選取右上角的 [儲存]****。
 
-1. 選取 [**重新** > 啟動**所有受影響**的]。
+1. 選取 [**重新**啟動  >  **所有受影響**的]。
 
     ![Apache Ambari 會重新開機所有受影響的](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "重新開機所有受影響的")
 

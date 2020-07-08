@@ -4,10 +4,9 @@ description: 使用 Service Fabric 的 DNS 服務來從叢集內部探索微服�
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458024"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服務

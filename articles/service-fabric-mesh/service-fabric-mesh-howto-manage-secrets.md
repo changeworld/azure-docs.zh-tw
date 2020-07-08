@@ -4,10 +4,9 @@ description: 管理應用程式祕密，以利您安全地建立及部署 Servic
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75461926"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>管理 Service Fabric Mesh 應用程式秘密
@@ -202,7 +201,7 @@ az mesh deployment create –-<template-file> or --<template-uri>
 
 例如：
 - az mesh deployment create --c:\MyMeshTemplates\SecretTemplate1.txt
-- az 網格部署 create--HTTPs：\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- az 網狀部署 create--HTTPs： \/ /www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>顯示祕密
 傳回祕密的描述 (但不傳回值)。
