@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 準備進行 VMware VM 的評量/�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ca9020a9c306eea39d75c15c96b5f9fe9bcc11fe
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770538"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109615"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>準備 Hyper-V VM 的評量並將其移轉至 Azure
 
@@ -74,13 +74,13 @@ ms.locfileid: "84770538"
     ![Azure AD 權限](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> 這是一個不敏感的預設設定。 [深入了解](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+> 這是一個不敏感的預設設定。 [深入了解](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
 
 
 #### <a name="assign-application-developer-role"></a>指派應用程式開發人員角色
 
-租用戶/全域管理員可為帳戶指派應用程式開發人員角色。 [深入了解](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+租用戶/全域管理員可為帳戶指派應用程式開發人員角色。 [深入了解](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ### <a name="assign-azure-account-permissions"></a>指派 Azure 帳戶權限
 
@@ -106,7 +106,7 @@ ms.locfileid: "84770538"
 **確認 PowerShell 版本** | 檢查您是否在支援的 PowerShell 版本上執行指令碼。 | 檢查您是否在 Hyper-V 主機上執行 PowerShell 4.0 版或更新版本。
 **建立帳戶** | 驗證您 (執行指令碼的使用者) 是否有 Hyper-V 主機上的系統管理權限。<br/><br/>  可讓您建立本機使用者帳戶 (非系統管理員)，以便 Azure Migrate 服務與 Hyper-V 主機通訊。 此使用者帳戶會新增至主機上的這些群組：<br/><br/> - 遠端管理使用者<br/><br/> - Hyper-V 系統管理員<br/><br/>- 效能監視器使用者 | 在 Hyper-V 主機/叢集上設定具有系統管理員權限的網域或本機使用者帳戶。<br/><br/> - 您需要單一帳戶來使用要包含在探索中的所有主機和叢集。<br/><br/> - 此帳戶可以是本機或網域帳戶。 我們建議您在 Hyper-V 主機或叢集上具有系統管理員權限。<br/><br/> 或者，如果您不想要指派系統管理員權限，則需要下列權限：遠端管理使用者、Hyper-V 系統管理員和效能監視器使用者。
 **啟用 PowerShell 遠端** | 在主機上啟用 PowerShell 遠端功能，讓 Azure Migrate 設備可以透過 WinRM 連線在主機上執行 PowerShell 命令。| 若要設定，請以系統管理員身分在每個主機上開啟 PowerShell 主控台，然後執行此命令：<br/><br/>``` Enable-PSRemoting -force ```
-**設定 Hyper-V 整合服務** | 檢查由主機管理的所有 VM 是否都已啟用 Hyper-V 整合服務。 |  在每部 VM 上[啟用 Hyper-V 整合服務](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。<br/><br/> 如果您執行的是 Windows Server 2003，請[遵循這些指示](prepare-windows-server-2003-migration.md)。
+**設定 Hyper-V 整合服務** | 檢查由主機管理的所有 VM 是否都已啟用 Hyper-V 整合服務。 |  在每部 VM 上[啟用 Hyper-V 整合服務](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。<br/><br/> 如果您執行的是 Windows Server 2003，請[遵循這些指示](prepare-windows-server-2003-migration.md)。
 **如果 VM 磁碟位於遠端 SMB 共用上，則委派認證** | 指令碼委派認證。 | [啟用 CredSSP](#enable-credssp-to-delegate-credentials)以委派認證。
 
 ### <a name="run-the-script"></a>執行指令碼

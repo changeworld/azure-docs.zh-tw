@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 準備進行 VMware VM 的評量/�
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: f3bfaf7c2396e0f1091299375aae4bfaa1d7e8ff
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771184"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109570"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>準備 VMware VM 以進行評量並移轉至 Azure
 
@@ -64,7 +64,7 @@ ms.locfileid: "84771184"
 授與權限給帳戶，如下所示：
 
 1. 確定您是租用戶或全域管理員。然後在 Azure AD 中，瀏覽至 [Azure Active Directory] > [使用者] > [使用者設定]。
-2. 將 [應用程式註冊] 設定為 [是]。 這是一個不敏感的預設設定。 [深入了解](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+2. 將 [應用程式註冊] 設定為 [是]。 這是一個不敏感的預設設定。 [深入了解](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
     ![Azure AD 權限](./media/tutorial-prepare-vmware/aad.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "84771184"
 
 #### <a name="method-2-assign-application-developer-role"></a>方法 2：指派應用程式開發人員角色
 
-或者，租用戶/全域管理員可為帳戶指派應用程式開發人員角色。 [深入了解](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)如何指派角色。
+或者，租用戶/全域管理員可為帳戶指派應用程式開發人員角色。 [深入了解](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)如何指派角色。
 
 ### <a name="assign-permissions-to-create-a-key-vault"></a>指派建立金鑰保存庫的權限
 

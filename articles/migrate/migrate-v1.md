@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7b02560d1e7b7c34a4d87dbdc468a85362aca4f7
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993815"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103954"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用舊版的 Azure Migrate
 
@@ -92,7 +92,7 @@ Azure Migrate 服務有兩個版本：
 --- | --- | ---
 **開機類型** | 支援 BIOS。 不支援 UEFI。 | 如果開機類型為 UEFI，便已有條件地就緒。
 **核心** | 機器核心 <= Azure VM 支援的核心數目上限 (128)。<br/><br/> 如果效能歷程記錄可用，則 Azure Migrate 會將已使用的核心數納入考量。<br/>如果評量設定已指定緩和因數，則會將使用的核心數目乘以緩和因數。<br/><br/> 如果沒有效能記錄，Azure Migrate 會使用配置的核心，而不套用緩和因數。 | 小於或等於限制便就緒。
-**記憶體** | 機器的記憶體大小 <= Azure VM 的記憶體上限 (Azure M 系列 Standard_M128m 上為 3892 GB &nbsp;<sup>2</sup>)。 [深入了解](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> 如果效能歷程記錄可用，Azure Migrate 會將已使用的記憶體數納入考量。<br/><br/>如果已指定緩和因數，則會將使用的記憶體乘以緩和因數。<br/><br/> 如果沒有記錄，則會使用配置的記憶體，而不套用緩和因數。<br/><br/> | 在限制內便就緒。
+**記憶體** | 機器的記憶體大小 <= Azure VM 的記憶體上限 (Azure M 系列 Standard_M128m 上為 3892 GB &nbsp;<sup>2</sup>)。 [深入了解](../virtual-machines/windows/sizes.md)。<br/><br/> 如果效能歷程記錄可用，Azure Migrate 會將已使用的記憶體數納入考量。<br/><br/>如果已指定緩和因數，則會將使用的記憶體乘以緩和因數。<br/><br/> 如果沒有記錄，則會使用配置的記憶體，而不套用緩和因數。<br/><br/> | 在限制內便就緒。
 **存放磁碟** | 已配置的磁碟大小必須小於或等於 4 TB (4096 GB)。<br/><br/> 附加至機器的磁碟數目必須小於或等於 65，作業系統磁碟亦包含在內。 | 在限制內便就緒。
 **網路功能** | 機器必須附加 32 個以內的網路介面卡。 | 在限制內便就緒。
 
@@ -114,8 +114,8 @@ Windows Server 2008 R2 與所有 SP | Azure 提供完整支援。| 可供 Azure 
 Windows Server 2008 (32 位元和 64 位元) | Azure 提供完整支援。 | 可供 Azure 使用
 Windows Server 2003、2003 R2 | 不支援，需要[自訂支援合約 (CSA)](https://aka.ms/WSosstatement) 才能獲得 Azure 支援。 | 可有條件地供 Azure 使用，在移轉到 Azure 之前，請考慮升級作業系統。
 Windows 2000、98、95、NT、3.1、MS-DOS | 不支援。 機器可能可以在 Azure 中開機，但 Azure 不會提供 OS 支援。 | 可有條件地供 Azure 使用，建議在移轉到 Azure 之前升級作業系統。
-Windows Client 7、8 及 10 | Azure [僅對 Visual Studio 訂用帳戶](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)提供支援。 | 可有條件地供 Azure 使用
-Windows 10 專業版桌面 | Azure 對[多租用戶主機權限](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)提供支援。 | 可有條件地供 Azure 使用
+Windows Client 7、8 及 10 | Azure [僅對 Visual Studio 訂用帳戶](../virtual-machines/windows/client-images.md)提供支援。 | 可有條件地供 Azure 使用
+Windows 10 專業版桌面 | Azure 對[多租用戶主機權限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)提供支援。 | 可有條件地供 Azure 使用
 Windows Vista、XP Professional | 不支援。 機器可能可以在 Azure 中開機，但 Azure 不會提供 OS 支援。 | 可有條件地供 Azure 使用，建議在移轉到 Azure 之前升級作業系統。
 Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 作業系統可能可以在 Azure 中開機，但我們建議您在移轉至 Azure 之前，將作業系統升級為認可的版本。 | 如果版本受到認同，則可供 Azure 使用。<br/><br/>如果版本未受到認同，則有條件地可供使用。
 其他作業系統<br/><br/> 例如，Oracle Solaris、Apple Mac OS 等、FreeBSD 等。 | Azure 並未認可這些作業系統。 機器可能可以在 Azure 中開機，但 Azure 不會提供作業系統支援。 | 可有條件地供 Azure 使用，建議在移轉到 Azure 之前安裝支援的作業系統。  
@@ -240,11 +240,11 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[了解更多](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) MMA 支援的 Linux 作業系統清單。
+[了解更多](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) MMA 支援的 Linux 作業系統清單。
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>將 MMA 代理程式安裝在由 Operations Manager 監視的電腦上
 
-對於受 System Center Operations Manager 2012 R2 或更新版本監視的電腦，不需要安裝 MMA 代理程式。 服務對應與 Operations Manager MMA 整合，以收集必要的相依性資料。 [深入了解](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)。 必須安裝相依性代理程式。
+對於受 System Center Operations Manager 2012 R2 或更新版本監視的電腦，不需要安裝 MMA 代理程式。 服務對應與 Operations Manager MMA 整合，以收集必要的相依性資料。 [深入了解](../azure-monitor/insights/service-map-scom.md#prerequisites)。 必須安裝相依性代理程式。
 
 ### <a name="install-the-dependency-agent"></a>安裝相依性代理程式
 
@@ -274,7 +274,7 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 4. 您可以按一下時間範圍標籤中的持續時間，以檢視不同持續期間的相依性。 根據預設，範圍是一小時。 您可以修改時間範圍，或指定開始和結束日期，以及持續時間。
 
    > [!NOTE]
-   >    支援最多一小時的時間範圍。 使用 Azure 監視器可在較長的持續期間內[查詢相依性資料](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) \(部分機器翻譯\)。
+   >    支援最多一小時的時間範圍。 使用 Azure 監視器可在較長的持續期間內[查詢相依性資料](./how-to-create-group-machine-dependencies.md) \(部分機器翻譯\)。
 
 5. 找出您需要劃為同一群組的相依機器後，請使用 Ctrl + 按一下來選取對應中的多部機器，然後按一下 [群組機器]  。
 6. 指定群組名稱。 確認 Azure Migrate 已探索到相依機器。
@@ -289,7 +289,7 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 
 ## <a name="query-dependency-data-from-azure-monitor-logs"></a>從 Azure 監視器記錄查詢相依性資料
 
-服務對應擷取的相依性資料可供在與 Azure Migrate 專案相關聯的 Log Analytics 工作區中查詢。 [深入了解](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)可在 Azure 監視器記錄中查詢的服務對應資料表。 
+服務對應擷取的相依性資料可供在與 Azure Migrate 專案相關聯的 Log Analytics 工作區中查詢。 [深入了解](../azure-monitor/insights/service-map.md#log-analytics-records)可在 Azure 監視器記錄中查詢的服務對應資料表。 
 
 執行 Kusto 查詢：
 
@@ -299,15 +299,15 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 4. 撰寫您的查詢以使用 Azure 監視器記錄收集相依性資料。 在下一節中尋找範例查詢。
 5. 按一下 [執行] 以執行查詢。 
 
-[深入了解](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)如何撰寫 Kusto 查詢。 
+[深入了解](../azure-monitor/log-query/get-started-portal.md)如何撰寫 Kusto 查詢。 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>範例 Azure 監視器記錄查詢
 
-以下是您可以用來擷取相依性資料的範例查詢。 您可以修改查詢以擷取慣用的資料點。 您可以在[這裡](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)取得相依性資料記錄中的完整欄位清單。 在[這裡](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)尋找更多範例查詢。
+以下是您可以用來擷取相依性資料的範例查詢。 您可以修改查詢以擷取慣用的資料點。 您可以在[這裡](../azure-monitor/insights/service-map.md#log-analytics-records)取得相依性資料記錄中的完整欄位清單。 在[這裡](../azure-monitor/insights/service-map.md#sample-log-searches)尋找更多範例查詢。
 
 #### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>摘述一組電腦上的輸入連接
 
-連線計量 VMConnection 表中的記錄不代表個別實體網路連線。 將多個實體網路連線分組為一個邏輯連線。 [深入了解](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections)有關實體網路連線資料如何匯總到 VMConnection 中的單一邏輯記錄。 
+連線計量 VMConnection 表中的記錄不代表個別實體網路連線。 將多個實體網路連線分組為一個邏輯連線。 [深入了解](../azure-monitor/insights/service-map.md#connections)有關實體網路連線資料如何匯總到 VMConnection 中的單一邏輯記錄。 
 
 ```
 // the machines of interest
