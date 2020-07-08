@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 67c7955316d4c9670509affb478813df0768f261
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 73b24de0e66ca8fbe2097f7da39b64aaea8b1ac4
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832549"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057988"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>媒體服務 v2 常見問題集
 
@@ -66,18 +66,20 @@ A：如需連線至 AMS API 的詳細資訊，請參閱[使用 Azure AD 驗證�
 
 A：[媒體編碼器標準](media-services-dotnet-encode-with-media-encoder-standard.md)支援 90/180/270 度的旋轉角度。 預設行為是「自動」，此時它會嘗試偵測內送之 MP4/MOV 檔案的旋轉中繼資料並加以補償。 包括以下 **Sources** 元素至[這裡](media-services-mes-presets-overview.md)所定義的其中一個 json 預設項目：
 
-    "Version": 1.0,
-    "Sources": [
-    {
-      "Streams": [],
-      "Filters": {
-        "Rotation": "90"
-      }
-    }
-    ],
-    "Codecs": [
+```json
+"Version": 1.0,
+"Sources": [
+{
+  "Streams": [],
+  "Filters": {
+    "Rotation": "90"
+  }
+}
+],
+"Codecs": [
 
-    ...
+...
+```
 
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑

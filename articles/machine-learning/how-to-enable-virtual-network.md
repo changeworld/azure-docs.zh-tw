@@ -5,40 +5,25 @@ description: 使用隔離的 Azure 虛擬網路搭配 Azure Machine Learning 來
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 05/11/2020
-ms.custom: contperfq4
-ms.openlocfilehash: 17c6e10b213cb1f3d2b20433a5511c27960cdb06
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: HT
+ms.date: 06/30/2020
+ms.custom: contperfq4, tracking-python
+ms.openlocfilehash: 94a2f77326487aa4bb180dd62ec05f4e23ca6218
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816296"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057784"
 ---
-# <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>使用私人虛擬網路來保護您的機器學習生命週期
+# <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>使用私人虛擬網路進行定型 & 推斷期間的網路隔離
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將了解如何在 Azure 虛擬網路 (VNet) 內的 Azure Machine Learning 中隔離測試/定型作業和推斷/評分作業。 您也將了解一些*進階安全性設定*，這並非基本或實驗性使用案例的必要資訊。
+在本文中，您將瞭解如何藉由隔離 Azure 虛擬網路（vnet）中的 Azure Machine Learning 訓練和推斷作業，來保護您的機器學習服務生命週期。 Azure Machine Learning 依賴其他 Azure 服務來取得計算資源（也稱為[計算目標](concept-compute-target.md)），以定型和部署模型。 目標可以建立在虛擬網路內。 例如，您可以使用 Azure Machine Learning 計算來將模型定型，然後將模型部署至 Azure Kubernetes Service (AKS)。 
 
-> [!WARNING]
-> 如果您的基礎儲存體位於虛擬網路中，使用者將無法使用 Azure Machine Learning 的 Studio Web 體驗，包括：
-> - 拖放設計工具
-> - 自動化機器學習的 UI
-> - 資料標記的 UI
-> - 資料集的 UI
-> - Notebooks
-> 
-> 如果您嘗試使用，則會收到類似下列錯誤的訊息：`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
-
-## <a name="what-is-a-vnet"></a>什麼是 VNET？
-
-**虛擬網路**可充當安全邊界，將 Azure 資源與公用網際網路隔離。 您也可以將 Azure 虛擬網路加入到您的內部部署網路， 藉由加入網路，您可以安全地將模型定型，並可存取所部署的模型以進行推斷。
-
-Azure Machine Learning 仰賴其他適用於計算資源的 Azure 服務 (也稱為[計算目標](concept-compute-target.md)) 來將模型定型並加以部署。 目標可以建立在虛擬網路內。 例如，您可以使用 Azure Machine Learning 計算來將模型定型，然後將模型部署至 Azure Kubernetes Service (AKS)。 
-
+__虛擬網路__可充當安全邊界，將 Azure 資源與公用網際網路隔離。 您也可以將 Azure 虛擬網路加入到您的內部部署網路， 藉由加入網路，您可以安全地將模型定型，並可存取所部署的模型以進行推斷。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -70,16 +55,176 @@ Azure Machine Learning 仰賴其他適用於計算資源的 Azure 服務 (也稱
 > 
 
 > [!WARNING]
-> 已啟用 Private Link 的工作區不支援 Azure Machine Learning 計算執行個體預覽。
 > 
+> 已啟用 Private Link 的工作區不支援 Azure Machine Learning 計算執行個體預覽。
+>
 > Azure Machine Learning 不支援使用已啟用 Private Link 的 Azure Kubernetes Service。 您可以改為在虛擬網路中使用 Azure Kubernetes Service。 如需詳細資訊，請參閱[保護 Azure 虛擬網路內的 Azure ML 實驗和推斷作業](how-to-enable-virtual-network.md)。
 
 
 <a id="amlcompute"></a>
 
-## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>計算叢集和執行個體
+## <a name="machine-learning-studio"></a>Machine Learning studio
 
-若要在虛擬網路中使用[受控 Azure Machine Learning **計算目標**](concept-compute-target.md#azure-machine-learning-compute-managed)或 [Azure Machine Learning 計算**執行個體**](concept-compute-instance.md)，您必須符合下列網路需求：
+如果您的資料儲存在虛擬網路中，您必須使用工作區[受控身分識別](../active-directory/managed-identities-azure-resources/overview.md)，將您資料的存取權授與 studio。
+
+如果您無法授與 studio 存取權，就會收到此錯誤， `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` 並停用下列作業：
+
+* 預覽 studio 中的資料。
+* 在設計工具中將資料視覺化。
+* 提交 AutoML 實驗。
+* 開機磁碟區標專案。
+
+Studio 支援從虛擬網路中的下列資料存放區類型讀取資料：
+
+* Azure Blob
+* Azure Data Lake Storage Gen1
+* Azure Data Lake Storage Gen2
+* Azure SQL Database
+
+### <a name="add-resources-to-the-virtual-network"></a>將資源新增至虛擬網路 
+
+將您的工作區和儲存體帳戶新增至相同的虛擬網路，讓它們可以彼此存取。
+
+1. 若要將您的工作區連線到虛擬網路，請[啟用 Azure 私人連結](how-to-configure-private-link.md)。
+
+1. 若要將您的儲存體帳戶連線到虛擬網路，請設定[[防火牆] 和 [虛擬網路] 設定](#use-a-storage-account-for-your-workspace)。
+
+### <a name="configure-a-datastore-to-use-managed-identity"></a>設定資料存放區以使用受控識別
+
+將您的工作區和儲存體服務帳戶新增至虛擬網路之後，您必須將資料存放區設定為使用受控識別來存取您的資料。 這些步驟會使用 Azure 資源型存取控制（RBAC），將工作區受控識別新增為儲存體服務的__讀取器__。 __讀者__存取可讓工作區取得防火牆設定，並確保資料不會離開虛擬網路。
+
+1. 在 studio 中，選取 [__資料存放區__]。
+
+1. 若要建立新的資料存放區，請選取 [ __+ 新增資料__存放區]。 若要更新現有的資料存放區，請選取資料存放區，然後選取 [__更新認證__]。
+
+1. 在 [資料存放區設定] 中，選取 __[是]__ 以__允許 Azure Machine Learning 服務使用工作空間受控識別存取儲存體__。
+
+> [!NOTE]
+> 這些變更可能需要10分鐘的時間才會生效。
+
+### <a name="azure-blob-storage-blob-data-reader"></a>Azure Blob 儲存體 Blob 資料讀取器
+
+針對__Azure Blob 儲存體__，工作區受控識別也會新增為[Blob 資料讀取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)，讓它可以從 blob 儲存體讀取資料。
+
+
+### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage Gen2 存取控制
+
+您可以使用 RBAC 和 POSIX 樣式的存取控制清單（Acl）來控制虛擬網路內的資料存取。
+
+若要使用 RBAC，請將工作區受控識別新增至[Blob 資料讀取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)角色。 如需詳細資訊，請參閱[角色型存取控制](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control)。
+
+若要使用 Acl，可以將存取權指派給工作區受控識別，就像任何其他安全性原則一樣。 如需詳細資訊，請參閱檔案[和目錄的存取控制清單](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)。
+
+
+### <a name="azure-data-lake-storage-gen1-access-control"></a>Azure Data Lake Storage Gen1 存取控制
+
+Azure Data Lake Storage Gen1 只支援 POSIX 樣式的存取控制清單。 您可以將工作區受控識別的存取權指派給資源，就像任何其他安全性原則一樣。 如需詳細資訊，請參閱[Azure Data Lake Storage Gen1 中的存取控制](../data-lake-store/data-lake-store-access-control.md)。
+
+
+### <a name="azure-sql-database-contained-user"></a>Azure SQL Database 包含的使用者
+
+若要使用受控識別存取儲存在 Azure SQL Database 中的資料，您必須建立對應至受控識別的 SQL 內含使用者。 如需從外部提供者建立使用者的詳細資訊，請參閱[建立對應至 Azure AD](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)身分識別的包含使用者。
+
+建立 SQL 包含的使用者之後，請使用[Grant t-sql 命令](https://docs.microsoft.com/sql/t-sql/statements/grant-object-permissions-transact-sql)授與許可權。
+
+### <a name="connect-to-the-studio"></a>連接至 studio
+
+如果您是從虛擬網路內部的資源（例如，計算實例或虛擬機器）存取 studio，則必須允許從虛擬網路到 studio 的輸出流量。 
+
+例如，如果您使用網路安全性群組（NSG）來限制輸出流量，請將規則新增至__AzureFrontDoor__的__服務標記__目的地。
+
+## <a name="use-a-storage-account-for-your-workspace"></a>針對工作區使用儲存體帳戶
+
+> [!IMPORTANT]
+> 適用於 Azure Machine Learning 的_預設儲存體帳戶_ 或_非預設儲存體帳戶_都可以放在虛擬網路中。
+>
+> 建立工作區時便會自動佈建預設儲存體帳戶。
+>
+> 若為非預設儲存體帳戶，[`Workspace.create()` 函式](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) 中的 `storage_account` 參數可讓您依 Azure 資源識別碼來指定自訂儲存體帳戶。
+
+若要將 Azure 儲存體服務用於虛擬網路中的工作區，請使用下列步驟：
+
+1. 在虛擬網路後方建立計算資源 (例如，Machine Learning 計算執行個體或叢集)，或將計算資源連結至工作區 (例如，HDInsight 叢集、虛擬機器或 Azure Kubernetes Service 叢集)。 計算資源可以是用於實驗或模型部署的。
+
+   如需詳細資訊，請參閱本文中的[使用 Machine Learning 計算](#amlcompute)、[使用虛擬機器或 HDInsight 叢集](#vmorhdi)和[使用 Azure Kubernetes Service](#aksvnet) 等節。
+
+1. 在 [Azure 入口網站中，移至您想要在工作區中使用的儲存體服務。
+
+   [![連結至 Azure Machine Learning 工作區的儲存體](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
+
+1. 在 [儲存體服務帳戶] 頁面上，選取 [__防火牆和虛擬網路__]。
+
+   ![Azure 入口網站中 [Azure 儲存體] 頁面上的 [防火牆和虛擬網路] 區域](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+
+1. 在 [防火牆和虛擬網路] 頁面上，執行下列動作：
+    - 選取 [選取的網路]。
+    - 在 [虛擬網路] 底下，選取 [新增現有虛擬網路] 連結。 此動作會新增您的計算所在的虛擬網路（請參閱步驟1）。
+
+        > [!IMPORTANT]
+        > 儲存體帳戶必須與用於定型或推斷的計算執行個體或叢集位於相同的虛擬網路和子網路中。
+
+    - 選取 [允許信任的 Microsoft 服務存取此儲存體帳戶] 核取方塊。
+
+    > [!IMPORTANT]
+    > 在使用 Azure Machine Learning SDK 時，您的開發環境必須能夠連線到 Azure 儲存體帳戶。 當儲存體帳戶位於虛擬網路內時，防火牆必須允許從開發環境的 IP 位址進行存取。
+    >
+    > 若要啟用對於儲存體帳戶的存取權，請*從開發用戶端上的網頁瀏覽器*造訪儲存體帳戶 的 [防火牆和虛擬網路]。 然後使用 [新增用戶端 IP 位址] 核取方塊，將用戶端的 IP 位址新增至 [位址範圍]。 您也可以使用 [位址範圍] 欄位，手動輸入開發環境的 IP 位址。 用戶端新增好 IP 位址之後，即可使用 SDK 來存取儲存體帳戶。
+
+   [![Azure 入口網站中的 [防火牆和虛擬網路] 窗格](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
+
+## <a name="use-datastores-and-datasets"></a>使用資料存放區和資料集
+
+本節涵蓋 SDK 體驗的資料存放區和資料集使用方式。 如需有關 studio 體驗的詳細資訊，請參閱[Machine Learning studio](#machine-learning-studio)一節。
+
+根據預設，當您嘗試使用 SDK 存取資料時，Azure Machine Learning 會執行資料有效性和認證檢查。 如果您的資料位於虛擬網路後方，Azure Machine Learning 無法存取資料並使其檢查失敗。 若要避免這種情況，您必須建立會略過驗證的資料存放區和資料集。
+
+### <a name="use-a-datastore"></a>使用資料存放區
+
+ Azure Data Lake 存放區 Gen1 和 Azure Data Lake 存放區 Gen2 預設會略過驗證，因此不需要採取任何進一步的動作。 不過，針對下列服務，您可以使用類似的語法來略過資料存放區驗證：
+
+- Azure Blob 儲存體
+- Azure 檔案共用
+- PostgreSQL
+- Azure SQL Database
+
+下列程式碼範例會建立新的 Azure Blob 資料存放區和集合 `skip_validation=True` 。
+
+```python
+blob_datastore = Datastore.register_azure_blob_container(workspace=ws,  
+
+                                                         datastore_name=blob_datastore_name,  
+
+                                                         container_name=container_name,  
+
+                                                         account_name=account_name, 
+
+                                                         account_key=account_key, 
+
+                                                         skip_validation=True ) // Set skip_validation to true
+```
+
+### <a name="use-a-dataset"></a>使用資料集
+
+略過資料集驗證的語法與下列資料集類型類似：
+- 分隔的檔案
+- JSON 
+- Parquet
+- SQL
+- 檔案
+
+下列程式碼會建立新的 JSON 資料集，並設定 `validate=False` 。
+
+```python
+json_ds = Dataset.Tabular.from_json_lines_files(path=datastore_paths, 
+
+validate=False) 
+
+```
+
+
+## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>計算叢集和執行個體 
+
+若要在虛擬網路中使用[受控 Azure Machine Learning __計算目標__](concept-compute-target.md#azure-machine-learning-compute-managed)或 [Azure Machine Learning 計算__執行個體__](concept-compute-instance.md)，您必須符合下列網路需求：
 
 > [!div class="checklist"]
 > * 虛擬網路必須在與 Azure Machine Learning 工作區相同的訂用帳戶和區域中。
@@ -102,7 +247,9 @@ Azure Machine Learning 仰賴其他適用於計算資源的 Azure 服務 (也稱
 
 ### <a name="required-ports"></a><a id="mlcports"></a> 所需連接埠
 
-Machine Learning Compute 目前使用 Azure Batch 服務將 VM 佈建在指定的虛擬網路中。 子網路必須允許來自 Batch 服務的輸入通訊。 您會使用此通訊來排程 Machine Learning Compute 節點上的執行作業，並與 Azure 儲存體和其他資源進行通訊。 Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性群組 (NSG)。 這些 NSG 會自動設定輸入和輸出規則，以允許下列流量：
+如果您打算藉由限制進出公用網際網路的網路流量來保護虛擬網路，您必須允許來自 Azure Batch 服務的輸入通訊。
+
+Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性群組 (NSG)。 這些 NSG 會自動設定輸入和輸出規則，以允許下列流量：
 
 - 連接埠 29876 和 29877 上的輸入 TCP 流量，來自 __BatchNodeManagement__ 的__服務標籤__。
 
@@ -116,9 +263,10 @@ Machine Learning Compute 目前使用 Azure Batch 服務將 VM 佈建在指定�
 
 - 針對連接埠 44224 上的計算執行個體輸入 TCP 流量，來自 __AzureMachineLearning__ 的__服務標籤__。
 
-如果您要在 Batch 設定的 NSG 中修改或新增輸入或輸出規則，請謹慎操作。 如果 NSG 封鎖對計算節點的通訊，則計算服務會將計算節點的狀態設定為 [無法使用]。
-
-您不需要在子網路層級指定 NSG，因為 Azure Batch 服務會設定其本身的 NSG。 不過，如果指定的子網路有相關聯的 NSG 或防火牆，請設定輸入和輸出安全性規則，如上所述。
+> [!IMPORTANT]
+> 如果您要在 Batch 設定的 NSG 中修改或新增輸入或輸出規則，請謹慎操作。 如果 NSG 封鎖對計算節點的通訊，則計算服務會將計算節點的狀態設定為 [無法使用]。
+>
+> 您不需要在子網路層級指定 NSG，因為 Azure Batch 服務會設定其本身的 NSG。 不過，如果包含 Azure Machine Learning 計算的子網有相關聯的 Nsg 或防火牆，您也必須允許先前所列的流量。
 
 下圖顯示 Azure 入口網站中的 NSG 規則設定：
 
@@ -146,7 +294,10 @@ Machine Learning Compute 目前使用 Azure Batch 服務將 VM 佈建在指定�
 [![Machine Learning Compute 的輸出 NSG 規則](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 > [!NOTE]
-> 如果您打算使用 Microsoft 所提供的預設 Docker 映像，以及啟用使用者管理的相依性，則還必須使用 __MicrosoftContainerRegistry.Region_Name__ 的__服務標籤__ (例如，MicrosoftContainerRegistry.EastUS)。
+> 如果您打算使用 Microsoft 所提供的預設 Docker 映射，以及啟用使用者管理的相依性，您也必須使用下列__服務__標籤：
+>
+> * __MicrosoftContainerRegistry__
+> * __AzureFrontDoor.FirstParty__
 >
 > 當您用來作為定型指令碼一部分的程式碼與下列程式碼片段類似時，則需要進行下列設定：
 >
@@ -253,45 +404,11 @@ except ComputeTargetException:
 
 建立程序完成後，您便會在實驗中使用叢集來將模型定型。 如需詳細資訊，請參閱[選取與使用定型的計算目標](how-to-set-up-training-targets.md)。
 
-## <a name="use-a-storage-account-for-your-workspace"></a>針對工作區使用儲存體帳戶
+### <a name="access-data-in-a-compute-instance-notebook"></a>存取計算實例筆記本中的資料
 
-若要在虛擬網路中針對工作區使用 Azure 儲存體帳戶作，請使用下列步驟：
+如果您在 Azure 計算實例上使用筆記本，您必須確定您的筆記本是在與您的資料相同的虛擬網路和子網後方的計算資源上執行。 
 
-1. 在虛擬網路後方建立計算資源 (例如，Machine Learning 計算執行個體或叢集)，或將計算資源連結至工作區 (例如，HDInsight 叢集、虛擬機器或 Azure Kubernetes Service 叢集)。 計算資源可以是用於實驗或模型部署的。
-
-   如需詳細資訊，請參閱本文中的[使用 Machine Learning 計算](#amlcompute)、[使用虛擬機器或 HDInsight 叢集](#vmorhdi)和[使用 Azure Kubernetes Service](#aksvnet) 等節。
-
-1. 在 Azure 入口網站中，移至連結至工作區的儲存體。
-
-   [![連結至 Azure Machine Learning 工作區的儲存體](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
-
-1. 在 [Azure 儲存體] 頁面上，選取 [防火牆和虛擬網路]。
-
-   ![Azure 入口網站中 [Azure 儲存體] 頁面上的 [防火牆和虛擬網路] 區域](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
-
-1. 在 [防火牆和虛擬網路] 頁面上，執行下列動作：
-    - 選取 [選取的網路]。
-    - 在 [虛擬網路] 底下，選取 [新增現有虛擬網路] 連結。 此動作會新增您的計算所在的虛擬網路 (請參閱步驟 1)。
-
-        > [!IMPORTANT]
-        > 儲存體帳戶必須與用於定型或推斷的計算執行個體或叢集位於相同的虛擬網路和子網路中。
-
-    - 選取 [允許信任的 Microsoft 服務存取此儲存體帳戶] 核取方塊。
-
-    > [!IMPORTANT]
-    > 在使用 Azure Machine Learning SDK 時，您的開發環境必須能夠連線到 Azure 儲存體帳戶。 當儲存體帳戶位於虛擬網路內時，防火牆必須允許從開發環境的 IP 位址進行存取。
-    >
-    > 若要啟用對於儲存體帳戶的存取權，請*從開發用戶端上的網頁瀏覽器*造訪儲存體帳戶 的 [防火牆和虛擬網路]。 然後使用 [新增用戶端 IP 位址] 核取方塊，將用戶端的 IP 位址新增至 [位址範圍]。 您也可以使用 [位址範圍] 欄位，手動輸入開發環境的 IP 位址。 用戶端新增好 IP 位址之後，即可使用 SDK 來存取儲存體帳戶。
-
-   [![Azure 入口網站中的 [防火牆和虛擬網路] 窗格](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
-
-> [!IMPORTANT]
-> 適用於 Azure Machine Learning 的_預設儲存體帳戶_ 或_非預設儲存體帳戶_都可以放在虛擬網路中。
->
-> 建立工作區時便會自動佈建預設儲存體帳戶。
->
-> 若為非預設儲存體帳戶，[`Workspace.create()` 函式](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) 中的 `storage_account` 參數可讓您依 Azure 資源識別碼來指定自訂儲存體帳戶。
-
+您必須在建立時，將您的計算實例設定為位於相同虛擬網路中的 [**設定**  >  **虛擬網路**] 下的 [Advanced settings]。 您無法將現有的計算實例新增至虛擬網路。
 
 <a id="aksvnet"></a>
 
@@ -363,7 +480,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 > [!IMPORTANT]
 > 建立 Azure Kubernetes Service 叢集時無法啟用私人 IP。 您必須透過對現有叢集更新的方式來加以啟用。
 
-下列程式碼片段示範如何**建立新的 AKS 叢集**，然後將其更新為使用私人 IP/內部負載平衡器：
+下列程式碼片段示範如何__建立新的 AKS 叢集__，然後將其更新為使用私人 IP/內部負載平衡器：
 
 ```python
 import azureml.core
@@ -427,14 +544,69 @@ az rest --method put --uri https://management.azure.com/subscriptions/<subscript
 } 
 ```
 
-> [!NOTE]
-> 目前在現有叢集上執行__連結__作業時並無法設定負載平衡器。 您必須先連結叢集，然後執行更新作業才能變更負載平衡器。
+將__現有的叢集附加__至您的工作區時，您必須等到附加作業之後，才能設定負載平衡器。
 
+如需連接叢集的詳細資訊，請參閱[附加現有的 AKS](how-to-deploy-azure-kubernetes-service.md#attach-an-existing-aks-cluster)叢集。
+
+附加現有的叢集之後，您就可以更新叢集以使用私人 IP。
+
+```python
+import azureml.core
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute import AksCompute
+
+# ws = workspace object. Creation not shown in this snippet
+aks_target = AksCompute(ws,"myaks")
+
+# Change to the name of the subnet that contains AKS
+subnet_name = "default"
+# Update AKS configuration to use an internal load balancer
+update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
+aks_target.update(update_config)
+# Wait for the operation to complete
+aks_target.wait_for_completion(show_output = True)
+```
+
+__網路參與者角色__
+
+> [!IMPORTANT]
+> 如果您藉由提供您先前建立的虛擬網路來建立或連結 AKS 叢集，您必須將_網路參與者_角色授與包含虛擬網路的資源群組，以取得 AKS 叢集的服務主體（SP）或受控識別。 這必須在您嘗試將內部負載平衡器變更為私人 IP 之前完成。
+>
+> 若要將身分識別新增為網路參與者，請使用下列步驟：
+
+1. 若要尋找 AKS 的服務主體或受控識別識別碼，請使用下列 Azure CLI 命令。 將 `<aks-cluster-name>` 取代為叢集的名稱。 將取代 `<resource-group-name>` 為_包含 AKS_叢集的資源組名：
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
+    ``` 
+
+    如果此命令傳回的值 `msi` ，請使用下列命令來識別受控識別的主體識別碼：
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
+    ```
+
+1. 若要尋找包含您虛擬網路之資源群組的識別碼，請使用下列命令。 將取代 `<resource-group-name>` 為_包含虛擬網路_的資源組名：
+
+    ```azurecli-interactive
+    az group show -n <resource-group-name> --query id
+    ```
+
+1. 若要將服務主體或受控識別新增為網路參與者，請使用下列命令。 `<SP-or-managed-identity>`以服務主體或受控識別傳回的識別碼取代。 將取代為 `<resource-group-id>` 包含虛擬網路的資源群組所傳回的識別碼：
+
+    ```azurecli-interactive
+    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
+    ```
 如需使用內部負載平衡器搭配 AKS 的詳細資訊，請參閱 [使用內部負載平衡器搭配 Azure Kubernetes Service](/azure/aks/internal-lb)。
 
 ## <a name="use-azure-container-instances-aci"></a>使用 Azure 容器執行個體 (ACI)
 
 部署模型時會以動態方式建立 Azure 容器執行個體。 若要讓 Azure Machine Learning 能夠在虛擬網路內部建立 ACI，您必須為部署所使用的子網路啟用__子網路委派__。
+
+> [!WARNING]
+> 在虛擬網路中使用 Azure 容器實例時，虛擬網路必須位於與您 Azure Machine Learning 工作區相同的資源群組中。
+>
+> 在虛擬網路內使用 Azure 容器實例時，您工作區的 Azure Container Registry （ACR）也不能在虛擬網路中。
 
 若要在工作區的虛擬網路中使用 ACI，請使用下列步驟：
 
@@ -547,22 +719,6 @@ az rest --method put --uri https://management.azure.com/subscriptions/<subscript
     ]
     }
     ```
-    
-## <a name="azure-data-lake-storage"></a>Azure Data Lake 儲存體
-
-Azure Data Lake Storage Gen2 是一組適用於巨量資料分析的功能，其建置於 Azure Blob 儲存體之上。 其可用來儲存資料，以在使用 Azure Machine Learning 時用來將模型定型。 
-
-若要在 Azure Machine Learning 工作區的虛擬網路內部使用 Data Lake Storage Gen 2，請使用下列步驟：
-
-1. 建立 Azure Data Lake Storage Gen 2 帳戶。 如需詳細資訊，請參閱[建立 Azure Data Lake Storage Gen2 儲存體帳戶](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
-
-1. 使用上一節的步驟 2 至 4 ([針對工作區使用儲存體帳戶](#use-a-storage-account-for-your-workspace)) 將帳戶放在虛擬網路中。
-
-在虛擬網路內部搭配使用 Azure Machine Learning 與 Data Lake Storage Gen 2 時，請使用下列指導方針：
-
-* 如果您使用 __SDK 來建立資料集__，而執行程式碼的系統__不在虛擬網路中__，請使用 `validate=False` 參數。 此參數會略過驗證，但如果系統不在與儲存體帳戶相同的虛擬網路中則會失敗。 如需詳細資訊，請參閱 [from_files()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) 方法。
-
-* 使用 Azure Machine Learning 計算執行個體或計算叢集以利用資料集來將模型定型時，其必須位於與儲存體帳戶相同的虛擬網路中。
 
 ## <a name="key-vault-instance"></a>金鑰保存庫執行個體 
 

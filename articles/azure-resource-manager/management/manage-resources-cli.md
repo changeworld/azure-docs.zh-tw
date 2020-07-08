@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: f00c1725201b0e49f80fec64e5d69b375ec7a233
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a8683a4c9a2ff3cbe3edce5b101973cde73feb2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75485529"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057495"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>使用 Azure CLI 來管理 Azure 資源
 
@@ -142,5 +142,5 @@ az lock delete --ids $lockId
 
 - 若要瞭解 Azure Resource Manager，請參閱[Azure Resource Manager 總覽](overview.md)。
 - 若要瞭解 Resource Manager 範本語法，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](../templates/template-syntax.md)。
-- 若要瞭解如何開發範本，請參閱[逐步教學](/azure/azure-resource-manager/)課程。
+- 若要瞭解如何開發範本，請參閱[逐步教學](../index.yml)課程。
 - 若要查看 Azure Resource Manager 範本架構，請參閱[範本參考](/azure/templates/)。

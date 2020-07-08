@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
-ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67d3591a22ba68c0ddb5c4e2b467e133ef20102b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251007"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057461"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>進階媒體編碼器 Premium 工作流程教學課程
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本檔包含示範如何使用**工作流程設計工具**自訂工作流程的逐步解說。 您可以在[這裡](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)尋找實際的工作流程檔案。  
 
 ## <a name="toc"></a>目錄
@@ -187,7 +187,7 @@ ms.locfileid: "79251007"
 
 運算式編輯器可讓您以一或多個變數的混合輸入任何常值。 以貨幣符號開頭的變數。 當您按下 $ 鍵時，編輯器會顯示下拉式清單方塊，其中含有可用變數的選擇。 在此案例中，我們將使用輸出目錄變數與基礎輸入檔案名稱變數的組合：
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4`
 
 ![填入運算式編輯器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-expression-editor.png)
 
@@ -265,16 +265,16 @@ ms.locfileid: "79251007"
 
 檔案輸出命名可以透過設計工具中的運算式來控制。 開啟其中一個 [檔案輸出] 元件的屬性窗格，然後開啟 [檔案屬性] 的運算式編輯器。 我們的第一個輸出檔是透過下列運算式設定 (請參閱從 [MXF 到單一位元速率 MP4 輸出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)的教學課程)：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4`
 
 這表示我們的檔案名稱由兩個變數決定：要寫入的輸出目錄和來源檔案基礎名稱。 前者會在工作流程根目錄上公開為屬性，後者則是由連入的檔案決定。 輸出目錄是您用於本機測試的目錄；當 Azure 媒體服務中以雲端為基礎的媒體處理器執行工作流程時，這個屬性會由工作流程引擎覆寫。
 若要提供這兩個輸出檔案一致的輸出命名，請將第一個檔案命名運算式變更為：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 並將第二個變更為：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 執行中繼的測試回合，以確定正確產生這兩個 MP4 輸出檔案。
 
@@ -287,7 +287,7 @@ ms.locfileid: "79251007"
 
 建立第三個 [檔案輸出] 元件，以從 Muxer 輸出輸出串流，並將檔案命名運算式設定為：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4`
 
 ![音訊 Muxer 建立輸出檔案](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-creating-file-output.png)
 
@@ -319,7 +319,7 @@ ms.locfileid: "79251007"
 
 如同對我們的其他檔案輸出元件，使用運算式來設定 .ism 檔案輸出名稱：
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism`
 
 我們完成的工作流程看起來如下：
 
@@ -342,11 +342,11 @@ ms.locfileid: "79251007"
 
 例如，我們的第一個視訊檔案的檔案輸出元件是使用此運算式設定：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 等候第二個視訊輸出時，我們有如下的運算式：
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 如果我們可以移除某些重複項目，並改為使項目更易於設定，是不是比較清楚、較不容易出錯且更方便？ 幸好我們可以：設計工具的運算式功能結合能夠在我們的工作流程根目錄上建立自訂屬性，提供我們多一層的便利性。
 
@@ -391,7 +391,7 @@ ms.locfileid: "79251007"
 ### <a name="have-generated-output-file-names-rely-on-published-property-values"></a><a id="MXF_to__multibitrate_MP4_output_files"></a>讓產生的輸出檔案名稱依賴發佈的屬性值
 不要對我們產生的檔案名稱進行硬式編碼，我們現在可以在每個「檔案輸出」元件上變更檔案名稱，以仰賴我們在圖形根目錄上發佈的運算式屬性。 從我們的第一個檔案輸出開始，尋找檔案屬性，然後編輯運算式，如下：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4`
 
 可以透過在運算式視窗中時按鍵盤上的貨幣符號來存取及輸入此運算式中的不同參數。 其中一個可用的參數是我們稍早發佈的 video1bitrate 屬性。
 
@@ -401,11 +401,11 @@ ms.locfileid: "79251007"
 
 對第二個視訊的檔案輸出執行相同的動作：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4`
 
 以及對僅音訊檔案輸出：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4`
 
 如果我們現在變更任何視訊或音訊檔案的位元速率，將重新設定個別的編碼器，而將會對所有項目自動使用以位元速率為基礎的檔案名稱慣例。
 
@@ -462,11 +462,11 @@ ms.locfileid: "79251007"
 
 *推出場景搜尋 JPG 檔案寫入器*
 
-使用以下運算式設定輸出資料夾路徑屬性：${ROOT_outputWriteDirectory}
+使用運算式來設定 [輸出檔案夾路徑] 屬性：`${ROOT_outputWriteDirectory}`
 
 和使用下列設定檔案名稱前置詞屬性：
 
-    ${ROOT_sourceFileBaseName}_thumb_
+`${ROOT_sourceFileBaseName}_thumb_`
 
 前置詞會決定縮圖檔案命名的方式。 它們的前端會加上數字，指出串流中縮圖的位置。
 
@@ -551,11 +551,11 @@ Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪�
 
 針對音訊修剪開始時間：
 
-    ${ROOT_TrimmingStartTime}
+`${ROOT_TrimmingStartTime}`
 
 和其結束時間：
 
-    ${ROOT_TrimmingEndTime}
+`${ROOT_TrimmingEndTime}`
 
 ### <a name="finished-workflow"></a><a id="time_based_trim_finish"></a>工作流程完成
 ![工作流程完成](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
@@ -591,7 +591,7 @@ Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪�
 
 讓我們在 realizeScript 的內容中編寫一個簡單的 Hello World Groovy 指令碼。 在編輯器中輸入下列命令：
 
-    node.log("hello world");
+`node.log("hello world");`
 
 現在執行本機測試回合。 在這項執行之後，(透過 [指令碼元件] 上的 [系統] 索引標籤) 檢查 [記錄] 屬性。
 
@@ -761,7 +761,7 @@ Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪�
 
 *記錄產生的剪輯清單*
 
-執行測試回合以查看視訊和音訊串流剪輯的情況。 不過，由於您將對修剪點的使用不同值進行多個測試回合，您會發現，這些將不會被納入考量！ 這是因為設計工具不同於 Azure 執行階段，不會在每次執行時覆寫剪輯清單 XML。 這表示只有在您第一次設定 in 和 out 時，才會造成 xml 轉換，而所有其他時間，我們的 guard 子句（if （`clipListXML.indexOf("<trim>") == -1`））會防止工作流程在已經有一個 trim 元素時加入另一個 trim 專案。
+執行測試回合以查看視訊和音訊串流剪輯的情況。 不過，由於您將對修剪點的使用不同值進行多個測試回合，您會發現，這些將不會被納入考量！ 這是因為設計工具不同於 Azure 執行階段，不會在每次執行時覆寫剪輯清單 XML。 這表示只有在您第一次設定 in 和 out 時，才會造成 xml 轉換，而所有其他時間，我們的 guard 子句（if （ `clipListXML.indexOf("<trim>") == -1` ））會防止工作流程在已經有一個 trim 元素時加入另一個 trim 專案。
 
 為了讓工作流程方便在本機測試，我們最好加入一些管理程式碼，其會檢查是否已經存在修剪元素。 如果是的話，我們可以在繼續之前，將 XML 修改為新的值來將它移除。 不要使用純文字字串操作，透過實際的 XML 物件模型剖析執行此動作可能更安全。
 

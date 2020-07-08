@@ -9,21 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/06/2020
 ms.author: diberry
-ms.openlocfilehash: 0545be9ebe067a62b398c6c89b79a8484f0b48d4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 560a7d9106b9eaef0f82766615253715deb9238a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683106"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057869"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS 的反復應用程式設計
 
 Language Understanding （LUIS）應用程式會透過反復專案來學習和執行最有效率的方式。 以下是典型的反復專案迴圈：
 
 * 建立新版本
-* 編輯 LUIS 應用程式架構。 這包括：
+* 編輯 LUIS 應用程式架構。 其中包括：
     * 範例語句的意圖
     * 實體
     * 特性
@@ -107,11 +107,22 @@ LUIS 應用程式必須發佈，才能在清單[預測端點區域](luis-referen
 
 定型版本不會自動在您的 LUIS 應用程式的[端點](luis-glossary.md#endpoint)上提供。 您必須[發佈](luis-how-to-publish-app.md)或重新發佈版本，才能在您的 LUIS 應用程式端點上使用。 您可以發行至**預備**和**生產環境**，讓您可以在端點上使用兩個版本的應用程式。 如果端點需要有更多版本的應用程式，您應該匯出版本，並將其重新匯入至新的應用程式。 新應用程式會有不同的應用程式識別碼。
 
-### <a name="import-and-export-a-version"></a>匯入及匯出版本
+### <a name="import-a-version"></a>匯入版本
 
-您可以在應用層級匯入版本。 該版本會變成作用中版本，並在應用程式檔的屬性中使用版本識別碼 `versionId` 。 您也可以在版本層級匯入到現有的應用程式。 新版本會變成作用中版本。
+版本可以匯**入**為新的：
+* 應用程式，具有新的應用程式識別碼
+* 現有應用程式的版本
 
-您也可以在應用程式或版本層級匯出版本。 唯一的差別在於，在應用程式層級匯出的版本是目前作用中的版本，而在版本層級，您則可以在 [[Settings](luis-how-to-manage-versions.md)****] \(設定\) 頁面上選擇任何要匯出的版本。
+該版本會變成作用中版本，並在應用程式檔的屬性中使用版本識別碼 `versionId` 。
+
+### <a name="export-a-version"></a>匯出版本
+
+您可以從 LUIS 入口網站的應用層級或版本層級**匯出**版本：
+
+* 應用層級-選取 [**我的應用**程式] 頁面上的應用程式，然後選取 [**匯出**
+* 版本層級-在我的**應用程式**頁面上選取應用程式連結，選取 [**管理**]，選取 [**版本**]
+
+唯一的差異在於應用層級的匯出版本是目前使用中的版本，而在版本層級，您可以在 [**[設定](luis-how-to-manage-versions.md)**] 頁面上選擇要匯出的任何版本。
 
 匯出的檔案**不**包含：
 
@@ -132,7 +143,7 @@ LUIS 會藉由提供 Azure 資源層級許可權，來使用應用程式的參�
 
 每位作者都會對自己的應用程式版本進行變更。 當作者對模型感到滿意時，請將新版本匯出至 JSON 檔案。
 
-已匯出的應用程式（json 或 lu 檔案）可以針對變更進行比較。 結合檔案以建立新版本的單一檔案。 變更 `versionId` 屬性以表示新的合併版本。 將該版本匯入至原始應用程式。
+可以比較已匯出的應用程式 `.json` 或檔案 `.lu` ，以進行變更。 結合檔案以建立新版本的單一檔案。 變更 `versionId` 屬性以表示新的合併版本。 將該版本匯入至原始應用程式。
 
 此方法可讓您有一個作用中版本、一個預備版本，以及一個已發佈版本。 您可以在 [[互動式測試] 窗格](luis-interactive-test.md)中，將作用中版本的結果與已發行的版本（階段或生產）做比較。
 
@@ -150,4 +161,4 @@ LUIS 會藉由提供 Azure 資源層級許可權，來使用應用程式的參�
 
 ## <a name="next-steps"></a>後續步驟
 
-了解[共同作業](luis-concept-keys.md)的相關概念。
+了解[共同作業](luis-how-to-azure-subscription.md)的相關概念。

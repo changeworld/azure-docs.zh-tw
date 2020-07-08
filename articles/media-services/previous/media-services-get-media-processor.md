@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: af6badda426f1bb81d8528cfda9b8c02d55712b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84b94240431026020d3de793d56853a7d92a6f14
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61463823"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057971"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>如何：取得媒體處理器實例
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "61463823"
 > 
 > 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 在媒體服務中，媒體處理器是可處理特定處理工作的元件，例如編碼、格式轉換、加密或解密媒體內容。 您通常會在建立媒體內容的編碼、加密或格式轉換工作時建立媒體處理器。
 
 ## <a name="azure-media-processors"></a>Azure 媒體處理器 
@@ -42,16 +42,18 @@ ms.locfileid: "61463823"
 
 下列方法將說明如何取得媒體處理器執行個體。 此程式碼範例假設會使用名為 **_context** 的模組層級變數來參考伺服器內容，如[做法：以程式設計方式連接到媒體服務](media-services-use-aad-auth-to-access-ams-api.md)一節所述。
 
-    private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-    {
-        var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-        ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+```csharp
+private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+{
+    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
-        if (processor == null)
-        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+    if (processor == null)
+    throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
 
-        return processor;
-    }
+    return processor;
+}
+```
 
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑

@@ -8,20 +8,20 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 07/07/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94c0d1efa83af53804be89a9e86f4cafd5bc0ae0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025894"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057750"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>在 Azure Active Directory 中變更使用者或群組的授權指派
 
@@ -46,30 +46,30 @@ ms.locfileid: "74025894"
 在 [**更新授權指派**] 頁面上，如果您看到某些核取方塊無法使用，則表示無法變更的服務，因為它們是繼承自群組授權。
 
 1. 使用 Azure AD 組織中的授權管理員帳戶登入[Azure 入口網站](https://portal.azure.com/)。
-1. 選取 [ **Azure Active Directory** > **使用者**]，然後開啟使用者的 [**設定檔**] 頁面。
+1. 選取 [ **Azure Active Directory**  >  **使用者**]，然後開啟使用者的 [**設定檔**] 頁面。
 1. 選取 [授權] ****。
 1. 選取 [**指派**] 以編輯使用者或群組的授權指派。 [**指派**] 頁面是您可以在其中解決授權指派衝突的地方。
-1. 選取 Office 366 E3 的核取方塊，並確定已選取 [至少指派給使用者的 E1 服務]。
+1. 選取 Office 365 E3 的核取方塊，並確定已選取 [至少指派給使用者的 E1 服務]。
 1. 清除 Office 365 E1 的核取方塊。
 
     ![顯示 Office 365 E1 已清除並已選取 Office 365 E3 的使用者授權指派頁面](media/licensing-groups-change-licenses/update-user-license-assignments.png)
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 Azure AD 會套用新的授權，並同時移除舊的授權，以提供服務持續性。
 
 ## <a name="change-group-license-assignments"></a>變更群組授權指派
 
 1. 使用 Azure AD 組織中的授權管理員帳戶登入[Azure 入口網站](https://portal.azure.com/)。
-1. 選取 [ **Azure Active Directory** > **群組**]，然後開啟群組的 [**總覽**] 頁面。
+1. 選取 [ **Azure Active Directory**  >  **群組**]，然後開啟群組的 [**總覽**] 頁面。
 1. 選取 [授權] ****。
 1. 選取 [**指派**] 命令，以編輯使用者或群組的授權指派。
-1. 選取 Office 366 E3 的核取方塊。 若要維持服務的持續性，請確定您選取所有已指派給使用者的 E1 服務。
+1. 選取 Office 365 E3 的核取方塊。 若要維持服務的持續性，請確定您選取所有已指派給使用者的 E1 服務。
 1. 清除 Office 365 E1 的核取方塊。
 
     ![在 [使用者或群組授權] 頁面上選取 [指派] 命令](media/licensing-groups-change-licenses/update-group-license-assignments.png)
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 為了提供服務持續性，Azure AD 會套用新的授權，並同時為群組中的所有使用者移除舊的授權。
 

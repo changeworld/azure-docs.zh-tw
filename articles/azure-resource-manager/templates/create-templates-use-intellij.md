@@ -4,12 +4,12 @@ description: 了解如何使用 IntelliJ IDEA 建立您的第一個 Azure Resour
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: a5015a018f905b4353afd6bf25a48a2d942b3b97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa09fbe8d239bbe10c0762d3aad7e19df23a9044
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80153347"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057444"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>使用 IntelliJ 概念來建立和部署 ARM 範本
 
@@ -86,4 +86,4 @@ ms.locfileid: "80153347"
 > [初學者教學課程](./template-tutorial-create-first-template.md)
 
 > [!div class="nextstepaction"]
-> [造訪 Azure 上的 Java 開發人員中心](https://docs.microsoft.com/azure/java)
+> [造訪 Azure 上的 Java 開發人員中心](/azure/java)

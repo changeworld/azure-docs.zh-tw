@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 622c0cb8d58dddcdb13c7dc9412ada3f2e2d93e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6788651928b631d9298867a140f29b273f14734
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632980"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057546"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>使用 Azure 入口網站來管理 Azure Resource Manager 資源群組
 
@@ -36,7 +36,7 @@ ms.locfileid: "80632980"
 2. 選取**資源群組**
 
     ![新增資源群組](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
-3. 選取 [新增]  。
+3. 選取 [新增]。
 4. 輸入下列值：
 
    - **訂**用帳戶：選取您的 Azure 訂用帳戶。 
@@ -44,8 +44,8 @@ ms.locfileid: "80632980"
    - **區域**：選取 Azure 位置，例如「**美國中部**」。
 
      ![建立資源群組](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
-5. 選取 [**審核] + [建立**]
-6. 選取 [建立]  。 建立資源群組需要幾秒鐘的時間。
+5. 選取 [檢閱+建立]
+6. 選取 [建立]。 建立資源群組需要幾秒鐘的時間。
 7. 從頂端功能表選取 [重新整理] 以重新整理資源群組清單，**然後選取新**建立的資源群組以開啟它。 或從頂端選取 [**通知**] （鐘圖示），然後選取 [**移至資源群組**] 以開啟新建立的資源群組
 
     ![前往資源群組](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
@@ -68,7 +68,7 @@ ms.locfileid: "80632980"
 ## <a name="delete-resource-groups"></a>刪除資源群組
 
 1. 開啟您想要刪除的資源群組。  請參閱[開啟資源群組](#open-resource-groups)。
-2. 選取 [刪除資源群組]  。
+2. 選取 [刪除資源群組]。
 
     ![刪除 azure 資源群組](./media/manage-resource-groups-portal/delete-group.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "80632980"
 
 鎖定可防止您組織中的其他使用者不小心刪除或修改重要資源，例如 Azure 訂用帳戶、資源群組或資源。 
 
-1. 開啟您想要刪除的資源群組。  請參閱[開啟資源群組](#open-resource-groups)。
+1. 開啟您想要鎖定的資源群組。  請參閱[開啟資源群組](#open-resource-groups)。
 2. 在左窗格中選取 [**鎖定**]。
 3. 若要將鎖定新增至資源群組，請選取 [**新增**]。
 4. 輸入 [**鎖定名稱**]、[**鎖定類型**] 和 [**附注**]。 鎖定類型包括 [**唯讀**] 和 [**刪除**]。
@@ -111,5 +111,5 @@ ms.locfileid: "80632980"
 
 - 若要瞭解 Azure Resource Manager，請參閱[Azure Resource Manager 總覽](overview.md)。
 - 若要瞭解 Resource Manager 範本語法，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](../templates/template-syntax.md)。
-- 若要瞭解如何開發範本，請參閱[逐步教學](/azure/azure-resource-manager/)課程。
+- 若要瞭解如何開發範本，請參閱[逐步教學](../index.yml)課程。
 - 若要查看 Azure Resource Manager 範本架構，請參閱[範本參考](/azure/templates/)。

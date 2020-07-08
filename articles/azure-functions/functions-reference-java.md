@@ -3,12 +3,12 @@ title: Azure Functions 的 JAVA 開發人員參考
 description: 了解如何使用 Java 開發函式。
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 6ce886fd0ca47d728a115427b354442fd259e714
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648242"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057597"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 開發人員指南
 
@@ -50,20 +50,6 @@ mvn archetype:generate \
 
 若要開始使用此原型，請參閱 [JAVA 快速入門](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。 
 
-## <a name="create-kotlin-functions-preview"></a>建立 Kotlin 函式 (預覽)
-
-另外還有一個 Maven 原型可產生 Kotlin 函式。 此原型 (目前為預覽狀態) 已發佈於下列 _groupId_:_artifactId_: [com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/) 之下。 
-
-下列命令使用此原型產生新的 JAVA 函式專案：
-
-```
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-kotlin-archetype
-```
-
-若要開始使用此原型，請參閱 [Kotlin 快速入門](functions-create-first-kotlin-maven.md)。
-
 ## <a name="folder-structure"></a>資料夾結構
 
 以下是 Azure Functions JAVA 專案的資料夾結構：
@@ -89,8 +75,6 @@ FunctionsProject
  | | | | - lib
  | - pom.xml
 ```
-
-_* Kotlin 專案看起來非常相似，因為仍然是 Maven_
 
 您可以使用共用的 [host.json](functions-host-json.md) 檔案來設定函數應用程式。 每個函式都有自己的程式碼檔案 (.java) 和繫結設定檔 (function.json)。
 
@@ -391,7 +375,7 @@ public class Function {
 
 ## <a name="execution-context"></a>執行內容
 
-`azure-functions-java-library` 中定義的 `ExecutionContext` 包含協助程式方法，用來與函式執行階段進行通訊。
+`azure-functions-java-library` 中定義的 `ExecutionContext` 包含協助程式方法，用來與函式執行階段進行通訊。 如需詳細資訊，請參閱[ExecutionCoNtext 參考文章](/java/api/com.microsoft.azure.functions.executioncontext)。
 
 ### <a name="logger"></a>記錄器
 

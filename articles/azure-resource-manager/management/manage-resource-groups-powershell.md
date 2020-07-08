@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 25e001927d5c06b4a7e5639faaa054ae18b12bb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f18eea697e875cc926e8fbaa0f61cf2d4639be0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248355"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057512"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Resource Manager 資源群組
 
@@ -74,7 +74,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 請參閱[將資源部署至現有的資源群組](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group)。
 
-若要驗證資源群組部署，請參閱[測試-new-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0)。
+若要驗證資源群組部署，請參閱[測試-new-azresourcegroupdeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0)。
 
 ## <a name="deploy-a-resource-group-and-resources"></a>部署資源群組和資源
 
@@ -181,7 +181,7 @@ Export-AzResourceGroup `
 ]
 ```
 
-如果您在匯出`-IncludeParameterDefaultValue`範本時使用參數，樣板參數會包含設定為目前值的預設值。 您可以使用該預設值，或藉由傳入不同的值來覆寫預設值。
+如果您在 `-IncludeParameterDefaultValue` 匯出範本時使用參數，樣板參數會包含設定為目前值的預設值。 您可以使用該預設值，或藉由傳入不同的值來覆寫預設值。
 
 ```json
 "parameters": {
@@ -196,7 +196,7 @@ Export-AzResourceGroup `
 }
 ```
 
-如果您在匯出`-SkipResourceNameParameterization`範本時使用參數，則不會在範本中包含資源名稱的參數。 取而代之的是，資源名稱會直接在資源上設定為其目前的值。 您無法在部署期間自訂名稱。
+如果您在 `-SkipResourceNameParameterization` 匯出範本時使用參數，則不會在範本中包含資源名稱的參數。 取而代之的是，資源名稱會直接在資源上設定為其目前的值。 您無法在部署期間自訂名稱。
 
 ```json
 "resources": [
@@ -223,5 +223,5 @@ Export-AzResourceGroup `
 
 - 若要瞭解 Azure Resource Manager，請參閱[Azure Resource Manager 總覽](overview.md)。
 - 若要瞭解 Resource Manager 範本語法，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](../templates/template-syntax.md)。
-- 若要瞭解如何開發範本，請參閱[逐步教學](/azure/azure-resource-manager/)課程。
+- 若要瞭解如何開發範本，請參閱[逐步教學](../index.yml)課程。
 - 若要查看 Azure Resource Manager 範本架構，請參閱[範本參考](/azure/templates/)。

@@ -4,12 +4,12 @@ description: 本文討論有關 Azure Site Recovery 的一般熱門問題。
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 270fa8de3346063d047b38132438f8097d87689d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 9eceb9643a5e8f8eab6b68bb04b322a099b715f3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744109"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057427"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>關於 Azure Site Recovery 的一般問題
 
@@ -22,11 +22,16 @@ ms.locfileid: "83744109"
 ## <a name="general"></a>一般
 
 ### <a name="what-does-site-recovery-do"></a>Site Recovery 的功能是什麼？
+
 Site Recovery 可協調並自動執行區域、內部部署虛擬機器和實體伺服器之間至 Azure 的 Azure VM 複寫；協調並自動執行內部部署機器至次要資料中心的複寫，藉此保障您的商務持續性與災害復原 (BCDR) 策略。 [深入了解](site-recovery-overview.md)。
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>是否可以保護具有 Docker 磁碟的虛擬機器？
 
 否，這是不支援的案例。
+
+### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>Site Recovery 如何確保資料完整性？
+
+Site Recovery 採取各種不同的措施，以確保資料的完整性。 使用 HTTPS 通訊協定，在所有服務之間建立安全連線。 這可確保任何惡意程式碼或外部實體無法篡改資料。 所採用的另一個量值是使用總和檢查碼。 來源與目標之間的資料傳輸是透過計算兩者之間的資料總和檢查碼來執行。 這可確保傳輸的資料一致。
 
 ## <a name="service-providers"></a>服務提供者
 
@@ -128,7 +133,7 @@ Azure Site Recovery 微服務之間的所有通訊都會在 TLS 1.2 通訊協定
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>是否支援 Azure VM 的災害復原？
 
-是，Site Recovery 支援 Azure 區域之間 Azure VM 的災害復原。 檢閱有關 Azure VM 災害復原的[常見問題](azure-to-azure-common-questions.md)。
+是，Site Recovery 支援 Azure 區域之間 Azure VM 的災害復原。 檢閱有關 Azure VM 災害復原的[常見問題](azure-to-azure-common-questions.md)。 如果您想要在相同大陸上的兩個 Azure 區域之間進行複寫，請使用我們的 Azure 至 Azure DR 供應專案。 不需要安裝設定伺服器/進程伺服器和 ExpressRoute 連線。
 
 ### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>是否支援 VMware VM 的災害復原？
 
@@ -195,7 +200,40 @@ Azure Site Recovery 會透過公用端點，將資料複製到 Azure 儲存體�
 * [適用於複寫 VMware VM 和實體伺服器的容量規劃](site-recovery-plan-capacity-vmware.md)
 * [適用於將 Hyper-V VM 複寫至 Azure 的容量規劃](site-recovery-capacity-planning-for-hyper-v-replication.md)
 
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>我可以在 Linux 伺服器中使用應用程式一致性來啟用複寫嗎？ 
+是。 適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式的自訂腳本，以進行應用程式一致性。 具有前置和後置選項的自訂腳本，會在應用程式一致性期間由 Azure Site Recovery 行動代理程式使用。 以下是啟用它的步驟。
 
+1. 以 root 身分登入電腦。
+2. 將目錄變更為 Azure Site Recovery 行動代理程式安裝位置。 預設值為 "/usr/local/ASR"<br>
+    `# cd /usr/local/ASR`
+3. 在 [安裝位置] 底下，將目錄變更為 "VX/scripts"<br>
+    `# cd VX/scripts`
+4. 建立名為 "customscript.sh" 的 bash shell 腳本，其具有 root 使用者的執行許可權。<br>
+    a. 腳本應該支援 "--pre" 和 "--post" （請注意雙虛線）命令列選項<br>
+    b. 以預先選項呼叫腳本時，它應該會凍結應用程式的輸入/輸出，並在使用 post 選項呼叫時，應該解除凍結應用程式的輸入/輸出。<br>
+    c. 範例範本-<br>
+
+    `# cat customscript.sh`<br>
+
+```
+    #!/bin/bash
+
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 [--pre | --post]"
+        exit 1
+    elif [ "$1" == "--pre" ]; then
+        echo "Freezing app IO"
+        exit 0
+    elif [ "$1" == "--post" ]; then
+        echo "Thawed app IO"
+        exit 0
+    fi
+```
+
+5. 在前置和後置步驟中，針對需要應用程式一致性的應用程式新增凍結和取消凍結輸入/輸出命令。 您可以選擇新增另一個腳本來指定這些檔案，並使用前置和後置選項從 "customscript.sh" 加以叫用。
+
+>[!Note]
+>Site Recovery 代理程式版本應該是9.24 或更新版本，才能支援自訂腳本。
 
 ## <a name="failover"></a>容錯移轉
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>如果容錯移轉到 Azure，在容錯移轉之後，我要如何存取存取 Azure VM？

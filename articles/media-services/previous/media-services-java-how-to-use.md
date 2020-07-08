@@ -14,12 +14,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: fedec6ea764394d36f5b4d7c883f7cb9f9520a29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3adbb9471cc501861b65efd0321b3b4f72b07aea
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64869029"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057852"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>開始在 Azure 媒體服務上使用 Java 用戶端 SDK  
 
@@ -42,7 +42,7 @@ ms.locfileid: "64869029"
 
 例如，如果您的建置工具是 `gradle`，請將下列相依項目新增至您的 `build.gradle` 檔案：
 
-    compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
+`compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'`
 
 >[!IMPORTANT]
 >從 `0.9.8` 版的 `azure-media` 套件開始，SDK 新增了 Azure Active Directory (AAD) 驗證的支援，並移除了 Azure 存取控制服務 (ACS) 驗證的支援。 建議您儘速移轉至 Azure AD 驗證模型。 如需有關移轉的詳細資訊，請閱讀[使用 Azure AD 驗證存取 Azure 媒體服務 API](media-services-use-aad-auth-to-access-ams-api.md)一文。

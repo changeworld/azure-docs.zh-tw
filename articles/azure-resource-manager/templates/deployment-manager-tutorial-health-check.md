@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 765c73a3ab8d5fa8939abe597d0141b24b59ac52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3c7b74d31bc3c4e2276cd52c8e6450630dc99bcd
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76152472"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058022"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>教學課程：在 Azure 部署管理員 (公開預覽版) 中使用健康情況檢查
 
@@ -35,7 +35,7 @@ ms.locfileid: "76152472"
 
 其他資源：
 
-* [Azure 部署管理員 REST API 參考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
+* [Azure 部署管理員 REST API 參考](/rest/api/deploymentmanager/)。
 * [Azure 部署管理員範例](https://github.com/Azure-Samples/adm-quickstart)。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
@@ -58,7 +58,7 @@ ms.locfileid: "76152472"
 
 ## <a name="create-a-health-check-service-simulator"></a>建立健康情況檢查服務模擬器
 
-在生產環境中，您通常會使用一或多個監視提供者。 為了讓健康情況整合盡量簡化，Microsoft 持續與一些最頂尖的服務健康情況監視公司合作，為您提供簡單的複製/貼上解決方案，以整合健康情況檢查與您的部署。 如需這些公司的清單，請參閱[健康情況監視提供者](./deployment-manager-health-check.md#health-monitoring-providers)。 就此教學課程的目的，您會建立 [Azure 函式](/azure/azure-functions/)來模擬健康情況監視服務。 此函式會接受狀態碼，並傳回相同的代碼。 Azure 部署管理員範本會使用狀態碼來判斷如何繼續進行部署。
+在生產環境中，您通常會使用一或多個監視提供者。 為了讓健康情況整合盡量簡化，Microsoft 持續與一些最頂尖的服務健康情況監視公司合作，為您提供簡單的複製/貼上解決方案，以整合健康情況檢查與您的部署。 如需這些公司的清單，請參閱[健康情況監視提供者](./deployment-manager-health-check.md#health-monitoring-providers)。 就此教學課程的目的，您會建立 [Azure 函式](../../azure-functions/index.yml)來模擬健康情況監視服務。 此函式會接受狀態碼，並傳回相同的代碼。 Azure 部署管理員範本會使用狀態碼來判斷如何繼續進行部署。
 
 下列兩個檔案用於部署 Azure 函式。 您不需要下載這些檔案，即可進行本教學課程。
 
@@ -369,4 +369,4 @@ Tags                    :
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何使用 Azure 部署管理員的健康情況檢查功能。 若要深入了解，請參閱 [Azure Resource Manager 文件](/azure/azure-resource-manager/)。
+在本教學課程中，您已了解如何使用 Azure 部署管理員的健康情況檢查功能。 若要深入了解，請參閱 [Azure Resource Manager 文件](../index.yml)。

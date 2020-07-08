@@ -3,12 +3,12 @@ title: Azure 入口網站中匯出範本
 description: 使用 Azure 入口網站從您的訂用帳戶中的資源匯出 Azure Resource Manager 範本。
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbdcaa6e6db4a7a4a958f1be2e9977a14e092663
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273731"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057699"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>單一和多重資源匯出至 Azure 入口網站中的範本
 
@@ -105,7 +105,7 @@ Resource Manager 可讓您挑選一或多個要匯出至範本的資源。 您�
 
 1. 選取您想要匯出的資源群組。
 
-1. 選取 [**部署**] 底下的連結。
+1. 選取 [部署] 底下的連結。
 
    ![選取部署歷程記錄](./media/export-template-portal/select-deployment-history.png)
 
@@ -121,5 +121,5 @@ Resource Manager 可讓您挑選一或多個要匯出至範本的資源。 您�
 
 - 瞭解如何使用[Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、 [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)或[REST API](/rest/api/resources/resourcegroups/exporttemplate)匯出範本。
 - 若要瞭解 Resource Manager 範本語法，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。
-- 若要瞭解如何開發範本，請參閱[逐步教學](/azure/azure-resource-manager/)課程。
+- 若要瞭解如何開發範本，請參閱[逐步教學](../index.yml)課程。
 - 若要查看 Azure Resource Manager 範本架構，請參閱[範本參考](/azure/templates/)。

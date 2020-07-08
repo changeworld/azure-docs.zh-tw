@@ -3,12 +3,12 @@ title: Resource Manager 與傳統部署
 description: 描述資源管理員部署模型與傳統 (或服務管理) 部署模型之間的差異。
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e44128da9b6e180bd2857f4574c0b384fdffef2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064507"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057563"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager vs. 傳統部署：了解資源的部署模型和狀態
 
@@ -78,6 +78,8 @@ Get-AzVM -ResourceGroupName ExampleGroup
 
 ![Resource Manager 架構](./media/deployment-models/arm_arch3.png)
 
+SRP：儲存體資源提供者，CRP：計算資源提供者，NRP：網路資源提供者
+
 請注意資源之間的下列關聯性：
 
 * 資源群組內存在的所有資源。
@@ -123,7 +125,7 @@ Get-AzVM -ResourceGroupName ExampleGroup
 1. [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
 2. [支援將 IaaS 資源從傳統移轉至 Azure Resource Manager 的平台](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 3. [使用 Azure PowerShell 將 IaaS 資源從傳統移轉至 Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
-4. [使用 Azure CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](../../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
+4. [使用 Azure CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
@@ -150,4 +152,3 @@ Get-AzVM -ResourceGroupName ExampleGroup
 ## <a name="next-steps"></a>後續步驟
 
 * 若要查看部署範本的命令，請參閱 [使用 Azure 資源管理員範本部署應用程式](../templates/deploy-powershell.md)。
-
