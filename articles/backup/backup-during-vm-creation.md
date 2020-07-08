@@ -4,10 +4,9 @@ description: 說明當您使用 Azure 備份建立 Azure VM 時，如何啟用�
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672815"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>建立 Azure VM 時啟用備份
@@ -41,7 +40,7 @@ ms.locfileid: "80672815"
 
 8. 接受預設備份原則，或修改設定。
     - 備份原則會指定制作 VM 備份快照集的頻率，以及保留這些備份複本的時間長度。
-    - 預設原則會每天備份一次 VM。
+    - 預設原則每天備份一次 VM。
     - 您可以自訂您自己的備份原則，讓 Azure VM 每日或每週進行備份。
     - [深入瞭解](backup-azure-vms-introduction.md#backup-and-restore-considerations)Azure vm 的備份考慮。
     - [深入瞭解](backup-instant-restore-capability.md)立即還原功能。
@@ -50,17 +49,17 @@ ms.locfileid: "80672815"
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>虛擬機器的 Azure 備份資源群組
 
-備份服務會建立個別的資源群組（RG），與用來儲存還原點集合（RPC）的 VM 資源群組不同。 RPC 會裝載受管理 Vm 的立即復原點。 備份服務所建立之資源群組的預設命名格式為： `AzureBackupRG_<Geo>_<number>`。 例如： *AzureBackupRG_northeurope_1*。 您現在可以自訂 Azure 備份所建立的資源組名。
+備份服務會建立個別的資源群組（RG），與用來儲存還原點集合（RPC）的 VM 資源群組不同。 RPC 會裝載受管理 Vm 的立即復原點。 備份服務所建立之資源群組的預設命名格式為： `AzureBackupRG_<Geo>_<number>` 。 例如： *AzureBackupRG_northeurope_1*。 您現在可以自訂 Azure 備份所建立的資源組名。
 
 注意事項：
 
 1. 您可以使用 RG 的預設名稱，或根據您的公司需求進行編輯。
-2. 在建立 VM 備份原則時，您會提供 RG 名稱模式做為輸入。 RG 名稱的格式應該如下： `<alpha-numeric string>* n <alpha-numeric string>`。 ' n ' 已取代為整數（從1開始），而且在第一個 RG 已滿時用於相應放大。 一個 RG 目前最多可以有600個 Rpc。
+2. 在建立 VM 備份原則時，您會提供 RG 名稱模式做為輸入。 RG 名稱的格式應該如下： `<alpha-numeric string>* n <alpha-numeric string>` 。 ' n ' 已取代為整數（從1開始），而且在第一個 RG 已滿時用於相應放大。 一個 RG 目前最多可以有600個 Rpc。
               ![建立原則時選擇名稱](./media/backup-during-vm-creation/create-policy.png)
 3. 此模式應遵循下列 RG 命名規則，而總長度不應超過允許的 RG 名稱長度上限。
     1. 資源組名只允許英數位元、句號、底線、連字號和括弧。 它們不能以句點結尾。
     2. 資源組名最多可以包含74個字元，包括 RG 的名稱和尾碼。
-4. 第一個`<alpha-numeric-string>`是必要項，而第二個在 ' n ' 之後是選擇性的。 只有當您提供自訂名稱時，才適用這種情況。 如果您未在任一文字方塊中輸入任何內容，則會使用預設名稱。
+4. 第一個 `<alpha-numeric-string>` 是必要項，而第二個在 ' n ' 之後是選擇性的。 只有當您提供自訂名稱時，才適用這種情況。 如果您未在任一文字方塊中輸入任何內容，則會使用預設名稱。
 5. 如果需要，您可以修改原則來編輯 RG 的名稱。 如果名稱模式有所變更，新的 RG 就會建立新的 RPs。 不過，舊的 RPs 仍然會位於舊的 RG 中，而且不會移動，因為 RP 集合不支援資源移動。 最後，RPs 會在點過期時進行垃圾收集。
 ![修改原則時變更名稱](./media/backup-during-vm-creation/modify-policy.png)
 6. 建議不要鎖定為備份服務所建立的資源群組。

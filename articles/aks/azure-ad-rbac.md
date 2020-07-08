@@ -6,10 +6,9 @@ services: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.openlocfilehash: ad195085c049776bf0db418c57f2c72830f1adff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80803564"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>使用 Azure Kubernetes Service 中的角色型存取控制和 Azure Active Directory 身分識別，來控制叢集資源的存取權
@@ -22,7 +21,7 @@ Azure Kubernetes Service (AKS) 可以設定為使用 Azure Active Directory (AD)
 
 本文假設您已使用 Azure AD 整合啟用了現有的 AKS 叢集。 如果您需要 AKS 叢集，請參閱[整合 Azure Active Directory 與 AKS][azure-ad-aks-cli]。
 
-您需要安裝並設定 Azure CLI 版本2.0.61 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
+您必須安裝並設定 Azure CLI 版本 2.0.61 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="create-demo-groups-in-azure-ad"></a>在 Azure AD 中建立示範群組
 
@@ -50,7 +49,7 @@ AKS_ID=$(az aks show \
 APPDEV_ID=$(az ad group create --display-name appdev --mail-nickname appdev --query objectId -o tsv)
 ```
 
-現在，使用[az role 指派 create][az-role-assignment-create]命令來建立*Appdev*群組的 Azure 角色指派。 此指派可讓群組的任何成員使用`kubectl` *Azure Kubernetes Service 叢集使用者角色*，來與 AKS 叢集互動。
+現在，使用[az role 指派 create][az-role-assignment-create]命令來建立*Appdev*群組的 Azure 角色指派。 此指派可讓群組的任何成員使用 `kubectl` *Azure Kubernetes Service 叢集使用者角色*，來與 AKS 叢集互動。
 
 ```azurecli-interactive
 az role assignment create \
@@ -60,7 +59,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> 如果您收到類似的錯誤`Principal 35bfec9328bd4d8d9b54dea6dac57b82 does not exist in the directory a5443dcd-cd0e-494d-a387-3039b419f0d5.`，請等候幾秒鐘，讓 Azure AD 群組物件識別碼傳播到目錄中，然後再次嘗試`az role assignment create`命令。
+> 如果您收到類似的錯誤 `Principal 35bfec9328bd4d8d9b54dea6dac57b82 does not exist in the directory a5443dcd-cd0e-494d-a387-3039b419f0d5.` ，請等候幾秒鐘，讓 Azure AD 群組物件識別碼傳播到目錄中，然後 `az role assignment create` 再次嘗試命令。
 
 建立第二個範例群組，這是名為*opssre*的 sre：
 
@@ -83,7 +82,7 @@ az role assignment create \
 
 使用[az AD user create][az-ad-user-create]命令，在 Azure AD 中建立第一個使用者帳戶。
 
-下列範例會建立使用者，其顯示名稱為*AKS Dev* ，使用者主體名稱（UPN）為`aksdev@contoso.com`。 更新 UPN 以包含 Azure AD 租使用者的已驗證網域（將*contoso.com*取代為您自己的網域），並提供您自己`--password`的安全認證：
+下列範例會建立使用者，其顯示名稱為*AKS Dev* ，使用者主體名稱（UPN）為 `aksdev@contoso.com` 。 更新 UPN 以包含 Azure AD 租使用者的已驗證網域（將*contoso.com*取代為您自己的網域），並提供您自己的安全 `--password` 認證：
 
 ```azurecli-interactive
 AKSDEV_ID=$(az ad user create \
@@ -99,7 +98,7 @@ AKSDEV_ID=$(az ad user create \
 az ad group member add --group appdev --member-id $AKSDEV_ID
 ```
 
-建立第二個使用者帳戶。 下列範例會建立使用者，其顯示名稱為*AKS SRE* ，而使用者主體名稱（UPN）為`akssre@contoso.com`。 同樣地，更新 UPN 以包含 Azure AD 租使用者的已驗證網域（將*contoso.com*取代為您自己的網域），並提供您`--password`自己的安全認證：
+建立第二個使用者帳戶。 下列範例會建立使用者，其顯示名稱為*AKS SRE* ，而使用者主體名稱（UPN）為 `akssre@contoso.com` 。 同樣地，更新 UPN 以包含 Azure AD 租使用者的已驗證網域（將*contoso.com*取代為您自己的網域），並提供您自己的安全 `--password` 認證：
 
 ```azurecli-interactive
 # Create a user for the SRE role
@@ -133,7 +132,7 @@ kubectl create namespace dev
 
 首先，建立*dev*命名空間的角色。 此角色會授與命名空間的完整許可權。 在生產環境中，您可以為不同的使用者或群組指定更細微的許可權。
 
-建立名為`role-dev-namespace.yaml`的檔案，並貼上下列 YAML 資訊清單：
+建立名為的檔案 `role-dev-namespace.yaml` ，並貼上下列 YAML 資訊清單：
 
 ```yaml
 kind: Role
@@ -198,7 +197,7 @@ kubectl apply -f rolebinding-dev-namespace.yaml
 kubectl create namespace sre
 ```
 
-建立名為`role-sre-namespace.yaml`的檔案，並貼上下列 YAML 資訊清單：
+建立名為的檔案 `role-sre-namespace.yaml` ，並貼上下列 YAML 資訊清單：
 
 ```yaml
 kind: Role
@@ -257,7 +256,7 @@ kubectl apply -f rolebinding-sre-namespace.yaml
 
 現在，當您在 AKS 叢集中建立和管理資源時，讓我們來測試預期的許可權工作。 在這些範例中，您會在使用者指派的命名空間中排程和觀看 pod。 然後，您會嘗試在指派的命名空間之外排程和觀看 pod。
 
-首先，使用[az aks get-認證][az-aks-get-credentials]命令重設*kubeconfig*內容。 在上一節中，您會使用叢集系統管理員認證來設定內容。 系統管理員使用者略過 Azure AD 登入提示。 如果沒有`--admin`參數，則會套用使用者內容，要求所有要求都必須使用 Azure AD 進行驗證。
+首先，使用[az aks get-認證][az-aks-get-credentials]命令重設*kubeconfig*內容。 在上一節中，您會使用叢集系統管理員認證來設定內容。 系統管理員使用者略過 Azure AD 登入提示。 如果沒有 `--admin` 參數，則會套用使用者內容，要求所有要求都必須使用 Azure AD 進行驗證。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
@@ -269,7 +268,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
 ```
 
-在登入提示中，輸入您自己`appdev@contoso.com`在發行項開始時所建立之帳戶的認證。 成功登入之後，就會快取帳戶權杖以供未來`kubectl`的命令之用。 已成功排程 NGINX，如下列範例輸出所示：
+在登入提示中，輸入您自己在發行 `appdev@contoso.com` 項開始時所建立之帳戶的認證。 成功登入之後，就會快取帳戶權杖以供未來的命令之用 `kubectl` 。 已成功排程 NGINX，如下列範例輸出所示：
 
 ```console
 $ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
@@ -296,7 +295,7 @@ nginx-dev   1/1     Running   0          4m
 
 ### <a name="create-and-view-cluster-resources-outside-of-the-assigned-namespace"></a>建立和查看指派命名空間以外的叢集資源
 
-現在，請嘗試在*dev*命名空間以外的地方觀看 pod。 再次使用[kubectl get][kubectl-get] pod 命令，這次看`--all-namespaces`得到如下：
+現在，請嘗試在*dev*命名空間以外的地方觀看 pod。 再次使用[kubectl get][kubectl-get] pod 命令，這次看得到如下 `--all-namespaces` ：
 
 ```console
 kubectl get pods --all-namespaces
@@ -328,7 +327,7 @@ Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cann
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
 
-嘗試在指派的*sre*命名空間中排程和觀看 pod。 出現提示時，使用您在本文`opssre@contoso.com`開頭建立的自己認證登入：
+嘗試在指派的*sre*命名空間中排程和觀看 pod。 出現提示時，使用您在 `opssre@contoso.com` 本文開頭建立的自己認證登入：
 
 ```console
 kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
@@ -357,7 +356,7 @@ kubectl get pods --all-namespaces
 kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
 ```
 
-這些`kubectl`命令會失敗，如下列範例輸出所示。 使用者的群組成員資格和 Kubernetes 角色和 RoleBindings 不會授與許可權來建立或管理其他命名空間中的資源：
+這些 `kubectl` 命令會失敗，如下列範例輸出所示。 使用者的群組成員資格和 Kubernetes 角色和 RoleBindings 不會授與許可權來建立或管理其他命名空間中的資源：
 
 ```console
 $ kubectl get pods --all-namespaces

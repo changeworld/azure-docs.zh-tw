@@ -9,21 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.openlocfilehash: 6e9d1f35d021c3381f9c2887dfb1c150bb720871
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804651"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure 地圖服務 services 模組
 
-Azure 地圖服務 Web SDK 提供*服務模組*。 此模組是協助程式程式庫，可讓您使用 JavaScript 或 TypeScript，輕鬆地在 web 或 node.js 應用程式中使用 Azure 地圖服務 REST 服務。
+Azure 地圖服務 Web SDK 提供*服務模組*。 此模組是協助程式程式庫，可讓您使用 JavaScript 或 TypeScript，輕鬆地在 web 或 Node.js 應用程式中使用 Azure 地圖服務 REST 服務。
 
 ## <a name="use-the-services-module-in-a-webpage"></a>使用網頁中的服務模組
 
 1. 建立新的 HTML 檔案。
 1. 載入 Azure 地圖服務 services 模組。 您可以透過下列兩種方式的其中一種來載入它：
-    - 使用 Azure 地圖服務服務模組的全球託管 Azure 內容傳遞網路版本。 將腳本參考新增至檔案`<head>`的元素：
+    - 使用 Azure 地圖服務服務模組的全球託管 Azure 內容傳遞網路版本。 將腳本參考新增至檔案的 `<head>` 元素：
 
         ```html
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
@@ -33,7 +32,7 @@ Azure 地圖服務 Web SDK 提供*服務模組*。 此模組是協助程式程�
     
         > **npm install azure-maps-rest**
     
-        然後，將腳本參考新增至檔案`<head>`的元素：
+        然後，將腳本參考新增至檔案的 `<head>` 元素：
 
          ```html
         <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
@@ -124,7 +123,7 @@ Azure 地圖服務 Web SDK 提供*服務模組*。 此模組是協助程式程�
 
     如需詳細資訊，請參閱[使用 Azure 地圖服務進行驗證](azure-maps-authentication.md)。
 
-1. 下列程式碼會使用新建立的 Azure 地圖服務搜尋服務 URL 用戶端來地理編碼位址： "1 Microsoft 的方式，Redmond，WA"。 程式碼會使用`searchAddress`函式，並將結果顯示為頁面主體中的資料表。
+1. 下列程式碼會使用新建立的 Azure 地圖服務搜尋服務 URL 用戶端來地理編碼位址： "1 Microsoft 的方式，Redmond，WA"。 程式碼會使用函式 `searchAddress` ，並將結果顯示為頁面主體中的資料表。
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".
@@ -160,7 +159,7 @@ Azure 地圖服務 Web SDK 提供*服務模組*。 此模組是協助程式程�
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="使用服務模組" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>），請參閱<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>使用服務模組</a>的畫筆。
+CodePen 上的 Azure 地圖服務（），請參閱<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>使用服務模組</a>的畫筆 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
 </iframe>
 
 <br/>
@@ -169,7 +168,7 @@ Azure 地圖服務 Web SDK 提供*服務模組*。 此模組是協助程式程�
 
 Azure 地圖服務 Web SDK 支援 Azure Government 雲端。 所有用來存取 Azure 地圖服務 Web SDK 的 JavaScript 和 CSS Url 都會維持不變，不過必須完成下列工作，才能連接到 Azure 地圖服務平臺的 Azure Government 雲端版本。
 
-使用互動式地圖控制項時，請在建立`Map`類別的實例之前，加入下列程式程式碼。 
+使用互動式地圖控制項時，請在建立類別的實例之前，加入下列程式程式碼 `Map` 。 
 
 ```javascript
 atlas.setDomain('atlas.azure.us');
@@ -177,13 +176,13 @@ atlas.setDomain('atlas.azure.us');
 
 驗證對應和服務時，請務必使用來自 Azure Government 雲端平臺的 Azure 地圖服務驗證詳細資料。
 
-使用服務模組時，必須在建立 API URL 端點的實例時設定服務的網域。 例如，下列程式碼會建立`SearchURL`類別的實例，並將該網域指向 Azure Government 雲端。
+使用服務模組時，必須在建立 API URL 端點的實例時設定服務的網域。 例如，下列程式碼會建立類別的實例 `SearchURL` ，並將該網域指向 Azure Government 雲端。
 
 ```javascript
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
-如果直接存取 Azure 地圖服務 REST 服務，請將 URL 網域變更為`atlas.azure.us`。 例如，如果使用搜尋 API 服務，請將 URL 網域從`https://atlas.microsoft.com/search/`變更為。 `https://atlas.azure.us/search/`
+如果直接存取 Azure 地圖服務 REST 服務，請將 URL 網域變更為 `atlas.azure.us` 。 例如，如果使用搜尋 API 服務，請將 URL 網域從變更 `https://atlas.microsoft.com/search/` 為 `https://atlas.azure.us/search/` 。
 
 ## <a name="next-steps"></a>後續步驟
 

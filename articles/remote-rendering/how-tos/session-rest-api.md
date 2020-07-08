@@ -6,17 +6,16 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681242"
 ---
 # <a name="use-the-session-management-rest-api"></a>使用工作階段管理 REST API
 
 若要使用 Azure 遠端呈現功能，您必須建立*會話*。 每個會話都會對應到在 Azure 中配置的虛擬機器（VM），並等待用戶端裝置連線。 當裝置連線時，VM 會呈現要求的資料，並將結果當做影片串流來提供。 在會話建立期間，您會選擇想要執行的伺服器類型，以決定定價。 當會話不再需要時，應該將它停止。 如果未手動停止，則會在會話的*租用時間*到期時自動關閉。
 
-我們在 [*腳本*] 資料夾的 [ [ARR 範例](https://github.com/Azure/azure-remote-rendering)] 存放庫中提供 PowerShell 腳本，稱為*RenderingSession*，其示範如何使用我們的服務。 這裡說明腳本及其設定：[範例 PowerShell 腳本](../samples/powershell-example-scripts.md)
+我們會在 [*腳本*] 資料夾的 [ [ARR 範例](https://github.com/Azure/azure-remote-rendering)] 存放庫中提供 PowerShell 腳本，稱為*RenderingSession.ps1*，以示範如何使用我們的服務。 這裡說明腳本及其設定：[範例 PowerShell 腳本](../samples/powershell-example-scripts.md)
 
 > [!TIP]
 > 此頁面上所列的 PowerShell 命令旨在彼此互補。 如果您在相同的 PowerShell 命令提示字元中依序執行所有腳本，它們會在彼此之上建立。
@@ -46,7 +45,7 @@ $accountKey = "*******************************************="
 
 ## <a name="common-request-headers"></a>常見的要求標頭
 
-* *Authorization*標頭的值必須是 "`Bearer TOKEN`"，其中 "`TOKEN`" 是[安全權杖服務所傳回](tokens.md)的驗證權杖。
+* *Authorization*標頭的值必須是 " `Bearer TOKEN` "，其中 " `TOKEN` " 是[安全權杖服務所傳回](tokens.md)的驗證權杖。
 
 ### <a name="example-script-request-a-token"></a>範例腳本：要求權杖
 
@@ -73,11 +72,11 @@ $token = $response.AccessToken;
 
 * maxLeaseTime （timespan）：將自動解除委任 VM 時的超時值
 * 模型（陣列）：要預先載入的資產容器 Url
-* 大小（字串）： VM 大小（**"standard"** 或 **"premium"**）。 請參閱特定的[VM 大小限制](../reference/limits.md#overall-number-of-polygons)。
+* 大小（字串）： VM 大小（**"standard"** 或 **"premium"**）。 請參閱特定的 [VM 大小限制](../reference/limits.md#overall-number-of-polygons)。
 
 **答案**
 
-| 狀態碼 | JSON 承載 | 評價 |
+| 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
 | 202 | -sessionId： GUID | 成功 |
 
@@ -134,9 +133,9 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 
 **答案**
 
-| 狀態碼 | JSON 承載 | 評價 |
+| 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
-| 200 | | 成功 |
+| 200 | | Success |
 
 ### <a name="example-script-update-a-session"></a>範例腳本：更新會話
 
@@ -170,7 +169,7 @@ RawContentLength  : 0
 
 **答案**
 
-| 狀態碼 | JSON 承載 | 評價 |
+| 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
 | 200 | -會話：會話屬性的陣列 | 如需會話屬性的說明，請參閱「取得會話屬性」一節。 |
 
@@ -213,7 +212,7 @@ RawContentLength  : 2
 
 **答案**
 
-| 狀態碼 | JSON 承載 | 評價 |
+| 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
 | 200 | -message：字串<br/>-sessionElapsedTime： timespan<br/>-sessionHostname：字串<br/>-sessionId：字串<br/>-sessionMaxLeaseTime： timespan<br/>-sessionSize： enum<br/>-sessionStatus： enum | 列舉 sessionStatus {開始、準備、停止、停止、過期、錯誤}<br/>如果狀態為「錯誤」或「已過期」，則訊息會包含詳細資訊 |
 
@@ -256,7 +255,7 @@ RawContentLength  : 60
 
 **答案**
 
-| 狀態碼 | JSON 承載 | 評價 |
+| 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
 | 204 | | 成功 |
 

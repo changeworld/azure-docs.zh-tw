@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672746"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理 VMware VM/實體伺服器嚴重損壞修復的設定伺服器
@@ -45,7 +44,7 @@ ms.locfileid: "80672746"
 
 您也可以透過 CSPSConfigtool.exe 來修改認證。
 
-1. 登入設定伺服器，並啟動 Cspsconfigtool.exe
+1. 登入設定伺服器並啟動 CSPSConfigtool.exe
 2. 選擇您要修改的帳戶類型，然後按一下 [編輯]****。
 3. 輸入已修改的認證，然後按一下 [確定]****
 
@@ -61,7 +60,7 @@ ms.locfileid: "80672746"
 
 您也可以透過 CSPSConfigtool.exe 來修改認證。
 
-1. 登入設定伺服器，並啟動 Cspsconfigtool.exe
+1. 登入設定伺服器並啟動 CSPSConfigtool.exe
 2. 選擇您想要修改的帳戶，然後按一下 [**編輯**]
 3. 輸入新的認證，然後按一下 [確定]****。
 
@@ -76,7 +75,7 @@ ms.locfileid: "80672746"
 
 您也可以透過 CSPSConfigtool.exe 來新增認證。
 
-1. 登入設定伺服器，並啟動 Cspsconfigtool.exe
+1. 登入設定伺服器並啟動 CSPSConfigtool.exe
 2. 按一下 [新增]****，輸入新的認證，然後按一下 [確定]****。
 
 ## <a name="modify-proxy-settings"></a>修改 Proxy 設定
@@ -107,7 +106,7 @@ ms.locfileid: "80672746"
 
 ### <a name="if-certificates-are-yet-to-expire"></a>如果憑證尚未過期
 
-1. 若要更新，請在保存庫中開啟**Site Recovery 基礎結構** > 設定**伺服器**]。 選取必要的設定伺服器。
+1. 若要更新，請在保存庫中開啟**Site Recovery 基礎結構**設定  >  **伺服器**]。 選取必要的設定伺服器。
 2. 確保所有元件相應放大進程伺服器、主要目標伺服器和所有受保護機器上的行動代理程式都是最新版本，且處於線上狀態。
 3. 現在，選取 [**更新憑證**]。
 4. 請仔細遵循此頁面上的指示，然後按一下 [確定] 以更新所選設定伺服器和其相關元件上的憑證。
@@ -125,12 +124,12 @@ ms.locfileid: "80672746"
 如果需要，您可以在同一個保存庫中註冊設定伺服器。 如果您除了在設定伺服器電腦上執行的預設處理伺服器之外，還有其他處理伺服器電腦，則請註冊這兩部電腦。
 
 
-1. 在保存庫中，開啟 [**管理** > **Site Recovery 基礎結構** > 設定**伺服器**]。
+1. 在保存庫中，開啟 [**管理**  >  **Site Recovery 基礎結構**設定  >  **伺服器**]。
 2. 在 [伺服器]**** 中，選取 [下載註冊金鑰]**** 以下載保存庫認證檔案。
 3. 登入設定伺服器電腦。
 4. 在 **%ProgramData%\ASR\home\svsystems\bin** 中，開啟 **cspsconfigtool.exe**。
 5. 在 [保存庫註冊]**** 索引標籤上，選取 [瀏覽]**** 並找出您下載的保存庫認證檔。
-6. 如果需要，請提供 Proxy 伺服器詳細資料。 然後選取 [**註冊**]。
+6. 如果需要，請提供 Proxy 伺服器詳細資料。 然後，選取 [註冊]。
 7. 開啟系統管理 PowerShell 命令視窗並執行下列命令：
    ```
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -138,7 +137,7 @@ ms.locfileid: "80672746"
    ```
 
     >[!NOTE]
-    >若要將**最新的憑證**從設定伺服器提取到相應放大進程伺服器，請執行命令*\<"安裝 Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>"--registermt*
+    >若要將**最新的憑證**從設定伺服器提取到相應放大進程伺服器，請執行命令 *" \<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe> "--registermt*
 
 8. 最後，執行下列命令以重新啟動 obengine。
    ```
@@ -178,7 +177,7 @@ ms.locfileid: "80672746"
 
 升級伺服器，如下所示：
 
-1. 在保存庫中，移至 [**管理** > **Site Recovery 基礎結構** > 設定**伺服器**]。
+1. 在保存庫中，移至 [**管理**  >  **Site Recovery 基礎結構**設定  >  **伺服器**]。
 2. 如果有可用的更新，[代理程式版本]**** > [資料行] 中會出現連結。
     ![更新](./media/vmware-azure-manage-configuration-server/update2.png)
 3. 將更新安裝程式檔案下載到組態伺服器上。
@@ -256,7 +255,7 @@ ProxyPassword="Password"
 1. 對組態伺服器下的所有 VM [停用保護](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)。
 2. 將設定伺服器的所有複寫原則[解除關聯](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)並[刪除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)。
 3. [刪除](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)與設定伺服器關聯的所有 vCenter 伺服器/vSphere 主機。
-4. 在保存庫中，開啟**Site Recovery 基礎結構** > 設定**伺服器**]。
+4. 在保存庫中，開啟**Site Recovery 基礎結構**設定  >  **伺服器**]。
 5. 選取您想要移除的設定伺服器。 然後在 [詳細資料]**** 頁面上選取 [刪除]****。
 
     ![刪除設定伺服器](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
@@ -266,7 +265,7 @@ ProxyPassword="Password"
 
 您可以選擇使用 PowerShell 來刪除設定伺服器。
 
-1. [安裝](https://docs.microsoft.com/powershell/azure/install-Az-ps) Azure PowerShell 模組。
+1. [安裝](https://docs.microsoft.com/powershell/azure/install-Az-ps)Azure PowerShell 模組。
 2. 使用以下命令登入您的 Azure 帳戶：
 
     `Connect-AzAccount`
@@ -298,10 +297,10 @@ ProxyPassword="Password"
 
 ## <a name="refresh-configuration-server"></a>重新整理組態伺服器
 
-1. 在 [Azure 入口網站中，流覽至 [復原**服務保存庫** > ] [**管理** > **VMware & 實體機器** > **伺服器**的**Site Recovery 基礎結構** > ]
+1. 在 [Azure 入口網站中，流覽至 [復原**服務保存庫**] [  >  **管理**  >  VMware & 實體機器設定**Site Recovery Infrastructure**  >  **For VMware & Physical machines**  >  **伺服器**的 Site Recovery 基礎結構]
 2. 按一下您想要重新整理的組態伺服器。
-3. 在具有所選設定伺服器詳細資料的 [分頁] 上，按一下 [**更多** > 重新整理**伺服器**]。
-4. 監視復原**服務保存庫** > **監視** > **Site Recovery 作業**底下的作業進度。
+3. 在具有所選設定伺服器詳細資料的 [分頁] 上，按一下 [**更多**重新整理  >  **伺服器**]。
+4. 監視復原**服務保存庫**  >  **監視**  >  **Site Recovery 作業**底下的作業進度。
 
 ## <a name="failback-requirements"></a>容錯回復需求
 

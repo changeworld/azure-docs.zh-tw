@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80755278"
 ---
 # <a name="conditional-access-users-and-groups"></a>條件式存取：使用者和群組
@@ -30,13 +29,13 @@ ms.locfileid: "80755278"
 
 建立條件式存取原則時，可以包含下列選項。
 
-- 無
+- None
    - 未選取任何使用者
 - 所有使用者
    - 存在於目錄中的所有使用者，包括 B2B 來賓。
 - 選取使用者和群組
    - 所有來賓和外部使用者
-      - 此選項包括任何 B2B 來賓和外部使用者，包括將屬性設定`user type`為`guest`的任何使用者。 此選項也適用于從不同組織（例如雲端解決方案提供者（CSP））登入的任何外部使用者。 
+      - 此選項包括任何 B2B 來賓和外部使用者，包括將 `user type` 屬性設定為的任何使用者 `guest` 。 此選項也適用于從不同組織（例如雲端解決方案提供者（CSP））登入的任何外部使用者。 
    - 目錄角色
       - 可讓系統管理員選取用來判斷指派的特定 Azure AD 目錄角色。 例如，組織可能會在指派全域管理員角色的使用者上建立限制更嚴格的原則。
    - 使用者和群組
@@ -52,7 +51,7 @@ ms.locfileid: "80755278"
 建立條件式存取原則時，有下列選項可供排除。
 
 - 所有來賓和外部使用者
-   - 此選項包括任何 B2B 來賓和外部使用者，包括將屬性設定`user type`為`guest`的任何使用者。 此選項也適用于從不同組織（例如雲端解決方案提供者（CSP））登入的任何外部使用者。 
+   - 此選項包括任何 B2B 來賓和外部使用者，包括將 `user type` 屬性設定為的任何使用者 `guest` 。 此選項也適用于從不同組織（例如雲端解決方案提供者（CSP））登入的任何外部使用者。 
 - 目錄角色
    - 可讓系統管理員選取用來判斷指派的特定 Azure AD 目錄角色。 例如，組織可能會在指派全域管理員角色的使用者上建立限制更嚴格的原則。
 - 使用者和群組
@@ -72,4 +71,4 @@ ms.locfileid: "80755278"
 
 - [條件式存取：雲端應用程式或動作](concept-conditional-access-cloud-apps.md)
 
-- [條件式存取的一般原則](concept-conditional-access-policy-common.md)
+- [條件式存取一般原則](concept-conditional-access-policy-common.md)

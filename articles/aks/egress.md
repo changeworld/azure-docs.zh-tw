@@ -6,10 +6,9 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80803377"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用適用於輸出流量的靜態公用 IP 位址
@@ -22,7 +21,7 @@ ms.locfileid: "80803377"
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-您也需要安裝並設定 Azure CLI 版本2.0.59 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="egress-traffic-overview"></a>輸出流量概觀
 
@@ -121,7 +120,7 @@ $ curl -s checkip.dyndns.org
 
 ## <a name="next-steps"></a>後續步驟
 
-若要避免在 Azure Load Balancer 上維護多個公用 IP 位址，您可以改用輸入控制器。 輸入控制器會提供 SSL/TLS 終止、支援 URI 重寫及上游 SSL/TLS 加密等其他權益。 如需詳細資訊，請參閱[在 AKS 中建立基本的輸入控制器][ingress-aks-cluster]。
+若要避免在 Azure Load Balancer 上維護多個公用 IP 位址，您可以改用輸入控制器。 輸入控制器會提供 SSL/TLS 終止、支援 URI 重寫及上游 SSL/TLS 加密等其他權益。 如需詳細資訊，請參閱[在 AKS 中建立基本的連入控制器][ingress-aks-cluster]。
 
 <!-- LINKS - internal -->
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create

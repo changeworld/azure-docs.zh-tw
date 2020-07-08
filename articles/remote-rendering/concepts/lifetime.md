@@ -6,10 +6,9 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: d031ff4a6ee86da2843f0f18ac428c50f7cfc121
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681866"
 ---
 # <a name="object-and-resource-lifetime"></a>物件和資源存留期
@@ -20,7 +19,7 @@ Azure 遠端呈現會區分兩種類型：**物件**和**資源**。
 
 *物件*會被視為使用者可以自行建立、修改和終結的專案。 物件可能會自由複製，而且每個實例都可以隨著時間改變。 因此，[實體](entities.md)和[元件](components.md)都是物件。
 
-物件的存留期完全在使用者控制之下。 不過，它並不會與用戶端標記法的存留期相關。 和`Entity` `Component`之類的`Destroy`類別具有函式，必須呼叫此函式來解除配置遠端轉譯主機上的物件。 此外， `Entity.Destroy()`會摧毀實體、其子系，以及該階層中的所有元件。
+物件的存留期完全在使用者控制之下。 不過，它並不會與用戶端標記法的存留期相關。 和之類 `Entity` 的類別具有函式 `Component` `Destroy` ，必須呼叫此函式來解除配置遠端轉譯主機上的物件。 此外， `Entity.Destroy()` 會摧毀實體、其子系，以及該階層中的所有元件。
 
 ## <a name="resource-lifetime"></a>資源存留期
 
@@ -32,7 +31,7 @@ Azure 遠端呈現會區分兩種類型：**物件**和**資源**。
 
 ### <a name="built-in-resources"></a>內建資源
 
-Azure 遠端呈現包含一些內建資源，可透過在呼叫期間預先填入其各自的`builtin://`識別碼來載入。 `AzureSession.Actions.LoadXYZAsync()` 可用的內建資源會列在每個個別功能的檔中。 例如，[[天空] 章節](../overview/features/sky.md)會列出內建的天空材質。
+Azure 遠端呈現包含一些內建資源，可透過在呼叫期間預先填入其各自的識別碼來載入 `builtin://` `AzureSession.Actions.LoadXYZAsync()` 。 可用的內建資源會列在每個個別功能的檔中。 例如，[[天空] 章節](../overview/features/sky.md)會列出內建的天空材質。
 
 ## <a name="general-lifetime"></a>一般存留期
 
@@ -43,5 +42,5 @@ Azure 遠端呈現包含一些內建資源，可透過在呼叫期間預先填�
 ## <a name="next-steps"></a>後續步驟
 
 * [實體](entities.md)
-* [元件](components.md)
+* [Components](components.md)
 * [模型](models.md)

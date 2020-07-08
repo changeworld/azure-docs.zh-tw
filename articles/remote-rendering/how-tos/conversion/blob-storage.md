@@ -6,10 +6,9 @@ ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681645"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>使用 Azure Blob 儲存體進行模型轉換
@@ -57,7 +56,7 @@ Azure 遠端轉譯需要從您的儲存體帳戶中取出模型資料，並將�
   - 以滑鼠右鍵按一下容器「取得共用存取簽章」（讀取、列出輸入容器的存取權、輸出容器的寫入權限）
 - Sdk （c #、Python ...）
 
-如需在資產轉換中使用共用存取簽章的範例，請見轉換. ps1 的[Powershell 範例腳本](../../samples/powershell-example-scripts.md#script-conversionps1)。
+如需在資產轉換中使用共用存取簽章的範例，請 Conversion.ps1 [Powershell 範例腳本](../../samples/powershell-example-scripts.md#script-conversionps1)中顯示。
 
 ## <a name="upload-an-input-model"></a>上傳輸入模型
 
@@ -70,7 +69,7 @@ Azure 遠端轉譯需要從您的儲存體帳戶中取出模型資料，並將�
 - [使用儲存體 SDK （Python、c # ...）](https://docs.microsoft.com/azure/storage/)
 - [使用 Azure 儲存體 REST Api](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
 
-如需如何上傳轉換的資料的範例，請參閱轉換. ps1 [Powershell 範例腳本](../../samples/powershell-example-scripts.md#script-conversionps1)。
+如需如何上傳資料以進行轉換的範例，請參閱[Powershell 範例腳本](../../samples/powershell-example-scripts.md#script-conversionps1)Conversion.ps1。
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>取得已轉換模型的 SAS URI
 

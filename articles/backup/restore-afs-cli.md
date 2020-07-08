@@ -4,10 +4,9 @@ description: 瞭解如何使用 Azure CLI 在復原服務保存庫中還原已�
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80757102"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>使用 Azure CLI 還原 Azure 檔案共用
@@ -27,7 +26,7 @@ Azure CLI 提供管理 Azure 資源的命令列體驗。 這是建立自訂自�
 
 若要在本機安裝和使用 CLI，您必須執行 Azure CLI 2.0.18 版或更新版本。 若要知道 CLI 版本，執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已經有 Azure 備份備份的 Azure 檔案共用。 如果您沒有帳戶，請參閱[使用 CLI 來備份 Azure 檔案共用](backup-afs-cli.md)，以設定檔案共用的備份。 在本文中，您會使用下列資源：
 
@@ -138,7 +137,7 @@ babeb61c-d73d-4b91-9830-b8bfa83c349a  azurefiles
 
 使用[az backup restore restore-azurefiles](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) Cmdlet 搭配還原模式設定為*originallocation* ，將特定檔案或資料夾還原至其原始位置。
 
-下列範例會還原其原始位置中的*RestoreTest* ： *azurefiles*檔案共用。
+下列範例會還原其原始位置中的*RestoreTest.txt*檔案： *azurefiles*檔案共用。
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
@@ -160,7 +159,7 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 * **--目標-** 檔案共用：目標儲存體帳戶內的檔案共用，備份的內容會還原到該檔案中。
 * **--target 資料夾**：要還原資料之檔案共用下的資料夾。 如果備份的內容要還原至根資料夾，請將目的檔案夾的值指定為空字串。
 
-下列範例會將*azurefiles*檔案共用中最初出現的*RestoreTest*還原至替代位置： *azurefiles1*檔案共用中裝載于*afaccount1*儲存體帳戶的*restoredata*資料夾。
+下列範例會將*azurefiles*檔案共用中最初出現的*RestoreTest.txt*檔案還原至替代位置： *afaccount1*儲存體帳戶所裝載之*azurefiles1*檔案共用中的*restoredata*資料夾。
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
@@ -178,7 +177,7 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 
 若要執行多個專案的還原，請將**來源檔案路徑**參數的值，傳遞為您想要還原之所有檔案或資料夾的以**空格分隔**的路徑。
 
-下列範例會在其原始位置還原 *.txt*和*AFS 測試報告 .docx*檔案。
+下列範例會將*Restore.txt*和*AFS 測試*還原到其原始位置 Report.docx檔案。
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932889937058317910 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore Test.txt" "AFS Testing Report.docx" --resolve-conflict overwrite  --out table

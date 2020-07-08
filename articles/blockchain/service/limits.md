@@ -5,10 +5,9 @@ ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80676525"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure 區塊鏈 Service 中的限制
@@ -22,7 +21,7 @@ Azure 區塊鏈 Service 具有服務和功能限制，例如成員可以擁有�
 | 定價層 | 交易節點數上限 | 驗證器節點上限 |
 |:---|:---:|:---:|
 | 基本 | 10 | 1 |
-| Standard | 10 | 2 |
+| 標準 | 10 | 2 |
 
 您的聯盟網路應該有至少兩個 Azure 區塊鏈 Service 標準層節點。 標準層節點包含兩個驗證程式節點。 需要四個驗證器節點，才能符合[伊斯坦布爾拜占庭容錯的共識](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)。
 

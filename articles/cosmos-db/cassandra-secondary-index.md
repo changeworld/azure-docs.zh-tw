@@ -8,10 +8,9 @@ ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
 ms.openlocfilehash: 7de38097acdbfa1f9c9b90f3051c68dec5465b32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80758023"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 中的次要索引
@@ -51,7 +50,7 @@ insert into sampleks.t1(user_id,lastname) values (8, 'Theo');
 insert into sampleks.t1(user_id,lastname) values (9, 'jagan');
 ```
 
-如果您嘗試執行下列語句，將會遇到一個錯誤，要求您使用`ALLOW FILTERING`： 
+如果您嘗試執行下列語句，將會遇到一個錯誤，要求您使用 `ALLOW FILTERING` ： 
 
 ```shell
 select user_id, lastname from sampleks.t1 where lastname='nishu';
@@ -62,10 +61,10 @@ select user_id, lastname from sampleks.t1 where lastname='nishu';
 ```shell
 CREATE INDEX ON sampleks.t1 (lastname);
 ```
-在 "lastname" 欄位上建立索引之後，您現在可以成功執行先前的查詢。 使用 Azure Cosmos DB 中的 Cassandra API 時，您不需要提供索引名稱。 使用格式`tablename_columnname_idx`的預設索引。 例如， ` t1_lastname_idx`是上一個資料表的索引名稱。
+在 "lastname" 欄位上建立索引之後，您現在可以成功執行先前的查詢。 使用 Azure Cosmos DB 中的 Cassandra API 時，您不需要提供索引名稱。 使用格式的預設索引 `tablename_columnname_idx` 。 例如， ` t1_lastname_idx` 是上一個資料表的索引名稱。
 
 ## <a name="dropping-the-index"></a>卸載索引 
-您必須知道要卸載索引的索引名稱。 執行`desc schema`命令以取得資料表的描述。 此命令的輸出包含格式`CREATE INDEX tablename_columnname_idx ON keyspacename.tablename(columnname)`的索引名稱。 接著，您可以使用索引名稱來卸載索引，如下列範例所示：
+您必須知道要卸載索引的索引名稱。 執行 `desc schema` 命令以取得資料表的描述。 此命令的輸出包含格式的索引名稱 `CREATE INDEX tablename_columnname_idx ON keyspacename.tablename(columnname)` 。 接著，您可以使用索引名稱來卸載索引，如下列範例所示：
 
 ```shell
 drop index sampleks.t1_lastname_idx;
@@ -73,4 +72,4 @@ drop index sampleks.t1_lastname_idx;
 
 ## <a name="next-steps"></a>後續步驟
 * 瞭解[自動編制索引](index-overview.md)在 Azure Cosmos DB 中的運作方式
-* [Azure Cosmos DB 所支援的 Apache Cassandra 功能 Cassandra API](cassandra-support.md)
+* [Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能](cassandra-support.md)

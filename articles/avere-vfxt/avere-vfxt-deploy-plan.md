@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80754386"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>規劃您的 Avere vFXT 系統
@@ -71,12 +70,12 @@ ms.locfileid: "80754386"
 
   如果您想要使用已經存在的資源，請確定它們符合此表中的需求。
 
-  | 資源 | 使用現有的？ | 需求 |
+  | 資源 | 使用現有的？ | 規格需求 |
   |----------|-----------|----------|
   | 資源群組 | 是，如果是空的 | 必須是空的|
   | 儲存體帳戶 | **是**，如果在叢集建立後連接現有的 Blob 容器 <br/>  **否**，如果在叢集建立期間建立新的 Blob 容器 | 現有的 Blob 容器必須是空的 <br/> &nbsp; |
   | 虛擬網路 | 是 | 如果要建立新的 Azure Blob 容器，必須包含儲存體服務端點 |
-  | 子網路 | 是 | 不能包含其他資源 |
+  | 子網路 | Yes | 不能包含其他資源 |
 
 ## <a name="ip-address-requirements"></a>IP 位址需求
 

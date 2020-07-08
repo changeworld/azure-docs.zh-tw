@@ -6,20 +6,19 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 1d9b2ca163b70435a6c0e245e66492e8e2866639
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80680020"
 ---
 # <a name="texconv---texture-conversion-tool"></a>TexConv-材質轉換工具
 
 TexConv 是一種命令列工具，可將材質從一般的輸入格式（例如 PNG、TGA、JPEG 和 DDS）處理成適用于執行時間耗用量的優化格式。
-雖然最常見的案例是將單一輸入檔案轉換`A.xxx`成優化格式`B.yyy`，但此工具還有許多其他選項可供 advanced 使用。
+雖然最常見的案例是將單一輸入檔案轉換 `A.xxx` 成優化格式，但 `B.yyy` 此工具還有許多其他選項可供 advanced 使用。
 
 ## <a name="command-line-help"></a>命令列說明
 
-使用參數執行 TexConv 將會`--help`列出所有可用的選項。 此外，TexConv 會在執行時列印使用的選項，以協助您瞭解它正在執行的作業。 請參閱此輸出以取得詳細資料。
+使用參數執行 TexConv.exe `--help` 將會列出所有可用的選項。 此外，TexConv 會在執行時列印使用的選項，以協助您瞭解它正在執行的作業。 請參閱此輸出以取得詳細資料。
 
 ## <a name="general-usage"></a>一般使用方式
 
@@ -37,13 +36,13 @@ TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 
 ## <a name="multiple-input-files"></a>多個輸入檔案
 
-若要組合多個輸入檔案的輸出，請使用`-in`選項加上遞增的數目來指定每個輸入檔：
+若要組合多個輸入檔案的輸出，請使用選項加上遞增的數目來指定每個輸入檔 `-in` ：
 
 ```cmd
 -in0 D:/img0.jpg -in1 D:/img1.jpg -in2 D:/img2.jpg ...
 ```
 
-`-right`從2d 材質組合立方體貼圖時，您也可以使用、 `-left`、 `-top`、 `-bottom` `-front`、 `-back`或`-px`、 `-nx`、 `-py` `-ny`、、 `-pz`、。 `-nz`
+從2d 材質組合立方體貼圖時，您也可以使用 `-right` 、 `-left` 、、 `-top` 、 `-bottom` `-front` `-back` 或 `-px` 、、、 `-nx` 、 `-py` `-ny` `-pz` 、 `-nz` 。
 
 若要將這些輸入對應至輸出檔，則需要適當的通道對應。
 
@@ -67,7 +66,7 @@ TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 
 下列是可用的通道對應選項：
 
-- `-r`、 `-g`、 `-b`、 `-a` ：這些會指定單一通道指派
+- `-r`、 `-g` 、 `-b` 、 `-a` ：這些會指定單一通道指派
 - `-rg`：指定紅色和綠色的通道指派。
 - `-rgb`：指定紅色、綠色和藍色的通道指派。
 - `-rgba`：指定全部四個通道指派。
@@ -89,7 +88,7 @@ TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 
 ## <a name="common-options"></a>一般選項
 
-最有趣的選項如下所示。 會列出更多選項`TexConv --help`。
+最有趣的選項如下所示。 會列出更多選項 `TexConv --help` 。
 
 ### <a name="output-type"></a>輸出類型
 

@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
 ms.openlocfilehash: 831baabcc26130d9b2c730afd85f2ed4b3842690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80756350"
 ---
 # <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>從 Microsoft Defender Advanced 威脅防護連接警示 
@@ -32,7 +31,7 @@ ms.locfileid: "80756350"
 
 [Microsoft Defender Advanced 威脅防護](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)連接器可讓您將來自 Microsoft Defender Advanced 威脅防護的警示串流至 Azure Sentinel。 這可讓您更全面地分析整個組織的安全性事件，並建立有效且立即回應的快速手冊。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 如[設定 Microsoft DEFENDER ATP 部署](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)中所述，您必須擁有 Microsoft Defender Advanced 威脅防護的有效授權。 
 - 您必須是 Azure Sentinel 租使用者的系統管理員或安全性系統管理員。

@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7f2b1031659864ae338bb0aa320c048ea23c21f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681697"
 ---
 # <a name="rendering-modes"></a>轉譯模式
@@ -38,7 +37,7 @@ ms.locfileid: "80681697"
 
 每個單一 GPU 都會使用 MSAA 來消除本機內容。 不過，不同 Gpu 的邊緣之間可能會有固有的別名。 這種效果是藉由後處理最後一個影像來減輕的，但是 MSAA 品質仍然比**TileBasedComposition**模式更糟。
 
-下圖說明 MSAA 成品： ![DepthBasedComposition 中的 msaa](./media/service-render-mode-balanced.png)
+下圖說明 MSAA 成品： ![ DepthBasedComposition 中的 msaa](./media/service-render-mode-balanced.png)
 
 Sculpture 與揭開之間的消除鋸齒功能正常運作，因為這兩個元件都是在相同的 GPU 上轉譯。 另一方面，揭開和牆之間的邊緣會顯示一些別名，因為這兩個部分是由不同的 Gpu 所組成。
 
@@ -50,7 +49,7 @@ Sculpture 與揭開之間的消除鋸齒功能正常運作，因為這兩個元�
 
 ## <a name="setting-the-render-mode"></a>設定轉譯模式
 
-遠端呈現 VM 上所使用的轉譯模式是透過在`AzureSession.ConnectToRuntime`期間指定`ConnectToRuntimeParams`。
+遠端呈現 VM 上所使用的轉譯模式是透過在期間指定 `AzureSession.ConnectToRuntime` `ConnectToRuntimeParams` 。
 
 ```cs
 async void ExampleConnect(AzureSession session)
