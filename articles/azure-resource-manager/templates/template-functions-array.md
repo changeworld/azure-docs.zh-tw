@@ -3,12 +3,11 @@ title: 範本函式-陣列
 description: 描述要在 Azure Resource Manager 範本中用來處理陣列的函式。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: f34ba74847ac394e37e6ef33f859304128daacde
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 4d4ee96888aee5421d88b5371ac25a69c0af4fd7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203806"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677843"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM 範本的陣列函式
 
@@ -16,19 +15,19 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 * [array](#array)
 * [concat](#concat)
-* [包含](#contains)
+* [contains](#contains)
 * [createArray](#createarray)
 * [empty](#empty)
-* [頭](#first)
-* [處](#intersection)
-* [次](#last)
+* [first](#first)
+* [intersection](#intersection)
+* [last](#last)
 * [length](#length)
 * [max](#max)
-* [分鐘](#min)
-* [格或](#range)
-* [過](#skip)
-* [採取](#take)
-* [並](#union)
+* [min](#min)
+* [range](#range)
+* [skip](#skip)
+* [take](#take)
+* [union](#union)
 
 若要取得以值分隔的字串值陣列，請參閱 [分割](template-functions-string.md#split)。
 
@@ -40,9 +39,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| convertToArray |是 |整數、字串、陣列或物件 |要轉換為陣列的值。 |
+| convertToArray |Yes |整數、字串、陣列或物件 |要轉換為陣列的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -54,7 +53,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "intToConvert": {
@@ -93,7 +92,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| intOutput | Array | [1] |
+| intOutput | Array |  [1] |
 | stringOutput | Array | ["efgh"] |
 | objectOutput | Array | [{"a": "b", "c": "d"}] |
 
@@ -105,9 +104,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |陣列或字串 |串連的第一個陣列或字串。 |
+| arg1 |Yes |陣列或字串 |串連的第一個陣列或字串。 |
 | 其他引數 |否 |陣列或字串 |串連的其他陣列或字串 (循序順序)。 |
 
 此函式可以接受任意數目的引數，並且可針對參數接受字串或陣列。 不過，您無法同時為參數提供陣列和字串。 陣列只會與其他陣列串連。
@@ -122,7 +121,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstArray": {
@@ -163,7 +162,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "prefix": {
@@ -185,9 +184,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| concatOutput | 字串 | prefix-5yj4yjf5mbg72 |
+| concatOutput | String | prefix-5yj4yjf5mbg72 |
 
-## <a name="contains"></a>contains
+## <a name="contains"></a>包含
 
 `contains(container, itemToFind)`
 
@@ -195,10 +194,10 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| 容器 |是 |陣列、物件或字串 |其中包含要尋找之值的值。 |
-| itemToFind |是 |字串或整數 |要尋找的值。 |
+| 容器 |Yes |陣列、物件或字串 |其中包含要尋找之值的值。 |
+| itemToFind |Yes |字串或整數 |要尋找的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -210,7 +209,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -276,9 +275,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |字串、整數、陣列或物件 |陣列中的第一個值。 |
+| arg1 |Yes |字串、整數、陣列或物件 |陣列中的第一個值。 |
 | 其他引數 |否 |字串、整數、陣列或物件 |陣列中的其他值。 |
 
 ### <a name="return-value"></a>傳回值
@@ -291,7 +290,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "objectToTest": {
@@ -343,9 +342,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |是 |陣列、物件或字串 |要檢查其是否為空白的值。 |
+| itemToTest |Yes |陣列、物件或字串 |要檢查其是否為空白的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -357,7 +356,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -408,9 +407,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |陣列或字串 |要擷取其第一個元素或字元的值。 |
+| arg1 |Yes |陣列或字串 |要擷取其第一個元素或字元的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -422,7 +421,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -449,8 +448,8 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | 字串 | one |
-| stringOutput | 字串 | O |
+| arrayOutput | String | one |
+| stringOutput | String | O |
 
 ## <a name="intersection"></a>交集
 
@@ -460,7 +459,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或物件 |要用來尋找共同元素的第一個值。 |
 | arg2 |是 |陣列或物件 |要用來尋找共同元素的第二個值。 |
@@ -476,7 +475,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {
@@ -526,9 +525,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |陣列或字串 |要擷取其最後一個元素或字元的值。 |
+| arg1 |Yes |陣列或字串 |要擷取其最後一個元素或字元的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -540,7 +539,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -567,8 +566,8 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | 字串 | three |
-| stringOutput | 字串 | e |
+| arrayOutput | String | three |
+| stringOutput | String | e |
 
 ## <a name="length"></a>長度
 
@@ -578,9 +577,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |陣列、字串或物件 |要用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
+| arg1 |Yes |陣列、字串或物件 |要用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -592,7 +591,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -665,9 +664,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |整數的陣列，或以逗號分隔的整數清單 |要用來取得最大值的集合。 |
+| arg1 |Yes |整數的陣列，或以逗號分隔的整數清單 |要用來取得最大值的集合。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -679,7 +678,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -708,7 +707,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
 
-## <a name="min"></a>Min
+## <a name="min"></a>分鐘
 
 `min(arg1)`
 
@@ -716,9 +715,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |整數的陣列，或以逗號分隔的整數清單 |要用來取得最小值的集合。 |
+| arg1 |Yes |整數的陣列，或以逗號分隔的整數清單 |要用來取得最小值的集合。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -730,7 +729,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -767,9 +766,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| startIndex |是 |int |陣列中的第一個整數。 StartIndex 和計數的總和不得大於2147483647。 |
+| startIndex |Yes |int |陣列中的第一個整數。 StartIndex 和計數的總和不得大於2147483647。 |
 | count |是 |int |陣列中的整數數目。 必須是最多10000的非負整數。 |
 
 ### <a name="return-value"></a>傳回值
@@ -782,7 +781,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "startingInt": {
@@ -818,10 +817,10 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| originalValue |是 |陣列或字串 |要用於略過的陣列或字串。 |
-| numberToSkip |是 |int |要略過的元素或字元數。 如果此值為 0 或更小的值，則會傳回值內的所有元素或字元。 如果此值大於陣列或字串的長度，則會傳回空白陣列或字串。 |
+| originalValue |Yes |陣列或字串 |要用於略過的陣列或字串。 |
+| numberToSkip |Yes |int |要略過的元素或字元數。 如果此值為 0 或更小的值，則會傳回值內的所有元素或字元。 如果此值大於陣列或字串的長度，則會傳回空白陣列或字串。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -833,7 +832,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -876,7 +875,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | 字串 | two three |
+| stringOutput | String | two three |
 
 ## <a name="take"></a>take
 
@@ -886,10 +885,10 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| originalValue |是 |陣列或字串 |要從其中擷取元素的陣列或字串。 |
-| numberToTake |是 |int |要擷取的元素或字元數。 如果此值為 0 或更小的值，則會傳回空白陣列或字串。 如果此值大於給定陣列或字串的長度，則會傳回陣列或字串中的所有元素。 |
+| originalValue |Yes |陣列或字串 |要從其中擷取元素的陣列或字串。 |
+| numberToTake |Yes |int |要擷取的元素或字元數。 如果此值為 0 或更小的值，則會傳回空白陣列或字串。 如果此值大於給定陣列或字串的長度，則會傳回陣列或字串中的所有元素。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -901,7 +900,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -944,7 +943,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | 字串 | on |
+| stringOutput | String | on |
 
 ## <a name="union"></a>union
 
@@ -954,7 +953,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或物件 |用來聯結元素的第一個值。 |
 | arg2 |是 |陣列或物件 |用來聯結元素的第二個值。 |
@@ -970,7 +969,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {

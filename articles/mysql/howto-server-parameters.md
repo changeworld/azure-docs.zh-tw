@@ -5,19 +5,18 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/16/2020
-ms.openlocfilehash: bd0a867cce9b2a9ad793b491b9042034ef5810f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 6/11/2020
+ms.openlocfilehash: ba473942eea35ebcd5991b9b0dee4138d4963e16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605161"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099132"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 入口網站，在適用於 MySQL 的 Azure 資料庫中設定伺服器參數
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>使用 Azure 入口網站在適用於 MySQL 的 Azure 資料庫中設定伺服器參數
 
 MySQL 的 Azure 資料庫支援某些伺服器參數的組態。 本文說明如何使用 Azure 入口網站來設定這些參數。 並非所有伺服器參數皆可調整。
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>瀏覽至 Azure 入口網站上的伺服器參數
+## <a name="configure-server-parameters"></a>設定伺服器參數
 
 1. 登入 Azure 入口網站，然後找到適用於 MySQL 的 Azure 資料庫伺服器。
 2. 在 [設定]**** 區段下方，按一下 [伺服器參數]**** 以開啟適用於 MySQL 伺服器的 Azure 資料庫的 [伺服器參數] 頁面。
@@ -29,41 +28,16 @@ MySQL 的 Azure 資料庫支援某些伺服器參數的組態。 本文說明如
 5. 儲存新的參數值後，隨時可以選取 [全部重設為預設值]**** 回復為所有參數的預設值。
 ![全部重設為預設值](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>可設定的伺服器參數清單
+## <a name="setting-parameters-not-listed"></a>設定未列出的參數
 
-支援的伺服器參數清單會不斷成長。 使用 Azure 入口網站中的 [伺服器參數] 索引標籤，即可根據您的應用程式需求取得定義及設定伺服器參數。
+如果 Azure 入口網站中未列出您要更新的伺服器參數，您可以選擇性地使用，在連接層級設定參數 `init_connect` 。 這會為每個連接到伺服器的用戶端設定伺服器參數。 
 
-## <a name="non-configurable-server-parameters"></a>無法設定的伺服器參數
+1. 在 [設定]**** 區段下方，按一下 [伺服器參數]**** 以開啟適用於 MariaDB 的 Azure 資料庫伺服器的 [伺服器參數] 頁面。
+2. 搜尋`init_connect`
+3. 以下列格式加入伺服器參數：中的 [值] 資料 `SET parameter_name=YOUR_DESIRED_VALUE` 行。
 
-InnoDB 緩衝集區大小無法設定並系結至您的[定價層](concepts-service-tiers.md)。
-
-|定價層 |**虛擬核心**|**InnoDB 緩衝集區大小（MB <br>）（最多支援 4 TB 儲存體的伺服器）**| **InnoDB 緩衝集區大小（MB <br>）（最多支援 16 TB 儲存體的伺服器）**|
-|:---|---:|---:|---:|
-|基本| 1| 832| |
-|基本| 2| 2560| |
-|一般用途| 2| 3584| 7168|
-|一般用途| 4| 7680| 15360|
-|一般用途| 8| 15360| 30720|
-|一般用途| 16| 31232| 62464|
-|一般用途| 32| 62976| 125952|
-|一般用途| 64| 125952| 251904|
-|記憶體最佳化| 2| 7168| 14336|
-|記憶體最佳化| 4| 15360| 30720|
-|記憶體最佳化| 8| 30720| 61440|
-|記憶體最佳化| 16| 62464| 124928|
-|記憶體最佳化| 32| 125952| 251904|
-
-這些額外的伺服器參數皆無法在系統中設定：
-
-|**參數**|**固定值**|
-| :------------------------ | :-------- |
-|基本層中的 innodb_file_per_table|OFF|
-|innodb_flush_log_at_trx_commit|1|
-|sync_binlog|1|
-|innodb_log_file_size|256MB|
-|innodb_log_files_in_group|2|
-
-未列在此的其他伺服器參數會設定為其在 MySQL [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) 版中的現成可用預設值。
+    例如，您可以將設定為，以變更伺服器的字元集。 `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
+4. 按一下 [確定] 儲存變更。
 
 ## <a name="working-with-the-time-zone-parameter"></a>使用時區參數
 
@@ -79,7 +53,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> 您應該重新開機伺服器，以確保正確填入時區資料表。 若要重新開機伺服器，請使用[Azure 入口網站](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
+> 建議重新開機伺服器，以確保正確填入時區資料表。 若要重新開機伺服器，請使用 [Azure 入口網站](howto-restart-server-portal.md)或 [CLI](howto-restart-server-cli.md)。
 
 若要檢視可用的時區值，請執行以下命令：
 

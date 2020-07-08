@@ -3,12 +3,11 @@ title: 範本函式-部署
 description: 描述 Azure Resource Manager 範本中用來擷取部署資訊的函式。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a52b4eae9df4ad3fdf9e481ee0a40aac48f6665b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203789"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677809"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 範本的部署功能
 
@@ -16,7 +15,7 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 
 * [部署](#deployment)
 * [環境](#environment)
-* [參數](#parameters)
+* [parameters](#parameters)
 * [變數](#variables)
 
 若要從資源、資源群組或訂用帳戶中取得值，請參閱 [資源函式](template-functions-resource.md)。
@@ -82,7 +81,7 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 }
 ```
 
-當您部署至 Azure 訂用帳戶、管理群組或租使用者時，傳回物件會`location`包含屬性。 部署本機範本或外部範本時，包含 location 屬性。 其格式為：
+當您部署至 Azure 訂用帳戶、管理群組或租使用者時，傳回物件會包含 `location` 屬性。 部署本機範本或外部範本時，包含 location 屬性。 其格式為：
 
 ```json
 {
@@ -108,10 +107,10 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 您可以上層範本的 URI 作為基礎，使用部署() 連結至另一個範本。
 
 ```json
-"variables": {  
-    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
+"variables": {
+    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
 }
-```  
+```
 
 如果您在入口網站中重新部署部署歷程記錄中的範本，此範本會部署為本機檔案。 `templateLink` 屬性不會在部署函式中傳回。 如果您的範本依賴 `templateLink` 來建構另一個範本的連結，請勿使用入口網站來重新部署。 請改用您原先用來部署範本的命令。
 
@@ -121,7 +120,7 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -140,7 +139,7 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
   "name": "deployment",
   "properties": {
     "template": {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "resources": [],
       "outputs": {
@@ -277,7 +276,7 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 一般而言，您可以使用參數來設定資源的值。 下列範例會將網站的名稱設定為部署期間所傳入的參數值。
 
 ```json
-"parameters": { 
+"parameters": {
   "siteName": {
       "type": "string"
   }
@@ -298,7 +297,7 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringParameter": {
@@ -353,11 +352,11 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| stringOutput | 字串 | 選項 1 |
+| stringOutput | String | 選項 1 |
 | intOutput | Int | 1 |
 | objectOutput | Object | {"one": "a", "two": "b"} |
 | arrayOutput | Array | [1, 2, 3] |
-| crossOutput | 字串 | 選項 1 |
+| crossOutput | String | 選項 1 |
 
 如需使用參數的詳細資訊，請參閱[Azure Resource Manager 範本中的參數](template-parameters.md)。
 
@@ -369,9 +368,9 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| variableName |是 |String |要傳回的變數名稱。 |
+| variableName |Yes |String |要傳回的變數名稱。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -407,7 +406,7 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {},
     "variables": {
@@ -445,9 +444,9 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| exampleOutput1 | 字串 | myVariable |
+| exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |
-| exampleOutput3 | 字串 | myVariable |
+| exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
 如需使用變數的詳細資訊，請參閱[Azure Resource Manager 範本中的變數](template-variables.md)。

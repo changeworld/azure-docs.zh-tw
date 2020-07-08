@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 0d16a2fa91b498888ae5dafd1b254b51eca94ebc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801405"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>商業市集的潛在客戶管理
 
@@ -91,7 +90,7 @@ ms.locfileid: "83798579"
 **我是否必須設定潛在客戶目的地，才能在 Marketplace 上發佈供應項目？**
 
 是，如果您要發佈「連絡我 SaaS 應用程式」或「諮詢服務」。  
- 
+
 **如何確認潛在客戶設定是否正確？**
 
 設定好您的供應項目和潛在客戶目的地之後，請發佈您的供應項目。 在潛在客戶驗證步驟中，Marketplace 會將測試潛在客戶傳送至您在供應項目中設定的潛在客戶目的地。 
@@ -100,6 +99,7 @@ ms.locfileid: "83798579"
 
 在您的潛在客戶目的地中搜尋「MSFT_TEST」，以下是測試潛在客戶的範例資料： 
 
+```text
 company = MSFT_TEST_636573304831318844 
 
 country = US 
@@ -123,57 +123,43 @@ oid = 00Do0000000ZHog
 phone = 1234567890 
 
 title = MSFT_TEST_636573304831318844 
+```
 
 **我有上線的供應項目，但我沒看到任何潛在客戶？**
 
-每位潛在客戶都會將資料傳入所選潛在客戶目的地中的欄位，潛在客戶會以下列格式顯示：**來源動作|供應項目** 
+每位潛在客戶都會將資料傳入所選潛在客戶目的地中的欄位，潛在客戶會以下列格式顯示：**來源動作|供應項目**
 
-  來源：
+- 來源：
+  - AzureMarketplace
+  - AzurePortal
+  - 試用  
+  - SPZA （AppSource 的縮寫）
 
-    "AzureMarketplace", 
-    "AzurePortal", 
-    "TestDrive",  
-    "SPZA" (acronym for AppSource) 
+- 動作：
+  - "INS"-代表安裝。 這代表客戶在 Azure Marketplace 或 AppSource按下按鈕，取得您的產品。
+  - 「PLT」-代表合作夥伴 Led 試用版。 這代表客戶在 AppSource 按下「與我連絡」按鈕。
+  - 「DNC」-代表「不要聯絡」。 這代表在 AppSource，交叉列於您的應用程式頁面的合作夥伴，收到連絡要求。 我們分享此客戶交叉列於您的應用程式的通知，但無須連絡他們。
+  - 「建立」-這僅在 Azure 入口網站內，而且客戶會在其帳戶中購買您的供應專案。
+  - "StartTestDrive"-這僅適用于試用產品，而且是客戶啟動其試用產品的時候。
 
-  動作：
+- 供應項目：
+  - 「檢查點 r77-10sg-byol」，
+  - "bitnami. openedxcypress"，
+  - "docusign. 3701c77e-1cfa-4c56-91e6-3ed0b622145a"
 
-    "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
-    "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
+*以下是客戶資訊的範例資料*
 
-    "DNC" - Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
-
-    "Create" - This is inside Azure portal only and is whenever a customer purchases your offer to their account. 
-
-    "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
-
-
-  供應項目：
-
-    "checkpoint.check-point-r77-10sg-byol", 
-    "bitnami.openedxcypress", 
-    "docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a" 
-
- 
-
-  *以下是客戶資訊的範例資料*
-
-    { 
-
-    "FirstName":"John", 
-
-    "LastName":"Smith", 
-
-    "Email":"jsmith@microsoft.com", 
-
-    "Phone":"1234567890", 
-
-    "Country":"US", 
-
-    "Company":"Microsoft", 
-
-    "Title":"CTO" 
-
-    } 
+```json
+{ 
+"FirstName":"John",
+"LastName":"Smith",
+"Email":"jsmith@microsoft.com",
+"Phone":"1234567890",
+"Country":"US",
+"Company":"Microsoft",
+"Title":"CTO"
+}
+```
 
 請在[潛在客戶資訊](./partner-center-portal/commercial-marketplace-get-customer-leads.md)下深入了解。 
 

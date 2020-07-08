@@ -1,5 +1,5 @@
 ---
-title: 在定型執行中使用秘密
+title: 訓練中的驗證秘密
 titleSuffix: Azure Machine Learning
 description: 使用工作區 Key Vault 以安全的方式將秘密傳遞至定型執行
 services: machine-learning
@@ -8,16 +8,15 @@ ms.author: roastala
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: d877794abf12b8b412cd1ecf4efd72fd1179d768
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8fefeb162dd6f036c21485715dd680972823fbaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942254"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677470"
 ---
-# <a name="use-secrets-in-training-runs"></a>在定型執行中使用秘密
+# <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>在 Azure Machine Learning 訓練執行中使用驗證認證秘密
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本文中，您將瞭解如何安全地在定型執行中使用秘密。 您的使用者名稱和密碼等驗證資訊都是秘密。 例如，如果您連接到外部資料庫以查詢定型資料，則必須將您的使用者名稱和密碼傳遞至遠端執行內容。 以純文字將這類值編碼成定型腳本並不安全，因為它會公開秘密。 
@@ -32,7 +31,7 @@ ms.locfileid: "78942254"
 
 ## <a name="set-secrets"></a>設定秘密
 
-在 Azure Machine Learning 中， [Keyvault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py)類別包含用來設定密碼的方法。 在您的本機 Python 會話中，先取得 Key Vault 的工作區參考，然後使用[`set_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secret-name--value-)方法，依名稱和值來設定密碼。 如果名稱已存在，則__set_secret__方法會更新密碼值。
+在 Azure Machine Learning 中， [Keyvault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py)類別包含用來設定密碼的方法。 在您的本機 Python 會話中，先取得 Key Vault 的工作區參考，然後使用 [`set_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secret-name--value-) 方法，依名稱和值來設定密碼。 如果名稱已存在，則__set_secret__方法會更新密碼值。
 
 ```python
 from azureml.core import Workspace
@@ -48,13 +47,13 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 
 請勿將秘密值放在 Python 程式碼中，因為以純文字形式將它儲存在檔案中並不安全。 相反地，從環境變數取得秘密值，例如 Azure DevOps 組建密碼，或從互動式使用者輸入。
 
-您可以使用[`list_secrets()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#list-secrets--)方法列出秘密名稱，另外還有一個批次版本[set_secrets （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secrets-secrets-batch-) ，可讓您一次設定多個密碼。
+您可以使用方法列出秘密名稱 [`list_secrets()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#list-secrets--) ，另外還有一個批次版本[set_secrets （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secrets-secrets-batch-) ，可讓您一次設定多個密碼。
 
 ## <a name="get-secrets"></a>取得密碼
 
-在您的本機程式碼中，您[`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-)可以使用方法，依名稱取得密碼值。
+在您的本機程式碼中，您可以使用 [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) 方法，依名稱取得密碼值。
 
-若為已提交[`Experiment.submit`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-)的回合， [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-)請搭配[`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)類別使用方法。 因為已提交的執行會感知其工作區，所以此方法會將工作區具現化的快捷方式，並直接傳回秘密值。
+若為已提交的回合 [`Experiment.submit`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-) ，請搭配 [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-) 類別使用方法 [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) 。 因為已提交的執行會感知其工作區，所以此方法會將工作區具現化的快捷方式，並直接傳回秘密值。
 
 ```python
 # Code in submitted run

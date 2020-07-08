@@ -1,6 +1,6 @@
 ---
 title: 將資料移至 SQL Server 虛擬機器 - Team Data Science Process
-description: 從一般檔案或內部部署的 SQL Server 移動資料至 Azure VM 上的 SQL Server
+description: 將資料從一般檔案或內部部署 SQL Server 移至 Azure VM 上的 SQL Server。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: be1abe415955b52cbd639faef703e5c2fbd257b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194376"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>移動資料至 Azure 虛擬機器上的 SQL Server
 
@@ -41,7 +40,7 @@ ms.locfileid: "76721365"
 ## <a name="prerequisites"></a><a name="prereqs"></a>必要條件
 本教學課程假設您有：
 
-* **Azure 訂**用帳戶。 如果您沒有訂用帳戶，可以註冊[免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**。 如果您沒有訂用帳戶，可以註冊[免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure 儲存體帳戶**。 在本教學課程中，您將使用 Azure 儲存體帳戶來儲存資料。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文。 建立儲存體帳戶之後，您必須取得用來存取儲存體的帳戶金鑰。 請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
 * 已佈建 **Azure VM 上的 SQL Server**。 如需指示，請參閱 [將 Azure SQL Server 虛擬機器設定為 IPython Notebook 伺服器供進階分析使用](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)。
 * 已在本機上安裝和設定 **Azure PowerShell** 。 如需指示，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
@@ -174,12 +173,12 @@ SSIS 適用於兩種 Studio 環境。 如需詳細資料，請參閱 [Integratio
 我們會在下面說明每個選項：
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>將 SQL Server Database 部署到 Microsoft Azure VM 精靈
-**將 SQL Server Database 部署到 Microsoft Azure VM 精靈** 是簡單且建議的方式，可用於將資料從內部部署 SQL Server 執行個體移至 Azure VM 上的 SQL Server。 如需詳細的步驟以及其他替代方案的討論，請參閱[將資料庫移轉至 Azure VM 上的 SQL Server](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)。
+**將 SQL Server Database 部署到 Microsoft Azure VM 精靈** 是簡單且建議的方式，可用於將資料從內部部署 SQL Server 執行個體移至 Azure VM 上的 SQL Server。 如需詳細的步驟以及其他替代方案的討論，請參閱[將資料庫移轉至 Azure VM 上的 SQL Server](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)。
 
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>匯出至一般檔案
 有各種方法可用來從內部部署的 SQL Server 大量匯出資料，如 [資料的大量匯入及匯出 (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) 主題所述。 本文件將提供大量複製程式 (BCP) 做為範例。 一旦將資料匯出至一般檔案之後，就可以使用大量匯入功能來將它匯入另一部 SQL Server。
 
-1. 使用 BCP 公用程式，從內部部署的 SQL Server 將資料匯出至檔案，如下所示
+1. 使用 bcp 公用程式將資料從內部部署 SQL Server 匯出至檔案，如下所示
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
 2. 針對步驟 1 中匯出的資料表結構描述使用 `create database` 和 `create table`，在 Azure 的 SQL Server VM 上建立資料庫和資料表。
@@ -203,16 +202,16 @@ SSIS 適用於兩種 Studio 環境。 如需詳細資料，請參閱 [Integratio
 SQL Server 支援：
 
 1. [資料庫備份和還原功能](https://msdn.microsoft.com/library/ms187048.aspx) (兩者皆可為本機檔案或以 bacpac 匯出至 Blob) 和[資料層應用程式](https://msdn.microsoft.com/library/ee210546.aspx) (使用 bacpac)。
-2. 使用複製的資料庫直接在 Azure 上建立 SQL Server VM，或者複製到現有 SQL Azure 資料庫的能力。 如需詳細資訊，請參閱 [Use the Copy Database Wizard](https://msdn.microsoft.com/library/ms188664.aspx)。
+2. 能夠使用複製的資料庫直接在 Azure 上建立 SQL Server Vm，或複製到 SQL Database 中的現有資料庫。 如需詳細資訊，請參閱 [Use the Copy Database Wizard](https://msdn.microsoft.com/library/ms188664.aspx)。
 
 SQL Server Management Studio 的資料庫備份/還原選項的螢幕擷取畫面如下所示。
 
 ![SQL Server 匯入工具][1]
 
 ## <a name="resources"></a>資源
-[將資料庫移轉至 Azure VM 上的 SQL Server](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
+[將資料庫移轉至 Azure VM 上的 SQL Server](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
-[Azure 虛擬機器上的 SQL Server 概觀](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+[Azure 虛擬機器上的 SQL Server 概觀](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 [1]: ./media/move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/move-sql-server-virtual-machine/database_migration_wizard.png

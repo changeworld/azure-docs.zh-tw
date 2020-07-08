@@ -5,12 +5,11 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 90cd6476992eed30abbe9faca5cc66405aa40079
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 48350a684844ca0e1624826afeca8e0b9ab36f3b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780189"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959988"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>使用低優先順序的 VM 搭配 Batch
 
@@ -23,11 +22,11 @@ Azure Batch 提供低優先順序的虛擬機器 (VM)，可降低 Batch 工作�
 低優先順序的 VM 比起專用的 VM，能以大幅降低的價格提供。 如需定價詳細資料，請參閱 [Batch 定價](https://azure.microsoft.com/pricing/details/batch/)。
 
 > [!NOTE]
-> 現在，[單一執行個體 VM](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) 和 [VM 擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)皆可使用[現成 VM](https://azure.microsoft.com/pricing/spot/)。 「現成 VM」是低優先順序 VM 的演進，但不同之處在於其該定價可能有所變動，而且在配置現成 VM 時，可以選擇性設定價格上限。
+> 現在，[單一執行個體 VM](../virtual-machines/linux/spot-vms.md) 和 [VM 擴展集](../virtual-machine-scale-sets/use-spot.md)皆可使用[現成 VM](https://azure.microsoft.com/pricing/spot/)。 「現成 VM」是低優先順序 VM 的演進，但不同之處在於其該定價可能有所變動，而且在配置現成 VM 時，可以選擇性設定價格上限。
 >
-> Azure Batch 集區將在現成 VM 正式推出後的幾個月內開始支援現成 VM，並提供新版本的 [Batch API 和工具](https://docs.microsoft.com/azure/batch/batch-apis-tools)。 一旦現成 VM 的支援上路後，將淘汰低優先順序的 VM - 會繼續支援後者使用最新的 API 和工具版本至少 12 個月，讓您有足夠的時間移轉至現成 VM。 
+> Azure Batch 集區將在現成 VM 正式推出後的幾個月內開始支援現成 VM，並提供新版本的 [Batch API 和工具](./batch-apis-tools.md)。 一旦現成 VM 的支援上路後，將淘汰低優先順序的 VM - 會繼續支援後者使用最新的 API 和工具版本至少 12 個月，讓您有足夠的時間移轉至現成 VM。 
 >
-> [雲端服務設定](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)集區將不支援現成 VM。 若要使用現成 VM，必須將雲端服務集區移轉至[虛擬機器設定](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)集區。
+> [雲端服務設定](/rest/api/batchservice/pool/add#cloudserviceconfiguration)集區將不支援現成 VM。 若要使用現成 VM，必須將雲端服務集區移轉至[虛擬機器設定](/rest/api/batchservice/pool/add#virtualmachineconfiguration)集區。
 
 ## <a name="use-cases-for-low-priority-vms"></a>低優先順序 VM 的使用案例
 

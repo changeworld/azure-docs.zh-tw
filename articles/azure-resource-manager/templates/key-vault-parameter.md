@@ -3,12 +3,11 @@ title: 使用範本 Key Vault 秘密
 description: 示範如何在部署期間從金鑰保存庫中傳遞密碼做為參數。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458261"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677860"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署期間使用 Azure Key Vault 以傳遞安全的參數值
 
@@ -18,7 +17,7 @@ ms.locfileid: "81458261"
 
 ## <a name="deploy-key-vaults-and-secrets"></a>部署金鑰保存庫和祕密
 
-若要在範本部署期間存取金鑰保存庫`enabledForTemplateDeployment` ，請將金鑰保存`true`庫上的設定為。
+若要在範本部署期間存取金鑰保存庫，請將 `enabledForTemplateDeployment` 金鑰保存庫上的設定為 `true` 。
 
 如果您已經有 Key Vault，請確定它允許範本部署。
 
@@ -92,14 +91,14 @@ Set-AzKeyVaultAccessPolicy `
 如需建立金鑰保存庫和新增秘密的詳細資訊，請參閱：
 
 - [使用 CLI 設定和擷取祕密](../../key-vault/secrets/quick-create-cli.md)
-- [使用 PowerShell 設定和擷取祕密](../../key-vault/secrets/quick-create-powershell.md)
+- [使用 PowerShell 設定和取出秘密](../../key-vault/secrets/quick-create-powershell.md)
 - [使用入口網站設定和擷取祕密](../../key-vault/secrets/quick-create-portal.md)
 - [使用 .NET 設定和擷取祕密](../../key-vault/secrets/quick-create-net.md)
 - [使用 Node.js 設定和擷取祕密](../../key-vault/secrets/quick-create-node.md)
 
 ## <a name="grant-access-to-the-secrets"></a>授與祕密的存取權
 
-部署範本的使用者必須具有資源群組和`Microsoft.KeyVault/vaults/deploy/action`金鑰保存庫範圍的許可權。 [擁有者](../../role-based-access-control/built-in-roles.md#owner)和[參與者](../../role-based-access-control/built-in-roles.md#contributor)角色皆可授與此權限。 如果您已建立金鑰保存庫，則您是擁有者，因此您擁有該許可權。
+部署範本的使用者必須具有 `Microsoft.KeyVault/vaults/deploy/action` 資源群組和金鑰保存庫範圍的許可權。 [擁有者](../../role-based-access-control/built-in-roles.md#owner)和[參與者](../../role-based-access-control/built-in-roles.md#contributor)角色皆可授與此權限。 如果您已建立金鑰保存庫，則您是擁有者，因此您擁有該許可權。
 
 下列程序說明如何建立具有最低權限的角色，以及如何指派使用者
 
@@ -163,7 +162,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminLogin": {
@@ -201,7 +200,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "adminLogin": {
@@ -267,7 +266,7 @@ New-AzResourceGroupDeployment `
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "location": {
@@ -314,7 +313,7 @@ New-AzResourceGroupDeployment `
           "scope": "inner"
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {

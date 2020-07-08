@@ -5,16 +5,16 @@ description: 在 Windows 資料科學虛擬機器上執行資料探索和模型�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: a2eba958ca2d4a90cb3706839d726fdd0a48ed4f
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.openlocfilehash: 7d9aced42efefc8651605be44f0091b2f4f2815e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994062"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959274"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>您可以在 Windows Data Science Virtual Machine 上做的十件事
 
@@ -40,7 +40,7 @@ DSVM 與 Azure 服務密切合作。 它可以讀取及處理已儲存在 Azure 
 > 
 > 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 您需要 Azure 訂用帳戶。 您可以 [註冊免費試用](https://azure.microsoft.com/free/)。
 * 您可以在[建立虛擬機器時](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)取得在 Azure 入口網站上布建資料科學虛擬機器的指示。
@@ -55,24 +55,24 @@ DSVM 與 Azure 服務密切合作。 它可以讀取及處理已儲存在 Azure 
 
 針對 Python，您可以使用 Visual Studio Community Edition 這類已預先安裝「適用於 Visual Studio 的 Python 工具」(PTVS) 延伸模組的 IDE。 根據預設，只有 Python 3.6 （根 Conda 環境）會在 PTVS 上設定。 若要啟用 Anaconda Python 2.7，請採取下列步驟：
 
-1. 前往 [**工具** > ] [**python 工具** > ] [**python 環境**]，然後選取 Visual Studio Community 版本中的 [ **+ 自訂**]，為每個版本建立自訂環境。
+1. 前往 [**工具**] [  >  **python 工具**] [  >  **python 環境**]，然後選取 Visual Studio Community 版本中的 [ **+ 自訂**]，為每個版本建立自訂環境。
 1. 提供描述，並將環境前置詞路徑設定為 Anaconda Python 2.7 的**c:\anaconda\envs\python2** 。
-1. 選取 [自動偵測] [**套用** > **] 以儲存**環境。
+1. 選取 [自動偵測] [**套用**]  >  **Apply**以儲存環境。
 
 如需有關如何建立 Python 環境的詳細資訊，請參閱[PTVS 檔](https://aka.ms/ptvsdocs)。
 
-現在您已設定建立新的 Python 專案。 移至**File** > [檔案] [**新增** > ] [**專案** > ] [**python** ]，然後選取您要建立的 Python 應用程式類型。 您可以在 [ **python 環境**] 上按一下滑鼠右鍵，然後選取 [**新增/移除 python 環境**]，將目前專案的 Python 環境設定為所需的版本（python 2.7 或3.6）。 您可以在[產品檔](https://aka.ms/ptvsdocs)中找到有關使用 PTVS 的詳細資訊。
+現在您已設定建立新的 Python 專案。 移至**File**  >  [檔案] [**新增**]  >  [**專案**]  >  [**python** ]，然後選取您要建立的 Python 應用程式類型。 您可以在 [ **python 環境**] 上按一下滑鼠右鍵，然後選取 [**新增/移除 python 環境**]，將目前專案的 Python 環境設定為所需的版本（python 2.7 或3.6）。 您可以在[產品檔](https://aka.ms/ptvsdocs)中找到有關使用 PTVS 的詳細資訊。
 
 ## <a name="use-jupyter-notebooks"></a>使用 Jupyter Notebook
 Jupyter Notebook 提供以瀏覽器為基礎的 IDE，以進行資料探索和模型化。 您可以在 Jupyter 筆記本中使用 Python 2、Python 3 或 R （開放原始碼和 Microsoft R Server）。
 
-若要啟動 Jupyter Notebook，請選取 [**開始**] 功能表或桌面上的 [ **Jupyter Notebook** ] 圖示。 在 DSVM 命令提示字元中，您也可以從現有```jupyter notebook```的筆記本所在的目錄或您想要建立新筆記本的位置執行命令。  
+若要啟動 Jupyter Notebook，請選取 [**開始**] 功能表或桌面上的 [ **Jupyter Notebook** ] 圖示。 在 DSVM 命令提示字元中，您也可以 ```jupyter notebook``` 從現有的筆記本所在的目錄或您想要建立新筆記本的位置執行命令。  
 
-在您開始 Jupyter 之後，請流覽`/notebooks`至目錄，以取得預先封裝到 DSVM 中的範例筆記本。 現在您可以：
+在您開始 Jupyter 之後，請流覽至目錄，以 `/notebooks` 取得預先封裝到 DSVM 中的範例筆記本。 現在您可以：
 
 * 選取筆記本以查看程式碼。
 * 選取 Shift + Enter 來執行每個儲存格。
-* 選取 [**儲存格** > ] [**執行**] 以執行整個筆記本。
+* 選取 [**儲存格**] [執行] 以執行整個筆記本  >  ** **。
 * 選取 Jupyter 圖示（左上角），選取右側的 [**新增**] 按鈕，然後選擇筆記本語言（也稱為核心），以建立新的筆記本。   
 
 > [!NOTE]
@@ -129,19 +129,19 @@ IrisPredictor(3,2,3,4)
 ```
 
 ### <a name="build-and-operationalize-r-models"></a>建立和讓 R 模型
-您可以將資料科學虛擬機器或其他位置上建立的 R 模型部署到 Azure Machine Learning，其方式類似于 Python 的執行方式。 步驟如下：
+您可以將資料科學虛擬機器或其他位置上建立的 R 模型部署到 Azure Machine Learning，其方式類似于 Python 的執行方式。 以下是步驟：
 
-1. 建立設定 json 檔案，以提供您的工作區識別碼和驗證權杖。 
+1. 在檔案上建立 settings.js，以提供您的工作區識別碼和驗證權杖。 
 2. 撰寫模型之 predict 函數的包裝函式。
-3. 在```publishWebService``` Azure Machine Learning 程式庫中呼叫，以傳入函式包裝函式。  
+3. ```publishWebService```在 Azure Machine Learning 程式庫中呼叫，以傳入函式包裝函式。  
 
 使用下列程式和程式碼片段，在 Azure Machine Learning 中設定、建立、發行和取用模型做為 web 服務。
 
 #### <a name="set-up"></a>設定
 
-在主目錄下名```.azureml```為的目錄下建立設定 json 檔案。 輸入 Azure Machine Learning 工作區中的參數。
+在 ```.azureml``` 您的主目錄下名為的目錄下，建立檔案的 settings.js。 輸入 Azure Machine Learning 工作區中的參數。
 
-以下是設定的 json 檔案結構：
+以下是檔案結構上的 settings.js：
 
 ```json
 {"workspace":{
@@ -171,7 +171,7 @@ ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema =
 ```
 
 #### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>取用 Azure Machine Learning 中部署的模型
-若要從用戶端應用程式取用模型，請使用 Azure Machine Learning 程式庫依名稱查閱已發佈的 web 服務。 使用`services` API 呼叫來判斷端點。 然後您只要呼叫 `consume` 函式並傳入要預測的資料框架。
+若要從用戶端應用程式取用模型，請使用 Azure Machine Learning 程式庫依名稱查閱已發佈的 web 服務。 使用 `services` API 呼叫來判斷端點。 然後您只要呼叫 `consume` 函式並傳入要預測的資料框架。
 
 使用下列程式碼來取用發佈為 Azure Machine Learning web 服務的模型：
 
@@ -248,7 +248,9 @@ DSVM 會在命令列上與用戶端工具一起載入，並在 GUI 上用來存�
 
 若要從 GitHub 存放庫下載程式碼，您可以使用 ```git clone``` 命令。 例如，若要將 Microsoft 所發佈的資料科學儲存機制下載到目前的目錄中，您可以在 Git Bash 中執行下列命令：
 
-    git clone https://github.com/Azure/DataScienceVM.git
+```bash
+git clone https://github.com/Azure/DataScienceVM.git
+```
 
 您可以在 Visual Studio 中執行相同的複製作業。 下列螢幕擷取畫面顯示如何在 Visual Studio 中存取 Git 和 GitHub 工具：
 
@@ -260,13 +262,13 @@ DSVM 會在命令列上與用戶端工具一起載入，並在 GUI 上用來存�
 ### <a name="azure-blob-storage"></a>Azure Blob 儲存體
 Azure Blob 儲存體是可靠、經濟實惠的雲端儲存體服務，適用于資料的規模和小型。 本節說明如何將資料移至 Blob 儲存體，並存取儲存在 Azure blob 中的資料。
 
-#### <a name="prerequisites"></a>Prerequisites
+#### <a name="prerequisites"></a>必要條件
 
 * 從[Azure 入口網站](https://portal.azure.com)建立您的 Azure Blob 儲存體帳戶。
 
    ![Azure 入口網站中的儲存體帳戶建立程式的螢幕擷取畫面](./media/vm-do-ten-things/create-azure-blob.png)
 
-* 確認已預先安裝命令列 AzCopy 工具： ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```。 包含 azcopy 的目錄已經在您的 PATH 環境變數上，因此您可以在執行此工具時避免輸入完整的命令路徑。 如需 AzCopy 工具的詳細資訊，請參閱[AzCopy 檔](../../storage/common/storage-use-azcopy.md)。
+* 確認已預先安裝命令列 AzCopy 工具： ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` 。 包含 azcopy.exe 的目錄已在您的 PATH 環境變數上，因此您可以在執行此工具時避免輸入完整的命令路徑。 如需 AzCopy 工具的詳細資訊，請參閱[AzCopy 檔](../../storage/common/storage-use-azcopy.md)。
 * 啟動 Azure 儲存體總管工具。 您可以從[儲存體總管網頁](https://storageexplorer.com/)下載它。 
 
    ![Azure 儲存體總管存取儲存體帳戶的螢幕擷取畫面](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -275,7 +277,9 @@ Azure Blob 儲存體是可靠、經濟實惠的雲端儲存體服務，適用于
 
 若要在本機檔案與 Blob 儲存體之間移動資料，您可以在命令列或 PowerShell 中使用 AzCopy：
 
-    AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
+```powershell
+AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
+```
 
 將**C:\myfolder**取代為您的檔案儲存所在的路徑，並以您的 blob 儲存體帳戶名稱**mystorageaccount** 、使用容器名稱**mycontainer** ，以及使用您的 blob 儲存體存取金鑰來**儲存帳戶金鑰**。 您可以在[Azure 入口網站](https://portal.azure.com)中找到您的儲存體帳號憑證。
 
@@ -298,8 +302,8 @@ Azure Blob 儲存體是可靠、經濟實惠的雲端儲存體服務，適用于
 
 您也可以使用 Azure 儲存體總管，從 VM 中的本機檔案上傳資料：
 
-* 若要將資料上傳至容器，請選取目標容器，然後選取 [**上傳**] 按鈕。![Azure 儲存體總管中 [上傳] 按鈕的螢幕擷取畫面](./media/vm-do-ten-things/storage-accounts.png)
-* 選取 **[檔案**] 方塊右邊的省略號（**...**），從檔案系統中選取一或多個要上傳的檔案，然後選取 [**上傳**] 以開始上傳檔案。![[上傳檔案] 對話方塊的螢幕擷取畫面](./media/vm-do-ten-things/upload-files-to-blob.png)
+* 若要將資料上傳至容器，請選取目標容器，然後選取 [**上傳**] 按鈕。 ![Azure 儲存體總管中 [上傳] 按鈕的螢幕擷取畫面](./media/vm-do-ten-things/storage-accounts.png)
+* 選取 **[檔案**] 方塊右邊的省略號（**...**），從檔案系統中選取一或多個要上傳的檔案，然後選取 [**上傳**] 以開始上傳檔案。 ![[上傳檔案] 對話方塊的螢幕擷取畫面](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 #### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>從 Azure blob 讀取資料： Machine Learning 讀取器模組
 
@@ -362,7 +366,7 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ### <a name="azure-data-lake"></a>Azure Data Lake
 Azure Data Lake Storage 是海量資料分析工作負載的超大規模資料庫存放庫，而且與 Hadoop 分散式檔案系統（HDFS）相容。 它可以與 Hadoop、Spark 及 Azure Data Lake Analytics 搭配運作。 在本節中，您將瞭解如何使用 Azure Data Lake Analytics 將資料移至 Azure Data Lake Storage 並執行分析。
 
-#### <a name="prerequisites"></a>Prerequisites
+#### <a name="prerequisites"></a>必要條件
 
 * 在[Azure 入口網站](https://portal.azure.com)中建立 Azure Data Lake Analytics 實例。
 
@@ -436,7 +440,7 @@ USING Outputters.Csv();
 
 在 Azure Data Lake 中內嵌資料集之後，您可以使用 [ [U-SQL 語言](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md)] 來查詢和流覽資料。 U-SQL 語言類似于 T-sql，但結合了 c # 的一些功能，讓使用者可以撰寫自訂的模組和使用者定義的函數。 您可以在上一個步驟中使用指令碼。
 
-將查詢提交至伺服器之後，請 tripdata_summary。CSV 會出現在 Azure Data Lake Explorer 中。 您可以用滑鼠右鍵按一下檔案來預覽資料。
+將查詢提交至伺服器之後，tripdata_summary.CSV 會出現在 Azure Data Lake Explorer 中。 您可以用滑鼠右鍵按一下檔案來預覽資料。
 
 ![Data Lake Explorer 中 CSV 檔案的螢幕擷取畫面](./media/vm-do-ten-things/USQL_create_summary.png)
 
@@ -454,10 +458,10 @@ Azure Cosmos DB 是雲端中的一種 NoSQL 資料庫。 您可以使用它來�
 
 使用下列必要步驟來存取 DSVM 中的 Azure Cosmos DB：
 
-1. Azure Cosmos DB Python SDK 已安裝在 DSVM 上。 若要更新它， ```pip install pydocumentdb --upgrade```請從命令提示字元執行。
+1. Azure Cosmos DB Python SDK 已安裝在 DSVM 上。 若要更新它，請 ```pip install pydocumentdb --upgrade``` 從命令提示字元執行。
 2. 從[Azure 入口網站](https://portal.azure.com)建立 Azure Cosmos DB 帳戶和資料庫。
 3. 從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=53595)下載 Azure Cosmos DB 資料移轉工具，並將其解壓縮至您選擇的目錄。
-4. 使用下列命令參數將儲存在[公用 blob](https://https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json)中的 JSON 資料（火山資料）匯入到 Azure Cosmos DB 遷移工具。 （從您安裝 Azure Cosmos DB 資料移轉工具的目錄使用 dtui）。輸入具有下列參數的來源和目標位置：
+4. 使用下列命令參數將儲存在[公用 blob](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json)中的 JSON 資料（火山資料）匯入到 Azure Cosmos DB 遷移工具。 （使用 dtui.exe，從您安裝 Azure Cosmos DB 資料移轉工具的目錄）。輸入具有下列參數的來源和目標位置：
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
@@ -466,11 +470,11 @@ Azure Cosmos DB 是雲端中的一種 NoSQL 資料庫。 您可以使用它來�
 ## <a name="use-power-bi-reports-and-dashboards"></a>使用 Power BI 報表和儀表板 
 您可以將上述 Azure Cosmos DB 範例中的火山 JSON 檔案視覺化，Power BI Desktop 以取得資料的視覺化深入解析。 在 [Power BI 文章](../../cosmos-db/powerbi-visualize.md)中可找到詳細的步驟。 高階步驟如下：
 
-1. 開啟 Power BI Desktop 並選取 [取得資料]****。 將 URL 指定為： `https://cahandson.blob.core.windows.net/samples/volcano.json`。
+1. 開啟 Power BI Desktop 並選取 [取得資料]****。 將 URL 指定為： `https://cahandson.blob.core.windows.net/samples/volcano.json` 。
 2. 您應該會看到 JSON 記錄已匯入為清單。 將清單轉換成資料表，讓 Power BI 可以使用它。
 4. 選取 [展開] （箭號）圖示來展開資料行。
 5. 請注意，位置是 [**記錄**] 欄位。 展開記錄，然後只選取座標。 **座標**是清單資料行。
-6. 加入新的資料行，以將清單座標資料行轉換成逗號分隔的**LatLong**資料行。 使用公式```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```來串連座標清單欄位中的兩個元素。
+6. 加入新的資料行，以將清單座標資料行轉換成逗號分隔的**LatLong**資料行。 使用公式來串連座標清單欄位中的兩個元素 ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})``` 。
 7. 將 [提高**許可權**] 資料行轉換為 [十進位 **]，然後**選取 [**關閉**並套用] 按鈕。
 
 除了上述步驟以外，您還可以貼上下列程式碼。 它會將 Power BI 中的進階編輯器中使用的步驟編寫為腳本，以查詢語言撰寫資料轉換。
@@ -508,7 +512,7 @@ in
 ## <a name="add-more-tools"></a>新增更多工具
 預先建立至 DSVM 的工具可解決許多常見的資料分析需求。 這可節省您的時間，因為您不需要逐一安裝和設定您的環境。 它也會為您節省成本，因為您只需支付所使用的資源。
 
-您可以使用本文中所分析的其他 Azure 資料和分析服務，以增強您的分析環境。 在某些情況下，您可能需要額外的工具，包括一些專屬的合作夥伴工具。 您在虛擬機器上擁有完整的系統管理存取權，可安裝您所需的新工具。 您也可以在 Python 和 R 中安裝其他未預先安裝的封裝。 針對 Python，您可以使用```conda```或。 ```pip``` 針對 r，您可以在```install.packages()``` r 主控台中使用，或使用 IDE 並選取 [**套件** > ] [**安裝套件**]。
+您可以使用本文中所分析的其他 Azure 資料和分析服務，以增強您的分析環境。 在某些情況下，您可能需要額外的工具，包括一些專屬的合作夥伴工具。 您在虛擬機器上擁有完整的系統管理存取權，可安裝您所需的新工具。 您也可以在 Python 和 R 中安裝其他未預先安裝的封裝。 針對 Python，您可以使用 ```conda``` 或 ```pip``` 。 針對 r，您可以 ```install.packages()``` 在 r 主控台中使用，或使用 IDE 並選取 [**套件**] [  >  **安裝套件**]。
 
 ## <a name="deep-learning"></a>深入學習
 
@@ -523,6 +527,6 @@ in
 
 - [文字檔分類](https://github.com/anargyri/lstm_han)：本逐步解說示範如何建立和定型兩個類神經網路架構：階層式注意網路和長短期記憶體（LSTM）網路。 這些類神經網路會使用深入學習的 Keras API 將文字文件分類。 Keras 是三個最受歡迎的深度學習架構的前端： Microsoft Cognitive Toolkit、TensorFlow 和 Theano。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 本文說明您可以在 Microsoft 資料科學虛擬機器上執行的一些事項。 您還可以做更多工作，讓 DSVM 成為有效的分析環境。
 

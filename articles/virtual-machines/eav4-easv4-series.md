@@ -1,22 +1,21 @@
 ---
-title: Eav4 系列和 Easv4 系列-Azure 虛擬機器
+title: Eav4 系列和 Easv4 系列
 description: Eav4 和 Easv4 系列 Vm 的規格。
-services: virtual-machines
 author: migerdes
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: ab45298dbcb8988da7d0211fcbde3087d0099038
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: 230809f4fe42ce0fc8b8c85024b42926a27e699f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678234"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 和 Easv4 系列
 
-Eav4 系列和 Easv4 系列利用 AMD 的2.35 版 Ghz EPYC<sup>TM</sup> 7452 處理器，以多執行緒的方式設定，最多可達 256mb L3 快取，增加執行大部分記憶體優化工作負載的選項。 Eav4 系列和 Easv4 系列具有與 Ev3 & Esv3 系列相同的記憶體和磁片設定。
+Eav4 系列和 Easv4 系列利用 AMD 的2.35 版 Ghz EPYC<sup>TM</sup> 7452 處理器，以多執行緒的方式設定，最多可達 256mb L3 快取，增加執行大部分記憶體優化工作負載的選項。 Eav4 系列和 Easv4 系列具有與 Ev3 和 Esv3 系列相同的記憶體與磁碟設定。
 
 ## <a name="eav4-series"></a>Eav4 系列
 
@@ -32,17 +31,17 @@ ACU： 230-260
 
 Eav4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達成 3.35 ghz 的提升頻率，並使用 premium SSD。 Eav4 系列大小非常適合記憶體密集型的企業應用程式。 資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium SSD，請使用 Easv4 系列大小。 Easv4 大小的定價和計費方式與 Eav3 系列相同。
 
-| Size | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大 Nic/預期的網路頻寬（MBps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大 NIC/預期的網路頻寬 (MBps) |
 | -----|-----|-----|-----|-----|-----|-----|
-| 標準\_E2a\_v4|2|16|50|4|3000 / 46 / 23|2 / 1000 |
-| 標準\_E4a\_v4|4|32|100|8|6000 / 93 / 46|2 / 2000 |
-| 標準\_E8a\_v4|8|64|200|16|12000 / 187 / 93|4 / 4000 |
-| 標準\_E16a\_v4|16|128|400|32|24000 / 375 / 187|8 / 8000 |
-| 標準\_E20a\_v4|20|160|500|32|30000/468/234|8 / 10000 |
-| 標準\_E32a\_v4|32|256|800|32|48000 / 750 / 375|8 / 16000 |
-| 標準\_E48a\_v4|48|384|1200|32|96000/1000 （500）|8 / 24000 |
-| 標準\_E64a\_v4|64|512|1600|32|96000/1000 （500）|8 / 30000 |
-| 標準\_E96a\_v4|96|672|2400|32|96000/1000 （500）|8 / 30000 |
+| 標準 \_ E2a \_ v4|2|16|50|4|3000 / 46 / 23|2 / 1000 |
+| 標準 \_ E4a \_ v4|4|32|100|8|6000 / 93 / 46|2 / 2000 |
+| 標準 \_ E8a \_ v4|8|64|200|16|12000 / 187 / 93|4 / 4000 |
+| 標準 \_ E16a \_ v4|16|128|400|32|24000 / 375 / 187|8 / 8000 |
+| 標準 \_ E20a \_ v4|20|160|500|32|30000/468/234|8 / 10000 |
+| 標準 \_ E32a \_ v4|32|256|800|32|48000 / 750 / 375|8 / 16000 |
+| 標準 \_ E48a \_ v4|48|384|1200|32|96000/1000 （500）|8 / 24000 |
+| 標準 \_ E64a \_ v4|64|512|1600|32|96000/1000 （500）|8 / 30000 |
+| 標準 \_ E96a \_ v4|96|672|2400|32|96000/1000 （500）|8 / 30000 |
 
 ## <a name="easv4-series"></a>Easv4 系列
 
@@ -58,7 +57,7 @@ ACU： 230-260
 
 Easv4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達成 3.35 ghz 的提升頻率，並使用 premium SSD。 Easv4 系列大小非常適合記憶體密集型的企業應用程式。
 
-| Size | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量︰IOPS / MBps (以 GiB 為單位的快取大小) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 Nic/預期的網路頻寬（MBps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC/預期的網路頻寬 (MBps) |
 |-----|-----|-----|-----|-----|-----|-----|-----|
 | Standard_E2as_v4|2|16|32|4|4000/32 （50）|3200/48|2 / 1000 |
 | Standard_E4as_v4|4|32|64|8|8000/64 （100）|6400/96|2 / 2000 |
@@ -79,7 +78,7 @@ Easv4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎�
 - [儲存體最佳化](sizes-storage.md)
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
-- [上一代](sizes-previous-gen.md)
+- [前幾代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>後續步驟
 

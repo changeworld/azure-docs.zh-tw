@@ -4,12 +4,11 @@ description: 了解如何使用叢集自動調整程式，根據 Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: f40d13b6b9a37f4c5efcc73e52b631bd2eec659a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: e87470e577f4d2613b43cc02755ccc2d500c0ef8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683550"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84730011"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自動調整叢集以符合 Azure Kubernetes Service (AKS) 的應用程式需求
 
@@ -99,7 +98,7 @@ az aks update \
 上述範例會將 myAKSCluster 中單一節點集區上的叢集自動調整程式更新為最少 1 個、最多 5 個節點。
 
 > [!NOTE]
-叢集自動調整程式會根據每個節點集區上設定的最小和最大計數做出調整決策，但不會強制執行調整。 例如，若目前節點計數為 3 時，將最小計數設定為 5 並不會立即將集區調整為 5。 如果將節點集區的最小計數變更為高於目前節點數目的值，則會在有足夠的未排程 Pod 存在時，再遵守此新限制，而需要 2 個新的額外節點並觸發自動調整程式事件。 發生這種情況後，將會遵守叢集自動調整程式新的最小計數限制。
+> 叢集自動調整程式會根據每個節點集區上設定的最小和最大計數來做出調整決策，但在更新最小或最大計數之後，並不會強制執行。 例如，當目前節點計數為3時，將最小計數設定為5，將不會立即將集區調整為5。 如果節點集區上的最小計數具有高於目前節點數目的值，則會在有足夠的設無法排程 pod 存在時，遵守新的 min 或 max 設定，而這需要2個新的額外節點並觸發自動調整程式事件。 在調整事件之後，會遵守新的計數限制。
 
 監視應用程式和服務的效能，並調整叢集自動調整程式節點計數，以符合所需的效能。
 

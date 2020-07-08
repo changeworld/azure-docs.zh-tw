@@ -7,12 +7,11 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: a19a1b6e7416667079ab07fc5440ee8828c26bf4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76294366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85081081"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>評估大量的實體伺服器以遷移至 Azure
 
@@ -47,8 +46,8 @@ ms.locfileid: "76294366"
 **規劃** | **限制**
 --- | --- 
 **Azure Migrate 專案** | 評估多達35000伺服器的專案。
-**Azure Migrate 設備** | 設備可以探索最多250部伺服器。<br/> 設備只能與單一 Azure Migrate 專案相關聯。<br/> 任何數目的設備都可以與單一 Azure Migrate 專案相關聯。 <br/><br/> 
-**群組** | 您最多可以在單一群組中新增35000部伺服器。
+**Azure Migrate 設備** | 設備可以探索最多1000部伺服器。<br/> 設備只能與單一 Azure Migrate 專案相關聯。<br/> 任何數目的設備都可以與單一 Azure Migrate 專案相關聯。 <br/><br/> 
+**小組** | 您最多可以在單一群組中新增35000部伺服器。
 **Azure Migrate 評量** | 您最多可以在單一評估中評估35000部伺服器。
 
 

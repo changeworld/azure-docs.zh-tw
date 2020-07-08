@@ -8,20 +8,23 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549018"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85081099"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>多租使用者 SaaS 應用程式和 Azure 認知搜尋的設計模式
+
 多租用戶應用程式是為不能查看或共用任何其他租用戶之資料的租用戶提供相同服務和功能的應用程式，其中租用戶的數目並無限制。 本檔討論使用 Azure 認知搜尋所建立之多租使用者應用程式的租使用者隔離策略。
 
 ## <a name="azure-cognitive-search-concepts"></a>Azure 認知搜尋概念
-Azure 認知搜尋是做為搜尋即服務解決方案，可讓開發人員將豐富的搜尋體驗新增至應用程式，而不需要管理任何基礎結構或成為資訊檢索的專家。 資料會上傳至服務，然後儲存在雲端。 使用 Azure 認知搜尋 API 的簡單要求，即可修改和搜尋資料。 如需此服務的概觀，請參閱 [這篇文章](https://aka.ms/whatisazsearch)。 在討論設計模式之前，請務必先瞭解 Azure 認知搜尋中的一些概念。
+[Azure 認知搜尋](search-what-is-azure-search.md)是做為搜尋即服務解決方案，可讓開發人員將豐富的搜尋體驗新增至應用程式，而不需要管理任何基礎結構或成為資訊檢索的專家。 資料會上傳至服務，然後儲存在雲端。 使用 Azure 認知搜尋 API 的簡單要求，即可修改和搜尋資料。 
 
 ### <a name="search-services-indexes-fields-and-documents"></a>搜尋服務、索引、欄位及文件
+
+討論設計模式之前，請務必先瞭解幾個基本概念。
+
 使用 Azure 認知搜尋時，一個訂閱*搜尋服務*。 將資料上傳至 Azure 認知搜尋時，它會儲存在搜尋服務內的*索引*中。 單一服務內可能會有好幾個索引。 若要使用熟悉的資料庫概念，搜尋服務可以比喻為資料庫，而服務內的索引則可比喻為資料庫內的資料表。
 
 搜尋服務內的每個索引都有自己的結構描述，此結構描述是由一些可自訂的「欄位」 ** 所定義。 資料會以個別*檔*的形式新增至 Azure 認知搜尋索引。 每個文件都必須上傳至特定的索引，並且必須符合該索引的結構描述。 使用 Azure 認知搜尋搜尋資料時，會針對特定索引發出全文檢索搜尋查詢。  若要將這些概念比喻成資料庫的概念，則欄位可以比喻為資料表中的資料行，而文件則可以比喻為資料列。
@@ -127,5 +130,5 @@ Azure 認知搜尋允許個別索引的規模，以及要成長的總索引數�
 ## <a name="next-steps"></a>後續步驟
 Azure 認知搜尋是許多應用程式的絕佳選擇。 評估多租使用者應用程式的各種設計模式時，請考慮[各種定價層](https://azure.microsoft.com/pricing/details/search/)和個別的[服務限制](search-limits-quotas-capacity.md)，以充分量身打造 Azure 認知搜尋，以符合各種大小的應用程式工作負載和架構。
 
-任何關於 Azure 認知搜尋和多租使用者案例的問題， azuresearch_contact@microsoft.com都可以導向至。
+任何關於 Azure 認知搜尋和多租使用者案例的問題，都可以導向至 azuresearch_contact@microsoft.com 。
 

@@ -6,16 +6,15 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 512ad8f93da53afb618491cd1769645d8edb0b14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bee705e33267a765c1fb5300c0bfe2d04ff2015d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75965834"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099647"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>使用適用於 PostgreSQL 的 Azure 資料庫單一伺服器虛擬網路服務端點和規則
 
-「虛擬網路規則」** 是一項防火牆功能，可控制適用於 PostgreSQL 伺服器的 Azure 資料庫是否接受虛擬網路中特定子網路所傳來的通訊。 本文說明為何虛擬網路規則功能，有時是讓適用於 PostgreSQL 伺服器的 Azure 資料庫安全地接受通訊的最佳選項。
+*虛擬網路規則*是一項防火牆安全性功能，可控制您的適用於 PostgreSQL 的 Azure 資料庫伺服器是否接受從虛擬網路中的特定子網傳送的通訊。 本文說明為何虛擬網路規則功能，有時是讓適用於 PostgreSQL 伺服器的 Azure 資料庫安全地接受通訊的最佳選項。
 
 若要建立虛擬網路規則，必須先有[虛擬網路][vm-virtual-network-overview] (VNet) 和[虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]可供規則參考。 下圖說明虛擬網路服務端點如何與適用於 PostgreSQL 的 Azure 資料庫搭配運作：
 
@@ -33,7 +32,7 @@ ms.locfileid: "75965834"
 
 **子網路：** 虛擬網路包含**子網路**。 您有的任何 Azure 虛擬機器 (VM) 會指派給子網路。 一個子網路可以包含多個 VM 或其他計算節點。 計算虛擬網路外部的節點無法存取虛擬網路，除非您設定安全性來允許存取。
 
-**虛擬網路服務端點：**[虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]是一個子網，其屬性值包含一或多個正式的 Azure 服務類型名稱。 本文中我們探討類型名稱 **Microsoft.Sql**，它參考名為 SQL Database 的 Azure 服務。 此服務標記也會套用至適用於 PostgreSQL 和 MySQL 服務的 Azure 資料庫。 請務必注意，當您將 **Microsoft.Sql** 服務標記套用到 VNet 服務端點時，它會設定子網路上所有 Azure SQL Database、適用於 PostgreSQL 的 Azure 資料庫和適用於 MySQL 伺服器的 Azure 資料庫的服務端點流量。 
+**虛擬網路服務端點：** [虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]是一個子網路，其屬性值包含一或多個正式的 Azure 服務類型名稱。 本文中我們探討類型名稱 **Microsoft.Sql**，它參考名為 SQL Database 的 Azure 服務。 此服務標記也會套用至適用於 PostgreSQL 和 MySQL 服務的 Azure 資料庫。 請務必注意，當您將 **Microsoft.Sql** 服務標記套用到 VNet 服務端點時，它會設定子網路上所有 Azure SQL Database、適用於 PostgreSQL 的 Azure 資料庫和適用於 MySQL 伺服器的 Azure 資料庫的服務端點流量。 
 
 **虛擬網路規則：** 適用於 PostgreSQL 伺服器的 Azure 資料庫虛擬網路規則，是適用於 PostgreSQL 伺服器的 Azure 資料庫存取控制清單 (ACL) 中所列的子網路。 子網路必須包含 **Microsoft.Sql** 類型名稱，才能列在適用於 PostgreSQL 伺服器的 Azure 資料庫的 ACL 中。
 
@@ -45,7 +44,7 @@ ms.locfileid: "75965834"
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>虛擬網路規則的優點
 
@@ -69,7 +68,7 @@ ms.locfileid: "75965834"
 
 不過，截至 2018 年 8 月，適用於 PostgreSQL 的 Azure 資料庫服務還不是可直接指派給子網路的服務。
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>虛擬網路規則的詳細資料
 
@@ -102,7 +101,7 @@ RBAC 替代方案：**
 > 某些案例中，適用於 PostgreSQL 的 Azure 資料庫和 VNet 子網路是在不同的訂用帳戶。 在這些情況下，您必須確保下列設定：
 > - 兩個訂用帳戶在相同的 Azure Active Directory 租用戶中。
 > - 使用者具備啟動作業的必要權限，例如啟用服務端點、將 VNet 子網路新增至指定的伺服器。
-> - 請確定這兩個訂用帳戶都已註冊**Microsoft .sql**資源提供者。 如需詳細資訊，請參閱[資源管理員-註冊][resource-manager-portal]
+> - 請確定這兩個訂用帳戶都已註冊**DBforPostgreSQL**資源提供**者。** 如需詳細資訊，請參閱 [resource-manager-registration][resource-manager-portal]
 
 ## <a name="limitations"></a>限制
 

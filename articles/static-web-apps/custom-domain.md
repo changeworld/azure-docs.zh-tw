@@ -7,12 +7,11 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655231"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960294"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>在 Azure 靜態 Web Apps 預覽中設定自訂網域
 
@@ -29,11 +28,11 @@ ms.locfileid: "83655231"
 
 有幾種不同類型的 DNS 組態可供應用程式使用。
 
-| 如果要                            | 結果為                                                |
-| ----------------------------------------- | --------------------------------------------------- |
-| 支援 `www.example.com`                 | [對應 CNAME 記錄](#map-a-cname-record)           |
-| 支援 `example.com`                     | [設定根網域](#configure-a-root-domain) |
-| 將所有子網域指向 `www.example.com` | [對應萬用字元](#map-a-wildcard-domain)                   |
+| 如果要                                 | 結果為                                                |
+| -----------------------------------------------| --------------------------------------------------- |
+| 支援 `www.example.com` 或`blog.example.net`| [對應 CNAME 記錄](#map-a-cname-record)           |
+| 支援 `example.com`                          | [設定根網域](#configure-a-root-domain) |
+| 將所有子網域指向 `www.example.com`      | [對應萬用字元](#map-a-wildcard-domain)            |
 
 ## <a name="map-a-cname-record"></a>對應 CNAME 記錄
 
@@ -80,7 +79,7 @@ CNAME 記錄會將一個網域對應到另一個網域。 您可以使用 CNAME 
 
 1. 按一下 [驗證] 按鈕。
 
-現在已設定自訂網域，DNS 提供者可能需要數小時的時間才能全球傳播變更。 您可以前往 [dnspropagation.net](https://dnspropagation.net) 來檢查傳播的狀態。 輸入您的自訂網域 (包括 `www`)，從下拉式選單中選取 CNAME，然後選取 [開始]。
+現在已設定自訂網域，DNS 提供者可能需要數小時的時間才能傳播全球變更。 您可以前往 [dnspropagation.net](https://dnspropagation.net) 來檢查傳播的狀態。 輸入您的自訂網域 (包括 `www`)，從下拉式選單中選取 CNAME，然後選取 [開始]。
 
 如果您的 DNS 變更已填入，則網站會傳回您靜態 Web 應用程式的自動產生 URL (例如，_random-name-123456789c.azurestaticapps.net_)。
 

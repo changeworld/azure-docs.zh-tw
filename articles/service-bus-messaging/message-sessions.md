@@ -1,24 +1,13 @@
 ---
 title: Azure 服務匯流排訊息工作階段 | Microsoft Docs
 description: 本文說明如何使用工作階段來聯結和依序處理未繫結的相關訊息序列。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2020
-ms.author: aschhab
-ms.openlocfilehash: 9cedf3678fc73b004c142380b4ba69c10ca72ebf
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.date: 06/23/2020
+ms.openlocfilehash: c1b714df1df7e2c3ba39c63581dc3c40a2ff9d1e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341195"
 ---
 # <a name="message-sessions"></a>訊息工作階段
 Microsoft Azure 服務匯流排工作階段能夠聯合和依序處理未繫結的相關訊息序列。 工作階段可在**先進先出 (FIFO)** 和**要求-回應**模式中使用。 本文說明如何在利用服務匯流排時，使用工作階段來實作這些模式。 

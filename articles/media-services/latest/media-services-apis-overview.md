@@ -13,12 +13,11 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5afa5b5620532865233e38ccb5889b37b2100854
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 7ea74c85af062ce00dbccf8a486ce39cbd524bb0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648548"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515062"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>使用媒體服務 v3 API 開發
 
@@ -41,7 +40,7 @@ ms.locfileid: "83648548"
 
 若您要建立 Azure AD 應用程式與服務主體，應用程式必須位於自己的租用戶中。 建立應用程式之後，請將應用程式**參與者**或**擁有者**角色存取權授與媒體服務帳戶。
 
-若不確定自己是否有權建立 Azure AD 應用程式，請參閱[必要權限](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
+若不確定自己是否有權建立 Azure AD 應用程式，請參閱[必要權限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 下圖中，數字代表依時間順序排列的要求流程：
 

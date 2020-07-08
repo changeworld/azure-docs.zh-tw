@@ -8,16 +8,13 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f50c7e8dcb33fd2ed95829286aaf815926d9fb3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 39bb129d6edba168ed1ed45b1de205a206c83ed2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80157592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678166"
 ---
 # <a name="export-your-application"></a>匯出您的應用程式
-
-
 
 本文說明如何以解決方案管理員的身分，匯出 IoT Central 應用程式，以重複使用它。
 
@@ -61,7 +58,6 @@ ms.locfileid: "80157592"
 
 - 裝置
 - 使用者
-- 作業定義
 - 連續資料匯出定義
 
 請手動將這些專案新增至從應用程式範本建立的任何應用程式。
@@ -93,4 +89,4 @@ ms.locfileid: "80157592"
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解如何使用應用程式範本，建議的下一個步驟是瞭解如何[從 Azure 入口網站管理 IoT Central](howto-manage-iot-central-from-portal.md)
+既然您已瞭解如何使用應用程式範本，建議的下一個步驟是瞭解如何[監視連線至 IoT Central 應用程式之裝置的整體健全狀況](howto-monitor-application-health.md)。

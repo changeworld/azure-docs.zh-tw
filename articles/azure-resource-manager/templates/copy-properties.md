@@ -3,12 +3,11 @@ title: 定義屬性的多個實例
 description: 在 Azure Resource Manager 範本中使用複製作業，在資源上建立屬性時反復執行多次。
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 9fde2ecf14bc5b29bb31ffa78e067b780438578a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583402"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678455"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM 範本中的屬性反復專案
 
@@ -16,7 +15,7 @@ ms.locfileid: "82583402"
 
 您也可以使用 [複製] 搭配[資源](copy-resources.md)、[變數](copy-variables.md)和[輸出](copy-outputs.md)。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 Copy 元素具有下列一般格式：
 
@@ -55,7 +54,7 @@ Copy 元素具有下列一般格式：
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "numberOfDataDisks": {

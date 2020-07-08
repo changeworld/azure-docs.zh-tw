@@ -8,12 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d10744f2536cdf89115cdccd0bea6f1e5155774c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 18a37731171be5894a1481fb35569c9c7cf307f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370452"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790512"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中樞訊息路由將裝置到雲端訊息傳送至不同的端點
 
@@ -21,9 +20,9 @@ ms.locfileid: "79370452"
 
 訊息路由可讓您以自動化、可調整且可靠的方式，將裝置的訊息傳送到雲端服務。 訊息路由可用於： 
 
-* **傳送裝置遙測訊息以及事件** (也就是裝置生命週期事件和裝置對應項變更事件) 到內建端點和自訂端點。 深入了解[路由端點](#routing-endpoints)。
+* **傳送裝置遙測訊息以及事件** (也就是裝置生命週期事件和裝置對應項變更事件) 到內建端點和自訂端點。 深入瞭解[路由端點](#routing-endpoints)。
 
-* 套用多種查詢**篩選資料再將資料傳送到眾多端點**。 訊息路由可讓您對訊息屬性和訊息本文，以及裝置對應項標記和裝置對應項屬性進行查詢。 進一步了解使用[訊息路由中的查詢](iot-hub-devguide-routing-query-syntax.md)。
+* 套用多種查詢**篩選資料再將資料傳送到眾多端點**。 訊息路由可讓您對訊息屬性和訊息本文，以及裝置對應項標記和裝置對應項屬性進行查詢。 深入瞭解如何[在訊息路由中使用查詢](iot-hub-devguide-routing-query-syntax.md)。
 
 IoT 中樞需要這些服務端點的寫入權限，才能將訊息路由傳送至工作。 如果您透過 Azure 入口網站設定您的端點，則會為您新增必要的權限。 請務必設定您的服務，以支援預期的輸送量。 例如，如果您使用事件中樞做為自訂端點，您必須設定該事件中樞的**輸送量單位**，使其可以處理您計畫透過 IoT 中樞訊息路由傳送的事件輸入。 同樣地，使用服務匯流排佇列做為端點時，您必須設定**大小上限**以確保佇列可以保存所有資料輸入，直到取用者輸出為止。 當您第一次設定您的 IoT 解決方案時，您可能需要監視其他端點，然後對實際負載進行必要的調整。
 
@@ -35,7 +34,15 @@ IoT 中樞都有與事件中樞相容的預設內建端點 (**訊息/事件**)�
 
 每個訊息都會路由傳送到其符合的路由查詢的所有端點。 換句話說，訊息可以路由傳送至多個端點。
 
-IoT 中樞目前支援下列服務做為自訂端點︰
+
+如果您的自訂端點具有防火牆設定，請考慮使用 Microsoft 信任的第一方例外狀況，讓您的 IoT 中樞存取特定端點[Azure 儲存體](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)、 [Azure 事件中樞](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing)和[Azure 服務匯流排](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)。 這適用于具有[受控服務識別](./virtual-network-support.md)的 IoT 中樞選取區域。
+
+IoT 中樞目前支援下列端點：
+
+ - 內建端點
+ - Azure 儲存體
+ - 服務匯流排佇列和服務匯流排主題
+ - 事件中樞
 
 ### <a name="built-in-endpoint"></a>內建端點
 
@@ -75,9 +82,6 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
-> [!NOTE]
-> 如果您的儲存體帳戶具有限制 IoT 中樞連線的防火牆設定，請考慮使用[Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)狀況（適用于使用受控服務識別的 IoT 中樞的選取區域）。
-
 若要建立 Azure Data Lake Gen2 相容的儲存體帳戶，請建立新的 V2 儲存體帳戶，然後在 [ **Advanced** ] 索引標籤上的 [*階層命名空間*] 欄位中選取 [*已啟用*]，如下圖所示：
 
 ![選取 Azure Date Lake Gen2 儲存體](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
@@ -87,17 +91,9 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 做為 IoT 中樞端點的服務匯流排佇列和主題不能啟用 [工作階段]**** 或 [重複偵測]****。 如果已啟用其中一個選項，端點會在 Azure 入口網站中顯示為 [無法連線]****。
 
-> [!NOTE]
-> 如果您的服務匯流排資源具有限制 IoT 中樞連線能力的防火牆設定，請考慮使用[Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)狀況（適用于使用受控服務識別的 IoT 中樞的選取區域）。
-
-
 ### <a name="event-hubs"></a>事件中樞
 
 除了內建事件中樞相容端點之外，您也可以將資料傳送至事件中樞類型的自訂端點。 
-
-> [!NOTE]
-> 如果您的事件中樞資源具有限制 IoT 中樞連線能力的防火牆設定，請考慮使用[Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing)狀況（適用于使用受控服務識別的 IoT 中樞的選取區域）。
-
 
 ## <a name="reading-data-that-has-been-routed"></a>讀取已傳送的資料
 
@@ -146,11 +142,9 @@ IoT 中樞訊息路由保證已排序，而且至少一次將訊息傳遞至端�
 
 ## <a name="monitoring-and-troubleshooting"></a>監視與疑難排解
 
-IoT 中樞提供數個與路由和端點相關的計量，讓您概述中樞的健全狀況和傳送的訊息。 您可以結合多個計量的資訊，以識別問題的根本原因。 例如，使用計量路由：已捨棄或**d2c**的**遙測訊息**，以識別當不符合任何路由和回溯路由上的查詢時，已捨棄的訊息數目。 [IoT 中樞計量](iot-hub-metrics.md)列出對於 IoT 中樞預設啟用的所有計量。
+IoT 中樞提供數個與路由和端點相關的計量，讓您概述中樞的健全狀況和傳送的訊息。 [IoT 中樞計量](iot-hub-metrics.md)列出對於 IoT 中樞預設啟用的所有計量。 使用 [將診斷記錄**路由**在 Azure 監視器[診斷設定](../iot-hub/iot-hub-monitor-resource-health.md)] 中，您可以追蹤在評估路由查詢時所發生的錯誤，以及 IoT 中樞發現的端點健全狀況。 您可以使用 REST API[取得端點健全狀況](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)來取得端點的[健全狀況狀態](iot-hub-devguide-endpoints.md#custom-endpoints)。 
 
-您可以使用 REST API[取得端點健全狀況](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)來取得端點的[健全狀況狀態](iot-hub-devguide-endpoints.md#custom-endpoints)。 我們建議使用與路由訊息延遲相關的[IoT 中樞計量](iot-hub-metrics.md)，以在端點健康狀態為 [無作用] 或 [狀況不良] 時識別和偵測錯誤。 例如，針對端點類型事件中樞，您可以監視**d2c。 eventHubs**。 當 IoT 中樞已建立最終一致的健全狀況狀態時，狀態不良的端點就會更新為狀況良好。
-
-使用 [將診斷記錄**路由**在 Azure 監視器[診斷設定](../iot-hub/iot-hub-monitor-resource-health.md)] 中，您可以追蹤在評估路由查詢時所發生的錯誤，以及 IoT 中樞所察覺的端點健康情況，例如當端點失效時。 這些診斷記錄可以傳送至 Azure 監視器記錄、事件中樞或 Azure 儲存體以進行自訂處理。
+如需更多詳細資料和支援以進行路由疑難排解，請使用[疑難排解指南來進行路由](troubleshoot-message-routing.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

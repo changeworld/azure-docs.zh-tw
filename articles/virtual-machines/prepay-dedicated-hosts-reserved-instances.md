@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 57123abfe7f343a75d264d43afb88f9de1409e8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a8531ec2a3284eac64cb900f2d95ec02b9ffdd45
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78207741"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678081"
 ---
 # <a name="save-costs-with-a-reserved-instance-of-azure-dedicated-hosts"></a>使用 Azure 專用主機的保留實例節省成本
 
@@ -38,11 +37,11 @@ ms.locfileid: "78207741"
 
 保留折扣不適用於下列專案：
 
-- **雲端-保留** 專案無法在德國或中國地區購買。
+- **Clouds**雲端  -無法在德國或中國地區購買保留專案。
 
-- **配額不足-** 範圍設定為單一訂用帳戶的保留區，在新的保留實例的訂用帳戶中必須有可用的 vCPU 配額。 例如，如果目標訂用帳戶的配額限制為 DSv3 系列的10個 vcpu，則您無法購買支援此系列的保留專用主機。 保留的配額檢查包含已在訂用帳戶中部署的 Vm 和專用主機。 您可以 [建立配額增加要求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) 以解決此問題。
+- **配額不足**  -範圍設定為單一訂用帳戶的保留區，在新的保留實例的訂用帳戶中必須有可用的 vCPU 配額。 例如，如果目標訂用帳戶的配額限制為 DSv3 系列的10個 vcpu，則您無法購買支援此系列的保留專用主機。 保留的配額檢查包含已在訂用帳戶中部署的 Vm 和專用主機。 您可以 [建立配額增加要求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)   以解決此問題。
 
-- **容量限制** -在罕見的情況下，Azure 會限制購買專用主機 sku 子集的新保留，因為區域中的低容量。
+- **容量限制**  -在罕見的情況下，Azure 會限制購買專用主機 Sku 子集的新保留，因為區域中的低容量。
 
 ## <a name="buy-a-reservation"></a>購買保留項目
 
@@ -52,7 +51,7 @@ ms.locfileid: "78207741"
 
 - 您必須是至少一個 EA 訂用帳戶的「擁有者」角色，或具有隨用隨付費率的訂用帳戶。
 
-- 針對 ea 訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用 [ **新增保留實例** ] 選項。 或者，如果該設定已停用，則您必須是訂用帳戶的 EA 管理員。
+- 針對 EA 訂用帳戶 **Add Reserved Instances**，   必須在 [EA 入口網站](https://ea.azure.com/)中啟用 [新增保留實例] 選項。 或者，如果該設定已停用，則您必須是訂用帳戶的 EA 管理員。
 
 - 針對雲端解決方案提供者 (CSP) 程式，只有系統管理員代表或銷售代表可以購買保留項目。
 
@@ -60,13 +59,13 @@ ms.locfileid: "78207741"
 
 1. 登入  [Azure 入口網站](https://portal.azure.com/)。
 
-2. 選取 [ **所有服務** \>] [ **保留**]。
+2. 選取 [ **所有服務**] [   \>  **保留**]。
 
-3. 選取 [ **新增** ] 以購買新的保留區，然後按一下 [ **專用主機**]。
+3. 選取 [ **新增**]   以購買新的保留區，然後按一下 [ **專用主機**]。
 
 4. 輸入必要欄位。 執行符合所選屬性的專用主機實例，可以取得保留折扣。 取得折扣的專用主機實例實際數目，取決於選取的範圍和數量。
 
-如果您有 EA 合約，您可以使用 [ **新增更多] 選項** 來快速新增額外的實例。 選項不適用於其他訂用帳戶類型。
+如果您有 EA 合約，您可以使用 [ **新增更多] 選項**   來快速新增額外的實例。 選項不適用於其他訂用帳戶類型。
 
 | **欄位**           | **說明**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -77,17 +76,17 @@ ms.locfileid: "78207741"
 | 詞彙                | 一年或三年。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | 數量            | 保留項目內所購買的執行個體數目。 數量是可以取得帳單折扣的執行中專用主控制項實例數目。                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-- **單一資源群組範圍** —只會將保留折扣套用至所選資源群組中的相符資源。
+- **單一資源群組範圍**  -只會將保留折扣套用至所選資源群組中的相符資源。
 
-- **單一訂** 用帳戶範圍-將保留折扣套用至所選訂用帳戶中的相符資源。
+- **單一訂用帳戶範圍**  -將保留折扣套用至所選訂用帳戶中的相符資源。
 
-- **共用範圍** -將保留折扣套用至帳單內容中合格訂用帳戶的相符資源。 對於 EA 客戶，計費內容為註冊。 針對使用隨用隨付費率的個別訂用帳戶，計費範圍是帳戶管理員所建立的所有合格訂用帳戶。
+- **共用範圍**  -將保留折扣套用至帳單內容中合格訂用帳戶的相符資源。 對於 EA 客戶，計費內容為註冊。 針對使用隨用隨付費率的個別訂用帳戶，計費範圍是帳戶管理員所建立的所有合格訂用帳戶。
 
 ## <a name="usage-data-and-reservation-utilization"></a>使用量資料和保留使用量
 
 對於獲得保留折扣的使用量，您的使用量資料有效價格會是零。 您可以查看哪個 VM 實例收到每個保留的保留折扣。
 
-如需保留折扣如何出現在使用量資料的詳細資訊，請參閱瞭解您的  [Enterprise 註冊的 Azure 保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)（如果您是 EA 客戶）。 如果您有個別的訂用帳戶，請參閱 [瞭解隨用隨付訂用帳戶的 Azure 保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)。
+如需保留折扣如何出現在使用量資料的詳細資訊，請參閱瞭解您的 [Enterprise 註冊的 Azure 保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)（   如果您是 EA 客戶）。 如果您有個別的訂用帳戶，請參閱 [瞭解隨用隨付訂用帳戶的 Azure 保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)。
 
 ## <a name="change-a-reservation-after-purchase"></a>購買後變更保留
 
@@ -111,7 +110,7 @@ ms.locfileid: "78207741"
 
 - Duration
 
-不過，如果您想要進行變更，您可以 *交換* 保留。
+不過， * *   如果您想要進行變更，您可以交換保留。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 
@@ -127,13 +126,13 @@ ms.locfileid: "78207741"
 
 若要深入了解 Azure 保留項目，請參閱下列文章：
 
-- [什麼是 Azure 保留專案？](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [什麼是 Azure 保留項目？](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
 
 - [使用 Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
 
 - [專用主機定價](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
-- [在 Azure 中管理保留](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+- [管理 Azure 中的保留](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
 
 - [了解保留項目折扣的套用方式](https://docs.microsoft.com/azure/billing/billing-understand-vm-reservation-charges)
 

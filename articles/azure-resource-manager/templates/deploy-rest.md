@@ -2,13 +2,12 @@
 title: 使用 REST API 和範本部署資源
 description: 使用 Azure Resource Manager 和 Resource Manager REST API 將資源部署到 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: d7865ac6f9b2bb176ea5308e326dec0741a80962
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.date: 06/04/2020
+ms.openlocfilehash: a2280d3bb406fd7e5c41558478363de68cbd44b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723114"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678404"
 ---
 # <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>使用 ARM 範本和 Resource Manager REST API 部署資源
 
@@ -73,7 +72,7 @@ ms.locfileid: "83723114"
    }
    ```
 
-1. 請先執行[驗證範本部署作業](/rest/api/resources/deployments/validate)來驗證部署，然後再執行部署。 測試部署時，請提供與執行部署時完全一致的參數 (如下個步驟所示)。
+1. 在部署您的範本之前，您可以預覽範本對環境所做的變更。 使用「[假設](template-deploy-what-if.md)」作業來確認範本會進行您預期的變更。 假設也會驗證範本是否有錯誤。
 
 1. 若要部署範本，請在要求 URI 中提供您的訂用帳戶識別碼、資源群組的名稱、部署的名稱。
 
@@ -133,7 +132,7 @@ ms.locfileid: "83723114"
       "properties": {
       "mode": "Incremental",
       "template": {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
           "storageAccountType": {

@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 的 Python 開發人員參考
 description: 了解如何使用 Python 開發函式
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 49577f5ac274b4e34fa07415e5495329ff650aa5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: 26da89628360783e4507c83c3aeaddfc2b0510b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676188"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84730742"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 開發人員指南
 
@@ -262,7 +262,7 @@ def main(req):
 
 ## <a name="http-trigger-and-bindings"></a>HTTP 觸發程序和繫結
 
-HTTP 觸發程序定義於 function.jon 檔案中。 繫結的 `name` 必須符合函式中的具名引數。
+HTTP 觸發程式是在檔案的 function.js中定義。 繫結的 `name` 必須符合函式中的具名引數。
 在先前的範例中，使用的是繫結名稱 `req`。 這個參數是 [HttpRequest] 物件，而且會傳回 [HttpResponse] 物件。
 
 從 [HttpRequest] 物件中，您可以取得要求標題、查詢參數、路由參數和訊息內文。
@@ -629,6 +629,45 @@ from os import listdir
 
 建議您在與專案資料夾不同的資料夾中保存您的測試。 這讓您可免於將測試程式碼與應用程式一起部署。
 
+## <a name="preinstalled-libraries"></a>預先安裝的程式庫
+
+Python 函式執行時間隨附幾個程式庫。
+
+### <a name="python-standard-library"></a>Python 標準程式庫
+
+Python 標準程式庫包含每個 Python 散發套件隨附的內建 Python 模組清單。 這些程式庫大多可協助您存取系統功能，例如檔案 i/o。 在 Windows 系統上，這些程式庫會隨 Python 安裝。 在以 Unix 為基礎的系統上，它們是由套件集合提供。
+
+若要查看這些程式庫清單的完整詳細資料，請造訪下列連結：
+
+* [Python 3.6 標準程式庫](https://docs.python.org/3.6/library/)
+* [Python 3.7 標準程式庫](https://docs.python.org/3.7/library/)
+* [Python 3.8 標準程式庫](https://docs.python.org/3.8/library/)
+
+### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions Python 工作者相依性
+
+功能 Python 背景工作角色需要一組特定的程式庫。 您也可以在函式中使用這些程式庫，但它們不是 Python 標準的一部分。 如果您的函式依賴這些程式庫，則在 Azure Functions 外部執行時，您的程式碼可能無法使用它們。 您可以在[setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282)檔案中的 [**安裝 \_ 需要**] 區段中找到相依性的詳細清單。
+
+### <a name="azure-functions-python-library"></a>Azure Functions Python 程式庫
+
+每個 Python 背景工作更新都包含新版的[Azure Functions Python 程式庫（Azure 函數）](https://github.com/Azure/azure-functions-python-library)。 這種方法可讓您更輕鬆地持續更新 Python 函式應用程式，因為每個更新都有回溯相容性。 此程式庫的版本清單可在[azure 函式 PyPi](https://pypi.org/project/azure-functions/#history)中找到。
+
+執行時間程式庫版本由 Azure 修正，而且無法由 requirements.txt 覆寫。 `azure-functions`requirements.txt 中的專案僅適用于 linting 和客戶認知。 
+
+使用下列程式碼，在您的執行時間中追蹤 Python 函式程式庫的實際版本：
+
+```python
+getattr(azure.functions, '__version__', '< 1.2.1')
+```
+
+### <a name="runtime-system-libraries"></a>執行時間系統程式庫
+
+如需 Python 背景工作 Docker 映射中預先安裝的系統程式庫清單，請遵循下列連結：
+
+|  Functions 執行階段  | Debian 版本 | Python 版本 |
+|------------|------------|------------|
+| 2.x 版 | 延展  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| 3.x 版 | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+
 ## <a name="cross-origin-resource-sharing"></a>跨原始資源共用
 
 [!INCLUDE [functions-cors](../../includes/functions-cors.md)]
@@ -637,7 +676,7 @@ Python 函式應用程式完全支援 CORS。
 
 ## <a name="known-issues-and-faq"></a>已知問題和常見問題集
 
-感謝您寶貴的意見反應，讓我們可以維護常見問題的疑難排解指南清單：
+以下是常見問題的疑難排解指南清單：
 
 * [ModuleNotFoundError 和 ImportError](recover-module-not-found.md)
 

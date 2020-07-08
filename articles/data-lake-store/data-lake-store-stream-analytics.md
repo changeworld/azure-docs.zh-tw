@@ -3,15 +3,14 @@ title: 將資料從串流分析串流至 Data Lake Storage Gen1-Azure
 description: 使用 Azure 串流分析將資料串流至 Azure Data Lake Storage Gen1。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: f1740d167bedd20f51ad5bf24a56b7e7e787f754
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 42c7894c33fe0f09748beee20508e7670545c0ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690971"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515163"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>使用 Azure 串流分析將來自 Azure 儲存體 Blob 的資料串流處理至 Azure Data Lake Storage Gen1
 在本文中，您將瞭解如何使用 Azure Data Lake Storage Gen1 做為 Azure 串流分析作業的輸出。 此文章示範從 Azure 儲存體 Blob (輸入) 讀取資料以及將資料寫入至 Data Lake Storage Gen1 (輸出) 的簡單案例。
@@ -19,7 +18,7 @@ ms.locfileid: "82690971"
 ## <a name="prerequisites"></a>Prerequisites
 開始進行本教學課程之前，您必須具備下列條件：
 
-* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure 儲存體帳戶**。 您將使用來自此帳戶的 Blob 容器來輸入串流分析作業的資料。 本教學課程中，假設您有名為 **storageforasa** 的儲存體帳戶，並在該帳戶中建立名為 **storageforasacontainer** 的容器。 一旦您已建立容器，請將範例資料檔案上傳給容器。 
   
@@ -28,7 +27,7 @@ ms.locfileid: "82690971"
 ## <a name="create-a-stream-analytics-job"></a>建立串流分析作業
 您可以從建立包含輸入來源和輸出目的地的串流分析作業開始。 針對此教學課程，來源是 Azure Blob 容器，而目的地則是 Data Lake Storage Gen1。
 
-1. 登入[Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
 2. 從左窗格中，按一下 [串流分析作業]****，然後按一下 [新增]****。
 
@@ -58,7 +57,7 @@ ms.locfileid: "82690971"
    * 在 [分隔符號]**** 中，選取 [定位鍵]****。
    * 在 [編碼]**** 中，選取 [UTF-8]****。
 
-     按一下 [建立]  。 入口網站現在會新增輸入並測試其連線。
+     按一下 [建立]。 入口網站現在會新增輸入並測試其連線。
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>建立作業的 Data Lake Storage Gen1 輸出
@@ -86,7 +85,7 @@ ms.locfileid: "82690971"
    * 在 [分隔符號]**** 中，選取 [定位鍵]****。
    * 在 [編碼]**** 中，選取 [UTF-8]****。
     
-     按一下 [建立]  。 入口網站現在會新增輸出並測試其連線。
+     按一下 [建立]。 入口網站現在會新增輸出並測試其連線。
     
 ## <a name="run-the-stream-analytics-job"></a>執行串流分析作業
 
@@ -112,5 +111,5 @@ ms.locfileid: "82690971"
 
     請注意，在 [資料總管] 窗格中，輸出會寫入到 Data Lake Storage Gen1 輸出設定中所指定的資料夾路徑 (`streamanalytics/job/output/{date}/{time}`)。  
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [建立 HDInsight 叢集以使用 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

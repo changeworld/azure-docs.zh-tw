@@ -10,12 +10,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: a8f9b66bf9a301888f2371fb1c58a4845c2232b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536151"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84193680"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen1 處理巨量資料需求
 
@@ -108,7 +107,7 @@ ms.locfileid: "79536151"
 ## <a name="download-data-from-data-lake-storage-gen1"></a>從 Data Lake Storage Gen1 下載資料
 在以下案例中，您可能也會想要從 Azure Data Lake Storage Gen1 下載資料或移動資料：
 
-* 將資料移動到其他儲存機制，以便與現有的資料處理管線連結。 例如，您可能會想要將資料從 Data Lake Storage Gen1 移動到 Azure SQL Database 或內部部署 SQL Server。
+* 將資料移動到其他儲存機制，以便與現有的資料處理管線連結。 例如，您可能會想要將資料從 Data Lake Storage Gen1 移至 Azure SQL Database 或 SQL Server。
 * 在建置應用程式原型時，將資料下載到本機電腦，以便在 IDE 環境中處理。
 
 ![來自 Data Lake Storage Gen1 的輸出資料](./media/data-lake-store-data-scenarios/egress-data.png "來自 Data Lake Storage Gen1 的輸出資料")

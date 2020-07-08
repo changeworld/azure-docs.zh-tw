@@ -9,13 +9,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/15/2020
-ms.openlocfilehash: 44a95430ece9c55bb088ae5b968c33691f25b4c5
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
+ms.date: 06/30/2020
+ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801511"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以視覺化方式監視 Azure Data Factory
 
@@ -191,6 +190,10 @@ ms.locfileid: "83860746"
     ![目標準則的方塊](media/monitor-visually/add-criteria-1.png)
 
     ![準則清單](media/monitor-visually/add-criteria-2.png)
+
+    ![準則清單](media/monitor-visually/add-criteria-3.png)
+
+    您可以針對各種計量建立警示，包括 ADF 實體計數/大小、活動/管線/觸發程式執行、Integration Runtime （IR） CPU 使用率/記憶體/節點計數/佇列，以及 SSIS 封裝執行和 SSIS IR 啟動/停止作業等。
 
 1.  設定警示邏輯。 您可以針對所有管線和對應活動，建立所選計量的警示。 您也可以選取特定活動類型、活動名稱、管線名稱或失敗類型。
 

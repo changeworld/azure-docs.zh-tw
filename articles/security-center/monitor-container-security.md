@@ -6,30 +6,18 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 900398a701659bff593df042db16890792e5cffd
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
-ms.translationtype: MT
+ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801371"
 ---
-# <a name="monitoring-the-security-of-your-containers"></a>監視容器的安全性
+# <a name="monitor-the-security-of-your-containers"></a>監視容器的安全性
 
 此頁面說明如何使用我們的概念一節中[容器安全性一文](container-security.md)所述的容器安全性功能。
 
-Azure 資訊安全中心涵蓋容器安全性的下列三個層面：
-
-- **弱點管理**-如果您是在資訊安全中心的標準定價層（請參閱[定價](/azure/security-center/security-center-pricing)），您可以在每次推送新映射時掃描 ARM 型 Azure Container Registry。 掃描器（由 Qualys 提供技術支援）以資訊安全中心建議的形式呈現結果。
-    如需詳細指示，請參閱下方[的掃描容器登錄是否有弱點](#scanning-your-arm-based-container-registries-for-vulnerabilities)。
-
-- **強化容器的 Docker 主機**-資訊安全中心會尋找裝載于 IaaS Linux vm 或其他執行 Docker 之 Linux 電腦上的非受控容器，並持續比較容器的設定與中心，以進行網際網路安全性（CIS） Docker 基準測試。 如果您的容器不符合任何控制項，資訊安全中心會對您發出警示。 持續監視因錯誤而造成的安全性風險，是任何安全性計畫的重要元件。 
-    如需詳細指示，請參閱以下的[強化容器的 Docker 主機](#hardening-your-containers-docker-hosts)。
-
-- **強化 Azure Kubernetes Service**叢集-資訊安全中心會在 Azure Kubernetes Service 叢集的設定發現弱點時提供建議。 如需可能出現之特定建議的詳細資料，請參閱[Kubernetes 服務建議](recommendations-reference.md#recs-containers)。
-
-- **執行時間保護**-如果您是資訊安全中心的標準定價層，您將會取得容器化環境的即時威脅防護。 資訊安全中心會在主機和 AKS 叢集層級產生可疑活動的警示。 如需可能出現之相關安全性警示的詳細資訊，請參閱警示參考資料表的 Azure Kubernetes Service 叢集的[警示](alerts-reference.md#alerts-akscluster)和[容器的警示-主機層級](alerts-reference.md#alerts-containerhost)區段。
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>掃描以 ARM 為基礎的容器登錄是否有弱點 
 
@@ -37,7 +25,7 @@ Azure 資訊安全中心涵蓋容器安全性的下列三個層面：
 
     1. 請確定您是 Azure 資訊安全中心的標準定價層。
 
-    1. 從**定價 & 設定**] 頁面上，為您的訂用帳戶啟用選用的![容器登錄套件組合：啟用容器登錄庫組合](media/monitor-container-security/enabling-container-registries-bundle.png)
+    1. 從**定價 & 設定**] 頁面上，為您的訂用帳戶啟用選用的容器登錄套件組合：啟用容器登錄庫組合 ![](media/monitor-container-security/enabling-container-registries-bundle.png)
 
         資訊安全中心現在已準備好掃描已推送至登錄的影像。 
 

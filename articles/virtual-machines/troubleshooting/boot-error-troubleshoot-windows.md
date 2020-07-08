@@ -12,18 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77371367"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678761"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 關機停滯于 [重新開機]、[正在關閉] 或 [停止服務]
 
 本文提供解決在 Microsoft Azure 重新開機 Windows 虛擬機器（VM）時，可能會遇到「重新開機」、「正在關閉」或「停止服務」訊息之問題的步驟。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 當您使用 [[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)] 來查看 VM 的螢幕擷取畫面時，您可能會看到螢幕擷取畫面顯示「重新開機」、「正在關閉」或「停止服務」訊息。
 
@@ -33,7 +32,7 @@ ms.locfileid: "77371367"
 
 Windows 使用關機程式來執行系統維護作業，以及處理更新、角色和功能等變更。 不建議您中斷此重要程式，直到它完成為止。 視更新/變更的數目和 VM 大小而定，此程式可能需要很長的時間。 如果進程已停止，作業系統可能會損毀。 只有在進程耗費時間過長時，才會中斷程式。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 ### <a name="collect-a-process-memory-dump"></a>收集處理常式記憶體傾印
 
@@ -43,25 +42,25 @@ Windows 使用關機程式來執行系統維護作業，以及處理更新、角
 
 使用[序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)來完成下列步驟：
 
-1. 開啟系統管理 Powershell，並檢查停止時暫停的服務。
+1. 開啟系統管理 Powershell，並檢查停止時停止回應的服務。
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
    ``
 
-2. 在系統管理 CMD 上，取得無回應服務的 PID。
+2. 在系統管理 CMD 上，取得沒有回應之服務的 PID。
 
    ``
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. 從無回應的進程<STOPPING SERVICE>取得記憶體傾印範例。
+3. 從無回應的進程取得記憶體傾印範例 <STOPPING SERVICE> 。
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. 現在會終止停止回應程式，以解除鎖定關機進程。
+4. 現在會終止沒有回應的進程，以解除鎖定關機進程。
 
    ``
    taskkill /PID <PID> /t /f

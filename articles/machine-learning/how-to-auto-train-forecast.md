@@ -8,14 +8,13 @@ ms.author: trbye
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 4bb32418a9f6f556c3bcdfbdf8a70a10c4588218
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 72b0a3074bfdfb6b6038f6c63eb01a7b33d45ea6
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83646136"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959121"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,7 +54,7 @@ ms.locfileid: "83646136"
 
 模型| 描述 | 優點
 ----|----|---
-Prophet (預覽)|Prophet 最適合用於具有強烈季節性影響，且包含數個季節歷程記錄資料的時間序列。 | 精確且快速，能夠應付時間序列中的極端值、遺失資料及重大變更。
+Prophet (預覽)|Prophet 最適合用於具有強烈季節性影響，且包含數個季節歷程記錄資料的時間序列。 若要利用此模型，請使用將它安裝在本機 `pip install fbprophet` 。 | 精確且快速，能夠應付時間序列中的極端值、遺失資料及重大變更。
 自動 ARIMA (預覽)|自動迴歸整合式移動平均 (ARIMA) 在資料為靜態時的執行效果最佳。 這表示其統計屬性 (如平均值和變異數) 在整個集合上是常數。 例如，若投擲一枚硬幣，則不論您是今天、明天還是明年投擲，出現正面的機率都是 50%。| 由於過去值是用來預測未來值，因此非常適用於單一變量序列。
 ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的是要處理最嚴苛的預測工作，並擷取資料中的非線性本機和全球趨勢，以及時間序列之間的關聯性。|能夠運用資料中的複雜趨勢，並配合最大的資料集立即調整。
 
@@ -68,17 +67,19 @@ ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的�
 
 自動化機器學習中預測迴歸工作類型與迴歸工作類型之間最重要的差異在於，資料中包括代表有效時間序列的特徵。 一般時間序列具有妥善定義且一致的頻率，且在連續時間範圍內的每個取樣點都有一個值。 請考慮 `sample.csv` 檔案的下列快照集。
 
-    day_datetime,store,sales_quantity,week_of_year
-    9/3/2018,A,2000,36
-    9/3/2018,B,600,36
-    9/4/2018,A,2300,36
-    9/4/2018,B,550,36
-    9/5/2018,A,2100,36
-    9/5/2018,B,650,36
-    9/6/2018,A,2400,36
-    9/6/2018,B,700,36
-    9/7/2018,A,2450,36
-    9/7/2018,B,650,36
+```output
+day_datetime,store,sales_quantity,week_of_year
+9/3/2018,A,2000,36
+9/3/2018,B,600,36
+9/4/2018,A,2300,36
+9/4/2018,B,550,36
+9/5/2018,A,2100,36
+9/5/2018,B,650,36
+9/6/2018,A,2400,36
+9/6/2018,B,700,36
+9/7/2018,A,2450,36
+9/7/2018,B,650,36
+```
 
 此資料集是某家公司每日銷售資料的簡單範例，該公司擁有 A 和 B 兩間不同的商店。此外，還有一項 `week_of_year` 的特徵，可讓模型偵測每週的季節性。 欄位 `day_datetime` 代表具有每日頻率的乾淨時間序列，而欄位 `sales_quantity` 則是執行預測的目標資料行。 請將資料讀取至 Pandas 資料框架，然後使用 `to_datetime` 函式來確保時間序列是 `datetime` 類型。
 
@@ -271,9 +272,11 @@ rmse
 
 現在已決定整體模型精確度，接著下一個最實際步驟是使用模型來預測未知的未來值。 如果使用與測試集 `test_data` 相同的格式來提供資料集，但具有未來的日期時間，則所產生預測集是每個時間序列步驟的預測值。 假設資料集內的最後一個時間序列記錄是 2018 年 12 月 31 日。 若要預測隔天的需求 (或需要預測的週期數，小於或等於 `max_horizon`)，請為每間商店建立 2019 年 1 月 1 日的單一時間序列記錄。
 
-    day_datetime,store,week_of_year
-    01/01/2019,A,1
-    01/01/2019,A,1
+```output
+day_datetime,store,week_of_year
+01/01/2019,A,1
+01/01/2019,A,1
+```
 
 重複必要的步驟，將此未來資料載入至資料框架，然後執行 `best_run.predict(test_data)` 來預測未來值。
 

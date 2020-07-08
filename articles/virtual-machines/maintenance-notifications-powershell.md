@@ -4,15 +4,14 @@ description: 查看在 Azure 中執行之虛擬機器的維護通知，並使用
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 79ef649502af8962253121ea18804966b1fa043e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77916077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677928"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 處理預定的維護
 
@@ -29,7 +28,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 下列是 MaintenanceRedeployStatus 下傳回的內容： 
 
-| 值 | 描述   |
+| 值 | 說明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指出您目前是否可以在 VM 上開始維修 |
 | PreMaintenanceWindowStartTime         | 維修自助期間的開始，此時您可以在 VM 上起始維修 |

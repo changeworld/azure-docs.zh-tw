@@ -8,18 +8,17 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: dd23745f811cf67aa5e7ef7aa96b877b5980c270
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793120"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84193526"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的存取控制
 
 Azure Data Lake Storage Gen2 會實作用於支援 Azure 角色型存取控制（RBAC）和 POSIX 型存取控制清單（Acl）的存取控制模型。 本文摘要說明 Data Lake Storage Gen2 存取控制模型的基本概念。
 
-<a id="azure-role-based-access-control-rbac" />
+<a id="azure-role-based-access-control-rbac"></a>
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 
@@ -72,11 +71,11 @@ SAS 權杖會在其權杖中包含允許的權限。 SAS 權杖中包含的權�
 |Java|[使用 JAVA 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl](data-lake-storage-directory-file-acl-java.md)|
 |Python|[使用 Python 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl](data-lake-storage-directory-file-acl-python.md)|
 |PowerShell|[使用 PowerShell 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl](data-lake-storage-directory-file-acl-powershell.md)|
-|Azure CLI|[使用 Azure CLI 來管理中的目錄、檔案和 Acl Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
+|Azure CLI|[使用 Azure CLI 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案，以及 ACL](data-lake-storage-directory-file-acl-cli.md)|
 |REST API |[路徑-更新](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
-> 如果安全性主體是*服務*主體，請務必使用服務主體的物件識別碼，而不是相關應用程式註冊的物件識別碼。 若要取得服務主體的物件識別碼，請開啟 Azure CLI，然後使用此命令： `az ad sp show --id <Your App ID> --query objectId`。 請務必將`<Your App ID>`預留位置取代為應用程式註冊的應用程式識別碼。
+> 如果安全性主體是*服務*主體，請務必使用服務主體的物件識別碼，而不是相關應用程式註冊的物件識別碼。 若要取得服務主體的物件識別碼，請開啟 Azure CLI，然後使用此命令： `az ad sp show --id <Your App ID> --query objectId` 。 請務必將預留位置取代為 `<Your App ID>` 應用程式註冊的應用程式識別碼。
 
 ### <a name="types-of-access-control-lists"></a>存取控制清單的類型
 
@@ -123,7 +122,7 @@ SAS 權杖會在其權杖中包含允許的權限。 SAS 權杖中包含的權�
 
 下表列出一些常見的案例，可協助您瞭解在儲存體帳戶上執行某些作業所需的許可權。
 
-|    作業             |    /    | Oregon/ | Portland/ | Data.txt     |
+|    操作             |    /    | Oregon/ | Portland/ | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
 | Read Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Append to Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
@@ -281,7 +280,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-不需要。 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
+否。 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
 
 如果 HNS 關閉，Azure RBAC 授權規則仍適用。
 
@@ -321,7 +320,7 @@ Or
 
 當您定義服務主體的 Acl 時，請務必針對您所建立的應用程式註冊使用*服務主體*的物件識別碼（OID）。 請務必注意，已註冊的應用程式在特定的 Azure AD 租使用者中有個別的服務主體。 已註冊的應用程式具有在 Azure 入口網站中可見的 OID，但*服務主體*具有另一個（不同的） oid。
 
-若要取得對應至應用程式註冊之服務主體的 OID，您可以使用`az ad sp show`命令。 將 [應用程式識別碼] 指定為參數。 以下是針對服務主體取得對應至應用程式識別碼 = 18218b12-1895-43e9-ad80-6e8fc1ea88ce 之應用程式註冊的 OID 範例。 在 Azure CLI 中執行下列命令：
+若要取得對應至應用程式註冊之服務主體的 OID，您可以使用 `az ad sp show` 命令。 將 [應用程式識別碼] 指定為參數。 以下是針對服務主體取得對應至應用程式識別碼 = 18218b12-1895-43e9-ad80-6e8fc1ea88ce 之應用程式註冊的 OID 範例。 在 Azure CLI 中執行下列命令：
 
 ```azurecli
 az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId

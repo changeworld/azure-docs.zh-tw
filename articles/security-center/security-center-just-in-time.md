@@ -8,12 +8,11 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: cc4e267c6912b8938db1ba5497a27f9c0026bd79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b24e0487aef73ed7852cb4a64766a1f8d92aff94
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887328"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677421"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>使用及時存取保護您的管理埠
 
@@ -66,15 +65,15 @@ ms.locfileid: "80887328"
     - 5986 - WinRM
 1. （選擇性）您可以將自訂埠新增至清單：
 
-      1. 按一下 [加入]  。 [**新增埠**設定] 視窗隨即開啟。
+      1. 按一下 **[新增]** 。 [**新增埠**設定] 視窗隨即開啟。
       1. 針對您選擇要設定的每個埠（預設和自訂），您可以自訂下列設定：
             - **通訊協定類型** - 核准要求時在此連接埠上允許的通訊協定。
             - **允許的來源 IP 位址** - 核准要求時在此連接埠上允許的 IP 範圍。
             - **要求時間上限** - 可開啟特定連接埠的時間範圍上限。
 
-     1. 按一下 [確定]  。
+     1. 按一下 [確定]。
 
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案] 。
 
 > [!NOTE]
 >啟用 VM 的 JIT VM 存取時，Azure 資訊安全中心會在與 Azure 防火牆相關聯的網路安全性群組中，為選取的埠建立「拒絕所有輸入流量」規則。 如果已針對選取的埠建立其他規則，則現有的規則會優先于新的「拒絕所有輸入流量」規則。 如果選取的埠上沒有現有的規則，則新的「拒絕所有輸入流量」規則會優先使用網路安全性群組和 Azure 防火牆。
@@ -115,7 +114,7 @@ ms.locfileid: "80887328"
 
 1. 在 [設定]**** 索引標籤的 [虛擬機器]**** 下方，按一下該虛擬機器列中的三點圖示，選取要新增連接埠的虛擬機器。 
 
-1. 選取 [編輯]  。
+1. 選取 [編輯]。
 
 1. 在 [JIT VM 存取設定]**** 下方，您可以對於已經保護的連接埠編輯現有設定，也可以新增自訂連接埠。 
   ![JIT VM 存取](./media/security-center-just-in-time/edit-policy.png)
@@ -211,7 +210,7 @@ Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使�
 
 1.    指派一個變數，為虛擬機器保留 Just-In-Time 虛擬機器存取原則：
 
-        $JitPolicy = （@ {id = "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" 埠 = （@ {number = 22;       protocol = "\*";       allowedSourceAddressPrefix = @ （"\*"）;       maxRequestAccessDuration = "PT3H"}，@ {number = 3389;       protocol = "\*";       allowedSourceAddressPrefix = @ （"\*"）;       maxRequestAccessDuration = "PT3H"}）}）
+        $JitPolicy = （@ {id = "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";  埠 = （@ {number = 22;       protocol = " \* ";       allowedSourceAddressPrefix = @ （" \* "）;       maxRequestAccessDuration = "PT3H"}，@ {number = 3389;       protocol = " \* ";       allowedSourceAddressPrefix = @ （" \* "）;       maxRequestAccessDuration = "PT3H"}）}）
 
 2.    將虛擬機器 Just-In-Time 虛擬機器存取原則插入陣列中：
     
@@ -228,7 +227,7 @@ Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使�
 在 PowerShell 中執行下列命令：
 1.    設定 VM 要求存取屬性
 
-        $JitPolicyVm 1 = （@ {id = "/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" 埠 = （@ {number = 22;     endTimeUtc = "2018-09-17T17：00： 00.3658798 Z";     allowedSourceAddressPrefix = @ （"IPV4ADDRESS"）}）}）
+        $JitPolicyVm 1 = （@ {id = "/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";  埠 = （@ {number = 22;     endTimeUtc = "2018-09-17T17：00： 00.3658798 Z";     allowedSourceAddressPrefix = @ （"IPV4ADDRESS"）}）}）
 2.    將 VM 存取要求參數插入陣列中：
 
         $JitPolicyArr = @ （$JitPolicyVm 1）

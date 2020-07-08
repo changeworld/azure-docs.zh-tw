@@ -9,22 +9,21 @@ editor: ''
 ms.assetid: 3c1f9c62-af57-4634-a0d8-435522d969aa
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 464fa05f658dd6e6e25d79f8840ceeb939383149
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b864cc8bc0e5d39967a2307bd98bda082b6cfd5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77467210"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515227"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>透過 Azure 入口網站進行 StorSimple Virtual Array 的災害復原和裝置容錯移轉
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本文說明 Microsoft Azure StorSimple Virtual Array 的災害復原，包括容錯移轉至另一個虛擬陣列的詳細步驟。 容錯移轉可讓您將資料從資料中心的「來源」** 裝置移至「目標」** 裝置。 目標裝置可能位於相同或不同的地理位置。 裝置容錯移轉適用於整個裝置。 在容錯移轉期間，來源裝置的雲端資料會將擁有權變更為目標裝置雲端資料。
 
 本文僅適用於 StorSimple Virtual Array。 若要容錯移轉 8000 系列裝置，請參閱 [StorSimple 裝置的裝置容錯移轉和災害復原](storsimple-device-failover-disaster-recovery.md)。
@@ -44,7 +43,7 @@ ms.locfileid: "77467210"
 
 ## <a name="prerequisites-for-device-failover"></a>裝置容錯移轉需求
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 對於裝置容錯移轉，請確定符合下列必要條件：
 

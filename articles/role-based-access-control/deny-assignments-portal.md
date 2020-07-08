@@ -8,18 +8,17 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 97c03d417f8bf123de3332142344f292de00e3b2
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734105"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790241"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>使用 Azure 入口網站列出 Azure 拒絕指派
 
@@ -28,7 +27,7 @@ ms.locfileid: "82734105"
 > [!NOTE]
 > 您無法直接建立自己的拒絕指派。 如需如何建立拒絕指派的相關資訊，請參閱[Azure 拒絕指派](deny-assignments.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要取得拒絕指派的相關資訊，您必須具有：
 
@@ -42,7 +41,7 @@ ms.locfileid: "82734105"
 
 1. 按一下您要列出的管理群組或訂用帳戶。
 
-1. 按一下 **[存取控制（IAM）**]。
+1. 按一下 [存取控制 (IAM)]。
 
 1. 按一下 [拒絕指派]**** 索引標籤 (或是按一下 [檢視拒絕指派] 動態磚上的 [檢視]**** 按鈕)。
 
@@ -59,7 +58,7 @@ ms.locfileid: "82734105"
     | **名稱** | 拒絕指派的名稱。 |
     | **主體類型** | 使用者、群組、系統定義的群組或服務主體。 |
     | **拒絕**  | 拒絕指派中涵蓋的安全性主體名稱。 |
-    | **Id** | 拒絕指派的唯一識別碼。 |
+    | **識別碼** | 拒絕指派的唯一識別碼。 |
     | **已排除主體** | 是否有拒絕指派排除在外的安全性主體。 |
     | **不會套用至子系** | 拒絕指派是否已繼承到子範圍內。 |
     | **受保護的系統** | 拒絕指派是否由 Azure 管理。 目前都是。 |
@@ -90,7 +89,7 @@ ms.locfileid: "82734105"
 
     ![拒絕指派：拒絕的權限](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | 動作類型 | 描述 |
+    | 動作類型 | Description |
     | --- | --- |
     | **動作**  | 拒絕的管理作業。 |
     | **NotActions** | 從拒絕的管理作業中排除的管理作業。 |

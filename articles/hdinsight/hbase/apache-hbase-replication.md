@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e05cd861f899b700e68c151fcbaa6778dc43eb3a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75435657"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959189"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>設定 Azure 虛擬網路中的 Apache HBase 叢集複寫
 
@@ -38,7 +37,7 @@ ms.locfileid: "75435657"
 
 您可以從 [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) 使用[指令碼動作](../hdinsight-hadoop-customize-cluster-linux.md)指令碼複寫叢集。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 在開始本文之前，您必須擁有 Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="set-up-the-environments"></a>設定環境
@@ -85,7 +84,7 @@ ms.locfileid: "75435657"
 
 | 屬性 | 值 |
 |----------|-------|
-| Location | 美國東部 |
+| 位置 | 美國東部 |
 | VNet 名稱 | &lt;ClusterNamePrevix>-vnet2 |
 | 位址空間首碼 | 10.2.0.0/16 |
 | 子網路名稱 | subnet 1 |
@@ -180,7 +179,9 @@ ms.locfileid: "75435657"
 
     此命令會傳回類似下列文字的值：
 
-        vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+    ```output
+    vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+    ```
 
     `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文字是此虛擬網路的 __DNS 尾碼__。 儲存這個值以便稍後使用。
 
@@ -227,7 +228,7 @@ ms.locfileid: "75435657"
 
     回應看起來類似下列文字：
 
-    ```
+    ```output
     Server:         10.2.0.4
     Address:        10.2.0.4#53
     
@@ -296,18 +297,18 @@ sudo service bind9 status
    3. **前端**：務必選取此項目。 清除其他節點類型。
    4. **參數**：下列範例參數會針對所有現有的資料表啟用複寫，然後將來源叢集的所有資料複製到目的地叢集：
 
-          -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
+    `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata`
     
       > [!NOTE]
       > 針對來源與目的地叢集 DNS 名稱，使用主機名稱而非 FQDN。
       >
       > 本逐步解說假設 hn1 為作用中前端節點。 請檢查您的叢集，以識別使用中的前端節點。
 
-6. 選取 [建立]  。 指令碼執行需要花費一些時間，特別是在使用 **-copydata** 引數的情況下。
+6. 選取 [建立]。 指令碼執行需要花費一些時間，特別是在使用 **-copydata** 引數的情況下。
 
 必要的引數︰
 
-|名稱|描述|
+|Name|說明|
 |----|-----------|
 |-s, --src-cluster | 指定來源 HBase 叢集的 DNS 名稱。 例如：-s hbsrccluster, --src-cluster=hbsrccluster |
 |-d, --dst-cluster | 指定目的地 (複本) HBase 叢集的 DNS 名稱。 例如：-s dsthbcluster, --src-cluster=dsthbcluster |
@@ -316,7 +317,7 @@ sudo service bind9 status
 
 選擇性的引數︰
 
-|名稱|描述|
+|Name|說明|
 |----|-----------|
 |-su, --src-ambari-user | 指定來源 HBase 叢集上 Ambari 的管理員使用者名稱。 預設值為 **admin**。 |
 |-du, --dst-ambari-user | 指定目的地 HBase 叢集上 Ambari 的管理員使用者名稱。 預設值為 **admin**。 |
@@ -336,19 +337,19 @@ sudo service bind9 status
 
 - **在兩個叢集之間的所有資料表上啟用複寫**。 這種情況下，資料表上不需要複製或移轉現有資料，且不會使用 Phoenix 資料表。 使用下列參數︰
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>`
 
 - **在特定資料表上啟用複寫**。 如要在 table1、table2 和 table3 上啟用複寫，請使用下列參數：
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"`
 
 - **在特定資料表上啟用複寫，並複製現有資料**。 如要在 table1、table2 和 table3 上啟用複寫，請使用下列參數：
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata`
 
 - **在所有資料表上啟用複寫，並將 Phoenix 中繼資料從來源複寫到目的地**。 Phoenix 中繼資料複寫並非萬無一失。 請謹慎使用。 使用下列參數︰
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta`
 
 ## <a name="copy-and-migrate-data"></a>複製並移轉資料
 
@@ -360,7 +361,7 @@ sudo service bind9 status
 
 您可以依照[啟用複寫](#enable-replication)中描述的相同程序，來呼叫指令碼動作。 使用下列參數︰
 
-    -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
+`-m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]`
 
 [指令碼](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh)的 `print_usage()` 區段有參數的詳細說明。
 
@@ -368,22 +369,21 @@ sudo service bind9 status
 
 - **針對到目前為止 (目前時間戳記) 所有已編輯的資料列複製特定資料表 (test1、test2 和 test3)**：
 
-        -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
+  `-m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
+
   或：
 
-        -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-
+  `-m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
 
 - **以指定時間範圍複製特定資料表**：
 
-        -m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"
-
+  `-m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"`
 
 ## <a name="disable-replication"></a>停用複寫
 
 若要停用複寫，可從 [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) 使用另一個指令碼動作指令碼。 您可以依照[啟用複寫](#enable-replication)中描述的相同程序，來呼叫指令碼動作。 使用下列參數︰
 
-    -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
+`-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">`
 
 [指令碼](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh)的 `print_usage()` 區段有參數的詳細說明。
 
@@ -391,14 +391,15 @@ sudo service bind9 status
 
 - **停用所有資料表上的複寫**：
 
-        -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
+  `-m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all`
+
   或
 
-        --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
+  `--src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>`
 
 - **停用特定資料表 (table1、table2 和 table3) 上的複寫**：
 
-        -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+  `-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"`
 
 > [!NOTE]
 > 如果您想要刪除目的地叢集，請務必從來源叢集的對等清單中將它移除。 這可以藉由在來源叢集上的 hbase shell 上執行命令 remove_peer ' 1 ' 來完成。 若失敗，來源叢集可能無法正常運作。

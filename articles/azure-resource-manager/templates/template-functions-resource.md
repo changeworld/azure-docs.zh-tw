@@ -2,13 +2,12 @@
 title: 範本函式 - 資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: aea3f654551f66390afa207ac5ce682d23e5bfe9
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.date: 06/18/2020
+ms.openlocfilehash: f79fa3420420a2ff440c3228f227cc71436b4a1c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780569"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099261"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 範本的資源函式
 
@@ -83,7 +82,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "lockName":{
@@ -101,14 +100,14 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 }
 ```
 
-<a id="listkeys" />
-<a id="list" />
+<a id="listkeys"></a>
+<a id="list"></a>
 
 ## <a name="list"></a>list*
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-此函式的語法因清單作業的名稱而異。 每項實作會對支援 list 作業的資源類型傳回值。 此作業必須以 `list` 開頭。 常見的使用方式包括 `listKeys`、`listKeyValue` 和 `listSecrets`。
+此函式的語法因清單作業的名稱而異。 每項實作會對支援 list 作業的資源類型傳回值。 此作業必須以 `list` 開頭。 一些常見的用法是 `listKeys` 、 `listKeyValue` 和 `listSecrets` 。
 
 ### <a name="parameters"></a>參數
 
@@ -120,7 +119,9 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 
 ### <a name="valid-uses"></a>有效用法
 
-list 函式只能用在資源定義的屬性中，以及範本或部署的輸出區段中。 與[屬性反覆運算](copy-properties.md)搭配使用時，您可以將 list 函式用於 `input`，因為運算式會指派給資源屬性。 您無法將這些函式用於 `count`，因為在解析 list 函式之前就必須確定計數。
+清單函數可用於資源定義的屬性。 請勿使用 list 函式，在範本的輸出區段中公開機密資訊。 輸出值會儲存在部署歷程記錄中，並可由惡意使用者抓取。
+
+與[屬性反覆運算](copy-properties.md)搭配使用時，您可以將 list 函式用於 `input`，因為運算式會指派給資源屬性。 您無法將這些函式用於 `count`，因為在解析 list 函式之前就必須確定計數。
 
 ### <a name="implementations"></a>實作
 
@@ -167,8 +168,8 @@ list 函式只能用在資源定義的屬性中，以及範本或部署的輸出
 | Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
+| Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/version2020-06-01/topics/listsharedaccesskeys) |
 | Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub) |
 | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub) |
 | Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub) |
@@ -284,71 +285,31 @@ list 函式只能用在資源定義的屬性中，以及範本或部署的輸出
 
 ### <a name="list-example"></a>清單範例
 
-下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json)顯示如何在 outputs 區段中從儲存體帳戶傳回主要和次要金鑰。 它也會傳回儲存體帳戶的 SAS 權杖。
-
-若要取得 SAS 權杖，請傳遞到期時間的物件。 到期時間必須是未來的時間。 此範例的用意是要示範如何使用清單函式。 一般而言，您會在資源值中使用 SAS 權杖，而非將它傳回作為輸出值。 輸出值會儲存於部署歷程記錄，並不安全。
+下列範例會在設定[部署腳本](deployment-script-template.md)的值時使用 listKeys。
 
 ```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagename": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "southcentralus"
-        },
-        "accountSasProperties": {
-            "type": "object",
-            "defaultValue": {
-                "signedServices": "b",
-                "signedPermission": "r",
-                "signedExpiry": "2018-08-20T11:00:00Z",
-                "signedResourceTypes": "s"
-            }
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2018-02-01",
-            "name": "[parameters('storagename')]",
-            "location": "[parameters('location')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "StorageV2",
-            "properties": {
-                "supportsHttpsTrafficOnly": false,
-                "accessTier": "Hot",
-                "encryption": {
-                    "services": {
-                        "blob": {
-                            "enabled": true
-                        },
-                        "file": {
-                            "enabled": true
-                        }
-                    },
-                    "keySource": "Microsoft.Storage"
-                }
-            },
-            "dependsOn": []
-        }
-    ],
-    "outputs": {
-        "keys": {
-            "type": "object",
-            "value": "[listKeys(parameters('storagename'), '2018-02-01')]"
-        },
-        "accountSAS": {
-            "type": "object",
-            "value": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties'))]"
+"storageAccountSettings": {
+    "storageAccountName": "[variables('storageAccountName')]",
+    "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+}
+```
+
+下一個範例顯示接受參數的清單函式。 在此情況下，函式為**listAccountSas**。 針對到期時間傳遞物件。 到期時間必須是未來的時間。
+
+```json
+"parameters": {
+    "accountSasProperties": {
+        "type": "object",
+        "defaultValue": {
+            "signedServices": "b",
+            "signedPermission": "r",
+            "signedExpiry": "2020-08-20T11:00:00Z",
+            "signedResourceTypes": "s"
         }
     }
-}
+},
+...
+"sasToken": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties')).accountSasToken]"
 ```
 
 如需 listKeyValue 範例，請參閱[快速入門：使用應用程式組態和 Resource Manager 範本進行自動化 VM 部署](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values)。
@@ -386,7 +347,7 @@ list 函式只能用在資源定義的屬性中，以及範本或部署的輸出
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "providerNamespace": {
@@ -495,7 +456,7 @@ list 函式只能用在資源定義的屬性中，以及範本或部署的輸出
 
 您無法使用 reference 函式在複製迴圈中設定 `count` 屬性的值。 您可以使用該函式來設定迴圈中的其他屬性。 計數屬性的參考遭到封鎖，因為在解析 reference 函式之前就必須決定該屬性。
 
-您無法在[巢狀範本](linked-templates.md#nested-template)的輸出中使用 reference 函式，以傳回已在巢狀範本中部署的資源。 此時應使用[連結的範本](linked-templates.md#linked-template)。
+若要在嵌套範本的輸出區段中使用 reference 函式或任何 list * 函式，您必須將設定 ```expressionEvaluationOptions``` 為使用[內部範圍](linked-templates.md#expression-evaluation-scope-in-nested-templates)評估，或使用連結而不是嵌套的範本。
 
 如果您在有條件部署的資源中使用 **reference** 函式，即使未部署資源，也會評估該函式。  如果 **reference** 函式參考不存在的資源，就會發生錯誤。 請使用 **if** 函式，以確保只有在部署資源時才會評估函式。 如需對有條件部署的資源搭配使用 if 和 reference 的範例範本，請參閱 [if 函式](template-functions-logical.md#if)。
 
@@ -537,10 +498,20 @@ list 函式只能用在資源定義的屬性中，以及範本或部署的輸出
 
 [適用於 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)是針對某些資源隱含建立的[延伸模組資源類型](../management/extension-resource-types.md)。 由於受控識別未明確定義於範本中，因此您必須參考套用身分識別的資源。 請使用 `Full` 取得所有屬性，包括隱含建立的身分識別。
 
-例如，若要針對套用至虛擬機器擴展集的受控識別取得其租用戶識別碼，請使用：
+模式為：
+
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+
+例如，若要取得套用至虛擬機器之受控識別的主體識別碼，請使用：
 
 ```json
-"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
+"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
+```
+
+或者，若要取得適用于虛擬機器擴展集之受控識別的租使用者識別碼，請使用：
+
+```json
+"[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
 ```
 
 ### <a name="reference-example"></a>參考範例
@@ -549,7 +520,7 @@ list 函式只能用在資源定義的屬性中，以及範本或部署的輸出
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "storageAccountName": {
@@ -643,7 +614,7 @@ list 函式只能用在資源定義的屬性中，以及範本或部署的輸出
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageResourceGroup": {
@@ -715,7 +686,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -755,7 +726,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 | resourceGroupName |否 |字串 |預設值為目前資源群組。 需要擷取另一個訂用帳戶中的資源群組時，請指定此值。 只有在部署於資源群組範圍時，才需要提供此值。 |
 | resourceType |是 |字串 |資源的類型 (包括資源提供者命名空間)。 |
 | resourceName1 |是 |字串 |資源的名稱。 |
-| resourceName2 |否 |字串 |下一個資源名稱區段 (如有必要)。 |
+| resourceName2 |No |字串 |下一個資源名稱區段 (如有必要)。 |
 
 當資源類型包含更多區段時，請繼續新增資源名稱作為參數。
 
@@ -817,7 +788,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "virtualNetworkName": {
@@ -863,7 +834,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -925,7 +896,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -945,12 +916,12 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字串 (GUID 格式) |預設值為目前的訂用帳戶。 需要擷取另一個訂用帳戶中的資源群組時，請指定此值。 |
 | resourceType |是 |字串 |資源的類型 (包括資源提供者命名空間)。 |
 | resourceName1 |是 |字串 |資源的名稱。 |
-| resourceName2 |否 |字串 |下一個資源名稱區段 (如有必要)。 |
+| resourceName2 |No |字串 |下一個資源名稱區段 (如有必要)。 |
 
 當資源類型包含更多區段時，請繼續新增資源名稱作為參數。
 
@@ -972,7 +943,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "principalId": {
@@ -1031,7 +1002,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 |:--- |:--- |:--- |:--- |
 | resourceType |是 |字串 |資源的類型 (包括資源提供者命名空間)。 |
 | resourceName1 |是 |字串 |資源的名稱。 |
-| resourceName2 |否 |字串 |下一個資源名稱區段 (如有必要)。 |
+| resourceName2 |No |字串 |下一個資源名稱區段 (如有必要)。 |
 
 當資源類型包含更多區段時，請繼續新增資源名稱作為參數。
 

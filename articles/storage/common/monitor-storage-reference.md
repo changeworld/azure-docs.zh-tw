@@ -9,12 +9,11 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 481406b02d7d864dd16ac42918ae1aa2dea0b145
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: HT
+ms.openlocfilehash: 12df9566dd3ddfedd1f4553ad8877258d840858c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195216"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960209"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure 儲存體監視資料參考
 
@@ -32,11 +31,15 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 #### <a name="account-level"></a>帳戶層級
 
+下表顯示[帳戶層級的計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)。
+
 | 計量 | 描述 |
 | ------------------- | ----------------- |
 | UsedCapacity | 儲存體帳戶所使用的儲存體數量。 若為標準儲存體帳戶，則為 Blob、資料表、檔案和佇列所使用的容量總和。 若為進階儲存體帳戶和 Blob 儲存體帳戶，此數量和 BlobCapacity 相同。 <br/><br/> 單位：位元組 <br/> 彙總類型：Average <br/> 值範例：1024 |
 
 #### <a name="blob-storage"></a>Blob 儲存體
+
+下表顯示[Blob 儲存體計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)。
 
 | 計量 | 描述 |
 | ------------------- | ----------------- |
@@ -47,6 +50,8 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 #### <a name="table-storage"></a>表格儲存體
 
+下表顯示[資料表儲存體計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountstableservices)。
+
 | 計量 | 描述 |
 | ------------------- | ----------------- |
 | TableCapacity | 儲存體帳戶所使用的表格儲存體數量。 <br/><br/> 單位：位元組 <br/> 彙總類型：Average <br/> 值範例：1024 |
@@ -55,13 +60,17 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 #### <a name="queue-storage"></a>佇列儲存體
 
+下表顯示[佇列儲存體計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)。
+
 | 計量 | 描述 |
 | ------------------- | ----------------- |
 | QueueCapacity | 儲存體帳戶所使用的佇列儲存體數量。 <br/><br/> 單位：位元組 <br/> 彙總類型：Average <br/> 值範例：1024 |
 | QueueCount   | 儲存體帳戶中的佇列數目。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 |
-| QueueMessageCount | 儲存體帳戶中未到期的佇列訊息數目。 <br/><br/>單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 |
+| QueueMessageCount | 儲存體帳戶佇列服務中的佇列訊息大約數目。 <br/><br/>單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 |
 
 #### <a name="file-storage"></a>檔案儲存體
+
+下表顯示檔案[儲存體計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)。
 
 | 計量 | 描述 |
 | ------------------- | ----------------- |
@@ -128,16 +137,16 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 }
 ```
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:---|
 |**time** | 儲存體收到要求時的國際標準時間 (UTC) 時間。 例如： `2018/11/08 21:09:36.6900118` 。|
-|**resourceId** | 儲存體帳戶的資源識別碼。 例如： `/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
+|**resourceId** | 儲存體帳戶的資源識別碼。 例如：`/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
 |**類別** | 所要求作業的分類。 例如：`StorageRead`、`StorageWrite` 或 `StorageDelete`。|
 |**operationName** | 執行的 REST 作業類型。 <br> 如需作業的完整清單，請參閱[儲存體分析記錄作業和狀態訊息主題](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
 |**operationVersion** | 提出要求時所指定的儲存體服務版本。 這等同於 **x-ms-version** 標頭值。 例如： `2017-04-17` 。|
 |**schemaVersion** | 記錄的結構描述版本。 例如： `1.0` 。|
-|**statusCode** | 要求的 HTTP 狀態碼。 如果要求中斷，此值可能會被設為 `Unknown`。 <br> 例如： `206` |
-|**statusText** | 所要求作業的狀態。  如需狀態訊息的完整清單，請參閱[儲存體分析記錄作業和狀態訊息主題](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 在 2017-04-17 版和更新版本中，不會使用狀態訊息 `ClientOtherError`。 相反地，此欄位包含錯誤碼。 例如： `SASSuccess`  |
+|**statusCode** | 要求的 HTTP 狀態碼。 如果要求中斷，此值可能會被設為 `Unknown`。 <br> 例如：`206` |
+|**statusText** | 所要求作業的狀態。  如需狀態訊息的完整清單，請參閱[儲存體分析記錄作業和狀態訊息主題](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 在 2017-04-17 版和更新版本中，不會使用狀態訊息 `ClientOtherError`。 相反地，此欄位包含錯誤碼。 例如：`SASSuccess`  |
 |**durationMs** | 執行要求作業的總時間 (以毫秒表示)。 包括讀取連入要求和傳送回應給要求者的時間。 例如： `12` 。|
 |**callerIpAddress** | 要求者的 IP 位址，包含連接埠號碼。 例如： `192.100.0.102:4362` 。 |
 |**correlationId** | 用來讓資源之間記錄相互關聯的識別碼。 例如： `b99ba45e-a01e-0042-4ea6-772bbb000000` 。 |
@@ -252,15 +261,15 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 |**conditionsUsed** | 代表條件的索引鍵/值組分號分隔清單。 條件可以是下列任何一項： <li> If-Modified-Since <li> If-Unmodified-Since <li> If-Match <li> If-None-Match  <br> 例如： `If-Modified-Since=Friday, 05-Aug-11 19:11:54 GMT` 。 |
 |**contentLengthHeader** | 傳送至儲存體服務的要求內容長度標頭值。 如果要求成功，則此值等於 requestBodySize。 如果要求不成功，則此值可能不等於 requestBodySize，或可能是空值。 |
 |**tlsVersion** | 要求連線中使用的 TLS 版本。 例如： `TLS 1.2` 。 |
-|**smbTreeConnectID** | 伺服器訊息區 (SMB) **treeConnectId** 會在樹狀結構連線時間建立。 例如： `0x3` |
-|**smbPersistentHandleID** | 網路重新連線後持續存在的 SMB2 CREATE 要求，其中的持續控點識別碼。  在 [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中參考為 **SMB2_FILEID.Persistent**。 例如： `0x6003f` |
-|**smbVolatileHandleID** | 在網路重新連線時回收的 SMB2 CREATE 要求，其中的變動性控點識別碼。  在 [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中參考為 **SMB2_FILEID.Volatile**。 例如： `0xFFFFFFFF00000065` |
-|**smbMessageID** | 連線相對 **MessageId**。 例如： `0x3b165` |
+|**smbTreeConnectID** | 伺服器訊息區 (SMB) **treeConnectId** 會在樹狀結構連線時間建立。 例如：`0x3` |
+|**smbPersistentHandleID** | 網路重新連線後持續存在的 SMB2 CREATE 要求，其中的持續控點識別碼。  在 [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中參考為 **SMB2_FILEID.Persistent**。 例如：`0x6003f` |
+|**smbVolatileHandleID** | 在網路重新連線時回收的 SMB2 CREATE 要求，其中的變動性控點識別碼。  在 [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中參考為 **SMB2_FILEID.Volatile**。 例如：`0xFFFFFFFF00000065` |
+|**smbMessageID** | 連線相對 **MessageId**。 例如：`0x3b165` |
 |**smbCreditsConsumed** | 要求所使用的輸入或輸出 (單位為 64k)。 例如： `0x3` |
-|**smbCommandDetail** | 此特定要求的詳細資訊，而不是一般的要求類型。 例如： `0x2000 bytes at offset 0xf2000` |
-|**smbFileId** | 與檔案或目錄相關聯的 **FileId**。  大致類似於 NTFS 欄位。 例如： `0x9223442405598953` |
-|**smbSessionID** | 在工作階段設定期間建立的 SMB2 **SessionId**。 例如： `0x8530280128000049` |
-|**smbCommandMajor  uint32** | **SMB2_HEADER.Command** 中的值。 目前，這是介於 0 到 18 (含) 之間的數字。 例如： `0x6` |
+|**smbCommandDetail** | 此特定要求的詳細資訊，而不是一般的要求類型。 例如：`0x2000 bytes at offset 0xf2000` |
+|**smbFileId** | 與檔案或目錄相關聯的 **FileId**。  大致類似於 NTFS 欄位。 例如：`0x9223442405598953` |
+|**smbSessionID** | 在工作階段設定期間建立的 SMB2 **SessionId**。 例如：`0x8530280128000049` |
+|**smbCommandMajor  uint32** | **SMB2_HEADER.Command** 中的值。 目前，這是介於 0 到 18 (含) 之間的數字。 例如：`0x6` |
 |**smbCommandMinor** | 在適當的情況下，**SmbCommandMajor** 的子類別。 例如： `DirectoryCloseAndDelete` |
 
 ## <a name="see-also"></a>另請參閱

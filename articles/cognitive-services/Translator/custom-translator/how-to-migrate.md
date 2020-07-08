@@ -9,12 +9,11 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: face605d756d2107c04b3df0c072602ac91d147d
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: 02e6d776dbb47ee8e30409f6b8adc5a61fc5fe52
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992890"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958917"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>將中樞工作區和專案移轉至自訂翻譯工具
 
@@ -137,11 +136,11 @@ ms.locfileid: "83992890"
 | SMT 自訂    | 是    | 否 |
 | NMT 自訂    | 否    | 是 |
 | 新的統一語音服務自訂    | 否    | 是 |
-| 不追蹤 | 是 | 是 |
+| 不追蹤 | Yes | Yes |
 
 ## <a name="new-languages"></a>新語言
 
-如果您是使用為 Microsoft Translator 建立新語言系統的社區或組織，請前往以 [custommt@microsoft.com](mailto:custommt@microsoft.com) 取得詳細資訊。
+如果您是使用為 Translator 建立新語言系統的社區或組織，請聯繫以 [custommt@microsoft.com](mailto:custommt@microsoft.com) 取得詳細資訊。
 
 ## <a name="next-steps"></a>後續步驟
 

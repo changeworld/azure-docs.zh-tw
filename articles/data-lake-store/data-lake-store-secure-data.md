@@ -9,15 +9,14 @@ editor: cgronlun
 ms.assetid: ca35e65f-3986-4f1b-bf93-9af6066bb716
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1ae93dad9a18c18e330b4ff65924dd1db7a1faf0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260302"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515254"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>保護儲存在 Azure Data Lake Storage Gen1 中的資料
 保護儲存在 Azure Data Lake Storage Gen1 中的資料，其方法有三步驟。  必須設定角色型存取控制 (RBAC) 和存取控制清單 (ACL) 都，才能完整啟用使用者和安全性群組之資料的存取權。
@@ -29,10 +28,10 @@ ms.locfileid: "79260302"
 
 本文提供有關如何使用 Azure 入口網站執行上述工作的詳細指示。 如需 Data Lake Storage Gen1 如何在帳戶和資料層級實作安全性的深入資訊，請參閱 [Azure Data Lake Storage Gen1 安全性](data-lake-store-security-overview.md)。 如需如何在 Data Lake Storage Gen1 中實作 ACL 的深入資訊，請參閱 [Data Lake Storage Gen1 中的存取控制概觀](data-lake-store-access-control.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 開始進行本教學課程之前，您必須具備下列條件：
 
-* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Data Lake Storage Gen1 帳戶**。 如需如何建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>在 Azure Active Directory 中建立安全性群組
@@ -74,7 +73,7 @@ ms.locfileid: "79260302"
    
     ![新增安全性群組](./media/data-lake-store-secure-data/adl.add.user.2.png "新增安全性群組")
    
-5. 按一下 **[儲存]** 。 您會看見新增的安全性群組，如下所示。
+5. 按一下 [檔案] 。 您會看見新增的安全性群組，如下所示。
    
     ![已新增的安全性群組](./media/data-lake-store-secure-data/adl.add.user.3.png "已新增的安全性群組")
 
@@ -102,7 +101,7 @@ ms.locfileid: "79260302"
 4. 按一下 [新增]**** 圖示，以開啟 [指派權限]**** 刀鋒視窗。 在此刀鋒視窗中，按一下 [選取使用者或群組]****，然後在 [選取使用者或群組]**** 刀鋒視窗中，搜尋您稍早在 Azure Active Directory 中建立的安全性群組。 若您需要搜尋大量的群組，請使用頂端的文字方塊來篩選群組名稱。 按一下您要新增的群組，然後按一下 [選取] ****。
    
     ![新增群組](./media/data-lake-store-secure-data/adl.acl.3.png "新增群組")
-5. 按一下 [選取權限]****，選取權限、權限是否應該以遞迴方式套用，以及您想要將權限指派為存取 ACL、預設 ACL 或兩者並用。 按一下 [確定]  。
+5. 按一下 [選取權限]****，選取權限、權限是否應該以遞迴方式套用，以及您想要將權限指派為存取 ACL、預設 ACL 或兩者並用。 按一下 [確定]。
    
     ![將權限指派至群組](./media/data-lake-store-secure-data/adl.acl.4.png "將權限指派至群組")
    
@@ -130,7 +129,7 @@ Data Lake Storage Gen1 可讓您進一步在網路層級鎖定資料存放區的
 1. 在 Data Lake Storage Gen1 帳戶刀鋒視窗中，按一下 [存取控制 (IAM)]****。 
    
     ![將安全性群組指派給 Data Lake Storage Gen1 帳戶](./media/data-lake-store-secure-data/adl.select.user.icon.png "將安全性群組指派給 Data Lake Storage Gen1 帳戶")
-2. 在 [存取控制 (IAM)] **** 刀鋒視窗中，按一下您想要移除的安全性群組。 按一下 [移除]****。
+2. 在 [存取控制 (IAM)] **** 刀鋒視窗中，按一下您想要移除的安全性群組。 按一下 **[移除]** 。
    
     ![已移除的安全性群組](./media/data-lake-store-secure-data/adl.remove.group.png "已移除的安全性群組")
 
@@ -147,7 +146,7 @@ Data Lake Storage Gen1 可讓您進一步在網路層級鎖定資料存放區的
    
     ![將權限指派至群組](./media/data-lake-store-secure-data/adl.remove.acl.png "將權限指派至群組")
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [將資料從 Azure 儲存體 Blob 複製到 Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [搭配 Data Lake Storage Gen1 使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

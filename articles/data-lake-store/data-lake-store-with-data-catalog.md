@@ -3,15 +3,14 @@ title: 將 Data Lake Storage Gen1 與 Azure 資料目錄整合
 description: 瞭解如何從 Azure 資料目錄中的 Azure Data Lake Storage Gen1 註冊資料，讓資料可在您的組織中探索。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 66191a52c6ef1f3d19afd2a47356487b07e9eff4
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 1484c4bf17d5f437d681e32559b7e6ed4115f5f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692346"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515133"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>在 Azure 資料目錄中從 Azure Data Lake Storage Gen1 註冊資料
 在此文章中，您將了解如何使用 Azure 資料目錄來整合 Azure Data Lake Storage Gen1，使您的資料與資料目錄整合，讓使用者可在組織中進行搜尋。 如需編目資料的詳細資訊，請參閱 [Azure 資料目錄](../data-catalog/data-catalog-what-is-data-catalog.md)。 若要了解您可以使用資料目錄的案例，請參閱 [Azure 資料目錄常見案例](../data-catalog/data-catalog-common-scenarios.md)。
@@ -19,8 +18,8 @@ ms.locfileid: "82692346"
 ## <a name="prerequisites"></a>Prerequisites
 開始進行本教學課程之前，您必須具備下列條件：
 
-* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* 針對 Data Lake Storage Gen1 **啟用您的 Azure 訂用帳戶**。 請參閱 [指示](data-lake-store-get-started-portal.md)。
+* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* 針對 Data Lake Storage Gen1 **啟用您的 Azure 訂用帳戶**。 請參閱[指示](data-lake-store-get-started-portal.md)。
 * **Data Lake Storage Gen1 帳戶**。 請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 的指示。 在此教學課程中，會建立名為 **datacatalogstore** 的 Data Lake Storage Gen1 帳戶。
 
     一旦您建立帳戶之後，請將範例資料集上傳給它。 在本教學課程中，讓我們上傳 **Azure Data Lake Git 儲存機制** 中 [AmbulanceData](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/)資料夾下的所有 .csv 檔案。 您可以使用各種用戶端，例如： [Azure 儲存體總管](https://storageexplorer.com/)，將資料上傳至 Blob 容器。
@@ -59,7 +58,7 @@ ms.locfileid: "82692346"
 
     ![檢視資料結構](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "檢視資料結構")
 
-    按一下 [註冊]  。
+    按一下 [註冊] 。
 1. 下列螢幕擷取畫面表示已成功在資料目錄中註冊資料。
 
     ![註冊完成](./media/data-lake-store-with-data-catalog/registration-complete.png "檢視資料結構")

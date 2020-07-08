@@ -1,21 +1,18 @@
 ---
 title: 我們即將于2023年3月1日淘汰 Azure 傳統 Vm
 description: 文章提供傳統 VM 淘汰的高階總覽
-services: virtual-machines
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: e56aa5ec073aadc2a16d53c266d33255a34077cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7488ef45d665d95a28f69b7af887b98dd5a76376
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668797"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678370"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>將您的 IaaS 資源遷移到2023年3月1日 Azure Resource Manager 
 
@@ -25,7 +22,7 @@ ms.locfileid: "80668797"
 
 傳統 Vm 將會遵循[新式生命週期原則](https://support.microsoft.com/help/30881/modern-lifecycle-policy)來淘汰。
 
-## <a name="how-does-this-affect-me"></a>此變更對我造成什麼影響？ 
+## <a name="how-does-this-affect-me"></a>此變更會對我造成什麼影響？ 
 
 1) 從2020年2月28日開始，未在2020年2月透過 Azure Service Manager （ASM）利用 IaaS Vm 的客戶將不再能夠建立傳統 Vm。 
 2) 2023年3月1日之後，客戶將無法再使用 Azure Service Manager 啟動 IaaS Vm，而且任何仍在執行或已配置的系統將會停止並解除配置。 

@@ -6,12 +6,11 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 77c464f51bd17921052b3ae1e9fefb49e777d6c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f7621867aad6baf517462983e35afb0b28223756
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181900"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341312"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>使用 Azure CLI 適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
 
@@ -54,16 +53,16 @@ ms.locfileid: "82181900"
 
 1. 有兩種方式可取得適用於 PostgreSQL 的 Azure 資料庫單一伺服器的受控識別。
 
-    ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>建立具有受控識別的新適用於 MySQL 的 Azure 資料庫伺服器。
+    ### <a name="create-an-new-azure-database-for-postgresql-server-with-a-managed-identity"></a>建立具有受控識別的新適用於 PostgreSQL 的 Azure 資料庫伺服器。
 
     ```azurecli-interactive
-    az postgres server create --name -g <resource_group> --location <locations> --storage-size <size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled>  --assign-identity
+    az postgres server create --name <server_name> -g <resource_group> --location <location> --storage-size <size>  -u <user> -p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled> --assign-identity
     ```
 
-    ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>更新現有的適用於 MySQL 的 Azure 資料庫伺服器，以取得受控識別。
+    ### <a name="update-an-existing-the-azure-database-for-postgresql-server-to-get-a-managed-identity"></a>更新現有的適用於 PostgreSQL 的 Azure 資料庫伺服器，以取得受控識別。
 
     ```azurecli-interactive
-    az postgres server update –name <server name>  -g <resoure_group> --assign-identity
+    az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
 2. 設定**主體**的**金鑰許可權**（**Get**、Wrap、解除**包裝** **），** 這是于 postgresql 單一伺服器伺服器的名稱。
@@ -77,14 +76,14 @@ ms.locfileid: "82181900"
 1. 使用在 Azure Key Vault 中建立的金鑰，為適用於 PostgreSQL 的 Azure 資料庫單一伺服器啟用資料加密。
 
     ```azurecli-interactive
-    az postgres server key create –name  <server name>  -g <resource_group> --kid <key url>
+    az postgres server key create --name <server_name> -g <resource_group> --kid <key_url>
     ```
 
     金鑰 url：`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ## <a name="using-data-encryption-for-restore-or-replica-servers"></a>針對還原或複本伺服器使用資料加密
 
-使用儲存在 Key Vault 中的客戶管理金鑰加密適用於 PostgreSQL 的 Azure 資料庫單一伺服器之後，任何新建立的伺服器複本也會一併加密。 您可以透過本機或異地還原作業，或透過複本（本機/跨區域）作業來建立此新複本。 因此，如果是加密的于 postgresql 單一伺服器伺服器，您可以使用下列步驟來建立加密的已還原伺服器。
+在「適用於 PostgreSQL 單一伺服器的 Azure 資料庫」使用儲存於 Key Vault 的客戶管理金鑰加密之後，任何新建立的伺服器複本也會一併加密。 您可以透過本機或異地還原作業，或透過複本（本機/跨區域）作業來建立此新複本。 因此，如果是加密的于 postgresql 單一伺服器伺服器，您可以使用下列步驟來建立加密的已還原伺服器。
 
 ### <a name="creating-a-restoredreplica-server"></a>建立還原/複本伺服器
 
@@ -102,7 +101,7 @@ ms.locfileid: "82181900"
 ### <a name="get-the-key-used"></a>取得使用的金鑰
 
     ```azurecli-interactive
-    az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
+    az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
     ```
 
     Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
@@ -131,7 +130,7 @@ ms.locfileid: "82181900"
 ### <a name="for-an-existing-server"></a>針對現有的伺服器
 此外，您可以使用 Azure Resource Manager 範本，在現有適用於 PostgreSQL 的 Azure 資料庫單一伺服器上啟用資料加密。
 
-* 傳遞您稍早在 properties 物件的`Uri`屬性下複製之 Azure Key Vault 金鑰的資源識別碼。
+* 傳遞您稍早在 properties 物件的屬性下複製之 Azure Key Vault 金鑰的資源識別碼 `Uri` 。
 
 * 使用*2020-01-01-preview*作為 API 版本。
 

@@ -2,18 +2,17 @@
 title: B 系列高載-Azure 虛擬機器
 description: 描述 B 系列高載 Azure VM 的大小。
 services: virtual-machines
+ms.subservice: sizes
 author: ayshakeen
-manager: gwallace
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 5121ef8eb3123d830233e91968c69b331d255bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78161075"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678540"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列高載虛擬機器大小
 
@@ -29,7 +28,7 @@ B 系列有下列 VM 大小：
 
 記憶體保留更新：支援
 
-| Size | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | VM 的基礎 CPU 效能 | VM 的最大 CPU 效能 | 初始信用額度 | 點數存款/小時 | 最大累積點數 | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps | 最大未快取的磁片輸送量： IOPS/MBps | 最大 NIC |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | VM 的基礎 CPU 效能 | VM 的最大 CPU 效能 | 初始信用額度 | 點數存款/小時 | 最大累積點數 | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS/MBps | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Standard_B1ls<sup>1</sup> | 1  | 0.5 | 4   | 5%   | 100%  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
 | Standard_B1s              | 1  | 1   | 4   | 10%  | 100%  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 2  |
@@ -58,7 +57,7 @@ B16 特性：
 
 ![每小時流量資料的圖表](./media/b-series-burstable/office-workload.png)
 
-| 案例 | 時間 | CPU 使用量（%） | 累積的信用額度<sup>1</sup> | 可用點數 |
+| 狀況 | 時間 | CPU 使用量（%） | 累積的信用額度<sup>1</sup> | 可用點數 |
 | --- | --- | --- | --- | --- |
 | B16ms 部署 | 部署 | 部署  | 480（初始信用額度） | 480 |
 | 沒有流量 | 0:00 | 0 | 162 | 642 |
@@ -86,7 +85,7 @@ B16 特性：
 | 沒有流量 | 22:00 | 0 | 162 | 642 |
 | 沒有流量 | 23:00 | 0 | 162 | 804 |
 
-<sup>1</sup>小時內累積的信用額度/信用額度相當於： `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`。  
+<sup>1</sup>小時內累積的信用額度/信用額度相當於： `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes` 。  
 
 針對具有16個 vcpu 和 64 GiB 記憶體的 D16s_v3，每小時速率為 $0.936 （每月 $673.92），而針對具有16個 vcpu 和 64 GiB 記憶體的 B16ms，速率為每小時 $0.794 （每月 $547.86）。 <b>這會導致15% 的節約！</b>
 

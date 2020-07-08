@@ -3,12 +3,11 @@ title: 範本函式-數值
 description: 描述 Azure Resource Manager 範本中用來使用數值的函式。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: dc15ade453fc5ea4dc031ced0377892f4f8cf27d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 00b44d971a487a0bbec27f3fc2d0746cedd6f874
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677911"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM 範本的數值函數
 
@@ -20,8 +19,8 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 * [float](#float)
 * [int](#int)
 * [max](#max)
-* [分鐘](#min)
-* [乘](#mod)
+* [min](#min)
+* [mod](#mod)
 * [mul](#mul)
 * [sub](#sub)
 
@@ -33,10 +32,10 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-|operand1 |是 |int |要新增的第一個數字。 |
-|operand2 |是 |int |要新增的第二個數字。 |
+|operand1 |Yes |int |要新增的第一個數字。 |
+|operand2 |Yes |int |要新增的第二個數字。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -48,7 +47,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -91,10 +90,10 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | loopName | 否 | 字串 | 用來取得反覆項目的迴圈名稱。 |
-| Offset |否 |int |要加入到以零為起始之反覆項目值的數字。 |
+| Offset |No |int |要加入到以零為起始之反覆項目值的數字。 |
 
 ### <a name="remarks"></a>備註
 
@@ -156,10 +155,10 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |是 |int |被除數。 |
-| operand2 |是 |int |除數。 不可以是0。 |
+| operand1 |Yes |int |被除數。 |
+| operand2 |Yes |int |除數。 不可以是0。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -171,7 +170,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -214,9 +213,9 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |字串或整數 |要轉換為浮點數的值。 |
+| arg1 |Yes |字串或整數 |要轉換為浮點數的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -248,9 +247,9 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |是 |字串或整數 |要轉換成整數的值。 |
+| valueToConvert |Yes |字串或整數 |要轉換成整數的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -262,7 +261,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToConvert": {
@@ -295,9 +294,9 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |整數的陣列，或以逗號分隔的整數清單 |要用來取得最大值的集合。 |
+| arg1 |Yes |整數的陣列，或以逗號分隔的整數清單 |要用來取得最大值的集合。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -309,7 +308,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -338,7 +337,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
 
-## <a name="min"></a>Min
+## <a name="min"></a>分鐘
 
 `min (arg1)`
 
@@ -346,9 +345,9 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |整數的陣列，或以逗號分隔的整數清單 |要用來取得最小值的集合。 |
+| arg1 |Yes |整數的陣列，或以逗號分隔的整數清單 |要用來取得最小值的集合。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -360,7 +359,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -397,10 +396,10 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |是 |int |被除數。 |
-| operand2 |是 |int |用來除的數位不能為0。 |
+| operand1 |Yes |int |被除數。 |
+| operand2 |Yes |int |用來除的數位不能為0。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -412,7 +411,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -455,10 +454,10 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |是 |int |要相乘的第一個數字。 |
-| operand2 |是 |int |要相乘的第二個數字。 |
+| operand1 |Yes |int |要相乘的第一個數字。 |
+| operand2 |Yes |int |要相乘的第二個數字。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -470,7 +469,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -513,10 +512,10 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |是 |int |減數。 |
-| operand2 |是 |int |被減數。 |
+| operand1 |Yes |int |減數。 |
+| operand2 |Yes |int |被減數。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -528,7 +527,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -566,4 +565,4 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 ## <a name="next-steps"></a>後續步驟
 
 * 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
-* 若要在建立資源類型時反復執行指定的次數，請參閱[在 Azure Resource Manager 中建立資源的多個實例](copy-resources.md)。
+* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。

@@ -10,14 +10,13 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/01/2020
+ms.date: 06/05/2020
 ms.author: borisb
-ms.openlocfilehash: d739f9f5c0e1be80005d5f3c6db5aa94ff6cc85d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: HT
+ms.openlocfilehash: 7c15c96305cc1220d9ca3cdb9062d7ea7acb4e86
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299837"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85098940"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 應用程式和解決方案概觀
 
@@ -43,7 +42,7 @@ ms.locfileid: "84299837"
 
 ## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Oracle Linux 和 WebLogic 伺服器上的應用程式
 
-在支援的 Oracle 作業系統上執行 Azure 中的企業應用程式。 Azure Marketplace 提供以下虛擬機器映像：
+在支援的 Oracle Linux 映射上執行 Azure 中的企業應用程式。 Azure Marketplace 提供以下虛擬機器映像：
 
 * Oracle WebLogic Server 12.1.2
 
@@ -53,9 +52,9 @@ ms.locfileid: "84299837"
 
 * 在 Azure 基礎結構上設定 [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956)[Active Data Guard with FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)、[Sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) 或 [Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html)，並搭配使用[可用性區域](../../../availability-zones/az-overview.md)，能讓區域內達到高可用性。 您也可以跨多個 Azure 區域設定上述組態，提升可用性和災害復原能力。
 
-* 對於 Azure 中的 Oracle Linux VM 和您的內部部署或實體伺服器，可使用 [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) 來協調和管理災害復原。 
+* 使用[Azure Site Recovery](../../../site-recovery/site-recovery-overview.md)來協調和管理 Azure 中 Oracle Linux vm 和實體伺服器的嚴重損壞修復。 
 
-* 可使用 [Azure VMWare 解決方案](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/)或 [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/) 來啟用 Azure 中的 Oracle Real Application Clusters (RAC)。
+* 使用[Azure VMware Solution](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)，在 Azure 中啟用 Oracle REAL Application 叢集（RAC）。
 
 ## <a name="backup-oracle-workloads"></a>備份 Oracle 工作負載
 
@@ -74,7 +73,7 @@ ms.locfileid: "84299837"
 
 使用 Terraform 範本設定 Azure 基礎結構並安裝 Oracle 應用程式。 
 
-自 2020 年 5 月起，使用 Azure/Oracle 雲端互連解決方案時，以下 Oracle 應用程式將獲得認證，可在 Azure 中執行：
+當透過 Azure/Oracle 雲端互連解決方案連接到 Oracle 資料庫時，Oracle 已認證這些應用程式在 Azure 中執行：
 
 * E-Business Suite
 * JD Edwards EnterpriseOne
@@ -86,7 +85,7 @@ ms.locfileid: "84299837"
 
 ### <a name="set-up-oracle-databases-in-oci"></a>在 OCI 中設定 Oracle 資料庫
 
-將 Oracle Database 雲端服務 (Autonomous Database、RAC、Exadata、DBaaS、Single Node) 搭配使用 Azure 中執行的 Oracle 應用程式。 深入了解 [OCI 資料庫選項](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
+使用 Oracle Database 雲端服務（自發資料庫、RAC、Exadata、DBaaS、單一節點）搭配在 Azure 中執行的 Oracle 軟體。 深入了解 [OCI 資料庫選項](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
  
 
 ## <a name="licensing"></a>授權

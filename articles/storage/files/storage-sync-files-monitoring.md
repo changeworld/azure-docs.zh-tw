@@ -3,16 +3,15 @@ title: 監視 Azure 檔案同步 | Microsoft Docs
 description: 如何監視 Azure 檔案同步。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ac09f9b59bc6f47adc9311cc910352c1a0d73b5d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 0232a0c6526d6dcdfec86dedec437c71e7e21080
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68699295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515210"
 ---
 # <a name="monitor-azure-file-sync"></a>監視 Azure 檔案同步
 
@@ -34,17 +33,17 @@ ms.locfileid: "68699295"
 
 以下是 Azure 監視器中提供的 Azure 檔案同步計量：
 
-| 度量名稱 | 描述 |
+| 度量名稱 | Description |
 |-|-|
 | 同步的位元組 | 傳輸的資料大小 (上傳和下載)。<br><br>單位：位元組<br>匯總類型：總和<br>適用的維度：伺服器端點名稱、同步方向、同步組名 |
 | 雲端階層處理重新叫用 | 重新叫用的資料大小。<br><br>**注意**：未來將會移除此度量。 使用 [雲端階層處理重新叫用大小] 計量來監視重新叫用的資料大小。<br><br>單位：位元組<br>匯總類型：總和<br>適用的維度：伺服器名稱 |
 | 雲端階層處理重新叫用大小 | 重新叫用的資料大小。<br><br>單位：位元組<br>匯總類型：總和<br>適用的維度：伺服器名稱、同步組名 |
-| 雲端階層處理重新叫用應用程式的大小 | 應用程式所回收的資料大小。<br><br>單位：位元組<br>匯總類型：總和<br>適用的維度：應用程式名稱、伺服器名稱、同步組名 |
+| 雲端階層處理重新叫用大小 (依應用程式) | 應用程式所回收的資料大小。<br><br>單位：位元組<br>匯總類型：總和<br>適用的維度：應用程式名稱、伺服器名稱、同步組名 |
 | 雲端階層處理重新叫用輸送量 | 資料重新叫用輸送量的大小。<br><br>單位：位元組<br>匯總類型：總和<br>適用的維度：伺服器名稱、同步組名 |
-| 檔案無法同步 | 無法同步的檔案計數。<br><br>單位：計數<br>匯總類型：總和<br>適用的維度：伺服器端點名稱、同步方向、同步組名 |
-| 同步的檔案 | 傳輸的檔案計數 (上傳和下載)。<br><br>單位：計數<br>匯總類型：總和<br>適用的維度：伺服器端點名稱、同步方向、同步組名 |
-| 伺服器線上狀態 | 從伺服器接收到的活動訊號計數。<br><br>單位：計數<br>彙總類型：最大<br>適用的維度：伺服器名稱 |
-| 同步工作階段結果 | 同步工作階段結果 (1=成功的同步工作階段；0=失敗的同步工作階段)<br><br>單位：計數<br>匯總類型：最大值<br>適用的維度：伺服器端點名稱、同步方向、同步組名 |
+| 檔案無法同步 | 無法同步的檔案計數。<br><br>單位：Count<br>匯總類型：總和<br>適用的維度：伺服器端點名稱、同步方向、同步組名 |
+| 同步的檔案 | 傳輸的檔案計數 (上傳和下載)。<br><br>單位：Count<br>匯總類型：總和<br>適用的維度：伺服器端點名稱、同步方向、同步組名 |
+| 伺服器線上狀態 | 從伺服器接收到的活動訊號計數。<br><br>單位：Count<br>彙總類型：最大值<br>適用的維度：伺服器名稱 |
+| 同步工作階段結果 | 同步工作階段結果 (1=成功的同步工作階段；0=失敗的同步工作階段)<br><br>單位：Count<br>匯總類型：最大值<br>適用的維度：伺服器端點名稱、同步方向、同步組名 |
 
 ### <a name="alerts"></a>警示
 
@@ -52,7 +51,7 @@ ms.locfileid: "68699295"
 
 下表列出一些要監視的範例案例，以及要用於警示的適當計量：
 
-| 案例 | 用於警示的度量 |
+| 狀況 | 用於警示的度量 |
 |-|-|
 | 入口網站中的伺服器端點健康情況 = 錯誤 | 同步工作階段結果 |
 | 檔案無法同步處理到伺服器或雲端端點 | 檔案無法同步 |
@@ -68,7 +67,7 @@ ms.locfileid: "68699295"
 ### <a name="registered-server-health"></a>已註冊的伺服器健全狀況
 
 - 如果**已註冊的伺服器**狀態為 [**線上**]，伺服器就會成功與服務進行通訊。
-- 如果 [**已註冊的伺服器**] 狀態顯示為 [**離線**]，請確認伺服器上的儲存體同步監視器（azurestoragesyncmonitor.exe）進程正在執行。 如果伺服器位於防火牆或 proxy 後方，請參閱[這篇文章](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy)以設定防火牆和 proxy。
+- 如果 [**已註冊的伺服器**] 狀態顯示為 [**離線**]，請確認伺服器上的儲存體同步監視器（AzureStorageSyncMonitor.exe）進程正在執行。 如果伺服器位於防火牆或 proxy 後方，請參閱[這篇文章](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy)以設定防火牆和 proxy。
 
 ### <a name="server-endpoint-health"></a>伺服器端點健全狀況
 
@@ -79,7 +78,7 @@ ms.locfileid: "68699295"
 
 - 下列計量圖表可在儲存體同步服務入口網站中看到：
 
-  | 度量名稱 | 描述 | 分頁名稱 |
+  | 度量名稱 | Description | 分頁名稱 |
   |-|-|-|
   | 同步的位元組 | 傳輸的資料大小 (上傳和下載) | 同步群組、伺服器端點 |
   | 雲端階層處理重新叫用 | 重新叫用的資料大小 | 已註冊的伺服器 |
@@ -96,7 +95,7 @@ ms.locfileid: "68699295"
 
 在 Windows Server 上，您可以查看雲端階層處理、已註冊的伺服器，以及同步處理健康情況。
 
-### <a name="event-logs"></a>事件記錄
+### <a name="event-logs"></a>事件記錄檔
 
 使用伺服器上的遙測事件記錄，可監視已註冊的伺服器、同步、和雲端階層處理健康情況。 遙測事件記錄檔位於 [*應用程式] 和 [and services\microsoft\filesync\agent*] 底下的事件檢視器。
 
@@ -132,11 +131,11 @@ ms.locfileid: "68699295"
 
 使用伺服器上的 Azure 檔案同步效能計數器，可監視同步活動。
 
-若要在伺服器上查看 Azure 檔案同步效能計數器，請開啟效能監視器（Perfmon）。 您可以在 [已傳送的**Afs 位元組**] 和 [ **afs 同步作業**] 物件底下找到計數器。
+若要在伺服器上查看 Azure 檔案同步效能計數器，請開啟 [效能監視器（Perfmon.exe）]。 您可以在 [已傳送的**Afs 位元組**] 和 [ **afs 同步作業**] 物件底下找到計數器。
 
 以下是效能監視器中為 Azure 檔案同步提供的效能計數器：
 
-| 效能物件\計數器名稱 | 描述 |
+| 效能物件\計數器名稱 | Description |
 |-|-|
 | 傳輸的 AFS 位元組\每秒下載的位元組 | 每秒下載的位元組數。 |
 | 傳輸的 AFS 位元組\每秒上傳的位元組 | 每秒上傳的位元組數。 |

@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3e769d33db0a8f28ed22ba3c284a1e9b23ea6d11
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74806655"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959155"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>使用適用于 Apache HBase 的 .NET SDK
 
@@ -25,7 +24,9 @@ ms.locfileid: "74806655"
 
 HBase .NET SDK 以 NuGet 封裝的形式提供，能以 Visual Studio **NuGet 套件管理員主控台**使用下列命令來安裝：
 
-    Install-Package Microsoft.HBase.Client
+```console
+Install-Package Microsoft.HBase.Client
+```
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>實例化新的 HBaseClient 物件
 

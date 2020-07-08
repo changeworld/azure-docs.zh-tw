@@ -1,24 +1,13 @@
 ---
 title: Azure 服務匯流排訊息流覽
 description: 流覽和查看服務匯流排訊息可讓 Azure 服務匯流排用戶端列舉位於佇列或訂用帳戶中的所有訊息。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77539360"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341237"
 ---
 # <a name="message-browsing"></a>訊息瀏覽
 

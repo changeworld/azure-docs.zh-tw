@@ -6,12 +6,11 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 83b223ab2195516492d55ac85be6e7db0dffbd98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 57850b45820ec259337a8ad5b67bfebfd6762c24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176782"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790580"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>使用診斷設定來分析記錄和計量
 
@@ -28,7 +27,7 @@ ms.locfileid: "82176782"
 
 ## <a name="logs"></a>記錄
 
-|Log | 描述 |
+|記錄檔 | 說明 |
 |----|----|
 | **ApplicationConsole** | 所有客戶應用程式的主控台記錄。 |
 | **SystemLogs** | 目前，只有此類別中的[春季 Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server)記錄。 |
@@ -49,7 +48,7 @@ ms.locfileid: "82176782"
     * **傳送至 Log Analytics**
 
 1. 選擇您想要監視的記錄類別和計量類別，然後指定保留時間（以天為單位）。 保留時間僅適用于儲存體帳戶。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 > [!NOTE]
 > 1. 當記錄或計量發出時，以及它們出現在您的儲存體帳戶、事件中樞或 Log Analytics 時，可能會有最多15分鐘的間隔。
@@ -105,7 +104,7 @@ ms.locfileid: "82176782"
     | limit 50
     ```
 > [!NOTE]
-> `==`會區分大小寫， `=~`但不會。
+> `==`會區分大小寫，但 `=~` 不會。
 
 若要深入瞭解 Log Analytics 中使用的查詢語言，請參閱[Azure 監視器記錄查詢](../azure-monitor/log-query/query-language.md)。
 
@@ -174,3 +173,31 @@ AppPlatformLogsforSpring
 ### <a name="learn-more-about-querying-application-logs"></a>深入瞭解如何查詢應用程式記錄
 
 Azure 監視器提供使用 Log Analytics 來查詢應用程式記錄的廣泛支援。 若要深入瞭解這項服務，請參閱[開始使用 Azure 監視器中的記錄查詢](../azure-monitor/log-query/get-started-queries.md)。 如需建立查詢以分析應用程式記錄檔的詳細資訊，請參閱[Azure 監視器中的記錄查詢總覽](../azure-monitor/log-query/log-query-overview.md)。
+
+## <a name="frequently-asked-questions-faq"></a>常見問題集 (FAQ)
+
+### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>如何將多行 JAVA 堆疊追蹤轉換成一行？
+
+有一個因應措施，將多行堆疊追蹤轉換成一行。 您可以修改 JAVA 記錄輸出以重新格式化堆疊追蹤訊息，將分行符號取代為標記。 如果您使用 JAVA Logback 程式庫，您可以藉由新增來重新格式化堆疊追蹤訊息，如下所示 `%replace(%ex){'[\r\n]+', '\\n'}%nopex` ：
+
+```xml
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                level: %level, message: "%logger{36}: %msg", exceptions: "%replace(%ex){'[\r\n]+', '\\n'}%nopex"%n
+            </pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+```
+然後，您可以在 Log Analytics 中再次將權杖取代為分行符號，如下所示：
+
+```sql
+AppPlatformLogsforSpring
+| extend Log = array_strcat(split(Log, '\\n'), '\n')
+```
+您可以將相同的策略用於其他 JAVA 記錄程式庫。

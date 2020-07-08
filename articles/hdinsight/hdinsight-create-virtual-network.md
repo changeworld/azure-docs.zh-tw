@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c7791d43ffbbc13ab151362c5c3026ebbdb0d34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: abe9938a3cc9466a56a3e4be24a677751e28e9ac
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531011"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960158"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>建立 Azure HDInsight 叢集的虛擬網路
 
@@ -48,9 +47,9 @@ ms.locfileid: "81531011"
 使用下列 PowerShell 指令碼建立限制輸入流量的虛擬網路，並允許來自北歐區域之 IP 位址的流量。
 
 > [!IMPORTANT]  
-> 變更此範例中`hdirule1`和`hdirule2`的 IP 位址，以符合您所使用的 Azure 區域。 您可以在[HDInsight 管理 IP 位址](hdinsight-management-ip-addresses.md)找到此資訊。
+> 變更 `hdirule1` 此範例中和的 IP 位址， `hdirule2` 以符合您所使用的 Azure 區域。 您可以在[HDInsight 管理 IP 位址](hdinsight-management-ip-addresses.md)找到此資訊。
 
-```powershell
+```azurepowershell
 $vnetName = "Replace with your virtual network name"
 $resourceGroupName = "Replace with the resource group the virtual network is in"
 $subnetName = "Replace with the name of the subnet that you plan to use for HDInsight"
@@ -153,7 +152,7 @@ $vnet | Set-AzVirtualNetwork
 
 此範例示範如何新增規則，以允許所需 IP 位址上的輸入流量。 它不包含規則來限制來自其他來源的輸入存取。 下列程式碼示範如何從網際網路啟用 SSH 存取：
 
-```powershell
+```azurepowershell
 Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
 Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 ```
@@ -162,7 +161,7 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
 使用下列步驟建立限制輸入流量的虛擬網路，但允許來自 HDInsight 所需 IP 位址的流量。
 
-1. 使用下列命令來建立名為 `hdisecure`的新網路安全性群組。 將`RESOURCEGROUP`取代為包含 Azure 虛擬網路的資源群組。 將`LOCATION`取代為在其中建立群組的位置（區域）。
+1. 使用下列命令來建立名為 `hdisecure`的新網路安全性群組。 `RESOURCEGROUP`將取代為包含 Azure 虛擬網路的資源群組。 `LOCATION`將取代為在其中建立群組的位置（區域）。
 
     ```azurecli
     az network nsg create -g RESOURCEGROUP -n hdisecure -l LOCATION
@@ -170,10 +169,10 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
     建立群組之後，您會收到新群組的相關資訊。
 
-2. 使用下列將規則新增至新的網路安全性群組，這些規則允許從 Azure HDInsight 健康狀態和管理服務透過連接埠 443 的輸入通訊。 以`RESOURCEGROUP`包含 Azure 虛擬網路的資源組名取代。
+2. 使用下列將規則新增至新的網路安全性群組，這些規則允許從 Azure HDInsight 健康狀態和管理服務透過連接埠 443 的輸入通訊。 `RESOURCEGROUP`以包含 Azure 虛擬網路的資源組名取代。
 
     > [!IMPORTANT]  
-    > 變更此範例中`hdirule1`和`hdirule2`的 IP 位址，以符合您所使用的 Azure 區域。 您可以在[HDInsight 管理 IP 位址](hdinsight-management-ip-addresses.md)中找到這項資訊。
+    > 變更 `hdirule1` 此範例中和的 IP 位址， `hdirule2` 以符合您所使用的 Azure 區域。 您可以在[HDInsight 管理 IP 位址](hdinsight-management-ip-addresses.md)中找到這項資訊。
 
     ```azurecli
     az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
@@ -192,9 +191,11 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
     此命令會傳回類似下列文字的值：
 
-        "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    ```output
+    "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    ```
 
-4. 使用下列命令將網路安全性群組套用至子網路。 將`GUID`和`RESOURCEGROUP`值取代為上一個步驟所傳回的值。 將`VNETNAME`和`SUBNETNAME`取代為您想要建立的虛擬網路名稱和子網名稱。
+4. 使用下列命令將網路安全性群組套用至子網路。 將 `GUID` 和值取代為 `RESOURCEGROUP` 上一個步驟所傳回的值。 `VNETNAME`將和取代為 `SUBNETNAME` 您想要建立的虛擬網路名稱和子網名稱。
 
     ```azurecli
     az network vnet subnet update -g RESOURCEGROUP --vnet-name VNETNAME --name SUBNETNAME --set networkSecurityGroup.id="/subscriptions/GUID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
@@ -226,9 +227,9 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
 1. 若要尋找虛擬網路的 DNS 尾碼，請使用 Azure PowerShell 或 Azure CLI：
 
-    將`RESOURCEGROUP`取代為包含虛擬網路的資源組名，然後輸入命令：
+    將取代 `RESOURCEGROUP` 為包含虛擬網路的資源組名，然後輸入命令：
 
-    ```powershell
+    ```azurepowershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
@@ -308,9 +309,9 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
 1. 若要尋找這兩個虛擬網路的 DNS 尾碼，請使用 Azure PowerShell 或 Azure CLI：
 
-    將`RESOURCEGROUP`取代為包含虛擬網路的資源組名，然後輸入命令：
+    將取代 `RESOURCEGROUP` 為包含虛擬網路的資源組名，然後輸入命令：
 
-    ```powershell
+    ```azurepowershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
@@ -377,4 +378,4 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
 * 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
 
-* 如需使用者定義路由的詳細資訊，請參閱[使用者定義的路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。
+* 如需使用者定義路由的詳細資訊，請參閱[使用者定義路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。

@@ -8,18 +8,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: reference
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 430b65217da33185cd3b5c235fb148f3350e1bfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 79e3ed41ad3038cf66d61c25292ebad55c2b5e92
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74024448"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84731692"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Microsoft 365 服務的系統管理員角色
 
@@ -38,7 +37,7 @@ SharePoint Online | [Azure AD 管理員角色](directory-assign-admin-roles.md)<
 安全分數 | [Azure AD 管理員角色](directory-assign-admin-roles.md) | [圖形 API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[擷取角色指派](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 合規性管理員 | [合規性管理員角色](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | 無法使用
 Azure 資訊保護 | [Azure AD 管理員角色](directory-assign-admin-roles.md) | [圖形 API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[擷取角色指派](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Microsoft Cloud App Security | [角色型存取控制](https://docs.microsoft.com/cloud-app-security/manage-admins) | [應用程式開發介面參考](https://docs.microsoft.com/cloud-app-security/api-tokens) 
+Microsoft Cloud App Security | [角色型存取控制](https://docs.microsoft.com/cloud-app-security/manage-admins) | [API 參考](https://docs.microsoft.com/cloud-app-security/api-tokens) 
 Azure 進階威脅防護 | [Azure ATP 角色群組](https://docs.microsoft.com/azure-advanced-threat-protection/atp-role-groups) | 無法使用
 Windows Defender 進階威脅防護 | [Windows Defender ATP 角色型存取控制](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | 無法使用
 Privileged Identity Management | [Azure AD 管理員角色](directory-assign-admin-roles.md) | [圖形 API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[擷取角色指派](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)

@@ -1,24 +1,13 @@
 ---
 title: Azure 服務匯流排訊息過期
 description: 本文說明 Azure 服務匯流排訊息的到期和存留時間。 在這種期限之後，就不會再傳遞訊息。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: ca789be91e835576ec06a422bdbbbf25eb775dac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76756329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341208"
 ---
 # <a name="message-expiration-time-to-live"></a>訊息到期 (存留時間)
 
@@ -26,7 +15,7 @@ ms.locfileid: "76756329"
 
 對於通常會在應用程式或應用程式組件的部分執行內容中使用佇列和主題的開發與測試環境，它也很適合用來將擱置的測試訊息自動進行記憶體回收，如此一來，就能全新開始下一個測試執行。
 
-任何個別訊息的到期都能透過設定 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 系統屬性來控制，其會指定相對的持續期間。 將訊息加入實體的佇列時，到期就會變成絕對瞬間。 在這段時間， [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc)屬性會採用值[（**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**）](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)。 當沒有任何用戶端正在主動接聽時，不會強制執行代理訊息上的存留時間（TTL）設定。
+任何個別訊息的到期都能透過設定 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 系統屬性來控制，其會指定相對的持續期間。 將訊息加入實體的佇列時，到期就會變成絕對瞬間。 在這段時間， [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc)屬性會採用值[（**EnqueuedTimeUtc** ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc)  +  [ **TimeToLive**）](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)。 當沒有任何用戶端正在主動接聽時，不會強制執行代理訊息上的存留時間（TTL）設定。
 
 經過 **ExpiresAtUtc** 瞬間之後，訊息就會變成不適合用於擷取。 到期不會影響目前已鎖定來進行傳遞的訊息；仍會正常處理那些訊息。 如果鎖定到期或已放棄訊息，則到期將會立即生效。
 
@@ -74,7 +63,7 @@ ms.locfileid: "76756329"
     - 沒有傳送  
     - 沒有對主題的更新  
     - 沒有排定的訊息 
-- 訂閱
+- 訂用帳戶
     - 沒有接收  
     - 沒有對訂用帳戶的更新  
     - 沒有新規則新增到訂用帳戶  
