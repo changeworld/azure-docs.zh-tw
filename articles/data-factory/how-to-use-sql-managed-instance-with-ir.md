@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Data Factory 中搭配 Azure-SQL Server Integration Services (SSIS) 使用 Azure SQL Database 受控執行個體
-description: 了解如何在 Azure Data Factory 中搭配 SQL Server Integration Services (SSIS) 使用 Azure SQL Database 受控執行個體。
+title: 在 Azure Data Factory 中搭配 Azure SQL Server Integration Services （SSIS）使用 Azure SQL 受控執行個體
+description: 瞭解如何在 Azure Data Factory 中搭配使用 Azure SQL 受控執行個體與 SQL Server Integration Services （SSIS）。
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,30 +11,29 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 74cad0ab9ffc3eb05219cb9e2c2585e73498c9bd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: f53c7ccec5e82b79966807f12978adfb00940354
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663536"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195374"
 ---
-# <a name="use-azure-sql-database-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure Data Factory 中搭配 SQL Server Integration Services (SSIS) 使用 Azure SQL Database 受控執行個體
+# <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure Data Factory 中搭配使用 Azure SQL 受控執行個體與 SQL Server Integration Services （SSIS）
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-您現在可以將 SQL Server Integration Services (SSIS) 專案、套件和工作負載移至 Azure 雲端。 使用 SQL Server Management Studio (SSMS) 等熟悉的工具，在 Azure SQL Database 或 SQL Database 受控執行個體上，部署、執行及管理 SSIS 專案和套件。 本文重點說明搭配 Azure-SSIS Integration Runtime (IR) 使用 Azure SQL Database 受控執行個體時的下列特定領域：
+您現在可以將 SQL Server Integration Services (SSIS) 專案、套件和工作負載移至 Azure 雲端。 使用熟悉的工具（例如 SQL Server Management Studio （SSMS）），在 Azure SQL Database 或 SQL 受控執行個體上部署、執行及管理 SSIS 專案和套件。 本文將重點放在使用 Azure SQL 受控執行個體搭配 Azure SSIS 整合執行時間（IR）時的下列特定區域：
 
-- [使用 Azure SQL Database 受控執行個體所裝載的 SSIS 目錄 (SSISDB) 佈建 Azure-SSIS IR](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-database-managed-instance)
+- [使用 Azure SQL 受控執行個體所裝載的 SSIS 目錄（SSISDB）布建 Azure SSIS IR](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [透過 Azure SQL 受控執行個體代理程式作業執行 SSIS 套件](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [透過 Azure SQL 受控執行個體代理程式作業清除 SSISDB 記錄](#clean-up-ssisdb-logs)
-- [使用 Azure SQL Database 受控執行個體進行 Azure-SSIS IR 容錯移轉](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-database-managed-instance)
-- [將內部部署 SSIS 工作負載移轉到 ADF 中的 SSIS，並以 Azure SQL Database 受控執行個體作為資料庫工作負載目的地](scenario-ssis-migration-overview.md#azure-sql-database-managed-instance-as-database-workload-destination)
+- [Azure-使用 Azure SQL 受控執行個體的 SSIS IR 容錯移轉](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [使用 Azure SQL 受控執行個體做為資料庫工作負載目的地，將內部部署 SSIS 工作負載遷移至 ADF 中的 SSIS](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
-## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-database-managed-instance"></a>使用 Azure SQL Database 受控執行個體所裝載的 SSISDB 佈建 Azure-SSIS IR
+## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>使用 Azure SQL 受控執行個體所裝載的 SSISDB 來布建 Azure SSIS IR
 
 ### <a name="prerequisites"></a>Prerequisites
 
-1. 選擇 Azure Active Directory 驗證時，[在 Azure SQL Database 受控執行個體上啟用 Azure Active Directory (Azure AD)](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-database-managed-instance)。
+1. 選擇 Azure Active Directory 驗證時，[在 AZURE SQL 受控執行個體上啟用 Azure Active Directory （Azure AD）](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)。
 
 1. 選擇如何透過私人端點或透過公用端點連線到 SQL 受控執行個體：
 
@@ -44,13 +43,13 @@ ms.locfileid: "83663536"
             - 與 SQL 受控執行個體位於相同虛擬網路內，但有**不同的子網路**。
             - 與 SQL 受控執行個體位於不同虛擬網路內，透過虛擬網路對等互連 (因全球 VNet 對等互連限制而僅限相同的區域) 或從虛擬網路到虛擬網路的連線。
 
-            如需 SQL 受控執行個體連線的詳細資訊，請參閱[將應用程式連線到 Azure SQL Database 受控執行個體](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app) (英文)。
+            如需 SQL 受控實例連線的詳細資訊，請參閱[將您的應用程式連線到 AZURE sql 受控執行個體](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)。
 
         1. [設定虛擬網路](#configure-virtual-network)。
 
     - 透過公用端點
 
-        Azure SQL Database 受控執行個體可透過[公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)提供連線。 輸入和輸出需求必須符合，才能允許 SQL 受控執行個體與 Azure-SSIS IR 之間的流量：
+        Azure SQL 受控實例可透過[公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)提供連線能力。 輸入和輸出需求必須符合，才能允許 SQL 受控執行個體與 Azure-SSIS IR 之間的流量：
 
         - 當 Azure-SSIS IR 不在虛擬網路內時 (偏好選項)
 
@@ -90,8 +89,8 @@ ms.locfileid: "83663536"
     1. 請確認虛擬網路的資源群組可建立及刪除特定 Azure 網路資源。
 
         Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的網路資源。 這些資源包括：
-        - Azure 負載平衡器，名稱為 *\<GUID>-azurebatch-cloudserviceloadbalancer*
-        - 網路安全性群組，名稱為 *\<GUID>-azurebatch-cloudservicenetworksecuritygroup
+        - Azure 負載平衡器，名稱為* \<Guid> -azurebatch-cloudserviceloadbalancer*
+        - 網路安全性群組，其名稱為 * \<Guid> -azurebatch-cloudservicenetworksecuritygroup
         - Azure 公用 IP 位址，名稱為 -azurebatch-cloudservicepublicip
 
         當 Azure SSIS IR 啟動時，將會建立這些資源。 當 Azure-SSIS IR 停止時，就會予以刪除。 為了避免 Azure-SSIS IR 無法停止，請勿在其他資源中重複使用這些網路資源。
@@ -147,7 +146,7 @@ ms.locfileid: "83663536"
 
     ![catalog-public-endpoint](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
 
-    如需如何啟用 Azure AD 驗證的詳細資訊，請參閱[在 Azure SQL Database 受控執行個體上啟用 Azure AD](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-database-managed-instance)。
+    如需如何啟用 Azure AD 驗證的詳細資訊，請參閱[在 AZURE SQL 受控執行個體上啟用 Azure AD](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)。
 
 1. 將 Azure-SSIS IR 加入虛擬網路 (如果適用的話)。
 

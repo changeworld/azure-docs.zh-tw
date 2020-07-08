@@ -7,12 +7,11 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4fa3acf0e6cc767aeee4504bbc4df382a75e256b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: f5f40a615bc5faab6265f42d0728403e2735aa0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758753"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791617"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>Azure 靜態 Web Apps 預覽版搭配 Azure Functions 時的 API 支援
 
@@ -33,6 +32,7 @@ Azure 靜態 Web Apps 可透過 Azure Functions 提供 API。 Azure Functions �
 
 - API 路由前置詞必須是 _api_。
 - API 函數應用程式必須是 JavaScript。
+- API 函式的路由規則僅支援[使用角色的](routes.md#securing-routes-with-roles)重新[導向](routes.md#redirects)和保護路由。
 - 觸發程序和繫結限定為 [HTTP](../azure-functions/functions-bindings-http-webhook.md)。
   - 除了輸出繫結以外，所有其他的 [Azure Functions 觸發程序和繫結](../azure-functions/functions-triggers-bindings.md#supported-bindings)都會受到限制。
 - 必須將 [Application Insights](../azure-functions/functions-monitoring.md) 新增至函式應用程式，才能使用記錄。

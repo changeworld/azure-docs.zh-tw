@@ -8,12 +8,11 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f1a4d9af8a1b1095527078dd790e80ef45a5ee9a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82722891"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355653"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>使用 Blob 索引來管理和尋找 Azure Blob 儲存體上的資料（預覽）
 
@@ -26,7 +25,7 @@ Blob 索引可讓您：
 - 根據索引標記的評估，指定 blob Api 的條件式行為
 - 利用 blob 平臺功能（例如[生命週期管理](storage-lifecycle-management-concepts.md)）上 advanced 控制項的索引標籤
 
-假設您的儲存體帳戶中有數百萬個 blob 是由許多不同的應用程式所撰寫和存取的。 您想要從單一專案尋找所有相關的資料，但您不確定資料的範圍為何，因為可以使用不同的 blob 命名慣例，將資料分散到多個容器。 不過，您知道您的應用程式會根據其各自的專案和識別描述，上傳所有具有標記的資料。 除了搜尋數百萬個 blob 並比較名稱和屬性，您可以只使用`Project = Contoso`做為您的探索準則。 Blob 索引會篩選整個儲存體帳戶的所有容器，以快速尋找並只傳回一組 50 blob `Project = Contoso`。 
+假設您的儲存體帳戶中有數百萬個 blob 是由許多不同的應用程式所撰寫和存取的。 您想要從單一專案尋找所有相關的資料，但您不確定資料的範圍為何，因為可以使用不同的 blob 命名慣例，將資料分散到多個容器。 不過，您知道您的應用程式會根據其各自的專案和識別描述，上傳所有具有標記的資料。 除了搜尋數百萬個 blob 並比較名稱和屬性，您可以只使用 `Project = Contoso` 做為您的探索準則。 Blob 索引會篩選整個儲存體帳戶的所有容器，以快速尋找並只傳回一組 50 blob `Project = Contoso` 。 
 
 若要開始使用如何使用 Blob 索引的範例，請參閱[利用 Blob 索引來管理和尋找資料](storage-blob-index-how-to.md)。
 
@@ -36,14 +35,14 @@ Blob 索引可讓您：
 
 請考慮儲存體帳戶中的下列五個 blob：
 >
-> container1/transaction .csv  
-> 為 storage2 container2/行銷活動 .docx  
-> 相片/bannerphoto .png  
-> 封存/已完成/2019review .pdf  
-> logs/2020/01/01/logfile .txt  
+> container1/transaction.csv  
+> 為 storage2 container2/campaign.docx  
+> 相片/bannerphoto.png  
+> 封存/已完成/2019review.pdf  
+> logs/2020/01/01/logfile.txt  
 >
 
-這些 blob 目前是使用容器/虛擬資料夾/blob 名稱的前置詞來分隔。 使用 Blob 索引，您可以在這五個 blob 上`Project = Contoso`設定的索引標記屬性，以將它們分類在一起，同時維持其目前的前置片語織。 如此一來，您就不需要藉由公開使用儲存平臺的多維度索引來篩選和尋找資料，來移動資料。
+這些 blob 目前是使用容器/虛擬資料夾/blob 名稱的前置詞來分隔。 使用 Blob 索引，您可以 `Project = Contoso` 在這五個 blob 上設定的索引標記屬性，以將它們分類在一起，同時維持其目前的前置片語織。 如此一來，您就不需要藉由公開使用儲存平臺的多維度索引來篩選和尋找資料，來移動資料。
 
 ## <a name="setting-blob-index-tags"></a>設定 Blob 索引標記
 
@@ -63,21 +62,21 @@ Blob 索引標籤是機碼值屬性，可套用至儲存體帳戶內的新或現
 > 「優先順序」 = ' 01 ' 
 >
 
-若要修改現有的索引標記屬性，您必須先取出現有的標記屬性、修改標記屬性，然後將取代為 SetBlobTags 作業。 若要從 blob 中移除所有索引標籤，請呼叫 SetBlobTags 作業，但不指定任何標記屬性。 Blob 索引標記是 blob 資料內容的子資源，因此 SetBlobTags 不會修改任何基礎內容，也不會變更 blob 的上次修改時間。
+若要修改現有的索引標記屬性，您必須先取出現有的標記屬性、修改標記屬性，然後將取代為 SetBlobTags 作業。 若要從 blob 中移除所有索引標籤，請呼叫 SetBlobTags 作業，但不指定任何標記屬性。 Blob 索引標記是 blob 資料內容的子資源，因此 SetBlobTags 不會修改任何基礎內容，也不會變更 blob 的上次修改時間或 ETag （實體標記）。 您可以建立或修改所有目前基底 blob 和舊版的索引標籤;不過，快照集或虛刪除的 blob 上的標記無法修改。 
 
 下列限制適用于 Blob 索引標籤：
 - 每個 blob 最多可以有10個 blob 索引標籤
 - 標記索引鍵的長度必須介於1到128個字元之間
 - 標記值必須介於0到256個字元之間
 - 標記索引鍵和值區分大小寫
-- 標記索引鍵和值僅支援字串資料類型;任何數位或特殊字元將儲存為字串
+- 標記索引鍵和值僅支援字串資料類型;任何數位、日期、時間或特殊字元將儲存為字串
 - 標記索引鍵和值必須遵守下列命名規則：
   - 英數位元： a-z、a-z、0-9
   - 特殊字元：空格、加號、減號、句號、冒號、等於、底線、正斜線
 
 ## <a name="getting-and-listing-blob-index-tags"></a>取得和列出 Blob 索引標記
 
-Blob 索引標籤會連同 blob 資料一起儲存為子資源，而且可以獨立于基礎 blob 資料內容中抓取。 一旦設定之後，就可以直接使用 GetBlobTags 作業來抓取或檢查單一 blob 的 blob 索引標籤。 具有`include:tags`參數的 ListBlobs 作業也會傳回容器內的所有 blob 及其套用的 blob 索引標記。 
+Blob 索引標籤會連同 blob 資料一起儲存為子資源，而且可以獨立于基礎 blob 資料內容中抓取。 一旦設定之後，就可以直接使用 GetBlobTags 作業來抓取或檢查單一 blob 的 blob 索引標籤。 具有參數的 ListBlobs 作業 `include:tags` 也會傳回容器內的所有 blob 及其套用的 blob 索引標記。 
 
 對於至少有1個 blob 索引標籤的任何 blob，ListBlobs、GetBlob 和 GetBlobProperties 作業會傳回 x 毫秒-標記計數，指出 blob 上存在的 blob 索引標記計數。
 
@@ -90,14 +89,14 @@ FindBlobsByTags 作業可讓您取得已篩選的一組 blob，其索引標籤�
 下列準則適用于 blob 索引篩選：
 -   標記索引鍵應該以雙引號括住（"）
 -   標記值和容器名稱應以單引號括住（'）
--   只有在特定容器名稱（亦即@container = ' 容器 '）上進行篩選時，才允許使用 @ 字元
+-   只有在特定容器名稱（亦即 @container = ' 容器 '）上進行篩選時，才允許使用 @ 字元
 - 篩選準則會在字串上套用詞典編纂排序
 -   相同索引鍵上的相同側邊範圍作業無效（也就是「排名」 > ' 10 ' 和「Rank」 >= ' 15 '）
 - 使用 REST 建立篩選運算式時，字元應該以 URI 編碼
 
 下表顯示 FindBlobsByTags 的所有有效運算子：
 
-|  運算子  |  描述  | 範例 |
+|  運算子  |  說明  | 範例 |
 |------------|---------------|---------|
 |     =      |     等於     | "Status" = ' 進行中 ' | 
 |     >      |  大於 |  "Date" > ' 2018-06-18 ' |
@@ -107,14 +106,21 @@ FindBlobsByTags 作業可讓您取得已篩選的一組 blob，其索引標籤�
 |    AND     |  邏輯 and  | 「Rank」 >= ' 010 ' 和「Rank」 < ' 100 ' |
 | @container |  將範圍設為特定容器   | @container= ' videofiles ' 和「狀態」 = 「完成」 |
 
+> [!NOTE]
+> 在標記上設定和查詢時，請熟悉字典順序。
+> - 數位會在字母之前排序。 數位會根據第一個數位進行排序。
+> - 大寫字母排序在小寫字母之前。
+> - 符號不是標準的。 某些符號會在數值之前排序。 其他符號會在字母前後排序。
+>
+
 ## <a name="conditional-blob-operations-with-blob-index-tags"></a>具有 Blob 索引標記的條件式 Blob 作業
-在 REST 2019-10-10 和更新版本中，大部分的[blob 服務 api](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs)現在都支援條件式標頭，也就是 x 毫秒----------------------如果符合指定的 blob 索引條件 如果不符合條件，則會取得`error 412: The condition specified using HTTP conditional header(s) is not met`。
+在 REST 2019-10-10 和更新版本中，大部分的[blob 服務 api](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs)現在都支援條件式標頭，也就是 x 毫秒----------------------如果符合指定的 blob 索引條件 如果不符合條件，則會取得 `error 412: The condition specified using HTTP conditional header(s) is not met` 。
 
 X 毫秒-if 標記標頭可以與其他現有的 HTTP 條件式標頭（If-match、If-None-Match 等等）結合。  如果要求中提供多個條件式標頭，則必須評估 true，作業才會成功。  所有條件式標頭會與邏輯 AND 有效率地結合。 
 
 下表顯示條件式作業的所有有效運算子：
 
-|  運算子  |  描述  | 範例 |
+|  運算子  |  說明  | 範例 |
 |------------|---------------|---------|
 |     =      |     等於     | "Status" = ' 進行中 ' |
 |     <>     |   不等於   | 「狀態」  <>  「完成」  | 
@@ -123,7 +129,7 @@ X 毫秒-if 標記標頭可以與其他現有的 HTTP 條件式標頭（If-match
 |     <      |  小於    | 「Age」 < ' 32 ' |
 |     <=     |  小於或等於  | "Company" <= ' Contoso ' |
 |    AND     |  邏輯 and  | 「Rank」 >= ' 010 ' 和「Rank」 < ' 100 ' |
-|     OR     |  邏輯 or   | 「狀態」 = 「完成」或「優先順序」 >= ' 05 ' |
+|     或者     |  邏輯 or   | 「狀態」 = 「完成」或「優先順序」 >= ' 05 ' |
 
 > [!NOTE]
 > 有兩個額外的運算子（不等於和邏輯 or）可用於 blob 作業的條件式 x 毫秒-if 標記標頭，但不存在於 FindBlobsByTags 作業中。
@@ -138,7 +144,7 @@ Blob 索引的標籤不僅可協助您分類、管理及搜尋您的 blob 資料
 
 您可以將 blob 索引比對設定為在生命週期規則中設定的獨立篩選器，以對已標記的資料套用動作。 或者，您可以結合前置詞相符項和 blob 索引比對，以符合更特定的資料集。 將多個篩選套用至生命週期規則會視為邏輯和作業，因此只有在所有篩選準則都相符時，動作才會套用。 
 
-下列範例生命週期管理規則適用于容器 ' videofiles ' 中的區塊 blob 和層 blob，只有在資料符合的 blob 索引標記準則時，才會```"Status" = 'Processed' AND "Source" == 'RAW'```封存儲存體。
+下列範例生命週期管理規則適用于容器 ' videofiles ' 中的區塊 blob 和層 blob，只有在資料符合的 blob 索引標記準則時，才會封存儲存體 ```"Status" = 'Processed' AND "Source" == 'RAW'``` 。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 ![Azure 入口網站中生命週期管理的 Blob 索引符合規則範例](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
@@ -191,7 +197,7 @@ Blob 索引的標籤不僅可協助您分類、管理及搜尋您的 blob 資料
 您可以使用下列其中一種方法來授權 Blob 索引的存取權：
 
 - 藉由使用角色型存取控制（RBAC）將許可權授與 Azure Active Directory （Azure AD）安全性主體。 Microsoft 建議使用 Azure AD 以獲得更佳的安全性和易用性。 如需有關使用 Azure AD 搭配 blob 作業的詳細資訊，請參閱[使用 Azure Active Directory 授權存取 blob 和佇列](../common/storage-auth-aad.md)。
-- 藉由使用共用存取簽章（SAS）來委派 blob 索引的存取權。 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權](../common/storage-sas-overview.md)。
+- 藉由使用共用存取簽章（SAS）來委派 blob 索引的存取權。 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章 (SAS) 授與 Azure 儲存體資源的有限存取權](../common/storage-sas-overview.md)。
 - 藉由使用帳戶存取金鑰來授權具有共用金鑰的作業。 如需詳細資訊，請參閱[使用共用金鑰進行授權](/rest/api/storageservices/authorize-with-shared-key)。
 
 Blob 索引標記是 blob 資料的子資源。 具有許可權的使用者或要讀取或寫入 blob 的 SAS 權杖，可能無法存取 blob 索引標記。 
@@ -201,7 +207,7 @@ Blob 索引標記是 blob 資料的子資源。 具有許可權的使用者或�
 
 |   Blob 作業   |  RBAC 動作   |
 |---------------------|----------------|
-| 依標記尋找 Blob  | Microsoft 儲存體/storageAccounts/blobServices/容器/blob/篩選 |
+| 依標記尋找 Blob  | Microsoft. Storage/storageAccounts/blobServices/container/blob/filter/action |
 | 設定 Blob 標記         | Microsoft 儲存體/storageAccounts/blobServices/容器/blob/標記/寫入 | 
 | 取得 Blob 標記         | Microsoft 儲存體/storageAccounts/blobServices/容器/blob/標記/讀取 |
 
@@ -236,7 +242,7 @@ Blob 索引標記和中繼資料都提供將任意使用者定義的索引鍵/�
 | **更新**      | 封存層不允許;SetBlobMetadata 會取代所有現有的中繼資料;SetBlobMetadata 會變更 blob 的上次修改時間 | 允許所有存取層;SetBlobTags 會取代所有現有的標記;SetBlobTags 不會變更 blob 的上次修改時間 |
 | **Storage**        | 與 blob 資料一起儲存 |  Blob 資料的子資源 | 
 | **編制索引 & 查詢** | N/A 原生;必須使用個別的服務，例如 Azure 搜尋服務 | 是，blob 儲存體內建的原生索引和查詢功能 |
-| [加密]**** | 待用時使用相同的加密金鑰加密 blob 資料 |  使用 Microsoft 管理的加密金鑰進行待用加密 |
+| **加密** | 待用時使用相同的加密金鑰加密 blob 資料 |  使用 Microsoft 管理的加密金鑰進行待用加密 |
 | **定價**   | 中繼資料的大小會包含在 blob 的儲存體成本中 |    已修正每個索引標記的成本 | 
 | **標頭回應** | 在 GetBlob 和 GetBlobProperties 中傳回做為標頭的中繼資料 | 在 GetBlob 或 GetBlobProperties 中傳回的 TagCount;只有在 GetBlobTags 和 ListBlobs 中傳回的標記 |
 | **權限**  |    Blob 資料的讀取或寫入權限延伸至中繼資料 |    需要其他許可權才能讀取/篩選或寫入標記 |
@@ -246,9 +252,11 @@ Blob 索引定價目前為公開預覽狀態，且可能會變更為正式運作
 
 ## <a name="regional-availability-and-storage-account-support"></a>區域可用性和儲存體帳戶支援
 
-Blob 索引目前僅適用于一般用途 v2 （GPv2）帳戶。 在 Azure 入口網站中，您可以將現有的一般用途（GPv1）帳戶升級至 GPv2 帳戶。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
+Blob 索引目前僅適用于已停用階層命名空間（HNS）的一般用途 v2 （GPv2）帳戶。 一般用途（GPV1）帳戶不受支援，但您可以將任何 GPv1 帳戶升級為 GPv2 帳戶。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
 
 在公開預覽中，Blob 索引目前僅適用于下列選取區域：
+- 加拿大中部
+- 加拿大東部
 - 法國中部
 - 法國南部
 
@@ -276,9 +284,9 @@ az provider register --namespace 'Microsoft.Storage'
 本節說明 Blob 索引目前公開預覽版中的已知問題和條件。 如同大部分的預覽，這項功能不應用於生產環境工作負載，直到它達到 GA，因為行為可能會改變。
 
 -   針對預覽版本，您必須先註冊您的訂用帳戶，才能在預覽區域中針對您的儲存體帳戶使用 Blob 索引。
--   預覽中目前僅支援 GPv2 帳戶。 Blob、BlockBlobStorage 及 HNS 已啟用 DataLake Gen2 帳戶目前不支援 Blob 索引。
+-   預覽中目前僅支援 GPv2 帳戶。 Blob、BlockBlobStorage 及 HNS 已啟用 DataLake Gen2 帳戶目前不支援 Blob 索引。 GPv1 帳戶將不受支援。
 -   使用索引標籤上傳分頁 blob 目前不會保存標記。 您必須在上傳分頁 blob 後設定標記。
--   當篩選的範圍設定為單一容器時， @container只有在篩選條件運算式中的所有索引標籤都是相等檢查（key = value）時，才能傳遞。 
+-   當篩選的範圍設定為單一容器時， @container 只有在篩選條件運算式中的所有索引標籤都是相等檢查（key = value）時，才能傳遞。 
 -   使用範圍運算子搭配和條件時，您只能指定相同的索引標籤索引鍵名稱（Age > ' 013 '，而 Age < ' 100 '）。
 -   目前不支援版本控制和 Blob 索引。 Blob 索引標記會保留給版本，但目前不會傳遞至 blob 索引引擎。
 -   目前不支援帳戶容錯移轉。 在容錯移轉之後，blob 索引可能無法正確更新。
@@ -290,6 +298,9 @@ az provider register --namespace 'Microsoft.Storage'
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Blob 索引可以協助我篩選和查詢 blob 內的內容嗎？ 
 否，Blob 索引標籤可協助您找出所需的 blob。 如果您需要在 blob 內搜尋，請使用 [查詢加速] 或 [Azure 搜尋服務]。
+
+### <a name="are-there-any-special-considerations-regarding-blob-index-tag-values"></a>是否有任何關於 Blob 索引標記值的特殊考慮？
+Blob 索引標籤只支援字串資料類型，而且查詢會以字典的順序傳回結果。 若為數字，建議零填補數位。 若為日期和時間，建議您將儲存為符合 ISO 8601 標準的格式。
 
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>Blob 索引標籤和 Azure Resource Manager 標記是否相關？
 否，Azure Resource Manager 標籤可協助組織控制平面資源，例如訂用帳戶、資源群組和儲存體帳戶。 Blob 索引標籤可在資料平面資源（例如儲存體帳戶內的 blob）上提供物件管理和探索。

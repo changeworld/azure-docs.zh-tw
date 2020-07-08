@@ -4,16 +4,15 @@ description: 瞭解如何使用 .NET 用戶端程式庫，列出 Azure 儲存體
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: da0c5bf6bc371bc512d9264afeab52b9908396fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135899"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463553"
 ---
 # <a name="list-blob-containers-with-net"></a>使用 .NET 列出 blob 容器
 
@@ -26,19 +25,19 @@ ms.locfileid: "79135899"
 - [ListContainersSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
 - [ListContainersSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmentedasync)
 
-這些方法的多載會提供其他選項來管理清單作業傳回容器的方式。 下列各節將說明這些選項。
+這些方法的多載會提供其他選項來管理清單作業傳回容器的方式。 下列各節描述這些選項。
 
 ### <a name="manage-how-many-results-are-returned"></a>管理傳回的結果數目
 
-根據預設，清單作業一次最多會傳回5000個結果。 若要傳回較小的結果集，請在呼叫其中一個`maxresults` **ListContainerSegmented**方法時，為參數提供非零值。
+根據預設，清單作業一次最多會傳回 5000 個結果。 若要傳回較小的結果集，請 `maxresults` 在呼叫其中一個**ListContainerSegmented**方法時，為參數提供非零值。
 
-如果您的儲存體帳戶包含超過5000個容器，或如果您已指定一個值`maxresults`讓清單作業傳回儲存體帳戶中的容器子集，則 Azure 儲存體會傳回包含容器清單的*接續權杖*。 接續 token 是不透明的值，可讓您用來抓取 Azure 儲存體的下一組結果。
+如果您的儲存體帳戶包含超過5000個容器，或如果您已指定一個值讓清單作業傳回 `maxresults` 儲存體帳戶中的容器子集，則 Azure 儲存體會傳回包含容器清單的*接續權杖*。 接續權杖是不透明的值，其可用來從 Azure 儲存體中擷取下一組結果。
 
-在您的程式碼中，檢查接續 token 的值，以判斷它是否為 null。 當接續 token 為 null 時，結果集就會完成。 如果接續 token 不是 null，則再次呼叫**ListContainersSegmented**或**ListContainersSegmentedAsync** ，傳入接續 token 來抓取下一組結果，直到接續 token 為 null 為止。
+在程式碼中檢查接續權杖的值，以判斷該值是否為 null。 當接續權杖為 null 時，結果集就會完成。 如果接續 token 不是 null，則再次呼叫**ListContainersSegmented**或**ListContainersSegmentedAsync** ，傳入接續 token 來抓取下一組結果，直到接續 token 為 null 為止。
 
 ### <a name="filter-results-with-a-prefix"></a>使用前置詞篩選結果
 
-若要篩選容器清單，請指定`prefix`參數的字串。 前置詞字串可以包含一或多個字元。 Azure 儲存體接著只會傳回名稱開頭為該前置詞的容器。
+若要篩選容器清單，請指定 `prefix` 參數的字串。 前置詞字串可包含一或多個字元。 Azure 儲存體接著只會傳回名稱開頭為該前置詞的容器。
 
 ### <a name="return-metadata"></a>傳回中繼資料
 
@@ -98,7 +97,7 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-[列出](/rest/api/storageservices/list-containers2)
-[列舉 Blob 資源](/rest/api/storageservices/enumerating-blob-resources)的容器
+[列出容器](/rest/api/storageservices/list-containers2) 
+[列舉 Blob 資源](/rest/api/storageservices/enumerating-blob-resources)

@@ -1,24 +1,13 @@
 ---
 title: Azure 服務匯流排訊息、承載及序列化 | Microsoft Docs
 description: 本文提供 Azure 服務匯流排訊息、承載、訊息路由和序列化的總覽。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 11e56ae2483a254fb00e3593da7841f3f3d844f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759392"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341674"
 ---
 # <a name="messages-payloads-and-serialization"></a>訊息、承載和序列化
 
@@ -77,7 +66,7 @@ Microsoft Azure 服務匯流排的功能就是處理訊息。 訊息會以索引
 
 與 Java 或.NET 標準變數不同，服務匯流排 API 的 .NET Framework 版本支援將任意 .NET 物件傳遞到建構函式來建立 **BrokeredMessage** 執行個體。 
 
-使用舊版 SBMP 通訊協定時，接著會使用預設的二進位序列化程式來將那些物件序列化，或是使用外部提供的序列化程式來序列化。 使用 AMQP 通訊協定時，會將物件序列化為 AMQP 物件。 接收者可以使用[GetBody\<T> （）](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)方法來抓取這些物件，並提供預期的類型。 使用 AMQP，將物件序列化為 **ArrayList** 和 **IDictionary<string,object>** 物件的 AMQP 圖形，而任何 AMQP 用戶端都可將它們解碼。 
+使用舊版 SBMP 通訊協定時，接著會使用預設的二進位序列化程式來將那些物件序列化，或是使用外部提供的序列化程式來序列化。 使用 AMQP 通訊協定時，會將物件序列化為 AMQP 物件。 接收者可以利用 [GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法擷取那些物件，並提供預期的類型。 使用 AMQP，將物件序列化為 **ArrayList** 和 **IDictionary<string,object>** 物件的 AMQP 圖形，而任何 AMQP 用戶端都可將它們解碼。 
 
 儘管這個隱藏的序列化魔法相當便利，但應用程式還是應該明確控制物件序列化，並先將其物件圖形轉換為資料流，之後再將它們納入訊息中，在接收者端則以相反順序來執行。 這會產生可交互作用的結果。 此外，也應該注意，當 AMQP 具有功能強大的二進位編碼模型時，系統會將它繫結到 AMQP 傳訊生態系統，而 HTTP 用戶端將在為這類承載進行解碼時遇到問題。 
 

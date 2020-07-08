@@ -4,19 +4,18 @@ description: 使用 Azure AD 條件式存取見解和報告活頁簿來進行原
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253268"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>條件式存取見解和報告
 
@@ -98,6 +97,23 @@ ms.locfileid: "83641595"
 您也可在儀表板底部搜尋登入，以調查特定使用者的登入。 左側的查詢會顯示最常出現的使用者。 選取使用者會篩選右側的查詢。  
 
 ## <a name="troubleshooting"></a>疑難排解
+
+### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>為什麼查詢因為許可權錯誤而失敗？
+
+為了存取活頁簿，您需要適當的 Azure AD 許可權，以及 Log Analytics 工作區許可權。 若要測試您是否具有適當的工作區許可權，請執行範例 log analytics 查詢：
+
+1. 登入 **Azure 入口網站**。
+1. 流覽至**Azure Active Directory**  >  **記錄**檔。
+1. `SigninLogs`在 [查詢] 方塊中輸入，然後選取 [**執行**]。
+1. 如果查詢未傳回任何結果，則您的工作區可能未正確設定。 
+
+![疑難排解失敗的查詢](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
+
+如需有關如何將 Azure AD 登入記錄串流至 Log Analytics 工作區的詳細資訊，請參閱將[Azure AD 記錄與 Azure 監視器記錄整合](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)一文。
+
+### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>條件式存取原則參數為何是空的？
+
+原則清單會藉由查看針對最新登入事件評估的原則來產生。 如果您的租使用者中沒有最近的登入，您可能需要等候幾分鐘的時間，讓活頁簿載入條件式存取原則的清單。 這可能會在設定 Log Analytics 之後立即發生，如果租使用者沒有最近的登入活動，則可能需要較長的時間。
 
 ### <a name="why-is-the-workbook-taking-a-long-time-to-load"></a>活頁簿為何需要很長的時間才能載入？  
 

@@ -9,12 +9,11 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 1b72be91ee11ef7003e225fe830a59ea42310ac6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: cf8d4cd3c70e28a6c70ab9321a8f55271ead754f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656676"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807497"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中建立一般化 VM 的受控映像
 
@@ -26,7 +25,7 @@ ms.locfileid: "83656676"
 
 Sysprep 會移除您的所有個人帳戶與安全性資訊，然後準備使用機器做為映像。 如需 Sysprep 的詳細資訊，請參閱 [Sysprep 概觀](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
 
-請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱[伺服器角色的 Sysprep 支援](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)和[不支援的案例](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)。
+請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱[伺服器角色的 Sysprep 支援](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)和[不支援的案例](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)。 Sysprep 需要在執行前完整解密磁片磁碟機。 如果您已在 VM 上啟用加密，請在執行 Sysprep 之前先停用加密。
 
 > [!IMPORTANT]
 > 在 VM 中執行 Sysprep 之後，該 VM 便會被視為「已一般化」，而且無法重新啟動。 將 VM 一般化的程序是無法復原的。 如果您需要讓原始 VM 保持運作，就應該建立 [VM 的複本](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)，然後將複本一般化。 
@@ -87,7 +86,7 @@ Sysprep 會移除您的所有個人帳戶與安全性資訊，然後準備使用
 
 
 
-## <a name="create-an-image-of-a-vm-using-powershell"></a>使用 Powershell 建立 VM 的映像
+## <a name="create-an-image-of-a-vm-using-powershell"></a>使用 PowerShell 建立 VM 的映射
 
  
 
@@ -178,7 +177,7 @@ Sysprep 會移除您的所有個人帳戶與安全性資訊，然後準備使用
     ``` 
 
 
-## <a name="create-an-image-from-a-snapshot-using-powershell"></a>使用 Powershell 從快照集建立映像
+## <a name="create-an-image-from-a-snapshot-using-powershell"></a>使用 PowerShell 從快照集建立映射
 
 您可以依照下列步驟，從一般化 VM 的快照集建立受控映像：
 

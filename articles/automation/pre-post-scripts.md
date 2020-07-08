@@ -5,12 +5,11 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7fa2dd335e457307dd6d7e4ecdc787015b742b32
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
-ms.translationtype: HT
+ms.openlocfilehash: f05e705f351d75fdf772d3197b94fcece40d43fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148271"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85100385"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>管理前指令碼和後指令碼
 
@@ -90,6 +89,9 @@ ms.locfileid: "84148271"
 
 > [!NOTE]
 > `SoftwareUpdateConfigurationRunContext` 物件可包含機器的重複項目。 這可能會導致前置指令碼和後置指令碼在相同機器上執行多次。 此行為的因應措施是使用 `Sort-Object -Unique`，僅選取唯一的 VM 名稱。
+
+> [!NOTE]
+> 目前僅支援 PowerShell runbook 做為前置/後置腳本。 其他 runbook 類型（例如 Python、圖形、PowerShell 工作流程、圖形化 PowerShell 工作流程）目前不支援做為前置/後置腳本。
 
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>在部署中使用前置指令碼或後置指令碼
 

@@ -3,16 +3,16 @@ title: Azure 應用程式 Insights 覆寫預設 SDK 端點
 description: 針對 Azure Government 之類的區域，修改預設 Azure 監視器 Application Insights SDK 端點。
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: f5bf5b07f7c058b4778e7695f150fdc71e048182
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194825"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>覆寫預設端點 Application Insights
 
-若要從 Application Insights 將資料傳送到特定區域，您必須覆寫預設端點位址。 每個 SDK 都需要稍微不同的修改，這全都會在本文中說明。 這些變更需要調整範例程式碼，並將`QuickPulse_Endpoint_Address`、 `TelemetryChannel_Endpoint_Address`和`Profile_Query_Endpoint_address`的預留位置值取代為您特定區域的實際端點位址。 本文結尾包含需要此設定之區域的端點位址連結。
+若要從 Application Insights 將資料傳送到特定區域，您必須覆寫預設端點位址。 每個 SDK 都需要稍微不同的修改，這全都會在本文中說明。 這些變更需要調整範例程式碼，並將、和的預留位置值取代為 `QuickPulse_Endpoint_Address` `TelemetryChannel_Endpoint_Address` `Profile_Query_Endpoint_address` 您特定區域的實際端點位址。 本文結尾包含需要此設定之區域的端點位址連結。
 
 > [!NOTE]
 > [連接字串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)是在 Application Insights 內設定自訂端點的新慣用方法。
@@ -24,7 +24,7 @@ ms.locfileid: "82629179"
 # <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
-> 每當執行 SDK 升級時，就會自動覆寫 applicationinsights。 執行 SDK 升級之後，請務必重新輸入區域特定的端點值。
+> 每當執行 SDK 升級時，就會自動覆寫 applicationinsights.config 檔案。 執行 SDK 升級之後，請務必重新輸入區域特定的端點值。
 
 ```xml
 <ApplicationInsights>
@@ -48,7 +48,7 @@ ms.locfileid: "82629179"
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-如下所示修改專案中的 appsettings，以調整主要端點：
+如下所示修改專案中檔案的 appsettings.js，以調整主要端點：
 
 ```json
 "ApplicationInsights": {
@@ -59,7 +59,7 @@ ms.locfileid: "82629179"
   }
 ```
 
-即時計量和設定檔查詢端點的值只能透過程式碼來設定。 若要透過程式碼覆寫所有端點值的預設值，請在檔案的`ConfigureServices`方法`Startup.cs`中進行下列變更：
+即時計量和設定檔查詢端點的值只能透過程式碼來設定。 若要透過程式碼覆寫所有端點值的預設值，請在檔案的方法中進行下列變更 `ConfigureServices` `Startup.cs` ：
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -76,13 +76,13 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-針對 Azure Functions，現在建議使用在函式的應用程式設定中設定的[連接字串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)。 若要從 [函式] 窗格記憶體取函式的**Settings** > **應用程式設定** > ，請選取 [設定] [**應用程式設定**] 
+針對 Azure Functions，現在建議使用在函式的應用程式設定中設定的[連接字串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)。 若要從 [函式] 窗格記憶體取函式的應用程式設定，請選取 [**設定**] [  >  **Configuration**  >  **應用程式設定**] 
 
-名稱： `APPLICATIONINSIGHTS_CONNECTION_STRING`值：`Connection String Value`
+名稱： `APPLICATIONINSIGHTS_CONNECTION_STRING` 值：`Connection String Value`
 
 # <a name="java"></a>[Java](#tab/java)
 
-修改 applicationinsights，以變更預設的端點位址。
+修改 applicationinsights.xml 檔案，以變更預設的端點位址。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -109,7 +109,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 ### <a name="spring-boot"></a>Spring Boot
 
-`application.properties`修改檔案並新增：
+修改檔案 `application.properties` 並新增：
 
 ```yaml
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address

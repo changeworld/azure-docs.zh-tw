@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807599"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>針對使用 Azure AD Connect 同步執行的密碼雜湊同步處理進行疑難排解
 
@@ -288,12 +287,15 @@ ms.locfileid: "79253542"
 6. Azure AD Connect 是否可以連線到網域控制站？ 如果 Connect 伺服器無法連線到所有網域控制站，請設定 [只使用慣用的網域控制站]****。  
     
     ![Active Directory 連接器所使用的網域控制站](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
-    
+
 7. 返回 **Synchronization Service Manager**，並**設定目錄磁碟分割**。 
  
 8. 在 [選取目錄分割]**** 中選取您的網域，選取 [只使用慣用的網域控制站]**** 核取方塊，然後按一下 [設定]****。 
 
 9. 在清單中，輸入連接應用於密碼同步的網域控制站。相同的清單也用於匯入和匯出。 針對您的所有網域執行這些步驟。
+
+> [!NOTE]
+> 若要套用這些變更，請重新開機**Microsoft Azure AD 同步**處理（ADSync）服務。
 
 10. 如果此指令碼顯示沒有活動訊號，請執行[觸發所有密碼的完整同步](#trigger-a-full-sync-of-all-passwords)中的指令碼。
 
@@ -315,7 +317,7 @@ ms.locfileid: "79253542"
 
     c. 選取使用者所在的 **Active Directory 連接器**。
 
-    d. 選取 [搜尋連接器空間] ****。
+    d. 選取 [搜尋連接器空間] 。
 
     e. 在 [範圍]**** 方塊中，選取 [DN 或錨點]****，然後輸入您要進行疑難排解之使用者的完整 DN。
 
@@ -323,7 +325,7 @@ ms.locfileid: "79253542"
 
     f. 找出您要搜尋的使用者，然後按一下 [屬性]**** 來查看所有屬性。 如果該使用者不在搜尋結果中，請確認您的[篩選規則](how-to-connect-sync-configure-filtering.md)，且務必執行[套用並驗證變更](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes)，如此 Connect 中才會顯示該使用者。
 
-    g. 若要查看物件在過去一週的密碼同步詳細資料，請按一下 [記錄]****。  
+    如 若要查看物件在過去一週的密碼同步詳細資料，請按一下 [記錄]****。  
 
     ![物件記錄詳細資料](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
@@ -351,7 +353,7 @@ ms.locfileid: "79253542"
 
 [狀態] 欄可以有下列值︰
 
-| 狀態 | 說明 |
+| 狀態 | 描述 |
 | --- | --- |
 | 成功 |已成功同步處理密碼。 |
 | FilteredByTarget |密碼會設為 [使用者必須在下次登入時變更密碼] ****。 未同步處理密碼。 |

@@ -2,27 +2,23 @@
 title: 針對 Azure 自動化更新管理問題進行疑難排解
 description: 本文說明如何針對 Azure 自動化更新管理進行疑難排解及解決問題。
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/17/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: HT
+ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801881"
 ---
 # <a name="troubleshoot-update-management-issues"></a>針對更新管理問題進行疑難排解
 
 本文討論在您的電腦上部署更新管理功能時，可能會遇到的問題。 混合式 Runbook 背景工作角色代理程式有代理程式疑難排解員可判斷根本問題。 若要深入了解疑難排解員，請參閱[針對 Windows 更新代理程式問題進行疑難排解](update-agent-issues.md)和[針對 Linux 更新代理程式問題進行疑難排解](update-agent-issues-linux.md)。 對於其他功能部署問題，請參閱[針對功能部署問題進行疑難排解](onboarding.md)。
 
 >[!NOTE]
->如果您在 VM 上部署更新管理時遇到問題，請檢查本機電腦上 [應用程式和服務記錄] 底下的 [Operations Manager] 記錄。 尋找事件識別碼為 4502 的事件，以及包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件詳細資料。
+>如果您在 Windows 電腦上部署更新管理時遇到問題，請開啟 Windows 事件檢視器，然後檢查本機電腦上 [**應用程式和服務記錄**檔] 下的 [ **Operations Manager** ] 事件記錄檔。 尋找事件識別碼為 4502 的事件，以及包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件詳細資料。
 
-## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>案例：您收到「無法啟用更新解決方案」錯誤
+## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>案例：您收到「無法啟用更新解決方案」錯誤
 
 ### <a name="issue"></a>問題
 
@@ -48,9 +44,7 @@ Error details: Failed to enable the Update solution
 
 * 請移至[網路設定](../automation-hybrid-runbook-worker.md#network-planning)，了解必須允許哪些位址和連接埠，才能進行更新管理。  
 
-* 請移至[網路設定](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)，了解必須允許哪些位址和連接埠，才能讓 Log Analytics 代理程式運作。
-
-* 檢查範圍設定問題。 [範圍設定](../automation-scope-configurations-update-management.md)會判斷哪些電腦已針對更新管理進行設定。 如果您的電腦顯示在您的工作區中，但是不在更新管理入口網站中，您必須將範圍設定設為以電腦為目標。 若要了解範圍設定，請參閱[在工作區中啟用電腦](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)。
+* 檢查範圍設定問題。 [範圍設定](../automation-scope-configurations-update-management.md)會判斷哪些電腦已針對更新管理進行設定。 如果您的電腦顯示在您的工作區中，但不在更新管理中，您必須將範圍設定設為以電腦為目標。 若要了解範圍設定，請參閱[在工作區中啟用電腦](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)。
 
 * 依照[從內部部署 Windows 電腦移除混合式 Runbook 背景工作角色](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker)或[從內部部署 Linux 電腦移除混合式 Runbook 背景工作角色](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)中的步驟，來移除背景工作角色設定。 
 

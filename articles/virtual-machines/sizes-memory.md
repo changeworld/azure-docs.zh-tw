@@ -15,16 +15,15 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: ab4c95e3525caa42b979b15fa8118e9dd21bb74a
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: HT
+ms.openlocfilehash: 5e920f165232ec79dcced1de632d90f463ff58d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791464"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>記憶體最佳化的虛擬機器大小
 
-記憶體最佳化的虛擬機器大小的記憶體與 CPU 比例相當高，最適合關聯式資料庫伺服器、中型到大型快取，以及記憶體內部分析。 本文提供 vCPU 數量、資料磁碟和 NIC 的相關資訊，以及此群組中各種大小之儲存體輸送量和網路頻寬的相關資訊。
+記憶體優化 VM 大小提供高記憶體對 CPU 比例，非常適合關係資料庫伺服器、中型至大型快取，以及記憶體內部分析。 本文提供 vCPU 數量、資料磁碟和 NIC 的相關資訊，以及此群組中各種大小之儲存體輸送量和網路頻寬的相關資訊。
 
 - [Dv2 與 DSv2 系列](dv2-dsv2-series-memory.md)是原始 D 系列的延續，擁有更強大的 CPU。 Dv2 系列比 D 系列快約 35%。 在 Intel&reg; Xeon&reg; 8171M 2.1 GHz (Skylake) 或 Intel&reg; Xeon&reg; E5-2673 v4 2.3 GHz (Broadwell) 或 Intel&reg; Xeon&reg; E5-2673 v3 2.4 GHz (Haswell) 處理器上執行，並具有 Intel 渦輪加速技術 2.0。 Dv2 系列的記憶體和磁碟組態和 D 系列一樣。
 
@@ -34,7 +33,9 @@ ms.locfileid: "84248289"
 
 - [Ev3 與 Esv3 系列](ev3-esv3-series.md)搭配採用超執行緒設定的 Intel&reg; Xeon&reg; 8171M 2.1 GHz (Skylake) 或 Intel&reg; Xeon&reg; E5-2673 v4 2.3 GHz (Broadwell) 處理器，可為多數一般用途的工作負載提供更好的價值主張，並且讓 Ev3 更為符合其他多數雲端的一般用途 VM 的需求。 除了記憶體已擴充 (從 7 GiB/vCPU 到 8 GiB/vCPU)，磁碟和網路限制也已就個別核心進行調整，以符合移轉至超執行緒的需求。 Ev3 承襲了 D/Dv2 系列的高記憶體 VM 大小。
 
-- [Edv4 與 Edsv4 系列](edv4-edsv4-series.md)是在第 2 代 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 處理器上執行，對於極大型資料庫或受益於高 vCPU 計數及大量記憶體的其他應用程式而言，該系列是理想的選擇。 具備全核心滿載可維持 3.4 GHz 的渦輪時脈速度，並擁有 [Intel&reg; 渦輪加速技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超執行緒技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)與 [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 
+- [Ev4 和 Esv4 系列](ev4-esv4-series.md)會在超執行緒設定的第2代 Intel 最高 &reg; &reg; 白金8272CL （串聯 Lake）處理器上執行，非常適合各種需要海量儲存體的企業應用程式和功能，最高可達 504 GiB 的 RAM。 其特色為[intel &reg; Turbo 加速技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、 [intel &reg; 超執行緒技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和[Intel &reg; 先進向量延伸模組512（Intel AVX-512）](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。
+
+- [Edv4 和 Edsv4 系列](edv4-edsv4-series.md)會在第2代 Intel 最 &reg; &reg; 高白金8272CL （串聯 Lake）處理器上執行，非常適合極大的資料庫或其他可從高 vCPU 計數和海量儲存體獲益的應用程式。 具備全核心滿載可維持 3.4 GHz 的渦輪時脈速度，並擁有 [Intel&reg; 渦輪加速技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超執行緒技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)與 [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。
 
 - [M 系列](m-series.md)提供高 vCPU 計數 (最多 128 個 vCPU) 與大量記憶體 (最多 3.8 TiB)。 其也很適合用於受益於高 vCPU 計數與大量記憶體的極大型資料庫或其他應用程式。
 

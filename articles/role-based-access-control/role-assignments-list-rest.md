@@ -11,16 +11,15 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 50ef431559a38d30f7e1e76646e8930c70fc4ef9
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: 634e1111c9374a1749e7dbb0666740ce2833a688
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790971"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>使用 REST API 列出 Azure 角色指派
 
@@ -54,7 +53,7 @@ ms.locfileid: "82891325"
 1. 將 *{filter}* 取代為您要針對角色指派清單篩選套用的條件。
 
     > [!div class="mx-tableFixed"]
-    > | Filter | 描述 |
+    > | Filter | Description |
     > | --- | --- |
     > | `$filter=atScope()` | 只會列出指定範圍的角色指派，不包括指派的角色指派。 |
     > | `$filter=assignedTo('{objectId}')` | 列出所指定使用者或服務主體的角色指派。<br/>如果使用者是具有角色指派之群組的成員，也會列出該角色指派。 此篩選器可轉移群組，這表示如果使用者是群組的成員，而該群組是具有角色指派之另一個群組的成員，則也會列出該角色指派。<br/>此篩選器只接受使用者或服務主體的物件識別碼。 您無法傳遞群組的物件識別碼。 |

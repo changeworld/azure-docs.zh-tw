@@ -1,22 +1,21 @@
 ---
-title: 在 .NET 中建立和管理 blob 快照集
+title: 在 .NET 中建立和管理 Blob 快照集
 titleSuffix: Azure Storage
 description: 瞭解如何建立 blob 的唯讀快照集，以便在指定的時間點備份 blob 資料。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 438692d5c142c3f617ee9d0c3f55b9b3740f9b7a
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.openlocfilehash: be3d06d8ea493ab7c246ace5c49d5e5bc0036108
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884692"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463530"
 ---
-# <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中建立和管理 blob 快照集
+# <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中建立和管理 Blob 快照集
 
 快照集是在某個點時間取得的唯讀 Blob 版本。 本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立和管理 blob 快照集。
 
@@ -135,7 +134,7 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 - [DeleteIfExists](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexists)
 - [Cloudblobcontainer.deleteifexistsasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexistsasync)
 
-下列程式碼範例示範如何在 .NET 中刪除 blob 及其快照集，其中`blobClient`是[BlobClient](/dotnet/api/azure.storage.blobs.blobclient)類型的物件）：
+下列程式碼範例示範如何在 .NET 中刪除 blob 及其快照集，其中 `blobClient` 是[BlobClient](/dotnet/api/azure.storage.blobs.blobclient)類型的物件）：
 
 ```csharp
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
@@ -150,7 +149,7 @@ await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, nul
 - [DeleteIfExists](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexists)
 - [Cloudblobcontainer.deleteifexistsasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexistsasync)
 
-下列程式碼範例示範如何在 .NET 中刪除 blob 及其快照集，其中`blockBlob`是 [CloudBlockBlob] [dotnet_CloudBlockBlob] 類型的物件：
+下列程式碼範例示範如何在 .NET 中刪除 blob 及其快照集，其中 `blockBlob` 是 [CloudBlockBlob] [dotnet_CloudBlockBlob] 類型的物件：
 
 ```csharp
 await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, null, null);

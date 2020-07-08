@@ -2,25 +2,18 @@
 title: 提高存取權以管理所有 Azure 訂用帳戶和管理群組
 description: 描述如何使用 Azure 入口網站或 REST API 提高 Azure Active Directory 中全域管理員的存取權，以管理所有訂用帳戶和管理群組。
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-editor: bagovind
-ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: role-based-access-control
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 06/09/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 6821e3de3bfec891d98e9291a479cbb7537364ca
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: a93901bd95d57b29aeb1464652737a77a1a84376
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733649"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791991"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提高存取權以管理所有 Azure 訂用帳戶和管理群組
 
@@ -55,6 +48,8 @@ Azure AD 和 Azure 資源會獨立地受到保護。 也就是說，Azure AD 角
 
 1. 以全域管理員的身分登入 [Azure 入口網站](https://portal.azure.com)或 [Azure Active Directory 系統管理中心](https://aad.portal.azure.com)。
 
+    如果您使用 Azure AD Privileged Identity Management，請[啟用您的全域管理員角色指派](../active-directory/privileged-identity-management/pim-how-to-activate-role.md)。
+
 1. 開啟**Azure Active Directory**。
 
 1. 在 [**管理**] 底下，選取 [**屬性**]。
@@ -70,7 +65,7 @@ Azure AD 和 Azure 資源會獨立地受到保護。 也就是說，Azure AD 角
    當您將切換開關設定為 [否]**** 時，Azure RBAC 中的使用者存取管理員角色會從使用者帳戶中移除。 您將無法在所有與 Azure AD 目錄相關聯的 Azure 訂用帳戶和管理群組中指派角色。 您只能檢視和管理已取得其存取權的 Azure 訂用帳戶和管理群組。
 
     > [!NOTE]
-    > 如果您使用[Azure AD Privileged Identity Management （PIM）](../active-directory/privileged-identity-management/pim-configure.md)，停用角色指派並不會將此切換變更為 [**否**]。 若要維護最低許可權存取，建議您在停用角色指派之前，將此切換設定為 [**否**]。
+    > 如果您使用[Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)，停用角色指派並不會變更**Azure 資源的存取管理**切換為 [**否**]。 若要維護最低許可權存取，建議您在停用角色指派之前，將此切換設定為 [**否**]。
     
 1. 按一下 [儲存]**** 儲存您的設定。
 
@@ -82,13 +77,15 @@ Azure AD 和 Azure 資源會獨立地受到保護。 也就是說，Azure AD 角
 
    ![根範圍的訂用帳戶角色指派 - 螢幕擷取畫面](./media/elevate-access-global-admin/iam-root.png)
 
-1. 執行您需要以更高存取權執行的變更。
+1. 進行您需要的變更，以提高存取權。
 
-    如需指派角色的相關資訊，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](role-assignments-portal.md)。 如果您使用 Azure AD Privileged Identity Management (PIM)，請參閱[在 PIM 中探索要管理的 Azure 資源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[在 PIM 中指派 Azure 資源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
+    如需指派角色的相關資訊，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](role-assignments-portal.md)。 如果您使用 Privileged Identity Management，請參閱[探索 azure 資源來管理](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[指派 azure 資源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
+
+1. 執行下一節中的步驟，以移除提高許可權的存取權。
 
 ### <a name="remove-elevated-access"></a>移除已提高的存取權
 
-若要移除根範圍（`/`）的使用者存取系統管理員角色指派，請遵循下列步驟。
+若要移除根範圍（）的使用者存取系統管理員角色指派 `/` ，請遵循下列步驟。
 
 1. 以用來提高存取權的相同使用者身分登入。
 
@@ -100,13 +97,20 @@ Azure AD 和 Azure 資源會獨立地受到保護。 也就是說，Azure AD 角
 
     ![移除具有根範圍的角色指派](./media/elevate-access-global-admin/iam-root-remove.png)
 
+1. 以全域管理員身分登出。
+
+    如果您使用 Privileged Identity Management，請停用您的全域管理員角色指派。
+
+    > [!NOTE]
+    > 如果您使用[Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)，停用角色指派並不會變更**Azure 資源的存取管理**切換為 [**否**]。 若要維護最低許可權存取，建議您在停用角色指派之前，將此切換設定為 [**否**]。
+
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 ### <a name="list-role-assignment-at-root-scope-"></a>列出根範圍（/）的角色指派
 
-若要列出使用者在根範圍（`/`）的使用者存取系統管理員角色指派，請使用[new-azroleassignment](/powershell/module/az.resources/get-azroleassignment)命令。
+若要列出使用者在根範圍（）的使用者存取系統管理員角色指派 `/` ，請使用[new-azroleassignment](/powershell/module/az.resources/get-azroleassignment)命令。
 
 ```azurepowershell
 Get-AzRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
@@ -127,7 +131,7 @@ CanDelegate        : False
 
 ### <a name="remove-elevated-access"></a>移除已提高的存取權
 
-若要在根範圍（`/`）移除您自己或其他使用者的使用者存取系統管理員角色指派，請遵循下列步驟。
+若要在根範圍（）移除您自己或其他使用者的使用者存取系統管理員角色指派 `/` ，請遵循下列步驟。
 
 1. 以可移除所提高存取權的使用者身分登入。 這可以是用來提高存取權的相同使用者，或在根範圍具有更高存取權的其他全域管理員。
 
@@ -142,7 +146,7 @@ CanDelegate        : False
 
 ### <a name="list-role-assignment-at-root-scope-"></a>列出根範圍（/）的角色指派
 
-若要列出使用者在根範圍（`/`）的使用者存取系統管理員角色指派，請使用[az role 指派 list](/cli/azure/role/assignment#az-role-assignment-list)命令。
+若要列出使用者在根範圍（）的使用者存取系統管理員角色指派 `/` ，請使用[az role 指派 list](/cli/azure/role/assignment#az-role-assignment-list)命令。
 
 ```azurecli
 az role assignment list --role "User Access Administrator" --scope "/"
@@ -168,7 +172,7 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 ### <a name="remove-elevated-access"></a>移除已提高的存取權
 
-若要在根範圍（`/`）移除您自己或其他使用者的使用者存取系統管理員角色指派，請遵循下列步驟。
+若要在根範圍（）移除您自己或其他使用者的使用者存取系統管理員角色指派 `/` ，請遵循下列步驟。
 
 1. 以可移除所提高存取權的使用者身分登入。 這可以是用來提高存取權的相同使用者，或在根範圍具有更高存取權的其他全域管理員。
 
@@ -184,34 +188,21 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 若要使用 REST API 提高全域管理員的存取權，請使用下列基本步驟。
 
-1. 使用 REST，呼叫`elevateAccess`，它會授與您根範圍（`/`）的使用者存取系統管理員角色。
+1. 使用 REST，呼叫 `elevateAccess` ，它會授與您根範圍（）的使用者存取系統管理員角色 `/` 。
 
    ```http
    POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
    ```
 
-1. 建立[角色指派](/rest/api/authorization/roleassignments)以在任何範圍的指派任何角色。 下列範例顯示在根範圍（`/`）指派 {roleDefinitionID} 角色的屬性：
+1. 進行您需要的變更，以提高存取權。
 
-   ```json
-   { 
-     "properties": {
-       "roleDefinitionId": "providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionID}",
-       "principalId": "{objectID}",
-       "scope": "/"
-     },
-     "id": "providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111",
-     "type": "Microsoft.Authorization/roleAssignments",
-     "name": "11111111-1111-1111-1111-111111111111"
-   }
-   ```
+    如需指派角色的相關資訊，請參閱[使用 REST API 新增或移除 Azure 角色指派](role-assignments-rest.md)。
 
-1. 在使用者存取系統管理員的同時，您也可以移除根範圍（`/`）的角色指派。
-
-1. 移除您的「使用者存取系統管理員」權限，直到再次需要這些權限為止。
+1. 執行後續章節中的步驟，以移除提高許可權的存取權。
 
 ### <a name="list-role-assignments-at-root-scope-"></a>列出根範圍（/）的角色指派
 
-您可以在根範圍（`/`）列出使用者的所有角色指派。
+您可以在根範圍（）列出使用者的所有角色指派 `/` 。
 
 - 呼叫 [GET roleAssignments](/rest/api/authorization/roleassignments/listforscope)，其中 `{objectIdOfUser}` 是您想要其擷取角色指派之使用者的物件識別碼。
 
@@ -221,7 +212,7 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 ### <a name="list-deny-assignments-at-root-scope-"></a>列出根範圍（/）的拒絕指派
 
-您可以在根範圍（`/`）列出使用者的所有拒絕指派。
+您可以在根範圍（）列出使用者的所有拒絕指派 `/` 。
 
 - 呼叫 GET denyAssignments，其中 `{objectIdOfUser}` 是您想要其擷取拒絕指派之使用者的物件識別碼。
 
@@ -231,7 +222,7 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 ### <a name="remove-elevated-access"></a>移除已提高的存取權
 
-當您呼叫`elevateAccess`時，您會自行建立角色指派，因此若要撤銷這些許可權，您必須在根範圍（`/`）移除自己的「使用者存取系統管理員」角色指派。
+當您呼叫時， `elevateAccess` 您會自行建立角色指派，因此若要撤銷這些許可權，您必須在根範圍（）移除自己的「使用者存取系統管理員」角色指派 `/` 。
 
 1. 呼叫 [GET roleDefinitions](/rest/api/authorization/roledefinitions/get)，其中 `roleName` 等於使用者存取系統管理員，以判斷使用者存取系統管理員角色的名稱識別碼。
 
@@ -311,7 +302,7 @@ az role assignment list --role "User Access Administrator" --scope "/"
     }
     ```
     
-    同樣地，請從`name`參數儲存識別碼，在此案例中為11111111-1111-1111-1111-111111111111。
+    同樣地，請從參數儲存識別碼 `name` ，在此案例中為11111111-1111-1111-1111-111111111111。
 
 1. 最後，使用角色指派識別碼來移除 `elevateAccess` 所新增的指派：
 

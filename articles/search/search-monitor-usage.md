@@ -7,111 +7,89 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 353e00f902a7314e5e5b7c8ee03e8b925a510b26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: 421fddb819d4d396d3ab8890789e58ccb935cbc0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77462321"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806806"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>監視 Azure 認知搜尋的作業和活動
 
-本文會在工作負載層級（查詢和索引編制）介紹服務（資源）層級的監視，並建議用來監視使用者存取的架構。
+本文概述 Azure 認知搜尋的監視概念和工具。 若要進行整體監視，您可以使用內建功能和附加元件服務的組合，例如 Azure 監視器。
 
-在整個頻譜中，您將使用內建基礎結構和基本服務（如 Azure 監視器）的組合，以及傳回統計資料、計數和狀態的服務 Api。 瞭解功能的範圍可以協助您建立意見反應迴圈，以便在發生問題時加以解決。
+您可以完全追蹤下列各項：
 
-## <a name="use-azure-monitor"></a>使用 Azure 監視器
+* 服務：健全狀況/可用性和服務設定的變更。
+* 儲存體：已使用和可用，每個內容類型的計數相對於服務層所允許的配額。
+* 查詢活動：磁片區、延遲和節流或卸載的查詢。 記錄的查詢要求需要[Azure 監視器](#add-azure-monitor)。
+* 編制索引活動：需要 Azure 監視器的[診斷記錄](#add-azure-monitor)。
 
-許多服務（包括 Azure 認知搜尋）都會運用警示、計量和記錄診斷資料的[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/)。 針對「Azure 認知搜尋」，內建的監視基礎結構主要用於資源層級監視（服務健全狀況）和[查詢監視](search-monitor-queries.md)。
+搜尋服務不支援每個使用者驗證，因此不會在記錄檔中找到任何身分識別資訊。
 
-下列螢幕擷取畫面可協助您在入口網站中找出 Azure 監視器功能。
+## <a name="built-in-monitoring"></a>內建監視
 
-+ [**監視**] 索引標籤位於主要的 [總覽] 頁面上，一眼就會顯示重要計量。
-+ **活動記錄**（僅在以下的總覽）報告資源層級動作：服務健康狀態和 API 金鑰要求通知。
-+ 在清單中進一步**監視**，可提供可設定的警示、計量和診斷記錄。 當您需要時，建立這些專案。 收集並儲存資料之後，您就可以查詢或視覺化資訊以取得見解。
+內建監視是指搜尋服務所記錄的活動。 除了診斷之外，此監視層級不需要進行任何設定。
+
+Azure 認知搜尋會以為期30天的排程來維護內部資料，以報表服務健康狀態和查詢計量，您可以在入口網站中找到，或透過這些[REST api](#monitoring-apis)。
+
+下列螢幕擷取畫面可協助您在入口網站中尋找監視資訊。 一旦您開始使用服務，資料就會變成可用。 入口網站頁面每隔幾分鐘就會重新整理一次。
+
+* [**監視**中] 索引標籤，在主要的 [總覽] 頁面上，顯示查詢量、延遲，以及服務是否承受壓力。
+* 左側流覽窗格中的 [**活動記錄**] 會連接到 Azure Resource Manager。 活動記錄會報告 Resource Manager 所採取的動作：服務可用性和狀態、容量變更（複本和分割區），以及 API 金鑰相關活動。
+* 進一步**監視**設定會提供可設定的警示、計量和診斷記錄。 當您需要時，建立這些專案。 收集並儲存資料之後，您就可以查詢或視覺化資訊以取得見解。
 
 ![搜尋服務中的 Azure 監視器整合](./media/search-monitor-usage/azure-monitor-search.png
  "搜尋服務中的 Azure 監視器整合")
 
-### <a name="precision-of-reported-numbers"></a>報告數位的精確度
+> [!NOTE]
+> 由於入口網站頁面每隔幾分鐘就會重新整理一次，因此回報的數位是近似值，其目的是讓您大致瞭解系統服務要求的程度。 實際的計量（例如每秒的查詢數（QPS））可能會高於或低於頁面上顯示的數位。 如果 precision 是需求，請考慮使用 Api。
 
-入口網站頁面每隔幾分鐘就會重新整理一次。 因此，入口網站中回報的數位是近似值，主要是為了讓您知道系統服務要求的程度。 實際的計量（例如每秒的查詢數（QPS））可能會高於或低於頁面上顯示的數位。
+<a name="monitoring-apis"> </a>
 
-## <a name="activity-logs-and-service-health"></a>活動記錄和服務健全狀況
+### <a name="apis-useful-for-monitoring"></a>適用于監視的 Api
 
-[**活動記錄**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)會收集服務健康狀態變更的 Azure Resource Manager 和報告資訊。 您可以監視活動記錄，以瞭解與服務健康狀態相關的重大、錯誤和警告狀況。
+您可以使用下列 Api 來抓取入口網站的 [監視和使用方式] 索引標籤中找到的相同資訊。
 
-針對服務內工作（例如查詢、編制索引或建立物件），您會看到一般語音總機，例如*取得管理金鑰*，以及取得每個要求的*查詢金鑰*，而不是特定動作本身。 如需這項資料細微性的資訊，您必須設定診斷記錄。
+* [取得服務統計資料](/rest/api/searchservice/get-service-statistics)
+* [取得索引統計資料](/rest/api/searchservice/get-index-statistics)
+* [取得檔計數](/rest/api/searchservice/count-documents)
+* [取得索引子狀態](/rest/api/searchservice/get-indexer-status)
+
+### <a name="activity-logs-and-service-health"></a>活動記錄和服務健全狀況
+
+入口網站中的 [[**活動記錄**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)] 頁面會根據服務健康狀態的變更，收集 Azure Resource Manager 和報告的資訊。 您可以監視活動記錄，以瞭解與服務健康狀態相關的重大、錯誤和警告狀況。
+
+常見專案包括 API 金鑰的參考-一般語音總機，例如*取得管理金鑰*和*取得查詢金鑰*。 這些活動會指出使用管理金鑰（建立或刪除物件）或查詢金鑰所提出的要求，但不會顯示要求本身。 如需這項資料細微性的資訊，您必須設定診斷記錄。
 
 您可以從左側導覽窗格、從頂端視窗命令列中的 [通知] 或從 [診斷並解決問題]**** 頁面，存取 [活動記錄]****。
 
-## <a name="monitor-storage"></a>監視儲存體
+### <a name="monitor-storage-in-the-usage-tab"></a>在 [使用方式] 索引標籤中監視存放裝置
 
-[總覽] 頁面內建的索引標籤式頁面會報告資源使用量。 此資訊會在您開始使用服務時立即可用，而不需要設定，而且每隔幾分鐘就會重新整理頁面。 
-
-如果您要完成有關[要針對生產環境工作負載使用哪個定價層](search-sku-tier.md)或是否要[調整作用中複本和分割區的數量](search-capacity-planning.md)的決策，這些計量可透過顯示資源消耗速度及目前設定處理現有負載的情況，協助您進行這些決策。
-
-與存放裝置相關的警示目前無法使用;儲存體耗用量不會匯總或登入 Azure 監視器中的**AzureMetrics**資料表。 您需要[建立自訂解決方案](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating)來發出資源相關通知，您的程式碼會在其中檢查儲存體大小並處理回應。 如需儲存體計量的詳細資訊，請參閱[取得服務統計資料](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response)。
-
-若要在入口網站中進行視覺化監視，[**使用量**] 索引標籤會顯示相對於服務層級所設定之目前[限制](search-limits-quotas-capacity.md)的資源可用性。 
+若要在入口網站中進行視覺化監視，[**使用量**] 索引標籤會顯示相對於服務層級所設定之目前[限制](search-limits-quotas-capacity.md)的資源可用性。 如果您要完成有關[要針對生產環境工作負載使用哪個定價層](search-sku-tier.md)或是否要[調整作用中複本和分割區的數量](search-capacity-planning.md)的決策，這些計量可透過顯示資源消耗速度及目前設定處理現有負載的情況，協助您進行這些決策。
 
 以下是一個免費服務的圖例，其上限為每個類型 3 個物件且儲存體為 50 MB。 「基本」或「標準」服務的上限較高，且如果您增加分割區計數，儲存體上限也會按比例增加。
 
 ![相對於層級限制的使用狀態](./media/search-monitor-usage/usage-tab.png
  "相對於層級限制的使用狀態")
 
-## <a name="monitor-workloads"></a>監視工作負載
+> [!NOTE]
+> 與存放裝置相關的警示目前無法使用;儲存體耗用量不會匯總或登入 Azure 監視器中的**AzureMetrics**資料表。 若要取得儲存體警示，您必須[建立自訂解決方案](../azure-monitor/insights/solutions-creating.md)來發出資源相關通知，其中您的程式碼會檢查儲存體大小並處理回應。
 
-記錄的事件包括與索引編制和查詢相關的事件。 Log Analytics 中的**AzureDiagnostics**資料表會收集與查詢和索引相關的運算元據。
+<a name="add-azure-monitor"></a>
 
-大部分記錄的資料都是用於唯讀作業。 針對未在記錄檔中捕捉的其他建立-更新-刪除作業，您可以查詢搜尋服務中的系統資訊。
+## <a name="add-on-monitoring-with-azure-monitor"></a>使用 Azure 監視器的附加元件監視
 
-| OperationName | 說明 |
-|---------------|-------------|
-| ServiceStats | 這項作業是用來[取得服務統計資料](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)的例行呼叫，不論是在載入或重新整理時，直接或隱含地用來填入入口網站的 [總覽] 頁面。 |
-| 查詢。搜尋 |  針對索引的查詢要求，請參閱[監視查詢](search-monitor-queries.md)以取得已記錄查詢的相關資訊。|
-| 檢索。索引  | 此作業是[新增、更新或刪除檔](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)的呼叫。 |
-| 索引.生產 | 這是「匯入資料」 wizard 所建立的索引。 |
-| 索引子。建立 | 透過 [匯入資料] wizard 明確或隱含地建立索引子。 |
-| 索引子. Get | 每當執行索引子時，會傳回索引子的名稱。 |
-| 索引子。狀態 | 每當執行索引子時，會傳回索引子的狀態。 |
-| 資料來源. Get | 每當執行索引子時，會傳回資料來源的名稱。|
-| 索引。 Get | 每當執行索引子時，會傳回索引的名稱。 |
+許多服務（包括 Azure 認知搜尋）都會與[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/)整合，以取得額外的警示、計量和記錄診斷資料。 
 
-### <a name="kusto-queries-about-workloads"></a>關於工作負載的 Kusto 查詢
+如果您想要控制資料收集和儲存，請啟用搜尋服務的[診斷記錄](search-monitor-logs.md)。 Azure 監視器所捕捉的記錄事件會儲存在**AzureDiagnostics**資料表中，並由與查詢和索引相關的運算元據組成。
 
-如果您已啟用記錄功能，您可以查詢**AzureDiagnostics** ，以取得服務上執行的作業和時間的清單。 您也可以將活動相互關聯，以調查效能中的變更。
+Azure 監視器提供了數個儲存體選項，而您的選擇會決定您可以如何使用資料：
 
-#### <a name="example-list-operations"></a>範例：清單作業 
+* 如果您想要將 Power BI 報表中的[記錄資料視覺化](search-monitor-logs-powerbi.md)，請選擇 [Azure Blob 儲存體]。
+* 如果您想要透過 Kusto 查詢流覽資料，請選擇 [Log Analytics]。
 
-傳回作業清單和每個作業的計數。
-
-```
-AzureDiagnostics
-| summarize count() by OperationName
-```
-
-#### <a name="example-correlate-operations"></a>範例：相互關聯作業
-
-將查詢要求與索引作業相互關聯，並在一段時間圖表上呈現資料點，以查看作業是否一致。
-
-```
-AzureDiagnostics
-| summarize OperationName, Count=count()
-| where OperationName in ('Query.Search', 'Indexing.Index')
-| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
-| render timechart
-```
-
-### <a name="use-search-apis"></a>使用搜尋 Api
-
-Azure 認知搜尋 REST API 和 .NET SDK 都可讓您以程式設計方式存取服務計量、索引和索引子資訊，以及檔計數。
-
-+ [取得服務統計資料](/rest/api/searchservice/get-service-statistics)
-+ [取得索引統計資料](/rest/api/searchservice/get-index-statistics)
-+ [取得檔計數](/rest/api/searchservice/count-documents)
-+ [取得索引子狀態](/rest/api/searchservice/get-indexer-status)
+Azure 監視器有自己的帳單結構，而且本節中所參考的診斷記錄具有相關聯的成本。 如需詳細資訊，請參閱[Azure 監視器中的使用量和估計成本](../azure-monitor/platform/usage-estimated-costs.md)。
 
 ## <a name="monitor-user-access"></a>監視使用者存取
 

@@ -4,16 +4,15 @@ description: 了解如何開發使用 Azure 檔案服務來儲存檔案資料的
 author: roygara
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 44602c65a08f2e76fa017022f6137a18481f2edd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78301432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515369"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 開發 Azure 檔案服務
 
@@ -34,22 +33,22 @@ ms.locfileid: "78301432"
 
 ## <a name="understanding-the-net-apis"></a>了解 .NET API
 
-Azure 檔案服務會提供兩種廣泛的方法給用戶端應用程式：伺服器訊息區 (SMB) 和 REST。 在 .NET 中， `System.IO`和`WindowsAzure.Storage` api 會將這些方法抽象化。
+Azure 檔案服務會提供兩種廣泛的方法給用戶端應用程式：伺服器訊息區 (SMB) 和 REST。 在 .NET 中， `System.IO` 和 `WindowsAzure.Storage` api 會將這些方法抽象化。
 
 API | 使用時機 | 注意
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | 您的應用程式： <ul><li>需要使用 SMB 來讀取/寫入檔案</li><li>正在可透過連接埠 445 存取您 Azure 檔案服務帳戶的裝置上執行</li><li>不需要管理檔案共用的任何系統管理設定</li></ul> | 透過 SMB Azure 檔案儲存體執行的檔案 i/o，通常與任何網路檔案共用或本機儲存裝置的 i/o 相同。 如需 .NET 中一些功能的簡介（包括檔案 i/o），請參閱[主控台應用程式](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)教學課程。
-[Microsoft. Azure 儲存檔案](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | 您的應用程式： <ul><li>因為防火牆或 ISP 的條件約束，所以無法使用埠445上的 SMB 存取 Azure 檔案儲存體</li><li>需要系統管理功能，例如設定檔案共用的配額，或建立共用存取簽章的能力</li></ul> | 本文示範如何使用 REST （ `Microsoft.Azure.Storage.File`而非 SMB）和檔案共用的管理來進行檔案 i/o。
+[Microsoft. Azure 儲存檔案](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | 您的應用程式： <ul><li>因為防火牆或 ISP 的條件約束，所以無法使用埠445上的 SMB 存取 Azure 檔案儲存體</li><li>需要系統管理功能，例如設定檔案共用的配額，或建立共用存取簽章的能力</li></ul> | 本文示範如何使用 `Microsoft.Azure.Storage.File` REST （而非 SMB）和檔案共用的管理來進行檔案 i/o。
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>建立主控台應用程式並取得組件
 
 在 Visual Studio 中，建立新的 Windows 主控台應用程式。 下列步驟說明如何在 Visual Studio 2019 中建立主控台應用程式。 這些步驟類似其他 Visual Studio 版本中的步驟。
 
-1. 啟動 Visual Studio，然後選取 [建立新專案]****。
+1. 啟動 Visual Studio，然後選取 [建立新專案]。
 1. 在 [**建立新專案**] 中，選擇 c # 的 [**主控台應用程式（.NET Framework）** ]，然後選取 **[下一步]**。
 1. 在 [**設定您的新專案**] 中，輸入應用程式的名稱，然後選取 [**建立**]。
 
-您可以將本教學課程中的所有程式碼範例`Main()`新增至主控台應用程式`Program.cs`檔案的方法。
+您可以將本教學課程中的所有程式碼範例新增至 `Main()` 主控台應用程式檔案的方法 `Program.cs` 。
 
 您可以在任何類型的 .NET 應用程式中使用 Azure 儲存體用戶端程式庫。 這些類型包括 Azure 雲端服務或 web 應用程式，以及桌面和行動應用程式。 在本指南中，為求簡化，我們會使用主控台應用程式。
 
@@ -73,18 +72,18 @@ API | 使用時機 | 注意
 您可以使用 NuGet 來取得這兩個封裝。 請遵循下列步驟：
 
 1. 在**方案總管**中，以滑鼠右鍵按一下您的專案，然後選擇 [**管理 NuGet 封裝**]。
-1. 在**NuGet 套件管理員**中，選取 **[流覽]**。 然後，搜尋並選擇 [ **Microsoft. Azure**]，然後選取 [**安裝**]。
+1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後，搜尋並選擇 [ **Microsoft. Azure**]，然後選取 [**安裝**]。
 
    此步驟會安裝封裝及其相依性。
 1. 搜尋並安裝這些封裝：
 
    * **Microsoft. Azure 儲存體。通用**
    * **Microsoft. Azure 儲存檔案**
-   * **ConfigurationManager**
+   * **Microsoft.Azure.ConfigurationManager**
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>將您的儲存體帳號憑證儲存到 App.config 檔案
 
-接下來，將您的認證儲存在`App.config`專案的檔案中。 在**方案總管**中，按兩下`App.config`並編輯檔案，使其與下列範例類似。 請`myaccount`以您的儲存體帳戶名稱`mykey`取代，並以您的儲存體帳戶金鑰取代。
+接下來，將您的認證儲存在專案的檔案中 `App.config` 。 在**方案總管**中，按兩下 `App.config` 並編輯檔案，使其與下列範例類似。 請 `myaccount` 以您的儲存體帳戶名稱取代，並 `mykey` 以您的儲存體帳戶金鑰取代。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -103,7 +102,7 @@ API | 使用時機 | 注意
 
 ## <a name="add-using-directives"></a>新增 using 指示詞
 
-在**方案總管**中，開啟`Program.cs`檔案，然後將下列 using 指示詞新增至檔案頂端。
+在**方案總管**中，開啟檔案 `Program.cs` ，然後將下列 using 指示詞新增至檔案頂端。
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -116,7 +115,7 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 ## <a name="access-the-file-share-programmatically"></a>以程式設計方式存取檔案共用
 
-接下來，將下列內容新增至`Main()`方法（在上方顯示的程式碼之後），以取得連接字串。 這段程式碼會取得我們稍早建立之檔案的參考，並輸出其內容。
+接下來，將下列內容新增至 `Main()` 方法（在上方顯示的程式碼之後），以取得連接字串。 這段程式碼會取得我們稍早建立之檔案的參考，並輸出其內容。
 
 ```csharp
 // Create a CloudFileClient object for credentialed access to Azure Files.
@@ -428,14 +427,14 @@ Azure 儲存體分析現在支援 Azure 檔案服務的計量。 利用度量資
 
 下列程式碼範例會示範如何使用適用於 .NET 的儲存體用戶端程式庫，啟用 Azure 檔案服務的計量。
 
-首先，將下列`using`指示詞新增至`Program.cs`您的檔案，以及您在上面新增的指示詞：
+首先，將下列指示詞新增 `using` 至您的檔案 `Program.cs` ，以及您在上面新增的指示詞：
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-雖然 Azure Blob、Azure 資料表和 Azure `ServiceProperties`佇列會在`Microsoft.Azure.Storage.Shared.Protocol`命名空間中使用共用類型，Azure 檔案儲存體會使用其本身的類型`FileServiceProperties` ，也就`Microsoft.Azure.Storage.File.Protocol`是命名空間中的類型。 不過，您必須從程式碼參考這兩個命名空間，才能編譯下列程式碼。
+雖然 Azure Blob、Azure 資料表和 Azure 佇列會 `ServiceProperties` 在命名空間中使用共用類型 `Microsoft.Azure.Storage.Shared.Protocol` ，Azure 檔案儲存體會使用其本身的類型，也就是 `FileServiceProperties` 命名空間中的類型 `Microsoft.Azure.Storage.File.Protocol` 。 不過，您必須從程式碼參考這兩個命名空間，才能編譯下列程式碼。
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.

@@ -1,20 +1,13 @@
 ---
 title: Azure 服務匯流排常見問題集 (FAQ) | Microsoft Docs
 description: 本文提供一些關於 Azure 服務匯流排的常見問題（FAQ）的解答。
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 35721d174ec4b840185727efe5fb384015040b80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341462"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服務匯流排-常見問題（FAQ）
 
@@ -42,46 +35,46 @@ ms.locfileid: "76760244"
 
  [Premium SKU](service-bus-premium-messaging.md) 不再支援分割的實體。 
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火牆上開啟哪些埠？ 
-您可以搭配使用下列通訊協定與 Azure 服務匯流排來傳送和接收訊息：
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火牆上開啟哪些連接埠？ 
+您可以使用下列通訊協定搭配 Azure 服務匯流排來傳送和接收訊息：
 
 - 進階訊息佇列通訊協定 (AMQP)
 - 服務匯流排傳訊通訊協定 (SBMP)
 - HTTP
 
-請參閱下表，以瞭解您需要開啟的輸出埠，以使用這些通訊協定與 Azure 事件中樞進行通訊。 
+請參閱下表，了解您需要開啟哪些輸出連接埠，以使用這些通訊協定與 Azure 事件中樞進行通訊。 
 
 | 通訊協定 | 連接埠 | 詳細資料 | 
 | -------- | ----- | ------- | 
-| AMQP | 5671和5672 | 請參閱[AMQP 通訊協定指南](service-bus-amqp-protocol-guide.md) | 
+| AMQP | 5671 與 5672 | 請參閱 [AMQP 通訊協定指南](service-bus-amqp-protocol-guide.md) | 
 | SBMP | 9350到9354 | 請參閱連線[模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
 | HTTP、HTTPS | 80、443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>我需要列入允許清單的 IP 位址為何？
-若要針對您的連線尋找適當的 IP 位址給白名單，請遵循下列步驟：
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>需要將哪些 IP 位址列入白名單中？
+若要針對您的連線尋找適當的 IP 位址以列入白名單中，請遵循下列步驟：
 
 1. 從命令提示字元執行下列命令： 
 
     ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
+    nslookup <YourNamespaceName>.cloudapp.net
     ```
-2. 記下中`Non-authoritative answer`傳回的 IP 位址。 這個 IP 位址是靜態的。 只有當您將命名空間還原到不同的叢集時，才會發生變更的唯一時間點。
+2. 記下 `Non-authoritative answer` 中傳回的 IP 位址。 這個 IP 位址是靜態的。 只有當您將命名空間還原到不同的叢集時，才會發生變更的唯一時間點。
 
-如果您使用命名空間的區域複本，則需要執行一些額外的步驟： 
+如果您將區域備援用於命名空間，則需要執行一些額外的步驟： 
 
-1. 首先，您會在命名空間上執行 nslookup。
-
-    ```
-    nslookup <yournamespace>.servicebus.windows.net
-    ```
-2. 記下 [**非權威式回應**] 區段中的名稱，這是下列其中一種格式： 
+1. 首先，在命名空間上執行 nslookup。
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    nslookup <yournamespace>.cloudapp.net
     ```
-3. 針對每個尾碼為 s1、s2 和 s3 的程式執行 nslookup，以取得三個可用性區域中執行之三個實例的 IP 位址。 
+2. 記下 [非授權回答] 區段中的名稱，其採用下列其中一種格式： 
+
+    ```
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
+    ```
+3. 針對尾碼為 s1、s2 和 s3 的每個名稱執行 nslookup，以取得三個執行個體全都在三個可用性區域執行的 IP 位址。 
 
 
 ## <a name="best-practices"></a>最佳作法
@@ -123,13 +116,6 @@ Azure 服務匯流排最近已升級計費元件。 因此，如果您有服務�
 
 如需服務匯流排限制和配額的清單，請參閱[服務匯流排配額概觀][Quotas overview]。
 
-### <a name="does-service-bus-have-any-usage-quotas"></a>服務匯流排是否有任何使用量配額？
-根據預設，對於所有雲端服務，Microsoft 會設定針對所有客戶的訂用帳戶計算的彙總每月使用量配額。 若您需要的配額比這些限制來得多，您可以隨時與客戶服務部門連絡，以了解您的需求並適當地調整這些限制。 針對服務匯流排，彙總使用量配額為每個月 50 億則訊息。
-
-雖然 Microsoft 有權停用在指定的月份內超出其使用量配額的客戶帳戶，但會傳送電子郵件通知並且在採取任何動作之前多次嘗試連絡客戶。 超出這些配額的客戶仍需負責支付超出配額的費用。
-
-如同 Azure 上的其他服務，服務匯流排會強制執行一組特定的配額，以確保公平的資源使用量。 您可以在[服務匯流排配額概觀][Quotas overview]中找到更多關於這些配額的詳細資料。
-
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>如何處理大小超過 1 MB 的訊息？
 「服務匯流排」訊息服務 (佇列和主題/訂用帳戶) 可讓應用程式傳送大小最大達 256 KB (標準層) 或 1 MB (進階層) 的訊息。 如果您要處理大小超過 1 MB 的訊息，請使用[這篇部落格文章](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern) \(英文\) 中所述的宣告檢查模式。
 
@@ -141,7 +127,7 @@ Azure 服務匯流排最近已升級計費元件。 因此，如果您有服務�
 如需可能的服務匯流排例外狀況，請參閱[例外狀況概觀][Exceptions overview]。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>什麼是共用存取簽章，何種語言可支援產生簽章？
-共用存取簽章是以 SHA-256 安全雜湊或 URI 為基礎的驗證機制。 如需如何在 node.js、PHP、JAVA、Python 和 c # 中產生您自己的簽章的相關資訊，請參閱[共用存取][Shared Access Signatures]簽章一文。
+共用存取簽章是以 SHA-256 安全雜湊或 URI 為基礎的驗證機制。 如需如何在 Node.js、PHP、JAVA、Python 和 c # 中產生您自己的簽章的相關資訊，請參閱[共用存取][Shared Access Signatures]簽章一文。
 
 ## <a name="subscription-and-namespace-management"></a>訂用帳戶和命名空間管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>如何將命名空間移轉到另一個 Azure 訂用帳戶？

@@ -8,12 +8,11 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 4c725fe74185088dea55b7506493fe667e71b7ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806630"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 認知搜尋中的相似性與評分
 
@@ -38,7 +37,7 @@ ms.locfileid: "83679665"
 
 <a name="scoring-statistics"></a>
 
-## <a name="scoring-statistics-and-sticky-sessions-preview"></a>評分統計資料和黏性工作階段 (預覽)
+## <a name="scoring-statistics-and-sticky-sessions"></a>評分統計資料和粘滯話
 
 針對可擴縮性，Azure 認知搜尋會透過分區化程序水平散發每個索引，這表示會實際分開索引的各部分。
 
@@ -47,14 +46,14 @@ ms.locfileid: "83679665"
 如果您偏好根據所有分區的統計屬性來計算分數，您可以將 *scoringStatistics=global* 加入為[查詢參數](https://docs.microsoft.com/rest/api/searchservice/search-documents) (或將 *"scoringStatistics": "global"* 加入為[查詢要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)的主體參數)。
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
 使用 scoringStatistics，可確保相同複本中的所有分區都提供相同的結果。 也就是說，因為不同的複本一律以最新的索引變更進行更新，所以彼此之間可能會稍有不同。 在某些情況下，您可能會想讓使用者在「查詢工作階段」期間取得更一致的結果。 在這種情況下，您可以提供 `sessionId` 作為查詢的一部分。 `sessionId` 是您建立的唯一字串，可參考唯一的使用者工作階段。
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
@@ -72,6 +71,37 @@ Azure 認知搜尋支援兩種不同的相似性排名演算法：*傳統的相�
 下列影片區段快轉至 Azure 認知搜尋中使用的排名演算法說明。 您可以觀看整段影片，以取得更多背景資訊。
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
+
+<a name="featuresMode-param"></a>
+
+## <a name="featuresmode-parameter-preview"></a>featuresMode 參數（預覽）
+
+[搜尋檔](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents)要求具有新的[featuresMode](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents#featuresmode)參數，可在欄位層級提供有關相關性的其他詳細資料。 雖然 `@searchScore` 是針對檔進行的計算（在此查詢的內容中，這份檔的相關資訊），但透過 featuresMode，您可以取得個別欄位（如結構中所表示）的詳細資訊 `@search.features` 。 結構包含查詢中使用的所有欄位（在查詢中透過**searchFields**的特定欄位，或**索引中所有屬性為可**搜尋的欄位）。 針對每個欄位，您會取得下列值：
+
++ 在欄位中找到的唯一標記數目
++ 相似性分數，或欄位內容與查詢字詞的相對程度的量值
++ 詞彙頻率，或在欄位中找到查詢字詞的次數
+
+對於以「描述」和「標題」欄位為目標的查詢，包含的回應 `@search.features` 可能如下所示：
+
+```json
+"value": [
+ {
+    "@search.score": 5.1958685,
+    "@search.features": {
+        "description": {
+            "uniqueTokenMatches": 1.0,
+            "similarityScore": 0.29541412,
+            "termFrequency" : 2
+        },
+        "title": {
+            "uniqueTokenMatches": 3.0,
+            "similarityScore": 1.75451557,
+            "termFrequency" : 6
+        }
+```
+
+您可以在[自訂計分解決方案](https://github.com/Azure-Samples/search-ranking-tutorial)中取用這些資料點，或使用此資訊來偵測搜尋相關性問題。
 
 ## <a name="see-also"></a>另請參閱
 

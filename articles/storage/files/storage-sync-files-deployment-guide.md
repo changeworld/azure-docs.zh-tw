@@ -3,34 +3,33 @@ title: 部署 Azure 檔案同步 | Microsoft Docs
 description: 了解部署 Azure 檔案同步的完整程序。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d179697707b8190515e8c0e6dee2defa8881c03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e1ba623a00c84a7b83afe778c808251e49c7008e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137717"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515354"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 檔案同步
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
 
 強烈建議您先閱讀[規劃 Azure 檔案服務部署](storage-files-planning.md)和[規劃 Azure 檔案同步部署](storage-sync-files-planning.md)，再完成本文章中描述的步驟。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 * 您想要部署 Azure 檔案同步的相同區域中的 Azure 檔案共用。如需詳細資訊，請參閱：
     - Azure 檔案同步的[區域可用性](storage-sync-files-planning.md#azure-file-sync-region-availability)。
     - [建立檔案共用](storage-how-to-create-file-share.md)以取得如何建立檔案共用的逐步說明。
-* 至少一個支援的 Windows Server 或 Windows Server cluster 實例與 Azure 檔案同步同步。如需有關支援的 Windows Server 版本的詳細資訊，請參閱[與 Windows server 的互通性](storage-sync-files-planning.md#windows-file-server-considerations)。
-* Az PowerShell 模組可用於 PowerShell 5.1 或 PowerShell 6 +。 您可以在任何支援的系統上使用 Az PowerShell 模組來進行 Azure 檔案同步，包括非 Windows 系統，但是伺服器註冊 Cmdlet 一律必須在您要註冊的 Windows Server 實例上執行（這可以直接完成或透過 PowerShell 遠端處理）。 在 Windows Server 2012 R2 上，您可以確認您至少執行 PowerShell 5.1。\*藉由查看 **$PSVersionTable**物件的**PSVersion**屬性值：
+* 至少一個支援的 Windows Server 或 Windows Server cluster 實例與 Azure 檔案同步同步。如需有關支援的 Windows Server 版本和建議的系統資源的詳細資訊，請參閱[windows 檔案伺服器考慮](storage-sync-files-planning.md#windows-file-server-considerations)。
+* Az PowerShell 模組可用於 PowerShell 5.1 或 PowerShell 6 +。 您可以在任何支援的系統上使用 Az PowerShell 模組來進行 Azure 檔案同步，包括非 Windows 系統，但是伺服器註冊 Cmdlet 一律必須在您要註冊的 Windows Server 實例上執行（這可以直接完成或透過 PowerShell 遠端處理）。 在 Windows Server 2012 R2 上，您可以確認您至少執行 PowerShell 5.1。 \*藉由查看 **$PSVersionTable**物件的**PSVersion**屬性值：
 
     ```powershell
     $PSVersionTable.PSVersion
     ```
 
-    如果您的 PSVersion 值小於 5.1.\* (大部分的 Windows Server 2012 R2 全新安裝都會發生此類情況)，您可以下載並安裝 [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) \(英文\) 來輕鬆地升級。 針對 Windows Server 2012 R2 下載和安裝的適當套件是**win 8.1 andw2k12r2-\*\*\*\*\*\*\*KB-x64。** 
+    如果您的 PSVersion 值小於 5.1.\* (大部分的 Windows Server 2012 R2 全新安裝都會發生此類情況)，您可以下載並安裝 [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) \(英文\) 來輕鬆地升級。 針對 Windows Server 2012 R2 下載和安裝的適當套件是**win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64。** 
 
     PowerShell 6 + 可以搭配任何支援的系統使用，並可透過其[GitHub 頁面](https://github.com/PowerShell/PowerShell#get-powershell)下載。 
 
@@ -40,7 +39,7 @@ ms.locfileid: "82137717"
 * 如果您選擇使用 PowerShell 5.1，請確定至少已安裝 .NET 4.7.2。 深入瞭解您系統上的[.NET Framework 版本和](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)相依性。
 
     > [!Important]  
-    > 如果您要在 Windows Server Core 上安裝 .NET 4.7.2 +，您必須使用`quiet`和`norestart`旗標安裝，否則安裝將會失敗。 例如，如果安裝 .NET 4.8，命令看起來會像下面這樣：
+    > 如果您要在 Windows Server Core 上安裝 .NET 4.7.2 +，您必須使用 `quiet` 和 `norestart` 旗標安裝，否則安裝將會失敗。 例如，如果安裝 .NET 4.8，命令看起來會像下面這樣：
     > ```PowerShell
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
@@ -109,7 +108,7 @@ if ($installType -ne "Server Core") {
 完成時，請選取 [建立]**** 來部署儲存體同步服務。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-將`<Az_Region>`、 `<RG_Name>`和`<my_storage_sync_service>`取代為您自己的值，然後使用下列命令來建立和部署儲存體同步服務：
+將 `<Az_Region>` 、 `<RG_Name>` 和取代 `<my_storage_sync_service>` 為您自己的值，然後使用下列命令來建立和部署儲存體同步服務：
 
 ```powershell
 $hostType = (Get-Host).Name
@@ -366,7 +365,7 @@ if ($cloudTieringDesired) {
 1. 選取 [**允許存取來源**] 底下的 [**選取的網路**]。
 1. 請確定您的伺服器 IP 或虛擬網路已列在適當的區段底下。
 1. 請確定已核取 [**允許信任的 Microsoft 服務存取此儲存體帳戶**]。
-1. 選取 [**儲存**] 以儲存您的設定。
+1. 選取 [儲存] 以儲存您的設定。
 
 ![將防火牆和虛擬網路設定為使用 Azure 檔案同步](media/storage-sync-files-deployment-guide/firewall-and-vnet.png)
 

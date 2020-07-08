@@ -8,14 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 5250a27e6c5fcf012207f1edb95ad46c0aabfe63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2b4eef6a992915e934e69a93d440bc6fa60aa690
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536168"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84803526"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>使用 PowerShell 建立容器或 blob 的使用者委派 SAS
 
@@ -32,7 +31,7 @@ ms.locfileid: "79536168"
 1. 解除安裝任何先前安裝的 Azure PowerShell：
 
     - 使用 [設定]**** 底下的 [應用程式與功能]****，從 Windows 移除任何先前安裝的 Azure PowerShell。
-    - 從`%Program Files%\WindowsPowerShell\Modules`移除所有**Azure**模組。
+    - 從移除所有**Azure**模組 `%Program Files%\WindowsPowerShell\Modules` 。
 
 1. 確定您已安裝最新版的 PowerShellGet。 開啟 Windows PowerShell 視窗，然後執行下列命令來安裝最新版本：
 
@@ -62,7 +61,7 @@ ms.locfileid: "79536168"
 Get-Module -ListAvailable -Name Az.Storage -Refresh
 ```
 
-如需有關安裝 Azure PowerShell 的詳細資訊，請參閱[使用 PowerShellGet 安裝 Azure PowerShell](/powershell/azure/install-az-ps)。
+如需如何安裝 Azure PowerShell 的詳細資訊，請參閱[使用 PowerShellGet 安裝 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 ## <a name="sign-in-to-azure-powershell-with-azure-ad"></a>使用 Azure AD 登入 Azure PowerShell
 
@@ -98,7 +97,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 因為使用者委派金鑰有效的最大間隔是從開始日期起算的7天，所以您應該指定在開始時間的7天內的 SAS 到期時間。 在使用者委派金鑰過期之後，SAS 無效，因此到期時間超過7天的 SAS 仍然有效7天。
 
-若要使用 Azure PowerShell 建立容器或 blob 的使用者委派 SAS，請先建立新的 Azure 儲存體內容物件，並指定`-UseConnectedAccount`參數。 `-UseConnectedAccount`參數指定命令會在您用來登入的 Azure AD 帳戶底下建立內容物件。
+若要使用 Azure PowerShell 建立容器或 blob 的使用者委派 SAS，請先建立新的 Azure 儲存體內容物件，並指定 `-UseConnectedAccount` 參數。 `-UseConnectedAccount`參數指定命令會在您用來登入的 Azure AD 帳戶底下建立內容物件。
 
 請記得以您自己的值取代角括號中的預留位置值：
 
@@ -130,7 +129,7 @@ New-AzStorageContainerSASToken -Context $ctx `
 
 若要傳回 blob 的使用者委派 SAS 權杖，請呼叫[AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken)命令，並傳入您先前建立的 Azure 儲存體內容物件。
 
-下列語法會傳回 blob 的使用者委派 SAS。 此範例會指定`-FullUri`參數，傳回已附加 SAS 權杖的 blob URI。 請記得以您自己的值取代括弧中的預留位置值：
+下列語法會傳回 blob 的使用者委派 SAS。 此範例會指定 `-FullUri` 參數，傳回已附加 SAS 權杖的 BLOB URI。 請記得以您自己的值取代括弧中的預留位置值：
 
 ```powershell
 New-AzStorageBlobSASToken -Context $ctx `

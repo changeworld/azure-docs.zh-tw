@@ -10,12 +10,11 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: a17f27831dd0a674c1d55cde6974aba5e1bfcfc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8a9382af630d80480e5bec50d629451ebe49bf73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734464"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>安全地遠端存取 Azure Active Directory Domain Services 中的虛擬機器
 
@@ -32,7 +31,7 @@ ms.locfileid: "82105721"
 
 ![遠端桌面服務（RDS）總覽](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文，您需要下列資源：
 
@@ -41,10 +40,10 @@ ms.locfileid: "82105721"
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
-    * 如有需要，請[建立並設定 Azure Active Directory Domain Services 執行個體][create-azure-ad-ds-instance]。
+    * 如有需要，請[建立並設定 Azure Active Directory Domain Services 受控網域][create-azure-ad-ds-instance]。
 * 在您的 Azure Active Directory Domain Services 虛擬網路中建立的*工作負載*子網。
     * 如有需要，請[設定 Azure Active Directory Domain Services 受控網域的虛擬網路][configure-azureadds-vnet]。
-* 屬於您 Azure AD 租用戶中 Azure AD DC 系統管理員  群組成員的使用者帳戶。
+* 屬於您 Azure AD 租用戶中 Azure AD DC 系統管理員** 群組成員的使用者帳戶。
 
 ## <a name="deploy-and-configure-the-remote-desktop-environment"></a>部署和設定遠端桌面環境
 
@@ -55,16 +54,16 @@ ms.locfileid: "82105721"
 * *RDGVM01* -執行 RD 連線代理人伺服器、RD Web 存取伺服器和 RD 閘道伺服器。
 * *RDSHVM01* -執行 RD 工作階段主機伺服器。
 
-請確定 Vm 已部署到您 Azure AD DS 虛擬網路的*工作負載*子網，然後將 vm 加入 Azure AD DS 受控網域。 如需詳細資訊，請參閱如何[建立 Windows SERVER VM 並將其加入 AZURE AD DS 受控網域][tutorial-create-join-vm]。
+請確定 Vm 已部署到您 Azure AD DS 虛擬網路的*工作負載*子網，然後將 vm 加入受控網域。 如需詳細資訊，請參閱如何[建立 Windows SERVER VM 並將其加入受控網域][tutorial-create-join-vm]。
 
-RD 環境部署包含幾個步驟。 您可以使用現有的 RD 部署指南，而不需要進行任何特定變更，即可在 Azure AD DS 受控網域中使用：
+RD 環境部署包含幾個步驟。 您可以使用現有的 RD 部署指南，而不需要任何特定變更即可在受控網域中使用：
 
 1. 使用屬於*AZURE AD DC 系統管理員*群組（例如*contosoadmin*）的帳戶，登入為 RD 環境建立的 vm。
 1. 若要建立和設定 RDS，請使用現有的[遠端桌面環境部署指南][deploy-remote-desktop]。 視需要將 RD 伺服器元件分散到您的 Azure Vm。
     * 適用于 Azure AD DS：當您設定 RD 授權時，請將它設為 [**每一裝置**] 模式，而不是 [部署指南] 中所述的**每個使用者**。
 1. 如果您想要使用網頁瀏覽器來提供存取權，請[為您的使用者設定遠端桌面 web 用戶端][rd-web-client]。
 
-當 RD 部署到 Azure AD DS 受控網域時，您可以管理和使用服務，就像使用內部部署 AD DS 網域一樣。
+當 RD 部署到受控網域時，您可以管理和使用服務，就像使用內部部署 AD DS 網域一樣。
 
 ## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>部署和設定 NPS 和 Azure MFA NPS 擴充功能
 
@@ -76,7 +75,7 @@ RD 環境部署包含幾個步驟。 您可以使用現有的 RD 部署指南，
 
 若要將中的 Azure 多重要素驗證整合到您的 Azure AD DS 遠端桌面環境，請建立 NPS 伺服器並安裝擴充功能：
 
-1. 建立額外的 Windows Server 2016 或 2019 VM，例如*NPSVM01*，其連線至 Azure AD DS 虛擬網路中的*工作負載*子網。 將 VM 加入 Azure AD DS 受控網域。
+1. 建立額外的 Windows Server 2016 或 2019 VM，例如*NPSVM01*，其連線至 Azure AD DS 虛擬網路中的*工作負載*子網。 將 VM 加入受控網域。
 1. 以屬於*AZURE AD DC 系統管理員*群組的帳戶登入 NPS VM，例如*contosoadmin*。
 1. 從**伺服器管理員**選取 [**新增角色及功能**]，然後安裝 [*網路原則與存取服務*] 角色。
 1. 使用現有的操作說明文章來[安裝和設定 AZURE MFA NPS 延伸][nps-extension]模組。
@@ -87,9 +86,9 @@ RD 環境部署包含幾個步驟。 您可以使用現有的 RD 部署指南，
 
 若要整合 Azure 多因素驗證 NPS 延伸模組，請使用現有的操作說明文章，以[使用網路原則伺服器（NPS）延伸模組和 Azure AD 來整合您的遠端桌面閘道基礎結構][azure-mfa-nps-integration]。
 
-整合 Azure AD DS 受控網域時，需要下列額外的設定選項：
+與受控網域整合需要下列其他設定選項：
 
-1. 請勿[在 Active Directory 中註冊 NPS 伺服器][register-nps-ad]。 此步驟會在 Azure AD DS 受控網域中失敗。
+1. 請勿[在 Active Directory 中註冊 NPS 伺服器][register-nps-ad]。 此步驟在受控網域中失敗。
 1. 在[步驟4中，若要設定網路原則][create-nps-policy]，另請核取 [**略過使用者帳戶撥入**內容] 核取方塊。
 1. 如果您使用 Windows Server 2019 做為 NPS 伺服器和 Azure 多因素驗證 NPS 延伸模組，請執行下列命令來更新安全通道，讓 NPS 伺服器能夠正確通訊：
 

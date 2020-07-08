@@ -4,16 +4,15 @@ description: 說明如何建立具有 premium 效能特性的 Azure BlockBlobSto
 author: tamram
 services: storage
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4767c0310783e7e2cc51b4caa7d6e6a052d0a05a
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
-ms.translationtype: MT
+ms.openlocfilehash: 31a7048c263d7231fe827ad5a1c927c5cb3e2f6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007308"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463547"
 ---
 # <a name="create-a-blockblobstorage-account"></a>建立 BlockBlobStorage 帳戶
 
@@ -24,7 +23,7 @@ BlockBlobStorage 帳戶種類可讓您建立具有 premium 效能特性的區塊
 
 如需 BlockBlobStorage 帳戶的詳細資訊，請參閱[Azure 儲存體帳戶總覽](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -51,7 +50,7 @@ Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網�
 
 按鈕會啟動互動式 shell，讓您用來執行本操作說明文章中所述的步驟：
 
-[![在入口網站中顯示 [Cloud Shell] 視窗的螢幕擷取畫面](../common/media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
+[![顯示 Cloud Shell 視窗的螢幕擷取畫面](../common/media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>在本機安裝 CLI
 
@@ -127,7 +126,7 @@ az login
 
 8. 選取 [**審查 + 建立**] 以查看儲存體帳戶設定。
 
-9. 選取 [建立]  。
+9. 選取 [建立]。
 
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -173,7 +172,7 @@ az login
 
 若要使用 Azure CLI 建立區塊 blob 帳戶，您必須先安裝 Azure CLI v。 2.0.46 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-1. 登入您的 Azure 訂用帳戶。
+1. 登入 Azure 訂用帳戶。
 
    ```azurecli
    az login

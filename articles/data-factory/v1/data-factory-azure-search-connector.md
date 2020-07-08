@@ -12,12 +12,11 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194925"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料推送至 Azure 認知搜尋索引
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -47,7 +46,7 @@ ms.locfileid: "79281557"
 2. 建立**資料集**來代表複製作業的輸入和輸出資料。
 3. 建立具有複製活動的**管線**，以將資料集作為輸入，並使用資料集做為輸出。
 
-使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。  如需相關範例，其中含有用來將資料複製到搜尋索引之 Data Factory 實體的 JSON 定義，請參閱本文的[json 範例：將資料從內部部署 SQL Server 複製到 Azure 認知搜尋索引](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index)一節。
+使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。  如需相關範例，其中含有用來將資料複製到搜尋索引之 Data Factory 實體的 JSON 定義，請參閱本文的[json 範例：將資料從 SQL Server 複製到 Azure 認知搜尋索引](#json-example-copy-data-from-sql-server-to-azure-cognitive-search-index)一節。
 
 下列各節提供 JSON 屬性的相關詳細資料，這些屬性是用來定義搜尋索引特定的 Data Factory 實體：
 
@@ -58,8 +57,8 @@ ms.locfileid: "79281557"
 | 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
 | type | Type 屬性必須設定為： **AzureSearch**。 | 是 |
-| url | 搜尋服務的 URL。 | 是 |
-| 索引鍵 | 搜尋服務的管理金鑰。 | 是 |
+| url | 搜尋服務的 URL。 | Yes |
+| 索引鍵 | 搜尋服務的管理金鑰。 | Yes |
 
 ## <a name="dataset-properties"></a>資料集屬性
 
@@ -67,8 +66,8 @@ ms.locfileid: "79281557"
 
 | 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
-| type | type 屬性必須設為 **AzureSearchIndex**。| 是 |
-| IndexName | 搜尋索引的名稱。 Data Factory 不會建立索引。 索引必須存在於 Azure 認知搜尋中。 | 是 |
+| type | type 屬性必須設為 **AzureSearchIndex**。| Yes |
+| IndexName | 搜尋索引的名稱。 Data Factory 不會建立索引。 索引必須存在於 Azure 認知搜尋中。 | Yes |
 
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
@@ -76,10 +75,10 @@ ms.locfileid: "79281557"
 
 對於「複製活動」，當接收的類型為 **AzureSearchIndexSink** 時，typeProperties 區段中會有下列可用屬性：
 
-| 屬性 | 說明 | 允許的值 | 必要 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | 指定若文件已經存在於索引中，是否要合併或取代。 請參閱 [WriteBehavior 屬性](#writebehavior-property)。| 合併 (預設值)<br/>上傳| 否 |
-| WriteBatchSize | 當緩衝區大小達到 writeBatchSize 時，將資料上傳至搜尋索引。 如需詳細資訊，請參閱 [WriteBatchSize 屬性](#writebatchsize-property)。 | 1 到 1000。 預設值為 1000。 | 否 |
+| WriteBehavior | 指定若文件已經存在於索引中，是否要合併或取代。 請參閱 [WriteBehavior 屬性](#writebehavior-property)。| 合併 (預設值)<br/>上傳| No |
+| WriteBatchSize | 當緩衝區大小達到 writeBatchSize 時，將資料上傳至搜尋索引。 如需詳細資訊，請參閱 [WriteBatchSize 屬性](#writebatchsize-property)。 | 1 到 1000。 預設值為 1000。 | No |
 
 ### <a name="writebehavior-property"></a>WriteBehavior 屬性
 AzureSearchSink 會在寫入資料時更新插入。 換句話說，寫入檔時，如果檔索引鍵已存在於搜尋索引中，Azure 認知搜尋就會更新現有的檔，而不會擲回衝突例外狀況。
@@ -108,7 +107,7 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 | 字串陣列 | N |
 | GeographyPoint | N |
 
-## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>JSON 範例：將資料從內部部署 SQL Server 複製到 Azure 認知搜尋索引
+## <a name="json-example-copy-data-from-sql-server-to-azure-cognitive-search-index"></a>JSON 範例：將資料從 SQL Server 複製到 Azure 認知搜尋索引
 
 下列範例顯示︰
 
@@ -118,7 +117,7 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 4. [AzureSearchIndex](#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
 4. 具有使用 [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) 和 [AzureSearchIndexSink](#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
 
-此範例會每小時將時間序列資料從內部部署 SQL Server 資料庫複製到搜尋索引。 範例後面的各節將會說明此範例中使用的 JSON 屬性。
+此範例會每小時將時間序列資料從 SQL Server 資料庫複製到搜尋索引。 範例後面的各節將會說明此範例中使用的 JSON 屬性。
 
 第一步是在內部部署電腦上設定資料管理閘道。 如需相關指示，請參閱 [在內部部署位置和雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 。
 
@@ -255,7 +254,7 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 }
 ```
 
-如果您要將資料從雲端資料存放區複製到「Azure 認知`executionLocation`搜尋」，則需要屬性。 下列 JSON 程式碼片段顯示必須在「複製活動」的 `typeProperties` 下進行的變更。 參閱[在雲端資料存放區之間複製資料](data-factory-data-movement-activities.md#global)一節以取得支援的值和更多詳細資料。
+如果您要將資料從雲端資料存放區複製到「Azure 認知搜尋」， `executionLocation` 則需要屬性。 下列 JSON 程式碼片段顯示必須在「複製活動」的 `typeProperties` 下進行的變更。 參閱[在雲端資料存放區之間複製資料](data-factory-data-movement-activities.md#global)一節以取得支援的值和更多詳細資料。
 
 ```JSON
 "typeProperties": {
@@ -271,7 +270,7 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 
 
 ## <a name="copy-from-a-cloud-source"></a>從雲端來源複製
-如果您要將資料從雲端資料存放區複製到「Azure 認知`executionLocation`搜尋」，則需要屬性。 下列 JSON 程式碼片段顯示必須在「複製活動」的 `typeProperties` 下進行的變更。 參閱[在雲端資料存放區之間複製資料](data-factory-data-movement-activities.md#global)一節以取得支援的值和更多詳細資料。
+如果您要將資料從雲端資料存放區複製到「Azure 認知搜尋」， `executionLocation` 則需要屬性。 下列 JSON 程式碼片段顯示必須在「複製活動」的 `typeProperties` 下進行的變更。 參閱[在雲端資料存放區之間複製資料](data-factory-data-movement-activities.md#global)一節以取得支援的值和更多詳細資料。
 
 ```JSON
 "typeProperties": {

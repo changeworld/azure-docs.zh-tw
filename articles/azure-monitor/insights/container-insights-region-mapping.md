@@ -3,12 +3,12 @@ title: 容器區域對應的 Azure 監視器
 description: 本文說明容器、Log Analytics 工作區和自訂計量的 Azure 監視器之間支援的區域對應。
 ms.topic: conceptual
 ms.date: 06/26/2019
-ms.openlocfilehash: a058f9cac987bb5c7130019f50370c6a176b09ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: 3e8ead78c5e0e534e07c1e2ab0e25eb3f5a90c38
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75403415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194977"
 ---
 # <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>容器的 Azure 監視器支援的區域對應
 
@@ -33,7 +33,7 @@ AKS 叢集資源或 Log Analytics 工作區可位於其他區域，下表顯示�
 |SoutheastAsia |SoutheastAsia |
 |**巴西** | |
 |BrazilSouth | SouthCentralUS |
-|**Canada** ||
+|**加拿大** ||
 |CanadaCentral |CanadaCentral |
 |CanadaEast |CanadaCentral |
 |**歐洲** | |
@@ -50,10 +50,10 @@ AKS 叢集資源或 Log Analytics 工作區可位於其他區域，下表顯示�
 |**日本** | |
 |JapanEast |JapanEast |
 |JapanWest |JapanEast |
-|**韓國** | |
+|**南韓** | |
 |KoreaCentral |KoreaCentral |
 |KoreaSouth |KoreaCentral |
-|**回饋** | |
+|**美國** | |
 |CentralUS |CentralUS|
 |EastUS |EastUS |
 |EastUS2 |EastUS2 |

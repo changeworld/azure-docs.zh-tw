@@ -8,20 +8,19 @@ ms.service: storage
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b2755d5aa5dbaa669fa2fdd8b84596e040b5dd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5dedd70b51361936808724ef70b96cdf9cfa13f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515398"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>搭配 Azure Key Vault 使用客戶管理的金鑰來管理 Azure 儲存體加密
 
 您可以使用自己的加密金鑰來保護儲存體帳戶中的資料。 當您指定客戶管理的金鑰時，該金鑰會用來保護及控制加密資料之金鑰的存取權。 客戶管理的金鑰提供更大的彈性來管理存取控制。
 
-您必須使用 Azure Key Vault 來儲存客戶管理的金鑰。 您可以建立自己的金鑰，並將其儲存在金鑰保存庫中，或者您可以使用 Azure Key Vault Api 來產生金鑰。 儲存體帳戶和金鑰保存庫必須位於相同的區域，而且位於相同的 Azure Active Directory （Azure AD）租使用者中，但它們可以位於不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱[什麼是 Azure Key Vault？](../../key-vault/general/overview.md)。
+您必須使用 Azure Key Vault 來儲存客戶管理的金鑰。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 儲存體帳戶和金鑰保存庫必須位於相同的區域，而且位於相同的 Azure Active Directory （Azure AD）租使用者中，但它們可以位於不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱[什麼是 Azure Key Vault？](../../key-vault/general/overview.md)。
 
 ## <a name="about-customer-managed-keys"></a>關於客戶管理的金鑰
 
@@ -47,7 +46,7 @@ ms.locfileid: "81456816"
 
 ## <a name="enable-customer-managed-keys-for-a-storage-account"></a>為儲存體帳戶啟用客戶管理的金鑰
 
-客戶管理的金鑰只能在現有的儲存體帳戶上啟用。 金鑰保存庫必須布建存取原則，以將金鑰許可權授與儲存體帳戶相關聯的受控識別。 只有在建立儲存體帳戶之後，才可以使用受控識別。
+客戶管理的金鑰只能在現有的儲存體帳戶上啟用。 金鑰保存庫必須布建存取原則，以將金鑰許可權授與儲存體帳戶相關聯的受控識別。 只有在建立儲存體帳戶之後，才可使用受控識別。
 
 當您設定客戶管理的金鑰時，Azure 儲存體會將帳戶的根資料加密金鑰包裝在相關聯的金鑰保存庫中，並使用客戶管理的金鑰。 啟用客戶管理的金鑰並不會影響效能，而且會立即生效。
 
@@ -68,11 +67,11 @@ ms.locfileid: "81456816"
 
 若要在儲存體帳戶上啟用客戶管理的金鑰，您必須使用 Azure Key Vault 來儲存您的金鑰。 您必須同時啟用「虛**刪除**」和「不要**清除**」金鑰保存庫的屬性。
 
-Azure 儲存體加密僅支援2048位 RSA 和 RSA-HSM 金鑰。 如需金鑰的詳細資訊，請參閱[關於 Azure Key Vault 金鑰、秘密和憑證](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的**Key Vault 金鑰**。
+Azure 儲存體加密支援 RSA 和 RSA-大小為2048、3072和4096的 HSM 金鑰。 如需金鑰的詳細資訊，請參閱[關於 Azure Key Vault 金鑰、秘密和憑證](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的**Key Vault 金鑰**。
 
 ## <a name="rotate-customer-managed-keys"></a>輪替客戶管理的金鑰
 
-您可以根據您的相容性原則，在 Azure Key Vault 中旋轉客戶管理的金鑰。 輪替金鑰時，您必須更新儲存體帳戶以使用新的金鑰版本 URI。 若要瞭解如何更新儲存體帳戶以在 Azure 入口網站中使用新版本的金鑰，請參閱[使用 Azure 入口網站來設定 Azure 儲存體的客戶管理金鑰](storage-encryption-keys-portal.md)中的「**更新金鑰版本**」一節。
+您可以根據您的合規性原則，在 Azure Key Vault 中輪替客戶管理的金鑰。 輪替金鑰時，您必須更新儲存體帳戶以使用新的金鑰版本 URI。 若要瞭解如何更新儲存體帳戶以在 Azure 入口網站中使用新版本的金鑰，請參閱[使用 Azure 入口網站來設定 Azure 儲存體的客戶管理金鑰](storage-encryption-keys-portal.md)中的「**更新金鑰版本**」一節。
 
 輪替金鑰並不會觸發儲存體帳戶中的資料重新加密。 使用者不需要採取進一步的動作。
 
@@ -80,12 +79,12 @@ Azure 儲存體加密僅支援2048位 RSA 和 RSA-HSM 金鑰。 如需金鑰的�
 
 您隨時都可以撤銷儲存體帳戶對客戶管理的金鑰的存取權。 撤銷客戶管理金鑰的存取權，或在停用或刪除金鑰之後，用戶端就無法呼叫讀取或寫入 blob 或其中繼資料的作業。 嘗試呼叫下列任何作業將會失敗，並出現錯誤碼403（禁止）給所有使用者：
 
-- 在要求 URI 上以`include=metadata`參數呼叫時，[列出 blob](/rest/api/storageservices/list-blobs)
+- 在要求 URI 上以參數呼叫時，[列出 blob](/rest/api/storageservices/list-blobs) `include=metadata`
 - [取得 Blob](/rest/api/storageservices/get-blob)
 - [取得 Blob 屬性](/rest/api/storageservices/get-blob-properties)
 - [取得 Blob 中繼資料](/rest/api/storageservices/get-blob-metadata)
 - [設定 Blob 中繼資料](/rest/api/storageservices/set-blob-metadata)
-- [Snapshot Blob](/rest/api/storageservices/snapshot-blob)使用`x-ms-meta-name`要求標頭呼叫時的快照集 Blob
+- [Snapshot Blob](/rest/api/storageservices/snapshot-blob)使用 `x-ms-meta-name` 要求標頭呼叫時的快照集 Blob
 - [複製 Blob](/rest/api/storageservices/copy-blob)
 - [從 URL 複製 Blob](/rest/api/storageservices/copy-blob-from-url)
 - [設定 Blob 層](/rest/api/storageservices/set-blob-tier)
@@ -93,10 +92,10 @@ Azure 儲存體加密僅支援2048位 RSA 和 RSA-HSM 金鑰。 如需金鑰的�
 - [將區塊從 URL 放入](/rest/api/storageservices/put-block-from-url)
 - [附加區塊](/rest/api/storageservices/append-block)
 - [從 URL 附加區塊](/rest/api/storageservices/append-block-from-url)
-- [Put Blob](/rest/api/storageservices/put-blob) \(英文\)
+- [放置 Blob](/rest/api/storageservices/put-blob)
 - [放置頁面](/rest/api/storageservices/put-page)
 - [從 URL 放置頁面](/rest/api/storageservices/put-page-from-url)
-- [增量複製 Blob](/rest/api/storageservices/incremental-copy-blob)
+- [累加複製 Blob](/rest/api/storageservices/incremental-copy-blob) (機器翻譯)
 
 若要再次呼叫這些作業，請還原對客戶管理的金鑰的存取權。
 

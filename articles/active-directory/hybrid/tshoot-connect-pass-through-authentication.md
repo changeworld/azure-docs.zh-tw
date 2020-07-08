@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
+ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60456121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356146"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>針對 Azure Active Directory 傳遞驗證進行疑難排解
 
@@ -44,7 +43,7 @@ ms.locfileid: "60456121"
 
 如果使用者無法登入使用傳遞驗證，他們可能會在 Azure AD 登入畫面中看到下列其中之一的使用者錯誤： 
 
-|錯誤|描述|解決方法
+|錯誤|說明|解決方案
 | --- | --- | ---
 |AADSTS80001|無法連線至 Active Directory|確定代理程式伺服器和必須驗證其密碼的使用者都是相同 AD 樹系的成員，而且都能連線到 Active Directory。  
 |AADSTS8002|連線至 Active Directory 時發生逾時|請檢查以確定 Active Directory 可用，並且會回應來自代理程式的要求。
@@ -52,15 +51,42 @@ ms.locfileid: "60456121"
 |AADSTS80005|驗證發生無法預期的 WebException|暫時性錯誤。 重試要求。 如果持續發生失敗，請連絡 Microsoft 支援服務。
 |AADSTS80007|和 Active Directory 通訊時發生錯誤|請檢查代理程式記錄以了解詳細資訊，並確認 Active Directory 如預期般運作。
 
+### <a name="users-get-invalid-usernamepassword-error"></a>使用者收到不正確使用者名稱/密碼錯誤 
+
+當使用者的內部部署 UserPrincipalName （UPN）不同于使用者的雲端 UPN 時，就可能發生這種情況。
+
+若要確認這是問題，請先測試傳遞驗證代理程式是否正常運作：
+
+
+1. 建立測試帳戶。  
+2. 在代理程式電腦上匯入 PowerShell 模組：
+ 
+ ```powershell
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication  Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ ```
+3. 執行 Invoke PowerShell 命令： 
+
+ ```powershell
+ Invoke-PassthroughAuthOnPremLogonTroubleshooter 
+ ``` 
+4. 當系統提示您輸入認證時，請輸入用來登入的相同使用者名稱和密碼（ https://login.microsoftonline.com) 。
+
+如果您收到相同的使用者名稱/密碼錯誤，這表示傳遞驗證代理程式正常運作，而問題可能是內部部署 UPN 無法路由傳送。 若要深入瞭解，請參閱設定[替代登入識別碼]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)。
+
+
+
+
+
+
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理中心上的登入失敗原因 (需要 Premium 授權)
 
 如果您的租用戶已有與其相關聯的 Azure AD Premium 授權，您也可以查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上的[登入活動報告](../reports-monitoring/concept-sign-ins.md)。
 
 ![Azure Active Directory 管理中心 - 登入報告](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-流覽至[Azure Active Directory 系統管理中心](https://aad.portal.azure.com/)的**Azure Active Directory** -> 登**入**，然後按一下特定使用者的登入活動。 尋找 [登入錯誤碼]**** 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
+流覽至 Azure Active Directory 系統管理中心的**Azure Active Directory**登  ->  **入**，然後按一下特定使用者的登入活動。 [Azure Active Directory admin center](https://aad.portal.azure.com/) 尋找 [登入錯誤碼]**** 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
 
-|登入錯誤碼|登入失敗原因|解決方法
+|登入錯誤碼|登入失敗原因|解決方案
 | --- | --- | ---
 | 50144 | 使用者的 Active Directory 密碼已到期。 | 在您的內部部署 Active Directory 中重設使用者密碼。
 | 80001 | 沒有可用的驗證代理程式。 | 安裝並註冊驗證代理程式。

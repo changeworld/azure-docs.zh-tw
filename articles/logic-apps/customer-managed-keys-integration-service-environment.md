@@ -6,12 +6,11 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fd288cfb78bb97bd5c05c1cc59af3c082ab549a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84686999"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>設定客戶管理的金鑰，以加密 Azure Logic Apps 中整合服務環境（Ise）的待用資料
 
@@ -27,13 +26,13 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
 
 * 只有在建立您的*ISE 時，才*可以指定客戶管理的金鑰，而不是之後。 建立 ISE 之後，即無法停用此金鑰。 目前不支援為 ISE 輪替客戶管理的金鑰。
 
-* 為了支援客戶管理的金鑰，您的 ISE 要求必須啟用其[系統指派的受控識別](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。 此身分識別可讓 ISE 驗證其他 Azure Active Directory （Azure AD）租使用者中資源的存取權，讓您不需要使用您的認證登入。
+* 為了支援客戶管理的金鑰，您的 ISE 要求必須啟用其[系統指派的受控識別](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。 此身分識別可讓 ISE 驗證其他 Azure Active Directory （Azure AD）租使用者中資源的存取權，讓您不需要使用您的認證登入。
 
 * 目前，若要建立支援客戶管理金鑰的 ISE，並啟用其系統指派的身分識別，您必須使用 HTTPS PUT 要求呼叫 Logic Apps REST API。
 
 * 在您傳送建立 ISE 的 HTTPS PUT 要求之後的*30 分鐘*內，您必須將[金鑰保存庫的存取權授與您 ise 系統指派](#identity-access-to-key-vault)的身分識別。 否則，ISE 建立會失敗，並擲回許可權錯誤。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 相同的[必要條件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和需求，可讓您在 Azure 入口網站中建立 ise 時，[啟用 ise 的存取權。](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)
 
@@ -47,7 +46,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
   |----------|-------|
   | **索引鍵類型** | RSA |
   | **RSA 金鑰大小** | 2048 |
-  | **已啟用** | 是 |
+  | **已啟用** | Yes |
   |||
 
   ![建立客戶管理的加密金鑰](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
@@ -67,24 +66,24 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
 > [!IMPORTANT]
 > Logic Apps REST API 2019-05-01 版要求您自行建立 ISE 連接器的 HTTP PUT 要求。
 
-部署通常會在兩個小時內完成。 有時候，部署可能需要多達四小時。 若要檢查部署狀態，請在 [ [Azure 入口網站](https://portal.azure.com)的 Azure 工具列上，選取 [通知] 圖示，這會開啟 [通知] 窗格。
+部署通常會在兩個小時內完成。 有時候，部署需要的時間可能高達四小時。 若要檢查部署狀態，請在 [ [Azure 入口網站](https://portal.azure.com)的 Azure 工具列上，選取 [通知] 圖示，這會開啟 [通知] 窗格。
 
 > [!NOTE]
-> 如果部署失敗或您刪除了 ISE，Azure「可能」需要最多一小時的時間來釋出您的子網路。 這種延遲表示您可能必須等待，才能在另一個 ISE 中重複使用這些子網。
+> 如果部署失敗或您刪除 ISE，Azure「可能」需要最多一小時的時間來釋出您的子網路。 這個延遲表示，您可能必須稍等，才能在另一個的 ISE 中重複使用這些子網路。
 >
-> 如果您刪除虛擬網路，Azure 通常需要兩小時的時間，才能釋出您的子網，但此作業可能需要較長的時間。 
-> 刪除虛擬網路時，請確定沒有任何資源仍處於線上狀態。 
+> 如果您刪除虛擬網路，Azure 通常最多需要兩小時的時間，才能釋出您的子網路，但此作業可能需要更長的時間。 
+> 刪除虛擬網路時，請確定沒有任何資源仍處於連線狀態。 
 > 請參閱[刪除虛擬網路](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
 
 ### <a name="request-header"></a>要求標頭
 
 在要求標頭中，包含下列屬性：
 
-* `Content-type`：將此屬性值設定`application/json`為。
+* `Content-type`：將此屬性值設定為 `application/json` 。
 
 * `Authorization`：將此屬性值設定為可存取您想要使用之 Azure 訂用帳戶或資源群組之客戶的持有人權杖。
 
-### <a name="request-body"></a>要求本文
+### <a name="request-body"></a>Request body
 
 在要求本文中，藉由在您的 ISE 定義中提供資訊，以啟用這些額外專案的支援：
 
@@ -203,7 +202,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
 
 1. 在[Azure 入口網站](https://portal.azure.com)中，開啟您的 Azure 金鑰保存庫。
 
-1. 在您的金鑰保存庫功能表上，選取 [**存取原則** > ] [**新增存取原則**]，例如：
+1. 在您的金鑰保存庫功能表上，選取 [**存取原則**] [  >  **新增存取原則**]，例如：
 
    ![為系統指派的受控識別新增存取原則](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
 
@@ -219,7 +218,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
 
       ![選取 [金鑰管理] > [金鑰許可權]](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. 針對 [**選取主體**]，選取 [**未選取**]。 **主體**窗格開啟之後，在搜尋方塊中，尋找並選取您的 ISE。 當您完成時，選擇 [**選取** > ] [**新增**]。
+   1. 針對 [**選取主體**]，選取 [**未選取**]。 **主體**窗格開啟之後，在搜尋方塊中，尋找並選取您的 ISE。 當您完成時，選擇 [**選取**] [  >  **新增**]。
 
       ![選取您的 ISE 以作為主體](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 

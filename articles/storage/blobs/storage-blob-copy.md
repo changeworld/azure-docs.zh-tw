@@ -7,13 +7,12 @@ ms.author: mhopkins
 ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 9ffa69980f020580376aea447f40ac615f26cf03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463445"
 ---
 # <a name="copy-a-blob-with-net"></a>使用 .NET 複製 blob
 
@@ -109,7 +108,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 
 ## <a name="abort-a-blob-copy-operation"></a>中止 blob 複製作業
 
-中止複製作業會導致區塊 blob、附加 blob 和分頁 blob 的目的地 blob 長度為零。 不過，目的地 blob 的中繼資料會有從來源 blob 複製的新值，或在[StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)或[StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)呼叫中明確地設定。 若要保留複製之前的原始中繼資料，請先建立目的地 blob 的快照集， `StartCopy`再`StartCopyAsync`呼叫或。
+中止複製作業會導致區塊 blob、附加 blob 和分頁 blob 的目的地 blob 長度為零。 不過，目的地 blob 的中繼資料會有從來源 blob 複製的新值，或在[StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)或[StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)呼叫中明確地設定。 若要保留複製之前的原始中繼資料，請先建立目的地 blob 的快照集，再呼叫 `StartCopy` 或 `StartCopyAsync` 。
 
 當您中止正在進行的 blob 複製作業時，目的地 blob 的[CopyState。狀態](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet#Microsoft_Azure_Storage_Blob_CopyState_Status)會設定為[CopyStatus。已中止](/dotnet/api/microsoft.azure.storage.blob.copystatus?view=azure-dotnet)。
 

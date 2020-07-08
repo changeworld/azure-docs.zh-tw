@@ -4,19 +4,18 @@ description: 瞭解如何模擬 Identity Protection 中的風險偵測
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e50e406e74c0b78f41830c4ea7c5b10830002ed3
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72886931"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463751"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>模擬 Identity Protection 中的風險偵測
 
@@ -66,7 +65,7 @@ ms.locfileid: "72886931"
 **若要模擬從不熟悉的位置登入，請執行下列步驟**：
 
 1. 使用測試帳戶登入時，不會通過 MFA 挑戰，導致多重要素驗證（MFA）的挑戰失敗。
-2. 使用新的 VPN，流覽至[https://myapps.microsoft.com](https://myapps.microsoft.com)並輸入您測試帳戶的認證。
+2. 使用新的 VPN，流覽至 [https://myapps.microsoft.com](https://myapps.microsoft.com) 並輸入您測試帳戶的認證。
 
 登入將會在 10 - 15 分鐘內顯示於 [身分識別保護] 儀表板上。
 
@@ -76,11 +75,11 @@ ms.locfileid: "72886931"
 
 **若要模擬非典型的旅遊風險偵測，請執行下列步驟**：
 
-1. 使用標準瀏覽器，流覽至[https://myapps.microsoft.com](https://myapps.microsoft.com)。  
+1. 使用標準瀏覽器，流覽至 [https://myapps.microsoft.com](https://myapps.microsoft.com) 。  
 2. 輸入您要為其產生非典型旅遊風險偵測的帳號憑證。
 3. 變更您的使用者代理程式。 您可以從開發人員工具（F12）變更 Microsoft Edge 中的使用者代理程式。
 4. 變更您的 IP 位址。 您可以使用 VPN、Tor 附加元件，或在不同資料中心的 Azure 中建立新的虛擬機器，來變更您的 IP 位址。
-5. 在前次登[https://myapps.microsoft.com](https://myapps.microsoft.com)入之後的幾分鐘內，使用與之前相同的認證登入。
+5. 在 [https://myapps.microsoft.com](https://myapps.microsoft.com) 前次登入之後的幾分鐘內，使用與之前相同的認證登入。
 
 登入會在 2-4 小時內顯示於 [身分識別保護] 儀表板上。
 
@@ -92,16 +91,16 @@ ms.locfileid: "72886931"
 
 若要測試使用者風險安全性原則，請執行下列步驟：
 
-1. 流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
-1. 流覽至**Azure Active Directory** > **安全性** > **總覽**。
+1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
+1. 流覽至**Azure Active Directory**  >  **安全性**  >  **總覽**。
 1. 選取 [**設定使用者風險原則**]。
    1. 在 [**指派**] 底下
       1. **使用者**-選擇 [**所有使用者**] **，或選取個人和群組**（如果您要限制首度發行）。
          1. （選擇性）您可以選擇從原則中排除使用者。
-      1. **條件** - **使用者風險**Microsoft 的建議是將此選項設定為 [**高**]。
+      1. **條件**  - **使用者風險**Microsoft 的建議是將此選項設定為 [**高**]。
    1. 在**控制項**底下
       1. **存取**-Microsoft 的建議是**允許存取**，而且**需要變更密碼**。
-   1. **強制執行原則** -  ** **
+   1. **強制執行原則**  - **關閉**
    1. **儲存**-此動作會讓您回到 [**總覽**] 頁面。
 1. 藉由提高測試帳戶的使用者風險，例如，模擬幾次其中一項風險偵測。
 1. 等候幾分鐘，然後確認您的使用者已提升風險。 如果不是，則會為使用者模擬更多的風險偵測。
@@ -112,16 +111,16 @@ ms.locfileid: "72886931"
 
 若要測試登入風險原則，請執行下列步驟：
 
-1. 流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
-1. 流覽至**Azure Active Directory** > **安全性** > **總覽**。
+1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
+1. 流覽至**Azure Active Directory**  >  **安全性**  >  **總覽**。
 1. 選取 [**設定登入風險原則**]。
    1. 在 [**指派**] 底下
       1. **使用者**-選擇 [**所有使用者**] **，或選取個人和群組**（如果您要限制首度發行）。
          1. （選擇性）您可以選擇從原則中排除使用者。
-      1. **條件** - 登**入風險**Microsoft 的建議是將此選項設定為 [**中] 和 [以上**]。
+      1. **條件**  - 登**入風險**Microsoft 的建議是將此選項設定為 [**中] 和 [以上**]。
    1. 在**控制項**底下
       1. **存取**-Microsoft 的建議是**允許存取**，而且**需要多重要素驗證**。
-   1. **強制執行原則** -  ** **
+   1. **強制執行原則**  - **于**
    1. **儲存**-此動作會讓您回到 [**總覽**] 頁面。
 1. 您現在可以使用有風險的會話登入來測試登入風險型條件式存取（例如，藉由使用 Tor 瀏覽器）。 
 

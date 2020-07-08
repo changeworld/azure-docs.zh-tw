@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: 958244a5-f9f5-455e-b7ef-71a65558872e
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "62123800"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515432"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務管理 StorSimple Virtual Array
 ![安裝程序流程](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -71,7 +70,7 @@ StorSimple Manager 裝置管理員服務在 Microsoft Azure 中執行，並連�
 > 您必須使用 [本機 Web UI](storsimple-ova-web-ui-admin.md) 以執行下列工作：
 > 
 > * [擷取服務資料加密金鑰](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)
-> * [建立支援封裝](storsimple-ova-web-ui-admin.md#generate-a-log-package)
+> * [建立支援套件](storsimple-ova-web-ui-admin.md#generate-a-log-package)
 > * [停止和重新啟動 Virtual Array](storsimple-ova-web-ui-admin.md#shut-down-and-restart-your-device)
 > 
 > 

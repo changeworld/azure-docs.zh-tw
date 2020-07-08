@@ -4,19 +4,18 @@ description: 瞭解 Azure Active Directory 條件式存取中的自訂控制項�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8c149279a755eb186a3fdc7891e9b511d18c7f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4d926d027b59a225d76f6a73ab3ee4ec09b595e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050541"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253302"
 ---
 # <a name="custom-controls-preview"></a>自訂控制項 (預覽)
 
@@ -45,7 +44,7 @@ ms.locfileid: "80050541"
 
 1. 移至 [自訂控制項] 清單
 1. 按一下 [...]  
-1. 選取 [刪除]  。
+1. 選取 [刪除] 。
 
 ## <a name="editing-custom-controls"></a>編輯自訂控制項
 
@@ -57,7 +56,7 @@ ms.locfileid: "80050541"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [條件式存取的一般原則](concept-conditional-access-policy-common.md)
+- [條件式存取一般原則](concept-conditional-access-policy-common.md)
 
 - [僅限報告模式](concept-conditional-access-report-only.md)
 

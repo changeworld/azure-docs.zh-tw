@@ -4,19 +4,18 @@ description: 您應如何和為何提供有關身分識別保護風險偵測的�
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 11/21/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4be8290f12d64f0c556100c63ec159bd414c6fcb
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 03b06d46cb35346580070f1739fd43128fa7a7fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74382084"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463921"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>如何：在 Azure AD Identity Protection 中提供風險回饋
 
@@ -45,7 +44,7 @@ Azure AD 會使用您的意見反應來更新基礎使用者和/或登入的風�
 
 以下是將風險意見反應提供給 Azure AD 的案例和機制。
 
-| 狀況 | 如何提供意見反應？ | 幕後會發生什麼事？ | 注意 |
+| 狀況 | 如何提供意見反應？ | 幕後會發生什麼事？ | 備註 |
 | --- | --- | --- | --- |
 | **登入未洩露（誤報）** <br> [有風險的登入] 報告會顯示有風險的登入 [風險狀態 = 有風險]，但該登入並未受到危害。 | 選取 [登入]，然後按一下 [確認登入安全]。 | Azure AD 會將登入的匯總風險移至 [無] [風險狀態 = 已確認安全];風險層級（匯總） =-]，將會反轉其對使用者風險的影響。 | 目前，[確認登入安全] 選項僅適用于「有風險的登入」報表。 |
 | **登入遭盜用（真肯定）** <br> [有風險的登入] 報告會顯示有風險的登入 [風險狀態 = 發生風險]，但有低風險 [風險層級（匯總） = 低]，而且登入確實遭到入侵。 | 選取 [登入]，然後按一下 [確認登入遭盜用]。 | Azure AD 會將登入的匯總風險和使用者風險移至高 [風險狀態 = 已確認遭到入侵;風險層級 = 高]。 | 目前，「確認登入遭盜用」選項僅適用于「有風險的登入」報表。 |

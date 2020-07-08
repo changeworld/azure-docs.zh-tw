@@ -3,12 +3,11 @@ title: 在 Azure Migrate 中新增評估工具
 description: 瞭解如何在 Azure Migrate 中新增評定工具。
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195623"
 ---
 # <a name="add-assessment-tools"></a>新增評量工具
 
@@ -19,11 +18,11 @@ ms.locfileid: "82901040"
 
 ## <a name="select-an-assessment-scenario"></a>選取評估案例
 
-1. 在 Azure Migrate 專案中，按一下 [概觀]  。
+1. 在 Azure Migrate 專案中，按一下 [概觀]****。
 2. 選取您想要使用的評估案例：
 
     - 若要探索及評估要遷移至 Azure 的機器和工作負載，請選取 [**評估和遷移伺服器**]。
-    - 若要評估內部部署的 SQL 機器，請選取 [**評估和遷移資料庫**]。
+    - 若要評估內部部署 SQL Server 資料庫，請選取 [**評估和遷移資料庫**]。
     - 若要評估內部部署 web 應用程式，請選取 [**評估和遷移 web 應用程式**]。
 
     ![評定案例](./media/how-to-assess/assess-scenario.png)

@@ -3,26 +3,26 @@ title: Azure 檔案共用備份的支援矩陣
 description: 摘要說明備份 Azure 檔案共用時的支援設定和限制。
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 42578cc83ef193801fa700ec7d136385411e5f79
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.custom: references_regions
+ms.openlocfilehash: 5670f4702a8e8d199b9762d87793a053cf6e53b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684632"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806866"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 檔案共用備份的支援矩陣
 
 您可以使用 [Azure 備份服務](https://docs.microsoft.com/azure/backup/backup-overview)來備份 Azure 檔案共用。 本文將摘要說明使用 Azure 備份來備份 Azure 檔案共用時的支援設定與限制。
 
-## <a name="supported-geos"></a>支援的地區
+## <a name="supported-regions"></a>支援區域
 
-Azure 檔案共用的備份功能適用於下列地區：
+### <a name="ga-regions-for-azure-file-shares-backup"></a>Azure 檔案共用備份的 GA 區域
 
-**GA 區域**：<br>
-澳大利亞東南部 (ASE)、加拿大中部 (CNC)、美國中西部 (WCUS)、美國中南部 (SCUS)、美國西部 2 (WUS 2)、印度南部 (INS)、美國中北部 (NCUS)、日本東部 (JPE)、巴西南部 (BRS)、東南亞 (SEA)、瑞士西部 (SZW)、阿拉伯聯合大公國中部 (UAC)、挪威東部 (NWE)、印度西部 (INW)、澳大利亞中部 (ACL)、南韓中部 (KRC)、日本西部 (JPW)、南非北部 (SAN)、英國南部 (UKS)、英國西部 (UKW)、南韓南部 (KRS)、北歐 (NE)、德國北部 (GN)、挪威西部 (NWW)、南非西部 (SAW)、瑞士北部 (SZN)、德國中西部 (GWC)、阿拉伯聯合大公國北部 (UAN)、法國中部 (FRC)、印度中部 (INC)、加拿大東部 (CNE)、亞太地區 (EA)、澳大利亞東部 (AE)、美國中部 (CUS)、美國西部 (WUS)、US Gov 亞利桑那州 (UGA)、US Gov 德克薩斯州 (UGT)、US Gov 維吉尼亞州 (UGV)、US DoD 中部 (UDC)、US DoD 東部 (UDE)
+Azure 檔案共用備份適用于所有區域，**除了**：德國中部（主權）、德國東北部（主權）、中國東部、中國東部2、中國北部、中國北部2、US Gov 愛荷華州
 
-**支援的區域 (為預覽的一部分)，但還不是 GA**：<br>
-美國東部 (EUS)、美國東部 2 (EUS2)、西歐 (WE)
+### <a name="supported-regions-for-accidental-delete-protection"></a>不小心刪除保護的支援區域
+
+美國中西部，澳大利亞中南部，加拿大中部
 
 ## <a name="supported-storage-accounts"></a>支援的儲存體帳戶
 
@@ -30,7 +30,8 @@ Azure 檔案共用的備份功能適用於下列地區：
 | ------------------------ | ------------------------------------------------------------ |
 | 帳戶種類            | Azure 備份支援存在於一般用途 v1、一般用途 v2 和檔案儲存體類型儲存體帳戶中的 Azure 檔案共用 |
 | 效能              | Azure 備份支援標準和進階儲存體帳戶中的檔案共用 |
-| 複寫              | 支援具有任何複寫類型的儲存體帳戶中的 Azure 檔案共用 |
+| 複寫              | 支援具有任何複寫類型之儲存體帳戶中的 Azure 檔案共用 |
+| 已啟用防火牆         | 儲存體帳戶中的 Azure 檔案共用，並支援允許 Microsoft Azure 服務存取儲存體帳戶的防火牆規則|
 
 ## <a name="supported-file-shares"></a>支援的檔案共用
 
@@ -45,14 +46,16 @@ Azure 檔案共用的備份功能適用於下列地區：
 
 | 設定                                                      | 限制 |
 | ------------------------------------------------------------ | ----- |
-| 每個保存庫每天可保護的檔案共用數目上限 | 200   |
+| 每個保存庫每天可以保護的檔案共用數目上限| 200   |
 | 每個保存庫每天可註冊的儲存體帳戶數目上限 | 50    |
+| 每個保存庫可保護的檔案共用數目上限 | 2000   |
+| 可在每個保存庫註冊的儲存體帳戶數目上限 | 200   |
 
 ## <a name="backup-limits"></a>備份限制
 
 | 設定                                      | 限制 |
 | -------------------------------------------- | ----- |
-| 每天的隨選備份數目上限 | 4     |
+| 每天的隨選備份數目上限 | 10   |
 | 每天的排程備份數目上限 | 1     |
 
 ## <a name="restore-limits"></a>還原限制

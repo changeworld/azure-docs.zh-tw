@@ -3,12 +3,11 @@ title: 使用 Azure Site Recovery 進行 Hyper-v 嚴重損壞修復的常見問�
 description: 本文摘要說明使用 Azure Site Recovery 網站來設定「內部部署 Hyper-V VM 至Azure 的災害復原」時的常見問題。
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7c5f55fbea67567ddf7a2afa6a61f6c76568d829
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b175e7157364f0471192dd713db8767e074dd483
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75498201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195249"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常見問題 - 從 Hyper-V 至 Azure 的災害復原
 
@@ -114,7 +113,7 @@ Site Recovery 已通過 ISO 27001:2013、27018、HIPAA、DPA 認證，並且正�
 是。 您可以使用 Rest API、PowerShell 或 Azure SDK 將 Site Recovery 的工作流程自動化。 目前支援使用 PowerShell 將 Hyper-V 複寫到 Azure 的案例：
 
 - [在沒有 VMM 的情況下使用 PowerShell 來複寫 Hyper-V](hyper-v-azure-powershell-resource-manager.md)
-- [在有 VMM 的情況下使用 PowerShell 來複寫 Hyper-V](hyper-v-vmm-powershell-resource-manager.md)
+- [使用 PowerShell 複寫 Hyper-v 與 VMM](hyper-v-vmm-powershell-resource-manager.md)
 
 ## <a name="replication"></a>複寫
 
@@ -159,7 +158,7 @@ Site Recovery 會透過公用端點或使用 ExpressRoute Microsoft 對等互連
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>複寫到 Azure 的頻率為何？
 
-Hyper-V VM 可以每隔 30 秒 (進階儲存體除外)、5 分鐘或 15 分鐘複寫一次。
+Hyper-v Vm 可以每隔30秒複寫一次（premium 儲存體除外）或5分鐘。
 
 ### <a name="can-i-extend-replication"></a>我可以延伸複寫嗎？
 不支援延伸的或鏈結的複寫。 請在 [意見反應論壇](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中提出這項功能的要求。

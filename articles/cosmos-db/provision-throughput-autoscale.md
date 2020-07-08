@@ -5,13 +5,12 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 533cd8fa69c01b8a36ff5e314ce61a4b624e62ec
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 06/04/2020
+ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655819"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791141"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>使用自動調整輸送量來建立 Azure Cosmos 容器和資料庫
 
@@ -29,7 +28,7 @@ Azure Cosmos DB 可讓您在資料庫和容器上設定標準 (手動) 或自動
 
 * **可調整：** 資料庫和容器會視需要自動調整佈建輸送量。 用戶端連線、應用程式或對 Azure Cosmos DB SLA 的影響不會中斷。
 
-* **符合成本效益：** 自動調整會在不使用時相應減少，協助您最佳化 RU/秒使用量和成本使用量。 您只需以每小時為基礎，針對您工作負載所需的資源付費。
+* **符合成本效益：** 自動調整會在不使用時相應減少，協助您最佳化 RU/秒使用量和成本使用量。 您只需以每小時為基礎，針對您工作負載所需的資源付費。 在一個月的所有時數中，如果您設定自動調整的最大 RU/秒（Tmax），並使用 Tmax 的完整金額（小時）或更少的66%，則會以自動調整來儲存。 若要深入瞭解，請參閱[如何選擇標準（手動）和自動調整布建輸送量](how-to-choose-offer.md)一文。
 
 * **高可用性：** 使用自動調整的資料庫和容器會使用相同的全域分散式、容錯、高可用性 Azure Cosmos DB 後端，以確保資料持久性和高可用性。
 
@@ -57,8 +56,9 @@ Azure Cosmos DB 可讓您在資料庫和容器上設定標準 (手動) 或自動
 
 自動調整最大輸送量 `Tmax` 的進入點從 4000 RU/秒開始，這會在 400 - 4000 RU/秒之間縮放。 您可以以 1000 RU/秒的增量設定 `Tmax`，並隨時變更該值。  
 
-## <a name="enable-autoscale-on-existing-resources"></a>啟用現有資源的自動調整 ##
-使用 [Azure 入口網站](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)在現有的資料庫或容器上啟用自動調整。 您可以隨時在自動調整和標準 (手動) 佈建輸送量之間切換。 如需詳細資訊，請參閱這份[文件](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)。
+## <a name="enable-autoscale-on-existing-resources"></a>啟用現有資源的自動調整
+
+使用 [Azure 入口網站](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)在現有的資料庫或容器上啟用自動調整。 您可以隨時在自動調整和標準 (手動) 佈建輸送量之間切換。 如需詳細資訊，請參閱這份[文件](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)。 目前，針對所有 Api，您只能使用 Azure 入口網站來啟用現有資源的自動調整。
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> 自動調整的輸送量和儲存體限制
 

@@ -3,17 +3,16 @@ title: Azure 地圖建立工具中的繪圖套件需求
 description: 了解繪圖套件需求，以使用 Azure 地圖轉換服務來將您的設備設計檔案轉換為地圖資料
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 5/18/2020
+ms.date: 6/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: c0c81f529dfc959916ff7c102b2b903a808b9672
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: c8699ff86573084e3199b096b25dd5d97cce2985
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681900"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791566"
 ---
 # <a name="drawing-package-requirements"></a>繪圖套件需求
 
@@ -169,12 +168,13 @@ Zonelabel 的範例可視為[繪圖套件範例](https://github.com/Azure-Sample
 
 zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔案必須命名為 **manifest.json**。 其中會描述可讓 [Azure 地圖轉換服務](https://docs.microsoft.com/rest/api/maps/conversion)剖析其內容的 DWG 檔案。 只有資訊清單所識別的檔案可內嵌。 在 zip 資料夾中但未在資訊清單中正確列出的檔案將會遭到忽略。
 
-在資訊清單檔的 **buildingLevels** 物件中，檔案路徑必須相對於 zip 資料夾的根目錄。 DWG 檔案名稱必須完全符合設施樓層的名稱。 例如，「地下室」樓層的 DWG 檔案會是 "Basement.dwg"。 樓層 2 的 DWG 檔案會命名為 "level_2.dwg"。 如果您的樓層名稱有空格，請使用底線。 
+在資訊清單檔的 **buildingLevels** 物件中，檔案路徑必須相對於 zip 資料夾的根目錄。 DWG 檔案名稱必須完全符合設施樓層的名稱。 例如，「地下室」樓層的 DWG 檔案會是 "Basement.dwg"。 樓層 2 的 DWG 檔案會命名為 "level_2.dwg"。 如果您的樓層名稱有空格，請使用底線。
 
 雖然在使用資訊清單物件時有一些需求，但並非所有的物件都是必要的。 下表顯示 [Azure 地圖轉換服務](https://docs.microsoft.com/rest/api/maps/conversion) 1.1 版的必要和選用物件。
 
 | Object | 必要 | 描述 |
 | :----- | :------- | :------- |
+| version | true |資訊清單架構版本。 目前僅支援版本1.1。|
 | directoryInfo | true | 概述設施的地理和連絡資訊。 其也可以用來概述住戶的地理和連絡資訊。 |
 | buildingLevels | true | 指定建築物的樓層，以及包含樓層設計的檔案。 |
 | georeference | true | 包含設施繪圖的數值地理資訊。 |
@@ -186,16 +186,16 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 
 ### <a name="directoryinfo"></a>directoryInfo
 
-| 屬性  | type | 必要 | 描述 |
+| 屬性  | type | 必要 | 說明 |
 |-----------|------|----------|-------------|
-| NAME      | 字串/int | true   |  建築物的名稱。 |
-| streetAddress|    字串/int |    false    | 建築物的地址。 |
-|unit     | 字串/int    |  false    |  建築物中的單位。 |
-| 地區 |    字串/int |    false |    區域 (area)、鄰近地區或地區 (region) 的名稱。 例如，「Overlake」或「中央區域」。 地區不是郵寄地址的一部分。 |
+| NAME      | 字串 | true   |  建築物的名稱。 |
+| streetAddress|    字串 |    false    | 建築物的地址。 |
+|unit     | 字串    |  false    |  建築物中的單位。 |
+| 地區 |    字串 |    false |    區域 (area)、鄰近地區或地區 (region) 的名稱。 例如，「Overlake」或「中央區域」。 地區不是郵寄地址的一部分。 |
 | adminDivisions |    字串的 JSON 陣列 |    false     | 包含地址名稱 (國家/地區、州、城市) 或 (國家/地區、轄區、城市、城鎮) 的陣列。 使用 ISO 3166 國家/地區代碼和 ISO 3166-2 州/地區代碼。 |
-| postalCode |    字串/int    | false    | 郵寄分類代碼。 |
+| postalCode |    字串    | false    | 郵寄分類代碼。 |
 | hoursOfOperation |    字串 |     false | 遵循 [OSM 開放時間](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification)格式。 |
-| 電話    | 字串/int |    false |    與建築物相關聯的電話號碼。 必須包含國家/地區代碼。 |
+| 電話    | 字串 |    false |    與建築物相關聯的電話號碼。 必須包含國家/地區代碼。 |
 | 網站    | 字串 |    false    | 與建築物相關聯的網站。 以 http 或 https 開頭。 |
 | nonPublic |    bool    | false | 指定建築物是否為公開的旗標。 |
 | anchorLatitude | NUMERIC |    false | 設施錨點的緯度 (圖釘)。 |
@@ -209,15 +209,15 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 
 | 屬性  | 類型 | 必要 | 描述 |
 |-----------|------|----------|-------------|
-|LevelName    |字串/int    |true |    描述性樓層名稱。 例如：1 樓 (Floor 1)、大廳 (Lobby)、藍色停車區 (Blue Parking) 或地下室 (Basement) 等等。|
+|LevelName    |字串    |true |    描述性樓層名稱。 例如：1 樓 (Floor 1)、大廳 (Lobby)、藍色停車區 (Blue Parking) 或地下室 (Basement) 等等。|
 |序數 | integer |    true | 序數會用來判斷樓層的垂直順序。 每個設施都必須具有序數 0 的樓層。 |
-|heightAboveFacilityAnchor | NUMERIC |    false |    地面上的樓層高度 (以公尺為單位)。 |
+|heightAboveFacilityAnchor | NUMERIC | false |    錨點上方的層級高度（以量為單位）。 |
 | verticalExtent | NUMERIC | false | 樓層的地板到天花板高度 (厚度)，以公尺為單位。 |
-|filename |    字串/int |    true |    建築物樓層 CAD 繪圖的檔案系統路徑。 其必須相對於建築物 zip 檔案的根目錄。 |
+|filename |    字串 |    true |    建築物樓層 CAD 繪圖的檔案系統路徑。 其必須相對於建築物 zip 檔案的根目錄。 |
 
 ### <a name="georeference"></a>georeference
 
-| 屬性  | 類型 | 必要 | 描述 |
+| 屬性  | 類型 | 必要 | 說明 |
 |-----------|------|----------|-------------|
 |lat    | NUMERIC |    true |    設施繪圖的原始緯度十進位標記法。 原始座標必須在 WGS84 Web Mercator (`EPSG:3857`) 中。|
 |lon    |NUMERIC|    true|    設施繪圖的原始經度十進位標記法。 原始座標必須在 WGS84 Web Mercator (`EPSG:3857`) 中。 |
@@ -225,15 +225,15 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 
 ### <a name="dwglayers"></a>dwgLayers
 
-| 屬性  | 類型 | 必要 | 描述 |
+| 屬性  | 類型 | 必要 | 說明 |
 |-----------|------|----------|-------------|
-|exterior    |字串/int 的陣列|    true|    定義外部建築物概況的圖層名稱。|
-|unit|    字串/int 的陣列|    true|    用於定義單位的圖層名稱。|
-|wall|    字串/int 的陣列    |false|    用於定義牆的圖層名稱。|
-|door    |字串/int 的陣列|    false   | 用於定義門的圖層名稱。|
-|unitLabel    |字串/int 的陣列|    false    |用於定義單位名稱的圖層名稱。|
-|區域 | 字串/int 的陣列    | false    | 用於定義區域的圖層名稱。|
-|zoneLabel | 字串/int 的陣列 |     false |    用於定義區域名稱的圖層名稱。|
+|exterior    |字串陣列|    true|    定義外部建築物概況的圖層名稱。|
+|unit|    字串陣列|    true|    用於定義單位的圖層名稱。|
+|wall|    字串的陣列    |false|    用於定義牆的圖層名稱。|
+|door    |字串的陣列|    false   | 用於定義門的圖層名稱。|
+|unitLabel    |字串的陣列|    false    |用於定義單位名稱的圖層名稱。|
+|區域 | 字串的陣列    | false    | 用於定義區域的圖層名稱。|
+|zoneLabel | 字串的陣列 |     false |    用於定義區域名稱的圖層名稱。|
 
 ### <a name="unitproperties"></a>unitProperties
 
@@ -241,19 +241,19 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 
 | 屬性  | 類型 | 必要 | 描述 |
 |-----------|------|----------|-------------|
-|unitName    |字串/int    |true    |要與此 `unitProperty` 記錄相關聯的單位名稱。 只有在 `unitLabel` 圖層中找到符合 `unitName` 的標籤時，此記錄才有效。 |
-|categoryName|    字串/int|    false    |類別名稱。 如需類別的完整清單，請參閱[類別](https://aka.ms/pa-indoor-spacecategories)。 |
+|unitName    |字串    |true    |要與此 `unitProperty` 記錄相關聯的單位名稱。 只有在 `unitLabel` 圖層中找到符合 `unitName` 的標籤時，此記錄才有效。 |
+|categoryName|    字串|    false    |類別名稱。 如需類別的完整清單，請參閱[類別](https://aka.ms/pa-indoor-spacecategories)。 |
 |navigableBy| 字串的陣列 |    false    |表示可穿過單位的通行代理項目類型。 例如「行人 (pedestrian)」。 此屬性會通知導向功能。  允許的值為 `pedestrian`、`wheelchair`、`machine`、`bicycle`、`automobile`、`hiredAuto`、`bus`、`railcar`、`emergency`、`ferry`、`boat` 和 `disallowed`。|
 |routeThroughBehavior|    字串|    false    |單位的路徑通過行為。 允許的值為 `disallowed`、`allowed` 和 `preferred`。 預設值為 `allowed`。|
 |住戶    |directoryInfo 物件的陣列 |false    |單位的住戶清單。 |
-|nameAlt|    字串/int|    false|    單位的替代名稱。 |
-|nameSubtitle|    字串/int    |false|    單位的子標題。 |
-|addressRoomNumber|    字串/int|    false|    單位的房間/單位/公寓/套房編號。|
-|verticalPenetrationCategory|    字串/int|    false| 定義此屬性時，產生的特徵將會是垂直穿透 (VRT)，而不是一個單位。 VRT 可以用來流覽至其上方或下方樓層中的其他 VRT 特徵。 垂直穿透是[類別](https://aka.ms/pa-indoor-spacecategories)名稱。 如果已定義此屬性，則 categoryName 屬性會由 verticalPenetrationCategory 覆寫。 |
+|nameAlt|    字串|    false|    單位的替代名稱。 |
+|nameSubtitle|    字串    |false|    單位的子標題。 |
+|addressRoomNumber|    字串|    false|    單位的房間/單位/公寓/套房編號。|
+|verticalPenetrationCategory|    字串|    false| 定義此屬性時，產生的特徵將會是垂直穿透 (VRT)，而不是一個單位。 VRT 可以用來流覽至其上方或下方樓層中的其他 VRT 特徵。 垂直穿透是[類別](https://aka.ms/pa-indoor-spacecategories)名稱。 如果已定義此屬性，則 categoryName 屬性會由 verticalPenetrationCategory 覆寫。 |
 |verticalPenetrationDirection|    字串|    false    |如果已定義 `verticalPenetrationCategory`，則可選擇定義有效的行進方向。 允許的值為 `lowToHigh`、`highToLow`、`both` 和 `closed`。 預設值為 `both`。|
 | nonPublic | bool | false | 指出單位是否要向外公開。 |
 | isRoutable | bool | false | 設定為 `false` 時，將無法通行或穿過單位。 預設值為 `true`。 |
-| isOpenArea | bool | false | 允許通行代理項目進入單位，而不需要將開口附加到到單位。 根據預設，除非單位有開口，否則此值會設定為 `true`。 |
+| isOpenArea | bool | false | 允許流覽代理程式輸入單位，而不需要開啟連接到單位。 根據預設，此值會設為， `true` 代表沒有任何空缺的單位; `false` 針對具有開頭的單位。  在沒有開頭的單元上，手動將設定 `isOpenArea` 為，會 `false` 產生警告。 這是因為流覽代理程式無法觸達產生的單位。|
 
 ### <a name="the-zoneproperties-object"></a>zoneProperties 物件
 
@@ -261,10 +261,11 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 
 | 屬性  | 類型 | 必要 | 描述 |
 |-----------|------|----------|-------------|
-|zoneName        |字串/int    |true    |要與 `zoneProperty` 記錄相關聯的區域名稱。 只有在區域的 `zoneLabel` 圖層中找到符合 `zoneName` 的標籤時，此記錄才有效。  |
-|categoryName|    字串/int|    false    |類別名稱。 如需類別的完整清單，請參閱[類別](https://aka.ms/pa-indoor-spacecategories)。 |
-|zoneNameAlt|    字串/int|    false    |區域的替代名稱。  |
-|zoneNameSubtitle|    字串/int |    false    |區域的子標題。 |
+|zoneName        |字串    |true    |要與 `zoneProperty` 記錄相關聯的區域名稱。 只有在區域的 `zoneLabel` 圖層中找到符合 `zoneName` 的標籤時，此記錄才有效。  |
+|categoryName|    字串|    false    |類別名稱。 如需類別的完整清單，請參閱[類別](https://aka.ms/pa-indoor-spacecategories)。 |
+|zoneNameAlt|    字串|    false    |區域的替代名稱。  |
+|zoneNameSubtitle|    字串 |    false    |區域的子標題。 |
+|zoneSetId|    字串 |    false    | 設定 ID 以建立多個區域之間的關聯性，讓它們可以查詢或選取為群組。 例如，跨多個層級的區域。 |
 
 ### <a name="sample-drawing-package-manifest"></a>繪圖套件資訊清單範例
 

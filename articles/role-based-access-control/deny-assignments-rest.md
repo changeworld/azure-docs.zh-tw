@@ -11,16 +11,15 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dae0352566e6cb4f8ed1384ca12213e2aaa07f9d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 2f835c270930734bf9963a7c7c3168b873eddaf6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733865"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791906"
 ---
 # <a name="list-azure-deny-assignments-using-the-rest-api"></a>使用 REST API 列出 Azure 拒絕指派
 
@@ -29,7 +28,7 @@ ms.locfileid: "82733865"
 > [!NOTE]
 > 您無法直接建立自己的拒絕指派。 如需如何建立拒絕指派的相關資訊，請參閱[Azure 拒絕指派](deny-assignments.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要取得拒絕指派的相關資訊，您必須具有：
 
@@ -80,7 +79,7 @@ ms.locfileid: "82733865"
 1. 將 *{filter}* 取代為您想要套用來篩選拒絕指派清單的條件。
 
     > [!div class="mx-tableFixed"]
-    > | Filter | 描述 |
+    > | Filter | Description |
     > | --- | --- |
     > | (無篩選條件) | 列出指定範圍的所有拒絕指派。 |
     > | `$filter=atScope()` | 僅列出指定範圍和以上的拒絕指派。 不包含子範圍內的拒絕指派。 |
@@ -102,7 +101,7 @@ ms.locfileid: "82733865"
 1. 將 *{filter}* 取代為您想要套用來篩選拒絕指派清單的條件。 需要篩選條件。
 
     > [!div class="mx-tableFixed"]
-    > | Filter | 描述 |
+    > | Filter | Description |
     > | --- | --- |
     > | `$filter=atScope()` | 僅列出根範圍的拒絕指派。 不包含子範圍內的拒絕指派。 |
     > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | 列出具有指定名稱的拒絕指派。 |

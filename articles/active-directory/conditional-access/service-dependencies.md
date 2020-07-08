@@ -4,19 +4,18 @@ description: 瞭解如何在 Azure Active Directory 條件式存取中使用條�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a108c952c4f1f9b8298e57c8fd94c767bb065f00
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981768"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253183"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 條件式存取中的服務相依性為何？ 
 
@@ -59,7 +58,7 @@ ms.locfileid: "82981768"
 |                     | SharePoint                                  | 早期繫結 |
 | PowerApps           | Microsoft Azure 管理（入口網站和 API） | 早期繫結 |
 |                     | Windows Azure Active Directory              | 早期繫結 |
-| 專案             | Dynamics CRM                                | 早期繫結 |
+| Project             | Dynamics CRM                                | 早期繫結 |
 | 商務用 Skype  | Exchange                                    | 早期繫結 |
 | Visual Studio       | Microsoft Azure 管理（入口網站和 API） | 早期繫結 |
 | Microsoft Forms     | Exchange                                    | 早期繫結 |

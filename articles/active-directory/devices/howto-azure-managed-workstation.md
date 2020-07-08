@@ -4,19 +4,18 @@ description: 瞭解如何部署安全且受 Azure 管理的工作站，以降低
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d02b0299b6267fdd9d880d5bc0fe8c93d0edadc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252775"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>部署安全且受 Azure 管理的工作站
 
@@ -29,20 +28,20 @@ ms.locfileid: "78672611"
 > [!NOTE]
 > 視需要套用任何設定檔。 您可以在 Microsoft Intune 中指派，以移至另一個設定檔。
 
-| 設定檔 | 低 | 增強 | 高 | 特製化 | 施加 | 隔離 |
+| 設定檔 | 低 | 增強 | 高 | 特製化 | 受保護 | 隔離 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Azure AD 中的使用者 | 是 | 是 | 是 | 是 | 是 | 是 |
 | Intune 管理 | 是 | 是 | 是 | 是 | 是 | 是 |
-| 已註冊裝置 Azure AD | 是 |  |  |  |  | |   |
+| 已註冊裝置 Azure AD | Yes |  |  |  |  | |   |
 | 已聯結裝置 Azure AD |   | 是 | 是 | 是 | 是 | 是 |
-| 已套用 Intune 安全性基準 |   | 是 <br> 增強 | 是 <br> (HighSecurity) | 是 <br> NCSC | 是 <br> 施加 | NA |
+| 已套用 Intune 安全性基準 |   | Yes <br> 增強 | Yes <br> (HighSecurity) | Yes <br> NCSC | Yes <br> 施加 | NA |
 | 硬體符合安全的 Windows 10 標準 |   | 是 | 是 | 是 | 是 | 是 |
 | 已啟用 Microsoft Defender ATP |   | 是  | 是 | 是 | 是 | 是 |
 | 移除系統管理員許可權 |   |   | 是  | 是 | 是 | 是 |
 | 使用 Microsoft Autopilot 進行部署 |   |   | 是  | 是 | 是 | 是 |
 | 僅由 Intune 安裝的應用程式 |   |   |   | 是 | 是 |是 |
 | 限制為已核准清單的 Url |   |   |   | 是 | 是 |是 |
-| 網際網路已封鎖（輸入/輸出） |   |   |   |  |  |是 |
+| 網際網路已封鎖（輸入/輸出） |   |   |   |  |  |Yes |
 
 > [!NOTE]
 > 在安全工作站指引中，**裝置**將會指派設定檔和原則。 使用者不會直接套用原則，讓裝置共用（共用裝置）生效。 如果您的部署中未共用安全的工作站，或需要個別的使用者原則，則可以將使用者原則設定檔指派給使用者和裝置。 
@@ -63,19 +62,19 @@ Azure Active Directory （Azure AD）可管理您系統管理員工作站的使�
 
 ### <a name="azure-ad-users-and-groups"></a>Azure AD 使用者和群組
 
-1. 從 [Azure 入口網站] 中，流覽至 [ **Azure Active Directory** > **使用者** > ] [**新增使用者**]。
+1. 從 [Azure 入口網站] 中，流覽至 [ **Azure Active Directory**  >  **使用者**] [  >  **新增使用者**]。
 1. 遵循[建立使用者教學](/Intune/quickstart-create-user)課程中的步驟，建立您的裝置系統管理員。
 1. 輸入：
 
    * **名稱**-安全工作站系統管理員
    * **使用者名稱** - `secure-ws-admin@identityitpro.com`
-   * **[目錄角色** - **限制的系統管理員**]，並選取 [ **Intune 系統管理員**] 角色。
+   * **目錄角色**  - **受限制的系統管理員**，並選取**Intune 系統管理員**角色。
 
-1. 選取 [建立]  。
+1. 選取 [建立]。
 
 接下來，您會建立兩個群組： [工作站使用者] 和 [工作站裝置]。
 
-從 [Azure 入口網站] 中，流覽至**Azure Active Directory** > **群組** > ] [**新增群組**]。
+從 [Azure 入口網站] 中，流覽至**Azure Active Directory**  >  **群組**] [  >  **新增群組**]。
 
 1. 針對工作站使用者群組，您可能想要設定以[群組為基礎的授權](../users-groups-roles/licensing-groups-assign.md)，以自動將授權布建給使用者。
 1. 在 [工作站使用者] 群組中，輸入：
@@ -86,14 +85,14 @@ Azure Active Directory （Azure AD）可管理您系統管理員工作站的使�
 
 1. 新增您的安全工作站系統管理員使用者：`secure-ws-admin@identityitpro.com`
 1. 您可以新增任何其他將管理安全工作站的使用者。
-1. 選取 [建立]  。
+1. 選取 [建立]。
 1. 在 [工作站裝置] 群組中，輸入：
 
    * **群組類型**-安全性
    * **組名**-安全工作站
    * **成員資格類型**-已指派
 
-1. 選取 [建立]  。
+1. 選取 [建立]。
 
 ### <a name="azure-ad-device-configuration"></a>Azure AD 裝置設定
 
@@ -101,31 +100,31 @@ Azure Active Directory （Azure AD）可管理您系統管理員工作站的使�
 
 在 Active Directory 中設定您的裝置設定，以允許您的系統管理安全性群組將裝置加入至您的網域。 若要從 Azure 入口網站進行此設定：
 
-1. 移至 [ **Azure Active Directory** > **裝置** > ] [**裝置設定**]。
+1. 移至 [ **Azure Active Directory**  >  **裝置**] [  >  **裝置設定**]。
 1. 選擇 [**使用者可以將裝置加入 Azure AD**，**然後選取 [** 安全工作站使用者] 群組。
 
 #### <a name="removal-of-local-admin-rights"></a>移除本機系統管理員許可權
 
 此方法需要 VIP、DevOps 和安全層工作站的使用者在其電腦上沒有系統管理員許可權。 若要從 Azure 入口網站進行此設定：
 
-1. 移至 [ **Azure Active Directory** > **裝置** > ] [**裝置設定**]。
+1. 移至 [ **Azure Active Directory**  >  **裝置**] [  >  **裝置設定**]。
 1. 在**Azure AD 聯結裝置上的 [其他本機系統管理員**] 底下，選取 [**無**]。
 
 #### <a name="require-multi-factor-authentication-to-join-devices"></a>需要多重要素驗證才能加入裝置
 
 進一步強化將裝置加入 Azure AD 的程式：
 
-1. 移至 [ **Azure Active Directory** > **裝置** > ] [**裝置設定**]。
+1. 移至 [ **Azure Active Directory**  >  **裝置**] [  >  **裝置設定**]。
 1. 選取 [**需要多重要素驗證才能加入裝置**] 下的 **[是]** 。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 #### <a name="configure-mobile-device-management"></a>設定行動裝置管理
 
 從 Azure 入口網站：
 
-1. 流覽至**Azure Active Directory** > **行動性（MDM 與 MAM）** > **Microsoft Intune**。
+1. 流覽至**Azure Active Directory**  >  **行動性（MDM 與 MAM）**  >  **Microsoft Intune**。
 1. 將 [ **MDM 使用者範圍**] 設定變更為 [**全部**]。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 這些步驟可讓您使用 Intune 管理任何裝置。 如需詳細資訊，請參閱[Intune 快速入門：設定 Windows 10 裝置的自動註冊](/Intune/quickstart-setup-auto-enrollment)。 在未來的步驟中，您會建立 Intune 設定和合規性原則。
 
@@ -143,7 +142,7 @@ Azure AD 條件式存取可協助將特殊許可權的系統管理工作限制�
 
 從 [ **Azure 入口網站**：
 
-1. 移至**Microsoft Intune** > **裝置註冊** > ] [**Windows 註冊** > ] [註冊**狀態] 頁面** > **預設** > **設定**。
+1. 移至**Microsoft Intune**  >  **裝置註冊**] [  >  **Windows 註冊**] [註冊  >  **狀態] 頁面**  >  **預設**  >  **設定**。
 1. 將 [**顯示應用程式佈建檔安裝進度**] 設定為 **[是]**。
 1. 設定**封鎖裝置使用，直到所有應用程式和設定檔安裝**為 **[是]** 為止。
 
@@ -153,27 +152,27 @@ Azure AD 條件式存取可協助將特殊許可權的系統管理工作限制�
 
 在 [Azure 入口網站中的 Intune：
 
-1. 選取 [**裝置註冊** > ] [**Windows 註冊** > **Deployment Profiles** > ] [**建立設定檔**]。
+1. 選取 [**裝置註冊**] [  >  **Windows 註冊**] [  >  **Deployment Profiles**  >  **建立設定檔**]。
 1. 輸入：
 
    * 名稱-**安全工作站部署設定檔**。
    * 描述-**安全工作站的部署**。
    * 把 [將所有目標裝置轉換為 Autopilot]**** 設為 [是]****。 此設定可確保清單中的所有裝置都會向 AutoPilot 部署服務註冊。 等候 48 小時讓註冊處理完畢。
 
-1. 選取 [下一步]  。
+1. 選取 [下一步]。
 
    * 針對 [**部署模式]**，選擇 [**自我部署（預覽）**]。 具有此設定檔的裝置會與註冊裝置的使用者相關聯。 需有使用者認證，才能註冊裝置。 請務必注意，在**自我部署**模式中部署裝置，可讓您在共用模型中部署膝上型電腦。 第一次將裝置指派給使用者之前，將不會進行任何使用者指派。 因此，在使用者指派完成之前，將不會啟用任何使用者原則（例如 BitLocker）。 如需如何登入受保護裝置的詳細資訊，請參閱[選取的設定檔](/intune/device-profile-assign)。
    * [**加入 Azure AD 做為**] 方塊應該會顯示**Azure AD 已加入**，且呈現灰色。
    * 選取您的語言（地區）、[使用者帳戶類型] [**標準**]。 
 
-1. 選取 [下一步]  。
+1. 選取 [下一步]。
 
    * 如果您已預先設定一個範圍標籤，請選取該標籤。
 
-1. 選取 [下一步]  。
-1.  > 選擇 **[****指派** > 給**選取的群組**]。 在 [**選取要包含的群組**] 中，選擇**安全的工作站**。
-1. 選取 [下一步]  。
-1. 選取 [建立]**** 以建立設定檔。 現在可以指派 Autopilot 部署設定檔給裝置。
+1. 選取 [下一步]。
+1. 選擇 **[**  >  **指派**給  >  **選取的群組**]。 在 [**選取要包含的群組**] 中，選擇**安全的工作站**。
+1. 選取 [下一步]。
+1. 選取 [建立] 以建立設定檔。 現在可以指派 Autopilot 部署設定檔給裝置。
 
 Autopilot 中的裝置註冊會根據裝置類型和角色來提供不同的使用者體驗。 在我們的部署範例中，我們會說明一種模型，其中會大量部署受保護的裝置，並可供共用，但第一次使用時，會將裝置指派給使用者。 如需詳細資訊，請參閱[Intune Autopilot 裝置註冊](/intune/device-enrollment)。
 
@@ -185,7 +184,7 @@ Autopilot 中的裝置註冊會根據裝置類型和角色來提供不同的使�
 
 在 Azure 入口網站中：
 
-1. 前往**Microsoft Intune** > **軟體更新** > **Windows 10 更新**通道。
+1. 前往**Microsoft Intune**  >  **軟體更新**  >  **Windows 10 更新**通道。
 1. 輸入：
 
    * 名稱-**受 Azure 管理的工作站更新**
@@ -200,7 +199,7 @@ Autopilot 中的裝置註冊會根據裝置類型和角色來提供不同的使�
    * 延遲參與重新開機提醒（天數）- **3**
    * 設定擱置重新開機的期限（天）- **3**
 
-1. 選取 [建立]  。
+1. 選取 [建立]。
 1. 在 [**指派**] 索引標籤上，新增**安全的工作站**群組。
 
 如需 Windows Update 原則的詳細資訊，請參閱[原則 CSP-更新](/windows/client-management/mdm/policy-csp-update)。
@@ -211,17 +210,17 @@ Windows Defender ATP 和 Microsoft Intune 會共同合作，以協助防止安�
 
 若要設定 Windows Defender ATP 與 Intune 的整合，請移至 Azure 入口網站。
 
-1. 流覽至**Microsoft Intune** > **裝置合規性** > ] [**Windows Defender ATP**]。
+1. 流覽至**Microsoft Intune**  >  **裝置合規性**] [  >  **Windows Defender ATP**]。
 1. 在 [設定**Windows DEFENDER Atp**] 底下的步驟1中，選取 **[將 windows defender Atp 連線到 windows defender 資訊安全中心中的 Microsoft Intune]**。
 1. 在 [Windows Defender 資訊安全中心] 中：
 
-   1. 選取 [**設定** > ] [**高級功能**]。
+   1. 選取 [設定] > [進階功能]。
    1. 針對 [ **Microsoft Intune 連接**]，選擇 [**開啟**]。
-   1. 選取 [儲存喜好設定]****。
+   1. 選取 [儲存喜好設定]。
 
 1. 建立連線之後，請返回 Intune，**然後選取頂端**的 [重新整理]。
 1. 將 [將 Windows 裝置 10.0.15063 版和更高版本連線至 Windows Defender ATP]**** 設定為 [開啟]****。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 如需詳細資訊，請參閱 [Windows Defender 進階威脅防護](/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)。
 
@@ -234,20 +233,20 @@ Windows Defender ATP 和 Microsoft Intune 會共同合作，以協助防止安�
 | 低安全性 | N/A | N/A |
 | 加強的安全性 | https://aka.ms/securedworkstationgit | 增強-工作站-Windows10-（1809） ps1 |
 | 高安全性 | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-（1809） ps1 |
-| 特製化 | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 （1803） SecurityBaseline. ps1 |
+| 特製化 | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 （1803） SecurityBaseline.ps1 |
 | 特殊化合規性 * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC Windows10 （1803） ps1 |
-| 施加 | https://aka.ms/securedworkstationgit | 安全-工作站-Windows10-（1809）-SecurityBaseline. ps1 |
+| 受保護 | https://aka.ms/securedworkstationgit | 安全-工作站-Windows10-（1809） -SecurityBaseline.ps1 |
 
 \*特殊化合規性是一種腳本，它會強制執行 NCSC Windows10 SecurityBaseline 中提供的特殊設定。
 
 腳本成功執行之後，您可以在 Intune 中更新設定檔和原則。 增強和安全設定檔的腳本會為您建立原則和設定檔，但您必須將原則指派給**安全的工作站**裝置群組。
 
-* 您可以在這裡找到腳本所建立的 Intune 裝置設定檔： **Azure 入口網站** > **Microsoft Intune** > **裝置配置** > **檔**。
-* 您可以在這裡找到腳本所建立的 Intune 裝置相容性原則： **Azure 入口網站** > **Microsoft Intune** > **裝置相容性** > **原則**。
+* 您可以在這裡找到腳本所建立的 Intune 裝置設定檔： **Azure 入口網站**  >  **Microsoft Intune**  >  **裝置配置**  >  **檔**。
+* 您可以在這裡找到腳本所建立的 Intune 裝置相容性原則： **Azure 入口網站**  >  **Microsoft Intune**  >  **裝置相容性**  >  **原則**。
 
 若要查看腳本所做的變更，您可以匯出設定檔。 如此一來，您可以依照[SECCON 檔](/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework)中的說明，判斷可能需要的額外強化。
 
-從[DeviceConfiguration GiuHub 存放庫](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration)執行`DeviceConfiguration_Export.ps1` Intune 資料匯出腳本，以匯出所有目前的 intune 設定檔。
+`DeviceConfiguration_Export.ps1`從[DeviceConfiguration GiuHub 存放庫](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration)執行 Intune 資料匯出腳本，以匯出所有目前的 intune 設定檔。
 
 ## <a name="additional-configurations-and-hardening-to-consider"></a>其他設定和強化以考慮
 
@@ -286,15 +285,15 @@ Windows Defender ATP 和 Microsoft Intune 會共同合作，以協助防止安�
 在某些情況下，受保護的工作站上需要像 Google Chrome 瀏覽器的應用程式。 下列範例提供將 Chrome 安裝到安全性群組安全**工作站**之裝置的指示。
 
 1. 下載[Windows 64 位](https://cloud.google.com/chrome-enterprise/browser/download/)的離線安裝程式 Chrome 配套。
-1. 解壓縮檔案，並記下檔案的位置`GoogleChromeStandaloneEnterprise64.msi` 。
-1. 在**Azure 入口網站**流覽至 [ **Microsoft Intune** > **用戶端應用** > 程式] [**應用程式** > ] [**新增**]。
+1. 解壓縮檔案，並記下檔案的位置 `GoogleChromeStandaloneEnterprise64.msi` 。
+1. 在**Azure 入口網站**流覽至 [ **Microsoft Intune**  >  **用戶端應用**程式] [  >  **應用程式**] [  >  **新增**]。
 1. 在 [**應用程式類型**] 底下，選擇 [**企業**營運]。
-1. 在 [**應用程式套件**檔案] `GoogleChromeStandaloneEnterprise64.msi`底下，從解壓縮的位置選取檔案，然後選取 **[確定]**。
-1. 在 [**應用程式資訊**] 底下，提供描述和發行者。 選取 [確定]  。
-1. 選取 [新增]  。
+1. 在 [**應用程式套件**檔案] 底下，從解壓縮的位置選取檔案， `GoogleChromeStandaloneEnterprise64.msi` 然後選取 **[確定]**。
+1. 在 [**應用程式資訊**] 底下，提供描述和發行者。 選取 [確定]。
+1. 選取 [新增]。
 1. **在 [指派**] 索引標籤上，選取 [**指派類型**] 下的 [已**註冊裝置可用**]
 1. 在 [**包含的群組**] 底下，新增安全的**工作站**群組。
-1. 選取 [確定]****，然後選取 [儲存]****。
+1. 選取 [確定]，然後選取 [儲存]。
 
 如需有關配置 Chrome 設定的詳細資訊，請參閱[使用 Microsoft Intune 管理 Chrome 瀏覽器](https://support.google.com/chrome/a/answer/9102677)。
 
@@ -304,7 +303,7 @@ Windows Defender ATP 和 Microsoft Intune 會共同合作，以協助防止安�
 
 受 Intune 管理的[公司入口網站](/Intune/store-apps-company-portal-app)複本可讓您依需求存取額外的工具，以向下推送至受保護工作站的使用者。
 
-您可能需要安裝 Windows 32 位應用程式或部署需要特殊準備的其他應用程式。 在這種情況下， [Microsoft win32 內容準備工具](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool)可以提供立即可用`.intunewin`的格式檔案以供安裝。
+您可能需要安裝 Windows 32 位應用程式或部署需要特殊準備的其他應用程式。 在這種情況下， [Microsoft win32 內容準備工具](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool)可以提供立即可用的格式檔案 `.intunewin` 以供安裝。
 
 ### <a name="conditional-access-only-allowing-secured-workstation-ability-to-access-azure-portal"></a>條件式存取只允許安全的工作站存取 Azure 入口網站的能力
 
@@ -313,15 +312,15 @@ Azure AD 提供管理和限制的功能，以及誰和誰可以存取您的 Azur
 > [!NOTE]
 > 您將需要建立使用者群組，並包含可以略過條件式存取原則的緊急使用者。 在我們的範例中，我們有一個稱為**緊急 BreakGlass**的安全性群組
 
-1. 流覽至**Azure 入口網站** > **Microsoft Intune** > **條件式存取原則** > **新增原則**。
+1. 流覽至**Azure 入口網站**  >  **Microsoft Intune**  >  **條件式存取原則**  >  **新增原則**。
 1. 提供原則的**名稱**。
-1. 選取**使用者和群組** > **選取使用者和群組** 
-1. 選取 [**包含** > **目錄角色**] > 選擇 [> 全域管理員、特殊許可權角色系統管理員、特殊許可權驗證管理員、安全性系統管理員、規範管理員、條件式存取系統管理員、應用程式系統管理員、雲端應用程式系統管理員、Intune 服務管理員等角色
+1. 選取**使用者和群組**  >  **選取使用者和群組** 
+1. 選取 [**包含**  >  **目錄角色**] > 選擇 [> 全域管理員、特殊許可權角色系統管理員、特殊許可權驗證管理員、安全性系統管理員、規範管理員、條件式存取系統管理員、應用程式系統管理員、雲端應用程式系統管理員、Intune 服務管理員等角色
 1. 選取 [**排除**] > 選擇 [**使用者和群組**] > 選取 [**選取排除的使用者**]，> 選取您的**緊急 BreakGlass**群組。
 1. 選取 [**雲端應用程式] 或 [動作**] > 選取**所有雲端應用程式**
 1. 選取**條件**> 選取**裝置平臺**> 選擇 [設定 **] [是]** > 選取 [**選取裝置平臺**] 選擇**Windows**
 1. 選取 [**存取控制**] > 選取 **[授與存取權** **]** > 選擇 [**需要將裝置標示為符合規範**]。 
-1. 選取 [**啟用原則** > **開啟**]
+1. 選取 [**啟用原則**  >  **開啟**]
  
 此原則集會確保您的系統管理員必須使用相容的 Windows 裝置（由 Intune 設定）和 WDATP。 
 
@@ -333,37 +332,37 @@ Azure AD 提供管理和限制的功能，以及誰和誰可以存取您的 Azur
 
 您可能需要在安全的工作站上設定一些自訂控制項和設定。 這個範例會使用 Powershell 的功能，輕鬆地將裝置識別為立即可用的安全工作站，藉此變更工作站的背景。
 
-Microsoft 腳本中心的[SetDesktopBackground](https://gallery.technet.microsoft.com/scriptcenter/Set-Desktop-Image-using-5430c9fb/)腳本可讓 Windows 在啟動時載入這個[免費的一般背景影像](https://i.imgur.com/OAJ28zO.png)。
+Microsoft 腳本中心的[SetDesktopBackground.ps1](https://gallery.technet.microsoft.com/scriptcenter/Set-Desktop-Image-using-5430c9fb/)腳本可讓 Windows 在啟動時載入這個[免費的一般背景影像](https://i.imgur.com/OAJ28zO.png)。
 
 1. 將腳本下載至本機裝置。
 1. 更新背景影像的 customerXXXX 和下載位置。 在我們的範例中，我們將 customerXXXX 取代為背景。
-1. 流覽至**Azure 入口網站** > **Microsoft Intune** > [**裝置** > 設定] [**PowerShell 腳本** > ] [**新增**]。
+1. 流覽至**Azure 入口網站**  >  **Microsoft Intune**[裝置設定] [  >  **Device configuration**  >  **PowerShell 腳本**] [  >  **新增**]。
 1. 提供腳本的**名稱**，並指定**腳本位置**。
-1. 選取 [設定]  。
+1. 選取 [設定] 。
    1. 將 **[使用登入的認證執行此腳本**] 設定為 **[是]**。
-   1. 選取 [確定]  。
-1. 選取 [建立]  。
-1. 選取 [**指派** > ] [**選取群組**]。
+   1. 選取 [確定]。
+1. 選取 [建立]。
+1. 選取 [**指派**] [  >  **選取群組**]。
    1. 將安全性群組安全的**工作站**新增。
-   1. 選取 [儲存]  。
+   1. 選取 [儲存]。
 
 ## <a name="enroll-and-validate-your-first-device"></a>註冊並驗證您的第一部裝置
 
 1. 若要註冊您的裝置，您需要下列資訊：
    * **序號**-在裝置底座上找到。
-   * **Windows 產品識別碼**-從 windows [設定] 功能表的 [**關於****系統** > ] 下找到。
+   * **Windows 產品識別碼**- **System**  >  從 windows [設定] 功能表的 [**關於**系統] 下找到。
    * 您可以執行[WindowsAutoPilotInfo](https://aka.ms/Autopilotshell)來取得 CSV 雜湊檔案，其中包含裝置註冊所需的所有資訊。
    
-     執行`Get-WindowsAutoPilotInfo – outputfile device1.csv`以將資訊輸出為 CSV 檔案，您可以將此檔案匯入至 Intune。
+     執行 `Get-WindowsAutoPilotInfo – outputfile device1.csv` 以將資訊輸出為 CSV 檔案，您可以將此檔案匯入至 Intune。
 
      > [!NOTE]
-     > 腳本需要較高的許可權。 它會以遠端簽署的方式執行。 此`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`命令可讓腳本正常執行。
+     > 腳本需要較高的許可權。 它會以遠端簽署的方式執行。 此 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned` 命令可讓腳本正常執行。
 
    * 您可以登入 Windows 10 1809 版或更新版本的裝置，以收集這項資訊。 您的硬體轉銷商也可以提供此資訊。
-1. 在 [ **Azure 入口網站**中，移至 [ **Microsoft Intune** > **裝置註冊** > ] [**windows 註冊** > ] [**裝置]-[管理 Windows Autopilot 裝置**]。
+1. 在 [ **Azure 入口網站**中，移至 [ **Microsoft Intune**  >  **裝置註冊**] [  >  **windows 註冊**] [  >  **裝置]-[管理 Windows Autopilot 裝置**]。
 1. 選取 [匯**入**]，然後選擇您的 CSV 檔案。
 1. 將裝置新增至**安全的工作站**安全性群組。
-1. 在您想要設定的 windows 10 裝置上，移至 [ **windows 設定** > ] [更新] [**& 安全性** > ] [**修復**]。
+1. 在您想要設定的 windows 10 裝置上，移至 [ **windows 設定**] [更新] [  >  **& 安全性**] [  >  **修復**]。
    1. 選擇 [**重設這部電腦**] 底下的 [**開始**使用]。
    1. 遵循提示，使用設定的設定檔和合規性原則來重設和重新設定裝置。
 
@@ -393,7 +392,7 @@ Sentinel 監視需要設定您的資料來源（例如 Azure AD 的連接器）�
    * **資源群組**-選取 [新建] * * > 安全工作站 RG >**確定]**
    * **位置**-選取地理位置最適合您的部署的位置
    * **定價層**-選取**每 GB （2018）**
-1. 選取 **[確定]**。
+1. 選取 [確定]。
 
 接下來，我們會將可用的安全工作站資料來源連接到監視。
 
@@ -424,26 +423,26 @@ Sentinel 監視需要設定您的資料來源（例如 Azure AD 的連接器）�
 
 1. 將安裝[腳本下載至本機裝置](https://aka.ms/securedworkstationgit)。
 1. 更新參數、 **$WorkSpaceID**和 **$WorkSpaceKey**
-1. 流覽至**Azure 入口網站** > **Microsoft Intune** > [**裝置** > 設定] [**PowerShell 腳本** > ] [**新增**]。
+1. 流覽至**Azure 入口網站**  >  **Microsoft Intune**[裝置設定] [  >  **Device configuration**  >  **PowerShell 腳本**] [  >  **新增**]。
 1. 提供腳本的**名稱**，並指定**腳本位置**。
-1. 選取 [設定]  。
+1. 選取 [設定] 。
    1. 將 **[使用登入的認證執行此腳本**] 設定為 **[是]**。
-   1. 選取 [確定]  。
-1. 選取 [建立]  。
-1. 選取 [**指派** > ] [**選取群組**]。
+   1. 選取 [確定]。
+1. 選取 [建立]。
+1. 選取 [**指派**] [  >  **選取群組**]。
    1. 將安全性群組安全的**工作站**新增。
-   1. 選取 [儲存]  。
+   1. 選取 [儲存]。
 
 接下來，您必須設定 Log Analytics 以接收新的記錄檔
 1. 在**Azure 入口網站**中，移至**Log Analytics 工作區**，> 選取-「安全工作站監視」
-1. 選取 [ **Advanced settings** > ]**資料** > **Windows 事件記錄**檔
+1. 選取 [ **Advanced settings**]  >  **資料**  >  **Windows 事件記錄**檔
 1. 在中 **，從下列事件記錄檔收集事件** 
 1. 輸入：
    * ' Microsoft-Windows-AppLocker/EXE 和 DLL ' > 取消選取**資訊**
    * ' Microsoft-Windows-AppLocker/MSI 和腳本 ' > 取消選取**資訊**
    * ' Microsoft-Windows-AppLocker/已封裝應用程式-部署 ' > 取消選取**資訊**
    * ' Microsoft-Windows-AppLocker/已封裝應用程式執行 ' > 取消選取**資訊**
-1. 選取 [儲存]  。
+1. 選取 [儲存]
 
 應用程式記錄將會在您選取的 Log Analytics 工作區中提供。
 

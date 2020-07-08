@@ -14,12 +14,11 @@ ms.workload: big-compute
 ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 4da5fad63b148fa054eefb7f13424b46dc43bf29
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: 96a3ada98bb41ea007eaaae2a40983d2448b38c2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83764317"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960821"
 ---
 # <a name="using-certificates-with-batch"></a>搭配 Batch 使用憑證
 
@@ -39,6 +38,6 @@ ms.locfileid: "83764317"
 
 ## <a name="next-steps"></a>後續步驟
 
-Batch 具有憑證 API，也就是 [AZ batch certificate create](https://docs.microsoft.com/cli/azure/batch/certificate?view=azure-cli-latest#az-batch-certificate-create)
+Batch 具有憑證 API，也就是 [AZ batch certificate create](/cli/azure/batch/certificate?view=azure-cli-latest#az-batch-certificate-create)
 
 如需有關使用 Key Vault 的資訊，請參閱[使用 Batch 安全地存取 Key Vault](credential-access-key-vault.md)。

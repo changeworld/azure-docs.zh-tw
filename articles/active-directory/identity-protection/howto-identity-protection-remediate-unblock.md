@@ -4,25 +4,24 @@ description: 瞭解您已關閉作用中風險偵測的選項。
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 11/21/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 350e7b37d36be70cea345db52cdfb639b2f1c1a8
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 06335798addadcd8591625e25ed2eafe8469ae48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74382106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463955"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>補救風險並解除封鎖使用者
 
 完成[調查](howto-identity-protection-investigate-risk.md)之後，您會想要採取動作來補救風險或解除封鎖使用者。 組織也可以選擇使用其[風險原則](howto-identity-protection-configure-risk-policies.md)來啟用自動補救。 組織應該嘗試在您的組織熟悉的一段時間內，關閉他們呈現的所有風險偵測。 Microsoft 建議您儘快關閉事件，因為時間在處理風險時很重要。
 
-## <a name="remediation"></a>補救
+## <a name="remediation"></a>修復
 
 所有作用中的風險偵測都有助於計算名為「使用者風險層級」的值。 使用者風險層級是帳戶遭到入侵的可能性指標 (低、中、高)。 身為系統管理員，您想要讓所有風險偵測關閉，讓受影響的使用者不再有風險。
 

@@ -1,25 +1,13 @@
 ---
 title: Azure 服務匯流排訊息例外狀況 |Microsoft Docs
 description: 本文提供在發生例外狀況時所要採取的 Azure 服務匯流排訊息例外狀況和建議的動作清單。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/23/2020
-ms.author: aschhab
-ms.openlocfilehash: f1a4caf6ffd5740b4227aff2f38d9cb709c77b48
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: dd57938c24565257aefebc89a8b070865e6791af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341651"
 ---
 # <a name="service-bus-messaging-exceptions"></a>服務匯流排傳訊例外狀況
 本文列出 .NET Framework Api 所產生的 .NET 例外狀況。 
@@ -29,7 +17,7 @@ ms.locfileid: "82739342"
 
 1. 使用者程式碼撰寫錯誤（[ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)、 [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)、 [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)、 [system.web SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)）。 一般動作：請先嘗試修正此程式碼，再繼續執行。
 2. 安裝程式/設定錯誤（[microsoft.servicebus.messaging.messagingentitynotfoundexception](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception)、 [system.unauthorizedaccessexception](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)。 一般動作：檢閱您的組態並視需要進行變更。
-3. 暫時性的例外狀況（MessagingException， [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception)， [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)）.. （[microsoft](/dotnet/api/microsoft.servicebus.messaging.messagingexception)服務匯流排）。 一般動作：重試此操作或通知使用者。 客戶`RetryPolicy`端 SDK 中的類別可以設定為自動處理重試。 如需詳細資訊，請參閱[重試指引](/azure/architecture/best-practices/retry-service-specific#service-bus)。
+3. 暫時性的例外狀況（MessagingException， [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception)， [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)）.. （[microsoft](/dotnet/api/microsoft.servicebus.messaging.messagingexception)服務匯流排）。 一般動作：重試此操作或通知使用者。 `RetryPolicy`用戶端 SDK 中的類別可以設定為自動處理重試。 如需詳細資訊，請參閱[重試指引](/azure/architecture/best-practices/retry-service-specific#service-bus)。
 4. 其他例外狀況 ([System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)、[System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx)、[Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)、[Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception))。 一般動作：例外狀況類型特有;請參閱下一節中的表格： 
 
 ## <a name="exception-types"></a>例外狀況類型
@@ -149,7 +137,7 @@ ConnectionsQuotaExceeded for namespace xxx.
 
 ### <a name="resolution"></a>解決方案
 
-**SocketException**錯誤指出裝載應用程式的 VM 無法將名稱`<mynamespace>.servicebus.windows.net`轉換成對應的 IP 位址。 
+**SocketException**錯誤指出裝載應用程式的 VM 無法將名稱轉換 `<mynamespace>.servicebus.windows.net` 成對應的 IP 位址。 
 
 檢查下列命令是否成功對應到 IP 位址。
 

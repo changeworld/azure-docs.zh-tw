@@ -8,17 +8,16 @@ manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759748124893a8f906a4bc336f835546202b0b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d5b35815e42b6c9fa5cbd874c0a58f5285c99539
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049484"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355908"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>針對 Azure Active Directory 無縫單一登入進行疑難排解
 
@@ -35,7 +34,7 @@ ms.locfileid: "80049484"
 - iOS 和 Android 上的行動瀏覽器無法使用無縫 SSO。
 - 如果使用者是 Active Directory 中過多群組的成員之一，該使用者的 Kerberos 票證可能會太大而無法處理，並且會導致無縫式 SSO 失敗。 Azure AD HTTPS 要求可以有大小上限為 50 KB 的標頭；Kerberos 票證必須小於該限制，才能容納其他 Azure AD 成品 (通常是 2 - 5 KB)，例如 Cookie。 建議您降低使用者的群組成員資格，然後再試一次。
 - 如果您正在同步處理 30 個或更多的 Active Directory 樹系，便無法透過 Azure AD Connect 啟用無縫 SSO。 您可以在租用戶上[手動啟用](#manual-reset-of-the-feature)此功能，以解決這個問題。
-- 將 Azure AD 服務 URL （`https://autologon.microsoftazuread-sso.com`）新增至信任的網站區域，而不是近端內部網路區域，會*封鎖使用者登入*。
+- 將 Azure AD 服務 URL （ `https://autologon.microsoftazuread-sso.com` ）新增至信任的網站區域，而不是近端內部網路區域，會*封鎖使用者登入*。
 - 無縫 SSO 支援適用于 Kerberos 的 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5 加密類型。 建議將 AzureADSSOAcc $ 帳戶的加密類型設定為 AES256_HMAC_SHA1，或其中一個 AES 類型與 RC4，以提高安全性。 加密類型會儲存在 Active Directory 中帳戶的 Msds-supportedencryptiontypes 屬性上。  如果 [AzureADSSOAcc $ 帳戶加密類型] 設定為 [RC4_HMAC_MD5]，而您想要將它變更為其中一個 AES 加密類型，請務必先變換 AzureADSSOAcc $ 帳戶的 Kerberos 解密金鑰，如相關問題的[常見問題檔](how-to-connect-sso-faq.md)中所述，否則不會發生無縫 SSO。
 
 ## <a name="check-status-of-feature"></a>檢查功能的狀態
@@ -54,9 +53,9 @@ ms.locfileid: "80049484"
 
 ![Azure Active Directory 管理中心：登入報告](./media/tshoot-connect-sso/sso9.png)
 
-流覽至[Azure Active Directory 系統管理中心](https://aad.portal.azure.com/)內的**Azure Active Directory** > 登**入**，然後選取特定使用者的登入活動。 尋找 [登入錯誤碼]**** 欄位。 使用下表，將該欄位的值對應至失敗原因和解決方式：
+流覽至**Azure Active Directory**  >  [Azure Active Directory 系統管理中心](https://aad.portal.azure.com/)內的 Azure Active Directory 登**入**，然後選取特定使用者的登入活動。 尋找 [登入錯誤碼]**** 欄位。 使用下表，將該欄位的值對應至失敗原因和解決方式：
 
-|登入錯誤碼|登入失敗原因|解決方法
+|登入錯誤碼|登入失敗原因|解決方案
 | --- | --- | ---
 | 81001 | 使用者的 Kerberos 票證太大。 | 降低使用者的群組成員資格，並再試一次。
 | 81002 | 無法驗證使用者的 Kerberos 票證。 | 請參閱[為檢查清單疑難排解](#troubleshooting-checklist)。
@@ -75,7 +74,7 @@ ms.locfileid: "80049484"
 
 - 請務必在 Azure AD Connect 上已啟用無縫 SSO 功能。 如果您無法啟用此功能 (例如，因為連接埠已封鎖)，請確定您已完成所有[必要條件](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)。
 - 如果您已在租用戶上同時啟用 [Azure AD 聯結](../active-directory-azureadjoin-overview.md)和「無縫 SSO」，請確定問題不是出在「Azure AD 聯結」上。 如果裝置既已向 Azure AD 註冊也加入網域，則來自「Azure AD 聯結」的 SSO 優先順序會高於「無縫 SSO」。 使用來自「Azure AD 聯結」的 SSO 時，使用者會看到指出「已連線到 Windows」的登入圖格。
-- 確定 Azure AD URL （`https://autologon.microsoftazuread-sso.com`）是使用者內部網路區域設定的一部分。
+- 確定 Azure AD URL （ `https://autologon.microsoftazuread-sso.com` ）是使用者內部網路區域設定的一部分。
 - 確定公司裝置已加入 Active Directory 網域。 裝置「不」__ 需要[加入 Azure AD](../active-directory-azureadjoin-overview.md)，無縫 SSO 就可運作。
 - 確定使用者已透過 Active Directory 網域帳戶登入裝置。
 - 確定使用者帳戶是來自已設定無縫 SSO 的 Active Directory 樹系。
@@ -120,10 +119,10 @@ ms.locfileid: "80049484"
 1. 呼叫 `$creds = Get-Credential`。 出現提示時，輸入預定 Active Directory 樹系的網域管理員認證。
 
    > [!NOTE]
-   >必須以 SAM 帳戶名稱格式（contoso\johndoe 或 contoso. com\johndoe）輸入網域系統管理員認證的使用者名稱。 我們使用使用者名稱的網域部分，透過 DNS 找出網域系統管理員的網域控制站。
+   >必須以 SAM 帳戶名稱格式 (contoso\johndoe 或 contoso.com\johndoe) 輸入網域系統管理員認證使用者名稱。 我們會利用使用者名稱的網域部分，使用 DNS 來尋找網域系統管理員的網域控制站。
 
    >[!NOTE]
-   >使用的網域系統管理員帳戶不得為 Protected Users 群組的成員。 若是如此，作業將會失敗。
+   >使用的網域系統管理員帳戶不得為「受保護的使用者」群組的成員。 若是如此，作業會失敗。
 
 2. 呼叫 `Disable-AzureADSSOForest -OnPremCredentials $creds`。 此命令會從此特定 Active Directory 樹系的內部部署網域控制站中移除 `AZUREADSSOACC` 電腦帳戶。
 3. 您已設定此功能的每個 Active Directory 樹系，均重複上述步驟。
@@ -133,10 +132,10 @@ ms.locfileid: "80049484"
 1. 呼叫 `Enable-AzureADSSOForest`。 出現提示時，輸入預定 Active Directory 樹系的網域管理員認證。
 
    > [!NOTE]
-   >必須以 SAM 帳戶名稱格式（contoso\johndoe 或 contoso. com\johndoe）輸入網域系統管理員認證的使用者名稱。 我們使用使用者名稱的網域部分，透過 DNS 找出網域系統管理員的網域控制站。
+   >必須以 SAM 帳戶名稱格式 (contoso\johndoe 或 contoso.com\johndoe) 輸入網域系統管理員認證使用者名稱。 我們會利用使用者名稱的網域部分，使用 DNS 來尋找網域系統管理員的網域控制站。
 
    >[!NOTE]
-   >使用的網域系統管理員帳戶不得為 Protected Users 群組的成員。 若是如此，作業將會失敗。
+   >使用的網域系統管理員帳戶不得為「受保護的使用者」群組的成員。 若是如此，作業會失敗。
 
 2. 已設定此功能的每個 Active Directory 樹系，均重複上述步驟。
 

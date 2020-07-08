@@ -2,15 +2,14 @@
 title: 使用 Azure Kubernetes Service (AKS) 中的可用性區域
 description: 了解如何建立在 Azure Kubernetes Service (AKS) 中的可用性區域之間散發節點的叢集
 services: container-service
-ms.custom: fasttrack-edit
+ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 35aaad31728f4a0cd73913ecf397d8123b3f909a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 06507c75d486717a77676154818f2032b7e8c807
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195557"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>建立使用可用性區域的 Azure Kubernetes Service (AKS) 叢集
 
@@ -48,7 +47,7 @@ Azure Kubernetes Service (AKS) 叢集會在基本 Azure 基礎結構的邏輯區
 
 ### <a name="azure-disks-limitations"></a>Azure 磁碟限制
 
-使用 Azure 受控磁碟的磁碟區目前並非區域備援資源。 磁碟區無法跨區域連結，而且磁碟區共置的區域必須與裝載有目標 Pod 的指定節點相同。
+使用 Azure 受控磁碟的磁碟區目前並非區域備援資源。 磁片區無法跨區域連接，而且必須共置於與主控目標 pod 的指定節點相同的區域中。
 
 如果必須執行具狀態的工作負載，請使用 Pod 規格中的節點集區污點和容差，將 Pod 排程分類到與磁碟相同的區域中。 或者，使用以網路為基礎的儲存空間 (例如 Azure 檔案儲存體)，以在區域之間排程 Pod 時連結至 Pod。
 

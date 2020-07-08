@@ -4,19 +4,18 @@ description: 將使用 ESR 在 Windows 10 中進行漫遊或備份的設定
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: troubleshooting
+ms.topic: reference
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7abc402f1fc2e449e7aac5effdb01b6b941100
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252962"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 漫遊設定參考
 
@@ -26,11 +25,11 @@ ms.locfileid: "78672618"
 
 請參閱下表以取得 Windows 10 中同步處理、備份及還原架構支援的裝置和帳戶類型的摘要。
 
-| 帳戶類型和作業 | 桌面 | 行動 |
+| 帳戶類型和作業 | 桌上型 | 行動 |
 | --- | --- | --- |
 | Azure Active Directory：同步處理 |是 |否 |
 | Azure Active Directory：備份/還原 |否 |否 |
-| Microsoft 帳戶：同步處理 |是 |是 |
+| Microsoft 帳戶：同步處理 |Yes |Yes |
 | Microsoft 帳戶：備份/還原 |否 |是 |
 
 ## <a name="what-is-backup"></a>什麼是備份？
@@ -69,7 +68,7 @@ ms.locfileid: "78672618"
 [設定群組] 資料行中的 [內部] 項目是指只能從應用程式本身的同步處理停用，或藉由使用行動裝置管理 (MDM) 或群組原則設定停用的設定和應用程式。
 不會漫遊的設定或同步處理不屬於一個群組。
 
-| 設定 | 桌面 | 行動 | 群組 |
+| 設定 | 桌上型 | 行動 | 群組 |
 | --- | --- | --- | --- |
 | **帳戶**：帳戶圖片 |sync |X |佈景主題 |
 | **帳戶**：其他帳戶設定 |X |X | |
@@ -78,7 +77,7 @@ ms.locfileid: "78672618"
 | **應用程式清單**：已安裝應用程式的清單 |X |備份 (backup) |其他 |
 | **藍牙**：所有藍牙設定 |X |X | |
 | **命令提示字元**：命令提示字元「預設值」設定 |sync |X |internal |
-| **認證**：認證保險箱 |sync |sync |password |
+| **認證**：認證保險箱 |sync |sync |密碼 |
 | **日期、時間和區域**：自動時間 (網際網路時間同步處理) |sync |sync |語言 |
 | **日期、時間和區域**：24 小時制時鐘 |sync |X |語言 |
 | **日期、時間和區域**：日期和時間 |sync |X |語言 |
@@ -125,27 +124,27 @@ ms.locfileid: "78672618"
 | **鍵盤**：開啟相黏鍵 (預設為關閉) |sync |X |輕鬆存取 |
 | **鍵盤**：開啟篩選鍵 (預設為關閉) |sync |X |輕鬆存取 |
 | **鍵盤**：開啟切換鍵 (預設為關閉) |sync |X |輕鬆存取 |
-| **Internet Explorer**：網域語言：中文 (CHS) QWERTY - 啟用自我學習 |sync |X |Language |
-| **語言**：CHS QWERTY - 啟用動態候選項目排名 |sync |X |Language |
-| **語言**：CHS QWERTY - 字元集簡體中文 |sync |X |Language |
-| **語言**：CHS QWERTY - 字元集繁體中文 |sync |X |Language |
-| **語言**：CHS QWERTY - 模糊拼音 |sync |備份 (backup) |Language |
-| **語言**：CHS QWERTY - 模糊配對 |sync |備份 (backup) |Language |
-| **語言**：CHS QWERTY - 完整拼音 |sync |X |Language |
-| **語言**：CHS QWERTY - 雙拼音 |sync |X |Language |
-| **語言**：CHS QWERTY - 閱讀自動更正 |sync |X |Language |
-| **語言**：CHS QWERTY - C/E 切換鍵，shift 鍵 |sync |X |Language |
-| **語言**：CHS QWERTY - C/E 切換鍵，Ctrl 鍵 |sync |X |Language |
-| **語言**：CHS WUBI - 單一字元輸入模式 |sync |X |Language |
-| **語言**：CHS WUBI - 顯示候選項目的剩餘編碼 |sync |X |Language |
-| **語言**：CHS WUBI - 4-coding 無效時發出嗶聲 |sync |X |Language |
-| **語言**：CHT 注音符號 - 包括 CJK Ext-A |sync |X |Language |
-| **語言**：日文輸入法 - 預測輸入和自訂文字 |sync |sync |Language |
-| **語言**：韓文 (KOR) 輸入法 |X |X |Language |
-| **語言**：手寫辨識 |X |X |Language |
-| **語言**：語言設定檔 |sync |備份 (backup) |Language |
-| **語言**：拼字檢查 - 自動校正和反白顯示拼字錯誤 |sync |備份 (backup) |Language |
-| **語言**：鍵盤的清單 |sync |備份 (backup) |Language |
+| **Internet Explorer**：網域語言：中文 (CHS) QWERTY - 啟用自我學習 |sync |X |語言 |
+| **語言**：CHS QWERTY - 啟用動態候選項目排名 |sync |X |語言 |
+| **語言**：CHS QWERTY - 字元集簡體中文 |sync |X |語言 |
+| **語言**：CHS QWERTY - 字元集繁體中文 |sync |X |語言 |
+| **語言**：CHS QWERTY - 模糊拼音 |sync |備份 (backup) |語言 |
+| **語言**：CHS QWERTY - 模糊配對 |sync |備份 (backup) |語言 |
+| **語言**：CHS QWERTY - 完整拼音 |sync |X |語言 |
+| **語言**：CHS QWERTY - 雙拼音 |sync |X |語言 |
+| **語言**：CHS QWERTY - 閱讀自動更正 |sync |X |語言 |
+| **語言**：CHS QWERTY - C/E 切換鍵，shift 鍵 |sync |X |語言 |
+| **語言**：CHS QWERTY - C/E 切換鍵，Ctrl 鍵 |sync |X |語言 |
+| **語言**：CHS WUBI - 單一字元輸入模式 |sync |X |語言 |
+| **語言**：CHS WUBI - 顯示候選項目的剩餘編碼 |sync |X |語言 |
+| **語言**：CHS WUBI - 4-coding 無效時發出嗶聲 |sync |X |語言 |
+| **語言**：CHT 注音符號 - 包括 CJK Ext-A |sync |X |語言 |
+| **語言**：日文輸入法 - 預測輸入和自訂文字 |sync |sync |語言 |
+| **語言**：韓文 (KOR) 輸入法 |X |X |語言 |
+| **語言**：手寫辨識 |X |X |語言 |
+| **語言**：語言設定檔 |sync |備份 (backup) |語言 |
+| **語言**：拼字檢查 - 自動校正和反白顯示拼字錯誤 |sync |備份 (backup) |語言 |
+| **語言**：鍵盤的清單 |sync |備份 (backup) |語言 |
 | **鎖定畫面**：所有鎖定畫面設定 |X |X | |
 | **放大鏡**：開啟或關閉 (主切換) |X |X |輕鬆存取 |
 | **放大鏡**：開啟或關閉反轉色彩 (預設為關閉) |sync |X |輕鬆存取 |
@@ -168,16 +167,16 @@ ms.locfileid: "78672618"
 | **輕鬆存取**：移除背景影像 (預設為關閉) |sync |X |輕鬆存取 |
 | **電源與睡眠**：所有設定 |X |X | |
 | **開始畫面個人化**：輔色 (僅限手機) |X |sync |佈景主題 |
-| **輸入**：拼字檢查字典 |sync |備份 (backup) |Language |
-| **輸入**：自動校正拼錯文字 |sync |備份 (backup) |Language |
-| **輸入**：醒目提示拼錯的單字 |sync |備份 (backup) |Language |
-| **輸入**：在我輸入時顯示文字建議 |sync |備份 (backup) |Language |
-| **輸入**：在我選擇文字建議後加上空格 |sync |備份 (backup) |Language |
-| **輸入**：在我點兩下空格鍵後加上句號 |sync |備份 (backup) |Language |
-| **輸入**：每個句子的第一個字母大寫 |sync |備份 (backup) |Language |
-| **輸入**：在我點兩下 Shift 鍵時全部使用大寫字母 |sync |備份 (backup) |Language |
-| **輸入**：在我輸入時播放按鍵音 |sync |備份 (backup) |Language |
-| **輸入**：觸控式鍵盤的個人化資料 |sync |備份 (backup) |Language |
+| **輸入**：拼字檢查字典 |sync |備份 (backup) |語言 |
+| **輸入**：自動校正拼錯文字 |sync |備份 (backup) |語言 |
+| **輸入**：醒目提示拼錯的單字 |sync |備份 (backup) |語言 |
+| **輸入**：在我輸入時顯示文字建議 |sync |備份 (backup) |語言 |
+| **輸入**：在我選擇文字建議後加上空格 |sync |備份 (backup) |語言 |
+| **輸入**：在我點兩下空格鍵後加上句號 |sync |備份 (backup) |語言 |
+| **輸入**：每個句子的第一個字母大寫 |sync |備份 (backup) |語言 |
+| **輸入**：在我點兩下 Shift 鍵時全部使用大寫字母 |sync |備份 (backup) |語言 |
+| **輸入**：在我輸入時播放按鍵音 |sync |備份 (backup) |語言 |
+| **輸入**：觸控式鍵盤的個人化資料 |sync |備份 (backup) |語言 |
 | **Wi-Fi**：Wi-Fi 設定檔 (僅限 WPA) |sync |sync |密碼 |
 
 ###### <a name="footnote-1"></a>註腳 1

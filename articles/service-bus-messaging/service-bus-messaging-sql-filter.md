@@ -1,25 +1,13 @@
 ---
 title: Azure 服務匯流排 SQLFilter 語法參考 | Microsoft Docs
 description: 本文提供有關 SQLFilter 文法的詳細資料。 SqlFilter 支援 SQL-92 標準的子集。
-services: service-bus-messaging
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: d5a8e165fcee23c5feecd5935983dd77d3ec6c30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759658"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341591"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 語法
 
@@ -60,7 +48,7 @@ ms.locfileid: "76759658"
   
 ## <a name="arguments"></a>引數  
   
--   `<scope>` 是表示 `<property_name>` 範圍的選擇性字串。 有效值為 `sys` 或 `user`。 `sys`值表示系統範圍，其中`<property_name>`是[BrokeredMessage 類別](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公用屬性名稱。 `user`表示使用者範圍， `<property_name>`其中是[BrokeredMessage 類別](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的索引鍵。 如果 `<scope>` 未指定，則 `user` 範圍是預設範圍。  
+-   `<scope>` 是表示 `<property_name>` 範圍的選擇性字串。 有效值為 `sys` 或 `user`。 `sys`值表示系統範圍，其中 `<property_name>` 是[BrokeredMessage 類別](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公用屬性名稱。 `user`表示使用者範圍，其中 `<property_name>` 是[BrokeredMessage 類別](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的索引鍵。 如果 `<scope>` 未指定，則 `user` 範圍是預設範圍。  
   
 ## <a name="remarks"></a>備註
 

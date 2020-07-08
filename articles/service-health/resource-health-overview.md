@@ -3,12 +3,11 @@ title: Azure 資源健康狀態概觀
 description: Azure 資源健康狀態的概觀
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80159246"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041569"
 ---
 # <a name="resource-health-overview"></a>資源健康狀態總覽
  
@@ -18,7 +17,7 @@ Azure 資源健康狀態可協助您診斷並取得影響 Azure 資源的服務�
 
 ## <a name="resource-definition-and-health-assessment"></a>資源定義和健康狀態評估
 
-*資源*是 Azure 服務的特定實例，例如虛擬機器、web 應用程式或 SQL database。 資源健康狀態會依賴來自不同 Azure 服務的信號來評估資源是否狀況良好。 如果資源健康狀態不佳，資源健康狀態會分析其他資訊來判斷問題的來源。 此外，它也會報告 Microsoft 為了修正問題而採取的動作，並識別您可以處理的動作。
+*資源*是 Azure 服務的特定實例，例如虛擬機器、web 應用程式或 SQL Database。 資源健康狀態會依賴來自不同 Azure 服務的信號來評估資源是否狀況良好。 如果資源健康狀態不佳，資源健康狀態會分析其他資訊來判斷問題的來源。 此外，它也會報告 Microsoft 為了修正問題而採取的動作，並識別您可以處理的動作。
 
 如需健康情況評估方式的詳細資訊，請參閱[Azure 資源健康狀態](resource-health-checks-resource-types.md)的資源類型和健康狀態檢查清單。
 

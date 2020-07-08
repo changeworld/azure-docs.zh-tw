@@ -7,19 +7,18 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36c7bb426a329a54f333b76e028b884204543014
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 0cd2de0929b22dda6e566316c4eda966d8d62e24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84732645"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>如何以系統管理員身分接管 Azure Active Directory 中非受控目錄
 
@@ -28,9 +27,9 @@ ms.locfileid: "82582986"
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>決定要如何接管非受控目錄
 在管理員接管的過程中，您可以依照[將自訂網域名稱新增到 Azure AD](../fundamentals/add-custom-domain.md) 中所述，證明擁有權。 下一節會更詳細地說明管理員體驗，但其摘要如下：
 
-* 當您執行非受控 Azure 目錄的[「內部」管理員接管](#internal-admin-takeover)時，系統會將您新增為非受控目錄的全域管理員。 系統不會將任何使用者、網域或服務方案移轉至您所管理的任何其他目錄。
+* 當您執行非受控 Azure 目錄的「[內部」管理員接管](#internal-admin-takeover)時，系統會將您新增為非受控目錄的全域管理員。 系統不會將任何使用者、網域或服務方案移轉至您所管理的其他目錄。
 
-* 當您執行非受控 Azure 目錄的[「外部」管理員接管](#external-admin-takeover)時，需將非受控目錄的 DNS 網域名稱新增至受控 Azure 目錄。 當您新增網域名稱時，系統會在受控 Azure 目錄中建立使用者與資源的對應，以便讓使用者繼續存取服務而不中斷。 
+* 當您執行非受控 Azure 目錄的「[外部」管理員接管](#external-admin-takeover)時，您會將非受控目錄的 DNS 功能變數名稱新增至受管理的 azure 目錄。 當您新增網域名稱時，系統會在受控 Azure 目錄中建立使用者與資源的對應，以便讓使用者繼續存取服務而不中斷。 
 
 ## <a name="internal-admin-takeover"></a>內部管理員接管
 
@@ -57,13 +56,13 @@ ms.locfileid: "82582986"
 ### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>在 Azure AD 中將功能變數名稱新增至受管理的組織
 
 1. 開啟[Microsoft 365 系統管理中心](https://admin.microsoft.com)。
-2. 選取 [**使用者**] 索引標籤，然後使用不使用自訂功能變數名稱的名稱（例如*使用者\@fourthcoffeexyz.onmicrosoft.com* ）建立新的使用者帳戶。 
+2. 選取 [**使用者**] 索引標籤，然後使用不使用自訂功能變數名稱的名稱（例如*使用者 \@ fourthcoffeexyz.onmicrosoft.com* ）建立新的使用者帳戶。 
 3. 請確定新的使用者帳戶具有 Azure AD 組織的全域系統管理員許可權。
 4. 在 Microsoft 365 系統管理中心中開啟 [**網域**] 索引標籤，選取功能變數名稱，然後選取 [**移除**]。 
   
    ![從 Office 365 移除網域名稱](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. 如果您在 Office 365 中有任何使用者或群組參考已移除的網域名稱，就必須將他們重新命名為 .onmicrosoft.com 網域。 如果您強制刪除功能變數名稱，則會自動將所有使用者重新命名為，在此範例中為*使用者\@fourthcoffeexyz.onmicrosoft.com*。
+5. 如果您在 Office 365 中有任何使用者或群組參考已移除的網域名稱，就必須將他們重新命名為 .onmicrosoft.com 網域。 如果您強制刪除功能變數名稱，則會自動將所有使用者重新命名為，在此範例中為*使用者 \@ fourthcoffeexyz.onmicrosoft.com*。
   
 6. 使用 Azure AD 組織的全域管理員帳戶登入[Azure AD 系統管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
   
@@ -72,7 +71,7 @@ ms.locfileid: "82582986"
    ![已將網域驗證為已新增至 Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> 在 Office 365 組織中指派授權的任何 Power BI 或 Azure Rights Management 服務使用者，如果移除該功能變數名稱，都必須儲存其儀表板。 他們必須使用使用者名稱（例如*使用者\@fourthcoffeexyz.onmicrosoft.com* ，而不是*使用者\@fourthcoffee*）來登入。
+> 在 Office 365 組織中指派授權的任何 Power BI 或 Azure Rights Management 服務使用者，如果移除該功能變數名稱，都必須儲存其儀表板。 他們必須使用使用者名稱（例如*使用者 \@ fourthcoffeexyz.onmicrosoft.com* ，而不是*使用者 \@ fourthcoffee*）來登入。
 
 ## <a name="external-admin-takeover"></a>外部管理員接管
 
@@ -113,7 +112,7 @@ ms.locfileid: "82582986"
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Azure AD 的 ForceTakeover 選項 PowerShell Cmdlet
 您可以在 [PowerShell 範例](#powershell-example)中看到使用這些 Cmdlet。
 
-Cmdlet | 使用狀況
+Cmdlet | 使用方式
 ------- | -------
 `connect-msolservice` | 出現提示時，登入您的受管理組織。
 `get-msoldomain` | 顯示與目前組織相關聯的功能變數名稱。

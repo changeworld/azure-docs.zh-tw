@@ -8,24 +8,23 @@ ms.author: trbye
 ms.reviewer: aashishb
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: f997aef59e91bed325b84af855a84f43cd639d83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 660cb14bd081dffbf3e9fb5f02b7690212915355
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77122840"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807480"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中使用 Azure AD 身分識別與您的機器學習 web 服務
 
-在此操作說明中，您將瞭解如何在 Azure Kubernetes Service 中將 Azure Active Directory （AAD）身分識別指派給已部署的機器學習模型。 [Aad Pod 身分識別](https://github.com/Azure/aad-pod-identity)專案可讓應用程式使用[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)和 Kubernetes 基本型別，透過 aad 安全地存取雲端資源。 這可讓您的 web 服務安全地存取您的 Azure 資源，而不需要直接在`score.py`腳本內內嵌認證或管理權杖。 本文說明在您的 Azure Kubernetes Service 叢集中建立和安裝 Azure 身分識別的步驟，並將身分識別指派給您已部署的 web 服務。
+在此操作說明中，您將瞭解如何在 Azure Kubernetes Service 中將 Azure Active Directory （AAD）身分識別指派給已部署的機器學習模型。 [Aad Pod 身分識別](https://github.com/Azure/aad-pod-identity)專案可讓應用程式使用[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)和 Kubernetes 基本型別，透過 aad 安全地存取雲端資源。 這可讓您的 web 服務安全地存取您的 Azure 資源，而不需要直接在腳本內內嵌認證或管理權杖 `score.py` 。 本文說明在您的 Azure Kubernetes Service 叢集中建立和安裝 Azure 身分識別的步驟，並將身分識別指派給您已部署的 web 服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - [Machine Learning 服務的 Azure CLI 擴充](reference-azure-machine-learning-cli.md)功能、[適用于 PYTHON 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)，或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組。
 
-- 使用`kubectl`命令存取您的 AKS 叢集。 如需詳細資訊，請參閱[連接到](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)叢集
+- 使用命令存取您的 AKS 叢集 `kubectl` 。 如需詳細資訊，請參閱[連接到](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)叢集
 
 - 部署到 AKS 叢集的 Azure Machine Learning web 服務。
 
@@ -94,7 +93,7 @@ spec:
   Selector: <label value to match>
 ```
 
-編輯部署以新增 Azure 身分識別選取器標籤。 前往底下的下一節`/spec/template/metadata/labels`。 您應該會看到像`isazuremlapp: “true”`這樣的值。 新增 aad-pod-身分識別標籤，如下所示。
+編輯部署以新增 Azure 身分識別選取器標籤。 前往底下的下一節 `/spec/template/metadata/labels` 。 您應該會看到像這樣的值 `isazuremlapp: “true”` 。 新增 aad-pod-身分識別標籤，如下所示。
 
 ```azurecli-interactive
     kubectl edit deployment/<name of deployment> -n azureml-<name of workspace>
@@ -105,7 +104,7 @@ spec:
   template:
     metadata:
       labels:
-      - aadpodidbinding: "<value of Selector in AzureIdentityBinding>"
+       aadpodidbinding: "<value of Selector in AzureIdentityBinding>"
       ...
 ```
 
@@ -129,11 +128,11 @@ Pod 啟動並執行之後，此部署的 web 服務現在將能夠透過您的 A
 
 ## <a name="use-azure-identity-with-your-machine-learning-web-service"></a>搭配您的 machine learning web 服務使用 Azure 身分識別
 
-將模型部署到您的 AKS 叢集。 `score.py`腳本可以包含指向 Azure 身分識別可存取之 azure 資源的作業。 請確定您已針對嘗試存取的資源，安裝必要的用戶端程式庫相依性。 以下是一些範例，說明如何使用您的 Azure 身分識別，從您的服務存取不同的 Azure 資源。
+將模型部署到您的 AKS 叢集。 `score.py`腳本可以包含指向 azure 身分識別可存取之 azure 資源的作業。 請確定您已針對嘗試存取的資源，安裝必要的用戶端程式庫相依性。 以下是一些範例，說明如何使用您的 Azure 身分識別，從您的服務存取不同的 Azure 資源。
 
 ### <a name="access-key-vault-from-your-web-service"></a>從您的 web 服務存取 Key Vault
 
-如果您已將 Azure 身分識別讀取權限提供給**Key Vault**內的秘密，您`score.py`可以使用下列程式碼來存取它。
+如果您已將 Azure 身分識別讀取權限提供給**Key Vault**內的秘密，您 `score.py` 可以使用下列程式碼來存取它。
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -153,7 +152,7 @@ secret = secret_client.get_secret(my_secret_name)
 
 ### <a name="access-blob-from-your-web-service"></a>從您的 web 服務存取 Blob
 
-如果您已將 Azure 身分識別存取權提供給**儲存體 Blob**內的資料， `score.py`您可以使用下列程式碼來存取它。
+如果您已將 Azure 身分識別存取權提供給**儲存體 Blob**內的資料，您 `score.py` 可以使用下列程式碼來存取它。
 
 ```python
 from azure.identity import DefaultAzureCredential

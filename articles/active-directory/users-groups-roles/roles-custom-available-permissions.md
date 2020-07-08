@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0c11723efe3fac236fce49c1f92fa338d4e58b59
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025155"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84732101"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory 中的應用程式註冊子類型和許可權
 
@@ -36,13 +35,13 @@ ms.locfileid: "74025155"
 
 有兩種許可權可以授與建立應用程式註冊的能力，每個都有不同的行為：
 
-#### <a name="microsoftdirectoryapplicationscreateasowner"></a>microsoft 目錄/應用程式/createAsOwner
+#### <a name="microsoftdirectoryapplicationscreateasowner"></a>microsoft.directory/applications/createAsOwner
 
 指派此許可權會導致建立者新增為所建立應用程式註冊的第一個擁有者，而所建立的應用程式註冊將計入建立者的250建立物件配額中。
 
-#### <a name="microsoftdirectoryapplicationscreate"></a>microsoft 目錄/應用程式/建立
+#### <a name="microsoftdirectoryapplicationscreate"></a>microsoft.directory/applications/create
 
-指派此許可權會導致建立者不會被新增為所建立應用程式註冊的第一個擁有者，而建立的應用程式註冊將不會算在建立者的250建立物件配額中。 請謹慎使用此許可權，因為在達到目錄層級配額之前，不會讓受託人建立應用程式註冊。 如果同時指派這兩個許可權，則會優先使用此許可權。
+指派此許可權會導致建立者不會被新增為所建立應用程式註冊的第一個擁有者，而建立的應用程式註冊將不會算在建立者的250建立物件配額中。 請謹慎使用此權限，因為在達到目錄層級配額之前，受託人將可不受限地建立應用程式註冊。 如果同時指派這兩種權限，將優先使用此權限。
 
 如果同時指派這兩個許可權，將會優先使用/create 許可權。 雖然/createAsOwner 許可權不會自動新增 creator 做為第一個擁有者，但在使用圖形 Api 或 PowerShell Cmdlet 時，可以在建立應用程式註冊期間指定擁有者。
 
@@ -52,7 +51,7 @@ ms.locfileid: "74025155"
 
 有兩個許可權可授與刪除應用程式註冊的能力：
 
-#### <a name="microsoftdirectoryapplicationsdelete"></a>microsoft 目錄/應用程式/刪除
+#### <a name="microsoftdirectoryapplicationsdelete"></a>microsoft.directory/applications/delete
 
 授與刪除應用程式註冊的能力，而不考慮子類型。也就是單一租使用者和多租使用者應用程式。
 
@@ -77,7 +76,7 @@ ms.locfileid: "74025155"
 
 授與的許可權與 microsoft 目錄/應用程式/allProperties/讀取相同，但僅適用于單一租使用者應用程式。
 
-#### <a name="microsoftdirectoryapplicationsownersread"></a>microsoft 目錄/應用程式/擁有者/讀取
+#### <a name="microsoftdirectoryapplicationsownersread"></a>microsoft.directory/applications/owners/read
 
 授與讀取單一租使用者和多租使用者應用程式上擁有者屬性的能力。 授與 [應用程式註冊擁有者] 頁面上所有欄位的存取權：
 
@@ -101,7 +100,7 @@ ms.locfileid: "74025155"
 
 授與與 microsoft 目錄/應用程式/allProperties/更新相同的許可權，但僅適用于單一租使用者應用程式。
 
-#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft 目錄/應用程式/物件/更新
+#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft.directory/applications/audience/update
 
 能夠在單一目錄和多目錄應用程式上更新支援的帳戶類型（signInAudience）屬性。
 
@@ -111,7 +110,7 @@ ms.locfileid: "74025155"
 
 授與 microsoft 目錄/應用程式/物件/更新的相同許可權，但僅適用于單一租使用者應用程式。
 
-#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>microsoft 目錄/應用程式/驗證/更新
+#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>microsoft.directory/applications/authentication/update
 
 能夠在單一租使用者和多租使用者應用程式上更新回復 URL、登出 URL、隱含流程和發行者網域屬性。 除了支援的帳戶類型以外，授與應用程式註冊驗證頁面上所有欄位的存取權：
 
@@ -121,7 +120,7 @@ ms.locfileid: "74025155"
 
 授與的許可權與 microsoft 目錄/應用程式/驗證/更新相同，但僅適用于單一租使用者應用程式。
 
-#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>microsoft 目錄/應用程式/基本/更新
+#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>microsoft.directory/applications/basic/update
 
 能夠在單一租使用者和多租使用者應用程式上更新名稱、標誌、首頁 URL、服務條款 URL 及隱私權聲明 URL 屬性。 授與應用程式注冊商標頁面上所有欄位的存取權：
 
@@ -131,7 +130,7 @@ ms.locfileid: "74025155"
 
 授與的許可權與 microsoft 目錄/應用程式/基本/更新相同，但僅適用于單一租使用者應用程式。
 
-#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>microsoft 目錄/應用程式/認證/更新
+#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>microsoft.directory/applications/credentials/update
 
 能夠在單一租使用者和多租使用者應用程式上更新憑證和用戶端秘密屬性。 授與應用程式註冊憑證 & 秘密頁面上所有欄位的存取權：
 
@@ -141,7 +140,7 @@ ms.locfileid: "74025155"
 
 會授與 microsoft 目錄/應用程式/認證/更新相同的許可權，但僅適用于單一目錄應用程式。
 
-#### <a name="microsoftdirectoryapplicationsownersupdate"></a>microsoft 目錄/應用程式/擁有者/更新
+#### <a name="microsoftdirectoryapplicationsownersupdate"></a>microsoft.directory/applications/owners/update
 
 能夠在單一租使用者和多租使用者上更新擁有者屬性。 授與 [應用程式註冊擁有者] 頁面上所有欄位的存取權：
 
@@ -151,7 +150,7 @@ ms.locfileid: "74025155"
 
 授與的許可權與 microsoft 目錄/應用程式/擁有者/更新相同，但僅適用于單一租使用者應用程式。
 
-#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>microsoft 目錄/應用程式/許可權/更新
+#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>microsoft.directory/applications/permissions/update
 
 能夠更新委派的許可權、應用程式許可權、授權的用戶端應用程式、所需的許可權，以及授與單一租使用者和多租使用者應用程式的同意屬性。 並未授與執行同意的能力。 授與應用程式註冊 API 許可權上所有欄位的存取權，並公開 API 頁面：
 
@@ -163,11 +162,11 @@ ms.locfileid: "74025155"
 
 授與 microsoft 目錄/應用程式/許可權/更新的相同許可權，但僅適用于單一租使用者應用程式。
 
-## <a name="required-license-plan"></a>必要的授權方案
+## <a name="required-license-plan"></a>必要授權方案
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
 - 使用[Azure 入口網站、Azure AD PowerShell 和圖形 API](roles-create-custom.md)來建立自訂角色
-- [查看自訂角色的指派](roles-view-assignments.md)
+- [檢視自訂角色的指派](roles-view-assignments.md)

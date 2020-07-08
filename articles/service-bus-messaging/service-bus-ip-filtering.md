@@ -1,22 +1,13 @@
 ---
 title: 設定 Azure 服務匯流排的 IP 防火牆規則
 description: 如何使用「防火牆規則」允許從特定 IP 位址連線至「Azure 服務匯流排」。
-services: service-bus
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus
-ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2020
-ms.author: aschhab
-ms.openlocfilehash: fdd3540248c5210e2f6fc47f439641c007a793d8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 06/23/2020
+ms.openlocfilehash: a5ae491f82e73c5364788dff8b531e81d17ebb68
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647814"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341449"
 ---
 # <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>設定 Azure 服務匯流排的 IP 防火牆規則
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取服務匯流排命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。

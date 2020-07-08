@@ -8,18 +8,17 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: db6b38f142254fa1812f34674e6a870629713d7e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 46aea9ab113a0c75ed24497ee39793d08c4f7165
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735652"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790886"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 新增或移除 Azure 角色指派
 
@@ -27,7 +26,7 @@ ms.locfileid: "82735652"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要新增或移除角色指派，您必須具有：
 
@@ -36,9 +35,9 @@ ms.locfileid: "82735652"
 
 ## <a name="get-object-ids"></a>取得物件識別碼
 
-若要新增或移除角色指派，您可能需要指定物件的唯一識別碼。 識別碼的格式為： `11111111-1111-1111-1111-111111111111`。 您可以使用 Azure 入口網站或 Azure PowerShell 取得識別碼。
+若要新增或移除角色指派，您可能需要指定物件的唯一識別碼。 識別碼的格式如下：`11111111-1111-1111-1111-111111111111`。 您可以使用 Azure 入口網站或 Azure PowerShell 取得識別碼。
 
-### <a name="user"></a>User
+### <a name="user"></a>使用者
 
 若要取得 Azure AD 使用者的物件識別碼，您可以使用[AzADUser](/powershell/module/az.resources/get-azaduser)。
 
@@ -56,9 +55,9 @@ Get-AzADGroup -SearchString <group_name_in_quotes>
 (Get-AzADGroup -DisplayName <group_name_in_quotes>).id
 ```
 
-### <a name="application"></a>應用程式
+### <a name="application"></a>Application
 
-若要取得 Azure AD 服務主體（應用程式所使用的身分識別）的物件識別碼，您可以使用[new-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal)。 針對服務主體，請使用物件識別碼，而**不**是應用程式識別碼。
+若要取得 Azure AD 服務主體（應用程式所使用的身分識別）的物件識別碼，您可以使用[new-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal)。 對於服務主體，請使用物件識別碼，而**不是**應用程式識別碼。
 
 ```azurepowershell
 Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
@@ -112,7 +111,7 @@ CanDelegate        : False
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍中的*\@alain example.com* user。 若要取得唯一的角色識別碼，您可以使用[get-azroledefinition](/powershell/module/az.resources/get-azroledefinition)或查看[Azure 內建角色](built-in-roles.md)。
+下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍中的*alain \@ example.com* user。 若要取得唯一的角色識別碼，您可以使用[get-azroledefinition](/powershell/module/az.resources/get-azroledefinition)或查看[Azure 內建角色](built-in-roles.md)。
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -207,7 +206,7 @@ CanDelegate        : False
 
 在 Azure RBAC 中，若要移除存取權，您可以使用[new-azroleassignment](/powershell/module/az.resources/remove-azroleassignment)移除角色指派。
 
-下列範例會從*醫藥-sales*資源群組上的*\@Alain Example.com*使用者移除「*虛擬機器參與者*」角色指派：
+下列範例會從*醫藥-sales*資源群組上的*alain \@ Example.com*使用者移除「*虛擬機器參與者*」角色指派：
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
@@ -225,7 +224,7 @@ Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -S
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-如果您收到錯誤訊息：「提供的資訊未對應至角色指派」，請確定您也指定了`-Scope`或`-ResourceGroupName`參數。 如需詳細資訊，請參閱針對[AZURE RBAC 進行疑難排解](troubleshooting.md#role-assignments-with-identity-not-found)。
+如果您收到錯誤訊息：「提供的資訊未對應至角色指派」，請確定您也指定了 `-Scope` 或 `-ResourceGroupName` 參數。 如需詳細資訊，請參閱針對[AZURE RBAC 進行疑難排解](troubleshooting.md#role-assignments-with-identity-not-found)。
 
 ## <a name="next-steps"></a>後續步驟
 

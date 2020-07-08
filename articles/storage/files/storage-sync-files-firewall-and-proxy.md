@@ -3,21 +3,22 @@ title: Azure 檔案同步內部部署防火牆和 Proxy 設定 | Microsoft Docs
 description: Azure 檔案同步內部部署網路組態
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a5fc469c3db7da45f818230909026cedf6c71a4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7410e30c892eb083f9ed71b1d9ce379ae9a036b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515290"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 檔案同步 Proxy 和防火牆設定
 Azure 檔案同步會將您的內部部署伺服器連線到 Azure 檔案服務，以啟用多網站同步處理和雲端層功能。 因此，內部部署伺服器必須連線到網際網路。 IT 系統管理員必須決定進入 Azure 雲端服務之伺服器的最佳路徑。
 
 這篇文章會提供特定需求的深入解析，以及可以將伺服器成功且安全地連線到 Azure 檔案同步的選項。
+
+閱讀本操作說明指南之前，建議您先閱讀 [Azure 檔案同步網路功能考量](storage-sync-files-networking-overview.md)。
 
 ## <a name="overview"></a>總覽
 Azure 檔案同步會作為 Windows Server、Azure 檔案共用和其他數個 Azure 服務之間的協調流程服務，以便如您的同步群組中所述同步處理資料。 為了讓 Azure 檔案同步正常運作，您必須將伺服器設定為與下列 Azure 服務通訊：
@@ -42,14 +43,14 @@ Azure 檔案同步會運用任何可用的方法來允許連線到 Azure，自�
 ## <a name="proxy"></a>Proxy
 Azure 檔案同步支援應用程式特定和整部電腦的 Proxy 設定。
 
-**應用程式特定的 Proxy 設定**可特別針對 Azure 檔案同步流量允許 Proxy 的組態。 代理程式 4.0.1.0 版或更新版本支援應用程式特定的 Proxy 設定，而且可在代理程式安裝期間進行設定，或使用 Set-StorageSyncProxyConfiguration PowerShell Cmdlet 來設定。
+**應用程式特定的 proxy 設定**可讓您特別針對 Azure 檔案同步流量設定 proxy。 代理程式 4.0.1.0 版或更新版本支援應用程式特定的 Proxy 設定，而且可在代理程式安裝期間進行設定，或使用 Set-StorageSyncProxyConfiguration PowerShell Cmdlet 來設定。
 
 以下 PowerShell 命令可用來設定應用程式特定的 Proxy 設定：
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
-**整部電腦的 Proxy 設定**對於 Azure 檔案同步代理程式而言是透明的，因為伺服器的整個流量都會透過 Proxy 路由傳送。
+整個**電腦的 proxy 設定**對於 Azure 檔案同步代理程式而言是透明的，因為伺服器的整個流量都會透過 proxy 路由傳送。
 
 若要設定整部電腦的 Proxy 設定，請遵循下列步驟： 
 
@@ -89,7 +90,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 下表描述通訊所需的網域：
 
-| Service | 公用雲端端點 | Azure Government 端點 | 使用方式 |
+| 服務 | 公用雲端端點 | Azure Government 端點 | 使用方式 |
 |---------|----------------|---------------|------------------------------|
 | **Azure Resource Manager** | `https://management.azure.com` | https://management.usgovcloudapi.net | 任何使用者呼叫 (例如 PowerShell) 都會通過這個 URL，包括初始伺服器註冊呼叫。 |
 | **Azure Active Directory** | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Azure Resource Manager 呼叫必須由已驗證的使用者進行。 為了獲致成功，此 URL 用於進行使用者驗證。 |
@@ -100,41 +101,42 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | 一旦安裝了 Azure 檔案同步代理程式，系統就會使用 PKI URL 來下載與 Azure 檔案同步服務和 Azure 檔案共用通訊時所需的中繼憑證。 OCSP URL 是用來檢查憑證的狀態。 |
 
 > [!Important]
+> 允許 afs.azure.net 流量時 &ast; ，流量只可供同步處理服務使用。 沒有其他使用此網域的 Microsoft 服務。
 > 當允許前往 &ast;.one.microsoft.com 的流量時，伺服器可能會有前往同步服務以外的流量。 子網域底下有許多 Microsoft 服務可用。
 
-如果 &ast;.one.microsoft.com 太廣泛，您可只允許對 Azure 檔案同步服務的明確區域執行個體進行通訊，藉此限制伺服器的通訊。 要選擇哪個執行個體，取決於您將伺服器部署及註冊到哪個儲存體同步服務區域。 在下表中，該區域稱為「主要端點 URL」。
+如果 &ast; . afs.azure.net 或 &ast; . one.microsoft.com 太廣泛，您可以只允許與 Azure 檔案儲存體同步服務的明確區域實例通訊，藉此限制伺服器的通訊。 要選擇哪個執行個體，取決於您將伺服器部署及註冊到哪個儲存體同步服務區域。 在下表中，該區域稱為「主要端點 URL」。
 
 基於商務持續性和災害復原 (BCDR) 的理由，您可能已在異地備援 (GRS) 儲存體帳戶中指定 Azure 檔案共用。 如果情況確實如此，則在發生持久的區域中斷時，Azure 檔案共用會容錯移轉至配對的區域。 Azure 檔案同步會使用相同的區域配對作為儲存體。 因此，如果您使用 GRS 儲存體帳戶，您必須啟用其他 Url，讓您的伺服器可以與配對的區域交談，以進行 Azure 檔案同步。下表會呼叫這個「配對區域」。 此外，也必須啟用流量管理員設定檔 URL。 這可確保在發生容錯移轉時，網路流量會順暢地重新路由傳送至配對的區域，這個行為在下表中稱為「探索 URL」。
 
-| 雲端  | 區域 | 主要端點 URL | 配對的區域 | 探索 URL |
+| Cloud  | 區域 | 主要端點 URL | 配對的區域 | 探索 URL |
 |--------|--------|----------------------|---------------|---------------|
-| 公用 |澳大利亞東部 | HTTPs：\//kailani-aue.one.microsoft.com | 澳大利亞東南部 | HTTPs：\//tm-kailani-aue.one.microsoft.com |
-| 公用 |澳大利亞東南部 | HTTPs：\//kailani-aus.one.microsoft.com | 澳大利亞東部 | HTTPs：\//tm-kailani-aus.one.microsoft.com |
-| 公用 | 巴西南部 | HTTPs：\//brazilsouth01.afs.azure.net | 美國中南部 | HTTPs：\//tm-brazilsouth01.afs.azure.net |
-| 公用 | 加拿大中部 | HTTPs：\//kailani-cac.one.microsoft.com | 加拿大東部 | HTTPs：\//tm-kailani-cac.one.microsoft.com |
-| 公用 | 加拿大東部 | HTTPs：\//kailani-cae.one.microsoft.com | 加拿大中部 | HTTPs：\//tm-kailani.cae.one.microsoft.com |
-| 公用 | 印度中部 | HTTPs：\//kailani-cin.one.microsoft.com | 印度南部 | HTTPs：\//tm-kailani-cin.one.microsoft.com |
-| 公用 | 美國中部 | HTTPs：\//kailani-cus.one.microsoft.com | 美國東部 2 | HTTPs：\//tm-kailani-cus.one.microsoft.com |
-| 公用 | 東亞 | HTTPs：\//kailani11.one.microsoft.com | 東南亞 | HTTPs：\//tm-kailani11.one.microsoft.com |
-| 公用 | 美國東部 | HTTPs：\//kailani1.one.microsoft.com | 美國西部 | HTTPs：\//tm-kailani1.one.microsoft.com |
-| 公用 | 美國東部 2 | HTTPs：\//kailani-ess.one.microsoft.com | 美國中部 | HTTPs：\//tm-kailani-ess.one.microsoft.com |
-| 公用 | 日本東部 | HTTPs：\//japaneast01.afs.azure.net | 日本西部 | HTTPs：\//tm-japaneast01.afs.azure.net |
-| 公用 | 日本西部 | HTTPs：\//japanwest01.afs.azure.net | 日本東部 | HTTPs：\//tm-japanwest01.afs.azure.net |
-| 公用 | 南韓中部 | HTTPs：\//koreacentral01.afs.azure.net/ | 南韓南部 | HTTPs：\//tm-koreacentral01.afs.azure.net/ |
-| 公用 | 南韓南部 | HTTPs：\//koreasouth01.afs.azure.net/ | 南韓中部 | HTTPs：\//tm-koreasouth01.afs.azure.net/ |
-| 公用 | 美國中北部 | HTTPs：\//northcentralus01.afs.azure.net | 美國中南部 | HTTPs：\//tm-northcentralus01.afs.azure.net |
-| 公用 | 北歐 | HTTPs：\//kailani7.one.microsoft.com | 西歐 | HTTPs：\//tm-kailani7.one.microsoft.com |
-| 公用 | 美國中南部 | HTTPs：\//southcentralus01.afs.azure.net | 美國中北部 | HTTPs：\//tm-southcentralus01.afs.azure.net |
-| 公用 | 印度南部 | HTTPs：\//kailani-sin.one.microsoft.com | 印度中部 | HTTPs：\//tm-kailani-sin.one.microsoft.com |
-| 公用 | 東南亞 | HTTPs：\//kailani10.one.microsoft.com | 東亞 | HTTPs：\//tm-kailani10.one.microsoft.com |
-| 公用 | 英國南部 | HTTPs：\//kailani-uks.one.microsoft.com | 英國西部 | HTTPs：\//tm-kailani-uks.one.microsoft.com |
-| 公用 | 英國西部 | HTTPs：\//kailani-ukw.one.microsoft.com | 英國南部 | HTTPs：\//tm-kailani-ukw.one.microsoft.com |
-| 公用 | 美國中西部 | HTTPs：\//westcentralus01.afs.azure.net | 美國西部 2 | HTTPs：\//tm-westcentralus01.afs.azure.net |
-| 公用 | 西歐 | HTTPs：\//kailani6.one.microsoft.com | 北歐 | HTTPs：\//tm-kailani6.one.microsoft.com |
-| 公用 | 美國西部 | HTTPs：\//kailani.one.microsoft.com | 美國東部 | HTTPs：\//tm-kailani.one.microsoft.com |
-| 公用 | 美國西部 2 | HTTPs：\//westus201.afs.azure.net | 美國中西部 | HTTPs：\//tm-westus201.afs.azure.net |
-| 政府 | US Gov 亞利桑那州 | HTTPs：\//usgovarizona01.afs.azure.us | US Gov 德克薩斯州 | HTTPs：\//tm-usgovarizona01.afs.azure.us |
-| 政府 | US Gov 德克薩斯州 | HTTPs：\//usgovtexas01.afs.azure.us | US Gov 亞利桑那州 | HTTPs：\//tm-usgovtexas01.afs.azure.us |
+| 公用 |澳大利亞東部 | HTTPs： \/ /australiaeast01.afs.azure.net<br>HTTPs： \/ /kailani-aue.one.microsoft.com | 澳大利亞東南部 | HTTPs： \/ /tm-australiaeast01.afs.azure.net<br>HTTPs： \/ /tm-kailani-aue.one.microsoft.com |
+| 公用 |澳大利亞東南部 | HTTPs： \/ /australiasoutheast01.afs.azure.net<br>HTTPs： \/ /kailani-aus.one.microsoft.com | 澳大利亞東部 | HTTPs： \/ /tm-australiasoutheast01.afs.azure.net<br>HTTPs： \/ /tm-kailani-aus.one.microsoft.com |
+| 公用 | 巴西南部 | HTTPs： \/ /brazilsouth01.afs.azure.net | 美國中南部 | HTTPs： \/ /tm-brazilsouth01.afs.azure.net |
+| 公用 | 加拿大中部 | HTTPs： \/ /canadacentral01.afs.azure.net<br>HTTPs： \/ /kailani-cac.one.microsoft.com | 加拿大東部 | HTTPs： \/ /tm-canadacentral01.afs.azure.net<br>HTTPs： \/ /tm-kailani-cac.one.microsoft.com |
+| 公用 | 加拿大東部 | HTTPs： \/ /canadaeast01.afs.azure.net<br>HTTPs： \/ /kailani-cae.one.microsoft.com | 加拿大中部 | HTTPs： \/ /tm-canadaeast01.afs.azure.net<br>HTTPs： \/ /tm-kailani.cae.one.microsoft.com |
+| 公用 | 印度中部 | HTTPs： \/ /centralindia01.afs.azure.net<br>HTTPs： \/ /kailani-cin.one.microsoft.com | 印度南部 | HTTPs： \/ /tm-centralindia01.afs.azure.net<br>HTTPs： \/ /tm-kailani-cin.one.microsoft.com |
+| 公用 | 美國中部 | HTTPs： \/ /centralus01.afs.azure.net<br>HTTPs： \/ /kailani-cus.one.microsoft.com | 美國東部 2 | HTTPs： \/ /tm-centralus01.afs.azure.net<br>HTTPs： \/ /tm-kailani-cus.one.microsoft.com |
+| 公用 | 東亞 | HTTPs： \/ /eastasia01.afs.azure.net<br>HTTPs： \/ /kailani11.one.microsoft.com | 東南亞 | HTTPs： \/ /tm-eastasia01.afs.azure.net<br>HTTPs： \/ /tm-kailani11.one.microsoft.com |
+| 公用 | 美國東部 | HTTPs： \/ /eastus01.afs.azure.net<br>HTTPs： \/ /kailani1.one.microsoft.com | 美國西部 | HTTPs： \/ /tm-eastus01.afs.azure.net<br>HTTPs： \/ /tm-kailani1.one.microsoft.com |
+| 公用 | 美國東部 2 | HTTPs： \/ /eastus201.afs.azure.net<br>HTTPs： \/ /kailani-ess.one.microsoft.com | 美國中部 | HTTPs： \/ /tm-eastus201.afs.azure.net<br>HTTPs： \/ /tm-kailani-ess.one.microsoft.com |
+| 公用 | 日本東部 | HTTPs： \/ /japaneast01.afs.azure.net | 日本西部 | HTTPs： \/ /tm-japaneast01.afs.azure.net |
+| 公用 | 日本西部 | HTTPs： \/ /japanwest01.afs.azure.net | 日本東部 | HTTPs： \/ /tm-japanwest01.afs.azure.net |
+| 公用 | 南韓中部 | HTTPs： \/ /koreacentral01.afs.azure.net/ | 南韓南部 | HTTPs： \/ /tm-koreacentral01.afs.azure.net/ |
+| 公用 | 南韓南部 | HTTPs： \/ /koreasouth01.afs.azure.net/ | 南韓中部 | HTTPs： \/ /tm-koreasouth01.afs.azure.net/ |
+| 公用 | 美國中北部 | HTTPs： \/ /northcentralus01.afs.azure.net | 美國中南部 | HTTPs： \/ /tm-northcentralus01.afs.azure.net |
+| 公用 | 北歐 | HTTPs： \/ /northeurope01.afs.azure.net<br>HTTPs： \/ /kailani7.one.microsoft.com | 西歐 | HTTPs： \/ /tm-northeurope01.afs.azure.net<br>HTTPs： \/ /tm-kailani7.one.microsoft.com |
+| 公用 | 美國中南部 | HTTPs： \/ /southcentralus01.afs.azure.net | 美國中北部 | HTTPs： \/ /tm-southcentralus01.afs.azure.net |
+| 公用 | 印度南部 | HTTPs： \/ /southindia01.afs.azure.net<br>HTTPs： \/ /kailani-sin.one.microsoft.com | 印度中部 | HTTPs： \/ /tm-southindia01.afs.azure.net<br>HTTPs： \/ /tm-kailani-sin.one.microsoft.com |
+| 公用 | 東南亞 | HTTPs： \/ /southeastasia01.afs.azure.net<br>HTTPs： \/ /kailani10.one.microsoft.com | 東亞 | HTTPs： \/ /tm-southeastasia01.afs.azure.net<br>HTTPs： \/ /tm-kailani10.one.microsoft.com |
+| 公用 | 英國南部 | HTTPs： \/ /uksouth01.afs.azure.net<br>HTTPs： \/ /kailani-uks.one.microsoft.com | 英國西部 | HTTPs： \/ /tm-uksouth01.afs.azure.net<br>HTTPs： \/ /tm-kailani-uks.one.microsoft.com |
+| 公用 | 英國西部 | HTTPs： \/ /ukwest01.afs.azure.net<br>HTTPs： \/ /kailani-ukw.one.microsoft.com | 英國南部 | HTTPs： \/ /tm-ukwest01.afs.azure.net<br>HTTPs： \/ /tm-kailani-ukw.one.microsoft.com |
+| 公用 | 美國中西部 | HTTPs： \/ /westcentralus01.afs.azure.net | 美國西部 2 | HTTPs： \/ /tm-westcentralus01.afs.azure.net |
+| 公用 | 西歐 | HTTPs： \/ /westeurope01.afs.azure.net<br>HTTPs： \/ /kailani6.one.microsoft.com | 北歐 | HTTPs： \/ /tm-westeurope01.afs.azure.net<br>HTTPs： \/ /tm-kailani6.one.microsoft.com |
+| 公用 | 美國西部 | HTTPs： \/ /westus01.afs.azure.net<br>HTTPs： \/ /kailani.one.microsoft.com | 美國東部 | HTTPs： \/ /tm-westus01.afs.azure.net<br>HTTPs： \/ /tm-kailani.one.microsoft.com |
+| 公用 | 美國西部 2 | HTTPs： \/ /westus201.afs.azure.net | 美國中西部 | HTTPs： \/ /tm-westus201.afs.azure.net |
+| 政府 | US Gov 亞利桑那州 | HTTPs： \/ /usgovarizona01.afs.azure.us | US Gov 德克薩斯州 | HTTPs： \/ /tm-usgovarizona01.afs.azure.us |
+| 政府 | US Gov 德克薩斯州 | HTTPs： \/ /usgovtexas01.afs.azure.us | US Gov 亞利桑那州 | HTTPs： \/ /tm-usgovtexas01.afs.azure.us |
 
 - 如果您使用本地備援 (LRS) 或區域備援 (ZRS) 儲存體帳戶，您只需要啟用 [主要端點 URL] 底下所列的 URL。
 
@@ -142,23 +144,23 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 **範例：** 您在 `"West US"` 部署儲存體同步服務，並向其註冊伺服器。 在此案例中，要允許伺服器與之通訊的 URL 是：
 
-> - HTTPs：\//kailani.one.microsoft.com （主要端點：美國西部）
-> - HTTPs：\//kailani1.one.microsoft.com （配對故障的區域：美國東部）
-> - HTTPs：\//tm-kailani.one.microsoft.com （主要區域的探索 URL）
+> - HTTPs： \/ /westus01.afs.azure.net （主要端點：美國西部）
+> - HTTPs： \/ /eastus01.afs.azure.net （配對故障的區域：美國東部）
+> - HTTPs： \/ /tm-westus01.afs.azure.net （主要區域的探索 URL）
 
 ### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>允許 Azure 檔案同步 IP 位址的清單
-Azure 檔案同步支援使用服務標籤，此[標記](../../virtual-network/service-tags-overview.md)代表指定 Azure 服務的一組 IP 位址首碼。 您可以使用服務標記來建立防火牆規則，以啟用與 Azure 檔案同步服務的通訊。 Azure 檔案同步的服務標記是`StorageSyncService`。
+Azure 檔案同步支援使用服務標籤，此[標記](../../virtual-network/service-tags-overview.md)代表指定 Azure 服務的一組 IP 位址首碼。 您可以使用服務標記來建立防火牆規則，以啟用與 Azure 檔案同步服務的通訊。 Azure 檔案同步的服務標記是 `StorageSyncService` 。
 
-如果您在 Azure 中使用 Azure 檔案同步，您可以直接在網路安全性群組中使用服務標籤的名稱，以允許流量。 若要深入瞭解如何執行此操作，請參閱[網路安全性群組](../../virtual-network/security-overview.md)。
+如果您在 Azure 中使用 Azure 檔案同步，您可以直接在網路安全性群組中使用服務標籤的名稱，以允許流量。 若要深入了解如何執行此操作，請參閱[網路安全性群組](../../virtual-network/security-overview.md)。
 
-如果您使用 Azure 檔案同步內部部署，您可以使用服務標籤 API 來取得防火牆允許清單的特定 IP 位址範圍。 有兩種方法可以取得這份資訊：
+如果您是使用 Azure 檔案同步內部部署，就可利用服務標籤 API 來取得您防火牆允許清單的特定 IP 位址範圍。 有兩種方法可以取得此資訊：
 
-- 所有支援服務標籤之 Azure 服務的目前 IP 位址範圍清單會以 JSON 檔的形式，每週在 Microsoft 下載中心發佈。 每個 Azure 雲端都有自己的 JSON 檔，其中包含與該雲端相關的 IP 位址範圍：
+- 所有支援服務標籤之 Azure 服務的目前 IP 位址範圍清單，都會以 JSON 文件的形式，每週在 Microsoft 下載中心發佈。 每個 Azure 雲端都有自己的 JSON 文件，其中包含與該雲端相關的 IP 位址範圍：
     - [Azure 公用](https://www.microsoft.com/download/details.aspx?id=56519)
-    - [Azure 美國政府](https://www.microsoft.com/download/details.aspx?id=57063)
-    - [Azure 中國](https://www.microsoft.com/download/details.aspx?id=57062)
+    - [Azure US Gov](https://www.microsoft.com/download/details.aspx?id=57063)
+    - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
-- 服務標記探索 API （預覽）可讓您以程式設計方式抓取目前的服務標籤清單。 在預覽中，服務標籤探索 API 可能會傳回的資訊，不如 Microsoft 下載中心上發佈的 JSON 檔所傳回的資訊。 您可以根據您的自動化喜好設定來使用 API 介面：
+- 服務標籤探索 API (預覽) 可讓您以程式設計方式擷取目前的服務標籤清單。 在預覽中，服務標籤探索 API 傳回的資訊，可能沒有從 Microsoft 下載中心上發佈的 JSON 文件所傳回的資訊那麼新。 您可以根據您的自動化喜好設定來使用 API 介面：
     - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
     - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
     - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
@@ -260,10 +262,10 @@ if ($found) {
 }
 ```
 
-接著，您可以使用中`$ipAddressRanges`的 IP 位址範圍來更新您的防火牆。 如需如何更新防火牆的相關資訊，請參閱防火牆/網路應用裝置的網站。
+接著，您可以使用中的 IP 位址範圍 `$ipAddressRanges` 來更新您的防火牆。 如需如何更新防火牆的相關資訊，請參閱防火牆/網路應用裝置的網站。
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>測試與服務端點的網路連線能力
-一旦向 Azure 檔案同步服務註冊伺服器，就可以使用 StorageSyncNetworkConnectivity Cmdlet 和 Serverregistration.exe 來測試與此伺服器特定的所有端點（Url）的通訊。 此 Cmdlet 有助於疑難排解未完成的通訊，以防止伺服器完全使用 Azure 檔案同步，而且可以用來微調 proxy 和防火牆設定。
+一旦向 Azure 檔案同步服務註冊伺服器之後，就可以使用 StorageSyncNetworkConnectivity Cmdlet 和 ServerRegistration.exe 來測試與此伺服器特定之所有端點（Url）的通訊。 此 Cmdlet 有助於疑難排解未完成的通訊，以防止伺服器完全使用 Azure 檔案同步，而且可以用來微調 proxy 和防火牆設定。
 
 若要執行網路連線測試，請安裝 Azure 檔案同步代理程式9.1 版或更新版本，並執行下列 PowerShell 命令：
 ```powershell

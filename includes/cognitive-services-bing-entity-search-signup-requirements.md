@@ -4,20 +4,15 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/08/2020
-ms.openlocfilehash: 748f6dea8f6d057274c8e6c9f04690be05218f0c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: b085e3da5f4f390e8e392a36a8d4a5154d091803
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650196"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85805554"
 ---
 ## <a name="create-an-azure-resource"></a>建立 Azure 資源
 
 藉由建立下列其中一項 Azure 資源，開始使用 Bing 實體搜尋 API。
-
-### <a name="trial-resource"></a>[試用資源](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
-   * 不需要 Azure 訂用帳戶。
-   * 可免費使用 7 天。 註冊之後，即可在 [Azure 網站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上取得試用金鑰與端點。
 
 ### <a name="bing-entity-search-resource"></a>[Bing 實體搜尋資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch)
    * 您可以透過 Azure 入口網站取得該資源，直到將其刪除為止。

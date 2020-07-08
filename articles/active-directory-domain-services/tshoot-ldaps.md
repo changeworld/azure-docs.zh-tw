@@ -11,12 +11,11 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 22d1b6e2344256b52cfdbc48720a680a770a4216
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2d2cd98a9af75b5f3a6ca084dbfd4c144e06643d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77132175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84733784"
 ---
 # <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>針對 Azure Active Directory Domain Services 受控網域的安全 LDAP 連線問題進行疑難排解
 
@@ -24,24 +23,24 @@ ms.locfileid: "77132175"
 
 本文可協助您針對 Azure AD DS 中的安全 LDAP 存取問題進行疑難排解。
 
-## <a name="common-connection-issues"></a>常見的連接問題
+## <a name="common-connection-issues"></a>常見的連線問題
 
-如果您無法使用安全 LDAP 連線到 Azure AD DS 受控網域，請參閱下列疑難排解步驟。 在每個疑難排解步驟之後，再次嘗試連接到 Azure AD DS 受控網域：
+如果您無法使用安全 LDAP 連線到 Azure AD DS 受控網域，請參閱下列疑難排解步驟。 在每個疑難排解步驟之後，再次嘗試連線到受控網域：
 
 * 安全 LDAP 憑證的簽發者鏈結在用戶端上必須受信任。 您可以將根憑證授權單位（CA）新增至用戶端上的受信任根憑證存放區，以建立信任。
     * 請確定您已[匯出憑證，並將其套用至用戶端電腦][client-cert]。
 * 確認受控網域的安全 LDAP 憑證具有 [主旨 *] 或 [* *主體替代名稱*] 屬性中的 DNS 名稱。
     * 請檢查[安全的 LDAP 憑證需求][certs-prereqs]，並視需要建立取代憑證。
-* 確認 LDAP 用戶端（例如*ldp.exe* ）使用 DNS 名稱（而非 IP 位址）連接到安全的 ldap 端點。
-    * 套用至 Azure AD DS 受控網域的憑證不會包含服務的 IP 位址，而只包括 DNS 名稱。
-* 檢查 LDAP 用戶端連線到的 DNS 名稱。 它必須解析為 Azure AD DS 受控網域上安全 LDAP 的公用 IP 位址。
+* 確認 LDAP 用戶端（例如*ldp.exe* ）會使用 DNS 名稱（而非 IP 位址）連線到安全的 LDAP 端點。
+    * 套用至受控網域的憑證不會包含服務的 IP 位址，而只包括 DNS 名稱。
+* 檢查 LDAP 用戶端連線到的 DNS 名稱。 它必須解析至受控網域上安全 LDAP 的公用 IP 位址。
     * 如果 DNS 名稱解析為內部 IP 位址，請更新 DNS 記錄以解析為外部 IP 位址。
 * 針對外部連線能力，網路安全性群組必須包含允許從網際網路到 TCP 埠636流量的規則。
-    * 如果您可以從直接連線到虛擬網路但不是外部連線的資源，使用安全的 LDAP 連接到 Azure AD DS 受控網域，請務必[建立網路安全性群組規則，以允許安全的 ldap 流量][ldaps-nsg]。
+    * 如果您可以從直接連線到虛擬網路但不是外部連線的資源，使用安全的 LDAP 連接到受控網域，請務必[建立網路安全性群組規則，以允許安全的 ldap 流量][ldaps-nsg]。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您仍有問題，請[開啟 Azure 支援要求][azure-support]以取得額外的疑難排解協助。
+如果仍有問題，請[開啟 Azure 支援要求][azure-support]以取得其他疑難排解協助。
 
 <!-- INTERNAL LINKS -->
 [azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

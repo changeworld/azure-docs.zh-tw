@@ -13,18 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5146878adf10e452f38fecb115ec40792ffa84f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cf732b92c1a208dd4c312ae442969ef958a021b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79139992"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791175"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure 資訊安全中心中的警示驗證 (EICAR 測試檔案)
 這份文件可協助您了解如何驗證您的系統是否已針對 Azure 資訊安全中心警示正確設定。
 
 ## <a name="what-are-security-alerts"></a>什麼是安全性警示：
-警示是當資訊安全中心偵測到您資源受到威脅時，所產生的通知。 它會排定優先順序並列出警示，以及快速調查問題所需的資訊。 資訊安全中心也提供如何修復攻擊的建議。
+警示是當資訊安全中心偵測到您資源受到威脅時，所產生的通知。 它會排定優先順序並列出警示，以及快速調查問題所需的資訊。 資訊安全中心也會提供如何修復攻擊的建議。
 如需詳細資訊，請參閱[資訊安全中心中的安全性警示](security-center-alerts-overview.md)和[管理與回應安全性警示](security-center-managing-and-responding-alerts.md)
 
 ## <a name="alert-validation"></a>警示驗證
@@ -37,9 +36,9 @@ ms.locfileid: "79139992"
 
 在電腦上安裝資訊安全中心代理程式之後，請從您想要成為警示受攻擊資源的電腦執行下列步驟：
 
-1. 將可執行檔（例如， **calc**）複製到電腦的桌面，或其他方便的目錄，並將它重新命名為**ASC_AlertTest_662jfi039N .exe**。
+1. 將可執行檔（例如**calc.exe**）複製到電腦的桌面或其他方便的目錄，並將它重新命名為**ASC_AlertTest_662jfi039N.exe**。
 1. 開啟命令提示字元，並使用引數（只是假的引數名稱）執行此檔案，例如：```ASC_AlertTest_662jfi039N.exe -foo```
-1. 等待 5 到 10 分鐘，然後開啟安全性中心警示。 應該會顯示類似下列[範例](#alert-validate)的警示：
+1. 等待 5 到 10 分鐘，然後開啟安全性中心警示。 應該會出現警示。
 
 > [!NOTE]
 > 當您針對 Windows 檢查此測試**警示時，** 請確定**已啟用欄位引數審核**功能。 如果為**false**，則您需要啟用命令列引數的審核。 若要啟用它，請使用下列命令：
@@ -57,11 +56,7 @@ ms.locfileid: "79139992"
 
     ```./asc_alerttest_662jfi039n testing eicar pipe```
 
-1. 等待 5 到 10 分鐘，然後開啟安全性中心警示。 應該會顯示類似下列[範例](#alert-validate)的警示：
-
-### <a name="alert-example"></a>警示範例<a name="alert-validate"></a>
-
-![警示驗證範例](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
+1. 等待 5 到 10 分鐘，然後開啟安全性中心警示。 應該會出現警示。
 
 
 ## <a name="validate-alerts-on-kubernetes"></a>在 Kubernetes 上驗證警示<a name="validate-kubernetes"></a>
@@ -77,5 +72,5 @@ ms.locfileid: "79139992"
 
 * [驗證 Azure 資訊安全中心中的 Azure Key Vault 威脅偵測](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [管理和回應 Azure 資訊安全中心中的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)-瞭解如何管理警示，以及回應資訊安全中心中的安全性事件。
-* [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) - 了解如何監視 Azure 資源的健全狀況。
+* [Azure 資訊安全中心中的安全性健全狀況監視](security-center-monitoring.md)-瞭解如何監視 Azure 資源的健康情況。
 * [瞭解 Azure 資訊安全中心中的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)-瞭解不同類型的安全性警示。

@@ -7,18 +7,17 @@ ms.topic: troubleshooting
 ms.date: 03/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 028ddccdb989d35710e387081b08a3b973d75bdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80367547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252435"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>疑難排解 Azure App Service 中的間歇輸出連接錯誤
 
 本文可協助您針對間歇連線錯誤和[Azure App Service](https://docs.microsoft.com/azure/app-service/overview)中的相關效能問題進行疑難排解。 本主題將提供來源位址網路轉譯（SNAT）埠耗盡的詳細資訊，以及疑難排解的方法。 如果您在本文中有任何需要協助的地方，請洽詢[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，將 Azure 支援事件提出。 請移至[Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 裝載于 Azure App 服務上的應用程式和函式可能會出現下列一個或多個徵兆：
 
@@ -32,7 +31,7 @@ ms.locfileid: "80367547"
 這些徵兆的主要原因是應用程式實例無法開啟連至外部端點的新連線，因為它已達到下列其中一個限制：
 
 * TCP 連線：可以進行的輸出連線數目有限制。 這會與所使用的工作者大小相關聯。
-* SNAT 埠：如同 Azure 中的[輸出](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)連線所述，azure 會使用來源網路位址轉譯（SNAT）和 Load Balancer （不會向客戶公開），在公用 IP 位址空間中與 Azure 外部的端點進行通訊。 Azure App 服務上的每個實例一開始都會指定**128** SNAT 埠的預先配置數目。 該限制會影響到相同主機和埠組合的開啟連接。 如果您的應用程式會建立混合位址和埠組合的連線，您將不會使用 SNAT 埠。 當您重複呼叫相同的位址和埠組合時，會使用 SNAT 埠。 一旦釋放埠之後，埠就可以視需要重複使用。 Azure 網路負載平衡器只會在等待4分鐘後，才從已關閉的連線中回收 SNAT 埠。
+* SNAT 埠：如同 Azure 中的[輸出](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)連線所述，azure 會使用來源網路位址轉譯（SNAT）和 Load Balancer （不會向客戶公開），在公用 IP 位址空間中與 Azure 外部的端點進行通訊。 Azure App 服務上的每個實例一開始都會指定**128** SNAT 埠的預先配置數目。 該限制會影響到相同主機和埠組合的開啟連接。 如果您的應用程式會建立混合位址和埠組合的連線，您將不會使用 SNAT 埠。 當您重複呼叫相同的位址和埠組合時，會使用 SNAT 埠。 連接埠一經釋放，即可視需要重複使用。 Azure 網路負載平衡器只會在等待4分鐘後，才從已關閉的連線中回收 SNAT 埠。
 
 當應用程式或函式快速開啟新的連線時，他們可以快速耗盡其預先配置的128埠配額。 然後，它們會被封鎖，直到新的 SNAT 埠可供使用為止，不論是透過動態配置額外的 SNAT 埠，或重複使用已回收的 SNAT 埠。 因為無法建立新連線而遭到封鎖的應用程式或函式，將會開始遇到本文的**徵兆**一節中所述的一或多個問題。
 
@@ -111,18 +110,18 @@ HTTP 連接共用
 
 ### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>使用 Keepalive 來重設輸出閒置逾時
 
-* 針對 node.js 應用程式的執行 keepalive，請檢查[我的節點應用程式是否進行過多的輸出呼叫](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)。
+* 若要針對 Node.js 應用程式執行 keepalive，請檢查[我的節點應用程式是否進行過多的輸出呼叫](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)。
 
 ### <a name="additional-guidance-specific-to-app-service"></a>App Service 特定的其他指導方針：
 
 * [負載測試](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test)應以穩定的進紙速度來模擬真實世界的資料。 在真實世界壓力下測試應用程式和功能，可以提早識別及解決 SNAT 埠耗盡問題。
-* 請確定後端服務可以快速傳迴響應。 如需疑難排解 Azure SQL database 的效能問題，請參閱[疑難排解 Intelligent Insights 的 Azure SQL Database 效能問題](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)。
+* 請確定後端服務可以快速傳迴響應。 如需 Azure SQL Database 的效能問題疑難排解，請參閱[疑難排解 Intelligent Insights 的 Azure SQL Database 效能問題](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)。
 * 將 App Service 方案相應放大為更多實例。 如需有關調整的詳細資訊，請參閱[在 Azure App Service 中調整應用程式規模](https://docs.microsoft.com/azure/app-service/manage-scale-up)。 App service 方案中的每個背景工作實例都會配置一些 SNAT 埠。 如果您將使用量分散到多個實例，您可能會取得每個實例的 SNAT 埠使用量，低於每個唯一遠端端點的建議限制100輸出連線。
 * 請考慮移至[App Service 環境（ASE）](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)，您會在其中配置單一輸出 IP 位址，而連線和 SNAT 埠的限制會更高。
 
 避免輸出 TCP 限制比較容易解決，因為限制是由背景工作角色的大小所設定。 您可以查看[沙箱跨 VM 數值限制的限制-TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)連線
 
-|限制名稱|描述|小型（A1）|中（A2）|大型（A3）|隔離層（ASE）|
+|限制名稱|Description|小型（A1）|中（A2）|大型（A3）|隔離層（ASE）|
 |---|---|---|---|---|---|
 |連接|跨整個 VM 的連線數目|1920|3968|8064|16,000|
 
@@ -154,13 +153,13 @@ TCP 連線和 SNAT 埠並不直接相關。 任何 App Service 網站的 [診斷
 * TCP 連接限制會發生在背景工作角色實例層級。 Azure 網路輸出負載平衡不會使用適用于 SNAT 埠限制的 TCP 連線計量。
 * [沙箱跨 VM 數值限制-tcp](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)連線中描述 tcp 連線限制
 
-|限制名稱|描述|小型（A1）|中（A2）|大型（A3）|隔離層（ASE）|
+|限制名稱|Description|小型（A1）|中（A2）|大型（A3）|隔離層（ASE）|
 |---|---|---|---|---|---|
 |連接|跨整個 VM 的連線數目|1920|3968|8064|16,000|
 
 ### <a name="webjobs-and-database-connections"></a>Webjob 和資料庫連接
  
-如果 SNAT 埠已耗盡，其中 Webjob 無法連線至 Azure SQL 資料庫，則不會顯示每個個別 web 應用程式進程所開啟的連接數目。 若要找出有問題的 WebJob，請將數個 Webjob 移至另一個 App Service 計畫，以查看情況是否改善，或是否有問題仍然存在於其中一個方案中。 重複此程式，直到您找到有問題的 WebJob 為止。
+如果 SNAT 埠已耗盡，而 Webjob 無法連接到 SQL Database，則沒有計量可顯示每個個別 web 應用程式進程所開啟的連線數目。 若要找出有問題的 WebJob，請將數個 Webjob 移至另一個 App Service 計畫，以查看情況是否改善，或是否有問題仍然存在於其中一個方案中。 重複此程式，直到您找到有問題的 WebJob 為止。
 
 ### <a name="using-snat-ports-sooner"></a>更快使用 SNAT 埠
 

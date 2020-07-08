@@ -7,23 +7,22 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2020
 ms.author: rolyon
-ms.openlocfilehash: f9ba8fa64a9699917fe73365cb5d9aa0c858cde7
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: a7be51cfceee3bb445b085efd780463c8b6f49be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734174"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791192"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>使用 Azure 入口網站建立或更新 Azure 自訂角色
 
 如果[Azure 內建角色](built-in-roles.md)不符合您組織的特定需求，您可以建立自己的 Azure 自訂角色。 就像內建角色一樣，您可以將自訂角色指派給訂用帳戶和資源群組範圍中的使用者、群組和服務主體。 自訂角色是存放在 Azure Active Directory (Azure AD) 目錄中，而且可以跨訂用帳戶共用。 每個目錄最多可以有5000個自訂角色。 您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來建立自訂角色。 本文說明如何使用 Azure 入口網站建立自訂角色。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要建立自訂角色，您需要：
 
@@ -196,15 +195,15 @@ Azure 有數以千計的許可權，您可以將其包含在您的自訂角色�
 
 1. 按一下 [**新增**]，將許可權新增至您的許可權清單。
 
-    許可權會加入為`Actions`或。 `DataActions`
+    許可權會加入為 `Actions` 或 `DataActions` 。
 
     ![已新增許可權](./media/custom-roles-portal/permissions-list-add.png)
 
-1. 若要移除許可權，請按一下資料列結尾處的 [刪除] 圖示。 在此範例中，由於使用者不需要建立支援票證的能力，因此可以刪除`Microsoft.Support/*`許可權。
+1. 若要移除許可權，請按一下資料列結尾處的 [刪除] 圖示。 在此範例中，由於使用者不需要建立支援票證的能力，因此 `Microsoft.Support/*` 可以刪除許可權。
 
 ### <a name="add-wildcard-permissions"></a>新增萬用字元許可權
 
-視您選擇要啟動的方式而定，您在許可權清單中\*可能會有萬用字元（）的許可權。 萬用字元（\*）會將許可權延伸到符合您所提供之字串的所有專案。 例如，假設您想要加入與 Azure 成本管理和匯出相關的擁有權限。 您可以新增下列擁有權限：
+視您選擇要啟動的方式而定，您 \* 在許可權清單中可能會有萬用字元（）的許可權。 萬用字元（ \* ）會將許可權延伸到符合您所提供之字串的所有專案。 例如，假設您想要加入與 Azure 成本管理和匯出相關的擁有權限。 您可以新增下列擁有權限：
 
 ```
 Microsoft.CostManagement/exports/action
@@ -224,7 +223,7 @@ Microsoft.CostManagement/exports/*
 
 ### <a name="exclude-permissions"></a>排除許可權
 
-如果您的角色具有萬用字元（\*）許可權，而您想要排除或減去該萬用字元許可權的特定許可權，您可以將其排除。 例如，假設您有下列萬用字元許可權：
+如果您的角色具有萬用字元（ \* ）許可權，而您想要排除或減去該萬用字元許可權的特定許可權，您可以將其排除。 例如，假設您有下列萬用字元許可權：
 
 ```
 Microsoft.CostManagement/exports/*
@@ -236,7 +235,7 @@ Microsoft.CostManagement/exports/*
 Microsoft.CostManagement/exports/delete
 ```
 
-當您排除許可權時，會將它新增為`NotActions`或`NotDataActions`。 有效的管理許可權是藉由新增所有`Actions` ，然後減去所有的來計算。 `NotActions` 有效的資料許可權是藉由新增所有`DataActions` ，然後減去所有的來計算。 `NotDataActions`
+當您排除許可權時，會將它新增為 `NotActions` 或 `NotDataActions` 。 有效的管理許可權是藉由新增所有 `Actions` ，然後減去所有的來計算 `NotActions` 。 有效的資料許可權是藉由新增所有 `DataActions` ，然後減去所有的來計算 `NotDataActions` 。
 
 > [!NOTE]
 > 排除許可權與拒絕不相同。 排除許可權只是從萬用字元許可權減去許可權的便利方式。
@@ -249,7 +248,7 @@ Microsoft.CostManagement/exports/delete
 
     ![排除許可權窗格-選取的許可權](./media/custom-roles-portal/exclude-permissions-select.png)
 
-    許可權會加入為`NotActions`或。 `NotDataActions`
+    許可權會加入為 `NotActions` 或 `NotDataActions` 。
 
     ![已排除許可權](./media/custom-roles-portal/exclude-permissions-list-add.png)
 
@@ -269,7 +268,7 @@ Microsoft.CostManagement/exports/delete
 
 ## <a name="step-6-json"></a>步驟6： JSON
 
-在 [ **json** ] 索引標籤上，您會看到以 JSON 格式格式化的自訂角色。 如有需要，您可以直接編輯 JSON。 如果您想要新增萬用字元（\*）許可權，則必須使用此索引標籤。
+在 [ **json** ] 索引標籤上，您會看到以 JSON 格式格式化的自訂角色。 如有需要，您可以直接編輯 JSON。 如果您想要新增萬用字元（ \* ）許可權，則必須使用此索引標籤。
 
 1. 若要編輯 JSON，請按一下 [**編輯**]。
 

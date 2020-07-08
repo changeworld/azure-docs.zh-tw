@@ -7,12 +7,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4cf851022a2b2b0c9a9781f4d41b40982bf2ad57
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807701"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -318,7 +317,7 @@ WireData
 * 若要深入了解如何在 Application Insights 中收集 IP 位址和地理位置資料，請參閱這篇[文章](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) \(部分機器翻譯\)。
 
 
-您可以設定 `ClientIpHeaderTelemetryInitializer` 以從不同的標頭取得 IP 位址。 例如，在某些系統中，Proxy、負載平衡器或 CDN 會將它移至 `X-Originating-IP`。 [深入了解](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
+您可以設定 `ClientIpHeaderTelemetryInitializer` 以從不同的標頭取得 IP 位址。 例如，在某些系統中，Proxy、負載平衡器或 CDN 會將它移至 `X-Originating-IP`。 [深入了解](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
 
 您可以[使用 Power BI](app/export-power-bi.md ) 在地圖上顯示您的要求遙測資料。
 
@@ -367,7 +366,7 @@ WireData
 ### <a name="what-are-the-user-and-session-counts"></a>什麼是使用者和和工作階段計數？
 
 * JavaScript SDK 會在 Web 用戶端上設定使用者 Cookie 來識別傳回使用者，以及設定一個工作階段 Cookie 來將活動分組。
-* 如果沒有任何用戶端指令碼，則您可以[在伺服器設定 Cookie](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)。
+* 如果沒有任何用戶端指令碼，則您可以[在伺服器設定 Cookie](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/)。
 * 如果有一個真實的使用者以不同的瀏覽器使用您的站台，或是使用 InPrivate/Incognito 瀏覽，或透過不同的電腦，則系統會將其計算多次。
 * 若要跨電腦和瀏覽器識別登入的使用者，請新增對 [setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users) 的呼叫。
 

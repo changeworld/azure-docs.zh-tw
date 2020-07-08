@@ -3,15 +3,14 @@ title: 使用 Azure HPC Cache 和 Azure NetApp Files
 description: 如何使用 Azure HPC 快取來改善以 Azure NetApp Files 儲存之資料的存取權
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 6d4dd69b30acb26d02218fe05a60ace9aa855ddc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 374f3106ec42233cd5309c2773b05e3c96bbf98e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194953"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515491"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>搭配 Azure NetApp Files 使用 Azure HPC Cache
 
@@ -21,7 +20,7 @@ Azure NetApp Files 結合了其 ONTAP 作業系統與 Microsoft Azure 的擴充�
 
 新增 Azure HPC 快取元件可以在一個匯總的命名空間中呈現多個 Azure NetApp Files 磁片區，以改善檔案存取。 它可以為位於不同服務區域中的磁片區提供邊緣快取。 它也可以改善在較低層服務層級所建立之磁片區的需求效能，以節省成本。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 若要使用 Azure NetApp Files 系統作為 Azure HPC Cache 的後端儲存體，請遵循此程式。
 
@@ -80,7 +79,7 @@ Azure NetApp Files 檔中的快速入門範例會針對委派的子網使用 10.
 az netappfiles volume list -g ${RESOURCE_GROUP} --account-name ${ANF_ACCOUNT} --pool-name ${POOL} --query "[].mountTargets[].ipAddress" | grep -Ee '[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+' | tr -d '"' | tr -d , | sort | uniq
 ```
 
-Azure NetApp Files 系統上的匯出名稱具有單一路徑元件。 請勿嘗試針對 Azure NetApp Files 中的根匯出``/``建立儲存體目標，因為該匯出不提供檔案存取。
+Azure NetApp Files 系統上的匯出名稱具有單一路徑元件。 請勿嘗試針對 Azure NetApp Files 中的根匯出建立儲存體目標 ``/`` ，因為該匯出不提供檔案存取。
 
 這些儲存體目標的虛擬命名空間路徑沒有特殊限制。
 

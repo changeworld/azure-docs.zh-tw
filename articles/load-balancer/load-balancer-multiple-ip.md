@@ -7,18 +7,17 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 4bf74986462ecb2659505f8a1261b9b24aba3fee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5a896d3fbe2d191473b10655ccb19c5759762131
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74076996"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84803625"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 入口網站在多個 IP 組態上進行負載平衡
 
@@ -42,7 +41,7 @@ ms.locfileid: "74076996"
 - Azure Load Balancer 用來公開兩個前端 IP 位址 (每個網站一個)。 前端 IP 位址用於將流量分散至每個網站的各自 IP 組態。
 - 前端 IP 位址和後端集區 IP 位址使用相同的連接埠號碼。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 我們的案例假設您有一個名為 **contosofabrikam** 的資源群組，其設定如下︰
 
@@ -78,7 +77,7 @@ ms.locfileid: "74076996"
 
         2. 針對 [私人 IP 位址]**** 的 [配置]**** 設定，選取 [靜態]****。
 
-        3. 選取 [確定]  。
+        3. 選取 [確定]。
 
 在次要 NIC 的第二個 IP 設定完成時，它會顯示在指定 NIC 的 [IP 組態]**** 設定之下。
 
@@ -88,7 +87,7 @@ ms.locfileid: "74076996"
 
 1. 瀏覽至 Azure 入口網站：https://portal.azure.com。 使用您的 Azure 帳戶進行登入。
 
-2. 在畫面的左上方，選取 [**建立資源** > ] [**網路** > ] [**Load Balancer**]。 接下來，選取 [建立]****。
+2. 在畫面的左上方，選取 [**建立資源**] [網路] [  >  **Networking**  >  **Load Balancer**]。 接下來，選取 [建立]****。
 
 3. 在 [建立負載平衡器]**** 之下，輸入負載平衡器的名稱。 在此案例中，我們會使用名稱 **mylb**。
 
@@ -112,7 +111,7 @@ ms.locfileid: "74076996"
 
    3. 在 [位置]**** 中選取和 VM 相同的位置。
 
-   4. 選取 [確定]  。
+   4. 選取 [確定]。
 
       建立公用 IP 位址之後，它們便會顯示在 [公用 IP]**** 位址之下。
 
@@ -152,7 +151,7 @@ ms.locfileid: "74076996"
 
     2. 在 [網路 IP 組態]**** 中，針對您在前一個步驟中選取的 VM，選取次要 NIC 的 IP 組態 (例如，**VM1NIC2-ipconfig2** 或 **VM2NIC2-ipconfig2**)。
 
-7. 選取 [確定]  。
+7. 選取 [確定]。
 
 設定後端集區之後，位址會顯示在負載平衡器的 [後端集區]**** 設定之下。
 
@@ -166,7 +165,7 @@ ms.locfileid: "74076996"
 
 3. 在 [設定]**** 下，選取 [健康狀態探查]****。 在下一個窗格中，選取頂端附近的 [新增]****。 
 
-4. 輸入健康狀態探查的名稱 (例如，**HTTP**)。 選取 [確定]  。
+4. 輸入健康狀態探查的名稱 (例如，**HTTP**)。 選取 [確定]。
 
 ### <a name="step-6-configure-load-balancing-rules"></a>步驟 6：設定負載平衡規則
 

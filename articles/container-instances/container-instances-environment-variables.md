@@ -4,11 +4,10 @@ description: 了解如何在執行於 Azure 容器執行個體中的容器內設
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247224"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84686727"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>在容器實例中設定環境變數
 
@@ -38,7 +37,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-若要修改輸出，請啟動第二個容器`--environment-variables` ，並新增引數，並指定*NumWords*和*MinLength*變數的值。 (此範例假設您在 Bash 殼層或 Azure Cloud Shell 中執行 CLI。 如果您使用 Windows 命令提示字元，請以雙引號指定變數，例如 `--environment-variables "NumWords"="5" "MinLength"="8"`。)
+若要修改輸出，請啟動第二個容器，並 `--environment-variables` 新增引數，並指定*NumWords*和*MinLength*變數的值。 (此範例假設您在 Bash 殼層或 Azure Cloud Shell 中執行 CLI。 如果您使用 Windows 命令提示字元，請以雙引號指定變數，例如 `--environment-variables "NumWords"="5" "MinLength"="8"`。)
 
 ```azurecli-interactive
 az container create \
@@ -144,7 +143,7 @@ Azure:\
 當您在 Azure 入口網站中啟動容器時，若要設定環境變數，請在建立容器時，于 [ **Advanced** ] 頁面中指定它們。
 
 1. 在 [ **Advanced** ] 頁面上，將 [**重新開機原則**] 設定為 [*失敗時*]
-2. 在 [**環境變數**] `NumWords`底下， `5`針對第一個變數輸入值為的， `MinLength`然後`8`針對第二個變數輸入值為的。 
+2. 在 [**環境變數**] 底下， `NumWords` `5` 針對第一個變數輸入值為的，然後 `MinLength` `8` 針對第二個變數輸入值為的。 
 1. 選取 [**審查 + 建立**] 以驗證並部署容器。
 
 ![顯示環境變數啟用按鈕和文字方塊的入口網站頁面][portal-env-vars-01]

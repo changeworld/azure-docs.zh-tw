@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfcb00f56a3cc6f71729fbeaf317ce9447e120ed
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 2180451a1d0c377af1e6c3e7377e64d9cb62ef8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582601"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84732050"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>在 Azure Active Directory 中使用 PowerShell 指派具有資源範圍的自訂角色
 
@@ -32,13 +31,13 @@ ms.locfileid: "82582601"
 
 ## <a name="prepare-powershell"></a>準備 PowerShell
 
-從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)安裝 Azure AD PowerShell 模組。 然後使用下列命令匯入 Azure AD PowerShell 預覽模組：
+從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)安裝 Azure AD PowerShell 模組。 然後，使用下列命令匯入 Azure AD PowerShell 預覽模組：
 
 ``` PowerShell
 import-module azureadpreview
 ```
 
-若要確認模組已備妥可供使用，請將下列命令所傳回的版本與此處所列的版本進行比對：
+若要確認模組已可供使用，請將下列命令所傳回的版本與此處所列的版本進行比對：
 
 ``` PowerShell
 get-module azureadpreview
@@ -52,7 +51,7 @@ get-module azureadpreview
 ## <a name="assign-a-role-to-a-user-or-service-principal-with-resource-scope"></a>將角色指派給具有資源範圍的使用者或服務主體
 
 1. 開啟 Azure AD preview PowerShell 模組。
-1. 執行命令`Connect-AzureAD`以登入。
+1. 執行命令以登入 `Connect-AzureAD` 。
 1. 使用下列 PowerShell 腳本建立新的角色。
 
 ``` PowerShell

@@ -4,19 +4,18 @@ description: 瞭解如何在您的環境中瞭解條件式存取原則的影響�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 02/25/2020
+ms.topic: conceptual
+ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 30d9ca806a7ddaf7d6ba657d8224d312a6aae33b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77620693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253132"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在條件式存取中使用 What If 工具進行疑難排解
 
@@ -40,7 +39,7 @@ ms.locfileid: "77620693"
      
 在下一個步驟中，您可以起始模擬執行來評估設定。 只有已啟用的原則才會參與評估執行。
 
-評估完成時，此工具會產生一份受影響原則的報告。
+評估完成時，此工具會產生一份受影響原則的報告。 若要收集有關條件式存取原則的詳細資訊，[條件式存取深入解析和報表活頁簿](howto-conditional-access-insights-reporting.md)可以在僅限報表模式中提供原則的其他詳細資料，以及目前已啟用的原則。
 
 ## <a name="running-the-tool"></a>執行工具
 
@@ -58,7 +57,7 @@ ms.locfileid: "77620693"
 
 ![What If](./media/what-if-tool/02.png)
 
-### <a name="user"></a>User
+### <a name="user"></a>使用者
 
 您只能選取一個使用者。 這是唯一的必要欄位。
 
@@ -104,6 +103,5 @@ IP 位址是用來模擬[位置條件](location-condition.md)的單一 IPv4 位�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果您想要知道如何設定條件式存取原則，請參閱[使用 Azure Active Directory 條件式存取來要求特定應用程式的 MFA](app-based-mfa.md)。
-- 如果您已準備好設定環境的條件式存取原則，請參閱[Azure Active Directory 中條件式存取的最佳做法](best-practices.md)。 
-- 如果您要移轉傳統原則，請參閱[在 Azure 入口網站中移轉傳統原則](policy-migration.md)  
+- 如需條件式存取原則應用程式的詳細資訊，請參閱使用[條件式存取深入解析和報告](howto-conditional-access-insights-reporting.md)的原則僅限報告模式。
+- 如果您已準備好設定環境的條件式存取原則，請參閱[條件式存取的一般原則](concept-conditional-access-policy-common.md)。 

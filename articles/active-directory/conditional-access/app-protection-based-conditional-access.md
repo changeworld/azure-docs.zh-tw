@@ -4,19 +4,18 @@ description: 瞭解如何在 Azure Active Directory 中透過條件式存取要�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4476502896705c2133b09b203bea0d6f5d74f121
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: dae584bdfa97b2c30cab5f15881323c26366592c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681407"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253353"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>如何：透過條件式存取需要應用程式防護原則和已核准的用戶端應用程式，才能存取雲端應用程式
 
@@ -37,7 +36,7 @@ ms.locfileid: "83681407"
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>案例 1：Office 365 應用程式需要具有應用程式保護原則的已核准應用程式
 
-在此案例中，Contoso 已決定所有 Office 365 資源的行動存取都必須使用核准的用戶端應用程式，例如 Outlook mobile、OneDrive 和 Microsoft Team 在收到存取權之前受到應用程式防護原則的保護。 他們的所有使用者都已使用 Azure AD 認證登入，並指派授權給他們，其中包括 Azure AD Premium P1 或 P2 及 Microsoft Intune。
+在此案例中，Contoso 已決定所有 Office 365 資源的行動存取都必須使用已核准的用戶端應用程式（例如 Outlook mobile 和 OneDrive），以在接收存取之前受到應用程式保護原則的保護。 他們的所有使用者都已使用 Azure AD 認證登入，並指派授權給他們，其中包括 Azure AD Premium P1 或 P2 及 Microsoft Intune。
 
 組織必須完成下列步驟，才能要求在行動裝置上使用已核准的用戶端應用程式。
 

@@ -6,12 +6,11 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277572"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791651"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>針對常見的 Azure 春季雲端問題進行疑難排解
 
@@ -35,7 +34,7 @@ ms.locfileid: "76277572"
 
 > "SQLException：伺服器時區值「國際標準時間」無法辨識或代表一個以上的時區。」
 
-若要修正此錯誤，請移`server parameters`至 MySQL 實例的，並將`time_zone`值從*系統*變更為 *+ 0:00*。
+若要修正此錯誤，請移至 `server parameters` MySQL 實例的，並將 `time_zone` 值從*系統*變更為 *+ 0:00*。
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>我的應用程式損毀或擲回未預期的錯誤
@@ -49,7 +48,7 @@ ms.locfileid: "76277572"
 
   - `TomcatErrorCount`（_tomcat. 全域錯誤_）：所有春季應用程式例外狀況都會在此計算。 如果此數目很大，請移至 Azure Log Analytics 來檢查您的應用程式記錄。
 
-  - `AppMemoryMax`（_jvm. memory. max_）：可供應用程式使用的記憶體數量上限。 可能是未定義的金額，如果已定義，則可能會隨時間變更。 如果已定義，則已使用和已認可的記憶體數量一律小於或等於最大值。不過，如果配置嘗試增加已使用的`OutOfMemoryError`記憶體（例如*使用 > 認可*），則記憶體配置可能會失敗並出現訊息，即使*使用 <= max*仍然是 true 也一樣。 在這種情況下，請嘗試使用`-Xmx`參數來增加堆積大小上限。
+  - `AppMemoryMax`（_jvm. memory. max_）：可供應用程式使用的記憶體數量上限。 可能是未定義的金額，如果已定義，則可能會隨時間變更。 如果已定義，則已使用和已認可的記憶體數量一律小於或等於最大值。不過， `OutOfMemoryError` 如果配置嘗試增加已使用的記憶體（例如*使用 > 認可*），則記憶體配置可能會失敗並出現訊息，即使*使用 <= max*仍然是 true 也一樣。 在這種情況下，請嘗試使用參數來增加堆積大小上限 `-Xmx` 。
 
   - `AppMemoryUsed`（_jvm. 使用的記憶體_）：應用程式目前使用的記憶體數量（以位元組為單位）。 針對一般 load JAVA 應用程式，此計量數列會形成*sawtooth*模式，其中記憶體使用量穩定地增加並減少，而且突然下降，然後模式會重複出現。 此度量數列是因為 JAVA 虛擬機器內的垃圾收集所造成，其中集合動作代表 sawtooth 模式的卸載。
     
@@ -111,7 +110,7 @@ ms.locfileid: "76277572"
 
 如果您想要使用 Resource Manager 範本來設定 Azure 春季雲端服務實例，請先參閱[瞭解 Azure Resource Manager 範本的結構和語法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)。
 
-Azure 春季雲端服務實例的名稱將用於要求底下的子功能變數名稱稱`azureapps.io`，因此如果名稱與現有的功能變數名稱衝突，安裝將會失敗。 您可以在活動記錄中找到更多詳細資料。
+Azure 春季雲端服務實例的名稱將用於要求底下的子功能變數名稱稱 `azureapps.io` ，因此如果名稱與現有的功能變數名稱衝突，安裝將會失敗。 您可以在活動記錄中找到更多詳細資料。
 
 ### <a name="i-cant-deploy-a-jar-package"></a>我無法部署 JAR 套件
 
@@ -158,9 +157,9 @@ Azure 春季雲端服務實例的名稱將用於要求底下的子功能變數�
 > [!WARNING]
 > 此程式會使用您的測試端點來公開您的環境變數。  如果您的測試端點可公開存取，或您已將網域名稱指派給您的應用程式，則請勿繼續執行該作業。
 
-1. 移至 `https://<your application test endpoint>/actuator/health` 。  
+1. 移至 `https://<your application test endpoint>/actuator/health`。  
     - 類似於 `{"status":"UP"}` 的回應會指出端點已啟用。
-    - 如果回應是負數，請在您的*POM*檔案中加入下列相依性：
+    - 如果回應是負數，請在您的*POM.xml*檔案中包含下列相依性：
 
         ```xml
             <dependency>
@@ -169,11 +168,11 @@ Azure 春季雲端服務實例的名稱將用於要求底下的子功能變數�
             </dependency>
         ```
 
-1. 啟用春季開機傳動端點後，請移至 [Azure 入口網站]，然後尋找應用程式的 [設定] 頁面。  新增具有名稱`MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`和值`*`的環境變數。 
+1. 啟用春季開機傳動端點後，請移至 [Azure 入口網站]，然後尋找應用程式的 [設定] 頁面。  新增具有名稱和值的環境變數 `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` `*` 。 
 
 1. 重新啟動您的應用程式。
 
-1. 移至`https://<your application test endpoint>/actuator/env`並檢查回應。  它看起來應該如下所示：
+1. 移至 `https://<your application test endpoint>/actuator/env` 並檢查回應。  它看起來應該如下所示：
 
     ```json
     {
@@ -189,16 +188,18 @@ Azure 春季雲端服務實例的名稱將用於要求底下的子功能變數�
     }
     ```
 
-尋找名為`systemEnvironment`的子節點。  此節點包含您應用程式的環境變數。
+尋找名為的子節點 `systemEnvironment` 。  此節點包含您應用程式的環境變數。
 
 > [!IMPORTANT]
-> 請記得先撤銷公開環境變數的設定，再讓應用程式可公開存取。  移至 [Azure 入口網站]，尋找應用程式的 [設定] 頁面，並刪除此環境變數`MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`：。
+> 請記得先撤銷公開環境變數的設定，再讓應用程式可公開存取。  移至 [Azure 入口網站]，尋找應用程式的 [設定] 頁面，並刪除此環境變數： `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` 。
 
 ### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>我找不到應用程式的計量或記錄
 
 移至 [**應用程式管理**] 以確定應用程式_狀態為 [_ 執行中] 和 [已_啟動_]。
 
-如果您可以看到來自_JVM_的計量，但沒有來自_Tomcat_的計量，請檢查`spring-boot-actuator`您的應用程式封裝中是否已啟用相依性，以及它是否已成功啟動。
+檢查以查看您的應用程式套件中是否已啟用天氣_JMX_ 。 這項功能可以使用 configuration 屬性來啟用 `spring.jmx.enabled=true` 。  
+
+檢查是否已 `spring-boot-actuator` 在應用程式封裝中啟用相依性，以及是否已成功啟動。
 
 ```xml
 <dependency>

@@ -4,19 +4,18 @@ description: 開始使用 Azure Active Directory 使用規定來向員工或來�
 services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2f06a7c88a7c17f5f93201192664c2d4a97564e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 39e76468238a911c7a9e5543bf5063d1c7b6a8b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253319"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用規定
 
@@ -52,7 +51,7 @@ Azure AD 使用規定具有下列功能：
 - 顯示使用規定活動的記錄，以進行合規性與審核。
 - 使用[Microsoft Graph api](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) （目前處於預覽狀態）來建立及管理使用規定。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要使用並設定 Azure AD 使用規定，您必須具備：
 
@@ -99,14 +98,14 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
    例如，如果您將 [到期生效時間] 設定為 [1 月 1 日]****，並將 [頻率] 設定為 [每月]****，則下列兩個使用者所遇到的到期方式將如下所示：
 
-   | User | 第一次接受日期 | 第一次到期日期 | 第二次到期日期 | 第三次到期日期 |
+   | 使用者 | 第一次接受日期 | 第一次到期日期 | 第二次到期日期 | 第三次到期日期 |
    | --- | --- | --- | --- | --- |
    | Alice | 1 月 1 日 | 2 月 1 日 | 3 月 1 日 | 4 月 1 日 |
    | Bob | 1 月 15 日 | 2 月 1 日 | 3 月 1 日 | 4 月 1 日 |
 
 1. 使用 [**重新接受前需要的期間（天）** ] 設定，指定使用者必須重新接受使用規定之前的天數。 這可讓使用者遵循自己的排程。 例如，如果您將期間設定為 **30** 天，則下列兩個使用者所遇到的到期方式將如下所示：
 
-   | User | 第一次接受日期 | 第一次到期日期 | 第二次到期日期 | 第三次到期日期 |
+   | 使用者 | 第一次接受日期 | 第一次到期日期 | 第二次到期日期 | 第三次到期日期 |
    | --- | --- | --- | --- | --- |
    | Alice | 1 月 1 日 | 1 月 31 日 | 3 月 2 日 | 4 月 1 日 |
    | Bob | 1 月 15 日 | 2 月 14 日 | 3 月 16 日 | 4 月 15 日 |
@@ -129,7 +128,7 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
     自訂條件式存取原則可讓您更精細地使用特定雲端應用程式或使用者群組。 如需詳細資訊，請參閱[快速入門：在存取雲端應用程式之前，必須接受使用](require-tou.md)規定。
 
-1. 按一下頁面底部的 [新增]  。
+1. 按一下 [建立]。
 
    如果您已選取自訂的條件式存取範本，則會出現新的畫面，讓您建立自訂的條件式存取原則。
 
@@ -225,7 +224,7 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 
    ![[編輯使用規定] 窗格顯示 [名稱] 和 [展開] 選項](./media/terms-of-use/edit-tou.png)
 
-1. 按一下 [儲存]**** 以儲存您的變更。
+1. 按一下 [確定] 儲存變更。
 
    儲存您的變更後，使用者將不需要重新接受這些編輯後的規定。
 
@@ -366,7 +365,7 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 答：是，使用者可以選取其他頁面的超連結，但不支援檔中區段的連結。
 
 **問：使用規定是否支援多種語言？**<br />
-答： 會。 目前，系統管理員可以針對單一使用規定來設定108不同的語言。 系統管理員可以上傳多個 PDF 文件，並以相對應的語言 (最多 108 個) 標記那些文件。 當使用者登入時，我們會查看其瀏覽器語言偏好設定，並顯示相符的文件。 如果沒有相符項目，我們將會顯示預設文件，也就是第一個上傳的文件。
+A：是。 目前，系統管理員可以針對單一使用規定來設定108不同的語言。 系統管理員可以上傳多個 PDF 文件，並以相對應的語言 (最多 108 個) 標記那些文件。 當使用者登入時，我們會查看其瀏覽器語言偏好設定，並顯示相符的文件。 如果沒有相符項目，我們將會顯示預設文件，也就是第一個上傳的文件。
 
 **問：何時觸發使用規定？**<br />
 答：登入體驗期間即會觸發使用規定。
@@ -387,7 +386,7 @@ Azure AD 使用規定會使用 PDF 格式來呈現內容。 此 PDF 檔案可以
 答：如果您已設定 Azure AD 使用規定和[Intune 條款及條件](/intune/terms-and-conditions-create)，使用者將必須接受這兩者。 如需詳細資訊，請參閱[為您組織的部落格文章選擇正確的條款解決方案](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409) \(英文\)。
 
 **問：哪些端點會使用「使用規定」服務來進行驗證？**<br />
-答：使用規定利用下列端點進行驗證： https://tokenprovider.termsofuse.identitygovernance.azure.com和。 https://account.activedirectory.windowsazure.com 如果您的組織有允許的 Url 清單來進行註冊，您將需要將這些端點新增至允許清單，以及用於登入的 Azure AD 端點。
+答：使用規定利用下列端點進行驗證： https://tokenprovider.termsofuse.identitygovernance.azure.com 和 https://account.activedirectory.windowsazure.com 。 如果您的組織有允許的 Url 清單來進行註冊，您將需要將這些端點新增至允許清單，以及用於登入的 Azure AD 端點。
 
 ## <a name="next-steps"></a>後續步驟
 

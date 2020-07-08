@@ -6,12 +6,11 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 54379c65850fa210e5523b53a64fe89705ed1f15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 777febb86e6a1fa719b6a7d74c32defebcf3b58c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79532105"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099818"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>針對適用於 MariaDB 的 Azure 資料庫使用虛擬網路服務端點和規則
 
@@ -24,7 +23,7 @@ ms.locfileid: "79532105"
 > [!NOTE]
 > 如果適用於 MariaDB 的 Azure 資料庫是針對「一般用途」和「記憶體最佳化」伺服器來部署的，則此功能可在所有 Azure 區域中使用。
 
-<a name="anch-terminology-and-description-82f" />
+<a name="anch-terminology-and-description-82f"></a>
 
 ## <a name="terminology-and-description"></a>術語和描述
 
@@ -32,7 +31,7 @@ ms.locfileid: "79532105"
 
 **子網路：** 虛擬網路包含**子網路**。 您有的任何 Azure 虛擬機器 (VM) 會指派給子網路。 一個子網路可以包含多個 VM 或其他計算節點。 計算虛擬網路外部的節點無法存取虛擬網路，除非您設定安全性來允許存取。
 
-**虛擬網路服務端點：**[虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]是一個子網，其屬性值包含一或多個正式的 Azure 服務類型名稱。 本文中我們探討類型名稱 **Microsoft.Sql**，它參考名為 SQL Database 的 Azure 服務。 此服務標籤也會套用至適用於 MariaDB、MySQL 和 PostgreSQL 服務的 Azure 資料庫。 請務必注意，當您將 **Microsoft.Sql** 服務標籤套用到 VNet 服務端點時，它將會針對子網路上的所有 Azure SQL Database、適用於 MariaDB 的 Azure 資料庫、適用於 MySQL 的 Azure 資料庫，以及適用於 PostgreSQL 的 Azure 資料庫伺服器設定服務端點流量。
+**虛擬網路服務端點：** [虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]是一個子網路，其屬性值包含一或多個正式的 Azure 服務類型名稱。 本文中我們探討類型名稱 **Microsoft.Sql**，它參考名為 SQL Database 的 Azure 服務。 此服務標籤也會套用至適用於 MariaDB、MySQL 和 PostgreSQL 服務的 Azure 資料庫。 請務必注意，當您將 **Microsoft.Sql** 服務標籤套用到 VNet 服務端點時，它將會針對子網路上的所有 Azure SQL Database、適用於 MariaDB 的 Azure 資料庫、適用於 MySQL 的 Azure 資料庫，以及適用於 PostgreSQL 的 Azure 資料庫伺服器設定服務端點流量。
 
 **虛擬網路規則：** 適用於 MariaDB 的 Azure 資料庫伺服器的虛擬網路規則，是列於適用於 MariaDB 的 Azure 資料庫伺服器之存取控制清單 (ACL) 中的子網路。 子網路必須包含 **Microsoft.Sql** 類型名稱，才能列在適用於 MariaDB 的 Azure 資料庫伺服器的 ACL 中。
 
@@ -44,7 +43,7 @@ ms.locfileid: "79532105"
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-benefits-of-a-vnet-rule-68b"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>虛擬網路規則的優點
 
@@ -68,7 +67,7 @@ ms.locfileid: "79532105"
 
 不過，截至 2018 年 8 月，適用於 MariaDB 的 Azure 資料庫服務還不是可直接指派給子網路的服務。
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>虛擬網路規則的詳細資料
 
@@ -101,7 +100,7 @@ RBAC 替代方案：**
 > 在某些案例中，適用於 MariaDB 的 Azure 資料庫和 VNet 子網路是位於不同的訂用帳戶。 在這些情況下，您必須確保下列設定：
 > - 兩個訂用帳戶在相同的 Azure Active Directory 租用戶中。
 > - 使用者具備啟動作業的必要權限，例如啟用服務端點、將 VNet 子網路新增至指定的伺服器。
-> - 請確定這兩個訂用帳戶都已註冊**Microsoft .sql**資源提供者。 如需詳細資訊，請參閱[資源管理員-註冊][resource-manager-portal]
+> - 請確定這兩個訂用帳戶都已註冊**DBforMariaDB**資源提供**者。** 如需詳細資訊，請參閱 [resource-manager-registration][resource-manager-portal]
 
 ## <a name="limitations"></a>限制
 

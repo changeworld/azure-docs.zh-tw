@@ -4,19 +4,18 @@ description: 瞭解如何在 Azure Active Directory （Azure AD）中設定條�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cedec7f0bd51460796d8138f8d481d2982098f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7986ca441f7d274670d8fa0238e7dcfa01497b6f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74379995"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253166"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>如何：要求使用條件式存取從不受信任的網路存取 MFA   
 
@@ -29,7 +28,7 @@ Azure Active Directory (Azure AD) 可讓使用者從任何位置單一登入到�
 本文假設您已熟悉以下各項： 
 
 - Azure AD 條件式存取的[基本概念](overview.md) 
-- 在 Azure 入口網站中設定條件式存取原則的[最佳作法](best-practices.md)
+- 在 Azure 入口網站中設定條件式存取原則的[最佳做法](best-practices.md)
 
 ## <a name="scenario-description"></a>案例描述
 

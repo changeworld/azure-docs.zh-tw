@@ -8,12 +8,11 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2476cf360909374f711564fb5fad5c9e0706083d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562469"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195861"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure 資料箱閘道安全性和資料保護
 
@@ -27,7 +26,6 @@ ms.locfileid: "82562469"
 - **資料箱閘道裝置**]。 您在提供之系統的虛擬機器中布建的虛擬裝置。 此虛擬裝置可用來將您的內部部署資料匯入至 Azure。
 - **連線到裝置的用戶端/主機**。 您基礎結構中的用戶端會連線到資料箱閘道裝置，並包含需要保護的資料。
 - **雲端存放裝置**。 Azure 雲端平臺中儲存資料的位置。 此位置通常是連結至您所建立資料箱閘道資源的儲存體帳戶。
-
 
 ## <a name="data-box-gateway-service-protection"></a>資料箱閘道服務保護
 
@@ -64,7 +62,6 @@ ms.locfileid: "82562469"
 [!INCLUDE [data-box-edge-gateway-password-best-practices](../../includes/data-box-edge-gateway-password-best-practices.md)]
 - 使用本機 web UI 來[變更密碼](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)。 如果您變更密碼，請務必通知所有遠端存取使用者，使其不會發生登入問題。
 
-
 ## <a name="protect-your-data"></a>保護您的資料
 
 本節說明可保護傳輸中和已儲存資料的資料箱閘道安全性功能。
@@ -77,10 +74,18 @@ ms.locfileid: "82562469"
 
 [!INCLUDE [data-box-edge-gateway-data-flight](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>透過儲存體帳戶保護資料安全
+### <a name="protect-data-using-storage-accounts"></a>使用儲存體帳戶保護資料
 
 [!INCLUDE [data-box-edge-gateway-data-storage-accounts](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
+
 - 輪替並定期[同步儲存體帳戶金鑰](data-box-gateway-manage-shares.md#sync-storage-keys)，以協助保護您的儲存體帳戶免于未經授權的使用者。
+
+### <a name="protect-the-device-data-using-bitlocker"></a>使用 BitLocker 保護裝置資料
+
+若要保護資料箱閘道虛擬機器上的虛擬磁片，建議您啟用 BitLocker。 根據預設，不會啟用 BitLocker。 如需詳細資訊，請參閱
+
+- [Hyper-V 管理員中的加密支援設定](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [虛擬機器中的 BitLocker 支援](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>管理個人資訊
 

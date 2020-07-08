@@ -5,14 +5,13 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 06/08/2020
 ms.author: victorh
-ms.openlocfilehash: d1ec04a0c16feb6d404018ff9538b9572e1d71c2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: cf896f6783cca0a61892c43860328d87ada56a9c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649605"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791481"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -176,7 +175,7 @@ Azure 防火牆的初始輸送量容量為 2.5 - 3 Gbps，並擴增為 30 Gbps�
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火牆需要多久的時間來擴增？
 
-當平均輸送量或 CPU 耗用量在 60% 時，Azure 防火牆會逐漸調整。 擴增需要五到七分鐘。 執行效能測試時，請確定您至少測試 10 到 15 分鐘，並起始新連線以利用新建立的防火牆節點。
+當平均輸送量或 CPU 耗用量在 60% 時，Azure 防火牆會逐漸調整。 擴增需要五到七分鐘。 執行效能測試時，請確定您至少測試了10到15分鐘，並開始新的連線以利用新建立的防火牆節點。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>根據預設，Azure 防火牆允許存取 Active Directory 嗎？
 
@@ -211,3 +210,11 @@ TCP Ping 不會實際連線到目標 FQDN。 這是因為 Azure 防火牆的背�
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>IP 群組支援的 IP 位址數目是否有限制？
 
 是。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額與條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)
+
+## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>我可以將 IP 群組移到另一個資源群組嗎？
+
+否，目前不支援將 IP 群組移至另一個資源群組。
+
+## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure 防火牆的 TCP 閒置超時為何？
+
+網路防火牆的標準行為是確保 TCP 連線保持運作狀態，並在沒有活動時立即關閉。 Azure 防火牆 TCP 閒置超時時間為4分鐘。 這是無法設定的。 如果閒置時間超過超時值，則不保證會維護 TCP 或 HTTP 會話。 常見作法是使用 TCP Keep-Alive。 此作法可讓連線保持長時間連線。 如需詳細資訊，請參閱[.net 範例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。

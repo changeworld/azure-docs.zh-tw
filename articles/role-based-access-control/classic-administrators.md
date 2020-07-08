@@ -8,18 +8,17 @@ manager: mtillman
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cacdeee4512c512b058be96c4fe3a829c2933f06
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 298ec15700537f2368ef33ead267e85f5f22bfd7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734853"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791787"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 傳統訂用帳戶管理員
 
@@ -38,17 +37,17 @@ Microsoft 建議您使用 Azure 角色型存取控制（Azure RBAC）來管理 A
 
     共同管理員只能在訂用帳戶範圍內指派。
 
-1. 按一下 **[存取控制（IAM）**]。
+1. 按一下 [存取控制 (IAM)]。
 
 1. 按一下 [傳統管理員]**** 索引標籤。
 
     ![開啟傳統系統管理員的螢幕擷取畫面](./media/classic-administrators/classic-administrators.png)
 
-1. 按一下 [**新增** > ] [新增**共同管理員**] 以開啟 [新增共同管理員] 窗格。
+1. 按一下 [**新增**  >  ] [新增**共同管理員**] 以開啟 [新增共同管理員] 窗格。
 
     如果 [新增共同管理員] 選項已停用，則表示您沒有權限。
 
-1. 選擇要新增的使用者，然後按一下 [新增]****。
+1. 選取您要新增的使用者，然後按一下 [**新增**]。
 
     ![新增共同管理員的螢幕擷取畫面](./media/classic-administrators/add-coadmin.png)
 
@@ -83,13 +82,13 @@ Microsoft 建議您使用 Azure 角色型存取控制（Azure RBAC）來管理 A
 
 1. 開啟[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，並選取訂用帳戶。
 
-1. 按一下 **[存取控制（IAM）**]。
+1. 按一下 [存取控制 (IAM)]。
 
 1. 按一下 [傳統管理員]**** 索引標籤。
 
 1. 在要移除的共同管理員旁邊新增核取記號。
 
-1. 按一下 [移除]****。
+1. 按一下 **[移除]** 。
 
 1. 在出現的訊息方塊中，按一下 [確定]****。
 
@@ -126,9 +125,9 @@ Microsoft 建議您使用 Azure 角色型存取控制（Azure RBAC）來管理 A
 | 帳戶系統管理員帳戶 | 可以將服務管理員變更為不同的 Microsoft 帳戶嗎？ | 可以將服務管理員變更為相同目錄中的 Azure AD 帳戶嗎？ | 可以將服務管理員變更為不同目錄中的 Azure AD 帳戶嗎？ |
 | --- | --- | --- | --- |
 | Microsoft 帳戶 | 是 | 否 | 否 |
-| Azure AD 帳戶 | 是 | 是 | 否 |
+| Azure AD 帳戶 | Yes | 是 | 否 |
 
-如果帳戶管理員是 Azure AD 帳戶，您可以將服務管理員變更為相同目錄中的 Azure AD 帳戶，而不是在不同的目錄中。 例如， abby@contoso.com可以將服務管理員變更為bob@contoso.com，但無法將服務管理員變更為john@notcontoso.com ，除非john@notcontoso.com contoso.com 目錄中有存在。
+如果帳戶管理員是 Azure AD 帳戶，您可以將服務管理員變更為相同目錄中的 Azure AD 帳戶，而不是在不同的目錄中。 例如， abby@contoso.com 可以將服務管理員變更為 bob@contoso.com ，但無法將服務管理員變更為， john@notcontoso.com 除非 john@notcontoso.com contoso.com 目錄中有存在。
 
 如需有關 Microsoft 帳戶和 Azure AD 帳戶的詳細資訊，請參閱[什麼是 Azure Active Directory？](../active-directory/fundamentals/active-directory-whatis.md)。
 
@@ -142,7 +141,7 @@ Microsoft 建議您使用 Azure 角色型存取控制（Azure RBAC）來管理 A
 
 1. 開啟[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，並選取訂用帳戶。
 
-1. 按一下 **[屬性]**。
+1. 按一下 **[屬性]** 。
 
     訂用帳戶的帳戶管理員會顯示在 [**帳戶管理員**] 方塊中。
 

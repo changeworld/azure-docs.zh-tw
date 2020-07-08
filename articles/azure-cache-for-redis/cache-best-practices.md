@@ -6,12 +6,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84457298"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Cache for Redis 的最佳做法 
 藉由遵循這些最佳作法，您可以協助最大化 Azure Cache for Redis 實例的效能和符合成本效益的使用。
@@ -38,6 +37,8 @@ ms.locfileid: "80478618"
  * **避免耗費資源的作業**-某些 Redis 作業（例如[KEYS](https://redis.io/commands/keys)命令）*非常*昂貴，應予以避免。  如需詳細資訊，請參閱關於[長時間執行命令](cache-troubleshoot-server.md#long-running-commands)的一些考慮
 
  * **使用 tls 加密**-Azure Cache for Redis 預設需要 TLS 加密通訊。  目前支援 TLS 版本1.0、1.1 和1.2。  不過，TLS 1.0 和1.1 位於整個產業的淘汰路徑，因此，請盡可能使用 TLS 1.2。  如果您的用戶端程式庫或工具不支援 TLS，則可以[透過 Azure 入口網站](cache-configure.md#access-ports)或[管理 api](https://docs.microsoft.com/rest/api/redis/redis/update)來啟用未加密的連線。  在無法進行加密連線的情況下，建議將快取和用戶端應用程式放入虛擬網路中。  如需有關在虛擬網路快取案例中使用哪些埠的詳細資訊，請參閱此[表格](cache-how-to-premium-vnet.md#outbound-port-requirements)。
+ 
+ * **閒置超時**-Azure Redis 目前有10分鐘的連線閒置時間，因此應設定為小於10分鐘。
  
 ## <a name="memory-management"></a>記憶體管理
 在您的 Redis 伺服器實例中，您可能會想要考慮的記憶體使用量有數個相關事項。  以下為幾個範例：
@@ -67,7 +68,7 @@ ms.locfileid: "80478618"
 如果您想要測試程式碼在錯誤情況下的運作方式，請考慮使用[重新開機功能](cache-administration.md#reboot)。 重新開機可讓您查看連接短暫中斷如何影響您的應用程式。
 
 ## <a name="performance-testing"></a>效能測試
- * 在撰寫您自己的效能測試之前，請先**使用`redis-benchmark.exe` **來取得可能輸送量/延遲的風格。  Redis-基準測試檔可在[這裡找到](https://redis.io/topics/benchmarks)。  請注意，redis-基準測試不支援 TLS，因此您必須在執行測試之前，[透過入口網站啟用非 TLS 埠](cache-configure.md#access-ports)。  [您可以在這裡找到 windows 相容版本的 redis-benchmark.exe](https://github.com/MSOpenTech/redis/releases)
+ * **開始使用 `redis-benchmark.exe` **在撰寫您自己的效能測試之前，先瞭解可能的輸送量/延遲。  Redis-基準測試檔可在[這裡找到](https://redis.io/topics/benchmarks)。  請注意，redis-基準測試不支援 TLS，因此您必須在執行測試之前，[透過入口網站啟用非 TLS 埠](cache-configure.md#access-ports)。  [您可以在這裡找到 windows 相容版本的 redis-benchmark.exe](https://github.com/MSOpenTech/redis/releases)
  * 用於測試的用戶端 VM 應該位於與您的 Redis 快取實例**相同的區域中**。
  * 我們建議您的用戶端**使用 DV2 VM 系列**，因為它們具有較佳的硬體，並會提供最佳的結果。
  * 請確定您所使用的用戶端 VM，至少具有與所測試快取相同的*計算和頻寬*。 
@@ -81,10 +82,10 @@ ms.locfileid: "80478618"
  
 ### <a name="redis-benchmark-examples"></a>Redis-基準測試範例
 **測試前設定**：準備快取實例，並提供以下所列延遲和輸送量測試命令所需的資料。
-> redis-benchmark.exe .exe-h yourcache.redis.cache.windows.net-yourAccesskey-t 設定-n 10-d 1024 
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
 
 **測試延遲**：使用1k 承載測試 GET 要求。
-> redis-benchmark.exe .exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t d 1024-P 50-c 4
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t d 1024-P 50-c 4
 
 **若要測試輸送量：** 使用1k 承載的管線 GET 要求。
-> redis-benchmark.exe .exe-h yourcache.redis.cache.windows.net-yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50

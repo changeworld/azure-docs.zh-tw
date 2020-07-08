@@ -11,24 +11,23 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: df06c4c55941f4424d6b90d2846af17bf055b2e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: df5755c585d99333bf0c64ca08705309b4d4fc58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253115"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>案例：呼叫 web Api 的 Daemon 應用程式
 
 瞭解您所需的一切，以建立會呼叫 web Api 的 daemon 應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="overview"></a>概觀
 
-您的應用程式可以取得權杖，以代表本身（而非代表使用者）呼叫 Web API。 此案例適用于 daemon 應用程式。 它會使用標準 OAuth 2.0[用戶端認證](v2-oauth2-client-creds-grant-flow.md)授與。
+您的應用程式可以取得權杖，以代表本身（而非代表使用者）呼叫 Web API。 此案例適用于 daemon 應用程式。 其會使用標準 OAuth 2.0 [用戶端認證](v2-oauth2-client-creds-grant-flow.md)授與。
 
 ![精靈應用程式](./media/scenario-daemon-app/daemon-app.svg)
 
@@ -38,14 +37,14 @@ ms.locfileid: "80885458"
 - 執行批次作業的桌面應用程式（例如 Windows 上的 Windows 服務或 Linux 上的 daemon 進程），或在背景執行的作業系統服務
 - 需要操作目錄，而不是特定使用者的 Web Api
 
-另一個常見的情況是，非 daemon 應用程式會使用用戶端認證：即使是代表使用者採取行動，他們還是必須以自己的身分識別來存取 Web API 或資源，以因應技術因素。 例如，存取 Azure Key Vault 中的密碼或快取的 Azure SQL 資料庫。
+另一個常見的情況是，非 daemon 應用程式會使用用戶端認證：即使是代表使用者採取行動，他們還是必須以自己的身分識別來存取 Web API 或資源，以因應技術因素。 例如，存取 Azure Key Vault 中的密碼或快取的 Azure SQL Database。
 
 針對自己的身分識別取得權杖的應用程式：
 
 - 是機密用戶端應用程式。 這些應用程式可讓他們獨立于使用者之外存取資源，因此必須證明其身分識別。 它們也是敏感性應用程式。 他們必須由 Azure Active Directory （Azure AD）租使用者系統管理員核准。
 - 已註冊具有 Azure AD 的密碼（應用程式密碼或憑證）。 此密碼會在呼叫 Azure AD 時傳入，以取得權杖。
 
-## <a name="specifics"></a>瞭解
+## <a name="specifics"></a>特性
 
 > [!IMPORTANT]
 >
