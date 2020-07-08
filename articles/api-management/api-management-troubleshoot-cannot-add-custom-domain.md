@@ -14,27 +14,26 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
 ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430583"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>無法更新 API 管理服務主機名
 
 本文說明當您新增 Azure API 管理服務的自訂網域時，可能會遇到的「無法更新 API 管理服務主機名」錯誤。 本文提供可協助您解決問題的疑難排解步驟。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 當您嘗試使用 Azure Key Vault 的憑證，為您的 API 管理服務新增自訂網域時，您會收到下列錯誤訊息：
 
-- 無法更新 API 管理服務主機名。 對資源 'https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0' 的要求失敗，StatusCode：禁止使用 RequestId：。 例外狀況訊息：作業傳回不正確狀態碼「禁止」。
+- 無法更新 API 管理服務主機名。 對資源 ' ' 的要求 https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0 失敗，StatusCode：禁止使用 RequestId：。 例外狀況訊息：作業傳回不正確狀態碼「禁止」。
 
 ## <a name="cause"></a>原因
 
 API 管理服務沒有許可權可存取您嘗試用於自訂網域的金鑰保存庫。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 若要解決此問題，請依照下列步驟執行︰
 

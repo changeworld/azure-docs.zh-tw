@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: b1d81296c996ab09cb6482cb970496779ccf8bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435487"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Phoenix
@@ -72,7 +71,7 @@ WHERE metric_type = 'm';
 
 略過掃描會使用 HBase 篩選的 `SEEK_NEXT_USING_HINT` 列舉。 略過掃描會使用 `SEEK_NEXT_USING_HINT`，追蹤每個資料行中搜尋的索引鍵集合或索引鍵範圍。 然後，略過掃描會使用在篩選評估期間傳遞給它的金鑰，並判斷它是否為其中一個組合。 如果不是，略過掃描會評估下一個最高索引鍵，並跳至該處。
 
-### <a name="transactions"></a>異動
+### <a name="transactions"></a>交易
 
 HBase 提供資料列層級交易，而 Phoenix 會與 [Tephra](https://tephra.io/) 整合，以使用完整 [ACID](https://en.wikipedia.org/wiki/ACID) 語意新增跨資料列和跨資料表交易支援。
 
@@ -134,7 +133,7 @@ HDInsight HBase 叢集包括 [Ambari UI](hdinsight-hadoop-manage-ambari.md)，�
 
     ![Ambari Phoenix SQL 設定區段](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [在 HDInsight 中搭配 Linux 型 HBase 叢集使用 Apache Phoenix](hbase/apache-hbase-query-with-phoenix.md)
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74973436"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>如何使用您的裝置佈建服務執行 X.509 CA 憑證擁有權證明
@@ -31,7 +30,7 @@ ms.locfileid: "74973436"
 
 1. 在 Azure 入口網站中，瀏覽至您的佈建服務，並從左側功能表開啟 [憑證]****。 
 2. 按一下 [新增]**** 以新增新的憑證。
-3. 為您的憑證輸入易記的顯示名稱。 瀏覽至代表 X.509 憑證公開部分的 .cer 或 .pem 檔案。 按一下 [上傳]  。
+3. 為您的憑證輸入易記的顯示名稱。 瀏覽至代表 X.509 憑證公開部分的 .cer 或 .pem 檔案。 按一下 [上傳] 。
 4. 一旦取得您的憑證已成功上傳的通知後，請按一下 [儲存]****。
 
     ![Upload certificate](./media/how-to-verify-certificates/add-new-cert.png)  
@@ -40,7 +39,7 @@ ms.locfileid: "74973436"
 
 5. 按一下您在上一個步驟中新增的憑證。
 
-6. 在 [憑證詳細資料]**** 中，按一下 [產生驗證碼]****。
+6. 在 [憑證詳細資料]  中，按一下 [產生驗證碼]  。
 
 7. 佈建服務會建立**驗證碼**，您可以用它來驗證憑證擁有權。 將程式碼複製到剪貼簿。 
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75397460"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中使用字串
@@ -27,7 +26,7 @@ ms.locfileid: "75397460"
 
 
 ## <a name="strings-and-escaping-them"></a>字串與字串逸出
-字串值是被單引號字元或雙引號字元括住。 反斜線\\（）是用來將字元轉義到後面的字元，例如 \t 代表 tab、\n 代表分行符號，以及\"引號字元本身。
+字串值是被單引號字元或雙引號字元括住。 反斜線（ \\ ）是用來將字元轉義到後面的字元，例如 \t 代表 tab、\n 代表分行符號，以及 \" 引號字元本身。
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -46,46 +45,46 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>字串比較
 
-運算子       |描述                         |區分大小寫|範例 (結果為 `true`)
+運算子       |說明                         |區分大小寫|範例 (結果為 `true`)
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |Equals                              |是           |`"aBc" == "aBc"`
-`!=`           |不等於                          |是           |`"abc" != "ABC"`
-`=~`           |Equals                              |否            |`"abc" =~ "ABC"`
-`!~`           |不等於                          |否            |`"aBc" !~ "xyz"`
-`has`          |右側是左側中的完整詞彙 |否|`"North America" has "america"`
-`!has`         |右側不是左側中的完整詞彙       |否            |`"North America" !has "amer"` 
-`has_cs`       |右側是左側中的完整詞彙 |是|`"North America" has_cs "America"`
-`!has_cs`      |右側不是左側中的完整詞彙       |是            |`"North America" !has_cs "amer"` 
-`hasprefix`    |右側是左側中的詞彙前置詞         |否            |`"North America" hasprefix "ame"`
-`!hasprefix`   |右側不是左側中的詞彙前置詞     |否            |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`    |右側是左側中的詞彙前置詞         |是            |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs`   |右側不是左側中的詞彙前置詞     |是            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |右側是左側中的詞彙後置詞         |否            |`"North America" hassuffix "ica"`
-`!hassuffix`   |右側不是左側中的詞彙後置詞     |否            |`"North America" !hassuffix "americ"`
-`hassuffix_cs`    |右側是左側中的詞彙後置詞         |是            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |右側不是左側中的詞彙後置詞     |是            |`"North America" !hassuffix_cs "icA"`
-`contains`     |右側是左側的子項目  |否            |`"FabriKam" contains "BRik"`
-`!contains`    |u.4hk4右側未出現在左側中           |否            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |右側是左側的子項目  |是           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |u.4hk4右側未出現在左側中           |是           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |右側是左側的初始項目|否            |`"Fabrikam" startswith "fab"`
-`!startswith`  |右側不是左側的初始項目|否        |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |右側是左側的初始項目|是            |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`  |右側不是左側的初始項目|是        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |右側是左側的結尾項目|否             |`"Fabrikam" endswith "Kam"`
-`!endswith`    |右側不是左側的結尾項目|否         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |右側是左側的結尾項目|是             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |右側不是左側的結尾項目|是         |`"Fabrikam" !endswith "brik"`
-`matches regex`|左側包含右側的相符項        |是           |`"Fabrikam" matches regex "b.*k"`
-`in`           |等於其中一個元素       |是           |`"abc" in ("123", "345", "abc")`
-`!in`          |不等於任何元素   |是           |`"bca" !in ("123", "345", "abc")`
+`==`           |等於                              |Yes           |`"aBc" == "aBc"`
+`!=`           |不等於                          |Yes           |`"abc" != "ABC"`
+`=~`           |等於                              |No            |`"abc" =~ "ABC"`
+`!~`           |不等於                          |No            |`"aBc" !~ "xyz"`
+`has`          |右側是左側中的完整詞彙 |No|`"North America" has "america"`
+`!has`         |右側不是左側中的完整詞彙       |No            |`"North America" !has "amer"` 
+`has_cs`       |右側是左側中的完整詞彙 |Yes|`"North America" has_cs "America"`
+`!has_cs`      |右側不是左側中的完整詞彙       |Yes            |`"North America" !has_cs "amer"` 
+`hasprefix`    |右側是左側中的詞彙前置詞         |No            |`"North America" hasprefix "ame"`
+`!hasprefix`   |右側不是左側中的詞彙前置詞     |No            |`"North America" !hasprefix "mer"` 
+`hasprefix_cs`    |右側是左側中的詞彙前置詞         |Yes            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |右側不是左側中的詞彙前置詞     |Yes            |`"North America" !hasprefix_cs "CA"` 
+`hassuffix`    |右側是左側中的詞彙後置詞         |No            |`"North America" hassuffix "ica"`
+`!hassuffix`   |右側不是左側中的詞彙後置詞     |No            |`"North America" !hassuffix "americ"`
+`hassuffix_cs`    |右側是左側中的詞彙後置詞         |Yes            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |右側不是左側中的詞彙後置詞     |Yes            |`"North America" !hassuffix_cs "icA"`
+`contains`     |右側是左側的子項目  |No            |`"FabriKam" contains "BRik"`
+`!contains`    |u.4hk4右側未出現在左側中           |No            |`"Fabrikam" !contains "xyz"`
+`contains_cs`   |右側是左側的子項目  |Yes           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |u.4hk4右側未出現在左側中           |Yes           |`"Fabrikam" !contains_cs "Kam"`
+`startswith`   |右側是左側的初始項目|No            |`"Fabrikam" startswith "fab"`
+`!startswith`  |右側不是左側的初始項目|No        |`"Fabrikam" !startswith "kam"`
+`startswith_cs`   |右側是左側的初始項目|Yes            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |右側不是左側的初始項目|Yes        |`"Fabrikam" !startswith_cs "fab"`
+`endswith`     |右側是左側的結尾項目|No             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |右側不是左側的結尾項目|No         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |右側是左側的結尾項目|Yes             |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`    |右側不是左側的結尾項目|Yes         |`"Fabrikam" !endswith "brik"`
+`matches regex`|左側包含右側的相符項        |Yes           |`"Fabrikam" matches regex "b.*k"`
+`in`           |等於其中一個元素       |Yes           |`"abc" in ("123", "345", "abc")`
+`!in`          |不等於任何元素   |Yes           |`"bca" !in ("123", "345", "abc")`
 
 
 ## <a name="countof"></a>countof
 
 計算子字串在字串中的出現次數。 可以比對純文字或使用規則運算式。 純文字字串比對可能會重疊，而規則運算式比對則不會。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>Syntax
 ```
 countof(text, search [, kind])
 ```
@@ -93,9 +92,9 @@ countof(text, search [, kind])
 ### <a name="arguments"></a>引數：
 - `text` - 輸入字串 
 - `search` - 要比對內部文字的純文字或規則運算式。
-- `kind` - _標準_ | _RegEx_ （預設值： normal）。
+- `kind` - _正常_  | _RegEx_ （預設值： normal）。
 
-### <a name="returns"></a>傳回值
+### <a name="returns"></a>傳回
 
 搜尋字串可在容器中相符的次數。 純文字字串比對可能會重疊，而規則運算式比對則不會。
 
@@ -137,7 +136,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text` - 要搜尋的字串。
 - `typeLiteral` - 選擇性的型別常值 (例如 typeof(long))。 如果提供，所擷取的子字串會轉換為此類型。
 
-### <a name="returns"></a>傳回值
+### <a name="returns"></a>傳回
 針對指定擷取群組 captureGroup 比對的子字串，選擇性地轉換為 typeLiteral。
 如果沒有相符項目或型別轉換失敗，則傳回 Null。
 
@@ -231,7 +230,7 @@ print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 
 用另一個字串取代所有規則運算式相符項目。 
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>Syntax
 
 ```
 replace(regex, rewrite, input_text)
@@ -243,7 +242,7 @@ replace(regex, rewrite, input_text)
 - `rewrite` - 針對由進行比對之規則運算式所進行之比對的取代規則運算式。 使用 \0 來代表整個相符項目、\1 來代表第一個擷取群組，\2 和以上的數字來代表後續的擷取群組。
 - `input_text` - 要在其中搜尋的輸入字串。
 
-### <a name="returns"></a>傳回值
+### <a name="returns"></a>傳回
 以重寫的評估取代規則運算式之所有相符項目後的文字。 相符項目不會重疊。
 
 ### <a name="examples"></a>範例
@@ -266,7 +265,7 @@ SecurityEvent
 
 根據指定的分隔符號分割給定字串，並傳回結果子字串的陣列。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>Syntax
 ```
 split(source, delimiter [, requestedIndex])
 ```
@@ -323,7 +322,7 @@ print strlen("hello")   // result: 5
 
 從指定索引開始擷取給定來源字串中的子字串。 (選擇性) 您可以指定所要求子字串的長度。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>Syntax
 ```
 substring(source, startingIndex [, length])
 ```

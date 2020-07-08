@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
 ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75378427"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 存取和管理 OneDrive 連接器中的檔案
@@ -38,7 +37,7 @@ ms.locfileid: "75378427"
 
 觸發程序是可用來啟動邏輯應用程式中所定義之工作流程的事件。 觸發程序會以您想要的間隔和頻率「輪詢」服務。 [深入了解觸發程序](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
-1. 在邏輯應用程式設計工具中`onedrive` ，輸入以取得觸發程式的清單：  
+1. 在邏輯應用程式設計工具中，輸入 `onedrive` 以取得觸發程式的清單：  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -66,7 +65,7 @@ ms.locfileid: "75378427"
 
 2. 選擇 [新增動作] ****。
 
-3. 在 [搜尋] 方塊中`onedrive` ，輸入以取得所有可用動作的清單。
+3. 在 [搜尋] 方塊中，輸入 `onedrive` 以取得所有可用動作的清單。
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 

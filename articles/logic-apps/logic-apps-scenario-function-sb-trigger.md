@@ -7,17 +7,16 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75428712"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>使用 Azure Functions 和 Azure 服務匯流排來呼叫或觸發邏輯應用程式
 
 當您需要部署長時間執行的接聽程式或工作時，您可以使用[Azure Functions](../azure-functions/functions-overview.md)來觸發邏輯應用程式。 例如，您可以建立 Azure 函式來接聽[Azure 服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)佇列，並立即引發邏輯應用程式做為推播觸發程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -25,7 +24,7 @@ ms.locfileid: "75428712"
 
 * Azure 函數應用程式，這是 Azure 函式的容器。 如果您沒有函式應用程式，請[先建立函式應用程式](../azure-functions/functions-create-first-azure-function.md)，並務必選取 [.net] 做為執行時間堆疊。
 
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 ## <a name="create-logic-app"></a>建立邏輯應用程式
 
@@ -47,7 +46,7 @@ ms.locfileid: "75428712"
 
    如果您沒有結構描述，但是有 JSON 格式的範例承載，即可從該承載產生 JSON 結構描述。
 
-   1. 在要求觸發程序中，選取 [使用範例承載來產生結構描述]****。
+   1. 在要求觸發程序中，選取 [使用範例承載來產生結構描述]。
 
    1. 在 [**輸入或貼上範例 JSON**承載] 底下，輸入您的範例承載，然後選取 [**完成**]。
 
@@ -113,17 +112,17 @@ ms.locfileid: "75428712"
 
      ![選取現有函數應用程式的範本](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. 在 [ **Azure 服務匯流排佇列觸發**程式] 窗格中，提供您的觸發程式名稱，並設定佇列的**服務匯流排連接**（使用 [Azure 服務匯流排 SDK `OnMessageReceive()`接聽程式]），然後選取 [**建立**]。
+1. 在 [ **Azure 服務匯流排佇列觸發**程式] 窗格中，提供您的觸發程式名稱，並設定佇列的**服務匯流排連接**（使用 [Azure 服務匯流排 SDK 接聽程式 `OnMessageReceive()` ]），然後選取 [**建立**]。
 
 1. 撰寫基本函式，以使用佇列訊息做為觸發程式來呼叫先前建立的邏輯應用程式端點。 在您撰寫函數之前，請先參閱下列考慮：
 
    * 此範例會使用 `application/json` 訊息內容類型，但是您可以視需要變更此類型。
    
-   * 由於可能同時執行的函式、高磁片區或負載過重，請避免使用語句將`using` [HTTPClient 類別](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient)具現化，並針對每個要求直接建立 HTTPClient 實例。 如需詳細資訊，請參閱[使用 HttpClientFactory 來執行可復原的 HTTP 要求](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)。
+   * 由於可能同時執行的函式、高磁片區或負載過重，請避免使用語句將[HTTPClient 類別](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient)具現化， `using` 並針對每個要求直接建立 HTTPClient 實例。 如需詳細資訊，請參閱[使用 HttpClientFactory 來執行可復原的 HTTP 要求](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)。
    
    * 可能的話，請重複使用 HTTP 用戶端的實例。 如需詳細資訊，請參閱[管理 Azure Functions 中的連接](../azure-functions/manage-connections.md)。
 
-   這個範例會在[非同步](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async)模式中使用[ `Task.Run`方法](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run)。 如需詳細資訊，請參閱[使用 async 和 await 進行非同步程式設計](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)。
+   這個範例會在[非同步](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async)模式中使用[ `Task.Run` 方法](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run)。 如需詳細資訊，請參閱[使用 async 和 await 進行非同步程式設計](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)。
 
    ```csharp
    using System;

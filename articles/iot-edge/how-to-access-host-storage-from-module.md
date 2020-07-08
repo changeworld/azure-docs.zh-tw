@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75434532"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>提供模組存取裝置本機儲存體的權限
@@ -70,11 +69,11 @@ ms.locfileid: "75434532"
 }
 ```
 
-將`<HostStoragePath>`和`<ModuleStoragePath>`取代為您的主機和模組儲存體路徑;這兩個值都必須是絕對路徑。
+`<HostStoragePath>`將和取代 `<ModuleStoragePath>` 為您的主機和模組儲存體路徑，這兩個值都必須是絕對路徑。
 
-例如，在 Linux 系統上， `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]`表示您主機系統上的目錄 **/etc/iotedge/storage**會對應至容器中的目錄 **/iotedge/storage/** 。 在 Windows 系統上，如另一個範例`"Binds":["C:\\temp:C:\\contemp"]` ，表示主機系統上的目錄**c：\\temp**對應至容器中的目錄**c\\： contemp** 。
+例如，在 Linux 系統上， `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` 表示您主機系統上的目錄 **/etc/iotedge/storage**會對應至容器中的目錄 **/iotedge/storage/** 。 在 Windows 系統上，如另一個範例， `"Binds":["C:\\temp:C:\\contemp"]` 表示主機系統上的目錄**c： \\ temp**對應至容器中的目錄**c： \\ contemp** 。
 
-此外，在 Linux 裝置上，請確定您模組的使用者設定檔具有主機系統目錄的必要 [讀取]、[寫入] 和 [執行] 許可權。 回到先前的範例，讓 IoT Edge hub 將訊息儲存在您裝置的本機儲存體中，您必須將許可權授與其使用者設定檔（UID 1000）。 （IoT Edge 代理程式以 root 的身分運作，因此它不需要其他許可權）。有數種方式可以管理 Linux 系統上的目錄許可權，包括`chown`使用來變更目錄擁有者， `chmod`然後變更許可權，例如：
+此外，在 Linux 裝置上，請確定您模組的使用者設定檔具有主機系統目錄的必要 [讀取]、[寫入] 和 [執行] 許可權。 回到先前的範例，讓 IoT Edge hub 將訊息儲存在您裝置的本機儲存體中，您必須將許可權授與其使用者設定檔（UID 1000）。 （IoT Edge 代理程式以 root 的身分運作，因此它不需要其他許可權）。有數種方式可以管理 Linux 系統上的目錄許可權，包括使用 `chown` 來變更目錄擁有者， `chmod` 然後變更許可權，例如：
 
 ```bash
 sudo chown 1000 <HostStoragePath>

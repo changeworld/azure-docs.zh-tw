@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435384"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight 中的大規模串流
@@ -49,7 +48,7 @@ Spark Streamin 是 Spark 的延伸，可讓您重複使用用於執行批次處�
 
 ### <a name="scale-the-stream-buffering-layer"></a>調整串流緩衝處理層規模
 
-「事件中樞」和 Kafka 這兩種串流緩衝處理技術都使用分割區，而取用者則是會從這些分割區讀取資料。 調整輸入輸送量需要上調分割區的數目，而新增分割區將可提升平行處理程度。 在事件中樞中，資料分割計數無法在部署後變更，因此請務必先考慮目標規模。 有了 Kafka，即使 Kafka 正在處理資料，也可以[加入](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)分割區。 Kafka 提供一個可重新指派分割區的工具 `kafka-reassign-partitions.sh`。 HDInsight 提供[磁碟分割複本重新平衡工具](https://github.com/hdinsight/hdinsight-kafka-tools) `rebalance_rackaware.py`。 這個重新平衡工具會呼叫 `kafka-reassign-partitions.sh` 工具，讓每個複本都在個別的容錯網域和更新網域中，使得 Kafka 產生機架感知並提升容錯能力。
+「事件中樞」和 Kafka 這兩種串流緩衝處理技術都使用分割區，而取用者則是會從這些分割區讀取資料。 調整輸入輸送量需要上調分割區的數目，而新增分割區將可提升平行處理程度。 在事件中樞中，資料分割計數無法在部署後變更，因此請務必先考慮目標規模。 有了 Kafka，即使 Kafka 正在處理資料，也可以[加入](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)分割區。 Kafka 提供一個可重新指派分割區的工具 `kafka-reassign-partitions.sh`。 HDInsight 提供[磁碟分割複本重新平衡工具](https://github.com/hdinsight/hdinsight-kafka-tools) `rebalance_rackaware.py` 。 這個重新平衡工具會呼叫 `kafka-reassign-partitions.sh` 工具，讓每個複本都在個別的容錯網域和更新網域中，使得 Kafka 產生機架感知並提升容錯能力。
 
 ### <a name="scale-the-stream-processing-layer"></a>調整串流處理層規模
 

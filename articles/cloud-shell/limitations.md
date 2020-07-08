@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74951474"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 限制
@@ -45,7 +44,7 @@ Cloud Shell 支援最新版的 Microsoft Edge、Microsoft Internet Explorer、Go
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>針對指定的使用者，只能有一個殼層作用中
 
-使用者一次只能啟動一種類型的 Shell：**Bash** 或 **PowerShell**。 不過，您可能一次會執行多個 Bash 或 PowerShell 執行個體。 使用功能表在 Bash 或 PowerShell 之間交換，會導致 Cloud Shell 重新開機，這會終止現有的會話。 或者，您可以輸入`bash`，在 PowerShell 內執行 bash，而且可以輸入`pwsh`，在 bash 內執行 powershell。
+使用者一次只能啟動一種類型的 Shell：**Bash** 或 **PowerShell**。 不過，您可能一次會執行多個 Bash 或 PowerShell 執行個體。 使用功能表在 Bash 或 PowerShell 之間交換，會導致 Cloud Shell 重新開機，這會終止現有的會話。 或者，您可以輸入，在 PowerShell 內執行 bash， `bash` 而且可以輸入，在 bash 內執行 powershell `pwsh` 。
 
 ### <a name="usage-limits"></a>使用限制
 
@@ -77,11 +76,11 @@ Cloud Shell 主要用於互動式的使用案例。 因此，任何長時間執�
 
 ### <a name="gui-applications-are-not-supported"></a>不支援 GUI 應用程式
 
-如果使用者執行的命令會建立 Windows 對話方塊，則會看到一則錯誤訊息，例如： `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
+如果使用者執行的命令會建立 Windows 對話方塊，則會看到一則錯誤訊息，例如： `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` 。
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>顯示進度列之後出現過大間距
 
-如果使用者執行的動作會顯示進度列（例如，在`Azure:`磁片磁碟機中完成的索引標籤），則游標可能未正確設定，且出現在進度列之前的間距。
+如果使用者執行的動作會顯示進度列（例如，在磁片磁碟機中完成的索引標籤），則 `Azure:` 游標可能未正確設定，且出現在進度列之前的間距。
 
 ## <a name="next-steps"></a>後續步驟
 

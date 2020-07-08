@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: e643c7fe7b18eed30843e7cab3977036435d2112
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435794"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>使用 Power Query 將 Excel 連線到 Apache Hadoop
@@ -43,27 +42,27 @@ Power Query add-in for Excel 可協助您將 HDInsight 叢集中的資料匯入�
 
    * Excel 2016
 
-     * **從 Azure HDInsight （HDFS）選取 [**>**資料** > **從 Azure** > **取得資料** > ]。
+     * **Data**  >  **Get Data**  >  **From Azure**  >  **從 Azure HDInsight （HDFS）選取 [**> 資料從 Azure 取得資料]。
 
        ![HDI.PowerQuery. SelectHdiSource. 2016](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png)
 
    * Excel 2013/2010
 
-     * **從 [Microsoft Azure HDInsight**選取 [**從 Azure**  >  **Power Query** > ]。
+     * 從**Power Query**[Microsoft Azure HDInsight 選取 [  >  **從 Azure**Power Query]  >  ** **。
 
        ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
 
-       **注意：** 如果您看**不到 [**  >  **Power Query** ] 功能表，請移至 [檔案] [**選項** > ] [**增益集**]，然後從頁面底部的下拉式 [**管理**] 方塊中，選取 [ **COM 增益集**]。 選取 [移至...]**** 按鈕，並驗證 Power Query for Excel 增益集的方塊已勾選。
+       **注意：** 如果您看**不到 [** **Power Query** ] 功能表，請移至 [檔案] [選項] [  >  **Options**  >  **增益集**]，然後從頁面底部的下拉式 [**管理**] 方塊中，選取 [ **COM 增益集**]。 選取 [移至...]**** 按鈕，並驗證 Power Query for Excel 增益集的方塊已勾選。
 
        **注意：** Power Query 也可讓您從 HDFS 匯入資料，方法是選取 [**從其他來源**]。
 
-1. 從 [ **Azure HDInsight （HDFS）** ] 對話方塊的 [**帳戶名稱或 URL** ] 文字方塊中，輸入與您的叢集相關聯的 Azure Blob 儲存體帳戶名稱。 然後選取 [確定]  。 此帳戶可以是預設儲存體帳戶或連結儲存體帳戶。  格式為 `https://StorageAccountName.blob.core.windows.net/`。
+1. 從 [ **Azure HDInsight （HDFS）** ] 對話方塊的 [**帳戶名稱或 URL** ] 文字方塊中，輸入與您的叢集相關聯的 Azure Blob 儲存體帳戶名稱。 然後選取 [確定]。 此帳戶可以是預設儲存體帳戶或連結儲存體帳戶。  格式為 `https://StorageAccountName.blob.core.windows.net/`。
 
 1. 針對 [**帳戶金鑰**]，輸入 Blob 儲存體帳戶的金鑰，然後選取 **[連線]**。 (只有在您第一次存取這個存放區時才必須輸入帳戶資訊)。
 
 1. 在 [查詢編輯器] 左側的 [導覽**器**] 窗格中，按兩下與叢集相關聯的 Blob 儲存體容器名稱。 依預設，容器名稱與叢集名稱相同。
 
-1. 在 [**名稱**] 資料行中找出**hivesampledata.txt** （資料夾路徑為 **.。/hive/warehouse/hivesampletable/**），然後選取 hivesampledata.txt 左側的 [**二進位**]。 HiveSampleData.txt 隨附於所有叢集。 您也可以選擇使用您自己的檔案。
+1. 在 [**名稱**] 資料行中找出**HiveSampleData.txt** （資料夾路徑為 **.。/hive/warehouse/hivesampletable/**），然後選取 HiveSampleData.txt 左邊的 [**二進位**]。 HiveSampleData.txt 隨附於所有叢集。 您也可以選擇使用您自己的檔案。
 
     ![HDI Excel power query 匯入資料](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
 

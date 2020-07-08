@@ -8,10 +8,9 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 6c4838e3226b91cbb5d6f86b83266a986418c120
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430520"
 ---
 # <a name="create-an-external-app-service-environment"></a>建立外部 App Service 環境
@@ -32,7 +31,7 @@ Azure App Service Environment (ASE) 是將 Azure App Service 部署到客戶 Azu
 
 建立 ASE 之後，您就無法變更下列項目：
 
-- Location
+- 位置
 - 訂用帳戶
 - 資源群組
 - 使用的 VNet
@@ -59,7 +58,7 @@ App Service 方案是應用程式的容器。 當您在 App Service 中建立應
 
 若要在建立 App Service 方案時建立 ASE：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取 [**建立資源** > ] [**web +** > 行動] [**web 應用程式**]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取 [**建立資源**] [  >  **web +** 行動] [  >  **web 應用程式**]。
 
     ![建立 Web 應用程式][1]
 

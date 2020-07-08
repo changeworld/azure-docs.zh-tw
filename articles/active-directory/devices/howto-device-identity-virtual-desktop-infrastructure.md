@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74900363"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>裝置身分識別與桌面虛擬化
@@ -43,20 +42,20 @@ ms.locfileid: "74900363"
 
 | 裝置身分識別類型 | 身分識別基礎結構 | Windows 裝置 | VDI 平臺版本 | 支援 |
 | --- | --- | --- | --- | --- |
-| 已聯結的混合式 Azure AD | 建立 | Windows 目前 * * * 和舊版 Windows * * * * | 持續性 | 是 |
-|   |   | Windows 目前 | 非持續性 | 否 |
-|   |   | 舊版 Windows | 非持續性 | 是 |
-|   | 受控 * * | Windows 目前和舊版 Windows | 持續性 | 是 |
-|   |   | Windows 目前 | 非持續性 | 否 |
-|   |   | 舊版 Windows | 非持續性 | 是 |
-| 已聯結的 Azure AD | 同盟 | Windows 目前 | 持續性 | 否 |
-|   |   |   | 非持續性 | 否 |
-|   | 受管理 | Windows 目前 | 持續性 | 否 |
-|   |   |   | 非持續性 | 否 |
-| 已註冊的 Azure AD | 同盟 | Windows 目前 | 持續性 | 否 |
-|   |   |   | 非持續性 | 否 |
-|   | 受管理 | Windows 目前 | 持續性 | 否 |
-|   |   |   | 非持續性 | 否 |
+| 已聯結的混合式 Azure AD | 建立 | Windows 目前 * * * 和舊版 Windows * * * * | 持續性 | Yes |
+|   |   | Windows 目前 | 非持續性 | No |
+|   |   | 舊版 Windows | 非持續性 | Yes |
+|   | 受控 * * | Windows 目前和舊版 Windows | 持續性 | Yes |
+|   |   | Windows 目前 | 非持續性 | No |
+|   |   | 舊版 Windows | 非持續性 | Yes |
+| 已聯結的 Azure AD | 同盟 | Windows 目前 | 持續性 | No |
+|   |   |   | 非持續性 | No |
+|   | 受控 | Windows 目前 | 持續性 | No |
+|   |   |   | 非持續性 | No |
+| 已註冊 Azure AD | 同盟 | Windows 目前 | 持續性 | No |
+|   |   |   | 非持續性 | No |
+|   | 受控 | Windows 目前 | 持續性 | No |
+|   |   |   | 非持續性 | No |
 
 \*同盟**身分識別基礎**結構環境代表具有身分識別提供者（例如 AD FS 或其他協力廠商 IDP）的環境。
 
@@ -73,7 +72,7 @@ ms.locfileid: "74900363"
 - [設定聯合環境的混合式 Azure Active Directory 聯結](hybrid-azuread-join-federated-domains.md)
 - [設定受管理環境的混合式 Azure Active Directory 聯結](hybrid-azuread-join-managed-domains.md)
 
-如果您依賴系統準備工具（sysprep.inf），而且您使用 Windows 前 10 1809 映射來進行安裝，請確定映射不是來自已向 Azure AD 註冊的裝置，因為已加入混合式 Azure AD。
+如果您依賴系統準備工具（sysprep.exe），而且您使用 Windows 前 10 1809 映射來進行安裝，請確定映射不是來自已向 Azure AD 註冊的裝置，因為已加入混合式 Azure AD。
 
 如果您依賴虛擬機器（VM）快照集來建立其他 Vm，請確定快照集不是來自已向 Azure AD 註冊的 VM，因為混合式 Azure AD 聯結。
 
@@ -81,7 +80,7 @@ ms.locfileid: "74900363"
 
 - 建立並使用電腦顯示名稱的前置詞，以 VDI 為基礎來表示桌面。
 - 在登出腳本中執行下列命令。 此命令將會觸發 Azure AD 的最佳呼叫，以刪除裝置。
-   - 針對舊版 Windows 裝置– autoworkplace.exe 無法/leave
+   - 針對舊版 Windows 裝置– autoworkplace.exe/leave
 - 定義和執行[管理過時裝置](manage-stale-devices.md)的處理常式。
    - 一旦您有識別非持續性混合式 Azure AD 聯結裝置的策略之後，您就可以更積極地清理這些裝置，以確保您的目錄不會與許多過時裝置一起使用。
  

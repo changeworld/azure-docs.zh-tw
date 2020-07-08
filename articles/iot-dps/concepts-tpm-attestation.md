@@ -9,10 +9,9 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74975273"
 ---
 # <a name="tpm-attestation"></a>TPM 證明
@@ -25,7 +24,7 @@ IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於�
 
 裝置佈建服務的裝置 SDK 會為您處理本文所述的所有項目。 如果您在裝置上使用 SDK，那麼您就不需要實作其他任何項目。 本文可協助您在概念上了解 TPM 安全性晶片在裝置佈建時的作用，以及為什麼它如此安全。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 TPM 會使用所謂的簽署金鑰 (EK) 作為安全的信任根。 EK 對 TPM 而言是唯一的，而且改變 EK 等於是從本質上將裝置變成一個新的裝置。
 

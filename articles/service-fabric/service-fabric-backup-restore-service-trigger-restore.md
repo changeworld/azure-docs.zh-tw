@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377900"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>在 Azure Service Fabric 中還原備份
@@ -23,7 +22,7 @@ ms.locfileid: "75377900"
 - **資料遺失的情況**：意外刪除或服務損毀。 例如，系統管理員錯誤地刪除服務。
 - **資料損毀的情況**：服務中的 bug 會導致資料損毀。 例如，當服務程式碼升級而將錯誤資料寫入「可靠的集合」時，就可能發生資料損毀。 在這種情況下，可能必須將程式碼和資料還原成先前的狀態。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 若要觸發還原，必須對叢集啟用還原「錯誤分析服務 (FAS)」__。
 - 「備份還原服務 (BRS)」__ 已建立備份。
@@ -34,7 +33,7 @@ ms.locfileid: "75377900"
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- 請先使用`Connect-SFCluster`命令來確定叢集已連線，再使用 ServiceFabric 模組進行任何設定要求。
+- 請先使用命令來確定叢集已連線， `Connect-SFCluster` 再使用 ServiceFabric 模組進行任何設定要求。
 
 ```powershell
 
@@ -201,7 +200,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
     ![觸發資料分割還原檔案共用][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>資料_損毀_/_資料遺失_的資料還原
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>資料_損毀_ / _資料遺失_的資料還原
 
 針對「資料遺失」__ 或「資料損毀」__ 的情況，您可以將可靠具狀態服務和 Reliable Actors 的已備份分割區還原至任何所選的備份。
 
@@ -209,7 +208,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 從 [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups) 的輸出中選取備份。 在此案例中，備份會從與之前相同的叢集中產生。
 
-若要觸發還原，請從清單中選擇備份。 針對目前的_資料遺失_/_資料損毀_，請選取下列備份：
+若要觸發還原，請從清單中選擇備份。 針對目前的_資料遺失_ / _資料損毀_，請選取下列備份：
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4

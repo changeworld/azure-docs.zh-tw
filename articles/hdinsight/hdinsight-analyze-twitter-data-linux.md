@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435605"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>在 HDInsight 上使用 Apache Hive 與 Apache Hadoop 分析 Twitter 資料
@@ -28,16 +27,16 @@ Twitter 可讓您透過 REST API 抓取每則推文資料，作為 JavaScript �
 
 ### <a name="create-a-twitter-application"></a>建立 Twitter 應用程式
 
-1. 從網頁瀏覽器登入[https://developer.twitter.com/apps/](https://developer.twitter.com/apps/)。 如果您沒有 Twitter 帳戶，請選取 [**立即註冊**] 連結。
+1. 從網頁瀏覽器登入 [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/) 。 如果您沒有 Twitter 帳戶，請選取 [**立即註冊**] 連結。
 
-2. 選取 [Create New App]**** \(建立新的應用程式\)。
+2. 選取 [**建立新的應用程式**]。
 
 3. 輸入 [名稱]****、[說明]****、[網站]****。 您可以在 [網站]**** 欄位中自行設定 URL。 下表列出部分要使用的範例值：
 
    | 欄位 | 值 |
    |--- |--- |
    | 名稱 |MyHDInsightApp |
-   | 描述 |MyHDInsightApp |
+   | Description |MyHDInsightApp |
    | 網站 |`https://www.myhdinsightapp.com` |
 
 4. 選取 **[是，我同意]**，然後選取 [**建立您的 Twitter 應用程式**]。
@@ -59,7 +58,7 @@ Twitter 可讓您透過 REST API 抓取每則推文資料，作為 JavaScript �
 > [!NOTE]  
 > 由於已安裝 Python，下列步驟會在 HDInsight 叢集上執行。
 
-1. 使用[ssh 命令](./hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的叢集。 以您叢集的名稱取代 CLUSTERNAME，然後輸入命令，以編輯下面的命令：
+1. 使用 [ssh 命令](./hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 CLUSTERNAME 取代為您叢集的名稱，然後輸入命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -84,7 +83,7 @@ Twitter 可讓您透過 REST API 抓取每則推文資料，作為 JavaScript �
    nano gettweets.py
    ```
 
-1. 將、、 `Your consumer secret` `Your access token`和`Your access token secret`取代為您`Your consumer key`twitter 應用程式中的相關資訊，以編輯以下程式碼。 然後貼入已編輯的程式碼，做為**gettweets.py**檔案的內容。
+1. 將 `Your consumer secret` 、 `Your consumer key` 、 `Your access token` 和取代 `Your access token secret` 為您 twitter 應用程式中的相關資訊，以編輯以下程式碼。 然後貼入已編輯的程式碼，做為**gettweets.py**檔案的內容。
 
    ```python
    #!/usr/bin/python

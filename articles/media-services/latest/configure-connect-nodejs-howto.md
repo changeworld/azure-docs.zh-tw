@@ -1,6 +1,6 @@
 ---
-title: 連接到 Azure 媒體服務 v3 API-node.js
-description: 本文示範如何使用 node.js 連接到媒體服務 v3 API。
+title: 連接到 Azure 媒體服務 v3 API-Node.js
+description: 本文示範如何使用 Node.js 連接到媒體服務 v3 API。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,27 +14,26 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74896105"
 ---
-# <a name="connect-to-media-services-v3-api---nodejs"></a>連接到媒體服務 v3 API-node.js
+# <a name="connect-to-media-services-v3-api---nodejs"></a>連接到媒體服務 v3 API-Node.js
 
 本文說明如何使用服務主體登入方法來連線到 Azure 媒體服務 v3 node.js SDK。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-- 安裝[node.js](https://nodejs.org/en/download/)。
+- 安裝 [Node.js](https://nodejs.org/en/download/)。
 - [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源組名和媒體服務帳戶名稱。
 
 > [!IMPORTANT]
 > 檢查[命名慣例](media-services-apis-overview.md#naming-conventions)。
 
-## <a name="create-packagejson"></a>建立 package. json
+## <a name="create-packagejson"></a>建立 package.js
 
-1. 使用您慣用的編輯器建立封裝. json 檔案。
+1. 使用您慣用的編輯器，在檔案上建立 package.js。
 1. 開啟檔案，並貼上下列程式碼：
 
 ```json
@@ -66,7 +65,7 @@ ms.locfileid: "74896105"
 npm install azure-arm-mediaservices
 ```
 
-## <a name="connect-to-nodejs-client"></a>連接到 node.js 用戶端
+## <a name="connect-to-nodejs-client"></a>連接到 Node.js 用戶端
 
 1. 使用您慣用的編輯器建立 .js 檔案。
 1. 開啟該檔案，並貼上下列程式碼。

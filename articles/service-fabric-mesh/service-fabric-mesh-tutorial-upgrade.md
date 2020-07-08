@@ -7,10 +7,9 @@ ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75351722"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>教學課程：了解如何使用 Visual Studio 升級 Service Fabric 應用程式
@@ -31,7 +30,7 @@ ms.locfileid: "75351722"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始進行本教學課程之前：
 
@@ -55,13 +54,13 @@ ms.locfileid: "75351722"
 
 2. 在 [WebFrontEnd]**** > [服務資源]**** 底下，開啟 **WebFrontEnd** 專案的 **service.yaml** 檔案。
 
-    請注意，在 `resources:` 區段中，`cpu:` 會設定為 `"[parameters('WebFrontEnd_cpu')]"`。 如果`'WebFrontEnd_cpu`專案是針對雲端所建立，則的值將取自**環境** > **雲端** >  ** ** yaml 檔案，而且會是`1.5`。 如果組建的專案是要在本機執行，則會從**環境** > 的**本機** > **yaml**檔案取得值，而且會是 ' 0.5 '。
+    請注意，在 `resources:` 區段中，`cpu:` 會設定為 `"[parameters('WebFrontEnd_cpu')]"`。 如果專案是針對雲端所建立，則的值 `'WebFrontEnd_cpu` 將取自**環境**  >  **雲端**yaml 檔案  >  **parameters.yaml** ，而且會是 `1.5` 。 如果組建的專案是要在本機執行，則會從**環境**的本機 yaml 檔案取得值  >  **Local**  >  **parameters.yaml** ，而且會是 ' 0.5 '。
 
 > [!Tip]
 > 根據預設，系統會使用 profile.yaml 檔案的對等參數檔案，來提供該 profile.yaml 檔案的值。
 > 例如，[環境] > [雲端] > parameters.yaml 會提供 [環境] > [雲端] > profile.yaml 的參數值。
 >
-> 您可以將下列程式碼新增至 yaml 檔案，以覆寫此`parametersFilePath=”relative or full path to the parameters file”`項：例如`parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` ，或`parametersFilePath=”..\CommonParameters.yaml”`
+> 您可以將下列程式碼新增至 yaml 檔案，以覆寫此項： `parametersFilePath=”relative or full path to the parameters file”` 例如， `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` 或`parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>修改模型
 

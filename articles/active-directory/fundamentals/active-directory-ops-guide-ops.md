@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75422954"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般操作指南參考
@@ -31,7 +30,7 @@ ms.locfileid: "75422954"
 
 管理 Azure Active Directory 需要持續執行重要的作業工作和進程，這可能不是首度發行專案的一部分。 您必須設定這些工作來優化您的環境，這仍然很重要。 主要工作和其建議的擁有者包括：
 
-| 工作 | 擁有者 |
+| Task | 擁有者 |
 | :- | :- |
 | 促進身分識別安全分數的改善 | InfoSec 營運小組 |
 | 維護 Azure AD Connect 伺服器 | IAM 作業小組 |
@@ -92,7 +91,7 @@ ms.locfileid: "75422954"
 
 - [疑難排解應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
 - [自助式密碼重設疑難排解 - Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
-- [瞭解 Azure AD 應用程式 Proxy 連接器](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
+- [了解 Azure AD 應用程式 Proxy 連接器](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
 - [Azure AD Connect：針對傳遞驗證進行疑難排解](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication#collecting-pass-through-authentication-agent-logs)
 - [針對 Azure MFA NPS 擴充功能的錯誤碼進行疑難排解](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-errors)
 
@@ -106,7 +105,7 @@ ms.locfileid: "75422954"
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>內部部署代理程式管理建議閱讀
 
-- [瞭解 Azure AD 應用程式 Proxy 連接器](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
+- [了解 Azure AD 應用程式 Proxy 連接器](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
 - [Azure AD 傳遞驗證-快速入門](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>大規模管理
@@ -127,9 +126,9 @@ ms.locfileid: "75422954"
 
 Microsoft 會將電子郵件通訊傳送給系統管理員，以通知服務中的各種變更、所需的設定更新，以及需要系統管理員介入的錯誤。 客戶必須設定通知電子郵件地址，以便將通知傳送給適當的小組成員，讓他們能夠對所有通知進行認可並採取行動。 建議您將多個收件者新增至[Office 365 訊息中心](https://docs.microsoft.com/office365/admin/manage/message-center)，並要求將通知（包括 Azure AD Connect Health 通知）傳送到通訊群組清單或共用信箱。 如果您只有一個具有電子郵件地址的全域系統管理員帳戶，請務必設定至少兩個具備電子郵件功能的帳戶。
 
-Azure AD： <o365mc@email2.microsoft.com>會使用兩個「寄件者」位址，它會傳送 Office 365 訊息中心通知;和<azure-noreply@microsoft.com>，它會傳送與下列內容相關的通知：
+Azure AD：會使用兩個「寄件者」位址 <o365mc@email2.microsoft.com> ，它會傳送 Office 365 訊息中心通知; 和，它會傳送與 <azure-noreply@microsoft.com> 下列內容相關的通知：
 
-- [Azure AD 存取權檢閱](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Azure AD 存取評論](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
 - [Azure AD Identity Protection](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
 - [Azure AD 特殊權限身分識別管理](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
@@ -166,9 +165,9 @@ Active Directory 系統管理層模型的設計目的是要使用一組緩衝區
 
 階層[模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)是由三個層級所組成，而且只包含系統管理帳戶，而不是標準使用者帳戶。
 
-- **第 0** 層-直接控制環境中的企業身分識別。 第 0 層包括可直接或間接對 Active Directory 樹系、網域或網域控制站進行系統管理控制的帳戶、群組和其他資產及其上的所有資產。 所有第 0 層資產的安全性敏感度相當於它們全都在彼此的有效控制之下。
-- **第 1** 層-控制企業伺服器和應用程式。 第 1 層資產包括伺服器作業系統、雲端服務和企業應用程式。 第 1 層系統管理員帳戶對於這些資產上裝載的大量商業價值具有系統管理控制權。 常見的範例角色是伺服器系統管理員，其可利用會影響所有企業服務的能力來維護這些作業系統。
-- **第 2** 層-控制使用者工作站和裝置。 第 2 層系統管理員帳戶對於使用者工作站和裝上裝載的大量商業價值具有系統管理控制權。 範例包括技術支援中心及電腦支援系統管理員，因為他們會影響到幾乎所有使用者資料的完整性。
+- **第0層**  -直接控制環境中的企業身分識別。 第 0 層包括可直接或間接對 Active Directory 樹系、網域或網域控制站進行系統管理控制的帳戶、群組和其他資產及其上的所有資產。 所有第 0 層資產的安全性敏感度相當於它們全都在彼此的有效控制之下。
+- **第1層**  -控制企業伺服器和應用程式。 第 1 層資產包括伺服器作業系統、雲端服務和企業應用程式。 第 1 層系統管理員帳戶對於這些資產上裝載的大量商業價值具有系統管理控制權。 常見的範例角色是伺服器系統管理員，其可利用會影響所有企業服務的能力來維護這些作業系統。
+- **第2層**  -控制使用者工作站和裝置。 第 2 層系統管理員帳戶對於使用者工作站和裝上裝載的大量商業價值具有系統管理控制權。 範例包括技術支援中心及電腦支援系統管理員，因為他們會影響到幾乎所有使用者資料的完整性。
 
 鎖定內部部署身分識別元件（例如 Azure AD Connect、AD FS 和 SQL 服務）的存取方式，與網域控制站相同。
 

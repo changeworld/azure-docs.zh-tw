@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75445742"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>標記和版本設定容器映射的建議
@@ -32,7 +31,7 @@ ms.locfileid: "75445742"
 * `:1`–主要版本的穩定標記。 `1`代表「最新」或「最新」 1. * 版本。
 * `:1.0`-1.0 版的穩定標記，可讓開發人員系結至1.0 的更新，而不會在發行時向前復原至1.1。
 
-無論目前的主要版本`:latest`為何，小組也會使用指向最新穩定標記的標記。
+`:latest`無論目前的主要版本為何，小組也會使用指向最新穩定標記的標記。
 
 當基底映射更新可供使用，或架構的任何服務版本時，具有穩定標記的影像會更新為最新的摘要，代表該版本的最新穩定版本。
 
@@ -53,11 +52,11 @@ ms.locfileid: "75445742"
 * **資訊清單摘要**-推送至容器登錄的每個容器映射都會與資訊清單相關聯，並以唯一的 SHA-256 雜湊或摘要來識別。 唯一的是，摘要很長、不易閱讀，而且與您的組建環境不相關。
 * **組建識別碼**-這個選項可能最適合，因為它可能是累加的，而且可讓您與特定的組建相互關聯，以尋找所有成品和記錄。 不過，就像資訊清單摘要一樣，人可能很難以閱讀。
 
-  如果您的組織有數個組建系統，請在標記前面加上組建系統名稱，這是此`<build-system>-<build-id>`選項的變化：。 例如，您可以區分 API 小組的 Jenkins 組建系統和 web 小組的 Azure Pipelines 組建系統的組建。
+  如果您的組織有數個組建系統，請在標記前面加上組建系統名稱，這是此選項的變化： `<build-system>-<build-id>` 。 例如，您可以區分 API 小組的 Jenkins 組建系統和 web 小組的 Azure Pipelines 組建系統的組建。
 
 ### <a name="lock-deployed-image-tags"></a>鎖定已部署的映射標記
 
-建議的最佳作法是將其`write-enabled`屬性設為，以`false`[鎖定](container-registry-image-lock.md)任何已部署的影像標記。 這種做法可防止您不小心移除登錄中的映射，而且可能會中斷您的部署。 您可以在發行管線中包含鎖定步驟。
+建議的最佳作法是將其屬性設為，以[鎖定](container-registry-image-lock.md)任何已部署的影像標記 `write-enabled` `false` 。 這種做法可防止您不小心移除登錄中的映射，而且可能會中斷您的部署。 您可以在發行管線中包含鎖定步驟。
 
 鎖定已部署的映射仍然可讓您使用 Azure Container Registry 功能來維護您的登錄，從登錄中移除其他已解除部署的映射。 例如，[自動清除](container-registry-auto-purge.md)未標記的資訊清單或已解除鎖定的映射超過指定的持續時間，或為未標記的資訊清單設定[保留原則](container-registry-retention-policy.md)。
 

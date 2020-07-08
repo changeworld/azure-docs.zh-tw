@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 90c890925378c30ce5688d2713990b4b2cdd20c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430682"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 授權開發人員帳戶
@@ -27,7 +26,7 @@ ms.locfileid: "75430682"
 > [!IMPORTANT]
 > 新開發人員入口網站的互動式主控台尚未提供 OAuth 2.0 授權。
 
-## <a name="prerequisites"></a><a name="prerequisites"> </a>Prerequisites
+## <a name="prerequisites"></a><a name="prerequisites"> </a>必要條件
 
 本指南將示範如何設定 API 管理服務執行個體，以便使用開發人員帳戶適用的 OAuth 2.0 授權，但並未示範如何設定 OAuth 2.0 提供者。 儘管步驟相似，且用來在 API 管理服務執行個體中設定 OAuth 2.0 所需的資訊也相同，但每個 OAuth 2.0 提供者的組態並不相同。 本主題演示的範例將 Azure Active Directory 當做 OAuth 2.0 提供者。
 
@@ -58,7 +57,7 @@ ms.locfileid: "75430682"
 
     勾選需要的類型以指定 [授權授與類型]****。 **** 。
 
-    輸入 [Authorization endpoint URL] ****。 針對 Azure Active Directory，此 URL 將與下列 URL 類似，其中`<tenant_id>`會以您的 Azure AD 租使用者識別碼取代。
+    輸入 [Authorization endpoint URL] ****。 針對 Azure Active Directory，此 URL 將與下列 URL 類似，其中 `<tenant_id>` 會以您的 Azure AD 租使用者識別碼取代。
 
     `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 

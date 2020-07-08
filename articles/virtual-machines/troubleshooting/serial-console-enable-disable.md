@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451293"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>啟用和停用 Azure 序列主控台
@@ -34,7 +33,7 @@ ms.locfileid: "75451293"
 ## <a name="subscription-level-enabledisable"></a>訂用帳戶層級啟用/停用
 
 > [!NOTE]
-> 在執行此命令之前，請確定您是在正確的雲端（Azure 公用雲端、Azure 美國政府雲端）。 您可以使用`az cloud set -n <Name of cloud>`來`az cloud list`檢查並設定雲端。
+> 在執行此命令之前，請確定您是在正確的雲端（Azure 公用雲端、Azure 美國政府雲端）。 您可以使用來檢查 `az cloud list` 並設定雲端 `az cloud set -n <Name of cloud>` 。
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: 93880269edd72477f3aa85b2dbdc9d9f3ec8ef25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435903"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企業安全性套件管理 HDInsight 叢集
@@ -54,7 +53,7 @@ ms.locfileid: "75435903"
 |Apache Hadoop|Hive – 互動式作業/查詢  |<ul><li>[Beeline](#beeline)</li><li>[Hive 視圖](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|互動式作業/查詢，PySpark 互動式|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin with Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive 視圖](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|批次案例 – Spark 提交，PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
-|互動式查詢 (LLAP)|Interactive (互動式)|<ul><li>[Beeline](#beeline)</li><li>[Hive 視圖](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|互動式查詢 (LLAP)|互動式|<ul><li>[Beeline](#beeline)</li><li>[Hive 視圖](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |任意|安裝自訂應用程式|<ul><li>[指令碼動作](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
    > [!NOTE]  
@@ -87,7 +86,7 @@ Connection string: -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 
 非 ESP 的 HDInsight 叢集有兩個使用者帳戶，是在叢集建立期間建立的︰
 
-- **Ambari 系統管理員**：此帳戶亦稱為「Hadoop 使用者」** 或「HTTP 使用者」**。 此帳戶可以用來登入 Ambari，網址`https://CLUSTERNAME.azurehdinsight.net`為。 它也可以用來對 Ambari views 執行查詢、透過外部工具（例如 PowerShell、Templeton、Visual Studio）執行作業，以及使用 Hive ODBC 驅動程式和 BI 工具（例如 Excel、Power BI 或 Tableau）進行驗證。
+- **Ambari 系統管理員**：此帳戶亦稱為「Hadoop 使用者」** 或「HTTP 使用者」**。 此帳戶可以用來登入 Ambari，網址為 `https://CLUSTERNAME.azurehdinsight.net` 。 它也可以用來對 Ambari views 執行查詢、透過外部工具（例如 PowerShell、Templeton、Visual Studio）執行作業，以及使用 Hive ODBC 驅動程式和 BI 工具（例如 Excel、Power BI 或 Tableau）進行驗證。
 
 除了 Ambari 系統管理員之外，使用 ESP 的 HDInsight 叢集有三個新使用者。
 
@@ -124,7 +123,7 @@ HDInsight 企業安全性套件有下列角色：
 
 ## <a name="open-the-ambari-management-ui"></a>開啟 Ambari 管理 UI
 
-1. 導覽至`https://CLUSTERNAME.azurehdinsight.net/` ，其中 CLUSTERNAME 是您的叢集名稱。
+1. 導覽至 `https://CLUSTERNAME.azurehdinsight.net/` ，其中 CLUSTERNAME 是您的叢集名稱。
 1. 使用叢集系統管理員網域使用者名稱和密碼登入 Ambari。
 1. 選取右上角的 [**管理**] 下拉式功能表，然後選取 [**管理 Ambari**]。
 

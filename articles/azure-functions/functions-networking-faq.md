@@ -7,10 +7,9 @@ ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
 ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75409535"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>有關 Azure Functions 網路功能的常見問題
@@ -66,5 +65,5 @@ ms.locfileid: "75409535"
 * [遵循有關開始使用虛擬網路整合的教學課程](./functions-create-vnet.md)
 * [深入瞭解 Azure Functions 中的網路功能選項](./functions-networking-options.md)
 * [深入瞭解虛擬網路與 App Service 和功能的整合](../app-service/web-sites-integrate-with-vnet.md)
-* [深入瞭解 Azure 中的虛擬網路](../virtual-network/virtual-networks-overview.md)
-* [利用 App Service 環境啟用更多網路功能和控制](../app-service/environment/intro.md)
+* [深入了解 Azure 中的虛擬網路](../virtual-network/virtual-networks-overview.md)
+* [透過 App Service 環境啟用更多網路功能與控制](../app-service/environment/intro.md)

@@ -4,10 +4,9 @@ description: 了解對 Service Fabric 具狀態服務進行單元測試的概念
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75433916"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>對 Service Fabric 中的具狀態服務進行單元測試
@@ -40,8 +39,8 @@ ms.locfileid: "75433916"
 狀態管理員應該視為是遠端資源，並因此加以模擬。 在模擬狀態管理員時，您必須有一些基礎記憶體內部儲存體，以便追蹤儲存到狀態管理員的項目，從而能夠讀取並驗證狀態管理員。 針對可靠集合的每種類型建立模擬執行個體即可輕鬆達到此目的。 在這些模擬中，所使用的資料類型必須密切配合針對該集合所執行的作業。 以下是針對每個可靠集合所建議的一些資料類型
 
 - IReliableDictionary<TKey, TValue> -> System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
-- IReliableQueue\<t>-> system.object\<t>
-- IReliableConcurrentQueue\<t>-> system.collections.concurrent.concurrentqueue\<T>
+- IReliableQueue\<T> -> System.Collections.Generic.Queue\<T>
+- IReliableConcurrentQueue\<T> -> System.Collections.Concurrent.ConcurrentQueue\<T>
 
 #### <a name="many-state-manager-instances-single-storage"></a>多個狀態管理員執行個體搭配單一儲存體
 之前提到，狀態管理員和可靠集合應該視為是遠端資源。 因此，您應該且將會在單元測試中模擬這些資源。 不過，在為具狀態服務執行多個執行個體時，要讓每個模擬的狀態管理員在不同的具狀態服務執行個體中保持同步並不容易。 當具狀態服務在叢集上執行時，Service Fabric 會負責讓每個次要複本的狀態管理員與主要複本保持一致。 因此，測試的行為應該相同，才能模擬角色變更。

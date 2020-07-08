@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75443580"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 中的常見問題身分識別保護
@@ -24,7 +23,7 @@ ms.locfileid: "75443580"
 
 [在傳統身分識別保護中**解除使用者風險**] 會將 Identity protection 中使用者風險歷程記錄內的執行者設定為**Azure AD**。
 
-在 identity protection 中**解除使用者風險**將身分識別保護中使用者風險歷程記錄內的執行者設定為** \<系統管理員的名稱，並將超連結\>指向使用者的**分頁。
+[解除身分識別保護中的**使用者風險**] 會將 identity protection 中使用者風險歷程記錄內的執行者設定為 **\<Admin’s name with a hyperlink pointing to user’s blade\>** 。
 
 目前的已知問題造成使用者風險關閉流程中的延遲。 如果您有「使用者風險原則」，按一下 [解除使用者風險] 的幾分鐘內，此原則將會停止將套用至已解除的使用者。 不過，已知解除使用者的 [風險狀態] 有 UX 重新整理延遲。 因應措施是在瀏覽器層級重新整理頁面，以查看最新的使用者 [風險狀態]。
 

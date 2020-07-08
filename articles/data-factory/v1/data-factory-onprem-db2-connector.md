@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74931792"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure Data Factory 複製活動從 DB2 移動資料
@@ -32,7 +31,7 @@ ms.locfileid: "74931792"
 
 資料處理站目前僅支援資料從 DB2 資料庫移至[支援的接收資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 不支援資料從其他資料存放區移至 DB2 資料庫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 資料處理站支援使用[資料管理閘道](data-factory-data-management-gateway.md)連接至內部部署 DB2 資料庫。 如需有關設定閘道資料管線來移動資料的逐步指示，請參閱[將資料從內部部署移到雲端](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
 即使 DB2 裝載於 Azure IaaS VM 中，也必須要有閘道。 您可以在資料存放區所在的 IaaS VM 上安裝閘道。 如果閘道可以連線到資料庫，您可以在不同的 VM 上安裝閘道。
@@ -78,23 +77,23 @@ ms.locfileid: "74931792"
 ## <a name="db2-linked-service-properties"></a>DB2 連結服務屬性
 下表列出 DB2 連結服務特定的 JSON 屬性。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| **type** |此屬性必須設為 **OnPremisesDB2**。 |是 |
-| **伺服器** |DB2 伺服器的名稱。 |是 |
-| **database** |DB2 資料庫的名稱。 |是 |
-| **schema** |在 DB2 資料庫中的結構描述名稱。 此屬性必須區分大小寫。 |否 |
-| **authenticationType** |用來連接到 DB2 資料庫的驗證類型。 可能的值為：匿名、基本和 Windows。 |是 |
-| **username** |使用者帳戶的名稱 (如果您使用基本或 Windows 驗證)。 |否 |
-| **password** |使用者帳戶的密碼。 |否 |
-| **gatewayName** |Data Factory 服務應該用來連接到內部部署 DB2 資料庫的閘道器名稱。 |是 |
+| **type** |此屬性必須設為 **OnPremisesDB2**。 |Yes |
+| **伺服器** |DB2 伺服器的名稱。 |Yes |
+| **database** |DB2 資料庫的名稱。 |Yes |
+| **結構描述** |在 DB2 資料庫中的結構描述名稱。 此屬性必須區分大小寫。 |No |
+| **authenticationType** |用來連接到 DB2 資料庫的驗證類型。 可能的值為：匿名、基本和 Windows。 |Yes |
+| **username** |使用者帳戶的名稱 (如果您使用基本或 Windows 驗證)。 |No |
+| **password** |使用者帳戶的密碼。 |No |
+| **gatewayName** |Data Factory 服務應該用來連接到內部部署 DB2 資料庫的閘道器名稱。 |Yes |
 
 ## <a name="dataset-properties"></a>資料集屬性
 如需定義資料集的區段和屬性清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的**結構**、**可用性**和**原則**等區段類似於所有的資料集類型 (Azure SQL、Azure Blob 儲存體、Azure 資料表儲存體等)。
 
 每個資料集類型的**typeProperties**區段都不同，並提供資料存放區中資料位置的相關資訊。 **RelationalTable** 類型資料集的 **typeProperties** 區段 (包含 DB2 資料集) 具有下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | **tableName** |DB2 資料庫執行個體中連結服務所參照的資料表名稱。 此屬性必須區分大小寫。 |否 (如果指定 **RelationalSource** 類型複製活動的**查詢**屬性) |
 
@@ -105,7 +104,7 @@ ms.locfileid: "74931792"
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| **查詢** |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `"query": "select * from "MySchema"."MyTable""` |否 (如果已指定資料集的 **tableName** 屬性) |
+| **查詢** |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`"query": "select * from "MySchema"."MyTable""` |否 (如果已指定資料集的 **tableName** 屬性) |
 
 > [!NOTE]
 > 結構描述和資料表名稱會區分大小寫。 在查詢陳述式中，使用 "" (雙引號) 括住屬性名稱。
@@ -316,8 +315,8 @@ ms.locfileid: "74931792"
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | 數值 |Decimal |
-| Date |Datetime |
-| 時間 |TimeSpan |
+| 日期 |Datetime |
+| Time |TimeSpan |
 | 時間戳記 |Datetime |
 | Xml |Byte[] |
 | Char |String |
@@ -342,8 +341,8 @@ ms.locfileid: "74931792"
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | 數值 |Decimal |
-| Date |Datetime |
-| 時間 |TimeSpan |
+| 日期 |Datetime |
+| Time |TimeSpan |
 | 時間戳記 |Datetime |
 | Xml |Byte[] |
 | Char |String |

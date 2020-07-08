@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
 ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435741"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>執行包含在 HDInsight 中的 MapReduce 範例
@@ -41,7 +40,7 @@ ms.locfileid: "75435741"
 |dbcount|計算儲存在資料庫中的 pageview 記錄。|
 |distbbp|使用 BBP 類型的公式來計算 Pi 的確切位。|
 |grep|計算輸入中 RegEx 的相符專案。|
-|Join|執行已排序且平均分割之資料集的聯結。|
+|join|執行已排序且平均分割之資料集的聯結。|
 |multifilewc 可|從數個檔案計算字數。|
 |pentomino|並排顯示計畫，以尋找 pentomino 問題的解決方案。|
 |pi|使用 Monte Carlo 方法來預估 Pi。|
@@ -60,7 +59,7 @@ ms.locfileid: "75435741"
 
 ## <a name="run-the-wordcount-example"></a>執行 wordcount 範例
 
-1. 使用 SSH 連線到 HDInsight。 將`CLUSTER`取代為您的叢集名稱，然後輸入下列命令：
+1. 使用 SSH 連線到 HDInsight。 將取代 `CLUSTER` 為您的叢集名稱，然後輸入下列命令：
 
     ```cmd
     ssh sshuser@CLUSTER-ssh.azurehdinsight.net

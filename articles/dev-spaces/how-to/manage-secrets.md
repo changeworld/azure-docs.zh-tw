@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: 瞭解如何在使用 Azure Dev Spaces 開發應用程式時，于執行或建立時間使用 Kubernetes 秘密
 keywords: Docker、Kubernetes、Azure、AKS、Azure Container Service、容器
 ms.openlocfilehash: d9dd0de348612bbb3baf5fb351c1c9af1c228c1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75438471"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>如何在使用 Azure 開發人員空間時管理祕密
@@ -18,14 +17,14 @@ ms.locfileid: "75438471"
 
 ## <a name="storing-and-using-runtime-secrets"></a>儲存和使用執行時間秘密
 
-Azure Dev Spaces 提供兩個建議、簡化的選項，將秘密儲存在由 Azure Dev Spaces 用戶端工具所產生的`values.dev.yaml` Helm 圖表中：在檔案`azds.yaml`中，並直接內嵌在中。 不建議您在中`values.yaml`儲存秘密。
+Azure Dev Spaces 提供兩個建議、簡化的選項，將秘密儲存在由 Azure Dev Spaces 用戶端工具所產生的 Helm 圖表中：在檔案中 `values.dev.yaml` ，並直接內嵌在中 `azds.yaml` 。 不建議您在中儲存秘密 `values.yaml` 。
 
 > [!NOTE]
 > 下列方法示範如何儲存和使用用戶端工具所產生之 Helm 圖表的秘密。 如果您建立自己的 Helm 圖，則可以直接使用 Helm 圖表來管理和儲存秘密。
 
 ### <a name="using-valuesdevyaml"></a>使用 yaml
 
-在您已使用 Azure Dev Spaces 準備的專案中，在與相同`values.dev.yaml`的資料夾中建立檔案， `azds.yaml`以定義您的秘密金鑰和值。 例如：
+在您已使用 Azure Dev Spaces 準備的專案中，在與 `values.dev.yaml` 相同的資料夾中建立檔案， `azds.yaml` 以定義您的秘密金鑰和值。 例如：
 
 ```yaml
 secrets:
@@ -35,7 +34,7 @@ secrets:
     key: "secretkeyhere"
 ```
 
-`azds.yaml`使用，確認檔案`values.dev.yaml`參考是否為選擇性`?`。 例如：
+使用，確認檔案 `azds.yaml` 參考是否 `values.dev.yaml` 為選擇性 `?` 。 例如：
 
 ```yaml
 install:
@@ -54,24 +53,24 @@ var host = process.env.REDIS_HOST
 var theKey = process.env.REDIS_KEY
 ```
     
-使用`azds up`執行已更新的服務。
+使用執行已更新的服務 `azds up` 。
 
 ```console
 azds up
 ```
  
-使用`kubectl`來驗證您的密碼是否已建立。
+使用 `kubectl` 來驗證您的密碼是否已建立。
 
 ```console
 kubectl get secret --namespace default -o yaml 
 ```
 
 > [!IMPORTANT]
-> 不建議將秘密儲存在原始檔控制中。 如果使用 Git，請`values.dev.yaml`將新增`.gitignore`至檔案，以避免在原始檔控制中認可秘密。
+> 不建議將秘密儲存在原始檔控制中。 如果使用 Git，請將新增至檔案， `values.dev.yaml` `.gitignore` 以避免在原始檔控制中認可秘密。
 
 ### <a name="using-azdsyaml"></a>使用 azds. yaml
 
-在您已使用 Azure Dev Spaces 備妥的專案中，使用 [設定] 下的 *$PLACEHOLDER*語法來*configurations.develop.install.set*新增秘密金鑰和值。在中`azds.yaml`，于 [安裝]。 例如：
+在您已使用 Azure Dev Spaces 備妥的專案中，使用 [設定] 下的 *$PLACEHOLDER*語法來新增秘密金鑰和值。在中，于 [*安裝*]。 `azds.yaml` 例如：
 
 ```yaml
 configurations:
@@ -87,9 +86,9 @@ configurations:
 ```
 
 > [!NOTE]
-> 您可以直接輸入秘密值，而 *$PLACEHOLDER*不使用中`azds.yaml`的 $PLACEHOLDER 語法。 不過，不建議使用這個方法， `azds.yaml`因為會儲存在原始檔控制中。
+> 您可以直接輸入秘密值，而不使用中的 *$PLACEHOLDER*語法 `azds.yaml` 。 不過，不建議使用這個方法，因為 `azds.yaml` 會儲存在原始檔控制中。
      
-`.env`在與相同的資料夾中建立檔案`azds.yaml` ，以定義您的 *$PLACEHOLDER*值。 例如：
+在與 `.env` 相同的資料夾中建立檔案 `azds.yaml` ，以定義您的 *$PLACEHOLDER*值。 例如：
 
 ```
 REDIS_PORT=3333
@@ -98,7 +97,7 @@ REDIS_KEY=myrediskey
 ```
 
 > [!IMPORTANT]
-> 不建議將秘密儲存在原始檔控制中。 如果使用 Git，請`.env`將新增`.gitignore`至檔案，以避免在原始檔控制中認可秘密。
+> 不建議將秘密儲存在原始檔控制中。 如果使用 Git，請將新增至檔案， `.env` `.gitignore` 以避免在原始檔控制中認可秘密。
 
 更新或驗證您的服務會以環境變數的形式來參考您的秘密。 例如：
 
@@ -108,13 +107,13 @@ var host = process.env.REDIS_HOST
 var theKey = process.env.REDIS_KEY
 ```
     
-使用`azds up`執行已更新的服務。
+使用執行已更新的服務 `azds up` 。
 
 ```console
 azds up
 ```
  
-使用`kubectl`來驗證您的密碼是否已建立。
+使用 `kubectl` 來驗證您的密碼是否已建立。
 
 ```console
 kubectl get secret --namespace default -o yaml 
@@ -122,9 +121,9 @@ kubectl get secret --namespace default -o yaml
 
 ## <a name="using-secrets-as-build-arguments"></a>使用秘密做為組建引數
 
-上一節說明了如何儲存和使用秘密，以在容器執行時間使用。 您也可以使用，在容器組建階段使用任何秘密，例如私人 NuGet 的密碼`azds.yaml`。
+上一節說明了如何儲存和使用秘密，以在容器執行時間使用。 您也可以使用，在容器組建階段使用任何秘密，例如私人 NuGet 的密碼 `azds.yaml` 。
 
-在`azds.yaml`中`<variable name>: ${secret.<secret name>.<secret key>}` ，*使用語法設定 build 中*的「組建時間」密碼。 例如：
+在中 `azds.yaml` ，使用語法設定 build 中*configurations.develop.build.args*的「組建時間」密碼。 `<variable name>: ${secret.<secret name>.<secret key>}` 例如：
 
 ```yaml
 configurations:
@@ -140,7 +139,7 @@ configurations:
 在上述範例中， *mynugetsecret*是現有的秘密，而*pattoken*是現有的金鑰。
 
 >[!NOTE]
-> 密碼名稱和金鑰可能包含`.`字元。 將`\`秘密傳遞`.`為組建引數時，請使用來進行 escape。 例如，若要傳遞名為*foo*的秘密與*token*的金鑰： `MYTOKEN: ${secret.foo\.bar.token}`。 此外，也可以使用前置詞和後置文字來評估秘密。 例如： `MYURL: eus-${secret.foo\.bar.token}-version1` 。 此外，父系和祖系空間中可用的秘密可以做為組建引數傳遞。
+> 密碼名稱和金鑰可能包含 `.` 字元。 將 `\` `.` 秘密傳遞為組建引數時，請使用來進行 escape。 例如，若要傳遞名為*foo*的秘密與*token*的金鑰： `MYTOKEN: ${secret.foo\.bar.token}` 。 此外，也可以使用前置詞和後置文字來評估秘密。 例如： `MYURL: eus-${secret.foo\.bar.token}-version1` 。 此外，父系和祖系空間中可用的秘密可以做為組建引數傳遞。
 
 在您的 Dockerfile 中，使用*ARG*指示詞來取用密碼，然後在 Dockerfile 中稍後使用該相同的變數。 例如：
 

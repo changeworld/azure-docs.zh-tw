@@ -4,10 +4,9 @@ description: 本文涵蓋升級 Service Fabric 應用程式的一些常見問題
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377917"
 ---
 # <a name="troubleshoot-application-upgrades"></a>疑難排解應用程式升級
@@ -212,9 +211,9 @@ Service Fabric 將所有百分比轉譯為健康狀態評估的實體 (例如複
 
 以下是逾時與升級時間之間的互動方式快速複習：
 
-升級網域的升級無法完成比*HealthCheckWaitDuration* + *HealthCheckStableDuration*更快的速度。
+升級網域的升級無法完成比*HealthCheckWaitDuration*HealthCheckStableDuration 更快的速度  +  * *。
 
-升級失敗的速度無法快于*HealthCheckWaitDuration* + *HealthCheckRetryTimeout*。
+升級失敗的速度無法快于*HealthCheckWaitDuration*  +  *HealthCheckRetryTimeout*。
 
 升級網域的升級時間受到 *UpgradeDomainTimeout*限制。  如果 HealthCheckRetryTimeout** 和 HealthCheckStableDuration** 兩者都為非零且應用程式的健康狀態會保持來回切換，則升級最終會在 UpgradeDomainTimeout** 逾時。 *UpgradeDomainTimeout* 就會開始倒數計時。
 

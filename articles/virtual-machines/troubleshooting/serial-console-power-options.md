@@ -15,17 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 8/6/2019
 ms.author: alsin
 ms.openlocfilehash: 11c2549d7282bae5654ede1ac34d63a43cd0f059
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451205"
 ---
 # <a name="power-options-available-from-the-azure-serial-console"></a>Azure 序列主控台提供的電源選項
 
 Azure 序列主控台為您的 VM 或虛擬機器擴展集提供了數種強大的電源管理工具。 這些電源管理選項可能會令人混淆，所以這是每個工具及其預期使用案例的總覽。
 
-序列主控台功能 | 描述 | 使用案例
+序列主控台功能 | Description | 使用案例
 :----------------------|:------------|:---------
 重新啟動 VM | 您的 VM 或虛擬機器擴展集實例的正常重新開機。 這項作業與呼叫 [總覽] 頁面中提供的 [重新開機] 功能相同。 | 在大部分情況下，此選項應該是您嘗試重新開機 VM 的第一個工具。 您的序列主控台連線會短暫中斷，並會在 VM 重新開機後立即自動繼續。
 重設 VM | Azure 平臺提供的 VM 或虛擬機器擴展集的強制電源週期。 | 此選項可用來立即重新開機您的作業系統，而不論其目前的狀態為何。 因為這項作業並不正常，所以會有資料遺失或損毀的風險。 序列主控台連線不會有任何中斷，這可能有助於在開機時儘早傳送命令（例如，在 Linux VM 上取得 GRUB 或 Windows VM 中的安全模式）。

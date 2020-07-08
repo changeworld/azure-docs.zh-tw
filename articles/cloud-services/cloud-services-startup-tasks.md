@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75360305"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>如何設定和執行雲端服務的啟動工作
@@ -113,9 +112,9 @@ EXIT /B 0
   > 
   
     若要確保批次檔結束時的 **errorlevel** 為零，請在批次檔處理序結束時執行命令 `EXIT /B 0`。
-* **背景**  
+* **background**  
    以非同步方式執行工作，並與角色的啟動工作平行進行。
-* **foreground**  
+* **提到**  
    以非同步方式執行工作，並與角色的啟動工作平行進行。 **foreground** 和 **background** 工作之間的主要差異，在於 **foreground** 工作可避免角色在工作結束之前遭到回收或關閉。 **background** 工作則不具備這項限制功能。
 
 ## <a name="environment-variables"></a>環境變數
@@ -158,7 +157,7 @@ EXIT /B 0
 [啟動]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [執行階段]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [環境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[變數]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
+[變]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 

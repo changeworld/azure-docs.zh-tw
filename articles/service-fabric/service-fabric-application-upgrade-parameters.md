@@ -4,10 +4,9 @@ description: 描述升級 Service Fabric 應用程式的相關參數，包括執
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 42b5c52181cfb006ae57e43c183b96a059a9c63a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377968"
 ---
 # <a name="application-upgrade-parameters"></a>應用程式升級參數
@@ -33,7 +32,7 @@ Visual Studio Service Fabric 應用程式升級參數會透過 [Visual Studio �
 ### <a name="required-parameters"></a>必要參數
 (PS=PowerShell, VS=Visual Studio)
 
-| 參數 | 套用至 | 說明 |
+| 參數 | 套用至 | Description |
 | --- | --- | --- |
 ApplicationName |PS| 正在升級的應用程式名稱。 範例：fabric:/VisualObjects、fabric:/ClusterMonitor。 |
 ApplicationTypeVersion|PS|升級目標的應用程式類型的版本。 |
@@ -48,7 +47,7 @@ UnmonitoredManual | PS | 表示升級模式為未受監視的手動升級。 當
 健康情況評估參數是選擇性的。 如果啟動升級時未指定健康狀態評估準則，則 Service Fabric 會使用應用程式執行個體的 ApplicationManifest.xml 中指定的應用程式健康狀態原則。
 
 > [!div class="mx-tdBreakAll"]
-> | 參數 | 套用至 | 說明 |
+> | 參數 | 套用至 | Description |
 > | --- | --- | --- |
 > | ApplicationParameter |PS, VS| 指定覆寫應用程式參數。<br>PowerShell 應用程式參數會指定為雜湊表的名稱/值組。 例如，@{ "VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1" }.<br>您可以在 [應用程式參數檔案]**** 欄位中的 [發行 Service Fabric 應用程式] 對話方塊中，指定 Visual Studio 應用程式參數。
 > | 確認 |PS| 允許的值為**True**和**False**。 在執行 Cmdlet 前提示您確認。 |
@@ -80,7 +79,7 @@ UnmonitoredManual | PS | 表示升級模式為未受監視的手動升級。 當
 
 | 參數 | 說明 |
 | --- | --- |
-| application-id  |正在升級的應用程式識別碼。 <br> 這通常是沒有 'fabric:' URI 配置之應用程式的完整名稱。 從 6.0 版開始，階層的名稱會以 '\~' 字元分隔。 例如，如果應用程式名稱是 ' fabric：/myapp/app1 '，則應用程式識別在 6.0 + 中\~會是 "myapp app1 '，而在舊版中會是 ' myapp/app1 '。|
+| application-id  |正在升級的應用程式識別碼。 <br> 這通常是沒有 'fabric:' URI 配置之應用程式的完整名稱。 從 6.0 版開始，階層的名稱會以 '\~' 字元分隔。 例如，如果應用程式名稱是 ' fabric：/myapp/app1 '，則應用程式識別 \~ 在 6.0 + 中會是 "myapp app1 '，而在舊版中會是 ' myapp/app1 '。|
 application-version |升級目標的應用程式類型的版本。|
 參數  |要在升級應用程式時套用的應用程式參數覆寫 JSON 編碼清單。|
 

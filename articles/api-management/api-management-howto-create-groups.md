@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430717"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>如何在 Azure API 管理中建立和使用群組來管理開發人員帳戶
@@ -38,7 +37,7 @@ API 管理具有下列不可變的系統群組：
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 完成本文中的工作：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
 
@@ -85,7 +84,7 @@ API 管理具有下列不可變的系統群組：
 本節說明如何讓群組與成員產生關聯。
 
 1. 選取畫面左側的 [群組]**** 索引標籤。
-2. 選取 [成員]****。
+2. 選取 [成員]。
 
     ![新增成員](./media/api-management-howto-create-groups/groups005.png)
 3. 按下 [+新增]**** 然後選取成員。

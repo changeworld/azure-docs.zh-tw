@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74900889"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>透過 Azure 入口網站管理串流端點 
@@ -75,7 +74,7 @@ ms.locfileid: "74900889"
 若要設定串流端點，請執行以下作業：
 
 1. 選取您想要設定的串流端點。
-2. 按一下 [設定]  。
+2. 按一下 [設定]。
 
 隨時顯示簡要的欄位說明。
 
@@ -87,7 +86,7 @@ ms.locfileid: "74900889"
 
 ## <a name="scale-your-premium-streaming-endpoint"></a>調整您的進階串流端點
 
-如需詳細資訊，請參閱[這](media-services-portal-scale-streaming-endpoints.md)篇文章。
+如需詳細資訊，請參閱[本篇文章](media-services-portal-scale-streaming-endpoints.md)。
 
 ## <a name="enable-azure-cdn-integration"></a><a id="enable_cdn"></a>啟用 Azure CDN 整合
 

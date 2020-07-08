@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75360339"
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新雲端服務
@@ -47,18 +46,18 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 
 | 允許對主機、服務和角色進行的變更 | 就地更新 | 預備 (VIP 交換) | 刪除並重新部署 |
 | --- | --- | --- | --- |
-| 作業系統版本 |是 |是 |是 |
-| .NET 信任等級 |是 |是 |是 |
-| 虛擬機器大小<sup>1</sup> |是<sup>2</sup> |是 |是 |
-| 本機儲存體設定 |只會增加<sup>2</sup> |是 |是 |
-| 在服務中新增或移除角色 |是 |是 |是 |
-| 特定角色的執行個體數目 |是 |是 |是 |
+| 作業系統版本 |是 |是 |Yes |
+| .NET 信任等級 |是 |是 |Yes |
+| 虛擬機器大小<sup>1</sup> |是<sup>2</sup> |是 |Yes |
+| 本機儲存體設定 |只會增加<sup>2</sup> |是 |Yes |
+| 在服務中新增或移除角色 |是 |是 |Yes |
+| 特定角色的執行個體數目 |是 |是 |Yes |
 | 服務端點的數目或類型 |是<sup>2</sup> |否 |是 |
-| 組態設定的名稱和值 |是 |是 |是 |
-| 組態設定的值 (而不是名稱) |是 |是 |是 |
-| 加入新憑證 |是 |是 |是 |
-| 變更現有的憑證 |是 |是 |是 |
-| 部署新程式碼 |是 |是 |是 |
+| 組態設定的名稱和值 |是 |是 |Yes |
+| 組態設定的值 (而不是名稱) |是 |是 |Yes |
+| 加入新憑證 |是 |是 |Yes |
+| 變更現有的憑證 |是 |是 |Yes |
+| 部署新程式碼 |是 |是 |Yes |
 
 <sup>1</sup> 大小變更已限制為可供雲端服務使用的大小子集。
 

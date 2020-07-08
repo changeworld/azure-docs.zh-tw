@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75364300"
 ---
 # <a name="understand-autoscale-settings"></a>了解自動調整設定
@@ -85,13 +84,13 @@ ms.locfileid: "75364300"
 }
 ```
 
-| 區段 | 元素名稱 | 說明 |
+| 區段 | 元素名稱 | Description |
 | --- | --- | --- |
 | 設定 | 識別碼 | 自動調整規模設定的資源識別碼。 自動調整規模設定是 Azure Resource Manager 資源。 |
 | 設定 | NAME | 自動調整規模設定名稱。 |
 | 設定 | location | 自動調整規模設定的位置。 此位置可以與要調整規模的資源位置不同。 |
 | properties | targetResourceUri | 要調整規模之資源的資源識別碼。 每個資源都只能有一個自動調整規模設定。 |
-| properties | profiles | 自動調整規模設定是由一或多個設定檔所組成。 每次自動調整規模引擎執行時，都會執行一個設定檔。 |
+| properties | 設定檔 | 自動調整規模設定是由一或多個設定檔所組成。 每次自動調整規模引擎執行時，都會執行一個設定檔。 |
 | profile | NAME | 設定檔的名稱。 您可以選擇任何有助於識別設定檔的名稱。 |
 | profile | Capacity.maximum | 允許的最大容量。 執行此設定檔時，可確保自動調整不會將資源的規模調整到大於此數字。 |
 | profile | Capacity.minimum | 允許的最小容量。 執行此設定檔時，可確保自動調整規模不會將資源的規模調整到小於此數字。 |
@@ -301,7 +300,7 @@ ms.locfileid: "75364300"
 ## <a name="next-steps"></a>後續步驟
 請參考下列各項，以深入了解自動調整︰
 
-* [自動調整的總覽](../../azure-monitor/platform/autoscale-overview.md)
+* [自動調整的概觀](../../azure-monitor/platform/autoscale-overview.md)
 * [Azure 監視器自動調整的常用度量](../../azure-monitor/platform/autoscale-common-metrics.md)
 * [Azure 監視器自動調整的最佳作法](../../azure-monitor/platform/autoscale-best-practices.md)
 * [使用自動調整動作傳送電子郵件和 Webhook 警示通知](../../azure-monitor/platform/autoscale-webhook-email.md)

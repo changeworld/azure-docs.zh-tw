@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75445874"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>使用 Azure Logic Apps 來管理 Excel Online 資料
@@ -24,12 +23,12 @@ ms.locfileid: "75445874"
 
 然後，您可以搭配其他服務的動作，使用這些動作的輸出。 例如，如果您使用會每週建立工作表的動作，則可以使用其他動作，藉由使用 Office 365 Outlook 連接器，來傳送確認電子郵件。
 
-如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
+如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
 > [商務用 Excel Online](/connectors/excelonlinebusiness/) 和[適用於 OneDrive 的 Excel Online](/connectors/excelonline/) 連接器可以與 Azure Logic Apps 搭配運作，而且與[適用於 PowerApps 的 Excel 連接器](/connectors/excel/)不同。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -38,7 +37,7 @@ ms.locfileid: "75445874"
   您的 Excel 資料可以是儲存體資料夾中 (例如在 OneDrive 中) 的逗號分隔值 (CSV) 檔案。 
   您也可以使用此相同的 CSV 檔案，與[一般檔案連接器](../logic-apps/logic-apps-enterprise-integration-flatfile.md)搭配使用。
 
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 您要在其中存取 Excel Online 資料的邏輯應用程式。 此連接器只提供動作，因此若要啟動邏輯應用程式，請選取個別觸發程序，例如**週期**觸發程序。
 
@@ -46,7 +45,7 @@ ms.locfileid: "75445874"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，如果邏輯應用程式尚未開啟，請在邏輯應用程式設計工具中開啟邏輯應用程式。
 
-1. 在觸發程序下方，選擇 [新增步驟]****。
+1. 在觸發程序下方，選擇 [新增步驟]。
 
 1. 在搜尋方塊中，輸入 "excel" 作為篩選條件。 在動作清單底下，選取您想要的動作。
 

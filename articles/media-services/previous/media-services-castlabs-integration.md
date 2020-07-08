@@ -16,10 +16,9 @@ ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
 ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74969134"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 castLabs 將 Widevine 授權傳遞到 Azure 媒體服務 
@@ -29,7 +28,7 @@ ms.locfileid: "74969134"
 > 
 > 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文說明如何使用 Azure 媒體服務 (AMS) 來傳遞 AMS 使用 PlayReady 與 Widevine DRM 動態加密的資料流。 PlayReady 授權來自媒體服務 PlayReady 授權伺服器，Widevine 授權則來自 **castLabs** 授權伺服器。
 
@@ -56,9 +55,9 @@ castLabs 與 AMS 皆支援使用 JWT (JSON Web Token) 權杖格式進行授權�
 
 下表說明 AMS 中的 JWT 權杖。 
 
-| 簽發者 | 所選安全權杖服務 (STS) 中的簽發者字串 |
+| Issuer | 所選安全權杖服務 (STS) 中的簽發者字串 |
 | --- | --- |
-| 適用對象 |所使用 STS 中的對象字串 |
+| 對象 |所使用 STS 中的對象字串 |
 | Claims |一組宣告 |
 | NotBefore |權杖的生效日期 |
 | 到期 (Expires) |權杖的有效期限 |
@@ -68,7 +67,7 @@ castLabs 與 AMS 皆支援使用 JWT (JSON Web Token) 權杖格式進行授權�
 
 下表說明 castLabs 中的 JWT 權杖。 
 
-| 名稱 | 描述 |
+| Name | 說明 |
 | --- | --- |
 | optData |JSON 字串，其中包含您的相關資訊。 |
 | crt |JSON 字串，其中包含資產、其授權資訊與播放權限的相關資訊。 |

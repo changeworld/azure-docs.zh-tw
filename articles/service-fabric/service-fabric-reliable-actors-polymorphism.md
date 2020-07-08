@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75348931"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors 架構中的多型
@@ -20,7 +19,7 @@ Reliable Actors 架構會要求您至少定義一個要由動作項目類型實�
 
 ![圖形動作項目的介面階層][shapes-interface-hierarchy]
 
-## <a name="types"></a>型別
+## <a name="types"></a>類型
 您也可以建立衍生自平台所提供之基底「動作項目」類別的動作項目類型階層。 如果是圖形，您可能會有一個基底 `Shape`(C#) 或 `ShapeImpl`(Java) 類型：
 
 ```csharp

@@ -15,16 +15,15 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74978197"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>使用 Azure 入口網站設定內容保護原則
 
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 不會在媒體服務 v2 中新增任何新功能或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 不會在媒體服務 v2 中新增任何新功能或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 >
 
  您可以透過 Azure 媒體服務來保護媒體從離開電腦到進行儲存、處理和傳遞時的安全。 您可以利用媒體服務傳遞，使用進階加密標準 (AES) (使用 128 位元加密金鑰) 所動態加密的內容。 您也可以將它與一般加密 (CENC) 搭配使用，方法是使用 PlayReady 和/或 Widevine 數位版權管理 (DRM) 和 Apple FairPlay。 
@@ -38,7 +37,7 @@ ms.locfileid: "74978197"
 
 1. 在[入口網站](https://portal.azure.com/)中，選取您的媒體服務帳戶。
 
-1. 選取 [**設定** > ] [**內容保護**]。
+1. 選取 [**設定**] [  >  **內容保護**]。
 
     ![內容保護](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
@@ -90,7 +89,7 @@ Widevine 授權範本會設定已在您 Widevine 授權上啟用的功能。
 若要利用動態封裝功能，請將您的來源檔案編碼成一組調適性位元速率 MP4 檔案。
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>選取您要加密的資產
-若要查看您所有的資產，請選取 [**設定** > ] [**資產**]。
+若要查看您所有的資產，請選取 [**設定**] [  >  **資產**]。
 
 ![資產選項](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 

@@ -4,10 +4,9 @@ description: 查看和篩選 Azure Advisor 建議以減少雜訊。
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 10d7b16864f8e449dc51e870c5ff9f20d8c0dc87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75422362"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>觀看 Azure Advisor 的重要建議

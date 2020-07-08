@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
 ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75378444"
 ---
 # <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 來監視和管理您的 GitHub 存放庫
@@ -24,9 +23,9 @@ GitHub 是網頁式 Git 存放庫主機服務，它提供 Git 中所有分散式
 
 若要在邏輯應用程式中使用 GitHub 連接器，您必須先建立「連線」**，然後提供這些屬性的詳細資料： 
 
-| 屬性 | 必要 | 描述 | 
+| 屬性 | 必要 | 說明 | 
 | -------- | -------- | ----------- | 
-| Token | 是 | 提供您的 GitHub 認證。 |
+| Token | Yes | 提供您的 GitHub 認證。 |
 
 建立連線後，您就可以執行動作，並接聽本文所述的觸發程序。
 

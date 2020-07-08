@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 3bb58334e96bf5378fb78b70125f9c7994a7c2fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435650"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>授權 Apache Ambari 檢視的使用者
@@ -32,7 +31,7 @@ Active Directory 使用者可以使用其網域認證來登入叢集節點。 �
 
 ![Apache Ambari 儀表板管理](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
-## <a name="add-users"></a>加入使用者
+## <a name="add-users"></a>新增使用者
 
 ### <a name="add-users-through-the-portal"></a>透過入口網站新增使用者
 
@@ -46,7 +45,7 @@ Active Directory 使用者可以使用其網域認證來登入叢集節點。 �
 
 ### <a name="add-users-through-powershell"></a>透過 PowerShell 新增使用者
 
-使用適當的值來取代`CLUSTERNAME`、 `NEWUSER`和`PASSWORD` ，以編輯下面的變數。
+`CLUSTERNAME` `NEWUSER` 使用適當的值來取代、和，以編輯下面的變數 `PASSWORD` 。
 
 ```powershell
 # Set-ExecutionPolicy Unrestricted
@@ -135,7 +134,7 @@ Write-Output $zookeeperHosts
 
 ### <a name="add-users-through-curl"></a>透過捲曲新增使用者
 
-使用適當的值來取代`CLUSTERNAME`、 `ADMINPASSWORD`、 `NEWUSER`和`USERPASSWORD` ，以編輯下面的變數。 腳本是設計來搭配 bash 來執行。 Windows 命令提示字元需要稍微修改。
+`CLUSTERNAME` `ADMINPASSWORD` `NEWUSER` 使用適當的值來取代、、和，以編輯下面的變數 `USERPASSWORD` 。 腳本是設計來搭配 bash 來執行。 Windows 命令提示字元需要稍微修改。
 
 ```bash
 export clusterName="CLUSTERNAME"

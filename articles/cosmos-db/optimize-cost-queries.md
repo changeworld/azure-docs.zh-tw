@@ -7,10 +7,9 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75445138"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化查詢成本
@@ -33,7 +32,7 @@ Azure Cosmos DB 中的查詢通常已依輸送量排序，從最快/最有效率
 
 將一些資料儲存在 Azure Cosmos 容器中後，可以使用 Azure 入口網站中的 [資料總管] 來建構及執行您的查詢。 您也可以使用 [資料總管] 取得查詢的成本。 這個方法可讓您了解系統支援的典型查詢和作業所涉及的實際費用。
 
-您還可以使用 SDK 以程式設計方式取得查詢的成本。 若要測量任何作業 (如建立、更新或刪除) 的額外負荷，請在使用 REST API 時檢查 `x-ms-request-charge` 標頭。 如果您使用 .NET 或 JAVA SDK， `RequestCharge`屬性會是取得要求費用的對等屬性，而此屬性會出現在 ResourceResponse 或 FeedResponse 內。
+您還可以使用 SDK 以程式設計方式取得查詢的成本。 若要測量任何作業 (如建立、更新或刪除) 的額外負荷，請在使用 REST API 時檢查 `x-ms-request-charge` 標頭。 如果您使用 .NET 或 JAVA SDK， `RequestCharge` 屬性會是取得要求費用的對等屬性，而此屬性會出現在 ResourceResponse 或 FeedResponse 內。
 
 ```csharp
 // Measure the performance (request units) of writes 

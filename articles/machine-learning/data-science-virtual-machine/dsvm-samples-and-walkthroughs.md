@@ -11,10 +11,9 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74900056"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Azure 資料科學虛擬機器的範例
@@ -23,12 +22,12 @@ Azure 資料科學虛擬機器（Dsvm）包含一組完整的範例程式碼。 
 > [!NOTE]
 > 如需有關如何在資料科學虛擬機器上執行 Jupyter 筆記本的詳細資訊，請參閱[存取權 Jupyter](#access-jupyter)一節。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 為了執行這些範例，您必須已布建資料科學虛擬機器。 請參閱[Windows](./provision-vm.md)和[Ubuntu](./dsvm-ubuntu-intro.md)的快速入門。
 
 ## <a name="available-samples"></a>可用的範例
-| 範例類別 | 描述 | 位置 |
+| 範例類別 | Description | 位置 |
 | ------------- | ------------- | ------------- |
 | R 語言  | 範例說明案例，例如如何與以 Azure 為基礎的雲端資料存放區連線，以及如何比較開放原始碼 R 和 Microsoft Machine Learning Server。 它們也會說明如何在 Microsoft Machine Learning Server 和 SQL Server 上讓模型。 <br/> [R 語言](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python 語言  | 範例說明如何使用以 Azure 為基礎的雲端資料存放區進行連線，以及如何使用 Azure Machine Learning 的案例。  <br/> [Python 語言](#python-language) | <br/>`~notebooks` <br/><br/>|
@@ -46,7 +45,7 @@ Azure 資料科學虛擬機器（Dsvm）包含一組完整的範例程式碼。 
 
 ## <a name="access-jupyter"></a>存取 Jupyter 
 
-若要存取 Jupyter，請選取 [桌面] 或 [應用程式] 功能表上的 [ **Jupyter** ] 圖示。 您也可以在 DSVM 的 Linux 版本上存取 Jupyter。 若要從網頁瀏覽器進行遠端存取， `https://<Full Domain Name or IP Address of the DSVM>:8000`請移至 Ubuntu 上的。
+若要存取 Jupyter，請選取 [桌面] 或 [應用程式] 功能表上的 [ **Jupyter** ] 圖示。 您也可以在 DSVM 的 Linux 版本上存取 Jupyter。 若要從網頁瀏覽器進行遠端存取，請移至 `https://<Full Domain Name or IP Address of the DSVM>:8000` Ubuntu 上的。
 
 若要新增例外狀況，並透過瀏覽器提供 Jupyter 存取，請使用下列指導方針：
 

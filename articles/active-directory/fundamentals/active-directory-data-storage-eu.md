@@ -13,10 +13,9 @@ ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7360b11f41cc08c2beb3ffa227e1658881798502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75422991"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中歐洲客戶的身分識別資料儲存體
@@ -27,7 +26,7 @@ ms.locfileid: "75422991"
 ## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure 多重要素驗證（MFA）
     
 - 使用電話或 SMS 的所有雙因素驗證都是來自美國資料中心，而且也會由全域提供者路由傳送。
-- 使用 Microsoft Authenticator 應用程式的推播通知源自于美國資料中心。 此外，裝置廠商特定服務也可能會在歐洲以外的地方播放及這些服務。
+- 使用 Microsoft Authenticator 應用程式的推播通知源自美國資料中心。 此外，裝置廠商特定服務也可能會在歐洲以外的地方播放及這些服務。
 - OATH 代碼一律會在美國進行驗證。 
 
 如需有關 Azure 多因素驗證服務器（MFA Server）和雲端式 Azure MFA 所收集哪些使用者資訊的詳細資訊，請參閱[Azure 多重要素驗證使用者資料收集](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection)。

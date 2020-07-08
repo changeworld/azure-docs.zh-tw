@@ -8,10 +8,9 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74967332"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫中的資料表共置–超大規模資料庫（Citus）
@@ -68,7 +67,7 @@ GROUP BY page_id;
 
 單一伺服器查詢開始會因為租使用者數目和為每個租使用者儲存的資料成長而變慢。 工作集會停止在記憶體中進行調整，而 CPU 會變成瓶頸。
 
-在此情況下，我們可以使用超大規模資料庫（Citus）來分區多個節點之間的資料。 在我們決定分區時，第一個和最重要的選擇是散發資料行。 讓我們從使用`event_id`事件資料表和`page_id` `page`資料表的簡單選擇開始：
+在此情況下，我們可以使用超大規模資料庫（Citus）來分區多個節點之間的資料。 在我們決定分區時，第一個和最重要的選擇是散發資料行。 讓我們從使用 `event_id` 事件資料表和資料表的簡單選擇開始 `page_id` `page` ：
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -109,7 +108,7 @@ GROUP BY page_id ORDER BY count DESC LIMIT 10;
 
 ### <a name="distribute-tables-by-tenant"></a>依租使用者散發資料表
 
-在超大規模資料庫（Citus）中，具有相同散發資料行值的資料列保證會在相同的節點上。 從開始，我們可以使用`tenant_id`來建立資料表，做為散發資料行。
+在超大規模資料庫（Citus）中，具有相同散發資料行值的資料列保證會在相同的節點上。 從開始，我們可以使用來建立資料表， `tenant_id` 做為散發資料行。
 
 ```sql
 -- co-locate tables by using a common distribution column

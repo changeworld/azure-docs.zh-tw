@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74974899"
 ---
 # <a name="how-to-reprovision-devices"></a>如何重新佈建裝置
@@ -43,7 +42,7 @@ ms.locfileid: "74974899"
 
     * **最低延遲**：此原則會將裝置指派到將在裝置與 IoT 中樞之間產生最低延遲通訊的已連結 IoT 中樞。 此選項可讓裝置與位置最接近的 IoT 中樞通訊。 
     
-    * **權重相等的分佈**：此原則會根據指派給每個連結的 IoT 中樞的配置權重，在所有連結的 IoT 中樞分佈裝置。 此原則可根據在一群連結的中樞中設定的配置權重，跨該連結的中樞群組進行裝置負載平衡。 如果您只要將裝置重新佈建到一個 IoT 中樞，建議使用此設定。 這項設定是預設值。 
+    * **權重相等的分佈**：此原則會根據指派給每個連結的 IoT 中樞的配置權重，在所有連結的 IoT 中樞分佈裝置。 此原則可根據在一群連結的中樞中設定的配置權重，跨該連結的中樞群組進行裝置負載平衡。 如果您只要將裝置重新佈建到一個 IoT 中樞，建議使用此設定。 這是預設設定。 
     
     * **靜態設定**：此原則要求在要佈建裝置的註冊項目中列出所需的 IoT 中樞。 此原則可讓您指定要指派裝置的單一特定 IoT 中樞。
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75349928"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure 私人連結常見問題（FAQ）
@@ -39,7 +38,7 @@ ms.locfileid: "75349928"
 是。 在相同的 VNet 或子網中，您可以有多個私人端點。 他們可以連接到不同的服務。  
  
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>需要私人端點專用的子網嗎？ 
-不可以。 私人端點不需要專用的子網。 您可以從您的服務部署所在的 VNet 中，選擇來自任何子網的私人端點 IP。  
+否。 私人端點不需要專用的子網。 您可以從您的服務部署所在的 VNet 中，選擇來自任何子網的私人端點 IP。  
  
 ### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>私人端點可以跨 Azure Active Directory 租使用者連線到私人連結服務嗎？ 
 是。 私人端點可以連接到私人連結服務，或跨 AD 租使用者的 Azure PaaS。  
@@ -69,13 +68,13 @@ ms.locfileid: "75349928"
 - **所有**-每個人都可以找到服務。 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>我可以建立具有基本 Load Balancer 的私人連結服務嗎？ 
-不可以。 不支援透過基本 Load Balancer 的私用連結服務。
+否。 不支援透過基本 Load Balancer 的私用連結服務。
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>私人連結服務需要專用的子網嗎？ 
-不可以。 私人連結服務不需要專用的子網。 您可以在您的服務部署所在的 VNet 中選擇任何子網。   
+否。 私人連結服務不需要專用的子網。 您可以在您的服務部署所在的 VNet 中選擇任何子網。   
 
 ### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>我是使用 Azure 私用連結的服務提供者。 我是否需要確保所有的客戶都有唯一的 IP 空間，而不會與我的 IP 空間重迭？ 
-不可以。 Azure 私用連結會為您提供這種功能。 因此，您不需要與客戶的位址空間有非重迭的位址空間。 
+否。 Azure 私用連結會為您提供這種功能。 因此，您不需要與客戶的位址空間有非重迭的位址空間。 
 
 ##  <a name="next-steps"></a>後續步驟
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75429160"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>如何將 Azure IoT 中樞複製到另一個區域
@@ -107,7 +106,7 @@ ms.locfileid: "75429160"
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>尋找原始中樞，並將它匯出至資源範本。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+1. 登入[Azure 入口網站](https://portal.azure.com)。 
 
 1. 移至 [**資源群組**]，然後選取包含您想要移動之中樞的資源群組。 您也可以移至 [**資源**]，並以該方式尋找中樞。 選取中樞。
 
@@ -121,7 +120,7 @@ ms.locfileid: "75429160"
 
 ### <a name="view-the-template"></a>檢視範本 
 
-1. 移至 [下載] 資料夾（或匯出範本時所使用的任何資料夾），然後尋找 zip 檔案。 開啟 zip 檔案，並尋找名`template.json`為的檔案。 選取它，然後選取 Ctrl + C 來複製範本。 移至不在 zip 檔案中的不同資料夾，並貼上檔案（Ctrl + V）。 現在您可以編輯它。
+1. 移至 [下載] 資料夾（或匯出範本時所使用的任何資料夾），然後尋找 zip 檔案。 開啟 zip 檔案，並尋找名為的檔案 `template.json` 。 選取它，然後選取 Ctrl + C 來複製範本。 移至不在 zip 檔案中的不同資料夾，並貼上檔案（Ctrl + V）。 現在您可以編輯它。
  
     下列範例適用于不含路由設定的泛型中樞。 在區域**westus**中，它是一個稱為**ContosoTestHub29358**的 S1 層中樞（具有1個單位）。 以下是匯出的範本。
 
@@ -308,9 +307,9 @@ ms.locfileid: "75429160"
    "containerName": "fabrikamresults",
    ```
 
-1. 在您取得儲存體帳戶的帳戶金鑰之後，請將它放在子句`AccountKey=****`中的範本中，以取代星號。 
+1. 在您取得儲存體帳戶的帳戶金鑰之後，請將它放在子句中的範本中， `AccountKey=****` 以取代星號。 
 
-1. 針對服務匯流排佇列，取得與 SharedAccessKeyName 相符的共用存取金鑰。 以下是 json `SharedAccessKeyName`中的金鑰和：
+1. 針對服務匯流排佇列，取得與 SharedAccessKeyName 相符的共用存取金鑰。 以下是 json 中的金鑰和 `SharedAccessKeyName` ：
 
    ```json
    "connectionString": "Endpoint=sb://fabrikamsbnamespace1234.servicebus.windows.net:5671/;
@@ -347,13 +346,13 @@ ms.locfileid: "75429160"
 
 使用範本在新的位置中建立新的中樞。 如果您有要移動的路由資源，應該在新的位置設定資源，並更新範本中的參考以符合。 如果您不移動路由資源，它們應該位於具有更新金鑰的範本中。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入[Azure 入口網站](https://portal.azure.com)。
 
-1. 選取 [建立資源]  。 
+1. 選取 [建立資源]。 
 
 1. 在搜尋方塊中，放入「範本部署」，然後選取 Enter。
 
-1. 選取**範本部署（使用自訂範本部署）**。 這會帶您前往範本部署的畫面。 選取 [建立]  。 您會看到這個畫面：
+1. 選取**範本部署（使用自訂範本部署）**。 這會帶您前往範本部署的畫面。 選取 [建立]。 您會看到這個畫面：
 
    ![顯示用來建立自己範本之命令的螢幕擷取畫面](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
@@ -363,7 +362,7 @@ ms.locfileid: "75429160"
 
    ![螢幕擷取畫面，顯示用於上傳範本檔案的命令](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
 
-1. 流覽您編輯的新範本並加以選取，然後選取 [**開啟**]。 它會在 [編輯] 視窗中載入您的範本。 選取 [儲存]  。 
+1. 流覽您編輯的新範本並加以選取，然後選取 [**開啟**]。 它會在 [編輯] 視窗中載入您的範本。 選取 [儲存]。 
 
    ![顯示載入範本的螢幕擷取畫面](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
 
@@ -485,9 +484,9 @@ DPS 服務已認可這項變更。
 
 ### <a name="running-the-sample-application-and-using-command-line-arguments"></a>執行範例應用程式和使用命令列引數
 
-1. 開啟 [命令提示字元] 視窗。 選取 [Windows] 並`command prompt`輸入，以取得 [命令提示字元] 視窗。
+1. 開啟 [命令提示字元] 視窗。 選取 [Windows] 並輸入， `command prompt` 以取得 [命令提示字元] 視窗。
 
-1. 複製設定環境變數的命令（一次一個），並將其貼到 [命令提示字元] 視窗中，然後選取 Enter 鍵。 當您完成時，請`SET`在 [命令提示字元] 視窗中輸入，以查看您的環境變數及其值。 將這些專案複製到 [命令提示字元] 視窗之後，除非您開啟新的 [命令提示字元] 視窗，否則不需要再次複製它們。
+1. 複製設定環境變數的命令（一次一個），並將其貼到 [命令提示字元] 視窗中，然後選取 Enter 鍵。 當您完成時，請 `SET` 在 [命令提示字元] 視窗中輸入，以查看您的環境變數及其值。 將這些專案複製到 [命令提示字元] 視窗之後，除非您開啟新的 [命令提示字元] 視窗，否則不需要再次複製它們。
 
 1. 在 [命令提示字元] 視窗中，變更目錄，直到您在/ImportExportDevicesSample （其中 ImportExportDevicesSample .csproj 檔案存在）。 然後輸入下列命令列引數，並將其包含在內。
 
@@ -549,7 +548,7 @@ DPS 服務已認可這項變更。
 
 1. 使用[Azure 入口網站](https://portal.azure.com)移至新的中樞。 選取您的中樞，然後選取 [ **IoT 裝置**]。 您會看到剛從舊中樞複製到複製的中樞的裝置。 您也可以查看複製的中樞的屬性。 
 
-1. 前往 [ [Azure 入口網站](https://portal.azure.com)中的 [Azure 儲存體帳戶]，然後查看的`devicefiles`容器，以檢查匯入/匯出錯誤`ImportErrors.log`。 如果此檔案是空的（大小為0），則不會發生任何錯誤。 如果您嘗試多次匯入相同的裝置，它會第二次拒絕裝置，並將錯誤訊息新增至記錄檔。
+1. 前往 [ [Azure 入口網站](https://portal.azure.com)中的 [Azure 儲存體帳戶]，然後查看的容器，以檢查匯入/匯出錯誤 `devicefiles` `ImportErrors.log` 。 如果此檔案是空的（大小為0），則不會發生任何錯誤。 如果您嘗試多次匯入相同的裝置，它會第二次拒絕裝置，並將錯誤訊息新增至記錄檔。
 
 ### <a name="committing-the-changes"></a>認可變更 
 
