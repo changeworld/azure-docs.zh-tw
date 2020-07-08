@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76277366"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署適用於 Cloud Foundry 系統監控的 Azure Log Analytics Nozzle
@@ -28,7 +27,7 @@ Log Analytics 噴嘴（噴嘴）是 Cloud Foundry （CF）元件，它會將來�
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 下列步驟是部署 Nozzle 的必要條件。
 
@@ -36,7 +35,7 @@ Log Analytics 噴嘴（噴嘴）是 Cloud Foundry （CF）元件，它會將來�
 
 您可以使用 Nozzle 搭配開放原始碼 CF 部署或 Pivotal Cloud Foundry (PCF) 部署。
 
-* [部署 Azure 上的 Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)
+* [在 Azure 上部署 Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)
 
 * [在 Azure 上部署 Pivotal Cloud Foundry](https://docs.pivotal.io/pivotalcf/1-11/customizing/azure.html)
 
@@ -59,7 +58,7 @@ Nozzle 也需要 Loggregator Firehose 和 Cloud Controller 的存取權限。 �
 #### <a name="to-create-the-workspace-manually"></a>若要手動建立工作區：
 
 1. 在 [Azure 入口網站中，搜尋 Azure Marketplace 中的服務清單，然後選取 [Log Analytics 工作區]。
-2. 選取 [建立]****，然後選取下列項目的選項：
+2. 選取 [建立]，然後選取下列項目的選項：
 
    * **Log Analytics 工作區**：輸入您工作區的名稱。
    * **訂用帳戶**：如果您擁有多個訂用帳戶，請選擇與 CF 部署相同的訂用帳戶。
@@ -100,7 +99,7 @@ Nozzle 也需要 Loggregator Firehose 和 Cloud Controller 的存取權限。 �
 
 #### <a name="sign-in-to-your-cf-deployment-as-an-admin-through-cf-cli"></a>透過 CF CLI 以管理員身分登入 CF 部署
 
-執行以下命令：
+執行下列命令：
 ```
 cf login -a https://api.${SYSTEM_DOMAIN} -u ${CF_USER} --skip-ssl-validation
 ```
@@ -124,7 +123,7 @@ uaac member add doppler.firehose ${FIREHOSE_USER}
 
 #### <a name="download-the-latest-log-analytics-nozzle-release"></a>下載最新版本的 Log Analytics Nozzle
 
-執行以下命令：
+執行下列命令：
 ```
 git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
 cd oms-log-analytics-firehose-nozzle
@@ -155,7 +154,7 @@ LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azur
 
 ### <a name="push-the-application-from-your-development-computer"></a>從開發電腦推送應用程式
 
-確認您在 oms-log-analytics-firehose-nozzle 資料夾下。 執行以下命令：
+確認您在 oms-log-analytics-firehose-nozzle 資料夾下。 執行下列命令：
 ```
 cf push
 ```
@@ -183,7 +182,7 @@ cf apps
 
 ### <a name="1-import-the-oms-view"></a>1. 匯入 OMS 視圖
 
-從 OMS 入口網站，流覽至 [ **View Designer** > **Import** > **] [流覽]**，然後選取其中一個 omsview 檔案。 例如，選取 Cloud Foundry.omsview**，然後儲存檢視。 圖格隨即會顯示在 [概觀]**** 頁面上。 選取以查看視覺化的計量。
+從 OMS 入口網站，流覽至 [ **View Designer**  >  **Import**  >  **] [流覽]**，然後選取其中一個 omsview 檔案。 例如，選取 Cloud Foundry.omsview**，然後儲存檢視。 圖格隨即會顯示在 [概觀]**** 頁面上。 選取以查看視覺化的計量。
 
 您可以透過**檢視設計工具**來自訂這些檢視或建立新檢視。
 
@@ -193,7 +192,7 @@ cf apps
 
 您可以視需要[建立警示](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)，並自訂查詢和閾值。 以下是建議的警示：
 
-| 搜尋查詢                                                                  | 產生警示的依據 | 描述                                                                       |
+| 搜尋查詢                                                                  | 產生警示的依據 | Description                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | 結果數目 < 1   | **bbs.Domain.cf-apps** 表示 cf-apps 網域是否處於最新狀態。 這表示來自 Cloud Controller 的 CF 應用程式要求已同步至 bbs.LRPsDesired (Diego 所需 AI) 以供執行。 未接收到資料表示 cf-apps 網域在指定時間範圍內不是最新狀態。 |
 | Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | 結果數目 > 0   | 對於 Diego 資料格來說，0 表示健康情況良好，1 表示健康情況不佳。 請設定警示，使其在指定時間範圍內偵測到多個健康情況不佳的 Diego 資料格時發出。 |
@@ -242,7 +241,7 @@ cf delete <App Name> -r
 
 Azure Log Analytics Nozzle 已經開啟為來源。 將您的問題和意見反應傳送至 [GitHub 區段](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues)。 若要開啟 Azure 支援要求，請選擇「執行 Cloud Foundry 的虛擬機器」作為服務類別。 
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 
 從 PCF 2.0 開始，VM 效能計量會由系統計量轉寄站傳輸至 Azure Log Analytics 噴嘴，並整合到 Log Analytics 工作區中。 您不再需要 Log Analytics 代理程式，就能取得 VM 效能計量。 不過，您仍然可以使用 Log Analytics 代理程式來收集 Syslog 資訊。 Log Analytics 代理程式會以 Bosh 附加元件的形式安裝至您的 CF VM。 
 

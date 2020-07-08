@@ -7,17 +7,16 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
 ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981155"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>使用中的 Azure Logic Apps 和 Azure Functions，建立您的第一個無伺服器應用程式 Visual Studio
 
 您可以使用 Azure 中的無伺服器工具和功能（例如[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和[Azure Functions](../azure-functions/functions-overview.md)），快速開發及部署雲端應用程式。 本文說明如何開始在 Visual Studio 中建置無伺服器應用程式，而該應用程式會使用可呼叫 Azure 函式的邏輯應用程式。 若要深入了解 Azure 中的無伺服器解決方案，請參閱[採用 Functions 和 Logic Apps 的 Azure 無伺服伺服器](../logic-apps/logic-apps-serverless-overview.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要在 Visual Studio 中建立無伺服器應用程式，您需要：
 
@@ -34,7 +33,7 @@ ms.locfileid: "75981155"
   * [Microsoft Azure SDK for .NET （2.9.1 或更新版本）](https://azure.microsoft.com/downloads/)。 
   深入了解 [Azure SDK for .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet)。
 
-  * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)。
+  * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)(英文)。
 
   * 您想要的 Azure Logic Apps Tools for Visual Studio 版本：
 
@@ -64,7 +63,7 @@ ms.locfileid: "75981155"
 
    ![在 Visual Studio 中建立新專案](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
-1. 在 [已安裝]**** 之下，選取 **Visual C#** 或 **Visual Basic**。 然後，選取 [**雲端** > ] [**Azure 資源群組**]。
+1. 在 [已安裝]**** 之下，選取 **Visual C#** 或 **Visual Basic**。 然後，選取 [**雲端**] [  >  **Azure 資源群組**]。
 
    > [!NOTE]
    > 如果**雲端**類別或**Azure 資源群組**專案不存在，請確定您已安裝 Azure SDK for Visual Studio。
@@ -73,7 +72,7 @@ ms.locfileid: "75981155"
 
    1. 在 [**建立新專案**] 方塊中，選取 [Visual c #] 或 [Visual Basic] 的 [ **Azure 資源群組**] 專案範本，然後選取 **[下一步]**。
 
-   1. 提供您想要用於 Azure 資源群組的名稱和其他專案資訊。 當您完成時，選取 [建立]  。
+   1. 提供您想要用於 Azure 資源群組的名稱和其他專案資訊。 當您完成時，請選取 [建立]。
 
 1. 指定您的專案名稱和位置，然後選取 **[確定]**。
 
@@ -90,7 +89,7 @@ ms.locfileid: "75981155"
    ![選取 Azure 快速入門範本](./media/logic-apps-serverless-get-started-vs/select-template.png)
 
    Visual Studio 會為您的資源群組專案建立並開啟解決方案。 
-   您選取的 Azure 快速入門範本會在您的資源群組專案中建立名為 azuredeploy.parameters.json」的部署範本。 此部署範本包含一個簡單邏輯應用程式的定義，由 HTTP 要求觸發、呼叫 Azure 函式，並以 HTTP 回應形式傳回結果。
+   您所選取的 Azure 快速入門範本會在您的資源群組專案中建立名為 azuredeploy.js的部署範本。 此部署範本包含一個簡單邏輯應用程式的定義，由 HTTP 要求觸發、呼叫 Azure 函式，並以 HTTP 回應形式傳回結果。
 
    ![新增無伺服器解決方案](./media/logic-apps-serverless-get-started-vs/create-serverless-solution.png)
 
@@ -100,7 +99,7 @@ ms.locfileid: "75981155"
 
 在 Visual Studio 的邏輯應用程式設計工具中開啟邏輯應用程式之前，您必須擁有已在 Azure 中部署的 Azure 資源群組。 設計工具可接著在您的邏輯應用程式中建立資源和服務的連線。 針對這項工作，請遵循下列步驟，將您的方案從 Visual Studio 部署至 Azure 入口網站：
 
-1. 在方案總管中，從資源專案的快捷方式功能表中，選取 [**部署** > **新**的]。
+1. 在方案總管中，從資源專案的快捷方式功能表中，選取 [**部署**  >  **新**的]。
 
    ![建立資源群組的新部署](./media/logic-apps-serverless-get-started-vs/deploy.png)
 
@@ -119,9 +118,9 @@ ms.locfileid: "75981155"
 
 若要在部署之後編輯邏輯應用程式，請使用 Visual Studio 中的邏輯應用程式設計工具來開啟邏輯應用程式。
 
-1. 在方案總管中，從 azuredeploy.parameters.json」的快捷方式功能表，選取 [**使用邏輯應用程式設計工具開啟**]。
+1. 在方案總管中，從檔案 azuredeploy.js的快捷方式功能表中，選取 [**使用邏輯應用程式設計工具開啟**]。
 
-   ![在邏輯應用程式設計工具中開啟 azuredeploy.parameters.json」](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
+   ![在邏輯應用程式設計工具中開啟 azuredeploy.js](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
 
    > [!TIP]
    > 如果您在 Visual Studio 2019 中沒有此命令，請檢查您是否有最新的 Visual Studio 更新。
@@ -140,7 +139,7 @@ ms.locfileid: "75981155"
 
 ## <a name="deploy-functions-from-visual-studio"></a>從 Visual Studio 部署函式
 
-您的部署範本會從 azuredeploy.parameters.json」中變數所指定的 Git 存放庫，部署您在解決方案中擁有的任何 Azure 函式。 如果您在方案中建立並撰寫函式專案，您可以將該專案簽入 Git 原始檔控制（例如 GitHub 或 Azure DevOps），然後更新`repo`變數，讓範本部署您的 Azure 函式。
+您的部署範本會從 azuredeploy.json 檔案的變數所指定的 Git 存放庫，部署您的解決方案中所擁有的任何 Azure 函式。 如果您在方案中建立並撰寫函式專案，您可以將該專案簽入 Git 原始檔控制（例如 GitHub 或 Azure DevOps），然後更新 `repo` 變數，讓範本部署您的 Azure 函式。
 
 ## <a name="manage-logic-apps-and-view-run-history"></a>管理邏輯應用程式及檢視執行歷程記錄
 

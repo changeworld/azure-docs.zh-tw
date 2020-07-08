@@ -14,17 +14,16 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
 ms.openlocfilehash: f8fe1b13db6473e80f0d7cdc638b775a0c8062c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76513496"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>從 Azure 媒體編碼器遷移至媒體編碼器標準
 
-本文討論從舊版 Azure 媒體編碼器（AME）媒體處理器（已淘汰）遷移至媒體編碼器標準媒體處理器的步驟。 如需停用日期，請參閱此[舊版元件](legacy-components.md)主題。
+本文討論從舊版 Azure 媒體編碼器（AME）媒體處理器（已淘汰）遷移至媒體編碼器標準媒體處理器的步驟。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。
 
-使用 AME 編碼檔案時，客戶通常會使用名為的預設字串`H264 Adaptive Bitrate MP4 Set 1080p`，例如。 為了進行遷移，您的程式碼必須更新為使用**媒體編碼器標準**媒體處理器，而不是 [AME]，以及其中一個[system presets](media-services-mes-presets-overview.md)對等系統`H264 Multiple Bitrate 1080p`預設值（例如）。 
+使用 AME 編碼檔案時，客戶通常會使用名為的預設字串，例如 `H264 Adaptive Bitrate MP4 Set 1080p` 。 為了進行遷移，您的程式碼必須更新為使用**媒體編碼器標準**媒體處理器，而不是 [AME]，以及其中一個對等[系統](media-services-mes-presets-overview.md)預設值（例如） `H264 Multiple Bitrate 1080p` 。 
 
 ## <a name="migrating-to-media-encoder-standard"></a>遷移至媒體編碼器標準
 

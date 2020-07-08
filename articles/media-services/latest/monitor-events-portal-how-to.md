@@ -16,10 +16,9 @@ ms.workload: media
 ms.date: 01/21/2020
 ms.author: juliako
 ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76509218"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>在 Azure 入口網站中使用事件方格建立和監視媒體服務事件
@@ -30,7 +29,7 @@ Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂閱]
 
 當您完成時，您會看到事件資料已傳送至 Web 應用程式。
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 
 * 擁有有效的 Azure 訂用帳戶。
 * 建立新的 Azure 媒體服務帳戶，如[此快速入門](create-account-cli-quickstart.md)所述。
@@ -39,7 +38,7 @@ Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂閱]
 
 在訂閱媒體服務帳戶的事件之前，我們要先建立事件訊息的端點。 通常，端點會根據事件資料採取動作。 在本文中，您會部署[預先建置的 Web 應用程式](https://github.com/Azure-Samples/azure-event-grid-viewer)以顯示事件訊息。 已部署的解決方案包含 App Service 方案、App Service Web 應用程式，以及 GitHub 中的原始程式碼。
 
-1. 選取 [部署至 Azure]  ，將解決方案部署至您的訂用帳戶。 在 Azure 入口網站中，提供參數的值。
+1. 選取 [部署至 Azure]，將解決方案部署至您的訂用帳戶。 在 Azure 入口網站中，提供參數的值。
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 

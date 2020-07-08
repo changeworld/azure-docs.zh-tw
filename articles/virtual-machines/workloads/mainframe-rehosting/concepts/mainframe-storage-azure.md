@@ -7,10 +7,9 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76288909"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>將大型主機儲存體移至 Azure
@@ -51,7 +50,7 @@ Azure 儲存體是以[Azure 磁片](/azure/virtual-machines/windows/managed-disk
 
 <table>
 <thead>
-    <tr><th>類型</th><th>說明</th><th>當您想要執行下列動作時，請使用：</th></tr>
+    <tr><th>類型</th><th>Description</th><th>當您想要執行下列動作時，請使用：</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure 檔案

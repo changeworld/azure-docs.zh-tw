@@ -8,17 +8,16 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76273878"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Virtual Array 簡介
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Microsoft Azure StorSimple Virtual Array 是一個整合式儲存體解決方案，可管理 Hypervisor 中執行之內部部署虛擬陣列與 Microsoft Azure 雲端儲存體之間的儲存體工作。 虛擬陣列是一個有效率、符合成本效益且易於管理的檔案伺服器或 iSCSI 伺服器解決方案，可減少許多與企業儲存體和資料保護相關聯的問題和支出。 虛擬陣列特別適合不常存取之封存資料的儲存體。
 
@@ -71,8 +70,8 @@ StorSimple 會在數分鐘內將使用者和伺服器連接到 Azure 儲存體�
 
 |狀況     |工作負載     |支援      |限制               | 適用的版本|
 |-------------|-------------|---------------|---------------------------|--------------------|
-|遠端辦公室/分公司 (ROBO)  |檔案共用     |是      |請參閱[檔案伺服器的上限](storsimple-ova-limits.md)。<br></br>請參閱[支援 SMB 版的系統需求](storsimple-ova-system-requirements.md)。| 所有版本     |
-|雲端封存  |封存檔案共用     |是      |請參閱[檔案伺服器的上限](storsimple-ova-limits.md)。<br></br>請參閱[支援 SMB 版的系統需求](storsimple-ova-system-requirements.md)。| 所有版本     |
+|遠端辦公室/分公司 (ROBO)  |檔案共用     |Yes      |請參閱[檔案伺服器的上限](storsimple-ova-limits.md)。<br></br>請參閱[支援 SMB 版的系統需求](storsimple-ova-system-requirements.md)。| 所有版本     |
+|雲端封存  |封存檔案共用     |Yes      |請參閱[檔案伺服器的上限](storsimple-ova-limits.md)。<br></br>請參閱[支援 SMB 版的系統需求](storsimple-ova-system-requirements.md)。| 所有版本     |
 
 StorSimple Virtual Array 最適合不常存取的資料。 雖然虛擬陣列具有本機快取可提高效能，但使用者應該假設裝置為儲存體 (雲端) 最低層的檔案提供服務。 每個虛擬陣列都能以大約 100 Mbps 的速度寫入及讀取 Azure 儲存體。 該連結會在進入裝置的所有要求之間共用，並會形成瓶頸，如下圖所示。
 

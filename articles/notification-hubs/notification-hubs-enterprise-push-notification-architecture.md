@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76264028"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企業推送架構指引
@@ -58,7 +57,7 @@ ms.locfileid: "76264028"
 
 ## <a name="sample"></a>範例
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 完成下列教學課程以熟悉概念，以及常用的建立和設定步驟：
 
@@ -234,7 +233,7 @@ ms.locfileid: "76264028"
 
     ![][3]
 
-    g. 將作業設定為 [連續執行]，如此一來，當您登入 [Azure 入口網站]時，應能看見與以下範例相似的內容：
+    如 將作業設定為 [連續執行]，如此一來，當您登入 [Azure 入口網站]時，應能看見與以下範例相似的內容：
 
     ![][4]
 

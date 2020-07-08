@@ -11,10 +11,9 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76289793"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 虛擬機器上的大型主機重新裝載

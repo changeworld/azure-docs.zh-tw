@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: aa9d776df50306ab1705426c923413b5a5d545a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68717358"
 ---
 # <a name="monitor-site-recovery"></a>監視 Site Recovery
@@ -24,7 +23,7 @@ ms.locfileid: "68717358"
 - 基礎結構元件，例如內部部署伺服器。
 
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 在開始之前，您可能會想要檢查[常見的監視問題](monitoring-common-questions.md)。
 
@@ -50,7 +49,7 @@ ms.locfileid: "68717358"
 --- | ---
 Healthy | 正常複寫中。 未偵測到任何錯誤或警告症狀。
 警告 | 偵測到一或多個可能會影響複寫的警告症狀。
-重大 | 已偵測到一或多個嚴重的複寫錯誤症狀。<br/><br/> 這類錯誤症狀通常表示複寫停滯不前，或複寫速度跟不上資料變更速度。
+重要 | 已偵測到一或多個嚴重的複寫錯誤症狀。<br/><br/> 這類錯誤症狀通常表示複寫停滯不前，或複寫速度跟不上資料變更速度。
 不適用 | 目前不該進行複寫的伺服器。 這可能包括已容錯移轉的機器。
 
 ## <a name="monitor-test-failovers"></a>監視測試容錯移轉
@@ -109,12 +108,12 @@ Healthy | 正常複寫中。 未偵測到任何錯誤或警告症狀。
 
     **案例** | **State**  | **有檢視可供使用？**
     --- |--- | ---
-    **內部部署網站之間的複寫** | 所有狀態 | 否 
-    **Azure 區域之間的 Azure VM 複寫**  | 已啟用複寫/正在進行初始複寫 | 是
-    **Azure 區域之間的 Azure VM 複寫** | 已容錯移轉/容錯回復 | 否   
-    **VMware 複寫至 Azure** | 已啟用複寫/正在進行初始複寫 | 是     
-    **VMware 複寫至 Azure** | 已容錯移轉/已容錯回復 | 否      
-    **Hyper-V 複寫至 Azure** | 已容錯移轉/已容錯回復 | 否
+    **內部部署網站之間的複寫** | 所有狀態 | No 
+    **Azure 區域之間的 Azure VM 複寫**  | 已啟用複寫/正在進行初始複寫 | Yes
+    **Azure 區域之間的 Azure VM 複寫** | 已容錯移轉/容錯回復 | No   
+    **VMware 複寫至 Azure** | 已啟用複寫/正在進行初始複寫 | Yes     
+    **VMware 複寫至 Azure** | 已容錯移轉/已容錯回復 | No      
+    **Hyper-V 複寫至 Azure** | 已容錯移轉/已容錯回復 | No
 
 - 若要查看單一複寫機器的基礎結構檢視，請在保存庫功能表中按一下 [複寫的項目]****，然後選取伺服器。  
 

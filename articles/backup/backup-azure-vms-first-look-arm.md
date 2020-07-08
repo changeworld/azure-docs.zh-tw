@@ -4,10 +4,9 @@ description: 在本文中，您將瞭解如何使用 Azure 備份服務來備份
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76705440"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>從 VM 設定備份 Azure VM
@@ -64,7 +63,7 @@ ms.locfileid: "76705440"
 
 ## <a name="run-a-backup-immediately"></a>立即執行備份
 
-1. 若要立即執行備份，請在 VM 功能表中，按一下 [立即**備份** > **備份**]。
+1. 若要立即執行備份，請在 VM 功能表中，按一下 [立即**備份**  >  **備份**]。
 
     ![執行備份](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
@@ -79,11 +78,11 @@ ms.locfileid: "76705440"
 請遵循這篇文章中的指示，藉由設定 Azure 備份復原服務保存庫，以及在保存庫中啟用備份，來啟用 Azure VM 的備份。
 
 >[!NOTE]
-> **Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁片備份和還原。**
+> **Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁碟備份和還原。**
 >
->目前，Azure 備份支援使用虛擬機器備份解決方案，同時備份 VM 中的所有磁片（作業系統和資料）。 使用 [排除磁片] 功能時，您可以選擇從 VM 中的多個資料磁片備份一或數個。 這為您的備份和還原需求提供有效率且符合成本效益的解決方案。 每個復原點都包含備份作業中包含的磁片資料，這可讓您在還原作業期間，擁有從指定復原點還原的磁片子集。 這適用于從快照集和保存庫還原兩者。
+>目前，Azure 備份支援使用虛擬機器備份解決方案來同時備份 VM 中的所有磁碟 (作業系統與資料)。 使用排除磁碟功能時，您可以從 VM 的諸多資料磁碟中，選擇備份一個或多個磁碟。 如此可提供有效率且符合成本效益的解決方案，以滿足您的備份和還原需求。 每個復原點都有備份作業所含磁碟的資料，這進一步可讓您在還原作業期間，從給定的復原點還原磁碟子集。 從快照集和保存庫還原時都是如此。
 >
->**若要註冊預覽版，請于前寫信給我們AskAzureBackupTeam@microsoft.com**
+>**若要註冊預覽版，請將電子郵件寄到 AskAzureBackupTeam@microsoft.com**
 
 ## <a name="next-steps"></a>後續步驟
 

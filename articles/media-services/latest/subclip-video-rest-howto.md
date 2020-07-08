@@ -14,19 +14,18 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
 ms.openlocfilehash: c39aded55fe36cb130459a4f6f119f872b1adbc4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76514318"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>使用媒體服務 REST 編碼時子剪輯影片
 
-使用[作業](https://docs.microsoft.com/rest/api/media/jobs)進行編碼時，您可以修剪或子剪輯影片。 這項功能適用于使用 [ [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) ] 預設值或 [ [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) ] 預設建立的任何[轉換](https://docs.microsoft.com/rest/api/media/transforms)。 
+使用[作業](https://docs.microsoft.com/rest/api/media/jobs)進行編碼時，您可以修剪或子剪輯影片。 這項功能適用於使用 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 預設或 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 預設所建立的任何[轉換](https://docs.microsoft.com/rest/api/media/transforms)。 
 
 本主題中的 REST 範例會建立一項作業，以在提交編碼工作時修剪影片。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成此主題中所述的步驟，您必須：
 
@@ -39,7 +38,7 @@ ms.locfileid: "76514318"
 
 ## <a name="create-a-subclipping-job"></a>建立子剪輯作業
 
-1. 在您下載的 Postman 集合中，選取 [**轉換] 和 [作業** -> ] [**建立具有子裁剪的作業**]。
+1. 在您下載的 Postman 集合中，選取 [**轉換] 和 [作業**] [  ->  **建立具有子裁剪的作業**]。
     
     **PUT**要求看起來像這樣：
     
@@ -80,7 +79,7 @@ ms.locfileid: "76514318"
       }
     }
     ```
-1. 按 [傳送]  。
+1. 按 [傳送]。
 
     您會看到**回應**，其中包含已建立和提交之作業的相關資訊，以及作業的狀態。 
 

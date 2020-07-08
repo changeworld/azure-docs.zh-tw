@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
 ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721824"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>使用 Azure Pipelines、Docker 和 Kubernetes 建立適用于 AI 應用程式的 CI/CD 管線
@@ -60,7 +59,7 @@ ms.locfileid: "76721824"
 10. 應用程式的使用者要求會經過 DNS 伺服器。
 11. DNS 伺服器會將要求傳遞給負載平衡器，並將回應傳回給使用者。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
 - [Azure Machine Learning (AML)](/azure/machine-learning/)

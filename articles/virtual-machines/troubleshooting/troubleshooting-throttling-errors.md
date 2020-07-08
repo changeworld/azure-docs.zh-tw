@@ -14,10 +14,9 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76045354"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>針對 API 節流錯誤進行疑難排解 
@@ -32,7 +31,7 @@ Azure 計算要求可在訂用帳戶上和個別區域中受到節流，以利�
 
 ## <a name="call-rate-informational-response-headers"></a>呼叫率資訊回應標頭 
 
-| 頁首                            | 值格式                           | 範例                               | 描述                                                                                                                                                                                               |
+| Header                            | 值格式                           | 範例                               | 描述                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | 涵蓋資源貯體或作業群組 (包括此要求的目標) 的節流原則剩餘的 API 呼叫計數                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | 此 HTTP 要求計入適用原則限制的呼叫計數。 此值通常是 1。 對於批次要求 (例如，用來調整虛擬機器擴展集)，則可能計入多個計數。 |

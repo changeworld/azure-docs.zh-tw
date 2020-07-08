@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: fb940857a0f88590cb9bbbf56b9e6a791299309f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980952"
 ---
 # <a name="azure-operational-security-checklist"></a>Azure 作業安全性檢查清單
@@ -37,7 +36,7 @@ Azure 提供的基礎結構服務套件，可讓您用來部署應用程式。 A
 
 這份檢查清單旨在協助企業在 Azure 上部署複雜的企業應用程式之際，思考各種作業的安全性考量。 它也可以用來協助您建置組織的安全雲端移轉和作業策略。
 
-|檢查清單類別| 描述|
+|檢查清單類別| Description|
 | ------------ | -------- |
 | [<br>& 存取控制的安全性角色](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>使用 [角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md)可提供用來指派權限給特定範圍的使用者、群組和應用程式的使用者特定。</li></ul> |
 | [<br>資料收集 & 儲存體](../../storage/blobs/security-recommendations.md)|<ul><li>透過[角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md)，使用管理平面安全性來保護您的儲存體帳戶。</li><li>資料平面安全性可使用[共用存取簽章 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 和儲存的存取原則來保護您的資料存取。</li><li>使用傳輸等級加密 – 使用 HTTPS 和適用於 [Azure 檔案共用](../../storage/files/storage-dotnet-how-to-use-files.md)的 [SMB (伺服器訊息區塊通訊協定) 3.0](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) 所使用的加密。</li><li>使用[用戶端加密](../../storage/common/storage-client-side-encryption.md)可保護您需要加密金鑰的唯一控制權時，傳送給儲存體帳戶的資料。 </li><li>使用[儲存體服務加密 (SSE)](../../storage/common/storage-service-encryption.md)可將 Azure 儲存體中的資料自動加密，而使用 [Azure 磁碟加密](../azure-security-disk-encryption-overview.md)可將 OS 和資料磁碟的虛擬機器磁碟檔案進行加密。</li><li>使用 Azure [儲存體分析](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)可監視授權類型；如同使用 Blob 儲存體，您可以看到使用者是否已使用共用存取簽章還是儲存體帳戶金鑰。</li><li>使用[跨原始資源共用 (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 可存取來自不同網域的儲存區資源。</li></ul> |

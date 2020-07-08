@@ -14,17 +14,16 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
 ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76119613"
 ---
 # <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>使用 Azure 中的「嵌套虛擬化」針對錯誤的 Azure VM 進行疑難排解
 
 本文說明如何在 Microsoft Azure 中建立嵌套虛擬化環境，因此您可以在 Hyper-v 主機（修復 VM）上掛接故障 VM 的磁片，以進行疑難排解。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 為了掛接故障的 VM，修復 VM 必須使用與故障的 VM 相同的儲存體帳戶類型（標準或 Premium）。
 
@@ -42,13 +41,13 @@ ms.locfileid: "76119613"
 
 2.  建立「救援 VM」之後，建立「救援 VM」的遠端桌面。
 
-3.  在伺服器管理員中，選取 [**管理** > ] [**新增角色及功能**]。
+3.  在伺服器管理員中，選取 [**管理**] [  >  **新增角色及功能**]。
 
 4.  在 [安裝類型]**** 區段中，選取 [角色型或功能型安裝]****。
 
 5.  在 [選取目的地伺服器]**** 區段中，確定已選取「救援 VM」。
 
-6.  選取 [ **hyper-v 角色** > ] [**新增功能**]。
+6.  選取 [ **hyper-v 角色**] [  >  **新增功能**]。
 
 7.  在 [功能]**** 區段上選取 [下一步]****。
 
@@ -60,7 +59,7 @@ ms.locfileid: "76119613"
 
 11. 視需要勾選方塊，以自動重新啟動伺服器。
 
-12. 選取 [安裝]  。
+12. 選取 [安裝]。
 
 13. 允許伺服器安裝 Hyper-V 角色。 這需要幾分鐘，而且伺服器會自動重新開機。
 
@@ -74,7 +73,7 @@ ms.locfileid: "76119613"
 
 4.  開啟 [Hyper-V 管理員]：在 [伺服器管理員]**** 中，選取 [Hyper-V 角色]****。 以滑鼠右鍵按一下伺服器，然後選取 [Hyper-V 管理員]****。
 
-5.  在 [hyper-v 管理員] 中，以滑鼠右鍵按一下 [修復 VM]，然後選取 [**新增** > **虛擬機器** > **]**。
+5.  在 [hyper-v 管理員] 中，以滑鼠右鍵按一下 [修復 VM]，然後選取 [**新增**  >  **虛擬機器**  >  **]**。
 
 6.  輸入 VM 的名稱，然後選取 [下一步]****。
 

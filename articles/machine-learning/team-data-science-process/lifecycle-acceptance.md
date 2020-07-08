@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720515"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期的客戶接受度階段
@@ -24,7 +23,7 @@ ms.locfileid: "76720515"
 
    1. **了解商務**
    2. **資料取得與認知**
-   3. **模型化**
+   3. **模型**
    4. **部署**
    5. **客戶接受度**
 
@@ -36,7 +35,7 @@ ms.locfileid: "76720515"
 ## <a name="goal"></a>目標
 **完成專案交付專案**：確認在生產環境中的管線、模型及其部署滿足客戶的目標。
 
-## <a name="how-to-do-it"></a>作法
+## <a name="how-to-do-it"></a>如何執行此動作
 此階段會解決兩項主要工作︰
 
    * **系統驗證**︰確認所部署的模型和管線符合客戶的需求。
@@ -44,7 +43,7 @@ ms.locfileid: "76720515"
 
 客戶應該驗證系統是否符合其商務需求並以可接受的精確度回答問題，以將系統部署到生產環境以供其用戶端的應用程式使用。 所有文件皆已完成並檢閱。 專案已移交給負責運作的實體。 比方說，這個實體可能是 IT 或客戶的資料科學小組，或負責在生產環境中執行系統的客戶代理人。 
 
-## <a name="artifacts"></a>構件
+## <a name="artifacts"></a>Artifacts
 此最終階段所產生的主要成品是**客戶專案結束報表**。 此份技術報告包含可用於了解如何操作系統的所有專案詳細資料。 TDSP 提供[結束報告](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md)範本。 您可以直接使用範本，或者針對特定的用戶端需求加以自訂。 
 
 
@@ -54,7 +53,7 @@ ms.locfileid: "76720515"
 
    1. [了解商務](lifecycle-business-understanding.md)
    2. [資料取得與認知](lifecycle-data.md)
-   3. [模型化](lifecycle-modeling.md)
+   3. [模型](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)
    5. [客戶接受度](lifecycle-acceptance.md)
 

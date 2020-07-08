@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721348"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Team 資料科學程序群組管理員工作
@@ -51,13 +50,13 @@ ms.locfileid: "76721348"
    
 1. 如果系統提示您同意「服務條款」、「隱私權聲明」和「行為規範」，請選取 [**繼續**]。
    
-1. 在 [註冊] 對話方塊中，為您的 Azure DevOps 組織命名並接受主機區域指派，或下拉並選取不同的區域。 接著，選取 [繼續]  。 
+1. 在 [註冊] 對話方塊中，為您的 Azure DevOps 組織命名並接受主機區域指派，或下拉並選取不同的區域。 然後選取 [繼續]。 
 
 1. 在 [**建立要開始的專案**] 下，輸入*GroupCommon*，然後選取 [**建立專案**]。 
    
    ![建立專案](./media/group-manager-tasks/create-project.png)
 
-[ **GroupCommon**專案**摘要**] 頁面隨即開啟。 網頁 URL 為*\//\<HTTPs： servername>/\<組織名稱>/groupcommon*。
+[ **GroupCommon**專案**摘要**] 頁面隨即開啟。 網頁 URL 為*HTTPs： \/ / \<servername> / \<organization-name> /GroupCommon*。
 
 ![專案摘要頁面](./media/group-manager-tasks/project-summary.png)
 
@@ -121,13 +120,13 @@ Azure Repos 會裝載群組的下列類型的儲存機制：
    
    ![選取 [匯入]](./media/group-manager-tasks/import-repo.png)
    
-1. 在 [匯**入 git 存放庫**] 對話方塊中，選取 [ **Git** ] 作為 [**來源類型**]，並針對 [**複製 URL**] 輸入*HTTPs\/：/github.com/Azure/Azure-TDSP-ProjectTemplate.git* 。 然後選取 [匯**入**]。 Microsoft TDSP team ProjectTemplate 存放庫的內容會匯入到您的 GroupProjectTemplate 存放庫。 
+1. 在 [匯**入 git 存放庫**] 對話方塊中，選取 [ **Git** ] 作為 [**來源類型**]，並針對 [**複製 URL**] 輸入*HTTPs： \/ /github.com/Azure/Azure-TDSP-ProjectTemplate.git* 。 然後選取 [匯**入**]。 Microsoft TDSP team ProjectTemplate 存放庫的內容會匯入到您的 GroupProjectTemplate 存放庫。 
    
    ![匯入 Microsoft TDSP 小組存放庫](./media/group-manager-tasks/import-repo-2.png)
    
 1. 在 [**存放庫**] 頁面頂端，下拉並選取 [ **GroupUtilities** ] 存放庫。
    
-1. 重複匯入程式，將 Microsoft TDSP 小組**公用程式**存放庫（ *HTTPs：\//github.com/Azure/Azure-TDSP-Utilities.git*）的內容匯入到您的**GroupUtilities**存放庫。 
+1. 重複匯入程式，將 Microsoft TDSP 小組**公用程式**存放庫（ *HTTPs： \/ /github.com/Azure/Azure-TDSP-Utilities.git*）的內容匯入到您的**GroupUtilities**存放庫。 
    
 除了*git*目錄中的所有檔案以外，您的每個群組存放庫都包含來自 Microsoft TDSP 小組對應的儲存機制。 
 
@@ -215,7 +214,7 @@ git push
 ```
 
 > [!NOTE]
-> 如果這是您第一次認可至 Git 存放庫，您可能需要在執行`git commit`命令之前，先設定全域參數*user.name*和*user. email* 。 執行下列兩個命令：
+> 如果這是您第一次認可至 Git 存放庫，您可能需要在執行命令之前，先設定全域參數*user.name*和*user. email* `git commit` 。 執行下列兩個命令：
 > 
 > `git config --global user.name <your name>`
 > 

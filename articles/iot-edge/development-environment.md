@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76511088"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>準備 IoT Edge 適用的開發和測試環境
@@ -49,7 +48,7 @@ Visual Studio Code 的 Azure IoT Edge 擴充功能提供針對程式設計語言
 
 除了 IoT Edge 擴充功能之外，您可能也會發現它在安裝用於開發的其他擴充功能時很有幫助。 例如，您可以使用[適用於 Visual Studio Code 的 Docker 支援](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)來管理映像、容器和登錄。 此外，所有主要支援的語言都有適用於 Visual Studio Code 的擴充功能，可在您開發模組時提供協助。
 
-#### <a name="prerequisites"></a>先決條件
+#### <a name="prerequisites"></a>必要條件
 
 某些語言和服務的模組範本具備使用 Visual Studio Code 在開發電腦上建置專案資料夾所需的必要條件。
 

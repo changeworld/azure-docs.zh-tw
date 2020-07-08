@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76713142"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的用戶端憑證驗證保護 API
@@ -51,8 +50,8 @@ API 管理提供以用戶端憑證保護對 API 之存取 (例如，用戶端對
 ```
 
 > [!NOTE]
-> 若要停用檢查憑證撤銷`context.Request.Certificate.VerifyNoRevocation()`清單， `context.Request.Certificate.Verify()`請使用，而不是。
-> 如果用戶端憑證是自我簽署的，則必須將根（或中繼） CA 憑證[上傳](api-management-howto-ca-certificates.md)至 API 管理， `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()`才能正常執行。
+> 若要停用檢查憑證撤銷清單，請使用， `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()` 。
+> 如果用戶端憑證是自我簽署的，則必須將根（或中繼） CA 憑證[上傳](api-management-howto-ca-certificates.md)至 API 管理， `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` 才能正常執行。
 
 ## <a name="checking-the-thumbprint"></a>檢查指紋
 
@@ -69,8 +68,8 @@ API 管理提供以用戶端憑證保護對 API 之存取 (例如，用戶端對
 ```
 
 > [!NOTE]
-> 若要停用檢查憑證撤銷`context.Request.Certificate.VerifyNoRevocation()`清單， `context.Request.Certificate.Verify()`請使用，而不是。
-> 如果用戶端憑證是自我簽署的，則必須將根（或中繼） CA 憑證[上傳](api-management-howto-ca-certificates.md)至 API 管理， `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()`才能正常執行。
+> 若要停用檢查憑證撤銷清單，請使用， `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()` 。
+> 如果用戶端憑證是自我簽署的，則必須將根（或中繼） CA 憑證[上傳](api-management-howto-ca-certificates.md)至 API 管理， `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` 才能正常執行。
 
 ## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>檢查指紋是否符合已上傳到 API 管理的憑證
 
@@ -88,11 +87,11 @@ API 管理提供以用戶端憑證保護對 API 之存取 (例如，用戶端對
 ```
 
 > [!NOTE]
-> 若要停用檢查憑證撤銷`context.Request.Certificate.VerifyNoRevocation()`清單， `context.Request.Certificate.Verify()`請使用，而不是。
-> 如果用戶端憑證是自我簽署的，則必須將根（或中繼） CA 憑證[上傳](api-management-howto-ca-certificates.md)至 API 管理， `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()`才能正常執行。
+> 若要停用檢查憑證撤銷清單，請使用， `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()` 。
+> 如果用戶端憑證是自我簽署的，則必須將根（或中繼） CA 憑證[上傳](api-management-howto-ca-certificates.md)至 API 管理， `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` 才能正常執行。
 
 > [!TIP]
-> 這[篇文章](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672)中所述的用戶端憑證鎖死問題可以透過數種方式來資訊清單，例如`403 Forbidden`要求凍結、要求在超時`context.Request.Certificate`之後`null`產生狀態碼，是。 此問題通常會`POST`影響`PUT`內容長度約60KB 或更大的要求。
+> 這[篇文章](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672)中所述的用戶端憑證鎖死問題可以透過數種方式來資訊清單，例如要求凍結、要求在 `403 Forbidden` 超時之後產生狀態碼， `context.Request.Certificate` 是 `null` 。 此問題通常會 `POST` 影響 `PUT` 內容長度約60KB 或更大的要求。
 > 若要避免此問題發生，請在 [自訂網域] 分頁上開啟所需主機名稱的「Negotiate 用戶端憑證」設定，如下所示。 此功能不適用於使用層。
 
 ![協調用戶端憑證](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)

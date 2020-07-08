@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720464"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期的模型化階段
@@ -24,7 +23,7 @@ ms.locfileid: "76720464"
 
    1. **了解商務**
    2. **資料取得與認知**
-   3. **模型化**
+   3. **模型**
    4. **部署**
    5. **客戶接受度**
 
@@ -38,7 +37,7 @@ ms.locfileid: "76720464"
 * 建立最能精確預測目標的參考機器學習模型。
 * 建立適用於生產環境的機器學習模型。
 
-## <a name="how-to-do-it"></a>作法
+## <a name="how-to-do-it"></a>如何執行此動作
 此階段會解決三項主要工作︰
 
   * **特徵工程設計**：從原始資料建立資料特徵，以加速模型定型。
@@ -69,7 +68,7 @@ ms.locfileid: "76720464"
 
 我們透過 TDSP 提供[自動化模型和報告工具](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) \(英文\)，其可透過多個演算法及參數掃掠來執行，以產生基準模型。 它也會產生基準模型報告，摘要說明每個模型和參數組合的效能 (包括變數重要性)。 此程序也會反覆進行，因為這可促成進一步的功能設計。 
 
-## <a name="artifacts"></a>構件
+## <a name="artifacts"></a>Artifacts
 此階段所產生的成品包括︰
 
    * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)：針對模型化所開發的功能，會在**資料定義**報告的 [**功能集**] 區段中說明。 它包含產生特徵的程式碼指標，以及特徵產生方式的描述。
@@ -84,7 +83,7 @@ ms.locfileid: "76720464"
 
    1. [了解商務](lifecycle-business-understanding.md)
    2. [資料取得與認知](lifecycle-data.md)
-   3. [模型化](lifecycle-modeling.md)
+   3. [模型](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)
    5. [客戶接受度](lifecycle-acceptance.md)
 

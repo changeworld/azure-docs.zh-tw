@@ -14,10 +14,9 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 3d834a8d1524595304c22fed9897094622dfd93f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76696209"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>MSAL for JAVA 中的 Active Directory 同盟服務支援
@@ -32,7 +31,7 @@ MSAL for JAVA 會連線到 Azure AD，其會登入 Azure AD （受管理的使�
 
 ## <a name="acquire-a-token-interactively-for-a-federated-user"></a>以互動方式取得同盟使用者的權杖
 
-當您使用`ConfidentialClientApplication.AcquireToken()` `PublicClientApplication.AcquireToken()` `AuthorizationCodeParameters`或`DeviceCodeParameters`呼叫或時，使用者體驗通常是：
+當您 `ConfidentialClientApplication.AcquireToken()` 使用或呼叫或時 `PublicClientApplication.AcquireToken()` `AuthorizationCodeParameters` `DeviceCodeParameters` ，使用者體驗通常是：
 
 1. 使用者輸入其帳戶識別碼。
 2. Azure AD 短暫顯示「帶您前往貴組織的頁面」，然後將使用者重新導向至身分識別提供者的登入頁面。 登入頁面通常會以組織的標誌進行自訂。
@@ -44,7 +43,7 @@ MSAL for JAVA 會連線到 Azure AD，其會登入 Azure AD （受管理的使�
 
 ## <a name="acquire-a-token-via-username-and-password"></a>透過使用者名稱和密碼取得權杖
 
-`ConfidentialClientApplication.AcquireToken()`當您使用`PublicClientApplication.AcquireToken()`或搭配`IntegratedWindowsAuthenticationParameters`或`UsernamePasswordParameters`取得權杖時，MSAL for JAVA 會根據使用者名稱，讓身分識別提供者聯繫。 MSAL for JAVA 會從識別提供者取得[SAML 1.1 權杖](reference-saml-tokens.md)權杖，然後提供給傳回 JSON Web 權杖（JWT）的 Azure AD。
+當您使用或搭配或取得權杖時 `ConfidentialClientApplication.AcquireToken()` `PublicClientApplication.AcquireToken()` `IntegratedWindowsAuthenticationParameters` `UsernamePasswordParameters` ，MSAL for JAVA 會根據使用者名稱，讓身分識別提供者聯繫。 MSAL for JAVA 會從識別提供者取得[SAML 1.1 權杖](reference-saml-tokens.md)權杖，然後提供給傳回 JSON Web 權杖（JWT）的 Azure AD。
 
 ## <a name="next-steps"></a>後續步驟
 

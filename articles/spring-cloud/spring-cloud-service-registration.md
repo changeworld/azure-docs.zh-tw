@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: brendm
 ms.openlocfilehash: 6c217096f0ba4200f49bd1fd8056768a6f6f6dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76278848"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>探索和註冊您的春天雲端服務
@@ -19,8 +18,8 @@ ms.locfileid: "76278848"
 
 ## <a name="register-your-application-using-spring-cloud-service-registry"></a>使用春季雲端服務登錄來註冊您的應用程式
 
-在您的應用程式可以使用春季雲端服務登錄來管理服務註冊和探索之前，必須在應用程式的*pom*檔案中包含數個相依性。
-將*netflix-eureka-用戶端*和春季-雲端入門的相依性納入您的*pom*的*azure-春天-雲端用戶端*
+在您的應用程式可以使用春季雲端服務登錄來管理服務註冊和探索之前，應用程式的*pom.xml*檔中必須包含數個相依性。
+將*netflix-eureka-用戶端*和春季-雲端*入門*的相依性納入您的*pom.xml*的雲端
 
 ```xml
     <dependency>

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: victorh
 ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76705959"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure 防火牆 log analytics 範例
@@ -28,9 +27,9 @@ ms.locfileid: "76705959"
 
 1. 在 Azure 入口網站中開啟 Log Analytics 工作區。
 2. 開啟位於 [一般]**** 底下的 [檢視設計工具]****。
-3. 按一下 [匯入]  。
+3. 按一下 [匯入] 。
 4. 瀏覽並選取您之前所下載的 **AzureFirewall.omsview** 檔案。
-5. 按一下 **[儲存]** 。
+5. 按一下 [檔案] 。
 
 以下是針對應用程式規則記錄資料的檢視外觀：
 
@@ -166,7 +165,7 @@ AzureDiagnostics
 | sort by TimeGenerated desc | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action,Message
 ```
 
-## <a name="sample-logs"></a>範例記錄
+## <a name="sample-logs"></a>範例記錄檔
 
 下列記錄範例會顯示記錄專案中所包含的資料。
 

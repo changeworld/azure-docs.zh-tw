@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.openlocfilehash: 85b7093df99127b690c51e8f2f28d18e3f5f3c95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981629"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>使用 HDInsight 上的 Apache Storm 處理 Azure 事件中樞的事件 (C#)
@@ -35,7 +34,7 @@ C# 拓撲也必須以 .NET 4.5 為目標。
 
 ## <a name="how-to-work-with-event-hubs"></a>如何使用事件中樞
 
-Microsoft 提供一組可用來從 Storm 拓撲與事件中樞通訊的 Java 元件。 您可以在上[https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)找到包含這些元件之 HDInsight 3.6 相容版本的 JAVA 封存（JAR）檔案。
+Microsoft 提供一組可用來從 Storm 拓撲與事件中樞通訊的 Java 元件。 您可以在上找到包含這些元件之 HDInsight 3.6 相容版本的 JAVA 封存（JAR）檔案 [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) 。
 
 > [!IMPORTANT]  
 > 雖然元件是以 Java 所撰寫，您可以輕鬆地從 C# 拓撲使用它們。
@@ -96,7 +95,7 @@ topologyBuilder.SetJavaBolt(
 
 您可以從[GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)下載本文中所建立之專案的完整版本。 不過，您仍然需要遵循本文中的步驟來提供設定設定。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 * HDInsight 上的 Apache Storm 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [Storm]**** 作為 [叢集類型]****。
 
@@ -113,7 +112,7 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="download-the-event-hubs-components"></a>下載事件中樞元件
 
-從[https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)下載事件中樞 spout 和螺栓元件。
+從下載事件中樞 spout 和螺栓元件 [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) 。
 
 請建立名為 `eventhubspout` 的目錄，並將檔案儲存到該目錄。
 
@@ -123,7 +122,7 @@ topologyBuilder.SetJavaBolt(
 
 1. 在建立事件中樞之後，檢視 Azure 入口網站中的 [事件中樞]**** 設定，然後選取 [共用存取原則]****。 選取 [ **+ 新增**] 來建立下列原則：
 
-   | 名稱 | 權限 |
+   | Name | 權限 |
    | --- | --- |
    | 寫入器 |Send |
    | 讀取器 |接聽 |
@@ -140,7 +139,7 @@ topologyBuilder.SetJavaBolt(
 
 3. 開啟 [ **EventHubExample**]。 在 **EventHubWriter** 專案中，開啟 **App.config** 檔案。 使用事件中樞內您稍早設定的資訊填入下列索引鍵的值：
 
-   | Key | 值 |
+   | 機碼 | 值 |
    | --- | --- |
    | EventHubPolicyName |寫入器 (如果您為具有*傳送*權限的原則使用了不同名稱，請改用該名稱。) |
    | EventHubPolicyKey |寫入器原則的索引鍵。 |
@@ -156,7 +155,7 @@ topologyBuilder.SetJavaBolt(
 
 2. 開啟 **EventHubReader** 的 **App.config** 檔案。 使用事件中樞內您稍早設定的資訊填入下列索引鍵的值：
 
-   | Key | 值 |
+   | 機碼 | 值 |
    | --- | --- |
    | EventHubPolicyName |讀取器 (如果您為具有*接聽*權限的原則使用了不同名稱，請改用該名稱。) |
    | EventHubPolicyKey |讀取器原則的索引鍵。 |

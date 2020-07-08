@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
 ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76024732"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric 應用程式案例
@@ -55,15 +54,15 @@ Service Fabric 的獨特架構可讓您在應用程式中執行接近即時的�
 
 中的具狀態服務 Service Fabric 將高可用性帶入所有類型的應用程式，而不只是資料庫和其他資料存放區。 這是自然的進展。 針對高可用性，應用程式已經從使用單純的關聯式資料庫進展到 NoSQL 資料庫的境界。 現在應用程式就能在其本身內管理它們的「熱門」狀態和資料，以便進一步提高效能，而不需犧牲可靠性、一致性或可用性。
 
-當您正在建立包含微服務的應用程式時，您通常會有無狀態 web 應用程式（例如 ASP.NET 和 node.js）的組合，可在無狀態和具狀態的 business 中介層服務上呼叫。 應用程式和服務全都會透過 Service Fabric 部署命令，部署在相同的 Service Fabric 叢集中。 這些服務各自獨立于規模、可靠性和資源使用方式。 此獨立性可改善開發和生命週期管理的靈活性和彈性。
+當您建立包含微服務的應用程式時，通常會結合無狀態 web 應用程式（例如 ASP.NET 和 Node.js），以呼叫無狀態和具狀態的 business 中介層服務。 應用程式和服務全都會透過 Service Fabric 部署命令，部署在相同的 Service Fabric 叢集中。 這些服務各自獨立于規模、可靠性和資源使用方式。 此獨立性可改善開發和生命週期管理的靈活性和彈性。
 
 具狀態的微服務簡化了應用程式設計，因此不需要傳統上為滿足純無狀態應用程式的可用性與延遲需求時所需的其他佇列與快取。 因為具狀態服務有高可用性和低延遲，所以在您的應用程式中管理的詳細資料較少。
 
 下圖說明設計無狀態的應用程式與可設定狀態的應用程式之間的差異。 藉由利用[Reliable Services](service-fabric-reliable-services-introduction.md)和[Reliable Actors](service-fabric-reliable-actors-introduction.md)程式設計模型，具狀態服務會減少應用程式的複雜度，同時達到高輸送量和低延遲。
 
-以下是使用無狀態服務的範例應用程式![：使用無狀態服務的應用程式][Image1]
+以下是使用無狀態服務的範例應用程式： ![ 使用無狀態服務的應用程式][Image1]
 
-以下是使用具狀態服務的範例應用程式![：使用具狀態服務的應用程式][Image2]
+以下是使用具狀態服務的範例應用程式： ![ 使用具狀態服務的應用程式][Image2]
 
 ## <a name="next-steps"></a>後續步驟
 

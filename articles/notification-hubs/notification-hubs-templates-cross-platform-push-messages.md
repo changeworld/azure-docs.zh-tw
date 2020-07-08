@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76263739"
 ---
 # <a name="templates"></a>範本
@@ -133,7 +132,7 @@ iOS 用戶端 app 註冊的範本如下：
 
 下表顯示範本中允許使用的語言：
 
-| 運算是       | 描述 |
+| 運算式       | 描述 |
 | ---------------- | --- |
 | $(prop)          | 具有指定名稱之事件屬性的參考。 屬性名稱不區分大小寫。 如果屬性不存在，這個運算式就會解析成屬性的文字值或空字串。 |
 | $(prop, n)       | 同上，但文字會明確裁剪成 n 字元，例如 $(title, 20) 會將 title 屬性內容裁剪成 20 個字元。 |

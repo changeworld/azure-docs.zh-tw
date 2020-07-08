@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 0afad249f71a36bf7552da499e985b68d48ee7a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721548"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>針對 Azure Event Grid 張貼到自訂主題
@@ -39,7 +38,7 @@ az eventgrid topic show --name <topic-name> -g <topic-resource-group> --query "e
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
 ```
 
-## <a name="header"></a>頁首
+## <a name="header"></a>Header
 
 在要求中，包含名為 `aeg-sas-key` 的標頭值，其中包含用於驗證的金鑰。
 
@@ -103,7 +102,7 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 
 |結果  |回應  |
 |---------|---------|
-|成功  | 200 確定  |
+|Success  | 200 確定  |
 |事件資料的格式不正確 | 400 不正確的要求 |
 |存取金鑰無效 | 401 未經授權 |
 |端點不正確 | 404 找不到 |

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76705763"
 ---
 # <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>使用 REST 將檔案上傳到媒體服務 v3 帳戶
@@ -26,7 +25,7 @@ ms.locfileid: "76705763"
 
 本文說明如何使用 REST 上傳本機檔案。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成此主題中所述的步驟，您必須：
 
@@ -39,8 +38,8 @@ ms.locfileid: "76705763"
 
 本節說明如何建立新的資產。
 
-1. 選取 [**資產** -> ] [**建立或更新資產**]。
-2. 按 [傳送]  。
+1. 選取 [**資產**] [  ->  **建立或更新資產**]。
+2. 按 [傳送]。
 
     ![建立資產](./media/upload-files/postman-create-asset.png)
 
@@ -50,8 +49,8 @@ ms.locfileid: "76705763"
 
 本節說明如何取得針對已建立資產所產生的 SAS URL。 SAS URL 是以讀寫權限建立，可用來將數位檔案上傳到資產容器。
 
-1. 選取 [**資產** -> ]**[列出資產 url**]。
-2. 按 [傳送]  。
+1. 選取 [**資產**]  ->  **[列出資產 url**]。
+2. 按 [傳送]。
 
     ![上傳檔案](./media/upload-files/postman-create-sas-locator.png)
 

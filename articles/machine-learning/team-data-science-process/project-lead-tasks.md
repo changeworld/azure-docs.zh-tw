@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76714424"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>小組資料科學流程中的專案負責人工作
@@ -36,7 +35,7 @@ ms.locfileid: "76714424"
 > [!NOTE] 
 > 本文使用 Azure Repos 來設定 TDSP 專案，因為這是在 Microsoft 執行 TDSP 的方式。 如果您的小組使用另一個程式碼裝載平臺，則專案負責人工作會相同，但完成這些工作的方式可能會不同。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程假設您的[群組管理員](group-manager-tasks.md)和[小組負責人](team-lead-tasks.md)已設定下列資源和許可權：
 
@@ -57,7 +56,7 @@ ms.locfileid: "76714424"
 
 若要在小組的**MyTeam**專案中建立專案存放庫：
 
-1. 移至您小組的 [專案**摘要**] 頁面，網址為*\//\<：伺服器\<名稱>/組織\<名稱>/小組名稱>*，例如**HTTPs\/：/dev.azure.com/DataScienceUnit/MyTeam**，然後從左側導覽中選取 [**存放庫**]。 
+1. 移至您小組的 [專案**摘要**] 頁面，網址為* \/ / \<server name> / \<organization name> / \<team name> HTTPs：*（例如**HTTPs： \/ /dev.azure.com/DataScienceUnit/MyTeam**），然後從左側導覽中選取 [**存放庫**]。 
    
 1. 選取頁面頂端的存放庫名稱，然後從下拉式清單中選取 [**新增存放庫**]。
    
@@ -83,9 +82,9 @@ ms.locfileid: "76714424"
    
    ![選取 [匯入]](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. 在 [匯**入 git 存放庫**] 對話方塊中，選取 [ **Git** ] 作為 [**來源類型**]，然後在 [**複製 url**] 底下輸入**TeamTemplate**存放庫的 url。 URL 為*HTTPs\//\<：伺服器名稱>/\<組織名稱>/\<小組名稱>/_git/\<小組範本存放庫名稱>*。 例如： **HTTPs：\//dev.azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**。 
+1. 在 [匯**入 git 存放庫**] 對話方塊中，選取 [ **Git** ] 作為 [**來源類型**]，然後在 [**複製 url**] 底下輸入**TeamTemplate**存放庫的 url。 URL 為*HTTPs： \/ / \<server name> / \<organization name> / \<team name> /_git/ \<team template repository name> *。 例如： **HTTPs： \/ /dev.azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**。 
    
-1. 選取 [匯入]  。 小組範本存放庫的內容會匯入到您的專案存放庫。 
+1. 選取 [匯入]。 小組範本存放庫的內容會匯入到您的專案存放庫。 
    
    ![匯入小組範本存放庫](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
 

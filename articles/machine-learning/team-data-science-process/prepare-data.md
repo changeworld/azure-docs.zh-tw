@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: caedcf313ab809e9607907545f26ca1b62bbeca7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720039"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>準備增強機器學習服務的資料的工作
@@ -96,7 +95,7 @@ ms.locfileid: "76720039"
 
 **資料探索** 可讓您檢視早期資料。 在此步驟中可以發現一些資料問題，然後套用對應的方法以解決這些問題。  請務必提出問題，例如，問題的來源是什麼，以及問題可能是如何引發的。 此程式也可協助您決定需要採取的資料處理步驟來解決這些問題。 識別最終使用案例和角色也可以用來設定資料處理工作的優先順序。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 > *Data Mining: Concepts and Techniques*(資料採礦：觀念與技術)，第三版，Morgan Kaufmann，2011，Jiawei Han、Micheline Kamber 及 Jian Pei
 > 
 > 

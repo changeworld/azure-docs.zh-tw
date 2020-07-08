@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721246"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process 中個別參與者的工作
@@ -32,7 +31,7 @@ ms.locfileid: "76721246"
 > [!NOTE] 
 > 本文使用 Azure Repos 和資料科學虛擬機器（DSVM）來設定 TDSP 環境，因為這是在 Microsoft 執行 TDSP 的方式。 如果您的小組使用其他程式碼裝載或開發平臺，則個別參與者工作會相同，但完成這些工作的方式可能會不同。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程假設您的[群組管理員](group-manager-tasks.md)、[小組負責人](team-lead-tasks.md)和[專案負責人](project-lead-tasks.md)已設定下列資源和許可權：
 
@@ -55,7 +54,7 @@ ms.locfileid: "76721246"
 
 若要在本機使用存放庫，並將您的變更推送至共用的小組和專案存放庫，您必須先將存放庫*複製或複製*到本機電腦。 
 
-1. 在 Azure DevOps 中，移至您小組的 [專案摘要] 頁面，網址為*\//\<：\<伺服器名稱>/\<組織名稱>/小組名稱>*，例如**HTTPs：\//dev.azure.com/DataScienceUnit/MyTeam**。
+1. 在 Azure DevOps 中，移至您小組的 [專案摘要] 頁面，網址為*HTTPs： \/ / \<server name> / \<organization name> / \<team name> *，例如**HTTPs： \/ /dev.azure.com/DataScienceUnit/MyTeam**。
    
 1. 在左側導覽中選取 [**存放庫**]，然後在頁面頂端選取您要複製的存放庫。
    
@@ -72,7 +71,7 @@ ms.locfileid: "76721246"
    
 1. 變更至您所建立的目錄。
    
-1. 在 Git Bash 中，針對您`git clone <clone URL>`要複製的每個存放庫執行命令。 
+1. 在 Git Bash 中， `git clone <clone URL>` 針對您要複製的每個存放庫執行命令。 
    
    例如，下列命令會將**TeamUtilities**存放庫複製到本機電腦上的*MyTeam*目錄。 
    

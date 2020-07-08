@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 裝置 SDK 平台支援 | Microsoft Docs
-description: '開放原始碼裝置 Sdk 可在 GitHub （C、.NET （c #）、JAVA、node.js 和 Python）中取得，以將裝置連接到 Azure IoT 中樞和裝置布建服務（DPS）。'
+description: '開放原始碼裝置 Sdk 可在 GitHub 上取得（C、.NET （c #）、JAVA、Node.js 和 Python），以將裝置連接至 Azure IoT 中樞和裝置布建服務（DPS）。'
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
 ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76045129"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 裝置 Sdk 平臺支援
 
-Microsoft 致力於持續擴充 Azure IoT 中樞功能強大的裝置。 Microsoft 會發佈 GitHub 上的開放原始碼裝置 Sdk，以協助將裝置連接到 Azure IoT 中樞和裝置布建服務。 裝置 Sdk 適用于 C、.NET （c #）、JAVA、node.js 和 Python。 Microsoft 會測試每個 SDK，以確保它會在[Microsoft sdk 和裝置平臺支援](#microsoft-sdks-and-device-platform-support)一節中詳述的支援設定上執行。
+Microsoft 致力於持續擴充 Azure IoT 中樞功能強大的裝置。 Microsoft 會發佈 GitHub 上的開放原始碼裝置 Sdk，以協助將裝置連接到 Azure IoT 中樞和裝置布建服務。 裝置 Sdk 適用于 C、.NET （c #）、JAVA、Node.js 和 Python。 Microsoft 會測試每個 SDK，以確保它會在[Microsoft sdk 和裝置平臺支援](#microsoft-sdks-and-device-platform-support)一節中詳述的支援設定上執行。
 
 除了裝置 Sdk 之外，Microsoft 還提供數個其他途徑，讓客戶和開發人員能夠將他們的裝置連線至 Azure IoT：
 
@@ -30,7 +29,7 @@ Microsoft 致力於持續擴充 Azure IoT 中樞功能強大的裝置。 Microso
 
 ## <a name="microsoft-sdks-and-device-platform-support"></a>Microsoft Sdk 和裝置平臺支援
 
-Microsoft 會針對下列語言發行 GitHub 上的開放原始碼 Sdk： C、.NET （c #）、node.js、JAVA 和 Python。 這一節會列出 Sdk 及其相依性。 任何符合這些相依性的裝置平臺都支援 Sdk。
+Microsoft 會針對下列語言發佈 GitHub 上的開放原始碼 Sdk： C、.NET （c #）、Node.js、JAVA 和 Python。 這一節會列出 Sdk 及其相依性。 任何符合這些相依性的裝置平臺都支援 Sdk。
 
 針對每個列出的 Sdk，Microsoft：
 
@@ -69,7 +68,7 @@ Microsoft 會針對下列語言發行 GitHub 上的開放原始碼 Sdk： C、.N
 
 [Azure IoT 中樞 .net （c #）裝置 SDK](https://github.com/Azure/azure-iot-sdk-csharp)會使用進行測試，並支援下列設定。
 
-| OS                                   | Standard                                                   |
+| OS                                   | 標準                                                   |
 |--------------------------------------|------------------------------------------------------------|
 | Linux                                | .NET Core 2.1                                              |
 | Windows 10 Desktop 和伺服器 Sku   | .NET Core 2.1、.NET Framework 4.5.1 或 .NET Framework 4。7 |
@@ -78,7 +77,7 @@ Microsoft 會針對下列語言發行 GitHub 上的開放原始碼 Sdk： C、.N
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
-Azure IoT 中樞的 node.js[裝置 SDK](https://github.com/Azure/azure-iot-sdk-node)會使用進行測試，並支援下列設定。
+[Azure IoT 中樞 Node.js 裝置 SDK](https://github.com/Azure/azure-iot-sdk-node)已使用進行測試，並支援下列設定。
 
 | OS                  | 節點版本    |
 |---------------------|-----------------|
@@ -99,7 +98,7 @@ Azure IoT 中樞的 node.js[裝置 SDK](https://github.com/Azure/azure-iot-sdk-n
 
 Microsoft 與各種合作夥伴合作，為數個微處理器架構提供開發工具組。 這些合作夥伴已將 Azure IoT C SDK 移植到其平臺。 合作夥伴會建立並維護 SDK 的平臺抽象層（PAL）。 Microsoft 會與這些合作夥伴合作，以提供延伸支援。
 
-| 合作夥伴             | 裝置                            | 連結                     | 支援 |
+| Partner             | 裝置                            | 連結                     | 支援 |
 |---------------------|------------------------------------|--------------------------|---------|
 | Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT Modem     | [Qualcomm LTE for IoT SDK](https://developer.qualcomm.com/software/lte-iot-sdk) | [論壇](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
@@ -134,7 +133,7 @@ Microsoft 與數個合作夥伴合作，以透過 Azure IoT 測試和認證的�
 
 * [Azure IoT 中樞 JAVA SDK 問題](https://github.com/Azure/azure-iot-sdk-java/issues)
 
-* [Azure IoT 中樞 node.js SDK 問題](https://github.com/Azure/azure-iot-sdk-node/issues)
+* [Azure IoT 中樞 Node.js SDK 問題](https://github.com/Azure/azure-iot-sdk-node/issues)
 
 * [Azure IoT 中樞 Python SDK 問題](https://github.com/Azure/azure-iot-sdk-python/issues)
 

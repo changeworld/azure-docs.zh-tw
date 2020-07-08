@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: brendm
 ms.openlocfilehash: f329fb5472c5a2eab6f22a2e81b19d90e7045330
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76278520"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>適用于 Azure 春季雲端的 CI/CD
@@ -25,7 +24,7 @@ ms.locfileid: "76278520"
 
 ### <a name="deploy-artifacts"></a>部署成品
 
-您可以使用一系列的`tasks`來建立及部署專案。 此程式碼片段會先定義用來建立應用程式的 Maven 工作，接著會使用 Azure 春季 Cloud Azure CLI 擴充功能來部署 JAR 檔案的第二個工作。
+您可以使用一系列的來建立及部署專案 `tasks` 。 此程式碼片段會先定義用來建立應用程式的 Maven 工作，接著會使用 Azure 春季 Cloud Azure CLI 擴充功能來部署 JAR 檔案的第二個工作。
 
 ```yaml
 steps:

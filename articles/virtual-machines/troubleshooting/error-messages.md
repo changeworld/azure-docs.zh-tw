@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76543013"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>了解當您在 Azure 中管理虛擬機器時，常見的錯誤訊息
@@ -205,7 +204,7 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  VMExtensionManagementInternalError  |  準備 VM 擴充時發生多個錯誤。 如需詳細資訊，請參閱 VM 擴充執行個體檢視。  |
 |  VMExtensionProvisioningError  |  VM 回報在處理擴充 '{0}' 時失敗。 錯誤訊息："{1}"。  |
 |  VMExtensionProvisioningError  |  多個 VM 擴充無法佈建在 VM 上。 如需詳細資訊，請參閱 VM 擴充執行個體檢視。  |
-|  VMExtensionProvisioningTimeout  |  VM 擴充功能 '{0}' 的布建已超時。延伸模組安裝可能會花費太長的時間，或無法取得延伸模組狀態。  |
+|  VMExtensionProvisioningTimeout  |  VM 擴充功能 ' ' 的布建 {0} 已超時。延伸模組安裝可能會花費太長的時間，或無法取得延伸模組狀態。  |
 |  VMMarketplaceInvalidInput  |  從非 Marketplace 映像建立虛擬機器不需要方案資訊，請移除要求中的方案資訊。 作業系統磁碟名稱是 {0}。  |
 |  VMMarketplaceInvalidInput  |  購買資訊不符。 無法從 Marketplace 映像部署。 作業系統磁碟名稱是 {0}。  |
 |  VMMarketplaceInvalidInput  |  要求中必須有方案資訊，才能從 Marketplace 映像建立虛擬機器。 作業系統磁碟名稱是 {0}。  |
@@ -216,4 +215,4 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 
 
 ## <a name="next-steps"></a>後續步驟
-如果您需要更多協助，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。
+如果您需要更多協助，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。

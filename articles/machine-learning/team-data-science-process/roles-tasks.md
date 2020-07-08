@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720005"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process 角色和工作
@@ -116,7 +115,7 @@ Team 資料科學程式（TDSP）是由 Microsoft 開發的架構，可提供結
 工作流程步驟可分為三個活動：
 
 - 專案組長進行短期衝刺計畫
-- 資料科學家在分支上`git`開發成品以解決工作專案
+- 資料科學家在分支上開發 `git` 成品以解決工作專案
 - 專案負責人或其他小組成員執行程式碼審查，並將工作分支合併到主要分支
 
 如需專案執行工作流程的詳細指示，請參閱[資料科學專案的敏捷式開發](agile-development.md)。

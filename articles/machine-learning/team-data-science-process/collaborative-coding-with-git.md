@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721892"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 共同撰寫程式碼
@@ -39,7 +38,7 @@ Azure DevOps 提供一個便利的方式，可將 Azure Boards 的使用者故�
 git checkout -b <new branch name> <base branch name>
 
 ```
-如果您未指定\<基底分支名稱>，新的分支會以為`master`基礎。 
+如果您未指定 \<base branch name> ，新的分支會以為基礎 `master` 。 
 
 若要切換至您的工作分支，請執行下列命令： 
 
@@ -47,7 +46,7 @@ git checkout -b <new branch name> <base branch name>
 git checkout <working branch name>
 ```
 
-切換至工作分支之後，您就可以開始開發程式碼或檔成品來完成工作專案。 執行`git checkout master`會將您切換回`master`分支。
+切換至工作分支之後，您就可以開始開發程式碼或檔成品來完成工作專案。 執行 `git checkout master` 會將您切換回 `master` 分支。
 
 為每個使用者案例工作專案建立 Git 分支是很好的作法。 然後，針對每個工作專案，您可以根據使用者案例分支來建立分支。 當您有多個人員在相同專案中使用不同的使用者故事，或針對相同的使用者案例，在不同的工作上，組織對應于使用者故事-工作關係的階層中的分支。 您可以讓每個小組成員在不同的分支，或是在共用分支時，在不同的程式碼或其他成品上工作，以將衝突降到最低。 
 
@@ -61,7 +60,7 @@ git checkout <working branch name>
 
 ## <a name="work-on-the-branch-and-commit-changes"></a><a name='WorkonaBranchandCommittheChanges-2'></a>在分支上工作並認可變更 
 
-在您對工作專案進行變更（例如將 R 腳本檔案新增至本機電腦的`script`分支）之後，您可以使用下列 Git bash 命令，從您的本機分支將變更認可至上游工作分支：
+在您對工作專案進行變更（例如將 R 腳本檔案新增至本機電腦的分支）之後， `script` 您可以使用下列 Git bash 命令，從您的本機分支將變更認可至上游工作分支：
 
 ```bash
 git status
@@ -76,7 +75,7 @@ git push origin script
 
 在一或多個認可和推送之後，當您準備好要將目前的工作分支合併至其基底分支時，您可以在 Azure Repos 中建立和提交*提取要求*。 
 
-從 Azure DevOps 專案的主頁面，指向左側導覽中的 [**存放庫** > **提取要求**]。 然後選取其中一個 [**新增提取要求**] 按鈕，或 [**建立提取要求**] 連結。
+從 Azure DevOps 專案的主頁面，指向左側導覽中的 [**存放庫**  >  **提取要求**]。 然後選取其中一個 [**新增提取要求**] 按鈕，或 [**建立提取要求**] 連結。
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
@@ -98,11 +97,11 @@ git push origin script
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-當您回到左側導覽中的 [**存放庫**] 時，您會看到您已在刪除`script`分支後切換至主要分支。
+當您回到左側導覽中的 [**存放庫**] 時，您會看到您已在刪除分支後切換至主要分支 `script` 。
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 
-您也可以使用下列 Git bash 命令，將`script`工作分支合併至其基底分支，並在合併之後刪除工作分支：
+您也可以使用下列 Git bash 命令，將 `script` 工作分支合併至其基底分支，並在合併之後刪除工作分支：
 
 ```bash
 git checkout master

@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 48dec3a87ab540af224ae4ac59dd37cee7c9d0ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76271348"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple Virtual Array Update 1.0 版本資訊
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 下列版本資訊指出 Microsoft Azure StorSimple Virtual Array 更新的重大未決問題和已解決問題。
 
@@ -47,7 +46,7 @@ Update 1.0 與軟體版本 **10.0.10296.0** 對應。
 
 下表提供本版已修正問題的摘要。
 
-| 不可以。 | 功能 | 問題 |
+| 否。 | 功能 | 問題 |
 | --- | --- | --- |
 | 1 |AAD 式驗證| 此版本經過變更，可讓 AAD 使用 StorSimple 裝置管理員進行驗證。|
 | 2 |記憶體回收| 裝置和儲存體帳戶處於不同區域的客戶站台回報了此問題，而且客戶回報有間歇性網路錯誤，因=而影響到計費。 此版本已經修正這個問題。 |
@@ -58,7 +57,7 @@ Update 1.0 與軟體版本 **10.0.10296.0** 對應。
 
 下表提供 StorSimple Virtual Array 的已知問題摘要，並包含舊版所列的問題。
 
-| 不可以。 | 功能 | 問題 | 因應措施/註解 |
+| 否。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
 | **1.** |更新 |預覽版中所建立的虛擬陣列無法更新為支援的正式運作版本。 |必須針對正式運作版本使用災害復原 (DR) 工作流程容錯移轉這些虛擬陣列。 |
 | **2.** |佈建的資料磁碟 |佈建特定指定大小的資料磁碟並建立對應的 StorSimple Virtual Array 之後，不得展開或壓縮資料磁碟。 嘗試執行會導致裝置本機層中的所有資料遺失。 | |
@@ -83,7 +82,7 @@ Update 1.0 與軟體版本 **10.0.10296.0** 對應。
 ## <a name="next-steps"></a>後續步驟
 在 StorSimple Virtual Array 上[安裝 Update 1.0](storsimple-virtual-array-install-update-1.md)。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 要尋找舊版本資訊嗎？ 請移至：
 *  [StorSimple Virtual Array 更新0.6 版本資訊](storsimple-virtual-array-update-06-release-notes.md)
 * [StorSimple Virtual Array Update 0.5 版本資訊](storsimple-virtual-array-update-05-release-notes.md)

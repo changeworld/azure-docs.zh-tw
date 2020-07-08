@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720481"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期的部署階段
@@ -24,7 +23,7 @@ ms.locfileid: "76720481"
 
    1. **了解商務**
    2. **資料取得與認知**
-   3. **模型化**
+   3. **模型**
    4. **部署**
    5. **客戶接受度**
 
@@ -36,7 +35,7 @@ ms.locfileid: "76720481"
 ## <a name="goal"></a>目標
 將有資料管線的模型部署至生產環境或類生產環境，以進行最後的使用者接受度測試。 
 
-## <a name="how-to-do-it"></a>作法
+## <a name="how-to-do-it"></a>如何執行此動作
 此階段解決的主要工作︰
 
 **實作模型**︰將模型和管線部署到生產環境或類生產環境以供取用應用程式。
@@ -52,7 +51,7 @@ ms.locfileid: "76720481"
 
 如需使用 Azure Machine Learning Web 服務實作模型的範例，請參閱[部署 Azure Machine Learning Web 服務](../studio/deploy-a-machine-learning-web-service.md)。 對於您部署的生產模型和資料管線，建議您在其中建置遙測和監視。 這種做法有助於後續的系統狀態報告和疑難排解。  
 
-## <a name="artifacts"></a>構件
+## <a name="artifacts"></a>Artifacts
 
 * 顯示系統健康情況和重要計量的狀態儀表板
 * 具有部署詳細資料的最終模型報告
@@ -65,7 +64,7 @@ ms.locfileid: "76720481"
 
    1. [了解商務](lifecycle-business-understanding.md)
    2. [資料取得與認知](lifecycle-data.md)
-   3. [模型化](lifecycle-modeling.md)
+   3. [模型](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)
    5. [客戶接受度](lifecycle-acceptance.md)
 

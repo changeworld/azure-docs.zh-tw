@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721773"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>針對使用 Hive 查詢之 Hadoop 叢集中的資料建立特徵
@@ -27,7 +26,7 @@ ms.locfileid: "76721773"
 
 此工作是 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)中的一個步驟。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 本文假設您已經：
 
 * 建立 Azure 儲存體帳戶。 如需指示，請參閱[建立 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)
@@ -89,14 +88,14 @@ Hive 會和一組 UDF 一起出現，用來處理日期時間欄位。 在 Hive 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-這個 Hive 查詢假設* \<datetime 欄位>* 是預設的日期時間格式。
+這個 Hive 查詢假設 *\<datetime field>* 是預設的日期時間格式。
 
 如果日期時間欄位不是預設格式，您需要先將日期時間欄位轉換為 Unix 時間戳記，然後將 Unix 時間戳記轉換為預設格式的日期時間字串。 將日期時間為預設格式之後，使用者就可以套用內嵌的日期時間 UDF 來擷取功能。
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-在此查詢中，如果* \<日期時間欄位>* 的模式類似*03/26/2015 12:04:39*， * \<則 datetime 欄位> ' 的模式*應該是。 `'MM/dd/yyyy HH:mm:ss'` 若要進行測試，使用者可以執行
+在此查詢中，如果的 *\<datetime field>* 模式像是*03/26/2015 12:04:39*，則* \<pattern of the datetime field> '* 應該是 `'MM/dd/yyyy HH:mm:ss'` 。 若要進行測試，使用者可以執行
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -130,7 +129,7 @@ Hive 會和一組 UDF 一起出現，用來處理日期時間欄位。 在 Hive 
         and dropoff_latitude between 30 and 90
         limit 10;
 
-您可以在<a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">可移動的類型指令碼</a>網站 (作者為 Peter Lapisu) 上找到計算兩個 GPS 座標間之距離的數學方程式。 在此 JAVAscript 中，函`toRad()`式只是*lat_or_lon*pi/180，可將角度轉換為弧度。 此處的 *lat_or_lon* 為緯度或經度。 由於 Hive 不提供函式 `atan2`，但提供函式 `atan`，因此 `atan2` 函式是由上述 Hive 查詢中的 `atan` 函式以 <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> 中提供的定義來實作。
+您可以在<a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">可移動的類型指令碼</a>網站 (作者為 Peter Lapisu) 上找到計算兩個 GPS 座標間之距離的數學方程式。 在此 JAVAscript 中，函式 `toRad()` 只是*lat_or_lon*pi/180，可將角度轉換為弧度。 此處的 *lat_or_lon* 為緯度或經度。 由於 Hive 不提供函式 `atan2`，但提供函式 `atan`，因此 `atan2` 函式是由上述 Hive 查詢中的 `atan` 函式以 <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> 中提供的定義來實作。
 
 ![建立工作區](./media/create-features-hive/atan2new.png)
 

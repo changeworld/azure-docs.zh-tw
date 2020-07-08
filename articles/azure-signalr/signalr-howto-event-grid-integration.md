@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
 ms.openlocfilehash: a76c9aaabf984723e2b60a7cd42425c9b29c916a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76710825"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>如何將事件從 Azure SignalR Service 傳送至事件方格
@@ -141,7 +140,7 @@ az eventgrid event-subscription create \
 
 ## <a name="trigger-registry-events"></a>觸發登錄事件
 
-切換至服務模式， `Serverless Mode`並設定 SignalR Service 的用戶端連接。 您可以使用[無伺服器範例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless)做為參考。
+切換至服務模式， `Serverless Mode` 並設定 SignalR Service 的用戶端連接。 您可以使用[無伺服器範例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless)做為參考。
 
 ```bash
 git clone git@github.com:aspnet/AzureSignalR-samples.git
@@ -162,7 +161,7 @@ dotnet run
 
 ## <a name="view-registry-events"></a>檢視登錄事件
 
-您現在已將用戶端連接到 SignalR Service。 流覽至您的`ClientConnectionConnected`事件方格檢視器 web 應用程式，您應該會看到事件。 如果您終止用戶端，您也會看到`ClientConnectionDisconnected`事件。
+您現在已將用戶端連接到 SignalR Service。 流覽至您的事件方格檢視器 web 應用程式，您應該會看到 `ClientConnectionConnected` 事件。 如果您終止用戶端，您也會看到 `ClientConnectionDisconnected` 事件。
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F

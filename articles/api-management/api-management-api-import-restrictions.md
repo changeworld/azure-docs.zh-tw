@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
 ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76513366"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 匯入的限制和已知問題
@@ -35,7 +34,7 @@ ms.locfileid: "76513366"
 
 -   整個路徑和查詢所需的參數必須具有唯一的名稱。 (在 OpenAPI 中，參數名稱只需要在某個位置內是唯一的，例如路徑、查詢、標頭。 不過，在 API 管理中，可透過路徑和查詢參數來區分作業 (OpenAPI 並不支援此做法)。 這就是為什麼參數名稱必須在整個 URL 範本內是唯一的。)
 -   `\$ref`指標無法參考外部檔案。
--   `x-ms-paths`和`x-servers`是唯一支援的延伸模組。
+-   `x-ms-paths`和 `x-servers` 是唯一支援的延伸模組。
 -   在匯入時系統會忽略自訂副檔名，不會儲存或保留用於匯出。
 -   `Recursion`-API 管理不支援以遞迴方式定義的定義（例如，架構參考本身）。
 -   來源檔案 URL (如果有的話) 會套用到相對的伺服器 URL。
@@ -50,22 +49,22 @@ ms.locfileid: "76513366"
 
 ### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>OpenAPI 第 3 版
 
--   如果指定`servers`了多個，則 API 管理會嘗試選取第一個 HTTPs URL。 如果沒有任何 HTTPs URLs - 第一個 HTTP URL。 如果沒有任何 HTTP URLs，則伺服器 URL 將會是空的。
--   `Examples`不受支援， `example`但為。
+-   如果指定了多個 `servers` ，則 API 管理會嘗試選取第一個 HTTPS URL。 如果沒有任何 HTTPs URLs - 第一個 HTTP URL。 如果沒有任何 HTTP URLs，則伺服器 URL 將會是空的。
+-   `Examples`不受支援，但 `example` 為。
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI 匯入、更新及匯出機制
 
 ### <a name="add-new-api-via-openapi-import"></a>透過 OpenAPI 匯入加入新的 API
 
-針對在 OpenAPI 檔中找到的每個作業，將會建立新的作業，並將 Azure 資源名稱和`operationId`顯示`summary`名稱分別設為和。 `operationId`值會依照下面所述的規則正規化。 `summary`值是以-is 的形式匯入，其長度限制為300個字元。
+針對在 OpenAPI 檔中找到的每個作業，將會建立新的作業，並將 Azure 資源名稱和顯示名稱分別設為 `operationId` 和 `summary` 。 `operationId`值會依照下面所述的規則正規化。 `summary`值是以-is 的形式匯入，其長度限制為300個字元。
 
-如果`operationId`未指定（亦即不存在、 `null`或空白），則會結合 HTTP 方法和路徑範本來產生 Azure 資源名稱值，例如。 `get-foo`
+如果 `operationId` 未指定（亦即不存在、 `null` 或空白），則會結合 HTTP 方法和路徑範本來產生 Azure 資源名稱值，例如 `get-foo` 。
 
-如果`summary`未指定（亦即不存在、 `null`或空白）， `display name`值將會設定為。 `operationId` 如果`operationId`未指定，則會藉由結合 HTTP 方法和路徑範本來產生顯示名稱值，例如`Get - /foo`。
+如果 `summary` 未指定（亦即不存在、 `null` 或空白）， `display name` 值將會設定為 `operationId` 。 如果 `operationId` 未指定，則會藉由結合 HTTP 方法和路徑範本來產生顯示名稱值，例如 `Get - /foo` 。
 
 ### <a name="update-an-existing-api-via-openapi-import"></a>透過 OpenAPI 匯入來更新現有的 API
 
-在匯入期間，現有的 API 會變更為符合 OpenAPI 檔中所述的 API。 OpenAPI 檔中的每個作業會藉由比較其`operationId`值與現有作業的 Azure 資源名稱，來比對現有的作業。
+在匯入期間，現有的 API 會變更為符合 OpenAPI 檔中所述的 API。 OpenAPI 檔中的每個作業會藉由比較其 `operationId` 值與現有作業的 Azure 資源名稱，來比對現有的作業。
 
 如果找到相符的內容，現有作業的屬性會「就地」更新。
 
@@ -75,20 +74,20 @@ ms.locfileid: "76513366"
 
 若要讓匯入更容易預測，請遵循下列指導方針：
 
-- 請務必指定`operationId`每個作業的屬性。
-- 避免在初始`operationId`匯入後變更。
-- 永遠不要`operationId`同時變更和 HTTP 方法或路徑範本。
+- 請務必指定 `operationId` 每個作業的屬性。
+- 避免 `operationId` 在初始匯入後變更。
+- 永遠不要 `operationId` 同時變更和 HTTP 方法或路徑範本。
 
 ### <a name="export-api-as-openapi"></a>將 API 匯出為 OpenAPI
 
-針對每個作業，其 Azure 資源名稱會匯出為`operationId`，而顯示名稱會匯出為。 `summary`
+針對每個作業，其 Azure 資源名稱會匯出為 `operationId` ，而顯示名稱會匯出為 `summary` 。
 OperationId 的正規化規則
 
 - 轉換為小寫。
-- 以單一破折號取代每個非英數位元的序列，例如， `GET-/foo/{bar}?buzz={quix}`將會轉換成。 `get-foo-bar-buzz-quix-`
-- 在兩邊修剪虛線，例如， `get-foo-bar-buzz-quix-`將會變成`get-foo-bar-buzz-quix`
+- 以單一破折號取代每個非英數位元的序列，例如， `GET-/foo/{bar}?buzz={quix}` 將會轉換成 `get-foo-bar-buzz-quix-` 。
+- 在兩邊修剪虛線，例如， `get-foo-bar-buzz-quix-` 將會變成`get-foo-bar-buzz-quix`
 - 截斷以符合76個字元，小於資源名稱上限的四個字元。
-- 如有需要，請為重複數據刪除尾碼使用剩餘的四個字元`-1, -2, ..., -999`，格式為。
+- 如有需要，請為重複數據刪除尾碼使用剩餘的四個字元，格式為 `-1, -2, ..., -999` 。
 
 
 ## <a name="wsdl"></a><a name="wsdl"> </a>WSDL

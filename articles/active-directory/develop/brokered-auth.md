@@ -14,10 +14,9 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76697892"
 ---
 # <a name="brokered-authentication-in-android"></a>Android 中的代理驗證
@@ -56,9 +55,9 @@ ms.locfileid: "76697892"
 
 ### <a name="when-a-broker-is-installed"></a>當代理程式已安裝時
 
-當代理程式安裝在裝置上時，所有後續的互動式權杖要求（呼叫`acquireToken()`）都會由訊息代理程式處理，而不是在本機 MSAL。 先前可供 MSAL 使用的任何 SSO 狀態，都無法供訊息代理程式使用。 因此，使用者必須重新驗證，或從裝置已知的現有帳戶清單中選取帳戶。
+當代理程式安裝在裝置上時，所有後續的互動式權杖要求（呼叫 `acquireToken()` ）都會由訊息代理程式處理，而不是在本機 MSAL。 先前可供 MSAL 使用的任何 SSO 狀態，都無法供訊息代理程式使用。 因此，使用者必須重新驗證，或從裝置已知的現有帳戶清單中選取帳戶。
 
-安裝訊息代理程式不需要使用者重新登入。 只有在使用者需要解決時，才`MsalUiRequiredException`會將下一個要求移至訊息代理程式。 `MsalUiRequiredException`會因為許多原因而擲回，而且需要以互動方式解決。 以下是一些常見的原因：
+安裝訊息代理程式不需要使用者重新登入。 只有在使用者需要解決時，才 `MsalUiRequiredException` 會將下一個要求移至訊息代理程式。 `MsalUiRequiredException`會因為許多原因而擲回，而且需要以互動方式解決。 以下是一些常見的原因：
 
 - 使用者變更了與其帳戶相關聯的密碼。
 - 使用者的帳戶不再符合條件式存取原則。
@@ -116,9 +115,9 @@ MSAL 會以兩種方式與訊息代理程式通訊：
 - 代理程式系結服務
 - Android AccountManager
 
-MSAL 會先使用代理程式系結服務，因為呼叫此服務不需要任何 Android 許可權。 如果系結至系結服務失敗，MSAL 將會使用 Android AccountManager API。 只有當您的應用程式已被授與許可權時`"READ_CONTACTS"` ，MSAL 才會這麼做。
+MSAL 會先使用代理程式系結服務，因為呼叫此服務不需要任何 Android 許可權。 如果系結至系結服務失敗，MSAL 將會使用 Android AccountManager API。 只有當您的應用程式已被授與許可權時，MSAL 才會這麼做 `"READ_CONTACTS"` 。
 
-如果您收到`MsalClientException`具有錯誤碼的`"BROKER_BIND_FAILURE"`，則會有兩個選項：
+如果您收到 `MsalClientException` 具有錯誤碼的 `"BROKER_BIND_FAILURE"` ，則會有兩個選項：
 
 - 要求使用者停用 Microsoft Authenticator 應用程式和 Intune 公司入口網站的電源優化。
-- 要求使用者授與`"READ_CONTACTS"`許可權
+- 要求使用者授與 `"READ_CONTACTS"` 許可權

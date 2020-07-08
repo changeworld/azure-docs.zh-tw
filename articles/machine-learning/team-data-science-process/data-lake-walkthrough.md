@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9409f14b20684afa1a39d45e663ff316f405cc97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76717921"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可調整的資料科學︰完整的逐步解說
@@ -50,7 +49,7 @@ Azure Machine Learning Studio （傳統）是用來建立和部署使用兩種�
 ### <a name="scripts"></a>指令碼
 本逐步解說只概述主要步驟。 您可以從 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下載完整的 **U-SQL 指令碼**和 **Jupyter Notebook**。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 開始運用這些主題之前，您必須符合下列條件：
 
 * Azure 訂用帳戶。 如果還沒有訂用帳戶，請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
@@ -158,7 +157,7 @@ Azure Machine Learning Studio （傳統）是用來建立和部署使用兩種�
 
 ### <a name="data-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>資料擷取：從公用 Blob 讀取資料
 
-Azure blob 中的資料位置會參考為**wasb://container\_\@名稱\_blob 儲存體\_帳戶\_name.blob.core.windows.net/blob_name** ，而且可以使用擷取器來解壓縮 **（）**。 在下列腳本中，以您自己的容器名稱和儲存體帳戶\_名稱\@取代\_wasb\_位址\_中的容器名稱 blob 儲存體帳戶名稱。 由於檔案名的格式相同，因此可以使用**\_旅程\_\{\*\}資料 .csv**在所有12個旅程檔案中讀取。
+Azure blob 中的資料位置會參考為**wasb://container \_ 名稱 \@ blob \_ 儲存體 \_ 帳戶 \_ name.blob.core.windows.net/blob_name** ，並可使用**Extractors.Csv （）** 加以解壓縮。 在下列腳本中，以您自己的容器名稱和儲存體帳戶名稱取代 \_ \@ wasb 位址中的容器名稱 blob \_ 儲存體 \_ 帳戶 \_ 名稱。 由於檔案名的格式相同，因此可以使用**旅程 \_ 資料 \_ \{ \* \} .csv**在所有12個旅程檔案中讀取。
 
     ///Read in Trip data
     @trip0 =
@@ -181,7 +180,7 @@ Azure blob 中的資料位置會參考為**wasb://container\_\@名稱\_blob 儲�
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-由於第一列有標頭，您必須移除標頭，並將資料行類型變更為適當的類型。 您可以使用**swebhdfs：//data_lake_storage_name. net/folder_name/file_name**_ 或使用**wasb：//Container_name\@blob_storage_account_name**的 Azure Blob 儲存體帳戶，將已處理的資料儲存到 Azure Data Lake Storage。
+由於第一列有標頭，您必須移除標頭，並將資料行類型變更為適當的類型。 您可以使用**swebhdfs：//data_lake_storage_name. net/folder_name/file_name**_ 或使用**wasb：//Container_name \@ blob_storage_account_name**的 Azure Blob 儲存體帳戶，將已處理的資料儲存到 Azure Data Lake Storage。
 
     // change data types
     @trip =
@@ -569,7 +568,7 @@ Azure blob 中的資料位置會參考為**wasb://container\_\@名稱\_blob 儲�
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>建置 Web 服務 API 並在 Python 中使用
 您希望機器學習服務模型在建置後開始運作。 我們在此以二元羅吉斯模型為例。 請確定您的本機電腦中的 scikit-learn-學習版本已0.15.1 （Azure Machine Learning Studio 已至少為此版本）。
 
-* 從 [Azure Machine Learning Studio （傳統）] 設定尋找您的工作區認證。 在 Azure Machine Learning Studio 中，按一下 [**設定** --> ] [**名稱** --> ] [**授權權杖**]。
+* 從 [Azure Machine Learning Studio （傳統）] 設定尋找您的工作區認證。 在 Azure Machine Learning Studio 中，按一下 [**設定**] [名稱] [  -->  **Name**  -->  **授權權杖**]。
 
     ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
@@ -612,7 +611,7 @@ Azure Machine Learning Studio （傳統）可以直接從 Azure Data Lake Storag
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>在 HDInsight 中建立 Hive 資料表
-現在您可以使用上一個步驟中 Azure Data Lake Storage 所儲存的資料，建立要用於 HDInsight 叢集中 Azure Machine Learning Studio （傳統）的 Hive 資料表。 移至所建立的 HDInsight 叢集。 按一下 [**設定** --> ] [**屬性** --> ] [叢集**AAD 身分識別** --> **ADLS 存取**]，確定您的 Azure Data Lake Storage 帳戶已新增至具有讀取、寫入和執行許可權的清單中。
+現在您可以使用上一個步驟中 Azure Data Lake Storage 所儲存的資料，建立要用於 HDInsight 叢集中 Azure Machine Learning Studio （傳統）的 Hive 資料表。 移至所建立的 HDInsight 叢集。 按一下 [**設定**] [屬性] [叢集  -->  **Properties**  -->  **AAD 身分識別**  -->  **ADLS 存取**]，確定您的 Azure Data Lake Storage 帳戶已新增至具有讀取、寫入和執行許可權的清單中。
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
@@ -675,7 +674,7 @@ Azure Machine Learning Studio （傳統）可以直接從 Azure Data Lake Storag
 
  ![24](./media/data-lake-walkthrough/24-AML-exp.PNG)
 
-建立實驗之後，按一下 [**設定 Web 服務** --> ] [**預測性 web 服務**]
+建立實驗之後，按一下 [**設定 Web 服務**] [  -->  **預測性 web 服務**]
 
  ![25](./media/data-lake-walkthrough/25-AML-exp-deploy.PNG)
 
@@ -687,7 +686,7 @@ Azure Machine Learning Studio （傳統）可以直接從 Azure Data Lake Storag
 
  ![27](./media/data-lake-walkthrough/27-AML-web-api.PNG)
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 藉由完成此逐步解說，您已建立資料科學環境，以在 Azure Data Lake 中建立可調整的端對端解決方案。 這個環境可用來分析大型公用資料集，透過資料科學程序的標準步驟來取得此公用資料集，過程中從取得資料開始、經過模型訓練，最後將模型部署成 Web 服務。 U-SQL 是用來處理、流覽和取樣資料。 Python 和 Hive 與 Azure Machine Learning Studio （傳統）搭配使用，以建立和部署預測模型。
 
 ## <a name="whats-next"></a>下一步

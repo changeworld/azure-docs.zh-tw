@@ -8,10 +8,9 @@ ms.date: 01/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76310147"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用內部部署資料閘道連接到內部部署資料來源
@@ -58,7 +57,7 @@ ms.locfileid: "76310147"
 
 以下是閘道所使用的完整功能變數名稱。
 
-| 網域名稱 | 輸出連接埠 | 描述 |
+| 網域名稱 | 輸出連接埠 | Description |
 | --- | --- | --- |
 | *.powerbi.com |80 |用於下載安裝程式的 HTTP。 |
 | *.powerbi.com |443 |HTTPS |
@@ -87,11 +86,11 @@ ms.locfileid: "76310147"
 
 下列文章包含在內部部署資料閘道的一般內容中，適用于閘道支援的所有服務：
 
-* [內部部署資料閘道常見問題](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
+* [內部部署資料閘道常見問題集](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
 * [使用內部部署資料閘道應用程式](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
 * [租用戶層級管理](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
 * [設定 proxy 設定](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
 * [調整通訊設定](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
 * [設定記錄檔](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
 * [疑難排解](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [監視及調整閘道效能](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [監視及最佳化閘道效能](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance) \(部分機器翻譯\)

@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/16/2020
 ms.openlocfilehash: a37a8bb45c11d5b74f3059a153806e3d083cf452
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76311949"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>開發適用於 HDInsight 上 Apache Hadoop 的 Java MapReduce 程式
 
 了解如何使用 Apache Maven 來建立以 Java 為基礎的 MapReduce 應用程式，然後在 Azure HDInsight 上使用 Apache Hadoop 來加以執行。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [JAVA 開發工具組（JDK）第8版](https://aka.ms/azure-jdks)。
 
@@ -44,13 +43,13 @@ cd C:\HDI
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    此命令會使用`artifactID`參數（在此範例中為**wordcountjava** ）所指定的名稱來建立目錄。此目錄包含下列專案：
+    此命令會使用 `artifactID` 參數（在此範例中為**wordcountjava** ）所指定的名稱來建立目錄。此目錄包含下列專案：
 
     * `pom.xml` - [專案物件模型 (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)，包含用來建置專案的資訊和組態詳細資料。
     * src\main\java\org\apache\hadoop\examples：包含您的應用程式程式碼。
     * src\test\java\org\apache\hadoop\examples：包含應用程式的測試。
 
-1. 移除產生的範例程式碼。 刪除產生的測試和應用程式`AppTest.java`檔， `App.java`然後輸入下列命令：
+1. 移除產生的範例程式碼。 刪除產生的測試和應用程式檔 `AppTest.java` ，然後 `App.java` 輸入下列命令：
 
     ```cmd
     cd wordcountjava
@@ -60,7 +59,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>更新專案物件模型
 
-如需 pom.xml 檔案的完整參考，請參閱 https://maven.apache.org/pom.html。 輸入`pom.xml`下列命令以開啟：
+如需 pom.xml 檔案的完整參考，請參閱 https://maven.apache.org/pom.html。 `pom.xml`輸入下列命令以開啟：
 
 ```cmd
 notepad pom.xml
@@ -68,7 +67,7 @@ notepad pom.xml
 
 ### <a name="add-dependencies"></a>新增相依性
 
-在`pom.xml`中，于`<dependencies>`區段中新增下列文字：
+在中 `pom.xml` ，于區段中新增下列文字 `<dependencies>` ：
 
 ```xml
 <dependency>
@@ -102,7 +101,7 @@ notepad pom.xml
 
 Maven 外掛程式可讓您自訂專案的建置階段。 此區段會用來新增外掛程式、資源，和其他組建組態選項。
 
-將下列程式碼新增至`pom.xml`檔案，然後儲存並關閉檔案。 此文字必須位在檔案中的 `<project>...</project>` 標籤內，例如在 `</dependencies>` 和 `</project>` 之間。
+將下列程式碼新增至檔案 `pom.xml` ，然後儲存並關閉檔案。 此文字必須位在檔案中的 `<project>...</project>` 標籤內，例如在 `</dependencies>` 和 `</project>` 之間。
 
 ```xml
 <build>
@@ -147,7 +146,7 @@ maven-shade-plugin 也會產生 uber jar，其中含有應用程式需要的所�
 
 ## <a name="create-the-mapreduce-application"></a>建立 MapReduce 應用程式
 
-1. 輸入下列命令以建立並開啟新的檔案`WordCount.java`。 在提示中選取 **[是]** ，以建立新的檔案。
+1. 輸入下列命令以建立並開啟新的檔案 `WordCount.java` 。 在提示中選取 **[是]** ，以建立新的檔案。
 
     ```cmd
     notepad src\main\java\org\apache\hadoop\examples\WordCount.java
@@ -247,13 +246,13 @@ mvn clean package
 
 下列步驟使用 `scp`，將 JAR 複製到 HDInsight 叢集上 Apache HBase 的主要前端節點。 接著，會使用 `ssh` 命令連接到該叢集並直接在前端節點上執行範例。
 
-1. 將 jar 上傳至叢集。 將`CLUSTERNAME`取代為您的 HDInsight 叢集名稱，然後輸入下列命令：
+1. 將 jar 上傳至叢集。 `CLUSTERNAME`將取代為您的 HDInsight 叢集名稱，然後輸入下列命令：
 
     ```cmd
     scp target/wordcountjava-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:
     ```
 
-1. 連接到叢集。 將`CLUSTERNAME`取代為您的 HDInsight 叢集名稱，然後輸入下列命令：
+1. 連接到叢集。 `CLUSTERNAME`將取代為您的 HDInsight 叢集名稱，然後輸入下列命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net

@@ -12,10 +12,9 @@ ms.topic: article
 tags: connectors
 ms.date: 01/14/2020
 ms.openlocfilehash: ecb1049d64197f2a60438df7eedfb244907f7327
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76046288"
 ---
 # <a name="deploy-and-manage-azure-container-instances-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 部署和管理 Azure 容器實例
@@ -31,7 +30,7 @@ ms.locfileid: "76046288"
 
 此連接器只會提供動作，因此若要啟動邏輯應用程式，請使用個別的觸發程式，例如**定期**觸發程式，定期執行容器工作負載。 或者，您可能需要在事件（例如 Outlook 電子郵件送達）之後觸發容器群組部署。 
 
-如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
+如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -49,12 +48,12 @@ ms.locfileid: "76046288"
 
 1. 選擇路徑： 
 
-   * 請在想要新增 SMTP 動作的最後一個步驟底下，選擇 [新增步驟]****。 
+   * 請在想要新增 SMTP 動作的最後一個步驟底下，選擇 [新增步驟]。 
 
      -或-
 
    * 請在想要新增動作的步驟之間，將指標移至步驟之間的箭號。 
-   選擇顯示的加號（**+**），然後選取 [**新增動作**]。
+   選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
 
 1. 在搜尋方塊中，輸入「容器實例」作為篩選準則。 在 [動作] 清單底下，選取您想要的 Azure 容器實例連接器動作。
 

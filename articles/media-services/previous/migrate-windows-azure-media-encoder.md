@@ -14,17 +14,16 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76513196"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>從 Windows Azure 媒體編碼器遷移至媒體編碼器標準
 
-本文討論從舊版 Windows Azure 媒體編碼器（WAME）媒體處理器（已淘汰）遷移至媒體編碼器標準媒體處理器的步驟。 如需停用日期，請參閱此[舊版元件](legacy-components.md)主題。
+本文討論從舊版 Windows Azure 媒體編碼器（WAME）媒體處理器（已淘汰）遷移至媒體編碼器標準媒體處理器的步驟。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。
 
-以 WAME 編碼檔案時，客戶通常會使用名為的預設字串`H264 Adaptive Bitrate MP4 Set 1080p`，例如。 為了進行遷移，您的程式碼必須更新為使用**媒體編碼器標準**媒體處理器，而不是 WAME，以及其中一個對等的[系統](media-services-mes-presets-overview.md)預設`H264 Multiple Bitrate 1080p`值，例如。 
+以 WAME 編碼檔案時，客戶通常會使用名為的預設字串，例如 `H264 Adaptive Bitrate MP4 Set 1080p` 。 為了進行遷移，您的程式碼必須更新為使用**媒體編碼器標準**媒體處理器，而不是 WAME，以及其中一個對等的[系統](media-services-mes-presets-overview.md)預設值，例如 `H264 Multiple Bitrate 1080p` 。 
 
 ## <a name="migrating-to-media-encoder-standard"></a>遷移至媒體編碼器標準
 
@@ -76,7 +75,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ## <a name="need-help"></a>需要協助嗎？
 
-您可以流覽至 [[新增支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)] 來開啟支援票證
+您可以藉由瀏覽至[新增支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)來開啟支援票證
 
 ## <a name="next-steps"></a>後續步驟
 

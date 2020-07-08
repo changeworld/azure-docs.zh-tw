@@ -14,17 +14,16 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76544713"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>適用於 Linux 和 Windows 的 Chef VM Extension
 
 Chef 軟體是適用於 Linux 和 Windows 的 DevOps 自動化平台，而 Windows 同時啟用實體和虛擬伺服器組態的管理。 Chef VM Extension 是可以在虛擬機器上啟用 Chef 的擴充功能。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 
@@ -67,7 +66,7 @@ Chef VM Extension 需要目標虛擬機器連線至網際網路，才能夠從�
 
 ### <a name="core-property-values"></a>核心屬性值
 
-| Name | 值 / 範例 | 資料類型
+| 名稱 | 值 / 範例 | 資料類型
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | 字串 (日期) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | 字串 |
@@ -76,7 +75,7 @@ Chef VM Extension 需要目標虛擬機器連線至網際網路，才能夠從�
 
 ### <a name="settings"></a>設定
 
-| Name | 值 / 範例 | 資料類型 | 必要？
+| 名稱 | 值 / 範例 | 資料類型 | 必要項？
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | 字串 (url) | Y |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | 字串 | Y |
@@ -84,7 +83,7 @@ Chef VM Extension 需要目標虛擬機器連線至網際網路，才能夠從�
 
 ### <a name="protected-settings"></a>受保護的設定
 
-| Name | 範例 | 資料類型 | 必要？
+| Name | 範例 | 資料類型 | 必要項？
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | 字串 | Y |
 
@@ -157,4 +156,4 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您在本文中有任何需要協助的地方，您可以與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家聯繫。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

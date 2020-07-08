@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721654"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>將自訂欄位對應到事件格線結構描述
@@ -208,5 +207,5 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 ## <a name="next-steps"></a>後續步驟
 
 * 如需事件傳遞和重試的相關資訊，請參閱[事件格線訊息傳遞與重試](delivery-and-retry.md)。
-* 如需 Event Grid 的簡介，請參閱[關於事件方格](overview.md)。
+* 如需 Event Grid 的簡介，請參閱[關於 Event Grid](overview.md)。
 * 若要快速地開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。

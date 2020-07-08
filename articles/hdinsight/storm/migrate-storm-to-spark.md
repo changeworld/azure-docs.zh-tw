@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.openlocfilehash: 916c54c3739d1164e4e9c1db67aa1f4e0dbd0c6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157788"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>將 Azure HDInsight 3.6 Apache Storm 遷移至 HDInsight 4.0 Apache Spark
@@ -57,7 +56,7 @@ Spark 結構化串流會取代 Spark 串流（DStreams）。 結構化串流會�
 
 Storm 拓撲是由有向非循環圖 (DAG) 中排列的多個元件所組成。 圖形中元件之間的資料流程。 每個元件會取用一或多個資料流，並可選擇性地發出一或多個資料流。
 
-|元件 |描述 |
+|元件 |說明 |
 |---|---|
 |Spout|將資料帶入拓撲中。 它們會將一或多個串流發出至拓撲。|
 |Bolt|使用從 spout 或其他螺栓發出的資料流程。 Bolt 可以選擇性地將串流發出至拓撲。 Bolt 也負責將資料寫入外部服務或儲存體，例如 HDFS、Kafka 或 HBase。|
@@ -67,7 +66,7 @@ Storm 拓撲是由有向非循環圖 (DAG) 中排列的多個元件所組成。 
 
 「風暴」包含下列三個守護程式，可讓風暴叢集正常運作。
 
-|精靈 |描述 |
+|精靈 |Description |
 |---|---|
 |Nimbus|與 Hadoop JobTracker 類似，它會負責散發叢集的程式碼，以及將工作指派給機器和監視失敗。|
 |Zookeeper|用於叢集協調。|

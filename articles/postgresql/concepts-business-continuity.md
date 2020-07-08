@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981923"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器的商務持續性總覽
@@ -23,7 +22,7 @@ ms.locfileid: "75981923"
 
 下表將比較各項可用功能的 ERT 與 RPO：
 
-| **產** | **基本** | **一般用途** | **記憶體最佳化** |
+| **功能** | **基本** | **一般用途** | **記憶體最佳化** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | 從備份進行時間點還原 | 保留期間內的任何還原點 | 保留期間內的任何還原點 | 保留期間內的任何還原點 |
 | 從異地複寫備份進行異地還原 | 不支援 | ERT < 12 小時<br/>RPO < 1 小時 | ERT < 12 小時<br/>RPO < 1 小時 |

@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76312255"
 ---
 # <a name="evaluate-recommender"></a>評估推薦
@@ -35,7 +34,7 @@ ms.locfileid: "76312255"
 
 [評估推薦] 模組會使用包含對應「基礎事實」資料的建議模型來比較預測輸出。 例如，[計分 SVD 推薦](score-svd-recommender.md)模組會產生評分的資料集，您可以使用 [評估] 推薦來分析。
 
-### <a name="requirements"></a>需求
+### <a name="requirements"></a>規格需求
 
 評估推薦需要下列資料集做為輸入。 
   
@@ -65,7 +64,7 @@ ms.locfileid: "76312255"
 -   第三個數據行包含對應的使用者-專案評等。  
   
 > [!IMPORTANT] 
-> 若要成功評估，資料行名稱必須分別`User`是`Item`、和`Rating`。  
+> 若要成功評估，資料行名稱必須 `User` 分別是、 `Item` 和 `Rating` 。  
   
 [評估推薦] 會比較「基礎」資料集的評等與評分資料集的預測評等。 然後，它會計算平均絕對錯誤（MAE）和根 mean 平方誤差（RMSE）。
 
@@ -81,7 +80,7 @@ ms.locfileid: "76312255"
 在您連接此資料集之前，建議您先排序資料集，以便先產生最相關的專案。  
 
 > [!IMPORTANT] 
-> 若要讓 [評估推薦] 能夠正常執行， `User`資料`Item 1`行`Item 2`名稱`Item 3`必須是、、等等。  
+> 若要讓 [評估推薦] 能夠正常執行，資料行名稱必須是 `User` 、 `Item 1` 、等等 `Item 2` `Item 3` 。  
   
 [評估推薦] 會計算平均正規化折扣累積增益（NDCG），並在輸出資料集中傳回。  
   
@@ -90,4 +89,4 @@ ms.locfileid: "76312255"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

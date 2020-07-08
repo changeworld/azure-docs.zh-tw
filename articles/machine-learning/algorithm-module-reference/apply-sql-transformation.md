@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76314533"
 ---
 # <a name="apply-sql-transformation"></a>套用 SQL 轉換
@@ -33,7 +32,7 @@ ms.locfileid: "76314533"
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>如何設定 Apply SQL 轉換  
 
-此模組最多可能需要以三個資料集做為輸入。 當您參考連接到每個輸入埠的資料集時，您必須`t1`使用`t2`名稱、 `t3`和。 這些數字表示輸入連接埠的索引。  
+此模組最多可能需要以三個資料集做為輸入。 當您參考連接到每個輸入埠的資料集時，您必須使用名稱 `t1` 、 `t2` 和 `t3` 。 這些數字表示輸入連接埠的索引。  
   
 其餘的參數是 SQL 查詢，會使用 SQLite 語法。 在 [ **SQL 腳本**] 文字方塊中輸入多行時，請使用分號來結束每個語句。 否則，插入換行符號會轉換成空格。  
 
@@ -45,7 +44,7 @@ ms.locfileid: "76314533"
 
 -   埠1上一律需要輸入。  
   
--   對於包含空格或其他特殊字元的資料行識別碼，請在參考`SELECT`或`WHERE`子句中的資料行時，一律以方括弧或雙引號括住資料行識別碼。  
+-   對於包含空格或其他特殊字元的資料行識別碼，請在參考或子句中的資料行時，一律以方括弧或雙引號括住資料行識別碼 `SELECT` `WHERE` 。  
   
 ### <a name="unsupported-statements"></a>不支援的語句  
 
@@ -53,7 +52,7 @@ ms.locfileid: "76314533"
   
 - 不過，不像大多數的 SQL 資料庫系統，SQLite 使用動態輸入的值，而非指定類型至資料行。 它弱型別，並允許隱含型別轉換。  
   
-- `LEFT OUTER JOIN`已實作為，但`RIGHT OUTER JOIN`不`FULL OUTER JOIN`是或。  
+- `LEFT OUTER JOIN`已實作為，但不是 `RIGHT OUTER JOIN` 或 `FULL OUTER JOIN` 。  
 
 - 您可以使用`RENAME TABLE`和`ADD COLUMN`陳述式與`ALTER TABLE`命令，但其他子句不支援，包括`DROP COLUMN`，`ALTER COLUMN`，和`ADD CONSTRAINT`。  
   
@@ -64,4 +63,4 @@ ms.locfileid: "76314533"
     
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

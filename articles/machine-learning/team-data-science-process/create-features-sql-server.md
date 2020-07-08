@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721739"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 對 SQL Server 中的資料建立功能
@@ -28,7 +27,7 @@ ms.locfileid: "76721739"
 > 
 > 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 本文假設您已經：
 
 * 建立 Azure 儲存體帳戶。 如需指示，請參閱[建立 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)
@@ -76,7 +75,7 @@ ms.locfileid: "76721739"
 * 第五個小數位數最多可達 1.1 m：它會分辨彼此的樹狀結構。 您只能使用微分校正來達到此層級利用商業 GPS 單位所達到的精確度。
 * 第六個小數位數最多可達 0.11 m：您可以使用此層級來詳細配置結構，以設計環境、建立道路。 比起足以追蹤冰河和河流的移動，這應該是更好的方式。 藉由使用 GPS 的耗費量值（例如微分更正的 GPS），即可達到此目標。
 
-您可以使用將位置資訊功能化，以分隔出區域、位置及縣 (市) 資訊。 一次也可以呼叫 REST 端點，例如 Bing Maps API （請參閱`https://msdn.microsoft.com/library/ff701710.aspx`以取得區域/區域資訊）。
+您可以使用將位置資訊功能化，以分隔出區域、位置及縣 (市) 資訊。 一次也可以呼叫 REST 端點，例如 Bing Maps API （請參閱 `https://msdn.microsoft.com/library/ff701710.aspx` 以取得區域/區域資訊）。
 
     select
         <location_columnname>

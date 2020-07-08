@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
 ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76511139"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>透過 IoT Edge 裝置閘道連線 Modbus TCP 裝置
@@ -25,7 +24,7 @@ ms.locfileid: "76511139"
 
 本文假設您使用 Modbus TCP 通訊協定。 如需有關如何設定此模組以支援 Modbus RTU 的詳細資訊，請參閱 GitHub 上的 [Azure IoT Edge Modbus 模組](https://github.com/Azure/iot-edge-modbus)專案。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Azure IoT Edge 裝置。 如需如何設定一個的逐步解說，請參閱[在 Windows 或 Linux 上部署 Azure IoT Edge](quickstart.md) 。 [Linux](quickstart-linux.md)
 * IoT Edge 裝置的主索引鍵連接字串。
@@ -33,7 +32,7 @@ ms.locfileid: "76511139"
 
 ## <a name="prepare-a-modbus-container"></a>準備 Modbus 容器
 
-如果您想要測試 Modbus 閘道功能，Microsoft 有可供您使用的範例模組。 您可以使用 Azure Marketplace、 [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)或影像 URI 來存取模組`mcr.microsoft.com/azureiotedge/modbus:1.0`。
+如果您想要測試 Modbus 閘道功能，Microsoft 有可供您使用的範例模組。 您可以使用 Azure Marketplace、 [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)或影像 URI 來存取模組 `mcr.microsoft.com/azureiotedge/modbus:1.0` 。
 
 如果您想要建立自己的模組並針對您的環境進行自訂，GitHub 上有提供開放原始碼 [Azure IoT Edge Modbus 模組](https://github.com/Azure/iot-edge-modbus)專案。 請遵循該專案中的方針，建立您自己的容器映像。 若要建立容器映射，請參閱[在 Visual Studio 中開發 c # 模組](how-to-visual-studio-develop-csharp-module.md)或在[Visual Studio Code 中開發模組](how-to-vs-code-develop-module.md)。 這些文章提供有關建立新模組以及將容器映射發佈至登錄的指示。
 
@@ -45,24 +44,24 @@ ms.locfileid: "76511139"
 
 2. 移至 [IoT Edge]****，然後按一下您的 IoT Edge 裝置。
 
-3. 選取 [設定模組]****。
+3. 選取 [設定模組]。
 
 4. 在 [ **IoT Edge 模組**] 區段中，新增 Modbus 模組：
 
    1. 按一下 [**新增**] 下拉式清單，然後選取 [ **Marketplace 模組**]。
-   2. 搜尋`Modbus`並選取 Microsoft 的**Modbus TCP 模組**。
-   3. 系統會自動為您的 IoT 中樞設定模組，並出現在 IoT Edge 模組清單中。 路由也會自動設定。 選取 [檢閱 + 建立]  。
+   2. 搜尋 `Modbus` 並選取 Microsoft 的**Modbus TCP 模組**。
+   3. 系統會自動為您的 IoT 中樞設定模組，並出現在 IoT Edge 模組清單中。 路由也會自動設定。 選取 [檢閱 + 建立]。
    4. 檢查部署資訊清單，然後選取 [**建立**]。
 
-5. 選取 Modbus 模組， `ModbusTCPModule`並在清單中選取 [模組對應項**設定**] 索引標籤。已自動填入模組對應項所需屬性的必要 JSON。
+5. 選取 Modbus 模組， `ModbusTCPModule` 並在清單中選取 [**模組**對應項設定] 索引標籤。已自動填入模組對應項所需屬性的必要 JSON。
 
 6. 尋找 JSON 中的**SlaveConnection**屬性，並將其值設定為 Modbus 裝置的 IPv4 位址。
 
-7. 選取 [更新]  。
+7. 選取 [更新]。
 
 8. 選取 [審核] [ **+ 建立**]，檢查部署，然後選取 [**建立**]。
 
-9. 返回裝置的詳細資料頁面，選取 [重新整理]****。 您應該會看到新`ModbusTCPModule`模組與 IoT Edge 執行時間一起執行。
+9. 返回裝置的詳細資料頁面，選取 [重新整理]****。 您應該會看到新 `ModbusTCPModule` 模組與 IoT Edge 執行時間一起執行。
 
 ## <a name="view-data"></a>檢視資料
 

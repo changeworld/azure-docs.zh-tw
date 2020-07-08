@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76710343"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期的了解商務階段
@@ -24,7 +23,7 @@ ms.locfileid: "76710343"
 
    1. **了解商務**
    2. **資料取得與認知**
-   3. **模型化**
+   3. **模型**
    4. **部署**
    5. **客戶接受度**
 
@@ -37,7 +36,7 @@ ms.locfileid: "76710343"
 * 指定要做為模型目標以及要使用誰的相關標準來判斷專案是否成功的重要變數。
 * 找到企業有權存取或需要取得的相關資料來源。
 
-## <a name="how-to-do-it"></a>作法
+## <a name="how-to-do-it"></a>如何執行此動作
 此階段會解決兩項主要工作︰ 
 
    * **定義目標**︰與客戶和其他專案關係人合作，以了解並找出企業的問題。 制訂定義資料科學技術可鎖定之商務目標的問題。
@@ -74,7 +73,7 @@ ms.locfileid: "76710343"
 
 舉例來說，您可能發現現有的系統必須收集並記錄其他類型的資料，才能解決問題並達成專案目標。 在此情況下，您可能會想要尋找外部資料來源或更新系統以收集新資料。
 
-## <a name="artifacts"></a>構件
+## <a name="artifacts"></a>Artifacts
 以下是此階段的交付項目︰
 
    * [章程檔](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md)： TDSP 專案結構定義中會提供標準範本。 規範文件是即時文件。 當您進行新的探索，以及當商務需求變更時，您就要更新整個專案的範本。 關鍵在於要反覆審視這份文件，並隨著探索程序的進行，新增更多詳細資料。 讓客戶和其他專案關係人參與變更，並清楚地說明進行這些變更的原因。  
@@ -87,7 +86,7 @@ ms.locfileid: "76710343"
 
    1. [了解商務](lifecycle-business-understanding.md)
    2. [資料取得與認知](lifecycle-data.md)
-   3. [模型化](lifecycle-modeling.md)
+   3. [模型](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)
    5. [客戶接受度](lifecycle-acceptance.md)
 

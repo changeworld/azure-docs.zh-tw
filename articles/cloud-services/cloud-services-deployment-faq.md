@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980636"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之部署問題：常見問題集 (FAQ)
@@ -54,7 +53,7 @@ ms.locfileid: "75980636"
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>為什麼部署雲端服務有時會因為我訂用帳戶或服務的限制/配額/條件約束而失敗？
 如果配置所需的資源超過預設值，或超過您區域/資料中心層級所允許的最大配額，雲端服務部署就可能會失敗。 如需詳細資訊，請參閱[雲端服務限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits)。
 
-您也可以在入口網站追蹤訂用帳戶目前的使用量/配額：[Azure 入口網站]  => [訂用帳戶]  => \<適當的訂用帳戶] > => [使用方式 + 配額]。
+您也可以在入口網站追蹤訂用帳戶目前的使用量/配額： Azure 入口網站 => 訂閱 => \<appropriate subscription>   => [使用量 + 配額]。
 
 也可以透過 Azure 計費 API 擷取資源使用量/耗用量的相關資訊。 請參閱 [Azure 資源使用情況 API (預覽)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview)。
 
