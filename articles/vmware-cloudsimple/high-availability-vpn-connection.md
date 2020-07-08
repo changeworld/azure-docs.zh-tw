@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025260"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>設定從內部部署到 CloudSimple VPN 閘道的高可用性連線
@@ -97,7 +96,7 @@ access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 
 ### <a name="5-configure-the-transform-set"></a>5. 設定轉換集
 
-設定轉換集（TS），其必須包含關鍵字```ikev1```。 TS 中指定的加密和雜湊屬性，必須與[CLOUDSIMPLE VPN 閘道的預設](cloudsimple-vpn-gateways.md)設定中列出的參數相符。
+設定轉換集（TS），其必須包含關鍵字 ```ikev1``` 。 TS 中指定的加密和雜湊屬性，必須與[CLOUDSIMPLE VPN 閘道的預設](cloudsimple-vpn-gateways.md)設定中列出的參數相符。
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
@@ -147,7 +146,7 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 ### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. 建立主要和次要通道介面
 
-登入 Palo Alto 防火牆，選取 [**網路** > **介面** > **Tunnel** > ] [通道] [**新增**]，設定下欄欄位，然後按一下 **[確定]**。
+登入 Palo Alto 防火牆，選取 [**網路**  >  **介面**] [通道]  >  **Tunnel**  >  [**新增**]，設定下欄欄位，然後按一下 **[確定]**。
 
 * 介面名稱。 第一個欄位是以關鍵字 ' 通道 ' 自動填入。 在連續的欄位中，輸入介於1到9999之間的任何數位。 此介面將用來做為主要通道介面，以在內部部署資料中心與私人雲端之間執行站對站流量。
 * 加以. 輸入批註以方便識別通道的用途
@@ -162,12 +161,12 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 需要有路由，內部部署子網才能觸達 CloudSimple 的私人雲端子網。
 
-選取 **[網路** > **虛擬路由器** > ] [*預設* > **靜態路由** > ] [**新增**]，設定下欄欄位，然後按一下 **[確定]**。
+選取 [**網路**  >  **虛擬路由器**] [  >  *預設*  >  **靜態路由**]  >  [**新增**]，設定下欄欄位，然後按一下 **[確定]**。
 
 * Name： 輸入任何名稱，即可輕鬆識別路線的用途。
 * 目的地。 指定要從內部部署的 S2S 通道介面連線的 CloudSimple 私人雲端子網
 * 介面。 從下拉式清單中選取在步驟1（第2節）中建立的主要通道介面。 在此範例中，它是通道. 20。
-* 下一個躍點。 選取 [無]****。
+* 下一個躍點。 選取 [無]。
 * 系統管理距離。 保留預設值。
 * 公制。 輸入1到65535之間的任何值。 金鑰是針對對應至主要通道介面的路由輸入較低的計量，這與對應次要通道介面的路由相對應，因此偏好先前的路由。 如果通道. 20 的計量值為20，而不是通道的計量值30，則建議使用-20。
 * 路由表。 保留預設值。
@@ -180,7 +179,7 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 定義密碼編譯設定檔，指定用於在 IKEv1 階段1中設定 VPN 通道的識別、驗證和加密通訊協定和演算法。
 
-選取 [**網路** > ] [**展開網路設定檔** > ] [**IKE 加密** > **新增**]，設定下欄欄位，然後按一下 **[確定]**。
+選取 [**網路**] [  >  **展開網路設定檔**] [  >  **IKE 加密**  >  **新增**]，設定下欄欄位，然後按一下 **[確定]**。
 
 * Name： 輸入任何 IKE 加密設定檔的名稱。
 * DH 群組。 按一下 [**新增**]，然後選取適當的 DH 群組。
@@ -193,13 +192,13 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 定義 IKE 閘道，以在 VPN 通道的每一端之間建立對等之間的通訊。
 
-選取 [**網路** > ] [**展開網路設定檔** > ] [**IKE 閘道** > **新增**]，設定下欄欄位，然後按一下 **[確定]**。
+選取 [**網路**] [  >  **展開網路設定檔**] [  >  **IKE 閘道**  >  **新增**]，設定下欄欄位，然後按一下 **[確定]**。
 
 [一般] 索引標籤：
 
 * Name： 輸入要與主要 CloudSimple VPN 對等對等互連之 IKE 閘道的名稱。
 * 版本。 選取 [**僅限 IKEv1 模式]**。
-* 網址類別型。 選取 [IPv4]  。
+* 網址類別型。 選取 [IPv4]****。
 * 介面。 選取對外公開或外部介面。
 * 本機 IP 位址。 保留預設值。
 * 對等 IP 位址類型。 選取 [ **IP**]。
@@ -224,21 +223,21 @@ IKEv1
 
 ### <a name="5-define-ipsec-crypto-profiles"></a>5. 定義 IPSEC 加密設定檔
 
-選取 [**網路** > ] [**展開網路設定檔** > ] [**IPSEC 加密** > **新增**]，設定下欄欄位，然後按一下 **[確定]**。
+選取 [**網路**] [  >  **展開網路設定檔**] [  >  **IPSEC 加密**  >  **新增**]，設定下欄欄位，然後按一下 **[確定]**。
 
 * Name： 輸入 IPsec 加密設定檔的名稱。
 * IPsec 通訊協定。 選取 [ **ESP**]。
 * 加密。 按一下 [**新增**]，然後選取適當的加密方法。
 * 驗證。 按一下 [**新增**]，然後選取適當的驗證方法。
 * DH 群組。 選取 [**無 pfs**]。
-* 存留期。 設定為30分鐘。
+* 期. 設定為30分鐘。
 * 啟用。 讓此方塊保持未核取狀態。
 
 重複先前的步驟來建立另一個 IPsec 加密設定檔，其將用於作為次要 CloudSimple VPN 對等。 相同的 IPSEC 加密設定檔也可以同時用於主要和次要 IPsec 通道（請參閱下列程式）。
 
 ### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. 定義通道監視的監視設定檔
 
-選取 [**網路** > ] [**展開網路設定檔** > **監視** > ] [**新增**]，設定下欄欄位，然後按一下 **[確定]**。
+選取 [**網路**] [  >  **展開網路設定檔**  >  **監視**]  >  [**新增**]，設定下欄欄位，然後按一下 **[確定]**。
 
 * Name： 輸入監視設定檔的任何名稱，以用於通道監視以主動回應失敗。
 * 動作。 選取 [**故障切換**]。
@@ -247,14 +246,14 @@ IKEv1
 
 ### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. 設定主要和次要 IPsec 通道。
 
-選取 [**網路** > **IPsec 通道** > ] [**新增**]，設定下欄欄位，然後按一下 **[確定]**。
+選取 [**網路**  >  **IPsec 通道**]  >  [**新增**]，設定下欄欄位，然後按一下 **[確定]**。
 
 [一般] 索引標籤：
 
 * Name： 輸入要與主要 CloudSimple VPN 對等對等互連之主要 IPSEC 通道的任何名稱。
 * 通道介面。 選取主要通道介面。
 * 輸入 。 保留預設值。
-* 網址類別型。 選取 [IPv4]  。
+* 網址類別型。 選取 [IPv4]****。
 * IKE 閘道。 選取 [主要 IKE 閘道]。
 * IPsec 加密設定檔。 選取主要 IPsec 設定檔。 選取 [**顯示先進的選項**]。
 * 啟用重新執行保護。 保留預設值。
@@ -263,7 +262,7 @@ IKEv1
 * 目的地 IP。 輸入屬於 CloudSimple 私人雲端子網的任何 IP 位址，允許透過站對站連線。 請確定 Palo Alto 上的通道介面（例如 10.64.5.2/32 和 10.64.6.2/32）可透過站對站 VPN 連線到 CloudSimple 私人雲端 IP 位址，以供使用。 請參閱下列 proxy 識別碼設定。
 * 特徵. 選取 [監視設定檔]。
 
-Proxy 識別碼索引標籤：按一下 [ **IPv4** > ] [**新增**] 並設定下列各項：
+Proxy 識別碼索引標籤：按一下 [ **IPv4**]  >  [**新增**] 並設定下列各項：
 
 * Proxy 識別碼。 為感興趣的流量輸入任何名稱。 一個 IPsec 通道內可能會有多個 Proxy 識別碼。
 * 本機。 指定允許透過站對站 VPN 與私人雲端子網進行通訊的內部部署本機子網。
@@ -272,7 +271,7 @@ Proxy 識別碼索引標籤：按一下 [ **IPv4** > ] [**新增**] 並設定下
 
 重複上述步驟以建立另一個要用於次要 CloudSimple VPN 對等的 IPsec 通道。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 
 在 Cisco ASA 上設定 NAT：
 

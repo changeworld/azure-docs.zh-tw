@@ -17,10 +17,9 @@ ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fcb3fe009a6482c8e512899a952694beaed361a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058972"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教學課程︰設定 BlueJeans 來自動佈建使用者
@@ -30,7 +29,7 @@ ms.locfileid: "77058972"
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -51,7 +50,7 @@ ms.locfileid: "77058972"
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 移至 [**企業應用程式**]，然後選取 [**所有應用程式**]。
+2. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -94,11 +93,11 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![應用程式清單中的 BlueJeans 連結](common/all-applications.png)
 
-3. 選取 [**布**建] 索引標籤。
+3. 選取 [佈建] 索引標籤。
 
     ![BlueJeans 佈建](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
 
-4. 將布建模式設定為 [**自動** **]** 。
+4. 將 [佈建模式] 設定為 [自動]。
 
     ![BlueJeans 佈建](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
@@ -116,13 +115,13 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![BlueJeans 佈建](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
-8. 按一下 **[儲存]** 。
+8. 按一下 [檔案] 。
 
 9. 在 [對應]**** 區段中，選取 [同步處理 Azure Active Directory 使用者至 BlueJeans]****。
 
     ![BlueJeans 佈建](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
 
-10. 在 [屬性對應]**** 區段中，檢閱從 Azure AD 同步至 BlueJeans 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 BlueJeans 中的使用者帳戶以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
+10. 在 [屬性對應]**** 區段中，檢閱從 Azure AD 同步至 BlueJeans 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 BlueJeans 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
     ![BlueJeans 佈建](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
 
@@ -136,7 +135,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![BlueJeans 佈建](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
 
-14. 當您準備好要佈建時，按一下 [儲存]****。
+14. 當您準備好要佈建時，按一下 [儲存]。
 
     ![BlueJeans 佈建](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
 
@@ -150,7 +149,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟

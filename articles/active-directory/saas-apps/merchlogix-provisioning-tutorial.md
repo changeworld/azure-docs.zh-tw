@@ -17,10 +17,9 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4aa60fb565552961a3c85346c39c318a90c8adc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77061289"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>教學課程：設定 MerchLogix 來自動布建使用者
@@ -30,7 +29,7 @@ ms.locfileid: "77061289"
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -48,7 +47,7 @@ ms.locfileid: "77061289"
 
     ![Azure Active Directory 按鈕][1]
 
-2. 流覽至 [**企業應用程式** > ] [**所有應用程式**]。
+2. 流覽至 [**企業應用程式**] [  >  **所有應用程式**]。
 
     ![企業應用程式區段][2]
 
@@ -89,9 +88,9 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 2. 從您的 SaaS 應用程式清單中選取 [MerchLogix]。
 
-3. 選取 [**布**建] 索引標籤。
+3. 選取 [佈建] 索引標籤。
 
-4. 將布建模式設定為 [**自動** **]** 。
+4. 將 [佈建模式] 設定為 [自動]。
 
     ![MerchLogix 布建](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
 
@@ -105,19 +104,19 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 7. 在 [通知電子郵件]**** 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]**** 核取方塊。
 
-8. 按一下 **[儲存]** 。
+8. 按一下 [檔案] 。
 
 9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 MerchLogix**]。
 
-10. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到 MerchLogix 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 MerchLogix 中的使用者帳戶，以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
+10. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到 MerchLogix 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 MerchLogix 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
 11. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 MerchLogix**]。
 
-12. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 MerchLogix 的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對 MerchLogix 中的群組以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
+12. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 MerchLogix 的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對 MerchLogix 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
 13. 若要啟用 MerchLogix 的 Azure AD 布建服務，請在 [**設定**] 區段中將 [布建**狀態**] 變更為 [**開啟**]。
 
-14. 當您準備好要佈建時，按一下 [儲存]****。
+14. 當您準備好要佈建時，按一下 [儲存]。
 
 此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [**同步處理詳細資料**] 區段來監視進度，並遵循連結來布建活動報告，其中描述 MerchLogix 上的 Azure AD 布建服務所執行的所有動作。
 
@@ -125,7 +124,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟

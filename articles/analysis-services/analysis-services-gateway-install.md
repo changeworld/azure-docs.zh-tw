@@ -8,10 +8,9 @@ ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77062144"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安裝及設定內部部署資料閘道
@@ -20,7 +19,7 @@ ms.locfileid: "77062144"
 
 若要深入瞭解 Azure Analysis Services 如何與閘道搭配運作，請參閱[連接到內部部署資料來源](analysis-services-gateway.md)。 若要深入瞭解有關先進的安裝案例和閘道的詳細資訊，請參閱內部[部署資料閘道檔](/data-integration/gateway/service-gateway-onprem)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 **最低需求：**
 
@@ -54,7 +53,7 @@ ms.locfileid: "77062144"
 
 2. 選取 [內部**部署資料閘道**]。
 
-   ![Select](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![選取](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. 選取位置，接受條款，然後按一下 [安裝]****。
 
@@ -125,7 +124,7 @@ ms.locfileid: "77062144"
 
     ![將伺服器連線至閘道資源成功](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
-就這麼簡單。 如果您需要開啟連接埠，或進行疑難排解，請務必簽出[內部部署資料閘道](analysis-services-gateway.md)。
+這樣就大功告成了！ 如果您需要開啟連接埠，或進行疑難排解，請務必簽出[內部部署資料閘道](analysis-services-gateway.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

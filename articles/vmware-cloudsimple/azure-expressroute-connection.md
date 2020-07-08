@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 9bb68ec68f4de646239477ceeaac50a7a33989fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77015230"
 ---
 # <a name="connect-your-cloudsimple-private-cloud-environment-to-the-azure-virtual-network-using-expressroute"></a>使用 ExpressRoute 將您的 CloudSimple 私用雲端環境連線至 Azure 虛擬網路
@@ -46,7 +45,7 @@ ms.locfileid: "77015230"
 
 建立連線之後，您可以選取 [**設定**] 底下的 [**屬性**] 來檢查連接的狀態。  狀態和布建狀態應該會顯示為 [**成功**]。
 
-![連線狀態](media/azure-expressroute-connection.png)
+![連接狀態](media/azure-expressroute-connection.png)
 
 若要測試虛擬網路連線：
 

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025056"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>VMware Solution by CloudSimple 的常見問題
@@ -33,7 +32,7 @@ CloudSimple 適用于美國東部、美國西部和西歐區域，還有其他�
 
 **如何? 啟用 CloudSimple 的訂用帳戶嗎？**
 
-您可以在上[azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com)聯絡您的 Microsoft 帳戶代表，以啟用 CloudSimple 服務的訂用帳戶。 在您要啟用 CloudSimple 服務的電子郵件中，提供您的訂用帳戶識別碼。  
+您可以在上聯絡您的 Microsoft 帳戶代表 [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) ，以啟用 CloudSimple 服務的訂用帳戶。 在您要啟用 CloudSimple 服務的電子郵件中，提供您的訂用帳戶識別碼。  
 
 **如何? 存取 CloudSimple 入口網站嗎？**
 

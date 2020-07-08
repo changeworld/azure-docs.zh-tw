@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024939"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple 私用雲端總覽
@@ -31,7 +30,7 @@ CloudSimple 與完全相容：
 
 * 現有的工具
 * 技術
-* 處理序
+* 處理程序
 
 此相容性可讓您的小組管理 Azure 雲端上的工作負載，而不會中斷這些類型的原則：
 

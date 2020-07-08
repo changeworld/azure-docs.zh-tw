@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058458"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>教學課程：設定 Elium 來自動布建使用者
@@ -31,7 +30,7 @@ ms.locfileid: "77058458"
 >
 > 此連接器目前為預覽版。 如需預覽中 Azure 功能的一般使用規定，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程假設您已經具有下列必要條件：
 
@@ -55,7 +54,7 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者會收到
 
 將 Elium 設定為使用 Azure AD 自動布建使用者之前，您必須在 Elium 上啟用「跨網域身分識別管理」（SCIM）布建的「系統」。 請遵循下列步驟：
 
-1. 登入 Elium 並移至 [**我的設定檔** > **設定**]。
+1. 登入 Elium 並移至 [**我的設定檔**  >  **設定**]。
 
     ![Elium 中的 [設定] 功能表項目](media/Elium-provisioning-tutorial/setting.png)
 
@@ -75,7 +74,7 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者會收到
 
     ![Azure Active Directory 功能表項目](common/select-azuread.png)
 
-1. 移至 [**企業應用程式**]，然後選取 [**所有應用程式**]。
+1. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 
      ![Azure AD 企業應用程式] 分頁](common/enterprise-applications.png)
 
@@ -104,15 +103,15 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者會收到
 
     ![[企業應用程式] 分頁中的應用程式清單](common/all-applications.png)
 
-1. 選取 [**布**建] 索引標籤。
+1. 選取 [佈建] 索引標籤。
 
     ![[企業應用程式] 分頁的 [布建] 索引標籤](common/provisioning.png)
 
-1. 將布建模式設定為 [**自動** **]** 。
+1. 將 [佈建模式] 設定為 [自動]。
 
     ![布建模式的自動設定](common/provisioning-automatic.png)
 
-1. 在 [**管理員認證**] 區段的 [**租使用者 URL** ] 欄位中，輸入** \< \>租使用者 url>/scim/v2** 。 （**租使用者 url>** 是先前從 Elium 管理主控台中抓取的值）。也請在 [**秘密權杖**] 欄位中輸入 Elium**秘密 token**值。 最後，選取 [**測試連接**] 以確認 Azure AD 可以連接到 Elium。 如果連線失敗，請確定您的 Elium 帳戶具有系統管理員許可權，然後再試一次。
+1. 在 [**管理員認證**] 區段的 [租使用者**URL** ] 欄位中，輸入** \<tenantURL\> /scim/v2** 。 （**租使用者 url>** 是先前從 Elium 管理主控台中抓取的值）。也請在 [**秘密權杖**] 欄位中輸入 Elium**秘密 token**值。 最後，選取 [**測試連接**] 以確認 Azure AD 可以連接到 Elium。 如果連線失敗，請確定您的 Elium 帳戶具有系統管理員許可權，然後再試一次。
 
     ![管理員認證中的租使用者 URL 和秘密權杖欄位](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -120,13 +119,13 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者會收到
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案] 。
 
 1. **在 [對應**] 區段中，選取 [**同步處理 Azure Active Directory 使用者至 Elium**]。
 
     ![將 Azure AD 使用者對應的連結同步處理至 Elium](media/Elium-provisioning-tutorial/usermapping.png)
 
-1. 在 [**屬性**對應] 區段中，檢查從 Azure AD 同步處理到 Elium 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Elium 中的使用者帳戶，以進行更新作業。 選取 [儲存]**** 認可任何變更。
+1. 在 [**屬性**對應] 區段中，檢查從 Azure AD 同步處理到 Elium 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Elium 中的使用者帳戶，以進行更新作業。 選取 [儲存] 認可任何變更。
 
     ![Azure AD 和 Elium 之間的屬性對應](media/Elium-provisioning-tutorial/userattribute.png)
 
@@ -140,13 +139,13 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者會收到
 
     ![[布建領域] 清單方塊](common/provisioning-scope.png)
 
-1. 當您準備好要布建時，請選取 [**儲存**]。
+1. 準備好要佈建時，請選取 [儲存]。
 
     ![[儲存] 按鈕以提供布建設定](common/provisioning-configuration-save.png)
 
 這項作業會啟動 [**設定**] 區段的 [**範圍**] 中定義的所有使用者和群組的首次同步處理。 此初始同步處理常式所花費的時間比之後同步。 如需布建所需時間的詳細資訊，請參閱布建[使用者需要多久時間？](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
 
-使用 [**目前狀態**] 區段來監視進度，並遵循您的布建活動報告的連結。 布建活動報表會描述 Elium 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告。
+使用 [**目前狀態**] 區段來監視進度，並遵循您的布建活動報告的連結。 布建活動報表會描述 Elium 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者佈建的狀態](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告。
 
 ## <a name="additional-resources"></a>其他資源
 

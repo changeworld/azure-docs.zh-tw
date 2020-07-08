@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025345"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>在 Azure 上的 VMware 中執行時，確保應用程式的高可用性
@@ -47,7 +46,7 @@ CloudSimple 控制平面軟體會持續監視 VMware 叢集的健全狀況，並
 
 ## <a name="availability-zones"></a>可用性區域
 
-可用性區域是高可用性供應專案，可保護您的應用程式和資料不受資料中心失敗的影響。 可用性區域是 Azure 區域內的特殊實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 每個區域都有一個可用性區域。 如需詳細資訊，請參閱[什麼是 Azure 中的可用性區域？](../availability-zones/az-overview.md)。
+可用性區域是高可用性供應項目，可保護您的應用程式和資料不受資料中心故障影響。 可用性區域是 Azure 區域內的特殊實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 每個區域都有一個可用性區域。 如需詳細資訊，請參閱[什麼是 Azure 中的可用性區域？](../availability-zones/az-overview.md)。
 
 ## <a name="redundant-azure-expressroute-circuits"></a>多餘的 Azure ExpressRoute 線路
 

@@ -16,17 +16,16 @@ ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b8038896a11b65e835ce71f5fc34e85723cc91a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77060516"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教學課程︰設定 Salesforce 來進行自動佈建使用者
 
 本教學課程旨在說明您需要在 Salesforce 和 Azure AD 中執行的步驟，以將使用者帳戶從 Azure AD 自動佈建和取消佈建至 Salesforce。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -70,7 +69,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 3. 選取您的 Salesforce 執行個體，然後選取 [佈建]**** 索引標籤。
 
-4. 將布建模式設定為 [**自動** **]** 。
+4. 將 [佈建模式] 設定為 [自動]。
 
     ![佈建](./media/salesforce-provisioning-tutorial/provisioning.png)
 
@@ -96,13 +95,13 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 10. 複製該權杖，移至您的 Azure AD 視窗，然後將它貼到 [祕密權杖]**** 欄位。
 
-11. 如果 Salesforce 執行個體是位於 Salesforce 政府雲端上，則應輸入**租用戶 URL**。 否則為選擇性。 使用 "https://\<your-instance\>.my.salesforce.com" 格式輸入租用戶 URL，將 \<your-instance\> 取代為您的 Salesforce 執行個體名稱。
+11. 如果 Salesforce 執行個體是位於 Salesforce 政府雲端上，則應輸入**租用戶 URL**。 否則為選擇性。 使用 "HTTPs://. my.salesforce.com" 格式輸入租 \<your-instance\> 使用者 URL， \<your-instance\> 並將取代為您的 salesforce 實例名稱。
 
 12. 在 Azure 入口網站中，按一下 [測試連接]****，以確保 Azure AD 可以連接到您的 Salesforce 應用程式。
 
 13. 在 [通知電子郵件]**** 欄位中輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選下列核取方塊。
 
-14. 按一下 [**儲存]。**  
+14. 按一下 [儲存]。  
 
 15. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 Salesforce]****。
 
@@ -110,7 +109,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 17. 若要啟用 Salesforce 的 Azure AD 佈建服務，請在 [設定] 區段中，將 [佈建狀態]**** 變更為 [開啟]****
 
-18. 按一下 [**儲存]。**
+18. 按一下 [儲存]。
 
 > [!NOTE]
 > 在 Salesforce 應用程式中布建使用者之後，系統管理員必須為其設定語言特定設定。 如需語言設定的詳細資訊，請參閱[這](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)篇文章。
@@ -134,6 +133,6 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶布建](tutorial-list.md)
+* [管理企業應用程式的使用者帳戶佈建](tutorial-list.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 * [設定單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

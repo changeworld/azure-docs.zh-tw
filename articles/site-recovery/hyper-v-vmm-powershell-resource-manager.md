@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77048608"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell (Resource Manager) 將 Hyper-V VM 的災害復原設定至次要網站
@@ -20,7 +19,7 @@ ms.locfileid: "77048608"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 檢閱[案例架構和元件](hyper-v-vmm-architecture.md)。
 - 請參閱所有元件的[支援需求](site-recovery-support-matrix-to-sec-site.md)。
@@ -89,7 +88,7 @@ ms.locfileid: "77048608"
    $vault = New-AzRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    ```
 
-   使用`Get-AzRecoveryServicesVault` Cmdlet 建立保存庫物件之後，您就可以將它取出。
+   使用 Cmdlet 建立保存庫物件之後，您就可以將它取出 `Get-AzRecoveryServicesVault` 。
 
 ## <a name="set-the-vault-context"></a>設定保存庫內容
 
@@ -210,7 +209,7 @@ ms.locfileid: "77048608"
 
 ##  <a name="configure-network-mapping"></a>設定網路對應
 
-1. 此命令擷取目前保存庫的伺服器。 命令會將 Site Recovery 的伺服器儲存在`$Servers`陣列變數中。
+1. 此命令擷取目前保存庫的伺服器。 命令會將 Site Recovery 的伺服器儲存在 `$Servers` 陣列變數中。
 
    ```azurepowershell
    $Servers = Get-AzRecoveryServicesAsrFabric
@@ -227,7 +226,7 @@ ms.locfileid: "77048608"
    > [!NOTE]
    > 來源 Virtual Machine Manager 伺服器在伺服器陣列中可以是第一部或第二部伺服器。 檢查 Virtual Machine Manager 伺服器名稱，並適當地擷取網路。
 
-1. 此 Cmdlet 會在主要網路與復原網路之間建立對應。 它會將主要網路指定為的第一個`$PrimaryNetworks`元素。 它會將復原網路指定為的第一個`$RecoveryNetworks`元素。
+1. 此 Cmdlet 會在主要網路與復原網路之間建立對應。 它會將主要網路指定為的第一個元素 `$PrimaryNetworks` 。 它會將復原網路指定為的第一個元素 `$RecoveryNetworks` 。
 
    ```azurepowershell
    New-AzRecoveryServicesAsrNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
@@ -259,9 +258,9 @@ ms.locfileid: "77048608"
 > 如果您想要複寫至 Azure 中已啟用 CMK 的受控磁片，請使用 Az PowerShell 3.3.0 to do 執行下列步驟：
 >
 > 1. 藉由更新 VM 屬性來啟用容錯移轉至受控磁片
-> 1. 使用`Get-AzRecoveryServicesAsrReplicationProtectedItem` Cmdlet 來提取受保護專案之每個磁片的磁片識別碼
-> 1. 使用`New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` Cmdlet 建立字典物件，以包含磁片識別碼與磁片加密集的對應。 這些磁片加密集是由您在目的地區域中預先建立的。
-> 1. 藉由在**DiskIdToDiskEncryptionSetMap**參數`Set-AzRecoveryServicesAsrReplicationProtectedItem`中傳遞 dictionary 物件，使用 Cmdlet 更新 VM 屬性。
+> 1. 使用 `Get-AzRecoveryServicesAsrReplicationProtectedItem` Cmdlet 來提取受保護專案之每個磁片的磁片識別碼
+> 1. 使用 Cmdlet 建立字典物件， `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` 以包含磁片識別碼與磁片加密集的對應。 這些磁片加密集是由您在目的地區域中預先建立的。
+> 1. 藉 `Set-AzRecoveryServicesAsrReplicationProtectedItem` 由在**DiskIdToDiskEncryptionSetMap**參數中傳遞 dictionary 物件，使用 Cmdlet 更新 VM 屬性。
 
 ## <a name="run-a-test-failover"></a>執行測試容錯移轉
 

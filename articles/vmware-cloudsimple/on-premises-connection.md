@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019616"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>使用 ExpressRoute 從內部部署連接到 CloudSimple
@@ -25,7 +24,7 @@ ms.locfileid: "77019616"
 
 若要從內部部署環境建立全球觸達連線，則需要 **/29**網路位址區塊。  /29 位址空間用於 ExpressRoute 線路之間的傳輸網路。  傳輸網路不應該與您的任何 Azure 虛擬網路、內部部署網路或 CloudSimple 私人雲端網路重迭。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 您必須先有 Azure ExpressRoute 電路，才能建立線路與 CloudSimple 私人雲端網路之間的連線。
 * 使用者必須具備在 ExpressRoute 線路上建立授權金鑰的許可權。
@@ -61,7 +60,7 @@ ms.locfileid: "77019616"
     [![ExpressRoute 線路授權複製](media/azure-expressroute-transit-authorization-copy.png)](media/azure-expressroute-transit-authorization-copy.png)
 
     > [!IMPORTANT]
-    > **資源識別碼**必須從 UI 複製，而且當您提供支援時， ```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>```其格式應該是。
+    > **資源識別碼**必須從 UI 複製，而且 ```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>``` 當您提供支援時，其格式應該是。
 
 6. 以<a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">支援</a>建立的連線來提出票證。
     * 問題類型：**技術**

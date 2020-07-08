@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
 ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063776"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>疑難排解錯誤：「無法連線到 Azure Functions 執行階段」
@@ -26,7 +25,7 @@ ms.locfileid: "77063776"
 
 每個函式應用程式都需要有儲存體帳戶才能運作。 如果刪除該帳戶，您的函式將無法運作。
 
-首先，在應用程式設定中查閱您的儲存體帳戶名稱。 `AzureWebJobsStorage`或`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`包含連接字串中所包裝之儲存體帳戶的名稱。 如需詳細資訊，請參閱[Azure Functions 的應用程式設定參考](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)。
+首先，在應用程式設定中查閱您的儲存體帳戶名稱。 `AzureWebJobsStorage`或 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 包含連接字串中所包裝之儲存體帳戶的名稱。 如需詳細資訊，請參閱[Azure Functions 的應用程式設定參考](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)。
 
 在 Azure 入口網站中搜尋您的儲存體帳戶，以查看它是否仍然存在。 如果已刪除，請重新建立儲存體帳戶，並取代您的儲存體連接字串。 您的函式程式碼會遺失，而且您需要重新部署它。
 
@@ -44,7 +43,7 @@ ms.locfileid: "77063776"
 
 如需詳細資訊，請參閱[Azure Functions 的應用程式設定參考](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)。
 
-### <a name="guidance"></a>指導
+### <a name="guidance"></a>指引
 
 * 請不要核取任何這些設定的 [位置設定]。 如果您交換部署位置，函數應用程式會中斷。
 * 請勿在自動部署過程中修改這些設定。
@@ -66,7 +65,7 @@ ms.locfileid: "77063776"
 
 如果您已設定每日執行配額，則會暫時停用您的函式應用程式，這會導致許多入口網站控制項變得無法使用。 
 
-若要確認[Azure 入口網站](https://portal.azure.com)中的配額，請在函式應用程式中選取 [**平臺功能** > **函數應用程式設定**]。 如果您超過所設定的**每日使用量配額**，則會顯示下列訊息：
+若要確認[Azure 入口網站](https://portal.azure.com)中的配額，請在函式應用程式中選取 [**平臺功能**  >  **函數應用程式設定**]。 如果您超過所設定的**每日使用量配額**，則會顯示下列訊息：
 
   > 「函數應用程式已達到每日使用量配額，並已停止直到下24小時的時間範圍為止」。
 

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77050013"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>使用 REST 發佈 Azure 媒體服務內容 
@@ -62,7 +61,7 @@ ms.locfileid: "77050013"
 ### <a name="create-an-access-policy"></a>建立存取原則
 
 >[!NOTE]
->對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限 (例如要長時間維持就地的定位器原則 (非上載原則))，請使用相同的原則識別碼。 如需詳細資訊，請參閱[這](media-services-dotnet-manage-entities.md#limit-access-policies)篇文章。
+>對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限 (例如要長時間維持就地的定位器原則 (非上載原則))，請使用相同的原則識別碼。 如需詳細資訊，請參閱[本篇文章](media-services-dotnet-manage-entities.md#limit-access-policies)。
 
 要求：
 
@@ -193,7 +192,7 @@ URL： **Path** + 資產檔案 MP4 名稱
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 [媒體服務作業 REST API 概觀](media-services-rest-how-to-use.md)
 
 [設定資產傳遞原則](media-services-rest-configure-asset-delivery-policy.md)

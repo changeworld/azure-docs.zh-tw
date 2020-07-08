@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024784"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>建立 CloudSimple 私用雲端
@@ -43,7 +42,7 @@ ms.locfileid: "77024784"
 
 ## <a name="access-the-cloudsimple-portal"></a>存取 CloudSimple 入口網站
 
-存取[CloudSimple 入口網站](access-cloudsimple-portal.md)。
+存取 [CloudSimple 入口網站](access-cloudsimple-portal.md)。
 
 ## <a name="create-a-new-private-cloud"></a>建立新的私人雲端
 
@@ -71,7 +70,7 @@ ms.locfileid: "77024784"
 
 11. 按 **[下一步]： [審查並建立]**。
 12. 檢查設定。 如果您需要變更任何設定，請按一下 [**上一步**]。
-13. 按一下 [建立]  。
+13. 按一下 [建立]。
 
 私用雲端布建程式隨即啟動。 布建私人雲端最多可能需要兩個小時的時間。
 

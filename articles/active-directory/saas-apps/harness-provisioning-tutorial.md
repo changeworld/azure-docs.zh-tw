@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057805"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的控制
@@ -31,7 +30,7 @@ ms.locfileid: "77057805"
 >
 > 此連接器目前為預覽版。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文中所述的案例假設您已經具有下列必要條件：
 
@@ -41,7 +40,7 @@ ms.locfileid: "77057805"
 
 ## <a name="assign-users-to-harness"></a>將使用者指派給控管
 
-Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中，只有已指派給 Azure AD 中應用程式的使用者或群組會進行同步處理。
+Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪些使用者存取選取的應用程式。 在自動使用者布建的內容中，只有已指派給 Azure AD 中應用程式的使用者或群組會進行同步處理。
 
 在您設定並啟用自動使用者布建之前，請決定 Azure AD 中的哪些使用者或群組需要存取控管。 接著，您可以依照[將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)中的指示，指派這些使用者或群組來進行控管。
 
@@ -53,7 +52,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
 ## <a name="set-up-harness-for-provisioning"></a>設定控管以進行布建
 
-1. 登入您的控管[管理主控台](https://app.harness.io/#/login)，然後移至 [**持續安全性** > **存取管理**]。
+1. 登入您的控管[管理主控台](https://app.harness.io/#/login)，然後移至 [**持續安全性**  >  **存取管理**]。
 
     ![控制管理主控台](media/harness-provisioning-tutorial/admin.png)
 
@@ -72,7 +71,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
    a. 在 [**名稱**] 方塊中，提供金鑰的名稱。  
    b. 在 [**繼承自的許可權**] 下拉式清單中，選取一個選項。 
    
-1. 選取 [提交]  。
+1. 選取 [提交]。
 
 1. 複製**金鑰**以供稍後在本教學課程中使用。
 
@@ -86,7 +85,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![[Azure Active Directory] 按鈕](common/select-azuread.png)
 
-1. 選取 [**企業應用程式** > ] [**所有應用程式**]。
+1. 選取 [**企業應用程式**] [  >  **所有應用程式**]。
 
     ![[所有應用程式] 連結](common/enterprise-applications.png)
 
@@ -110,7 +109,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
 若要在 Azure AD 中設定控管的自動使用者布建，請執行下列動作：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 [**企業應用程式** > ] [**所有應用程式**]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 [**企業應用程式**] [  >  **所有應用程式**]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -130,7 +129,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. 在 [**租使用者 URL** ] 方塊**`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** 中，輸入。  
+   a. 在 [**租使用者 URL** ] 方塊中，輸入 **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** 。  
    b. 在 [**秘密權杖**] 方塊中，輸入您在「設定布建控管」一節的步驟6中所儲存的 SCIM Authentication Token 值。  
    c. 選取 [**測試連接**] 以確保 Azure AD 可以連接到控管。 如果連線失敗，請確定您的控管帳戶具有系統*管理員*許可權，然後再試一次。
 
@@ -138,13 +137,13 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![[通知電子郵件] 方塊](common/provisioning-notification-email.png)
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 1. 在 **[** 對應] 底下，選取 [**同步處理 Azure Active Directory 使用者進行**控管]。
 
     ![控管「同步處理 Azure Active Directory 使用者以控管」連結](media/harness-provisioning-tutorial/usermappings.png)
 
-1. 在 [**屬性**對應] 下，檢查從 Azure AD 同步處理到控管的使用者屬性。 選取*為 [* 比對] 的屬性會用來比對控管中的使用者帳戶以進行更新作業。 選取 [儲存]**** 認可任何變更。
+1. 在 [**屬性**對應] 下，檢查從 Azure AD 同步處理到控管的使用者屬性。 選取*為 [* 比對] 的屬性會用來比對控管中的使用者帳戶以進行更新作業。 選取 [儲存] 認可任何變更。
 
     ![控制使用者的 [屬性對應] 窗格](media/harness-provisioning-tutorial/userattributes.png)
 
@@ -152,7 +151,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![控管「同步處理 Azure Active Directory 群組以進行控管」連結](media/harness-provisioning-tutorial/groupmappings.png)
 
-1. 在 [**屬性**對應] 底下，檢查從 Azure AD 同步處理到控管的群組屬性。 選取為 [比對] 屬性*的屬性會*用來比對控管中的群組以進行更新作業。 選取 [儲存]**** 認可任何變更。
+1. 在 [**屬性**對應] 底下，檢查從 Azure AD 同步處理到控管的群組屬性。 選取為 [比對] 屬性*的屬性會*用來比對控管中的群組以進行更新作業。 選取 [儲存] 認可任何變更。
 
     ![控制群組「屬性對應」窗格](media/harness-provisioning-tutorial/groupattributes.png)
 
@@ -166,7 +165,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-1. 當您準備好要布建時，請選取 [**儲存**]。
+1. 準備好要佈建時，請選取 [儲存]。
 
     ![[布建] [儲存] 按鈕](common/provisioning-configuration-save.png)
 

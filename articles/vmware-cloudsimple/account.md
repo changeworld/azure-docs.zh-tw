@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025362"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>透過 CloudSimple 入口網站管理 Azure VMware 解決方案上的帳戶
@@ -35,6 +34,6 @@ ms.locfileid: "77025362"
 
 ## <a name="cloudsimple-operator-access"></a>CloudSimple 操作員存取
 
-操作員存取設定允許支援工程師登入您的 CloudSimple 入口網站，讓 CloudSimple 協助您進行疑難排解。  預設會啟用此設定。 支援工程師在登入您的客戶帳戶時所執行的所有動作都會記錄下來，並可供您在 [**活動** > **審核**] 頁面上進行審核。
+操作員存取設定允許支援工程師登入您的 CloudSimple 入口網站，讓 CloudSimple 協助您進行疑難排解。  預設會啟用此設定。 支援工程師在登入您的客戶帳戶時所執行的所有動作都會記錄下來，並可供您在 [**活動**  >  **審核**] 頁面上進行審核。
 
 按一下 [ **CloudSimple 操作員存取已啟用**] 切換以開啟或關閉存取。

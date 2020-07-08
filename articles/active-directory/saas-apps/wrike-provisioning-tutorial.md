@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 5dd4f5ac6152c22b5e2a84ecc0774672bcd5590b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064184"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>教學課程：設定 Wrike 來自動布建使用者
@@ -31,7 +30,7 @@ ms.locfileid: "77064184"
 >
 > 此連接器目前為公開預覽版。 如需預覽功能之一般 Microsoft Azure 使用規定的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -40,7 +39,7 @@ ms.locfileid: "77064184"
 * Wrike 中具有系統管理員許可權的使用者帳戶
 
 ## <a name="assign-users-to-wrike"></a>將使用者指派給 Wrike
-Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中，只有指派給 Azure AD 中應用程式的使用者或群組會進行同步處理。
+Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪些使用者存取選取的應用程式。 在自動佈建使用者的情況下，只會同步處理 Azure AD 中已指派給應用程式的使用者或群組。
 
 在您設定並啟用自動使用者布建之前，請先決定 Azure AD 中的哪些使用者或群組需要存取 Wrike。 然後遵循此處的指示，將這些使用者或群組指派給 Wrike：
 
@@ -68,7 +67,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![基底 URL](media/Wrike-provisioning-tutorial/Wrike-tenanturl.png)
 
-4. 選取 [ **API** > ] [**Azure SCIM**]。
+4. 選取 [ **API**] [  >  **Azure SCIM**]。
 
     ![Azure SCIM](media/Wrike-provisioning-tutorial/Wrike-add-scim.png)
 
@@ -91,7 +90,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 移至 [**企業應用程式**]，然後選取 [**所有應用程式**]。
+2. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -113,7 +112,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>在 Azure AD 中設定自動使用者布建以進行 Wrike
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式** > ] [**所有應用程式**]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**] [  >  **所有應用程式**]。
 
     ![所有應用程式](common/enterprise-applications.png)
 
@@ -121,11 +120,11 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![應用程式清單中的 Wrike 連結](common/all-applications.png)
 
-3. 選取 [**布**建] 索引標籤。
+3. 選取 [佈建] 索引標籤。
 
-    ![布建索引標籤](common/provisioning.png)
+    ![佈建索引標籤](common/provisioning.png)
 
-4. 將布建模式設定為 [**自動** **]** 。
+4. 將 [佈建模式] 設定為 [自動]。
 
     ![[布建模式] 設定為 [自動]](common/provisioning-automatic.png)
 
@@ -133,17 +132,17 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![租使用者 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
-7. 在 [**通知電子郵件**] 方塊中，輸入應收到布建錯誤通知之個人或群組的電子郵件地址。 選取 [**發生失敗時傳送電子郵件通知**] 核取方塊。
+7. 在 [**通知電子郵件**] 方塊中，輸入應收到布建錯誤通知之個人或群組的電子郵件地址。 選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-8. 選取 [儲存]  。
+8. 選取 [儲存]。
 
 9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Wrike**]。
 
     ![Wrike 使用者對應](media/Wrike-provisioning-tutorial/Wrike-user-mappings.png)
 
-10. 在 [**屬性**對應] 區段中，檢查從 Azure AD 同步處理到 Wrike 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Wrike 中的使用者帳戶，以進行更新作業。 選取 [儲存]**** 認可任何變更。
+10. 在 [**屬性**對應] 區段中，檢查從 Azure AD 同步處理到 Wrike 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Wrike 中的使用者帳戶，以進行更新作業。 選取 [儲存] 認可任何變更。
 
     ![Wrike 使用者屬性](media/Wrike-provisioning-tutorial/Wrike-user-attributes.png)
 
@@ -157,13 +156,13 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-14. 當您準備好要布建時，請選取 [**儲存**]。
+14. 準備好要佈建時，請選取 [儲存]。
 
     ![正在儲存布建設定](common/provisioning-configuration-save.png)
 
-這項作業會啟動 [**設定**] 區段的 [**範圍**] 中定義的所有使用者或群組的首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行。 如需使用者或群組布建多久時間的詳細資訊，請參閱布建[使用者需要](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)多久時間？。
+針對 [設定] 區段的 [範圍] 中定義的所有使用者或群組，此作業會啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行。 如需使用者或群組布建多久時間的詳細資訊，請參閱布建[使用者需要](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)多久時間？。
 
-您可以使用 [**目前狀態**] 區段來監視進度，並遵循 [布建活動報告] 的連結，其中描述 Wrike 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告。
+您可以使用 [**目前狀態**] 區段來監視進度，並遵循 [布建活動報告] 的連結，其中描述 Wrike 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者佈建的狀態](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告。
 
 ## <a name="additional-resources"></a>其他資源
 

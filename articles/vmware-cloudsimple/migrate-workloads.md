@@ -9,17 +9,16 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 87b8a112a319519dbde977ee30136a884137212d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019990"
 ---
 # <a name="migrate-workload-vms-from-on-premises-vcenter-to-private-cloud-vcenter-environment"></a>將工作負載 Vm 從內部部署 vCenter 遷移至私用雲端 vCenter 環境
 
 若要將 Vm 從內部部署資料中心遷移至您的 CloudSimple 私人雲端，有數個選項可供使用。  私用雲端提供 VMware vCenter 的原生存取，而 VMware 支援的工具則可用於工作負載遷移。 本文說明一些 vCenter 遷移選項。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 從您的內部部署資料中心遷移 Vm 和資料需要從資料中心到私人雲端環境的網路連線。  使用下列其中一種方法來建立網路連線能力：
 

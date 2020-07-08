@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 505cd7a3350c937885f0f03268ef326a4f784258
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77062722"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler Beta 來自動布建使用者
@@ -31,7 +30,7 @@ ms.locfileid: "77062722"
 >
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -48,15 +47,15 @@ ms.locfileid: "77062722"
 
 **若要從 Azure AD 應用程式庫新增 Zscaler Beta，請執行下列步驟：**
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory] 圖示。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 瀏覽至 [企業應用程式]  ，然後選取 [所有應用程式]  選項。
+2. 瀏覽至 [企業應用程式]，然後選取 [所有應用程式] 選項。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
+3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
@@ -95,11 +94,11 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![應用程式清單中的 Zscaler Beta 連結](common/all-applications.png)
 
-3. 選取 [**布**建] 索引標籤。
+3. 選取 [佈建] 索引標籤。
 
     ![Zscaler Beta 提供](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
 
-4. 將布建模式設定為 [**自動** **]** 。
+4. 將 [佈建模式] 設定為 [自動]。
 
     ![Zscaler Beta 提供](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
 
@@ -123,13 +122,13 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![Zscaler Beta 提供](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
-9. 按一下 **[儲存]** 。
+9. 按一下 [檔案] 。
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Zscaler Beta**]。
 
     ![Zscaler Beta 提供](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
 
-11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Zscaler Beta 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Zscaler Beta 中的使用者帳戶，以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
+11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Zscaler Beta 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Zscaler Beta 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
     ![Zscaler Beta 提供](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
 
@@ -137,7 +136,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![Zscaler Beta 提供](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
 
-13. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Zscaler Beta 的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Zscaler Beta 中的群組以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
+13. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Zscaler Beta 的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Zscaler Beta 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
     ![Zscaler Beta 提供](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
 
@@ -151,7 +150,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![Zscaler Beta 提供](./media/zscaler-beta-provisioning-tutorial/scoping.png)
 
-17. 當您準備好要佈建時，按一下 [儲存]****。
+17. 當您準備好要佈建時，按一下 [儲存]。
 
     ![Zscaler Beta 提供](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
 
@@ -161,7 +160,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟

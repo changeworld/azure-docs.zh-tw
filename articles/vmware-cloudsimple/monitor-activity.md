@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019667"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>依 CloudSimple 活動監視 VMware 解決方案
@@ -26,7 +25,7 @@ CloudSimple 活動記錄可讓您深入瞭解在 CloudSimple 入口網站上完�
 
 ## <a name="access-the-cloudsimple-portal"></a>存取 CloudSimple 入口網站
 
-存取[CloudSimple 入口網站](access-cloudsimple-portal.md)。
+存取 [CloudSimple 入口網站](access-cloudsimple-portal.md)。
 
 ## <a name="activity-information"></a>活動資訊
 
@@ -54,7 +53,7 @@ CloudSimple 活動記錄可讓您深入瞭解在 CloudSimple 入口網站上完�
 | 資源名稱 | 指派給資源的名稱，例如私人雲端名稱。 |
 | 資源類型 | 資源類別：私人雲端、雲端機架。 |
 | 資源識別碼 | 資源的識別碼。 |
-| 描述 | 觸發警示的描述。 |
+| Description | 觸發警示的描述。 |
 | 已認可 | 指出是否已確認警示。 |
 
 ## <a name="events"></a>事件
@@ -65,12 +64,12 @@ CloudSimple 活動記錄可讓您深入瞭解在 CloudSimple 入口網站上完�
 
 | 資料行 | 描述 |
 ------------ | ------------- |
-| 時間 | 事件發生的日期和時間。 |
+| Time | 事件發生的日期和時間。 |
 | 事件類型 | 識別事件的數位代碼。 |
 | Severity | 事件嚴重性。|
 | 資源名稱 | 指派給資源的名稱，例如私人雲端名稱。 |
 | 資源類型 | 資源類別：私人雲端、雲端機架。 |
-| 描述 | 觸發警示的描述。 |
+| Description | 觸發警示的描述。 |
 
 ## <a name="tasks"></a>工作
 
@@ -81,16 +80,16 @@ CloudSimple 活動記錄可讓您深入瞭解在 CloudSimple 入口網站上完�
 | 資料行 | 描述 |
 ------------ | ------------- |
 | 工作識別碼 | 工作的唯一識別碼。 |
-| 作業 | 工作執行的動作。 |
-| User | 已指派使用者來完成工作。 |
+| 操作 | 工作執行的動作。 |
+| 使用者 | 已指派使用者來完成工作。 |
 | 資源名稱 | 指派給資源的名稱。 |
 | 資源類型 | 資源類別：私人雲端、雲端機架。 |
 | 資源識別碼 | 資源的識別碼。 |
-| 啟動 | 工作的開始時間。 |
+| 開始 | 工作的開始時間。 |
 | 結束 | 工作的結束時間。 |
 | 狀態 | 目前的工作狀態。 |
 | 經過時間 | 完成工作所需的時間（如果已完成）或目前正在進行中（如果進行中）。 |
-| 描述 | 工作描述。 |
+| Description | 工作描述。 |
 
 ## <a name="audit"></a>稽核
 
@@ -100,17 +99,17 @@ Audit 記錄會追蹤使用者活動。 您可以使用「審核記錄」來監�
 
 | 資料行 | 描述 |
 ------------ | ------------- |
-| 時間 | Audit 專案的時間。 |
-| 作業 | 工作執行的動作。 |
-| User | 指派給工作的使用者。 |
+| Time | Audit 專案的時間。 |
+| 操作 | 工作執行的動作。 |
+| 使用者 | 指派給工作的使用者。 |
 | 資源名稱 | 指派給資源的名稱。 |
 | 資源類型 | 資源類別：私人雲端、雲端機架。 |
 | 資源識別碼 | 資源的識別碼。 |
 | 結果 | 活動的結果，例如 [**成功**]。 |
 | 花費時間 | 完成工作的時間。 |
-| 描述 | 動作的描述。 |
+| Description | 動作的描述。 |
 
 ## <a name="next-steps"></a>後續步驟
 
 * [在 Azure 上取用 VMware VM](quickstart-create-vmware-virtual-machine.md)
-* 深入瞭解[私人](cloudsimple-private-cloud.md)雲端
+* 深入了解[私人雲端](cloudsimple-private-cloud.md)

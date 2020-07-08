@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 469e926932ffa11ef9f2a262b78a587ba435549e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77023985"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>設定 HPC 的訊息傳遞介面
@@ -120,7 +119,7 @@ sudo ./platform_mpi-09.01.04.03r-ce.bin
 
 [下載 INTEL MPI](https://software.intel.com/mpi-library/choose-download)。
 
-視版本而定，變更 I_MPI_FABRICS 環境變數。 若是 Intel MPI 2018，請`I_MPI_FABRICS=shm:ofa`使用2019的，使用`I_MPI_FABRICS=shm:ofi`。
+視版本而定，變更 I_MPI_FABRICS 環境變數。 若是 Intel MPI 2018，請使用 `I_MPI_FABRICS=shm:ofa` 2019 的，使用 `I_MPI_FABRICS=shm:ofi` 。
 
 根據預設，進程固定可正常運作15、30和 60 PPN。
 
@@ -141,7 +140,7 @@ CC=<mpi-install-path/bin/mpicc>CXX=<mpi-install-path/bin/mpicxx> ./configure
 make
 ```
 
-MPI 基準測試位於`mpi/`資料夾底下。
+MPI 基準測試位於 `mpi/` 資料夾底下。
 
 
 ## <a name="discover-partition-keys"></a>探索分割區索引鍵

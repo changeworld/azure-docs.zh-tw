@@ -17,10 +17,9 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b7a6c2c9b7ecb0b160f7481d95f7682f3f7a109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064116"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>教學課程：設定 Velpic 來自動布建使用者
@@ -30,7 +29,7 @@ ms.locfileid: "77064116"
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -67,11 +66,11 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 3. 選取您的 Velpic 實例，然後**選取 [布**建] 索引標籤。
 
-4. 將布建模式設定為 [**自動** **]** 。
+4. 將 [佈建模式] 設定為 [自動]。
 
     ![Velpic 布建](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. 在 [**管理員認證**] 區段下，輸入**租使用者 URL&秘密權杖**Velpic。（您可以在 Velpic 帳戶底下找到這些值：**管理** > **整合** > **外掛程式** > **SCIM**）
+5. 在 [**管理員認證**] 區段下，輸入**租使用者 URL&秘密權杖**Velpic。（您可以在 Velpic 帳戶底下找到這些值： [**管理**  >  ]**整合**  > **外掛程式**  > **SCIM**）
 
     ![授權值](./media/velpic-provisioning-tutorial/Velpic2.png)
 
@@ -79,7 +78,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 7. 在 [通知電子郵件]**** 欄位中輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選下列核取方塊。
 
-8. 按一下 **[儲存]** 。
+8. 按一下 [檔案] 。
 
 9. 在 [對應] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Velpic**]。
 
@@ -87,7 +86,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 11. 若要啟用 Velpic 的 Azure AD 布建服務，請在 [**設定**] 區段中將 [布建**狀態**] 變更為 [**開啟**]
 
-12. 按一下 **[儲存]** 。
+12. 按一下 [檔案] 。
 
 這會啟動在 [使用者和群組] 區段中指派給 Velpic 之任何使用者和/或群組的首次同步處理。 請注意，初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並遵循連結來佈建活動報告，報告中會描述佈建服務執行的所有動作。
 
@@ -95,7 +94,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟

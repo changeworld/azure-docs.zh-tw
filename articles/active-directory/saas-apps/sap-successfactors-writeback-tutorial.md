@@ -15,10 +15,9 @@ ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
 ms.openlocfilehash: 2de0cdd32428884170f549afacdbd52c3a10c93f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77060043"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>教學課程：將屬性回寫從 Azure AD 設定為 SAP SuccessFactors （預覽）
@@ -63,7 +62,7 @@ ms.locfileid: "77060043"
 * 在相同的方塊中向下滾動，然後選取 [**員工中心 API**]。 如下所示新增許可權，以閱讀使用 ODATA API 和使用 ODATA API 進行編輯。 如果您打算將相同的帳戶用於回寫至 SuccessFactors 案例，請選取 [編輯] 選項。 
   > [!div class="mx-imgBorder"]
   > ![讀取寫入權限](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* 按一下 [完成]****。 按一下 **[儲存變更]** 。
+* 按一下 [完成]。 按一下 **[儲存變更]** 。
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>為 API 使用者建立許可權群組
 
@@ -110,29 +109,29 @@ ms.locfileid: "77060043"
 
 2. 在左側導覽列中，選取 [Azure Active Directory]****
 
-3. 依序選取 [企業應用程式]**** 和 [所有應用程式]****。
+3. 依序選取 [企業應用程式] 和 [所有應用程式]。
 
-4. 選取 [新增應用程式]****，然後選取 [全部]**** 類別。
+4. 選取 [新增應用程式]，然後選取 [全部] 類別。
 
 5. 搜尋**SuccessFactors 回寫**，並從資源庫新增該應用程式。
 
-6. 新增應用程式並顯示應用程式詳細資料畫面之後，請選取 [佈建]****
+6. 新增應用程式並顯示 [應用程式詳細資料] 畫面之後，**請選取 [** 布建]
 
-7. 將 [佈建模式]**** **** 變更為 [自動]****
+7. **將布**建**模式**變更為**自動**
 
-8. 完成 [系統管理員認證]**** 區段，如下所示：
+8. 完成 [系統管理員認證] 區段，如下所示：
 
-   * **管理員使用者名稱**–輸入 SuccessFactors API 使用者帳戶的使用者名稱，並附上公司識別碼。 其格式為： **username\@companyID**
+   * **管理員使用者名稱**–輸入 SuccessFactors API 使用者帳戶的使用者名稱，並附上公司識別碼。 其格式為： **username \@ companyID**
 
    * **管理員密碼–** 輸入 SuccessFactors API 使用者帳戶的密碼。 
 
    * **租使用者 URL –** 輸入 SuccessFactors OData API 服務端點的名稱。 僅輸入不含 HTTP 或 HTTPs 的伺服器主機名稱。 此值應如下所示： **api-server-name.successfactors.com**。
 
-   * **通知電子郵件** – 輸入您的電子郵件地址，然後勾選 [發生失敗時傳送電子郵件] 核取方塊。
+   * **通知電子郵件–** 輸入您的電子郵件地址，然後勾選 [發生失敗時傳送電子郵件] 核取方塊。
     > [!NOTE]
     > 如果佈建作業進入[隔離](/azure/active-directory/manage-apps/application-provisioning-quarantine-status)狀態，Azure AD 佈建服務會傳送電子郵件通知。
 
-   * 按一下 [測試連線]**** 按鈕。 如果連線測試成功，請按一下頂端的 [儲存]**** 按鈕。 如果失敗，請再次檢查 SuccessFactors 認證和 URL 是否有效。
+   * 按一下 [測試連線] 按鈕。 如果連線測試成功，請按一下頂端的 [儲存] 按鈕。 如果失敗，請再次檢查 SuccessFactors 認證和 URL 是否有效。
     >[!div class="mx-imgBorder"]
     >![Azure 入口網站](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
 
@@ -157,7 +156,7 @@ ms.locfileid: "77060043"
    >[!NOTE]
    >SuccessFactors 回寫只支援電子郵件屬性。 請不要使用 [**加入新的對應**] 來加入新的屬性。 
 
-1. 若要儲存對應，請按一下 [屬性對應] 區段頂端的 [**儲存**]。
+1. 若要儲存您的對應，請按一下 [屬性對應] 區段頂端的 [儲存]。
 
 完成屬性對應設定之後，您現在便可以[啟用及啟動使用者佈建服務](#enable-and-launch-user-provisioning)。
 
@@ -166,17 +165,17 @@ ms.locfileid: "77060043"
 SuccessFactors 布建應用程式設定完成之後，您就可以在 Azure 入口網站中開啟布建服務。
 
 > [!TIP]
-> 根據預設，當您開啟佈建服務時，它會為範圍中的所有使用者起始佈建作業。 如果有對應錯誤或 Workday 資料問題，則佈建作業可能失敗並進入隔離狀態。 為了避免這種情況，我們建議您最好是先設定 [來源物件範圍]**** 篩選，並使用幾個測試使用者來測試您的屬性對應，然後才為所有使用者啟動完整同步處理。 確認對應能夠運作且提供您所需的結果之後，您便可以移除篩選，或逐漸擴大篩選來包含更多使用者。
+> 根據預設，當您開啟佈建服務時，它會為範圍中的所有使用者起始佈建作業。 如果有對應錯誤或 Workday 資料問題，則佈建作業可能失敗並進入隔離狀態。 為了避免這種情況，我們建議您最好是先設定 [來源物件範圍] 篩選，並使用幾個測試使用者來測試您的屬性對應，然後才為所有使用者啟動完整同步處理。 確認對應能夠運作且提供您所需的結果之後，您便可以移除篩選，或逐漸擴大篩選來包含更多使用者。
 
-1. 在 [佈建]**** 索引標籤中，將 [佈建狀態]**** 設定為 [開啟]****。
+1. 在 [佈建] 索引標籤中，將 [佈建狀態] 設定為 [開啟]。
 
-2. 按一下 **[儲存]** 。
+2. 按一下 [檔案] 。
 
 3. 這項作業會啟動初始同步處理，這可能會花費數小時的時間，視 SuccessFactors 租使用者中的使用者人數而定。 您可以檢查進度列以追蹤同步處理週期的進度。 
 
-4. 您可隨時檢查 Azure 入口網站中的 [稽核記錄]**** 索引標籤，查看佈建服務執行了哪些動作。 稽核記錄會列出佈建服務執行的所有個別同步處理事件，例如從 Workday 外部讀取了哪些使用者，接著又新增到或更新到 Active Directory 中。 
+4. 您可隨時檢查 Azure 入口網站中的 [稽核記錄] 索引標籤，查看佈建服務執行了哪些動作。 稽核記錄會列出佈建服務執行的所有個別同步處理事件，例如從 Workday 外部讀取了哪些使用者，接著又新增到或更新到 Active Directory 中。 
 
-5. 在初始同步完成之後，它會在 [佈建]**** 索引標籤中寫入稽核摘要報告，如下所示。
+5. 在初始同步完成之後，它會在 [佈建] 索引標籤中寫入稽核摘要報告，如下所示。
 
    > [!div class="mx-imgBorder"]
    > ![布建進度列](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)

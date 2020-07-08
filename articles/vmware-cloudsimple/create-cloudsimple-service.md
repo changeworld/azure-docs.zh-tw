@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 8648f2c9cc0175050d4b7642f5235d47159ecfaf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024818"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>依 CloudSimple 服務建立 Azure VMware 解決方案
@@ -41,7 +40,7 @@ ms.locfileid: "77024818"
 8. 輸入服務閘道的 CIDR。 指定/28 子網，而不會與任何內部部署子網、Azure 子網或規劃的 CloudSimple 子網重迭。 建立服務之後，您就無法變更 CIDR。
 
     ![建立 CloudSimple 服務](media/create-cloudsimple-service.png)
-9. 按一下 [確定]  。
+9. 按一下 [確定]。
 
 隨即建立服務，並將其新增至服務清單。
 

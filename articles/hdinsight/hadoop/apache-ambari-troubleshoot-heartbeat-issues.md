@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057068"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Ambari 活動訊號問題
@@ -81,7 +80,7 @@ Ambari 代理程式尚未啟動，這會導致 Ambari UI 的警示，而這些�
     ps -ef | grep failover
     ```
 
-    如果容錯移轉控制器服務未執行，可能是因為發生問題而導致 hdinsight 代理程式無法啟動容錯移轉控制器。 檢查 hdinsight-代理程式記錄`/var/log/hdinsight-agent/hdinsight-agent.out`檔。
+    如果容錯移轉控制器服務未執行，可能是因為發生問題而導致 hdinsight 代理程式無法啟動容錯移轉控制器。 檢查 hdinsight-代理程式記錄檔 `/var/log/hdinsight-agent/hdinsight-agent.out` 。
 
 ## <a name="scenario-heartbeat-lost-for-ambari"></a>案例： Ambari 遺失的心跳
 
@@ -96,7 +95,7 @@ OMS 記錄會導致高 CPU 使用率。
 ### <a name="resolution"></a>解決方案
 
 * 使用[AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) PowerShell Cmdlet 停用 Azure 監視器記錄。
-* 刪除`mdsd.warn`記錄檔
+* 刪除 `mdsd.warn` 記錄檔
 
 ---
 
@@ -104,8 +103,8 @@ OMS 記錄會導致高 CPU 使用率。
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-* 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
-* 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，藉由將 Azure 社區連接至適當的資源來改善客戶體驗：解答、支援及專家。
+* 與 [@AzureSupport](https://twitter.com/azuresupport) 聯繫 - 專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，例如解答、支援及專家等。
 
-* 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 在功能表列選取 [支援] 或開啟 [說明 + 支援] 中心。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) (機器翻譯)。 您可透過 Microsoft Azure 訂用帳戶來存取訂用帳戶管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

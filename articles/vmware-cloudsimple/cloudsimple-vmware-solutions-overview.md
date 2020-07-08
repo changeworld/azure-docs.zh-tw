@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024869"
 ---
 # <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>什麼是 Azure VMware Solution by CloudSimple
@@ -21,7 +20,7 @@ ms.locfileid: "77024869"
 
 ![Azure 上的 VMware 解決方案（依 CloudSimple）總覽](media/azure-vmware-solution-by-cloudsimple.png)
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 * VMware 雲端環境的隨選自助服務布建。 能夠視需要新增和移除容量。
 * VMware 平臺部署、升級、管理平面備份、健全狀況/容量監視、警示、疑難排解和修復。
@@ -38,13 +37,13 @@ ms.locfileid: "77024869"
 
 * **營運持續性**。 CloudSimple 提供 VMware 平臺的原生存取。 CloudSimple 架構與您現有的相容：
     * 應用程式
-    * 作業
+    * Operations
     * 安全性
-    * Backup
+    * 備份
     * 災害復原
     * 稽核
     * 合規性工具
-    * 處理序
+    * 處理程序
 * **無**重新定型。 VMware 平臺相容性可讓您使用現有的技能和知識。
 * **基礎結構的靈活性**。 您不再需要預測您的所有容量需求，最後會產生浪費的容量或基礎結構短缺。 CloudSimple 是以雲端服務的形式提供，您可以隨時新增或減少容量
 * **安全性**。 透過 Azure 存取 CloudSimple 環境，可提供內建的 DDoS 保護和安全性監視功能。

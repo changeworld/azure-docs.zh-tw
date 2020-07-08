@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: 95cb0371c4b2181d8f09991fe6e652c0e939f3e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063351"
 ---
 # <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>教學課程：設定 Proxyclick 來自動布建使用者
@@ -31,7 +30,7 @@ ms.locfileid: "77063351"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -49,7 +48,7 @@ ms.locfileid: "77063351"
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 移至 [**企業應用程式**]，然後選取 [**所有應用程式**]。
+2. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -63,7 +62,7 @@ ms.locfileid: "77063351"
 
 ## <a name="assigning-users-to-proxyclick"></a>將使用者指派給 Proxyclick
 
-Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中，只有已指派給 Azure AD 中應用程式的使用者和/或群組會進行同步處理。
+Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪些使用者存取選取的應用程式。 在自動使用者布建的內容中，只有已指派給 Azure AD 中應用程式的使用者和/或群組會進行同步處理。
 
 在設定並啟用自動使用者布建之前，您應該決定 Azure AD 中的哪些使用者和/或群組需要存取 Proxyclick。 一旦決定後，您可以遵循此處的指示，將這些使用者和/或群組指派給 Proxyclick：
 
@@ -84,7 +83,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
 ### <a name="to-configure-automatic-user-provisioning-for-proxyclick-in-azure-ad"></a>若要在 Azure AD 中設定 Proxyclick 的自動使用者布建：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**]，然後選取 [**所有應用程式**]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [企業應用程式]，然後選取 [所有應用程式]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -92,17 +91,17 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![應用程式清單中的 [Proxyclick] 連結](common/all-applications.png)
 
-3. 選取 [**布**建] 索引標籤。
+3. 選取 [佈建] 索引標籤。
 
-    ![布建索引標籤](common/provisioning.png)
+    ![佈建索引標籤](common/provisioning.png)
 
-4. 將布建模式設定為 [**自動** **]** 。
+4. 將 [佈建模式] 設定為 [自動]。
 
-    ![布建索引標籤](common/provisioning-automatic.png)
+    ![[佈建] 索引標籤](common/provisioning-automatic.png)
 
 5. 若要取出 Proxyclick 帳戶的**租使用者 URL**和**秘密權杖**，請遵循步驟6中所述的逐步解說。
 
-6. 登入您的[Proxyclick 管理主控台](https://app.proxyclick.com/login//?destination=%2Fdefault)。 **流覽至** > [**設定** > **] [整合] [流覽 Marketplace]**。
+6. 登入您的[Proxyclick 管理主控台](https://app.proxyclick.com/login//?destination=%2Fdefault)。 流覽至**Settings**  >  **Integrations**  >  **[設定] [整合] [流覽 Marketplace]**。
 
     ![Proxyclick 設定](media/proxyclick-provisioning-tutorial/proxyclick09.png)
 
@@ -120,7 +119,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![Proxyclick 使用者布建](media/proxyclick-provisioning-tutorial/proxyclick05.png)
 
-    適當的**設定設定 UI**現在應該會顯示在 [**設定** > ] [整合] 底下。 選取 **[Azure AD （使用者**布建）] 底下的 [**設定**]。
+    適當的設定設定 UI 現在應該會顯示在 [**設定**] [整合] 底下  >  ** **。 選取 **[Azure AD （使用者**布建）] 底下的 [**設定**]。
 
     ![Proxyclick 建立](media/proxyclick-provisioning-tutorial/proxyclick06.png)
 
@@ -130,19 +129,19 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
 7. 填入步驟5所示的欄位之後，按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Proxyclick。 如果連線失敗，請確定您的 Proxyclick 帳戶具有系統管理員許可權，然後再試一次。
 
-    ![權杖](common/provisioning-testconnection-tenanturltoken.png)
+    ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
 8. 在 [通知電子郵件]**** 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]**** 核取方塊。
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-9. 按一下 **[儲存]** 。
+9. 按一下 [檔案] 。
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Proxyclick**]。
 
     ![Proxyclick 使用者對應](media/proxyclick-provisioning-tutorial/Proxyclick-user-mappings.png)
 
-11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到 Proxyclick 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Proxyclick 中的使用者帳戶，以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
+11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到 Proxyclick 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Proxyclick 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
     ![Proxyclick 使用者屬性](media/proxyclick-provisioning-tutorial/Proxyclick-user-attribute.png)
 
@@ -156,7 +155,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-16. 當您準備好要佈建時，按一下 [儲存]****。
+16. 當您準備好要佈建時，按一下 [儲存]。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
@@ -171,7 +170,7 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟

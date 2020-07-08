@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024291"
 ---
 # <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>配置私人雲端環境的公用 IP 位址
@@ -30,7 +29,7 @@ ms.locfileid: "77024291"
 6. 如有需要，請使用滑杆來變更閒置的時間。
 7. 輸入您要為其指派公用 IP 位址的本機 IP 位址。
 8. 輸入相關聯的 DNS 名稱。
-9. 按一下 [提交]  。
+9. 按一下 [提交] 。
 
 ![配置公用 Ip](media/network-public-ip-allocate.png)
 

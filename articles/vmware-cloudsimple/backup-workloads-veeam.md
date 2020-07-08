@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025124"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>使用 Veeam B&R 來備份 CloudSimple 私人雲端上的工作負載 Vm
@@ -136,7 +135,7 @@ Veeam 解決方案會要求您執行下列動作：
 
 下表提供埠清單。
 
-| 圖示 | 描述 | 圖示 | 描述 |
+| 圖示 | 描述 | 圖示 | Description |
 | ------------ | ------------- | ------------ | ------------- |
 | 備份伺服器  | vCenter  | HTTPS/TCP  | 443 |
 | 備份伺服器 <br> *部署 Veeam 備份 & 複寫元件所需* | 備份 Proxy  | TCP/UDP  | 135、137到139和445 |
@@ -196,7 +195,7 @@ Veeam 解決方案會要求您執行下列動作：
 
 1. 建立標準類型和 blob 容器的一般用途儲存體帳戶（GPv2），如 Microsoft video[消費者入門 with Azure 儲存體](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)所述。
 2. 如[建立容器](https://docs.microsoft.com/rest/api/storageservices/create-container)參考中所述，建立 Azure 儲存體容器。
-2. 從 Microsoft `azcopy`下載適用于 Linux 的命令列公用程式。 您可以在 CentOS 7.5 中的 bash shell 中使用下列命令。
+2. `azcopy`從 Microsoft 下載適用于 Linux 的命令列公用程式。 您可以在 CentOS 7.5 中的 bash shell 中使用下列命令。
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -206,7 +205,7 @@ Veeam 解決方案會要求您執行下列動作：
     sudo yum -y install icu
     ```
 
-3. 您可以`azcopy`使用命令，將備份檔案複製到 blob 容器，或從該檔案複製。  如需詳細的命令，請參閱[使用 AzCopy On Linux 傳送資料](../storage/common/storage-use-azcopy-linux.md)。
+3. 您可以使用命令，將 `azcopy` 備份檔案複製到 blob 容器，或從該檔案複製。  如需詳細的命令，請參閱[使用 AzCopy On Linux 傳送資料](../storage/common/storage-use-azcopy-linux.md)。
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>私人雲端的 vCenter 主控台：安裝 Veeam B&R
 
@@ -260,7 +259,7 @@ Veeam 解決方案會要求您執行下列動作：
 
 若要取消提升許可權，請參閱[取消提升許可權](escalate-private-cloud-privileges.md#de-escalate-privileges)。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 
 ### <a name="cloudsimple-references"></a>CloudSimple 參考
 
@@ -276,7 +275,7 @@ Veeam 解決方案會要求您執行下列動作：
 ### <a name="veeam-references"></a>Veeam 參考
 
 * [使用的埠](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95)
-* [必要許可權](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)
+* [必要權限](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)
 * [系統需求](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)
 * [安裝 Veeam 備份 & 複寫](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)
 * [適用于 Linux 的多 OS FLR 和存放庫支援所需的模組和許可權](https://www.veeam.com/kb2216)
@@ -291,7 +290,7 @@ Veeam 解決方案會要求您執行下列動作：
 * [在 Azure 入口網站中建立 Linux 虛擬機器](../virtual-machines/linux/quick-create-portal.md)
 * [如何將受控資料磁碟連結至 Azure 入口網站中的 Windows VM](../virtual-machines/windows/attach-managed-disk-portal.md)
 * [使用 Azure 儲存體的消費者入門-影片](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
-* [Create Container (建立容器)](https://docs.microsoft.com/rest/api/storageservices/create-container)
+* [建立容器](https://docs.microsoft.com/rest/api/storageservices/create-container)
 * [使用 AzCopy on Linux 傳送資料](../storage/common/storage-use-azcopy-linux.md)
 
 ### <a name="vmware-references"></a>VMware 參考

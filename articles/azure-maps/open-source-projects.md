@@ -10,10 +10,9 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77048903"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure 地圖服務的社區開放原始碼專案
@@ -22,7 +21,7 @@ ms.locfileid: "77048903"
 
 以下列出一些最受歡迎的 Azure 地圖服務開放原始碼專案和範例。
 
-| 專案名稱 | 描述 |
+| 專案名稱 | Description |
 |-|-|
 | [Azure 地圖服務程式碼範例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 使用 web 型應用程式中 Azure 地圖服務的程式碼範例集合。 |
 | [Azure 地圖服務 Gov Cloud 程式碼範例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 透過 Azure Government Cloud 使用 Azure 地圖服務的程式碼範例集合。 |

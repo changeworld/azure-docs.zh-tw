@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019752"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>使用 Azure 資料箱將資料移轉至 Azure VMware 解決方案
@@ -54,7 +53,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
     ![設定 NFS 用戶端存取 1](media/nfs-client-access.png)
 
-2. 輸入 VMware ESXi 主機的 IP 位址，然後選取 [**新增**]。 您可以重複此步驟，以設定 vSphere 叢集中所有主機的存取權。 選取 [確定]  。
+2. 輸入 VMware ESXi 主機的 IP 位址，然後選取 [**新增**]。 您可以重複此步驟，以設定 vSphere 叢集中所有主機的存取權。 選取 [確定]。
 
     ![設定 NFS 用戶端存取 2](media/nfs-client-access2.png)
 > [!IMPORTANT]
@@ -91,7 +90,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
    ![加入新的資料存放區-NFS 版本](media/databox-migration-add-datastore-nfs-version.png)
 
-5. 在嚮導的步驟3中，指定資料存放區的名稱、路徑和伺服器。 您可以使用伺服器的資料箱 IP 位址。 資料夾路徑的`/<StorageAccountName_BlockBlob>/<ContainerName>/`格式會是。
+5. 在嚮導的步驟3中，指定資料存放區的名稱、路徑和伺服器。 您可以使用伺服器的資料箱 IP 位址。 資料夾路徑的格式會是 `/<StorageAccountName_BlockBlob>/<ContainerName>/` 。
 
    ![加入新的資料存放區-NFS 設定](media/databox-migration-add-datastore-nfs-configuration.png)
 
@@ -133,7 +132,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
 ### <a name="clone-a-virtual-machine-or-a-virtual-machine-template-to-the-data-box-datastore"></a>將虛擬機器或虛擬機器範本複製到資料箱資料存放區
 
-1. 以滑鼠右鍵按一下您要複製的虛擬機器或虛擬機器範本。 選取 [將複製品**複製** > **到虛擬機器**]。
+1. 以滑鼠右鍵按一下您要複製的虛擬機器或虛擬機器範本。 選取 [將複製品**複製**  >  **到虛擬機器**]。
 
     ![虛擬機器複製](media/databox-migration-vm-clone.png)
 
@@ -227,12 +226,12 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
 4. [在您的 Linux 虛擬機器上安裝 AzCopy](../storage/common/storage-use-azcopy-v10.md)。
 
-5. 使用 AzCopy，將資料從您的 Azure Blob 儲存體下載到受控磁片。  命令語法： `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`。  請`<storage-account-name>`以您的 Azure 儲存體帳戶名稱`<container-name>`取代，並以保存透過資料箱複製之資料的容器取代。
+5. 使用 AzCopy，將資料從您的 Azure Blob 儲存體下載到受控磁片。  命令語法： `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"` 。  請 `<storage-account-name>` 以您的 Azure 儲存體帳戶名稱取代，並 `<container-name>` 以保存透過資料箱複製之資料的容器取代。
 
 6. 在您的 Linux 虛擬機器上安裝 NFS 伺服器：
 
-    - 在 Ubuntu/Debian 發佈上： `sudo apt install nfs-kernel-server`。
-    - 在 Enterprise Linux 散發套件上`sudo yum install nfs-utils`：。
+    - 在 Ubuntu/Debian 發佈上： `sudo apt install nfs-kernel-server` 。
+    - 在 Enterprise Linux 散發套件上： `sudo yum install nfs-utils` 。
 
 7. 變更受控磁片上的資料夾許可權，其中 Azure Blob 儲存體的資料已複製到該處。  針對您想要匯出為 NFS 共用的所有資料夾，變更其許可權。
 
@@ -241,7 +240,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
     chown nfsnobody:nfsnobody /<folder>/<subfolder>
     ```
 
-8. 藉由編輯`/etc/exports`檔案來指派用戶端 IP 位址的許可權，以存取 NFS 共用。
+8. 藉由編輯檔案來指派用戶端 IP 位址的許可權，以存取 NFS 共用 `/etc/exports` 。
 
     ```bash
     sudo vi /etc/exports
@@ -256,9 +255,9 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
     .
     ```
 
-9. 使用`sudo exportfs -a`命令匯出 NFS 共用。
+9. 使用命令匯出 NFS 共用 `sudo exportfs -a` 。
 
-10. 使用`sudo systemctl restart nfs-kernel-server`命令重新開機 NFS 核心伺服器。
+10. 使用命令重新開機 NFS 核心伺服器 `sudo systemctl restart nfs-kernel-server` 。
 
 
 ### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-a-private-cloud-vcenter-cluster-and-then-copy-data"></a>將 Linux 虛擬機器 NFS 共用掛接為私人雲端 vCenter 叢集上的資料存放區，然後複製資料
@@ -279,7 +278,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠且可靠�
 
    ![加入新的資料存放區-NFS 版本](media/databox-migration-add-datastore-nfs-version.png)
 
-5. 在嚮導的步驟3中，指定資料存放區的名稱、路徑和伺服器。  您可以針對伺服器使用 Linux 虛擬機器的 IP 位址。  資料夾路徑的`/<folder>/<subfolder>/`格式會是。
+5. 在嚮導的步驟3中，指定資料存放區的名稱、路徑和伺服器。  您可以針對伺服器使用 Linux 虛擬機器的 IP 位址。  資料夾路徑的格式會是 `/<folder>/<subfolder>/` 。
 
    ![加入新的資料存放區-NFS 設定](media/databox-migration-add-datastore-nfs-configuration.png)
 

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 8add1f57b566d746d464c1ca165938fc112a9784
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77062705"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler 來自動布建使用者
@@ -30,7 +29,7 @@ ms.locfileid: "77062705"
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../active-directory-saas-app-provisioning.md)。
 >
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -47,15 +46,15 @@ ms.locfileid: "77062705"
 
 **若要從 Azure AD 應用程式庫新增 Zscaler，請執行下列步驟：**
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory] 圖示。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 瀏覽至 [企業應用程式]  ，然後選取 [所有應用程式]  選項。
+2. 瀏覽至 [企業應用程式]，然後選取 [所有應用程式] 選項。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
+3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
@@ -94,11 +93,11 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![應用程式清單中的 Zscaler 連結](common/all-applications.png)
 
-3. 選取 [**布**建] 索引標籤。
+3. 選取 [佈建] 索引標籤。
 
     ![Zscaler 布建](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
 
-4. 將布建模式設定為 [**自動** **]** 。
+4. 將 [佈建模式] 設定為 [自動]。
 
     ![Zscaler 布建](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
 
@@ -122,13 +121,13 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![Zscaler 布建](./media/zscaler-provisioning-tutorial/notification.png)
 
-9. 按一下 **[儲存]** 。
+9. 按一下 [檔案] 。
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Zscaler**]。
 
     ![Zscaler 布建](./media/zscaler-provisioning-tutorial/user-mappings.png)
 
-11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到 Zscaler 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Zscaler 中的使用者帳戶，以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
+11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到 Zscaler 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Zscaler 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
     ![Zscaler 布建](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
 
@@ -136,7 +135,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![Zscaler 布建](./media/zscaler-provisioning-tutorial/group-mappings.png)
 
-13. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Zscaler 的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Zscaler 中的群組以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
+13. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Zscaler 的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Zscaler 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
     ![Zscaler 布建](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
 
@@ -150,7 +149,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![Zscaler 布建](./media/zscaler-provisioning-tutorial/scoping.png)
 
-17. 當您準備好要佈建時，按一下 [儲存]****。
+17. 當您準備好要佈建時，按一下 [儲存]。
 
     ![Zscaler 布建](./media/zscaler-provisioning-tutorial/save-provisioning.png)
 
@@ -160,7 +159,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟

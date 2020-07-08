@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ab613c251bc43a025e0381046805ec998a04227
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019548"
 ---
 # <a name="quickstart---consume-vmware-vms-on-azure"></a>快速入門-使用 Azure 上的 VMware Vm
@@ -30,7 +29,7 @@ ms.locfileid: "77019548"
 
 2. 搜尋 **CloudSimple 虛擬機器**。
 
-3. 按一下 [加入]  。
+3. 按一下 **[新增]** 。
 
     ![建立 CloudSimple 虛擬機器](media/create-cloudsimple-virtual-machine.png)
 
@@ -38,7 +37,7 @@ ms.locfileid: "77019548"
 
     ![建立 CloudSimple 虛擬機器-基本概念](media/create-cloudsimple-virtual-machine-basic-info.png)
 
-    | 欄位 | 描述 |
+    | 欄位 | 說明 |
     | ------------ | ------------- |
     | 訂用帳戶 | 與私人雲端相關聯的 Azure 訂用帳戶。  |
     | 資源群組 | 將指派 VM 的資源群組。 您可以選取現有的群組或建立新的群組。 |
@@ -61,9 +60,9 @@ ms.locfileid: "77019548"
 
     針對 [網路介面]，按一下 [**新增網路介面**] 並設定下列設定。
 
-    | 控制 | 描述 |
+    | 控制 | 說明 |
     | ------------ | ------------- |
-    | 名稱 | 輸入識別介面的名稱。  |
+    | Name | 輸入識別介面的名稱。  |
     | 網路 | 從私人雲端 vSphere 中已設定的分散式埠群組清單中選取。  |
     | 配接器 | 從為 VM 設定的可用類型清單中，選取 vSphere 介面卡。 如需詳細資訊，請參閱 VMware 知識庫文章<a href="https://kb.vmware.com/s/article/1001805" target="_blank">選擇虛擬機器的網路介面卡</a>。 |
     | 在開機時開啟電源 | 選擇是否要在 VM 開機時啟用 NIC 硬體。 預設值為 [啟用]****。 |
@@ -72,8 +71,8 @@ ms.locfileid: "77019548"
 
     | 項目 | 描述 |
     | ------------ | ------------- |
-    | 名稱 | 輸入識別磁碟的名稱。  |
-    | Size | 選取其中一個可用的大小。  |
+    | Name | 輸入識別磁碟的名稱。  |
+    | 大小 | 選取其中一個可用的大小。  |
     | SCSI 控制器 | 選取磁碟的 SCSI 控制器。  |
     | [模式] | 決定磁片如何參與快照集。 請選擇其中一個選項： <br> 獨立的持續性：寫入磁片的所有資料都會永久寫入。<br> 獨立的非持續性：當您關閉或重設虛擬機器時，會捨棄寫入磁片的變更。  獨立而非持續的模式可讓您一律以相同的狀態重新啟動 VM。 如需詳細資訊，請參閱 <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware 文件</a>。
 

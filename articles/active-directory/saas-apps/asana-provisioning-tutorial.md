@@ -17,10 +17,9 @@ ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058902"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>教學課程︰設定 Asana 來自動佈建使用者
@@ -65,7 +64,7 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者應接收
 
 1. 選取您的 Asana 執行個體，然後選取 [佈建]**** 索引標籤。
 
-1. 將 [佈建模式]**** 設定為 [自動]****。
+1. 將 [佈建模式] 設定為 [自動]。
 
     ![Asana 佈建](./media/asana-provisioning-tutorial/asanaazureprovisioning.png)
 
@@ -85,15 +84,15 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者應接收
 
 1. 在 [**通知電子郵件**] 中，輸入您想要收到布建錯誤通知之個人或群組的電子郵件地址。 選取下方的核取方塊。
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 1. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Asana**]。
 
-1. 在 [屬性對應]**** 區段中，檢閱要從 Azure AD 同步至 Asana 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 Asana 中的使用者帳戶以進行更新作業。 選取 [儲存]**** 認可任何變更。 如需詳細資訊，請參閱[自訂使用者佈建屬性對應](../app-provisioning/customize-application-attributes.md)。
+1. 在 [屬性對應]**** 區段中，檢閱要從 Azure AD 同步至 Asana 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 Asana 中的使用者帳戶以進行更新作業。 選取 [儲存] 認可任何變更。 如需詳細資訊，請參閱[自訂使用者佈建屬性對應](../app-provisioning/customize-application-attributes.md)。
 
 1. 若要啟用 Asana 的 Azure AD 佈建服務，請在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****。
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 現在首次同步處理會針對在 [使用者]**** 區段中指派給 Asana 的任何使用者啟動。 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 請使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結來佈建活動記錄。 稽核記錄會描述在 Asana 應用程式上佈建服務執行的所有動作。
 
