@@ -7,12 +7,11 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 085830ee1c8e7556a7c3390aaf6e638245d20324
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745765"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987297"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常見問題集
 
@@ -87,15 +86,15 @@ ExpressRoute 針對各種類型的服務支援[三個路由網域](expressroute-
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI - 可透過 Azure 區域社群取得。請參閱[這裡](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located)，以了解如何找出 Power BI 租用戶的區域。
 * Azure Active Directory
-* [Windows 虛擬桌面](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure 全域服務社群)
-* 適用於 IaaS (虛擬機器、虛擬網路閘道、負載平衡器等) 的 Azure 公用 IP 位址  
+* 適用于 IaaS 的 Azure 公用 IP 位址（虛擬機器、虛擬網路閘道、負載平衡器等）  
 * 也支援大部分的其他 Azure 服務。 請直接檢查您要用來驗證支援的服務。
 
 **不支援：**
 
 * CDN
 * Azure Front Door
+* [Windows 虛擬桌面](https://azure.microsoft.com/services/virtual-desktop/)
 * Multi-factor Authentication Server (舊版)
 * 流量管理員
 
@@ -118,7 +117,7 @@ Microsoft 會驗證指定的「已公告公用首碼」和「對等互連 ASN」
 Dynamics 365 和 Common Data Service (CD) 環境裝載於 Azure 上，因此客戶可以從 Azure 資源的基礎 ExpressRoute 支援獲益。 如果您的路由器篩選條件包含 Dynamics 365/CD 環境裝載所在的 Azure 區域，則您可以連線到其服務端點。
 
 > [!NOTE]
-> **不**需要 [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium)，即可透過 Azure ExpressRoute 連線 Dynamics 365。
+> 如果 ExpressRoute 線路部署在相同的[地緣政治區域](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations)內，則透過 Azure ExpressRoute 進行 Dynamics 365 連線並**不**需要[expressroute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) 。
 
 ## <a name="data-and-connections"></a>資料與連線
 
@@ -152,7 +151,7 @@ Dynamics 365 和 Common Data Service (CD) 環境裝載於 Azure 上，因此客�
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>如何在私人對等互連上實作備援？
 
-來自不同對等互連位置的多個 ExpressRoute 線路可以連線到相同的虛擬網路，以在單一線路無法使用的情況下提供高可用性。 接著，您可以[指派較高的權重](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) 給本機連線，偏好使用特定的線路。 強烈建議客戶至少設定兩個 ExpressRoute 線路，以避免發生單一失敗點。 
+來自不同對等互連位置的多個 ExpressRoute 線路，或來自相同對等互連位置的四個連線都可以連接到相同的虛擬網路，以在單一線路無法使用的情況下提供高可用性。 然後，您可以[將較高](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection)的權數指派給其中一個本機連接，以偏好特定的線路。 強烈建議客戶至少設定兩個 ExpressRoute 線路，以避免發生單一失敗點。 
 
 如需高可用性的設計，請參閱[這裡](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)，如需災害復原的設計，請參閱[這裡](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering)。  
 
@@ -164,7 +163,7 @@ Dynamics 365 和 Common Data Service (CD) 環境裝載於 Azure 上，因此客�
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>如何確保在連線到 ExpressRoute 之虛擬網路上的高可用性？
 
-您可以將不同對等互連位置 (例如新加坡、新加坡 2) 中的 ExpressRoute 線路連線到虛擬網路，以達到高可用性。 如果有一個 ExpressRoute 線路當機時，連線就會容錯移轉到另一個 ExpressRoute 線路。 根據預設，離開您虛擬網路的流量會以等價多路徑路由 (ECMP) 作為基礎進行路由。 您可以使用「連線權數」來偏好兩條線路中的某一條。 如需詳細資訊，請參閱[最佳化 ExpressRoute 路由](expressroute-optimize-routing.md)。
+若要達到高可用性，您可以在相同的對等互連位置中連接到虛擬網路的四個 ExpressRoute 線路，或將不同對等互連位置（例如新加坡、新加坡2）中的 ExpressRoute 線路連接到您的虛擬網路。 如果有一個 ExpressRoute 線路當機時，連線就會容錯移轉到另一個 ExpressRoute 線路。 根據預設，離開您虛擬網路的流量會以等價多路徑路由 (ECMP) 作為基礎進行路由。 您可以使用「連線權數」來偏好兩條線路中的某一條。 如需詳細資訊，請參閱[最佳化 ExpressRoute 路由](expressroute-optimize-routing.md)。
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>如何確保我在 Microsoft 對等互連或公用對等互連上傳送至 Azure 公用服務 (例如 Azure 儲存體和 Azure SQL) 的流量是 ExpressRoute 路徑上偏好的流量？
 
@@ -195,7 +194,7 @@ Dynamics 365 和 Common Data Service (CD) 環境裝載於 Azure 上，因此客�
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>我可以在相同的城市擁有多個 ExpressRoute 線路嗎？ 是否可以將這些線路連結至相同的虛擬網路？
 
-是。 您可以有多個 ExpressRoute 線路，且服務提供者不一定要相同。 如果城市中有多個 ExpressRoute 對等互連位置，且線路是建立在不同的對等互連位置，您就可以將這些線路連結至相同的虛擬網路。 如果線路是建立在相同的對等互連位置，則最多可將 4 個線路連結至相同的虛擬網路。
+是。 您可以有多個 ExpressRoute 線路，且服務提供者不一定要相同。 如果城市中有多個 ExpressRoute 對等互連位置，且線路是建立在不同的對等互連位置，您就可以將這些線路連結至相同的虛擬網路。 如果線路是在相同的對等互連位置建立，您最多可以將四個線路連結至相同的虛擬網路。
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>我要如何將虛擬網路連線至 ExpressRoute 電路
 

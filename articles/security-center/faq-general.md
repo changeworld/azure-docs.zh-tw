@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: e2cc04be5a79009f92e275f9de46df60a8e23c8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783209"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>常見問題-關於 Azure 資訊安全中心的一般問題
 
@@ -37,14 +36,8 @@ Azure 資訊安全中心會監視下列 Azure 資源：
 
 * 虛擬機器（Vm）（包括[雲端服務](../cloud-services/cloud-services-choose-me.md)）
 * 虛擬機器擴展集
-* Azure 虛擬網路
-* 容器
-* Azure SQL 服務
-* Azure 儲存體帳戶
-* Azure Web Apps (在 [App Service 環境](../app-service/environment/intro.md)中)
 * 與您的 Azure 訂用帳戶整合的合作夥伴解決方案，例如 VM 和 App Service 環境上的 Web 應用程式防火牆
-
-此外，您也可以 Azure 資訊安全中心來監視非 Azure （包括內部部署）機器。 支援[Windows 機器](./quick-onboard-windows-computer.md)和[Linux 電腦](./quick-onboard-linux-computer.md)。
+* [產品總覽中列出的許多 Azure PaaS 服務](features-paas.md)
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>我要如何查看 Azure 資源目前的安全性狀態？
@@ -59,7 +52,7 @@ Azure 資訊安全中心會監視下列 Azure 資源：
 
 
 ## <a name="who-can-modify-a-security-policy"></a>誰可以修改安全性原則？
-若要修改安全性原則，您必須是安全性系統管理員或該訂用帳戶的擁有者或參與者。
+若要修改安全性原則，您必須是**安全性系統管理員**或該訂用帳戶的**擁有**者。
 
 若要了解如何設定安全性原則，請參閱[在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md)。
 
@@ -87,7 +80,7 @@ Azure 資訊安全中心會監視下列 Azure 資源：
 
 
 ## <a name="why-did-secure-score-values-change"></a>為什麼安全分數值會變更？ <a name="secure-score-faq"></a>
-從2019年2月開始，資訊安全中心調整一些建議的分數，以更符合其嚴重性。 由於這項調整，整體安全分數值可能會有所變更。  如需安全分數的詳細資訊，請參閱[安全分數計算](security-center-secure-score.md)。
+從2019年2月開始，資訊安全中心調整一些建議的分數，以更符合其嚴重性。 由於這項調整，整體安全分數值可能會有所變更。  如需安全分數的詳細資訊，請參閱[Azure 資訊安全中心中的增強型安全分數](secure-score-security-controls.md)。
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>在 Microsoft Security Response Center 與 Azure 資訊安全中心，偵測到威脅和收到警示有何差異？

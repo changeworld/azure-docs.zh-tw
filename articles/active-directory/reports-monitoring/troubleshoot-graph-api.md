@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 0030c5a4-16f0-46f4-ad30-782e7fea7e40
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,11 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d1fb4f49e4f9ad41f971d869873200e6180b5cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: eec5c5a3d810fdd2d561313e3a355e872fb525c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78399286"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608087"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>針對 Azure Active Directory 報告 API 中的錯誤進行疑難排解
 
@@ -50,5 +49,5 @@ ms.locfileid: "78399286"
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 audit API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)
+[使用 AUDIT API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
 [使用登入活動報告 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

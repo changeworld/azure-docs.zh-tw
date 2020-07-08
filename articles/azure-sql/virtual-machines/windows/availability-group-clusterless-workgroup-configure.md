@@ -1,6 +1,6 @@
 ---
 title: 設定網域獨立的工作群組可用性群組
-description: 了解如何在 Azure 中的 SQL Server 虛擬機器上設定 Active Directory 網域獨立工作群組 Always On 可用性群組。
+description: 瞭解如何在 Azure 中的 SQL Server 虛擬機器上，設定 Active Directory 網域獨立工作組 Always On 可用性群組。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -13,12 +13,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 36c4a141acf38d83ff925bafaa75c294847a7d74
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037229"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955500"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>設定工作群組可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,13 +45,13 @@ ms.locfileid: "84037229"
 | **工作群組名稱** | AGWorkgroup | 
 | &nbsp; | &nbsp; |
 
-## <a name="set-dns-suffix"></a>Set DNS 尾碼 
+## <a name="set-a-dns-suffix"></a>設定 DNS 尾碼 
 
 在此步驟中，設定這兩部伺服器的 DNS 尾碼。 例如： `ag.wgcluster.example.com` 。 這可讓您使用要連線物件的名稱作為網路內的完整位址，例如 `AGNode1.ag.wgcluster.example.com`。 
 
 若要設定 DNS 尾碼，請遵循下列步驟：
 
-1. 透過 RDP 連線到您的第一個節點並開啟伺服器管理員。 
+1. RDP 傳入您的第一個節點，然後開啟伺服器管理員。 
 1. 選取 [本機伺服器]，然後在 [電腦名稱] 下選取虛擬機器的名稱。 
 1. 在 [如果您要重新命名這台電腦...] 底下，選取 [變更]。 
 1. 將工作群組名稱的變更為有意義的名稱，例如 `AGWORKGROUP`： 
@@ -71,13 +70,13 @@ ms.locfileid: "84037229"
 1. 請在系統提示時，將伺服器重新開機。 
 1. 在要用於可用性群組的任何其他節點上重複這些步驟。 
 
-## <a name="edit-host-file"></a>編輯主機檔案
+## <a name="edit-a-host-file"></a>編輯主機檔案
 
 因為沒有 Active Directory，所以沒有任何方法可以驗證 Windows 連線。 因此，透過使用文字編輯器編輯主機檔案來指派信任。 
 
 若要編輯主機檔案，請遵循下列步驟：
 
-1. 透過 RDP 連線到您的虛擬機器。 
+1. RDP 入您的虛擬機器。 
 1. 使用 [檔案總管] 移至 `c:\windows\system32\drivers\etc`。 
 1. 以滑鼠右鍵按一下 **hosts** 檔案，並使用 [記事本] \(或任何其他文字編輯器\) 開啟該檔案。
 1. 在檔案結尾，以 `IP Address, DNS Suffix #comment` 的形式為每個節點、可用性群組與接聽程式新增項目，如下所示： 
@@ -104,7 +103,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-the-failover-cluster"></a>建立容錯移轉叢集
 
-在此步驟中，您將會建立容錯移轉叢集。 如果您不熟悉這些步驟，可以遵循[容錯移轉叢集教學課程](failover-cluster-instance-storage-spaces-direct-manually-configure.md#step-2-configure-the-windows-server-failover-cluster-with-storage-spaces-direct)中的步驟。
+在此步驟中，您將會建立容錯移轉叢集。 如果您不熟悉這些步驟，可以遵循[容錯移轉叢集教學課程](failover-cluster-instance-storage-spaces-direct-manually-configure.md)中的步驟。
 
 教學課程與工作群組叢集應執行的事項之間有顯著的差異：
 - 在執行叢集驗證時，請取消選取 [儲存體] 與 [儲存空間直接存取]。 
@@ -130,13 +129,13 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-a-cloud-witness"></a>建立雲端見證 
 
-在此步驟中，設定雲端共用見證。 如果您不熟悉這些步驟，請參閱[容錯移轉叢集教學課程](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-a-cloud-witness)。 
+在此步驟中，設定雲端共用見證。 如果您不熟悉這些步驟，請參閱[為容錯移轉叢集部署雲端見證](/windows-server/failover-clustering/deploy-cloud-witness)。 
 
-## <a name="enable-availability-group-feature"></a>啟用可用性群組功能 
+## <a name="enable-the-availability-group-feature"></a>啟用可用性群組功能 
 
 在此步驟中，啟用可用性群組功能。 如果您不熟悉這些步驟，請參閱[可用性群組教學課程](availability-group-manually-configure-tutorial.md#enable-availability-groups)。 
 
-## <a name="create-keys-and-certificate"></a>建立金鑰與憑證
+## <a name="create-keys-and-certificates"></a>建立金鑰和憑證
 
 在此步驟中，建立 SQL 登入在加密端點上使用的憑證。 在每個節點上建立資料夾以保存憑證備份，例如 `c:\certs`。 
 
@@ -277,16 +276,16 @@ GO
 
 如果叢集中有任何其他節點，請同時在那些節點上重複這些步驟，並修改個別的憑證與使用者名稱。 
 
-## <a name="configure-availability-group"></a>設定可用性群組
+## <a name="configure-an-availability-group"></a>設定可用性群組
 
 在此步驟中，設定您的可用性群組，並在群組中新增您的資料庫。 此時請勿建立接聽程式。 如果您不熟悉這些步驟，請參閱[可用性群組教學課程](availability-group-manually-configure-tutorial.md#create-the-availability-group)。 請務必起始容錯移轉與容錯回復，以確認所有事項都正常運作。 
 
    > [!NOTE]
    > 如果在同步程序中發生失敗，您可能需要暫時授與 `NT AUTHORITY\SYSTEM` sysadmin 權限以在第一個節點 (例如 `AGNode1`) 上建立叢集資源。 
 
-## <a name="configure-load-balancer"></a>設定負載平衡器
+## <a name="configure-a-load-balancer"></a>設定負載平衡器
 
-在這個最終步驟中，請使用 [Azure 入口網站](availability-group-load-balancer-portal-configure.md)或 [PowerShell](availability-group-listener-powershell-configure.md) 來設定負載平衡器
+在最後一個步驟中，請使用[Azure 入口網站](availability-group-load-balancer-portal-configure.md)或[PowerShell](availability-group-listener-powershell-configure.md)來設定負載平衡器。
 
 
 ## <a name="next-steps"></a>後續步驟

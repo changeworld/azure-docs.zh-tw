@@ -7,16 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa8a020dc4a7e9d4e7de0671b566755e413caeb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aa8f2d14124e7cfc5db0025c295f9b38d96bf56c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921834"
 ---
 # <a name="choose-the-right-consistency-level"></a>選擇正確的一致性層級 
 
-依賴複寫來取到高可用性或低延遲性或兩者的分散式資料庫，可在讀取一致性與可用性、延遲性及輸送量之間進行基本權衡取捨。 大部分的商用分散式資料庫會要求開發人員在兩個極端的一致性模型之間進行選擇：*強*式一致性和*最終*一致性。 Azure Cosmos DB 可讓開發人員在五個定義完善的一致性模型之間進行選擇：*強*式、*限定過期*、*會話*、*一致前置*詞和*最終*。 這些一致性模型中的每一個都是完善定義且直覺化的模型，可用於特定的真實案例。 這五個一致性模型中的每一個都提供精確的[可用性和效能取捨](consistency-levels-tradeoffs.md)，並受到全方位 sla 的支援。 下列簡單考量將可協助您在許多常見案例中做出正確的選擇。
+依賴複寫來取到高可用性或低延遲性或兩者的分散式資料庫，可在讀取一致性與可用性、延遲性及輸送量之間進行基本權衡取捨。 大部分的商用分散式資料庫會要求開發人員在兩個極端的一致性模型之間進行選擇：*強*式一致性和*最終*一致性。 Azure Cosmos DB 可讓開發人員在五個定義完善的一致性模型之間進行選擇：*強*式、*限定過期*、*會話*、*一致前置*詞和*最終*。 這些一致性模型中的每一個都是完善定義且直覺化的模型，可用於特定的真實案例。 這五個一致性模型中的每一個都提供精確的[可用性和效能取捨](consistency-levels-tradeoffs.md)，並受到全方位 sla 的支援。 您可以在帳戶層級設定預設一致性，並[在要求層級覆寫它](how-to-manage-consistency.md#override-the-default-consistency-level)。 下列簡單考量將可協助您在許多常見案例中做出正確的選擇。
 
 ## <a name="sql-api-and-table-api"></a>SQL API 和資料表 API
 

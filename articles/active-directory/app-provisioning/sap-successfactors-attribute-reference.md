@@ -1,22 +1,21 @@
 ---
 title: SAP SuccessFactors 屬性參考
-description: 瞭解 SuccessFactors-HR 驅動布建支援來自 SuccessFactors 的屬性
+description: 了解由 SuccessFactors-HR 驅動的佈建支援哪些來自 SuccessFactors 的屬性
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: reference
 ms.workload: identity
 ms.date: 12/06/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 25541b76dda55db1ec26f4d8e3ec63573a47e7b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781543"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 屬性參考
 
@@ -44,35 +43,35 @@ ms.locfileid: "82593179"
 | 7  | PerPersonal                            | lastName                     | 讀取           |
 | 8  | PerPersonal                            | middleName                   | 讀取           |
 | 9  | PerPersonal                            | preferredName                | 讀取           |
-| 10 | User                                   | addressLine1                 | 讀取           |
-| 11 | User                                   | addressLine2                 | 讀取           |
+| 10 | 使用者                                   | addressLine1                 | 讀取           |
+| 11 | 使用者                                   | addressLine2                 | 讀取           |
 | 12 | User                                   | addressLIne3                 | 讀取           |
-| 13 | User                                   | businessPhone                | 讀取           |
-| 14 | User                                   | 行動電話                    | 讀取           |
+| 13 | 使用者                                   | businessPhone                | 讀取           |
+| 14 | 使用者                                   | 行動電話                    | 讀取           |
 | 15 | User                                   | city                         | 讀取           |
-| 16 | User                                   | country                      | 讀取           |
-| 17 | User                                   | custom01                     | 讀取           |
-| 18 | User                                   | custom02                     | 讀取           |
-| 19 | User                                   | custom03                     | 讀取           |
-| 20 | User                                   | custom04                     | 讀取           |
-| 21 | User                                   | custom05                     | 讀取           |
-| 22 | User                                   | custom06                     | 讀取           |
-| 23 | User                                   | custom07                     | 讀取           |
-| 24 | User                                   | custom08                     | 讀取           |
-| 25 | User                                   | custom09                     | 讀取           |
-| 26 | User                                   | custom1-custom10                     | 讀取           |
-| 27 | User                                   | custom11                     | 讀取           |
-| 28 | User                                   | custom12                     | 讀取           |
-| 29 | User                                   | custom13                     | 讀取           |
-| 30 | User                                   | custom14                     | 讀取           |
-| 31 | User                                   | empId                        | 讀取           |
-| 32 | User                                   | homePhone                    | 讀取           |
-| 33 | User                                   | jobFamily                    | 讀取           |
-| 34 | User                                   | 暱稱                     | 讀取           |
-| 35 | User                                   | State                        | 讀取           |
-| 36 | User                                   | timeZone                     | 讀取           |
-| 37 | User                                   | username                     | 讀取           |
-| 38 | User                                   | zipCode                      | 讀取           |
+| 16 | 使用者                                   | country                      | 讀取           |
+| 17 | 使用者                                   | custom01                     | 讀取           |
+| 18 | 使用者                                   | custom02                     | 讀取           |
+| 19 | 使用者                                   | custom03                     | 讀取           |
+| 20 | 使用者                                   | custom04                     | 讀取           |
+| 21 | 使用者                                   | custom05                     | 讀取           |
+| 22 | 使用者                                   | custom06                     | 讀取           |
+| 23 | 使用者                                   | custom07                     | 讀取           |
+| 24 | 使用者                                   | custom08                     | 讀取           |
+| 25 | 使用者                                   | custom09                     | 讀取           |
+| 26 | 使用者                                   | custom1-custom10                     | 讀取           |
+| 27 | 使用者                                   | custom11                     | 讀取           |
+| 28 | 使用者                                   | custom12                     | 讀取           |
+| 29 | 使用者                                   | custom13                     | 讀取           |
+| 30 | 使用者                                   | custom14                     | 讀取           |
+| 31 | 使用者                                   | empId                        | 讀取           |
+| 32 | 使用者                                   | homePhone                    | 讀取           |
+| 33 | 使用者                                   | jobFamily                    | 讀取           |
+| 34 | 使用者                                   | 暱稱                     | 讀取           |
+| 35 | User                                   | state                        | 讀取           |
+| 36 | 使用者                                   | timeZone                     | 讀取           |
+| 37 | 使用者                                   | username                     | 讀取           |
+| 38 | 使用者                                   | zipCode                      | 讀取           |
 | 39 | PerPhone                               | areaCode                     | 讀取           |
 | 40 | PerPhone                               | countryCode                  | 讀取           |
 | 41 | PerPhone                               | 擴充功能                    | 讀取           |
@@ -92,26 +91,26 @@ ms.locfileid: "82593179"
 | 55 | EmpJob                                 | position                     | 讀取           |
 | 65 | EmpJob                                 | customString13               | 讀取           |
 | 56 | EmpJob                                 | managerId                    | 讀取           |
-| 57 | EmpJob\.BusinessUnit                   | businessUnit                 | 讀取           |
-| 58 | EmpJob\.BusinessUnit                   | businessUnitId               | 讀取           |
-| 59 | EmpJob\.公司                        | company                      | 讀取           |
-| 60 | EmpJob\.公司                        | companyId                    | 讀取           |
-| 61 | EmpJob\.公司\.CountryOfRegistration | twoCharCountryCode           | 讀取           |
-| 62 | EmpJob\.CostCenter                     | costCenter                   | 讀取           |
-| 63 | EmpJob\.CostCenter                     | costCenterId                 | 讀取           |
-| 64 | EmpJob\.CostCenter                     | costCenterDescription        | 讀取           |
-| 65 | EmpJob\.部門                     | department                   | 讀取           |
-| 66 | EmpJob\.部門                     | departmentId                 | 讀取           |
-| 67 | EmpJob\.部門                       | division                     | 讀取           |
-| 68 | EmpJob\.部門                       | divisionId                   | 讀取           |
-| 69 | EmpJob\.JobCode                        | jobCode                      | 讀取           |
-| 70 | EmpJob\.JobCode                        | jobCodeId                    | 讀取           |
-| 71 | EmpJob\.位置                       | LocationName                 | 讀取           |
-| 72 | EmpJob\.位置                       | officeLocationAddress        | 讀取           |
-| 73 | EmpJob\.位置                       | officeLocationCity           | 讀取           |
-| 74 | EmpJob\.位置                       | officeLocationCustomString4  | 讀取           |
-| 75 | EmpJob\.位置                       | officeLocationZipCode        | 讀取           |
-| 76 | EmpJob\.PayGrade                       | payGrade                     | 讀取           |
+| 57 | EmpJob \. BusinessUnit                   | businessUnit                 | 讀取           |
+| 58 | EmpJob \. BusinessUnit                   | businessUnitId               | 讀取           |
+| 59 | EmpJob \. 公司                        | company                      | 讀取           |
+| 60 | EmpJob \. 公司                        | companyId                    | 讀取           |
+| 61 | EmpJob \. 公司 \. CountryOfRegistration | twoCharCountryCode           | 讀取           |
+| 62 | EmpJob \. CostCenter                     | costCenter                   | 讀取           |
+| 63 | EmpJob \. CostCenter                     | costCenterId                 | 讀取           |
+| 64 | EmpJob \. CostCenter                     | costCenterDescription        | 讀取           |
+| 65 | EmpJob \. 部門                     | department                   | 讀取           |
+| 66 | EmpJob \. 部門                     | departmentId                 | 讀取           |
+| 67 | EmpJob \. 部門                       | division                     | 讀取           |
+| 68 | EmpJob \. 部門                       | divisionId                   | 讀取           |
+| 69 | EmpJob \. JobCode                        | jobCode                      | 讀取           |
+| 70 | EmpJob \. JobCode                        | jobCodeId                    | 讀取           |
+| 71 | EmpJob \. 位置                       | LocationName                 | 讀取           |
+| 72 | EmpJob \. 位置                       | officeLocationAddress        | 讀取           |
+| 73 | EmpJob \. 位置                       | officeLocationCity           | 讀取           |
+| 74 | EmpJob \. 位置                       | officeLocationCustomString4  | 讀取           |
+| 75 | EmpJob \. 位置                       | officeLocationZipCode        | 讀取           |
+| 76 | EmpJob \. PayGrade                       | payGrade                     | 讀取           |
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | 讀取           |
 | 78 | EmpEmploymentTermination               | latestTerminationDate        | 讀取           |
 
@@ -122,22 +121,22 @@ ms.locfileid: "82593179"
 | \# | SuccessFactors 實體                  | SuccessFactors 屬性 | 預設 AD/Azure AD 屬性對應   | 處理批註                                                                            |
 |----|----------------------------------------|--------------------------|-----------------------------------------|----------------------------------------------------------------------------------------------|
 | 1  | PerPerson                              | personIdExternal         | employeeId                              | 當做比對屬性使用                                                                   |
-| 2  | PerPerson                              | perPersonUuid            | \[未使用\-對應做為來源錨點\] | 在初始同步處理期間，布建服務會將 personUuid 連結至現有的 objectGuid\。  |
+| 2  | PerPerson                              | perPersonUuid            | \[未 \- 使用對應做為來源錨點\] | 在初始同步處理期間，布建服務會將 personUuid 連結至現有的 objectGuid\。  |
 | 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
 | 4  | PerPersonal                            | firstName                | givenName                               | NA                                                                                           |
 | 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
-| 6  | User                                   | addressLine1             | streetAddress                           | NA                                                                                           |
-| 7  | User                                   | city                     | l                                       | NA                                                                                           |
-| 8  | User                                   | country                  | co                                      | NA                                                                                           |
-| 9  | User                                   | State                    | st                                      | NA                                                                                           |
-| 10 | User                                   | username                 | samAccountName                          | NA                                                                                           |
-| 11 | User                                   | zipCode                  | postalCode                              | NA                                                                                           |
+| 6  | 使用者                                   | addressLine1             | streetAddress                           | NA                                                                                           |
+| 7  | 使用者                                   | city                     | l                                       | NA                                                                                           |
+| 8  | 使用者                                   | country                  | co                                      | NA                                                                                           |
+| 9  | User                                   | state                    | st                                      | NA                                                                                           |
+| 10 | 使用者                                   | username                 | samAccountName                          | NA                                                                                           |
+| 11 | 使用者                                   | zipCode                  | postalCode                              | NA                                                                                           |
 | 12 | PerEmail                               | emailAddress             | mail                                    | NA                                                                                           |
 | 13 | EmpJob                                 | jobTitle                 | title                                   | NA                                                                                           |
 | 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
-| 15 | EmpJob\.公司\.CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
-| 16 | EmpJob\.部門                     | department               | department                              | NA                                                                                           |
-| 17 | EmpJob\.部門                       | division                 | company                                 | NA                                                                                           |
-| 18 | EmpJob\.位置                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
-| 19 | EmpJob\.位置                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
+| 15 | EmpJob \. 公司 \. CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
+| 16 | EmpJob \. 部門                     | department               | department                              | NA                                                                                           |
+| 17 | EmpJob \. 部門                       | division                 | company                                 | NA                                                                                           |
+| 18 | EmpJob \. 位置                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
+| 19 | EmpJob \. 位置                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | 如果 activeEmploymentsCount = 0，請停用 account\。                                           |

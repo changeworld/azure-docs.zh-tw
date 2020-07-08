@@ -3,23 +3,22 @@ title: 在集區上掛接虛擬檔案系統
 description: 了解如何在 Batch 集區上掛接虛擬檔案系統。
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 4e51e8a1f11d670515893a83398a0c6d7c6e9a46
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: HT
+ms.openlocfilehash: 80acf5df0cf5262249b2eac584152744a4224a35
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816024"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954667"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>在 Batch 集區上掛接虛擬檔案系統
 
 Azure Batch 現在支援在 Batch 集區中的 Windows 或 Linux 計算節點上掛接雲端儲存空間或外部檔案系統。 當計算節點加入集區時，就會掛接虛擬檔案系統並將其視為該節點上的本機磁碟機。 您可以掛接檔案系統，例如 Azure 檔案儲存體、Azure Blob 儲存體、網路檔案系統 (NFS)，包括 [Avere vFXT 快取](../avere-vfxt/avere-vfxt-overview.md)或 Common Internet File System (CIFS)。
 
-在本文中，您將了解如何使用[適用於 .NET 的 Batch 管理程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet)，在計算節點的集區上掛接虛擬檔案系統。
+在本文中，您將了解如何使用[適用於 .NET 的 Batch 管理程式庫](/dotnet/api/overview/azure/batch?view=azure-dotnet)，在計算節點的集區上掛接虛擬檔案系統。
 
 > [!NOTE]
 > 在 2019-08-19 當天起建立的 Batch 集區上，支援掛接虛擬檔案系統。 在 2019-08-19 之前建立的 Batch 集區則不支援此功能。
 > 
-> 用於在計算節點上掛接檔案系統的 API 是 [Batch .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet) 程式庫的一部分。
+> 用於在計算節點上掛接檔案系統的 API 是 [Batch .NET](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) 程式庫的一部分。
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>在集區上掛接的優點
 
@@ -128,7 +127,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>Common Internet File System
 
-Common Internet File System (CIFS) 也可以掛接到集區節點，讓 Azure Batch 節點能夠輕鬆地存取傳統檔案系統。 CIFS 是一個檔案共用通訊協定，可提供開放且跨平台的機制來要求網路伺服器檔案和服務。 CIFS 的基礎是 Microsoft 的伺服器訊息區 (SMB) 通訊協定 (用於網際網路和內部網路檔案共用) 增強型版本，並且可以用來在 Windows 節點上掛接外部檔案系統。 若要深入了解 SMB，請參閱[檔案伺服器和 SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview)。
+Common Internet File System (CIFS) 也可以掛接到集區節點，讓 Azure Batch 節點能夠輕鬆地存取傳統檔案系統。 CIFS 是一個檔案共用通訊協定，可提供開放且跨平台的機制來要求網路伺服器檔案和服務。 CIFS 的基礎是 Microsoft 的伺服器訊息區 (SMB) 通訊協定 (用於網際網路和內部網路檔案共用) 增強型版本，並且可以用來在 Windows 節點上掛接外部檔案系統。 若要深入了解 SMB，請參閱[檔案伺服器和 SMB](/windows-server/storage/file-server/file-server-smb-overview)。
 
 ```csharp
 new PoolAddParameter
@@ -153,7 +152,7 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>診斷掛接錯誤
 
-如果掛接設定失敗，集區中的計算節點就會失敗，且節點狀態會變成無法使用。 若要診斷掛接設定失敗，請檢查 [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) 屬性，以取得錯誤的詳細資料。
+如果掛接設定失敗，集區中的計算節點就會失敗，且節點狀態會變成無法使用。 若要診斷掛接設定失敗，請檢查 [`ComputeNodeError`](/rest/api/batchservice/computenode/get#computenodeerror) 屬性，以取得錯誤的詳細資料。
 
 若要取得用於偵錯的記錄檔，請使用 [OutputFiles](batch-task-output-files.md) 來上傳 `*.log` 檔案。 `*.log` 檔案包含 `AZ_BATCH_NODE_MOUNTS_DIR` 位置的檔案系統掛接相關資訊。 掛接記錄檔的格式為：每個掛接的 `<type>-<mountDirOrDrive>.log`。 例如，在名為 `test` 的掛接目錄上，`cifs` 掛接將會有下列名稱的掛接記錄檔：`cifs-test.log`。
 
@@ -179,5 +178,5 @@ new PoolAddParameter
 
 - 深入了解如何使用 [Windows](../storage/files/storage-how-to-use-files-windows.md) 或 [Linux](../storage/files/storage-how-to-use-files-linux.md) 來掛接 Azure 檔案儲存體共用。
 - 了解如何使用和掛接 [Blobfuse](https://github.com/Azure/azure-storage-fuse) 虛擬檔案系統。
-- 若要了解 NFS 及其應用程式，請參閱[網路檔案系統概觀](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)。
-- 若要深入了解 CIFS，請參閱 [Microsoft SMB 通訊協定和 CIFS 通訊協定概觀](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)。
+- 若要了解 NFS 及其應用程式，請參閱[網路檔案系統概觀](/windows-server/storage/nfs/nfs-overview)。
+- 若要深入了解 CIFS，請參閱 [Microsoft SMB 通訊協定和 CIFS 通訊協定概觀](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)。

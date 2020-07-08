@@ -3,15 +3,14 @@ title: 將儲存體新增至 Azure HPC 快取
 description: 如何定義儲存體目標，讓您的 Azure HPC 快取可以使用您的內部部署 NFS 系統或 Azure Blob 容器進行長期檔案儲存
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: dde29d02f3dbf10ca068d6b3f1ef6c326c206370
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4c3ef79806d29b188eb2738919bf912cfedc8ef1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513872"
 ---
 # <a name="add-storage-targets"></a>新增儲存體目標
 
@@ -22,6 +21,10 @@ ms.locfileid: "82195038"
 請記住，您必須能夠從快取的虛擬網路存取儲存體匯出。 針對內部部署硬體存放裝置，您可能需要設定可解析主機名稱以進行 NFS 儲存體存取的 DNS 伺服器。 如需詳細資訊，請參閱[DNS 存取](hpc-cache-prereqs.md#dns-access)。
 
 建立快取之後，新增儲存體目標。 視您要新增 Azure Blob 儲存體或 NFS 匯出而定，此程式稍有不同。 每個的詳細資料如下。
+
+按一下下方影像，觀看示範如何建立快取和新增儲存體目標的[影片](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)。
+
+[![影片縮圖： Azure HPC 快取：安裝（按一下以流覽影片頁面）](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="open-the-storage-targets-page"></a>開啟 [儲存體目標] 頁面
 
@@ -70,7 +73,7 @@ Azure HPC 快取會使用[角色型存取控制（RBAC）](https://docs.microsof
 
 1. 開啟儲存體帳戶的 [**存取控制（IAM）** ] 頁面。 （[**新增儲存體目標**] 頁面中的連結會自動為選取的帳戶開啟此頁面）。
 
-1. 按一下頁面**+** 頂端的，然後選擇 [**新增角色指派**]。
+1. 按一下 **+** 頁面頂端的，然後選擇 [**新增角色指派**]。
 
 1. 從清單中選取 [儲存體帳戶參與者] 角色。
 

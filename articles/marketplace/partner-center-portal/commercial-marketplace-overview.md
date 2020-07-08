@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 95d57e34694190b4ab997229f005ebeef7924e57
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 2d506656343df6eaa58975bfeb921423c2e3314b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724814"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954126"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作夥伴中心的商業市集入口網站概觀
 
@@ -34,7 +33,7 @@ ms.locfileid: "83724814"
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>針對發佈及供應項目管理使用者體驗的改善
 
-在轉換至合作夥伴中心之後，除了對使用者體驗的改善之外，發行者將能使用新的功能。  如需詳細資料，請參閱[從 Cloud Partner 入口網站移轉到合作夥伴中心的常見問題集](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-migration-faq) \(英文\)。
+在轉換至合作夥伴中心之後，除了對使用者體驗的改善之外，發行者將能使用新的功能。  如需詳細資料，請參閱[從 Cloud Partner 入口網站移轉到合作夥伴中心的常見問題集](../cloud-partner-portal-migration-faq.md) \(英文\)。
 
 ### <a name="account-and-user-management-updates"></a>帳戶和使用者管理更新
 
@@ -50,10 +49,10 @@ ms.locfileid: "83724814"
 
 ## <a name="view-the-roadmap-and-join-the-conversation"></a>檢視藍圖並加入對話
 
-透過瀏覽 [Microsoft 商業市集藍圖](https://docs.microsoft.com/azure/marketplace/marketplace-roadmap)來深入了解近期及未來的版本，或是在 [Microsoft 合作夥伴社群](https://www.microsoftpartnercommunity.com/) \(英文\) 中加入對話。
+透過瀏覽 [Microsoft 商業市集藍圖](../marketplace-roadmap.md)來深入了解近期及未來的版本，或是在 [Microsoft 合作夥伴社群](https://www.microsoftpartnercommunity.com/) \(英文\) 中加入對話。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 針對有興趣在市集中發佈供應項目的新 Microsoft 合作夥伴，請參閱[在合作夥伴中心建立商業市集帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) \(部分機器翻譯\)。
-- 針對先前已在 Cloud Partner 入口網站中發佈供應項目的現有合作夥伴，請參閱[在合作夥伴中心管理您的商業市集帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) \(部分機器翻譯\)。
+- 針對有興趣在市集中發佈供應項目的新 Microsoft 合作夥伴，請參閱[在合作夥伴中心建立商業市集帳戶](create-account.md) \(部分機器翻譯\)。
+- 針對先前已在 Cloud Partner 入口網站中發佈供應項目的現有合作夥伴，請參閱[在合作夥伴中心管理您的商業市集帳戶](manage-account.md) \(部分機器翻譯\)。
 - 在這篇包含示範影片的[合作夥伴社群部落格文章](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293) \(英文\) 中深入了解移至合作夥伴中心的雲端市集管理。

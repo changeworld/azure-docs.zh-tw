@@ -12,17 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 5cc8bae0f0245f5c4b45ca0cd446582b04788c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758763"
 ---
 # <a name="403004-devicemaximumqueuedepthexceeded"></a>403004 DeviceMaximumQueueDepthExceeded
 
 本文說明**403004 DeviceMaximumQueueDepthExceeded**錯誤的原因和解決方案。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 嘗試傳送雲端到裝置訊息時，要求失敗，錯誤為**403004**或**DeviceMaximumQueueDepthExceeded**。
 
@@ -30,9 +29,9 @@ ms.locfileid: "81758763"
 
 根本原因是為裝置排入佇列的訊息數目超過[佇列限制（50）](./iot-hub-devguide-quotas-throttling.md#other-limits)。
 
-您遇到此限制的最可能原因是因為您使用 HTTPS 來接收訊息，這會導致使用`ReceiveAsync`進行連續輪詢，因而導致 IoT 中樞對要求進行節流。
+您遇到此限制的最可能原因是因為您使用 HTTPS 來接收訊息，這會導致使用進行連續輪詢 `ReceiveAsync` ，因而導致 IoT 中樞對要求進行節流。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 使用 HTTPS 時，針對雲端到裝置訊息支援的模式是裝置以間歇方式連接而不常檢查訊息 (低於每 25 分鐘一次)。 若要降低執行佇列限制的可能性，請針對雲端到裝置訊息，切換到 AMQP 或 MQTT。
 

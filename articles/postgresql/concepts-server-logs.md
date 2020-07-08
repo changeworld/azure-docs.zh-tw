@@ -5,13 +5,12 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 70520b464bcb26ff8f1ea10f87bbf30537dc58a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/25/2020
+ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131226"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392806"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的記錄
 
@@ -21,7 +20,7 @@ ms.locfileid: "82131226"
 
 
 ## <a name="configure-logging"></a>設定記錄 
-您可以使用記錄伺服器參數，在您的伺服器上設定 Postgres 標準記錄。 在每個適用於 PostgreSQL 的 Azure 資料庫伺服器`log_checkpoints`上`log_connections` ，預設為開啟。 有其他可供您調整來符合您記錄需求的參數： 
+您可以使用記錄伺服器參數，在您的伺服器上設定 Postgres 標準記錄。 在每個適用於 PostgreSQL 的 Azure 資料庫伺服器上， `log_checkpoints` `log_connections` 預設為開啟。 有其他可供您調整來符合您記錄需求的參數： 
 
 ![適用於 PostgreSQL 的 Azure 資料庫 - 記錄參數](./media/concepts-server-logs/log-parameters.png)
 
@@ -41,11 +40,11 @@ ms.locfileid: "82131226"
 
 適用於 PostgreSQL 的 Azure 資料庫會針對 .log 檔案提供短期儲存位置。 新檔案會每隔1小時或 100 MB 開始（以先發生者為准）。 記錄會附加到目前的檔案，因為它們是從 Postgres 發出的。  
 
-您可以使用`log_retention_period`參數來設定此短期記錄儲存體的保留期限。 預設值為 3 天；最大值為 7 天。 短期儲存位置最多可以包含 1 GB 的記錄檔。 1 GB 之後，將會刪除最舊的檔案（不論保留期間），以騰出空間給新的記錄。 
+您可以使用參數來設定此短期記錄儲存體的保留期限 `log_retention_period` 。 預設值為 3 天；最大值為 7 天。 短期儲存位置最多可以包含 1 GB 的記錄檔。 1 GB 之後，將會刪除最舊的檔案（不論保留期間），以騰出空間給新的記錄。 
 
 針對記錄和記錄分析的長期保留，您可以下載 .log 檔案，並將它們移至協力廠商服務。 您可以使用[Azure 入口網站](howto-configure-server-logs-in-portal.md) [Azure CLI](howto-configure-server-logs-using-cli.md)下載檔案。 或者，您可以設定 Azure 監視器診斷設定，以自動將您的記錄（JSON 格式）發出至較長的位置。 在下一節中深入瞭解此選項。 
 
-您可以藉由將參數`logging_collector`設定為 OFF，停止產生 .log 檔案。 如果您使用 Azure 監視器診斷設定，則建議您關閉 [記錄檔產生]。 此設定可降低額外記錄的效能影響。
+您可以藉由將參數設定為 OFF，停止產生 .log 檔案。 `logging_collector` 如果您使用 Azure 監視器診斷設定，則建議您關閉 [記錄檔產生]。 此設定可降低額外記錄的效能影響。
 
 ## <a name="resource-logs"></a>資源記錄
 
@@ -82,6 +81,7 @@ ms.locfileid: "82131226"
 ```
 AzureDiagnostics
 | where LogicalServerName_s == "myservername"
+| where Category == "PostgreSQLLogs"
 | where TimeGenerated > ago(1d) 
 ```
 
@@ -97,7 +97,7 @@ AzureDiagnostics
 
 下表描述**PostgreSQLLogs**類型的欄位。 視您選擇的輸出端點而定，所含欄位及其出現順序可能會有所不同。 
 
-|**欄位** | **說明** |
+|**欄位** | **描述** |
 |---|---|
 | TenantId | 您的租用戶識別碼 |
 | SourceSystem | `Azure` |
@@ -113,7 +113,7 @@ AzureDiagnostics
 | OperationName | `LogEvent` |
 | errorLevel | 記錄層級，範例：LOG、ERROR、NOTICE |
 | 訊息 | 主要記錄訊息 | 
-| Domain | 伺服器版本，範例：postgres-10 |
+| 網域 | 伺服器版本，範例：postgres-10 |
 | 詳細資料 | 次要記錄訊息 (如果適用) |
 | ColumnName | 資料行的名稱 (如果適用) |
 | SchemaName | 結構描述的名稱 (如果適用) |

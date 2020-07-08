@@ -7,12 +7,11 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685979"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660750"
 ---
 # <a name="migrate-to-azure-file-shares"></a>遷移至 Azure 檔案共用
 
@@ -120,9 +119,9 @@ Active Directory 的使用者，也就是其內部部署網域控制站，可以
 |![是，建議使用](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | 支援。 Azure 檔案共用可以裝載為網路磁碟機機。 | 完全精確度。 * |
 |![是，建議使用](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure 檔案同步 | 原本就整合到 Azure 檔案共用。 | 完全精確度。 * |
 |![是，建議使用](media/storage-files-migration-overview/circle-green-checkmark.png)| 存放裝置移轉服務 | 間接支援。 您可以將 Azure 檔案共用掛接為 SMS 目標伺服器上的網路磁碟機機。 | 完全精確度。 * |
+|![是，建議使用](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy，10.4 版或更新版本| 支援。 | 完全精確度。 * |
 |![未完全建議](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| 資料箱 | 支援。 | 不會複製中繼資料。 [資料箱可以與 Azure 檔案同步搭配使用](storage-sync-offline-data-transfer.md)。 |
-|![不建議使用](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | 支援。 | 不會複製中繼資料。 |
-|![不建議使用](media/storage-files-migration-overview/circle-red-x.png)| Azure 儲存體總管 | 支援。 | 不會複製中繼資料。 |
+|![未完全建議](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure 儲存體總管，版本1.14 | 支援。 | 不會複製 Acl。 支援時間戳記。  |
 |![不建議使用](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | 支援。 | 不會複製中繼資料。 |
 |||||
 

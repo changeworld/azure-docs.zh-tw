@@ -4,7 +4,6 @@ description: 若要擴充對 SQL Server 2008 和 SQL Server 2008 R2 的支援，
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
-manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.topic: conceptual
@@ -14,12 +13,11 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62ed33b8344d0d5a79cd956274c5f7ddd62a714a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 48288ed3765fa939fc56a4469f64070315c4c6aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668741"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>使用 Azure 擴充對 Azure SQL Server 2008 和 SQL Server 2008 R2 的支援
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,7 +59,7 @@ SQL Server 需要應用程式一致的 Azure Site Recovery 快照集以確保復
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-如果客戶要透過將 SQL Server 升級至 2012 或更新版本，來從內部部署遷移至 Azure VM，可以選擇使用[資料庫移轉服務](/azure/dms/dms-overview)。
+如果客戶是從內部部署遷移至 Azure VM，並將 SQL Server 升級至2012版或更新版本，則[Azure 資料庫移轉服務](/azure/dms/dms-overview)是一個選項。
 
 ## <a name="disaster-recovery"></a>災害復原
 
@@ -74,7 +72,7 @@ Azure VM 上的 EOS SQL Server 的災害復原解決方案如下：
 ## <a name="security-patching"></a>安全性修補
 在 SQL Server VM 已向 SQL VM [資源提供者](sql-vm-resource-provider-register.md)註冊後，會透過 Microsoft Update 通道傳遞SQL Server VM 的擴充安全性更新。 您可以手動或自動下載修補程式。
 
-*Automated patching* 。 自動修補可讓 Azure 自動修補 SQL Server 和作業系統。 如果已安裝 SQL Server IaaS 擴充功能，您可以指定維護期間的星期幾、時間和持續時間。 Azure 會在此維護期間執行修補。 維護期間排程會使用 VM 地區設定做為時間。  如需詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 自動修補](automated-patching.md)。
+*Automated patching* 。 自動修補可讓 Azure 自動修補 SQL Server 和作業系統。 如果已安裝 SQL Server IaaS 擴充功能，您可以指定維護期間的星期幾、時間和持續時間。 Azure 會在此維護期間執行修補。 維護期間排程會使用 VM 地區設定做為時間。 如需詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 自動修補](automated-patching.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

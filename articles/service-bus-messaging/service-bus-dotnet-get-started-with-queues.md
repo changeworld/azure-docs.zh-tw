@@ -1,25 +1,14 @@
 ---
 title: 開始使用 Azure 服務匯流排佇列 | Microsoft Docs
 description: 在本教學課程中，您會建立 .NET Core 主控台應用程式，以在服務匯流排佇列中傳送和接收訊息。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 5718106aee0e60d111398efdb839945c2c7a8a06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 477d9d5a23e50d9b303d560b5530cbc22104c5cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471732"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337542"
 ---
 # <a name="get-started-with-service-bus-queues"></a>開始使用服務匯流排佇列
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -48,14 +37,14 @@ ms.locfileid: "77471732"
 ### <a name="add-the-service-bus-nuget-package"></a>新增服務匯流排 NuGet 封裝
 
 1. 以滑鼠右鍵按一下新建立的專案，然後選取 [管理 NuGet 套件]****。
-1. 選取 [瀏覽]。  搜尋並選取 [ **[Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)**]。
+1. 選取 [瀏覽]。 搜尋並選取 [ **[Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)**]。
 1. 選取 [**安裝**] 以完成安裝，然後關閉 [NuGet 套件管理員]。
 
     ![選取 NuGet 封裝][nuget-pkg]
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>撰寫程式碼以將訊息傳送到佇列
 
-1. 在*Program.cs*中，于命名`using`空間定義的頂端新增下列語句（在類別宣告之前）：
+1. 在*Program.cs*中，于 `using` 命名空間定義的頂端新增下列語句（在類別宣告之前）：
 
     ```csharp
     using System.Text;
@@ -64,7 +53,7 @@ ms.locfileid: "77471732"
     using Microsoft.Azure.ServiceBus;
     ```
 
-1. 在`Program`類別中，宣告下列變數：
+1. 在 `Program` 類別中，宣告下列變數：
 
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
@@ -72,9 +61,9 @@ ms.locfileid: "77471732"
     static IQueueClient queueClient;
     ```
 
-    輸入命名空間的連接字串作為`ServiceBusConnectionString`變數。 輸入您的佇列名稱。
+    輸入命名空間的連接字串作為 `ServiceBusConnectionString` 變數。 輸入您的佇列名稱。
 
-1. 將`Main()`方法取代為下列**非同步** `Main`方法。 它會呼叫`SendMessagesAsync()`您將在下一個步驟中新增的方法，以將訊息傳送至佇列。 
+1. 將方法取代為 `Main()` 下列**非同步** `Main` 方法。 它會呼叫 `SendMessagesAsync()` 您將在下一個步驟中新增的方法，以將訊息傳送至佇列。 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -94,7 +83,7 @@ ms.locfileid: "77471732"
         await queueClient.CloseAsync();
     }
     ```
-1. 直接在`MainAsync()`方法後面，新增下列`SendMessagesAsync()`方法，以執行傳送指定的訊息數目`numberOfMessagesToSend` （目前設定為10）的工作：
+1. 直接在 `MainAsync()` 方法後面，新增下列 `SendMessagesAsync()` 方法，以執行傳送指定的訊息數目 `numberOfMessagesToSend` （目前設定為10）的工作：
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -201,7 +190,7 @@ namespace CoreSenderApp
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>撰寫程式碼以從佇列接收訊息
 
-1. 在*Program.cs*中，于命名`using`空間定義的頂端新增下列語句（在類別宣告之前）：
+1. 在*Program.cs*中，于 `using` 命名空間定義的頂端新增下列語句（在類別宣告之前）：
 
     ```csharp
     using System;
@@ -211,7 +200,7 @@ namespace CoreSenderApp
     using Microsoft.Azure.ServiceBus;
     ```
 
-1. 在`Program`類別中，宣告下列變數：
+1. 在 `Program` 類別中，宣告下列變數：
 
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
@@ -219,7 +208,7 @@ namespace CoreSenderApp
     static IQueueClient queueClient;
     ```
 
-    輸入命名空間的連接字串作為`ServiceBusConnectionString`變數。 輸入您的佇列名稱。
+    輸入命名空間的連接字串作為 `ServiceBusConnectionString` 變數。 輸入您的佇列名稱。
 
 1. 以下列程式碼取代 `Main()` 方法：
 
@@ -246,7 +235,7 @@ namespace CoreSenderApp
     }
     ```
 
-1. 直接在`MainAsync()`方法後面，新增下列方法，以註冊訊息處理常式，並接收傳送者應用程式所傳送的訊息：
+1. 直接在 `MainAsync()` 方法後面，新增下列方法，以註冊訊息處理常式，並接收傳送者應用程式所傳送的訊息：
 
     ```csharp
     static void RegisterOnMessageHandlerAndReceiveMessages()

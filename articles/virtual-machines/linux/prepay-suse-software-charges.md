@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
 ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759279"
 ---
 # <a name="prepay-for-azure-software-plans"></a>預付 Azure 軟體方案
@@ -22,7 +21,7 @@ ms.locfileid: "81759279"
 您可以在 Azure 入口網站中購買 SUSE 和 RedHat 軟體方案。 若要購買方案：
 
 - 您必須至少擁有一個企業或個別訂用帳戶的擁有者角色，且具有隨用隨付定價。
-- 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用 [新增保留執行個體]**** 選項。 如果設定已停用，您必須是訂用帳戶的 EA 系統管理員。
+- 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用 [新增保留執行個體]  選項。 如果設定已停用，您必須是訂用帳戶的 EA 系統管理員。
 - 針對雲端解決方案提供者（CSP）計畫，管理員代理程式或銷售代理人可以購買軟體方案。
 
 ## <a name="buy-a-software-plan"></a>購買軟體方案
@@ -66,12 +65,12 @@ RedHat 方案折扣僅適用于您在購買時選取的 VM 大小。 您無法�
 
 ## <a name="next-steps"></a>後續步驟
 
-若要了解如何管理保留項目，請參閱[管理 Azure 保留項目](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)。
+若要瞭解如何管理保留，請參閱[管理 Azure 保留](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)。
 
 如需詳細資訊，請參閱下列文章：
 
-- [什麼是 Azure 保留專案？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [在 Azure 中管理保留](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+- [什麼是 Azure 保留項目？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [管理 Azure 中的保留](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 - [了解 SUSE 保留折扣的套用方式](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
 - [了解隨用隨付訂用帳戶的保留使用量](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 - [了解 Enterprise 註冊的保留項目使用量](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)

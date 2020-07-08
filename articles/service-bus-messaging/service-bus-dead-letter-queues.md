@@ -1,25 +1,13 @@
 ---
 title: 服務匯流排寄不出的信件佇列 |Microsoft Docs
 description: 說明 Azure 服務匯流排中的無效信件佇列。 服務匯流排佇列和主題訂閱提供次要的子佇列，稱為無效信件佇列。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 68b2aa38-dba7-491a-9c26-0289bc15d397
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/23/2020
-ms.author: aschhab
-ms.openlocfilehash: 6630d96c90a221a6b0374f2e4758748a77ad0610
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 06/23/2020
+ms.openlocfilehash: 62db4e71d99d1242cfbb69bdb7979bf9e5dc67ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647820"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337590"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服務匯流排寄不出的信件佇列的概觀
 

@@ -11,12 +11,11 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3e5cc6bbe363e111f5c39147010d6a3d00cb45c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604602"
 ---
 # <a name="what-are-baseline-policies"></a>什麼是基準原則？
 
@@ -25,7 +24,7 @@ ms.locfileid: "75767563"
 管理自訂的條件式存取原則需要 Azure AD Premium 授權。
 
 > [!IMPORTANT]
-> 基準原則即將淘汰。 如需詳細資訊，請參閱[Azure Active Directory 的新功能？](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults) 。
+> 基準原則即將淘汰。 如需詳細資訊，請參閱[Azure Active Directory 的新](../fundamentals/whats-new-archive.md#replacement-of-baseline-policies-with-security-defaults)功能的封存。
 
 ## <a name="baseline-policies"></a>基準原則
 
@@ -59,7 +58,7 @@ ms.locfileid: "75767563"
 * 計費管理員
 * 使用者管理員
 
-如果您的組織在指令碼或程式碼中使用這些帳戶，請考慮將它們取代為[受管理的身分識別](../managed-identities-azure-resources/overview.md)。
+如果您的組織在指令碼或程式碼中使用這些帳戶，請考慮將其取代為[受控識別](../managed-identities-azure-resources/overview.md)。
 
 ### <a name="end-user-protection-preview"></a>終端使用者保護（預覽）
 
@@ -80,7 +79,7 @@ ms.locfileid: "75767563"
 
 ### <a name="require-mfa-for-service-management-preview"></a>服務管理需要 MFA （預覽）
 
-組織會使用各種不同的 Azure 服務，並從以 Azure Resource Manager 為基礎的工具進行管理，例如：
+組織會使用各種不同的 Azure 服務，並從下列 Azure Resource Manager 型工具管理這些服務：
 
 * Azure 入口網站
 * Azure PowerShell
@@ -92,7 +91,7 @@ ms.locfileid: "75767563"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [啟用安全性預設值](../fundamentals/concept-fundamentals-security-defaults.md)
 * [一般條件式存取原則](concept-conditional-access-policy-common.md)

@@ -11,12 +11,11 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710434"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連線至 Azure IoT Central
 
@@ -50,7 +49,7 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 
 ![個別裝置的 SAS 金鑰](./media/concepts-get-connected/single-device-sas.png)
 
-若要深入瞭解，請參閱[建立 node.js 用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式](./tutorial-connect-device-nodejs.md)教學課程。
+若要深入瞭解，請參閱[建立並將 Node.js 用戶端應用程式連線到 Azure IoT Central 應用程式](./tutorial-connect-device-nodejs.md)教學課程。
 
 ## <a name="connect-devices-at-scale-using-sas"></a>使用 SAS 大規模連接裝置
 
@@ -93,11 +92,11 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 
 若要使用 x.509 憑證大量連線裝置，請先在應用程式中註冊裝置，方法是使用 CSV 檔案匯[入裝置識別碼和裝置名稱](howto-manage-devices.md#import-devices)。 裝置識別碼的大小寫都應該是小寫。
 
-使用上傳的根或中繼憑證，為您的裝置產生 x.509 分葉憑證。 使用**裝置識別碼**作為分葉`CNAME`憑證中的值。 您的裝置程式碼需要應用程式的**識別碼範圍**值、**裝置識別碼**和對應的裝置憑證。
+使用上傳的根或中繼憑證，為您的裝置產生 x.509 分葉憑證。 使用**裝置識別碼**作為分 `CNAME` 葉憑證中的值。 您的裝置程式碼需要應用程式的**識別碼範圍**值、**裝置識別碼**和對應的裝置憑證。
 
 #### <a name="sample-device-code"></a>範例裝置程式碼
 
-下列來自[Azure IoT NODE.JS SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js)的範例示範 node.js 裝置用戶端如何使用 x.509 分葉憑證和 DPS 向 IoT Central 應用程式註冊：
+下列來自[Azure IoT Node.JS SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js)的範例顯示 Node.js 裝置用戶端如何使用 x.509 分葉憑證和 DPS 向 IoT Central 應用程式註冊：
 
 :::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
 
@@ -107,7 +106,7 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 
 僅供測試之用，您可以使用下列公用程式來產生根、中繼和裝置憑證：
 
-- [適用于 Azure IoT 裝置布建裝置 SDK 的工具](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md)：您可以用來產生並驗證 x.509 憑證和金鑰的 node.js 工具集合。
+- [適用于 Azure IoT 裝置布建裝置 SDK 的工具](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md)： Node.js 工具的集合，您可以用來產生和驗證 x.509 憑證和金鑰。
 - 如果您使用 DevKit 裝置，此[命令列工具](https://aka.ms/iotcentral-docs-dicetool)會產生可新增至 IoT Central 應用程式的 CA 憑證，以驗證憑證。
 - [管理範例和教學課程的測試 CA 憑證](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)： PowerShell 和 Bash 腳本的集合，以：
   - 建立憑證鏈。
@@ -148,7 +147,7 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 
 1. 在 IoT Central 應用程式中[新增並驗證根或中繼的 x.509 憑證](#connect-devices-using-x509-certificates)。
 
-1. 使用您新增至 IoT Central 應用程式的根或中繼憑證，為您的裝置產生分葉憑證。 使用與分葉憑證中的`CNAME`小寫裝置識別碼。
+1. 使用您新增至 IoT Central 應用程式的根或中繼憑證，為您的裝置產生分葉憑證。 使用與分葉憑證中的小寫裝置識別碼 `CNAME` 。
 
 1. OEM 會使用裝置識別碼、產生的分葉 x.509 憑證和應用程式**識別碼範圍**值來閃爍每個裝置。
 
@@ -180,7 +179,7 @@ IoT Central 支援個別註冊的下列證明機制：
 - **X.509 憑證：** 若要建立使用 x.509 憑證的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為連線方法，以及 [**憑證（x.509）** ] 做為機制。 與個別註冊專案搭配使用的裝置憑證，必須將簽發者和主體 CN 設定為裝置識別碼。
 
     > [!TIP]
-    > 若要進行測試，您可以使用適用于 node.js[的 Azure IoT 裝置布建裝置 SDK 工具](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)來產生自我簽署憑證：`node create_test_cert.js device "mytestdevice"`
+    > 若要進行測試，您可以使用[適用于 Node.js的 Azure IoT 裝置布建裝置 SDK 工具](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)來產生自我簽署憑證：`node create_test_cert.js device "mytestdevice"`
 
 - **信賴平臺模組（TPM）證明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一種硬體安全性模組。 使用 TPM 是連接裝置的其中一個最安全的方式。 本文假設您使用的是獨立、固件或整合的 TPM。 軟體模擬 Tpm 非常適合用於原型設計或測試，但不提供與離散、固件或整合式 Tpm 相同層級的安全性。 請勿在生產環境中使用軟體 Tpm。 若要建立使用 TPM 的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為 [連線方法]，將 [ **TPM** ] 做為機制。 輸入 TPM 簽署金鑰並儲存裝置連接資訊。
 
@@ -261,7 +260,7 @@ Azure 裝置 Sdk 提供最簡單的方式來執行您的裝置程式碼。 可�
 | 屬性 (可寫入) | 裝置對應項所需和所報告的屬性 |
 | Command | 直接方法 |
 
-若要深入瞭解如何使用裝置 Sdk，請參閱[將 DevDiv 套件裝置連線到您的 Azure IoT Central 應用程式](howto-connect-devkit.md)，以取得範例程式碼。
+若要深入瞭解如何使用裝置 Sdk，請參閱[將 MXChip IoT DevKit 裝置連線到您的 Azure IoT Central 應用程式](howto-connect-devkit.md)，以取得範例程式碼。
 
 ### <a name="protocols"></a>通訊協定
 
@@ -281,8 +280,8 @@ Azure 裝置 Sdk 提供最簡單的方式來執行您的裝置程式碼。 可�
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您是裝置開發人員，建議的後續步驟如下：
+如果您是裝置開發人員，則建議的後續步驟如下：
 
-- 瞭解如何[使用 Azure CLI 監視裝置連線能力](./howto-monitor-devices-azure-cli.md)
+- 了解如何[使用 Azure CLI 監視裝置連線能力](./howto-monitor-devices-azure-cli.md)
 - 瞭解如何[在您的 Azure IoT Central 應用程式中定義新的 IoT 裝置類型](./howto-set-up-template.md)
 - 閱讀[Azure IoT Edge 裝置和 Azure IoT Central 的](./concepts-iot-edge.md)相關資訊

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: 8e3705aaecb0760513f0605aece89b7ffc0044a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f5ca4496b9de25d6e95f37076f679eacff28af81
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641651"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954959"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 編碼器來傳送單一位元速率的即時串流 
 > [!div class="op_single_selector"]
@@ -34,7 +33,7 @@ ms.locfileid: "81641651"
 > [!NOTE]
 > 使用 RTMPS 通訊協定時，編碼器必須支援 TLS 1.2。 基於 TLS 1.2 需求，請使用 Wirecast 13.0.2 或更高版本。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 * [建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)
 * 確定有執行中的「串流端點」。 如需詳細資訊，請參閱 [在媒體服務帳戶中管理串流端點](media-services-portal-manage-streaming-endpoints.md)
 * 安裝最新版的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
@@ -92,7 +91,7 @@ ms.locfileid: "81641651"
 2. 瀏覽至 [輸出]**** 索引標籤，並選取 [輸出設定...]**** 以設定輸出。
 
     請確定 [輸出目的地]**** 已設為 [RTMP Server]****。
-3. 按一下 [確定]  。
+3. 按一下 [確定]。
 4. 在 [設定] 頁面上，將 [目的地]**** 欄位設為 [Azure 媒體服務]****。
 
     編碼設定檔已預先選取為 [Azure H.264 720p 16:9 (1280x720)] ****。 若要自訂這些設定，請選取下拉式清單右邊的齒輪圖示，然後選擇 [新增預設]****。
@@ -110,13 +109,13 @@ ms.locfileid: "81641651"
    * 設定檔：主要
    * 畫面間隔：60 個畫面
 
-     **曲目**
+     **音訊**
 
    * 目標位元速率：192 kbit/秒
    * 取樣速率：44.100 kHz
 
      ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
-6. 按下 [儲存] ****。
+6. 按下 [儲存] 。
 
     [編碼] 欄位現在會有可供選取的新建立設定檔。
 
@@ -132,7 +131,7 @@ ms.locfileid: "81641651"
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 2. 在 **Wirecast** 主畫面上，確認視訊和音訊的輸入來源已就緒，然後按下左上角的 [資料流]****。
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
@@ -147,7 +146,7 @@ ms.locfileid: "81641651"
 
 瀏覽至 AMSE 工具，然後以滑鼠右鍵按一下要測試的通道。 在功能表中，將滑鼠游標停留在 [播放預覽]****，並選取 [使用 Azure 媒體播放器]****。  
 
-    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
+![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
 如果播放器中出現串流，則編碼器已妥善設定為連接到 AMS。
 

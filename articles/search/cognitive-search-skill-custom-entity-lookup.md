@@ -7,20 +7,19 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/17/2020
+ms.openlocfilehash: 00192ab3663944908f282f601396651cdd319df2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987475"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>自訂實體查閱認知技能（預覽）
 
 > [!IMPORTANT] 
 > 此技能目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前沒有入口網站或 .NET SDK 支援。
 
-**自訂實體查閱**技能會從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，它會以任何相符的實體標記所有檔。 此技能也支援某種程度的模糊比對，可套用來尋找類似但不完全精確的相符專案。  
+**自訂實體查閱**技能會從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，其會以任何相符的實體標記所有文件。 此技能也支援某種程度的模糊比對，可加以套用以尋找類似但不完全精確的相符項目。  
 
 此技能不會系結至認知服務 API，且在預覽期間可免費使用。 不過，您仍應[附加認知服務資源](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services)，以覆寫每日擴充限制。 透過 Azure 認知搜尋存取時，每日限制適用于認知服務的免費存取。
 
@@ -38,25 +37,25 @@ CustomEntityLookupSkill。
 
 | 參數名稱     | 描述 |
 |--------------------|-------------|
-| entitiesDefinitionUri    | JSON 或 CSV 檔案的路徑，其中包含要比對的所有目標文字。 此實體定義會在索引子執行的開頭讀取;在後續執行之前，將不會實現對此檔案執行的任何更新。 此設定必須可透過 HTTPS 存取。 請參閱下方的[自訂實體定義](#custom-entity-definition-format)格式，以取得預期的 CSV 或 JSON 架構。|
-|inlineEntitiesDefinition | 內嵌 JSON 實體定義。 此參數會取代 entitiesDefinitionUri 參數（如果有的話）。 不能以內嵌方式提供超過 10 KB 的設定。 請參閱下方的[自訂實體定義](#custom-entity-definition-format)，以取得預期的 JSON 架構。 |
-|defaultLanguageCode |    選擇性輸入文字的語言代碼，用來 token 化和描繪輸入文字。 支援下列語言： `da, de, en, es, fi, fr, it, ko, pt`。 預設值為 [英文`en`] （）。 如果您傳遞的是 languagecode-countrycode 格式，則只會使用該格式的 languagecode 部分。  |
+| `entitiesDefinitionUri`    | JSON 或 CSV 檔案的路徑，其中包含要比對的所有目標文字。 此實體定義會在索引子執行的開頭讀取;在後續執行之前，將不會實現對此檔案執行的任何更新。 此設定必須可透過 HTTPS 存取。 請參閱下方的[自訂實體定義](#custom-entity-definition-format)格式，以取得預期的 CSV 或 JSON 架構。|
+|`inlineEntitiesDefinition` | 內嵌 JSON 實體定義。 此參數會取代 entitiesDefinitionUri 參數（如果有的話）。 不能以內嵌方式提供超過 10 KB 的設定。 請參閱下方的[自訂實體定義](#custom-entity-definition-format)，以取得預期的 JSON 架構。 |
+|`defaultLanguageCode` |    選擇性輸入文字的語言代碼，用來 token 化和描繪輸入文字。 支援下列語言： `da, de, en, es, fi, fr, it, ko, pt` 。 預設值為 [英文] （ `en` ）。 如果您傳遞的是 languagecode-countrycode 格式，則只會使用該格式的 languagecode 部分。  |
 
 
 ## <a name="skill-inputs"></a>技能輸入
 
-| 輸入名稱      | 描述                   |
+| 輸入名稱      | Description                   |
 |---------------|-------------------------------|
-| text          | 要分析的文字。          |
-| languageCode    | 選擇性。 預設值為 `"en"`。  |
+| `text`          | 要分析的文字。          |
+| `languageCode`    | 選擇性。 預設值為 `"en"`。  |
 
 
 ## <a name="skill-outputs"></a>技能輸出
 
 
-| 輸出名稱      | 描述                   |
+| 輸出名稱      | Description                   |
 |---------------|-------------------------------|
-| 實體 | 物件的陣列，其中包含找到之相符專案的相關資訊，以及相關的中繼資料。 識別的每個實體都可能包含下欄欄位：  <ul> <li> *名稱*：識別的最上層實體。 實體代表「正規化」表單。 </li> <li> *識別碼：使用者*在「自訂實體定義格式」中所定義之實體的唯一識別碼。</li> <li> *描述*：使用者在「自訂實體定義格式」中所定義的實體描述。 </li> <li> *類型：* 使用者在「自訂實體定義格式」中所定義的實體類型。</li> <li> *子類型：* 實體子類型，如使用者在「自訂實體定義格式」中所定義。</li>  <li> *符合*：描述來源文字上該實體之每個相符專案的集合。 每個相符項都將具有下列成員： </li> <ul> <li> *text*：來源文件中的原始文字相符。 </li> <li> *offset*：在文字中找到相符項的位置。 </li> <li> *長度*：相符文字的長度。 </li> <li> *matchDistance*：此比對與原始機構名稱或別名不同的字元數。  </li> </ul> </ul>
+| `entities` | 物件的陣列，其中包含找到之相符專案的相關資訊，以及相關的中繼資料。 識別的每個實體都可能包含下欄欄位：  <ul> <li> *名稱*：識別的最上層實體。 實體代表「正規化」表單。 </li> <li> *識別碼：使用者*在「自訂實體定義格式」中所定義之實體的唯一識別碼。</li> <li> *描述*：使用者在「自訂實體定義格式」中所定義的實體描述。 </li> <li> *類型：* 使用者在「自訂實體定義格式」中所定義的實體類型。</li> <li> *子類型：* 實體子類型，如使用者在「自訂實體定義格式」中所定義。</li>  <li> *符合*：描述來源文字上該實體之每個相符專案的集合。 每個相符項都將具有下列成員： </li> <ul> <li> *text*：來源文件中的原始文字相符。 </li> <li> *offset*：在文字中找到相符項的位置。 </li> <li> *長度*：相符文字的長度。 </li> <li> *matchDistance*：此比對與原始機構名稱或別名不同的字元數。  </li> </ul> </ul>
   |
 
 ## <a name="custom-entity-definition-format"></a>自訂實體定義格式
@@ -143,24 +142,24 @@ JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、
 
 下表詳細說明您在定義要比對的實體時可設定的不同設定參數：
 
-|  欄位名稱  |        描述  |
+|  欄位名稱  |        Description  |
 |--------------|----------------------|
-| NAME | 最上層實體描述元。 技能輸出中的相符專案會依此名稱分組，而且應該代表所要尋找之文字的「正規化」形式。  |
-| description  | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
-| type | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
-| subtype | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
-| id | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
-| caseSensitive | 選擇性預設值為 false。 布林值，表示與機構名稱的比較是否應區分字元大小寫。 "Microsoft" 不區分大小寫的範例可能是： microsoft，microsoft，microsoft |
-| fuzzyEditDistance | 選擇性預設為0。 最大值為5。 表示可接受的分歧字元數，仍然會構成與機構名稱相符的專案。 會傳回任何指定之相符的最小可能值。  比方說，如果 [編輯距離] 設定為3，"Windows 10" 仍會符合 "Windows"、"Windows10" 和 "windows 7"。 <br/> 當區分大小寫設定為 false 時，不會將大小寫差異計入「不確定」容錯的範圍，但也會執行。 |
-| defaultCaseSensitive | 選擇性變更此實體的預設區分大小寫值。 它可用來變更所有別名 caseSensitive 值的預設值。 |
-| defaultFuzzyEditDistance | 選擇性變更此實體的預設模糊編輯距離值。 它可以用來變更所有別名 fuzzyEditDistance 值的預設值。 |
-| 別名 | 選擇性複雜物件的陣列，可以用來指定根機構名稱的替代拼寫或同義字。 |
+| `name` | 最上層實體描述元。 技能輸出中的相符專案會依此名稱分組，而且應該代表所要尋找之文字的「正規化」形式。  |
+| `description`  | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
+| `type` | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
+| `subtype` | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
+| `id` | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
+| `caseSensitive` | 選擇性預設值為 false。 布林值，表示與機構名稱的比較是否應區分字元大小寫。 "Microsoft" 不區分大小寫的範例可能是： microsoft，microsoft，microsoft |
+| `fuzzyEditDistance` | 選擇性預設為0。 最大值為5。 表示可接受的分歧字元數，仍然會構成與機構名稱相符的專案。 會傳回任何指定之相符的最小可能值。  比方說，如果 [編輯距離] 設定為3，"Windows 10" 仍會符合 "Windows"、"Windows10" 和 "windows 7"。 <br/> 當區分大小寫設定為 false 時，不會將大小寫差異計入「不確定」容錯的範圍，但也會執行。 |
+| `defaultCaseSensitive` | 選擇性變更此實體的預設區分大小寫值。 它可用來變更所有別名 caseSensitive 值的預設值。 |
+| `defaultFuzzyEditDistance` | 選擇性變更此實體的預設模糊編輯距離值。 它可以用來變更所有別名 fuzzyEditDistance 值的預設值。 |
+| `aliases` | 選擇性複雜物件的陣列，可以用來指定根機構名稱的替代拼寫或同義字。 |
 
-| 別名屬性 | 描述 |
+| 別名屬性 | Description |
 |------------------|-------------|
-| text  | 某些目標機構名稱的替代拼寫或標記法。  |
-| caseSensitive | 選擇性作用與上述根實體 "caseSensitive" 參數相同，但僅適用于這個別名。 |
-| fuzzyEditDistance | 選擇性作用與上述根實體 "fuzzyEditDistance" 參數相同，但僅適用于這個別名。 |
+| `text`  | 某些目標機構名稱的替代拼寫或標記法。  |
+| `caseSensitive` | 選擇性作用與上述根實體 "caseSensitive" 參數相同，但僅適用于這個別名。 |
+| `fuzzyEditDistance` | 選擇性作用與上述根實體 "fuzzyEditDistance" 參數相同，但僅適用于這個別名。 |
 
 
 ### <a name="inline-format"></a>內嵌格式
@@ -188,7 +187,7 @@ JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、
       }, 
       { 
         "name" : "Xbox One", 
-        "type": "Harware",
+        "type": "Hardware",
         "subtype" : "Gaming Device",
         "id" : "4e36bf9d-5550-4396-8647-8e43d7564a76",
         "description" : "The Xbox One product"
@@ -208,7 +207,7 @@ JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、
     ]
   }
 ```
-或者，如果您決定提供實體定義檔的指標，使用 entitiesDefinitionUri 格式的範例技能定義如下所示：
+或者，如果您決定提供實體定義檔的指標，則使用格式的範例技能定義如下 `entitiesDefinitionUri` 所示：
 
 ```json
   {
@@ -240,7 +239,7 @@ JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、
         "recordId": "1",
         "data":
            {
-             "text": "The company microsoft was founded by Bill Gates. Microsoft's gaming console is called Xbox",
+             "text": "The company, Microsoft, was founded by Bill Gates. Microsoft's gaming console is called Xbox",
              "languageCode": "en"
            }
       }
@@ -302,7 +301,7 @@ JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、
 
 如果偵測到的相符專案數目大於允許的最大值，就會發出此警告。 在此情況下，我們將停止包含重複的相符專案。 如果您無法接受這種情況，請提出[支援票證](https://ms.portal.azure.com/#create/Microsoft.Support)，讓我們可以協助您使用個別的使用案例。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)

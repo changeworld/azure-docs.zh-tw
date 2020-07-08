@@ -9,18 +9,17 @@ editor: ''
 ms.assetid: 11490814-d9fd-4dc7-9c3b-55dd2c23eaf1
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5308badf439254062a8aefca1840eb21bc234ace
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 8bc8846d546faec194617ccb753cdbd105e16bf9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60580362"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513621"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>透過 StorSimple 裝置管理員變更 StorSimple Virtual Array 裝置系統管理員密碼
 
@@ -60,7 +59,7 @@ ms.locfileid: "60580362"
 
 #### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>透過本機 Web UI 變更裝置系統管理員密碼
 
-1. 在本機 web UI 中，針對您的裝置按一下 [**維護** > **密碼變更**]。
+1. 在本機 web UI 中，針對您的裝置按一下 [**維護**  >  **密碼變更**]。
    
     ![變更 password1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
 2. 輸入 **目前的密碼**。

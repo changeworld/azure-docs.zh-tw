@@ -7,12 +7,11 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 49c83fab54b7188c3a3838f3162e71d8495989dd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79535777"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037506"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 串流分析解決方案模式
 
@@ -30,13 +29,13 @@ ms.locfileid: "79535777"
 
 ## <a name="use-sql-for-dashboard"></a>使用適用于儀表板的 SQL
 
-[Power BI] 儀表板會提供低延遲，但不能用來產生完整的成熟 Power BI 報表。 常見的報告模式是先將您的資料輸出到 SQL database。 然後使用 Power BI 的 SQL connector 查詢 SQL，以取得最新的資料。
+[Power BI] 儀表板會提供低延遲，但不能用來產生完整的成熟 Power BI 報表。 常見的報告模式是先將您的資料輸出到 SQL Database。 然後使用 Power BI 的 SQL connector 查詢 SQL，以取得最新的資料。
 
 ![ASA SQL 儀表板](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-使用 SQL database 可讓您有更大的彈性，但代價是延遲更高。 對於延遲需求大於一秒的作業，此解決方案是最佳做法。 使用此方法，您可以最大化 Power BI 功能，以進一步切割和細分報表的資料，以及更多的視覺效果選項。 您也會獲得使用其他儀表板解決方案的彈性，例如 Tableau。
+使用 SQL Database 可為您提供更大的彈性，但代價是延遲稍微高一點。 對於延遲需求大於一秒的作業，此解決方案是最佳做法。 使用此方法，您可以最大化 Power BI 功能，以進一步切割和細分報表的資料，以及更多的視覺效果選項。 您也會獲得使用其他儀表板解決方案的彈性，例如 Tableau。
 
-SQL 不是高輸送量資料存放區。 從 Azure 串流分析到 SQL database 的最大輸送量目前約為 24 MB/s。 如果您解決方案中的事件來源以較高的速率產生資料，您必須使用串流分析中的處理邏輯，以降低 SQL 的輸出速率。 如篩選、視窗型匯總、使用時態性聯結的模式比對，以及分析函式，都可以使用這類的技術。 使用 Azure 串流分析輸出中所述的技術，可以進一步優化 SQL 的輸出速率[，以 Azure SQL Database](stream-analytics-sql-output-perf.md)。
+SQL 不是高輸送量資料存放區。 從 Azure 串流分析 SQL Database 的最大輸送量目前約為 24 MB/s。 如果您解決方案中的事件來源以較高的速率產生資料，您必須使用串流分析中的處理邏輯，以降低 SQL 的輸出速率。 如篩選、視窗型匯總、使用時態性聯結的模式比對，以及分析函式，都可以使用這類的技術。 使用 Azure 串流分析輸出中所述的技術，可以進一步優化 SQL 的輸出速率[，以 Azure SQL Database](stream-analytics-sql-output-perf.md)。
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>使用事件訊息，將即時深入解析納入您的應用程式
 
@@ -72,7 +71,7 @@ SQL 不是高輸送量資料存放區。 從 Azure 串流分析到 SQL database 
 
 ## <a name="use-reference-data-for-application-customization"></a>使用參考資料進行應用程式自訂
 
-Azure 串流分析參考資料功能是特別針對使用者自訂（例如警示閾值、處理規則和[地理柵欄](geospatial-scenarios.md)）所設計。 應用層可以接受參數變更，並將它們儲存在 SQL 資料庫中。 串流分析作業會定期查詢資料庫的變更，並讓自訂參數可透過參考資料聯結來存取。 如需如何使用參考資料進行應用程式自訂的詳細資訊，請參閱[SQL 參考資料](sql-reference-data.md)和[參考資料聯結](/stream-analytics-query/reference-data-join-azure-stream-analytics)。
+Azure 串流分析參考資料功能是特別針對使用者自訂（例如警示閾值、處理規則和[地理柵欄](geospatial-scenarios.md)）所設計。 應用層可以接受參數變更，並將它們儲存在 SQL Database 中。 串流分析作業會定期查詢資料庫的變更，並讓自訂參數可透過參考資料聯結來存取。 如需如何使用參考資料進行應用程式自訂的詳細資訊，請參閱[SQL 參考資料](sql-reference-data.md)和[參考資料聯結](/stream-analytics-query/reference-data-join-azure-stream-analytics)。
 
 此模式也可以用來執行規則引擎，其中規則的臨界值是從參考資料定義而來。 如需規則的詳細資訊，請參閱[在 Azure 串流分析中處理可設定的閾值型規則](stream-analytics-threshold-based-rules.md)。
 
@@ -106,7 +105,7 @@ Azure 串流分析的內建[異常偵測模型](stream-analytics-machine-learnin
 
 ## <a name="use-reference-data-for-enrichment"></a>使用擴充的參考資料
 
-資料擴充通常是 ETL 引擎的需求。 Azure 串流分析支援以 SQL database 和 Azure Blob 儲存體的[參考資料](stream-analytics-use-reference-data.md)擴充資料。 Azure Data Lake 和 SQL 資料倉儲中的資料登陸都可以進行資料擴充。
+資料擴充通常是 ETL 引擎的需求。 Azure 串流分析支援使用來自 SQL Database 和 Azure Blob 儲存體的[參考資料](stream-analytics-use-reference-data.md)來進行資料擴充。 Azure Data Lake 和 SQL 資料倉儲中的資料登陸都可以進行資料擴充。
 
 ![使用資料擴充的 ASA 離線分析](media/stream-analytics-solution-patterns/offlineanalytics.png)
 

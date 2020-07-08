@@ -4,16 +4,15 @@ description: 了解如何在 Azure 入口網站中建立匯入作業，以將資
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cbff2cbed37a4cff91116596f1c20dc3d170cae2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268297"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513491"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 匯入/匯出服務將資料匯入 Azure 檔案服務
 
@@ -21,7 +20,7 @@ ms.locfileid: "79268297"
 
 匯入/匯出服務僅支援將 Azure 檔案服務匯入到 Azure 儲存體。 不支援將 Azure 檔案服務匯出。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在建立匯入作業來將資料傳入 Azure 檔案服務之前，請仔細檢閱並完成下列必要條件清單。 您必須：
 
@@ -30,7 +29,7 @@ ms.locfileid: "79268297"
 - 具有屬於[支援類型](storage-import-export-requirements.md#supported-disks)的磁碟，且數量足夠。
 - 具有執行[受支援 OS 版本](storage-import-export-requirements.md#supported-operating-systems) 的 Windows 系統。
 - 請在 Windows 系統上[下載 WAImportExport 第 2 版](https://aka.ms/waiev2)。 將檔案解壓縮至預設資料夾 `waimportexport`。 例如： `C:\WaImportExport` 。
-- 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的貨運公司，請聯絡 Azure 資料箱營運小組`adbops@microsoft.com`，網址為。  
+- 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的貨運公司，請聯絡 Azure 資料箱營運小組，網址為 `adbops@microsoft.com` 。  
     - 帳戶必須是有效的、需要有餘額，且必須有退貨運送功能。
     - 產生匯出作業的追蹤號碼。
     - 每個作業都應該具有個別的追蹤號碼。 不支援多個作業使用相同的追蹤號碼。
@@ -124,7 +123,7 @@ ms.locfileid: "79268297"
 
     ![按一下 [匯入/匯出作業]](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. 在 [基本]**** 中：
+4. 在 [基本] 中：
 
     - 選取 [匯入至 Azure]****。
     - 輸入匯入作業的描述性名稱。 當作業正在進行中和一旦完成後，使用此名稱來追蹤您的作業。
@@ -145,7 +144,7 @@ ms.locfileid: "79268297"
 
 4. 在 [寄返資訊]**** 中：
 
-    - 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的貨運公司，請從下拉式清單中選擇現有的選項。 請聯絡 Azure 資料箱營運小組`adbops@microsoft.com` ，其中包含您打算使用之電訊廠商的相關資訊。
+    - 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的貨運公司，請從下拉式清單中選擇現有的選項。 請聯絡 Azure 資料箱營運小組， `adbops@microsoft.com` 其中包含您打算使用之電訊廠商的相關資訊。
     - 輸入您在該貨運公司中建立的有效貨運帳戶號碼。 當匯入作業完成時，Microsoft 會透過此帳戶將磁碟機寄還給您。
     - 提供完整且有效的連絡人名稱、電話、電子郵件、街道地址、城市、郵遞區號、州/省和國家/地區。
 

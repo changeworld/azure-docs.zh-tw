@@ -7,22 +7,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72754796"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954650"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>具有 Azure Cosmos DB 的擁有權總成本（TCO）
 
 Azure Cosmos DB 採用更細緻的多租用戶和資源控管設計。 這項設計允許 Azure Cosmos DB以極低的成本運作，並協助使用者儲存。 目前，Azure Cosmos DB 在單一電腦上支援超過 280 多個客戶工作負載，密度持續增加，且叢集內有數千個客戶工作負載。 它會跨叢集中的不同電腦以及跨資料中心內的多個叢集，負載平衡客戶工作負載的複本。 若要深入瞭解，請參閱[Azure Cosmos DB：推送全域分散式資料庫的](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)領域。 由於資源控管、多租用戶和 Azure 基礎結構之其餘部分的原生整合，Azure Cosmos DB 平均比在 IaaS 上執行的 MongoDB、Cassandra 或其他 OSS NoSQL 便宜 4 到 6 倍，且比在內部部署執行的資料庫引擎便宜最高 10 倍。 請參閱 [NoSQL 資料庫雲端服務的擁有權總成本](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)的相關文件。
 
-OSS NoSQL 資料庫解決方案 (例如 Apache Cassandra、MongoDB、HBase)，引擎是針對內部部署環境所設計。 當作為受控服務提供時，它們相當於使用租用戶資料庫來管理已佈建的叢集和監視支援的 Resource Manager 範本。 OSS NoSQL 架構需要大量的作業額外負荷，並且查找專門知識可能既困難又昂貴。 另一方面，Azure Cosmos DB 是完全受控的雲端服務，它允許開發人員專注於商務創新，而不是管理和維護資料庫基礎結構上。 
+OSS NoSQL 資料庫解決方案 (例如 Apache Cassandra、MongoDB、HBase)，引擎是針對內部部署環境所設計。 當作為受控服務提供時，它們相當於使用租用戶資料庫來管理已佈建的叢集和監視支援的 Resource Manager 範本。 OSS NoSQL 架構需要大量的作業額外負荷，並且查找專門知識可能既困難又昂貴。 另一方面，Azure Cosmos DB 是完全受控的雲端服務，它允許開發人員專注於商務創新，而不是管理和維護資料庫基礎結構上。
 
 與雲端原生資料庫服務 Azure Cosmos DB 不同，OSS NoSQL 資料庫引擎不是以資源控管或更細緻的多租用戶作為基礎架構原則而設計和建置的。 OSS NoSQL 資料庫引擎 (例如 Cassandra 與 MongoDB) 做出了一個基本假設，即執行它們的虛擬機器的所有資源都可供其使用。 如果資源數量低於特定臨界值，則許多這些資料庫引擎無法運作。 例如，針對小型的 VM 執行個體，它們可用於廠商建議的組態，通常建議具有更高成本的大規模 VM。 因此，您無法裝載 OSS NoSQL 或任何其他內部部署資料庫引擎，並可使用以耗用量為基礎的計費模型，例如每秒要求數或已耗用的儲存體。
 
-## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Azure Cosmos DB 的擁有權總成本 
+## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Azure Cosmos DB 的擁有權總成本
 
 Azure Cosmos DB 的無伺服器佈建模型不需要過度佈建的資料庫基礎結構。 提供 Azure Cosmos DB 資源，而不需要特殊組態或授權。 因此，相較於 OSS NoSQL 資料庫，Azure Cosmos DB 支援的應用程式能夠以節省高達 70% 的擁有權總成本執行。 如需即時範例，請參閱[客戶使用案例](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc)。 Azure Cosmos DB 定價模型的其他優點包括：
 
@@ -30,7 +29,7 @@ Azure Cosmos DB 的無伺服器佈建模型不需要過度佈建的資料庫基�
 
 * **不需要任何 NoSQL DevOps 管理：** 有了 Azure Cosmos DB，就不需要使用 DevOps 來管理部署、執行維護、調整或修補。 您可以執行透過裝載於內部部署或雲端基礎結構上的 OSS NoSQL 叢集執行的所有工作負載。
 
-![Azure Cosmos DB 的擁有權成本](./media/total-cost-ownership/tco.png)
+:::image type="content" source="./media/total-cost-ownership/tco.png" alt-text="Azure Cosmos DB 的擁有權成本" border="false":::
 
 * **彈性 scale 的能力：** Azure Cosmos DB 輸送量可以相應增加和減少，讓您在非尖峰時間降低擁有權成本。 部署在雲端基礎結構上的 OSS NoSQL 叢集提供的彈性有限，且根據定義，內部部署不具有彈性。 在 Azure Cosmos DB 中，如果您佈建更多的輸送量，則可確保您的輸送量呈線性成長。 這項保證由財務 SLA 和任何規模的第 99 個百分位數所支援。
 

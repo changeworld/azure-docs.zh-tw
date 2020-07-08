@@ -6,11 +6,10 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259002"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712457"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric 叢集中的定期備份與還原
 > [!div class="op_single_selector"]
@@ -45,7 +44,7 @@ Service Fabric 提供一組 API，可實現下列和定期備份與復原功能�
 - 暫時暫停備份
 - 備份的保留管理 (即將推出)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 * 具有 Fabric 6.4 版或更新版本的 Service Fabric 叢集。 如需了解使用 Azure 資源範本來建立 Service Fabric 叢集的步驟，請參閱這篇[文章](service-fabric-cluster-creation-via-arm.md)。
 * 用於加密祕密 (連線至儲存體以儲存備份時所需) 的 X.509 憑證。 若要了解如何取得或建立 X.509 憑證，請參閱這篇[文章](service-fabric-cluster-creation-via-arm.md)。
 * 使用 Service Fabric SDK 3.0 版或更新版本來建置的 Service Fabric 可靠具狀態應用程式。 針對以 .NET Core 2.0 為目標的應用程式，應該使用 Service Fabric SDK 3.1 版或更新版本來建立應用程式。
@@ -56,7 +55,7 @@ Service Fabric 提供一組 API，可實現下列和定期備份與復原功能�
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-* 請先使用`Connect-SFCluster`命令來確定叢集已連線，再使用 ServiceFabric 模組進行任何設定要求。
+* 請先使用命令來確定叢集已連線， `Connect-SFCluster` 再使用 ServiceFabric 模組進行任何設定要求。
 
 ```powershell
 
@@ -68,7 +67,7 @@ Service Fabric 提供一組 API，可實現下列和定期備份與復原功能�
 
 ### <a name="using-azure-portal"></a>使用 Azure 入口網站
 
-[ `Include backup restore service`啟用] 索引`+ Show optional settings`卷`Cluster Configuration`標下的核取方塊。
+[啟用] 索引標籤 `Include backup restore service` 下的核取方塊 `+ Show optional settings` `Cluster Configuration` 。
 
 ![使用入口網站啟用備份還原服務][1]
 
@@ -76,7 +75,7 @@ Service Fabric 提供一組 API，可實現下列和定期備份與復原功能�
 ### <a name="using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本
 首先，您必須在叢集啟用「備份與還原服務」__。 取得您想要部署之叢集的範本。 您可以使用[範例範本](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或建立 Resource Manager 範本。 請使用下列步驟來啟用「備份與還原服務」__：
 
-1. 檢查`Microsoft.ServiceFabric/clusters`資源的`apiversion`是否已設定**`2018-02-01`** 為，如果不是，請更新它，如下列程式碼片段所示：
+1. 檢查資源的 `apiversion` 是否已設定為 **`2018-02-01`** `Microsoft.ServiceFabric/clusters` ，如果不是，請更新它，如下列程式碼片段所示：
 
     ```json
     {

@@ -6,17 +6,16 @@ documentationcenter: ''
 author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: rohink
-ms.openlocfilehash: 2aee4282fe6a66151ea39018f0d6c0db51f2c027
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9f779910460ec19f0efb02fb1a65f39bb100050c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76939127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711607"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>新增、停用、啟用或刪除端點
 
@@ -39,7 +38,7 @@ ms.locfileid: "76939127"
     3. 對於 [目標資源類型]****，從下拉式清單中選擇適當的資源類型。
     4. 對於 [目標資源]****，按一下 [選擇...]**** 以在 [資源]**** 刀鋒視窗中列出相同訂用帳戶下的資源。 在顯示的 [資源]**** 刀鋒視窗中，挑選您想要新增為第一個端點的服務。
     5. 在 [優先順序]**** 中，選取 [1]****。 這會使得所有流量傳送至此端點 (如果狀況良好)。
-    6. 維持不勾選 [新增為已停用]****。
+    6. 維持不勾選 [新增為已停用]  。
     7. 按一下 [檔案] &gt; [新增] &gt; [專案] 
 6.  重複步驟 4 和 5，新增下一個 Azure 端點。 新增它時務必將 [優先順序]**** 值設為 [2]****。
 7.  這兩個端點新增完畢後，它們會顯示在 [流量管理員設定檔]**** 刀鋒視窗中，而且監視狀態是 [線上]****。

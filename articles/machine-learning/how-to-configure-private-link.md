@@ -5,28 +5,27 @@ description: 使用 Azure 私人連結，從虛擬網路安全地存取您的 Az
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: 49565624cee70e40141ca7e8b57b2c26b950d20b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891359"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84666924"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>設定 Azure Machine Learning 工作區的 Azure 私人連結（預覽）
 
 在本檔中，您將瞭解如何搭配使用 Azure 私用連結與您的 Azure Machine Learning 工作區。 這項功能目前為預覽狀態，適用于美國東部、美國西部2、美國中南部區域。 
 
-Azure 私人連結可讓您使用私人端點連接到您的工作區。 私人端點是您的虛擬網路內的一組私人 IP 位址。 接著，您可以將工作區的存取限制為只在私人 IP 位址上進行。 私用連結有助於降低資料外泄的風險。 若要深入瞭解私人端點，請參閱[Azure 私用連結](/azure/private-link/private-link-overview)一文。
+Azure 私人連結可讓您使用私人端點連接到您的工作區。 私人端點是虛擬網路內的一組私人 IP 位址。 接著，您可以將工作區的存取限制為只在私人 IP 位址上進行。 私用連結有助於降低資料外泄的風險。 若要深入了解私人端點，請參閱 [Azure Private Link](/azure/private-link/private-link-overview) 一文。
 
 > [!IMPORTANT]
 > Azure 私用連結不會影響 Azure 控制平面（管理作業），例如刪除工作區或管理計算資源。 例如，建立、更新或刪除計算目標。 這些作業會在公用網際網路上正常執行。
 >
-> 啟用私用連結的工作區中不支援 Azure Machine Learning 計算實例預覽。
+> 已啟用 Private Link 的工作區不支援 Azure Machine Learning 計算執行個體預覽。
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>建立使用私用端點的工作區
 
@@ -51,7 +50,7 @@ Azure 私人連結可讓您使用私人端點連接到您的工作區。 私人�
 
 提交範本並完成布建之後，包含您工作區的資源群組將會包含三個與私人連結相關的新成品類型：
 
-* 私用端點
+* 私人端點
 * Linux
 * 私人 DNS 區域
 
@@ -60,18 +59,18 @@ Azure 私人連結可讓您使用私人端點連接到您的工作區。 私人�
 ### <a name="deploy-the-template-using-the-azure-portal"></a>使用 Azure 入口網站部署範本
 
 1. 遵循[從自訂範本部署資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)的步驟。 當您抵達 [__編輯範本__] 畫面時，請貼上這份檔結尾的其中一個範本。
-1. 選取 [儲存]____ 以使用範本。 提供下列資訊，並同意列出的條款及條件：
+1. 選取 [儲存] 以使用範本。 提供下列資訊，並同意列出的條款及條件：
 
    * 訂用帳戶：選取要用於這些資源的 Azure 訂用帳戶。
-   * 資源群組：選取或建立包含服務的資源群組。
-   * 工作區名稱：要用於將建立之 Azure Machine Learning 工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
+   * 資源群組：選取或建立資源群組以包含服務。
+   * 工作區名稱：要用於將建立之Azure Machine Learning 工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
    * 位置：選取將建立資源的位置。
 
 如需詳細資訊，請參閱[從自訂範本部署資源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
 ### <a name="deploy-the-template-using-azure-powershell"></a>使用 Azure PowerShell 部署範本
 
-這個範例假設您已將本檔結尾的其中一個範本儲存到目前目錄中名為`azuredeploy.json`的檔案：
+這個範例假設您已將本檔結尾的其中一個範本儲存到目前目錄中名為的檔案 `azuredeploy.json` ：
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -84,7 +83,7 @@ new-azresourcegroupdeployment -name exampledeployment `
 
 ### <a name="deploy-the-template-using-the-azure-cli"></a>使用 Azure CLI 部署範本
 
-這個範例假設您已將本檔結尾的其中一個範本儲存到目前目錄中名為`azuredeploy.json`的檔案：
+這個範例假設您已將本檔結尾的其中一個範本儲存到目前目錄中名為的檔案 `azuredeploy.json` ：
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -99,14 +98,13 @@ az group deployment create \
 
 ## <a name="using-a-workspace-over-a-private-endpoint"></a>在私用端點上使用工作區
 
-由於只允許從虛擬網路對工作區進行通訊，因此使用工作區的任何開發環境都必須是虛擬網路的成員。 例如，虛擬網路中的虛擬機器，或使用 VPN 閘道連線到虛擬網路的電腦。
+由於只允許從虛擬網路對工作區進行通訊，因此使用工作區的任何開發環境都必須是虛擬網路的成員。 例如，虛擬網路中的虛擬機器。
 
 > [!IMPORTANT]
 > 為了避免暫時中斷連線，Microsoft 建議在啟用私用連結之後，清除連線至工作區之電腦上的 DNS 快取。 
 
 如需 Azure 虛擬機器的詳細資訊，請參閱[虛擬機器檔](/azure/virtual-machines/)。
 
-如需 VPN 閘道的相關資訊，請參閱[什麼是 vpn 閘道](/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
 
 ## <a name="using-azure-storage"></a>使用 Azure 儲存體
 
@@ -127,7 +125,7 @@ az group deployment create \
 若要保護您的工作區所使用的 Azure Kubernetes services，請將它放在虛擬網路中。 如需詳細資訊，請參閱搭配[使用 Azure Kubernetes Services 與您的工作區](how-to-enable-virtual-network.md#aksvnet)。
 
 > [!WARNING]
-> Azure Machine Learning 不支援使用已啟用私用連結的 Azure Kubernetes Service。
+> Azure Machine Learning 不支援使用已啟用 Private Link 的 Azure Kubernetes Service。
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 

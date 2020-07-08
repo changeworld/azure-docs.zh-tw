@@ -6,17 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7144fa75d156ca7aed9d8215592f89c167cfb221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fc5e035215e7cabd02861c6ee2498cadd1ef0534
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213358"
 ---
 # <a name="user-defined-schemas-in-synapse-sql-pool"></a>Synapse SQL 集區中的使用者定義架構
 本文著重于提供幾個秘訣，讓您在 Synapse SQL 集區中使用 T-sql 使用者定義的架構來開發解決方案。

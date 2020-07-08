@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp
 ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759775"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>透過入口網站和 .NET 裝置開始使用 IoT 中樞模組身分識別和模組對應項
@@ -35,11 +34,11 @@ ms.locfileid: "81759775"
 > 如需您可以用來建立兩個應用程式以在裝置和您的解決方案後端執行的 Azure IoT Sdk 的相關資訊，請參閱[Azure Iot sdk](iot-hub-devguide-sdks.md)。
 >
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Visual Studio。
 
-* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
 
 ## <a name="create-a-hub"></a>建立中樞
 
@@ -75,7 +74,7 @@ ms.locfileid: "81759775"
 
 1. 在 Visual Studio 中，選取 [**建立新專案**]，然後選擇 [**主控台應用程式（.NET Framework）**]，然後選取 **[下一步]**。
 
-1. 在 [**設定您的新專案**] 中，輸入*UpdateModuleTwinReportedProperties*做為**專案名稱**。 選取 [建立] **** 繼續作業。
+1. 在 [**設定您的新專案**] 中，輸入*UpdateModuleTwinReportedProperties*做為**專案名稱**。 選取 [建立]  繼續作業。
 
     ![設定您是 visual studio 專案](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
 
@@ -83,7 +82,7 @@ ms.locfileid: "81759775"
 
 模組身分識別與模組對應項都處於公開預覽階段。 僅適用于 IoT 中樞發行前版本裝置 Sdk。 若要安裝它，請遵循下列步驟：
 
-1. 在 Visual Studio 中，開啟 [**工具** > ] [**nuget 套件管理員** > ] [**管理方案的 nuget 套件**]。
+1. 在 Visual Studio 中，開啟 [**工具**] [  >  **nuget 套件管理員**] [  >  **管理方案的 nuget 套件**]。
 
 1. 選取 **[流覽]**，然後選取 [**包含發行**前版本]。 搜尋 [ *Microsoft. Azure. 用戶端*]。 選取最新版本並安裝。
 
@@ -107,7 +106,7 @@ ms.locfileid: "81759775"
 
 若要建立您的應用程式，請遵循下列步驟：
 
-1. 在 Program.cs 檔案`using`的頂端新增下列語句： **Program.cs**
+1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
 
   ```csharp
   using Microsoft.Azure.Devices.Client;

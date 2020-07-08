@@ -1,10 +1,9 @@
 ---
 title: SQL Server VM 的儲存體組態 | Microsoft Docs
-description: 本主題說明 Azure 如何在佈建期間針對 SQL Server VM 設定儲存體 (Resource Manager 部署模型)。 它也會說明如何針對現有的 SQL Server VM 設定儲存體。
+description: 本主題說明 Azure 如何在布建期間設定 SQL Server Vm 的儲存體（Azure Resource Manager 部署模型）。 它也會說明如何針對現有的 SQL Server VM 設定儲存體。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: jroth
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
@@ -13,17 +12,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: f5f71f342152a1f7d524053f1a2f82937784dbd1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 21609e38625d0911476c85a9d6e518f5ff7e9e61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84029999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667364"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的儲存體組態
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-當您在 Azure 中設定 SQL Server 虛擬機器映像時，入口網站有協助自動進行儲存體設定。 這包括將儲存體附加至 VM、讓該儲存體可供 SQL Server 存取，並加以設定以針對特定的效能需求最佳化。
+當您在 Azure 中設定 SQL Server 虛擬機器（VM）映射時，Azure 入口網站有助於自動化存放裝置設定。 這包括將儲存體附加至 VM、讓該儲存體可供 SQL Server 存取，並加以設定以針對特定的效能需求最佳化。
 
 本主題說明 Azure 如何在佈建期間針對 SQL Server VM 及針對現有的 VM 設定儲存體。 此設定是以執行 SQL Server 之 Azure VM 的 [效能最佳作法](performance-guidelines-best-practices.md) 為基礎。
 
@@ -57,7 +55,7 @@ ms.locfileid: "84029999"
 
 進階 SSD 的磁碟快取可以是*唯讀*、*讀寫*或*無*。 
 
-- *唯讀*快取對於儲存在進階儲存體上的 SQL Server 資料檔案非常有用。 從位於 VM 記憶體和本機 SSD 內的快取執行讀取時，*唯讀*快取可帶來低讀取延遲、高讀取 IOPS 和輸送量。 這些讀取的速度比從 Azure Blob 儲存體的資料磁碟讀取快非常多。 進階儲存體不會將快取所服務的讀取計入磁碟 IOPS 和輸送量之內。 因此，應用程式能夠達到較高的 IOPS 和輸送量總計。 
+- *唯讀*快取對於儲存在進階儲存體上的 SQL Server 資料檔案非常有用。 從位於 VM 記憶體和本機 SSD 內的快取執行讀取時，*唯讀*快取可帶來低讀取延遲、高讀取 IOPS 和輸送量。 這些讀取速度比從 Azure Blob 儲存體讀取資料磁片快很多。 進階儲存體不會將快取所服務的讀取計入磁碟 IOPS 和輸送量之內。 因此，應用程式能夠達到較高的 IOPS 和輸送量總計。 
 - 裝載 SQL Server 記錄檔的磁碟應使用*無*快取設定，因為記錄檔會依序寫入，並不會受益於*唯讀*快取。 
 - 不應使用*讀寫*快取來裝載 SQL Server 檔案，因為 SQL Server 未對*讀寫*快取支援資料一致性。 如果寫入時經過*唯讀* Blob 快取層，則寫入會浪費*唯讀* Blob 快取的容量，且延遲會稍微增加。 
 
@@ -76,7 +74,7 @@ ms.locfileid: "84029999"
 
 如需 Azure 如何進行儲存體設定的詳細資訊，請參閱 [儲存體設定章節](#storage-configuration)。 如需如何在 Azure 入口網站中建立 SQL Server VM 的完整逐步解說，請參閱 [佈建教學課程](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md)。
 
-### <a name="resource-manage-templates"></a>Resource Manager 範本
+### <a name="resource-manager-templates"></a>Resource Manager 範本
 
 如果您使用下列 Resource Manager 範本，則預設會連接兩個進階資料磁碟，但不會設定存放集區。 不過，您可以自訂這些範本，以變更連接到虛擬機器的進階資料磁碟數目。
 
@@ -113,7 +111,7 @@ ms.locfileid: "84029999"
 
 ## <a name="storage-configuration"></a>儲存體組態
 
-本節提供參考，佈建的 SQL VM 或 Azure 入口網站中的組態期間會自動執行 Azure 的儲存體組態變更。
+本節提供 Azure 在 Azure 入口網站中 SQL Server VM 布建或設定期間自動執行之儲存體設定變更的參考。
 
 * Azure 會從選自 VM 的儲存體設定存放集區。 本主題的下一節提供關於存放集區設定的詳細資料。
 * 自動儲存體設定一律使用[進階 SSD](../../../virtual-machines/windows/disks-types.md) P30 資料磁碟。 因此，您選取的 TB 數目與連接到您 VM 的資料磁碟數目會有 1:1 的對應。
@@ -148,7 +146,7 @@ Azure 會使用下列設定在 SQL Server VM 上建立存放集區。
 | **資料倉儲** |可將儲存體最佳化來處理分析和報告工作負載。 |追蹤旗標 610<br/>追蹤旗標 1117 |
 
 > [!NOTE]
-> 當您在儲存體設定步驟中選取 SQL 虛擬機器來進行佈建時，您只能指定此工作負載類型。
+> 當您在 [儲存體設定] 步驟中選取 SQL Server 虛擬機器時，只能指定工作負載類型。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,18 +7,17 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: baf309a93f8ba976cb6511c05ba5032ad07a0fc9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392449"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本新增 Azure 角色指派
 
@@ -68,7 +67,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 在 Azure RBAC 中，若要授與存取權，您可以新增角色指派。
 
-### <a name="resource-group-without-parameters"></a>資源群組 (不含參數)
+### <a name="resource-group-scope-without-parameters"></a>資源群組範圍（不含參數）
 
 下列範本顯示新增角色指派的基本方式。 某些值是在範本內指定。 下列範本會示範：
 
@@ -111,7 +110,7 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 ![資源群組範圍的角色指派](./media/role-assignments-template/role-assignment-template.png)
 
-### <a name="resource-group-or-subscription"></a>資源群組或訂用帳戶
+### <a name="resource-group-or-subscription-scope"></a>資源群組或訂用帳戶範圍
 
 先前的範本不是很有彈性。 下列範本會使用參數，而且可以在不同的範圍中使用。 下列範本會示範：
 
@@ -195,7 +194,7 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-### <a name="resource"></a>資源
+### <a name="resource-scope"></a>資源範圍
 
 如果您需要在資源層級新增角色指派，則角色指派的格式會不同。 您會提供資源提供者的命名空間和資源類型，以指派角色給該資源。 您也可以將資源的名稱包含在角色指派的名稱中。
 

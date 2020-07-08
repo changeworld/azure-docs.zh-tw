@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: bd973a859ce1fa6a9ce5566b1403331988630960
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 8615a853ea218c0598f33d87d39c9ead15709cc0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828095"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955449"
 ---
 # <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft 商業市集的支援
 
@@ -43,10 +42,9 @@ ms.locfileid: "83828095"
 | 電子郵件：[gtm@microsoft.com](mailto:gtm@microsoft.com) | 支援 GTM 權益和計劃問題。 | 上班時間採用美國太平洋時區。 |  
 | 電子郵件：[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | 回答和 Azure 標誌與商標的使用方式有關的問題。 |  |  
 
-
 ## <a name="next-steps"></a>後續步驟
 
-* 瀏覽[商業市集發行者指南頁面](https://docs.microsoft.com/azure/marketplace/)。
-* 深入了解[合作夥伴中心的商業市集計畫支援](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)。
+* 瀏覽[商業市集發行者指南頁面](index.yml)。
+* 深入了解[合作夥伴中心的商業市集計畫支援](partner-center-portal/support.md)。
 
 ---

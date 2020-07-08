@@ -3,23 +3,22 @@ title: 效能微調-具有 Azure Data Lake Storage Gen1 的電流
 description: 深入瞭解 Azure Data Lake Storage Gen1 上適用于風暴叢集的效能微調方針。
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 47fb385e5e1fb60f860735530356fa87031c51e8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691635"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513789"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight 和 Azure Data Lake Storage Gen1 上的 Storm 效能微調方針
 
 了解在微調 Azure Storm 拓撲的效能時應考量的因素。 例如，務必要了解由 Spout 和 Bolt 所完成之工作 (不論是 I/O 密集或記憶體密集工作) 的特性。 本文探討各種效能微調指導方針，包括疑難排解方面的常見問題。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帳戶**。 如需有關如何建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)。
 * 可存取 Data Lake Storage Gen1 帳戶的 **Azure HDInsight 叢集**。 請參閱[建立搭配 Data Lake Storage Gen1 的 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-portal.md)。 請確實為叢集啟用遠端桌面。
 * **在 Data Lake Storage Gen1 上執行 Storm 叢集**。 如需詳細資訊，請參閱[在 HDInsight 上的風暴](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
@@ -126,7 +125,7 @@ ms.locfileid: "82691635"
 
 若要檢查您是否遭到節流，請在用戶端啟用偵錯記錄：
 
-1. 在**Ambari** > **Storm** > **Config**暴 > 設定的 [**Advanced**log4j] 中，將** &lt;根層級 = "info&gt; "** 變更為** &lt;根層級 =&gt;"debug"**。 重新啟動所有節點/服務，以便讓設定生效。
+1. 在**Ambari**  >  **暴**設定的  >  **Config**  >  [**Advanced**log4j] 中，將** &lt; 根層級 = "info &gt; "** 變更為** &lt; 根層級 = &gt; "debug"**。 重新啟動所有節點/服務，以便讓設定生效。
 2. 監視背景工作節點上的 Storm 拓撲記錄 (在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下)，注意是否有 Data Lake Storage Gen1 節流例外狀況。
 
 ## <a name="next-steps"></a>後續步驟

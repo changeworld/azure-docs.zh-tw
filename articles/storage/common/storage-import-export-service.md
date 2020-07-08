@@ -4,16 +4,15 @@ description: 了解如何在 Azure 入口網站中建立匯入和匯出作業，
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 120dbe9c4b79755105ba634c68606edfbfdc4ad2
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872430"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512428"
 ---
 # <a name="what-is-azure-importexport-service"></a>什麼是 Azure 匯入/匯出服務？
 
@@ -118,7 +117,7 @@ Azure 匯入/匯出服務支援與所有 Azure 儲存體帳戶相互複製資料
 
 ### <a name="supported-shipping-locations"></a>支援的運送位置
 
-|國家/區域  |國家/區域  |國家/區域  |國家/區域  |
+|國家/地區  |國家/地區  |國家/地區  |國家/地區  |
 |---------|---------|---------|---------|
 |美國東部    | 北歐        | 印度中部        |US Gov 愛荷華州         |
 |美國西部     |西歐         | 印度南部        | US DoD 東部        |

@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/27/2018
 ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc06abca08b2522ac57552e85f7c1bac3ef854af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 410570798e468244763c05b3275801427dc4b2fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68561882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604228"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>使用 Azure Active Directory 來編輯群組資訊
 
@@ -45,7 +44,7 @@ ms.locfileid: "68561882"
 
     ![群組的屬性設定](media/active-directory-groups-settings-azure-portal/group-properties-settings.png)
 
-    - **組名。** 編輯現有的群組名稱。
+    - **群組名稱。** 編輯現有的群組名稱。
     
     - **群組描述。** 編輯現有的群組描述。
 

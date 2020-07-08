@@ -9,12 +9,11 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 774d2bb58fd7dd75825be8f433f078d70c13fe8c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75386182"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919991"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>建立 Node.js 應用程式並部署到 Azure 雲端服務
 
@@ -31,7 +30,7 @@ ms.locfileid: "75386182"
 
 ![顯示 Hello World 網頁的網頁瀏覽器][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 > [!NOTE]
 > 本教學課程使用 Azure PowerShell (需要 Windows)。
 
@@ -47,19 +46,24 @@ ms.locfileid: "75386182"
 2. [連線 PowerShell] 至您的訂用帳戶。
 3. 輸入下列 PowerShell Cmdlet 來建立專案：
 
-        New-AzureServiceProject helloworld
+   ```powershell
+   New-AzureServiceProject helloworld
+   ```
 
-    ![New-AzureService helloworld 命令的結果][The result of the New-AzureService helloworld command]
+   ![New-AzureService helloworld 命令的結果][The result of the New-AzureService helloworld command]
 
-    **New-AzureServiceProject** Cmdlet 會產生可將 Node.js 應用程式發佈至雲端服務的基本結構。 其中包含發佈到 Azure 所需的設定檔。 該 Cmdlet 也會將您的工作目錄變更為服務的目錄。
+   **New-AzureServiceProject** Cmdlet 會產生可將 Node.js 應用程式發佈至雲端服務的基本結構。 其中包含發佈到 Azure 所需的設定檔。 該 Cmdlet 也會將您的工作目錄變更為服務的目錄。
 
-    Cmdlet 會建立下列檔案：
+   Cmdlet 會建立下列檔案：
 
    * **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg** 和 **ServiceDefinition.csdef**：是發佈應用程式時需使用的 Azure 特定檔案。 如需詳細資訊，請參閱 [雲端服務]。
    * **deploymentSettings.json**：儲存 Azure PowerShell 部署 Cmdlet 使用的本機設定。
+
 4. 輸入下列命令以新增 Web 角色：
 
-       Add-AzureNodeWebRole
+   ```powershell
+   Add-AzureNodeWebRole
+   ```
 
    ![Add-AzureNodeWebRole 命令的輸出][The output of the Add-AzureNodeWebRole command]
 
@@ -70,12 +74,14 @@ ms.locfileid: "75386182"
 
 Node.js app 是在 **server.js** 檔案中定義，該檔案位於 Web 角色 (預設為 **WebRole1**) 的目錄中。 程式碼如下：
 
-    var http = require('http');
-    var port = process.env.port || 1337;
-    http.createServer(function (req, res) {
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Hello World\n');
-    }).listen(port);
+```js
+var http = require('http');
+var port = process.env.port || 1337;
+http.createServer(function (req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello World\n');
+}).listen(port);
+```
 
 此程式碼基本上和 [nodejs.org] 網站上的「Hello World」範例一樣，但它使用雲端環境指派的連接埠號碼。
 
@@ -89,14 +95,18 @@ Node.js app 是在 **server.js** 檔案中定義，該檔案位於 Web 角色 (�
 
 1. 執行下列 Azure PowerShell Cmdlet：
 
-       Get-AzurePublishSettingsFile
+    ```powershell
+    Get-AzurePublishSettingsFile
+    ```
 
    這將使用瀏覽器瀏覽到發佈設定下載頁面。 可能提示您使用 Microsoft 帳戶登入。 若是如此，請使用與您的 Azure 訂閱相關聯的帳戶。
 
    將下載的設定檔儲存到您可以輕鬆存取的檔案位置。
 2. 執行下列 Cmdlet 來匯入您所下載的發佈設定檔：
 
-       Import-AzurePublishSettingsFile [path to file]
+    ```powershell
+    Import-AzurePublishSettingsFile [path to file]
+    ```
 
     > [!NOTE]
     > 在匯入發佈設定之後，請考慮刪除下載的 .publishSettings 檔案，因為它包含了可能讓他人存取您帳戶的資訊。
@@ -104,8 +114,10 @@ Node.js app 是在 **server.js** 檔案中定義，該檔案位於 Web 角色 (�
 ### <a name="publish-the-application"></a>發佈應用程式
 若要發佈，請執行下列命令：
 
-      $ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
-    Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+```powershell
+$ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
+Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+```
 
 * **-ServiceName** 指定部署的名稱。 這必須是唯一名稱，否則發佈程序將失敗。 **Get-Date** 命令會添加到應該讓名稱唯一的日期/時間字串。
 * **-Location** 指定託管應用程式的資料中心。 若要查看可用資料中心的清單，請使用 **Get-AzureLocation** Cmdlet。
@@ -136,14 +148,18 @@ Node.js app 是在 **server.js** 檔案中定義，該檔案位於 Web 角色 (�
 
 1. 在 Windows PowerShell 視窗中，使用下列 Cmdlet 停止上一個小節中建立的服務部署：
 
-       Stop-AzureService
+    ```powershell
+    Stop-AzureService
+    ```
 
    停止服務可能需要幾分鐘的時間。 服務停止時，您將收到表示停止的訊息。
 
    ![Stop-AzureService 命令的狀態][The status of the Stop-AzureService command]
 2. 若要刪除服務，請呼叫下列 Cmdlet：
 
-       Remove-AzureService
+    ```powershell
+    Remove-AzureService
+    ```
 
    出現提示時，輸入 **Y** 以刪除服務。
 
@@ -161,7 +177,7 @@ Node.js app 是在 **server.js** 檔案中定義，該檔案位於 Web 角色 (�
 
 [Azure 網站、雲端服務與虛擬機器的比較]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [使用輕量型 Web 應用程式]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure Powershell]: /powershell/azureps-cmdlets-docs
+[Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [連線 PowerShell]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: https://nodejs.org/

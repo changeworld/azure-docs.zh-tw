@@ -2,21 +2,20 @@
 title: 使用者未布建在我的應用程式中
 description: 如何對當您沒有看到 Azure AD 資源庫應用程式中顯示任何使用者時所面臨的常見問題進行疑難排解，而該應用程式是您已設定來搭配 Azure AD 進行使用者佈建
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/20/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fa47fbba7632077c83dc1d594c7c58c59c869bf7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: cc3c62da371d66c2aa957974ad6d4472aaf5648e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782274"
 ---
 # <a name="no-users-are-being-provisioned"></a>未佈建使用者 
 >[!NOTE]
@@ -31,7 +30,7 @@ ms.locfileid: "82594010"
   
 如果您發現使用者未布建，請參閱 Azure AD 中的布建[記錄（預覽）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 。 搜尋特定使用者的記錄項目。
 
-您可以在 [**活動**] 區段中選取 [ **Azure Active Directory** &gt; **企業應用程式** &gt;布建**記錄（預覽）** ]，以存取 Azure 入口網站中的布建記錄。 您可以根據使用者名稱或來源系統或目標系統中的識別碼來搜尋布建資料。 如需詳細資訊，請參閱布建[記錄（預覽）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
+您可以在**Azure Active Directory** &gt; [活動] 區段中選取 [Azure Active Directory**企業應用程式**布建 &gt; **記錄（預覽）** ] **Activity** ，以存取 Azure 入口網站中的布建記錄。 您可以根據使用者名稱或來源系統或目標系統中的識別碼來搜尋布建資料。 如需詳細資訊，請參閱布建[記錄（預覽）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
 
 布建記錄會記錄布建服務所執行的所有作業，包括針對位於布建範圍內的已指派使用者查詢 Azure AD，並查詢目標應用程式是否存在那些使用者，並比較系統之間的使用者物件。 接著，根據比較，在目標系統中新增、更新或停用使用者帳戶。
 

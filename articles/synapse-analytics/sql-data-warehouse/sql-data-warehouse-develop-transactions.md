@@ -6,16 +6,15 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 558b16fc348728c507af1fa0260a67ccacefed0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416138"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213375"
 ---
 # <a name="use-transactions-in-synapse-sql-pool"></a>在 Synapse SQL 集區中使用交易
 
@@ -23,13 +22,13 @@ ms.locfileid: "81416138"
 
 ## <a name="what-to-expect"></a>未來展望
 
-如您所預期，SQL 集區支援交易做為資料倉儲工作負載的一部分。 不過，為了確保 SQL 集區會大規模維護，相較于 SQL Server，某些功能會受到限制。 本文將重點放在不同的部分。
+如您所預期，SQL 集區支援交易作為資料倉儲工作負載的一部分。 不過，為了確保 SQL 集區會大規模維護，相較于 SQL Server，某些功能會受到限制。 本文將重點放在不同的部分。
 
 ## <a name="transaction-isolation-levels"></a>交易隔離層級
 
-SQL 集區會執行 ACID 交易。 交易式支援的隔離等級預設為讀取未認可。  您可以在連接到 master 資料庫時，針對使用者資料庫開啟 [READ_COMMITTED_SNAPSHOT 資料庫] 選項，將它變更為 [讀取認可的快照集隔離]。  
+SQL 集區實作 ACID 交易。 交易式支援的隔離等級預設為 READ UNCOMMITTED。  您可在連線至 master 資料庫時，開啟使用者資料庫的 [READ_COMMITTED_SNAPSHOT] 資料庫選項，將其變更為 [READ COMMITTED SNAPSHOT ISOLATION]。  
 
-啟用之後，此資料庫中的所有交易都會在讀取認可的快照集隔離下執行，而且不會接受工作階段層級的「讀取未認可」設定。 如需詳細資料，請參閱[ALTER DATABASE SET 選項（transact-sql）](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 。
+啟用之後，此資料庫中所有交易都會在 READ COMMITTED SNAPSHOT ISOLATION 的狀態下執行，且將不會接受在工作階段層級上設定為 READ UNCOMMITTED。 如需詳細資料，請參閱 [ALTER DATABASE SET 選項 (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="transaction-size"></a>交易大小
 
@@ -44,7 +43,7 @@ SQL 集區會執行 ACID 交易。 交易式支援的隔離等級預設為讀取
 
 ## <a name="gen2"></a>Gen2
 
-| [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 每個散發的上限（GB） | 散發的數目 | 交易大小上限（GB） | 每個散發的資料列數 | 每個交易的資料列數上限 |
+| [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 每個散發的容量 (GB) | 散發的數目 | 交易大小上限 (GB) | 每個散發的資料列數 | 每個交易的資料列數上限 |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -54,18 +53,18 @@ SQL 集區會執行 ACID 交易。 交易式支援的隔離等級預設為讀取
 | DW1000c |7.5 |60 |450 |30,000,000 |1,800,000,000 |
 | DW1500c |11.25 |60 |675 |45,000,000 |2,700,000,000 |
 | DW2000c |15 |60 |900 |60,000,000 |3,600,000,000 |
-| DW2500c |18.75 |60 |1125 |75000000 |4500000000 |
+| DW2500c |18.75 |60 |1125 |75,000,000 |4,500,000,000 |
 | DW3000c |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
-| DW5000c |37.5 |60 |2250 |150000000 |9000000000 |
+| DW5000c |37.5 |60 |2,250 |150,000,000 |9,000,000,000 |
 | DW6000c |45 |60 |2,700 |180,000,000 |10,800,000,000 |
-| DW7500c |56.25 |60 |3375 |225000000 |13500000000 |
-| DW10000c |75 |60 |4,500 |300,000,000 |18000000000 |
-| DW15000c |112.5 |60 |6,750 |450000000 |27000000000 |
-| DW30000c |225 |60 |13500 |900,000,000 |54000000000 |
+| DW7500c |56.25 |60 |3,375 |225,000,000 |13,500,000,000 |
+| DW10000c |75 |60 |4,500 |300,000,000 |18,000,000,000 |
+| DW15000c |112.5 |60 |6,750 |450,000,000 |27,000,000,000 |
+| DW30000c |225 |60 |13,500 |900,000,000 |54,000,000,000 |
 
 ## <a name="gen1"></a>Gen1
 
-| [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 每個散發的上限（GB） | 散發的數目 | 交易大小上限（GB） | 每個散發的資料列數 | 每個交易的資料列數上限 |
+| [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 每個散發的容量 (GB) | 散發的數目 | 交易大小上限 (GB) | 每個散發的資料列數 | 每個交易的資料列數上限 |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -90,10 +89,10 @@ SQL 集區會執行 ACID 交易。 交易式支援的隔離等級預設為讀取
 
 ## <a name="transaction-state"></a>交易狀態
 
-SQL 集區會使用 XACT_STATE （）函數來報告失敗的交易，並使用值-2。 這個值表示交易已失敗並標示為僅可復原。
+SQL 集區會使用 XACT_STATE() 函式 (採用值 -2) 來報告失敗的交易。 這個值表示交易已失敗並標示為僅可復原。
 
 > [!NOTE]
-> XACT_STATE 函式使用 -2 表示失敗的交易，以代表 SQL Server 中不同的行為。 SQL Server 使用值 -1 來代表無法認可的交易。 SQL Server 可以容忍交易內的某些錯誤，而不需將其標示為無法認可。 例如，會`SELECT 1/0`導致錯誤，但不會強制交易進入無法認可狀態。
+> XACT_STATE 函式使用 -2 表示失敗的交易，以代表 SQL Server 中不同的行為。 SQL Server 使用值 -1 來代表無法認可的交易。 SQL Server 可以容忍交易內的某些錯誤，而不需將其標示為無法認可。 例如， `SELECT 1/0` 會導致錯誤，但不會強制交易進入無法認可狀態。
 
 SQL Server 也允許讀取無法認可的交易。 不過，SQL 集區不會讓您這麼做。 如果 SQL 集區交易內發生錯誤，它會自動進入-2 狀態，而且您將無法再進行任何 select 語句，直到語句回復為止。
 
@@ -143,7 +142,7 @@ Msg 111233, Level 16, State 1, Line 1 111233; 目前的交易已經中止，並�
 
 您不會收到 ERROR_* 函式的輸出。
 
-在 SQL 集區中，程式碼必須稍微改變：
+SQL 集區中的程式碼需要稍微變更：
 
 ```sql
 SET NOCOUNT ON;
@@ -186,13 +185,13 @@ SELECT @xact_state AS TransactionState;
 
 ## <a name="error_line-function"></a>Error_Line() 函式
 
-另外值得一提的是，SQL 集區不會執行或支援 ERROR_LINE （）函數。 如果您的程式碼中有這項功能，您必須將它移除以符合 SQL 集區的規範。
+另外值得注意的是，SQL 集區不會實作或支援 ERROR_LINE() 函式。 如果您的程式碼中有此函式，您必須將其移除才能符合 SQL 集區規範。
 
 在程式碼中使用查詢標籤，而不需實作對等的功能。 如需詳細資訊，請參閱 [LABEL](sql-data-warehouse-develop-label.md) 文章。
 
 ## <a name="using-throw-and-raiserror"></a>使用 THROW 和 RAISERROR
 
-THROW 是在 SQL 集區中引發例外狀況的現代化實作為，但也支援 RAISERROR。 不過，有一些值得注意的差異。
+THROW 是在 SQL 集區中引發例外狀況的新式實作，但也支援 RAISERROR。 不過，有一些值得注意的差異。
 
 * 對於 THROW，使用者定義的錯誤訊息數目不能在 100,000 - 150,000 範圍內
 * RAISERROR 錯誤訊息固定為 50,000

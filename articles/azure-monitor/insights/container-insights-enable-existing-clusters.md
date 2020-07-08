@@ -3,12 +3,11 @@ title: 監視已部署的 Azure Kubernetes Service （AKS）叢集 |Microsoft Do
 description: 瞭解如何針對已部署在訂用帳戶中的容器，使用 Azure 監視器來啟用 Azure Kubernetes Service （AKS）叢集的監視。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 8589ea71b5c7affadc61d5e4543f734a660ab543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2dabbe7a5c0e183363fe05bc4e75da0b6a346e6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275447"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337981"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>啟用已部署 Azure Kubernetes Service （AKS）叢集的監視
 
@@ -19,7 +18,7 @@ ms.locfileid: "79275447"
 * Azure CLI
 * Terraform
 * [從 Azure 監視器](#enable-from-azure-monitor-in-the-portal)或[直接從 AZURE 入口網站中的 AKS](#enable-directly-from-aks-cluster-in-the-portal)叢集
-* 使用 Azure PowerShell Cmdlet `New-AzResourceGroupDeployment`或 Azure CLI[提供的 Azure Resource Manager 範本](#enable-using-an-azure-resource-manager-template)。
+* 使用 Azure PowerShell Cmdlet 或 Azure CLI[提供的 Azure Resource Manager 範本](#enable-using-an-azure-resource-manager-template) `New-AzResourceGroupDeployment` 。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -27,10 +26,10 @@ ms.locfileid: "79275447"
 
 ## <a name="enable-using-azure-cli"></a>啟用使用 Azure CLI
 
-下列步驟會使用 Azure CLI 來啟用對 AKS 叢集的監視。 在此範例中，您不需要預先建立或指定現有的工作區。 此命令透過在 AKS 叢集預設資源群組中建立預設工作區 (若該區域中沒有預設工作區) 來為您簡化程序。  所建立的預設工作區格式類似 *DefaultWorkspace-\<GUID>-\<Region>*。  
+下列步驟會使用 Azure CLI 來啟用對 AKS 叢集的監視。 在此範例中，您不需要預先建立或指定現有的工作區。 此命令透過在 AKS 叢集預設資源群組中建立預設工作區 (若該區域中沒有預設工作區) 來為您簡化程序。  建立的預設工作區類似*DefaultWorkspace- \<GUID> - \<Region> *的格式。
 
 ```azurecli
-az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
+az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
 輸出看起來會像下面這樣：
@@ -41,7 +40,7 @@ provisioningState       : Succeeded
 
 ### <a name="integrate-with-an-existing-workspace"></a>與現有的工作區整合
 
-如果您想要與現有的工作區整合，請執行下列步驟，先找出`--workspace-resource-id`參數所需之 Log Analytics 工作區的完整資源識別碼，然後執行命令，針對指定的工作區啟用監視附加元件。  
+如果您想要與現有的工作區整合，請執行下列步驟，先找出參數所需之 Log Analytics 工作區的完整資源識別碼 `--workspace-resource-id` ，然後執行命令，針對指定的工作區啟用監視附加元件。
 
 1. 使用下列命令，列出您有權存取的所有訂用帳戶：
 
@@ -73,7 +72,7 @@ provisioningState       : Succeeded
 
     在輸出中，尋找工作區名稱，然後將該 Log Analytics 工作區的完整資源識別碼複製到欄位**識別碼**之下。
 
-4. 執行下列命令來啟用監視附加元件，並取代`--workspace-resource-id`參數的值。 字串值必須在雙引號內：
+4. 執行下列命令來啟用監視附加元件，並取代參數的值 `--workspace-resource-id` 。 字串值必須在雙引號內：
 
     ```azurecli
     az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>"
@@ -104,15 +103,15 @@ provisioningState       : Succeeded
 
 若要從 Azure 監視器在 Azure 入口網站中啟用 AKS 叢集的監視，請執行下列步驟：
 
-1. 在 [Azure 入口網站中，選取 [**監視**]。
+1. 在 Azure 入口網站中，選取 [監視]。
 
 2. 從清單中選取 [容器]****。
 
-3. 在 [監視器 - 容器]**** 頁面上，選取 [不受監視的叢集]****。
+3. 在 [**監視-容器**] 頁面上，選取 [未受**監視**的叢集]。
 
-4. 從不受監視的叢集清單，在清單中尋找容器，然後按一下 [啟用]****。   
+4. 從未受監視的叢集清單中，尋找清單中的容器，然後按一下 [**啟用**]。
 
-5. 在 [適用於容器的 Azure 監視器上線]**** 頁面上，如果相同訂用帳戶中有現有 Log Analytics 工作區可作為叢集，請從下拉式清單中加以選取。  
+5. 在 [適用於容器的 Azure 監視器上線]**** 頁面上，如果相同訂用帳戶中有現有 Log Analytics 工作區可作為叢集，請從下拉式清單中加以選取。
     清單會預先選取訂用帳戶中已部署 AKS 容器的預設工作區和位置。
 
     ![啟用 AKS 容器深入解析監視](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
@@ -126,19 +125,19 @@ provisioningState       : Succeeded
 
 若要直接從 Azure 入口網站中的一個 AKS 叢集啟用監視，請執行下列動作：
 
-1. 在 [Azure 入口網站中，選取 [**所有服務**]。
+1. 在 Azure 入口網站中，選取 [所有服務]。
 
 2. 在資源清單中，開始輸入**容器**。  清單會根據您輸入的文字進行篩選。
 
-3. 選取 [Kubernetes 服務]****。  
+3. 選取 [Kubernetes 服務]****。
 
     ![[Kubernetes 服務] 連結](./media/container-insights-onboard/portal-search-containers-01.png)
 
 4. 在容器清單中，選取容器。
 
-5. 在容器概觀頁面上，選取 [監視容器]****。  
+5. 在容器概觀頁面上，選取 [監視容器]****。
 
-6. 在 [適用於容器的 Azure 監視器上線]**** 頁面上，如果相同訂用帳戶中有現有 Log Analytics 工作區可作為叢集，請在下拉式清單中選取。  
+6. 在 [適用於容器的 Azure 監視器上線]**** 頁面上，如果相同訂用帳戶中有現有 Log Analytics 工作區可作為叢集，請在下拉式清單中選取。
     清單會預先選取訂用帳戶中已部署 AKS 容器的預設工作區和位置。
 
     ![啟用 AKS 容器健康情況監視](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
@@ -310,7 +309,21 @@ kubectl get ds omsagent --namespace=kube-system
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
-```  
+```
+
+如果叢集上有 Windows Server 節點，則您可以執行下列命令，以確認代理程式已成功部署。
+
+```
+kubectl get ds omsagent-win --namespace=kube-system
+```
+
+輸出應該像下面這樣，這表示它已正確部署：
+
+```output
+User@aksuser:~$ kubectl get ds omsagent-win --namespace=kube-system
+NAME                   DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                   AGE
+omsagent-win           2         2         2         2            2           beta.kubernetes.io/os=windows   1d
+```
 
 若要確認解決方案的部署，請執行下列命令：
 
@@ -328,23 +341,23 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>早於 06072018 的代理程式版本
 
-若要確認已正確部署 06072018** 版以前發行的 Log Analytics 代理程式，請執行下列命令：  
+若要確認已正確部署 06072018** 版以前發行的 Log Analytics 代理程式，請執行下列命令：
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-輸出應該像下面這樣，這表示它已正確部署：  
+輸出應該像下面這樣，這表示它已正確部署：
 
 ```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
-```  
+```
 
 ## <a name="view-configuration-with-cli"></a>使用 CLI 來檢視設定
 
-使用 `aks show` 命令來取得詳細資料，例如解決方案是否已啟用、Log Analytics 工作區 resourceID 為何，以及有關叢集的詳細資料。  
+使用 `aks show` 命令來取得詳細資料，例如解決方案是否已啟用、Log Analytics 工作區 resourceID 為何，以及有關叢集的詳細資料。
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>

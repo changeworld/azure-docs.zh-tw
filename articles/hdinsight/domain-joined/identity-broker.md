@@ -7,12 +7,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1bea8adbdb39d2ce83cfe7821ef052fdc1f1d512
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921336"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>使用識別碼代理程式（預覽）進行認證管理
 
@@ -47,7 +46,7 @@ ms.locfileid: "81685517"
 ![啟用識別碼訊息代理程式的選項](./media/identity-broker/identity-broker-enable.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 資源管理員範本
-如果您使用下列屬性將名`idbrokernode`為的新角色新增至範本的計算設定檔，則會建立叢集，並啟用 ID broker 節點：
+如果您使用下列屬性將名為的新角色新增 `idbrokernode` 至範本的計算設定檔，則會建立叢集，並啟用 ID broker 節點：
 
 ```json
 .
@@ -90,9 +89,11 @@ ms.locfileid: "81685517"
 
 HDInsight [IntelliJ 外掛程式](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib)已更新為支援 OAuth。 您可以使用此外掛程式來連接到叢集並提交工作。
 
+您也可以使用[Spark & Hive 工具進行 VS Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) ，以利用筆記本和提交作業。
+
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Azure AD DS 中沒有密碼雜湊的 SSH 存取
 
-啟用識別碼代理人之後，您仍然需要在使用網域帳戶的 SSH 案例中，儲存在 Azure AD DS 中的密碼雜湊。 若要透過 SSH 連線到已加入網域的 VM，或`kinit`執行命令，您必須提供密碼。 
+啟用識別碼代理人之後，您仍然需要在使用網域帳戶的 SSH 案例中，儲存在 Azure AD DS 中的密碼雜湊。 若要透過 SSH 連線到已加入網域的 VM，或執行 `kinit` 命令，您必須提供密碼。 
 
 SSH 驗證需要在 Azure AD DS 中使用雜湊。 如果您只想要在系統管理案例中使用 SSH，您可以建立一個僅限雲端的帳戶，並使用它來透過 SSH 連線到叢集。 其他使用者仍然可以使用 Ambari 或 HDInsight 工具（例如 IntelliJ 外掛程式），而不需要在 Azure AD DS 中提供密碼雜湊。
 
@@ -100,7 +101,7 @@ SSH 驗證需要在 Azure AD DS 中使用雜湊。 如果您只想要在系統�
 
 在識別碼代理程式設定中，可更新連線到閘道的自訂應用程式和用戶端，以先取得所需的 OAuth 權杖。 您可以遵循本[檔](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app)中的步驟，取得具有下列資訊的權杖：
 
-*   OAuth 資源 uri：https://hib.azurehdinsight.net 
+*   OAuth 資源 uri：`https://hib.azurehdinsight.net` 
 * AppId：7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   許可權：（name： Cluster. ReadWrite，id：8f89faa0-ffef-4007-974d-4989b39ad77d）
 

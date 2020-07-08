@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/09/2020
-ms.openlocfilehash: addf85f3ed966f45472fec6ee15272574a0f840e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: e96118e3c570faaaffb4cc7ef64e6d2d0e075e47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724712"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954171"
 ---
 # <a name="common-issues-during-vhd-creation"></a>VHD 建立過程中的常見問題
 
@@ -20,7 +19,7 @@ ms.locfileid: "83724712"
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>如何使用進階儲存體中的 VHD 從 Azure 入口網站建立 VM？
 
-Azure Marketplace 目前不支援從受控儲存體或 Azure 進階儲存體的映像，建立 VM 供應項目。 如需詳細資訊，請參閱 [Azure 受控磁碟概觀](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)。
+Azure Marketplace 目前不支援從受控儲存體或 Azure 進階儲存體的映像，建立 VM 供應項目。 如需詳細資訊，請參閱 [Azure 受控磁碟概觀](../../virtual-machines/windows/managed-disks-overview.md)。
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>供應項目是否可使用第 2 代 VM？
 
@@ -45,9 +44,9 @@ Azure Marketplace 目前不支援從受控儲存體或 Azure 進階儲存體的�
 
 如果您使用的是 Azure Resource Manager 部署模型，則有以下三個選項：
 
-* [使用 Azure 入口網站建立路由型 VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
-* [使用 Azure PowerShell 來建立路由型 VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-powershell)
-* [使用 CLI 來建立路由型 VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli)
+* [使用 Azure 入口網站建立路由型 VPN 閘道](../../vpn-gateway/create-routebased-vpn-gateway-portal.md)
+* [使用 Azure PowerShell 來建立路由型 VPN 閘道](../../vpn-gateway/create-routebased-vpn-gateway-powershell.md)
+* [使用 CLI 來建立路由型 VPN 閘道](../../vpn-gateway/create-routebased-vpn-gateway-cli.md)
 
 ## <a name="what-are-microsoft-support-policies-for-running-microsoft-server-software-on-azure-based-vms"></a>Microsoft 對 Azure 型虛擬機器上執行的 Microsoft 伺服器軟體採取何種支援政策？
 
@@ -75,4 +74,4 @@ Azure Marketplace 目前不支援從受控儲存體或 Azure 進階儲存體的�
 
 每次嘗試從我的 VHD 建立映像時，都會在 Azure PowerShell 中收到錯誤「已向映像存放庫註冊 VHD 做為資源」。 我之前未建立任何映像，在 Azure 中也找不到任何具有這個名稱的映像。 如何解決這個問題？
 
-如果您是從具有鎖定的 VHD 建立 VM，通常會出現此問題。 確認未從此 VHD 配置任何 VM，然後重試此作業。 如果持續發生此問題，請開啟一個支援票證。 請參閱[合作夥伴中心的支援](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)。
+如果您是從具有鎖定的 VHD 建立 VM，通常會出現此問題。 確認未從此 VHD 配置任何 VM，然後重試此作業。 如果持續發生此問題，請開啟一個支援票證。 請參閱[合作夥伴中心的支援](support.md)。

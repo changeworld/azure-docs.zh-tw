@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0a3e3455615006c0e93cf32eebcdaedac9960a79
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
-ms.translationtype: MT
+ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85308013"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027608"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>將自訂命令活動傳送至用戶端應用程式
 
@@ -28,7 +27,7 @@ ms.locfileid: "85308013"
 
 ## <a name="prerequisites"></a>必要條件
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)或更高版本。 本指南使用 Visual Studio 2019
 > * 適用于語音服務的 Azure 訂用帳戶金鑰：[免費取得一個，](get-started.md)或在[Azure 入口網站](https://portal.azure.com)上建立
 > * 先前[建立的自訂命令應用程式](quickstart-custom-commands-application.md)
 > * 啟用語音 SDK 的用戶端應用程式：[如何：使用語音 SDK 與用戶端應用程式整合](./how-to-custom-commands-setup-speech-sdk.md)
@@ -46,7 +45,7 @@ ms.locfileid: "85308013"
      "device": "{SubjectDevice}"
    }
    ```
-1. 按一下 [**儲存**] 以建立具有傳送活動動作的新規則
+1. 按一下 [**儲存**] 以建立具有傳送活動動作的新規則，**訓練**並**發佈**變更
 
    > [!div class="mx-imgBorder"]
    > ![傳送活動完成規則](media/custom-commands/send-activity-to-client-completion-rules.png)
@@ -55,9 +54,12 @@ ms.locfileid: "85308013"
 
 在[如何：使用語音 Sdk 設定用戶端應用程式（預覽）](./how-to-custom-commands-setup-speech-sdk.md)中，您已使用語音 SDK 建立 UWP 用戶端應用程式來處理命令 `turn on the tv` ，例如， `turn off the fan` 。 新增一些視覺效果之後，您就可以看到這些命令的結果。
 
-使用新增至的下列 XML，以指示開啟或**關閉**的文字來新增加**上**標籤的方塊`MainPage.xaml`
+若要使用表示 on 或**off**的文字來新增加**上**標籤的方塊，請將下列 StackPanel XML 區塊新增至 `MainPage.xaml` 。
 
 ```xml
+<StackPanel Orientation="Vertical" H......>
+......
+</StackPanel>
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
     <Grid x:Name="Grid_TV" Margin="50, 0" Width="100" Height="100" Background="LightBlue">
         <StackPanel>
@@ -72,6 +74,7 @@ ms.locfileid: "85308013"
         </StackPanel>
     </Grid>
 </StackPanel>
+<MediaElement ....../>
 ```
 
 ### <a name="add-reference-libraries"></a>新增參考程式庫
@@ -79,15 +82,21 @@ ms.locfileid: "85308013"
 由於您已建立 JSON 承載，因此您需要加入[JSON.NET](https://www.newtonsoft.com/json)程式庫的參考以處理還原序列化。
 
 1. 以滑鼠右鍵用戶端您的解決方案。
-1. 選擇 [**管理解決方案的 NuGet 套件**]，選取 [**安裝**] 
-1. 在更新清單中搜尋**Newtonsoft.js** ，將**microsoft.netcore.universalwindowsplatform**更新為最新版本
+1. 選擇 [**管理解決方案的 NuGet 套件**]，選取 **[流覽]** 
+1. 如果您已經**在上安裝Newtonsoft.js**，請確定其版本至少為12.0.3。 如果沒有，請移至 [**管理方案的 NuGet 套件-更新**]，搜尋**上的Newtonsoft.js**來更新它。 本指南使用版本12.0.3。
 
-> [!div class="mx-imgBorder"]
-> ![傳送活動裝載](media/custom-commands/send-activity-to-client-json-nuget.png)
+    > [!div class="mx-imgBorder"]
+    > ![傳送活動裝載](media/custom-commands/send-activity-to-client-json-nuget.png)
+
+1. 此外，請確定 NuGet package **NETCore. microsoft.netcore.universalwindowsplatform**至少是6.2.10。 本指南使用版本6.2.10。
 
 在 ' MainPage ' 中，新增
-- `using Newtonsoft.Json;` 
-- `using Windows.ApplicationModel.Core;`
+
+```C#
+using Newtonsoft.Json; 
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+```
 
 ### <a name="handle-the-received-payload"></a>處理已接收的裝載
 

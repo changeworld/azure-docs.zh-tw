@@ -4,7 +4,6 @@ description: 本文描述如何管理 SQL Server IaaS 代理程式延伸模組�
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
-manager: jroth
 editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
@@ -17,12 +16,11 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 08b9076ae81c8c8c071b03167d0242c1d933e619
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 89210cda6390fd7c3cf4ca2877b8899559a41321
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034229"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668707"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理程式延伸模組自動化 Azure 虛擬機器的管理工作
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -82,7 +80,7 @@ SQL Server IaaS 代理程式擴充功能支援下列管理工作︰
 
 
 ##  <a name="installation"></a>安裝
-當向 [SQL VM 資源提供者](sql-vm-resource-provider-register.md)註冊 SQL Server VM 時，即已安裝 SQL Server IaaS 延伸模組。 如有需要，您可使用以下 PowerShell 命令來手動安裝 SQL Server IaaS 代理程式： 
+當您向[SQL SERVER VM 資源提供者](sql-vm-resource-provider-register.md)註冊您的 SQL Server VM 時，會安裝 SQL Server IaaS 延伸模組。 如有需要，您可使用以下 PowerShell 命令來手動安裝 SQL Server IaaS 代理程式： 
 
   ```powershell-interactive
     Set-AzVMSqlServerExtension -VMName "sql2017" `

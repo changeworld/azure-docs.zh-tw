@@ -1,25 +1,19 @@
 ---
 title: Azure VM 大小 - 一般用途 | Microsoft Docs
 description: 列出 Azure 中可用的不同虛擬機器一般用途大小。 列出 vCPU 數目、資料磁碟和 NIC 的相關資訊，以及此服務中各種大小之儲存體輸送量和網路頻寬的相關資訊。
-services: virtual-machines
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: b5e597eebda6a730d301eefdbd2d7e6859f5a7cc
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: HT
+ms.openlocfilehash: 1e9cce7adc6dbc9062dd133d690fbce92c3190fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783311"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>一般用途的虛擬機器大小
 
@@ -36,12 +30,13 @@ ms.locfileid: "84248306"
 
 - [DCv2 系列](dcv2-series.md)可協助您在您的資料與程式碼在公用雲端處理時的機密性與完整性。 這些機器由最新一代的 Intel XEON E-2288G 處理器 (具 SGX 技術) 支援。 在 Intel Turbo Boost 技術加持下，這些機器最高可達到 5.0 GHz 的時脈。 DCv2 系列執行個體可讓客戶建置安全的飛地型應用程式，以在其程式碼與資料使用期間保護其安全。
 
-- [Dv2 和 Dsv2](dv2-dsv2-series.md) 系列是原始 D 系列的升級版，搭載更強大的 CPU 及最佳的 CPU 記憶體設定，更適合大多數生產工作負載。 Dv2 系列比 D 系列快約 35%。 Dv2 系列在採用 Intel 渦輪加速技術 2.0 的 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)，或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 處理器上執行。 Dv2 系列的記憶體和磁碟組態和 D 系列一樣。
+- [Dv2 和 Dsv2](dv2-dsv2-series.md) 系列是原始 D 系列的升級版，搭載更強大的 CPU 及最佳的 CPU 記憶體設定，更適合大多數生產工作負載。 Dv2 系列比 D 系列快約 35%。 Dv2 系列在第2代 Intel®®白金8272CL （Cascade Lake）、Intel®的® 8171M 2.1 GHz （Skylake）、Intel®以® E5-2673 v4 2.3 g h z （Broadwell）或 Intel®的® E5-2673 v3 2.4 GHz （Haswell）處理器上執行，並提供 Intel Turbo 加速技術2.0。 Dv2 系列的記憶體和磁碟組態和 D 系列一樣。
 
-- [Dv3 和 Dsv3 系列](dv3-dsv3-series.md)的 VM 是在具超執行緒組態的 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)，或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 處理器上執行，為大多數一般用途的工作負載提供更好的價值主張。 除了記憶體已擴充 (從 ~3.5 GiB/vCPU 到 4 GiB/vCPU)，磁碟和網路限制也已就個別核心進行調整，以符合移轉至超執行緒的需求。 Dv3 系列不再擁有 D/Dv2 系列的高記憶體 VM，這些都已移至記憶體最佳化的 [Ev3 和 Esv3 系列](ev3-esv3-series.md)。
+- [Dv3 和 Dsv3 系列](dv3-dsv3-series.md)Vm 是在第2代 Intel®的®白金8272CL （串聯 Lake）、Intel®的 Skylake® 8171M 2.1 GHz （）、Intel®的® E5-2673 v4 2.3 g h z （Broadwell），或超執行緒設定中的 Intel®為® E5-2673 v3 2.4 GHz （Haswell）處理器，為大多數一般用途的工作負載提供更好的價值 除了記憶體已擴充 (從 ~3.5 GiB/vCPU 到 4 GiB/vCPU)，磁碟和網路限制也已就個別核心進行調整，以符合移轉至超執行緒的需求。 Dv3 系列不再擁有 D/Dv2 系列的高記憶體 VM，這些都已移至記憶體最佳化的 [Ev3 和 Esv3 系列](ev3-esv3-series.md)。
 
-- [Ddv4 和 Ddsv4 系列](ddv4-ddsv4-series.md) VM 是在第 2 代 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 處理器上執行，為大部分一般用途的工作負載提供更好的價值主張。 具備全核心滿載可維持 3.4 GHz 的渦輪時脈速度，並擁有 [Intel&reg; 渦輪加速技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超執行緒技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)與 [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 
+- [Dv4 和 Dsv4 系列](dv4-dsv4-series.md)Vm 會在第2代 Intel 最高 &reg; &reg; 白金8272CL （串聯 Lake）處理器上執行，為大部分一般用途的工作負載提供更好的價值主張。 Dv4 和 Dsv4 Vm 系列是新類別的虛擬機器，其依賴遠端磁片，且不提供暫時的本機儲存體。 具備全核心滿載可維持 3.4 GHz 的渦輪時脈速度，並擁有 [Intel&reg; 渦輪加速技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超執行緒技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)與 [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 
 
+- [Ddv4 和 Ddsv4 系列](ddv4-ddsv4-series.md)Vm 會在第2代 Intel 最高 &reg; &reg; 白金8272CL （串聯 Lake）處理器上執行，為大部分一般用途的工作負載提供更好的價值主張。 Ddv4 和 Ddsv4 Vm 系列是新類別的虛擬機器，其中包含本機資料暫存磁片。 具備全核心滿載可維持 3.4 GHz 的渦輪時脈速度，並擁有 [Intel&reg; 渦輪加速技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超執行緒技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)與 [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 
 
 ## <a name="other-sizes"></a>其他大小
 

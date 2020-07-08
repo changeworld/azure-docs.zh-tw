@@ -7,19 +7,18 @@ author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec5fe7f62e8537a7f687202d365eb37d43b48b78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4de9f5a21f38f741dcf65d285446d9482716d4f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74008068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608121"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>操作說明：使用 Azure Active Directory 報告對登入錯誤進行疑難排解
 
@@ -32,7 +31,7 @@ Azure Active Directory (Azure AD) 中的[登入報告](concept-sign-ins.md)可�
 
 此外，登入報告也可協助您對組織中使用者的登入失敗進行疑難排解。 在本指南中，您會了解如何從登入報告中將失敗的登入隔離出來，並藉此了解失敗的根本原因。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您需要：
 
