@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 8573a88d5371bbde07a541c789f52e6c44f1e279
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9754636063e29592595ee57d09164ae1134341a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411137"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300601"
 ---
 # <a name="system-requirements"></a>系統需求
 
@@ -69,6 +68,9 @@ Azure 遠端轉譯目前僅支援使用**HoloLens 2**和 Windows 桌面做為目
 必須安裝下列軟體：
 
 * **Visual Studio 2019**的最新版本[（下載）](https://visualstudio.microsoft.com/vs/older-downloads/)
+* [適用於混合實境的 Visual Studio 工具](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具體而言，必須要安裝下列「工作負載」：
+  * **使用 C++ 開發桌面**
+  * **通用 Windows 平台 (UWP) 開發**
 * **Windows SDK 10.0.18362.0** [（下載）](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * **GIT** [（下載）](https://git-scm.com/downloads)
 * 選擇性：若要從桌上型電腦上的伺服器觀看影片串流，您需要**HEVC 影片延伸**模組[（Microsoft Store 連結）](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)。

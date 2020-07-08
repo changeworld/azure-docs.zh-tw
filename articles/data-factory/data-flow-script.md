@@ -6,13 +6,12 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: 0ac33a0912d52405cf3d2ae18d5102930a94f3ff
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.date: 06/02/2020
+ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890880"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84298596"
 ---
 # <a name="data-flow-script-dfs"></a>資料流程腳本（DFS）
 
@@ -22,7 +21,7 @@ ms.locfileid: "82890880"
 
 ![腳本按鈕](media/data-flow/scriptbutton.png "腳本按鈕")
 
-例如，在`allowSchemaDrift: true,`來源轉換中，會告知服務在資料流程中包含來自源資料集的所有資料行，即使它們並未包含在架構投影中也一樣。
+例如， `allowSchemaDrift: true,` 在來源轉換中，會告知服務在資料流程中包含來自源資料集的所有資料行，即使它們並未包含在架構投影中也一樣。
 
 ## <a name="use-cases"></a>使用案例
 DFS 會由使用者介面自動產生。 您可以按一下 [腳本] 按鈕來查看和自訂腳本。 您也可以在 ADF UI 外產生腳本，然後將其傳遞至 PowerShell Cmdlet。 在進行複雜資料流程的調試時，您可能會發現，掃描腳本的程式碼後置會比較容易，而不是掃描您流程的 UI 圖形標記法。
@@ -52,7 +51,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-如果我們決定新增「衍生」轉換，首先我們需要建立「核心」轉換文字，它有一個簡單的運算式可新增名`upperCaseTitle`為的新大寫資料行：
+如果我們決定新增「衍生」轉換，首先我們需要建立「核心」轉換文字，它有一個簡單的運算式可新增名為的新大寫資料行 `upperCaseTitle` ：
 ```
 derive(upperCaseTitle = upper(title)) ~> deriveTransformationName
 ```
@@ -71,7 +70,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-現在我們會藉由識別要讓新轉換在之後（在此案例中為`source1`）的轉換，並將資料流程的名稱複製到新的轉換，來重新路由傳入資料流程：
+現在我們會藉由識別要讓新轉換在之後（在此案例中為）的轉換 `source1` ，並將資料流程的名稱複製到新的轉換，來重新路由傳入資料流程：
 ```
 source(output(
         movieId as string,
@@ -85,7 +84,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-最後，我們會識別我們想要在這個新轉換之後的轉換，並將其輸入資料流程（在此`sink1`案例中為）取代為新轉換的輸出資料流程名稱：
+最後，我們會識別我們想要在這個新轉換之後的轉換，並將其輸入資料流程（在此案例中為 `sink1` ）取代為新轉換的輸出資料流程名稱：
 ```
 source(output(
         movieId as string,
@@ -165,7 +164,7 @@ ValueDistAgg aggregate(numofunique = countIf(countunique==1),
 ```
 
 ### <a name="include-all-columns-in-an-aggregate"></a>將所有資料行包含在匯總中
-這是一般匯總模式，示範如何在建立匯總時，保留輸出中繼資料中其餘的資料行。 在此情況下，我們會```first()```使用函數來選擇名稱不是 "movie" 的每個資料行中的第一個值。 若要使用此功能，請建立名為 DistinctRows 的匯總轉換，然後在您的腳本中，將其貼到現有 DistinctRows 匯總腳本的頂端。
+這是一般匯總模式，示範如何在建立匯總時，保留輸出中繼資料中其餘的資料行。 在此情況下，我們 ```first()``` 會使用函數來選擇名稱不是 "movie" 的每個資料行中的第一個值。 若要使用此功能，請建立名為 DistinctRows 的匯總轉換，然後在您的腳本中，將其貼到現有 DistinctRows 匯總腳本的頂端。
 
 ```
 aggregate(groupBy(movie),
@@ -173,7 +172,7 @@ aggregate(groupBy(movie),
 ```
 
 ### <a name="create-row-hash-fingerprint"></a>建立資料列雜湊指紋 
-在資料流程腳本中使用此程式碼來建立名```DWhash```為的新衍生資料行， ```sha1```以產生三個數據行的雜湊。
+在資料流程腳本中使用此程式碼來建立名為的新衍生資料行 ```DWhash``` ，以產生 ```sha1``` 三個數據行的雜湊。
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
@@ -186,12 +185,22 @@ derive(DWhash = sha1(columns()))
 ```
 
 ### <a name="string_agg-equivalent"></a>String_agg 對等
-此程式碼的作用就像 T-sql 函```string_agg()```式，會將字串值匯總成陣列。 然後，您可以將該陣列轉換成字串，以便搭配 SQL 目的地使用。
+此程式碼的作用就像 T-sql 函式 ```string_agg()``` ，會將字串值匯總成陣列。 然後，您可以將該陣列轉換成字串，以便搭配 SQL 目的地使用。
 
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
 Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+```
+
+### <a name="count-number-of-updates-upserts-inserts-deletes"></a>更新次數、更新插入、插入、刪除
+當使用 Alter Row 轉換時，您可能會想要計算從您的 Alter Row 原則產生的更新、更新插入、插入、刪除數目。 在您的 alter row 之後加入匯總轉換，並將此資料流程腳本貼入這些計數的匯總定義中：
+
+```
+aggregate(updates = countIf(isUpdate(), 1),
+        inserts = countIf(isInsert(), 1),
+        upserts = countIf(isUpsert(), 1),
+        deletes = countIf(isDelete(),1)) ~> RowCount
 ```
 
 ## <a name="next-steps"></a>後續步驟

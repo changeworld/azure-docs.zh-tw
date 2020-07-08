@@ -11,15 +11,14 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/01/2020
 ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: 077fd70f0908dcef3af0c1e037fe137d636a4ac4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 9fc14a6a8211308ef9f1cd98cd4b831070a99e22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660555"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299871"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>用於整合 Microsoft Azure 與 Oracle Cloud Infrastructure 的 Oracle 應用程式解決方案
 
@@ -35,10 +34,7 @@ Microsoft 與 Oracle 合作提供高輸送量的低延遲跨雲端連線，以�
 
 跨雲端連線提供一個解決方案，以供在 Azure 虛擬機器上執行 Oracle 領先業界的應用程式，以及自有的自訂應用程式，同時享有在 OCI 中託管資料庫服務的優點。 
 
-> [!IMPORTANT]
-> 在 2020 年 5 月前使用 Azure/Oracle 雲端互連解決方案，Oracle 即會認證下列應用程式可在 Azure 中執行。
-
-您可在跨雲端設定中執行的應用程式包括：
+自2020之後，下列應用程式已通過跨雲端設定認證：
 
 * E-Business Suite
 * JD Edwards EnterpriseOne

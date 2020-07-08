@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2679bc8a9ddf9f748cd0e9d51e1534d120484d0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76710319"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84267933"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何識別案例和規劃進階分析資料處理
 
@@ -75,7 +74,7 @@ ms.locfileid: "76710319"
 * 同時涉及內部部署和雲端資源的混合式案例
 * 在移轉的過程中由商務邏輯交易、修改或變更資料的案例
 
-如需詳細資訊，請參閱[使用 Azure Data Factory 將資料從內部部署 sql Server 移動到 SQL Azure](move-sql-azure-adf.md)。
+如需詳細資訊，請參閱[使用 Azure Data Factory 將資料從 SQL Server 資料庫移至 SQL Azure](move-sql-azure-adf.md)。
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>有多少資料要移至 Azure？
 
@@ -145,12 +144,12 @@ ms.locfileid: "76710319"
 
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>您應該使用哪些工具進行資料分析？
 
-* [Microsoft Azure Powershell](/powershell/azure/overview) - 在指令碼語言中用來管理 Azure 資源的指令碼語言
+* [Microsoft Azure PowerShell](/powershell/azure/overview) -在指令碼語言中用來管理 Azure 資源的指令碼語言
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [適用於 Visual Studio 的 Python 工具](https://aka.ms/ptvsdocs)
-* [Anaconda](https://www.continuum.io/why-anaconda)
+* [Anaconda](https://www.anaconda.com/)
 * [Jupyter 筆記本](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 

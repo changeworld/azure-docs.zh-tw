@@ -5,12 +5,11 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1ac42a5451da0347779475e96ce557633a02c59f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834572"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299777"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常見問題：Azure 至 Azure 災害復原
 
@@ -52,6 +51,14 @@ Site Recovery 小組和 Azure 容量管理小組會規劃足夠的基礎結構�
 - Site Recovery 支援 Azure 磁碟加密 0.1 版，其具有需要 Azure Active Directory (Azure AD) 的結構描述。 Site Recovery 也支援 1.1 版，此版本不需要 Azure AD。 [深入了解 Azure 磁碟加密的延伸結構描述](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema)。
   - 若為 Azure 磁碟加密 1.1 版，您必須使用 Windows VM 搭配受控磁碟。
   - [深入了解](azure-to-azure-how-to-enable-replication-ade-vms.md)如何啟用已加密 VM 的複寫。
+
+### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>我可以從不同的資源群組中選取自動化帳戶嗎？
+
+目前不支援透過入口網站，但您可以透過 Powershell 從不同的資源群組中選擇自動化帳戶。
+
+### <a name="after-specifying-an-automation-account-that-is-in-a-different-resource-group-than-the-vault-am-i-permitted-to-delete-the-runbook-if-there-is-no-other-vault-to-specify"></a>在指定的自動化帳戶與保存庫位於不同的資源群組之後，如果沒有其他保存庫可供指定，我是否允許刪除 runbook？
+
+建立的自訂 runbook 是一種工具，如果不需要相同的時間較長，則可以放心刪除。
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>我可以將 VM 複寫至另一個訂用帳戶嗎？
 
@@ -172,6 +179,10 @@ Site Recovery 會每 5 分鐘建立一次當機時保持一致復原點。 您�
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>增長復原點的保留週期是否會增加儲存體成本？
 
 是，如果您將保留週期從 24 小時增加到 72 小時，Site Recovery 將把復原點再多儲存 48 小時。 增加的時間將產生儲存體費用。 例如，單一復原點可能會有 10 GB 的差異變更，每個月的每 GB 成本為 $0.16。 額外費用將是每月 $1.60 × 48。
+
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>我可以在 Linux 伺服器中使用應用程式一致性來啟用複寫嗎？
+
+是。 適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式的自訂腳本，以進行應用程式一致性。 具有前置和後置選項的自訂腳本，會在應用程式一致性期間由 Azure Site Recovery 行動代理程式使用。 [深入了解](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>多 VM 一致性
 

@@ -13,12 +13,11 @@ ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: def198a15710d0aff4a943300eedc338a7772e46
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 88dc4bb86459cd0390c4c01deb871aa93e39c6d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115790"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84266741"
 ---
 # <a name="security-tokens"></a>安全性權杖
 
@@ -69,25 +68,25 @@ Microsoft 身分識別平臺會將安全性權杖實作為包含**宣告**的**J
 
 若要深入瞭解 Microsoft 身分識別平臺如何實行權杖和宣告資訊，請參閱[存取權杖](access-tokens.md)和[識別碼權杖](id-tokens.md)。
 
-## <a name="how-each-flow-emits-tokens-and-codes"></a>每個流程如何發出權杖和代碼
+## <a name="how-each-flow-emits-tokens-and-codes"></a>每個流程如何發出權杖和授權碼
 
-視用戶端的建立方式而定，它可以使用 Microsoft 身分識別平臺所支援的一或多個驗證流程。 這些流程可能會產生各種權杖（識別碼權杖、重新整理權杖、存取權杖）以及授權碼，而且需要不同的權杖才能使其運作。 此圖表提供總覽：
+視用戶端的建立方式而定，它可以使用 Microsoft 身分識別平臺所支援的一或多個驗證流程。 這些流程可能會產生各種權杖（識別碼權杖、重新整理權杖、存取權杖）以及授權碼，而且需要不同的權杖才能使其運作。 此圖表提供概觀：
 
-|Flow | 具備 | 識別碼權杖 | 存取權杖 | 重新整理權杖 | 授權碼 |
+|Flow | 需要 | 識別碼權杖 | 存取權杖 | 重新整理權杖 | 授權碼 |
 |-----|----------|----------|--------------|---------------|--------------------|
 |[授權碼流程](v2-oauth2-auth-code-flow.md) | | x | x | x | x|
 |[隱含流程](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[混合式 OIDC 流程](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[混合式 OIDC 流程](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition)| | x  | |          |            x   |
 |[重新整理權杖兌換](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | 重新整理權杖 | x | x | x| |
 |[代理者流程](v2-oauth2-on-behalf-of-flow.md) | 存取權杖| x| x| x| |
-|[用戶端認證](v2-oauth2-client-creds-grant-flow.md) | | | x （僅限應用程式）| | |
+|[用戶端認證](v2-oauth2-client-creds-grant-flow.md) | | | x (僅限應用程式)| | |
 
-透過隱含模式發行的權杖有長度限制，因為透過 URL 傳遞回瀏覽器（其中 `response_mode` 是 `query` 或 `fragment` ）。  有些瀏覽器對於可以放在瀏覽器列中的 URL 大小有限制，而且太長時也會失敗。  因此，這些權杖不具有 `groups` 或 `wids` 宣告。
+透過隱含模式發出的權杖具有長度限制，因為其會透過 URL 傳遞回瀏覽器 (其中 `response_mode` 是 `query` 或 `fragment`)。  有些瀏覽器對於可放在瀏覽器列中的 URL 大小有所限制，而太長時會失敗。  因此，這些權杖沒有 `groups` 或 `wids` 宣告。
 
 ## <a name="next-steps"></a>後續步驟
 
-其他涵蓋驗證和授權基本概念的主題：
+如需涵蓋驗證和授權基本概念的其他主題：
 
-* 若要瞭解 Microsoft 身分識別平臺中驗證和授權的基本概念，請參閱[驗證與授權](authentication-vs-authorization.md)。
-* 請參閱[應用程式模型](application-model.md)，以瞭解註冊應用程式以與 Microsoft 身分識別平臺整合的過程。
-* 請參閱[應用程式登入流程](app-sign-in-flow.md)，以瞭解 Microsoft 身分識別平臺中 web、桌面和行動應用程式的登入流程。
+* 若要了解 Microsoft 身分識別平台中驗證和授權的基本概念，請參閱[驗證與授權](authentication-vs-authorization.md)。
+* 若要了解註冊應用程式以與 Microsoft 身分識別平台整合的程序，請參閱[應用程式模型](application-model.md)。
+* 若要了解 Microsoft 身分識別平台中 Web、傳統型和行動應用程式的登入流程，請參閱[應用程式登入流程](app-sign-in-flow.md)。

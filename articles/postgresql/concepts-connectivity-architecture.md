@@ -6,12 +6,11 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: d23a59e97ee3fc935a0d0954bc70b547b727fddc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f140aa905916524eca66e764f08b699de26be650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546604"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300676"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>適用於 PostgreSQL 的 Azure 資料庫中的連線架構
 本文說明適用於 PostgreSQL 的 Azure 資料庫連線架構，以及如何從 Azure 內部和外部的用戶端，將流量導向至您的適用於 PostgreSQL 的 Azure 資料庫資料庫實例。
@@ -44,6 +43,7 @@ ms.locfileid: "80546604"
 | 美國東部 | 40.121.158.30, 191.238.6.43  |
 | 美國東部 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | 法國中部 | 40.79.137.0, 40.79.129.1  |
+| 法國南部 | 40.79.177.0     |
 | 德國中部 | 51.4.144.100     |
 | 德國東北部 | 51.5.144.179  |
 | 印度中部 | 104.211.96.159     |

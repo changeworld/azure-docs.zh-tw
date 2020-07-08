@@ -5,14 +5,13 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 05/18/2020
+ms.date: 06/01/2020
 ms.author: victorh
-ms.openlocfilehash: cf0af93d95c5af56be6168bc8e4f79d3005e2ec2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: a467aa60b131e47e9251366369b3fae8dd95c004
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84267693"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Azure 防火牆強制通道
 
@@ -26,11 +25,15 @@ ms.locfileid: "83649590"
 
 如果您有透過 BGP 公告的預設路由，以強制前往內部部署的流量，您必須先建立 AzureFirewallSubnet 和 AzureFirewallManagementSubnet，然後再部署防火牆，並將 UDR 設為網際網路的預設路由，且停用**虛擬網路閘道路由傳播**。
 
-在此設定中，AzureFirewallSubnet 現在可以包含任何內部部署防火牆或 NVA 的路由，以在傳遞至網際網路之前處理流量。 如果已在此子網路上啟用**虛擬網路閘道路由傳播**，您也可以透過 BGP 將這些路由發佈到 AzureFirewallSubnet。
+在此設定中， *AzureFirewallSubnet*現在可以包含任何內部部署防火牆或 NVA 的路由，以在傳遞至網際網路之前處理流量。 如果已在此子網路上啟用**虛擬網路閘道路由傳播**，您也可以透過 BGP 將這些路由發佈到 AzureFirewallSubnet。
 
-例如，您可以在 AzureFirewallSubnet 上建立預設路由，並以您的 VPN 閘道作為下一個躍點，以進入您的內部部署裝置。 或者，您可以啟用**虛擬網路閘道路由傳播**，以取得適用於內部部署網路的適當路由。
+例如，您可以在*AzureFirewallSubnet*上建立預設路由，並將您的 VPN 閘道作為下一個躍點，以前往您的內部部署裝置。 或者，您可以啟用**虛擬網路閘道路由傳播**，以取得適用于內部部署網路的適當路由。
 
 ![虛擬網路閘道路由傳播](media/forced-tunneling/route-propagation.png)
+
+如果您啟用強制通道，則會將網際網路系結流量 Snat 轉譯至 AzureFirewallSubnet 中的其中一個防火牆私人 IP 位址，以隱藏內部部署防火牆的來源。
+
+如果您的組織使用私人網路的公用 IP 位址範圍，Azure 防火牆會將流量 SNAT 轉譯到 AzureFirewallSubnet 其中一個防火牆私人 IP 位址。 不過，您可以將 Azure 防火牆設定為**不**會 SNAT 公用 IP 位址範圍。 如需詳細資訊，請參閱 [Azure 防火牆 SNAT 私人 IP 位址範圍](snat-private-range.md)。
 
 一旦您設定 Azure 防火牆以支援強制通道，就無法復原設定。 如果您移除防火牆上的所有其他 IP 設定，系統也會移除管理 IP 設定，並解除配置防火牆。 指派給管理 IP 設定的公用 IP 位址無法移除，但是您可以指派不同的公用 IP 位址。
 

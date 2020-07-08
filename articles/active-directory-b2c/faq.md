@@ -10,12 +10,11 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40285c811cd6f407c20c40bf3a90ec5b779a9c18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84297899"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常見問題集 (FAQ)
 
@@ -49,7 +48,7 @@ Azure AD B2C 也支援[自訂原則](custom-policy-overview.md)。 自訂原則�
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>我可以設定範圍，以便從各種社交身分識別提供者收集取用者的詳細資訊嗎？
 
-不可以。 我們支援的一組社交身分識別提供者所使用的預設範圍如下：
+否。 我們支援的一組社交身分識別提供者所使用的預設範圍如下：
 
 * Facebook: email
 * Google+: email
@@ -134,21 +133,20 @@ Azure AD B2C 不適用於 SharePoint 外部夥伴共用的情節。請改以參�
 
 請遵循下列步驟來刪除您的 Azure AD B2C 租使用者。
 
-您可以使用目前的**應用程式**體驗或我們新的統一**應用程式註冊（預覽）** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
+您可以使用新的統一**應用程式註冊**體驗或我們的舊版**應用程式（舊版）** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
 
-#### <a name="applications"></a>[應用程式](#tab/applications/)
+#### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
 1. 以*訂用帳戶管理員*身分登入[Azure 入口網站](https://portal.azure.com/)。 使用相同的公司或學校帳戶，或您用來註冊 Azure 的相同 Microsoft 帳戶。
-1. 在頂端功能表中選取 [目錄 + 訂用帳戶]  篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
-1. 在左側功能表中，選取 [Azure AD B2C]  。 或者，選取 [所有服務]  ，然後搜尋並選取 [Azure AD B2C]  。
+1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
+1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
 1. 刪除 Azure AD B2C 租使用者中的所有**使用者流程（原則）** 。
-1. 刪除您在 Azure AD B2C 租使用者中註冊的所有**應用程式**。
-1. 選取左側功能表上的 [ **Azure Active Directory** ]。
-1. 在 [管理]  底下選取 [使用者]  。
+1. 選取 [**應用程式註冊**]，然後選取 [**所有應用程式**] 索引標籤。
+1. 刪除您註冊的所有應用程式。
+1. 刪除**b2c-延伸模組-應用程式**。
+1. 在 [管理] 下，選取 [使用者]。
 1. 輪流選取每個使用者（排除您目前登入的*訂用帳戶管理員*使用者身分）。 選取頁面底部的 [**刪除**]，然後在出現提示時選取 **[是]** 。
-1. 在 [**管理**] 底下，選取 [**應用程式註冊**（或**應用程式註冊（舊版）**）]。
-1. 選取 [**查看所有應用程式**]
-1. 選取名為**b2c**的應用程式，選取 [**刪除**]，然後在出現提示時選取 **[是]** 。
+1. 選取左側功能表上的 [ **Azure Active Directory** ]。
 1. 在 [**管理**] 底下，選取 [**使用者設定**]。
 1. 如果存在，請在 [ **LinkedIn 帳戶**連線] 下選取 [**否**]，然後選取 [**儲存**]。
 1. 在 [**管理**] 底下，選取 [**屬性**]
@@ -157,18 +155,19 @@ Azure AD B2C 不適用於 SharePoint 外部夥伴共用的情節。請改以參�
 1. 選取左側功能表上的 [ **Azure Active Directory** ]。
 1. 在 [**總覽**] 頁面上，選取 [**刪除目錄**]。 遵循畫面上的指示來完成程式。
 
-#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
+#### <a name="applications-legacy"></a>[應用程式 (舊版)](#tab/applications-legacy/)
 
 1. 以*訂用帳戶管理員*身分登入[Azure 入口網站](https://portal.azure.com/)。 使用相同的公司或學校帳戶，或您用來註冊 Azure 的相同 Microsoft 帳戶。
-1. 在頂端功能表中選取 [目錄 + 訂用帳戶]  篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
-1. 在左側功能表中，選取 [Azure AD B2C]  。 或者，選取 [所有服務]  ，然後搜尋並選取 [Azure AD B2C]  。
+1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
+1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
 1. 刪除 Azure AD B2C 租使用者中的所有**使用者流程（原則）** 。
-1. 選取 [**應用程式註冊（預覽）**]，然後選取 [**所有應用程式**] 索引標籤。
-1. 刪除您註冊的所有應用程式。
-1. 刪除**b2c-延伸模組-應用程式**。
-1. 在 [管理]  底下選取 [使用者]  。
-1. 輪流選取每個使用者（排除您目前登入的*訂用帳戶管理員*使用者身分）。 選取頁面底部的 [**刪除**]，然後在出現提示時選取 **[是]** 。
+1. 刪除您在 Azure AD B2C 租使用者中註冊的所有**應用程式（舊版）** 。
 1. 選取左側功能表上的 [ **Azure Active Directory** ]。
+1. 在 [管理] 下，選取 [使用者]。
+1. 輪流選取每個使用者（排除您目前登入的*訂用帳戶管理員*使用者身分）。 選取頁面底部的 [**刪除**]，然後在出現提示時選取 **[是]** 。
+1. 在 [管理] 底下選取 [應用程式註冊]。
+1. 選取 [**查看所有應用程式**]
+1. 選取名為**b2c**的應用程式，選取 [**刪除**]，然後在出現提示時選取 **[是]** 。
 1. 在 [**管理**] 底下，選取 [**使用者設定**]。
 1. 如果存在，請在 [ **LinkedIn 帳戶**連線] 下選取 [**否**]，然後選取 [**儲存**]。
 1. 在 [**管理**] 底下，選取 [**屬性**]

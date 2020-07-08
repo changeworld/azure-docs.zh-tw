@@ -2,37 +2,36 @@
 title: 如何從容器的 Azure 監視器查詢記錄 |Microsoft Docs
 description: 適用于容器的 Azure 監視器會收集計量和記錄資料，而本文會描述記錄並包含範例查詢。
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: ff7cbff708b794847d8be69ca8f829e622d7c7ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/01/2020
+ms.openlocfilehash: 392aac8f81ac3894fca8b6f70570834a5af16ade
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80333468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84298298"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何從容器的 Azure 監視器查詢記錄
 
-容器的 Azure 監視器會從容器主機和容器收集效能計量、清查資料和健全狀況狀態資訊，並將其轉送至 Azure 監視器中的 Log Analytics 工作區。 每隔三分鐘會收集一次資料。 這項資料可用於 Azure 監視器中的[查詢](../../azure-monitor/log-query/log-query-overview.md)。 您可以將此資料套用至各種案例，包括移轉規劃、容量分析、探索和隨選效能疑難排解。
+容器的 Azure 監視器會從容器主機和容器收集效能計量、清查資料和健全狀況狀態資訊。 資料每三分鐘會收集一次，並轉送至 Azure 監視器中的 Log Analytics 工作區。 這項資料可用於 Azure 監視器中的[查詢](../../azure-monitor/log-query/log-query-overview.md)。 您可以將此資料套用至各種案例，包括移轉規劃、容量分析、探索和隨選效能疑難排解。
 
 ## <a name="container-records"></a>容器資料列
 
-下表顯示適用於容器的 Azure 監視器所收集的記錄範例，以及記錄搜尋結果中所顯示的資料類型：
+在下表中，會提供針對容器 Azure 監視器所收集的記錄詳細資料。 
 
-| 資料類型 | 記錄檔搜尋中的資料類型 | 欄位 |
-| --- | --- | --- |
-| 主機和容器的效能 | `Perf` | Computer、ObjectName、CounterName &#40;%Processor Time、Disk Reads MB、Disk Writes MB、Memory Usage MB、Network Receive Bytes、Network Send Bytes、Processor Usage sec、Network&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem |
-| 容器清查 | `ContainerInventory` | TimeGenerated、Computer、container name、ContainerHostname、Image、ImageTag、ContainerState、ExitCode、EnvironmentVar、Command、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
-| 容器記錄檔 | `ContainerLog` | TimeGenerated、Computer、image ID、container name、LogEntrySource、LogEntry、SourceSystem、ContainerID |
-| 容器節點清查 | `ContainerNodeInventory`| TimeGenerated、Computer、ClassName_s、DockerVersion_s、OperatingSystem_s、Volume_s、Network_s、NodeRole_s、OrchestratorType_s、InstanceID_g、SourceSystem|
-| 清查 Kubernetes 叢集中的 Pod | `KubePodInventory` | TimeGenerated、Computer、ClusterId、ContainerCreationTimeStamp、PodUid、PodCreationTimeStamp、ContainerRestartCount、PodRestartCount、PodStartTime、ContainerStartTime、ServiceName、ControllerKind、ControllerName、ContainerStatus、ContainerStatusReason、ContainerID、容器名稱、Name、PodLabel、Namespace、PodStatus、ClusterName、PodIp、及 sourcesystem |
-| 清查 Kubernetes 叢集中的節點部分 | `KubeNodeInventory` | TimeGenerated、Computer、ClusterName、ClusterId、LastTransitionTimeReady、Labels、Status、KubeletVersion、KubeProxyVersion、CreationTimeStamp、SourceSystem | 
-| Kubernetes 事件 | `KubeEvents` | TimeGenerated、Computer、ClusterId_s、FirstSeen_t、LastSeen_t、Count_d、ObjectKind_s、Namespace_s、Name_s、Reason_s、Type_s、TimeGenerated_s、SourceComponent_s、ClusterName_s、Message、SourceSystem | 
-| Kubernetes 叢集中的服務 | `KubeServices` | TimeGenerated、ServiceName_s、Namespace_s、SelectorLabels_s、ClusterId_s、ClusterName_s、ClusterIP_s、ServiceType_s、SourceSystem | 
-| Kubernetes 叢集節點部分的效能計量 | 效能 &#124; where ObjectName = = "K8SNode" | Computer、ObjectName、CounterName &#40;cpuAllocatableBytes、memoryAllocatableBytes、cpuCapacityNanoCores、memoryCapacityBytes、memoryRssBytes、cpuUsageNanoCores、memoryWorkingsetBytes、restartTimeEpoch&#41;、CounterValue、TimeGenerated、CounterPath、及 sourcesystem | 
-| Kubernetes 叢集容器部分的效能計量 | 效能 &#124; where ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryWorkingSetBytes、restartTimeEpoch、cpuUsageNanoCores、memoryRssBytes&#41;、CounterValue、TimeGenerated、CounterPath、及 sourcesystem | 
-| 自訂計量 |`InsightsMetrics` | 電腦、名稱、命名空間、來源、及 sourcesystem、標記<sup>1</sup>、TimeGenerated、類型、Va、_ResourceId | 
+| 資料 | 資料來源 | 資料類型 | 欄位 |
+|------|-------------|-----------|--------|
+| 主機和容器的效能 | 使用計量是從 Kube api 的 cAdvisor 和限制取得 | `Perf` | Computer、ObjectName、CounterName &#40;%Processor Time、Disk Reads MB、Disk Writes MB、Memory Usage MB、Network Receive Bytes、Network Send Bytes、Processor Usage sec、Network&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem |
+| 容器清查 | Docker | `ContainerInventory` | TimeGenerated、Computer、container name、ContainerHostname、Image、ImageTag、ContainerState、ExitCode、EnvironmentVar、Command、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
+| 容器記錄檔 | Docker | `ContainerLog` | TimeGenerated、Computer、image ID、container name、LogEntrySource、LogEntry、SourceSystem、ContainerID |
+| 容器節點清查 | Kube API | `ContainerNodeInventory`| TimeGenerated、Computer、ClassName_s、DockerVersion_s、OperatingSystem_s、Volume_s、Network_s、NodeRole_s、OrchestratorType_s、InstanceID_g、SourceSystem|
+| 清查 Kubernetes 叢集中的 Pod | Kube API | `KubePodInventory` | TimeGenerated、Computer、ClusterId、ContainerCreationTimeStamp、PodUid、PodCreationTimeStamp、ContainerRestartCount、PodRestartCount、PodStartTime、ContainerStartTime、ServiceName、ControllerKind、ControllerName、ContainerStatus、ContainerStatusReason、ContainerID、容器名稱、Name、PodLabel、Namespace、PodStatus、ClusterName、PodIp、及 sourcesystem |
+| 清查 Kubernetes 叢集中的節點部分 | Kube API | `KubeNodeInventory` | TimeGenerated、Computer、ClusterName、ClusterId、LastTransitionTimeReady、Labels、Status、KubeletVersion、KubeProxyVersion、CreationTimeStamp、SourceSystem | 
+| Kubernetes 事件 | Kube API | `KubeEvents` | TimeGenerated、Computer、ClusterId_s、FirstSeen_t、LastSeen_t、Count_d、ObjectKind_s、Namespace_s、Name_s、Reason_s、Type_s、TimeGenerated_s、SourceComponent_s、ClusterName_s、Message、SourceSystem | 
+| Kubernetes 叢集中的服務 | Kube API | `KubeServices` | TimeGenerated、ServiceName_s、Namespace_s、SelectorLabels_s、ClusterId_s、ClusterName_s、ClusterIP_s、ServiceType_s、SourceSystem | 
+| Kubernetes 叢集節點部分的效能計量 || 效能 &#124; where ObjectName = = "K8SNode" | Computer、ObjectName、CounterName &#40;cpuAllocatableBytes、memoryAllocatableBytes、cpuCapacityNanoCores、memoryCapacityBytes、memoryRssBytes、cpuUsageNanoCores、memoryWorkingsetBytes、restartTimeEpoch&#41;、CounterValue、TimeGenerated、CounterPath、及 sourcesystem | 
+| Kubernetes 叢集容器部分的效能計量 || 效能 &#124; where ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryWorkingSetBytes、restartTimeEpoch、cpuUsageNanoCores、memoryRssBytes&#41;、CounterValue、TimeGenerated、CounterPath、及 sourcesystem | 
+| 自訂計量 ||`InsightsMetrics` | 電腦、名稱、命名空間、來源、及 sourcesystem、標記<sup>1</sup>、TimeGenerated、類型、Va、_ResourceId | 
 
-<sup>1</sup> *Tags*屬性代表對應度量的[多個維度](../platform/data-platform-metrics.md#multi-dimensional-metrics)。 如需`InsightsMetrics`資料表中所收集和儲存之計量的詳細資訊，以及記錄屬性的描述，請參閱[InsightsMetrics 總覽](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)。
+<sup>1</sup> *Tags*屬性代表對應度量的[多個維度](../platform/data-platform-metrics.md#multi-dimensional-metrics)。 如需資料表中所收集和儲存之計量的詳細資訊， `InsightsMetrics` 以及記錄屬性的描述，請參閱[InsightsMetrics 總覽](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)。
 
 ## <a name="search-logs-to-analyze-data"></a>搜尋記錄來分析資料
 
@@ -80,7 +79,7 @@ InsightsMetrics
 
 ```
 
-若要依命名空間篩選 Azure 監視器來查看 Prometheus 計量剪輯，請指定 "Prometheus"。 以下是從`default` kubernetes 命名空間中查看 Prometheus 計量的範例查詢。
+若要依命名空間篩選 Azure 監視器來查看 Prometheus 計量剪輯，請指定 "Prometheus"。 以下是從 kubernetes 命名空間中查看 Prometheus 計量的範例查詢 `default` 。
 
 ```
 InsightsMetrics 
@@ -99,13 +98,13 @@ InsightsMetrics
 
 ### <a name="query-config-or-scraping-errors"></a>查詢設定或抓取錯誤
 
-若要調查任何設定或抓取錯誤，下列範例查詢會傳回資料表中的`KubeMonAgentEvents`資訊事件。
+若要調查任何設定或抓取錯誤，下列範例查詢會傳回資料表中的資訊事件 `KubeMonAgentEvents` 。
 
 ```
 KubeMonAgentEvents | where Level != "Info" 
 ```
 
-輸出會顯示類似下面的結果：
+輸出會顯示類似下列範例的結果：
 
 ![代理程式的資訊事件記錄查詢結果](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 地圖服務路線規劃服務的最佳做法 |Microsoft Azure 對應
-description: 瞭解如何使用 Microsoft Azure 對應的路線規劃服務有效率地進行路由。
+description: 瞭解如何使用來自 Microsoft Azure 地圖的路線規劃服務來路由車輛。
 author: philmea
 ms.author: philmea
 ms.date: 03/11/2020
@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85ce29d088b8fbd110988db67776d89346215e5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84266690"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure 地圖服務路線規劃服務的最佳作法
 
@@ -29,11 +28,11 @@ Azure 地圖服務[路線規劃服務](https://docs.microsoft.com/rest/api/maps/
 * 使用支援點優化替代路由。 例如，提供通過電動車輛充電站的替代路由。
 * 使用 Azure 地圖服務 Web SDK 的[路線規劃服務](https://docs.microsoft.com/rest/api/maps/route)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-若要對 Azure 地圖服務 Api 進行呼叫，您需要 Azure 地圖服務帳戶和金鑰。 如需詳細資訊，請參閱[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)並[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 主要金鑰也稱為「主要訂用帳戶金鑰」或「訂用帳戶金鑰」。
+若要對 Azure 地圖服務 Api 進行呼叫，您需要 Azure 地圖服務帳戶和金鑰。 如需詳細資訊，請參閱[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)和[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 主要金鑰也稱為「主要訂用帳戶金鑰」或「訂用帳戶金鑰」。
 
-如需 Azure 地圖服務中驗證的相關資訊，請參閱[Azure 地圖服務中的管理驗證](./how-to-manage-authentication.md)。 如需有關路線規劃服務涵蓋範圍的詳細資訊，請參閱[路由涵蓋範圍](routing-coverage.md)。
+如需 Azure 地圖服務中驗證的相關資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。 如需有關路線規劃服務涵蓋範圍的詳細資訊，請參閱[路由涵蓋範圍](routing-coverage.md)。
 
 本文使用[Postman 應用程式](https://www.postman.com/downloads/)來建立 REST 呼叫，但您可以選擇任何 API 開發環境。
 
@@ -67,7 +66,7 @@ Azure 地圖服務[路線規劃服務](https://docs.microsoft.com/rest/api/maps/
 
 ## <a name="request-historic-and-real-time-data"></a>要求歷史和即時資料
 
-根據預設，路由服務會假設旅行模式是汽車，而出發時間現在是。 它會根據即時流量條件傳回路由，除非路由計算要求另有指定。 已修正與時間相依的流量限制，例如「不允許在 4:00 PM 到 6:00 PM 之間進行左轉轉」，而且路由引擎會將其視為。 除非您特別要求的路由會忽略目前的即時流量，否則將會考慮像是 roadworks 的道路。 若要忽略目前的流量， `traffic`請`false`在您的 API 要求中將設定為。
+根據預設，路由服務會假設旅行模式是汽車，而出發時間現在是。 它會根據即時流量條件傳回路由，除非路由計算要求另有指定。 已修正與時間相依的流量限制，例如「不允許在 4:00 PM 到 6:00 PM 之間進行左轉轉」，而且路由引擎會將其視為。 除非您特別要求的路由會忽略目前的即時流量，否則將會考慮像是 roadworks 的道路。 若要忽略目前的流量， `traffic` 請 `false` 在您的 API 要求中將設定為。
 
 [路由計算] **travelTimeInSeconds**值包含因流量而造成的延遲。 當出發時間設定為 [now] 時，會利用目前和歷程記錄的旅遊時間資料來產生它。 如果您的出發時間是在未來設定，則 Api 會根據歷程記錄資料傳回預測的行進時間。
 
@@ -129,9 +128,9 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ## <a name="request-route-and-leg-details"></a>要求路線和支線詳細資料
 
-根據預設，路由服務會傳回座標陣列。 回應會包含組成清單中路徑的座標，名稱為`points`。 路由回應也包括從路由開始到預估經過時間的距離。 這些值可以用來計算整個路線的平均速度。
+根據預設，路由服務會傳回座標陣列。 回應會包含組成清單中路徑的座標，名稱為 `points` 。 路由回應也包括從路由開始到預估經過時間的距離。 這些值可以用來計算整個路線的平均速度。
 
-下圖顯示`points`元素。
+下圖顯示 `points` 元素。
 
 <center>
 
@@ -139,7 +138,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 </center>
 
-展開`point`元素以查看路徑的座標清單：
+展開 `point` 元素以查看路徑的座標清單：
 
 <center>
 
@@ -149,7 +148,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 路由方向 Api 支援不同的指令格式，可以藉由指定**instructionsType**參數來使用。 若要格式化簡單電腦處理的指示，請使用**instructionsType = 編碼**。 使用**instructionsType = 標記**為使用者顯示文字的指示。 此外，您也可以將指令格式化為文字，其中指示的某些元素會標示出來，而指令會以特殊格式呈現。 如需詳細資訊，請參閱[支援的指令類型清單](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype)。
 
-當要求指示時，回應會傳回名為`guidance`的新元素。 `guidance`元素包含兩項資訊：輪流指示和摘要指示。
+當要求指示時，回應會傳回名為的新元素 `guidance` 。 `guidance`元素包含兩項資訊：輪流指示和摘要指示。
 
 <center>
 
@@ -157,7 +156,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 </center>
 
-`instructions`元素會保存旅程的輪流指示，而則`instructionGroups`包含摘要指示。 每個指令摘要都會涵蓋可能涵蓋多個道路的旅程區段。 Api 可以傳回路由區段的詳細資料。 例如，流量卡的座標範圍或流量的目前速度。
+`instructions`元素會保存旅程的輪流指示，而則 `instructionGroups` 包含摘要指示。 每個指令摘要都會涵蓋可能涵蓋多個道路的旅程區段。 Api 可以傳回路由區段的詳細資料。 例如，流量卡的座標範圍或流量的目前速度。
 
 <center>
 
@@ -183,7 +182,7 @@ Azure 地圖服務的路由 Api 支援商用車輛路線，涵蓋商用卡車路
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass1&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
-路由 API 會傳回可容納卡車尺寸和危險浪費的指示。 您可以藉由展開`guidance`元素來讀取路由指示。
+路由 API 會傳回可容納卡車尺寸和危險浪費的指示。 您可以藉由展開元素來讀取路由指示 `guidance` 。
 
 <center>
 
@@ -199,7 +198,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass9&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
-下面的回應適用于攜帶課堂9危險材料的卡車，其危險程度較于類別1的危險材質。 當您展開`guidance`元素以閱讀指示時，您會注意到方向並不相同。 有更多路線指示適用于攜帶類別1危險資料的卡車。
+下面的回應適用于攜帶課堂9危險材料的卡車，其危險程度較于類別1的危險材質。 當您展開 `guidance` 元素以閱讀指示時，您會注意到方向並不相同。 有更多路線指示適用于攜帶類別1危險資料的卡車。
 
 <center>
 
@@ -209,11 +208,11 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ## <a name="request-traffic-information-along-a-route"></a>沿著路線要求流量資訊
 
-藉由 Azure 地圖服務的路由方向 Api，開發人員可以在要求中包含`sectionType`參數，以要求每個區段類型的詳細資料。 例如，您可以要求每個交通卡紙區段的速度資訊。 如需瞭解您可以要求的各種詳細資料，請參閱[sectionType 索引鍵的值清單](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype)。
+藉由 Azure 地圖服務的路由方向 Api，開發人員可以在要求中包含參數，以要求每個區段類型的詳細資料 `sectionType` 。 例如，您可以要求每個交通卡紙區段的速度資訊。 如需瞭解您可以要求的各種詳細資料，請參閱[sectionType 索引鍵的值清單](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype)。
 
 ### <a name="sample-query"></a>範例查詢
 
-下列查詢會將設`sectionType`為`traffic`。 它會要求包含來自西雅圖和聖地牙哥之流量資訊的區段。
+下列查詢會將設 `sectionType` 為 `traffic` 。 它會要求包含來自西雅圖和聖地牙哥之流量資訊的區段。
 
 ```http
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&sectionType=traffic&query=47.6062,-122.3321:32.7157,-117.1611
@@ -249,7 +248,7 @@ Azure 地圖服務目前提供兩種形式的路由優化：
 
 ### <a name="sample-query"></a>範例查詢
 
-下列查詢會要求六個之導航點的路徑，並將`computeBestOrder`參數設定為`false`。 它也是`computeBestOrder`參數的預設值。
+下列查詢會要求六個之導航點的路徑，並將 `computeBestOrder` 參數設定為 `false` 。 它也是參數的預設值 `computeBestOrder` 。
 
 ```http
 https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=false&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
@@ -275,7 +274,7 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 ### <a name="sample-query"></a>範例查詢
 
-下列查詢會要求相同六個之導航點的路徑，如上述範例所示。 這次， `computeBestOrder`參數會設定為`true` （旅遊的推銷員優化）。
+下列查詢會要求相同六個之導航點的路徑，如上述範例所示。 這次， `computeBestOrder` 參數會設定為 `true` （旅遊的推銷員優化）。
 
 ```http
 https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=true&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
@@ -323,7 +322,7 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>在 web 應用程式中使用路由服務
 
-Azure 地圖服務 Web SDK 提供[服務模組](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)。 此模組是協助程式程式庫，可讓您使用 JavaScript 或 TypeScript，輕鬆地在 web 或 node.js 應用程式中使用 Azure 地圖服務 REST Api。 服務模組可用來在地圖上呈現傳回的路由。 模組會自動判斷要搭配 GET 和 POST 要求使用哪個 API。
+Azure 地圖服務 Web SDK 提供[服務模組](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)。 此模組是協助程式程式庫，可讓您使用 JavaScript 或 TypeScript，輕鬆地在 web 或 Node.js 應用程式中使用 Azure 地圖服務 REST Api。 服務模組可用來在地圖上呈現傳回的路由。 模組會自動判斷要搭配 GET 和 POST 要求使用哪個 API。
 
 ## <a name="next-steps"></a>後續步驟
 

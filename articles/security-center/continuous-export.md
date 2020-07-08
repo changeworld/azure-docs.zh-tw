@@ -8,12 +8,11 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 19fdcc7b590c6ad6873c7808ae26d218bbda7f5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158959"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299939"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>匯出安全性警訊和建議
 
@@ -28,6 +27,21 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 * 匯出至 CSV （一次）
 
 
+
+
+## <a name="availability"></a>可用性
+
+- 發行階段：**正式推出**
+- 必要的角色和許可權：
+    - 包含匯出設定之訂用帳戶上的**讀取器**
+    - 資源群組（或**擁有**者）上的**安全性系統管理員角色**
+    - 也必須具有目標資源的寫入權限
+- 雲端： 
+    - ✔ 商用雲端
+    - ✔ US Gov
+    - ✘中國 Gov，其他 Gov
+
+
 ## <a name="setting-up-a-continuous-export"></a>設定連續匯出
 
 無論您是設定連續匯出至 Log Analytics 工作區或 Azure 事件中樞，都需要下列步驟。
@@ -38,13 +52,13 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
     
 1. 從該訂用帳戶的 [設定] 頁面的提要欄位中，選取 [**連續匯出**]。
 
-    [Azure 資訊安全中心中的匯出選項![ ](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox)您會在這裡看到 [匯出] 選項。 每個可用的匯出目標都有一個索引標籤。 
+    [ ![ 匯出選項在 Azure 資訊安全中心](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox)這裡您會看到匯出選項。 每個可用的匯出目標都有一個索引標籤。 
 
 1. 選取您想要匯出的資料類型，並從每個類型的篩選中選擇（例如，[僅匯出高嚴重性警示]）。
 
 1. 從 [匯出目標] 區域中，選擇您想要儲存資料的位置。 資料可以儲存在不同訂用帳戶上的目標中（例如，在中央事件中樞實例或中央 Log Analytics 工作區）。
 
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案] 。
 
 
 
@@ -127,6 +141,6 @@ Azure 監視器針對各種 Azure 警示（包括診斷記錄、計量警示，�
 如需相關內容，請參閱下列檔： 
 
 - [Azure 事件中樞文件](https://docs.microsoft.com/azure/event-hubs/)
-- [Azure Sentinel 檔](https://docs.microsoft.com/azure/sentinel/)
+- [Azure Sentinel 文件](https://docs.microsoft.com/azure/sentinel/)
 - [Azure 監視器檔](https://docs.microsoft.com/azure/azure-monitor/)
 - [工作流程自動化和連續匯出資料類型架構](https://aka.ms/ASCAutomationSchemas)

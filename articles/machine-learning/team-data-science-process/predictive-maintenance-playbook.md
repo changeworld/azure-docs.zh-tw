@@ -11,16 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 301e2be0c8b971a0236de6a8b5c8bd5f278c3aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2961ffb21a1f34ca677e0aede5170689f4e38dca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84267978"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>適用於預測性維護解決方案的 AI 指南
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 預測性維護 (**PdM**) 是熱門的預測性分析應用程式，可協助數個產業的企業達成高資產使用率並節省營運成本。 本指南結合了商務和分析指導方針，以及使用 [Microsoft Azure AI 平台](https://azure.microsoft.com/overview/ai-platform)技術順利開發及部署 PdM 解決方案的最佳做法。
 
@@ -231,7 +230,7 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 
 目前為止所討論的資料準備工作應會導致資料整理成如下所示的方式。 訓練、測試及驗證資料應具有此邏輯結構描述 (此範例是以天為單位顯示時間)。
 
-| 資產識別碼 | 時間 | \<功能資料行> | 標籤 |
+| 資產識別碼 | 時間 | \<Feature Columns> | 標籤 |
 | ---- | ---- | --- | --- |
 | A123 |第 1 天 | . . . | . |
 | A123 |第 2 天 | . . . | . |
@@ -361,7 +360,7 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 許多 PdM 問題都會面臨這類不平衡的資料集，也就是相較於其他類別，有一個類別嚴重不具代表性。 在某些情況下，少數類別可能只佔總資料點的 0.001%。 類別不平衡不是 PdM 特有的。 很少發生失敗和異常的其他領域也會面臨類似問題，例如，詐騙偵測和網路入侵。 這些失敗可構成少數類別範例。
 
 在資料類別不平衡的情況下，大多數標準學習演算法的效能都會受到影響，因為其目標在於將整體錯誤率降到最低。 在具有 99% 否定和 1% 肯定範例的資料集中，將所有執行個體標記為否定，模型即可顯示為具有 99% 的精確度。 不過，此模型會所有的肯定範例歸類錯誤，所以即使精確度很高，此演算法也不算是有用的演算法。 因此，傳統評估計量 (例如「錯誤率的整體精確度」__) 還不足以進行不平衡的學習。 若遇到不平衡的資料集，則會使用其他計量進行模型評估：
-- Precision
+- 準確率
 - 召回
 - F1 分數
 - 已調整成本的 ROC (接收端操作特性)
@@ -427,12 +426,11 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 |--:|:------|-------------|
 | 2 | [Azure 預測性維護解決方案範本](https://github.com/Azure/AI-PredictiveMaintenance) | 一種開放原始碼解決方案範本，示範 Azure ML 模型化和完整的 Azure 基礎結構，能夠支援 IoT 遠端監視內容中的預測性維護案例。 |
 | 3 | [深入學習預測性維護](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure Notebook，內含使用 LSTM (長短期記憶) 網路 (循環類神經網路的類別) 進行預測性維護的示範解決方案，以及[有關此範例的部落格文章](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)。|
-| 4 | [R Notebook 中的預測性維護模型化指南](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | R Notebook 中具有指令碼的 PdM 模型化指南。|
-| 5 | [適用於航太業的 Azure 預測性維護](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | 以 Azure ML v1.0 為基礎的前幾個 PdM 解決方案範本之一 (適用於飛機維護)。 本指南源自這個專案。 |
-| 6 | [適用於 IoT Edge 的 Azure AI 工具組](https://github.com/Azure/ai-toolkit-iot-edge) | 在 IoT Edge 中使用 TensorFlow 的 AI;工具組會在 Azure IoT Edge 相容的 Docker 容器中封裝深度學習模型，並將這些模型公開為 REST Api。
-| 7 | [Azure IoT 預測性維護](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT 套件 PCS - 預先設定的解決方案。 採用 IoT 套件的飛機維護 PdM 範本。 與相同專案相關的[另一份文件](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview)和[逐步解說](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough)。 |
-| 8 | [使用 SQL Server R Services 的預測性維護範本](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | 以 R 服務為基礎的剩餘使用年限案例示範。 |
-| 9 | [預測性維護建模指南](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | 在 AzureML v1.0 中使用 R 設計的飛機維護資料集特徵，包含[實驗](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1)和[資料集](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1)和 [Azure Notebook](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) 和[實驗](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)|
+| 4 | [適用於航太業的 Azure 預測性維護](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | 以 Azure ML v1.0 為基礎的前幾個 PdM 解決方案範本之一 (適用於飛機維護)。 本指南源自這個專案。 |
+| 5 | [適用於 IoT Edge 的 Azure AI 工具組](https://github.com/Azure/ai-toolkit-iot-edge) | 在 IoT Edge 中使用 TensorFlow 的 AI;工具組會在 Azure IoT Edge 相容的 Docker 容器中封裝深度學習模型，並將這些模型公開為 REST Api。
+| 6 | [Azure IoT 預測性維護](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT 套件 PCS - 預先設定的解決方案。 採用 IoT 套件的飛機維護 PdM 範本。 與相同專案相關的[另一份文件](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview)和[逐步解說](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough)。 |
+| 7 | [使用 SQL Server R Services 的預測性維護範本](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | 以 R 服務為基礎的剩餘使用年限案例示範。 |
+| 8 | [預測性維護建模指南](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | 在 AzureML v1.0 中使用 R 設計的飛機維護資料集特徵，包含[實驗](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1)和[資料集](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1)和 Azure Notebook 和[實驗](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)|
 
 ## <a name="training-resources-for-predictive-maintenance"></a>預測性維護的訓練資源
 

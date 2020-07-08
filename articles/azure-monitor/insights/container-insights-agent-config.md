@@ -2,13 +2,12 @@
 title: 設定容器代理程式資料集合的 Azure 監視器 |Microsoft Docs
 description: 本文說明如何設定容器代理程式的 Azure 監視器，以控制 stdout/stderr 和環境變數記錄檔收集。
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 28b93190298ae61732ff7d2e297899af4ba0e5f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/01/2020
+ms.openlocfilehash: 039c6355bef638aae0b2ef074f006aabc04185c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933012"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299276"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>為容器的 Azure 監視器設定代理程式資料收集
 
@@ -31,16 +30,17 @@ ms.locfileid: "75933012"
 
 以下是可設定以控制資料收集的設定。
 
-|Key |資料類型 |值 |描述 |
-|----|----------|------|------------|
-|`schema-version` |字串（區分大小寫） |v1 |這是在剖析此 ConfigMap 時，代理程式所使用的架構版本。 目前支援的架構版本為 v1。 不支援修改此值，而且在評估 ConfigMap 時將會遭到拒絕。|
-|`config-version` |String | | 支援在您的原始檔控制系統/存放庫中追蹤此設定檔版本的功能。 允許的字元數上限為10，而所有其他字元則會被截斷。 |
-|`[log_collection_settings.stdout] enabled =` |Boolean | true 或 false | 這會控制是否啟用 stdout 容器記錄檔收集。 當設定為`true`且不排除 stdout 記錄檔集合的命名空間`log_collection_settings.stdout.exclude_namespaces`時（以下設定），將會從叢集中所有 pod/節點的所有容器收集 stdout 記錄檔。 如果在 ConfigMaps 中未指定，則預設值`enabled = true`為。 |
-|`[log_collection_settings.stdout] exclude_namespaces =`|String | 以逗號分隔的陣列 |將不會收集 stdout 記錄的 Kubernetes 命名空間陣列。 只有當`log_collection_settings.stdout.enabled`設定為`true`時，此設定才會生效。 如果在 ConfigMap 中未指定，則預設值`exclude_namespaces = ["kube-system"]`為。|
-|`[log_collection_settings.stderr] enabled =` |Boolean | true 或 false |這會控制是否啟用 stderr 容器記錄檔收集。 當設定為`true`且不排除 stdout 記錄檔集合的命名空間`log_collection_settings.stderr.exclude_namespaces`時（設定），將會從叢集中所有 pod/節點的所有容器收集 stderr 記錄。 如果在 ConfigMaps 中未指定，則預設值`enabled = true`為。 |
-|`[log_collection_settings.stderr] exclude_namespaces =` |String |以逗號分隔的陣列 |將不會收集 stderr 記錄的 Kubernetes 命名空間陣列。 只有當`log_collection_settings.stdout.enabled`設定為`true`時，此設定才會生效。 如果在 ConfigMap 中未指定，則預設值`exclude_namespaces = ["kube-system"]`為。 |
-| `[log_collection_settings.env_var] enabled =` |Boolean | true 或 false | 此設定可控制叢集中所有 pod/節點的環境變數集合，並在`enabled = true` ConfigMaps 中未指定時預設為。 如果環境變數的集合是全域啟用的，您可以將環境變數設定為 False，方法是使用`AZMON_COLLECT_ENV` Dockerfile 設定，或在**env：** 區段底下的[Pod 設定檔](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)中，將環境變數設為**False** 。 如果環境變數的集合已全域停用，則您無法啟用特定容器的集合（也就是可在容器層級套用的唯一覆寫，就是停用已全域啟用的集合）。 |
-| `[log_collection_settings.enrich_container_logs] enabled =` |Boolean | true 或 false | 此設定會控制容器記錄擴充，以針對叢集中所有容器記錄寫入 ContainerLog 資料表的每個記錄檔，填入其名稱和映射屬性值。 當 ConfigMap 中`enabled = false`未指定時，其預設值為。 |
+| 答案 | 資料類型 | 值 | 說明 |
+|--|--|--|--|
+| `schema-version` | 字串（區分大小寫） | v1 | 這是代理程式所使用的架構版本<br> 剖析此 ConfigMap 時。<br> 目前支援的架構版本為 v1。<br> 不支援修改此值，而且將會<br> 評估 ConfigMap 時拒絕。 |
+| `config-version` | String |  | 支援在您的原始檔控制系統/存放庫中追蹤此設定檔版本的功能。<br> 允許的字元數上限為10，而所有其他字元則會被截斷。 |
+| `[log_collection_settings.stdout] enabled =` | Boolean | true 或 false | 這會控制是否啟用 stdout 容器記錄檔收集。 設定為時 `true` ，不會排除 stdout 記錄檔集合的命名空間<br> （ `log_collection_settings.stdout.exclude_namespaces` 設定如下），系統會從叢集中所有 pod/節點的所有容器收集 stdout 記錄檔。 如果未在 ConfigMaps 中指定，<br> 預設值是 `enabled = true` 。 |
+| `[log_collection_settings.stdout] exclude_namespaces =` | String | 以逗號分隔的陣列 | 將不會收集 stdout 記錄的 Kubernetes 命名空間陣列。 只有在下列情況下，此設定才會生效<br> `log_collection_settings.stdout.enabled`<br> 設定為 `true`。<br> 如果在 ConfigMap 中未指定，則預設值為<br> `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.stderr] enabled =` | Boolean | true 或 false | 這會控制是否啟用 stderr 容器記錄檔收集。<br> 設定為時 `true` ，不會排除 stdout 記錄檔集合的命名空間<br> （ `log_collection_settings.stderr.exclude_namespaces` 設定），將會從叢集中所有 pod/節點的所有容器收集 stderr 記錄。<br> 如果在 ConfigMaps 中未指定，則預設值為<br> `enabled = true`. |
+| `[log_collection_settings.stderr] exclude_namespaces =` | String | 以逗號分隔的陣列 | 將不會收集 stderr 記錄的 Kubernetes 命名空間陣列。<br> 只有在下列情況下，此設定才會生效<br> `log_collection_settings.stdout.enabled` 設定為 `true`。<br> 如果在 ConfigMap 中未指定，則預設值為<br> `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.env_var] enabled =` | Boolean | true 或 false | 此設定會控制環境變數集合<br> 跨叢集中的所有 pod/節點<br> `enabled = true`當未指定時，預設值為<br> 在 ConfigMaps 中。<br> 如果環境變數的集合是全域啟用的，您可以將它停用於特定容器<br> 藉由設定環境變數<br> `AZMON_COLLECT_ENV`若為**False** ，則會使用 Dockerfile 設定，或在**env：** 區段下[Pod 的設定檔](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)中。<br> 如果環境變數的集合已全域停用，則您無法啟用特定容器的集合（也就是可在容器層級套用的唯一覆寫，就是停用已全域啟用的集合）。 |
+| `[log_collection_settings.enrich_container_logs] enabled =` | Boolean | true 或 false | 此設定可控制要填入名稱和影像屬性值的容器記錄擴充<br> 針對叢集中所有容器記錄檔寫入 ContainerLog 資料表的每筆記錄。<br> `enabled = false`當 ConfigMap 中未指定時，其預設值為。 |
+| `[log_collection_settings.collect_all_kube_events]` | Boolean | true 或 false | 此設定允許收集所有類型的 Kube 事件。<br> 根據預設，不會收集類型為*Normal*的 Kube 事件。 當此設定設為時 `true` ，就不會再篩選*一般*事件並收集所有事件。<br> 根據預設，這項設定為 `false`。 |
 
 ConfigMaps 是全域清單，而且只能有一個 ConfigMap 套用至代理程式。 您不能有另一個 ConfigMaps overruling 集合。
 
@@ -53,25 +53,25 @@ ConfigMaps 是全域清單，而且只能有一個 ConfigMap 套用至代理程�
    >[!NOTE]
    >使用 Azure Red Hat OpenShift 時，不需要執行此步驟，因為 ConfigMap 範本已存在於叢集上。
 
-2. 編輯 ConfigMap yaml 檔與您的自訂專案，以收集 stdout、stderr 和/或環境變數。 如果您要編輯 Azure Red Hat OpenShift 的 ConfigMap yaml 檔，請先執行命令`oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` ，以在文字編輯器中開啟檔案。
+2. 編輯 ConfigMap yaml 檔與您的自訂專案，以收集 stdout、stderr 和/或環境變數。 如果您要編輯 Azure Red Hat OpenShift 的 ConfigMap yaml 檔，請先執行命令， `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` 以在文字編輯器中開啟檔案。
 
-    - 若要排除 stdout 記錄檔集合的特定命名空間，您可以使用下列範例來設定索引`[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`鍵/值：。
+    - 若要排除 stdout 記錄檔集合的特定命名空間，您可以使用下列範例來設定索引鍵/值： `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]` 。
     
-    - 若要停用特定容器的環境變數集合，請將索引鍵`[log_collection_settings.env_var] enabled = true` /值設定為全域啟用變數集合，然後依照[這裡](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container)的步驟來完成特定容器的設定。
+    - 若要停用特定容器的環境變數集合，請將索引鍵/值設定 `[log_collection_settings.env_var] enabled = true` 為全域啟用變數集合，然後依照[這裡](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container)的步驟來完成特定容器的設定。
     
-    - 若要停用 stderr 記錄收集整個叢集，請使用下列範例來設定索引鍵/值`[log_collection_settings.stderr] enabled = false`：。
+    - 若要停用 stderr 記錄收集整個叢集，請使用下列範例來設定索引鍵/值： `[log_collection_settings.stderr] enabled = false` 。
 
-3. 針對 Azure Red Hat OpenShift 以外的叢集，請執行下列 kubectl 命令來建立 ConfigMap： `kubectl apply -f <configmap_yaml_file.yaml>`在 Azure Red Hat OpenShift 以外的叢集上。 
+3. 針對 Azure Red Hat OpenShift 以外的叢集，請執行下列 kubectl 命令來建立 ConfigMap： `kubectl apply -f <configmap_yaml_file.yaml>` 在 Azure Red Hat OpenShift 以外的叢集上。 
     
     範例： `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
 
     針對 Azure Red Hat OpenShift，請將您的變更儲存在編輯器中。
 
-設定變更可能需要幾分鐘的時間才會生效，且叢集中的所有 omsagent pod 都會重新開機。 重新開機是所有 omsagent pod 的輪流重新開機，不會同時全部重新開機。 當重新開機完成時，會顯示與下列類似的訊息，並包含結果： `configmap "container-azm-ms-agentconfig" created`。
+設定變更可能需要幾分鐘的時間才會生效，且叢集中的所有 omsagent pod 都會重新開機。 重新開機是所有 omsagent pod 的輪流重新開機，不會同時全部重新開機。 當重新開機完成時，會顯示與下列類似的訊息，並包含結果： `configmap "container-azm-ms-agentconfig" created` 。
 
 ## <a name="verify-configuration"></a>驗證組態
 
-若要確認設定已成功套用至 Azure Red Hat OpenShift 以外的叢集，請使用下列命令來檢查代理程式 pod 中的記錄： `kubectl logs omsagent-fdf58 -n=kube-system`。 如果 omsagent pod 有設定錯誤，輸出將會顯示類似下列的錯誤：
+若要確認設定已成功套用至 Azure Red Hat OpenShift 以外的叢集，請使用下列命令來檢查代理程式 pod 中的記錄： `kubectl logs omsagent-fdf58 -n kube-system` 。 如果 omsagent pod 有設定錯誤，輸出將會顯示類似下列的錯誤：
 
 ``` 
 ***************Start Config Processing******************** 
@@ -80,7 +80,7 @@ config::unsupported/missing config schema version - 'v21' , using defaults
 
 與套用設定變更相關的錯誤也可供審查。 下列選項可用於執行設定變更的其他疑難排解：
 
-- 從代理程式 pod 記錄使用相同`kubectl logs`的命令。 
+- 從代理程式 pod 記錄使用相同的 `kubectl logs` 命令。 
 
     >[!NOTE]
     >此命令不適用於 Azure Red Hat OpenShift 叢集。
@@ -96,7 +96,7 @@ config::unsupported/missing config schema version - 'v21' , using defaults
 
 - 使用 Azure Red Hat OpenShift，藉由搜尋**ContainerLog**資料表來檢查 omsagent 記錄，以確認是否已啟用記錄收集 OpenShift-Azure 記錄。
 
-在 Azure Red Hat OpenShift 以外的叢集上更正 ConfigMap 中的錯誤之後，請儲存 yaml 檔案，並執行下列命令來套用更新的 ConfigMaps： `kubectl apply -f <configmap_yaml_file.yaml`。 針對 Azure Red Hat OpenShift，請執行下列命令來編輯並儲存更新的 ConfigMaps：
+在 Azure Red Hat OpenShift 以外的叢集上更正 ConfigMap 中的錯誤之後，請儲存 yaml 檔案，並執行下列命令來套用更新的 ConfigMaps： `kubectl apply -f <configmap_yaml_file.yaml` 。 針對 Azure Red Hat OpenShift，請執行下列命令來編輯並儲存更新的 ConfigMaps：
 
 ``` bash
 oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
@@ -104,13 +104,13 @@ oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 
 ## <a name="applying-updated-configmap"></a>套用更新的 ConfigMap
 
-如果您已在 Azure Red Hat OpenShift 以外的叢集上部署 ConfigMap，而您想要使用較新的設定來更新它，您可以編輯先前使用的 ConfigMap 檔案，然後使用與之前相同的命令來套用`kubectl apply -f <configmap_yaml_file.yaml`。 針對 Azure Red Hat OpenShift，請執行下列命令來編輯並儲存更新的 ConfigMaps：
+如果您已在 Azure Red Hat OpenShift 以外的叢集上部署 ConfigMap，而您想要使用較新的設定來更新它，您可以編輯先前使用的 ConfigMap 檔案，然後使用與之前相同的命令來套用 `kubectl apply -f <configmap_yaml_file.yaml` 。 針對 Azure Red Hat OpenShift，請執行下列命令來編輯並儲存更新的 ConfigMaps：
 
 ``` bash
 oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 ```
 
-設定變更可能需要幾分鐘的時間才會生效，且叢集中的所有 omsagent pod 都會重新開機。 重新開機是所有 omsagent pod 的輪流重新開機，不會同時全部重新開機。 當重新開機完成時，會顯示與下列類似的訊息，並包含結果： `configmap "container-azm-ms-agentconfig" updated`。
+設定變更可能需要幾分鐘的時間才會生效，且叢集中的所有 omsagent pod 都會重新開機。 重新開機是所有 omsagent pod 的輪流重新開機，不會同時全部重新開機。 當重新開機完成時，會顯示與下列類似的訊息，並包含結果： `configmap "container-azm-ms-agentconfig" updated` 。
 
 ## <a name="verifying-schema-version"></a>正在驗證架構版本
 

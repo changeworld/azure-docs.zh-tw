@@ -9,38 +9,33 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 18c34e270f1849ef8d8d692b68567eab7d103b13
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: d4053d4979861146705489dc02e628f03f3c4d85
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741377"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84266214"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>下載並安裝 Microsoft Authenticator 應用程式
 
 >[!Important]
->本內容適用於使用者。 I如果您是系統管理員，可以在 [Azure Active Directory 文件](https://docs.microsoft.com/azure/active-directory)中找到更多關於如何設定和管理 Azure Active Directory (Azure AD) 環境的資訊。
+>本內容適用於使用者。 如果您是系統管理員，您可以在[Azure Active Directory 的管理檔](https://docs.microsoft.com/azure/active-directory)中找到有關如何設定和管理您的 Azure Active Directory （Azure AD）環境的詳細資訊。
+>
+> 如果您有登入帳戶方面的問題，請參閱[當您無法登入 Microsoft 帳戶時](https://support.microsoft.com/help/12429)以取得說明。  此外，當您嘗試登入您的 Microsoft 帳戶時，可以取得當您收到「[該 Microsoft 帳戶不存在](https://support.microsoft.com/help/13811)」訊息時該怎麼做的詳細資訊。
 
-當您使用雙因素驗證時，Microsoft Authenticator 應用程式可協助您登入帳戶。 雙因素驗證有助於您以更安全的方式存取帳戶，尤其是在檢視機密資訊時。 您有可能忘記密碼，或密碼有可能遭竊或遭到破解，而雙因素驗證可作為額外的安全性步驟，協助您保護帳戶而使他人難以入侵。
+當您使用雙因素驗證時，Microsoft Authenticator 應用程式可協助您登入帳戶。 雙因素驗證可協助您更安全地使用您的帳戶，因為密碼可能會被遺忘、遭竊或遭到入侵。 雙因素驗證會使用第二個因素，例如您的電話，讓其他人更難以入侵您的帳戶。 您可以透過多種方式使用 Microsoft Authenticator 應用程式，包括：
 
-您可以透過多種方式使用 Microsoft Authenticator 應用程式，包括：
+- **雙因素驗證。** 標準的驗證方法，其中一項因素是您的密碼。 使用您的使用者名稱和密碼登入之後，您可以核准通知或輸入提供的驗證碼。
 
-- **雙因素驗證。** 標準的驗證方法，其中一項因素是您的密碼。 以使用者名稱和密碼登入後，您可以核准通知，也可以輸入所提供的驗證碼。
-
-- **手機登入。** 雙因素驗證的其中一個版本，可讓您以使用者名稱和行動裝置加上指紋、臉部或 PIN 來進行登入，而不必輸入密碼。
+- **手機登入。** 一種雙因素驗證版本，可讓您在不需要密碼的情況下登入，並使用您的使用者名稱和使用指紋、臉部或 PIN 的行動裝置。
 
 - **產生程式碼。** 為任何支援驗證器應用程式的其他帳戶產生程式碼。
 
-> [!Important]
-> Microsoft Authenticator 應用程式適用於任何使用雙因素驗證且支援限時單次密碼 (TOTP) 標準的帳戶。
->
-> 貴組織可能要求您使用驗證器應用程式來登入和存取貴組織資料與文件。 雖然您的使用者名稱可能會出現在應用程式中，但直到您完成註冊程序，才會實際地設定此帳戶作為驗證方法。 如需詳細資訊，請參閱[新增您的公司或學校帳戶](user-help-auth-app-add-work-school-account.md)。
-> 
-> [!NOTE]
-> 如果您有登入帳戶方面的問題，請參閱[當您無法登入 Microsoft 帳戶時](https://support.microsoft.com/help/12429)以取得說明。  如果您在嘗試登入 Microsoft 帳戶時收到[「該 Microsoft 帳戶不存在」](https://support.microsoft.com/help/13811)訊息，請取得相關因應措施的詳細資訊。
+驗證器適用于任何使用雙因素驗證的帳戶，並支援以時間為基礎的一次性密碼（TOTP）標準。
+
+您的組織可能會要求您使用驗證器應用程式來登入並存取您組織的資料和檔。 即使您的使用者名稱出現在應用程式中，也不會將帳戶設定為驗證方法，直到您完成註冊為止。 如需詳細資訊，請參閱[新增您的公司或學校帳戶](user-help-auth-app-add-work-school-account.md)。
 
 ## <a name="download-and-install-the-app"></a>下載並安裝應用程式
 
@@ -55,7 +50,7 @@ ms.locfileid: "83741377"
 
 ## <a name="next-steps"></a>後續步驟
 
-下載並安裝應用程式之後，您必須新增各種帳戶。 如需詳細資訊，請參閱
+下載並安裝應用程式之後，請查看驗證器[應用程式總覽](user-help-auth-app-overview.md)以深入瞭解。 如需更多安裝選項，請參閱：
 
 - **驗證器應用程式。** 下載並使用驗證器應用程式，以取得核准通知或隨機產生的核准代碼來進行雙步驟驗證或密碼重設。 如需如何設定和使用 Microsoft Authenticator 應用程式的逐步指示，請參閱[將安全性資訊設定為使用驗證器應用程式](security-info-setup-auth-app.md)。
 

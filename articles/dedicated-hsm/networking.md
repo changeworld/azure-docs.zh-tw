@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70881280"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300727"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 專用 HSM 網路
 
@@ -78,7 +77,7 @@ HSM 裝置可透過軟體程式庫，將流量重新導向其他 HSM。 如果�
 
 ### <a name="cross-region-ha-using-vpn-gateway"></a>使用 VPN 閘道進行跨區域 HA
 
-對於全域分散式應用程式或高可用性區域容錯移轉的情況，則需要跨區域的虛擬網路連線。 透過 Azure 專用 HSM，可以使用 VPN 閘道實現高可用性，VPN 閘道可以提供兩個安全虛擬網路之間的安全通道。 如需進一步了解使用 VPN 閘道的 Vnet 對 Vnet 連線，請參閱[什麼是 VPN 閘道？](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)一文
+對於全域分散式應用程式或高可用性區域容錯移轉的情況，則需要跨區域的虛擬網路連線。 透過 Azure 專用 HSM，可以使用 VPN 閘道實現高可用性，VPN 閘道可以提供兩個安全虛擬網路之間的安全通道。 如需進一步了解使用 VPN 閘道的 Vnet 對 Vnet 連線，請參閱[什麼是 VPN 閘道？](../vpn-gateway/design.md#V2V)一文
 
 > [!NOTE]
 > 目前使用專用 HSM 進行跨區域連線方案時，無法使用全域 Vnet 對等互連，請改用 VPN 閘道。 
@@ -88,7 +87,7 @@ HSM 裝置可透過軟體程式庫，將流量重新導向其他 HSM。 如果�
 ## <a name="next-steps"></a>後續步驟
 
 - [常見問題集](faq.md)
-- [可支援性](supportability.md)
+- [支援能力](supportability.md)
 - [高可用性](high-availability.md)
 - [實體安全性](physical-security.md)
 - [監視](monitoring.md)

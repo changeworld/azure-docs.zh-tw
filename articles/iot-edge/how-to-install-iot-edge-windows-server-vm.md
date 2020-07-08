@@ -9,12 +9,11 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: philmea
-ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 380e354beb2f58b958e3c88d9f93ad0bda655971
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77045916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84266469"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>在 Windows Server 虛擬機器上執行 Azure IoT Edge
 
@@ -22,11 +21,11 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
 
 若要深入了解 IoT Edge 執行階段的運作方式，以及會包含哪些元件，請參閱[了解 Azure IoT Edge 執行階段及其架構](iot-edge-runtime.md)。
 
-本文列出使用[Windows server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace 供應專案，在 windows server 2019 虛擬機器上執行 Azure IoT Edge 執行時間的步驟。 依照在 Windows 上[安裝 Azure IoT Edge 運行](how-to-install-iot-edge-windows.md)時間中的指示，與其他版本搭配使用。
+本文列出使用[Windows server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure Marketplace 供應專案，在 windows server 2019 虛擬機器上執行 Azure IoT Edge 執行時間的步驟。 依照在 Windows 上[安裝 Azure IoT Edge 運行](how-to-install-iot-edge-windows.md)時間中的指示，與其他版本搭配使用。
 
 ## <a name="deploy-from-the-azure-marketplace"></a>從 Azure Marketplace 進行部署
 
-1. 流覽至[Windows server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace 供應專案，或在[Azure Marketplace](https://azuremarketplace.microsoft.com/)上搜尋「windows server」
+1. 流覽至[Windows server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure Marketplace 供應專案，或在[Azure Marketplace](https://azuremarketplace.microsoft.com/)上搜尋「windows server」
 2. 選取 [**立即取得**]
 3. 在 [**軟體方案**] 中，尋找「具有容器的 Windows Server 2019 Datacenter 伺服器核心」，然後在下一個對話方塊中選取 [**繼續**]。
     * 您也可以將這些指示用於具有容器的其他 Windows Server 版本
@@ -87,8 +86,8 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
    az vm create -g IoTEdgeResources -n EdgeVM --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter-Core-with-Containers:latest  --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
 
-   * 此命令會提示您輸入密碼，但您可以新增選項`--admin-password`以更輕鬆地在腳本中進行設定
-   * Windows Server Core 映射僅支援使用遠端桌面的命令列，因此如果您想要完整的桌面體驗，請將`MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest`指定為映射
+   * 此命令會提示您輸入密碼，但您可以新增選項 `--admin-password` 以更輕鬆地在腳本中進行設定
+   * Windows Server Core 映射僅支援使用遠端桌面的命令列，因此如果您想要完整的桌面體驗，請 `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` 將指定為映射
 
 1. 設定裝置連接字串（如果您不熟悉此程式，您可以遵循[使用 Azure CLI 來抓取連接字串](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli)的程式）：
 

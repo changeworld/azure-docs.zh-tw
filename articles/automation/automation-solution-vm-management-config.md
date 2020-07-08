@@ -3,14 +3,13 @@ title: 設定在 Azure 自動化的停機期間啟動/停止 VM
 description: 本文說明如何設定在停機期間設定啟動/停止 VM 功能，以支援不同的使用案例或情況。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 127c924da44c7e596d93b21d89ff4591a90ba7cf
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827670"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84266707"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>設定在停機期間啟動/停止 VM
 
@@ -44,11 +43,15 @@ ms.locfileid: "83827670"
 
 ### <a name="target-the-start-and-stop-action-by-vm-list"></a>透過 VM 清單設定啟動和停止動作目標
 
-1. 執行 **ScheduledStartStop_Parent** Runbook，並將 **ACTION** 設為 **start**，在 **VMList** 參數欄位中新增以逗號分隔的 VM 清單，然後將 **WHATIF** 參數欄位設為 True。 預覽變更。
+1. 執行**ScheduledStartStop_Parent** runbook，並將 [**動作**] 設定為 [**啟動**]。
 
-2. 使用以逗號分隔的 VM 清單 (VM1, VM2, VM3) 來設定 `External_ExcludeVMNames` 變數。
+2. 在**VMList**參數欄位中新增以逗號分隔的 vm 清單（不含空格）。 範例清單為 `vm1,vm2,vm3` 。
 
-3. 本案例不接受 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupnames` 變數。 針對此案例，您需要建立自己的自動化排程。 如需詳細資料，請參閱[在 Azure 自動化中為 Runbook 進行排程](shared-resources/schedules.md)。
+3. 將 [ **WHATIF**參數] 欄位設定為 [True]。
+
+4. 以 `External_ExcludeVMNames` 逗號分隔的 vm 清單（VM1、VM2、VM3）設定變數，並在逗號分隔值之間加上空格。
+
+5. 本案例不接受 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupnames` 變數。 針對此案例，您需要建立自己的自動化排程。 如需詳細資料，請參閱[在 Azure 自動化中為 Runbook 進行排程](shared-resources/schedules.md)。
 
     > [!NOTE]
     > **目標資源群組名稱**其值會同時儲存為 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames` 的值。 如需進一步的細微設定，您可以修改這些變數來以不同的資源群組為目標。 使用 `External_Start_ResourceGroupNames` 作為啟動動作，並使用 `External_Stop_ResourceGroupNames` 作為停止動作。 虛擬機器會自動新增至啟動和停止排程。
@@ -71,13 +74,17 @@ ms.locfileid: "83827670"
 
 1. 將具有正整數值的 `sequencestart` 和 `sequencestop` 標籤，新增至想要新增到 `VMList` 參數的 VM。
 
-2. 執行 **SequencedStartStop_Parent** Runbook，並將 **ACTION** 設為 **start**，在 **VMList** 參數欄位中新增以逗號分隔的 VM 清單，然後將 **WHATIF** 設為 True。 預覽變更。
+2. 執行**SequencedStartStop_Parent** runbook，並將 [**動作**] 設定為 [**啟動**]。
 
-3. 使用以逗號分隔的 VM 清單 (VM1, VM2, VM3) 來設定 `External_ExcludeVMNames` 變數。
+3. 在**VMList**參數欄位中新增以逗號分隔的 vm 清單（不含空格）。 範例清單為 `vm1,vm2,vm3` 。
 
-4. 本案例不接受 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupnames` 變數。 針對此案例，您需要建立自己的自動化排程。 如需詳細資料，請參閱[在 Azure 自動化中為 Runbook 進行排程](shared-resources/schedules.md)。
+4. 將**WHATIF**設為 True。 
 
-5. 預覽動作，並在針對生產虛擬機器實作前進行所有必要的變更。 準備好時，請手動執行 **monitoring-and-diagnostics/monitoring-action-groupsrunbook**，並將參數設定為 **False**。 或者，讓自動化為 **Sequenced-StartVM** 與 **Sequenced-StopVM** 排程，以遵循指定的排程自動執行。
+5. 以 `External_ExcludeVMNames` 逗號分隔的 vm 清單來設定變數，逗點分隔值之間沒有空格。
+
+6. 本案例不接受 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupnames` 變數。 針對此案例，您需要建立自己的自動化排程。 如需詳細資料，請參閱[在 Azure 自動化中為 Runbook 進行排程](shared-resources/schedules.md)。
+
+7. 預覽動作，並在針對生產虛擬機器實作前進行所有必要的變更。 準備好時，請手動執行 **monitoring-and-diagnostics/monitoring-action-groupsrunbook**，並將參數設定為 **False**。 或者，讓自動化為 **Sequenced-StartVM** 與 **Sequenced-StopVM** 排程，以遵循指定的排程自動執行。
 
 ## <a name="scenario-3-start-or-stop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>案例 3：根據 CPU 使用率自動啟動或停止
 
@@ -120,7 +127,7 @@ ms.locfileid: "83827670"
 
 1. 建立新的[排程](shared-resources/schedules.md#create-a-schedule)並將其連結至 **AutoStop_CreateAlert_Parent** Runbook，然後將以逗號分隔的 VM 名稱清單新增至 `VMList` 參數。
 
-2. [選擇性] 如果想要排除部分 VM 的自動停止動作，則可將以逗號分隔的 VM 名稱清單新增至 `External_ExcludeVMNames` 變數。
+2. 或者，如果您想要從 autostop 動作排除部分 Vm，您可以將以逗號分隔的 VM 名稱清單（不含空格）新增至 `External_ExcludeVMNames` 變數。
 
 ## <a name="configure-email-notifications"></a>設定電子郵件通知
 
@@ -151,13 +158,13 @@ ms.locfileid: "83827670"
 
 有兩種方式可確保在功能執行時包含 VM：
 
-* 功能的每個父 [Runbook](automation-solution-vm-management.md#runbooks) 都具有 `VMList` 參數。 針對情況排程適當的父代 Runbook 時，您可將以逗號分隔的 VM 名稱清單傳遞給這個參數，以此在執行功能時包含這些 VM。
+* 功能的每個父 [Runbook](automation-solution-vm-management.md#runbooks) 都具有 `VMList` 參數。 在為您的情況排定適當的父系 runbook 時，您可以將以逗號分隔的 VM 名稱清單（不含空格）傳遞給此參數，並在執行功能時包含這些 Vm。
 
 * 若要選取多部 VM，請使用包含想要啟動或停止 VM 的資源群組名稱來設定 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames`。 您也可將此變數設定為 `*` 值，讓功能針對訂用帳戶中的所有資源群組執行。
 
 ### <a name="exclude-a-vm"></a>排除 VM
 
-若要將 VM 排除在停機期間啟動/停止 VM 清單外，您可將其名稱新增至 `External_ExcludeVMNames` 變數。 此變數是以逗號分隔的清單，其中包含要從此功能中排除的特定 VM。 此清單的上限為 140 個 VM。 如果新增至此清單的 VM 超過 140 個，則可能會不小心啟動或停止已設定排除的 VM。
+若要將 VM 排除在停機期間啟動/停止 VM 清單外，您可將其名稱新增至 `External_ExcludeVMNames` 變數。 此變數是要從功能中排除之特定 Vm （不含空格）的逗號分隔清單。 此清單的上限為 140 個 VM。 如果新增至此清單的 VM 超過 140 個，則可能會不小心啟動或停止已設定排除的 VM。
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>修改啟動和關機排程
 

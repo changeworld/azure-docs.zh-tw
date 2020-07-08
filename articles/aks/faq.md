@@ -3,12 +3,11 @@ title: Azure Kubernetes Service (AKS) 的常見問題集
 description: 尋找一些關於 Azure Kubernetes Service (AKS) 的常見問題解答。
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 767b5b80aab7d98af92f86bf66cc2ff83242ff92
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677797"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300921"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 
@@ -72,14 +71,16 @@ AKS 會根據一些 Azure 基礎結構資源來建置，包括虛擬機器擴展
 當您使用節點資源群組時，請記住您不能：
 
 * 為節點資源群組指定現有的資源群組。
-* 為節點資源群組指定不同的訂用帳戶。
-* 在建立叢集之後變更節點資源群組名稱。
-* 為節點資源群組內的受控資源指定名稱。
-* 修改或刪除節點資源群組內受控資源的標記 (請參閱下一節的其他資訊)。
+* 為節點資源群組指定不同的訂閱。
+* 在建立叢集之後，變更節點資源群組名稱。
+* 指定節點資源群組內受控資源的名稱。
+* 修改或刪除節點資源群組內由 Azure 建立的受控資源標籤。 (請參閱下一節的其他資訊)。
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>我可以修改節點資源群組中 AKS 資源的標記和其他屬性嗎？
 
-如果您修改或刪除節點資源群組中 Azure 所建立的標記和其他資源屬性，可能就會得到非預期的結果，例如，調整和升級錯誤。 AKS 可讓您建立和修改自訂標記。 例如，您可以建立或修改自訂標記，以指派業務單位或成本中心。 在 AKS 叢集中修改節點資源群組下的資源，即會中斷服務等級目標 (SLO)。 如需詳細資訊，請參閱 [AKS 是否提供服務等級協定？](#does-aks-offer-a-service-level-agreement)
+如果您修改或刪除節點資源群組中 Azure 所建立的標記和其他資源屬性，可能就會得到非預期的結果，例如，調整和升級錯誤。 AKS 可讓您建立及修改使用者所建立的自訂標記。 例如，您可以建立或修改自訂標記，以指派業務單位或成本中心。 這可以藉由在受控資源群組上建立具有範圍的 Azure 原則來達成。
+
+不過，在 AKS 叢集中的節點資源群組下，修改資源的任何**Azure 建立的標記**都是不支援的動作，這會中斷服務層級目標（SLO）。 如需詳細資訊，請參閱 [AKS 是否提供服務等級協定？](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS 支援哪些 Kubernetes 許可控制器？ 是否可以新增或移除許可控制器？
 

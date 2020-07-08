@@ -3,12 +3,11 @@ title: Azure Resource Manager 範本範例
 description: 尋找 Azure Resource Manager 範本範例，以在不同的設定中部署 Azure 容器實例
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7208e1b4b67879979507cc451d40a188a84373de
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981656"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299752"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure 容器執行個體的 Azure Resource Manager 範本
 
@@ -30,7 +29,7 @@ ms.locfileid: "75981656"
 | **網路功能** ||
 | [UDP 公開容器][net-udp] | 部署會公開 UDP 連接埠的 Windows 或 Linux 容器。 |
 | [具有公用 IP 的 Linux 容器][net-publicip] | 部署可透過公用 IP 存取的單一 Linux 容器。 |
-| [部署具有虛擬網路的容器群組（預覽）][net-vnet] | 部署新的虛擬網路、子網、網路設定檔和容器群組。 |
+| [部署具有虛擬網路的容器群組][net-vnet] | 部署新的虛擬網路、子網、網路設定檔和容器群組。 |
 | **Azure 資源** ||
 | [建立 Azure 儲存體帳戶和檔案共用][az-files] | 在容器執行個體中使用 Azure CLI 以建立儲存體帳戶和 Azure 檔案服務共用。
 

@@ -5,14 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 2/24/2020
+ms.date: 6/2/2020
 ms.subservice: alerts
-ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677000"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299293"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立度量警示
 
@@ -21,13 +20,13 @@ ms.locfileid: "80677000"
 本文章將說明如何使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)在 Azure 監視器中設定[新版計量警示](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 Resource Manager 範本可讓您以程式設計方式，在環境中以一致且可重現的方式設定警示。 新版計量警示目前可在[這組資源類型](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)上使用。
 
 > [!IMPORTANT]
-> 建立資源類型計量警示的資源範本： Azure Log Analytics 工作區（亦即） `Microsoft.OperationalInsights/workspaces`，需要額外的步驟。 如需詳細資訊，請參閱[記錄的計量警示 - 資源範本](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)上的文章。
+> 建立資源類型之計量警示的資源範本：Azure Log Analytics 工作區 (例如 `Microsoft.OperationalInsights/workspaces`)，需要其他步驟。 如需詳細資訊，請參閱[記錄的計量警示 - 資源範本](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)上的文章。
 
 基本步驟如下：
 
 1. 使用下列範本之一，作為描述如何建立警示的 JSON 檔案。
 2. 編輯並使用對應的參數檔案作為 JSON，以自訂警示。
-3. 如需`metricName`參數，請參閱[Azure 監視器支援的計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)中的可用計量。
+3. 如需 `metricName` 參數，請參閱[Azure 監視器支援的計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)中的可用計量。
 4. 使用[任何部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署範本。
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>簡單靜態閾值的計量警示範本
@@ -566,10 +565,10 @@ az group deployment create \
 較新的計量警示支援多維度度量的警示，以及定義多個條件的支援（每個警示規則最多5使用準則來）。 您可以使用下列範本，針對維度計量建立更先進的度量警示規則，並指定多個準則。
 
 在包含多個準則的警示規則中使用維度時，請注意下列條件約束：
-- 在每個條件中，您只能為每個維度選取一個值。
-- 您不能使用\*"" 做為維度值。
+- 在每個準則中，您只能為每個維度選取一個值。
+- 您不能使用 "\*" 作為維度值。
 - 當不同使用準則來中設定的計量支援相同的維度時，您必須以相同的方式，針對所有這些計量（在相關的使用準則來中）明確設定已設定的維度值。
-    - 在下列範例中，因為**交易**和**SuccessE2ELatency**度量都有**ApiName**維度，而*criterion1*指定**ApiName**維度的 *"GetBlob"* 值，則*criterion2*也必須設定**GetBlob**維度的 *"ApiName"* 值。
+    - 在下列範例中，因為 **Transactions** 和 **SuccessE2ELatency** 計量都有 **ApiName** 維度，而且 *criterion1* 為 **ApiName** 維度指定了 *"GetBlob"* 值，所以 *criterion2* 也必須要為 **ApiName**維度設定 *"GetBlob"* 值。
 
 
 根據本逐步解說的目的，請將以下的 JSON 儲存為 advancedstaticmetricalert.json。
@@ -804,19 +803,19 @@ az group deployment create \
 
 您可以使用下列範本，針對維度計量建立靜態度量警示規則。
 
-單一警示規則一次可以監視多個計量時間序列，這會產生較少的警示規則來進行管理。
+單一警示規則可以一次監視多個計量時間序列，如此可管理較少的警示規則。
 
 在下列範例中，警示規則會監視**交易**度量的**ResponseType**和**ApiName**維度的維度值組合：
-1. **ResponsType** -使用 "\*" 萬用字元表示針對**ResponseType**維度的每個值（包括未來的值），會個別監視不同的時間序列。
-2. **ApiName** -只有**GetBlob**和**PutBlob**維度值會監視不同的時間序列。
+1. **ResponsType** - 若使用 "\*" 萬用字元，表示針對 **ResponseType** 維度的每個值 (包括未來的值)，都會分別監視不同的時間序列。
+2. **ApiName** - 只針對 **GetBlob** 和 **PutBlob** 維度值監視不同的時間序列。
 
-例如，此警示規則所監視的幾個可能時間序列包括：
-- 公制 =*交易*，ResponseType = *Success*，ApiName = *GetBlob*
-- 公制 =*交易*，ResponseType = *Success*，ApiName = *PutBlob*
-- 公制 =*交易*，ResponseType =*伺服器超時*，ApiName = *GetBlob*
-- 公制 =*交易*，ResponseType =*伺服器超時*，ApiName = *PutBlob*
+例如，此警示規則所監視的幾個可能時間序列為：
+- Metric = *Transactions*，ResponseType = *Success*，ApiName = *GetBlob*
+- Metric = *Transactions*，ResponseType = *Success*，ApiName = *PutBlob*
+- Metric = *Transactions*，ResponseType = *Server Timeout*，ApiName = *GetBlob*
+- Metric = *Transactions*，ResponseType = *Server Timeout*，ApiName = *PutBlob*
 
-針對本逐步解說的目的，請將以下的 json 儲存為 multidimensionalstaticmetricalert。
+基於本逐步解說的目的，請將以下的 json 儲存為 multidimensionalstaticmetricalert.js。
 
 ```json
 {
@@ -943,7 +942,7 @@ az group deployment create \
 
 您可以使用上述的範本以及下面提供的參數檔案。 
 
-基於本逐步解說的目的，請將以下的 json 儲存並修改為 multidimensionalstaticmetricalert。
+基於本逐步解說的目的，請將以下的 json 儲存並修改為 multidimensionalstaticmetricalert.parameters.js。
 
 ```json
 {
@@ -1027,14 +1026,14 @@ az group deployment create \
 單一動態閾值警示規則可同時為數百個計量時間序列（甚至不同類型）建立量身打造的臨界值，這會導致較少的警示規則進行管理。
 
 在下列範例中，警示規則會監視**交易**度量的**ResponseType**和**ApiName**維度的維度值組合：
-1. **ResponsType** -對於**ResponseType**維度的每個值，包括未來的值，會個別監視不同的時間序列。
-2. **ApiName** -只有**GetBlob**和**PutBlob**維度值會監視不同的時間序列。
+1. **ResponsType** - 針對 **ResponseType** 維度的每個值 (包括未來的值)，都會分別監視不同的時間序列。
+2. **ApiName** - 只針對 **GetBlob** 和 **PutBlob** 維度值監視不同的時間序列。
 
-例如，此警示規則所監視的幾個可能時間序列包括：
-- 公制 =*交易*，ResponseType = *Success*，ApiName = *GetBlob*
-- 公制 =*交易*，ResponseType = *Success*，ApiName = *PutBlob*
-- 公制 =*交易*，ResponseType =*伺服器超時*，ApiName = *GetBlob*
-- 公制 =*交易*，ResponseType =*伺服器超時*，ApiName = *PutBlob*
+例如，此警示規則所監視的幾個可能時間序列為：
+- Metric = *Transactions*，ResponseType = *Success*，ApiName = *GetBlob*
+- Metric = *Transactions*，ResponseType = *Success*，ApiName = *PutBlob*
+- Metric = *Transactions*，ResponseType = *Server Timeout*，ApiName = *GetBlob*
+- Metric = *Transactions*，ResponseType = *Server Timeout*，ApiName = *PutBlob*
 
 根據本逐步解說的目的，請將以下的 JSON 儲存為 advanceddynamicmetricalert.json。
 
@@ -1246,13 +1245,13 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>監視自訂計量的靜態閾值計量警示範本
 
-您可以使用下列範本，針對自訂計量建立更先進的靜態臨界值計量警示規則。
+您可以使用下列範本，針對自訂計量建立更進階的靜態閾值計量警示規則。
 
-若要深入瞭解 Azure 監視器中的自訂計量，請參閱[Azure 監視器中的自訂計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)。
+若要深入了解 Azure 監視器中的自訂計量，請參閱 [Azure 監視器中的自訂計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)。
 
-在自訂計量上建立警示規則時，您必須同時指定計量名稱和計量命名空間。 您也應該確定已報告自訂度量，因為您無法針對尚未存在的自訂計量建立警示規則。
+在為自訂計量建立警示規則時，您必須指定計量名稱和計量命名空間。 應確定自訂計量已回報，因為若自訂計量不存在，您就無法建立警示規則。
 
-針對本逐步解說的目的，請將以下的 json 儲存為 customstaticmetricalert。
+根據本逐步解說的目的，請將以下的 JSON 儲存為 customstaticmetricalert.json。
 
 ```json
 {
@@ -1432,7 +1431,7 @@ az group deployment create \
 
 您可以使用上述的範本以及下面提供的參數檔案。 
 
-基於本逐步解說的目的，請將以下的 json 儲存並修改為 customstaticmetricalert。
+基於本逐步解說的目的，請將以下的 json 儲存並修改為 customstaticmetricalert.parameters.js。
 
 ```json
 {
@@ -1504,24 +1503,24 @@ az group deployment create \
 
 >[!NOTE]
 >
-> 您可以透過[Azure 入口網站流覽自訂計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)，來尋找特定自訂度量的度量命名空間。
+> 您可以[透過 Azure 入口網站瀏覽自訂計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)，來找到特定自訂計量的計量命名空間
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>監視多個資源的計量警示範本
 
-前幾節已說明用來建立計量警示以監視單一資源的 Azure Resource Manager 範本範例。 Azure 監視器現在支援針對存在於相同 Azure 區域中的資源，使用單一計量警示規則監視多個資源（屬於相同類型）。 這項功能目前僅在 Azure 公用雲端中受到支援，而且僅適用于虛擬機器、SQL server 資料庫、SQL server 彈性集區和 Databox 邊緣裝置。 此外，這項功能僅適用于平臺計量，且不支援自訂計量。
+前幾節已說明用來建立計量警示以監視單一資源的 Azure Resource Manager 範本範例。 Azure 監視器現在支援針對存在於相同 Azure 區域中的資源，使用單一計量警示規則監視多個資源（屬於相同類型）。 這項功能目前僅在 Azure 公用雲端中受到支援，而且僅適用于虛擬機器、SQL server 資料庫、SQL server 彈性集區和 Databox 邊緣裝置。 此外，這項功能僅適用於平台計量，且不支援自訂計量。
 
 動態閾值警示規則也可一次為數百個計量序列 (甚至不同類型) 建立合適的閾值，讓需要管理的警示規則變少。
 
 針對以單一規則監視多個資源的功能，本節將說明三種此類案例適用的 Azure Resource Manager 範本。
 
 - 監視一個或多個資源群組中的所有虛擬機器 (位於一個 Azure 區域)。
-- 監視訂用帳戶中的所有虛擬機器（位於一個 Azure 區域）。
-- 監視訂用帳戶中的一系列虛擬機器（位於一個 Azure 區域）。
+- 監視一個訂用帳戶中的所有虛擬機器 (位於一個 Azure 區域)。
+- 監視一個訂用帳戶中的一系列虛擬機器 (位於一個 Azure 區域)。
 
 > [!NOTE]
 >
-> 在監視多個資源的計量警示規則中，只允許一個條件。
+> 在監視多個資源的計量警示規則中，只允許一個準則。
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>一個或多個資源群組中所有虛擬機器上的靜態閾值警示
 
@@ -3462,10 +3461,10 @@ az group deployment create \
 
 ## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>可用性測試和計量警示的範本
 
-[Application Insights 可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)可協助您從全球各地的不同位置監視您的網站/應用程式可用性。 可用性測試警示會在可用性測試從特定數目的位置失敗時通知您。
-與計量警示（Microsoft Insights/metricAlerts）相同資源類型的可用性測試警示。 下列範例 Azure Resource Manager 範本可以用來設定簡單的可用性測試和相關聯的警示。
+[Application Insights 可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)可協助您從全球各地的不同位置，監視您網站/應用程式的可用性。 可用性測試警示會在特定幾個位置中的可用性測試失敗時，向您發出通知。
+可用性測試警示與計量警示 (Microsoft.Insights/metricAlerts) 屬於相同資源類型。 下列範例 Azure Resource Manager 範本可以用來設定簡單的可用性測試和相關聯的警示。
 
-針對本逐步解說的目的，請將以下的 json 儲存為 availabilityalert。
+基於本逐步解說的目的，請將以下的 json 儲存為 availabilityalert.js。
 
 ```json
 {
@@ -3549,7 +3548,6 @@ az group deployment create \
         ],
         "evaluationFrequency": "PT1M",
         "windowSize": "PT5M",
-        "templateType": 0,
         "criteria": {
           "odata.type": "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
           "webTestId": "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]",
@@ -3572,9 +3570,9 @@ az group deployment create \
 
 > [!NOTE]
 >
-> `&amp`;這是 & 的 HTML 實體參考。 URL 參數仍會以單一 & 分隔，但如果您在 HTML 中提及 URL，則需要對其進行編碼。 因此，如果您的 pingURL 參數值中有任何 "&"，您就必須使用 "`&amp`;" 來將它換成 ";"
+> `&amp`; 是 & 的 HTML 實體參考。 URL 參數仍會以單一 & 來分隔，但如果您在 HTML 中提及 URL，則需要對其進行編碼。 因此，如果您的 pingURL 參數值中有任何 "&"，您就必須使用 "`&amp`;" 來替代
 
-將以下的 json 儲存為 availabilityalert，並視需要加以修改。
+將以下的 json 儲存為 availabilityalert.parameters.js，並視需要加以修改。
 
 ```json
 {

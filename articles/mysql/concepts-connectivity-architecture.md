@@ -6,12 +6,11 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 6014e98d01755f29da74160fb1ef38ba29a74ba6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 661cfb4798ef553918ddc238a5388b11a54e23f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547506"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84298681"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的連線架構
 本文說明適用於 MySQL 的 Azure 資料庫連線架構，以及如何從 Azure 內部和外部的用戶端，將流量導向至您的適用於 MySQL 的 Azure 資料庫實例。
@@ -44,6 +43,7 @@ ms.locfileid: "80547506"
 | 美國東部 | 40.121.158.30, 191.238.6.43  |
 | 美國東部 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | 法國中部 | 40.79.137.0, 40.79.129.1  |
+| 法國南部 | 40.79.177.0     |
 | 德國中部 | 51.4.144.100     |
 | 德國東北部 | 51.5.144.179  |
 | 印度中部 | 104.211.96.159     |
@@ -78,7 +78,7 @@ ms.locfileid: "80547506"
 PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)延伸模組提供重新導向的支援，由 Microsoft 所開發，並可在[PECL](https://pecl.php.net/package/mysqlnd_azure)上取得。 如需如何在您的應用程式中使用重新導向的詳細資訊，請參閱設定重新導向[一文。](./howto-redirection.md)
 
 > [!IMPORTANT]
-> PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)延伸模組中的重新導向支援目前為預覽狀態。
+> PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) \(英文\) 延伸模組中的重新導向支援目前為預覽狀態。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,11 @@ title: 容器群組的靜態 IP 位址
 description: 在虛擬網路中建立容器群組，並使用 Azure 應用程式閘道將靜態前端 IP 位址公開給容器化 web 應用程式
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 5c3a14f93af3ecc614dc296f0a4d2815d7a64a66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481784"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299157"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>公開容器群組的靜態 IP 位址
 
@@ -17,7 +16,7 @@ ms.locfileid: "79481784"
 在本文中，您會使用 Azure CLI 來建立此案例的資源：
 
 * Azure 虛擬網路
-* 在裝載小型 web 應用程式[的虛擬網路（預覽）中](container-instances-vnet.md)部署的容器群組
+* 在裝載小型 web 應用程式[的虛擬網路中](container-instances-vnet.md)部署的容器群組
 * 具有公用前端 IP 位址的應用程式閘道、在閘道上裝載網站的接聽程式，以及對後端容器群組的路由
 
 只要應用程式閘道執行，且容器群組在網路的委派子網中公開了穩定的私人 IP 位址，就可以在這個公用 IP 位址存取容器群組。
@@ -71,7 +70,7 @@ az network public-ip create \
 
 執行下列[az container create][az-container-create] ，在您于上一個步驟中設定的虛擬網路中建立容器群組。 
 
-此群組會部署在*myACISubnet*子網中，並包含名為*appcontainer*的單一實例`aci-helloworld` ，可提取映射。 如檔中的其他文章所示，此映射會封裝以 node.js 撰寫並提供靜態 HTML 網頁的小型 web 應用程式。 
+此群組會部署在*myACISubnet*子網中，並包含名為*appcontainer*的單一實例，可提取 `aci-helloworld` 映射。 如檔中的其他文章所示，此映射會封裝以 Node.js 撰寫並提供靜態 HTML 網頁的小型 web 應用程式。 
 
 ```azurecli
 az container create \
@@ -136,7 +135,7 @@ az network public-ip show \
 --output tsv
 ```
 
-輸出是公用 IP 位址，類似于： `52.142.18.133`。
+輸出是公用 IP 位址，類似于： `52.142.18.133` 。
 
 若要在成功設定時查看正在執行的 web 應用程式，請在瀏覽器中流覽至閘道的公用 IP 位址。 成功的存取如下所示：
 

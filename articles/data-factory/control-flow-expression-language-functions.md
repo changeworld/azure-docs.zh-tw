@@ -10,12 +10,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 9870b239ca0501e63df3d800b8e4847cb0f390ac
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
+ms.openlocfilehash: 81a83c629a1cdcde77ec43751f32ebfe1dfb3425
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860931"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84266843"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory 中的運算式和函式
 
@@ -532,26 +531,26 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 
 ### <a name="and"></a>和
 
-檢查是否所有運算式都是 True。
-在所有運算式都是 True 時，傳回 True，或至少有一個運算式為 False 時傳回 False。
+檢查兩個運算式是否皆為 true。
+當兩個運算式都是 true 時，傳回 true，如果至少有一個運算式為 false，則傳回 false。
 
 ```
-and(<expression1>, <expression2>, ...)
+and(<expression1>, <expression2>)
 ```
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要檢查的運算式 |
+| <*運算式*2>，<*運算式*2> | 是 | Boolean | 要檢查的運算式 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | -----| ----------- |
-| true 或 false | Boolean | 所有運算式都是 True 時，即傳回 True。 至少一個運算式為 False 時，則傳回 False。 |
+| true 或 false | Boolean | 當兩個運算式都是 true 時，傳回 true。 至少一個運算式為 False 時，則傳回 False。 |
 ||||
 
 *範例 1*
 
-這些範例會檢查指定的布林值是否都是 True：
+這些範例會檢查指定的布林值是否為 true：
 
 ```
 and(true, true)
@@ -567,7 +566,7 @@ and(false, false)
 
 *範例 2*
 
-這些範例會檢查指定的運算式是否都是 True：
+這些範例會檢查指定的運算式是否為 true：
 
 ```
 and(equals(1, 1), equals(2, 2))
@@ -2389,20 +2388,20 @@ not(equals(1, 1))
 ### <a name="or"></a>或
 
 檢查是否至少有一個運算式是 True。
-至少有一個運算式是 True 時，傳回 True，或所有運算式都是 False 時，傳回 False。
+當至少有一個運算式為 true 時，傳回 true，或當兩者都為 false 時傳回 false。
 
 ```
-or(<expression1>, <expression2>, ...)
+or(<expression1>, <expression2>)
 ```
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要檢查的運算式 |
+| <*運算式*2>，<*運算式*2> | 是 | Boolean | 要檢查的運算式 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 至少有一個運算式是 True 時，傳回 True。 所有運算式都是 False 時，即傳回 False。 |
+| true 或 false | Boolean | 至少有一個運算式是 True 時，傳回 True。 當兩個運算式都是 false 時，傳回 false。 |
 ||||
 
 *範例 1*

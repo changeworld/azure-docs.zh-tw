@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0b3f5963572368cb9c884984418140b4bbc0dea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131196"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300785"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>透過 Azure 監視器記錄監視 Site Recovery
 
@@ -42,14 +41,14 @@ Azure 監視器記錄檔提供的記錄資料平臺會收集活動和資源記�
 
 ## <a name="configure-site-recovery-to-send-logs"></a>設定 Site Recovery 來傳送記錄檔
 
-1. 在保存庫中，按一下 [**診斷設定** > ] [**新增診斷設定**]。
+1. 在保存庫中，按一下 [**診斷設定**] [  >  **新增診斷設定**]。
 
     ![選取資源記錄](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. 在 [**診斷設定**] 中指定名稱，然後選取 [**傳送至 Log Analytics**] 方塊。
 3. 選取 [Azure 監視器記錄] 訂用帳戶和 Log Analytics 工作區。
 4. 在切換中選取 [ **Azure 診斷**]。
-5. 從 [記錄檔] 清單中，選取前置詞為**AzureSiteRecovery**的所有記錄檔。 然後按一下 [ **確定**]。
+5. 從 [記錄檔] 清單中，選取前置詞為**AzureSiteRecovery**的所有記錄檔。 然後按一下 [確定] 。
 
     ![選取工作區](./media/monitoring-log-analytics/select-workspace.png)
 
@@ -252,7 +251,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>設定警示-範例
 
-您可以根據 Azure 監視器資料來設定 Site Recovery 警示。 [深入瞭解](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal)如何設定記錄警示。 
+您可以根據 Azure 監視器資料來設定 Site Recovery 警示。 [深入瞭解](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)如何設定記錄警示。 
 
 > [!NOTE]
 > 部分範例會使用**replicationProviderName_s**設定為**A2A**。 這會針對複寫到次要 Azure 區域的 Azure Vm 設定警示。 在這些範例中，如果您想要設定複寫至 Azure 的內部部署 VMware Vm 或實體伺服器的警示，您可以將**A2A**取代為**InMageAzureV2** 。

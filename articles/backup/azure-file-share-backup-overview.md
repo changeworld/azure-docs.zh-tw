@@ -3,12 +3,11 @@ title: 關於 Azure 檔案共用備份
 description: 瞭解如何在復原服務保存庫中備份 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c79100724b882c0682c86070ee74a8726d6b049f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0a03871b61ab00f2dae18ba11a5a9127680a646b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105738"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299225"
 ---
 # <a name="about-azure-file-share-backup"></a>關於 Azure 檔案共用備份
 
@@ -16,11 +15,12 @@ Azure 檔案共用備份是以雲端為基礎的原生備份解決方案，可�
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Azure 檔案共用備份的主要優點
 
-* 零基礎結構：不需要部署，即可設定檔案共用的保護。
-* 自訂保留：您可以根據需求，設定每日/每週/每月/每年保留的備份。
-* 內建管理功能：您可以排程備份並指定所需的保留期限，而不需要額外的資料剪除負擔。
-* 立即還原： Azure 檔案共用備份會使用檔案共用快照集，因此您可以只選取您想要立即還原的檔案。
-* 警示和報告：您可以設定備份和還原失敗的警示，並使用 Azure 備份提供的報告解決方案，取得跨檔案共用之備份的深入解析。
+* **零基礎結構**：不需要部署，即可設定檔案共用的保護。
+* **自訂保留**：您可以根據需求，設定每日/每週/每月/每年保留的備份。
+* **內建管理功能**：您可以排程備份並指定所需的保留期限，而不需要額外的資料剪除負擔。
+* **立即還原**： Azure 檔案共用備份會使用檔案共用快照集，因此您可以只選取您想要立即還原的檔案。
+* **警示和報告**：您可以設定備份和還原失敗的警示，並使用 Azure 備份提供的報告解決方案，取得跨檔案共用之備份的深入解析。
+* **防止意外刪除檔案共用**： Azure 備份會在保留期間為14天的儲存體帳戶層級上啟用虛[刪除功能](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。 即使惡意執行者刪除了檔案共用，檔案共用的內容和復原點（快照集）仍會保留一段可設定的保留期間，讓來源內容和快照的成功和完整復原不會遺失資料。
 
 ## <a name="architecture"></a>架構
 
@@ -51,5 +51,5 @@ Azure 檔案共用備份是以雲端為基礎的原生備份解決方案，可�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何[備份 Azure 檔案共用](backup-afs.md)
+* 了解如何[備份 Azure 檔案共用](backup-afs.md)
 * 尋找[有關備份 Azure 檔案儲存體問題](backup-azure-files-faq.md)的解答
