@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e0a970df680df43a7bd303636b3d81bda3e141
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a0bac96c3daa0d81786b1a3facf6ccd328cd579
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085700"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076754"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁碟加密範例指令碼 
 
@@ -41,7 +41,7 @@ Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('Disk
 
 下表顯示可在 PowerShell 指令碼中使用的參數： 
 
-|參數|描述|是否為強制？|
+|參數|說明|是否為強制？|
 |------|------|------|
 |$resourceGroupName| 金鑰保存庫所屬資源群組的名稱。  如果不存在此名稱的應用程式，將會以此名稱建立新的資源群組。| True|
 |$keyVaultName|要用來放置加密金鑰的金鑰保存庫名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的保存庫。| True|
@@ -76,22 +76,30 @@ Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('Disk
 ### <a name="install-bitlocker-feature-components"></a>安裝 BitLocker 功能元件
 針對 Windows Server 2012 和更新版本，請使用下列命令︰
 
-    dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```console
+dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```
 
 針對 Windows Server 2008 R2，請使用下列命令︰
 
-    ServerManagerCmd -install BitLockers
+```console
+ServerManagerCmd -install BitLockers
+```
 
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>使用 `bdehdcfg` 準備用於 BitLocker 的 OS 磁碟區
 若要壓縮作業系統磁碟分割並為 BitLocker 準備電腦，請視需要執行 [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment)：
 
-    bdehdcfg -target c: shrink -quiet 
+```console
+bdehdcfg -target c: shrink -quiet 
+```
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>使用 BitLocker 保護作業系統磁碟區
 使用 [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) 命令，以使用外部金鑰保護裝置在開機磁碟區上啟用加密。 也將外部金鑰 (.bek 檔案) 放置於外部磁碟機或磁碟區。 下次重新開機後，會在系統/開機磁碟區上啟用加密。
 
-    manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
-    reboot
+```console
+manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
+reboot
+```
 
 > [!NOTE]
 > 使用不同的資料/資源 VHD 來準備 VM，才能使用 BitLocker 取得外部金鑰。

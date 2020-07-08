@@ -15,11 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f05e1d46485b337acbd9390441359e086067db74
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b677821ae32d4d916b6235228ae2807397c9fc60
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014805"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078488"
 ---
 # <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>設定 Azure SQL Server VM 中可用性群組的 ILB 接聽程式
 > [!div class="op_single_selector"]
@@ -68,18 +69,26 @@ ms.locfileid: "84014805"
 
 7. 使用您所下載發佈設定檔案的路徑來執行下列 `Import-AzurePublishSettingsFile` 命令：
 
-        Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
+    ```powershell
+    Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
+    ```
 
     匯入發佈設定檔案之後，您便可以在 PowerShell 工作階段中管理 Azure 訂用帳戶。
 
 8. 針對 *ILB*，指派靜態 IP 位址。 執行下列命令來檢查目前的虛擬網路組態：
 
-        (Get-AzureVNetConfig).XMLConfiguration
+    ```powershell
+    (Get-AzureVNetConfig).XMLConfiguration
+    ```
+
 9. 請記下子網路 (其中包含主控複本的 VM) 的 *Subnet* 名稱。 此名稱使用於指令碼中的 $SubnetName 參數。
 
 10. 記下子網路 (其中包含主控複本的 VM) 的 VirtualNetworkSite 名稱和起始的 AddressPrefix。 將這兩個值傳遞至 `Test-AzureStaticVNetIP` 命令並檢查 AvailableAddresses 以尋找可用的 IP 位址。 例如，如果虛擬網路被命名為 MyVNet 且具有以 172.16.0.128 開始的子網路位址範圍，下列命令便會列出可用的位址：
 
-        (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
+    ```powershell
+    (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
+    ```
+
 11. 選取其中一個可用的位址，並將其用於下一個步驟中指令碼的 $ILBStaticIP 參數。
 
 12. 將下列 PowerShell 指令碼複製到文字編輯器，並設定變數值以符合您的環境。 某些參數已提供預設值。  
@@ -88,21 +97,23 @@ ms.locfileid: "84014805"
 
     此外，如果您的可用性群組跨越 Azure 區域，您必須針對雲端服務和位於該資料中心的節點，在每個資料中心執行一次指令碼。
 
-        # Define variables
-        $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
-        $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
-        $SubnetName = "<MySubnetName>" # subnet name that the replicas use in the virtual network
-        $ILBStaticIP = "<MyILBStaticIPAddress>" # static IP address for the ILB in the subnet
-        $ILBName = "AGListenerLB" # customize the ILB name or use this default value
+    ```powershell
+    # Define variables
+    $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
+    $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
+    $SubnetName = "<MySubnetName>" # subnet name that the replicas use in the virtual network
+    $ILBStaticIP = "<MyILBStaticIPAddress>" # static IP address for the ILB in the subnet
+    $ILBName = "AGListenerLB" # customize the ILB name or use this default value
 
-        # Create the ILB
-        Add-AzureInternalLoadBalancer -InternalLoadBalancerName $ILBName -SubnetName $SubnetName -ServiceName $ServiceName -StaticVNetIPAddress $ILBStaticIP
+    # Create the ILB
+    Add-AzureInternalLoadBalancer -InternalLoadBalancerName $ILBName -SubnetName $SubnetName -ServiceName $ServiceName -StaticVNetIPAddress $ILBStaticIP
 
-        # Configure a load-balanced endpoint for each node in $AGNodes by using ILB
-        ForEach ($node in $AGNodes)
-        {
-            Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
-        }
+    # Configure a load-balanced endpoint for each node in $AGNodes by using ILB
+    ForEach ($node in $AGNodes)
+    {
+        Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
+    }
+    ```
 
 13. 設定變數之後，請從文字編輯器將指令碼複製到您的 PowerShell 工作階段來執行它。 如果提示依然顯示 **>>** ，請再次按 ENTER 鍵以確定指令碼開始執行。
 
@@ -122,33 +133,39 @@ ms.locfileid: "84014805"
 ### <a name="configure-the-cluster-resources-in-powershell"></a>在 PowerShell 中設定叢集資源
 1. 對於 ILB，您必須使用之前所建立 ILB 的 IP 位址。 若要取得 PowerShell 中的這個 IP 位址，請使用下列指令碼：
 
-        # Define variables
-        $ServiceName="<MyServiceName>" # the name of the cloud service that contains the AG nodes
-        (Get-AzureInternalLoadBalancer -ServiceName $ServiceName).IPAddress
+    ```powershell
+    # Define variables
+    $ServiceName="<MyServiceName>" # the name of the cloud service that contains the AG nodes
+    (Get-AzureInternalLoadBalancer -ServiceName $ServiceName).IPAddress
+    ```
 
 2. 在其中一部 VM 上，將適用於您作業系統的 PowerShell 指令碼複製到文字編輯器，然後將變數設定為您先前記下的值。
 
     針對 Windows Server 2012 或更新版本，請使用下列指令碼︰
 
-        # Define variables
-        $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-        $IPResourceName = "<IPResourceName>" # the IP address resource name
-        $ILBIP = "<X.X.X.X>" # the IP address of the ILB
+    ```powershell
+    # Define variables
+    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<IPResourceName>" # the IP address resource name
+    $ILBIP = "<X.X.X.X>" # the IP address of the ILB
 
-        Import-Module FailoverClusters
+    Import-Module FailoverClusters
 
-        Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+    ```
 
     針對 Windows Server 2008 R2，請使用下列指令碼︰
 
-        # Define variables
-        $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-        $IPResourceName = "<IPResourceName>" # the IP address resource name
-        $ILBIP = "<X.X.X.X>" # the IP address of the ILB
+    ```powershell
+    # Define variables
+    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<IPResourceName>" # the IP address resource name
+    $ILBIP = "<X.X.X.X>" # the IP address of the ILB
 
-        Import-Module FailoverClusters
+    Import-Module FailoverClusters
 
-        cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
+    cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
+    ```
 
 3. 設定變數之後，開啟提升權限的 Windows PowerShell 視窗，然後將指令碼從文字編輯器貼到您的 PowerShell 工作階段中來執行它。 如果提示依然顯示 **>>** ，請再次按 ENTER 鍵以確定指令碼開始執行。
 

@@ -16,11 +16,12 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 82c9f6f0797a4d863e04b45c918d649250157a72
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a4b63735509c0d1c755eced8277d18b2a535457b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017644"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078437"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>連線到 Azure 上的 SQL Server 虛擬機器 (傳統部署)
 > [!div class="op_single_selector"]
@@ -52,7 +53,9 @@ ms.locfileid: "84017644"
 
 在此案例中，您可以使用 VM **名稱** (在入口網站中也稱為**電腦名稱**或**主機名稱**) 來連接。 這是您在建立期間提供給 VM 的名稱。 例如，如果將您的 SQL VM 命名為 **mysqlvm**，則在相同雲端服務中的用戶端 VM 將可以使用下列連接字串來連接：
 
-    "Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```config
+"Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```
 
 ### <a name="connect-to-sql-server-over-the-internet"></a>連接網際網路中的 SQL Server
 如果您希望透過網際網路連接您的 SQL Server 資料庫引擎，您必須建立虛擬機器端點以進行傳入 TCP 通訊。 此 Azure 組態步驟能將傳入 TCP 連接埠流量導向虛擬機器可存取的 TCP 連接埠。
@@ -61,7 +64,9 @@ ms.locfileid: "84017644"
 
 例如，假設名為 **mysqlvm** 的傳統虛擬機器，其 DNS 名稱為 **mysqlvm7777.cloudapp.net**，且 VM 端點是 **57500**。 假設已適當設定連線能力，則使用下列連接字串，就能從網際網路上任何位置存取該虛擬機器：
 
-    "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```config
+"Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```
 
 雖然此連接字串可讓用戶端透過網際網路連線，但這不表示任何人都可以連接您的 SQL Server。 外部用戶端必須要有正確的使用者名稱和密碼。 為了增加安全性，請勿使用知名的 1433 連接埠做為公用虛擬機器端點。 請盡可能考慮在您的端點加入 ACL 來限制流量，只開放給您允許的用戶端。 如需有關在端點中使用 ACL 的指示，請參閱 [在端點上管理 ACL](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)。
 
@@ -77,7 +82,9 @@ ms.locfileid: "84017644"
 
 如果您打算要設定網域環境及 Windows 驗證，您就不需要設定公用端點或是 SQL 驗證及登入。 在此案例中，您可以在連接字串中指定 SQL Server VM 名稱來連接 SQL Server 執行個體。 下列範例假設 Windows 驗證已設定，且使用者已獲得存取 SQL Server 執行個體的權限。
 
-    "Server=mysqlvm;Integrated Security=true"
+```config
+"Server=mysqlvm;Integrated Security=true"
+```
 
 ## <a name="steps-for-configuring-sql-server-connectivity-in-an-azure-vm"></a>Azure VM 中設定 SQL Server 連線的步驟
 下列步驟示範如何使用 SQL Server Management Studio (SSMS) 透過網際網路連線到 SQL Server 執行個體。 不過，相同的步驟適用於讓您在內部部署或 Azure 中執行的應用程式可存取 SQL Server 虛擬機器。

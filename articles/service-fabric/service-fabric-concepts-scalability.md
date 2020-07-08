@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1780cb47696813b5d26035f54e0685969482dba6
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282558"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058107"
 ---
 # <a name="scaling-in-service-fabric"></a>Service Fabric 中的縮放比例
 Azure Service Fabric 可管理叢集節點上的服務、分割區和複本，讓您輕鬆建置可調整的應用程式。 在相同硬體上執行許多工作負載時，會獲得最大資源使用量，還可以針對您選擇調整工作負載的方式提供彈性。 這個 Channel 9 影片說明如何建置可調整的微服務應用程式：
@@ -63,7 +63,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>透過建立或移除新的具名服務進行縮放比例
 具名服務執行個體是一些叢集中具名應用程式執行個體內的服務類型之特定執行個體 (請參閱 [Service Fabric 應用程式生命週期](service-fabric-application-lifecycle.md))。 
 
-可以在服務的忙碌程度提高或降低時，建立 (或移除) 新的具名服務執行個體。 這樣可讓要求散佈到多個服務執行個體，通常會使現有服務上的負載降低。 在建立服務時，Service Fabric 叢集 Resource Manager 會以分散式方式將服務置於叢集中。 確切決策是依叢集和其他放置規則中的[計量](service-fabric-cluster-resource-manager-metrics.md)來控管。 服務可以用數種不同的方式建立，但最常見的方法是透過系統管理動作[`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)，像是某人呼叫[`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet)或呼叫程式碼。 甚至可以從叢集中執行的其他服務內呼叫 `CreateServiceAsync`。
+可以在服務的忙碌程度提高或降低時，建立 (或移除) 新的具名服務執行個體。 這樣可讓要求散佈到多個服務執行個體，通常會使現有服務上的負載降低。 在建立服務時，Service Fabric 叢集 Resource Manager 會以分散式方式將服務置於叢集中。 確切決策是依叢集和其他放置規則中的[計量](service-fabric-cluster-resource-manager-metrics.md)來控管。 服務可以用數種不同的方式建立，但最常見的方法是透過系統管理動作，像是某人呼叫 [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) 或呼叫程式碼 [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) 。 甚至可以從叢集中執行的其他服務內呼叫 `CreateServiceAsync`。
 
 各種情節中皆可使用動態建立服務，且是常見的模式。 例如，假設有一個可代表特定工作流程的具狀態服務。 會向這項服務顯示代表工作的呼叫，且此服務會對該工作流程和資料列進度執行這些步驟。 
 
@@ -127,7 +127,7 @@ Service Fabric 支援資料分割。 分割區會將服務分割成數個邏輯�
 在針對縮放進行建置時，請考慮下列動態模式。 您可能需要縮放來適應您的情況：
 
 1. 建置「服務管理員」，而不要嘗試事先為每個人挑選資料分割配置。
-2. 當客戶註冊您的服務時，管理員服務就負責查看他們的資訊。 然後，根據這項資訊而定，管理員服務會建立「只針對該客戶」__ 建立「實際」__ 連絡人儲存體服務的執行個體。 如果他們需要特定組態、隔離或升級，您也可以決定針對此客戶加速應用程式執行個體。 
+2. 當客戶註冊您的服務時，管理員服務就負責查看他們的資訊。 然後，視該資訊而定，管理員服務_只會為該客戶_建立_實際_連絡人儲存體服務的實例。 如果他們需要特定組態、隔離或升級，您也可以決定針對此客戶加速應用程式執行個體。 
 
 此動態建立模式的多項優點：
 

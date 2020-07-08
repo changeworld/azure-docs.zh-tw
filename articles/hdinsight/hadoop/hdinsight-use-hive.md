@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: f7dc7b520cba2bbf2351d93795a1a26b3b5124be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95af0cd4b59863ad0f591476441d9a7733765453
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471348"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076023"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 上的 Apache Hive 和 HiveQL 是什麼？
 
@@ -206,7 +207,7 @@ Azure Data Factory 可讓您使用 HDInsight 作為 Data Factory 管線的一部
 
 Apache Oozie 是可管理 Hadoop 作業的工作流程和協調系統。 如需搭配使用 Oozie 與 Hive 的詳細資訊，請參閱[使用 Apache Oozie 來定義並執行工作流程](../hdinsight-use-oozie-linux-mac.md)文件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已了解什麼是 Hive 以及如何搭配 HDInsight 中的 Hadoop 使用它，接著請使用下列連結探索 Azure HDInsight 的其他使用方式。
 

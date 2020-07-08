@@ -1,22 +1,22 @@
 ---
-title: Fsv2 系列-Azure 虛擬機器
+title: Fsv2 系列
 description: Fsv2 系列 Vm 的規格。
-services: virtual-machines
 author: brbell
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: f28c6b61aee3c8cbc078db1c2cfb48ed1fba4554
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 44f9261c8054ea0575f2fcab0dc8bb6c0d6f0ce4
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164843"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058260"
 ---
 # <a name="fsv2-series"></a>Fsv2 系列
 
-Fsv2 系列是以 Intel®級®白金8168處理器為基礎。 它的特色是將所有核心 Turbo 主頻的速度維持在 3.4 GHz，而最大單一核心 turbo 頻率為 3.7 g h z。 Intel® AVX-512 指示是 Intel 可擴充的處理器上的新技術。 這些指示可為單一和雙精確度浮點運算上的向量處理工作負載，提供最多2倍的效能提升。 換句話說，對於任何計算工作負載來說，這些都是非常快速的。
+Fsv2 系列會在 Intel®的®白金8272CL （Cascade Lake）處理器和 Intel®的®白金8168（Skylake）處理器上執行。 它的特色是將所有核心 Turbo 主頻的速度維持在 3.4 GHz，而最大單一核心 turbo 頻率為 3.7 g h z。 Intel® AVX-512 指示是 Intel 可擴充的處理器上的新技術。 這些指示可為單一和雙精確度浮點運算上的向量處理工作負載，提供最多2倍的效能提升。 換句話說，對於任何計算工作負載來說，這些都是非常快速的。
 
 Fsv2 系列 Vm 功能 Intel®超執行緒技術。
 
@@ -30,7 +30,7 @@ ACU：195 - 210
 
 記憶體保留更新：支援
 
-| Size | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大未快取的磁片輸送量： IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
 |---|---|---|---|---|---|---|---|
 | Standard_F2s_v2  | 2  | 4   | 16  | 4  | 4000/31 （32）       | 3200/47    | 2/875   |
 | Standard_F4s_v2  | 4  | 8   | 32  | 8  | 8000/63 （64）       | 6400/95    | 2/1750  |
@@ -64,7 +64,7 @@ ACU：195 - 210
 - [儲存體最佳化](sizes-storage.md)
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
-- [上一代](sizes-previous-gen.md)
+- [前幾代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>後續步驟
 

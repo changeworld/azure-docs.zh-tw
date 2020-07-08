@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: da45e24898bc3b5aead250077af69a61bdb33bab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 415895b894261ade9b2332eb3fb926eba74fe937
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73749632"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078403"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM 啟動在 Azure 中停滯在「Windows 正在就緒。 請勿關閉電腦」的狀態
 
@@ -88,13 +89,15 @@ Windows VM 不會開機。 當您使用 [**開機診斷**] 取得 VM 的螢幕�
 
     1. 確定磁碟上有足夠的空間可配置和 RAM 一樣多的記憶體，這取決於您為此 VM 選取的大小。
     2. 如果沒有足夠的空間，或這是大型 VM (G、GS 或 E 系列)，則您可以變更此檔案將建立的位置，並將它參考至連結到 VM 的其他任何資料磁碟。 若要這樣做，您必須變更下列機碼：
+    
+        ```console
+        reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
-            reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
 
-            REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
-            REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
-
-            reg unload HKLM\BROKENSYSTEM
+        reg unload HKLM\BROKENSYSTEM
+        ```
 
 3. [卸離 OS 磁碟，然後將 OS 磁碟重新連結至受影響的 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 4. 啟動 VM 並存取序列主控台。

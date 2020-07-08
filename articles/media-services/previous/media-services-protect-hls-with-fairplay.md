@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 873bc4ab5e435b91ff4400a39c92db0d0bb9baa8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ad06d0e37b7cf464c311e28e546e1b7f1ebd183
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74968760"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058243"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>使用 Apple FairPlay 或 Microsoft PlayReady 保護 HLS 內容
 
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 不會在媒體服務 v2 中新增任何新功能或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 不會在媒體服務 v2 中新增任何新功能或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 >
 
 Azure 媒體服務可讓您使用下列格式，動態加密您的 HTTP 即時串流 (HLS) 內容︰  
@@ -127,7 +127,7 @@ FPS 用戶端必須設定下列各項︰
 ## <a name="use-fairplay-key-delivery-by-player-apps"></a>透過播放程式應用程式使用 FairPlay 金鑰傳遞
 您可以使用 iOS SDK 開發播放應用程式。 為了能夠播放 FairPlay 內容，您必須實作授權交換通訊協定。 此通訊協定不是由 Apple 指定。 而是由每個應用程式如何傳送金鑰傳遞要求而決定。 媒體服務 FairPlay 金鑰傳遞服務會對即將到來的 SPC 視為如下列格式的 www-form-url 已編碼張貼訊息：
 
-    spc=<Base64 encoded SPC>
+`spc=<Base64 encoded SPC>`
 
 > [!NOTE]
 > Azure 媒體播放器支援 FairPlay 播放。 如需詳細資訊，請參閱 [Azure 媒體播放器文件](https://amp.azure.net/libs/amp/latest/docs/index.html) \(英文\)。
@@ -164,7 +164,7 @@ FPS 用戶端必須設定下列各項︰
 以本章節中所顯示的程式碼覆寫 Program.cs 檔案中的程式碼。
 
 >[!NOTE]
->對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限，例如，要長時間維持就地 (非上載原則) 的定位器原則，您應該使用相同的原則識別碼。 如需詳細資訊，請參閱[這](media-services-dotnet-manage-entities.md#limit-access-policies)篇文章。
+>對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限，例如，要長時間維持就地 (非上載原則) 的定位器原則，您應該使用相同的原則識別碼。 如需詳細資訊，請參閱[本篇文章](media-services-dotnet-manage-entities.md#limit-access-policies)。
 
 請務必更新變數，以指向您的輸入檔案所在的資料夾。
 

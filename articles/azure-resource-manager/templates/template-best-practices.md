@@ -2,25 +2,21 @@
 title: 範本的最佳做法
 description: 說明用於製作 Azure Resource Manager 範本的建議方法。 提供建議來避免使用範本時的常見問題。
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156407"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058056"
 ---
 # <a name="arm-template-best-practices"></a>ARM 範本最佳做法
 
-本文提供有關如何建立您的 Azure Resource Manager （ARM）範本的建議。 當您使用 ARM 範本來部署解決方案時，這些建議可協助您避免常見的問題。
-
-如需如何管理 Azure 訂用帳戶的建議，請參閱[azure enterprise scaffold：規定的訂](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)用帳戶治理。
-
-如需相關建議以了解如何建置適用於所有 Azure 雲端環境的範本，請參閱[開發針對雲端一致性的 Azure Resource Manager 範本](templates-cloud-consistency.md)。
+本文說明如何在建立 ARM 範本時使用建議的作法。 當您使用 ARM 範本來部署解決方案時，這些建議可協助您避免常見的問題。
 
 ## <a name="template-limits"></a>範本限制
 
-將您的範本大小限制為 4 MB，並將每個參數檔案限制為 64 KB。 4 MB 的限制適用于已展開反復資源定義的範本最終狀態，以及變數和參數的值。 
+將您的範本大小限制為 4 MB，並將每個參數檔案限制為 64 KB。 4 MB 的限制適用于已展開反復資源定義的範本最終狀態，以及變數和參數的值。
 
 您也受限於：
 
@@ -93,7 +89,7 @@ ms.locfileid: "80156407"
 
 * 針對資源類型的 API 版本，請勿使用參數。 資源屬性和值可能會隨版本號碼而不同。 將 API 版本設定為參數時，程式碼編輯器中的 Intellisense 會無法判斷正確的結構描述。 請改為將 API 版本硬式編碼在範本中。
 
-* 請謹慎使用 `allowedValues`。 只有當您必須確保允許的選項中不會包含某些值時才可使用。 如果您的`allowedValues`使用量過廣，您可能會因為不讓清單保持最新狀態而封鎖有效的部署。
+* 請謹慎使用 `allowedValues`。 只有當您必須確保允許的選項中不會包含某些值時才可使用。 如果您的使用量 `allowedValues` 過廣，您可能會因為不讓清單保持最新狀態而封鎖有效的部署。
 
 * 當範本中的參數名稱與 PowerShell 部署命令中的參數相符時，Resource Manager 會在範本參數加上後置詞 **FromTemplate** 以避免命名衝突。 例如，如果您在範本中包含名為 **ResourceGroupName** 的參數，它會與 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) Cmdlet 中的 **ResourceGroupName** 參數發生衝突。 部署期間，系統會提示您為 **ResourceGroupNameFromTemplate** 提供值。
 
@@ -234,7 +230,7 @@ ms.locfileid: "80156407"
    * [在 Azure Resource Manager 中設定 VM 的 WinRM 存取](../../virtual-machines/windows/winrm.md)
    * [允許使用 Azure 入口網站從外部存取您的 VM](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [允許使用 PowerShell 從外部存取您的 VM](../../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [允許使用 Azure CLI 從外部存取您的 Linux VM](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+   * [允許使用 Azure CLI 從外部存取您的 Linux VM](../../virtual-machines/linux/nsg-quickstart.md)
 
 * 公用 IP 位址的 **domainNameLabel** 屬性必須是唯一的。 **domainNameLabel** 值的長度必須介於 3 到 63 個字元之間，還要遵循這個規則運算式指定的規則：`^[a-z][a-z0-9-]{1,61}[a-z0-9]$`。 **uniqueString** 函式會產生長度為 13 個字元的字串，因此 **dnsPrefixString** 參數會限制為 50 個字元：
 
@@ -275,7 +271,12 @@ ms.locfileid: "80156407"
    > [!NOTE]
    > 為了確保作為參數傳遞至 VM 和擴充功能的祕密會經過加密，請使用相關擴充功能的 **protectedSettings** 屬性。
    > 
-   > 
+
+## <a name="use-test-toolkit"></a>使用測試控管組
+
+ARM 範本測試控管組是一種腳本，可檢查您的範本是否使用建議的作法。 當您的範本不符合建議的做法時，它會傳回包含建議變更的警告清單。 測試控管組可協助您瞭解如何在您的範本中執行最佳作法。
+
+完成範本之後，請執行測試控管組，查看是否有方法可以改善 it 的執行。 如需詳細資訊，請參閱[ARM 範本測試控管](test-toolkit.md)組。
 
 ## <a name="next-steps"></a>後續步驟
 

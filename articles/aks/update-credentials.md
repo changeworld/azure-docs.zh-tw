@@ -5,12 +5,12 @@ description: 瞭解如何更新或重設 Azure Kubernetes Service （AKS）叢�
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 914e043e2c0cf39c18480b5ca5e34332398806f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dcbd91063d4f36c4d78023b6548db0c968eda74
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84905369"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077689"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或輪替 Azure Kubernetes Service 的認證（AKS）
 
@@ -30,6 +30,16 @@ ms.locfileid: "84905369"
 
 * 更新叢集所使用之現有服務主體的認證，或
 * 建立服務主體，並更新叢集，以使用這些新認證。
+
+### <a name="check-the-expiration-date-of-your-service-principal"></a>檢查服務主體的到期日
+
+若要檢查服務主體的到期日，請使用[az ad sp credential list][az-ad-sp-credential-list]命令。 下列範例會使用[az aks show][az-aks-show]命令，取得*myResourceGroup*資源群組中名為*myAKSCluster*之叢集的服務主體識別碼。 服務主體識別碼會設定為名為*SP_ID*的變數，以與[az ad SP credential list][az-ad-sp-credential-list]命令搭配使用。
+
+```azurecli
+SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
+az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
+```
 
 ### <a name="reset-existing-service-principal-credential"></a>重設現有的服務主體認證
 
@@ -88,7 +98,7 @@ az aks update-credentials \
     --name myAKSCluster \
     --reset-service-principal \
     --service-principal $SP_ID \
-    --client-secret $SP_SECRET
+    --client-secret "$SP_SECRET"
 ```
 
 在 AKS 上更新服務主體認證需要幾分鐘的時間。
@@ -120,4 +130,5 @@ az aks update-credentials \
 [aad-integration]: azure-ad-integration.md
 [create-aad-app]: azure-ad-integration.md#create-the-server-application
 [az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
+[az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az-ad-sp-credential-list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset

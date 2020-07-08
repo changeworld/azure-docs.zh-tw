@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 48602cb65430bcf6720b4d6f4ba05c771a7bd55b
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 03ef1708f836eb016d8f2fce530b9588cc61cd35
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559955"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075700"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 來管理 HDInsight 叢集
 
@@ -25,7 +25,7 @@ ms.locfileid: "82559955"
 
 Apache Ambari 藉由提供簡單易用的 web UI （由其[REST api](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)支援），簡化了 Hadoop 叢集的管理和監視。  以 Linux 為基礎的 HDInsight 叢集預設會提供 Ambari。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -37,13 +37,13 @@ Apache Ambari 藉由提供簡單易用的 web UI （由其[REST api](https://git
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambari Rest API 的基底統一資源識別項
 
- HDInsight 上 Ambari REST API 的基底統一資源識別元（URI）是`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`，其中`CLUSTERNAME`是您的叢集名稱。  Uri 中的叢集名稱會區分**大小寫**。  雖然 URI （`CLUSTERNAME.azurehdinsight.net`）的完整功能變數名稱（FQDN）部分中的叢集名稱不區分大小寫，但 uri 中的其他專案會區分大小寫。
+ HDInsight 上 Ambari REST API 的基底統一資源識別元（URI）是 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` ，其中 `CLUSTERNAME` 是您的叢集名稱。  Uri 中的叢集名稱會區分**大小寫**。  雖然 URI （）的完整功能變數名稱（FQDN）部分中的叢集名稱 `CLUSTERNAME.azurehdinsight.net` 不區分大小寫，但 uri 中的其他專案會區分大小寫。
 
 ## <a name="authentication"></a>驗證
 
 連線到 HDInsight 上的 Ambari 需要 HTTPS。 請使用您在叢集建立期間所提供的管理帳戶名稱 (預設值是 **admin**) 和密碼。
 
-針對企業安全性套件叢集，請使用`admin`如`username@domain.onmicrosoft.com`的完整使用者名稱，而不是。
+針對企業安全性套件叢集，請使用如的完整使用者名稱，而不是 `admin` `username@domain.onmicrosoft.com` 。
 
 ## <a name="examples"></a>範例
 
@@ -52,7 +52,7 @@ Apache Ambari 藉由提供簡單易用的 web UI （由其[REST api](https://git
 保留您的認證，以避免在每個範例中重新輸入。  叢集名稱將會在個別的步驟中保留。
 
 **A Bash**  
-以您的實際密碼取代`PASSWORD` ，以編輯下面的腳本。  然後輸入命令。
+`PASSWORD`以您的實際密碼取代，以編輯下面的腳本。  然後輸入命令。
 
 ```bash
 export password='PASSWORD'
@@ -68,7 +68,7 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 
 叢集名稱的實際大小寫可能與您預期的不同。  此處的步驟會顯示實際的大小寫，然後將它儲存在所有後續範例的變數中。
 
-編輯下列腳本，將取代`CLUSTERNAME`為您的叢集名稱。 然後輸入命令。 （FQDN 的叢集名稱不區分大小寫）。
+編輯下列腳本，將取代為 `CLUSTERNAME` 您的叢集名稱。 然後輸入命令。 （FQDN 的叢集名稱不區分大小寫）。
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -87,7 +87,7 @@ $clusterName
 
 ### <a name="parsing-json-data"></a>剖析 JSON 資料
 
-下列範例會使用[jq](https://stedolan.github.io/jq/)或[CONVERTFROM-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json)來剖析 Json 回應檔，並只顯示結果中的`health_report`資訊。
+下列範例會使用[jq](https://stedolan.github.io/jq/)或[CONVERTFROM-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json)來剖析 Json 回應檔，並只顯示 `health_report` 結果中的資訊。
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" \
@@ -307,8 +307,8 @@ $resp.Content
 1. 建立 `newconfig.json`。  
    修改，然後輸入下列命令：
 
-   * 取代`livy2-conf`為新的元件。
-   * 取代`INITIAL`為從[取得所有](#get-all-configurations)設定`tag`中抓取的實際值。
+   * 取代 `livy2-conf` 為新的元件。
+   * 取代 `INITIAL` 為 `tag` 從[取得所有](#get-all-configurations)設定中抓取的實際值。
 
      **A Bash**
 
@@ -318,7 +318,7 @@ $resp.Content
      ```
 
      **B. PowerShell**  
-     PowerShell 腳本會使用[jq](https://stedolan.github.io/jq/)。  編輯`C:\HD\jq\jq-win64`下方的以反映[jq](https://stedolan.github.io/jq/)的實際路徑和版本。
+     PowerShell 腳本會使用[jq](https://stedolan.github.io/jq/)。  編輯 `C:\HD\jq\jq-win64` 下方的以反映[jq](https://stedolan.github.io/jq/)的實際路徑和版本。
 
      ```powershell
      $epoch = Get-Date -Year 1970 -Month 1 -Day 1 -Hour 0 -Minute 0 -Second 0
@@ -364,11 +364,13 @@ $resp.Content
 2. 編輯 `newconfig.json`。  
    開啟 `newconfig.json` 文件，並且在 `properties` 物件中修改/新增值。 下列範例會將 `"livy.server.csrf_protection.enabled"`的值從 `"true"`變更為 `"false"`。
 
-        "livy.server.csrf_protection.enabled": "false",
+    ```json
+    "livy.server.csrf_protection.enabled": "false",
+    ```
 
     完成修改後，請儲存檔案。
 
-3. 提交`newconfig.json`。  
+3. 提交 `newconfig.json` 。  
    使用以下命令將更新的組態提交至 Ambari。
 
     ```bash
@@ -385,7 +387,7 @@ $resp.Content
     $resp.Content
     ```  
 
-    這些命令會將**newconfig.json**的內容提交至叢集，做為新的設定。 要求會傳回 JSON 文件。 這份文件中的 **versionTag** 元素應符合您所提交的版本，**configs** 物件將會包含您所要求的組態變更。
+    這些命令會將檔案**上newconfig.js**的內容提交至叢集，做為新的設定。 要求會傳回 JSON 文件。 這份文件中的 **versionTag** 元素應符合您所提交的版本，**configs** 物件將會包含您所要求的組態變更。
 
 ### <a name="restart-a-service-component"></a>重新啟動服務元件
 
@@ -456,10 +458,10 @@ $resp.Content
     ```
 
     > [!IMPORTANT]  
-    > 這個 URI 所傳回的 `href` 值會使用叢集節點的內部 IP 位址。 若要從叢集外部使用它，請將`10.0.0.18:8080`部分取代為叢集的 FQDN。  
+    > 這個 URI 所傳回的 `href` 值會使用叢集節點的內部 IP 位址。 若要從叢集外部使用它，請將部分取代為叢集 `10.0.0.18:8080` 的 FQDN。  
 
 4. 驗證要求。  
-    以上一個步驟所`29` `id`傳回的實際值取代，以編輯下面的命令。  下列命令會擷取要求的狀態：
+    `29`以上一個步驟所傳回的實際值取代，以編輯下面的命令 `id` 。  下列命令會擷取要求的狀態：
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
@@ -511,6 +513,6 @@ $resp.Content
         -Body '{"RequestInfo": {"context": "turning off maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}'
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需 REST API 的完整參考，請參閱 [Apache Ambari API 參考 V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) \(英文\)。  另請參閱[授權使用者以取得 Apache Ambari Views](./hdinsight-authorize-users-to-ambari.md)

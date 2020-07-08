@@ -15,11 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3b977c0900178d64f202d4faa122f5d0ef90187c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 555bd26ac894a3e06aa46eb0c51e20a35d21a9e7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014650"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078066"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Azure 虛擬機器中的 SQL Server 自動修補 (傳統)
 > [!div class="op_single_selector"]
@@ -75,9 +76,11 @@ ms.locfileid: "84014650"
 ## <a name="configuration-with-powershell"></a>使用 PowerShell 進行設定
 在下列範例中，會使用 PowerShell 在現有的 SQL Server VM 上設定自動修補。 **New-AzureVMSqlServerAutoPatchingConfig** 命令會設定自動更新的維護時間範圍。
 
-    $aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
+```azurepowershell
+$aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
 
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoPatchingSettings $aps | Update-AzureVM
+Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoPatchingSettings $aps | Update-AzureVM
+```
 
 下表會根據此範例來描述對目標 Azure VM 的實際效果：
 

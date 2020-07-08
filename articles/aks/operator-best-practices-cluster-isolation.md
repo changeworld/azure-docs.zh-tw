@@ -5,11 +5,12 @@ description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中進行�
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668345"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077758"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中隔離叢集的最佳做法
 
@@ -29,7 +30,7 @@ Kubernetes 提供功能讓您以邏輯方式隔離相同叢集中的小組和工
   * 更進階的排程器功能包括污點和容差、節點選取器，以及節點和 Pod 的親和性或反親和性。 如需這些功能的詳細資訊，請參閱 [AKS 中進階排程器功能的最佳做法][aks-best-practices-advanced-scheduler]。
 * **網路**包含使用網路原則來控制流入和流出 Pod 的流量。
 * **驗證和授權**包含角色型存取控制 (RBAC) 及 Azure Active Directory (AD) 整合的使用者、Pod 身分識別和 Azure Key Vault 中的祕密。 如需這些功能的詳細資訊，請參閱 [AKS 中驗證和授權的最佳做法][aks-best-practices-identity]。
-* **容器**包含 Pod 安全性原則、Pod 資訊安全內容、掃描映像和執行階段的弱點。 另外還包含使用 App Armor 或 Seccomp (安全運算) 來限制容器對基礎節點的存取。
+* **容器**包含適用于 AKS 的 Azure 原則附加元件，以強制 pod 安全性、使用 pod 安全性內容，以及掃描映射和執行時間是否有弱點。 另外還包含使用 App Armor 或 Seccomp (安全運算) 來限制容器對基礎節點的存取。
 
 ## <a name="logically-isolate-clusters"></a>以邏輯方式隔離叢集
 
@@ -53,7 +54,7 @@ Kubernetes 提供功能讓您以邏輯方式隔離相同叢集中的小組和工
 
 實際分隔的叢集通常有較低密度的 Pod。 由於每個小組或工作負載都會擁有自己的 AKS 叢集，該叢集往往會過度佈建計算資源。 通常會在這些節點上排定少量的 pod。 節點上未使用的容量又無法供其他小組用來開發應用程式或服務。 這些多餘的資源會導致實際分隔叢集的成本增加。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 本文著重於叢集隔離。 如需 AKS 中叢集作業的相關詳細資訊，請參閱下列最佳作法：
 

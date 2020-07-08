@@ -2,13 +2,13 @@
 title: 範本函式-日期
 description: 描述要在 Azure Resource Manager 範本中用來處理日期的函式。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 0c31b26361a262a502b2a9e0fb068391846cab4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/22/2020
+ms.openlocfilehash: abdc88ce15279b90f8f9dc05a38a2ae236498f12
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192292"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058039"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM 範本的日期函式
 
@@ -25,11 +25,11 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | base | 是 | 字串 | 加法的起始日期時間值。 使用[ISO 8601 時間戳記格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
 | duration | 是 | 字串 | 要加入基底的時間值。 此值可以是負值。 使用[ISO 8601 持續時間格式](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 |
-| format | 否 | 字串 | 日期時間結果的輸出格式。 如果未提供，則會使用基底值的格式。 請使用[標準格式字串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+| format | 否 | 字串 | 日期時間結果的輸出格式。 如果未提供，則會使用基底值的格式。 請使用[標準格式字串](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式字串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -72,7 +72,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 }
 ```
 
-使用的基本時間部署上述範本時`2020-04-07 14:53:14Z`，輸出會是：
+使用的基本時間部署上述範本時 `2020-04-07 14:53:14Z` ，輸出會是：
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
@@ -142,15 +142,15 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| format |否 |字串 |要轉換為字串的 URI 編碼值。 請使用[標準格式字串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+| format |否 |字串 |要轉換為字串的 URI 編碼值。 請使用[標準格式字串](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式字串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
 ### <a name="remarks"></a>備註
 
 您只能針對參數的預設值，在運算式中使用這個函數。 在範本中的任何其他地方使用此函數會傳回錯誤。 函式在範本的其他部分中不允許，因為它會在每次呼叫時傳回不同的值。 使用相同的參數部署相同的範本，並不會可靠地產生相同的結果。
 
-如果您使用[選項來重新部署先前成功的部署](rollback-on-error.md)，而先前的部署包含使用 utcNow 的參數，則不會重新評估參數。 相反地，先前部署的參數值會自動在復原部署中重複使用。
+如果您使用[選項，在發生錯誤時回復](rollback-on-error.md)至先前成功的部署，而且先前的部署包含使用 utcNow 的參數，則不會重新評估參數。 相反地，先前部署的參數值會自動在復原部署中重複使用。
 
 請小心重新部署依賴 utcNow 函數的範本，以取得預設值。 當您重新部署，但未提供參數的值時，會重新評估函式。 如果您想要更新現有的資源，而不是建立新的資源，請傳入先前部署的參數值。
 
@@ -164,7 +164,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcValue": {

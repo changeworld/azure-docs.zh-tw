@@ -15,11 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c792b217f49121b6d3d6eaf2d8f8380997683bd8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f62004f01e48a42702c93493e3b0dc1c11f6eb30
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014667"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078101"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Azure 虛擬機器中的 SQL Server 自動備份 (傳統)
 > [!div class="op_single_selector"]
@@ -78,25 +79,29 @@ ms.locfileid: "84014667"
 ## <a name="configuration-with-powershell"></a>使用 PowerShell 進行設定
 在下列 PowerShell 範例中，是針對現有的 SQL Server 2014 VM 設定自動備份。 **New-AzureVMSqlServerAutoBackupConfig** 命令會設定自動備份設定，以在 $storageaccount 變數所指定的 Azure 儲存體帳戶中儲存備份。 這些備份將會保留 10 天。 **Set-AzureVMSqlServerExtension** 命令會使用這些設定更新指定的 Azure VM。
 
-    $storageaccount = "<storageaccountname>"
-    $storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
-    $storagecontext = New-AzureStorageContext -StorageAccountName $storageaccount -StorageAccountKey $storageaccountkey
-    $autobackupconfig = New-AzureVMSqlServerAutoBackupConfig -StorageContext $storagecontext -Enable -RetentionPeriod 10
+```azurepowershell
+$storageaccount = "<storageaccountname>"
+$storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
+$storagecontext = New-AzureStorageContext -StorageAccountName $storageaccount -StorageAccountKey $storageaccountkey
+$autobackupconfig = New-AzureVMSqlServerAutoBackupConfig -StorageContext $storagecontext -Enable -RetentionPeriod 10
 
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
+Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
+```
 
 可能需要幾分鐘的時間來安裝及設定 SQL Server IaaS 代理程式。
 
 若要啟用加密，請修改先前的指令碼，為 CertificatePassword 參數傳遞 EnableEncryption 參數和密碼 (安全字串)。 下列指令碼會啟用上述範例中的自動備份設定，並新增加密。
 
-    $storageaccount = "<storageaccountname>"
-    $storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
-    $storagecontext = New-AzureStorageContext -StorageAccountName $storageaccount -StorageAccountKey $storageaccountkey
-    $password = "P@ssw0rd"
-    $encryptionpassword = $password | ConvertTo-SecureString -AsPlainText -Force  
-    $autobackupconfig = New-AzureVMSqlServerAutoBackupConfig -StorageContext $storagecontext -Enable -RetentionPeriod 10 -EnableEncryption -CertificatePassword $encryptionpassword
+```azurepowershell
+$storageaccount = "<storageaccountname>"
+$storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
+$storagecontext = New-AzureStorageContext -StorageAccountName $storageaccount -StorageAccountKey $storageaccountkey
+$password = "P@ssw0rd"
+$encryptionpassword = $password | ConvertTo-SecureString -AsPlainText -Force  
+$autobackupconfig = New-AzureVMSqlServerAutoBackupConfig -StorageContext $storagecontext -Enable -RetentionPeriod 10 -EnableEncryption -CertificatePassword $encryptionpassword
 
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
+Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
+```
 
 若要停用自動備份，請執行相同的指令碼，但不要對 **New-AzureVMSqlServerAutoBackupConfig** 使用 **-Enable** 參數。 和安裝一樣，可能需要幾分鐘的時間來停用自動備份。
 

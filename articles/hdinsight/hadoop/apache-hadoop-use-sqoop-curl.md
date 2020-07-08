@@ -5,13 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/06/2020
-ms.openlocfilehash: 7bd0afe4d0ea01671c996a0f536151d943e4fca7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9104be9975568c52f6a96994a0afb782a406fe4e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84013005"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076261"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>以捲曲的方式在 HDInsight 中執行 Apache Sqoop 作業
 
@@ -125,7 +126,7 @@ ms.locfileid: "84013005"
 
 如需本文中使用的 REST 介面的詳細資訊，請參閱 <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Apache Sqoop REST API 指南</a>。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [在 HDInsight 將 Apache Sqoop 與 Apache Hadoop 搭配使用](hdinsight-use-sqoop.md)
 

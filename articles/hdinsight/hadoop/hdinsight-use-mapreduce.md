@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b683f12a17d6aabbcdce3190a34675951567f64
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75435713"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075836"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>搭配 MapReduce 與 HDInsight 上的 Apache Hadoop
 
@@ -112,7 +113,7 @@ HDInsight 可以使用各種方法執行 HiveQL 工作。 請使用下表決定�
 | [彎曲](apache-hadoop-use-mapreduce-curl.md) |使用 **REST** |Linux、Unix、Mac OS X 或 Windows |
 | [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |使用 **Windows PowerShell**  |Windows |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入了解如何處理 HDInsight 的資料，請參閱下列文件：
 

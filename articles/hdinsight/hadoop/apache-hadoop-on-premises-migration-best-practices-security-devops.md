@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d190d3f133c4b12b58dade878dc66755c25e1ed8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75974412"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078369"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 安全性和 DevOps 最佳做法
 
@@ -41,7 +42,7 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
 
 - 藉由設定下列參數來部署 HDInsight ESP 叢集：
 
-    |參數 |說明 |
+    |參數 |描述 |
     |---|---|
     |網域名稱|與 Azure AD DS 相關聯的網域名稱。|
     |網域使用者名稱|上一節在受 Azure AD DS DC 管理的網域中建立的服務帳戶，例如：`hdiadmin@contoso.onmicrosoft.com`。 此網域使用者將是這個 HDInsight 叢集的系統管理員。|
@@ -82,7 +83,7 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
 
 如需詳細資訊，請參閱下列文章：
 
-- [Azure 虛擬網路概觀](../../virtual-network/virtual-networks-overview.md)
+- [Azure 虛擬網路總覽](../../virtual-network/virtual-networks-overview.md)
 - [Azure 網路安全性群組概觀](../../virtual-network/security-overview.md)
 - [Azure 虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)
 - [Azure 儲存體安全性指南](../../storage/blobs/security-recommendations.md)

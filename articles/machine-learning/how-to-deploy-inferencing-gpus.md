@@ -11,12 +11,12 @@ author: csteegz
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.custom: tracking-python
-ms.openlocfilehash: c115b641ca5c22ebe227af5349d7ef133e198b44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 344112e19adbfaa1b06eebab309f31ed4e070c7d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976739"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076976"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 部署深度學習模型以進行推斷
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -162,6 +162,9 @@ channels:
 
 ## <a name="define-the-deployment-configuration"></a>定義部署設定
 
+> [!IMPORTANT]
+> AKS 不允許 pod 共用 Gpu，您可以擁有具有 GPU 功能之 web 服務的多個複本，因為叢集中有 Gpu。
+
 部署設定會定義用來執行 web 服務的 Azure Kubernetes Service 環境：
 
 ```python
@@ -285,7 +288,7 @@ aks_service.delete()
 aks_target.delete()
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [在 FPGA 上部署模型](how-to-deploy-fpga-web-service.md)
 * [使用 ONNX 部署模型](concept-onnx.md#deploy-onnx-models-in-azure)

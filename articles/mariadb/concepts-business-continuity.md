@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c01e0df1f420c8489ca3445d9fa025b251a870f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/7/2020
+ms.openlocfilehash: c1f4945cda9db0f99799ea072737d4524f04e481
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532386"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076567"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>瞭解適用於 MariaDB 的 Azure 資料庫中的商務持續性
 
@@ -48,11 +48,12 @@ ms.locfileid: "79532386"
 > [!IMPORTANT]
 > 只有使用異地備援備份儲存體來佈建伺服器時，才可進行異地還原。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="cross-region-read-replicas"></a>跨區域讀取複本
 
-- 若要深入了解自動備份，請參閱[適用於 MariaDB 的 Azure 資料庫中的備份](concepts-backup.md)。
-- 若要使用 Azure 入口網站還原至某個時間點，請參閱 [使用 Azure 入口網站將資料庫還原至時間點](howto-restore-server-portal.md)。
+您可以使用跨區域讀取複本來增強您的商務持續性和嚴重損壞修復規劃。 讀取複本會使用適用于 mariadb 的二進位記錄複寫技術以非同步方式更新。 深入瞭解讀取複本、可用區域，以及如何從[讀取複本概念一文](concepts-read-replicas.md)進行故障切換。 
 
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 
--->
+## <a name="next-steps"></a>下一步
+
+- 深入瞭解[適用於 MariaDB 的 Azure 資料庫中的自動備份](concepts-backup.md)。
+- 了解如何使用 [Azure 入口網站](howto-restore-server-portal.md)或 [Azure CLI](howto-restore-server-cli.md) 來進行還原。
+- 深入瞭解[適用於 MariaDB 的 Azure 資料庫中的讀取複本](concepts-read-replicas.md)。

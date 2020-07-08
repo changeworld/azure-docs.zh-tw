@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 4a947c01d63e3842ead91481e480024a54380144
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a09d672f44ce8835571277ab35f7545c7f5f33e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69015063"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058277"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>使用 Azure 入口網站開始傳遞點播內容
 
@@ -106,19 +106,19 @@ ms.locfileid: "69015063"
 
 若要建立 HLS 資料流 URL，請在 URL 加上 (format=m3u8-aapl)**：
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
+`{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)`
 
 若要建置串流 URL 以播放 Smooth Streaming 資產，請使用下列 URL 格式：
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest
+`{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest`
 
 若要建置 MPEG-DASH 串流 URL，請將 (format=mpd-time-csf)** 附加至 URL：
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
+`{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)`
 
 共用存取簽章 URL 具有下列格式︰
 
-    {blob container name}/{asset name}/{file name}/{shared access signature}
+`{blob container name}/{asset name}/{file name}/{shared access signature}`
 
 > [!NOTE]
 > 在 2015 年 3 月之前，在 Azure 入口網站中建立的定位器有兩年的到期日。  

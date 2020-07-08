@@ -5,11 +5,12 @@ description: 了解叢集運算子在 Azure Kubernetes Service (AKS) 中使用�
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: f63db0efb509223715efd4848a91d0435ab54af7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340840"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077842"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中進階排程器功能的最佳做法
 
@@ -100,7 +101,7 @@ spec:
 讓我們看一下使用大量記憶體的節點範例。 這些節點可以提供要求大量記憶體的 pod 的喜好設定。 為了確定資源不會閒置，它們也會允許其他 pod 執行。
 
 ```console
-kubectl label node aks-nodepool1 hardware:highmem
+kubectl label node aks-nodepool1 hardware=highmem
 ```
 
 然後，pod 規格會新增 `nodeSelector` 屬性，以定義與節點上設定之標籤相符的節點選取器：

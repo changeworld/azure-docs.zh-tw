@@ -16,11 +16,12 @@ ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7439aa360395490f31a638ac690ed7e5cad1054b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: eb6b678cad4de2039e252b7dd666d78b6c2549b6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195828"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078233"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>在 Azure 虛擬機器上設定 SQL Server 的 Azure Key Vault 整合 (傳統)
 > [!div class="op_single_selector"]
@@ -63,18 +64,23 @@ ms.locfileid: "84195828"
 **New-AzureVMSqlServerKeyVaultCredentialConfig** Cmdlet 會建立 Azure 金鑰保存庫整合功能的組態物件。 **Set-AzureVMSqlServerExtension** 會以 **KeyVaultCredentialSettings** 參數設定此整合。 下列步驟說明如何使用這些命令。
 
 1. 在 Azure PowerShell 中，先以您的特定值設定輸入參數，如本本主題前面幾節所述。 以下為範例指令碼。
-   
-        $akvURL = "https:\//contosokeyvault.vault.azure.net/"
-        $spName = "fde2b411-33d5-4e11-af04eb07b669ccf2"
-        $spSecret = "9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM="
-        $credName = "mycred1"
-        $vmName = "myvmname"
-        $serviceName = "mycloudservicename"
+
+    ```azurepowershell
+    $akvURL = "https:\//contosokeyvault.vault.azure.net/"
+    $spName = "fde2b411-33d5-4e11-af04eb07b669ccf2"
+    $spSecret = "9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM="
+    $credName = "mycred1"
+    $vmName = "myvmname"
+    $serviceName = "mycloudservicename"
+    ```
+
 2. 然後使用下列指令碼來設定和啟用 AKV 整合。
-   
-        $secureakv =  $spSecret | ConvertTo-SecureString -AsPlainText -Force
-        $akvs = New-AzureVMSqlServerKeyVaultCredentialConfig -Enable -CredentialName $credname -AzureKeyVaultUrl $akvURL -ServicePrincipalName $spName -ServicePrincipalSecret $secureakv
-        Get-AzureVM -ServiceName $serviceName -Name $vmName | Set-AzureVMSqlServerExtension -KeyVaultCredentialSettings $akvs | Update-AzureVM
+
+    ```azurepowershell
+    $secureakv =  $spSecret | ConvertTo-SecureString -AsPlainText -Force
+    $akvs = New-AzureVMSqlServerKeyVaultCredentialConfig -Enable -CredentialName $credname -AzureKeyVaultUrl $akvURL -ServicePrincipalName $spName -ServicePrincipalSecret $secureakv
+    Get-AzureVM -ServiceName $serviceName -Name $vmName | Set-AzureVMSqlServerExtension -KeyVaultCredentialSettings $akvs | Update-AzureVM
+    ```
 
 SQL IaaS 代理程式延伸會使用這個新的組態更新 SQL VM。
 

@@ -3,15 +3,23 @@ title: 在 Azure Kubernetes Service 中使用 pod 安全性原則（AKS）
 description: 瞭解如何在 Azure Kubernetes Service 中使用 PodSecurityPolicy 控制 pod 許可（AKS）
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 9e3a17e4775150247ef7924dffec68cc86a0bcac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: eb2e7fca3a808a1e2c4f7d1f81b8dc1d64deeee7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80998350"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077621"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>預覽-在 Azure Kubernetes Service 中使用 pod 安全性原則保護您的叢集（AKS）
+
+<!--
+> [!WARNING]
+> **The pod security policy feature on AKS is set for deprecation** in favor of [Azure Policy for AKS](use-pod-security-on-azure-policy.md). The feature described in this document is not moving to general availability and is set for removal in September 2020.
+> It is highly recommended to begin testing with the Azure Policy Add-on which offers unique policies which support scenarios captured by pod security policy.
+
+**This document and feature are set for deprecation.**
+-->
 
 若要改善 AKS 叢集的安全性，您可以限制可以排程的 pod。 要求您不允許之資源的 pod 無法在 AKS 叢集中執行。 您可以使用 pod 安全性原則來定義此存取權。 本文說明如何使用 pod 安全性原則來限制 AKS 中的 pod 部署。
 
@@ -25,11 +33,11 @@ ms.locfileid: "80998350"
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-您需要安裝並設定 Azure CLI 版本2.0.61 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您必須安裝並設定 Azure CLI 版本 2.0.61 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 ### <a name="install-aks-preview-cli-extension"></a>安裝 aks-preview CLI 擴充功能
 
-若要使用 pod 安全性原則，您需要*aks-preview* CLI 擴充功能版本0.4.1 或更高版本。 使用[az extension add][az-extension-add]命令來安裝*aks-preview* Azure CLI 擴充功能，然後使用[az extension update][az-extension-update]命令檢查是否有任何可用的更新：
+若要使用 pod 安全性原則，您需要*aks-preview* CLI 擴充功能版本0.4.1 或更高版本。 請使用 [az extension add][az-extension-add] 命令安裝 aks-preview Azure CLI 擴充功能，然後使用 [az extension update][az-extension-update] 命令檢查是否有任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -42,9 +50,6 @@ az extension update --name aks-preview
 ### <a name="register-pod-security-policy-feature-provider"></a>註冊 pod 安全性原則功能提供者
 
 若要建立或更新 AKS 叢集以使用 pod 安全性原則，請先在您的訂用帳戶上啟用功能旗標。 若要註冊*PodSecurityPolicyPreview*功能旗標，請使用[az feature register][az-feature-register]命令，如下列範例所示：
-
-> [!CAUTION]
-> 當您在訂用帳戶上註冊功能時，目前無法取消註冊該功能。 啟用一些預覽功能之後，預設值可能會用於在訂用帳戶中建立的所有 AKS 叢集。 請勿在生產訂用帳戶上啟用預覽功能。 使用個別的訂用帳戶來測試預覽功能並收集意見反應。
 
 ```azurecli-interactive
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
@@ -109,7 +114,7 @@ privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny  
 kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
-如下列壓縮輸出所示， *psp：受限制*的 ClusterRole 會指派給任何*系統：已驗證*的使用者。 這項功能可提供基本層級的限制，而不需要定義您自己的原則。
+如下列壓縮輸出所示， *psp：具有許可權*的 ClusterRole 會指派給任何*系統：已驗證*的使用者。 這項功能可提供基本層級的許可權，而不需要定義您自己的原則。
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -132,7 +137,7 @@ subjects:
 
 ## <a name="create-a-test-user-in-an-aks-cluster"></a>在 AKS 叢集中建立測試使用者
 
-根據預設，當您使用[az aks get-認證][az-aks-get-credentials]命令時，aks 叢集的系統*管理員*認證會新增至您`kubectl`的設定。系統管理員使用者略過 pod 安全性原則的強制執行。 如果您使用 AKS 叢集的 Azure Active Directory 整合，您可以使用非系統管理員使用者的認證來登入，以查看原則的強制執行。 在本文中，我們將在您可以使用的 AKS 叢集中建立測試使用者帳戶。
+根據預設，當您使用[az aks get-認證][az-aks-get-credentials]命令時，aks 叢集的系統*管理員*認證會新增至您的設定 `kubectl` 。系統管理員使用者略過 pod 安全性原則的強制執行。 如果您使用 AKS 叢集的 Azure Active Directory 整合，您可以使用非系統管理員使用者的認證來登入，以查看原則的強制執行。 在本文中，我們將在您可以使用的 AKS 叢集中建立測試使用者帳戶。
 
 使用[kubectl create namespace][kubectl-create]命令，為測試資源建立名為*psp aks*的範例命名空間。 然後，使用[kubectl create serviceaccount][kubectl-create]命令，建立名為*nonadmin 的*服務帳戶：
 
@@ -153,7 +158,7 @@ kubectl create rolebinding \
 
 ### <a name="create-alias-commands-for-admin-and-non-admin-user"></a>為系統管理員和非系統管理員使用者建立別名命令
 
-若要在使用`kubectl`和先前步驟中建立的非系統管理員使用者時，反白顯示一般系統管理使用者之間的差異，請建立兩個命令列別名：
+若要在使用和先前步驟中建立的非系統管理員使用者時，反白顯示一般系統管理使用者之間的差異 `kubectl` ，請建立兩個命令列別名：
 
 * **Kubectl-admin**別名適用于一般管理使用者，且範圍設定為*psp aks*命名空間。
 * **Kubectl-nonadminuser**別名適用于在上一個步驟中建立的*nonadmin 使用者*，且範圍限定為*psp aks*命名空間。
@@ -167,9 +172,9 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 ## <a name="test-the-creation-of-a-privileged-pod"></a>測試特殊許可權 pod 的建立
 
-讓我們先測試當您使用的安全性內容來排程 pod 時，會`privileged: true`發生什麼事。 此安全性內容會擴大 pod 的許可權。 在上一節中，顯示預設 AKS pod 安全性原則時，*受限制*的原則應該會拒絕此要求。
+讓我們先測試當您使用的安全性內容來排程 pod 時，會發生什麼事 `privileged: true` 。 此安全性內容會擴大 pod 的許可權。 在上一節中，顯示預設的 AKS pod 安全性原則時，*許可權*原則應該會拒絕此要求。
 
-建立名為`nginx-privileged.yaml`的檔案，並貼上下列 YAML 資訊清單：
+建立名為的檔案 `nginx-privileged.yaml` ，並貼上下列 YAML 資訊清單：
 
 ```yaml
 apiVersion: v1
@@ -202,9 +207,9 @@ Pod 不會到達排程階段，因此在您繼續之前，不會刪除任何資�
 
 ## <a name="test-creation-of-an-unprivileged-pod"></a>測試建立不具特殊許可權的 pod
 
-在上述範例中，pod 規格要求特殊許可權擴大。 預設*限制*pod 安全性原則會拒絕此要求，因此無法排程 pod。 現在，讓我們試著在沒有許可權擴大要求的情況下，執行相同的 NGINX pod。
+在上述範例中，pod 規格要求特殊許可權擴大。 預設*許可權*pod 安全性原則拒絕此要求，因此無法排程 pod。 現在，讓我們試著在沒有許可權擴大要求的情況下，執行相同的 NGINX pod。
 
-建立名為`nginx-unprivileged.yaml`的檔案，並貼上下列 YAML 資訊清單：
+建立名為的檔案 `nginx-unprivileged.yaml` ，並貼上下列 YAML 資訊清單：
 
 ```yaml
 apiVersion: v1
@@ -235,9 +240,9 @@ Pod 不會到達排程階段，因此在您繼續之前，不會刪除任何資�
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>使用特定使用者內容來測試 pod 的建立
 
-在上述範例中，容器映射會自動嘗試使用 root 來將 NGINX 系結至埠80。 預設*限制*pod 安全性原則拒絕此要求，因此無法啟動 pod。 現在，讓我們試著使用特定的使用者內容來執行相同的 NGINX pod `runAsUser: 2000`，例如。
+在上述範例中，容器映射會自動嘗試使用 root 來將 NGINX 系結至埠80。 預設*許可權*pod 安全性原則拒絕此要求，因此無法啟動 pod。 現在，讓我們試著使用特定的使用者內容來執行相同的 NGINX pod，例如 `runAsUser: 2000` 。
 
-建立名為`nginx-unprivileged-nonroot.yaml`的檔案，並貼上下列 YAML 資訊清單：
+建立名為的檔案 `nginx-unprivileged-nonroot.yaml` ，並貼上下列 YAML 資訊清單：
 
 ```yaml
 apiVersion: v1
@@ -274,7 +279,7 @@ Pod 不會到達排程階段，因此在您繼續之前，不會刪除任何資�
 
 讓我們建立一個原則來拒絕要求特殊許可權存取的 pod。 其他選項（例如*runAsUser*或允許的*磁片*區）並未明確受到限制。 這種原則會拒絕特殊許可權存取的要求，否則會讓叢集執行要求的 pod。
 
-建立名為`psp-deny-privileged.yaml`的檔案，並貼上下列 YAML 資訊清單：
+建立名為的檔案 `psp-deny-privileged.yaml` ，並貼上下列 YAML 資訊清單：
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -301,7 +306,7 @@ spec:
 kubectl apply -f psp-deny-privileged.yaml
 ```
 
-若要查看可用的原則，請使用[kubectl get psp][kubectl-get]命令，如下列範例所示。 將*psp-拒絕許可權*原則與先前範例中強制執行的預設*限制*原則做比較，以建立 pod。 您的原則只會拒絕使用*特權*擴大。 對*psp-拒絕許可權*原則的使用者或群組沒有任何限制。
+若要查看可用的原則，請使用[kubectl get psp][kubectl-get]命令，如下列範例所示。 將*psp-拒絕許可權*原則與先前範例中強制執行的預設*許可權*原則進行比較，以建立 pod。 您的原則只會拒絕使用*特權*擴大。 對*psp-拒絕許可權*原則的使用者或群組沒有任何限制。
 
 ```console
 $ kubectl get psp
@@ -315,7 +320,7 @@ psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    R
 
 在上一個步驟中，您已建立 pod 安全性原則來拒絕要求特殊許可權存取的 pod。 若要允許使用原則，您可以建立*角色*或*ClusterRole*。 然後，您可以使用*接著*或*ClusterRoleBinding*來建立其中一個角色的關聯。
 
-在此範例中，建立可讓您*使用*在上一個步驟中建立之*psp-拒絕許可權*原則的 ClusterRole。 建立名為`psp-deny-privileged-clusterrole.yaml`的檔案，並貼上下列 YAML 資訊清單：
+在此範例中，建立可讓您*使用*在上一個步驟中建立之*psp-拒絕許可權*原則的 ClusterRole。 建立名為的檔案 `psp-deny-privileged-clusterrole.yaml` ，並貼上下列 YAML 資訊清單：
 
 ```yaml
 kind: ClusterRole
@@ -339,7 +344,7 @@ rules:
 kubectl apply -f psp-deny-privileged-clusterrole.yaml
 ```
 
-現在，請建立 ClusterRoleBinding 以使用在上一個步驟中建立的 ClusterRole。 建立名為`psp-deny-privileged-clusterrolebinding.yaml`的檔案，並貼上下列 YAML 資訊清單：
+現在，請建立 ClusterRoleBinding 以使用在上一個步驟中建立的 ClusterRole。 建立名為的檔案 `psp-deny-privileged-clusterrolebinding.yaml` ，並貼上下列 YAML 資訊清單：
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -367,7 +372,7 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 
 ## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>再次測試不具特殊許可權的 pod 建立
 
-套用您的自訂 pod 安全性原則和使用者帳戶的系結以使用原則時，讓我們再次嘗試建立無特殊許可權的 pod。 使用相同`nginx-privileged.yaml`的資訊清單，使用[kubectl apply][kubectl-apply]命令來建立 pod：
+套用您的自訂 pod 安全性原則和使用者帳戶的系結以使用原則時，讓我們再次嘗試建立無特殊許可權的 pod。 使用相同的 `nginx-privileged.yaml` 資訊清單，使用[kubectl apply][kubectl-apply]命令來建立 pod：
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314166"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075547"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>使用 SSH 通道來存取 Apache Ambari web UI、JobHistory、NameNode、Apache Oozie 和其他 Ui
 
@@ -56,7 +56,7 @@ Ambari 中的數個功能表只有透過 SSH 通道才能運作。 這些功能�
 
 ## <a name="create-a-tunnel-using-the-ssh-command"></a><a name="usessh"></a>使用 SSH 命令建立通道
 
-使用下列命令，利用 `ssh` 命令建立 SSH 通道。 以`sshuser`您 hdinsight 叢集的 SSH 使用者取代，並以您`CLUSTERNAME` hdinsight 叢集的名稱取代：
+使用下列命令，利用 `ssh` 命令建立 SSH 通道。 `sshuser`以您 hdinsight 叢集的 SSH 使用者取代，並 `CLUSTERNAME` 以您 hdinsight 叢集的名稱取代：
 
 ```cmd
 ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -64,16 +64,16 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 此命令會建立透過 SSH 將流量由本機連接埠 9876 路由傳送至叢集的連線。 其選項包括：
 
-    |選項 |描述 |
-    |---|---|
-    |D 9876|透過通道路由傳送流量的本機埠。|
-    |C|壓縮所有資料，因為網路流量大多是文字。|
-    |2|強制 SSH 僅嘗試通訊協定第2版。|
-    |q|無訊息模式。|
-    |T|停用虛擬 tty 配置，因為您只是轉送埠。|
-    |n|防止讀取 STDIN，因為您只是轉送埠。|
-    |N|請勿執行遠端命令，因為您只是轉送埠。|
-    |f|在背景中執行。|
+|選項 |描述 |
+|---|---|
+|D 9876|透過通道路由傳送流量的本機埠。|
+|C|壓縮所有資料，因為網路流量大多是文字。|
+|2|強制 SSH 僅嘗試通訊協定第2版。|
+|q|無訊息模式。|
+|T|停用虛擬 tty 配置，因為您只是轉送埠。|
+|n|防止讀取 STDIN，因為您只是轉送埠。|
+|N|請勿執行遠端命令，因為您只是轉送埠。|
+|f|在背景中執行。|
 
 在命令完成後，會將傳送至本機電腦上連接埠 9876 的流量路由傳送至叢集前端節點。
 
@@ -90,10 +90,10 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     |屬性 |值 |
     |---|---|
     |主機名稱 (或 IP 位址)|HDInsight 叢集的 SSH 位址。 例如， **mycluster-ssh.azurehdinsight.net**。|
-    |連接埠|22|
+    |Port|22|
     |連接類型|SSH|
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]
 
     ![HDInsight 建立 putty 會話](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
@@ -125,7 +125,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
    > [!NOTE]  
    > 選取 [遠端 DNS]**** 會使用 HDInsight 叢集解析網域名稱系統 (DNS) 要求。 這項設定會使用叢集的前端節點來解析 DNS。
 
-2. 藉由造訪之類的網站來確認通道是否正常[https://www.whatismyip.com/](https://www.whatismyip.com/)運作。 傳回的 IP 應該是 Microsoft Azure 資料中心使用的 IP。
+2. 藉由造訪之類的網站來確認通道是否正常運作 [https://www.whatismyip.com/](https://www.whatismyip.com/) 。 傳回的 IP 應該是 Microsoft Azure 資料中心使用的 IP。
 
 ## <a name="verify-with-ambari-web-ui"></a>驗證 Ambari Web UI
 
@@ -134,7 +134,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 1. 在瀏覽器中，前往 `http://headnodehost:8080`。 `headnodehost` 位址會透過通道傳送到叢集，並解析為執行 Ambari 的前端節點。 出現提示時，請輸入您叢集的管理員使用者名稱 (admin) 和密碼。 Ambari Web UI 可能會出現第二次的提示。 若是如此，請重新輸入資訊。
 
    > [!NOTE]  
-   > 使用 `http://headnodehost:8080` 位址連線至叢集時，表示您是透過通道進行連線。 通訊是使用 SSH 通道進行保護，而非 HTTPS。 若要使用 HTTPS 透過網際網路連接，請`https://clustername.azurehdinsight.net`使用， `clustername`其中是叢集的名稱。
+   > 使用 `http://headnodehost:8080` 位址連線至叢集時，表示您是透過通道進行連線。 通訊是使用 SSH 通道進行保護，而非 HTTPS。 若要使用 HTTPS 透過網際網路連接，請使用 `https://clustername.azurehdinsight.net` ，其中是叢集的 `clustername` 名稱。
 
 2. 在 Ambari Web UI 中，選取頁面左邊清單中的 HDFS。
 

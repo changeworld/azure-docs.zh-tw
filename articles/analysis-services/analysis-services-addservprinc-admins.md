@@ -4,19 +4,23 @@ description: 了解如何將自動化服務主體新增至 Azure Analysis Servic
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697524"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077553"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>將服務主體新增至伺服器管理員角色 
 
- 若要將無人看管的 PowerShell 工作自動化，服務主體必須擁有受控 Analysis Services 伺服器的**伺服器管理員**權限。 本文說明如何將服務主體新增至 Azure AS 伺服器上的伺服器管理員角色。 您可使用 SQL Server Management Studio 或 Resource Manager 範本來執行此操作。
+ 若要將無人看管的 PowerShell 工作自動化，服務主體必須擁有受控 Analysis Services 伺服器的**伺服器管理員**權限。 本文說明如何將服務主體新增至 Azure AS 伺服器上的伺服器管理員角色。 您可使用 SQL Server Management Studio 或 Resource Manager 範本來執行此操作。 
+
+> [!NOTE]
+> 服務主體必須直接新增至伺服器管理員角色。 不支援將服務主體新增至安全性群組，然後將該安全性群組新增至伺服器管理員角色。 
 
 ## <a name="before-you-begin"></a>開始之前
 完成這項工作前，您必須在 Azure Active Directory 中註冊服務主體。

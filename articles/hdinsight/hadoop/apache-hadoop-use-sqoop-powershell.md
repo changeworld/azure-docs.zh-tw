@@ -1,25 +1,25 @@
 ---
 title: 使用 PowerShell 和 Azure HDInsight 執行 Apache Sqoop 作業
-description: 了解如何從工作站使用 Azure PowerShell，在 Apache Hadoop 叢集與 Azure SQL Database 之間執行 Apache Sqoop 匯入和匯出。
+description: 瞭解如何使用工作站中的 Azure PowerShell，在 Apache Hadoop 叢集與 Azure SQL Database 之間執行 Apache Sqoop 匯入和匯出。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 87077eacd607acf4efbd660a1926daf15db7f7e5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: cd0918da2a1bf6d953eb6006dc71f0611d3ed1c8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653568"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076091"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>在 HDInsight 中使用 Azure PowerShell 執行 Apache Sqoop 作業
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-了解如何在 Azure HDInsight 上使用 Azure PowerShell 執行 Apache Sqoop 作業，以在 HDInsight 叢集與 Azure SQL Database 或 SQL Server 資料庫之間匯入和匯出資料。  本文是[搭配使用 Apache Sqoop 與 HDInsight 中的 Hadoop](./hdinsight-use-sqoop.md)的接續內容。
+瞭解如何使用 Azure PowerShell 在 Azure HDInsight 中執行 Apache Sqoop 作業，以在 HDInsight 叢集與 Azure SQL Database 或 SQL Server 之間匯入和匯出資料。  本文是[搭配使用 Apache Sqoop 與 HDInsight 中的 Hadoop](./hdinsight-use-sqoop.md)的接續內容。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -31,9 +31,9 @@ ms.locfileid: "83653568"
 
 ## <a name="sqoop-export"></a>Sqoop export
 
-從 Hive 到 SQL Server。
+從 Hive 到 SQL。
 
-此範例會將 Hive `hivesampletable` 資料表的資料匯出至 SQL Database 中的 `mobiledata` 資料表。 設定下列變數的值，然後執行命令。
+這個範例會將資料從 Hive `hivesampletable` 資料表匯出至 `mobiledata` SQL 中的資料表。 設定下列變數的值，然後執行命令。
 
 ```powershell
 $hdinsightClusterName = ""
@@ -96,7 +96,7 @@ New-AzHDInsightSqoopJobDefinition `
 
 ## <a name="sqoop-import"></a>Sqoop import
 
-從 SQL Server 到 Azure 儲存體。 此範例會將資料從 SQL Database 中的 `mobiledata` 資料表匯入 HDInsight 中的 `wasb:///tutorials/usesqoop/importeddata` 目錄。 資料中的欄位是以定位字元分隔，行是以換行字元終止。 此範例假設您已完成先前的範例。
+從 SQL 到 Azure 儲存體。 這個範例會將資料從 `mobiledata` SQL 中的資料表匯入至 `wasb:///tutorials/usesqoop/importeddata` HDInsight 上的目錄。 資料中的欄位是以定位字元分隔，行是以換行字元終止。 此範例假設您已完成先前的範例。
 
 ```powershell
 $sqoopCommand = "import --connect $connectionString --table mobiledata --target-dir wasb:///tutorials/usesqoop/importeddata --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1"
@@ -128,7 +128,7 @@ Get-AzHDInsightJobOutput `
 
 這個健全的範例說明從預設儲存體帳戶匯出 `/tutorials/usesqoop/data/sample.log` 的資料，然後將其匯入 SQL Server 資料庫中名為 `log4jlogs` 的資料表。 此範例與先前範例各自獨立。
 
-下列 PowerShell 指令碼會前置處理來源檔案，然後將其匯出至 Azure SQL Database 的資料表 `log4jlogs`。 使用您在先決條件中使用的值，取代 `CLUSTERNAME`、`CLUSTERPASSWORD` 和 `SQLPASSWORD`。
+下列 PowerShell 腳本會前置處理來源檔案，然後將它匯出至資料表 `log4jlogs` 。 使用您在先決條件中使用的值，取代 `CLUSTERNAME`、`CLUSTERPASSWORD` 和 `SQLPASSWORD`。
 
 ```powershell
 <#------ BEGIN USER INPUT ------#>
@@ -219,7 +219,7 @@ $writeStream.Flush()
 $memStream.Seek(0, "Begin")
 $destBlob.UploadFromStream($memStream)
 
-#export the log file from the cluster to the SQL database
+#export the log file from the cluster to SQL
 Write-Host "Exporting the log file ..." -ForegroundColor Green
 
 $pw = ConvertTo-SecureString -String $httpPassword -AsPlainText -Force
@@ -271,7 +271,7 @@ Get-AzHDInsightJobOutput `
 
 以 Linux 為基礎的 HDInsight 存在下列限制：
 
-* 大量匯出：用來將資料匯出至 Microsoft SQL Server 或 Azure SQL Database 的 Sqoop 連接器目前不支援大量插入。
+* 大量匯出：用來將資料匯出至 SQL 的 Sqoop 連接器目前不支援大量插入。
 
 * 批次處理：執行插入時若使用 `-batch` 參數，Sqoop 將會執行多個插入，而不是將插入作業批次處理。
 

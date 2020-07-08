@@ -12,11 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 2ff3df74c4cf3175fbbec5097a98c51e7f97ac16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46b899b1891a6759ea2b9501f43c687990198f1f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84190514"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078012"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>使用 Azure Key Vault 設定 Always Encrypted 
 
@@ -102,6 +103,8 @@ az keyvault create --name $vaultName --resource-group $resourceGroupName --locat
 az keyvault set-policy --name $vaultName --key-permissions create, get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --upn $userPrincipalName
 az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --spn $applicationId
 ```
+
+---
 
 ## <a name="connect-with-ssms"></a>使用 SSMS 連線
 
@@ -589,8 +592,9 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    ```
 
-     您現在可以在加密的資料行中看到純文字資料。
-     ![新的主控台應用程式](./media/always-encrypted-azure-key-vault-configure/ssms-plaintext.png)
+   您現在可以在加密的資料行中看到純文字資料。
+   
+   ![新的主控台應用程式](./media/always-encrypted-azure-key-vault-configure/ssms-plaintext.png)
 
 ## <a name="next-steps"></a>後續步驟
 

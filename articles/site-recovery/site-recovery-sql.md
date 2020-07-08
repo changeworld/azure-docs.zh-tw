@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4146553d59607e1512d8f15391d143d44815cea9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bdca30c82b31bda2e843b3712cfbe772952f3e8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84016469"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077298"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>設定 SQL Server 的災害復原
 
@@ -37,7 +38,7 @@ ms.locfileid: "84016469"
 在 Azure IaaS VM 或內部部署環境中 SQL Server。| [容錯移轉叢集 (Always On FCI)](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | 在節點之間進行故障切換所花費的時間。 | 由於 Always On FCI 會使用共用存放裝置，因此在容錯移轉時，會有相同的儲存體實例視圖。
 在 Azure IaaS VM 或內部部署環境中 SQL Server。| [資料庫鏡像（高效能模式）](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | 強制服務所花費的時間，使用鏡像伺服器做為暖待命伺服器。 | 複寫不是同步進行。 鏡像資料庫可能會稍微落後主體資料庫。 延遲通常很小。 但如果主體或鏡像伺服器的系統負載過重，可能會變得很大。<br/><br/>記錄傳送可以是資料庫鏡像的補充。 這是非同步資料庫鏡像的理想替代方法。
 SQL 做為 Azure 上的平臺即服務（PaaS）。<br/><br/>此部署類型包含單一資料庫和彈性集區。 | 使用中的地理複寫 | 觸發容錯移轉後的30秒。<br/><br/>針對其中一個次要資料庫啟用容錯移轉時，所有其他的次要複本都會自動連結至新的主要複本。 | 五秒的 RPO。<br/><br/>主動式異地複寫使用 SQL Server 的 Always On 技術。 它會使用快照集隔離，以非同步方式將主資料庫上認可的交易複寫到次要資料庫。<br/><br/>次要資料保證永遠不會有部分交易。
-使用 Azure 上的主動式異地複寫設定的 SQL 做為 PaaS。<br/><br/>此部署類型包含 SQL Database 的受控實例、彈性集區和單一資料庫。 | 自動容錯移轉群組 | 一小時的 RTO。 | 五秒的 RPO。<br/><br/>自動容錯移轉群組在主動式異地複寫之上提供群組語義。 但使用相同的非同步複寫機制。
+使用 Azure 上的主動式異地複寫設定的 SQL 做為 PaaS。<br/><br/>此部署類型包含受控實例、彈性集區和單一資料庫。 | 自動容錯移轉群組 | 一小時的 RTO。 | 五秒的 RPO。<br/><br/>自動容錯移轉群組在主動式異地複寫之上提供群組語義。 但使用相同的非同步複寫機制。
 在 Azure IaaS VM 或內部部署環境中 SQL Server。| 使用 Azure Site Recovery 進行複寫 | RTO 通常少於15分鐘。 若要深入瞭解，請參閱[Site Recovery 所提供的 RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 | 應用程式一致性的一小時，以及5分鐘的損毀一致性。 如果您要尋找較低的 RPO，請使用其他 BCDR 技術。
 
 > [!NOTE]

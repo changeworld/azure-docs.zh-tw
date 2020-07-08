@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1d411662fd7afe57c714b97ab67b9d490acd40d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302707"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076363"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 搭配 HDInsight 上的 Apache Hadoop 執行 MapReduce 作業
 
@@ -172,7 +173,7 @@ ms.locfileid: "78302707"
 
 您可以使用 [Azure CLI](/cli/azure/install-azure-cli) 列出並下載這些檔案。 如需有關使用 Azure CLI 來處理 Azure Blob 儲存體的詳細資訊，請參閱[快速入門：使用 Azure CLI 建立、下載及列出 blob](../../storage/blobs/storage-quickstart-blobs-cli.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需您可以在 HDInsight 上使用 Hadoop 之其他方式的詳細資訊：
 

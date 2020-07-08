@@ -11,11 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 6abb44012035f31f970a347687964afb0c715d29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d09fba2130dc302378a59200349a569cc248234b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983376"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075428"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -42,6 +43,16 @@ ms.locfileid: "84983376"
 即時影片分析的預覽已公開 IoT Edge。 如需詳細資訊，請參閱[版本](../live-video-analytics-edge/release-notes.md)資訊。
 
 IoT Edge 上的即時影片分析是媒體服務系列的擴充。 它可讓您在自己的邊緣裝置上使用您選擇的 AI 模型來分析即時影片，並選擇性地捕捉並錄製該影片。 您現在可以在邊緣使用即時影片分析來建立應用程式，而不必擔心建立和操作即時影片管線的複雜性。
+
+### <a name="search-by-topics"></a>依主題搜尋
+
+您現在可以使用搜尋 API 來搜尋包含特定主題的影片（僅限 API）。
+
+主題會加入做為 `textScope` （選擇性參數）的一部分。 如需詳細資訊，請參閱[API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) 。  
+
+### <a name="labels-enhancement"></a>標籤增強功能
+
+標籤標記已升級，現在包含更多可以識別的視覺標籤。
 
 ## <a name="may-2020"></a>2020 年 5 月
 
