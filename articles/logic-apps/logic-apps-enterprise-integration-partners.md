@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792435"
 ---
-# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>將交易夥伴新增至 Azure Logic Apps 的整合帳戶
+# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>將合作對象新增至 Azure Logic Apps 的整合帳戶
 
-在[Azure Logic Apps](../logic-apps/logic-apps-overview.md)中，您可以使用[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)搭配您的邏輯應用程式，建立自動化的企業對企業（B2B）整合工作流程。 若要代表您的組織和其他人，您可以建立交易夥伴並將其新增為整合帳戶的構件。 合作夥伴是參與 B2B 交易和彼此交換訊息的實體。
+在[Azure Logic Apps](../logic-apps/logic-apps-overview.md)中，您可以使用[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)搭配您的邏輯應用程式，建立自動化的企業對企業（B2B）整合工作流程。 若要代表您的組織和其他人，您可以建立交易夥伴並將其新增為整合帳戶的構件。 合作夥伴是參與 B2B 交易及在彼此之間交換訊息的實體。
 
 建立這些合作夥伴之前，請務必與您的合作夥伴討論並分享相關資訊，以瞭解如何識別和驗證其他傳送的訊息。 在您同意這些詳細資料之後，您就可以開始在整合帳戶中建立合作夥伴。
 
@@ -27,7 +26,7 @@ ms.locfileid: "74792435"
 
 在協定中，您可以指定從主機合作夥伴的觀點來處理傳入和傳出訊息的詳細資料。 對於內送訊息，**接收設定會**指定主機夥伴如何從合約中的來賓夥伴接收訊息。 若為外寄訊息，**傳送設定**會指定主機夥伴如何將訊息傳送給來賓夥伴。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -55,15 +54,15 @@ ms.locfileid: "74792435"
 
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | **名稱** | 是 | 夥伴的名稱 |
-   | **Qualifier** | 是 | 為組織提供獨特商務身分識別的驗證主體，例如， **D-U-N-S （Dun & Bradstreet）**。 <p>合作夥伴可以選擇進行相互定義的商務身分識別。 針對這些案例，請針對 [EDIFACT] 選取 [**相互定義**] 或 [針對 X12 進行**相互定義（X12）** ]。 <p>針對 RosettaNet，請選取 [僅**DUNS**]，這是標準。 |
+   | **名稱** | Yes | 夥伴的名稱 |
+   | **Qualifier** | Yes | 為組織提供獨特商務身分識別的驗證主體，例如， **D-U-N-S （Dun & Bradstreet）**。 <p>合作夥伴可以選擇進行相互定義的商務身分識別。 針對這些案例，請針對 [EDIFACT] 選取 [**相互定義**] 或 [針對 X12 進行**相互定義（X12）** ]。 <p>針對 RosettaNet，請選取 [僅**DUNS**]，這是標準。 |
    | **ReplTest1** | 是 | 識別您的邏輯應用程式所接收之檔的值。 <p>對於 RosettaNet，此值必須是對應到 DUNS 數位的九位數數位。 |
    ||||
 
    > [!NOTE]
    > 針對使用 RosettaNet 的合作夥伴，您可以先建立這些夥伴，然後在[之後進行編輯](#edit-partner)，以指定其他資訊。
 
-1. 完成時，選擇 [確定]****。
+1. 完成時，選擇 [確定]。
 
    您的新合作夥伴現在會顯示在 [**合作夥伴**] 清單中。 此外，[**合作夥伴**] 圖格也會更新目前的夥伴數目。
 
@@ -84,14 +83,14 @@ ms.locfileid: "74792435"
 
    針對 RosettaNet，您可以在 [ **Rosettanet 夥伴屬性**] 下指定下列其他資訊：
 
-   | 屬性 | 必要 | 描述 |
+   | 屬性 | 必要 | 說明 |
    |----------|----------|-------------|
-   | **夥伴分類** | 否 | 合作夥伴的組織類型 |
-   | **供應鏈代碼** | 否 | 合作夥伴的供應鏈代碼，例如「資訊技術」或「電子元件」 |
-   | **連絡人名稱** | 否 | 合作夥伴的連絡人姓名 |
-   | **電子郵件** | 否 | 合作夥伴的電子郵件地址 |
-   | **傳真** | 否 | 合作夥伴的傳真號碼 |
-   | **聯繫** | 否 | 合作夥伴的電話號碼 |
+   | **夥伴分類** | No | 合作夥伴的組織類型 |
+   | **供應鏈代碼** | No | 合作夥伴的供應鏈代碼，例如「資訊技術」或「電子元件」 |
+   | **連絡人名稱** | No | 合作夥伴的連絡人姓名 |
+   | **電子郵件** | No | 合作夥伴的電子郵件地址 |
+   | **Fax** | No | 合作夥伴的傳真號碼 |
+   | **Telephone** | No | 合作夥伴的電話號碼 |
    ||||
 
 1. 當您完成時，請選擇 **[確定]** 以儲存變更。

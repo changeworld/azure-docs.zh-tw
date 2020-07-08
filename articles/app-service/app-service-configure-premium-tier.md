@@ -7,17 +7,16 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
 ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74672218"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>設定 Azure App Service 的 PremiumV2 層
 
 新 **PremiumV2** 定價層提供更快速的處理器、SSD 儲存體，而且記憶體與核心的比例是現有定價層的兩倍。 有此效能優勢，您可在較少的執行個體上執行應用程式來節省成本。 在本文中，您將了解如何在 **PremiumV2** 層建立應用程式，或將應用程式相應增加為 **PremiumV2** 層。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要將應用程式相應增加為 **PremiumV2**，您必須讓 Azure App Service 應用程式在低於 **PremiumV2** 的定價層中執行，而且該應用程式必須在支援 PremiumV2 的 App Service 部署中執行。
 

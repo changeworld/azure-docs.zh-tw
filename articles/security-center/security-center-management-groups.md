@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
 ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74559337"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>取得 Azure 資訊安全中心的全租用戶可見性
@@ -40,7 +39,7 @@ Azure 管理群組可讓您有效管理訂用帳戶群組的存取、原則和�
 
  
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [**所有服務** > ] [**管理群組**]。
+2. 選取 [所有服務] > [管理群組]。
 3. 在主頁面上，選取 [新增管理群組]****。 
 
     ![主要群組](./media/security-center-management-groups/main.png) 
@@ -49,7 +48,7 @@ Azure 管理群組可讓您有效管理訂用帳戶群組的存取、原則和�
     - [顯示名稱] 欄位是顯示在 Azure 入口網站內的名稱。 在建立管理群組時，不同的顯示名稱是選擇性欄位，並且可以隨時進行變更。  
 
       ![建立](./media/security-center-management-groups/create_context_menu.png)  
-5.  選取 [儲存]  。
+5.  選取 [儲存]
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>檢視 Azure 入口網站中的管理群組
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
@@ -112,7 +111,7 @@ Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. 安裝[Azure PowerShell](/powershell/azure/install-az-ps)。
+1. 安裝 [Azure PowerShell](/powershell/azure/install-az-ps)。
 2. 執行下列命令： 
 
     ```azurepowershell
@@ -189,7 +188,7 @@ Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接�
 在本文中，您已了解如何取得 Azure 資訊安全中心的全租用戶可見性。 如要深入了解資訊安全中心，請參閱下列文章：
 
 > [!div class="nextstepaction"]
-> [Azure 資訊安全中心中的安全性健全狀況監視](security-center-monitoring.md)
+> [Azure 資訊安全中心的安全性健康情況監視](security-center-monitoring.md)
 
 > [!div class="nextstepaction"]
 > [在 Azure 資訊安全中心管理和回應安全性警示](security-center-managing-and-responding-alerts.md)

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74671617"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service 上的作業系統功能
@@ -45,7 +44,7 @@ App Service 中的各種磁碟機，包含本機磁碟機和網路磁碟機。
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>本機磁碟機
-基本上，App Service 是一項在 Azure PaaS (平台即服務) 基礎結構之上執行的服務。 因此，「附加」至虛擬機器的本機磁碟機就是任何在 Azure 中執行之背景工作角色可用的相同磁碟機類型。 這包括：
+基本上，App Service 是一項在 Azure PaaS (平台即服務) 基礎結構之上執行的服務。 因此，「附加」至虛擬機器的本機磁碟機就是任何在 Azure 中執行之背景工作角色可用的相同磁碟機類型。 其中包括：
 
 - 作業系統磁碟機 (D:\ 磁碟機)
 - 應用程式磁碟機，包含 App Service 專用的 Azure 封裝 cspkg 檔案 (客戶無法存取)
@@ -55,7 +54,7 @@ App Service 中的各種磁碟機，包含本機磁碟機和網路磁碟機。
 
 - 應用程序可能會擲回錯誤，指出磁碟上沒有足夠的空間。
 - 瀏覽至 Kudu 主控台時，您可能會看到磁碟錯誤。
-- 從 Azure DevOps 或 Visual Studio 的部署可能會`ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`失敗，並出現。
+- 從 Azure DevOps 或 Visual Studio 的部署可能會失敗，並出現 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)` 。
 - 您的應用程式可能會效能變慢。
 
 <a id="NetworkDrives"></a>
@@ -76,7 +75,7 @@ App Service 將所有使用者內容儲存在一組 UNC 共用上，此種獨特
 
 App Service 對於暫存本機儲存體的兩種使用方式範例：暫存 ASP.NET 檔案的目錄和 IIS 壓縮檔案的目錄。 ASP.NET 編譯系統會使用 "Temporary ASP.NET Files" 目錄作為暫存編譯快取位置。 IIS 則使用 "IIS Temporary Compressed Files" 目錄來儲存壓縮回應輸出。 這兩種檔案使用方式 (和其他方式) 都會在 App Service 中重新對應至每個應用程式的暫存本機儲存體。 此重新對應可確保功能如預期般繼續運作。
 
-App Service 中的每個應用程式都會以隨機唯一的低許可權背景工作進程身分識別來執行，稱為「應用程式集[https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)區身分識別」，如下所述：。 應用程式程式碼會將此識別用於作業系統磁碟機 (D:\ 磁碟機) 的基本唯讀存取。 這表示應用程式程式碼可以列出通用目錄結構和讀取作業系統磁碟機上的通用檔案。 雖然這似乎是有點廣泛的存取層級，但是當您在 Azure 託管服務中佈建背景工作角色和讀取磁碟機內容時，可以存取的目錄和檔案相同。 
+App Service 中的每個應用程式都會以隨機唯一的低許可權背景工作進程身分識別來執行，稱為「應用程式集區身分識別」，如下所述： [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) 。 應用程式程式碼會將此識別用於作業系統磁碟機 (D:\ 磁碟機) 的基本唯讀存取。 這表示應用程式程式碼可以列出通用目錄結構和讀取作業系統磁碟機上的通用檔案。 雖然這似乎是有點廣泛的存取層級，但是當您在 Azure 託管服務中佈建背景工作角色和讀取磁碟機內容時，可以存取的目錄和檔案相同。 
 
 <a name="multipleinstances"></a>
 
@@ -123,7 +122,7 @@ App Service 中的每個應用程式都會以隨機唯一的低許可權背景�
 
 App Service 並未提供對 VM 執行個體的遠端桌面存取。
 
-## <a name="more-information"></a>詳細資訊
+## <a name="more-information"></a>更多資訊
 
 [Azure App Service 沙箱](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) - 有關 App Service 執行環境的最新資訊。 本頁面由 App Service 開發團隊直接維護。
 

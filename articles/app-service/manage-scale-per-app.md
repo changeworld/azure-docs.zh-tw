@@ -8,10 +8,9 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74672341"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>使用個別應用程式調整的 Azure App Service 上的高密度裝載
@@ -74,7 +73,7 @@ Set-AzWebApp $newapp
 - 規模相應放大到 10 個執行個體的 App Service 方案
 - 已設定為將上限調整成 5 個執行個體的應用程式。
 
-App Service 方案會將 **PerSiteScaling** 屬性設為 true (`"perSiteScaling": true`)。 應用程式會設定要使用 5 `"properties": { "numberOfWorkers": "5" }`**的背景工作角色數目**。
+App Service 方案會將 **PerSiteScaling** 屬性設為 true (`"perSiteScaling": true`)。 應用程式會設定要使用 5**的背景工作角色數目** `"properties": { "numberOfWorkers": "5" }` 。
 
 ```json
 {

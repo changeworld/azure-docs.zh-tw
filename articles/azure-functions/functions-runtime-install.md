@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74226730"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>安裝 Azure Functions 執行階段預覽 2
@@ -25,7 +24,7 @@ ms.locfileid: "74226730"
 1. 完成 Azure Functions 執行階段預覽 2 的設定。
 1. 在 Azure Functions 執行階段預覽中建立您的第一個函式
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 安裝 Azure Functions 執行階段預覽之前，您必須備妥下列資源：
 
@@ -46,7 +45,7 @@ Azure Functions 執行階段預覽安裝程式會引導您完成安裝 Azure Fun
 
     ![Azure Functions 執行階段預覽安裝程式][1]
 
-1. 按 [下一步]  。
+1. 按 [下一步] 。
 1. 閱讀**EULA**的條款**之後，請核取 [接受**條款]，然後按 **[下一步]** 繼續。
 1. 選取您想要在這部電腦上安裝的角色：**Functions 管理角色**和/或 **Functions 背景工作角色**，然後按一下 [下一步]****。
 
@@ -99,13 +98,13 @@ Azure Functions 執行階段預覽安裝程式會引導您完成安裝 Azure Fun
 
 在 Azure Functions 執行階段預覽中建立您的第一個函式
 
-1. 例如，流覽至**Azure Functions 執行階段入口網站** `https://<machinename>.<domain>` `https://mycomputer.mydomain.com`。
+1. 例如，流覽至**Azure Functions 執行階段入口網站** `https://<machinename>.<domain>` `https://mycomputer.mydomain.com` 。
 
 1. 如果是部署在使用您的網域帳戶使用者名稱與密碼的網域，系統就會提示您**登入**，否則請使用您的本機帳戶使用者名稱與密碼來登入入口網站。
 
     ![Azure Functions 執行階段預覽入口網站登入][14]
 
-1. 若要建立函數應用程式，您必須建立訂用帳戶。  在入口網站的左上角，按一下 [訂用帳戶] **+** 旁邊的選項。
+1. 若要建立函數應用程式，您必須建立訂用帳戶。  在入口網站的左上角，按一下 [訂用帳戶 **+** ] 旁邊的選項。
 
     ![Azure Functions 執行階段預覽入口網站訂用帳戶][15]
 

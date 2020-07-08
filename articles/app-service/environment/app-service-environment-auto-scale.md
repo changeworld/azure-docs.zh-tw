@@ -1,6 +1,6 @@
 ---
 title: 自動調整 v1
-description: 自動調整和 App Service 環境 v1。 本檔僅為使用舊版 v1 ASE 的客戶提供。
+description: 自動調整和 App Service 環境 v1。 本文件僅提供給使用舊版 v1 ASE 的客戶。
 author: btardif
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
 ms.topic: article
@@ -8,10 +8,9 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74687288"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>自動調整和 App Service 環境 v1

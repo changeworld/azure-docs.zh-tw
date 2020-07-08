@@ -1,18 +1,17 @@
 ---
-title: Azure Functions 觸發程式和系結範例
+title: Azure Functions 觸發程序和繫結範例
 description: 瞭解如何設定 Azure 函數系結
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74227234"
 ---
-# <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions 觸發程式和系結範例
+# <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions 觸發程序和繫結範例
 
 本文示範如何在 Azure 函數中設定[觸發程式和](./functions-triggers-bindings.md)系結。
 
@@ -82,7 +81,7 @@ public class Person
 
 ## <a name="javascript-example"></a>JavaScript 範例
 
-相同的*函數. json*檔案可以與 JavaScript 函式搭配使用：
+相同的*function.js*檔案可以與 JavaScript 函數搭配使用：
 
 ```javascript
 // From an incoming queue message that is a JSON object, add fields and write to Table Storage

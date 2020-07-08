@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 tags: connectors
 ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74787331"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>在 Azure Logic Apps 中執行下一個動作的延遲
@@ -28,11 +27,11 @@ ms.locfileid: "74787331"
 
 * 延遲工作流程，直到 HTTP 呼叫完成，再繼續和抓取資料。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，您可以[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* [邏輯應用程式](../logic-apps/logic-apps-overview.md)的基本知識。 您的邏輯應用程式必須先從觸發程式開始，才可以使用動作。 您可以使用任何想要的觸發程式，並在新增延遲動作之前新增其他動作。 本主題使用 Office 365 Outlook 觸發程式。 如果您不熟悉邏輯應用程式，請瞭解[如何建立您的第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* [邏輯應用程式](../logic-apps/logic-apps-overview.md)的基本知識。 您的邏輯應用程式必須先從觸發程式開始，才可以使用動作。 您可以使用任何想要的觸發程式，並在新增延遲動作之前新增其他動作。 本主題使用 Office 365 Outlook 觸發程式。 如果您不熟悉邏輯應用程式，請了解[如何建立您的第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 <a name="add-delay"></a>
 
@@ -50,10 +49,10 @@ ms.locfileid: "74787331"
 
    ![設定延遲的時間長度](./media/connectors-native-delay/delay-time-intervals.png)
 
-   | 屬性 | JSON 名稱 | 必要 | 類型 | 描述 |
+   | 屬性 | JSON 名稱 | 必要 | 類型 | Description |
    |----------|-----------|----------|------|-------------|
    | Count | count | 是 | 整數 | 要延遲的時間單位數 |
-   | 單位 | unit | 是 | String | 時間`Second`單位，例如：、 `Minute`、 `Hour`、 `Day` `Week`、或。`Month` |
+   | 單位 | unit | Yes | String | 時間單位，例如： `Second` 、 `Minute` 、 `Hour` 、、 `Day` `Week` 或。`Month` |
    ||||||
 
 1. 新增您想要在工作流程中執行的任何其他動作。
@@ -78,7 +77,7 @@ ms.locfileid: "74787331"
 
    | 屬性 | JSON 名稱 | 必要 | 類型 | 描述 |
    |----------|-----------|----------|------|-------------|
-   | 時間戳記 | timestamp | 是 | String | 使用此格式繼續工作流程的結束日期和時間： <p>YYYY-MM-DDThh： MM： ssZ <p>例如，如果您想要在2017年9月18日下午2:00，請指定 "2017-09-18T14：00： 00Z"。 <p>**注意：** 此時間格式必須遵循[utc 日期時間格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的[ISO 8601 日期時間規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但不含[utc 時差](https://en.wikipedia.org/wiki/UTC_offset)。 如果沒有時區，您必須在結尾加上字母 "Z"，而不含任何空格。 這個 "Z" 係指對等的[航海時間](https://en.wikipedia.org/wiki/Nautical_time)。 |
+   | 時間戳記 | timestamp | Yes | String | 使用此格式繼續工作流程的結束日期和時間： <p>YYYY-MM-DDThh： MM： ssZ <p>例如，如果您想要在2017年9月18日下午2:00，請指定 "2017-09-18T14：00： 00Z"。 <p>**注意：** 此時間格式必須遵循[utc 日期時間格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的[ISO 8601 日期時間規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但不含[utc 時差](https://en.wikipedia.org/wiki/UTC_offset)。 如果沒有時區，您必須在結尾加上字母 "Z"，而不含任何空格。 這個 "Z" 係指對等的[航海時間](https://en.wikipedia.org/wiki/Nautical_time)。 |
    ||||||
 
 1. 新增您想要在工作流程中執行的任何其他動作。

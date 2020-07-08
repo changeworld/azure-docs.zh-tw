@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 48c819566db43e2f997309d1bea55a9436ec7085
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74789441"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>開始使用 OneDrive for Business 連接器
@@ -22,9 +21,9 @@ ms.locfileid: "74789441"
 ## <a name="create-a-connection-to-onedrive-for-business"></a>建立 OneDrive for Business 的連線
 若要使用 OneDrive for Business 建立邏輯應用程式，您必須先建立**連接**，然後提供下列屬性的詳細資料︰
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --- | --- | --- |
-| Token |是 |提供 OneDrive for Business 認證 |
+| Token |Yes |提供 OneDrive for Business 認證 |
 
 建立連線後，您就可以用它執行動作，並接聽本文所述的觸發程序。
 

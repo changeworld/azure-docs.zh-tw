@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74483532"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>使用 Azure DNS 和流量管理員進行災害復原
@@ -73,7 +72,7 @@ DNS 是轉移網路流量最有效率的機制之一，因為 DNS 通常是全�
 
 解決方案所做的假設是：
 - 主要和次要端點都有不常變更的靜態 IP。 假設主要站台的 IP 是 100.168.124.44，而次要站台的 IP 是 100.168.124.43。
-- 主要和次要站台都有 Azure DNS 區域。 假設主要站台的端點是 prod.contoso.com，而備份站台的端點是 dr.contoso.com。 主要應用程式的 DNS 記錄（也稱為 www\.contoso.com）也存在。   
+- 主要和次要站台都有 Azure DNS 區域。 假設主要站台的端點是 prod.contoso.com，而備份站台的端點是 dr.contoso.com。 主要應用程式的 DNS 記錄（也稱為 www \. contoso.com）也存在。   
 - TTL 會等於或低於組織中設定的 RTO SLA。 例如，如果企業將應用程式災害回應的 RTO 設定為 60 分鐘，則 TTL 應不超過 60 分鐘，而且愈低愈好。 
   您可以設定 Azure DNS 的手動容錯移轉，如下所示：
 - 建立 DNS 區域
@@ -81,7 +80,7 @@ DNS 是轉移網路流量最有效率的機制之一，因為 DNS 通常是全�
 - 更新 CNAME 記錄
 
 ### <a name="step-1-create-a-dns"></a>步驟 1 - 建立 DNS
-建立 DNS 區域（例如，www\.contoso.com），如下所示：
+建立 DNS 區域（例如，www \. contoso.com），如下所示：
 
 ![在 Azure 中建立 DNS 區域](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
@@ -89,13 +88,13 @@ DNS 是轉移網路流量最有效率的機制之一，因為 DNS 通常是全�
 
 ### <a name="step-2-create-dns-zone-records"></a>步驟 2：建立 DNS 區域記錄
 
-在此區域中，會建立三個記錄（\.例如，www contoso.com、prod.contoso.com 和 dr.consoto.com），如下所示。
+在此區域中，會建立三個記錄（例如 \. ，www contoso.com、prod.contoso.com 和 dr.consoto.com），如下所示。
 
 ![建立 DNS 區域記錄](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
 圖 - 在 Azure 中建立 DNS 區域記錄**
 
-在此案例中，site，\.www CONTOSO.COM 的 TTL 為30分鐘，低於指定的 RTO，而且指向生產網站 prod.contoso.com。 這是正常營運時的組態。 prod.contoso.com 和 dr.contoso.com 的 TTL 已設定為 300 秒或 5 分鐘。 您可以使用 Azure 監視器或 Azure App Insights 這類 Azure 監視服務，或 Dynatrace 等任何合作夥伴監視解決方案，甚至可以使用自有的解決方案，來監視或偵測應用程式或虛擬基礎結構層級的失敗。
+在此案例中，site，www \. contoso.com 的 TTL 為30分鐘，低於指定的 RTO，而且指向生產網站 prod.contoso.com。 這是正常營運時的組態。 prod.contoso.com 和 dr.contoso.com 的 TTL 已設定為 300 秒或 5 分鐘。 您可以使用 Azure 監視器或 Azure App Insights 這類 Azure 監視服務，或 Dynatrace 等任何合作夥伴監視解決方案，甚至可以使用自有的解決方案，來監視或偵測應用程式或虛擬基礎結構層級的失敗。
 
 ### <a name="step-3-update-the-cname-record"></a>步驟 3：更新 CNAME 記錄
 
@@ -105,7 +104,7 @@ DNS 是轉移網路流量最有效率的機制之一，因為 DNS 通常是全�
 
 圖 - 更新 Azure 中的 CNAME 記錄**
 
-在30分鐘內，大部分的解析程式都會重新整理快取的區域檔案，而\.www contoso.com 的任何查詢都會重新導向至 dr.contoso.com。
+在30分鐘內，大部分的解析程式都會重新整理快取的區域檔案，而 www contoso.com 的任何查詢 \. 都會重新導向至 dr.contoso.com。
 您也可以執行下列 Azure CLI 命令來變更 CNAME 值：
  ```azurecli
    az network dns record-set cname set-record \

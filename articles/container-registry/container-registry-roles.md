@@ -4,10 +4,9 @@ description: Azure 角色型存取控制 (RBAC) 以及身分識別和存取管�
 ms.topic: article
 ms.date: 12/02/2019
 ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74893479"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry 角色和權限
@@ -81,7 +80,7 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 若要定義自訂角色，請參閱[建立自訂角色的步驟](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role)。
 
 > [!IMPORTANT]
-> 在自訂角色中，Azure Container Registry 目前不支援萬用字元（ `Microsoft.ContainerRegistry/*`例如`Microsoft.ContainerRegistry/registries/*`或），以授與所有相符動作的存取權。 在角色中個別指定任何必要的動作。
+> 在自訂角色中，Azure Container Registry 目前不支援萬用字元（例如 `Microsoft.ContainerRegistry/*` 或） `Microsoft.ContainerRegistry/registries/*` ，以授與所有相符動作的存取權。 在角色中個別指定任何必要的動作。
 
 ## <a name="next-steps"></a>後續步驟
 

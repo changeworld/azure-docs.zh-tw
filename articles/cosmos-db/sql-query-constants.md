@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74873415"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL 查詢常數  
@@ -19,17 +18,17 @@ ms.locfileid: "74873415"
   
  **支援的純量資料類型：**  
   
-|**類型**|**值順序**|  
+|**型別**|**值順序**|  
 |-|-|  
 |**未定義**|單一值： **未定義**|  
 |**Null**|單一值：**Null**|  
 |**True**|值：**False**，**True**。|  
-|**項數**|雙精確度浮點數，符合 IEEE 754 標準。|  
-|**字串**|零或更多 Unicode 字元的序列。 字串必須以單引號或雙引號括住。|  
+|**Number**|雙精確度浮點數，符合 IEEE 754 標準。|  
+|**String**|零或更多 Unicode 字元的序列。 字串必須以單引號或雙引號括住。|  
 |**數列**|零或更多元素的序列。 除了**Undefined**以外，每個元素都可以是任何純量資料類型的值。|  
 |**Object**|未排序的零或更多名稱/值組。 名稱為 Unicode 字串；除了**未定義**的類型，值可以是任何純量資料類型。|  
   
-## <a name="syntax"></a><a name="bk_syntax"></a>語法
+## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
 ```sql  
 <constant> ::=  
@@ -103,7 +102,7 @@ ms.locfileid: "74873415"
   
   允許下列逸出序列：  
   
-|**逸出序列**|**說明**|**Unicode 字元**|  
+|**逸出序列**|**描述**|**Unicode 字元**|  
 |-|-|-|  
 |\\'|apostrophe (')|U+0027|  
 |\\"|引號 (")|U+0022|  

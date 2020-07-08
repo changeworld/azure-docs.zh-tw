@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74267315"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 動機和優點
@@ -53,7 +52,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 
 - **使用自訂工具或協力廠商應用程式的擴充性** - HDInsight 叢集可以使用安裝的元件來擴充，並從 Azure Marketplace 使用[單鍵](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 部署來與其他巨量資料解決方案整合。
 
-- **輕鬆管理、管理和監視**-Azure HDInsight 與 [Azure 監視器記錄](../hdinsight-hadoop-oms-log-analytics-tutorial.md) 整合，以提供單一介面讓您監視所有的叢集。
+- **輕鬆管理、管理和監視**-Azure HDInsight 與 [Azure 監視器記錄](../hdinsight-hadoop-oms-log-analytics-tutorial.md)整合，   以提供單一介面讓您監視所有的叢集。
 
 - **與其他 Azure 服務整合** - HDInsight 可輕鬆地與其他熱門 Azure 服務整合，如下列服務：
 
@@ -87,7 +86,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 
 ### <a name="on-premises-deployment-questionnaire"></a>內部部署問卷
 
-| **問題** | **範例** | **答覆** |
+| **問題** | **範例** | **回答** |
 |---|---|---|
 |**主題**：**環境**|||
 |叢集散發版本|HDP 2.6.5、CDH 5.7|
@@ -101,7 +100,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |主節點設定|m/y、cpu、disk 等|
 |資料節點設定|m/y、cpu、disk 等|
 |邊緣節點設定|m/y、cpu、disk 等|
-|是否使用 HDFS 加密？|是|
+|是否使用 HDFS 加密？|Yes|
 |高可用性|HDFS HA、中繼存放區 HA|
 |嚴重損壞修復/備份|是否備份叢集？|  
 |相依於叢集的系統|SQL Server、Teradata、Power BI、MongoDB|
@@ -119,7 +118,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 
 ### <a name="project-details-questionnaire"></a>專案詳細資料問卷
 
-|**問題**|**範例**|**答覆**|
+|**問題**|**範例**|**回答**|
 |---|---|---|
 |**主題**：**工作負載和頻率**|||
 |MapReduce 工作|10 個作業 -- 每天兩次||
@@ -128,7 +127,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |Spark 串流作業|5 個作業 -- 每 3 分鐘||
 |結構化串流作業|5 個工作 -- 每分鐘||
 |ML 模型定型作業|2 個工作 -- 每週一次||
-|程式語言|Python、Scala、Java||
+|程式語言：|Python、Scala、Java||
 |指令碼|殼層、Python||
 |**主題**：**資料**|||
 |資料來源|一般檔案、Json、Kafka、RDBMS||
@@ -165,10 +164,10 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 
 |**主題**：**基礎結構** |||
 |---|---|---|
-|**問題**|**範例**|**答覆**|
+|**問題**|**範例**|**回答**|
 | 慣用區域|美國東部||
-|是否慣用 VNet？|是||
-|是否需要 HA / DR？|是||
+|是否慣用 VNet？|Yes||
+|是否需要 HA / DR？|Yes||
 |是否與其他雲端服務整合？|ADF、CosmosDB||
 |**主題**：**資料移動**  |||
 |初始載入喜好設定|DistCp、Data box、ADF、WANDisco||
@@ -177,25 +176,25 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |**主題**：**監視與警示** |||
 |使用 Azure 監視器與警示或整合協力廠商監視|使用 Azure 監視器與警示||
 |**主題**：**安全性喜好設定** |||
-|私人且受保護的資料管線？|是||
-|是否使用網域加入叢集 (ESP)？|     是||
-|是否將內部部署 AD 同步處理至雲端？|     是||
+|私人且受保護的資料管線？|Yes||
+|是否使用網域加入叢集 (ESP)？|     Yes||
+|是否將內部部署 AD 同步處理至雲端？|     Yes||
 |要同步處理的 AD 使用者數目？|          100||
-|是否將密碼同步套雲端？|    是||
-|僅雲端使用者？|                 是||
-|是否需要 MFA？|                       否|| 
-|是否符合資料授權需求？|  是||
-|是否使用角色型存取控制？|        是||
-|是否需要稽核？|                  是||
-|是否使用待用資料加密？|          是||
-|是否使用傳輸中資料加密？|       是||
+|是否將密碼同步套雲端？|    Yes||
+|僅雲端使用者？|                 Yes||
+|是否需要 MFA？|                       No|| 
+|是否符合資料授權需求？|  Yes||
+|是否使用角色型存取控制？|        Yes||
+|是否需要稽核？|                  Yes||
+|是否使用待用資料加密？|          Yes||
+|是否使用傳輸中資料加密？|       Yes||
 |**主題**：**架構重新設計喜好設定** |||
 |單一叢集或特定叢集類型|特定叢集類型||
 |共置儲存體或遠端儲存體？|遠端儲存體||
 |是否因資料儲存在遠端，所以叢集大小較小？|較小的叢集大小||
 |是否使用多個較小的叢集而不是單一大型叢集？|使用多個較小的叢集||
-|是否使用遠端中繼存放區？|是||
-|是否在不同叢集之間共用中繼存放區？|是||
+|是否使用遠端中繼存放區？|Yes||
+|是否在不同叢集之間共用中繼存放區？|Yes||
 |是否將工作負載解構？|使用 Spark 作業取代 Hive 作業||
 |是否使用 ADF 資料協調流程？|否||
 

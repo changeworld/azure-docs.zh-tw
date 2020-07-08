@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 2912777c001a36ec913e2cfd618091ada5aa107a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74807131"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>使用您的瀏覽器、PowerShell 或 Azure CLI 刪除 HDInsight 叢集
@@ -26,7 +25,7 @@ HDInsight 叢集的計費起自叢集建立時，終至叢集刪除時。 計費
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 從左側功能表中，流覽至 [**所有服務** > ] [**分析** > ] [**HDInsight**叢集]，然後選取您的叢集。
+2. 從左側功能表中，流覽至 [**所有服務**] [分析] [HDInsight 叢集]  >  **Analytics**  >  **HDInsight clusters** ，然後選取您的叢集。
 
 3. 從預設的 [] 視圖中，選取 [**刪除**] 圖示。 依照提示刪除您的叢集。
 
@@ -34,7 +33,7 @@ HDInsight 叢集的計費起自叢集建立時，終至叢集刪除時。 計費
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-以`CLUSTERNAME`您的 HDInsight 叢集名稱取代下列程式碼中的。 從 PowerShell 提示字元中，輸入下列命令來刪除叢集：
+以 `CLUSTERNAME` 您的 HDInsight 叢集名稱取代下列程式碼中的。 從 PowerShell 提示字元中，輸入下列命令來刪除叢集：
 
 ```powershell
 Remove-AzHDInsightCluster -ClusterName CLUSTERNAME
@@ -42,7 +41,7 @@ Remove-AzHDInsightCluster -ClusterName CLUSTERNAME
 
 ## <a name="azure-cli"></a>Azure CLI
 
-請`CLUSTERNAME`以您的 HDInsight 叢集名稱取代，並`RESOURCEGROUP`使用下列程式碼中的資源組名取代。  從命令提示字元中，輸入下列內容以刪除叢集：
+`CLUSTERNAME`請以您的 HDInsight 叢集名稱取代，並 `RESOURCEGROUP` 使用下列程式碼中的資源組名取代。  從命令提示字元中，輸入下列內容以刪除叢集：
 
 ```azurecli
 az hdinsight delete --name CLUSTERNAME --resource-group RESOURCEGROUP

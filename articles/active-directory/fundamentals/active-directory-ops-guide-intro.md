@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: c815256e60e5ca6582220d247d587a4488c4a55a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74535310"
 ---
 # <a name="azure-active-directory-operations-reference-guide"></a>Azure Active Directory 作業參考指南
@@ -36,7 +35,7 @@ ms.locfileid: "74535310"
 
 本參考指南中的每一節都建議指派專案關係人，以順利規劃和執行關鍵工作。 下表列出本指南中所有專案關係人的清單：
 
-| 利害關係人 | 描述 |
+| 利害關係人 | Description |
 | :- | :- |
 | IAM 作業小組 | 這個小組負責管理身分識別與存取管理系統的日常作業 |
 | 生產力小組 | 這個小組擁有和管理生產力應用程式，例如電子郵件、檔案共用和共同作業、立即訊息和會議。 |

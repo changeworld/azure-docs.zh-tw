@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/20/2019
 ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74327200"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>在 HDInsight 中搭配使用 Java UDF 和 Apache Hive
 
 了解如何建立能配合 Apache Hive 使用的以 Java 為基礎的使用者定義函式 (UDF)。 此範例中的 Java UDF 會將文字字串的資料表轉換成全部小寫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
 * [JAVA 開發人員套件（JDK）第8版](https://aka.ms/azure-jdks)
@@ -50,22 +49,22 @@ cd C:\HDI
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    此命令會建立名為`exampleudf`的目錄，其中包含 Maven 專案。
+    此命令會建立名為的目錄 `exampleudf` ，其中包含 Maven 專案。
 
-2. 建立專案之後，請輸入下列命令， `exampleudf/src/test`以刪除專案中建立的目錄：
+2. 建立專案之後，請 `exampleudf/src/test` 輸入下列命令，以刪除專案中建立的目錄：
 
     ```cmd
     cd ExampleUDF
     rmdir /S /Q "src/test"
     ```
 
-3. 輸入`pom.xml`下列命令以開啟：
+3. `pom.xml`輸入下列命令以開啟：
 
     ```cmd
     notepad pom.xml
     ```
 
-    然後以下列 XML `<dependencies>`取代現有的專案：
+    然後 `<dependencies>` 以下列 XML 取代現有的專案：
 
     ```xml
     <dependencies>
@@ -144,7 +143,7 @@ cd C:\HDI
 
     完成變更後，儲存檔案。
 
-4. 輸入下列命令以建立並開啟新檔案`ExampleUDF.java`：
+4. 輸入下列命令以建立並開啟新檔案 `ExampleUDF.java` ：
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
@@ -181,7 +180,7 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>建置及安裝 UDF
 
-在下列命令中，將`sshuser`取代為實際的使用者名稱（如果不同的話）。 將`mycluster`取代為實際的叢集名稱。
+在下列命令中， `sshuser` 將取代為實際的使用者名稱（如果不同的話）。 `mycluster`將取代為實際的叢集名稱。
 
 1. 輸入下列命令來編譯和封裝 UDF：
 
@@ -191,7 +190,7 @@ cd C:\HDI
 
     此命令會建置 UDF 並將它封裝到 `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` 檔案。
 
-2. 藉由`scp`輸入下列命令，使用命令將檔案複製到 HDInsight 叢集：
+2. 藉 `scp` 由輸入下列命令，使用命令將檔案複製到 HDInsight 叢集：
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:

@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74379109"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>針對已加入混合式 Azure Active Directory 的下層裝置進行疑難排解 
@@ -36,7 +35,7 @@ ms.locfileid: "74379109"
 
 本文章提供有關如何解決潛在問題的疑難排解指引。  
 
-**您應該知道的事情：** 
+**您應該知道的事項：** 
 
 - 舊版 Windows 裝置的混合式 Azure AD 加入運作方式與在 Windows 10 中的運作方式略有不同。 許多客戶並不了解他們需要設定的是 AD FS (適用於同盟網域) 還是「無縫 SSO」(適用於受控網域)。
 - 針對具有同盟網域的客戶，如果「服務連接點」(SCP) 已設定為指向受控網域名稱 (例如 contoso.onmicrosoft.com，而不是 contoso.com)，則舊版 Windows 裝置的混合式 Azure AD 加入將無法運作。
@@ -73,7 +72,7 @@ ms.locfileid: "74379109"
    - 另一個可能原因是主領域探索 (HRD) 頁面正在等候使用者互動，而導致 **autoworkplace.exe** 無法以無訊息方式要求權杖。
    - 可能是用戶端上 IE 的內部網路區域中遺漏 AD FS 和 Azure AD URL。
    - 網路連線能力問題可能會導致 **autoworkplace.exe** 無法連線至 AD FS 或 Azure AD URL。 
-   - **Autoworkplace.exe 無法**需要用戶端能夠從用戶端直接看到到組織的內部部署 AD 網域控制站，這表示只有當用戶端連線到組織的內部網路時，混合式 Azure AD 聯結才會成功。
+   - **Autoworkplace.exe**要求用戶端能夠直接從用戶端到組織的內部部署 AD 網域控制站，這表示只有當用戶端連線到組織的內部網路時，混合式 Azure AD 聯結才會成功。
    - 貴組織使用的是 Azure AD 無縫單一登入，`https://autologon.microsoftazuread-sso.com` 或 `https://aadg.windows.net.nsatc.net` 不在裝置的 IE 內部網路設定中，並且未針對內部網路區域啟用 [允許透過指令碼更新至狀態列]****。
 - 您不是以網域使用者身分登入
 

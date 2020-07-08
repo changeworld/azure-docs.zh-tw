@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74888490"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>連接到媒體服務 v3 API-JAVA
@@ -26,14 +25,14 @@ ms.locfileid: "74888490"
 
 在本文中，Visual Studio Code 是用來開發範例應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 遵循[使用 Visual Studio Code 撰寫 JAVA](https://code.visualstudio.com/docs/java/java-tutorial)以安裝：
 
    - JDK
    - Apache Maven
    - JAVA 擴充功能套件
-- 請務必設定`JAVA_HOME`和`PATH`環境變數。
+- 請務必設定 `JAVA_HOME` 和 `PATH` 環境變數。
 - [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源組名和媒體服務帳戶名稱。
 - 依照[存取 api](access-api-cli-how-to.md)主題中的步驟進行。 記錄訂用帳戶識別碼、應用程式識別碼（用戶端識別碼）、驗證金鑰（密碼），以及您在稍後步驟中需要的租使用者識別碼。
 
@@ -47,13 +46,13 @@ ms.locfileid: "74888490"
 
 ## <a name="create-a-maven-project"></a>建立 Maven 專案
 
-開啟命令列工具，以及`cd`您要建立專案的目錄。
+開啟命令列工具，以及 `cd` 您要建立專案的目錄。
     
 ```
 mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
 
-當您執行命令時，會`pom.xml`建立`App.java`、和其他檔案。 
+當您執行命令時， `pom.xml` `App.java` 會建立、和其他檔案。 
 
 ## <a name="add-dependencies"></a>新增相依性
 
@@ -81,7 +80,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 
 ## <a name="connect-to-the-java-client"></a>連接到 JAVA 用戶端
 
-1. 開啟下`App.java` `src\main\java\com\azure\ams`的檔案，並確定您的套件包含在頂端：
+1. 開啟 `App.java` 下的檔案 `src\main\java\com\azure\ams` ，並確定您的套件包含在頂端：
 
     ```java
     package com.azure.ams;
@@ -128,6 +127,6 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在可以包含`import com.microsoft.azure.management.mediaservices.v2018_07_01.*;`並開始操作實體。
+您現在可以包含 `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` 並開始操作實體。
 
 如需更多程式碼範例，請參閱[JAVA SDK 範例](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)存放庫。

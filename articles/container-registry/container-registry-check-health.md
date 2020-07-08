@@ -4,10 +4,9 @@ description: 瞭解如何執行快速診斷命令，以識別使用 Azure contai
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456404"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>檢查 Azure container registry 的健全狀況
@@ -18,7 +17,7 @@ ms.locfileid: "74456404"
 
 ## <a name="run-az-acr-check-health"></a>執行 az acr check-health
 
-下列範例顯示執行`az acr check-health`命令的不同方式。
+下列範例顯示執行命令的不同方式 `az acr check-health` 。
 
 > [!NOTE]
 > 如果您在 Azure Cloud Shell 中執行命令，則不會檢查本機環境。 不過，您可以檢查目標登錄的存取權。
@@ -43,7 +42,7 @@ az acr check-health --name myregistry
 
 命令會將資訊記錄到標準輸出。 如果偵測到問題，則會提供錯誤碼和描述。 如需有關程式碼和可能解決方案的詳細資訊，請參閱[錯誤參考](container-registry-health-error-reference.md)。
 
-根據預設，命令會在發現錯誤時停止。 您也可以執行命令，讓它提供所有健康情況檢查的輸出，即使找到錯誤也一樣。 新增`--ignore-errors`參數，如下列範例所示：
+根據預設，命令會在發現錯誤時停止。 您也可以執行命令，讓它提供所有健康情況檢查的輸出，即使找到錯誤也一樣。 新增 `--ignore-errors` 參數，如下列範例所示：
 
 ```azurecli
 # Check environment only

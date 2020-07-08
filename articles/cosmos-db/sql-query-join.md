@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74871137"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中的聯結
@@ -19,9 +18,9 @@ ms.locfileid: "74871137"
 
 內部聯結是參與聯結之集的完整交叉乘積。 N 方聯結的結果為一組 N 元素 Tuple，其中 Tuple 中的每個值都與參與聯結的別名集相關聯，而且可以透過參考其他子句中的別名加以存取。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
-語言支援語法`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`。 此查詢會傳回一組具有`N`值的元組。 每個 Tuple 所擁有的值，都是將所有容器別名在其個別集合上反覆運算所產生的。 
+語言支援語法 `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>` 。 此查詢會傳回一組具有值的元組 `N` 。 每個 Tuple 所擁有的值，都是將所有容器別名在其個別集合上反覆運算所產生的。 
 
 我們來看看下面的 FROM 子句：`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
@@ -118,7 +117,7 @@ ms.locfileid: "74871137"
     }]
 ```
 
-在下列範例中，聯結是兩個 JSON 物件（專案根目錄`id`和`children`子根目錄）之間的交叉乘積。 陣列的事實`children`不會在聯結中生效，因為它處理的是`children`陣列的單一根。 結果只會包含兩個結果，因為陣列中每個專案的交叉乘積只會產生一個專案。
+在下列範例中，聯結是兩個 JSON 物件（專案根目錄和子根目錄）之間的交叉乘積 `id` `children` 。 陣列的事實 `children` 不會在聯結中生效，因為它處理的是陣列的單一根 `children` 。 結果只會包含兩個結果，因為陣列中每個專案的交叉乘積只會產生一個專案。
 
 ```sql
     SELECT f.id
@@ -165,11 +164,11 @@ ms.locfileid: "74871137"
 
 JOIN 子句的 FROM 來源是反覆運算器。 因此，上述範例中的流程為：  
 
-1. 展開陣列中的`c`每個子項目。
-2. 套用包含第一個步驟所簡維之每`f`個子`c`專案的交叉乘積。
-3. 最後，單獨投影根物件`f` `id`屬性。
+1. 展開 `c` 陣列中的每個子項目。
+2. 套用包含 `f` 第一個步驟所簡維之每個子專案的交叉乘積 `c` 。
+3. 最後，單獨投影根物件 `f` `id` 屬性。
 
-第一個專案`AndersenFamily`只包含一個`children`元素，因此結果集只包含單一物件。 第二個專案`WakefieldFamily`包含兩個`children`，因此交叉乘積會產生兩個物件，每個`children`元素各一個。 這兩個項目中的根欄位相同，就像您在交叉乘積中預期地一樣。
+第一個專案 `AndersenFamily` 只包含一個 `children` 元素，因此結果集只包含單一物件。 第二個專案 `WakefieldFamily` 包含兩個 `children` ，因此交叉乘積會產生兩個物件，每個 `children` 元素各一個。 這兩個項目中的根欄位相同，就像您在交叉乘積中預期地一樣。
 
 聯結子句的真正公用程式，是要從其他不容易投影的圖形形成交叉乘積的元組。 下列範例會篩選元組的組合，讓使用者選擇整體元組所滿足的條件。
 
@@ -224,9 +223,9 @@ JOIN 子句的 FROM 來源是反覆運算器。 因此，上述範例中的流�
     }
 ```
 
-`AndersenFamily`有一個具有一個寵物的子系，因此交叉乘積會從此家族產生一個\*資料\*列（1 1 1）。 `WakefieldFamily`有兩個子系，只有其中一個具有寵物，但該子系有兩個寵物。 此系列的交叉乘積會產生 1\*1\*2 = 2 個數據列。
+`AndersenFamily`有一個具有一個寵物的子系，因此交叉乘積會從此家族產生一個資料列（1 \* 1 \* 1）。 `WakefieldFamily`有兩個子系，只有其中一個具有寵物，但該子系有兩個寵物。 此系列的交叉乘積會產生 1 \* 1 \* 2 = 2 個數據列。
 
-在下一個範例中，有一個額外的篩選`pet`，它會排除寵物名稱不`Shadow`是的所有元組。 您可以從陣列建立元組、篩選元組的任何元素，以及投影元素的任何組合。
+在下一個範例中，有一個額外的篩選 `pet` ，它會排除寵物名稱不是的所有元組 `Shadow` 。 您可以從陣列建立元組、篩選元組的任何元素，以及投影元素的任何組合。
 
 ```sql
     SELECT 
@@ -254,6 +253,6 @@ JOIN 子句的 FROM 來源是反覆運算器。 因此，上述範例中的流�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [開始使用](sql-query-getting-started.md)
+- [快速入門](sql-query-getting-started.md)
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmosdb-dotnet)
 - [子查詢](sql-query-subquery.md)

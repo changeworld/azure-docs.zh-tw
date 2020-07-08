@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74225326"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>設定 Linux VM 的 DHCPv6
@@ -64,7 +63,7 @@ Azure Marketplace 中的一些 Linux 虛擬機器映像沒有預設的動態主�
             eno1:
               dhcp6: true
 
-在早期開機期間，netplan 「網路轉譯器」會將設定寫入/run 以將裝置控制權交給指定的網路守護程式，以取得有關 NETPLAN 的https://netplan.io/reference參考資訊，請參閱。
+在早期開機期間，netplan 「網路轉譯器」會將設定寫入/run 以將裝置控制權交給指定的網路守護程式，以取得有關 NETPLAN 的參考資訊，請參閱 https://netplan.io/reference 。
  
 ## <a name="debian"></a>Debian
 

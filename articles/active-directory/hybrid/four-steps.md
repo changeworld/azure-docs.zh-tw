@@ -14,10 +14,9 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3eb98f543e17981be0d5b9ab08fa4e146659b47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74206787"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>具有 Azure Active Directory 的強身份識別基礎的四個步驟
@@ -166,7 +165,7 @@ Azure AD 可讓您使用安全性群組和 Office 365 群組來管理資源的�
 * 我的租使用者中是否有任何可疑或惡意的情況？
 * 安全性事件期間受到影響的物件為何？
 
-安全性記錄和報告會提供可疑活動的電子記錄，並協助您偵測可能指出從外部嘗試或成功滲透網路以及內部攻擊的模式。 您可以使用審核來監視使用者活動、記載法規合規性、進行法庭分析等等。 警示會提供安全性事件通知。
+安全性記錄和報告會提供可疑活動的電子記錄，並協助您偵測可能指出從外部嘗試或成功滲透網路以及內部攻擊的模式。 您可以使用稽核來監視使用者活動、文件合規性、執行鑑識分析等等。 警示會提供安全性事件通知。
 
 ### <a name="assign-least-privileged-admin-roles-for-operations"></a>指派最低許可權管理員角色以進行作業
 
@@ -227,7 +226,7 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會中斷生命週期�
 
 我們建議您在開始旅程到組織中更穩固的身分識別基礎時，列印下列檢查清單以供參考。
 
-### <a name="today"></a>Today
+### <a name="today"></a>今天
 
 |完成了嗎？|項目|
 |:-|:-|

@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 2305a02e5b094ec9e98f39363ddbd0c39221ab0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74768889"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫的連接程式庫-單一伺服器
@@ -29,10 +28,10 @@ ms.locfileid: "74768889"
 | Go | [Package pq](https://godoc.org/github.com/lib/pq) | 單純的 Go postgres 驅動程式 | [安裝](https://github.com/lib/pq/blob/master/README.md) |
 | C\#/ .NET | [Npgsql](https://www.npgsql.org/) | ADO.NET 資料提供者 | [下載](https://www.microsoft.com/net/) |
 | ODBC | [psqlODBC](https://odbc.postgresql.org/) | ODBC 驅動程式 | [下載](https://www.postgresql.org/ftp/odbc/versions/) |
-| C | [libpq](https://www.postgresql.org/docs/9.6/static/libpq.html) | 主要的 C 語言介面 | 內含 |
+| C | [libpq](https://www.postgresql.org/docs/9.6/static/libpq.html) | 主要的 C 語言介面 | 已包括 |
 | C++ | [libpqxx](http://pqxx.org/) | 新樣式的 C++ 介面 | [下載](http://pqxx.org/download/software/) |
 
 ## <a name="next-steps"></a>後續步驟
 請閱讀這些快速入門，以了解如何使用您選擇的語言來連線及查詢適用於 PostgreSQL 的 Azure 資料庫：
 
-[Python](./connect-python.md)  |  [Node.JS](./connect-nodejs.md)  |  [Ruby](./connect-ruby.md)  |  [Go](./connect-go.md) [ ](./connect-php.md) [ ](./connect-java.md)  |  [ ](./connect-csharp.md)Python node.js JAVA Ruby | PHP .net （c #） Go | 
+[Python](./connect-python.md)  | [Node.JS](./connect-nodejs.md)  | [JAVA](./connect-java.md)  | [Ruby](./connect-ruby.md)  | [PHP](./connect-php.md)  | [.NET （C #）](./connect-csharp.md)  | [Go](./connect-go.md)

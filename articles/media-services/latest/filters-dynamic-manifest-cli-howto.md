@@ -15,10 +15,9 @@ ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74896062"
 ---
 # <a name="creating-filters-with-cli"></a>使用 CLI 建立篩選器 
@@ -104,7 +103,7 @@ az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-
 
 您可以指定資產或帳戶篩選器的清單，其適用于您的串流定位器。 動態封裝程式[（串流端點）](dynamic-packaging-overview.md)會將這份篩選器清單與您的用戶端在 URL 中指定的篩選準則一起套用。 這個組合會產生[動態資訊清單](filters-dynamic-manifest-overview.md)，這是根據 URL 中的篩選器，以及您在串流定位器上指定的篩選準則。 如果您想要套用篩選，但不想要在 URL 中公開篩選名稱，建議您使用這項功能。
 
-下列 CLI 程式碼顯示如何建立串流定位器並指定`filters`。 這是選擇性的屬性，可採用以空格分隔的資產篩選器名稱和/或帳戶篩選名稱清單。
+下列 CLI 程式碼顯示如何建立串流定位器並指定 `filters` 。 這是選擇性的屬性，可採用以空格分隔的資產篩選器名稱和/或帳戶篩選名稱清單。
 
 ```azurecli
 az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocatorName \
@@ -126,7 +125,7 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 
 [串流影片](stream-files-tutorial-with-api.md) 
 

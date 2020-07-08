@@ -9,13 +9,12 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: 65e85548420116bdfcab87fe9f81a20e66226beb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74803774"
 ---
-# <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>查詢 Azure 監視器記錄以監視 HDInsight 叢集
+# <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>查詢 Azure 監視器記錄來監視 HDInsight 叢集
 
 瞭解如何使用 Azure 監視器記錄來監視 Azure HDInsight 叢集的一些基本案例：
 
@@ -24,7 +23,7 @@ ms.locfileid: "74803774"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您必須已將 HDInsight 叢集設定為使用 Azure 監視器記錄，並將 HDInsight 叢集特定的 Azure 監視器記錄監視解決方案新增至工作區。 如需指示，請參閱[搭配 HDInsight 叢集使用 Azure 監視器記錄](hdinsight-hadoop-oms-log-analytics-tutorial.md)。
 

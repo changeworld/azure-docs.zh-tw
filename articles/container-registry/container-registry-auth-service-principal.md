@@ -4,10 +4,9 @@ description: 使用 Azure Active Directory 服務主體，提供您私人容器�
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 37da784c8e95a5f5b924532e4a019552924a1a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74455399"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>使用服務主體進行 Azure Container Registry 驗證
@@ -24,7 +23,7 @@ Azure AD *服務主體*提供您訂用帳戶內 Azure 資源的存取權。 您�
 
 藉由使用 Azure AD 服務主體，您可以提供對您私人容器登錄之有限範圍的存取權。 為每個應用程式或服務建立不同的服務主體，每個都有您登錄的量身訂做存取權限。 此外，由於您可以避免在服務和應用程式之間共用認證，因此您可以替換認證，或只撤銷您所選擇之主體服務 (以及應用程式) 的存取權。
 
-例如，將您的 web 應用程式設定為使用僅提供影像`pull`存取權的服務主體，而您的組建系統會使用提供它`push`和`pull`存取權的服務主體。 如果應用程式的開發變更，您可以旋轉其服務主體認證，而不會影響組建系統。
+例如，將您的 web 應用程式設定為使用僅提供影像存取權的服務主體 `pull` ，而您的組建系統會使用提供它 `push` 和存取權的服務主體 `pull` 。 如果應用程式的開發變更，您可以旋轉其服務主體認證，而不會影響組建系統。
 
 ## <a name="when-to-use-a-service-principal"></a>何時使用服務主體
 
@@ -47,12 +46,12 @@ Azure AD *服務主體*提供您訂用帳戶內 Azure 資源的存取權。 您�
 
 ## <a name="authenticate-with-the-service-principal"></a>使用服務主體進行驗證
 
-一旦您擁有已授與容器登錄存取權的服務主體，您可以設定其認證以存取「無周邊」服務和應用程式，或使用`docker login`命令輸入它們。 輸入下列值：
+一旦您擁有已授與容器登錄存取權的服務主體，您可以設定其認證以存取「無周邊」服務和應用程式，或使用命令輸入它們 `docker login` 。 輸入下列值：
 
 * **使用者名稱**-服務主體應用程式識別碼（也稱為*用戶端識別碼*）
 * **密碼**-服務主體密碼（也稱為*用戶端秘密*）
 
-每個值都是表單`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`的 GUID。 
+每個值都是表單的 GUID `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 。 
 
 > [!TIP]
 > 您可以執行 [az ad sp reset-credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) 命令來重新產生服務主體的密碼。
@@ -66,7 +65,7 @@ Azure AD *服務主體*提供您訂用帳戶內 Azure 資源的存取權。 您�
 
 ### <a name="use-with-docker-login"></a>搭配 docker 登入使用
 
-您可以使用`docker login`服務主體來執行。 在下列範例中，服務主體應用程式識別碼是在環境變數`$SP_APP_ID`中傳遞，而在變數`$SP_PASSWD`中則是密碼。 如需管理 Docker 認證的最佳作法，請參閱[Docker login](https://docs.docker.com/engine/reference/commandline/login/)命令參考。
+您可以 `docker login` 使用服務主體來執行。 在下列範例中，服務主體應用程式識別碼是在環境變數中傳遞 `$SP_APP_ID` ，而在變數中則是密碼 `$SP_PASSWD` 。 如需管理 Docker 認證的最佳作法，請參閱[Docker login](https://docs.docker.com/engine/reference/commandline/login/)命令參考。
 
 ```bash
 # Log in to Docker with service principal credentials
@@ -81,7 +80,7 @@ docker login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 
 當您[建立服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)時，可以建立自我簽署的憑證。 或者，將一或多個憑證新增至現有的服務主體。 例如，如果您使用本文中的其中一個腳本來建立或更新具有從登錄提取或推送映射之許可權的服務主體，請使用[az ad sp credential reset][az-ad-sp-credential-reset]命令來新增憑證。
 
-若要使用服務主體搭配憑證來登[入 Azure CLI](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal)，憑證必須是 PEM 格式，並包含私密金鑰。 如果您的憑證不是必要的格式，請使用之類的`openssl`工具加以轉換。 當您執行[az login][az-login]以使用服務主體登入 CLI 時，也請提供服務主體的應用程式識別碼和 Active Directory 的租使用者識別碼。 下列範例會將這些值顯示為環境變數：
+若要使用服務主體搭配憑證來登[入 Azure CLI](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal)，憑證必須是 PEM 格式，並包含私密金鑰。 如果您的憑證不是必要的格式，請使用之類的工具 `openssl` 加以轉換。 當您執行[az login][az-login]以使用服務主體登入 CLI 時，也請提供服務主體的應用程式識別碼和 Active Directory 的租使用者識別碼。 下列範例會將這些值顯示為環境變數：
 
 ```azurecli
 az login --service-principal --username $SP_APP_ID --tenant $SP_TENANT_ID  --password /path/to/cert/pem/file
@@ -93,7 +92,7 @@ az login --service-principal --username $SP_APP_ID --tenant $SP_TENANT_ID  --pas
 az acr login --name myregistry
 ```
 
-CLI 會使用您執行時所建立的`az login`權杖，以向登錄驗證您的會話。
+CLI 會使用您執行時所建立的權杖， `az login` 以向登錄驗證您的會話。
 
 ## <a name="next-steps"></a>後續步驟
 

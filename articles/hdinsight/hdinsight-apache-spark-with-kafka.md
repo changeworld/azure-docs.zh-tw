@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: d868cdd346c79cf77d4f8c1ea6e4b20adcd99b6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74327403"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>在 HDInsight 上使用 Apache Kafka 的 Apache Spark 串流 (DStream) 範例
@@ -54,7 +53,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     |屬性 |值 |
     |---|---|
     |資源群組|建立群組或選取現有的群組。|
-    |Location|選取靠近您的地理位置。|
+    |位置|選取靠近您的地理位置。|
     |基底叢集名稱|此值會作為 Spark 和 Kafka 叢集的基底名稱。 例如，輸入 **hdistreaming** 可建立名為 __spark-hdistreaming__ 的 Spark 叢集，以及名為 **kafka-hdistreaming** 的 Kafka 叢集。|
     |叢集登入使用者名稱|Spark 和 Kafka 叢集的系統管理員使用者名稱。|
     |叢集登入密碼|Spark 和 Kafka 叢集的系統管理員使用者密碼。|
@@ -63,7 +62,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
     ![HDInsight 自訂部署參數](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
 
-1. 讀取**條款及條件**，然後選取 [我同意上方所述的條款及條件]****。
+1. 閱讀**條款及條件**，然後選取 **[我同意上方所述的條款及條件**]。
 
 1. 最後，選取 [購買]****。 大約需要 20 分鐘的時間來建立叢集。
 
@@ -76,7 +75,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 ## <a name="use-the-notebooks"></a>使用 Notebook
 
-本檔中所述之範例的程式碼可于[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka)取得。
+本檔中所述之範例的程式碼可于取得 [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) 。
 
 ## <a name="delete-the-cluster"></a>選取叢集
 

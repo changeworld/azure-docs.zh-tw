@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: bcddd64afca29ac9fdd5d284fc8f809ff9e2477d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74535687"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>使用 Azure 入口網站管理適用於 PostgreSQL 的 Azure 資料庫伺服器
@@ -90,7 +89,7 @@ ms.locfileid: "74535687"
 
 1. 在 [Azure 入口網站中選取您的伺服器。 在 [**總覽**] 視窗中，選取 [**刪除**]。
 
-    ![[刪除]](./media/howto-create-manage-server-portal/overview-delete.png)
+    ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
 
 2. 在輸入方塊中輸入伺服器的名稱，確認這是您想要刪除的伺服器。
 
@@ -99,7 +98,7 @@ ms.locfileid: "74535687"
     > [!NOTE]
     > 刪除伺服器是無法復原的動作。
 
-3. 選取 [刪除]  。
+3. 選取 [刪除] 。
 
 
 ## <a name="next-steps"></a>後續步驟

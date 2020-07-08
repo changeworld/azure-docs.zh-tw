@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/18/2019
 ms.openlocfilehash: 04faafca0811e60ded47d1e91a82054a1c1cdb25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74406163"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>搭配 Apache Kafka 和 Azure Cosmos DB 使用 Apache Spark 結構化串流
@@ -47,7 +46,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
 
-    Azure Resource Manager 範本位於此專案的 GitHub 存放庫（[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)）。
+    Azure Resource Manager 範本位於此專案的 GitHub 存放庫（ [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) ）。
 
     此範本會建立下列資源：
 
@@ -78,7 +77,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
     ![HDInsight 自訂部署值](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
-1. 讀取**條款及條件**，然後選取 [我同意上方所述的條款及條件]****。
+1. 閱讀**條款及條件**，然後選取 **[我同意上方所述的條款及條件**]。
 
 1. 最後，選取 [購買]****。 最多需要 45 分鐘才能建立叢集、虛擬網路與 Cosmos DB 帳戶。
 
@@ -128,7 +127,7 @@ az cosmosdb keys list --name $name --resource-group $resourceGroupName --type ke
 
 ## <a name="get-the-notebooks"></a>取得 Notebook
 
-本檔中所述之範例的程式碼可于[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)取得。
+本檔中所述之範例的程式碼可于取得 [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) 。
 
 ## <a name="upload-the-notebooks"></a>上傳 Notebook
 

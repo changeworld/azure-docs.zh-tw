@@ -8,17 +8,16 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74775686"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>如何使用 Azure CLI 在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中備份和還原伺服器
 
 為了能使用還原功能，適用於 PostgreSQL 的 Azure 資料庫伺服器會定期備份。 透過此功能，您可以將伺服器和其所有資料庫還原至更早的時間點 (在新的伺服器上)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要完成本操作說明指南，您需要：
 - [適用於 PostgreSQL 的 Azure 資料庫的伺服器和資料庫](quickstart-create-server-database-azure-cli.md)
 
@@ -81,7 +80,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器具有相同的伺服器管理員登入名稱和密碼，在起始還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
-在還原期間建立的新伺服器沒有存在於源伺服器上的防火牆規則或 VNet 服務端點。 這些規則必須針對這個新的伺服器分別設定。
+在還原期間建立的新伺服器不會有原始伺服器中的防火牆規則或 VNet 服務端點。 您必須為新伺服器分別設定這些規則。
 
 ## <a name="geo-restore"></a>異地還原
 如果您已將伺服器設定為使用異地備援備份，則可以從現有伺服器的備份建立新的伺服器。 您可以在任何可使用「適用於 PostgreSQL 的 Azure 資料庫」的區域中建立這個新伺服器。  
@@ -120,7 +119,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 
 完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器具有相同的伺服器管理員登入名稱和密碼，在起始還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
-在還原期間建立的新伺服器沒有存在於源伺服器上的防火牆規則或 VNet 服務端點。 這些規則必須針對這個新的伺服器分別設定。
+在還原期間建立的新伺服器不會有原始伺服器中的防火牆規則或 VNet 服務端點。 您必須為新伺服器分別設定這些規則。
 
 ## <a name="next-steps"></a>後續步驟
 - 深入瞭解服務的[備份](concepts-backup.md)

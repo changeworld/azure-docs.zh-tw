@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870559"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 子查詢範例
@@ -47,7 +46,7 @@ Azure Cosmos DB 中的 SQL 查詢一律會傳回單一資料行（簡單的值�
 
 多重值子查詢可以優化聯結運算式，方法是在每個 select-many 運算式之後推送述詞，而不是在 WHERE 子句中的所有交叉聯結之後。
 
-請考慮以下查詢：
+請考慮下列查詢：
 
 ```sql
 SELECT Count(1) AS Count
@@ -63,7 +62,7 @@ AND n.nutritionValue < 10) AND s.amount > 1
 
 然後，WHERE 子句會將篩選述詞套用到每個 <c，t，n，s> 元組。 比方說，如果相符的檔在三個數組的每一個都有10個專案，它會擴展為 1 x 10 x 10 x 10 （也就是1000）元組。 在這裡使用子查詢可以協助篩選出聯結的陣列專案，然後再與下一個運算式聯結。
 
-此查詢相當於上述其中一項，但使用子查詢：
+此查詢相當於上述其中一項，但是使用的是子查詢：
 
 ```sql
 SELECT Count(1) AS Count
@@ -79,7 +78,7 @@ JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 
 子查詢可協助您使用昂貴的運算式（例如使用者定義函數（Udf）、複雜字串或算術運算式）來優化查詢。 您可以使用子查詢以及聯結運算式來評估運算式一次，但參考多次。
 
-下列查詢會執行 UDF `GetMaxNutritionValue`兩次：
+下列查詢會執行 UDF `GetMaxNutritionValue` 兩次：
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -109,7 +108,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-此方法不限於 Udf。 它適用于任何可能耗費資源的運算式。 例如，您可以使用數學函數`avg`來採取相同的方法：
+此方法不限於 Udf。 它適用于任何可能耗費資源的運算式。 例如，您可以使用數學函數來採取相同的方法 `avg` ：
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -366,7 +365,7 @@ SELECT EXISTS (SELECT VALUE undefined)
 SELECT EXISTS (SELECT undefined) 
 ```
 
-子查詢會將所選清單中的值清單括在物件中。 如果選取的清單沒有任何值，則子查詢會傳回單一值 '{}'。 已定義此值，因此 EXISTS 會評估為 true。
+子查詢會將所選清單中的值清單括在物件中。 如果選取的清單沒有任何值，則子查詢會傳回單一值 ' {} '。 已定義此值，因此 EXISTS 會評估為 true。
 
 ### <a name="example-rewriting-array_contains-and-join-as-exists"></a>範例：重寫 ARRAY_CONTAINS 並加入為 EXISTS
 
@@ -388,7 +387,7 @@ WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 
 此外，ARRAY_CONTAINS 只能檢查某個值是否等於陣列中的任何元素。 如果您需要更複雜的陣列屬性篩選，請使用聯結。
 
-請考慮下列根據陣列中的單位和`nutritionValue`屬性進行篩選的查詢： 
+請考慮下列根據陣列中的單位和屬性進行篩選的查詢 `nutritionValue` ： 
 
 ```sql
 SELECT VALUE c.description

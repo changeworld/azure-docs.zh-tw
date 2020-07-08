@@ -4,13 +4,12 @@ description: 瞭解如何以手動方式停止或啟動 Azure 容器實例中的
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: c9f8afea33c65df940d02823ec394697d2786d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74533431"
 ---
-# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>手動停止或啟動 Azure 容器實例中的容器
+# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>在 Azure 容器執行個體中手動停止或啟動容器
 
 容器群組的[重新開機原則](container-instances-restart-policy.md)設定會決定容器實例預設啟動或停止的方式。 您可以手動停止或啟動容器群組，以覆寫預設設定。
 
@@ -24,7 +23,7 @@ ms.locfileid: "74533431"
 
 如果容器群組已終止（處於 [成功] 或 [失敗] 狀態），則 [停止] 動作不會有任何作用。 例如，具有執行一次之容器工作的容器群組會成功終止，並處於成功狀態。 嘗試停止處於該狀態的群組並不會變更狀態。 
 
-## <a name="start"></a>啟動
+## <a name="start"></a>開始
 
 當容器群組停止時-可能是因為容器本身自行終止，或您手動停止了群組-您可以啟動容器。 例如，使用[az container start][az-container-start]命令或 Azure 入口網站手動啟動群組中的容器。 如果更新任何容器的容器映像，會提取新映像。 
 

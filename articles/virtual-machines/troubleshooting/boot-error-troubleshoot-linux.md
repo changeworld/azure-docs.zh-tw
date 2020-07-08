@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 11/20/2019
 ms.author: vilibert
 ms.openlocfilehash: 37cb201751f72918838efe5837aa0e357d483f24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74408738"
 ---
 # <a name="troubleshoot-azure-linux-virtual-machines-boot-errors"></a>針對 Azure Linux 虛擬機器開機錯誤進行疑難排解
@@ -37,15 +36,15 @@ ms.locfileid: "74408738"
 
  磁片交換–這可以使用下列其中一種方式來自動化：
 - [Power Shell 修復腳本](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
-- [bash 修復腳本](https://github.com/sribs/azure-support-scripts)
+- [bash 復原指令碼](https://github.com/sribs/azure-support-scripts)
 
 - [CLI](troubleshoot-recovery-disks-linux.md)
 - [Azure 入口網站](troubleshoot-recovery-disks-portal-linux.md)
 
 
-## <a name="disk-swap-video"></a>磁片交換影片：
+## <a name="disk-swap-video"></a>磁碟交換影片：
 
-如果您沒有 GRUB 的存取權，請觀看[這](https://youtu.be/m5t0GZ5oGAc)段影片並查看，如何輕鬆地將磁片交換程式自動化以復原您的 VM
+如果您無法存取 GRUB，請觀看[此](https://youtu.be/m5t0GZ5oGAc)影片，以了解如何輕鬆地自動進行用來復原您 VM 的磁碟交換程序
 
 ## <a name="unofficial-solution"></a>非官方解決方案
 

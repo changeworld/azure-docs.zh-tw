@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: 2cc2ac08b9624c1d1d9bee9ce91a7c91189d7f2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792412"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Azure Logic Apps 中的 B2B 企業整合交換 RosettaNet 訊息
@@ -51,7 +50,7 @@ ms.locfileid: "74792412"
 
   對於單一動作 PIP，唯一的回應是通知信號訊息。 對於雙動作 PIP，起始端會收到回應訊息，並除了單向動作訊息流程之外，還會回復通知。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -81,9 +80,9 @@ ms.locfileid: "74792412"
 
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | **名稱** | 是 | 您的 PIP 名稱 |
-   | **PIP 代碼** | 是 | PIP 三位數代碼。 如需詳細資訊，請參閱[RosettaNet pip](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips)。 |
-   | **PIP 版本** | 是 | PIP 版本號碼，可根據您選取的 PIP 代碼來取得 |
+   | **名稱** | Yes | 您的 PIP 名稱 |
+   | **PIP 代碼** | Yes | PIP 三位數代碼。 如需詳細資訊，請參閱[RosettaNet pip](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips)。 |
+   | **PIP 版本** | Yes | PIP 版本號碼，可根據您選取的 PIP 代碼來取得 |
    ||||
 
    如需這些 PIP 屬性的詳細資訊，請造訪[RosettaNet 網站](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg)。
@@ -112,15 +111,15 @@ ms.locfileid: "74792412"
 
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | **名稱** | 是 | 合約的名稱 |
-   | **合約類型** | 是 | 選取 [ **RosettaNet**]。 |
-   | **主控夥伴** | 是 | 合約需要主機合作夥伴和來賓合作夥伴。 主機夥伴代表設定合約的組織。 |
-   | **主控身分識別** | 是 | 主控夥伴的識別碼 |
-   | **來賓夥伴** | 是 | 合約需要主機合作夥伴和來賓合作夥伴。 來賓夥伴代表與主控夥伴有生意往來的組織。 |
-   | **來賓身分識別** | 是 | 來賓合作夥伴的識別碼 |
+   | **名稱** | Yes | 合約的名稱 |
+   | **合約類型** | Yes | 選取 [ **RosettaNet**]。 |
+   | **主控夥伴** | Yes | 合約需要主機合作夥伴和來賓合作夥伴。 主機夥伴代表設定合約的組織。 |
+   | **主控身分識別** | Yes | 主控夥伴的識別碼 |
+   | **來賓夥伴** | Yes | 合約需要主機合作夥伴和來賓合作夥伴。 來賓夥伴代表與主控夥伴有生意往來的組織。 |
+   | **來賓身分識別** | Yes | 來賓合作夥伴的識別碼 |
    | **接收設定** | 不定 | 這些屬性會套用至主機合作夥伴接收的所有訊息 |
    | **傳送設定** | 不定 | 這些屬性會套用至主機夥伴所傳送的所有訊息 |  
-   | **RosettaNet PIP 參考** | 是 | 合約的 PIP 參考。 所有 RosettaNet 訊息都需要 PIP 設定。 |
+   | **RosettaNet PIP 參考** | Yes | 合約的 PIP 參考。 所有 RosettaNet 訊息都需要 PIP 設定。 |
    ||||
 
 1. 若要設定您的合約以接收來自來賓夥伴的傳入訊息，請選取 [**接收設定**]。
@@ -129,12 +128,12 @@ ms.locfileid: "74792412"
 
    1. 若要啟用傳入訊息的簽章或加密，請在 [**訊息**] 底下，選取 [**應簽署訊息**] 或 [**訊息應該分別加密**]。
 
-      | 屬性 | 必要 | 描述 |
+      | 屬性 | 必要 | 說明 |
       |----------|----------|-------------|
-      | **訊息應該簽署** | 否 | 使用選取的憑證來簽署傳入訊息。 |
-      | **憑證** | 是，如果已啟用簽署 | 要用於簽署的憑證 |
-      | **啟用訊息加密** | 否 | 使用選取的憑證來加密傳入訊息。 |
-      | **憑證** | 是，如果已啟用加密 | 要用於加密的憑證 |
+      | **訊息應該簽署** | No | 使用選取的憑證來簽署傳入訊息。 |
+      | **[MSSQLSERVER 的通訊協定內容]** | 是，如果已啟用簽署 | 要用於簽署的憑證 |
+      | **啟用訊息加密** | No | 使用選取的憑證來加密傳入訊息。 |
+      | **[MSSQLSERVER 的通訊協定內容]** | 是，如果已啟用加密 | 要用於加密的憑證 |
       ||||
 
    1. 在每個選項下，選取您先前新增至整合帳戶的個別[憑證](./logic-apps-enterprise-integration-certificates.md)，以用於簽署或加密。
@@ -145,22 +144,22 @@ ms.locfileid: "74792412"
 
    1. 若要啟用外寄訊息的簽署或加密，請在 [**訊息**] 底下，選取 [**啟用訊息簽署**] 或 [分別**啟用訊息加密**]。 在每個選項下，選取您先前新增至整合帳戶的個別演算法和[憑證](./logic-apps-enterprise-integration-certificates.md)，以用於簽署或加密。
 
-      | 屬性 | 必要 | 描述 |
+      | 屬性 | 必要 | 說明 |
       |----------|----------|-------------|
-      | **啟用訊息簽署** | 否 | 使用選取的簽署演算法和憑證來簽署外寄訊息。 |
+      | **啟用訊息簽署** | No | 使用選取的簽署演算法和憑證來簽署外寄訊息。 |
       | **簽署演算法** | 是，如果已啟用簽署 | 要使用的簽署演算法（根據選取的憑證） |
-      | **憑證** | 是，如果已啟用簽署 | 要用於簽署的憑證 |
-      | **啟用訊息加密** | 否 | 使用選取的加密演算法和憑證來加密外寄。 |
+      | **[MSSQLSERVER 的通訊協定內容]** | 是，如果已啟用簽署 | 要用於簽署的憑證 |
+      | **啟用訊息加密** | No | 使用選取的加密演算法和憑證來加密外寄。 |
       | **加密演算法** | 是，如果已啟用加密 | 要使用的加密演算法（根據選取的憑證） |
-      | **憑證** | 是，如果已啟用加密 | 要用於加密的憑證 |
+      | **[MSSQLSERVER 的通訊協定內容]** | 是，如果已啟用加密 | 要用於加密的憑證 |
       ||||
 
    1. 在 [**端點**] 下，指定要用來傳送動作訊息和通知的必要 url。
 
-      | 屬性 | 必要 | 描述 |
+      | 屬性 | 必要 | 說明 |
       |----------|----------|-------------|
-      | **動作 URL** |  是 | 用於傳送動作訊息的 URL。 URL 是同步和非同步訊息的必要欄位。 |
-      | **認可 URL** | 是 | 用來傳送通知訊息的 URL。 URL 是非同步訊息的必要欄位。 |
+      | **動作 URL** |  Yes | 用於傳送動作訊息的 URL。 URL 是同步和非同步訊息的必要欄位。 |
+      | **認可 URL** | Yes | 用來傳送通知訊息的 URL。 URL 是非同步訊息的必要欄位。 |
       ||||
 
 1. 若要使用適用于合作夥伴的 RosettaNet PIP 參考來設定您的合約，請選取 [ **ROSETTANET pip 參考**]。 在 [ **PIP 名稱**] 底下，選取您先前建立之 PIP 的名稱。
@@ -189,7 +188,7 @@ ms.locfileid: "74792412"
 
 1. 新增觸發程式之後，請選擇 [**新增步驟**]。
 
-   ![新增要求觸發程式](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
+   ![新增要求觸發程序](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
 
 1. 在搜尋方塊中，輸入 "rosettanet"，然後選取此動作： **rosettanet**解碼
 
@@ -199,11 +198,11 @@ ms.locfileid: "74792412"
 
    ![提供動作詳細資料](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
 
-   | 屬性 | 必要 | 描述 |
+   | 屬性 | 必要 | 說明 |
    |----------|----------|-------------|
-   | **訊息** | 是 | 要解碼的 RosettaNet 訊息  |
-   | **headers** | 是 | 提供版本值的 HTTP 標頭，也就是 RNIF 版本和回應類型，這會指出夥伴之間的通訊類型，而且可以是同步或非同步。 |
-   | **角色** | 是 | 主機夥伴在 PIP 中的角色 |
+   | **Message** | Yes | 要解碼的 RosettaNet 訊息  |
+   | **標頭** | Yes | 提供版本值的 HTTP 標頭，也就是 RNIF 版本和回應類型，這會指出夥伴之間的通訊類型，而且可以是同步或非同步。 |
+   | **角色** | Yes | 主機夥伴在 PIP 中的角色 |
    ||||
 
    在 RosettaNet 解碼動作中，輸出和其他屬性會包含輸出**信號**，您可以選擇進行編碼並回到夥伴，或對該輸出採取任何其他動作。
@@ -218,7 +217,7 @@ ms.locfileid: "74792412"
 
 1. 新增觸發程式之後，請選擇 [**新增步驟**]。
 
-   ![新增要求觸發程式](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
+   ![新增要求觸發程序](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
 
 1. 在搜尋方塊中，輸入 "rosettanet"，然後選取此動作： **Rosettanet 編碼**
 
@@ -228,16 +227,16 @@ ms.locfileid: "74792412"
 
    ![提供動作詳細資料](media/logic-apps-enterprise-integration-rosettanet/encode-action-details.png)
 
-   | 屬性 | 必要 | 描述 |
+   | 屬性 | 必要 | 說明 |
    |----------|----------|-------------|
-   | **訊息** | 是 | 要編碼的 RosettaNet 訊息  |
-   | **主機合作夥伴** | 是 | 主機夥伴名稱 |
-   | **來賓合作夥伴** | 是 | 來賓夥伴名稱 |
-   | **PIP 代碼** | 是 | PIP 代碼 |
-   | **PIP 版本** | 是 | PIP 版本 |  
-   | **PIP 實例識別** | 是 | 此 PIP 訊息的唯一識別碼 |  
-   | **訊息類型** | 是 | 要編碼的訊息類型 |  
-   | **角色** | 是 | 主機夥伴的角色 |
+   | **Message** | Yes | 要編碼的 RosettaNet 訊息  |
+   | **主機合作夥伴** | Yes | 主機夥伴名稱 |
+   | **來賓合作夥伴** | Yes | 來賓夥伴名稱 |
+   | **PIP 代碼** | Yes | PIP 代碼 |
+   | **PIP 版本** | Yes | PIP 版本 |  
+   | **PIP 實例識別** | Yes | 此 PIP 訊息的唯一識別碼 |  
+   | **訊息類型** | Yes | 要編碼的訊息類型 |  
+   | **角色** | Yes | 主機夥伴的角色 |
    ||||
 
    已編碼的訊息現在已準備好傳送給夥伴。

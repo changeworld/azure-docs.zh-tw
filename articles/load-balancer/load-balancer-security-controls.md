@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: allensu
 ms.openlocfilehash: 6043e574697489b6566641c352bc21a2b6d87f51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74214907"
 ---
 # <a name="security-controls-for-azure-load-balancer"></a>Azure Load Balancer 的安全性控制項
@@ -23,7 +22,7 @@ ms.locfileid: "74214907"
 
 ## <a name="network"></a>網路
 
-| 安全性控制 | 是/否 | 注意 |
+| 安全性控制 | 是/否 | 備註 |
 |---|---|--|
 | 服務端點支援| N/A | |
 | VNet 插入支援| N/A | |
@@ -32,32 +31,32 @@ ms.locfileid: "74214907"
 
 ## <a name="monitoring--logging"></a>監視 & 記錄
 
-| 安全性控制 | 是/否 | 注意|
+| 安全性控制 | 是/否 | 備註|
 |---|---|--|
-| Azure 監視支援（Log analytics、App insights 等）| 是 | 請參閱[公用基本 Load Balancer 的 Azure 監視器記錄](load-balancer-monitor-log.md)。 |
-| 控制和管理平面記錄和審核| 是 | 請參閱[公用基本 Load Balancer 的 Azure 監視器記錄](load-balancer-monitor-log.md)。 |
+| Azure 監視支援（Log analytics、App insights 等）| Yes | 請參閱[公用基本 Load Balancer 的 Azure 監視器記錄](load-balancer-monitor-log.md)。 |
+| 控制和管理平面記錄和審核| Yes | 請參閱[公用基本 Load Balancer 的 Azure 監視器記錄](load-balancer-monitor-log.md)。 |
 | 資料平面記錄和審核 | N/A |  |
 
 ## <a name="identity"></a>身分識別
 
-| 安全性控制 | 是/否 | 注意|
+| 安全性控制 | 是/否 | 備註|
 |---|---|--|
 | 驗證| N/A |  |
 | 授權| N/A |  |
 
 ## <a name="data-protection"></a>資料保護
 
-| 安全性控制 | 是/否 | 注意 |
+| 安全性控制 | 是/否 | 備註 |
 |---|---|--|
 | 待用的伺服器端加密： Microsoft 管理的金鑰 | N/A | |
 | 傳輸中的加密（例如 ExpressRoute 加密、VNet 加密中和 VNet VNet 加密）| N/A | |
 | 待用的伺服器端加密：客戶管理的金鑰（BYOK） | N/A | |
 | 資料行層級加密（Azure 資料服務）| N/A | |
-| API 呼叫加密| 是 | 透過[Azure Resource Manager](../azure-resource-manager/index.yml)。 |
+| API 呼叫加密| Yes | 透過[Azure Resource Manager](../azure-resource-manager/index.yml)。 |
 
 ## <a name="configuration-management"></a>設定管理
 
-| 安全性控制 | 是/否 | 注意|
+| 安全性控制 | 是/否 | 備註|
 |---|---|--|
 | 設定管理支援（設定的版本設定等）| N/A |  | 
 

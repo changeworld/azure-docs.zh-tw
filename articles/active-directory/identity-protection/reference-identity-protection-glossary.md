@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74232351"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 詞彙
@@ -59,10 +58,10 @@ Identity Protection 標示為異常的 Azure AD 事件，可能表示身分識�
 ### <a name="leaked-credentials"></a>認證外洩
 當我們的研究人員在深色網站公開張貼目前的使用者認證（使用者名稱和密碼）時，就會觸發風險偵測。
 
-### <a name="mitigation"></a>緩和措施
+### <a name="mitigation"></a>降低
 此動作可限制或消除攻擊者利用遭到入侵的身分識別或裝置的能力，但不需將身分識別或裝置還原至安全的狀態。 緩和措施並不會解決先前與身分識別或裝置相關聯的風險偵測。
 
-### <a name="multi-factor-authentication"></a>[Multi-Factor Authentication]
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 此種驗證方法需要兩個或更多驗證方法，其中可能包含使用者擁有的事物 (例如憑證)、使用者知道的事物 (例如使用者名稱、密碼或通關密語)、實體屬性 (例如指紋) 以及個人屬性 (例如個人簽章)。
 
 ### <a name="offline-detection"></a>離線偵測
@@ -89,7 +88,7 @@ Identity Protection 標示為異常的 Azure AD 事件，可能表示身分識�
 ### <a name="remediated-risk-detection"></a>已補救（風險偵測）
 Identity Protection 自動設定的風險偵測狀態，表示已使用此類型風險偵測的標準補救動作來補救風險偵測。 例如，重設使用者密碼時，會自動補救許多表示先前密碼遭到入侵的風險偵測。
 
-### <a name="remediation"></a>補救
+### <a name="remediation"></a>修復
 用來保護先前疑似或已知遭到入侵的身分識別或裝置的動作。 補救動作會將身分識別或裝置還原至安全狀態，並解決先前與身分識別或裝置相關聯的風險偵測。
 
 ### <a name="resolved-risk-detection"></a>已解決（風險偵測）

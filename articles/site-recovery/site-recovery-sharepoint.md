@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74706372"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 設定多層式 SharePoint 應用程式的災害復原，以便進行災害復原
@@ -19,7 +18,7 @@ ms.locfileid: "74706372"
 本文詳細說明如何使用[Azure Site Recovery](site-recovery-overview.md)保護 SharePoint 應用程式。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門組織、共同作業及共用資訊。 SharePoint 可提供內部網路入口網站、文件和檔案管理、共同作業、社交網路、外部網路、網站、企業搜尋與商業智慧。 它也具有系統整合、程序整合和工作流程自動化功能。 一般而言，組織會將其視為對停機時間和資料遺失很敏感的第 1 層應用程式。
 
@@ -34,7 +33,7 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您瞭解下列項目︰
 
@@ -62,9 +61,9 @@ Site Recovery 與應用程式無關，而且應該與在支援的電腦上執行
 
 **案例** | **至次要網站** | **至 Azure**
 --- | --- | ---
-**Hyper-V** | 是 | 是
-**VMware** | 是 | 是
-**實體伺服器** | 是 | 是
+**Hyper-V** | 是 | Yes
+**VMware** | 是 | Yes
+**實體伺服器** | 是 | Yes
 **Azure** | NA | 是
 
 

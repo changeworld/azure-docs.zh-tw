@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74684137"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>當沒有 Azure 序列主控台的存取權，且磁片配置使用 LVM （邏輯磁片區管理員）時，針對 Linux VM 進行疑難排解
@@ -143,7 +142,7 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 命令可以用來安裝、移除和更新軟體。 針對 Vm 進行疑難排解以修正錯誤。
 
 
-執行 lsblk 命令，而/rescue 現在是/，而/rescue/boot 是/boot ![Chrooted](./media/chroot-logical-volume-manager/chrooted.png)
+執行 lsblk 命令，而/rescue 現在是/，而/rescue/boot 是/boot ![ Chrooted](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>執行修正
 
@@ -171,13 +170,13 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 **Grep**命令會列出**grub**所感知的核心。
 ![核心](./media/chroot-logical-volume-manager/kernels.png)
 
-**grub2-editenv 清單**會顯示下次開機![核心預設會載入的核心](./media/chroot-logical-volume-manager/kernel-default.png)
+**grub2-editenv 清單**會顯示下次開機核心預設會載入的核心 ![](./media/chroot-logical-volume-manager/kernel-default.png)
 
-**grub2-set-default**是用來變更為另一個![核心 grub2 集](./media/chroot-logical-volume-manager/grub2-set-default.png)
+**grub2-set-default**是用來變更為另一個核心 ![ grub2 集](./media/chroot-logical-volume-manager/grub2-set-default.png)
 
-**grub2-editenv**清單顯示將在下一次啟動![新核心時載入的核心](./media/chroot-logical-volume-manager/kernel-new.png)
+**grub2-editenv**清單顯示將在下一次啟動新核心時載入的核心 ![](./media/chroot-logical-volume-manager/kernel-new.png)
 
-**grub2-grub2-mkconfig 進行編譯**會使用所需![的版本 grub2 grub2-mkconfig 進行編譯重建 grub](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
+**grub2-grub2-mkconfig 進行編譯**會使用所需的版本 ![ grub2 grub2-mkconfig 進行編譯重建 grub](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
 
 
 
@@ -204,8 +203,8 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ![進階](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-如有需要，請移除或升級**核心**
-![Advanced](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
+如有需要，請移除或升級**核心** 
+ ![ Advanced](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
 ### <a name="example-3---enable-serial-console"></a>範例 3-啟用序列主控台
@@ -252,15 +251,15 @@ umount /rescue
 
 從修復 VM 卸離磁片，並執行磁片交換。
 
-從入口網站**磁片**選取 VM，**然後選取**
-![[卸離卸離磁片]](./media/chroot-logical-volume-manager/detach-disk.png) 
+從入口網站**磁片**選取 VM，**然後選取 [卸離卸** 
+ ![ 離磁片]](./media/chroot-logical-volume-manager/detach-disk.png) 
 
-儲存變更![儲存卸離](./media/chroot-logical-volume-manager/save-detach.png) 
+儲存變更 ![ 儲存卸離](./media/chroot-logical-volume-manager/save-detach.png) 
 
 磁片現在會變成可用，讓它能夠與受影響 VM 的原始 OS 磁片交換。
 
-在 Azure 入口網站中流覽至失敗的 VM，然後選取 [**磁片** -> ] [**交換 OS 磁片**
-![] [交換磁片]](./media/chroot-logical-volume-manager/swap-disk.png) 
+在 Azure 入口網站中流覽至失敗的 VM，然後選取 [**磁片**] [  ->  **交換 OS 磁片**] [ 
+ ![ 交換磁片]](./media/chroot-logical-volume-manager/swap-disk.png) 
 
 完成 [**選擇磁片**] 是在上一個步驟中剛卸離的快照磁片欄位。 也需要受影響 VM 的 VM 名稱，然後選取 **[確定]**
 

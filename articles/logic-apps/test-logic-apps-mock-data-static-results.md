@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74790273"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>藉由設定靜態結果，以模擬資料來測試邏輯應用程式
@@ -21,11 +20,11 @@ ms.locfileid: "74790273"
 
 例如，如果您設定 Outlook 365 傳送郵件動作的靜態結果，Logic Apps 引擎只會傳回您指定為靜態結果的模擬資料，而不是呼叫 Outlook 並傳送電子郵件。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先<a href="https://azure.microsoft.com/free/" target="_blank">註冊免費的 Azure 帳戶</a>。
 
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 您想要設定靜態結果的邏輯應用程式
 
@@ -45,16 +44,16 @@ ms.locfileid: "74790273"
 
       例如，以下是 HTTP 動作的必要屬性：
 
-      | 屬性 | 描述 |
+      | 屬性 | 說明 |
       |----------|-------------|
       | **狀態** | 要傳回的動作狀態 |
       | **狀態碼** | 要傳回的特定狀態碼 |
-      | **headers** | 要傳回的標頭內容 |
+      | **標頭** | 要傳回的標頭內容 |
       |||
 
       ![選取 [啟用靜態結果]](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
 
-      若要以 JavaScript 物件標記法（JSON）格式輸入 mock 資料，請選擇 [**切換至 json 模式**] （![選擇 [切換至](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)json 模式]）。
+      若要以 JavaScript 物件標記法（JSON）格式輸入 mock 資料，請選擇 [**切換至 Json 模式** ![ ] （選擇 [切換至 json 模式] ](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png) ）。
 
    1. 針對選擇性屬性，開啟 [**選取選擇性欄位**] 清單，然後選取您想要模擬的屬性。
 
@@ -62,7 +61,7 @@ ms.locfileid: "74790273"
 
 1. 當您準備好要儲存時，請選擇 [**完成**]。
 
-   在動作的右上角，標題列現在會顯示測試燒杯圖示（![靜態結果](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)的圖示），表示您已啟用靜態結果。
+   在動作的右上角，標題列現在會顯示測試燒杯圖示（ ![ 靜態結果的圖示 ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ），表示您已啟用靜態結果。
 
    ![顯示已啟用靜態結果的圖示](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
@@ -90,7 +89,7 @@ ms.locfileid: "74790273"
 
 1. 在 [**靜態結果**] 方塊開啟之後，選擇其中一個步驟：
 
-   * 若要貼上完整的 json 物件，請選擇 [**切換至 json 模式**] （![選擇 [](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)切換至 json 模式]）：
+   * 若要貼上完整的 JSON 物件，請選擇 [**切換至 Json 模式** ![ ] （選擇 [切換至 json 模式] ](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png) ）：
 
      ![針對 complete 物件選擇 [切換到 JSON 模式]](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
 
@@ -102,7 +101,7 @@ ms.locfileid: "74790273"
 
    ![JSON 模式](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. 完成之後，選擇 [完成]****。 或者，若要回到設計工具，請選擇 [**切換編輯器模式**] （![選擇 [切換](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)編輯器模式]）。
+1. 完成之後，選擇 [完成]。 或者，若要回到設計工具，請選擇 [**切換編輯器模式**] （ ![ 選擇 [切換編輯器模式] ](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png) ）。
 
 <a name="find-runs-mock-data"></a>
 
@@ -120,7 +119,7 @@ ms.locfileid: "74790273"
 
 1. 若要查看使用靜態結果的動作，請選取 [**靜態結果**] 資料行設定為 [**已啟用**] 的 [要執行的回合]。
 
-   使用靜態結果的動作會顯示 [測試燒杯![] （靜態結果](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)的圖示）圖示，例如：
+   使用靜態結果的動作會顯示 [測試燒杯] （ ![ 靜態結果的圖示 ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ）圖示，例如：
 
    ![執行歷程記錄-使用靜態結果的動作](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
 
@@ -128,11 +127,11 @@ ms.locfileid: "74790273"
 
 關閉靜態結果並不會擲回您最後一次設定的值。 因此，當您下一次開啟靜態結果時，您可以繼續使用先前的值。
 
-1. 尋找您要停用靜態輸出的動作。 在動作的右上角，選擇 [測試燒杯] 圖示（![靜態結果](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)的圖示）。
+1. 尋找您要停用靜態輸出的動作。 在動作的右上角，選擇 [測試燒杯] 圖示（ ![ 靜態結果的圖示 ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ）。
 
    ![停用靜態結果](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. 選擇 [**停用靜態結果** > **]。**
+1. 選擇 [**停用靜態結果**]  >  ** **。
 
    ![停用靜態結果](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 

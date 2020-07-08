@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
 ms.openlocfilehash: d453bb4071c4a6972e01b8f7e90375181caf6d01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74806519"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>交易和開放式並行存取控制
@@ -53,9 +52,9 @@ JavaScript 型預存程序、觸發程序、UDF，以及合併程序，都包裝
 
 Azure Cosmos DB 的通訊通訊協定層項目的並行更新受制於 OCC。 Azure Cosmos 資料庫可確保您正在更新 (或刪除) 之項目的用戶端版本和 Azure Cosmos 容器中項目的版本相同。 這可確保您寫入的內容會受到保護，防止因為其他人寫入而意外遭到覆寫，反之亦然。 在多使用者環境中，開放式並行存取控制可防止您不小心刪除項目，或更新項目的錯誤版本。 因此，項目會收到保護，不會受到惡名昭彰的「遺失更新」或「遺失刪除」問題影響。
 
-Azure Cosmos 容器中儲存的每個項目都有系統定義的 `_etag` 屬性。 `_etag` 的值會自動產生，並在項目每次更新時，由伺服器更新。 `_etag`可與用戶端提供`if-match`的要求標頭搭配使用，以允許伺服器決定是否可以有條件地更新專案。 `if-match`標頭的值符合伺服器`_etag`上的值，然後更新專案。 如果`if-match`要求標頭的值不再是最新的，伺服器會拒絕具有「HTTP 412 前置條件失敗」回應訊息的作業。 接著，用戶端可以重新提取專案，以取得伺服器上專案的目前版本，或是以自己`_etag`的專案值覆寫伺服器中的專案版本。 此外，可以`_etag`與`if-none-match`標頭搭配使用，以判斷是否需要資源的重新擷取。
+Azure Cosmos 容器中儲存的每個項目都有系統定義的 `_etag` 屬性。 `_etag` 的值會自動產生，並在項目每次更新時，由伺服器更新。 `_etag`可與用戶端提供的 `if-match` 要求標頭搭配使用，以允許伺服器決定是否可以有條件地更新專案。 標頭的值 `if-match` 符合 `_etag` 伺服器上的值，然後更新專案。 如果 `if-match` 要求標頭的值不再是最新的，伺服器會拒絕具有「HTTP 412 前置條件失敗」回應訊息的作業。 接著，用戶端可以重新提取專案，以取得伺服器上專案的目前版本，或是以自己的專案值覆寫伺服器中的專案版本 `_etag` 。 此外， `_etag` 可以與標頭搭配使用， `if-none-match` 以判斷是否需要資源的重新擷取。
 
-每次更新`_etag`專案時，專案的值都會變更。 針對取代專案作業， `if-match`必須明確表示為要求選項的一部分。 如需範例，請參閱 [GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L578-L674) 中的範例程式碼。 `_etag`系統會針對預存程式觸及的所有寫入專案，以隱含的方式檢查值。 如果偵測到任何衝突，預存程式將會回復交易並擲回例外狀況。 透過此方法，在預存程序內的所有寫入都會自動套用，或全部不會自動套用。 這是應用程式重新套用更新並重試原始用戶端要求的信號。
+`_etag`每次更新專案時，專案的值都會變更。 針對取代專案作業， `if-match` 必須明確表示為要求選項的一部分。 如需範例，請參閱 [GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L578-L674) 中的範例程式碼。 `_etag`系統會針對預存程式觸及的所有寫入專案，以隱含的方式檢查值。 如果偵測到任何衝突，預存程式將會回復交易並擲回例外狀況。 透過此方法，在預存程序內的所有寫入都會自動套用，或全部不會自動套用。 這是應用程式重新套用更新並重試原始用戶端要求的信號。
 
 ## <a name="next-steps"></a>後續步驟
 

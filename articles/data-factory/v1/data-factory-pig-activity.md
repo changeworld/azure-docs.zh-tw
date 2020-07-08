@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703199"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Pig 活動轉換資料
@@ -29,7 +28,7 @@ ms.locfileid: "74703199"
 > * [Machine Learning 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics 的 U-SQL 活動](data-factory-usql-activity.md)
+> * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
 
 > [!NOTE]
@@ -82,15 +81,15 @@ Data Factory [管線](data-factory-create-pipelines.md)中的 HDInsight Pig 活�
 
 ## <a name="syntax-details"></a>語法詳細資料
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | NAME |活動的名稱 |是 |
-| description |說明活動用途的文字 |否 |
-| type |HDInsightPig |是 |
-| 輸入 |Pig 活動所取用的一或多項輸入 |否 |
+| description |說明活動用途的文字 |No |
+| type |HDInsightPig |Yes |
+| 輸入 |Pig 活動所取用的一或多項輸入 |No |
 | 輸出 |Pig 活動所產生的一或多項輸出 |是 |
-| linkedServiceName |參考 HDInsight 叢集註冊為 Data Factory 中的連結服務 |是 |
-| 指令碼 (script) |指定 Pig 指令碼內嵌 |否 |
+| linkedServiceName |參考 HDInsight 叢集註冊為 Data Factory 中的連結服務 |Yes |
+| 指令碼 |指定 Pig 指令碼內嵌 |No |
 | scriptPath |在 Azure blob 儲存體中儲存 Pig 指令碼，並提供檔案的路徑。 使用 'script' 或 'scriptPath' 屬性。 兩者無法同時使用。 檔案名稱有區分大小寫。 |否 |
 | 定義 |在使用 Pig 指令碼內指定參數做為參考的機碼/值組 |否 |
 

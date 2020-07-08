@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
 ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74666370"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架構和資料匯總
@@ -96,7 +95,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 
 以下列出架構中的欄位，以及它們所代表的意義
 
-| 欄位 | [格式] | 評價 |
+| 欄位 | 格式 | 註解 |
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | 適用于流量分析資料的資料表
 | SubType_s | FlowLog | 流量記錄的子類型。 僅使用 "FlowLog"，其他 SubType_s 值適用于產品的內部運作 |
@@ -117,7 +116,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | FlowDirection_s | * I = 輸入<br> * O = 輸出 | 流程流入/流出 NSG 的方向（依流量記錄） |
 | FlowStatus_s  | * A = NSG 規則允許的 <br> * D = 被 NSG 規則拒絕  | 依流量記錄 NSG 允許/nblocked 的流程狀態 |
 | NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | 與流程相關聯的網路安全性群組（NSG） |
-| NSGRules_s | \<索引值0） >\| \<NSG_RULENAME>\| \<流程方向>\| \<流程狀態>\| \<FlowCount ProcessedByRule> |  允許或拒絕此流程的 NSG 規則 |
+| NSGRules_s | \<Index value 0)>\|\<NSG_RULENAME>\|\<Flow Direction>\|\<Flow Status>\|\<FlowCount ProcessedByRule> |  允許或拒絕此流程的 NSG 規則 |
 | NSGRule_s | NSG_RULENAME |  允許或拒絕此流程的 NSG 規則 |
 | NSGRuleType_s | * 使用者定義 * 預設值 |   流程所使用的 NSG 規則類型 |
 | MACAddress_s | MAC 位址 | 已在其上捕獲流程之 NIC 的 MAC 位址 |
@@ -127,10 +126,10 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | Region_s | 流程中的 IP 所屬虛擬網路/網路介面/虛擬機器的 Azure 區域 | 僅適用于 FlowType = S2S、P2S、AzurePublic、ExternalPublic、MaliciousFlow 和 UnknownPrivate 流程類型（只有一個端為 azure 的流程類型） |
 | Region1_s | Azure 區域 | 流程中的來源 IP 所屬之虛擬網路/網路介面/虛擬機器的 Azure 區域 |
 | Region2_s | Azure 區域 | 流程中目的地 IP 所屬之虛擬網路的 Azure 區域 |
-| NIC_s | \<resourcegroup_Name>\/ \<NetworkInterfaceName> |  與傳送或接收流量的 VM 相關聯的 NIC |
+| NIC_s | \<resourcegroup_Name>\/\<NetworkInterfaceName> |  與傳送或接收流量的 VM 相關聯的 NIC |
 | NIC1_s | <resourcegroup_Name>/\<NetworkInterfaceName> | 與流程中的來源 IP 相關聯的 NIC |
 | NIC2_s | <resourcegroup_Name>/\<NetworkInterfaceName> | 與流程中目的地 IP 相關聯的 NIC |
-| VM_s | <resourcegroup_Name>\/ \<NetworkInterfaceName> | 與網路介面相關聯的虛擬機器 NIC_s |
+| VM_s | <resourcegroup_Name>\/\<NetworkInterfaceName> | 與網路介面相關聯的虛擬機器 NIC_s |
 | VM1_s | <resourcegroup_Name>/\<VirtualMachineName> | 與流程中的來源 IP 相關聯的虛擬機器 |
 | VM2_s | <resourcegroup_Name>/\<VirtualMachineName> | 與流程中的目的地 IP 相關聯的虛擬機器 |
 | Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | 與 NIC_s 相關聯的子網 |
@@ -143,7 +142,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | 與流程中的來源 IP 相關聯的局域網路閘道 |
 | LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | 與流程中目的地 IP 相關聯的局域網路閘道 |
 | ConnectionType_s | 可能的值為 VNetPeering、VpnGateway 和 ExpressRoute |    連接類型 |
-| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | 連接名稱。 針對 flowtype P2S，此格式會格式化為<gateway name>_<VPN Client IP> |
+| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | 連接名稱。 針對 flowtype P2S，此格式會格式化為 <gateway name> _<VPN Client IP> |
 | ConnectingVNets_s | 以空格分隔的虛擬網路名稱清單 | 如果是中樞和輪輻拓撲，則會在此填入中樞虛擬網路 |
 | Country_s | 兩個字母的國家/地區代碼（ISO 3166-1 Alpha-2） | 已填入流程類型 ExternalPublic。 PublicIPs_s 欄位中的所有 IP 位址都會共用相同的國家/地區代碼 |
 | AzureRegion_s | Azure 區域位置 | 已填入流程類型 AzurePublic。 PublicIPs_s 欄位中的所有 IP 位址都會共用 Azure 區域 |
@@ -157,11 +156,11 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | InboundBytes_d |  在套用 NSG 規則的網路介面上收到的位元組已被捕獲 | 這只會針對第2版的 NSG 流量記錄架構而填入。 |
 | OutboundBytes_d | 在套用 NSG 規則的網路介面上，以捕捉的形式傳送的位元組 | 這只會針對第2版的 NSG 流量記錄架構而填入。 |
 | CompletedFlows_d  |  | 這只會針對 NSG 流量記錄架構的第2版填入非零值 |
-| PublicIPs_s | <PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \< \| \< \|OUTBOUND_PACKETS>\|INBOUND_PACKETS>OUTBOUND_BYTES>INBOUND_BYTES> \< \< | 以橫條分隔的專案 |
-| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \< \| \< \|OUTBOUND_PACKETS>\|INBOUND_PACKETS>OUTBOUND_BYTES>INBOUND_BYTES> \< \< | 以橫條分隔的專案 |
-| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \< \| \< \|OUTBOUND_PACKETS>\|INBOUND_PACKETS>OUTBOUND_BYTES>INBOUND_BYTES> \< \< | 以橫條分隔的專案 |
+| PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | 以橫條分隔的專案 |
+| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | 以橫條分隔的專案 |
+| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | 以橫條分隔的專案 |
 
-### <a name="notes"></a>注意
+### <a name="notes"></a>備註
 
 1. 在 AzurePublic 和 ExternalPublic 流程的情況下，客戶擁有的 Azure VM IP 會填入 VMIP_s] 欄位中，而公用 IP 位址則會填入 [PublicIPs_s] 欄位中。 針對這兩種流程類型，我們應該使用 VMIP_s 和 PublicIPs_s，而不是 SrcIP_s 和 DestIP_s 欄位。 針對 AzurePublic 和 ExternalPublicIP 位址，我們會進一步匯總，使內嵌至客戶 log analytics 工作區的記錄數目最少。（此欄位即將淘汰，我們應該使用 SrcIP_ 和 DestIP_s，視 azure VM 是否為流程中的來源或目的地而定）
 1. 流量類型的詳細資料：根據流程中涉及的 IP 位址，我們會將流程分類為下列流程類型：
@@ -174,7 +173,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 1. MaliciousFlow-其中一個 IP 位址屬於 azure 虛擬網路，而另一個 IP 位址是不在 Azure 中的公用 IP，而且在 ASC 摘要中回報為惡意，而流量分析會在「FlowIntervalStartTime_t」和「FlowIntervalEndTime_t」之間處理間隔。
 1. UnknownPrivate-其中一個 IP 位址屬於 Azure 虛擬網路，而另一個 IP 位址屬於私人 IP 範圍（如 RFC 1918 中所定義），而且無法由流量分析對應至客戶擁有的網站或 Azure 虛擬網路。
 1. 不明–無法將流程中的其中一個 IP 位址與 Azure 中的客戶拓撲以及內部部署（網站）對應。
-1. 某些功能變數名稱會附加\_s 或\_d。 這些不表示來源和目的地，但會分別表示資料類型字串和十進位數。
+1. 某些功能變數名稱會附加 \_ s 或 \_ d。 這些不表示來源和目的地，但會分別表示資料類型字串和十進位數。
 
 ### <a name="next-steps"></a>後續步驟
 若要取得常見問題的解答，請參閱使用[分析常見問題](traffic-analytics-faq.md)以查看功能的詳細資料，請參閱使用[分析檔](traffic-analytics.md)

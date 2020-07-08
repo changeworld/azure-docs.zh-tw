@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
 ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870814"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB 中的參數化查詢
@@ -19,7 +18,7 @@ Cosmos DB 支援具有以熟悉 @ notation 表示之參數的查詢。 參數化
 
 ## <a name="examples"></a>範例
 
-例如，您可以撰寫`lastName`接受和`address.state`做為參數的查詢，並`lastName` `address.state`根據使用者輸入，對的各種值執行。
+例如，您可以撰寫接受 `lastName` 和 `address.state` 做為參數的查詢，並 `lastName` 根據使用者輸入，對的各種值執行 `address.state` 。
 
 ```sql
     SELECT *

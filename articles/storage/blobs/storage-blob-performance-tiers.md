@@ -9,10 +9,9 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74270215"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>區塊 blob 儲存體的效能層級
@@ -84,5 +83,5 @@ Blob 儲存體生命週期管理提供豐富、以規則為基礎的原則：
 
 - [瞭解如何從封存層解除凍結 blob 資料](storage-blob-rehydration.md)
 - [啟用 Azure 儲存體計量以評估您目前的儲存體帳戶使用量](../common/storage-enable-and-view-metrics.md)
-- [依區域檢查 Blob 儲存體和 GPv2 帳戶中的經常性存取、非經常性存取和封存價格](https://azure.microsoft.com/pricing/details/storage/)
+- [依照區域檢查 Blob 儲存體和 GPv2 帳戶中的經常性存取、非經常性存取和封存價格](https://azure.microsoft.com/pricing/details/storage/)
 - [檢查資料傳輸價格](https://azure.microsoft.com/pricing/details/data-transfers/)

@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74847844"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD 密碼保護代理程式版本記錄
@@ -42,9 +41,9 @@ ms.locfileid: "74847844"
   * 在 Server Core 系統上，可能需要將/q 旗標傳遞給 .NET 4.7 安裝程式，才能讓它成功。
 * Proxy 服務現在支援自動升級。 自動升級會使用與 Proxy 服務並存安裝的 Microsoft Azure AD Connect Agent 更新程式服務。 預設會開啟自動升級。
 * 您可以使用 AzureADPasswordProtectionProxyConfiguration Cmdlet 來啟用或停用自動升級。 您可以使用 AzureADPasswordProtectionProxyConfiguration Cmdlet 來查詢目前的設定。
-* DC 代理程式服務的服務二進位檔已重新命名為 AzureADPasswordProtectionDCAgent。
-* Proxy 服務的服務二進位檔已重新命名為 Register-azureadpasswordprotectionproxy。 如果協力廠商防火牆正在使用中，則可能需要適當地修改防火牆規則。
-  * 注意：如果在先前的 Proxy 安裝中使用 HTTP proxy 設定檔案，在此升級之後，必須將它重新命名（從*proxyservice*到*register-azureadpasswordprotectionproxy*）。
+* DC 代理程式服務的服務二進位檔已重新命名為 AzureADPasswordProtectionDCAgent.exe。
+* Proxy 服務的服務二進位檔已重新命名為 AzureADPasswordProtectionProxy.exe。 如果協力廠商防火牆正在使用中，則可能需要適當地修改防火牆規則。
+  * 注意：如果在先前的 Proxy 安裝中使用 HTTP proxy 設定檔案，在此升級之後，必須將它重新命名（從*proxyservice.exe.config*到*AzureADPasswordProtectionProxy.exe.config*）。
 * 已從 DC 代理程式中移除所有時間限制的功能檢查。
 * 次要 bug 修正和記錄功能改進。
 

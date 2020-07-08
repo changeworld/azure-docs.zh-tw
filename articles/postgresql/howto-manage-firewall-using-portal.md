@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: aeef22bf96221061a444f40e16e33343fafe511c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74770300"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>使用 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的防火牆規則
@@ -18,7 +17,7 @@ ms.locfileid: "74770300"
 
 虛擬網路（VNet）規則也可以用來保護對您伺服器的存取。 深入瞭解如何[使用 Azure 入口網站建立和管理虛擬網路服務端點和規則](howto-manage-vnet-using-portal.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要逐步執行本作法指南，您需要︰
 - [建立適用於 PostgreSQL 的 Azure 資料庫](quickstart-create-server-database-portal.md)伺服器
 
@@ -40,7 +39,7 @@ ms.locfileid: "74770300"
 
    ![Azure 入口網站 - 防火牆規則](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
-5. 按一下工具列上的 [儲存]****，儲存此伺服器等級防火牆規則。 等待確認已成功更新防火牆規則。
+5. 按一下工具列上的 [儲存]，儲存此伺服器等級防火牆規則。 等待確認已成功更新防火牆規則。
 
    ![Azure 入口網站 - 按一下 [儲存]](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
 
@@ -53,10 +52,10 @@ ms.locfileid: "74770300"
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>透過 Azure 入口網站管理現有的伺服器層級防火牆規則
 重複步驟來管理防火牆規則。
-* 若要新增目前的電腦，請按一下 [+新增我的 IP]**** 按鈕。 按一下 **[儲存]**，儲存變更。
-* 若要新增其他 IP 位址，請輸入「規則名稱」、「起始 IP 位址」和「結束 IP 位址」。 按一下 **[儲存]**，儲存變更。
-* 若要修改現有的規則，請按一下和修改規則中的任何欄位。 按一下 **[儲存]**，儲存變更。
-* 若要刪除現有的規則，請按一下省略符號 [...]，然後按一下 [刪除]**** 移除規則。 按一下 **[儲存]**，儲存變更。
+* 若要新增目前的電腦，請按一下 [+新增我的 IP]**** 按鈕。 按一下 [儲存]  儲存變更。
+* 若要新增其他 IP 位址，請輸入「規則名稱」、「起始 IP 位址」和「結束 IP 位址」。 按一下 [儲存]  儲存變更。
+* 若要修改現有的規則，請按一下和修改規則中的任何欄位。 按一下 [儲存]  儲存變更。
+* 若要刪除現有的規則，請按一下省略符號 [...]，然後按一下 [刪除] 移除規則。 按一下 [儲存]  儲存變更。
 
 ## <a name="next-steps"></a>後續步驟
 - 同樣地，您可以使用 Azure CLI 編寫腳本，以[建立和管理適用於 PostgreSQL 的 Azure 資料庫防火牆規則](howto-manage-firewall-using-cli.md)。

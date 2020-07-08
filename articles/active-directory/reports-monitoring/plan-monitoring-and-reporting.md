@@ -13,10 +13,9 @@ ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74232113"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>規劃 Azure Active Directory 報告和監視部署
@@ -71,13 +70,13 @@ Azure AD 報告提供環境中 Azure AD 活動的完整視圖和記錄，包括�
 
 在此專案中，您將定義將取用和監視報表的物件，以及定義您的 Azure AD 監視架構。
 
-### <a name="engage-the-right-stakeholders"></a>參與適當的專案關係人
+### <a name="engage-the-right-stakeholders"></a>包含正確的專案關係人
 
-當技術專案失敗時，通常是因為對影響、結果和責任的預期不相符所造成。 若要避免這些錯誤，請[確定您參與的是正確的專案關係人](https://aka.ms/deploymentplans)。 記錄專案關係人和專案的輸入和標準責任，以確保可以充分瞭解專案中的專案關係人角色。
+當技術專案失敗時，其通常是因為人員對影響、結果與責任抱持不相符的預期而造成。 若要避免這些錯誤，請[確定您參與的是正確的專案關係人](https://aka.ms/deploymentplans)。 記錄專案關係人和專案的輸入和標準責任，以確保可以充分瞭解專案中的專案關係人角色。
 
-### <a name="plan-communications"></a>規劃溝通
+### <a name="plan-communications"></a>規劃通訊
 
-通訊對於任何新服務的成功非常重要。 主動與您的使用者溝通他們的體驗會如何變更，變更時，以及如何在遇到問題時取得支援。
+溝通對於任何新服務的成功非常重要。 主動與您的使用者溝通其體驗將如何改變、何時會改變，以及如何在遇到問題時取得支援。
 
 ### <a name="document-your-current-infrastructure-and-policies"></a>記錄您目前的基礎結構和原則
 
@@ -99,7 +98,7 @@ Azure AD 報告提供環境中 Azure AD 活動的完整視圖和記錄，包括�
 * 符合業務需求的絕佳想法
 * 不適用
 
-|區域 |描述 |
+|區域 |說明 |
 |-|-|
 |保留| **記錄保留期限超過30天**。 由於法律或商務需求，因此必須儲存 audit 記錄和登入 Azure AD 超過30天的記錄。 |
 |分析| **記錄必須可**供搜尋。 儲存的記錄檔必須可流量分析工具進行搜尋。 |
@@ -127,7 +126,7 @@ Azure AD 報告提供環境中 Azure AD 活動的完整視圖和記錄，包括�
 
 您也可以為 Azure AD 活動記錄安裝預先建立的視圖，以監視涉及登入和審核事件的常見案例。
 
-瞭解如何[安裝和使用 log analytics views 來進行 Azure AD 活動記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)。
+了解如何[安裝與使用適用於 Azure AD 活動記錄的記錄分析檢視](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)。
 
 #### <a name="stream-logs-to-your-azure-event-hub"></a>將記錄串流至您的 Azure 事件中樞
 
@@ -149,7 +148,7 @@ Azure AD 角色可讓您根據您的角色，委派設定及查看 Azure AD 報�
 
 * 安全性讀取者
 
-* 報表讀取者
+* 報告讀者
 
 深入瞭解[Azure AD 系統管理角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)。
 

@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: e9bb516d498d989b97f1069af9a9f4cb673ea96d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74892663"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>檢視及編輯影片索引器深入解析
@@ -27,7 +26,7 @@ ms.locfileid: "74892663"
 
     頁面會顯示影片的深入解析摘要。 
 
-    ![深入資訊](./media/video-indexer-view-edit/video-indexer-summarized-insights.png)
+    ![深入解析](./media/video-indexer-view-edit/video-indexer-summarized-insights.png)
 
 4. 檢視影片的深入解析摘要。 
 

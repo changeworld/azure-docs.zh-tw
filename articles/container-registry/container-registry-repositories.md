@@ -4,17 +4,16 @@ description: 使用 [Azure 入口網站來觀看 Azure Container Registry 存放
 ms.topic: article
 ms.date: 01/05/2018
 ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456287"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>檢視 Azure 入口網站中的容器登錄存放庫
 
 Azure Container Registry 可讓您將 Docker 容器映像儲存在存放庫中。 透過將映像儲存在存放庫中，您可以在隔離的環境中儲存映像的群組 (或映像的版本)。 當您將映像推送到登錄時，可以指定這些存放庫，然後在 Azure 入口網站中檢視其內容。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * **容器登錄**：在 Azure 訂用帳戶中建立容器登錄。 例如，使用 [Azure 入口網站](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
 * **Docker CLI**：在本機電腦安裝 [Docker][docker-install]，可提供您 Docker 命令列介面。

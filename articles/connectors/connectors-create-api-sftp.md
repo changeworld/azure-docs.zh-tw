@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74789268"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>藉由使用 Azure Logic Apps 來監視、建立及管理 SFTP 檔案
@@ -27,13 +26,13 @@ ms.locfileid: "74789268"
 * 取得檔案內容與中繼資料。
 * 將封存檔案解壓縮到資料夾。
 
-您可以使用觸發程序來監視 SFTP 伺服器上的事件，並讓輸出可供其他動作使用。 您可以使用動作，在 SFTP 伺服器上執行各種工作。 您也可以讓邏輯應用程式中的其他動作使用 SFTP 動作的輸出。 例如，如果您定期從 SFTP 伺服器擷取檔案，可以藉由使用 Office 365 Outlook 連接器或 Outlook.com 連接器，傳送關於那些檔案及其內容的電子郵件警示。 如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
+您可以使用觸發程序來監視 SFTP 伺服器上的事件，並讓輸出可供其他動作使用。 您可以使用動作，在 SFTP 伺服器上執行各種工作。 您也可以讓邏輯應用程式中的其他動作使用 SFTP 動作的輸出。 例如，如果您定期從 SFTP 伺服器擷取檔案，可以藉由使用 Office 365 Outlook 連接器或 Outlook.com 連接器，傳送關於那些檔案及其內容的電子郵件警示。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="limits"></a>限制
 
 SFTP 連接器只會處理*50 MB 或更小*的檔案，且不支援[訊息區塊](../logic-apps/logic-apps-handle-large-messages.md)化。 針對較大的檔案，請使用[SFTP SSH 連接器](../connectors/connectors-sftp-ssh.md)。 如需 SFTP 連接器與 SFTP SSH 連接器之間的差異，請參閱在 SFTP SSH 文章中[比較 sftp-ssh 與 sftp](../connectors/connectors-sftp-ssh.md#comparison) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -47,7 +46,7 @@ SFTP 連接器只會處理*50 MB 或更小*的檔案，且不支援[訊息區塊
   > 如果您使用 SSH 私密金鑰，請確定會從您的 SSH 私密金鑰檔案「複製」****** 金鑰，然後將該金鑰「貼到」****** 連線詳細資料中，「請勿手動輸入或編輯該金鑰」******，這樣可能導致連線失敗。 
   > 如需詳細資訊，請參閱本文稍後的步驟。
 
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 您要在其中存取 SFTP 帳戶的邏輯應用程式。 若要開始使用 SFTP 觸發程序，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」**** 觸發程序。
 
@@ -57,8 +56,8 @@ SFTP 觸發程式的工作是輪詢 SFTP 檔案系統，並尋找自上次輪詢
 
 | SFTP 用戶端 | 動作 |
 |-------------|--------|
-| Winscp | 移至**選項** > **喜好** > 設定**傳輸** > **編輯** > **保留時間戳** > **停**用 |
-| FileZilla | 移至 [**傳輸** > ] [**保留傳輸** > 的檔案的時間戳記]**停**用 |
+| Winscp | 移至**選項**  >  **喜好**設定  >  **傳輸**  >  **編輯**  >  **保留時間戳**  >  **停**用 |
+| FileZilla | 移至 [**傳輸**] [  >  **保留傳輸的檔案的時間戳記**]  >  **停**用 |
 |||
 
 當觸發程序找到新檔案時，觸發程序會確認該新檔案是完整檔案，而不是部分寫入的檔案。 例如，當觸發程序檢查檔案伺服器時，檔案可能正在進行變更。 為避免傳回部分寫入的檔案，觸發程序會備註最近發生變更之檔案的時間戳記，但不會立即傳回該檔案。 觸發程序只有在再次輪詢伺服器時，才會傳回該檔案。 有時，此行為可能會導致最長可達觸發程序輪詢間隔兩倍的延遲。
@@ -73,9 +72,9 @@ SFTP 觸發程式的工作是輪詢 SFTP 檔案系統，並尋找自上次輪詢
 
    -或-
 
-   若是現有的邏輯應用程式，請在想要新增動作的最後一個步驟底下，選擇 [新增步驟]****。 在搜尋方塊中，輸入 "sftp" 作為篩選條件。 在動作清單底下，選取您想要的動作。
+   若是現有的邏輯應用程式，請在想要新增動作的最後一個步驟底下，選擇 [新增步驟]。 在搜尋方塊中，輸入 "sftp" 作為篩選條件。 在動作清單底下，選取您想要的動作。
 
-   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選擇顯示的加號（**+**），然後選取 [**新增動作**]。
+   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
 
 1. 為您的連線提供必要的詳細資料。
 
@@ -90,7 +89,7 @@ SFTP 觸發程式的工作是輪詢 SFTP 檔案系統，並尋找自上次輪詢
 
    1. 在 [記事本**編輯**] 功能表上，選取 [**全選**]。
 
-   1. 選取 [**編輯** > **複本**]。
+   1. 選取 [**編輯**  >  **複本**]。
 
    1. 在您新增的 SFTP 觸發程序或動作中，將所複製的「完整」** 金鑰貼到 [SSH 私密金鑰]**** 屬性中，此屬性支援多行。 ***請確定您會貼上***金鑰。 ***請勿手動輸入或編輯此金鑰***。
 

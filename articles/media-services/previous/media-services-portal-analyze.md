@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74462609"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>使用 Azure 入口網站分析您的媒體 
@@ -26,7 +25,7 @@ ms.locfileid: "74462609"
 > [!IMPORTANT]
 > 查看一些媒體處理器的[淘汰計畫](media-services-analytics-overview.md#retirement-plans)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Azure 媒體服務分析是語音和視覺元件的集合 (具企業規模、相容性、安全性和遍及全球的觸角)，讓組織和企業從其影片檔輕鬆製作出能採取行動的深入見解內容。 如需更為詳細的 Azure 媒體服務分析概觀，請參閱[此主題](media-services-analytics-overview.md)。 
 
 本主題討論如何使用 Azure 入口網站，以媒體分析媒體處理器 (MP) 處理您的媒體。 媒體分析 MP 會產生 MP4 檔案或 JSON 檔案。 如果媒體處理器產生了 MP4 檔案，您可以漸進式下載檔案。 如果媒體處理器產生了 JSON 檔案，您可以從 Azure Blob 儲存體下載檔案。 
@@ -49,7 +48,7 @@ Azure 媒體服務分析是語音和視覺元件的集合 (具企業規模、相
 
 ![分析影片](./media/media-services-portal-analyze/media-services-portal-analyze003.png)
 
-### <a name="language"></a>Language
+### <a name="language"></a>語言
 要在多媒體檔案中辨識的自然語言。 例如，英文或西班牙文。 
 
 ### <a name="captions"></a>標題

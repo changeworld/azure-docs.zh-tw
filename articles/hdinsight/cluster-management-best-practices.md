@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 3010c1d597907e7d5c7f82c8b42721dc1f934f6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74782017"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight 叢集管理最佳作法
@@ -40,14 +39,14 @@ ms.locfileid: "74782017"
 
 | 選項 | 文件 |
 |---|---|
-| 指令碼動作 | [使用腳本動作自訂 Azure HDInsight 叢集](./hdinsight-hadoop-customize-cluster-linux.md) |
+| 指令碼動作 | [使用指令碼動作來自訂 Azure HDInsight 叢集](./hdinsight-hadoop-customize-cluster-linux.md) |
 | 啟動程序 | [使用 Bootstrap 自訂 HDInsight 叢集](./hdinsight-hadoop-customize-cluster-bootstrap.md) |
 | 外部中繼存放區 | [在 Azure HDInsight 中使用外部中繼資料存放區](./hdinsight-use-external-metadata-stores.md) |
 | 自訂 Ambari DB | [使用自訂 Ambari DB 設定 HDInsight 叢集](./hdinsight-custom-ambari-db.md) |
 
 ## <a name="what-are-some-errors-i-might-face-when-creating-clusters"></a>建立叢集時，我可能會面臨哪些錯誤？
 
-| 錯誤 | 詳細資訊 |
+| 錯誤 | 更多資訊 |
 |---|---|
 | 沒有配額 | 您可以在每個區域的訂用帳戶上建立配額數目配額。 如需詳細資訊，請參閱[容量規劃：配額](./hdinsight-capacity-planning.md)。 |
 | 沒有其他可用的 IP 位址 | 每個 VNet 都有有限數目的 IP 位址。 當您建立 HDInsight 叢集時，每個節點（包括 zookeeper 和閘道節點）都會使用其中一些已分配的 IP 位址。 當所有的 IP 位址都在使用中時，您將會遇到此錯誤。  |

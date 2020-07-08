@@ -4,10 +4,9 @@ description: 深入了解如何針對 Durable Functions 進行單元測試。
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74231233"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions 單元測試
@@ -17,7 +16,7 @@ ms.locfileid: "74231233"
 > [!NOTE]
 > 本文提供以 Durable Functions 1.x 為目標之 Durable Functions 應用程式單元測試的指導方針。 尚未更新，以將 Durable Functions 2.x 中引進的變更納入考慮。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 這篇文章中的範例需要下列概念和架構的知識：
 
@@ -39,7 +38,7 @@ Durable Functions 1.x 中的三個抽象類別都支援模擬：
 
 * `DurableActivityContextBase`
 
-這些類別是`DurableOrchestrationClient`、和`DurableOrchestrationContext` `DurableActivityContext`的基類，這些類別會定義協調流程用戶端、協調器和活動方法。 模擬會設定基底類別方法的預期行為，讓單元測試可以驗證商務邏輯。 有一個雙步驟工作流程可以針對協調流程用戶端和協調器中的商務邏輯進行單元測試：
+這些類別是 `DurableOrchestrationClient` 、和的基類，這些類別會 `DurableOrchestrationContext` `DurableActivityContext` 定義協調流程用戶端、協調器和活動方法。 模擬會設定基底類別方法的預期行為，讓單元測試可以驗證商務邏輯。 有一個雙步驟工作流程可以針對協調流程用戶端和協調器中的商務邏輯進行單元測試：
 
 1. 定義協調流程用戶端和協調器函式簽章時，請使用基類，而不是具體的執行。
 2. 在單元測試中模擬基底類別的行為，並且驗證商務邏輯。
@@ -52,9 +51,9 @@ Durable Functions 1.x 中的三個抽象類別都支援模擬：
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-單元測試工作會驗證回應承載中提供的 `Retry-After` 標頭值。 因此，單元測試會模擬一些`DurableOrchestrationClientBase`方法，以確保可預測的行為。
+單元測試工作會驗證回應承載中提供的 `Retry-After` 標頭值。 因此，單元測試會模擬一些 `DurableOrchestrationClientBase` 方法，以確保可預測的行為。
 
-首先，需要基類的 mock `DurableOrchestrationClientBase`。 Mock 可以是執行的新類別`DurableOrchestrationClientBase`。 不過，使用例如 [moq](https://github.com/moq/moq4) 的模擬架構可以簡化程序：
+首先，需要基類的 mock `DurableOrchestrationClientBase` 。 Mock 可以是執行的新類別 `DurableOrchestrationClientBase` 。 不過，使用例如 [moq](https://github.com/moq/moq4) 的模擬架構可以簡化程序：
 
 ```csharp
     // Mock DurableOrchestrationClientBase
@@ -172,7 +171,7 @@ Durable Functions 1.x 中的三個抽象類別都支援模擬：
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-且單元測試會驗證輸出的格式。 單元測試可以直接使用參數類型或 mock `DurableActivityContextBase`類別：
+且單元測試會驗證輸出的格式。 單元測試可以直接使用參數類型或 mock `DurableActivityContextBase` 類別：
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 

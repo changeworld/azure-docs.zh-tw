@@ -4,10 +4,9 @@ description: 在您的私人˙容器登錄中，使用使用者指派或系統�
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456503"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 受控識別向 Azure 容器登錄進行驗證 
@@ -239,7 +238,7 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 > * 授與 Azure 容器登錄的身分識別存取權
 > * 使用受控識別存取登錄及提取容器映像
 
-* 深入了解 [Azure 資源的受控識別](/azure/active-directory/managed-identities-azure-resources/)。
+* 深入瞭解[適用于 Azure 資源的受控](/azure/active-directory/managed-identities-azure-resources/)識別。
 
 
 <!-- LINKS - external -->

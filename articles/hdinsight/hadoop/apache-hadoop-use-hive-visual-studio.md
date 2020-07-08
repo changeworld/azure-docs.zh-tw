@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 27ab13481525819eb1435f4c9ac256a21acd21fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74687792"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用 Data Lake Tools for Visual Studio 執行 Apache Hive 查詢
@@ -50,7 +49,7 @@ ms.locfileid: "74687792"
     SELECT * FROM hivesampletable;
     ```
 
-5. 選取 [**執行**]。 執行模式預設為 [**互動式**]。
+5. 選取 [執行] 。 執行模式預設為 [**互動式**]。
 
     ![執行互動式 Hive 查詢，Visual Studio](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
 
@@ -58,7 +57,7 @@ ms.locfileid: "74687792"
 
     ![提交批次 Hive 查詢，Visual Studio](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
-    Hive 編輯器支援 Intellisense。 Data Lake Tools for Visual Studio 支援在編輯 Hive 指令碼時載入遠端中繼資料。 例如，如果您輸入`SELECT * FROM`，IntelliSense 會列出所有建議的資料表名稱。 若已指定資料表名稱，IntelliSense 會列出資料行名稱。 此工具支援大部分的 Hive DML 陳述式、子查詢及內建 UDF。 IntelliSense 只建議 HDInsight 工具列中已選取的叢集中繼資料。
+    Hive 編輯器支援 Intellisense。 Data Lake Tools for Visual Studio 支援在編輯 Hive 指令碼時載入遠端中繼資料。 例如，如果您輸入 `SELECT * FROM` ，IntelliSense 會列出所有建議的資料表名稱。 若已指定資料表名稱，IntelliSense 會列出資料行名稱。 此工具支援大部分的 Hive DML 陳述式、子查詢及內建 UDF。 IntelliSense 只建議 HDInsight 工具列中已選取的叢集中繼資料。
 
 7. 在 [查詢] 工具列（[查詢] 索引標籤和查詢文字上方的區域）中，選取 [**提交**]，或選取 [送出] 旁的下拉箭號 **，然後從**下拉清單中選擇 [ **Advanced** ]。 如果您選取第二個選項，
 
@@ -72,7 +71,7 @@ ms.locfileid: "74687792"
 
 1. 開啟**Visual Studio**。
 
-2. 在 [開始]**** 視窗中，選取 [建立新專案]****。
+2. 在 [開始] 視窗中，選取 [建立新專案]。
 
 3. 在 [**建立新專案**] 視窗的 [**搜尋範本**] 方塊中，輸入*Hive*。 然後選擇 [ **Hive 應用程式**] 並選取 **[下一步]**。
 
@@ -104,7 +103,7 @@ ms.locfileid: "74687792"
 
     * `STORED AS TEXTFILE LOCATION`：告訴 Hive 資料儲存在*example/data*目錄中，而且儲存為文字。
 
-    * `SELECT`：選取資料行包含值`t4` `[ERROR]`的所有資料列計數。 這個語句會傳回的`3`值，因為有三個數據列包含此值。
+    * `SELECT`：選取資料行包含值的所有資料列計數 `t4` `[ERROR]` 。 這個語句會傳回的值 `3` ，因為有三個數據列包含此值。
 
     * `INPUT__FILE__NAME LIKE '%.log'`：告訴 Hive 只從 .log 結尾的檔案傳回資料。 此子句會將搜尋限制為包含資料的*範例 .log*檔案。
 
@@ -118,7 +117,7 @@ ms.locfileid: "74687792"
 
 ### <a name="additional-example"></a>其他範例
 
-下列範例會依賴在上`log4jLogs`一個程式中建立的資料表，[建立 Hive 應用程式](#create-a-hive-application)。
+下列範例會依賴在 `log4jLogs` 上一個程式中建立的資料表，[建立 Hive 應用程式](#create-a-hive-application)。
 
 1. 在**伺服器總管**中，以滑鼠右鍵按一下您的叢集，然後選取 [**撰寫 Hive 查詢**]。
 
@@ -132,7 +131,7 @@ ms.locfileid: "74687792"
 
     這些語句會執行下列動作：
 
-    * `CREATE TABLE IF NOT EXISTS`：建立資料表（如果尚未存在的話）。 因為未`EXTERNAL`使用關鍵字，所以這個語句會建立內部資料表。 內部資料表儲存在 Hive 資料倉儲中，並受到 Hive 所管理。
+    * `CREATE TABLE IF NOT EXISTS`：建立資料表（如果尚未存在的話）。 因為 `EXTERNAL` 未使用關鍵字，所以這個語句會建立內部資料表。 內部資料表儲存在 Hive 資料倉儲中，並受到 Hive 所管理。
 
         > [!NOTE]  
         > 與 `EXTERNAL` 資料表不同之處在於，捨棄內部資料表也會刪除基礎資料。
@@ -143,7 +142,7 @@ ms.locfileid: "74687792"
 
 3. 視需要將 [**互動式**] 變更為 [**批次**]，然後選取 [**提交**]。
 
-4. 若要確認作業已建立資料表，請移至**伺服器總管**並展開 [ **Azure** > **HDInsight**]。 展開您的 HDInsight 叢集，然後展開 [ **Hive 資料庫** > ] [**預設**]。 會列出 **errorLogs** 資料表和 **log4jLogs** 資料表。
+4. 若要確認作業已建立資料表，請移至**伺服器總管**並展開 [ **Azure**  >  **HDInsight**]。 展開您的 HDInsight 叢集，然後展開 [ **Hive 資料庫**] [  >  **預設**]。 會列出 **errorLogs** 資料表和 **log4jLogs** 資料表。
 
 ## <a name="next-steps"></a>後續步驟
 

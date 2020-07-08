@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74231263"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停機部署
@@ -54,17 +53,17 @@ Durable Functions 的[可靠執行模型](durable-functions-checkpointing-and-re
 
 1. 針對每個位置，將[AzureWebJobsStorage 應用程式](../functions-app-settings.md#azurewebjobsstorage)設定設為共用儲存體帳戶的連接字串。 Azure Functions 執行時間會使用此儲存體帳戶連接字串。 此帳戶是由 Azure Functions 執行時間使用，並會管理函式的金鑰。
 
-1. 針對每個位置，建立新的應用程式設定，例如`DurableManagementStorage`。 將其值設定為不同儲存體帳戶的連接字串。 Durable Functions 延伸模組會使用這些儲存體帳戶來進行[可靠的執行](durable-functions-checkpointing-and-replay.md)。 針對每個位置使用個別的儲存體帳戶。 請勿將此設定標記為部署位置設定。
+1. 針對每個位置，建立新的應用程式設定，例如 `DurableManagementStorage` 。 將其值設定為不同儲存體帳戶的連接字串。 Durable Functions 延伸模組會使用這些儲存體帳戶來進行[可靠的執行](durable-functions-checkpointing-and-replay.md)。 針對每個位置使用個別的儲存體帳戶。 請勿將此設定標記為部署位置設定。
 
-1. 在您函式應用程式的[host. json 檔案的 durableTask 區段](durable-functions-bindings.md#hostjson-settings)中，指定`azureStorageConnectionStringName`做為您在步驟3中建立之應用程式設定的名稱。
+1. 在您函式應用程式host.js的 [ [durableTask] 區段](durable-functions-bindings.md#hostjson-settings)中，將指定 `azureStorageConnectionStringName` 為您在步驟3中建立的應用程式設定名稱。
 
 下圖顯示部署位置和儲存體帳戶的描述設定。 在這種可能的預先部署案例中，函式應用程式的第2版會在生產位置中執行，而第1版會保留在預備位置。
 
 ![部署位置和儲存體帳戶](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>host. json 範例
+### <a name="hostjson-examples"></a>範例 host.js
 
-下列 JSON 片段是*主機. JSON*檔案中連接字串設定的範例。
+下列 JSON 片段是*host.json*檔案之連接字串設定的範例。
 
 #### <a name="functions-20"></a>函數2。0
 
@@ -164,7 +163,7 @@ Azure Pipelines 檢查函式應用程式，以在部署開始之前執行協調�
 
 ### <a name="tracking-store-settings"></a>追蹤存放區設定
 
-每個函數應用程式都應該使用個別的排程佇列，可能在不同的儲存體帳戶中。 如果您想要跨所有應用程式版本查詢所有協調流程實例，您可以在函式應用程式中共用實例和歷程記錄資料表。 您可以在[host. json](durable-functions-bindings.md#host-json)配置`trackingStoreConnectionStringName`檔`trackingStoreNamePrefix`案中設定和設定，讓它們全都使用相同的值，藉以共用資料表。
+每個函數應用程式都應該使用個別的排程佇列，可能在不同的儲存體帳戶中。 如果您想要跨所有應用程式版本查詢所有協調流程實例，您可以在函式應用程式中共用實例和歷程記錄資料表。 您可以藉由在 [配置 `trackingStoreConnectionStringName` `trackingStoreNamePrefix` 檔] 中的 [ [host.js](durable-functions-bindings.md#host-json)設定和設定，讓它們全都使用相同的值，藉以共用資料表。
 
 如需詳細資訊，請參閱[在 Azure 中的 Durable Functions 中管理實例](durable-functions-instance-management.md)。
 

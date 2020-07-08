@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 4826bcdc85e0c6189c51aa262014fe154bb479b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74535453"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory 治理作業參考指南
@@ -31,7 +30,7 @@ ms.locfileid: "74535453"
 
 管理 Azure Active Directory 需要持續執行重要的作業工作和進程，這可能不是首度發行專案的一部分。 您必須設定這些工作來優化您的環境，這仍然很重要。 主要工作和其建議的擁有者包括：
 
-| 工作 | 擁有者 |
+| Task | 擁有者 |
 | :- | :- |
 | 封存 Azure AD SIEM 系統中的 audit 記錄 | InfoSec 營運小組 |
 | 探索管理不相容的應用程式 | IAM 作業小組 |
@@ -76,7 +75,7 @@ ms.locfileid: "74535453"
 
 經過一段時間後，使用者在不同的小組和職位移動時，可能會累積資源的存取權。 資源擁有者必須定期審查應用程式的存取權，並移除使用者生命週期中不再需要的許可權。 Azure AD[存取審查](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)可讓組織有效地管理群組成員資格、企業應用程式的存取權，以及角色指派。 資源擁有者應該定期審查使用者的存取權，以確保只有適當的人員可以繼續存取。 在理想的情況下，您應該考慮使用 Azure AD 存取審查來進行這項工作。
 
-![存取審查起始頁](./media/active-directory-ops-guide/active-directory-ops-img15.png)
+![存取權檢閱啟動頁面](./media/active-directory-ops-guide/active-directory-ops-img15.png)
 
 > [!NOTE]
 > 與存取評論互動的每個使用者都必須具有付費 Azure AD Premium P2 授權。
