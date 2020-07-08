@@ -13,7 +13,7 @@ ms.locfileid: "80159401"
 ---
 檔中的專案會 `inferenceconfig.json` 對應至[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)類別的參數。 下表描述 JSON 檔中的實體與方法的參數之間的對應：
 
-| JSON 實體 | 方法參數 | Description |
+| JSON 實體 | 方法參數 | 描述 |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | 本機檔案的路徑，其中包含要為映射執行的程式碼。 |
 | `sourceDirectory` | `source_directory` | 選擇性。 資料夾的路徑，其中包含要建立映射的所有檔案，讓您可以輕鬆地存取此資料夾或子資料夾中的任何檔案。 您可以從本機電腦上傳整個資料夾，做為 Webservice 的相依性。 注意：您的 entry_script、conda_file 和 extra_docker_file_steps 路徑是 source_directory 路徑的相對路徑。 |
