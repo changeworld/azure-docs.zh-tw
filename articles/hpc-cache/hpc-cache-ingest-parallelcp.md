@@ -3,19 +3,18 @@ title: Azure HPC 快取資料內嵌-平行複製腳本
 description: 如何使用平行複製腳本，將資料移至 Azure HPC Cache 中的 Blob 儲存體目標
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 90e05ad3d42b1009b631630fe476669a9f418d33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5db04b3ee89ab5a0a4f85f3b833ea513310dce18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74166891"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514793"
 ---
 # <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC 快取資料內嵌-平行複製腳本方法
 
-本文提供的指示可讓您``parallelcp``建立腳本，並使用它將資料移至 Blob 儲存體容器，以與 Azure HPC 快取搭配使用。
+本文提供的指示可讓您建立 ``parallelcp`` 腳本，並使用它將資料移至 Blob 儲存體容器，以與 AZURE HPC 快取搭配使用。
 
 若要深入瞭解如何將資料移至 Azure HPC 快取的 Blob 儲存體，請參閱[將資料移至 Azure blob 儲存體](hpc-cache-ingest.md)。
 
@@ -75,11 +74,11 @@ EOM
 
 ## <a name="parallel-copy-example"></a>平行複製範例
 
-這個範例會使用平行複製腳本，在``glibc`` Azure HPC 快取中使用來源檔案進行編譯。
+這個範例會使用平行複製腳本， ``glibc`` 在 AZURE HPC 快取中使用來源檔案進行編譯。
 
 來源檔案會在 Azure HPC 快取掛接點中快取，而物件檔案則會儲存在本機硬碟上。
 
-這個範例會使用平行複製腳本搭配選項``-j``和``make``來取得平行存取。
+這個範例會使用平行複製腳本搭配選項 ``-j`` 和 ``make`` 來取得平行存取。
 
 ```bash
 sudo apt-get update

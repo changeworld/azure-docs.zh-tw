@@ -7,12 +7,11 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 05/20/2020
-ms.openlocfilehash: dc93121d7565b95b9bd604160028659f3a741b0c
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
+ms.openlocfilehash: 9038630a2623a8b20ddfcf98899ce9a89f16bdc1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860489"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673355"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper server 無法在 Azure HDInsight 中形成仲裁
 
@@ -27,7 +26,7 @@ ms.locfileid: "83860489"
 
 ## <a name="sample-log"></a>範例記錄
 
-您可能看到類似下列的錯誤訊息：
+您可能會在 yarn 記錄（前端節點上的/var/log/hadoop-yarn/yarn/yarn-yarn * .log）中看到類似下面的錯誤訊息：
 
 ```output
 2020-05-05 03:17:18.3916720|Lost contact with Zookeeper. Transitioning to standby in 10000 ms if connection is not reestablished.
@@ -116,6 +115,7 @@ Node count: 133212
 
 ## <a name="cancelledkeyexception-in-the-zookeeper-server-log-doesnt-require-snapshot-cleanup"></a>Zookeeper 伺服器記錄中的 CancelledKeyException 不需要清除快照集
 
+* 此例外狀況會出現在 zookeeper 伺服器（/var/log/zookeeper/zookeeper-zookeeper-* 或/var/log/hdinsight-zookeeper/zookeeper * files）
 * 這個例外狀況通常表示用戶端已不再使用，而且伺服器無法傳送訊息
 * 此例外狀況也表示 Zookeeper 用戶端提前結束工作階段
 * 尋找本文件中所述的其他徵兆

@@ -11,12 +11,11 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f0cb402741163c657b3e7961eb5a4f9c8e18dafd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673015"
 ---
 # <a name="continuous-access-evaluation"></a>持續存取評估
 
@@ -40,6 +39,7 @@ Microsoft 曾成為連續存取評估通訊協定（CAEP）計畫的早期參與
 
 - 已刪除或停用使用者帳戶
 - 使用者的密碼已變更或重設
+- 已為使用者啟用 MFA
 - 管理員明確撤銷使用者的所有重新整理權杖
 - Azure AD Identity Protection 偵測到提高許可權的使用者風險
 
@@ -50,13 +50,13 @@ Microsoft 曾成為連續存取評估通訊協定（CAEP）計畫的早期參與
 在進行連續存取評估之前，用戶端一律會嘗試從其快取中重新執行存取權杖，但前提是它未過期。 透過 CAE，我們引進了新的案例，讓資源提供者可以拒絕權杖，即使尚未過期也一樣。 為了通知用戶端即使快取的權杖尚未過期，也會略過其快取，我們引進了一項稱為「宣告**挑戰**」的機制。 CAE 需要用戶端更新以瞭解宣告挑戰。 下列應用程式的最新版本支援索賠挑戰：
 
 - 適用于 Windows 的 Outlook 
-- Outlook iOS 
-- Outlook Android 
-- Outlook Mac 
+- 適用于 iOS 的 Outlook 
+- 適用于 Android 的 Outlook 
+- Outlook for Mac 
 - Windows 團隊
-- 小組 iOS 
-- Android 團隊 
-- 小組 Mac 
+- 適用于 iOS 的小組 
+- 適用于 Android 的小組 
+- Mac 團隊 
 
 ## <a name="token-lifetime"></a>權杖存留期
 
@@ -76,7 +76,7 @@ Microsoft 曾成為連續存取評估通訊協定（CAEP）計畫的早期參與
 1. 存取權杖會呈現給資源提供者。 資源提供者會評估權杖的有效性，並檢查使用者是否有任何撤銷事件。 資源提供者會使用此資訊來決定是否要授與資源的存取權。
 1. 在此情況下，資源提供者會拒絕存取，並將 401 + 宣告挑戰傳送回用戶端
 1. 支援 CAE 的用戶端瞭解 401 + 宣告挑戰。 它會略過快取，並返回步驟1，將其重新整理權杖連同宣告挑戰傳回 Azure AD。 Azure AD 接著會重新評估所有條件，並在此情況下提示使用者重新驗證。
- 
+
 ## <a name="faqs"></a>常見問題集
 
 ### <a name="what-is-the-lifetime-of-my-access-token"></a>我的存取權杖存留期為何？

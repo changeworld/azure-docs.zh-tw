@@ -2,21 +2,20 @@
 title: 向 SaaS 應用程式報告自動使用者帳戶布建
 description: 了解如何檢查使用者帳戶自動佈建作業的狀態，以及如何針對個別使用者的佈建進行疑難排解。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/09/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 102a0b60c917d5ee24177ac4b52e97fe72c343e7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: a0c85226b5890fe0f5f2011110c1d7d20e3c2907
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593874"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782002"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教學課程︰關於使用者帳戶自動佈建的報告
 
@@ -40,7 +39,7 @@ Azure Active Directory （Azure AD）包含[使用者帳戶](user-provisioning.m
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>從 Azure 入口網站取得布建報告
 
-若要取得給定應用程式的布建報告資訊，請先啟動[Azure 入口網站](https://portal.azure.com)，然後在 [**活動**] 區段中**Azure Active Directory** &gt; [**企業應用程式** &gt;布建**記錄（預覽）** ]。 您也可以流覽至已設定布建的企業應用程式。 例如，如果您要在 LinkedIn Elevate 中佈建使用者，則應用程式詳細資料的導覽路徑為︰
+若要取得給定應用程式的布建報告資訊，請先啟動[Azure 入口網站](https://portal.azure.com)，然後**Azure Active Directory** &gt; 在 [活動] 區段中 Azure Active Directory [**企業應用程式**布建 &gt; **記錄（預覽）** ]。 **Activity** 您也可以流覽至已設定布建的企業應用程式。 例如，如果您要在 LinkedIn Elevate 中佈建使用者，則應用程式詳細資料的導覽路徑為︰
 
 **Azure Active Directory > 企業應用程式 > 所有應用程式 > LinkedIn Elevate**
 
@@ -61,7 +60,7 @@ Azure Active Directory （Azure AD）包含[使用者帳戶](user-provisioning.m
 
 ## <a name="provisioning-logs-preview"></a>布建記錄（預覽）
 
-布建服務所執行的所有活動都會記錄在 Azure AD 布建[記錄](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)檔中。 您可以在 [**活動**] 區段中選取 [ **Azure Active Directory** &gt; **企業應用程式** &gt;布建**記錄（預覽）** ]，以存取 Azure 入口網站中的布建記錄。 您可以根據使用者名稱或來源系統或目標系統中的識別碼來搜尋布建資料。 如需詳細資訊，請參閱布建[記錄（預覽）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 所記錄的活動事件類型包括︰
+布建服務所執行的所有活動都會記錄在 Azure AD 布建[記錄](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)檔中。 您可以在**Azure Active Directory** &gt; [活動] 區段中選取 [Azure Active Directory**企業應用程式**布建 &gt; **記錄（預覽）** ] **Activity** ，以存取 Azure 入口網站中的布建記錄。 您可以根據使用者名稱或來源系統或目標系統中的識別碼來搜尋布建資料。 如需詳細資訊，請參閱布建[記錄（預覽）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 所記錄的活動事件類型包括︰
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -71,5 +70,5 @@ Azure Active Directory （Azure AD）包含[使用者帳戶](user-provisioning.m
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶布建](configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)

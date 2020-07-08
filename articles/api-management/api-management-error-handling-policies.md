@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 2c021a6d10c95b58ac444de8ea895ca01371a2b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0bc4792b44ccff23a141460c3521d684801c4567
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75902449"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84674256"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API 管理原則中的錯誤處理
 
@@ -71,12 +70,16 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 -   [log-to-eventhub](api-management-advanced-policies.md#log-to-eventhub)
 -   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)
 -   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)
+-   [limit-concurrency](api-management-advanced-policies.md#LimitConcurrency)
+-   [mock-response](api-management-advanced-policies.md#mock-response)
+-   [再](api-management-advanced-policies.md#Retry)
+-   [追蹤](api-management-advanced-policies.md#Trace)
 
 ## <a name="lasterror"></a>LastError
 
-當發生錯誤，且控制跳到`on-error`原則區段時，錯誤會儲存在內容中[。LastError](api-management-policy-expressions.md#ContextVariables)屬性，可由區段中的`on-error`原則存取。 LastError 具有下列屬性。
+當發生錯誤，且控制跳到 `on-error` 原則區段時，錯誤會儲存在[內容中。LastError](api-management-policy-expressions.md#ContextVariables)屬性，可由區段中的原則存取 `on-error` 。 LastError 具有下列屬性。
 
-| 名稱       | 類型   | 描述                                                                                               | 必要 |
+| 名稱       | 類型   | 說明                                                                                               | 必要 |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | `Source`   | 字串 | 發生錯誤之元素的名稱。 可以是原則或內建管線步驟名稱。      | 是      |
 | `Reason`   | 字串 | 方便電腦理解的錯誤碼，可用於處理錯誤。                                       | 否       |
@@ -84,7 +87,7 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 | `Scope`    | 字串 | 發生錯誤之範圍的名稱，此名稱可為「全域」、「產品」、「API」或「作業」其中之一 | 否       |
 | `Section`  | 字串 | 發生錯誤的區段名稱。 可能的值：「輸入」、「後端」、「輸出」或 「錯誤」。      | 否       |
 | `Path`     | 字串 | 指定巢狀原則，例如 "choose[3]/when[2]"。                                                 | 否       |
-| `PolicyId` | 字串 | 發生錯誤之原則上 `id` 屬性的值 (如果客戶有指定)             | 否       |
+| `PolicyId` | 字串 | 發生錯誤之原則上 `id` 屬性的值 (如果客戶有指定)             | No       |
 
 > [!TIP]
 > 您可以透過 context.Response.StatusCode 存取狀態碼。
@@ -96,7 +99,7 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 
 針對在內建處理步驟評估期間可能會發生的錯誤狀況，系統預先定義了下列錯誤。
 
-| 來源        | 狀況                                 | 原因                  | 訊息                                                                                                                |
+| 來源        | 條件                                 | 原因                  | 訊息                                                                                                                |
 | ------------- | ----------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | 組態 | Uri 不符合任何 API 或作業 | OperationNotFound       | 連入要求與作業無法匹配。                                                                      |
 | 授權 | 未提供訂用帳戶金鑰             | SubscriptionKeyNotFound | 拒絕存取，因為找不到訂用帳戶金鑰。 在對這個 API 提出要求時，請務必包含訂用帳戶金鑰。 |
@@ -109,7 +112,7 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 
 針對在原則評估期間可能會發生的錯誤狀況，系統預先定義了下列錯誤。
 
-| 來源       | 狀況                                                       | 原因                    | 訊息                                                                                                                              |
+| 來源       | 條件                                                       | 原因                    | 訊息                                                                                                                              |
 | ------------ | --------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | rate-limit   | 超過了速率限制                                             | RateLimitExceeded         | 超過速率限制                                                                                                               |
 | quota        | 超過配額                                                  | QuotaExceeded             | 呼叫量配額不足。 會在 xx:xx:xx 中補充配額。 -或- 頻寬配額不足。 會在 xx:xx:xx 中補充配額。 |

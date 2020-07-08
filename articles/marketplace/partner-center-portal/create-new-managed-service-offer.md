@@ -8,16 +8,15 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 9ab2122fe1dd71a06127cad5ecc064fc42845390
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 3099c73849a63ebf490d026db95cedfd1278d735
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847714"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957574"
 ---
 # <a name="create-a-managed-service-offer"></a>建立受控服務供應項目
 
-受控服務供應項目可協助啟用 [Azure Lighthouse](../../lighthouse/overview.md) 案例。 當客戶接受受控服務供應項目時，其就可以將資源上線，以進行 [Azure 委派的資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。 開始之前，請先[在合作夥伴中心建立商業市集帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) \(部分機器翻譯\) (如果您尚未有帳戶)。 請確定您已在商業市集計畫中註冊帳戶。
+受控服務供應項目可協助啟用 [Azure Lighthouse](../../lighthouse/overview.md) 案例。 當客戶接受受控服務供應項目時，其就可以將資源上線，以進行 [Azure 委派的資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。 開始之前，請先[在合作夥伴中心建立商業市集帳戶](create-account.md) \(部分機器翻譯\) (如果您尚未有帳戶)。 請確定您已在商業市集計畫中註冊帳戶。
 
 您必須擁有[銀級或金級雲端平台專長認證等級](https://partner.microsoft.com/membership/cloud-platform-competency)，或必須是 [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp)，才能發佈受控服務供應項目。
 
@@ -80,6 +79,17 @@ ms.locfileid: "83847714"
 > [!NOTE]
 > 供應項目清單內容 (例如描述、文件、螢幕擷取畫面與使用規定) 不一定要使用英文，只要供應項目用以下句子描述開頭即可：「此應用程式僅適用於 [非英文語言]」。 也可利用不同於供應項目清單內容中所使用的語言，來提供供應項目內容的「有用連結 URL」。
 
+以下是如何在 Azure 入口網站中顯示供應專案資訊的範例：
+
+:::image type="content" source="media/example-managed-services.png" alt-text="說明此供應專案在 Azure 入口網站中的顯示方式。":::
+
+#### <a name="call-out-descriptions"></a>向外撥說明
+
+1. Title
+2. Description
+3. 實用的連結
+4. 螢幕擷取畫面
+
 ### <a name="name"></a>名稱
 
 您在此處輸入的名稱會作為供應項目清單標題向客戶顯示。 當您建立供應項目時，此欄位會預先填入您為**供應項目別名**輸入的文字，但您可以變更此值。 此名稱可以是商標 (您也可以包含商標或著作權符號)。 名稱不能超過 50 個字元，而且不能包含任何表情圖示。
@@ -127,9 +137,9 @@ ms.locfileid: "83847714"
 
 提供四個像素大小的供應項目標誌：
 
-- **小型** (40 x 40)
+- **小型** (48 x 48)
 - **中型** (90 x 90)
-- **大型** (115 x 115)
+- **大型** (216 x 216)
 - **寬** (255 x 115)
 
 您的標誌應遵循這些指導方針：
@@ -151,7 +161,7 @@ ms.locfileid: "83847714"
 
 #### <a name="additional-marketplace-listing-resources"></a>其他市集清單資源
 
-- [市集供應項目清單的最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices) \(部分機器翻譯\)
+- [市集供應項目清單的最佳做法](../gtm-offer-listing-best-practices.md)
 
 選取 [儲存草稿] 後再繼續。
 

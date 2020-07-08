@@ -5,14 +5,13 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 06/08/2020
 ms.author: dsindona
-ms.openlocfilehash: da2588125b455deaf18110687d54adc04a7dd4c0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 1267225f6b8557efc7ce36a973daef0a46aaba2d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799868"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957982"
 ---
 # <a name="consulting-service-offers"></a>諮詢服務供應項目
 
@@ -22,20 +21,11 @@ ms.locfileid: "83799868"
 
 ## <a name="compare-consulting-services"></a>比較諮詢服務
 
-商業市集店面、Microsoft AppSource 和 Azure Marketplace 是專為目標對象與雲端產品提供的，可協助客戶找到所需的項目。 每個店面都有專屬的發行選項，有助於讓發行投資發揮最大效用。 下表摘要說明這些選項：
-
-|         |Azure Marketplace  |Microsoft AppSource |
-|---------|---------|---------|
-|適用對象      |IT 專業人員與雲端開發人員|商務使用者和企業營運決策者|
-|解決方案相關性      |適用於 Azure 或在 Azure 上建立的技術應用程式|利用或擴充 Dynamics 365、Power BI、Office 365、Azure (已完成增益集或附加元件的應用程式) 的商務應用程式|
-|發行選項      |與我聯絡、試用版、交易或 Azure 服務|與我聯絡、試用版，或 Dynamics 365 和 Power BI 的服務|
-|產品內體驗      |Azure 入口網站|Dynamics 365、Office 365、Office 用戶端應用程式| 
-|其他      |透過 Azure Stack 的內部部署發佈、適用於 Azure 的諮詢服務、Azure 的受控服務|Dynamics 365 和 Power BI 的諮詢服務|
-||
+商業市集店面、Microsoft AppSource 和 Azure Marketplace 是專為目標對象與雲端產品提供的，可協助客戶找到所需的項目。 每個店面都有專屬的發行選項，有助於讓發行投資發揮最大效用。 若要深入瞭解兩個店面之間的差異，請參閱[比較 Microsoft AppSource 和 Azure Marketplace](comparing-appsource-azure-marketplace.md)。
 
 以 Dynamics 365、Power Apps 和 Power BI 為基礎的諮詢服務供應項目有資格在 AppSource 上列出。 如需詳細資訊，請參閱 [Microsoft AppSource 諮詢服務清單清單指導方針](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF 檔案。
 
-以 Microsoft Azure 為基礎的諮詢服務和受控服務供應項目，都有資格在 Azure Marketplace 上列出。 如需詳細資訊，請參閱[發佈 Azure 諮詢服務供應項目](./partner-center-portal/create-consulting-service-offer.md)和[將受控服務供應項目發佈到 Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)。
+以 Microsoft Azure 為基礎的諮詢服務和受控服務供應項目，都有資格在 Azure Marketplace 上列出。 如需詳細資訊，請參閱[發佈 Azure 諮詢服務供應項目](./partner-center-portal/create-consulting-service-offer.md)和[將受控服務供應項目發佈到 Azure Marketplace](../lighthouse/how-to/publish-managed-services-offers.md)。
 
 > [!Note]
 > Azure Marketplace 中的諮詢服務應專注於技術受重的供應項目，並著重於 Azure 技術解決方案和服務。
@@ -79,21 +69,20 @@ ms.locfileid: "83799868"
 
 如需專長認證的詳細資訊，請移至 [Microsoft 合作夥伴網路專長認證](https://partner.microsoft.com/membership/competencies)頁面。
 
-系統整合者合作夥伴可在下列 21 個國家/地區提交諮詢服務供應項目：
+系統整合者合作夥伴可以提交適用于下列20個國家/地區的諮詢服務供應專案：
 
-|   |   |   |   |
+| 國家/地區  | （續）   | （續）  | （續）  |
 |---------|----------|----------|----------|
 | 澳大利亞 | 比利時 | Canada | 丹麥 |
 | 芬蘭  | 法國 | 德國  | 印度   |
 | 義大利    | 日本  |  墨西哥  |  荷蘭  |
 |  紐西蘭  |  挪威  |  波蘭  | 南非 |
-|  西班牙  | 瑞典  | 瑞士  |  美國  |
-| United Kingdom  |
+|  瑞典  | 瑞士  |  美國  | United Kingdom  |
 ||
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>在商業市集中註冊諮詢服務
 
-首先，在市集中[註冊](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)您的公司資訊。 如需註冊需求的完整檢查清單，請參閱[成為市集中的發行者](https://docs.microsoft.com/azure/marketplace/become-publisher)。 
+首先，在市集中[註冊](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)您的公司資訊。 如需註冊需求的完整檢查清單，請參閱[成為市集中的發行者](become-publisher.md)。 
 
 ## <a name="prepare-your-publishing-artifacts"></a>準備您的發佈成品
 註冊前，您可以開始收集及準備相關內容，幫助您向目標客戶闡述您的服務和解決方案的價值。 

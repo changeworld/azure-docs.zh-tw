@@ -1,24 +1,16 @@
 ---
 title: Azure 服務匯流排與 Event Grid 的整合概觀 | Microsoft Docs
 description: 本文提供如何 Azure 服務匯流排訊息與 Azure 事件方格整合的說明。
-services: service-bus-messaging
 documentationcenter: .net
-author: axisc
-editor: spelluru
-ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
+author: spelluru
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 009e6a1b98e72d9618dc8ed3437d7ea90ab4afac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76773469"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340575"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服務匯流排與 Event Grid 的整合概觀
 
@@ -118,7 +110,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 為服務匯流排命名空間建立 Event Grid 訂用帳戶的方式有三種：
 
 * 在 Azure 入口網站
-* 在 [Azure CLI](#azure-cli-instructions) 中
+* 在[Azure CLI](#azure-cli-instructions)
 * 在[PowerShell](#powershell-instructions)中
 
 ## <a name="azure-portal-instructions"></a>Azure 入口網站指示

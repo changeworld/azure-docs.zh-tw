@@ -2,21 +2,20 @@
 title: 規劃雲端 HR 應用程式以 Azure Active Directory 使用者布建
 description: 本文說明整合雲端 HR 系統（例如 Workday 和 SuccessFactors）與 Azure Active Directory 的部署流程。 將 Azure AD 與您的雲端 HR 系統整合，會產生完整的身分識別生命週期管理系統。
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 86b858b628dc2ed9eac730d4c3f090f4d7d6c7e2
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593296"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781594"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>規劃雲端 HR 應用程式以 Azure Active Directory 使用者布建
 
@@ -52,7 +51,7 @@ Azure AD 的使用者布建服務可自動化下列以 HR 為基礎的身分識�
 - 視雲端 HR 應用程式中偵測到的變更資訊而定，需要加入、移動及讓使用者同步處理一或多個 Active Directory 的樹系、網域和 Ou。
 - 將 Office 365 用於電子郵件。
 
-## <a name="learn"></a>學習
+## <a name="learn"></a>Learn
 
 使用者布建會為持續的身分識別治理建立基礎。 它會增強依賴授權身分識別資料的商務程式品質。
 
@@ -79,12 +78,13 @@ Azure AD 的使用者布建服務可自動化下列以 HR 為基礎的身分識�
 
 對於將來自雲端 HR 應用程式並布建到 Active Directory 或 Azure AD 的每個使用者，您也需要有效的 Azure AD Premium P1 或更高的訂用帳戶授權。 在雲端 HR 應用程式中所擁有的任何不正確授權數目，可能會在使用者布建期間導致錯誤。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
-- Azure AD 全域管理員存取權來設定 Azure AD Connect 布建代理程式。
+- Azure AD[混合式身分識別管理員](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)，以設定 Azure AD Connect 布建代理程式。
+- Azure AD[應用程式系統管理員](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)角色，以在 Azure 入口網站中設定布建應用程式
 - 雲端 HR 應用程式的測試和實際執行實例。
 - 雲端 HR 應用程式中的系統管理員許可權，用來建立系統整合使用者並進行變更以測試員工資料，以供測試之用。
-- 若要 Active Directory 的使用者布建，必須有執行 Windows Server 2012 或更新版本的伺服器，才能裝載 Azure AD Connect 布建[代理程式](https://go.microsoft.com/fwlink/?linkid=847801)。
+- 若要 Active Directory 的使用者布建，必須有執行 Windows Server 2012 或更新版本的伺服器，才能裝載 Azure AD Connect 布建代理程式
 - 在 Active Directory 與 Azure AD 之間同步處理使用者的[Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) 。
 
 ### <a name="training-resources"></a>訓練資源
@@ -94,7 +94,7 @@ Azure AD 的使用者布建服務可自動化下列以 HR 為基礎的身分識�
 | 影片 | [Azure Active Directory 中的使用者布建是什麼？](https://youtu.be/_ZjARPpI6NI) |
 | | [如何在 Active Directory 中部署使用者布建](https://youtu.be/pKzyts6kfrw) |
 | 教學課程 | [如何整合 SaaS 應用程式與 Azure AD 的教學課程清單](../saas-apps/tutorial-list.md) |
-| | [教學課程︰設定 Workday 來自動佈建使用者](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
+| | [教學課程：設定 Workday 來自動佈建使用者](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 | 常見問題集 | [自動的使用者佈建](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [從 Workday 布建至 Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
@@ -121,17 +121,17 @@ Azure AD 的使用者布建服務可自動化下列以 HR 為基礎的身分識�
 
 ## <a name="plan-the-deployment-project"></a>規劃部署專案
 
-當您在環境中判斷此部署的策略時，請考慮您的組織需求。
+在決定環境中此部署的策略時，請考慮您的組織需求。
 
-### <a name="engage-the-right-stakeholders"></a>參與適當的專案關係人
+### <a name="engage-the-right-stakeholders"></a>包含正確的專案關係人
 
 當技術專案失敗時，他們通常會原因，以不符合影響、結果和責任的預期。 若要避免這些錯誤，請[確定您參與的是正確的專案關係人](https://aka.ms/deploymentplans)。 也請確定專案中的專案關係人角色已充分瞭解。 記錄專案關係人及其專案的輸入和標準責任。
 
 包含 HR 組織的代表，可以提供現有 HR 商務程式和背景工作角色身分識別的輸入，以及工作資料處理需求。
 
-### <a name="plan-communications"></a>規劃溝通
+### <a name="plan-communications"></a>規劃通訊
 
-通訊對於任何新服務的成功非常重要。 與您的使用者主動溝通其體驗的時機與方式。 當他們遇到問題時，讓他們知道如何取得支援。
+溝通對於任何新服務的成功都非常重要。 與您的使用者主動溝通其體驗的時機與方式。 當他們遇到問題時，讓他們知道如何取得支援。
 
 ### <a name="plan-a-pilot"></a>規劃試驗
 
@@ -248,7 +248,7 @@ Azure AD Connect 布建代理程式部署拓撲取決於您打算整合的雲端
 
 您可以設定多個相符的屬性，並指派相符的優先順序。 它們會根據比對優先順序進行評估。 只要找到相符項目，便不會評估進一步比對屬性。
 
-您也可以[自訂預設的屬性](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)對應，例如變更或刪除現有的屬性對應。 您也可以根據您的業務需求建立新的屬性對應。 如需詳細資訊，請參閱雲端 HR 應用程式教學課程（例如[Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)），以取得要對應的自訂屬性清單。
+您也可以[自訂預設的屬性](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)對應，例如變更或刪除現有的屬性對應。 您也可以根據您的業務需求建立新的屬性對應。 如需詳細資訊，請參閱雲端 HR 應用程式教學課程（例如[Workday](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)），以取得要對應的自訂屬性清單。
 
 ### <a name="determine-user-account-status"></a>判斷使用者帳戶狀態
 
@@ -256,7 +256,7 @@ Azure AD Connect 布建代理程式部署拓撲取決於您打算整合的雲端
 
 當您起始權變-權變進程時，請收集下列需求。
 
-| Process | 需求 |
+| 程序 | 規格需求 |
 | - | - |
 | **權變** | 從身分識別生命週期的觀點來看，您要如何處理 rehires？ Rehires 要保留舊的員工識別碼嗎？ |
 | | 您是否處理未來的員工，並事先為他們建立 Active Directory 帳戶？ 這些帳戶是以已啟用或已停用狀態建立的嗎？ |
@@ -275,7 +275,7 @@ Azure AD Connect 布建代理程式部署拓撲取決於您打算整合的雲端
 
 當您起始權變-權變進程時，請收集下列需求。
 
-| Process | 需求 |
+| 程序 | 規格需求 |
 | - | - |
 | **權變** | Active Directory 帳戶建立程式是手動、自動化或部分自動化的嗎？ |
 | | 您是否計畫將自訂屬性從雲端 HR 應用程式傳播至 Active Directory？ |
@@ -285,7 +285,7 @@ Azure AD Connect 布建代理程式部署拓撲取決於您打算整合的雲端
 | | 處理使用者終止時，會考慮哪些有效日期？ |
 | | 員工和臨時的背景工作轉換如何影響現有的 Active Directory 帳戶？ |
 
-視您的需求而定，您可以修改對應以符合您的整合目標。 如需詳細資訊，請參閱特定的雲端 HR 應用程式教學課程（例如[Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)），以取得要對應的自訂屬性清單。
+視您的需求而定，您可以修改對應以符合您的整合目標。 如需詳細資訊，請參閱特定的雲端 HR 應用程式教學課程（例如[Workday](../saas-apps/workday-inbound-tutorial.md#part-4-configure-attribute-mappings)），以取得要對應的自訂屬性清單。
 
 ### <a name="generate-a-unique-attribute-value"></a>產生唯一的屬性值
 
@@ -353,7 +353,7 @@ SSPR 是一種簡單的方法，可讓 IT 系統管理員用來重設其密碼�
 
 在部署新服務時，需要進行安全性審查，這是很常見的情況。 如果安全性審查是必要或尚未進行，請參閱許多 Azure AD[白皮書](https://www.microsoft.com/download/details.aspx?id=36391)，其中提供身分識別即服務的總覽。
 
-### <a name="plan-rollback"></a>計畫復原
+### <a name="plan-rollback"></a>規劃復原
 
 雲端 HR 使用者布建的執行可能會在生產環境中無法如預期般運作。 若是如此，下列復原步驟可協助您還原至先前已知良好的狀態。
 
@@ -365,7 +365,9 @@ SSPR 是一種簡單的方法，可讓 IT 系統管理員用來重設其密碼�
 
 選擇符合您解決方案需求的雲端 HR 應用程式。
 
-**Workday**：若要將工作設定檔從 Workday 匯入 Active Directory 和 Azure AD，請參閱[教學課程：設定 workday 來自動](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)布建使用者。 （選擇性）您可以將電子郵件地址和使用者名稱寫回 Workday。
+**Workday**：若要將工作設定檔從 Workday 匯入 Active Directory 和 Azure AD，請參閱[教學課程：設定 workday 來自動](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)布建使用者。 （選擇性）您可以將電子郵件地址、使用者名稱和電話號碼寫回 Workday。
+
+**SAP SuccessFactors**：若要將背景工作設定檔從 SuccessFactors 匯入 Active Directory 和 Azure AD，請參閱[教學課程：設定 SAP SuccessFactors 來自動](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)布建使用者。 （選擇性）您可以將電子郵件地址和使用者名稱寫回 SuccessFactors。
 
 ## <a name="manage-your-configuration"></a>管理您的設定
 
@@ -408,7 +410,7 @@ Azure AD 布建服務不會產生報告、執行分析，或在30天內提供深
 - [設定 Windows 事件檢視器以進行代理程式疑難排解](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
 - [設定 Azure 入口網站稽核記錄以進行服務疑難排解](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
 - [了解 AD 使用者帳戶建立作業的記錄](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
-- [瞭解管理員更新作業的記錄](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
+- [了解管理員更新作業的記錄](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
 - [解決常見的錯誤](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
 
 ### <a name="next-steps"></a>後續步驟

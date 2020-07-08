@@ -5,18 +5,17 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: 97509001aa66c2c1bf0c91b6b2a5ab25f9d6ec88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bfb502e42e41ac530851766db87bcebf3c94c371
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74227075"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340871"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Functions 事件方格觸發程序本機偵錯
 
 本文示範如何對可處理儲存體帳戶所引發 Azure 事件方格事件的本機函式進行偵錯。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 建立或使用現有的函式應用程式
 - 建立或使用現有的儲存體帳戶
@@ -62,7 +61,7 @@ ngrok http -host-header=localhost 7071
 
 ![新增儲存體帳戶事件](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-在 [事件]** 視窗中，按一下 [事件訂用帳戶]**** 按鈕。 在 [事件訂用帳戶]** 視窗中，按一下 [端點類型]** 下拉式清單，然後選取 [Web Hook]****。
+在 [事件]** 視窗中，按一下 [事件訂用帳戶]**** 按鈕。 在 [*事件訂*用帳戶] 視窗中，按一下 [*端點類型*] 下拉式清單，然後選取 [**網頁**攔截]。
 
 ![選取訂用帳戶類型](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
@@ -92,7 +91,7 @@ ngrok http -host-header=localhost 7071
 - 將容器命名為 **test**。
 - 選取 test** 容器
 - 按一下 [**上傳**] 按鈕
-- 按一下 [上傳檔案]****。
+- 按一下 **[上傳**檔案]
 - 選取檔案並將它上傳至 Blob 容器。
 
 ## <a name="debug-the-function"></a>進行函式偵錯

@@ -1,30 +1,41 @@
 ---
-title: 部署疑難排解指南
+title: Docker 部署疑難排解
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure Machine Learning，因應、解決或針對使用 Azure Kubernetes Service 和 Azure 容器執行個體的常見 Docker 部署錯誤。
+description: 瞭解如何使用 Azure Machine Learning Azure Kubernetes Service 和 Azure 容器實例來解決、解決常見的 Docker 部署錯誤，並對其進行疑難排解。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
-ms.custom: seodec18
-ms.openlocfilehash: d51fd5af5ce553bbe9325154e3f854cdf5410d4d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.custom: contperfq4, tracking-python
+ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214361"
 ---
-# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Machine Learning Azure Kubernetes Service 和 Azure 容器執行個體部署疑難排解
+# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>針對使用 Azure Kubernetes Service 和 Azure 容器實例的模型進行 Docker 部署進行疑難排解 
 
-了解如何使用 Azure Machine Learning，因應或解決使用 Azure 容器執行個體 (ACI) 和 Azure Kubernetes Service (AKS) 的常見 Docker 部署錯誤。
+瞭解如何使用 Azure Machine Learning，針對 Azure 容器實例（ACI）和 Azure Kubernetes Service （AKS）的常見 Docker 部署錯誤進行疑難排解和解決或解決。
+
+## <a name="prerequisites"></a>必要條件
+
+* **Azure 訂用帳戶**。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [適用於 Azure Machine Learning 的 CLI 擴充功能](reference-azure-machine-learning-cli.md)。
+* 若要在本機偵錯，您必須在本機系統上擁有正常運作的 Docker 安裝。
+
+    若要驗證您的 Docker 安裝，請從終端或命令提示字元使用命令 `docker run hello-world`。 如需有關安裝 Docker 或針對 Docker 錯誤進行疑難排解的資訊，請參閱 [Docker 文件](https://docs.docker.com/)。
+
+## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Docker 部署機器學習模型的步驟
 
 在 Azure Machine Learning 中部署模型時，系統就會執行數項工作。
 
-模型部署的建議和最新方法是透過使用[環境](how-to-use-environments.md)物件作為輸入參數的 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API。 在此情況下，我們的服務會在部署階段建立基礎 Docker 映像，並在單次呼叫中掛接所需的模型。 基礎部署工作包含：
+模型部署的建議方法是透過[model. deploy （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API，使用[環境](how-to-use-environments.md)物件做為輸入參數。 在此情況下，服務會在部署階段建立基底 docker 映射，並在一次呼叫中裝載所需的模型。 基礎部署工作包含：
 
 1. 在工作區模型登錄中註冊模型。
 
@@ -35,16 +46,6 @@ ms.locfileid: "83873374"
 3. 將模型部署至 Azure 容器執行個體 (ACI) 服務或 Azure Kubernetes Service (AKS)。
 
 在[模型管理](concept-model-management-and-deployment.md)簡介中深入了解此程序。
-
-## <a name="prerequisites"></a>Prerequisites
-
-* **Azure 訂用帳戶**。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
-* [適用於 Azure Machine Learning 的 CLI 擴充功能](reference-azure-machine-learning-cli.md)。
-* 若要在本機偵錯，您必須在本機系統上擁有正常運作的 Docker 安裝。
-
-    若要驗證您的 Docker 安裝，請從終端或命令提示字元使用命令 `docker run hello-world`。 如需有關安裝 Docker 或針對 Docker 錯誤進行疑難排解的資訊，請參閱 [Docker 文件](https://docs.docker.com/)。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -124,7 +125,7 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-請注意，如果您要定義自己的 Conda 規格 YAML，就必須列出大於 >= 1.0.45 版的 azureml-defaults 作為 pip 相依性。 此套件包含將模型裝載為 Web 服務所需的功能。
+如果您要定義自己的 conda 規格 YAML，您必須以 pip 相依性的版本 >= 1.0.45 來列出 azureml-預設值。 此套件包含將模型裝載為 Web 服務所需的功能。
 
 此時，您可以照常使用服務。 例如，下列程式碼示範如何將資料傳送至服務：
 
@@ -182,9 +183,9 @@ print(ws.webservices['mysvc'].get_logs())
 ```
 ## <a name="container-cannot-be-scheduled"></a>無法排程容器
 
-將服務部署至 Azure Kubernetes Service 計算目標時，Azure Machine Learning 會嘗試使用要求的資源量來排程服務。 如果在 5 分鐘之後，叢集中沒有適當可用資源量的節點，部署將會失敗，並顯示訊息 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00`。 您可以藉由新增更多節點、變更節點的 SKU 或變更服務的資源需求，來解決這個錯誤。 
+將服務部署至 Azure Kubernetes Service 計算目標時，Azure Machine Learning 會嘗試使用要求的資源量來排程服務。 如果在5分鐘之後，叢集中沒有可用的適當資源量的節點，部署將會失敗並顯示訊息 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` 。 您可以藉由新增更多節點、變更節點的 SKU 或變更服務的資源需求，來解決這個錯誤。 
 
-錯誤訊息通常會指出您需要更多的資源 - 例如，如果您看到一則錯誤訊息為 `0/3 nodes are available: 3 Insufficient nvidia.com/gpu`，表示該服務需要 GPU，而叢集中有 3 個節點沒有可用的 GPU。 如果您使用 GPU SKU，請新增更多節點來解決此問題，如果您不是，請切換至已啟用 GPU 的 SKU，或將環境變更為不需要 GPU。  
+錯誤訊息通常會指出您需要更多的資源-例如，如果您看到一則錯誤訊息，表示 `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` 服務需要 gpu，且叢集中有三個節點沒有可用的 gpu。 如果您使用 GPU SKU，請新增更多節點來解決此問題，如果您不是，請切換至已啟用 GPU 的 SKU，或將環境變更為不需要 GPU。  
 
 ## <a name="service-launch-fails"></a>服務啟動失敗
 
@@ -275,7 +276,7 @@ Azure Kubernetes Service 部署支援自動調整，可讓您新增複本以支�
 
 504 狀態碼表示要求已逾時。預設的逾時值為 1 分鐘。
 
-您可以修改 score.py 來移除不必要的呼叫，以增加逾時時間或嘗試加快服務速度。 如果這些動作無法修正問題，請使用本文中的資訊來偵錯 score.py 檔案。 程式碼可能處於無回應狀態或無限迴圈。
+您可以修改 score.py 來移除不必要的呼叫，以增加逾時時間或嘗試加快服務速度。 如果這些動作無法修正問題，請使用本文中的資訊來偵錯 score.py 檔案。 程式碼可能處於未回應狀態或無限迴圈。
 
 ## <a name="advanced-debugging"></a>進階偵錯
 

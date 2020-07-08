@@ -4,15 +4,14 @@ description: 提供從 StorSimple 8000 系列遷移資料的選項總覽。
 services: storsimple
 author: priestlg
 ms.service: storsimple
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: v-grpr
-ms.openlocfilehash: 974bcc657b811a10e28b41150439e83d26a208d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 39c78e1dc579f74207ba828f2f6a49ad44dd4a43
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514715"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>從 StorSimple 8000 系列遷移資料的選項
 
@@ -40,6 +39,12 @@ StorSimple 8000 系列即將于2022年12月[終止支援](https://support.micros
 StorSimple 5000-7000 系列和 StorSimple 8000 系列客戶可以選擇遷移至 Panzura freedom 自由的 NAS，以將其資料保留在 Azure 中。 Panzura freedom 的自由解決方案提供了橫跨資料中心、辦公室、公用和私人雲端的 NAS 解決方案。 此解決方案可針對 NFS、SMB 和行動用戶端啟用本機、混合式及雲端內資料工作流程。
 
 此移轉由 Panzura 支援，而客戶可以從向 [Panzura 網站](https://panzura.com/migrate-storsimple-panzura/)要求移轉支援開始著手。
+
+#### <a name="migrate-to-nasuni"></a>遷移至 Nasuni
+
+透過 Nasuni 輕鬆地將整個 StorSimple 環境移至穩定、安全、高效能的檔案服務平臺。 Nasuni 提供內部部署檔案儲存體的安全性和效能，同時將其與 Azure 的擴充性和持久性結合。  Nasuni 是領先的 Azure 獨立軟體廠商（ISV），提供將 StorSimple 資料移至現代化平臺所需的所有工具，讓您可以跨多個位置與檔案共用及共同作業。
+
+立即開始使用： [Nasuni 網站](https://info.nasuni.com/storsimple8000-webinar)。
 
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity

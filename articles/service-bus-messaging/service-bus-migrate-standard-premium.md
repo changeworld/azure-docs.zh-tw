@@ -1,23 +1,13 @@
 ---
 title: 遷移 Azure 服務匯流排命名空間-標準至 premium
 description: 允許將現有的 Azure 服務匯流排標準命名空間遷移至 premium 的指南
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2019
-ms.author: aschhab
-ms.openlocfilehash: 27e3260b91bebee14ff12188a7dbd6c7cf76355c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385022"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340749"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>將現有的 Azure 服務匯流排標準命名空間遷移至進階層
 
@@ -177,7 +167,7 @@ Azure 服務匯流排 Premium 層不支援 Azure 服務匯流排標準層所提�
 
 ### <a name="what-happens-when-i-abort-the-migration"></a>當我中止遷移時，會發生什麼事？
 
-您可以使用`Abort`命令或藉由使用 Azure 入口網站來中止遷移。
+您可以使用 `Abort` 命令或藉由使用 Azure 入口網站來中止遷移。
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -187,8 +177,8 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 
 #### <a name="azure-portal"></a>Azure 入口網站
 
-![中止流程-中止同步][]
-![中止流程-中止完成][]
+![中止流程-中止同步 ][]
+ ![ 中止流程-中止完成][]
 
 當遷移程式中止時，它會中止將實體（主題、訂用帳戶和篩選）從標準複製到高階命名空間的程式，並中斷配對。
 

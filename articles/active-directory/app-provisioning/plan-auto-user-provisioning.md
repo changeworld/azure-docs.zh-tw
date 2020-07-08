@@ -2,21 +2,20 @@
 title: 規劃 Azure Active Directory 的自動使用者布建部署
 description: 規劃和執行自動使用者布建的指引
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593534"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781628"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>規劃自動使用者佈建部署
 
@@ -26,7 +25,7 @@ Azure Active Directory （Azure AD）自動使用者布建會藉由在 SaaS 應�
 
 請參閱[使用 Azure Active Directory 來自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md)布建和解除布建，以進一步瞭解功能。
 
-## <a name="learn"></a>學習
+## <a name="learn"></a>Learn
 
 使用者布建會建立持續身分識別管理的基礎，並增強依賴授權身分識別資料的商務程式品質。
 
@@ -66,7 +65,7 @@ Azure AD 使用 [應用程式庫] 功能表中提供的範本，提供任何應�
 
 ### <a name="training-resources"></a>訓練資源
 
-| 資源| 連結和描述 |
+| 資源| 連結與描述 |
 | - | - |
 | 隨選網路研討會| [使用 Azure AD 管理您的企業應用程式](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>瞭解 Azure AD 如何協助您達成企業 SaaS 應用程式的 SSO，以及控制存取的最佳做法。 |
 | 影片| [Azure Active Directory 中的使用者布建是什麼？](https://youtu.be/_ZjARPpI6NI) <br> [如何在 Active Directory 中部署使用者布建？](https://youtu.be/pKzyts6kfrw) <br> [整合 Salesforce 與 Azure AD：如何自動化使用者布建](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
@@ -127,13 +126,13 @@ Azure AD 布建服務會藉由連接到每個應用程式廠商所提供的使�
 
 請考慮您的組織需要判斷在您的環境中部署使用者布建的策略。
 
-### <a name="engage-the-right-stakeholders"></a>參與適當的專案關係人
+### <a name="engage-the-right-stakeholders"></a>包含正確的專案關係人
 
 當技術專案失敗時，通常是因為對影響、結果和責任的預期不相符。 若要避免這些錯誤，請[確定您正在吸引正確的專案關係人](https://aka.ms/deploymentplans)，而且可以記錄專案關係人和其專案輸入和標準責任，以充分瞭解專案中的專案關係人角色。
 
-### <a name="plan-communications"></a>規劃溝通
+### <a name="plan-communications"></a>規劃通訊
 
-通訊對於任何新服務的成功非常重要。 主動與您的使用者溝通他們的體驗會如何變更，變更時，以及如何在遇到問題時取得支援。
+溝通對於任何新服務的成功非常重要。 主動與您的使用者溝通其體驗將如何改變、何時會改變，以及如何在遇到問題時取得支援。
 
 ### <a name="plan-a-pilot"></a>規劃試驗
 
@@ -171,7 +170,7 @@ Azure AD 布建服務會藉由連接到每個應用程式廠商所提供的使�
 
 下圖顯示一個所需的系統管理員認證版本：
 
-![用來管理使用者帳戶布建設定的布建畫面](./media/plan-auto-user-provisioning/userprovisioning-admincredentials.png)
+![管理使用者帳戶佈建設定的佈建畫面](./media/plan-auto-user-provisioning/userprovisioning-admincredentials.png)
 
 有些應用程式需要系統管理員使用者名稱和密碼，有些則可能需要持有人權杖。
 
@@ -217,7 +216,7 @@ Azure AD 支援直接屬性與屬性的對應、提供常數值，或[撰寫屬�
 
 * 應用程式可能會有特定的限制和（或）需求，讓使用者布建正常運作。 例如，時差會截斷某些屬性的值。 請參閱每個應用程式特定的[自動使用者](../saas-apps/tutorial-list.md)布建教學課程。
 
-* 確認來源與目標系統之間的架構一致性。 常見的問題包括 UPN 或郵件不相符等屬性。 例如，Azure AD 中的 UPN 在應用*john_smith@contoso.com*程式中設定為和，則*jsmith@contoso.com*為。 如需詳細資訊，請參閱[使用者和群組架構參考](../app-provisioning/use-scim-to-provision-users-and-groups.md)。
+* 確認來源與目標系統之間的架構一致性。 常見的問題包括 UPN 或郵件不相符等屬性。 例如，Azure AD 中的 UPN 在 *john_smith@contoso.com* 應用程式中設定為和，則為 *jsmith@contoso.com* 。 如需詳細資訊，請參閱[使用者和群組架構參考](../app-provisioning/use-scim-to-provision-users-and-groups.md)。
 
 ## <a name="plan-testing-and-security"></a>規劃測試和安全性
 
@@ -238,7 +237,7 @@ Azure AD 支援直接屬性與屬性的對應、提供常數值，或[撰寫屬�
 
 在部署過程中需要進行安全性審查，這是很常見的。 如果您需要安全性審查，請參閱許多 Azure AD[白皮書](https://www.microsoft.com/download/details.aspx?id=36391)，其中提供身分識別即服務的總覽。
 
-### <a name="plan-rollback"></a>計畫復原
+### <a name="plan-rollback"></a>規劃復原
 
 如果自動使用者布建的執行無法在生產環境中如預期般運作，下列的復原步驟可協助您還原至先前已知的良好狀態：
 
@@ -308,7 +307,7 @@ Azure AD 可以透過 audit 記錄和報告，為您組織的使用者布建使�
 
 * [一組錯誤的使用者佈建至 Azure AD 資源庫應用程式](../app-provisioning/application-provisioning-config-problem-wrong-users-provisioned.md)
 
-### <a name="helpful-documentation"></a>有用的檔
+### <a name="helpful-documentation"></a>實用的文件
 
 * [撰寫屬性對應的運算式](../app-provisioning/functions-for-customizing-application-data.md)
 

@@ -7,13 +7,12 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/01/2020
+ms.openlocfilehash: ea46f37b0c09ca655b29ac3cfa2f168e18c85590
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75863837"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052439"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>在 Power BI 中從時間序列深入解析將資料視覺化
 
@@ -29,7 +28,7 @@ Azure 時間序列深入解析是在雲端中儲存、管理、查詢和視覺�
 
 如果您還沒有訂用帳戶，請務必註冊[免費的 Azure 訂](https://azure.microsoft.com/free/)用帳戶。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 下載並安裝最新版本的[Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 * 建立或建立[Azure 時間序列深入解析 Preview 實例](time-series-insights-update-how-to-manage.md)
@@ -67,7 +66,7 @@ Azure 時間序列深入解析是在雲端中儲存、管理、查詢和視覺�
        > [!NOTE]
        > 原始事件層級資料的事件計數限制為 100-K。
 
-       [![連線](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+       [![到](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
    1. 如果您尚未為**暖存放區**設定時間序列深入解析實例，您將會收到警告。
 
@@ -111,8 +110,10 @@ Azure 時間序列深入解析是在雲端中儲存、管理、查詢和視覺�
     [![選取報表檢視](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1.  在 [視覺**效果**] 資料行中，選取您選擇的視覺效果。 例如，選取 [**折線圖**]。 這會在您的畫布上加入一個空白折線圖。
- 
-1.  在 [**欄位**] 清單中選取 **[時間戳記]** ，並將它拖曳至 [**軸**] 欄位，以沿著 X 軸顯示專案。
+
+1.  在 [**欄位**] 清單中，選取 **_Timestamp**並將它拖曳至 [**軸**] 欄位，以沿著 X 軸顯示專案。 請務必切換到 **_Timestamp** ，做為**軸**的值（預設值為 [**日期**] 階層）。
+
+    [![選取報表檢視](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1.  同樣地，在 [**欄位**] 清單中，選取 [ **TimeSeriesId** ]，並將它拖曳至 [**值**] 欄位，以沿著 Y 軸顯示專案。
 

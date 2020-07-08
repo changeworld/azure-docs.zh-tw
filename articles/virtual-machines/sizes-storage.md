@@ -1,25 +1,19 @@
 ---
 title: Azure VM 大小-儲存體 |Microsoft Docs
-description: 列出 Azure 中適用于虛擬機器的不同儲存體優化大小。 列出個 vcpu、資料磁片和 Nic 數目的相關資訊，以及此系列中大小的儲存體輸送量和網路頻寬。
-services: virtual-machines
+description: 列出 Azure 中適用于虛擬機器的不同儲存體優化大小。 列出 vCPU 數目、資料磁碟和 NIC 的相關資訊，以及此服務中各種大小之儲存體輸送量和網路頻寬的相關資訊。
+ms.subservice: sizes
 documentationcenter: ''
 author: sasha-melamed
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
-ms.author: jonbeck
-ms.openlocfilehash: 5a611dc288fc18a14f6000689f9f9b49d4b3feb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: 028de173c5cda1e95de9dd64d6ccd2a6b0ad7eb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77913331"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84674308"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>儲存體最佳化的虛擬機器大小
 
@@ -34,7 +28,7 @@ ms.locfileid: "77913331"
 - [記憶體最佳化](sizes-memory.md)
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
-- [上一代](sizes-previous-gen.md)
+- [前幾代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>後續步驟
 

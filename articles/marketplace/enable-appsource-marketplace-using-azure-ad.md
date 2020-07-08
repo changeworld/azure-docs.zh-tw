@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 17cbfe92744ad96f2b5651b7e2f47a6443337068
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: e2fff55fd9161aa41411dcb1abbf8ae0c1bae49c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658037"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957829"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>整合您的商業市集清單與 Azure Active Directory
 
@@ -29,30 +28,29 @@ Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜�
 
 ## <a name="offers-that-require-azure-ad"></a>要求 Azure AD 的供應項目
 
-各種商業市集[清單選項和供應項目類型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)對於 Azure AD 實作有不同的需求。 如需詳細資訊，請參閱下表。
+各種商業市集[清單選項和供應項目類型](determine-your-listing-type.md)對於 Azure AD 實作有不同的需求。 如需詳細資訊，請參閱下表。
 
-| **供應項目類型**    | **是否需要 Azure AD SSO？**  |  |   |  |
+| 供應項目類型    | 需要與我聯繫的 Azure AD SSO 嗎？  | 試用版需要 Azure AD SSO 嗎？ | 試用產品需要 Azure AD SSO 嗎？  | 交易需要 Azure AD SSO |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-|  | 與我連絡 | 試用版 | 試用產品 | 交易 |
 | 虛擬機器 | N/A | 否 | 否 | 否 |
-| Azure 應用程式 (解決方案範本)  | N/A | N/A | N/A | N/A |
-| 受管理的應用程式  | N/A | N/A | N/A | 否 |
-| SaaS  | 否 | 是 | 是 | 是 |
+| Azure 應用程式 (解決方案範本)  | 不適用 | N/A | N/A | N/A |
+| 受管理的應用程式  | 不適用 | N/A | N/A | No |
+| SaaS  | No | 是 | 是 | 是 |
 | 容器  | N/A | N/A | N/A | 否 |
-| 諮詢服務  | 否 | N/A | N/A | N/A |
+| 諮詢服務  | 否 | 不適用 | N/A | N/A |
 
-如需有關 Saas 技術需求的詳細資訊，請參閱 [SaaS 應用程式供應項目發佈指南](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)。
+如需有關 Saas 技術需求的詳細資訊，請參閱 [SaaS 應用程式供應項目發佈指南](marketplace-saas-applications-technical-publishing-guide.md)。
 
 ## <a name="azure-ad-integration"></a>Azure AD 整合
 
-- 如需如何將 Azure AD 整合到您的清單以啟用單一登入的相關資訊，請參閱[開發人員適用的 Azure Active Directory]( https://docs.microsoft.com/azure/active-directory/develop/)。
-- 如需關於 Azure AD 單一登入的詳細資料，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+- 如需如何將 Azure AD 整合到您的清單以啟用單一登入的相關資訊，請參閱[開發人員適用的 Azure Active Directory](../active-directory/develop/index.yml)。
+- 如需關於 Azure AD 單一登入的詳細資料，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../active-directory/manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="enable-a-trial-listing"></a>啟用試用版清單
 
 將客戶設定自動化可以增加轉換的可能性。 當您的客戶選取您的試用版清單並重新導向至您的試用版環境時，您可以直接設定客戶，而無須進行額外的登入步驟。
 
-在驗證期間，Azure AD 會將權杖傳送至您的應用程式或供應項目。 權杖所提供的使用者資訊可讓您在應用程式或供應項目中建立使用者帳戶。 若要進一步了解，請參閱[範例權杖](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
+在驗證期間，Azure AD 會將權杖傳送至您的應用程式或供應項目。 權杖所提供的使用者資訊可讓您在應用程式或供應項目中建立使用者帳戶。 若要進一步了解，請參閱[範例權杖](../active-directory/develop/id-tokens.md)。
 
 當您使用 Azure AD 在應用程式或試用版清單中啟用單鍵驗證時，您可以：
 
@@ -67,20 +65,20 @@ Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜�
 
 使用 Azure AD 來支援下列動作：
 
-- 在其中一個 Marketplace 店面中註冊您的應用程式。 如需詳細資訊，請檢視[應用程式註冊](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) 或 [AppSource 認證](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)。
+- 在其中一個 Marketplace 店面中註冊您的應用程式。 如需詳細資訊，請檢視[應用程式註冊](../active-directory/develop/quickstart-register-app.md) 或 [AppSource 認證](../active-directory/azuread-dev/howto-get-appsource-certified.md)。
 - 在 Azure AD 中啟用多租用戶支援功能，以獲得單鍵試用體驗。
 
 如果您不熟悉 Azure AD 同盟單一登入的用法，請採取下列步驟：
 
 1. 在 Marketplace 中註冊您的應用程式。
-1. 使用 [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) 或 [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) 來開發搭配 Azure AD 的 SSO。
+1. 使用 [OAuth 2.0](../active-directory/azuread-dev/v1-protocols-oauth-code.md) 或 [OpenID Connect](../active-directory/azuread-dev/v1-protocols-openid-connect-code.md) 來開發搭配 Azure AD 的 SSO。
 1. 在 Azure AD 中啟用多租用戶支援功能，以提供單鍵試用體驗。
 
 ### <a name="single-tenant-solutions"></a>單一租用戶解決方案
 
 使用 Azure AD 來支援下列其中一個動作：
 
-- 使用 [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) 將來賓使用者新增至目錄。
+- 使用 [Azure AD B2B](../active-directory/b2b/what-is-b2b.md) 將來賓使用者新增至目錄。
 - 使用 [與我連絡] 發佈選項，為客戶手動設定試用版。
 - 開發每個客戶的「試用產品」。
 - 建置使用 SSO 的多租用戶範例示範應用程式。
