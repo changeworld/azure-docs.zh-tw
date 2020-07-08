@@ -8,22 +8,22 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 63097ac520f1d49098054d64ceae614036f59df3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582944"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807799"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>在 Azure Active Directory 中將敏感度標籤指派給 Office 365 群組（預覽）
+# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory"></a>將敏感度標籤指派給 Azure Active Directory 中的 Office 365 群組
 
-Azure Active Directory （Azure AD）支援將[Microsoft 365 合規性中心](https://sip.protection.office.com/homepage)發佈的敏感度標籤套用至 Office 365 群組。 敏感度標籤會套用至各種服務的群組，例如 Outlook、Microsoft 小組和 SharePoint。 此功能目前為公開預覽狀態。 如需 Office 365 應用程式支援的詳細資訊，請參閱[適用于敏感度標籤的 office 365 支援](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels)。
+Azure Active Directory （Azure AD）支援將[Microsoft 365 合規性中心](https://sip.protection.office.com/homepage)發佈的敏感度標籤套用至 Office 365 群組。 敏感度標籤會套用至各種服務的群組，例如 Outlook、Microsoft 小組和 SharePoint。 這項功能目前為公開 GA。 如需 Office 365 應用程式支援的詳細資訊，請參閱[適用于敏感度標籤的 office 365 支援](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels)。
 
 > [!IMPORTANT]
 > 若要設定此功能，您的 Azure AD 組織中至少必須有一個 active Azure Active Directory Premium P1 授權。
@@ -68,7 +68,7 @@ Azure Active Directory （Azure AD）支援將[Microsoft 365 合規性中心](ht
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-就這麼簡單。 您已啟用此功能，而且可以將已發行的標籤套用至群組。
+這樣就大功告成了！ 您已啟用此功能，而且可以將已發行的標籤套用至群組。
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>在 Azure 入口網站中將標籤指派給新群組
 
@@ -85,26 +85,26 @@ Azure Active Directory （Azure AD）支援將[Microsoft 365 合規性中心](ht
 ## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>將標籤指派給 Azure 入口網站中的現有群組
 
 1. 以群組管理帳戶或群組擁有者身分登入[Azure AD 系統管理中心](https://aad.portal.azure.com)。
-1. 選取 [群組]****。
+1. 選取 [**群組**]。
 1. 從 [**所有群組**] 頁面中，選取您要加上標籤的群組。
 1. 在 [選取的群組] 頁面上，選取 [**屬性**]，並從清單中選取 [敏感度] 標籤。
 
    ![在群組的 [總覽] 頁面上指派敏感度標籤](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
 
-1. 選取 [儲存]  來儲存變更。
+1. 選取 [儲存] 來儲存變更。
 
 ## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>從 Azure 入口網站中的現有群組移除標籤
 
 1. 使用全域管理員或群組系統管理員帳戶，或以群組擁有者身分登入[Azure AD 系統管理中心](https://aad.portal.azure.com)。
-1. 選取 [群組]****。
+1. 選取 [**群組**]。
 1. 從 [**所有群組**] 頁面中，選取您想要移除標籤的群組。
 1. 在 [**群組**] 頁面上，選取 [**屬性**]。
-1. 選取 [移除]****。
+1. 選取 [移除]。
 1. 選取 [儲存]**** 以套用變更。
 
 ## <a name="using-classic-azure-ad-classifications"></a>使用傳統 Azure AD 分類
 
-啟用此功能之後，群組的「傳統」分類將只會顯示現有的群組和網站，而只有在在不支援敏感度標籤的應用程式中建立群組時，才應該將它們用於新群組。 您的系統管理員可以稍後視需要將它們轉換成敏感度標籤。 傳統分類是您藉由在 Azure AD PowerShell 中定義`ClassificationList`設定值來設定的舊分類。 啟用這項功能時，這些分類將不會套用至群組。
+啟用此功能之後，群組的「傳統」分類將只會顯示現有的群組和網站，而只有在在不支援敏感度標籤的應用程式中建立群組時，才應該將它們用於新群組。 您的系統管理員可以稍後視需要將它們轉換成敏感度標籤。 傳統分類是您藉由 `ClassificationList` 在 Azure AD PowerShell 中定義設定值來設定的舊分類。 啟用這項功能時，這些分類將不會套用至群組。
 
 ## <a name="troubleshooting-issues"></a>針對問題進行疑難排解
 
@@ -132,10 +132,10 @@ Azure Active Directory （Azure AD）支援將[Microsoft 365 合規性中心](ht
 標籤可以使用與將標籤指派給現有群組相同的步驟隨時交換，如下所示：
 
 1. 使用全域或群組系統管理員帳戶或群組擁有者登入[Azure AD 系統管理中心](https://aad.portal.azure.com)。
-1. 選取 [群組]****。
+1. 選取 [**群組**]。
 1. 從 [**所有群組**] 頁面中，選取您要加上標籤的群組。
 1. 在 [選取的群組] 頁面上，選取 [**屬性**]，並從清單中選取新的 [敏感度] 標籤。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>群組設定變更已發行的標籤不會在群組上更新
 

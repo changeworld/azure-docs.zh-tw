@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc429500081e65bf3fdf4d7f7557d2423f56ee23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258235"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611725"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 術語概觀
 
@@ -58,7 +58,7 @@ Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署�
 
 如需詳細資訊，請參閱[應用程式模型](service-fabric-application-model.md)一文。
 
-**應用程式封裝**：磁碟目錄，其中包含應用程式`ApplicationManifest.xml`類型的檔案。 參考組成此應用程式類型的每個服務類型的服務封裝。 應用程式封裝目錄中的檔案會複製到 Service Fabric 叢集的映像存放區。 例如，電子郵件應用程式類型的應用程式套件可能包含指向佇列服務套件、前端服務套件、資料庫服務套件的參考。
+**應用程式封裝**：磁碟目錄，其中包含應用程式類型的檔案 `ApplicationManifest.xml` 。 參考組成此應用程式類型的每個服務類型的服務封裝。 應用程式封裝目錄中的檔案會複製到 Service Fabric 叢集的映像存放區。 例如，電子郵件應用程式類型的應用程式套件可能包含指向佇列服務套件、前端服務套件、資料庫服務套件的參考。
 
 **具名應用程式**：您將應用程式套件複製到映像存放區之後，您會在叢集內建立應用程式的執行個體。 當您指定應用程式套件的應用程式類型時，使用其名稱或版本建立執行個體。 每個應用程式類型的執行個體會被指派一個看起來像這樣的統一資源識別項 (URI) 名稱：`"fabric:/MyNamedApp"`。 在叢集中，您可以從單一應用程式類型建立多個具名應用程式。 也可以從不同的應用程式類型建立具名應用程式。 每個具名應用程式都是獨立管理和控制版本。
 
@@ -75,7 +75,7 @@ Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署�
 
 **重新設定**是指在服務複本集中進行任何變更的流程。 請參閱[重新設定](service-fabric-concepts-reconfiguration.md)。
 
-**服務套件**：磁碟目錄，其中包含服務類型的`ServiceManifest.xml`檔案。 這個檔案會參考此服務類型的程式碼、靜態資料和組態封裝。 此應用程式類型的 `ApplicationManifest.xml` 檔會參考此服務封裝目錄中的檔案。 例如，服務套件可能會參考構成資料庫服務的程式碼、靜態資料和設定套件。
+**服務套件**：磁碟目錄，其中包含服務類型的檔案 `ServiceManifest.xml` 。 這個檔案會參考此服務類型的程式碼、靜態資料和組態封裝。 此應用程式類型的 `ApplicationManifest.xml` 檔會參考此服務封裝目錄中的檔案。 例如，服務套件可能會參考構成資料庫服務的程式碼、靜態資料和設定套件。
 
 **具名服務**：建立具名應用程式之後，可以在叢集內建立應用程式其中一種服務類型的執行個體。 您可以使用它的名稱/版本以指定服務類型。 需為每個服務類型執行個體指派一個 URI (名稱範圍需在其具名應用程式的 URI 之下)。 例如，如果您在具名應用程式 MyNamedApp 內建立 MyDatabase 具名服務，URI 看起來就像這樣： `"fabric:/MyNamedApp/MyDatabase"`。 在具名應用程式中，可以建立數個具名服務。 每個具名服務可以有自己的分割配置和執行個體或複本計數。
 
@@ -116,7 +116,7 @@ Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署�
 
 **Repair Manager 服務**：這是選擇性的系統服務，讓您以安全、自動化及透明的方式針對叢集執行修復動作。 Repair Manager 適用於：
 
-   - 針對 [Silver 和 Gold 持久性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric 叢集執行 Azure 維護修復作業。
+   - 針對 [Silver 和 Gold 持久性](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Azure Service Fabric 叢集執行 Azure 維護修復作業。
    - 針對[修補程式協調流程應用程式](service-fabric-patch-orchestration-application.md)執行修復動作
 
 ## <a name="deployment-and-application-models"></a>部署和應用程式模型
@@ -141,7 +141,7 @@ Service Fabric 資源是可個別部署至 Service Fabric 的任何項目，包�
 
 ****：Service Fabric 支援將 Docker 容器部署至 Linux，也支援將 Windows Server 容器部署至 Windows Server 2016，並支援 Hyper-V 隔離模式。 在 Service Fabric[應用程式模型](service-fabric-application-model.md)中，容器代表多個服務複本放置所在的應用程式主機。 Service Fabric 可以執行任何容器，其案例類似於來賓可執行檔案例，可讓您封裝容器中的現有應用程式。 此外，您也可以在[容器內執行 Service Fabric 服務](service-fabric-services-inside-containers.md)。
 
-**來賓可執行檔**：您可以在 Azure 中執行任何類型的程式碼，例如 Node.js、Python、JAVA 或 c + + Service Fabric 即服務。 Service Fabric 將這些類型的服務稱為來賓可執行檔，並且視為無狀態服務。 在 Service Fabric 叢集中執行來賓可執行檔的 優點包括高可用性、健康情況監控、應用程式生命週期管理、高密度及可搜尋性。
+**來賓可執行檔**：您可以在 Azure Service Fabric 即服務中執行任何類型的程式碼，例如 Node.js、Python、JAVA 或 c + +。 Service Fabric 將這些類型的服務稱為來賓可執行檔，並且視為無狀態服務。 在 Service Fabric 叢集中執行來賓可執行檔的 優點包括高可用性、健康情況監控、應用程式生命週期管理、高密度及可搜尋性。
 
 如需詳細資訊，[請閱讀選擇服務的程式設計模型一](service-fabric-choose-framework.md)文。
 
@@ -169,9 +169,9 @@ Service Fabric 是一項開放原始碼平台技術，有數個不同的服務�
 
 下表針對 Service Fabric 描述不同的應用程式模型以及對應存在的工具。
 
-| 應用程式類型 | 描述依據 | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
+| 應用程式類型 | 描述依據 | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
-| Service Fabric Mesh 應用程式 | 資源模型 (YAML & JSON) | VS 2017 |不支援 |不支援 | 支援 - 僅限 Mesh 環境 | 不支援|
+| Service Fabric Mesh 應用程式 | 資源模型 (YAML & JSON) | VS 2017 |不受支援 |不受支援 | 支援 - 僅限 Mesh 環境 | 不支援|
 |Service Fabric 原生應用程式 | 原生應用程式模型 (XML) | VS 2017 和 VS 2015| 支援|支援|支援|支援|
 
 ## <a name="next-steps"></a>後續步驟

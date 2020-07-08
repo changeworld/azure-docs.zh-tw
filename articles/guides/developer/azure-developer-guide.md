@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829392"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開發人員開始使用指南
 
@@ -124,13 +124,13 @@ Service Fabric 支援具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 
 
   > **使用時機：** 當您的應用程式儲存非關聯式資料 (例如，鍵值組 (資料表)、Blob、檔案共用或訊息 (佇列)) 時。
   >
-  > **開始使用**：選擇下列其中一種類型的儲存體：[Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)、[資料表](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[佇列](../../storage/queues/storage-dotnet-how-to-use-queues.md)或[檔案](../../storage/files/storage-dotnet-how-to-use-files.md)。
+  > **開始**使用：選擇下列其中一種類型的儲存體： [blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)、[資料表](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[佇列](../../storage/queues/storage-dotnet-how-to-use-queues.md)或[檔案](../../storage/files/storage-dotnet-how-to-use-files.md)。
 
 - **Azure SQL Database**：Azure 版本的 Microsoft SQL Server 引擎，可將關聯式表格資料儲存在雲端中。 SQL Database 提供可預測的效能、無停機時間的延展性、商務持續性和資料保護功能。
 
   > **使用時機：** 當您的應用程式需要具有參考完整性、交易支援和 TSQL 查詢支援的資料儲存體時。
   >
-  > **開始使用**[：使用 Azure 入口網站在幾分鐘內建立 SQL Database](../../sql-database/sql-database-get-started.md)。
+  > **開始**使用：在[Azure SQL Database 幾分鐘內以 Azure 入口網站建立資料庫](../../sql-database/sql-database-get-started.md)。
 
 
 您可以使用 [Azure Data Factory](../../data-factory/introduction.md)，將現有內部部署資料移至 Azure。 如果您還未準備好將資料移至雲端，Azure App Service 中的[混合](../../app-service/app-service-hybrid-connections.md)式連線可讓您將 App Service 託管應用程式連線到內部部署資源。 您也可以從內部部署應用程式連接至 Azure 資料和儲存體服務。
@@ -255,7 +255,7 @@ Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支�
 除了 REST Api，許多 Azure 服務也可讓您使用平臺特定的 Azure Sdk （包括適用于下列開發平臺的 Sdk），以程式設計方式從應用程式管理資源：
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/azure/javascript/)
+-   [Node.js](https://docs.microsoft.com/azure/developer/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)
@@ -268,7 +268,7 @@ Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支�
 
 在 Azure 上執行您的應用程式可能牽涉到使用多個 Azure 服務。 這些服務會遵循相同的生命週期，並可視為邏輯單元。 例如，Web 應用程式可能使用 Web Apps、SQL Database、「儲存體」、「Azure Redis 快取」及「Azure 內容傳遞網路」服務。 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 可讓您將應用程式中的資源當成群組使用。 您可以透過單一的協調作業來部署、更新或刪除所有資源。
 
-除了以邏輯方式分組和管理相關資源之外，Azure Resource Manager 還包含部署功能，可讓您自訂相關資源的部署和設定。 例如，您可以使用 Resource Manager 部署和設定應用程式。 此應用程式可包含多部虛擬機器、負載平衡器和 Azure SQL 資料庫做為單一單位。
+除了以邏輯方式分組和管理相關資源之外，Azure Resource Manager 還包含部署功能，可讓您自訂相關資源的部署和設定。 例如，您可以使用 Resource Manager 部署和設定應用程式。 此應用程式可包含多部虛擬機器、負載平衡器，以及 Azure SQL Database 中的資料庫做為單一單位。
 
 透過使用本身為 JSON 格式化文件的 Azure Resource Manager 範本，即可開發這些部署。 範本可讓您定義部署，以及使用宣告式範本而非指令碼來管理應用程式。 您的範本可以用於測試、預備和生產這類不同環境。 例如，您可以使用範本將按鈕新增至 GitHub 存放庫，將存放庫中的程式碼部署到一組 Azure 服務，只需按一下即可。
 
@@ -288,7 +288,7 @@ Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支�
 
 除了定義個別的 Azure 帳戶身分識別（也稱為「*使用者*」），您還可以在 Azure AD 中定義*群組*。 建立使用者群組是使用角色型存取控制 (RBAC) 管理訂用帳戶中資源存取權的好方法。 若要了解如何建立群組，請參閱[在 Azure Active Directory Preview 中建立群組](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 您也可以[使用 PowerShell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md) 建立和管理群組。
 
-### <a name="manage-your-subscriptions"></a>管理訂用帳戶
+### <a name="manage-your-subscriptions"></a>管理您的訂閱
 
 訂用帳戶是連結至 Azure 帳戶之 Azure 服務的邏輯分組。 單一 Azure 帳戶可以包含多個訂用帳戶。 Azure 服務是根據訂用帳戶計費。 如需依類型的可用訂用帳戶供應項目清單，請參閱 [Microsoft Azure 供應項目詳細資料](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 訂用帳戶擁有可完全控制訂閱的帳戶管理員。 他們也有服務系統管理員，可以控制訂用帳戶中的所有服務。 如需有關傳統訂用帳戶管理員的資訊，請參閱[新增或變更 Azure 訂用帳戶管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 您可以使用[角色型存取控制（RBAC）](../../role-based-access-control/overview.md)，將個別帳戶授與 Azure 資源的詳細控制。
 

@@ -4,18 +4,18 @@ description: 了解如何安裝和使用 Azure Machine Learning CLI 擴充功能
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 03/05/2020
+ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: d401522ffc45e2e7ea20de70a59ed967dd7623ab
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 5a532ec11cdcd97bd1f72c40f603bce7cc4b12c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611759"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安裝和使用 Azure Machine Learning 的 CLI 擴充功能
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -158,6 +158,49 @@ az extension remove -n azure-cli-ml
 
     如需詳細資訊，請參閱 [az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)。
 
++ <a id="computeinstance"></a>管理計算實例。  在下列所有範例中，計算實例的名稱都是**cpu**
+
+    + 建立新的 computeinstance。
+
+        ```azurecli-interactive
+        az ml computetarget create computeinstance  -n cpu -s "STANDARD_D3_V2" -v
+        ```
+    
+        如需詳細資訊，請參閱[az ml computetarget create computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-computeinstance)。
+
+    + 停止 computeinstance。
+    
+        ```azurecli-interactive
+        az ml computetarget stop computeinstance -n cpu -v
+        ```
+    
+        如需詳細資訊，請參閱[az ml computetarget stop computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
+    
+    + 開始 computeinstance。
+    
+        ```azurecli-interactive
+        az ml computetarget start computeinstance -n cpu -v
+       ```
+    
+        如需詳細資訊，請參閱[az ml computetarget start computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
+    
+    + 重新開機 computeinstance。
+    
+        ```azurecli-interactive
+        az ml computetarget restart computeinstance -n cpu -v
+       ```
+    
+        如需詳細資訊，請參閱[az ml computetarget restart computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
+    
+    + 刪除 computeinstance。
+    
+        ```azurecli-interactive
+        az ml computetarget delete -n cpu -v
+       ```
+    
+        如需詳細資訊，請參閱[az ml computetarget delete computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-delete)。
+
+
 ## <a name="run-experiments"></a><a id="experiments"></a>執行實驗
 
 * 開始您的實驗回合。 使用此命令時，請對應 -c 參數指定 runconfig 檔案的名稱 (如果您是在檔案系統中查看，則為 \*.runconfig 前面的文字)。
@@ -195,23 +238,7 @@ az extension remove -n azure-cli-ml
 
     如需用於定義資料集的 JSON 檔案格式相關資訊，請使用 `az ml dataset register --show-template`。
 
-    如需詳細資訊，請參閱 [az ml dataset register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive)。
-
-+ 封存作用中或已取代的資料集：
-
-    ```azurecli-interactive
-    az ml dataset archive -n dataset-name
-    ```
-
-    如需詳細資訊，請參閱 [az ml dataset archive](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive)。
-
-+ 取代資料集：
-
-    ```azurecli-interactive
-    az ml dataset deprecate -d replacement-dataset-id -n dataset-to-deprecate
-    ```
-
-    如需詳細資訊，請參閱 [az ml dataset deprecate](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive)。
+    如需詳細資訊，請參閱 [az ml dataset register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-register)。
 
 + 列出工作區中的所有資料集：
 
@@ -219,7 +246,7 @@ az extension remove -n azure-cli-ml
     az ml dataset list
     ```
 
-    如需詳細資訊，請參閱 [az ml dataset list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive)。
+    如需詳細資訊，請參閱 [az ml dataset list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-list)。
 
 + 取得資料集的詳細資料：
 
@@ -227,15 +254,7 @@ az extension remove -n azure-cli-ml
     az ml dataset show -n dataset-name
     ```
 
-    如需詳細資訊，請參閱 [az ml dataset show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive)。
-
-+ 重新啟用已封存或已取代的資料集：
-
-    ```azurecli-interactive
-    az ml dataset reactivate -n dataset-name
-    ```
-
-    如需詳細資訊，請參閱 [az ml dataset reactivate](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive)。
+    如需詳細資訊，請參閱 [az ml dataset show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-show)。
 
 + 取消註冊資料集：
 

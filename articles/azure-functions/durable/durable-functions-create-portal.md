@@ -4,12 +4,12 @@ description: 了解如何安裝 Azure Functions 的 Durable Functions 擴充，�
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 7aa283480d95693e2630e24d5642fc7cb909b34b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807956"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 入口網站建立 Durable Functions
 
@@ -58,7 +58,7 @@ NuGet 套件 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.
 
    ![Kudu run npm install](./media/durable-functions-create-portal/kudu-npm-install.png)
    
-5. 最後 (啟用相容性模式)[https://docs.microsoft.com/en-us/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1 ]，方法是新增值為 `true` 的應用程式設定 `FUNCTIONS_V2_COMPATIBILITY_MODE` 。
+5. 最後，藉由新增值為的應用程式設定來[啟用相容性模式](https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1) `FUNCTIONS_V2_COMPATIBILITY_MODE` `true` 。
 
 ## <a name="create-an-orchestrator-function"></a>建立協調器函式
 
@@ -83,7 +83,7 @@ NuGet 套件 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.
 1. 使用 Postman 或 cURL 等 HTTP 工具，將 POST 要求傳送至您複製的 URL。 下列範例是 cURL 命令，它向長期函式傳送 POST 要求：
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence --header "Content-Length: 0"
     ```
 
     在此範例中，`{your-function-app-name}` 是網域 (您的函式應用程式名稱)。 回應訊息包含一組可用於監視和管理執行的 URI 端點，如下列範例所示︰

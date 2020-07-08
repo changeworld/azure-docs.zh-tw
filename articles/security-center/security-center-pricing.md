@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: 2eb302462e402e701cc5ae664239c457c90ab1b9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 4487d1452611b269eec756cdbc76e8e55c466cd2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612787"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801133"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>升級為標準層以增強安全性
 
@@ -44,16 +44,16 @@ Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護�
 2. 選取您要升級為 [標準] 的訂用帳戶。
 3. 選取 [定價層]  。
 4. 選取 [標準版]**** 以進行升級。
-5. 按一下 [檔案]  。
+5. 按一下 [檔案] 。
 
 [![資訊安全中心定價](media/security-center-pricing/pricing-tier-page.png)](media/security-center-pricing/pricing-tier-page.png#lightbox)
 
 > [!NOTE]
 > 若要啟用所有資訊安全中心功能（包括威脅防護功能），您必須將標準定價層套用至包含適用工作負載的訂用帳戶。 設定工作區的定價並不會啟用 Azure 資源的即時 VM 存取、彈性應用程式控制和網路偵測。 
 >
-> 您可以在訂用帳戶層級或資源層級，啟用**Azure 儲存體帳戶**的威脅防護。
-> 您可以在訂用帳戶層級或資源層級，為**AZURE SQL DATABASE SQL 伺服器**啟用威脅防護。
-> 您只能在資源層級啟用**適用於 MariaDB 的 Azure 資料庫/MySQL/于 postgresql**的威脅防護。
+> 您可以在訂用帳戶層級或資源層級為 **Azure 儲存體帳戶**啟用威脅防護。
+> 您可以在訂用帳戶層級或資源層級為 **Azure SQL Database SQL 伺服器**啟用威脅防護。
+> 您只能在資源層級為**適用於 MariaDB/MySQL/PostgreSQL 的 Azure 資料庫**啟用威脅防護。
 
 
 ## <a name="why-upgrade-to-standard"></a>為何要升級為標準？
@@ -63,7 +63,9 @@ Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護�
 - **安全性警示**-使用 advanced analytics 和 Microsoft Intelligent Security Graph 來取得不斷演進的網路攻擊的優勢。 有效率的調控內建行為分析和機器學習服務，以發現攻擊和零時差惡意探索。 監視網路、機器和雲端服務中是否有傳入攻擊和侵入後活動。 使用互動式工具和內容相關威脅情報來簡化調查。
 - **虛擬機器的弱點掃描**-輕鬆地將掃描器部署至您所有的虛擬機器，以提供業界最先進的弱點管理解決方案。 直接在資訊安全中心內查看、調查和修復結果。 
 - **存取與應用**程式控制-藉由套用機器學習服務的允許清單建議，並配合您的特定工作負載，來封鎖惡意程式碼和其他不必要的應用程式。 使用 Azure Vm 上管理埠的即時控制存取來減少網路攻擊面。 這會大幅減少暴力密碼破解和其他網路攻擊的風險。
-- **容器安全性功能**-受益于您容器化環境的弱點管理和即時威脅防護。 啟用 container registry 資源時，可能需要12hrs，直到啟用所有功能為止。
+- **容器安全性功能**-受益于您容器化環境的弱點管理和即時威脅防護。 啟用 container registry 資源時，可能需要12hrs，直到啟用所有功能為止。 費用是根據推送至連線登錄的唯一容器映射數目。 在掃描映射一次之後，除非經過修改和推送多次，否則不會再次向您收費。 
+
+
 
 
 ## <a name="next-steps"></a>後續步驟

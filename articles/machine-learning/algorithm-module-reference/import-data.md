@@ -9,22 +9,22 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: d124fdc15bd34743b237985a66cc35625f5d9a4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79456194"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611810"
 ---
 # <a name="import-data-module"></a>匯入資料模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 使用此模組，將資料從現有的雲端資料服務載入機器學習管線。 
 
 > [!Note]
 > 此模組所提供的所有功能都可以透過工作區登陸頁面中的**資料**存放區和**資料集**來完成。 我們建議**您使用資料**存放區和**資料集**，其中包含其他功能，例如資料監視。 若要深入瞭解，請參閱[如何存取資料](../how-to-access-data.md)和[如何註冊資料集](../how-to-create-register-datasets.md)一文。
-> 註冊資料集之後，您可以在設計工具介面的 [**資料** -> **集] 類別目錄**中找到它。 本課程模組已保留給 Studio （傳統）使用者使用，以獲得熟悉的體驗。 
+> 註冊資料集之後，您可以在設計工具介面的 [**資料**  ->  **集]** 類別目錄中找到它。 本課程模組已保留給 Studio （傳統）使用者使用，以獲得熟悉的體驗。 
 >
 
 「匯**入資料**」模組支援從下列來源讀取資料：
@@ -44,6 +44,10 @@ ms.locfileid: "79456194"
 
 如果您的來源資料變更，您可以重新執行匯[入資料](./import-data.md)來重新整理資料集，並加入新的資料。
 
+> [!WARNING]
+> 如果您的工作區位於虛擬網路中，您必須將資料存放區設定為使用設計工具的資料視覺效果功能。 如需如何在虛擬網路中使用資料存放區和資料集的詳細資訊，請參閱[使用私人虛擬網路進行定型 & 推斷期間的網路隔離](../how-to-enable-virtual-network.md#machine-learning-studio)。
+
+
 ## <a name="how-to-configure-import-data"></a>如何設定匯入資料
 
 1. 將匯**入資料**模組新增至您的管線。 您可以在設計工具的 [**資料輸入和輸出**] 分類中找到此模組。
@@ -52,7 +56,7 @@ ms.locfileid: "79456194"
 
 1. 選取 [**資料來源**]，然後選擇 [資料來源類型]。 它可以是 HTTP 或資料存放區。
 
-    如果您選擇 [資料存放區]，您可以選取已向 Azure Machine Learning 工作區註冊的現有資料存放區，或建立新的資料存放區。 然後在資料存放區中定義要匯入之資料的路徑。 您可以按一下 **[流覽路徑** ![] [匯入-資料-路徑]，輕鬆地流覽路徑](media/module/import-data-path.png)
+    如果您選擇 [資料存放區]，您可以選取已向 Azure Machine Learning 工作區註冊的現有資料存放區，或建立新的資料存放區。 然後在資料存放區中定義要匯入之資料的路徑。 您可以按一下 **[流覽路徑]** [匯 ![ 入-資料-路徑]，輕鬆地流覽路徑](media/module/import-data-path.png)
 
 1. 選取 [預覽] 架構，以篩選您想要包含的資料行。 您也可以在剖析選項中定義像是分隔符號的 advanced 設定。
 
@@ -89,4 +93,4 @@ ms.locfileid: "79456194"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

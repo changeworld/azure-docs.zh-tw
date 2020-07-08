@@ -2,14 +2,14 @@
 title: 針對常見問題進行疑難排解
 description: 瞭解如何針對部署、執行或管理 Azure 容器實例時的常見問題進行疑難排解
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 06/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeb4517f5be7fff9c29487d6521f80ee697c0e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533386"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807837"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>在 Azure 容器執行個體中針對常見問題進行疑難排解
 
@@ -18,18 +18,19 @@ ms.locfileid: "74533386"
 如果您需要其他支援，請參閱[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)中的可用說明 **+ 支援**選項。
 
 ## <a name="issues-during-container-group-deployment"></a>容器群組部署期間發生的問題
-### <a name="naming-conventions"></a>命名慣例
+### <a name="naming-conventions"></a>命名規範
 
-定義您的容器規格時，特定參數需要遵循命名限制。 以下資料表具有容器群組屬性的特定需求。 如需 Azure 命名慣例的詳細資訊，請參閱 Azure Architecture Center 中的[命名慣例][azure-name-restrictions]。
+定義您的容器規格時，特定參數需要遵循命名限制。 以下資料表具有容器群組屬性的特定需求。 如需詳細資訊，請參閱 Azure 架構中心中的[命名慣例][azure-name-restrictions]和[Azure 資源的命名規則和限制][naming-rules]。
 
 | 影響範圍 | 長度 | 大小寫 | 有效字元 | 建議模式 | 範例 |
 | --- | --- | --- | --- | --- | --- |
-| 容器群組名稱 | 1-64 |不區分大小寫 |除了第一個或最後一個字元以外，都可以使用英數字元和連字號 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| 容器名稱 | 1-64 |不區分大小寫 |除了第一個或最後一個字元以外，都可以使用英數字元和連字號 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| 容器名稱<sup>1</sup> | 1-63 |小寫 | 除了第一個或最後一個字元以外，都可以使用英數字元和連字號 |`<name>-<role>-container<number>` |`web-batch-container1` |
 | 容器連接埠 | 介於 1 到 65535 之間 |整數 |介於 1 到 65535 之間的整數 |`<port-number>` |`443` |
 | DNS 名稱標籤 | 5-63 |不區分大小寫 |除了第一個或最後一個字元以外，都可以使用英數字元和連字號 |`<name>` |`frontend-site1` |
 | 環境變數 | 1-63 |不區分大小寫 |除了第一個或最後一個字元以外，都可以使用英數字元和底線 (_) |`<name>` |`MY_VARIABLE` |
-| 磁碟區名稱 | 5-63 |不區分大小寫 |除了第一個或最後一個字元以外，都可以使用小寫字母、數字和連字號。 不能包含兩個連續連字號。 |`<name>` |`batch-output-volume` |
+| 磁碟區名稱 | 5-63 |小寫 |除了第一個或最後一個字元以外的任何位置的英數位元和連字號。 不能包含兩個連續連字號。 |`<name>` |`batch-output-volume` |
+
+<sup>1</sup>如果未與容器實例分開指定，例如使用命令部署，則限制也適用于容器組名 `az container create` 。
 
 ### <a name="os-version-of-image-not-supported"></a>不支援映像的 OS 版本
 
@@ -186,7 +187,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="cached-images"></a>快取的影像
 
-Azure 容器實例會使用快取機制，協助針對建置於通用[Windows 基底映射](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括`nanoserver:1809`、 `servercore:ltsc2019`和`servercore:1809`）的映射進行容器啟動時間的速度。 一般使用的 Linux 映射（ `ubuntu:1604`例如`alpine:3.6`和）也會進行快取。 如需最新的快取映射和標籤清單，請使用列出快取的[影像][list-cached-images]API。
+Azure 容器實例會使用快取機制，協助針對建置於通用[Windows 基底映射](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括、和）的映射進行容器啟動時間的速度 `nanoserver:1809` `servercore:ltsc2019` `servercore:1809` 。 一般使用的 Linux 映射（例如 `ubuntu:1604` 和） `alpine:3.6` 也會進行快取。 如需最新的快取映射和標籤清單，請使用列出快取的[影像][list-cached-images]API。
 
 > [!NOTE]
 > 在 Azure 容器執行個體中使用以 Windows Server 2019 為基礎的映像是預覽功能。
@@ -199,11 +200,11 @@ Azure 容器實例會使用快取機制，協助針對建置於通用[Windows �
 
 Azure 容器執行個體不會公開基礎結構 (其中裝載容器群組) 的直接存取。 這包括 Docker API 的存取權，Docker API 可在容器主機上執行，並且可執行具有特殊權限的容器。 如果您需要 Docker 互動，請查閱 [REST 參考文件](https://aka.ms/aci/rest)，以了解 ACI API 支援的內容。 如果有遺漏的項目，請在 [ACI 意見反應論壇](https://aka.ms/aci/feedback)上提交要求。
 
-### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>因為埠不相符，所以可能無法存取容器群組 IP 位址
+### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>容器群組 IP 位址可能因為連接埠不相符而無法存取
 
-Azure 容器實例尚未支援像是一般 docker 設定的埠對應。 如果您認為容器群組的 IP 位址應該是時無法存取，請確定您已將容器映射設定為接聽您在容器群組中使用`ports`屬性所公開的相同埠。
+Azure 容器實例尚未支援像是一般 docker 設定的埠對應。 如果您認為容器群組的 IP 位址應該是時無法存取，請確定您已將容器映射設定為接聽您在容器群組中使用屬性所公開的相同埠 `ports` 。
 
-如果您想要確認 Azure 容器實例可以在您于容器映射中設定的埠上接聽，請測試公開該埠`aci-helloworld`之映射的部署。 同時執行`aci-helloworld`應用程式，使其在埠上接聽。 `aci-helloworld`接受選擇性的環境變數`PORT` ，以覆寫接聽的預設通訊埠80。 例如，若要測試埠9000，請在建立容器群組時設定[環境變數](container-instances-environment-variables.md)：
+如果您想要確認 Azure 容器實例可以在您于容器映射中設定的埠上接聽，請測試 `aci-helloworld` 公開該埠之映射的部署。 同時執行 `aci-helloworld` 應用程式，使其在埠上接聽。 `aci-helloworld`接受選擇性的環境變數 `PORT` ，以覆寫接聽的預設通訊埠80。 例如，若要測試埠9000，請在建立容器群組時設定[環境變數](container-instances-environment-variables.md)：
 
 1. 設定容器群組以公開端口9000，並將埠號碼傳遞為環境變數的值。 範例會針對 Bash shell 進行格式化。 如果您偏好使用其他 shell （例如 PowerShell 或命令提示字元），您必須據以調整變數指派。
     ```azurecli
@@ -212,11 +213,11 @@ Azure 容器實例尚未支援像是一般 docker 設定的埠對應。 如果�
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. 在的命令輸出中，尋找容器群組的 IP 位址`az container create`。 尋找 [ **ip**] 的值。 
-1. 成功布建容器之後，請在瀏覽器中流覽至容器應用程式的 IP 位址和埠，例如： `192.0.2.0:9000`。 
+1. 在的命令輸出中，尋找容器群組的 IP 位址 `az container create` 。 尋找 [ **ip**] 的值。 
+1. 成功布建容器之後，請在瀏覽器中流覽至容器應用程式的 IP 位址和埠，例如： `192.0.2.0:9000` 。 
 
     您應該會看到「歡迎使用 Azure 容器實例！」 web 應用程式所顯示的訊息。
-1. 當您完成容器的作業時，請使用命令將`az container delete`它移除：
+1. 當您完成容器的作業時，請使用命令將它移除 `az container delete` ：
 
     ```azurecli
     az container delete --resource-group myResourceGroup --name mycontainer
@@ -228,6 +229,7 @@ Azure 容器實例尚未支援像是一般 docker 設定的埠對應。 如果�
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
+[naming-rules]: ../azure-resource-manager/management/resource-name-rules.md
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore
@@ -235,4 +237,4 @@ Azure 容器實例尚未支援像是一般 docker 設定的埠對應。 如果�
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show
-[list-cached-images]: /rest/api/container-instances/listcachedimages
+[list-cached-images]: /rest/api/container-instances/location/listcachedimages

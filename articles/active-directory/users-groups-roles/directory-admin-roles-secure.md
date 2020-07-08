@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.author: curtand
 ms.date: 04/30/2020
-ms.topic: article
+ms.topic: conceptual
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c87eabec8f09f082c258a439a17b9f3aa79336
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: 51b18b05dc9fee06b0a9866f59b4bf52ad54e0ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759025"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807854"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取
 
@@ -90,8 +90,8 @@ Azure AD Privileged Identity Management 隨附於 Azure AD Premium P2 或 EMS E5
 
 * 全域管理員
 * 特殊權限角色管理員
-* Exchange Online 系統管理員
-* SharePoint Online 系統管理員
+* Exchange 系統管理員
+* SharePoint 管理員
 
 如果您的組織中沒有 Azure AD Privileged Identity Management，您可以使用 [PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)。 從全域管理員角色開始，因為全域管理員在組織訂閱的所有雲端服務上具有相同的權限。 這些權限無論在何處指派，一律授與：在 Microsoft 365 系統管理中心、Azure 入口網站，或以 Microsoft PowerShell 的 Azure AD 模組指派。
 
@@ -114,7 +114,7 @@ Azure AD Privileged Identity Management 隨附於 Azure AD Premium P2 或 EMS E5
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>開啟多重要素驗證，並註冊其他所有高度特殊權限的單一使用者非同盟管理帳戶
 
-所有永久指派給一或多個 Azure AD 管理員角色的個別使用者在進行登入時，都必須進行 Azure Multi-Factor Authentication (MFA)：全域系統管理員、特殊權限角色系統管理員、Exchange Online 系統管理員和 SharePoint Online 系統管理員。 請使用指南啟用[管理員帳戶的 Multi-factor Authentication (MFA)](../authentication/howto-mfa-userstates.md)，並確定這些使用者全都已在 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) 註冊。 您可以在[保護 Office 365 中的資料和服務存取](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步驟 2 和步驟 3 下找到詳細資訊。 
+針對永久指派給一或多個 Azure AD 系統管理員角色的所有個別使用者，在登入時需要 Azure 多重要素驗證（MFA）：全域管理員、特殊許可權角色系統管理員、Exchange 系統管理員，以及 SharePoint 管理員。 請使用指南啟用[管理員帳戶的 Multi-factor Authentication (MFA)](../authentication/howto-mfa-userstates.md)，並確定這些使用者全都已在 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) 註冊。 您可以在[保護 Office 365 中的資料和服務存取](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步驟 2 和步驟 3 下找到詳細資訊。 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>第 2 階段：緩解常用的攻擊
 

@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 244de9a3236977308a9f7bcaf5106e86a0984201
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b581242ad5a23072731fc7d30e09e461590ec1ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024671"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801320"
 ---
 # <a name="what-are-application-templates"></a>什麼是應用程式範本？
 
@@ -56,6 +56,10 @@ Azure IoT Central 是與業界無關的應用程式平臺。 應用程式範本�
   - 水品質監控
 - [醫療保健](../healthcare/overview-iot-central-healthcare.md)。
   - 持續患者監控
+
+## <a name="application-versions"></a>應用程式版本
+
+範本會與特定 IoT Central 應用程式版本相關聯。 您可以從 [說明 **] 連結，在**[[關於應用](./howto-get-app-info.md)程式] 頁面上找到應用程式的版本。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: e4a7ae00edd8ff86e27037df1a26828c400f6ccf
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774248"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807973"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 進行事件驅動幕後處理
 
@@ -750,7 +750,7 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 您可以使用這些設定確保函式在單一執行個體上以單一項目執行。 若要確保當 Web 應用程式擴充為多個執行個體時，函式只會有單一執行個體執行，請在該函式上套用接聽程式層級的 Singleton 鎖定 (`[Singleton(Mode = SingletonMode.Listener)]`)。 JobHost 啟動時需要接聽程式鎖定。 如果三個擴充的執行個體全部同時啟動，則其中只有一個執行個體會取得鎖定，且只有一個接聽程式會啟動。
 
 > [!NOTE]
-> 若要深入了解 SingletonMode.Function 的運作方式，請參閱這個 [Github 存放庫](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonMode.cs)。
+> 若要深入瞭解 SingletonMode 的運作方式，請參閱此[GitHub](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonMode.cs)存放庫。
 
 ### <a name="scope-values"></a>範圍值
 
@@ -959,7 +959,7 @@ static async Task Main()
 
 #### <a name="version-2x"></a>2\.x 版
 
-在 2.x 版中，WebJobs SDK 的 Application Insights 提供者內部建立的 [`TelemetryClient`] 會使用 [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll)。 當 Application Insights 端點無法使用或正在節流連入要求時，此通道[會將要求儲存在 Web 應用程式的檔案系統中，並於稍後重新提交](https://apmtips.com/blog/2015/09/03/more-telemetry-channels)。
+在 2.x 版中，WebJobs SDK 的 Application Insights 提供者內部建立的 [`TelemetryClient`] 會使用 [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll)。 當 Application Insights 端點無法使用或正在節流連入要求時，此通道[會將要求儲存在 Web 應用程式的檔案系統中，並於稍後重新提交](https://apmtips.com/posts/2015-09-03-more-telemetry-channels/)。
 
 [`TelemetryClient`] 由實作 `ITelemetryClientFactory` 的類別所建立。 根據預設，這會是 [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
 

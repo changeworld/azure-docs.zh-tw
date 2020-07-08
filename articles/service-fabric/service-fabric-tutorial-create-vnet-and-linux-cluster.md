@@ -4,18 +4,18 @@ description: 了解如何使用 Azure CLI 將 Linux Service Fabric 叢集部署�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d6edc086233d757269c12e323241bc4bf55249f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411016"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611691"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>將 Linux Service Fabric 叢集部署到 Azure 虛擬網路
 
 在此文章中，您學到如何使用 Azure CLI 與範本將 Linux Service Fabric 叢集部署到 [Azure 虛擬網路 (VNET)](../virtual-network/virtual-networks-overview.md)。 完成時，您會有在您可以部署應用程式的雲端中執行的叢集。 若要使用 PowerShell 建立 Windows 叢集，請參閱[在 Azure 上建立安全的 Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前：
 
@@ -33,17 +33,17 @@ ms.locfileid: "81411016"
 
 針對 Ubuntu 16.04 LTS：
 
-* [Azuredeploy.parameters.json」 json][template]
-* [Azuredeploy.parameters.json」. Parameters. json][parameters]
+* [AzureDeploy.js于][template]
+* [AzureDeploy.Parameters.js于][parameters]
 
 針對 Ubuntu 18.04 LTS：
 
-* [Azuredeploy.parameters.json」 json][template2]
-* [Azuredeploy.parameters.json」. Parameters. json][parameters2]
+* [AzureDeploy.js于][template2]
+* [AzureDeploy.Parameters.js于][parameters2]
 
 這兩個範本之間的差異在於**vmImageSku**屬性設定為 "18.04-LTS"，而每個節點的**typeHandlerVersion**設定為1.1。
 
-此範本會將一個由七部虛擬機器和三個節點類型組成的安全叢集部署到虛擬網路中。  您可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) 上找到其他範例範本。 [Azuredeploy.parameters.json」][template]會部署一些資源，包括下列各項。
+此範本會將一個由七部虛擬機器和三個節點類型組成的安全叢集部署到虛擬網路中。  您可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) 上找到其他範例範本。 [上的AzureDeploy.js][template]會部署一些資源，包括下列各項。
 
 ### <a name="service-fabric-cluster"></a>Service Fabric 叢集
 
@@ -54,8 +54,8 @@ ms.locfileid: "81411016"
 * OS：（Ubuntu 16.04 LTS/Ubuntu 18.04 LTS）（可在範本參數中設定）
 * 受保護的憑證 (可在範本參數中設定)
 * [DNS 服務](service-fabric-dnsservice.md)已啟用
-* 銅[級耐久性層級](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)（可在範本參數中設定）
-* 銀[級的可靠性層級](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)（可在範本參數中設定）
+* 銅[級耐久性層級](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)（可在範本參數中設定）
+* 銀[級的可靠性層級](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)（可在範本參數中設定）
 * 用戶端連線端點：19000 (可在範本參數中設定)
 * HTTP 閘道端點：19080 (可在範本參數中設定)
 
@@ -81,7 +81,7 @@ ms.locfileid: "81411016"
 
 **Azuredeploy.parameters.json」參數**會宣告許多用來部署叢集和相關聯資源的值。 您可能需要為自己的部署修改某些參數：
 
-|參數|範例值|備忘錄|
+|參數|範例值|備註|
 |---|---||
 |adminUserName|vmadmin| 叢集 VM 的系統管理員使用者名稱。 |
 |adminPassword|Password#1234| 叢集 VM 的系統管理員密碼。|

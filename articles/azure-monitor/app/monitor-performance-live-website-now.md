@@ -3,17 +3,17 @@ title: 使用 Azure Application Insights 監視即時 ASP.NET Web 應用程式 |
 description: 監視網站的效能而不重新部署網站。 使用裝載於內部部署或 VM 中的 ASP.NET Web 應用程式。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: ba17ee275a744b88f2c76e7e3f99a1ac9cc8e758
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2892cb40f0b00b468ef0b8a4ffe60c1158ad068a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536823"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807259"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在執行時間使用 Application Insights 無程式碼 Attach 檢測 web 應用程式
 
 > [!IMPORTANT]
-> 不再建議使用狀態監視器。 它已由 Azure 監視器 Application Insights 代理程式（先前名為狀態監視器 v2）取代。 請參閱我們的檔，以瞭解[內部部署伺服器部署](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)或[Azure 虛擬機器和虛擬機器擴展集部署](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)。
+> 不再建議使用狀態監視器，且**從2021年6月1日開始**，將不支援此版本的狀態監視器。 它已由 Azure 監視器 Application Insights 代理程式（先前名為狀態監視器 v2）取代。 請參閱我們的檔，以瞭解[內部部署伺服器部署](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)或[Azure 虛擬機器和虛擬機器擴展集部署](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)。
 
 您可以使用 Azure Application Insights 檢測即時 Web 應用程式，而不需修改或重新部署您的程式碼。 您需要 [Microsoft Azure](https://azure.com) 訂用帳戶。
 
@@ -39,10 +39,10 @@ ms.locfileid: "81536823"
 
 |  | 建置階段 | 執行階段 |
 | --- | --- | --- |
-| 要求和例外狀況 |是 |是 |
-| [更詳細的例外狀況](../../azure-monitor/app/asp-net-exceptions.md) | |是 |
+| 要求和例外狀況 |Yes |是 |
+| [更詳細的例外狀況](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
 | [相依性診斷](../../azure-monitor/app/asp-net-dependencies.md) |在 .Net 4.6 + 上，但較少細節 |是，完整詳細資料︰結果碼、SQL 命令文字、HTTP 指令動詞|
-| [系統效能計數器](../../azure-monitor/app/performance-counters.md) |是 |是 |
+| [系統效能計數器](../../azure-monitor/app/performance-counters.md) |Yes |是 |
 | [自訂遙測的 API][api] |是 |否 |
 | [追蹤記錄檔整合](../../azure-monitor/app/asp-net-trace-logs.md) |是 |否 |
 | [頁面檢視和使用者資料](../../azure-monitor/app/javascript.md) |是 |否 |
@@ -92,12 +92,12 @@ ms.locfileid: "81536823"
 
 - 確認 applicationInsights.config 檔案在您的目標應用程式目錄中，並且包含您的 ikey。
 
-- 如果您懷疑資料會遺失，可以在 [Analytics](../log-query/get-started-portal.md) 中執行簡單查詢，列出目前正在傳送遙測的所有雲端角色。
+- 如果您懷疑資料遺失，您可以在[分析](../log-query/get-started-portal.md)中執行查詢，以列出目前正在傳送遙測的所有雲端角色。
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
-- 如果您需要確認已成功附加 Application Insights，則可以在命令視窗中執行 [Sysinternals 控制代碼](https://docs.microsoft.com/sysinternals/downloads/handle)以確認 IIS 已載入 applicationinsights.dll。
+- 如果您需要確認已成功附加 Application Insights，您可以在命令視窗中執行[Sysinternals 控制碼](https://docs.microsoft.com/sysinternals/downloads/handle)，以確認 IIS 已載入 applicationinsights.dll。
   ```cmd
   handle.exe /p w3wp.exe
   ```
@@ -298,7 +298,7 @@ Application Insights SDK 2.4 版是[支援 .net 4.0 的最後一個版本](https
  * 相依性呼叫 (.NET 4.5)；在相依性呼叫中傳回值 (.NET 4.6)。
  * 例外狀況堆疊追蹤值。
 
-[深入了解](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+[深入了解](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
 
 ## <a name="video"></a>影片
 

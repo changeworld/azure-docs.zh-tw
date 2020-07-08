@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb8243041bb93ba8be6a65bb83df6f84affaee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049653"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807582"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>加入混合式 Azure AD 的後置設定工作
 
@@ -86,15 +86,10 @@ ms.locfileid: "80049653"
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. 設定群組原則以允許裝置註冊
 
-* 在您的 Active Directory 中建立群組原則物件 (若尚未建立)。
-* 為其命名 (例如，加入混合式 Azure AD)。
-* 編輯並移至：[電腦設定] > [原則] > [系統管理範本] > [Windows 元件] > [裝置註冊]
-* 啟用：將加入網域的電腦註冊為裝置
-* 套用並按一下 [確定]。
-* 將 GPO 連結至您選擇的位置 (組織單位、安全性群組，或所有裝置的網域)。
+如需如何允許個別裝置的混合式 Azure AD 聯結的詳細資訊，請參閱[混合式 Azure AD 聯結的受控制驗證](../devices/hybrid-azuread-join-control.md)。
 
->[!NOTE]
->2012R2 的原則設定位於 [電腦設定] > [原則] > [系統管理範本] > [Windows 元件] > [加入工作場所] > [自動將用戶端電腦加入工作場所]****
+> [!NOTE]
+> 2012 R2 的原則設定位於**電腦設定 > 原則 > 系統管理範本 > Windows 元件 > Workplace Join > 自動加入工作場所用戶端電腦**。
 
 ## <a name="next-steps"></a>後續步驟
 [設定裝置回寫](how-to-connect-device-writeback.md)
