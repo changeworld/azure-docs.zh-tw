@@ -10,18 +10,17 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84325060"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒體服務影片索引子版本資訊
 
->將此 URL 複製並貼 `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` 到您的 RSS 摘要讀取器，以取得有關何時要重新流覽此頁面以取得更新的通知。
+>將 URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` 複製並貼到 RSS 摘要閱讀程式中，以獲知何時該重新造訪此頁面來取得最新消息。
 
 為了讓您隨時掌握最新的開發訊息，本文提供下列相關資訊：
 
@@ -29,6 +28,20 @@ ms.locfileid: "83124579"
 * 已知問題
 * 錯誤修正
 * 已被取代的功能
+
+## <a name="may-2020"></a>2020 年 5 月
+
+### <a name="video-indexer-deployed-in-the-east-us"></a>在美國東部部署的影片索引子
+
+您現在可以在「美國東部」區域中建立影片索引子付費帳戶。
+ 
+### <a name="video-indexer-url"></a>影片索引子 URL
+
+影片索引子的區域端點全都是透過 www 開始整合。 不需要任何動作專案。
+
+從現在開始，您可以 www.videoindexer.ai，不論它是用來內嵌 widget 或登入影片索引子 web 應用程式。
+
+此外，wus.videoindexer.ai 也會重新導向至 www。 如需詳細資訊，請[觀看應用程式中的內嵌影片索引子小](video-indexer-embed-widgets.md)工具。
 
 ## <a name="april-2020"></a>2020 年 4 月
 
@@ -146,10 +159,10 @@ ms.locfileid: "83124579"
  
 * 動畫字元識別（公開預覽）
 
-    能夠透過與自訂視覺整合，偵測動畫內容中的群組廣告辨識字元。 如需詳細資訊，請參閱[動畫字元偵測](animated-characters-recognition.md)。
+    能夠透過與自訂視覺整合，偵測動畫內容中的群組廣告辨識字元。 如需詳細資訊，請參閱[動畫角色偵測](animated-characters-recognition.md)。
 * 多重語言識別（公開預覽）
 
-    在音訊播放軌中偵測多種語言的區段，並根據它們建立多語系文字記錄。 初始支援：英文、西班牙文、德文和法文。 如需詳細資訊，請參閱[自動識別和轉譯多語言內容](multi-language-identification-transcription.md)。
+    在音訊播放軌中偵測多種語言的區段，並根據它們建立多語系文字記錄。 初始支援：英文、西班牙文、德文和法文。 如需詳細資訊，請參閱[自動識別並轉譯多語言內容](multi-language-identification-transcription.md)。
 * 人員和位置的命名實體解壓縮
 
     透過自然語言處理（NLP），從語音和視覺文字中解壓縮品牌、位置和人員。

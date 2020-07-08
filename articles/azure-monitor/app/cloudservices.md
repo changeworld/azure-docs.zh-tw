@@ -4,10 +4,9 @@ description: 使用 Application Insights 有效地監視您的 Web 和背景工�
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537588"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure 雲端服務的 Application Insights
@@ -15,7 +14,7 @@ ms.locfileid: "81537588"
 
 ![概觀儀表板](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 在開始之前，您需要：
 
 * [Azure](https://azure.com)訂用帳戶。 使用 Windows、Xbox Live 或其他 Microsoft 雲端服務適用的 Microsoft 帳戶登入。 
@@ -82,7 +81,7 @@ ms.locfileid: "81537588"
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>設定每個角色的 Azure 診斷
 設定此選項即可使用 Application Insights 來監視您的應用程式。 針對 Web 角色，此選項提供效能監視、警示、診斷及使用狀況分析。 針對其他角色，您可以搜尋和監視 Azure 診斷，例如重新啟動、效能計數器及對 System.Diagnostics.Trace 的呼叫。 
 
-1. 在 Visual Studio 方案總管的 [ ** \<[yourcloudservice]>**  > **角色**] 底下，開啟每個角色的屬性。
+1. 在 Visual Studio 方案總管的 [角色] 底下， **\<YourCloudService>**  >  **Roles**開啟每個角色的屬性。
 
 1. 在 [組態]**** 中選取 [傳送診斷資料至 Application Insights]**** 核取方塊，然後選取您先前建立的 Application Insights 資源。
 
@@ -124,7 +123,7 @@ ms.locfileid: "81537588"
     * [背景工作角色](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [對於網頁](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. 將*ApplicationInsights*設定為一律複製到輸出目錄。
+1. 將*ApplicationInsights.config*檔案設定為一律複製到輸出目錄。
 
    *.config* 檔案中的訊息會要求您將檢測金鑰放置在此處。 不過針對雲端應用程式，最好是從 *.cscfg* 檔案中設定。 此方法可確保角色會在入口網站中正確識別。
 
@@ -132,7 +131,7 @@ ms.locfileid: "81537588"
 
 只有當您想要在 .NET Framework 上捕獲完整的 SQL 查詢時，才需要執行此步驟。 
 
-1. 在`\*.csdef` [檔案] 中，為每個角色新增[啟動](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)工作，如下所示 
+1. 在 [檔案] 中 `\*.csdef` ，為每個角色新增[啟動](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)工作，如下所示 
 
     ```xml
     <Startup>
@@ -147,7 +146,7 @@ ms.locfileid: "81537588"
     </Startup>
     ```
     
-2. 下載[InstallAgent](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat)和[InstallAgent](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)，將它們放入每個角色專案`AppInsightsAgent`的資料夾中。 請務必透過 Visual Studio 檔案屬性或組建腳本，將它們複製到輸出目錄。
+2. 下載[InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat)並[InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)，將它們放入 `AppInsightsAgent` 每個角色專案的資料夾中。 請務必透過 Visual Studio 檔案屬性或組建腳本，將它們複製到輸出目錄。
 
 3. 在所有背景工作角色上，新增環境變數： 
 
@@ -220,7 +219,7 @@ ms.locfileid: "81537588"
 ## <a name="performance-counters"></a>效能計數器
 根據預設會收集下列計數器：
 
-* \Process （？APP_WIN32_PROC？？）\%處理器時間
+* \Process （？APP_WIN32_PROC？？） \%處理器時間
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes
@@ -242,7 +241,7 @@ ms.locfileid: "81537588"
 
 若要達成此檢視背景工作角色的目的，您可以使用自訂遙測初始設定式，為所有遙測設定一個通用 Operation.Id 內容屬性。 這可讓您一目了然延遲/失敗問題是相依性或程式碼所造成的。 
 
-方法：
+其做法如下：
 
 * 設定相互關聯識別碼到 CallContext 中，如[此範例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36)。 在此案例中，我們使用「要求 ID」做為相互關聯識別碼。
 * 新增自訂的 TelemetryInitializer 實作，其會將 Operation.Id 設為前面所設定的相互關聯識別碼。 例如，請見 [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)。

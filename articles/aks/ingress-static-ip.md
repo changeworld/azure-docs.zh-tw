@@ -4,13 +4,12 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中，使用靜態公用 IP 位址來安裝及設定 NGINX 輸入控制器。
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: a44a41806af30479f06ec4daba936c7aa71ef5d7
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.date: 07/02/2020
+ms.openlocfilehash: f10bed46f93af3579f07e04d9940fc98eef67826
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920309"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用靜態公用 IP 位址建立輸入控制器
 
@@ -53,22 +52,25 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 
 您必須將兩個額外的參數傳遞至 Helm 版本，讓輸入控制器知道要配置給輸入控制器服務的負載平衡器靜態 IP 位址，以及要套用至公用 IP 位址資源的 DNS 名稱標籤。 為了讓 HTTPS 憑證能夠正常運作，會使用 DNS 名稱標籤來設定輸入控制器 IP 位址的 FQDN。
 
-1. 新增`--set controller.service.loadBalancerIP`參數。 指定您自己在上一個步驟中建立的公用 IP 位址。
-1. 新增`--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"`參數。 指定要套用至在上一個步驟中建立之公用 IP 位址的 DNS 名稱標籤。
+1. 新增 `--set controller.service.loadBalancerIP` 參數。 指定您自己在上一個步驟中建立的公用 IP 位址。
+1. 新增 `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"` 參數。 指定要套用至在上一個步驟中建立之公用 IP 位址的 DNS 名稱標籤。
 
 輸入控制器也需要在 Linux 節點上排程。 Windows Server 節點不應執行輸入控制器。 您可以使用 `--set nodeSelector` 參數來指定節點選取器，以告知 Kubernetes 排程器在 Linux 式節點上執行 NGINX 輸入控制器。
 
 > [!TIP]
-> 下列範例會建立名為「輸入 *-基本*」的輸入資源的 Kubernetes 命名空間。 視需要指定您自己環境的命名空間。 如果您的 AKS 叢集未啟用 RBAC，請`--set rbac.create=false`將新增至 Helm 命令。
+> 下列範例會建立名為「輸入 *-基本*」的輸入資源的 Kubernetes 命名空間。 視需要指定您自己環境的命名空間。 如果您的 AKS 叢集未啟用 RBAC，請將新增 `--set rbac.create=false` 至 Helm 命令。
 
 > [!TIP]
-> 如果您想要為叢集中的容器要求啟用[用戶端來源 IP 保留][client-source-ip]，請將`--set controller.service.externalTrafficPolicy=Local`新增至 Helm install 命令。 用戶端來源 IP 會儲存在要求標頭的 [ *X-轉送-*] 下。 當使用已啟用用戶端來源 IP 保留的輸入控制器時，TLS 傳遞將無法正常執行。
+> 如果您想要為叢集中的容器要求啟用[用戶端來源 IP 保留][client-source-ip]，請將新增 `--set controller.service.externalTrafficPolicy=Local` 至 Helm install 命令。 用戶端來源 IP 會儲存在要求標頭的 [ *X-轉送-*] 下。 當使用已啟用用戶端來源 IP 保留的輸入控制器時，TLS 傳遞將無法正常執行。
 
 以輸入控制器的**IP 位址**和您想要用於 FQDN 首碼的**唯一名稱**，更新下列腳本：
 
 ```console
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
+
+# Add the official stable repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 # Use Helm to deploy an NGINX ingress controller
 helm install nginx-ingress stable/nginx-ingress \
@@ -167,7 +169,7 @@ clusterissuer.cert-manager.io/letsencrypt-staging created
 
 輸入控制器和憑證管理解決方案皆已設定。 現在讓我們在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，會使用 Helm 來部署簡單 'Hello world' 應用程式的兩個執行個體。
 
-若要查看作用中的輸入控制器，請在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，您`kubectl apply`會使用來部署簡單*Hello world*應用程式的兩個實例。
+若要查看作用中的輸入控制器，請在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，您會使用 `kubectl apply` 來部署簡單*Hello world*應用程式的兩個實例。
 
 建立*aks-helloworld yaml*檔案，並複製下列範例 yaml：
 
@@ -245,7 +247,7 @@ spec:
     app: ingress-demo
 ```
 
-使用`kubectl apply`執行兩個示範應用程式：
+使用執行兩個示範應用程式 `kubectl apply` ：
 
 ```console
 kubectl apply -f aks-helloworld.yaml --namespace ingress-basic
@@ -348,9 +350,9 @@ certificate.cert-manager.io/tls-secret created
 
 ## <a name="test-the-ingress-configuration"></a>測試輸入組態
 
-將網頁瀏覽器開啟至 Kubernetes 輸入控制器的 FQDN，例如*`https://demo-aks-ingress.eastus.cloudapp.azure.com`*。
+將網頁瀏覽器開啟至 Kubernetes 輸入控制器的 FQDN，例如 *`https://demo-aks-ingress.eastus.cloudapp.azure.com`* 。
 
-如這些範例所`letsencrypt-staging`使用，所發出的 TLS/SSL 憑證不受瀏覽器的信任。 接受警告提示以繼續您的應用程式。 憑證資訊顯示這個 *Fake LE Intermediate X1* 憑證是由 Let's Encrypt 所簽發的。 這個假憑證表示 `cert-manager` 已正確處理要求並接收來自提供者的憑證：
+如這些範例所使用 `letsencrypt-staging` ，所發出的 TLS/SSL 憑證不受瀏覽器的信任。 接受警告提示以繼續您的應用程式。 憑證資訊顯示這個 *Fake LE Intermediate X1* 憑證是由 Let's Encrypt 所簽發的。 這個假憑證表示 `cert-manager` 已正確處理要求並接收來自提供者的憑證：
 
 ![Let's Encrypt 暫存憑證](media/ingress/staging-certificate.png)
 
@@ -372,7 +374,7 @@ certificate.cert-manager.io/tls-secret created
 
 ### <a name="delete-the-sample-namespace-and-all-resources"></a>刪除範例命名空間和所有資源
 
-若要刪除整個範例命名空間，請`kubectl delete`使用命令並指定您的命名空間名稱。 命名空間中的所有資源都會被刪除。
+若要刪除整個範例命名空間，請使用 `kubectl delete` 命令並指定您的命名空間名稱。 命名空間中的所有資源都會被刪除。
 
 ```console
 kubectl delete namespace ingress-basic
@@ -397,7 +399,7 @@ nginx-ingress           ingress-basic   1               2020-01-11 14:51:03.4541
 cert-manager            ingress-basic   1               2020-01-06 21:19:03.866212286  deployed        cert-manager-v0.13.0    v0.13.0
 ```
 
-使用`helm uninstall`命令卸載發行。 下列範例會卸載 NGINX 輸入部署和憑證管理員部署。
+使用命令卸載發行 `helm uninstall` 。 下列範例會卸載 NGINX 輸入部署和憑證管理員部署。
 
 ```
 $ helm uninstall nginx-ingress cert-manager -n ingress-basic
@@ -413,7 +415,7 @@ kubectl delete -f aks-helloworld.yaml --namespace ingress-basic
 kubectl delete -f ingress-demo.yaml --namespace ingress-basic
 ```
 
-刪除本身的命名空間。 使用`kubectl delete`命令，並指定您的命名空間名稱：
+刪除本身的命名空間。 使用 `kubectl delete` 命令，並指定您的命名空間名稱：
 
 ```console
 kubectl delete namespace ingress-basic

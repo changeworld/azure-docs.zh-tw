@@ -4,19 +4,18 @@ description: 了解 Azure Cosmos DB 中的 CONTAINS SQL 系統函數如何傳回
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a08fe47122d7e9ddd1c9038bb5f15ebbb0be30fa
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 4877272fc2db521977a4111317118380399d27c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848969"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322698"
 ---
 # <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
 
- 傳回布林值，表示第一個字串運算式是否包含第二個字串運算式。  
+傳回布林值，表示第一個字串運算式是否包含第二個字串運算式。  
   
 ## <a name="syntax"></a>語法
   
@@ -75,6 +74,8 @@ SELECT CONTAINS("abc", "ab", false) AS c1, CONTAINS("abc", "A", false) AS c2, CO
 ```
 
 第一個查詢使用的 RU 可能會比第二個查詢多，因為城鎮的基數高於國家/地區。
+
+如果某些檔的屬性大小包含大於 1 KB，則查詢引擎將需要載入這些檔。 在此情況下，查詢引擎將無法完全評估包含索引的 Contains。 如果您有大量檔的屬性大小超過 1 KB，則「包含」的 RU 費用將會很高。
 
 ## <a name="next-steps"></a>後續步驟
 

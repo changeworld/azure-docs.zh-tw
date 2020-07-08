@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 206d63e05b68cbcec65b0d06e11da48065251ea0
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339887"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>開發 c # IoT Edge 模組以在 Azure Stack Edge 上移動檔案
 
@@ -24,6 +23,7 @@ ms.locfileid: "82569988"
 在本文中，您將學會如何：
 
 > [!div class="checklist"]
+>
 > * 建立容器登錄來儲存和管理模組 (Docker 映像)。
 > * 建立 IoT Edge 模組，以在您的 Azure Stack Edge 裝置上部署。 
 
@@ -40,7 +40,7 @@ ms.locfileid: "82569988"
 
 一旦檔案位於雲端共用之後，它就會自動上傳至您的 Azure 儲存體帳戶。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您擁有：
 
@@ -63,19 +63,19 @@ ms.locfileid: "82569988"
 Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其中儲存並管理私人 Docker 容器映像。 雲端中所提供的兩個熱門 Docker 登錄服務為 Azure Container Registry 和 Docker Hub。 本文使用 Container Registry。
 
 1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
-2. 選取 [建立資源] > [容器] > [Container Registry]****。 按一下 [建立]  。
+2. 選取 [建立資源] > [容器] > [Container Registry]****。 按一下 [建立]。
 3. 提供：
 
    1. Azure 內唯一的**登錄名稱**，其中包含 5 到 50 個英數字元。
-   2. 選擇 [訂用帳戶] ****。
+   2. 選擇**訂**用帳戶。
    3. 建立新的，或選擇現有的**資源群組**。
-   4. 選取 [**位置**]。 我們建議此位置與 Azure Stack Edge 資源相關聯。
+   4. 選取 [位置] 。 我們建議此位置與 Azure Stack Edge 資源相關聯。
    5. 將 [管理使用者]**** 切換為 [啟用]****。
    6. 將 SKU 設定為 [基本]****。
 
       ![建立容器登錄](./media/azure-stack-edge-create-iot-edge-module/create-container-registry-1.png)
  
-4. 選取 [建立]  。
+4. 選取 [建立]。
 5. 建立容器登錄之後，請加以瀏覽，並選取 [存取金鑰]****。
 
     ![取得存取金鑰](./media/azure-stack-edge-create-iot-edge-module/get-access-keys-1.png)

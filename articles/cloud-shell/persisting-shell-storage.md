@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273285"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中保存檔案
@@ -62,7 +61,7 @@ Cloud Shell 在指定的訂用帳戶內，使用儲存體帳戶中的 Azure 檔�
 使用者應該藉由設定儲存體帳戶或訂用帳戶層級的許可權，來鎖定其檔案的存取權。
 
 ## <a name="supported-storage-regions"></a>支援的儲存體區域
-若要尋找您目前的區域， `env`您可以在 Bash 中執行`ACC_LOCATION`，並找出變數`$env:ACC_LOCATION`或從 PowerShell 執行。 檔案共用會收到為您建立以便保存 `$Home` 目錄的 5 GB 映像。
+若要尋找您目前的區域，您可以 `env` 在 Bash 中執行，並找出變數 `ACC_LOCATION` 或從 PowerShell 執行 `$env:ACC_LOCATION` 。 檔案共用會收到為您建立以便保存 `$Home` 目錄的 5 GB 映像。
 
 Cloud Shell 電腦存在於下列區域：
 
@@ -80,7 +79,7 @@ Cloud Shell 電腦存在於下列區域：
 > [!NOTE]
 > 如果使用次要區域，Cloud Shell 的檔案存取和啟動時間可能會較慢。
 
-使用者可以在 PowerShell `(Get-CloudDrive | Get-AzStorageAccount).Location`中執行，以查看其檔案共用的位置。
+使用者可以 `(Get-CloudDrive | Get-AzStorageAccount).Location` 在 PowerShell 中執行，以查看其檔案共用的位置。
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>使用 Azure 資源原則限制資源建立
 您在 Cloud Shell 中建立的儲存體帳戶都會標記 `ms-resource-usage:azure-cloud-shell`。 如果您想要禁止使用者在 Cloud Shell 中建立儲存體帳戶，請建立這個特定標籤所觸發之[標籤的 Azure 資源原則](../azure-policy/json-samples.md)。
@@ -96,7 +95,7 @@ Cloud Shell 透過下列兩種方法來保存檔案：
 ## <a name="clouddrive-commands"></a>clouddrive 命令
 
 ### <a name="use-the-clouddrive-command"></a>使用 `clouddrive` 命令
-在 Cloud Shell 中，您可以執行名`clouddrive`為的命令，讓您手動更新已掛接至 Cloud Shell 的檔案共用。
+在 Cloud Shell 中，您可以執行名為的命令 `clouddrive` ，讓您手動更新已掛接至 Cloud Shell 的檔案共用。
 
 ![執行 "clouddrive" 命令](media/persisting-shell-storage/clouddrive-h.png)
 
@@ -122,7 +121,7 @@ justin@Azure:~$
 #### <a name="prerequisites-for-manual-mounting"></a>手動掛接的先決條件
 您可以使用 `clouddrive mount` 命令來更新與 Cloud Shell 關聯的檔案共用。
 
-如果您要掛接現有的檔案共用，儲存體帳戶必須位在所選的 Cloud Shell 區域中： 執行`env`並檢查，以取出位置`ACC_LOCATION`。
+如果您要掛接現有的檔案共用，儲存體帳戶必須位在所選的 Cloud Shell 區域中： 執行並檢查，以取出位置 `env` `ACC_LOCATION` 。
 
 #### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` 命令
 

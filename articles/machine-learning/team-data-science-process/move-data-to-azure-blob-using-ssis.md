@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 77bfd9d5bcae7bedd673354e32464d5f59bdc9b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ad87272749011c81c1040825da3f3c53858a55bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322856"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>使用 SSIS 連接器從 Azure Blob 儲存體來回移動資料
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) 中的元件可供連線至 Azure、在 Azure 與內部部署資源來源之間傳輸資料，以及處理儲存在 Azure 中的資料。
@@ -27,14 +26,14 @@ ms.locfileid: "76720866"
 
 使用這些 Azure 資源的範例位於[SQL](sql-walkthrough.md)和[HDInsight](hive-walkthrough.md)逐步解說中。
 
-有關使用 SSIS 完成混合式資料整合案例中常見業務需求的典型案例討論，請參閱 [使用 Azure 適用的 SQL Server 整合服務功能套件事半功倍](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) 部落格。
+有關使用 SSIS 完成混合式資料整合案例中常見業務需求的典型案例討論，請參閱 [使用 Azure 適用的 SQL Server 整合服務功能套件事半功倍](https://techcommunity.microsoft.com/t5/sql-server-integration-services/doing-more-with-sql-server-integration-services-feature-pack-for/ba-p/388238) 部落格。
 
 > [!NOTE]
 > 如需 Azure Blob 儲存體的完整介紹，請參閱 [Azure Blob 基本概念](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服務](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
 > 
 > 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 若要執行本文所述的工作，您必須已設定 Azure 訂用帳戶和 Azure 儲存體帳戶。 您需要 Azure 儲存體帳戶名稱和帳戶金鑰，才能上傳或下載資料。
 
 * 若要設定 **Azure 訂用帳戶**，請參閱 [免費試用一個月](https://azure.microsoft.com/pricing/free-trial/)。
@@ -64,7 +63,7 @@ ms.locfileid: "76720866"
 
 此工作使用的參數如下所述：
 
-| 欄位 | 描述 |
+| 欄位 | 說明 |
 | --- | --- |
 | **AzureStorageConnection** |指定現有的 Azure 儲存體連線管理員，或建立參考指向 blob 檔案裝載位置之 Azure 儲存體帳戶的新。 |
 | **BlobContainer** |指定將已上傳的檔案保存為 blob 的 blob 容器名稱。 |

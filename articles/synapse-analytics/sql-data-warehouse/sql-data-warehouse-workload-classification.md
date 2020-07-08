@@ -6,17 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: e7aa0c402878c994aabe4e12d811a99e300d7e67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 266eebc8322b5fc648180c0524abc973a4b60373
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212372"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse 分析工作負載分類
 
@@ -36,7 +35,7 @@ ms.locfileid: "80743647"
 
 ## <a name="classification-process"></a>分類程序
 
-現今在 Azure Synapse 中 Synapse SQL 集區的分類是藉由將使用者指派給具有對應資源類別的角色（使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）來達成。 對資源類別登入以外的要求加上特性的能力，會受到這項功能的限制。 「[建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」語法現在提供更豐富的分類方法。  使用此語法，Synapse SQL 集區使用者可以透過`workload_group`參數指派重要性，以及指派給要求的系統資源數量。
+現今在 Azure Synapse 中 Synapse SQL 集區的分類是藉由將使用者指派給具有對應資源類別的角色（使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）來達成。 對資源類別登入以外的要求加上特性的能力，會受到這項功能的限制。 「[建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」語法現在提供更豐富的分類方法。  使用此語法，Synapse SQL 集區使用者可以透過參數指派重要性，以及指派給要求的系統資源數量 `workload_group` 。
 
 > [!NOTE]
 > 分類是根據每個要求來評估。 單一會話中的多個要求可以不同方式分類。
@@ -53,7 +52,7 @@ ms.locfileid: "80743647"
 |WLM_CONTEXT          |8        |
 |START_TIME/END_TIME  |4        |
 
-參數`membername`是必要的。  不過，如果指定的成員名稱是資料庫使用者，而不是資料庫角色，則使用者的加權會較高，因此會選擇分類器。
+`membername`參數是必要的。  不過，如果指定的成員名稱是資料庫使用者，而不是資料庫角色，則使用者的加權會較高，因此會選擇分類器。
 
 如果使用者是多個角色的成員，且被指派了不同的資源類別或在多個分類器中相符，該使用者將獲得最高的資源類別指派。  這種行為與現有的資源類別指派行為一致。
 

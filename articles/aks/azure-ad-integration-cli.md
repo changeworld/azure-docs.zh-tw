@@ -4,28 +4,27 @@ description: 瞭解如何使用 Azure CLI 建立和 Azure Active Directory 啟�
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: dba6590daf5c64dd1e53663e71a0cc27941b1470
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: MT
+ms.openlocfilehash: 83ba43c3b8a00325750ec935fd3a43ec7d56074c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85336536"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 整合 Azure Active Directory 與 Azure Kubernetes Service
 
 Azure Kubernetes Service (AKS) 可以設定為使用 Azure Active Directory (AD) 進行使用者驗證。 在此設定中，您可以使用 Azure AD 驗證權杖來登入 AKS 叢集。 叢集操作員也可以根據使用者的身分識別或目錄群組成員資格，設定 Kubernetes 角色型存取控制（RBAC）。
 
-本文說明如何建立必要的 Azure AD 元件，然後部署已啟用 Azure AD 的叢集，並在 AKS 叢集中建立基本的 RBAC 角色。 您也可以[使用 Azure 入口網站來完成這些步驟][azure-ad-portal]。
+本文說明如何建立必要的 Azure AD 元件，然後部署已啟用 Azure AD 的叢集，並在 AKS 叢集中建立基本的 RBAC 角色。
 
 如需本文中使用的完整範例腳本，請參閱[Azure CLI 範例-AKS 與 Azure AD 整合][complete-script]。
 
-套用下列限制：
+適用下列限制：
 
 - 只有建立啟用 RBAC 功能的新叢集時，才能啟用 Azure AD。 您無法在現有的 AKS 叢集上啟用 Azure AD。
 
 ## <a name="before-you-begin"></a>開始之前
 
-您需要安裝並設定 Azure CLI 版本2.0.61 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
+您必須安裝並設定 Azure CLI 版本 2.0.61 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 移至 [https://shell.azure.com](https://shell.azure.com)，並在您的瀏覽器中開啟 Cloud Shell。
 
@@ -97,7 +96,7 @@ az ad app permission admin-consent --id  $serverApplicationId
 
 ## <a name="create-azure-ad-client-component"></a>建立 Azure AD 用戶端元件
 
-當使用者使用 Kubernetes CLI （`kubectl`）登入 AKS 叢集時，會使用第二個 Azure AD 應用程式。 此用戶端應用程式會接受來自使用者的驗證要求，並驗證其認證和許可權。 使用[az AD app create][az-ad-app-create]命令，建立用戶端元件的 Azure AD 應用程式：
+當使用者使用 Kubernetes CLI （）登入 AKS 叢集時，會使用第二個 Azure AD 應用程式 `kubectl` 。 此用戶端應用程式會接受來自使用者的驗證要求，並驗證其認證和許可權。 使用[az AD app create][az-ad-app-create]命令，建立用戶端元件的 Azure AD 應用程式：
 
 ```azurecli-interactive
 clientApplicationId=$(az ad app create \
@@ -171,7 +170,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > 如果您授與的 RBAC 系結的使用者位於相同的 Azure AD 租使用者中，請根據*userPrincipalName*指派許可權。 如果使用者位於不同的 Azure AD 租使用者中，請改為查詢並使用*objectId*屬性。
 
-建立名為`basic-azure-ad-binding.yaml`的 YAML 資訊清單，並貼上下列內容。 在最後一行上，將*userPrincipalName_or_objectId*取代為上一個命令中的 UPN 或物件識別碼輸出：
+建立名為的 YAML 資訊清單 `basic-azure-ad-binding.yaml` ，並貼上下列內容。 在最後一行上，將*userPrincipalName_or_objectId*取代為上一個命令中的 UPN 或物件識別碼輸出：
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -196,7 +195,7 @@ kubectl apply -f basic-azure-ad-binding.yaml
 
 ## <a name="access-cluster-with-azure-ad"></a>透過 Azure AD 存取叢集
 
-現在讓我們來測試 AKS 叢集的 Azure AD authentication 整合。 `kubectl`將設定內容設為使用一般使用者認證。 此內容會透過 Azure AD 將所有驗證要求傳遞回來。
+現在讓我們來測試 AKS 叢集的 Azure AD authentication 整合。 將設定 `kubectl` 內容設為使用一般使用者認證。 此內容會透過 Azure AD 將所有驗證要求傳遞回來。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --overwrite-existing
@@ -208,7 +207,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --overwr
 kubectl get pods --all-namespaces
 ```
 
-您會收到登入提示，您可以使用網頁瀏覽器來使用 Azure AD 認證來進行驗證。 成功驗證之後， `kubectl`命令會顯示 AKS 叢集中的 pod，如下列範例輸出所示：
+您會收到登入提示，您可以使用網頁瀏覽器來使用 Azure AD 認證來進行驗證。 成功驗證之後， `kubectl` 命令會顯示 AKS 叢集中的 pod，如下列範例輸出所示：
 
 ```console
 kubectl get pods --all-namespaces
@@ -229,7 +228,7 @@ kube-system   metrics-server-7b97f9cd9-btxzz          1/1     Running   0       
 kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0          23h
 ```
 
-已快取接收的`kubectl`驗證權杖。 只有在權杖過期或重新建立 Kubernetes config 檔案時，才會重複提示登入。
+已快取接收的驗證權杖 `kubectl` 。 只有在權杖過期或重新建立 Kubernetes config 檔案時，才會重複提示登入。
 
 如果您在使用網頁瀏覽器成功登入後看到授權錯誤訊息，如下列範例輸出所示，請檢查下列可能的問題：
 

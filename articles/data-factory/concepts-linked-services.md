@@ -11,12 +11,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 0703e7cd44a79dd45680e19c8f5f3232be840823
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: f826113abc756654fbf02e7d643b8ac1f9d9f98a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826174"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84338051"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory 中的連結服務
 
@@ -32,7 +31,7 @@ ms.locfileid: "83826174"
 
 ## <a name="overview"></a>概觀
 
-資料處理站可以有一或多個管線。 「管線」是一起執行某個工作的「活動」所組成的邏輯群組。 管線中的活動會定義要在資料上執行的動作。 例如，您可以使用複製活動將資料從內部部署 SQL Server 複製到 Azure Blob 儲存體。 接著，您可以使用在 Azure HDInsight 叢集上執行 Hive 指令碼的 Hive 活動，來處理來自 Blob 儲存體的資料以產生輸出資料。 最後，您可以使用第二個複製活動將輸出資料複製到「Azure SQL 資料倉儲」，以在該處建置商業智慧 (BI) 報表解決方案。 如需有關管線和活動的詳細資訊，請參閱 Azure Data Factory 中的[管線和活動](concepts-pipelines-activities.md)。
+資料處理站可以有一或多個管線。 「管線」是一起執行某個工作的「活動」所組成的邏輯群組。 管線中的活動會定義要在資料上執行的動作。 例如，您可以使用複製活動，將資料從 SQL Server 複製到 Azure Blob 儲存體。 接著，您可以使用在 Azure HDInsight 叢集上執行 Hive 指令碼的 Hive 活動，來處理來自 Blob 儲存體的資料以產生輸出資料。 最後，您可以使用第二個複製活動將輸出資料複製到「Azure SQL 資料倉儲」，以在該處建置商業智慧 (BI) 報表解決方案。 如需有關管線和活動的詳細資訊，請參閱 Azure Data Factory 中的[管線和活動](concepts-pipelines-activities.md)。
 
 現在，「資料集」是一個具名的資料檢視，指向或參考您想要在「活動」中用來作為輸入或輸出的資料。
 
@@ -95,7 +94,10 @@ connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-in
 
 ## <a name="create-linked-services"></a>建立連結的服務
 
-您可以使用下列其中一個工具或 SDK 來建立連結的服務：[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure Resource Manager 範本及 Azure 入口網站
+連結的服務可以透過[管理中樞](author-management-hub.md)和參考它們的任何活動、資料集或資料流程，在 Azure Data Factory UX 中建立。
+
+您可以使用下列其中一個工具或 Sdk 來建立連結服務： [.NET API](quickstart-create-data-factory-dot-net.md)、 [PowerShell](quickstart-create-data-factory-powershell.md)、 [REST API](quickstart-create-data-factory-rest-api.md)、Azure Resource Manager 範本，以及 Azure 入口網站。
+
 
 ## <a name="data-store-linked-services"></a>資料存放區連結服務
 

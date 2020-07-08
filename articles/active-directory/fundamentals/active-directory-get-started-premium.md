@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 09/07/2017
 ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1f4addf9bb1fff34d99867fb3730a9197c9c05
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: c146640112190fe08bb1b3b806c95a2854da9083
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73721233"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604449"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>註冊 Azure Active Directory Premium 版本
 您可以使用您的 Azure 訂用帳戶來購買 Azure Active Directory (Azure AD) Premium 版本並與其產生關聯。 如果您需要建立新的 Azure 訂用帳戶，您也需要啟用授權方案及 Azure AD 服務存取。

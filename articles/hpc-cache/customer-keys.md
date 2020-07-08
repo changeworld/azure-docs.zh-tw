@@ -3,15 +3,14 @@ title: 使用客戶受控金鑰來加密 Azure HPC Cache 中的資料
 description: 如何使用 Azure Key Vault 搭配 Azure HPC 快取來控制加密金鑰存取，而不是使用預設 Microsoft 管理的加密金鑰
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: 2d10241b8395c33767ffeeb550d9d8060bde3ce3
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
-ms.translationtype: MT
+ms.openlocfilehash: b7b9e9e6858d709e80642603e77bfb36f2e4c0c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512909"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>針對 Azure HPC 快取使用客戶管理的加密金鑰
 

@@ -3,12 +3,11 @@ title: 關於 Azure Site Recovery 中的復原方案
 description: 深入了解 Azure Site Recovery 中的復原方案。
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8d191781cacc37242dd1be31d6cb87ef196e5e7a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257767"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343909"
 ---
 # <a name="about-recovery-plans"></a>關於復原方案
 
@@ -17,7 +16,7 @@ ms.locfileid: "79257767"
 復原方案會針對容錯移轉的目的，將機器收集到復原群組中。 復原方案可藉由建立您可容錯移轉的小型獨立單位，協助您定義系統性復原程序。 單位通常代表您環境中的應用程式。
 
 - 復原方案會定義機器容錯移轉的方式，以及機器在容錯移轉之後啟動的順序。
-- 復原方案是用來容錯移轉至 Azure，但不能用於從 Azure 容錯回復。
+- 復原方案可用於容錯移轉至 Azure 和容錯回復。
 - 可以將最多100個受保護的實例新增到一個復原方案。
 - 您可以將順序、指示及工作新增至方案來加以自訂。
 - 定義方案之後，您可以在該方案上執行容錯移轉。

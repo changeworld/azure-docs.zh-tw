@@ -7,22 +7,21 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 1cfa00cceac6c30219d4577cc4ba29c84cb1a75a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603955"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 入口網站新增自訂網域名稱
 
-每個新的 Azure AD 租使用者都隨附一個初始功能變數名稱， * \<domainname>. onmicrosoft.com*。 您無法變更或刪除初始功能變數名稱，但可以新增貴組織的名稱。 新增自訂功能變數名稱可協助您建立使用者熟悉的使用者名稱，例如*alain\@contoso.com*。
+每個新的 Azure AD 租使用者都隨附一個初始功能變數名稱* \<domainname> onmicrosoft.com*。 您無法變更或刪除初始功能變數名稱，但可以新增貴組織的名稱。 新增自訂功能變數名稱可協助您建立使用者熟悉的使用者名稱，例如*alain \@ contoso.com*。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -50,7 +49,7 @@ ms.locfileid: "82734734"
 
 1. 使用目錄的全域系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 搜尋並從任何頁面選取 [ *Azure Active Directory* ]。 然後選取 [**自訂功能變數名稱** > ] [**新增自訂網域**]。
+1. 從任何頁面搜尋並選取 [Azure Active Directory]。 然後選取 [**自訂功能變數名稱**] [  >  **新增自訂網域**]。
 
     ![[自訂功能變數名稱] 頁面，顯示 [新增自訂網域]](media/add-custom-domain/add-custom-domain.png)
 

@@ -7,11 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283936"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710366"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>在 Azure Logic Apps 中執行資料作業
 
@@ -34,8 +33,8 @@ ms.locfileid: "79283936"
 | [**建立 CSV 資料表**](#create-csv-table-action) | 從陣列建立逗號分隔值 (CSV) 資料表。 |
 | [**建立 HTML 資料表**](#create-html-table-action) | 從陣列建立 HTML 資料表。 |
 | [**篩選陣列**](#filter-array-action) | 根據指定的篩選條件或條件，從陣列建立陣列子集。 |
-| [**接入**](#join-action) | 從陣列中的所有項目建立字串，並使用指定的字元來分隔每個項目。 |
-| [**Select**](#select-action) | 從不同陣列中所有項目的指定屬性建立陣列。 |
+| [**Join**](#join-action) | 從陣列中的所有項目建立字串，並使用指定的字元來分隔每個項目。 |
+| [**選取**](#select-action) | 從不同陣列中所有項目的指定屬性建立陣列。 |
 ||| 
 
 **JSON 動作**
@@ -50,7 +49,7 @@ ms.locfileid: "79283936"
 
 若要建立更複雜的 JSON 轉換，請參閱[使用 Liquid 範本執行進階的 JSON 轉換](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -90,7 +89,7 @@ ms.locfileid: "79283936"
 
      ![選取 [新增步驟] 以進行「撰寫」動作](./media/logic-apps-perform-data-operations/add-compose-operation-action.png)
 
-   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上**+**，如此就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
+   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上，如此 **+** 就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
 
 1. 在 [選擇動作]**** 底下的搜尋方塊中，輸入 `compose` 作為篩選條件。 從 [動作] 清單中，選取 [**撰寫**] 動作。
 
@@ -148,7 +147,7 @@ ms.locfileid: "79283936"
 
      ![針對 [建立 CSV 資料表] 動作選取 [新增步驟]](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上**+**，如此就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
+   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上，如此 **+** 就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
 
 1. 在 [選擇動作]**** 底下的搜尋方塊中，輸入 `create csv table` 作為篩選條件。 從 [動作] 清單中，選取 [**建立 CSV 資料表**] 動作。
 
@@ -179,7 +178,7 @@ ms.locfileid: "79283936"
 
 1. 在 [**值**] 屬性中，指定要改用的自訂值。
 
-若要從陣列傳回值，您可以使用[ `item()`函數](../logic-apps/workflow-definition-language-functions-reference.md#item)搭配 [**建立 CSV 資料表**] 動作。 在`For_each`迴圈中，您可以使用[ `items()`函數](../logic-apps/workflow-definition-language-functions-reference.md#items)。
+若要從陣列傳回值，您可以使用[ `item()` 函數](../logic-apps/workflow-definition-language-functions-reference.md#item)搭配 [**建立 CSV 資料表**] 動作。 在 `For_each` 迴圈中，您可以使用[ `items()` 函數](../logic-apps/workflow-definition-language-functions-reference.md#items)。
 
 例如，假設您想要只具有屬性值的資料表資料行，而不是陣列中的屬性名稱。 若只要傳回這些值，請遵循下列步驟，在設計工具或程式碼視圖中工作。 以下是此範例傳回的結果：
 
@@ -219,11 +218,11 @@ Oranges,2
 
 #### <a name="work-in-code-view"></a>在程式碼視圖中工作
 
-在動作的 JSON 定義中，于`columns`陣列內將`header`屬性設定為空字串。 針對每`value`個屬性，取值您想要的每個陣列屬性。
+在動作的 JSON 定義中，于 `columns` 陣列內將屬性設定 `header` 為空字串。 針對每個 `value` 屬性，取值您想要的每個陣列屬性。
 
 1. 在設計工具工具列上，選取 [程式**代碼視圖**]。
 
-1. 在 [程式碼編輯器] 的動作`columns`陣列中，為您想`header`要的陣列`value`值的每一個資料行新增空白屬性和此運算式：
+1. 在 [程式碼編輯器] 的動作 `columns` 陣列中， `header` `value` 為您想要的陣列值的每一個資料行新增空白屬性和此運算式：
 
    ```json
    {
@@ -299,7 +298,7 @@ Oranges,2
 
      ![針對 [建立 HTML 資料表] 動作選取 [新增步驟]](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上**+**，如此就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
+   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上，如此 **+** 就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
 
 1. 在 [選擇動作]**** 底下的搜尋方塊中，輸入 `create html table` 作為篩選條件。 從 [動作] 清單中，選取 [**建立 HTML 資料表**] 動作。
 
@@ -330,7 +329,7 @@ Oranges,2
 
 1. 在 [**值**] 屬性中，指定要改用的自訂值。
 
-若要從陣列傳回值，您可以使用[ `item()`函數](../logic-apps/workflow-definition-language-functions-reference.md#item)搭配 [**建立 HTML 資料表**] 動作。 在`For_each`迴圈中，您可以使用[ `items()`函數](../logic-apps/workflow-definition-language-functions-reference.md#items)。
+若要從陣列傳回值，您可以使用[ `item()` 函數](../logic-apps/workflow-definition-language-functions-reference.md#item)搭配 [**建立 HTML 資料表**] 動作。 在 `For_each` 迴圈中，您可以使用[ `items()` 函數](../logic-apps/workflow-definition-language-functions-reference.md#items)。
 
 例如，假設您想要只具有屬性值的資料表資料行，而不是陣列中的屬性名稱。 若只要傳回這些值，請遵循下列步驟，在設計工具或程式碼視圖中工作。 以下是此範例傳回的結果：
 
@@ -370,11 +369,11 @@ Oranges,2
 
 #### <a name="work-in-code-view"></a>在程式碼視圖中工作
 
-在動作的 JSON 定義中，于`columns`陣列內將`header`屬性設定為空字串。 針對每`value`個屬性，取值您想要的每個陣列屬性。
+在動作的 JSON 定義中，于 `columns` 陣列內將屬性設定 `header` 為空字串。 針對每個 `value` 屬性，取值您想要的每個陣列屬性。
 
 1. 在設計工具工具列上，選取 [程式**代碼視圖**]。
 
-1. 在 [程式碼編輯器] 的動作`columns`陣列中，為您想`header`要的陣列`value`值的每一個資料行新增空白屬性和此運算式：
+1. 在 [程式碼編輯器] 的動作 `columns` 陣列中， `header` `value` 為您想要的陣列值的每一個資料行新增空白屬性和此運算式：
 
    ```json
    {
@@ -464,7 +463,7 @@ Oranges,2
 
      ![針對 [篩選陣列] 動作選取 [新增步驟]](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
-   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上**+**，如此就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
+   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上，如此 **+** 就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
 
 1. 在搜尋方塊中，輸入 `filter array` 作為篩選條件。 從 [動作] 清單中，選取 [**篩選陣列**] 動作。
 
@@ -478,7 +477,7 @@ Oranges,2
 
 1. 針對條件，請指定要比較的陣列項目、選取比較運算子，並指定比較值。
 
-   這個範例會使用`item()`函數來存取陣列中的每個專案，而**篩選陣列**動作會搜尋值大於1的陣列專案：
+   這個範例會使用 `item()` 函數來存取陣列中的每個專案，而**篩選陣列**動作會搜尋值大於1的陣列專案：
 
    ![「篩選陣列」動作的完成範例](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
@@ -526,7 +525,7 @@ Oranges,2
 
      ![SSelect 「加入」動作的「新增步驟」](./media/logic-apps-perform-data-operations/new-step-add-join-action.png)
 
-   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上**+**，如此就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
+   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上，如此 **+** 就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
 
 1. 在搜尋方塊中，輸入 `join` 作為篩選條件。 從 [動作] 清單中，選取此動作：**聯結**
 
@@ -586,7 +585,7 @@ Oranges,2
 
      ![針對 [剖析 JSON] 動作選取 [新增步驟]](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
-   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上**+**，如此就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
+   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上，如此 **+** 就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
 
 1. 在搜尋方塊中，輸入 `parse json` 作為篩選條件。 從 [動作] 清單中，選取 [**剖析 JSON** ] 動作。
 
@@ -606,7 +605,7 @@ Oranges,2
 
    如果您沒有結構描述，您可以從要剖析的 JSON 內容 (或*承載*) 產生該結構描述。 
    
-   1. 在**剖析 JSON** 動作中，選取 [使用範例承載來產生結構描述]****。
+   1. 在**剖析 JSON** 動作中，選取 [使用範例承載來產生結構描述]。
 
    1. 在 [**輸入或貼上範例 JSON**承載] 底下，提供 json 內容，然後選取 [**完成**]。
 
@@ -661,7 +660,7 @@ Oranges,2
 
      ![針對 [選取] 動作選取 [新增步驟]](./media/logic-apps-perform-data-operations/add-select-operation-action.png)
 
-   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上**+**，如此就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
+   * 若要在步驟之間新增動作，請將滑鼠移至 [連接] 箭號上，如此 **+** 就會出現加號（）。 選取加號，然後選取 [**新增動作**]。
 
 1. 在 [選擇動作]**** 底下，選取 [內建]****。 在搜尋方塊中，輸入 `select` 作為篩選條件。 從 [動作] 清單中，選取 [**選取**] 動作。
 
@@ -675,7 +674,7 @@ Oranges,2
 
 1. 在 [對應]**** 方塊左側的資料行中，提供您要在來源陣列中指派各個值的屬性名稱。 在右側的資料行中指定運算式，代表您要指派給屬性的值。
 
-   這個範例會在存取每個陣列專案的運算式中使用`item()`函數，指定 "Product_ID" 做為屬性名稱，以指派整數陣列中的每個值。 
+   這個範例 `item()` 會在存取每個陣列專案的運算式中使用函數，指定 "Product_ID" 做為屬性名稱，以指派整數陣列中的每個值。 
 
    ![指定要建立陣列的 JSON 物件屬性和值](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 
@@ -697,7 +696,7 @@ Oranges,2
 
    `@actionBody('Select')`
 
-   這個範例使用 Office 365 Outlook**傳送電子郵件**動作，並且在電子郵件的本文`@actionBody('Select')`中包含來自運算式的輸出：
+   這個範例使用 Office 365 Outlook**傳送電子郵件**動作，並且 `@actionBody('Select')` 在電子郵件的本文中包含來自運算式的輸出：
 
    ![來自「選取」動作的動作輸出](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 

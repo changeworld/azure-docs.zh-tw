@@ -3,12 +3,11 @@ title: 無效範本錯誤
 description: 描述如何解決在部署 Azure Resource Manager 範本時出現的無效範本錯誤。
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: bb053f59c417827a7c07ca193ccea0b8509244d6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 2902a6d82c32192bb241697825a31d759d5c7b75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832516"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324057"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>解決無效範本的錯誤
 
@@ -29,7 +28,7 @@ Message=<varies>
 
 此錯誤可能起因於數個不同類型的錯誤。 通常涉及範本中的語法或結構錯誤。
 
-<a id="syntax-error" />
+<a id="syntax-error"></a>
 
 ## <a name="solution-1---syntax-error"></a>解決方案 1 - 語法錯誤
 
@@ -50,7 +49,7 @@ Message=Deployment template validation failed
 
 當您收到此類錯誤時，請仔細檢閱運算式語法。 請考慮使用 [Visual Studio](create-visual-studio-deployment-project.md) 或 [Visual Studio Code](use-vs-code-to-create-template.md) 等 JSON 編輯器，它們可以警告您有語法錯誤。
 
-<a id="incorrect-segment-lengths" />
+<a id="incorrect-segment-lengths"></a>
 
 ## <a name="solution-2---incorrect-segment-lengths"></a>解決方案 2 - 不正確的區段長度
 
@@ -111,7 +110,7 @@ for type {resource-type} has incorrect segment lengths.
 }
 ```
 
-<a id="parameter-not-valid" />
+<a id="parameter-not-valid"></a>
 
 ## <a name="solution-3---parameter-is-not-valid"></a>解決方案 3 - 參數無效
 
@@ -126,13 +125,13 @@ part of the allowed values
 
 在範本中重複檢查允許的值，並在部署期間提供一個值。 如需允許的參數值詳細資訊，請參閱 [Azure Resource Manager 範本的 Parameters 區段](template-syntax.md#parameters)。
 
-<a id="too-many-resource-groups" />
+<a id="too-many-resource-groups"></a>
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>解決方案 4 - 太多目標資源群組
 
 您可能會在先前的部署中看到此錯誤，因為您在單一部署中的限制為五個目標資源群組。 在 2020 年 5 月，該限制已增加到 800 個資源群組。 如需詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶或資源群組](cross-resource-group-deployment.md)。
 
-<a id="circular-dependency" />
+<a id="circular-dependency"></a>
 
 ## <a name="solution-5---circular-dependency-detected"></a>解決方案 5 - 偵測到循環相依性
 

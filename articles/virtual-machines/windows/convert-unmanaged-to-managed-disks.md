@@ -4,15 +4,14 @@ description: 如何在 Resource Manager 部署模型中使用 PowerShell 將 Win
 author: roygara
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: d8069b174b7a69cc2e6c47171159569c56a15563
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6173f2f60f5dd0b2b06c415bbf55ed31bacbe8b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658188"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>將 Windows 虛擬機器從非受控磁碟轉換成受控磁碟
 

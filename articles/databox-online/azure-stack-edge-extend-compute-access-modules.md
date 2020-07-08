@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: b352458b768c997f295596a7cbd5e8c02f843a9f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 01b0eae7d2e5d1078c0761838081a2379a724a97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569793"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84342981"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge"></a>在您的 Azure Stack 邊緣上啟用計算網路
 
@@ -27,7 +26,7 @@ ms.locfileid: "82569793"
 
 在本教學課程中，您將使用 web 伺服器應用程式模組來示範案例。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，您需要：
 
@@ -62,7 +61,7 @@ ms.locfileid: "82569793"
 3. 在 [ **IoT Edge 自訂模組**] 分頁中：
 
     1. 為您要部署的 web 伺服器應用程式模組指定**名稱**。
-    2. 提供模組映射的**映射 URI** 。 會抓取符合所提供名稱和標記的模組。 在此情況下`nginx:stable` ，會從公用[Docker 存放庫](https://hub.docker.com/_/nginx/)提取穩定的 nginx 映射（標記為穩定）。
+    2. 提供模組映射的**映射 URI** 。 會抓取符合所提供名稱和標記的模組。 在此情況下， `nginx:stable` 會從公用[Docker 存放庫](https://hub.docker.com/_/nginx/)提取穩定的 nginx 映射（標記為穩定）。
     3. 在 [**容器建立選項**] 中，貼上下列範例程式碼：  
 
         ```
@@ -83,7 +82,7 @@ ms.locfileid: "82569793"
 
         ![在 IoT Edge 自訂模組分頁中指定埠資訊](media/azure-stack-edge-extend-compute-access-modules/module-information.png)
 
-    4. 選取 [儲存]  。
+    4. 選取 [儲存]。
 
 ## <a name="verify-module-access"></a>驗證模組存取
 

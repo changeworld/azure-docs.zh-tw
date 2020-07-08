@@ -5,21 +5,20 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 2413e53e9613aaa1140b083cb24fe709eb1b067d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: c071d372ba90d29806fd8a44909e2c803a8d3fa4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561767"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339275"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>透過 Windows PowerShell 管理 Azure 資料箱閘道裝置
 
 Azure 資料箱的閘道解決方案可讓您透過網路將資料傳送至 Azure。 本文說明資料箱閘道裝置的一些設定和管理工作。 您可以使用 Azure 入口網站、本機 web UI 或 Windows PowerShell 介面來管理您的裝置。
 
-本文著重于您使用 PowerShell 介面進行的工作。 
+本文著重于您使用 PowerShell 介面進行的工作。
 
 本文包含下列程式：
 

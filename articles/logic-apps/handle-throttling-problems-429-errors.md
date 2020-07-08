@@ -7,10 +7,9 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: fbfd52065bc0522668488492de2181f252f86a4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272673"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>處理 Azure Logic Apps 中的節流問題（429-「要求太多」錯誤）
@@ -22,7 +21,7 @@ ms.locfileid: "81272673"
 以下是您的邏輯應用程式可能會遇到的一些常見節流類型：
 
 * [邏輯應用程式](#logic-app-throttling)
-* [連接子](#connector-throttling)
+* [連接器](#connector-throttling)
 * [目的地服務或系統](#destination-throttling)
 
 <a name="logic-app-throttling"></a>
@@ -33,7 +32,7 @@ Azure Logic Apps 服務有自己的[輸送量限制](../logic-apps/logic-apps-li
 
 若要尋找此層級的節流事件，請在 Azure 入口網站中檢查邏輯應用程式的 [**計量**] 窗格。
 
-1. 在[Azure 入口網站](https://portal.azure.com)中，于邏輯應用程式設計工具中開啟邏輯應用程式。
+1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
 
 1. 在邏輯應用程式功能表的 [**監視**] 底下，選取 [**計量**]。
 
@@ -97,11 +96,11 @@ Azure Logic Apps 服務有自己的[輸送量限制](../logic-apps/logic-apps-li
 
   例如，假設您的邏輯應用程式會從 SQL Server 資料庫取得資料表，然後從每個資料表取得資料列。 根據您必須處理的資料列數目，您可以使用多個連接和多個**For each**迴圈，將資料列總數分割成較小的集合進行處理。 此案例使用兩個**For each**迴圈來分割一半的資料列總數。 第一個**for each**迴圈會使用可取得前一半的運算式。 另一個**for each**迴圈會使用不同的運算式來取得第二個部分，例如：<p>
 
-    * 運算式1： `take()`函式會取得集合的前端。 如需詳細資訊，請[ **`take()`** ](workflow-definition-language-functions-reference.md#take)參閱函式。
+    * 運算式1：函式會 `take()` 取得集合的前端。 如需詳細資訊，請參閱函[ **`take()`** 式。](workflow-definition-language-functions-reference.md#take)
 
       `@take(collection-or-array-name, div(length(collection-or-array-name), 2))`
 
-    * 運算式2：此`skip()`函式會移除集合的前方，並傳回所有其他專案。 如需詳細資訊，請[ **`skip()`** ](workflow-definition-language-functions-reference.md#skip)參閱函式。
+    * 運算式2：此函式會 `skip()` 移除集合的前方，並傳回所有其他專案。 如需詳細資訊，請參閱函[ **`skip()`** 式。](workflow-definition-language-functions-reference.md#skip)
 
       `@skip(collection-or-array-name, div(length(collection-or-array-name), 2))`
 
@@ -164,9 +163,9 @@ Azure Logic Apps 服務有自己的[輸送量限制](../logic-apps/logic-apps-li
 
 * 使用適用于觸發程式和動作的 webhook 版本，而不是輪詢版本。
 
-  原因為何？ 輪詢觸發程式會繼續以特定的間隔檢查目的地服務或系統。 非常頻繁的間隔（例如每秒）可能會建立節流問題。 不過，webhook 觸發程式或動作（例如[HTTP webhook](../connectors/connectors-native-webhook.md)）只會建立對目的地服務或系統的單一呼叫，這會在訂用帳戶期間發生，並要求目的地只有在發生事件時才會通知觸發程式或動作。 如此一來，觸發程式或動作就不需要持續檢查目的地。
+  為什麼？ 輪詢觸發程式會繼續以特定的間隔檢查目的地服務或系統。 非常頻繁的間隔（例如每秒）可能會建立節流問題。 不過，webhook 觸發程式或動作（例如[HTTP webhook](../connectors/connectors-native-webhook.md)）只會建立對目的地服務或系統的單一呼叫，這會在訂用帳戶期間發生，並要求目的地只有在發生事件時才會通知觸發程式或動作。 如此一來，觸發程式或動作就不需要持續檢查目的地。
   
-  因此，如果目的地服務或系統支援 webhook，或提供具有 webhook 版本的連接器，則此選項比使用輪詢版本更好。 若要識別 webhook 觸發程式和動作，請確認它們`ApiConnectionWebhook`的類型為，或不需要您指定週期。 如需詳細資訊，請參閱[APIConnectionWebhook 觸發](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)程式和[APIConnectionWebhook 動作](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-action)。
+  因此，如果目的地服務或系統支援 webhook，或提供具有 webhook 版本的連接器，則此選項比使用輪詢版本更好。 若要識別 webhook 觸發程式和動作，請確認它們的類型為， `ApiConnectionWebhook` 或不需要您指定週期。 如需詳細資訊，請參閱[APIConnectionWebhook 觸發](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)程式和[APIConnectionWebhook 動作](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-action)。
 
 ## <a name="next-steps"></a>後續步驟
 

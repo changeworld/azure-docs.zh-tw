@@ -4,15 +4,14 @@ description: 了解如何檢測和偵錯 Azure Cosmos DB 要求的 SQL 查詢效
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69614830"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392126"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 調整查詢效能
 
@@ -38,7 +37,7 @@ Azure Cosmos DB 提供一個[適用於查詢資料的 SQL API](how-to-sql-query.
 
 SDK 提供適用於查詢執行的各種選項。 例如，在 .NET 中，下列選項適用於 `FeedOptions` 類別。 下表描述這些選項，以及它們如何影響查詢執行時間。 
 
-| 選項 | 描述 |
+| 選項 | 說明 |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | 必須針對任何需要跨多個分割區執行的查詢設定為 true。 這是一個明確的旗標，讓您能夠在開發期間進行明智的效能取捨。 |
 | `EnableScanInQuery` | 如果您已選擇不編製索引，但仍想透過掃描繼續執行查詢，就必須設定為 true。 只有在已停用針對所要求篩選路徑編製索引的功能時才適用。 | 
@@ -124,19 +123,19 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 從查詢傳回的索引鍵回應標頭包括下列項目：
 
-| 選項 | 描述 |
+| 選項 | 說明 |
 | ------ | ----------- |
 | `x-ms-item-count` | 在回應中傳回的項目數。 這相依於所提供的 `x-ms-max-item-count`、最大回應承載大小內可容納的項目數、佈建的輸送量，以及查詢執行時間。 |  
 | `x-ms-continuation:` | 要繼續執行查詢的接續 Token (如果有其他結果可供使用)。 | 
 | `x-ms-documentdb-query-metrics` | 執行的查詢統計資料。 這是一個分隔的字串，包含在查詢執行的各個不同階段所花費時間的統計資料。 如果將 `x-ms-documentdb-populatequerymetrics` 設為 `True`，即會傳回。 | 
 | `x-ms-request-charge` | 查詢取用的[要求單位](request-units.md)數目。 | 
 
-如需 REST API 要求標頭和選項的詳細資訊，請參閱[使用 REST API 查詢資源](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api)。
+如需 REST API 要求標頭和選項的詳細資訊，請參閱[使用 REST API 查詢資源](/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api)。
 
 ## <a name="best-practices-for-query-performance"></a>查詢效能的最佳作法
 以下是影響 Azure Cosmos DB 查詢效能的最常見因素。 我們將在本文中更深入探討下列每個主題。
 
-| 因數 | 秘訣 | 
+| 因數 | 提示 | 
 | ------ | -----| 
 | 佈建的輸送量 | 測量每個查詢的 RU，並確認您擁有查詢所需的佈建輸送量。 | 
 | 分割區和分割區索引鍵 | 在篩選子句中偏好使用具有分割區索引鍵的查詢以降低延遲。 |
@@ -237,7 +236,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| 計量 | 單位 | 描述 | 
+| 計量 | 單位 | Description | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | 毫秒 | 查詢執行時間 | 
 | `queryCompileTimeInMs` | 毫秒 | 查詢編譯時間  | 
@@ -259,7 +258,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 以下是一些範例查詢，以及如何解譯從查詢執行傳回的部分計量資訊： 
 
-| 查詢 | 範例計量 | 描述 | 
+| 查詢 | 範例計量 | Description | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | 擷取的文件數目為 100 + 1，可符合 TOP 子句。 查詢時間大部分花費在 `WriteOutputTime` 和 `DocumentLoadTime`，因為它是一次掃描。 | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount 現在較高 (500+1 以符合 TOP 子句)。 | 

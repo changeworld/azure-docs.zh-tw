@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 939296b1cf606401a801dd72eccbad23da766018
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 6e46d1a923eec5244bf77c201ff0b3189699c9ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339717"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>管理 Azure Stack 邊緣的存取、電源和連線模式
 
@@ -40,7 +39,7 @@ ms.locfileid: "82569611"
 
     ![變更密碼](media/azure-stack-edge-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. 選取 [變更密碼] ****。
+3. 選取 [變更密碼] 。
  
 ### <a name="reset-device-password"></a>重設裝置密碼
 
@@ -66,7 +65,7 @@ ms.locfileid: "82569611"
 -  使用相關聯的儲存體帳戶建立共用。
 -  建立可存取裝置上共用的使用者。
 
-您應該擁有 Active Directory `User`租使用者的存取權，如您所需`Read all directory objects`。 您不能是來賓使用者，因為他們沒有的許可權`Read all directory objects`。 如果您是來賓，則產生啟用金鑰的作業、在 Azure Stack Edge 裝置上建立共用、建立使用者、Edge 計算角色設定、重設裝置密碼都會失敗。
+您應該擁有 `User` Active Directory 租使用者的存取權，如您所需 `Read all directory objects` 。 您不能是來賓使用者，因為他們沒有的許可權 `Read all directory objects` 。 如果您是來賓，則產生啟用金鑰的作業、在 Azure Stack Edge 裝置上建立共用、建立使用者、Edge 計算角色設定、重設裝置密碼都會失敗。
 
 如需有關如何提供使用者存取權給 Microsoft Graph API 的詳細資訊，請參閱[Microsoft Graph 許可權參考](https://docs.microsoft.com/graph/permissions-reference)。
 
@@ -80,7 +79,7 @@ ms.locfileid: "82569611"
 
 在您嘗試建立任何資源之前，請確定已在訂用帳戶中註冊資源提供者。 如果資源提供者未註冊，您必須確定建立新資源的使用者有足夠的許可權可在訂用帳戶層級上註冊所需的資源提供者。 如果您還沒有這麼做，則會看到下列錯誤：
 
-*訂\<用帳戶訂用帳戶名稱> 沒有註冊資源提供者的許可權： DataBoxEdge。*
+*訂 \<Subscription name> 用帳戶沒有註冊資源提供者的許可權： DataBoxEdge。*
 
 
 若要取得目前訂用帳戶中已註冊的資源提供者清單，請執行下列命令：
@@ -89,7 +88,7 @@ ms.locfileid: "82569611"
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-針對 Azure Stack Edge 裝置， `Microsoft.DataBoxEdge`應該註冊。 若要`Microsoft.DataBoxEdge`註冊，訂用帳戶管理員應該執行下列命令：
+針對 Azure Stack Edge 裝置， `Microsoft.DataBoxEdge` 應該註冊。 若要註冊 `Microsoft.DataBoxEdge` ，訂用帳戶管理員應該執行下列命令：
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -122,7 +121,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 您可以使用本機 web UI 關閉或重新開機您的實體裝置。 建議您在重新開機之前，先將資料伺服器上的共用離線，然後再讓裝置離線。 此動作可讓資料損毀的可能性降至最低。
 
-1. 在本機 Web UI 中，移至 [維護] > [電源設定]****。
+1. 在本機 Web UI 中，移至 [維護] > [電源設定]。
 2. 選取 [**關機**] 或 [**重新開機**]，視您想要執行的動作而定。
 
     ![電源設定](media/azure-stack-edge-manage-access-power-connectivity-mode/shut-down-restart-1.png)

@@ -2,13 +2,12 @@
 title: 收集 & 分析資源記錄
 description: 記錄和分析資源記錄檔事件以進行 Azure Container Registry，例如驗證、影像推送和影像提取。
 ms.topic: article
-ms.date: 01/03/2020
-ms.openlocfilehash: 00f9468721126bd166051df47cec1596356e9b54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/01/2020
+ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409638"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343178"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>用於診斷評估和審核的 Azure Container Registry 記錄
 
@@ -24,12 +23,14 @@ ms.locfileid: "79409638"
 
 目前已記錄影像和其他成品的下列存放庫層級事件：
 
-* **推送事件**
-* **提取事件**
-* **Untag 事件**
-* **刪除事件**（包括存放庫刪除事件）
+* **推送**
+* **提取**
+* **Untag**
+* **刪除**（包括存放庫刪除事件）
+* **清除標記**和**清除資訊清單**
 
-目前未記錄的存放庫層級事件：清除事件。
+> [!NOTE]
+> 只有在設定登錄[保留原則](container-registry-retention-policy.md)時，才會記錄清除事件。
 
 ## <a name="registry-resource-logs"></a>登錄資源記錄
 
@@ -37,7 +38,7 @@ ms.locfileid: "79409638"
 
 * **ContainerRegistryLoginEvents** -登錄驗證事件和狀態，包括傳入身分識別和 IP 位址
 * **ContainerRegistryRepositoryEvents** -在登錄存放庫中進行映射和其他構件的推送和提取作業
-* **AzureMetrics** - [容器](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries)登錄的計量，例如匯總的推送和提取計數。
+* **AzureMetrics**  - [容器](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries)登錄的計量，例如匯總的推送和提取計數。
 
 對於作業，記錄資料包含：
   * 成功或失敗狀態
@@ -83,16 +84,58 @@ ContainerRegistryRepositoryEvents
 
 如需記錄查詢的詳細資訊，請參閱[Azure 監視器中的記錄查詢總覽](../azure-monitor/log-query/log-query-overview.md)。
 
-### <a name="additional-query-examples"></a>其他查詢範例
+## <a name="query-examples"></a>查詢範例
 
-#### <a name="100-most-recent-registry-events"></a>100最新的登錄事件
+### <a name="error-events-from-the-last-hour"></a>過去一小時內的錯誤事件
+
+```Kusto
+union Event, Syslog // Event table stores Windows event records, Syslog stores Linux records
+| where TimeGenerated > ago(1h)
+| where EventLevelName == "Error" // EventLevelName is used in the Event (Windows) records
+    or SeverityLevel== "err" // SeverityLevel is used in Syslog (Linux) records
+```
+
+### <a name="100-most-recent-registry-events"></a>100最新的登錄事件
 
 ```Kusto
 ContainerRegistryRepositoryEvents
 | union ContainerRegistryLoginEvents
 | top 100 by TimeGenerated
-| project TimeGenerated, LoginServer , OperationName , Identity , Repository , DurationMs , Region , ResultType
+| project TimeGenerated, LoginServer, OperationName, Identity, Repository, DurationMs, Region , ResultType
 ```
+
+### <a name="identity-of-user-or-object-that-deleted-repository"></a>已刪除存放庫的使用者或物件的身分識別
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Delete"
+| project LoginServer, OperationName, Repository, Identity, CallerIpAddress
+```
+
+### <a name="identity-of-user-or-object-that-deleted-tag"></a>已刪除標記的使用者或物件的身分識別
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Untag"
+| project LoginServer, OperationName, Repository, Tag, Identity, CallerIpAddress
+```
+
+### <a name="reposity-level-operation-failures"></a>Reposity 層級作業失敗
+
+```kusto
+ContainerRegistryRepositoryEvents 
+| where ResultDescription contains "40"
+| project TimeGenerated, OperationName, Repository, Tag, ResultDescription
+```
+
+### <a name="registry-authentication-failures"></a>登錄驗證失敗
+
+```kusto
+ContainerRegistryLoginEvents 
+| where ResultDescription != "200"
+| project TimeGenerated, Identity, CallerIpAddress, ResultDescription
+```
+
 
 ## <a name="additional-log-destinations"></a>其他記錄目的地
 

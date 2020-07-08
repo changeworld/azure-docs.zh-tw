@@ -9,20 +9,19 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 7dfc39f4d08c8a49d1564a0a5bd7e3ef4156e3fe
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.openlocfilehash: de0f6299f35f9d76fdade976bf70456426e5ec51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61312440"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513429"
 ---
 # <a name="replace-the-chassis-on-your-storsimple-device"></a>更換 StorSimple 裝置上的底座
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程說明如何取下並更換 StorSimple 8000 系列裝置中的底座。 StorSimple 8100 模型是單一機箱裝置 (一個底座)，而 8600 是雙重機箱裝置 (兩個底座)。 若為 8600 型號，裝置中可能有兩個會發生故障的底座：主要機箱的底座或 EBOD 機箱的底座。
 
 在任一情況下，Microsoft 隨附的更換底座是空的。 將不會包含電源和冷卻模組 (PCM)、控制器模組、固態硬碟 (SSD)、硬碟機 (HDD) 或 EBOD 模組。

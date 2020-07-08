@@ -5,29 +5,28 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: feae75b1fbb832f833a01fa20ce07962ab5c484f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 25f74fb78979313acc068320d842d09a982d8d16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561472"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339139"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>使用 Azure 入口網站來管理 Azure 資料箱閘道上的頻寬排程  
 
-本文說明如何管理 Azure 資料箱閘道上的使用者。 頻寬排程可讓您設定多個日期時間排程的網路頻寬使用量。 這些排程可以套用至從您的裝置上傳和下載作業到雲端。 
+本文說明如何管理 Azure 資料箱閘道上的使用者。 頻寬排程可讓您設定多個日期時間排程的網路頻寬使用量。 這些排程可以套用至從您的裝置上傳和下載作業到雲端。
 
 您可以透過 Azure 入口網站，新增、修改或刪除資料箱閘道的頻寬排程。
 
 在本文中，您將學會如何：
 
 > [!div class="checklist"]
+>
 > * 新增排程
 > * 修改排程
-> * 刪除排程 
-
+> * 刪除排程
 
 ## <a name="add-a-schedule"></a>新增排程
 
@@ -44,7 +43,7 @@ ms.locfileid: "82561472"
    2. 如果此排程全天執行，則您可以勾選 [全天]**** 選項。 
    3. [頻寬速率]**** 是以 MB / 秒 (Mbps) 為單位的頻寬，由您的裝置使用於涉及雲端的作業 (上傳與下載)。 提供一個介於 1 到 1000 之間的數目給此欄位。 
    4. 如果您不想節流處理上傳和下載日期，請勾選 [無限制]**** 頻寬。 
-   5. 按一下 [新增]  。
+   5. 按一下 **[新增]** 。
 
       ![按一下 [新增使用者]](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 

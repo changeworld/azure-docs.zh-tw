@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: c4043702bd27bb9a37fca70475ef254bbd1f7372
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 98431e7a451aa54dfdee2126d4ce94b8b0b0fb84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561353"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339207"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>管理 Azure 資料箱閘道的存取、電源和連線模式
 
@@ -22,6 +21,7 @@ ms.locfileid: "82561353"
 在本文中，您將學會如何：
 
 > [!div class="checklist"]
+>
 > * 管理裝置存取
 > * 管理連線模式
 > * 管理電源
@@ -50,7 +50,7 @@ ms.locfileid: "82561353"
     ![重設密碼](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
 
  
-2. 輸入新密碼並加以確認。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 按一下 [重設]****。
+2. 輸入新密碼並加以確認。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 按一下 [重設]。
 
     ![重設密碼](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "82561353"
 -  使用相關聯的儲存體帳戶建立共用。
 -  建立可存取裝置上共用的使用者。
 
-您應該擁有 Active Directory `User`租使用者的存取權，如您所需`Read all directory objects`。 您不能是來賓使用者，因為他們沒有的許可權`Read all directory objects`。 如果您是來賓，則產生啟用金鑰的作業（在 Azure Stack Edge 裝置上建立共用）將會失敗。
+您應該擁有 `User` Active Directory 租使用者的存取權，如您所需 `Read all directory objects` 。 您不能是來賓使用者，因為他們沒有的許可權 `Read all directory objects` 。 如果您是來賓，則產生啟用金鑰的作業（在 Azure Stack Edge 裝置上建立共用）將會失敗。
 
 如需有關如何提供使用者存取權給 Microsoft Graph API 的詳細資訊，請參閱[Microsoft Graph 許可權參考](https://docs.microsoft.com/graph/permissions-reference)。
 
@@ -79,7 +79,7 @@ ms.locfileid: "82561353"
 
 在您嘗試建立任何資源之前，請確定已在訂用帳戶中註冊資源提供者。 如果資源提供者未註冊，您必須確定建立新資源的使用者有足夠的許可權可在訂用帳戶層級上註冊所需的資源提供者。 如果您還沒有這麼做，則會看到下列錯誤：
 
-*訂\<用帳戶訂用帳戶名稱> 沒有註冊資源提供者的許可權： DataBoxEdge。*
+*訂 \<Subscription name> 用帳戶沒有註冊資源提供者的許可權： DataBoxEdge。*
 
 
 若要取得目前訂用帳戶中已註冊的資源提供者清單，請執行下列命令：
@@ -88,7 +88,7 @@ ms.locfileid: "82561353"
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-針對 Azure Stack Edge 裝置， `Microsoft.DataBoxEdge`應該註冊。 若要`Microsoft.DataBoxEdge`註冊，訂用帳戶管理員應該執行下列命令：
+針對 Azure Stack Edge 裝置， `Microsoft.DataBoxEdge` 應該註冊。 若要註冊 `Microsoft.DataBoxEdge` ，訂用帳戶管理員應該執行下列命令：
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -124,7 +124,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 您可以使用本機 Web UI 關閉或重新啟動您的虛擬裝置。 我們建議在重新開機之前，先讓主機上的共用離線，然後再讓裝置離線。 此動作可讓資料損毀的可能性降至最低。
 
-1. 在本機 Web UI 中，移至 [維護] > [電源設定]****。
+1. 在本機 Web UI 中，移至 [維護] > [電源設定]。
 2. 視您想要進行的動作而定，按一下 [關機]**** 或 [重新啟動]****。
 
     ![電源設定](media/data-box-gateway-manage-access-power-connectivity-mode/shut-down-restart-1.png)

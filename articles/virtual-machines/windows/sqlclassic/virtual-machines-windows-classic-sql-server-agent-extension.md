@@ -15,12 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 384b66020b3d18064ea1cd9f162911878caa598d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: fe899eebb0139dffabef96da32ab1641c983f726
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017525"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84338402"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>使用 SQL Server 代理程式延伸模組 (傳統) 自動化 Azure 虛擬機器上的管理工作
 > [!div class="op_single_selector"]
@@ -82,7 +81,7 @@ SQL Server IaaS 代理程式擴充功能支援下列管理工作︰
 > 傳統虛擬機器沒有可透過入口網站安裝及設定「SQL IaaS 代理程式擴充功能」的選項。
 
 > [!NOTE]
-> 只有 [SQL Server VM 資源庫映像](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms) (隨用隨付或自備授權) 可支援 SQL Server IaaS 代理程式擴充功能。 如果您在 OS 專用的 Windows Server 虛擬機器上手動安裝 SQL Server，或是部署自訂的 SQL Server VM VHD，則不支援此擴充功能。 在這些情況下，可以使用 PowerShell 以手動方式安裝和管理擴充功能，但強烈建議您改為安裝 SQL Server 資源庫映像，然後加以自訂。
+> 只有 [SQL Server VM 資源庫映像](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms) (隨用隨付或自備授權) 可支援 SQL Server IaaS 代理程式擴充功能。 如果您在 OS 專用的 Windows Server 虛擬機器上手動安裝 SQL Server，或是部署自訂的 SQL Server VM VHD，則不支援此擴充功能。 在這些情況下，可以使用 PowerShell 以手動方式安裝和管理擴充功能，但強烈建議您改為安裝 SQL Server 資源庫映像，然後加以自訂。
 
 ## <a name="status"></a>狀態
 驗證已安裝擴充功能的其中一項方法，是在 Azure 入口網站中檢視代理程式狀態。 請選取虛擬機器刀鋒視窗中所列的一部虛擬機器，然後按一下 [擴充功能]。 您應該會看到其中列出 **SQLIaaSAgent** 擴充功能。

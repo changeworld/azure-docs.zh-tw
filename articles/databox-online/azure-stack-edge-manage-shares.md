@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: d64ecb32c783dcee08164856aa90a43d004894a8
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 1aceb9d2fb1d9b5890bc0859d432bc1c5e7e4db4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339834"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>使用 Azure 入口網站管理 Azure Stack Edge 上的共用
 
@@ -88,7 +87,7 @@ ms.locfileid: "82570287"
 
 6. 在 [完整權限本機使用者]**** 欄位中，從 [新建]**** 或 [使用現有的]**** 中擇一。
 
-7. 選取 [建立]  。 
+7. 選取 [建立]。 
 
    ![建立本機共用](media/azure-stack-edge-manage-shares/add-local-share-2.png)
 
