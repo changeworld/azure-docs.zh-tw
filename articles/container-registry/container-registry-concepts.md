@@ -2,13 +2,13 @@
 title: 關於存放庫 & 映射
 description: 介紹 Azure container registry、存放庫和容器映射的重要概念。
 ms.topic: article
-ms.date: 09/10/2019
-ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/16/2020
+ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247055"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390443"
 ---
 # <a name="about-registries-repositories-and-images"></a>關於登錄、存放庫和映射
 
@@ -24,13 +24,11 @@ ms.locfileid: "79247055"
 
 Azure container registry 中的成品位址包含下列元素。 
 
-`[loginUrl]/[namespace]/[artifact:][tag]`
+`[loginUrl]/[repository:][tag]`
 
 * **loginUrl** -登錄主機的完整名稱。 Azure container registry 中的登錄主機格式為*myregistry*. azurecr.io （全部小寫）。 使用 Docker 或其他用戶端工具將成品提取或推送至 Azure container registry 時，您必須指定 loginUrl。 
-* 以逗號分隔的相關映射或成品邏輯**群組-例如**，針對工作組或應用程式
-* 成品 **-特定**影像或成品的存放庫名稱
-* **標記**-儲存在存放庫中的映射或成品的特定版本
-
+* 存放**庫**-一或多個相關影像或成品的邏輯群組名稱，例如應用程式或基礎作業系統的映射。 可能包含*命名空間*路徑。 
+* **標記**-儲存在儲存機制中之映射或成品特定版本的識別碼。
 
 例如，Azure container registry 中映射的完整名稱可能如下所示：
 
@@ -40,20 +38,24 @@ Azure container registry 中的成品位址包含下列元素。
 
 ## <a name="repository-name"></a>儲存機制名稱
 
-容器登錄會管理*存放庫*、容器映射的集合或具有相同名稱但不同標記的其他成品。 例如，下列三個映像位於 "acr-helloworld" 存放庫中：
+存放*庫*是容器映射的集合，或具有相同名稱但不同標記的其他成品。 例如，下列三個映像位於 "acr-helloworld" 存放庫中：
 
 
 - *acr-helloworld：最新*
 - *acr-helloworld： v1*
 - *acr-helloworld： v2*
 
-存放庫名稱也可以包含[命名空間](container-registry-best-practices.md#repository-namespaces)。 命名空間可讓您使用正斜線分隔的存放庫名稱來將影像分組，例如：
+存放庫名稱也可以包含[命名空間](container-registry-best-practices.md#repository-namespaces)。 命名空間可讓您在組織中使用正斜線分隔名稱，來識別相關的存放庫和成品擁有權。 不過，登錄會獨立管理所有存放庫，而不是做為階層。 例如：
 
 - *marketing/campaign10-18/web： v2*
 - *marketing/campaign10-18/api： v3*
 - *marketing/campaign10-18/電子郵件-寄件者： v2*
 - *產品-退貨/web 提交：20180604*
 - *產品-傳回/舊版-整合者：20180715*
+
+存放庫名稱只能包含小寫英數位元、句號、破折號、底線和正斜線。 
+
+如需完整的存放庫命名規則，請參閱[Open Container 方案散發規格](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)。
 
 ## <a name="image"></a>Image
 
@@ -63,9 +65,11 @@ Azure container registry 中的成品位址包含下列元素。
 
 影像或其他成品的*標記*會指定其版本。 存放庫內的單一成品可以指派一或多個標記，也可能是「未標記」。 也就是說，您可以刪除影像中的所有標記，而影像的資料（其層級）會保留在登錄中。
 
-存放庫 (或存放庫和命名空間) 以及標記可定義映像的名稱。 您可以在推送或提取作業中指定映像名稱，以推送和提取映像。
+存放庫 (或存放庫和命名空間) 以及標記可定義映像的名稱。 您可以在推送或提取作業中指定映像名稱，以推送和提取映像。 `latest`如果您未在 Docker 命令中提供標籤，則預設會使用此標記。
 
 您要如何將容器映射標記為開發或部署它們的指引。 例如，建議使用穩定標記來維護您的基底映射，以及用來部署映射的唯一標記。 如需詳細資訊，請參閱[標記和版本設定容器映射的建議](container-registry-image-tag-version.md)。
+
+如需標記命名規則，請參閱[Docker 檔](https://docs.docker.com/engine/reference/commandline/tag/)。
 
 ### <a name="layer"></a>階層
 
@@ -75,7 +79,7 @@ Azure container registry 中的成品位址包含下列元素。
 
 為了提供安全的隔離和保護，以防止可能的分層操作，層級不會在登錄之間共用。
 
-### <a name="manifest"></a>file:///
+### <a name="manifest"></a>資訊清單
 
 推送至容器登錄的每個容器映射或成品都會與*資訊清單*相關聯。 在推送映像時，由登錄所產生的資訊清單，可唯一識別該映像並指定其層次。 您可以使用 Azure CLI 命令 [az acr repository show-manifests][az-acr-repository-show-manifests] 列出存放庫的資訊清單：
 

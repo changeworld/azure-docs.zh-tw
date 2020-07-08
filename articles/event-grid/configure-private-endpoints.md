@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: b72462334fa2311b017be49860ed422dfa35430c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 816d1f762698deeed38afe01899916b491809db2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890818"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390460"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>設定 Azure 事件方格主題或網域的私人端點
 您可以使用[私用端點](../private-link/private-endpoint-overview.md)，透過[私人連結](../private-link/private-link-overview.md)，直接從虛擬網路將事件輸入到主題和網域，而不需要經過公用網際網路。 私人端點會針對您的主題或網域使用來自 VNet 位址空間的 IP 位址。 如需詳細概念資訊，請參閱[網路安全性](network-security.md)。
@@ -37,37 +37,37 @@ ms.locfileid: "82890818"
     5. 然後選取頁面底部的 **[下一步：資源 >]** 按鈕。 
 
       ![私人端點-基本頁面](./media/configure-private-endpoints/basics-page.png)
-3. 在 [**資源**] 頁面上，依照下列步驟執行： 
+3. 在 [資源] 頁面上，遵循下列步驟： 
     1. 針對 [連線方法]，如果您選取 **[連線到我的目錄中的 Azure 資源]**，請遵循下列步驟。 此範例示範如何連接到您目錄中的 Azure 資源。 
         1. 選取您的**主題/網域**所在的**Azure 訂**用帳戶。 
         1. 針對 [**資源類型**]，選取 [ **EventGrid]/[主題**] 或 [ **EventGrid/網域**] 作為 [**資源類型**]。
         2. 針對 [**資源**]，從下拉式清單中選取主題/網域。 
         3. 確認 [**目標 subresource** ] 已設定為 [**主題**] 或 [**網域**] （根據您選取的資源類型）。    
-        4. 選取頁面底部的 **[下一步：設定 >]** 按鈕。 
+        4. 完成時，選取 [下一步:設定 >] 按鈕 (位於頁面底部)。 
 
             ![私人端點-資源頁面](./media/configure-private-endpoints/resource-page.png)
     2. 如果您選取 **[使用資源識別碼或別名連線到資源]**，請遵循下列步驟：
         1. 輸入資源的識別碼。 例如： `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>` 。  
         2. 針對 [**資源**]，輸入**主題**或**網域**。 
         3. 選擇性新增要求訊息。 
-        4. 選取頁面底部的 **[下一步：設定 >]** 按鈕。 
+        4. 完成時，選取 [下一步:設定 >] 按鈕 (位於頁面底部)。 
 
             ![私人端點-資源頁面](./media/configure-private-endpoints/connect-azure-resource-id.png)
-4. **在 [設定**] 頁面上，您可以選取要在其中部署私人端點之虛擬網路中的子網。 
-    1. 選取**虛擬網路**。 下拉式清單中只會列出目前所選訂用帳戶和位置中的虛擬網路。 
-    2. 選取您選取之虛擬網路中的**子網**。 
-    3. 選取頁面底部的 **[下一步：標記 >]** 按鈕。 
+4. 在 [設定] 頁面上，您會選取在虛擬網路中要部署私人端點的子網路。 
+    1. 選取**虛擬網路**。 下拉式清單只會列出目前所選訂閱與位置中的虛擬網路。 
+    2. 選取您所選虛擬網路中的**子網路**。 
+    3. 完成時，選取 [下一步:標記 >] 按鈕 (位於頁面底部)。 
 
     ![私人端點-設定頁面](./media/configure-private-endpoints/configuration-page.png)
-5. 在 [**標記**] 頁面上，建立您想要與私用端點資源建立關聯的任何標記（名稱和值）。 然後選取頁面底部的 [**審核] + [建立**] 按鈕。 
-6. 在 [**審核**] 和 [建立] 上，檢查所有設定，然後選取 [**建立**] 以建立私人端點。 
+5. 在 [標記] 頁面上，建立想要與私人端點資源建立關聯的任何標記 (名稱和值)。 然後選取頁面底部的 [檢閱 + 建立] 按鈕。 
+6. 在 [檢閱 + 建立] 上，檢閱所有設定，然後選取 [建立] 來建立私人端點。 
 
     ![私人端點-審查 & 建立頁面](./media/configure-private-endpoints/review-create-page.png)
     
 
 ### <a name="manage-private-link-connection"></a>管理私人連結連線
 
-當您建立私人端點時，必須核准連線。 如果您要建立私人端點的資源位於您的目錄中，則您可以核准連線要求，前提是您有足夠的許可權。 如果您要連線到另一個目錄中的 Azure 資源，您必須等候該資源的擁有者核准您的連線要求。
+當您建立私人端點時，必須核准連線。 如果正要建立私人端點的資源位於目錄中，則在具有足夠權限的情況下，即可核准連線要求。 如果正要連線到位於另一個目錄中的 Azure 資源，則必須等候該資源的擁有者核准連線要求。
 
 佈建狀態有四種：
 
@@ -84,7 +84,7 @@ ms.locfileid: "82890818"
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在搜尋列中，輸入**事件方格主題**或**事件方格網域**。
 1. 選取您要管理的**主題**或**網域**。
-1. 選取 [**網路**] 索引標籤。
+1. 選取 [網路] 索引標籤。
 1. 如果有任何暫止的連線，您會在布建狀態中看到以**擱置**方式列出的連線。 
 
 ### <a name="to-approve-a-private-endpoint"></a>核准私用端點
@@ -140,8 +140,8 @@ az network private-endpoint create \
 
 如需範例中使用之參數的描述，請參閱[az network 私用端點建立](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)的檔。 在此範例中，有幾點需要注意： 
 
-- 針對`private-connection-resource-id`，指定**主題**或**網域**的資源識別碼。 上述範例使用 type：主題。
-- 針對`group-ids`，請`topic`指定`domain`或。 在上述範例中， `topic`會使用。 
+- 針對 `private-connection-resource-id` ，指定**主題**或**網域**的資源識別碼。 上述範例使用 type：主題。
+- 針對 `group-ids` ，請指定 `topic` 或 `domain` 。 在上述範例中， `topic` 會使用。 
 
 若要刪除私用端點，請使用[az network 私用端點 delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete)方法，如下列範例所示：
 
@@ -154,7 +154,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 
 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 執行下列命令來更新適用于 CLI 的 Azure 事件方格延伸模組： 
 
 ```azurecli-interactive
@@ -184,8 +184,8 @@ az network private-endpoint create \
 
 如需範例中使用之參數的描述，請參閱[az network 私用端點建立](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)的檔。 在此範例中，有幾點需要注意： 
 
-- 針對`private-connection-resource-id`，指定**主題**或**網域**的資源識別碼。 上述範例使用 type：主題。
-- 針對`group-ids`，請`topic`指定`domain`或。 在上述範例中， `topic`會使用。 
+- 針對 `private-connection-resource-id` ，指定**主題**或**網域**的資源識別碼。 上述範例使用 type：主題。
+- 針對 `group-ids` ，請指定 `topic` 或 `domain` 。 在上述範例中， `topic` 會使用。 
 
 若要刪除私用端點，請使用[az network 私用端點 delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete)方法，如下列範例所示：
 
@@ -437,7 +437,7 @@ Invoke-RestMethod -Method 'Get'  `
 }
 ```
 
-### <a name="approve-a-private-endpoint-connection"></a>核准私人端點連接
+### <a name="approve-a-private-endpoint-connection"></a>核准私人端點連線
 下列範例 PowerShell 程式碼片段說明如何核准私用端點。 
 
 > [!NOTE]
@@ -459,7 +459,7 @@ Invoke-RestMethod -Method 'Get'  `
 
 ```
 
-### <a name="reject-a-private-endpoint-connection"></a>拒絕私人端點連接
+### <a name="reject-a-private-endpoint-connection"></a>拒絕私人端點連線
 下列範例示範如何使用 PowerShell 拒絕私用端點。 您可以從上一個 GET 命令的結果取得私用端點的 GUID。 
 
 > [!NOTE]
@@ -484,4 +484,5 @@ Invoke-RestMethod -Method 'Get'
 即使在此連線遭到拒絕之後，您也可以核准該連接。 如果您使用 Azure 入口網站，就無法核准已拒絕的端點。 
 
 ## <a name="next-steps"></a>後續步驟
-若要瞭解如何設定 IP 防火牆設定，請參閱[設定 Azure 事件方格主題或網域的 ip 防火牆](configure-firewall.md)。
+* 若要瞭解如何設定 IP 防火牆設定，請參閱[設定 Azure 事件方格主題或網域的 ip 防火牆](configure-firewall.md)。
+* 若要疑難排解網路連線問題，請參閱針對網路連線問題[進行疑難排解](troubleshoot-network-connectivity.md)

@@ -5,19 +5,19 @@ documentationcenter: ''
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42c9caaf581fab37e2e55cbe408db6d6d846622a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cab29fbe9e33cc12336fa1b81ed4aa37f91a7f5f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050899"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387298"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>在沒有邀請連結或電子郵件的情況下新增 B2B 共同作業來賓使用者
 

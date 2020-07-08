@@ -6,31 +6,27 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926556"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389967"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自動化重新整理
 
 藉由使用 Azure 自動化和 PowerShell Runbook，您可以在 Azure 分析方格式模型上執行自動化的資料重新整理作業。  
 
-本文中的範例會使用[PowerShell SqlServer 模組](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)。
-
-本文稍後會提供範例 PowerShell Runbook，其中示範重新整理模型。  
+本文中的範例會使用[SqlServer PowerShell 模組](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)。 本文稍後會提供範例 PowerShell Runbook，其中示範重新整理模型。  
 
 ## <a name="authentication"></a>驗證
 
-所有呼叫都必須使用有效的 Azure Active Directory （OAuth 2）權杖進行驗證。  本文中的範例將使用服務主體（SPN）向 Azure Analysis Services 進行驗證。
+所有呼叫都必須使用有效的 Azure Active Directory （OAuth 2）權杖進行驗證。  本文中的範例會使用服務主體（SPN）向 Azure Analysis Services 進行驗證。 若要深入瞭解，請參閱[使用 Azure 入口網站建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
 
-若要深入瞭解如何建立服務主體，請參閱[使用 Azure 入口網站建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 > [!IMPORTANT]
-> 下列範例假設 Azure Analysis Services 防火牆已停用。 如果已啟用防火牆，則要求啟動器的公用 IP 位址必須在防火牆的白名單中。
+> 下列範例假設 Azure Analysis Services 防火牆已停用。 如果已啟用防火牆，則必須在防火牆規則中包含要求啟動器的公用 IP 位址。
 
 ### <a name="install-sqlserver-modules-from-powershell-gallery"></a>從 PowerShell 資源庫安裝 SqlServer 模組。
 
@@ -44,7 +40,7 @@ ms.locfileid: "82926556"
  
     ![匯入模組](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. 按一下 [確定]  。
+4. 按一下 [確定]。
  
 ### <a name="create-a-service-principal-spn"></a>建立服務主體（SPN）
 
@@ -68,11 +64,11 @@ ms.locfileid: "82926556"
 
     ![Import Runbook](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. 流覽**Refresh-Model**檔案、提供**名稱**和**描述**，然後按一下 [**建立**]。
+4. 流覽**Refresh-Model.ps1**檔案、提供**名稱**和**描述**，然後按一下 [**建立**]。
 
     ![Import Runbook](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. 建立 Runbook 之後，它會自動進入編輯模式。  選取 [發佈]  。
+5. 建立 Runbook 之後，它會自動進入編輯模式。  選取 [發佈] 。
 
     ![發佈 Runbook](./media/analysis-services-refresh-azure-automation/10.png)
 
@@ -101,17 +97,17 @@ Runbook 可以設定為根據排程觸發 Azure Analysis Services 模型重新�
  
     ![建立排程](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. 按一下 [**排程** > ] [**建立新的排程**]，然後填入詳細資料。
+2. 按一下 [**排程**] [  >  **建立新的排程**]，然後填入詳細資料。
 
     ![設定排程](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. 按一下 [建立]  。
+3. 按一下 [建立]。
 
 4. 填入排程的參數。 這會在每次 Runbook 觸發時使用。 透過排程執行時， **WEBHOOKDATA**參數應保留空白。
 
     ![設定參數](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. 按一下 [確定]  。
+5. 按一下 [確定]。
 
 ## <a name="consume-with-data-factory"></a>使用 Data Factory
 
@@ -147,7 +143,7 @@ Runbook 可以設定為根據排程觸發 Azure Analysis Services 模型重新�
 |屬性  |值  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Azure Analysis Services 資料庫的名稱 <br/> 範例： AdventureWorksDB         |
-|**AnalysisServicesServer**     |Azure Analysis Services 伺服器名稱。 <br/> 範例： HTTPs：\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
+|**AnalysisServicesServer**     |Azure Analysis Services 伺服器名稱。 <br/> 範例： HTTPs： \/ /westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
 |**DatabaseRefreshType**     |要執行的重新整理類型。 <br/> 範例： Full         |
 
 範例 JSON 主體：
@@ -175,7 +171,7 @@ Runbook 可以設定為根據排程觸發 Azure Analysis Services 模型重新�
 >
 >若要深入瞭解如何設定 Azure 自動化混合式背景工作角色，請參閱[混合式 Runbook 背景工作安裝](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation)。
 
-設定混合式背景工作角色之後，請[依照使用與 Data Factory](#consume-with-data-factory)一節中所述的方式建立 Webhook。  這裡唯一的差異是在設定 Webhook 時，選取 [在混合式背景 > **工作角色****上執行**] 選項。
+設定混合式背景工作角色之後，請[依照使用與 Data Factory](#consume-with-data-factory)一節中所述的方式建立 Webhook。  這裡唯一的差異是在設定 Webhook 時，選取 [**在**混合式背景  >  **工作角色**上執行] 選項。
 
 使用混合式背景工作角色的範例 webhook：
 

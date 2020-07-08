@@ -7,17 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff5d8ecaaeff67e1a97c4afd4ca8119f8ac7c1e1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: b9ea9e756587af124ca94518d9f15271310ddee3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389373"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -119,7 +119,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 您可以變更 `IssuerUri` 中繼資料的值。 這是簽發者 URI，會在 Azure AD B2C 的 SAML 回應中傳回。 您的信賴憑證者應用程式應該設定為在 SAML 判斷提示驗證期間接受簽發者 URI。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Token Issuer</DisplayName>
   <TechnicalProfiles>
@@ -165,7 +165,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 1. 將原則的 `PolicyId` 和 `PublicPolicyUri` 變更為 _B2C_1A_signup_signin_saml_ 和 `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml`，如下所示。
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -178,7 +178,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 1. 在 `<RelyingParty>` 元素之前加入下列 XML 程式碼片段。 此 XML 會覆寫 _SignUpOrSignIn_ 使用者旅程圖的協調流程步驟 7。 如果您從入門套件中的不同資料夾啟動，或藉由新增或移除協調流程步驟來自訂您的使用者旅程圖，請確定該數字 (在 `order` 元素中) 與使用者旅程圖中為權杖簽發者步驟指定的數字一致 (例如，在其他入門套件資料夾中，`LocalAccounts` 是數字 4、`SocialAccounts` 是數字 6，而 `SocialAndLocalAccountsWithMfa` 是數字 9)。
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="SignUpOrSignIn">
         <OrchestrationSteps>
@@ -190,7 +190,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 1. 使用下列技術設定檔 XML 來取代 `<RelyingParty>` 元素中的整個 `<TechnicalProfile>` 元素。
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="SAML2"/>
@@ -210,7 +210,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 您的最終信賴憑證者原則檔案看起來應該如下所示：
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -265,12 +265,12 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 ## <a name="4-setup-application-in-the-azure-ad-b2c-directory"></a>4.在 Azure AD B2C 目錄中設定應用程式
 
-### <a name="41-register-your-application-in-azure-active-directory"></a>4.1 在 Azure Active Directory 中註冊您的應用程式
+### <a name="41-register-your-application-in-azure-ad-b2c"></a>4.1 在 Azure AD B2C 中註冊您的應用程式
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
 1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
-1. 選取 [應用程式註冊 (預覽)]，然後選取 [新增註冊]。
+1. 選取 [應用程式註冊]，然後選取 [新增註冊]。
 1. 輸入應用程式的 [名稱]。 例如 SAMLApp1。
 1. 在 [支援的帳戶類型] 區段中，選取 [僅限此組織目錄中的帳戶]
 1. 在 [重新導向 URI] 底下，選取 [Web]，然後輸入 `https://localhost`。 您稍後會在應用程式註冊的資訊清單中修改此值。
@@ -297,7 +297,7 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 在使用 SAML 測試應用程式的本教學課程中，請針對 `samlMetadataUrl` 使用下列值：
 
-```JSON
+```json
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
@@ -309,7 +309,7 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 在此教學課程中，您會使用 SAML 測試應用程式，將 `replyUrlsWithType` 的 `url` 屬性設定為下列 JSON 程式碼片段中所示的值。
 
-```JSON
+```json
 "replyUrlsWithType":[
   {
     "url":"https://samltestapp2.azurewebsites.net/SP/AssertionConsumer",
@@ -324,7 +324,7 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 在使用 SAML 測試應用程式的本教學課程中，請維持將 `logoutUrl` 設定為 `https://samltestapp2.azurewebsites.net/logout`：
 
-```JSON
+```json
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",
 ```
 

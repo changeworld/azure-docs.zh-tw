@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b16790e288f6569f08ce14e5a7c751bbd8083faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ab196e894fc53b1243ac363f9863d5c7d4e328f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388998"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定密碼複雜度
 
@@ -24,20 +24,20 @@ ms.locfileid: "79138429"
 
 在 Azure Active Directory B2C （Azure AD B2C）中，您可以設定使用者建立帳戶時所提供之密碼的複雜性需求。 根據預設，Azure AD B2C 是使用**強式**密碼。 本文說明如何在[自訂原則](custom-policy-overview.md)中設定密碼複雜度。 此外，您也可以在[使用者流程](user-flow-password-complexity.md)中設定密碼複雜度。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 完成[開始使用自訂原則](custom-policy-get-started.md)中的步驟。 您應該有一個使用本機帳戶來註冊和登入的有效自訂原則。
 
 
 ## <a name="add-the-elements"></a>新增元素
 
-若要設定密碼複雜性，請以`newPassword`述`reenterPassword`詞[驗證](predicates.md#predicatevalidations)的參考覆寫和宣告[類型](claimsschema.md)。 PredicateValidations 元素會將一組述詞分組，以構成可套用至宣告類型的使用者輸入驗證。 開啟原則的擴充檔案。 例如， <em> `SocialAndLocalAccounts/` </em>。
+若要設定密碼複雜性，請以述詞驗證的參考覆寫 `newPassword` 和宣告 `reenterPassword` [類型](claimsschema.md)。 [predicate validations](predicates.md#predicatevalidations) PredicateValidations 元素會將一組述詞分組，以構成可套用至宣告類型的使用者輸入驗證。 開啟您原則的擴充檔。 例如，<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>。
 
 1. 搜尋 [BuildingBlocks](buildingblocks.md) 元素。 如果此元素不存在，請加以新增。
-1. 找出[ClaimsSchema](claimsschema.md)元素。 如果此元素不存在，請加以新增。
-1. 將`newPassword`和`reenterPassword`宣告加入至**ClaimsSchema**元素。
+1. 尋找 [ClaimsSchema](claimsschema.md) (機器翻譯) 元素。 如果此元素不存在，請加以新增。
+1. 將 `newPassword` 和 `reenterPassword` 宣告加入至**ClaimsSchema**元素。
 
-    ```XML
+    ```xml
     <ClaimType Id="newPassword">
       <PredicateValidationReference Id="CustomPassword" />
     </ClaimType>
@@ -46,9 +46,9 @@ ms.locfileid: "79138429"
     </ClaimType>
     ```
 
-1. 述詞[會定義基本](predicates.md)身份驗證來檢查宣告類型的值，並傳回 true 或 false。 驗證是透過使用指定的 method 元素，以及與方法相關的一組參數來完成。 將下列述詞新增至**BuildingBlocks**元素，緊接在`</ClaimsSchema>`元素的結尾之後：
+1. 述詞[會定義基本](predicates.md)身份驗證來檢查宣告類型的值，並傳回 true 或 false。 驗證是透過使用指定的 method 元素，以及與方法相關的一組參數來完成。 將下列述詞新增至**BuildingBlocks**元素，緊接在元素的結尾之後 `</ClaimsSchema>` ：
 
-    ```XML
+    ```xml
     <Predicates>
       <Predicate Id="LengthRange" Method="IsLengthRange">
         <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
@@ -84,9 +84,9 @@ ms.locfileid: "79138429"
     </Predicates>
     ```
 
-1. 將下列述詞驗證新增至**BuildingBlocks**元素，緊接在`</Predicates>`元素的結尾之後：
+1. 將下列述詞驗證新增至**BuildingBlocks**元素，緊接在元素的結尾之後 `</Predicates>` ：
 
-    ```XML
+    ```xml
     <PredicateValidations>
       <PredicateValidation Id="CustomPassword">
         <PredicateGroups>
@@ -109,9 +109,9 @@ ms.locfileid: "79138429"
     </PredicateValidations>
     ```
 
-1. 下列技術設定檔是[Active Directory 的技術設定檔](active-directory-technical-profile.md)，可將資料讀取和寫入至 Azure Active Directory。 覆寫延伸模組檔案中的這些技術設定檔。 使用`PersistedClaims`來停用強式密碼原則。 尋找 **ClaimsProviders** 元素。  新增下列宣告提供者，如下所示：
+1. 下列技術設定檔是[Active Directory 的技術設定檔](active-directory-technical-profile.md)，可將資料讀取和寫入至 Azure Active Directory。 覆寫延伸模組檔案中的這些技術設定檔。 使用 `PersistedClaims` 來停用強式密碼原則。 尋找 **ClaimsProviders** 元素。  新增下列宣告提供者，如下所示：
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>
@@ -136,12 +136,12 @@ ms.locfileid: "79138429"
 ### <a name="upload-the-files"></a>上傳檔案
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取頂端功能表中的 [目錄 + 訂用帳戶]  篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
-3. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
-4. 選取 [識別體驗架構]****。
+2. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
+3. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+4. 選取 [識別體驗架構]。
 5. 在 [自訂原則] 頁面上，按一下 [上傳原則]****。
-6. **如果原則存在**，請選取 [覆寫]，然後搜尋並選取*TrustFrameworkExtensions*檔案。
-7. 按一下 [上傳]  。
+6. **如果原則存在**，請選取 [覆寫]，然後搜尋並選取*TrustFrameworkExtensions.xml*檔案。
+7. 按一下 [上傳] 。
 
 ### <a name="run-the-policy"></a>執行原則
 

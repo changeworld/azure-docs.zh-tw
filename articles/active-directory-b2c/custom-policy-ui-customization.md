@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb833ff35dae4fe1c0c27204ec66fa6b4cdb82c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396373"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388879"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來自訂應用程式的使用者介面
 
@@ -34,10 +34,10 @@ ms.locfileid: "80396373"
 
 若要設定 UI 自訂，請將**ContentDefinition**及其子項目從基底檔案複製到擴充檔案。
 
-1. 開啟原則的基底檔案。 例如， <em> `SocialAndLocalAccounts/` </em>。 此基底檔案是自訂原則入門套件中所包含的其中一個原則檔案，您應該已在必要條件中取得這些檔案，以[開始使用自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
+1. 開啟原則的基底檔案。 例如，<em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em>。 此基底檔案是自訂原則入門套件中所包含的其中一個原則檔案，您應該已在必要條件中取得這些檔案，以[開始使用自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
 1. 搜尋 **ContentDefinitions** 元素的完整內容並且複製。
 1. 開啟擴充檔案。 例如 TrustFrameworkExtensions.xml**。 搜尋 **BuildingBlocks** 元素。 如果此元素不存在，請加以新增。
-1. 貼上您複製的 **ContentDefinitions** 元素完整內容，作為 **BuildingBlocks** 元素的子項目。
+1. 貼上您複製的**ContentDefinitions**元素的整個內容，做為**BuildingBlocks**元素的子系。
 1. 在您複製的 XML 中，搜尋包含 `Id="api.signuporsignin"` 的 **ContentDefinition** 元素。
 1. 將 **LoadUri** 的值變更為您上傳至儲存體的 HTML 檔案 URL。 例如： `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html` 。
 
@@ -64,28 +64,28 @@ ms.locfileid: "80396373"
 
 #### <a name="51-upload-the-custom-policy"></a>5.1 上傳自訂原則
 
-1. 選取頂端功能表中的 [目錄 + 訂用帳戶]  篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
-1. 搜尋並選取 [ **Azure AD B2C**]。
-1. 在 [**原則**] 底下，選取 [ **Identity Experience Framework**]。
-1. 選取 **[上傳自訂原則**]。
+1. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
+1. 搜尋並選取 [Azure AD B2C]。
+1. 在 [原則] 之下，選取 [Identity Experience Framework]。
+1. 選取 [上傳自訂原則]。
 1. 上傳您先前變更的擴充檔案。
 
 #### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 使用 [**立即執行**] 測試自訂原則
 
-1. 選取您上傳的原則，然後選取 [**立即執行**]。
+1. 選取您上傳的原則，然後選取 [立即執行]。
 1. 您應該可以使用電子郵件地址註冊。
 
 [!INCLUDE [active-directory-b2c-html-templates](../../includes/active-directory-b2c-html-templates.md)]
 
 ## <a name="configure-dynamic-custom-page-content-uri"></a>設定動態自訂頁面內容 URI
 
-藉由使用 Azure AD B2C 自訂原則，您可以在 URL 路徑或查詢字串中傳送參數。 將參數傳遞至您的 HTML 端點，即可動態變更網頁內容。 例如，視您從 Web 或行動裝置應用程式傳遞的參數而定，您可以變更 Azure AD B2C 註冊或登入背景影像。 參數可以是任何宣告[解析](claim-resolver-overview.md)程式，例如應用程式識別碼、語言識別項或自訂查詢字串參數，例如`campaignId`。
+藉由使用 Azure AD B2C 自訂原則，您可以在 URL 路徑或查詢字串中傳送參數。 將參數傳遞至您的 HTML 端點，即可動態變更網頁內容。 例如，視您從 Web 或行動裝置應用程式傳遞的參數而定，您可以變更 Azure AD B2C 註冊或登入背景影像。 參數可以是任何宣告[解析](claim-resolver-overview.md)程式，例如應用程式識別碼、語言識別項或自訂查詢字串參數，例如 `campaignId` 。
 
 ### <a name="sending-query-string-parameters"></a>傳送查詢字串參數
 
-若要傳送查詢字串參數，請在信賴憑證者[原則](relyingparty.md)中`ContentDefinitionParameters`新增元素，如下所示。
+若要傳送查詢字串參數，請在信賴憑證者[原則](relyingparty.md)中新增元素，如下 `ContentDefinitionParameters` 所示。
 
-```XML
+```xml
 <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
@@ -99,9 +99,9 @@ ms.locfileid: "80396373"
 </RelyingParty>
 ```
 
-在您的內容定義中，將的`LoadUri`值`https://<app_name>.azurewebsites.net/home/unified`變更為。 您的自`ContentDefinition`定義原則看起來應該像下列程式碼片段：
+在您的內容定義中，將的值變更 `LoadUri` 為 `https://<app_name>.azurewebsites.net/home/unified` 。 您的自訂原則 `ContentDefinition` 看起來應該像下列程式碼片段：
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://<app_name>.azurewebsites.net/home/unified</LoadUri>
   ...
@@ -118,14 +118,14 @@ https://<app_name>.azurewebsites.net/home/unified?campaignId=123&lang=fr&appId=f
 
 內容可以根據所使用的參數從不同的位置提取。 在已啟用 CORS 的端點中，設定用來裝載內容的資料夾結構。 例如，您可以在下列結構中組織內容。 根*資料夾/每一語言的資料夾/您的 html*檔案。 例如，您的自訂頁面 URI 可能如下所示：
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
   ...
 </ContentDefinition>
 ```
 
-Azure AD B2C 傳送語言的兩個字母 ISO 代碼， `fr`適用于法文：
+Azure AD B2C 傳送語言的兩個字母 ISO 代碼， `fr` 適用于法文：
 
 ```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html

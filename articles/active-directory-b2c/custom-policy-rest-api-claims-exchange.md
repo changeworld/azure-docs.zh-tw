@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78f7c8eb363d791b7109aebced668c1e0a952274
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 997a6941e2ccc26dabe1a593fe938094099bc98d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636085"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388981"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>逐步解說：將 REST API 宣告交換新增至 Azure Active Directory B2C 中的自訂原則
 
@@ -123,7 +123,7 @@ REST API 端點的設定不在本文討論範圍內。 我們已建立 [Azure Fu
 1. 將 `<UserJourneys>` 貼入擴充檔案，在 `<ClaimsProviders>` 元素的結尾之後。
 1. 找出 `<UserJourney Id="SignUpOrSignIn">`，並將下列協調流程步驟新增到最後一個步驟前面。
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="7" Type="ClaimsExchange">
       <ClaimsExchanges>
         <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />
@@ -133,7 +133,7 @@ REST API 端點的設定不在本文討論範圍內。 我們已建立 [Azure Fu
 
 1. 藉由將 `Order` 變更為 `8` 來重構最後一個協調流程步驟。 您的最後兩個協調流程步驟看起來應該如下所示：
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="7" Type="ClaimsExchange">
       <ClaimsExchanges>
         <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />

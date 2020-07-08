@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d1989f65f73ac4f9dc8dd328fa9d7ed267eec1aa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 4f44e9853182a8fcb222b8f895796cf5efc67def
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636422"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389593"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中設定資源擁有者密碼認證流程
 
@@ -50,9 +50,9 @@ ms.locfileid: "83636422"
 ## <a name="test-the-user-flow"></a>測試使用者流程
 
 使用您最慣用的 API 開發應用程式產生 API 呼叫，並檢視回應以對您的使用者流程偵錯。 使用下表中的資訊作為 POST 要求的本文，以建構與此類似的呼叫：
-- 將 \<tenant-name>.onmicrosoft.com 換成您的 B2C 租用戶名稱。
-- 將 \<B2C_1A_ROPC_Auth> 取代為資源擁有者密碼認證原則的完整名稱。
-- 將 \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> 取代為您註冊中的應用程式識別碼。
+- 以 B2C 租使用者的名稱取代* \<tenant-name> onmicrosoft.com。*
+- 將取代 *\<B2C_1A_ROPC_Auth>* 為您的資源擁有者密碼認證原則的完整名稱。
+- 將取代 *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* 為您註冊中的應用程式識別碼。
 
 `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 

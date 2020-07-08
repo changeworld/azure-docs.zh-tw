@@ -7,16 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/26/2019
+ms.topic: reference
+ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3df0f581d0d2a1e5ca02202b4eeaede5a1dd5362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: bb9c6dbf9984ec81fbd4b93a61552211928d0f0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388709"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C：區域可用性和資料存留處
 
@@ -40,7 +41,7 @@ Azure AD B2C 會將使用者資料儲存在美國、歐洲或亞太地區地區�
 
 資料常駐取決於您在[建立 Azure AD B2C 租](tutorial-create-tenant.md)使用者時選取的國家/地區：
 
-![預覽租使用者的螢幕擷取畫面](./media/data-residency/data-residency-b2c-tenant.png)
+![[建立租使用者] 表單的螢幕擷取畫面，選擇 [國家或地區]。](./media/data-residency/data-residency-b2c-tenant.png)
 
 下列國家/地區的資料位於**美國**：
 
@@ -68,4 +69,4 @@ Azure AD B2C 會將使用者資料儲存在美國、歐洲或亞太地區地區�
 
 當您刪除預覽 B2C 租使用者，並使用相同的功能變數名稱建立生產級別 B2C 租使用者時，會發生已知的問題。 *您必須使用不同的功能變數名稱建立生產級別 B2C 租使用者*。
 
-![預覽租使用者的螢幕擷取畫面](./media/data-residency/preview-b2c-tenant.png)
+![租使用者類型的螢幕擷取畫面，做為預覽租使用者。](./media/data-residency/preview-b2c-tenant.png)

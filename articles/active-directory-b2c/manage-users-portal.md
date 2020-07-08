@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/09/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8fad8b5bd2dccba36c0c6888712fa806f3cbfc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d6d6169f8662c9b973fb7f624a590322f62b0b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187214"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387519"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>使用 Azure 入口網站在 Azure AD B2C 中建立和刪除取用者使用者
 
@@ -29,26 +29,26 @@ ms.locfileid: "78187214"
 
 如 Azure AD B2C 中[的使用者帳戶總覽](user-overview.md)中所述，您可以在 Azure AD B2C 目錄中建立三種類型的使用者帳戶：
 
-* Work
+* 工作
 * 來賓
-* 取用者
+* 消費者
 
 本文著重于在 Azure 入口網站中使用取用**者帳戶**。 如需建立和刪除工作和來賓帳戶的相關資訊，請參閱[使用 Azure Active Directory 新增或刪除使用者](../active-directory/fundamentals/add-users-azure-active-directory.md)。
 
 ## <a name="create-a-consumer-user"></a>建立取用者使用者
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在頂端功能表中選取 [目錄 + 訂用帳戶]  篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
-1. 在左側功能表中，選取 [Azure AD B2C]  。 或者，選取 [所有服務]  ，然後搜尋並選取 [Azure AD B2C]  。
-1. 在 [管理]  底下選取 [使用者]  。
+1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
+1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+1. 在 [管理] 下，選取 [使用者]。
 1. 選取 [**新增使用者**]。
 1. 選取 [**建立 Azure AD B2C 使用者**]。
-1. 選擇 [登**入方法**]，並輸入新使用者的**電子郵件**位址或使用者**名稱**。 您在此選取的登入方法必須符合您為 Azure AD B2C 租使用者的*本機帳戶*識別提供者所指定的設定（請參閱在您的 Azure AD B2C 租使用者中**管理** > **識別提供者**）。
+1. 選擇 [登**入方法**]，並輸入新使用者的**電子郵件**位址或使用者**名稱**。 您在此選取的登入方法必須符合您為 Azure AD B2C 租使用者的*本機帳戶*識別提供者所指定的設定（請參閱**Manage**  >  在您的 Azure AD B2C 租使用者中管理**識別提供者**）。
 1. 輸入使用者的**名稱**。 這通常是使用者的完整名稱（名字和姓氏）。
 1. 選擇性如果您想要延遲使用者登入的能力，您可以**封鎖登入**。 您可以稍後在 Azure 入口網站中編輯使用者的**設定檔**，以啟用登入。
 1. 選擇 [**自動產生密碼**] 或 [**讓我建立密碼**]。
 1. 指定使用者的姓氏**和名字**。 **Last name**
-1. 選取 [建立]  。
+1. 選取 [建立]。
 
 除非您已選取 [**封鎖登入**]，否則使用者現在可以使用您指定的登入方法（電子郵件或使用者名稱）進行登入。
 

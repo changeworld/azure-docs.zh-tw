@@ -7,22 +7,22 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 62a283efb93987d3c4a6564c9b25d2031c269559
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e07be01a0fb6d74b4dcef5cbc6ec129f95fd2e7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80051456"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387927"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 Twitter 帳戶登入
 
 ## <a name="create-an-application"></a>建立應用程式
 
-若要使用 Twitter 作為 Azure AD B2C 中的識別提供者，您需要建立 Twitter 應用程式。 如果您還沒有 Twitter 帳戶，可以在[https://twitter.com/signup](https://twitter.com/signup)註冊。
+若要使用 Twitter 作為 Azure AD B2C 中的識別提供者，您需要建立 Twitter 應用程式。 如果您還沒有 Twitter 帳戶，可以在註冊 [https://twitter.com/signup](https://twitter.com/signup) 。
 
 1. 使用您的 Twitter 帳戶認證登入 [Twitter 開發人員](https://developer.twitter.com/en/apps) \(英文\) 網站。
 1. 選取 [**建立應用程式**]。
@@ -35,11 +35,11 @@ ms.locfileid: "80051456"
 
 ## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>在租用戶中將 Twitter 設為識別提供者
 
-1. 以 Azure AD B2C 租使用者的全域管理員身分登入[Azure 入口網站](https://portal.azure.com/)。
-1. 選取頂端功能表中的 [目錄 + 訂用帳戶]  篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
-1. 選擇 Azure 入口網站左上角的 [所有服務]****，搜尋並選取 [Azure AD B2C]****。
+1. 以 Azure AD B2C 租用戶的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
+1. 選擇 Azure 入口網站左上角的 [所有服務]，搜尋並選取 [Azure AD B2C]。
 1. 選取 [**識別提供者**]，然後選取 [ **Twitter**]。
-1. 輸入 [**名稱**]。 例如， *Twitter*。
+1. 輸入 [名稱]。 例如， *Twitter*。
 1. 針對 [**用戶端識別碼**]，輸入您稍早建立之 Twitter 應用程式的取用者 API 金鑰。
 1. 針對 [**用戶端密碼**]，輸入您所記錄的取用者 API 秘密金鑰。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。

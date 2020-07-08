@@ -4,7 +4,7 @@ description: Azure Active Directory B2B 共同作業的程式碼與 PowerShell �
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272944"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387345"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>為 B2B 共同作業設定 SaaS 應用程式
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) B2B 共同作業可搭配與 Azure AD 整合�
 
    ![顯示單一登入設定的螢幕擷取畫面](media/configure-saas-apps/configure-box-sso.png)
 
-   a. 在 [登入 URL]**** 方塊中，確定已在 Azure 入口網站中針對 Box 適當設定登入 URL。 此 URL 是 Box.com 租用戶的 URL。 它應該遵循命名慣例*https://.box.com*。  
+   a. 在 [登入 URL]**** 方塊中，確定已在 Azure 入口網站中針對 Box 適當設定登入 URL。 此 URL 是 Box.com 租用戶的 URL。 它應該遵循命名慣例 *https://.box.com* 。  
    [識別碼]**** 不適用於此應用程式，但它仍會顯示為必要欄位。
 
    b. 在 [使用者識別碼]**** 方塊中，輸入 **user.mail** (適用於來賓帳戶的 SSO)。

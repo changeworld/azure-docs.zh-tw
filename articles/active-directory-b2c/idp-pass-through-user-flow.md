@@ -7,33 +7,33 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 312d093548b6e3cf3654f45d7610e8fc474a87b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0446dd9e316e145cf93c503ab9634d4eedbc299b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187774"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387825"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>透過使用者流程將存取權杖傳遞到 Azure Active Directory B2C 中的應用程式
 
 Azure Active Directory B2C （Azure AD B2C）中的[使用者流程](user-flow-overview.md)可讓您的應用程式使用者有機會使用身分識別提供者註冊或登入。 當發生這種情況時，Azure AD B2C 會從身分識別提供者處收到[存取權杖](tokens-overview.md)。 Azure AD B2C 會使用該權杖來擷取使用者的相關資訊。 您在使用者流程中啟用宣告，以將權杖傳遞至您在 Azure AD B2C 中註冊的應用程式。
 
-Azure AD B2C 目前僅支援傳遞 [OAuth 2.0](authorization-code-flow.md) 身分識別提供者的存取權杖，其中包括 [Facebook](identity-provider-facebook.md) 和 [Google](identity-provider-google.md)。 對於所有其他識別提供者，宣告會傳回空白。
+Azure AD B2C 目前僅支援傳遞[OAuth 2.0](authorization-code-flow.md)身分識別提供者（包括[Facebook](identity-provider-facebook.md)和[Google](identity-provider-google.md)）的存取權杖。 對於所有其他識別提供者，宣告會傳回空白。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 您的應用程式必須使用 [v2 使用者流程](user-flow-versions.md)。
 * 您的自訂原則是使用 OAuth 2.0 識別提供者設定。
 
 ## <a name="enable-the-claim"></a>啟用宣告
 
-1. 以 Azure AD B2C 租使用者的全域管理員身分登入[Azure 入口網站](https://portal.azure.com/)。
-2. 請確定您使用的是包含您 Azure AD B2C 租使用者的目錄。 在頂端功能表中選取 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您租使用者的目錄。
-3. 選擇 Azure 入口網站左上角的 [所有服務]****，搜尋並選取 [Azure AD B2C]****。
+1. 以 Azure AD B2C 租用戶的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
+2. 確定您使用的目錄包含您的 Azure AD B2C 租用戶。 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄。
+3. 選擇 Azure 入口網站左上角的 [所有服務]，搜尋並選取 [Azure AD B2C]。
 4. 選取 **[使用者流程（原則）**]，然後選取您的使用者流程。 例如，B2C_1_signupsignin1  。
 5. 選取 [應用程式宣告]****。
 6. 啟用身分**識別提供者存取權杖**宣告。

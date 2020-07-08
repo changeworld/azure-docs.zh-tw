@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0b460d5a3c5535b74e349fa46c6a2ad55fc3a8d8
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3a35662a3f21aec1306b7b6994e7a08f9cbd467e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389525"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來管理 SSO 和權杖自訂
 
@@ -30,7 +30,7 @@ ms.locfileid: "82966567"
 
 您必須在其中放入會影響權杖存留期的資訊。 XML 看起來像這個範例：
 
-```XML
+```xml
 <ClaimsProviders>
   <ClaimsProvider>
     <DisplayName>Token Issuer</DisplayName>
@@ -61,7 +61,7 @@ ms.locfileid: "82966567"
 
     在 **ClaimsSchema** 項目中，新增此項目：
 
-    ```XML
+    ```xml
     <ClaimType Id="trustFrameworkPolicy">
       <DisplayName>Trust framework policy name</DisplayName>
       <DataType>string</DataType>
@@ -70,7 +70,7 @@ ms.locfileid: "82966567"
 
     在您的 **OutputClaims** 元素中，新增此元素：
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
     ```
 
@@ -78,13 +78,13 @@ ms.locfileid: "82966567"
 
 - **主體 (sub) 宣告** - 此選項的預設值為 ObjectID，如果您想要將此設定切換為 `Not Supported`，請將下列這行：
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
     ```
 
     改用這行︰
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     ```
 

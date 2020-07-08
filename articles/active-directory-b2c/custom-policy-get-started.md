@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32ec55a2ed6e0158a05f81067dc834fdc1e6e765
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 892e94ba1943b667ffeba63a80f4409b35ea5ec3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738246"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389287"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中開始使用自訂原則
 
@@ -74,22 +74,9 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 
 ### <a name="register-the-identityexperienceframework-application"></a>註冊 IdentityExperienceFramework 應用程式
 
-若要在 Azure AD B2C 租用戶中註冊應用程式，則可使用**應用程式註冊 (舊版)** 體驗，或使用新整合的**應用程式註冊 (預覽)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
+若要在您的 Azure AD B2C 租使用者中註冊應用程式，您可以使用**應用程式註冊**體驗。
 
-#### <a name="applications"></a>[應用程式](#tab/applications/)
-
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]。
-1. 在 Azure Active Directory [概觀] 功能表的 [管理] 下，選取 [應用程式註冊 (舊版)]。
-1. 選取 [新增應用程式註冊]。
-1. 針對 [名稱] 輸入 `IdentityExperienceFramework`。
-1. 針對 [應用程式類型] 選擇 [Web 應用程式/API]。
-1. 針對 [登入 URL] 輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是您的 Azure AD B2C 租用戶網域名稱。 所有 URL 現在都應會使用 [b2clogin.com](b2clogin.md)。
-1. 選取 [建立]。 建立之後，複製應用程式識別碼，並儲存它以供日後使用。
-
-#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
-
-1. 選取 [應用程式註冊 (預覽)]，然後選取 [新增註冊]。
+1. 選取 [應用程式註冊]，然後選取 [新增註冊]。
 1. 針對 [名稱] 輸入 `IdentityExperienceFramework`。
 1. 在 [支援的帳戶類型] 區段下，選取 [僅限此組織目錄中的帳戶]。
 1. 在 [重新導向 URI] 下，選取 [Web]，然後輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是 Azure AD B2C 租用戶網域名稱。
@@ -111,21 +98,7 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>註冊 ProxyIdentityExperienceFramework 應用程式
 
-#### <a name="applications"></a>[應用程式](#tab/applications/)
-
-1. 在 [應用程式註冊 (舊版)] 中，選取 [新增應用程式註冊]。
-1. 針對 [名稱] 輸入 `ProxyIdentityExperienceFramework`。
-1. 針對 [應用程式類型] 選擇 [原生]。
-1. 針對 [重新導向 URI]，輸入 `myapp://auth`。
-1. 選取 [建立]。 建立之後，複製應用程式識別碼，並儲存它以供日後使用。
-1. 依序選取 [設定]、[必要權限] 及 [新增]。
-1. 選擇 [選取 API]、搜尋並選取 [IdentityExperienceFramework]，然後按一下 [選取]。
-1. 選取 [存取 IdentityExperienceFramework] 旁的核取方塊、按一下 [選取]，然後按一下 [完成]。
-1. 選取 [授與權限]，然後選取 [是] 加以確認。
-
-#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
-
-1. 選取 [應用程式註冊 (預覽)]，然後選取 [新增註冊]。
+1. 選取 [應用程式註冊]，然後選取 [新增註冊]。
 1. 針對 [名稱] 輸入 `ProxyIdentityExperienceFramework`。
 1. 在 [支援的帳戶類型] 區段下，選取 [僅限此組織目錄中的帳戶]。
 1. 在 [重新導向 URI] 下，使用下拉式清單來選取 [公用用戶端/原生 (行動裝置及桌上型電腦)]。
@@ -137,7 +110,6 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 接下來，指定應將應用程式視為公用用戶端：
 
 1. 在 [管理] 底下，選取 [驗證]。
-1. 選取 [試用全新體驗] (若顯示的話)。
 1. 在 [進階設定] 下，啟用 [將應用程式視為公用用戶端] (選取 [是])。 確定已在應用程式資訊清單中設定 **"allowPublicClient": true**。 
 1. 選取 [儲存]。
 
@@ -151,7 +123,7 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 1. 選取 [授與管理員同意 (您的租用戶名稱)]。
 1. 選取您目前登入的系統管理員帳戶，或使用 Azure AD B2C 租用戶中的帳戶 (該租用戶至少已指派「雲端應用程式管理員」角色) 來登入。
 1. 選取 [接受]。
-1. 選取 [重新整理]，然後確認 [授與...] 出現在這個範圍的 [狀態] 下方。 權限可能需要幾分鐘的時間來傳播。
+1. 選取 **[** 重新整理]，然後確認「已授與 ...」出現在 [範圍-offline_access]、[openid] 和 [user_impersonation] 的 [**狀態**] 之下。 權限可能需要幾分鐘的時間來傳播。
 
 * * *
 

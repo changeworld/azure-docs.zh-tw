@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c72abf79f0a420309ebe229673be9439fd99b74c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b71a7b8ab29e8083a5f119a41ef6de312518301
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388267"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 透過 OpenID Connect 設定註冊和登入
 
@@ -24,14 +24,14 @@ ms.locfileid: "78188251"
 
 ## <a name="add-the-identity-provider"></a>新增識別提供者
 
-1. 以 Azure AD B2C 租使用者的全域管理員身分登入[Azure 入口網站](https://portal.azure.com/)。
+1. 以 Azure AD B2C 租用戶的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 按一下頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您租使用者的目錄，以確定您使用的是包含 Azure AD B2C 租使用者的目錄。
-1. 選擇 Azure 入口網站左上角的 [所有服務]****，搜尋並選取 [Azure AD B2C]****。
+1. 選擇 Azure 入口網站左上角的 [所有服務]，搜尋並選取 [Azure AD B2C]。
 1. 選取 [**識別提供者**]，然後選取 **[新增 OpenID Connect 提供者]**。
 
 ## <a name="configure-the-identity-provider"></a>設定識別提供者
 
-每個 OpenID Connect 識別提供者都會描述元資料檔案，其中包含執行登入所需的大部分資訊。 這包括要使用的 URL、服務的公開簽署金鑰位置等資訊。 OpenID Connect 中繼資料文件一律位於以 `.well-known\openid-configuration` 結尾的端點上。 針對您想要新增的 OpenID Connect 識別提供者，請輸入其中繼資料 URL。
+每個 OpenID Connect 識別提供者都會描述元資料檔案，其中包含執行登入所需的大部分資訊。 這包括要使用的 URL、服務的公開簽署金鑰位置等資訊。 OpenID Connect 中繼資料文件一律位於以 `.well-known/openid-configuration` 結尾的端點上。 針對您想要新增的 OpenID Connect 識別提供者，請輸入其中繼資料 URL。
 
 ## <a name="client-id-and-secret"></a>用戶端識別碼和祕密
 

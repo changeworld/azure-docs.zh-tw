@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90d9c6a2ebf445ba492f2e1634e57910cd235aed
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 7defc33f8e3e2daca60fa5c15c41c62333ffc2d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389253"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>開發人員在 Azure Active Directory B2C 中使用自訂原則的注意事項
 
@@ -101,7 +101,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 此設�
 | [單次密碼](one-time-password-technical-profile.md) |  | X |  |  |
 | 作為本機目錄的 [Azure Active Directory](active-directory-technical-profile.md) |  |  | X |  |
 | 電子郵件驗證的 Azure 電子郵件子系統 |  |  | X |  |
-| [第三方電子郵件服務提供者](custom-email.md) |  |X  |  |  |
+| [第三方電子郵件服務提供者](custom-email-mailjet.md) |  |X  |  |  |
 | [多語言支援](localization.md)|  |  | X |  |
 | [述詞驗證](predicates.md) |  |  | X | 例如，密碼複雜性。 |
 | [顯示控制項](display-controls.md) |  |X  |  |  |

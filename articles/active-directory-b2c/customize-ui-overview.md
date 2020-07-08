@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ebf83807629cc56aa381c97a9ce36d90c94d61f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666859"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388896"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中自訂使用者介面
 
@@ -154,7 +154,7 @@ Azure AD B2C 會使用稱為[跨原始資源分享（CORS）](https://www.w3.org
 | 本機帳戶註冊 | 包含可供使用者根據電子郵件地址或使用者名稱進行本機帳戶註冊的表單。 此表單可以包含不同的輸入控制項，例如文字輸入方塊、密碼輸入方塊、選項按鈕、單選下拉式清單方塊和多選核取方塊。 |
 | 社交帳戶註冊 | 可在使用社交識別提供者 (例如 Facebook 或 Google) 的現有帳戶註冊時顯示。 當您必須使用註冊表單從客戶收集其他資訊時，就會使用它。 |
 | 統一的註冊或登入 | 可處理客戶的註冊和登入，這些客戶可使用社交識別提供者 (例如 Facebook、Google) 或本機帳戶。 |
-| [Multi-Factor Authentication] | 客戶可以在註冊或登入期間驗證其電話號碼 (使用文字或語音)。 |
+| Multi-Factor Authentication | 客戶可以在註冊或登入期間驗證其電話號碼 (使用文字或語音)。 |
 | 錯誤 | 提供錯誤資訊給客戶。 |
 
 ## <a name="company-branding-preview"></a>公司商標（預覽）
@@ -170,8 +170,8 @@ Azure AD B2C 會使用稱為[跨原始資源分享（CORS）](https://www.w3.org
 首先，設定**公司商標**內的橫幅標誌、背景影像和背景色彩。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在頂端功能表中選取 [目錄 + 訂用帳戶]  篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
-1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure AD B2C**]。
+1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
+1. 在 Azure 入口網站中，搜尋並選取 [Azure AD B2C]。
 1. 在 [**管理**] 下，選取 [**公司商標**]。
 1. 依照[將商標新增至您組織的 Azure Active Directory 登入頁面](../active-directory/fundamentals/customize-branding.md)中的步驟進行。
 
@@ -186,11 +186,11 @@ Azure AD B2C 會使用稱為[跨原始資源分享（CORS）](https://www.w3.org
 設定公司商標之後，請在您的使用者流程中加以啟用。
 
 1. 在 Azure 入口網站的左側功能表中，選取 [ **Azure AD B2C**]。
-1. 在 [**原則**] 底下，選取 **[使用者流程（原則）**]。
+1. 在 [原則] 底下，選取 [使用者流程 (原則)]。
 1. 選取您想要啟用公司商標的使用者流程。 「登*入 v1* 」和「*設定檔編輯 v1* 」使用者流程類型**不支援**公司商標。
 1. 在 [**自訂**] 底下，選取 [**頁面配置**]，然後選取您想要品牌的版面配置。 例如，選取 [**統一註冊或登入頁面**]。
 1. 針對 [**頁面配置版本（預覽）**]，選擇 [版本**1.2.0** ] 或 [以上]。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 如果您想要在使用者流程中建立所有頁面的品牌，請在使用者流程中設定每個頁面配置的頁面配置版本。
 
@@ -202,7 +202,7 @@ Azure AD B2C 會使用稱為[跨原始資源分享（CORS）](https://www.w3.org
 
 ### <a name="use-company-branding-assets-in-custom-html"></a>在自訂 HTML 中使用公司商標資產
 
-若要在自訂 HTML 中使用您的公司商標資產，請在`<div id="api">`標記外部新增下列標記：
+若要在自訂 HTML 中使用您的公司商標資產，請在標記外部新增下列標記 `<div id="api">` ：
 
 ```HTML
 <img data-tenant-branding-background="true" />
@@ -213,19 +213,19 @@ Azure AD B2C 會使用稱為[跨原始資源分享（CORS）](https://www.w3.org
 
 ## <a name="localize-content"></a>當地語系化內容
 
-您可以在 Azure AD B2C 租用戶上啟用[語言自訂](user-flow-language-customization.md)，以將 HTML 內容當地語系化。 啟用此功能可讓 Azure AD B2C 將 OpenID Connect 參數`ui-locales`轉送至您的端點。 內容伺服器可使用此參數來提供語言特定的 HTML 頁面。
+您可以在 Azure AD B2C 租用戶上啟用[語言自訂](user-flow-language-customization.md)，以將 HTML 內容當地語系化。 啟用此功能可讓 Azure AD B2C 將 OpenID Connect 參數轉送 `ui_locales` 至您的端點。 內容伺服器可使用此參數來提供語言特定的 HTML 頁面。
 
 您可以根據所使用的地區設定，從不同的地方提取內容。 在已啟用 CORS 的端點中，您可以針對特定語言設定主機內容的資料夾結構。 如果您使用萬用字元值 `{Culture:RFC5646}`，則會呼叫正確的語言。
 
 例如，您的自訂頁面 URI 可能如下所示：
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html
 ```
 
 您可以從下列來源提取內容，以在法文中載入頁面：
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ```
 

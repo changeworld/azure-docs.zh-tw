@@ -7,24 +7,24 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 12845f09ac2eb2342cdb1ab82b703ebd3a67c706
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 20cb5f70a5844cb2d56fc9ff357fcaf640a6c56b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229723"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388573"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則將 ADFS 新增為 SAML 識別提供者
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，啟用 ADFS 使用者帳戶的登入。 您可以藉由將[SAML 識別提供者技術設定檔](saml-identity-provider-technical-profile.md)新增至自訂原則來啟用登入。
+本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，啟用 ADFS 使用者帳戶的登入。 將 [SAML 識別提供者技術設定檔](saml-identity-provider-technical-profile.md)新增至自訂原則，以啟用登入。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 - 確定您可以存取具有私密金鑰的憑證 .pfx 檔案。 您可以產生自己簽署的憑證，並將它上傳至 Azure AD B2C。 Azure AD B2C 會使用此憑證簽署傳送給您的 SAML 身分識別提供者的 SAML 要求。
@@ -35,14 +35,14 @@ ms.locfileid: "82229723"
 您需要將憑證儲存至 Azure AD B2C 租用戶中。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 請確定您使用的是包含您 Azure AD B2C 租使用者的目錄。 在頂端功能表中選取 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您租使用者的目錄。
-3. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
-4. 在 [概觀] 頁面上，選取 [識別體驗架構]****。
-5. 選取 [原則金鑰]****，然後選取 [新增]****。
-6. 針對 [選項]**** 選擇 `Upload`。
-7. 輸入原則金鑰的 [名稱]****。 例如： `SamlCert` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
+2. 確定您使用的目錄包含您的 Azure AD B2C 租用戶。 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄。
+3. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+4. 在 [概觀] 頁面上，選取 [識別體驗架構]。
+5. 選取 [原則金鑰]，然後選取 [新增]。
+6. 針對 [選項] 選擇 `Upload`。
+7. 輸入原則金鑰的 [名稱]。 例如： `SamlCert` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 8. 瀏覽至包含私密金鑰的憑證 .pfx 檔案，並選取該檔案。
-9. 按一下 [建立]  。
+9. 按一下 [建立]。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -95,9 +95,9 @@ ms.locfileid: "82229723"
 
 1. 以 ADFS 網域的名稱取代 `your-ADFS-domain`，並以 DNS (指出網域的任意值) 取代 **identityProvider** 輸出宣告。
 
-1. 找出`<ClaimsProviders>`區段並加入下列 XML 程式碼片段。 如果您的`SM-Saml-idp`原則已包含技術設定檔，請跳至下一個步驟。 如需詳細資訊，請參閱[單一登入會話管理](custom-policy-reference-sso.md)。
+1. 找出 [`<ClaimsProviders>`] 區段，並新增下列 XML 程式碼片段。 如果您的原則已包含 `SM-Saml-idp` 技術設定檔，請跳至下一個步驟。 如需詳細資訊，請參閱[單一登入工作階段管理](custom-policy-reference-sso.md)。
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Session Management</DisplayName>
       <TechnicalProfiles>
@@ -119,9 +119,9 @@ ms.locfileid: "82229723"
 
 到目前為止，您已設定原則，讓 Azure AD B2C 知道如何與 ADFS 帳戶進行通訊。 嘗試上傳原則的擴充檔案，這只是為了確認它到目前為止沒有任何問題。
 
-1. 在 Azure AD B2C 租用戶的 [自訂原則]**** 頁面上，選取 [上傳原則]****。
-2. 啟用 [覆寫現有的原則]****，然後瀏覽並選取 *TrustFrameworkExtensions.xml* 檔案。
-3. 按一下 [上傳]  。
+1. 在 Azure AD B2C 租用戶的 [自訂原則] 頁面上，選取 [上傳原則]。
+2. 啟用 [覆寫現有的原則]，然後瀏覽並選取 *TrustFrameworkExtensions.xml* 檔案。
+3. 按一下 [上傳] 。
 
 > [!NOTE]
 > Visual Studio code B2C 延伸模組會使用 "socialIdpUserId"。 ADFS 也需要社交原則。
@@ -131,7 +131,7 @@ ms.locfileid: "82229723"
 
 此時，識別提供者已設定妥當，但還未出現在任何註冊或登入畫面中。 若要讓它可供使用，您需建立現有範本使用者旅程圖的複本，然後加以修改，讓它也包含 ADFS 識別提供者。
 
-1. 從 Starter Pack 開啟 TrustFrameworkBase.xml** 檔案。
+1. 從 Starter Pack 開啟 TrustFrameworkBase.xml 檔案。
 2. 尋找並複製包含 `Id="SignUpOrSignIn"` 之 **UserJourney** 元素的整個內容。
 3. 開啟 *TrustFrameworkExtensions.xml*，並尋找 **UserJourneys** 元素。 如果此元素不存在，請新增。
 4. 貼上您複製的整個 **UserJourney** 元素內容作為 **UserJourneys** 元素的子系。
@@ -144,7 +144,7 @@ ms.locfileid: "82229723"
 1. 在您建立的使用者旅程圖中，尋找包含 `Order="1"` 的 **OrchestrationStep** 元素。
 2. 在 **ClaimsProviderSelections** 底下新增下列元素。 將 **TargetClaimsExchangeId** 的值設定成適當的值，例如 `ContosoExchange`：
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
     ```
 
@@ -155,13 +155,13 @@ ms.locfileid: "82229723"
 1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep**。
 2. 新增下列 **ClaimsExchange** 元素，請確定用於 ID 的值與用於 **TargetClaimsExchangeId** 的值相同：
 
-    ```XML
+    ```xml
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
     ```
 
-    將 **TechnicalProfileReferenceId** 的值更新成您稍早所建立技術設定檔的識別碼。 例如： `Contoso-SAML2` 。
+    將 **TechnicalProfileReferenceId** 的值更新成您稍早所建立技術設定檔的 ID。 例如： `Contoso-SAML2` 。
 
-3. 儲存 TrustFrameworkExtensions.xml** 檔案，並再次上傳它以供驗證。
+3. 儲存 TrustFrameworkExtensions.xml 檔案，並再次上傳它以供驗證。
 
 
 ## <a name="configure-an-adfs-relying-party-trust"></a>設定 ADFS 信賴憑證者信任
@@ -198,7 +198,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
     | Surname | family_name |
     | 指定的名稱 | given_name |
     | 電子郵件地址 | 電子郵件 |
-    | 顯示名稱 | 名稱 |
+    | 顯示名稱 | NAME |
 
     請注意，這些名稱不會顯示在 [傳出宣告類型] 下拉式清單中。 您必須在中手動輸入它們。 （下拉式清單實際上是可編輯的）。
 
@@ -208,7 +208,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 
 ## <a name="create-an-azure-ad-b2c-application"></a>建立 Azure AD B2C 應用程式
 
-與 Azure AD B2C 的通訊會透過您在 B2C 租使用者中註冊的應用程式進行。 此節會列出您可以視需要完成以建立測試應用程式的步驟 (如果您尚未這麼做)。
+與 Azure AD B2C 通訊，會透過您在 B2C 租用戶中註冊的應用程式來進行。 此節會列出您可以視需要完成以建立測試應用程式的步驟 (如果您尚未這麼做)。
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
@@ -216,10 +216,10 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 
 更新信賴憑證者 (RP) 檔案，此檔案將起始您剛才建立的使用者旅程圖。
 
-1. 在您的工作目錄中建立一份 SignUpOrSignIn.xml** 複本，並將它重新命名。 例如，將它重新命名為 SignUpSignInADFS.xml**。
+1. 在您的工作目錄中建立一份 SignUpOrSignIn.xml 複本，並將它重新命名。 例如，將它重新命名為 SignUpSignInADFS.xml**。
 2. 開啟新檔案，並將 **TrustFrameworkPolicy** 的 **PolicyId** 屬性更新成唯一值。 例如： `SignUpSignInADFS` 。
 3. 將 **PublicPolicyUri** 的值更新成原則的 URI。 例如：`http://contoso.com/B2C_1A_signup_signin_adfs`
 4. 更新 **DefaultUserJourney** 中 **ReferenceId** 屬性的值，以符合您所建立新使用者旅程圖 (SignUpSignInADFS) 的識別碼。
 5. 儲存您的變更、上傳檔案，然後選取清單中的新原則。
-6. 確定 [選取應用程式]**** 欄位中已選取您所建立的 Azure AD B2C 應用程式，然後按一下 [立即執行]**** 來進行測試。
+6. 確定 [選取應用程式] 欄位中已選取您所建立的 Azure AD B2C 應用程式，然後按一下 [立即執行] 來進行測試。
 

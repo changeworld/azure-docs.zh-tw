@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebf0cfffa410d8dfe2f0e0b42a0fee0c16106fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a86be8fa08b6fec7c401ad30165b590b3a6ccde
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187401"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387672"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure AD B2C 自訂原則
 
@@ -27,7 +27,7 @@ Azure PowerShell 為您的 Azure AD B2C 租使用者中的命令列和腳本型�
 * 將新的原則上傳至您的 Azure AD B2C 租使用者
 * 從租使用者刪除自訂原則
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [Azure AD B2C 租](tutorial-create-tenant.md)使用者，以及具有[B2C IEF 原則系統管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色之目錄中使用者的認證
 * 已上傳至您租使用者的[自訂原則](custom-policy-get-started.md)
@@ -37,7 +37,7 @@ Azure PowerShell 為您的 Azure AD B2C 租使用者中的命令列和腳本型�
 
 若要在您的 Azure AD B2C 租使用者中使用自訂原則，您必須先使用[AzureAD][Connect-AzureAD]命令，將您的 PowerShell 會話連線到租使用者。
 
-執行下列命令，並將`{b2c-tenant-name}`取代為您 Azure AD B2C 的租使用者名稱。 使用在目錄中已獲指派[B2C IEF 原則系統管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色的帳戶登入。
+執行下列命令， `{b2c-tenant-name}` 並將取代為您 Azure AD B2C 的租使用者名稱。 使用在目錄中已獲指派[B2C IEF 原則系統管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色的帳戶登入。
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"
@@ -112,7 +112,7 @@ PS C:\> Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
 </TrustFrameworkPolicy>
 ```
 
-若要在本機編輯原則內容，請使用管線將命令輸出傳送至`-OutputFilePath`具有引數的檔案，然後在您慣用的編輯器中開啟檔案。
+若要在本機編輯原則內容，請使用管線將命令輸出傳送至具有 `-OutputFilePath` 引數的檔案，然後在您慣用的編輯器中開啟檔案。
 
 將輸出傳送至檔案的範例命令：
 
@@ -125,7 +125,7 @@ Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -OutputFilePath C:\RP
 
 編輯您已建立或下載的原則檔案之後，您可以使用[AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy]命令，將更新的原則發佈到 Azure AD B2C。
 
-如果您使用 Azure AD B2C `Set-AzureADMSTrustFrameworkPolicy`租使用者中已存在之原則的識別碼來發出命令，則會覆寫該原則的內容。
+如果您 `Set-AzureADMSTrustFrameworkPolicy` 使用 Azure AD B2C 租使用者中已存在之原則的識別碼來發出命令，則會覆寫該原則的內容。
 
 ```PowerShell
 Set-AzureADMSTrustFrameworkPolicy [-Id <policyId>] -InputFilePath <inputpolicyfilePath> [-OutputFilePath <outputFilePath>]

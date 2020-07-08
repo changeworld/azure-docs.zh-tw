@@ -1,29 +1,24 @@
 ---
-title: 監視 Azure 事件格線訊息傳遞
-description: 本文說明如何使用 Azure 入口網站來查看 Azure 事件方格訊息的傳遞狀態。
+title: 查看 Azure 事件方格計量並設定警示
+description: 本文說明如何使用 Azure 入口網站來查看 Azure 事件方格主題和訂用帳戶的計量，並對其建立警示。
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 06/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a01ab91fe84aaa1fe55018754eddbf8b8f89643
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 75311675ae24f4836ed8f1adb8a7d9802b4d7f0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890860"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390596"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>監視事件格線訊息傳遞 
+本文說明如何使用入口網站來查看事件方格主題和訂用帳戶的計量，並對其建立警示。 
 
-本文說明如何使用入口網站來查看事件傳遞的狀態。
-
-Event Grid 提供持久的傳遞。 它針對每個訂用帳戶傳遞每則訊息至少一次。 事件會立即傳送到每個訂用帳戶的已註冊 Webhook。 如果 Webhook 在第一次嘗試傳遞的 60 秒內未確認接收事件，事件格線會重試傳遞事件。
-
-如需事件傳遞和重試的相關資訊，請參閱[事件格線訊息傳遞與重試](delivery-and-retry.md)。
-
-## <a name="delivery-metrics"></a>傳遞計量
+## <a name="metrics"></a>計量
 
 入口網站會顯示用於傳遞事件訊息之狀態的計量。
 
@@ -43,50 +38,69 @@ Event Grid 提供持久的傳遞。 它針對每個訂用帳戶傳遞每則訊�
     > [!NOTE]
     > 如需計量的完整清單，請參閱[Azure 事件方格支援的計量](metrics.md)。
 
-## <a name="event-subscription-status"></a>事件訂閱狀態
+## <a name="view-custom-topic-metrics"></a>查看自訂主題計量
 
-若要查看事件訂閱的計量，您可以依訂閱類型或特定資源的訂閱搜尋。
+如果您已發佈自訂主題，就可以檢視它的計量。 
 
-若要依事件訂閱類型搜尋，請選取 [所有服務]****。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+2. 在主題的搜尋列中，輸入**事件方格主題**，然後從下拉式清單中選取 [**事件方格主題**]。 
 
-![選取 [所有服務]](./media/monitor-event-delivery/all-services.png)
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="搜尋並選取事件方格主題":::
+3. 從主題清單中選取您的自訂主題。 
 
-搜尋 [事件格線]****，然後從可用的選項選取 [事件格線訂閱]****。
+    :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="選取您的自訂主題":::
+4. 在 [**事件方格主題**] 頁面上，查看自訂事件主題的計量。 在下圖中，顯示資源群組、訂用帳戶等的 [**基本**功能] 區段會最小化。 
 
-![搜尋事件訂閱](./media/monitor-event-delivery/search-and-select.png)
+    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="檢視事件計量":::
 
-依事件的類型、訂閱及位置進行篩選。 針對要檢視的訂閱選取 [計量]****。
+您可以使用**事件方格主題**頁面的 [**計量**] 索引標籤，建立具有支援之計量的圖表。
 
-![篩選事件訂閱](./media/monitor-event-delivery/filter-events.png)
+:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="主題-計量頁面":::
 
-檢視事件主題和訂閱的計量。
+若要深入瞭解計量，請參閱[中的計量 Azure 監視器](../azure-monitor/platform/data-platform-metrics.md)
 
-![檢視事件計量](./media/monitor-event-delivery/subscription-metrics.png)
+例如，請參閱計量圖表以瞭解**已發佈的事件**度量。
 
-若要尋找特定資源的計量，請選取該資源。 然後，選取 [事件]****。
+:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="已發佈事件度量":::
 
-![選取資源的事件](./media/monitor-event-delivery/select-events.png)
 
-您會看到該資源訂閱的計量。
+## <a name="view-subscription-metrics"></a>查看訂用帳戶計量
+1. 遵循上一節中的步驟，流覽至 [**事件方格主題**] 頁面。 
+2. 從下方窗格選取 [訂用帳戶]，如下列範例所示。 
 
-## <a name="custom-event-status"></a>自訂事件狀態
+    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="選取事件訂用帳戶":::    
 
-如果您已發佈自訂主題，就可以檢視它的計量。 選取該主題的資源群組，並選取該主題。
+    您也可以在 Azure 入口網站的搜尋列中搜尋**事件方格**訂用帳戶，選取 [**主題類型**]、[**訂**用帳戶] 和 [**位置**] 以查看事件訂用帳戶。 
 
-![選取自訂主題](./media/monitor-event-delivery/select-custom-topic.png)
+    :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="從 [事件方格訂閱] 頁面選取事件訂閱":::        
 
-檢視自訂事件主題的計量。
+    針對自訂主題，請選取 [**事件方格主題**] 做為 [**主題類型**]。 針對 [系統主題]，選取 Azure 資源的類型，例如 [**儲存體帳戶（Blob、GPv2）**]。 
+3. 請在圖表中的訂用帳戶首頁上查看訂用帳戶的計量。 您可以查看過去1小時、6小時、12小時、1天、7天或30天的**一般**、**錯誤**、**延遲**和寄不出**的信件**計量。 
 
-![檢視事件計量](./media/monitor-event-delivery/custom-topic-metrics.png)
+    :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="訂用帳戶首頁上的計量":::    
 
-## <a name="set-alerts"></a>設定警示
+## <a name="view-system-topic-metrics"></a>查看系統主題計量
 
-您可以針對自訂主題和事件網域，設定主題和網域層級計量上的警示。 在的 [總覽] 分頁中，從左側的 [具有資源] 功能表選取 [**警示**]，以查看、管理和建立警示規則。 [深入瞭解 Azure 監視器警示](../azure-monitor/platform/alerts-overview.md)
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+2. 在主題的搜尋列中，輸入**Event Grid 系統主題**，然後從下拉式清單中選取 [**事件方格系統主題**]。 
 
-![檢視事件計量](./media/monitor-event-delivery/select-alerts.png)
+    :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="搜尋並選取事件方格系統主題":::
+3. 從主題清單中選取您的系統主題。 
+
+    :::image type="content" source="./media/monitor-event-delivery/select-system-topic.png" alt-text="選取您的系統主題":::
+4. 在**事件方格系統主題**頁面上，查看系統的度量主題。 在下圖中，顯示資源群組、訂用帳戶等的 [**基本**功能] 區段會最小化。 
+
+    :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="在 [總覽] 頁面上查看系統主題計量":::
+
+您可以使用**事件方格主題**頁面的 [**計量**] 索引標籤，建立具有支援之計量的圖表。
+
+:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="系統主題-計量頁面":::
+
+若要深入瞭解計量，請參閱[中的計量 Azure 監視器](../azure-monitor/platform/data-platform-metrics.md)
+
 
 ## <a name="next-steps"></a>後續步驟
+查看下列文章：
 
-* 如需事件傳遞和重試的相關資訊，請參閱[事件格線訊息傳遞與重試](delivery-and-retry.md)。
-* 如需 Event Grid 的簡介，請參閱[關於事件方格](overview.md)。
-* 若要快速地開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。
+- 若要瞭解如何建立計量和活動記錄作業的警示，請參閱[設定警示](set-alerts.md)。
+- 如需事件傳遞和重試的相關資訊，請參閱[事件格線訊息傳遞與重試](delivery-and-retry.md)。

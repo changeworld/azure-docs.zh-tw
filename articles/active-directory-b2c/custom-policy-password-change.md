@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c351f8a95110a32c53c68c5eb6095918578bc5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c159e78d0aa065b53b1164e01309e770302fb1ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189169"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389015"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定密碼變更
 
@@ -24,7 +24,7 @@ ms.locfileid: "78189169"
 
 在 Azure Active Directory B2C （Azure AD B2C）中，您可以讓使用本機帳戶登入的使用者變更其密碼，而不需要透過電子郵件驗證來證明其真實性。 如果在使用者進入密碼變更流程時工作階段到期，系統會提示他們重新登入。 本文說明如何在[自訂原則](custom-policy-overview.md)中設定密碼變更。 此外，您也可以為使用者流程設定[自助式密碼重設](user-flow-self-service-password-reset.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 完成[在 Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 
@@ -32,7 +32,7 @@ ms.locfileid: "78189169"
 
 1. 開啟 TrustframeworkExtensions.xml** 檔案，並將下列識別碼為 `oldPassword` 的 **ClaimType** 元素新增到 [ClaimsSchema](claimsschema.md) 元素：
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="oldPassword">
@@ -47,7 +47,7 @@ ms.locfileid: "78189169"
 
 2. [ClaimsProvider](claimsproviders.md) 元素包含會驗證使用者的技術設定檔。 請將下列宣告提供者新增至 **ClaimsProvider** 元素：
 
-    ```XML
+    ```xml
     <ClaimsProviders>
       <ClaimsProvider>
         <DisplayName>Local Account SignIn</DisplayName>
@@ -125,7 +125,7 @@ ms.locfileid: "78189169"
 
 3. [UserJourney](userjourneys.md) 元素會定義使用者與應用程式進行互動時所採用的路徑。 新增 **UserJourney** 識別為 `PasswordChange` 的 **UserJourneys** 元素 (如果此元素不存在)：
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="PasswordChange">
         <OrchestrationSteps>
@@ -166,12 +166,12 @@ ms.locfileid: "78189169"
 ### <a name="upload-the-files"></a>上傳檔案
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取頂端功能表中的 [目錄 + 訂用帳戶]  篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
-3. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
-4. 選取 [識別體驗架構]****。
+2. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
+3. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+4. 選取 [識別體驗架構]。
 5. 在 [自訂原則] 頁面上，按一下 [上傳原則]****。
 6. 選取 [覆寫現有的原則]****，然後搜尋並選取 TrustframeworkExtensions.xml** 檔案。
-7. 按一下 [上傳]  。
+7. 按一下 [上傳] 。
 8. 針對信賴憑證者檔案 (例如 *ProfileEditPasswordChange.xml*) 重複步驟 5 到 7。
 
 ### <a name="run-the-policy"></a>執行原則

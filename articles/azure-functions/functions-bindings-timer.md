@@ -6,19 +6,21 @@ ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
-ms.custom: ''
-ms.openlocfilehash: 566d6ccf43024692e19bcd6639fe5cfbbba0660d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: e1dd20514fcb14e411fbb7efee4157b670d462b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80056416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389695"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的計時器觸發程序 
 
 本文說明如何在 Azure Functions 中使用計時器觸發程序。 計時器觸發程序可讓您依照排程執行函式。 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+如需如何手動執行計時器觸發函式的相關資訊，請參閱[手動執行非 HTTP 觸發的函式](./functions-manually-run-non-http.md)。
 
 ## <a name="packages---functions-1x"></a>套件 - Functions 1.x
 
@@ -50,7 +52,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 下列範例示範 function.json** 檔案中的計時器觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 此函式會寫入一項記錄，指出此函式引動過程是否由遺失的排程項目所造成。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)物件會傳遞至函式。
 
@@ -111,7 +113,7 @@ module.exports = function (context, myTimer) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例會使用計時器觸發程式系結，其設定會在函式 *. json*檔案中加以描述。 使用系結的實際[Python](functions-reference-python.md)函式會在* __ __.py*檔案中描述。 傳入函式的物件為[TimerRequest 物件](/python/api/azure-functions/azure.functions.timerrequest)類型。 函式邏輯會寫入記錄，指出目前的叫用是否因錯過的排程發生而造成。 
+下列範例會使用計時器觸發程式系結，其設定會在檔案的*function.js*中描述。 使用系結的實際[Python](functions-reference-python.md)函式會在* __ __.py*檔案中描述。 傳入函式的物件為[TimerRequest 物件](/python/api/azure-functions/azure.functions.timerrequest)類型。 函式邏輯會寫入記錄，指出目前的叫用是否因錯過的排程發生而造成。 
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -160,13 +162,13 @@ public void keepAlive(
 
 ---
 
-## <a name="attributes-and-annotations"></a>屬性和注釋
+## <a name="attributes-and-annotations"></a>屬性和註釋
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 類別庫](functions-dotnet-class-library.md)中，使用 [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)。
 
-該屬性的建構函式會採用 CRON 運算式或是 `TimeSpan`。 只有在函`TimeSpan`式應用程式在 App Service 計畫上執行時，您才能使用。 `TimeSpan`不支援耗用量或彈性 Premium 函數。
+該屬性的建構函式會採用 CRON 運算式或是 `TimeSpan`。 只有在函 `TimeSpan` 式應用程式在 App Service 計畫上執行時，您才能使用。 `TimeSpan`不支援耗用量或彈性 Premium 函數。
 
 下列範例顯示 CRON 運算式：
 
@@ -182,9 +184,9 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-C # 腳本不支援屬性。
+C# 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -192,7 +194,7 @@ JavaScript 不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支援屬性。
+Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -211,18 +213,18 @@ public void keepAlive(
 
 ---
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
-下表說明您在*函數 json*檔案和`TimerTrigger`屬性中設定的系結設定屬性。
+下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `TimerTrigger` 屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type** | n/a | 必須設定為 "timerTrigger"。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
-|**方向** | n/a | 必須設定為 "in"。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
+|**direction** | n/a | 必須設定為 "in"。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
 |**name** | n/a | 代表函式程式碼中計時器物件的變數名稱。 | 
-|**任務**|**ScheduleExpression**|[CRON 運算式](#ncrontab-expressions)或 [TimeSpan](#timespan) 值。 `TimeSpan` 只能用於 App Service 方案上執行的函式應用程式。 您可以將排程運算式放在應用程式設定中，並將此屬性設定為以**%** 符號包裝的應用程式設定名稱，如下列範例所示： "% ScheduleAppSetting%"。 |
-|**runOnStartup**|**RunOnStartup**|如果為 `true`，當執行階段啟動時，會叫用函式。 例如，當函式應用程式因無活動而處於閒置狀態後再甦醒時、 當函式應用程式因函式變更而重新開機，以及函式應用程式相應放大時。因此，如果您要將**runOnStartup**設定為`true`，特別是在生產環境中。 |
-|**useMonitor**|**UseMonitor**|設定為 `true` 或 `false` 以表示是否應該監視排程。 排程監視會使排程持續進行，以協助確保即使在函式應用程式執行個體重新啟動時，排程也能正確地持續運作。 如果未明確設定，則預設值`true`為表示週期間隔大於或等於1分鐘的排程。 若為每分鐘觸發超過一次的排程，預設值為 `false`。
+|**任務**|**ScheduleExpression**|[CRON 運算式](#ncrontab-expressions)或 [TimeSpan](#timespan) 值。 `TimeSpan` 只能用於 App Service 方案上執行的函式應用程式。 您可以將排程運算式放在應用程式設定中，並將此屬性設定為以符號包裝的應用程式設定名稱 **%** ，如下列範例所示： "% ScheduleAppSetting%"。 |
+|**runOnStartup**|**RunOnStartup**|如果為 `true`，當執行階段啟動時，會叫用函式。 例如，當函式應用程式因無活動而處於閒置狀態後再甦醒時、 當函式應用程式因函式變更而重新開機，以及函式應用程式相應放大時。因此，如果您要將**runOnStartup**設定為 `true` ，特別是在生產環境中。 |
+|**useMonitor**|**UseMonitor**|設定為 `true` 或 `false` 以表示是否應該監視排程。 排程監視會使排程持續進行，以協助確保即使在函式應用程式執行個體重新啟動時，排程也能正確地持續運作。 如果未明確設定，則預設值為表示 `true` 週期間隔大於或等於1分鐘的排程。 若為每分鐘觸發超過一次的排程，預設值為 `false`。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -319,7 +321,7 @@ CRON 運算式使用的預設時區是國際標準時間 (UTC)。 若要讓 CRON
 |"24:00:00" | 每 24 天        |
 |"1.00：00： 00" | 每天        |
 
-## <a name="scale-out"></a>向外延展
+## <a name="scale-out"></a>相應放大
 
 如果函式應用程式相應放大至多個執行個體，則只有計時器觸發函式的單一執行個體會在所有執行個體中執行。
 
@@ -330,7 +332,7 @@ CRON 運算式使用的預設時區是國際標準時間 (UTC)。 若要讓 CRON
 | Functions 版本 | 設定                                              |
 | ----------------- | ---------------------------------------------------- |
 | 2.x （和更新版本）  | `AzureFunctionsWebHost__hostid` 環境變數 |
-| 1.x               | `id`在*host. json*中                                  |
+| 1.x               | `id`在*host.js開啟*                                  |
 
 您可以省略識別值，或手動將每個函數應用程式的識別設定設為不同的值。
 

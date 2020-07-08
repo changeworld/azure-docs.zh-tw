@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 45878ea947803b04cd5cd6e471f701c21f2c26fa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 668bc645edd1be611fe71b8fc1fa81288572e843
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388063"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則註冊並登入 Salesforce SAML 提供者
 
@@ -109,7 +109,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 1. 尋找 **ClaimsProviders** 元素。 如果不存在，請在根元素下新增。
 1. 新增新的 **ClaimsProvider**，如下所示：
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <Domain>salesforce</Domain>
       <DisplayName>Salesforce</DisplayName>
@@ -152,7 +152,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 1. 將 **StorageReferenceId** 兩個執行個體的值，更新至簽章憑證金鑰的名稱。 例如，B2C_1A_SAMLSigningCert。
 1. 找出 [`<ClaimsProviders>`] 區段，並新增下列 XML 程式碼片段。 如果您的原則已包含 `SM-Saml-idp` 技術設定檔，請跳至下一個步驟。 如需詳細資訊，請參閱[單一登入工作階段管理](custom-policy-reference-sso.md)。
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Session Management</DisplayName>
       <TechnicalProfiles>
@@ -194,7 +194,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 1. 在您剛建立的使用者旅程圖中，尋找包含 `Order="1"` 的 **OrchestrationStep** 元素。
 2. 在 **ClaimsProviderSelects** 底下新增下列元素。 將 **TargetClaimsExchangeId** 的值設定成適當的值，例如 `SalesforceExchange`：
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="SalesforceExchange" />
     ```
 
@@ -205,7 +205,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep**。
 2. 新增下列 **ClaimsExchange** 元素，請確定用於 **ID** 的值與用於 **TargetClaimsExchangeId** 的值相同：
 
-    ```XML
+    ```xml
     <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
     ```
 

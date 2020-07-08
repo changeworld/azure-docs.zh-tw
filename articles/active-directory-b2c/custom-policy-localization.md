@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 090fecea44c7881920fcd087304f33f935a5e907
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 8939d4546657b049b61eb31c08844dac07c67ae2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636267"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389083"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則將應用程式的使用者介面當地語系化
 
@@ -33,7 +33,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的語言自訂可讓您適應不�
 1. 新增具有支援語言的 `Localization` 元素：英文 (預設值) 和西班牙文。  
 
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
     <SupportedLanguage>en</SupportedLanguage>
@@ -51,7 +51,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的語言自訂可讓您適應不�
 > [!NOTE]
 > 在下列範例中，我們在每一行的開頭新增了井字型 `#` 符號，讓您可以輕鬆地在畫面上尋找當地語系化的標籤。
 
-```XML
+```xml
 <!--Local account sign-up or sign-in page English-->
 <LocalizedResources Id="api.signuporsignin.en">
   <LocalizedStrings>
@@ -218,7 +218,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的語言自訂可讓您適應不�
 
 在下列範例中，英文 (en) 和西班牙文 (es) 自訂字串已新增至註冊或登入頁面，也新增到了本機帳戶的註冊頁面。 每個 **LocalizedResourcesReference** 的 **LocalizedResourcesReferenceId** 與其地區設定相同，但可使用任何字串做為識別碼。 至於每個語言和頁面組合，請指向先前建立的對應 **LocalizedResources**。
 
-```XML
+```xml
 <ContentDefinitions>
   <ContentDefinition Id="api.signuporsignin">
     <LocalizedResourcesReferences MergeBehavior="Prepend">

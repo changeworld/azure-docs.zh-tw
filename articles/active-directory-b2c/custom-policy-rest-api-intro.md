@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: fe328de9460efb743037f697c7f564e2c628278d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388930"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>在您的 Azure AD B2C 自訂原則中整合 REST API 宣告交換
 
@@ -32,6 +32,9 @@ ms.locfileid: "83636991"
 - **執行自訂商務邏輯**。 您可以傳送推播通知、更新公司資料庫、執行使用者移轉程序、管理權限、稽核資料庫，以及執行其他工作流程。
 
 ![RESTful 服務宣告交換的圖表](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
+
+> [!NOTE]
+> 如果 RESTful 服務的回應速度很慢或沒有回應 Azure AD B2C，則超時時間為30秒，而重試計數為2次（表示總共有3個嘗試）。 目前無法設定 [超時] 和 [重試計數] 設定。
 
 ## <a name="calling-a-restful-service"></a>呼叫 RESTful 服務
 
@@ -142,7 +145,7 @@ RESTful 宣告提供者所剖析的輸出宣告，一律會預期剖析一般 JS
 ## <a name="localize-the-rest-api"></a>將 REST API 當地語系化
 在 RESTful 技術設定檔中，建議您傳送目前工作階段的語言/地區設定，並在必要時引發當地語系化的錯誤訊息。 使用[宣告解析程式](claim-resolver-overview.md)，您可以傳送內容相關宣告，例如使用者語言。 下列範例顯示的是示範此案例的 RESTful 技術設定檔。
 
-```XML
+```xml
 <TechnicalProfile Id="REST-ValidateUserData">
   <DisplayName>Validate user input data</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -162,7 +165,7 @@ RESTful 宣告提供者所剖析的輸出宣告，一律會預期剖析一般 JS
 
 ## <a name="handling-error-messages"></a>處理錯誤訊息
 
-您的 REST API 可能需要傳回錯誤訊息，例如「CRM 系統中找不到使用者」。 若發生錯誤，REST API 應會傳回 HTTP 409 錯誤訊息 (衝突回應狀態碼)。 如需詳細資訊，請參閱 [RESTful 技術設定檔](restful-technical-profile.md#returning-error-message)。
+您的 REST API 可能需要傳回錯誤訊息，例如「CRM 系統中找不到使用者」。 若發生錯誤，REST API 應會傳回 HTTP 409 錯誤訊息 (衝突回應狀態碼)。 如需詳細資訊，請參閱 [RESTful 技術設定檔](restful-technical-profile.md#returning-validation-error-message)。
 
 您只能從驗證技術設定檔呼叫 REST API 技術設定檔來達成此目的。 這可讓使用者更正頁面上的資料，並在頁面提交時再次執行驗證。
 

@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 005c035468a4225f96e8ef69b2ef31a82bf7eedb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682823"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390358"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>關於 Azure Container Registry 的常見問題集
 
@@ -220,7 +220,7 @@ ACR 支援提供不同權限層級的[自訂角色](container-registry-roles.md)
   az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
   ```
 
-  或者，將角色指派給其應用程式識別碼所識別的服務主體：
+  或者，將角色指派給由其應用程式識別碼所識別的服務主體：
 
   ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
@@ -269,6 +269,7 @@ ACR 支援提供不同權限層級的[自訂角色](container-registry-roles.md)
 - [為什麼 Azure 入口網站不會列出我所有的存放庫或標籤？](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [為什麼 Azure 入口網站無法提取存放庫或標籤？](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [為什麼我的提取或推送要求失敗，且不允許作業？](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
+- [存放庫格式無效或不受支援](#repository-format-is-invalid-or-unsupported)
 - [如何在 Windows 上收集 HTTP 追蹤？](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>使用 `az acr check-health` 檢查健全狀況
@@ -438,6 +439,13 @@ curl $redirect_url
 * 已不再支援傳統登錄。 請使用 [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) 或 Azure 入口網站升級至支援的[服務層級](https://aka.ms/acr/skus)。
 * 映像或存放庫可能已鎖定，所以無法刪除或更新。 您可以使用 [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) 命令來查看目前的屬性。
 * 如果映像處於隔離中，則不允許某些作業。 深入瞭解[隔離](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
+* 您的登錄可能已達到其[儲存空間限制](container-registry-skus.md#service-tier-features-and-limits)。
+
+### <a name="repository-format-is-invalid-or-unsupported"></a>存放庫格式無效或不受支援
+
+如果您在存放庫作業中指定存放庫名稱時看到「不支援的存放庫格式」、「不正確格式」或「要求的資料不存在」之類的錯誤，請檢查名稱的拼寫和大小寫。 有效的存放庫名稱只能包含小寫英數位元、句號、破折號、底線和正斜線。 
+
+如需完整的存放庫命名規則，請參閱[Open Container 方案散發規格](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)。
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>如何在 Windows 上收集 HTTP 追蹤？
 
@@ -493,9 +501,9 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 | Git 服務 | 來源內容 | 手動組建 | 透過認可觸發自動建立 |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 是 |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | 是 | Yes |
 | Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | 是 | 是 |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 否 |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | 否 |
 | BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | 是 | 否 |
 
 ## <a name="run-error-message-troubleshooting"></a>執行錯誤訊息的疑難排解

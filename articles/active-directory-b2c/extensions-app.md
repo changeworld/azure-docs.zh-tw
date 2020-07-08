@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 547b625996a65999c32c1b73699e3b408be01de3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: accd32f376c6030900a9f9a3c29547118d0a1a7b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388505"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C：擴充功能應用程式
 
@@ -36,7 +36,7 @@ ms.locfileid: "78188591"
 
 如果您不小心刪除 b2c-extensions-app，會有 30 天可進行復原。 您可以使用圖形 API 來還原應用程式：
 
-1. 瀏覽至 [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) 。
+1. 瀏覽至 [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)。
 1. 針對您需要還原已刪除應用程式的 Azure AD B2C 目錄，以全域系統管理員身分登入站台。 此全域系統管理員必須有類似下列的電子郵件地址：`username@{yourTenant}.onmicrosoft.com`。
 1. 針對 URL `https://graph.windows.net/myorganization/deletedApplications` 發出 HTTP GET，其中 api-version=1.6。 此作業會列出過去 30 天內所有已刪除的應用程式。
 1. 在名稱開頭為 'b2c-extension-app' 的清單中尋找應用程式，並複製其 `objectid` 屬性值。

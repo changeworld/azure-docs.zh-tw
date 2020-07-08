@@ -7,22 +7,22 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d32eb80ffe296d86164a6d27a1b7a28181357243
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f1099a3564a5891a69429d78bda8177094538e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388012"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 LinkedIn 帳戶登入
 
 ## <a name="create-a-linkedin-application"></a>建立 LinkedIn 應用程式
 
-若要在 Azure Active Directory B2C （Azure AD B2C）中使用 LinkedIn 帳戶做為[識別提供者](authorization-code-flow.md)，您需要在代表它的租使用者中建立應用程式。 如果您還沒有 LinkedIn 帳戶，您可以在[https://www.linkedin.com/](https://www.linkedin.com/)註冊。
+若要在 Azure Active Directory B2C （Azure AD B2C）中使用 LinkedIn 帳戶做為[識別提供者](authorization-code-flow.md)，您需要在代表它的租使用者中建立應用程式。 如果您還沒有 LinkedIn 帳戶，您可以在註冊 [https://www.linkedin.com/](https://www.linkedin.com/) 。
 
 1. 使用您的 LinkedIn 帳戶認證登入 [LinkedIn 開發人員網站](https://www.developer.linkedin.com/)。
 1. 選取 [我的應用程式]****，然後按一下 [建立應用程式]****。
@@ -33,14 +33,14 @@ ms.locfileid: "78188095"
 
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>將 LinkedIn 帳戶設為識別提供者
 
-1. 以 Azure AD B2C 租使用者的全域管理員身分登入[Azure 入口網站](https://portal.azure.com/)。
-1. 選取頂端功能表中的 [目錄 + 訂用帳戶]  篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
-1. 選擇 Azure 入口網站左上角的 [所有服務]****，搜尋並選取 [Azure AD B2C]****。
+1. 以 Azure AD B2C 租用戶的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
+1. 選擇 Azure 入口網站左上角的 [所有服務]，搜尋並選取 [Azure AD B2C]。
 1. 選取 [**識別提供者**]，然後選取 [ **LinkedIn**]。
-1. 輸入 [**名稱**]。 例如， *LinkedIn*。
+1. 輸入 [名稱]。 例如， *LinkedIn*。
 1. 針對 [**用戶端識別碼**]，輸入您稍早建立之 LinkedIn 應用程式的用戶端識別碼。
 1. 針對 [**用戶端密碼**]，輸入您所記錄的用戶端密碼。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ## <a name="migration-from-v10-to-v20"></a>從 v1.0 遷移至 v2。0
 

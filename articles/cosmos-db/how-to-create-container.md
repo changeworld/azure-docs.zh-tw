@@ -1,24 +1,24 @@
 ---
 title: 在 Azure Cosmos DB 中建立容器
-description: 瞭解如何使用 Azure 入口網站、.Net、JAVA、Python、node.js 和其他 Sdk，在 Azure Cosmos DB 中建立容器。
+description: 瞭解如何使用 Azure 入口網站、.Net、JAVA、Python、Node.js 和其他 Sdk，在 Azure Cosmos DB 中建立容器。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: 809ebe848e38a7c99c96ef44f130da917fb35942
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161617"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390885"
 ---
 # <a name="create-an-azure-cosmos-container"></a>建立 Azure Cosmos 容器
 
 本文說明建立 Azure Cosmos 容器 (集合、資料表或圖形) 的不同方式。 您可使用 Azure 入口網站、Azure CLI 或支援的 SKD。 本文將示範如何建立容器、指定分割區索引鍵，以及佈建輸送量。
 
 > [!NOTE]
-> 建立容器時，請確定您不會建立兩個名稱相同但大小寫不同的容器。 這是因為 Azure 平臺的某些部分不會區分大小寫，而這可能導致在具有這類名稱的容器上進行遙測和動作的混淆/衝突。
+> 建立容器時，請確定您不會建立兩個名稱相同但大小寫不同的容器。 這是因為 Azure 平台的某些部分不會區分大小寫，而這可能導致在具有這類名稱的容器上發生遙測和動作的混淆/衝突。
 
 ## <a name="create-a-container-using-azure-portal"></a>使用 Azure 入口網站建立容器
 
@@ -34,9 +34,9 @@ ms.locfileid: "82161617"
    * 輸入容器識別碼。
    * 輸入分割區索引鍵。
    * 輸入要佈建的輸送量 (例如 1000 RU)。
-   * 選取 [確定]  。
+   * 選取 [確定]。
 
-    ![[資料總管] 窗格的螢幕擷取畫面，其中已反白顯示新的容器](./media/how-to-create-container/partitioned-collection-create-sql.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="[資料總管] 窗格的螢幕擷取畫面，其中已反白顯示新的容器":::
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>適用於 MongoDB 的 Azure Cosmos DB API
 
@@ -50,9 +50,9 @@ ms.locfileid: "82161617"
    * 輸入容器識別碼。
    * 輸入分區索引鍵。
    * 輸入要佈建的輸送量 (例如 1000 RU)。
-   * 選取 [確定]  。
+   * 選取 [確定]。
 
-    ![適用于 MongoDB 的 Azure Cosmos DB API、[新增容器] 對話方塊的螢幕擷取畫面](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="適用于 MongoDB 的 Azure Cosmos DB API、[新增容器] 對話方塊的螢幕擷取畫面":::
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra API
 
@@ -66,9 +66,9 @@ ms.locfileid: "82161617"
    * 輸入資料表名稱。
    * 輸入屬性並指定主索引鍵。
    * 輸入要佈建的輸送量 (例如 1000 RU)。
-   * 選取 [確定]  。
+   * 選取 [確定]。
 
-    ![Cassandra API 中 [新增資料表] 對話方塊的螢幕擷取畫面](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Cassandra API 中 [新增資料表] 對話方塊的螢幕擷取畫面":::
 
 > [!NOTE]
 > Cassandra API 的主索引鍵會作為分割區索引鍵。
@@ -86,9 +86,9 @@ ms.locfileid: "82161617"
    * 選取 [不受限]**** 的儲存體容量。
    * 輸入頂點的分割區索引鍵。
    * 輸入要佈建的輸送量 (例如 1000 RU)。
-   * 選取 [確定]  。
+   * 選取 [確定]。
 
-    ![Gremlin API 中 [新增圖形] 對話方塊的螢幕擷取畫面](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Gremlin API 中 [新增圖形] 對話方塊的螢幕擷取畫面":::
 
 ### <a name="table-api"></a><a id="portal-table"></a>資料表 API
 
@@ -100,9 +100,9 @@ ms.locfileid: "82161617"
 
    * 輸入資料表識別碼。
    * 輸入要佈建的輸送量 (例如 1000 RU)。
-   * 選取 [確定]  。
+   * 選取 [確定]。
 
-    ![資料表 API 中 [新增資料表] 對話方塊的螢幕擷取畫面](./media/how-to-create-container/partitioned-collection-create-table.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="資料表 API 中 [新增資料表] 對話方塊的螢幕擷取畫面":::
 
 > [!Note]
 > 對於資料表 API，在您每次新增資料列時都會指定分割區索引鍵。
@@ -132,6 +132,8 @@ ms.locfileid: "82161617"
 * [使用 Powershell 建立資料表 API 資料表](./scripts/powershell/table/ps-table-create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>使用 .NET SDK 建立容器
+
+如果您在建立集合時遇到 timeout 例外狀況，請執行讀取作業來驗證是否已成功建立集合。 讀取作業會擲回例外狀況，直到收集建立作業成功為止。 如需建立作業所支援的狀態代碼清單，請參閱[Azure Cosmos DB 的 HTTP 狀態碼](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)文章。
 
 ### <a name="sql-api-and-gremlin-api"></a><a id="dotnet-sql-graph"></a>SQL API 和 Gremlin API
 

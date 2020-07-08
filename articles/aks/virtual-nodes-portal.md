@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: e27a920aea18affd78f840d3063b8082f716745b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: HT
+ms.openlocfilehash: 6706d9c1c683cdf46fe42822cad67a49a69843a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389814"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>在 Azure 入口網站中建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
 
@@ -59,7 +59,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * 美國西部 2 (westus2)
 
 ## <a name="known-limitations"></a>已知限制
-虛擬節點功能非常依賴 ACI 的功能集。 虛擬節點尚未支援下列案例
+虛擬節點功能非常依賴 ACI 的功能集。 除了[Azure 容器實例的配額和限制](../container-instances/container-instances-quotas.md)以外，虛擬節點尚不支援下列案例：
 
 * 使用服務主體來提取 ACR 映像。 [因應措施](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) \(英文\) 是使用 [Kubernetes 祕密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) \(英文\)
 * [虛擬網路限制](../container-instances/container-instances-vnet.md)包括 VNet 對等互連、Kubernetes 網路原則，以及搭配網路安全性群組的網際網路輸出流量。
@@ -67,7 +67,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * [主機別名](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/) \(英文\)
 * 適用於 ACI 中 exec 的[引數](../container-instances/container-instances-exec.md#restrictions)
 * [DaemonSet](concepts-clusters-workloads.md#statefulsets-and-daemonsets) 不會將 Pod 部署至虛擬節點
-* 虛擬節點支援對 Linux Pod 進行排程。 您可以手動安裝開放原始碼 [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) \(英文\) 提供者，以針對 ACI 對 Windows Server 容器進行排程。 
+* 虛擬節點支援對 Linux Pod 進行排程。 您可以手動安裝開放原始碼 [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) \(英文\) 提供者，以針對 ACI 對 Windows Server 容器進行排程。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 

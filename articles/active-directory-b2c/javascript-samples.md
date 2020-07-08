@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a26f6c5e69ca083335580a0368459e062de3941e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a92810841ee5d656b23105d6f40c763847971c4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187656"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387791"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>適用於 Azure Active Directory B2C 中的 JavaScript 範例
 
@@ -35,13 +35,13 @@ ms.locfileid: "78187656"
 > [!NOTE]
 > 如果您想要為使用者流程啟用 JavaScript，請參閱[Azure Active Directory B2C 中的 javascript 和頁面配置版本](user-flow-javascript-overview.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="select-a-page-layout"></a>選取頁面配置
 
 * 為應用程式的使用者介面元素選取[頁面配置](contentdefinitions.md#select-a-page-layout)。
 
-    如果您想要使用 JavaScript，您必須針對自訂原則中的*所有*內容`contract`定義，使用頁面版本[定義頁面配置版本](contentdefinitions.md#migrating-to-page-layout)。
+    如果您想要使用 JavaScript，您必須[define a page layout version](contentdefinitions.md#migrating-to-page-layout) `contract` 針對自訂原則中的*所有*內容定義，使用頁面版本定義頁面配置版本。
 
 ## <a name="add-the-scriptexecution-element"></a>新增 ScriptExecution 元素
 
@@ -50,7 +50,7 @@ ms.locfileid: "78187656"
 1. 開啟您的自訂原則檔案。 例如 *SignUpOrSignin.xml*。
 2. 將 **ScriptExecution** 元素新增到 **RelyingParty** 的 **UserJourneyBehaviors** 元素：
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="B2CSignUpOrSignInWithPassword" />
       <UserJourneyBehaviors>

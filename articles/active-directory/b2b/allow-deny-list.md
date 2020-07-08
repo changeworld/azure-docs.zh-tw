@@ -4,7 +4,7 @@ description: 說明系統管理員如何使用 Azure 入口網站或 PowerShell 
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/15/2018
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5100c4406cfd4a8395dfa177dc3cd5e911decb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74273430"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387281"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>允許或封鎖對特定組織的 B2B 使用者的邀請
 
@@ -42,7 +42,7 @@ ms.locfileid: "74273430"
 若要新增拒絕清單：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [ **Azure Active Directory** > **使用者** > ] [**使用者設定**]。
+2. 選取 [ **Azure Active Directory**  >  **使用者**] [  >  **使用者設定**]。
 3. 在 [**外部使用者**] 底下，選取 [**管理外部**共同作業設定]。
 4. 在 [共同作業限制]**** 下，選取 [拒絕對指定網域的邀請]****。
 5. 在 [目標網域]**** 下，輸入您要封鎖的網域之一的名稱。 若有多個網域，請將每個網域輸入於不同行。 例如：
@@ -63,7 +63,7 @@ ms.locfileid: "74273430"
 若要新增允許清單：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [ **Azure Active Directory** > **使用者** > ] [**使用者設定**]。
+2. 選取 [ **Azure Active Directory**  >  **使用者**] [  >  **使用者設定**]。
 3. 在 [**外部使用者**] 底下，選取 [**管理外部**共同作業設定]。
 4. 在 [共同作業限制]**** 下，選取 [僅允許對指定網域的邀請 (限制性最高)]****。
 5. 在 [目標網域]**** 下，輸入您要允許的網域之一的名稱。 若有多個網域，請將每個網域輸入於不同行。 例如：
