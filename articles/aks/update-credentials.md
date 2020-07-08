@@ -5,12 +5,12 @@ description: 瞭解如何更新或重設 Azure Kubernetes Service （AKS）叢�
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 8420771e32aa792aa79a07fdf4362ad0d9b45d48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 914e043e2c0cf39c18480b5ca5e34332398806f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905369"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或輪替 Azure Kubernetes Service 的認證（AKS）
 
@@ -18,7 +18,7 @@ ms.locfileid: "81392622"
 
 您也可以將[AKS 叢集與 Azure Active Directory 整合][aad-integration]，並將其作為叢集的驗證提供者。 在此情況下，您將會為您的叢集、AAD 伺服器應用程式和 AAD 用戶端應用程式建立2個以上的身分識別，您也可以重設這些認證。
 
-或者，您可以使用受控識別來取得許可權，而不是服務主體。 受控識別比服務主體更容易管理，而且不需要更新或輪替。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
+您也可以使用受控識別，而不是服務主體來取得權限。 受控識別比服務主體更容易管理，而且不需要更新或輪替。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -33,7 +33,7 @@ ms.locfileid: "81392622"
 
 ### <a name="reset-existing-service-principal-credential"></a>重設現有的服務主體認證
 
-若要更新現有服務主體的認證，請使用 [az aks show][az-aks-show] 命令，取得叢集的服務主體識別碼。 下列範例會針對 *myResourceGroup* 資源群組中名稱為 *myAKSCluster* 的叢集取得識別碼。 服務主體識別碼會設定為名為*SP_ID*的變數，以在其他命令中使用。
+若要更新現有服務主體的認證，請使用 [az aks show][az-aks-show] 命令，取得叢集的服務主體識別碼。 下列範例會針對 *myResourceGroup* 資源群組中名稱為 *myAKSCluster* 的叢集取得識別碼。 服務主體識別碼會設定為名為*SP_ID*的變數，以在其他命令中使用。 這些命令會使用 Bash 語法。
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \

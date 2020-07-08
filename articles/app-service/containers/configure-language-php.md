@@ -4,12 +4,12 @@ description: 瞭解如何為您的應用程式設定預先建置的 PHP 容器�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 9933205095587d9e8e0d8a5641d213f159512450
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: HT
+ms.openlocfilehash: 9e4237f1eecb9f6542aac946525ff4583e478c2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234944"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905692"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>為 Azure App Service 設定 Linux PHP 應用程式
 
@@ -109,7 +109,7 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 如果您需要對 PHP 安裝進行變更，您可以依照下列步驟來變更 [php.ini 指示詞](https://www.php.net/manual/ini.list.php)。
 
 > [!NOTE]
-> 查看 PHP 版本和目前 *php.ini* 設定的最佳方法是在應用程式中呼叫 [phpinfo ()](https://www.php.net/manual/function.phpinfo.php)。
+> 查看 PHP 版本和目前 *php.ini* 設定的最佳方法是在應用程式中呼叫 [phpinfo ()](https://php.net/manual/function.phpinfo.php)。
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>自訂非 PHP_INI_SYSTEM 指示詞
@@ -187,7 +187,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 
 ## <a name="access-diagnostic-logs"></a>存取診斷記錄
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="open-ssh-session-in-browser"></a>在瀏覽器中開啟 SSH 工作階段
 
@@ -198,7 +198,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 當運作中的 PHP 應用程式在 App Service 中有不同的行為或發生錯誤時，請嘗試下列動作：
 
 - [存取記錄資料流](#access-diagnostic-logs)。
-- 在生產模式中於本機測試應用程式。 App Service 會在生產模式中執行 node.js 應用程式，因此您必須確定項目生產模式下按預期在本機中運作。 例如：
+- 在生產模式中於本機測試應用程式。 App Service 會在生產模式中執行您的應用程式，因此您必須確定您的專案在本機的生產模式中如預期般運作。 例如：
     - 視 *composer.json* 而定，可能會為生產模式安裝不同的套件 (`require` 與 `require-dev`)。
     - 某些 web 架構可以在生產模式中以不同的方式部署靜態檔案。
     - 在生產模式中執行時，某些 web 架構可能會使用自訂啟動指令碼。

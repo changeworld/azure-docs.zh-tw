@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
-ms.openlocfilehash: 737803f5b7fcddb07787afbb48354b4ca922e9ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259743"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888714"
 ---
 # <a name="custom-reports-from-verizon"></a>來自 Verizon 的自訂報告
 
@@ -68,7 +68,7 @@ Edge CNAMES 自訂報告提供已啟用自訂報告記錄之 Edge CNAMEs 的命�
 
 ## <a name="edge-cnames-custom-report-fields"></a>Edge CNAMES 自訂報告欄位
 
-| 欄位                     | 描述   |
+| 欄位                     | 說明   |
 |---------------------------|---------------|
 | 2xx                       | 指出產生 2xx HTTP 狀態碼 (例如 200 OK) 之 Edge CNAME 的要求總數或已傳輸資料 (MB)。 |
 | 3xx                       | 指出產生 3xx HTTP 狀態碼 (例如 302 已找到或 304 未修改) 之 Edge CNAME 的要求總數或已傳輸資料 (MB)。 |
@@ -77,7 +77,7 @@ Edge CNAMES 自訂報告提供已啟用自訂報告記錄之 Edge CNAMEs 的命�
 | 快取名中百分比               | 指出從快取直接為要求者服務的可快取要求百分比。 |
 | 快取點擊                | 指出產生快取命中 (TCP_EXPIRED_HIT、TCP_HIT 或 TCP_PARTIAL_HIT) 之 Edge CNAME 的要求總數或已傳輸資料 (MB)。 當找到所要求內容的快取版本時，就會發生快取命中。 |
 | 已傳輸資料 (MB)     | 指出 Edge CNAME 從 Edge Server 傳輸到 HTTP 用戶端 (網頁瀏覽器) 的資料總量 (MB)。 已傳輸的資料量是將 HTTP 回應標頭與回應本文相加來計算。 因此，每個資產已傳輸的資料量會大於實際的檔案大小。 |
-| 描述               | 依主機名稱識別 Edge CNAME |
+| Description               | 依主機名稱識別 Edge CNAME |
 | 點擊                      | 指出 Edge CNAME 的要求總數 |
 | 遺漏                    | 指出產生快取遺漏 (TCP_CLIENT_REFRESH_MISS、TCP_EXPIRED_MISS 或 TCP_MISS) 之 Edge CNAME 的要求總數或已傳輸資料 (MB)。 當接受要求的 Edge Server 上未快取要求的內容時，就會發生快取遺漏。 | 
 | 無快取                  | 指出產生 CONFIG_NOCACHE 快取狀態碼之 Edge CNAME 的要求總數或已傳輸資料 (MB)。  |
