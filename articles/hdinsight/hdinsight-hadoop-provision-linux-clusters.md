@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 04/30/2020
 ms.openlocfilehash: 4eaa9c4e3d200eedd57c468639c1af3830911d1d
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82889265"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他工具在 HDInsight 中設定叢集
@@ -26,7 +25,7 @@ Hadoop 叢集由數個虛擬機器 (節點) 組成，可用於分散處理作業
 > [!IMPORTANT]  
 > HDInsight 叢集的計費起自叢集建立時，終至叢集刪除時。 計費是以每分鐘按比例計算，因此不再使用時，請一律刪除您的叢集。 了解如何[刪除叢集。](hdinsight-delete-cluster.md)
 
-如果您同時使用多個叢集，您會想要建立虛擬網路，如果您使用的是 Spark 叢集，也會想要使用 Hive 倉儲連接器。 如需詳細資訊，請參閱[規劃 Azure HDInsight 的虛擬網路](./hdinsight-plan-virtual-network-deployment.md)和[使用 Hive 倉儲連接器整合 Apache Spark 和 Apache Hive](interactive-query/apache-hive-warehouse-connector.md)。
+如果您同時使用多個叢集，您會想要建立虛擬網路，如果您使用的是 Spark 叢集，也會想要使用 Hive Warehouse Connector。 如需詳細資訊，請參閱[針對 Azure HDInsight 規劃虛擬網路](./hdinsight-plan-virtual-network-deployment.md)和[整合 Apache Spark 和 Apache Hive 與 Hive Warehouse Connector](interactive-query/apache-hive-warehouse-connector.md)。
 
 ## <a name="cluster-setup-methods"></a>叢集設定方法
 
@@ -38,7 +37,7 @@ Hadoop 叢集由數個虛擬機器 (節點) 組成，可用於分散處理作業
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
-| [彎曲](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
+| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Azure 資源管理員範本](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 這篇文章會逐步引導您完成[Azure 入口網站](https://portal.azure.com)中的設定，您可以在其中建立 HDInsight 叢集。
@@ -77,7 +76,7 @@ Azure HDInsight 目前提供下列的叢集類型，每種都有一組提供特�
 | 叢集類型 | 功能 |
 | --- | --- |
 | [Hadoop](hadoop/apache-hadoop-introduction.md) |批次查詢和分析儲存的資料 |
-| [hbase](hbase/apache-hbase-overview.md) |處理大量無綱要的 NoSQL 資料 |
+| [HBase](hbase/apache-hbase-overview.md) |處理大量無綱要的 NoSQL 資料 |
 | [互動式查詢](./interactive-query/apache-interactive-query-get-started.md) |更快速之互動式 Hive 查詢的記憶體內快取 |
 | [Kafka](kafka/apache-kafka-introduction.md) | 可用來建置即時串流資料管線和應用程式的分散式串流平台 |
 | [ML 服務](r-server/r-server-overview.md) |各種巨量資料統計資料、預測模型和機器學習功能 |
@@ -97,14 +96,14 @@ Azure HDInsight 目前提供下列的叢集類型，每種都有一組提供特�
 
 HTTP 使用者名稱具有下列限制：
 
-* 允許的特殊字元`_` ：和`@`
-* 不允許的字元： #;。 "'\/，： '！ *？ $ （{}） [] <>|&--= +% ~ ^ space
+* 允許的特殊字元： `_` 和`@`
+* 不允許的字元： #;。 "'， \/ ： '！ *？ $ （） {} [] <>|&--= +% ~ ^ space
 * 最大長度：20
 
 SSH 使用者名稱具有下列限制：
 
-* 允許的特殊字元`_` ：和`@`
-* 不允許的字元： #;。 "'\/，： '！ *？ $ （{}） [] <>|&--= +% ~ ^ space
+* 允許的特殊字元： `_` 和`@`
+* 不允許的字元： #;。 "'， \/ ： '！ *？ $ （） {} [] <>|&--= +% ~ ^ space
 * 最大長度：64
 * 保留名稱： hadoop、使用者、oozie、hive、mapred.max.split.size、ambari-qa、zookeeper、tez、hdfs、sqoop，yarn，hcat，ams，hbase，風暴，管理員，管理員，使用者，user1，測試，使用者2，test1，user3，admin1，1，123，a，actuser，adm，admin2，aspnet，備份，主控台，david，來賓，john，，support_388945a0，sys，test2，test3，user4，user5，spark
 
@@ -186,7 +185,7 @@ Ambari 是用來監視 HDInsight 叢集、進行設定變更，以及儲存叢�
 
 ### <a name="disk-encryption-setting"></a>磁片加密設定
 
-如需詳細資訊，請參閱[客戶管理的金鑰磁片加密](./disk-encryption.md)。
+如需詳細資訊，請參閱[客戶管理的金鑰磁碟加密](./disk-encryption.md)。
 
 ### <a name="kafka-rest-proxy"></a>Kafka REST Proxy
 
@@ -245,7 +244,7 @@ HDInsight 叢集的成本是由節點數和節點的虛擬機器大小來決定�
 > [!IMPORTANT]  
 > 如果您在叢集中需要超過32個背景工作節點，則必須選取具有至少8個核心和 14 GB RAM 的前端節點大小。
 
-如需相關資訊，請參閱[虛擬機器的大小](../virtual-machines/windows/sizes.md)。 如需各式大小的價格資訊，請參閱 [HDInsight 價格](https://azure.microsoft.com/pricing/details/hdinsight)。
+如需詳細資訊，請參閱[虛擬機器的大小](../virtual-machines/windows/sizes.md)。 如需各式大小的價格資訊，請參閱 [HDInsight 價格](https://azure.microsoft.com/pricing/details/hdinsight)。
 
 ### <a name="add-application"></a>新增應用程式
 

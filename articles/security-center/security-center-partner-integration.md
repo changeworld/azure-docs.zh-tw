@@ -14,17 +14,16 @@ ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
 ms.openlocfilehash: 48869140ba8cd1a9598562b0057b0005d8fcd9c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758078"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 資訊安全中心整合安全性解決方案
 這份文件可協助您管理已連線到 Azure 資訊安全中心的安全性解決方案，並且新增新的項目。
 
 ## <a name="integrated-azure-security-solutions"></a>整合式 Azure 安全性解決方案
-資訊安全中心可以使得在 Azure 中啟用整合式安全性解決方案變得簡單。 優點包括：
+資訊安全中心可以使得在 Azure 中啟用整合式安全性解決方案變得簡單。 好處包括：
 
 - **簡化部署**：資訊安全中心提供整合式合作夥伴解決方案的精簡佈建。 針對反惡意程式碼和弱點評估之類的解決方案，資訊安全中心可以在您的虛擬機器上布建代理程式。 對於防火牆設備，資訊安全中心可以處理所需的許多網路設定。
 - **整合**式偵測：來自合作夥伴解決方案的安全性事件會自動收集、匯總，並顯示為資訊安全中心警示和事件的一部分。 這些事件也會與來自其他來源的偵測整合，以提供進階的威脅偵測功能。
@@ -40,9 +39,9 @@ ms.locfileid: "81758078"
 - [虛擬機器的整合式弱點掃描器](built-in-vulnerability-assessment.md)。
 - [部署合作夥伴弱點掃描解決方案](partner-vulnerability-assessment.md)。
 
-資訊安全中心也會為您的提供弱點分析：
+資訊安全中心也會為您提供弱點分析：
 
-* SQL 資料庫-請參閱[弱點評估儀表板中的探索弱點評定報告](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports)
+* SQL 資料庫 - 請參閱[探索弱點評量儀表板中的弱點評量報告](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports)
 * Azure Container Registry 映射-請參閱[與資訊安全中心的 Azure Container Registry 整合（預覽）](azure-container-registry-integration.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>安全性解決方案如何整合

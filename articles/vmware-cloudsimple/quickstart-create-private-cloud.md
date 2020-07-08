@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81867971"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>快速入門-設定私人雲端環境
@@ -58,7 +57,7 @@ ms.locfileid: "81867971"
 
 11. 按 **[下一步]： [審查並建立]**。
 12. 檢查設定。 如果您需要變更任何設定，請按一下 [**上一步**]。
-13. 按一下 [建立]  。
+13. 按一下 [建立]。
 
 私用雲端布建程式隨即啟動。  布建私人雲端最多可能需要兩個小時的時間。
 
@@ -140,7 +139,7 @@ ms.locfileid: "81867971"
 5. 從清單中選取 [VLAN ID]。  
 6. 輸入子網名稱以識別子網。
 7. 指定子網 CIDR 範圍和遮罩。  此範圍不得與任何現有的子網重迭。
-8. 按一下 [提交]  。
+8. 按一下 [提交] 。
 
     ![建立 VLAN/子網詳細資料](media/create-new-vlan-subnet-details.png)
 

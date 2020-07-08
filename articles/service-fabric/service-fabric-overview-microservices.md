@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792863"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>為何要使用微服務方法來建立應用程式
@@ -163,7 +162,7 @@ Service Fabric 可讓您重複使用現有的程式碼，並使用新的微服�
 
 讓我們看看每個階段的範例。
 
-**遷移**  
+**移轉**  
 基於兩個原因，許多公司會將現有的整合型應用程式遷移到容器中：
 
 * 降低成本，這可能是因為現有硬體的匯總和移除，或因為以較高的密度執行應用程式所造成。
@@ -176,7 +175,7 @@ Service Fabric 可讓您重複使用現有的程式碼，並使用新的微服�
 **現代化**  
 現代化是隨著現有的容器化程式碼加入新服務。 如果您要撰寫新的程式碼，最好是在微服務路徑下執行較小的步驟。 這可能表示加入新的 REST API 端點或新的商務邏輯。 如此一來，您就可以開始建立新的微服務，並練習開發和部署它們的程式。
 
-**能力**  
+**創新**  
 微服務方式能容納持續變更的商務需求。 在這個階段，您必須決定是否要開始將整合型應用程式分割成服務，或進行創新。 這裡有一個典型的範例，就是當您用來做為工作流程佇列的資料庫變成處理瓶頸的時候。 隨著工作流程要求數目的增加，將需要分配工作來進行調整。 讓該應用程式不會進行調整，或是需要更頻繁地更新，並將其分割為微服務和創新。
 
 **將應用程式轉換成微服務**  

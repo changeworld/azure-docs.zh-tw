@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
 ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871253"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>使用 Azure 監視器中的 SQL Server 健康情況檢查解決方案來優化您的 SQL 環境
@@ -31,7 +30,7 @@ ms.locfileid: "82871253"
 
 ![SQL 健康情況檢查儀表板的影像](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * SQL 健康情況檢查解決方案需要在安裝 Microsoft Monitoring Agent （MMA）的每部電腦上安裝支援的 .NET Framework 4.6.2 版本。  System Center 2016 - Operations Manager 和 Operations Manager 2012 R2，以及 Azure 監視器都使用 MMA 代理程式。  
 * 此解決方案支援2012、2014、2016、2017和 2019 SQL Server 版本。
@@ -85,7 +84,7 @@ Log Analytics 會使用 Operations Manager 代理程式及管理群組來收集�
    > 執行身分帳戶類型必須是 Windows。 執行身分帳戶也必須屬於裝載 SQL Server 執行個體的所有 Windows 伺服器上的本機系統管理員群組。
    >
    >
-5. 按一下 [檔案]  。
+5. 按一下 [檔案] 。
 6. 修改，然後在每個 SQL Server 執行個體上執行下列 T-SQL 範例，授與執行身分帳戶所需的最小權限以執行 SQL 健康情況檢查。 不過，如果執行身分帳戶已是 SQL Server 執行個體上 sysadmin 伺服器角色的一部分，您就不需要這樣做。
 
 ```
@@ -126,8 +125,8 @@ Log Analytics 會使用 Operations Manager 代理程式及管理群組來收集�
 加權是彙集以下三個重要因素的值：
 
 * 識別的問題會造成問題的*機率*。 機率較高等同於建議的整體分數較高。
-* 如果確實發生問題，則問題對您組織的*影響*。 影響力較高等同於建議的整體分數較高。
-* 實作建議需要付出的*努力*。 勞力較高等同於建議的整體分數較低。
+* 疑難對組織的 *影響力* (如果確實引發問題)。 影響力較高等同於建議的整體分數較高。
+* 實作建議所需的 *勞力* 。 勞力較高等同於建議的整體分數較低。
 
 每項建議之加權的表示採用每個焦點區域之總分的百分比。 例如，如果針對安全性和法務遵循焦點區域之建議的分數為 5%，代表實作該項建議能增加 5% 的安全性和法務遵循整體分數。
 
@@ -156,12 +155,12 @@ Log Analytics 會使用 Operations Manager 代理程式及管理群組來收集�
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>檢視的焦點區域的建議並採取更正措施
 1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
-2. 在 Azure 入口網站中，按一下左下角的 [更多服務]****。 在資源清單中輸入 [監視器]****。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [**監視**]。
+2. 在 Azure 入口網站中，按一下左下角的 [更多服務]。 在資源清單中輸入 [監視器]。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [監視器]。
 3. 在功能表的 [**深入**解析] 區段中，選取 [**更多**]。  
 4. 在 [概觀]**** 頁面上，按一下 [SQL 健康情況檢查]**** 圖格。
-5. 在 [健康情況檢查]**** 頁面中檢閱任一焦點區域分葉中的摘要資訊，然後按一下焦點區域以檢視建議。
-6. 在任一焦點區域頁面中，您可以檢視針對環境且按照優先順序排列的建議。 按一下 [受影響的物件] **** 下方的建議，可檢視建議提出原因的詳細資料。<br><br> ![SQL 健康情況檢查建議的影像](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. 您可以採取 [建議動作]**** 中所建議的更正動作。 當您解決某個項目後，後續評估會記錄您實施的建議動作並提高法務遵循分數。 已修正的項目將顯示為 [傳遞的物件]****。
+5. 在 [健康情況檢查] 頁面中檢閱任一焦點區域分葉中的摘要資訊，然後按一下焦點區域以檢視建議。
+6. 在任一焦點區域頁面中，您可以檢視針對環境且按照優先順序排列的建議。 按一下 [受影響的物件]  下方的建議，可檢視建議提出原因的詳細資料。<br><br> ![SQL 健康情況檢查建議的影像](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
+7. 您可以採取 [建議動作] 中所建議的更正動作。 當您解決某個項目後，後續評估會記錄您實施的建議動作並提高法務遵循分數。 更正後的項目將以**通過的物件**呈現。
 
 ## <a name="ignore-recommendations"></a>忽略建議
 如果您有想要忽略的建議，則可以建立 Azure 監視器將用來防止建議出現在您評估結果的文字檔。

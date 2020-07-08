@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 2b1dc7873140f885ec3efac11dec5fbf6aab7aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732567"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>透過分散式追蹤來追蹤 Azure IoT 裝置到雲端的訊息 (預覽)
@@ -33,7 +32,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 在本文中，您會使用 [適用於 C 的 Azure IoT 裝置 SDK](iot-hub-device-sdk-c-intro.md) 搭配分散式追蹤。 其他 SDK 的分散式追蹤支援仍在進行中。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 分散式追蹤的預覽版目前僅支援在下列區域建立的 IoT 中樞：
 
@@ -181,10 +180,10 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 不需要使用 C SDK，就**能**輕鬆預覽分散式追蹤功能。 因此，不建議使用此方法。
 
-首先，您必須遵循開發指南[建立和讀取 IoT 中樞訊息](iot-hub-devguide-messages-construct.md)的方式，在您的訊息中執行所有 IoT 中樞的通訊協定基本專案。 然後，編輯 MQTT/AMQP 訊息中的通訊協定屬性，以`tracestate`新增為**系統屬性**。 具體而言，
+首先，您必須遵循開發指南[建立和讀取 IoT 中樞訊息](iot-hub-devguide-messages-construct.md)的方式，在您的訊息中執行所有 IoT 中樞的通訊協定基本專案。 然後，編輯 MQTT/AMQP 訊息中的通訊協定屬性，以新增 `tracestate` 為**系統屬性**。 具體而言，
 
-* 針對 MQTT，將`%24.tracestate=timestamp%3d1539243209`新增至訊息主題，其中`1539243209`應該以 unix 時間戳記格式的訊息建立時間來取代。 如需範例，請參閱[C SDK 中](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)的實作為
-* 針對 AMQP，新增`key("tracestate")`和`value("timestamp=1539243209")`作為訊息注釋。 如需參考的執行方式，請參閱[這裡](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)。
+* 針對 MQTT，將新增 `%24.tracestate=timestamp%3d1539243209` 至訊息主題，其中 `1539243209` 應該以 unix 時間戳記格式的訊息建立時間來取代。 如需範例，請參閱[C SDK 中](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)的實作為
+* 針對 AMQP，新增 `key("tracestate")` 和 `value("timestamp=1539243209")` 作為訊息注釋。 如需參考的執行方式，請參閱[這裡](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)。
 
 若要控制包含此屬性的訊息百分比，請實作邏輯以接聽雲端起始的事件，例如對應項更新。
 
@@ -204,7 +203,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 1. 選擇介於 0%和 100%之間的 [取樣率]****。
 
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案] 。
 
 1. 等候幾秒鐘，然後按 [重新整理]****，如果由裝置成功認可，隨即出現具有核取記號的同步圖示。
 
@@ -247,7 +246,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 }
 ```
 
-| 元素名稱 | 必要 | 類型 | 描述 |
+| 元素名稱 | 必要 | 類型 | Description |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | 是 | 整數 | 目前支援兩個模式值來開啟和關閉取樣。 `1` 為開啟，而 `2` 為關閉。 |
 | `sampling_rate` | 是 | 整數 | 這個值是百分比。 只允許從 `0` 到 `100` (含) 的值。  |
@@ -311,8 +310,8 @@ Log Analytics 所顯示的範例記錄：
 1. IoT 裝置會將此訊息傳送至 IoT 中樞。
 1. 訊息抵達 IoT 中樞閘道。
 1. IoT 中樞會在訊息應用程式屬性中尋找 `tracestate`，並查看它是否為正確格式。
-1. 若是如此，IoT 中樞會為訊息產生`trace-id`全域唯一的， `span-id`針對「躍點」，則會將其記錄到作業下 Azure 監視器診斷記錄`DiagnosticIoTHubD2C`中。
-1. 訊息處理完成之後，IoT 中樞會產生另一個`span-id` ，並將它與現有`trace-id`的作業一起記錄`DiagnosticIoTHubIngress`在一起。
+1. 若是如此，IoT 中樞會為訊息產生全域唯一的 `trace-id` ，針對「躍點」，則會將 `span-id` 其記錄到作業下 Azure 監視器診斷記錄中 `DiagnosticIoTHubD2C` 。
+1. 訊息處理完成之後，IoT 中樞會產生另一個， `span-id` 並將它與現有的作業一起記錄 `trace-id` 在一起 `DiagnosticIoTHubIngress` 。
 1. 如果啟用訊息的路由功能，IoT 中樞將訊息寫入到自訂端點，並將另一個 `span-id` 與相同的 `trace-id` 記錄在 `DiagnosticIoTHubEgress` 類別之下。
 1. 上述步驟會針對所產生的每則訊息重複執行。
 

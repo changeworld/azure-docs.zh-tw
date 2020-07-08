@@ -8,10 +8,9 @@ ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871289"
 ---
 # <a name="backup-and-restore"></a>備份與還原
@@ -52,13 +51,13 @@ ms.locfileid: "82871289"
 
     ![儲存備份設定](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Backup 
+## <a name="backup"></a>備份
 
 ### <a name="to-backup-by-using-ssms"></a>使用 SSMS 來進行備份
 
 1. 在 SSMS 中，於資料庫上按一下滑鼠右鍵 > [備份]****。
 
-2. 在 [**備份資料庫** > **備份檔案**] 中，按一下 **[流覽]**。
+2. 在 [**備份資料庫**  >  **備份檔案**] 中，按一下 **[流覽]**。
 
 3. 在 [另存新檔]**** 對話方塊中，確認資料夾路徑，然後輸入備份檔案的名稱。 
 

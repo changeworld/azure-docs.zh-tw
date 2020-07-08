@@ -4,10 +4,9 @@ description: 瞭解藍圖定義所經歷的生命週期，以及每個階段的�
 ms.date: 05/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: dc024c0e6643420d26bdc92e47fabe647c55ae7b
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864023"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 藍圖生命週期
@@ -60,7 +59,7 @@ ms.locfileid: "82864023"
 > [!NOTE]
 > 您無法刪除擁有作用中指派的藍圖。 先刪除指派，然後再刪除您要移除的版本。
 
-1. 在左側窗格中選取 [所有服務]  。 搜尋並選取 [藍圖]  。
+1. 在左側窗格中選取 [所有服務]。 搜尋並選取 [藍圖]。
 
 1. 從左邊的頁面選取 [**藍圖定義**]，然後使用篩選選項來找出您想要刪除其版本的藍圖。 選取它以開啟 [編輯] 頁面。
 

@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: a7da6bc23d797e0e89b2338f446fc850b0fd0577
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797158"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Ambari 將 Apache HBase 優化
@@ -79,7 +78,7 @@ HBase 會將資料儲存為稱為 *HFile* 的內部檔案格式。 屬性 `hbase
 
 * 屬性 `hbase.hregion.memstore.flush.size` 會定義 Memstore 排清至磁碟的大小。 預設大小為 128 MB。
 
-* HBase 區域區塊乘數是由`hbase.hregion.memstore.block.multiplier`所定義。 預設值為 4。 允許的上限為 8。
+* HBase 區域區塊乘數是由所定義 `hbase.hregion.memstore.block.multiplier` 。 預設值為 4。 允許的上限為 8。
 
 * 如果 Memstore 是 (`hbase.hregion.memstore.flush.size` * `hbase.hregion.memstore.block.multiplier`) 位元組，HBase 區塊會更新。
 
@@ -101,6 +100,6 @@ Memstore 本機配置緩衝區的使用方式取決於屬性 `hbase.hregion.mems
 
 * [使用 Apache Ambari Web UI 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
-* [優化叢集](./hdinsight-changing-configs-via-ambari.md)
-* [優化 Apache Hive](./optimize-hive-ambari.md)
-* [將 Apache Pig 優化](./optimize-pig-ambari.md)
+* [將叢集最佳化](./hdinsight-changing-configs-via-ambari.md)
+* [將 Apache Hive 最佳化](./optimize-hive-ambari.md)
+* [將 Apache Pig 最佳化](./optimize-pig-ambari.md)

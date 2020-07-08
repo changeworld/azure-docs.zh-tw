@@ -5,17 +5,16 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82800646"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
 本文會回答有關使用[Azure 備份](backup-introduction-to-azure-backup.md)服務來備份 Azure vm 的常見問題。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>備份
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>建立虛擬機器映射時，可以針對備份啟用哪些 VM 映射？
 
@@ -23,7 +22,7 @@ ms.locfileid: "82800646"
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>VM 成本中包含備份成本嗎？
 
-不可以。 備份成本與 VM 的成本不同。 深入瞭解[Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
+否。 備份成本與 VM 的成本不同。 深入瞭解[Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
 
 ### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>若要啟用 VM 的備份，需要哪些許可權？
 
@@ -43,7 +42,7 @@ ms.locfileid: "82800646"
 
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>隨選備份作業是否會使用與排定備份相同的保留排程？
 
-不可以。 指定隨選備份作業的保留範圍。 根據預設，若從入口網站觸發，則會保留 30 天。
+否。 指定隨選備份作業的保留範圍。 根據預設，若從入口網站觸發，則會保留 30 天。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我在最近一些 VM 上啟用了 Azure 磁碟加密。 我的備份是否會繼續運作？
 
@@ -59,13 +58,13 @@ ms.locfileid: "82800646"
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>我的 VM 關閉了。 隨選或排程的備份工作會運作嗎？
 
-可以。 備份會在機器關機時執行。 復原點會標示為「當機時保持一致」。
+是。 備份會在機器關機時執行。 復原點會標示為「當機時保持一致」。
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>我是否可以取消進行中的備份作業？
 
-可以。 您可以在**拍攝快照**集狀態中取消備份作業。 如果正在從快照集傳輸資料，則無法取消作業。
+是。 您可以在**拍攝快照**集狀態中取消備份作業。 如果正在從快照集傳輸資料，則無法取消作業。
 
-### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>我啟用了 Azure 備份服務所建立之資源群組的鎖定（例如`AzureBackupRG_<geo>_<number>`）。 我的備份是否會繼續運作？
+### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>我啟用了 Azure 備份服務所建立之資源群組的鎖定（例如 `AzureBackupRG_<geo>_<number>` ）。 我的備份是否會繼續運作？
 
 如果您鎖定 Azure 備份服務所建立的資源群組，則備份會開始失敗，因為最大限制為18個還原點。
 
@@ -99,11 +98,11 @@ Azure 虛擬機器備份原則支援最小保留範圍，最多7天到9999天。
 
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>我可以備份或還原附加至 VM 的選擇性磁片嗎？
 
-Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁片備份和還原。
+Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁碟備份和還原。
 
-目前，Azure 備份支援使用虛擬機器備份解決方案，同時備份 VM 中的所有磁片（作業系統和資料）。 使用 [排除磁片] 功能時，您可以選擇從 VM 中的多個資料磁片備份一或數個。 這為您的備份和還原需求提供有效率且符合成本效益的解決方案。 每個復原點都包含備份作業中包含的磁片資料，這可讓您在還原作業期間，擁有從指定復原點還原的磁片子集。 這適用于從快照集和保存庫還原兩者。
+目前，Azure 備份支援使用虛擬機器備份解決方案，同時備份 VM 中的所有磁片（作業系統和資料）。 使用 [排除磁片] 功能時，您可以選擇從 VM 中的多個資料磁片備份一或數個。 如此可提供有效率且符合成本效益的解決方案，以滿足您的備份和還原需求。 每個復原點都有備份作業所含磁碟的資料，這進一步可讓您在還原作業期間，從給定的復原點還原磁碟子集。 從快照集和保存庫還原時都是如此。
 
-若要註冊預覽版，請于前寫信給我們AskAzureBackupTeam@microsoft.com
+若要註冊預覽版，請透過此位址發送電子郵件給我們：AskAzureBackupTeam@microsoft.com
 
 ## <a name="restore"></a>還原
 
@@ -131,7 +130,7 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 
 ### <a name="can-i-restore-the-vm-thats-been-deleted"></a>我可以還原已刪除的 VM 嗎？
 
-可以。 即使您刪除 VM，您也可以移至保存庫中對應的備份專案，並從復原點還原。
+是。 即使您刪除 VM，您也可以移至保存庫中對應的備份專案，並從復原點還原。
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>如何? 將 VM 還原至相同的可用性設定組？
 
@@ -143,13 +142,13 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>當我們變更已加密 VM 的金鑰保存庫設定時，會發生什麼事？
 
-在您變更已加密 VM 的金鑰保存庫設定後，備份將會繼續使用一組新的詳細資料。 不過，在變更之前從復原點還原之後，您必須先還原金鑰保存庫中的秘密，才能建立 VM。 如需詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)。
+在您變更已加密 VM 的金鑰保存庫設定後，備份將會繼續使用一組新的詳細資料。 不過，在變更之前從復原點還原之後，您必須先還原金鑰保存庫中的秘密，才能建立 VM。 如需詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)。
 
 秘密/金鑰變換之類的作業不需要此步驟，而且可以在還原之後使用相同的 KeyVault。
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>因為 VM 與網域控制站的關聯性中斷，我可以在還原後存取 VM 嗎？
 
-是，因為 VM 與網域控制站的關聯性中斷，所以您會在還原後存取 VM。 如需詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)
+是，因為 VM 與網域控制站的關聯性中斷，所以您會在還原後存取 VM。 如需詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)
 
 ## <a name="manage-vm-backups"></a>管理 VM 備份
 
@@ -166,9 +165,9 @@ VM 會使用已修改或新的原則中的排程和保留期設定來備份。
 2. 若要移動以 Azure 備份設定的虛擬機器，請執行下列步驟：
 
    1. 尋找虛擬機器的位置。
-   2. 尋找具有下列命名模式的資源群組： `AzureBackupRG_<location of your VM>_1`。 例如， *AzureBackupRG_westus2_1*
+   2. 尋找具有下列命名模式的資源群組： `AzureBackupRG_<location of your VM>_1` 。 例如， *AzureBackupRG_westus2_1*
    3. 在 [Azure 入口網站中，勾選 [**顯示隱藏的類型**]。
-   4. 尋找類型為**Microsoft. Compute/restorePointCollections**且具有命名模式`AzureBackup_<name of your VM that you're trying to move>_###########`的資源。
+   4. 尋找類型為**Microsoft. Compute/restorePointCollections**且具有命名模式的資源 `AzureBackup_<name of your VM that you're trying to move>_###########` 。
    5. 刪除此資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
    6. 刪除作業完成之後，您就可以移動虛擬機器。
 

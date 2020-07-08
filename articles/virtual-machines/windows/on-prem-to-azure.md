@@ -11,10 +11,9 @@ ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: dc283d1845926b79fb541d8ccb011fe853f50484
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870287"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>從 Amazon Web Services (AWS) 和其他平台移轉至 Azure 中的受控磁碟
@@ -31,7 +30,7 @@ ms.locfileid: "81870287"
 >
 
 
-| 案例                                                                                                                         | 文件                                                                                                                       |
+| 狀況                                                                                                                         | 文件                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | 您具有想要使用受控磁碟移轉至 Azure VM 的 AWS EC2 執行個體                              | [從 Amazon Web Services (AWS) 將 VM 移至 Azure](aws-to-azure.md)                           |
 | 您具有來自其他虛擬化平台的 VM，且想要將它作為映像使用，來建立多個 Azure VM。 | [將一般化 VHD 上傳，並使用它在 Azure 中建立新的 VM](upload-generalized-managed.md) |

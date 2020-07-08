@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 8f6134e8f8fdb9af3f578afaf0670c32a3896e01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81766859"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights 代理程式（先前名為狀態監視器 v2）：詳細指示
@@ -32,7 +31,7 @@ PowerShell 需要系統管理員層級許可權，才能對您的電腦進行變
 - 參考：[關於執行原則](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)和[設定-ExecutionPolicy](
 https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 )。
-- 命令： `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`。
+- 命令： `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` 。
 - 選擇性參數：
     - `-Force`. 略過確認提示。
 
@@ -50,7 +49,7 @@ https:/go.microsoft.com/fwlink/?LinkID=135170.
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell 的必要條件
 
-執行`$PSVersionTable`命令，以審核您的 PowerShell 實例。
+執行命令，以審核您的 PowerShell 實例 `$PSVersionTable` 。
 此命令會產生下列輸出：
 
 
@@ -82,7 +81,7 @@ SerializationVersion           1.1.0.1
 2. 安裝 NuGet 套件提供者。
     - 描述：您需要此提供者，才能與 NuGet 型存放庫（例如 PowerShell 資源庫）互動。
     - 參考： [Install-install-packageprovider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
-    - 命令： `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`。
+    - 命令： `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201` 。
     - 選用參數：
         - `-Proxy`. 指定要求的 proxy 伺服器。
         - `-Force`. 略過確認提示。
@@ -100,7 +99,7 @@ SerializationVersion           1.1.0.1
 3. 將 PowerShell 資源庫設定為受信任的存放庫。
     - 描述：根據預設，PowerShell 資源庫是不受信任的存放庫。
     - 參考：[設定-register-psrepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6)。
-    - 命令： `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`。
+    - 命令： `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted` 。
     - 選擇性參數：
         - `-Proxy`. 指定要求的 proxy 伺服器。
 
@@ -112,12 +111,12 @@ SerializationVersion           1.1.0.1
         'PSGallery'?
         [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
 
-    您可以藉由執行`Get-PSRepository`命令來確認此變更並審核所有 psrepository。
+    您可以藉由執行命令來確認此變更並審核所有 Psrepository `Get-PSRepository` 。
 
 4. 安裝最新版的 PowerShellGet。
-    - 描述：此模組包含用來從 PowerShell 資源庫取得其他模組的工具。 版本1.0.0.1 隨附于 Windows 10 和 Windows Server。 需要1.6.0 或更高版本。 若要判斷已安裝的版本，請`Get-Command -Module PowerShellGet`執行命令。
+    - 描述：此模組包含用來從 PowerShell 資源庫取得其他模組的工具。 版本1.0.0.1 隨附于 Windows 10 和 Windows Server。 需要1.6.0 或更高版本。 若要判斷已安裝的版本，請執行 `Get-Command -Module PowerShellGet` 命令。
     - 參考：[安裝 PowerShellGet](/powershell/scripting/gallery/installing-psget)。
-    - 命令： `Install-Module -Name PowerShellGet`。
+    - 命令： `Install-Module -Name PowerShellGet` 。
     - 選用參數：
         - `-Proxy`. 指定要求的 proxy 伺服器。
         - `-Force`. 略過「已安裝」警告並安裝最新版本。
@@ -141,7 +140,7 @@ SerializationVersion           1.1.0.1
 2. 使用提高許可權的執行原則以系統管理員身分執行 PowerShell。
 3. 安裝 Az ApplicationMonitor 模組。
     - 參考： [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6)。
-    - 命令： `Install-Module -Name Az.ApplicationMonitor`。
+    - 命令： `Install-Module -Name Az.ApplicationMonitor` 。
     - 選用參數：
         - `-Proxy`. 指定要求的 proxy 伺服器。
         - `-AllowPrerelease`. 允許安裝 Alpha 和 Beta 版。
@@ -200,16 +199,16 @@ SerializationVersion           1.1.0.1
 > 將封裝的內容儲存在您想要的執行時間目錄中，並確認存取權限允許讀取但無法寫入。
 
 1. 將延伸模組變更為 ".zip"，並將套件的內容解壓縮到您想要的安裝目錄中。
-2. 尋找 Az. ApplicationMonitor. .psd1 的檔案路徑。
+2. 尋找 Az.ApplicationMonitor.psd1 的檔案路徑。
 3. 使用提高許可權的執行原則以系統管理員身分執行 PowerShell。
-4. 使用`Import-Module Az.ApplicationMonitor.psd1`命令載入模組。
+4. 使用命令載入模組 `Import-Module Az.ApplicationMonitor.psd1` 。
     
 
 ## <a name="route-traffic-through-a-proxy"></a>透過 proxy 路由傳送流量
 
 當您監視私人內部網路上的電腦時，您必須透過 proxy 路由傳送 HTTP 流量。
 
-從 PowerShell 資源庫下載並安裝 Az. ApplicationMonitor 的 PowerShell 命令支援`-Proxy`參數。
+從 PowerShell 資源庫下載並安裝 Az. ApplicationMonitor 的 PowerShell 命令支援 `-Proxy` 參數。
 當您撰寫安裝腳本時，請參閱上述指示。
 
 Application Insights SDK 必須將您應用程式的遙測傳送至 Microsoft。 我們建議您在 web.config 檔案中設定應用程式的 proxy 設定。 如需詳細資訊，請參閱[APPLICATION INSIGHTS 常見問題： Proxy 傳遞](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough)。
@@ -217,7 +216,7 @@ Application Insights SDK 必須將您應用程式的遙測傳送至 Microsoft。
 
 ## <a name="enable-monitoring"></a>啟用監視
 
-使用`Enable-ApplicationInsightsMonitoring`命令來啟用監視。
+使用 `Enable-ApplicationInsightsMonitoring` 命令來啟用監視。
 
 如需如何使用此 Cmdlet 的詳細說明，請參閱[API 參考](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)。
 

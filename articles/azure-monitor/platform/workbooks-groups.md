@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: b6377cdcdb5816426eba62fdbef79eeb42659dcc
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82892078"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>如何使用活頁簿中的群組
@@ -22,7 +21,7 @@ ms.locfileid: "82892078"
 
 活頁簿中的群組適用于數個專案：
 
-- 配置
+- Layout
   - 在您想要以垂直方式組織專案的案例中，您可以建立一組全部堆疊的專案，並將群組的樣式設定為百分比寬度，而不是設定所有個別專案的百分比寬度。
 - 可見性
   - 在您想要同時隱藏/顯示許多專案的情況下，您可以設定整個專案群組的可見度，而不是在每個個別專案上設定可見度設定。 這在使用索引標籤的範本中很有用，因為您可以使用群組做為索引標籤的內容，而且可以根據選取的索引標籤所設定的參數來隱藏/顯示整個群組。
@@ -84,7 +83,7 @@ ms.locfileid: "82892078"
 
 ![載入活頁簿後的明確群組](./media/workbooks-groups/groups-explicitly-loaded-after.png)
 
-### <a name="always"></a>一律
+### <a name="always"></a>永遠
 
 在此模式中，群組的內容一律會在活頁簿載入時立即載入並建立。 這最常用於僅供版面配置用途使用的群組，其中內容一律會顯示。
 
@@ -114,21 +113,21 @@ ms.locfileid: "82892078"
 假設有一個群組的範本，其頂端有兩個參數。
 
 - `TimeRange`-時間範圍參數。
-- `FilterB`-文字參數，請注意，它與`Filter`頂端範本不一樣。
+- `FilterB`-文字參數，請注意，它與 `Filter` 頂端範本不一樣。
 
 ![編輯群組專案，並將參數的結果合併掉](./media/workbooks-groups/groups-wont-merge-away.png)
 
-載入群組的 item's 範本時， `TimeRange`參數將會合並到群組外。 然後，活頁簿的初始參數步驟會是`TimeRange`和`Filter`，而群組的參數步驟只會包含`FilterB`
+載入群組的 item's 範本時， `TimeRange` 參數將會合並到群組外。 然後，活頁簿的初始參數步驟會是 `TimeRange` 和 `Filter` ，而群組的參數步驟只會包含`FilterB`
 
 ![不會合並的參數結果](./media/workbooks-groups/groups-wont-merge-away-result.png)
 
-如果載入的範本包含`TimeRange`和`Filter` （而不是`FilterB`），則產生的活頁簿會有參數步驟和只包含文字步驟的群組。
+如果載入的範本包含 `TimeRange` 和 `Filter` （而不是 `FilterB` ），則產生的活頁簿會有參數步驟和只包含文字步驟的群組。
 
 ## <a name="how-to-split-a-large-template-into-many-templates"></a>如何將大型範本分割成許多範本
 
 若要改善效能，請將大型範本分割成多個較小的範本，以根據使用者的延遲或依需求載入某些內容。 這讓初始載入更快速，因為最上層的範本可能會變得很小。
 
-將範本分割成元件時，您會有效率地將範本分割成多個範本（子範本），以個別工作。 因此，如果頂層範本具有其他步驟所`TimeRange`使用的參數，子範本也必須有參數步驟，以定義具有完整名稱的參數。 這可讓子範本獨立工作，並讓它們載入群組中較大的範本內。
+將範本分割成元件時，您會有效率地將範本分割成多個範本（子範本），以個別工作。 因此，如果頂層範本具有 `TimeRange` 其他步驟所使用的參數，子範本也必須有參數步驟，以定義具有完整名稱的參數。 這可讓子範本獨立工作，並讓它們載入群組中較大的範本內。
 
 若要將較大的範本轉換成多個子範本：
 

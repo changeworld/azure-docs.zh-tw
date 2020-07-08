@@ -9,21 +9,20 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: 2b65dee27bf31a3cf49b59ddf982834b86dca4de
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82872122"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>預覽：使用 Azure 映射產生器從現有的映射版本建立新的 VM 映射版本
 
 本文說明如何在[共用映射資源庫](shared-image-galleries.md)中建立現有的映射版本、更新它，並將其發佈為新的映射版本至資源庫。
 
-我們將使用範例. json 範本來設定映射。 我們所使用的. json 檔案位於這裡： [helloImageTemplateforSIGfromSIG。](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) 
+我們將會使用樣本 .json 範本來設定映像。 我們使用的 json 檔案位於： [helloImageTemplateforSIGfromSIG.js開啟](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json)。 
 
 
-## <a name="register-the-features"></a>註冊功能
-若要在預覽期間使用 Azure 映射產生器，您必須註冊新功能。
+## <a name="register-the-features"></a>註冊各項功能
+若要在預覽期間使用 Azure Image Builder，您必須註冊新功能。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -35,7 +34,7 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-檢查您的註冊。
+檢查註冊。
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -44,7 +43,7 @@ az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-如果沒有顯示 [已註冊]，請執行下列動作：
+如果沒有顯示已註冊，請執行下列動作：
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -54,7 +53,7 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="set-variables-and-permissions"></a>設定變數和許可權
+## <a name="set-variables-and-permissions"></a>設定變數和授權
 
 如果您使用[建立映射併發布到共用映射資源庫](image-builder-gallery.md)來建立共用映射資源庫，您已經建立了一些我們需要的變數。 如果沒有，請設定要用於此範例的一些變數。
 
@@ -74,7 +73,7 @@ imageDefName=myIbImageDef
 runOutputName=aibSIGLinuxUpdate
 ```
 
-建立訂用帳戶識別碼的變數。 您可以使用`az account show | grep id`來取得。
+為訂用帳戶識別碼建立變數。 您可以使用 `az account show | grep id` 取得此項目。
 
 ```console
 subscriptionID=<Subscription ID>
@@ -90,7 +89,7 @@ sigDefImgVersionId=$(az sig image-version list \
    --subscription $subscriptionID --query [].'id' -o json | grep 0. | tr -d '"' | tr -d '[:space:]')
 ```
 
-## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>建立使用者指派的身分識別，並設定資源群組的許可權
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>建立使用者指派的身分識別，並在資源群組上設定權限
 如同您在前一個範例中設定使用者身分識別，您只需要取得其資源識別碼，然後再將其附加至範本。
 
 ```azurecli-interactive
@@ -102,7 +101,7 @@ imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, '
 
 
 ## <a name="modify-helloimage-example"></a>修改 helloImage 範例
-您可以在這裡開啟 json 檔案，以查看我們即將使用的範例： [helloImageTemplateforSIGfromSIG](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) ，以及影像產生器[範本參考](image-builder-json.md)。 
+您可以在這裡開啟 json 檔案，以查看我們即將使用的範例： [helloImageTemplateforSIGfromSIG.js開啟](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json)，以及影像產生器[範本參考](image-builder-json.md)。 
 
 
 下載 json 範例，並使用您的變數加以設定。 
@@ -133,7 +132,7 @@ az resource create \
     -n helloImageTemplateforSIGfromSIG01
 ```
 
-啟動映射組建。
+啟動映像建置。
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -174,7 +173,7 @@ ssh azureuser@<pubIp>
 *******************************************************
 ```
 
-輸入`exit`以關閉 SSH 連線。
+輸入 `exit` 以關閉 SSH 連線。
 
 您也可以列出資源庫中目前可用的映射版本。
 

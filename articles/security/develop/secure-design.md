@@ -14,19 +14,18 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857169"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上設計安全的應用程式
 在本文中，我們會提供您在設計雲端應用程式時應考慮的安全性活動和控制項。 涵蓋在 Microsoft[安全性開發週期（SDL）](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的需求和設計階段中，應考慮的安全性問題和概念的訓練資源。 其目標是要協助您定義活動和 Azure 服務，您可以用來設計更安全的應用程式。
 
-本文涵蓋下列 SDL 階段：
+本文章涵蓋下列 SDL 階段：
 
 - 訓練
-- 需求
+- 規格需求
 - 設計
 
 ## <a name="training"></a>訓練
@@ -49,7 +48,7 @@ ms.locfileid: "82857169"
 
   - [Azure 解決方案的安全性最佳作法](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)提供了一組安全性最佳作法，可讓您在使用 Azure 設計、部署和管理雲端解決方案時使用。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 需求定義階段是定義應用程式的重要步驟，以及發行時將會執行的動作。 需求階段也是考慮您將在應用程式中建立之安全性控制項的一段時間。 在此階段中，您也會開始在 SDL 中採取的步驟，以確保您可以發行和部署安全的應用程式。
 
 ### <a name="consider-security-and-privacy-issues"></a>考慮安全性和隱私權問題
@@ -128,7 +127,7 @@ OWASP 前10個可解決 web 應用程式的重大安全性風險。
 
 Microsoft 提供各種不同的[語言、架構和工具](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all)，可讓您用來在 Azure 上開發應用程式。 例如，[適用于 .net 和 .Net Core 開發人員的 Azure](https://docs.microsoft.com/dotnet/azure/)。 針對我們所提供的每個語言和架構，您可以找到快速入門、教學課程和 API 參考，以協助您快速入門。
 
-Azure 提供您可用來裝載網站和 web 應用程式的各種服務。 這些服務可讓您以您慣用的語言進行開發，無論是 .NET、.NET Core、JAVA、Ruby、node.js、PHP 或 Python。
+Azure 提供您可用來裝載網站和 web 應用程式的各種服務。 這些服務可讓您以您慣用的語言進行開發，無論是 .NET、.NET Core、JAVA、Ruby、Node.js、PHP 或 Python。
 [Azure App Service Web Apps](../../app-service/overview.md) （Web Apps）是其中一項服務。
 
 Web Apps 將 Microsoft Azure 的威力新增至您的應用程式。 其中包括安全性、負載平衡、自動調整和自動化管理。 您也可以利用 Web Apps 中的 DevOps 功能，例如套件管理、預備環境、自訂網域、SSL/TLS 憑證，以及從 Azure DevOps、GitHub、Docker Hub 和其他來源進行持續部署。

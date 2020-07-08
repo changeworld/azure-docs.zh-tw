@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82024875"
 ---
 # <a name="working-with-security-policies"></a>使用安全性原則
@@ -117,7 +116,7 @@ Azure 資訊安全中心根據您選擇的原則來做出其安全性建議。 �
 
    ![停用原則](./media/tutorial-security-policy/disable-policy.png)
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
    > [!NOTE]
    > 停用原則變更最多可能需要12小時才會生效。

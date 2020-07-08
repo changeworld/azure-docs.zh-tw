@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: f1bce0a95b672bb23767fce3d5d092221ccd8321
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858345"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 ODBC 藉由 Microsoft Power BI 將 Apache Hive 資料視覺化
@@ -22,7 +21,7 @@ ms.locfileid: "82858345"
 > [!IMPORTANT]
 > 您可以利用 Hive ODBC 驅動程式，透過 Power BI Desktop 中的一般 ODBC 連接器執行匯入作業。 不過，對於 BI 工作負載則不建議使用此方式，因為 Hive 查詢引擎具有非互動式的本質。 為發揮其效能，[HDInsight 互動式查詢連接器](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)和 [HDInsight Spark 連接器](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect)會是較好的選擇。
 
-在本文中，您會將`hivesampletable` Hive 資料表中的資料載入 Power BI。 Hive 資料表包含某些行動電話使用量資料。 然後您可在世界地圖上繪製使用量資料：
+在本文中，您會將 Hive 資料表中的資料載入 `hivesampletable` Power BI。 Hive 資料表包含某些行動電話使用量資料。 然後您可在世界地圖上繪製使用量資料：
 
 ![HDInsight Power BI 地圖報告](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
 
@@ -46,13 +45,13 @@ ms.locfileid: "82858345"
 
 1. 啟動 Power BI Desktop。
 
-1. 從頂端功能表，流覽至 [**首頁** > ] [**取得資料** > ] [**其他 ...**]。
+1. 從頂端功能表，流覽至 [**首頁**] [  >  **取得資料**] [  >  **其他 ...**]。
 
     ![HDInsight Excel Power BI 開啟資料](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 
 1. 從 [**取得資料**] 對話方塊中，選取左側的 [**其他**]，從右側選取 [ **ODBC** ]，然後選取底部的 **[連接]** 。
 
-1. 在 [**從 ODBC** ] 對話方塊中，從下拉式清單中選取您在最後一節中建立的資料來源名稱。 然後選取 [確定]  。
+1. 在 [**從 ODBC** ] 對話方塊中，從下拉式清單中選取您在最後一節中建立的資料來源名稱。 然後選取 [確定]。
 
 1. 第一次使用時，會開啟 [ **ODBC 驅動程式**] 對話方塊。 從左側功能表中選取 [**預設] 或 [自訂**]。 然後選取 **[連線]** 以開啟 [導覽**器**]。
 

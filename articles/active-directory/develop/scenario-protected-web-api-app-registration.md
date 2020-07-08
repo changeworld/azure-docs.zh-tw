@@ -13,10 +13,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868835"
 ---
 # <a name="protected-web-api-app-registration"></a>受保護的 Web API：應用程式註冊
@@ -56,7 +55,7 @@ Web Api 特定的其他設定是公開的 API 和公開的範圍。
 
 ### <a name="application-id-uri-and-scopes"></a>應用程式識別碼 URI 和範圍
 
-範圍的格式`resourceURI/scopeName`通常為。 針對 Microsoft Graph，範圍會有快捷方式。 例如， `User.Read`是的快捷方式`https://graph.microsoft.com/user.read`。
+範圍的格式通常為 `resourceURI/scopeName` 。 針對 Microsoft Graph，範圍會有快捷方式。 例如， `User.Read` 是的快捷方式 `https://graph.microsoft.com/user.read` 。
 
 在應用程式註冊期間，您必須定義這些參數：
 
@@ -64,7 +63,7 @@ Web Api 特定的其他設定是公開的 API 和公開的範圍。
 - 一或多個範圍
 - 一或多個應用程式角色
 
-根據預設，應用程式註冊入口網站會建議您使用資源 URI `api://{clientId}`。 此 URI 是唯一的，但不是人們可讀取的。 如果您變更 URI，請確定新的值是唯一的。
+根據預設，應用程式註冊入口網站會建議您使用資源 URI `api://{clientId}` 。 此 URI 是唯一的，但不是人們可讀取的。 如果您變更 URI，請確定新的值是唯一的。
 
 在用戶端應用程式中，範圍會顯示為*委派的許可權*，而應用程式角色會顯示為您 Web API 的*應用程式許可權*。
 
@@ -76,8 +75,8 @@ Web Api 特定的其他設定是公開的 API 和公開的範圍。
 ### <a name="exposing-delegated-permissions-scopes"></a>公開委派的許可權（範圍）
 
 1. 選取 [在應用程式註冊中**公開 API** ]。
-1. 選取 [**新增範圍**]。
-1. 若出現提示，請選取 [`api://{clientId}`**儲存並繼續**] 以接受建議的應用程式識別碼 URI （）。
+1. 選取 [新增範圍]。
+1. 若出現提示，請 `api://{clientId}` 選取 [**儲存並繼續**] 以接受建議的應用程式識別碼 URI （）。
 1. 指定這些值：
     - 選取 [**領域名稱**]，然後輸入**access_as_user**。
     - 選取 [**誰可以同意**]，並確定已選取 [**管理員] 和 [使用者**]。
@@ -86,7 +85,7 @@ Web Api 特定的其他設定是公開的 API 和公開的範圍。
     - 選取 [**使用者同意顯示名稱**]，然後**以使用者身分輸入存取權 TodoListService**。
     - 選取 [**使用者同意描述**]，然後輸入**以使用者身分存取 TodoListService Web API**。
     - 將 [**狀態**] 值保持設定為 [**已啟用**]。
- 1. 選取 [**新增領域**]。
+ 1. 選取 [新增範圍]。
 
 ### <a name="if-your-web-api-is-called-by-a-daemon-app"></a>如果您的 Web API 是由 daemon 應用程式所呼叫
 
@@ -100,13 +99,13 @@ Web Api 特定的其他設定是公開的 API 和公開的範圍。
 若要公開應用程式許可權，您必須編輯資訊清單。
 
 1. 在應用程式的應用程式註冊中，選取 [**資訊清單**]。
-1. 若要編輯資訊清單，請`appRoles`尋找設定並新增應用程式角色。 角色定義會在下列範例 JSON 區塊中提供。
-1. 保留`allowedMemberTypes`設定為`"Application"` [僅]。
-1. 請確定`id`是唯一的 GUID。
-1. 請確定`displayName`和`value`不包含空格。
+1. 若要編輯資訊清單，請尋找 `appRoles` 設定並新增應用程式角色。 角色定義會在下列範例 JSON 區塊中提供。
+1. 保留 `allowedMemberTypes` 設定為 [ `"Application"` 僅]。
+1. 請確定 `id` 是唯一的 GUID。
+1. 請確定 `displayName` 和 `value` 不包含空格。
 1. 儲存資訊清單。
 
-下列範例會顯示的內容`appRoles`，其中的值可以是`id`任何唯一的 GUID。
+下列範例會顯示的內容 `appRoles` ，其中的值 `id` 可以是任何唯一的 GUID。
 
 ```json
 "appRoles": [
@@ -141,13 +140,13 @@ Web API 會檢查應用程式角色。 此角色是軟體發展人員公開應�
 
    > [!IMPORTANT]
    >
-   > 如果您將 [**需要使用者指派嗎？** ] 設定為 **[是]**，Azure AD 會在用戶端要求 Web API 存取權杖時，檢查其應用程式角色指派。 如果未將用戶端指派給任何應用程式角色，Azure AD 將會傳回錯誤訊息「invalid_client： AADSTS501051 \<：應用\>程式應用程式名稱未指派給\<Web API\>的角色」。
+   > 如果您將 [**需要使用者指派嗎？** ] 設定為 **[是]**，Azure AD 會在用戶端要求 Web API 存取權杖時，檢查其應用程式角色指派。 如果未將用戶端指派給任何應用程式角色，Azure AD 將會傳回錯誤訊息「invalid_client： AADSTS501051：應用程式未 \<application name\> 指派給角色」 \<web API\> 。
    >
    > 如果您保留**需要使用者指派嗎？** 設定為 [**否**]，Azure AD 不會在用戶端要求您的 Web API 的存取權杖時檢查應用程式角色指派。 任何背景程式用戶端（也就是使用用戶端認證流程的任何用戶端）只要指定其物件，就可以取得 API 的存取權杖。 任何應用程式都可以存取 API，而不需要要求其許可權。
    >
-   > 但如上一節所述，您的 Web API 一律可以驗證應用程式是否具有正確的角色（由租使用者系統管理員授權）。此 API 會藉由驗證存取權杖是否有角色宣告，且此宣告的值正確，來執行此驗證。 在先前的 JSON 範例中，值為`access_as_application`。
+   > 但如上一節所述，您的 Web API 一律可以驗證應用程式是否具有正確的角色（由租使用者系統管理員授權）。此 API 會藉由驗證存取權杖是否有角色宣告，且此宣告的值正確，來執行此驗證。 在先前的 JSON 範例中，值為 `access_as_application` 。
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -6,10 +6,9 @@ ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82025028"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>在專用主機上部署
@@ -18,7 +17,7 @@ ms.locfileid: "82025028"
 
 專用 sku 適用于需要從實體伺服器觀點來隔離工作負載的容器工作負載。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 使用專用 sku 之任何訂用帳戶的預設限制為0。 如果您想要將此 sku 用於生產容器部署，請建立[Azure 支援要求][azure-support]以增加限制。
 
@@ -28,7 +27,7 @@ ms.locfileid: "82025028"
 > 使用專用 sku 僅適用于目前推出的最新 API 版本（2019-12-01）。在您的部署範本中指定此 API 版本。
 >
 
-從 API 版本2019-12-01 開始，部署範本的`sku` [容器群組屬性] 區段底下會有一個屬性，這是 ACI 部署所需的內容。 目前，您可以使用此屬性做為 ACI Azure Resource Manager 部署範本的一部分。 在[教學課程：使用 Resource Manager 範本部署多容器群組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中，深入瞭解如何使用範本部署 ACI 資源。 
+從 API 版本2019-12-01 開始， `sku` 部署範本的 [容器群組屬性] 區段底下會有一個屬性，這是 ACI 部署所需的內容。 目前，您可以使用此屬性做為 ACI Azure Resource Manager 部署範本的一部分。 在[教學課程：使用 Resource Manager 範本部署多容器群組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中，深入瞭解如何使用範本部署 ACI 資源。 
 
 `sku`屬性可以有下列其中一個值：
 * `Standard`-標準 ACI 部署選擇，其仍可保證程式管理層級安全性 
@@ -37,8 +36,8 @@ ms.locfileid: "82025028"
 ## <a name="modify-your-json-deployment-template"></a>修改您的 JSON 部署範本
 
 在您的部署範本中，修改或加入下列屬性：
-* 在`resources`底下， `apiVersion`將`2019-12-01`設為。
-* 在容器群組屬性底下，新增具有`sku`值`Dedicated`的屬性。
+* 在底下 `resources` ，將設 `apiVersion` 為 `2019-12-01` 。
+* 在容器群組屬性底下，新增 `sku` 具有值的屬性 `Dedicated` 。
 
 以下是使用專用 sku 的容器群組部署範本之 resources 區段的範例程式碼片段：
 
@@ -137,7 +136,7 @@ ms.locfileid: "82025028"
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令來部署範本。
+使用 [az group deployment create][az-group-deployment-create] 命令部署範本。
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json

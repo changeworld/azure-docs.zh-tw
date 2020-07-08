@@ -10,10 +10,9 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857426"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>使用 Azure Toolkit for IntelliJ （預覽）進行 spark 作業調試失敗
@@ -56,9 +55,9 @@ ms.locfileid: "82857426"
 
    c. 在 [ **Spark 版本**] 下拉式清單中，選取 [ **Spark 2.3.2 （Scala 2.11.8）**]。
 
-   d. 選取 [完成]  。
+   d. 選取 [完成]。
 
-3. 選取**src** > **main** > **scala**以在專案中開啟您的程式碼。 這個範例會使用**AgeMean_Div （）** 腳本。
+3. 選取**src**  >  **main**  >  **scala**以在專案中開啟您的程式碼。 這個範例會使用**AgeMean_Div （）** 腳本。
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>在 HDInsight 叢集上執行 Spark Scala/JAVA 應用程式
 
@@ -90,7 +89,7 @@ ms.locfileid: "82857426"
 
 如果作業提交失敗，您可以將失敗的作業設定檔下載到本機電腦，以進行進一步的偵錯工具。
 
-1. 開啟**Microsoft Azure 儲存體總管**，找出失敗作業的叢集 HDInsight 帳戶，從對應的位置下載失敗的工作資源： ** \\\hdp\spark2-events。 spark-失敗\\\<應用程式識別碼>** 到本機資料夾。 [**活動**] 視窗會顯示下載進度。
+1. 開啟**Microsoft Azure 儲存體總管**，找出失敗作業之叢集的 HDInsight 帳戶，從對應的位置下載失敗的工作資源： **\hdp\spark2-events \\ \\ \<application ID> 至**本機資料夾。 [**活動**] 視窗會顯示下載進度。
 
    ![Azure 儲存體總管下載失敗](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 

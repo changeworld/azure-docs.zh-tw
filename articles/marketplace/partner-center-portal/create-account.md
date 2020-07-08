@@ -8,10 +8,9 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/14/2020
 ms.openlocfilehash: 2a1a6963a540f3e7384f73067af336b53b29134d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82856700"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心建立商業 marketplace 帳戶
@@ -75,7 +74,7 @@ ms.locfileid: "82856700"
 
     註冊之後，您會進入 [商業 marketplace] [總覽] 頁面。 [商業 marketplace] 帳戶會顯示在左窗格中。 
     
-1. 若要確認商業 marketplace 帳戶已列為 [已註冊]，請選取 [**設定** > ] [**合作夥伴設定** > ] [**程式**]。
+1. 若要確認商業 marketplace 帳戶已列為 [已註冊]，請選取 [**設定**] [  >  **合作夥伴設定**] [  >  **程式**]。
 
 您現在已在合作夥伴中心建立商業 marketplace 帳戶。 如需詳細資訊，請參閱[商業 marketplace 總覽](./commercial-marketplace-overview.md)。 如需加入發行者的說明，請參閱[將新的發行者加入至商業 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -112,7 +111,7 @@ ms.locfileid: "82856700"
 >[!NOTE]
 > 您必須擁有**帳戶管理員**或**全域管理員**角色，才能登入 Microsoft 合作夥伴網路。
 
-1. 從 [[合作夥伴中心](https://partner.microsoft.com/)] 選取 [**設定** > ] [**合作夥伴設定** > ] [**程式** > **開始**使用]。
+1. 從 [[合作夥伴中心](https://partner.microsoft.com/)] 選取 [**設定**] [  >  **合作夥伴設定**] [  >  **程式**  >  **開始**使用]。
 
    Microsoft 合作夥伴網路會偵測您的訂用帳戶，並顯示 [**發行者設定檔**] 窗格。
    
@@ -124,7 +123,7 @@ ms.locfileid: "82856700"
 
     註冊之後，您會進入 [商業 marketplace] [總覽] 頁面。 [商業 marketplace] 帳戶會顯示在左窗格中。 
     
-1. 若要確認商業 marketplace 帳戶已列為 [已註冊]，請選取 [**設定** > ] [**合作夥伴設定** > ] [**程式**]。
+1. 若要確認商業 marketplace 帳戶已列為 [已註冊]，請選取 [**設定**] [  >  **合作夥伴設定**] [  >  **程式**]。
 
 您現在已在合作夥伴中心建立商業 marketplace 帳戶。 如需詳細資訊，請參閱[商業 marketplace 總覽](./commercial-marketplace-overview.md)。 如需加入發行者的說明，請參閱[將新的發行者加入至商業 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -143,7 +142,7 @@ ms.locfileid: "82856700"
 
 在您登入合作夥伴中心後，請執行下列動作來完成設定您的帳戶：
 
-1. 在合作夥伴中心，選取 [**設定** > ] [**開發人員設定** > ] [**程式** > **開始**]，然後輸入您的公司電子郵件地址。
+1. 在合作夥伴中心，選取 [**設定**] [  >  **開發人員設定**] [  >  **程式**  >  **開始**]，然後輸入您的公司電子郵件地址。
 1. 完成 [**發行者設定檔]** 頁面上的詳細資料。
 1. 閱讀[Microsoft 發行者合約](https://go.microsoft.com/fwlink/?LinkID=699560)中的條款及條件，然後選取 [**接受並繼續**] 完成您的註冊。
 
@@ -152,7 +151,7 @@ ms.locfileid: "82856700"
 
     註冊之後，您會進入 [商業 marketplace] [總覽] 頁面。 [商業 marketplace] 帳戶會顯示在左窗格中。 
     
-1. 若要確認商業 marketplace 帳戶已列為 [已註冊]，請選取 [**設定** > ] [**合作夥伴設定** > ] [**程式**]。
+1. 若要確認商業 marketplace 帳戶已列為 [已註冊]，請選取 [**設定**] [  >  **合作夥伴設定**] [  >  **程式**]。
 
 您現在已在合作夥伴中心建立商業 marketplace 帳戶。 如需詳細資訊，請參閱[商業 marketplace 總覽](./commercial-marketplace-overview.md)。 如需加入發行者的說明，請參閱[將新的發行者加入至商業 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -168,10 +167,10 @@ ms.locfileid: "82856700"
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>將新的發行者新增至商業 marketplace 方案
 
-組織可以有多個與商業 marketplace 帳戶相關聯的發行者。 在登入合作夥伴中心之後，現有的使用者可以藉由選取 [**帳戶設定** > ] [**發行者** > **] [新增發行者]** 來新增更多發行者。
+組織可以有多個與商業 marketplace 帳戶相關聯的發行者。 在登入合作夥伴中心之後，現有的使用者可以藉由選取 [**帳戶設定**]  >  **Publishers**  >  **[發行者] [新增發行者]** 來新增更多發行者。
 
 >[!NOTE]
->新增發行者之前，請先登入合作夥伴中心，然後選取 [**帳戶設定** > ] [**發行者**]，以檢查現有發行者清單。
+>新增發行者之前，請先登入合作夥伴中心，然後選取 [**帳戶設定**] [發行者]，以檢查現有發行者清單  >  ** **。
 
 來自相同 Azure Active Directory 租使用者的其他使用者可以執行下列動作來加入新的發行者：
 
@@ -189,4 +188,4 @@ ms.locfileid: "82856700"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [在合作夥伴中心管理您的商業 marketplace 帳戶](./manage-account.md)
+- [在合作夥伴中心管理您的商業市集帳戶](./manage-account.md)

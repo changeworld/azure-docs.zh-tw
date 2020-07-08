@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
 ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857637"
 ---
 # <a name="transformation-with-azure-databricks"></a>使用 Azure Databricks 進行轉換
@@ -36,7 +35,7 @@ ms.locfileid: "82857637"
 
 ## <a name="prerequisites"></a>必要條件
 
-- 具有名`sinkdata`為之容器的 Azure Blob 儲存體帳戶，可做為接收器使用。
+- 具有名為之容器的 Azure Blob 儲存體帳戶，可 `sinkdata` 做為接收器使用。
 
   請記下 [儲存體帳戶名稱]、[容器名稱] 和 [存取金鑰]。 您稍後會在範本中需要這些值。
 
@@ -47,8 +46,8 @@ ms.locfileid: "82857637"
 若要將**轉換**筆記本匯入到您的 Databricks 工作區：
 
 1. 登入您的 Azure Databricks 工作區，然後選取 [匯**入**]。
-       ![匯入工作區](media/solution-template-Databricks-notebook/import-notebook.png)的功能表命令您的工作區路徑可能與所顯示的不同，但請記住它以供稍後使用。
-1. 選取 [匯**入來源： URL**]。 在 [] 文字方塊中， `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`輸入。
+       ![匯入工作區的功能表命令 ](media/solution-template-Databricks-notebook/import-notebook.png) 您的工作區路徑可能與所顯示的不同，但請記住它以供稍後使用。
+1. 選取 [匯**入來源： URL**]。 在 [] 文字方塊中，輸入 `https://adflabstaging1.blob.core.windows.net/share/Transformations.html` 。
 
    ![匯入筆記本的選取專案](media/solution-template-Databricks-notebook/import-from-url.png)
 
@@ -56,8 +55,8 @@ ms.locfileid: "82857637"
 
    在匯入的筆記本中，移至 [**命令 5** ]，如下列程式碼片段所示。
 
-   - 將`<storage name>`和`<access key>`取代為您自己的儲存體連接資訊。
-   - 使用儲存體帳戶搭配`sinkdata`容器。
+   - `<storage name>`將和取代 `<access key>` 為您自己的儲存體連接資訊。
+   - 使用儲存體帳戶搭配 `sinkdata` 容器。
 
     ```python
     # Supply storageName and accessKey values  
@@ -86,11 +85,11 @@ ms.locfileid: "82857637"
    1. 選取 [**使用者設定**]。
     ![使用者設定的功能表命令](media/solution-template-Databricks-notebook/user-setting.png)
    1. 選取 [**存取權杖**] 索引標籤底下的 [**產生新的權杖**]。
-   1. 選取 [產生]****。
+   1. 選取 [產生]。
 
     ![[產生] 按鈕](media/solution-template-Databricks-notebook/generate-new-token.png)
 
-   *儲存存取權杖*以供稍後用來建立 Databricks 連結服務。 存取權杖的外觀類似`dapi32db32cbb4w6eee18b7d87e45exxxxxx`。
+   *儲存存取權杖*以供稍後用來建立 Databricks 連結服務。 存取權杖的外觀類似 `dapi32db32cbb4w6eee18b7d87e45exxxxxx` 。
 
 ## <a name="how-to-use-this-template"></a>如何使用此範本
 
@@ -118,7 +117,7 @@ ms.locfileid: "82857637"
 
         ![連接到叢集的選取專案](media/solution-template-Databricks-notebook/databricks-connection.png)
 
-1. 選取 [**使用此範本**]。 您會看到已建立的管線。
+1. 選取 [使用此範本]。 您會看到已建立的管線。
 
     ![建立管線](media/solution-template-Databricks-notebook/new-pipeline.png)
 
@@ -126,19 +125,19 @@ ms.locfileid: "82857637"
 
 在新的管線中，大部分的設定會自動以預設值設定。 檢查您的管線設定，並進行任何必要的變更。
 
-1. 在 [**驗證**活動**可用性] 旗**標中，確認 [源**資料集**] `SourceAvailabilityDataset`值已設為您稍早建立的。
+1. 在 [**驗證**活動**可用性] 旗**標中，確認 [源**資料集**] 值已設為 `SourceAvailabilityDataset` 您稍早建立的。
 
    ![源資料集值](media/solution-template-Databricks-notebook/validation-settings.png)
 
 1. 在 [**複製資料**活動檔案**至 blob**] 中，檢查 [**來源**] 和 [**接收**] 索引標籤。 必要時變更設定。
 
-   - **來源**索引![標籤來源索引標籤](media/solution-template-Databricks-notebook/copy-source-settings.png)
+   - **來源**索引標籤來源索引標籤 ![](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-   - **接收**索引![標籤接收索引標籤](media/solution-template-Databricks-notebook/copy-sink-settings.png)
+   - **接收**索引標籤接收索引標籤 ![](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
 1. 在 [**筆記本**活動**轉換**] 中，視需要檢查並更新路徑和設定。
 
-   **Databricks 連結服務**應預先填入上一個步驟中的值，如下所示： ![已填入 Databricks 連結服務的值](media/solution-template-Databricks-notebook/notebook-activity.png)
+   **Databricks 連結服務**應預先填入上一個步驟中的值，如下所示：已 ![ 填入 Databricks 連結服務的值](media/solution-template-Databricks-notebook/notebook-activity.png)
 
    若要檢查**筆記本**設定：
   
@@ -150,7 +149,7 @@ ms.locfileid: "82857637"
 
        ![基底參數](media/solution-template-Databricks-notebook/base-parameters.png)
 
-1. 確認**管線參數**符合下列螢幕擷取畫面中顯示的內容： ![管線參數](media/solution-template-Databricks-notebook/pipeline-parameters.png)
+1. 確認**管線參數**符合下列螢幕擷取畫面中顯示的內容： ![ 管線參數](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. 連接到您的資料集。
 
@@ -167,9 +166,9 @@ ms.locfileid: "82857637"
 
    - **DestinationFilesDataset** -將資料複製到接收目的地位置。 輸入下列值：
 
-     - **Linked service**  -  `sinkBlob_LS`在上一個步驟中建立的連結服務。
+     - **Linked service**  -  `sinkBlob_LS` 在上一個步驟中建立的連結服務。
 
-     - **檔案路徑** - `sinkdata/staged_sink`。
+     - 檔案**路徑**  -  `sinkdata/staged_sink` 。
 
        ![DestinationFilesDataset 的連結服務和檔案路徑的選取專案](media/solution-template-Databricks-notebook/destination-dataset.png)
 

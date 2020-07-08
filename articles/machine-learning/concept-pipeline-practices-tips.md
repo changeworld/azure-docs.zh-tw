@@ -10,10 +10,9 @@ ms.author: laobri
 author: lobrien
 ms.date: 05/01/2020
 ms.openlocfilehash: 2ea353469ed111eebb591aa6ba86c652683cc2f0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858188"
 ---
 # <a name="iterating-and-evolving-machine-learning-pipelines"></a>反覆運算和進化機器學習管線
@@ -30,7 +29,7 @@ Azure Machine Learning 管線提供有效率的方式來模組化您的程式碼
 
 ## <a name="how-do-you-modularize-pipeline-code"></a>如何模組化管線程式碼？ 
 
-模組和`ModuleStep`類別讓您有絕佳的機會模組化您的 ML 程式碼。 不過，必須記住，在管線步驟之間移動遠比函式呼叫更昂貴。 您必須詢問的問題不太多「這些函數和資料在概念上與另一節中的不同？」 但是「我要把這些函數和資料分開發展嗎？」 或「這種計算成本高昂，我可以重複使用它的輸出嗎？」 如需詳細資訊，請參閱 thisn'tebook[如何建立模組、ModuleVersion，並在具有 ModuleStep 的管線中使用它們](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb)。
+模組和 `ModuleStep` 類別讓您有絕佳的機會模組化您的 ML 程式碼。 不過，必須記住，在管線步驟之間移動遠比函式呼叫更昂貴。 您必須詢問的問題不太多「這些函數和資料在概念上與另一節中的不同？」 但是「我要把這些函數和資料分開發展嗎？」 或「這種計算成本高昂，我可以重複使用它的輸出嗎？」 如需詳細資訊，請參閱 thisn'tebook[如何建立模組、ModuleVersion，並在具有 ModuleStep 的管線中使用它們](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb)。
 
 如先前所述，將資料準備從定型中分離，通常是一個這樣的機會。 有時候資料準備工作既複雜又耗時，因此您可能會將程式分成個別的管線步驟。 其他機會包括訓練後測試和分析。 
 
@@ -48,7 +47,7 @@ Azure Machine Learning 管線提供有效率的方式來模組化您的程式碼
 
 個別管線是自然線條，用於分割作業。 有多個開發人員或甚至多個小組都可以處理不同的步驟，只要在步驟之間流動的資料和引數經過同意即可。 
 
-在開發期間，您可以從`PipelineRun`工作`StepRun`區中取出並執行結果、使用這些物件來下載最終和中繼輸出，並針對您自己的模組化工作使用這些構件。
+在開發期間，您可以 `PipelineRun` `StepRun` 從工作區中取出並執行結果、使用這些物件來下載最終和中繼輸出，並針對您自己的模組化工作使用這些構件。
 
 ## <a name="use-pipelines-to-test-techniques-in-isolation"></a>使用管線以隔離方式測試技術
 

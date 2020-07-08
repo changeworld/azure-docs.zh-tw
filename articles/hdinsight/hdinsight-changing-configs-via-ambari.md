@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
 ms.openlocfilehash: a819c3a57efdc0ae87cf969fd7471818c51895f6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793154"
 ---
 # <a name="optimize-clusters-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Ambari 優化叢集
@@ -63,6 +62,6 @@ NameNode JAVA 堆積大小取決於許多因素，例如叢集上的負載。 �
 
 * [使用 Apache Ambari Web UI 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
-* [將 Apache HBase 優化](./optimize-hbase-ambari.md)
-* [優化 Apache Hive](./optimize-hive-ambari.md)
-* [將 Apache Pig 優化](./optimize-pig-ambari.md)
+* [將 Apache HBase 最佳化](./optimize-hbase-ambari.md)
+* [將 Apache Hive 最佳化](./optimize-hive-ambari.md)
+* [將 Apache Pig 最佳化](./optimize-pig-ambari.md)

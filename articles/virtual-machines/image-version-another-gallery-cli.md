@@ -10,10 +10,9 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: add08d7b8ef39322f03e0faf78959b08a6ae2a14
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797054"
 ---
 # <a name="copy-an-image-from-another-gallery"></a>從另一個資源庫複製映射
@@ -131,11 +130,11 @@ az sig image-definition create \
 ```
 
 
-## <a name="create-the-image-version"></a>建立映射版本
+## <a name="create-the-image-version"></a>建立映像版本
 
 使用[az image 圖庫 create-image 版本](/cli/azure/sig/image-version#az-sig-image-version-create)來建立版本。 您必須傳入受控映像的識別碼，以作為建立映像版本的基準。 您可以使用 [az image list](/cli/azure/image?view#az-image-list) 來取得資源群組中映像的相關資訊。 
 
-映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式： *MajorVersion*。*MinorVersion*。*修補程式*。
+映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
 在此範例中，我們的映射版本為*1.0.0* ，而我們將在*美國中南部*區域建立1個複本，並使用區域冗余儲存體在*美國東部*區域中建立1個複本。
 
@@ -152,9 +151,9 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> 您必須等候映射版本完全完成建立和複寫，才能使用相同的受控映射來建立另一個映射版本。
+> 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
 >
-> 您也可以在建立映射版本時新增`--storage-account-type  premium_lrs` `--storage-account-type  standard_zrs` ，將您的映射儲存在 Premiun 儲存體中，其方式是新增或[區域多餘的儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
+> 建立映像版本時，您也可以藉由新增 `--storage-account-type  premium_lrs`，將映像儲存在「進階」儲存體，或新增 `--storage-account-type  standard_zrs`，將映像儲存在[區域備援儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
 >
 
 ## <a name="next-steps"></a>後續步驟

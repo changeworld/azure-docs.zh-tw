@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
 ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82837629"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure 前端服務上的 Azure Web 應用程式防火牆常見問題
@@ -21,9 +20,9 @@ ms.locfileid: "82837629"
 
 ## <a name="what-is-azure-waf"></a>什麼是 Azure WAF？
 
-Azure WAF 是一種 web 應用程式防火牆，可協助保護您的 web 應用程式免于遭受常見的威脅，例如 SQL 插入式攻擊、跨網站腳本和其他 web 惡意探索。 您可以定義由自訂和受控規則組合所組成的 WAF 原則，以控制對 web 應用程式的存取。
+Azure WAF 是一種 Web 應用程式防火牆，可協助保護您的 Web 應用程式免於遭受常見的威脅，例如 SQL 插入式攻擊、跨網站指令碼和其他 web 惡意探索。 您可以定義由自訂和受控規則組合所組成的 WAF 原則，以控制對 Web 應用程式的存取。
 
-Azure WAF 原則可以套用至裝載于應用程式閘道或 Azure Front 門板的 web 應用程式。
+Azure WAF 原則可以套用至裝載於應用程式閘道或 Azure Front Door 的 Web 應用程式。
 
 ## <a name="what-is-waf-on-azure-front-door"></a>Azure Front 的 WAF 是什麼？ 
 
@@ -35,7 +34,7 @@ Front 門提供 TLS 卸載。 WAF 原本就與前門整合，而且可以在要�
 
 ## <a name="does-azure-waf-support-ipv6"></a>Azure WAF 是否支援 IPv6？
 
-可以。 您可以設定 IPv4 和 IPv6 的 IP 限制。
+是。 您可以設定 IPv4 和 IPv6 的 IP 限制。
 
 ## <a name="how-up-to-date-are-the-managed-rule-sets"></a>受控規則集的最新狀態為何？
 
@@ -76,5 +75,5 @@ Azure Front 大門會在 Azure 網路邊緣進行全域散發，以吸收和地�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[Azure Web 應用程式防火牆](../overview.md)。
-- 深入瞭解[Azure Front 大門](../../frontdoor/front-door-overview.md)。
+- 了解 [Azure Web 應用程式防火牆](../overview.md)。
+- 深入了解 [Azure Front Door](../../frontdoor/front-door-overview.md)。

@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 916eeaa60bc054301af039164ce1c14e77ceb91a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733522"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何使用 IoT Edge 裝置作為閘道
@@ -64,5 +63,5 @@ IoT Edge 解決方案中的閘道可為 IoT 裝置提供裝置連線能力和邊
 瞭解如何設定透明閘道：
 
 * [設定 IoT Edge 裝置作為透明閘道](how-to-create-transparent-gateway.md)
-* [在 Azure IoT 中樞中驗證下游裝置](how-to-authenticate-downstream-device.md)
+* [向 Azure IoT 中樞驗證下游裝置](how-to-authenticate-downstream-device.md)
 * [將下游裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)

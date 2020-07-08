@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
 ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864244"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>優化 Azure 監視器中的記錄查詢
@@ -112,7 +111,7 @@ Heartbeat
 
 雖然某些匯總命令（例如[max （）](/azure/kusto/query/max-aggfunction)、 [sum （）](/azure/kusto/query/sum-aggfunction)、 [count （）](/azure/kusto/query/count-aggfunction)和[avg （））](/azure/kusto/query/avg-aggfunction)對其邏輯造成的 CPU 影響很低，但其他則較為複雜，包括啟發學習法和估計值，讓它們可以有效率地執行。 例如， [dcount （）](/azure/kusto/query/dcount-aggfunction)會使用 HyperLogLog 演算法，針對大型資料集的相異計數提供接近的估計，而不會實際計算每個值;百分位數函數使用最接近的排名百分位數演算法執行類似的近似值。 有數個命令包含可減少其影響的選擇性參數。 例如， [makeset （）](/azure/kusto/query/makeset-aggfunction)函式具有選擇性的參數，可定義最大的集合大小，這會大幅影響 CPU 和記憶體。
 
-[聯結](/azure/kusto/query/joinoperator?pivots=azuremonitor)和[摘要](/azure/kusto/query/summarizeoperator)命令可能會在處理大型資料集時造成 CPU 使用率過高。 其複雜性與在摘要或當做聯結屬性`by`中使用之資料行的可能值數目（稱為*基數*）直接相關。 如需聯結和摘要的說明和優化，請參閱其檔文章和優化提示。
+[聯結](/azure/kusto/query/joinoperator?pivots=azuremonitor)和[摘要](/azure/kusto/query/summarizeoperator)命令可能會在處理大型資料集時造成 CPU 使用率過高。 其複雜性與在摘要或當做聯結屬性中使用之資料行的可能值數目（稱為*基數*）直接相關 `by` 。 如需聯結和摘要的說明和優化，請參閱其檔文章和優化提示。
 
 例如，下列查詢會產生完全相同的結果，因為**CounterPath**一定是一對一對應至**CounterName**和**ObjectName**。 第二個比較有效率，因為匯總維度較小：
 
@@ -180,7 +179,7 @@ SecurityEvent
 
 ### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>避免不必要地使用搜尋和聯集運算子
 
-增加所處理資料的另一個因素是使用大量資料表。 當使用和命令`search *`時`union *` ，通常會發生這種情況。 這些命令會強制系統評估和掃描工作區中所有資料表的資料。 在某些情況下，工作區中可能會有數百個數據表。 請儘量避免使用「搜尋 *」或任何搜尋，而不將它的範圍設定為特定的資料表。
+增加所處理資料的另一個因素是使用大量資料表。 當 `search *` 使用和命令時，通常會發生這種情況 `union *` 。 這些命令會強制系統評估和掃描工作區中所有資料表的資料。 在某些情況下，工作區中可能會有數百個數據表。 請儘量避免使用「搜尋 *」或任何搜尋，而不將它的範圍設定為特定的資料表。
 
 例如，下列查詢會產生完全相同的結果，但最後一個是最有效率的：
 
@@ -204,7 +203,7 @@ Perf
 
 ### <a name="add-early-filters-to-the-query"></a>將早期篩選新增至查詢
 
-減少資料量的另一種方法[是在查詢初期有條件。](/azure/kusto/query/whereoperator) Azure 資料總管平臺包含快取，可讓 it 知道哪些分割區包含與特定 where 條件相關的資料。 例如，如果查詢包含`where EventID == 4624` ，則它只會將查詢散發給處理具有相符事件之分割區的節點。
+減少資料量的另一種方法[是在查詢初期有條件。](/azure/kusto/query/whereoperator) Azure 資料總管平臺包含快取，可讓 it 知道哪些分割區包含與特定 where 條件相關的資料。 例如，如果查詢包含，則 `where EventID == 4624` 它只會將查詢散發給處理具有相符事件之分割區的節點。
 
 下列範例查詢會產生完全相同的結果，但第二個會更有效率：
 

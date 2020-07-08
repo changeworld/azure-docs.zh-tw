@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 9b6265bed138960a3839091ed1593413fc85710a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858588"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>針對您的 IoT Edge 裝置進行疑難排解
@@ -21,12 +20,12 @@ ms.locfileid: "82858588"
 
 ## <a name="run-the-check-command"></a>執行 ' check ' 命令
 
-疑難排解 IoT Edge 的第一個步驟應該是使用`check`命令，它會針對常見問題執行設定和連線測試的集合。 此`check`命令可在[release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7)和更新版本中取得。
+疑難排解 IoT Edge 的第一個步驟應該是使用 `check` 命令，它會針對常見問題執行設定和連線測試的集合。 此 `check` 命令可在[release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7)和更新版本中取得。
 
 >[!NOTE]
 >如果 IoT Edge 裝置位於 proxy 伺服器後方，則疑難排解工具無法執行連線檢查。
 
-您可以如下所`check`示執行命令，或包含`--help`旗標來查看完整的選項清單：
+您可以如下所示執行 `check` 命令，或包含 `--help` 旗標來查看完整的選項清單：
 
 在 Linux 上：
 
@@ -50,9 +49,9 @@ iotedge check
 
 ## <a name="gather-debug-information-with-support-bundle-command"></a>使用 [支援配套] 命令收集調試資訊
 
-當您需要從 IoT Edge 裝置收集記錄時，最方便的方式是使用`support-bundle`命令。 根據預設，此命令會收集模組、IoT Edge 的安全性管理員和容器引擎`iotedge check`記錄、JSON 輸出，以及其他有用的偵錯工具資訊。 它會將其壓縮成單一檔案，以方便共用。 此`support-bundle`命令可在[release 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9)和更新版本中取得。
+當您需要從 IoT Edge 裝置收集記錄時，最方便的方式是使用 `support-bundle` 命令。 根據預設，此命令會收集模組、IoT Edge 的安全性管理員和容器引擎記錄、 `iotedge check` JSON 輸出，以及其他有用的偵錯工具資訊。 它會將其壓縮成單一檔案，以方便共用。 此 `support-bundle` 命令可在[release 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9)和更新版本中取得。
 
-使用`--since`旗`support-bundle`標來執行命令，以指定過去要取得記錄的時間長度。 例如， `6h`自過去六個小時`6d` `6m`以來，自過去六分鐘起就會取得記錄。 包含`--help`旗標，以查看完整的選項清單。
+`support-bundle`使用旗標來執行命令 `--since` ，以指定過去要取得記錄的時間長度。 例如，自過去六個小時以來，自過去六分鐘起就 `6h` 會取得記錄 `6d` `6m` 。 包含 `--help` 旗標，以查看完整的選項清單。
 
 在 Linux 上：
 
@@ -67,11 +66,11 @@ iotedge support-bundle --since 6h
 ```
 
 > [!WARNING]
-> 命令的`support-bundle`輸出可以包含主機、裝置和模組名稱、模組所記錄的資訊等。如果在公用論壇中共用輸出，請注意這一點。
+> 命令的輸出 `support-bundle` 可以包含主機、裝置和模組名稱、模組所記錄的資訊等。如果在公用論壇中共用輸出，請注意這一點。
 
 ## <a name="check-your-iot-edge-version"></a>檢查您的 IoT Edge 版本
 
-如果您執行的是舊版 IoT Edge，則升級可能會解決您的問題。 此`iotedge check`工具會檢查 IoT Edge 安全性守護程式是否為最新版本，但不會檢查 IoT Edge 中樞和代理程式模組的版本。 若要檢查您裝置上的執行時間模組版本，請使用命令`iotedge logs edgeAgent`和`iotedge logs edgeHub`。 當模組啟動時，會在記錄中宣告版本號碼。
+如果您執行的是舊版 IoT Edge，則升級可能會解決您的問題。 此 `iotedge check` 工具會檢查 IoT Edge 安全性守護程式是否為最新版本，但不會檢查 IoT Edge 中樞和代理程式模組的版本。 若要檢查您裝置上的執行時間模組版本，請使用命令 `iotedge logs edgeAgent` 和 `iotedge logs edgeHub` 。 當模組啟動時，會在記錄中宣告版本號碼。
 
 如需有關如何更新您的裝置的指示，請參閱[更新 IoT Edge 安全性守護程式和運行](how-to-update-iot-edge.md)時間。
 

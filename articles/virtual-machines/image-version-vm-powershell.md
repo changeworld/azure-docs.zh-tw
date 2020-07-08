@@ -10,10 +10,9 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 454ed810f950924d3dd790a2442fe29816bf940d
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838462"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>預覽：從 VM 建立映射
@@ -38,7 +37,7 @@ ms.locfileid: "82838462"
 
 ## <a name="get-the-gallery"></a>取得資源庫
 
-您可以依名稱列出所有資源庫和映射定義。 結果的格式`gallery\image definition\image version`為。
+您可以依名稱列出所有資源庫和映射定義。 結果的格式為 `gallery\image definition\image version` 。
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
@@ -54,7 +53,7 @@ $gallery = Get-AzGallery `
 
 ## <a name="get-the-vm"></a>取得 VM
 
-您可以使用[update-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)查看資源群組中可用的 vm 清單。 一旦知道 VM 名稱及其所在的資源群組之後，您就可以再次使用`Get-AzVM`來取得 vm 物件，並將它儲存在變數中以供稍後使用。 這個範例會從 "myResourceGroup" 資源群組取得名為*sourceVM*的 VM，並將它指派給 *$sourceVm*的變數。 
+您可以使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 來查看資源群組中的可用 VM 清單。 一旦知道 VM 名稱及其所在的資源群組之後，您就可以 `Get-AzVM` 再次使用來取得 vm 物件，並將它儲存在變數中以供稍後使用。 這個範例會從 "myResourceGroup" 資源群組取得名為*sourceVM*的 VM，並將它指派給 *$sourceVm*的變數。 
 
 ```azurepowershell-interactive
 $sourceVm = Get-AzVM `
@@ -73,15 +72,15 @@ Stop-AzVM `
 
 ## <a name="create-an-image-definition"></a>建立映像定義 
 
-映射定義會建立影像的邏輯群組。 它們可用來管理影像的相關資訊。 影像定義名稱可以由大寫或小寫字母、數位、點、虛線和句號組成。 
+映像定義會建立映像的邏輯群組。 它們可用來管理影像的相關資訊。 映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 
 
-建立映射定義時，請確定具有所有正確的資訊。 如果您將 VM 一般化（使用適用于 Windows 的 Sysprep，或 waagent-取消布建 Linux），則應該使用`-OsState generalized`建立映射定義。 如果您未將 VM 一般化，請使用`-OsState specialized`建立映射定義。
+建立映射定義時，請確定具有所有正確的資訊。 如果您將 VM 一般化（使用適用于 Windows 的 Sysprep，或 waagent-取消布建 Linux），則應該使用建立映射定義 `-OsState generalized` 。 如果您未將 VM 一般化，請使用建立映射定義 `-OsState specialized` 。
 
-如需您可以為映射定義指定之值的詳細資訊，請參閱[影像定義](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
 
-使用[AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)建立映射定義。 
+使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 建立映像定義。 
 
-在此範例中，映射定義名為*myImageDefinition*，適用于執行 Windows 的特製化 VM。 若要使用 Linux 建立映射的定義，請`-OsType Linux`使用。 
+在此範例中，映射定義名為*myImageDefinition*，適用于執行 Windows 的特製化 VM。 若要使用 Linux 建立映射的定義，請使用 `-OsType Linux` 。 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -101,11 +100,11 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 使用[new-azgalleryimageversion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)建立映射版本。 
 
-映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式： *MajorVersion*。*MinorVersion*。*修補程式*。
+映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
 在此範例中，映像版本為 *1.0.0*，且它會被複寫到「美國中西部」** 和「美國中南部」** 資料中心。 選擇要複寫的目的地區域時，請記住，您也必須將*來源*區域納入做為複寫的目標。
 
-若要從 VM 建立映射版本，請針對`$vm.Id.ToString()`使用`-Source`。
+若要從 VM 建立映像版本，請使用 `$vm.Id.ToString()` 作為 `-Source`。
 
 ```azurepowershell-interactive
    $region1 = @{Name='South Central US';ReplicaCount=1}
@@ -131,9 +130,9 @@ $job.State
 ```
 
 > [!NOTE]
-> 您必須等候映射版本完全完成建立和複寫，才能使用相同的受控映射來建立另一個映射版本。
+> 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
 >
-> 您也可以在建立映射版本時新增`-StorageAccountType Premium_LRS` `-StorageAccountType Standard_ZRS` ，將您的映射儲存在 Premiun 儲存體中，其方式是新增或[區域多餘的儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
+> 建立映像版本時，您也可以藉由新增 `-StorageAccountType Premium_LRS`，將映像儲存在「進階」儲存體，或新增 `-StorageAccountType Standard_ZRS`，將映像儲存在[區域備援儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
 >
 
 ## <a name="next-steps"></a>後續步驟

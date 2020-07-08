@@ -14,10 +14,9 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: abc4836b5e8729eec45a0eb2cd8b5fa7be6b1ce4
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82890566"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET 中的權杖快取序列化
@@ -124,7 +123,7 @@ $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{A
  }
 ```
 
-[Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal)開放原始碼程式庫，提供適用于公用用戶端應用程式（適用于 Windows、Mac 和 Linux 上執行的桌面應用程式）的產品品質權杖快取檔案型序列化程式。 您可以從下列 NuGet 套件將它包含在您的應用程式中： [Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/)。
+[Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal)開放原始碼程式庫，提供適用于公用用戶端應用程式（適用于 Windows、Mac 和 Linux 上執行的桌面應用程式）的產品品質權杖快取檔案型序列化程式。 您可以從下列 NuGet 套件，將其包含在您的應用程式中：[Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
 #### <a name="dual-token-cache-serialization-msal-unified-cache-and-adal-v3"></a>雙重權杖快取序列化 (MSAL 統一快取和 ADAL v3)
 
@@ -278,11 +277,11 @@ namespace CommonCacheMsalV3
 [Microsoft. identity. web](https://github.com/AzureAD/microsoft-identity-web) library 提供包含權杖快取序列化的預覽[NuGet 套件：](https://www.nuget.org/packages/Microsoft.Identity.Web)
 
 
-| 擴充方法 | Microsoft. Identity. Web sub 命名空間 | 描述  |
+| 擴充方法 | Microsoft. Identity. Web sub 命名空間 | Description  |
 | ---------------- | --------- | ------------ |
-| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | 在記憶體權杖快取序列化中。 此實作為範例中的絕佳功能。 如果您不想在重新開機 web 應用程式時遺失權杖快取，也很適合在生產應用程式中提供。 `AddInMemoryTokenCaches`採用類型`MsalMemoryTokenCacheOptions`的選擇性參數，其可讓您指定持續時間，直到快取專案使用時才會到期。
+| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | 在記憶體權杖快取序列化中。 此實作為範例中的絕佳功能。 如果您不想在重新開機 web 應用程式時遺失權杖快取，也很適合在生產應用程式中提供。 `AddInMemoryTokenCaches`採用類型的選擇性參數 `MsalMemoryTokenCacheOptions` ，其可讓您指定持續時間，直到快取專案使用時才會到期。
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | 權杖快取會系結到使用者會話。 如果識別碼權杖包含許多宣告，因為 cookie 會變得太大，此選項並不理想。
-| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | 權杖快取是針對 ASP.NET Core `IDistributedCache`執行的介面卡，因此可讓您選擇分散式記憶體快取、Redis 快取、分散式 NCache 或 SQL Server 快取。 如需有關此`IDistributedCache`部署的詳細https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache資訊，請參閱。
+| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | 權杖快取是針對 ASP.NET Core 執行的介面卡 `IDistributedCache` ，因此可讓您選擇分散式記憶體快取、Redis 快取、分散式 NCache 或 SQL Server 快取。 如需有關此部署的詳細資訊 `IDistributedCache` ，請參閱 https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache 。
 
 使用記憶體內部快取的簡單案例：
 
@@ -329,7 +328,7 @@ services.AddDistributedSqlServerCache(options =>
 
 下列範例會說明權杖快取序列化。
 
-| 範例 | 平台 | 描述|
+| 範例 | 平台 | 說明|
 | ------ | -------- | ----------- |
 |[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | 桌上型 (WPF) | 呼叫 Microsoft Graph API 的 Windows 傳統型 .NET (WPF) 應用程式。 ![拓撲](media/msal-net-token-cache-serialization/topology.png)|
 |[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | 桌上型 (主控台) | 一組 Visual Studio 解決方案，說明如何將 Azure AD v1.0 應用程式（使用 ADAL.NET）遷移至 Microsoft 身分識別平臺應用程式（使用 MSAL.NET）。 特別是，請參閱權杖快取[遷移](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

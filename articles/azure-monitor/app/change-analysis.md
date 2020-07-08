@@ -6,10 +6,9 @@ author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
 ms.openlocfilehash: c287a2315f2b2319a6873ce84ee0e4e48bec8444
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82836729"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>在 Azure 監視器中使用應用程式變更分析（預覽）
@@ -19,9 +18,9 @@ ms.locfileid: "82836729"
 藉由[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)的威力，變更分析可讓您深入瞭解 Azure 應用程式變更，以增加可檢視性並減少 MTTR （平均修復時間）。
 
 > [!IMPORTANT]
-> 變更分析目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供。 不建議將此版本用於生產工作負載。 某些功能可能不受支援，或可能有限制的功能。 如需詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
+> 變更分析目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供。 不建議將此版本用於生產工作負載。 某些功能可能不受支援，或可能有限制的功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 變更分析會偵測各種類型的變更，從基礎結構層到應用程式部署都是如此。 這是訂用帳戶層級的 Azure 資源提供者，可檢查訂用帳戶中的資源變更。 變更分析會針對各種診斷工具提供資料，以協助使用者瞭解哪些變更可能會造成問題。
 
@@ -79,7 +78,7 @@ Azure Resource Graph 中尚無法使用 IP 設定規則、TLS 設定和延伸模
 
 ![變更詳細資料的螢幕擷取畫面](./media/change-analysis/change-details.png)
 
-如需任何意見反應，請使用分頁或電子郵件changeanalysisteam@microsoft.com中的 [傳送意見反應] 按鈕。
+如需任何意見反應，請使用分頁或電子郵件中的 [傳送意見反應] 按鈕 changeanalysisteam@microsoft.com 。
 
 ![[變更分析] 分頁中 [意見反應] 按鈕的螢幕擷取畫面](./media/change-analysis/change-analysis-feedback.png)
 
@@ -109,7 +108,7 @@ Azure Resource Graph 中尚無法使用 IP 設定規則、TLS 設定和延伸模
 
     ![[啟用變更分析] 使用者介面的螢幕擷取畫面](./media/change-analysis/change-analysis-on.png)
 
-5. 若要存取變更分析，請選取 [**診斷並解決問題** > **可用性和效能** > **應用程式**當機]。 您會看到一個圖表，其中匯總一段時間的變更類型，以及這些變更的詳細資料。 根據預設，會顯示過去24小時內的變更，以協助您立即遇到問題。
+5. 若要存取變更分析，請選取 [**診斷並解決問題**  >  **可用性和效能**  >  **應用程式**當機]。 您會看到一個圖表，其中匯總一段時間的變更類型，以及這些變更的詳細資料。 根據預設，會顯示過去24小時內的變更，以協助您立即遇到問題。
 
      ![變更差異視圖的螢幕擷取畫面](./media/change-analysis/change-view.png)
 

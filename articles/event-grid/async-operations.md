@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: spelluru
 ms.openlocfilehash: fb3479271733ee218da8a842956f3a8996e07f61
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82892013"
 ---
 # <a name="track-asynchronous-azure-operations"></a>追蹤非同步 Azure 作業
@@ -76,7 +75,7 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 建立、更新或刪除資源的作業 (PUT、PATCH、DELETE) 通常會傳回 `provisioningState` 值。 當作業完成時會傳回下列三個值之一︰ 
 
 * 成功
-* Failed
+* 失敗
 * 已取消
 
 其他所有值表示作業仍在執行中。 資源提供者可以傳回自訂值來指出其狀態。 例如，當要求已收到且正在執行時，您可能會收到 **Accepted**。

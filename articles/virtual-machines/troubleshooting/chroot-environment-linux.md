@@ -14,10 +14,9 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 05/05/2020
 ms.author: kaib
 ms.openlocfilehash: d6605aa77cfa746f60fc3b23e120267a2614f7b1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864678"
 ---
 # <a name="chroot-environment-in-a-linux-rescue-vm"></a>Linux 修復 VM 中的 Chroot 環境
@@ -36,7 +35,7 @@ ms.locfileid: "82864678"
 
       `#sudo su -`
 
-   1. 使用`dmesg`尋找磁片（您用來探索新磁片的方法可能會有所不同）。 下列範例會使用**dmesg**來篩選**SCSI**磁片：
+   1. 使用尋找磁片 `dmesg` （您用來探索新磁片的方法可能會有所不同）。 下列範例會使用**dmesg**來篩選**SCSI**磁片：
 
       `dmesg | grep SCSI`
 
@@ -84,7 +83,7 @@ ms.locfileid: "82864678"
       ```
 
       > [!NOTE]
-      > 如果您收到錯誤`unable to unmount /rescue`，請將-l 選項新增至 umount 命令。
+      > 如果您收到錯誤 `unable to unmount /rescue` ，請將-l 選項新增至 umount 命令。
       >
       > 範例：`umount -l /rescue`
 
@@ -103,7 +102,7 @@ ms.locfileid: "82864678"
 
       `#sudo su -`
 
-   1. 使用`dmesg`尋找磁片（您用來探索新磁片的方法可能會有所不同）。 下列範例會使用**dmesg**來篩選**SCSI**磁片：
+   1. 使用尋找磁片 `dmesg` （您用來探索新磁片的方法可能會有所不同）。 下列範例會使用**dmesg**來篩選**SCSI**磁片：
 
       `dmesg | grep SCSI`
 
@@ -151,7 +150,7 @@ ms.locfileid: "82864678"
       ```
 
       > [!NOTE]
-      > 如果您收到錯誤`unable to unmount /rescue`，請將-l 選項新增至 umount 命令。
+      > 如果您收到錯誤 `unable to unmount /rescue` ，請將-l 選項新增至 umount 命令。
       >
       > 範例：`umount -l /rescue`
 
@@ -173,7 +172,7 @@ ms.locfileid: "82864678"
 
       `#sudo su -`
 
-   1. 使用`dmesg`尋找磁片（您用來探索新磁片的方法可能會有所不同）。 下列範例會使用**dmesg**來篩選**SCSI**磁片：
+   1. 使用尋找磁片 `dmesg` （您用來探索新磁片的方法可能會有所不同）。 下列範例會使用**dmesg**來篩選**SCSI**磁片：
 
       `dmesg | grep SCSI`
 
@@ -195,7 +194,7 @@ ms.locfileid: "82864678"
       #lvscan
       ```
 
-   1. 使用`lsblk`命令來取出 lvm 名稱：
+   1. 使用 `lsblk` 命令來取出 lvm 名稱：
 
       ```
       [user@myvm ~]$ lsblk
@@ -264,7 +263,7 @@ ms.locfileid: "82864678"
       ```
 
       > [!NOTE]
-      > 如果您收到錯誤`unable to unmount /rescue`，請將-l 選項新增至 umount 命令。
+      > 如果您收到錯誤 `unable to unmount /rescue` ，請將-l 選項新增至 umount 命令。
       >
       > 範例：`umount -l /rescue`
 
@@ -286,7 +285,7 @@ ms.locfileid: "82864678"
 
       `#sudo su -`
 
-   1. 使用`dmesg`尋找磁片（您用來探索新磁片的方法可能會有所不同）。 下列範例會使用**dmesg**來篩選**SCSI**磁片：
+   1. 使用尋找磁片 `dmesg` （您用來探索新磁片的方法可能會有所不同）。 下列範例會使用**dmesg**來篩選**SCSI**磁片：
 
       `dmesg | grep SCSI`
 
@@ -308,7 +307,7 @@ ms.locfileid: "82864678"
       #lvscan
       ```
 
-   1. 使用`lsblk`命令來取出 lvm 名稱：
+   1. 使用 `lsblk` 命令來取出 lvm 名稱：
 
       ```
       [user@myvm ~]$ lsblk
@@ -374,7 +373,7 @@ ms.locfileid: "82864678"
       ```
 
       > [!NOTE]
-      > 如果您收到錯誤`unable to unmount /rescue`，請將-l 選項新增至 umount 命令。
+      > 如果您收到錯誤 `unable to unmount /rescue` ，請將-l 選項新增至 umount 命令。
       >
       > 範例：`umount -l /rescue`
 
@@ -393,7 +392,7 @@ ms.locfileid: "82864678"
 
       `#sudo su -`
 
-   1. 使用`dmesg`尋找磁片（您用來探索新磁片的方法可能會有所不同）。 下列範例會使用**dmesg**來篩選**SCSI**磁片：
+   1. 使用尋找磁片 `dmesg` （您用來探索新磁片的方法可能會有所不同）。 下列範例會使用**dmesg**來篩選**SCSI**磁片：
 
       `dmesg | grep SCSI`
 
@@ -443,7 +442,7 @@ ms.locfileid: "82864678"
       ```
 
       > [!NOTE]
-      > 如果您收到錯誤`unable to unmount /rescue`，請將-l 選項新增至 umount 命令。
+      > 如果您收到錯誤 `unable to unmount /rescue` ，請將-l 選項新增至 umount 命令。
       >
       > 範例：`umount -l /rescue`
 
@@ -462,7 +461,7 @@ ms.locfileid: "82864678"
 
       `#sudo su -`
 
-   1. 使用`dmesg`尋找磁片（您用來探索新磁片的方法可能會有所不同）。 下列範例會使用**dmesg**來篩選**SCSI**磁片：
+   1. 使用尋找磁片 `dmesg` （您用來探索新磁片的方法可能會有所不同）。 下列範例會使用**dmesg**來篩選**SCSI**磁片：
 
       `dmesg | grep SCSI`
 
@@ -512,7 +511,7 @@ ms.locfileid: "82864678"
       ```
 
       > [!NOTE]
-      > 如果您收到錯誤`unable to unmount /rescue`，請將-l 選項新增至 umount 命令。
+      > 如果您收到錯誤 `unable to unmount /rescue` ，請將-l 選項新增至 umount 命令。
       >
       > 範例：`umount -l /rescue`
 

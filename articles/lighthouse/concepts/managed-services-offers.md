@@ -4,10 +4,9 @@ description: 受管理的服務提供允許服務提供者在 Azure Marketplace 
 ms.date: 05/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: 975c9ab98229626a513404b2092b266a9e284279
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792287"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Marketplace 中的受控服務供應項目
@@ -31,7 +30,7 @@ ms.locfileid: "82792287"
 如有需要，您可以在相同的供應項目中同時包含公用與私人方案。
 
 > [!IMPORTANT]
-> 方案發行為公開之後，您就無法將它變更為私用。 若要控制哪些客戶可以接受您的供應專案和委派資源，請使用私用方案。 有了公用方案，您就不能將可用性限制在特定客戶或甚至是特定數目的客戶（不過，如果您選擇這樣做，則可以完全停止銷售方案）。 只有當您在發佈供應專案時，如果您已包含將**角色定義**設為 [[受控服務註冊指派刪除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)] 的**授權**，您就可以在客戶接受供應專案之後，[移除對委派的存取權](../how-to/remove-delegation.md)。 您也可以與客戶聯繫，並要求他們[移除您的存取權](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)。
+> 當您將某個方案發佈為公用之後，便無法再將其變更為私人。 若要控制哪些客戶可以接受您的供應項目和委派資源，請使用私人方案。 有了公用方案，您無法將可用性限制為僅供某個客戶甚至是特定數目的客戶使用，不過您可以選擇完全停止銷售該方案。 客戶接受供應項目後，您可以[移除委託的存取權](../how-to/remove-delegation.md) (僅在您發布該供應項目時包含 [角色定義] 設定為[受控服務註冊分配刪除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的 [授權])。 您也可以與客戶聯繫，並要求其[移除您的存取權](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)。
 
 ## <a name="publish-managed-service-offers"></a>發行受管理的服務供應專案
 

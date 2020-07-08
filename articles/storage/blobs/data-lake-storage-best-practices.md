@@ -9,10 +9,9 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
 ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857874"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>使用 Azure Data Lake Storage Gen2 的最佳做法
@@ -39,7 +38,7 @@ Azure Databricks 這類服務通常會使用 Azure Active Directory 服務主體
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>啟用 Data Lake Storage Gen2 防火牆與 Azure 服務存取權
 
-Data Lake Storage Gen2 支援開啟防火牆，以及限制僅有 Azure 服務具有存取權，建議使用此功能來限制外部攻擊的媒介。 您可以透過**防火牆** > 的 [**啟用防火牆（開啟）** > ] [**允許存取 Azure 服務**] 選項，在 Azure 入口網站的儲存體帳戶上啟用防火牆。
+Data Lake Storage Gen2 支援開啟防火牆，以及限制僅有 Azure 服務具有存取權，建議使用此功能來限制外部攻擊的媒介。 您可以透過**防火牆**的 [  >  **啟用防火牆（開啟）**] [  >  **允許存取 Azure 服務**] 選項，在 Azure 入口網站的儲存體帳戶上啟用防火牆。
 
 若要從 Azure Databricks 存取您的儲存體帳戶，請將 Azure Databricks 部署至您的虛擬網路，然後將該虛擬網路新增至您的防火牆。 請參閱[設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 

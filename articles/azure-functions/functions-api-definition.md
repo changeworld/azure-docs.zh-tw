@@ -1,15 +1,14 @@
 ---
-title: Azure 函數中開啟 API 中繼資料
+title: Azure Functions 中的 OpenAPI 中繼資料
 description: Azure Functions 中的 OpenAPI 支援概觀
 author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: cbfd0e36307210851070c22e74acb0a858446ce1
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81866708"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 中繼資料支援 (預覽)
@@ -40,7 +39,7 @@ Azure Functions 中的 OpenAPI 2.0 (先前稱為 Swagger) 中繼資料支援是�
 
 ### <a name="available-templates"></a><a name="templates"></a>可用範本
 
-|名稱| 描述 |
+|Name| 說明 |
 |:-----|:-----|
 |已產生的定義|具有可從函式現有中繼資料推斷之最大數量資訊的 OpenAPI 定義。|
 
@@ -50,9 +49,9 @@ Azure Functions 中的 OpenAPI 2.0 (先前稱為 Swagger) 中繼資料支援是�
 
 |Swagger.json|入口網站 UI|Function.json|
 |:----|:-----|:-----|
-|[主機](https://swagger.io/specification/#fixed-fields-15)|**功能應用設定** > **應用服務設定** > **概述** > **網址**|*不存在*
-|[路徑](https://swagger.io/specification/#paths-object-29)|**整合** > **的 HTTP 方法**|繫結：路由
-|[Path Item](https://swagger.io/specification/#path-item-object-32)|**整合** > **式路由範本**|繫結：方法
+|[主控件](https://swagger.io/specification/#fixed-fields-15)|**函數應用程式設定**  > **App Service 設定**  > **總覽**  > **URL**|*不存在*
+|[路徑](https://swagger.io/specification/#paths-object-29)|**整合**  > **選取的 HTTP 方法**|繫結：路由
+|[Path Item](https://swagger.io/specification/#path-item-object-32)|**整合**  > **路由範本**|繫結：方法
 |[安全性](https://swagger.io/specification/#security-scheme-object-112)|**[索引鍵]**|*不存在*|
 |operationID*|**路由 + 允許的動詞**|路由 + 允許的動詞|
 
@@ -76,6 +75,6 @@ Azure Functions 中的 OpenAPI 2.0 (先前稱為 Swagger) 中繼資料支援是�
 現在，您對存放庫中的 swagger.json 所進行之變更，會由您在步驟 1.c 中記下的 API 定義 URL 及金鑰之函式應用程式進行裝載。
 
 ## <a name="next-steps"></a>後續步驟
-* [入門教學](functions-api-definition-getting-started.md)。 請嘗試我們的逐步解說，以查看 OpenAPI 定義實際運作。
-* [Azure 函數 GitHub 儲存函式庫](https://github.com/Azure/Azure-Functions/)。 查看 Functions 存放庫以提供我們 API 定義支援預覽的意見反應。 針對您想在更新看到的任何功能提出 GitHub 問題。
-* [Azure 函數開發人員參考](functions-reference.md)。 深入了解如何撰寫函式程式碼及定義觸發程序和繫結。
+* [入門教學](functions-api-definition-getting-started.md)課程。 請嘗試我們的逐步解說，以查看 OpenAPI 定義實際運作。
+* [Azure Functions GitHub 存放庫](https://github.com/Azure/Azure-Functions/)。 查看 Functions 存放庫以提供我們 API 定義支援預覽的意見反應。 針對您想在更新看到的任何功能提出 GitHub 問題。
+* [Azure Functions 開發人員參考](functions-reference.md)。 深入了解如何撰寫函式程式碼及定義觸發程序和繫結。

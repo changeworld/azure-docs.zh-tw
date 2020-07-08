@@ -8,10 +8,9 @@ ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b60cf34e8efed2ed63b6e35cfaf7445edb701610
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838496"
 ---
 # <a name="frequently-asked-questions-about-analysis-services-network-connectivity"></a>Analysis Services 網路連線的相關常見問題
@@ -41,11 +40,11 @@ ms.locfileid: "82838496"
 ## <a name="azure-apps-with-ip-address"></a>具有 IP 位址的 Azure 應用程式
 
 **問**-我使用以 Azure 為基礎的應用程式（例如，Azure Functions、Azure Data Factory）與動態變更的 IP 位址。 如何管理 Azure Analysis Services 防火牆規則，以動態方式允許我的應用程式執行所在的 IP 位址？   
-**答**： Azure Analysis Services 不支援私人連結、Vnet 或服務標記。 有一些開放原始碼解決方案（例如， https://github.com/mathwro/Scripts/blob/master/Azure/AllowAzure-AnalysisServer.ps1)會偵測用戶端應用程式的 IP 位址，並自動和暫時更新防火牆規則）。
+**答**： Azure Analysis Services 不支援私人連結、Vnet 或服務標記。 有一些開放原始碼解決方案（例如，會偵測 https://github.com/mathwro/Scripts/blob/master/Azure/AllowAzure-AnalysisServer.ps1) 用戶端應用程式的 IP 位址，並自動和暫時更新防火牆規則）。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-[安裝和設定內部部署資料閘道](analysis-services-gateway-install.md)   
+[安裝及設定內部部署資料閘道](analysis-services-gateway-install.md)   
 [使用內部部署資料閘道連接到內部部署資料來源](analysis-services-gateway.md)   
 [使用 Azure 虛擬網路 (VNet) 上的資料來源閘道](analysis-services-vnet-gateway.md)

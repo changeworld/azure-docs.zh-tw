@@ -10,10 +10,9 @@ ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
 ms.openlocfilehash: 38cfab8a3b73eeef28249f53bd2f5c56e26b21a1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82854104"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>將自我裝載閘道部署至 Kubernetes
@@ -36,7 +35,7 @@ ms.locfileid: "82854104"
 4. [**權杖**] 文字方塊中的存取權杖會根據預設的**到期**和**秘密金鑰**值自動產生。 如有需要，請選擇其中一個或兩個控制項中的值，以產生新的權杖。
 5. 選取 [**部署腳本**] 底下的 [ **Kubernetes** ] 索引標籤。
 6. 選取 **<的閘道名稱> yml**檔案連結，並下載 YAML 檔案。
-7. 選取 [**部署**] 文字方塊右下角的`kubectl` **複製**圖示，將命令儲存到剪貼簿。
+7. 選取 [**部署**] 文字方塊右下角的**複製**圖示，將 `kubectl` 命令儲存到剪貼簿。
 8. 將命令貼到 [終端機] （或命令）視窗。 第一個命令會建立 Kubernetes 秘密，其中包含步驟4中產生的存取權杖。 第二個命令會將步驟6中所下載的設定檔套用至 Kubernetes 叢集，並預期該檔案位於目前目錄中。
 9. 執行命令，以在[預設命名空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)中建立必要的 Kubernetes 物件，並從從 Microsoft container Registry 下載的[容器映射](https://aka.ms/apim/sputnik/dhub)啟動自我裝載閘道 pod。
 10. 執行下列命令來檢查部署是否成功。 請注意，您可能需要花一點時間來建立所有物件，並將 pod 初始化。
@@ -57,8 +56,8 @@ ms.locfileid: "82854104"
     ![閘道狀態](media/how-to-deploy-self-hosted-gateway-kubernetes/status.png)
 
 > [!TIP]
-> 執行<code>kubectl logs deployment/<gateway-name></code>命令，以從隨機選取的 pod （如果有一個以上）來查看記錄。
-> 執行<code>kubectl logs -h</code>一組完整的命令選項，例如如何查看特定 pod 或容器的記錄。
+> 執行 <code>kubectl logs deployment/<gateway-name></code> 命令，以從隨機選取的 pod （如果有一個以上）來查看記錄。
+> 執行 <code>kubectl logs -h</code> 一組完整的命令選項，例如如何查看特定 pod 或容器的記錄。
 
 ## <a name="production-deployment-considerations"></a>生產部署考慮
 
@@ -110,7 +109,7 @@ Azure 入口網站中提供的 YAML 檔案會套用預設的[ClusterFirst](https
 ### <a name="configuration-backup"></a>設定備份
 若要瞭解暫時性的 Azure 連線中斷時的自我裝載閘道行為，請參閱[自我裝載閘道總覽](self-hosted-gateway-overview.md#connectivity-to-azure)。
 
-設定自我裝載閘道容器的本機儲存磁片區，讓它可以保存最新下載之設定的備份複本。 如果連線中斷，存放磁片區可以在重新開機時使用備份複本。 磁片區掛接路徑必須是<code>/apim/config</code>。 請參閱[GitHub](https://github.com/Azure/api-management-self-hosted-gateway/blob/master/examples/self-hosted-gateway-with-configuration-backup.yaml)上的範例。
+設定自我裝載閘道容器的本機儲存磁片區，讓它可以保存最新下載之設定的備份複本。 如果連線中斷，存放磁片區可以在重新開機時使用備份複本。 磁片區掛接路徑必須是 <code>/apim/config</code> 。 請參閱[GitHub](https://github.com/Azure/api-management-self-hosted-gateway/blob/master/examples/self-hosted-gateway-with-configuration-backup.yaml)上的範例。
 若要瞭解 Kubernetes 中的儲存體，請參閱[Kubernetes 網站](https://kubernetes.io/docs/concepts/storage/volumes/)。
 
 ### <a name="local-logs-and-metrics"></a>本機記錄和計量

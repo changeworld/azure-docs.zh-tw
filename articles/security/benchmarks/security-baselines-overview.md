@@ -9,10 +9,9 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 43718e992349ff9bcb3635ab1b949c2b2f2c9ec0
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871995"
 ---
 # <a name="security-baselines-for-azure"></a>Azure 的安全性基準
@@ -32,4 +31,4 @@ Azure 的安全性基準著重于雲端中心的控制區域。 這些控制項�
 基準中包含所有建議，包括不適用於此特定服務的建議，可讓您完整瞭解 Azure 安全性基準測試與每項服務之間的關係。 有時候可能會有各種原因不適用的控制項，例如 IaaS/計算中心的控制項（例如 OS 設定管理特定的控制項）可能不適用於 PaaS 服務。
 
 
-歡迎您提供有關 Azure 服務安全性基準的意見反應。 我們鼓勵您在下面的意見反應區域中提供意見。 或者，如果您想要與 Azure 安全性基準測試小組私下分享您的輸入，歡迎您在https://aka.ms/AzSecBenchmark填寫表單。
+歡迎您提供有關 Azure 服務安全性基準的意見反應。 我們鼓勵您在下面的意見反應區域中提供意見。 或者，如果您想要與 Azure 安全性基準測試小組私下分享您的輸入，歡迎您在填寫表單 https://aka.ms/AzSecBenchmark 。

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82892208"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>如何使用 JSONPath 轉換活頁簿中的 JSON 資料
@@ -27,7 +26,7 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 如同 XPath，JS
 ## <a name="using-jsonpath"></a>使用 JSONPath
 
 1. 按一下 [*編輯*] 工具列專案，將活頁簿切換至編輯模式。
-2. 使用 [*加入* > *加入查詢*] 連結，將查詢控制項加入至活頁簿。
+2. 使用 [*加入*  >  *加入查詢*] 連結，將查詢控制項加入至活頁簿。
 3. 選取*JSON*格式的資料來源。
 4. 使用 JSON 編輯器來輸入下列 JSON 程式碼片段
     ```json
@@ -69,7 +68,7 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 如同 XPath，JS
 1. 選取 [*結果設定*] 索引標籤，並將結果格式切換為 [ *JSON 路徑*]。
 2. 套用下列 JSON 路徑設定：
 
-    JSON 路徑資料表： `$.store.books`。 此欄位代表資料表根目錄的路徑。 在此情況下，我們在意商店的書籍清查。 資料表路徑會將 JSON 篩選為書籍資訊。
+    JSON 路徑資料表： `$.store.books` 。 此欄位代表資料表根目錄的路徑。 在此情況下，我們在意商店的書籍清查。 資料表路徑會將 JSON 篩選為書籍資訊。
 
    | 資料行識別碼 | 資料行 JSON 路徑 |
    |:-----------|:-----------------|

@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82889692"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>應用程式閘道的後端健康情況和診斷記錄
@@ -39,7 +38,7 @@ ms.locfileid: "82889692"
 
 ### <a name="view-back-end-health-through-the-portal"></a>透過入口網站檢視後端健康情況
 
-入口網站中會自動提供後端的健康情況。 在現有的應用程式閘道上，選取 [**監視** > **後端健康**情況]。
+入口網站中會自動提供後端的健康情況。 在現有的應用程式閘道上，選取 [**監視**  >  **後端健康**情況]。
 
 後端集區中的每個成員均會列於此頁面中 (無論是 NIC、IP 或 FQDN)。 後端集區名稱、連接埠、後端 HTTP 設定名稱和健康情況均會顯示。 健全狀況狀態的有效值為 [狀況**良好**]、[狀況**不良**] 和 [**未知**]。
 
@@ -113,11 +112,11 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 每個 Resource Manager 資源都會自動啟用活動記錄功能。 您必須啟用存取和效能記錄功能，才能開始收集可透過這些記錄取得的資料。 使用下列步驟啟用記錄：
 
-1. 請記下您的儲存體帳戶的資源識別碼 (記錄資料的儲存之處)。 此值的形式為：/subscriptions/\<subscriptionId\>/resourceGroups/\<資源群組名稱\>/providers/Microsoft.Storage/storageAccounts/\<儲存體帳戶名稱\>。 您可以使用訂用帳戶中的所有儲存體帳戶。 您可以使用 Azure 入口網站來尋找此資訊。
+1. 請記下您的儲存體帳戶的資源識別碼 (記錄資料的儲存之處)。 此值的形式為：/subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\> 。 您可以使用訂用帳戶中的所有儲存體帳戶。 您可以使用 Azure 入口網站來尋找此資訊。
 
     ![入口網站：儲存體帳戶的資源識別碼](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. 請記下您的應用程式閘道的資源識別碼 (將為其啟用記錄功能)。 此值的形式為：/subscriptions/\<subscriptionId\>/resourceGroups/\<資源群組名稱\>/providers/Microsoft.Network/applicationGateways/\<應用程式閘道名稱\>。 您可以使用入口網站來尋找此資訊。
+2. 請記下您的應用程式閘道的資源識別碼 (將為其啟用記錄功能)。 此值的形式為：/subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/applicationGateways/ \<application gateway name\> 。 您可以使用入口網站來尋找此資訊。
 
     ![入口網站：應用程式閘道的資源識別碼](./media/application-gateway-diagnostics/diagnostics2.png)
 
@@ -158,7 +157,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 只有當您如上述步驟所述，在每個應用程式閘道上啟用存取記錄，才會產生存取記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 應用程式閘道的每個存取都會以 JSON 格式記錄，如下列 v1 範例所示：
 
-|值  |描述  |
+|值  |說明  |
 |---------|---------|
 |instanceId     | 處理要求的應用程式閘道執行個體。        |
 |clientIP     | 要求的原始 IP。        |
@@ -202,7 +201,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 ```
 對於應用程式閘道和 WAF v2，記錄檔會顯示更多詳細資訊：
 
-|值  |描述  |
+|值  |說明  |
 |---------|---------|
 |instanceId     | 處理要求的應用程式閘道執行個體。        |
 |clientIP     | 要求的原始 IP。        |
@@ -256,7 +255,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有當您如上述步驟所述，在每個應用程式閘道上啟用效能記錄，才會產生效能記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 產生效能記錄資料的時間間隔為 1 分鐘。 它僅適用于 v1 SKU。 針對 v2 SKU，請使用效能資料的[計量](application-gateway-metrics.md)。 會記錄下列資料：
 
 
-|值  |描述  |
+|值  |說明  |
 |---------|---------|
 |instanceId     |  將產生此應用程式閘道執行個體的效能資料。 應用程式閘道若有多個執行個體，則是一個執行個體一行資料。        |
 |healthyHostCount     | 後端集區中狀況良好主機的數目。        |
@@ -293,7 +292,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有當您如上述步驟所述，在每個應用程式閘道上啟用防火牆記錄，才會產生防火牆記錄。 此記錄也需要在應用程式閘道上設定該 Web 應用程式防火牆。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 會記錄下列資料：
 
 
-|值  |描述  |
+|值  |說明  |
 |---------|---------|
 |instanceId     | 將產生此應用程式閘道執行個體的防火牆資料。 應用程式閘道若有多個執行個體，則是一個執行個體一行資料。         |
 |clientIp     |   要求的原始 IP。      |
@@ -302,7 +301,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |ruleSetType     | 規則集類型。 可用的值是 OWASP。        |
 |ruleSetVersion     | 規則集版本。 可用值為 2.2.9 和 3.0。     |
 |ruleId     | 觸發事件的規則識別碼。        |
-|訊息     | 方便使用的觸發事件訊息。 詳細資料區段中會提供詳細資料。        |
+|message     | 方便使用的觸發事件訊息。 詳細資料區段中會提供詳細資料。        |
 |動作     |  對要求採取的動作。 可用的值會相符並遭到封鎖。      |
 |site     | 將產生此網站的記錄。 目前只列出 Global，因為規則為全域。|
 |詳細資料     | 觸發事件的詳細資料。        |

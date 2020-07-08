@@ -10,10 +10,9 @@ ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82853491"
 ---
 # <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
@@ -24,7 +23,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -59,7 +58,7 @@ Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網�
 
 按鈕會啟動互動式 shell，讓您用來執行本操作說明文章中所述的步驟：
 
-[![在入口網站中顯示 [Cloud Shell] 視窗的螢幕擷取畫面](./media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
+[![顯示 Cloud Shell 視窗的螢幕擷取畫面](./media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>在本機安裝 CLI
 
@@ -142,7 +141,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> 如果您打算使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請將`-EnableHierarchicalNamespace $True`包含在此參數清單中。
+> 如果您打算使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請將包含 `-EnableHierarchicalNamespace $True` 在此參數清單中。
 
 若要使用不同的複寫選項來建立一般用途 v2 儲存體帳戶，請將下表中所需的值取代為**SkuName**參數。
 
@@ -153,7 +152,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 |異地備援儲存體 (GRS)     |Standard_GRS         |
 |讀取權限異地備援儲存體 (GRS)     |Standard_RAGRS         |
 |異地區域備援儲存體 (GZRS)    |Standard_GZRS         |
-|讀取權限異地區域-多餘儲存體（RA-切換）    |Standard_RAGZRS         |
+|讀取權限異地區域備援儲存體 (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -185,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> 如果您打算使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請將`--enable-hierarchical-namespace true`包含在此參數清單中。 
+> 如果您打算使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請將包含 `--enable-hierarchical-namespace true` 在此參數清單中。 
 
 若要使用不同的複寫選項來建立一般用途 v2 儲存體帳戶，請以下表中所需的值取代**sku**參數。
 
@@ -196,7 +195,7 @@ az storage account create \
 |異地備援儲存體 (GRS)     |Standard_GRS         |
 |讀取權限異地備援儲存體 (GRS)     |Standard_RAGRS         |
 |異地區域備援儲存體 (GZRS)    |Standard_GZRS         |
-|讀取權限異地區域-多餘儲存體（RA-切換）    |Standard_RAGZRS         |
+|讀取權限異地區域備援儲存體 (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[範本](#tab/template)
 
@@ -220,7 +219,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 ```
 
 > [!NOTE]
-> 此範本僅作為範例。 有許多儲存體帳戶設定未設定為此範本的一部分。 例如，如果您想要使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，您可以藉由將`isHnsEnabledad` `StorageAccountPropertiesCreateParameters`物件的屬性設定為來`true`修改此範本。 
+> 此範本僅作為範例。 有許多儲存體帳戶設定未設定為此範本的一部分。 例如，如果您想要使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，您可以藉由將物件的屬性設定 `isHnsEnabledad` `StorageAccountPropertiesCreateParameters` 為來修改此範本 `true` 。 
 
 若要瞭解如何修改此範本或建立新範本，請參閱：
 

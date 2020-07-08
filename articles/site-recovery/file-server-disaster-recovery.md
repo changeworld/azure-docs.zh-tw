@@ -9,10 +9,9 @@ ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
 ms.openlocfilehash: 59541c568c1d5341375236f9f074b7f82e1a6f94
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858745"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 保護檔案伺服器 
@@ -67,9 +66,9 @@ DFSR 使用名為「遠端差異壓縮 (RDC)」的壓縮演算法，可用來在
 | 來源  |至次要網站  |至 Azure
 |---------|---------|---------|
 |Azure|  -|是|
-|Hyper-V|  是  |是
-|VMware  |是|  是
-|實體伺服器|  是  |是
+|Hyper-V|  是  |Yes
+|VMware  |Yes|  Yes
+|實體伺服器|  Yes  |Yes
  
 
 > [!IMPORTANT]
@@ -97,7 +96,7 @@ Azure 檔案服務可用來完全取代或補充傳統內部部署檔案伺服�
 
 下列各節將簡短說明如何使用檔案同步：
 
-1. [在 Azure 中建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果您為儲存體帳戶選擇了讀取權限異地備援儲存體，則會獲得在發生災害時從次要區域讀取資料的權限。 如需詳細資訊，請參閱嚴重損壞[修復和儲存體帳戶容錯移轉](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
+1. [在 Azure 中建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果您為儲存體帳戶選擇了讀取權限異地備援儲存體，則會獲得在發生災害時從次要區域讀取資料的權限。 如需詳細資訊，請參閱[災害復原與儲存體帳戶容錯移轉](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
 2. [建立檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
 3. 在 Azure 檔案伺服器上[啟動檔案同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)。
 4. 建立同步群組。 同步群組內的端點會與彼此保持同步。 同步群組必須包含至少一個雲端端點，代表 Azure 檔案共用。 同步群組也必須包含一個伺服器端點，代表 Windows 伺服器上的路徑。

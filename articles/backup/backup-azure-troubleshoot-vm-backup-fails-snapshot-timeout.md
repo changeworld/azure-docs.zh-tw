@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864397"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
@@ -45,7 +44,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 
 **原因4：[未設定 VM 代理程式設定選項（適用于 Linux vm）](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
-**原因5：[應用程式控制解決方案正在封鎖 IaaSBcdrExtension .exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
+**原因5：[應用程式控制解決方案正在封鎖 IaaSBcdrExtension.exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed-VM 處於失敗的布建狀態
 
@@ -155,7 +154,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 
 ### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>代理程式已安裝在 VM 中，但沒有回應 (適用於 Windows VM)
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代理程式有助於取得最新版本。 也有助於重新開始與服務通訊。
 
@@ -171,7 +170,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 中安裝的代理程式已過時 (適用於 Linux VM)
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 針對 Linux VM，與代理程式或擴充功能相關的多數失敗是由於會影響過時 VM 代理程式的問題所造成。 若要對此問題進行疑難排解，請遵循下列一般方針：
 
@@ -205,23 +204,23 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 組態檔 (/etc/waagent.conf) 控制 waagent 的動作。 設定檔案選項**延伸。 [啟用**] 應設定為 [ **y** ] 和 [布建] **。代理程式**應設定為 [**自動**]，備份才能正常執行。
 如需 VM 代理程式設定檔案選項的完整清單，請參閱<https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
-### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>應用程式控制解決方案正在封鎖 IaaSBcdrExtension .exe
+### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>應用程式控制解決方案正在封鎖 IaaSBcdrExtension.exe
 
-如果您執行的是[AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) （或另一個應用程式控制方案），而規則是發行者或路徑型，則可能會封鎖**IaaSBcdrExtension**執行檔。
+如果您執行的是[AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) （或另一個應用程式控制方案），而規則是發行者或路徑型，則可能會封鎖**IaaSBcdrExtension.exe**可執行檔。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
-從 AppLocker `/var/lib` （或其他應用程式控制軟體）中排除路徑或**IaaSBcdrExtension**可執行檔。
+將 `/var/lib` 路徑或**IaaSBcdrExtension.exe**可執行檔從 AppLocker （或其他應用程式控制軟體）中排除。
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>無法擷取快照集狀態或無法取得快照集
 
 VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失敗，因為它無權存取儲存體帳戶，或是因為快照集工作延遲執行。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 下列狀況可能導致快照集工作失敗：
 
-| 原因 | 解決方法 |
+| 原因 | 解決方案 |
 | --- | --- |
 | 因為遠端桌面通訊協定 (RDP) 中的 VM 關機，而導致報告的 VM 狀態不正確。 | 如果您關閉 RDP 中的 VM，請檢查入口網站，以判斷 VM 狀態是否正確。 如果不正確，請在入口網站中使用 VM 儀表板上的 [**關機**] 選項來關閉 vm。 |
 | VM 無法從 DHCP 取得主機或網狀架構位址。 | 必須在來賓內啟用 DHCP，IaaS VM 備份才能運作。 如果 VM 無法從 DHCP 回應 245 取得主機或網狀架構位址，則無法下載或執行任何延伸模組。 如果您需要靜態私人 IP，則應透過**Azure 入口網站**或**PowerShell**加以設定，並確定已啟用 VM 內的 DHCP 選項。 [深入瞭解](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)如何使用 PowerShell 設定靜態 IP 位址。
@@ -229,7 +228,7 @@ VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失�
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>從還原點資源群組中移除鎖定
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 移至 [**所有資源] 選項**，以下列格式選取還原點集合資源群組 AzureBackupRG_`<Geo>`_`<number>`。
+2. 移至 [**所有資源] 選項**，以下列格式選取還原點集合資源群組 AzureBackupRG_ `<Geo>` _ `<number>` 。
 3. 在 [設定]**** 區段中，選取 [鎖定]**** 來顯示鎖定項目。
 4. 若要移除鎖定，請選取省略符號，然後按一下 [刪除]****。
 

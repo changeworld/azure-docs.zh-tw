@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.custom: seodec18~~~~
 ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838513"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>使用 Azure 入口網站建立時間序列深入解析環境的參考資料集
@@ -64,9 +63,9 @@ ms.locfileid: "82838513"
    - 將資料貼到文字編輯器中。 然後，選取 [剖析參考資料]**** 按鈕。
    - 選取 [選擇檔案]**** 按鈕，從本機文字檔新增資料。
 
-   例如，貼上 csv 資料： [ ![貼入的 csv 資料](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
+   例如，貼上 CSV 資料： [ ![ 貼入的 csv 資料](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
 
-   例如，貼上 json 陣列資料： [ ![貼上 json 資料](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox)
+   例如，貼上 JSON 陣列資料： [ ![ 貼上 json 資料](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox)
 
    如果剖析資料值時發生錯誤，錯誤會在頁面的底部顯示為紅色，例如 `CSV parsing error, no rows extracted`。
 
@@ -74,7 +73,7 @@ ms.locfileid: "82838513"
 
    [![審查參考資料](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
-1. 請檢查每個資料行，以瞭解假設的資料類型，並視需要變更資料類型。  選取欄位標題中的資料類型符號： **#** [double （數值資料）]、[ **T |]F**表示布林值，或**Abc**表示字串。
+1. 請檢查每個資料行，以瞭解假設的資料類型，並視需要變更資料類型。  選取欄位標題中的資料類型符號： [ **#** double （數值資料）]、[ **T |]F**表示布林值，或**Abc**表示字串。
 
    [![選擇欄位標題上的資料類型。](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
@@ -93,7 +92,7 @@ ms.locfileid: "82838513"
 
     [![選取索引鍵資料行。](media/add-reference-data-set/select-primary-key-column.png)](media/add-reference-data-set/select-primary-key-column.png#lightbox)
 
-    **（選擇性）** 選取**+** 按鈕以加入次要索引鍵資料行做為複合主鍵。 如果您需要復原選取項目，請從下拉式清單中選擇空白值，以移除次要索引鍵。
+    **（選擇性）** 選取 **+** 按鈕以加入次要索引鍵資料行做為複合主鍵。 如果您需要復原選取項目，請從下拉式清單中選擇空白值，以移除次要索引鍵。
 
 1. 若要上傳資料，請選取 [上傳資料列]**** 按鈕。
 

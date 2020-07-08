@@ -10,10 +10,9 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: f61977c1c1be07ffe744608c1bf8ec5a8013f8d0
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797080"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image"></a>從一般化映射建立擴展集
@@ -22,7 +21,7 @@ ms.locfileid: "82797080"
 
 有了一般化映射之後，您就可以使用[get-azvmss](/powershell/module/az.compute/new-azvmss) Cmdlet 來建立虛擬機器擴展集。 
 
-在此範例中，我們會使用映射定義識別碼，以確保您的新 VM 會使用最新版本的映射。 您也可以使用的映射版本識別碼，來使用特定版本`-ImageReferenceId`。 例如，若要使用 image *1.0.0*版的型`-ImageReferenceId "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`別：。 
+在此範例中，我們會使用映射定義識別碼，以確保您的新 VM 會使用最新版本的映射。 您也可以使用的映射版本識別碼，來使用特定版本 `-ImageReferenceId` 。 例如，若要使用 image *1.0.0*版的型別： `-ImageReferenceId "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` 。 
 
 請注意，使用特定映射版本表示自動化可能會失敗，因為該特定映射版本無法使用，因為它已從區域中刪除或移除。 除非需要特定映射版本，否則建議使用映射定義識別碼來建立新的 VM。
 
@@ -177,8 +176,8 @@ New-AzVmss `
 
 您也可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 
-- [建立共用映像庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共用映像庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [在共用映像庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [建立共用映像資源庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [在共用映像資源庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共用映像資源庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
 如需共用映像資源庫的詳細資訊，請參閱[概觀](shared-image-galleries.md)。 若遇到任何問題，請參閱[針對共用映像資源庫問題進行疑難排解](troubleshooting-shared-images.md)。

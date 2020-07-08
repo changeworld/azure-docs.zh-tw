@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: db1814c0a27ac6d61c7353a2c66cb5a1a72688d3
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82801598"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>開始在 Azure 中自動調整規模
@@ -45,7 +44,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
   ![適用於新 Web 應用程式的調整規模設定][5]
 1. 提供調整規模設定的名稱，然後按一下 [新增規則]****。 請注意，調整規模規則選項會在右邊開啟為內容窗格。 預設會將此設定為如果資源的 CPU 百分比超過百分之七十，就會將您的執行個體計數相應增加 1。 將其保留為預設值，然後按一下 [新增]****。
   ![建立 Web 應用程式的調整規模設定][6]
-1. 您現在已建立第一個調整規模規則。 請注意，UX 建議了最佳做法，並指出「建議規則中至少有一個調整規模」。 操作方法：
+1. 您現在已建立第一個調整規模規則。 請注意，UX 建議了最佳做法，並指出「建議規則中至少有一個調整規模」。 若要這樣做：
 
     a. 按一下 [新增規則]****。
 
@@ -57,7 +56,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
    您現在應該會有一個調整規模設定，其會根據 CPU 使用量進行相應放大/相應縮小。
    ![根據 CPU 調整規模][8]
-1. 按一下 [檔案]  。
+1. 按一下 [檔案] 。
 
 恭喜！ 您現在已成功建立第一個調整規模設定，可根據 CPU 使用量自動調整 Web 應用程式的規模。
 

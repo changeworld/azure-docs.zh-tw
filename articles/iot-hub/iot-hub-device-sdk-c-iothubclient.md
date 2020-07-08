@@ -10,10 +10,9 @@ ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732610"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>適用於 C 的 Azure IoT 裝置 SDK - 深入了解 IoTHubClient
@@ -77,7 +76,7 @@ IoTHubClient_Destroy(iotHubClientHandle);
 
 **LL** api 不會建立背景執行緒。 而是必須呼叫新的 API 明確地與 IoT 中樞之間傳送和接收資料。 下列範例就將此進行示範。
 
-SDK 中隨附的**iothub\_\_client sample\_HTTP**應用程式會示範較低層級的 api。 在該範例中，我們會使用類似以下的程式碼，將事件傳送給「IoT 中樞」︰
+SDK 中隨附的**iothub \_ client \_ sample \_ HTTP**應用程式會示範較低層級的 api。 在該範例中，我們會使用類似以下的程式碼，將事件傳送給「IoT 中樞」︰
 
 ```C
 EVENT_INSTANCE message;
@@ -103,7 +102,7 @@ while (1)
 IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext)
 ```
 
-在迴圈中**經常\_呼叫\_IoTHubClient LL DoWork**的原因是每次呼叫它時，它會將*一些*緩衝的事件傳送至 IoT 中樞，並抓取為裝置排入佇列*的下一個*訊息。 每個呼叫都不保證會傳送所有緩衝的事件或取得所有已排入佇列的訊息。 如果您想要傳送緩衝區中的所有事件，並繼續進行其他處理程序，您可以使用如下程式碼來取代此迴圈：
+在迴圈中經常呼叫**IoTHubClient \_ LL \_ DoWork**的原因是每次呼叫它時，它會將*一些*緩衝的事件傳送至 IoT 中樞，並抓取為裝置排入佇列*的下一個*訊息。 每個呼叫都不保證會傳送所有緩衝的事件或取得所有已排入佇列的訊息。 如果您想要傳送緩衝區中的所有事件，並繼續進行其他處理程序，您可以使用如下程式碼來取代此迴圈：
 
 ```C
 IOTHUB_CLIENT_STATUS status;
@@ -197,7 +196,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 
 ## <a name="message-handling"></a>訊息處理
 
-如先前所述，當訊息從 IoT 中樞送達時， **IoTHubClient** 程式庫會叫用註冊的回呼函式來回應。 此函式有一個傳回參數值得額外說明。 以下是**iothub\_\_client sample\_HTTP**範例應用程式中的回呼函數摘錄：
+如先前所述，當訊息從 IoT 中樞送達時， **IoTHubClient** 程式庫會叫用註冊的回呼函式來回應。 此函式有一個傳回參數值得額外說明。 以下是**iothub \_ client \_ sample \_ HTTP**範例應用程式中的回呼函數摘錄：
 
 ```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)

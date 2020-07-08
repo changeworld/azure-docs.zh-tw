@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82800714"
 ---
 # <a name="http-features"></a>HTTP 功能
@@ -57,13 +56,13 @@ Durable Functions 延伸模組會自動將一組 HTTP Api 新增至 Azure Functi
 
 ---
 
-使用先前所示的 HTTP 觸發程式函式來啟動協調器函數，可以使用任何 HTTP 用戶端來完成。 下列捲曲命令會啟動名為`DoWork`的協調器函式：
+使用先前所示的 HTTP 觸發程式函式來啟動協調器函數，可以使用任何 HTTP 用戶端來完成。 下列捲曲命令會啟動名為的協調器函式 `DoWork` ：
 
 ```bash
 curl -X POST https://localhost:7071/orchestrators/DoWork -H "Content-Length: 0" -i
 ```
 
-接下來是協調流程的範例回應，其`abc123`識別碼為。 為了清楚起見，已移除一些詳細資料。
+接下來是協調流程的範例回應， `abc123` 其識別碼為。 為了清楚起見，已移除一些詳細資料。
 
 ```http
 HTTP/1.1 202 Accepted
@@ -80,7 +79,7 @@ Retry-After: 10
 }
 ```
 
-在上述範例中，以`Uri`結尾的每個欄位都會對應至內建的 HTTP API。 您可以使用這些 Api 來管理目標協調流程實例。
+在上述範例中，以結尾的每個欄位都會 `Uri` 對應至內建的 HTTP API。 您可以使用這些 Api 來管理目標協調流程實例。
 
 > [!NOTE]
 > Webhook Url 的格式取決於您正在執行的 Azure Functions 主機版本。 上一個範例是針對 Azure Functions 2.0 主機。
@@ -224,7 +223,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-在上述範例中， `tokenSource`參數設定為取得[Azure Resource Manager](../../azure-resource-manager/management/overview.md)的 Azure AD token。 權杖是由資源 URI `https://management.core.windows.net`所識別。 此範例假設目前的函式應用程式正在本機執行，或已部署為具有受控識別的函式應用程式。 本機身分識別或受控識別會假設有許可權可管理所指定資源群組`myRG`中的 vm。
+在上述範例中， `tokenSource` 參數設定為取得[Azure Resource Manager](../../azure-resource-manager/management/overview.md)的 Azure AD token。 權杖是由資源 URI 所識別 `https://management.core.windows.net` 。 此範例假設目前的函式應用程式正在本機執行，或已部署為具有受控識別的函式應用程式。 本機身分識別或受控識別會假設有許可權可管理所指定資源群組中的 Vm `myRG` 。
 
 在執行時間，設定的權杖來源會自動傳回 OAuth 2.0 存取權杖。 接著，來源會將權杖做為持有人權杖新增至傳出要求的授權標頭。 基於下列原因，此模型是將授權標頭手動新增至 HTTP 要求的改進：
 

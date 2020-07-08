@@ -5,10 +5,9 @@ services: container-service
 ms.topic: article
 ms.date: 05/06/2020
 ms.openlocfilehash: 87f4dc18fc595242117e10233d4fecd77e66373f
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82890886"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 角色型存取控制來定義 Azure Kubernetes Service (AKS) 中的 Kubernetes 組態檔存取權
@@ -71,7 +70,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> 如果您想要將許可權指派給 Azure AD 群組，請以`--assignee` *群組*的物件識別碼（而不是*使用者*）更新上述範例中顯示的參數。 若要取得群組的物件識別碼，請使用[az ad group show][az-ad-group-show]命令。 下列範例會取得名為*appdev*之 Azure AD 群組的物件識別碼：`az ad group show --group appdev --query objectId -o tsv`
+> 如果您想要將許可權指派給 Azure AD 群組，請以 `--assignee` *群組*的物件識別碼（而不是*使用者*）更新上述範例中顯示的參數。 若要取得群組的物件識別碼，請使用[az ad group show][az-ad-group-show]命令。 下列範例會取得名為*appdev*之 Azure AD 群組的物件識別碼：`az ad group show --group appdev --query objectId -o tsv`
 
 如有需要，您可以將上述指派變更為「叢集使用者角色」**。
 
@@ -127,7 +126,7 @@ users:
 
 ## <a name="remove-role-permissions"></a>移除角色權限
 
-若要移除角色指派，請使用 [az role assignment delete][az-role-assignment-delete] 命令。 指定 [帳戶識別碼] 和 [叢集資源識別碼]，如先前的命令中所取得。 如果您將角色指派給群組而非使用者，請為`--assignee`參數指定適當的群組物件識別碼，而不是帳戶物件識別碼：
+若要移除角色指派，請使用 [az role assignment delete][az-role-assignment-delete] 命令。 指定 [帳戶識別碼] 和 [叢集資源識別碼]，如先前的命令中所取得。 如果您將角色指派給群組而非使用者，請為參數指定適當的群組物件識別碼，而不是帳戶物件識別碼 `--assignee` ：
 
 ```azurecli-interactive
 az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER

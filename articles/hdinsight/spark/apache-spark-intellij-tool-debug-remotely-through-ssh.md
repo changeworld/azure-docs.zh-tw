@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
 ms.openlocfilehash: c032e900cd2f58581517b08905d5b0660ed8bbda
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857806"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>使用 Azure Toolkit for IntelliJ 透過 SSH 對 HDInsight 叢集上的應用程式進行 Debug Apache Spark
@@ -25,7 +24,7 @@ ms.locfileid: "82857806"
 
 * 對於 Windows 使用者：當您在 Windows 電腦上執行本機 Spark Scala 應用程式時，您可能會收到例外狀況，如[Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)中所述。 發生這個例外狀況是因為 Windows 上遺失 WinUtils.exe。
 
-    若要解決此錯誤，請將[winutils.exe](https://github.com/steveloughran/winutils)下載至位置，例如**C:\WinUtils\bin**。 然後，新增環境變數 **HADOOP_HOME**，並將變數的值設為 **C:\WinUtils**。
+    若要解決這個錯誤，請將[Winutils.exe](https://github.com/steveloughran/winutils)下載到**C:\WinUtils\bin**之類的位置。 然後，新增環境變數 **HADOOP_HOME**，並將變數的值設為 **C:\WinUtils**。
 
 * [IntelliJ 的想法](https://www.jetbrains.com/idea/download/#section=windows)（此社區版本是免費的）。
 
@@ -37,9 +36,9 @@ ms.locfileid: "82857806"
 
 ## <a name="create-a-spark-scala-application"></a>建立 Spark Scala 應用程式
 
-1. 啟動 IntelliJ IDEA，然後選取 [建立新專案]  來開啟 [新增專案]  視窗。
+1. 啟動 IntelliJ IDEA，然後選取 [建立新專案] 來開啟 [新增專案] 視窗。
 
-1. 選取左窗格中的 [Apache Spark/HDInsight]  。
+1. 選取左窗格中的 [Apache Spark/HDInsight]。
 
 1. 從主視窗中選取 [**具有範例的 Spark 專案（Scala）** ]。
 
@@ -50,28 +49,28 @@ ms.locfileid: "82857806"
 
      ![Intellij 建立新的專案 Spark](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
 
-1. 選取 [下一步]  。
+1. 選取 [下一步]。
 
 1. 在下一個 [**新增專案**] 視窗中，提供下列資訊：
 
     |屬性 |描述 |
     |---|---|
-    |專案名稱|輸入名稱。 這會逐步解說`myApp`使用。|
+    |專案名稱|輸入名稱。 這會逐步解說使用 `myApp` 。|
     |專案位置|輸入所要的位置以儲存您的專案。|
     |專案 SDK|如果空白，請選取 [**新增 ...** ]，然後流覽至您的 JDK。|
     |Spark 版本|建立精靈會為 Spark SDK 和 Scala SDK 整合正確的版本。 如果 Spark 叢集版本早於 2.0，請選取 [Spark 1.x]  。 否則，請選取 [ **Spark**2.x]。 此範例使用 **Spark 2.3.0 (Scala 2.11.8)** 。|
 
    ![Intellij 新增專案選取 Spark 版本](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
 
-1. 選取 [完成]  。 可能需要幾分鐘的時間，專案才會變成可用。 觀看右下角的進度。
+1. 選取 [完成]。 可能需要幾分鐘的時間，專案才會變成可用。 觀看右下角的進度。
 
-1. 展開您的專案，並流覽至**src** > **主要** > **scala** > **範例**。 按兩下 [ **SparkCore_WasbIOTest**]。
+1. 展開您的專案，並流覽至**src**  >  **主要**  >  **scala**  >  **範例**。 按兩下 [ **SparkCore_WasbIOTest**]。
 
 ## <a name="perform-local-run"></a>執行本機執行
 
 1. 在 [ **SparkCore_WasbIOTest** ] 腳本中，以滑鼠右鍵按一下腳本編輯器，然後選取 [執行 **' SparkCore_WasbIOTest '** ] 選項以執行本機執行。
 
-1. 本機執行完成之後，您可以看到輸出檔案儲存到您目前的 project explorer**資料** > **__預設值__**。
+1. 本機執行完成之後，您可以看到輸出檔案儲存到您目前的 project explorer**資料**  >  **__預設值__**。
 
     ![Intellij 專案本機執行結果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 
@@ -83,7 +82,7 @@ ms.locfileid: "82857806"
     - [WinUtils.exe 位置](#prerequisites)：如果您尚未設定系統環境變數，您可以按一下此按鈕以找到位置。
     - 只要選擇兩個選項之一，在 MacOS 和 Linux 上不需要它們。
 
-1. 您也可以在執行本機執行和本機偵錯之前手動設定。 在上述螢幕擷取畫面中，選取加號（**+**）。 然後選取 [**在 HDInsight 上 Apache Spark** ] 選項。 輸入 [名稱]**** 的資訊、要儲存的**主要類別名稱**，然後按一下本機執行按鈕。
+1. 您也可以在執行本機執行和本機偵錯之前手動設定。 在上述螢幕擷取畫面中，選取加號（ **+** ）。 然後選取 [**在 HDInsight 上 Apache Spark** ] 選項。 輸入 [名稱]**** 的資訊、要儲存的**主要類別名稱**，然後按一下本機執行按鈕。
 
 ## <a name="perform-local-debugging"></a>執行本機偵錯
 
@@ -93,7 +92,7 @@ ms.locfileid: "82857806"
 
 ## <a name="perform-remote-run"></a>執行遠端執行
 
-1. 流覽至 [**執行** > **編輯**設定]。從這個功能表中，您可以建立或編輯遠端偵錯程式的設定。
+1. 流覽至 [**執行**  >  **編輯**設定]。從這個功能表中，您可以建立或編輯遠端偵錯程式的設定。
 
 1. 在 [Run/Debug Configurations] \(執行/偵錯設定)**** 對話方塊中，選取加號 (**+**)。 然後選取 [**在 HDInsight 上 Apache Spark** ] 選項。
 

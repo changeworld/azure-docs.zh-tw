@@ -4,10 +4,9 @@ description: 瞭解如何設定您的 Azure 環境，以用於藍圖操作員內
 ms.date: 05/06/2020
 ms.topic: how-to
 ms.openlocfilehash: a61997f5e3247e5b42d5e2f07c0fc38cc1b5114d
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864006"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>設定藍圖操作員環境

@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82024841"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>在 Azure 中設定應用程式的 TLS
@@ -34,7 +33,7 @@ ms.locfileid: "82024841"
 
 * 憑證必須包含公開金鑰。
 * 憑證必須是為了進行金鑰交換而建立，且可匯出成個人資訊交換檔 (.pfx)。
-* 憑證的主體名稱必須符合用來存取雲端服務的網域。 您無法從 cloudapp.net 網域的憑證授權單位單位（CA）取得 TLS/SSL 憑證。 您必須取得要在存取您的服務時使用的自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用來存取應用程式的自訂網域名稱。 例如，如果您的自訂功能變數名稱為**contoso.com** ，您會向 CA 要求 ***. contoso.com**或**\.www contoso.com**的憑證。
+* 憑證的主體名稱必須符合用來存取雲端服務的網域。 您無法從 cloudapp.net 網域的憑證授權單位單位（CA）取得 TLS/SSL 憑證。 您必須取得要在存取您的服務時使用的自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用來存取應用程式的自訂網域名稱。 例如，如果您的自訂功能變數名稱為**contoso.com** ，您會向 CA 要求 ***. contoso.com**或**www \. contoso.com**的憑證。
 * 憑證至少必須以 2048 位元加密。
 
 基於測試目的，您可以 [建立](cloud-services-certs-create.md) 並使用自我簽署憑證。 自我簽署憑證不是由 CA 驗證，因此可以使用 cloudapp.net 網域做為網站 URL。 例如，以下工作即使用自我簽署憑證，該憑證中使用的一般名稱 (CN) 為 **sslexample.cloudapp.net**。
@@ -76,7 +75,7 @@ ms.locfileid: "82024841"
 
    權限 (`permissionLevel` 屬性) 可設為下列其中一個值：
 
-   | 權限值 | 描述 |
+   | 權限值 | Description |
    | --- | --- |
    | limitedOrElevated |**(預設值)** 所有角色處理序都可以存取私密金鑰。 |
    | elevated |只有較高權限的處理序可以存取私密金鑰。 |
@@ -139,7 +138,7 @@ ms.locfileid: "82024841"
 
     ![發佈您的雲端服務](media/cloud-services-configure-ssl-certificate-portal/browse.png)
 
-2. 按一下 [憑證]****。
+2. 按一下 [憑證]。
 
     ![按一下憑證圖示](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
 
@@ -174,7 +173,7 @@ ms.locfileid: "82024841"
 ## <a name="next-steps"></a>後續步驟
 * [雲端服務的一般設定](cloud-services-how-to-configure-portal.md)。
 * 了解如何 [部署雲端服務](cloud-services-how-to-create-deploy-portal.md)。
-* 設定 [自訂網域名稱](cloud-services-custom-domain-name-portal.md)。
+* 設定[自訂功能變數名稱](cloud-services-custom-domain-name-portal.md)。
 * [管理您的雲端服務](cloud-services-how-to-manage-portal.md)。
 
 

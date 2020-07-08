@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 539665c4756a7dc87078922421b45a88404f58f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868149"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>從內部部署存取您的 CloudSimple 私用雲端環境和應用程式
@@ -24,7 +23,7 @@ ms.locfileid: "81868149"
 
 若要存取您的私用雲端 vCenter 和 NSX-T manager，必須在內部部署防火牆上開啟下表中定義的埠。  
 
-| 連接埠       | 來源                           | Destination                      | 目的                                                                                                                |
+| Port       | 來源                           | Destination                      | 目的                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 53（UDP）   | 內部部署 DNS 伺服器          | 私人雲端 DNS 伺服器        | 將*az.cloudsimple.io*的 DNS 查閱從內部部署網路轉送到私人雲端 DNS 伺服器時的必要項。       |
 | 53（UDP）   | 私人雲端 DNS 伺服器        | 內部部署 DNS 伺服器          | 將 DNS 查詢從私用雲端 vCenter 到內部部署 DNS 伺服器的註冊所需。 |
@@ -37,7 +36,7 @@ ms.locfileid: "81868149"
 
 若要將內部部署 active directory 設定為私人雲端 vCenter 上的身分識別來源，必須開啟資料表中定義的埠。  如需設定步驟，請參閱[使用 Azure AD 做為 CloudSimple 私用雲端上的 vCenter 身分識別提供者](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-ad/)。
 
-| 連接埠         | 來源                           | Destination                                         | 目的                                                                                                                                          |
+| Port         | 來源                           | Destination                                         | 目的                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | 53（UDP）      | 私人雲端 DNS 伺服器        | 內部部署 DNS 伺服器                             | 將 DNS 內部部署 active directory 功能變數名稱從私人雲端 vCenter 轉送至內部部署 DNS 伺服器時的必要項。          |
 | 389 (TCP/UDP) | 私人雲端管理網路 | 內部部署 active directory 網域控制站     | 從私人雲端 vCenter 伺服器到 active directory 網域控制站的 LDAP 通訊需要進行使用者驗證。                |
@@ -49,7 +48,7 @@ ms.locfileid: "81868149"
 
 存取在私人雲端上執行的工作負載虛擬機器需要在您的內部部署防火牆上開啟埠。  下表顯示所需的一些常用埠和其用途。  如需任何應用程式特定的埠需求，請參閱應用程式檔。
 
-| 連接埠         | 來源                         | Destination                          | 目的                                                                              |
+| Port         | 來源                         | Destination                          | 目的                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
 | 22（TCP）      | 內部部署網路            | 私人雲端工作負載網路       | 對在私人雲端上執行的 Linux 虛擬機器進行安全 shell 存取。              |
 | 3389（TCP）    | 內部部署網路            | 私人雲端工作負載網路       | 在私人雲端上執行的 windows 虛擬機器的遠端桌面。                 |

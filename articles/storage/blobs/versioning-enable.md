@@ -10,17 +10,16 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82884341"
 ---
-# <a name="enable-and-manage-blob-versioning"></a>啟用和管理 blob 版本設定
+# <a name="enable-and-manage-blob-versioning"></a>啟用和管理 Blob 版本設定
 
 您可以使用 Azure 入口網站或 Azure Resource Manager 範本，隨時為儲存體帳戶啟用或停用 blob 版本設定（預覽）。
 
-## <a name="enable-blob-versioning"></a>啟用 blob 版本設定
+## <a name="enable-blob-versioning"></a>啟用 Blob 版本設定
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
@@ -37,7 +36,7 @@ ms.locfileid: "82884341"
 若要使用範本啟用 blob 版本設定，請建立一個範本，並將**IsVersioningEnabled**屬性設定為**true**。 下列步驟說明如何在 Azure 入口網站中建立範本。
 
 1. 在 [Azure 入口網站中，選擇 [**建立資源**]。
-1. 在 [搜尋 Marketplace]**** 中，輸入**範本部署**，然後按 **ENTER**。
+1. 在 **[搜尋 Marketplace**] 中，輸入**範本部署**，然後按**enter**。
 1. 選擇 [**範本部署**]，選擇 [**建立**]，然後**在編輯器中選擇 [建立您自己的範本**]。
 1. 在 [範本編輯器] 中，貼上下列 JSON。 使用您的儲存體帳戶名稱取代 `<accountName>` 預留位置。
 1. 儲存範本。
@@ -154,5 +153,5 @@ static void PrintMetadata(Response<BlobProperties> propertiesResponse)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Blob 版本設定（預覽）](versioning-overview.md)
+- [Blob 版本設定 (預覽)](versioning-overview.md)
 - [Azure 儲存體 Blob 的虛刪除](soft-delete-overview.md)

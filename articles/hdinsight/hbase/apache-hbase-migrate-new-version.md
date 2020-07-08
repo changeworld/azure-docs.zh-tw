@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: d7fb7b6b409a4e24be97ee61fc7ba1f0c0a93202
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792627"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>將 Apache HBase 叢集移轉至新的版本
@@ -176,7 +175,7 @@ ms.locfileid: "82792627"
 
 1. 若要確定系統已排清 memstore 中的任何新資料，請再次執行上述指令碼。
 
-1. 在舊叢集上登入[Apache Ambari](https://ambari.apache.org/) （`https://OLDCLUSTERNAME.azurehdidnsight.net`），並停止 HBase 服務。 當系統提示您確認是否要停止服務時，請核取 [開啟 HBase 的維護模式] 核取方塊。 如需連線至 Ambari 及使用 Ambari 的詳細資訊，請參閱[使用 Ambari Web UI 管理 HDInsight 叢集](../hdinsight-hadoop-manage-ambari.md)。
+1. 在舊叢集上登入[Apache Ambari](https://ambari.apache.org/) （ `https://OLDCLUSTERNAME.azurehdidnsight.net` ），並停止 HBase 服務。 當系統提示您確認是否要停止服務時，請核取 [開啟 HBase 的維護模式] 核取方塊。 如需連線至 Ambari 及使用 Ambari 的詳細資訊，請參閱[使用 Ambari Web UI 管理 HDInsight 叢集](../hdinsight-hadoop-manage-ambari.md)。
 
     ![在 [Ambari] 中，按一下 [服務]，> HBase > 停止](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
@@ -190,14 +189,14 @@ ms.locfileid: "82792627"
 
 1. 如果您未搭配使用 HBase 叢集與增強式寫入功能，請略過此步驟。 只有具有增強式寫入功能的 HBase 叢集才需要它。
 
-   將`hbase.rootdir`路徑變更為指向原始叢集的容器。
+   將 `hbase.rootdir` 路徑變更為指向原始叢集的容器。
 
     ![在 Ambari 中，變更 HBase rootdir 的容器名稱](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
 
 1. 如果您要將 HDInsight 3.6 升級至4.0，請遵循下列步驟，否則請跳至步驟10：
-    1. 選取 [**服務** > ] [**全部必要**]，重新開機 Ambari 中所有必要的服務。
+    1. 選取 [**服務**] [  >  **全部必要**]，重新開機 Ambari 中所有必要的服務。
     1. 停止 HBase 服務。
-    1. 透過 SSH 連線至 Zookeeper 節點，並執行[zkCli](https://github.com/go-zkcli/zkcli)命令`rmr /hbase-unsecure`以從 Zookeeper 移除 HBase 根 znode。
+    1. 透過 SSH 連線至 Zookeeper 節點，並執行[zkCli](https://github.com/go-zkcli/zkcli)命令 `rmr /hbase-unsecure` 以從 Zookeeper 移除 HBase 根 znode。
     1. 重新開機 HBase。
 
 1. 如果您要升級至4.0 以外的任何其他 HDInsight 版本，請遵循下列步驟：
@@ -220,4 +219,4 @@ ms.locfileid: "82792627"
 * [將 HDInsight 叢集升級為更新的版本](../hdinsight-upgrade-cluster.md)
 * [使用 Apache Ambari Web UI 監視和管理 Azure HDInsight](../hdinsight-hadoop-manage-ambari.md)
 * [Apache Hadoop 元件和版本](../hdinsight-component-versioning.md)
-* [將 Apache HBase 優化](../optimize-hbase-ambari.md)
+* [將 Apache HBase 最佳化](../optimize-hbase-ambari.md)

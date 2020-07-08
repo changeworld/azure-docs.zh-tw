@@ -11,10 +11,9 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758949"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>將 RuuviTag 感應器連線到您的 Azure IoT Central 應用程式
@@ -31,7 +30,7 @@ RuuviTag 會透過 BLE （藍牙低功耗）進行通訊，並要求閘道裝置
 
 如果您想要設定 Rigado Cascade 500 閘道裝置，請遵循[這裡的指示](./howto-connect-rigado-cascade-500.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要連接 RuuviTag 感應器，您需要下列資源：
 
@@ -45,8 +44,8 @@ RuuviTag 會透過 BLE （藍牙低功耗）進行通訊，並要求閘道裝置
 
 若要新增 RuuviTag 裝置範本：
 
-1. 流覽至左窗格中的 [***裝置範本***] 索引標籤，選取![[ **+ 新增**]](./media/howto-connect-ruuvi/devicetemplate-new.png) ： [建立新的裝置範本] 頁面可讓您選擇***建立自訂範本***，或***使用預先設定的裝置範本***
-1. 從預先設定的裝置範本清單中選取 [RuuviTag 裝置] 範本，如下![所示：選取 [RuuviTag] [裝置範本]](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. 流覽至左窗格中的 [***裝置範本***] 索引標籤，選取 [ **+ 新增**]： ![ [建立新的裝置範本] ](./media/howto-connect-ruuvi/devicetemplate-new.png) 頁面可讓您選擇***建立自訂範本***，或***使用預先設定的裝置範本***
+1. 從預先設定的裝置範本清單中選取 [RuuviTag 裝置] 範本，如下所示：選取 [RuuviTag] [ ![ 裝置範本]](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
 1. 選取 ***[下一步]： [自訂***] 繼續進行下一個步驟。
 1. 在下一個畫面上，選取 [***建立***]，將 C500 裝置範本上架到 IoT Central 應用程式中。
 
@@ -69,14 +68,14 @@ RuuviTag 會透過 BLE （藍牙低功耗）進行通訊，並要求閘道裝置
 若要建立模擬 RuuviTag：
 
 1. 選取 [**裝置] > RuuviTag**。
-1. 選取 [+ 新增]  。
+1. 選取 [+ 新增]。
 1. 指定唯一的**裝置識別碼**和易記的**裝置名稱**。  
-1. 啟用**模擬**設定。
-1. 選取 [建立]  。  
+1. 啟用 [模擬] 設定。
+1. 選取 [建立]。  
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您是裝置開發人員，建議的後續步驟如下：
+如果您是裝置開發人員，則建議的後續步驟如下：
 
-- 閱讀[Azure IoT Central 中的裝置連線能力](./concepts-get-connected.md)
-- 瞭解如何[使用 Azure CLI 監視裝置連線能力](./howto-monitor-devices-azure-cli.md)
+- 閱讀 [Azure IoT Central 中的裝置連線能力](./concepts-get-connected.md)
+- 了解如何[使用 Azure CLI 監視裝置連線能力](./howto-monitor-devices-azure-cli.md)

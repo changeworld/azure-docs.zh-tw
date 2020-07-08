@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857399"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>撰寫 Azure 媒體播放機的外掛程式 #
@@ -33,7 +32,7 @@ ms.locfileid: "82857399"
     }).call(this);
 ```
 
-您可以直接在 HTML 網頁的`<script>`標記或外部 JavaScript 檔案中撰寫程式碼。 如果您這樣做，請務必將 JavaScript 檔案包含在您的 HTML `<head>`網頁中的 AMP 腳本*之後*。
+您可以直接在 HTML 網頁的 `<script>` 標記或外部 JavaScript 檔案中撰寫程式碼。 如果您這樣做，請務必將 JavaScript 檔案包含在 `<head>` 您的 HTML 網頁中的 AMP 腳本*之後*。
 
 範例：
 

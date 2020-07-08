@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 91d3dd2eee6f771df23b72eae7a33122c42f1690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869339"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>從 [Azure 入口網站] 的 [CloudSimple] 入口網站存取 VMware 解決方案
@@ -23,7 +22,7 @@ ms.locfileid: "81869339"
 
 具有內建**擁有**者和**參與者**角色的使用者可以存取 CloudSimple 入口網站。  您必須在部署 CloudSimple 服務的資源群組上設定角色。  角色也可以在 CloudSimple 服務物件上進行設定。  如需檢查角色的詳細資訊，請參閱[View role 指派](https://docs.microsoft.com/azure/role-based-access-control/check-access)一文。 只有具備內建**擁有**者和**參與者**角色的使用者可以存取 CloudSimple 入口網站。  必須在訂用帳戶上設定角色。  如需檢查角色的詳細資訊，請參閱[View role 指派](https://docs.microsoft.com/azure/role-based-access-control/check-access)一文。
 
-如果您使用自訂角色，此角色應該會有下列任何一項作業```Actions```。  如需自訂角色的詳細資訊，請參閱[適用于 Azure 資源的自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。  如果有任何作業屬於的一部分```NotActions```，使用者就無法存取 CloudSimple 入口網站。
+如果您使用自訂角色，此角色應該會有下列任何一項作業 ```Actions``` 。  如需自訂角色的詳細資訊，請參閱[適用于 Azure 資源的自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。  如果有任何作業屬於的一部分 ```NotActions``` ，使用者就無法存取 CloudSimple 入口網站。
 
 ```
 Microsoft.VMwareCloudSimple/*
