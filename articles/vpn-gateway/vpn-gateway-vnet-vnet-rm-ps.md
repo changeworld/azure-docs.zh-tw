@@ -4,15 +4,14 @@ description: 使用 VNet 對 VNet 連線和 PowerShell，將虛擬網路連在�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5477eea12ee41bae42365555e38aa95ca0faeb3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75860515"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987103"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 設定 VNet 對 VNet 的 VPN 閘道連線
 

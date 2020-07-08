@@ -4,12 +4,11 @@ description: 概述使用無狀態與具狀態服務來建立 Microsoft Azure Se
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
-ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0a8d5a05f922cd01067abbc3e98320a32cd9d256
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083749"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038016"
 ---
 # <a name="get-started-with-reliable-services"></a>開始使用 Reliable Service
 
@@ -30,7 +29,7 @@ Azure Service Fabric 應用程式包含一個或多個執行您的程式碼的�
 
 ## <a name="create-a-stateless-service"></a>建立無狀態服務
 
-無狀態服務是目前在雲端應用程式中做為基準的服務類型。 服務會視為無狀態，因為服務本身不包含需要可靠地儲存或設為高度可用的資料。 如果無狀態服務的執行個體關閉，其所有內部狀態都會遺失。 在此類型的服務中，狀態必須保存到外部存放區，例如 Azure 資料表或 SQL 資料庫中，才能成為高度可用且可靠。
+無狀態服務是目前在雲端應用程式中做為基準的服務類型。 服務會視為無狀態，因為服務本身不包含需要可靠地儲存或設為高度可用的資料。 如果無狀態服務的執行個體關閉，其所有內部狀態都會遺失。 在這種類型的服務中，必須將狀態保存到外部存放區（例如 Azure 資料表或 SQL Database），使其成為高可用性和可靠的。
 
 以系統管理員身分啟動 Visual Studio 2017 或 Visual Studio 2019，並建立名為*HelloWorld*的新 Service Fabric 應用程式專案：
 
@@ -119,7 +118,7 @@ Service Fabric 導入了一種可設定狀態的新服務。 具狀態服務能�
 
 ![將服務加入 Service Fabric 應用程式](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-選取 [ **.Net Core 2.0-> 具狀態服務**]，並將其命名為*HelloWorldStateful*。 按一下 [確定]  。
+選取 [ **.Net Core 2.0-> 具狀態服務**]，並將其命名為*HelloWorldStateful*。 按一下 [確定]。
 
 ![使用新增專案對話方塊來建立新的 Service Fabric 具狀態服務](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
@@ -193,7 +192,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-除了語言整合式查詢（LINQ）之外， `System.Collections.Generic`可靠`System.Collections.Concurrent`的集合具有與其和對應專案相同的許多相同作業。 可靠的集合上的作業是非同步的。 這是因為具備可靠集合的寫入作業執行 I/O 作業以將資料複寫並保存至磁碟。
+`System.Collections.Generic` `System.Collections.Concurrent` 除了語言整合式查詢（LINQ）之外，可靠的集合具有與其和對應專案相同的許多相同作業。 可靠的集合上的作業是非同步的。 這是因為具備可靠集合的寫入作業執行 I/O 作業以將資料複寫並保存至磁碟。
 
 可靠的集合作業為「交易式」 ** 作業，因此您可以在多個可靠的集合和作業之間維持狀態的一致。 比方說，您可能會從可靠佇列取出一個工作項目、對它執行作業，然後將結果儲存在可靠字典中，全都在單一交易中完成。 這會被視為不可部分完成的作業，而且它可保證整個作業都會成功，或整個作業都會回復。 如果您從佇列取消項目之後，但在您儲存結果之前發生錯誤，那麼會回復整個交易，且項目會保持在佇列中進行處理。
 

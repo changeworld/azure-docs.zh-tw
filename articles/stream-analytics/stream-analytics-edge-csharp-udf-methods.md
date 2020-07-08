@@ -7,12 +7,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.openlocfilehash: 4f9d117ccc763744411bfe24163ed955532e8e56
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994495"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921849"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>開發適用于 Azure 串流分析作業的 .NET Standard 使用者定義函式（預覽）
 
@@ -28,7 +27,7 @@ Azure 串流分析提供類似 SQL 的查詢語言，以對事件資料的串流
 
 如果您想要在任何其他區域中使用這項功能，您可以[要求存取權](https://aka.ms/ccodereqregion)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Azure 串流分析的 Visual Studio 工具可讓您輕鬆地撰寫 UDF、在本機 (甚至離線) 測試工作，並將串流分析工作發佈至 Azure。 發佈至 Azure 後，您便可使用 IoT 中樞將工作發佈至 IoT 裝置。
 
 有三種方式可以實作 UDF：
@@ -50,7 +49,7 @@ Azure 串流分析的 Visual Studio 工具可讓您輕鬆地撰寫 UDF、在本�
 |FLOAT | double |
 |nvarchar(max) | 字串 |
 |Datetime | Datetime |
-|Record | 字典\<字串，物件> |
+|記錄 | 字典\<string, object> |
 |Array | 物件 [] |
 
 當資料需要從 c # 封送處理至 Azure 串流分析（在 UDF 的輸出值上發生）時，也是如此。 下表顯示支援的類型：
@@ -61,10 +60,10 @@ Azure 串流分析的 Visual Studio 工具可讓您輕鬆地撰寫 UDF、在本�
 |double  |  FLOAT   |
 |字串  |  nvarchar(max)   |
 |Datetime  |  dateTime   |
-|struct  |  Record   |
-|物件 (object)  |  Record   |
+|struct  |  記錄   |
+|物件 (object)  |  記錄   |
 |物件 []  |  Array   |
-|字典\<字串，物件>  |  Record   |
+|字典\<string, object>  |  記錄   |
 
 ## <a name="codebehind"></a>CodeBehind
 您可以使用 **Script.asql** CodeBehind 撰寫使用者定義的函式。 Visual Studio 工具會自動將 CodeBehind 檔案編譯成組件檔。 組件會封裝為 zip 檔案，並在您將工作提交到 Azure 時上傳到您的儲存體帳戶。 您可以遵循 [針對 Azure 串流分析 Edge 作業撰寫 C# UDF](stream-analytics-edge-csharp-udf.md) 教學課程，了解如何使用 CodeBehind 撰寫 C# UDF。 
@@ -139,12 +138,12 @@ Azure 串流分析的 Visual Studio 工具可讓您輕鬆地撰寫 UDF、在本�
    |自訂程式碼儲存體設定儲存體帳戶|< 您的儲存體帳戶 >|
    |自訂程式碼儲存體設定容器|< 您的儲存體容器 >|
    |自訂程式碼元件來源|來自雲端的現有元件套件|
-   |自訂程式碼元件來源|UserCustomCode .zip|
+   |自訂程式碼元件來源|UserCustomCode.zip|
 
 ## <a name="user-logging"></a>使用者記錄
 當作業正在執行時，記錄機制可讓您捕捉自訂資訊。 您可以使用記錄資料來即時偵測或評估自訂程式碼的正確性。
 
-`StreamingContext`類別可讓您使用`StreamingDiagnostics.WriteError`函數發佈診斷資訊。 下列程式碼顯示 Azure 串流分析所公開的介面。
+`StreamingContext`類別可讓您使用函數發佈診斷資訊 `StreamingDiagnostics.WriteError` 。 下列程式碼顯示 Azure 串流分析所公開的介面。
 
 ```csharp
 public abstract class StreamingContext
@@ -158,7 +157,7 @@ public abstract class StreamingDiagnostics
 }
 ```
 
-`StreamingContext`會以輸入參數的形式傳遞至 UDF 方法，並可在 UDF 內用來發行自訂記錄資訊。 在下列範例中， `MyUdfMethod`會定義查詢所提供的**資料**輸入，以及由執行時間引擎所提供的`StreamingContext`**內容**輸入。 
+`StreamingContext`會以輸入參數的形式傳遞至 UDF 方法，並可在 UDF 內用來發行自訂記錄資訊。 在下列範例中， `MyUdfMethod` 會定義查詢所提供的**資料**輸入，以及由執行時間引擎所提供的**內容**輸入 `StreamingContext` 。 
 
 ```csharp
 public static long MyUdfMethod(long data, StreamingContext context)
@@ -170,7 +169,7 @@ public static long MyUdfMethod(long data, StreamingContext context)
 }
 ```
 
-此`StreamingContext`值不需要由 SQL 查詢傳入。 Azure 串流分析如果有輸入參數，就會自動提供內容物件。 的使用不`MyUdfMethod`會變更，如下列查詢所示：
+此 `StreamingContext` 值不需要由 SQL 查詢傳入。 Azure 串流分析如果有輸入參數，就會自動提供內容物件。 的使用不 `MyUdfMethod` 會變更，如下列查詢所示：
 
 ```sql
 SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
@@ -186,6 +185,10 @@ UDF 預覽目前有以下限制：
 * 在入口網站中使用 .NET Standard UDF 時，Azure 入口網站查詢編輯器會顯示錯誤。 
 
 * 由於自訂程式碼會與 Azure 串流分析引擎共用內容，因此自訂程式碼不會參照任何命名空間/dll_name 與 Azure 串流分析程式碼衝突的項目。 例如，您無法參照 *Newtonsoft Json*。
+
+* 專案中所包含的支援檔案會複製到您將作業發佈到雲端時所使用的使用者自訂程式碼 zip 檔案。 子資料夾中的所有檔案都會在解壓縮時，直接複製到雲端中的使用者自訂程式碼資料夾的根目錄。 解壓縮時，zip 會「壓平合併」。
+
+* 使用者自訂程式碼不支援空的資料夾。 請勿將空的資料夾新增至專案中的支援檔案。
 
 ## <a name="next-steps"></a>後續步驟
 

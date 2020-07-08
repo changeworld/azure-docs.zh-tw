@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 在虛擬機器擴展集上設定受控識別-Azure AD
-description: 使用 PowerShell 在虛擬機器擴展集上設定系統和使用者指派受控識別的逐步指示。
+description: 逐步指示，說明如何使用 PowerShell 在虛擬機器擴展集上設定系統和使用者指派的受控識別。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 755aee312fd0492fd57a82cb7a437b04ebf72987
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 23d549d3b59eabbeab6b8a892cb6800f0088ece2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74547276"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609057"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>使用 PowerShell 在虛擬機器擴展集上設定 Azure 資源的受控識別
 
@@ -34,9 +33,9 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者受控指派身分識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)**。
+- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者受控指派身分識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 - 若要執行本文中的管理作業，您的帳戶需要下列 Azure 角色型存取控制指派：
 
@@ -74,7 +73,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    Connect-AzAccount
    ```
 
-2. 首先，使用[`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) Cmdlet 來取出虛擬機器擴展集屬性。 然後在 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) Cmdlet 上使用 `-IdentityType` 參數來啟用系統指派的受控識別：
+2. 首先，使用 Cmdlet 來取出虛擬機器擴展集屬性 [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) 。 然後在 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) Cmdlet 上使用 `-IdentityType` 參數來啟用系統指派的受控識別：
 
    ```powershell
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"

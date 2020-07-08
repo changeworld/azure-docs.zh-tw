@@ -10,17 +10,16 @@ ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: ''
-ms.topic: overview
+ms.topic: conceptual
 ms.custom: mvc
 ms.date: 06/11/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82158aeae614112c47a2288ceb867b382c6a159a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: HT
+ms.openlocfilehash: b61fd2f9bc36743754a43b05629a798f0305d4e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740239"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609204"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>Azure 資源受控識別如何與 Azure 虛擬機器搭配運作
 
@@ -92,4 +91,4 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 透過下列快速入門，開始使用適用於 Azure 資源的受控識別功能：
 
 * [使用 Windows VM 系統指派的受控識別來存取 Resource Manager](tutorial-windows-vm-access-arm.md)
-* [使用 Linux VM 系統指派的受控識別來存取 Resource Manager](tutorial-linux-vm-access-arm.md) how-managed-identities-work-vm
+* [使用 Linux VM 系統指派的受控識別來存取 Resource Manager](tutorial-linux-vm-access-arm.md)

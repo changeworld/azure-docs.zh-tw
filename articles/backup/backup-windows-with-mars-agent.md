@@ -3,14 +3,13 @@ title: 使用 MARS 代理程式備份 Windows 機器
 description: 使用 Microsoft Azure 復原服務（MARS）代理程式來備份 Windows 電腦。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 002f4cd2e0582fb87af622f721f286bd78920350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4f0e605185be6db8629144e05f5f39309a3831ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604840"
 ---
-# <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>使用 Azure 備份 MARS 代理程式來備份 Windows 機器
+# <a name="back-up-windows-server-files-and-folders-to-azure"></a>將 Windows Server 檔案和資料夾備份至 Azure
 
 本文說明如何使用[Azure 備份](backup-overview.md)服務和 MICROSOFT AZURE 復原服務（MARS）代理程式來備份 Windows 電腦。 MARS 也稱為 Azure 備份代理程式。
 
@@ -30,7 +29,7 @@ ms.locfileid: "82193287"
 * 確認您要備份之電腦上的[網際網路存取權](install-mars-agent.md#verify-internet-access)。
 * 如果未安裝 MARS 代理程式，請[在這裡](install-mars-agent.md)瞭解如何安裝。
 
-## <a name="create-a-backup-policy"></a>建立備份原則 
+## <a name="create-a-backup-policy"></a>建立備份原則
 
 備份原則會指定何時製作資料的快照集，以建立復原點。 它也會指定保留復原點的時間長度。 您可以使用 MARS 代理程式來設定備份原則。
 
@@ -43,7 +42,7 @@ Azure 備份不會自動將日光節約時間（DST）納入考慮。 這個預�
 1. 在 [**動作**] 底下，選取 [**排程備份**]。
 
     ![Windows Server 備份排程](./media/backup-configure-vault/schedule-first-backup.png)
-1. 在 [排程備份] 中，**選取** > **[下一步]**。
+1. 在 [排程備份] 中，**選取**  >  **[下一步]**。
 1. 在 [**選取要備份的專案**] 底下，選取 [**新增專案**]。
 
     ![新增要備份的專案](./media/backup-azure-manage-mars/select-item-to-backup.png)
@@ -53,7 +52,7 @@ Azure 備份不會自動將日光節約時間（DST）納入考慮。 這個預�
     ![選取要備份的項目](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
 1. 在 [**選取要備份的專案**] 頁面上，選取 **[下一步]**。
-1. 在 [**指定備份排程**] 頁面上，指定每日或每週備份的時間。 然後選取 [下一步]  。
+1. 在 [**指定備份排程**] 頁面上，指定每日或每週備份的時間。 然後選取 [下一步]。
 
     * 執行備份時，會建立復原點。
     * 在您的環境中建立的復原點數目取決於您的備份排程。
@@ -65,7 +64,7 @@ Azure 備份不會自動將日光節約時間（DST）納入考慮。 這個預�
 
         ![設定每週備份排程](./media/backup-configure-vault/week-schedule.png)
 
-1. 在 [**選取保留原則**] 頁面上，指定如何儲存資料的歷程記錄複本。 然後選取 [下一步]  。
+1. 在 [**選取保留原則**] 頁面上，指定如何儲存資料的歷程記錄複本。 然後選取 [下一步]。
 
     * 保留設定會指定要儲存的復原點，以及儲存它們的時間長度。
     * 若為每日保留設定，表示在指定的每日保留期間，最新的復原點會保留指定的天數。 或者，您可以指定每月的保留原則，表示每個月30日所建立的復原點應該儲存12個月。
@@ -79,7 +78,7 @@ Azure 備份不會自動將日光節約時間（DST）納入考慮。 這個預�
 
         ![保留原則的範例](./media/backup-configure-vault/retention-example.png)
 
-1. 在 [**選擇初始備份類型**] 頁面上，決定您是否要透過網路進行初始備份，或使用離線備份。 若要透過網路進行初始備份，請在**Automatically over the network** > **下一步**選取 [自動透過網路]。
+1. 在 [**選擇初始備份類型**] 頁面上，決定您是否要透過網路進行初始備份，或使用離線備份。 若要透過網路進行初始備份，請在**Automatically over the network**  >  **下一步**選取 [自動透過網路]。
 
     如需離線備份的詳細資訊，請參閱[使用 Azure 資料箱進行離線備份](offline-backup-azure-data-box.md)。
 
@@ -125,7 +124,7 @@ Azure 備份中的網路節流會使用本機作業系統上的[服務品質（Q
 1. 在 [節流]**** 索引標籤上，選取 [啟用備份作業的網際網路頻寬使用節流功能]****。
 
     ![設定備份作業的網路節流](./media/backup-configure-vault/throttling-dialog.png)
-1. 指定工作時間和非時數所允許的頻寬。 頻寬值從 512 Kbps 開始，最高可達 1023 MBps。 然後選取 [確定]  。
+1. 指定工作時間和非時數所允許的頻寬。 頻寬值從 512 Kbps 開始，最高可達 1023 MBps。 然後選取 [確定]。
 
 ## <a name="run-an-on-demand-backup"></a>執行隨選備份
 
@@ -150,7 +149,7 @@ Azure 備份中的網路節流會使用本機作業系統上的[服務品質（Q
 
 | 備份-排程選項 | 保留資料的持續時間
 | -- | --
-| Day | **預設保留**：相當於「每日備份的保留天數」。 <br/><br/> **例外**狀況：如果針對長期保留（周、月或年）設定的每日排程備份失敗，則在失敗後立即觸發的隨選備份會被視為長期保留。 否則，下一個排定的備份會被視為長期保留。<br/><br/> **範例案例**：上午8:00 的星期二排程備份失敗。 這是要考慮每週、每月或每年保留的備份。 因此，在下一次排定的備份在星期五上午8:00 時觸發的第一個隨選備份會自動標記為每週、每月或每年保留。 此備份會取代星期四上午8:00 的備份。
+| 天 | **預設保留**：相當於「每日備份的保留天數」。 <br/><br/> **例外**狀況：如果針對長期保留（周、月或年）設定的每日排程備份失敗，則在失敗後立即觸發的隨選備份會被視為長期保留。 否則，下一個排定的備份會被視為長期保留。<br/><br/> **範例案例**：上午8:00 的星期二排程備份失敗。 這是要考慮每週、每月或每年保留的備份。 因此，在下一次排定的備份在星期五上午8:00 時觸發的第一個隨選備份會自動標記為每週、每月或每年保留。 此備份會取代星期四上午8:00 的備份。
 | 週 | **預設保留期**：一天。 針對具有每週備份原則的資料來源所進行的隨選備份會在下一天刪除。 即使是資料來源的最新備份，它們也會被刪除。 <br/><br/> **例外**狀況：如果為長期保留（周、月或年）設定的每週排程備份失敗，則在失敗後立即觸發的隨選備份會被視為長期保留。 否則，下一個排定的備份會被視為長期保留。 <br/><br/> **範例案例**：上午8:00 的星期二排程備份失敗。 此備份會考慮每月或每年保留。 因此，系統會自動為每月或每年保留期，將第一個排定的備份在星期四上午8:00 的時間點觸發。 此備份會取代星期四上午8:00 的備份。
 
 如需詳細資訊，請參閱[建立備份原則](#create-a-backup-policy)。

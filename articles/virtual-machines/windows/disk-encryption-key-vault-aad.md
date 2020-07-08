@@ -8,18 +8,17 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8610beb8903c979f0d5f5e71bd6710a3ccb49bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 05d2ec362a81052b94746bdcfb0653e6366a3b32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513562"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 建立和設定 Azure 磁碟加密的金鑰保存庫（舊版）
 
 **新版本的 Azure 磁碟加密不需要提供 Azure AD 的應用程式參數，即可啟用 VM 磁片加密。在新版本中，您不再需要在啟用加密步驟期間提供 Azure AD 認證。所有新的 Vm 都必須使用新版本的 Azure AD 應用程式參數進行加密。若要使用新版本來查看啟用 VM 磁片加密的指示，請參閱[Azure 磁碟加密](disk-encryption-overview.md)。已使用 Azure AD 應用程式參數進行加密的 Vm 仍然受支援，應該繼續使用 AAD 語法進行維護。**
 
-Azure 磁碟加密使用 Azure Key Vault 來控制及管理磁片加密金鑰和密碼。  如需金鑰保存庫的詳細資訊，請參閱[開始使用 Azure Key Vault](../../key-vault/key-vault-get-started.md) 和[保護金鑰保存庫](../../key-vault/general/secure-your-key-vault.md)。 
+Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金鑰與祕密。  如需金鑰保存庫的詳細資訊，請參閱[開始使用 Azure Key Vault](../../key-vault/key-vault-get-started.md) 和[保護金鑰保存庫](../../key-vault/general/secure-your-key-vault.md)。 
 
 建立及設定金鑰保存庫，以搭配 Azure AD （舊版）的 Azure 磁碟加密使用，包含三個步驟：
 
@@ -28,12 +27,12 @@ Azure 磁碟加密使用 Azure Key Vault 來控制及管理磁片加密金鑰和
 3. 設定 Azure AD 應用程式的金鑰保存庫存取原則。
 4. 設定金鑰保存庫進階存取原則。
  
-如果您想要的話，也可以產生或匯入金鑰加密金鑰（KEK）。
+如果想要的話，您也可以產生或匯入金鑰加密金鑰 (KEK)。
 
 如需有關如何[安裝工具和連線至 Azure](disk-encryption-key-vault.md#install-tools-and-connect-to-azure)的步驟，請參閱[建立和設定 Azure 磁碟加密的金鑰保存庫一](disk-encryption-key-vault.md)文的主要工作。
 
 > [!Note]
-> 本文中的步驟會在[Azure 磁碟加密必要條件 CLI 腳本](https://github.com/ejarvi/ade-cli-getting-started)中自動化，並[Azure 磁碟加密必要條件 PowerShell 腳本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)。
+> 本文中的步驟會在 [Azure 磁碟加密的必要 CLI 指令碼](https://github.com/ejarvi/ade-cli-getting-started)中和 [Azure 磁碟加密的必要 PowerShell 指令碼](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)中自動化。
 
 
 ## <a name="create-a-key-vault"></a>建立金鑰保存庫 
@@ -123,10 +122,10 @@ Azure 磁碟加密會與 [Azure Key Vault](https://azure.microsoft.com/documenta
 ### <a name="set-up-an-azure-ad-app-and-service-principal-though-the-azure-portal"></a> 透過 Azure 入口網站設定 Azure AD 應用程式和服務主體
 請使用[使用入口網站來建立可存取資源的 Active Directory 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)一文中的步驟來建立 Azure AD 應用程式。 下面所列的每個步驟各會帶您直接前往要完成的文章章節。 
 
-1. [確認所需權限](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
-2. [建立 Azure Active Directory 應用程式](../../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
+1. [確認所需權限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)
+2. [建立 Azure Active Directory 應用程式](../../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) 
      - 在建立應用程式時，您可以使用任何您想要的名稱和登入 URL。
-3. [取得應用程式識別碼和驗證金鑰](../../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。 
+3. [取得應用程式識別碼和驗證金鑰](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 
      - 驗證金鑰是用戶端密碼，用來做為 AzVMDiskEncryptionExtension 的 AadClientSecret。 
         - 應用程式會使用驗證金鑰作為認證來登入 Azure AD。 在 Azure 入口網站中，此密碼稱為金鑰，但實際上與金鑰保存庫並無任何關聯。 請適當地保護這個祕密。 
      - 稍後會使用應用程式識別碼做為 AzVMDiskEncryptionExtension 的 AadClientId，並做為 Set-azkeyvaultaccesspolicy 的 ServicePrincipalName。 
@@ -220,7 +219,7 @@ Azure 平台需要存取您金鑰保存庫中的加密金鑰或密碼，讓該�
 1. 選取金鑰保存庫，移至 [存取原則]****，然後**按一下以顯示進階存取原則**。
 2. 選取標示為**為磁碟區加密啟用對 Azure 磁碟加密的存取**的方塊。
 3. 視需要選取 [為部署啟用對 Azure 虛擬機器的存取]**** 及/或 [為範本部署啟用對 Azure Resource Manager 的存取]****。 
-4. 按一下 **[儲存]** 。
+4. 按一下 [檔案] 。
 
 ![Azure 金鑰保存庫進階存取原則](../media/disk-encryption/keyvault-portal-fig4.png)
 

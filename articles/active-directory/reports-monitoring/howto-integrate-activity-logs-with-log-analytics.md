@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,11 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0ef55f6f5117ffa77052118155afea716125a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6a0c68bf11d81925c1b9c3e408434a6f7b1b2694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639733"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608988"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>將 Azure AD 記錄與 Azure 監視器記錄整合
 
@@ -51,7 +50,7 @@ Ignite 工作階段中的下列影片，會示範在特定使用者案例中針�
 > 目前不支援與 B2C 相關的稽核和登入活動記錄。
 >
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 
 若要使用此功能，您必須要有：
 
@@ -68,7 +67,7 @@ Ignite 工作階段中的下列影片，會示範在特定使用者案例中針�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
-2. 選取 [ **Azure Active Directory** > **診斷設定** -> ] [**新增診斷設定**]。 您也可以在 [稽核記錄]**** 或 [登入]**** 頁面中選取 [匯出設定]****，以移至診斷設定組態頁面。  
+2. 選取 [ **Azure Active Directory**  >  **診斷設定**] [  ->  **新增診斷設定**]。 您也可以在 [稽核記錄]**** 或 [登入]**** 頁面中選取 [匯出設定]****，以移至診斷設定組態頁面。  
     
 3. 在 [診斷設定]**** 功能表中選取 [傳送至 Log Analytics 工作區]**** 核取方塊，然後選取 [設定]****。
 

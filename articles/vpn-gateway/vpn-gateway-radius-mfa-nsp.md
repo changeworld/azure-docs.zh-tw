@@ -10,17 +10,16 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 941b6ac86941824351f83592998e8735e3eb8ee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8c439113907c2eb28c41aed3c21c1d27398d5207
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75780363"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987076"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>整合 Azure VPN 閘道 RADIUS 驗證與 NPS 伺服器以進行多重要素驗證 
 
@@ -34,7 +33,7 @@ ms.locfileid: "75780363"
 
 ### <a name="step-1-create-a-virtual-network-gateway"></a>步驟 1：建立虛擬網路閘道
 
-1. 登入[Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在將裝載虛擬網路閘道的虛擬網路中，依序選取 [子網路]**** 和 [閘道子網路]**** 以建立一個子網路。 
 
     ![關於如何新增閘道子網路的影像](./media/vpn-gateway-radiuis-mfa-nsp/gateway-subnet.png)
@@ -65,13 +64,13 @@ ms.locfileid: "75780363"
 
     ![RADIUS 用戶端 Advanced 設定的相關影像](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
-4. 移至 [**原則** > ] [**網路原則**]，按兩下 [**連接到 Microsoft 路由及遠端存取服務器**原則]，選取 **[授與存取權**]，然後按一下 **[確定]**。
+4. 移至 [**原則**] [  >  **網路原則**]，按兩下 [**連接到 Microsoft 路由及遠端存取服務器**原則]，選取 **[授與存取權**]，然後按一下 **[確定]**。
 
 ### <a name="step-3-configure-the-virtual-network-gateway"></a>步驟 3：設定虛擬網路閘道
 
 1. 登入[Azure 入口網站](https://portal.azure.com)。
 2. 開啟您建立的虛擬網路閘道。 確定閘道類型已設定為 **VPN****路由型**。
-3. 按一下 [**點對站** > **設定] [立即設定**]，然後指定下列設定：
+3. 按一下 [**點對站**設定] [  >  **立即設定**]，然後指定下列設定：
 
     - **位址集區**：輸入您在步驟 1 建立的閘道子網路。
     - **驗證類型**：選取 [RADIUS 驗證]****。

@@ -4,12 +4,11 @@ description: 瞭解如何在使用 x.509 憑證保護的 Service Fabric 叢集�
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: ecdeb5c9e30c176e2f3525f8efeb861d9210b202
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196240"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324737"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric 叢集中的憑證管理
 
@@ -69,20 +68,21 @@ Service Fabric，針對其部分，會假設下列各項的責任：
 
 這些步驟如下所示：請注意，分別在指紋和一般名稱宣告的憑證之間提供差異。
 
-*圖1。* 指紋所宣告之憑證的發行和布建流程。
+*圖 1。* 指紋所宣告之憑證的發行和布建流程。
 ![布建指紋所宣告的憑證][Image1]
 
 *圖2。* 主體一般名稱所宣告之憑證的發行和布建流程。
 ![布建由主體一般名稱宣告的憑證][Image2]
 
-### <a name="certificate-enrollment"></a>憑證註冊
+### <a name="certificate-enrollment"></a> 憑證註冊
 本主題將在 Key Vault[檔](../key-vault/create-certificate.md)中詳細說明;我們在此包含概要，以提供持續性和更輕鬆的參考。 繼續使用 Azure 做為內容，並使用 Azure Key Vault 做為秘密管理服務，授權的憑證要求者必須至少擁有保存庫擁有者的憑證管理許可權（由保存庫擁有者授與）;然後，要求者會註冊為憑證，如下所示：
     - 在 Azure Key Vault （AKV）中建立憑證原則，這會指定憑證的網域/主旨、所需的簽發者、金鑰類型和長度、預定的金鑰使用方式等等;如需詳細資訊，請參閱[Azure Key Vault 中的憑證](../key-vault/certificate-scenarios.md)。 
     - 在相同的保存庫中，使用上述指定的原則建立憑證;接著，這會產生金鑰組做為保存庫物件、使用私密金鑰簽署的憑證簽署要求，然後轉送到指定的簽發者以進行簽署
     - 當簽發者（憑證授權單位單位）以簽署的憑證回復後，結果會合並到保存庫中，而憑證可供下列作業使用：
       - 在 {vaultUri}/certificates/{name} 之下：憑證，包括公開金鑰和中繼資料
       - 在 {vaultUri}/keys/{name}：憑證的私密金鑰，可用於密碼編譯作業（換行/解除包裝、簽署/驗證）
-      - 在 {vaultUri}/secrets/{name}：包含其私密金鑰的憑證（可供下載為未受保護的 pfx 或 pem 檔案），回想一下保存庫憑證（事實上是一種依時間排列的憑證實例）共用原則。 將會根據原則的存留期和更新屬性來建立憑證版本。 強烈建議保存庫憑證不共用主體或網域/DNS 名稱;叢集可能會造成干擾，以從不同的保存庫憑證布建憑證實例，但使用相同的主旨，但有不同的其他屬性，例如簽發者、金鑰使用方式等。
+      - 在 {vaultUri}/secrets/{name} 下：包含其私密金鑰的憑證，可供下載為未受保護的 pfx 或 pem 檔案  
+    回想一下，保存庫憑證實際上是憑證實例的時間先後行，共用原則。 將會根據原則的存留期和更新屬性來建立憑證版本。 強烈建議保存庫憑證不共用主體或網域/DNS 名稱;叢集可能會造成干擾，以從不同的保存庫憑證布建憑證實例，但使用相同的主旨，但有不同的其他屬性，例如簽發者、金鑰使用方式等。
 
 此時，保存庫中有憑證存在，可供使用。 向前到：
 
@@ -202,7 +202,7 @@ VMSS/Compute-based 布建提供安全性和可用性優勢，但也會提供限�
   ]
 ```   
 
-上述內容基本上指出具有指紋```json [parameters('primaryClusterCertificateTP')] ```且在 KeyVault URI ```json [parameters('clusterCertificateUrlValue')] ```找到的憑證會宣告為叢集的唯一憑證（依指紋）。 接下來，我們將設定所需的額外資源，以確保憑證的 autorollover。
+上述內容基本上指出具有指紋 ```json [parameters('primaryClusterCertificateTP')] ``` 且在 KEYVAULT URI 找到的憑證 ```json [parameters('clusterCertificateUrlValue')] ``` 會宣告為叢集的唯一憑證（依指紋）。 接下來，我們將設定所需的額外資源，以確保憑證的 autorollover。
 
 ### <a name="setting-up-prerequisite-resources"></a>設定必要條件資源
 如先前所述，Microsoft 計算資源提供者服務會從保存庫取出布建為虛擬機器擴展集秘密的憑證，並使用其第一方身分識別和代表部署操作員來取得。 針對 autorollover，這會變更-我們會切換為使用受控識別、指派給虛擬機器擴展集，並將許可權授與保存庫的密碼。
@@ -414,7 +414,7 @@ VMSS/Compute-based 布建提供安全性和可用性優勢，但也會提供限�
 本節是說明上述步驟的全部深入資訊，並著重于重要層面。
 
 #### <a name="certificate-provisioning-explained"></a>憑證布建，說明
-作為布建代理程式的 KVVM 擴充功能會以預先決定的頻率持續執行。 在無法抓取觀察到的憑證時，它會繼續下一行，然後休眠直到下一個週期。 作為叢集啟動載入代理程式的 SFVM 擴充功能，將需要宣告的憑證，叢集才能形成。 這就表示 SFVM 延伸模組只能在成功抓取叢集憑證之後執行，以```json "provisionAfterExtensions" : [ "KVVMExtension" ]"```子句在此表示，並以 KeyVaultVM 延伸模組的```json "requireInitialSync": true```設定為依據。 這表示在第一次執行時（在部署或重新開機之後），必須迴圈執行其觀察到的憑證，直到成功下載全部為止。 將此參數設定為 false，並結合無法抓取叢集憑證的功能，將會導致叢集部署失敗。 相反地，如果不正確/不正確觀察憑證清單需要初始同步處理，會導致 KVVM 延伸模組失敗，因此無法部署叢集。  
+作為布建代理程式的 KVVM 擴充功能會以預先決定的頻率持續執行。 在無法抓取觀察到的憑證時，它會繼續下一行，然後休眠直到下一個週期。 作為叢集啟動載入代理程式的 SFVM 擴充功能，將需要宣告的憑證，叢集才能形成。 這就表示 SFVM 延伸模組只能在成功抓取叢集憑證之後執行，以子句在此表示， ```json "provisionAfterExtensions" : [ "KVVMExtension" ]"``` 並以 KeyVaultVM 延伸模組的設定為依據 ```json "requireInitialSync": true``` 。 這表示在第一次執行時（在部署或重新開機之後），必須迴圈執行其觀察到的憑證，直到成功下載全部為止。 將此參數設定為 false，並結合無法抓取叢集憑證的功能，將會導致叢集部署失敗。 相反地，如果不正確/不正確觀察憑證清單需要初始同步處理，會導致 KVVM 延伸模組失敗，因此無法部署叢集。  
 
 #### <a name="certificate-linking-explained"></a>憑證連結，說明
 您可能已注意到 KVVM 延伸模組的 ' linkOnRenewal ' 旗標，以及它設定為 false 的事實。 我們將深入探討此旗標所控制的行為，以及其對叢集運作的影響。 請注意，這是 Windows 特有的行為。
@@ -441,7 +441,7 @@ A 的 SAN 清單完全包含在 C 的中，因此也就是更新 = c. 指紋;B �
 
 若要減輕這類事件的風險，我們建議：
   - 請勿混用不同保存庫憑證的 San;每個保存庫憑證都應該提供不同的用途，而且其主體和 SAN 應該會以明確的方式反映該情況
-  - 在 SAN 清單中包含主體一般名稱（例如，以字面說，"CN<subject common name>="）  
+  - 在 SAN 清單中包含主體一般名稱（例如，以字面說，"CN = <subject common name> "）  
   - 如果不確定，請在更新時停用 KVVM 延伸模組所布建憑證的連結 
 
 #### <a name="why-use-a-user-assigned-managed-identity-what-are-the-implications-of-using-it"></a>為何要使用使用者指派的受控識別？ 使用它的含意有哪些？

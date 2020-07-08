@@ -3,16 +3,15 @@ title: 將 Azure Vm 遷移至受控磁碟
 description: 將使用儲存體帳戶中非受控磁碟建立的 Azure 虛擬機器移轉成使用受控磁碟。
 author: roygara
 ms.service: virtual-machines-windows
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/30/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e8f2753ac9062803a2d6252eca1829cb0b168f02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d64ebb053ef01e375edd52ad0bf2c1f424f1b837
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921346"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660828"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>將 Azure VM 移轉至 Azure 中的受控磁碟
 
@@ -23,7 +22,7 @@ Azure 受控磁碟可免除個別管理儲存體帳戶的需求，進而簡化�
 
 您可以在下列案例中移轉到受控磁碟︰
 
-|案例  |發行項  |
+|狀況  |發行項  |
 |---------|---------|
 |將獨立 VM 和可用性設定組中的 VM 轉換成受控磁碟     |[將 VM 轉換成使用受控磁碟](convert-unmanaged-to-managed-disks.md)         |
 |將單一 VM 從傳統轉換成受控磁片上的 Resource Manager     |[從傳統 VHD 建立 VM](create-vm-specialized-portal.md)         |

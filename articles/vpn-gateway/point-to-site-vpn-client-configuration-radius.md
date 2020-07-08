@@ -4,15 +4,14 @@ description: 為使用 RADIUS 驗證的連線建立 Windows、Mac OS X 和 Linux
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 69517d69a26364cf1cc950d7aaa849522decacf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5f16a902980b8cf88fb3e8a7f888a0f58ed34355
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84986561"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>建立和安裝 VPN 用戶端組態檔以便進行 P2S RADIUS 驗證
 
@@ -66,7 +65,7 @@ P2S RADIUS 驗證的設定工作流程如下所示：
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
 ```
  
-執行會傳回連結的命令。 複製並貼上網頁瀏覽器的連結以下載**VpnClientConfiguration**。 將該檔案解壓縮以檢視下列資料夾： 
+執行會傳回連結的命令。 複製並貼上網頁瀏覽器的連結，以下載**VpnClientConfiguration.zip**。 將該檔案解壓縮以檢視下列資料夾： 
  
 * **WindowsAmd64** 和 **WindowsX86**：這些資料夾分別包含 Windows 32 位元和 64 位元的安裝程式套件。 
 * **Generic**：這個資料夾包含您用來建立自有 VPN 用戶端組態的一般資訊。 使用者名稱/密碼驗證設定不需要此資料夾。
@@ -95,7 +94,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 請使用下列步驟來設定原生 Windows VPN 用戶端的憑證驗證：
 
 1. 選取 Windows 電腦架構所對應的 VPN 用戶端組態檔。 若是64位的處理器架構，請選擇**VpnClientSetupAmd64**安裝程式套件。 若是32位的處理器架構，請選擇**VpnClientSetupX86**安裝程式套件。 
-2. 若要安裝，請按兩下套件。 如果您看到 SmartScreen 快顯視窗，請選取 [**其他資訊** > ] [**仍要執行**]。
+2. 若要安裝，請按兩下套件。 如果您看到 SmartScreen 快顯視窗，請選取 [**其他資訊**] [  >  **仍要執行**]。
 3. 在用戶端電腦上，瀏覽至 [網路設定]****，然後選取 [VPN]****。 VPN 連線會顯示其連線的虛擬網路名稱。 
 
 #### <a name="mac-os-x-vpn-client-setup"></a><a name="admaccli"></a>Mac (OS X) VPN 用戶端設定
@@ -130,7 +129,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 6. 在設定檔安裝期間，您有選項可指定 VPN 驗證的使用者名稱和密碼。 不一定要輸入此資訊。 如果您這麼做，系統會儲存此資訊並在您初始連線時自動使用。選取 [安裝]**** 以繼續進行。
 
    ![VPN 的使用者名稱和密碼方塊](./media/point-to-site-vpn-client-configuration-radius/adsettings.png)
-7. 輸入在您的電腦上安裝設定檔時所需之權限的使用者名稱和密碼。 選取 [確定]  。
+7. 輸入在您的電腦上安裝設定檔時所需之權限的使用者名稱和密碼。 選取 [確定]。
 
    ![設定檔安裝的使用者名稱和密碼方塊](./media/point-to-site-vpn-client-configuration-radius/adusername.png)
 8. 安裝設定檔之後，它會顯示在 [設定檔]**** 對話方塊中。 您稍後也可以從 [系統喜好設定]**** 開啟此對話方塊。
@@ -169,7 +168,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 
    ![VpnSettings.xml 檔案的內容](./media/point-to-site-vpn-client-configuration-radius/VpnSettings.png)
 6. 將此名稱貼到新 VPN 連線 [閘道]**** 區段的 [位址]**** 欄位中。 接下來，選取 [憑證]**** 欄位結尾處的資料夾圖示，接著瀏覽至 [Generic]**** 資料夾，然後選取 [VpnServerRoot]**** 檔案。
-7. 在連線的 [用戶端]**** 區段中，為 [驗證]**** 選取 [EAP]****，然後輸入您的使用者名稱和密碼。 您可能必須選取右邊的鎖定圖示，以儲存此資訊。 然後選取 [**儲存**]。
+7. 在連線的 [用戶端]**** 區段中，為 [驗證]**** 選取 [EAP]****，然後輸入您的使用者名稱和密碼。 您可能必須選取右邊的鎖定圖示，以儲存此資訊。 然後選取 [儲存]。
 
    ![正在編輯連線設定](./media/point-to-site-vpn-client-configuration-radius/editconnectionsettings.png)
 8. 選取 [網路管理員]**** 圖示 (向上箭頭/向下箭頭)，然後將游標停留在 [VPN 連線]**** 上方。 您會看到您建立的 VPN 連線。 若要起始連線，請加以選取。
@@ -221,7 +220,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 
 #### <a name="windows-vpn-client-setup"></a><a name="certwincli"></a>Windows VPN 用戶端設定
 
-1. 選取組態套件並將它安裝在用戶端裝置上。 若是64位的處理器架構，請選擇**VpnClientSetupAmd64**安裝程式套件。 若是32位的處理器架構，請選擇**VpnClientSetupX86**安裝程式套件。 如果您看到 SmartScreen 快顯視窗，請選取 [**其他資訊** > ] [**仍要執行**]。 您也可以儲存要在其他用戶端電腦上安裝的套件。
+1. 選取組態套件並將它安裝在用戶端裝置上。 若是64位的處理器架構，請選擇**VpnClientSetupAmd64**安裝程式套件。 若是32位的處理器架構，請選擇**VpnClientSetupX86**安裝程式套件。 如果您看到 SmartScreen 快顯視窗，請選取 [**其他資訊**] [  >  **仍要執行**]。 您也可以儲存要在其他用戶端電腦上安裝的套件。
 2. 每個用戶端都需要用戶端憑證才能驗證。 請安裝用戶端憑證。 如需用戶端憑證的詳細資訊，請參閱[點對站的用戶端憑證](vpn-gateway-certificates-point-to-site.md)。 若要安裝所產生的憑證，請參閱[在 Windows 用戶端上安裝憑證](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 3. 在用戶端電腦上，瀏覽至 [網路設定]****，然後選取 [VPN]****。 VPN 連線會顯示其連線的虛擬網路名稱。
 
@@ -241,7 +240,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 
    ![正在新增 RadiusServerRoot 憑證](./media/point-to-site-vpn-client-configuration-radius/radiusrootcert.png)
 2. 每個用戶端都需要用戶端憑證才能驗證。 請在用戶端裝置上安裝用戶端憑證。
-3. 開啟 [網路喜好設定]**** 底下的 [網路]**** 對話方塊。 選取**+** 即可建立新的 VPN 用戶端連線設定檔，以進行與 Azure 虛擬網路的 P2S 連線。
+3. 開啟 [網路喜好設定]**** 底下的 [網路]**** 對話方塊。 選取 **+** 即可建立新的 VPN 用戶端連線設定檔，以進行與 Azure 虛擬網路的 P2S 連線。
 
    [介面]**** 值是 [VPN]****，[VPN 類型]**** 值則是 [IKEv2]****。 在 [服務名稱]**** 方塊中指定設定檔名稱，然後選取 [建立]**** 以建立 VPN 用戶端連線設定檔。
 

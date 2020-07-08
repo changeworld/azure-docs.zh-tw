@@ -8,11 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710706"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>針對復原到 Azure 的 VMware 災害復原進行容量和規模調整規劃
 
@@ -92,7 +91,7 @@ CPU | 記憶體 | 快取磁碟大小 | 資料變更率 | 受保護的機器
 
     ![[Azure 備份內容] 對話方塊的螢幕擷取畫面](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-您也可以使用 [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) Cmdlet 來設定節流。 範例如下：
+您也可以使用 [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) Cmdlet 來設定節流。 以下是範例：
 
     $mon = [System.DayOfWeek]::Monday
     $tue = [System.DayOfWeek]::Tuesday
@@ -124,7 +123,7 @@ CPU | 記憶體 | 快取磁碟大小 | 資料變更率 | 受保護的機器
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>移轉機器以使用新的處理序伺服器
 
-1. 選取 [**設定** > ] [**Site Recovery 伺服器**]。 選取設定伺服器，然後展開 [處理伺服器]****。
+1. 選取 [**設定**] [  >  **Site Recovery 伺服器**]。 選取設定伺服器，然後展開 [處理伺服器]****。
 
     ![[處理伺服器] 對話方塊的螢幕擷取畫面](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
 2. 在目前使用中的處理伺服器上按一下滑鼠右鍵，然後選取 [切換]****。
@@ -144,12 +143,12 @@ CPU | 記憶體 | 快取磁碟大小 | 資料變更率 | 受保護的機器
 
 為 Windows 型虛擬機器新增主要目標伺服器：
 
-1. 前往 [復原**服務保存庫** > ]**Site Recovery [基礎結構** > 設定**伺服器**]。
+1. 前往 [復原**服務保存庫**] Site Recovery [  >  **基礎結構**設定  >  **伺服器**]。
 2. 選取所需的設定伺服器，然後選取 [主要目標伺服器]****。
 
     ![顯示 [新增主要目標伺服器] 按鈕的螢幕擷取畫面](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
 3. 下載統一的安裝程式檔案，然後在 VM 上執行該檔案，以安裝主要目標伺服器。
-4. 選取 **[下一步****安裝主要目標** > ]。
+4. 選取**Install master target**  >  **[下一步**安裝主要目標]。
 
     ![顯示選取 [Install master target] \(安裝主要目標\) 選項的螢幕擷取畫面](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
 5. 選取預設安裝位置，然後選取 [Install] \(安裝\)****。
@@ -161,9 +160,9 @@ CPU | 記憶體 | 快取磁碟大小 | 資料變更率 | 受保護的機器
 7. 輸入設定伺服器的 IP 位址，然後輸入複雜密碼。 若要了解如何產生複雜密碼，請參閱[產生設定伺服器複雜密碼](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)。 
 
     ![顯示設定伺服器 IP 位址和複雜密碼輸入位置的螢幕擷取畫面](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
-8. 選取 [註冊]  。 註冊完成時，選取 [Finish] \(完成)****。
+8. 選取 [註冊]。 註冊完成時，選取 [Finish] \(完成)****。
 
-當註冊成功完成**時，伺服器**會列在設定伺服器的主要目標伺服器的復原**服務保存庫** > **Site Recovery** > 的 Azure 入口網站中。
+當註冊成功完成時，伺服器會列在**Recovery Services Vault**  >  **Site Recovery Infrastructure**  >  **Configuration servers**設定伺服器的主要目標伺服器的復原服務保存庫 Site Recovery 的 Azure 入口網站中。
 
  > [!NOTE]
  > 請下載 [Windows 的主要目標伺服器統一安裝程式檔案](https://aka.ms/latestmobsvc)最新版本。

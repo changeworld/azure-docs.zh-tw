@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
 ms.openlocfilehash: 7d6cd4c6ce7991ae83f6f4a1dd6d8b86fe7eedbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81757893"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平臺3.11
@@ -241,18 +240,18 @@ ms.locfileid: "81757893"
 
 不同版本可能有不同的參數，因此請確認您所用分支的必要參數。
 
-### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy.parameters.json」.已說明的參數. json 檔案
+### <a name="azuredeployparametersjson-file-explained"></a>檔案上的 azuredeploy.Parameters.js說明
 
 | 屬性 | 說明 | 有效選項 | 預設值 |
 |----------|-------------|---------------|---------------|
-| `_artifactsLocation`  | 成品的 URL （json、腳本等） |  |  HTTPs：\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
+| `_artifactsLocation`  | 成品的 URL （json、腳本等） |  |  HTTPs： \/ /raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | 要部署資源的 Azure 區域 |  |  |
-| `masterVmSize` | 主要 VM 的大小。 從 azuredeploy.parameters.json」所列的其中一個允許的 VM 大小中選取 |  | Standard_E2s_v3 |
-| `infraVmSize` | 基礎 VM 的大小。 從 azuredeploy.parameters.json」所列的其中一個允許的 VM 大小中選取 |  | Standard_D4s_v3 |
-| `nodeVmSize` | 應用程式節點 VM 的大小。 從 azuredeploy.parameters.json」所列的其中一個允許的 VM 大小中選取 |  | Standard_D4s_v3 |
-| `cnsVmSize` | 容器原生儲存體（CN）節點 VM 的大小。 從 azuredeploy.parameters.json」所列的其中一個允許的 VM 大小中選取 |  | Standard_E4s_v3 |
+| `masterVmSize` | 主要 VM 的大小。 從檔案 azuredeploy.js列出的其中一個允許的 VM 大小中選取 |  | Standard_E2s_v3 |
+| `infraVmSize` | 基礎 VM 的大小。 從檔案 azuredeploy.js列出的其中一個允許的 VM 大小中選取 |  | Standard_D4s_v3 |
+| `nodeVmSize` | 應用程式節點 VM 的大小。 從檔案 azuredeploy.js列出的其中一個允許的 VM 大小中選取 |  | Standard_D4s_v3 |
+| `cnsVmSize` | 容器原生儲存體（CN）節點 VM 的大小。 從檔案 azuredeploy.js列出的其中一個允許的 VM 大小中選取 |  | Standard_E4s_v3 |
 | `osImageType` | 要使用的 RHEL 映射。 defaultgallery：隨選;marketplace：協力廠商映射 | defaultgallery <br> Marketplace | defaultgallery |
-| `marketplaceOsImage` | 如果`osImageType`是 marketplace，則輸入 marketplace 供應專案的「發行者」、「供應專案」、「sku」、「版本」的適當值。 這個參數是物件類型 |  |  |
+| `marketplaceOsImage` | 如果 `osImageType` 是 marketplace，則輸入 marketplace 供應專案的「發行者」、「供應專案」、「sku」、「版本」的適當值。 這個參數是物件類型 |  |  |
 | `storageKind` | 要使用的儲存體類型  | 受控<br> Unmanaged | 受控 |
 | `openshiftClusterPrefix` | 用來為所有節點設定主機名稱的叢集首碼。  介於1到20個字元之間 |  | mycluster |
 | `minoVersion` | 要部署的 OpenShift 容器平臺3.11 次要版本 |  | 69 |
@@ -277,9 +276,9 @@ ms.locfileid: "81757893"
 | `enableAzure` | 啟用 Azure 雲端提供者 | true <br> false | true |
 | `aadClientId` | Azure Active Directory 用戶端識別碼，也稱為服務主體的應用程式識別碼 |  |  |
 | `domainName` | 要使用的自訂功能變數名稱名稱（如果適用的話）。 如果未部署完整的私用叢集，則設定為 "none" |  | 無 |
-| `masterClusterDnsType` | OpenShift web 主控台的網欄位型別。 「預設」會使用主要基礎公用 IP 的 DNS 標籤。 「自訂」可讓您定義自己的名稱 | default <br> custom | default |
+| `masterClusterDnsType` | OpenShift web 主控台的網欄位型別。 「預設」會使用主要基礎公用 IP 的 DNS 標籤。 「自訂」可讓您定義自己的名稱 | default <br> 自訂 | default |
 | `masterClusterDns` | 要用來存取 OpenShift web 主控台的自訂 DNS 名稱（如果您已選取 [自訂]）`masterClusterDnsType` |  | console.contoso.com |
-| `routingSubDomainType` | 如果設定為 ' nipio '， `routingSubDomain`將會使用 nip.io。  如果您有想要用於路由的自己網域，請使用 [自訂] | nipio <br> custom | nipio |
+| `routingSubDomainType` | 如果設定為 ' nipio '， `routingSubDomain` 將會使用 nip.io。  如果您有想要用於路由的自己網域，請使用 [自訂] | nipio <br> 自訂 | nipio |
 | `routingSubDomain` | 您想要用於路由的萬用字元 DNS 名稱（如果您已選取 [自訂]）`routingSubDomainType` |  | apps.contoso.com |
 | `virtualNetworkNewOrExisting` | 選取要使用現有的虛擬網路還是建立新的虛擬網路 | 已 <br> new | new |
 | `virtualNetworkResourceGroupName` | 新虛擬網路的資源組名（如果您已選取 [新增]）`virtualNetworkNewOrExisting` |  | resourceGroup （）. name |
@@ -299,8 +298,8 @@ ms.locfileid: "81757893"
 | `masterPrivateClusterIp` | 如果選取私人主要節點，則必須指定私人 IP 位址，以供主要節點的內部負載平衡器使用。 此靜態 IP 必須位於主要子網的 CIDR 區塊內，而且尚未使用。 如果選取了 [公用主要節點]，則不會使用此值，但仍然必須指定 |  | 10.1.0.200 |
 | `routerClusterType` | 指定叢集是使用私用或公用基礎節點。 如果選擇 [私人]，則基礎節點將不會透過公用 IP 向網際網路公開。 相反地，它會使用在中指定的私人 IP`routerPrivateClusterIp` | public <br> private | public |
 | `routerPrivateClusterIp` | 如果選取私人基礎節點，則必須指定私人 IP 位址，以供基礎節點的內部負載平衡器使用。 此靜態 IP 必須位於基礎網的 CIDR 區塊內，而且尚未使用。 如果選取公用基礎節點，則不會使用此值，但仍然必須指定 |  | 10.2.0.200 |
-| `routingCertType` | 將自訂憑證用於路由網域或預設的自我簽署憑證-遵循**自訂憑證**一節中的指示 | lnk-selfsigned 之類 <br> custom | lnk-selfsigned 之類 |
-| `masterCertType` | 將自訂憑證用於主要網域或預設的自我簽署憑證-遵循**自訂憑證**一節中的指示 | lnk-selfsigned 之類 <br> custom | lnk-selfsigned 之類 |
+| `routingCertType` | 將自訂憑證用於路由網域或預設的自我簽署憑證-遵循**自訂憑證**一節中的指示 | lnk-selfsigned 之類 <br> 自訂 | lnk-selfsigned 之類 |
+| `masterCertType` | 將自訂憑證用於主要網域或預設的自我簽署憑證-遵循**自訂憑證**一節中的指示 | lnk-selfsigned 之類 <br> 自訂 | lnk-selfsigned 之類 |
 
 <br>
 

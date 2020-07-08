@@ -5,45 +5,55 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 0dea516ea6b938b91fc4b9b833979bcecc285339
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714962"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84325128"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure Logic Apps 中接收和回應輸入 HTTPS 要求
 
 您可以透過 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 及內建的要求觸發程序和回應動作，建立自動化工作和工作流程，以接收和回應傳入的 HTTPS 要求。 例如，您可以讓邏輯應用程式：
 
 * 接收和回應以內部部署資料庫中的資料為對象的 HTTPS 要求。
+
 * 在發生外部 Webhook 事件時觸發工作流程。
+
 * 接收和回應來自另一個邏輯應用程式的 HTTPS 呼叫。
 
 要求觸發程序支援 [Azure Active Directory 開放式驗證](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth)，以授權對邏輯應用程式的輸入呼叫。 如需啟用此驗證的詳細資訊，請參閱[在 Azure Logic Apps 中保護存取和資料 - 啟用 Azure AD OAuth 驗證](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)。
 
-> [!NOTE]
-> 對於傳入呼叫，要求觸發程序「僅」支援傳輸層安全性 (TLS) 1.2。 傳出呼叫支援 TLS 1.0、1.1 和 1.2。 如需詳細資訊，請參閱[解決 TLS 1.0 問題](https://docs.microsoft.com/security/solving-tls1-problem)。
->
-> 如果收到 TLS 交握錯誤，請確定您使用 TLS 1.2。 
-> 對於傳入呼叫，以下是支援的加密套件：
->
-> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，您可以[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * [邏輯應用程式](../logic-apps/logic-apps-overview.md)的基本知識。 如果您不熟悉邏輯應用程式，請了解[如何建立您的第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>傳輸層安全性 (TLS)
+
+* 輸入呼叫*僅*支援傳輸層安全性（TLS）1.2。 如果收到 TLS 交握錯誤，請確定您使用 TLS 1.2。 如需詳細資訊，請參閱[解決 TLS 1.0 問題](https://docs.microsoft.com/security/solving-tls1-problem)。 輸出呼叫支援以目標端點的功能為基礎的 TLS 1.0、1.1 和1.2。
+
+* 輸入呼叫支援下列加密套件：
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 <a name="add-request"></a>
 
@@ -61,10 +71,10 @@ ms.locfileid: "83714962"
 
    ![要求觸發程序](./media/connectors-native-reqres/request-trigger.png)
 
-   | 屬性名稱 | JSON 屬性名稱 | 必要 | 描述 |
+   | 屬性名稱 | JSON 屬性名稱 | 必要 | 說明 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL** | {無} | 是 | 在您儲存邏輯應用程式之後產生的端點 URL，用於呼叫邏輯應用程式 |
-   | **要求本文 JSON 結構描述** | `schema` | 否 | JSON 結構描述，描述傳入要求本文中的屬性和值 |
+   | **要求本文 JSON 結構描述** | `schema` | No | JSON 結構描述，描述傳入要求本文中的屬性和值 |
    |||||
 
 1. 在 [要求本文 JSON 結構描述] 方塊中，選擇性地輸入 JSON 結構描述，以描述傳入要求中的本文，例如：
@@ -158,11 +168,19 @@ ms.locfileid: "83714962"
       }
       ```
 
+1. 若要檢查撥入電話是否有符合您指定之架構的要求主體，請遵循下列步驟：
+
+   1. 在要求觸發程式的標題列中，選取省略號按鈕（**...**）。
+   
+   1. 在觸發程式的 [設定] 中，開啟 [**架構驗證**]，然後選取 [**完成**]。
+   
+      如果撥入電話的要求主體不符合您的架構，觸發程式會傳回 `HTTP 400 Bad Request` 錯誤。
+
 1. 若要指定其他屬性，請開啟 [新增參數] 清單，然後選取您要新增的參數。
 
-   | 屬性名稱 | JSON 屬性名稱 | 必要 | 描述 |
+   | 屬性名稱 | JSON 屬性名稱 | 必要 | 說明 |
    |---------------|--------------------|----------|-------------|
-   | **方法** | `method` | 否 | 傳入要求在呼叫邏輯應用程式時必須使用的方法 |
+   | **方法** | `method` | No | 傳入要求在呼叫邏輯應用程式時必須使用的方法 |
    | **相對路徑** | `relativePath` | 否 | 參數的相對路徑，指邏輯應用程式的端點 URL 可接受的參數 |
    |||||
 
@@ -185,6 +203,9 @@ ms.locfileid: "83714962"
    此步驟會產生 URL，用以傳送要求來觸發邏輯應用程式。 若要複製此 URL，請選取 URL 旁邊的複製圖示。
 
    ![用於觸發邏輯應用程式的 URL](./media/connectors-native-reqres/generated-url.png)
+
+   > [!NOTE]
+   > 如果您想要在呼叫要求觸發程式時，將雜湊或井字型大小（ **#** ）包含在 URI 中，請改為使用此編碼版本：`%25%23`
 
 1. 若要觸發邏輯應用程式，請將 HTTP POST 傳送至產生的 URL。
 
@@ -254,7 +275,7 @@ ms.locfileid: "83714962"
    | 屬性名稱 | JSON 屬性名稱 | 必要 | 描述 |
    |---------------|--------------------|----------|-------------|
    | **狀態碼** | `statusCode` | 是 | 要在回應中傳回的狀態碼 |
-   | **標頭** | `headers` | 否 | JSON 物件，描述要包含在回應中的一個或多個標頭 |
+   | **標頭** | `headers` | No | JSON 物件，描述要包含在回應中的一個或多個標頭 |
    | **本文** | `body` | 否 | 回應本文 |
    |||||
 

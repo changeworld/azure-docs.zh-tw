@@ -1,25 +1,16 @@
 ---
 title: 使用 Azure 範本建立服務匯流排主題訂用帳戶和規則
 description: 使用 Azure Resource Manager 範本建立服務匯流排命名空間與主題、訂用帳戶和規則
-services: service-bus-messaging
-documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 9e0aaf58-0214-4bca-bd00-d29c08f9b1bc
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 11/27/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 6cbaf447dfcf06ae11f2282d7d847978297af8b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1cfda37d0a6db5c4f354dc392900366f68a30e8e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80384886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85336879"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立服務匯流排命名空間與主題、訂用帳戶和規則
 

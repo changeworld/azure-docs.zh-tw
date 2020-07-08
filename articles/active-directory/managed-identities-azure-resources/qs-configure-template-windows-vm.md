@@ -9,20 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5540697e8e64586d73e34d253fb95e549fc0301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c7970f321f301cc394732b1557d65974e7902574
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972155"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609022"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>使用範本在 Azure VM 上設定 Azure 資源的受控識別
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-templates"></a>使用範本在 Azure VM 上設定 Azure 資源的受控識別
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -30,9 +29,9 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 在本文中，藉由使用 Azure Resource Manager 部署範本，您將了解如何在 Azure VM 上執行 Azure 資源作業的下列受控識別：
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-- 如果您不熟悉如何使用 Azure Resource Manager 部署範本，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)**。
+- 如果您不熟悉如何使用 Azure Resource Manager 部署範本，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 
 ## <a name="azure-resource-manager-templates"></a>Azure 資源管理員範本
@@ -165,7 +164,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    若 `apiVersion` 為 `2017-12-01` 且虛擬機器同時具有系統與使用者指派的受控識別，請從身分識別類型中移除 `SystemAssigned`，並保留 `UserAssigned` 以及使用者指派受控識別的 `identityIds` 陣列。  
 
-下列範例示範如何從沒有使用者指派受控識別的虛擬機器中移除系統指派的受控識別：
+下列範例說明如何從沒有使用者指派受控識別的 VM 中移除系統指派的受控識別：
 
  ```JSON
  {
@@ -336,13 +335,13 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    若要從虛擬機器中移除單一使用者指派的受控識別，請從 `useraAssignedIdentities` 字典中移除它。
 
-   如果您有系統指派的受控識別，則將它保存在 `identity` 值下方的 `type` 值中。
+   如果您有系統指派的受控識別，請將它保留在值 `type` 下方的值中 `identity` 。
 
    **Microsoft.Compute/virtualMachines API 版本 2017-12-01**
 
    若要從虛擬機器中移除單一使用者指派的受控識別，請從 `identityIds` 陣列中移除它。
 
-   如果您有系統指派的受控識別，則將它保存在 `identity` 值下方的 `type` 值中。
+   如果您有系統指派的受控識別，請將它保留在值 `type` 下方的值中 `identity` 。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,11 @@ title: 使用 Azure 備份將 SAP Hana 資料庫備份至 Azure
 description: 在本文中，您將了解如何使用 Azure 備份服務，將 SAP Hana 資料庫備份至 Azure 虛擬機器。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 4183c1eca6b1149c5c61ed77c0ca1101c86f8f4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745419"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667313"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>將 SAP Hana 資料庫備份到 Azure VM
 
@@ -25,8 +24,11 @@ SAP Hana 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工�
 > * 執行隨選備份作業
 
 >[!NOTE]
+>[開始使用](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)適用於 RHEL (7.4、7.6、7.7 或 8.1) 的 SAP Hana 備份預覽。 如有其他問題，請透過此地址發送電子郵件給我們：[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)。
+
+>[!NOTE]
 >**Azure VM 中的 SQL server 虛刪除和 Azure VM 工作負載中的 SAP Hana 虛刪除**現在已有預覽版。<br>
->若要註冊預覽版，請透過此位址發送電子郵件給我們：AskAzureBackupTeam@microsoft.com
+>若要註冊預覽版，請將寫入我們的 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -58,7 +60,7 @@ SAP Hana 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工�
 
 1. 在 [所有服務] 中，移至 [網路安全性群組]，然後選取網路安全性群組。
 
-1. 選取 [設定] 底下的 [輸出安全性規則]。
+1. 選取 [設定]**** 底下的 [輸出安全性規則]****。
 
 1. 選取 [新增]。 輸入可供用於建立新規則的所有必要詳細資料，如[安全性規則設定](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 請確定 [目的地] 選項已設定為 [服務標籤]，且 [目的地服務標籤] 已設定為 [AzureBackup]。
 
@@ -92,8 +94,8 @@ SAP Hana 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工�
 
 ## <a name="discover-the-databases"></a>探索資料庫
 
-1. 在保存庫的 [使用者入門] 中，按一下 [備份]。 在 [工作負載的執行位置？] 中，選取 [Azure VM 中的 SAP HANA]。
-2. 按一下 [開始探索]。 這會對保存庫區域中未受保護的 Linux VM 起始探索。
+1. 在保存庫的 [使用者入門]**** 中，按一下 [備份]****。 在 [工作負載的執行位置？]**** 中，選取 [Azure VM 中的 SAP HANA]****。
+2. 按一下 [開始探索]****。 這會對保存庫區域中未受保護的 Linux VM 起始探索。
 
    * 進行探索之後，未受保護的 VM 會出現在入口網站中，並依照名稱和資源群組列出。
    * 如果 VM 未如預期列出，請檢查該 VM 是否已備份在保存庫中。
@@ -168,7 +170,7 @@ SAP Hana 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工�
     > [!NOTE]
     > 目前不支援增量備份。
 
-7. 按一下 [確定] 以儲存原則，然後返回主要 [備份原則] 功能表。
+7. 按一下 [確定]**** 以儲存原則，然後返回主要 [備份原則]**** 功能表。
 8. 選取 [記錄備份]，以新增交易記錄備份原則。
     * 在 [記錄備份] 中，選取 [啟用]。  此選項無法停用，因為 SAP HANA 管理所有的記錄備份。
     * 設定頻率和保留控制。
@@ -180,7 +182,7 @@ SAP Hana 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工�
 10. 在完成備份原則的定義後，按一下 [確定]。
 
 > [!NOTE]
-> 每個記錄備份都會連結到先前的完整備份，以形成復原鏈。 系統會保留此完整備份，直到最後一個記錄備份的保留期到期為止。 這可能表示完整備份會保留一段額外的時間，以確保可以復原所有記錄。 假設使用者已設定每週進行完整備份、每日進行差異備份和每 2 小時進行記錄備份。 所有這些項目都會保留 30 天。 但是，只有在下一次的完整備份可以使用之後 (也就是 30 + 7 天之後)，才能真正清除/刪除每週的完整備份。 比方說，每週的完整備份會在 11 月 16 日執行。 根據保留原則，其應該保留到 12 月 16 日為止。 此完整備份的最後一個記錄備份會在下一次排定的完整備份 (也就是 11 月 22 日) 之前進行。 直到 12 月 22 日，也就是此記錄備份到期之前，您都無法刪除 11 月 16 日的完整備份。 因此，11 月 16 日的完整備份會保留到 12 月 22 日。
+> 每個記錄備份都會連結到先前的完整備份，以形成復原鏈。 系統會保留此完整備份，直到最後一個記錄備份的保留期到期為止。 這可能表示完整備份會保留一段額外的時間，以確保可以復原所有記錄。 假設使用者已設定每週進行完整備份、每日進行差異備份和每 2 小時進行記錄備份。 所有這些項目都會保留 30 天。 但是，只有在下一次的完整備份可以使用之後 (也就是 30 + 7 天之後)，才能真正清除/刪除每週的完整備份。 比方說，每週的完整備份會在 11 月 16 日執行。 根據保留原則，它應該保留到12月16日為止。 此完整備份的最後一個記錄備份會在下一次排定的完整備份 (也就是 11 月 22 日) 之前進行。 直到 12 月 22 日，也就是此記錄備份到期之前，您都無法刪除 11 月 16 日的完整備份。 因此，11 月 16 日的完整備份會保留到 12 月 22 日。
 
 ## <a name="run-an-on-demand-backup"></a>執行隨選備份
 
@@ -188,7 +190,7 @@ SAP Hana 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工�
 
 1. 在保存庫功能表中，按一下 [備份項目]。
 2. 在 [備份項目] 中，選取執行 SAP Hana 資料庫的 VM，然後按一下 [立即備份]。
-3. 在 [立即備份] 中，使用行事曆控制項來選取復原點應該保留的最後一天。 然後按一下 [確定] 。
+3. 在 [**立即備份**] 中，選擇您想要執行的備份類型。 然後按一下 [確定] 。 系統會根據與此備份專案相關聯的原則來保留此備份。
 4. 監視入口網站通知。 您可以在保存庫儀表板中監視作業進度 > [備份作業] > [進行中]。 根據您的資料庫大小，建立初始備份可能需要花一點時間。
 
 ## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>在已啟用 Azure 備份的資料庫上執行 SAP Hana Studio 備份
@@ -197,12 +199,12 @@ SAP Hana 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工�
 
 1. 等待資料庫的完整或記錄備份完成。 檢查 SAP HANA Studio / Cockpit 中的狀態。
 2. 停用記錄備份，並將備份類別目錄設定為相關資料庫的檔案系統。
-3. 若要這麼做，請按兩下 [systemdb] >  > [選取資料庫] > [篩選 (記錄)]。
+3. 若要這麼做，請按兩下 **systemdb** >  > **選取資料庫** > **篩選 (記錄)** 。
 4. 將 **enable_auto_log_backup** 設定為 [否]。
 5. 將 **log_backup_using_backint** 設定為 [False]。
-6. 對資料庫進行隨選完整備份。
+6. 對於資料庫進行隨選完整備份。
 7. 等待完整備份和目錄備份完成。
-8. 將先前的設定還原回 Azure 的設定：
+8. 將先前的設定還原回 Azure：
     * 將 **enable_auto_log_backup** 設定為 [是]。
     * 將 **log_backup_using_backint** 設定為 [True]。
 

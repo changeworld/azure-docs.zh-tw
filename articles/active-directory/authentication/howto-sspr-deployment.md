@@ -11,19 +11,18 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6151bbd9f056ef95c0875b83c7b6fccb732aebfe
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870966"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84338561"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>規劃 Azure Active Directory 自助式密碼重設部署
 
 > [!IMPORTANT]
 > 此部署計劃提供部署 Azure AD 自助式密碼重設 (SSPR) 的指導方針與最佳做法。
 >
-> **如果您是使用者且需要重新進入您的帳戶，請移至 [https://aka.ms/sspr](https://aka.ms/sspr)** 。
+> **如果您是使用者，而且需要取回您的帳戶，請移至 [https://aka.ms/sspr](https://aka.ms/sspr) **。
 
 [自助式密碼重設 (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) \(英文\) 是 Azure Active Directory (AD) 功能，可讓使用者無需連絡 IT 人員以尋求協助，便能重設其密碼。 無論何時何處，使用者都可以快速將自己解除封鎖並繼續工作。 透過讓員工自行將自己解除封鎖，您的組織便能針對最常見的密碼相關問題減少無生產力的時間，以及高昂的支援成本。
 

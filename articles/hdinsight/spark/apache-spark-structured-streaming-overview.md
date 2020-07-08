@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 19cfd5d8ed4100048c270fb41e5e54a920c61516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9e29d91aa3b146a8aacdccec01b67506d5e45bb3
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75548831"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037914"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark 結構化串流的概觀
 
@@ -62,11 +61,13 @@ Spark 結構化串流會將資料流表示為無限深度的資料表，也就�
 
 簡單的範例查詢可彙總一小時時間範圍內的顯示溫度。 在此案例中，資料會以 JSON 檔案的形式儲存在 Azure 儲存體中 (附加為 HDInsight 叢集的預設儲存體)：
 
-    {"time":1469501107,"temp":"95"}
-    {"time":1469501147,"temp":"95"}
-    {"time":1469501202,"temp":"95"}
-    {"time":1469501219,"temp":"95"}
-    {"time":1469501225,"temp":"95"}
+```json
+{"time":1469501107,"temp":"95"}
+{"time":1469501147,"temp":"95"}
+{"time":1469501202,"temp":"95"}
+{"time":1469501219,"temp":"95"}
+{"time":1469501225,"temp":"95"}
+```
 
 這些 JSON 檔案會儲存在 HDInsight 叢集容器下方的 `temps` 子資料夾。
 
@@ -74,41 +75,51 @@ Spark 結構化串流會將資料流表示為無限深度的資料表，也就�
 
 首先設定描述資料來源以及該來源所需之任何設定的 DataFrame。 此範例會從 Azure 儲存體中抽取 JSON 檔案，並在讀取時對其套用結構描述。
 
-    import org.apache.spark.sql.types._
-    import org.apache.spark.sql.functions._
+```sql
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.functions._
 
-    //Cluster-local path to the folder containing the JSON files
-    val inputPath = "/temps/" 
+//Cluster-local path to the folder containing the JSON files
+val inputPath = "/temps/" 
 
-    //Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
-    val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
+//Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
+val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
 
-    //Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
-    val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath) 
+//Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
+val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath)
+``` 
 
 #### <a name="apply-the-query"></a>套用查詢
 
 接下來，針對串流 DataFrame，套用包含所需作業的查詢。 在此案例中，彙總會將所有資料列群組至 1 個小時的時間範圍，然後再計算此 1 小時時間範圍內溫度的最小值、平均值和最大值。
 
-    val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```sql
+val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```
 
 ### <a name="define-the-output-sink"></a>定義輸出接收
 
 接下來，為每個觸發間隔內新增至結果資料表的資料列定義目的地。 此範例直接將所有資料列輸出到記憶體內部資料表 `temps`，您之後可以透過 SparkSQL 進行查詢。 完整輸出模式可確保每次都會輸出所有時間範圍的所有資料列。
 
-    val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete") 
+```sql
+val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete")
+``` 
 
 ### <a name="start-the-query"></a>啟動查詢
 
 啟動串流查詢並執行，直到收到終止訊號。
 
-    val query = streamingOutDF.start()  
+```sql
+val query = streamingOutDF.start() 
+``` 
 
 ### <a name="view-the-results"></a>View the results
 
 執行查詢時，在相同的 SparkSession 中，您可以對儲存查詢結果的 `temps` 資料表執行 SparkSQL 查詢。
 
-    select * from temps
+```sql
+select * from temps
+```
 
 此查詢會產生類似下列的結果：
 

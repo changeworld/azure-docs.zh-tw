@@ -9,12 +9,11 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: ffa09293ad2ff02e104ce285b6b0aaca7d4744a2
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.openlocfilehash: c6780d952b9ce6ea58fc6c8a2509a4526add7149
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212661"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028261"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>建立自訂模型的訓練資料集
 
@@ -26,7 +25,7 @@ ms.locfileid: "85212661"
 
 ## <a name="training-data-tips"></a>定型資料提示
 
-請務必使用已針對定型優化的資料集。 使用下列秘訣，確保您可以從[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)作業取得最佳結果：
+請務必使用已針對定型優化的資料集。 使用下列秘訣，確保您可以從[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)作業取得最佳結果：
 
 * 可能的話，請使用以文字為基礎的 PDF 檔，而不是以影像為基礎的檔。 掃描的 Pdf 會當做影像來處理。
 * 針對填寫的表單，使用已填入其所有欄位的範例。
@@ -48,7 +47,7 @@ ms.locfileid: "85212661"
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>在子資料夾中組織資料（選擇性）
 
-根據預設，[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)API 只會使用位於儲存體容器根目錄的表單檔。 不過，如果您在 API 呼叫中指定，您可以使用子資料夾中的資料進行定型。 一般來說，[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)呼叫的主體具有下列格式，其中 `<SAS URL>` 是您容器的共用存取簽章 URL：
+根據預設，[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)API 只會使用位於儲存體容器根目錄的表單檔。 不過，如果您在 API 呼叫中指定，您可以使用子資料夾中的資料進行定型。 一般來說，[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)呼叫的主體具有下列格式，其中 `<SAS URL>` 是您容器的共用存取簽章 URL：
 
 ```json
 {

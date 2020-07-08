@@ -4,10 +4,9 @@ description: 以程式設計方式建立警示，在您的 Azure 資源變成無
 ms.topic: conceptual
 ms.date: 9/4/2018
 ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759011"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用 Resource Manager 範本設定資源健康狀態警示
@@ -21,7 +20,7 @@ Azure 資源健康狀態會隨時通知您 Azure 資源目前和過去的健康�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要遵循此頁面上的指示，您將必須事先設定幾件事：
 

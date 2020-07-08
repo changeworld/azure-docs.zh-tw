@@ -10,17 +10,16 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758718"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
 
 本文說明**404104 DeviceConnectionClosedRemotely**錯誤的原因和解決方案。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 ### <a name="symptom-1"></a>徵兆1
 
@@ -48,7 +47,7 @@ ms.locfileid: "81758718"
 
 - 裝置遺失的基礎網路連線時間比[MQTT keep-alive](iot-hub-mqtt-support.md#default-keep-alive-timeout)長，因而導致遠端閒置超時。 每個裝置的 MQTT keep-alive 設定可能不同。
 
-- 裝置已傳送 TCP/IP 層級重設，但未傳送應用層級`MQTT DISCONNECT`。 基本上，裝置突然關閉基礎通訊端連接。 有時候，此問題是由較舊版本的 Azure IoT SDK 中的錯誤所造成。
+- 裝置已傳送 TCP/IP 層級重設，但未傳送應用層級 `MQTT DISCONNECT` 。 基本上，裝置突然關閉基礎通訊端連接。 有時候，此問題是由較舊版本的 Azure IoT SDK 中的錯誤所造成。
 
 - 裝置端應用程式當機。
 

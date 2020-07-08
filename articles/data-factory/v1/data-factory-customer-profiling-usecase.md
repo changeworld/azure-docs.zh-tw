@@ -11,12 +11,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5436e50a23b73e1a10cf42b3dd8790c5b0620ac3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75969295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021886"
 ---
 # <a name="use-case---customer-profiling"></a>使用案例 - 客戶分析
 Azure Data Factory 是許多服務之一，可用來實作解決方案加速器的 Cortana Intelligence 套件。  如需 Cortana Intelligence 的詳細資訊，請瀏覽 [Cortana Intelligence 套件](https://www.microsoft.com/cortanaanalytics)。 在本文中，我們會說明簡單的使用案例，以幫助您開始著手了解 Azure Data Factory 如何解決常見的分析問題。
@@ -38,7 +37,7 @@ Contoso 的目標是要根據其玩家的遊戲歷程記錄識別向上銷售/�
 3. 在 [範例管線]**** 刀鋒視窗中，按一下您想要部署的 [客戶資料分析]****。
 
     ![範例管線刀鋒視窗](./media/data-factory-samples/SampleTile.png)
-4. 指定範例的組態設定。 例如，您的 Azure 儲存體帳戶名稱和金鑰、Azure SQL 伺服器名稱、資料庫、使用者 ID 和密碼。
+4. 指定範例的組態設定。 例如，您的 Azure 儲存體帳戶名稱和金鑰、邏輯 SQL server 名稱、資料庫、使用者識別碼和密碼。
 
     ![範例刀鋒視窗](./media/data-factory-samples/SampleBlade.png)
 5. 完成指定組態設定之後，請按一下 [建立] **** ，以建立/部署範例管線，以及管線所使用的連結服務/資料表。

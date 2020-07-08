@@ -9,20 +9,19 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: f2b454e812db1eea686f82e92841163f1129b6c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 04c541dc10b2e25aa1e24ef704b4d939243f23ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267621"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513729"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple 裝置部署問題的疑難排解
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本文提供對於 Microsoft Azure StorSimple 部署很有幫助的疑難排解指引。 文中將說明常見問題、可能原因和建議的步驟，可協助您解決在設定 StorSimple 時可能遇到的問題。 
 
 此資訊適用於 StorSimple 8000 系列實體裝置和 StorSimple 雲端設備。
@@ -77,16 +76,16 @@ ms.locfileid: "79267621"
 | 4 |Invoke-HcsSetupWizard：某個叢集資源失敗了 (例外狀況發生於 HRESULT：0x800713AE)。 |重複的 VIP。 提供的 IP 已經在使用中。 |提供未使用的新 IP。 |
 | 5 |Invoke-HcsSetupWizard: 無效的 IPv4 位址。 |提供的 IP 位址格式不正確。 |檢查格式，然後再次提供您的 IP 位址。 如需詳細資訊，請參閱 [Ipv4 定址][1]。 |
 | 6 |Invoke-HcsSetupWizard：無效的 IPv6 位址。 |提供的 IP 位址格式不正確。 |檢查格式，然後再次提供您的 IP 位址。 如需詳細資訊，請參閱 [Ipv6 定址][2]。 |
-| 7 |Invoke-HcsSetupWizard：端點對應器中無更多可用的端點。 (例外狀況發生於 HRESULT：0x800706D9) |叢集功能無法運作。 |[請聯絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)以進行後續步驟。 |
+| 7 |Invoke-HcsSetupWizard：端點對應器中無更多可用的端點。 (例外狀況發生於 HRESULT：0x800706D9) |叢集功能無法運作。 |[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以進行後續步驟。 |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>選用的 Web Proxy 設定期間發生錯誤
 | 否。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 | --- | --- | --- | --- |
-| 1 |Invoke-HcsSetupWizard：無效的參數 (例外狀況發生於 HRESULT：0x80070057) |針對 Proxy 設定提供的其中一個參數無效。 |未使用正確格式提供 URI。 請使用下列格式： HTTP://*\<Web Proxy 伺服器的 IP 位址或 FQDN>*：*\<TCP 埠號碼>* |
+| 1 |Invoke-HcsSetupWizard：無效的參數 (例外狀況發生於 HRESULT：0x80070057) |針對 Proxy 設定提供的其中一個參數無效。 |未使用正確格式提供 URI。 請使用下列格式： HTTP:// *\<IP address or FQDN of the web proxy server>* ：*\<TCP port number>* |
 | 2 |Invoke-HcsSetupWizard：RPC 伺服器無法使用 (例外狀況發生於 HRESULT：0x800706ba) |根本原因是下列其中一項︰<ol><li>叢集未啟動。</li><li>被動控制器無法與主動控制器通訊，而命令是從被動控制器執行。</li></ol> |依據根本原因︰<ol><li>[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以確定叢集已啟動。</li><li>從主動控制器執行這個命令。 如果您想要從被動控制器執行命令，就必須確保被動控制器能與主動控制器通訊。 如果此連線中斷，您必須[連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md)。</li></ol> |
 | 3 |Invoke-HcsSetupWizard：RPC 呼叫失敗 (例外狀況發生於 HRESULT：0x800706be) |叢集已關閉。 |[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以確定叢集已啟動。 |
 | 4 |Invoke-HcsSetupWizard：找不到叢集資源 (例外狀況發生於 HRESULT：0x8007138f) |找不到叢集資源。 若未正確安裝，即會發生此情況。 |您可能需要將裝置重設為出廠預設設定。 [連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以建立叢集資源。 |
-| 5 |Invoke-HcsSetupWizard：叢集資源不在線上 (例外狀況發生於 HRESULT：0x8007138c) |叢集資源不在線上。 |[請聯絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)以進行後續步驟。 |
+| 5 |Invoke-HcsSetupWizard：叢集資源不在線上 (例外狀況發生於 HRESULT：0x8007138c) |叢集資源不在線上。 |[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以進行後續步驟。 |
 
 ## <a name="errors-related-to-device-administrator-password"></a>與裝置系統管理員密碼相關的錯誤
 預設裝置系統管理員密碼是 **Password1**。 此密碼會在第一次登入之後過期；因此，您將需要使用安裝精靈來變更它。 當您第一次註冊裝置時，必須提供新的裝置系統管理員密碼。 
@@ -139,7 +138,7 @@ ms.locfileid: "79267621"
 | 9 |警告：無法啟動裝置。 您的設定裝置系統管理員和 StorSimple Snapshot Manager 密碼尚未變更。 |如果註冊失敗，裝置系統管理員和 StorSimple Snapshot Manager 密碼就不會變更。 | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>適用於疑難排解 StorSimple 部署的工具
-StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。 它們包括：
+StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。 這些包括：
 
 * 支援封裝和裝置記錄。
 * 專為疑難排解而設計的 Cmdlet。

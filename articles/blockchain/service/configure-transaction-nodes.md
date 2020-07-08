@@ -2,14 +2,13 @@
 title: 設定 Azure 區塊鏈 Service 交易節點
 description: 如何設定 Azure 區塊鏈 Service 交易節點
 ms.date: 11/20/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80876924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212559"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>設定 Azure 區塊鏈 Service 交易節點
 
@@ -35,12 +34,12 @@ ms.locfileid: "80876924"
 
     ![新增交易節點](./media/configure-transaction-nodes/add-node.png)
 
-    | 設定 | 描述 |
+    | 設定 | 說明 |
     |---------|-------------|
-    | 名稱 | 交易節點名稱。 該名稱會用來建立交易節點端點的 DNS 位址。 例如： `newnode-myblockchainmember.blockchain.azure.com` 。 節點名稱一旦建立之後就無法變更。 |
+    | Name | 交易節點名稱。 該名稱會用來建立交易節點端點的 DNS 位址。 例如： `newnode-myblockchainmember.blockchain.azure.com` 。 節點名稱一旦建立之後就無法變更。 |
     | 密碼 | 設定強式密碼。 使用密碼來存取具有基本驗證的交易節點端點。
 
-1. 選取 [建立]  。
+1. 選取 [建立]。
 
     佈建一個新的交易節點大約需要 10 分鐘。 額外的交易節點會產生成本。 如需成本的詳細資訊，請參閱[Azure 定價](https://aka.ms/ABSPricing)。
 
@@ -69,9 +68,9 @@ Azure 區塊鏈 Service 交易節點端點支援 Azure Active Directory （Azure
 
     | 設定 | 動作 |
     |---------|-------------|
-    | [角色] | 選取 [**擁有**者]、[**參與者**] 或 [**讀取**者]。
+    | 角色 | 選取 [**擁有**者]、[**參與者**] 或 [**讀取**者]。
     | 存取權指派對象 | 選取 [ **Azure AD 使用者、群組或服務主體**]。
-    | Select | 搜尋您想要新增的使用者、群組或服務主體。
+    | 選取 | 搜尋您想要新增的使用者、群組或服務主體。
 
 1. 選取 [**儲存**] 以新增角色指派。
 
@@ -89,7 +88,7 @@ Azure 區塊鏈 Service 交易節點端點支援 Azure Active Directory （Azure
 
 [使用者名稱] 是您的節點名稱，而且無法變更。
 
-若要使用此 URL， \<請\>將 password 取代為布建節點時所設定的密碼。 您可以選取 [**重設密碼**] 來更新密碼。
+若要使用此 URL，請將取代 \<password\> 為布建節點時所設定的密碼。 您可以選取 [**重設密碼**] 來更新密碼。
 
 ### <a name="access-keys"></a>存取金鑰
 

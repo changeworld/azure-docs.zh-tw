@@ -7,20 +7,19 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: eecfebc90c28b650af0cef4ee0e4ddc227af0e8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420552"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711488"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>保留公用 IPv6 位址首碼
-適用于 Azure 虛擬網路（VNet）的 IPv6 可讓您在 Azure 中裝載應用程式，並在虛擬網路內和網際網路之間使用 IPv6 和 IPv4 連線能力。 除了保留個別的 IPv6 位址，您還可以保留 Azure IPv6 位址的連續範圍（也稱為 IP 首碼）供您使用。 這篇文章說明如何使用 Azure PowerShell 和 CLI 建立 IPv6 公用 IP 位址和位址範圍。
+Azure 虛擬網路 (VNet) 的 IPv6 可讓您在 Azure 中裝載應用程式，並在虛擬網路內以及網際網路之間建立 IPv6 和 IPv4 連線。 除了保留個別的 IPv6 位址，您還可以保留 Azure IPv6 位址的連續範圍（也稱為 IP 首碼）供您使用。 這篇文章說明如何使用 Azure PowerShell 和 CLI 建立 IPv6 公用 IP 位址和位址範圍。
 
 
 ## <a name="create-a-single-reserved-ipv6-public-ip"></a>建立單一保留的 IPv6 公用 IP
@@ -87,7 +86,7 @@ az network public-ip prefix create \
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
- 您可以在使用 Azure PowerShell 建立公用 IP 時新增自`-PublicIpPrefix`變數，藉以從保留的首碼建立靜態 IPV6 公用 ip。 下列範例假設已建立前置詞，並將其儲存在名為的 PowerShell 變數中： *$MyOwnIPv 6prefix*。
+ 您可以在 `-PublicIpPrefix` 使用 Azure PowerShell 建立公用 ip 時新增引數，藉以從保留的首碼建立靜態 IPv6 公用 ip。 下列範例假設已建立前置詞，並將其儲存在名為的 PowerShell 變數中： *$MyOwnIPv 6prefix*。
 
 ```azurepowershell:  
  $MyIPv6PublicIPFromMyReservedPrefix = New-AzPublicIpAddress \

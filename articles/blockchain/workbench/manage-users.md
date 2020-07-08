@@ -2,20 +2,19 @@
 title: 管理 Azure Blockchain Workbench 中的使用者
 description: 如何在 Azure Blockchain Workbench 中管理使用者。
 ms.date: 05/09/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 573ec477a3e75beb91f90da0545fb7d4c0f9bf39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 78841ca830ae56f6c07f796bdde85f6a6ba9c921
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252177"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212729"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中管理使用者
 
 Azure Blockchain Workbench 納入了對屬於協會一分子的人員與組織進行使用者管理的功能。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 需要進行 Blockchain Workbench 部署。 請參閱 [Azure Blockchain Workbench 部署](deploy.md)，以取得部署的詳細資訊。
 
@@ -32,7 +31,7 @@ Blockchain Workbench 使用者必須存在於 Azure AD 租用戶中，才能將�
 
     ![新增使用者](./media/manage-users/add-ad-user.png)
 
-5.  完成新使用者的必要欄位。 選取 [建立]  。
+5.  完成新使用者的必要欄位。 選取 [建立]。
 
 如需如何在 Azure AD 中管理使用者的詳細資訊，請瀏覽 [Azure AD](../../active-directory/fundamentals/add-users-azure-active-directory.md) 文件。
 

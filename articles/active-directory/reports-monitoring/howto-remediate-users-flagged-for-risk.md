@@ -7,7 +7,7 @@ manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -15,12 +15,11 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100782"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608920"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>補救 Azure Active Directory 入口網站中標幟為有風險的使用者
 
@@ -32,7 +31,7 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>存取標幟為有風險的使用者報告
 
-您可以透過 Azure 入口網站中的[有風險的使用者報告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)，檢閱標幟為有風險的使用者。 如果您沒有 Azure AD，可以在[https://aka.ms/AccessAAD](https://aka.ms/AccessAAD)免費註冊。 
+您可以透過 Azure 入口網站中的[有風險的使用者報告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)，檢閱標幟為有風險的使用者。 如果您沒有 Azure AD，可以在免費註冊 [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) 。 
 
 從標幟為有風險的使用者報告，您可以為每位使用者採取下列動作：
 
@@ -75,7 +74,7 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
     f. 將帳戶的密碼複雜性設定為很高。
 
-    g. 啟用信箱稽核。
+    如 啟用信箱稽核。
 
     h. 產生稽核記錄，以供系統管理員檢閱。
 

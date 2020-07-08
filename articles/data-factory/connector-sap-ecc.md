@@ -10,13 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: ad26fca94527864af10bb0051336c372ea65b3e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 06/12/2020
+ms.openlocfilehash: 4bdcb2b4008f54ff0d84594e6f3b5a7b76944e65
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81413806"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987018"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP ECC 複製資料
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -148,6 +147,7 @@ SAP ECC 連結服務支援下列屬性：
 |:--- |:--- |:--- |
 | `type` | 複製活動 `source` 區段的 `type` 屬性必須設定為 `SapEccSource`。 | 是 |
 | `query` | 用來篩選資料的 OData 查詢選項。 例如：<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC 連接器會從以下組合的 URL 複製資料：<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>如需詳細資訊，請參閱 [OData URL 元件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| `httpRequestTimeout` | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 此值是取得回應的逾時值，而非讀取回應資料的逾時值。 如果未指定，預設值為**00:30:00** （30分鐘）。 | 否 |
 
 ### <a name="example"></a>範例
 
