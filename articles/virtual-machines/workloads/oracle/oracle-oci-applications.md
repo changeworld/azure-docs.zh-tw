@@ -14,10 +14,9 @@ ms.date: 07/18/2019
 ms.author: borisb
 ms.custom: ''
 ms.openlocfilehash: f36dfe0092e3447053871ee0e5b4d659bb443779
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687490"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>在 Azure 上部署 Oracle 應用程式的架構
@@ -44,7 +43,7 @@ Oracle 應用程式是由多個服務所組成，可以裝載在 Azure 中的相
 
 使用跨雲端互連部署應用程式時，您可以繼續使用現有的 ExpressRoute 線路，將您的 Azure 環境連線到內部部署網路。 不過，除了連線到內部部署網路的 OCI 之外，您還需要個別的 ExpressRoute 電路來進行互連。
 
-## <a name="e-business-suite"></a>電子商務套件
+## <a name="e-business-suite"></a>E-Business Suite
 
 Oracle 電子商務套件（EBS）是一套應用程式，包括供應鏈管理（SCM）和客戶關係管理（CRM）。 若要利用 OCI 的受控資料庫組合，可以使用 Microsoft Azure 和 OCI 之間的跨雲端互連來部署 EBS。 在此設定中，簡報和應用層會在 Azure 中執行，並在 OCI 中的資料庫層中執行，如下列架構圖所示（圖1）。
 
@@ -193,4 +192,4 @@ PeopleTools 用戶端是用來執行管理活動，例如開發、遷移和升�
 
 使用[Terraform 腳本](https://github.com/microsoft/azure-oracle)，在 Azure 中設定 Oracle 應用程式，並與 OCI 建立跨雲端連線能力。
 
-如需有關 OCI 的詳細資訊和白皮書，請參閱[Oracle 雲端](https://docs.cloud.oracle.com/iaas/Content/home.htm)檔。
+如需 OCI 的詳細資訊和技術白皮書，請參閱 [Oracle Cloud](https://docs.cloud.oracle.com/iaas/Content/home.htm) 文件。

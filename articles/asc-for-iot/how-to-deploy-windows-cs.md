@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537605"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>針對 Windows 部署適用於 IoT 的 Azure 資訊安全中心 (以 C# 為基礎) 安全性代理程式
@@ -34,7 +33,7 @@ ms.locfileid: "81537605"
 > * 解除安裝代理程式
 > * 疑難排解
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 如需其他平臺和代理程式類別，請參閱[選擇正確的安全性代理程式](how-to-deploy-agent.md)。
 
@@ -104,7 +103,7 @@ Get-help 範例：```Get-Help .\InstallSecurityAgent.ps1```
 
 若要開啟記錄：
 
-1. 開啟設定檔案（一般 .config）以使用標準檔案編輯器進行編輯。
+1. 開啟設定檔（General.config），以使用標準的檔案編輯器進行編輯。
 
 1. 編輯下列值：
 

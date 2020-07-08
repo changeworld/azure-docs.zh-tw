@@ -9,10 +9,9 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
 ms.openlocfilehash: 270e6a0173ed0088ff5d37c989947f5272634200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687190"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>設定 IoT Edge 裝置以透過 Proxy 伺服器進行通訊
@@ -53,7 +52,7 @@ Proxy URL 採用下列格式：**protocol**://**proxy_host**:**proxy_port**。
 
 * **protocol**是 HTTP 或 HTTPS。 Docker daemon 可以使用任一種通訊協定，視您的容器登錄設定而定，但 IoT Edge 的背景程式和執行時間容器應該一律使用 HTTP 來連線到 proxy。
 
-* **proxy_host**是 Proxy 伺服器的位址。 如果您的 proxy 伺服器需要驗證，您可以使用下列格式，將您的認證提供為 proxy 主機的一部分： **user**：**password**\@**proxy_host**。
+* **proxy_host**是 Proxy 伺服器的位址。 如果您的 proxy 伺服器需要驗證，您可以使用下列格式，將您的認證提供為 proxy 主機的一部分： **user**：**password** \@ **proxy_host**。
 
 * **proxy_port**是 Proxy 回應網路流量的網路連接埠。
 
@@ -69,7 +68,7 @@ Proxy URL 採用下列格式：**protocol**://**proxy_host**:**proxy_port**。
 
 如果您要在 Windows 裝置上安裝 IoT Edge 執行時間，則必須經過 proxy 伺服器兩次。 第一個連接會下載安裝程式腳本檔案，而第二個連接會在安裝期間下載必要的元件。 您可以在 Windows 設定中設定 proxy 資訊，或直接在 PowerShell 命令中包含您的 proxy 資訊。
 
-下列步驟示範使用`-proxy`引數進行 windows 安裝的範例：
+下列步驟示範使用引數進行 windows 安裝的範例 `-proxy` ：
 
 1. WebRequest 命令需要 proxy 資訊，才能存取安裝程式腳本。 然後，IoTEdge 命令需要 proxy 資訊來下載安裝檔案。
 
@@ -122,7 +121,7 @@ IoT Edge daemon 一律會使用 HTTPS 將要求傳送至 IoT 中樞。
 sudo systemctl edit iotedge
 ```
 
-輸入下列文字，以您的 proxy 伺服器位址和埠取代** \<proxy URL>** 。 然後儲存並結束。
+輸入下列文字， **\<proxy URL>** 並將取代為您的 proxy 伺服器位址和埠。 然後儲存並結束。
 
 ```ini
 [Service]
@@ -149,7 +148,7 @@ systemctl show --property=Environment iotedge
 
 #### <a name="windows"></a>Windows
 
-以系統管理員身分開啟 PowerShell 視窗，並執行下列命令以搭配新的環境變數編輯登錄。 以您的 proxy 伺服器位址和埠取代** \<proxy url>** 。
+以系統管理員身分開啟 PowerShell 視窗，並執行下列命令以搭配新的環境變數編輯登錄。 **\<proxy url>** 將取代為您的 proxy 伺服器位址和埠。
 
 ```powershell
 reg add HKLM\SYSTEM\CurrentControlSet\Services\iotedge /v Environment /t REG_MULTI_SZ /d https_proxy=<proxy URL>
@@ -167,7 +166,7 @@ IoT Edge 代理程式是在任何 IoT Edge 裝置上皆應第一個啟動的模�
 
 此步驟會在初始裝置安裝期間，于 IoT Edge 裝置上進行一次。
 
-1. 在您的 IoT Edge 裝置上開啟 config.yaml 檔案。 在 Linux 系統上，此檔案位於 **/etc/iotedge/config.yaml**。 在 Windows 系統上，此檔案位於 **C:\ProgramData\iotedge\config.yaml**。 該設定檔是受保護的，因此您需要系統管理權限以開啟它。 在 Linux 系統上，使用`sudo`命令，然後在您慣用的文字編輯器中開啟檔案。 在 Windows 上，以系統管理員身分開啟 [記事本] 之類的文字編輯器，然後開啟檔案。
+1. 在您的 IoT Edge 裝置上開啟 config.yaml 檔案。 在 Linux 系統上，此檔案位於 **/etc/iotedge/config.yaml**。 在 Windows 系統上，此檔案位於 **C:\ProgramData\iotedge\config.yaml**。 該設定檔是受保護的，因此您需要系統管理權限以開啟它。 在 Linux 系統上，使用 `sudo` 命令，然後在您慣用的文字編輯器中開啟檔案。 在 Windows 上，以系統管理員身分開啟 [記事本] 之類的文字編輯器，然後開啟檔案。
 
 2. 在 config.yaml 檔案中，找到 **Edge Agent module spec** 區段。 IoT Edge 代理程式定義包含 **env** 參數，可供您於該處新增環境變數。
 

@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: d1ad0cbe30ce20e61a31f0534a47fe031f6f257b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727264"
 ---
 # <a name="api"></a>API #
@@ -19,7 +18,7 @@ Azure 媒體播放機 API 可讓您透過 JavaScript 與影片互動，不論瀏
 
 ## <a name="referencing-the-player"></a>參照播放機 ##
 
-若要使用 API 函式，您需要有 player 物件的存取權。 幸運的是，很容易就能取得。 您只需要確定您的影片標記具有識別碼。 範例內嵌程式碼的識別碼為`vid1`。 如果您在單一頁面上有多個影片，請確定每個 video 標記都有唯一的識別碼。
+若要使用 API 函式，您需要有 player 物件的存取權。 幸運的是，很容易就能取得。 您只需要確定您的影片標記具有識別碼。 範例內嵌程式碼的識別碼為 `vid1` 。 如果您在單一頁面上有多個影片，請確定每個 video 標記都有唯一的識別碼。
 
 `var myPlayer = amp('vid1');`
 

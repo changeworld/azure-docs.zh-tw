@@ -13,10 +13,9 @@ ms.date: 12/13/2019
 ms.author: borisb
 ms.custom: ''
 ms.openlocfilehash: bbb6665299ce9b6521eeb8801d8621dfbdc17f4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683495"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上 Oracle Database Enterprise Edition 的參考架構
@@ -154,7 +153,7 @@ Oracle 分區化主要包含下列元件。 如需這些元件的詳細資訊，
 
 - **分區資料庫**-分區資料庫是您的 Oracle 資料庫。 在啟用快速啟動容錯移轉（FSFO）的訊息代理程式設定中，會使用 Oracle Data Guard 來複寫每個資料庫。 您不需要在每個分區上設定資料防護容錯移轉和複寫。 這會在建立共用資料庫時自動設定和部署。 如果特定分區失敗，Oracle 共用會自動將資料庫連線從主要複本故障切換到待命。
 
-您可以使用兩個介面來部署和管理 Oracle 分區化資料庫： Oracle Enterprise Manager 雲端控制 GUI 和（ `GDSCTL`或）命令列公用程式。 您甚至可以使用雲端控制來監視不同分區的可用性和效能。 此`GDSCTL DEPLOY`命令會自動建立分區及其各自的接聽程式。 此外，此命令會自動部署系統管理員所指定的分區層級高可用性所使用的複寫設定。
+您可以使用兩個介面來部署和管理 Oracle 分區化資料庫： Oracle Enterprise Manager 雲端控制 GUI 和（或 `GDSCTL` ）命令列公用程式。 您甚至可以使用雲端控制來監視不同分區的可用性和效能。 此 `GDSCTL DEPLOY` 命令會自動建立分區及其各自的接聽程式。 此外，此命令會自動部署系統管理員所指定的分區層級高可用性所使用的複寫設定。
 
 分區資料庫的方式有很多種：
 

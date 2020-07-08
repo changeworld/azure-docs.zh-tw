@@ -16,10 +16,9 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273200"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 SAP ASE Azure 虛擬機器 DBMS 部署
@@ -50,7 +49,7 @@ Microsoft Azure 提供許多不同的虛擬機器類型，可讓您執行最小�
 
 
 ## <a name="linux-operating-system-specific-settings"></a>Linux 作業系統特定設定
-在 Linux Vm 上， `saptune`以設定檔執行的 SAP-ASE Linux 大型頁面應該預設為啟用，而且可以使用命令進行驗證  
+在 Linux Vm 上，以 `saptune` 設定檔執行的 SAP-ASE Linux 大型頁面應該預設為啟用，而且可以使用命令進行驗證  
 
 `cat /proc/meminfo` 
 
@@ -61,7 +60,7 @@ Microsoft Azure 提供許多不同的虛擬機器類型，可讓您執行最小�
 
 在[sap 支援附注](https://launchpad.support.sap.com/#/notes/1928533)中列出的任何 vm 類型都支援 sap ASE For Sap NetWeaver 應用程式 #1928533 一般用於中型大小 SAP ASE 資料庫伺服器的 vm 類型包含 Esv3。  大型的多 tb 資料庫可以利用 M 系列的 VM 類型。 藉由啟用 M 系列寫入加速器，可以改善 SAP ASE 交易記錄磁片寫入效能。 由於 SAP ASE 執行記錄檔寫入的方式，因此應謹慎地使用 SAP ASE 來測試寫入加速器。  [請參閱 SAP 支援附注 #2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) ，並考慮執行效能測試。  
 寫入加速器僅適用于交易記錄檔磁片。 磁片層級快取應設定為 [無]。 如果 Azure 寫入加速器不會顯示與其他 DBMS 類似的改良功能，千萬別驚訝。 根據 SAP ASE 寫入交易記錄檔的方式，Azure 寫入加速器不需要加速。
-建議將不同的磁片用於資料裝置和記錄裝置。  系統資料庫 sybsecurity 且`saptools`不需要專用磁片，而且可以放在包含 SAP 資料庫資料和記錄裝置的磁片上 
+建議將不同的磁片用於資料裝置和記錄裝置。  系統資料庫 sybsecurity 且 `saptools` 不需要專用磁片，而且可以放在包含 SAP 資料庫資料和記錄裝置的磁片上 
 
 ![SAP ASE 的儲存體設定](./media/dbms-guide-sap-ase/sap-ase-disk-structure.png)
 
@@ -80,7 +79,7 @@ Microsoft Azure 提供許多不同的虛擬機器類型，可讓您執行最小�
 
 針對資料庫大小介於 50 GB – 250 GB （例如 SAP solution Manager）的小型 SAP ASE DB 伺服器，其設定範例可能如下所示：
 
-| 設定 | Windows | Linux | 評價 |
+| 組態 | Windows | Linux | 註解 |
 | --- | --- | --- | --- |
 | VM 類型 | E4s_v3 （4 vCPU/32 GB RAM） | E4s_v3 （4 vCPU/32 GB RAM） | --- |
 | 加速網路 | 啟用 | 啟用 | ---|
@@ -101,7 +100,7 @@ Microsoft Azure 提供許多不同的虛擬機器類型，可讓您執行最小�
 
 針對資料庫大小介於 250 GB – 750 GB （例如較小的 SAP Business Suite 系統）的中型 SAP ASE DB 伺服器，其設定範例可能如下所示：
 
-| 設定 | Windows | Linux | 評價 |
+| 組態 | Windows | Linux | 註解 |
 | --- | --- | --- | --- |
 | VM 類型 | E16s_v3 （16 vCPU/128 GB RAM） | E16s_v3 （16 vCPU/128 GB RAM） | --- |
 | 加速網路 | 啟用 | 啟用 | ---|
@@ -121,7 +120,7 @@ Microsoft Azure 提供許多不同的虛擬機器類型，可讓您執行最小�
 
 針對資料庫大小介於 750 GB – 2000 GB （例如較大的 SAP Business Suite 系統）的小型 SAP ASE DB 伺服器，其設定範例可能如下所示：
 
-| 設定 | Windows | Linux | 評價 |
+| 組態 | Windows | Linux | 註解 |
 | --- | --- | --- | --- |
 | VM 類型 | E64s_v3 （64 vCPU/432 GB RAM） | E64s_v3 （64 vCPU/432 GB RAM） | --- |
 | 加速網路 | 啟用 | 啟用 | ---|
@@ -142,7 +141,7 @@ Microsoft Azure 提供許多不同的虛擬機器類型，可讓您執行最小�
 
 適用于小型 SAP ASE DB 伺服器的設定範例，其資料庫大小為 2 TB +，例如較大的全域使用的 SAP Business Suite 系統，可能如下所示：
 
-| 設定 | Windows | Linux | 評價 |
+| 組態 | Windows | Linux | 註解 |
 | --- | --- | --- | --- |
 | VM 類型 | M 系列（1.0 到 4.0 TB 的 RAM）  | M 系列（1.0 到 4.0 TB 的 RAM） | --- |
 | 加速網路 | 啟用 | 啟用 | ---|
@@ -211,7 +210,7 @@ SAP 軟體布建管理員（SWPM）提供在安裝期間加密資料庫的選項
 - 使用具有正確等量大小和檔案系統的 Windows 儲存空間或 Linux LVM2 來匯總磁片
 - 建立足夠數目的裝置，供資料、記錄、暫存及備份之用
 - 針對 x 大型系統，請考慮使用 UltraDisk 
-- 在`saptune` Linux OS 上執行 SAP-ASE 
+- `saptune`在 LINUX OS 上執行 SAP-ASE 
 - 使用 DB 加密保護資料庫–在 Azure Key Vault 中手動儲存金鑰 
 - 完成[Azure 上的 SAP 檢查清單](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) 
 - 設定記錄備份與完整備份 
@@ -221,7 +220,7 @@ SAP 軟體布建管理員（SWPM）提供在安裝期間加密資料庫的選項
 ## <a name="using-dbacockpit-to-monitor-database-instances"></a>使用 DBACockpit 來監視資料庫實例
 針對使用 SAP ASE 作為資料庫平台的 SAP 系統，可以存取 DBACockpit 作為交易 DBACockpit 中內嵌的瀏覽器視窗或作為 Webdynpro。 不過，僅在 DBACockpit 的 Webdynpro 實施中提供監視和管理資料庫的完整功能。
 
-做為內部部署系統，需要使用數個步驟，才能啟用 DBACockpit 之 Webdynpro 實作所使用的所有 SAP NetWeaver 功能。 遵循[SAP 支援附注 #1245200](https://launchpad.support.sap.com/#/notes/1245200) ，以啟用 webdynpros 的使用方式並產生所需的資訊。 遵循上述附注中的指示時，您也會設定網際網路通訊管理員（`ICM`）以及要用於 HTTP 和 HTTPs 連接的埠。 Http 的預設設定看起來如下︰
+做為內部部署系統，需要使用數個步驟，才能啟用 DBACockpit 之 Webdynpro 實作所使用的所有 SAP NetWeaver 功能。 遵循[SAP 支援附注 #1245200](https://launchpad.support.sap.com/#/notes/1245200) ，以啟用 webdynpros 的使用方式並產生所需的資訊。 遵循上述附注中的指示時，您也會設定網際網路通訊管理員（ `ICM` ）以及要用於 HTTP 和 HTTPs 連接的埠。 Http 的預設設定看起來如下︰
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 > 
@@ -231,15 +230,15 @@ SAP 軟體布建管理員（SWPM）提供在安裝期間加密資料庫的選項
 
 此外，在交易 DBACockpit 中產生的連結看起來如下︰
 
-> HTTPs：\//\<fullyqualifiedhostname>： 44300/sap/bc/webdynpro/sap/dba_cockpit
+> HTTPs： \/ / \<fullyqualifiedhostname> ： 44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
-> HTTP：\//\<fullyqualifiedhostname>： 8000/sap/bc/webdynpro/sap/dba_cockpit
+> HTTP： \/ / \<fullyqualifiedhostname> ： 8000/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > 
 
 取決於裝載 SAP 系統的 Azure 虛擬機器是否連線到您的 AD 和 DNS，您需要確定 ICM 會使用完整的主機名稱，此名稱可在您嘗試從中開啟 DBACockpit 的電腦上加以解析。 請參閱[SAP 支援附注 #773830](https://launchpad.support.sap.com/#/notes/773830) ，以瞭解 ICM 如何根據設定檔參數判斷完整主機名稱，並在必要時明確設定參數 ICM/host_name_full。
 
-如果您已在僅限雲端的案例中部署 VM，但內部部署與 Azure 之間沒有跨單位連線，則您需要定義公用 IP 位址和`domainlabel`。 然後 VM 的公用 DNS 名稱格式如下所示︰
+如果您已在僅限雲端的案例中部署 VM，但內部部署與 Azure 之間沒有跨單位連線，則您需要定義公用 IP 位址和 `domainlabel` 。 然後 VM 的公用 DNS 名稱格式如下所示︰
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
@@ -249,9 +248,9 @@ SAP 軟體布建管理員（SWPM）提供在安裝期間加密資料庫的選項
 
 將 SAP 設定檔參數 icm/host_name_full 設定為 Azure VM 的 DNS 名稱，其連結看起來可能如下︰
 
-> HTTPs：\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
+> HTTPs： \/ /mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
-> HTTP：\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
+> HTTP： \/ /mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
 
 在此情況下，您需要確定︰
 

@@ -16,10 +16,9 @@ ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51be98654950ba290fa83f77eccdae4d6f549891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81603831"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>教學課程： Azure Active Directory 與 Amazon Web Services 整合（AWS）（舊版教學課程）
@@ -49,7 +48,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 * 所有的 AWS 帳戶都將使用相同的同盟中繼資料 XML 檔案，且在憑證變換時，您必須驅動此大規模演練，同時更新所有 AWS 帳戶上的憑證
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要設定 Azure AD 與 Amazon Web Services (AWS) 整合，您需要下列項目：
 
@@ -68,7 +67,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
 
-* Amazon Web Services （AWS）支援由**SP 和 IDP**起始的 SSO
+* Amazon Web Services (AWS) 支援由 **SP 和 IDP** 起始的 SSO
 * 設定 Amazon Web Services (AWS) 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>從資源庫新增 Amazon Web Services (AWS)
@@ -76,11 +75,11 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 若要設定 Amazon Web Services (AWS) 與 Azure AD 整合，您需要從資源庫將 Amazon Web Services (AWS) 新增到受控 SaaS App 清單。
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]**** 區段的搜尋方塊中輸入 **Amazon Web Services (AWS)**。
-1. 從結果面板選取 [Amazon Web Services (AWS)]****，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
+1. 若要新增應用程式，請選取 [新增應用程式]。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Amazon Web Services (AWS)** 。
+1. 從結果面板選取 [Amazon Web Services (AWS)]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 1. 新增應用程式之後，請移至 [**屬性**] 頁面，然後複製 [**物件識別碼**]。
 
@@ -110,7 +109,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入連結](common/select-sso.png)
 
-2. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入。
+2. 在 [選取單一登入方法] 對話方塊中，選取 [SAML/WS-Fed] 模式以啟用單一登入。
 
     ![單一登入選取模式](common/select-saml-option.png)
 
@@ -129,26 +128,26 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
     | 名稱  | 來源屬性  | 命名空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
-    | [角色]            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
+    | 角色            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
     | SessionDuration             | 「提供 900 秒 (15 分鐘) 到 43200 秒 (12 小時) 之間的值」 |  `https://aws.amazon.com/SAML/Attributes` |
 
-    a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
+    a. 按一下 [新增宣告] 以開啟 [管理使用者宣告] 對話方塊。
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
+    b. 在 [名稱] 文字方塊中，輸入該資料列所顯示的屬性名稱。
 
     c. 在 [命名空間]**** 文字方塊中，輸入該資料列顯示的命名空間值。
 
-    d. 選取 [來源] 作為 [屬性]  。
+    d. 選取 [來源] 作為 [屬性]。
 
     e. 在 [來源屬性]  清單中，輸入該資料列所顯示的屬性值。
 
-    f. 按一下 [確定]  。
+    f. 按一下 [確定]。
 
-    g. 按一下 [檔案]  。
+    g. 按一下 [檔案] 。
 
 7. 在 [以 SAML 設定單一登入]**** 頁面上的 [SAML 簽署憑證]**** 區段中，按一下 [下載]**** 以下載**同盟中繼資料 XML** 並將其儲存在電腦上。
 
@@ -190,7 +189,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入角色][16]
 
-1. 在 [Create role] \(建立角色\)**** 頁面上，執行下列步驟：  
+1. 在 [Create role] \(建立角色\) 頁面上，執行下列步驟：  
 
     ![設定單一登入信任][19]
 
@@ -198,7 +197,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     b. 在 [Choose a SAML 2.0 Provider] \(選擇 SAML 2.0 提供者\)**** 區段底下，選取您先前建立的 [SAML provider] \(SAML 提供者\)**** (例如：*WAAD*)
 
-    c. 選取 [Allow programmatic and AWS Management Console access] \(允許透過程式設計方式和 AWS 管理主控台存取\)****。
+    c. 選取 [Allow programmatic and AWS Management Console access] \(允許透過程式設計方式和 AWS 管理主控台存取\)。
   
     d. 按一下 [Next: Permissions] \(下一步：權限\)****。
 
@@ -212,7 +211,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     a. 在 [**金鑰**] 文字方塊中，輸入 Ex： Azureadtest 的索引鍵名稱。
 
-    b. 在 [**值（選擇性）** ] 文字方塊中，使用下列格式`accountname-aws-admin`輸入金鑰值。 帳戶名稱應為全部小寫。
+    b. 在 [**值（選擇性）** ] 文字方塊中，使用下列格式輸入金鑰值 `accountname-aws-admin` 。 帳戶名稱應為全部小寫。
 
     c. 按 **[下一步：審查]**。
 
@@ -220,7 +219,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入檢閱][34]
 
-    a. 在 [**角色名稱**] 文字方塊中，以下列模式`accountname-aws-admin`輸入值。
+    a. 在 [**角色名稱**] 文字方塊中，以下列模式輸入值 `accountname-aws-admin` 。
 
     b. 在 [**角色描述**] 文字方塊中，輸入您用於角色名稱的相同值。
 
@@ -283,7 +282,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     ![Microsoft Graph Explorer] 對話方塊](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    g. 從服務主體物件擷取 appRoles 屬性。
+    如 從服務主體物件擷取 appRoles 屬性。
 
     ![Microsoft Graph Explorer] 對話方塊](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 

@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt
 ms.openlocfilehash: d7f9ce37ad85d39388eea90af263f59ce312a6b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732257"
 ---
-# <a name="schedule-and-broadcast-jobs-nodejs"></a>排程和廣播作業（node.js）
+# <a name="schedule-and-broadcast-jobs-nodejs"></a>排程和廣播作業（Node.js）
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
@@ -45,17 +44,17 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 在本教學課程結尾處，您會有兩個 Node.js 應用程式：
 
-* **simDevice**，這會使用裝置身分識別連接到您的 IoT 中樞，並接收**lockDoor**直接方法。
+* **simDevice.js**，這會使用裝置身分識別連接到您的 IoT 中樞，並接收**lockDoor**直接方法。
 
 * **scheduleJobService.js** 會使用作業在模擬裝置應用程式中呼叫直接方法，並更新裝置對應項 (twin) 的所需屬性。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* Node.js 10.0. x 版或更新版本。 [準備您的開發環境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)說明如何在 Windows 或 Linux 上安裝本教學課程的 Node.js。
+* Node.js 10.0.x 版或更新版本。 [準備開發環境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)描述如何在 Windows 或 Linux 上安裝本教學課程的 Node.js。
 
 * 使用中的 Azure 帳戶。 (如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。)
 
-* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例使用 MQTT 通訊協定，它會透過埠8883進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -92,7 +91,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. 新增 **connectionString** 變數，並用它來建立**用戶端**執行個體。 將`{yourDeviceConnectionString}`預留位置值取代為您先前複製的裝置連接字串。
+5. 新增 **connectionString** 變數，並用它來建立**用戶端**執行個體。 將 `{yourDeviceConnectionString}` 預留位置值取代為您先前複製的裝置連接字串。
 
     ```javascript
     var connectionString = '{yourDeviceConnectionString}';
@@ -144,7 +143,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>排定用於呼叫直接方法及更新裝置對應項 (twin) 屬性的作業
 
-在本節中，您會建立 node.js 主控台應用程式，以使用直接方法在裝置上起始遠端**lockDoor** ，並更新裝置對應項的屬性。
+在本節中，您會建立 Node.js 主控台應用程式，以使用直接方法在裝置上起始遠端**lockDoor** ，並更新裝置對應項的屬性。
 
 1. 建立名為 **scheduleJobService** 的新空白資料夾。  在命令提示字元中，使用下列命令在 **scheduleJobService** 資料夾中建立 package.json 檔案。  接受所有預設值：
 
@@ -160,7 +159,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 3. 使用文字編輯器，在 [scheduleJobService]**** 資料夾中建立新的 **scheduleJobService.js** 檔案。
 
-4. 在**scheduleJobService**開頭處新增下列 ' 必要 ' 語句：
+4. 在**scheduleJobService.js**檔案的開頭新增下列 ' 必要 ' 語句：
 
     ```javascript
     'use strict';
@@ -169,7 +168,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. 新增下列變數宣告。 以您`{iothubconnectionstring}`在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中複製的值取代預留位置值。 如果您註冊的裝置不同于**myDeviceId**，請務必在查詢準則中加以變更。
+5. 新增下列變數宣告。 以 `{iothubconnectionstring}` 您在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中複製的值取代預留位置值。 如果您註冊的裝置不同于**myDeviceId**，請務必在查詢準則中加以變更。
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';

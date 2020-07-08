@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727160"
 ---
 # <a name="options"></a>選項 #
@@ -30,12 +29,12 @@ Azure 媒體播放機內嵌程式碼只是 HTML5 video 標記，因此針對許�
 `amp("vid1", { "controls": true, "autoplay": false });`
 
 > [!NOTE]
-> 在設定來源之前，只會在第一次初始化時設定此函數中的選項。  如果您想要修改相同已初始化 Azure 媒體播放機專案上的選項，您必須先更新選項，然後再變更來源。 您可以使用`myPlayer.options({/*updated options*/});`來更新 JavaScript 中的選項。 請注意，只有變更的選項會受到影響，所有其他先前設定的選項將會保存。
+> 在設定來源之前，只會在第一次初始化時設定此函數中的選項。  如果您想要修改相同已初始化 Azure 媒體播放機專案上的選項，您必須先更新選項，然後再變更來源。 您可以使用來更新 JavaScript 中的選項 `myPlayer.options({/*updated options*/});` 。 請注意，只有變更的選項會受到影響，所有其他先前設定的選項將會保存。
 
 ## <a name="individual-options"></a>個別選項 ##
 
 > [!NOTE]
->影片標籤屬性只能是 true 或 false （布林值），您只需要包含屬性（不帶正負號）即可開啟，或將其排除以將它關閉。 例如，若要將控制項開啟：錯誤`<video controls="true" ...>`的`<video controls ...>`正確處在于有人嘗試將這些值設定為 false，並使用 false 作為值（例如 controls = "false"），這實際上會執行相反的動作，並將值設定為 true，因為仍然包含該屬性。
+>影片標籤屬性只能是 true 或 false （布林值），您只需要包含屬性（不帶正負號）即可開啟，或將其排除以將它關閉。 例如，若要將控制項開啟：錯誤 `<video controls="true" ...>` 的正確處 `<video controls ...>` 在於有人嘗試將這些值設定為 false，並使用 false 作為值（例如 controls = "false"），這實際上會執行相反的動作，並將值設定為 true，因為仍然包含該屬性。
 
 ### <a name="controls"></a>controls ###
 
@@ -79,7 +78,7 @@ Height 屬性會設定影片的顯示高度。
 
 ### <a name="other-options"></a>其他選項 ###
 
-您可以使用接受 JSON 的`<video>` `data-setup`參數，在標記上設定其他選項。
+您可以 `<video>` 使用 `data-setup` 接受 JSON 的參數，在標記上設定其他選項。
 `<video ... data-setup='{"nativeControlsForTouch": false}'>`
 
 #### <a name="nativecontrolsfortouch"></a>nativeControlsForTouch ####
@@ -92,16 +91,16 @@ Height 屬性會設定影片的顯示高度。
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`選項會覆`width`寫`height`明確和設定。 此選項僅適用于 Azure 媒體播放機版本和`2.0.0`更新版本。
+`fluid`選項會覆寫明確 `width` 和 `height` 設定。 此選項僅適用于 Azure 媒體播放機版本 `2.0.0` 和更新版本。
 
 ### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`選項控制使用者可用的 playbackSpeed 控制項和播放速度設定集。 `playbackSpeed`取得物件。 若要在控制列上啟用 [播放速度控制]， `enabled`必須將物件的屬性設定為 [true]。 在標記中啟用播放速度的範例：
+`playbackSpeed`選項控制使用者可用的 playbackSpeed 控制項和播放速度設定集。 `playbackSpeed`取得物件。 若要在控制列上啟用 [播放速度控制]，必須將物件的屬性 `enabled` 設定為 [true]。 在標記中啟用播放速度的範例：
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-`playbackSpeed`設定的其他屬性是由[PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions)物件所提供。
+設定的其他屬性 `playbackSpeed` 是由[PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions)物件所提供。
 
 在 JavaScript 中設定播放速度選項的範例：
 
@@ -130,7 +129,7 @@ Height 屬性會設定影片的顯示高度。
 
 ### <a name="staledatatimelimitinsec"></a>staleDataTimeLimitInSec ###
 
-此`staleDataTimeLimitInSec`選項是一種優化，可讓您設定要在 mediaSource 緩衝區中保留多少秒的過時資料。 此選項預設為停用狀態。
+此 `staleDataTimeLimitInSec` 選項是一種優化，可讓您設定要在 mediaSource 緩衝區中保留多少秒的過時資料。 此選項預設為停用狀態。
 
 ### <a name="cea708captionssettings"></a>cea708CaptionsSettings ###
 

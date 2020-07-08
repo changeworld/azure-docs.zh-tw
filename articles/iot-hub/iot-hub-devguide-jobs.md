@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730112"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>排程多個裝置上的作業
@@ -122,7 +121,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 > [!NOTE]
-> *UpdateTwin*屬性需要有效的 etag 相符;例如， `etag="*"`。
+> *UpdateTwin*屬性需要有效的 etag 相符;例如， `etag="*"` 。
 
 下列程式碼片段顯示排程在 contoso--1 上更新測試裝置之裝置對應項屬性的作業的要求和回應：
 
@@ -178,7 +177,7 @@ ContinuationToken 會從回應來提供。
 
 以下清單顯示屬性和對應的描述，可在查詢作業或作業結果時使用。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | --- | --- |
 | **jobId** |應用程式所提供的作業識別碼。 |
 | **時間** |應用程式所提供的作業開始時間 (ISO-8601)。 |
@@ -205,7 +204,7 @@ ContinuationToken 會從回應來提供。
 
 IoT 中樞開發人員指南中的其他參考主題包括︰
 
-* [IoT 中樞端點](iot-hub-devguide-endpoints.md)說明每個 IoT 中樞針對執行時間和管理作業所公開的各種端點。
+* [IoT 中樞端點](iot-hub-devguide-endpoints.md)說明每個 IoT 中樞公開給執行階段和管理作業的各種端點。
 
 * [節流和配額](iot-hub-devguide-quotas-throttling.md)說明適用於 IoT 中樞服務的配額，和使用服務時所預期的節流行為。
 
@@ -219,4 +218,4 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 若要嘗試本文所述的一些概念，請參閱下列「IoT 中樞」教學課程：
 
-* [排程及廣播作業](iot-hub-node-node-schedule-jobs.md)
+* [排程及廣播工作](iot-hub-node-node-schedule-jobs.md)

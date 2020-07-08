@@ -4,10 +4,9 @@ description: 瞭解如何設定 Azure Migrate 設備，以評估和遷移 VMware
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81538251"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>設定適用于 VMware Vm 的應用裝置
@@ -33,8 +32,8 @@ ms.locfileid: "81538251"
 
 ## <a name="download-the-ova-template"></a>下載 OVA 範本
 
-1. 在 [移轉目標]   > [伺服器]   >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]  。
-2. 在 [探索機器]   > [機器是否已虛擬化?]  中，按一下 [是，使用 VMWare vSphere Hypervisor]  。
+1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]。
+2. 在 [探索機器] > [機器是否已虛擬化?] 中，按一下 [是，使用 VMWare vSphere Hypervisor]。
 3. 按一下 [下載]**** 以下載 .OVA 範本檔案。
 
   ![用於下載 OVA 檔案的選項](./media/tutorial-assess-vmware/download-ova.png)
@@ -55,14 +54,14 @@ ms.locfileid: "81538251"
 
 匯入所下載的檔案，並建立 VM。
 
-1. 在 vSphere 用戶端主控台中，**按一下** > [檔案] [**部署 OVF 範本**]。
+1. 在 vSphere 用戶端主控台中，**按一下 [** 檔案] [  >  **部署 OVF 範本**]。
 ![用於部署 OVF 範本的功能表命令](./media/tutorial-assess-vmware/deploy-ovf.png)
 
-2. 在 [部署 OVF 範本精靈] > [來源]  中，指定 OVA 檔案的位置。
-3. 在 [名稱]   和 [位置] 中，指定 VM 的易記名稱。 選取將裝載 VM 的庫存物件。
-5. 在 [主機/叢集]  中，指定 VM 的執行所在主機或叢集。
+2. 在 [部署 OVF 範本精靈] > [來源] 中，指定 OVA 檔案的位置。
+3. 在 [名稱]  和 [位置] 中，指定 VM 的易記名稱。 選取將裝載 VM 的庫存物件。
+5. 在 [主機/叢集] 中，指定 VM 的執行所在主機或叢集。
 6. 在**儲存體**中，指定 VM 的儲存目的地。
-7. 在 [磁碟格式]  中，指定磁碟類型和大小。
+7. 在 [磁碟格式] 中，指定磁碟類型和大小。
 8. 在 [**網路對應**] 中，指定 VM 將連線的網路。 此網路必須能夠連線到網際網路，以將中繼資料傳送至 Azure Migrate 伺服器評量。
 9. 檢閱並確認設定，然後按一下 [完成]****。
 
@@ -78,13 +77,13 @@ ms.locfileid: "81538251"
 
 1. 在 vSphere 用戶端主控台中，以滑鼠右鍵按一下 [VM] > [開啟主控台]****。
 2. 提供設備的語言、時區和密碼。
-3. 在任何可連線至 VM 的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址  :44368**。
+3. 在任何可連線至 VM 的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址:44368**。
 
    或者，您也可以按一下應用程式捷徑，從設備桌面開啟應用程式。
-4. 在 [Web 應用程式] > [設定必要條件]  中，執行下列動作：
+4. 在 [Web 應用程式] > [設定必要條件] 中，執行下列動作：
     - **授權**：接受授權條款，並閱讀第三方資訊。
     - **連線能力**：應用程式會確認 VM 是否能夠存取網際網路。 如果 VM 使用 Proxy：
-        - 按一下 [Proxy 設定]  ，然後以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定 Proxy 位址和接聽連接埠。
+        - 按一下 [Proxy 設定]，然後以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定 Proxy 位址和接聽連接埠。
         - 如果 Proxy 需要驗證，請指定認證。
         - 僅支援 HTTP Proxy。
     - **時間同步**：系統會確認時間。 設備上的時間應該與網際網路時間同步，探索才能正常運作。
@@ -95,14 +94,14 @@ ms.locfileid: "81538251"
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>向 Azure Migrate 註冊設備
 
-1. 按一下 [登入]  。 如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
+1. 按一下 [登入]。 如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
 2. 在新的索引標籤上，使用您的 Azure 認證登入。
     - 以您的使用者名稱和密碼登入。
     - 不支援使用 PIN 登入。
 3. 成功登入後，返回 Web 應用程式。
 2. 選取 Azure Migrate 專案建立所在的訂用帳戶。 然後選取專案。
 3. 指定設備的名稱。 名稱應該是英數位元，且長度不超過 14 個字元。
-4. 按一下 [註冊]  。
+4. 按一下 [註冊] 。
 
 
 ## <a name="start-continuous-discovery-by-providing-vcenter-server-and-vm-credential"></a>藉由提供 vCenter Server 和 VM 認證來開始連續探索
@@ -124,7 +123,7 @@ ms.locfileid: "81538251"
 2. 選取 [作業系統]****。
 3. 為認證提供易記名稱。
 4. 在 [使用者名稱]**** 與 [密碼]**** 中，指定至少在 VM 上具有來賓存取權的帳戶。
-5. 按一下 [加入]  。
+5. 按一下 **[新增]** 。
 
 一旦指定 vCenter Server 與 VM 認證 (選擇性)，請按一下 [儲存並開始探索]**** 以開始探索內部部署環境。
 

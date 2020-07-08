@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641819"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>總覽：使用 Azure Resource Manager 範本自動部署 Azure Logic Apps
@@ -61,7 +60,7 @@ ms.locfileid: "81641819"
 
 針對邏輯應用程式範本，您主要會使用這些範本物件：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |-----------|-------------|
 | `parameters` | 宣告[範本參數](../azure-resource-manager/templates/template-syntax.md#parameters)，以便在 Azure 中建立和自訂要部署的資源時，接受要使用的值。 例如，這些參數會接受您的邏輯應用程式名稱和位置、連線，以及部署所需的其他資源的值。 您可以將這些參數值儲存在[參數](#template-parameter-files)檔案中，本主題稍後會加以描述。 如需一般詳細資料，請參閱[參數-Resource Manager 範本結構和語法](../azure-resource-manager/templates/template-syntax.md#parameters)。 |
 | `resources` | 定義要建立或更新並部署至 Azure 資源群組的[資源](../azure-resource-manager/templates/template-syntax.md#resources)，例如您的邏輯應用程式、連線、Azure 儲存體帳戶等等。 如需一般詳細資料，請參閱[資源-Resource Manager 範本結構和語法](../azure-resource-manager/templates/template-syntax.md#resources)。 |
@@ -69,7 +68,7 @@ ms.locfileid: "81641819"
 
 您的邏輯應用程式範本會使用此檔案名格式：
 
-**<*邏輯-應用程式名稱*> json**
+**<*邏輯-應用程式名稱*# C0.js開啟**
 
 > [!IMPORTANT]
 > 範本語法會區分大小寫，因此請確定您使用一致的大小寫。 
@@ -78,13 +77,13 @@ ms.locfileid: "81641819"
 
 ## <a name="template-parameters"></a>範本參數
 
-邏輯應用程式範本有多`parameters`個存在於不同層級的物件，並執行不同的功能。 例如，您可以在最上層宣告[範本參數](../azure-resource-manager/templates/template-syntax.md#parameters)，以取得在 Azure 中建立及部署資源時要接受並在部署時使用的值，例如：
+邏輯應用程式範本有多個 `parameters` 存在於不同層級的物件，並執行不同的功能。 例如，您可以在最上層宣告[範本參數](../azure-resource-manager/templates/template-syntax.md#parameters)，以取得在 Azure 中建立及部署資源時要接受並在部署時使用的值，例如：
 
 * 您的邏輯應用程式
 * 您的邏輯用來透過[受控連接器](../connectors/apis-list.md)存取其他服務和系統的連接
 * 您的邏輯應用程式部署所需的其他資源
 
-  例如，如果您的邏輯應用程式使用企業對企業（B2B）案例的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，範本的最上層`parameters`物件會宣告可接受該整合帳戶之資源識別碼的參數。
+  例如，如果您的邏輯應用程式使用企業對企業（B2B）案例的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，範本的最上層物件會宣告可 `parameters` 接受該整合帳戶之資源識別碼的參數。
 
 以下是參數定義的一般結構和語法，其完全由[參數 Resource Manager 範本結構和語法](../azure-resource-manager/templates/template-syntax.md#parameters)所描述：
 
@@ -143,7 +142,7 @@ ms.locfileid: "81641819"
 }
 ```
 
-除了處理敏感性或必須受到保護之值的參數（例如使用者名稱、密碼和秘密）以外，所有這些參數都包含`defaultValue`屬性，但在某些情況下，預設值是空值。 本主題稍後所述的範例[參數](#template-parameter-files)檔案會提供這些範本參數所要使用的部署值。
+除了處理敏感性或必須受到保護之值的參數（例如使用者名稱、密碼和秘密）以外，所有這些參數都包含 `defaultValue` 屬性，但在某些情況下，預設值是空值。 本主題稍後所述的範例[參數](#template-parameter-files)檔案會提供這些範本參數所要使用的部署值。
 
 如需保護範本參數的詳細資訊，請參閱下列主題：
 
@@ -155,7 +154,7 @@ ms.locfileid: "81641819"
 
 * 本主題稍後所述[的範本資源物件](#template-resources)會定義 Azure 中您想要建立及部署的每個資源，例如[邏輯應用程式的資源定義](#logic-app-resource-definition)。 這些資源通常會使用範本參數值，例如您的邏輯應用程式名稱和位置，以及連接資訊。
 
-* 在邏輯應用程式資源定義的更深入層級中，您的[工作流程定義的 parameters 物件](#workflow-definition-parameters)會宣告值的參數，以用於邏輯應用程式的執行時間。 例如，您可以針對 HTTP 觸發程式用來進行驗證的使用者名稱和密碼，宣告工作流程定義參數。 若要指定工作流程定義參數的值，請`parameters`使用工作流程定義*以外*但仍在邏輯應用程式資源定義*內*的物件。 在此外部`parameters`物件中，您可以參考先前宣告的樣板參數，其可接受從參數檔案部署的值。
+* 在邏輯應用程式資源定義的更深入層級中，您的[工作流程定義的 parameters 物件](#workflow-definition-parameters)會宣告值的參數，以用於邏輯應用程式的執行時間。 例如，您可以針對 HTTP 觸發程式用來進行驗證的使用者名稱和密碼，宣告工作流程定義參數。 若要指定工作流程定義參數的值，請使用 `parameters` 工作流程定義*以外*但仍在邏輯應用程式資源定義*內*的物件。 在此外部 `parameters` 物件中，您可以參考先前宣告的樣板參數，其可接受從參數檔案部署的值。
 
 參考參數時，樣板運算式和函式會使用不同的語法，而且與工作流程定義運算式和函式的行為不同。 如需這些差異的詳細資訊，請參閱本主題稍後的[參數參考](#parameter-references)。
 
@@ -167,7 +166,7 @@ ms.locfileid: "81641819"
 
 * 根據您的部署需求，僅針對不同的值宣告參數。 請不要針對不同部署需求中保持不變的值宣告參數。
 
-* 針對所有`defaultValue`參數包含可指定空值的屬性，但對於敏感性或必須保護的值除外。 請一律將安全參數用於使用者名稱、密碼和秘密。 若要隱藏或保護敏感性參數值，請遵循下列主題中的指導方針：
+* `defaultValue`針對所有參數包含可指定空值的屬性，但對於敏感性或必須保護的值除外。 請一律將安全參數用於使用者名稱、密碼和秘密。 若要隱藏或保護敏感性參數值，請遵循下列主題中的指導方針：
 
   * [範本參數的安全性建議](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
@@ -185,8 +184,8 @@ ms.locfileid: "81641819"
 
 若要提供範本參數的值，請將這些值儲存在[參數](../azure-resource-manager/templates/parameter-files.md)檔案中。 如此一來，您就可以根據您的部署需求來使用不同的參數檔案。 以下是要使用的檔案名格式：
 
-* 邏輯應用程式範本檔案名： ** <*邏輯-應用程式名稱*> json**
-* 參數檔案名： ** <*邏輯-應用程式名稱*>. parameters. json**
+* 邏輯應用程式範本檔案名： ** < *邏輯-應用程式名稱*# C0.js開啟**
+* 參數檔案名： ** < *邏輯-應用程式名稱*# C0.parameters.js開啟**
 
 以下是參數檔案內的結構，其中包含用來[傳遞安全參數值與 Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)的金鑰保存庫參考：
 
@@ -237,7 +236,7 @@ ms.locfileid: "81641819"
 
 ## <a name="template-resources"></a>範本資源
 
-您的範本有`resources`一個物件，它是一個陣列，其中包含要在 Azure 中建立及部署的每個資源的定義，例如[邏輯應用程式的資源定義](#logic-app-resource-definition)、任何連線[資源定義](#connection-resource-definitions)，以及邏輯應用程式部署所需的任何其他資源。
+您的範本有一個 `resources` 物件，它是一個陣列，其中包含要在 Azure 中建立及部署的每個資源的定義，例如[邏輯應用程式的資源定義](#logic-app-resource-definition)、任何連線[資源定義](#connection-resource-definitions)，以及邏輯應用程式部署所需的任何其他資源。
 
 ```json
 {
@@ -274,12 +273,12 @@ ms.locfileid: "81641819"
 
 ### <a name="logic-app-resource-definition"></a>邏輯應用程式資源定義
 
-邏輯應用程式的資源定義會以`properties`物件開頭，其中包含下列資訊：
+邏輯應用程式的資源定義會以 `properties` 物件開頭，其中包含下列資訊：
 
 * 您的邏輯應用程式在部署時的狀態
 * 邏輯應用程式所使用之任何整合帳戶的識別碼
 * 邏輯應用程式的工作流程定義
-* 設定`parameters`要在執行時間使用之值的物件。
+* `parameters`設定要在執行時間使用之值的物件。
 * 邏輯應用程式的其他資源資訊，例如名稱、類型、位置等等
 
 ```json
@@ -319,13 +318,13 @@ ms.locfileid: "81641819"
 
 以下是您的邏輯應用程式資源定義特有的屬性：
 
-| 屬性 | 必要 | 類型 | 描述 |
+| 屬性 | 必要 | 類型 | Description |
 |-----------|----------|------|-------------|
-| `state` | 是 | String | 您的邏輯應用程式在部署時`Enabled`的狀態，即表示您的`Disabled`邏輯應用程式是即時的，表示邏輯應用程式為非使用中。 例如，如果您還沒有準備好讓邏輯應用程式上線，但想要部署草稿版本，您可以使用`Disabled`選項。 |
-| `integrationAccount` | 否 | Object | 如果您的邏輯應用程式使用整合帳戶，其中儲存了企業對企業（B2B）案例的成品，此物件會包含`id`屬性，以指定整合帳戶的識別碼。 |
-| `definition` | 是 | Object | 邏輯應用程式的基礎工作流程定義，也就是出現在程式碼視圖中的相同物件，而且會在[工作流程定義語言的架構參考](../logic-apps/logic-apps-workflow-definition-language.md)主題中完整說明。 在此工作流程定義中`parameters` ，物件會宣告要在邏輯應用程式執行時間使用之值的參數。 如需詳細資訊，請參閱[工作流程定義和參數](#workflow-definition-parameters)。 <p><p>若要在邏輯應用程式的工作流程定義中查看屬性，請從 [設計檢視] 切換至 Azure 入口網站或 Visual Studio 中的 [程式碼視圖]，或使用[Azure 資源總管](https://resources.azure.com)之類的工具。 |
-| `parameters` | 否 | Object | 要在邏輯應用程式執行時間使用的[工作流程定義參數值](#workflow-definition-parameters)。 這些值的參數定義會出現在您[工作流程定義的 parameters 物件](#workflow-definition-parameters)中。 此外，如果您的邏輯應用程式使用[managed 連接器](../connectors/apis-list.md)來存取其他服務和系統，此物件`$connections`會包含物件，以設定要在執行時間使用的連接值。 |
-| `accessControl` | 否 | Object | 用於指定邏輯應用程式的安全性屬性，例如限制要求觸發程式的 IP 存取或執行歷程記錄輸入和輸出。 如需詳細資訊，請參閱[保護邏輯應用程式的存取](../logic-apps/logic-apps-securing-a-logic-app.md)。 |
+| `state` | Yes | String | 您的邏輯應用程式在部署時的狀態，即 `Enabled` 表示您的邏輯應用程式是即時的，表示邏輯應用 `Disabled` 程式為非使用中。 例如，如果您還沒有準備好讓邏輯應用程式上線，但想要部署草稿版本，您可以使用 `Disabled` 選項。 |
+| `integrationAccount` | No | Object | 如果您的邏輯應用程式使用整合帳戶，其中儲存了企業對企業（B2B）案例的成品，此物件會包含 `id` 屬性，以指定整合帳戶的識別碼。 |
+| `definition` | 是 | Object | 邏輯應用程式的基礎工作流程定義，也就是出現在程式碼視圖中的相同物件，而且會在[工作流程定義語言的架構參考](../logic-apps/logic-apps-workflow-definition-language.md)主題中完整說明。 在此工作流程定義中，物件會宣告 `parameters` 要在邏輯應用程式執行時間使用之值的參數。 如需詳細資訊，請參閱[工作流程定義和參數](#workflow-definition-parameters)。 <p><p>若要在邏輯應用程式的工作流程定義中查看屬性，請從 [設計檢視] 切換至 Azure 入口網站或 Visual Studio 中的 [程式碼視圖]，或使用[Azure 資源總管](https://resources.azure.com)之類的工具。 |
+| `parameters` | No | Object | 要在邏輯應用程式執行時間使用的[工作流程定義參數值](#workflow-definition-parameters)。 這些值的參數定義會出現在您[工作流程定義的 parameters 物件](#workflow-definition-parameters)中。 此外，如果您的邏輯應用程式使用[managed 連接器](../connectors/apis-list.md)來存取其他服務和系統，此物件 `$connections` 會包含物件，以設定要在執行時間使用的連接值。 |
+| `accessControl` | No | Object | 用於指定邏輯應用程式的安全性屬性，例如限制要求觸發程式的 IP 存取或執行歷程記錄輸入和輸出。 如需詳細資訊，請參閱[保護邏輯應用程式的存取](../logic-apps/logic-apps-securing-a-logic-app.md)。 |
 ||||
 
 如需邏輯應用程式、整合帳戶和整合帳戶成品特有的範本資源資訊，請參閱[Microsoft. 邏輯資源類型](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)。
@@ -334,13 +333,13 @@ ms.locfileid: "81641819"
 
 ## <a name="workflow-definition-and-parameters"></a>工作流程定義和參數
 
-邏輯應用程式的工作流程定義會出現`definition`在物件中，它會`properties`出現在邏輯應用程式資源定義內的物件中。 這個`definition`物件是出現在程式碼視圖中的相同物件，而且會在[工作流程定義語言的架構參考](../logic-apps/logic-apps-workflow-definition-language.md)主題中完整說明。 您的工作流程定義包含`parameters`內部宣告物件，您可以在此為工作流程定義在執行時間所使用的值定義新的或編輯現有的參數。 接著，您可以在工作流程中的觸發程式內或動作中參考這些參數。 根據預設，除非`parameters`您的邏輯應用程式會透過[受控連接器](../connectors/apis-list.md)建立與其他服務和系統的連線，否則此物件會是空的。
+邏輯應用程式的工作流程定義會出現在 `definition` 物件中，它會出現在 `properties` 邏輯應用程式資源定義內的物件中。 這個 `definition` 物件是出現在程式碼視圖中的相同物件，而且會在[工作流程定義語言的架構參考](../logic-apps/logic-apps-workflow-definition-language.md)主題中完整說明。 您的工作流程定義包含內部宣告 `parameters` 物件，您可以在此為工作流程定義在執行時間所使用的值定義新的或編輯現有的參數。 接著，您可以在工作流程中的觸發程式內或動作中參考這些參數。 根據預設， `parameters` 除非您的邏輯應用程式會透過[受控連接器](../connectors/apis-list.md)建立與其他服務和系統的連線，否則此物件會是空的。
 
-若要設定工作流程定義參數的值，請`parameters`使用工作流程定義*以外*但仍在邏輯應用程式資源定義*內*的物件。 在此外部`parameters`物件中，您可以接著參考先前宣告的範本參數，其可接受從參數檔案部署的值。
+若要設定工作流程定義參數的值，請使用 `parameters` 工作流程定義*以外*但仍在邏輯應用程式資源定義*內*的物件。 在此外部 `parameters` 物件中，您可以接著參考先前宣告的範本參數，其可接受從參數檔案部署的值。
 
 > [!TIP]
 >
-> 最佳做法是不要直接參考在部署時從工作流程定義中評估的範本參數。 相反地，宣告工作流程定義參數，您可以在工作流程定義`parameters` *之外*的物件中設定，但仍在邏輯應用程式的資源定義*內*。 如需詳細資訊，請參閱[參數的參考](#parameter-references)。
+> 最佳做法是不要直接參考在部署時從工作流程定義中評估的範本參數。 相反地，宣告工作流程定義參數，您可以在 `parameters` 工作流程定義*之外*的物件中設定，但仍在邏輯應用程式的資源定義*內*。 如需詳細資訊，請參閱[參數的參考](#parameter-references)。
 
 此語法顯示您可以在範本和工作流程定義層級宣告參數的位置，以及您可以藉由參考範本和工作流程定義參數來設定這些參數值的位置：
 
@@ -409,9 +408,9 @@ ms.locfileid: "81641819"
 
 ### <a name="secure-workflow-definition-parameters"></a>安全工作流程定義參數
 
-針對在執行時間處理機密資訊、密碼、存取金鑰或密碼的工作流程定義參數，宣告或編輯參數以使用`securestring`或`secureobject`參數類型。 您可以在工作流程定義中，同時參考此參數。 在範本的最上層，宣告具有相同類型的參數，以便在部署時處理此資訊。
+針對在執行時間處理機密資訊、密碼、存取金鑰或密碼的工作流程定義參數，宣告或編輯參數以使用 `securestring` 或 `secureobject` 參數類型。 您可以在工作流程定義中，同時參考此參數。 在範本的最上層，宣告具有相同類型的參數，以便在部署時處理此資訊。
 
-若要設定工作流程定義參數的值，請使用`parameters`工作流程定義*外*但仍在邏輯應用程式資源定義*內*的物件，以參考樣板參數。 最後，若要在部署時將值傳遞給您的範本參數，請將該值儲存在[Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)中，並在部署時于範本所使用的[參數](#template-parameter-files)檔案中參考該金鑰保存庫。
+若要設定工作流程定義參數的值，請使用 `parameters` 工作流程定義*外*但仍在邏輯應用程式資源定義*內*的物件，以參考樣板參數。 最後，若要在部署時將值傳遞給您的範本參數，請將該值儲存在[Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)中，並在部署時于範本所使用的[參數](#template-parameter-files)檔案中參考該金鑰保存庫。
 
 此範例範本會顯示如何在必要時定義安全的參數來完成這些工作，讓您可以將其值儲存在 Azure Key Vault 中：
 
@@ -552,7 +551,7 @@ ms.locfileid: "81641819"
 
 若要確保邏輯應用程式設計工具可以正確地顯示工作流程定義參數，請遵循下列最佳作法：
 
-* 針對所有`defaultValue`參數包含可指定空值的屬性，但對於敏感性或必須保護的值除外。
+* `defaultValue`針對所有參數包含可指定空值的屬性，但對於敏感性或必須保護的值除外。
 
 * 請一律將安全參數用於使用者名稱、密碼和秘密。 若要隱藏或保護敏感性參數值，請遵循下列主題中的指導方針：
 
@@ -568,7 +567,7 @@ ms.locfileid: "81641819"
 
 ## <a name="connection-resource-definitions"></a>連接資源定義
 
-當您的邏輯應用程式使用[受管理的連接器](../connectors/apis-list.md)建立並使用其他服務和系統的連接時`resources` ，您的範本物件會包含這些連線的資源定義。
+當您的邏輯應用程式使用[受管理的連接器](../connectors/apis-list.md)建立並使用其他服務和系統的連接時，您的範本 `resources` 物件會包含這些連線的資源定義。
 
 ```json
 {
@@ -650,13 +649,13 @@ ms.locfileid: "81641819"
 
 邏輯應用程式的資源定義也可以透過下列方式來使用連線資源定義：
 
-* 在您的工作流程定義`parameters`內，物件`$connections`會宣告連接值的參數，以便在邏輯應用程式執行時間使用。 此外，建立連接的觸發程式或動作會使用通過此`$connections`參數的對應值。
+* 在您的工作流程定義內，物件會宣告 `parameters` `$connections` 連接值的參數，以便在邏輯應用程式執行時間使用。 此外，建立連接的觸發程式或動作會使用通過此參數的對應值 `$connections` 。
 
-* 在您的工作流程定義*之外*，但仍在邏輯應用程式的`parameters`資源定義*內*，另一個物件會藉由`$connections`參考對應的範本參數，設定要在執行時間用於參數的值。 這些值會使用範本運算式來參考資源，以安全地將連接的中繼資料儲存在邏輯應用程式中。
+* 在您的工作流程定義*之外*，但仍在邏輯應用程式的資源定義*內*，另一個物件會藉 `parameters` `$connections` 由參考對應的範本參數，設定要在執行時間用於參數的值。 這些值會使用範本運算式來參考資源，以安全地將連接的中繼資料儲存在邏輯應用程式中。
 
   例如，中繼資料可以包含連接字串和存取權杖，您可以將它們儲存在[Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)中。 若要將這些值傳遞至您的範本參數，您可以在部署時于範本所使用的[參數](#template-parameter-files)檔案中參考該金鑰保存庫。 如需參考參數之差異的詳細資訊，請參閱本主題稍後的[參數參考](#parameter-references)。
 
-  當您透過 Azure 入口網站或 Visual Studio 在程式碼視圖中開啟邏輯應用程式的工作流程定義`$connections`時，物件會出現在工作流程定義外部，但位於相同的層級。 當您手動更新工作流程定義時，程式碼視圖中的這個順序可讓您更輕鬆地參考這些參數：
+  當您透過 Azure 入口網站或 Visual Studio 在程式碼視圖中開啟邏輯應用程式的工作流程定義時， `$connections` 物件會出現在工作流程定義外部，但位於相同的層級。 當您手動更新工作流程定義時，程式碼視圖中的這個順序可讓您更輕鬆地參考這些參數：
 
   ```json
   {
@@ -665,9 +664,9 @@ ms.locfileid: "81641819"
   }
   ```
 
-* 邏輯應用程式的資源定義具有`dependsOn`物件，可指定邏輯應用程式所使用之連接的相依性。
+* 邏輯應用程式的資源定義具有 `dependsOn` 物件，可指定邏輯應用程式所使用之連接的相依性。
 
-您建立的每個連線在 Azure 中都有唯一的名稱。 當您建立多個與相同服務或系統的連接時，每個連接名稱都會附加一個數位，而每個新的連接`office365` `office365-1`都會遞增，例如、等等。
+您建立的每個連線在 Azure 中都有唯一的名稱。 當您建立多個與相同服務或系統的連接時，每個連接名稱都會附加一個數位，而每個新的連接都會遞增，例如、等等 `office365` `office365-1` 。
 
 這個範例會顯示邏輯應用程式的資源定義與 Office 365 Outlook 的連線資源定義之間的互動：
 
@@ -746,7 +745,7 @@ ms.locfileid: "81641819"
 
 ### <a name="secure-connection-parameters"></a>安全連線參數
 
-針對處理機密資訊、密碼、存取金鑰或密碼的連線參數，連線的資源定義會包含`parameterValues`物件，該物件會以名稱/值配對格式指定這些值。 若要隱藏這項資訊，您可以使用`securestring`或`secureobject`參數類型來宣告或編輯這些值的範本參數。 然後，您可以將該資訊儲存在[Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)中。 若要將這些值傳遞至您的範本參數，您可以在部署時于範本所使用的[參數](#template-parameter-files)檔案中參考該金鑰保存庫。
+針對處理機密資訊、密碼、存取金鑰或密碼的連線參數，連線的資源定義 `parameterValues` 會包含物件，該物件會以名稱/值配對格式指定這些值。 若要隱藏這項資訊，您可以使用 `securestring` 或參數類型來宣告或編輯這些值的範本參數 `secureobject` 。 然後，您可以將該資訊儲存在[Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)中。 若要將這些值傳遞至您的範本參數，您可以在部署時于範本所使用的[參數](#template-parameter-files)檔案中參考該金鑰保存庫。
 
 以下範例會提供 Azure Blob 儲存體連接的帳戶名稱和存取金鑰：
 
@@ -938,17 +937,17 @@ ms.locfileid: "81641819"
 }
 ```
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |-----------|-------------|
 | `token:clientId` | 與服務主體相關聯的應用程式或用戶端識別碼 |
 | `token:clientSecret` | 與服務主體相關聯的金鑰值 |
 | `token:TenantId` | Azure AD 租使用者的目錄識別碼 |
-| `token:grantType` | 要求的授與類型，必須是`client_credentials`。 如需詳細資訊，請參閱[Microsoft 身分識別平臺和 OAuth 2.0 用戶端認證流程](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。 |
+| `token:grantType` | 要求的授與類型，必須是 `client_credentials` 。 如需詳細資訊，請參閱[Microsoft 身分識別平臺和 OAuth 2.0 用戶端認證流程](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。 |
 |||
 
 **範本參數定義**
 
-範本的最上層`parameters`物件會針對範例連接宣告這些參數：
+範本的最上層物件會 `parameters` 針對範例連接宣告這些參數：
 
 ```json
 {
@@ -1017,7 +1016,7 @@ ms.locfileid: "81641819"
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 
-若要參考工作流程定義參數，您可以使用[工作流程定義語言運算式和](../logic-apps/workflow-definition-language-functions-reference.md)函式，這些函式會在執行時間進行評估。 您可能會注意到有些範本函數和工作流程定義函式具有相同的名稱。 工作流程定義運算式的開頭為 "at" 符號**@**（）：
+若要參考工作流程定義參數，您可以使用[工作流程定義語言運算式和](../logic-apps/workflow-definition-language-functions-reference.md)函式，這些函式會在執行時間進行評估。 您可能會注意到有些範本函數和工作流程定義函式具有相同的名稱。 工作流程定義運算式的開頭為 "at" 符號（ **@** ）：
 
 `"<attribute-name>": "@parameters('<workflow-definition-parameter-name>')"`
 
@@ -1029,7 +1028,7 @@ ms.locfileid: "81641819"
 
 1. 在您的工作流程定義中，宣告要在執行時間接受和使用之值的參數。 接著，您可以在工作流程定義中，參考這些值。
 
-1. 在工作`parameters`流程定義*外*但仍在邏輯應用程式資源定義*內部*的物件中，藉由參考對應的範本參數來設定工作流程定義參數的值。 如此一來，您就可以將範本參數值傳遞至您的工作流程定義參數。
+1. 在 `parameters` 工作流程定義*外*但仍在邏輯應用程式資源定義*內部*的物件中，藉由參考對應的範本參數來設定工作流程定義參數的值。 如此一來，您就可以將範本參數值傳遞至您的工作流程定義參數。
 
 1. 在 [參數] 檔案中，指定要在部署時使用之範本的值。
 

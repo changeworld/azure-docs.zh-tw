@@ -10,10 +10,9 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt
 ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81681998"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>建立及測試新模擬裝置
@@ -31,7 +30,7 @@ ms.locfileid: "81681998"
 
 *屬性*
 
-| 名稱                     | 值                      |
+| Name                     | 值                      |
 | ------------------------ | --------------------------- |
 | Color                    | 白色、紅色、藍色            |
 | 亮度               | 0 到 100                    |
@@ -41,7 +40,7 @@ ms.locfileid: "81681998"
 
 下表顯示燈泡 (lightbulb) 以資料流向雲端報告的資料：
 
-| 名稱   | 值      |
+| Name   | 值      |
 | ------ | ----------- |
 | 狀態 | 「開啟」、「關閉」 |
 | 溫度 | 華氏度數 |
@@ -63,7 +62,7 @@ ms.locfileid: "81681998"
 
 下表會顯示裝置的初始狀態：
 
-| 名稱                     | 值 |
+| Name                     | 值 |
 | ------------------------ | -------|
 | 初始色彩            | 白色  |
 | 初始亮度       | 75     |
@@ -77,7 +76,7 @@ ms.locfileid: "81681998"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要遵循本操作說明指南，您需要：
 
@@ -108,11 +107,11 @@ ms.locfileid: "81681998"
 
 在 Visual Studio Code 中開啟 **remote-monitoring-services-dotnet-master\storage-adapter** 資料夾。 按一下任何 [還原]**** 按鈕，以修正任何無法解決的相依性。
 
-開啟**storage-adapter/WebService/appsettings**檔案，並將您的 Cosmos DB 連接字串指派給**documentDBConnectionString**變數。
+開啟**儲存體-介面卡/WebService/appsettings.ini**檔案，並將您的 Cosmos DB 連接字串指派給**documentDBConnectionString**變數。
 
 若要在本機執行微服務，請按一下 [偵錯] > [開始偵錯]****。
 
-Visual Studio Code 中的 [**終端**機] 視窗會顯示執行微服務的輸出，包括 web 服務健康情況檢查[http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)的 URL：。 當您瀏覽至此位址時，狀態應該是「正確: 運作良好」。
+Visual Studio Code 中的 [**終端**機] 視窗會顯示執行微服務的輸出，包括 web 服務健康情況檢查的 URL： [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status) 。 當您瀏覽至此位址時，狀態應該是「正確: 運作良好」。
 
 在完成後續步驟時，請讓儲存體配接器微服務繼續在 Visual Studio Code 的這個執行個體中執行。
 
@@ -425,7 +424,7 @@ Visual Studio Code 中的 [**終端**機] 視窗會顯示執行微服務的輸�
 
 在 Visual Studio Code 的新執行個體中，開啟您從 GitHub 下載的 **device-simulation-dotnet-master** 資料夾。 按一下任何 [還原]**** 按鈕，以修正任何無法解決的相依性。
 
-開啟**WebService/appsettings**檔案，並將您的 Cosmos DB 連接字串指派給**documentdb_connstring**變數，同時修改設定，如下所示：
+開啟**WebService/appsettings.ini**檔案，並將您的 Cosmos DB 連接字串指派給**documentdb_connstring**變數，同時修改設定，如下所示：
 
 ```ini
 device_models_folder = C:\temp\devicemodels\

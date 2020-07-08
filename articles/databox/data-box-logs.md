@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676417"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>追蹤和 Azure 資料箱和 Azure Data Box Heavy 的事件記錄
@@ -26,7 +25,7 @@ ms.locfileid: "81676417"
 | 建立訂單               | [透過 RBAC 設定訂單上的存取控制](#set-up-access-control-on-the-order)                                                    |
 | 已處理的訂單            | [追蹤訂單](#track-the-order) <ul><li> Azure 入口網站 </li><li> 貨運公司網站 </li><li>電子郵件通知</ul> |
 | 設定裝置              | 登入[活動記錄](#query-activity-logs-during-setup)的裝置認證存取                                              |
-| 將資料複製到裝置        | [查看*錯誤 .xml 檔案中*](#view-error-log-during-data-copy)的資料複製                                                             |
+| 將資料複製到裝置        | [查看*error.xml* ](#view-error-log-during-data-copy)檔案以進行資料複製                                                             |
 | 準備寄送            | [檢查 BOM](#inspect-bom-during-prepare-to-ship)檔案或裝置上的資訊清單檔案                                      |
 | 資料上傳至 Azure       | 在 Azure datacenter 上的資料上傳期間，請[參閱複製記錄](#review-copy-log-during-upload-to-azure)檔中的錯誤                         |
 | 從裝置抹除資料   | [查看監管鏈](#get-chain-of-custody-logs-after-data-erasure)，包括審核記錄和訂單歷程記錄                |
@@ -64,7 +63,7 @@ ms.locfileid: "81676417"
 
 - 您的資料箱會以鎖定狀態抵達內部部署。 您可以使用 Azure 入口網站中提供的裝置認證來取得您的訂單。  
 
-    設定資料箱時，您可能需要知道誰已存取裝置認證。 若要找出存取 [**裝置認證**] 分頁的人員，您可以查詢活動記錄。  涉及存取**裝置詳細資料 > 認證**] 分頁的任何動作都會以動作的形式`ListCredentials`登入 [活動記錄] 中。
+    設定資料箱時，您可能需要知道誰已存取裝置認證。 若要找出存取 [**裝置認證**] 分頁的人員，您可以查詢活動記錄。  涉及存取**裝置詳細資料 > 認證**] 分頁的任何動作都會以動作的形式登入 [活動記錄] 中 `ListCredentials` 。
 
     ![查詢活動記錄](media/data-box-logs/query-activity-log-1.png)
 
@@ -74,14 +73,14 @@ ms.locfileid: "81676417"
 
 在資料複製到資料箱或 Data Box Heavy 期間，如果複製的資料有任何問題，就會產生錯誤檔案。
 
-### <a name="errorxml-file"></a>錯誤 .xml 檔案
+### <a name="errorxml-file"></a>Error.xml 檔案
 
 請確定複製作業已完成，但沒有任何錯誤。 如果複製流程中發生錯誤，請從 [連線並複製]**** 頁面中下載記錄。
 
 - 如果您將不是512位元組的檔案複製到資料箱上的受控磁片資料夾，檔案就不會以分頁 blob 的形式上傳到您的暫存儲存體帳戶。 您將在記錄中看到錯誤。 移除檔案，並複製 512 位元組規格的檔案。
 - 如果您複製了 VHDX 或動態 VHD 或差異 VHD （不支援這些檔案），您會在記錄檔中看到錯誤。
 
-以下是在複製到受控磁片時，發生不同錯誤的*xml*範例。
+以下是複製到受控磁片時，不同錯誤*error.xml*的範例。
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\differencing-vhd-022019.vhd</file>
@@ -90,7 +89,7 @@ ms.locfileid: "81676417"
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\insidediffvhd-022019.vhd</file>
 ```
 
-以下是在複製到分頁 blob 時，發生不同錯誤的*xml*範例。
+以下是複製到分頁 blob 時，不同錯誤*error.xml*的範例。
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT">\PageBlob512NotAligned\File100Bytes</file>
@@ -101,7 +100,7 @@ ms.locfileid: "81676417"
 ```
 
 
-以下是在複製到區塊 blob 時，發生不同錯誤的*xml*範例。
+以下是複製到區塊 blob 時，不同錯誤*error.xml*的範例。
 
 ```xml
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_LENGTH">\ab</file>
@@ -129,7 +128,7 @@ ms.locfileid: "81676417"
 <file error="ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL" name_encoding="Base64">XEludmFsaWRVbmljb2RlRmlsZXNcU3BjQ2hhci01NTI5Ny3vv70=</file>
 ```
 
-以下是在複製到 Azure 檔案儲存體時，發生不同錯誤的*xml*範例。
+以下是複製到 Azure 檔案儲存體時，不同錯誤*error.xml*的範例。
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_LIMIT">\AzFileMorethan1TB\AzFile1.2TB</file>
@@ -257,7 +256,7 @@ BOM 或資訊清單檔案也會複製到 Azure 儲存體帳戶。 您可以使�
 
 以下是複製記錄的範例，其中不符合 Azure 命名慣例的容器會在資料上傳至 Azure 期間重新命名。
 
-容器的新唯一名稱採用的格式`DataBox-GUID` ，而且容器的資料會放入新重新命名的容器中。 複製記錄檔會為容器指定舊的和新的容器名稱。
+容器的新唯一名稱採用的格式 `DataBox-GUID` ，而且容器的資料會放入新重新命名的容器中。 複製記錄檔會為容器指定舊的和新的容器名稱。
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -270,7 +269,7 @@ BOM 或資訊清單檔案也會複製到 Azure 儲存體帳戶。 您可以使�
 
 以下是複製記錄檔的範例，其中不符合 Azure 命名慣例的 blob 或檔案在資料上傳至 Azure 期間已重新命名。 新的 blob 或檔案名會轉換成容器的相對路徑 SHA256 摘要，並上傳至以目的地類型為基礎的路徑。 目的地可以是區塊 blob、分頁 blob 或 Azure 檔案儲存體。
 
-會`copylog`指定舊的和新的 blob 或檔案名，以及 Azure 中的路徑。
+會 `copylog` 指定舊的和新的 blob 或檔案名，以及 Azure 中的路徑。
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">

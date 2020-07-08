@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687332"
 ---
 # <a name="workbook-text-parameters"></a>活頁簿文字參數
@@ -40,7 +39,7 @@ Textbox 參數提供簡單的方式，從活頁簿使用者收集文字輸入。
 ![在讀取模式中顯示文字參數的影像](./media/workbooks-text/text-readmode.png)
 
 ## <a name="referencing-a-text-parameter"></a>參考文字參數
-1. 藉由選取藍色`Add query`連結並選取 Application Insights 資源，將查詢控制項加入至活頁簿。
+1. 藉由選取藍色 `Add query` 連結並選取 Application Insights 資源，將查詢控制項加入至活頁簿。
 2. 在 [KQL] 方塊中，新增此程式碼片段：
     ```kusto
     requests
@@ -60,7 +59,7 @@ Textbox 參數提供簡單的方式，從活頁簿使用者收集文字輸入。
     ![顯示 KQL 中參考之文字參數的影像](./media/workbooks-text/text-reference.png)
 
 > [!NOTE]
-> 在上述範例中， `{SlowRequestThreshold}`代表整數值。 如果您查詢的是字串， `{ComputerName}`您將需要修改 Kusto 查詢來加入引號`"{ComputerName}"` ，以便將參數欄位新增至不含引號的接受輸入。
+> 在上述範例中， `{SlowRequestThreshold}` 代表整數值。 如果您查詢的是字串， `{ComputerName}` 您將需要修改 Kusto 查詢來加入引號，以便將 `"{ComputerName}"` 參數欄位新增至不含引號的接受輸入。
 
 ## <a name="setting-default-values"></a>設定預設值
 1. 從編輯模式中的空白活頁簿開始。

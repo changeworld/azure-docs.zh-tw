@@ -11,10 +11,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730759"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>使用 AMQP 通訊協定與您的 IoT 中樞通訊
@@ -32,9 +31,9 @@ Azure IoT 中樞支援[OASIS Advanced 訊息佇列通訊協定（AMQP）1.0 版]
 | 資訊 | 值 |
 |-------------|--------------|
 | IoT 中樞主機名稱 | `<iot-hub-name>.azure-devices.net` |
-| 索引鍵名稱 | `service` |
+| 機碼名稱 | `service` |
 | 存取金鑰 | 與服務相關聯的主要或次要金鑰 |
-| 共用存取簽章 | 短期的共用存取簽章，格式如下： `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要取得產生此簽章的程式碼，請參閱[控制 IoT 中樞的存取權](./iot-hub-devguide-security.md#security-token-structure)。
+| 共用存取簽章 | 短期的共用存取簽章，格式如下： `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}` 。 若要取得產生此簽章的程式碼，請參閱[控制 IoT 中樞的存取權](./iot-hub-devguide-security.md#security-token-structure)。
 
 下列程式碼片段會使用[Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)，透過寄件者連結連線到 IoT 中樞。
 
@@ -68,10 +67,10 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 
 若要瞭解服務與 IoT 中樞之間，以及裝置與 IoT 中樞之間的雲端到裝置訊息交換，請參閱[從您的 IoT 中樞傳送雲端到裝置訊息](iot-hub-devguide-messages-c2d.md)。 服務用戶端會使用兩個連結來傳送訊息，並接收來自裝置的先前傳送訊息的意見反應，如下表所述：
 
-| 建立者 | 連結類型 | 連結路徑 | 描述 |
+| 建立者為 | 連結類型 | 連結路徑 | Description |
 |------------|-----------|-----------|-------------|
-| Service | 寄件者連結 | `/messages/devicebound` | 服務會將以裝置為目標的雲端到裝置訊息傳送到此連結。 透過此連結傳送的訊息會`To`將其屬性設定為目標裝置的接收者連結路徑`/devices/<deviceID>/messages/devicebound`。 |
-| Service | 接收者連結 | `/messages/serviceBound/feedback` | 由服務在此連結上收到的裝置所產生的完成、拒絕和放棄意見反應訊息。 如需意見反應訊息的詳細資訊，請參閱[從 IoT 中樞傳送雲端到裝置訊息](./iot-hub-devguide-messages-c2d.md#message-feedback)。 |
+| 服務 | 寄件者連結 | `/messages/devicebound` | 服務會將以裝置為目標的雲端到裝置訊息傳送到此連結。 透過此連結傳送的訊息會 `To` 將其屬性設定為目標裝置的接收者連結路徑 `/devices/<deviceID>/messages/devicebound` 。 |
+| 服務 | 接收者連結 | `/messages/serviceBound/feedback` | 由服務在此連結上收到的裝置所產生的完成、拒絕和放棄意見反應訊息。 如需意見反應訊息的詳細資訊，請參閱[從 IoT 中樞傳送雲端到裝置訊息](./iot-hub-devguide-messages-c2d.md#message-feedback)。 |
 
 下列程式碼片段示範如何使用[Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)，建立雲端到裝置的訊息，並將它傳送至裝置。
 
@@ -129,13 +128,13 @@ for msg in batch:
         print('unknown message:', msg.properties.content_type)
 ```
 
-如上述程式碼所示，雲端到裝置的意見反應訊息的內容類型為*application/application. iothub。* 您可以使用訊息的 JSON 主體中的屬性來推斷原始訊息的傳遞狀態：
+如上述程式碼所示，雲端到裝置的意見反應訊息的內容類型為*application/vnd.microsoft.iothub.feedback.json*。 您可以使用訊息的 JSON 主體中的屬性來推斷原始訊息的傳遞狀態：
 
-* 意見`statusCode`主體中的金鑰具有下列其中一個值：*成功*、*過期*、 *DeliveryCountExceeded*、*拒絕*或*清除*。
+* `statusCode`意見主體中的金鑰具有下列其中一個值：*成功*、*過期*、 *DeliveryCountExceeded*、*拒絕*或*清除*。
 
-* 意見`deviceId`主體中的金鑰具有目標裝置的識別碼。
+* `deviceId`意見主體中的金鑰具有目標裝置的識別碼。
 
-* 意見`originalMessageId`主體中的金鑰具有服務所傳送之原始雲端到裝置訊息的識別碼。 您可以使用此傳遞狀態，將意見反應與雲端到裝置訊息相互關聯。
+* `originalMessageId`意見主體中的金鑰具有服務所傳送之原始雲端到裝置訊息的識別碼。 您可以使用此傳遞狀態，將意見反應與雲端到裝置訊息相互關聯。
 
 ### <a name="receive-telemetry-messages-service-client"></a>接收遙測訊息（服務用戶端）
 
@@ -147,7 +146,7 @@ for msg in batch:
 
 * 有效的服務認證（服務共用存取簽章權杖）。
 
-* 格式正確的路徑，指向要從中抓取訊息的取用者群組分割區。 針對指定的取用者群組和分割區識別碼，路徑的格式如下： `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` （預設的取用者群組`$Default`是）。
+* 格式正確的路徑，指向要從中抓取訊息的取用者群組分割區。 針對指定的取用者群組和分割區識別碼，路徑的格式如下： `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` （預設的取用者群組是 `$Default` ）。
 
 * 選擇性的篩選述詞，用來指定資料分割中的起始點。 這個述詞的格式可以是序號、位移或排入佇列的時間戳記。
 
@@ -229,7 +228,7 @@ for msg in batch:
 |-------------|--------------|
 | IoT 中樞主機名稱 | `<iot-hub-name>.azure-devices.net` |
 | 存取金鑰 | 與裝置相關聯的主要或次要金鑰 |
-| 共用存取簽章 | 短期的共用存取簽章，格式如下： `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要取得產生此簽章的程式碼，請參閱[控制 IoT 中樞的存取權](./iot-hub-devguide-security.md#security-token-structure)。
+| 共用存取簽章 | 短期的共用存取簽章，格式如下： `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}` 。 若要取得產生此簽章的程式碼，請參閱[控制 IoT 中樞的存取權](./iot-hub-devguide-security.md#security-token-structure)。
 
 下列程式碼片段會使用[Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)，透過寄件者連結連線到 IoT 中樞。
 
@@ -262,7 +261,7 @@ send_client = uamqp.SendClient(uri, debug=True)
 
 以下是支援裝置作業的連結路徑：
 
-| 建立者 | 連結類型 | 連結路徑 | 描述 |
+| 建立者為 | 連結類型 | 連結路徑 | Description |
 |------------|-----------|-----------|-------------|
 | 裝置 | 接收者連結 | `/devices/<deviceID>/messages/devicebound` | 每個目的地裝置都會在此連結上收到以裝置為目標的雲端到裝置訊息。 |
 | 裝置 | 寄件者連結 | `/devices/<deviceID>/messages/events` | 從裝置傳送的裝置到雲端訊息會透過此連結傳送。 |
@@ -270,7 +269,7 @@ send_client = uamqp.SendClient(uri, debug=True)
 
 ### <a name="receive-cloud-to-device-commands-device-client"></a>接收雲端到裝置命令（裝置用戶端）
 
-傳送至裝置的雲端到裝置命令會抵達`/devices/<deviceID>/messages/devicebound`連結。 裝置可以批次接收這些訊息，並視需要在訊息中使用訊息資料承載、訊息屬性、批註或應用程式屬性。
+傳送至裝置的雲端到裝置命令會抵達 `/devices/<deviceID>/messages/devicebound` 連結。 裝置可以批次接收這些訊息，並視需要在訊息中使用訊息資料承載、訊息屬性、批註或應用程式屬性。
 
 下列程式碼片段會使用[Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)，透過裝置接收雲端到裝置訊息。
 

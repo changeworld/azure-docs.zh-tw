@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311039"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>調查可疑的 IoT 裝置
@@ -41,7 +40,7 @@ IoT 服務警示的 Azure 資訊安全中心在懷疑有可疑活動的介入，
 1. 開啟 IoT 中樞，
 1. 在 [**安全性**] 底下，按一下 **[總覽**]，然後選取 [**設定**]。
 1. 變更 Log Analytics 工作區的組態詳細資料。
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案] 。
 
 下列組態，執行下列步驟來存取儲存在 Log Analytics 工作區中的資料：
 

@@ -13,10 +13,9 @@ ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81263381"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>監視與降低節流，以減少 Azure 時間序列深入解析中的延遲
@@ -46,7 +45,7 @@ ms.locfileid: "81263381"
 
    [![將警示新增至您的時間序列深入解析環境](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
-1. 選取 [+ 新增警示規則]****。 接著會顯示 [**建立規則**] 面板。 選取 [**條件**] 底下的 [**新增**]。
+1. 選取 [+ 新增警示規則]。 接著會顯示 [**建立規則**] 面板。 選取 [**條件**] 底下的 [**新增**]。
 
    [![[新增警示] 窗格](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
@@ -66,7 +65,7 @@ ms.locfileid: "81263381"
    |**輸入接收的訊息時間延遲**    |  訊息在事件來源中加入佇列的時間與在輸入中處理的時間之間的差異 (以秒為單位)。      |
    |**輸入接收的訊息計數延遲**    |  事件來源資料分割中最後加入佇列之訊息的序號與輸入中所處理訊息的序號之間的差異。      |
 
-   選取 [完成]  。
+   選取 [完成] 。
 
 1. 設定所需的信號邏輯之後，請以視覺化方式檢查選擇的警示規則。
 

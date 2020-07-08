@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: b7079262dc7db4f4a00a9dc79193da1574c7153a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605860"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>安裝 Azure-SSIS 整合執行階段的付費或授權自訂元件
@@ -32,7 +31,7 @@ Azure SSIS 整合執行階段的本質會帶來幾項挑戰，使得一般授權
 
 -   您也可以將 Azure SSIS IR 相應縮小或相應放大，讓節點數目可以隨時縮小或擴展。
 
-## <a name="the-solution"></a>解決方案
+## <a name="the-solution"></a>解決方法
 
 由於上節中所述關於傳統授權方法的限制，Azure SSIS IR 提供了新的解決方案。 此解決方案使用 Windows 環境變數和 SSIS 系統變數來處理授權繫結和第三方元件的驗證。 ISV 可以使用這些變數來取得 Azure-SSIS IR 的唯一且具持續性的資訊，例如叢集識別碼和叢集節點計數。 有了這項資訊，ISV 就可以將其元件的授權做為*叢集*繫結至 Azure SSIS IR。 無論客戶啟動或停止、向上擴充或向下擴充、相應放大或縮小，或者以任何方式重新設定 Azure-SSIS IR，這個繫結所使用的識別碼皆不會變更。
 
@@ -81,6 +80,6 @@ Azure SSIS 整合執行階段的本質會帶來幾項挑戰，使得一般授權
 
 ## <a name="next-steps"></a>後續步驟
 
--   [Azure-SSIS 整合執行階段的自訂安裝](how-to-configure-azure-ssis-ir-custom-setup.md)
+-   [Azure-SSIS 整合執行階段自訂設定](how-to-configure-azure-ssis-ir-custom-setup.md)
 
--   [Azure-SSIS 整合執行階段的企業版](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+-   [Azure-SSIS 整合執行階段的 Enterprise Edition](how-to-configure-azure-ssis-ir-enterprise-edition.md)

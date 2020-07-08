@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81688087"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>使用適用於 Visual Studio Code 的 Azure IoT Tools 來管理 Azure IoT 中樞裝置
@@ -22,7 +21,7 @@ ms.locfileid: "81688087"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| 管理選項          | 工作                    |
+| 管理選項          | Task                    |
 |----------------------------|--------------------------------|
 | 直接方法             | 使裝置執行動作，例如啟動或停止傳送訊息，或是將裝置重新開機。                                        |
 | 讀取裝置對應項           | 取得裝置的報告狀態。 例如，裝置會回報 LED 現在正閃爍不停。                                    |
@@ -48,7 +47,7 @@ ms.locfileid: "81688087"
 * 有效的 Azure 訂用帳戶。
 * 位於您訂用帳戶中的 Azure IoT 中樞。
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure IoT Tools VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或複製此 URL，並將它貼到瀏覽器視窗`vscode:extension/vsciot-vscode.azure-iot-tools`中：。
+* [Azure IoT Tools VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或複製此 URL，並將它貼到瀏覽器視窗中： `vscode:extension/vsciot-vscode.azure-iot-tools` 。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登入以存取 IoT 中樞
 
@@ -71,7 +70,7 @@ ms.locfileid: "81688087"
 
 2. 在輸入方塊中輸入方法名稱和承載。
 
-3. 結果會顯示在 [**輸出** > **Azure IoT 中樞**] 視圖中。
+3. 結果會顯示在 [**輸出**  >  **Azure IoT 中樞**] 視圖中。
 
 ## <a name="read-device-twin"></a>讀取裝置對應項
 
@@ -95,7 +94,7 @@ ms.locfileid: "81688087"
 
 2. 在輸入方塊中輸入訊息。
 
-3. 結果會顯示在 [**輸出** > **Azure IoT 中樞**] 視圖中。
+3. 結果會顯示在 [**輸出**  >  **Azure IoT 中樞**] 視圖中。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
 ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606329"
 ---
 # <a name="sort-transformation-in-mapping-data-flow"></a>對應資料流程中的排序轉換
@@ -24,7 +23,7 @@ ms.locfileid: "81606329"
 > [!NOTE]
 > 對應資料流程會在 spark 叢集上執行，而這些叢集會將資料分散到多個節點和分割區。 如果您選擇在後續的轉換中重新分割資料，您可能會因為資料重新輪換而失去排序。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 ![排序設定](media/data-flow/sort.png "Sort")
 

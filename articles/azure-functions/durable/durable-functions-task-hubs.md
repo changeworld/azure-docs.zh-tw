@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81604604"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的工作中樞
@@ -41,9 +40,9 @@ ms.locfileid: "81604604"
 * 以字母開頭
 * 的最小長度為3個字元，最大長度為45個字元
 
-工作中樞名稱會在*host. json*檔案中宣告，如下列範例所示：
+工作中樞名稱會在檔案的*host.js*中宣告，如下列範例所示：
 
-### <a name="hostjson-functions-20"></a>host. json （函數2.0）
+### <a name="hostjson-functions-20"></a>host.js開啟（函數2.0）
 
 ```json
 {
@@ -66,9 +65,9 @@ ms.locfileid: "81604604"
 }
 ```
 
-您也可以使用應用程式設定來設定工作中樞，如下列`host.json`範例檔案所示：
+您也可以使用應用程式設定來設定工作中樞，如下列範例檔案所示 `host.json` ：
 
-### <a name="hostjson-functions-10"></a>host. json （函數1.0）
+### <a name="hostjson-functions-10"></a>host.js開啟（函數1.0）
 
 ```json
 {
@@ -78,7 +77,7 @@ ms.locfileid: "81604604"
 }
 ```
 
-### <a name="hostjson-functions-20"></a>host. json （函數2.0）
+### <a name="hostjson-functions-20"></a>host.js開啟（函數2.0）
 
 ```json
 {
@@ -125,7 +124,7 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用`DurableOrchestrationContext` ，而不是`IDurableOrchestrationContext`。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用， `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -146,13 +145,13 @@ public static async Task<HttpResponseMessage> Run(
 
 | 持久性延伸模組版本 | 預設工作中樞名稱 |
 | - | - |
-| 2.x | 部署在 Azure 中時，工作中樞名稱是衍生自函式_應用程式_的名稱。 在 Azure 外部執行時，預設的工作中樞名稱是`TestHubName`。 |
-| 1.x | 所有環境的預設工作中樞名稱是`DurableFunctionsHub`。 |
+| 2.x | 部署在 Azure 中時，工作中樞名稱是衍生自函式_應用程式_的名稱。 在 Azure 外部執行時，預設的工作中樞名稱是 `TestHubName` 。 |
+| 1.x | 所有環境的預設工作中樞名稱是 `DurableFunctionsHub` 。 |
 
 如需有關延伸模組版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
 
 > [!NOTE]
-> 當共用儲存體帳戶中有多個工作中樞時，可透過名稱來區分各個工作中樞。 如果您有多個函式應用程式共用了共用儲存體帳戶，您必須明確地在 host.json** 檔案中為每個工作中樞設定不同的名稱。 否則，多個函式應用程式會針對訊息彼此競爭，這可能會導致未定義的行為，包括在或`Pending` `Running`狀態下意外「停滯」的協調流程。
+> 當共用儲存體帳戶中有多個工作中樞時，可透過名稱來區分各個工作中樞。 如果您有多個函式應用程式共用了共用儲存體帳戶，您必須明確地在 host.json** 檔案中為每個工作中樞設定不同的名稱。 否則，多個函式應用程式會針對訊息彼此競爭，這可能會導致未定義的行為，包括在或狀態下意外「停滯」的協調流程 `Pending` `Running` 。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt
 ms.openlocfilehash: 307ab47c1f7498f71e61108a616d35ef1d4f61c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730003"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>從 IoT 中樞傳送雲端到裝置訊息
@@ -85,7 +84,7 @@ IoT 中樞上的**最大傳遞計數**屬性會決定訊息可以在已加入*�
 
 如[端點](iot-hub-devguide-endpoints.md)中所述，IoT 中樞會透過服務面向端點 */messages/servicebound/feedback 利用*來傳遞意見反應，做為訊息。 接收意見反應的語意與雲端到裝置訊息的接收語意相同。 可能的話，訊息意見反應會放入單一訊息中，其格式如下：
 
-| 屬性     | 描述 |
+| 屬性     | 說明 |
 | ------------ | ----------- |
 | EnqueuedTime | 時間戳記，指出中樞收到意見反應訊息的時間 |
 | UserId       | `{iot hub name}` |
@@ -93,12 +92,12 @@ IoT 中樞上的**最大傳遞計數**屬性會決定訊息可以在已加入*�
 
 主體是記錄的 JSON 序列化陣列，而每筆記錄都具有下列屬性︰
 
-| 屬性           | 描述 |
+| 屬性           | 說明 |
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | 指出何時發生訊息結果的時間戳記（例如，中樞收到意見反應訊息或原始郵件已過期） |
 | OriginalMessageId  | 此意見反應資訊相關之雲端到裝置訊息的*MessageId* |
-| StatusCode         | 必要的字串，用於 IoT 中樞所產生的意見反應訊息： <br/> 「成功」  <br/> *已過期* <br/> *DeliveryCountExceeded* <br/> *已拒絕* <br/> *按照* |
-| 描述        | *StatusCode*的字串值 |
+| StatusCode         | 必要的字串，用於 IoT 中樞所產生的意見反應訊息： <br/> 「成功」 <br/> *已到期* <br/> *DeliveryCountExceeded* <br/> *已拒絕* <br/> *按照* |
+| Description        | *StatusCode*的字串值 |
 | DeviceId           | 此意見反應相關之雲端到裝置訊息的目標裝置的*DeviceId* |
 | DeviceGenerationId | 此意見反應相關之雲端到裝置訊息的目標裝置*DeviceGenerationId* |
 
@@ -133,7 +132,7 @@ IoT 中樞上的**最大傳遞計數**屬性會決定訊息可以在已加入*�
 
 每個 IoT 中樞都會針對雲端到裝置傳訊公開下列設定選項：
 
-| 屬性                  | 描述 | 範圍和預設值 |
+| 屬性                  | 說明 | 範圍和預設值 |
 | ------------------------- | ----------- | ----------------- |
 | defaultTtlAsIso8601       | 雲端到裝置訊息的預設 TTL | 最多2天的 ISO_8601 間隔（最少1分鐘）;預設值：1小時 |
 | maxDeliveryCount          | 雲端到裝置的每個裝置佇列的最大傳遞計數 | 1到 100;預設值：10 |

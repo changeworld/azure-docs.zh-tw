@@ -8,10 +8,9 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606125"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>在對應資料流程中使用資料行模式
@@ -31,9 +30,9 @@ ms.locfileid: "81606125"
 
 ![資料行模式](media/data-flow/columnpattern.png "資料行模式")
 
-使用[運算式](concepts-data-flow-expression-builder.md)產生器來輸入比對條件。 根據資料`name`行的、、 `type` `stream`和`position` ，建立符合資料行的布林運算式。 此模式會影響任何漂移或已定義的資料行，其中條件會傳回 true。
+使用[運算式](concepts-data-flow-expression-builder.md)產生器來輸入比對條件。 根據資料 `name` 行的、、和，建立符合資料行的布林運算式 `type` `stream` `position` 。 此模式會影響任何漂移或已定義的資料行，其中條件會傳回 true。
 
-比對條件底下的兩個運算式方塊會指定受影響資料行的新名稱和值。 使用`$$`來參考符合欄位的現有值。 左側運算式方塊會定義名稱，右運算式方塊則會定義值。
+比對條件底下的兩個運算式方塊會指定受影響資料行的新名稱和值。 使用 `$$` 來參考符合欄位的現有值。 左側運算式方塊會定義名稱，右運算式方塊則會定義值。
 
 ![資料行模式](media/data-flow/columnpattern2.png "資料行模式")
 
@@ -45,7 +44,7 @@ ms.locfileid: "81606125"
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Select 和 sink 中以規則為基礎的對應
 
-對應來源中的資料行並選取轉換時，您可以新增固定對應或以規則為基礎的對應。 根據`name`、 `type`、 `stream`和資料行進行`position`比對。 您可以有固定和以規則為基礎之對應的任意組合。 根據預設，具有大於50資料行的所有投影都會預設為以規則為基礎的對應，這會在每個資料行上符合，並輸出輸入的名稱。 
+對應來源中的資料行並選取轉換時，您可以新增固定對應或以規則為基礎的對應。 根據 `name` 、 `type` 、和資料行進行比對 `stream` `position` 。 您可以有固定和以規則為基礎之對應的任意組合。 根據預設，具有大於50資料行的所有投影都會預設為以規則為基礎的對應，這會在每個資料行上符合，並輸出輸入的名稱。 
 
 若要新增以規則為基礎的對應，請按一下 [**新增對應**]，然後選取 [以**規則為主的對應**]。
 
@@ -55,7 +54,7 @@ ms.locfileid: "81606125"
 
 ![以規則為基礎的對應](media/data-flow/rule-based-mapping.png "規則型對應")
 
-使用`$$`語法來參考相符資料行的輸入名稱。 使用上述影像做為範例，假設使用者想要比對名稱少於六個字元的所有字串資料行。 如果其中一個傳入資料行`test`名為， `$$ + '_short'`則運算式會重新`test_short`命名資料行。 如果這是唯一存在的對應，則不符合條件的所有資料行都會從輸出資料中卸載。
+使用 `$$` 語法來參考相符資料行的輸入名稱。 使用上述影像做為範例，假設使用者想要比對名稱少於六個字元的所有字串資料行。 如果其中一個傳入資料行名為 `test` ，則運算式 `$$ + '_short'` 會重新命名資料行 `test_short` 。 如果這是唯一存在的對應，則不符合條件的所有資料行都會從輸出資料中卸載。
 
 模式同時符合漂移和已定義的資料行。 若要查看哪些定義的資料行是由規則所對應，請按一下規則旁的眼鏡圖示。 使用資料預覽來驗證您的輸出。
 
@@ -65,7 +64,7 @@ ms.locfileid: "81606125"
 
 ![以規則為基礎的對應](media/data-flow/regex-matching.png "規則型對應")
 
-上述範例符合 RegEx 模式`(r)`或任何包含小寫 r 的資料行名稱。 與標準規則型對應類似，所有相符的資料行都是由右邊的條件使用`$$`語法來改變。
+上述範例符合 RegEx 模式 `(r)` 或任何包含小寫 r 的資料行名稱。 與標準規則型對應類似，所有相符的資料行都是由右邊的條件使用語法來改變 `$$` 。
 
 ### <a name="rule-based-hierarchies"></a>以規則為基礎的階層
 
@@ -73,7 +72,7 @@ ms.locfileid: "81606125"
 
 ![以規則為基礎的對應](media/data-flow/rule-based-hierarchy.png "規則型對應")
 
-上述範例符合所有個子的複雜資料行`a`。 `a`包含兩個`b`個子`c`和。 輸出架構會包含兩個數據`b`行`c` ，而 [名稱為] 條件為`$$`。
+上述範例符合所有個子的複雜資料行 `a` 。 `a`包含兩個個子 `b` 和 `c` 。 輸出架構會包含兩個數據行 `b` ，而 `c` [名稱為] 條件為 `$$` 。
 
 ## <a name="pattern-matching-expression-values"></a>模式比對運算式值。
 

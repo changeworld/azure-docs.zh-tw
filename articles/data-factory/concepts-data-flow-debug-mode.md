@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
 ms.openlocfilehash: 4a763a3bb4d46ba03808423d4d1283381c1174a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605400"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>對應資料流程的偵錯模式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Azure Data Factory 對應資料流程的 [偵錯工具模式] 可讓您在建立和偵錯工具資料流程時，以互動方式監看「資料圖形」轉換。 您可以在資料流程設計會話以及管線的資料流程執行期間，使用 debug 會話。 若要開啟 [偵錯模式]，請使用設計介面頂端的 [資料流程 Debug] 按鈕。
 
@@ -43,7 +42,7 @@ Azure Data Factory 對應資料流程的 [偵錯工具模式] 可讓您在建立
 
 您可以按一下 [資料流程畫布] 工具列上的 [偵錯工具設定] 來編輯 debug 設定。 您可以在這裡選取每個來源轉換所使用的資料列限制或檔案來源。 此設定中的資料列限制僅適用于目前的「偵錯工具」會話。 您也可以選取要用於 SQL DW 來源的預備連結服務。 
 
-![偵錯設定](media/data-flow/debug-settings.png "偵錯設定")
+![Debug 設定](media/data-flow/debug-settings.png "偵錯設定")
 
 如果您的資料流程或其任何參考的資料集內有參數，您可以選取 [**參數**] 索引標籤，指定要在偵錯工具中使用的值。
 

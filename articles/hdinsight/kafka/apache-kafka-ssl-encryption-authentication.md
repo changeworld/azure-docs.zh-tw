@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261766"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>在 Azure HDInsight 中設定 Apache Kafka 的 TLS 加密和驗證
@@ -20,7 +19,7 @@ ms.locfileid: "81261766"
 本文說明如何設定 Apache Kafka 用戶端與 Apache Kafka 訊息代理程式之間的傳輸層安全性（TLS）加密，先前稱為安全通訊端層（SSL）加密。 它也會說明如何設定用戶端的驗證（有時稱為雙向 TLS）。
 
 > [!Important]
-> 有兩個用戶端可供您用來 Kafka 應用程式： JAVA 用戶端和主控台用戶端。 只有 JAVA 用戶端`ProducerConsumer.java`可以使用 TLS 來產生和使用。 主控台產生者客戶`console-producer.sh`端無法使用 TLS。
+> 有兩個用戶端可供您用來 Kafka 應用程式： JAVA 用戶端和主控台用戶端。 只有 JAVA 用戶端 `ProducerConsumer.java` 可以使用 TLS 來產生和使用。 主控台產生者用戶端 `console-producer.sh` 無法使用 TLS。
 
 > [!Note]
 > 具有1.1 版的 HDInsight Kafka 主控台產生者不支援 SSL。
@@ -52,7 +51,7 @@ Broker 安裝程式的摘要如下所示：
 使用下列詳細指示來完成 broker 安裝程式：
 
 > [!Important]
-> 在下列程式碼片段中，wnX 是三個背景工作角色節點其中之一的縮寫，而且應該`wn0`視`wn1`需要`wn2`取代或。 `WorkerNode0_Name`和`HeadNode0_Name`應該以各自電腦的名稱取代。
+> 在下列程式碼片段中，wnX 是三個背景工作角色節點其中之一的縮寫，而且應該 `wn0` `wn1` `wn2` 視需要取代或。 `WorkerNode0_Name`和 `HeadNode0_Name` 應該以各自電腦的名稱取代。
 
 1. 在前端節點0上執行初始安裝，HDInsight 將會填入憑證授權單位單位（CA）的角色。
 
@@ -170,7 +169,7 @@ Broker 安裝程式的摘要如下所示：
 
 1. 登入 CA （使用中的前端節點）。
 1. 從 CA 電腦（wn0）將 CA 憑證複製到用戶端電腦。
-1. 登入用戶端電腦（hn1）並流覽至`~/ssl`資料夾。
+1. 登入用戶端電腦（hn1）並流覽至 `~/ssl` 資料夾。
 1. 將 CA 憑證匯入 truststore。
 1. 將 CA 憑證匯入金鑰儲存區。
 
@@ -228,7 +227,7 @@ Broker 安裝程式的摘要如下所示：
 1. 登入用戶端電腦（待命前端節點）。
 1. 建立 java 金鑰儲存區並取得訊息代理程式的已簽署憑證。 然後將憑證複製到執行該 CA 的 VM。
 1. 切換至 CA 電腦（作用中前端節點）以簽署用戶端憑證。
-1. 移至用戶端電腦（待命前端節點），然後流覽至`~/ssl`資料夾。 將已簽署的憑證複製到用戶端電腦。
+1. 移至用戶端電腦（待命前端節點），然後流覽至 `~/ssl` 資料夾。 將已簽署的憑證複製到用戶端電腦。
 
 以下提供每個步驟的詳細資料。
 
@@ -323,13 +322,13 @@ Broker 安裝程式的摘要如下所示：
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1. 啟動主控台產生者，並提供的`client-ssl-auth.properties`路徑做為產生者的設定檔。
+1. 啟動主控台產生者，並提供的路徑做為產生者的 `client-ssl-auth.properties` 設定檔。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9093 --topic topic1 --producer.config ~/ssl/client-ssl-auth.properties
     ```
 
-1. 開啟另一個與用戶端電腦的 ssh 連線，並啟動主控台取用者`client-ssl-auth.properties` ，並將路徑提供給取用者的設定檔。
+1. 開啟另一個與用戶端電腦的 ssh 連線，並啟動主控台取用者，並將路徑提供給取用 `client-ssl-auth.properties` 者的設定檔。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
@@ -349,7 +348,7 @@ Broker 安裝程式的摘要如下所示：
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9092 --topic topic1 
     ```
 
-1. 開啟另一個與用戶端電腦的 ssh 連線，並啟動主控台取用者`client-ssl-auth.properties` ，並將路徑提供給取用者的設定檔。
+1. 開啟另一個與用戶端電腦的 ssh 連線，並啟動主控台取用者，並將路徑提供給取用 `client-ssl-auth.properties` 者的設定檔。
 
     ```bash
     $ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning

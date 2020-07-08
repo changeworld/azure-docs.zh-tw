@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81677467"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process 實務：使用 Azure HDInsight Hadoop 叢集
@@ -48,7 +47,7 @@ NYC 計程車車程資料是約 20 GB 的壓縮逗點分隔值 (CSV) 檔案 (未
 加入 trip\_data and trip\_fare 的唯一索引鍵由下列欄位組成：medallion、hack\_license 和 pickup\_datetime。 若要取得特定車程的所有詳細資訊，加入這三個索引鍵便已足夠。
 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>預測工作的範例
-根據資料分析，判斷您想要進行的預測類型，以協助闡明所需的處理工作。 以下是我們在本逐步解說中所討論的三個預測問題範例，全部都是根據*tip\_量*而定：
+根據資料分析，判斷您想要進行的預測類型，以協助闡明所需的處理工作。 以下是我們在本逐步解說中所討論的三個預測問題範例，全部都是根據*tip \_ 量*而定：
 
 - **二元分類**：預測是否已支付某趟車程的小費。 也就是說，大於 $0 的 *tip\_amount* 是正數範例，而 $0 的 *tip\_amount* 是負數範例。
    
@@ -88,11 +87,11 @@ NYC 計程車車程資料是約 20 GB 的壓縮逗點分隔值 (CSV) 檔案 (未
 
 我們在這裡說明如何使用 AzCopy 來傳輸含有資料的檔案。 若要下載並安裝 AzCopy，請遵循[開始使用 AzCopy 命令列公用程式](../../storage/common/storage-use-azcopy.md)中的指示。
 
-1. 從 [命令提示字元] 視窗中，執行下列 AzCopy 命令，以所需的目的地取代* \<path_to_data_folder>* ：
+1. 從 [命令提示字元] 視窗中，執行下列 AzCopy 命令， *\<path_to_data_folder>* 並將取代為想要的目的地：
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. 複製完成時，您會在選擇的資料夾中看到總共 24 個壓縮檔。 將下載的檔案解壓縮到您本機電腦上的相同目錄。 記下未壓縮檔案所在的資料夾。 此資料夾稱為* \< \_ \_ \_unzipped_data\> *檔案的路徑，如下所示。
+1. 複製完成時，您會在選擇的資料夾中看到總共 24 個壓縮檔。 將下載的檔案解壓縮到您本機電腦上的相同目錄。 記下未壓縮檔案所在的資料夾。 在接下來的內容中，此資料夾稱為 *\<path\_to\_unzipped_data\_files\>* 。
 
 ## <a name="upload-the-data-to-the-default-container-of-the-hdinsight-hadoop-cluster"></a><a name="upload"></a>將資料上傳至 HDInsight Hadoop 叢集的預設容器
 > [!NOTE]
@@ -102,10 +101,10 @@ NYC 計程車車程資料是約 20 GB 的壓縮逗點分隔值 (CSV) 檔案 (未
 
 在下列 AzCopy 命令中，以建立 Hadoop 叢集和解壓縮資料檔案時指定的實際值取代下列參數。
 
-* *** \<path_to_data_folder>*** 您電腦上的目錄（連同路徑），其中包含已解壓縮的資料檔案。  
-* ***Hadoop 叢集>的儲存體帳戶名稱\< ***與您的 HDInsight 叢集相關聯的儲存體帳戶。
-* ***Hadoop 叢集>的預設容器\< ***您的叢集所使用的預設容器。 預設容器的名稱通常與叢集本身的名稱相同。 例如，如果叢集稱為 "abc123.azurehdinsight.net"，預設容器即為 abc123。
-* 儲存體帳戶金鑰>*** \< ***您的叢集所使用之儲存體帳戶的金鑰。
+* ***\<path_to_data_folder>*** 您電腦上的目錄（連同路徑），其中包含已解壓縮的資料檔案。  
+* ***\<storage account name of Hadoop cluster>*** 與您的 HDInsight 叢集相關聯的儲存體帳戶。
+* ***\<default container of Hadoop cluster>*** 您的叢集所使用的預設容器。 預設容器的名稱通常與叢集本身的名稱相同。 例如，如果叢集稱為 "abc123.azurehdinsight.net"，預設容器即為 abc123。
+* ***\<storage account key>*** 您的叢集所使用之儲存體帳戶的金鑰。
 
 從命令提示字元或 Windows PowerShell 視窗，執行下列兩個 AzCopy 命令。
 
@@ -157,7 +156,7 @@ NYC 計程車車程資料是約 20 GB 的壓縮逗點分隔值 (CSV) 檔案 (未
 
     hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 
-以下是**\_C:\temp\sample\_hive create\_db\_和\_tables**檔案的內容，此檔案會建立 hive 資料庫**nyctaxidb**，以及資料表的**往返**和**費用**。
+以下是**C:\temp\sample \_ hive \_ create \_ db \_ 和 \_ tables**檔案的內容，此檔案會建立 hive 資料庫**nyctaxidb**，以及資料表的**往返**和**費用**。
 
     create database if not exists nyctaxidb;
 
@@ -215,7 +214,7 @@ NYC 計程車資料集會依月份自然分割資料，可讓我們更快速處�
 
     for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
 
-**依\_\_\_\_資料分割的範例 hive 載入資料： hql 檔案包含下列載入命令 ..\_ ** **LOAD**
+依資料分割的**範例 \_ hive \_ 載入 \_ 資料： \_ \_ hql**檔案包含下列**載入**命令。。
 
     LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
     LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
@@ -382,7 +381,7 @@ NYC 計程車資料集會依月份自然分割資料，可讓我們更快速處�
 > 
 > 
 
-此範例會識別在特定期間內超過 100 趟車程的圓形徽章 (計程車數目)。 由於這個查詢受到資料分割變數 **month** 的條件約束，因此使用資料分割資料表會很有幫助。 查詢結果會寫入至前端節點`C:\temp`上的本機檔案（ **queryoutput.tsv**）。
+此範例會識別在特定期間內超過 100 趟車程的圓形徽章 (計程車數目)。 由於這個查詢受到資料分割變數 **month** 的條件約束，因此使用資料分割資料表會很有幫助。 查詢結果會寫入至前端節點上的本機檔案（ **queryoutput.tsv**）。 `C:\temp`
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
@@ -470,7 +469,7 @@ NYC 計程車資料集中的圓形徽章會識別唯一的計程車。 您可以
 * tip given (Class 1, tip\_amount > $0)  
 * no tip (Class 0, tip\_amount = $0)
 
-下列**範例\_hive\_附屬\_頻率. hql**檔案顯示要執行的命令：
+下列**範例 \_ hive \_ 附屬 \_ 頻率. hql**檔案顯示要執行的命令：
 
     SELECT tipped, COUNT(*) AS tip_freq
     FROM
@@ -574,11 +573,11 @@ NYC 計程車資料集中的圓形徽章會識別唯一的計程車。 您可以
 在探索資料分析階段之後，我們現在已準備好縮小取樣資料，以便在 Machine Learning 中建置模型。 在本節中，我們會示範如何使用 Hive 查詢縮小取樣資料。 Machine Learning 再從[匯入資料][import-data]模組存取它。
 
 ### <a name="down-sampling-the-data"></a>縮小取樣資料
-這個程序包含兩個步驟。 首先，我們會將**nyctaxidb**和**nyctaxidb 費用**資料表聯結在所有記錄中的三個索引鍵上： **medallion**、「 ** \_駭客授權**」和「**取貨\_日期時間**」。 接著產生二元分類標籤 **tipped** 和多元分類標籤 **tip\_class**。
+這個程序包含兩個步驟。 首先，我們會將**nyctaxidb**和**nyctaxidb 費用**資料表聯結在所有記錄中的三個索引鍵上： **medallion**、「**駭客 \_ 授權**」和「**取貨 \_ 日期時間**」。 接著產生二元分類標籤 **tipped** 和多元分類標籤 **tip\_class**。
 
 為了能夠直接從 Machine Learning 中的[匯入資料][import-data]模組使用縮小取樣的資料，應將上述查詢的結果儲存至內部 Hive 資料表。 接下來我們將建立內部 Hive 資料表，並以加入和縮小取樣的資料來填入其內容。
 
-查詢會直接套用標準 Hive 函式，以從 [ **pickup\_datetime** ] 欄位產生下列時間參數：
+查詢會直接套用標準 Hive 函式，以從 [ **pickup \_ datetime** ] 欄位產生下列時間參數：
 - 時
 - 年中的週
 - 工作日（' 1 ' 代表星期一，而 ' 7 ' 代表星期日）
@@ -721,7 +720,7 @@ NYC 計程車資料集中的圓形徽章會識別唯一的計程車。 您可以
 
 以下是[匯入資料][import-data]模組及輸入參數的一些詳細資料：
 
-**HCatalog 伺服器 URI**：如果叢集名稱是**abc123**，則使用： HTTPs：\//abc123.azurehdinsight.net。
+**HCatalog 伺服器 URI**：如果叢集名稱是**abc123**，則使用： HTTPs： \/ /abc123.azurehdinsight.net。
 
 **Hadoop 使用者帳戶名稱**：為叢集選擇的使用者名稱（非遠端存取使用者名稱）。
 
@@ -761,7 +760,7 @@ NYC 計程車資料集中的圓形徽章會識別唯一的計程車。 您可以
 
   **已使用學習者：** 二元羅吉斯迴歸
 
-  a. 對於這個問題，目標 (或類別) 標籤是 **tipped**。 縮小取樣的原始資料集有幾個資料行會顯示這個分類實驗的目標流失。 特別是， **tip\_class**、 **tip\_金額**和**\_total 金額**會顯示在測試時無法使用之目標標籤的相關資訊。 我們使用[選取資料集中的資料行][select-columns]模組，從考量範圍中移除這些資料行。
+  a. 對於這個問題，目標 (或類別) 標籤是 **tipped**。 縮小取樣的原始資料集有幾個資料行會顯示這個分類實驗的目標流失。 特別是， **tip \_ class**、 **tip \_ 金額**和**total \_ 金額**會顯示在測試時無法使用之目標標籤的相關資訊。 我們使用[選取資料集中的資料行][select-columns]模組，從考量範圍中移除這些資料行。
 
   下圖顯示我們的實驗，目的是預測是否會支付指定車程的小費：
 
@@ -781,7 +780,7 @@ NYC 計程車資料集中的圓形徽章會識別唯一的計程車。 您可以
 
   **已使用學習者：** 多元羅吉斯迴歸
 
-  a. 針對這個問題，我們的目標（或類別）標籤是**tip\_class**，它可以採用五個值（0、1、2、3、4）的其中一個。 如二元分類案例所示，我們有幾個資料行會顯示這個實驗的目標。 特別是 **tipped**、**tip\_amount** 和 **total\_amount**，可揭示測試時無法取得的目標標籤相關資訊。 我們使用[選取資料集中的資料行][select-columns]模組來移除這些資料行。
+  a. 針對這個問題，我們的目標（或類別）標籤是**tip \_ class**，它可以採用五個值（0、1、2、3、4）的其中一個。 如二元分類案例所示，我們有幾個資料行會顯示這個實驗的目標。 特別是 **tipped**、**tip\_amount** 和 **total\_amount**，可揭示測試時無法取得的目標標籤相關資訊。 我們使用[選取資料集中的資料行][select-columns]模組來移除這些資料行。
 
   下圖顯示預測小費可能落在哪個容器的實驗。 容器為：Class 0: tip = $0、Class 1: tip > $0 and tip <= $5、Class 2: tip > $5 and tip <= $10、Class 3: tip > $10 and tip <= $20 及 Class 4: tip > $20。
 
@@ -819,9 +818,9 @@ NYC 計程車資料集中的圓形徽章會識別唯一的計程車。 您可以
 > 
 
 ## <a name="license-information"></a>授權資訊
-此範例逐步解說及其隨附的指令碼是在 MIT 授權下由 Microsoft 所共用。 如需詳細資訊，請參閱 GitHub 上範例程式碼目錄中的**license.txt**檔案。
+此範例逐步解說及其隨附的指令碼是在 MIT 授權下由 Microsoft 所共用。 如需詳細資訊，請參閱 GitHub 上範例程式碼目錄中的**LICENSE.txt**檔案。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 •    [Andrés Monroy NYC 計程車車程下載頁面](https://www.andresmh.com/nyctaxitrips/) \(英文\)  
 • [FOILING NYC 的計程車資料，由 Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [NYC 計程車和禮車委員會研究和統計資料](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

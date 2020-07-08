@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
 ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81640553"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>將 Raspberry Pi 連接至 Azure IoT Hub (C)
@@ -117,9 +116,9 @@ ms.locfileid: "81640553"
 
 ### <a name="enable-ssh-and-spi"></a>啟用 SSH 和 SPI
 
-1. 將 Pi 連接至監視器、鍵盤和滑鼠、啟動 Pi，然後使用`pi`做為使用者名稱和`raspberry`密碼來登入 Raspbian。
+1. 將 Pi 連接至監視器、鍵盤和滑鼠、啟動 Pi，然後使用 `pi` 做為使用者名稱和密碼來登入 Raspbian `raspberry` 。
  
-2. 按一下 [Raspberry] 圖示 >**偏好** > 設定] [**Raspberry Pi**設定]。
+2. 按一下 [Raspberry] 圖示 >**偏好**設定] [  >  **Raspberry Pi**設定]。
 
    ![[Raspbian 偏好設定] 功能表](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 

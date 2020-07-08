@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 63a708f80ad18309269e37c354b047c304a260d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641301"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>塑造 JSON 以最大化查詢效能
@@ -98,7 +97,7 @@ ms.locfileid: "81641301"
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
    | FXXX | LINE\_DATA | EU |
-   | FYYY | LINE\_DATA | US |
+   | FYYY | LINE\_DATA | 美國 |
 
 * 在簡維之後時間序列深入解析事件資料表：
 
@@ -106,7 +105,7 @@ ms.locfileid: "81641301"
    | --- | --- | --- | --- | --- | --- |
    | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
    | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
-   | FYYY | LINE\_DATA | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
+   | FYYY | LINE\_DATA | 美國 | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 > [!NOTE]
 > - **deviceId** 資料行是車隊中各種裝置的資料行標頭。 將**deviceId**值設為其本身的屬性名稱，會將裝置的總計限制為595（適用于 S1 環境）或795（適用于 S2 環境），以及其他五個數據行。
@@ -165,23 +164,23 @@ ms.locfileid: "81641301"
 
 * 具有索引鍵屬性**deviceId**和**tagId**的參考資料表：
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | unit |
+   | deviceId | series.tagId | messageId | deviceLocation | 類型 | unit |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | 流動率 | ft3/s |
    | FXXX | oilPressure | LINE\_DATA | EU | 引擎機油壓力 | psi |
-   | FYYY | pumpRate | LINE\_DATA | US | 流動率 | ft3/s |
-   | FYYY | oilPressure | LINE\_DATA | US | 引擎機油壓力 | psi |
+   | FYYY | pumpRate | LINE\_DATA | 美國 | 流動率 | ft3/s |
+   | FYYY | oilPressure | LINE\_DATA | 美國 | 引擎機油壓力 | psi |
 
 * 在簡維之後時間序列深入解析事件資料表：
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | unit | timestamp | series.value |
+   | deviceId | series.tagId | messageId | deviceLocation | 類型 | unit | timestamp | series.value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | 流動率 | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | oilPressure | LINE\_DATA | EU | 引擎機油壓力 | psi | 2018-01-17T01:17:00Z | 34.7 |
    | FXXX | pumpRate | LINE\_DATA | EU | 流動率 | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
    | FXXX | oilPressure | LINE\_DATA | EU | 引擎機油壓力 | psi | 2018-01-17T01:17:00Z | 49.2 |
-   | FYYY | pumpRate | LINE\_DATA | US | 流動率 | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | LINE\_DATA | US | 引擎機油壓力 | psi | 2018-01-17T01:18:00Z | 22.2 |
+   | FYYY | pumpRate | LINE\_DATA | 美國 | 流動率 | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | LINE\_DATA | 美國 | 引擎機油壓力 | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 > [!NOTE]
 > - 資料行**deviceId**和**tagId**可做為車隊中各種裝置和標記的欄標題。 使用每個做為其本身的屬性，會將查詢限制為594（適用于 S1 環境）或794（適用于 S2 環境）與其他六個數據行的裝置總數。

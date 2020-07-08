@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606541"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>對應資料流程中的匯總轉換
@@ -45,18 +44,18 @@ Group by 子句在匯總轉換中是選擇性的。
 
 匯總轉換類似 SQL 匯總選取查詢。 不包含在 group by 子句或彙總函式中的資料行，將不會流經匯總轉換的輸出。 如果您想要在匯總輸出中包含其他資料行，請執行下列其中一種方法：
 
-* 使用彙總函式（例如或`last()` `first()` ）以包含該額外的資料行。
+* 使用彙總函式（例如 `last()` 或） `first()` 以包含該額外的資料行。
 * 使用[自我聯結模式](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)，將資料行重新加入至您的輸出資料流程。
 
 ## <a name="removing-duplicate-rows"></a>移除重複的資料列
 
-「匯總」轉換的常見用法是移除或識別來源資料中的重複專案。 此程式稱為「重復資料刪除」。 根據一組依據索引鍵，使用您選擇的啟發學習法來判斷要保留的重復資料列。 一般啟發學習`first()`法`last()`為`max()`、、 `min()`和。 使用資料[行模式](concepts-data-flow-column-pattern.md)將規則套用到每個資料行，但 [群組依據] 資料行除外。
+「匯總」轉換的常見用法是移除或識別來源資料中的重複專案。 此程式稱為「重復資料刪除」。 根據一組依據索引鍵，使用您選擇的啟發學習法來判斷要保留的重復資料列。 一般啟發學習法為 `first()` 、 `last()` 、 `max()` 和 `min()` 。 使用資料[行模式](concepts-data-flow-column-pattern.md)將規則套用到每個資料行，但 [群組依據] 資料行除外。
 
 ![重複](media/data-flow/agg-dedupe.png "重複資料刪除")
 
-在上述範例中，會`ProductID`使用`Name`資料行和來進行群組。 如果兩個數據列的值相同，則會將它們視為重複。 在此匯總轉換中，會保留第一個符合的資料列值，並捨棄其他所有專案。 使用資料行模式語法時，所有名稱不`ProductID`是`Name`和的資料行都會對應到現有的資料行名稱，並指定第一個相符資料列的值。 輸出架構與輸入架構相同。
+在上述範例中， `ProductID` 會使用資料行和 `Name` 來進行群組。 如果兩個數據列的值相同，則會將它們視為重複。 在此匯總轉換中，會保留第一個符合的資料列值，並捨棄其他所有專案。 使用資料行模式語法時，所有名稱不 `ProductID` 是和的資料 `Name` 行都會對應到現有的資料行名稱，並指定第一個相符資料列的值。 輸出架構與輸入架構相同。
 
-對於資料驗證案例， `count()`函數可以用來計算有多少重複專案。
+對於資料驗證案例， `count()` 函數可以用來計算有多少重複專案。
 
 ## <a name="data-flow-script"></a>資料流程指令碼
 
@@ -81,7 +80,7 @@ Group by 子句在匯總轉換中是選擇性的。
 
 ### <a name="example"></a>範例
 
-下列範例會接受傳入的資料流程`MoviesYear` ，並依資料行`year`分組資料列。 轉換會建立評估為數據`avgrating`行`Rating`平均值的匯總資料行。 這個匯總轉換名為`AvgComedyRatingsByYear`。
+下列範例會接受傳入的資料流程 `MoviesYear` ，並依資料行分組資料列 `year` 。 轉換 `avgrating` 會建立評估為數據行平均值的匯總資料行 `Rating` 。 這個匯總轉換名為 `AvgComedyRatingsByYear` 。
 
 在 Data Factory UX 中，這項轉換看起來如下圖所示：
 
@@ -100,7 +99,7 @@ MoviesYear aggregate(
 
 ![匯總資料流程腳本](media/data-flow/aggdfs1.png "匯總資料流程腳本")
 
-```MoviesYear```：定義年份和標題資料行```AvgComedyRatingByYear```的衍生資料行：依年份```avgrating```分組之平均 comedies 評等的匯總轉換：所建立之新資料行的名稱，用以保存匯總值
+```MoviesYear```：定義年份和標題資料行的衍生資料行 ```AvgComedyRatingByYear``` ：依年份分組之平均 comedies 評等的匯總轉換 ```avgrating``` ：所建立之新資料行的名稱，用以保存匯總值
 
 ```
 MoviesYear aggregate(groupBy(year),

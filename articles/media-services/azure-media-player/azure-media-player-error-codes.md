@@ -7,15 +7,14 @@ ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 13d804ec39c3d7753d4ee04962a88d4451fb04d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727251"
 ---
 # <a name="error-codes"></a>錯誤碼 #
 
-當播放無法啟動或停止時，將會引發錯誤事件，且`error()`函式會傳回代碼和選擇性的訊息，以協助應用程式開發人員取得更多詳細資料。 `error().message`不是向使用者顯示的訊息。  向使用者顯示的訊息是根據`error().code` bits 27-20，請參閱下表。
+當播放無法啟動或停止時，將會引發錯誤事件，且函式 `error()` 會傳回代碼和選擇性的訊息，以協助應用程式開發人員取得更多詳細資料。 `error().message`不是向使用者顯示的訊息。  向使用者顯示的訊息是根據 `error().code` bits 27-20，請參閱下表。
 
 ```javascript
 
@@ -44,12 +43,12 @@ ms.locfileid: "81727251"
 描述錯誤的詳細資料，bits 27-20 提供高階，bits 19-0 則提供更多詳細資料（如果有的話）。
 
 
-| amp。檔案名 | 代碼，位 [27-0] （28位） | 描述 |
+| amp。檔案名 | 代碼，位 [27-0] （28位） | Description |
 |---|---:|---|
 | **MEDIA_ERR_ABORTED 錯誤範圍（0x0100000-0x01FFFFF）** | | |
 | abortedErrUnknown | 0x0100000 | 一般中止錯誤 |
 | abortedErrNotImplemented | 0x0100001 | 中止錯誤，未執行 |
-| abortedErrHttpMixedContentBlocked | 0x0100002 | 中止錯誤，已`http://` `https://`封鎖混合內容-通常會在從頁面載入資料流程時發生 |
+| abortedErrHttpMixedContentBlocked | 0x0100002 | 中止錯誤，已封鎖混合內容-通常會在 `http://` 從頁面載入資料流程 `https://` 時發生 |
 | **MEDIA_ERR_NETWORK 錯誤開始值（0x0200000-0x02FFFFF）** | | |
 | networkErrUnknown | 0x0200000 | 一般網路錯誤 |
 | networkErrHttpBadUrlFormat | 0x0200190 | Http 400 錯誤回應 |

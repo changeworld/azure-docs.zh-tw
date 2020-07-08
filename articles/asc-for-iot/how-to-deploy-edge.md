@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 4dd7ca8f926862487b9505731c0662e68ee3d7c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311285"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在您的 IoT Edge 裝置上部署安全性模組
@@ -34,7 +33,7 @@ ms.locfileid: "81311285"
 
 使用下列步驟來部署適用于 IoT Edge 的 IoT 安全性模組 Azure 資訊安全中心。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 1. 在您的 IoT 中樞中，請確定您的裝置已[註冊為 IoT Edge 裝置](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)。
 
@@ -97,7 +96,7 @@ ms.locfileid: "81311285"
       "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
     ```
 
-1. 選取 [更新]  。
+1. 選取 [更新]。
 
 #### <a name="step-2-runtime-settings"></a>步驟2：執行時間設定
 
@@ -129,9 +128,9 @@ ms.locfileid: "81311285"
     }
     ```
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
-1. 選取 [下一步]  。
+1. 選取 [下一步]。
 
 #### <a name="step-3-specify-routes"></a>步驟3：指定路由
 
@@ -147,7 +146,7 @@ ms.locfileid: "81311285"
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ```
 
-1. 選取 [下一步]  。
+1. 選取 [下一步]。
 
 #### <a name="step-4-review-deployment"></a>步驟4：審查部署
 
@@ -179,7 +178,7 @@ ms.locfileid: "81311285"
 
    `sudo docker logs azureiotsecurity`
 
-1. 如需更詳細的記錄，請將下列環境變數新增至**azureiotsecurity**模組`logLevel=Debug`部署：。
+1. 如需更詳細的記錄，請將下列環境變數新增至**azureiotsecurity**模組部署： `logLevel=Debug` 。
 
 ## <a name="next-steps"></a>後續步驟
 

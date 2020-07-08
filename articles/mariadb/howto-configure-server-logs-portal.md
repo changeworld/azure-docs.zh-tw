@@ -7,17 +7,16 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: 1e67637d36eaba55e4c6baaf6f775fc7b79fcd14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81270585"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>從 Azure 入口網站設定和存取緩慢查詢記錄
 
 您可以從 Azure 入口網站設定、列出和下載[適用於 MariaDB 的 Azure 資料庫慢速查詢記錄](concepts-server-logs.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 本文中的步驟需要您擁有[適用於 MariaDB 的 Azure 資料庫 server](quickstart-create-mariadb-server-database-using-azure-portal.md)。
 
 ## <a name="configure-logging"></a>設定記錄
@@ -38,7 +37,7 @@ ms.locfileid: "81270585"
 
 7. 變更所需的任何其他參數。 
 
-8. 選取 [儲存]  。 
+8. 選取 [儲存]。 
 
    :::image type="content" source="./media/howto-configure-server-logs-portal/3-save-discard.png" alt-text="慢速查詢記錄參數和儲存的螢幕擷取畫面。":::
 
@@ -66,7 +65,7 @@ ms.locfileid: "81270585"
 
 ## <a name="set-up-diagnostic-logs"></a>設定診斷記錄
 
-1. 在提要欄位的 [**監視**] 區段下，選取 [**診斷設定** > ] [**新增診斷設定**]。
+1. 在提要欄位的 [**監視**] 區段下，選取 [**診斷設定**] [  >  **新增診斷設定**]。
 
    ![診斷設定選項的螢幕擷取畫面](./media/howto-configure-server-logs-portal/add-diagnostic-setting.png)
 

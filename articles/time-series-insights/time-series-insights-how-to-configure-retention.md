@@ -11,17 +11,16 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 524e47e5be142b720687ad48ee9407da23284bd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605057"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>在時間序列深入解析中設定保留期
 
 本文說明如何在 Azure 時間序列深入解析中，設定 [資料保留時間]**** 和 [超過儲存空間限制的行為]****。
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 每個 Azure 時間序列深入解析環境都有設定**資料保留時間**的設定。 可設定的值為 1 到 400 天。 資料會依環境儲存容量或保留持續時間 (1-400) 進行刪除，以先達到者為準。
 

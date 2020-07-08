@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81262429"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>更正拼寫錯誤和錯誤的模糊搜尋
@@ -21,7 +20,7 @@ Azure 認知搜尋支援模糊搜尋，這種類型的查詢會補償輸入字�
 
 ## <a name="what-is-fuzzy-search"></a>什麼是模糊搜尋？
 
-這是一個展開練習，會產生與具有類似組合的字詞相符的結果。 當指定模糊搜尋時，引擎會針對查詢中的所有完整詞彙，針對類似的有限自動化理論建立一個圖形（根據[決定性的有限理論](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)）。 例如，如果您的查詢包含三個詞彙「華盛頓大學」，則會針對查詢`search=university~ of~ washington~`中的每個詞彙建立圖表（模糊搜尋中不會有任何停用字組，因此 "of" 會取得圖形）。
+這是一個展開練習，會產生與具有類似組合的字詞相符的結果。 當指定模糊搜尋時，引擎會針對查詢中的所有完整詞彙，針對類似的有限自動化理論建立一個圖形（根據[決定性的有限理論](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)）。 例如，如果您的查詢包含三個詞彙「華盛頓大學」，則會針對查詢中的每個詞彙建立圖表 `search=university~ of~ washington~` （模糊搜尋中不會有任何停用字組，因此 "of" 會取得圖形）。
 
 此圖表包含每個詞彙最多50個擴充或相片順序，可在進程中同時捕捉正確和不正確的變數。 然後，引擎會傳迴響應中最重要的相關相符專案。 
 
@@ -33,7 +32,7 @@ Azure 認知搜尋支援模糊搜尋，這種類型的查詢會補償輸入字�
 
 + 模糊查詢適用于整個詞彙，但您可以透過和構造支援片語。 例如，"Unviersty ~ of" Wshington ~ "會符合「華盛頓大學」的結果。
 
-+ 編輯的預設距離為2。 的`~0`值表示不展開（只會將確切的字詞視為相符），但是您可以指定`~1`一種差異程度，或進行一個編輯。 
++ 編輯的預設距離為2。 的值 `~0` 表示不展開（只會將確切的字詞視為相符），但是您可以指定 `~1` 一種差異程度，或進行一個編輯。 
 
 + 模糊查詢最多可以擴充到50個額外的排列。 這項限制是無法設定的，但您可以將編輯距離減少為1，藉此有效減少擴充的數目。
 
@@ -58,13 +57,13 @@ Azure 認知搜尋支援模糊搜尋，這種類型的查詢會補償輸入字�
 
 模糊查詢是使用完整的 Lucene 查詢語法來建立，叫用[lucene 查詢](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)剖析器。
 
-1. 在查詢上設定完整的 Lucene 剖析器`queryType=full`（）。
+1. 在查詢上設定完整的 Lucene 剖析器（ `queryType=full` ）。
 
-1. （選擇性）使用此參數將要求的範圍限定于特定`searchFields=<field1,field2>`欄位（）。 
+1. （選擇性）使用此參數將要求的範圍限定于特定欄位（ `searchFields=<field1,field2>` ）。 
 
-1. 在整個詞彙的`~`結尾附加波狀符號（）運算子（`search=<string>~`）。
+1. `~`在整個詞彙的結尾附加波狀符號（）運算子（ `search=<string>~` ）。
 
-   如果您想要指定編輯距離（`~1`），請包含選擇性參數，也就是介於0和2（預設值）之間的數位。 例如，"blue~" 或 "blue~1" 會傳回 "blue"、"blues" 和 "glue"。
+   如果您想要指定編輯距離（），請包含選擇性參數，也就是介於0和2（預設值）之間的數位 `~1` 。 例如，"blue~" 或 "blue~1" 會傳回 "blue"、"blues" 和 "glue"。
 
 在 Azure 認知搜尋中，除了「詞彙」和「距離」（最大值為2）以外，不會在查詢上設定任何其他參數。
 
@@ -82,7 +81,7 @@ Azure 認知搜尋支援模糊搜尋，這種類型的查詢會補償輸入字�
 
 ### <a name="example-1-fuzzy-search-with-the-exact-term"></a>範例1：使用確切詞彙進行模糊搜尋
 
-假設搜尋檔的`"Description"`欄位中有下列字串：`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+假設搜尋檔的欄位中有下列字串 `"Description"` ：`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
 開始使用「特殊」的模糊搜尋，並在 [描述] 欄位中新增命中結果醒目提示：
 
@@ -120,9 +119,9 @@ Azure 認知搜尋支援模糊搜尋，這種類型的查詢會補償輸入字�
 
 此展開範例的重點是要說明出現反白顯示的清晰度，可能會帶到不明確的結果。 在所有情況下，都會傳回相同的檔。 如果您依賴檔識別碼來驗證相符的結果，您可能錯過了從「特殊」到「SQL」的轉換。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [全文檢索搜尋在 Azure 認知搜尋中的運作方式（查詢剖析架構）](search-lucene-query-architecture.md)
-+ [搜尋瀏覽器](search-explorer.md)
++ [搜尋總管](search-explorer.md)
 + [如何在 .NET 中進行查詢](search-query-dotnet.md)
 + [如何在 REST 中進行查詢](search-create-index-rest-api.md)

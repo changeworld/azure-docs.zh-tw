@@ -13,10 +13,9 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
 ms.openlocfilehash: 4cb5b84f3889dcf4e0f28d525afb42cfeac5b54c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605500"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>在 Azure Data Factory 中，將自我裝載 IR 設定為 Azure SSIS IR 的 proxy
@@ -58,7 +57,7 @@ ms.locfileid: "81605500"
 - 針對 [**驗證方法**]，選取 [**帳戶金鑰**]、[ **SAS URI**] 或 [**服務主體**]。  
 
     >[!TIP]
-    >如果您選取**服務主體**方法，請至少將「 *儲存體 Blob 資料參與者* 」角色授與您的服務主體。 如需詳細資訊，請參閱 [Azure Blob 儲存體連接器](connector-azure-blob-storage.md#linked-service-properties)。
+    >如果您選取**服務主體**方法，請至少將「 *儲存體 Blob 資料參與者*」角色授與您的服務主體   。 如需詳細資訊，請參閱 [Azure Blob 儲存體連接器](connector-azure-blob-storage.md#linked-service-properties)。
 
 ![準備 Azure Blob 儲存體連結服務以進行預備](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -78,7 +77,7 @@ ms.locfileid: "81605500"
 
    1. 在 [**暫存路徑**] 方塊中，指定所選 Azure blob 儲存體帳戶中的 blob 容器，或將其保留空白，以使用預設值來進行預備。
 
-   1. 選取 \[繼續\]。 
+   1. 選取 [繼續]。
 
    ![使用自我裝載 IR 的 Advanced 設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
@@ -118,7 +117,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>啟用 SSIS 套件以透過 proxy 連接
 
-藉由使用適用于 Visual Studio 或獨立安裝程式的最新 SSDT 與 SSIS 專案延伸模組，您可以`ConnectByProxy`找到已在 OLEDB 或一般檔案連接管理員中新增的新屬性。
+藉由使用適用于 Visual Studio 或獨立安裝程式的最新 SSDT 與 SSIS 專案延伸模組，您可以找到 `ConnectByProxy` 已在 OLEDB 或一般檔案連接管理員中新增的新屬性。
 * [下載適用于 Visual Studio 的 SSIS 專案延伸模組的 SSDT](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
 * [下載獨立安裝程式](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
 
@@ -135,11 +134,11 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
   
   ![啟用 ConnectByProxy property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- **選項 B：** 重新部署包含要在 SSIS IR 上執行之封裝的專案。 接著，您可以藉由`\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`提供屬性路徑來啟用屬性，並在您從 SSMS 執行封裝時，將它設定為*True* ，做為 [**執行封裝**] 快顯視窗的 [ **Advanced** ] 索引標籤上的屬性覆寫。
+- **選項 B：** 重新部署包含要在 SSIS IR 上執行之封裝的專案。 接著，您可以藉由提供屬性路徑來啟用屬性， `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` 並在您從 SSMS 執行封裝時，將它設定為*True* ，做為 [**執行封裝**] 快顯視窗的 [ **Advanced** ] 索引標籤上的屬性覆寫。
 
   ![啟用 ConnectByProxy property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  您也可以藉由`\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`提供屬性路徑來啟用屬性，並在 Data Factory 管線中執行封裝時，將它設定為*True* ，以做為 [[執行 SSIS 套件活動](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)] 的 [**屬性覆**寫] 索引標籤上的屬性覆寫。
+  您也可以藉由提供屬性路徑來啟用屬性， `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` 並在 Data Factory 管線中執行封裝時，將它設定為*True* ，以做為 [[執行 SSIS 套件活動](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)] 的 [**屬性覆**寫] 索引標籤上的屬性覆寫。
   
   ![啟用 ConnectByProxy property5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
@@ -153,7 +152,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 如果自我裝載 IR 上的預備工作需要 Windows 驗證，請[將您的 SSIS 套件設定為使用相同的 windows 驗證](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15)。 
 
-您的預備工作將會使用自我裝載 IR 服務帳戶（預設為*NT SERVICE\DIAHostService*）來叫用，而您的資料存放區將會使用 Windows 驗證帳戶來存取。 這兩個帳戶都需要將特定安全性原則指派給它們。 在自我裝載的 IR 機器上，移至 [**本機安全性原則** > ] [**本機原則** > ] [**使用者權限指派**]，然後執行下列動作：
+您的預備工作將會使用自我裝載 IR 服務帳戶（預設為*NT SERVICE\DIAHostService*）來叫用，而您的資料存放區將會使用 Windows 驗證帳戶來存取。 這兩個帳戶都需要將特定安全性原則指派給它們。 在自我裝載的 IR 機器上，移至 [**本機安全性原則**] [  >  **本機原則**] [  >  **使用者權限指派**]，然後執行下列動作：
 
 1. 指派進程的 [*調整記憶體配額*]，並將*進程層級的 token 原則取代*為自我裝載的 IR 服務帳戶。 當您使用預設服務帳戶安裝自我裝載 IR 時，應該會自動發生這種情況。 如果不是，請手動指派這些原則。 如果您使用不同的服務帳戶，請為其指派相同的原則。
 

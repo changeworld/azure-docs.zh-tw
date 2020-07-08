@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680195"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>驗證方法使用 & insights （預覽）
@@ -38,12 +37,12 @@ ms.locfileid: "81680195"
 若要存取驗證方法的使用方式和深入解析：
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Azure Active Directory** > **密碼重設** > **使用 & 深入**解析。
+1. 流覽至**Azure Active Directory**  >  **密碼重設**  >  **使用 & 深入**解析。
 1. 在**註冊**或使用方式的**總覽**中，您可以選擇開啟預先篩選的報表，以根據您的需求進行篩選。
 
 ![使用量 & 深入解析總覽](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-若要直接存取使用量 & 深入解析， [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade)請移至。 此連結將會帶您前往註冊總覽。
+若要直接存取使用量 & 深入解析，請移至 [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade) 。 此連結將會帶您前往註冊總覽。
 
 [已註冊的使用者]、[啟用的使用者] 和 [支援使用者] 磚會顯示使用者的下列註冊資料：
 

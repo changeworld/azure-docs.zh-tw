@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81677592"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team 資料科學程式的實際運作-在 1 TB 資料集上使用 Azure HDInsight Hadoop 叢集
@@ -75,7 +74,7 @@ Criteo 資料是一種點擊預測資料集，它是 370 GB 的 gzip 壓縮 TSV 
 
 按一下 [繼續下載] **** 來閱讀資料集的相關資訊和它的可用性。
 
-資料位於[Azure blob 儲存體](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)位置： wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/。 "wasb" 指的是 Azure Blob 儲存體位置。
+資料位於[Azure blob 儲存體](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)位置： wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/ 。 "wasb" 指的是 Azure Blob 儲存體位置。
 
 1. 此 Azure blob 儲存體中的資料包含三個子資料夾的解壓縮資料。
 
@@ -97,7 +96,7 @@ Criteo 資料是一種點擊預測資料集，它是 370 GB 的 gzip 壓縮 TSV 
 
 您現在已設定並準備好開始逐步解說的第一個部分：使用 Hive 的資料瀏覽和為 Azure Machine Learning 備妥資料。
 
-## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a> 建立 Hive 資料庫和資料表
+## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a>建立 Hive 資料庫和資料表
 若要為我們的 Criteo 資料集建立 Hive 資料表，請在前端節點的桌面上開啟 [Hadoop 命令列]******，然後輸入以下命令來進入 Hive 目錄
 
     cd %hive_home%\bin
@@ -424,7 +423,7 @@ Col15 有19M 的唯一值！ 使用貝氏方法，像是「一個有效編碼」
 您現在已準備好在 Azure Machine Learning Studio 中建置模型。 我們縮減取樣的資料會在叢集中儲存為 Hive 資料表。 使用 Azure Machine Learning 的 [匯入資料]**** 模組來讀取此資料。 可存取此叢集之儲存體帳戶的認證會在下面提供。
 
 ### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a> 步驟 1：使用「匯入資料」模組從 Hive 資料表取得資料並匯入到 Azure Machine Learning，然後選取它來進行機器學習實驗
-從選取 [ **+ 新增** -> **實驗** -> ] [**空白實驗**] 開始。 接著，從左上方的 [搜尋] **** 方塊，搜尋「匯入資料」。 將 [匯入資料] **** 模組拖放到實驗畫布 (螢幕的中間部分) 上，以將模組用於資料存取。
+從選取 [ **+ 新增**  ->  **實驗**] [  ->  **空白實驗**] 開始。 接著，從左上方的 [搜尋] **** 方塊，搜尋「匯入資料」。 將 [匯入資料] **** 模組拖放到實驗畫布 (螢幕的中間部分) 上，以將模組用於資料存取。
 
 這是從 Hive 資料表取得資料時 **匯入資料** 看起來的樣子：
 
@@ -434,7 +433,7 @@ Col15 有19M 的唯一值！ 使用貝氏方法，像是「一個有效編碼」
 
 1. 對 **資料來源**
 2. 在 [Hive 資料庫查詢]**** 方塊中，簡單的 SELECT * FROM <your\_database\_name.your\_table\_name> - 就已經足夠。
-3. **Hcatalog 伺服器 URI**：如果您的叢集是 "abc"，則這只是： HTTPs\/：/abc.azurehdinsight.net
+3. **Hcatalog 伺服器 URI**：如果您的叢集是 "abc"，則這只是： HTTPs： \/ /abc.azurehdinsight.net
 4. **Hadoop 使用者帳戶名稱**：委任叢集時選擇的使用者名稱。 (非遠端存取使用者名稱！)
 5. **Hadoop 使用者帳戶密碼**：委任叢集時選擇之使用者名稱的密碼。 (非遠端存取密碼！)
 6. **輸出資料的位置**：選擇 "Azure"

@@ -4,10 +4,9 @@ description: 了解如何切換 Service Fabric 叢集，將原本使用憑證指
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272622"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>將叢集從憑證指紋變更為通用名稱
@@ -118,7 +117,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
 
     也請考慮移除*certificateThumbprint*，它可能不會再于 Resource Manager 範本中加以參考。
 
-2. 在 **Microsoft.Compute/virtualMachineScaleSets** 資源中，更新虛擬機器擴充功能以在憑證設定中使用通用名稱，而非使用指紋。  在**virtualMachineProfile**->**extensionProfile**->**擴充**-> ** ** `"commonNames": ["[parameters('certificateCommonName')]"],` `"thumbprint": "[parameters('certificateThumbprint')]",` ** ** ->功能屬性設定] [憑證]、[新增] 和 [移除]。** ** ->
+2. 在 **Microsoft.Compute/virtualMachineScaleSets** 資源中，更新虛擬機器擴充功能以在憑證設定中使用通用名稱，而非使用指紋。  在**virtualMachineProfile** -> **extensionProfile** -> **擴充**功能 -> **屬性** -> **設定**] [ -> **憑證**]、[新增] `"commonNames": ["[parameters('certificateCommonName')]"],` 和 [移除] `"thumbprint": "[parameters('certificateThumbprint')]",` 。
     ```json
         "virtualMachineProfile": {
         "extensionProfile": {

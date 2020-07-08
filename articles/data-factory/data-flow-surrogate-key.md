@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606302"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>對應資料流程中的代理鍵轉換 
@@ -21,7 +20,7 @@ ms.locfileid: "81606302"
 
 使用 [代理鍵] 轉換，將遞增的索引鍵值加入至每個資料列。 在星狀架構分析資料模型中設計維度資料表時，這會很有用。 在星狀架構中，維度資料表中的每個成員都需要非業務索引鍵的唯一索引鍵。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 ![代理鍵轉換](media/data-flow/surrogate.png "代理鍵轉換")
 
@@ -47,7 +46,7 @@ ms.locfileid: "81606302"
 
 #### <a name="file-sources"></a>檔案來源
 
-如果您先前的最大值是在檔案中， `max()`請使用「匯總」轉換中的函數來取得先前的最大值：
+如果您先前的最大值是在檔案中，請使用「匯總」轉換中的 `max()` 函數來取得先前的最大值：
 
 ![代理金鑰檔案](media/data-flow/sk008.png "代理金鑰檔案")
 

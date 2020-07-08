@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
 ms.openlocfilehash: 31a5d55d1067b9dd946c1667118d0bde5ee3d59e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682506"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用適用於 Visual Studio Code 的 Azure IoT Tools 來傳送和接收裝置與 IoT 中樞之間的訊息
@@ -64,7 +63,7 @@ ms.locfileid: "81682506"
 
 1. 以滑鼠右鍵按一下您的裝置，然後選取 [**開始監視內建事件端點**]。
 
-2. 受監視的訊息會顯示在 [**輸出** > **Azure IoT 中樞**] 視圖中。
+2. 受監視的訊息會顯示在 [**輸出**  >  **Azure IoT 中樞**] 視圖中。
 
 3. 若要停止監視，請以滑鼠右鍵按一下**輸出**視圖，然後選取 [**停止監視內建事件端點**]。
 
@@ -76,7 +75,7 @@ ms.locfileid: "81682506"
 
 2. 在輸入方塊中輸入訊息。
 
-3. 結果會顯示在 [**輸出** > **Azure IoT 中樞**] 視圖中。
+3. 結果會顯示在 [**輸出**  >  **Azure IoT 中樞**] 視圖中。
 
 ## <a name="next-steps"></a>後續步驟
 

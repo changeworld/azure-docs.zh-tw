@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687073"
 ---
 # <a name="get-service-access-tokens"></a>取得服務存取權杖
@@ -18,13 +17,13 @@ ms.locfileid: "81687073"
 
 本文說明如何建立這類存取權杖。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [建立 ARR 帳戶](create-an-account.md)（如果還沒有的話）。
 
 ## <a name="token-service-rest-api"></a>權杖服務 REST API
 
-若要建立存取權杖，*安全權杖服務*會提供單一 REST API。 ARR STS 服務的 URL 為 HTTPs：\//sts.mixedreality.azure.com。
+若要建立存取權杖，*安全權杖服務*會提供單一 REST API。 ARR STS 服務的 URL 為 HTTPs： \/ /sts.mixedreality.azure.com。
 
 ### <a name="get-token-request"></a>「取得權杖」要求
 
@@ -40,11 +39,11 @@ ms.locfileid: "81687073"
 
 ### <a name="get-token-response"></a>「取得權杖」回應
 
-| 狀態碼 | JSON 承載 | 評價 |
+| 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
 | 200 | AccessToken：字串 | 成功 |
 
-| 頁首 | 目的 |
+| Header | 目的 |
 |--------|:------|
 | MS-CV | 此值可以用來追蹤服務內的呼叫 |
 

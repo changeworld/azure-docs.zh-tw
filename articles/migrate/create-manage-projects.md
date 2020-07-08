@@ -4,10 +4,9 @@ description: 在 Azure Migrate 中尋找、建立、管理和刪除專案。
 ms.topic: how-to
 ms.date: 04/19/2020
 ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676400"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>建立和管理 Azure Migrate 專案
@@ -78,8 +77,8 @@ ms.locfileid: "81676400"
 
 1. 瀏覽到附加到專案的 Log Analytics 工作區。
 
-    - 如果您尚未刪除 Azure Migrate 專案，您可以在**Essentials** > **Server 評估**中找到工作區的連結。
-       ![LA 工作](./media/create-manage-projects/loganalytics-workspace.png)區。
+    - 如果您尚未刪除 Azure Migrate 專案，您可以在**Essentials**  >  **Server 評估**中找到工作區的連結。
+       ![LA 工作區 ](./media/create-manage-projects/loganalytics-workspace.png) 。
        
     - 如果您已刪除 Azure Migrate 專案，請在 Azure 入口網站的左窗格中選取 [**資源群組**]，然後尋找工作區。
        

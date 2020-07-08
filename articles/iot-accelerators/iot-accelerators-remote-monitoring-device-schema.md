@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683736"
 ---
 # <a name="understand-the-device-model-schema"></a>了解裝置機型結構描述
@@ -71,7 +70,7 @@ ms.locfileid: "81683736"
 
 下表描述最上層結構描述項目：
 
-| 結構描述項目 | 描述 |
+| 結構描述項目 | Description |
 | -- | --- |
 | `SchemaVersion` | 結構描述版本一律為 `1.0.0` 且為此檔案格式專屬。 |
 | `Id` | 此裝置機型的唯一 ID。 |
@@ -167,7 +166,7 @@ ms.locfileid: "81683736"
 * 物件 - 使用 JSON 序列化
 * 二進位 - 使用 base64 序列化
 * Text
-* 布林值
+* Boolean
 * 整數
 * Double
 * Datetime

@@ -4,10 +4,9 @@ description: 本文說明如何管理和監視在 Azure VM 上執行的 SQL Serv
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537299"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和監視備份的 SQL Server 資料庫
@@ -18,7 +17,7 @@ ms.locfileid: "81537299"
 
 ## <a name="monitor-manual-backup-jobs-in-the-portal"></a>在入口網站中監視手動備份作業
 
-Azure 備份會在**備份作業**入口網站中顯示所有手動觸發的工作。 您在此入口網站中看到的工作包括資料庫探索和註冊，以及備份和還原作業。
+Azure 備份會在**備份作業**入口網站中顯示所有手動觸發的工作。 您會在此入口網站中看到的工作，包括資料庫探索和註冊，以及備份和還原作業。
 
 ![備份作業入口網站](./media/backup-azure-sql-database/jobs-list.png)
 
@@ -32,9 +31,9 @@ Azure 備份會在**備份作業**入口網站中顯示所有手動觸發的工�
 
 記錄備份會每隔 15 分鐘出現一次，因此監視備份作業可能會很繁瑣。 Azure 備份藉由傳送電子郵件警示來簡化監視。 電子郵件警示如下：
 
-- 已針對所有備份失敗觸發。
-- 依照錯誤碼，在資料庫層級進行匯總。
-- 只有在資料庫第一次備份失敗時才傳送。
+- 所有備份失敗都會觸發的警示。
+- 在資料庫層級依錯誤碼合併的警示。
+- 在資料庫第一次備份失敗時才會傳送的警示。
 
 若要監視資料庫備份警示：
 
@@ -58,12 +57,12 @@ Azure 備份會在**備份作業**入口網站中顯示所有手動觸發的工�
 如果您選擇保留復原點，請記住下列詳細資料：
 
 - 所有復原點會永遠保持不變，而停止保護但保留資料時，所有清除作業都應該停止。
-- 系統會向您收取受保護實例和已耗用儲存體的費用。 如需詳細資訊，請參閱[Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
+- 您需支付受保護執行個體和已使用儲存體的費用。 如需詳細資訊，請參閱 [Azure 備份服務定價](https://azure.microsoft.com/pricing/details/backup/)。
 - 如果您刪除資料來源，但沒有停止備份，新的備份將會失敗。 舊的復原點將會根據原則過期，但最後一個復原點一律會保留，直到您停止備份並刪除資料為止。
 
 若要停止保護資料庫：
 
-1. 在保存庫儀表板上，選取 [**備份專案**]。
+1. 在保存庫儀表板上，選取 [備份項目]。
 
 2. 在 [**備份管理類型**] 底下，選取 **[Azure VM 中的 SQL**]。
 
@@ -73,15 +72,15 @@ Azure 備份會在**備份作業**入口網站中顯示所有手動觸發的工�
 
     ![選取要停止保護的資料庫](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-4. 在資料庫功能表上，選取 [停止備份]****。
+4. 在資料庫功能表上，選取 [停止備份]。
 
     ![選取 [停止備份]](./media/backup-azure-sql-database/stop-db-button.png)
 
-5. 在 [**停止備份**] 功能表上，選取是否要保留或刪除資料。 如果您想要的話，請提供原因和批註。
+5. 在 [停止備份] 功能表上，選取是否要保留或刪除資料。 若有需要，可提供原因或註解。
 
     ![保留或刪除 [停止備份] 功能表上的資料](./media/backup-azure-sql-database/stop-backup-button.png)
 
-6. 選取 [**停止備份**]。
+6. 選取 [停止備份]。
 
 > [!NOTE]
 >
@@ -98,11 +97,11 @@ Azure 備份會在**備份作業**入口網站中顯示所有手動觸發的工�
 
 若要繼續保護 SQL 資料庫：
 
-1. 開啟備份專案，然後選取 [**繼續備份**]。
+1. 開啟備份項目，然後選取 [繼續備份]。
 
     ![選取 [繼續備份] 以繼續保護資料庫](./media/backup-azure-sql-database/resume-backup-button.png)
 
-2. 在 [備份原則]**** 功能表上選取原則，然後選取 [儲存]****。
+2. 在 [備份原則] 功能表上選取原則，然後選取 [儲存]。
 
 ## <a name="run-an-on-demand-backup"></a>執行隨選備份
 
@@ -121,7 +120,7 @@ Azure 備份會在**備份作業**入口網站中顯示所有手動觸發的工�
 
 在您停用保護之後但在刪除保存庫之前，取消註冊 SQL Server 實例：
 
-1. 在保存庫儀表板的 [**管理**] 底下，選取 [**備份基礎結構**]。  
+1. 在保存庫儀表板上，選取 [管理] 下的 [備份基礎結構]。  
 
    ![選取 [備份基礎結構]](./media/backup-azure-sql-database/backup-infrastructure-button.png)
 
@@ -140,23 +139,23 @@ Azure 備份會在**備份作業**入口網站中顯示所有手動觸發的工�
 修改原則以變更備份頻率或保留範圍。
 
 > [!NOTE]
-> 除了新的復原點以外，保留期限內的任何變更也會反而要套用。
+> 除了新的復原點以外，保留期限內的任何變更也會回溯套用。
 
-在保存庫儀表板中，移至 [**管理** > **備份原則**]，然後選擇您想要編輯的原則。
+在保存庫儀表板中，移至 [**管理**  >  **備份原則**]，然後選擇您想要編輯的原則。
 
   ![管理備份原則](./media/backup-azure-sql-database/modify-backup-policy.png)
 
   ![修改備份原則](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
-修改原則會影響所有相關聯的備份專案，並觸發對應的 [**設定保護**工作]。
+修改原則會影響所有相關聯的備份項目，並觸發對應的**設定保護**作業。
 
 ### <a name="inconsistent-policy"></a>不一致的原則
 
-有時候，修改原則操作可能會導致某些備份專案的原則版本**不一致**。 觸發修改原則作業之後，備份專案的對應**設定保護**工作失敗時，就會發生這種情況。 它會在備份專案視圖中顯示如下：
+有時候，修改原則操作可能會導致某些備份專案的原則版本**不一致**。 在觸發修改原則作業之後，針對備份項目的對應**設定保護**作業失敗時，就會發生這種情況。 這會在備份項目檢視中顯示如下：
 
   ![不一致的原則](./media/backup-azure-sql-database/inconsistent-policy.png)
 
-您只要按一下，就可以修正所有受影響專案的原則版本：
+您只要按一下，就可以修正所有受影響項目的原則版本：
 
   ![修正不一致的原則](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
 

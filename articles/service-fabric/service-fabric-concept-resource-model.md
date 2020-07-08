@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
 ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682635"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric 應用程式資源模型
@@ -50,7 +49,7 @@ ms.locfileid: "81682635"
 
 ### <a name="configure-your-storage-account"></a>設定您的儲存體帳戶
 
-建立儲存體帳戶之後，您可以建立可暫存應用程式的 blob 容器。 在 [Azure 入口網站中，移至您想要儲存應用程式的 Azure 儲存體帳戶。 選取 [ **blob** > ] [**新增容器**]。 
+建立儲存體帳戶之後，您可以建立可暫存應用程式的 blob 容器。 在 [Azure 入口網站中，移至您想要儲存應用程式的 Azure 儲存體帳戶。 選取 [ **blob**] [  >  **新增容器**]。 
 
 將公用存取層級設定為 [**私**用]，即可保護叢集中的資源。 您可以透過多種方式來授與存取權：
 
@@ -71,7 +70,7 @@ ms.locfileid: "81682635"
 1. 在 Visual Studio 中，以滑鼠右鍵按一下**投票**專案，然後選取 [**封裝**]。
 
    ![封裝應用程式][PackageApplication]  
-1. 移至 *.\service-fabric-dotnet-quickstart\Voting\pkg\Debug*目錄。 將內容壓縮成名為*投票*的檔案。 *ApplicationManifest*應該位於 zip 檔案的根目錄。
+1. 移至 *.\service-fabric-dotnet-quickstart\Voting\pkg\Debug*目錄。 將內容壓縮成名為*Voting.zip*的檔案。 *ApplicationManifest.xml*檔案應該位於 zip 檔案的根目錄。
 
    ![Zip 應用程式][ZipApplication]  
 1. 將檔案重新命名，將副檔名從 .zip 變更為 *. sfpkg*。
@@ -84,22 +83,22 @@ ms.locfileid: "81682635"
 
 ### <a name="create-the-resource-manager-template"></a>建立 Resource Manager 範本
 
-範例應用程式包含可用來部署應用程式[Azure Resource Manager 範本](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)。 範本檔案名為*UserApp* ，而 UserApp 則為*json*。
+範例應用程式包含可用來部署應用程式[Azure Resource Manager 範本](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)。 範本檔案名會在上*UserApp.js* ， *UserApp.Parameters.js*。
 
 > [!NOTE]
-> *UserApp*必須使用您的叢集名稱來更新。
+> 必須使用您的叢集名稱來更新檔案*上的UserApp.Parameters.js* 。
 >
 >
 
-| 參數              | 描述                                 | 範例                                                      | 評價                                                     |
+| 參數              | 說明                                 | 範例                                                      | 註解                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | 您正在部署的叢集名稱 | sf-cluster123                                                |                                                              |
 | 應用程式            | 應用程式的名稱                 | 投票                                                       |
-| applicationTypeName    | 應用程式的類型名稱           | VotingType                                                   | 必須符合 ApplicationManifest .xml                 |
-| applicationTypeVersion | 應用程式類型的版本         | 1.0.0                                                        | 必須符合 ApplicationManifest .xml                 |
+| applicationTypeName    | 應用程式的類型名稱           | VotingType                                                   | 必須符合 ApplicationManifest.xml                 |
+| applicationTypeVersion | 應用程式類型的版本         | 1.0.0                                                        | 必須符合 ApplicationManifest.xml                 |
 | serviceName            | 服務的名稱         | 投票 ~ VotingWeb                                             | 的格式必須為 ApplicationName ~ ServiceType            |
-| serviceTypeName        | 服務的類型名稱                | VotingWeb                                                    | 必須符合 ServiceManifest .xml                 |
-| appPackageUrl          | 應用程式的 blob 儲存體 URL     | HTTPs：\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob 儲存體中的應用程式封裝 URL （設定 URL 的程式會在本文稍後說明） |
+| serviceTypeName        | 服務的類型名稱                | VotingWeb                                                    | 必須符合 ServiceManifest.xml                 |
+| appPackageUrl          | 應用程式的 blob 儲存體 URL     | HTTPs： \/ /servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob 儲存體中的應用程式封裝 URL （設定 URL 的程式會在本文稍後說明） |
 
 ```json
 {
@@ -140,7 +139,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 基於下列其中一個原因，您可能會將已部署的應用程式升級至 Service Fabric 叢集：
 
-* 新的服務會新增至應用程式。 將服務新增至應用程式時，必須將服務定義加入至*service-manifest*和*application-manifest。* 若要反映新版本的應用程式，您也必須在[UserApp](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json)中將應用程式類型版本從1.0.0 變更為1.0.1：
+* 新的服務會新增至應用程式。 將服務新增至應用程式時，必須將服務定義加入*service-manifest.xml* ，並*application-manifest.xml*檔案。 若要反映新版本的應用程式，您也必須在[UserApp.Parameters.js](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json)中，將應用程式類型版本從1.0.0 變更為1.0.1：
 
     ```json
     "applicationTypeVersion": {
@@ -154,7 +153,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
     }
     ```
 
-* 現有服務的新版本會新增至應用程式。 範例包括應用程式代碼變更，以及應用程式類型版本和名稱的更新。 針對此升級，請更新 UserApp，如下所示：
+* 現有服務的新版本會新增至應用程式。 範例包括應用程式代碼變更，以及應用程式類型版本和名稱的更新。 針對此升級，請更新 UserApp.Parameters.js，如下所示：
 
     ```json
      "applicationTypeVersion": {

@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
 ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272690"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>包含計量、警示和資源健康情況的 Standard Load Balancer 診斷
@@ -35,15 +34,15 @@ Azure Load Balancer 會透過 Azure 入口網站中的 Azure 計量提供多維�
 
 各種標準 Load Balancer 組態提供下列計量：
 
-| 計量 | 資源類型 | 描述 | 建議的彙總 |
+| 計量 | 資源類型 | Description | 建議的彙總 |
 | --- | --- | --- | --- |
 | 資料路徑可用性 | 公用和內部負載平衡器 | 標準 Load Balancer 會在資料路徑上持續運用，從區域內到 Load Balancer 前端，再一路到支援 VM 的 SDN 堆疊。 只要狀況良好的執行個體持續存在，測量就會依循與您應用程式的負載平衡流量相同的路徑。 此外，也會驗證您客戶所使用的資料路徑。 此測量對您的應用程式來說是看不見的，也不會干擾到其他作業。| Average |
 | 健康情況探查狀態 | 公用和內部負載平衡器 | 標準 Load Balancer 使用分散式健康情況探查服務，可根據您的組態設定監視應用程式端點的健康情況。 這個計量會提供負載平衡器集區中每個執行個體端點的彙總檢視，或各端點篩選過的檢視。 您可以看到 Load Balancer 藉由健康情況探查設定如何檢視應用程式的健康情況。 |  Average |
 | SYN (同步) 封包 | 公用和內部負載平衡器 | 標準 Load Balancer 不會終止傳輸控制通訊協定 (TCP) 連線，也不會與 TCP 或 UDP 封包流程互動。 流程及其交握一律是在來源與 VM 執行個體之間進行。 若要針對您的 TCP 通訊協定案例進行進一步疑難排解，您可使用 SYN 封包計數器來了解已進行多少次 TCP 連線嘗試。 此計量會回報已收到的 TCP SYN 封包數。| Average |
 | SNAT 連線 | 公用 Load Balancer |標準 Load Balancer 會回報偽裝為公用 IP 位址前端的輸出流程數目。 來源網路位址轉譯 (SNAT) 連接埠是可耗盡的資源。 此計量可以指出應用程式有多依賴 SNAT 來處理連出的起始流程。 系統會回報成功和失敗之連出 SNAT 流程的計數器，而且可用來對連出流程的健康情況進行疑難排解及了解。| Average |
-| 配置的 SNAT 埠 | 公用 Load Balancer | Standard Load Balancer 報告每個後端實例所配置的 SNAT 埠數目 | 平均線. |
+| 配置的 SNAT 埠 | 公用 Load Balancer | Standard Load Balancer 報告每個後端實例所配置的 SNAT 埠數目 | 平均。 |
 | 使用的 SNAT 埠 | 公用 Load Balancer | Standard Load Balancer 會報告每個後端實例所使用的 SNAT 埠數目。 | Average | 
-| 位元組計數器 |  公用和內部負載平衡器 | 標準 Load Balancer 會報告每個前端處理的資料。 您可能會注意到，位元組不會在後端實例間平均散發。 這是預期的情況，因為 Azure 的 Load Balancer 演算法是以流程為基礎 | Average |
+| 位元組計數器 |  公用和內部負載平衡器 | 標準 Load Balancer 會報告每個前端處理的資料。 您可能有注意到，位元組不會在後端實例間平均散發。 這是預期的情況，因為 Azure 的 Load Balancer 演算法是以流程為基礎 | Average |
 | 封包計數器 |  公用和內部負載平衡器 | 標準 Load Balancer 會報告每個前端處理的封包。| Average |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>在 Azure 入口網站中檢視負載平衡器計量
@@ -231,7 +230,7 @@ SNAT 使用計量會指出在一個負載平衡器後方的網際網路來源與
 標準 Load Balancer 資源的健康情況狀態會透過 [監視器] > [服務健康狀態]**** 底下現有的 [資源健康狀態]**** 公開。
 
 若要檢視公用標準 Load Balancer 資源的健康情況：
-1. 選取 [**監視** > ]**服務健康狀態**。
+1. 選取 [**監視**]  >  **服務健康狀態**。
 
    ![監視器頁面](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
@@ -251,10 +250,10 @@ SNAT 使用計量會指出在一個負載平衡器後方的網際網路來源與
  
 下表列出各種資源健康狀態及其說明： 
 
-| 資源健康情況狀態 | 描述 |
+| 資源健康情況狀態 | Description |
 | --- | --- |
 | 可用 | 您的標準負載平衡器資源狀況良好且可供使用。 |
-| 無法使用 | 您的標準負載平衡器資源狀況不良。 選取 [ **Azure 監視器** > **計量**] 來診斷健全狀況。<br>（*無法使用*的狀態也可能表示資源未與您的標準負載平衡器連線）。 |
+| 無法使用 | 您的標準負載平衡器資源狀況不良。 選取 [ **Azure 監視器**計量] 來診斷健全狀況  >  ** **。<br>（*無法使用*的狀態也可能表示資源未與您的標準負載平衡器連線）。 |
 | Unknown | 您的標準負載平衡器資源的資源健康狀態尚未更新。<br>（[*不明*] 狀態也可能表示資源未與您的標準負載平衡器連線）。  |
 
 ## <a name="next-steps"></a>後續步驟

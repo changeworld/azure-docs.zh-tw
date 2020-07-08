@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687531"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中設計和實作 Oracle 資料庫
@@ -48,15 +47,15 @@ ms.locfileid: "81687531"
 > | --- | --- | --- |
 > | **網路功能** |LAN/WAN  |SDN (軟體定義網路)|
 > | **安全性群組** |IP/連接埠限制工具 |[網路安全性群組（NSG）](https://azure.microsoft.com/blog/network-security-groups) |
-> | **彈性** |MTBF (平均失敗時間) |MTTR (平均復原時間)|
-> | **預定的維修** |修補/升級|[可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (Azure 所管理的修補/升級) |
+> | **恢復功能** |MTBF (平均失敗時間) |MTTR (平均復原時間)|
+> | **規劃的維護** |修補/升級|[可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (Azure 所管理的修補/升級) |
 > | **Resource** |專用  |與其他用戶端共用|
 > | **區域** |資料中心 |[區域配對](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **儲存體** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **調整** |垂直調整 |水平調整|
+> | **Storage** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **縮放比例** |垂直調整 |水平調整|
 
 
-### <a name="requirements"></a>需求
+### <a name="requirements"></a>規格需求
 
 - 決定資料庫大小和成長率。
 - 決定 IOPS 需求，您可以根據 Oracle AWR 報表或其他網路監視工具進行評估。
@@ -146,7 +145,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 - 使用具有[加速網路](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)的虛擬機器，以獲得更好的網路效能。
 - 針對特定 Linux distrubutions，請考慮啟用[修剪/](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)取消對應支援。
 - 在個別的虛擬機器上安裝[Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 。
-- 在 linux 上，預設不會啟用大量頁面。 請考慮啟用龐大的頁面`use_large_pages = ONLY` ，並在 Oracle DB 上設定。 這可能有助於提升效能。 您可以在[這裡](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到詳細資訊。
+- 在 linux 上，預設不會啟用大量頁面。 請考慮啟用龐大的頁面，並 `use_large_pages = ONLY` 在 Oracle DB 上設定。 這可能有助於提升效能。 您可以在[這裡](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到詳細資訊。
 
 ### <a name="disk-types-and-configurations"></a>磁碟類型和設定
 

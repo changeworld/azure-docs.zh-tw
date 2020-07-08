@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 4877493982671b1b5db686715ef854f25c2966ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81310986"
 ---
 # <a name="send-security-messages-sdk"></a>傳送安全性訊息 SDK
@@ -32,7 +31,7 @@ ms.locfileid: "81310986"
 > * 使用 Azure IoT C SDK 傳送安全性訊息
 > * 使用 Azure IoT c # SDK 傳送安全性訊息
 > * 使用 Azure IoT Python SDK 傳送安全性訊息
-> * 使用 Azure IoT node.js SDK 來傳送安全性訊息
+> * 使用 Azure IoT Node.js SDK 來傳送安全性訊息
 > * 使用 Azure IoT JAVA SDK 來傳送安全性訊息
 
 ## <a name="azure-security-center-for-iot-capabilities"></a>IoT 功能的 Azure 資訊安全中心
@@ -47,7 +46,7 @@ IoT 的 Azure 資訊安全中心會使用下列準則來定義安全性訊息：
 - 如果訊息符合[安全性訊息架構](https://aka.ms/iot-security-schemas)
 - 如果訊息在傳送之前已設定為安全性訊息
 
-每個安全性訊息都包含寄件者的元`AgentId`資料`AgentVersion`， `MessageSchemaVersion`例如、和安全性事件清單。
+每個安全性訊息都包含寄件者的中繼資料 `AgentId` ，例如、 `AgentVersion` `MessageSchemaVersion` 和安全性事件清單。
 架構會定義安全性訊息（包括事件種類）的有效和必要屬性。
 
 > [!NOTE]
@@ -58,7 +57,7 @@ IoT 的 Azure 資訊安全中心會使用下列準則來定義安全性訊息：
 
 ## <a name="valid-message-example"></a>有效的訊息範例
 
-下列範例顯示有效的安全性訊息物件。 此範例包含訊息中繼資料和一個`ProcessCreate`安全性事件。
+下列範例顯示有效的安全性訊息物件。 此範例包含訊息中繼資料和一個 `ProcessCreate` 安全性事件。
 
 一旦設定為安全性訊息並傳送之後，IoT 的 Azure 資訊安全中心就會處理此訊息。
 
@@ -92,7 +91,7 @@ IoT 的 Azure 資訊安全中心會使用下列準則來定義安全性訊息：
 
 ## <a name="send-security-messages"></a>傳送安全性訊息
 
-使用[Azure Iot c 裝置 sdk](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)、 [Azure iot c # 裝置 Sdk](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)、 [azure IoT Node.js SDK](https://github.com/Azure/azure-iot-sdk-node)、 [Azure IOT Python sdk](https://github.com/Azure/azure-iot-sdk-python)或[azure iot JAVA SDK](https://github.com/Azure/azure-iot-sdk-java)，在*不*使用 IoT 代理程式的 Azure 資訊安全中心的情況下傳送安全性訊息。
+使用[Azure Iot c 裝置 sdk](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)、 [Azure iot c # 裝置 Sdk](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)、、 [azure IoT Node.js SDK](https://github.com/Azure/azure-iot-sdk-node)、 [Azure IOT Python SDK](https://github.com/Azure/azure-iot-sdk-python)或[azure iot JAVA SDK](https://github.com/Azure/azure-iot-sdk-java)，在*不*使用 IoT 代理程式 Azure 資訊安全中心的情況下傳送安全性訊息。
 
 若要從您的裝置傳送裝置資料以供 IoT Azure 資訊安全中心處理，請使用下列其中一個 Api 將訊息標示為正確路由至 IoT 處理管線的 Azure 資訊安全中心。
 

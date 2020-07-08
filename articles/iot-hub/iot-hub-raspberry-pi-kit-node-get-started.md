@@ -1,5 +1,5 @@
 ---
-title: 將 Raspberry Pi 連線至雲端中的 Azure IoT 中樞（node.js）
+title: 將 Raspberry Pi 連線到雲端中的 Azure IoT 中樞（Node.js）
 description: 瞭解如何在本教學課程中設定 Raspberry Pi，並將其連線至 Raspberry Pi 的 Azure IoT 中樞，以將資料傳送到 Azure 雲端平臺。
 author: wesmc7777
 manager: eliotgra
@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: wesmc
 ms.openlocfilehash: 3175956e35603cc4ad3a938f3d316c0af8f2d227
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81640522"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>將 Raspberry Pi 連接至 Azure IoT Hub (Node.js)
@@ -116,9 +115,9 @@ ms.locfileid: "81640522"
 
 1. 將 Pi 連接至監視器、鍵盤及滑鼠。
 
-2. 啟動 Pi，然後使用`pi`做為使用者名稱和`raspberry`密碼來登入 Raspbian。
+2. 啟動 Pi，然後使用 `pi` 做為使用者名稱和密碼來登入 Raspbian `raspberry` 。
 
-3. 按一下 [Raspberry] 圖示 >**偏好** > 設定] [**Raspberry Pi**設定]。
+3. 按一下 [Raspberry] 圖示 >**偏好**設定] [  >  **Raspberry Pi**設定]。
 
    ![[Raspbian 偏好設定] 功能表](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
@@ -192,7 +191,7 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
    node -v
    ```
 
-   如果版本低於 10. x，或 Pi 上沒有 node.js，請安裝最新版本。
+   如果版本低於 10. x，或 Pi 上沒有 Node.js，請安裝最新版本。
 
    ```bash
    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
@@ -229,7 +228,7 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
 
    如果**沒有感應器**，請將 `simulatedData` 值設定為 `true`，使範例應用程式建立和使用模擬感應器資料。
 
-   *注意：本教學課程中使用的 i2c 位址預設為0x77。根據您的設定，可能也會 0x76 .. 如果您遇到 i2c 錯誤，請嘗試將此值變更為118，並查看是否有更好的效果。若要查看您的感應器所使用的位址， `sudo i2cdetect -y 1`請在 raspberry pi 上的 shell 中執行*
+   *注意：本教學課程中使用的 i2c 位址預設為0x77。根據您的設定，可能也會 0x76 .. 如果您遇到 i2c 錯誤，請嘗試將此值變更為118，並查看是否有更好的效果。若要查看您的感應器所使用的位址，請 `sudo i2cdetect -y 1` 在 raspberry pi 上的 shell 中執行*
 
 2. 輸入 Control-O > 按 Enter 鍵 > Control-X 來儲存並結束。
 

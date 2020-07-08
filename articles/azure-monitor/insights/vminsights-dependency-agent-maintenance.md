@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
 ms.openlocfilehash: 01dd8422658aa0c8982733e48782efd27c1bf5be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81617851"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>如何升級適用於 VM 的 Azure 監視器 Dependency agent
@@ -29,7 +28,7 @@ Windows 和 Linux 的相依性代理程式可以手動或自動升級為最新�
 
 ## <a name="upgrade-windows-agent"></a>升級 Windows 代理程式 
 
-若要將 Windows VM 上的代理程式更新為不是使用相依性代理程式 VM 延伸模組安裝的最新版本，您可以從命令提示字元、腳本或其他自動化解決方案，或使用可以 installdependencyagent-windows.exe 安裝精靈來執行。  
+若要將 Windows VM 上的代理程式更新為不是使用相依性代理程式 VM 延伸模組安裝的最新版本，您可以從命令提示字元、腳本或其他自動化解決方案，或使用 InstallDependencyAgent-Windows.exe 安裝程式嚮導來執行。  
 
 您可以從[這裡](https://aka.ms/dependencyagentwindows)下載最新版本的 Windows 代理程式。
 
@@ -37,7 +36,7 @@ Windows 和 Linux 的相依性代理程式可以手動或自動升級為最新�
 
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 執行**可以 installdependencyagent-windows.exe**啟動安裝精靈。
+2. 執行**InstallDependencyAgent-Windows.exe** ] 以啟動安裝程式。
    
 3. 依照**Dependency Agent 安裝程式**嚮導卸載舊版的相依性代理程式，然後再安裝最新版本。
 
@@ -52,9 +51,9 @@ Windows 和 Linux 的相依性代理程式可以手動或自動升級為最新�
     InstallDependencyAgent-Windows.exe /S /RebootMode=manual
     ```
 
-    如果`/RebootMode=manual`某些進程使用舊版的檔案，並有鎖定，則參數可防止升級自動重新開機電腦。 
+    `/RebootMode=manual`如果某些進程使用舊版的檔案，並有鎖定，則參數可防止升級自動重新開機電腦。 
 
-3. 若要確認升級是否成功，請檢查`install.log`以取得詳細的安裝資訊。 記錄目錄是 *%Programfiles%\Microsoft Dependency Agent\logs*。
+3. 若要確認升級是否成功，請檢查 `install.log` 以取得詳細的安裝資訊。 記錄目錄是 *%Programfiles%\Microsoft Dependency Agent\logs*。
 
 ## <a name="upgrade-linux-agent"></a>升級 Linux 代理程式 
 
@@ -64,7 +63,7 @@ Windows 和 Linux 的相依性代理程式可以手動或自動升級為最新�
 
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 以 root`sh InstallDependencyAgent-Linux64.bin -s`身分執行下列命令。 
+2. 以 root 身分執行下列命令 `sh InstallDependencyAgent-Linux64.bin -s` 。 
 
 如果 Dependency Agent 無法啟動，請檢查記錄以取得詳細的錯誤資訊。 在 Linux 代理程式上，記錄檔目錄是 */var/opt/microsoft/dependency-agent/log*。 
 

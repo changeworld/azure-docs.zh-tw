@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 4c7382f84522333b6aae0d79941aae8f2147a12f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81729152"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT 中樞定價資訊
@@ -26,7 +25,7 @@ ms.locfileid: "81729152"
 
 ## <a name="charges-per-operation"></a>每種作業的費用
 
-| 作業 | 帳單資訊 | 
+| 操作 | 帳單資訊 | 
 | --------- | ------------------- |
 | 身分識別登錄作業 <br/> (建立、擷取、列出、更新、刪除) | 不收費。 |
 | 裝置到雲端的訊息 | 成功傳送的訊息在輸入至「IoT 中樞」時會以 4 KB 區塊為單位來收費。 例如，6 KB 的訊息會收取 2 則訊息的費用。 |
