@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979384"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立、編輯或擴充邏輯應用程式工作流程定義的 JSON
@@ -127,18 +126,18 @@ Logic Apps 具有各種函式可處理字串。
 "uri": "https://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
-1. [`length()`](../logic-apps/logic-apps-workflow-definition-language.md)取得公司名稱的，讓您取得總字元數。
+1. 取得 [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) 公司名稱的，讓您取得總字元數。
 
 2. 若要取得較短的字串，請減去 `5`。
 
-3. 現在取得[`substring()`](../logic-apps/logic-apps-workflow-definition-language.md)。
+3. 現在取得 [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md) 。
 從索引 `5` 開始，並移至字串的其餘部分。
 
-4. 將這個子字串轉換[`base64()`](../logic-apps/logic-apps-workflow-definition-language.md)成字串。
+4. 將這個子字串轉換成 [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) 字串。
 
-5. 現在[`replace()`](../logic-apps/logic-apps-workflow-definition-language.md)所有字元`+`都是`-`字元。
+5. 現在 [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) 所有 `+` 字元都是 `-` 字元。
 
-6. 最後， [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md)所有字元`/`都是`_`字元。
+6. 最後， [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) 所有 `/` 字元都是 `_` 字元。
 
 ## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>將清單項目對應到屬性值，然後使用對應作為參數
 
@@ -147,7 +146,7 @@ Logic Apps 具有各種函式可處理字串。
 例如，此工作流程會將某些類別定義為參數，以及定義可比對這些類別與特定 URL 的對應。
 首先，工作流程會取得文章清單。 接著，工作流程會使用此對應來尋找符合每篇文章之類別的 URL。
 
-*   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md)函式會檢查類別是否符合已知定義的分類。
+*   函式會 [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md) 檢查類別是否符合已知定義的分類。
 
 *   取得相符的類別之後，此範例會使用方括號來提取對應中的項目：`parameters[...]`
 
@@ -240,7 +239,7 @@ Logic Apps 具有各種函式可處理字串。
 
    如果第一個值小於第二個值，則自從訂單最初提交以來已超過一秒。
 
-若要將日期格式化，您可以使用字串格式器。 例如，若要取得 RFC1123，請使用[`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md)。
+若要將日期格式化，您可以使用字串格式器。 例如，若要取得 RFC1123，請使用 [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md) 。
 深入了解[日期格式化](../logic-apps/logic-apps-workflow-definition-language.md)。
 
 ``` json

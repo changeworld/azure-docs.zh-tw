@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 2d0d5bb871612bc5e16a26eb49808c39661ffb50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934679"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 架構最佳作法
@@ -42,7 +41,7 @@ Azure HDInsight 叢集專為特定的計算使用類型而設計。 因為儲存
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLI (1.0 版)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
-|[彎曲](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
+|[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
 |[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||X|
 |[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
 |[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
@@ -103,11 +102,11 @@ HDInsight 會使用 Azure SQL Database 作為 Hive 和 Oozie 中繼存放區。 
 - 定期備份自訂中繼存放區。
 - 將中繼存放區與 HDInsight 叢集保存在相同區域。
 - 使用 Azure SQL Database 監視工具（例如 Azure 入口網站或 Azure 監視器記錄），監視中繼存放區的效能和可用性。
-- 視需要`ANALYZE TABLE`執行命令，以產生資料表和資料行的統計資料。 例如 `ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
+- `ANALYZE TABLE`視需要執行命令，以產生資料表和資料行的統計資料。 例如： `ANALYZE TABLE [table_name] COMPUTE STATISTICS` 。
 
 ## <a name="best-practices-for-different-workloads"></a>不同工作負載的最佳做法
 
-- 請考慮使用 LLAP 叢集來進行互動式 Hive 查詢，並改善回應時間[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) 是 Hive 2.0 中的新功能，可允許查詢的記憶體內部快取。 LLAP 讓 Hive 查詢的速讀變快，在某些情況下可達到 [比 Hive 1.x 快 26 倍](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)。
+- 請考慮使用 LLAP 叢集來進行互動式 Hive 查詢，並改善回應時間[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)   是 Hive 2.0 中的新功能，可允許查詢的記憶體內部快取。 LLAP 讓 Hive 查詢的速讀變快，在某些情況下可達到 [比 Hive 1.x 快 26 倍](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)。
 - 請考慮使用 Spark 作業取代 Hive 作業。
 - 請考慮將以 impala 為基礎的查詢取代為 LLAP 查詢。
 - 請考慮將 MapReduce 作業取代為 Spark 作業。

@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75977306"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>門監視器--使用 Azure Functions 和 SendGrid，開啟門時傳送電子郵件           
@@ -81,7 +80,7 @@ MXChip IoT DevKit 包含內建的磁性感應器。 在此專案中，您會偵�
 
 ![SendGrid 管理](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-在 [SendGrid] 頁面上，按一下 [**設定** > ] [**API 金鑰** > ] [**建立 api 金鑰**]。
+在 [SendGrid] 頁面上，按一下 [**設定**] [  >  **API 金鑰**] [  >  **建立 api 金鑰**]。
 
 ![SendGrid 建立 API 的第一個畫面](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
 
@@ -134,7 +133,7 @@ MXChip IoT DevKit 包含內建的磁性感應器。 在此專案中，您會偵�
 
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-您也可以從命令選擇區開啟範例應用程式。 請使用 `Ctrl+Shift+P` (macOS：`Cmd+Shift+P`) 來開啟命令選擇區，輸入 **Arduino**，然後尋找並選取 [Arduino: Examples] \(Arduino: 範例\)****。
+您也可以從命令選擇區開啟範例應用程式。 請使用 `Ctrl+Shift+P` (macOS：`Cmd+Shift+P`) 來開啟命令選擇區，輸入 **Arduino**，然後尋找並選取 [Arduino: Examples] \(Arduino: 範例\)。
 
 ### <a name="provision-azure-services"></a>佈建 Azure 服務
 

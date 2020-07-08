@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75967388"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>透過可預測方式在 Azure 中佈建和部署微服務
@@ -39,7 +38,7 @@ ms.locfileid: "75967388"
 ### <a name="azure-powershell-080-or-later"></a>Azure PowerShell 0.8.0 或更新版本
 自 0.8.0 版開始，Azure PowerShell 安裝除了 Azure 模組之外還包括 Azure 資源管理員模組。 這個新模組可讓您編寫資源群組部署的指令碼。
 
-如需詳細資訊，請參閱 [搭配使用 Azure PowerShell 與 Azure 資源管理員](../powershell-azure-resource-manager.md)
+如需詳細資訊，請參閱[使用 Azure PowerShell 搭配 Azure Resource Manager](../powershell-azure-resource-manager.md)
 
 ### <a name="azure-resource-explorer"></a>Azure 資源總管
 此[預覽工具](https://resources.azure.com)可讓您瀏覽您的訂用帳戶與個別資源中的所有資源群組的 JSON 定義。 在此工具中，您可以編輯資源的 JSON 定義、刪除整個階層的資源，以及建立新的資源。  此工具中立即提供的資訊對範本撰寫非常有説明，因為它會顯示您需要為特定資源類型設定哪些屬性、正確的值等等。您甚至可以在[Azure 入口網站](https://portal.azure.com/)中建立資源群組，然後在 [explorer] 工具中檢查其 JSON 定義，以協助您建立資源群組。
@@ -182,8 +181,8 @@ ms.locfileid: "75967388"
 ## <a name="deploy-the-resource-group-template-yourself"></a>自行部署資源群組範本
 [ **部署至 Azure** ] 按鈕不錯，但是，只有在已將 azuredeploy.json 推送至 GitHub 時，它才可讓您在 azuredeploy.json 中部署資源群組範本。 Azure .NET SDK 也提供工具，讓您直接從本機電腦部署任何 JSON 範本檔案。 若要這樣做，請遵循下面的步驟：
 
-1. 在 Visual Studio 中，**按一下** > [檔案] [**新增** > ] [**專案**]。
-2. 按一下 [ **Visual c #** > **雲端** > ] [**Azure 資源群組**]，然後按一下 **[確定]**。
+1. 在 Visual Studio 中，按一下 [檔案] > [新增] > [專案]。
+2. 按一下 [ **Visual c #**  >  **雲端**]  >  [**Azure 資源群組**]，然後按一下 **[確定]**。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. 在 [選取 Azure 範本]**** 中，選取 [空白範本]****，然後按一下 [確定]****。
@@ -209,7 +208,7 @@ ms.locfileid: "75967388"
 11. 找到 `location` 和 `isEnabled` 屬性，並如下所示設定它們。 請對其他三個警示 (紫色燈泡) 執行相同的動作。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
-12. 您現在可以開始進行部署。 以滑鼠右鍵按一下專案，然後選取 [**部署** > **新的部署**]。
+12. 您現在可以開始進行部署。 以滑鼠右鍵按一下專案，然後選取 [**部署**  >  **新的部署**]。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. 登入 Azure 帳戶 (如果您尚未這樣做)。
@@ -228,7 +227,7 @@ ms.locfileid: "75967388"
     > 自動調整是**標準**層級或更高層級所提供的功能，而計劃層級警示是**基本**層級或更高層級所提供的功能，您需要將 **sku** 參數設為**標準**或**進階**，才能看到所有新的 App Insights 資源都已啟動。
     > 
     > 
-16. 按一下 ****[部署]。 如果您選取 [儲存密碼]****，則會將密碼**以純文字形式**儲存至參數檔。 否則，系統會在部署過程要求您輸入資料庫密碼。
+16. 按一下 [ **部署**]。 如果您選取 [儲存密碼]****，則會將密碼**以純文字形式**儲存至參數檔。 否則，系統會在部署過程要求您輸入資料庫密碼。
 
 這樣就大功告成了！ 現在，您只需要移至 [Azure 入口網站](https://portal.azure.com/)和 [Azure 資源總管工具](https://resources.azure.com)，即可查看已新增 JSON 已部署應用程式中的新警示和自動調整設定。
 
@@ -262,9 +261,9 @@ ms.locfileid: "75967388"
 若要深入了解本文中所部署資源類型的 JSON 語法和屬性，請參閱：
 
 * [Microsoft.Sql/servers](/azure/templates/microsoft.sql/servers)
-* [Microsoft.Sql/servers/databases](/azure/templates/microsoft.sql/servers/databases)
-* [Microsoft.Sql/servers/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
-* [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)
-* [Microsoft Web/sites](/azure/templates/microsoft.web/sites)
-* [Microsoft.Web/sites/slots](/azure/templates/microsoft.web/sites/slots)
+* [Microsoft .Sql/伺服器/資料庫](/azure/templates/microsoft.sql/servers/databases)
+* [Microsoft .Sql/servers/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
+* [Microsoft Web/serverfarms](/azure/templates/microsoft.web/serverfarms)
+* [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)
+* [Microsoft Web/sites/插槽](/azure/templates/microsoft.web/sites/slots)
 * [Microsoft Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings)

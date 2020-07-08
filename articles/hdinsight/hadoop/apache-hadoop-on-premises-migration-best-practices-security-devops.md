@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75974412"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 安全性和 DevOps 最佳做法
@@ -42,13 +41,13 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
 
 - 藉由設定下列參數來部署 HDInsight ESP 叢集：
 
-    |參數 |描述 |
+    |參數 |說明 |
     |---|---|
     |網域名稱|與 Azure AD DS 相關聯的網域名稱。|
     |網域使用者名稱|上一節在受 Azure AD DS DC 管理的網域中建立的服務帳戶，例如：`hdiadmin@contoso.onmicrosoft.com`。 此網域使用者將是這個 HDInsight 叢集的系統管理員。|
     |網域密碼|服務帳戶的密碼。|
     |組織單位|HDInsight 叢集要搭配使用的 OU 的辨別名稱，例如：`OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`。 如果此 OU 不存在，HDInsight 叢集會嘗試使用服務帳戶的許可權來建立 OU。|
-    |LDAPS URL|例如， `ldaps://contoso.onmicrosoft.com:636`。|
+    |LDAPS URL|例如， `ldaps://contoso.onmicrosoft.com:636` 。|
     |存取使用者群組|您要將其使用者同步至叢集的安全性群組，例如：`HiveUsers`。 如果要指定多個使用者群組，請以分號 (;) 來分隔。 群組必須存在於目錄中，才會建立 ESP 叢集。|
 
 如需詳細資訊，請參閱下列文章：
@@ -77,7 +76,7 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
     - 檢視和報告所有對 HDInsight 叢集資源和資料的存取。
     - 檢視和報告所有存取控制原則的變更。
 
-[加密]****
+**加密**
     - 「透明的伺服器端」加密使用受 Microsoft 管理的金鑰或受客戶管理的金鑰。
     - 在使用用戶端加密、HTTPs 和 TLS 的傳輸加密中。
 

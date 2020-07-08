@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895323"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>針對 HDInsight 叢集上速度變慢或失敗的作業進行疑難排解
@@ -90,7 +89,7 @@ HDInsight 倚賴數個 Azure 服務。 它會在 Azure HDInsight 上執行虛擬
 
 #### <a name="check-azure-service-usage-limits"></a>檢查 Azure 服務使用限制
 
-如果您要啟動一個大型叢集，或是已同時啟動許多叢集，則在超出 Azure 服務限制時，叢集就可能發生失敗。 服務限制會依您的 Azure 訂用帳戶而有所不同。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額與條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+如果您要啟動一個大型叢集，或是已同時啟動許多叢集，則在超出 Azure 服務限制時，叢集就可能發生失敗。 服務限制會依您的 Azure 訂用帳戶而有所不同。 如需詳細資訊，請參閱[Azure 訂用帳戶和服務限制、配額和條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
 您可以透過 [Resource Manager 核心配額增加要求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)，要求 Microsoft 增加可用的 HDInsight 資源 (例如 VM 核心和 VM 執行個體) 數目。
 
 #### <a name="check-the-release-version"></a>檢查發行版本
@@ -111,7 +110,7 @@ HDInsight 叢集是由在虛擬機器執行個體上執行的各種不同類型�
 
 ### <a name="get-a-snapshot-of-the-cluster-health-using-the-ambari-ui-dashboard"></a>使用 Ambari UI 儀表板來簡要了解叢集健康情況
 
-[Ambari UI 儀表板](#view-cluster-configuration-settings-with-the-ambari-ui)（`https://<clustername>.azurehdinsight.net`）可讓您大致瞭解叢集健康情況，例如執行時間、記憶體、網路和 CPU 使用量、HDFS 磁片使用量等等。 請使用 Ambari 的 [Hosts] \(主機\) 區段來檢視主機層級的資源。 您也可以將服務停止和重新啟動。
+[AMBARI UI 儀表板](#view-cluster-configuration-settings-with-the-ambari-ui)（ `https://<clustername>.azurehdinsight.net` ）可讓您大致瞭解叢集健康情況，例如執行時間、記憶體、網路和 CPU 使用量、HDFS 磁片使用量等等。 請使用 Ambari 的 [Hosts] \(主機\) 區段來檢視主機層級的資源。 您也可以將服務停止和重新啟動。
 
 ### <a name="check-your-webhcat-service"></a>檢查您的 WebHCat 服務
 

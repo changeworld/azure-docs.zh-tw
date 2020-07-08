@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/01/2019
 ms.openlocfilehash: 16c994029e91d743f1c2a7e2eab51eb86fc378e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887303"
 ---
 # <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>案例：在 Azure HDInsight 中的 Apache HBase 叢集中的區域伺服器上限定 CPU
@@ -24,19 +23,19 @@ Apache HBase 區域伺服器進程會開始佔用接近200% 的 CPU，導致 HBa
 
 ## <a name="cause"></a>原因
 
-如果您執行 HBase cluster v4.0，可能是因為將 jdk 升級至版本 1.7.0 _151 所造成的潛在錯誤。 我們看到的徵兆是「區域伺服器進程」開始佔用接近200% 的`top` CPU （以確認這會執行命令; 如果有接近 200% cpu 的進程，請取得其 pid，並藉由執行來確認它`ps -aux | grep`是區域伺服器進程）。
+如果您執行 HBase cluster v4.0，可能是因為將 jdk 升級至版本 1.7.0 _151 所造成的潛在錯誤。 我們看到的徵兆是「區域伺服器進程」開始佔用接近200% 的 CPU （以確認這會執行 `top` 命令; 如果有接近 200% cpu 的進程，請取得其 pid，並藉由執行來確認它是區域伺服器進程 `ps -aux | grep` ）。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 1. 在叢集中的所有節點上安裝 jdk 1.8，如下所示：
 
-    * 執行腳本動作`https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/upgradetojdk18allnodes.sh`。 請務必選取要在所有節點上執行的選項。
+    * 執行腳本動作 `https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/upgradetojdk18allnodes.sh` 。 請務必選取要在所有節點上執行的選項。
 
-    * 或者，您可以登入每個個別節點，然後執行命令`sudo add-apt-repository ppa:openjdk-r/ppa -y && sudo apt-get -y update && sudo apt-get install -y openjdk-8-jdk`。
+    * 或者，您可以登入每個個別節點，然後執行命令 `sudo add-apt-repository ppa:openjdk-r/ppa -y && sudo apt-get -y update && sudo apt-get install -y openjdk-8-jdk` 。
 
-1. 移至 Ambari UI- `https://<clusterdnsname>.azurehdinsight.net`。
+1. 移至 Ambari UI- `https://<clusterdnsname>.azurehdinsight.net` 。
 
-1. 流覽至**HBase->的 [>advanced]->advanced** `hbase-env configs` ]，並`JAVA_HOME`將`export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64`變數變更為。 儲存設定變更。
+1. 流覽至**HBase->的 [>advanced]->advanced** ] `hbase-env configs` ，並將變數變更 `JAVA_HOME` 為 `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64` 。 儲存設定變更。
 
 1. [選用但建議][清除叢集上的所有資料表](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)。
 
@@ -54,8 +53,8 @@ ps -aux | grep regionserver, and verify the version like '''/usr/lib/jvm/java-8-
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-* 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
-* 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，藉由將 Azure 社區連接至適當的資源來改善客戶體驗：解答、支援及專家。
+* 與 [@AzureSupport](https://twitter.com/azuresupport) 聯繫 - 專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，例如解答、支援及專家等。
 
-* 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 在功能表列選取 [支援] 或開啟 [說明 + 支援] 中心。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) (機器翻譯)。 您可透過 Microsoft Azure 訂用帳戶來存取訂用帳戶管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

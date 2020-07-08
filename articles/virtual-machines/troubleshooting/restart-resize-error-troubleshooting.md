@@ -14,10 +14,9 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75965616"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>針對在 Azure 中重新啟動或調整現有 Windows VM 大小的部署問題進行疑難排解
@@ -38,10 +37,10 @@ ms.locfileid: "75965616"
 ### <a name="cause"></a>原因
 必須在架設雲端服務的原始叢集上嘗試提出啟動已停止的 VM 要求。 不過，叢集沒有足夠空間可完成要求。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 * 停止可用性設定組中的所有 VM，然後重新啟動每一部 VM。
   
-  1. 按一下 [**資源** > 群組] 資源*群組* > **Resources** >  > **虛擬機器***虛擬*機 > **停止**的*可用性設定* > 組資源。
+  1. 按一下 [**資源**群組] 資源  >  *群組*  >  **Resources**  >  *your availability set*  >  **虛擬機器**  >  *虛擬機器*  >  **停止**的可用性設定組資源。
   2. 所有 VM 都停止後，選取每個已停止的 VM，然後按一下 [開始]。
 * 稍後再重試重新啟動要求。
 
@@ -51,13 +50,13 @@ ms.locfileid: "75965616"
 ### <a name="cause"></a>原因
 必須在架設雲端服務的原始叢集上嘗試提出調整 VM 大小的要求。 不過，叢集不支援要求的 VM 大小。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 * 以較小的 VM 大小重試要求。
 * 如果無法變更要求的 VM 的大小︰
   
   1. 停止可用性設定組中的所有 VM。
      
-     * 按一下 [**資源** > 群組] 資源*群組* > **Resources** >  > **虛擬機器***虛擬*機 > **停止**的*可用性設定* > 組資源。
+     * 按一下 [**資源**群組] 資源  >  *群組*  >  **Resources**  >  *your availability set*  >  **虛擬機器**  >  *虛擬機器*  >  **停止**的可用性設定組資源。
   2. 所有 VM 都停止後，將所需 VM 調整為較大的大小。
   3. 選取已調整大小的 VM，按一下 [啟動] ****，然後啟動每個已停止的 VM。
 

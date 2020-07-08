@@ -10,10 +10,9 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75976744"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>使用 Azure Resource Manager 範本建立 IoT 中樞 (.NET)
@@ -30,7 +29,7 @@ ms.locfileid: "75976744"
 若要完成此教學課程，您需要下列項目：
 
 * Visual Studio。
-* 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶][lnk-free-trial]。
+* 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶][lnk-free-trial] 。
 * 可供您儲存 Azure Resource Manager 範本檔案的 [Azure 儲存體帳戶][lnk-storage-account]。
 * [Azure PowerShell 1.0][lnk-powershell-install] 或更新版本。
 
@@ -184,7 +183,7 @@ ms.locfileid: "75976744"
 
 在建置和執行應用程式之前，您現在可以呼叫 **CreateIoTHub** 方法來完成應用程式。
 
-1. 在 **Main** 方法的結尾加入下列程式碼：
+1. 將下列程式碼新增至**Main**方法的結尾：
 
     ```csharp
     CreateIoTHub(client);

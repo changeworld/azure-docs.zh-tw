@@ -15,14 +15,13 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: twooley
 ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75930214"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>安裝和設定 StorSimple Adapter for SharePoint
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 StorSimple Adapter for SharePoint 是可讓您提供 Microsoft Azure StorSimple 彈性儲存和資料保護給 SharePoint 伺服器陣列的元件。 您可以使用配接器將二進位大型物件 (BLOB) 內容從 SQL Server 內容資料庫移至 Microsoft Azure StorSimple 混合雲端儲存體裝置。
 
 StorSimple Adapter for SharePoint 作為遠端 BLOB 儲存 (RBS) 提供者，使用 SQL Server 遠端 BLOB 儲存功能將非結構化 SharePoint 內容 (以 BLOB 形式)，儲存在 StorSimple 裝置所支援的檔案伺服器上。
@@ -140,7 +139,7 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
   3. 在左窗格中，按一下 [本機伺服器]****。
   4. 在右窗格上，按一下 [IE 增強式安全性設定]**** 旁邊的 [開啟]****。
   5. 按一下 [Administrators]**** 下的 [關閉]****。
-  6. 按一下 [確定]  。
+  6. 按一下 [確定]。
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>遠端 BLOB 儲存 (RBS) 必要條件
 請確定您使用支援的 SQL Server 版本。 僅下列版本才支援和能夠使用 RBS：
@@ -226,7 +225,7 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
 4. 在 [設定 StorSimple 介面卡]**** 頁面上，按一下您要從外部 BLOB 儲存體中移除之每個內容資料庫下方的 [停用]**** 按鈕。 
 5. 從 SharePoint 中刪除物件，然後重新上傳。
 
-或者，您可以使用 SharePoint 隨附`RBS Migrate()`的 Microsoft PowerShell Cmdlet。 如需詳細資訊，請參閱 [將內容移入或移出 RBS](https://technet.microsoft.com/library/ff628255.aspx)。
+或者，您可以使用 `RBS Migrate()` SharePoint 隨附的 Microsoft PowerShell Cmdlet。 如需詳細資訊，請參閱 [將內容移入或移出 RBS](https://technet.microsoft.com/library/ff628255.aspx)。
 
 將 Blob 移回內容資料庫之後，請移至下一個步驟： [解除安裝配接器](#uninstall-the-adapter)。
 
@@ -238,7 +237,7 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
 2. 按兩下 StorSimple Adapter for SharePoint。 安裝精靈隨即啟動。
    
     ![安裝精靈](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. 按 [下一步]  。 下列頁面隨即出現。
+3. 按 [下一步] 。 下列頁面隨即出現。
    
     ![安裝精靈移除頁面](./media/storsimple-adapter-for-sharepoint/sasp3.png)
 4. 按一下 [移除]**** 選取移除程序。 下列頁面隨即出現。

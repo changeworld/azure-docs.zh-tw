@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
 ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75973684"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>從 Azure Vm 的 PowerShell 複寫排除磁片
@@ -19,9 +18,9 @@ ms.locfileid: "75973684"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-開始之前：
+在開始之前：
 
 - 請確定您瞭解嚴重損壞[修復架構和元件](azure-to-azure-architecture.md)。
 - 請參閱所有元件的[支援需求](azure-to-azure-support-matrix.md)。

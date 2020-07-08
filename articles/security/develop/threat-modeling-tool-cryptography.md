@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: c9116472af5b400ded0fea24f98b07bad9d9039b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68728197"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全性架構︰密碼編譯 | 風險降低 
@@ -36,7 +35,7 @@ ms.locfileid: "68728197"
 
 ## <a name="use-only-approved-symmetric-block-ciphers-and-key-lengths"></a><a id="cipher-length"></a>只使用核准的對稱區塊編碼器和金鑰長度
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -47,7 +46,7 @@ ms.locfileid: "68728197"
 
 ## <a name="use-approved-block-cipher-modes-and-initialization-vectors-for-symmetric-ciphers"></a><a id="vector-ciphers"></a>針對對稱編碼器使用核准的區塊編碼器模式和初始化向量
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -58,7 +57,7 @@ ms.locfileid: "68728197"
 
 ## <a name="use-approved-asymmetric-algorithms-key-lengths-and-padding"></a><a id="padding"></a>使用核准的非對稱演算法、金鑰長度和填補
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -69,7 +68,7 @@ ms.locfileid: "68728197"
 
 ## <a name="use-approved-random-number-generators"></a><a id="numgen"></a>使用核准的亂數產生器
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -80,7 +79,7 @@ ms.locfileid: "68728197"
 
 ## <a name="do-not-use-symmetric-stream-ciphers"></a><a id="stream-ciphers"></a>請勿使用對稱串流編碼器
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -91,7 +90,7 @@ ms.locfileid: "68728197"
 
 ## <a name="use-approved-machmackeyed-hash-algorithms"></a><a id="mac-hash"></a>使用核准的 MAC/HMAC/索引雜湊演算法
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -102,7 +101,7 @@ ms.locfileid: "68728197"
 
 ## <a name="use-only-approved-cryptographic-hash-functions"></a><a id="hash-functions"></a>只使用核准的密碼編譯雜湊函式
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -113,7 +112,7 @@ ms.locfileid: "68728197"
 
 ## <a name="use-strong-encryption-algorithms-to-encrypt-data-in-the-database"></a><a id="strong-db"></a>使用增強式加密演算法來加密資料庫中的資料
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 資料庫 | 
 | **SDL 階段**               | Build |  
@@ -124,7 +123,7 @@ ms.locfileid: "68728197"
 
 ## <a name="ssis-packages-should-be-encrypted-and-digitally-signed"></a><a id="ssis-signed"></a>SSIS 套件應予以加密和數位簽章
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 資料庫 | 
 | **SDL 階段**               | Build |  
@@ -135,7 +134,7 @@ ms.locfileid: "68728197"
 
 ## <a name="add-digital-signature-to-critical-database-securables"></a><a id="securables-db"></a>在重要的資料庫安全性實體中新增數位簽章
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 資料庫 | 
 | **SDL 階段**               | Build |  
@@ -146,7 +145,7 @@ ms.locfileid: "68728197"
 
 ## <a name="use-sql-server-ekm-to-protect-encryption-keys"></a><a id="ekm-keys"></a>使用 SQL Server EKM 來保護加密金鑰
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 資料庫 | 
 | **SDL 階段**               | Build |  
@@ -157,7 +156,7 @@ ms.locfileid: "68728197"
 
 ## <a name="use-alwaysencrypted-feature-if-encryption-keys-should-not-be-revealed-to-database-engine"></a><a id="keys-engine"></a>如果不應對資料庫引擎顯示加密金鑰，請使用 AlwaysEncrypted 功能
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 資料庫 | 
 | **SDL 階段**               | Build |  
@@ -168,7 +167,7 @@ ms.locfileid: "68728197"
 
 ## <a name="store-cryptographic-keys-securely-on-iot-device"></a><a id="keys-iot"></a>在 IoT 裝置上安全地儲存密碼編譯金鑰
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 裝置 | 
 | **SDL 階段**               | Build |  
@@ -191,7 +190,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 ## <a name="generate-a-random-symmetric-key-of-sufficient-length-for-authentication-to-iot-hub"></a><a id="random-hub"></a>產生長度足夠的隨機對稱金鑰以向 IoT 中樞進行驗證
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 雲端閘道 | 
 | **SDL 階段**               | Build |  
@@ -202,7 +201,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 ## <a name="ensure-a-device-management-policy-is-in-place-that-requires-a-use-pin-and-allows-remote-wiping"></a><a id="pin-remote"></a>確定已備妥需要使用 PIN 並允許遠端抹除的裝置管理原則
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Dynamics CRM 行動用戶端 | 
 | **SDL 階段**               | 部署 |  
@@ -213,7 +212,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 ## <a name="ensure-a-device-management-policy-is-in-place-that-requires-a-pinpasswordauto-lock-and-encrypts-all-data-eg-bitlocker"></a><a id="bitlocker"></a>確定已備妥需要 PIN/密碼/自動鎖定並加密所有資料的裝置管理原則（例如 BitLocker）
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Dynamics CRM Outlook 用戶端 | 
 | **SDL 階段**               | Build |  
@@ -224,7 +223,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 ## <a name="ensure-that-signing-keys-are-rolled-over-when-using-identity-server"></a><a id="rolled-server"></a>確定在使用 Identity Server 時會變換簽署金鑰
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 身分識別伺服器 | 
 | **SDL 階段**               | 部署 |  
@@ -235,7 +234,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 ## <a name="ensure-that-cryptographically-strong-client-id-client-secret-are-used-in-identity-server"></a><a id="client-server"></a>確定身分識別伺服器中使用的密碼編譯增強式用戶端識別碼、用戶端密碼
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 身分識別伺服器 | 
 | **SDL 階段**               | Build |  

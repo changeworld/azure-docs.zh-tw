@@ -9,21 +9,20 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979416"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 在 Azure Logic Apps 中以對應來轉換 XML
 
-若要在 Azure Logic Apps 中的企業整合案例格式之間傳輸 XML 資料，您的邏輯應用程式可以使用對應，或更具體的擴充樣式表單語言轉換（XSLT）對應。 對應是一個 XML 文件，它描述如何將資料從 XML 文件轉換為其他格式。 
+若要在 Azure Logic Apps 中的企業整合案例的格式之間轉換 XML 資料，您的邏輯應用程式可以使用對應，或更具體而言，使用可延伸樣式表語言轉換 (XSLT) 對應。 對應是一個 XML 文件，它描述如何將資料從 XML 文件轉換為其他格式。 
 
 例如，假設您會定期收到客戶的 B2B 訂單或發票，而該客戶使用 YYYMMDD 日期格式。 不過，您的組織使用 MMDDYYY 日期格式。 您可以定義並使用對應，先將 YYYMMDD 日期格式轉換為 MMDDYYY 格式，然後再將訂單或發票儲存在您的客戶活動資料庫中。
 
 針對與整合帳戶和成品 (例如對應) 的限制，請參閱 [Azure Logic Apps 的限制與設定資訊](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -36,7 +35,7 @@ ms.locfileid: "75979416"
   * 針對組件，您需要 Azure Blob 容器 (以在其中上傳您的組件) 與該容器的位置。 如此一來，您就可以在稍後將組件新增到您的整合帳戶時提供該位置。 
   針對此工作，您需要下列項目：
 
-    | 項目 | 描述 |
+    | 項目 | 說明 |
     |------|-------------|
     | [Azure 儲存體帳戶](../storage/common/storage-account-overview.md) | 在此帳戶中，為您的組件建立 Azure Blob 容器。 瞭解[如何建立儲存體帳戶](../storage/common/storage-account-create.md)。 |
     | Blob 容器 | 在此容器中，您可以上傳您的組件。 當您將組件新增到您的整合帳戶時，您也需要此容器的位置。 了解如何[建立 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 |

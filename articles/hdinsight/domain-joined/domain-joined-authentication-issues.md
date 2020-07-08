@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75896129"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight 中的驗證問題
@@ -34,11 +33,11 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 ### <a name="cause"></a>原因
 
-Azure AD 錯誤碼50126表示租使用者`AllowCloudPasswordValidation`尚未設定此原則。
+Azure AD 錯誤碼50126表示租使用者尚未 `AllowCloudPasswordValidation` 設定此原則。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
-Azure AD 租使用者的公司系統管理員應該啟用 Azure AD，才能針對 ADFS 支援的使用者使用密碼雜湊。  套用， `AllowCloudPasswordValidationPolicy`如在[HDInsight 中使用企業安全性套件](../domain-joined/apache-domain-joined-architecture.md)一文所示。
+Azure AD 租使用者的公司系統管理員應該啟用 Azure AD，才能針對 ADFS 支援的使用者使用密碼雜湊。  套用， `AllowCloudPasswordValidationPolicy` 如在[HDInsight 中使用企業安全性套件](../domain-joined/apache-domain-joined-architecture.md)一文所示。
 
 ---
 
@@ -56,7 +55,7 @@ Azure AD 租使用者的公司系統管理員應該啟用 Azure AD，才能針�
 
 使用者名稱不正確（不存在）。 使用者未使用 Azure 入口網站中使用的相同使用者名稱。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 使用在該入口網站中運作的相同使用者名稱。
 
@@ -76,7 +75,7 @@ Azure AD 租使用者的公司系統管理員應該啟用 Azure AD，才能針�
 
 使用不正確的密碼嘗試登入太多次。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 等候30分鐘，或停止任何可能嘗試進行驗證的應用程式。
 
@@ -96,7 +95,7 @@ Azure AD 租使用者的公司系統管理員應該啟用 Azure AD，才能針�
 
 密碼已過期。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 變更 Azure 入口網站中的密碼（在您的內部部署系統上），然後等待30分鐘讓同步處理趕上。
 
@@ -106,13 +105,13 @@ Azure AD 租使用者的公司系統管理員應該啟用 Azure AD，才能針�
 
 ### <a name="issue"></a>問題
 
-接收錯誤訊息`interaction_required`。
+接收錯誤訊息 `interaction_required` 。
 
 ### <a name="cause"></a>原因
 
-使用者套用了條件式存取原則或 MFA。 由於尚不支援互動式驗證，因此使用者或叢集必須從 MFA/條件式存取中免除。 如果您選擇豁免叢集（以 IP 位址為基礎的豁免原則），請確定 AD `ServiceEndpoints`已針對該 vnet 啟用。
+使用者套用了條件式存取原則或 MFA。 由於尚不支援互動式驗證，因此使用者或叢集必須從 MFA/條件式存取中免除。 如果您選擇豁免叢集（以 IP 位址為基礎的豁免原則），請確定 AD 已 `ServiceEndpoints` 針對該 vnet 啟用。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 使用條件式存取原則，並豁免 HDInisght 叢集的 MFA，如[使用 Azure Active Directory Domain Services 設定具有企業安全性套件的 HDInsight](./apache-domain-joined-configure-using-azure-adds.md)叢集中所示。
 
@@ -128,7 +127,7 @@ Azure AD 租使用者的公司系統管理員應該啟用 Azure AD，才能針�
 
 若要進入此階段，您的 OAuth 驗證不是問題，但 Kerberos 驗證是。 如果此叢集是由 ADLS 支援，則 OAuth 登入在嘗試 Kerberos 驗證之前已成功。 在 WASB 叢集上，不會嘗試 OAuth 登入。 Kerberos 失敗的原因有很多，例如密碼雜湊不同步、使用者帳戶在 Azure AD DS 中遭到鎖定等等。 只有在使用者變更密碼時，才會同步處理密碼雜湊。 當您建立 Azure AD DS 實例時，它會開始同步在建立後變更的密碼。 它不會追溯在開始之前設定的同步密碼。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 如果您認為密碼可能不會同步，請嘗試變更密碼，並等候幾分鐘的時間進行同步處理。
 
@@ -146,11 +145,11 @@ Kinit 失敗。
 
 變動。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
-若要讓 kinit 成功，您必須知道您`sAMAccountName`的（這是不含領域的簡短帳戶名稱）。 `sAMAccountName`通常是帳戶前置詞（例如中`bob@contoso.com`的 bob）。 某些使用者可能會有不同的。 您將需要流覽/搜尋目錄的功能，以瞭解您`sAMAccountName`的。
+若要讓 kinit 成功，您必須知道您 `sAMAccountName` 的（這是不含領域的簡短帳戶名稱）。 `sAMAccountName`通常是帳戶前置詞（例如中的 bob `bob@contoso.com` ）。 某些使用者可能會有不同的。 您將需要流覽/搜尋目錄的功能，以瞭解您的 `sAMAccountName` 。
 
-尋找`sAMAccountName`方法：
+尋找方法 `sAMAccountName` ：
 
 * 如果您可以使用本機 Ambari 系統管理員的身分登入 Ambari，請查看使用者清單。
 
@@ -158,7 +157,7 @@ Kinit 失敗。
 
 * 從前端節點，您可以使用 SAMBA 命令進行搜尋。 這需要有效的 Kerberos 會話（成功 kinit）。 net ads 搜尋 "（userPrincipalName = bob *）"
 
-    搜尋/流覽結果應該會顯示`sAMAccountName`屬性。 此外，您也可以查看其他屬性， `pwdLastSet`例如`badPasswordTime`、 `userPrincipalName`等等，以查看這些屬性是否符合您的預期。
+    搜尋/流覽結果應該會顯示 `sAMAccountName` 屬性。 此外，您也可以查看其他屬性 `pwdLastSet` ，例如、 `badPasswordTime` 等等， `userPrincipalName` 以查看這些屬性是否符合您的預期。
 
 ---
 
@@ -166,15 +165,15 @@ Kinit 失敗。
 
 ### <a name="issue"></a>問題
 
-Kinit 失敗並`Preauthentication`出現失敗。
+Kinit 失敗並出現 `Preauthentication` 失敗。
 
 ### <a name="cause"></a>原因
 
 使用者名稱或密碼不正確。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
-檢查您的使用者名稱和密碼。 另請檢查上面所述的其他屬性。 若要啟用詳細資訊調試`export KRB5_TRACE=/tmp/krb.log` ，請在嘗試 kinit 之前，先從會話執行。
+檢查您的使用者名稱和密碼。 另請檢查上面所述的其他屬性。 若要啟用詳細資訊調試，請在 `export KRB5_TRACE=/tmp/krb.log` 嘗試 kinit 之前，先從會話執行。
 
 ---
 
@@ -182,13 +181,13 @@ Kinit 失敗並`Preauthentication`出現失敗。
 
 ### <a name="issue"></a>問題
 
-作業/HDFS 命令因而失敗`TokenNotFoundException`。
+作業/HDFS 命令因而失敗 `TokenNotFoundException` 。
 
 ### <a name="cause"></a>原因
 
 找不到所需的 OAuth 存取權杖，因此作業/命令會成功。 ADLS/ABFS 驅動程式會先嘗試從認證服務取得 OAuth 存取權杖，然後再提出儲存體要求。 當您使用相同的使用者登入 Ambari 入口網站時，會註冊此權杖。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 請確定您已成功透過身分識別用來執行作業的使用者名稱登入 Ambari 入口網站。
 
@@ -198,17 +197,17 @@ Kinit 失敗並`Preauthentication`出現失敗。
 
 ### <a name="issue"></a>問題
 
-使用者收到錯誤訊息`Error fetching access token`。
+使用者收到錯誤訊息 `Error fetching access token` 。
 
 ### <a name="cause"></a>原因
 
 當使用者嘗試使用 Acl 存取 ADLS Gen2，且 Kerberos 權杖已過期時，就會發生此錯誤。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 * 如 Azure Data Lake Storage Gen1，請清除瀏覽器快取，然後再次登入 Ambari。
 
-* 針對 Azure Data Lake Storage Gen2，請`/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>`針對使用者嘗試登入的使用者執行
+* 針對 Azure Data Lake Storage Gen2，請 `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` 針對使用者嘗試登入的使用者執行
 
 ---
 
@@ -216,8 +215,8 @@ Kinit 失敗並`Preauthentication`出現失敗。
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-* 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
-* 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，以改善客戶體驗。 將 Azure 社區連接到正確的資源：解答、支援和專家。
+* 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

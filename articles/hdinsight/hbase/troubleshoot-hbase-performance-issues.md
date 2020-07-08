@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887150"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>針對 Azure HDInsight 上的 Apache HBase 效能問題進行疑難排解
@@ -39,7 +38,7 @@ ms.locfileid: "75887150"
 * 您的所有「讀取」轉譯為掃描嗎？
     * 若是如此，這些掃描的特性有哪些？
     * 您是否已將這些掃描的 Phoenix 資料表架構優化，包括適當的編制索引？
-* 您是否已使用`EXPLAIN`語句來瞭解「讀取」產生的查詢計劃？
+* 您是否已使用 `EXPLAIN` 語句來瞭解「讀取」產生的查詢計劃？
 * 您的寫入是否「upsert」？
     * 若是如此，它們也會進行掃描。 掃描的預期延遲大約是100毫秒，相較于 HBase 中的 point 到達10毫秒。  
 
@@ -65,17 +64,17 @@ ms.locfileid: "75887150"
 
 ## <a name="server-side-configuration-tunings"></a>伺服器端設定 tunings
 
-在 HDInsight HBase 中，HFiles 會儲存在遠端存放區。 當快取遺漏時，讀取成本會高於內部部署系統，因為內部部署系統上的資料是由本機 HDFS 所支援。 在大部分的情況下，智慧型使用 HBase 快取（區塊快取和 bucket 快取）的設計是為了避免這個問題。 在無法規避問題的情況下，使用 premium 區塊 blob 帳戶可能有助於此問題。 Windows Azure 儲存體 Blob 驅動程式依賴某些屬性（例如`fs.azure.read.request.size` ）根據其判斷為讀取模式（順序與隨機）來提取區塊中的資料，因此可能會繼續使用讀取的延遲較高的實例。 透過經驗實驗，我們發現將讀取要求區塊大小（`fs.azure.read.request.size`）設為 512 KB，並將 HBase 資料表的區塊大小比對為相同大小，會產生最佳的結果。
+在 HDInsight HBase 中，HFiles 會儲存在遠端存放區。 當快取遺漏時，讀取成本會高於內部部署系統，因為內部部署系統上的資料是由本機 HDFS 所支援。 在大部分的情況下，智慧型使用 HBase 快取（區塊快取和 bucket 快取）的設計是為了避免這個問題。 在無法規避問題的情況下，使用 premium 區塊 blob 帳戶可能有助於此問題。 Windows Azure 儲存體 Blob 驅動程式依賴某些屬性（例如 `fs.azure.read.request.size` ）根據其判斷為讀取模式（順序與隨機）來提取區塊中的資料，因此可能會繼續使用讀取的延遲較高的實例。 透過經驗實驗，我們發現將讀取要求區塊大小（ `fs.azure.read.request.size` ）設為 512 KB，並將 HBase 資料表的區塊大小比對為相同大小，會產生最佳的結果。
 
-對於大部分的大型節點叢集而言，HDInsight HBase 會`bucketcache`將本機進階 SSD 上的檔案，提供給連接至虛擬機器的檔案（執行`regionservers`）。 改為使用脫離堆積快取可能會提供一些改進。 這個因應措施有使用可用記憶體的限制，而且可能小於檔案型快取，因此不一定是最佳選擇。
+對於大部分的大型節點叢集而言，HDInsight HBase `bucketcache` 會將本機進階 SSD 上的檔案，提供給連接至虛擬機器的檔案（執行） `regionservers` 。 改為使用脫離堆積快取可能會提供一些改進。 這個因應措施有使用可用記憶體的限制，而且可能小於檔案型快取，因此不一定是最佳選擇。
 
 以下是我們已調整的一些其他特定參數，而且似乎有助於不同程度：
 
-- 將`memstore` [大小] 從預設值 128 mb 增加到 256 MB。 通常，這種設定對於繁重的寫入案例是建議的做法。
+- `memstore`將 [大小] 從預設值 128 mb 增加到 256 MB。 通常，這種設定對於繁重的寫入案例是建議的做法。
 
 - 增加專用於壓縮的執行緒數目，從預設值**1**到**4**。 如果我們觀察到經常的次要 compactions，則此設定是相關的。
 
-- 避免因為`memstore`存放區限制而封鎖清除。 若要提供此緩衝區，請`Hbase.hstore.blockingStoreFiles`將設定增加至**100**。
+- 避免 `memstore` 因為存放區限制而封鎖清除。 若要提供此緩衝區，請將 `Hbase.hstore.blockingStoreFiles` 設定增加至**100**。
 
 - 若要控制排清，請使用下列設定：
 
@@ -104,7 +103,7 @@ ms.locfileid: "75887150"
 - RPC 超時： **3 分鐘**
 
    - RPC 超時包括 HBase RPC timeout、HBase 用戶端掃描器超時和 Phoenix 查詢超時。 
-   - 請確定在伺服器`hbase.client.scanner.caching`端和用戶端上，將參數設定為相同的值。 如果兩者不相同，則此設定會導致與相關的用戶端錯誤`OutOfOrderScannerException`。 這種設定應該設定為較低的值來進行大型掃描。 我們會將此值設定為**100**。
+   - 請確定在 `hbase.client.scanner.caching` 伺服器端和用戶端上，將參數設定為相同的值。 如果兩者不相同，則此設定會導致與相關的用戶端錯誤 `OutOfOrderScannerException` 。 這種設定應該設定為較低的值來進行大型掃描。 我們會將此值設定為**100**。
 
 ## <a name="other-considerations"></a>其他考量
 
@@ -120,8 +119,8 @@ ms.locfileid: "75887150"
 
 如果您的問題仍然無法解決，請流覽下列其中一個通道以取得更多支援：
 
-- 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+- 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
-- 連接[@AzureSupport](https://twitter.com/azuresupport)。 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 它會將 Azure 社區連接到正確的資源：解答、支援和專家。
+- 聯繫 [@AzureSupport](https://twitter.com/azuresupport)。 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 它會將 Azure 社區連接到正確的資源：解答、支援和專家。
 
-- 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+- 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。

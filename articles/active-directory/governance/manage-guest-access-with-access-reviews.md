@@ -17,10 +17,9 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8bf2f9503ae704110786a1e73aec3da18c17e4ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75932432"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>使用 Azure AD 存取權檢閱來管理來賓存取權
@@ -33,7 +32,7 @@ ms.locfileid: "75932432"
 > [!NOTE]
 > 本文件著重於檢閱來賓使用者的存取權。 如果您想檢閱所有使用者的存取權 (不只來賓)，請參閱[使用存取權檢閱管理使用者存取權](manage-user-access-with-access-reviews.md)。 如果您想要在系統管理角色（例如全域管理員）中檢查使用者的成員資格，請參閱[Azure AD Privileged Identity Management 中的開始存取權審查](../privileged-identity-management/pim-how-to-start-security-review.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - Azure AD Premium P2
 
@@ -119,7 +118,7 @@ Azure AD 可檢閱來賓使用者的幾個案例。
 
 ## <a name="next-steps"></a>後續步驟
 
-[建立群組或應用程式的存取權審查](create-access-review.md)
+[建立群組或應用程式的存取權檢閱](create-access-review.md)
 
 
 
