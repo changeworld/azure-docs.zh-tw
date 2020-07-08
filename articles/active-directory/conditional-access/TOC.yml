@@ -8,8 +8,6 @@
   items:
     - name: 需要接受使用條款
       href: require-tou.md
-    - name: 偵測到工作階段風險時封鎖存取
-      href: app-sign-in-risk.md
 - name: 教學課程
   items:
     - name: 要求使用 Azure Multi-Factor Authentication
@@ -68,8 +66,10 @@
           href: howto-conditional-access-policy-azure-management.md
         - name: 要求所有使用者使用 MFA
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: 依據風險的條件式存取
+        - name: 登入風險型條件式存取
           href: howto-conditional-access-policy-risk.md
+        - name: 使用者風險型條件式存取
+          href: howto-conditional-access-policy-risk-user.md
         - name: 保障安全性資訊註冊的安全
           href: howto-conditional-access-policy-registration.md
         - name: 依位置封鎖存取

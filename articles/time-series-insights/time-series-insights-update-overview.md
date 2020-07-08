@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 20ab78aa67fa5d59dac774559b3c43561cf75fbc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271058"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040702"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>什麼是 Azure 時間序列深入解析預覽版？
 
@@ -78,12 +78,12 @@ Azure 時間序列深入解析提供可調整的隨用隨付定價模型，以�
 
 | | |
 | ---| ---|
-| 適用於 IoT 規模時間序列資料的多層式儲存體 | 透過共用資料處理管線來內嵌資料，您可以將資料內嵌至線上和離線存放區。 將線上存放區用於互動式查詢，並將離線存放區用於儲存大量資料。 若要深入了解如何利用以資產為基礎的高效能查詢，請參閱[查詢](./time-series-insights-update-tsq.md)。 |
-| 用於情境化原始遙測資料和衍生資產型深入解析的時間序列模型 | 您可以使用時間序列模型建立時間序列資料的執行個體、階層、類型和變數。 若要深入了解時間序列模型，請參閱[時間序列模型](./time-series-insights-update-tsm.md)。  |
-| 與其他資料解決方案順暢地持續整合 | 時間序列深入解析離線存放區中的資料[儲存](./time-series-insights-update-storage-ingress.md)在開放原始碼的 Apache Parquet 檔案中。 這可讓您在包含商業智慧、進階機器學習和預測性分析的案例中，與其他資料解決方案 (第 1 方或第 3 方) 進行資料整合。 |
+| 適用於 IoT 規模時間序列資料的多層式儲存體 | 透過共用資料處理管線來內嵌資料，您可以將資料內嵌至線上和離線存放區。 將線上存放區用於互動式查詢，並將離線存放區用於儲存大量資料。 若要深入了解如何利用以資產為基礎的高效能查詢，請參閱[查詢](./concepts-query-overview.md)。 |
+| 用於情境化原始遙測資料和衍生資產型深入解析的時間序列模型 | 您可以使用時間序列模型建立時間序列資料的執行個體、階層、類型和變數。 若要深入了解時間序列模型，請參閱[時間序列模型](./concepts-model-overview.md)。  |
+| 與其他資料解決方案順暢地持續整合 | 時間序列深入解析離線存放區中的資料[儲存](concepts-storage.md)在開放原始碼的 Apache Parquet 檔案中。 這可讓您在包含商業智慧、進階機器學習和預測性分析的案例中，與其他資料解決方案 (第 1 方或第 3 方) 進行資料整合。 |
 | 近乎即時的資料探索 | 藉由 [Azure 時間序列深入解析預覽版總管](./time-series-insights-update-explorer.md)的使用者體驗，您可以為透過擷取管線串流的所有資料提供視覺效果。 連線事件來源後，您可以檢視、探索及查詢事件資料。 如此一來，您可以驗證裝置是否如預期般發出資料。 您也可以監視 IoT 資產的健康情況、生產力和整體效率。 | 
 | 擴充性與整合 | Azure 時間序列深入解析 Power BI 連接器整合可透過 [匯出]  選項，直接在時間序列總管使用者體驗中使用，讓客戶可以將他們在使用者體驗中所建立的時間序列查詢，直接匯出至 Power BI 桌面，然後同時檢視其時間序列圖表與其他 BI 分析。 這會針對已投資 Power BI 的產業 IoT 企業，為新類別的案例開啟大門，方法是，從各種資料來源 (包括 IoT 時間序列) 提供分析的單一窗口。 | 
-| 在時間序列深入解析平台上建置自訂應用程式 | 「時間序列深入解析」支援 [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)。 SDK 提供豐富的控制項和簡化的存取查詢。 使用 SDK 在時間序列深入解析上建置自訂 IoT 應用程式，以符合您的業務需求。 您也可以直接使用時間序列深入解析[查詢 API](./time-series-insights-update-tsq.md)，將資料導到自訂 IoT 應用程式中。 |
+| 在時間序列深入解析平台上建置自訂應用程式 | 「時間序列深入解析」支援 [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)。 SDK 提供豐富的控制項和簡化的存取查詢。 使用 SDK 在時間序列深入解析上建置自訂 IoT 應用程式，以符合您的業務需求。 您也可以直接使用時間序列深入解析[查詢 API](./concepts-query-overview.md)，將資料導到自訂 IoT 應用程式中。 |
 
 ## <a name="next-steps"></a>後續步驟
 

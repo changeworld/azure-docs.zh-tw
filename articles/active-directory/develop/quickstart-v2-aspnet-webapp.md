@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 2e225d4d37f6bdb3d50b32f6464456e4f7fa0036
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6f4c18d0fb2a4414dc98100dcec85161fdda85f0
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853952"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554088"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入門：將 Microsoft 身分識別平台登入新增至 ASP.NET Web 應用程式
 在本快速入門中，您將利用程式碼範例了解 ASP.NET Web 應用程式如何從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。  (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
@@ -29,7 +29,7 @@ ms.locfileid: "82853952"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選項 1：註冊和自動設定您的應用程式，然後下載程式碼範例
 >
 > 1. 移至新的 [Azure 入口網站 - 應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)窗格。
-> 1. 輸入您的應用程式名稱，然後按一下 [註冊]  。
+> 1. 輸入您的應用程式名稱，然後按一下 [註冊]。
 > 1. 依照指示按一下滑鼠，即可下載並自動設定新的應用程式。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選項 2：註冊並手動設定您的應用程式和程式碼範例
@@ -40,13 +40,13 @@ ms.locfileid: "82853952"
 > 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 > 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
 > 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-> 1. 選取 [新增註冊]  。
-> 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
->      - 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `ASPNET-Quickstart`。
->      - 在 [重新導向 URL]  中新增 `https://localhost:44368/`，然後按一下 [註冊]  。
->      - 從左側流覽窗格的 [管理] 區段下，選取 [驗證] 
->          - 在 [隱含授與]  子區段底下，選取 [識別碼權杖]  。
->          - 然後選取 [儲存]  。
+> 1. 選取 [新增註冊]。
+> 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
+>      - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `ASPNET-Quickstart`。
+>      - 在 [重新導向 URL] 中新增 `https://localhost:44368/`，然後按一下 [註冊]。
+>      - 從左側流覽窗格的 [管理] 區段下，選取 [驗證]
+>          - 在 [隱含授與] 子區段底下，選取 [識別碼權杖]。
+>          - 然後選取 [儲存]。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式
@@ -76,7 +76,7 @@ ms.locfileid: "82853952"
 
 1. 將 ZIP 檔案解壓縮至根資料夾附近的本機資料夾 - 例如 **C:\Azure-Samples**
 1. 在 Visual Studio 中開啟解決方案 (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
-1. 根據 Visual Studio 版本而定，您可能需要在專案 `AppModelv2-WebApp-OpenIDConnect-DotNet` 上按一下滑鼠右鍵並選取 [還原 NuGet 套件] 
+1. 根據 Visual Studio 版本而定，您可能需要在專案 `AppModelv2-WebApp-OpenIDConnect-DotNet` 上按一下滑鼠右鍵並選取 [還原 NuGet 套件]
 1. 開啟套件管理員 (檢視 -> 其他視窗 -> 套件管理員主控台) 並執行 `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 
 > [!div renderon="docs"]
@@ -88,13 +88,13 @@ ms.locfileid: "82853952"
 >    其中：
 > - `Enter_the_Application_Id_here` - 是您註冊的應用程式所具備的應用程式識別碼。
 > - `Enter_the_Tenant_Info_Here` - 是下列選項之一：
->   - 如果您的應用程式支援 [僅限我的組織]  ，請將此值取代為 [租用戶識別碼]  或 [租用戶名稱]  (例如 contoso.onmicrosoft.com)
->   - 如果您的應用程式支援 [任何組織目錄中的帳戶]  ，請將此值取代為 `organizations`
->   - 如果您的應用程式支援 [所有 Microsoft 帳戶使用者]  ，請將此值取代為 `common`
+>   - 如果您的應用程式支援 [僅限我的組織]，請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] (例如 contoso.onmicrosoft.com)
+>   - 如果您的應用程式支援 [任何組織目錄中的帳戶]，請將此值取代為 `organizations`
+>   - 如果您的應用程式支援 [所有 Microsoft 帳戶使用者]，請將此值取代為 `common`
 >
 > > [!TIP]
-> > - 若要尋找 [應用程式識別碼]  、[目錄 (租用戶) 識別碼]  和 [支援的帳戶類型]  ，請移至 [概觀]  頁面
-> > - 確定 **Web.config** 中的 `redirectUri` 值對應至針對 AzureAD 中的應用程式註冊所定義的**重新導向 URI** (如果不是，請瀏覽至應用程式註冊的 [驗證]  功能表，並更新 [重新導向 URI]  以使兩者相符)
+> > - 若要尋找 [應用程式識別碼]、[目錄 (租用戶) 識別碼] 和 [支援的帳戶類型]，請移至 [概觀] 頁面
+> > - 確定 **Web.config** 中的 `redirectUri` 值對應至針對 AzureAD 中的應用程式註冊所定義的**重新導向 URI** (如果不是，請瀏覽至應用程式註冊的 [驗證] 功能表，並更新 [重新導向 URI] 以使兩者相符)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -109,7 +109,7 @@ ms.locfileid: "82853952"
 
 ### <a name="owin-middleware-nuget-packages"></a>OWIN 中介軟體 NuGet 套件
 
-您可以使用 OWIN 中介軟體套件在 ASP.NET 中搭配 OpenID Connect，設定具有以 Cookie 為基礎之驗證的驗證管線。 您可以在 Visual Studio 的 [套件管理員主控台]  中執行下列命令來安裝這些套件：
+您可以使用 OWIN 中介軟體套件在 ASP.NET 中搭配 OpenID Connect，設定具有以 Cookie 為基礎之驗證的驗證管線。 您可以在 Visual Studio 的 [套件管理員主控台] 中執行下列命令來安裝這些套件：
 
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -156,7 +156,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Where  |  |
+> |Where  | 描述 |
 > |---------|---------|
 > | `ClientId`     | 來自註冊於 Azure 入口網站中之應用程式的應用程式識別碼 |
 > | `Authority`    | 供使用者用於驗證的 STS 端點。 通常針對公用雲端為 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 為您租用戶的名稱、您的租用戶識別碼，或 *common* 以參考一般端點 (用於多租用戶應用程式) |

@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 581963c94129c36acbd8761d93e369281797fa9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c5e0779ce0dfe2730a60873316c66184e038a35
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654727"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039869"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>停用弱式密碼和密碼雜湊同步處理，以保護 Azure AD Domain Services 受控網域
+# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>停用弱式密碼和密碼雜湊同步處理，以保護 Azure Active Directory Domain Services 受控網域
 
 根據預設，Azure Active Directory Domain Services （Azure AD DS）可讓您使用 NTLM v1 和 TLS v1 之類的密碼。 某些繼承應用程式可能需要這些加密，但被視為弱式，如果您不需要，也可以停用這些加密。 如果您使用 Azure AD Connect 的內部部署混合式連線，您也可以停用 NTLM 密碼雜湊的同步處理。
 
 本文說明如何停用 NTLM v1 和 TLS v1 密碼，並停用 NTLM 密碼雜湊同步處理。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文，您需要下列資源：
 
@@ -33,7 +33,7 @@ ms.locfileid: "80654727"
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
-    * 如有需要，請[建立並設定 Azure Active Directory Domain Services 執行個體][create-azure-ad-ds-instance]。
+    * 如有需要，請[建立並設定 Azure Active Directory Domain Services 受控網域][create-azure-ad-ds-instance]。
 * 安裝並設定 Azure PowerShell。
     * 請依需要遵循指示，[安裝 Azure PowerShell 模組並連線至 Azure 訂用帳戶](/powershell/azure/install-az-ps)。
     * 務必使用 [Connect-AzAccount][Connect-AzAccount] Cmdlet 登入您的 Azure 訂用帳戶。
@@ -67,17 +67,17 @@ $DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServ
 $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
 ```
 
-最後，使用[get-azresource][Set-AzResource] Cmdlet，將定義的安全性設定套用至 Azure AD DS 受控網域。 指定第一個步驟中的 Azure AD DS 資源，以及上一個步驟中的安全性設定。
+最後，使用[get-azresource][Set-AzResource] Cmdlet，將定義的安全性設定套用至受控網域。 指定第一個步驟中的 Azure AD DS 資源，以及上一個步驟中的安全性設定。
 
 ```powershell
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
 
-將安全性設定套用至 Azure AD DS 受控網域需要幾分鐘的時間。
+將安全性設定套用至受控網域需要幾分鐘的時間。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解同步處理常式，請參閱[如何在 AZURE AD DS 受控網域中同步處理物件和認證][synchronization]。
+若要深入瞭解同步處理常式，請參閱[如何在受控網域中同步處理物件和認證][synchronization]。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 50b6244e5db6f812d1f9e3d23ea5fa88ea3bebea
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 2924a950e7b52a41939d1c06305bad2d1b243476
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456805"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554135"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式
 在本快速入門中，您將利用程式碼範例了解 ASP.NET Core Web 應用程式如何從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
@@ -29,7 +29,7 @@ ms.locfileid: "84456805"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選項 1：註冊和自動設定您的應用程式，然後下載程式碼範例
 >
 > 1. 移至 [Azure 入口網站 - 應用程式註冊](https://aka.ms/aspnetcore2-1-aad-quickstart-v2)。
-> 1. 輸入應用程式的名稱，並選取 [註冊]  。
+> 1. 輸入應用程式的名稱，並選取 [註冊]。
 > 1. 依照指示按一下滑鼠，即可下載並自動設定新的應用程式。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選項 2：註冊並手動設定您的應用程式和程式碼範例
@@ -40,15 +40,15 @@ ms.locfileid: "84456805"
 > 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 > 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
 > 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-> 1. 選取 [新增註冊]  。
-> 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
->    - 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `AspNetCore-Quickstart`。
->    - 在 [重新導向 URL]  中新增 `https://localhost:44321/`，然後選取 [註冊]  。
-> 1. 選取 [驗證]  功能表，然後新增下列資訊：
->    - 在 [重新導向 URL]  中新增 `https://localhost:44321/signin-oidc`，然後選取 [儲存]  。
->    - 在 [進階設定]  區段中，將 [登出 URL]  設定為 `https://localhost:44321/signout-oidc`。
->    - 在 [隱含授與]  底下，核取 [識別碼權杖]  。
->    - 選取 [儲存]  。
+> 1. 選取 [新增註冊]。
+> 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
+>    - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `AspNetCore-Quickstart`。
+>    - 在 [重新導向 URL] 中新增 `https://localhost:44321/`，然後選取 [註冊]。
+> 1. 選取 [驗證] 功能表，然後新增下列資訊：
+>    - 在 [重新導向 URL] 中新增 `https://localhost:44321/signin-oidc`，然後選取 [儲存]。
+>    - 在 [進階設定] 區段中，將 [登出 URL]設定為 `https://localhost:44321/signout-oidc`。
+>    - 在 [隱含授與] 底下，核取 [識別碼權杖]。
+>    - 選取 [儲存]。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式
@@ -79,7 +79,7 @@ ms.locfileid: "84456805"
 > #### <a name="step-3-run-your-visual-studio-project"></a>步驟 3：執行 Visual Studio 專案
 > 1. 將 ZIP 檔案解壓縮至根資料夾內的本機資料夾 - 例如 **C:\Azure-Samples**
 > 1. 在 Visual Studio 中開啟解決方案
-> 1. 編輯 **appsettings.json** 檔案。 找出 `ClientId`，並將 `ClientId` 的值更新為已註冊應用程式的 [應用程式 (用戶端) 識別碼]  值。
+> 1. 編輯 **appsettings.json** 檔案。 找出 `ClientId`，並將 `ClientId` 的值更新為已註冊應用程式的 [應用程式 (用戶端) 識別碼] 值。
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -90,14 +90,14 @@ ms.locfileid: "84456805"
 
 > [!div renderon="docs"]
 > 其中：
-> - `Enter_the_Application_Id_here` 是註冊於 Azure 入口網站中的應用程式所具備的**應用程式 (用戶端) 識別碼**。 您可以在應用程式的 [概觀]  頁面中找到**應用程式 (用戶端) 識別碼**。
+> - `Enter_the_Application_Id_here` 是註冊於 Azure 入口網站中的應用程式所具備的**應用程式 (用戶端) 識別碼**。 您可以在應用程式的 [概觀] 頁面中找到**應用程式 (用戶端) 識別碼**。
 > - `Enter_the_Tenant_Info_Here` 是下列其中一個選項：
->   - 如果您的應用程式支援 [僅限此組織目錄中的帳戶]  ，請將此值取代為 [租用戶識別碼]  或 [租用戶名稱]  (例如 contoso.microsoft.com)
->   - 如果您的應用程式支援 [任何組織目錄中的帳戶]  ，請將此值取代為 `organizations`
->   - 如果您的應用程式支援 [所有 Microsoft 帳戶使用者]  ，請將此值取代為 `common`
+>   - 如果您的應用程式支援 [僅限此組織目錄中的帳戶]，請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] (例如 contoso.microsoft.com)
+>   - 如果您的應用程式支援 [任何組織目錄中的帳戶]，請將此值取代為 `organizations`
+>   - 如果您的應用程式支援 [所有 Microsoft 帳戶使用者]，請將此值取代為 `common`
 >
 > > [!TIP]
-> > 若要尋找 [應用程式 (用戶端) 識別碼]  、[目錄 (租用戶) 識別碼]  和 [支援的帳戶類型]  的值，請在 Azure 入口網站中移至應用程式的 [概觀]  頁面。
+> > 若要尋找 [應用程式 (用戶端) 識別碼]、[目錄 (租用戶) 識別碼] 和 [支援的帳戶類型] 的值，請在 Azure 入口網站中移至應用程式的 [概觀] 頁面。
 
 ## <a name="more-information"></a>詳細資訊
 
@@ -108,7 +108,7 @@ ms.locfileid: "84456805"
 
 ### <a name="startup-class"></a>啟始類別
 
-Microsoft.AspNetCore.Authentication  中介軟體會使用啟始類別，這會在初始化主機處理序時執行：
+Microsoft.AspNetCore.Authentication 中介軟體會使用啟始類別，這會在初始化主機處理序時執行：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -145,10 +145,10 @@ public void ConfigureServices(IServiceCollection services)
 
 包含 `.AddAzureAd` 的程式碼行會將 Microsoft 身分識別驗證新增至您的應用程式。 然後設定為使用 Microsoft 身分識別平台端點登入。
 
-> |Where  |  |
+> |Where | 描述 |
 > |---------|---------|
 > | ClientId  | 應用程式 (用戶端) 識別碼 (在 Azure 入口網站中註冊的應用程式)。 |
-> | 授權單位 | 供使用者用於驗證的 STS 端點。 通常，這會是公用雲端的 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 為您的租用戶名稱或租用戶識別碼，或是使用 common  ，以參考一般端點 (用於多租用戶應用程式) |
+> | 授權單位 | 供使用者用於驗證的 STS 端點。 通常，這會是公用雲端的 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 為您的租用戶名稱或租用戶識別碼，或是使用 common，以參考一般端點 (用於多租用戶應用程式) |
 > | TokenValidationParameters | 用於權杖驗證的參數清單。 在此案例中，`ValidateIssuer` 設為 `false`，表示它可以接受來自任何個人或公司或學校帳戶的登入。 |
 
 

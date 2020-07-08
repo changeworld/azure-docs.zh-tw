@@ -8,24 +8,24 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/06/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a5ae321a4a97df5b5fa91bb239589c76c6601fc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743460"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039750"
 ---
-# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>針對 Azure AD Domain Services 受控網域的帳戶鎖定問題進行疑難排解
+# <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>針對 Azure Active Directory Domain Services 受控網域的帳戶鎖定問題進行疑難排解
 
-為避免重複的惡意登入嘗試，Azure AD DS 會在定義的閾值之後鎖定帳戶。 此帳戶鎖定也可能在沒有登入攻擊事件的情況下發生。 例如，如果使用者重複輸入錯誤的密碼或服務嘗試使用舊密碼，則帳戶會遭到鎖定。
+為避免重複的惡意登入嘗試，Azure Active Directory Domain Services （Azure AD DS）受控網域會在定義的閾值之後鎖定帳戶。 此帳戶鎖定也可能在沒有登入攻擊事件的情況下發生。 例如，如果使用者重複輸入錯誤的密碼或服務嘗試使用舊密碼，則帳戶會遭到鎖定。
 
 這篇疑難排解文章概述為什麼會發生帳戶鎖定，以及如何設定行為，以及如何檢查安全性審查以針對鎖定事件進行疑難排解。
 
 ## <a name="what-is-an-account-lockout"></a>什麼是帳戶鎖定？
 
-當達到未成功登入嘗試的已定義閾值時，Azure AD DS 中的使用者帳戶會遭到鎖定。 此帳戶鎖定行為的設計，是為了保護您免于重複的暴力密碼破解嘗試，這可能表示自動數位攻擊。
+當達到未成功登入嘗試的已定義閾值時，會鎖定 Azure AD DS 受控網域中的使用者帳戶。 此帳戶鎖定行為的設計，是為了保護您免于重複的暴力密碼破解嘗試，這可能表示自動數位攻擊。
 
 **根據預設，如果2分鐘內有5個不正確的密碼嘗試，帳戶會被鎖定30分鐘。**
 
@@ -33,9 +33,9 @@ ms.locfileid: "80743460"
 
 ### <a name="fine-grained-password-policy"></a>更細緻的密碼原則
 
-更細緻的密碼原則（Fgpp）可讓您將密碼和帳戶鎖定原則的特定限制套用到網域中的不同使用者。 FGPP 只會影響 Azure AD DS 受控網域內的使用者。 從 Azure AD 同步處理到 Azure AD DS 受控網域的雲端使用者和網域使用者，只會受到 Azure AD DS 內密碼原則的影響。 其在 Azure AD 或內部部署目錄中的帳戶不會受到影響。
+更細緻的密碼原則（Fgpp）可讓您將密碼和帳戶鎖定原則的特定限制套用到網域中的不同使用者。 FGPP 只會影響受控網域中的使用者。 從 Azure AD 同步處理至受控網域的雲端使用者和網域使用者，只會受到受控網域內的密碼原則影響。 其在 Azure AD 或內部部署目錄中的帳戶不會受到影響。
 
-原則會透過 Azure AD DS 受控網域中的群組關聯來散發，而您所做的任何變更都會在下一次使用者登入時套用。 變更原則並不會解除鎖定已鎖定的使用者帳戶。
+原則會透過受控網域中的群組關聯來散發，而您所做的任何變更都會在下一次使用者登入時套用。 變更原則並不會解除鎖定已鎖定的使用者帳戶。
 
 如需更細緻的密碼原則的詳細資訊，以及直接在 Azure AD DS 與從 Azure AD 中同步處理的使用者之間的差異，請參閱[設定密碼和帳戶鎖定原則][configure-fgpp]。
 
@@ -44,13 +44,13 @@ ms.locfileid: "80743460"
 帳戶被鎖定的最常見原因，沒有任何惡意的意圖或因素，包括下列案例：
 
 * **使用者已將自己鎖定。**
-    * 最近的密碼變更之後，使用者是否繼續使用先前的密碼？ 預設的帳戶鎖定原則 5 2 分鐘內失敗的嘗試次數，可能是因為使用者不小心重試舊密碼所導致。
+    * 最近的密碼變更之後，使用者是否繼續使用先前的密碼？ 在2分鐘內，5次失敗嘗試的預設帳戶鎖定原則，可能是因為使用者不小心重試舊密碼所導致。
 * **有一個具有舊密碼的應用程式或服務。**
     * 如果應用程式或服務使用帳戶，這些資源可能會重複嘗試使用舊密碼登入。 此行為會導致帳戶遭到鎖定。
     * 嘗試將跨多個不同應用程式或服務的帳戶使用降到最低，並記錄使用認證的位置。 如果帳戶密碼已變更，請據以更新相關聯的應用程式或服務。
 * **已在不同的環境中變更密碼，但新密碼尚未同步處理。**
-    * 如果帳戶密碼在 Azure AD DS 外部變更（例如在內部內部部署 AD DS 環境中），則密碼變更可能需要幾分鐘的時間，才能透過 Azure AD 和 Azure AD DS 同步處理。
-    * 在密碼同步處理常式完成之前，嘗試透過 Azure AD DS 登入資源的使用者，會導致帳戶遭到鎖定。
+    * 如果帳戶密碼在受控網域外部變更（例如在內部內部部署 AD DS 環境中），則密碼變更可能需要幾分鐘的時間，才能透過 Azure AD 和受控網域進行同步處理。
+    * 嘗試在密碼同步處理常式完成之前登入受控網域中資源的使用者，會導致帳戶遭到鎖定。
 
 ## <a name="troubleshoot-account-lockouts-with-security-audits"></a>使用安全性審核來疑難排解帳戶鎖定
 
@@ -75,11 +75,11 @@ AADDomainServicesAccountLogon
 | where "driley" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
 ```
 
-在2019年6月26日上午9點，查看所有帳戶鎖定事件 2019年7月1日午夜，以日期和時間遞增排序：
+在2020年6月26日上午9點，查看所有帳戶鎖定事件 2020年7月1日午夜，以日期和時間遞增排序：
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01)
+| where TimeGenerated >= datetime(2020-06-26 09:00) and TimeGenerated <= datetime(2020-07-01)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
@@ -88,7 +88,7 @@ AADDomainServicesAccountManagement
 
 如需更細緻的密碼原則來調整帳戶鎖定閾值的詳細資訊，請參閱[設定密碼和帳戶鎖定原則][configure-fgpp]。
 
-如果您仍有將 VM 加入 Azure AD DS 受控網域的問題，請尋找 [說明]，[並開啟 Azure Active Directory 的支援票證][azure-ad-support]。
+如果您仍有將 VM 加入受控網域的問題，請尋找 [說明]，[並開啟 Azure Active Directory 的支援票證][azure-ad-support]。
 
 <!-- INTERNAL LINKS -->
 [configure-fgpp]: password-policy.md

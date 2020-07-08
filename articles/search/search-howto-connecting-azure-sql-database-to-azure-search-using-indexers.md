@@ -1,7 +1,7 @@
 ---
 title: 搜尋 Azure SQL 資料
 titleSuffix: Azure Cognitive Search
-description: 使用索引子從 Azure SQL Database 匯入資料，以在 Azure 認知搜尋中進行全文檢索搜尋。 本文涵蓋連線、索引子設定以及資料擷取。
+description: 使用索引子從 Azure SQL Database 或 SQL 受控執行個體匯入資料，以在 Azure 認知搜尋中進行全文檢索搜尋。 本文涵蓋連線、索引子設定以及資料擷取。
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,20 +9,20 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 862b3056445bddb358e6485ce5fec4de4d53eace
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74113297"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039274"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 認知搜尋索引子連接到 Azure SQL Database 內容並為其編制索引
+# <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 認知搜尋索引子連接到 Azure SQL 內容並為其編制索引
 
-您必須先填入資料，才可以查詢[Azure 認知搜尋索引](search-what-is-an-index.md)。 如果資料位於 Azure SQL 資料庫中，**適用于 Azure SQL Database 的 Azure 認知搜尋索引子**（或簡稱**Azure SQL 索引子**）可以自動化編制索引程式，這表示較少的程式碼會寫入，而不是要在意的基礎結構。
+您必須先填入資料，才可以查詢[Azure 認知搜尋索引](search-what-is-an-index.md)。 如果資料位於 Azure SQL Database 或 SQL 受控執行個體中，**適用于 Azure SQL Database 的 Azure 認知搜尋索引子**（或簡稱**Azure SQL 索引子**）可以自動化編制索引程式，這表示寫入較少的程式碼，而不需要在意的基礎結構。
 
-本文不僅介紹使用[索引子](search-indexer-overview.md)的機制，也會說明只在 Azure SQL 資料庫上出現的功能 (例如，整合變更追蹤)。 
+本文涵蓋使用[索引子](search-indexer-overview.md)的機制，但也會描述僅適用于 AZURE SQL DATABASE 或 SQL 受控執行個體的功能（例如，整合式變更追蹤）。 
 
-除了 Azure SQL 資料庫以外，Azure 認知搜尋還提供[Azure Cosmos DB](search-howto-index-cosmosdb.md)、 [azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)和[azure 資料表儲存體](search-howto-indexing-azure-tables.md)的索引子。 若要要求其他資料來源的支援，請在[Azure 認知搜尋意見反應論壇](https://feedback.azure.com/forums/263029-azure-search/)上提供您的意見反應。
+除了 Azure SQL Database 和 SQL 受控執行個體之外，Azure 認知搜尋還提供[Azure Cosmos DB](search-howto-index-cosmosdb.md)、 [azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)和[azure 資料表儲存體](search-howto-indexing-azure-tables.md)的索引子。 若要要求其他資料來源的支援，請在[Azure 認知搜尋意見反應論壇](https://feedback.azure.com/forums/263029-azure-search/)上提供您的意見反應。
 
 ## <a name="indexers-and-data-sources"></a>索引子和資料來源
 
@@ -62,7 +62,7 @@ ms.locfileid: "74113297"
 1. 建立資料來源：
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2019-05-06
+    POST https://myservice.search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -80,8 +80,8 @@ ms.locfileid: "74113297"
 
 3. 利用命名及參考資料來源和目標索引來建立索引子：
 
-    ```
-    POST https://myservice.search.windows.net/indexers?api-version=2019-05-06
+   ```
+    POST https://myservice.search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -90,12 +90,14 @@ ms.locfileid: "74113297"
         "dataSourceName" : "myazuresqldatasource",
         "targetIndexName" : "target index name"
     }
-    ```
+   ```
 
 以這種方式建立索引子不需依照排程。 索引子一旦建立好就會自動執行。 您可以在任何時候使用 **執行索引子** 要求再執行一次：
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2019-05-06
+```
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2020-06-30
     api-key: admin-key
+```
 
 您可以自訂數個層面的索引子行為，例如，批次處理大小，以及在索引子執行失敗前可略過多少份文件。 如需詳細資訊，請參閱[建立索引子 API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)。
 
@@ -103,11 +105,14 @@ ms.locfileid: "74113297"
 
 若要監視索引子狀態及執行歷程紀錄 (項目索引編製數量、失敗等)，請使用 **索引子狀態** 要求：
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2019-05-06
+```
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2020-06-30
     api-key: admin-key
+```
 
 回應看起來應該如下所示：
 
+```
     {
         "\@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
         "status":"running",
@@ -138,14 +143,16 @@ ms.locfileid: "74113297"
             ... earlier history items
         ]
     }
+```
 
 執行歷程記錄包含多達 50 個最近完成的執行，以倒序的方式進行排序 (因此最新的執行會排在回應中的第一位)。
-有關回應的的其他資訊可在 [取得索引子狀態](https://go.microsoft.com/fwlink/p/?LinkId=528198)
+有關回應的的其他資訊可在 [取得索引子狀態](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)
 
 ## <a name="run-indexers-on-a-schedule"></a>依照排程執行索引子
 您也可以排列索引子，依照排程定期執行。 若要執行此工作，請在建立或更新索引子時新增**排程**屬性。 下方範例顯示以 PUT 要求更新索引子：
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
+```
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -154,10 +161,11 @@ ms.locfileid: "74113297"
         "targetIndexName" : "target index name",
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
+```
 
 **間隔** 參數是必需的。 間隔指兩個連續索引子開始執行的時間。 允許的最小間隔為 5 分鐘；最長間隔為一天。 其必須格式化為 XSD "dayTimeDuration" 值 ( [ISO 8601 持續時間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) 值的受限子集)。 間隔的模式為： `P(nD)(T(nH)(nM))`。 範例：`PT15M` 代表每隔 15 分鐘，`PT2H` 代表每隔 2 個小時。
 
-如需定義索引子排程的詳細資訊，請參閱[如何排定 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
+如需有關定義索引子排程的詳細資訊，請參閱[如何排程 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
 
 <a name="CaptureChangedRows"></a>
 
@@ -168,19 +176,20 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 整合變更追蹤原則
 如果您的 SQL 資料庫支援[變更追蹤](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)，我們建議使用**SQL 整合變更追蹤原則**。 這是最有效率的原則。 此外，它可讓 Azure 認知搜尋識別已刪除的資料列，而不需在資料表中加入明確的「虛刪除」資料行。
 
-#### <a name="requirements"></a>需求 
+#### <a name="requirements"></a>規格需求 
 
 + 資料庫版本需求：
   * SQL Server 2012 SP3 和更新版本 (若您在 Azure VM 上使用 SQL Server)。
-  * Azure SQL Database  V12 (若您使用 Azure SQL Database )。
+  * Azure SQL Database 或 SQL 受控執行個體。
 + 僅限資料表 (沒有檢視)。 
 + 在資料庫上，針對資料表[啟用變更追蹤](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server)。 
 + 資料表上沒有複合主索引鍵 (主索引鍵包含一個以上的資料行)。  
 
-#### <a name="usage"></a>使用量
+#### <a name="usage"></a>使用方式
 
 若要使用此原則，請以下列方式建立或更新您的資料來源：
 
+```
     {
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
@@ -190,6 +199,7 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
            "@odata.type" : "#Microsoft.Azure.Search.SqlIntegratedChangeTrackingPolicy"
       }
     }
+```
 
 使用 SQL 整合式變更追蹤原則時，請不要指定個別的資料刪除偵測原則，因為本原則已內建支援刪除資料列的識別。 不過，針對要「自動」偵測的刪除，您搜尋索引中的文件索引鍵必須與 SQL 資料表中的主索引鍵一樣。 
 
@@ -202,7 +212,7 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 
 這個變更偵測原則依賴在上次更新資料列時擷取版本或時間的「上限標準」資料行。 若您使用檢視，就必須使用上限標準原則。 上限標準資料行必須符合下列需求。
 
-#### <a name="requirements"></a>需求 
+#### <a name="requirements"></a>規格需求 
 
 * 所有插入都有指定資料行的值。
 * 所有項目更新變更資料行的值。
@@ -212,10 +222,11 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 > [!IMPORTANT] 
 > 我們強烈建議針對上限標記資料行使用 [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) 資料類型。 如果使用其他任何資料類型，就無法保證變更追蹤會擷取與索引子查詢同時執行之交易中發生的所有變更。 在具備唯讀複本的設定中使用 **rowversion** 時，您必須指向主要複本上的索引子。 只有主要複本可用於資料同步處理案例。
 
-#### <a name="usage"></a>使用量
+#### <a name="usage"></a>使用方式
 
 若要使用高標原則，請以下列方式建立或更新您的資料來源：
 
+```
     {
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
@@ -226,27 +237,59 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
            "highWaterMarkColumnName" : "[a rowversion or last_updated column name]"
       }
     }
+```
 
 > [!WARNING]
-> 如果來源資料表沒有上限標記資料行上的索引，SQL 索引子所使用的查詢可能會超時。特別是，當`ORDER BY [High Water Mark Column]`資料表包含許多資料列時，子句需要索引才能有效率地執行。
+> 如果來源資料表沒有上限標記資料行上的索引，SQL 索引子所使用的查詢可能會超時。特別是， `ORDER BY [High Water Mark Column]` 當資料表包含許多資料列時，子句需要索引才能有效率地執行。
 >
 >
+
+<a name="convertHighWaterMarkToRowVersion"></a>
+
+##### <a name="converthighwatermarktorowversion"></a>convertHighWaterMarkToRowVersion
+
+如果您使用 [上限] 資料行的[rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql)資料類型，請考慮使用 [ `convertHighWaterMarkToRowVersion` 索引子] 設定。 `convertHighWaterMarkToRowVersion` 會執行兩個作業︰
+
+* 請在索引子 SQL 查詢中，使用 rowversion 資料類型做為上限標記資料行。 使用正確的資料類型可改善索引子查詢效能。
+* 在索引子查詢執行之前，從 rowversion 值減去1。 具有1到多個聯結的視圖可能具有重複 rowversion 值的資料列。 減去1可確保索引子查詢不會錯過這些資料列。
+
+若要啟用這項功能，請使用下列設定來建立或更新索引子：
+
+```
+    {
+      ... other indexer definition properties
+     "parameters" : {
+            "configuration" : { "convertHighWaterMarkToRowVersion" : true } }
+    }
+```
+
+<a name="queryTimeout"></a>
+
+##### <a name="querytimeout"></a>queryTimeout
 
 如果您遇到逾時錯誤，您可以使用 `queryTimeout` 索引子組態設定，將查詢逾時設定為高於預設逾時 (5 分鐘) 的值。 例如，若要將逾時設定為 10 分鐘，請使用下列組態建立或更新索引子︰
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+```
+
+<a name="disableOrderByHighWaterMarkColumn"></a>
+
+##### <a name="disableorderbyhighwatermarkcolumn"></a>disableOrderByHighWaterMarkColumn
 
 您也可以停用 `ORDER BY [High Water Mark Column]` 子句。 不過不建議您這麼做，因為如果索引子的執行因發生錯誤而中斷，索引子必須在稍後執行時重新處理所有資料列，即便索引子在中斷發生當時已幾乎處理好所有資料列，也是如此。 若要停用 `ORDER BY` 子句，請在索引子定義中使用 `disableOrderByHighWaterMarkColumn` 設定︰  
 
+```
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "disableOrderByHighWaterMarkColumn" : true } }
     }
+```
 
 ### <a name="soft-delete-column-deletion-detection-policy"></a>虛刪除資料行刪除偵測原則
 當從來源資料表中刪除資料列時，您應該也想刪除在搜尋索引內的那些資料列。 若您使用 SQL 整合變更追蹤原則，就能幫您處理這件工作。 但是，上限標準變更追蹤原則無法幫助您刪除資料列。 怎麼辦？
@@ -255,6 +298,7 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 
 當您使用虛刪除技術時，可以在建立或升級資料來源時，按照下列方式指定虛刪除原則：
 
+```
     {
         …,
         "dataDeletionDetectionPolicy" : {
@@ -263,13 +307,14 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
            "softDeleteMarkerValue" : "[the value that indicates that a row is deleted]"
         }
     }
+```
 
 **softDeleteMarkerValue** 必須為一個字串 (使用代表實際值的字串)。 例如，如果您有整數資料行，且其中的已刪除資料列標記為值 1，請使用 `"1"`。 如果您有 BIT 資料行，且其中的已刪除資料列標記為布林值 true，則請使用字串常值 `True` 或 `true`，大小寫並不重要。
 
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>SQL 與 Azure 認知搜尋資料類型之間的對應
-| SQL 資料類型 | 允許的目標索引欄位類型 | 注意 |
+| SQL 資料類型 | 允許的目標索引欄位類型 | 備註 |
 | --- | --- | --- |
 | bit |Edm.Boolean、Edm.String | |
 | int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String | |
@@ -281,7 +326,7 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 | uniqueidentifer |Edm.String | |
 | geography |Edm.GeographyPoint |僅支援使用 SRID 4326 (預設) 之 POINT 類型的 geography 執行個體。 |
 | rowversion |N/A |資料列版本的資料行無法儲存在搜尋索引中，但可用於追蹤變更。 |
-| time、timespan、binary、varbinary、image、xml、geometry、CLR 類型 |N/A |不受支援 |
+| time、timespan、binary、varbinary、image、xml、geometry、CLR 類型 |N/A |不支援 |
 
 ## <a name="configuration-settings"></a>組態設定
 SQL 索引子公開數個組態設定︰
@@ -293,11 +338,13 @@ SQL 索引子公開數個組態設定︰
 
 這些設定會用於索引子定義中的 `parameters.configuration` 物件。 例如，若要將查詢逾時設定為 10 分鐘，請使用下列組態建立或更新索引子︰
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+```
 
 ## <a name="faq"></a>常見問題集
 
@@ -311,7 +358,7 @@ SQL 索引子公開數個組態設定︰
 
 **問：在 Azure 上的 IaaS 中執行的資料庫 SQL Server 以外，我可以使用 Azure SQL 索引子嗎？**
 
-不可以。 我們不支援這類案例，因為我們尚未使用 SQL Server 以外的資料庫來測試索引子。  
+否。 我們不支援這類案例，因為我們尚未使用 SQL Server 以外的資料庫來測試索引子。  
 
 **問：我可以建立多個依排程執行的索引子嗎？**
 
@@ -323,17 +370,17 @@ SQL 索引子公開數個組態設定︰
 
 **問：是否可以在[容錯移轉叢集](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)中使用次要複本作為資料來源？**
 
-視情況而定。 針對完整編製索引的資料表或檢視，您可以使用次要複本。 
+要看情況而定。 針對完整編製索引的資料表或檢視，您可以使用次要複本。 
 
 針對累加式編制索引，Azure 認知搜尋支援兩種變更偵測原則： SQL 整合式變更追蹤和上限標準。
 
-在唯讀複本中，SQL 資料庫不支援整合變更追蹤。 因此，您必須使用上限標準原則。 
+在唯讀複本上，SQL Database 不支援整合式變更追蹤。 因此，您必須使用上限標準原則。 
 
-我們的標準建議是，針對上限標記資料行使用 rowversion 資料類型。 不過，使用 rowversion 依賴 SQL Database 的 `MIN_ACTIVE_ROWVERSION` 函式，但唯讀複本上不支援此函式。 因此，如果您使用 rowversion，就必須將索引子指向主要複本。
+我們的標準建議是，針對上限標記資料行使用 rowversion 資料類型。 不過，使用 rowversion 依賴于 `MIN_ACTIVE_ROWVERSION` 唯讀複本上不支援的函數。 因此，如果您使用 rowversion，就必須將索引子指向主要複本。
 
 如果您嘗試在唯讀複本上使用 rowversion，將會看到下列錯誤： 
 
-    "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
+「次要（唯讀）可用性複本上不支援使用 rowversion 資料行進行變更追蹤。 請更新資料來源，並指定與主要可用性複本的連接。目前資料庫的 [可更新性] 屬性為 [READ_ONLY]。
 
 **問：我是否可以針對上限標準變更追蹤使用替代的非 rowversion 資料行？**
 

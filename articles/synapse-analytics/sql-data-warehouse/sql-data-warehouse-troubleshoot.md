@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6f697cf205af9bdfaadfe20e123bcf0b4935c90f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 44755ab13b95db1ffec8183d00a4054e291c5a50
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829982"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039019"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Synapse SQL 疑難排解
 
@@ -28,7 +28,7 @@ ms.locfileid: "83829982"
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 使用者 'NT AUTHORITY\ANONYMOUS LOGON' 登入失敗。 (Microsoft SQL Server，錯誤：18456) | 當 Azure AD 使用者嘗試連線到主要資料庫，但主要資料庫中沒有使用者時，就會發生此錯誤。  若要修正此問題，請在連線時間指定您需要連線的 SQL 集區，或將使用者新增到 master 資料庫。  如需詳細資訊，請參閱 [安全性概觀](sql-data-warehouse-overview-manage-security.md) 一文。 |
 | 伺服器主體 "MyUserName" 在目前的資訊安全內容下無法存取「主要」資料庫。 無法開啟使用者預設資料庫。 登入失敗。 使用者 'MyUserName' 登入失敗。 (Microsoft SQL Server，錯誤：916) | 當 Azure AD 使用者嘗試連線到主要資料庫，但主要資料庫中沒有使用者時，就會發生此錯誤。  若要修正此問題，請在連線時間指定您需要連線的 SQL 集區，或將使用者新增到 master 資料庫。  如需詳細資訊，請參閱 [安全性概觀](sql-data-warehouse-overview-manage-security.md) 一文。 |
-| CTAIP 錯誤                                                  | 若已在 SQL 伺服器 master 資料庫上建立登入，但未在 SQL 資料庫上建立，則會發生這個錯誤。  如果您遇到這個錯誤，請查看 [安全性概觀](sql-data-warehouse-overview-manage-security.md) 一文。  本文說明如何在 master 資料庫上建立登入和使用者，接著如何在 SQL 資料庫上建立使用者。 |
+| CTAIP 錯誤                                                  | 在 SQL Database master 資料庫上建立登入，而不是在特定的 SQL 資料庫中，就會發生這個錯誤。  如果您遇到這個錯誤，請查看 [安全性概觀](sql-data-warehouse-overview-manage-security.md) 一文。  本文說明如何在 master 資料庫中建立登入和使用者，以及如何在 SQL 資料庫中建立使用者。 |
 | 遭到防火牆封鎖                                          | 為確保只有已知 IP 位址擁有資料庫的存取權，SQL 集區受到防火牆所保護。 防火牆預設將會受到保護，因此您在可以連線之前，必須明確啟用單一 IP 位址或位址範圍。  若要設定防火牆的存取，請遵循[佈建指示](create-data-warehouse-portal.md)中[設定用戶端 IP 的伺服器防火牆存取](create-data-warehouse-portal.md)的步驟。 |
 | 無法與工具或驅動程式連線                           | Synapse SQL 集區建議使用 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[適用於 Visual Studio 的 SSDT](sql-data-warehouse-install-visual-studio.md) 或 [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 來查詢您的資料。 如需驅動程式和連接到 Azure Synapse 的詳細資訊，請參閱 [Azure Synapse 的驅動程式](sql-data-warehouse-connection-strings.md)和[連線到 Azure Synapse](sql-data-warehouse-connect-overview.md)文章。 |
 
@@ -59,7 +59,7 @@ ms.locfileid: "83829982"
 | 訊息 40847：無法執行這項作業，因為伺服器可能會超過允許的資料庫交易單位配額 45000。 | 減少您正在嘗試建立的資料庫 [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md)，或是[要求增加配額](sql-data-warehouse-get-started-create-support-ticket.md)。 |
 | 調查空間使用量                              | 請參閱 [資料表大小](sql-data-warehouse-tables-overview.md#table-size-queries) ，以了解您系統的空間使用量。 |
 | 協助管理資料表                                    | 請參閱[資料表概觀](sql-data-warehouse-tables-overview.md)一文，以協助管理您的資料表。  本文還包含更詳細主題的連結，例如[資料表的資料類型](sql-data-warehouse-tables-data-types.md)、[散發資料表](sql-data-warehouse-tables-distribute.md)、[編製資料表的索引](sql-data-warehouse-tables-index.md)、[分割資料表](sql-data-warehouse-tables-partition.md)、[維護資料表統計資料](sql-data-warehouse-tables-statistics.md)和[暫存資料表](sql-data-warehouse-tables-temporary.md)。 |
-| Azure 入口網站中的透明資料加密 (TDE) 進度列不會更新 | 您可以透過 [PowerShell (英文)](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 檢視 TDE 的狀態。 |
+| Azure 入口網站中的透明資料加密 (TDE) 進度列不會更新 | 您可以透過[PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)來查看 TDE 的狀態。 |
 
 ## <a name="differences-from-sql-database"></a>與 SQL Database 不同之處
 

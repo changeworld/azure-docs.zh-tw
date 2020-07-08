@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2019
-ms.openlocfilehash: c393eb782c2ff16eb5b3e5967b39938dfe2f1534
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c03eb9d30d204cbfb7fcd8971dd84f2ba5a7737
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426474"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039172"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>如何啟動 Azure 串流分析作業
 
@@ -54,7 +54,7 @@ Start-AzStreamAnalyticsJob `
 
 **OutputStartMode**有三個選項： *JobStartTime*、 *CustomTime*和*LastOutputEventTime*。 如果此屬性不存在，則預設值為*JobStartTime*。 如需這些選項的詳細資訊，請參閱上面的。
 
-如需`Start-AzStreamAnalyitcsJob` Cmdlet 的詳細資訊，請參閱[AzStreamAnalyticsJob 參考](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob)。
+如需 Cmdlet 的詳細資訊 `Start-AzStreamAnalyitcsJob` ，請參閱[AzStreamAnalyticsJob 參考](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob)。
 
 ## <a name="next-steps"></a>後續步驟
 

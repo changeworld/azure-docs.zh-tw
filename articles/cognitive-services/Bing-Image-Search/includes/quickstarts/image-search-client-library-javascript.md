@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: a37439d24a39a16e8bb51a09c9a33abecfa36fc0
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: df24e04373b60172236c462eb4461e59ba9d1415
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78899496"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805556"
 ---
 Bing 影像搜尋用戶端程式庫是 API 的包裝函式，而且功能相同，您可以透過此快速入門，完成初次使用此 SDK 進行的影像搜尋。 這個簡單的 JavaScript 應用程式會傳送影像搜尋查詢、剖析 JSON 回應，以及顯示第一個回傳影像的 URL。
 
 此範例的原始程式碼可從 [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) 取得，其中還有其他錯誤處理和註釋。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [適用於 Node.js 的認知服務影像搜尋 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
     * 使用 `npm install @azure/cognitiveservices-imagesearch` 進行安裝
@@ -95,7 +95,6 @@ Bing 影像搜尋用戶端程式庫是 API 的包裝函式，而且功能相同�
 
 * [什麼是 Bing 影像搜尋？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)
 * [試用線上互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
-* [取得免費認知服務存取金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Azure 認知服務 SDK 的 Node.js 範例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 * [Azure 認知服務文件](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
