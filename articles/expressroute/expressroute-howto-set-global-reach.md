@@ -4,15 +4,15 @@ description: 本文可協助您將 ExpressRoute 線路連結在一起，在內�
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: jaredro
-ms.openlocfilehash: 587a17659a412d6f894faf5a744a7d9c444935c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddf4625b8e638f7cb13999136ec5aa1afc99418a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738408"
 ---
 # <a name="configure-expressroute-global-reach"></a>設定 ExpressRoute Global Reach
 
@@ -101,7 +101,7 @@ ms.locfileid: "80656735"
 
 當先前的作業完成時，您將可透過兩個 ExpressRoute 線路，在內部部署網路之間進行連線。
 
-## <a name="verify-the-configuration"></a>驗證組態
+## <a name="verify-the-configuration"></a>驗證設定
 
 使用下列命令來確認進行設定之線路 (例如上述範例中的線路 1) 上的設定。
 ```azurepowershell-interactive

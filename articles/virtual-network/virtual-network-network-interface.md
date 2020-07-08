@@ -5,20 +5,20 @@ description: 了解何謂網路介面，以及要如何建立網路介面、變�
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: 69dc34c3989adee3af69613617368c29072a7650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1eb32fe4950a3a27ec97026b9170d08996de0c89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186096"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707424"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>建立、變更或刪除網路介面
 
@@ -49,16 +49,16 @@ ms.locfileid: "82186096"
 
     |設定|必要項？|詳細資料|
     |---|---|---|
-    |名稱|是|名稱必須是您選取的資源群組中唯一的名稱。 在經過一段時間後，您的 Azure 訂用帳戶中可能會有好幾個網路介面。 如需建立命名慣例以便更輕鬆管理數個網路介面時的建議，請參閱[命名慣例](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming)。 建立網路介面之後，便無法變更名稱。|
+    |名稱|Yes|名稱必須是您選取的資源群組中唯一的名稱。 在經過一段時間後，您的 Azure 訂用帳戶中可能會有好幾個網路介面。 如需建立命名慣例以便更輕鬆管理數個網路介面時的建議，請參閱[命名慣例](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming)。 建立網路介面之後，便無法變更名稱。|
     |虛擬網路|是|選取網路介面的虛擬網路。 您只能將網路介面指派給和網路介面的訂用帳戶和位置相同的虛擬網路。 網路介面建立後，即無法變更為它指派的虛擬網路。 新增網路介面的虛擬機器必須也位於和網路介面相同的位置和訂用帳戶。|
-    |子網路|是|選取您所選虛擬網路內的子網路。 在網路介面建立後，您可以變更為它指派的子網路。|
-    |私人 IP 位址指派|是| 在此設定中，您選擇的是 IPv4 位址指派方法。 選擇下列任一指派方法︰**動態︰** 若選取此選項，Azure 會自動指派您所選子網路位址空間中的下一個可用位址。 **靜態︰** 若選取此選項，您必須手動指派所選子網路位址空間中的可用 IP 位址。 直到您變更靜態和動態位址或刪除網路介面，位址才會變更。 您可以在建立網路介面後變更指派方法。 Azure DHCP 伺服器會將此位址指派給虛擬機器作業系統內的網路介面。|
-    |網路安全性群組|否| 保持設為 [無]****、選取現有的[網路安全性群組](security-overview.md)或[建立網路安全性群組](tutorial-filter-network-traffic.md)。 網路安全性群組可讓您篩選進出網路介面的網路流量。 您可以將網路安全性群組套用至網路介面或不套用。 您也可以將網路安全性群組套用至網路介面的目的地子網路或不套用。 當網路安全性群組套用至網路介面和網路介面的目的地子網路後，有時會發生非預期結果。 若要為套用至網路介面和子網路的網路安全性群組進行疑難排解，請參閱[針對網路安全性群組進行疑難排解](diagnose-network-traffic-filter-problem.md)。|
-    |訂用帳戶|是|選取其中一個 Azure [訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 連接網路介面的虛擬機器和虛擬機器連線的虛擬網路，必須存在於相同的訂用帳戶。|
-    |私人 IP 位址 (IPv6)|否| 如果您選取此核取方塊，除了指派給網路介面的 IPv4 位址以外，IPv6 位址也會指派給網路介面。 如需使用 IPv6 搭配網路介面的重要資訊，請參閱本文的 IPv6 一節。 您無法選取 IPv6 位址的指派方法。 如果您選擇要指派 IPv6 位址，會使用動態方法指派。
+    |子網路|Yes|選取您所選虛擬網路內的子網路。 在網路介面建立後，您可以變更為它指派的子網路。|
+    |私人 IP 位址指派|Yes| 在此設定中，您選擇的是 IPv4 位址指派方法。 選擇下列任一指派方法︰**動態︰** 若選取此選項，Azure 會自動指派您所選子網路位址空間中的下一個可用位址。 **靜態︰** 若選取此選項，您必須手動指派所選子網路位址空間中的可用 IP 位址。 直到您變更靜態和動態位址或刪除網路介面，位址才會變更。 您可以在建立網路介面後變更指派方法。 Azure DHCP 伺服器會將此位址指派給虛擬機器作業系統內的網路介面。|
+    |網路安全性群組|No| 保持設為 [無]****、選取現有的[網路安全性群組](security-overview.md)或[建立網路安全性群組](tutorial-filter-network-traffic.md)。 網路安全性群組可讓您篩選進出網路介面的網路流量。 您可以將網路安全性群組套用至網路介面或不套用。 您也可以將網路安全性群組套用至網路介面的目的地子網路或不套用。 當網路安全性群組套用至網路介面和網路介面的目的地子網路後，有時會發生非預期結果。 若要為套用至網路介面和子網路的網路安全性群組進行疑難排解，請參閱[針對網路安全性群組進行疑難排解](diagnose-network-traffic-filter-problem.md)。|
+    |訂用帳戶|Yes|選取其中一個 Azure [訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 連接網路介面的虛擬機器和虛擬機器連線的虛擬網路，必須存在於相同的訂用帳戶。|
+    |私人 IP 位址 (IPv6)|No| 如果您選取此核取方塊，除了指派給網路介面的 IPv4 位址以外，IPv6 位址也會指派給網路介面。 如需使用 IPv6 搭配網路介面的重要資訊，請參閱本文的 IPv6 一節。 您無法選取 IPv6 位址的指派方法。 如果您選擇要指派 IPv6 位址，會使用動態方法指派。
     |IPv6 名稱 (只有在核取 [私人 IP 位址 (IPv6)]**** 核取方塊時才會顯示) |是，如果核取 [私人 IP 位址 (IPv6)]**** 核取方塊。| 這個名稱會指派給網路介面的次要 IP 組態。 若要深入了解 IP 設定，請參閱[檢視網路介面設定](#view-network-interface-settings)。|
-    |資源群組|是|選取現有的[資源群組](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)，或建立一個群組。 網路介面可以位於與其連結的虛擬機器或虛擬機器所連線的虛擬網路相同或不同的資源群組中。|
-    |Location|是|連接網路介面的虛擬機器和虛擬機器連線的虛擬網路，必須存在於相同的[地區](https://azure.microsoft.com/regions) (亦稱為區域)。|
+    |資源群組|Yes|選取現有的[資源群組](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)，或建立一個群組。 網路介面可以位於與其連結的虛擬機器或虛擬機器所連線的虛擬網路相同或不同的資源群組中。|
+    |位置|Yes|連接網路介面的虛擬機器和虛擬機器連線的虛擬網路，必須存在於相同的[地區](https://azure.microsoft.com/regions) (亦稱為區域)。|
 
 當您建立網路介面時，入口網站並未提供將公用 IP 位址指派給網路介面的選項，然而在使用入口網站建立虛擬機器時，入口網站會建立公用 IP 位址，並將它指派給網路介面。 若要了解如何在建立網路介面之後對其新增公用 IP 位址，請參閱[管理 IP 位址](virtual-network-network-interface-addresses.md)。 如果您想要建立具有公用 IP 位址的網路介面，就必須使用 CLI 或 PowerShell 來建立網路介面。
 
@@ -81,7 +81,7 @@ ms.locfileid: "82186096"
 1. 在 Azure 入口網站頂端包含「搜尋資源」** 文字的方塊中，輸入「網路介面」**。 當**網路介面**出現於搜尋結果時，請選取它。
 2. 從清單中選取您要檢視或變更設定的網路介面。
 3. 隨即會針對您選取的網路介面列出下列項目：
-   - **概觀：** 提供網路介面相關資訊︰例如，為它指派的 IP 位址、為網路介面指派的虛擬網路/子網路，以及網路介面連接的虛擬機器 (如有連接)。 下圖顯示名為**mywebserver256 之**的網路介面總覽設定： ![網路介面總覽](./media/virtual-network-network-interface/nic-overview.png)
+   - **概觀：** 提供網路介面相關資訊︰例如，為它指派的 IP 位址、為網路介面指派的虛擬網路/子網路，以及網路介面連接的虛擬機器 (如有連接)。 下圖顯示名為**mywebserver256 之**的網路介面總覽設定： ![ 網路介面總覽](./media/virtual-network-network-interface/nic-overview.png)
 
      您可以選取**資源群組**或訂用帳戶**名稱**旁邊的（**變更**），將網路介面移至不同的資源群組或訂用帳戶。 如果您移動網路介面，則必須移動和網路介面相關的所有資源。 例如，如果網路介面連接至虛擬機器，您也必須移動虛擬機器和其他虛擬機器相關資源。 若要移動網路介面，請參閱[將資源移至新的資源群組或訂用帳戶](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-the-portal)。 該文會列出必要條件，以及如何使用 Azure 入口網站、PowerShell 和 Azure CLI 來移動資源。
    - **IP 組態︰** 此處列出指派給 IP 組態的公用與私人 IPv4 和 IPv6 位址。 如果指派給 IP 組態的是 IPv6 位址，則不會顯示位址。 若要深入了解 IP 設定以及如何新增和移除 IP 位址，請參閱[設定 Azure 網路介面的 IP 位址](virtual-network-network-interface-addresses.md)。 IP 轉送和子網路指派也會在這一節設定。 若要深入了解這些設定，請參閱[啟用或停用 IP 轉送](#enable-or-disable-ip-forwarding)和[變更子網路指派](#change-subnet-assignment)。
@@ -113,7 +113,7 @@ DNS 伺服器是由 Azure DHCP 伺服器指派給虛擬機器作業系統內的�
    - **自訂**︰您可以設定自己的 DNS 伺服器，以解析跨多個虛擬網路的名稱。 輸入您要做為 DNS 伺服器之伺服器的 IP 位址。 您指定的 DNS 伺服器位址只會指派給此網路介面，並會覆寫為此網路介面指派的虛擬網路的任何 DNS 設定。
      >[!Note]
      >如果 VM 使用的 NIC 是可用性設定組的一部分，則會繼承所有屬於可用性設定組的 Nic 之每個 Vm 所指定的所有 DNS 伺服器。
-5. 選取 [儲存]  。
+5. 選取 [儲存]。
 
 **命令**
 
@@ -134,7 +134,7 @@ IP 轉送讓網路介面連接的虛擬機器能夠：
 2. 選取您要啟用或停用 IP 轉送的網路介面。
 3. 選取 [設定]**** 區段中的 [IP 設定]****。
 4. 選取 [已啟用]**** 或 [已停用]**** \(預設設定) 來變更設定。
-5. 選取 [儲存]  。
+5. 選取 [儲存]。
 
 **命令**
 
@@ -152,9 +152,9 @@ IP 轉送讓網路介面連接的虛擬機器能夠：
 3. 選取 [設定]**** 底下的 [IP 設定]****。 如果所列 IP 組態的私人 IP 位址旁邊有 **(靜態)** 字樣，您必須完成下列步驟以將 IP 位址的指派方法變更為動態。 您必須使用動態指派方法來指派所有的私人 IP 位址，以便變更網路介面的子網路指派。 如果您使用動態方法來指派位址，請繼續執行步驟 5。 如果您使用靜態指派方法指派了任何 IPv4 位址，請完成下列步驟來將指派方法變更為動態︰
    - 從 IP 設定清單中，選取您要變更 IPv4 位址指派方法的 IP 設定。
    - 針對私人 IP 位址**指派**方法選取 [動態]****。 您無法使用靜態指派方法指派 IPv6 位址。
-   - 選取 [儲存]  。
+   - 選取 [儲存]。
 4. 從 [子網路]**** 下拉式清單中，選取要將網路介面移至其中的子網路。
-5. 選取 [儲存]  。 系統就會從新的子網路位址範圍指派新的動態位址。 在對新的子網路指派網路介面之後，您可以從新的子網路位址範圍指派靜態 IPv4 位址 (如果您做此選擇的話)。 若要深入了解如何為網路介面新增、變更和移除 IP 位址，請參閱[管理 IP 位址](virtual-network-network-interface-addresses.md)。
+5. 選取 [儲存]。 系統就會從新的子網路位址範圍指派新的動態位址。 在對新的子網路指派網路介面之後，您可以從新的子網路位址範圍指派靜態 IPv4 位址 (如果您做此選擇的話)。 若要深入了解如何為網路介面新增、變更和移除 IP 位址，請參閱[管理 IP 位址](virtual-network-network-interface-addresses.md)。
 
 **命令**
 
@@ -168,7 +168,7 @@ IP 轉送讓網路介面連接的虛擬機器能夠：
 如果網路介面是連接至虛擬機器，您只能使用入口網站在應用程式安全性群組中新增或移除網路介面。 無論網路介面是否連接至虛擬機器，您都可以使用 PowerShell 或 Azure CLI 在應用程式安全性群組中新增或移除網路介面。 深入了解[應用程式安全性群組](security-overview.md#application-security-groups)和如何[建立應用程式安全性群組](manage-network-security-group.md)。
 
 1. 在入口網站頂端的 [搜尋資源、服務和文件]** 方塊中，開始輸入您想要在應用程式安全性群組中新增或移除其網路介面的虛擬機器名稱。 當 VM 的名稱出現在搜尋結果中時，請加以選取。
-2. 在 [設定]**** 底下，選取 [網路]****。  選取 [**應用程式安全性群組**]，然後**設定 [應用程式安全性群組**]，選擇您想要新增網路介面的應用程式安全性群組，或取消選取您想要移除網路介面的應用程式安全性群組，然後選取 [**儲存**]。 只有同一個虛擬網路中存在的網路介面可新增到同一個應用程式安全性群組。 應用程式安全性群組必須存在於網路介面所在的同一個位置。
+2. 在 [**設定**] 底下，選取 [**網路**]。  選取 [**應用程式安全性群組**]，然後**設定 [應用程式安全性群組**]，選擇您想要新增網路介面的應用程式安全性群組，或取消選取您想要移除網路介面的應用程式安全性群組，然後選取 [**儲存**]。 只有同一個虛擬網路中存在的網路介面可新增到同一個應用程式安全性群組。 應用程式安全性群組必須存在於網路介面所在的同一個位置。
 
 **命令**
 
@@ -182,9 +182,9 @@ IP 轉送讓網路介面連接的虛擬機器能夠：
 1. 在入口網站頂端的搜尋方塊中輸入「網路介面」**。 當**網路介面**出現於搜尋結果時，請選取它。
 2. 在清單中選取您要與網路安全性群組建立關聯 (或取消關聯) 的網路介面。
 3. 選取 [設定]**** 下的 [網路安全性群組]****。
-4. 選取 [編輯]  。
+4. 選取 [編輯]。
 5. 選取 [網路安全性群組]****，然後選取您要與網路介面建立關聯的網路安全性群組，或是選取 [無]****，以取消與網路安全性群組的關聯。
-6. 選取 [儲存]  。
+6. 選取 [儲存]。
 
 **命令**
 
@@ -251,7 +251,7 @@ Azure 網路監看員的下一個躍點功能，也可協助您判斷路由是�
 
 若要針對網路介面執行工作，您的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派下表所列適當權限的[自訂](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 動作                                                                     | 名稱                                                      |
+| 動作                                                                     | Name                                                      |
 | ---------                                                                  | -------------                                             |
 | Microsoft.Network/networkInterfaces/read                                   | 取得網路介面                                     |
 | Microsoft.Network/networkInterfaces/write                                  | 建立或更新網路介面                        |

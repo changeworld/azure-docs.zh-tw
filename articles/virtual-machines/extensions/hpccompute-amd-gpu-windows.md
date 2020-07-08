@@ -3,30 +3,28 @@ title: AMD GPU 驅動程式擴充功能-Azure Windows Vm
 description: Microsoft Azure 延伸模組，用於在執行 Windows 的 NVv4 系列 Vm 上安裝 AMD GPU 驅動程式。
 services: virtual-machines-windows
 documentationcenter: ''
-author: vikancha
+author: vikancha-MSFT
 manager: jkabat
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 0819eec5275fa9783fff363cabbd8c3ed22b7cd6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cbba0401815f6754939cdaeb6e7343cf085dff68
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736963"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>適用于 Windows 的 AMD GPU 驅動程式擴充功能
 
 本文概要說明在 Windows [NVv4 系列](https://docs.microsoft.com/azure/virtual-machines/nvv4-series)vm 上部署 AMD GPU 驅動程式的 VM 擴充功能。 當您使用此延伸模組安裝 AMD 驅動程式時，即表示您接受並同意[AMD 使用者授權合約](https://amd.com/radeonsoftwarems)的條款。 在安裝過程中，VM 可能會重新開機以便完成驅動程式設定。
 
-如需手動安裝驅動程式和目前支援版本的指示，請參閱[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup)。
+如需手動安裝驅動程式的指示和目前支援的版本，請參閱[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 
@@ -67,7 +65,7 @@ ms.locfileid: "83119547"
 }
 ```
 
-### <a name="properties"></a>[內容]
+### <a name="properties"></a>屬性
 
 | 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
@@ -169,7 +167,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，您可以與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 azure 專家聯繫。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>後續步驟
 如需擴充功能的詳細資訊，請參閱[虛擬機器擴充功能和 Windows 功能](features-windows.md)。

@@ -3,24 +3,25 @@ title: 設定 Vm 的私人 IP 位址-Azure CLI
 description: 了解如何使用 Azure 命令列介面 (CLI) 設定虛擬機器的私人 IP 位址。
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: asudbring
+manager: KumudD
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
-ms.author: kumud
-ms.openlocfilehash: f4643aae0b28861f4ddb99d8dace749e62f930b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: allensu
+ms.openlocfilehash: c34ab73422d8dd41feb9da542ed63fdba060fe3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78199473"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708156"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>使用 Azure CLI 設定虛擬機器的私人 IP 位址
 
@@ -38,38 +39,7 @@ ms.locfileid: "78199473"
 
 1. 安裝並設定最新的 [Azure CLI](/cli/azure/install-azure-cli) (若您尚未這樣做)，並使用 [az login](/cli/azure/reference-index) 來登入 Azure 帳戶。
 
-2. 使用 [az network public-ip create](/cli/azure/network/public-ip) 命令來建立 VM 的公用 IP。 輸出後顯示的清單可說明所使用的參數。
-
-    > [!NOTE]
-    > 視您的環境而定，您可能會想要或需要為此步驟和後續步驟中的引數使用不同的值。
-
-    ```azurecli
-    az network public-ip create \
-    --name TestPIP \
-    --resource-group TestRG \
-    --location centralus \
-    --allocation-method Static
-    ```
-
-    預期輸出：
-
-   ```json
-   {
-        "publicIp": {
-            "idleTimeoutInMinutes": 4,
-            "ipAddress": "52.176.43.167",
-            "provisioningState": "Succeeded",
-            "publicIPAllocationMethod": "Static",
-            "resourceGuid": "79e8baa3-33ce-466a-846c-37af3c721ce1"
-        }
-    }
-    ```
-
-   * `--resource-group`︰要在其中建立公用 IP 之資源群組的名稱。
-   * `--name`：公用 IP 的名稱。
-   * `--location`：要在其中建立公用 IP 的 Azure 區域。
-
-3. 執行 [az network nic create](/cli/azure/network/nic) 命令以建立具有靜態私人 IP 的 NIC。 輸出後顯示的清單可說明所使用的參數。 
+2. 執行 [az network nic create](/cli/azure/network/nic) 命令以建立具有靜態私人 IP 的 NIC。 輸出後顯示的清單可說明所使用的參數。 
    
     ```azurecli
     az network nic create \
@@ -121,7 +91,7 @@ ms.locfileid: "78199473"
     * `--vnet-name`：要在其中建立 NIC 之 VNet 的名稱。
     * `--subnet`：要在其中建立 NIC 之子網路的名稱。
 
-4. 執行 [azure vm create](/cli/azure/vm/nic) 命令以使用之前建立的公用 IP 和 NIC 來建立 VM。 輸出後顯示的清單可說明所使用的參數。
+3. 執行 [azure vm create](/cli/azure/vm/nic) 命令以使用之前建立的公用 IP 和 NIC 來建立 VM。 輸出後顯示的清單可說明所使用的參數。
    
     ```azurecli
     az vm create \

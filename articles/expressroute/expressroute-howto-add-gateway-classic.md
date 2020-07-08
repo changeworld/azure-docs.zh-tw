@@ -4,16 +4,16 @@ description: 針對 ExpressRoute 組態，使用 PowerShell 設定傳統部署�
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: d7927af5b831dbe3294e1abc3a878e323bf1867e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bcffd60596f8c2286b91eaf13be3e09bb8bec94f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74928053"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736402"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>使用 PowerShell 設定 ExpressRoute 的虛擬網路閘道閘道 (傳統)
 > [!div class="op_single_selector"]

@@ -4,15 +4,15 @@ description: 本文說明如何使用 Azure CLI 針對 Microsoft 對等互連設
 services: expressroute
 author: anzaman
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.author: anzaman
-ms.openlocfilehash: c3c50a005e119890fb17fcf7b3114a747bbe34bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 269cabae276712a1f5b51c09705b7cd3eee5fb9d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74033421"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738340"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>針對 Microsoft 對等互連設定路由篩選：Azure CLI
 
@@ -109,7 +109,7 @@ az network route-filter rule list-service-communities
 
 ### <a name="1-create-a-route-filter"></a>1. 建立路由篩選
 
-首先，建立路由篩選。 此命令`az network route-filter create`只會建立路由篩選資源。 建立資源之後，您必須建立規則，然後將它附加到路由篩選物件。 執行下列命令以建立路由篩選資源：
+首先，建立路由篩選。 此命令 `az network route-filter create` 只會建立路由篩選資源。 建立資源之後，您必須建立規則，然後將它附加到路由篩選物件。 執行下列命令以建立路由篩選資源：
 
 ```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup

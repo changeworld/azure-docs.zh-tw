@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 820fe016d630e63660368c9065acbcda9b514921
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 44c86dae3c7df8293404c253b94164c37d574158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736929"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>針對 Azure Windows 虛擬機器啟用問題進行疑難排解
 
@@ -43,7 +43,7 @@ Azure 會根據 VM 所在的雲端區域，針對 KMS （金鑰管理服務）�
 
 一般而言，如果不是使用正確的 KMS 用戶端安裝識別碼來設定 Windows VM，或 Windows VM 無法連線到 Azure KMS 服務 (kms.core.windows.net，連接埠 1688)，就會發生 Azure VM 啟用問題。 
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 >[!NOTE]
 >如果您使用站對站 VPN 和強制通道，請參閱[使用 Azure 自訂路由來啟用使用強制通道的 KMS](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling)啟用。 
@@ -92,7 +92,7 @@ Azure 會根據 VM 所在的雲端區域，針對 KMS （金鑰管理服務）�
 4. 使用能夠連線到 KMS 伺服器的 Psping 來進行確認。 切換到您將所下載的 Pstools.zip 解壓縮的資料夾，然後執行下列命令：
   
     ```
-    \psping.exe kms.core.windows.net:1688
+    .\psping.exe kms.core.windows.net:1688
     ```
    在輸出的倒數第二行，確定您看到的是：Sent = 4, Received = 4, Lost = 0 (0% loss)。
 
@@ -119,12 +119,12 @@ Azure 會根據 VM 所在的雲端區域，針對 KMS （金鑰管理服務）�
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>我從 Azure Marketplace 建立了 Windows Server 2016。 我是否需要設定 KMS 金鑰來啟用 Windows Server 2016？ 
 
  
-不需要。 Azure Marketplace 中的映像已設定適當的 KMS 用戶端安裝識別碼。 
+否。 Azure Marketplace 中的映像已設定適當的 KMS 用戶端安裝識別碼。 
 
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>是否不論 VM 是否使用 Azure Hybrid Use Benefit (HUB)，Windows 啟用的運作方式都相同？ 
 
  
-可以。 
+是。 
  
 
 ### <a name="what-happens-if-windows-activation-period-expires"></a>如果 Windows 啟用期間已到期，會發生什麼情況？ 

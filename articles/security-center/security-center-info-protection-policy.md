@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75611061"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711080"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>在 Azure 資訊安全中心自訂 SQL 資訊保護原則 (預覽)
  
@@ -29,7 +29,7 @@ ms.locfileid: "75611061"
 - 安全性案例，例如監視（審核）和警示對敏感性資料的異常存取
 - 對包含高度敏感性資料的資料存放區進行存取控制並強化安全性
  
-[SQL Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) 會針對 SQL 資料存放區實作此範例，而 Azure SQL Database 目前予以支援。 SQL Information Protection 會自動探索和分類可能的敏感性資料、提供標記機制以使用分類屬性持續標記敏感性資料，並提供詳細儀表板以顯示資料庫的分類狀態。 此外，它還會計算 SQL 查詢的結果集敏感度，以明確地稽核可擷取敏感性資料的查詢，並保護資料。 如需 SQL 資訊保護的詳細資訊，請參閱[Azure SQL Database 資料探索與分類](../sql-database/sql-database-data-discovery-and-classification.md)。
+[SQL Information Protection](../azure-sql/database/data-discovery-and-classification-overview.md) 會針對 SQL 資料存放區實作此範例，而 Azure SQL Database 目前予以支援。 SQL Information Protection 會自動探索和分類可能的敏感性資料、提供標記機制以使用分類屬性持續標記敏感性資料，並提供詳細儀表板以顯示資料庫的分類狀態。 此外，它還會計算 SQL 查詢的結果集敏感度，以明確地稽核可擷取敏感性資料的查詢，並保護資料。 如需 SQL 資訊保護的詳細資訊，請參閱[Azure SQL Database 資料探索與分類](../azure-sql/database/data-discovery-and-classification-overview.md)。
  
 分類機制根據構成分類法的兩個主要建構：**標籤**和**資訊類型**。
 - **標籤**–主要分類屬性，用來定義儲存在資料行中之資料的敏感度層級。 
@@ -50,7 +50,7 @@ Information Protection 隨附一組預設會使用的內建標籤和資訊類型
  
 1. 您可以編輯或刪除任何現有標籤，或新增標籤。 若要編輯現有標籤，請選取該標籤，然後按一下頂端或右側操作功能表中的 [設定]****。 若要新增標籤，請按一下頂端功能表列或標籤資料表底部的 [建立標籤]****。
 2. 在 [設定敏感度標籤]**** 畫面中，您可以建立或變更標籤名稱和描述。 您也可以開啟或關閉 [已啟用]**** 切換，以設定標籤為使用中還是已停用。 最後，您可以新增或移除與標籤建立關聯的資訊類型。 任何探索到且符合該資訊類型的資料都會在分類建議中自動包含相關聯的敏感度標籤。
-3. 按一下 [確定]  。
+3. 按一下 [確定]。
  
    ![設定敏感度標籤](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
@@ -75,11 +75,15 @@ Information Protection 隨附一組預設會使用的內建標籤和資訊類型
 7. 請務必按一下主要 [標籤]**** 刀鋒視窗中的 [儲存]****，以套用所有變更。
  
 完整定義和儲存資訊保護原則之後，就會套用至租用戶中所有 Azure SQL 資料庫上的資料分類。
- 
+
+## <a name="manage-sql-information-protection-using-azure-powershell"></a>使用 Azure PowerShell 管理 SQL 資訊保護
+
+- [AzSqlInformationProtectionPolicy：取得](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy)有效的租使用者 SQL 資訊保護原則。
+- [AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy)：設定有效的租使用者 SQL 資訊保護原則。
  
 ## <a name="next-steps"></a>後續步驟
  
-在本文中，您已了解在 Azure 資訊安全中心定義 SQL Information Protection 原則。 若要深入了解如何使用 SQL Information Protection 分類和保護 SQL 資料庫中的敏感性資料，請參閱 [Azure SQL Database 的資料探索與分類](../sql-database/sql-database-data-discovery-and-classification.md)。 
+在本文中，您已了解在 Azure 資訊安全中心定義 SQL Information Protection 原則。 若要深入了解如何使用 SQL Information Protection 分類和保護 SQL 資料庫中的敏感性資料，請參閱 [Azure SQL Database 的資料探索與分類](../azure-sql/database/data-discovery-and-classification-overview.md)。 
 
 如需 Azure 資訊安全中心內安全性原則和資料安全性的詳細資訊，請參閱下列文章：
  

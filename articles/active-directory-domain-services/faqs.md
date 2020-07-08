@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 92b3fd2453a4fb121c97f8f25f1d3ca129826092
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4a9081b3d3c1c925efb4cc80201e6154752dc628
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926964"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734770"
 ---
 # <a name="frequently-asked-questions-faqs"></a>常見問題集 (FAQ)
 
@@ -58,6 +58,8 @@ ms.locfileid: "82926964"
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>我可以在同盟 Azure AD 目錄中啟用 Azure AD Domain Services 嗎？ 我不要將密碼雜湊同步至 Azure AD。 我可以針對此目錄啟用 Azure AD Domain Services 嗎？
 否。 若要透過 NTLM 或 Kerberos 驗證使用者，Azure AD Domain Services 需要存取使用者帳戶的密碼雜湊。 在同盟目錄中，密碼雜湊不會儲存在 Azure AD 目錄中。 因此，Azure AD Domain Services 無法與這類 Azure AD 目錄搭配使用。
 
+不過，如果您使用 Azure AD Connect 進行密碼雜湊同步處理，您可以使用 Azure AD Domain Services，因為密碼雜湊值會儲存在 Azure AD 中。
+
 ### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>我可以在訂用帳戶內的多個虛擬網路中使用 Azure AD 網域服務嗎？
 服務本身不直接支援此案例。 受控網域一次只能在一個虛擬網路上使用。 不過，您可以設定多個虛擬網路之間的連線，以向其他虛擬網路公開 Azure AD Domain Services。 如需詳細資訊，請參閱如何使用 VPN 閘道或[虛擬網路對等互連](../virtual-network/virtual-network-peering-overview.md)[來連接 Azure 中的虛擬網路](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
 
@@ -74,7 +76,7 @@ ms.locfileid: "82926964"
 否。 以 [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 邀請流程受邀到您 Azure AD 目錄的來賓使用者會同步至您的 Azure AD Domain Services 受控網域。 不過，這些使用者的密碼不會儲存在您的 Azure AD 目錄中。 因此，Azure AD Domain Services 無法將這些使用者的 NTLM 和 Kerberos 雜湊同步處理至您的受控網域。 這類使用者無法登入或將電腦加入受控網域。
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>我可以將現有的 Azure AD Domain Services 受控網域移至不同的訂用帳戶、資源群組、區域或虛擬網路嗎？
-否。 建立 Azure AD Domain Services 受控網域之後，您就無法將實例移至不同的資源群組、虛擬網路、訂用帳戶等。當您部署 Azure AD DS 實例時，請小心選取最適當的訂用帳戶、資源群組、區域和虛擬網路。
+否。 建立 Azure AD Domain Services 受控網域之後，您就無法將受控網域移至不同的資源群組、虛擬網路、訂用帳戶等。當您部署受控網域時，請小心選取最適當的訂用帳戶、資源群組、區域和虛擬網路。
 
 ### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Azure AD Domain Services 是否包含高可用性選項？
 
@@ -97,7 +99,7 @@ ms.locfileid: "82926964"
 否。 您沒有許可權可以使用遠端桌面連線到受控網域的網域控制站。 *AAD DC 系統管理員*群組的成員可以使用 ad 系統管理工具（例如 Active Directory 系統管理中心（ADAC）或 AD PowerShell）來管理受控網域。 這些工具會使用已加入受控網域之 Windows Server 上的*遠端伺服器管理工具*功能來安裝。 如需詳細資訊，請參閱[建立管理 VM 以設定和管理 Azure AD Domain Services 受控網域](tutorial-create-management-vm.md)。
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>我已啟用 Azure AD Domain Services。 我應該使用哪一個使用者帳戶來將電腦加入此網域？
-屬於 Azure AD DS 受控網域之一部分的任何使用者帳戶都可以加入 VM。 *AAD DC 系統管理員*群組的成員會被授與遠端桌面存取已加入受控網域的電腦。
+屬於受控網域的任何使用者帳戶都可以加入 VM。 *AAD DC 系統管理員*群組的成員會被授與遠端桌面存取已加入受控網域的電腦。
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>我有 Azure AD Domain Services 所提供的受控網域的網域系統管理員權限嗎？
 否。 您不會被授與受控網域的系統管理許可權。 *網域系統管理員*和*企業系統管理員*許可權無法供您在網域內使用。 在內部部署 Active Directory 中，網域系統管理員或企業系統管理員群組的成員，也不會被授與受控網域的網域/企業系統管理員許可權。
@@ -158,4 +160,4 @@ Azure 免費試用版包含 Azure AD Domain Services。 您可以註冊以 [免�
 
 若要深入瞭解 Azure AD Domain Services，請參閱[什麼是 Azure Active Directory Domain Services？](overview.md)。
 
-若要開始使用，請參閱[建立和設定 Azure Active Directory Domain Services 實例](tutorial-create-instance.md)。
+若要開始使用，請參閱[建立和設定 Azure Active Directory Domain Services 受控網域](tutorial-create-instance.md)。

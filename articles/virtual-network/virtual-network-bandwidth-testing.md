@@ -7,17 +7,17 @@ documentationcenter: na
 author: steveesp
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 964b0bd543e887cce304d785d18a651f50bd4c45
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60743067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708241"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>頻寬/輸送量測試 (NTTTCP)
 
@@ -63,7 +63,7 @@ ms.locfileid: "60743067"
 
 請依照下列方式允許 NTTTCP 通過 Windows 防火牆：
 
-netsh advfirewall firewall add rule program=\<PATH\>\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
+netsh advfirewall firewall add rule program = \<PATH\> \\ntttcp.exe name = "ntttcp" protocol = any dir = in action = allow enable = yes PROFILE = any
 
 例如，如果您將 ntttcp.exe 複製到 "c:\\tools" 資料夾，則命令會是這樣： 
 
@@ -132,13 +132,13 @@ ntttcp -s10.0.0.4 -t 300
 
 #### <a name="from-linux-to-windows"></a>從 Linux 到 Windows：
 
-接收者\<Windows>：
+接收者 \<Windows>：
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-發\<件人 Linux>：
+傳送者 \<Linux>：
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
@@ -146,13 +146,13 @@ ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 
 #### <a name="from-windows-to-linux"></a>從 Windows 到 Linux：
 
-接收者\<Linux>：
+接收者 \<Linux>：
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
-發\<件人 Windows>：
+傳送者 \<Windows>：
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300

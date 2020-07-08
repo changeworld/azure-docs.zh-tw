@@ -2,17 +2,18 @@
 title: NVv3 系列-Azure 虛擬機器
 description: NVv3 系列 Vm 的規格。
 services: virtual-machines
-author: vikancha
+ms.subservice: sizes
+author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: d74b00a4bade956d3a511a47b0a6b0011b9fb212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 9f5d5bd9775507a663a4171faa8b8892357f65b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78267421"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736538"
 ---
 # <a name="nvv3-series"></a>NVv3 系列
 
@@ -26,7 +27,7 @@ NVv3 實例中的每個 GPU 都隨附方格授權。 此授權可讓您彈性地
 
 記憶體保留更新：不支援
 
-| Size | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大未快取的磁片輸送量： IOPS/MBps | 最大 NIC | 虛擬工作站 | 虛擬應用程式 |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC | 虛擬工作站 | 虛擬應用程式 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | Standard_NV12s_v3 |12 | 112 | 320  | 1 | 8  | 12 | 20000/200 | 4 | 1 | 25  |
 | Standard_NV24s_v3 |24 | 224 | 640  | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50  |
@@ -51,7 +52,7 @@ NVv3 實例中的每個 GPU 都隨附方格授權。 此授權可讓您彈性地
 - [儲存體最佳化](sizes-storage.md)
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
-- [上一代](sizes-previous-gen.md)
+- [前幾代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>後續步驟
 

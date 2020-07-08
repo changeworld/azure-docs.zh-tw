@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
-ms.openlocfilehash: 675919db55932d3ccc04fd5397f6f673832b4900
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840565"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737524"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>檢視 Azure 虛擬網路的拓撲
 
@@ -84,7 +84,7 @@ ms.locfileid: "76840565"
 
 您可以在下列步驟中執行命令：
 - 在 Azure Cloud Shell 中，選取位於任何命令右上方的**試試看**。 Azure Cloud Shell 是一個免費的互動式殼層，具有預先安裝和設定的通用 Azure 工具，可與您的帳戶搭配使用。
-- 從您的電腦執行 PowerShell。 如果您從電腦執行 PowerShell，本文需要 Azure PowerShell `Az`模組。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
+- 從您的電腦執行 PowerShell。 如果您從電腦執行 PowerShell，本文需要 Azure PowerShell `Az` 模組。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
 您所使用的帳戶必須具有必要的[權限](required-rbac-permissions.md)。
 

@@ -4,20 +4,19 @@ description: 本文說明如何設定流量管理員，以路由傳送流量至 
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: rohink
-ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ac6d20acf32be9678818483e5929dee225501b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938769"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706812"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>在流量管理員中設定多值路由方法
 
@@ -38,7 +37,7 @@ ms.locfileid: "76938769"
 ## <a name="create-a-traffic-manager-profile"></a>建立流量管理員設定檔
 建立流量管理員設定檔，其導向使用者流量的方式是將使用者流量傳送至具有最低延遲的端點。
 
-1. 在畫面的左上方，選取 [**建立資源** > ] [**網路** > ] [**流量管理員設定檔** > ] [**建立**]。
+1. 在畫面的左上方，選取 [**建立資源**] [網路] [  >  **Networking**  >  **流量管理員設定檔**] [  >  **建立**]。
 2. 在 [建立流量管理員設定檔]**** 中，輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [建立]****：
     
     | 設定                 | 值                                              |
@@ -58,7 +57,7 @@ ms.locfileid: "76938769"
 
 1. 在入口網站的搜尋列中，搜尋您在上一節建立的流量管理員設定檔名稱，然後在顯示的結果中選取設定檔。
 2. 在 [流量管理員設定檔]**** 的 [設定]**** 區段中，按一下 [端點]****，然後按一下 [新增]****。
-3. 輸入或選取下列資訊、接受其餘設定的預設值，然後選取 **[確定]**：
+3. 輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [確定]****：
 
     | 設定                 | 值                                              |
     | ---                     | ---                                                |

@@ -4,15 +4,15 @@ description: 本文記載建立和布建 ExpressRoute 私用和 Microsoft 對等
 services: expressroute
 author: mialdrid
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/13/2019
 ms.author: mialdrid
-ms.openlocfilehash: 18d2db18e9880028c60b4b545c3628f4a9cb4703
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e3d855d0860d8d9875e4a93091653cab18965f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264787"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738527"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>建立和修改 ExpressRoute 線路的對等互連
 
@@ -83,9 +83,9 @@ ms.locfileid: "79264787"
    ![設定 Microsoft 對等互連](./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png)
 
 > [!IMPORTANT]
-> Microsoft 會確認指定的「公告公用首碼」和「對等 ASN」（或「客戶 ASN」）是否在網際網路路由登錄中指派給您。 如果您要從另一個實體取得公用首碼，而且如果未使用路由登錄來記錄指派，自動驗證將不會完成，而且需要手動驗證。 如果自動驗證失敗，您會看到「需要驗證」訊息。 
+> Microsoft 會驗證指定的「已公告公用首碼」和「對等互連 ASN」(或「客戶 ASN」) 是否已在網際網路路由登錄中指派給您。 如果您要從另一個實體取得公用首碼，以及如果未使用路由登錄來記錄指派，則自動驗證將不會完成，而且需要手動驗證。 如果自動驗證失敗，您會看到「需要驗證」訊息。 
 >
-> 如果您看到「需要驗證」訊息，則會將顯示公用首碼的檔收集為路由登錄中前置詞的擁有者，並提交這些檔以供手動驗證，方法是開啟支援票證，如下所示。 
+> 如果您看到「需要驗證」訊息，請收集其中顯示實體已將公用首碼指派給您組織的文件，而此實體列示為路由登錄中的首碼擁有者，然後開啟支援票證，提交這些文件進行手動驗證，如下所示。 
 >
 
    如果您的線路到達「需要驗證」狀態，您必須開啟支援票證，向我們的支援小組顯示首碼的證明。 如下列範例所示，您可以直接從入口網站開立支援票證：

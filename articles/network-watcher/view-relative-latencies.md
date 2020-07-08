@@ -6,18 +6,18 @@ documentationcenter: ''
 author: damendo
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 39f81731f20566d1a39f3f0931ff52c4e8b43ec0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521386"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737898"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>檢視特定位置中 Azure 區域的相對延遲
 

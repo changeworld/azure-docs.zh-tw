@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure 私用端點私下連接到 Web 應用程式
-description: 使用 Azure 私用端點私下連接到 Web 應用程式
+title: 使用 Azure 私人端點私下連線至 Web 應用程式
+description: 使用 Azure 私人端點私下連線至 Web 應用程式
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
-ms.topic: article
-ms.date: 03/12/2020
+ms.topic: how-to
+ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 2f10c7378ae7681b14df6e96b6a6f1adac832d1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b3ac4c79ce92f591e74821a9f355717e4b22ea4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80287810"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737388"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>使用 Azure 私用端點（預覽）私下連線到 Web 應用程式
 
@@ -23,7 +23,7 @@ Azure 私用端點是 Azure 中私人連結的基本建立區塊。 它可讓您
 如需詳細資訊，請參閱[使用 Azure Web 應用程式的私用端點][privatenedpointwebapp]。
 
 > [!Note]
->預覽適用于所有 PremiumV2 Windows 和 Linux Web Apps 的美國東部和美國西部2區域。 
+>預覽適用于 PremiumV2 Windows 和 Linux Web Apps 和彈性 Premium 功能的公用區域。 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -37,7 +37,7 @@ Azure 私用端點是 Azure 中私人連結的基本建立區塊。 它可讓您
 
 在本節中，您將建立虛擬網路和子網。
 
-1. 在畫面的左上方，選取 [**建立資源** > ] [**網路** > ] [**虛擬網路**]，或在搜尋方塊中搜尋 [**虛擬網路**]。
+1. 在畫面的左上方，選取 [**建立資源**]  >  [**網路**]  >  [**虛擬網路**]，或在搜尋方塊中搜尋 [**虛擬網路**]。
 
 1. 在 [**建立虛擬網路**] 中，于 [基本] 索引標籤中輸入或選取這項資訊：
 
@@ -60,9 +60,9 @@ Azure 私用端點是 Azure 中私人連結的基本建立區塊。 它可讓您
 
 ### <a name="create-virtual-machine"></a>建立虛擬機器
 
-1. 在 [Azure 入口網站] 畫面的左上方，選取 [**建立資源** > ] [**計算** > ] [**虛擬機器**]
+1. 在 [Azure 入口網站] 畫面的左上方，選取 [**建立資源**] [計算] [  >  **Compute**  >  **虛擬機器**]
 
-1. 在 [建立虛擬機器 - 基本]  中，輸入或選取這項資訊：
+1. 在 [建立虛擬機器 - 基本] 中，輸入或選取這項資訊：
 
    > [!div class="mx-imgBorder"]
    >![虛擬機器基本][4]
@@ -89,7 +89,7 @@ Azure 私用端點是 Azure 中私人連結的基本建立區塊。 它可讓您
 
 ### <a name="web-app"></a>Web 應用程式
 
-1. 在 [Azure 入口網站] 畫面的左上方，選取 [**建立資源** > ] [**web** > **應用程式**]
+1. 在 [Azure 入口網站] 畫面的左上方，選取 [**建立資源**] [  >  **web**  >  **應用程式**]
 
 1. 在 [建立 Web 應用程式-基本] 中，輸入或選取這項資訊：
 
@@ -102,7 +102,7 @@ Azure 私用端點是 Azure 中私人連結的基本建立區塊。 它可讓您
 
 ### <a name="create-the-private-endpoint"></a>建立私用端點
 
-1. 在 Web 應用程式屬性中，選取 [**設定** > ] [**網路**]，然後按一下 **[設定您的私人端點連線]**
+1. 在 Web 應用程式屬性中，選取 [**設定**]  >  [**網路**]，然後按一下 **[設定您的私人端點連線]**
 
    > [!div class="mx-imgBorder"]
    >![Web 應用程式網路功能][7]
@@ -120,8 +120,8 @@ Azure 私用端點是 Azure 中私人連結的基本建立區塊。 它可讓您
 1. 檢查私用端點的建立
 
    > [!div class="mx-imgBorder"]
-   >![審查][10]
-   >![私用端點的最終觀點][11]
+   >![審查 ][10]
+   > ![ 私用端點的最終觀點][11]
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>從網際網路連線至 VM
 
@@ -136,9 +136,9 @@ Azure 私用端點是 Azure 中私人連結的基本建立區塊。 它可讓您
    > [!div class="mx-imgBorder"]
    >![下載 RDP 檔案][13]
 
-1. 開啟 downloaded.rdp 檔案。
+1. 開啟下載的 .rdp 檔案。
 
-- 如果出現提示，請選取 [連接]  。
+- 如果出現提示，請選取 [連接]。
 - 輸入您在建立 VM 時指定的使用者名稱和密碼。
 
 > [!Note]
@@ -146,7 +146,7 @@ Azure 私用端點是 Azure 中私人連結的基本建立區塊。 它可讓您
 
 - 選取 [確定]。
 
-1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是]  或 [繼續]  。
+1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
 1. 當 VM 桌面出現之後，將它最小化以回到您的本機桌面。
 
@@ -203,7 +203,7 @@ Azure 私用端點是 Azure 中私人連結的基本建立區塊。 它可讓您
 當您使用私用端點、Web 應用程式和 VM 完成時，請刪除資源群組及其包含的所有資源：
 
 1. 在入口網站頂端的搜尋方塊中輸入 ready-rg，然後從搜尋結果中選取 [就緒-rg]。
-1. 選取 [刪除資源群組]  。
+1. 選取 [刪除資源群組]。
 1. 針對 [類型] 資源組名輸入 ready-rg，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟

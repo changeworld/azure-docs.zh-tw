@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cce3a0e6993ea91236a3ce8c8b14eb6c66f72ad1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284508"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84717795"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 憑證進行裝置驗證
 
@@ -50,7 +50,7 @@ X.509 CA 憑證的擁有者可以透過密碼編譯方式簽署中繼 CA，此 C
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-裝置憑證（也稱為分葉憑證）必須將 [*主體名稱*] 設為在 Azure IoT 中樞中註冊 IoT 裝置時所使用的**裝置識別碼**。 這是驗證所需的設定。
+裝置憑證（也稱為分葉憑證）必須將 [*主體名稱*] 設為在 Azure IoT 中樞中註冊 IoT 裝置時所使用的**裝置識別碼**（ `CN=deviceId` ）。 需要此設定才能進行驗證。
 
 了解如何[建立憑證鏈結](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) (會在簽署裝置時完成)。
 

@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281050"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707271"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Business Warehouse 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -61,15 +61,15 @@ ms.locfileid: "79281050"
 ## <a name="linked-service-properties"></a>連結服務屬性
 下表提供 SAP Business Warehouse (BW) 連結服務專屬 JSON 元素的描述。
 
-屬性 | 說明 | 允許的值 | 必要
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-伺服器 | SAP BW 執行個體所在之伺服器的名稱。 | 字串 | 是
-systemNumber | SAP BW 系統的系統編號。 | 以字串表示的二位數十進位數字。 | 是
-clientId | SAP W 系統中用戶端的用戶端識別碼。 | 以字串表示的三位數十進位數字。 | 是
+伺服器 | SAP BW 執行個體所在之伺服器的名稱。 | 字串 | Yes
+systemNumber | SAP BW 系統的系統編號。 | 以字串表示的二位數十進位數字。 | Yes
+clientId | SAP W 系統中用戶端的用戶端識別碼。 | 以字串表示的三位數十進位數字。 | Yes
 username | 具有 SAP 伺服器存取權之使用者的名稱 | 字串 | 是
-password | 使用者的密碼。 | 字串 | 是
-gatewayName | 資料處理站服務應該用來連線至內部部署 SAP BW 執行個體的閘道器名稱。 | 字串 | 是
-encryptedCredential | 加密的認證字串。 | 字串 | 否
+密碼 | 使用者的密碼。 | 字串 | Yes
+gatewayName | 資料處理站服務應該用來連線至內部部署 SAP BW 執行個體的閘道器名稱。 | 字串 | Yes
+encryptedCredential | 加密的認證字串。 | 字串 | No
 
 ## <a name="dataset-properties"></a>資料集屬性
 如需定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
@@ -84,9 +84,9 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 
 當複製活動中的來源類型為 **RelationalSource** 時 (包括 SAP BW)，typeProperties 區段中會有下列屬性可用：
 
-| 屬性 | 說明 | 允許的值 | 必要 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 | 指定 MDX 查詢從 SAP BW 執行個體讀取資料。 | MDX 查詢。 | 是 |
+| 查詢 | 指定 MDX 查詢從 SAP BW 執行個體讀取資料。 | MDX 查詢。 | Yes |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON 範例：將資料從 SAP Business Warehouse 複製到 Azure Blob

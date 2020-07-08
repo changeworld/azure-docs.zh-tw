@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 73f1efc512bf031021791da8cc55bc4e7d98a812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aae9b282c22b405eeebc2719e377a3091fc9d12e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84724945"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>使用 Azure CLI，利用安全性群組檢視分析虛擬機器的安全性
 
@@ -34,7 +34,7 @@ ms.locfileid: "76840770"
 
 此案例假設您已依照[建立網路監看員](network-watcher-create.md)中的步驟建立網路監看員。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 本文涵蓋的案例會擷取指定虛擬機器之已設定且有效的安全性規則。
 

@@ -11,18 +11,18 @@ Customer intent: I want only resources in a virtual network subnet to access an 
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 673431e2ddfc9a641bb1c640891daac79350cb3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d4fcc280ba2e34d2fa81584846441ad6fe81431
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78253022"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708190"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>使用 Azure PowerShell 管理資料外泄，以 Azure 儲存體具有虛擬網路服務端點原則的帳戶
 
@@ -338,7 +338,7 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-將會建立一個「遠端桌面通訊協定」(.rdp) 檔案，並下載至您的電腦。 開啟所下載的 rdp 檔案。 如果出現提示，請選取 [連接]  。 輸入您在建立 VM 時指定的使用者名稱和密碼。 您可能需要選取 [其他選擇]****，然後選取 [使用不同的帳戶]****，以指定您在建立 VM 時輸入的認證。 選取 [確定]  。 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]**** 或 [繼續]**** 以繼續進行連線。
+將會建立一個「遠端桌面通訊協定」(.rdp) 檔案，並下載至您的電腦。 開啟所下載的 rdp 檔案。 如果出現提示，請選取 [連接]。 輸入您在建立 VM 時指定的使用者名稱和密碼。 您可能需要選取 [其他選擇]****，然後選取 [使用不同的帳戶]****，以指定您在建立 VM 時輸入的認證。 選取 [確定]。 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]**** 或 [繼續]**** 以繼續進行連線。
 
 在*myVmPrivate* VM 上，使用 PowerShell 將 Azure 檔案共用從允許的儲存體帳戶對應到磁片磁碟機 Z。 
 

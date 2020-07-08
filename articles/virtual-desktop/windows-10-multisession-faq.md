@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 143410f0bf0659161427f4b5391124f53f712972
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d6aa1fc1e5978f59fc01dd41a89800629fa60ded
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735093"
 ---
-# <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 企業版多工作階段常見問題集
+# <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 企業版的多重工作階段常見問題集
 
 本文提供常見問題的解答，並說明 Windows 10 企業版多會話的最佳作法。
  
@@ -53,7 +53,7 @@ Windows 10 企業版多會話無法在內部部署生產環境中執行，因為
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>哪裡可以找到 Windows 10 企業版的多重會話映射？
 
-Windows 10 企業版多會話位於 Azure 映射庫中。 若要尋找它，請流覽至 Azure 入口網站並搜尋 Windows 10 企業版的虛擬桌面版。 如需與 Office Pro Plus 整合的影像，請移至 Azure 入口網站並搜尋 Microsoft Windows 10 + Office 365 ProPlus。
+Windows 10 企業版多會話位於 Azure 映射庫中。 若要尋找它，請流覽至 Azure 入口網站並搜尋 Windows 10 企業版的虛擬桌面版。 如需與適用于企業 Microsoft 365 應用程式整合的映射，請移至 Azure 入口網站，然後搜尋適用**于企業的 Microsoft Windows 10 + Microsoft 365 應用程式**。
 
 ## <a name="which-windows-10-enterprise-multi-session-image-should-i-use"></a>我應該使用哪一個 Windows 10 企業版的多重會話映射？
 
@@ -92,11 +92,11 @@ Windows 10 企業版的多重會話（1809和更新版本）受到支援，並�
 若要停用儲存應用程式：
 
 1. 建立新的群組原則。
-2. 選取 [**電腦** > 設定]**系統管理範本** > [**Windows 元件**]。
+2. 選取 [**電腦**設定]  >  **系統管理範本**[  >  **Windows 元件**]。
 3. 選取 [市集] ****。
 4. 選取 [**儲存應用程式**]。
 5. 選取 [**停用**]，然後選取 **[確定]**。
-6. 選取 [套用]  。
+6. 選取 [套用]。
  
 ## <a name="next-steps"></a>後續步驟
 

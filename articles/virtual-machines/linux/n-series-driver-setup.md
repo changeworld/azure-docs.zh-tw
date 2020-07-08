@@ -2,18 +2,18 @@
 title: 適用於 Linux 的 Azure N 系列 GPU 驅動程式設定
 description: 如何針對 Azure 中執行 Linux 的 N 系列 VM 設定 NVIDIA GPU 驅動程式
 services: virtual-machines-linux
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: e4ee760acb441cdf70e588004d2f380ead07cd34
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 1d463242c923d766b500c1ede796e399e7af9c54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735926"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在執行 Linux 的 N 系列 VM 上安裝 NVIDIA GPU 驅動程式
 

@@ -5,19 +5,25 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/27/2020
-ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/11/2020
+ms.openlocfilehash: 7b66f227469328767f23c6858fda15803832704b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474035"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737558"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何為適用於 MySQL 的 Azure 資料庫設定複寫中的資料
 
-本文說明如何藉由設定主要和複本伺服器，在適用於 MySQL 的 Azure 資料庫中設定資料傳入複寫。 本文假設您先前已有使用 MySQL 伺服器和資料庫的經驗。
+本文說明如何藉由設定主要和複本伺服器，在適用於 MySQL 的 Azure 資料庫中設定[資料傳入](concepts-data-in-replication.md)複寫。 本文假設您先前已有使用 MySQL 伺服器和資料庫的經驗。
 
-若要在適用於 MySQL 的 Azure 資料庫服務中建立複本，資料複製複寫會同步處理內部部署的主要 MySQL 伺服器、虛擬機器（Vm）或雲端資料庫服務中的資料。
+> [!NOTE]
+> 偏差-免費通訊
+>
+> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對_一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+>
+
+若要在適用於 MySQL 的 Azure 資料庫服務中建立複本，[資料複製](concepts-data-in-replication.md)複寫會同步處理內部部署的主要 MySQL 伺服器、虛擬機器（vm）或雲端資料庫服務中的資料。 資料帶入複寫是建立在以二進位記錄 (binlog) 檔案位置為基礎的 MySQL 原生複寫之上。 若要深入了解 binlog 複寫，請參閱 [MySQL binlog 複寫概觀](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) \(英文\)。
 
 執行本文中的步驟之前，請先參閱複寫資料的[限制和需求](concepts-data-in-replication.md#limitations-and-considerations)。
 
@@ -57,9 +63,9 @@ ms.locfileid: "80474035"
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   如果傳回值[`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin)為 "ON" 的變數，則會在您的伺服器上啟用二進位記錄。 
+   如果 [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) 傳回值為 "ON" 的變數，則會在您的伺服器上啟用二進位記錄。 
 
-   如果`log_bin`傳回的值為 "OFF"，請藉由編輯 my.cnf 檔案來開啟二進位記錄，讓`log_bin=ON`您的伺服器重新開機，使變更生效。
+   如果 `log_bin` 傳回的值為 "OFF"，請藉由編輯 my.cnf 檔案來開啟二進位記錄，讓您的 `log_bin=ON` 伺服器重新開機，使變更生效。
 
 3. 主要伺服器設定
 
@@ -121,7 +127,7 @@ ms.locfileid: "80474035"
 
 6. 取得二進位記錄檔的檔案名稱和位移
 
-   執行[`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html)命令來判斷目前的二進位記錄檔名稱和位移。
+   執行 [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) 命令來判斷目前的二進位記錄檔名稱和位移。
     
    ```sql
    show master status;
@@ -207,13 +213,13 @@ ms.locfileid: "80474035"
 
 1. 檢查複寫狀態
 
-   呼叫複本[`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html)伺服器上的命令，以查看複寫狀態。
+   呼叫 [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) 複本伺服器上的命令，以查看複寫狀態。
     
    ```sql
    show slave status;
    ```
 
-   如果`Slave_IO_Running`和`Slave_SQL_Running`的狀態為 "yes"，且的值`Seconds_Behind_Master`為 "0"，則複寫運作良好。 `Seconds_Behind_Master` 可指定複本的延遲時間。 如果值不是 “0”，代表複本正在處理更新。 
+   如果和的狀態 `Slave_IO_Running` 為 `Slave_SQL_Running` "yes"，且的值 `Seconds_Behind_Master` 為 "0"，則複寫運作良好。 `Seconds_Behind_Master` 可指定複本的延遲時間。 如果值不是 “0”，代表複本正在處理更新。 
 
 ## <a name="other-stored-procedures"></a>其他已儲存的程序
 

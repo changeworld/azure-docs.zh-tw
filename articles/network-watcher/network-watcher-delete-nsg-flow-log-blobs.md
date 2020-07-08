@@ -8,17 +8,17 @@ manager: ''
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 948347f38b4b0fefe1e61cc4560eaa46e1bfd6f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84f34c9441805352422215fcbac300bd900024d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187965"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737949"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>刪除網路監看員中的網路安全性群組流量記錄儲存體 blob
 
@@ -130,7 +130,7 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    - **Location** [強制]：您要刪除 NSG 流量記錄檔 Blob 之 nsg 區域的_位置字串_。 您可以在 Azure 入口網站或[GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)上查看此資訊。
    - **確認**[選用]：如果您想要手動確認刪除每個儲存體 blob，請傳遞確認旗標。
 
-1. 如下列範例所示，執行已儲存的腳本，其中腳本檔案儲存為**Delete-NsgFlowLogsBlobs。 ps1**：
+1. 如下列範例所示，執行已儲存的腳本，其中腳本檔案儲存為**Delete-NsgFlowLogsBlobs.ps1**：
    ```
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```

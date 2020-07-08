@@ -13,11 +13,11 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250071"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706591"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>如何重設 Azure Windows VM 的網路介面 
 
@@ -84,7 +84,7 @@ ms.locfileid: "79250071"
 4.  選取 [IP 位址]****。
 5.  如果**私人 IP 指派**不是**靜態**的，請將它變更為**靜態**。
 6.  將 [IP 位址]**** 變更為子網路中可用的其他 IP 位址。
-7.  選取 [儲存]  。
+7.  選取 [儲存]。
 8.  虛擬機器會重新啟動，以便對系統初始化新的 NIC。
 9.  嘗試使用 RDP 連線到您的電腦。 如果成功，您可以選擇將私人 IP 位址還原回原始位址。  
 
@@ -117,7 +117,7 @@ ms.locfileid: "79250071"
 可以使用遠端桌面連線到機器之後，您必須刪除舊的 NIC 以避免潛在的問題：
 
 1.  開啟 [裝置管理員]。
-2.   > 選取 **[****顯示隱藏的裝置**]。
+2.  選取 **[**  >  **顯示隱藏的裝置**]。
 3.  選取 [網路介面卡]****。 
 4.  檢查名稱為「Microsoft Hyper-V 網路介面卡」的介面卡。
 5.  您可能會看到顯示為灰色的無法使用介面卡。在介面卡上按一下滑鼠右鍵，然後選取 [卸載]。

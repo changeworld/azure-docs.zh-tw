@@ -8,17 +8,17 @@ author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 2170a4d5f66cf6d1f699ae943f2a80b1b8127e39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc09cec1e6df9ec671fa98ae35562a639dce4cd8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707611"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>將公用 IP 位址與虛擬機器建立關聯
 
@@ -62,10 +62,10 @@ ms.locfileid: "82146591"
 
 ## <a name="azure-cli"></a>Azure CLI
 
-安裝[Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 它具有預先安裝和設定的 Azure CLI，可與您的帳戶搭配使用。 在接下來的 CLI 命令中，選取 [**試試看**] 按鈕。 選取 [**試試看] 會**叫用可讓您使用登入 Azure 帳戶的 Cloud Shell。
+安裝 [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) 或使用 Azure Cloud Shell。 Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 它具有預先安裝和設定的 Azure CLI，可與您的帳戶搭配使用。 在接下來的 CLI 命令中，選取 [試用] 按鈕。 選取 [試用]，會叫用可登入 Azure 帳戶的 Cloud Shell。
 
-1. 如果在 Bash 中于本機使用 CLI，請使用`az login`登入 Azure。
-2. 公用 IP 位址會與連接至 VM 的網路介面的 IP 設定相關聯。 使用[az network nic-ip-HTTPs update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update)命令，將公用 ip 位址與 ip 設定產生關聯。 下列範例會將名為*myVMPublicIP*的現有公用 IP 位址，與名為*myResourceGroup*之資源群組中名為*myVMVMNic*的現有網路*介面的 IP*設定產生關聯。
+1. 如果在 Bash 中使用本機 CLI，請使用 `az login` 登入 Azure。
+2. 公用 IP 位址會與連接至 VM 的網路介面 IP 設定建立關聯。 使用[az network nic-ip-HTTPs update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update)命令，將公用 ip 位址與 ip 設定產生關聯。 下列範例會將名為*myVMPublicIP*的現有公用 IP 位址，與名為*myResourceGroup*之資源群組中名為*myVMVMNic*的現有網路*介面的 IP*設定產生關聯。
   
    ```azurecli-interactive
    az network nic ip-config update \
@@ -84,21 +84,21 @@ ms.locfileid: "82146591"
      > [!NOTE]
      > 先前的命令會針對您可能想要自訂的數個設定，建立具有預設值的公用 IP 位址。 若要深入瞭解所有公用 IP 位址設定，請參閱[建立公用 ip 位址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 此位址是從每個 Azure 區域所使用的公用 IP 位址集區所指派。 若要查看每個區域中使用的位址集區清單，請參閱[Microsoft Azure DATACENTER IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
 
-   - 如果您不知道連接至 VM 的網路介面名稱，請使用[az VM nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list)命令來加以查看。 例如，下列命令會在名為*myResourceGroup*的資源群組中，列出附加至名為*myVM*之 VM 的網路介面名稱：
+   - 如果您不知道連接至 VM 的網路介面名稱，請使用 [az vm nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) 命令來加以查看。 例如，下列命令會列出連接至 *myResourceGroup* 資源群組中 *myVM* VM 的網路介面名稱：
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
      ```
 
-     輸出包含一或多行，與下列範例類似：
+     此輸出包含一或多行，與下列範例類似：
   
      ```
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic",
      ```
 
-     在上述範例中， *myVMVMNic*是網路介面的名稱。
+     在上述範例中，*myVMVMNic* 是網路介面的名稱。
 
-   - 如果您不知道網路介面的 IP 設定名稱，請使用[az network nic IP config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list)命令來取得它們。 例如，下列命令會針對名為*myResourceGroup*的資源群組中名為*myVMVMNic*的網路介面，列出 IP 設定的名稱：
+   - 如果您不知道網路介面的 IP 設定名稱，請使用 [az network nic ip-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) 命令來取得名稱。 例如，下列命令會列出 *myResourceGroup* 資源群組中 *myVMVMNic* 網路介面的 IP 設定名稱：
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
@@ -117,12 +117,12 @@ ms.locfileid: "82146591"
 
 ## <a name="powershell"></a>PowerShell
 
-安裝[PowerShell](/powershell/azure/install-az-ps)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是免費的殼層，您可以直接在 Azure 入口網站內執行。 它具有預先安裝和設定的 PowerShell，可與您的帳戶搭配使用。 在接下來的 PowerShell 命令中選取 [**試試看**] 按鈕。 選取 [**試試看] 會**叫用可讓您使用登入 Azure 帳戶的 Cloud Shell。
+安裝 [PowerShell](/powershell/azure/install-az-ps) 或使用 Azure Cloud Shell。 Azure Cloud Shell 是免費的殼層，您可以直接在 Azure 入口網站內執行。 它具有預先安裝和設定的 PowerShell，可與您的帳戶搭配使用。 在接下來的 PowerShell 命令中，選取 [試用] 按鈕。 選取 [試用]，會叫用可登入 Azure 帳戶的 Cloud Shell。
 
-1. 如果在本機使用 PowerShell，請使用`Connect-AzAccount`登入 Azure。
-2. 公用 IP 位址會與連接至 VM 的網路介面的 IP 設定相關聯。 使用[new-azvirtualnetwork](/powershell/module/Az.Network/Get-AzVirtualNetwork)和[new-azvirtualnetworksubnetconfig](/powershell/module/Az.Network/Get-AzVirtualNetworkSubnetConfig)命令，取得網路介面所在的虛擬網路和子網。 接下來，使用[new-aznetworkinterface](/powershell/module/Az.Network/Get-AzNetworkInterface)命令來取得網路介面和[get-azpublicipaddress](/powershell/module/az.network/get-azpublicipaddress)命令，以取得現有的公用 IP 位址。 然後使用[AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/Set-AzNetworkInterfaceIpConfig)命令，將公用 IP 位址與 IP 設定建立關聯，並使用[new-aznetworkinterface](/powershell/module/Az.Network/Set-AzNetworkInterface)命令將新的 ip 設定寫入網路介面。
+1. 如果在本機使用 PowerShell，請使用 `Connect-AzAccount` 登入 Azure。
+2. 公用 IP 位址會與連接至 VM 的網路介面 IP 設定建立關聯。 使用[new-azvirtualnetwork](/powershell/module/Az.Network/Get-AzVirtualNetwork)和[new-azvirtualnetworksubnetconfig](/powershell/module/Az.Network/Get-AzVirtualNetworkSubnetConfig)命令，取得網路介面所在的虛擬網路和子網。 接下來，使用[new-aznetworkinterface](/powershell/module/Az.Network/Get-AzNetworkInterface)命令來取得網路介面和[get-azpublicipaddress](/powershell/module/az.network/get-azpublicipaddress)命令，以取得現有的公用 IP 位址。 然後使用[AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/Set-AzNetworkInterfaceIpConfig)命令，將公用 IP 位址與 IP 設定建立關聯，並使用[new-aznetworkinterface](/powershell/module/Az.Network/Set-AzNetworkInterface)命令將新的 ip 設定寫入網路介面。
 
-   下列範例會將名為*myVMPublicIP*的現有公用 IP 位址，與名稱為*myVMVNet*之虛擬網路中名為*myVMSubnet*的子網中名為*myVMVMNic*的現有網路介面（名為*ipconfigmyVM* ）的 IP 設定產生關聯。 所有資源都位於名為*myResourceGroup*的資源群組中。
+   下列範例會將名為*myVMPublicIP*的現有公用 IP 位址，與名稱為*myVMVNet*之虛擬網路中名為*myVMSubnet*的子網中名為*myVMVMNic*的現有網路介面（名為*ipconfigmyVM* ）的 IP 設定產生關聯。 所有資源都位於名為 *myResourceGroup* 的資源群組中。
   
    ```azurepowershell-interactive
    $vnet = Get-AzVirtualNetwork -Name myVMVNet -ResourceGroupName myResourceGroup
@@ -142,20 +142,20 @@ ms.locfileid: "82146591"
      > [!NOTE]
      > 先前的命令會針對您可能想要自訂的數個設定，建立具有預設值的公用 IP 位址。 若要深入瞭解所有公用 IP 位址設定，請參閱[建立公用 ip 位址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 此位址是從每個 Azure 區域所使用的公用 IP 位址集區所指派。 若要查看每個區域中使用的位址集區清單，請參閱[Microsoft Azure DATACENTER IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
 
-   - 如果您不知道連接至 VM 的網路介面名稱，請使用[update-azvm](/powershell/module/Az.Compute/Get-AzVM)命令來加以查看。 例如，下列命令會在名為*myResourceGroup*的資源群組中，列出附加至名為*myVM*之 VM 的網路介面名稱：
+   - 如果您不知道連接至 VM 的網路介面名稱，請使用 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) 命令加以查看。 例如，下列命令會列出連接至 *myResourceGroup* 資源群組中 *myVM* VM 的網路介面名稱：
 
      ```azurepowershell-interactive
      $vm = Get-AzVM -name myVM -ResourceGroupName myResourceGroup
      $vm.NetworkProfile
      ```
 
-     輸出包含一或多行，與下面的範例類似。 在範例輸出中， *myVMVMNic*是網路介面的名稱。
+     此輸出包含一或多行，與下列範例類似。 在範例輸出中，*myVMVMNic* 是網路介面的名稱。
   
      ```
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic",
      ```
 
-   - 如果您不知道網路介面所在的虛擬網路或子網的名稱，請使用`Get-AzNetworkInterface`命令來查看資訊。 例如，下列命令會在名為*myResourceGroup*的資源群組中，取得名為*myVMVMNic*之網路介面的虛擬網路和子網資訊：
+   - 如果您不知道網路介面所在的虛擬網路或子網的名稱，請使用 `Get-AzNetworkInterface` 命令來查看資訊。 例如，下列命令會在名為*myResourceGroup*的資源群組中，取得名為*myVMVMNic*之網路介面的虛擬網路和子網資訊：
 
      ```azurepowershell-interactive
      $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
@@ -163,20 +163,20 @@ ms.locfileid: "82146591"
      $ipConfigs.Subnet | Select Id
      ```
 
-     輸出包含一或多行，與下面的範例類似。 在範例輸出中， *myVMVNET*是虛擬網路的名稱，而*myVMSubnet*是子網的名稱。
+     此輸出包含一或多行，與下列範例類似。 在範例輸出中， *myVMVNET*是虛擬網路的名稱，而*myVMSubnet*是子網的名稱。
   
      ```
      "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVMVNET/subnets/myVMSubnet",
      ```
 
-   - 如果您不知道網路介面的 IP 設定名稱，請使用[new-aznetworkinterface](/powershell/module/Az.Network/Get-AzNetworkInterface)命令來取得它們。 例如，下列命令會針對名為*myResourceGroup*的資源群組中名為*myVMVMNic*的網路介面，列出 IP 設定的名稱：
+   - 如果您不知道網路介面的 IP 設定名稱，請使用 [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) 命令來取得名稱。 例如，下列命令會列出 *myResourceGroup* 資源群組中 *myVMVMNic* 網路介面的 IP 設定名稱：
 
      ```azurepowershell-interactive
      $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
      $nic.IPConfigurations
      ```
 
-     輸出包含一或多行，與下面的範例類似。 在範例輸出中， *ipconfigmyVM*是 IP 設定的名稱。
+     此輸出包含一或多行，與下列範例類似。 在範例輸出中，*ipconfigmyVM* 是 IP 設定的名稱。
   
      ```
      Id     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM
@@ -197,7 +197,7 @@ ms.locfileid: "82146591"
    $address | Select Id
    ```
 
-   輸出包含一或多行，與下面的範例類似。 在範例輸出中， *myVMPublicIP*是指派給 IP 設定的公用 IP 位址的名稱。
+   此輸出包含一或多行，與下列範例類似。 在範例輸出中， *myVMPublicIP*是指派給 IP 設定的公用 IP 位址的名稱。
 
    ```
    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myVMPublicIP"
@@ -210,7 +210,7 @@ ms.locfileid: "82146591"
 
 ## <a name="allow-network-traffic-to-the-vm"></a>允許對 VM 的網路流量
 
-在您可以從網際網路連線到公用 IP 位址之前，請確定您已在可能已與網路介面、網路介面所在的子網或兩者相關聯的任何網路安全性群組中，開啟所需的埠。 雖然安全性群組會篩選網路介面的私人 IP 位址流量，一旦輸入網際網路流量抵達公用 IP 位址，Azure 就會將公用位址轉譯為私人 IP 位址，因此，如果網路安全性群組防止流量流量，則與公用 IP 位址的通訊會失敗。 您可以使用[入口網站](diagnose-network-traffic-filter-problem.md#diagnose-using-azure-portal)、 [CLI](diagnose-network-traffic-filter-problem.md#diagnose-using-azure-cli)或[PowerShell](diagnose-network-traffic-filter-problem.md#diagnose-using-powershell)，來查看網路介面及其子網的有效安全性規則。
+在可以從網際網路連線到公用 IP 位址之前，請確定您已在可能已與網路介面、網路介面所在的子網路或兩者相關聯的任何網路安全性群組中，開啟所需的連接埠。 雖然安全性群組會篩選網路介面的私人 IP 位址流量，一旦輸入網際網路流量抵達公用 IP 位址，Azure 就會將公用位址轉譯為私人 IP 位址，因此，如果網路安全性群組防止流量流量，則與公用 IP 位址的通訊會失敗。 您可以使用[入口網站](diagnose-network-traffic-filter-problem.md#diagnose-using-azure-portal)、[CLI](diagnose-network-traffic-filter-problem.md#diagnose-using-azure-cli) 或 [PowerShell](diagnose-network-traffic-filter-problem.md#diagnose-using-powershell)，來檢視網路介面及其子網路的有效安全性規則。
 
 ## <a name="next-steps"></a>後續步驟
 

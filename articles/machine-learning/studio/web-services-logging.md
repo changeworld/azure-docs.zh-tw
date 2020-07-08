@@ -9,18 +9,16 @@ editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: dc4a2f83f59ab94d1bff8a005b37124f2822c72b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 71516641ab5110511d58f7e453759271aff9885a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209412"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705826"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>啟用 Azure Machine Learning Studio （傳統） web 服務的記錄功能
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 本檔提供 Machine Learning Studio （傳統） web 服務之記錄功能的相關資訊。 記錄除了錯誤號碼和訊息以外，還提供額外的資訊，可協助您針對 Machine Learning Studio （傳統） Api 的呼叫進行疑難排解。  
 
@@ -28,7 +26,7 @@ ms.locfileid: "82209412"
 
 您可以從[Azure Machine Learning Studio （傳統） Web 服務](https://services.azureml.net)入口網站啟用記錄。 
 
-1. 登入 Azure Machine Learning Studio （傳統） Web 服務入口網站，網址[https://services.azureml.net](https://services.azureml.net)為。 針對傳統 web 服務，您也可以在 Studio 中按一下 [Machine Learning Studio （傳統） Web 服務] 頁面上的 [**新增 Web 服務體驗**]，以進入入口網站（傳統）。
+1. 登入 Azure Machine Learning Studio （傳統） Web 服務入口網站，網址為 [https://services.azureml.net](https://services.azureml.net) 。 針對傳統 web 服務，您也可以在 Studio 中按一下 [Machine Learning Studio （傳統） Web 服務] 頁面上的 [**新增 Web 服務體驗**]，以進入入口網站（傳統）。
 
    ![新的 Web 服務體驗連結](./media/web-services-logging/new-web-services-experience-link.png)
 
@@ -44,7 +42,7 @@ ms.locfileid: "82209412"
 
    ![選取記錄等級](./media/web-services-logging/enable-logging.png)
 
-6. 按一下 **[儲存]** 。
+6. 按一下 [檔案] 。
 
 7. 對於傳統 Web 服務，請建立 **ml-診斷**容器。
 
@@ -54,7 +52,7 @@ ms.locfileid: "82209412"
 
    2. 在 [Blob 服務]**** 下，按一下 [容器]****。
 
-   3. 如果容器 **ml-診斷**不存在，按一下 [+ 容器]****，將容器命名為「ml-診斷」，[存取型別]**** 選取「Blob」。 按一下 [確定]  。
+   3. 如果容器 **ml-診斷**不存在，按一下 [+ 容器]****，將容器命名為「ml-診斷」，[存取型別]**** 選取「Blob」。 按一下 [確定]。
 
       ![建立新的容器來儲存您的診斷記錄](./media/web-services-logging/create-ml-diagnostics-container.png)
 

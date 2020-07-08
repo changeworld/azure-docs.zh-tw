@@ -4,11 +4,11 @@ description: 說明使用 Azure Resource Manager 部署資源時，如何解決 
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706523"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>解決資源提供者註冊的錯誤
 
@@ -105,7 +105,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
    ![選取 [所有服務]](./media/error-register-resource-provider/select-all-services.png)
 
-1. 選取 **[** 訂用帳戶]。
+1. 選取 **訂用帳戶** 。
 
    ![選取訂用帳戶](./media/error-register-resource-provider/select-subscriptions.png)
 

@@ -9,14 +9,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: iainfou
-ms.openlocfilehash: bdfc7d37d99dc5511f47e33d1848c3f142a9693e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654461"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84733393"
 ---
-# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>使用 Azure 監視器活頁簿審查 Azure AD Domain Services 中的安全性 audit 事件
+# <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>使用 Azure 監視器活頁簿審查 Azure Active Directory Domain Services 中的安全性 audit 事件
 
 為了協助您瞭解 Azure Active Directory Domain Services （Azure AD DS）受控網域的狀態，您可以啟用安全性 audit 事件。 然後您可以使用將文字、分析查詢和參數結合成豐富互動式報表的 Azure 監視器活頁簿，來檢查這些安全性 audit 事件。 Azure AD DS 包含適用于安全性總覽和帳戶活動的活頁簿範本，可讓您深入探索 audit 事件和管理您的環境。
 
@@ -24,14 +24,14 @@ ms.locfileid: "80654461"
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要完成本文，您需要下列資源和許可權：
+若要完成本文章，您需要下列資源和權限：
 
 * 有效的 Azure 訂用帳戶。
     * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
-    * 如有需要，請完成教學課程，以[建立及設定 Azure Active Directory Domain Services 實例][create-azure-ad-ds-instance]。
+    * 如有需要，請完成教學課程，以[建立及設定 Azure Active Directory Domain Services 受控網域][create-azure-ad-ds-instance]。
 * 針對將資料串流至 Log Analytics 工作區的 Azure Active Directory Domain Services 受控網域，啟用了安全性 audit 事件。
     * 如有需要，請[啟用 Azure Active Directory Domain Services 的安全性審核][enable-security-audits]。
 

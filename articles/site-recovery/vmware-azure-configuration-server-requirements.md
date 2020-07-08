@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 0b0942b517c8dc83c048bd1203a58d9861515dfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257403"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84704449"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>VMware 至 Azure 災害復原的組態伺服器需求
 

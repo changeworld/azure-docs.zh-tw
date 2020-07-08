@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 42b26911c12b1e7c62444a6fb2ee68720b02a56b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9770e46e8e52d8644143c9912c98e0f7913db9b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654597"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734277"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>瞭解健全狀況狀態，並在 Azure Active Directory Domain Services 中解決已擱置的網域
 
@@ -26,20 +26,20 @@ ms.locfileid: "80654597"
 
 ## <a name="overview-of-managed-domain-states"></a>受控網域狀態的總覽
 
-透過 Azure AD DS 受控網域的生命週期，會有不同的狀態指出其健康狀態。 如果受控網域回報問題，請快速解決根本原因，讓狀態停止，使其無法繼續下降。
+透過受控網域的生命週期，有不同的狀態會指出其健康情況。 如果受控網域回報問題，請快速解決根本原因，讓狀態停止，使其無法繼續下降。
 
-![Azure AD DS 受控網域所需的狀態進展](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
+![受控網域要暫停的狀態進展](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
 
-Azure AD DS 受控網域可能處於下列其中一種狀態：
+受控網域可以是下列其中一種狀態：
 
-* [正在執行](#running-state)
+* [執行中](#running-state)
 * [需要注意](#needs-attention-state)
-* [掛](#suspended-state)
-* [刪除](#deleted-state)
+* [暫止](#suspended-state)
+* [已刪除](#deleted-state)
 
 ## <a name="running-state"></a>執行狀態
 
-已正確設定並在沒有問題的情況下執行的 Azure AD DS 受控網域會處於 [*正在*執行] 狀態。 這是受控網域所需的狀態。
+已正確設定並在沒有問題的情況下執行的受控網域*處於 [執行*中] 狀態。 這是受控網域所需的狀態。
 
 ### <a name="what-to-expect"></a>未來展望
 
@@ -50,15 +50,15 @@ Azure AD DS 受控網域可能處於下列其中一種狀態：
 
 ## <a name="needs-attention-state"></a>需要注意狀態
 
-具有一或多個需要修正之問題的 Azure AD DS 受控網域會處於*需要注意*狀態。 受控網域的健康情況頁面會列出警示，並指出發生問題的位置。 某些警示是暫時性的，而且會由 Azure 平臺自動解決。 針對其他警示，您可以遵循所提供的解決步驟來修正問題。 這是重大警示，請[開啟 Azure 支援要求][azure-support]以取得額外的疑難排解協助。
+具有一或多個需要修正之問題的受控網域處於「*需要注意*」狀態。 受控網域的健康情況頁面會列出警示，並指出發生問題的位置。 某些警示是暫時性的，而且會由 Azure 平臺自動解決。 針對其他警示，您可以遵循所提供的解決步驟來修正問題。 這是重大警示，請[開啟 Azure 支援要求][azure-support]以取得額外的疑難排解協助。
 
 警示的其中一個範例是有限制的網路安全性群組。 在此設定中，Azure 平臺可能無法更新及監視受控網域。 系統會產生警示，且狀態會變更為 [*需要注意*]。
 
-如需詳細資訊，請參閱[如何針對 AZURE AD DS 受控網域的警示進行疑難排解][resolve-alerts]。
+如需詳細資訊，請參閱[如何針對受控網域的警示進行疑難排解][resolve-alerts]。
 
 ### <a name="what-to-expect"></a>未來展望
 
-當 Azure AD DS 受控網域處於「*需要注意*」狀態時，Azure 平臺可能無法定期監視、修補、更新或備份資料。 在某些情況下（例如，使用不正確網路設定），可能無法連線到受控網域的網域控制站。
+當受控網域處於「*需要注意*」狀態時，Azure 平臺可能無法定期監視、修補、更新或備份資料。 在某些情況下（例如，使用不正確網路設定），可能無法連線到受控網域的網域控制站。
 
 * 受控網域處於狀況不良的狀態，而持續的健康情況監視可能會停止，直到警示解決為止。
 * 無法修補或更新受控網域的網域控制站。
@@ -69,7 +69,7 @@ Azure AD DS 受控網域可能處於下列其中一種狀態：
 
 ## <a name="suspended-state"></a>暫止狀態
 
-基於下列其中一個原因，Azure AD DS 受控網域進入**暫停**狀態：
+受控網域會因為下列其中一個原因而進入**暫停**狀態：
 
 * 有一或多個重大警示未在 15 天內解決。
     * 重大警示可能是因為設定錯誤而使 Azure AD DS 所需資源的存取遭到封鎖而導致的。 例如，受控網域中的 [AADDS104：網路錯誤][alert-nsg]警示並未在 15 天內解決。
@@ -79,7 +79,7 @@ Azure AD DS 受控網域可能處於下列其中一種狀態：
 
 ### <a name="what-to-expect"></a>未來展望
 
-當 Azure AD DS 受控網域處於「已*暫停*」狀態時，會發生下列行為：
+當受控網域處於「已*暫停*」狀態時，會發生下列行為：
 
 * 受控網域的網域控制站已解除布建，且無法在虛擬網路內連線。
 * 安全 LDAP 透過網際網路存取受控網域（如果啟用）會停止運作。
@@ -93,10 +93,10 @@ Azure AD DS 受控網域可能處於下列其中一種狀態：
 
 ### <a name="restore-a-suspended-domain"></a>還原暫時停權的網域
 
-若要還原處于「已*暫停*」狀態之 Azure AD DS 受控網域的健康情況，請完成下列步驟：
+若要還原處于「已*暫停*」狀態之受控網域的健全狀況，請完成下列步驟：
 
 1. 在 [Azure 入口網站中，搜尋並選取 [**網域服務**]。
-1. 從清單中選擇您的 Azure AD DS 受控網域（例如*aaddscontoso.com*），然後選取 [**健康**情況]。
+1. 從清單中選擇您的受控網域（例如*aaddscontoso.com*），然後選取 [**健康**情況]。
 1. 視暫停的原因而定，選取警示，例如*AADDS503*或*AADDS504*。
 1. 選擇警示中提供的解決連結，並遵循步驟來解決此問題。
 
@@ -106,11 +106,11 @@ Azure AD DS 受控網域可能處於下列其中一種狀態：
 
 ## <a name="deleted-state"></a>已刪除狀態
 
-如果 Azure AD DS 受控網域處於*暫停*狀態15天，則會被刪除。 此進程無法復原。
+如果受控網域處於*暫停*狀態15天，則會被刪除。 此進程無法復原。
 
 ### <a name="what-to-expect"></a>未來展望
 
-當 Azure AD DS 受控網域進入*已刪除*狀態時，會看到下列行為：
+當受控網域進入*已刪除*狀態時，會出現下列行為：
 
 * 該受控網域的所有資源和備份都會被刪除。
 * 您無法還原受控網域，且必須建立替代的受控網域，才能重複使用 Azure AD DS。
@@ -118,7 +118,7 @@ Azure AD DS 受控網域可能處於下列其中一種狀態：
 
 ## <a name="next-steps"></a>後續步驟
 
-若要讓您的 Azure AD DS 受控網域保持良好狀態，並將它暫停的風險降到最低，請瞭解如何[解決受控網域的警示][resolve-alerts]。
+若要讓受控網域保持良好狀態，並將它暫停的風險降到最低，請瞭解如何[解決受控網域的警示][resolve-alerts]。
 
 <!-- INTERNAL LINKS -->
 [alert-nsg]: alert-nsg.md

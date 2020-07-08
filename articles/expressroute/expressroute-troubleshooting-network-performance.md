@@ -4,19 +4,19 @@ description: 本頁提供測試 Azure 網路連結效能的標準化方法。
 services: expressroute
 author: tracsman
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: bb68919fba731caa32dcca3f4c991b8881afc6f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5390915436d38939b83a1599f8fb564cfbd11bdb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74869641"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738238"
 ---
 # <a name="troubleshooting-network-performance"></a>網路效能疑難排解
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Azure 提供穩定且快速的方式，從您的內部部署網路連線到 Azure。 大型和小型的客戶可以成功使用站對站 VPN 和 ExpressRoute 等方法，在 Azure 中經營其業務。 但是當效能不符合您預期的情況或先前的經驗時，會發生什麼事？ 本文件可協助您將測試方式標準化，並為您的特定環境制訂基準。
 
 本文件說明如何在兩部主機之間輕鬆且一致地測試網路延遲和頻寬。 本文件也針對查看 Azure 網路的方式提供一些建議，並協助您隔離問題點。 討論的 PowerShell 指令碼和工具在網路上 (要測試之連結的任一端) 需要有兩部主機。 一部主機必須是 Windows 伺服器或桌面，另一部主機則可以是 Windows 或 Linux。 
@@ -146,7 +146,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 
 透過 Azure，一旦您盡可能地詳細隔離問題之後，就可以檢閱 [Azure 網路文件][Network Docs]，之後如果仍然需要，[請開啟支援票證][Ticket Link]。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 ### <a name="latencybandwidth-expectations"></a>延遲/頻寬期望
 >[!TIP]
 > 您要測試的端點之間的地理延遲 (英哩或公里) 是目前最大的延遲構成要素。 雖然沒有相關的設備延遲 (實體和虛擬構成要素、躍點數目等)，但處理 WAN 連線時，地理位置已經公認是整體延遲的最大構成要素。 同樣重要的是要注意，距離是光纖行程的距離，而不是直線距離或路段圖地圖距離。 這個距離很難準確無誤。 因此，我通常使用網際網路上的城市距離計算機，而且知道這種方法是非常不準確的測量方法，但足以設定一般預期。
@@ -179,7 +179,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>Location|Azure<br/>區域|預估<br/>距離 (公里)|Latency|1 個工作階段<br/>頻寬|最大值<br/>頻寬|
+|ExpressRoute<br/>位置|Azure<br/>區域|預估<br/>距離 (公里)|Latency|1 個工作階段<br/>頻寬|最大值<br/>頻寬|
 | Seattle | 美國西部 2        |    191 公里 |   5 毫秒 | 262.0 Mbits/秒 |  3.74 Gbits/秒 |
 | Seattle | 美國西部          |  1,094 公里 |  18 毫秒 |  82.3 Mbits/秒 |  3.70 Gbits/秒 |
 | Seattle | 美國中部       |  2,357 公里 |  40 毫秒 |  38.8 Mbits/秒 |  2.55 Gbits/秒 |

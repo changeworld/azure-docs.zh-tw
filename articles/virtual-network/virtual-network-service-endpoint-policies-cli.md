@@ -11,18 +11,18 @@ Customer intent: I want only specific Azure Storage account to be allowed access
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: e01af052a936403162115965f2dc5b3ad46dd9cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78271191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708207"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>使用 Azure CLI 管理資料外泄，以 Azure 儲存體具有虛擬網路服務端點原則的帳戶
 
@@ -45,7 +45,7 @@ ms.locfileid: "78271191"
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
-建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
+建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus** 位置建立名為 myResourceGroup** 的資源群組。
 
 ```azurecli-interactive
 az group create \
@@ -114,7 +114,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-每個網路安全性群組包含數個[預設的安全性規則](security-overview.md#default-security-rules)。 後面的規則會覆寫允許對所有公用 IP 位址進行輸出存取的預設安全性規則。 選項`destination-address-prefix "Internet"`會拒絕對所有公用 IP 位址的輸出存取。 上一個規則會因其具有較高優先順序而覆寫這項規則，從而允許對 Azure 儲存體之公用 IP 位址的存取。
+每個網路安全性群組包含數個[預設的安全性規則](security-overview.md#default-security-rules)。 後面的規則會覆寫允許對所有公用 IP 位址進行輸出存取的預設安全性規則。 `destination-address-prefix "Internet"`選項會拒絕對所有公用 IP 位址的輸出存取。 上一個規則會因其具有較高優先順序而覆寫這項規則，從而允許對 Azure 儲存體之公用 IP 位址的存取。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -263,7 +263,7 @@ az network service-endpoint policy create \
   --location eastus
 ```
 
-將允許的儲存體帳戶的資源 URI 儲存在變數中。 執行下列命令之前，請將* \<您的訂*用帳戶識別碼取代為您訂用帳戶識別碼的實際值>。
+將允許的儲存體帳戶的資源 URI 儲存在變數中。 執行下列命令之前，請 *\<your-subscription-id>* 將取代為您的訂用帳戶識別碼的實際值。
 
 ```azurecli-interactive
 $serviceResourceId="/subscriptions/<your-subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/allowedstorageacc"
@@ -313,7 +313,7 @@ az vm create \
 
 ### <a name="confirm-access-to-storage-account"></a>確認對儲存體帳戶的存取
 
-使用 SSH 連線到 myVmPrivate** VM。 將* \<publicIpAddress>* 取代為*myVmPrivate* VM 的公用 IP 位址。
+使用 SSH 連線到 myVmPrivate** VM。 將取代 *\<publicIpAddress>* 為您*myVmPrivate* VM 的公用 IP 位址。
 
 ```bash 
 ssh <publicIpAddress>
@@ -325,7 +325,7 @@ ssh <publicIpAddress>
 sudo mkdir /mnt/MyAzureFileShare1
 ```
 
-將 Azure 檔案共用裝載至您所建立的目錄。 執行下列命令之前，請將*AccountKey*值的* \<儲存體帳戶金鑰>* 取代為 **$saConnectionString 1**。
+將 Azure 檔案共用裝載至您所建立的目錄。 執行下列命令之前，請將取代 *\<storage-account-key>* 為 **$saConnectionString 1**的*AccountKey*值。
 
 ```bash
 sudo mount --types cifs //allowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare1 --options vers=3.0,username=allowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -343,13 +343,13 @@ sudo mkdir /mnt/MyAzureFileShare2
 
 嘗試從儲存體帳戶*notallowedstorageacc*將 Azure 檔案共用掛接至您所建立的目錄。 本文假設您已部署最新版本的 Ubuntu。 如果您是使用舊版的 Ubuntu，請參閱 [Linux 上的裝載](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以取得有關裝載檔案共用的其他指示。 
 
-執行下列命令之前，請將* \<儲存體帳戶金鑰>* 取代為 **$saConnectionString 2**的*AccountKey*值。
+執行下列命令之前，請將取代 *\<storage-account-key>* 為 **$saConnectionString 2**中的*AccountKey*值。
 
 ```bash
 sudo mount --types cifs //notallowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare2 --options vers=3.0,username=notallowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-存取遭到拒絕，因為此儲存體帳戶`mount error(13): Permission denied`不在我們套用至子網的服務端點原則允許清單中，所以您會收到錯誤。 
+存取遭到拒絕， `mount error(13): Permission denied` 因為此儲存體帳戶不在我們套用至子網的服務端點原則允許清單中，所以您會收到錯誤。 
 
 結束對 myVmPublic** VM 的 SSH 工作階段。
 

@@ -4,15 +4,15 @@ description: 本文將逐步引導您為 ExpressRoute 線路建立和佈建私�
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: 05602538f206032d924b39a7dd8f4325c48a5224
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cad8a157121c0ccb53674301572b02410e030cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931381"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736232"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>建立和修改 ExpressRoute 線路的對等互連 (傳統)
 > [!div class="op_single_selector"]
@@ -302,7 +302,7 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    * 公告的首碼：您必須提供一份您打算在 BGP 工作階段上公告的所有首碼的清單。 只接受公用 IP 位址首碼。 如果您打算傳送一組首碼，您可以傳送逗號分隔清單。 這些首碼必須在 RIR / IRR 中註冊給您。
    * 客戶 ASN：如果您要公告的首碼未註冊給對等 AS 編號，您可以指定它們所註冊的 AS 編號。 **選擇項**。
    * 路由登錄名稱：您可以指定可供註冊 AS 編號和首碼的 RIR / IRR。
-   * MD5 雜湊 (如果選擇使用)。 **選擇性。**
+   * MD5 雜湊 (如果選擇使用)。 **選擇性.**
      
    執行下列 Cmdlet 來為線路設定 Microsoft 對等：
  

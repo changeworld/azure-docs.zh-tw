@@ -4,23 +4,23 @@ description: 使用站對站 VPN 閘道，透過 ExpressRoute Microsoft 對等�
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 571ed0201fea11f6770ec3aa7e72db10d49e7b01
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738153"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>透過 ExpressRoute Microsoft 對等互連，設定站對站 VPN
 
 本文可協助您在內部部署網路與 Azure 虛擬網路 (VNet) 之間，透過 ExpressRoute 私人連線，設定安全加密的連線。 您可以利用 Microsoft 對等互連，在選取的內部部署網路與 Azure VNet 之間，建立站對站 IPsec/IKE VPN 通道。 透過 ExpressRoute 設定安全通道可以在資料交換時，實現機密性、禁止重新播放、真實性和完整性。
 
 >[!NOTE]
->當您透過 Microsoft 對等互連設定站對站 VPN 時，您必須支付 VPN 閘道與 VPN 輸出的費用。 如需詳細資訊，請參閱 [VPN 閘道定價](https://azure.microsoft.com/pricing/details/vpn-gateway)。
+>當您透過 Microsoft 對等互連設定站對站 VPN 時，您必須支付 VPN 閘道與 VPN 輸出的費用。 如需詳細資訊，請參閱[VPN 閘道定價](https://azure.microsoft.com/pricing/details/vpn-gateway)。
 >
 >
 
@@ -91,7 +91,7 @@ ms.locfileid: "75436803"
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-下列部分輸出顯示已從\*243.229.34 與 ASN 12076 （MSEE）收到68首碼：
+下列部分輸出顯示已從 \* 243.229.34 與 ASN 12076 （MSEE）收到68首碼：
 
 ```
 ...

@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707832"
 ---
 # <a name="virtual-network-tap"></a>虛擬網路 TAP
 
 Azure 虛擬網路 TAP (終端機存取點) 可讓您持續將虛擬機器網路流量串流到網路封包收集器或分析工具。 收集器或分析工具是由[網路虛擬裝置](https://azure.microsoft.com/solutions/network-appliances/)合作夥伴所提供。 如需經驗證能與虛擬網路 TAP 相容的合作夥伴解決方案清單，請參閱[合作夥伴解決方案](#virtual-network-tap-partner-solutions)。
 
 > [!IMPORTANT]
-> 虛擬網路點在所有 Azure 區域中目前均為預覽狀態。 若要使用 [虛擬網路點]，您必須使用您的訂用帳戶 <azurevnettap@microsoft.com>識別碼傳送電子郵件給，以註冊預覽版。 當訂用帳戶註冊完成之後，您會收到電子郵件。 在收到確認電子郵件後才能使用此功能。 此預覽版是在沒有服務等級協定的情況下提供，不應用於生產工作負載。 可能不支援特定功能、可能已經限制功能，或者可能無法在所有 Azure 位置提供使用。 如需詳細資訊，請參閱 [Microsoft Azure 預覽](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 的補充使用規定。
+> 虛擬網路點在所有 Azure 區域中目前均為預覽狀態。 若要使用 [虛擬網路點]，您必須  <azurevnettap@microsoft.com> 使用您的訂用帳戶識別碼傳送電子郵件給，以註冊預覽版。 當訂用帳戶註冊完成之後，您會收到電子郵件。 在收到確認電子郵件後才能使用此功能。 此預覽版是在沒有服務等級協定的情況下提供，不應用於生產工作負載。 可能不支援特定功能、可能已經限制功能，或者可能無法在所有 Azure 位置提供使用。 如需詳細資訊，請參閱  [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 。
 
 ## <a name="virtual-network-tap-partner-solutions"></a>虛擬網路 TAP 合作夥伴解決方案
 
@@ -56,7 +56,7 @@ Azure 虛擬網路 TAP (終端機存取點) 可讓您持續將虛擬機器網路
 
 ![虛擬網路 TAP 的運作方式](./media/virtual-network-tap/architecture.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 建立虛擬網路之前，您必須先收到已在預覽中註冊的確認郵件，並具有一或多個使用[Azure Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)部署模型建立的虛擬機器，以及可在相同 Azure 區域中匯總網路流量的合作夥伴解決方案。 如果虛擬網路中沒有合作夥伴解決方案，請參閱[合作夥伴解決方案](#virtual-network-tap-partner-solutions)來加以部署。 您可以使用相同的虛擬網路 TAP 資源，以從相同或不同訂用帳戶中的多個網路介面彙總流量。 如果所監視的網路介面位在不同訂用帳戶中，則這兩個訂用帳戶必須與相同的 Azure Active Directory 租用戶相關聯。 此外，所監視的網路介面和用於彙總 TAP 流量的目的地端點可以位於相同區域中的對等互連虛擬網路。 如果您要使用這種部署模型，請確保[虛擬網路對等互連](virtual-network-peering-overview.md)已啟用，再設定虛擬網路 TAP。
 

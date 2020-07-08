@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265814"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707135"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Hana 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -57,14 +57,14 @@ ms.locfileid: "79265814"
 ## <a name="linked-service-properties"></a>連結服務屬性
 下表提供 SAP Hana 連結服務專屬 JSON 元素的描述。
 
-屬性 | 說明 | 允許的值 | 必要
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
 伺服器 | SAP Hana 執行個體所在之伺服器的名稱。 如果您的伺服器使用自訂連接埠，指定 `server:port`。 | 字串 | 是
-authenticationType | 驗證類型。 | 字串。 "Basic" 或 "Windows" | 是 
-username | 具有 SAP 伺服器存取權之使用者的名稱 | 字串 | 是
-password | 使用者的密碼。 | 字串 | 是
-gatewayName | Data Factory 服務應該用來連接到內部部署 SAP Hana 執行個體的閘道器名稱。 | 字串 | 是
-encryptedCredential | 加密的認證字串。 | 字串 | 否
+authenticationType | 驗證類型。 | 字串。 "Basic" 或 "Windows" | Yes 
+username | 具有 SAP 伺服器存取權之使用者的名稱 | 字串 | Yes
+密碼 | 使用者的密碼。 | 字串 | Yes
+gatewayName | Data Factory 服務應該用來連接到內部部署 SAP Hana 執行個體的閘道器名稱。 | 字串 | Yes
+encryptedCredential | 加密的認證字串。 | 字串 | No
 
 ## <a name="dataset-properties"></a>資料集屬性
 如需定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
@@ -79,9 +79,9 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 
 當複製活動中的來源類型為 **RelationalSource** (包括 SAP Hana) 時，typeProperties 區段中可使用下列屬性：
 
-| 屬性 | 說明 | 允許的值 | 必要 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 | 指定 SQL 查詢從 SAP HANA 執行個體讀取資料。 | SQL 查詢。 | 是 |
+| 查詢 | 指定 SQL 查詢從 SAP HANA 執行個體讀取資料。 | SQL 查詢。 | Yes |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON 範例：將資料從 SAP HANA 複製到 Azure Blob
 下列範例提供可用來使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)建立管線的範例 JSON 定義。 此範例示範如何將資料從內部部署 SAP Hana 複製到 Azure Blob 儲存體。 不過，您可以在 Azure Data Factory 中使用複製活動， **直接** 將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所列的任何接收器。  
@@ -287,7 +287,7 @@ TINYINT | Byte
 SMALLINT | Int16
 INT | Int32
 bigint | Int64
-real | Single
+REAL | Single
 DOUBLE | Single
 DECIMAL | Decimal
 BOOLEAN | Byte

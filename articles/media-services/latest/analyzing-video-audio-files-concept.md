@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269883"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708955"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒體服務分析影片和音訊檔案
 
@@ -63,7 +63,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ## <a name="insightsjson-elements"></a>insights.json 元素
 
-輸出會包含 JSON 檔案（深入解析），其中包含在影片或音訊中找到的所有見解。 JSON 可能包含下列元素：
+輸出包含 JSON 檔案（insights.js開啟），其中包含在影片或音訊中找到的所有見解。 JSON 可能包含下列元素：
 
 ### <a name="transcript"></a>文字記錄
 
@@ -151,7 +151,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 |Name|描述|
 |---|---|
 |id|臉部識別碼。|
-|名稱|臉部名稱。 它可以是「未知的 #0」、已識別的名人或客戶訓練的人員。|
+|NAME|臉部名稱。 它可以是「未知的 #0」、已識別的名人或客戶訓練的人員。|
 |信賴度|臉部識別信賴。|
 |description|名人的描述。 |
 |thumbnailId|該臉部的縮圖識別碼。|
@@ -250,7 +250,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="statistics"></a>統計資料
 
-|Name|描述|
+|Name|說明|
 |---|---|
 |CorrespondenceCount|影片中的對應數目。|
 |WordCount|每個說話者的字數。|
@@ -301,7 +301,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 |Name|描述|
 |---|---|
 |id|標籤識別碼。|
-|名稱|標籤名稱 (例如，電腦、電視)。|
+|NAME|標籤名稱 (例如，電腦、電視)。|
 |語言|標籤名稱語言 (轉譯時)。 BCP-47|
 |執行個體|此標籤曾出現的時間範圍清單 (同一個標籤可以出現多次)。 每個執行個體都有一個信賴度欄位。 |
 
@@ -405,7 +405,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 visualContentModeration 區塊包含影片索引器偵測到可能含有成人內容的時間範圍。 如果 visualContentModeration 是空的，則不會識別任何成人內容。
 
-經發現含有成人或猥褻內容的影片，只能供私人檢視。 使用者可以提交內容的人工審核要求，在此情況下， `IsAdult`屬性會包含人工審核的結果。
+經發現含有成人或猥褻內容的影片，只能供私人檢視。 使用者可以提交內容的人工審核要求，在此情況下， `IsAdult` 屬性會包含人工審核的結果。
 
 |Name|描述|
 |---|---|

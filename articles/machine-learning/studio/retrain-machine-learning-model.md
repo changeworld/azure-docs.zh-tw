@@ -5,21 +5,19 @@ description: 瞭解如何在 Azure Machine Learning Studio （傳統）中更新
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 218c1c98a2ed775ae86c1657156991879708cc7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 601717ce487f8564ed2d431db9b31a3b43fcee75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217944"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706081"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新定型和部署機器學習模型
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 若想要確保機器模型保持精準，並確定模型所根據的是相關性最高的可用資料，其中一種方式就是重新定型。 本文說明如何將機器學習服務模型重新定型並部署為 Studio （傳統）中的新 web 服務。 如果是要重新定型傳統的 Web 服務，請[參閱操作說明文章](retrain-classic-web-service.md)。
 
@@ -53,7 +51,7 @@ ms.locfileid: "79217944"
 1. 在實驗畫布底端，按一下 [設定 Web 服務] ****
 1. 選取 [部署 Web 服務 [新]]****。 Azure Machine Learning Web Services 入口網站會開啟 [部署 Web 服務]**** 頁面。
 1. 輸入您 Web 服務的名稱，然後選擇付款方案。
-1. 選取 [部署]  。
+1. 選取 [部署]。
 
 ## <a name="retrain-the-model"></a>重新定型模型
 
@@ -61,7 +59,7 @@ ms.locfileid: "79217944"
 
 使用下列步驟呼叫重新定型 API：
 
-1. 在 Visual Studio 中建立 c # 主控台應用程式：**新增** > **專案** > **Visual c #** > **Windows 傳統桌面** > **主控台應用程式（.NET Framework）**。
+1. 在 Visual Studio 中建立 c # 主控台應用程式：**新增**  >  **專案**  >  **Visual c #**  >  **Windows 傳統桌面**  >  **主控台應用程式（.NET Framework）**。
 1. 登入 Machine Learning Web 服務入口網站。
 1. 按一下您要使用的 Web 服務。
 1. 按一下 [取用] ****。

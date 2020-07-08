@@ -10,40 +10,75 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/14/2020
+ms.date: 6/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: 9ea1caff5a0aba99bcd0d21b97650d075b830d2a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 6cde6470a8e533879de72307b8f00c70f9f165a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656402"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737456"
 ---
 # <a name="azure-guest-os"></a>Azure 客體作業系統
 下表為適用於 Azure 客體作業系統的 Microsoft Security Response Center (MSRC) 更新。 請搜尋本文章以判斷特定更新是否適用於您使用的客體作業系統。 已引進更新的特定[系列][family-explain]會持續推出更新。
 
-## <a name="may-2020-guest-os"></a>2020 年 5 月客體 OS
->[!NOTE]
->我們目前正在將 4 月客體 OS 推展到已設定要自動更新的雲端服務 VM。 推展完成時，我們會透過 Azure 入口網站和組態檔來提供此版本，以便您可以手動更新。 下列修補程式會包含在 4 月客體 OS 中。 此清單會隨時變動。”
+## <a name="june-2020-guest-os"></a>2020年6月來賓 OS
+「>[!NOTE]
+>目前正在向已設定為自動更新的雲端服務 Vm 推出6月份的客體作業系統。 推展完成時，我們會透過 Azure 入口網站和組態檔來提供此版本，以便您可以手動更新。 下列修補程式會包含在 4 月客體 OS 中。 此清單會隨時變動。”
+
 
 | 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  2.98,  3.85, 4.78  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4556813]  |  最新累計更新 (LCU)   |  5.43  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4551853]  |  最新累計更新 (LCU)   |  6.19  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4552940]  |  每月彙總   |  2.98  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4556836]  |  每月彙總   |  2.98  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4555449]  |  服務堆疊更新   |  2.98  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4552920]  |  每月彙總   |  2.98  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4552979]  |  每月彙總   |  3.85  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4556840]  |  每月彙總   |  3.85  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4552947]  |  每月彙總   |  3.85  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4552982]  |  每月彙總   |  3.85  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4552946]  |  每月彙總   |  4.78  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4556846]  |  每月彙總   |  4.78  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4550994]  |  服務堆疊更新   |  5.43  |  2020 年 4 月 14 日  |
-|  Rel 20-05   |  [4552924]  |  每月彙總   |  6.19  |  2020 年 5 月 12 日  |
-|  Rel 20-05   |  [4549947]  |  服務堆疊更新   |  6.19  |  2020 年 4 月 14 日  |
+|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  2.99、3.86、4.79  |  2020年6月9日  |
+|  Rel 20-06  |  [4561616]  |  最新累計更新 (LCU)  |  5.44  |  2020年6月9日  |
+|  Rel 20-06  |  [4561608]  |  最新累計更新 (LCU)  |  6.20  |  2020年6月9日  |
+|  Rel 20-06  |  [4562030]  |  服務堆疊更新  |  2.99  |  2020年6月9日  |
+|  Rel 20-06  |  [4561643]  |  每月彙總  |  2.99  |  2020年6月9日  |
+|  Rel 20-06  |  [4562252]  |  服務堆疊更新  |  3.86  |  2020年6月9日  |
+|  Rel 20-06  |  [4561612]  |  每月彙總  |  3.86  |  2020年6月9日  |
+|  Rel 20-06  |  [4561600]  |  閃爍  |  3.86、4.79、5.44、6.20  |  2020年6月9日  |
+|  Rel 20-06  |  [4562253]  |  服務堆疊更新  |  4.79  |  2020年6月9日  |
+|  Rel 20-06  |  [4561666]  |  每月彙總  |  4.79  |  2020年6月9日  |
+|  Rel 20-06  |  [4562561]  |  服務堆疊更新  |  5.44  |  2020年6月9日  |
+|  Rel 20-06  |  [4562562]  |  服務堆疊更新  |  6.20  |  2020年6月9日  |
+
+
+
+[4561603]: https://support.microsoft.com/kb/4561603
+[4561616]: https://support.microsoft.com/kb/4561616
+[4561608]: https://support.microsoft.com/kb/4561608
+[4562030]: https://support.microsoft.com/kb/4562030
+[4561643]: https://support.microsoft.com/kb/4561643
+[4562252]: https://support.microsoft.com/kb/4562252
+[4561612]: https://support.microsoft.com/kb/4561612
+[4561600]: https://support.microsoft.com/kb/4561600
+[4562253]: https://support.microsoft.com/kb/4562253
+[4561666]: https://support.microsoft.com/kb/4561666
+[4562561]: https://support.microsoft.com/kb/4562561
+[4562562]: https://support.microsoft.com/kb/4562562
+
+
+## <a name="may-2020-guest-os"></a>2020 年 5 月客體 OS
+
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-05  |  [4556798]  |  Internet Explorer   |  [2.98]、 [3.85]、 [4.78]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4556813]  |  最新累計更新 (LCU)   |  [5.43]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4551853]  |  最新累計更新 (LCU)   |  [6.19]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552940]  |  每月彙總   |  [2.98]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4556836]  |  每月彙總   |  [2.98]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4555449]  |  服務堆疊更新   |  [2.98]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552920]  |  每月彙總   |  [2.98]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552979]  |  每月彙總   |  [3.85]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4556840]  |  每月彙總   |  [3.85]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552947]  |  每月彙總   |  [3.85]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552982]  |  每月彙總   |  [3.85]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552946]  |  每月彙總   |  [4.78]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4556846]  |  每月彙總   |  [4.78]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4550994]  |  服務堆疊更新   |  [5.43]  |  2020 年 4 月 14 日  |
+|  Rel 20-05  |  [4552924]  |  每月彙總   |  [6.19]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4549947]  |  服務堆疊更新   |  [6.19]  |  2020 年 4 月 14 日  |
 
 
 [4556798]: https://support.microsoft.com/kb/4556798
@@ -62,6 +97,11 @@ ms.locfileid: "83656402"
 [4550994]: https://support.microsoft.com/kb/4550994
 [4552924]: https://support.microsoft.com/kb/4552924
 [4549947]: https://support.microsoft.com/kb/4549947
+[2.98]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3.85]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4.78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5.43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6.19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="april-2020-guest-os"></a>2020 年 4 月客體 OS

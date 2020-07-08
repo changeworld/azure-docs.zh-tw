@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284027"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84704517"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>處理 Azure Logic Apps 中的錯誤和例外狀況
 
@@ -27,12 +27,12 @@ ms.locfileid: "79284027"
 
 以下是重試原則的類型：
 
-| 類型 | 說明 |
+| 類型 | 描述 |
 |------|-------------|
-| **預設** | 此原則會以*指數漸增*的間隔 (依 7.5 秒調整，但限制在 5 到 45 秒之間) 傳送最多 4 次重試。 |
+| **預設值** | 此原則會以*指數漸增*的間隔 (依 7.5 秒調整，但限制在 5 到 45 秒之間) 傳送最多 4 次重試。 |
 | **指數間隔**  | 此原則會先等待選自指數成長範圍內的隨機間隔時間，再傳送下一個要求。 |
 | **固定間隔**  | 此原則會先等待指定的間隔時間，再傳送下一個要求。 |
-| **無**  | 不重新傳送要求。 |
+| **None**  | 不重新傳送要求。 |
 |||
 
 如需有關重試原則限制的資訊，請參閱 [Logic Apps 限制和設定](../logic-apps/logic-apps-limits-and-config.md#request-limits)。
@@ -69,26 +69,26 @@ ms.locfileid: "79284027"
 
 *必要*
 
-| 值 | 類型 | 說明 |
+| 值 | 類型 | Description |
 |-------|------|-------------|
-| <*重試-原則類型*> | 字串 | 您想要使用的重試原則類型：`default`、`none`、`fixed` 或 `exponential` |
-| <*重試間隔*> | 字串 | 值必須使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重試間隔。 預設最小間隔是 `PT5S`，最大間隔則是 `PT1D`。 當您使用指數間隔原則時，您可以指定不同的最小和最大值。 |
+| <*重試-原則類型*> | String | 您想要使用的重試原則類型：`default`、`none`、`fixed` 或 `exponential` |
+| <*重試間隔*> | String | 值必須使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重試間隔。 預設最小間隔是 `PT5S`，最大間隔則是 `PT1D`。 當您使用指數間隔原則時，您可以指定不同的最小和最大值。 |
 | <*重試次數*> | 整數 | 重試次數必須介於 1 到 90 之間 |
 ||||
 
 *選擇性*
 
-| 值 | 類型 | 說明 |
+| 值 | 類型 | Description |
 |-------|------|-------------|
-| <*最小間隔*> | 字串 | 對於指數間隔原則，此為隨機選取間隔的最小間隔，且採用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
-| <*最大間隔*> | 字串 | 對於指數間隔原則，此為隨機選取間隔的最大間隔，且採用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
+| <*最小間隔*> | String | 對於指數間隔原則，此為隨機選取間隔的最小間隔，且採用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
+| <*最大間隔*> | String | 對於指數間隔原則，此為隨機選取間隔的最大間隔，且採用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
 ||||
 
 以下是不同原則類型的詳細資訊。
 
 <a name="default-retry"></a>
 
-### <a name="default"></a>預設值
+### <a name="default"></a>預設
 
 若您未指定重試原則，則動作會使用預設原則 (實際上就是[指數間隔原則](#exponential-interval))，此原則會以指數漸增間隔 (以 7.5 秒作調整) 傳送最多四次重試。 間隔的最小值與最大值為 5 秒和 45 秒。
 
@@ -112,7 +112,7 @@ ms.locfileid: "79284027"
 }
 ```
 
-### <a name="none"></a>無
+### <a name="none"></a>None
 
 若要將動作或觸發程序指定為不會重試失敗的要求，請將 <retry-policy-type**> 設定為 `none`。
 
@@ -162,9 +162,9 @@ ms.locfileid: "79284027"
 
 ## <a name="catch-and-handle-failures-by-changing-run-after-behavior"></a>藉由變更「之後執行」行為來攔截和處理失敗
 
-當您在邏輯應用程式設計工具中新增動作時，您會隱含宣告要用來執行這些動作的順序。 動作完成執行之後，該動作會`Succeeded`以、 `Failed` `Skipped`、或`TimedOut`等狀態標示。 在每個動作定義中`runAfter` ，屬性會指定必須先完成的前置動作，以及後續動作可以執行之前該前置項所允許的狀態。 根據預設，您在設計工具中新增的動作，只有在前置項完成且`Succeeded`狀態為時才會執行。
+當您在邏輯應用程式設計工具中新增動作時，您會隱含宣告要用來執行這些動作的順序。 動作完成執行之後，該動作會以、、或等狀態標示 `Succeeded` `Failed` `Skipped` `TimedOut` 。 在每個動作定義中， `runAfter` 屬性會指定必須先完成的前置動作，以及後續動作可以執行之前該前置項所允許的狀態。 根據預設，您在設計工具中新增的動作，只有在前置項完成且狀態為時才會執行 `Succeeded` 。
 
-當動作擲回未處理的錯誤或例外狀況時，會`Failed`標示動作，並標記`Skipped`任何後續動作。 如果有平行分支的動作發生這種行為，則 Logic Apps 引擎會遵循其他分支來判斷其完成狀態。 例如，如果分支以`Skipped`動作結束，該分支的完成狀態會根據該略過動作的前置狀態。 邏輯應用程式執行完成之後，引擎會評估所有分支狀態來判斷整個執行的狀態。 如果任何分支結束失敗，則會標示`Failed`整個邏輯應用程式執行。
+當動作擲回未處理的錯誤或例外狀況時，會標示動作 `Failed` ，並標記任何後續動作 `Skipped` 。 如果有平行分支的動作發生這種行為，則 Logic Apps 引擎會遵循其他分支來判斷其完成狀態。 例如，如果分支以 `Skipped` 動作結束，該分支的完成狀態會根據該略過動作的前置狀態。 邏輯應用程式執行完成之後，引擎會評估所有分支狀態來判斷整個執行的狀態。 如果任何分支結束失敗，則會標示整個邏輯應用程式執行 `Failed` 。
 
 ![示範如何評估執行狀態的範例](./media/logic-apps-exception-handling/status-evaluation-for-parallel-branches.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "79284027"
 
 ### <a name="customize-run-after-behavior"></a>自訂「在之後執行」行為
 
-您可以自訂動作的「在之後執行」行為，讓動作在前置的狀態`Succeeded`為、 `Failed`、 `Skipped`、 `TimedOut`或任何狀態時執行。 例如，若要在 Excel Online `Add_a_row_into_a_table`前置動作標記`Failed`之後傳送電子郵件，而不是`Succeeded`，請遵循下列任一步驟來變更「在之後執行」行為：
+您可以自訂動作的「在之後執行」行為，讓動作在前置的狀態為 `Succeeded` 、 `Failed` 、 `Skipped` 、 `TimedOut` 或任何狀態時執行。 例如，若要在 Excel Online 前置動作標記之後傳送電子郵件 `Add_a_row_into_a_table` `Failed` ，而不是 `Succeeded` ，請遵循下列任一步驟來變更「在之後執行」行為：
 
 * 在設計檢視中，選取省略號（**...**）按鈕，然後選取 [**設定執行後**]。
 
@@ -188,11 +188,11 @@ ms.locfileid: "79284027"
 
   ![將「在之後執行」行為變更為「已失敗」](./media/logic-apps-exception-handling/run-after-property-status-set-to-failed.png)
 
-  若要指定動作會執行前置動作是否標示為`Failed`， `Skipped`或`TimedOut`選取其他狀態：
+  若要指定動作會執行前置動作是否標示為 `Failed` ， `Skipped` 或 `TimedOut` 選取其他狀態：
 
   ![將「在之後執行」行為變更為具有任何其他狀態](./media/logic-apps-exception-handling/run-after-property-multiple-statuses.png)
 
-* 在 [程式碼] 視圖的 [動作的 JSON 定義] `runAfter`中，編輯屬性，其遵循下列語法：
+* 在 [程式碼] 視圖的 [動作的 JSON 定義] 中，編輯 `runAfter` 屬性，其遵循下列語法：
 
   ```json
   "<action-name>": {
@@ -208,7 +208,7 @@ ms.locfileid: "79284027"
   }
   ```
 
-  針對此範例，請將`runAfter`屬性從`Succeeded`變更`Failed`為：
+  針對此範例，請將 `runAfter` 屬性從變更 `Succeeded` 為 `Failed` ：
 
   ```json
   "Send_an_email_(V2)": {
@@ -235,7 +235,7 @@ ms.locfileid: "79284027"
   }
   ```
 
-  若要指定動作會執行前置動作是否標示為`Failed`， `Skipped`或`TimedOut`加入其他狀態：
+  若要指定動作會執行前置動作是否標示為 `Failed` ， `Skipped` 或 `TimedOut` 加入其他狀態：
 
   ```json
   "runAfter": {
@@ -249,13 +249,13 @@ ms.locfileid: "79284027"
 
 ## <a name="evaluate-actions-with-scopes-and-their-results"></a>以範圍和其結果評估動作
 
-類似于在`runAfter`屬性的個別動作之後執行步驟，您可以在[範圍](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)內將動作群組在一起。 當您想要以邏輯方式將動作群組在一起、評估範圍的彙總狀態，並根據這些狀態執行動作時，即可使用範圍。 當範圍中的所有動作都執行完成之後，範圍本身會取得自己的狀態。
+類似于在屬性的個別動作之後執行步驟 `runAfter` ，您可以在[範圍](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)內將動作群組在一起。 當您想要以邏輯方式將動作群組在一起、評估範圍的彙總狀態，並根據這些狀態執行動作時，即可使用範圍。 當範圍中的所有動作都執行完成之後，範圍本身會取得自己的狀態。
 
-若要檢查範圍的狀態，您可以使用您用來檢查邏輯應用程式執行狀態的相同準則，例如`Succeeded`、 `Failed`等等。
+若要檢查範圍的狀態，您可以使用您用來檢查邏輯應用程式執行狀態的相同準則，例如 `Succeeded` 、 `Failed` 等等。
 
-根據預設，當範圍的所有動作都成功時，範圍的狀態會標示`Succeeded`為。 如果範圍中的最後一個動作結果為`Failed`或`Aborted`，則範圍的狀態會標示`Failed`為。
+根據預設，當範圍的所有動作都成功時，範圍的狀態會標示為 `Succeeded` 。 如果範圍中的最後一個動作結果為 `Failed` 或 `Aborted` ，則範圍的狀態會標示為 `Failed` 。
 
-若要攔截`Failed`範圍中的例外狀況，並執行處理這些錯誤的動作，您`runAfter`可以使用該`Failed`範圍的屬性。 如此一來，如果範圍中的*任何*動作失敗，而您使用`runAfter`該範圍的屬性，您可以建立單一動作來攔截失敗。
+若要攔截範圍中的例外狀況， `Failed` 並執行處理這些錯誤的動作，您可以使用 `runAfter` 該 `Failed` 範圍的屬性。 如此一來，如果範圍中的*任何*動作失敗，而您使用該 `runAfter` 範圍的屬性，您可以建立單一動作來攔截失敗。
 
 如需範圍的限制，請參閱[限制和設定](../logic-apps/logic-apps-limits-and-config.md)。
 
@@ -265,9 +265,9 @@ ms.locfileid: "79284027"
 
 雖然從範圍擷取失敗很實用，但還是建議您取得內容以協助解實際上有哪些動作失敗，以及所傳回的任何錯誤或狀態碼。
 
-[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result)函式會提供範圍內所有動作結果的相關內容。 `result()`函式會接受單一參數，也就是範圍的名稱，並傳回包含該範圍內所有動作結果的陣列。 這些動作物件包含與`actions()`物件相同的屬性，例如動作的開始時間、結束時間、狀態、輸入、相互關聯識別碼和輸出。 若要傳送在範圍內失敗之任何動作的內容，您可以輕鬆地`@result()`將運算式與`runAfter`屬性配對。
+函式會 [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) 提供範圍內所有動作結果的相關內容。 函 `result()` 式會接受單一參數，也就是範圍的名稱，並傳回包含該範圍內所有動作結果的陣列。 這些動作物件包含與物件相同的屬性 `actions()` ，例如動作的開始時間、結束時間、狀態、輸入、相互關聯識別碼和輸出。 若要傳送在範圍內失敗之任何動作的內容，您可以輕鬆地將 `@result()` 運算式與 `runAfter` 屬性配對。
 
-若要針對`Failed`具有結果的範圍中的每個動作執行動作，並將結果的陣列篩選到失敗的動作，您可以將`@result()`運算式與[**篩選陣列**](logic-apps-perform-data-operations.md#filter-array-action)動作和[**for each**](../logic-apps/logic-apps-control-flow-loops.md)迴圈配對。 您可以取得篩選後的結果陣列，並使用`For_each`迴圈對每個失敗執行動作。
+若要針對具有結果的範圍中的每個動作執行動作 `Failed` ，並將結果的陣列篩選到失敗的動作，您可以將 `@result()` 運算式與[**篩選陣列**](logic-apps-perform-data-operations.md#filter-array-action)動作和[**for each**](../logic-apps/logic-apps-control-flow-loops.md)迴圈配對。 您可以取得篩選後的結果陣列，並使用迴圈對每個失敗執行動作 `For_each` 。
 
 以下範例 (隨後並有詳細說明) 會傳送 HTTP POST 要求，其中含有任何在 "My_Scope" 範圍內失敗之動作的回應本文：
 
@@ -314,19 +314,19 @@ ms.locfileid: "79284027"
 
 1. 若要從 "My_Scope" 內的所有動作取得結果，**篩選陣列**動作會使用這個篩選條件運算式：`@result('My_Scope')`
 
-1. **篩選陣列**的條件是狀態等於`@result()`的任何專案`Failed`。 此條件會將具有 "My_Scope" 所有動作結果的陣列篩選成只剩失敗動作結果的陣列。
+1. **篩選陣列**的條件是 `@result()` 狀態等於的任何專案 `Failed` 。 此條件會將具有 "My_Scope" 所有動作結果的陣列篩選成只剩失敗動作結果的陣列。
 
-1. 對篩選`For_each`後的*陣列*輸出執行迴圈動作。 此步驟會對之前篩選的每個失敗動作結果執行動作。
+1. 對 `For_each` 篩選後的*陣列*輸出執行迴圈動作。 此步驟會對之前篩選的每個失敗動作結果執行動作。
 
-   如果範圍中的單一動作失敗， `For_each`迴圈中的動作只會執行一次。 如果有多個失敗動作，則會導致對每個失敗執行一個動作。
+   如果範圍中的單一動作失敗，迴圈中的動作 `For_each` 只會執行一次。 如果有多個失敗動作，則會導致對每個失敗執行一個動作。
 
-1. 在`For_each`專案回應主體（也就是`@item()['outputs']['body']`運算式）上傳送 HTTP POST。
+1. 在 `For_each` 專案回應主體（也就是運算式）上傳送 HTTP POST `@item()['outputs']['body']` 。
 
    `@result()` 項目圖形和 `@actions()` 圖形相同，並可透過相同方式剖析。
 
 1. 包含兩個具有失敗動作名稱 (`@item()['name']`) 和失敗執行用戶端追蹤識別碼 (`@item()['clientTrackingId']`) 的自訂標頭。
 
-供您參考，以下範例是單一 `@result()` 項目，會顯示前一個範例中剖析的 `name`、`body` 和 `clientTrackingId` 屬性。 在`For_each`動作之外， `@result()`會傳回這些物件的陣列。
+供您參考，以下範例是單一 `@result()` 項目，會顯示前一個範例中剖析的 `name`、`body` 和 `clientTrackingId` 屬性。 在動作之外，會傳回 `For_each` `@result()` 這些物件的陣列。
 
 ```json
 {
@@ -358,7 +358,7 @@ ms.locfileid: "79284027"
 }
 ```
 
-若要執行不同的例外狀況處理模式，您可以使用本文前面描述的運算式。 您可以選擇在範圍之外執行單一例外狀況處理動作，以接受整個篩選後的失敗陣列，並移除`For_each`動作。 如先前所述，您也可以包含`\@result()`回應中的其他有用屬性。
+若要執行不同的例外狀況處理模式，您可以使用本文前面描述的運算式。 您可以選擇在範圍之外執行單一例外狀況處理動作，以接受整個篩選後的失敗陣列，並移除 `For_each` 動作。 如先前所述，您也可以包含回應中的其他有用屬性 `\@result()` 。
 
 ## <a name="set-up-azure-monitor-logs"></a>設定 Azure 監視器記錄
 

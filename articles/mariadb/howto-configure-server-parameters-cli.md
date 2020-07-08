@@ -6,15 +6,15 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: 3ba06ea592d51eedbe827e1ab6418f65722d579c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 6/11/2020
+ms.openlocfilehash: fef5e6e3ea1a6f0ccc9213c13a129fab77af5274
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632310"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736147"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>使用 Azure CLI 自訂伺服器設定參數
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>使用 Azure CLI 在適用於 MariaDB 的 Azure 資料庫中設定伺服器參數
 您可以使用 Azure CLI (Azure 命令列公用程式)，來列出、顯示和更新適用於 MariaDB 的 Azure 資料庫伺服器的設定參數。 有一部分的引擎設定會在伺服器層級公開而且可供修改。
 
 ## <a name="prerequisites"></a>必要條件
@@ -54,6 +54,14 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 ```
 
 此程式碼會將 **slow\_query\_log** 設定重設為預設值 **OFF**。 
+
+## <a name="setting-parameters-not-listed"></a>設定未列出的參數
+如果 Azure 入口網站中未列出您要更新的伺服器參數，您可以選擇性地使用，在連接層級設定參數 `init_connect` 。 這會為每個連接到伺服器的用戶端設定伺服器參數。 
+
+更新資源群組**myresourcegroup**下 [伺服器**mydemoserver.mariadb.database.azure.com** **] 的 init \_ connect**伺服器設定參數，以設定 [字元集] 之類的值。
+```azurecli-interactive
+az mariadb server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
+```
 
 ## <a name="working-with-the-time-zone-parameter"></a>使用時區參數
 

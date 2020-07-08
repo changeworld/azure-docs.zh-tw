@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: 6939ea2497a9f12321e1a6dfb9bf9fbb353bc7db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240766"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84704942"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>診斷虛擬機器網路流量篩選問題
 
@@ -28,7 +28,7 @@ ms.locfileid: "80240766"
 
 NSG 可讓您針對流入和流出 VM 的流量，控制流量的類型。 您可以將 NSG 關聯至 Azure 虛擬網路中的子網路、附加至 VM 的網路介面，或是上述兩者。 套用至網路介面的有效安全性規則，乃是針對網路介面及該網路介面所在子網路關聯的 NSG，存在其中的規則彙總。 不同 NSG 中的規則有時會互相衝突，並影響 VM 的網路連線能力。 您可以從 VM 網路介面上套用的 NSG 中檢視所有的有效安全性規則。 如果您不熟悉虛擬網路、網路介面或 NSG 概念，請參閱[虛擬網路概觀](virtual-networks-overview.md)、[網路介面](virtual-network-network-interface.md)及[網路安全性群組概觀](security-overview.md)。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 您嘗試從網際網路透過連接埠 80 連線到 VM，但連線失敗。 若要判斷為何無法從網際網路存取連接埠 80，您可以使用 Azure [入口網站](#diagnose-using-azure-portal)、[PowerShell](#diagnose-using-powershell) 或 [Azure CLI](#diagnose-using-azure-cli) 來檢視網路介面的有效安全性規則。
 

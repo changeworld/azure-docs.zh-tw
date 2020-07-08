@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/29/2020
-ms.openlocfilehash: 9ac85299311c1fd233988c6472d6325934dd42dd
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 6/10/2020
+ms.openlocfilehash: eff70d193674877b3b9453319197b60569399968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614534"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707050"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>如何使用 PowerShell 建立和管理適用於 MySQL 的 Azure 資料庫中的讀取複本
 
@@ -21,7 +21,7 @@ ms.locfileid: "82614534"
 
 您可以使用 PowerShell 來建立及管理讀取複本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本操作說明指南，您需要：
 
@@ -29,8 +29,8 @@ ms.locfileid: "82614534"
 - [適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> 當 Az MySql PowerShell 模組處於預覽狀態時，您必須使用下列命令，將它與 Az PowerShell 模組分開安裝： `Install-Module -Name Az.MySql -AllowPrerelease`。
-> 在 Az MySql PowerShell 模組正式推出之後，它會成為未來 Az PowerShell 模組版本的一部分，並可從 Azure Cloud Shell 內以原生方式使用。
+> 雖然 Az.MySql PowerShell 模組處於預覽狀態，但您仍必須使用下列命令，將其與 Az PowerShell 模組分開安裝：`Install-Module -Name Az.MySql -AllowPrerelease`。
+> 在 Az.MySql PowerShell 模組正式推出後，其會成為未來 Az PowerShell 模組版本的一部分，並可從 Azure Cloud Shell 內以原生方式使用。
 
 如果您選擇在本機使用 PowerShell，請使用[disconnect-azaccount](/powershell/module/az.accounts/Connect-AzAccount) Cmdlet 連接到您的 Azure 帳戶。
 
@@ -40,6 +40,9 @@ ms.locfileid: "82614534"
 > 讀取複本功能僅供「適用於 MySQL 的 Azure 資料庫」伺服器用於一般用途或記憶體最佳化定價層。 請確定主要伺服器處於這些定價層中。
 
 ### <a name="create-a-read-replica"></a>建立讀取複本
+
+> [!IMPORTANT]
+> 當您為沒有任何現有複本的主要伺服器建立複本時，主要伺服器首先將會重新啟動，以準備本身進行複寫。 請考慮這一點，並在離峰期間執行這些作業。
 
 使用下列命令可以建立讀取複本伺服器︰
 
@@ -53,7 +56,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resourceGroupName |  myresourcegroup |  建立複本伺服器所在的資源群組。  |
-| 名稱 | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
+| Name | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
 
 若要建立跨區域讀取複本，請使用**Location**參數。 下列範例會在**美國西部**區域建立複本。
 
@@ -62,7 +65,7 @@ Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
   New-AzMySqlServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
 ```
 
-若要深入瞭解您可以在哪些區域中建立複本，請造訪[讀取複本概念一文](concepts-read-replicas.md)。
+若要深入瞭解您可以在哪些區域中建立複本，請造訪[參閱複本概念文章](concepts-read-replicas.md)。
 
 根據預設，除非指定**Sku**參數，否則會使用與主伺服器相同的伺服器設定來建立讀取複本。
 
@@ -86,7 +89,7 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 ### <a name="delete-a-replica-server"></a>刪除複本伺服器
 
-您可以藉由執行`Remove-AzMySqlServer` Cmdlet 來刪除讀取複本伺服器。
+您可以藉由執行 Cmdlet 來刪除讀取複本伺服器 `Remove-AzMySqlServer` 。
 
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
@@ -97,7 +100,7 @@ Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegrou
 > [!IMPORTANT]
 > 刪除主要伺服器會停止對所有複本伺服器複寫，並刪除主要伺服器本身。 複本伺服器會變成獨立伺服器，進而支援讀取和寫入。
 
-若要刪除主伺服器，您可以執行`Remove-AzMySqlServer` Cmdlet。
+若要刪除主伺服器，您可以執行 `Remove-AzMySqlServer` Cmdlet。
 
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

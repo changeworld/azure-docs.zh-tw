@@ -10,18 +10,16 @@ ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
 ms.subservice: studio
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: 1308f658b6ae7c8f46b989f8205568fa195fb4aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c274579e756b3c22920023d68501981d5b4a8b01
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705860"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure Machine Learning Studio （傳統） web 服務參數
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 藉由發行包含可設定參數模組的試驗，來建立 Azure Machine Learning Web 服務。 在某些情況下，您可能想要在執行 Web 服務時之際，變更模組的行為。 「Web 服務參數」** 可讓您執行這項工作。 
 
@@ -55,7 +53,7 @@ Web 服務的 API 文件會包含 Web 服務使用者在存取 Web 服務時，�
    * 在 **[請指定驗證類型]** 底下，選取 [帳戶]。
    * 輸入 Azure Blob 儲存體的帳戶資訊。 
 
-3.  按一下 **[以容器參數為開頭的 Blob 路徑]** 右邊的圖示。 它看起來像這樣：
+3.  按一下 **[以容器參數為開頭的 Blob 路徑]** 右邊的圖示。 它的外觀如下：
    
    ![Web 服務參數圖示](./media/web-service-parameters/icon.png)
    

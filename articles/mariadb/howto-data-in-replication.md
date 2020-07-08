@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/30/2020
-ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/11/2020
+ms.openlocfilehash: 0b23b01faf1b6ba09f1c55db2ddabd1696e452be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422462"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738102"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>在適用於 MariaDB 的 Azure 資料庫中設定資料入複寫
 
-本文說明如何藉由設定主要和複本伺服器，在適用於 MariaDB 的 Azure 資料庫中設定資料傳入複寫。 本文假設您先前已有適用于 mariadb 伺服器和資料庫的經驗。
+本文說明如何藉由設定主要和複本伺服器，在適用於 MariaDB 的 Azure 資料庫中設定[資料傳入](concepts-data-in-replication.md)複寫。 本文假設您先前已有適用于 mariadb 伺服器和資料庫的經驗。
 
-若要在適用於 MariaDB 的 Azure 資料庫服務中建立複本，資料複製複寫會同步處理內部部署的主要適用于 mariadb 伺服器、虛擬機器（Vm）或雲端資料庫服務中的資料。
+若要在適用於 MariaDB 的 Azure 資料庫服務中建立複本，[資料複製](concepts-data-in-replication.md)複寫會同步處理內部部署的主要適用于 mariadb 伺服器、虛擬機器（vm）或雲端資料庫服務中的資料。 資料輸入複寫是建立在以二進位記錄 (binlog) 檔案位置為基礎的 MariaDB 原生複寫之上。 若要深入了解 binlog 複寫，請參閱 [binlog 複寫概觀](https://mariadb.com/kb/en/library/replication-overview/) \(英文\)。
 
 執行本文中的步驟之前，請先參閱複寫資料的[限制和需求](concepts-data-in-replication.md#limitations-and-considerations)。
 
@@ -42,6 +42,12 @@ ms.locfileid: "80422462"
 
    使用 [Azure 入口網站](howto-manage-firewall-portal.md)或 [Azure CLI](howto-manage-firewall-cli.md) 更新防火牆規則。
 
+> [!NOTE]
+> 偏差-免費通訊
+>
+> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對_一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+>
+
 ## <a name="configure-the-master-server"></a>設定主要伺服器
 
 下列步驟會準備和設定裝載于內部部署、VM 或雲端資料庫服務中的適用于 mariadb 伺服器，以進行資料複製。 適用于 mariadb 伺服器是資料入複寫中的主要複本。
@@ -60,13 +66,13 @@ ms.locfileid: "80422462"
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   如果變數[`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin)傳回值`ON`，則會在您的伺服器上啟用二進位記錄。
+   如果變數傳回 [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) 值 `ON` ，則會在您的伺服器上啟用二進位記錄。
 
-   如果`log_bin`傳回值`OFF`，請編輯**my.cnf**檔案，以便`log_bin=ON`開啟二進位記錄。 重新開機伺服器，讓變更生效。
+   如果傳回 `log_bin` 值 `OFF` ，請編輯**my.cnf**檔案，以便 `log_bin=ON` 開啟二進位記錄。 重新開機伺服器，讓變更生效。
 
 3. 設定主伺服器設定。
 
-    資料複製複寫需要主要和複本`lower_case_table_names`伺服器之間的參數一致。 在`lower_case_table_names`適用於 MariaDB 的 Azure 資料庫中，參數`1`預設會設定為。
+    資料複製複寫需要 `lower_case_table_names` 主要和複本伺服器之間的參數一致。 `lower_case_table_names`在適用於 MariaDB 的 Azure 資料庫中，參數預設會設定為 `1` 。
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
@@ -78,7 +84,7 @@ ms.locfileid: "80422462"
    
    若要瞭解如何在主伺服器上新增使用者帳戶，請參閱[適用于 mariadb 檔](https://mariadb.com/kb/en/library/create-user/)。
 
-   藉由使用下列命令，新的複寫角色可以從任何機器存取主伺服器，而不只是裝載主機本身的電腦。 針對此存取權，請在命令中指定**syncuser\@'% '** 來建立使用者。
+   藉由使用下列命令，新的複寫角色可以從任何機器存取主伺服器，而不只是裝載主機本身的電腦。 針對此存取權，請在命令中指定**syncuser \@ '% '** 來建立使用者。
    
    若要深入瞭解適用于 mariadb 檔，請參閱[指定帳戶名稱](https://mariadb.com/kb/en/library/create-user/#account-names)。
 
@@ -128,7 +134,7 @@ ms.locfileid: "80422462"
 
 6. 取得目前的二進位記錄檔名稱和位移。
 
-   若要判斷目前的二進位記錄檔名稱和位移，請執行[`show master status`](https://mariadb.com/kb/en/library/show-master-status/)命令。
+   若要判斷目前的二進位記錄檔名稱和位移，請執行命令 [`show master status`](https://mariadb.com/kb/en/library/show-master-status/) 。
     
    ```sql
    show master status;
@@ -141,7 +147,7 @@ ms.locfileid: "80422462"
    
 7. 取得 GTID 位置（選擇性，使用 GTID 進行複寫所需）。
 
-   執行函式[`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) ，以取得對應 binlog 檔案名和位移的 GTID 位置。
+   執行函式 [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) ，以取得對應 binlog 檔案名和位移的 GTID 位置。
   
     ```sql
     select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
@@ -177,7 +183,7 @@ ms.locfileid: "80422462"
 
    所有「複寫中的資料」功能都可由已儲存的程序執行完成。 您可在[複寫中的資料已儲存的程序](reference-data-in-stored-procedures.md)中找到所有程序。 預存程式可以在 MySQL shell 或 MySQL 工作臺中執行。
 
-   若要連結兩部伺服器並啟動複寫，請在 Azure DB for 適用于 mariadb 服務中登入目標複本伺服器。 接下來，在適用于適用于 mariadb 的 Azure DB 伺服器上使用`mysql.az_replication_change_master`或`mysql.az_replication_change_master_with_gtid`預存程式，將外部實例設為主伺服器。
+   若要連結兩部伺服器並啟動複寫，請在 Azure DB for 適用于 mariadb 服務中登入目標複本伺服器。 接下來，在 `mysql.az_replication_change_master` `mysql.az_replication_change_master_with_gtid` 適用于適用于 mariadb 的 Azure DB 伺服器上使用或預存程式，將外部實例設為主伺服器。
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
@@ -204,7 +210,7 @@ ms.locfileid: "80422462"
 
    - 使用 SSL 的複寫
 
-       執行下列命令`@cert`來建立變數：
+       `@cert`執行下列命令來建立變數：
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
@@ -227,7 +233,7 @@ ms.locfileid: "80422462"
 
 2. 開始複寫。
 
-   呼叫`mysql.az_replication_start`預存程式以開始複寫。
+   呼叫 `mysql.az_replication_start` 預存程式以開始複寫。
 
    ```sql
    CALL mysql.az_replication_start;
@@ -235,19 +241,19 @@ ms.locfileid: "80422462"
 
 3. 檢查複寫狀態。
 
-   呼叫複本[`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/)伺服器上的命令，以查看複寫狀態。
+   呼叫 [`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/) 複本伺服器上的命令，以查看複寫狀態。
     
    ```sql
    show slave status;
    ```
 
-   如果`Slave_IO_Running`和`Slave_SQL_Running`處於狀態`yes`，且的值`Seconds_Behind_Master`為`0`，則複寫會正常運作。 `Seconds_Behind_Master` 可指定複本的延遲時間。 如果值不`0`是，則複本會處理更新。
+   如果 `Slave_IO_Running` 和處於 `Slave_SQL_Running` 狀態 `yes` ，且的值 `Seconds_Behind_Master` 為，則複寫 `0` 會正常運作。 `Seconds_Behind_Master` 可指定複本的延遲時間。 如果值不是 `0` ，則複本會處理更新。
 
 4. 更新對應的伺服器變數，以更安全地進行資料輸入複寫（只有在沒有 GTID 的情況下才需要）。
     
-    由於適用于 mariadb 中的原生複寫限制，您必須在[`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info)複寫[`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info)上設定和變數，而不需要 GTID 案例。
+    由於適用于 mariadb 中的原生複寫限制，您必須 [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) 在複寫上設定和變數， [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) 而不需要 GTID 案例。
 
-    檢查從屬伺服器的`sync_master_info`和`sync_relay_log_info`變數，以確保資料入複寫穩定，並將變數設定為。 `1`
+    檢查從屬伺服器的 `sync_master_info` 和 `sync_relay_log_info` 變數，以確保資料入複寫穩定，並將變數設定為 `1` 。
     
 ## <a name="other-stored-procedures"></a>其他已儲存的程序
 

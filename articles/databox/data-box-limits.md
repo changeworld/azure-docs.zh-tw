@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/27/2019
 ms.author: alkohli
 ms.openlocfilehash: 13d5bce46883ea4ddca91d7222f68a19ba65c21c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707713"
 ---
 # <a name="azure-data-box-limits"></a>Azure 資料箱限制
 

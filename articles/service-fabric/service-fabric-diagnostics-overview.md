@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282480"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712219"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>對 Azure Service Fabric 進行監視和診斷
 
@@ -41,7 +41,7 @@ Service Fabric 提供一組完整的現成事件。 這些 [Service Fabric 事�
 
 ![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
 
-所提供的診斷預設便是以一組詳盡事件的形式提供。 這些[Service Fabric 事件](service-fabric-diagnostics-events.md)說明平臺在不同的實體（例如節點、應用程式、服務、資料分割等等）所做的動作。在上述的最後一個案例中，如果節點停止執行，平臺會發出`NodeDown`事件，而您可以使用您選擇的監視工具立即通知您。 其他常見的範例包括容錯移轉期間的 `ApplicationUpgradeRollbackStarted` 或 `PartitionReconfigured`。 **Windows 和 Linux 叢集上都會提供相同的事件。**
+所提供的診斷預設便是以一組詳盡事件的形式提供。 這些[Service Fabric 事件](service-fabric-diagnostics-events.md)說明平臺在不同的實體（例如節點、應用程式、服務、資料分割等等）所做的動作。在上述的最後一個案例中，如果節點停止執行，平臺會發出 `NodeDown` 事件，而您可以使用您選擇的監視工具立即通知您。 其他常見的範例包括容錯移轉期間的 `ApplicationUpgradeRollbackStarted` 或 `PartitionReconfigured`。 **Windows 和 Linux 叢集上都會提供相同的事件。**
 
 這些事件會透過 Windows 和 Linux 上的標準通道傳送，並可由任何支援這些通道的監視工具讀取。 Azure 監視器的解決方案是 Azure 監視器記錄。 歡迎閱讀我們的[Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md)詳細資訊，其中包括叢集的自訂作業儀表板，以及您可以從中建立警示的一些範例查詢。 如需更多叢集監視概念，請參閱[平台層級事件和記錄產生](service-fabric-diagnostics-event-generation-infra.md)。
 

@@ -4,12 +4,12 @@ description: 瞭解如何使用適用于 Azure 的受控識別搭配 Service Fab
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: a26f188ed2f5e18bdf775cd1fb21001495ffdc89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5c82f49195fc6d790ca4308d78b70106b6cc042
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461441"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710298"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>使用適用于 Azure 的受控識別搭配 Service Fabric
 
@@ -35,7 +35,7 @@ ms.locfileid: "81461441"
 - **系統指派的受控識別**會直接在 Azure 服務實例上啟用。  系統指派之身分識別的生命週期對其啟用所在的 Azure 服務實例而言是唯一的。
 - **使用者指派的受控識別**會以獨立 Azure 資源的形式建立。 身分識別可指派給一或多個 Azure 服務實例，並與這些實例的生命週期分開管理。
 
-若要進一步瞭解受控識別類型之間的差異，請參閱[適用于 Azure 資源的受控識別如何執行？](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)
+若要進一步瞭解受控識別類型之間的差異，請參閱[適用于 Azure 資源的受控識別如何執行？](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Service Fabric 應用程式的支援案例
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: f72e98213977a09b97cab9966ec69194cd8439e8
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 991bb3e296f18ef6d5182048d8ce4601c0fc09c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845962"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734991"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>已知問題：Azure Active Directory Domain Services 中的服務主體警示
 
-[服務主體](../active-directory/develop/app-objects-and-service-principals.md)是 Azure 平台用來管理、更新和維護 Azure AD DS 受控網域的應用程式。 若已刪除服務主體，Azure AD DS 受控網域中的功能會受到影響。
+[服務主體](../active-directory/develop/app-objects-and-service-principals.md)是 Azure 平臺用來管理、更新和維護 Azure Active Directory Domain Services （Azure AD DS）受控網域的應用程式。 如果刪除服務主體，受管理網域中的功能會受到影響。
 
 本文將協助您針對服務主體相關設定警示進行疑難排解並予以解決。
 
@@ -30,7 +30,7 @@ ms.locfileid: "83845962"
 
 *Azure AD 目錄中已刪除要讓 Azure AD Domain Services 正常運作所需的服務主體。此設定會影響 Microsoft 監視、管理、修補及同步處理受控網域的能力。*
 
-若已刪除必要的服務主體，Azure 平台就無法執行自動化管理工作。 Azure AD DS 受控網域可能無法正確套用更新或進行備份。
+若已刪除必要的服務主體，Azure 平台就無法執行自動化管理工作。 受控網域可能無法正確套用更新或進行備份。
 
 ### <a name="check-for-missing-service-principals"></a>檢查是否有遺失的服務主體
 
@@ -64,18 +64,18 @@ ms.locfileid: "83845962"
     New-AzureAdServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     ```
 
-Azure AD DS 受控網域的健康情況會在兩小時內自動更新，並移除警示。
+受控網域的健康狀態會在兩小時內自動更新，並移除警示。
 
 ### <a name="re-register-the-microsoft-aad-namespace"></a>重新註冊 Microsoft.AAD 命名空間
 
 如果您的 Azure AD 目錄中遺漏應用程式識別碼 *443155a6-77f3-45e3-882b-22b3a8d431fb*、*abba844e-bc0e-44b0-947a-dc74e5d09022* 或 *d87dcbc6-a371-462e-88e3-28ad15ec4e64*，請完成下列步驟來重新註冊 *Microsoft.AAD* 資源提供者：
 
 1. 在 Azure 入口網站中，搜尋並選取 [訂用帳戶]。
-1. 選擇與 Azure AD DS 受控網域相關聯的訂用帳戶。
+1. 選擇與您的受控網域相關聯的訂用帳戶。
 1. 從左側導覽中，選擇 [資源提供者]。
 1. 搜尋 *Microsoft.AAD*，然後選取 [重新註冊]。
 
-Azure AD DS 受控網域的健康情況會在兩小時內自動更新，並移除警示。
+受控網域的健康狀態會在兩小時內自動更新，並移除警示。
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>警示 AADDS105：密碼同步處理應用程式已過期
 
@@ -105,7 +105,7 @@ Azure AD DS 會自動從 Azure AD 同步處理使用者帳戶和認證。 如果
     Remove-AzureADServicePrincipal -ObjectId $spObject
     ```
 
-在您刪除這兩個應用程式之後，Azure 平台會自動加以重新建立，並嘗試繼續進行密碼同步處理。 Azure AD DS 受控網域的健康情況會在兩小時內自動更新，並移除警示。
+在您刪除這兩個應用程式之後，Azure 平台會自動加以重新建立，並嘗試繼續進行密碼同步處理。 受控網域的健康狀態會在兩小時內自動更新，並移除警示。
 
 ## <a name="next-steps"></a>後續步驟
 

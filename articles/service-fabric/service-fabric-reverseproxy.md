@@ -5,12 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 326075b947ea61384681fb2353c27d3e1450156d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282220"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735331"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric 中的反向 Proxy
 Azure Service Fabric 內建的反向 Proxy 可協助在 Service Fabric 叢集中執行的微服務進行探索，並與其他擁有 http 端點的服務通訊。
@@ -78,7 +78,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **TargetReplicaSelector** 這指定應該如何選取目標複本或執行個體。
   * 當目標服務具狀態時，TargetReplicaSelector 可以是下列其中一個：'PrimaryReplica'、'RandomSecondaryReplica' 或 'RandomReplica'。 未指定此參數時，預設值是 'PrimaryReplica'。
   * 當目標服務無狀態時，反向 Proxy 會挑選服務資料分割的隨機執行個體，將要求轉送至此執行個體。
-* **逾時︰** 指定由反向 Proxy 建立的 HTTP 要求代替用戶端要求傳送到服務的逾時。 預設值為 60 秒。 這是選擇性參數。
+* **逾時︰** 指定由反向 Proxy 建立的 HTTP 要求代替用戶端要求傳送到服務的逾時。 預設值為120秒。 這是選擇性參數。
 
 ### <a name="example-usage"></a>使用方式範例
 例如，讓我們採用在下列 URL 上開啟 HTTP 接聽程式的 fabric:/MyApp/MyService** 服務：

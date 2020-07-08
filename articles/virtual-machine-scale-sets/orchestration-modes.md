@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198394"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736997"
 ---
-# <a name="orchestration-mode-preview"></a>協調流程模式（預覽）
+# <a name="orchestration-modes-preview"></a>協調流程模式（預覽）
+
+> [!CAUTION]
+> 感謝您參與此公開預覽版的每個人。 我們可以從我們的社區收集寶貴的意見反應。 這項預覽版現已針對任何新參與者**關閉**，以便整合意見反應。 我們會以任何新資訊更新此空間。
 
 虛擬機器擴展集提供平臺管理之虛擬機器的邏輯群組。 使用擴展集時，您可以建立虛擬機器設定模型、根據 CPU 或記憶體負載自動新增或移除其他實例，以及自動升級為最新的作業系統版本。 傳統上，擴展集可讓您使用在建立擴展集時所提供的 VM 設定模型來建立虛擬機器，而擴展集只能管理根據設定模型隱含建立的虛擬機器。
 
@@ -41,10 +44,10 @@ ms.locfileid: "83198394"
 
 |                             | "orchestrationMode"： "VM" （VirtualMachine） | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| VM 設定模型      | 無                                       | 必要 |
+| VM 設定模型      | None                                       | 必要 |
 | 正在將新的 VM 新增至擴展集  | 建立 VM 時，會將 Vm 明確新增至擴展集。 | Vm 會根據 VM 設定模型、實例計數和自動調整規則，以隱含方式建立並新增至擴展集 | |
 | 刪除 VM                   | Vm 必須個別刪除，如果擴展集內有任何 Vm，則不會刪除它。 | 您可以個別刪除 Vm，而刪除擴展集將會刪除所有的 VM 實例。  |
-| 附加/卸離 Vm           | 不支援                              | 不支援 |
+| 附加/卸離 Vm           | 不受支援                              | 不支援 |
 | 實例生命週期（透過刪除建立） | Vm 及其構件（例如磁片和 Nic）可以獨立管理。 | 實例及其成品（例如磁片和 Nic）對建立它們的擴展集實例是隱含的。 它們無法在擴展集之外分開卸離或管理 |
 | 容錯網域               | 可以定義容錯網域。 2或3以區域支援為基礎，而5用於可用性區域。 | 可以定義從1到5的容錯網域 |
 | 更新網域              | 更新網域會自動對應至容錯網域 | 更新網域會自動對應至容錯網域 |

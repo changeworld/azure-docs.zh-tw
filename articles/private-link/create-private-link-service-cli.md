@@ -4,15 +4,15 @@ description: 瞭解如何使用 Azure CLI 建立 Azure 私人連結服務
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 6e6148d305af26f7933567ae58023d2ba73263eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4312c6b89a7ba3e56e39050d76c673aa532f6f92
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75350248"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737337"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>使用 Azure CLI 建立私人連結服務
 本文說明如何使用 Azure CLI 在 Azure 中建立私人連結服務。
@@ -23,7 +23,7 @@ ms.locfileid: "75350248"
 ## <a name="create-a-private-link-service"></a>建立 Private Link 服務
 ### <a name="create-a-resource-group"></a>建立資源群組
 
-建立虛擬網路之前，您必須先建立資源群組來裝載虛擬網路。 使用 [az group create](/cli/azure/group) 來建立資源群組。 此範例會在 westcentralus** 位置建立名為 myResourceGroup** 的資源群組：
+建立虛擬網路之前，您必須先建立資源群組來裝載虛擬網路。 使用 [az group create](/cli/azure/group) 來建立資源群組。 此範例會在 westcentralus 位置建立名為 myResourceGroup 的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westcentralus
@@ -49,7 +49,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 ### <a name="create-a-load-balancer-health-probe"></a>建立負載平衡器健全狀況探查
 
-健全狀況探查會檢查所有虛擬機器執行個體，確認它們可以接收網路流量。 探查檢查失敗的虛擬機器執行個體會從負載平衡器上移除，直到其恢復正常運作且探查判斷其健全狀況良好為止。 使用[az network lb create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest)來建立健康狀態探查，以監視虛擬機器的健康情況。 
+健全狀況探查會檢查所有虛擬機器執行個體，確認它們可以接收網路流量。 探查檢查失敗的虛擬機器執行個體會從負載平衡器上移除，直到其恢復正常運作且探查判斷其健全狀況良好為止。 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) 建立健康狀態探查，以檢視虛擬機器的健康狀態。 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -111,7 +111,7 @@ az network private-link-service create \
 ## <a name="private-endpoints"></a>私人端點
 
 ### <a name="create-the-virtual-network"></a>建立虛擬網路 
-使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create)建立虛擬網路。 這個範例會在名為*myResourcegroup*的資源群組中建立名為 *myPEVNet* 的虛擬網路： 
+使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create)建立虛擬網路。 這個範例會 *myPEVNet*   在名為*myResourcegroup*的資源群組中建立名為 myPEVNet 的虛擬網路： 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>建立子網 
-使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)在虛擬網路中建立子網。 這個範例會在名為*myResourcegroup*的資源群組中，建立名為*myPEVnet*的虛擬網路中名為 *mySubnet* 的子網： 
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)在虛擬網路中建立子網。 這個範例會在名為 *mySubnet*   *myResourcegroup*的資源群組中，建立名為*myPEVnet*的虛擬網路中名為 mySubnet 的子網： 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -151,7 +151,7 @@ az network private-endpoint create \
 --connection-name myPEConnectingPLS \
 --location westcentralus 
 ```
-您可以使用`az network private-link-service show`私人連結服務取得*私人-連線資源識別碼*。 識別碼看起來會像這樣：   
+您可以使用私人連結服務取得*私人-連線資源識別碼* `az network private-link-service show` 。 識別碼看起來會像這樣：   
 /subscriptions/subID/resourceGroups/*resourcegroupname*/providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>顯示私人連結服務連接 

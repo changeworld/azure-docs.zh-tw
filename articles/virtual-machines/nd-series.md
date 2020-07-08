@@ -1,18 +1,18 @@
 ---
 title: ND 系列-Azure 虛擬機器
 description: ND 系列 Vm 的規格。
-services: virtual-machines
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 163dc0d6ecd4f91273a82b04ce186f7a8df868af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 6b29125087bd60041f85b1b5023646b039bd6a4a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79465051"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736946"
 ---
 # <a name="nd-series"></a>ND 系列
 
@@ -29,7 +29,7 @@ ND 系列的虛擬機器是 GPU 系列的新成員，專為 AI 和深度學習�
 > [!IMPORTANT]
 > 針對此 VM 系列，您訂用帳戶中每個區域的 vCPU （核心）配額最初會設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-supportability/resource-manager-core-quotas-request.md)。
 >
-| Size | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大未快取的磁片輸送量： IOPS/MBps | 最大 NIC |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC |
 |---|---|---|---|---|---|---|---|---|
 | Standard_ND6s    | 6  | 112 | 736  | 1 | 24 | 12 | 20000/200 | 4 |
 | Standard_ND12s   | 12 | 224 | 1474 | 2 | 48 | 24 | 40000/400 | 8 |
@@ -57,7 +57,7 @@ ND 系列的虛擬機器是 GPU 系列的新成員，專為 AI 和深度學習�
 - [儲存體最佳化](sizes-storage.md)
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
-- [上一代](sizes-previous-gen.md)
+- [前幾代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>後續步驟
 

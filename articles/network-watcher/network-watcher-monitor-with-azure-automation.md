@@ -7,23 +7,23 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738210"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>使用網路監看員疑難排解來監視 VPN 閘道
 
 深入了解網路效能對於為客戶提供可靠的服務相當重要。 因此務必快速偵測網路中斷狀況，並採取更正動作以降低中斷條件。 Azure 自動化可讓您實作，並透過 runbook 以程式設計方式執行工作。 使用 Azure 自動化會建立一個完美的配方，讓您執行連續且主動的網路監視和警示。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 下圖中的案例是多層式應用程式，並具有使用 VPN 閘道與通道建立的內部部署連線。 確保 VPN 閘道已啟動且執行對於應用程式效能很重要。
 
@@ -79,7 +79,7 @@ Runbook 會使用資源疑難排解 API 檢查連線狀態，利用指令碼檢�
 
 ### <a name="step-5"></a>步驟 5
 
-runbook 會在此步驟中建立，下列程式碼範例會提供範例所需的所有程式碼。 在程式碼中包含\<值\>的項目必須換成您訂用帳戶中的值。
+runbook 會在此步驟中建立，下列程式碼範例會提供範例所需的所有程式碼。 程式碼中包含的專案，必須 \<value\> 以您的訂用帳戶中的值取代。
 
 按一下 [儲存]**** 使用下列程式碼
 

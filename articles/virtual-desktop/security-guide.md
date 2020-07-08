@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5330c427088734b049b2cb4f7735ac0099a52b47
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966671"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736667"
 ---
 # <a name="security-best-practices"></a>安全性最佳做法
 
@@ -31,16 +31,16 @@ Windows 虛擬桌面是一種受管理的虛擬桌面服務，其中包含可讓
 
 | 安全性需求 | 客戶負責這種情況嗎？ |
 |---------------|:-------------------------:|
-|身分識別|是|
-|使用者裝置（行動和電腦）|是|
-|應用程式安全性|是|
-|工作階段主機 OS|是|
-|部署設定|是|
-|網路控制措施|是|
-|虛擬化控制平面|否|
-|實體主機|否|
-|實體網路|否|
-|實體資料中心|否|
+|身分識別|Yes|
+|使用者裝置（行動和電腦）|Yes|
+|應用程式安全性|Yes|
+|工作階段主機 OS|Yes|
+|部署設定|Yes|
+|網路控制措施|Yes|
+|虛擬化控制平面|No|
+|實體主機|No|
+|實體網路|No|
+|實體資料中心|No|
 
 客戶不負責的安全性需求是由 Microsoft 所處理。
 
@@ -87,7 +87,7 @@ Windows 虛擬桌面中的所有使用者和系統管理員都需要多重要素
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [工作階段主機](../azure-monitor/platform/agent-windows.md)
 -   [Windows 虛擬桌面診斷記錄](../virtual-desktop/diagnostics-log-analytics.md)
--   [金鑰保存庫記錄](../key-vault/general/logging.md)
+-   [Key Vault 記錄](../key-vault/general/logging.md)
 
 ### <a name="use-remoteapps"></a>使用 Remoteapp
 
@@ -137,7 +137,7 @@ Windows 虛擬桌面中的所有使用者和系統管理員都需要多重要素
 
 ### <a name="manage-office-pro-plus-security"></a>管理 Office Pro Plus 安全性
 
-除了保護您的工作階段主機之外，也請務必保護在其中執行的應用程式。 Office Pro Plus 是部署在工作階段主機中最常見的應用程式之一。 若要改善 Office 部署安全性，我們建議您針對 Enterprise Microsoft 365 應用程式使用[安全性原則 Advisor](/DeployOffice/overview-of-security-policy-advisor) 。 此工具會識別可套用至您的部署以獲得更多安全性的原則。 安全性原則審查也會根據其對您的安全性和生產力的影響，建議原則。
+除了保護您的工作階段主機之外，也請務必保護在其中執行的應用程式。 Office Pro Plus 是部署在工作階段主機中最常見的應用程式之一。 若要改善 Office 部署安全性，我們建議您針對 enterprise Microsoft 365 應用程式使用[安全性原則 Advisor](/DeployOffice/overview-of-security-policy-advisor) 。 此工具會識別可套用至您的部署以獲得更多安全性的原則。 安全性原則審查也會根據其對您的安全性和生產力的影響，建議原則。
 
 ### <a name="other-security-tips-for-session-hosts"></a>工作階段主機的其他安全性秘訣
 

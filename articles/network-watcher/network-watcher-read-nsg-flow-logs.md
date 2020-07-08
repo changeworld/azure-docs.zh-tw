@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffbf37730d5064edcd067c3383fe18c342a2b053
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77619923"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738493"
 ---
 # <a name="read-nsg-flow-logs"></a>讀取 NSG 流量記錄
 
@@ -27,7 +27,7 @@ NSG 流量記錄會以[區塊 Blob](https://docs.microsoft.com/rest/api/storages
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 在以下案例中，儲存體帳戶中已經存有一個範例流程記錄檔。 您已了解如何選擇性讀取 NSG 流量記錄中最新的事件。 在本文中，您會使用 PowerShell，但本文中所討論的概念並不限於該程式設計語言，且適用於 Azure 儲存體 API 所支援的所有語言。
 

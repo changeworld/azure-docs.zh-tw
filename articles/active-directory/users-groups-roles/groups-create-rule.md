@@ -8,37 +8,37 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/07/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c685fa231bc1f40a78aae0d4fa89569ec146eea
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 4855db7678a8cdea9bdad19ac0a8ec33503ff983
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728411"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>在 Azure Active Directory 中建立或更新動態群組
 
 在 Azure Active Directory （Azure AD）中，您可以使用規則根據使用者或裝置屬性來判斷群組成員資格。 本文說明如何在 Azure 入口網站中設定動態群組的規則。
 安全性群組或 Office 365 群組支援動態成員資格。 套用群組成員資格規則時，會評估使用者和裝置屬性是否符合成員資格規則。 當使用者或裝置的屬性變更時，會處理組織中的所有動態群組規則，以進行成員資格變更。 如果使用者和裝置符合群組的條件，則會加以新增或移除。 安全性群組可以用於裝置或使用者，但 Office 365 群組只能是使用者群組。
 
-## <a name="rule-builder-in-the-azure-portal"></a>Azure 入口網站中的規則產生器
+## <a name="rule-builder-in-the-azure-portal"></a>Azure 入口網站中的規則建立器
 
-Azure AD 提供規則產生器，更快速地建立及更新您的重要規則。 規則產生器支援最多五個運算式的結構。 規則產生器可讓您更輕鬆地使用一些簡單的運算式來形成規則，不過，它不能用來重現每個規則。 如果規則產生器不支援您想要建立的規則，您可以使用文字方塊。
+Azure AD 提供規則建立器，可讓您更快速建立和更新重要的規則。 規則建立器支援建構最多五個運算式。 規則建立器可讓您更輕鬆以幾個簡單的運算式來建立規則，但不可能重現每一個規則。 如果規則建立器不支援您想建立的規則，您可以使用文字方塊。
 
-以下是一些我們建議您使用文字方塊來建立的先進規則或語法範例：
+以下是進階規則或語法的一些範例，建議您使用文字方塊來建構：
 
 - 具有五個以上運算式的規則
-- 直接報告規則
+- 直屬員工規則
 - 設定[運算子優先順序](groups-dynamic-membership.md#operator-precedence)
-- [具有複雜運算式的規則](groups-dynamic-membership.md#rules-with-complex-expressions);例如`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [具有複雜運算式的規則](groups-dynamic-membership.md#rules-with-complex-expressions)，例如 `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
-> 「規則產生器」可能無法顯示在文字方塊中所建立的某些規則。 當規則產生器無法顯示規則時，您可能會看到一則訊息。 規則產生器不會以任何方式變更支援的語法、驗證或處理動態群組規則。
+> 規則建立器可能無法顯示文字方塊中建構的某些規則。 當規則建立器無法顯示規則時，您可能會看到訊息。 規則建立器完全不會變更動態群組規則支援的語法、驗證或處理。
 
 ![新增動態群組的成員資格規則](./media/groups-create-rule/update-dynamic-group-rule.png)
 
@@ -67,7 +67,7 @@ Azure AD 提供規則產生器，更快速地建立及更新您的重要規則�
 ## <a name="to-update-an-existing-rule"></a>若要更新現有規則
 
 1. 使用 Azure AD 組織中全域管理員、群組系統管理員、Intune 管理員或使用者系統管理員角色的帳戶登入[Azure AD 系統管理中心](https://aad.portal.azure.com)。
-1. 選取 [**群組** > ] [**所有群組**]。
+1. 選取 [**群組**] [  >  **所有群組**]。
 1. 選取群組以開啟其設定檔。
 1. 在群組的 [設定檔] 頁面上，選取 [**動態成員資格規則**]。 「規則產生器」最多支援五個運算式。 若要加入五個以上的運算式，您必須使用文字方塊。
 
@@ -98,7 +98,7 @@ Azure AD 提供規則產生器，更快速地建立及更新您的重要規則�
 
 可能會針對**成員資格上次更新**狀態顯示下列狀態訊息：
 
-- &lt;**日期和時間**&gt;：上次更新成員資格的時間。
+- &lt;**日期和時間** &gt; ：上次更新成員資格的時間。
 - **進行中**：目前正在更新。
 - **未知**：無法抓取上次更新時間。 群組可能是新的。
 

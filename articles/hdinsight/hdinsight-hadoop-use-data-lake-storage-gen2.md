@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cd41c162d44320fc19af904118f202423e68e96a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a9a3aaecc854ddb710f19bcb3d455c63b3a8bef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706166"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2
 
@@ -39,9 +39,9 @@ Data Lake Storage Gen2 可做為幾乎所有 Azure HDInsight 叢集類型的儲�
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在左上方按一下 [**建立資源**]。
 1. 在搜尋方塊中，輸入 [**使用者指派**]，然後按一下 [**使用者指派的受控識別**]。
-1. 按一下頁面底部的 [新增]  。
+1. 按一下 [建立]。
 1. 輸入受控識別的 [名稱]，選取正確的訂用帳戶、資源群組和位置。
-1. 按一下頁面底部的 [新增]  。
+1. 按一下 [建立]。
 
 如需如何在 Azure HDInsight 中使用受控識別的詳細資訊，請參閱[Azure HDInsight 中的受控](hdinsight-managed-identities.md)識別。
 
@@ -54,13 +54,13 @@ Data Lake Storage Gen2 可做為幾乎所有 Azure HDInsight 叢集類型的儲�
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在左上方按一下 [**建立資源**]。
 1. 在搜尋方塊中，輸入**儲存體**，然後按一下 [**儲存體帳戶**]。
-1. 按一下頁面底部的 [新增]  。
+1. 按一下 [建立]。
 1. 在 [**建立儲存體帳戶**] 畫面上：
     1. 選取正確的訂用帳戶和資源群組。
     1. 輸入 Data Lake Storage Gen2 帳戶的名稱。
     1. 按一下 [ **Advanced** ] 索引標籤。
     1. 按一下 [ **Data Lake Storage Gen2**] 底下 [**階層命名空間**] 旁的 [**已啟用**]。
-    1. 按一下 [檢閱 + 建立]  。
+    1. 按一下 [檢閱 + 建立]。
     1. 按一下 [建立] 
 
 如需建立儲存體帳戶期間其他選項的詳細資訊，請參閱[快速入門：建立 Azure Data Lake Storage Gen2 儲存體帳戶](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
@@ -81,7 +81,7 @@ Data Lake Storage Gen2 可做為幾乎所有 Azure HDInsight 叢集類型的儲�
 
     ![顯示如何指派 RBAC 角色的螢幕擷取畫面](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
-1. 選取 [儲存]  。 您選取的使用者指派身分識別現在會列在選取的角色底下。
+1. 選取 [儲存]。 您選取的使用者指派身分識別現在會列在選取的角色底下。
 1. 完成此初始設定後，您可以透過入口網站建立叢集。 此叢集必須與儲存體帳戶位在相同的 Azure 區域中。 在 [叢集建立] 功能表的 [**儲存體**] 索引標籤中，選取下列選項：
 
     * 針對 [**主要儲存體類型**]，選取 [ **Azure Data Lake Storage Gen2**]。
@@ -116,7 +116,7 @@ Data Lake Storage Gen2 可做為幾乎所有 Azure HDInsight 叢集類型的儲�
 1. 為新的部署活動建立新的資源群組。
 1. 建立使用者指派的受控識別。
 1. 新增 Azure CLI 的延伸模組，以使用 Data Lake Storage Gen2 的功能。
-1. 使用`--hierarchical-namespace true`旗標建立新的 Data Lake Storage Gen2 帳戶。
+1. 使用旗標建立新的 Data Lake Storage Gen2 帳戶 `--hierarchical-namespace true` 。
 
 ```azurecli
 az login
@@ -169,7 +169,7 @@ RBAC 會使用角色指派，有效地將許可權集套用至 Azure 資源的�
 
 Azure 服務有兩種類型的受控識別：系統指派和使用者指派。 HDInsight 會使用使用者指派的受控識別來存取 Data Lake Storage Gen2。 `user-assigned managed identity`會建立為獨立的 Azure 資源。 透過建立程序，Azure 會在所使用訂用帳戶信任的 Azure AD 租用戶中建立身分識別。 建立身分識別之後，即可將它指派給一個或多個 Azure 服務執行個體。
 
-使用者指派的身分識別與獲指派此身分識別的 Azure 服務執行個體，兩者的生命週期分開管理。 如需受控識別的詳細資訊，請參閱適用[于 Azure 資源的受控識別如何使用？](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。
+使用者指派的身分識別與獲指派此身分識別的 Azure 服務執行個體，兩者的生命週期分開管理。 如需受控識別的詳細資訊，請參閱[什麼是適用于 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>如何? 將 Azure AD 使用者的許可權設定為使用 Hive 或其他服務來查詢 Data Lake Storage Gen2 中的資料嗎？
 
@@ -185,7 +185,7 @@ Azure 服務有兩種類型的受控識別：系統指派和使用者指派。 H
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **使用簡短路徑格式**。 使用這種方法，您可以將路徑取代為叢集根目錄，如下所示：
+* **使用簡短路徑格式**。 使用這種方法，您可以利用以下方式取代到叢集根目錄的路徑：
 
     ```
     abfs:///<file.path>/
@@ -199,11 +199,11 @@ Azure 服務有兩種類型的受控識別：系統指派和使用者指派。 H
 
 ### <a name="data-access-examples"></a>資料存取範例
 
-範例是以連至叢集前端節點的[ssh](./hdinsight-hadoop-linux-use-ssh-unix.md)連線為基礎。 這些範例會使用這三個 URI 配置。 將`CONTAINERNAME`和`STORAGEACCOUNT`取代為相關的值
+範例是以叢集前端節點的 [ssh 連線](./hdinsight-hadoop-linux-use-ssh-unix.md)為基礎。 這些範例會使用這三個 URI 配置。 請將 `CONTAINERNAME` 和 `STORAGEACCOUNT` 取代為相關值
 
 #### <a name="a-few-hdfs-commands"></a>一些 hdfs 命令
 
-1. 在本機存放裝置上建立檔案。
+1. 在本機儲存體上建立檔案。
 
     ```bash
     touch testFile.txt
@@ -225,7 +225,7 @@ Azure 服務有兩種類型的受控識別：系統指派和使用者指派。 H
     hdfs dfs -copyFromLocal testFile.txt  /sampledata3/
     ```
 
-1. 列出叢集存放區上的目錄內容。
+1. 列出叢集儲存體上的目錄內容。
 
     ```bash
     hdfs dfs -ls abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
@@ -235,7 +235,7 @@ Azure 服務有兩種類型的受控識別：系統指派和使用者指派。 H
 
 #### <a name="creating-a-hive-table"></a>建立 Hive 資料表
 
-顯示三個檔案位置以供說明之用。 若是實際執行，請只使用其中一個`LOCATION`專案。
+顯示三個檔案位置以供說明之用。 若為實際執行，請僅使用其中一個 `LOCATION` 項目。
 
 ```hql
 DROP TABLE myTable;

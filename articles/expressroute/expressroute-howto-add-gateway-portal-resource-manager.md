@@ -4,16 +4,16 @@ description: 本文會逐步引導您使用 Azure 入口網站，將虛擬網路
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 87b656f0ef999b3b15a89476f5cba4c4fcfc2b1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 188d366dafce6ee79a084750b5f7d1fe4140432b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264826"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736368"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 入口網站為 ExpressRoute 設定虛擬網路閘道
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ ms.locfileid: "79264826"
 
 ## <a name="create-the-virtual-network-gateway"></a>建立虛擬網路閘道
 
-1. 在入口網站中，按一下**+** 左側的，然後在 [搜尋] 中輸入「虛擬網路閘道」。 在搜尋傳回的結果中找出**虛擬網路閘道**，然後按一下該項目。 在 [虛擬網路閘道]**** 刀鋒視窗上，按一下刀鋒視窗底部的 [建立]****。 這會開啟 [建立虛擬網路閘道]**** 刀鋒視窗。
+1. 在入口網站中，按一下左側的， **+** 然後在 [搜尋] 中輸入「虛擬網路閘道」。 在搜尋傳回的結果中找出**虛擬網路閘道**，然後按一下該項目。 在 [虛擬網路閘道]**** 刀鋒視窗上，按一下刀鋒視窗底部的 [建立]****。 這會開啟 [建立虛擬網路閘道]**** 刀鋒視窗。
 2. 在 [建立虛擬網路閘道]**** 刀鋒視窗上，填入您虛擬網路閘道的值。
 
     ![建立虛擬網路閘道刀鋒視窗欄位](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "建立虛擬網路閘道刀鋒視窗欄位")

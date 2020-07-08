@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
-ms.openlocfilehash: 13d74fbb4a7c133ca2365fd2cbfce4b3d2bea72e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75350619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705044"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>診斷虛擬機器路由問題
 
@@ -38,7 +38,7 @@ ms.locfileid: "75350619"
 2. 在 Azure 入口網站頂端的搜尋方塊中，輸入執行中 VM 的名稱。 當 VM 的名稱出現在搜尋結果中時，請加以選取。
 3. 在左側的 [**設定**] 底下，選取 [**網路**]，然後選取網路介面資源的名稱來流覽。
      ![查看網路介面](./media/diagnose-network-routing-problem/view-nics.png)
-4. 在左側選取 [**有效路由**]。 系統會顯示名為**myVMNic1**之網路介面的有效路由，如下圖所示![：查看有效路由](./media/diagnose-network-routing-problem/view-effective-routes.png)
+4. 在左側選取 [**有效路由**]。 系統會顯示名為**myVMNic1**之網路介面的有效路由，如下圖所示： ![ 查看有效路由](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
     如果有多個網路介面連結至 VM，您可以選取任何網路介面以檢視其有效路由。 由於每個網路介面可能位於不同的子網路中，因此每個網路介面可能會有不同的有效路由。
 
@@ -52,7 +52,7 @@ ms.locfileid: "75350619"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-您可以執行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中採用的命令，或從您的電腦執行 PowerShell。 Azure Cloud Shell 是免費的互動式殼層。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 如果您從電腦執行 PowerShell，您需要 Azure PowerShell 模組1.0.0 版或更新版本。 請在您的電腦上執行 `Get-Module -ListAvailable Az`，以尋找已安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行`Connect-AzAccount` PowerShell，則也需要使用具有[必要許可權](virtual-network-network-interface.md#permissions)的帳戶來登入 Azure。
+您可以執行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中採用的命令，或從您的電腦執行 PowerShell。 Azure Cloud Shell 是免費的互動式殼層。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 如果您從電腦執行 PowerShell，您需要 Azure PowerShell 模組1.0.0 版或更新版本。 請在您的電腦上執行 `Get-Module -ListAvailable Az`，以尋找已安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要 `Connect-AzAccount` 使用具有[必要許可權](virtual-network-network-interface.md#permissions)的帳戶來登入 Azure。
 
 取得具有[AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)之網路介面的有效路由。 下列範例會從名為*myResourceGroup*的資源群組中，取得名為*myVMNic1*之網路介面的有效路由：
 

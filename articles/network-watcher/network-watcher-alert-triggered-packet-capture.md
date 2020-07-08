@@ -8,17 +8,17 @@ author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738051"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>使用封包擷取搭配警示和 Azure Functions 進行主動式網路監視
 
@@ -30,18 +30,18 @@ ms.locfileid: "76842932"
 
 藉由使用 Azure 生態系統內的網路監看員、警示及函式，您可以使用資料和工具主動回應以解決網路中的問題。
 
-![案例][scenario]
+![狀況][scenario]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* [Azure PowerShell](/powershell/azure/install-Az-ps)的最新版本。
+* 最新版的 [Azure PowerShell](/powershell/azure/install-Az-ps)。
 * 網路監看員的現有執行個體。 如果您還沒有，請[建立網路監看員執行個體](network-watcher-create.md)。
 * 在含有 [Windows 擴充功能](../virtual-machines/windows/extensions-nwa.md)或 [Linux 虛擬機器擴充功能](../virtual-machines/linux/extensions-nwa.md)的網路監看員所在區域中的現有虛擬機器。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 在此範例中，您的 VM 將傳送比平常還要多的 TCP 區段，而且您想要收到警示。 此處使用 TCP 區段做為範例，但您可以使用任何警示條件。
 
@@ -74,7 +74,7 @@ ms.locfileid: "76842932"
 
 2. 在 [函數應用程式]**** 刀鋒視窗上，輸入下列值，然後選取 [確定]**** 以建立應用程式︰
 
-    |**設定** | **ReplTest1** | **詳細資料** |
+    |**設定** | **值** | **詳細資料** |
     |---|---|---|
     |**應用程式名稱**|PacketCaptureExample|函數應用程式的名稱。|
     |**訂用帳戶**|[您的訂用帳戶]要建立函數應用程式的訂用帳戶。||
@@ -87,7 +87,7 @@ ms.locfileid: "76842932"
 
 4. 選取 [HttpTrigger-Powershell]****，然後輸入其餘資訊。 最後，若要建立函式，請選取 [建立]****。
 
-    |**設定** | **ReplTest1** | **詳細資料** |
+    |**設定** | **值** | **詳細資料** |
     |---|---|---|
     |**案例**|實驗|案例類型|
     |**函式命名**|AlertPacketCapturePowerShell|函式的名稱|
@@ -120,7 +120,7 @@ ms.locfileid: "76842932"
 
      ![PowerShell 資料夾][functions5]
 
-1. 選取 [函數] [**應用程式設定** > ] [**移至 App Service 編輯器**]。
+1. 選取 [函數] [**應用程式設定**] [  >  **移至 App Service 編輯器**]。
 
     ![函數應用程式設定][functions2]
 
@@ -138,7 +138,7 @@ ms.locfileid: "76842932"
 
 1. 以滑鼠右鍵按一下 [ **Az. Network** ] 子資料夾，然後選取 **[上傳**檔案]。 
 
-6. 前往 Azure 模組。 在 [本機**Az. Network** ] 資料夾中，選取資料夾中的所有檔案。 然後選取 [確定]  。 
+6. 前往 Azure 模組。 在 [本機**Az. Network** ] 資料夾中，選取資料夾中的所有檔案。 然後選取 [確定]。 
 
 7. 針對**Az. Accounts**和**az .resources**重複這些步驟。
 
@@ -246,7 +246,7 @@ $Encryptedpassword
 
 ### <a name="store-the-environment-variables"></a>儲存環境變數
 
-1. 返回函數應用程式。 然後選取 [**函數應用程式設定** > ] [設定**應用程式設定**]。
+1. 返回函數應用程式。 然後選取 [**函數應用程式設定**] [設定  >  **應用程式設定**]。
 
     ![進行應用程式設定][functions11]
 
@@ -342,12 +342,12 @@ $Encryptedpassword
 
 前往現有的虛擬機器，然後新增警示規則。 如需設定警示相關的詳細文件，請參閱[在 Azure 服務的 Azure 監視器中建立警示 - Azure 入口網站](../monitoring-and-diagnostics/insights-alerts-portal.md)。 在 [警示規則]**** 刀鋒視窗中輸入下列值，然後選取 [確定]****。
 
-  |**設定** | **ReplTest1** | **詳細資料** |
+  |**設定** | **值** | **詳細資料** |
   |---|---|---|
-  |**Name**|TCP_Segments_Sent_Exceeded|警示規則的名稱。|
-  |**說明**|傳送的 TCP 區段超出閾值|警示規則的描述。|
+  |**名稱**|TCP_Segments_Sent_Exceeded|警示規則的名稱。|
+  |**描述**|傳送的 TCP 區段超出閾值|警示規則的描述。|
   |**計量**|傳送的 TCP 區段| 用以觸發警示的計量。 |
-  |**狀況**|大於| 評估計量所用的條件。|
+  |**條件**|大於| 評估計量所用的條件。|
   |**閾值**|100| 觸發警示的計量值。 此值應該設為您環境的有效值。|
   |**期間**|過去五分鐘| 決定尋找計量閾值的期間。|
   |**Webhook**|[函數應用程式中的 Webhook URL]| 先前步驟中所建立函數應用程式中的 Webhook URL。|

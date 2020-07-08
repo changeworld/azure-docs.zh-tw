@@ -7,11 +7,11 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270234"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708037"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>設定 Azure 監視器記錄和收集診斷資料以進行 Azure Logic Apps
 
@@ -21,7 +21,7 @@ ms.locfileid: "79270234"
 
 本文說明如何在您建立邏輯應用程式、如何安裝和設定 Logic Apps 管理解決方案，以及如何設定和建立 Azure 監視器記錄的查詢時，啟用 Log Analytics。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，您需要[Log Analytics 工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)。 如果您沒有工作區，請瞭解[如何建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "79270234"
 
       完成此步驟之後，Azure 會建立您的邏輯應用程式，此應用程式現在會與您的 Log Analytics 工作區建立關聯。 此外，此步驟會自動在您的工作區中安裝 Logic Apps 管理解決方案。
 
-1. 當您完成時，選取 [建立]  。
+1. 當您完成時，請選取 [建立]。
 
 1. 執行邏輯應用程式之後，若要查看您的邏輯應用程式執行，請[繼續進行這些步驟](#view-logic-app-runs)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "79270234"
 
 如果您在建立邏輯應用程式時開啟 Log Analytics，請略過此步驟。 您已在 Log Analytics 工作區中安裝 Logic Apps 管理解決方案。
 
-1. 在[Azure 入口網站](https://portal.azure.com)的搜尋方塊中，輸入`log analytics workspaces`，然後選取 [ **Log Analytics 工作區**]。
+1. 在[Azure 入口網站](https://portal.azure.com)的搜尋方塊中，輸入 `log analytics workspaces` ，然後選取 [ **Log Analytics 工作區**]。
 
    ![選取 [Log Analytics 工作區]](./media/monitor-logic-apps-log-analytics/find-select-log-analytics-workspaces.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "79270234"
 
    ![選取 Log Analytics 工作區](./media/monitor-logic-apps-log-analytics/select-log-analytics-workspace.png)
 
-1. 在 [**總覽**] 窗格的 [**開始使用 Log Analytics** > **設定監視解決方案**] 底下，選取 [ **View 解決方案**]。
+1. 在 [**總覽**] 窗格的 [**開始使用 Log Analytics**  >  **設定監視解決方案**] 底下，選取 [ **View 解決方案**]。
 
    ![在 [總覽] 窗格中，選取 [View 解決方案]](./media/monitor-logic-apps-log-analytics/log-analytics-workspace.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "79270234"
 
    ![在 [總覽] 窗格中，加入新的方案](./media/monitor-logic-apps-log-analytics/add-logic-apps-management-solution.png)
 
-1. 在**Marketplace**開啟之後，請在搜尋方塊中輸入`logic apps management`，然後選取 [ **Logic Apps 管理**]。
+1. 在**Marketplace**開啟之後，請在搜尋方塊中輸入 `logic apps management` ，然後選取 [ **Logic Apps 管理**]。
 
    ![從 Marketplace 選取 [Logic Apps 管理]](./media/monitor-logic-apps-log-analytics/select-logic-apps-management.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "79270234"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，尋找並選取邏輯應用程式。
 
-1. 在邏輯應用程式功能表的 [**監視**] 底下，選取 [**診斷設定** > ] [**新增診斷設定**]。
+1. 在邏輯應用程式功能表的 [**監視**] 底下，選取 [**診斷設定**] [  >  **新增診斷設定**]。
 
    ![在 [監視] 底下，選取 [診斷設定] > [新增診斷設定]](./media/monitor-logic-apps-log-analytics/logic-app-diagnostics.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "79270234"
 
    1. 若要選取所有計量，請在 [**度量**] 底下選取 [ **AllMetrics**]。
 
-   1. 完成時，選取 [儲存]****。
+   1. 完成時，選取 [儲存]。
 
    例如：
 
@@ -123,7 +123,7 @@ ms.locfileid: "79270234"
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，尋找並開啟您的 Log Analytics 工作區。
 
-1. 在工作區的功能表上，選取 [**工作區摘要** > ] [**Logic Apps 管理**]。
+1. 在工作區的功能表上，選取 [**工作區摘要**] [  >  **Logic Apps 管理**]。
 
    ![邏輯應用程式執行狀態和計數](./media/monitor-logic-apps-log-analytics/logic-app-runs-summary.png)
 
@@ -192,11 +192,11 @@ ms.locfileid: "79270234"
 
 ## <a name="azure-monitor-diagnostics-events"></a>Azure 監視器診斷事件
 
-每個診斷事件都會有邏輯應用程式和該事件的詳細資料，例如，狀態、開始時間、結束時間等等。 若要以程式設計方式設定監視、追蹤和記錄，您可以使用此資訊搭配適用于[Azure Logic Apps 的 REST API](https://docs.microsoft.com/rest/api/logic)和[Azure 監視器的 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)。 您也可以使用出現`clientTrackingId`在`trackedProperties`中的和屬性。 
+每個診斷事件都會有邏輯應用程式和該事件的詳細資料，例如，狀態、開始時間、結束時間等等。 若要以程式設計方式設定監視、追蹤和記錄，您可以使用此資訊搭配適用于[Azure Logic Apps 的 REST API](https://docs.microsoft.com/rest/api/logic)和[Azure 監視器的 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)。 您也可以使用 `clientTrackingId` `trackedProperties` 出現在中的和屬性。 
 
-* `clientTrackingId`： 如果未提供，Azure 會自動產生這個識別碼，並相互關聯邏輯應用程式執行之間的事件，包括從邏輯應用程式呼叫的任何巢狀工作流程。 您可以藉由在觸發程式要求中傳遞`x-ms-client-tracking-id`標頭與您的自訂識別碼值，在觸發程式中手動指定此識別碼。 您可以使用要求觸發程序、HTTP 觸發程序或 Webhook 觸發程序。
+* `clientTrackingId`： 如果未提供，Azure 會自動產生這個識別碼，並相互關聯邏輯應用程式執行之間的事件，包括從邏輯應用程式呼叫的任何巢狀工作流程。 您可以藉由在 `x-ms-client-tracking-id` 觸發程式要求中傳遞標頭與您的自訂識別碼值，在觸發程式中手動指定此識別碼。 您可以使用要求觸發程序、HTTP 觸發程序或 Webhook 觸發程序。
 
-* `trackedProperties`：若要追蹤診斷資料中的輸入或輸出，您可以`trackedProperties`使用邏輯應用程式設計工具或直接在邏輯應用程式的 JSON 定義中，將區段新增至動作。 追蹤的屬性只能追蹤單一動作的輸入和輸出，但您可以使用事件的 `correlation` 屬性來跨執行中的動作進行相互關聯。 若要追蹤一個以上的屬性，一或多個屬性， `trackedProperties`請將區段和您想要的屬性加入至動作定義。
+* `trackedProperties`：若要追蹤診斷資料中的輸入或輸出，您可以 `trackedProperties` 使用邏輯應用程式設計工具或直接在邏輯應用程式的 JSON 定義中，將區段新增至動作。 追蹤的屬性只能追蹤單一動作的輸入和輸出，但您可以使用事件的 `correlation` 屬性來跨執行中的動作進行相互關聯。 若要追蹤一個以上的屬性，一或多個屬性，請將 `trackedProperties` 區段和您想要的屬性加入至動作定義。
 
   以下範例顯示「**初始化變數**」動作定義如何包含動作輸入中的追蹤屬性，其中輸入是陣列，而不是記錄。
 
@@ -243,7 +243,7 @@ ms.locfileid: "79270234"
   }
   ```
 
-這個範例會顯示`ActionCompleted`事件如何包含`clientTrackingId`和`trackedProperties`屬性：
+這個範例會顯示 `ActionCompleted` 事件如何包含 `clientTrackingId` 和 `trackedProperties` 屬性：
 
 ```json
 {

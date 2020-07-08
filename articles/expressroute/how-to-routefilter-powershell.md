@@ -4,16 +4,16 @@ description: 本文說明如何使用 PowerShell 針對 Microsoft 對等互連�
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 3fa53258321b22e1683122edca1816f6d4c291b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5a294a051350c4b08b34356abcd883b7580164e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618608"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84729297"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>針對 Microsoft 對等互連設定路由篩選：PowerShell
 > [!div class="op_single_selector"]

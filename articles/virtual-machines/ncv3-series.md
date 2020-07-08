@@ -1,18 +1,18 @@
 ---
 title: NCv3 系列-Azure 虛擬機器
 description: NCv3 系列 Vm 的規格。
-services: virtual-machines
-author: vikancha
+ms.subservice: sizes
+author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 9ae3604a9ea82e6e50ba4d639d36572f7b052e4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: c553117aa02106e744150469dee533da3ddc0265
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78302792"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736980"
 ---
 # <a name="ncv3-series"></a>NCv3 系列
 
@@ -29,7 +29,7 @@ NCv3 系列 VM 是由 [NVIDIA Tesla V100](https://www.nvidia.com/data-center/tes
 > [!IMPORTANT]
 > 針對此 VM 系列，您訂用帳戶中的 vCPU （核心）配額一開始會在每個區域中設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-supportability/resource-manager-core-quotas-request.md)。
 >
-| Size | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大未快取的磁片輸送量： IOPS/MBps | 最大 NIC |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC |
 |---|---|---|---|---|---|---|---|---|
 | Standard_NC6s_v3    | 6  | 112 | 736  | 1 | 16 | 12 | 20000/200 | 4 |
 | Standard_NC12s_v3   | 12 | 224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
@@ -57,7 +57,7 @@ NCv3 系列 VM 是由 [NVIDIA Tesla V100](https://www.nvidia.com/data-center/tes
 - [儲存體最佳化](sizes-storage.md)
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
-- [上一代](sizes-previous-gen.md)
+- [前幾代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>後續步驟
 

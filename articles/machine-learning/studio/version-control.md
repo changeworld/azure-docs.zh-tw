@@ -5,20 +5,18 @@ description: 在 Azure Machine Learning Studio （傳統）中套用應用程式
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 3f22ce3b1fb750e33e35d35ee1fe5ad1893abcfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2eb5f3acc07f04ba2102ea25fbad89d73514444a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705911"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 中的應用程式生命週期管理（傳統）
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Azure Machine Learning Studio （傳統）是一種工具，可用於開發在 Azure 雲端平臺中運作的機器學習實驗。 它就像是合併到單一平台的 Visual Studio IDE 和可調整的雲端服務。 您可以將標準應用程式生命週期管理（ALM）做法從版本控制各種資產納入自動化執行和部署，以 Azure Machine Learning Studio （傳統）。 本文會討論其中的部分選項和方法。
 
@@ -46,7 +44,7 @@ Azure Machine Learning Studio （傳統）是一種工具，可用於開發在 A
 JSON 檔案是實驗圖形的文字表示法，但可能在工作區中包含資產的參考，例如資料集或定型模型。 它不會包含資產的序列化版本。 如果您嘗試將 JSON 文件匯回工作區中，所參考的資產必須已經存在且具有實驗中所參考的相同資產識別碼。 否則您無法存取匯入的實驗。
 
 ## <a name="versioning-trained-model"></a>定型模型版本控制
-Azure Machine Learning Studio （傳統）中的定型模型會序列化為稱為 .Ilearner 檔案（`.iLearner`）的格式，並儲存在與工作區相關聯的 Azure Blob 儲存體帳戶中。 取得 .iLearner 檔案複本的方法之一是透過重新訓練 API。 [本文](/azure/machine-learning/studio/retrain-machine-learning-model)說明重新訓練 API 的運作方式。 高階步驟：
+Azure Machine Learning Studio （傳統）中的定型模型會序列化為稱為 .Ilearner 檔案（）的格式 `.iLearner` ，並儲存在與工作區相關聯的 Azure Blob 儲存體帳戶中。 取得 .iLearner 檔案複本的方法之一是透過重新訓練 API。 [本文](/azure/machine-learning/studio/retrain-machine-learning-model)說明重新訓練 API 的運作方式。 高階步驟：
 
 1. 設定您的訓練實驗。
 2. 將 Web 服務輸出連接埠新增至「訓練模型」模組，或是可產生定型模型的模組，例如「微調模型參數」或「建立 R 模型」。

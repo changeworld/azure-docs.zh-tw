@@ -4,15 +4,15 @@ description: 瞭解如何在 Azure 中管理私人端點連線
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20695d183ea8184f7ee2948b3897fa1f3a741411
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75452970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737490"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>管理私人端點連線
 Azure 私用連結適用于核准呼叫流程模型，其中私用連結服務取用者可以要求與服務提供者的連線，以取用服務。 服務提供者接著可以決定是否允許取用者連接。 Azure 私用連結可讓服務提供者管理其資源上的私用端點連線。 本文提供如何管理私人端點連接的指示。
@@ -51,14 +51,14 @@ Azure PowerShell 和 Azure CLI 是在 Microsoft 合作夥伴服務或客戶擁�
   
 使用下列 PowerShell 命令來管理私人端點連線。  
 #### <a name="get-private-link-connection-states"></a>取得私人連結連接狀態 
-使用`Get-AzPrivateLinkService` Cmdlet 來取得私人端點連線及其狀態。  
+使用 `Get-AzPrivateLinkService` Cmdlet 來取得私人端點連線及其狀態。  
 ```azurepowershell
 Get-AzPrivateLinkService -Name myPrivateLinkService -ResourceGroupName myResourceGroup 
  ```
  
 #### <a name="approve-a-private-endpoint-connection"></a>核准私人端點連接 
  
-使用`Approve-AzPrivateEndpointConnection` Cmdlet 來核准私用端點連接。 
+使用 `Approve-AzPrivateEndpointConnection` Cmdlet 來核准私用端點連接。 
  
 ```azurepowershell
 Approve-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService
@@ -66,20 +66,20 @@ Approve-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceG
  
 #### <a name="deny-private-endpoint-connection"></a>拒絕私人端點連接 
  
-使用`Deny-AzPrivateEndpointConnection` Cmdlet 來拒絕私人端點連接。 
+使用 `Deny-AzPrivateEndpointConnection` Cmdlet 來拒絕私人端點連接。 
 ```azurepowershell
 Deny-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService 
 ```
 #### <a name="remove-private-endpoint-connection"></a>移除私人端點連接 
  
-使用`Remove-AzPrivateEndpointConnection` Cmdlet 來移除私人端點連接。 
+使用 `Remove-AzPrivateEndpointConnection` Cmdlet 來移除私人端點連接。 
 ```azurepowershell
 Remove-AzPrivateEndpointConnection -Name myPrivateEndpointConnection1 -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkServiceName 
 ```
  
 ### <a name="azure-cli"></a>Azure CLI 
  
-用於`az network private-link-service update`管理您的私用端點連接。 連接狀態會在```azurecli connection-status```參數中指定。 
+用於 `az network private-link-service update` 管理您的私用端點連接。 連接狀態會在參數中指定 ```azurecli connection-status``` 。 
 ```azurecli
 az network private-link-service connection update -g myResourceGroup -n myPrivateEndpointConnection1 --service-name myPLS --connection-status Approved 
 ```
@@ -87,5 +87,5 @@ az network private-link-service connection update -g myResourceGroup -n myPrivat
    
 
 ## <a name="next-steps"></a>後續步驟
-- [深入瞭解私人端點](private-endpoint-overview.md)
+- [深入了解私人端點](private-endpoint-overview.md)
  

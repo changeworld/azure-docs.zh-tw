@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: cd955f97a2f26543f799d95b7dc0b1de235333c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74186221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705197"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>使用動態封裝工具篩選您的資訊清單
 
@@ -36,7 +36,7 @@ ms.locfileid: "74186221"
 
 ## <a name="overview-of-manifests"></a>資訊清單總覽
 
-Azure 媒體服務支援 HLS、MPEG 破折號和 Smooth Streaming 通訊協定。 作為[動態封裝](dynamic-packaging-overview.md)的一部分，串流用戶端資訊清單（HLS 主要播放清單、破折號媒體簡報描述 [MPD] 和 Smooth Streaming）是根據 URL 中的格式選取器動態產生的。 如需詳細資訊，請參閱[一般隨選工作流程](dynamic-packaging-overview.md#delivery-protocols)中的傳遞通訊協定。
+Azure 媒體服務支援 HLS、MPEG 破折號和 Smooth Streaming 通訊協定。 作為[動態封裝](dynamic-packaging-overview.md)的一部分，串流用戶端資訊清單（HLS 主要播放清單、破折號媒體簡報描述 [MPD] 和 Smooth Streaming）是根據 URL 中的格式選取器動態產生的。 如需詳細資訊，請參閱[一般隨選工作流程](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery)中的傳遞通訊協定。
 
 ### <a name="get-and-examine-manifest-files"></a>取得並檢查資訊清單檔案
 
@@ -135,7 +135,7 @@ Azure 媒體服務支援 HLS、MPEG 破折號和 Smooth Streaming 通訊協定�
 
 若要合併篩選，請以分號分隔的格式，將篩選名稱設定為資訊清單/播放清單 URL。 假設您有一個名為*MyMobileDevice*的篩選準則，它會篩選品質，而且您有另一個名為*mystarttime 用*來設定特定的開始時間。 您可以結合最多三個篩選。
 
-如需詳細資訊，請參閱[這篇 blog 文章](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)。
+如需詳細資訊，請參閱[這篇部落格文章](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)。
 
 ## <a name="considerations-and-limitations"></a>考量與限制
 
@@ -146,7 +146,7 @@ Azure 媒體服務支援 HLS、MPEG 破折號和 Smooth Streaming 通訊協定�
 - 客戶必須手動下載資訊清單，並剖析確切的開始時間戳和時間範圍。
 
     - 若要判斷資產中的追蹤屬性，請[取得並檢查資訊清單](#get-and-examine-manifest-files)檔案。
-    - 用來設定資產篩選器時間戳記屬性的公式為： <br/>startTimestamp = &lt;資訊清單&gt; +  &lt;中的開始時間預期的篩選開始時間&gt; （以秒為單位） * 時間
+    - 用來設定資產篩選器時間戳記屬性的公式為： <br/>startTimestamp = &lt; 資訊清單中的開始時間 &gt;  +   &lt; 預期的篩選開始時間（以秒為單位） &gt; * 時間
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251462"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708292"
 ---
-# <a name="filters"></a>篩選條件
+# <a name="filters"></a>篩選器
 
 將您的內容傳遞給客戶（即時串流事件或隨選影片）時，您的用戶端可能需要比預設資產資訊清單檔案中所述更多的彈性。 Azure 媒體服務根據預先定義的篩選器提供[動態資訊清單](filters-dynamic-manifest-overview.md)。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "79251462"
 
 您可以使用下列屬性來描述篩選器。 
 
-|Name|描述|
+|Name|說明|
 |---|---|
 |firstQuality|篩選器的首次品質位元速率。|
 |presentationTimeRange|簡報時間範圍。 此屬性用於篩選資訊清單起始/結束點、簡報視窗長度，以及即時起始位置。 <br/>如需詳細資訊，請參閱 [PresentationTimeRange](#presentationtimerange)。|
@@ -57,7 +57,7 @@ ms.locfileid: "79251462"
 
 將此屬性與**資產篩選器**搭配使用。 不建議搭配**帳戶篩選器**設定此屬性。
 
-|Name|描述|
+|Name|說明|
 |---|---|
 |**endTimestamp**|適用於點播視訊 (VoD)。<br/>針對即時串流簡報，當簡報結束且資料流程變成 VoD 時，會以無訊息方式略過並套用。<br/>這是很長的值，表示簡報的絕對結束點，舍入到最接近的下一個 GOP 開始。 單位是時間刻度，因此1800000000的 endTimestamp 會是3分鐘。<br/>使用 startTimestamp 和 endTimestamp 修剪播放清單（資訊清單）中的片段。<br/>例如，startTimestamp = 40000000 和 endTimestamp = 100000000 使用預設的時間刻度，會產生一個播放清單，其中包含介於 VoD 簡報的4秒和10秒之間的片段。 如果片段跨越界限，則整個片段都會包含在資訊清單中。|
 |**forceEndTimestamp**|僅適用于即時串流。<br/>指出是否必須要有 endTimestamp 屬性。 若為 true，則必須指定 endTimestamp，否則會傳回不正確的要求碼。<br/>允許的值：false、true。|
@@ -72,13 +72,13 @@ ms.locfileid: "79251462"
 
 篩選器資料軌屬性條件描述資料軌類型、值 (下表中所述) 和運算 (Equal、NotEqual)。 
 
-|Name|描述|
+|Name|說明|
 |---|---|
 |**Bitrate**|使用資料軌的位元速率來篩選。<br/><br/>建議的值是位元速率範圍 (以每秒位元數為單位)。 例如，"0-2427000"。<br/><br/>注意：雖然您可以使用特定的位元速率值，如 250000 (每秒位元數)，但不建議使用此方法，因為資產之間的確切位元速率可能會變動。|
 |**FourCC**|將資料軌的 FourCC 值用於篩選。<br/><br/>該值是轉碼器格式的第一個元素，如 [RFC 6381](https://tools.ietf.org/html/rfc6381) \(英文\) 中所指定。 目前支援下列轉碼器： <br/>視訊："avc1"、"hev1"、"hvc1"<br/>音訊："mp4a"、"ec-3"<br/><br/>若要判斷 Asset 中資料軌的 FourCC 值，請取得並檢查資訊清單檔案。|
 |**語言**|使用資料軌的語言來篩選。<br/><br/>此值是您要包含之語言的標籤，如 RFC 5646 中所指定。 例如，"en"。|
-|**Name**|使用資料軌的名稱來篩選。|
-|**類型**|使用資料軌的類型來篩選。<br/><br/>允許下列值："video"、"audio" 或 "text"。|
+|**名稱**|使用資料軌的名稱來篩選。|
+|**型別**|使用資料軌的類型來篩選。<br/><br/>允許下列值："video"、"audio" 或 "text"。|
 
 ### <a name="example"></a>範例
 

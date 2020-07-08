@@ -4,16 +4,16 @@ description: 本文會協助您將 VNet 閘道新增到已經建立的 ExpressRo
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/21/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 6e6d79afa1126acb26cb8856c39ba486cce31a5e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 58d2949a18bfbf2800ae6ab4ac74b02b05b3eb07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74037420"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736385"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>使用 PowerShell 為 ExpressRoute 設定虛擬網路閘道
 > [!div class="op_single_selector"]

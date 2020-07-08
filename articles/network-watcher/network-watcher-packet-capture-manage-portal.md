@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: damendo
-ms.openlocfilehash: d7a61438187534a05a7d3f0307a1a4ded89fc147
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 28d5ae1451b97c19576baa3f9760b8f784db3175
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204078"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736725"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>使用入口網站以 Azure 網路監看員管理封包擷取
 
@@ -67,7 +67,7 @@ ms.locfileid: "82204078"
      > [!NOTE]
      > 連接埠和 IP 位址的值可以是單一值、值的範圍，或特定範圍 (如 80-1024) 的連接埠。 您可以視需要定義不限數量的篩選。
 
-4. 選取 [確定]  。
+4. 選取 [確定]。
 
 對封包擷取設定的時間限制到期之後，封包擷取即會停止，且可供檢閱。 您也可以手動停止封包擷取工作階段。
 
@@ -79,7 +79,7 @@ ms.locfileid: "82204078"
 ## <a name="delete-a-packet-capture"></a>刪除封包擷取
 
 1. 在封包擷取檢視中，選取位於封包擷取右側的 [...]****，或以滑鼠右鍵按一下現有的封包擷取，然後選取 [刪除]****。
-2. 系統會要求您確認您要刪除封包擷取。 選取 [是]  。
+2. 系統會要求您確認您要刪除封包擷取。 選取 [是]。
 
 > [!NOTE]
 > 刪除封包擷取時，並不會刪除儲存體帳戶中或虛擬機器上的擷取檔案。

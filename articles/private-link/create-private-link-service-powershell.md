@@ -4,15 +4,15 @@ description: 瞭解如何使用 Azure PowerShell 建立 Azure 私人連結服務
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89269fe8c291a0c5303ff58cd728e02d4907be0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76932087"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737303"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 建立私人連結服務
 本文說明如何使用 Azure PowerShell 在 Azure 中建立私人連結服務。
@@ -115,7 +115,7 @@ $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName
 
 ## <a name="create-a-private-endpoint"></a>建立私人端點
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
-使用[new-azvirtualnetwork](/powershell/module/az.network/new-azvirtualnetwork)為您的私用端點建立虛擬網路。 這個範例會在名為*myResourceGroup*的資源群組中建立名為 *vnetPE* 的虛擬網路：
+使用[new-azvirtualnetwork](/powershell/module/az.network/new-azvirtualnetwork)為您的私用端點建立虛擬網路。 這個範例會 *vnetPE*   在名為*myResourceGroup*的資源群組中建立名為 vnetPE 的虛擬網路：
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"
@@ -147,7 +147,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peNam
 ```
  
 ### <a name="get-private-endpoint"></a>取得私用端點
-使用`Get-AzPrivateEndpoint`取得私人端點的 IP 位址，如下所示：
+使用取得私人端點的 IP 位址，如下所示 `Get-AzPrivateEndpoint` ：
 
 ```azurepowershell
 # Get Private Endpoint and its IP Address 

@@ -8,11 +8,11 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257195"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84704364"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 設定 VMware VM 至 Azure 的災害復原
 
@@ -31,13 +31,13 @@ ms.locfileid: "79257195"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-開始之前：
+在開始之前：
 
 - 請確定您了解[情節架構和元件](vmware-azure-architecture.md)。
 - 請參閱所有元件的[支援需求](site-recovery-support-matrix-to-azure.md)。
-- 您有 Azure PowerShell `Az`模組。 如果您需要安裝或升級 Azure PowerShell，請按照此[安裝和設定 Azure PowerShell 指南](/powershell/azure/install-az-ps)的說明。
+- 您有 Azure PowerShell `Az` 模組。 如果您需要安裝或升級 Azure PowerShell，請按照此[安裝和設定 Azure PowerShell 指南](/powershell/azure/install-az-ps)的說明。
 
 ## <a name="log-into-azure"></a>登入 Azure
 
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 使用 Set-ASRVaultContext Cmdlet 設定保存庫內容。 設定後，會在所選保存庫的內容中執行 PowerShell 工作階段中的後續 Azure Site Recovery 作業。
 
 > [!TIP]
-> Azure Site Recovery PowerShell 模組（Az. Azurerm.recoveryservices 模組）為大部分的 Cmdlet 提供容易使用的別名。 模組中的 Cmdlet 會* \<>-**AzRecoveryServicesAsr**\<物件>* 執行表單作業，並具有對等的別名，其會以* \<>**ASR**\<物件>* 的形式操作。 您可以取代 Cmdlet 別名以方便使用。
+> Azure Site Recovery PowerShell 模組（Az. Azurerm.recoveryservices 模組）為大部分的 Cmdlet 提供容易使用的別名。 模組中的 Cmdlet 採用表單* \<Operation> - **AzRecoveryServicesAsr** \<Object> * ，並具有採用* \<Operation> - **ASR** \<Object> *格式的對等別名。 您可以取代 Cmdlet 別名以方便使用。
 
 在下列範例中，來自 $vault 變數的保存庫詳細資料用於指定 PowerShell 工作階段的保存庫內容。
 

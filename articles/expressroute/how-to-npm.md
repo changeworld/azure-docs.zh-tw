@@ -4,15 +4,15 @@ description: 設定 Azure ExpressRoute 線路的雲端式網路監視 (NPM)。 �
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 05c21f4f3f0af0de524db75ce9e6feb38d98c24e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74076599"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738374"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>設定 ExpressRoute 的網路效能監控
 
@@ -96,22 +96,22 @@ ms.locfileid: "74076599"
   >
 
 1. 執行**安裝程式**，以在您想要用於監視 ExpressRoute 的每部伺服器上安裝代理程式。 您用來進行監視的伺服器可以是 VM 或內部部署伺服器，而且必須能夠存取網際網路。 您必須至少在內部部署環境安裝一個代理程式，以及在 Azure 中您需要監視的每個網路區段安裝一個代理程式。
-2. 在 [歡迎]**** 頁面上，按 [下一步]****。
+2. 在 [歡迎] 頁面中按 [下一步]。
 3. 閱讀 [**授權條款**] 頁面上的授權，然後按一下 [**我同意**]。
 4. 在 [**目的地資料夾**] 頁面上，變更或保留預設的安裝資料夾，然後按 **[下一步]**。
 5. 在 [**代理程式安裝選項**] 頁面上，您可以選擇將代理程式連線至 Azure 監視器記錄或 Operations Manager。 或者，如果您想要稍後設定代理程式，則可以將選項留白。 進行選擇後，按 [下一步]****。
 
-   * 如果您選擇連線到 [Azure Log Analytics]****，請貼上您在上一節複製到「記事本」中的 [工作區識別碼]**** 和 [工作區金鑰 (主要金鑰)]****。 然後按 [下一步]  。
+   * 如果您選擇連線到 [Azure Log Analytics]****，請貼上您在上一節複製到「記事本」中的 [工作區識別碼]**** 和 [工作區金鑰 (主要金鑰)]****。 然後按 [下一步] ****。
 
      ![識別碼和金鑰](./media/how-to-npm/8.png)
-   * 如果您選擇連線到 [Operations Manager]****，請在 [管理群組設定]**** 頁面上，輸入 [管理群組名稱]****、[管理伺服器]**** 及 [管理伺服器連接埠]****。 然後按 [下一步]  。
+   * 如果您選擇連線到 [Operations Manager]****，請在 [管理群組設定]**** 頁面上，輸入 [管理群組名稱]****、[管理伺服器]**** 及 [管理伺服器連接埠]****。 然後按 [下一步] ****。
 
      ![Operations Manager](./media/how-to-npm/9.png)
-   * 在 [代理程式動作帳戶]**** 頁面上，選擇 [本機系統]**** 帳戶或 [網域或本機電腦]**** 帳戶。 然後按 [下一步]  。
+   * 在 [代理程式動作帳戶]**** 頁面上，選擇 [本機系統]**** 帳戶或 [網域或本機電腦]**** 帳戶。 然後按 [下一步] ****。
 
      ![帳戶](./media/how-to-npm/10.png)
 6. 在 [**安裝準備就緒**] 頁面上，檢查您的選擇，然後按一下 [**安裝**]。
-7. 在 [設定已**成功完成**] 頁面上，按一下 **[完成]**。
+7. 在 [設定成功完成] 頁面上，按一下 [完成]。
 8. 完成時，[Microsoft Monitoring Agent] 會出現在 [控制台] 中。 您可以在該處檢查設定，並確認代理程式已連線到 Azure 監視器記錄。 連線後，代理程式會顯示訊息︰**Microsoft Monitoring Agent 已成功連線到 Microsoft Operations Management Suite 服務**。
 
 9. 請針對您需要監視的每個 VNET 重複此程序。

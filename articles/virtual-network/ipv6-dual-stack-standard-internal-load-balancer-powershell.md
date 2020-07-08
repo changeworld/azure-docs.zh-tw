@@ -8,17 +8,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: fdf726fd31e8b92a04a1c136eb5cd7110e0c6d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67bc7994d2628790e84d3b3752f894a36486ca86
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72333361"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707509"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>使用 Azure 中的標準內部 Load Balancer 部署 IPv6 雙重堆疊應用程式-PowerShell （預覽）
 
@@ -39,14 +39,14 @@ ms.locfileid: "72333361"
 
 使上述內部負載平衡器前端設定的變更如下：
 - `PrivateIpAddressVersion`已指定為「IPv6」
-- 已`-PublicIpAddress`省略或取代引數`-PrivateIpAddress`。 請注意，私人位址必須在將部署內部負載平衡器的子網 IP 空間範圍內。 如果省略了`-PrivateIpAddress`靜態，則會從部署內部負載平衡器的子網中選取下一個可用的 IPv6 位址。
-- 要在其中部署內部負載平衡器的雙重堆疊子網，會以`-Subnet`或`-SubnetId`引數來指定。
+- `-PublicIpAddress`已省略或取代引數 `-PrivateIpAddress` 。 請注意，私人位址必須在將部署內部負載平衡器的子網 IP 空間範圍內。 如果省略了靜態 `-PrivateIpAddress` ，則會從部署內部負載平衡器的子網中選取下一個可用的 IPv6 位址。
+- 要在其中部署內部負載平衡器的雙重堆疊子網，會以 `-Subnet` 或 `-SubnetId` 引數來指定。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 PowerShell，本文會要求 Azure PowerShell 模組版本6.9.0 或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
+如果您選擇在本機安裝和使用 PowerShell，本文會要求使用 Azure PowerShell 模組 6.9.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 在 Azure 中部署雙重堆疊應用程式之前，您必須使用下列 Azure PowerShell 來設定此預覽功能的訂用帳戶：
 
 如下所示進行註冊：
@@ -76,7 +76,7 @@ $rg = New-AzResourceGroup `
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses"></a>建立 IPv4 和 IPv6 公用 IP 位址
-若要從網際網路存取您的虛擬機器，您需要 Vm 的 IPv4 和 IPv6 公用 IP 位址。 使用[get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress)建立公用 IP 位址。 下列範例會建立名為*RdpPublicIP_1*的 IPv4 和 IPV6 公用 IP 位址，並在*dsStd_ILB_RG*資源群組中*RdpPublicIP_2* ：
+若要從網際網路存取您的虛擬機器，您需要 Vm 的 IPv4 和 IPv6 公用 IP 位址。 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 建立公用 IP 位址。 下列範例會建立名為*RdpPublicIP_1*的 IPv4 和 IPV6 公用 IP 位址，並在*dsStd_ILB_RG*資源群組中*RdpPublicIP_2* ：
 
 ```azurepowershell
 $RdpPublicIP_1 = New-AzPublicIpAddress `

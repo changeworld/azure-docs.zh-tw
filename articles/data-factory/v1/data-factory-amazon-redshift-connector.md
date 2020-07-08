@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260523"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710145"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Redshift 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -34,7 +34,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 > [!TIP]
 > 當您從 Amazon Redshift 中複製大量資料時，若想獲得最佳效能，請考慮透過 Amazon Simple Storage Service (Amazon S3) 使用內建的 Redshift **UNLOAD**。 如需詳細資料，請參閱[使用 UNLOAD 複製 Amazon Redshift 中的資料](#use-unload-to-copy-data-from-amazon-redshift)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 * 如果您要將資料移到內部部署的資料存放區，請在內部部署的電腦上安裝[資料管理閘道](data-factory-data-management-gateway.md)。 使用內部部署機器的 IP 位址，授與 Amazon Redshift 叢集閘道的存取權。 如需相關指示，請參閱[授權存取叢集](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)。
 * 若要將資料移動到 Azure 資料存放區，請參閱[計算 Microsoft Azure 資料中心所使用的 IP 位址和 SQL 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
 
@@ -61,12 +61,12 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 
 | 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| **type** |屬性必須設為 **AmazonRedshift**。 |是 |
-| **伺服器** |Amazon Redshift 伺服器的 IP 位址或主機名稱。 |是 |
-| **移植** |Amazon Redshift 伺服器用來接聽用戶端連線的 TCP 連接埠號碼。 |否 (預設值為 5439) |
-| **database** |Amazon Redshift 資料庫的名稱。 |是 |
-| **username** |可存取資料庫之使用者的名稱。 |是 |
-| **password** |使用者帳戶的密碼。 |是 |
+| **type** |屬性必須設為 **AmazonRedshift**。 |Yes |
+| **伺服器** |Amazon Redshift 伺服器的 IP 位址或主機名稱。 |Yes |
+| **port** |Amazon Redshift 伺服器用來接聽用戶端連線的 TCP 連接埠號碼。 |否 (預設值為 5439) |
+| **database** |Amazon Redshift 資料庫的名稱。 |Yes |
+| **username** |可存取資料庫之使用者的名稱。 |Yes |
+| **password** |使用者帳戶的密碼。 |Yes |
 
 ## <a name="dataset-properties"></a>資料集屬性
 
@@ -87,7 +87,7 @@ Data Factory 目前僅支援資料從 Amazon Redshift 移至[支援的接收資�
 | 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | **查詢** | 使用自訂查詢來讀取資料。 |否 (如果已指定資料集的 **tableName** 屬性) |
-| **redshiftUnloadSettings** | 在使用 Redshift **UNLOAD** 命令時包含屬性群組。 | 否 |
+| **redshiftUnloadSettings** | 在使用 Redshift **UNLOAD** 命令時包含屬性群組。 | No |
 | **s3LinkedServiceName** | 要作為暫時存放區的 Amazon S3。 連結服務是使用類型為 **AwsAccessKey** 的 Azure Data Factory 名稱來指定。 | 使用 **redshiftUnloadSettings** 屬性時為必要 |
 | **bucketName** | 表示要用來儲存暫時資料的 Amazon S3 貯體。 如果未提供此屬性，複製活動會自動產生貯體。 | 使用 **redshiftUnloadSettings** 屬性時為必要 |
 
@@ -333,7 +333,7 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 | INTEGER |Int32 |
 | bigint |Int64 |
 | DECIMAL |Decimal |
-| real |Single |
+| REAL |Single |
 | DOUBLE PRECISION |Double |
 | BOOLEAN |String |
 | CHAR |String |

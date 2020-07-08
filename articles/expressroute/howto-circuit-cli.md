@@ -4,15 +4,15 @@ description: 本文說明如何使用 CLI 建立、佈建、驗證、更新、�
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: b967e1d8751a9c6a5214fef5241d57e954ad9f17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56af984ef83d2e237f0aa05af5cfef4dd6205256
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476146"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738323"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>使用 CLI 建立和修改 ExpressRoute 線路
 
@@ -57,7 +57,7 @@ az account set --subscription "<subscription ID>"
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. 取得支援的提供者、位置和頻寬的清單
 
-建立 ExpressRoute 線路之前，您需要有支援的連線提供者、位置和頻寬選項的清單。 CLI 命令`az network express-route list-service-providers`會傳回這項資訊，您將在稍後的步驟中使用：
+建立 ExpressRoute 線路之前，您需要有支援的連線提供者、位置和頻寬選項的清單。 CLI 命令 `az network express-route list-service-providers` 會傳回這項資訊，您將在稍後的步驟中使用：
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -155,7 +155,7 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. 列出所有 ExpressRoute 線路
 
-若要取得您所建立之所有 ExpressRoute 線路的清單，請執行`az network express-route list`命令。 您隨時可以使用此命令來擷取此資訊。 若要列出所有線路，在不使用任何參數的情況下進行呼叫。
+若要取得您所建立之所有 ExpressRoute 線路的清單，請執行 `az network express-route list` 命令。 您隨時可以使用此命令來擷取此資訊。 若要列出所有線路，在不使用任何參數的情況下進行呼叫。
 
 ```azurecli-interactive
 az network express-route list

@@ -4,11 +4,11 @@ description: 瞭解如何使用 REST API 從建立的還原點還原 Azure 檔�
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710570"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>使用 REST API 還原 Azure 檔案共用
 
@@ -20,7 +20,7 @@ ms.locfileid: "79252502"
 * 還原完整的 Azure 檔案共用。
 * 還原個別的檔案或資料夾。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 我們假設您已經有想要還原的已備份檔案共用。 如果您沒有這麼做，請[使用 REST API 來檢查備份 Azure 檔案共用](backup-azure-file-share-rest-api.md)，以瞭解如何建立一個。
 
@@ -160,7 +160,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 若要觸發 Azure 檔案共用的還原，下列為要求主體的元件：
 
-名稱 |  類型   |   描述
+名稱 |  類型   |   Description
 --- | ---- | ----
 屬性 | AzureFileShareRestoreRequest | RestoreRequestResource 屬性
 
@@ -370,7 +370,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 若要觸發 Azure 檔案共用的還原，下列為要求主體的元件：
 
-名稱 |  類型   |   描述
+名稱 |  類型   |   Description
 --- | ---- | ----
 屬性 | AzureFileShareRestoreRequest | RestoreRequestResource 屬性
 
@@ -378,7 +378,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 ### <a name="restore-to-original-location"></a>還原至原始位置
 
-下列要求主體會在*afsaccount*儲存體帳戶的*azurefiles*檔案共用中還原*Restoretest*檔案。
+下列要求主體會在*afsaccount*儲存體帳戶的*azurefiles*檔案共用中還原*Restoretest.txt*檔案。
 
 建立要求本文
 
@@ -404,7 +404,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 ### <a name="restore-to-alternate-location"></a>還原至替代位置
 
-下列要求本文會將*afsaccount*儲存體帳戶之*azurefiles*檔案共用中的*Restoretest* ，還原至*azurefiles1*儲存體帳戶中*afaccount1*檔案共用的*restoredata*資料夾。
+下列要求主體會將*afsaccount*儲存體帳戶中*azurefiles*檔案共用的*Restoretest.txt*檔案還原至*afaccount1*儲存體帳戶中*azurefiles1*檔案共用的*restoredata*資料夾。
 
 建立要求本文
 

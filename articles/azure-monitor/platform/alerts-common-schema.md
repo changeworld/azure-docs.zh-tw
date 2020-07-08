@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
 ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249044"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710927"
 ---
 # <a name="common-alert-schema"></a>一般警示結構描述
 
@@ -17,7 +17,7 @@ ms.locfileid: "79249044"
 
 ## <a name="what-is-the-common-alert-schema"></a>常見的警示架構為何？
 
-一般警示架構會將 Azure 中警示通知的耗用量體驗標準化。 在過去，Azure 中的三個警示類型（計量、記錄和活動記錄）都有自己的電子郵件範本、webhook 架構等。使用一般警示架構，您現在可以接收具有一致架構的警示通知。
+一般警示結構描述會將 Azure 中警示通知的耗用量體驗標準化。 在過去，Azure 中的三個警示類型（計量、記錄和活動記錄）都有自己的電子郵件範本、webhook 架構等。使用一般警示架構，您現在可以接收具有一致架構的警示通知。
 
 任何警示實例都會描述**受影響的資源**和**警示的原因**，而這些實例會在下列各節的一般架構中加以說明：
 * **基本**概念：一組**標準化的欄位**，在所有警示類型中都是通用的，其中描述警示所在的**資源**，以及其他常見的警示中繼資料（例如，嚴重性或描述）。 

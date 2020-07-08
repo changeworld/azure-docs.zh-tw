@@ -7,17 +7,17 @@ documentationcenter: virtual-network
 author: RDhillon
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: d26fd2fec5f9d5ab8e9d82ff2c6bd83b11c72e99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77651139"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708173"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>使用 Azure 入口網站建立、變更或刪除服務端點原則
 
@@ -71,7 +71,7 @@ ms.locfileid: "77651139"
    - 索引鍵：為您的原則選取索引鍵。 例如：部門     
    - 值：為索引建輸入值組。 例如：財務
 
-6. 選取 [檢閱 + 建立]  。 驗證資訊，然後按一下 [建立]****。 若要進一步編輯，請按一下 [上一步]****。 
+6. 選取 [檢閱 + 建立]****。 驗證資訊，然後按一下 [建立]****。 若要進一步編輯，請按一下 [上一步]****。 
 
    ![建立服務端點原則定義最終驗證](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   

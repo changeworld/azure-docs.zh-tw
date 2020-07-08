@@ -5,25 +5,23 @@ description: 瞭解如何重新定型模型，並更新傳統 web 服務，以�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 0639a525384e751ac4441da5d2c03532618b801a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 659011a13be310512ace68d2e020eaebff9a10ee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209446"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706030"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新定型和部署傳統 Studio （傳統） web 服務
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
-
 若想要確保機器模型保持精準，並確定模型所根據的是相關性最高的可用資料，其中一種方式就是重新定型機器模型。 本文將說明如何重新訓練傳統 Studio （傳統） web 服務。 如需如何重新訓練新 Studio （傳統） web 服務的指南，請[參閱這篇操作說明文章。](retrain-machine-learning-model.md)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您進行過了重新定型實驗和預測性實驗。 [重新定型和部署機器學習模型](/azure/machine-learning/studio/retrain-machine-learning-model)一文有講解這些步驟。 不過，無需將您的機器學習模型部署為新 Web 服務，而是要將預測性實驗部署為傳統 Web 服務。
      
@@ -48,7 +46,7 @@ ms.locfileid: "82209446"
 
 1. 在 [Machine Learning Studio （傳統）] 中，按一下左側導覽列上的 [Web 服務]。
 1. 在 web 服務儀表板底部，按一下 [**管理端點預覽**]。
-1. 按一下 [加入]  。
+1. 按一下 **[新增]** 。
 1. 輸入新端點的名稱和描述。 選取記錄層級，以及是否啟用範例資料。 如需記錄的詳細資訊，請參閱[啟用 Machine Learning web 服務的記錄](web-services-logging.md)。
 
 ## <a name="update-the-added-endpoints-trained-model"></a>更新新增端點的定型模型

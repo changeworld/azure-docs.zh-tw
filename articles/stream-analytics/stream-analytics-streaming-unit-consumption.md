@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/27/2020
 ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267348"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84704177"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解及調整串流單位
 
@@ -86,7 +86,7 @@ Azure 串流分析作業的其中一個獨特功能是執行具狀態的處理�
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-為了降低前一個查詢中由高基數所造成的任何問題，您可以將事件傳送至所分割的`clusterid`事件中樞，並藉由允許系統個別處理每個輸入分割區來相應放大查詢 **，如下列**範例所示：
+為了降低前一個查詢中由高基數所造成的任何問題，您可以將事件傳送至所分割的事件中樞 `clusterid` ，並藉由允許系統個別處理每個輸入分割**區來**相應放大查詢，如下列範例所示：
 
    ```sql
    SELECT count(*) 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
 ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279880"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708921"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 閘道常見問題集
 
@@ -32,7 +32,7 @@ ms.locfileid: "79279880"
 
 ### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>將 VPN 閘道設定為主動 - 主動是否需要額外費用？
 
-不可以。 
+否。 
 
 ### <a name="what-are-my-cross-premises-connection-options"></a>有哪些跨單位連線選項？
 
@@ -70,7 +70,7 @@ VPN 閘道是一種虛擬網路閘道。 VPN 閘道可透過公用連線在您�
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>我可以將以原則為基礎的 VPN 閘道更新為路由式嗎？
 
-不可以。Azure Vnet 閘道類型無法從原則型變更為路由型或其他方式。 閘道必須刪除並重新建立，程序大約要 60 分鐘的時間。 閘道的 IP 位址不會保留，預先共用金鑰 (PSK) 也不會保留。
+否。Azure Vnet 閘道類型無法從原則型變更為路由型或其他方式。 閘道必須刪除並重新建立，程序大約要 60 分鐘的時間。 閘道的 IP 位址不會保留，預先共用金鑰 (PSK) 也不會保留。
 1. 刪除與要刪除之閘道相關聯的任何連線。
 1. 刪除閘道：
    - [Azure 入口網站](vpn-gateway-delete-vnet-gateway-portal.md)
@@ -86,7 +86,7 @@ VPN 閘道是一種虛擬網路閘道。 VPN 閘道可透過公用連線在您�
 
 ### <a name="can-i-deploy-virtual-machines-or-role-instances-to-my-gateway-subnet"></a>是否可以將虛擬機器或角色執行個體部署到閘道子網路？
 
-不可以。
+否。
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>在建立之前是否可以取得我的 VPN 閘道 IP 位址？
 
@@ -236,7 +236,7 @@ Azure 基礎結構通訊需要這些連接埠。 它們受到 Azure 憑證的保
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-with-cross-premises-connectivity-does-all-the-traffic-from-my-vm-go-through-that-connection"></a>如果我的虛擬機器位於具有跨單位連線能力的虛擬網路，所有來自我的 VM 的流量是否都會通過該連線？
 
-不可以。 只有目地的 IP 包含在您指定之虛擬網路區域網路 IP 位址範圍的流量，才會通過虛擬網路閘道。 目的地 IP 位於虛擬網路內的流量仍會留在虛擬網路內。 其他流量是透過負載平衡器傳送至公用網路，或者如果使用強制通道，則透過 Azure VPN 閘道傳送。
+否。 只有目地的 IP 包含在您指定之虛擬網路區域網路 IP 位址範圍的流量，才會通過虛擬網路閘道。 目的地 IP 位於虛擬網路內的流量仍會留在虛擬網路內。 其他流量是透過負載平衡器傳送至公用網路，或者如果使用強制通道，則透過 Azure VPN 閘道傳送。
 
 ### <a name="how-do-i-troubleshoot-an-rdp-connection-to-a-vm"></a>如何針對 VM 的 RDP 連線進行疑難排解
 

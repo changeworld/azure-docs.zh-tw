@@ -8,17 +8,17 @@ author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737354"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用網路監看員和開放原始碼工具執行網路入侵偵測
 
@@ -26,7 +26,7 @@ ms.locfileid: "80474920"
 
 一種開放原始碼工具是 Suricata，這是使用規則集監視網路流量且在可疑事件發生時就會觸發警示的 IDS 引擎。 Suricata 提供多執行緒的引擎，這表示它可以更高的速度和效率執行網路流量分析。 如需關於 Suricata 和其功能的詳細資訊，請瀏覽其網站：https://suricata-ids.org/。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 本文說明如何使用網路監看員、Suricata 和彈性堆疊來設定您的環境，以執行網路入侵偵測。 網路監看員會提供用來執行網路入侵偵測的封包擷取。 Suricata 會根據比對指定的威脅規則集處理封包擷取和觸發警示。 這些警示會儲存在本機電腦上的記錄檔。 使用彈性堆疊的 Suricata 所產生之記錄可以編製索引及用來建立 Kibana 儀表板，提供您視覺表示法的記錄，以便快速獲得潛在網路弱點的見解。  
 

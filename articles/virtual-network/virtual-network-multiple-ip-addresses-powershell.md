@@ -8,17 +8,17 @@ manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
-ms.openlocfilehash: e4197923fa71c719611bea7603113cab331d4ba8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 819b6af0d336e454aeeb67a9be62109cb6b08bb8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147786"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708224"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 對虛擬機器指派多個 IP 位址
 
@@ -94,7 +94,7 @@ ms.locfileid: "82147786"
 
 6. 定義 NIC 的主要 IP 組態。 如果您未使用先前定義的值，請將 10.0.0.4 變更成您所建立之子網路中的有效位址。 指派靜態 IP 位址之前，建議您先確認該位址尚未處於使用中。 輸入命令 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果位址可用，則輸出會傳回 *True*。 如果無法使用，則輸出會傳回*False*和可用位址的清單。 
 
-    在下列命令中，**將\<replace 取代為唯一的名稱> 並使用唯一的 DNS 名稱。** 該名稱在 Azure 區域內的所有公用 IP 位址中必須是唯一的。 這是選擇性參數。 如果您只想要使用公用 IP 位址來連接到 VM，則可以將它移除。
+    在下列命令中，將**取代 \<replace-with-your-unique-name> 為要使用的唯一 DNS 名稱。** 該名稱在 Azure 區域內的所有公用 IP 位址中必須是唯一的。 這是選擇性參數。 如果您只想要使用公用 IP 位址來連接到 VM，則可以將它移除。
 
     ```powershell
     
@@ -159,7 +159,7 @@ ms.locfileid: "82147786"
    ```
 
    >[!NOTE]
-   >雖然在本文中是將所有組態都指派給一個 NIC，但您也可以指派多個 IP 組態給連結到 VM 的每個 NIC。 若要瞭解如何建立具有多個 Nic 的 VM，請閱讀[建立具有多個 nic 的 vm 一](../virtual-machines/windows/multiple-nics.md)文。
+   >雖然在本文中是將所有組態都指派給一個 NIC，但您也可以指派多個 IP 組態給連結到 VM 的每個 NIC。 閱讀[建立具有多個 NIC 的 VM](../virtual-machines/windows/multiple-nics.md) 文章以了解如何建立具有多個 NIC 的 VM。
 
 9. 輸入下列命令來建立 VM：
 
@@ -311,7 +311,7 @@ ms.locfileid: "82147786"
    -Location $Location -AllocationMethod Static
    ```
 
-   輸入下列命令，將公用 IP 位址資源與名為 *IpConfig-3* 的現有 IP 組態產生關聯：
+   輸入下列命令，將公用 IP 位址資源與名為*IpConfig-3*的現有 IP 設定產生關聯：
 
    ```powershell
    Set-AzNetworkInterfaceIpConfig `
