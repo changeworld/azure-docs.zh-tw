@@ -14,21 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 57a3bab06e4c0a1e4fd8df5d0794a89904a88954
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747640"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84340669"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 規則引擎的 HTTP 變數
 HTTP 變數能提供擷取 HTTP 要求和回應中繼資料的方法。 此中繼資料可以接著用來動態調整要求或回應。 HTTP 變數的使用，僅限於下列規則引擎功能：
 
-- [快取索引鍵重寫](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
-- [修改用戶端要求標頭](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
-- [修改用戶端回應標頭](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
-- [URL 重新導向](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
-- [URL 重寫](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
+- [快取索引鍵重寫](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm)
+- [修改用戶端要求標頭](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Request-Header.htm)
+- [修改用戶端回應標頭](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Response-Header.htm)
+- [URL 重新導向](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm)
+- [URL 重寫](https://docs.vdms.com/cdn/Content/HRE/F/URL-Rewrite.htm)
 
 ## <a name="definitions"></a>定義
 下表描述支援的 HTTP 變數。 在無法針對特定要求提供地理中繼資料 (例如郵遞區號) 時，系統將會傳回空白值。

@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 08b12bd9d35aaa61c79d35a55068983cdc0f1b83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77566318"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764973"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 查詢地理空間資料
 
@@ -21,7 +20,7 @@ ms.locfileid: "77566318"
 
 以下是可用來查詢 Azure Cosmos DB 的地理空間系統函數清單：
 
-|**使用量**|**說明**|
+|**使用量**|**描述**|
 |---|---|
 | ST_DISTANCE (spatial_expr, spatial_expr) | 傳回兩個 GeoJSON Point、Polygon 或 LineString 運算式之間的距離。|
 |ST_WITHIN (spatial_expr, spatial_expr) | 傳回布林運算式，指出第一個 GeoJSON 物件 (Point、Polygon 或 LineString) 是否位在第二個 GeoJSON 物件 (Point、Polygon 或 LineString) 內。|
@@ -29,14 +28,14 @@ ms.locfileid: "77566318"
 |ST_ISVALID| 傳回布林值，指出指定的 GeoJSON Point、Polygon 或 LineString 運算式是否有效。|
 | ST_ISVALIDDETAILED| 如果指定的 GeoJSON 點、多邊形或 LineString 運算式是有效的，則會傳回包含布林值的 JSON 值。 如果無效，則會傳回字串值的原因。|
 
-空間函數可以用來對空間資料執行鄰近性查詢。 例如，以下的查詢會使用內`ST_DISTANCE`建函數，傳回在指定位置30公里內的所有家族檔。
+空間函數可以用來對空間資料執行鄰近性查詢。 例如，以下的查詢會使用內建函數，傳回在指定位置30公里內的所有家族檔 `ST_DISTANCE` 。
 
 **查詢**
 
 ```sql
     SELECT f.id
     FROM Families f
-    WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
+    WHERE ST_DISTANCE(f.location, {"type": "Point", "coordinates":[31.9, -4.8]}) < 30000
 ```
 
 **結果**
@@ -51,7 +50,7 @@ ms.locfileid: "77566318"
 
 `ST_WITHIN`可以用來檢查某個點是否位於多邊形內。 多邊形常用來表示邊界，例如郵遞區號、州省邊界或自然構成物。 此外，如果您將空間索引編製包含在索引編製原則中，則「距離內」查詢將會透過索引獲得有效利用。
 
-中`ST_WITHIN`的多邊形引數只能包含單一環形，也就是多邊形不能包含其中的洞。
+中的多邊形引數 `ST_WITHIN` 只能包含單一環形，也就是多邊形不能包含其中的洞。
 
 **查詢**
 
@@ -59,8 +58,8 @@ ms.locfileid: "77566318"
     SELECT *
     FROM Families f
     WHERE ST_WITHIN(f.location, {
-        'type':'Polygon',
-        'coordinates': [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
+        "type":"Polygon",
+        "coordinates": [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
     })
 ```
 
@@ -73,7 +72,7 @@ ms.locfileid: "77566318"
 ```
 
 > [!NOTE]
-> 與 Azure Cosmos DB 查詢中不相符類型的運作方式類似，如果任一引數中指定的位置值格式不正確或無效，則會評估為**未定義**，且會在查詢結果中略過已評估的文件。 如果您的查詢未傳回任何結果`ST_ISVALIDDETAILED` ，請執行來進行 debug，看看空間類型不正確原因。
+> 與 Azure Cosmos DB 查詢中不相符類型的運作方式類似，如果任一引數中指定的位置值格式不正確或無效，則會評估為**未定義**，且會在查詢結果中略過已評估的文件。 如果您的查詢未傳回任何結果，請執行 `ST_ISVALIDDETAILED` 來進行 debug，看看空間類型不正確原因。
 >
 >
 
@@ -84,7 +83,7 @@ Azure Cosmos DB 也支援反向查詢，亦即您可以在 Azure Cosmos DB 中�
 ```sql
     SELECT *
     FROM Areas a
-    WHERE ST_WITHIN({'type': 'Point', 'coordinates':[31.9, -4.8]}, a.location)
+    WHERE ST_WITHIN({"type": "Point", "coordinates":[31.9, -4.8]}, a.location)
 ```
 
 **結果**
@@ -99,7 +98,7 @@ Azure Cosmos DB 也支援反向查詢，亦即您可以在 Azure Cosmos DB 中�
     }]
 ```
 
-`ST_ISVALID`和`ST_ISVALIDDETAILED`可以用來檢查空間物件是否有效。 例如，下列查詢以超出範圍的緯度值 (-132.8)，檢查點的有效性。 `ST_ISVALID`只會傳回布林值，並`ST_ISVALIDDETAILED`傳回布林值和字串，其中包含視為不正確原因。
+`ST_ISVALID`和 `ST_ISVALIDDETAILED` 可以用來檢查空間物件是否有效。 例如，下列查詢以超出範圍的緯度值 (-132.8)，檢查點的有效性。 `ST_ISVALID`只會傳回布林值，並傳回 `ST_ISVALIDDETAILED` 布林值和字串，其中包含視為不正確原因。
 
 **查詢**
 
@@ -115,7 +114,7 @@ Azure Cosmos DB 也支援反向查詢，亦即您可以在 Azure Cosmos DB 中�
     }]
 ```
 
-這些函數也可以用來驗證多邊形。 例如，在這裡我們使用`ST_ISVALIDDETAILED`來驗證未關閉的多邊形。
+這些函數也可以用來驗證多邊形。 例如，在這裡我們使用 `ST_ISVALIDDETAILED` 來驗證未關閉的多邊形。
 
 **查詢**
 
@@ -140,7 +139,7 @@ Azure Cosmos DB 也支援反向查詢，亦即您可以在 Azure Cosmos DB 中�
 
 SQL .NET SDK 也是虛設常式方法 `Distance()` 和 `Within()` 的提供者，供您在 LINQ 運算式中使用。 SQL LINQ 提供者會將這些方法呼叫，轉譯為同等的 SQL 內建函數呼叫 (分別為 ST_DISTANCE 和 ST_WITHIN)。
 
-以下是 LINQ 查詢的範例，它會尋找 Azure Cosmos 容器中的所有檔， `location`其值在使用 LINQ 之指定點的半徑內為30公里。
+以下是 LINQ 查詢的範例，它會尋找 Azure Cosmos 容器中的所有檔，其 `location` 值在使用 LINQ 之指定點的半徑內為30公里。
 
 **距離的 LINQ 查詢**
 
@@ -152,7 +151,7 @@ SQL .NET SDK 也是虛設常式方法 `Distance()` 和 `Within()` 的提供者�
     }
 ```
 
-同樣地，以下是尋找指定的方塊/多邊形內`location`所有檔的查詢。
+同樣地，以下是尋找 `location` 指定的方塊/多邊形內所有檔的查詢。
 
 **範圍內的 LINQ 查詢**
 

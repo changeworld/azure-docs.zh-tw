@@ -1,18 +1,17 @@
 ---
-title: NDv2 系列-Azure 虛擬機器
+title: NDv2 系列
 description: NDv2 系列 Vm 的規格。
-services: virtual-machines
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 8a2d275501816dd504130b255b73a752c5615f0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: a5b7dea30cff70d5c45460eb8ded2fa370afa2c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80247277"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84726585"
 ---
 # <a name="updated-ndv2-series"></a>已更新 NDv2 系列
 
@@ -42,7 +41,7 @@ NDv2 實例可為 HPC 和 AI 工作負載提供絕佳的效能，利用 CUDA 的
 
 不適用：支援
 
-| Size | vCPU | 記憶體：GiB | 暫存儲存體（SSD）： GiB | GPU | GPU 記憶體： GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大網路頻寬 | 最大 NIC |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體（SSD）： GiB | GPU | GPU 記憶體： GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大網路頻寬 | 最大 NIC |
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB （NVLink） | 32 | 32 | 80000/800 | 24000 Mbps | 8 |
 
@@ -63,7 +62,7 @@ NDv2 實例可為 HPC 和 AI 工作負載提供絕佳的效能，利用 CUDA 的
 - [儲存體最佳化](sizes-storage.md)
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
-- [上一代](sizes-previous-gen.md)
+- [前幾代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>後續步驟
 

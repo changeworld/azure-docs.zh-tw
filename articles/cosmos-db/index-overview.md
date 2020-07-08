@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: df9135c39c1ff27abe8915c221185fca517a5614
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 44a51972e459f64f44a791ef1cf40825dddedf91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849785"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85798148"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>在 Azure Cosmos DB 中編製索引 - 概觀
 
@@ -41,7 +40,7 @@ Azure Cosmos DB 是一個無從驗證結構描述的資料庫，可讓您逐一�
 
 可由以下列樹狀結構呈現：
 
-![以樹狀結構表示的上一個項目](./media/index-overview/item-as-tree.png)
+:::image type="content" source="./media/index-overview/item-as-tree.png" alt-text="以樹狀結構表示的上一個項目" border="false":::
 
 請注意陣列在樹狀結構中的編碼方式：陣列中的每個項目都會取得中繼節點，並標示陣列內該項目的索引 (0、1 等)。
 
@@ -51,14 +50,14 @@ Azure Cosmos DB 將項目轉換成樹狀結構的原因，在於允許這類樹�
 
 以下是上述範例項目中每個屬性的路徑：
 
-    /locations/0/country: "Germany"
-    /locations/0/city: "Berlin"
-    /locations/1/country: "France"
-    /locations/1/city: "Paris"
-    /headquarters/country: "Belgium"
-    /headquarters/employees: 250
-    /exports/0/city: "Moscow"
-    /exports/1/city: "Athens"
+- /locations/0/country： "德國"
+- /locations/0/city： "柏林"
+- /locations/1/country： "法國"
+- /locations/1/city：「巴黎」
+- /headquarters/country： "比利時"
+- /headquarters/employees：250
+- /exports/0/city： "莫斯科"
+- /exports/1/city： "雅典"
 
 寫入項目時，Azure Cosmos DB 會有效地為每個屬性的路徑和其對應的值編制索引。
 
@@ -181,7 +180,7 @@ Azure Cosmos DB 目前支援三種索引。
 
 例如可試想下列查詢：`SELECT location FROM location IN company.locations WHERE location.country = 'France'`。 查詢述詞 (篩選有任何位置的國家/地區為「法國」的項目) 符合下列以紅色反白顯示的路徑：
 
-![比對樹狀結構內的特定路徑](./media/index-overview/matching-path.png)
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="比對樹狀結構內的特定路徑" border="false":::
 
 > [!NOTE]
 > 依單一屬性排序的 `ORDER BY` 子句一律需要使用範圍索引，而且如果所參考的路徑不具範圍索引，就會失敗。 同理，按照多個屬性排序的 `ORDER BY` 查詢一律需要使用複合式索引。

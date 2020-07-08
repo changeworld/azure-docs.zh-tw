@@ -9,12 +9,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
-ms.openlocfilehash: a2e80b9320509144456663672ac5ae03f522459a
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84726946"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 中的資料流程活動
 
@@ -56,10 +55,10 @@ ms.locfileid: "82735380"
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-資料流程 | 正在執行之資料流程的參考 | DataFlowReference | 是
-integrationRuntime | 資料流程執行所在的計算環境。 如果未指定，則會使用自動解析的 Azure 整合執行時間。 僅支援區域自動解析的整合執行時間。 | IntegrationRuntimeReference | 否
-計算 coreCount | Spark 叢集中使用的核心數目。 只有在使用自動解析的 Azure 整合執行時間時，才能指定 | 8、16、32、48、80、144、272 | 否
-計算 computeType | Spark 叢集中使用的計算類型。 只有在使用自動解析的 Azure 整合執行時間時，才能指定 | "General"、"ComputeOptimized"、"MemoryOptimized" | 否
+資料流程 | 正在執行之資料流程的參考 | DataFlowReference | Yes
+integrationRuntime | 資料流程執行所在的計算環境。 如果未指定，則會使用自動解析的 Azure 整合執行時間。 | IntegrationRuntimeReference | No
+計算 coreCount | Spark 叢集中使用的核心數目。 只有在使用自動解析的 Azure 整合執行時間時，才能指定 | 8、16、32、48、80、144、272 | No
+計算 computeType | Spark 叢集中使用的計算類型。 只有在使用自動解析的 Azure 整合執行時間時，才能指定 | "General"、"ComputeOptimized"、"MemoryOptimized" | No
 暫存。 linkedService | 如果您使用的是 SQL DW 來源或接收，用於 PolyBase 暫存的儲存體帳戶 | LinkedServiceReference | 只有在資料流程讀取或寫入至 SQL DW 時
 暫存。 folderPath | 如果您使用的是 SQL DW 來源或接收，則為用於 PolyBase 暫存的 blob 儲存體帳戶中的資料夾路徑 | String | 只有在資料流程讀取或寫入至 SQL DW 時
 
@@ -75,7 +74,7 @@ integrationRuntime | 資料流程執行所在的計算環境。 如果未指定�
 
 ### <a name="data-flow-integration-runtime"></a>資料流程整合執行時間
 
-選擇要用於資料流程活動執行的 Integration Runtime。 根據預設，Data Factory 會使用自動解析的 Azure 整合執行時間與四個背景工作角色核心，而不會有存留時間（TTL）。 此 IR 具有一般目的計算類型，並會在與您的處理站相同的區域中執行。 您可以建立自己的 Azure 整合執行時間，以定義您的資料流程活動執行的特定區域、計算類型、核心計數和 TTL。 此時，資料流程活動僅支援區域自動解析的整合執行時間。
+選擇要用於資料流程活動執行的 Integration Runtime。 根據預設，Data Factory 會使用自動解析的 Azure 整合執行時間與四個背景工作角色核心，而不會有存留時間（TTL）。 此 IR 具有一般目的計算類型，並會在與您的處理站相同的區域中執行。 您可以建立自己的 Azure 整合執行時間，以定義您的資料流程活動執行的特定區域、計算類型、核心計數和 TTL。
 
 就管線執行而言，叢集是一種作業叢集，需要幾分鐘的時間才能開始執行。 如果未指定 TTL，每次執行管線時都需要此啟動時間。 如果您指定 TTL，暖叢集集區會在最後一次執行後指定的時間保持作用中狀態，因而縮短啟動時間。 例如，如果您有60分鐘的 TTL，並每隔一小時執行一次資料流程，叢集集區就會保持作用中狀態。 如需詳細資訊，請參閱[Azure 整合運行](concepts-integration-runtime.md)時間。
 
@@ -108,7 +107,7 @@ integrationRuntime | 資料流程執行所在的計算環境。 如果未指定�
 
 ## <a name="pipeline-debug-of-data-flow-activity"></a>資料流程活動的管線 debug
 
-若要使用「資料流程」活動執行「調試管線」，您必須在頂端列上透過 [資料流程 **] [資料流程**處理] 滑杆切換至 [資料流程] [調試] 模式。 [偵錯工具] 模式可讓您針對作用中的 Spark 叢集執行資料流程。 如需詳細資訊，請參閱[Debug Mode](concepts-data-flow-debug-mode.md)。
+若要使用「資料流程」活動執行「調試管線」，您必須在頂端列上透過 [資料流程 **] [資料流程**處理] 滑杆切換至 [資料流程] [調試] 模式。 [偵錯工具] 模式可讓您針對作用中的 Spark 叢集執行資料流程。 如需詳細資訊，請參閱[偵錯模式](concepts-data-flow-debug-mode.md)。
 
 ![偵錯按鈕](media/data-flow/debugbutton.png "偵錯按鈕")
 
@@ -120,7 +119,7 @@ Debug 管線會針對使用中的 debug 叢集執行，而不是在 [資料流�
 
 ### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>在後續活動中使用資料流程活動結果
 
-資料流程活動會輸出寫入每個接收的資料列數，以及從每個來源讀取的資料列的相關計量。 這些結果會在活動執行`output`結果的區段中傳回。 傳回的計量格式為下列 json。
+資料流程活動會輸出寫入每個接收的資料列數，以及從每個來源讀取的資料列的相關計量。 這些結果會在 `output` 活動執行結果的區段中傳回。 傳回的計量格式為下列 json。
 
 ``` json
 {
@@ -148,12 +147,12 @@ Debug 管線會針對使用中的 debug 叢集執行，而不是在 [資料流�
 }
 ```
 
-例如，若要在名為 ' dataflowActivity ' 的活動中，取得寫入名為 ' sink1 ' 之接收器的資料列`@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`數目，請使用。
+例如，若要在名為 ' dataflowActivity ' 的活動中，取得寫入名為 ' sink1 ' 之接收器的資料列數目，請使用 `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten` 。
 
-若要從該接收中使用名為 ' source1.rc ' 的來源取得讀取的資料列數目，請`@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`使用。
+若要從該接收中使用名為 ' source1.rc ' 的來源取得讀取的資料列數目，請使用 `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead` 。
 
 > [!NOTE]
-> 如果接收的資料列不是任何寫入，則不會顯示在計量中。 可以使用`contains`函數來驗證是否存在。 例如， `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')`會檢查是否有任何資料列已寫入至 sink1。
+> 如果接收的資料列不是任何寫入，則不會顯示在計量中。 可以使用函數來驗證是否存在 `contains` 。 例如， `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` 會檢查是否有任何資料列已寫入至 sink1。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -164,5 +163,5 @@ Debug 管線會針對使用中的 debug 叢集執行，而不是在 [資料流�
 - [For Each 活動](control-flow-for-each-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
-- [網路活動](control-flow-web-activity.md)
+- [Web 活動](control-flow-web-activity.md)
 - [Until 活動](control-flow-until-activity.md)

@@ -3,15 +3,14 @@ title: 使用 Azure PowerShell 將 Azure 虛擬網路移至另一個 Azure 區�
 description: 使用 Resource Manager 範本並 Azure PowerShell，將 Azure 虛擬網路從一個 Azure 區域移至另一個區域。
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: dc316e5bbb88359ff8b1e8a4fc35a56541a577f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e13164c3ec6049a8ae3954528a02d20e313dd883
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711454"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>使用 Azure PowerShell 將 Azure 虛擬網路移至另一個區域
 
@@ -20,7 +19,7 @@ ms.locfileid: "75646705"
 您可以使用 Azure Resource Manager 範本來完成將虛擬網路移至另一個區域的工作。 若要這麼做，您可以將虛擬網路匯出至範本、修改參數以符合目的地區域，然後將範本部署到新的區域。 如需 Resource Manager 範本的詳細資訊，請參閱[將資源群組匯出至範本](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 請確定您的虛擬網路位於您想要移動的 Azure 區域中。
 
@@ -32,7 +31,7 @@ ms.locfileid: "75646705"
 
 - 確認您的 Azure 訂用帳戶可讓您在目的地區域中建立虛擬網路。 若要啟用所需的配額，請聯絡支援人員。
 
-- 請確定您的訂用帳戶有足夠的資源，可支援在此程式中新增虛擬網路。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額與條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
+- 請確定您的訂用帳戶有足夠的資源，可支援在此程式中新增虛擬網路。 如需詳細資訊，請參閱[Azure 訂用帳戶和服務限制、配額和條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 
 ## <a name="prepare-for-the-move"></a>準備移動
@@ -60,7 +59,7 @@ ms.locfileid: "75646705"
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. 下載的檔案與匯出資源的來源資源群組具有相同的名稱。 找出* \<您使用命令匯出的資源組名> json*檔案，然後在您的編輯器中開啟它：
+1. 下載的檔案與匯出資源的來源資源群組具有相同的名稱。 找出您使用命令匯出的* \<resource-group-name> json*檔案，然後在您的編輯器中開啟它：
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -98,16 +97,16 @@ ms.locfileid: "75646705"
 
     ```
   
-1. 若要取得區域位置代碼，您可以藉由執行下列命令來使用 Azure PowerShell Cmdlet [get-azlocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) ：
+1. 若要取得區域位置代碼，您可執行下列命令來使用 Azure PowerShell Cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0)：
 
     ```azurepowershell-interactive
 
     Get-AzLocation | format-table
     ```
 
-1. 選擇性您也可以根據您的需求，變更* \<資源群組名稱> json*檔案中的其他參數：
+1. 選擇性您也可以根據您的需求變更* \<resource-group-name> json*檔案中的其他參數：
 
-    * **位址空間**：儲存檔案之前，您可以藉由修改**resources** > **addressSpace**區段並變更**addressPrefixes**屬性，來改變虛擬網路的位址空間：
+    * **位址空間**：儲存檔案之前，您可以藉由修改**resources**  >  **addressSpace**區段並變更**addressPrefixes**屬性，來改變虛擬網路的位址空間：
 
         ```json
                 "resources": [
@@ -193,7 +192,7 @@ ms.locfileid: "75646705"
          ]
         ```
 
-1. 將* \<資源群組名稱儲存> json*檔案。
+1. 儲存 *\<resource-group-name>.json* 檔案。
 
 1. 使用[remove-azresourcegroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)，在目的地區域中建立要部署之目標虛擬網路的資源群組：
     
@@ -201,7 +200,7 @@ ms.locfileid: "75646705"
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. 使用[new-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)，將已編輯* \<的資源群組名稱>. json*檔案部署到您在上一個步驟中建立的資源群組：
+1. 使用[new-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)，將已編輯的* \<resource-group-name> json*檔案部署到您在上一個步驟中建立的資源群組：
 
     ```azurepowershell-interactive
 
@@ -224,7 +223,7 @@ ms.locfileid: "75646705"
 
 部署虛擬網路之後，若要開始或捨棄目的地區域中的虛擬網路，請刪除您在目的地區域中建立的資源群組，然後將會刪除移動的虛擬網路。 
 
-若要移除資源群組，請使用[remove-azresourcegroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
+若要移除資源群組，請使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
 
 ```azurepowershell-interactive
 

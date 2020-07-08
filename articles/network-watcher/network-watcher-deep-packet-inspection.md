@@ -7,17 +7,16 @@ author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2a4debda712636e577639b84845dda6b9b4228a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152919"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84725050"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 網路監看員進行封包檢查
 
@@ -29,7 +28,7 @@ ms.locfileid: "77152919"
 
 本案例假設您已經在虛擬機器上執行封包擷取。 若要了解如何建立封包擷取，請造訪[使用入口網站管理封包擷取](network-watcher-packet-capture-manage-portal.md)，或使用 REST 則請造訪[使用 REST API 管理封包擷取](network-watcher-packet-capture-manage-rest.md)。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 在此案例中，您將會：
 
@@ -77,7 +76,7 @@ ms.locfileid: "77152919"
 
 ### <a name="step-1"></a>步驟 1
 
-在先前案例中使用相同的 capture，請按一下 [**統計資料]** > **通訊協定**階層
+在先前案例中使用相同的 capture，請按一下 [**統計資料]**  >  **通訊協定**階層
 
 ![通訊協定階層功能表][2]
 
@@ -93,7 +92,7 @@ ms.locfileid: "77152919"
 
 ### <a name="step-1"></a>步驟 1
 
-在先前的案例中使用相同的 capture，按一下**統計資料** > 的**IPv4 統計資料** > **目的地和埠**
+在先前的案例中使用相同的 capture，按一下**統計資料**的  >  **IPv4 統計資料**  >  **目的地和埠**
 
 ![封包擷取視窗][4]
 

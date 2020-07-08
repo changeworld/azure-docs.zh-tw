@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: fb53b0fe28f48f5f240e470aa5256ac1c277686e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848004"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957336"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 資料表儲存體來管理商業市集潛在客戶
 
@@ -26,11 +25,11 @@ ms.locfileid: "83848004"
 
     1. 在左側功能表列中，選取 [+ 建立資源]。 [新增] 窗格隨即在右側出現。
     1. 在 [新增] 窗格中，選取 [儲存體]。 [精選] 清單隨即在右側出現。
-    1. 選取 [儲存體帳戶] 以開始建立帳戶。 請遵循[建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) \(部分機器翻譯\) 中的指示。
+    1. 選取 [儲存體帳戶] 以開始建立帳戶。 請遵循[建立儲存體帳戶](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal) \(部分機器翻譯\) 中的指示。
 
         ![建立 Azure 儲存體帳戶的步驟](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
 
-        如需儲存體帳戶的詳細資訊，請參閱[快速入門教學課程](https://docs.microsoft.com/azure/storage/)。 如需儲存體定價的詳細資訊，請參閱[儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。
+        如需儲存體帳戶的詳細資訊，請參閱[快速入門教學課程](../../storage/index.yml)。 如需儲存體定價的詳細資訊，請參閱[儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。
 
 1. 等候儲存體帳戶佈建完成。 此程序通常需要幾分鐘的時間。 
 
@@ -107,7 +106,7 @@ ms.locfileid: "83848004"
 
    在您選取 [建立] 之後，[取得實體] 視窗隨即出現。 在這裡，請選取 [顯示進階選項]，然後為下列方塊提供資訊：
 
-   * **資料表**：選取您資料表的名稱 (從[建立資料表](#create-a-table-in-your-storage-account))。 下圖顯示針對此範例選取 "marketplaceleads" 資料表時的提示。
+   * **資料表**：選取您資料表的名稱 (從[建立資料表](#create-a-table-in-your-storage-account))。 下圖顯示 `marketplaceleads` 針對此範例選取 [資料表] 時的提示。
 
      ![[取得實體] 視窗](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 

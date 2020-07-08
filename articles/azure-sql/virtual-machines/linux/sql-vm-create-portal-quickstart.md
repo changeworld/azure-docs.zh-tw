@@ -3,7 +3,6 @@ title: 快速入門：在 Azure 中建立 Linux SQL Server VM
 description: 本教學課程會示範如何在 Azure 入口網站中建立 Linux SQL Server 2017 虛擬機器。
 services: virtual-machines-linux
 author: MashaMSFT
-manager: craigg
 ms.date: 10/22/2019
 tags: azure-service-management
 ms.topic: conceptual
@@ -11,14 +10,13 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ac7a836f339e86ce3705d64d04cad143f1043a81
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: HT
+ms.openlocfilehash: 41f39c7e60e79e034d4c855a77bfee0f6fa2094d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259519"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669506"
 ---
-# <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>在 Azure 入口網站中佈建 Linux SQL Server 虛擬機器
+# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>布建在 Azure 入口網站中執行 SQL Server 的 Linux 虛擬機器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -28,7 +26,7 @@ ms.locfileid: "84259519"
 在本快速入門教學課程中，您會使用 Azure 入口網站來建立已安裝 SQL Server 2017 的 Linux 虛擬機器。 您將瞭解下列內容： 
 
 
-* [從資源庫建立 Linux SQL VM](#create)
+* [從資源庫建立執行 SQL Server 的 Linux VM](#create)
 * [透過 SSH 連線到您新的 VM](#connect)
 * [變更 SA 密碼](#password)
 * [設定遠端連線](#remote)
@@ -125,7 +123,7 @@ ssh azureadmin@40.55.55.555
 
 如需有關連線至 Linux VM 的詳細資訊，請參閱[使用入口網站在 Azure 上建立 Linux VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal)。
 
-> [!Note]
+> [!NOTE]
 > 如果您看到有關未將伺服器主機金鑰快取在登錄中的 PuTTY 安全性警示，請從下列選項中做選擇。 如果您信任此主機，請選取 [是] 以將金鑰新增至 PuTTy 的快取並繼續連線。 如果您只想要繼續連線一次，而不想要將金鑰新增至快取，請選取 [否]。 如果您不信任此主機，請選取 [取消] 以放棄連線。
 
 ## <a name="change-the-sa-password"></a><a id="password"></a> 變更 SA 密碼

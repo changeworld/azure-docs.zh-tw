@@ -8,12 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 46eb1fe7543cbc65545eaca46e38f09466406701
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371574"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84417934"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>大量匯入和匯出 IoT 中樞裝置身分識別
 
@@ -27,8 +26,6 @@ ms.locfileid: "79371574"
 **RegistryManager** 類別包含使用**作業**架構的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 這些方法可讓您匯出、匯入和同步處理整個 IoT 中樞身分識別登錄。
 
 本主題討論如何使用**RegistryManager**類別和**作業**系統，在 IoT 中樞的身分識別登錄中執行裝置的大量匯入和匯出。 您也可以使用 Azure IoT 中樞裝置佈建服務，以無須人為介入的方式對一或多個 IoT 中樞進行 Just-In-Time 自動佈建。 若要深入了解，請參閱[佈建服務文件](/azure/iot-dps)。
-
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>什麼是作業？
 
@@ -97,7 +94,7 @@ while(true)
 
 ## <a name="export-devices"></a>匯出裝置
 
-使用**ExportDevicesAsync**方法，透過共用存取簽章（SAS）將整個 IoT 中樞身分識別登錄匯出至 Azure 儲存體的 blob 容器。 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權](../storage/common/storage-sas-overview.md)。
+使用**ExportDevicesAsync**方法，透過共用存取簽章（SAS）將整個 IoT 中樞身分識別登錄匯出至 Azure 儲存體的 blob 容器。 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章 (SAS) 授與 Azure 儲存體資源的有限存取權](../storage/common/storage-sas-overview.md)。
 
 這個方法可讓您在所控制的 Blob 容器中建立可靠的裝置資訊備份。
 
@@ -263,11 +260,11 @@ JobProperties importJob =
 
 在每個裝置的匯入序列化資料中使用選擇性的 **importMode** 屬性控制每個裝置的匯入程序。 **ImportMode** 屬性具有下列選項：
 
-| importMode | 描述 |
+| importMode | Description |
 | --- | --- |
 | **createOrUpdate** |如果裝置不存在指定的**識別碼**，則會進行新註冊。 <br/>如果裝置已存在，則會以所提供的輸入資料覆寫現有資訊，而不管 **ETag** 值為何。 <br> 使用者可以選擇性地指定對應項資料以及裝置資料。 對應項的 etag （若已指定）會與裝置的 etag 分開處理。 如果與現有對應項的 etag 不相符，就會在記錄檔中寫入錯誤。 |
-| **建立** |如果裝置不存在指定的**識別碼**，則會進行新註冊。 <br/>如果裝置已存在，則會在記錄檔中寫入錯誤。 <br> 使用者可以選擇性地指定對應項資料以及裝置資料。 對應項的 etag （若已指定）會與裝置的 etag 分開處理。 如果與現有對應項的 etag 不相符，就會在記錄檔中寫入錯誤。 |
-| **更新** |如果已存在具有指定**識別碼**的裝置，則會以所提供的輸入資料覆寫現有資訊，而不考慮**ETag**值。 <br/>如果裝置不存在，則會在記錄檔中寫入錯誤。 |
+| **create** |如果裝置不存在指定的**識別碼**，則會進行新註冊。 <br/>如果裝置已存在，則會在記錄檔中寫入錯誤。 <br> 使用者可以選擇性地指定對應項資料以及裝置資料。 對應項的 etag （若已指定）會與裝置的 etag 分開處理。 如果與現有對應項的 etag 不相符，就會在記錄檔中寫入錯誤。 |
+| **update** |如果已存在具有指定**識別碼**的裝置，則會以所提供的輸入資料覆寫現有資訊，而不考慮**ETag**值。 <br/>如果裝置不存在，則會在記錄檔中寫入錯誤。 |
 | **pdateIfMatchETagu** |如果已存在具有指定**識別碼**的裝置，只有當**ETag**相符時，才會以提供的輸入資料覆寫現有資訊。 <br/>如果裝置不存在，則會在記錄檔中寫入錯誤。 <br/>如果**ETag**不相符，就會在記錄檔中寫入錯誤。 |
 | **createOrUpdateIfMatchETag** |如果裝置不存在指定的**識別碼**，則會進行新註冊。 <br/>如果裝置已存在，則當 **ETag** 相符時，才會以所提供的輸入資料覆寫現有資訊。 <br/>如果**ETag**不相符，就會在記錄檔中寫入錯誤。 <br> 使用者可以選擇性地指定對應項資料以及裝置資料。 對應項的 etag （若已指定）會與裝置的 etag 分開處理。 如果與現有對應項的 etag 不相符，就會在記錄檔中寫入錯誤。 |
 | **delete** |如果已存在具有指定**識別碼**的裝置，則會刪除它，而不考慮**ETag**值。 <br/>如果裝置不存在，則會在記錄檔中寫入錯誤。 |
@@ -433,7 +430,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 若要深入瞭解如何管理 Azure IoT 中樞，請參閱下列文章：
 
-* [IoT 中樞度量](iot-hub-metrics.md)
+* [IoT 中樞計量](iot-hub-metrics.md)
 * [IoT 中樞記錄](iot-hub-monitor-resource-health.md)
 
 若要進一步探索 IoT 中樞的功能，請參閱︰

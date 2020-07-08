@@ -1,22 +1,14 @@
 ---
 title: 使用 Azure 服務匯流排的 .NET 多層應用程式 | Microsoft Docs
 description: 協助您在 Azure 中開發多層式應用程式，以使用服務匯流排佇列在各層之間進行通訊的 .NET 教學課程。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: c7a64e708d860fe9e5832ad3f1375f41f9b86724
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60402938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340311"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服務匯流排佇列的 .NET 多層應用程式
 
@@ -72,13 +64,13 @@ ms.locfileid: "60402938"
 1. 使用系統管理員權限啟動 Visual Studio：在 **Visual Studio** 程式圖示上按一下滑鼠右鍵，然後按一下 [以系統管理員身分執行]****。 這篇文章稍後討論的 Azure 計算模擬器需要 Visual Studio 以系統管理員權限啟動。
    
    在 Visual Studio 的 [檔案]**** 功能表，按一下 [新增]****，然後按一下 [專案]****。
-2. 從 [已安裝的範本]**** 的 [Visual C#]**** 下，按一下 [雲端]****，然後按一下 [Azure 雲端服務]****。 將專案命名為 **MultiTierApp**。 然後按一下 [ **確定**]。
+2. 從 [已安裝的範本]**** 的 [Visual C#]**** 下，按一下 [雲端]****，然後按一下 [Azure 雲端服務]****。 將專案命名為 **MultiTierApp**。 然後按一下 [確定] 。
    
    ![][9]
 3. 從 [角色]**** 窗格，按兩下 [ASP.NET Web 角色]****。
    
    ![][10]
-4. 將滑鼠移至 [Azure 雲端服務解決方案]**** 下的 [WebRole1]****，按一下鉛筆圖示，將 Web 角色重新命名為 **FrontendWebRole**。 然後按一下 [ **確定**]。 (請確定您輸入 "Frontend"，其中 e 為小寫，而不是 "FrontEnd"。)
+4. 將滑鼠移至 [Azure 雲端服務解決方案]**** 下的 [WebRole1]****，按一下鉛筆圖示，將 Web 角色重新命名為 **FrontendWebRole**。 然後按一下 [確定] 。 (請確定您輸入 "Frontend"，其中 e 為小寫，而不是 "FrontEnd"。)
    
    ![][11]
 5. 在 [新增 ASP.NET 專案]**** 對話方塊的 [選取範本]**** 清單中，按一下 [MVC]****。
@@ -94,7 +86,7 @@ ms.locfileid: "60402938"
    ![][13]
    
    請注意，現在已參考必要的用戶端組件，並已新增一些新的程式碼檔案。
-10. 在 [方案總管]**** 中，於 [模型]**** 上按一下滑鼠右鍵、按一下 [新增]****，再按一下 [類別]****。 在 [名稱]**** 方塊中，輸入名稱 **OnlineOrder.cs**。 然後按一下 **[加入]**。
+10. 在 [方案總管]**** 中，於 [模型]**** 上按一下滑鼠右鍵、按一下 [新增]****，再按一下 [類別]****。 在 [名稱]**** 方塊中，輸入名稱 **OnlineOrder.cs**。 然後按一下 [ **新增**]。
 
 ### <a name="write-the-code-for-your-web-role"></a>撰寫 Web 角色的程式碼
 在本節中，您將建立應用程式顯示的各個頁面。
@@ -316,7 +308,7 @@ ms.locfileid: "60402938"
 4. 在 [新增新的角色專案]**** 對話方塊中，按一下 [具有服務匯流排佇列的背景工作角色]****。
    
    ![][23]
-5. 在 [名稱]**** 方塊中，將專案命名為 **OrderProcessingRole**。 然後按一下 **[加入]**。
+5. 在 [名稱]**** 方塊中，將專案命名為 **OrderProcessingRole**。 然後按一下 [ **新增**]。
 6. 將您在＜建立服務匯流排命名空間＞一節的步驟 9 中取得的連接字串複製到剪貼簿。
 7. 在 [方案總管]**** 中，請以滑鼠右鍵按一下您在步驟 5 中所建立的 **OrderProcessingRole** (請確定您是在 [角色]**** 下而不是類別下的 **OrderProcessingRole** 按一下滑鼠右鍵)。 然後按一下 [屬性]****。
 8. 在 [屬性]**** 對話方塊的 [設定]**** 索引標籤中，按一下 **Microsoft.ServiceBus.ConnectionString** 的 [值]**** 方塊內部，然後貼上您在步驟 6 中複製的端點值。

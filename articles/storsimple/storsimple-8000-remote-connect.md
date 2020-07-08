@@ -3,16 +3,15 @@ title: 遠端連接至 StorSimple 裝置
 description: 說明如何設定您的裝置以進行遠端管理，以及如何透過 HTTP 或 HTTPS 連線到 Windows PowerShell for StorSimple。
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58d61df932da06e32bb4c8f21a3a296b185f02d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298995"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514575"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>遠端連線至 StorSimple 8000 系列裝置
 
@@ -185,11 +184,11 @@ ms.locfileid: "80298995"
 1. 在 .cer 檔案上按一下滑鼠右鍵，然後選取 [安裝憑證]****。 這會啟動 [憑證匯入精靈]。
    
     ![憑證匯入精靈 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
-2. [存放區位置]  請選取 [本機電腦]  ，然後按一下 [下一步]  。
-3. 選取 [將所有憑證放入以下的存放區]  ，然後按一下 [瀏覽]  。 導覽至遠端主機的根存放區，然後按一下 [ **下一步**]。
+2. [存放區位置] 請選取 [本機電腦]，然後按一下 [下一步]。
+3. 選取 [將所有憑證放入以下的存放區]，然後按一下 [瀏覽]。 導覽至遠端主機的根存放區，然後按一下 [ **下一步**]。
    
     ![憑證匯入精靈  2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. 按一下 [完成]  。 會出現訊息告訴您匯入成功。
+4. 按一下 [完成] 。 會出現訊息告訴您匯入成功。
    
     ![憑證匯入精靈  3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 

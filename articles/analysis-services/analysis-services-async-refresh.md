@@ -7,12 +7,11 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8381e391afa0f8866f511d3d85e02467c6d9ba5d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406277"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413377"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 進行非同步重新整理
 
@@ -30,7 +29,7 @@ Azure Analysis Services 的 REST API 可讓資料重新整理作業以非同步�
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-例如，在名`myserver`為的伺服器（位於「美國西部」 Azure 區域）上，考慮名為 AdventureWorks 的模型。 伺服器名稱是：
+例如，在名為 `myserver` 的伺服器（位於「美國西部」 Azure 區域）上，考慮名為 AdventureWorks 的模型。 伺服器名稱是：
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -99,8 +98,8 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 
 | 名稱             | 類型  | 描述  |預設  |
 |------------------|-------|--------------|---------|
-| `Type`           | 例舉  | 要執行的處理類型。 Type 對應於 TMSL 的 [refresh 命令](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl)類型：full、clearValues、calculate、dataOnly、automatic 和 defragment。 不支援 Add 類型。      |   automatic      |
-| `CommitMode`     | 例舉  | 決定物件要批次認可或只在完成時認可。 CommitMode 包括：default、transactional、partialBatch。  |  transactional       |
+| `Type`           | 列舉  | 要執行的處理類型。 Type 對應於 TMSL 的 [refresh 命令](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl)類型：full、clearValues、calculate、dataOnly、automatic 和 defragment。 不支援 Add 類型。      |   automatic      |
+| `CommitMode`     | 列舉  | 決定物件要批次認可或只在完成時認可。 CommitMode 包括：default、transactional、partialBatch。  |  transactional       |
 | `MaxParallelism` | Int   | 這個值決定了可以平行執行處理命令的執行緒數目上限。 此值與 MaxParallelism 屬性對應，後者可以在 TMSL 的 [sequence 命令](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl)中設定，或使用其他方法設定。       | 10        |
 | `RetryCount`     | Int   | 表示作業失敗之前重試的次數。      |     0    |
 | `Objects`        | Array | 要處理的物件陣列。 每個物件包含：「資料表」(處理整份資料表時)，或「資料表」和「分割區」(處理資料分割時)。 如未指定物件，會重新整理整個模型。 |   處理整個模型      |
@@ -112,7 +111,7 @@ CommitMode 等於 partialBatch。 當進行大型資料集的初始載入需要�
 
 ### <a name="status-values"></a>狀態值
 
-|狀態值  |描述  |
+|狀態值  |Description  |
 |---------|---------|
 |`notStarted`    |   操作尚未啟動。      |
 |`inProgress`     |   作業進行中。      |
@@ -121,9 +120,9 @@ CommitMode 等於 partialBatch。 當進行大型資料集的初始載入需要�
 |`failed`     |   作業失敗。      |
 |`succeeded`      |   作業成功。      |
 
-## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
+## <a name="get-refreshesrefreshid"></a>取得/refreshes/\<refreshId>
 
-若要檢查重新整理作業的狀態，請對重新整理識別碼使用 GET 動詞命令。 以下是回應主體的範例。 如果作業正在進行中， `inProgress`則會傳回狀態。
+若要檢查重新整理作業的狀態，請對重新整理識別碼使用 GET 動詞命令。 以下是回應主體的範例。 如果作業正在進行中， `inProgress` 則會傳回狀態。
 
 ```
 {
@@ -158,20 +157,20 @@ CommitMode 等於 partialBatch。 當進行大型資料集的初始載入需要�
 [
     {
         "refreshId": "1344a272-7893-4afa-a4b3-3fb87222fdac",
-        "startTime": "2017-12-09T01:58:04.76",
-        "endTime": "2017-12-09T01:58:12.607",
+        "startTime": "2017-12-07T02:06:57.1838734Z",
+        "endTime": "2017-12-07T02:07:00.4929675Z",
         "status": "succeeded"
     },
     {
         "refreshId": "474fc5a0-3d69-4c5d-adb4-8a846fa5580b",
-        "startTime": "2017-12-07T02:05:48.32",
-        "endTime": "2017-12-07T02:05:54.913",
+        "startTime": "2017-12-07T01:05:54.157324Z",
+        "endTime": "2017-12-07T01:05:57.353371Z",
         "status": "succeeded"
     }
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>DELETE /refreshes/\<refreshId>
+## <a name="delete-refreshesrefreshid"></a>刪除/refreshes/\<refreshId>
 
 若要取消進行中的重新整理作業，請對重新整理識別碼使用 DELETE 動詞。
 
@@ -218,11 +217,11 @@ CommitMode 等於 partialBatch。 當進行大型資料集的初始載入需要�
 如需關於如何在 Azure 中設定服務主體及指派必要權限的詳細資訊，請參閱[建立服務主體 - Azure 入口網站](../active-directory/develop/howto-create-service-principal-portal.md)和[將服務主體新增至伺服器管理員角色](analysis-services-addservprinc-admins.md)。 完成這些步驟後，請完成下列額外步驟：
 
 1.    在程式碼範例中，尋找 [**字串授權單位 = ...**]，將**common**取代為貴組織的租使用者識別碼。
-2.    註解/取消註解，以便使用 ClientCredential 類別來具現化認證物件。 請確定目前存取 \<App ID> 和 \<App Key> 值的方式很安全，或為服務主體使用憑證型驗證。
+2.    註解/取消註解，以便使用 ClientCredential 類別來具現化認證物件。 確保 \<App ID> 和 \<App Key> 值會以安全的方式存取，或針對服務主體使用以憑證為基礎的驗證。
 3.    執行範例。
 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [範例](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

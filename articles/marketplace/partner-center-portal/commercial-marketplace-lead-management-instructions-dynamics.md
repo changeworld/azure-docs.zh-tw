@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 65139e0842679f59733c34be838d4aad7f3c63e4
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 555002284b2665a357a28319a400710d66be4604
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847936"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957234"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>為 Dynamics 365 Customer Engagement 設定潛在客戶管理
 
@@ -60,7 +59,7 @@ ms.locfileid: "83847936"
 使用下列步驟建立服務帳戶，並指派權限。 您可使用 Azure Active Directory 或 Office 365。
 
 >[!NOTE]
->根據所選的驗證選項，跳至對應的指示。 請參閱 [Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory) 或 [Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365)。
+>根據所選的驗證選項，跳至對應的指示。 請參閱 [Azure Active Directory](#azure-active-directory) 或 [Office 365](#office-365)。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 

@@ -7,12 +7,11 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f4caa9160280b0f65f84bed36b5209d08d7f7c11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dd73c6a388cde55db5437442492d53768eb03866
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279425"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343144"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>關於 VPN 裝置和站對站 VPN 閘道連線的 IPsec/IKE 參數
 
@@ -35,7 +34,7 @@ ms.locfileid: "79279425"
 
 為了協助設定您的 VPN 裝置，請參閱對應到適當裝置系列的連結。 會以最佳方式來提供組態指示的連結。 如需 VPN 裝置的支援，請連絡裝置製造商。
 
-|**製造商**          |**裝置系列**     |**最低 OS 版本** |**原則式設定指示** |**路由式設定指示** |
+|**廠商**          |**裝置系列**     |**最低 OS 版本** |**原則式設定指示** |**路由式設定指示** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |不相容  |[設定指南](https://www.a10networks.com/wp-content/uploads/A10-DG-16161-EN.pdf)|
 | Allied Telesis     |AR 系列 VPN 路由器 |AR 系列 5.4.7+               | [設定指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router) |[設定指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
@@ -141,8 +140,8 @@ ms.locfileid: "79279425"
 | IKE 版本                   |IKEv1          |IKEv1 和 IKEv2                              |
 | 加密與雜湊演算法 |1. AES256，SHA256<br>2. AES256，SHA1<br>3. AES128，SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA 供應項目](#RouteBasedOffers) |
 | SA 存留期 (時間)            |3,600 秒  |27,000 秒                               |
-| SA 存留期 (位元組)           |102,400,000 KB | -                                           |
-| 完整轉寄密碼 (PFS) |否             |[RouteBased QM SA 供應項目](#RouteBasedOffers) |
+| SA 存留期 (位元組)           |102,400,000 KB |102,400,000 KB                               |
+| 完整轉寄密碼 (PFS) |No             |[RouteBased QM SA 供應項目](#RouteBasedOffers) |
 | 停用的對等偵測 (DPD)     |不支援  |支援                                    |
 
 
@@ -152,7 +151,7 @@ ms.locfileid: "79279425"
 
 #### <a name="azure-gateway-as-initiator"></a>Azure 閘道器為啟動者
 
-|-  |[加密]****|**驗證**|**PFS 群組**|
+|-  |**加密**|**驗證**|**PFS 群組**|
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |None         |
 | 2 |AES256        |SHA1              |None         |
@@ -163,7 +162,7 @@ ms.locfileid: "79279425"
 
 #### <a name="azure-gateway-as-responder"></a>Azure 閘道器為回應者
 
-|-  |[加密]****|**驗證**|**PFS 群組**|
+|-  |**加密**|**驗證**|**PFS 群組**|
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |None         |
 | 2 |AES256        |SHA1              |None         |

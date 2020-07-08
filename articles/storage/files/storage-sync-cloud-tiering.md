@@ -4,15 +4,14 @@ description: 了解 Azure 檔案同步的雲端階層處理功能
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e8a8502b40410df221886cde2fa5f3db15bf3eed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 23e98c40420a5f1ed9b048d5530eacfe5eedfb32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413972"
 ---
 # <a name="cloud-tiering-overview"></a>雲端階層處理概觀
 雲端階層處理是 Azure 檔案同步的一個選用功能，其中經常存取的檔案會快取到伺服器本機上，而其他的檔案會依原則設定分層處理至 Azure 檔案服務。 當檔案被分層之後，Azure 檔案同步檔案系統篩選器 (StorageSync.sys) 會將本機檔案取代為指標或重新分析點。 重新分析點代表的是針對 Azure 檔案服務中檔案的 URL。 階層式檔案在 NTFS 中具有「離線」屬性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 屬性集，因此協力廠商應用程式可以安全地識別階層式檔案。
@@ -31,11 +30,38 @@ ms.locfileid: "80549165"
 ### <a name="how-does-cloud-tiering-work"></a>雲端階層處理如何運作？
 Azure 檔案同步系統篩選器會在每個伺服器端點上建立您命名空間的「熱度圖」。 它會監視一段時間的存取 (讀取和寫入作業)，然後根據存取的頻率和近因，將熱度分數指派給每個檔案。 最近開啟過且經常被存取的檔案，將會被視為熱門，而很少被觸及與一段時間未被存取的檔案將被視為冷門。 當伺服器上的檔案磁碟區超過您設定的磁碟區可用空間閾值時，它會將最冷門的檔案分層處理至 Azure 檔案服務，直到符合您設定的可用空間百分比為止。
 
-在 Azure 檔案同步代理程式 4.0 版和更新版本中，您可以另外在每個伺服器端點上指定日期原則，以對指定天數內未曾存取或修改過的檔案進行階層處理。
+此外，您可以在每個伺服器端點上指定日期原則，以將在指定天數內未存取的任何檔案分層，而不論可用的本機儲存體容量為何。 如果您知道該伺服器端點中的檔案不需要在特定存留期以外的地方保留，這是很好的選擇，可以主動釋放本機磁碟空間。 這會為相同磁片區上的其他端點釋放寶貴的本機磁片容量，以快取更多檔案。
+
+雲端階層處理熱度圖基本上是一份已排序的清單，其中包含已同步處理且位於已啟用雲端階層處理的位置。 若要判斷該熱度圖中個別檔案的相對位置，系統會使用下列其中一個時間戳記的最大值，順序如下：最大值（上次存取時間、上次修改時間、建立時間）。 通常會追蹤並提供上次存取時間。 不過，建立新的伺服器端點時，若已啟用雲端階層處理，一開始就不會有足夠的時間來觀察檔案存取。 在沒有上次存取時間時，會使用上次修改時間來評估熱度圖中的相對位置。 相同的回復適用于日期原則。 如果沒有上次存取時間，日期原則將會在上次修改時間採取行動。 如果無法使用，則會切換回檔案的建立時間。 經過一段時間後，系統會觀察到更多的檔案存取要求，而 pivot 主要是使用自我追蹤的上次存取時間。
+
+雲端階層處理不依賴 NTFS 功能來追蹤上次存取時間。 此 NTFS 功能預設為關閉，而且由於效能考慮，我們不建議您手動啟用此功能。 雲端階層處理會分別且非常有效率地追蹤上次存取時間。
 
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>檔案層級的檔案大小下限為何？
-針對代理程式版本6.x 和更新版本，檔案層級的檔案大小下限是根據檔案系統叢集大小（這是檔案系統叢集大小的兩倍）。 例如，如果 NTFS 檔案系統叢集大小為 4 KB，則針對檔案層產生的最小檔案大小為 8 KB。 若是代理程式版本8.x 和較舊版本，檔案對層的最小檔案大小為64KB。
+
+針對代理程式版本9和更新版本，檔案層級的檔案大小下限是根據檔案系統叢集大小。 下表根據磁片區叢集大小，說明可以階層式最小檔案大小：
+
+|磁片區叢集大小（位元組） |此大小或更大的檔案可以分層  |
+|----------------------------|---------|
+|4 KB （4096）                 | 8 KB    |
+|8 KB （8192）                 | 16 KB   |
+|16 KB （16384）               | 32 KB   |
+|32 KB （32768）和更大    | 64 KB   |
+
+Windows 所使用的所有檔案系統都會根據叢集大小（也稱為配置單位大小）來組織您的硬碟。 [叢集大小] 代表可用來存放檔案的最小磁碟空間量。 當檔案大小不是叢集大小的偶數倍時，必須使用額外的空間來存放盤案（直到叢集大小的下一個倍數）。
+
+Windows Server 2012 R2 和更新版本的 NTFS 磁片區支援 Azure 檔案同步。 下表描述當您建立新的 NTFS 磁片區時的預設叢集大小。 
+
+|磁碟區大小    |Windows Server 2012R2 和更新版本 |
+|---------------|---------------|
+|7 MB – 16 TB   | 4 KB          |
+|16TB – 32 TB   | 8 KB          |
+|32 TB – 64 TB   | 16 KB         |
+|64TB – 128 TB  | 32 KB         |
+|128TB – 256 TB | 64 KB         |
+|> 256 TB       | 不支援 |
+
+建立磁片區時，您可以使用不同的叢集（配置單位）大小手動格式化磁片區。 如果您的磁片區源自舊版的 Windows，則預設叢集大小也可能不同。 [本文提供預設叢集大小的更多詳細資料。](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat)
 
 <a id="afs-volume-free-space"></a>
 ### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>磁碟區可用空間階層處理原則如何運作？
@@ -53,7 +79,7 @@ Azure 檔案同步系統篩選器會在每個伺服器端點上建立您命名�
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>日期階層處理原則如何與磁碟區可用空間階層處理原則搭配運作？ 
 在伺服器端點上啟用雲端階層處理時，您會設定磁碟區可用空間原則。 此原則一律優先於任何其他原則，包括日期原則。 （選擇性）您可以針對該磁片區上的每個伺服器端點啟用日期原則。 此原則會管理在此原則描述的天數內，只有存取的檔案（也就是讀取或寫入）會保留在本機。 未在指定天數記憶體取的檔案將會分層。 
 
-雲端階層處理會使用上次存取時間來判斷哪些檔案應該分層。 雲端階層處理篩選器驅動程式（microsoft.storagesync）會追蹤上次存取時間，並將資訊記錄在雲端階層處理熱度店。 您可以使用本機 PowerShell Cmdlet 來查看熱度存放區。
+雲端階層處理會使用上次存取時間來判斷哪些檔案應該分層。 雲端階層處理篩選器驅動程式（storagesync.sys）會追蹤上次存取時間，並將資訊記錄在雲端階層處理熱度店。 您可以使用本機 PowerShell Cmdlet 來查看熱度存放區。
 
 ```powershell
 Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
@@ -78,7 +104,11 @@ Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
 
 <a id="how-long-until-my-files-tier"></a>
 ### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>我已加入新的伺服器端點。 我在此伺服器上的檔案會於存在多久後，才進行階層處理？
-在 Azure 檔案同步代理程式的4.0 版和更新版本中，一旦您的檔案上傳至 Azure 檔案共用，就會在下一次階層處理會話執行時，根據您的原則進行階層處理，這會在一小時後進行分層。 在舊版的代理程式上，最久可能需要 24 小時才會進行階層處理。
+
+每個 set 原則是否需要分層檔案一小時就會評估一次。 建立新的伺服器端點時，您可能會遇到兩種情況：
+
+1. 當您新增新的伺服器端點時，通常會有檔案存在於該伺服器位置。 您必須先上傳它們，才能開始進行雲端階層處理。 磁片區可用空間原則將不會開始其工作，直到所有檔案的初始上傳完成為止。 不過，一旦上傳檔案，選擇性的日期原則就會開始處理個別檔案。 這裡也適用一小時的間隔。 
+2. 當您新增新的伺服器端點時，您可以使用其中的資料，將空的伺服器位置連線至 Azure 檔案共用。 這是針對第二部伺服器，還是在嚴重損壞修復的情況下。 如果您選擇在您的伺服器初始下載期間下載命名空間並重新叫用內容，則在命名空間關閉後，檔案將會根據上次修改的時間戳記進行回收。 在磁片區可用空間原則和選擇性的日期原則中，只會將多少個檔案重新叫用大小。
 
 <a id="is-my-file-tiered"></a>
 ### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>如何判斷檔案是否已分層？
@@ -112,7 +142,6 @@ Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
         > `fsutil reparsepoint` 公用程式命令也能刪除重新分析點。 除非 Azure 檔案同步工程小組要求您，否則請勿執行此命令。 執行此命令可能導致資料遺失。 
 
 <a id="afs-recall-file"></a>
-
 ### <a name="a-file-i-want-to-use-has-been-tiered-how-can-i-recall-the-file-to-disk-to-use-it-locally"></a>我想要使用的檔案已分層。 如何將檔案回收到磁碟，以便在本機使用？
 將檔案回收到磁碟的最簡單方式就是開啟該檔案。 Azure 檔案同步的檔案系統篩選器 (StorageSync.sys) 會順暢地從 Azure 檔案共用下載檔案，您不必執行任何工作。 對於可以部分讀取的檔案類型 (例如，多媒體或 .zip 檔案)，開啟檔案並不會下載整個檔案。
 
@@ -123,20 +152,33 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 選用參數：
-* `-Order CloudTieringPolicy`會先重新叫用最近修改過的檔案。  
+* `-Order CloudTieringPolicy`會先重新叫用最近修改或存取的檔案，並由目前的階層處理原則所允許。 
+    * 如果已設定磁片區可用空間原則，則會重新叫用檔案，直到達到「磁片區可用空間」原則設定為止。 例如，如果「磁片區可用」原則設定為20%，則一旦磁片區可用空間達到20%，重新叫用就會停止。  
+    * 如果已設定磁片區可用空間和日期原則，則會重新叫用檔案，直到達到磁片區可用空間或日期原則設定為止。 例如，如果 [磁片區可用] 原則設定為 [20%]，而 [日期] 原則為7天，則在磁片區可用空間達到20% 或在7天記憶體取或修改的所有檔案皆為 [本機] 時，將會停止召回。
 * `-ThreadCount`決定可平行重新叫用的檔案數目。
 * `-PerFileRetryCount`決定嘗試重新叫用目前已封鎖之檔案的頻率。
 * `-PerFileRetryDelaySeconds`決定重試重新叫用嘗試之間的時間（以秒為單位），且應一律與先前的參數搭配使用。
 
+範例：
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -ThreadCount 8 -Order CloudTieringPolicy -PerFileRetryCount 3 -PerFileRetryDelaySeconds 10
+``` 
+
 > [!Note]  
-> 如果裝載伺服器的本機磁碟區沒有足以重新叫用所有已分層資料的可用空間，`Invoke-StorageSyncFileRecall` Cmdlet 將會失敗。  
+> - 將新的伺服器端點加入至現有的同步處理群組時，也可以使用 StorageSyncFileRecall 指令程式來改善檔案下載效能。  
+>- 如果裝載伺服器的本機磁碟區沒有足以重新叫用所有已分層資料的可用空間，`Invoke-StorageSyncFileRecall` Cmdlet 將會失敗。  
 
 <a id="sizeondisk-versus-size"></a>
-### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>使用 Azure 檔案同步之後，為什麼檔案的「磁碟大小」** 屬性不符合「大小」** 屬性？ 
+### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>使用 Azure 檔案同步之後，為什麼檔案的「*磁片大小*」屬性不符合「*大小*」屬性？ 
 Windows 檔案總管會顯示兩個屬性來代表檔案的大小：**大小**和**磁碟大小**。 這些屬性的意義稍有不同。 **大小**代表檔案的完整大小。 **磁碟大小**代表儲存在磁碟上的檔案資料流大小。 這些屬性的值可能因各種原因而有所不同，例如壓縮、使用重復資料刪除，或使用 Azure 檔案同步進行雲端階層處理。如果檔案分層至 Azure 檔案共用，則磁片上的大小為零，因為檔案資料流程是儲存在您的 Azure 檔案共用中，而不是存放在磁片上。 檔案也可能部分分層 (或部分回收)。 在部分分層的檔案中，部分的檔案是在磁碟上。 當應用程式 (例如，多媒體播放程式或壓縮公用程式) 讀取部分檔案時，可能會發生這種情形。 
 
 <a id="afs-force-tiering"></a>
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>如何強制讓檔案或目錄分層？
+
+> [!NOTE]
+> 當您選取要階層式目錄時，只有目前在目錄中的檔案會進行分層。 在該時間之後建立的任何檔案都不會自動分層。
+
 啟用雲端分層功能時，雲端分層會自動根據上次存取和修改時間來將檔案分層，以達到雲端端點上指定的磁碟區可用空間百分比。 不過，有時候您可能會想要以手動方式強制將檔案分層。 如果您要儲存長時間不打算再次使用的大型檔案，並且想要讓磁碟區上的可用空間現在可供其他檔案和資料夾使用，便適合使用這種方法。 您可以使用下列 PowerShell 命令來強制分層：
 
 ```powershell
@@ -149,6 +191,15 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 若為階層式檔案，縮圖和預覽將不會顯示在您的伺服器端點上。 這是預期的行為，因為 Windows 中的縮圖快取功能會刻意略過讀取具有離線屬性的檔案。 啟用雲端階層處理時，透過階層式檔案讀取會導致下載（重新叫用）。
 
 這不是 Azure 檔案同步特有的行為，Windows Explorer 會針對任何已設定離線屬性的檔案顯示「灰階 X」。 透過 SMB 存取檔案時，您會看到 X 圖示。 如需此行為的詳細說明，請參閱[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+
+<a id="afs-tiering-disabled"></a>
+### <a name="i-have-cloud-tiering-disabled-why-are-there-tiered-files-in-the-server-endpoint-location"></a>我已停用雲端階層處理，為什麼伺服器端點位置中有階層式檔案？
+
+有兩個原因會導致階層式檔案存在於伺服器端點位置：
+
+- 將新的伺服器端點加入至現有的同步處理群組時，中繼資料會先同步處理到伺服器，然後檔案就會在背景下載到伺服器。 檔案會顯示為分層，直到它們下載到本機為止。 若要改善將新的伺服器加入至同步處理群組時的檔案下載效能，請使用[StorageSyncFileRecall](storage-sync-cloud-tiering.md#afs-recall-file) Cmdlet。
+
+- 如果已在伺服器端點上啟用雲端階層處理，然後停用，檔案將會保持分層，直到存取為止。
 
 
 ## <a name="next-steps"></a>後續步驟

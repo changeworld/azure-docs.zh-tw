@@ -6,12 +6,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: b7b3556896f2d8bb8fea7ffc4543356e248df60d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 69df5a65df99a7497099e71e9f41701458370c87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84423916"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>在與 Azure Cache for Redis 搭配使用時移除 TLS 1.0 和 1.1
 
@@ -31,16 +30,18 @@ ms.locfileid: "83848816"
 
 這些變更的生效日期如下：
 
-| Cloud                | 第 1 階段開始日期 | 第 2 階段開始日期      |
-|----------------------|--------------------|-------------------------|
-| Azure (全域)       |  2020 年 1 月 13 日  | 2020 年 5 月 11 日            |
-| Azure Government     |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
-| Azure Germany        |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
-| Azure China 21Vianet |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
+| Cloud                | 第 1 階段開始日期 | 第 2 階段開始日期         |
+|----------------------|--------------------|----------------------------|
+| Azure (全域)       |  2020 年 1 月 13 日  | 因 COVID 19 而延後  |
+| Azure Government     |  2020 年 3 月 13 日    | 因 COVID 19 而延後  |
+| Azure Germany        |  2020 年 3 月 13 日    | 因 COVID 19 而延後  |
+| Azure China 21Vianet |  2020 年 3 月 13 日    | 因 COVID 19 而延後  |
+
+注意：尚未判斷第2階段的新日期
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>檢查您的應用程式是否已符合規範
 
-找出您應用程式是否將與 TLS 1.2 搭配使用的最簡單方式，就是在其使用的測試或暫存快取上，將**最低 TLS 版本**值設定為 TLS 1.2。 **最低 TLS 版本**設定位於 Azure 入口網站中快取執行個體的 [[進階設定](cache-configure.md#advanced-settings)] 中。 如果應用程式在此變更之後仍繼續如預期般運作，則其可能符合規範。 您可能必須特別設定一些您應用程式所使用的 Redis 用戶端程式庫來啟用 TLS 1.2，讓其可透過該安全性通訊協定連線到 Azure Cache for Redis。
+找出您的應用程式是否能與 TLS 1.2 搭配運作的最簡單方式，就是將測試或暫存快取上的 [**最小 tls 版本**] 值設定為 [tls 1.2]，然後執行測試。 **最低 TLS 版本**設定位於 Azure 入口網站中快取執行個體的 [[進階設定](cache-configure.md#advanced-settings)] 中。  如果應用程式在此變更之後仍繼續如預期般運作，則其可能符合規範。 您可能需要設定應用程式用來啟用 TLS 1.2 的 Redis 用戶端程式庫，才能連線到 Azure Cache for Redis。
 
 ## <a name="configure-your-application-to-use-tls-12"></a>設定應用程式以使用 TLS 1.2
 
@@ -57,9 +58,9 @@ Redis .NET 用戶端預設會在 .NET Framework 4.5.2 或更早版本上使用�
 
 Redis .NET Core 用戶端會預設為 OS 預設的 TLS 版本，其明顯取決於 OS 本身。 
 
-根據 OS 的發行時間，以及是否有任何其他修補程式變更了預設的 TLS 版本，OS TLS 版本可能相當多樣。 儘管沒有關於這方面的完整資訊，但對於 Windows OS，您可以在[這裡](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) \(部分機器翻譯\) 找到詳細資訊。 
+根據作業系統版本和任何已套用的修補程式而定，有效的預設 TLS 版本可能會有所不同。 雖然有一個資訊來源，但[以下](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)是適用于 Windows 的文章。 
 
-不過，如果您使用舊版 OS，或只想進行確認，則建議您透過用戶端手動設定慣用的 TLS 版本。
+不過，如果您使用舊的 OS，或只是想要確定，建議您透過用戶端手動設定慣用的 TLS 版本。
 
 
 ### <a name="java"></a>Java

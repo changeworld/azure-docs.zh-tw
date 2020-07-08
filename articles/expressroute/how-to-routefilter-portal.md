@@ -4,16 +4,15 @@ description: 本文說明如何使用 Azure 入口網站針對 Microsoft 對等�
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: f2be9b4e7152c61885b1a41e94ebd328059d437b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 54674be0010bd062cfe6263db4167a24805a9e5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618555"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727121"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>針對 Microsoft 對等互連設定路由篩選：Azure 入口網站
 > [!div class="op_single_selector"]
@@ -86,7 +85,7 @@ Office 365 服務（例如 Exchange Online、SharePoint Online 和商務用 Skyp
 路由篩選只能有一個規則，且規則的類型必須是 'Allow'。 此規則可以具有與其相關聯的 BGP 社群值清單。
 
 ### <a name="1-create-a-route-filter"></a>1. 建立路由篩選
-您可以選取建立新資源的選項來建立路由篩選。 按一下 [**建立資源** > ] [**網路** > ] [**RouteFilter**]，如下圖所示：
+您可以選取建立新資源的選項來建立路由篩選。 按一下 [**建立資源**] [網路] [  >  **Networking**  >  **RouteFilter**]，如下圖所示：
 
 ![建立路由篩選](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 

@@ -1,19 +1,18 @@
 ---
-title: SSL 連線能力-適用於 MariaDB 的 Azure 資料庫
+title: SSL/TLS 連線能力-適用於 MariaDB 的 Azure 資料庫
 description: 用來設定適用於 MariaDB 的 Azure 資料庫與相關聯應用程式以適當使用 SSL 連線的資訊
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 36532575645d135a7abe7239798b6f2abc4246f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/02/2020
+ms.openlocfilehash: 4111b0b01690097535412205b60619172e2c100a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79477063"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84416650"
 ---
-# <a name="ssl-connectivity-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的 SSL 連線能力
+# <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的 SSL/TLS 連線
 適用於 MariaDB 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將資料庫伺服器連接至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。
 
 ## <a name="default-settings"></a>預設設定
@@ -25,6 +24,32 @@ Azure 入口網站中會顯示多種程式設計語言的連接字串。 這些�
 
 若要了解如何在開發應用程式時啟用或停用 SSL 連接，請參閱[如何設定 SSL](howto-configure-ssl.md)。
 
+## <a name="tls-enforcement-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的 TLS 強制
+
+適用於 MariaDB 的 Azure 資料庫支援使用傳輸層安全性（TLS）連接到您的資料庫伺服器之用戶端的加密。 TLS 是一種業界標準通訊協定，可確保您的資料庫伺服器和用戶端應用程式之間的安全網路連線，讓您遵守合規性需求。
+
+### <a name="tls-settings"></a>TLS 設定
+
+適用於 MariaDB 的 Azure 資料庫提供強制執行用戶端連線 TLS 版本的功能。 若要強制執行 TLS 版本，請使用**最小的 tls 版本**選項設定。 此選項設定允許下列值：
+
+|  最小 TLS 設定             | 支援的用戶端 TLS 版本                |
+|:---------------------------------|-------------------------------------:|
+| TLSEnforcementDisabled （預設值） | 不需要 TLS                      |
+| TLS1_0                           | TLS 1.0、TLS 1.1、TLS 1.2 和更高版本         |
+| TLS1_1                           | TLS 1.1、TLS 1.2 及更高版本              |
+| TLS1_2                           | TLS 1.2 版和更新版本                  |
+
+
+例如，將 [最小 TLS 設定版本] 的值設定為 [TLS 1.0]，表示您的伺服器將允許使用 TLS 1.0、1.1 和 1.2 + 的用戶端進行連接。 或者，將此值設定為1.2，表示您只允許使用 TLS 1.2 + 的用戶端連線，且 TLS 1.0 和 TLS 1.1 的所有連線都會遭到拒絕。
+
+> [!Note] 
+> 適用於 MariaDB 的 Azure 資料庫預設為停用所有新伺服器的 TLS。 
+>
+> 適用於 MariaDB 的 Azure 資料庫目前支援的 TLS 版本為 TLS 1.0、1.1 和1.2。 一旦強制執行至特定的最低 TLS 版本，您就無法將它變更為 [停用]。
+
+若要瞭解如何設定適用於 MariaDB 的 Azure 資料庫的 TLS 設定，請參閱 how [to CONFIGURE tls 設定](howto-tls-configurations.md)。
+
 ## <a name="next-steps"></a>後續步驟
 - 深入了解[伺服器防火牆規則](concepts-firewall-rules.md)
-- 了解如何[設定 SSL](howto-configure-ssl.md)。
+- 瞭解如何[設定 SSL](howto-configure-ssl.md)
+- 瞭解如何[設定 TLS](howto-tls-configurations.md)

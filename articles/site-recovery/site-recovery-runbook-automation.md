@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 123ef7de338bfe872948db60c68c0c5743f5cda1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257481"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84345133"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>將 Azure 自動化 Runbook 新增至復原方案
 
@@ -43,7 +42,7 @@ ms.locfileid: "79257481"
 
 當腳本執行時，它會將復原方案內容插入至 runbook。 內容包含資料表中摘要說明的變數。
 
-| **變數名稱** | **說明** |
+| **變數名稱** | **描述** |
 | --- | --- |
 | RecoveryPlanName |復原方案名稱。 用在以名稱為基礎的動作中。 |
 | FailoverType |指定是測試或生產容錯移轉。 
@@ -56,6 +55,9 @@ ms.locfileid: "79257481"
 | CloudServiceName |在其下建立 VM 的 Azure 雲端服務名稱。 |
 | RoleName |Azure VM 的名稱。 |
 | RecoveryPointId|VM 復原的時間戳記。 |
+
+>[!Note]
+>如果發生容錯移轉時，變數 ' FailoverDirection ' 的值將會是 ' PrimaryToSecondary '，而如果是容錯回復，則為 ' SecondaryToPrimary '。
 
 下列範例顯示內容變數：
 
@@ -117,7 +119,7 @@ $vmMap = $RecoveryPlanContext.VmMap
 
     ![按一下 [自訂] 按鈕](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. 按一下 [**群組1：開始** > **新增 post 動作**] 旁的省略號（...）。
+2. 按一下 [**群組1：開始**  >  **新增 post 動作**] 旁的省略號（...）。
 3. 在 [**插入動作**] 中，確認已選取 [**腳本**]，然後指定腳本的名稱（**Hello World**）。
 4. 指定自動化帳戶，然後選取 runbook。 若要儲存指令碼，請按一下 [確定]****。 指令碼會新增至 [群組 1: 後續步驟]****。
 

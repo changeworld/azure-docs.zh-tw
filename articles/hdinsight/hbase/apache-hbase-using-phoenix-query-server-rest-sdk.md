@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fa94b7461907a2337ba448a91d67fe93c5ab2f8f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75612252"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957557"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
@@ -27,7 +26,9 @@ ms.locfileid: "75612252"
 
 適用於 Apache Phoenix Query Server 的 Microsoft .NET 驅動程式是以 NuGet 套件的形式提供使用，您可以使用以下命令，從 Visual Studio **NuGet 套件管理員主控台**安裝此套件：
 
-    Install-Package Microsoft.Phoenix.Client
+```console
+Install-Package Microsoft.Phoenix.Client
+```
 
 ## <a name="instantiate-new-phoenixclient-object"></a>將新的 PhoenixClient 物件具現化
 
@@ -71,10 +72,10 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 以下是一些相關的屬性：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | -- | -- |
 | AutoCommit | 布林值，用來表示是否為 Phoenix 交易啟用 `autoCommit`。 |
-| ReadOnly | 布林值，用來表示連線是否為唯讀連線。 |
+| 唯讀 | 布林值，用來表示連線是否為唯讀連線。 |
 | TransactionIsolation | 整數，用來表示依據 JDBC 規格的交易隔離層級 - 請參閱下表。|
 | 目錄 | 擷取連線屬性時所要使用的目錄名稱。 |
 | 結構描述 | 擷取連線屬性時所要使用的結構描述名稱。 |
@@ -82,7 +83,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 以下是 `TransactionIsolation` 值：
 
-| 隔離值 | 描述 |
+| 隔離值 | 說明 |
 | -- | -- |
 | 0 | 不支援交易。 |
 | 1 | 允許進行中途讀取、不可重複的讀取，以及虛設項目讀取。 |
@@ -94,7 +95,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 HBase 與任何其他 RDBMS 一樣，會將資料儲存在資料表中。 Phoenix 使用標準 SQL 查詢來建立新資料表，同時會定義主索引鍵和資料行類型。
 
-這個範例和所有後續的範例，會使用`PhoenixClient`具現[化新的 PhoenixClient 物件](#instantiate-new-phoenixclient-object)時所定義的具現化物件。
+這個範例和所有後續的範例，會使用具現 `PhoenixClient` [化新的 PhoenixClient 物件](#instantiate-new-phoenixclient-object)時所定義的具現化物件。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -170,7 +171,7 @@ finally
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-資料表的`StateProvince`資料行值將用於稍後的選取作業。
+資料表的資料 `StateProvince` 行值將用於稍後的選取作業。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,7 +278,7 @@ finally
 }
 ```
 
-執行 insert 陳述式的結構與建立新資料表類似。 在`try`區塊的結尾，會明確認可交易。 此範例會重複執行插入交易 300 次。 以下範例示範一個更有效率的批次插入程序。
+執行 insert 陳述式的結構與建立新資料表類似。 在區塊的結尾 `try` ，會明確認可交易。 此範例會重複執行插入交易 300 次。 以下範例示範一個更有效率的批次插入程序。
 
 ## <a name="batch-insert-data"></a>批次插入資料
 
@@ -494,7 +495,7 @@ finally
 
 `select` 陳述式的輸出應該為以下結果：
 
-```
+```output
 id0 first0
 id1 first1
 id10 first10

@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562b551bc8a46a45135bf6a9a8e328b4b0e74f98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 182f51a150c2ef944b0104b73c63028e915c1a4a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048255"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728328"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>為 Office 365 群組設定到期原則
 
@@ -62,10 +61,10 @@ ms.locfileid: "80048255"
 
 以下是可以針對 Azure AD 中的 Office 365 群組設定及使用到期日的角色。
 
-[角色] | 權限
+角色 | 權限
 -------- | --------
 全域管理員、群組系統管理員或使用者系統管理員 | 可以建立、讀取、更新或刪除 Office 365 群組到期日原則設定<br>可以更新任何 Office 365 群組
-User | 可以更新它們所擁有的 Office 365 群組<br>可以還原它們所擁有的 Office 365 群組<br>可以讀取到期原則設定
+使用者 | 可以更新它們所擁有的 Office 365 群組<br>可以還原它們所擁有的 Office 365 群組<br>可以讀取到期原則設定
 
 如需有關將已刪除群組還原之權限的詳細資訊，請參閱[在 Azure Active Directory 中還原已刪除的 Office 365 群組](groups-restore-deleted.md)。
 
@@ -134,7 +133,7 @@ User | 可以更新它們所擁有的 Office 365 群組<br>可以還原它們所
    Connect-AzureAD
    ```
 
-1. 設定到期設定使用 Remove-azureadmsgrouplifecyclepolicy 指令程式，將 Azure AD 組織中所有 Office 365 群組的存留期設為365天。 不具擁有者之 Office 365 群組的續約通知會emailaddress@contoso.com傳送給 ' '
+1. 設定到期設定使用 Remove-azureadmsgrouplifecyclepolicy 指令程式，將 Azure AD 組織中所有 Office 365 群組的存留期設為365天。 不具擁有者之 Office 365 群組的續約通知會傳送給 ' emailaddress@contoso.com '
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
@@ -144,7 +143,7 @@ User | 可以更新它們所擁有的 Office 365 群組<br>可以還原它們所
 
    - 原則識別碼
    - Azure AD 組織中所有 Office 365 群組的存留期皆設定為365天
-   - 不具擁有者之 Office 365 群組的續約通知會emailaddress@contoso.com傳送給 ' '。
+   - 不具擁有者之 Office 365 群組的續約通知會傳送給 ' ' emailaddress@contoso.com 。
   
    ```powershell
    Get-AzureADMSGroupLifecyclePolicy

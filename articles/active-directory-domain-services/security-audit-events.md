@@ -9,14 +9,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ce910b553e14d09eefa35efc5f2973337dfa1309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c86f98fb20af2cd5ac969867cabfdc5dcb62db54
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654667"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039886"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>啟用 Azure Active Directory Domain Services 的安全性審核
 
@@ -25,11 +24,11 @@ Azure Active Directory Domain Services （Azure AD DS）安全性審核可讓 Az
 您可以使用 Azure 事件中樞將事件封存至 Azure 儲存體，並將事件串流至安全性資訊和事件管理（SIEM）軟體（或對等專案），或執行您自己的分析，並從 Azure 入口網站使用 Azure Log Analytics 工作區。
 
 > [!IMPORTANT]
-> Azure AD DS 安全性審核僅適用于 Azure Resource Manager 為基礎的實例。 如需有關如何遷移的詳細資訊，請參閱[從傳統虛擬網路模型將 AZURE AD DS 遷移至 Resource Manager][migrate-azure-adds]。
+> Azure AD DS 安全性審核僅適用于 Azure Resource Manager 為基礎的受控網域。 如需有關如何遷移的詳細資訊，請參閱[從傳統虛擬網路模型將 AZURE AD DS 遷移至 Resource Manager][migrate-azure-adds]。
 
 ## <a name="security-audit-destinations"></a>安全性審查目的地
 
-您可以使用 Azure 儲存體、Azure 事件中樞或 Azure Log Analytics 工作區，做為 Azure AD DS 安全性審核的目標資源。 這些目的地可以合併。 例如，您可以使用 Azure 儲存體來封存安全性 audit 事件，但 Azure Log Analytics 工作區可讓您在短期內分析和報告資訊。
+您可以使用 Azure 儲存體、Azure 事件中樞或 Azure Log Analytics 工作區，做為 Azure AD DS 安全性審核的目標資源。 這些目的地可以合併。 例如，您可以使用 Azure 儲存體來封存安全性 audit 事件，但 Azure Log Analytics 工作區可以用來分析和報告短期資訊。
 
 下表概述每個目的地資源類型的案例。
 
@@ -50,7 +49,7 @@ Azure Active Directory Domain Services （Azure AD DS）安全性審核可讓 Az
 > Azure AD DS 安全性審核不會追溯。 您無法捕獲或重新執行過去的事件。 Azure AD DS 只能傳送在啟用安全性審核之後發生的事件。
 
 1. 在 https://portal.azure.com 登入 Azure 入口網站。
-1. 在 Azure 入口網站頂端，搜尋並選取 [ **Azure AD Domain Services**]。 選擇您的受控網域，例如 aaddscontoso.com  。
+1. 在 Azure 入口網站頂端，搜尋並選取 [ **Azure AD Domain Services**]。 選擇您的受控網域，例如 aaddscontoso.com**。
 1. 在 [Azure AD DS] 視窗中，選取左側的 [**診斷設定**]。
 1. 預設不會設定診斷。 若要開始使用，請選取 [**新增診斷設定**]。
 
@@ -94,13 +93,13 @@ Azure Active Directory Domain Services （Azure AD DS）安全性審核可讓 Az
 
 1. 建立安全性 audit 事件的目標資源。
 
-    * **Azure 儲存體** - [使用 Azure PowerShell 建立儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-powershell)
-    * **Azure 事件中樞** - 會[使用 Azure PowerShell 來建立事件中樞](../event-hubs/event-hubs-quickstart-powershell.md)。 您可能也需要使用[AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) Cmdlet 來建立授權規則，以將 Azure AD DS 許可權授與事件中樞*命名空間*。 授權規則必須包含「**管理**」、「**接聽**」和「**傳送**」許可權。
+    * **Azure 儲存體**  - [使用 Azure PowerShell 建立儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-powershell)
+    * **Azure 事件中樞**  - [使用 Azure PowerShell 建立事件中樞](../event-hubs/event-hubs-quickstart-powershell.md)。 您可能也需要使用[AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) Cmdlet 來建立授權規則，以將 Azure AD DS 許可權授與事件中樞*命名空間*。 授權規則必須包含「**管理**」、「**接聽**」和「**傳送**」許可權。
 
         > [!IMPORTANT]
         > 請確定您已在事件中樞命名空間上設定授權規則，而不是事件中樞本身。
 
-    * **Azure 記錄分析工作區** - 會[建立具有 Azure PowerShell 的 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace-posh.md)。
+    * **Azure 記錄分析工作區**  - [建立具有 Azure PowerShell 的 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace-posh.md)。
 
 1. 使用[get-azresource](/powershell/module/Az.Resources/Get-AzResource) Cmdlet，取得 Azure AD DS 受控網域的資源識別碼。 建立名為 $aadds 的變數 *。* 要保存值的 ResourceId：
 
@@ -159,11 +158,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>範例查詢2
 
-在2020年2月3日上午9點，查看所有帳戶鎖定事件（*4740*） 2020年2月10日午夜，以日期和時間遞增排序：
+在2020年6月3日上午9點，查看所有帳戶鎖定事件（*4740*） 2020年6月10日午夜，以日期和時間遞增排序：
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
+| where TimeGenerated >= datetime(2020-06-03 09:00) and TimeGenerated <= datetime(2020-06-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
@@ -217,7 +216,7 @@ Azure AD DS 安全性審核與傳統 AD DS 網域控制站的傳統審核一致�
 
 下列是可用的 audit 事件類別：
 
-| 審核類別名稱 | 描述 |
+| 審核類別名稱 | Description |
 |:---|:---|
 | 帳戶登入|審核會嘗試驗證網域控制站或本機安全性帳戶管理員（SAM）上的帳戶資料。</p>登入和登出原則設定和事件會追蹤存取特定電腦的嘗試。 此類別中的設定和事件著重于所使用的帳戶資料庫。 此類別包括下列子類別：<ul><li>[稽核認證驗證](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerbero 驗證的新功能](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[稽核 Kerberos 服務票證作業](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[稽核其他登入/登出事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | 帳戶管理|會對使用者和電腦帳戶和群組進行審核。 此類別包括下列子類別：<ul><li>[稽核應用程式群組管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[稽核電腦帳戶管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[稽核通訊群組管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[審核其他帳戶管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[稽核安全性群組管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[稽核使用者帳戶管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|

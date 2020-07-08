@@ -1,24 +1,13 @@
 ---
 title: Azure 服務匯流排中的交易處理總覽
 description: 本文提供交易處理的總覽，以及 Azure 服務匯流排中的 [透過傳送] 功能。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-editor: spelluru
-ms.assetid: 64449247-1026-44ba-b15a-9610f9385ed8
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 90ee3e4f7cd6465d6297406d1d28d4ea34f88ac4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260900"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340505"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服務匯流排交易處理概觀
 
@@ -36,8 +25,8 @@ ms.locfileid: "79260900"
 
 可在交易範圍內執行的作業如下︰
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、[MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**：Send、SendAsync、SendBatch、SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**：Complete、CompleteAsync、Abandon、AbandonAsync、Deadletter、DeadletterAsync、Defer、DeferAsync、RenewLock、RenewLockAsync 
+* ** [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、 [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、 [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**： `Send` 、 `SendAsync` 、 `SendBatch` 、`SendBatchAsync`
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**： `Complete` 、 `CompleteAsync` 、 `Abandon` 、 `AbandonAsync` 、 `Deadletter` 、 `DeadletterAsync` `Defer` `DeferAsync` 、、、 `RenewLock` 、`RenewLockAsync` 
 
 不包括接收作業，因為假設應用程式使用 [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式、在一些接收迴圈內或使用 [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) 回呼來取得訊息，然後只會開啟交易範圍來處理訊息。
 
@@ -45,7 +34,7 @@ ms.locfileid: "79260900"
 
 ## <a name="transfers-and-send-via"></a>傳輸和「傳送方式」
 
-若要啟用從佇列到處理器再到另一個佇列的交易式資料送交，服務匯流排支援「傳輸」**。 在傳輸作業中，寄件者會先將訊息*傳送至傳輸佇列*，而傳輸佇列會使用自動轉寄功能所依賴的相同健全轉移執行，立即將訊息移至預定的目的地佇列。 訊息絕不會認可到傳輸佇列的記錄檔，因此，傳輸佇列的取用者可以看到它。
+若要啟用從佇列到處理器再到另一個佇列的交易式資料送交，服務匯流排支援「傳輸」**。 在傳輸作業中，寄件者會先將訊息*傳送至傳輸佇列*，而傳送佇列會使用 autoforward 功能所依賴的相同穩固傳輸實現，立即將訊息移至預定的目的地佇列。 訊息絕不會認可到傳輸佇列的記錄檔，因此，傳輸佇列的取用者可以看到它。
 
 傳輸佇列本身是寄件者輸入訊息的來源時，就能知道這個交易式功能的能力。 換句話說，服務匯流排可以「透過」傳輸佇列將訊息傳輸到目的地佇列，同時對輸入訊息執行完整 (或延遲，或寄不出信件) 作業 (全部都在一個不可部分完成作業中)。 
 
@@ -97,13 +86,16 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 }
 ```
 
+## <a name="timeout"></a>逾時
+交易時間已在2分鐘後過期。 交易計時器會在交易中的第一個作業開始時啟動。 
+
 ## <a name="next-steps"></a>後續步驟
 
 如需服務匯流排佇列的詳細資訊，請參閱下列文章。
 
 * [如何使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)
-* [使用自動轉送連結服務匯流排實體](service-bus-auto-forwarding.md)
-* [自動轉寄範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
+* [使用自動轉寄鏈結服務匯流排實體](service-bus-auto-forwarding.md)
+* [Autoforward 範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
 * [使用服務匯流排的不可部分完成交易範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
 * [比較 Azure 佇列和服務匯流排佇列](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 

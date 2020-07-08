@@ -5,13 +5,12 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/03/2018
-ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/29/2020
+ms.openlocfilehash: afcad5df1072f2eb474e54aaeca866735a12c5c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670639"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84424460"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure 監視器中的 Wire Data 2.0 （預覽）解決方案
 
@@ -19,12 +18,15 @@ ms.locfileid: "77670639"
 
 連線資料是彙總的網路和效能資料，使用 Log Analytics 代理程式從 Windows 連線和 Linux 連線的電腦收集，包括您的環境中由 Operations Manager 監視的資料。 網路資料結合其他記錄資料可協助您將資料相互關聯。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 除了 Log Analytics 代理程式，Wire Data 解決方案還會使用您在 IT 基礎結構的電腦上所安裝的 Microsoft 相依性代理程式。 相依性代理程式會監視往返於您電腦傳送的網路資料 (屬於 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)中的網路層級 2-3)，包括使用的各種通訊協定和連接埠。 然後使用代理程式將資料傳送至 Azure 監視器。  
 
 >[!NOTE]
->如果您已部署服務對應，或考慮服務對應或[適用於 VM 的 Azure 監視器](../../azure-monitor/insights/vminsights-overview.md)，則會在 Azure 監視器中收集並儲存新的連線度量資料集，以提供可比較的資訊給網路資料。
+>網路資料解決方案已取代為[服務對應解決方案](service-map.md)。  兩者都使用 Log Analytics 代理程式和相依性代理程式，將網路連接資料收集到 Azure 監視器。 
+> 
+>使用網路資料解決方案的現有客戶可能會繼續使用它。 我們將發佈移至服務對應的遷移時程表指引。
+>
+>新客戶應安裝[服務對應解決方案](service-map.md)或[適用於 VM 的 Azure 監視器](vminsights-overview.md)。  服務對應資料集相當於網路資料。  適用於 VM 的 Azure 監視器包含服務對應的資料集，其中包含額外的效能資料和分析的功能。 
+
 
 根據預設，Azure 監視器記錄 Windows 和 Linux 內建計數器的 CPU、記憶體、磁片和網路效能資料的資料，以及您可以指定的其他效能計數器。 針對每個代理程式，都是即時收集網路和其他資料，包括電腦使用的子網路和應用程式層級通訊協定。  Wire Data 會查看應用程式層級的網路資料，而不會往下查看 TCP 傳輸層。 解決方案不會查看個別的 ACK 和 SYN。 交握完成後，即會將它視為即時連接，並且標示為已連接。 只要兩端同意通訊端為開啟，該連接會維持為即時，且可以來回傳遞資料。 一旦任一端關閉連線，它就會標示為已中斷連接。  因此，它只會計算已成功完成封包的頻寬，而不會回報重新傳送或失敗的封包。
 
@@ -51,12 +53,12 @@ ms.locfileid: "77670639"
 
 Wire Data 會從 Microsoft 相依性代理程式取得其資料。 Dependency Agent 取決於 Log Analytics 代理程式，以便其連線至 Azure 監視器。 這表示，伺服器必須先安裝 Log Analytics 代理程式，並設定 Dependency Agent。 下表描述 Wire Data 解決方案支援的連線來源。
 
-| **連接的來源** | **支援** | **說明** |
+| **連線的來源** | **支援** | **描述** |
 | --- | --- | --- |
-| Windows 代理程式 | 是 | Wire Data 會分析並收集來自 Windows 代理程式電腦的資料。 <br><br> 除了[適用于 windows 的 Log Analytics 代理程式](../platform/agent-windows.md)以外，windows 代理程式還需要 Microsoft Dependency agent。 如需作業系統版本的完整清單，請參閱[支援的作業系統](vminsights-enable-overview.md#supported-operating-systems)。 |
+| Windows 代理程式 | Yes | Wire Data 會分析並收集來自 Windows 代理程式電腦的資料。 <br><br> 除了[適用于 windows 的 Log Analytics 代理程式](../platform/agent-windows.md)以外，windows 代理程式還需要 Microsoft Dependency agent。 如需作業系統版本的完整清單，請參閱[支援的作業系統](vminsights-enable-overview.md#supported-operating-systems)。 |
 | Linux 代理程式 | 是 | Wire Data 會分析並收集來自 Linux 代理程式電腦的資料。<br><br> 除了[適用于 linux 的 Log Analytics 代理程式](../learn/quick-collect-linux-computer.md)之外，linux 代理程式還需要 Microsoft Dependency agent。 如需作業系統版本的完整清單，請參閱[支援的作業系統](vminsights-enable-overview.md#supported-operating-systems)。 |
-| System Center Operations Manager 管理群組 | 是 | Wire Data 會在連線的 [System Center Operations Manager 管理群組](../platform/om-agents.md)中，分析並收集來自 Windows 和 Linux 代理程式的資料。 <br><br> 需要從 System Center Operations Manager 代理程式電腦到 Azure 監視器的直接連接。 |
-| Azure 儲存體帳戶 | 否 | Wire Data 會收集來自代理程式電腦的資料，因此沒有要從 Azure 儲存體收集的資料。 |
+| System Center Operations Manager 管理群組 | Yes | Wire Data 會在連線的 [System Center Operations Manager 管理群組](../platform/om-agents.md)中，分析並收集來自 Windows 和 Linux 代理程式的資料。 <br><br> 需要從 System Center Operations Manager 代理程式電腦到 Azure 監視器的直接連接。 |
+| Azure 儲存體帳戶 | No | Wire Data 會收集來自代理程式電腦的資料，因此沒有要從 Azure 儲存體收集的資料。 |
 
 在 Windows 上，System Center Operations Manager 和 Azure 監視器會使用 Microsoft Monitoring Agent （MMA）來收集和傳送資料。 視內容而定，此代理程式可稱為 System Center Operations Manager 代理程式、Log Analytics 代理程式、MMA 或直接代理程式。 System Center Operations Manager 和 Azure 監視器提供稍微不同的 MMA 版本。 這些版本可以每個報表 System Center Operations Manager、Azure 監視器或兩者。
 
@@ -73,7 +75,7 @@ Dependency agent 不會傳輸任何資料本身，也不需要對防火牆或埠
 
 如果您的 Windows 或 Linux 電腦無法直接連線至服務，您必須將 Log Analytics 代理程式設定為使用 Log Analytics 閘道連接到 Azure 監視器。 您可以從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=52666)下載 Log Analytics 閘道。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 需要[洞察力與分析](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing)解決方案供應項目。
 - 如果您使用舊版 Wire Data 解決方案，則必須先將它移除。 不過，您仍然可以在 Wire Data 2.0 和記錄搜尋中使用透過原始 Wire Data 解決方案擷取的所有資料。
@@ -160,11 +162,11 @@ Dependency agent 不會傳輸任何資料本身，也不需要對防火牆或埠
 
 
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 執行下列步驟來設定您工作區的 Wire Data 解決方案。
 
-1. 從[Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview)或使用[從方案庫新增監視解決方案](../../azure-monitor/insights/solutions.md)中所述的程式，啟用活動記錄分析解決方案。
+1. 從[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview)啟用活動記錄分析解決方案，或使用[從方案庫新增監視解決方案](../../azure-monitor/insights/solutions.md)中所述的程式。
 2. 在您要取得資料的每部電腦上安裝 Dependency agent。 Dependency agent 可以監視立即鄰近專案的連線，因此您可能不需要在每部電腦上都有代理程式。
 
 > [!NOTE]
@@ -175,7 +177,7 @@ Dependency agent 不會傳輸任何資料本身，也不需要對防火牆或埠
 
 必須有系統管理員權限，以便安裝或解除安裝代理程式。
 
-相依性代理程式是透過可以 installdependencyagent-windows.exe 安裝在執行 Windows 的電腦上。 如果您在執行此可執行檔時不使用任何選項，則會啟動以互動方式安裝的精靈。
+相依性代理程式會安裝在透過 InstallDependencyAgent-Windows.exe 執行 Windows 的電腦上。 如果您在執行此可執行檔時不使用任何選項，則會啟動以互動方式安裝的精靈。
 
 使用下列步驟在執行 Windows 的每部電腦上安裝 Dependency agent：
 
@@ -190,7 +192,7 @@ Dependency agent 不會傳輸任何資料本身，也不需要對防火牆或埠
 
 InstallDependencyAgent-Windows.exe /?
 
-| **標識** | **說明** |
+| **標識** | **描述** |
 | --- | --- |
 | <code>/?</code> | 取得命令列選項的清單。 |
 | <code>/S</code> | 執行無訊息安裝，不會出現任何使用者提示。 |
@@ -215,7 +217,7 @@ Windows Dependency agent 的檔案預設會放在 C:\Program Files\Microsoft Dep
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **標識** | **說明** |
+| **標識** | **描述** |
 | --- | --- |
 | <code>-help</code> | 取得命令列選項的清單。 |
 | <code>-s</code> | 執行無訊息安裝，不會出現任何使用者提示。 |
@@ -223,7 +225,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Dependency Agent 的檔案位於下列目錄：
 
-| **檔案** | **位置** |
+| **檔案儲存體** | **位置** |
 | --- | --- |
 | 核心檔案 | /opt/microsoft/dependency-agent |
 | 記錄檔 | /var/opt/microsoft/dependency-agent/log |
@@ -351,7 +353,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 在 Azure 入口網站 Log Analytics 工作區的 [概觀]**** 頁面中，按一下 [Wire Data 2.0]**** 磚以開啟 [Wire Data] 儀表板。 此儀表板包含下表中的刀鋒視窗。 每個刀鋒視窗最多會列出 10 個與該刀鋒視窗中指定範圍和時間範圍的準則相符的項目。 您可以按一下刀鋒視窗底部的 [查看全部]****，或按一下刀鋒視窗標頭，以執行記錄搜尋來傳回所有記錄。
 
-| **刀鋒視窗** | **說明** |
+| **刀鋒視窗** | **描述** |
 | --- | --- |
 | 擷取網路流量的代理程式數 | 顯示擷取網路流量的代理程式數，並列出擷取最多流量的前 10 部電腦。 按一下此數字可執行記錄搜尋，以搜尋 <code>WireData \| summarize sum(TotalBytes) by Computer \| take 500000</code>。 按一下清單中的電腦可執行記錄搜尋，以傳回擷取的位元組總數。 |
 | 區域子網路數 | 顯示代理程式探索到的區域子網路數。  按一下此數字可執行記錄搜尋，以搜尋 <code>WireData \| summarize sum(TotalBytes) by LocalSubnet</code>，其中列出所有子網路及透過每個子網路傳送的位元組數目。 按一下清單中的子網路可執行記錄搜尋，以傳回透過子網路傳送的位元組總數。 |
@@ -390,7 +392,7 @@ rpm -e dependency-agent dependency-agent-connector
 | ReceivedBytes | 接收的位元組數目 |
 | ProtocolName | 使用的網路通訊協定名稱 |
 | IPVersion | IP 版本 |
-| 方向 | 輸入或輸出 |
+| Direction | 輸入或輸出 |
 | MaliciousIP | 已知惡意來源的 IP 位址 |
 | Severity | 可疑惡意程式碼嚴重性 |
 | RemoteIPCountry | 遠端 IP 位址的國家/地區 |

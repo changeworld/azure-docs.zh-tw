@@ -2,13 +2,12 @@
 title: 準備 Azure Migrate 以便搭配 ISV 工具/Movere
 description: 此文章描述如何準備 Azure Migrate 以搭配 ISV 工具或 Movere，然後描述如何開始使用此工具。
 ms.topic: how-to
-ms.date: 05/07/2020
-ms.openlocfilehash: 9513e783d4f9d7be83f1434d4dd9011844af8993
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.date: 06/10/2020
+ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682658"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770368"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>準備使用 ISV 工具或 Movere
 
@@ -37,7 +36,19 @@ ms.locfileid: "83682658"
 2. 選取相關的訂用帳戶。 如果您沒有看到該訂用帳戶，請選取 [全域訂閱篩選]。 
 3. 選取 [我的權限]。 然後，選取 [按一下這裡以詳細檢視此訂用帳戶的完整存取權]。
 4. 在 [角色指派] > [檢視] 中，檢查權限。 如果您的帳戶沒有權限，請要求訂用帳戶管理員將您新增至[使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) \(部分機器翻譯\) 角色或[擁有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) \(部分機器翻譯\) 角色。
- 
+
+## <a name="allow-access-to-urls"></a>允許存取 URL
+
+針對 ISV 工具和 Azure 資料庫移轉小幫手，允許存取資料表中摘要說明的公用雲端 Url。 如果您使用 URL 型 Proxy 來連線到網際網路，請確定 Proxy 會解析查詢 URL 時所收到的任何 CNAME 記錄。 
+
+**URL** | **詳細資料**
+--- | ---
+*.portal.azure.com  | 瀏覽至 Azure 入口網站。 
+*.windows.net<br/> *.msftauth.net<br/> *.msauth.net <br/> *.microsoft.com<br/> *.live.com   | 登入您的 Azure 訂用帳戶。 
+*.microsoftonline.com<br/> *.microsoftonline-p.com | 建立 Azure Active Directory (AD) 應用程式，以便設備與 Azure Migrate 通訊。 
+management.azure.com | 對 Azure Migrate 專案進行 Azure Resource Manager 呼叫。
+*.servicebus.windows.net | 設備與 EventHub 之間用於傳送訊息的通訊。
+
 
 ## <a name="start-using-the-tool"></a>開始使用工具
 

@@ -12,12 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 344ad8e106c119c1de59570d1ec4e3df5e1cc8af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a59d9291d1eaa4aa87d40914679e39c9cbf29cee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417113"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84112646"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>取得 Azure Data Factory 中的中繼資料活動
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,17 +55,17 @@ ms.locfileid: "81417113"
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
 - 針對資料夾使用 [取得中繼資料] 活動時，請確定您具有指定資料夾的 [清單/執行] 許可權。
-- 針對 Amazon S3 和 Google Cloud Storage， `lastModified`會套用至 bucket 和金鑰，但不適用於虛擬資料夾，並`exists`適用于值區和金鑰，但不會套用至前置詞或虛擬資料夾。
-- 針對 Azure Blob 儲存體， `lastModified`會套用至容器和 Blob，但不適用於虛擬資料夾。
+- 針對 Amazon S3 和 Google Cloud Storage， `lastModified` 會套用至 bucket 和金鑰，但不適用於虛擬資料夾，並適用于值區 `exists` 和金鑰，但不會套用至前置詞或虛擬資料夾。
+- 針對 Azure Blob 儲存體， `lastModified` 會套用至容器和 Blob，但不適用於虛擬資料夾。
 - `lastModified`篩選目前適用于篩選子專案，而不是指定的資料夾/檔案本身。
 - 取得中繼資料活動不支援資料夾/檔案上的萬用字元篩選。
 
-**關係資料庫**
+**關聯式資料庫**
 
 | 連接器/中繼資料 | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
-| [Azure SQL Database 受控實例](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
+| [Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) | √ | √ | √ |
 | [Azure SQL 資料倉儲](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
 | [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
@@ -74,10 +73,10 @@ ms.locfileid: "81417113"
 
 您可以在 [取得中繼資料作用欄位] 清單中指定下列元資料類型，以取得對應的資訊：
 
-| 中繼資料類型 | 描述 |
+| 中繼資料類型 | Description |
 |:--- |:--- |
 | itemName | 檔案或資料夾的名稱。 |
-| itemType | 檔案或資料夾的類型。 傳回的值`File`為`Folder`或。 |
+| itemType | 檔案或資料夾的類型。 傳回的值為 `File` 或 `Folder` 。 |
 | 大小 | 檔案的大小（以位元組為單位）。 僅適用于檔案。 |
 | created | 檔案或資料夾的建立日期時間。 |
 | lastModified | 檔案或資料夾的上次修改日期時間。 |
@@ -85,15 +84,15 @@ ms.locfileid: "81417113"
 | contentMD5 | 檔案的 MD5。 僅適用于檔案。 |
 | structure | 檔案或關係資料庫資料表的資料結構。 傳回的值是資料行名稱和資料行類型的清單。 |
 | columnCount | 檔案或關聯式資料表中的資料行數目。 |
-| exists| 檔案、資料夾或資料表是否存在。 請注意， `exists`如果在 [取得元資料欄位] 清單中指定了，即使檔案、資料夾或資料表不存在，活動也不會失敗。 相反地`exists: false` ，會在輸出中傳回。 |
+| exists| 檔案、資料夾或資料表是否存在。 請注意，如果在 `exists` [取得元資料欄位] 清單中指定了，即使檔案、資料夾或資料表不存在，活動也不會失敗。 相反地， `exists: false` 會在輸出中傳回。 |
 
 >[!TIP]
->當您想要驗證檔案、資料夾或資料表是否存在時，請在`exists` [取得中繼資料作用欄位] 清單中指定。 然後，您可以在`exists: true/false`活動輸出中檢查結果。 如果`exists`未在欄位清單中指定，則如果找不到物件，則取得中繼資料活動將會失敗。
+>當您想要驗證檔案、資料夾或資料表是否存在時，請 `exists` 在 [取得中繼資料作用欄位] 清單中指定。 然後，您可以 `exists: true/false` 在活動輸出中檢查結果。 如果 `exists` 未在欄位清單中指定，則如果找不到物件，則取得中繼資料活動將會失敗。
 
 >[!NOTE]
->當您從檔案存放區取得中繼資料`modifiedDatetimeStart` ， `modifiedDatetimeEnd`並設定`childItems`或時，在輸出中只會包含指定之路徑中的檔案，該檔案中的最後修改時間是在指定的範圍內。 中的不會包含子資料夾中的專案。
+>當您從檔案存放區取得中繼資料，並設定 `modifiedDatetimeStart` 或時 `modifiedDatetimeEnd` ， `childItems` 在輸出中只會包含指定之路徑中的檔案，該檔案中的最後修改時間是在指定的範圍內。 中的不會包含子資料夾中的專案。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 **取得中繼資料活動**
 
@@ -137,16 +136,16 @@ ms.locfileid: "81417113"
 
 目前，取得中繼資料活動可能會傳回下列類型的中繼資料資訊：
 
-屬性 | 描述 | 必要
+屬性 | 說明 | 必要
 -------- | ----------- | --------
-欄位清單 | 所需的中繼資料資訊類型。 如需所支援中繼資料的詳細資訊，請參閱本文的[中繼資料選項](#metadata-options)一節。 | 是 
-資料集 | 要由「取得中繼資料」活動抓取其中繼資料的參考資料集。 如需所支援連接器的詳細資訊，請參閱[功能](#capabilities)一節。 如需資料集語法的詳細資訊，請參閱特定的連接器主題。 | 是
-formatSettings | 適用于使用格式類型資料集時。 | 否
-storeSettings | 適用于使用格式類型資料集時。 | 否
+欄位清單 | 所需的中繼資料資訊類型。 如需所支援中繼資料的詳細資訊，請參閱本文的[中繼資料選項](#metadata-options)一節。 | Yes 
+資料集 | 要由「取得中繼資料」活動抓取其中繼資料的參考資料集。 如需所支援連接器的詳細資訊，請參閱[功能](#capabilities)一節。 如需資料集語法的詳細資訊，請參閱特定的連接器主題。 | Yes
+formatSettings | 適用于使用格式類型資料集時。 | No
+storeSettings | 適用于使用格式類型資料集時。 | No
 
 ## <a name="sample-output"></a>範例輸出
 
-取得中繼資料結果會顯示在活動輸出中。 以下是兩個範例，其中顯示大量的中繼資料選項。 若要在後續活動中使用結果，請使用此模式`@{activity('MyGetMetadataActivity').output.itemName}`：。
+取得中繼資料結果會顯示在活動輸出中。 以下是兩個範例，其中顯示大量的中繼資料選項。 若要在後續活動中使用結果，請使用此模式： `@{activity('MyGetMetadataActivity').output.itemName}` 。
 
 ### <a name="get-a-files-metadata"></a>取得檔案的中繼資料
 

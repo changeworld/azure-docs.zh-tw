@@ -2,13 +2,12 @@
 title: 容器映像儲存體
 description: 有關您的 Docker 容器映像如何儲存在 Azure Container Registry 中的詳細資料，包括安全性、備援和容量。
 ms.topic: article
-ms.date: 03/21/2018
-ms.openlocfilehash: b738556e5a4f764cd47c72d964ee188d1344b336
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.date: 06/18/2020
+ms.openlocfilehash: d51014e9e0769091aba42682cce3a6a01cfa19de
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214055"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry 中的容器映像儲存體
 
@@ -16,7 +15,7 @@ ms.locfileid: "83683396"
 
 ## <a name="encryption-at-rest"></a>待用資料加密
 
-您登錄中的所有容器映像在待用時都已加密。 Azure 會在儲存映像之前自動將它加密，並在您的應用程式或服務提取映像時將它解密。
+您登錄中的所有容器映像在待用時都已加密。 Azure 會在儲存映像之前自動將它加密，並在您的應用程式或服務提取映像時將它解密。 選擇性地使用[客戶管理的金鑰](container-registry-customer-managed-keys.md)來套用額外的加密層。
 
 ## <a name="geo-redundant-storage"></a>異地備援儲存體
 
@@ -26,19 +25,11 @@ Azure 使用異地備援儲存體配置來避免您的容器映像遺失。 Azur
 
 針對需要更高可用性保證的案例，請考慮使用「進階」登錄的[異地複寫](container-registry-geo-replication.md)功能。 異地複寫有助於避免在「嚴重」的區域性失敗情況 (不僅是儲存體失敗) 中無法存取您的登錄。 異地複寫也提供其他好處，例如可在分散式開發或部署案例中加快推送和提取速度的網路鄰近映像儲存體。
 
-## <a name="image-limits"></a>映像限制
+## <a name="scalable-storage"></a>可擴充的存放裝置
 
-下表說明 Azure 容器登錄的容器映像和儲存體限制。
+Azure Container Registry 可讓您視需要建立所需數量的存放庫、映射、圖層或標籤，最多可達登錄[儲存體限制](container-registry-skus.md#service-tier-features-and-limits)。 
 
-| 資源 | 限制 |
-| -------- | :---- |
-| 儲存機制 | 沒有限制 |
-| 影像 | 沒有限制 |
-| 層次 | 沒有限制 |
-| Tags | 沒有限制|
-| 儲存體 | 5 TB |
-
-大量的存放庫和標籤可能會影響您的登錄效能。 定期刪除未使用的存放庫、標籤和映像，將此作為登錄維護例行工作的一部分。 存放庫、映像和標籤等登錄資源一旦刪除就「無法」復原。 如需刪除登錄資源的詳細資訊，請參閱[刪除 Azure Container Registry 中的容器映像](container-registry-delete.md)。
+大量的存放庫和標籤可能會影響您的登錄效能。 定期刪除未使用的存放庫、標籤和映射做為登錄維護常式的一部分，並選擇性地為未標記的資訊清單設定[保留原則](container-registry-retention-policy.md)。 刪除的登錄資源（例如存放庫、映射和標籤）*無法*在刪除後復原。 如需刪除登錄資源的詳細資訊，請參閱[刪除 Azure Container Registry 中的容器映像](container-registry-delete.md)。
 
 ## <a name="storage-cost"></a>儲存成本
 

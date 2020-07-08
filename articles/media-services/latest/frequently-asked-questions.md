@@ -11,18 +11,23 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: 713acbd098255af2869d7a462c9990f3d7e10bf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e54944c0c10fb773a4a3141c0d3fb6524f288ae2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987235"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒體服務 v3 常見問題
 
 本文提供 Azure 媒體服務 v3 常見問題的解答。
 
 ## <a name="general"></a>一般
+
+### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>媒體服務 v3 的 Azure 入口網站限制為何？
+
+您可以使用[Azure 入口網站](https://portal.azure.com/)來管理 v3 即時事件、查看 v3 資產和作業、取得存取 api、加密內容的相關資訊。 <br/>針對所有其他管理工作（例如，管理轉換和作業或分析 v3 內容），請使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的[sdk](media-services-apis-overview.md#sdks)。
+
+如果您的影片先前已使用媒體服務 v3 API 上傳至媒體服務帳戶，或已根據即時輸出產生內容，則不會在 Azure 入口網站中看到 [編碼]、[分析] 或 [加密] 按鈕。 使用媒體服務 v3 API 來執行這些工作。  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>哪些 Azure 角色可以對 Azure 媒體服務資源執行動作？ 
 
@@ -95,13 +100,13 @@ PlayReady、Widevine 和 FairPlay 等 DRM 系統都會針對用來解密內容�
 
 您不需要使用任何特定的權杖提供者，例如 Azure Active Directory （Azure AD）。 您可以使用非對稱金鑰加密來建立自己的[JWT](https://jwt.io/)提供者（所謂的「安全權杖服務」或 STS）。 在您的自訂 STS 中，您可以根據您的商務邏輯新增宣告。
 
-請確定簽發者、物件和宣告全都完全符合 JWT 中的內容和中`ContentKeyPolicyRestriction` `ContentKeyPolicy`所使用的值。
+請確定簽發者、物件和宣告全都完全符合 JWT 中的內容和 `ContentKeyPolicyRestriction` 中所使用的值 `ContentKeyPolicy` 。
 
 如需詳細資訊，請參閱[使用媒體服務動態加密來保護您的內容](content-protection-overview.md)。
 
 ### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>如何和哪裡取得 JWT 權杖，然後再使用它來要求授權或金鑰？
 
-針對生產環境，您必須擁有安全權杖服務（也就是 web 服務），這會在 HTTPS 要求發出 JWT 權杖。 若要進行測試，您可以使用[Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)中定義`GetTokenAsync`的方法所顯示的程式碼。
+針對生產環境，您必須擁有安全權杖服務（也就是 web 服務），這會在 HTTPS 要求發出 JWT 權杖。 若要進行測試，您可以使用 Program.cs 中定義的方法所顯示的程式碼 `GetTokenAsync` 。 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)
 
 播放程式會在使用者經過驗證之後，向 STS 提出這類權杖的邀請，並將其指派為權杖的值。 您可以使用 [Azure 媒體播放器 API](https://amp.azure.net/libs/amp/latest/docs/)。
 
@@ -109,7 +114,7 @@ PlayReady、Widevine 和 FairPlay 等 DRM 系統都會針對用來解密內容�
 
 ### <a name="how-do-i-authorize-requests-to-stream-videos-with-aes-encryption"></a>如何? 授權使用 AES 加密來串流影片的要求？
 
-正確的方法是使用「安全權杖服務」。 在 STS 中，根據使用者設定檔，新增不同的宣告（例如「Premium 使用者」、「基本使用者」、「免費試用使用者」）。 在 JWT 中使用不同的宣告，使用者可以看見不同的內容。 對於不同的內容或資產`ContentKeyPolicyRestriction` ，會有對應`RequiredClaims`的值。
+正確的方法是使用「安全權杖服務」。 在 STS 中，根據使用者設定檔，新增不同的宣告（例如「Premium 使用者」、「基本使用者」、「免費試用使用者」）。 在 JWT 中使用不同的宣告，使用者可以看見不同的內容。 對於不同的內容或資產， `ContentKeyPolicyRestriction` 會有對應的 `RequiredClaims` 值。
 
 使用 Azure 媒體服務 Api 來設定授權/金鑰傳遞和加密您的資產（如[本範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)所示）。
 
@@ -140,7 +145,7 @@ ASP.NET 播放器應用程式的最佳做法是使用 HTTPS，因此媒體播放
 客戶通常會在他們自己的資料中心或由 DRM 服務提供者主控的授權伺服器陣列中投資。 利用媒體服務內容保護，您就能在混合模式中運作。 內容可以在媒體服務中進行裝載和動態保護，而 DRM 授權是由媒體服務以外的伺服器所傳遞。 在此情況下，請考量下列變更：
 
 * STS 必須發出權杖，讓授權伺服器陣列可接受且可驗證這類權杖。 例如，Axinom 所提供的 Widevine 授權伺服器要求包含權利訊息的特定 JWT。 您需要有 STS 來發出這類 JWT。 
-* 您不再需要在媒體服務中設定授權傳遞服務。 當您設定`ContentKeyPolicy`時，您必須提供授權取得 url （針對 PlayReady、Widevine 和 FairPlay）。
+* 您不再需要在媒體服務中設定授權傳遞服務。 當您設定時，您必須提供授權取得 Url （針對 PlayReady、Widevine 和 FairPlay） `ContentKeyPolicy` 。
 
 > [!NOTE]
 > Widevine 是 Google 所提供的服務，並受 Google 的服務條款和隱私權原則所約束。
@@ -193,11 +198,11 @@ ASP.NET 播放器應用程式的最佳做法是使用 HTTPS，因此媒體播放
 
 iOS 裝置上所下載的檔案結構看起來如下列螢幕擷取畫面。 `_keys` 資料夾會儲存下載的 FPS 授權，每個授權服務主機一個存放區檔案。 `.movpkg` 資料夾會儲存音訊和影片內容。 
 
-第一個資料夾的名稱結尾為虛線，後面接著一個數位，包含影片內容。 數值是影片呈現的尖峰頻寬。 第二個資料夾名稱的結尾是一個破折號後面接著 0，此資料夾包含音訊內容。 第三個名`Data`為的資料夾包含 FPS 內容的主要播放清單。 最後，boot.xml 會提供 `.movpkg` 資料夾內容的完整描述。 
+第一個資料夾的名稱結尾為虛線，後面接著一個數位，包含影片內容。 數值是影片呈現的尖峰頻寬。 第二個資料夾名稱的結尾是一個破折號後面接著 0，此資料夾包含音訊內容。 第三個名為的資料夾 `Data` 包含 FPS 內容的主要播放清單。 最後，boot.xml 會提供 `.movpkg` 資料夾內容的完整描述。 
 
 ![FairPlay iOS 範例應用程式的離線檔案結構](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
 
-以下是範例 boot .xml 檔案：
+以下是範例 boot.xml 檔案：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -231,11 +236,11 @@ iOS 裝置上所下載的檔案結構看起來如下列螢幕擷取畫面。 `_k
 
 #### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-keys"></a>如何為其他用戶端/使用者和非持續性授權（離線停用）提供持續性授權（離線啟用）給其他人？ 我是否必須複製內容，並使用不同的內容金鑰？
 
-因為媒體服務 v3 允許資產有多個`StreamingLocator`實例，您可以擁有：
+因為媒體服務 v3 允許資產有多個 `StreamingLocator` 實例，您可以擁有：
 
-* 一個`ContentKeyPolicy`實例`license_type = "persistent"`，其中`ContentKeyPolicyRestriction`包含了的`"persistent"`宣告，以及`StreamingLocator`其。
-* 另`ContentKeyPolicy`一個實例`license_type="nonpersistent"`， `ContentKeyPolicyRestriction`其中的宣告`"nonpersistent`為，且其`StreamingLocator`為。
-* 具有`StreamingLocator`不同`ContentKey`值的兩個實例。
+* 一個實例，其中包含了的宣告 `ContentKeyPolicy` `license_type = "persistent"` `ContentKeyPolicyRestriction` `"persistent"` ，以及其 `StreamingLocator` 。
+* 另一個 `ContentKeyPolicy` 實例，其中的宣告 `license_type="nonpersistent"` 為， `ContentKeyPolicyRestriction` `"nonpersistent` 且其為 `StreamingLocator` 。
+* `StreamingLocator`具有不同值的兩個實例 `ContentKey` 。
 
 根據自訂 STS 的商務邏輯，JWT 權杖中會發出不同宣告。 使用權杖時，只能取得對應的授權，且只能播放對應的 URL。
 
@@ -243,7 +248,7 @@ iOS 裝置上所下載的檔案結構看起來如下列螢幕擷取畫面。 `_k
 
 Google 的「Widevine DRM 架構總覽」定義了三個安全性層級。 不過， [Widevine 授權範本上的 Azure 媒體服務檔概述了](widevine-license-template-overview.md)五個安全性層級（播放的用戶端健全需求）。 本節說明安全性層級的對應方式。
 
-這兩組安全性層級都是由 Google Widevine 所定義。 差異在於使用層級：架構或 API。 Widevine API 中使用的是五個安全性層級。 `content_key_specs`物件（包含`security_level`）會還原序列化，並由 Azure 媒體服務 Widevine 授權服務傳遞給 Widevine 的全域傳遞服務。 下表顯示兩組安全性層級之間的對應。
+這兩組安全性層級都是由 Google Widevine 所定義。 差異在於使用層級：架構或 API。 Widevine API 中使用的是五個安全性層級。 `content_key_specs`物件（包含）會還原序列化， `security_level` 並由 Azure 媒體服務 Widevine 授權服務傳遞給 Widevine 的全域傳遞服務。 下表顯示兩組安全性層級之間的對應。
 
 | **Widevine 架構中定義的安全性等級** |**Widevine API 中使用的安全性層級**|
 |---|---| 

@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257143"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711947"
 ---
 # <a name="scale-with-additional-process-servers"></a>使用額外的進程伺服器進行調整
 
@@ -41,7 +40,7 @@ ms.locfileid: "79257143"
 
 每個受保護的來源機器都會設定各 100 GB 的 3 個磁碟。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 下表為額外處理序伺服器的必要條件摘要。
 
@@ -52,9 +51,9 @@ ms.locfileid: "79257143"
 依照下列指示下載處理序伺服器的安裝檔案：
 
 1. 登入 Azure 入口網站，然後流覽至您的復原服務保存庫。
-2. 開啟**Site Recovery 基礎結構** > **vmware 和實體機器** > 設定**伺服器**（適用于 vmware & 實體機器）。
+2. 開啟**Site Recovery 基礎結構**  >  **vmware 和實體機器**設定  >  **伺服器**（適用于 vmware & 實體機器）。
 3. 選取設定伺服器以切入伺服器的詳細資料。 接著按一下** [+ 處理序伺服器]**。
-4. 在 [**新增進程伺服器** >  ] 中，**選擇您要部署進程伺服器的位置**，然後選取 [**在內部部署部署相應放大進程伺服器**]。
+4. 在 [**新增進程伺服器**] 中  >   ，**選擇您要部署進程伺服器的位置**，然後選取 [**在內部部署部署相應放大進程伺服器**]。
 
    ![新增伺服器頁面](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. 按一下 **[下載 Microsoft Azure Site Recovery 整合安裝]**。 這會下載最新版本的安裝檔案。

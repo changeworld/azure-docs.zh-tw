@@ -8,12 +8,11 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: f31c084be2fb017c0db521328e4ccdff9dd2aa25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e33cd64da32dcb918d30cd44f413748f719023b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80810465"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84771286"
 ---
 # <a name="planning-and-operations-guide"></a>規劃與操作指南
 本指南適用于規劃使用 Azure 資訊安全中心的資訊技術（IT）專業人員、IT 架構設計師、資訊安全分析師和雲端系統管理員。
@@ -175,33 +174,17 @@ Azure 資訊安全中心使用 Log Analytics 代理程式–這是 Azure 監視�
 > [!NOTE]
 > 資訊安全中心不會干擾一般作業程序，它會被動地監視您的部署，並根據您啟用的安全性原則提供建議。
 
-當您第一次選擇在目前 Azure 環境中使用資訊安全中心時，請務必檢閱所有的建議，您可以在 [建議]**** 圖格中檢閱，或依照資源 ([計算]****、[網路服務]****、[儲存體和資料]****、[應用程式]****) 檢閱。
-
-一旦處理完所有的建議，所有已處理資源的 [預防] **** 區段應該是綠色。 持續監視此時變得更容易，因為您只會根據資源安全性健康情況和建議圖格中的變更採取動作。
-
-[偵測] **** 區段的反應會更明顯，這些是正在發生，或過去曾發生，且資訊安全中心控制項和第三方系統所偵測到之問題的相關警示。 [安全性警示] 圖格會顯示橫條圖，代表在每天找到的警示數目，以及其在不同嚴重性類別（低、中、高）之間的分佈。 如需安全性警示的詳細資訊，請閱讀 [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)。
+當您第一次選擇使用資訊安全中心做為目前的 Azure 環境時，請務必檢查所有建議，這可在 [**建議**] 頁面中完成。
 
 計劃造訪威脅情報選項，作為每日安全性作業的一部分。 您可以在那裡識別會對環境造成威脅的安全性威脅，例如識別特定電腦是否為殭屍網路的一份子。
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>監視新的或已變更的資源
+
 大部分的 Azure 環境都是動態的，其資源會定期建立、啟動或減少、重新設定和變更。 資訊安全中心有助於確保您看得到這些新資源的安全性狀態。
 
 當您將新資源 (VM、SQL DB) 新增至 Azure 環境時，資訊安全中心會自動探索這些資源並開始監視其安全性。 這也包括 PaaS Web 角色和背景工作角色。 如果已在 [安全性原則](tutorial-security-policy.md)中啟用資料收集，則會自動為您的虛擬機器啟用其他監視功能。
 
-![主要領域](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-newUI.png)
-
-1. 針對虛擬機器，按一下 [**資源安全性**防護] 區段下的 [**計算 & 應用程式**]。 [概觀]**** 索引標籤和 [監視建議]**** 區段會呈現有關啟用資料的問題或相關建議。
-2. 檢視 [建議] **** 以查看針對新資源所找出的任何 (若有的話) 安全性風險。
-3. 將新的 VM 新增至您的環境時，通常一開始只會安裝作業系統。 資源擁有者可能需要一些時間來部署這些 VM 將使用的其他應用程式。  在理想情況下，您應該知道此工作負載的最終目的。 它會成為應用程式伺服器？ 以這個新工作負載將會成為的項目為基礎，您可以啟用適當的 **安全性原則**(這是此工作流程中的第三個步驟)。
-4. 當新的資源新增至您的 Azure 環境時，[**安全性警示**] 圖格中可能會出現新的警示。 在此磚中尋找新的警示，並遵循建議。
-
-您也應該定期監視現有資源，查看可能已建立安全性風險的設定變更、不受建議基準的漂移和安全性警示。 從資訊安全中心儀表板開始。 從這裡，您有三個主要區域可以一致地進行審查。
-
-![作業](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
-
-1. [預防]**** 區段面板可供您快速存取關鍵資源。 使用此選項來監視 [計算]、[網路服務]、[儲存體和資料] 及 [應用程式]。
-2. **建議** 面板可讓您檢閱資訊安全中心建議。 在進行中的監視期間，您可能會發現每日不會有任何建議，這是正常現象，因為您已解決初始資訊安全中心設定的所有建議。 基於這個理由，這個區段中可能不會每天都有新資訊，您只需要視需要進行存取。
-3. [偵測]**** 區段的變更頻率可能非常頻繁或非常不頻繁。 請隨時檢閱安全性警示，並根據資訊安全中心的建議採取動作。
+您也應該定期監視現有資源，查看可能已建立安全性風險的設定變更、不受建議基準的漂移和安全性警示。 
 
 ### <a name="hardening-access-and-applications"></a>強化存取和應用程式
 
@@ -251,6 +234,6 @@ Azure 資訊安全中心使用 Log Analytics 代理程式–這是 Azure 監視�
 
 * [管理和回應 Azure 資訊安全中心中的安全性警示](security-center-managing-and-responding-alerts.md)
 * [Azure 資訊安全中心中的安全性健全狀況監視](security-center-monitoring.md)—瞭解如何監視 Azure 資源的健康情況。
-* [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md)—瞭解如何監視合作夥伴解決方案的健康狀態。
+* [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md) — 了解如何監視合作夥伴解決方案的健全狀況。
 * [AZURE 資訊安全中心常見問題](faq-general.md)—尋找有關使用服務的常見問題。
 * [Azure 安全性 blog](https://blogs.msdn.com/b/azuresecurity/) -尋找有關 Azure 安全性與合規性的 blog 文章。

@@ -10,12 +10,11 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
-ms.openlocfilehash: 79b89c6a6a7598dd3fbdfc5030fd59fe1aab6625
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832772"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343103"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory 中的視覺化撰寫
 
@@ -42,6 +41,12 @@ Azure Data Factory 使用者介面體驗 (UX) 可讓您透過視覺化方式撰�
 ![撰寫畫布](media/author-visually/properties-pane.png)
 
 屬性窗格預設只會在建立資源時開啟。 若要進行編輯，請按一下位於畫布右上角的屬性窗格圖示。
+
+## <a name="management-hub"></a>管理中樞
+
+管理中樞（由 Azure Data Factory UX 中的 [*管理*] 索引標籤存取）是一個入口網站，可裝載您 Data Factory 的全域管理動作。 在這裡，您可以管理與資料存放區的連接，以及外部計算、原始檔控制設定和觸發程式設定。 如需詳細資訊，請瞭解[管理中樞](author-management-hub.md)的功能。
+
+![管理連結服務](media/author-management-hub/management-hub-linked-services.png)
 
 ## <a name="expressions-and-functions"></a>運算式和函式
 

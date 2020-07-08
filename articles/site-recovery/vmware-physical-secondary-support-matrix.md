@@ -9,11 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79256792"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711879"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>從 VMware VM 和實體伺服器至次要網站之災害復原的支援矩陣
 
@@ -66,16 +65,16 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 ## <a name="network-configuration---hostguest-vm"></a>網路設定 - 主機/客體 VM
 
-**設定** | **支援**  
+**Configuration** | **支援**  
 --- | --- 
-主機 - NIC 小組 | 是 
-主機 - VLAN | 是 
-主機 - IPv4 | 是 
-主機 - IPv6 | 否 
-客體 VM - NIC 小組 | 否
-客體 VM - IPv4 | 是
-客體 VM - IPv6 | 否
-客體 VM - Windows/Linux - 靜態 IP 位址 | 是
+主機 - NIC 小組 | Yes 
+主機 - VLAN | Yes 
+主機 - IPv4 | Yes 
+主機 - IPv6 | No 
+客體 VM - NIC 小組 | No
+客體 VM - IPv4 | Yes
+客體 VM - IPv6 | No
+客體 VM - Windows/Linux - 靜態 IP 位址 | Yes
 客體 VM - 多重 NIC | 是
 
 
@@ -85,37 +84,37 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 **儲存體 (主機)** | **支援** 
 --- | --- 
-NFS | 是 
+NFS | Yes 
 SMB 3.0 | N/A 
-SAN (ISCSI) | 是 
-多重路徑 (MPIO) | 是 
+SAN (ISCSI) | Yes 
+多重路徑 (MPIO) | Yes 
 
 ### <a name="guest-or-physical-server-storage"></a>客體或實體伺服器儲存體
 
-**設定** | **支援** 
+**Configuration** | **支援** 
 --- | --- 
-VMDK | 是 
+VMDK | Yes 
 VHD/VHDX | N/A 
 第 2 代 VM | N/A 
-共用叢集磁碟 | 是 
-已加密磁碟 | 否 
-UEFI| 是 
-NFS | 否 
-SMB 3.0 | 否 
-RDM | 是 
-磁碟 > 1 TB | 是 
-使用等量磁碟的磁碟區 > 1 TB<br/><br/> LVM | 是 
-儲存空間 | 否 
-熱新增/移除磁碟 | 是 
-排除磁碟 | 是 
+共用叢集磁碟 | Yes 
+已加密磁碟 | No 
+UEFI| Yes 
+NFS | No 
+SMB 3.0 | No 
+RDM | Yes 
+磁碟 > 1 TB | Yes 
+使用等量磁碟的磁碟區 > 1 TB<br/><br/> LVM | Yes 
+儲存空間 | No 
+熱新增/移除磁碟 | Yes 
+排除磁碟 | Yes 
 多重路徑 (MPIO) | N/A 
 
 ## <a name="vaults"></a>保存庫
 
 **動作** | **支援** 
 --- | --- 
-跨資源群組間移動保存庫 (在訂用帳戶之內或跨訂用帳戶) | 否 
-跨資源群組間移動儲存體、網路、Azure VM (在訂用帳戶之內或跨訂用帳戶) | 否 
+跨資源群組間移動保存庫 (在訂用帳戶之內或跨訂用帳戶) | No 
+跨資源群組間移動儲存體、網路、Azure VM (在訂用帳戶之內或跨訂用帳戶) | No 
 
 ## <a name="mobility-service-and-updates"></a>行動服務和更新
 

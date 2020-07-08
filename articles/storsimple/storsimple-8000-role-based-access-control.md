@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: a6dc55138977727dc5399ec9653340225bcc3901
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "66159163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514634"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>適用於 StorSimple 的角色型存取控制
 
@@ -165,7 +164,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 您可從角色指派範圍內的資源、資源群組或訂用帳戶授與存取權。 提供存取權時，請記住子節點將繼承授與父節點的存取權。 如需詳細資訊，請移至[角色型存取控制](../role-based-access-control/overview.md)。
 
-1. 移至 [存取控制 (IAM)]****。 在 [存取控制] 刀鋒視窗上，按一下 [+ 新增]****。
+1. 移至 **[存取控制（IAM）**]。 在 [存取控制] 刀鋒視窗上，按一下 [+ 新增]****。
 
     ![將存取權新增至 RBAC 角色](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 

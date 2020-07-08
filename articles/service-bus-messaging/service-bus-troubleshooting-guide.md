@@ -1,25 +1,13 @@
 ---
 title: Azure 服務匯流排的疑難排解指南 |Microsoft Docs
 description: 本文提供在發生例外狀況時所要採取的 Azure 服務匯流排訊息例外狀況和建議的動作清單。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/07/2020
-ms.author: aschhab
-ms.openlocfilehash: 63bf035d4e19cc1d64998a6ad533812e71ee71b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 3b2759916e1f9ef0cec660157f577ff54cd39928
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887771"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340455"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服務匯流排的疑難排解指南
 本文提供使用 Azure 服務匯流排時，您可能會看到的幾個問題的疑難排解秘訣和建議。 
@@ -27,7 +15,7 @@ ms.locfileid: "80887771"
 ## <a name="connectivity-certificate-or-timeout-issues"></a>連線、憑證或超時問題
 下列步驟可協助您針對 *. servicebus.windows.net 下所有服務的連線/憑證/超時問題進行疑難排解。 
 
-- 流覽至或[wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/`。 它有助於檢查您是否有 IP 篩選或虛擬網路或憑證鏈問題（最常見的情況是使用 java SDK）。
+- 流覽至或[wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/` 。 它有助於檢查您是否有 IP 篩選或虛擬網路或憑證鏈問題（最常見的情況是使用 java SDK）。
 
     成功訊息的範例：
     
@@ -56,12 +44,12 @@ ms.locfileid: "80887771"
     ```shell
     telnet <yournamespacename>.servicebus.windows.net 5671
     ```
-- 當發生間歇連線問題時，請執行下列命令來檢查是否有任何已丟棄的封包。 此命令會嘗試使用服務每隔1秒建立25個不同的 TCP 連線。 然後，您可以檢查其中有多少個成功/失敗，同時查看 TCP 連接延遲。 您可以從`psping` [這裡](/sysinternals/downloads/psping)下載此工具。
+- 當發生間歇連線問題時，請執行下列命令來檢查是否有任何已丟棄的封包。 此命令會嘗試使用服務每隔1秒建立25個不同的 TCP 連線。 然後，您可以檢查其中有多少個成功/失敗，同時查看 TCP 連接延遲。 您可以 `psping` 從[這裡](/sysinternals/downloads/psping)下載此工具。
 
     ```shell
     .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.windows.net:5671 -nobanner     
     ```
-    如果您使用其他工具（例如`tnc`、 `ping`等等），可以使用對等的命令。 
+    如果您使用其他工具（例如、等等），可以使用對等的命令 `tnc` `ping` 。 
 - 如果先前的步驟沒有使用[Wireshark](https://www.wireshark.org/)之類的工具來協助並加以分析，請取得網路追蹤。 如有需要，請聯絡[Microsoft 支援服務](https://support.microsoft.com/)。 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>服務升級/重新開機時可能發生的問題

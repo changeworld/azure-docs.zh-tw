@@ -7,7 +7,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 04/29/2020
@@ -15,12 +15,11 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 0524e8756e86771ab555eaa853e3955fe69c8549
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582702"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727648"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>依據 Azure Active Directory 中的群組成員資格將授權指派給使用者
 
@@ -59,7 +58,7 @@ ms.locfileid: "82582702"
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>步驟 2︰確認已完成初始指派
 
-1. 移至 [ **Azure Active Directory** > **群組**]。 選取已指派授權的群組。
+1. 移至 [ **Azure Active Directory**  >  **群組**]。 選取已指派授權的群組。
 
 1. 在 [群組] 頁面上，選取 [**授權**]。 可讓您快速確認授權是否已完全指派給使用者，以及是否有任何錯誤需要探究。 可用資訊如下：
 
@@ -71,17 +70,17 @@ ms.locfileid: "82582702"
 
    ![授權錯誤和授權狀態](./media/licensing-groups-assign/assignment-errors.png)
 
-1. 如需更多有關授權處理的詳細資訊，請參閱**Azure Active Directory** > **使用者和群組** > *組名* > **Audit logs**。 檢查下列活動：
+1. 如需更多有關授權處理的詳細資訊，請參閱**Azure Active Directory**  >  **使用者和群組**  >  *組名*  >  **Audit logs**。 檢查下列活動：
 
-   - 活動： `Start applying group based license to users`。 當我們的系統拾取群組的授權指派變更，並開始將其套用到所有使用者成員時，就會進行記錄。 它包含已進行之變更的相關資訊。
+   - 活動： `Start applying group based license to users` 。 當我們的系統拾取群組的授權指派變更，並開始將其套用到所有使用者成員時，就會進行記錄。 它包含已進行之變更的相關資訊。
 
-   - 活動： `Finish applying group based license to users`。 當系統完成處理群組中的所有使用者時，就會進行記錄。 它包含已成功處理的使用者人數和無法獲得群組授權指派的使用者人數之摘要。
+   - 活動： `Finish applying group based license to users` 。 當系統完成處理群組中的所有使用者時，就會進行記錄。 它包含已成功處理的使用者人數和無法獲得群組授權指派的使用者人數之摘要。
 
    [閱讀本節](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity)以深入了解如何使用稽核記錄，以分析群組型授權所做的變更。
 
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>步驟 3︰檢查授權問題及解決這些問題
 
-1. 移至 [ **Azure Active Directory** > **群組**]，然後尋找已指派授權的群組。
+1. 移至 [ **Azure Active Directory**  >  **群組**]，然後尋找已指派授權的群組。
 1. 在 [群組] 頁面上，選取 [**授權**]。 頁面頂端的通知顯示有10位使用者無法指派授權。 開啟該檔案，以查看此群組的授權錯誤狀態的所有使用者清單。
 1. [失敗的指派]**** 資料行告訴我們，兩個產品授權都無法指派給使用者。 [失敗的前幾大原因]**** 資料行包含失敗的原因。 在此案例中為 [衝突的服務方案]****。
 

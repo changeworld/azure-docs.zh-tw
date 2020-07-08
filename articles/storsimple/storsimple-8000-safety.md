@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 3c880cd18e7227a728d7e276e72a5ea8c1e421de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396641"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514542"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安裝和操作您的 StorSimple 裝置
 ![警告圖示](./media/storsimple-safety/IC740879.png)
@@ -30,10 +29,10 @@ ms.locfileid: "80396641"
 ## <a name="safety-icon-conventions"></a>安全性圖示慣例
 以下是您在檢閱安全性預防措施時會發現的圖示，這些措施可在設定與執行 Microsoft Azure StorSimple 裝置時觀查到。
 
-| 圖示 | 描述 |
+| 圖示 | Description |
 |:--- |:--- |
 | ![危險圖示](./media/storsimple-safety/IC740879.png) **危險！** |指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。 |
-| ![警告圖示](./media/storsimple-safety/IC740879.png) **警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
+| ![警告圖示 ](./media/storsimple-safety/IC740879.png) **警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
 | ![警告圖示](./media/storsimple-safety/IC740879.png) **小心！** |指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。 |
 | ![注意事項圖示](./media/storsimple-safety/IC740881.png) **注意事項：** |表示重要資訊，但與危險無關。 |
 | ![電擊圖示](./media/storsimple-safety/IC740882.png) **電擊危險** |高電壓 |
@@ -103,10 +102,11 @@ ms.locfileid: "80396641"
 
 關於機架系統的適當冷卻：
 
-* 請確定機架設計考量到機箱作業周圍溫度最大值為攝氏 35 度 (華氏 95 度)。
+* 請確定機架設計考量到機箱作業周圍溫度最大值為攝氏 35 度 (華氏 95 度)。 將機架系統的空間保持在最酷的位置，並檢查資料中心內是否有來自 AC 通風線的足夠氣流。
 * 系統在低壓、後方排氣安裝的條件下運作 (機架門和障礙建立的背部壓力不能超過 5 Pascal [0.5 mm-1.0 水位表])。
 
 ## <a name="power-cooling-module-pcm-precautions"></a>電源冷卻模組 (PCM) 預防措施
+
 裝置設計為利用兩個 PCM 運作。 每個 PCM 都具有電源供應器和雙軸風扇。 在嚴苛條件期間，系統會允許其中一個電源供應器失敗，同時繼續正常作業。 兩個 PCM (因此和電源供應器) 必須一律安裝。 單一 PCM 不會提供備援電源。 因此，即使一個 PCM 失敗也可能會導致停機或可能會遺失資料。
 
 ![Warning Icon](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **警告！**
@@ -123,6 +123,7 @@ ms.locfileid: "80396641"
 * 請勿移除 PCM，除非可以立即安裝替代項目。 機箱不得在所有模組尚未備妥之前運作。
 
 ## <a name="electrostatic-discharge-esd-precautions"></a>靜電放電 (ESD) 預防措施
+
 ![注意事項圖示](./media/storsimple-safety/IC740881.png) **注意事項：**
 
 請遵循下列 ESD 相關的預防措施。
@@ -133,9 +134,10 @@ ms.locfileid: "80396641"
 * 瑕疵擔保未涵蓋 ESD 損害。
 
 ## <a name="battery-disposal-precautions"></a>電池處置預防措施
+
 電源供應器會使用特殊的電池，以在暫時的短期電源中斷期間保護記憶體的內容。 電池置於 PCM 中。 記住下列電池相關資訊。
 
-![警告圖示](./media/storsimple-safety/IC740879.png) **警告！**
+![警告圖示 ](./media/storsimple-safety/IC740879.png) **警告！**
 
 減少短路、火災、爆炸、傷害或死亡的風險：
 
@@ -150,6 +152,6 @@ ms.locfileid: "80396641"
 在您檢閱這些安全性注意事項之後，接下來的步驟是為裝置解除封裝、安裝機架和纜線。
 
 ## <a name="next-steps"></a>後續步驟
+
 * 針對 8100 裝置，請至 [安裝您的 StorSimple 8100 裝置](storsimple-8100-hardware-installation.md)。
 * 針對 8600 裝置，請至 [安裝您的 StorSimple 8600 裝置](storsimple-8600-hardware-installation.md)。
-

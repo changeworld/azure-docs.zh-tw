@@ -3,19 +3,17 @@ title: 開始使用 Key Vault 憑證
 description: 下列情節概述 Key Vault 憑證管理服務的數個主要用法 (包括在金鑰保存庫中建立第一個憑證所需的其他步驟)。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5881314f0d3c62e7d6181ebd7bb27a5e0e87729a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84765092"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>開始使用 Key Vault 憑證
 下列情節概述 Key Vault 憑證管理服務的數個主要用法 (包括在金鑰保存庫中建立第一個憑證所需的其他步驟)。
@@ -97,13 +95,19 @@ ms.locfileid: "81431939"
 -   此外，使用者可以編輯原則，而此原則是在匯入時作用，但包含匯入時未指定任何資訊的預設值。 例如： 無簽發者資訊  
 
 ### <a name="formats-of-import-we-support"></a>我們支援的匯入格式
+Azure Key Vault 支援將憑證匯入金鑰保存庫的 pem 和 .pfx 憑證檔案。
 我們支援下列 PEM 檔案格式的匯入類型。 單一 PEM 編碼的憑證，連同 PKCS # 8 編碼、未加密的金鑰，其中包含下列各項
 
 -----開始憑證----------結束憑證-----
 
 -----開始私密金鑰----------結束私密金鑰-----
 
-在憑證合併時，我們支援2個 PEM 格式。 您可以合併單一 PKCS # 8 編碼憑證或 base64 編碼的 P7B 檔案。 -----開始憑證----------結束憑證-----
+當您匯入憑證時，您必須確定該金鑰包含在檔案本身。 如果您使用不同的格式來個別擁有私密金鑰，就必須結合該金鑰與憑證。 有些憑證授權單位單位會提供不同格式的憑證，因此在匯入憑證之前，請確定它們都是 pem 或 .pfx 格式。 
+
+### <a name="formats-of-merge-csr-we-support"></a>我們支援的合併 CSR 的格式
+AKV 支援2個以 PEM 為基礎的格式。 您可以合併單一 PKCS # 8 編碼憑證或 base64 編碼的 P7B （由 CA 簽署的憑證鏈） 
+
+-----開始憑證----------結束憑證-----
 
 我們目前不支援 PEM 格式的 EC 按鍵。
 
@@ -123,4 +127,3 @@ ms.locfileid: "81431939"
   (4) - 您選擇的 CA 回覆 X509 憑證。  
 
   (5) - 應用程式合併 CA 的 X509 憑證，來完成新憑證建立。
-

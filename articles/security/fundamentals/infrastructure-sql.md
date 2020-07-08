@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021852"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database 安全性功能    
 Azure SQL Database 在 Azure 中提供關聯式資料庫服務。 為了保護客戶資料，並提供強大的安全性功能，以滿足提供客戶對於關聯式資料庫服務的期待，SQL Database 有一套自己的安全性功能。 這些功能都是根據從 Azure 繼承的控制項為基礎而建置。
@@ -31,13 +30,13 @@ Azure SQL Database 在 Azure 中提供關聯式資料庫服務。 為了保護�
 Azure SQL Database 僅支援表格式資料流 (TDS) 通訊協定，該通訊協定會要求只能透過預設連接埠 TCP/1433 存取資料庫。
 
 ### <a name="azure-sql-database-firewall"></a>Azure SQL Database 防火牆
-為了協助保護客戶資料，Azure SQL Database 會包含防火牆功能，該功能預設可防止對於 SQL Database 伺服器的所有存取，如下所示。
+為了協助保護客戶資料，Azure SQL Database 包括防火牆功能，預設會防止所有對 SQL Database 的存取，如下所示。
 
 ![Azure SQL Database 防火牆](./media/infrastructure-sql/sql-database-firewall.png)
 
 閘道防火牆可限制位址，讓客戶有精細的控制權，可以指定可接受 IP 位址的範圍。 此防火牆會根據每一個要求的原始 IP 位址來授與存取權。
 
-客戶可以使用管理入口網站，或使用 Azure SQL Database 管理 REST API 以程式設計方式來完成防火牆組態。 Azure SQL Database 閘道防火牆預設會防止所有客戶以 TDS 存取 Azure SQL 資料庫執行個體。 客戶必須使用存取控制清單 (ACL) 來設定存取，以依據來源和目的地網際網路位址、通訊協定和連接埠號碼允許 Azure SQL Database 連線。
+客戶可以使用管理入口網站，或使用 Azure SQL Database 管理 REST API 以程式設計方式來完成防火牆組態。 Azure SQL Database 閘道防火牆預設會防止所有客戶 TDS 存取 Azure SQL Database。 客戶必須使用存取控制清單 (ACL) 來設定存取，以依據來源和目的地網際網路位址、通訊協定和連接埠號碼允許 Azure SQL Database 連線。
 
 ### <a name="dosguard"></a>DoSGuard
 稱為 DoSGuard 的 SQL Database 閘道服務會減少拒絕服務的攻擊 (DoS)。 DoSGuard 會主動追蹤來自 IP 位址的失敗登入。 如果在一段時間內特定 IP 位址有多個失敗登入，該 IP 位址會遭到封鎖，而無法在預先定義的時段存取服務中的任何資源。

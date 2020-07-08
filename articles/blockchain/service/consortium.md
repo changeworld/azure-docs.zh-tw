@@ -5,11 +5,10 @@ ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
 ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247614"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712525"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Azure 區塊鏈 Service 聯盟
 
@@ -33,12 +32,12 @@ ms.locfileid: "79247614"
 
 | 動作 | 使用者角色 | 系統管理員角色
 |--------|:----:|:------------:|
-| 建立新成員 | 是 | 是 |
+| 建立新成員 | 是 | Yes |
 | 邀請新成員 | 否 | 是 |
 | 設定或變更成員參與者角色 | 否 | 是 |
 | 變更成員顯示名稱 | 僅適用于自己的成員 | 僅適用于自己的成員 |
-| 移除成員 | 僅適用于自己的成員 | 是 |
-| 參與區塊鏈交易 | 是 | 是 |
+| 移除成員 | 僅適用于自己的成員 | Yes |
+| 參與區塊鏈交易 | 是 | Yes |
 
 ### <a name="user-role"></a>使用者角色
 

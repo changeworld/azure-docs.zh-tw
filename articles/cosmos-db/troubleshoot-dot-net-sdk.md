@@ -3,22 +3,21 @@ title: 診斷在使用 Azure Cosmos DB .NET SDK 時的問題並進行疑難排�
 description: 使用用戶端記錄和其他協力廠商工具等功能，來識別、診斷及疑難排解使用 .NET SDK 時的 Azure Cosmos DB 問題。
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/06/2020
+ms.date: 06/16/2020
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e389df7cfe0e228030d2d0f730fc5e671ad4c052
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: 0eb5d9cd86be05e5ad69bc9543231987e3c1dd2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927627"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799260"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>診斷在使用 Azure Cosmos DB .NET SDK 時的問題並進行疑難排解
 
 > [!div class="op_single_selector"]
-> * [JAVA SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
 > * [非同步 Java SDK v2](troubleshoot-java-async-sdk.md)
 > * [.NET](troubleshoot-dot-net-sdk.md)
 > 
@@ -32,10 +31,10 @@ ms.locfileid: "82927627"
 *    使用最新的[SDK](sql-api-sdk-dotnet-standard.md)。 預覽 Sdk 不應用於生產環境。 這將導致無法達到已修正的已知問題。
 *    檢閱[效能祕訣](performance-tips.md)並遵循建議的做法。 這將有助於防止調整、延遲和其他效能問題。
 *    啟用 SDK 記錄以協助您針對問題進行疑難排解。 啟用記錄可能會影響效能，所以最好只在針對問題進行疑難排解時才啟用。 您可以啟用下列記錄：
-    *    使用 Azure 入口網站來[記錄計量](monitor-accounts.md)。 入口網站計量會顯示 Azure Cosmos DB 的遙測，這有助於判斷問題是否對應到 Azure Cosmos DB 或是否來自用戶端。
-    *    從點作業回應中，記錄 V2 SDK 中的[診斷字串](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)或 V3 sdk 中的[診斷](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics)。
-    *    記錄所有查詢回應中的[SQL 查詢計量](sql-api-query-metrics.md) 
-    *    遵循適用于[SDK 記錄]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md)的設定
+*    使用 Azure 入口網站來[記錄計量](monitor-accounts.md)。 入口網站計量會顯示 Azure Cosmos DB 的遙測，這有助於判斷問題是否對應到 Azure Cosmos DB 或是否來自用戶端。
+*    從點作業回應中，記錄 V2 SDK 中的[診斷字串](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)或 V3 sdk 中的[診斷](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics)。
+*    記錄所有查詢回應中的[SQL 查詢計量](sql-api-query-metrics.md) 
+*    遵循適用于[SDK 記錄]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md)的設定
 
 查看此文章的[常見問題和因應措施](#common-issues-workarounds)一節。
 
@@ -69,7 +68,7 @@ RequestTimeout 通常會在使用 Direct/TCP 時發生，但在閘道模式中�
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>高網路延遲
 您可以使用 V2 SDK 中的[診斷字串](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet)或 V3 sdk 中的[診斷](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)來識別高網路延遲。
 
-如果沒有任何[超時](#request-timeouts)，而且診斷顯示單一要求，其中高延遲會明顯呈現與`ResponseTime` `RequestStartTime`之間的差異，就像這樣（在此範例中 >300 毫秒）：
+如果沒有任何[超時](#request-timeouts)，而且診斷顯示單一要求，其中高延遲會明顯呈現與之間的差異 `ResponseTime` `RequestStartTime` ，就像這樣（在此範例中 >300 毫秒）：
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
@@ -87,14 +86,14 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 
 ### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) 連接埠耗盡
 
-如果您的應用程式部署在[Azure 虛擬機器且沒有公用 IP 位址](../load-balancer/load-balancer-outbound-connections.md#defaultsnat)，則[azure SNAT 埠](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)預設會建立與 VM 外任何端點的連線。 從 VM 到 Azure Cosmos DB 端點所允許的連線數目會受到 [Azure SNAT 設定](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)所限制。 這種情況可能會導致連線節流、連接關閉或上述的[要求超時](#request-timeouts)。
+如果您的應用程式部署在[Azure 虛擬機器且沒有公用 IP 位址](../load-balancer/load-balancer-outbound-connections.md)，則[azure SNAT 埠](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)預設會建立與 VM 外任何端點的連線。 從 VM 到 Azure Cosmos DB 端點所允許的連線數目會受到 [Azure SNAT 設定](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)所限制。 這種情況可能會導致連線節流、連接關閉或上述的[要求超時](#request-timeouts)。
 
  只有當您的 VM 具有私人 IP 位址正在連線到公用 IP 位址時，才會使用 Azure SNAT 埠。 有兩種因應措施可避免 Azure SNAT 限制（前提是您已在整個應用程式中使用單一用戶端實例）：
 
 * 將 Azure Cosmos DB 服務端點新增至您的 Azure 虛擬機器虛擬網路。 如需詳細資訊，請參閱 [Azure 虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)。 
 
     啟用服務端點時，要求不再會從公用 IP 傳送到 Azure Cosmos DB。 改為傳送虛擬網路和子網路身分識別。 如果只允許公用 IP，此變更可能會導致防火牆卸除。 如果您使用防火牆，當您啟用服務端點時，請使用[虛擬網路 ACL](../virtual-network/virtual-networks-acl.md) 將子網路新增至防火牆。
-* 將[公用 IP 指派給您的 AZURE VM](../load-balancer/load-balancer-outbound-connections.md#assignilpip)。
+* 將[公用 IP 指派給您的 AZURE VM](../load-balancer/troubleshoot-outbound-connection.md#assignilpip)。
 
 ### <a name="http-proxy"></a>HTTP Proxy
 如果您使用 HTTP Proxy，請確定它可以支援在 SDK `ConnectionPolicy` 中設定的連線數目。
@@ -109,14 +108,16 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 * 如果後端查詢速度緩慢，請嘗試[優化查詢](optimize-cost-queries.md)，並查看目前的[編制索引原則](index-overview.md) 
 
 ### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401：在 HTTP 要求中找到的 MAC 簽章與計算的簽章不同
-如果您收到下列401錯誤訊息：「在 HTTP 要求中找到的 MAC 簽章與計算的簽章不同」。 這可能是由下列案例所造成。
+如果您收到下列 401 錯誤訊息：「在 HTTP 要求中找到的 MAC 簽章與計算的簽章不同。」 這可能是由下列案例所造成。
 
-1. 金鑰已輪替，且未遵循[最佳作法](secure-access-to-data.md#key-rotation)。 這通常是這種情況。 視 Cosmos DB 帳戶大小而定，Cosmos DB 帳戶金鑰輪替可能需要幾秒鐘到數秒的時間。
-   1. 401在金鑰輪替後不久就會看到 MAC 簽章，而且最終會在沒有任何變更的情況下停止。 
-2. 應用程式上的金鑰設定錯誤，因此金鑰與帳戶不相符。
-   1. 401 MAC 簽章問題會一致，並會在所有呼叫時發生
-3. 建立容器時有競爭條件。 應用程式實例在完成容器建立之前，嘗試存取容器。 當應用程式正在執行時，最常見的案例是在應用程式執行時，刪除並重新建立具有相同名稱的容器。 SDK 會嘗試使用新的容器，但容器建立仍在進行中，因此沒有金鑰。
-   1. 401建立容器之後，很快就會出現 MAC 簽章問題，而且只有在完成容器建立後才會發生。
+1. 金鑰已輪替，且未遵循[最佳做法](secure-access-to-data.md#key-rotation)。 通常是這個原因。 視 Cosmos DB 帳戶大小而定，Cosmos DB 帳戶金鑰輪替可能需要幾秒鐘到數天的時間。
+   1. 在金鑰輪替後不久就會看到 401 MAC 簽章，而且最終會在沒有任何變更的情況下停止。 
+1. 應用程式上的金鑰設定錯誤，因此金鑰與帳戶不相符。
+   1. 401 MAC 簽章問題會在所有呼叫一致發生
+1. 應用程式使用[唯讀金鑰](secure-access-to-data.md#master-keys)進行寫入作業。
+   1. 只有在應用程式執行寫入要求時，才會發生 401 MAC 簽章問題，但讀取要求會成功。
+1. 建立容器時有競爭條件。 應用程式執行個體在完成容器建立之前，會嘗試存取容器。 確認應用程式是否正在執行的最常見的案例是，當執行應用程式時，刪除並重新建立具有相同名稱的容器。 SDK 會嘗試使用新的容器，但容器仍在建立中，因此沒有金鑰。
+   1. 建立容器之後，很快就會出現 401 MAC 簽章問題，而且只有在完成容器建立後才會發生。
  
  ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP 錯誤400。 要求標頭的大小太長。
  標頭的大小已增加至大，且超過允許的大小上限。 建議您一律使用最新的 SDK。 請務必使用[至少版本 3.x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md)或2.x，這會在例外狀況[訊息中加入](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)標頭大小追蹤。

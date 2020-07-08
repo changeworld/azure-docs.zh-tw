@@ -8,18 +8,17 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 92674ed9d39ea9e84d477d19aadbaeda6da6f32c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78206107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728260"
 ---
 # <a name="search-groups-and-members-preview-in-azure-active-directory"></a>搜尋 Azure Active Directory 中的群組和成員（預覽）
 
@@ -45,7 +44,7 @@ ms.locfileid: "78206107"
 
 ## <a name="group-search-and-sorting"></a>群組搜尋和排序
 
-群組清單搜尋已經過增強，因此當您輸入搜尋字串時，搜尋會自動在組名清單`startswith`上執行和 substring 搜尋。 子字串搜尋只會針對整個單字執行，而且不會包含特殊字元。 子字串搜尋會區分大小寫。
+群組清單搜尋已經過增強，因此當您輸入搜尋字串時，搜尋會自動 `startswith` 在組名清單上執行和 substring 搜尋。 子字串搜尋只會針對整個單字執行，而且不會包含特殊字元。 子字串搜尋會區分大小寫。
 
 ![[所有群組] 頁面上的新子字串搜尋](./media/groups-members-owners-search/groups-search-preview.png)
 

@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: fbc6d6fa8f9a3b424eaec1f04a61b5ca24fe14fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161778"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957370"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>設計具有存取控制的多重 DRM 內容保護系統 
 
@@ -138,7 +137,7 @@ DRM 子系統可能包含下列元件：
 | **安全權杖服務 (STS)** |Azure AD |
 | **DRM 保護工作流程** |Azure 媒體服務動態保護 |
 | **DRM 授權傳遞** |* 媒體服務授權傳遞 (PlayReady、Widevine、FairPlay) <br/>* Axinom 授權伺服器 <br/>* 自訂 PlayReady 授權伺服器 |
-| **原始** |Azure 媒體服務串流端點 |
+| **來源** |Azure 媒體服務串流端點 |
 | **金鑰管理** |不需要參考實作 |
 | **內容管理** |C# 主控台應用程式 |
 
@@ -222,8 +221,10 @@ DRM 子系統可能包含下列元件：
 
 * 簽發者 URL 的結尾必須為 "/"。 目標對象必須是播放器應用程式用戶端識別碼。 此外，請在簽發者 URL 的結尾新增 "/"。
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     在 [JWT 解碼器](http://jwt.calebb.net/)中，您會看到 **aud** 和 **iss**，如 JWT 權杖中所示：
 
@@ -235,11 +236,15 @@ DRM 子系統可能包含下列元件：
 
 * 當您設定動態 CENC 保護時，請使用正確的簽發者。
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     下列項目無法運作︰
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
     GUID 是 Azure AD 租用戶識別碼。 您可以在 Azure 入口網站的 [端點]**** 快顯功能表中找到 GUID。
 
@@ -249,7 +254,7 @@ DRM 子系統可能包含下列元件：
 
 * 建立限制需求時，設定適當的 TokenType。
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    `objTokenRestrictionTemplate.TokenType = TokenType.JWT;`
 
     因為您新增了 SWT (ACS) 以外的 JWT (Azure AD) 支援，預設 TokenType 是 TokenType.JWT。 如果您使用 SWT/ACS，就必須將權杖設定為 TokenType.SWT。
 
@@ -276,7 +281,7 @@ DRM 子系統可能包含下列元件：
 
 因為 Azure AD 信任 Microsoft 帳戶網域，您可以將下列任何網域的任何帳戶新增至自訂 Azure AD 租用戶，並使用該帳戶登入：
 
-| **網域名稱** | **Domain** |
+| **網域名稱** | **網域** |
 | --- | --- |
 | **自訂 Azure AD 租用戶網域** |somename.onmicrosoft.com |
 | **公司網域** |microsoft.com |

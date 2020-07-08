@@ -3,25 +3,24 @@ title: 已發行應用程式的自訂首頁-Azure AD 應用程式 Proxy
 description: 涵蓋 Azure AD 應用程式 Proxy 連接器的基本概念
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1621b273f617955a374ed46d9c215ba99e5b2913
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4e7e3a6666d467045b733b5401476fd83c93be19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764871"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 為發佈的應用程式設定自訂首頁
 
@@ -31,21 +30,21 @@ ms.locfileid: "74275606"
 
 以下是說明您的公司為何會設定自訂首頁的其中一個案例：
 
-- 在您的公司網路內，使用者會`https://ExpenseApp/login/login.aspx`前往以登入並存取您的應用程式。
-- 由於您有應用程式 Proxy 需要在資料夾結構最上層存取的其他資產（例如影像），因此您可以使用`https://ExpenseApp`來發行應用程式作為內部 URL。
-- 預設外部 URL 是`https://ExpenseApp-contoso.msappproxy.net`，這不會將外部使用者帶到登入頁面。
-- 您想要改`https://ExpenseApp-contoso.msappproxy.net/login/login.aspx`為將設定為首頁 URL，讓外部使用者先看到登入頁面。
+- 在您的公司網路內，使用者會前往 `https://ExpenseApp/login/login.aspx` 以登入並存取您的應用程式。
+- 由於您有應用程式 Proxy 需要在資料夾結構最上層存取的其他資產（例如影像），因此您可以使用來發行應用程式 `https://ExpenseApp` 作為內部 URL。
+- 預設外部 URL 是 `https://ExpenseApp-contoso.msappproxy.net` ，這不會將外部使用者帶到登入頁面。
+- 您想要改為將設定 `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` 為首頁 URL，讓外部使用者先看到登入頁面。
 
 > [!NOTE]
 > 當您將已發佈應用程式的存取權提供給使用者時，應用程式會顯示在 [Azure AD 存取面板](../user-help/my-apps-portal-end-user-access.md)和 [Office 365 應用程式啟動器](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 設定首頁 URL 之前，請記住下列需求︰
 
 - 您指定的路徑必須是根域 URL 的子域路徑。
 
-  例如，如果根域 URL 是`https://apps.contoso.com/app1/`，則您設定的首頁 url 必須以`https://apps.contoso.com/app1/`開頭。
+  例如，如果根域 URL 是 `https://apps.contoso.com/app1/` ，則您設定的首頁 url 必須以開頭 `https://apps.contoso.com/app1/` 。
 
 - 若變更已發佈的應用程式，則變更可能會重設首頁 URL 的值。 當您未來更新應用程式時，您應該重新檢查並視需要更新首頁 URL。
 
@@ -55,7 +54,7 @@ ms.locfileid: "74275606"
 
 若要透過 Azure AD 入口網站變更應用程式的首頁 URL，請遵循下列步驟：
 
-1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com/)。
+1. 以系統管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 選取 [ **Azure Active Directory**]，然後**應用程式註冊**]。 已註冊的應用程式清單隨即出現。
 1. 從清單中選擇您的應用程式。 此時會出現一個頁面，顯示已註冊應用程式的詳細資料。
 1. 在 [**管理**] 底下，選取 [**商標**]。
@@ -63,7 +62,7 @@ ms.locfileid: "74275606"
 
    ![顯示 [首頁 URL] 欄位之已註冊應用程式的商標頁面](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ## <a name="change-the-home-page-with-powershell"></a>使用 PowerShell 變更首頁
 
@@ -105,7 +104,7 @@ ms.locfileid: "74275606"
    Connect-AzureAD
    ```
 
-1. 尋找應用程式。 這個範例會使用 PowerShell 搜尋顯示名稱為的`SharePoint`應用程式，藉以尋找 ObjectId。
+1. 尋找應用程式。 這個範例會使用 PowerShell 搜尋顯示名稱為的應用程式，藉以尋找 ObjectId `SharePoint` 。
 
    ```powershell
    Get-AzureADApplication | Where-Object { $_.DisplayName -eq "SharePoint" } | Format-List DisplayName, Homepage, ObjectId
@@ -127,7 +126,7 @@ ms.locfileid: "74275606"
 
 ### <a name="update-the-home-page-url"></a>更新首頁 URL
 
-建立首頁 URL，並以該值更新您的應用程式。 繼續使用相同的 PowerShell 視窗，或如果您使用的是新的 PowerShell 視窗，請使用`Connect-AzureAD`再次登入 Azure AD 模組。 接著，遵循下列步驟：
+建立首頁 URL，並以該值更新您的應用程式。 繼續使用相同的 PowerShell 視窗，或如果您使用的是新的 PowerShell 視窗，請使用再次登入 Azure AD 模組 `Connect-AzureAD` 。 接著，遵循下列步驟：
 
 1. 建立變數來保存您在上一節中複製的 ObjectId 值。 （將此 SharePoint 範例中使用的 ObjectId 值取代為您應用程式的 ObjectId 值）。
 
@@ -181,4 +180,4 @@ ms.locfileid: "74275606"
 ## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure AD 應用程式 Proxy 啟用 SharePoint 的遠端存取](application-proxy-integrate-with-sharepoint-server.md)
-- [教學課程：在 Azure Active Directory 中新增內部部署應用程式，以透過應用程式 Proxy 進行遠端存取](application-proxy-add-on-premises-application.md)
+- [教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取](application-proxy-add-on-premises-application.md)

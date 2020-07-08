@@ -13,12 +13,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: ee9dfc11cad61d6190ae4a2382f0124207c32c4c
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801615"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84418138"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒體服務 v3 進行即時串流
 
@@ -30,12 +29,14 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 - 即時視訊編碼器，可將來自相機 (或另一部裝置，例如膝上型電腦) 的訊號轉換成發佈摘要以傳送給「媒體服務」。 發佈摘要可以包含廣告相關訊號，例如 SCTE-35 標記。<br/>如需建議的即時串流編碼器清單，請參閱[即時串流編碼器](recommended-on-premises-live-encoders.md)。 此外，請參閱此 blog：[使用 OBS 的即時串流生產](https://link.medium.com/ttuwHpaJeT)。
 - 媒體服務中的元件可讓您內嵌、預覽、封裝、記錄、加密實況活動，並向客戶廣播這些活動，或是向 CDN 廣播以進一步發佈。
 
+對於想要將內容傳遞給大型網際網路物件的客戶，我們建議您在[串流端點](streaming-endpoint-concept.md)上啟用 CDN。
+
 本文提供使用媒體服務的即時串流總覽和指導方針，以及其他相關文章的連結。
  
 > [!NOTE]
-> 您可以使用 [Azure 入口網站](https://portal.azure.com/) 來管理 v3 [即時活動](live-events-outputs-concept.md)、查看 v3 [資產](assets-concept.md)、取得存取 API的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
+> 您可以使用[Azure 入口網站](https://portal.azure.com/)來管理 V3[即時事件](live-events-outputs-concept.md)、查看 v3[資產](assets-concept.md)、取得存取 api 的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
 
-## <a name="dynamic-packaging"></a>動態封裝
+## <a name="dynamic-packaging-and-delivery"></a>動態封裝和傳遞
 
 使用媒體服務，您可以利用[動態封裝](dynamic-packaging-overview.md)，讓您以[MPEG 破折號、HLS 和 Smooth Streaming 格式](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，從傳送到服務的發佈摘要中預覽和廣播即時串流。 您的檢視者可以搭配支援 HLS、DASH 或 Smooth Streaming 的播放器播放即時串流。 您可以在網路或行動應用程式中使用 [Azure 媒體播放器](https://amp.azure.net/libs/amp/latest/docs/index.html)，透過這些通訊協定中的任何一個傳遞串流。
 
@@ -46,13 +47,13 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 > [!NOTE]
 > Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="dynamic-manifest"></a>動態資訊清單
+## <a name="dynamic-filtering"></a>動態篩選
 
 動態篩選是用來控制傳送給播放程式的曲目、格式、位元速率和呈現時間時段的數目。 如需詳細資訊，請參閱[篩選器和動態資訊清單](filters-dynamic-manifest-overview.md)。
 
-## <a name="live-event-types"></a>實況活動類型
+## <a name="live-event-types"></a>即時事件類型
 
-[實況活動](https://docs.microsoft.com/rest/api/media/liveevents)負責內嵌和處理即時視訊摘要。 即時事件可設定為*傳遞* (內部部署即時編碼器會傳送多重位元速率串流) 或*即時編碼* (內部部署即時編碼器會傳送單一位元速率串流)。 如需媒體服務 v3 中即時串流的詳細資訊，請參閱[即時事件和即時輸出](live-events-outputs-concept.md)。
+[實況活動](https://docs.microsoft.com/rest/api/media/liveevents)會負責內嵌和處理即時影片摘要。 即時事件可設定為*傳遞* (內部部署即時編碼器會傳送多重位元速率串流) 或*即時編碼* (內部部署即時編碼器會傳送單一位元速率串流)。 如需媒體服務 v3 中即時串流的詳細資訊，請參閱[即時事件和即時輸出](live-events-outputs-concept.md)。
 
 ### <a name="pass-through"></a>傳遞
 
@@ -68,7 +69,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ### <a name="live-transcription-preview"></a>即時轉譯（預覽）
 
-即時轉譯是一項功能，可讓您搭配傳遞或即時編碼的即時事件使用。 如需詳細資訊，請參閱[即時](live-transcription.md)轉譯。 啟用這項功能時，服務會使用認知服務的[語音轉換文字](../../cognitive-services/speech-service/speech-to-text.md)功能，將傳入音訊中的單字轉譯成文字。 然後，這段文字會提供給傳遞，以及以 MPEG-2 和 HLS 通訊協定進行的影片和音訊。
+即時轉譯是一項功能，可讓您搭配傳遞或即時編碼的即時事件使用。 如需詳細資訊，請參閱[即時](live-transcription.md)轉譯。 啟用這項功能時，此服務會使用認知服務的[語音轉換文字](../../cognitive-services/speech-service/speech-to-text.md)功能，將傳入的音訊中說出口的話轉譯成文字。 然後，在 MPEG-2 和 HLS 通訊協定中，此文字就能隨著視訊和音訊一起傳遞。
 
 > [!NOTE]
 > 目前，即時轉譯在美國西部2中是以預覽功能的形式提供。
@@ -78,13 +79,13 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 若要瞭解媒體服務 v3 中的即時串流工作流程，您必須先複習並瞭解下列概念： 
 
 - [串流端點](streaming-endpoint-concept.md)
-- [即時事件與即時輸出](live-events-outputs-concept.md)
+- [即時活動與即時輸出](live-events-outputs-concept.md)
 - [串流定位器](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>一般步驟
 
 1. 在您的媒體服務帳戶中，確定**串流端點**（原點）正在執行。 
-2. 建立[實況活動](live-events-outputs-concept.md)。 <br/>在建立事件時，您可以指定要自動啟動它。 或者，您可以在準備好開始進行串流處理時啟動事件。<br/> 當自動啟動設定為 true 時，即時事件將會在建立後隨即啟動。 只要即時事件一執行，就會立即開始計費。 您必須對「實況活動」資源明確呼叫「停止」，才能終止進一步計費。 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
+2. 建立[即時事件](live-events-outputs-concept.md)。 <br/>在建立事件時，您可以指定要自動啟動它。 或者，您可以在準備好開始進行串流處理時啟動事件。<br/> 當自動啟動設定為 true 時，即時事件將會在建立後隨即啟動。 只要即時事件一執行，就會立即開始計費。 您必須在即時事件資源上明確呼叫「停止」，才能終止進一步計費。 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
 3. 取得內嵌 URL，並將您的內部部署編碼器設定為使用 URL 來傳送發佈摘要。<br/>請參閱[建議的即時編碼器](recommended-on-premises-live-encoders.md)。
 4. 取得預覽 URL 並使用它來確認實際上已收到來自編碼器的輸入。
 5. 建立新的**資產**物件。 
@@ -96,15 +97,15 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 7. 使用[內建的串流原則類型](streaming-policy-concept.md)來建立**串流定位器**。
 
     若要發佈即時輸出，您必須為相關聯的資產建立串流定位器。 
-8. 列出 [串流定位器]**** 上的路徑，以取得要使用的 URL (這些具有決定性)。
+8. 列出**串流定位器**上的路徑，以取回要使用的 url （這些都是具決定性的）。
 9. 取得您想要串流**處理的串流端點**（來源）的主機名稱。
 10. 結合步驟 8 的 URL 和步驟 9 的主機名稱，即可取得完整的 URL。
-11. 如果想要停止讓**實況活動**可供檢視，您必須將該活動停止串流並刪除**串流定位器**。
+11. 如果您想要停止讓**即時事件**可供查看，您必須停止串流處理事件，並刪除**串流定位器**。
 12. 如果您完成串流處理事件，而且想要清除先前佈建的資源，請遵循下列程序。
 
     * 停止從編碼器發送串流。
-    * 停止即時事件。 即時事件在停止之後，就不會產生任何費用。 當您需要重新啟動它時，它會具有相同的內嵌 URL，因此您不需要重新設定編碼器。
-    * 除非您想要繼續將即時事件封存為隨選串流，否則您可以停止「串流端點」。 如果即時事件處於已停止狀態，就不會產生任何費用。
+    * 停止即時事件。 實況活動一旦停止，就不會產生任何費用。 當您需要重新啟動它時，它會具有相同的內嵌 URL，因此您不需要重新設定編碼器。
+    * 除非您想要繼續將即時事件封存為隨選串流，否則您可以停止串流端點。 如果即時事件處於 [已停止] 狀態，則不會產生任何費用。
 
 即時輸出所封存的資產，會在即時輸出刪除時自動成為隨選資產。 您必須先刪除所有即時輸出，才能停止即時事件。 您可以使用選擇性的旗標[removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) ，在停止時自動移除即時輸出。 
 
@@ -115,9 +116,9 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 - [建議的即時編碼器](recommended-on-premises-live-encoders.md)
 - [使用雲端 DVR](live-event-cloud-dvr.md)
-- [即時事件類型功能比較](live-event-types-comparison.md)
+- [即時事件種類功能比較](live-event-types-comparison.md)
 - [狀態與計費](live-event-states-billing.md)
-- [Latency](live-event-latency.md)
+- [延遲](live-event-latency.md)
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 

@@ -6,18 +6,30 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 10/16/2019
+ms.date: 6/4/2020
 ms.author: dapatil
-ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 74b02da51603366f5ec18aa4733117bc2c59faf7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72433422"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84417849"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery 部署規劃工具版本歷程記錄
 
 本文提供所有版本 Azure Site Recovery 部署規劃工具的歷程記錄，以及修正程式、每個版本的已知限制和發行日期。
+
+## <a name="version-252"></a>版本2.52
+
+**發行日期：2020年6月4日**
+
+**補丁**
+
+- 已新增 vCenter 7.0 的支援
+- 已新增下列作業系統的支援：
+
+    - SUSE Linux Enterprise 15 （含所有次要版本）
+    - Red Hat Enterprise Linux 8 （包含所有次要版本）
+
 
 ## <a name="version-251"></a>版本2.51
 
@@ -44,7 +56,7 @@ ms.locfileid: "72433422"
 
 - 改善作業系統的相容性，特別是在處理以當地語系化為基礎的錯誤時。
 - 已將 Vm 新增至相容性檢查清單，最高可達 20 Mbps 的資料變更率（變換）。
-- 改善的錯誤訊息
+- 改善錯誤訊息
 - 已新增對 vCenter 6.7 的支援。
 - 已新增 Windows Server 2019 和 Red Hat Enterprise Linux （RHEL）工作站的支援。
 
@@ -109,7 +121,7 @@ ms.locfileid: "72433422"
 
 **已知的限制：**
 
-- 針對 hyper-v 到 Azure 的嚴重損壞修復，不支援名稱包含下列字元的 VM `,`： `"`、 `[`、 `]`、和``` ` ``` 。 如果已進行分析，報告產生將會失敗，或會有不正確的結果。
+- 針對 hyper-v 到 Azure 的嚴重損壞修復，不支援名稱包含下列字元的 VM： `,` 、 `"` 、 `[` 、 `]` 和 ``` ` ``` 。 如果已進行分析，報告產生將會失敗，或會有不正確的結果。
 - 針對 VMware 到 Azure 的嚴重損壞修復，不支援名稱包含逗號的 VM。 如果已進行分析，則報表產生會失敗或會有不正確的結果。
 
 ## <a name="version-131"></a>1.3.1 版

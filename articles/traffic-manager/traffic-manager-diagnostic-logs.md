@@ -3,20 +3,18 @@ title: 在 Azure 流量管理員中啟用資源記錄
 description: 瞭解如何為您的流量管理員設定檔啟用資源記錄，並存取作為結果而建立的記錄檔。
 services: traffic-manager
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
-ms.openlocfilehash: d0ffcffd7d4a4f2072b640ace03ec819aa416d47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133910"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711658"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>在 Azure 流量管理員中啟用資源記錄
 
@@ -71,9 +69,9 @@ Azure 流量管理員資源記錄可讓您深入瞭解流量管理員設定檔�
 
 |||||
 |----|----|---|---|
-|**欄位名稱**|**欄位類型**|**定義**|**範例**|
-|EndpointName|字串|正在記錄其健全狀況狀態的流量管理員端點的名稱。|*myPrimaryEndpoint*|
-|狀態|字串|所探查流量管理員端點的健全狀況狀態。 狀態可以是 **Up** 或 **down**。|**Up**|
+|**功能變數名稱**|**欄位類型**|**定義**|**範例**|
+|EndpointName|String|正在記錄其健全狀況狀態的流量管理員端點的名稱。|*myPrimaryEndpoint*|
+|狀態|String|所探查流量管理員端點的健全狀況狀態。 狀態可以是 **Up** 或 **down**。|**Up**|
 |||||
 
 ## <a name="next-steps"></a>後續步驟

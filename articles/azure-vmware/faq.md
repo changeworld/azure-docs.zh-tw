@@ -4,12 +4,11 @@ description: 提供一些關於 Azure VMware 解決方案 (AVS) 常見問題的�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: c318a17e433f40b17e3dd9e3e95a655ecb48a160
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873308"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84112692"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware 解決方案 (AVS) 預覽的常見問題
 
@@ -67,34 +66,7 @@ CloudSimple 不會對現有的 Azure VMware 解決方案進行任何變更。 �
 
 是，Azure VMware 解決方案支援使用熟悉的 VMware 工具 (例如 HCX) 來進行移轉。 對於想要移轉至新解決方案的客戶，請與您的 Microsoft 帳戶小組合作，以探索選項和可用的支援。
 
-<a name="how-to-request-a-quota-increase-for-existing-avs"></a>**如何要求現有 Azure VMware 解決方案的主機配額增加？**
 
-只要[提交支援要求](..\azure-portal\supportability\how-to-create-azure-support-request.md)，即可要求配額增加。 配額管理小組會評估要求，並在三個工作天內核准。  
-
-> [!IMPORTANT]
-> 在您要求增加配額之前，請確定您在 Azure 入口網站中[註冊 **Microsoft.AVS** 資源提供者](tutorial-create-private-cloud.md)。  
-> ```azurecli-interactive
-> az provider register -n Microsoft.AVS --subscription <your subscription ID>
-> ```
-> 如需註冊資源提供者的其他方式，請參閱 [Azure 資源提供者和類型](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types)。
-
-1. 在您的 Azure 入口網站中，[說明 + 支援] 底下，建立**新的支援要求**並提供票證的下列資訊：
-   - **問題類型：** 技術需求
-   - **訂用帳戶︰** 訂用帳戶識別碼
-   - **服務：** Azure VMware 解決方案 
-   - **摘要：** 配額增加
-   - **問題類型：** 容量管理問題
-   - **問題子類型：** 其他主機配額/容量的客戶要求
-
-1. 在支援票證的描述中，於 [詳細資料] 索引標籤上提供：
-   - 其他節點的數目   
-   - 節點 SKU
-   - 區域
-
-   > [!NOTE] 
-   > 根據預設，會授與最少 4 個節點。
-
-1. 按一下 [檢閱 + 建立] 提交要求。
 
 ## <a name="compute-network-and-storage"></a>計算、網路和儲存體
 
@@ -164,7 +136,7 @@ ESXi 主機支援最多 25 Gbps 的連線頻寬。
 
 **在私人雲端中，VMware 軟體的升級和更新排程為何？**
 
-私人雲端軟體搭售方案升級的目的，是將軟體保留在最新版軟體搭售方案形式 VMware 的一個版本中。 私人雲端軟體版本可能與個別軟體元件的最新版本 (ESXi、NSX-T、vCenter、VSAN) 不同。
+私用雲端軟體配套升級的目的，是為了將軟體保留在 VMware 的最新版本軟體組合的一版中。 私人雲端軟體版本可能與個別軟體元件的最新版本 (ESXi、NSX-T、vCenter、VSAN) 不同。
 
 **私人雲端軟體堆疊的更新頻率為何？**
 
@@ -233,6 +205,35 @@ ESXi 主機支援最多 25 Gbps 的連線頻寬。
 **我需要哪些帳戶才能建立 AVS 私人雲端？**
 
 Azure 訂閱需要 Azure 帳戶。
+
+<a name="how-to-request-a-quota-increase-for-avs"></a>**如何? 要求 Azure VMware 解決方案的主機配額增加嗎？**
+
+只要[提交支援要求](..\azure-portal\supportability\how-to-create-azure-support-request.md)，即可要求配額增加。 配額管理小組會評估要求，並在三個工作天內核准。  
+
+> [!IMPORTANT]
+> 在您要求增加配額之前，請確定您在 Azure 入口網站中註冊 **Microsoft.AVS** 資源提供者。  
+> ```azurecli-interactive
+> az provider register -n Microsoft.AVS --subscription <your subscription ID>
+> ```
+> 如需註冊資源提供者的其他方式，請參閱 [Azure 資源提供者和類型](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
+
+1. 在您的 Azure 入口網站中，[說明 + 支援] 底下，建立**新的支援要求**並提供票證的下列資訊：
+   - **問題類型：** 技術需求
+   - **訂用帳戶︰** 訂用帳戶識別碼
+   - **服務：** Azure VMware 解決方案 
+   - **摘要：** 配額增加
+   - **問題類型：** 容量管理問題
+   - **問題子類型：** 其他主機配額/容量的客戶要求
+
+1. 在支援票證的描述中，於 [詳細資料] 索引標籤上提供：
+   - 其他節點的數目   
+   - 節點 SKU
+   - 區域
+
+   > [!NOTE] 
+   > 根據預設，會授與最少 4 個節點。
+
+1. 按一下 [檢閱 + 建立] 提交要求。
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952
