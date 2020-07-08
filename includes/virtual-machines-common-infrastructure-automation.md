@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: a2083de1ddf400b368815877725d3b8dd446156b
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 3733989ad6eed113e37c87eb7da6748cec10e34d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485752"
 ---
 若要以一致的方式大規模建立並管理 Azure 虛擬機器 (VM)，通常需要某種形式的自動化。 有許多工具和解決方案可讓您將完整的 Azure 基礎結構部署及管理生命週期自動化。 本文介紹的一些基礎結構自動化工具可供您在 Azure 中使用。 這些工具通常符合下列其中一種方法：
 
@@ -100,7 +100,7 @@ DSC 設定會定義要在電腦上安裝的項目，以及設定主機的方式�
 
 了解如何：
 
-- [使用 Azure 安裝及設定 Terraform](/azure/developer/terraform/install-configure)。
+- [使用 Azure 安裝及設定 Terraform](/azure/developer/terraform/getting-started-cloud-shell)。
 - [使用 Terraform 建立 Azure 基礎結構](/azure/developer/terraform/create-linux-virtual-machine-with-infrastructure)。
 
 

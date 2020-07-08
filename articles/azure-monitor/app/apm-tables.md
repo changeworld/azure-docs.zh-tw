@@ -1,15 +1,15 @@
 ---
-title: Azure 監視器 Application Insights 以工作區為基礎的資源架構
+title: Azure 監視器 Application Insights 以工作區為基礎的資源結構描述
 description: 瞭解 Azure 監視器 Application Insights 以工作區為基礎之資源的新資料表結構和架構。
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
 ms.openlocfilehash: 21f387a87224615ea6afbdce620c56e3ad2cc6ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83210537"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>以工作區為基礎的資源變更（預覽）
@@ -20,7 +20,7 @@ ms.locfileid: "83210537"
 
 ## <a name="table-structure"></a>資料表結構
 
-| 舊版資料表名稱 | 新資料表名稱 | 說明 |
+| 舊版資料表名稱 | 新資料表名稱 | 描述 |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  可用性測試中的摘要資料。|
 | browserTimings | AppBrowserTimings | 用戶端效能的相關資料，例如處理傳入資料所花費的時間。|
@@ -58,7 +58,7 @@ ms.locfileid: "83210537"
 |client_Type|字串|ClientType|字串|
 |cloud_RoleInstance|字串|AppRoleInstance|字串|
 |cloud_RoleName|字串|AppRoleName|字串|
-|customDimensions|動態|[內容]|動態|
+|customDimensions|動態|屬性|動態|
 |customMeasurements|動態|量測|動態|
 |duration|real|DurationMs|real|
 |`id`|字串|`Id`|字串|
@@ -67,8 +67,8 @@ ms.locfileid: "83210537"
 |itemId|字串|\_ItemId|字串|
 |itemType|字串|類型|String|
 |location|字串|Location|字串|
-|訊息|字串|訊息|字串|
-|name|字串|名稱|字串|
+|message|字串|訊息|字串|
+|NAME|字串|名稱|字串|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
 |operation_ParentId|字串|OperationParentId|字串|
@@ -102,13 +102,13 @@ ms.locfileid: "83210537"
 |client_Type|字串|ClientType|字串|
 |cloud_RoleInstance|字串|AppRoleInstance|字串|
 |cloud_RoleName|字串|AppRoleName|字串|
-|customDimensions|動態|[內容]|動態|
+|customDimensions|動態|屬性|動態|
 |customMeasurements|動態|量測|動態|
 |iKey|字串|IKey|字串|
 |itemCount|int|ItemCount|int|
 |itemId|字串|\_ItemId|字串|
 |itemType|字串|類型|字串|
-|name|字串|名稱|Datetime|
+|NAME|字串|名稱|Datetime|
 |networkDuration|real|NetworkDurationMs|real|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
@@ -146,7 +146,7 @@ ms.locfileid: "83210537"
 |client_Type|字串|ClientType|字串|
 |cloud_RoleInstance|字串|AppRoleInstance|字串|
 |cloud_RoleName|字串|AppRoleName|字串|
-|customDimensions|動態|[內容]|動態|
+|customDimensions|動態|屬性|動態|
 |customMeasurements|動態|量測|動態|
 |data|字串|資料|字串|
 |duration|real|DurationMs|real|
@@ -155,7 +155,7 @@ ms.locfileid: "83210537"
 |itemCount|int|ItemCount|int|
 |itemId|字串|\_ItemId|字串|
 |itemType|字串|類型|String|
-|name|字串|名稱|字串|
+|NAME|字串|名稱|字串|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
 |operation_ParentId|字串|OperationParentId|字串|
@@ -191,13 +191,13 @@ ms.locfileid: "83210537"
 |client_Type|字串|ClientType|字串|
 |cloud_RoleInstance|字串|AppRoleInstance|字串|
 |cloud_RoleName|字串|AppRoleName|字串|
-|customDimensions|動態|[內容]|動態|
+|customDimensions|動態|屬性|動態|
 |customMeasurements|動態|量測|動態|
 |iKey|字串|IKey|字串|
 |itemCount|int|ItemCount|int|
 |itemId|字串|\_ItemId|字串|
 |itemType|字串|類型|字串|
-|name|字串|名稱|字串|
+|NAME|字串|名稱|字串|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
 |operation_ParentId|字串|OperationParentId|字串|
@@ -228,11 +228,11 @@ ms.locfileid: "83210537"
 |client_Type|字串|ClientType|字串|
 |cloud_RoleInstance|字串|AppRoleInstance|字串|
 |cloud_RoleName|字串|AppRoleName|字串|
-|customDimensions|動態|[內容]|動態|
+|customDimensions|動態|屬性|動態|
 |iKey|字串|IKey|字串|
 |itemId|字串|\_ItemId|字串|
 |itemType|字串|類型|字串|
-|name|字串|名稱|字串|
+|NAME|字串|名稱|字串|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
 |operation_ParentId|字串|OperationParentId|字串|
@@ -269,7 +269,7 @@ ms.locfileid: "83210537"
 |client_Type|字串|ClientType|字串|
 |cloud_RoleInstance|字串|AppRoleInstance|字串|
 |cloud_RoleName|字串|AppRoleName|字串|
-|customDimensions|動態|[內容]|動態|
+|customDimensions|動態|屬性|動態|
 |customMeasurements|動態|量測|動態|
 |duration|real|DurationMs|real|
 |`id`|字串|`Id`|字串|
@@ -277,7 +277,7 @@ ms.locfileid: "83210537"
 |itemCount|int|ItemCount|int|
 |itemId|字串|\_ItemId|字串|
 |itemType|字串|類型|String|
-|name|字串|名稱|字串|
+|NAME|字串|名稱|字串|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
 |operation_ParentId|字串|OperationParentId|字串|
@@ -312,12 +312,12 @@ ms.locfileid: "83210537"
 |cloud_RoleInstance|字串|AppRoleInstance|字串|
 |cloud_RoleName|字串|AppRoleName|字串|
 |counter|字串|拆卸||
-|customDimensions|動態|[內容]|動態|
+|customDimensions|動態|屬性|動態|
 |iKey|字串|IKey|字串|
 |instance|字串|執行個體|字串|
 |itemId|字串|\_ItemId|字串|
 |itemType|字串|類型|字串|
-|name|字串|名稱|字串|
+|NAME|字串|名稱|字串|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
 |operation_ParentId|字串|OperationParentId|字串|
@@ -349,7 +349,7 @@ ms.locfileid: "83210537"
 |client_Type|字串|ClientType|字串|
 |cloud_RoleInstance|字串|AppRoleInstance|字串|
 |cloud_RoleName|字串|AppRoleName|字串|
-|customDimensions|動態|[內容]|動態|
+|customDimensions|動態|屬性|動態|
 |customMeasurements|動態|量測|動態|
 |duration|real|DurationMs|Real|
 |`id`|字串|`Id`|String|
@@ -357,7 +357,7 @@ ms.locfileid: "83210537"
 |itemCount|int|ItemCount|int|
 |itemId|字串|\_ItemId|字串|
 |itemType|字串|類型|String|
-|name|字串|名稱|String|
+|NAME|字串|名稱|String|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
 |operation_ParentId|字串|OperationParentId|字串|
@@ -366,7 +366,7 @@ ms.locfileid: "83210537"
 |ResultCode|字串|ResultCode|String|
 |sdkVersion|字串|SdkVersion|字串|
 |session_Id|字串|SessionId|字串|
-|來源|字串|來源|String|
+|source|字串|來源|String|
 |成功|字串|Success|Bool|
 |timestamp|Datetime|TimeGenerated|Datetime|
 |url|字串|Url|String|
@@ -383,7 +383,7 @@ ms.locfileid: "83210537"
 |appId|字串|\_ResourceGUID|字串|
 |application_Version|字串|AppVersion|字串|
 |appName|字串|\_ResourceId|字串|
-|組件 (assembly)|字串|Assembly|字串|
+|組件 (assembly)|字串|組件|字串|
 |client_Browser|字串|ClientBrowser|字串|
 |client_City|字串|ClientCity|字串|
 |client_CountryOrRegion|字串|ClientCountryOrRegion|字串|
@@ -394,7 +394,7 @@ ms.locfileid: "83210537"
 |client_Type|字串|ClientType|字串|
 |cloud_RoleInstance|字串|AppRoleInstance|字串|
 |cloud_RoleName|字串|AppRoleName|字串|
-|customDimensions|動態|[內容]|動態|
+|customDimensions|動態|屬性|動態|
 |customMeasurements|動態|量測|動態|
 |詳細資料|動態|詳細資料|動態|
 |handledAt|字串|HandledAt|字串|
@@ -406,7 +406,7 @@ ms.locfileid: "83210537"
 |itemCount|int|ItemCount|int|
 |itemId|字串|\_ItemId|字串|
 |itemType|字串|類型|字串|
-|訊息|字串|訊息|字串|
+|message|字串|訊息|字串|
 |method|字串|方法|字串|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
@@ -445,13 +445,13 @@ ms.locfileid: "83210537"
 |client_Type|字串|ClientType|字串|
 |cloud_RoleInstance|字串|AppRoleInstance|字串|
 |cloud_RoleName|字串|AppRoleName|字串|
-|customDimensions|動態|[內容]|動態|
+|customDimensions|動態|屬性|動態|
 |customMeasurements|動態|量測|動態|
 |iKey|字串|IKey|字串|
 |itemCount|int|ItemCount|int|
 |itemId|字串|\_ItemId|字串|
 |itemType|字串|類型|字串|
-|訊息|字串|訊息|字串|
+|message|字串|訊息|字串|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
 |operation_ParentId|字串|OperationParentId|字串|

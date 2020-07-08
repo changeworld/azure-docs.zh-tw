@@ -37,7 +37,7 @@ ms.locfileid: "77205738"
 
 當您在本機執行專案時，支援這些設定：
 
-| 設定      | 說明                            |
+| 設定      | 描述                            |
 | ------------ | -------------------------------------- |
 | **`IsEncrypted`** | 當此設定設為時 `true` ，所有的值都會以本機電腦金鑰加密。 需搭配 `func settings` 命令使用。 預設值為 `false`。 |
 | **`Values`** | 當專案在本機執行時所使用的應用程式設定和連接字串的陣列。 這些索引鍵/值（字串字串）組會對應至 Azure 中函數應用程式中的應用程式設定，例如 [`AzureWebJobsStorage`] 。 許多觸發程式和系結都有參考連接字串應用程式設定的屬性， `Connection` 例如[Blob 儲存體觸發](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration)程式。 針對這些屬性，您需要在陣列中定義的應用程式設定 `Values` 。 <br/>[`AzureWebJobsStorage`]是 HTTP 以外的觸發程式所需的應用程式設定。 <br/>2.x 版和更新版本的函式執行時間需要 [ `FUNCTIONS_WORKER_RUNTIME` ] 設定，這是由核心工具針對您的專案所產生的。 <br/> 當您已在本機安裝[Azure 儲存體模擬器](../articles/storage/common/storage-use-emulator.md)，並將設定 [`AzureWebJobsStorage`] 為時 `UseDevelopmentStorage=true` ，Core Tools 會使用模擬器。 模擬器在開發期間很有用，但您應該在部署之前使用實際的儲存體連接進行測試。<br/> 值必須是字串，而不是 JSON 物件或陣列。 設定名稱不能包含冒號（ `:` ）或雙底線（ `__` ）。 這些字元是由執行時間所保留。  |
