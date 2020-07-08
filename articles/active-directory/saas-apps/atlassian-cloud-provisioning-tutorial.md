@@ -14,73 +14,67 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 7ddccef00cf1b5ad524c0e1eaa7aed52c0e55197
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 95455d389669b89075ca0ea8583cc7858bb532f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77059329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317624"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>教學課程：設定 Atlassian Cloud 來自動布建使用者
 
-本教學課程的目的是要示範在 Atlassian Cloud 和 Azure Active Directory （Azure AD）中執行的步驟，以設定 Azure AD 自動布建和取消布建使用者和/或群組至 Atlassian 雲端。
+本教學課程的目的是要示範在 Atlassian Cloud 和 Azure Active Directory （Azure AD）中執行的步驟，以設定 Azure AD 自動布建和取消布建使用者和/或群組至[Atlassian 雲端](https://www.atlassian.com/licensing/cloud)。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
 
-> [!NOTE]
-> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="capabilities-supported"></a>支援的功能
+> [!div class="checklist"]
+> * 在 Atlassian Cloud 中建立使用者
+> * 當 Atlassian Cloud 中的使用者不再需要存取權時，將其移除
+> * 在 Azure AD 與 Atlassian Cloud 之間保持使用者屬性同步
+> * 在 Atlassian Cloud 中布建群組和群組成員資格
+> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/atlassian-cloud-tutorial)Atlassian Cloud （建議選項）
+
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* Azure AD 租用戶
+* [Azure AD 租](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)使用者。
+* Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
 * [Atlassian 雲端租使用者](https://www.atlassian.com/licensing/cloud)
 * Atlassian Cloud 中具有系統管理員許可權的使用者帳戶。
 
-> [!NOTE]
-> Azure AD 布建整合依賴**Atlassian CLOUD SCIM API**，可供 Atlassian 雲端團隊使用。
+## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署
+1. 了解[佈建服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) \(部分機器翻譯\)。
+2. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
+3. 判斷要[在 Azure AD 與 Atlassian Cloud 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的資料。
 
-## <a name="add-atlassian-cloud-from-the-gallery"></a>從資源庫新增 Atlassian Cloud
+## <a name="step-2-configure-atlassian-cloud-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Atlassian 雲端以支援以 Azure AD 布建
 
-將 Atlassian Cloud 設定為使用 Azure AD 自動布建使用者之前，您需要從 Azure AD 應用程式庫將 Atlassian Cloud 新增至受控 SaaS 應用程式清單。
+1. 流覽至[Atlassian 組織管理員](https://admin.atlassian.com) **> 選取 [組織 >] 目錄**。
 
-**若要從 Azure AD 應用程式庫新增 Atlassian Cloud，請執行下列步驟：**
+    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
 
-1. 在**[Azure 入口網站](https://portal.azure.com)** 的左側導覽窗格中，選取 [ **Azure Active Directory**]。
+2. 按一下 [**使用者**布建]，然後按一下 [**建立目錄**]。 複製**目錄基底 url**和**持有人權杖**，這會分別在 Azure AD 入口網站的 Atlassian Cloud 應用程式的 [布建] 索引標籤中，于 [**租使用者 URL** ] 和 [**秘密權杖**] 欄位中輸入。
 
-    ![Azure Active Directory 按鈕](common/select-azuread.png)
+    ![Atlassian 雲端布建 Atlassian 雲端布建 ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![ ](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png) ![ Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
 
-2. 移至 [**企業應用程式**]，然後選取 [**所有應用程式**]。
 
-    ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
+## <a name="step-3-add-atlassian-cloud-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 Atlassian Cloud
 
-3. 若要新增新的應用程式，請選取窗格頂端的 [**新增應用程式**] 按鈕。
+從 Azure AD 應用程式庫新增 Atlassian Cloud，開始管理布建至 Atlassian Cloud。 如果您先前已針對 SSO 設定 Atlassian Cloud，您可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
 
-    ![新增應用程式按鈕](common/add-new-app.png)
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員 
 
-4. 在搜尋方塊中，輸入**Atlassian Cloud**，在結果面板中選取 [ **Atlassian cloud** ]，然後按一下 [**新增**] 按鈕以新增應用程式。
+Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選條件。 
 
-    ![結果清單中的 [Atlassian Cloud]](common/search-new-app.png)
+* 將使用者和群組指派給 Atlassian Cloud 時，您必須選取 [**預設存取**] 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
 
-## <a name="assigning-users-to-atlassian-cloud"></a>將使用者指派給 Atlassian Cloud
+* 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
-Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中，只有已指派給 Azure AD 中應用程式的使用者和/或群組會進行同步處理。
 
-在設定並啟用自動使用者布建之前，您應該決定 Azure AD 中的哪些使用者和/或群組需要 Atlassian Cloud 的存取權。 一旦決定後，您可以遵循此處的指示，將這些使用者和/或群組指派給 Atlassian Cloud：
-
-* [將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
-
-### <a name="important-tips-for-assigning-users-to-atlassian-cloud"></a>將使用者指派給 Atlassian Cloud 的重要秘訣
-
-* 建議將單一 Azure AD 使用者指派給 Atlassian Cloud，以測試自動使用者布建設定。 其他使用者及/或群組可能會稍後再指派。
-
-* 將使用者指派給 Atlassian Cloud 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色（如果有的話）。 具有**預設存取**角色的使用者會從佈建中排除。
-
-## <a name="configuring-automatic-user-provisioning-to-atlassian-cloud"></a>設定自動使用者布建至 Atlassian Cloud 
+## <a name="step-5-configuring-automatic-user-provisioning-to-atlassian-cloud"></a>步驟 5。 設定自動使用者布建至 Atlassian Cloud 
 
 本節將引導您逐步設定 Azure AD 布建服務，以根據 Azure AD 中的使用者和/或群組指派，在 Atlassian Cloud 中建立、更新和停用使用者和/或群組。
-
-> [!TIP]
-> 您也可以選擇啟用 Atlassian Cloud 的 SAML 型單一登入，請遵循[Atlassian Cloud 單一登入教學](atlassian-cloud-tutorial.md)課程中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將它們分開設定。
 
 ### <a name="to-configure-automatic-user-provisioning-for-atlassian-cloud-in-azure-ad"></a>若要在 Azure AD 中設定 Atlassian Cloud 的自動使用者布建：
 
@@ -92,71 +86,68 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![應用程式清單中的 [Atlassian Cloud] 連結](common/all-applications.png)
 
-3. 選取 [**布**建] 索引標籤。
+3. 選取 [佈建] 索引標籤。
 
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/provisioning-tab.png)
+    ![佈建索引標籤](common/provisioning.png)
 
-4. 將布建模式設定為 [**自動** **]** 。
+4. 將 [佈建模式] 設定為 [自動]。
 
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/credentials.png)
+    ![[佈建] 索引標籤](common/provisioning-automatic.png)
 
-5. 流覽至[Atlassian 組織管理員](https://admin.atlassian.com) **> 選取 [組織 >] 目錄**。
+5. 在 [**管理員認證**] 區段下，輸入稍早從 Atlassian 雲端帳戶中抓取的**租使用者 URL**和**秘密權杖**。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Atlassian Cloud。 如果連線失敗，請確定您的 Atlassian 雲端帳戶具有系統管理員許可權，然後再試一次。
 
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
+    ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
-6. 按一下 [**使用者**布建]，然後按一下 [**建立目錄**]。 分別將**目錄基底 url**和**持有人權杖**複製到 [**租使用者 URL** ] 和 [**秘密權杖**] 欄位。
+6. 在 [通知電子郵件]**** 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]**** 核取方塊。
 
-    ![Atlassian 雲端](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![布建 Atlassian](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png) ![雲端布建 Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
+    ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 在 [**管理員認證**] 區段下，輸入 Atlassian 雲端帳戶的 [**租使用者 URL** ] 和 [**秘密權杖**]。 這些值的範例如下：
+7. 按一下 [檔案] 。
 
-   * 在 [**租使用者 URL** ] 欄位中，填入您從 Atlassian 接收的特定租使用者端點，如步驟6所述。 例如： `https://api.atlassian.com/scim/directory/{directoryId}`。
+8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者 Atlassian 雲端**]。
 
-   * 在 [**秘密權杖**] 欄位中，填入秘密權杖，如步驟6所述。
+9. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Atlassian Cloud 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Atlassian Cloud 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-8. 填入步驟7中顯示的欄位之後，按一下 [**測試**連線] 以確保 Azure AD 可以連接到 Atlassian Cloud。 如果連線失敗，請確定您的 Atlassian 雲端帳戶具有系統管理員許可權，然後再試一次。
+   |屬性|類型|
+   |---|---|
+   |userName|String|
+   |作用中|Boolean|
+   |name.familyName|String|
+   |name.givenName|String|
+   |emails[type eq "work"].value|String|   
 
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/test-connection.png)
+10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Atlassian 雲端**]。
 
-9. 在 [通知電子郵件]**** 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]**** 核取方塊。
+11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Atlassian Cloud 的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Atlassian Cloud 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/notification.png)
+      |屬性|類型|
+      |---|---|
+      |displayName|String|
+      |externalId|String|
+      |members|參考|
 
-10. 按一下 [檔案]  。
+12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-11. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者 Atlassian 雲端**]。
+13. 若要啟用 Atlassian Cloud 的 Azure AD 布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
 
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/provision-users.png)
+    ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-12. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Atlassian Cloud 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Atlassian Cloud 中的使用者帳戶以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
+14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Atlassian Cloud 的使用者和/或群組。
 
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/user-mapping.png)
+    ![佈建範圍](common/provisioning-scope.png)
 
-13. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Atlassian 雲端**]。
+16. 當您準備好要佈建時，按一下 [儲存]。
 
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/provision-groups.png)
+    ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-14. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Atlassian Cloud 的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Atlassian Cloud 中的群組以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
+此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。
 
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/group-mapping.png)
+## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
+設定佈建後，請使用下列資源來監視您的部署：
 
-15. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
-
-16. 若要啟用 Atlassian Cloud 的 Azure AD 布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
-
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/provisioning-on.png)
-
-17. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Atlassian Cloud 的使用者和/或群組。
-
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/provisioning-options.png)
-
-18. 當您準備好要佈建時，按一下 [儲存]****。
-
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/save.png)
-
-此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [**同步處理詳細資料**] 區段來監視進度，並遵循連結來布建活動報告，其中描述 Atlassian Cloud 上的 Azure AD 布建服務所執行的所有動作。
-
-如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
+1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
+2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
 
 ## <a name="connector-limitations"></a>連接器限制
 
@@ -164,9 +155,13 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 * Atlassian Cloud 目前不支援群組重新命名。 這表示在 Azure AD 中，對群組的 displayName 進行的任何變更都不會更新，而且會反映在 Atlassian Cloud 中。
 * 只有在使用者具有 Microsoft Exchange 信箱時，才會填入 Azure AD 中的**mail**使用者屬性值。 如果使用者沒有帳戶，建議您將不同的所需屬性對應至 Atlassian Cloud 中的 [**電子郵件**] 屬性。
 
+## <a name="change-log"></a>變更記錄
+
+* 06/15/2020-新增群組之批次修補程式的支援。
+
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟

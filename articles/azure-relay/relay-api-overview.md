@@ -1,25 +1,14 @@
 ---
 title: Azure 轉送 API 概觀 | Microsoft Docs
-description: 本文提供可用 Azure 轉送 Api （.NET Standard、.NET Framework、node.js 等）的總覽。
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: fdaa1d2b-bd80-4e75-abb9-0c3d0773af2d
-ms.service: service-bus-relay
-ms.devlang: na
+description: 本文提供可用 Azure 轉送 Api （.NET Standard、.NET Framework、Node.js 等）的總覽。
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: ad7226b5c5badfddf9f436a1229a48f729485821
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 15e13ccac9b05e6e1b0730b38b372dec20c69dda
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210589"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85316954"
 ---
 # <a name="available-relay-apis"></a>可用的轉送 API
 
@@ -32,7 +21,7 @@ ms.locfileid: "83210589"
 | 語言/平台 | 可用的功能 | 用戶端封裝 | Repository |
 | --- | --- | --- | --- |
 | .NET Standard | 混合式連線 | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
-| .NET Framework | WCF 轉送 | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | 不適用 |
+| .NET Framework | WCF 轉送 | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | N/A |
 | 節點 | 混合式連線 | [Websocket`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Websocket`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP 要求：`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>其他資訊
@@ -49,7 +38,7 @@ ms.locfileid: "83210589"
 
 上表所列出的混合式連線模組，會以接聽 Azure 轉送服務而非本機網路堆疊的替代實作，來取代或修改現有的 Node.js 模組。
 
-`hyco-https`模組會 amends 並部分覆寫核心 node.js 模組 `http` 和，並 `https` 提供與許多依賴這些核心模組的現有 node.js 模組和應用程式相容的 HTTPS 接聽程式執行。
+`hyco-https`模組會 amends 並部分覆寫核心 Node.js 模組 `http` 和 `https` ，並提供與許多依賴這些核心模組的現有 Node.js 模組和應用程式相容的 HTTPS 接聽程式執行。
 
 `hyco-ws` 和 `hyco-websocket` 模組會修改熱門的 Node.js `ws` 和 `websocket` 模組，提供可讓模組和依賴任一模組的應用程式在混合式連線轉送背後運作的替代接聽程式實作。
 
