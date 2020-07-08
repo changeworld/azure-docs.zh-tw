@@ -2,13 +2,13 @@
 title: 讓客戶在 Azure 委派的資源管理中上線
 description: 了解如何讓客戶在 Azure 委派的資源管理中上線，讓其資源可透過您自己的租用戶來管理。
 ms.date: 05/26/2020
-ms.topic: conceptual
-ms.openlocfilehash: a6cdfea7e0520aa704e70a12784f7a7ba5d6aa6d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.topic: how-to
+ms.openlocfilehash: 149398a822d5aa21335be4122e92c96800d94255
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871109"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920923"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>讓客戶在 Azure 委派的資源管理中上線
 
@@ -189,7 +189,7 @@ az role definition list --name "<roleName>" | grep name
 }
 ```
 
-上述範例的最後一個授權會新增具有「使用者存取系統管理員」角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 **principalId**。 當您指派此角色時，必須包含 **delegatedRoleDefinitionIds** 屬性與一或多個內建角色。 在此授權中所建立使用者能夠將這些內建角色指派給客戶租用戶中的[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，在[部署可補救的原則](deploy-policy-remediation.md)時需要這些角色。 通常與「使用者存取系統管理員」角色相關聯的其他權限都不會套用至此使用者。
+上述範例的最後一個授權會新增具有「使用者存取系統管理員」角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 **principalId**。 當您指派此角色時，必須包含 **delegatedRoleDefinitionIds** 屬性與一或多個內建角色。 在此授權中所建立使用者能夠將這些內建角色指派給客戶租用戶中的[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，在[部署可補救的原則](deploy-policy-remediation.md)時需要這些角色。  使用者也可以建立支援事件。  通常與「使用者存取系統管理員」角色相關聯的其他權限都不會套用至此使用者。
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>部署 Azure Resource Manager 範本
 
@@ -198,9 +198,9 @@ az role definition list --name "<roleName>" | grep name
 這是訂用帳戶層級部署，因此無法在 Azure 入口網站中起始。 您可以使用 PowerShell 或 Azure CLI 完成部署，如下所示。
 
 > [!IMPORTANT]
-> 這個訂用帳戶層級部署必須由客戶租用戶中的非來賓帳戶執行，且該租用戶對於要上線的訂用帳戶必須有[「擁有者」內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) (機器翻譯) (或其包含要上線的資源群組)。 若要查看可委派訂用帳戶的所有使用者，客戶租用戶中的使用者可以在 Azure 入口網站中選取訂用帳戶並開啟 [存取控制 (IAM)]，然後[查看所有具有「擁有者」角色的使用者](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
+> 這個訂用帳戶層級部署必須由客戶租用戶中的非來賓帳戶執行，且該租用戶對於要上線的訂用帳戶必須有[「擁有者」內建角色](../../role-based-access-control/built-in-roles.md#owner) (機器翻譯) (或其包含要上線的資源群組)。 若要查看可委派訂用帳戶的所有使用者，客戶租用戶中的使用者可以在 Azure 入口網站中選取訂用帳戶並開啟 [存取控制 (IAM)]，然後[查看所有具有「擁有者」角色的使用者](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
 >
-> 如果訂用帳戶是透過[雲端解決方案提供者 (CSP) 計畫](../concepts/cloud-solution-provider.md)所建立，則在服務提供者租用戶中具有[系統管理代理人](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles)角色的任何使用者，都可以執行部署。
+> 如果訂用帳戶是透過[雲端解決方案提供者 (CSP) 計畫](../concepts/cloud-solution-provider.md)所建立，則在服務提供者租用戶中具有[系統管理代理人](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles)角色的任何使用者，都可以執行部署。
 
 ### <a name="powershell"></a>PowerShell
 
