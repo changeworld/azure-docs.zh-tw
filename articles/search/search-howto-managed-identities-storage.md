@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 1fa9581f1a7968a1bfd6df0fb82383dd45e70f54
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: e6c766008faa6bbe53a4af69f7da9325cb9ff6a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663176"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559873"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>使用受控識別來設定與 Azure 儲存體帳戶的連線 (預覽)
 
@@ -83,7 +83,7 @@ ms.locfileid: "83663176"
 如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) \(部分內容為機器翻譯\) 建立 Blob 資料來源物件的範例：
 
 ```
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -103,7 +103,7 @@ Azure 入口網站和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft
 
 以下說明如何使用可搜尋的 `content` 欄位建立索引，以儲存從 blob 擷取的文字︰   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -125,7 +125,7 @@ Azure 入口網站和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft
 
 Blob 索引子的索引子定義範例：
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

@@ -1,6 +1,6 @@
 ---
 title: 將 Barracuda 資料連線到 Azure Sentinel |Microsoft Docs
-description: 瞭解如何將 Barracuda 資料連線到 Azure Sentinel。
+description: 瞭解如何使用 Barracuda Web 應用程式防火牆（WAF）連接器，將 Barracuda 記錄與 Azure Sentinel 連線。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 4e87bb57e6bdfea6307a166383da9dea187eea4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f28243be6b4f998e8bdea0ce02da3ceedde23e02
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588479"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559121"
 ---
 # <a name="connect-your-barracuda-appliance"></a>連接您的 Barracuda 應用裝置 
 
@@ -50,6 +50,6 @@ Barracuda Web 應用程式防火牆可以透過 Log Analytics 代理程式，將
 在本檔中，您已瞭解如何將 Barracuda 設備連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
 
 

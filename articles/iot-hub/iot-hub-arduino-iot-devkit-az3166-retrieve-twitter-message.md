@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60779743"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560973"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>搖一搖以獲取推文 -- 使用 Azure Functions 擷取 Twitter 訊息
 
@@ -29,7 +29,7 @@ ms.locfileid: "60779743"
 
 有效的 Azure 訂用帳戶。 如果沒有，您可以透過下列這些方法之一來註冊：
 
-* [Microsoft Azure 帳戶啟用30天免費試用版](https://azure.microsoft.com/free/)
+* 啟動 [30 天免費試用 Microsoft Azure 帳戶](https://azure.microsoft.com/free/)
 * 如果您是 MSDN 或 Visual Studio 訂閱者，請領取您的[Azure 點數](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
 
 ## <a name="open-the-project-folder"></a>開啟專案資料夾
@@ -196,8 +196,6 @@ Arduino 草圖會將事件傳送至 Azure IoT 中樞。 此事件會觸發 Azure
 2. 在 [Azure 入口網站](https://portal.azure.com/)中，尋找您所建立的 Azure Functions 應用程式，然後將它重新啟動：
 
    ![azure-function-restart](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
-
-### <a name="feedback"></a>意見反應
 
 如果發生其他問題，請參閱 [IoT DevKit 常見問題集](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)，或使用下列管道與我們連絡：
 

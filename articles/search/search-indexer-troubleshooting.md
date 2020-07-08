@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79db94298d190f646393410ec73ba1a25bb48270
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190921"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560395"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>針對 Azure 認知搜尋中的常見索引子問題進行疑難排解
 
@@ -28,18 +28,18 @@ ms.locfileid: "77190921"
 > [!NOTE]
 > 索引子對於存取 Azure 網路安全性機制所保護的資料來源和其他資源具有有限的支援。 目前，在適用的情況下，索引子只能透過對應的 IP 位址範圍限制機制或 NSG 規則來存取資料來源。 如需存取每個支援的資料來源的詳細資訊，請參閱下方。
 >
-> 您可以藉由 ping 其完整功能變數名稱（例如， `<your-search-service-name>.search.windows.net`）來找出搜尋服務的 IP 位址。
+> 您可以藉由 ping 其完整功能變數名稱（例如，）來找出搜尋服務的 IP 位址 `<your-search-service-name>.search.windows.net` 。
 >
-> 您可以使用[可下載的 JSON](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)檔案或透過`AzureCognitiveSearch`服務標籤[探索 API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)，來找出[服務](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)標籤的 IP 位址範圍。 每週會更新 IP 位址範圍。
+> 您可以 `AzureCognitiveSearch` 使用[可下載的 JSON](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)檔案或透過服務標籤[探索 API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)，來找出[服務](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)標籤的 IP 位址範圍。 每週會更新 IP 位址範圍。
 
 ### <a name="configure-firewall-rules"></a>設定防火牆規則
 
-Azure 儲存體，CosmosDB 和 Azure SQL 會提供可設定的防火牆。 防火牆啟用時，不會有特定錯誤訊息。 一般來說，防火牆錯誤是泛型，看起來`The remote server returned an error: (403) Forbidden`像`Credentials provided in the connection string are invalid or have expired`或。
+Azure 儲存體，CosmosDB 和 Azure SQL 會提供可設定的防火牆。 防火牆啟用時，不會有特定錯誤訊息。 一般來說，防火牆錯誤是泛型，看起來像 `The remote server returned an error: (403) Forbidden` 或 `Credentials provided in the connection string are invalid or have expired` 。
 
 有2個選項可讓索引子存取這類實例中的這些資源：
 
 * 藉由允許來自**所有網路**的存取（如果可行）來停用防火牆。
-* 或者，您可以在資源的防火牆規則（IP 位址範圍限制）中，允許存取搜尋`AzureCognitiveSearch`服務的 ip 位址和[服務](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)標籤的 ip 位址範圍。
+* 或者，您可以 `AzureCognitiveSearch` 在資源的防火牆規則（IP 位址範圍限制）中，允許存取搜尋服務的 ip 位址和[服務](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)標籤的 ip 位址範圍。
 
 您可以從下列連結找到為每個資料來源類型設定 IP 位址範圍限制的詳細資訊：
 
@@ -51,7 +51,7 @@ Azure 儲存體，CosmosDB 和 Azure SQL 會提供可設定的防火牆。 防�
 
 **限制**：如上述 Azure 儲存體的檔中所述，只有在您的搜尋服務和儲存體帳戶位於不同區域時，IP 位址範圍限制才會生效。
 
-Azure 函式（可用來做為[自訂 Web Api 技能](cognitive-search-custom-skill-web-api.md)）也支援[IP 位址限制](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions)。 要設定的 IP 位址清單會是搜尋服務的 IP 位址，以及`AzureCognitiveSearch`服務標籤的 ip 位址範圍。
+Azure 函式（可用來做為[自訂 Web Api 技能](cognitive-search-custom-skill-web-api.md)）也支援[IP 位址限制](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions)。 要設定的 IP 位址清單會是搜尋服務的 IP 位址，以及服務標籤的 IP 位址範圍 `AzureCognitiveSearch` 。
 
 [此處](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)概述在 Azure VM 上存取 SQL server 資料的詳細資訊
 
@@ -76,7 +76,7 @@ Azure 認知搜尋具有 Cosmos DB 索引的隱含相依性。 如果您關閉 C
 Blob 索引子會[記錄明確支援哪些文件格式](search-howto-indexing-azure-blob-storage.md#SupportedFormats)。 有時候，Blob 儲存體容器會包含不支援的文件。 有時候則會包含有問題的文件。 您可以透過[變更設定選項](search-howto-indexing-azure-blob-storage.md#DealingWithErrors)來避免您的索引子在這些文件上停止：
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -94,7 +94,7 @@ Blob 索引子會[從容器的 Blob 中尋找並擷取文字](search-howto-index
 * Blob 索引子已設為只為中繼資料建立索引。 若要擷取內容，Blob 索引子必須設為[同時擷取內容和中繼資料](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)：
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -111,6 +111,7 @@ api-key: [admin key]
 索引子會從[資料來源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)尋找文件。 有時候索引內可能會遺漏應為其建立索引的資料來源文件。 導致這些錯誤的幾個常見原因如下：
 
 * 尚未為文件建立索引。 檢查入口網站以了解成功的索引子執行。
+* 檢查您的[變更追蹤](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies)值。 如果您的高水位線值是設定為未來時間的日期，則索引子會略過日期小於這個的任何檔。 您可以使用[索引子狀態](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status#indexer-execution-result)中的 [initialTrackingState] 和 [finalTrackingState] 欄位，瞭解索引子的變更追蹤狀態。
 * 文件已在索引子執行後更新。 若您的索引子是根據[排程](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule)執行，它最後將重新執行並擷取文件。
 * 資料來源中指定的[查詢](/rest/api/searchservice/create-data-source)排除了文件。 若文件並非資料來源的一部分，索引子將無法為文件建立索引。
 * [欄位](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings)對應或[AI 擴充](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro)已變更檔，看起來與您所預期的不同。

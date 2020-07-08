@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 29e675f3ae35df9211f58d45ad8450566d67a588
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b06f39de9f977a9f777b21a53e93ca744fccdd93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658229"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560155"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure 監視器活頁簿
 
@@ -31,20 +31,20 @@ ms.locfileid: "77658229"
 * [計量](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
 * [警示 (預覽)](workbooks-data-sources.md#alerts-preview)
-* [工作負載健全狀況（預覽）](workbooks-data-sources.md#workload-health-preview)
-* [Azure 資源健康狀態（預覽）](workbooks-data-sources.md#azure-resource-health)
-* [Azure 資料總管（預覽）](workbooks-data-sources.md#azure-data-explorer-preview)
+* [工作負載健全狀況](workbooks-data-sources.md#workload-health)
+* [Azure 資源健康狀態](workbooks-data-sources.md#azure-resource-health)
+* [Azure 資料總管](workbooks-data-sources.md#azure-data-explorer)
 
 ## <a name="visualizations"></a>視覺效果
 
 活頁簿提供了一組豐富的功能，可將您的資料視覺化。 如需每個視覺效果類型的詳細範例，您可以查閱下列範例連結：
 
-* [Text](workbooks-visualizations.md#text)
+* [文字](workbooks-visualizations.md#text)
 * [圖表](workbooks-visualizations.md#charts)
 * [表格](workbooks-visualizations.md#grids)
-* [並排顯示](workbooks-visualizations.md#tiles)
+* [Tiles](workbooks-visualizations.md#tiles)
 * [樹木](workbooks-visualizations.md#trees)
-* [圖表](workbooks-visualizations.md#graphs)
+* [Graphs](workbooks-visualizations.md#graphs)
 
 ![範例活頁簿視覺效果](./media/workbooks-overview/visualizations.png)
 
@@ -124,7 +124,7 @@ ms.locfileid: "77658229"
 
 當您開始建立自己的活頁簿範本時，您可能會想要將它與更廣大的社區分享。 若要深入瞭解並探索不屬於預設 Azure 監視器資源庫視圖的其他範本，請造訪我們的[GitHub 存放庫](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md)。 若要流覽現有的活頁簿，請造訪 GitHub 上的活頁[簿文件庫](https://github.com/microsoft/Application-Insights-Workbooks/tree/master/Workbooks)。
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 
 * [開始深入](workbooks-visualizations.md)瞭解活頁簿許多豐富的視覺效果選項。
 * [控制](workbooks-access-control.md)和共用您的活頁簿資源的存取權。

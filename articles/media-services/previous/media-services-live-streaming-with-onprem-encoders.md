@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb94703a78cd2c025efc1f3c6c16e296fece206e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476548"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559997"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>使用通道，從內部部署編碼器接收多位元率即時串流
 
@@ -187,14 +187,14 @@ ms.locfileid: "80476548"
 | 通道狀態 | 入口網站 UI 指標 | 是否計費？ |
 | --- | --- | --- |
 | **啟動中** |**啟動中** |無 (暫時性狀態) |
-| **正在執行** |**就緒** (沒有執行中的程式)<p><p>或<p>**串流** (至少一個執行中的程式) |是 |
+| **執行中** |**就緒** (沒有執行中的程式)<p><p>或<p>**串流** (至少一個執行中的程式) |Yes |
 | **停止中** |**停止中** |無 (暫時性狀態) |
-| **已停止** |**已停止** |否 |
+| **已停止** |**已停止** |No |
 
 ## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>隱藏式字幕和廣告插入
 下表示範支援的隱藏式字幕和廣告插入標準。
 
-| Standard | 備忘錄 |
+| 標準 | 注意 |
 | --- | --- |
 | CEA-708 和 EIA-608 (708/608) |CEA-708 和 EIA-608 是美國和加拿大的隱藏式字幕標準。<p><p>目前只有編碼的輸入資料流附帶字幕時，才能播放字幕。 您使用的即時媒體編碼器，必須可以將 608 或 708 字幕插入至已傳送至媒體服務的已編碼資料流。 媒體服務會將內含字幕的內容傳遞給您的檢視器。 |
 | .ismt 裡面附帶字幕 (Smooth Streaming 文字播放軌) |媒體服務動態封裝功能可讓您的用戶端傳送以下任何格式的內容：DASH、HLS 或 Smooth Streaming。 不過，如果您內嵌 Fragmented MP4 (Smooth Streaming) 而且在 .ismt 裡面附帶字幕 (Smooth Streaming 文字播放軌)，您就只能將資料流傳遞至 Smooth Streaming 用戶端。 |
@@ -225,7 +225,8 @@ ms.locfileid: "80476548"
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="feedback"></a>意見反應
+## <a name="suggestions-and-feedback"></a>建議與意見反應
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>相關主題

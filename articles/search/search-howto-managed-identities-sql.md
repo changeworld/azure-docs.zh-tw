@@ -1,7 +1,7 @@
 ---
-title: 使用受控識別來設定與 Azure SQL 資料庫的連線 (預覽)
+title: 使用受控識別來設定 Azure SQL Database 的連線（預覽）
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用受控識別來設定與 Azure SQL 資料庫的索引子連線 (預覽)
+description: 瞭解如何使用受控識別（預覽）設定 Azure SQL Database 的索引子連接
 manager: luisca
 author: markheff
 ms.author: maheff
@@ -9,22 +9,23 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 87389651707a3bdcc18ae7eb03b88681b5303c4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: d0933f5305007bc4a8238adb2b6b949ab0c11edf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663456"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559932"
 ---
-# <a name="set-up-an-indexer-connection-to-an-azure-sql-database-using-a-managed-identity-preview"></a>使用受控識別來設定與 Azure SQL 資料庫的索引子連線 (預覽)
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>使用受控識別來設定 Azure SQL Database 的索引子連線（預覽）
 
 > [!IMPORTANT] 
 > 使用受控識別來設定資料來源連線的支援目前處於受限公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
 > 您可以填寫[此表單](https://aka.ms/azure-cognitive-search/mi-preview-request) \(英文\) 來要求預覽的存取權。
 
-此頁面描述如何使用受控識別來設定 Azure SQL 資料庫的索引子連線，而不是在資料來源物件連接字串中提供認證。
+此頁面描述如何使用受控識別設定 Azure SQL Database 的索引子連接，而不是在資料來源物件連接字串中提供認證。
 
 在深入了解此功能之前，建議您先了解索引子是什麼，以及如何設定資料來源的索引子。 您可以在下列連結找到更多資訊：
+
 * [索引子概觀](search-indexer-overview.md)
 * [Azure SQL 索引子](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
@@ -39,7 +40,7 @@ ms.locfileid: "83663456"
 選取 [儲存] 之後，您會看到已指派給搜尋服務的物件識別碼。
 
 ![物件識別碼](./media/search-managed-identities/system-assigned-identity-object-id.png "物件識別碼")
- 
+
 ### <a name="2---provision-azure-active-directory-admin-for-sql-server"></a>2 - 佈建 SQL Server 的 Azure Active Directory 系統管理員
 
 在下一個步驟中連線到資料庫時，您將必須使用具有資料庫系統管理員存取權的 Azure Active Directory (Azure AD) 帳戶連線，才能授與您的搜尋服務存取資料庫的權限。
@@ -102,7 +103,7 @@ ms.locfileid: "83663456"
 * **名稱**是搜尋服務中資料來源的唯一名稱。
 * **type** 是 `azuresql`
 * **credentials**
-    * 使用受控識別進行驗證時，**credentials** 格式會與未使用受控身分識別時的格式不同。 在這裡，您將提供初始類別目錄或資料庫名稱，以及沒有帳戶金鑰或密碼的 ResourceId。 ResourceId 必須包含 Azure SQL 資料庫的訂用帳戶識別碼、SQL 資料庫的資源群組，以及 SQL 資料庫的名稱。 
+    * 使用受控識別進行驗證時，**credentials** 格式會與未使用受控身分識別時的格式不同。 在這裡，您將提供初始類別目錄或資料庫名稱，以及沒有帳戶金鑰或密碼的 ResourceId。 ResourceId 必須包含 Azure SQL Database 的訂用帳戶識別碼、SQL Database 的資源群組，以及 SQL 資料庫的名稱。 
     * 受控識別連接字串格式：
         * *初始類別目錄|資料庫=**資料庫名稱**;ResourceId=/訂用帳戶/**您的訂用帳戶識別碼**/resourceGroups/**您的資源群組名稱**/providers/Microsoft.Sql/servers/**SQL Server 名稱**/;連線逾時=**連線逾時時間長度**;*
 * **container** 指定您想要編制索引的資料表或檢視表的名稱。
@@ -110,7 +111,7 @@ ms.locfileid: "83663456"
 如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) \(機器翻譯\) 建立 Azure SQL 資料來源物件的範例：
 
 ```
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -131,7 +132,7 @@ Azure 入口網站和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft
 以下說明如何使用可搜尋的 `booktitle` 欄位建立索引︰   
 
 ```
-POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -155,7 +156,7 @@ api-key: [admin key]
 Azure SQL 索引子的索引子定義範例：
 
 ```
-POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 

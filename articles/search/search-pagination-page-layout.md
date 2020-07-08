@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801768"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561577"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用搜尋結果
 
@@ -23,12 +23,12 @@ ms.locfileid: "82801768"
 
 ## <a name="result-composition"></a>結果組合
 
-雖然搜尋檔可能包含大量欄位，但通常只需要少數幾個來表示結果集中的每個檔。 在查詢要求中，附加`$select=<field list>`以指定要在回應中顯示的欄位。 在要包含在結果中的**索引中，** 必須將欄位的屬性設為可抓取。 
+雖然搜尋檔可能包含大量欄位，但通常只需要少數幾個來表示結果集中的每個檔。 在查詢要求中，附加 `$select=<field list>` 以指定要在回應中顯示的欄位。 在要包含在結果中的**索引中，** 必須將欄位的屬性設為可抓取。 
 
 最適合的欄位包括在檔之間進行對比和區別的工作，提供足夠的資訊來邀請使用者的按下回應。 在電子商務網站上，它可能是產品名稱、描述、品牌、色彩、大小、價格和評等。 針對飯店-範例索引內建範例，它可能是下列範例中的欄位：
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",
       "select": "HotelId, HotelName, Description, Rating, Address/City"
@@ -43,15 +43,15 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 
 根據預設，搜尋引擎最多會傳回前50個相符專案（如果查詢是全文檢索搜尋，則是由搜尋分數決定），或是完全相符查詢的任意順序。
 
-若要傳回不同數目的相符檔，請`$top`將`$skip`和參數新增至查詢要求。 下列清單說明邏輯。
+若要傳回不同數目的相符檔，請將 `$top` 和 `$skip` 參數新增至查詢要求。 下列清單說明邏輯。
 
-+ 新增`$count=true`以取得索引中相符檔總數的計數。
++ 新增 `$count=true` 以取得索引中相符檔總數的計數。
 
 + 傳回15個相符檔的第一組，加上總相符專案的計數：`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ 傳回第二個集合，略過前15個來取得接下來`$top=15&$skip=15`的15個：。 針對第三組15執行相同動作：`$top=15&$skip=30`
++ 傳回第二個集合，略過前15個來取得接下來的15個： `$top=15&$skip=15` 。 針對第三組15執行相同動作：`$top=15&$skip=30`
 
-如果基礎索引正在變更，則分頁查詢的結果不保證穩定。 分頁會`$skip`針對每個頁面變更的值，但每個查詢都是獨立的，而且會在查詢時以現有資料的目前觀點來運作（換句話說，沒有結果的快取或快照集，例如在一般用途資料庫中找到的）。
+如果基礎索引正在變更，則分頁查詢的結果不保證穩定。 分頁會 `$skip` 針對每個頁面變更的值，但每個查詢都是獨立的，而且會在查詢時以現有資料的目前觀點來運作（換句話說，沒有結果的快取或快照集，例如在一般用途資料庫中找到的）。
  
 以下是您可能會取得重複專案的範例。 假設有四個檔的索引：
 
@@ -60,12 +60,12 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
     { "id": "3", "rating": 2 }
     { "id": "4", "rating": 1 }
  
-現在假設您想要一次傳回兩個結果，並依評等排序。 您會執行此查詢來取得結果的第一頁： `$top=2&$skip=0&$orderby=rating desc`，產生下列結果：
+現在假設您想要一次傳回兩個結果，並依評等排序。 您會執行此查詢來取得結果的第一頁： `$top=2&$skip=0&$orderby=rating desc` ，產生下列結果：
 
     { "id": "1", "rating": 5 }
     { "id": "2", "rating": 3 }
  
-在服務上，假設在查詢呼叫之間，會將第五份檔加入至`{ "id": "5", "rating": 4 }`索引：。  之後，您可以執行查詢來提取第二頁： `$top=2&$skip=2&$orderby=rating desc`，並取得下列結果：
+在服務上，假設在查詢呼叫之間，會將第五份檔加入至索引： `{ "id": "5", "rating": 4 }` 。  之後，您可以執行查詢來提取第二頁： `$top=2&$skip=2&$orderby=rating desc` ，並取得下列結果：
 
     { "id": "2", "rating": 3 }
     { "id": "3", "rating": 2 }
@@ -86,7 +86,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 
 ### <a name="consistent-ordering"></a>一致的順序
 
-根據結果排序中的彈性，如果一致性是應用程式需求，您可能會想要探索其他選項。 最簡單的方法是依域值排序，例如 [評等] 或 [日期]。 針對您想要依特定欄位排序的案例，例如評等或日期，您可以明確定義[ `$orderby`運算式](query-odata-filter-orderby-syntax.md)，這可以套用至任何索引為可**排序**的欄位。
+根據結果排序中的彈性，如果一致性是應用程式需求，您可能會想要探索其他選項。 最簡單的方法是依域值排序，例如 [評等] 或 [日期]。 針對您想要依特定欄位排序的案例，例如評等或日期，您可以明確定義[ `$orderby` 運算式](query-odata-filter-orderby-syntax.md)，這可以套用至任何索引為可**排序**的欄位。
 
 另一個選項是使用[自訂評分設定檔](index-add-scoring-profiles.md)。 計分設定檔可讓您更充分掌控搜尋結果中的專案排名，並能夠提升特定欄位中找到的相符專案。 額外的計分邏輯有助於覆寫複本之間的差異，因為每份檔的搜尋分數會相距較遠。 我們建議採用這種方法的[排名演算法](index-ranking-similarity.md)。
 
@@ -94,20 +94,20 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 
 [搜尋反白顯示] 是指套用至結果中相符詞彙的文字格式設定（例如粗體或黃色反白顯示），讓您更容易找到相符的內容。 [查詢要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上會提供搜尋反白顯示指示。 
 
-若要啟用搜尋醒目提示`highlight=[comma-delimited list of string fields]` ，請新增來指定哪些欄位將使用反白顯示。 反白顯示適用于較長的內容欄位，例如 [描述] 欄位，其中比對不會立即明顯符合。 只有屬性為可搜尋的欄位**定義符合搜尋**醒目提示的資格。
+若要啟用搜尋醒目提示，請新增 `highlight=[comma-delimited list of string fields]` 來指定哪些欄位將使用反白顯示。 反白顯示適用于較長的內容欄位，例如 [描述] 欄位，其中比對不會立即明顯符合。 只有屬性為可搜尋的欄位**定義符合搜尋**醒目提示的資格。
 
-根據預設，Azure 認知搜尋會針對每個欄位傳回最多五個重點。 您可以在欄位後面加上一個整數來調整這個數位。 例如，在`highlight=Description-10` [描述] 欄位中，最多會針對相符的內容傳回10個重點。
+根據預設，Azure 認知搜尋會針對每個欄位傳回最多五個重點。 您可以在欄位後面加上一個整數來調整這個數位。 例如，在 `highlight=Description-10` [描述] 欄位中，最多會針對相符的內容傳回10個重點。
 
-將格式套用至整個詞彙查詢。 格式的類型取決於標記、 `highlightPreTag`和`highlightPostTag`，而且您的程式碼會處理回應（例如，套用粗體字型或黃色背景）。
+將格式套用至整個詞彙查詢。 格式的類型取決於標記、 `highlightPreTag` 和 `highlightPostTag` ，而且您的程式碼會處理回應（例如，套用粗體字型或黃色背景）。
 
 在下列範例中，在 [描述] 欄位中找到的 "sandy"、"海灘"、"海灘"、"浮水" 詞彙會標記為反白顯示。 在引擎中觸發查詢展開的查詢（例如模糊和萬用字元搜尋）對搜尋反白顯示的支援有限。
 
 ```http
-GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2020-06-30 
 ```
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",  
       "highlight": "Description"
@@ -126,8 +126,6 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
   請注意，晶片的「*杯*」一詞沒有任何反白顯示，因為它不符合完整的片語。
-  
-* 您可以指定為反白顯示傳回的片段大小。 片段大小會指定為字元數（最大值為1000個字元）。
 
 當您撰寫會執行反白顯示的用戶端程式代碼時，請注意這項變更。 請注意，除非您建立全新的搜尋服務，否則這不會對您造成影響。
 

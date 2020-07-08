@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 1d523b09cb3d7142a6c375a0ffde77f8ca1153b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87d73787998d1a49d7512723b212c26b7107513f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71349447"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559801"
 ---
 # <a name="spatial-functions-azure-cosmos-db"></a>空間函數（Azure Cosmos DB）
 
@@ -21,11 +21,16 @@ Cosmos DB 支援下列「開放地理空間協會」(OGC) 內建地理空間查�
 ## <a name="functions"></a>函式
 
 下列純量值函式會對空間物件輸入值執行作業，並傳回數值或布林值。  
-  
-|||||
-|-|-|-|-|
-|[ST_DISTANCE](sql-query-st-distance.md)|[ST_INTERSECTS](sql-query-st-intersects.md)|[ST_ISVALID](sql-query-st-isvalid.md)|
-|[ST_ISVALIDDETAILED](sql-query-st-isvaliddetailed.md)|[ST_WITHIN](sql-query-st-within.md)||||
+
+* [ST_DISTANCE](sql-query-st-distance.md)
+* [ST_INTERSECTS](sql-query-st-intersects.md)
+* [ST_ISVALID](sql-query-st-isvalid.md)
+* [ST_ISVALIDDETAILED](sql-query-st-isvaliddetailed.md)
+* [ST_WITHIN](sql-query-st-within.md)
+
+
+
+
   
 
 ## <a name="next-steps"></a>後續步驟

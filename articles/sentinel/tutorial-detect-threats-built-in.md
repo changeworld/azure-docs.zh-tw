@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Sentinel 調查警示 |Microsoft Docs
-description: 使用本教學課程，瞭解如何使用 Azure Sentinel 來調查警示。
+description: 瞭解如何使用現成可用的內建 Azure 威脅偵測範本，在發生可疑的情況時通知您。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: df855aa768fdeb279482b8407259be1a644322d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d1ef885ea36e2eee7fd30268fd7b1f4609a70bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77585198"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560044"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>教學課程：預設偵測到威脅
 
@@ -29,7 +29,7 @@ ms.locfileid: "77585198"
 > 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-在您將 [資料來源](quickstart-onboard.md) 連接到 Azure Sentinel 之後，您會想要在發生可疑的情況時收到通知。 為了讓您這麼做，Azure Sentinel 提供現成可用的內建範本。 這些範本是由 Microsoft 的安全性專家和分析師團隊所設計，以已知的威脅、常見的攻擊媒介和可疑的活動擴大鏈為基礎。 啟用這些範本之後，他們會自動搜尋在您環境中看起來可疑的任何活動。 許多範本都可以根據您的需求自訂，以搜尋或篩選出活動。 這些範本所產生的警示將會建立您可以在環境中指派和調查的事件。
+在您將 [資料來源連接](quickstart-onboard.md)   到 Azure Sentinel 之後，您會想要在發生可疑的情況時收到通知。 為了讓您這麼做，Azure Sentinel 提供現成可用的內建範本。 這些範本是由 Microsoft 的安全性專家和分析師團隊所設計，以已知的威脅、常見的攻擊媒介和可疑的活動擴大鏈為基礎。 啟用這些範本之後，他們會自動搜尋在您環境中看起來可疑的任何活動。 許多範本都可以根據您的需求自訂，以搜尋或篩選出活動。 這些範本所產生的警示將會建立您可以在環境中指派和調查的事件。
 
 本教學課程可協助您偵測 Azure Sentinel 的威脅：
 

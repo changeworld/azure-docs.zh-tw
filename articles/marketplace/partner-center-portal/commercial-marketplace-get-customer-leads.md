@@ -4,15 +4,15 @@ description: 瞭解如何從您的 Microsoft AppSource 和 Azure Marketplace 供
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 89b73fd98ca773668d2eb53892d0c21397e9abf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559579"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>來自您的商業市集供應項目的潛在客戶
 
@@ -87,10 +87,12 @@ ms.locfileid: "83800939"
 
 ## <a name="best-practices-for-lead-management"></a>潛在客戶管理的最佳做法
 
+以下是透過您的銷售週期推動潛在客戶的一些建議：
+
 - **程序**：定義清楚的銷售流程，包含里程碑、分析、清楚的小組擁有權。
 - **資格**：定義必要條件，指出潛在客戶是否完全符合資格。 請確定銷售或行銷代表會謹慎地界定潛在客戶，再將其納入完整的銷售流程。
-- **後續操作**：別忘了後續追蹤。 一般交易預期需要 5 到 12 個後續通話。
-- **加強關係**：培養您的潛在客戶，讓您獲得更高的收益。
+- **後續**操作：別忘了在24小時內繼續追蹤。 客戶部署試用產品之後，您會立即在您選擇的 CRM 中取得潛在客戶;當他們仍然暖時，將其以電子郵件傳送給他們。 要求排定電話通話，以進一步瞭解您的產品是否為其問題的絕佳解決方案。 一般交易預期需要進行許多後續的呼叫。
+- **加強關係**：培養您的潛在客戶，讓您獲得更高的收益。 簽入，但不要 bombard 它們。 我們建議您在關閉電子郵件之前，先將其寄送到至少幾次，第一次嘗試之後，請不要放棄。 請記住，這些客戶會直接與您的產品接洽，並花時間進行免費試用;這些都是絕佳的潛在客戶。
 
 ## <a name="common-questions-about-lead-management"></a>潛在客戶管理的常見問題
 

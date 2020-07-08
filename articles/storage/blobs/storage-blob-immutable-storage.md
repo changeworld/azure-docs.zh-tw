@@ -9,24 +9,24 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: bb66e90f1d835a6341b47bb698cf05bc442e0ac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c921ba67159d28a913173cee5e90fb04dcbf0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129259"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561048"
 ---
-# <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可變的儲存體儲存業務關鍵的 blob 資料
+# <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可變儲存體儲存業務關鍵 Blob 資料
 
-Azure Blob 儲存體的固定儲存體可讓使用者以 WORM （一次寫入，多次讀取）狀態儲存業務關鍵資料物件。 此狀態讓資料在使用者指定的間隔內不可清除，也不可修改。 在保留間隔的持續期間內，可以建立和讀取 blob，但無法修改或刪除。 固定儲存體適用于所有 Azure 區域中的一般用途 v1、一般用途 v2、BlobStorage 和 BlockBlobStorage 帳戶。
+Azure Blob 儲存體的固定儲存體可讓使用者以 WORM (一次寫入，多次讀取) 狀態儲存業務關鍵資料。 此狀態讓資料在使用者指定的間隔內不可清除，也不可修改。 在保留間隔的持續時間內可以建立和讀取 Blob，但無法加以修改或刪除。 固定儲存體適用于所有 Azure 區域中的一般用途 v1、一般用途 v2、BlobStorage 和 BlockBlobStorage 帳戶。
 
 如需如何使用 Azure 入口網站、PowerShell 或 Azure CLI 來設定和清除合法保存或建立以時間為基礎的保留原則的詳細資訊，請參閱[設定和管理 Blob 儲存體的不可變性原則](storage-blob-immutability-policies-manage.md)。
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="about-immutable-blob-storage"></a>關於不可變的 Blob 儲存體
 
-固定儲存體可協助醫療保健組織、金融機構和相關產業&mdash;（特別是經紀機關&mdash;組織）安全地儲存資料。 在任何情況下，也可以利用固定儲存體來保護重要資料，以防止修改或刪除。
+固定儲存體可協助醫療保健組織、金融機構和相關產業（ &mdash; 特別是經紀機關組織） &mdash; 安全地儲存資料。 在任何情況下，也可以利用固定儲存體來保護重要資料，以防止修改或刪除。
 
 典型應用包括：
 
@@ -78,15 +78,15 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 附加 blob 是由資料區塊所組成，並已針對審核和記錄案例所需的資料附加作業優化。 根據設計，附加 blob 只允許將新區塊新增至 blob 結尾。 不論是否有任何不受的改變，都不允許在附加 blob 中修改或刪除現有區塊。 若要深入瞭解附加 blob，請參閱[關於附加 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)。
 
-只有以時間為基礎的保留原則`allowProtectedAppendWrites`有一個設定，可讓您將新的區塊寫入至附加 blob，同時維持不安全的保護和合規性。 啟用時，您可以直接在受原則保護的容器中建立附加 blob，並繼續使用*AppendBlock* API，將新的資料區塊新增至現有附加 blob 的結尾。 只能新增新的區塊，而且無法修改或刪除任何現有的區塊。 時間保留不存在的保護仍然適用，防止刪除附加 blob，直到經過有效的保留期限為止。 啟用這項設定並不會影響區塊 blob 或分頁 blob 的永久性行為。
+只有以時間為基礎的保留原則有一個 `allowProtectedAppendWrites` 設定，可讓您將新的區塊寫入至附加 blob，同時維持不安全的保護和合規性。 啟用時，您可以直接在受原則保護的容器中建立附加 blob，並繼續使用*AppendBlock* API，將新的資料區塊新增至現有附加 blob 的結尾。 只能新增新的區塊，而且無法修改或刪除任何現有的區塊。 時間保留不存在的保護仍然適用，防止刪除附加 blob，直到經過有效的保留期限為止。 啟用這項設定並不會影響區塊 blob 或分頁 blob 的永久性行為。
 
 由於此設定是以時間為基礎的保留原則的一部分，因此附加 blob 在*有效*保留期間的持續時間內仍會保持不變狀態。 由於新的資料可以附加在初始建立附加 blob 之外，因此決定保留週期的方式會有些許差異。 [有效保留] 是 [附加 blob 的**上次修改時間**] 和 [使用者指定的保留間隔] 之間的差異。 同樣地，當保留間隔擴充時，固定儲存體會使用使用者指定的保留間隔的最新值來計算有效的保留期限。
 
-例如，假設使用者建立以時間為`allowProtectedAppendWrites`基礎的保留原則，並啟用並保留間隔為90天。 現在會在容器中建立附加 blob _logblob1_，而新的記錄會繼續在接下來的10天內新增至附加 blob;因此， _logblob1_的有效保留期限是從今天起算的100天（最後一個附加的時間 + 90 天）。
+例如，假設使用者建立以時間為基礎的保留原則， `allowProtectedAppendWrites` 並啟用並保留間隔為90天。 現在會在容器中建立附加 blob _logblob1_，而新的記錄會繼續在接下來的10天內新增至附加 blob;因此， _logblob1_的有效保留期限是從今天起算的100天（最後一個附加的時間 + 90 天）。
 
-解除鎖定以時間為基礎的保留`allowProtectedAppendWrites`原則可讓您隨時啟用和停用設定。 一旦鎖定以時間為基礎的保留原則，就`allowProtectedAppendWrites`無法變更設定。
+解除鎖定以時間為基礎的保留原則可讓您隨時 `allowProtectedAppendWrites` 啟用和停用設定。 一旦鎖定以時間為基礎的保留原則，就 `allowProtectedAppendWrites` 無法變更設定。
 
-合法保存原則無法啟用`allowProtectedAppendWrites` ，而且任何合法保存都會使失效 ' allowProtectedAppendWrites ' 屬性。 如果將合法保存套用至`allowProtectedAppendWrites`已啟用的以時間為基礎的保留原則，則*AppendBlock* API 將會失敗，直到合法保存都已解除為止。
+合法保存原則無法啟用 `allowProtectedAppendWrites` ，而且任何合法保存都會使失效 ' allowProtectedAppendWrites ' 屬性。 如果將合法保存套用至已啟用的以時間為基礎的保留原則 `allowProtectedAppendWrites` ，則*AppendBlock* API 將會失敗，直到合法保存都已解除為止。
 
 ## <a name="legal-holds"></a>合法保存
 
@@ -104,7 +104,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 ## <a name="scenarios"></a>案例
 下表顯示針對不同的不可變案例停用的 Blob 儲存體作業類型。 如需詳細資訊，請參閱[Azure Blob 服務 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)檔。
 
-|案例  |Blob 狀態  |已拒絕 Blob 作業  |容器和帳戶保護
+|狀況  |Blob 狀態  |已拒絕 Blob 作業  |容器和帳戶保護
 |---------|---------|---------|---------|
 |Blob 上的有效保留間隔尚未過期及/或已設定合法保存     |固定：防刪與防寫保護         | 放置 Blob<sup>1</sup>、放置區塊<sup>1</sup>、放置區塊清單<sup>1</sup>、刪除容器、刪除 blob、設定 Blob 中繼資料、放置分頁、設定 Blob 屬性、快照集 Blob、累加複製 Blob、附加區塊<sup>2</sup>         |容器刪除被拒;拒絕刪除儲存體帳戶         |
 |Blob 上的有效保留間隔已過期，且未設定合法保存    |僅限防寫保護 (允許刪除作業)         |放置 Blob<sup>1</sup>、放置區塊<sup>1</sup>、放置區塊清單<sup>1</sup>、設定 blob 中繼資料、放置分頁、設定 Blob 屬性、快照集 Blob、增量複製 Blob、附加區塊<sup>2</sup>         |如果受保護容器中至少有1個 blob，則會拒絕容器刪除;只有*鎖定*的以時間為基礎的原則，才會拒絕刪除儲存體帳戶         |
@@ -112,7 +112,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 <sup>1</sup> blob 服務允許這些作業一次建立新的 blob。 不允許不可變容器中現有 blob 路徑上的所有後續覆寫作業。
 
-<sup>2</sup>只有啟用`allowProtectedAppendWrites`屬性的以時間為基礎的保留原則才允許附加區塊。 如需詳細資訊，請參閱[允許受保護的附加 Blob 寫入](#allow-protected-append-blobs-writes)一節。
+<sup>2</sup>只有啟用屬性的以時間為基礎的保留原則才允許附加區塊 `allowProtectedAppendWrites` 。 如需詳細資訊，請參閱[允許受保護的附加 Blob 寫入](#allow-protected-append-blobs-writes)一節。
 
 ## <a name="pricing"></a>定價
 
@@ -170,7 +170,7 @@ Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時
 
 ## <a name="next-steps"></a>後續步驟
 
-- [設定和管理 Blob 儲存體的不可變性原則](storage-blob-immutability-policies-manage.md)
+- [設定和管理 Blob 儲存體的不變性原則](storage-blob-immutability-policies-manage.md)
 - [使用生命週期管理將規則設定為自動分層和刪除 blob 資料](storage-lifecycle-management-concepts.md)
 - [Azure 儲存體 Blob 的虛刪除](../blobs/storage-blob-soft-delete.md)
 - [使用 Azure Resource Manager 鎖定來保護訂用帳戶、資源群組和資源](../../azure-resource-manager/management/lock-resources.md)。

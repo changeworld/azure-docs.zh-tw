@@ -1,5 +1,5 @@
 ---
-title: 偵錯 AI 擴充技能 (預覽)
+title: Debug 會話概念（預覽）
 titleSuffix: Azure Cognitive Search
 description: 透過 Azure 入口網站來存取的偵錯工作階段，提供類似於 IDE 的環境，您可以在其中識別並修正錯誤、驗證變更，以及將變更推送至 AI 擴充管線中的技能。 偵錯工作階段處於預覽狀態。
 manager: nitinme
@@ -8,21 +8,20 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 04b221d772abf923d7aabfe767a6424b72ed8fb2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: edce8f3460e92eef4f6665b1b38a61582d6841ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560384"
 ---
-# <a name="debug-sessions"></a>偵錯工作階段
+# <a name="debug-sessions-in-azure-cognitive-search"></a>Azure 認知搜尋中的 Debug 會話
 
 「偵錯工作階段」是一種視覺化編輯器，適用於 Azure 入口網站中的現有技能。 在偵錯工作階段中，您可以識別並解析錯誤、驗證變更，以及將變更推送至 AI 擴充管線中的生產技能。
 
 > [!Important]
-> Azure 認知搜尋的偵測工作階段支援可[應要求](https://aka.ms/DebugSessions)以有限存取預覽版的形式提供。 預覽版功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Debug 會話是在沒有服務等級協定的情況下提供的預覽功能，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 獲得預覽版的存取權之後，您就能夠使用 Azure 入口網站存取偵錯工作階段，並將其用於服務。
 
 ## <a name="using-debug-sessions"></a>使用偵錯工作階段
 
@@ -86,6 +85,10 @@ ms.locfileid: "83662406"
 ## <a name="errorswarnings"></a>錯誤/警告
 
 這個視窗會顯示技能在偵錯工作階段中針對文件執行時所產生的所有錯誤和警告。
+
+## <a name="limitations"></a>限制
+
+Debug sesisons 可與所有正式運作的資料來源搭配使用，amd 最常預覽的資料來源。 目前不支援 Cosmos DB 的 MongoDB API （預覽）和 Cassandra API （預覽）。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,6 +1,6 @@
 ---
 title: 將 Azure 資訊保護連接到 Azure Sentinel
-description: 瞭解如何在 Azure Sentinel 中連接 Azure 資訊保護資料。
+description: 藉由設定 Azure 資訊保護資料連線器，將 Azure 資訊保護中的記錄資訊串流至 Azure Sentinel。 
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 396fd7c4289c9d02d451b26f5fb6299acd31e2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f06f8d3450f8907aa1be34b738565ac55e5e3d2d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559137"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>從 Azure 資訊保護連接資料
 
@@ -35,10 +35,10 @@ ms.locfileid: "77588547"
     
     如果您變更工作區，Azure 資訊保護的新報告資料現在會儲存在您用於 Azure Sentinel 的工作區中，而歷程資料無法供 Azure Sentinel 使用。 此外，如果先前的工作區是針對自訂查詢、警示或 REST Api 進行設定，如果您想要使用它們來進行 Azure 資訊保護，就必須為 Azure Sentinel 工作區重新設定這些專案。 使用 Azure 資訊保護的用戶端和服務不需要重新設定。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您租使用者的下列其中一個 Azure AD 系統管理員角色： 
-    - Azure 資訊保護系統管理員
+    - Azure 資訊保護管理員
     - 安全性系統管理員
     - 規範管理員
     - 合規性資料管理員

@@ -1,6 +1,6 @@
 ---
 title: 將 Azure ATP 資料連線到 Azure Sentinel |Microsoft Docs
-description: 瞭解如何將 Azure ATP 資料連線到 Azure Sentinel。
+description: 瞭解如何只需按一下，就能將記錄從 Azure 進階威脅防護（ATP）串流至 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f58c38ccfa234752a80c05c300d245c6c9e97cf0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559173"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>從 Azure 進階威脅防護連接資料（ATP）
 
@@ -29,7 +29,7 @@ ms.locfileid: "77588581"
 
 您只要按一下，就可以將[Azure 進階威脅防護](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp)的記錄串流至 Azure Sentinel。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 具有全域管理員或安全性系統管理員許可權的使用者
 - 您必須是 Azure ATP 的預覽客戶，並且能夠在 Azure ATP 和 Microsoft Cloud App Security 之間進行整合。 如需詳細資訊，請參閱[Azure Advanced Protection 整合](https://docs.microsoft.com/cloud-app-security/aatp-integration)。
@@ -44,9 +44,9 @@ ms.locfileid: "77588581"
 
 1. 在 Azure Sentinel 中，選取 [**資料連線器**]，然後按一下 [ **Azure 進階威脅防護（預覽）** ] 磚。
 
-1. 您可以選取是否要讓警示 Azure ATP 自動在 Azure Sentinel 中自動產生事件。 在 [建立事件]**** 底下，選取 [啟用]**** 來啟用預設分析規則，以自動從已連線安全性服務中產生的警示建立事件。 接著，您可以在 [分析]**** 下編輯此規則，然後編輯 [有效規則]****。
+1. 您可以選取是否要讓警示 Azure ATP 自動在 Azure Sentinel 中自動產生事件。 在 [建立事件] 底下，選取 [啟用] 來啟用預設分析規則，以自動從已連線安全性服務中產生的警示建立事件。 接著，您可以在 [分析] 下編輯此規則，然後編輯 [有效規則]。
 
-1. 按一下 [連線]  。
+1. 按一下 [ **連接**]。
 
 1. 若要在 Log Analytics 中針對 Azure ATP 警示使用相關的架構，請搜尋**SecurityAlert**。
 

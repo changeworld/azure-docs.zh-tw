@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ca2bc66c755da2011cc7016f37b194caa6200d9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 344b3bb30c9a92046a5fbd13c35b0efc7e6f3a23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72793598"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560833"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立多個語言的索引
 
@@ -44,7 +44,7 @@ Azure 認知搜尋提供來自 Lucene 和 Microsoft 的大量語言分析器選�
 
 如果已知發出查詢之代理程式的語言，則可使用 **searchFields** 查詢參數將搜尋要求的範圍限制為特定欄位。 下列查詢只會針對波蘭文描述發出：
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2020-06-30`
 
 您可以從入口網站查詢您的索引，使用 [[**搜尋瀏覽器**](search-explorer.md)] 貼上類似上述所示的查詢。
 
@@ -61,7 +61,7 @@ Azure 認知搜尋提供來自 Lucene 和 Microsoft 的大量語言分析器選�
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
 
 ## <a name="next-steps"></a>後續步驟
 
