@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: 04c6444723180c34f6605810260f5f865dff2d12
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f8d8d5ae677ea438de4baed7d6636c2087277427
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790910"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602698"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric 護欄 
 部署 Service Fabric 叢集時，會將護欄置中，這將會在叢集設定無效時，使 Azure Resource Manager 部署失敗。 下列各節提供常見叢集設定問題的總覽，以及減輕這些問題所需的步驟。 
@@ -60,7 +60,7 @@ Service Fabric 節點類型的持久性值定義于 Azure Resource Manager 範�
 * 虛擬機器擴展集耐久性與目標 Service Fabric 節點類型耐久性層級不相符
 * 虛擬機器擴展集耐久性符合目前的 Service Fabric 耐久性層級或目標 Service Fabric 節點類型耐久性層級 
 
-### <a name="mitigation"></a>緩和措施
+### <a name="mitigation"></a>降低
 若要修正持久性不相符的問題，請使用上述任何錯誤訊息來表示：
 1. 更新 [虛擬機器擴展集延伸模組] 或 [Azure Resource Manager 範本 Service Fabric 節點類型] 區段中的持久性層級，以確保這些值相符。
 2. 使用更新的值重新部署 Azure Resource Manager 範本。
@@ -68,14 +68,14 @@ Service Fabric 節點類型的持久性值定義于 Azure Resource Manager 範�
 
 ## <a name="seed-node-deletion"></a>刪除種子節點 
 ### <a name="overview"></a>總覽
-Service Fabric 叢集具有 [[可靠性層級](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)] 屬性，可用來決定在叢集的主要節點類型上執行的系統服務複本數目。 必要的複本數目將決定必須在叢集的主要節點類型中維護的節點數目下限。 如果主要節點類型中的節點數目低於可靠性層級的最低需求，叢集將會變得不穩定。  
+Service Fabric 叢集具有 [[可靠性層級](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster)] 屬性，可用來決定在叢集的主要節點類型上執行的系統服務複本數目。 必要的複本數目將決定必須在叢集的主要節點類型中維護的節點數目下限。 如果主要節點類型中的節點數目低於可靠性層級的最低需求，叢集將會變得不穩定。  
 
 ### <a name="error-messages"></a>錯誤訊息 
 已偵測到種子節點移除作業，將會拒絕此作業。 
-* 這項作業只會導致{0}可能的種子節點保留在叢集中，而{1}只需要最少的時間。
-* 移除{0}的{1}種子節點會導致叢集因為遺失種子節點仲裁而關閉。 一次可以移除的種子節點數目上限為{2}。
+* 這項作業只會導致 {0} 可能的種子節點保留在叢集中，而只 {1} 需要最少的時間。
+* 移除 {0} 的種子節點 {1} 會導致叢集因為遺失種子節點仲裁而關閉。 一次可以移除的種子節點數目上限為 {2} 。
  
-### <a name="mitigation"></a>緩和措施 
+### <a name="mitigation"></a>降低 
 請確定您的主要節點類型有足夠的虛擬機器，以滿足您叢集上所指定的可靠性。 如果虛擬機器會將虛擬機器擴展集帶入指定之可靠性層級的最小節點數目，您將無法將其移除。
 * 如果已正確指定可靠性層級，請確定您的主要節點類型中有足夠的節點，以確保可靠性層級的需求。 
 * 如果可靠性層級不正確，在起始任何虛擬機器擴展集作業之前，先在 Service Fabric 資源上起始變更，以降低可靠性層級，並等候它完成。

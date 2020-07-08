@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: ddd34295bfe64fdd336d8b237482b45f02e30201
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: HT
+ms.openlocfilehash: 14ecd1a35f8aae8365b7c7dc458712acdb894e62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602579"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 私人連結將網路安全地連線到 Azure 監視器
 
@@ -74,11 +74,17 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 首先，建立 Azure 監視器私人連結範圍資源。
 
-1. 在 Azure 入口網站中移至 [建立資源]，搜尋 **Azure 監視器私人連結範圍**。 
-2. 按一下 [建立]。 
-3. 選取訂用帳戶和資源群組。 
-4. 提供 AMPLS 的名稱。 名稱最好能夠清楚描述領域的用途和安全性界限，以免有人意外中斷網路安全性界限。 例如，AppServerProdTelem。 
+1. 在 Azure 入口網站中移至 [建立資源]，搜尋 **Azure 監視器私人連結範圍**。
+
+   ![尋找 Azure 監視器私人連結範圍](./media/private-link-security/ampls-find-1c.png)
+
+2. 按一下 [建立]。
+3. 選取訂用帳戶和資源群組。
+4. 提供 AMPLS 的名稱。 名稱最好能夠清楚描述領域的用途和安全性界限，以免有人意外中斷網路安全性界限。 例如，AppServerProdTelem。
 5. 按一下 [檢閱 + 建立]。 
+
+   ![建立 Azure 監視器私人連結範圍](./media/private-link-security/ampls-create-1d.png)
+
 6. 讓驗證通過，然後按一下 [建立]。
 
 ## <a name="connect-azure-monitor-resources"></a>連線 Azure 監視器資源
@@ -117,7 +123,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
    a.    選擇您想要連線到 Azure 監視器資源的 [虛擬網路] 和 [子網路]。 
  
-   b.    請在 [與私人 DNS 區域整合] 選擇 [是] ，讓它自動建立新的私人 DNS 區域。 
+   b.    請在 [與私人 DNS 區域整合] 選擇 [是] ，讓它自動建立新的私人 DNS 區域。 實際的 DNS 區域可能與下列螢幕擷取畫面中所顯示的不同。 
  
    c.    按一下 [檢閱 + 建立]。
  
@@ -162,9 +168,8 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 > [!NOTE]
 > 若要完整保護以工作區運作的 Application Insights，必須同時鎖定對 Application Insights 資源的存取，以及對其基礎 Log Analytics 工作區的存取。
-
-> [!NOTE]
-> 程式碼層級診斷 (profiler/偵錯工具) 目前不支援私人連結。
+>
+> 程式碼層級診斷（profiler/偵錯工具）需要您提供自己的儲存體帳戶，才能支援私用連結。 以下是如何執行此動作的[檔](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage)。
 
 ## <a name="use-apis-and-command-line"></a>使用 API 和命令列
 
@@ -188,7 +193,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 **Log Analytics Windows 代理程式**
 
-使用 Log Analytics 代理程式18.20.18038.0 或更新版本。
+使用 Log Analytics 代理程式版本10.20.18038.0 或更新版本。
 
 **Log Analytics Linux 代理程式**
 
@@ -201,7 +206,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-若要使用 Azure 監視器的入口網站體驗，例如 Application Insights 和 Log Analytics，您必須允許在私人網路上存取 Azure 入口網站和 Azure 監視器擴充功能。 在您的防火牆新增 **AzureActiveDirectory**、**AzureResourceManager**、**AzureFrontDoor.FirstParty、**AzureFrontdoor.Frontend** [服務標記](../../firewall/service-tags.md)。
+若要使用 Azure 監視器的入口網站體驗，例如 Application Insights 和 Log Analytics，您必須允許在私人網路上存取 Azure 入口網站和 Azure 監視器擴充功能。 將**AzureActiveDirectory**、 **AzureResourceManager**、 **AzureFrontDoor、FirstParty**和**AzureFrontDoor. 前端**[服務](../../firewall/service-tags.md)標籤新增至您的防火牆。
 
 ### <a name="programmatic-access"></a>以程式設計方式存取
 
@@ -220,7 +225,14 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 | 雲端環境 | 代理程式資源 | 連接埠 | 方向 |
 |:--|:--|:--|:--|
-|Azure 公用     | scadvisor.blob.core.windows.net         | 443 | 輸出
+|Azure 公用     | scadvisorcontent.blob.core.windows.net         | 443 | 輸出
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  輸出
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | 輸出
 
+### <a name="browser-dns-settings"></a>瀏覽器 DNS 設定
+
+如果您透過私人連結連線到您的 Azure 監視器資源，則這些資源的流量必須通過您網路上所設定的私人端點。 若要啟用私用端點，請更新您的 DNS 設定，如[連接到私人端點](#connect-to-a-private-endpoint)中所述。 有些瀏覽器會使用自己的 DNS 設定，而不是您所設定的設定。 瀏覽器可能會嘗試連接到 Azure 監視器公用端點，並完全略過私用連結。 確認您的瀏覽器設定不會覆寫或快取舊的 DNS 設定。 
+
+## <a name="next-steps"></a>後續步驟
+
+- 深入瞭解[私人儲存體](private-storage.md)

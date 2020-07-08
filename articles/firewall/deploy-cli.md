@@ -6,13 +6,13 @@ author: vhorne
 ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
-ms.topic: article
-ms.openlocfilehash: e97783d1a32916cad151f1d0858a8190d0005fd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 3087b01e849aaa4d1f3c2b6b4060cf202927f55f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73831974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602613"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>使用 Azure CLI 部署和設定 Azure 防火牆
 
@@ -25,7 +25,7 @@ ms.locfileid: "73831974"
 
 當您將網路流量路由傳送到防火牆作為子網路預設閘道時，網路流量必須遵守設定的防火牆規則。
 
-在本文中，您會建立具有三個子網的簡化單一 VNet，以便進行部署。 針對生產環境部署，建議使用[中樞和輪輻模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)。 防火牆位於自己的 VNet 中。 工作負載伺服器位於相同區域中的對等互連 VNet，其中包含一個或多個子網路。
+在本文中，您會建立具有三個子網的簡化單一 VNet，以便進行部署。 針對生產部署，建議使用[中樞與輪輻模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)。 防火牆位於自己的 VNet 中。 工作負載伺服器位於相同區域中的對等互連 VNet，其中包含一個或多個子網路。
 
 * **AzureFirewallSubnet** - 防火牆位於此子網路。
 * **Workload-SN** - 工作負載伺服器位於此子網路。 此子網路的網路流量會通過防火牆。
@@ -49,7 +49,7 @@ ms.locfileid: "73831974"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -284,7 +284,7 @@ az network firewall network-rule create \
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   `www.google.com`要求應會成功，而且`www.microsoft.com`要求應該會失敗。 這會示範您的防火牆規則如預期般運作。
+   `www.google.com`要求應會成功，而且 `www.microsoft.com` 要求應該會失敗。 這會示範您的防火牆規則如預期般運作。
 
 因此，現在您已確認防火牆規則正在運作：
 
