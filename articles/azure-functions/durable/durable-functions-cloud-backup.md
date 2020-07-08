@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d61600801286126ea6ffb9a97bc5655b6f233816
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77562185"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions 中的展開傳送/收合傳送情節 - 雲端備份範例
@@ -31,7 +30,7 @@ Durable Functions 方法提供上述所有優點，而且額外負荷極低。
 
 本文說明範例應用程式中的函式如下：
 
-* `E2_BackupSiteContent`：呼叫[orchestrator function](durable-functions-bindings.md#orchestration-trigger) `E2_GetFileList`以取得要備份之檔案清單的協調器函式，然後呼叫`E2_CopyFileToBlob`以備份每個檔案。
+* `E2_BackupSiteContent`：呼叫[orchestrator function](durable-functions-bindings.md#orchestration-trigger) `E2_GetFileList` 以取得要備份之檔案清單的協調器函式，然後呼叫 `E2_CopyFileToBlob` 以備份每個檔案。
 * `E2_GetFileList`：傳回目錄中檔案清單的[活動](durable-functions-bindings.md#activity-trigger)函式。
 * `E2_CopyFileToBlob`：用來備份單一檔案以 Azure Blob 儲存體的活動函數。
 
@@ -51,13 +50,13 @@ Durable Functions 方法提供上述所有優點，而且額外負荷極低。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=16-42)]
 
-請注意 `await Task.WhenAll(tasks);` 這一行。 未等候函式的所有`E2_CopyFileToBlob`個別呼叫*not* ，這可讓它們以平行方式執行。 將這一批工作傳給 `Task.WhenAll` 時，將會傳回一個「直到所有複製作業都完成」** 才會完成的工作。 如果您熟悉 .NET 中的工作平行程式庫 (TPL)，則對此不會感到陌生。 差別在於，這些工作可以在多個虛擬機器上同時執行，而 Durable Functions 擴充功能可確保端對端執行在進程回收方面具有彈性。
+請注意 `await Task.WhenAll(tasks);` 這一行。 未等候函式的所有個別呼叫 `E2_CopyFileToBlob` ，這可讓它們以平行方式執行。 *not* 將這一批工作傳給 `Task.WhenAll` 時，將會傳回一個「直到所有複製作業都完成」** 才會完成的工作。 如果您熟悉 .NET 中的工作平行程式庫 (TPL)，則對此不會感到陌生。 差別在於，這些工作可以在多個虛擬機器上同時執行，而 Durable Functions 擴充功能可確保端對端執行在進程回收方面具有彈性。
 
 結束等候 `Task.WhenAll` 之後，就可知道所有函式呼叫已完成，而值也已傳回給我們。 每次呼叫 `E2_CopyFileToBlob` 都會傳回已上傳的位元組數，因此，只要合計所有這些傳回值，就能算出位元組總數。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-函式會針對協調器函式使用標準*函數. json* 。
+函式會針對協調器函式使用標準*function.json* 。
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/function.json)]
 
@@ -65,12 +64,12 @@ Durable Functions 方法提供上述所有優點，而且額外負荷極低。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
-請注意 `yield context.df.Task.all(tasks);` 這一行。 未產生對函式的`E2_CopyFileToBlob`所有個別*not*呼叫，這可讓它們以平行方式執行。 將這一批工作傳給 `context.df.Task.all` 時，將會傳回一個「直到所有複製作業都完成」** 才會完成的工作。 如果您熟悉[`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) JavaScript 的，這不是您的新功能。 差別在於，這些工作可以在多個虛擬機器上同時執行，而 Durable Functions 擴充功能可確保端對端執行在進程回收方面具有彈性。
+請注意 `yield context.df.Task.all(tasks);` 這一行。 未產生對函式的所有個別呼叫 `E2_CopyFileToBlob` ，這可讓它們以平行方式執行。 *not* 將這一批工作傳給 `context.df.Task.all` 時，將會傳回一個「直到所有複製作業都完成」** 才會完成的工作。 如果您熟悉 JavaScript 的 [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) ，這不是您的新功能。 差別在於，這些工作可以在多個虛擬機器上同時執行，而 Durable Functions 擴充功能可確保端對端執行在進程回收方面具有彈性。
 
 > [!NOTE]
 > 儘管工作在概念上類似於 JavaScript Promise，協調器函式還是應該使用 `context.df.Task.all` 和 `context.df.Task.any`，而不是使用 `Promise.all` 和 `Promise.race` 來管理工作平行處理。
 
-從開始`context.df.Task.all`，我們知道所有函式呼叫已完成，並將值傳回給我們。 每次呼叫 `E2_CopyFileToBlob` 都會傳回已上傳的位元組數，因此，只要合計所有這些傳回值，就能算出位元組總數。
+從開始 `context.df.Task.all` ，我們知道所有函式呼叫已完成，並將值傳回給我們。 每次呼叫 `E2_CopyFileToBlob` 都會傳回已上傳的位元組數，因此，只要合計所有這些傳回值，就能算出位元組總數。
 
 ---
 
@@ -86,7 +85,7 @@ Durable Functions 方法提供上述所有優點，而且額外負荷極低。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-的*函數. json*檔案`E2_GetFileList`看起來如下：
+檔案*上的function.js* `E2_GetFileList` 看起來如下所示：
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/function.json)]
 
@@ -94,7 +93,7 @@ Durable Functions 方法提供上述所有優點，而且額外負荷極低。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-函式會使用`readdirp`模組（2.x 版）以遞迴方式讀取目錄結構。
+函式會使用 `readdirp` 模組（2.x 版）以遞迴方式讀取目錄結構。
 
 ---
 
@@ -108,9 +107,9 @@ Durable Functions 方法提供上述所有優點，而且額外負荷極低。
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=56-81)]
 
 > [!NOTE]
-> 您將需要安裝`Microsoft.Azure.WebJobs.Extensions.Storage` NuGet 封裝，才能執行範例程式碼。
+> 您將需要安裝 `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet 封裝，才能執行範例程式碼。
 
-函式會使用 Azure Functions 系結的一些先進功能（也就是使用[ `Binder`參數](../functions-dotnet-class-library.md#binding-at-runtime)），但是您不需要擔心此逐步解說的細節。
+函式會使用 Azure Functions 系結的一些先進功能（也就是使用[ `Binder` 參數](../functions-dotnet-class-library.md#binding-at-runtime)），但是您不需要擔心此逐步解說的細節。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

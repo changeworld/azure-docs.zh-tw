@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: bbc77340375b22f137045d68b7449dd1e8adc4b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588377"
 ---
 # <a name="connect-citrix-analytics-security"></a>連線 Citrix Analytics (Security) 
@@ -27,7 +26,7 @@ Citrix Analytics （安全性）與 Azure Sentinel 的整合可協助您將已�
 
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - [Azure Sentinel] 工作區的 [讀取] 和 [寫入] 許可權。
 
@@ -36,7 +35,7 @@ Citrix Analytics （安全性）與 Azure Sentinel 的整合可協助您將已�
 
 ## <a name="connect-azure-sentinel-to-citrix-analytics-security"></a>將 Azure Sentinel 連線至 Citrix Analytics （安全性）
 
-1. 在 [Azure 入口網站中，流覽至 [ **Azure Sentinel** > **資料連線器**]，然後選取 [ **Citrix Analytics （安全性）** ] 連接器。
+1. 在 [Azure 入口網站中，流覽至 [ **Azure Sentinel**  >  **資料連線器**]，然後選取 [ **Citrix Analytics （安全性）** ] 連接器。
 
 2. 選取 [**開啟連接器] 頁面**。
 
@@ -46,6 +45,6 @@ Citrix Analytics （安全性）與 Azure Sentinel 的整合可協助您將已�
 在本檔中，您已瞭解如何將 Citrix Analytics （安全性）連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
 
 

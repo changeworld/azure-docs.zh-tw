@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.openlocfilehash: 24d25813a5cafc98f04d3daef2803aa44acc7f69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77201317"
 ---
 # <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>使用 Standard Load Balancer 在虛擬網路中設定 IPv6 前端腳本範例（預覽）
@@ -26,7 +25,7 @@ ms.locfileid: "77201317"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 在 Azure 中部署雙重堆疊應用程式之前，您必須使用下列 Azure PowerShell，只為此預覽功能設定訂用帳戶一次：
 
 如下所示進行註冊：

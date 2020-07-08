@@ -7,22 +7,21 @@ ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77593703"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中安裝 Linkerd （AKS）
 
 [Linkerd][linkerd-github]是開放原始碼服務網格和[由 cncf 發展專案][linkerd-cncf]。 Linkerd 是一種超細服務網格，提供包括流量管理、服務身分識別和安全性、可靠性和可檢視性的功能。 如需 Linkerd 的詳細資訊，請參閱官方[LINKERD 常見問題][linkerd-faq]和[Linkerd 架構][linkerd-architecture]檔。
 
-本文說明如何安裝 Linkerd。 Linkerd `linkerd`用戶端二進位檔會安裝到您的用戶端電腦上，而 Linkerd 元件會安裝到 AKS 上的 Kubernetes 叢集。
+本文說明如何安裝 Linkerd。 Linkerd `linkerd` 用戶端二進位檔會安裝到您的用戶端電腦上，而 Linkerd 元件會安裝到 AKS 上的 Kubernetes 叢集。
 
 > [!NOTE]
-> 這些指示參考 Linkerd 版本`stable-2.6.0`。
+> 這些指示參考 Linkerd 版本 `stable-2.6.0` 。
 >
-> Linkerd `stable-2.6.x`可以針對 Kubernetes 版本`1.13+`執行。 您可以在[GitHub Linkerd 版本][linkerd-github-releases]中找到其他穩定和 edge Linkerd 版本。
+> Linkerd `stable-2.6.x` 可以針對 Kubernetes 版本執行 `1.13+` 。 您可以在[GitHub Linkerd 版本][linkerd-github-releases]中找到其他穩定和 edge Linkerd 版本。
 
 在本文中，您將學會如何：
 
@@ -35,7 +34,7 @@ ms.locfileid: "77593703"
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文中詳述的步驟假設您已建立 AKS 叢集（已啟用 RBAC 的`1.13` Kubernetes 和更新版本），並已建立`kubectl`與叢集的連線。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。
+本文中詳述的步驟假設您已建立 AKS 叢集（ `1.13` 已啟用 RBAC 的 Kubernetes 和更新版本），並已建立與叢集的連線 `kubectl` 。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。
 
 所有 Linkerd pod 都必須排程在 Linux 節點上執行-此安裝程式是下面詳述的安裝方法中的預設值，不需要額外的設定。
 
@@ -117,19 +116,19 @@ linkerd-version
 Status check results are √
 ```
 
-現在是時候安裝 Linkerd 元件了。 使用`linkerd`和`kubectl`二進位檔，將 Linkerd 元件安裝到您的 AKS 叢集中。 將`linkerd`會自動建立命名空間，並將元件安裝到此命名空間中。
+現在是時候安裝 Linkerd 元件了。 使用和二進位檔，將 `linkerd` `kubectl` Linkerd 元件安裝到您的 AKS 叢集中。 `linkerd`將會自動建立命名空間，並將元件安裝到此命名空間中。
 
 ```console
 linkerd install | kubectl apply -f -
 ```
 
-Linkerd 會部署一些物件。 您會在上述`linkerd install`命令的輸出中看到清單。 根據您的叢集環境，部署 Linkerd 元件大約需要1分鐘的時間才能完成。
+Linkerd 會部署一些物件。 您會在上述命令的輸出中看到清單 `linkerd install` 。 根據您的叢集環境，部署 Linkerd 元件大約需要1分鐘的時間才能完成。
 
 此時，您已將 Linkerd 部署至 AKS 叢集。 為了確保我們已成功部署 Linkerd，讓我們繼續進行下一節，以[驗證 Linkerd 安裝](#validate-the-linkerd-installation)。
 
 ## <a name="validate-the-linkerd-installation"></a>驗證 Linkerd 安裝
 
-確認已成功建立資源。 使用[kubectl get svc][kubectl-get]和[kubectl get pod][kubectl-get]命令來查詢`linkerd`命名空間，其中`linkerd install`命令會安裝 Linkerd 元件：
+確認已成功建立資源。 使用[kubectl get svc][kubectl-get]和[kubectl get pod][kubectl-get]命令來查詢 `linkerd` 命名空間，其中命令會安裝 Linkerd 元件 `linkerd install` ：
 
 ```console
 kubectl get svc --namespace linkerd --output wide
@@ -163,7 +162,7 @@ linkerd-tap-5cd9fc566-ct988               2/2     Running   0          64s   10.
 linkerd-web-774c79b6d5-dhhwf              2/2     Running   0          65s   10.240.0.70   aks-linux-16165125-vmss000002   <none>           <none>
 ```
 
-Linkerd 會透過`linkerd`用戶端二進位檔提供命令，以驗證是否已成功安裝和設定 Linkerd 控制平面。
+Linkerd 會透過用戶端二進位檔提供命令， `linkerd` 以驗證是否已成功安裝和設定 Linkerd 控制平面。
 
 ```console
 linkerd check
@@ -226,7 +225,7 @@ Status check results are √
 
 ## <a name="access-the-dashboard"></a>存取儀表板
 
-Linkerd 隨附的儀表板可讓您深入瞭解服務網格和工作負載。 若要存取儀表板，請`linkerd dashboard`使用命令。 此命令會利用[kubectl 埠轉送][kubectl-port-forward]，在您的用戶端電腦和 AKS 叢集中的相關 pod 之間建立安全連線。 然後，它會自動在您的預設瀏覽器中開啟儀表板。
+Linkerd 隨附的儀表板可讓您深入瞭解服務網格和工作負載。 若要存取儀表板，請使用 `linkerd dashboard` 命令。 此命令會利用[kubectl 埠轉送][kubectl-port-forward]，在您的用戶端電腦和 AKS 叢集中的相關 pod 之間建立安全連線。 然後，它會自動在您的預設瀏覽器中開啟儀表板。
 
 ```console
 linkerd dashboard

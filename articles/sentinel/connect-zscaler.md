@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: cc784afe5db64ccc4aad13fae7a2fa748e4befa3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77587986"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>將 Zscaler 網際網路存取連線至 Azure Sentinel
@@ -43,7 +42,7 @@ ms.locfileid: "77587986"
    > 此解決方案支援 Syslog RFC 3164 或 RFC 5424。
 
 
-1. 若要在 Log Analytics 中針對 CEF 事件使用相關的架構，請`CommonSecurityLog`搜尋。
+1. 若要在 Log Analytics 中針對 CEF 事件使用相關的架構，請搜尋 `CommonSecurityLog` 。
 1. 繼續進行[步驟3：驗證連線能力](connect-cef-verify.md)。
 
 
@@ -51,6 +50,6 @@ ms.locfileid: "77587986"
 在本檔中，您已瞭解如何將 Zscaler 網際網路存取連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
 
 

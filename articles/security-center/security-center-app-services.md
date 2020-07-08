@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
 ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616474"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>保護您的 Azure App Service web 應用程式和 Api
@@ -57,7 +56,7 @@ Azure App Service 是完全受控的平臺，可用於建立及裝載您的 web 
 
 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 在本文中，您已來了解如何使用「Azure 資訊安全中心」的監視功能。 若要深入了解「Azure 資訊安全中心」，請參閱下列文章：
 
 * [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md)：了解如何在 Azure 資訊安全中心設定安全性設定。

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564639"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>整合 Azure 時間序列深入解析與遠端監視
@@ -24,7 +23,7 @@ Azure 時間序列深入解析是完全受管理的分析、儲存及視覺化�
 > [!NOTE]
 > Azure China 雲端目前不提供時間序列見解。 Azure China 雲端中新的遠端監視解決方案加速器部署，將 Cosmos DB 用於所有儲存體。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成此操作說明，您必須已部署遠端監視解決方案：
 
@@ -51,7 +50,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 選取 [**建立資源** > ]**物聯網** > **時間序列深入解析**。
+1. 選取 [**建立資源**]  >  **物聯網**  >  **時間序列深入解析**。
 
     ![新增時間序列深入解析](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
 
@@ -68,7 +67,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     ![建立時間序列深入解析](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. 按一下 [建立]  。 可能需要一點時間來建立環境。
+1. 按一下 [建立]。 可能需要一點時間來建立環境。
 
 ## <a name="create-event-source"></a>建立事件來源
 
@@ -80,7 +79,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     ![檢視事件來源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. 按一下 [加入]  。
+1. 按一下 **[新增]** 。
 
     ![新增事件來源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
@@ -89,7 +88,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
     | 設定 | 值 |
     | ------- | ----- |
     | 事件來源名稱 | 下列螢幕擷取畫面會使用名稱 **contosorm-iot-hub**。 當您完成此步驟時，請使用您自己的唯一名稱。 |
-    | 來源 | **IoT 中樞** |
+    | 來源 | **IoT 中心** |
     | 匯入選項 | **從可用的訂用帳戶使用 IoT 中樞** |
     | 訂用帳戶識別碼 | 在下拉式清單中選取您的 Azure 訂用帳戶。 |
     | IoT 中樞名稱 | **contosorma57a6**。 從您的遠端監視解決方案使用 IoT 中樞的名稱。 |
@@ -101,7 +100,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     ![建立事件來源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. 按一下 [建立]  。
+1. 按一下 [建立]。
 
 ## <a name="configure-the-data-access-policy"></a>設定資料存取原則
 
@@ -213,7 +212,7 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 1. 搜尋並按一下您的 **ContosoRM** 應用程式。
 
-1. 流覽至 [**設定** > ] [**金鑰**]，然後為您的應用程式建立新的金鑰。 請確保將金鑰值複製到安全的位置。
+1. 流覽至 [**設定**] [  >  **金鑰**]，然後為您的應用程式建立新的金鑰。 請確保將金鑰值複製到安全的位置。
 
 1. 使用最新的標記從 GitHub 存放庫提取[最新的 docker 撰寫 yaml](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm)檔案。 
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77605215"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT 隨插即用預覽模型開發人員指南
@@ -67,7 +66,7 @@ IoT 隨插即用預覽版可讓您建立裝置，以向 Azure IoT 應用程式�
 
 透過 DTDL，您可以使用介面來描述裝置的功能。 介面會描述您的裝置中所執行的_屬性_、_遙測_和_命令_：
 
-- `Properties`. 屬性是代表裝置狀態的資料欄位。 使用屬性來表示裝置的持久狀態，例如 coolant 泵的關閉狀態。 屬性也可以代表基本裝置屬性，例如裝置的「固件」版本。 您可以將屬性宣告為唯讀或可寫入。
+- `Properties`. 屬性是代表裝置狀態的資料欄位。 使用屬性來表示裝置的持久狀態，例如 coolant 泵的關閉狀態。 屬性也可以代表基本裝置屬性，例如裝置的「固件」版本。 您可將屬性宣告為唯讀或可寫入。
 - `Telemetry`. 遙測欄位代表來自感應器的測量。 每當您的裝置接受感應器測量時，它應該會傳送包含感應器資料的遙測事件。
 - `Commands`. 命令代表裝置的使用者可以在裝置上執行的方法。 例如，可切換或關閉風扇的 reset 命令或命令。
 
@@ -97,7 +96,7 @@ IoT 隨插即用預覽版可讓您建立裝置，以向 Azure IoT 應用程式�
 
 在這個簡單的範例中，只有一個遙測欄位。 最小欄位描述具有：
 
-- `@type`：指定功能的類型： `Telemetry`、 `Property`或。 `Command`
+- `@type`：指定功能的類型： `Telemetry` 、 `Property` 或 `Command` 。
 - `name`：提供遙測值的名稱。
 - `schema`：指定遙測的資料類型。 這個值可以是基本類型，例如雙精度浮點數、整數、布林值或字串。 也支援複雜物件類型、陣列和對應。
 
@@ -111,7 +110,7 @@ IoT 隨插即用預覽版可讓您建立裝置，以向 Azure IoT 應用程式�
 
 裝置不需要連線來設定屬性值。 當裝置下一次連線至中樞時，會傳送更新的值。 這種行為適用于唯讀和可寫入的屬性。
 
-請勿使用屬性從您的裝置傳送遙測。 例如，唯讀屬性（例如） `temperatureSetting=80`應該表示裝置溫度已設定為80，且裝置正嘗試進入或離開此溫度。
+請勿使用屬性從您的裝置傳送遙測。 例如，唯讀屬性（例如） `temperatureSetting=80` 應該表示裝置溫度已設定為80，且裝置正嘗試進入或離開此溫度。
 
 針對可寫入的屬性，裝置應用程式會傳回所需狀態的狀態碼、版本和描述，以指出它是否已接收並套用屬性值。
 
@@ -127,11 +126,11 @@ IoT 隨插即用預覽版可讓您建立裝置，以向 Azure IoT 應用程式�
 
 使用非同步命令進行長時間執行的作業。 裝置會使用遙測訊息傳送進度資訊。 這些進度訊息具有下列標頭屬性：
 
-- `iothub-command-name`：命令名稱，例如`UpdateFirmware`。
+- `iothub-command-name`：命令名稱，例如 `UpdateFirmware` 。
 - `iothub-command-request-id`：在伺服器端產生的要求識別碼，並在初始呼叫中傳送至裝置。
-- `iothub-interface-id`：此命令定義所在介面的識別碼，例如`urn:example:AssetTracker:1`。
- `iothub-interface-name`：此介面的實例名稱，例如`myAssetTracker`。
-- `iothub-command-statuscode`：從裝置傳回的狀態碼，例如`202`。
+- `iothub-interface-id`：此命令定義所在介面的識別碼，例如 `urn:example:AssetTracker:1` 。
+ `iothub-interface-name`：此介面的實例名稱，例如 `myAssetTracker` 。
+- `iothub-command-statuscode`：從裝置傳回的狀態碼，例如 `202` 。
 
 ## <a name="register-a-device"></a>註冊裝置
 
@@ -182,35 +181,35 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 IoT 隨插即用可讓您使用已向 IoT 中樞註冊其功能的裝置。 例如，您可以直接存取裝置的屬性和命令。
 
-若要使用已連線到您 IoT 中樞的 IoT 隨插即用裝置，請使用 IoT 中樞 REST API 或其中一個 IoT 語言 Sdk。 下列範例會使用 IoT 中樞 REST API。 目前的 API 版本是`2019-07-01-preview`。 附加`?api-version=2019-07-01-preview`至您的 REST PI 呼叫。
+若要使用已連線到您 IoT 中樞的 IoT 隨插即用裝置，請使用 IoT 中樞 REST API 或其中一個 IoT 語言 Sdk。 下列範例會使用 IoT 中樞 REST API。 目前的 API 版本是 `2019-07-01-preview` 。 附加 `?api-version=2019-07-01-preview` 至您的 REST PI 呼叫。
 
-若要取得裝置屬性的值，例如控溫器中`fwVersion` `DeviceInformation`介面的固件版本（），您可以使用數位 twins REST API。
+若要取得裝置屬性的值，例如控溫器中介面的固件版本（ `fwVersion` ） `DeviceInformation` ，您可以使用數位 twins REST API。
 
-如果呼叫`t-123`您的控溫器裝置，您可以使用 REST API get 呼叫，取得裝置所執行之所有介面上的所有屬性：
+如果呼叫您的控溫器裝置 `t-123` ，您可以使用 REST API get 呼叫，取得裝置所執行之所有介面上的所有屬性：
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-更常見的情況是，所有介面上的所有屬性都是使用`{device-id}`此 REST API 範本來存取，其中是裝置的識別碼：
+更常見的情況是，所有介面上的所有屬性都是使用此 REST API 範本來存取，其中 `{device-id}` 是裝置的識別碼：
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-如果您知道介面的名稱（例如`deviceInformation`），而且想要取得該特定介面的屬性，請依名稱將要求的範圍限定于特定的介面：
+如果您知道介面的名稱（例如 `deviceInformation` ），而且想要取得該特定介面的屬性，請依名稱將要求的範圍限定于特定的介面：
 
 ```REST
 GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
-更常見的情況是，可以透過此 REST API 範本來存取特定介面的`device-id`屬性，其中是裝置的識別碼`{interface-name}` ，而是介面的名稱：
+更常見的情況是，可以透過此 REST API 範本來存取特定介面的屬性，其中 `device-id` 是裝置的識別碼，而 `{interface-name}` 是介面的名稱：
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces/{interface-name}
 ```
 
-您可以直接呼叫 IoT 隨插即用裝置命令。 如果`Thermostat` `t-123`裝置中的介面具有`restart`命令，您可以使用 REST API POST 呼叫來呼叫它：
+您可以直接呼叫 IoT 隨插即用裝置命令。 如果 `Thermostat` 裝置中的介面 `t-123` 具有 `restart` 命令，您可以使用 REST API POST 呼叫來呼叫它：
 
 ```REST
 POST /digitalTwins/t-123/interfaces/thermostat/commands/restart

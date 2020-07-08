@@ -13,10 +13,9 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 3bdb9d2b23ce05929ba5612e0c6a03fe1aab05de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588241"
 ---
 # <a name="connect-your-forcepoint-dlp-to-azure-sentinel"></a>將您的 Forcepoint DLP 連線至 Azure Sentinel
@@ -54,4 +53,4 @@ Forcepoint DLP 連接器可讓您自動將 DLP 事件-資料匯出至 Azure Sent
 
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。

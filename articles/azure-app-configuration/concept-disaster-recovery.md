@@ -7,10 +7,9 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523759"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>復原和災害復原
@@ -72,7 +71,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 1. 在開啟的新分頁中，指定訂用帳戶、資源群組和次要存放區的資源名稱，**然後選取 [** 套用]。
 
-1. UI 會更新，供您選擇要匯出至次要存放區的組態資料。 您可以保留預設的時間值，並將 [**從標籤**] 和 [**標籤**] 設定為相同的值。 選取 [套用]  。
+1. UI 會更新，供您選擇要匯出至次要存放區的組態資料。 您可以保留預設的時間值，並將 [**從標籤**] 和 [**標籤**] 設定為相同的值。 選取 [套用]。
 
 1. 重複先前步驟以進行所有組態變更。
 

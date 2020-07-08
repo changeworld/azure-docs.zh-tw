@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.openlocfilehash: 29b5e9c7673b4a730a41bf7cf2b1c4a2a86209ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77462100"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Azure Functions HTTP 觸發程式和系結總覽
@@ -25,11 +24,11 @@ Azure Functions 可以透過 HTTP 要求叫用，以建立無伺服器 Api 並�
 
 ## <a name="add-to-your-functions-app"></a>新增至函數應用程式
 
-### <a name="functions-2x-and-higher"></a>函數2.x 和更新版本
+### <a name="functions-2x-and-higher"></a>Functions 2.x 和更新版本
 
 使用觸發程式和系結時，您需要參考適當的套件。 NuGet 套件適用于 .NET 類別庫，而延伸模組配套則用於所有其他應用程式類型。
 
-| Language                                        | 加入者 .。。                                   | 備註 
+| 語言                                        | 加入者 .。。                                   | 備註 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安裝[NuGet 套件]3.x 版 | |
 | C # 腳本，JAVA，JavaScript，Python，PowerShell | 註冊[延伸]模組配套          | 建議使用[Azure Tools 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)功能搭配 Visual Studio Code。 |

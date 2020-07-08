@@ -17,10 +17,9 @@ ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
 ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77565888"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 身分識別管理安全性概觀
@@ -171,7 +170,7 @@ Azure AD Identity Protection 是一項安全性服務，可為風險偵測和潛
 
 Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能，建立單一使用者身分識別以用於所有資源的驗證和授權，不論位於何處。 我們稱之為混合式身分識別。 Azure AD Connect 是一種 Microsoft 工具，其設計目的是要符合並完成混合式身分識別的目標。 這可讓您為與 Azure AD 整合之 Office 365、Azure 和 SaaS 應用程式的使用者提供通用身分識別。 它可提供下列功能：
 
-* Synchronization
+* 同步處理
 * AD FS 和同盟整合
 * 通過驗證
 * 健康狀態監視
@@ -188,5 +187,5 @@ Azure Active Directory (Azure AD) 存取權檢閱可讓組織有效地管理群�
 
 深入了解：
 
-* [Azure AD 存取評論](../../active-directory/governance/access-reviews-overview.md)
+* [Azure AD 存取權檢閱](../../active-directory/governance/access-reviews-overview.md)
 * [使用 Azure AD 存取權檢閱來管理使用者存取權](../../active-directory/governance/access-reviews-overview.md)

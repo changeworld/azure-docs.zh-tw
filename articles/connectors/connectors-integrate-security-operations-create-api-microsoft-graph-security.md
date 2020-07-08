@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77598828"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>使用 Microsoft Graph 安全性和 Azure Logic Apps 整合安全性作業，改善威脅防護功能
@@ -32,7 +31,7 @@ ms.locfileid: "77598828"
 
 若要深入了解 Microsoft Graph 安全性，請參閱 [Microsoft Graph 安全性 API 概觀](https://aka.ms/graphsecuritydocs)。 如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)。 如果您要尋找 Microsoft Flow 或 PowerApps，請參閱[什麼是 Flow？](https://flow.microsoft.com/)或[什麼是 powerapps？](https://powerapps.microsoft.com/)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
@@ -50,7 +49,7 @@ ms.locfileid: "77598828"
 
   * 在您的邏輯應用程式第一次執行時，您的應用程式可透過[應用程式同意體驗](../active-directory/develop/application-consent-experience.md)要求 Azure AD 租用戶系統管理員的同意。
    
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 邏輯應用程式即為您想要存取 Microsoft Graph 安全性實體 (例如警示) 的位置。 若要使用 Microsoft Graph 安全性觸發程式，您需要空白邏輯應用程式。 若要使用 Microsoft Graph 的安全性動作，您需要一個邏輯應用程式，它會從適用于您案例的適當觸發程式開始。
 
@@ -91,15 +90,15 @@ ms.locfileid: "77598828"
 
 1.  在觸發程式中，提供您想要監視之警示的相關資訊。 如需更多屬性，請開啟 [**加入新的參數**] 清單，然後選取參數將該屬性加入至觸發程式。
 
-   | 屬性 | Property (JSON) | 必要 | 類型 | 說明 |
+   | 屬性 | 屬性 (JSON) | 必要 | 類型 | Description |
    |----------|-----------------|----------|------|-------------|
-   | **期間** | `interval` | 是 | 整數 | 描述工作流程根據 frequency 多久執行一次的正整數。 以下是最小和最大間隔： <p><p>- 月：1-16 個月 <br>- 天：1-500 天 <br>- 小時：1-12,000 個小時 <br>- 分鐘：1-72,000 分鐘 <br>- 秒：1-9,999,999 秒 <p>例如，如果 interval 是 6，而 frequency 是「月」，則週期為每隔 6 個月。 |
-   | **頻率** | `frequency` | 是 | String | 重複的時間單位：**秒**、**分鐘**、**小時**、**天**、**週**或**月** |
-   | **時區** | `timeZone` | 否 | 字串 | 只有當您有指定開始時間時才適用，因為此觸發程序並不接受 [UTC 時差](https://en.wikipedia.org/wiki/UTC_offset)。 選取您要套用的時區。 |
-   | **開始時間** | `startTime` | 否 | 字串 | 提供此格式的開始日期和時間： <p><p>YYYY-MM-DDThh:mm:ss (如果您選取時區) <p>-或- <p>YYYY-MM-DDThh:mm:ssZ (如果您未選取時區) <p>例如，如果您想要2017年9月18日下午2:00，請指定 "2017-09-18T14：00： 00"，然後選取時區，例如太平洋標準時間。 或是指定 "2017-09-18T14:00:00Z"，但不指定時區。 <p>**注意：** 此開始時間在未來最多有49年，而且必須遵循[utc 日期時間格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的[ISO 8601 日期時間規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但不含[utc 時差](https://en.wikipedia.org/wiki/UTC_offset)。 如果您不選取時區，就必須在結尾加上字母 "Z"，其中不含任何空格。 這個 "Z" 係指對等的[航海時間](https://en.wikipedia.org/wiki/Nautical_time)。 <p>就簡單排程來說，開始時間係指第一次發生的時間，而就複雜排程來說，觸發程序會在開始時間一到就立即引發。 [*我可以使用開始日期和時間的方式有哪些？*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **間隔** | `interval` | 是 | 整數 | 描述工作流程根據 frequency 多久執行一次的正整數。 以下是最小和最大間隔： <p><p>- 月：1-16 個月 <br>- 天：1-500 天 <br>- 小時：1-12,000 個小時 <br>- 分鐘：1-72,000 分鐘 <br>- 秒：1-9,999,999 秒 <p>例如，如果 interval 是 6，而 frequency 是「月」，則週期為每隔 6 個月。 |
+   | **頻率** | `frequency` | Yes | String | 重複的時間單位：**秒**、**分鐘**、**小時**、**天**、**週**或**月** |
+   | **時區** | `timeZone` | 否 | String | 只有當您有指定開始時間時才適用，因為此觸發程序並不接受 [UTC 時差](https://en.wikipedia.org/wiki/UTC_offset)。 選取您要套用的時區。 |
+   | **開始時間** | `startTime` | 否 | String | 提供此格式的開始日期和時間： <p><p>YYYY-MM-DDThh:mm:ss (如果您選取時區) <p>-或- <p>YYYY-MM-DDThh:mm:ssZ (如果您未選取時區) <p>例如，如果您想要2017年9月18日下午2:00，請指定 "2017-09-18T14：00： 00"，然後選取時區，例如太平洋標準時間。 或是指定 "2017-09-18T14:00:00Z"，但不指定時區。 <p>**注意：** 此開始時間在未來最多有49年，而且必須遵循[utc 日期時間格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的[ISO 8601 日期時間規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但不含[utc 時差](https://en.wikipedia.org/wiki/UTC_offset)。 如果您不選取時區，就必須在結尾加上字母 "Z"，其中不含任何空格。 這個 "Z" 係指對等的[航海時間](https://en.wikipedia.org/wiki/Nautical_time)。 <p>就簡單排程來說，開始時間係指第一次發生的時間，而就複雜排程來說，觸發程序會在開始時間一到就立即引發。 [*我可以使用開始日期和時間的方式有哪些？*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
-1.  當您完成時，請在設計工具工具列上選取 [**儲存**]。
+1.  完成時，請在設計工具的工具列上，選取 [儲存]。
 
 1.  現在，繼續針對您想要使用觸發程序結果來執行的工作，於邏輯應用程式中新增一或多個動作。
 
@@ -117,7 +116,7 @@ ms.locfileid: "77598828"
 
 | 動作 | 描述 |
 |--------|-------------|
-| **取得警示** | 取得根據一或多個[警示屬性](https://docs.microsoft.com/graph/api/resources/alert)篩選的警示，例如`Provider eq 'Azure Security Center' or 'Palo Alto Networks'`。 | 
+| **取得警示** | 取得根據一或多個[警示屬性](https://docs.microsoft.com/graph/api/resources/alert)篩選的警示，例如 `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` 。 | 
 | **依識別碼取得警示** | 依據警示識別碼取得特定警示。 | 
 | **更新警示** | 依據警示識別碼更新特定警示。 為確保您在要求中傳遞必要和可編輯的屬性，請參閱[警示的可編輯屬性](https://docs.microsoft.com/graph/api/alert-update) \(英文\)。 例如，若要指派警示給安全性分析師以讓他們可以進行調查，您可以更新警示的「指派給」**** 屬性。 |
 |||
@@ -138,7 +137,7 @@ Microsoft Graph 支援[*訂閱*](https://docs.microsoft.com/graph/api/resources/
 
 ### <a name="manage-threat-intelligence-indicators"></a>管理威脅情報指示器
 
-若要篩選、排序或取得最近結果，只要** 提供 [Microsoft Graph 支援的 ODATA 查詢參數](https://docs.microsoft.com/graph/query-parameters)。 「請勿指定」** 完整的基底 URL 或 HTTP 動作，例如 `https://graph.microsoft.com/beta/security/tiIndicators`，或是 `GET` 或 `PATCH` 作業。 以下是一個特定範例，當您想要具有`DDoS`威脅類型的清單時，會顯示**Get tiIndicators**動作的參數：
+若要篩選、排序或取得最近結果，只要** 提供 [Microsoft Graph 支援的 ODATA 查詢參數](https://docs.microsoft.com/graph/query-parameters)。 「請勿指定」** 完整的基底 URL 或 HTTP 動作，例如 `https://graph.microsoft.com/beta/security/tiIndicators`，或是 `GET` 或 `PATCH` 作業。 以下是一個特定範例，當您想要具有威脅類型的清單時，會顯示**Get tiIndicators**動作的參數 `DDoS` ：
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 

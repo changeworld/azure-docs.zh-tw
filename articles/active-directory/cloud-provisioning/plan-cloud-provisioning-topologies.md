@@ -12,10 +12,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77620879"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect 雲端布建支援的拓撲和案例
@@ -50,7 +49,7 @@ ms.locfileid: "77620879"
 此案例的拓撲類似于多樹系案例，不過，這項功能牽涉到現有的 Azure AD Connect 環境，然後使用 Azure AD Connect 的雲端布建來帶入新的樹系。  如需此案例的範例，請參閱[教學課程：具有單一 Azure AD 租使用者的現有樹](tutorial-existing-forest.md)系
 
 ## <a name="piloting-azure-ad-connect-cloud-provisioning-in-an-existing-hybrid-ad-forest"></a>在現有的混合式 AD 樹系中試驗 Azure AD Connect 雲端布建
-![單一樹系和單一租](media/plan-cloud-provisioning-topologies/migrate.png)使用者的拓撲：試驗案例牽涉到在相同樹系中存在 Azure AD Connect 和 Azure AD Connect 雲端布建，並據此設定使用者和群組的範圍。 注意：物件只能在其中一個工具的範圍內。 
+![單一樹系和單一租使用者的拓撲： ](media/plan-cloud-provisioning-topologies/migrate.png) 試驗案例牽涉到在相同樹系中存在 Azure AD Connect 和 Azure AD Connect 雲端布建，並據此設定使用者和群組的範圍。 注意：物件只能在其中一個工具的範圍內。 
 
 如需此案例的範例，請參閱[教學課程：在現有已同步 AD 樹系中進行雲端布建的試驗 Azure AD Connect](tutorial-pilot-aadc-aadccp.md)
 

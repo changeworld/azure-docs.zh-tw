@@ -14,10 +14,9 @@ ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fd1267711871b3e55f1a6229e46ae27b360322f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617047"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>將 Azure 大型實例遷移至 Azure 虛擬機器 SAP Hana
@@ -49,21 +48,21 @@ ms.locfileid: "77617047"
 
 | 案例識別碼 | B-HLI 案例 | 要逐字遷移至 VM 嗎？ | 備註 |
 | --- | --- | --- | --- |
-| 1 | [具有一個 SID 的單一節點](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | 是 | - |
-| 2 | [具有 MCOS 的單一節點](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | 是 | - |
-| 3 | [具有使用儲存體複寫之 DR 的單一節點](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | 否 | Azure 虛擬平臺無法使用儲存體複寫，請將目前的 DR 解決方案變更為 HSR 或備份/還原 |
-| 4 | [具有 DR （多用途）的單一節點（使用儲存體複寫）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | 否 | Azure 虛擬平臺無法使用儲存體複寫，請將目前的 DR 解決方案變更為 HSR 或備份/還原 |
-| 5 | [具有 STONITH 的 HSR 以提供高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | 是 | 未預先設定目標 Vm 的 SBD。  選取並部署 STONITH 解決方案。  可能的選項： Azure 隔離代理程式（支援[RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)、 [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)）、SBD |
-| 6 | [HA 搭配 HSR、DR 與儲存體複寫](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | 否 | 使用 HSR 或備份/還原來取代 DR 需求的儲存體複寫 |
-| 7 | [主機自動容錯移轉 (1+1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | 是 | 使用 Azure Vm 的共用儲存體及 |
-| 8 | [具待命相應放大](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | 是 | BW/4HANA with M128s、M416s、M416ms Vm 僅使用及作為儲存體 |
-| 9 | [不具待命相應放大](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | 是 | BW/4HANA 與 M128s、M416s、M416ms Vm （不論是否使用及來儲存） |
-| 10 | [使用儲存體複寫以 DR 進行相應放大](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | 否 | 使用 HSR 或備份/還原來取代 DR 需求的儲存體複寫 |
-| 11 | [具有使用 HSR 之 DR 的單一節點](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | 是 | - |
-| 12 | [單一節點 HSR 至 DR （成本優化）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | 是 | - |
-| 13 | [具有 HSR 的 HA 和 DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | 是 | - |
-| 14 | [HA 和 DR 與 HSR （成本優化）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | 是 | - |
-| 15 | [使用 HSR 相應放大 DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | 是 | BW/4HANA 與 M128s。 M416s、M416ms Vm （不論是否使用及來儲存） |
+| 1 | [具有一個 SID 的單一節點](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | Yes | - |
+| 2 | [具有 MCOS 的單一節點](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | Yes | - |
+| 3 | [具有使用儲存體複寫之 DR 的單一節點](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | No | Azure 虛擬平臺無法使用儲存體複寫，請將目前的 DR 解決方案變更為 HSR 或備份/還原 |
+| 4 | [具有 DR （多用途）的單一節點（使用儲存體複寫）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | No | Azure 虛擬平臺無法使用儲存體複寫，請將目前的 DR 解決方案變更為 HSR 或備份/還原 |
+| 5 | [具有 STONITH 的 HSR 以提供高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | Yes | 未預先設定目標 Vm 的 SBD。  選取並部署 STONITH 解決方案。  可能的選項： Azure 隔離代理程式（支援[RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)、 [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)）、SBD |
+| 6 | [HA 搭配 HSR、DR 與儲存體複寫](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | No | 使用 HSR 或備份/還原來取代 DR 需求的儲存體複寫 |
+| 7 | [主機自動容錯移轉 (1+1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | Yes | 使用 Azure Vm 的共用儲存體及 |
+| 8 | [具待命相應放大](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | Yes | BW/4HANA with M128s、M416s、M416ms Vm 僅使用及作為儲存體 |
+| 9 | [不具待命相應放大](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | Yes | BW/4HANA 與 M128s、M416s、M416ms Vm （不論是否使用及來儲存） |
+| 10 | [使用儲存體複寫以 DR 進行相應放大](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | No | 使用 HSR 或備份/還原來取代 DR 需求的儲存體複寫 |
+| 11 | [具有使用 HSR 之 DR 的單一節點](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | Yes | - |
+| 12 | [單一節點 HSR 至 DR （成本優化）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | Yes | - |
+| 13 | [具有 HSR 的 HA 和 DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | Yes | - |
+| 14 | [HA 和 DR 與 HSR （成本優化）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Yes | - |
+| 15 | [使用 HSR 相應放大 DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | Yes | BW/4HANA 與 M128s。 M416s、M416ms Vm （不論是否使用及來儲存） |
 
 
 ## <a name="source-hli-planning"></a>來源（B-HLI）規劃
@@ -196,6 +195,6 @@ HSR 遷移會導致新的 HANA DB 主機，因而成為應用層的新 DB 主機
 
 
 ## <a name="next-steps"></a>後續步驟
- 請參閱以下文章：
+請參閱以下文章：
 - [在 Azure 上 SAP Hana 基礎結構設定和作業](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)。
 - [Azure 上的 SAP 工作負載：規劃和部署檢查清單](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)。

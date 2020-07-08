@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77539105"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>案例： Azure HDInsight 中的 Apache Ambari 過時警示
@@ -74,7 +73,7 @@ Ambari 代理程式會持續監視許多資源的健全狀況。 您可以設定
 
 在 Ambari 代理程式報告已設定的警示錯過其排程之前，會有寬限期。 如果警示錯過其排定的時間，但在寬限期內執行，則不會產生過時的警示。
 
-預設`alert_grace_period`值為5秒。 您可以在/etc/ambari-agent/conf/ambari-agent.ini. 中進行這項設定。 若是定期發生過時警示的主機，請嘗試將值增加至10。 然後，重新開機 Ambari 代理程式。
+預設 `alert_grace_period` 值為5秒。 您可以在/etc/ambari-agent/conf/ambari-agent.ini 中進行這項設定。 若是定期發生過時警示的主機，請嘗試將值增加至10。 然後，重新開機 Ambari 代理程式。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -82,7 +81,7 @@ Ambari 代理程式會持續監視許多資源的健全狀況。 您可以設定
 
 * 在[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
 
-* 在 Twitter [@AzureSupport](https://twitter.com/azuresupport)上使用連接。 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 它會將 Azure 社區連接到正確的資源：解答、支援和專家。
+* [@AzureSupport](https://twitter.com/azuresupport)在 Twitter 上使用連接。 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 它會將 Azure 社區連接到正確的資源：解答、支援和專家。
 
 * 如果您需要更多協助，請從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 若要取得此資訊，請從入口網站功能表選取 [說明] （**？**），或開啟 [說明 **+ 支援**] 窗格。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 
 

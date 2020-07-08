@@ -14,10 +14,9 @@ ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617191"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>將虛擬網路連線至 HANA 大型執行個體
@@ -35,7 +34,7 @@ ms.locfileid: "77617191"
   - 如果您使用 Azure 入口網站，請新增新的**虛擬網路閘道**，然後選取 [ **ExpressRoute** ] 作為閘道類型。
   - 如果您是使用 PowerShell，請先下載並使用最新版的 [Azure PowerShell SDK](https://azure.microsoft.com/downloads/)。 
  
-下列命令會建立 ExpressRoute 閘道。 前面加上的文字_$_ 是使用者定義的變數，應以您的特定資訊進行更新。
+下列命令會建立 ExpressRoute 閘道。 前面加上的文字 _$_ 是使用者定義的變數，應以您的特定資訊進行更新。
 
 ```powershell
 # These Values should already exist, update to match your environment

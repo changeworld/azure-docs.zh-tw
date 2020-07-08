@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77530246"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Azure Functions 的 SignalR Service 輸出系結
@@ -21,7 +20,7 @@ ms.locfileid: "77530246"
 
 輸出系結也可讓您管理群組。
 
-如需安裝和設定詳細資料的相關資訊，請參閱[總覽](functions-bindings-signalr-service.md)。
+如需安裝和設定詳細資料的相關資訊，請參閱[概觀](functions-bindings-signalr-service.md)。
 
 ## <a name="broadcast-to-all-clients"></a>廣播到所有用戶端
 
@@ -44,7 +43,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -176,7 +175,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 function.json 範例：
 
@@ -311,7 +310,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 function.json 範例：
 
@@ -425,7 +424,7 @@ public SignalRMessage sendMessage(
 
 ## <a name="group-management"></a>群組管理
 
-SignalR Service 可讓使用者新增至群組。 然後可以將訊息傳送給群組。 您可以使用`SignalR`輸出系結來管理使用者的群組成員資格。
+SignalR Service 可讓使用者新增至群組。 然後可以將訊息傳送給群組。 您可以使用輸出系結 `SignalR` 來管理使用者的群組成員資格。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -476,15 +475,15 @@ public static Task RemoveFromGroup(
 ```
 
 > [!NOTE]
-> 為了取得正確的`ClaimsPrincipal`系結，您必須已在 Azure Functions 中設定驗證設定。
+> 為了取得正確的系結 `ClaimsPrincipal` ，您必須已在 Azure Functions 中設定驗證設定。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 ### <a name="add-user-to-a-group"></a>將使用者新增至群組
 
 下列範例會將使用者新增至群組。
 
-範例*函數. json*
+*function.js上的*範例
 
 ```json
 {
@@ -522,7 +521,7 @@ public static Task Run(
 
 下列範例會從群組中移除使用者。
 
-範例*函數. json*
+*function.js上的*範例
 
 ```json
 {
@@ -557,7 +556,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> 為了取得正確的`ClaimsPrincipal`系結，您必須已在 Azure Functions 中設定驗證設定。
+> 為了取得正確的系結 `ClaimsPrincipal` ，您必須已在 Azure Functions 中設定驗證設定。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -565,7 +564,7 @@ public static Task Run(
 
 下列範例會將使用者新增至群組。
 
-範例*函數. json*
+*function.js上的*範例
 
 ```json
 {
@@ -593,7 +592,7 @@ module.exports = async function (context, req) {
 
 下列範例會從群組中移除使用者。
 
-範例*函數. json*
+*function.js上的*範例
 
 ```json
 {
@@ -623,7 +622,7 @@ module.exports = async function (context, req) {
 
 下列範例會將使用者新增至群組。
 
-範例*函數. json*
+*function.js上的*範例
 
 ```json
 {
@@ -650,7 +649,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 下列範例會從群組中移除使用者。
 
-範例*函數. json*
+*function.js上的*範例
 
 ```json
 {
@@ -721,16 +720,16 @@ public SignalRGroupAction removeFromGroup(
 
 ---
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-下表說明您在*函數 json*檔案和`SignalRConnectionInfo`屬性中設定的系結設定屬性。
+下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `SignalRConnectionInfo` 屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type**| n/a | 必須設為 `signalRConnectionInfo`。|
-|**方向**| n/a | 必須設為 `in`。|
+|**direction**| n/a | 必須設為 `in`。|
 |**name**| n/a | 函式程式碼中用於連線資訊物件的變數名稱。 |
 |**hubName**|**HubName**| 此值必須設為 SignalR 中樞 (針對該中樞產生連線資訊) 的名稱。|
 |**userId**|**UserId**| 選擇性：要在存取金鑰權杖中設定的使用者識別碼宣告值。 |
@@ -738,12 +737,12 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalr"></a>SignalR
 
-下表說明您在*函數 json*檔案和`SignalR`屬性中設定的系結設定屬性。
+下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `SignalR` 屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type**| n/a | 必須設為 `signalR`。|
-|**方向**| n/a | 必須設為 `out`。|
+|**direction**| n/a | 必須設為 `out`。|
 |**name**| n/a | 函式程式碼中用於連線資訊物件的變數名稱。 |
 |**hubName**|**HubName**| 此值必須設為 SignalR 中樞 (針對該中樞產生連線資訊) 的名稱。|
 |**connectionStringSetting**|**ConnectionStringSetting**| 包含 SignalR Service 連接字串 (預設值為 "AzureSignalRConnectionString") 的應用程式設定名稱 |

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/29/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8da4ce7801cc98f9ffb32eb7b506eaf1ccd877dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77562051"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions 中的函式鏈結- Hello 序列範例
@@ -22,7 +21,7 @@ ms.locfileid: "77562051"
 
 本文說明範例應用程式中的函式如下：
 
-* `E1_HelloSequence`：在[orchestrator function](durable-functions-bindings.md#orchestration-trigger)序列中多次呼叫`E1_SayHello`的協調器函式。 它會儲存 `E1_SayHello` 呼叫的輸出，並記錄結果。
+* `E1_HelloSequence`： [orchestrator function](durable-functions-bindings.md#orchestration-trigger) `E1_SayHello` 在序列中多次呼叫的協調器函式。 它會儲存 `E1_SayHello` 呼叫的輸出，並記錄結果。
 * `E1_SayHello`：在字串前面加上 "Hello" 的[活動](durable-functions-bindings.md#activity-trigger)函式。
 * `HttpStart`：啟動 orchestrator 實例的 HTTP 觸發函式。
 
@@ -32,7 +31,7 @@ ms.locfileid: "77562051"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=13-25)]
 
-所有 C# 協調流程函式都必須有 `DurableOrchestrationContext` 類型的參數 (在 `Microsoft.Azure.WebJobs.Extensions.DurableTask` 組件中)。 此內容物件可讓您呼叫其他*活動*函數，並使用其`CallActivityAsync`方法來傳遞輸入參數。
+所有 C# 協調流程函式都必須有 `DurableOrchestrationContext` 類型的參數 (在 `Microsoft.Azure.WebJobs.Extensions.DurableTask` 組件中)。 此內容物件可讓您呼叫其他*活動*函數，並使用其方法來傳遞輸入參數 `CallActivityAsync` 。
 
 程式碼中以不同的參數值連續呼叫 `E1_SayHello` 三次。 每次呼叫的傳回值會新增至函式最後傳回的 `outputs` 清單。
 
@@ -58,13 +57,13 @@ ms.locfileid: "77562051"
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-所有的 JavaScript 協調流程函式都必須包含[ `durable-functions`模組](https://www.npmjs.com/package/durable-functions)。 它是可讓您以 JavaScript 撰寫 Durable Functions 的程式庫。 協調流程函式與其他 JavaScript 函式之間有三項重大差異：
+所有的 JavaScript 協調流程函式都必須包含[ `durable-functions` 模組](https://www.npmjs.com/package/durable-functions)。 它是可讓您以 JavaScript 撰寫 Durable Functions 的程式庫。 協調流程函式與其他 JavaScript 函式之間有三項重大差異：
 
 1. 函數是產生器函式[。](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
 2. 此函式會包裝在對`durable-functions`模組的`orchestrator`方法進行的呼叫中 (在此是 `df`)。
 3. 此函式必須是同步的。 「Orchestrator」方法會處理呼叫「context.done」，因為函式應該只是「return」。
 
-`context`物件包含`df`持久性協調流程內容物件，可讓您呼叫其他*活動*函式，並使用其`callActivity`方法傳遞輸入參數。 程式碼會使用不同的參數值依序呼叫 `E1_SayHello` 三次，使用 `yield` 表示執行應等候要傳回的非同步活動函式呼叫。 每個呼叫的傳回值都會加入至`outputs`陣列，在函式的結尾會傳回。
+`context`物件包含 `df` 持久性協調流程內容物件，可讓您呼叫其他*活動*函式，並使用其方法傳遞輸入參數 `callActivity` 。 程式碼會使用不同的參數值依序呼叫 `E1_SayHello` 三次，使用 `yield` 表示執行應等候要傳回的非同步活動函式呼叫。 每個呼叫的傳回值都會加入至陣列，在函式 `outputs` 的結尾會傳回。
 
 ---
 
@@ -74,17 +73,17 @@ ms.locfileid: "77562051"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=27-32)]
 
-活動會使用`ActivityTrigger`屬性。 使用提供`IDurableActivityContext`的來執行活動相關動作，例如使用`GetInput<T>`來存取輸入值。
+活動會使用 `ActivityTrigger` 屬性。 使用提供的 `IDurableActivityContext` 來執行活動相關動作，例如使用來存取輸入值 `GetInput<T>` 。
 
 `E1_SayHello` 的實作是相當簡單的字串格式化作業。
 
-您可以直接系結`IDurableActivityContext`至傳遞至活動函式的型別，而不是系結至。 例如：
+您可以直接系結至傳遞至活動函式的型別，而不是系結至 `IDurableActivityContext` 。 例如：
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=34-38)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-#### <a name="e1_sayhellofunctionjson"></a>E1_SayHello/function.json
+#### <a name="e1_sayhellofunctionjson"></a>E1_SayHello/function.js
 
 活動函式 `E1_SayHello` 和 `E1_HelloSequence`的 *function.json*檔案很類似，差別在於前者使用 `activityTrigger` 繫結型別，而不是 `orchestrationTrigger` 繫結型別。
 
@@ -105,33 +104,33 @@ ms.locfileid: "77562051"
 
 ### <a name="httpstart-client-function"></a>HttpStart 用戶端函式
 
-您可以使用用戶端函式來啟動協調器函數的實例。 您將使用`HttpStart` HTTP 觸發的函式來啟動的`E1_HelloSequence`實例。
+您可以使用用戶端函式來啟動協調器函數的實例。 您將使用 HTTP 觸發的函式 `HttpStart` 來啟動的實例 `E1_HelloSequence` 。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs?range=13-30)]
 
-若要與協調器互動，函數必須包含`DurableClient`輸入系結。 您可以使用用戶端來啟動協調流程。 它也可以協助您傳回 HTTP 回應，其中包含用來檢查新協調流程狀態的 Url。
+若要與協調器互動，函數必須包含輸入系結 `DurableClient` 。 您可以使用用戶端來啟動協調流程。 它也可以協助您傳回 HTTP 回應，其中包含用來檢查新協調流程狀態的 Url。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-#### <a name="httpstartfunctionjson"></a>HttpStart/函數. json
+#### <a name="httpstartfunctionjson"></a>HttpStart/function.js開啟
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json?highlight=16-20)]
 
-若要與協調器互動，函數必須包含`durableClient`輸入系結。
+若要與協調器互動，函數必須包含輸入系結 `durableClient` 。
 
-#### <a name="httpstartindexjs"></a>HttpStart/index .js
+#### <a name="httpstartindexjs"></a>HttpStart/index.js
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-使用`df.getClient`來取得`DurableOrchestrationClient`物件。 您可以使用用戶端來啟動協調流程。 它也可以協助您傳回 HTTP 回應，其中包含用來檢查新協調流程狀態的 Url。
+使用 `df.getClient` 來取得 `DurableOrchestrationClient` 物件。 您可以使用用戶端來啟動協調流程。 它也可以協助您傳回 HTTP 回應，其中包含用來檢查新協調流程狀態的 Url。
 
 ---
 
 ## <a name="run-the-sample"></a>執行範例
 
-若要執行`E1_HelloSequence`協調流程，請將下列 HTTP POST 要求傳送`HttpStart`至函式。
+若要執行 `E1_HelloSequence` 協調流程，請將下列 HTTP POST 要求傳送至函式 `HttpStart` 。
 
 ```
 POST http://{host}/orchestrators/E1_HelloSequence

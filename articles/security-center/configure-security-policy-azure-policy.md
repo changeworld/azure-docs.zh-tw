@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77430936"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>使用 REST API 在 Azure 原則中設定安全性原則
@@ -136,7 +135,7 @@ Azure 原則中的重要概念：
 
 ## <a name="next-steps"></a>後續步驟
 
-如需其他相關內容，請參閱下列文章： 
+如需其他相關資料，請參閱下列文章： 
 
 - [自訂安全性原則](custom-security-policies.md)
 - [安全性原則總覽](tutorial-security-policy.md)

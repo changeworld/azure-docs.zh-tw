@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617066"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>從 HANA 端進行監視和疑難排解
@@ -75,7 +74,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 以下 Linux 命令應該不會傳回任何項目：**rpm -qa | grep ulimit**。 如果顯示安裝的是 _ulimit_，請立即將它解除安裝。
 
-## <a name="memory"></a>記憶體
+## <a name="memory"></a>Memory
 
 您可能會注意到 SAP HANA 資料庫所配置的記憶體數量高於預期。 下列警示表示有記憶體使用量過高的問題：
 
@@ -163,7 +162,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 ![HANA\_Configuration\_Overview\_Rev110+：：適用於 SAP HANA 執行個體的一般相關資訊](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-**HANA\_設定\_參數\_rev70: 用 +** 來檢查 SAP Hana 參數。
+**HANA \_設定 \_ 參數 \_ rev70: 用 +** 以檢查 SAP Hana 參數。
 
 ![HANA\_Configuration\_Parameters\_Rev70+：用來檢查 SAP HANA 參數](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 

@@ -10,10 +10,9 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77209710"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>在地圖中新增影像圖層
@@ -38,7 +37,7 @@ ms.locfileid: "77209710"
 
 ## <a name="add-an-image-layer"></a>新增映像圖層
 
-下列程式碼會從地圖上的[1922 中，覆迭紐華克、New Jersey 的地圖](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)影像。 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)的建立方式是將 URL 傳遞給影像，並以格式`[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`來協調四個角落的座標。
+下列程式碼會從地圖上的[1922 中，覆迭紐華克、New Jersey 的地圖](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)影像。 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)的建立方式是將 URL 傳遞給影像，並以格式來協調四個角落的座標 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 。
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -64,7 +63,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 這個範例會示範如何將 KML 地面重迭資訊新增為地圖上的影像圖層。 KML 地面重迭提供北、南、東和西座標，以及逆時針旋轉。 但是，影像圖層預期影像的每個角落都會有座標。 此範例中的 KML 基礎重迭適用于 Chartres cathedral，其來自[Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
 
-程式碼會使用`getCoordinatesFromEdges` [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)類別中的靜態函式。 它會使用 KML 地面重迭的北部、南部、東、west 和旋轉資訊來計算影像的四個角落。
+程式碼會使用 `getCoordinatesFromEdges` [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)類別中的靜態函式。 它會使用 KML 地面重迭的北部、南部、東、west 和旋轉資訊來計算影像的四個角落。
 
 <br/>
 

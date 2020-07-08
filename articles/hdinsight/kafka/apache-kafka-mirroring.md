@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425879"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker，透過 HDInsight 上的 Kafka 來複寫 Apache Kafka 主題
@@ -63,7 +62,7 @@ ms.locfileid: "77425879"
 
 1. 建立兩個新的資源群組：
 
-    |資源群組 | 位置 |
+    |資源群組 | Location |
     |---|---|
     | kafka-主要-rg | 美國中部 |
     | kafka-次要-rg | 美國中北部 |
@@ -81,7 +80,7 @@ ms.locfileid: "77425879"
 1. 建立虛擬網路對等互連。 此步驟會建立兩個對等互連：一個從**kafka-主要-vnet**到**kafka-次要 vnet** ，另一個從**kafka-次要**vnet 到**kafka-主要 vnet**。
     1. 選取 [ **kafka-主要-vnet** ] 虛擬網路。
     1. 選取 [**設定**] 底下的 [**對等互連**]。
-    1. 選取 [新增]  。
+    1. 選取 [新增]。
     1. 在 [**新增對等互連**] 畫面上，輸入詳細資料，如下列螢幕擷取畫面所示。
 
         ![HDInsight Kafka 新增 vnet 對等互連](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
@@ -90,9 +89,9 @@ ms.locfileid: "77425879"
 
 設定 IP 廣告，讓用戶端使用 broker IP 位址來連線，而不是功能變數名稱。
 
-1. 移至主要叢集的 [Ambari] 儀表板`https://PRIMARYCLUSTERNAME.azurehdinsight.net`：。
-1. 選取 [**服務** > **Kafka**]。 CliSelectck [**選項**] 索引標籤。
-1. 將下列設定行新增至底部的 [ **kafka-env] 範本**區段。 選取 [儲存]  。
+1. 移至主要叢集的 [Ambari] 儀表板： `https://PRIMARYCLUSTERNAME.azurehdinsight.net` 。
+1. 選取 [**服務**  >  **Kafka**]。 CliSelectck [**選項**] 索引標籤。
+1. 將下列設定行新增至底部的 [ **kafka-env] 範本**區段。 選取 [儲存]。
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -105,14 +104,14 @@ ms.locfileid: "77425879"
 1. 在 [**儲存**設定] 畫面上輸入附注，然後按一下 [**儲存**]。
 1. 如果系統提示您設定警告，請按一下 [**仍繼續**]。
 1. 在 [儲存設定**變更**] 上選取 **[確定]** 。
-1. 在 [**需要重新**啟動] 通知中選取 [**重新** > 啟動**所有受影響的全部**]。 選取 [**確認全部重新開機**]。
+1. 在**Restart**  >  [**需要重新**啟動] 通知中選取 [重新開機**所有受影響的全部**]。 選取 [**確認全部重新開機**]。
 
     ![Apache Ambari 重新開機所有受影響的](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>設定 Kafka 以接聽所有網路介面。
     
-1. 停留在 [**服務** > **Kafka**] 底下的 [**進行中]** 索引標籤。 在 [ **Kafka Broker** ] 區段中 **，將 [接聽**程式] 屬性設為`PLAINTEXT://0.0.0.0:9092`。
-1. 選取 [儲存]  。
+1. 停留在 [**服務**Kafka] 底下的 [**進行中]** 索引標籤  >  ** **。 在 [ **Kafka Broker** ] 區段中 **，將 [接聽**程式] 屬性設為 `PLAINTEXT://0.0.0.0:9092` 。
+1. 選取 [儲存]。
 1. 選取 [**重新開機**]，並**確認 [全部重新開機**]。
 
 ### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>記錄主要叢集的訊息代理程式 IP 位址和 Zookeeper 位址。
@@ -136,7 +135,7 @@ ms.locfileid: "77425879"
 
     如需相關資訊，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-1. 使用下列命令來建立具有主要叢集之 Apache Zookeeper 主機的變數。 之類`ZOOKEEPER_IP_ADDRESS1`的字串必須以先前記錄的實際 IP 位址取代，例如`10.23.0.11`和。 `10.23.0.7` 如果您使用具有自訂 DNS 伺服器的 FQDN 解析，請遵循下列[步驟](apache-kafka-get-started.md#getkafkainfo)來取得 broker 和 zookeeper 名稱。：
+1. 使用下列命令來建立具有主要叢集之 Apache Zookeeper 主機的變數。 之類的字串 `ZOOKEEPER_IP_ADDRESS1` 必須以先前記錄的實際 IP 位址取代，例如 `10.23.0.11` 和 `10.23.0.7` 。 如果您使用具有自訂 DNS 伺服器的 FQDN 解析，請遵循下列[步驟](apache-kafka-get-started.md#getkafkainfo)來取得 broker 和 zookeeper 名稱。：
 
     ```bash
     # get the zookeeper hosts for the primary cluster
@@ -181,7 +180,7 @@ ms.locfileid: "77425879"
 
     如需相關資訊，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-1. `consumer.properties`檔案是用來設定與**主要**叢集的通訊。 若要建立檔案，請使用下列命令：
+1. 檔案 `consumer.properties` 是用來設定與**主要**叢集的通訊。 若要建立檔案，請使用下列命令：
 
     ```bash
     nano consumer.properties
@@ -206,11 +205,11 @@ ms.locfileid: "77425879"
     export SECONDARY_BROKERHOSTS='BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092'
     ```
 
-    此命令`echo $SECONDARY_BROKERHOSTS`應該會傳回類似下列文字的資訊：
+    此命令 `echo $SECONDARY_BROKERHOSTS` 應該會傳回類似下列文字的資訊：
 
     `10.23.0.14:9092,10.23.0.4:9092,10.23.0.12:9092`
 
-1. `producer.properties`檔案用來與**次要**叢集通訊。 若要建立檔案，請使用下列命令：
+1. 檔案 `producer.properties` 用來與**次要**叢集通訊。 若要建立檔案，請使用下列命令：
 
     ```bash
     nano producer.properties
@@ -250,8 +249,8 @@ ms.locfileid: "77425879"
 
         若要將次要叢集設定為自動建立主題，請執行下列步驟：
 
-        1. 移至次要叢集的 [Ambari] 儀表板`https://SECONDARYCLUSTERNAME.azurehdinsight.net`：。
-        1. 按一下 [**服務** > **Kafka**]。 按一下 [Configs (設定)] **** 索引標籤。
+        1. 移至次要叢集的 [Ambari] 儀表板： `https://SECONDARYCLUSTERNAME.azurehdinsight.net` 。
+        1. 按一下 [**服務**  >  **Kafka**]。 按一下 [Configs (設定)] **** 索引標籤。
         1. 在 [篩選]____ 欄位中，輸入 `auto.create` 的值。 這會篩選屬性清單並顯示 `auto.create.topics.enable` 設定。
         1. 將 `auto.create.topics.enable` 的值變更為 true，然後選取 [儲存]____。 新增附註，然後再次選取 [儲存]____。
         1. 依序選取 [Kafka]____ 服務、[重新啟動]____ 和 [重新啟動所有受影響的]____。 出現提示時，選取 [__確認全部重新開機__]。
@@ -270,8 +269,8 @@ ms.locfileid: "77425879"
 
     |參數 |說明 |
     |---|---|
-    |--取用者 .config|指定包含取用者屬性的檔案。 這些屬性是用來建立從*主要*Kafka 叢集讀取的取用者。|
-    |--生產者 .config|指定包含產生者屬性的檔案。 這些屬性是用來建立寫入*次要*Kafka 叢集的產生者。|
+    |--consumer.config|指定包含取用者屬性的檔案。 這些屬性是用來建立從*主要*Kafka 叢集讀取的取用者。|
+    |--producer.config|指定包含產生者屬性的檔案。 這些屬性是用來建立寫入*次要*Kafka 叢集的產生者。|
     |--白名單|MirrorMaker 從主要叢集複製到次要叢集的主題清單。|
     |--num. 資料流程|要建立的取用者執行緒數目。|
 
@@ -292,7 +291,7 @@ ms.locfileid: "77425879"
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $SECONDARY_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-    主題清單現在包含`testtopic`，這是在 MirrorMaster 將主題從主要叢集鏡像到次要叢集時所建立的。 從主題中抓取的訊息與您在主要叢集上輸入的訊息相同。
+    主題清單現在包含 `testtopic` ，這是在 MirrorMaster 將主題從主要叢集鏡像到次要叢集時所建立的。 從主題中抓取的訊息與您在主要叢集上輸入的訊息相同。
 
 ## <a name="delete-the-cluster"></a>選取叢集
 
@@ -307,5 +306,5 @@ ms.locfileid: "77425879"
 * [Apache Kafka MirrorMaker 文件](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) (網址為 cwiki.apache.org)。
 * [Kafka 鏡像製作者最佳做法](https://community.cloudera.com/t5/Community-Articles/Kafka-Mirror-Maker-Best-Practices/ta-p/249269)
 * [開始使用 Apache Kafka on HDInsight](apache-kafka-get-started.md)
-* [搭配使用 Apache Spark 與 HDInsight 上的 Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
+* [在 HDInsight 上搭配使用 Apache Spark 與 Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
 * [透過 Azure 虛擬網路連線到 Apache Kafka](apache-kafka-connect-vpn-gateway.md)

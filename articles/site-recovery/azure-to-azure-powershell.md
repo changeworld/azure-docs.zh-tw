@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
 ms.openlocfilehash: 583511194fb100add1d5fc4ea9c06a869cf652b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77212288"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 來設定 Azure 虛擬機器的災害復原
@@ -36,22 +35,22 @@ ms.locfileid: "77212288"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-開始之前：
+在開始之前：
 - 請確定您了解[情節架構和元件](azure-to-azure-architecture.md)。
 - 請參閱所有元件的[支援需求](azure-to-azure-support-matrix.md)。
-- 您有 Azure PowerShell `Az`模組。 如果您需要安裝或升級 Azure PowerShell，請按照此[安裝和設定 Azure PowerShell 指南](/powershell/azure/install-az-ps)的說明。
+- 您有 Azure PowerShell `Az` 模組。 如果您需要安裝或升級 Azure PowerShell，請按照此[安裝和設定 Azure PowerShell 指南](/powershell/azure/install-az-ps)的說明。
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>登入您的 Microsoft Azure 訂用帳戶
 
-使用`Connect-AzAccount` Cmdlet 登入您的 Azure 訂用帳戶。
+使用 Cmdlet 登入您的 Azure 訂用帳戶 `Connect-AzAccount` 。
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-選取 Azure 訂用帳戶。 使用`Get-AzSubscription` Cmdlet 來取得您有權存取的 Azure 訂用帳戶清單。 使用`Set-AzContext` Cmdlet 來選取要使用的 Azure 訂用帳戶。
+選取 Azure 訂用帳戶。 使用 `Get-AzSubscription` Cmdlet 來取得您有權存取的 Azure 訂用帳戶清單。 使用 Cmdlet 來選取要使用的 Azure 訂用帳戶 `Set-AzContext` 。
 
 ```azurepowershell
 Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -59,7 +58,7 @@ Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 ## <a name="get-details-of-the-virtual-machine-to-be-replicated"></a>取得要複寫之虛擬機器的詳細資料
 
-在本文中，「美國東部」區域中的虛擬機器會複寫到美國西部2區域中並加以復原。 正在複寫的虛擬機器有一個 OS 磁片和一個資料磁片。 範例中使用的虛擬機器名稱是`AzureDemoVM`。
+在本文中，「美國東部」區域中的虛擬機器會複寫到美國西部2區域中並加以復原。 正在複寫的虛擬機器有一個 OS 磁片和一個資料磁片。 範例中使用的虛擬機器名稱是 `AzureDemoVM` 。
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -115,7 +114,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-建立復原服務保存庫。 在此範例中，會在美國西部2區域`a2aDemoRecoveryVault`中建立名為的復原服務保存庫。
+建立復原服務保存庫。 在此範例中， `a2aDemoRecoveryVault` 會在美國西部2區域中建立名為的復原服務保存庫。
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -170,7 +169,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 - 每個區域只能建立單一網狀架構物件。
 - 如果您先前已在 Azure 入口網站中為 VM 啟用 Site Recovery 複寫，Site Recovery 便會自動建立網狀架構物件。 如果區域中已存在網狀架構物件，您便無法建立新的物件。
 
-開始之前，請先瞭解 Site Recovery 作業會以非同步方式執行。 您開始作業時，會提交 Azure Site Recovery 作業，並傳回作業追蹤物件。 使用「作業追蹤」物件來取得作業的最新狀態（`Get-AzRecoveryServicesAsrJob`），並監視操作的狀態。
+開始之前，請先瞭解 Site Recovery 作業會以非同步方式執行。 您開始作業時，會提交 Azure Site Recovery 作業，並傳回作業追蹤物件。 使用「作業追蹤」物件來取得作業的最新狀態（ `Get-AzRecoveryServicesAsrJob` ），並監視操作的狀態。
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -603,7 +602,7 @@ Errors           : {}
 
 ## <a name="reprotect-and-fail-back-to-the-source-region"></a>重新保護並容錯回復到來源區域
 
-容錯移轉之後，當您準備好回到原始區域時，請使用`Update-AzRecoveryServicesAsrProtectionDirection` Cmdlet 針對複寫保護的專案開始反向複寫。
+容錯移轉之後，當您準備好回到原始區域時，請使用 Cmdlet 針對複寫保護的專案開始反向複寫 `Update-AzRecoveryServicesAsrProtectionDirection` 。
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
@@ -620,7 +619,7 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 
 ## <a name="disable-replication"></a>停用複寫
 
-您可以使用`Remove-AzRecoveryServicesAsrReplicationProtectedItem` Cmdlet 來停用複寫。
+您可以使用 Cmdlet 來停用複寫 `Remove-AzRecoveryServicesAsrReplicationProtectedItem` 。
 
 ```azurepowershell
 Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem

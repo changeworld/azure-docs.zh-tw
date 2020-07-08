@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 儲存體中儲存和檢視診斷資料
-description: 瞭解如何收集 Azure 儲存體帳戶中的 Azure 診斷資料，讓您可以使用數個可用工具的其中一種來進行查看。
+description: 了解如何收集 Azure 儲存體帳戶中的 Azure 診斷資料，以便使用數個可用工具的其中一個工具加以檢視。
 services: azure-monitor
 author: bwren
 ms.service: azure-monitor
@@ -9,10 +9,9 @@ ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 17430330d068fb55b45f073afecb8ba348286cb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77472670"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 儲存體中儲存和檢視診斷資料
@@ -33,12 +32,12 @@ ms.locfileid: "77472670"
 
 | 資料來源 | 儲存體格式 |
 | --- | --- |
-| Azure 記錄 |Table |
+| Azure 記錄 |資料表 |
 | IIS 7.0 記錄 |Blob |
-| Azure 診斷基礎結構記錄 |Table |
+| Azure 診斷基礎結構記錄 |資料表 |
 | 失敗要求追蹤記錄 |Blob |
-| Windows 事件記錄 |Table |
-| 效能計數器 |Table |
+| Windows 事件記錄檔 |資料表 |
+| 效能計數器 |資料表 |
 | 損毀傾印 |Blob |
 | 自訂錯誤記錄 |Blob |
 

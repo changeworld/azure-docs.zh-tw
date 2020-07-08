@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 12/23/2019
 ms.author: memildin
 ms.openlocfilehash: 1dc94c5ec08cc27fb1819ccc16fd766c62aad796
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77604667"
 ---
 # <a name="adaptive-application-controls"></a>自適性應用程式控制
@@ -177,7 +176,7 @@ Azure 資訊安全中心也可讓您對非建議的 VM 群組定義應用程式�
 在本檔中，您已瞭解如何使用 Azure 資訊安全中心中的適應性應用程式控制，將在 Azure 和非 Azure Vm 中執行的應用程式列入允許清單。 若要深入了解「Azure 資訊安全中心」，請參閱下列主題：
 
 * [管理和回應 Azure 資訊安全中心中的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 了解如何在資訊安全中心管理警示，以及回應安全性事件。
-* [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md)。 了解如何監視 Azure 資源的健全狀況。
-* [了解 Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同類型的安全性警示。
+* [Azure 資訊安全中心中的安全性健全狀況監視](security-center-monitoring.md)。 了解如何監視 Azure 資源的健全狀況。
+* [瞭解 Azure 資訊安全中心中的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同類型的安全性警示。
 * [Azure 資訊安全中心疑難排解指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何針對資訊安全中心的常見問題進行疑難排解。
 * [Azure 安全性的 Blog](https://blogs.msdn.com/b/azuresecurity/)。 尋找有關 Azure 安全性與相容性的部落格文章。

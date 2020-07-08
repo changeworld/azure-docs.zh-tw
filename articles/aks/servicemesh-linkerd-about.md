@@ -6,21 +6,20 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77593762"
 ---
 # <a name="linkerd"></a>Linkerd
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 [Linkerd][linkerd]是一種便於使用且輕量的服務網格。
 
 ## <a name="architecture"></a>架構
 
-Linkerd 提供由超細[Linkerd][linkerd-proxy]特殊化 proxy sidecar 組成的資料平面。 這些智慧型 proxy 會控制進出網狀應用程式和工作負載的所有網路流量。 Proxy 也會透過[Prometheus][prometheus]計量端點來公開計量。
+Linkerd 提供由超細[Linkerd][linkerd-proxy]特殊化 proxy sidecar 組成的資料平面。 這些智慧型 Proxy 會控制進出網格應用程式和工作負載的所有網路流量。 Proxy 也會透過[Prometheus][prometheus]計量端點來公開計量。
 
 控制平面會透過下列[元件][linkerd-architecture]來管理設定和匯總的遙測：
 
@@ -33,7 +32,7 @@ Linkerd 提供由超細[Linkerd][linkerd-proxy]特殊化 proxy sidecar 組成的
 - **Web** -提供 Linkerd 儀表板。
 
 
-下列架構圖表示范資料平面和控制平面內的各種元件如何互動。
+下列架構圖示範資料平面和控制平面內的各種元件如何互動。
 
 
 ![Linkerd 元件和架構的總覽。](media/servicemesh/linkerd/about-architecture.png)
@@ -44,7 +43,7 @@ Linkerd 提供由超細[Linkerd][linkerd-proxy]特殊化 proxy sidecar 組成的
 針對您的工作負載評估 Linkerd 時，請務必瞭解並考慮下列各方面：
 
 - [設計原則](#design-principles)
-- [功能](#capabilities)
+- [Capabilities](#capabilities)
 - [案例](#scenarios)
 
 

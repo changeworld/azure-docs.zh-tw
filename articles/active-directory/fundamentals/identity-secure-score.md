@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523098"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>什麼是 Azure Active Directory 中的身分識別安全分數？
@@ -48,7 +47,7 @@ ms.locfileid: "77523098"
 
 ## <a name="how-do-i-get-my-secure-score"></a>如何取得安全分數？
 
-身分識別安全分數適用于所有版本的 Azure AD。 組織可以從**Azure 入口網站** > **Azure Active Directory** > **安全性** > 身分**識別安全分數**存取其身分識別安全分數。
+身分識別安全分數適用于所有版本的 Azure AD。 組織可以從**Azure 入口網站**  >  **Azure Active Directory**  >  **安全性**身分  >  **識別安全分數**存取其身分識別安全分數。
 
 ## <a name="how-does-it-work"></a>運作方式
 

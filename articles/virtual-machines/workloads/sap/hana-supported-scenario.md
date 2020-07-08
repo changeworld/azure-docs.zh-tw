@@ -14,10 +14,9 @@ ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617173"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型執行個體的支援案例
@@ -39,7 +38,7 @@ ms.locfileid: "77617173"
 - **多重 SID**：已設定多個實例的系統;也稱為 MCOS 環境
 - **HSR**： SAP Hana 系統複寫
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 HANA 大型實例支援各種不同的架構，可協助您達成業務需求。 下列各節涵蓋架構案例和其設定詳細資料。 
 
 衍生的架構設計純粹是從基礎結構的觀點來看，您必須諮詢 SAP 或您的執行合作夥伴以進行 HANA 部署。 如果本文未列出您的案例，請洽詢 Microsoft 帳戶小組來審查架構，並為您衍生解決方案。
@@ -68,9 +67,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | STONITH |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 節點對節點|
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | STONITH |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 節點對節點|
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | STONITH |
 
 您可以根據在的圖上設定的拓撲來選擇介面。 例如，針對節點對節點通訊設定介面 "B"，這在您已設定相應放大拓撲時很有用。 此介面不會用於單一節點、相應增加設定。 如需有關介面使用方式的詳細資訊，請參閱您的必要案例（在本文稍後）。 
 
@@ -100,7 +99,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 儲存體會根據要求的拓撲預先設定。 磁片區大小和掛接點會根據伺服器數目、Sku 數目和設定的拓撲而有所不同。 如需詳細資訊，請參閱您的必要案例（在本文稍後）。 如果您需要更多儲存空間，您可以在 1 TB 的增量中購買。
 
 >[!NOTE]
->掛接點/usr/sap/\<SID> 是/hana/shared 掛接點的符號連結。
+>掛接點/usr/sap/ \<SID> 是/hana/shared 掛接點的符號連結。
 
 
 ## <a name="supported-scenarios"></a>支援的案例
@@ -140,9 +139,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -175,9 +174,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -215,9 +214,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -256,9 +255,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -311,9 +310,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 用於 STONITH |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 用於 STONITH |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 用於 STONITH |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -357,9 +356,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 用於 STONITH |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 用於 STONITH |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 用於 STONITH |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -416,9 +415,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 節點對節點通訊 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 節點對節點通訊 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -457,9 +456,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 節點對節點通訊 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 節點對節點通訊 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -493,9 +492,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 節點對節點通訊 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 節點對節點通訊 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -532,9 +531,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 節點對節點通訊 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 節點對節點通訊 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -577,9 +576,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端到 HSR |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定于：（主要和 DR）上：
@@ -618,9 +617,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端到 HSR |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -668,9 +667,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端到 HSR |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -713,9 +712,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端到 HSR |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：
@@ -764,9 +763,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
 | A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端到 HSR |
-| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 節點對節點通訊 |
-| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
-| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
+| B | 類型二 | vlan\<tenantNo+2> | team0.tenant+2 | 節點對節點通訊 |
+| C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
 ### <a name="storage"></a>儲存體
 下列掛接點已預先設定：

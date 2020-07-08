@@ -10,10 +10,9 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77208551"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>將泡泡圖層新增至地圖
@@ -21,7 +20,7 @@ ms.locfileid: "77208551"
 本文說明如何將資料來源中的點資料轉譯為地圖上的氣泡圖層。 反升層會將點轉譯為地圖上具有固定圖元半徑的圓形。 
 
 > [!TIP]
-> 根據預設，泡泡圖層會轉譯資料來源中所有幾何圖形的座標。 若要限制圖層，使其只轉譯點幾何特徵， `filter`請將圖層的`['==', ['geometry-type'], 'Point']`屬性`['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`設為，或者，如果您也想要包含 MultiPoint 功能，則設定為。
+> 根據預設，泡泡圖層會轉譯資料來源中所有幾何圖形的座標。 若要限制圖層，使其只轉譯點幾何特徵， `filter` 請將圖層的屬性設為， `['==', ['geometry-type'], 'Point']` 或者 `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` ，如果您也想要包含 MultiPoint 功能，則設定為。
 
 ## <a name="add-a-bubble-layer"></a>新增泡泡圖層
 
@@ -62,7 +61,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 ## <a name="show-labels-with-a-bubble-layer"></a>顯示標籤與泡泡圖層
 
-這段程式碼示範如何使用反升層來呈現地圖上的點。 以及如何使用符號圖層來轉譯標籤。 若要隱藏符號圖層的圖示，請將`image`圖示選項的屬性設為`'none'`。
+這段程式碼示範如何使用反升層來呈現地圖上的點。 以及如何使用符號圖層來轉譯標籤。 若要隱藏符號圖層的圖示，請將 `image` 圖示選項的屬性設為 `'none'` 。
 
 <br/>
 

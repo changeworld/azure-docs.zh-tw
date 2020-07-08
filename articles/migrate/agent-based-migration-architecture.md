@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
 ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425847"
 ---
 # <a name="agent-based-migration-architecture"></a>代理程式移轉架構
@@ -73,7 +72,7 @@ ms.locfileid: "77425847"
 
 ## <a name="ports"></a>連接埠
 
-**裝置** | **建立**
+**裝置** | **[連接]**
 --- | --- 
 **複寫機器** | 在 Vm 上執行的行動服務會與埠 HTTPS 443 輸入上的內部部署複寫設備進行通訊，以進行複寫管理。<br/><br/> 機器會將複寫資料傳送至埠 HTTPS 9443 輸入上的進程伺服器。 您可以修改此連接埠。
 **複寫設備** | 複寫設備會透過埠 HTTPS 443 輸出來協調與 Azure 的複寫。
@@ -95,7 +94,7 @@ ms.locfileid: "77425847"
 - 如果您的每日變更率（流失率）超過 2 TB，請部署額外的進程伺服器。
 - 如果您要複寫200以上的機器，請部署額外的複寫設備。
 
-**使用率** | **記憶體** | **可用空間-資料快取** | **變換率** | **複寫限制**
+**CPU** | **記憶體** | **可用空間-資料快取** | **變換率** | **複寫限制**
 --- | --- | --- | --- | ---
 8 個 vCPU (2 個插槽 * 4 核心 \@ 2.5GHz) | 16 GB | 300 GB | 500 GB 或更少 | < 100 部機器 
 12 個 vCPU (2 個插槽 * 6 核心 \@ 2.5GHz) | 18 GB | 600 GB | 501 GB 至 1 TB | 100-150 部機器。
@@ -109,7 +108,7 @@ ms.locfileid: "77425847"
 --- | --- | --- | --- 
 4 個 vCPU (2 個插槽 * 2 核心 \@ 2.5 GHz)，8 GB 記憶體 | 300 GB | 250 GB 或更少 | 最多85部機器 
 8 個 vCPU (2 個插槽 * 4 核心 \@ 2.5 GHz)，12 GB 記憶體 | 600 GB | 251 GB 至 1 TB    | 86-150 部機器。
-12個 vcpu （2個通訊端 * \@ 6 核心 2.5 GHz），24 GB 記憶體 | 1 TB | 1-2 TB | 151-225 部機器。
+12個 vcpu （2個通訊端 * 6 核心 \@ 2.5 GHz），24 GB 記憶體 | 1 TB | 1-2 TB | 151-225 部機器。
 
 ## <a name="throttle-upload-bandwidth"></a>節流上傳頻寬。
 

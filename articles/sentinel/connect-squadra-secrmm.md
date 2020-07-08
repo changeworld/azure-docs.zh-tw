@@ -13,10 +13,9 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: d904e51321870fb4b61a237c23e425034b76dc0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588105"
 ---
 # <a name="connect-your-squadra-technologies-secrmm-data-to-azure-sentinel"></a>將您的 Squadra 技術 secRMM 資料連線到 Azure Sentinel 
@@ -53,5 +52,5 @@ Squadra 技術 secRMM 可以將記錄直接整合到 Azure Sentinel，並將其�
 在本檔中，您已瞭解如何將 Squadra 技術 secRMM 連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
 

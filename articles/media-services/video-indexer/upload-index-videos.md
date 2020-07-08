@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77468757"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
@@ -40,13 +39,13 @@ ms.locfileid: "77468757"
 - 要求 URL 長度限制為6144個字元，其中查詢字串 URL 長度限制為4096個字元。
 - 使用位元組陣列選項的上傳大小限制為 2 GB。
 - 位元組陣列選項在30分鐘後就會超時。
-- `videoURL`參數中提供的 URL 必須進行編碼。
+- 參數中提供的 URL `videoURL` 必須進行編碼。
 - 編制索引媒體服務資產與從 URL 編制索引的限制相同。
 - 影片索引子的最大持續時間限制為單一檔案4小時。
 - URL 必須可供存取（例如公用 URL）。 
 
     如果它是私人 URL，必須在要求中提供存取權杖。
-- URL 必須指向有效的媒體檔案，而不是網頁的連結，例如`www.youtube.com`頁面的連結。
+- URL 必須指向有效的媒體檔案，而不是網頁的連結，例如頁面的連結 `www.youtube.com` 。
 - 在付費帳戶中，每分鐘最多可以上傳50個電影，而且在試用帳戶中，每分鐘最多可有5個電影。
 
 > [!Tip]
@@ -93,24 +92,24 @@ ms.locfileid: "77468757"
 - 索引狀態變更： 
     - 內容：    
     
-        |Name|說明|
+        |Name|描述|
         |---|---|
         |id|影片識別碼|
-        |State|影片狀態|  
-    - 範例： HTTPs：\//test.com/notifyme?projectName=MyProject&識別碼 = 1234abcd&狀態 = 已處理
+        |state|影片狀態|  
+    - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&識別碼 = 1234abcd&狀態 = 已處理
 - 在影片中識別到的人員：
   - 屬性
     
-      |Name|說明|
+      |名稱|描述|
       |---|---|
       |id| 影片識別碼|
       |faceId|影片索引中出現的臉部識別碼|
       |knownPersonId|臉部模型中唯一的個人識別碼|
       |personName|人員名稱|
         
-    - 範例： HTTPs：\//test.com/notifyme?projectName=MyProject&識別碼 = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
+    - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&識別碼 = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>備忘錄
+##### <a name="notes"></a>備註
 
 - 影片索引器會傳回原始 URL 中提供的任何現有參數。
 - 提供的 URL 必須進行編碼。
@@ -126,7 +125,7 @@ ms.locfileid: "77468757"
 
 > [!NOTE]
 > 影片索引子最多可涵蓋兩個音訊追蹤。 如果檔案中有更多的音訊播放軌，則會將它們視為一個追蹤。<br/>
-如果您想要個別編制追蹤的索引，您必須將相關的音訊檔案解壓縮，並將其`AudioOnly`編制為的索引。
+如果您想要個別編制追蹤的索引，您必須將相關的音訊檔案解壓縮，並將其編制為的索引 `AudioOnly` 。
 
 價格取決於選取的索引編製選項。  
 
@@ -166,7 +165,7 @@ ms.locfileid: "77468757"
 
     * 巡覽到 https://api-portal.videoindexer.ai/
     * 登入
-    * 前往**產品** -> **授權** -> **授權訂**用帳戶
+    * 前往**產品**  ->  **授權**  ->  **授權訂**用帳戶
     * 複製**主要金鑰**
 * 影片 URL –要編制索引之影片/音訊檔案的 URL。 URL 必須指向媒體檔案 (不支援 HTML 網頁)。 作為 URI 一部分提供的存取權杖可以保護檔案，而處理檔案的端點必須透過 TLS 1.2 或更高版本來保護。 URL 必須進行編碼。
 
@@ -348,7 +347,7 @@ public class AccountContractSlim
 
 下表列出上傳作業可能會傳回的狀態碼。
 
-|狀態碼|ErrorType (在回應本文中)|說明|
+|狀態碼|ErrorType (在回應本文中)|Description|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|指定帳戶中已有正在處理的相同影片。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小時前，指定帳戶中有相同的影片處理失敗。 API 用戶端應該等待至少 2 小時，才能重新上傳影片。|

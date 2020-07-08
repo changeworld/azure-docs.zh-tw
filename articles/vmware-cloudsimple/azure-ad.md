@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564579"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>使用 Azure AD 做為 CloudSimple 私用雲端上的 vCenter 身分識別提供者
@@ -85,14 +84,14 @@ Azure AD 是 Microsoft 多租使用者雲端式目錄和身分識別管理服務
 
     | **選項** | **說明** |
     |------------|-----------------|
-    | **Name** | 身分識別來源的名稱。 |
-    | **使用者的基本 DN** | 使用者的基本辨別名稱。  如 Azure AD，請使用`OU=AADDC Users,DC=<domain>,DC=<domain suffix>` ：範例`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`：。|
+    | **名稱** | 身分識別來源的名稱。 |
+    | **使用者的基本 DN** | 使用者的基本辨別名稱。  如 Azure AD，請使用： `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` 範例： `OU=AADDC Users,DC=cloudsimplecustomer,DC=com` 。|
     | **網域名稱** | 網域的 FQDN，例如 example.com。 請勿在此文字方塊中提供 IP 位址。 |
     | **網域別名** | *（選擇性）* 網域 NetBIOS 名稱。 如果您使用 SSPI 驗證，請將 Active Directory 網域的 NetBIOS 名稱新增為身分識別來源的別名。 |
-    | **群組的基底 DN** | 群組的基本辨別名稱。 如 Azure AD，請使用`OU=AADDC Users,DC=<domain>,DC=<domain suffix>` ：範例：`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **主伺服器 URL** | 網域的主域控制站 LDAP 伺服器。<br><br>使用格式 `ldaps://hostname:port`。 針對 LDAPS 連線，埠通常是636。 <br><br>當您在主要或次要 LDAP URL 中使用 `ldaps://` 時，需要為 Active Directory 伺服器的 LDAPS 端點建立信任的憑證。 |
+    | **群組的基底 DN** | 群組的基本辨別名稱。 如 Azure AD，請使用： `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` 範例：`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
+    | **主伺服器 URL** | 網域的主域控制站 LDAP 伺服器。<br><br>使用此格式： `ldaps://hostname:port`。 針對 LDAPS 連線，埠通常是636。 <br><br>當您  `ldaps://`   在主要或次要 LDAP URL 中使用時，需要為 Active Directory 伺服器的 LDAPS 端點建立信任的憑證。 |
     | **次要伺服器 URL** | 用於容錯移轉的次要網域控制站 LDAP 伺服器位址。 |
-    | **選擇憑證** | 如果您想要將 LDAPS 與您的 Active Directory LDAP 伺服器或 OpenLDAP 伺服器身分識別來源搭配使用，請在 [URL `ldaps://` ] 文字方塊中輸入後出現 [選擇憑證] 按鈕。 不需要次要 URL。 |
+    | **選擇憑證** | 如果您想要將 LDAPS 與您的 Active Directory LDAP 伺服器或 OpenLDAP 伺服器身分識別來源搭配使用，請在  `ldaps://` [URL] 文字方塊中輸入後出現 [選擇憑證] 按鈕   。 不需要次要 URL。 |
     | **使用者名稱** | 網域中使用者的識別碼，其中至少具有使用者和群組的基本 DN 的唯讀存取權。 |
     | **密碼** | 使用者名稱所指定的密碼。 |
 

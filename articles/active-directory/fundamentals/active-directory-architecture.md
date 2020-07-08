@@ -14,10 +14,9 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 854fb4649f8c1113f20abe5807dd0ce473ba6ee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77368059"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>什麼是 Azure Active Directory 架構？
@@ -79,7 +78,7 @@ Azure AD 架構的元件包括主要複本和次要複本。
 
 寫入的永久在認可前至少有兩個資料中心。 發生這種情況的方式是先在主要複本上認可寫入，然後立即將寫入複寫到至少一個其他資料中心。 此寫入動作可確保裝載主要複本的資料中心可能會嚴重遺失，而不會導致資料遺失。
 
-Azure AD 會將[復原時間目標 (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) 維持為零，因此在容錯移轉時不會遺失資料。 這包括：
+Azure AD 會將[復原時間目標 (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) 維持為零，因此在容錯移轉時不會遺失資料。 其中包括：
 
 * 權杖發行和目錄讀取
 * 目錄寫入只允許約 5 分鐘的 RTO

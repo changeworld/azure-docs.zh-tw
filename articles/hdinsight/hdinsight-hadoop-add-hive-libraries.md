@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 02/14/2020
 ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77471018"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>建立 HDInsight 叢集時新增自訂 Apache Hive 程式庫
@@ -29,11 +28,11 @@ ms.locfileid: "77471018"
 
 ## <a name="the-script"></a>指令碼
 
-**指令碼位置**
+**腳本位置**
 
 [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-### <a name="requirements"></a>需求
+### <a name="requirements"></a>規格需求
 
 * 指令碼必須同時套用至**前端節點**和**背景工作節點**。
 
@@ -59,17 +58,17 @@ ms.locfileid: "77471018"
     |屬性 |值 |
     |---|---|
     |指令碼類型|- 自訂|
-    |Name|程式庫 |
+    |名稱|程式庫 |
     |Bash 指令碼 URI|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
     |節點類型|Head、Worker|
     |參數|輸入包含 jar 之容器和儲存體帳戶的 WASB 位址。 例如： `wasbs://libs@mystorage.blob.core.windows.net/` 。|
 
     > [!NOTE]
-    > 針對 Apache Spark 2.1，請使用此 bash 腳本 URI `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`：。
+    > 針對 Apache Spark 2.1，請使用此 bash 腳本 URI： `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh` 。
 
 1. 繼續如[在 Linux 上佈建 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md)中所述佈建叢集。
 
-叢集建立完成後，您就可以使用從 Hive 透過此腳本加入的 jar，而不需要使用`ADD JAR`語句。
+叢集建立完成後，您就可以使用從 Hive 透過此腳本加入的 jar，而不需要使用 `ADD JAR` 語句。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77566143"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在您的私人雲端上建立 VMware 虛擬機器
@@ -96,13 +95,13 @@ VM 現在已新增至工作負載計算資源，並可供使用。
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>將使用者和身分識別來源新增至 vCenter （選擇性）
 
-CloudSimple 會指派具有使用者名稱`cloudowner@cloudsimple.local`的預設 vCenter 使用者帳戶。 您不需要進行其他帳戶設定即可開始使用。  CloudSimple 通常會為系統管理員指派執行正常作業所需的許可權。  將您的內部部署 active directory 或 Azure AD 設定為私人雲端上的[其他身分識別來源](set-vcenter-identity.md)。
+CloudSimple 會指派具有使用者名稱的預設 vCenter 使用者帳戶 `cloudowner@cloudsimple.local` 。 您不需要進行其他帳戶設定即可開始使用。  CloudSimple 通常會為系統管理員指派執行正常作業所需的許可權。  將您的內部部署 active directory 或 Azure AD 設定為私人雲端上的[其他身分識別來源](set-vcenter-identity.md)。
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>建立 DNS 和 DHCP 伺服器（選擇性）
 
 在私人雲端環境中執行的應用程式和工作負載需要名稱解析和 DHCP 服務，才能進行查閱和 IP 位址指派。 必須要有適當的 DHCP 和 DNS 基礎結構，才能提供這些服務。 您可以在 vCenter 中設定虛擬機器，以在您的私用雲端環境中提供這些服務。
 
-先決條件
+必要條件
 
 * 已設定 VLAN 的分散式通訊埠群組
 
@@ -139,7 +138,7 @@ CloudSimple 入口網站中的 [網路] 頁面可讓您指定防火牆資料表�
 5. 如有需要，請使用滑杆來變更閒置超時。
 6. 輸入您要為其指派公用 IP 位址的本機 IP 位址。
 7. 如有需要，請輸入相關聯的 DNS 名稱。
-8. 按一下 [完成]  。
+8. 按一下 [完成] 。
 
     ![公用 IP](media/quick-create-pc-public-ip.png)
 

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564018"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>設定要使用的 vCenter 身分識別來源 Active Directory
@@ -53,14 +52,14 @@ VMware vCenter 支援不同的身分識別來源，以驗證存取 vCenter 的�
 
 | **選項** | **說明** |
 |------------|-----------------|
-| **Name** | 身分識別來源的名稱。 |
+| **名稱** | 身分識別來源的名稱。 |
 | **使用者的基本 DN** | 使用者的基本辨別名稱。 |
 | **網域名稱** | 網域的 FQDN，例如 example.com。 請勿在此文字方塊中提供 IP 位址。 |
 | **網域別名** | 網域 NetBIOS 名稱。 如果您使用 SSPI 驗證，請將 Active Directory 網域的 NetBIOS 名稱新增為身分識別來源的別名。 |
 | **群組的基底 DN** | 群組的基本辨別名稱。 |
-| **主伺服器 URL** | 網域的主域控制站 LDAP 伺服器。<br><br>請使用或 `ldap://hostname:port`  `ldaps://hostname:port`格式。 針對 LDAP 連線，埠通常為389，而 LDAPS 連線則為636。 針對 Active Directory 多網域控制站部署，針對 LDAP，埠通常為3268，而針對 LDAPS 則為3269。<br><br>當您在主要或次要 LDAP URL 中使用 `ldaps://` 時，需要為 Active Directory 伺服器的 LDAPS 端點建立信任的憑證。 |
+| **主伺服器 URL** | 網域的主域控制站 LDAP 伺服器。<br><br>請使用  `ldap://hostname:port`   或格式  `ldaps://hostname:port` 。 針對 LDAP 連線，埠通常為389，而 LDAPS 連線則為636。 針對 Active Directory 多網域控制站部署，針對 LDAP，埠通常為3268，而針對 LDAPS 則為3269。<br><br>當您  `ldaps://`   在主要或次要 LDAP URL 中使用時，需要為 Active Directory 伺服器的 LDAPS 端點建立信任的憑證。 |
 | **次要伺服器 URL** | 用於容錯移轉的次要網域控制站 LDAP 伺服器位址。 |
-| **選擇憑證** | 如果您想要將 LDAPS 與您的 Active Directory LDAP 伺服器或 OpenLDAP 伺服器身分識別來源搭配使用，請在 [URL `ldaps://` ] 文字方塊中輸入後出現 [選擇憑證] 按鈕。 不需要次要 URL。 |
+| **選擇憑證** | 如果您想要將 LDAPS 與您的 Active Directory LDAP 伺服器或 OpenLDAP 伺服器身分識別來源搭配使用，請在  `ldaps://` [URL] 文字方塊中輸入後出現 [選擇憑證] 按鈕   。 不需要次要 URL。 |
 | **使用者名稱** | 網域中使用者的識別碼，其中至少具有使用者和群組的基本 DN 的唯讀存取權。 |
 | **密碼** | 使用者名稱所指定的密碼。 |
 
@@ -118,7 +117,7 @@ VMware vCenter 支援不同的身分識別來源，以驗證存取 vCenter 的�
 
     ![單一登入](media/OnPremAD02.png)
 
-5. 開啟 [身分**識別來源**] 索引**+** 標籤，然後按一下以新增新的身分識別來源。
+5. 開啟 [身分**識別來源**] 索引標籤，然後按一下 **+** 以新增新的身分識別來源。
 
     ![身分識別來源](media/OnPremAD03.png)
 
@@ -130,4 +129,4 @@ VMware vCenter 支援不同的身分識別來源，以驗證存取 vCenter 的�
 
     ![Active Directory](media/OnPremAD05.png)
 
-8. 檢查設定，然後按一下 **[完成]**。
+8. 檢閱設定，然後按一下 [完成]。

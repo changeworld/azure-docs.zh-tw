@@ -4,10 +4,9 @@ description: 瞭解如何部署 Azure 容器實例，以使用 GPU 資源來執�
 ms.topic: article
 ms.date: 02/19/2020
 ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77525281"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 資源的容器執行個體
@@ -91,7 +90,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-使用[az container create][az-container-create]命令來部署容器群組，並指定`--file`參數的 YAML 檔案名。 您需要提供資源群組的名稱和容器群組的位置，例如支援 GPU 資源的 *eastus*。  
+使用[az container create][az-container-create]命令來部署容器群組，並指定參數的 YAML 檔案名 `--file` 。 您需要提供資源群組的名稱和容器群組的位置，例如支援 GPU 資源的 *eastus*。  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -168,7 +167,7 @@ Done
 }
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令來部署範本。 您需要提供資源群組的名稱，且該資源群組需要是建立在支援 GPU 資源的區域 (如 *eastus*)。
+使用 [az group deployment create][az-group-deployment-create] 命令部署範本。 您需要提供資源群組的名稱，且該資源群組需要是建立在支援 GPU 資源的區域 (如 *eastus*)。
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file gpudeploy.json

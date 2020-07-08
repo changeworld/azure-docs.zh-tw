@@ -7,17 +7,16 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
 ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77595360"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>部署至 Kubernetes 服務的 GitHub 動作
 
-[GitHub 動作](https://help.github.com/en/articles/about-github-actions)可讓您彈性地建立自動化軟體發展生命週期工作流程。 Kubernetes 動作[azure/aks-set-context@v1](https://github.com/Azure/aks-set-context)可加速部署 Azure Kubernetes Service 叢集。 動作會設定目標 AKS 叢集內容，其可供其他動作使用，例如[azure/k8s-deploy](https://github.com/Azure/k8s-deploy/tree/master)、 [azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master)等，或執行任何 kubectl 命令。
+[GitHub Actions](https://help.github.com/en/articles/about-github-actions) 可讓您彈性地建置自動化軟體開發生命週期工作流程。 Kubernetes 動作 [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) 可加速部署 Azure Kubernetes Service 叢集。 動作會設定目標 AKS 叢集內容，其可供其他動作使用，例如[azure/k8s-deploy](https://github.com/Azure/k8s-deploy/tree/master)、 [azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master)等，或執行任何 kubectl 命令。
 
-工作流程是由存放庫中`/.github/workflows/`路徑內的 YAML （. yml）檔案所定義。 此定義包含組成工作流程的各種步驟和參數。
+工作流程是由您存放庫內 `/.github/workflows/` 路徑中的 YAML (. yml) 檔案所定義的。 此定義包含組成工作流程的各種步驟與參數。
 
 針對目標為 AKS 的工作流程，檔案有三個區段：
 
@@ -31,7 +30,7 @@ ms.locfileid: "77595360"
 
 ## <a name="create-a-service-principal"></a>建立服務主體
 
-您可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/)中的[az ad sp create-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令來建立[服務主體](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 您可以使用 Azure 入口網站中的[Azure Cloud Shell](https://shell.azure.com/)或選取 [**試試看**] 按鈕來執行此命令。
+您可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/) 中的 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令來建立[服務主體](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 您可以使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/)，或選取 [試試看] 按鈕來執行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
@@ -48,7 +47,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
     (...)
   }
 ```
-複製這個 JSON 物件，您可以使用它從 GitHub 進行驗證。
+複製這個 JSON 物件，您可以用它從 GitHub 進行驗證。
 
 ## <a name="configure-the-github-secrets"></a>設定 GitHub 秘密
 
@@ -58,7 +57,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
     ![密碼](media/kubernetes-action/secrets.png)
 
-2. 將上述`az cli`命令的內容貼入作為 [秘密變數] 的值。 例如： `AZURE_CREDENTIALS` 。
+2. 將上述命令的內容貼入 `az cli` 作為 [秘密變數] 的值。 例如： `AZURE_CREDENTIALS` 。
 
 3. 同樣地，針對容器登錄認證定義下列額外的秘密，並在 Docker 登入動作中加以設定。 
 
@@ -71,7 +70,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>建立容器映射並部署到 Azure Kubernetes Service 叢集
 
-容器映射的組建和推送是使用`Azure/docker-login@v1`動作來完成。 若要將容器映射部署至 AKS，您必須使用`Azure/k8s-deploy@v1`動作。 此動作有五個參數：
+容器映射的組建和推送是使用動作來完成 `Azure/docker-login@v1` 。 若要將容器映射部署至 AKS，您必須使用 `Azure/k8s-deploy@v1` 動作。 此動作有五個參數：
 
 | **參數**  | **說明**  |
 |---------|---------|

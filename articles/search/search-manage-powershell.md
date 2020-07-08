@@ -10,10 +10,9 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 711071e08a52a0075512bc8b3ffe14707238cdfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77209291"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>使用 PowerShell 管理您的 Azure 認知搜尋服務
@@ -42,7 +41,7 @@ ms.locfileid: "77209291"
 
 ## <a name="check-versions-and-load-modules"></a>檢查版本和載入模組
 
-本文中的範例是互動式的，而且需要更高的許可權。 必須安裝 Azure PowerShell （ **Az**模組）。 如需詳細資訊，請參閱[Install Azure PowerShell](/powershell/azure/overview)。
+本文中的範例是互動式的，而且需要更高的許可權。 必須安裝 Azure PowerShell （ **Az**模組）。 如需詳細資訊，請參閱[安裝 Azure PowerShell](/powershell/azure/overview) (英文)。
 
 ### <a name="powershell-version-check-51-or-later"></a>PowerShell 版本檢查（5.1 或更新版本）
 
@@ -193,11 +192,11 @@ Tags
 
 [**AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0)是用來變換系統管理員[API 金鑰](search-security-api-keys.md)。 系統會使用每個服務建立兩個管理金鑰來進行驗證的存取。 每個要求都需要金鑰。 這兩個系統管理金鑰的功能都相同，授與搜尋服務的完整寫入權限，使其能夠抓取任何資訊，或建立和刪除任何物件。 有兩個金鑰存在，讓您可以在取代另一個索引鍵時使用。 
 
-您一次只能重新產生一個，並指定為`primary`或`secondary`金鑰。 針對不中斷的服務，請記得在變換主要金鑰時，更新所有用戶端程式代碼以使用次要金鑰。 避免在作業進行時變更金鑰。
+您一次只能重新產生一個，並指定為 `primary` 或 `secondary` 金鑰。 針對不中斷的服務，請記得在變換主要金鑰時，更新所有用戶端程式代碼以使用次要金鑰。 避免在作業進行時變更金鑰。
 
 如您所預期，如果您重新產生金鑰而不更新用戶端程式代碼，則使用舊金鑰的要求將會失敗。 重新產生所有新金鑰並不會永久鎖定您的服務，而且您仍然可以透過入口網站存取服務。 重新產生主要和次要金鑰之後，您可以更新用戶端程式代碼以使用新的金鑰，而作業將會據此繼續進行。
 
-API 金鑰的值是由服務產生。 您無法提供自訂金鑰供 Azure 認知搜尋使用。 同樣地，系統管理員 API 金鑰沒有使用者定義的名稱。 索引鍵的參考是固定字串， `primary`也就`secondary`是或。 
+API 金鑰的值是由服務產生。 您無法提供自訂金鑰供 Azure 認知搜尋使用。 同樣地，系統管理員 API 金鑰沒有使用者定義的名稱。 索引鍵的參考是固定字串，也就是 `primary` 或 `secondary` 。 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary

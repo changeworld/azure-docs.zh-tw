@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77190732"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>針對 Azure VM 擴充功能問題進行疑難排解
@@ -42,7 +41,7 @@ ms.locfileid: "77190732"
 
 如果虛擬機器中的 Azure 來賓代理程式不是處於就緒狀態，就會發生此錯誤。
 
-您可以在[Azure 入口網站](https://portal.azure.com/)中檢查 Azure 來賓代理程式的狀態。 移至您嘗試保護的虛擬機器，並在 [ **VM** > **設定** > ] [**屬性** > ] [**代理程式狀態**] 中檢查狀態。 在大部分的情況下，代理程式的狀態會在重新開機虛擬機器之後準備就緒。 不過，如果您無法重新開機，或仍然遇到問題，請完成下列疑難排解步驟：
+您可以在[Azure 入口網站](https://portal.azure.com/)中檢查 Azure 來賓代理程式的狀態。 移至您嘗試保護的虛擬機器，並在 [ **VM**設定] [屬性] [  >  **Settings**  >  **Properties**  >  **代理程式狀態**] 中檢查狀態。 在大部分的情況下，代理程式的狀態會在重新開機虛擬機器之後準備就緒。 不過，如果您無法重新開機，或仍然遇到問題，請完成下列疑難排解步驟：
 
 - [代理程式已安裝在 VM 中，但沒有回應 (適用於 Windows VM)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
 - [VM 中安裝的代理程式已過時 (適用於 Linux VM)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
@@ -59,7 +58,7 @@ ms.locfileid: "77190732"
 
 ### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>代理程式已安裝在 VM 中，但沒有回應 (適用於 Windows VM)
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代理程式有助於取得最新版本。 也有助於重新開始與服務通訊。
 
 1. 判斷 Windows Azure 客體代理程式服務是否在 VM 服務 (services.msc) 中執行。 重新開機 Windows Azure 來賓代理程式服務。    
@@ -73,7 +72,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 中安裝的代理程式已過時 (適用於 Linux VM)
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 針對 Linux VM，與代理程式或擴充功能相關的多數失敗是由於會影響過時 VM 代理程式的問題所造成。 若要對此問題進行疑難排解，請遵循下列一般方針：
 
 1. 請遵循[更新 Linux VM 代理程式](../virtual-machines/linux/update-agent.md)的指示。
@@ -95,17 +94,17 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 延伸模組狀態會顯示為「空白」、「NotReady」或「正在轉換」。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 將延伸模組解除安裝，並再次重新啟動作業。
 
 若要將解除安裝解除安裝：
 
 1. 在[Azure 入口網站](https://portal.azure.com/)中，移至遇到備份失敗的 VM。
-1. 選取 [設定]  。
+1. 選取 [設定]。
 1. 選取 [**延伸**模組]。
 1. 選取 [Site Recovery 延伸模組]****。
-1. 選取 [解除安裝]****。
+1. 選取 [解除安裝]。
 
 針對 Linux VM，如果 VMSnapshot 延伸模組未顯示在 Azure 入口網站中，請[更新 Azure Linux 代理程式](../virtual-machines/linux/update-agent.md)。 然後執行保護。
 

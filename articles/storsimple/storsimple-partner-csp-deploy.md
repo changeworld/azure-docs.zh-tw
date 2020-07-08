@@ -15,21 +15,20 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77466904"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>部署適用於雲端解決方案提供者方案的 StorSimple Virtual Array
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 雲端解決方案提供者 (CSP) 合作夥伴可以為客戶部署 StorSimple Virtual Array。 CSP 合作夥伴可以建立 StorSimple 裝置管理員服務。 然後，此服務可用來部署及管理 StorSimple Virtual Array，以及相關聯的共用、磁碟區和備份。
 
 本文說明 CSP 合作夥伴如何新增客戶，或將新的訂用帳戶新增至現有的客戶，然後建立服務在 CSP 中部署 StorSimple Virtual Array。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定︰
 

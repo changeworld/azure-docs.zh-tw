@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: ae361c74b261bdd6a5673040f868392282b573ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588275"
 ---
 # <a name="connect-your-f5-big-ip-appliance"></a>連接您的 F5 BIG IP 應用裝置 
@@ -55,6 +54,6 @@ F5 BIG-IP 可以將記錄直接整合到 Azure Sentinel，並將其匯出。
 在本檔中，您已瞭解如何將 F5 BIG IP 連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
 
 

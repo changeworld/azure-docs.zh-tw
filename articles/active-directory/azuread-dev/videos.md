@@ -14,17 +14,16 @@ ms.custom: aaddev
 ms.reviewer: celested
 titleSuffix: Microsoft identity platform
 ms.openlocfilehash: e71f555f7a9cefef3aeada79031db3a07e3db49a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77202056"
 ---
 # <a name="azure-active-directory-developer-platform-videos"></a>Azure Active Directory 開發人員平臺影片
 
 瞭解新的 Microsoft 身分識別平臺，以及如何從 Azure Active Directory （Azure AD）開發人員平臺進行遷移。 影片的長度通常為1-2 分鐘。
 
-## <a name="migrate-from-v10-to-v20"></a>從 v1.0 遷移至 v2。0
+## <a name="migrate-from-v10-to-v20"></a>從 v1.0 遷移至 v2.0
 
 **瞭解如何遷移至最新版本的 Microsoft 身分識別平臺**
 
@@ -44,7 +43,7 @@ ms.locfileid: "77202056"
 :::row-end:::
 :::row:::
     :::column:::
-        端點和移至 v2.0 的優點
+        端點和移轉至 v2.0 的優點
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
@@ -64,7 +63,7 @@ ms.locfileid: "77202056"
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
     :::column:::
-        透過 ADAL 的 MSAL 優點
+        MSAL 優於 ADAL 之處
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]

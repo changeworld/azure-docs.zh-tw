@@ -7,10 +7,9 @@ ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77482967"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>將雲端資料夾的內容同步處理到 Azure App Service
@@ -22,7 +21,7 @@ ms.locfileid: "77482967"
 
 若要啟用內容同步處理，請巡覽至 [Azure 入口網站](https://portal.azure.com)中的 App Service 應用程式頁面。
 
-在左側功能表中，按一下 [**部署中心** > ] [**OneDrive** ] 或 [ **Dropbox** > **授權**]。 請遵循授權提示。 
+在左側功能表中，按一下 [**部署中心**] [  >  **OneDrive** ] 或 [ **Dropbox**  >  **授權**]。 請遵循授權提示。 
 
 ![](media/app-service-deploy-content-sync/choose-source.png)
 
@@ -54,7 +53,7 @@ ms.locfileid: "77482967"
 
 若要停用內容同步處理，請巡覽至 [Azure 入口網站](https://portal.azure.com)中的 App Service 應用程式頁面。
 
-在左側功能表中，按一下 [**部署中心** > **] [中斷連線]**。
+在左側功能表中，按一下 [**部署中心**  >  **] [中斷連線]**。
 
 ![](media/app-service-deploy-content-sync/disable.png)
 

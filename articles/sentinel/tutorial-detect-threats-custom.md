@@ -15,15 +15,14 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: cea7429ecea105355b0afe306bfa334e55d5d9c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77585102"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>教學課程：建立自訂分析規則來偵測可疑威脅
 
-將 [資料來源](quickstart-onboard.md) 連接到 Azure Sentinel 之後，您可以建立自訂規則，以便在您的環境中搜尋特定準則，並在符合準則時產生事件，以便您進行調查。 本教學課程可協助您建立自訂規則，以使用 Azure Sentinel 來偵測威脅。
+將 [資料來源連接](quickstart-onboard.md)   到 Azure Sentinel 之後，您可以建立自訂規則，以便在您的環境中搜尋特定準則，並在符合準則時產生事件，以便您進行調查。 本教學課程可協助您建立自訂規則，以使用 Azure Sentinel 來偵測威脅。
 
 本教學課程可協助您偵測 Azure Sentinel 的威脅。
 > [!div class="checklist"]
@@ -34,7 +33,7 @@ ms.locfileid: "77585102"
 
 您可以建立自訂分析規則，協助您搜尋環境中可疑的威脅和異常類型。 此規則可確保您立即收到通知，讓您可以對威脅進行分級、調查及補救。
 
-1. 在 Azure 入口網站的 [Azure Sentinel] 底下，選取 [分析]****。
+1. 在 Azure 入口網站的 [Azure Sentinel] 底下，選取 [分析]。
 
 1. 在頂端功能表列中，選取 [ **+ 建立**]，然後選取 [已**排程的查詢規則**]。 這會開啟 [**分析規則] 嚮導**。
 
@@ -59,7 +58,7 @@ ms.locfileid: "77585102"
      \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
       > [!NOTE]
-      > 查詢長度應介於1到10000個字元之間，且不能包含\*"search" 或\*"union"。
+      > 查詢長度應介於1到10000個字元之間，且不能包含 "search \* " 或 "union \* "。
 
     1. 使用 [**地圖實體**] 區段，將查詢結果中的參數連結到 Azure Sentinel 辨識的實體。 這些實體會形成進一步分析的基礎，包括在 [**事件設定**] 索引標籤中將警示分組至事件。
     1. 在 [**查詢排程**] 區段中，設定下列參數：

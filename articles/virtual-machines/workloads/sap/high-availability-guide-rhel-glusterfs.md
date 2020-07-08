@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
 ms.openlocfilehash: 388a2db2c888be541d89c5f4274bd38b37e4ca28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77591909"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>Red Hat Enterprise Linux for SAP NetWeaver 上適用於 Azure VM 的 GlusterFS
@@ -62,7 +61,7 @@ ms.locfileid: "77591909"
 * SAP Note [1999351] 包含 Azure Enhanced Monitoring Extension for SAP 的其他疑難排解資訊。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含 Linux 所需的所有 SAP Note。
 * [適用於 SAP on Linux 的 Azure 虛擬機器規劃和實作][planning-guide]
-* [適用于 SAP on Linux 的 Azure 虛擬機器部署（本文）][deployment-guide]
+* [適用於 SAP on Linux 的 Azure 虛擬機器部署 (本文)][deployment-guide]
 * [適用於 SAP on Linux 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
 * [Red Hat Gluster Storage 產品文件](https://access.redhat.com/documentation/red_hat_gluster_storage/)
 * 一般 RHEL 文件
@@ -73,7 +72,7 @@ ms.locfileid: "77591909"
   * [RHEL 高可用性叢集的支援原則：以 Microsoft Azure 虛擬機器作為叢集成員](https://access.redhat.com/articles/3131341)
   * [在 Microsoft Azure 上安裝和設定 Red Hat Enterprise Linux 7.4 (和更新版本) 高可用性叢集](https://access.redhat.com/articles/3252491)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 為了實現高可用性，SAP NetWeaver 需要使用共用儲存體。 GlusterFS 會於獨立的叢集中設定，且可供多個 SAP 系統使用。
 
@@ -98,11 +97,11 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
    4. 管理員使用者名稱、管理員密碼或 SSH 金鑰  
       建立可用來登入電腦的新使用者。
    5. 子網路識別碼  
-      如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 此識別碼通常看起來像是/subscriptions/**&lt;訂&gt;** 用帳戶識別碼/resourceGroups/**&lt;資源組名&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;虛擬網路名稱&gt;**/subnets/**&lt;子網名稱&gt; **
+      如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 此識別碼通常看起來像是/subscriptions/訂用帳戶** &lt; &gt; 識別碼**/ResourceGroups/** &lt; 資源組名 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虛擬網路名稱 &gt; **/subnets/** &lt; 子網名稱 &gt; **
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>透過 Azure 入口網站手動部署 Linux
 
-您必須先為此叢集建立虛擬機器。 之後，您需建立負載平衡器，然後使用後端集區中的虛擬機器。 我們建議採用[標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。  
+您必須先為此叢集建立虛擬機器。 之後，您需建立負載平衡器，然後使用後端集區中的虛擬機器。 建議[標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。  
 
 1. 建立資源群組
 1. 建立虛擬網路
@@ -355,4 +354,4 @@ Azure Marketplace 包含 Red Hat Enterprise Linux 的映像，您可用來部署
 * [適用於 SAP 的 Azure 虛擬機器部署][deployment-guide]
 * [適用於 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
 * 若要瞭解如何建立高可用性，並規劃 Azure （大型實例）上 SAP Hana 的嚴重損壞修復，請參閱[azure 上的 SAP Hana （大型實例）高可用性和嚴重損壞修復](hana-overview-high-availability-disaster-recovery.md)。
-* 若要了解如何建立高可用性並為 Azure VM 上的 SAP HANA 規劃災害復原，請參閱 [Azure 虛擬機器 (VM) 上 SAP HANA 的高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性，並為 Azure VM 上的 SAP HANA 規劃災害復原，請參閱 [Azure 虛擬機器 (VM) 上 SAP HANA 的高可用性][sap-hana-ha]

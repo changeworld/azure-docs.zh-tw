@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616938"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 上 SAP Hana (大型執行個體) 的高可用性和災害復原 
@@ -40,7 +39,7 @@ SAP HANA on Azure (大型執行個體) 會在四個地緣政治區域 (美國、
 
 下表顯示目前支援的高可用性和災害復原方法以及兩者的組合：
 
-| HANA 大型執行個體所支援的案例 | 高可用性選項 | 災害復原選項 | 評價 |
+| HANA 大型執行個體所支援的案例 | 高可用性選項 | 災害復原選項 | 註解 |
 | --- | --- | --- | --- |
 | 單一節點 | 無法使用。 | 專用 DR 設定。<br /> 多用途 DR 設定。 | |
 | 主機自動容錯移轉：向外延展 (不一定有待命)<br /> 包括 1 + 1 | 可透過擔任作用中角色的待命節點來實現。<br /> HANA 會控制角色的切換。 | 專用 DR 設定。<br /> 多用途 DR 設定。<br /> 使用儲存體複寫進行的 DR 同步處理。 | HANA 磁碟區組會連接到所有節點。<br /> DR 網站必須具有相同數目的節點。 |

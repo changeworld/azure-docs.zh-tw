@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 3e6dfd5882e49ad903e8cff6f0ec7f3d6bd4a8b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77619617"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的備份與還原-單一伺服器
@@ -19,7 +18,7 @@ ms.locfileid: "77619617"
 
 ## <a name="backups"></a>備份
 
-適用於 PostgreSQL 的 Azure 資料庫會取得資料檔案和交易記錄檔的備份。 視支援的最大儲存體大小而定，我們會採用完整和差異備份（4 TB 的儲存體伺服器）或快照集備份（最多 16 TB 的儲存體伺服器）。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 可選擇設定的期限最多為 35 天。 所有備份皆會使用 AES 256 位元加密進行加密。
+適用於 PostgreSQL 的 Azure 資料庫會取得資料檔案和交易記錄檔的備份。 根據支援的儲存體大小上限，我們採用完整和差異備份 (4 TB 儲存體伺服器上限) 或快照集備份 (最多 16 TB 儲存體伺服器上限)。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 可選擇設定的期限最多為 35 天。 所有備份皆會使用 AES 256 位元加密進行加密。
 
 無法匯出這些備份檔案。 備份只能用於適用於 PostgreSQL 的 Azure 資料庫中的還原作業。 您可以使用[pg_dump](howto-migrate-using-dump-and-restore.md)來複製資料庫。
 
@@ -46,8 +45,8 @@ ms.locfileid: "77619617"
 
 有兩種類型的還原可使用：
 
-- **時間點還原**可搭配任一備份備援選項使用，並在您原始伺服器所在區域中建立新的伺服器。
-- **異地還原**只能您將伺服器設定為使用異地備援儲存體時使用，這可讓您將伺服器還原至不同的區域。
+- **時間點還原**適用于備份複本選項，並在與源伺服器相同的區域中建立新的伺服器。
+- 只有當您將伺服器設定為異地多餘儲存體，而且它可讓您將伺服器還原到不同的區域時，才可以使用**異地還原**。
 
 預估的復原時間取決於數個因素，包括資料庫大小、交易記錄大小、網路頻寬，以及在相同區域中同時進行復原的資料庫總數。 復原時間通常不到 12 小時。
 

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fa8b2da683d68a337df38e13726f22c5af43540a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77565922"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>使用 VMware Site Recovery Manager 將私人雲端設定為故障復原目標
@@ -146,7 +145,7 @@ CloudSimple 要求您不要使用預設的 ' cloudowner ' 使用者來安裝 vRA
 
 從 CloudSimple 入口網站升級許可權後，使用 cloudowner 使用者認證登入 vCenter。
 
-在 vCenter 中建立新`srm-soln-admin`的使用者，並將它新增至 vcenter 中的 administrators 群組。
+在 vCenter 中建立新的使用者， `srm-soln-admin` 並將它新增至 vcenter 中的 administrators 群組。
 以 cloudowner 使用者身分登出 vCenter，並以「 *srm-soln-管理員*」使用者身分登入。
 
 #### <a name="cloudsimple-portal-configure-firewall-rules-for-vra"></a>CloudSimple 入口網站：設定 vRA 的防火牆規則
@@ -219,7 +218,7 @@ CloudSimple 要求您不要使用預設的 ' cloudowner ' 使用者來安裝 vRA
 
  以陣列為基礎的複寫[和 vSphere 複寫技術可以同時與 SRM 搭配使用](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication)。 不過，它們必須套用至個別的 Vm 集（指定的 VM 可以透過以陣列為基礎的複寫或 vSphere 複寫來保護，但不能同時受到這兩者的保護）。 此外，您可以將 CloudSimple 網站設定為多個受保護網站的復原網站。 如需多網站設定的詳細資訊，請參閱[SRM 多網站選項](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/)。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 
 * [VMware Site Recovery Manager 檔](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [Site Recovery Manager 6.5 的操作限制](https://kb.vmware.com/s/article/2147110)

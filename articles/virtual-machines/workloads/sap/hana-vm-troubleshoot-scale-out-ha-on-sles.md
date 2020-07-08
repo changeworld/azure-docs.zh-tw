@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617130"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>在 SLES 12 SP3 上驗證 SAP HANA scale-out 高可用性設定並為其進行疑難排解 
@@ -656,7 +655,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>容錯移轉或接管
 
-如[重要事項](#important-notes)中所述，您不應該使用標準正常關機來測試叢集容錯移轉或 SAP HANA HSR 接管。 反之，建議您觸發核心異常、強制資源移轉或關閉 VM 之 OS 層級上的所有網路。 另一種方法為 **crm \<node\> standby** 命令。 請參閱 [SUSE 文件][sles-12-ha-paper]。 
+如[重要事項](#important-notes)中所述，您不應該使用標準正常關機來測試叢集容錯移轉或 SAP HANA HSR 接管。 反之，建議您觸發核心異常、強制資源移轉或關閉 VM 之 OS 層級上的所有網路。 另一個方法是**crm \<node\> 待命**命令。 請參閱 [SUSE 文件][sles-12-ha-paper]。 
 
 下列三個範例命令可強制叢集容錯移轉：
 
@@ -682,7 +681,7 @@ watch SAPHanaSR-showAttr
 
 需要重試數次，避免不必要的容錯移轉。 只有在狀態從 [正常]**** (傳回值 **4**) 變更為 [錯誤]**** (傳回值 **1**) 時，叢集才會做出反應。 因此，如果 **SAPHanaSR-showAttr** 的輸出顯示狀態為**離線**的 VM，即為正確。 但目前並沒有活動可切換主要和次要。 只要 SAP HANA 未傳回錯誤，就不會觸發任何叢集活動。
 
-您可以藉由呼叫 SAP Python 腳本，以監視 SAP Hana 橫向健全狀況狀態作為使用者** \<HANA SID\>adm** ，如下所示。 您可能必須調整路徑：
+您可以藉由呼叫 SAP Python 腳本，以監視 SAP Hana 橫向健全狀況狀態作為使用者** \<HANA SID\> adm** ，如下所示。 您可能必須調整路徑：
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -945,7 +944,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 叢集解決方案可提供瀏覽器介面，為偏好功能表和圖形 (相較於殼層層級上的所有命令) 的人員提供 GUI。
-若要使用瀏覽器介面，請將** \<node\> **取代為下列 URL 中的實際 SAP Hana 節點。 然後輸入叢集的認證 (使用者**叢集**)：
+若要使用瀏覽器介面，請 **\<node\>** 將取代為下列 URL 中的實際 SAP Hana 節點。 然後輸入叢集的認證 (使用者**叢集**)：
 
 <pre><code>
 https://&ltnode&gt:7630

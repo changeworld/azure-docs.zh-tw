@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
 ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77471175"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上分析 Apache Kafka 的記錄
@@ -23,9 +22,9 @@ ms.locfileid: "77471175"
 
 ## <a name="logs-location"></a>記錄位置
 
-叢集中的 Apache Kafka 記錄檔位於`/var/log/kafka`。 無論是否使用受控磁片，Kafka 記錄都不會在叢集生命週期中儲存或保存。 下表顯示可用的記錄檔。
+叢集中的 Apache Kafka 記錄檔位於 `/var/log/kafka` 。 無論是否使用受控磁片，Kafka 記錄都不會在叢集生命週期中儲存或保存。 下表顯示可用的記錄檔。
 
-|Log |說明 |
+|記錄檔 |說明 |
 |---|---|
 |kafka。|Kafka 進程的 stdout 和 stderr。 您會在此檔案中找到 Kafka 的啟動和關閉記錄。|
 |伺服器 .log|主要的 Kafka 伺服器記錄檔。 所有 Kafka broker 記錄都會在此結束。|
@@ -52,7 +51,7 @@ ms.locfileid: "77471175"
 
 2. 在左側功能表中，選取 **[一般**] 底下的 [**記錄**]。 您可以在這裡搜尋從 Kafka 收集而來的資料。 在查詢視窗中輸入查詢，然後選取 [**執行**]。 以下是一些範例搜尋：
 
-* 磁碟使用量：
+* 磁片使用量：
 
     ```kusto
     Perf
@@ -68,7 +67,7 @@ ms.locfileid: "77471175"
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* 每秒傳入訊息數：（ `your_kafka_cluster_name`以您的叢集名稱取代）。
+* 每秒傳入訊息數：（ `your_kafka_cluster_name` 以您的叢集名稱取代）。
 
     ```kusto
     metrics_kafka_CL 
@@ -76,7 +75,7 @@ ms.locfileid: "77471175"
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* 每秒的傳入位元組數： `wn0-kafka` （取代為背景工作節點主機名稱）。
+* 每秒的傳入位元組數：（取代 `wn0-kafka` 為背景工作節點主機名稱）。
 
     ```kusto
     metrics_kafka_CL 
@@ -84,7 +83,7 @@ ms.locfileid: "77471175"
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* 每秒傳出位元組數：（ `your_kafka_cluster_name`以您的叢集名稱取代）。
+* 每秒傳出位元組數：（ `your_kafka_cluster_name` 以您的叢集名稱取代）。
 
     ```kusto
     metrics_kafka_CL 
@@ -94,7 +93,7 @@ ms.locfileid: "77471175"
 
     您也可以輸入 `*` 來搜尋所有記錄的類型。 目前我們提供以下記錄的查詢：
 
-    | 記錄類型 | 說明 |
+    | 記錄類型 | Description |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka broker server.log |
     | log\_kafkacontroller\_CL | Kafka broker controller.log |

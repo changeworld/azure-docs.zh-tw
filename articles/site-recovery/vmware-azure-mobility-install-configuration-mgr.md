@@ -6,10 +6,9 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77252222"
 ---
 # <a name="automate-mobility-service-installation"></a>自動安裝行動服務
@@ -31,7 +30,7 @@ ms.locfileid: "77252222"
 - 您需要同時將代理程式安裝調整到許多伺服器。
 - 您想要在規劃的維護時段排程安裝和升級。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要自動安裝，您需要下列專案：
 
@@ -77,7 +76,7 @@ ms.locfileid: "77252222"
 
 1. 將這些安裝檔案複製到網路共用：
 
-   - 若是 Windows，請將_Microsoft ASR_UA_version_Windows_GA_date_Release .exe_複製到_MobSvcWindows_。
+   - 若是 Windows，請將_Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_複製到_MobSvcWindows_。
    - 若為 Linux，請將下列檔案複製到_MobSvcLinux_：
      - _Microsoft ASR_UARHEL6-64release. tar. gz_
      - _Microsoft ASR_UARHEL7-64release. tar. gz_
@@ -88,15 +87,15 @@ ms.locfileid: "77252222"
 
 1. 如下列程式所述，將程式碼複製到 Windows 或 Linux 資料夾。 我們假設：
 
-   - 設定伺服器的 IP 位址是`192.168.3.121`。
-   - 安全網路檔案共用是`\\ContosoSecureFS\MobilityServiceInstallers`。
+   - 設定伺服器的 IP 位址是 `192.168.3.121` 。
+   - 安全網路檔案共用是 `\\ContosoSecureFS\MobilityServiceInstallers` 。
 
 ### <a name="copy-code-to-the-windows-folder"></a>將程式碼複製到 Windows 資料夾
 
 複製下列程式碼：
 
-- 將_MobSvcWindows_資料夾中的程式碼儲存為_install .bat_。
-- 將此`[CSIP]`腳本中的預留位置取代為設定伺服器 IP 位址的實際值。
+- 將_MobSvcWindows_資料夾中的程式碼儲存為_install.bat_。
+- 將 `[CSIP]` 此腳本中的預留位置取代為設定伺服器 IP 位址的實際值。
 - 此腳本支援行動服務代理程式的新安裝，以及已安裝之代理程式的更新。
 
 ```DOS
@@ -199,7 +198,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 複製下列程式碼：
 
 - 將_MobSvcLinux_資料夾中的程式碼儲存為_install_linux sh_。
-- 將此`[CSIP]`腳本中的預留位置取代為設定伺服器 IP 位址的實際值。
+- 將 `[CSIP]` 此腳本中的預留位置取代為設定伺服器 IP 位址的實際值。
 - 此腳本支援行動服務代理程式的新安裝，以及已安裝之代理程式的更新。
 
 ```Bash
@@ -338,15 +337,15 @@ cd /tmp
 
 ### <a name="create-a-package"></a>建立套件
 
-1. 登入 Configuration Manager 主控台，並移至 [**軟體程式庫** > ] [**應用程式管理** > ] [**套件**]。
-1. 以滑鼠右鍵按一下 [**封裝** > ] [**建立套件**]。
+1. 登入 Configuration Manager 主控台，並移至 [**軟體程式庫**] [  >  **應用程式管理**] [  >  **套件**]。
+1. 以滑鼠右鍵按一下 [**封裝**] [  >  **建立套件**]。
 1. 提供套件詳細資料，包括名稱、描述、製造商、語言和版本。
 1. 選取 [**此套件包含來源**檔案]。
-1. 按一下 **[流覽]**，然後選取包含相關安裝程式的網路共用和資料夾（_MobSvcWindows_或_MobSvcLinux_）。 然後，選取 [下一步]  。
+1. 按一下 **[流覽]**，然後選取包含相關安裝程式的網路共用和資料夾（_MobSvcWindows_或_MobSvcLinux_）。 然後，選取 [下一步]。
 
    ![建立套件和程式精靈的螢幕擷取畫面](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
-1. 在 **[選擇您要建立的程式類型**] 頁面上，選取 [**標準程式** > **] [下一步]**。
+1. 在 **[選擇您要建立的程式類型**] 頁面上，選取 [**標準程式**  >  **] [下一步]**。
 
    ![建立套件和程式精靈的螢幕擷取畫面](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
@@ -354,7 +353,7 @@ cd /tmp
 
     **參數** | **Windows 值** | **Linux 值**
     --- | --- | ---
-    **Name** | 安裝 Microsoft Azure 行動服務 (Windows) | 安裝 Microsoft Azure 行動服務（Linux）。
+    **名稱** | 安裝 Microsoft Azure 行動服務 (Windows) | 安裝 Microsoft Azure 行動服務（Linux）。
     **命令列** | install.bat | ./install_linux.sh
     **程式可以執行** | 使用者是否登入 | 使用者是否登入
     **其他參數** | 使用預設設定 | 使用預設設定
@@ -364,7 +363,7 @@ cd /tmp
 1. 在 **[指定此標準程式的需求**] 中，執行下列工作：
 
    - 若為 Windows 機器，請選取 [**此程式只能在指定的平臺上執行**]。 然後選取支援的[Windows 作業系統](vmware-physical-azure-support-matrix.md#replicated-machines)，然後選取 **[下一步]**。
-   - 針對 Linux 電腦，請選取 [**此程式可以在任何平臺上執行**]。 然後選取 [下一步]  。
+   - 針對 Linux 電腦，請選取 [**此程式可以在任何平臺上執行**]。 然後選取 [下一步]。
 
 1. 完成精靈。
 
@@ -392,7 +391,7 @@ cd /tmp
    - 為了避免不必要的重新開機，請排定在每月維護期間或軟體更新期間安裝套件。
 
 1. 在 [**發佈點**] 頁面上，設定設定並完成嚮導。
-1. 在 Configuration Manager 主控台中監視部署進度。 移至 [**監視** > ] [**部署** > _\<] [您的套件名稱\>_]。
+1. 在 Configuration Manager 主控台中監視部署進度。 移至 [**監視**] [  >  **部署**]  >  _\<your package name\>_ 。
 
 ### <a name="uninstall-the-mobility-service"></a>卸載行動服務
 

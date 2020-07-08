@@ -4,10 +4,9 @@ description: 本文說明如何使用 Azure 原則自動啟用在指定範圍內
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77584263"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>使用 Azure 原則自動啟用 VM 建立的備份

@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77530259"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>Azure Functions 的 SignalR Service 輸入系結
@@ -18,7 +17,7 @@ ms.locfileid: "77530259"
 
 如需如何使用此系結來建立可供 SignalR 用戶端 SDK 使用的「negotiate」函式的詳細資訊，請參閱 SignalR Service 概念檔中的[Azure Functions 開發和](../azure-signalr/signalr-concept-serverless-development-config.md)設定一文。
 
-如需安裝和設定詳細資料的相關資訊，請參閱[總覽](functions-bindings-signalr-service.md)。
+如需安裝和設定詳細資料的相關資訊，請參閱[概觀](functions-bindings-signalr-service.md)。
 
 ## <a name="example"></a>範例
 
@@ -36,9 +35,9 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-下列範例顯示函式*json*檔案中的 SignalR 連線資訊輸入系結，以及使用該系結來傳回連接資訊的[c # 腳本](functions-reference-csharp.md)函式。
+下列範例顯示*function.json*檔案的連接資訊輸入系結，以及使用該系結來傳回連接資訊的[c # 腳本](functions-reference-csharp.md)函式。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -94,7 +93,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例顯示在函式*json*檔案中的 SignalR 連線資訊輸入系結，以及使用該系結來傳回連接資訊的[Python](functions-reference-python.md)函式。
+下列範例顯示在檔案的*function.js*中的 SignalR 連線資訊輸入系結，以及使用該系結來傳回連接資訊的[Python](functions-reference-python.md)函式。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -151,7 +150,7 @@ App Service 驗證會設定名為 `x-ms-client-principal-id` 和 `x-ms-client-pr
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-您可以使用系`UserId`結[運算式](./functions-bindings-expressions-patterns.md)，將系結的屬性設定為任一標頭的值`{headers.x-ms-client-principal-id}` ： `{headers.x-ms-client-principal-name}`或。
+您可以使用系結運算式，將系結的 `UserId` 屬性設定為任一標[binding expression](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 ```cs
 [FunctionName("negotiate")]
@@ -166,9 +165,9 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-您可以使用系`userId`結[運算式](./functions-bindings-expressions-patterns.md)，將系結的屬性設定為任一標頭的值`{headers.x-ms-client-principal-id}` ： `{headers.x-ms-client-principal-name}`或。
+您可以使用系結運算式，將系結的 `userId` 屬性設定為任一標[binding expression](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 function.json 範例：
 
@@ -199,7 +198,7 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-您可以使用系`userId`結[運算式](./functions-bindings-expressions-patterns.md)，將系結的屬性設定為任一標頭的值`{headers.x-ms-client-principal-id}` ： `{headers.x-ms-client-principal-name}`或。
+您可以使用系結運算式，將系結的 `userId` 屬性設定為任一標[binding expression](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 function.json 範例：
 
@@ -226,7 +225,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-您可以使用系`userId`結[運算式](./functions-bindings-expressions-patterns.md)，將系結的屬性設定為任一標頭的值`{headers.x-ms-client-principal-id}` ： `{headers.x-ms-client-principal-name}`或。
+您可以使用系結運算式，將系結的 `userId` 屬性設定為任一標[binding expression](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 function.json 範例：
 
@@ -258,7 +257,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-您可以使用系`userId`結[運算式](./functions-bindings-expressions-patterns.md)，將系結的屬性設定為任一標頭的值`{headers.x-ms-client-principal-id}` ： `{headers.x-ms-client-principal-name}`或。
+您可以使用系結運算式，將系結的 `userId` 屬性設定為任一標[binding expression](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 ```java
 @FunctionName("negotiate")

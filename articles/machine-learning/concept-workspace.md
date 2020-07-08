@@ -10,10 +10,9 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77505570"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
@@ -79,7 +78,7 @@ ms.locfileid: "77505570"
 | 建立筆記本 VM |   | **&check;** | |     |
 
 > [!WARNING]
-> 不支援將您的 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新的租使用者。 這麼做可能會導致錯誤。
+> 不支援將 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新租用戶。 這麼做可能會導致錯誤。
 
 ## <a name="create-a-workspace"></a><a name='create-workspace'></a>建立工作區
 

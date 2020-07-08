@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616982"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>設定適用於 SUSE Linux 的 SMT 伺服器
@@ -34,7 +33,7 @@ SAP HANA 大型執行個體無法直接連線到網際網路。 它不是可向�
 
 首先，登入 [SUSE 客戶中心](https://scc.suse.com/)。
 
-前往**組織** > **組織認證**。 在該區段中，您應該會找到設定 SMT 伺服器所需的認證。
+前往**組織**  >  **組織認證**。 在該區段中，您應該會找到設定 SMT 伺服器所需的認證。
 
 然後，在 Azure 虛擬網路中安裝 SUSE Linux VM。 若要部署虛擬機器，請使用 Azure 的 SLES 12 SP2 資源庫映像 (選取 BYOS SUSE 映像)。 在部署程序中，不要定義 DNS 名稱，也不要使用靜態 IP 位址。
 
@@ -83,7 +82,7 @@ Resolving package dependencies...
 ![螢幕擷取畫面：YAST 中的 SMT](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-接受 smtserver 上的安裝選項。 安裝完成後，移至 [SMT 伺服器組態]。 輸入之前從 SUSE 客戶中心擷取的組織認證。 亦請輸入 Azure 虛擬機器主機名稱當作 SMT 伺服器 URL。 在此示範中，其為 HTTPs\/：/smtserver。
+接受 smtserver 上的安裝選項。 安裝完成後，移至 [SMT 伺服器組態]。 輸入之前從 SUSE 客戶中心擷取的組織認證。 亦請輸入 Azure 虛擬機器主機名稱當作 SMT 伺服器 URL。 在此示範中，其為 HTTPs： \/ /smtserver。
 
 ![螢幕擷取畫面：SMT 伺服器組態](./media/hana-installation/image6_configuration_of_smtserver1.png)
 

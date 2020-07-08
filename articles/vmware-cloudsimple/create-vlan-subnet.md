@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: c0160513eb9abca54adbc3819b982348dc202c90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77565990"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>建立及管理私人雲端的 Vlan/子網
@@ -31,7 +30,7 @@ ms.locfileid: "77565990"
 5. 輸入 [VLAN ID]。
 6. 輸入子網名稱。
 7. 若要啟用 VLAN （子網）上的路由，請指定子網 CIDR 範圍。 請確定 CIDR 範圍不會與您的任何內部部署子網、Azure 子網或閘道子網重迭。
-8. 按一下 [提交]  。
+8. 按一下 [提交] 。
 
     ![建立 VLAN/子網](media/create-new-vlan-subnet-details.png)
 

@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616696"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>在 Azure 上部署適用於 SAP ERP 6.0 的 SAP IDES EHP7 SP3
@@ -72,7 +71,7 @@ ms.locfileid: "77616696"
 
     ![Internet Explorer 雲端服務確認](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
-1. 按一下 [接受]  。 如果授權成功，SAP CAL 帳戶定義便會再次顯示。 片刻之後便會出現訊息來確認授權程序已成功。
+1. 按一下 [接受]。 如果授權成功，SAP CAL 帳戶定義便會再次顯示。 片刻之後便會出現訊息來確認授權程序已成功。
 
 1. 若要將新建立的 SAP CAL 帳戶指派給您的使用者，請在右邊的文字方塊中輸入您的 [使用者識別碼]****，然後按一下 [新增]****。 
 
@@ -105,7 +104,7 @@ ms.locfileid: "77616696"
 
     ![SAP CAL 基本模式：建立執行個體](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. 按一下 [建立]  。 在一段時間之後，視解決方案的大小和複雜性 (SAP CAL 會提供預估) 而定，狀態將會顯示為作用中並可供使用： 
+1. 按一下 [建立]。 在一段時間之後，視解決方案的大小和複雜性 (SAP CAL 會提供預估) 而定，狀態將會顯示為作用中並可供使用： 
 
     ![SAP CAL 執行個體](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

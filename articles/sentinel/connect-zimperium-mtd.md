@@ -13,10 +13,9 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 86854fa22a49f09e5d3d2fc5fdb53c245850fbac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77587935"
 ---
 # <a name="connect-your-zimperium-mobile-threat-defense-to-azure-sentinel"></a>將您的 Zimperium 行動裝置威脅防護連線到 Azure Sentinel
@@ -68,7 +67,7 @@ Zimperium 行動裝置威脅防護可以將記錄直接整合到**Azure Sentinel
 
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
 
-- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
 
 若要深入瞭解 Zimperium，請參閱下列各項：
 

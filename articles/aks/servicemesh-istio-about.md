@@ -6,21 +6,20 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8518e30a54c2486abf84cd9ac026cc4dccb3fa84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77593895"
 ---
 # <a name="istio"></a>Istio
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 [Istio][istio]是功能完整、可藉且可擴充的服務網格。
 
 ## <a name="architecture"></a>架構
 
-Istio 提供由以[Envoy][envoy-proxy]為基礎的 sidecar 所組成的資料平面。 這些智慧型 proxy 會控制進出網狀應用程式和工作負載的所有網路流量。
+Istio 提供由以[Envoy][envoy-proxy]為基礎的 sidecar 所組成的資料平面。 這些智慧型 Proxy 會控制進出網格應用程式和工作負載的所有網路流量。
 
 控制平面會透過下列[元件][what-is-istio]來管理設定、原則和遙測：
 
@@ -32,7 +31,7 @@ Istio 提供由以[Envoy][envoy-proxy]為基礎的 sidecar 所組成的資料平
 
 - 向外**條**-抽象化並提供元件的設定。
 
-下列架構圖表示范資料平面和控制平面內的各種元件如何互動。
+下列架構圖示範資料平面和控制平面內的各種元件如何互動。
 
 
 ![Istio 元件和架構的總覽。](media/servicemesh/istio/about-architecture.png)
@@ -43,7 +42,7 @@ Istio 提供由以[Envoy][envoy-proxy]為基礎的 sidecar 所組成的資料平
 針對您的工作負載評估 Istio 時，請務必瞭解並考慮下列各方面：
 
 - [設計目標](#design-goals)
-- [功能](#capabilities)
+- [Capabilities](#capabilities)
 - [案例](#scenarios)
 
 

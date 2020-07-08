@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77561944"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM 開機至 Grub 修復
@@ -41,13 +40,13 @@ ms.locfileid: "77561944"
 
 * 如果您收到錯誤錯誤**15：找不**到檔案，或找不到初始 RAM 磁碟或**initrd/initramfs**檔案，請遵循下列步驟。
 
-    * 針對遺失的檔案`/boot/grub2/grub.cfg` ， `initrd/initramfs`或繼續進行下列程式：
+    * 針對遺失的檔案， `/boot/grub2/grub.cfg` 或 `initrd/initramfs` 繼續進行下列程式：
 
-    1. 請`/etc/default/grub`確定存在，而且具有正確/需要的設定。 如果您不知道哪些是預設設定，您可以使用運作中的 VM 來檢查。
+    1. 請確定 `/etc/default/grub` 存在，而且具有正確/需要的設定。 如果您不知道哪些是預設設定，您可以使用運作中的 VM 來檢查。
 
     2. 接下來，執行下列命令以重新產生其設定：`grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * 如果遺失的檔案是`/boot/grub/menu.lst`，則此錯誤適用于較舊的 OS 版本（**RHEL**6.x、 **Centos** 6.x 和**Ubuntu 14.04**），因此命令可能會有所不同。 您必須加速舊的伺服器並進行測試，以確保提供正確的命令。
+   * 如果遺失的檔案是 `/boot/grub/menu.lst` ，則此錯誤適用于較舊的 OS 版本（**RHEL**6.x、 **Centos** 6.x 和**Ubuntu 14.04**），因此命令可能會有所不同。 您必須加速舊的伺服器並進行測試，以確保提供正確的命令。
 
 ### <a name="error---no-such-partition"></a>錯誤-沒有這類資料分割
 
@@ -57,13 +56,13 @@ ms.locfileid: "77561944"
 
 * 如果您收到「找不到錯誤 **/boot/grub2/grub.cfg**檔案」，請遵循下列步驟。
 
-    * 針對遺失的檔案`/boot/grub2/grub.cfg` ， `initrd/initramfs`或繼續進行下列程式：
+    * 針對遺失的檔案， `/boot/grub2/grub.cfg` 或 `initrd/initramfs` 繼續進行下列程式：
 
-    1. 請`/etc/default/grub`確定存在，而且具有正確/需要的設定。 如果您不知道哪些是預設設定，您可以使用運作中的 VM 來檢查。
+    1. 請確定 `/etc/default/grub` 存在，而且具有正確/需要的設定。 如果您不知道哪些是預設設定，您可以使用運作中的 VM 來檢查。
 
-    2. 接下來，執行下列命令以重新產生其設定`grub2-mkconfig -o /boot/grub2/grub.cfg`：。
+    2. 接下來，執行下列命令以重新產生其設定： `grub2-mkconfig -o /boot/grub2/grub.cfg` 。
 
-   * 如果遺失的檔案是`/boot/grub/menu.lst`，則此錯誤適用于較舊的 OS 版本（**RHEL**6.x、 **Centos** 6.x 和**Ubuntu 14.04**），因此命令可能會延遲。 啟動舊伺服器並加以測試，以確保提供正確的命令。
+   * 如果遺失的檔案是 `/boot/grub/menu.lst` ，則此錯誤適用于較舊的 OS 版本（**RHEL**6.x、 **Centos** 6.x 和**Ubuntu 14.04**），因此命令可能會延遲。 啟動舊伺服器並加以測試，以確保提供正確的命令。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -14,10 +14,9 @@ ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6785ae821f701121185f0064c6317c69d50191ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617057"
 ---
 # <a name="know-the-terms"></a>認識詞彙
@@ -25,10 +24,10 @@ ms.locfileid: "77617057"
 《架構和技術部署指南》中廣泛使用數個常見的定義。 請注意下列詞彙及其意義：
 
 - **IaaS**：基礎結構即服務。
-- **PaaS**：平臺即服務。
+- **PaaS**：平台即服務。
 - **SaaS**：軟體即服務。
-- **SAP 元件**︰個別的 SAP 應用程式，例如 ERP Central Component (ECC)、Business Warehouse (BW)、Solution Manager 或企業版入口網站 (EP)。 SAP 元件可以傳統 ABAP 或 Java 技術為基礎，或以非 NetWeaver 應用程式 (例如商務物件) 為基礎。
-- **SAP 環境**︰一或多個以邏輯方式分組的 SAP 元件，可執行像是開發、品質保證、訓練、災害復原或生產等商務功能。
+- **Sap 元件**：個別的 sap 應用程式，例如 ERP Central COMPONENT （ECC）、Business 倉儲（BW）、Solution Manager 或企業版入口網站（EP）。 SAP 元件可以傳統 ABAP 或 Java 技術為基礎，或以非 NetWeaver 應用程式 (例如商務物件) 為基礎。
+- **SAP 環境**：一或多個以邏輯方式分組以執行商務功能的 sap 元件，例如開發、品質保證、訓練、嚴重損壞修復或生產環境。
 - **Sap 環境**：指的是 IT 環境中的整個 SAP 資產。 SAP 環境包含所有生產和非生產環境。
 - **SAP 系統**︰DBMS 層與應用程式層的組合，例如 SAP ERP 開發系統、SAP BW 測試系統、SAP CRM 生產系統等。 Azure 部署不支援在內部部署與 Azure 之間分割這兩層。 SAP 系統可以在內部部署或在 Azure 中部署。 您可以將 SAP 環境的不同系統部署到 Azure 或內部部署中。 例如，您可以在 Azure 中部署 SAP CRM 開發和測試系統，而在內部部署 SAP CRM 生產系統。 就 SAP HANA on Azure (大型執行個體) 而言，您應在 VM 中裝載 SAP 系統的 SAP 應用程式層，並在 SAP HANA on Azure (大型執行個體) 戳記中的某個單位上裝載相關的 SAP HANA 執行個體。
 - **大型執行個體戳記**︰經 SAP HANA TDI 認證，並專門用來執行 Azure 內的 SAP HANA 執行個體的硬體基礎結構堆疊。

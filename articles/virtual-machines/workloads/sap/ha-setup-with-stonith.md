@@ -14,17 +14,16 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77615093"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中進行高可用性設定
 本文件提供使用 STONITH 裝置在 SUSE 作業系統上進行高可用性設定的詳細逐步指示。
 
 **免責聲明：** *本指南的衍生方式是在 Microsoft HANA 大型實例環境中測試安裝程式，這項功能成功運作。由於適用于 HANA 大型實例的 Microsoft 服務管理小組不支援作業系統，因此您可能需要聯繫 SUSE，以在作業系統層進行進一步的疑難排解或澄清。Microsoft 服務管理小組會設定 STONITH 裝置並完全支援，並可用於針對 STONITH 裝置問題進行疑難排解。*
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 若要使用 SUSE 叢集進行高可用性設定，必須符合下列先決條件。
 ### <a name="pre-requisites"></a>必要條件
 - 已佈建 HANA 大型執行個體
@@ -145,8 +144,8 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 按一下 [**繼續**]
 
-預期值 = 部署的節點數目（在此案例中為![2） yast-Cluster-Security](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) ，請按 **[下一步 yast-cluster-configure-csync2] [** 
- ![ ](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)新增節點名稱]，然後按一下 [新增建議的檔案]
+預期值 = 部署的節點數目（在此案例中為2） ![yast-Cluster-Security.png](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) 按 **[下一步]** 
+ ![yast-cluster-configure-csync2.png](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) 新增節點名稱]，然後按一下 [新增建議的檔案]
 
 按一下 [Turn csync2 ON] \(開啟 csync2\)
 
@@ -160,8 +159,8 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![yast-cluster-conntrackd.png](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-按 **[下一步**
-![yast-cluster-service .png]](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
+按 **[下一步]** 
+ ![yast-cluster-service.png](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 在預設選項中，[Booting] \(開機\) 處於關閉狀態，請將它變更為 [on] \(開啟\)，以在開機時啟動 Pacemaker。 您可以根據自己的設定需求來選擇。
 按一下 [下一步]****，叢集設定就完成了。
@@ -257,7 +256,7 @@ systemctl start pacemaker
 ```
 crm_mon
 ```
-![crm-mon](media/HowToHLI/HASetupWithStonith/crm-mon.png)您也可以登入 hawk 以檢查叢集狀態*HTTPs://\<節點 IP>： 7630*。 預設使用者為 hacluster，而密碼為 linux。 如有需要，您可以使用 *passwd* 命令來變更密碼。
+![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) 您也可以登入hawk 來檢查叢集狀態 *https://\<node IP>:7630*。 預設使用者為 hacluster，而密碼為 linux。 如有需要，您可以使用 *passwd* 命令來變更密碼。
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. 設定叢集屬性和資源 
 本節說明設定叢集資源的步驟。
@@ -322,7 +321,7 @@ crm configure load update crm-vip.txt
 當您執行命令 *crm_mon* 時，您可以看到有兩個資源。
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-此外，您可以在*HTTPs://\<節點 IP 位址>： 7630/cib/live/state*中查看狀態
+此外，您可以在 *https://\<node IP address>:7630/cib/live/state* 查看狀態
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
@@ -334,11 +333,11 @@ Service pacemaker stop
 現在，停止 **node2** 上的 Pacemaker 服務，然後將資源容錯移轉至 **node1**
 
 **容錯移轉之前**  
-![Before-failover .png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+![Before-failover.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
 **容錯移轉之後**  
-![after-failover .png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
-![crm-mon-after-failover .png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+![after-failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-mon-after-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
 ## <a name="9-troubleshooting"></a>9. 疑難排解

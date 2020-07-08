@@ -7,17 +7,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77201266"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的于 postgresql 擴充功能-單一伺服器
 PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能。 延伸模組會將多個相關的 SQL 物件組合在單一封裝中，您可以使用單一命令從您的資料庫中載入或移除它們。 載入資料庫之後，擴充功能就像內建功能一樣。
 
 ## <a name="how-to-use-postgresql-extensions"></a>如何使用 PostgreSQL 擴充功能
-您必須先在資料庫中安裝 PostgreSQL 擴充功能，然後才能使用它們。 若要安裝特定的擴充功能，請從 psql 工具執行 [CREATE extension](https://www.postgresql.org/docs/current/sql-createextension.html) 命令，以將封裝的物件載入至您的資料庫。
+您必須先在資料庫中安裝 PostgreSQL 擴充功能，然後才能使用它們。 若要安裝特定的擴充功能，請從 psql 工具執行 [CREATE extension](https://www.postgresql.org/docs/current/sql-createextension.html)   命令，以將封裝的物件載入至您的資料庫。
 
 適用於 PostgreSQL 的 Azure 資料庫支援如下所列的金鑰延伸子集。 此資訊也可以藉由執行 `SELECT * FROM pg_available_extensions;` 來取得。 不支援所列的延伸模組。 您無法在適用於 PostgreSQL 的 Azure 資料庫中建立自己的延伸模組。
 
@@ -26,7 +25,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 在 Postgres 版本11的適用於 PostgreSQL 的 Azure 資料庫伺服器中，可以使用下列延伸模組。 
 
 > [!div class="mx-tableFixed"]
-> | **分機**| **延伸模組版本** | **說明** |
+> | **分機**| **延伸模組版本** | **描述** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US 資料集範例|
@@ -71,7 +70,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 在 Postgres 第10版的適用於 PostgreSQL 的 Azure 資料庫伺服器中，可以使用下列延伸模組。
 
 > [!div class="mx-tableFixed"]
-> | **分機**| **延伸模組版本** | **說明** |
+> | **分機**| **延伸模組版本** | **描述** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US 資料集範例|
@@ -117,7 +116,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 下列擴充功能適用于 Postgres 9.6 版的適用於 PostgreSQL 的 Azure 資料庫伺服器。
 
 > [!div class="mx-tableFixed"]
-> | **分機**| **延伸模組版本** | **說明** |
+> | **分機**| **延伸模組版本** | **描述** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Address Standardizer US 資料集範例|
@@ -163,7 +162,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 下列擴充功能適用于 Postgres 9.5 版的適用於 PostgreSQL 的 Azure 資料庫伺服器。
 
 > [!div class="mx-tableFixed"]
-> | **分機**| **延伸模組版本** | **說明** |
+> | **分機**| **延伸模組版本** | **描述** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Address Standardizer US 資料集範例|
@@ -215,7 +214,7 @@ pg_stat_statements 提供查詢執行資訊，不過會對於伺服器效能造�
 目前不支援來自適用於 PostgreSQL 的 Azure 資料庫的輸出連線，但與其他適用於 PostgreSQL 的 Azure 資料庫伺服器的連接除外。
 
 ## <a name="uuid"></a>uuid
-`uuid_generate_v4()`如果您打算從[uuid-ossp 擴充功能](https://www.postgresql.org/docs/current/uuid-ossp.html)中使用，請考慮與`gen_random_uuid()` [pgcrypto 延伸](https://www.postgresql.org/docs/current/pgcrypto.html)模組的比較，以取得效能優勢。
+如果您打算 `uuid_generate_v4()` 從[uuid-ossp 擴充功能](https://www.postgresql.org/docs/current/uuid-ossp.html)中使用，請考慮與 pgcrypto 延伸模組的比較， `gen_random_uuid()` 以取得效能優勢。 [pgcrypto extension](https://www.postgresql.org/docs/current/pgcrypto.html)
 
 ## <a name="pgaudit"></a>pgAudit
 [PgAudit 延伸](https://github.com/pgaudit/pgaudit/blob/master/README.md)模組提供會話和物件的 audit 記錄。 若要瞭解如何在適用於 PostgreSQL 的 Azure 資料庫中使用此延伸模組，請造訪[審核概念一文](concepts-audit.md)。 
@@ -223,7 +222,7 @@ pg_stat_statements 提供查詢執行資訊，不過會對於伺服器效能造�
 ## <a name="pg_prewarm"></a>pg_prewarm
 Pg_prewarm 延伸模組會將關聯式資料載入快取中。 預先準備您的快取表示在重新開機之後，您的查詢在第一次執行時有更好的回應時間。 在 Postgres 10 和以下的中，預先準備是使用[prewarm](https://www.postgresql.org/docs/10/pgprewarm.html)函式手動完成。
 
-在 Postgres 11 和更新版本中，您可以將預先準備設定為[自動](https://www.postgresql.org/docs/current/pgprewarm.html)發生。 您必須在`shared_preload_libraries`參數的清單中包含 pg_prewarm，然後重新開機伺服器以套用變更。 您可以從 [ [Azure 入口網站](howto-configure-server-parameters-using-portal.md)]、[ [CLI](howto-configure-server-parameters-using-cli.md)]、[REST API] 或 [ARM] 範本設定參數。 
+在 Postgres 11 和更新版本中，您可以將預先準備設定為[自動](https://www.postgresql.org/docs/current/pgprewarm.html)發生。 您必須在 `shared_preload_libraries` 參數的清單中包含 pg_prewarm，然後重新開機伺服器以套用變更。 您可以從 [ [Azure 入口網站](howto-configure-server-parameters-using-portal.md)]、[ [CLI](howto-configure-server-parameters-using-cli.md)]、[REST API] 或 [ARM] 範本設定參數。 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB 是一種時間序列資料庫，封裝為于 postgresql 的延伸模組。 TimescaleDB 針對時間序列工作負載提供時間導向的分析功能、優化和調整 Postgres。
@@ -231,7 +230,7 @@ TimescaleDB 是一種時間序列資料庫，封裝為于 postgresql 的延伸�
 [深入瞭解 TimescaleDB](https://docs.timescale.com/latest)，這是一項已註冊的[時間刻度，inc.](https://www.timescale.com/)的商標。 適用於 PostgreSQL 的 Azure 資料庫提供了開放原始碼版本的時間刻度。 若要瞭解此版本中有哪些可用的時間刻度功能，請參閱「[時間刻度」產品比較](https://www.timescale.com/products/)。
 
 ### <a name="installing-timescaledb"></a>安裝 TimescaleDB
-若要安裝 TimescaleDB，您必須將它包含在伺服器的共用預先載入程式庫中。 變更 Postgres 的`shared_preload_libraries`參數需要**伺服器重新開機**才會生效。 您可以使用[Azure 入口網站](howto-configure-server-parameters-using-portal.md)或[Azure CLI](howto-configure-server-parameters-using-cli.md)來變更參數。
+若要安裝 TimescaleDB，您必須將它包含在伺服器的共用預先載入程式庫中。 變更 Postgres 的 `shared_preload_libraries` 參數需要**伺服器重新開機**才會生效。 您可以使用[Azure 入口網站](howto-configure-server-parameters-using-portal.md)或[Azure CLI](howto-configure-server-parameters-using-cli.md)來變更參數。
 
 使用[Azure 入口網站](https://portal.azure.com/)：
 
@@ -258,7 +257,7 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 您現在可以[從頭](https://docs.timescale.com/getting-started/creating-hypertables)開始建立 TimescaleDB hypertable，或[在於 postgresql 中遷移現有的時間序列資料](https://docs.timescale.com/getting-started/migrating-data)。
 
 ### <a name="restoring-a-timescale-database"></a>還原時間刻度資料庫
-若要使用 pg_dump 和 pg_restore 還原時間刻度資料庫，您必須在目的地資料庫中執行兩個 helper 程式`timescaledb_pre_restore()` ： `timescaledb_post restore()`和。
+若要使用 pg_dump 和 pg_restore 還原時間刻度資料庫，您必須在目的地資料庫中執行兩個 helper 程式： `timescaledb_pre_restore()` 和 `timescaledb_post restore()` 。
 
 先準備目的地資料庫：
 

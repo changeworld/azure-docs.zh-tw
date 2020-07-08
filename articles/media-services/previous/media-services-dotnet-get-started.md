@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7dd49df782115c8c328eed819395209ee7217fd3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77566058"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 傳遞點播內容入門  
@@ -27,11 +26,11 @@ ms.locfileid: "77566058"
 
 本教學課程會逐步引導您使用 Azure 媒體服務 .NET SDK 實作含 Azure 媒體服務 (AMS) 應用程式的基本點播視訊 (VoD) 內容傳遞服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 需要有下列項目，才能完成教學課程：
 
-* 一個 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* 一個 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 * .NET Framework 4.0 或更新版本。
 * Visual Studio。
@@ -46,7 +45,7 @@ ms.locfileid: "77566058"
 4. 發佈資產並取得串流和漸進式下載 URL。  
 5. 播放您的內容。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程會逐步完成使用 Azure Media Services (AMS) SDK for .NET 實作點播視訊 (VoD) 內容傳遞應用程式。
 
 教學課程中介紹基本的媒體服務工作流程，以及媒體服務開發最常用的程式設計物件和必要工作。 完成本教學課程時，您將能夠串流或漸進式下載您已上傳、編碼和下載的範例媒體檔案。
@@ -66,7 +65,7 @@ ms.locfileid: "77566058"
 使用 Azure 媒體服務時，其中一個最常見的案例是透過自適性串流提供影片。 媒體服務提供動態封裝，這讓您以媒體服務即時支援的串流格式 (MPEG DASH、HLS、Smooth Streaming) 提供自適性 MP4 編碼內容，而不必儲存這些串流格式個別的預先封裝版本。
 
 >[!NOTE]
->建立 AMS 帳戶時，**預設**串流端點會新增至您的帳戶處於 [**已停止**] 狀態。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中]**** 狀態。
+>建立 AMS 帳戶時，**預設**串流端點會新增至 [已停止] 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。
 
 若要啟動串流端點，請執行下列作業︰
 

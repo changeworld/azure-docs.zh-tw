@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
 ms.openlocfilehash: c1e5ca8b0bb828e5e8ce896bba6a5278266b118e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77560077"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全傳輸儲存體帳戶的 Apache Hadoop 叢集
@@ -32,13 +31,13 @@ ms.locfileid: "77560077"
 
 ### <a name="powershell"></a>PowerShell
 
-針對 PowerShell Cmdlet [New-new-azstorageaccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)，請確定參數`-EnableHttpsTrafficOnly`設定為`1`。
+針對 PowerShell Cmdlet [New-new-azstorageaccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)，請確定參數 `-EnableHttpsTrafficOnly` 設定為 `1` 。
 
 若要使用 PowerShell 更新現有的儲存體帳戶，請參閱[使用 Powershell 要求安全傳輸](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-針對 Azure CLI 命令[az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，確定參數`--https-only`已設為。 `true`
+針對 Azure CLI 命令[az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，確定參數 `--https-only` 已設為 `true` 。
 
 若要使用 Azure CLI 來更新現有的儲存體帳戶，請參閱[需要使用 Azure CLI 的安全傳輸](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)。
 
