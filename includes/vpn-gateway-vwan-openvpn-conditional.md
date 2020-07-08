@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 410570302eec418f1e4bcb75d6413936a96b5171
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77471493"
 ---
 條件式存取可讓您以每個應用程式為基礎，進行更細緻的存取控制。 若要使用條件式存取，您應該將 Azure AD Premium 1 或更高的授權套用至將受條件式存取規則規範的使用者。
@@ -20,13 +20,13 @@ ms.locfileid: "77471493"
 1. 流覽至 [**企業應用程式-所有應用程式**] 頁面，然後按一下 [ **Azure VPN**]。
 
    - 按一下 [**條件式存取**]。
-   - 按一下 [新增原則]**** 以開啟 [新增]**** 窗格。
+   - 按一下 [新增原則] 以開啟 [新增] 窗格。
 2. 在 [**新增**] 窗格中，流覽至 [**指派-> 使用者和群組**]。 在 [**使用者和群組->** **包含**] 索引標籤上：
 
    - 按一下 [選取使用者和群組]****。
    - 檢查**使用者和群組**。
    - 按一下 [**選取**] 以選取要受 MFA 影響的群組或一組使用者。
-   - 按一下 [完成]  。
+   - 按一下 [完成] 。
 
    ![指派](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-assignments.png)
 3. 在 [**新增**] 窗格中，流覽至 [**存取控制-> 授**與] 窗格：
@@ -34,12 +34,12 @@ ms.locfileid: "77471493"
    - 按一下 **[授與存取權**]。
    - 按一下 [**需要多重要素驗證**]。
    - 按一下 **[需要所有選取的控制項**]。
-   - 按一下 [選取]。 
+   - 按一下 [選取]。
    
    ![授與存取權-MFA](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-grant-mfa.png)
 4. 在 [**啟用原則**] 區段中：
 
    - 選取 [**開啟**]。
-   - 按一下頁面底部的 [新增]  。
+   - 按一下 [建立]。
 
    ![啟用原則](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-enable-policy.png)

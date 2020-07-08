@@ -9,10 +9,10 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cb959b94807678187363d3132ece273584f13a0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77590753"
 ---
 使用保留容量節省 Azure 磁碟儲存體的使用量。 Azure 磁碟儲存體保留與 Azure 保留的虛擬機器執行個體結合，可讓您降低虛擬機器（VM）的總成本。 保留折扣會自動套用至所選保留範圍中的相符磁片。 由於此自動應用程式的原因，您不需要將保留指派給受控磁片來取得折扣。
@@ -74,7 +74,7 @@ ms.locfileid: "77590753"
    | **區域** | 保留作用中的區域。 |
    | **計費頻率** | 帳戶收取保留費用的頻率。 選項包括 [**每月**] 和 [**提前**]。 |
 
-    ![選取您想要購買之產品的窗格。 png](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
+    ![選取您想要 purchase.png 之產品的窗格](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
 
 1. 在您指定保留的值之後，Azure 入口網站會顯示成本。 入口網站也會顯示 [隨用隨付計費] 的折扣百分比。 選取 **[下一步**] 以繼續前往 [**購買保留**] 窗格。
 
@@ -88,7 +88,7 @@ ms.locfileid: "77590753"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 
-在某些限制下，您可以取消、交換或退款保留。 如需詳細資訊，請參閱[Azure 保留的自助交換和退款](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)。
+在某些限制下，您可以取消、交換或退款保留。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)。
 
 ## <a name="expiration-of-a-reservation"></a>保留期的到期日
 
@@ -102,5 +102,5 @@ ms.locfileid: "77590753"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [什麼是 Azure 保留專案？](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [什麼是 Azure 保留項目？](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [了解如何將您的保留折扣套用至 Azure 磁碟儲存體](../articles/cost-management-billing/reservations/understand-disk-reservations.md)

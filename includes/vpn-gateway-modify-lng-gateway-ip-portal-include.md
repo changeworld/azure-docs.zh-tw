@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 52084b065ef65a69a6691b6646d1e199f011910d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173814"
 ---
 ### <a name="to-modify-the-local-network-gateway-ip-address---no-gateway-connection"></a><a name="gwipnoconnection"></a>修改區域網路閘道 IP 位址 - 沒有閘道連線
@@ -46,4 +46,4 @@ ms.locfileid: "67173814"
 2. 在 [虛擬網路閘道] 的 [設定]**** 區段中，按一下 [連線]****。
 3. 按一下 [+新增]**** 以開啟 [新增連線]**** 刀鋒視窗。
 4. 重新建立您的連線。
-5. 按一下 [確定]**** 來建立連線。
+5. 按一下 [確定] 來建立連線。

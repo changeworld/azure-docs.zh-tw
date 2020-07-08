@@ -6,10 +6,10 @@ ms.author: dpalled
 manager: cshankar
 ms.date: 02/03/2020
 ms.openlocfilehash: 6a3837d01815306e469a684404ab76506f547f43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77013890"
 ---
 ## <a name="business-disaster-recovery"></a>業務災害復原
@@ -38,7 +38,7 @@ ms.locfileid: "77013890"
 
 - [Azure IoT 中樞高可用性嚴重損壞修復](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr)，其中包括區域內冗余
 - [Azure 事件中樞原則](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
-- [Azure 儲存體的冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Azure 儲存體複寫](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 將時間序列深入解析與其他服務整合，可提供額外的嚴重損壞修復機會。 例如，傳送至事件中樞的遙測可能會保存到備份 Azure Blob 儲存體資料庫。
 

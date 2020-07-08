@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
 ms.openlocfilehash: 5102e8f75da14c58e948e81aaa418539dd18869a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159401"
 ---
-`inferenceconfig.json`檔中的專案會對應至[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)類別的參數。 下表描述 JSON 檔中的實體與方法的參數之間的對應：
+檔中的專案會 `inferenceconfig.json` 對應至[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)類別的參數。 下表描述 JSON 檔中的實體與方法的參數之間的對應：
 
-| JSON 實體 | 方法參數 | 說明 |
+| JSON 實體 | 方法參數 | Description |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | 本機檔案的路徑，其中包含要為映射執行的程式碼。 |
 | `sourceDirectory` | `source_directory` | 選擇性。 資料夾的路徑，其中包含要建立映射的所有檔案，讓您可以輕鬆地存取此資料夾或子資料夾中的任何檔案。 您可以從本機電腦上傳整個資料夾，做為 Webservice 的相依性。 注意：您的 entry_script、conda_file 和 extra_docker_file_steps 路徑是 source_directory 路徑的相對路徑。 |
@@ -74,7 +74,7 @@ ms.locfileid: "80159401"
 }
 ```
 
-下列命令示範如何使用先前的推斷設定檔（名為 myInferenceConfig）來部署模型。 
+下列命令示範如何使用先前的推斷設定檔（在中命名為 myInferenceConfig.js）來部署模型。 
 
 它也會使用現有 Azure Machine Learning[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)的最新版本（名為 AzureML-最小）。
 

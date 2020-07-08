@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: a00291182059506aeab9cde965fa4cbd5177ecf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80132216"
 ---
 如果使用者沒有套用標記的必要存取權，您可以將**標記參與者**角色指派給使用者。 如需詳細資訊，請參閱[教學課程：使用 RBAC 和 Azure 入口網站來授與使用者對 Azure 資源的存取權](../articles/role-based-access-control/quickstart-assign-role-user-portal.md)。
@@ -37,7 +37,7 @@ ms.locfileid: "80132216"
 
 1. 若要新增或刪除標記，請選取 [變更]****。
 
-1. 若要刪除標記，請選取垃圾桶圖示。 然後選取 [**儲存**]。
+1. 若要刪除標記，請選取垃圾桶圖示。 然後選取 [儲存]。
 
    ![刪除標記](./media/resource-manager-tag-resources/delete-tag.png)
 

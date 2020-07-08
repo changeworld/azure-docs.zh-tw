@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3417bf0bd4ae1e0aa670f9fbfcc1fbbfeb372972
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77471490"
 ---
 如果您想要在授與存取權之前提示使用者提供第二個驗證因素，您可以設定 Azure 多重要素驗證（MFA）。 您可以根據每個使用者來設定 MFA，或透過[條件式存取](../articles/active-directory/conditional-access/overview.md)來運用 mfa。

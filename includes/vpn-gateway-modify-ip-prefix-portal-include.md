@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1199819d274590cc81d0234680f8765f9cc36c0a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173815"
 ---
 ### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>修改區域網路閘道 IP 位址首碼 - 沒有閘道連線
@@ -27,7 +27,7 @@ ms.locfileid: "67173815"
 
 1. 在 [區域網路閘道] 資源的 [設定]**** 區段中，按一下 [組態]****。
 2. 按一下包含您要移除之首碼的那一行上的 [...]****。
-3. 按一下 [移除]****。
+3. 按一下 **[移除]** 。
 4. 按一下 [Save] **** 儲存您的設定。
 
 ### <a name="to-modify-local-network-gateway-ip-address-prefixes---existing-gateway-connection"></a><a name="withconnection"></a>修改區域網路閘道 IP 位址首碼 - 現有閘道連線
@@ -52,7 +52,7 @@ ms.locfileid: "67173815"
 
 1. 在 [區域網路閘道] 資源的 [設定]**** 區段中，按一下 [組態]****。
 2. 按一下包含您要移除之前置詞的那一行上的 [ **...** ]。
-3. 按一下 [移除]****。
+3. 按一下 **[移除]** 。
 4. 按一下 [Save] **** 儲存您的設定。
 
 #### <a name="3-recreate-the-connection"></a>3. 重新建立連線。
@@ -61,4 +61,4 @@ ms.locfileid: "67173815"
 2. 在 [虛擬網路閘道] 的 [設定]**** 區段中，按一下 [連線]****。
 3. 按一下 [+新增]**** 以開啟 [新增連線]**** 刀鋒視窗。
 4. 重新建立您的連線。
-5. 按一下 [確定]**** 來建立連線。
+5. 按一下 [確定] 來建立連線。

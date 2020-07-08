@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: af4c3829c8b12bfcaae0602dde8f459de7e50f3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174620"
 ---
 - **訂單詳細資料**。 建立訂單時，會將使用者的交貨位址、電子郵件地址和連絡人資訊儲存在 Azure 入口網站中。 儲存的資訊包括︰
@@ -18,7 +18,7 @@ ms.locfileid: "67174620"
   - 街道地址
   - City
   - 郵遞區號
-  - 狀況
+  - State
   - 國家/省/地區
   - 運送追蹤號碼
 

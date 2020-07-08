@@ -10,10 +10,10 @@ ms.author: dpalled
 manager: cshankar
 ms.custom: include file
 ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77123214"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>一般可用性和預覽比較
@@ -25,11 +25,11 @@ ms.locfileid: "77123214"
 | 第一級公民 | 以事件為中心 | 以時間為中心的 |
 | 語義推理 | 低層級（參考資料） | 高階（模型） |
 | 資料 coNtextualization | 非裝置層級 | 裝置和非裝置層級 |
-| 計算邏輯儲存體 | 否 | 儲存在模型的型別變數部分 |
-| 儲存體和存取控制 | 否 | 已透過模型啟用 |
-| 匯總/取樣 | 否 | 事件加權和時間加權 |
-| 信號重建 | 否 | 幀 |
-| 衍生時間序列的生產環境 | 否 | 是、合併和聯結 |
+| 計算邏輯儲存體 | No | 儲存在模型的型別變數部分 |
+| 儲存體和存取控制 | No | 已透過模型啟用 |
+| 匯總/取樣 | No | 事件加權和時間加權 |
+| 信號重建 | No | 幀 |
+| 衍生時間序列的生產環境 | No | 是、合併和聯結 |
 | 語言彈性 | 不可組合 | 可組合 |
 | 運算式語言 | 述詞字串 | 時間序列運算式（述詞字串、值、運算式和函數） |
 

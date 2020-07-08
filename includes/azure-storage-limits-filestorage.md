@@ -9,10 +9,10 @@ ms.date: 07/01/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: d6f56f3500ab9c6b4482d2ade892dfdb46ccacb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67503396"
 ---
 Premium 檔案使用名為**FileStorage**的唯一儲存體帳戶。 此帳戶類型是針對具有高 IOPS、高輸送量且具有一致低延遲的工作負載所設計。 Premium 檔案儲存體會以布建的共用大小進行調整。
