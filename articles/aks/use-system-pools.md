@@ -3,17 +3,17 @@ title: 在 Azure Kubernetes Service 中使用系統節點集區（AKS）
 description: 瞭解如何在 Azure Kubernetes Service （AKS）中建立和管理系統節點集區
 services: container-service
 ms.topic: article
-ms.date: 04/28/2020
-ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.date: 06/18/2020
+ms.author: mlearned
+ms.openlocfilehash: 9b6270f81e7af8bd508d29510698e6cf9a5a2010
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125242"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052649"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>管理 Azure Kubernetes Service 中的系統節點集區（AKS）
 
-在 Azure Kubernetes Service （AKS）中，相同設定的節點會群組在一起成為*節點*集區。 節點集區包含執行應用程式的基礎 Vm。 針對您的 AKS 叢集，系統節點集區和使用者節點集區是兩個不同的節點集區模式。 系統節點集區提供裝載重要系統 pod （例如 CoreDNS 和 tunnelfront）的主要目的。 使用者節點集區提供裝載應用程式 pod 的主要目的。 不過，如果您想要在 AKS 叢集中只有一個集區，可以在系統節點集區上排程應用程式 pod。 每個 AKS 叢集至少必須包含一個具有至少一個節點的系統節點集區。 
+在 Azure Kubernetes Service （AKS）中，相同設定的節點會群組在一起成為*節點*集區。 節點集區包含執行應用程式的基礎 Vm。 針對您的 AKS 叢集，系統節點集區和使用者節點集區是兩個不同的節點集區模式。 系統節點集區提供裝載重要系統 pod （例如 CoreDNS 和 tunnelfront）的主要目的。 使用者節點集區提供裝載應用程式 pod 的主要目的。 不過，如果您想要在 AKS 叢集中只有一個集區，可以在系統節點集區上排程應用程式 pod。 每個 AKS 叢集至少必須包含一個具有至少一個節點的系統節點集區。
 
 > [!Important]
 > 如果您在生產環境中針對 AKS 叢集執行單一系統節點集區，建議您針對節點集區使用至少三個節點。
@@ -29,7 +29,7 @@ ms.locfileid: "83125242"
 * 請參閱[配額、虛擬機器大小限制，以及 Azure Kubernetes Service 中的區域可用性（AKS）][quotas-skus-regions]。
 * AKS 叢集必須以虛擬機器擴展集作為 VM 類型來建立。
 * 節點集區的名稱只可包含小寫英數位元，且必須以小寫字母開頭。 針對 Linux 節點集區，長度必須介於1到12個字元之間。 對於 Windows 節點集區，長度必須介於1到6個字元之間。
-* 必須使用2020-03-01 或更高的 API 版本來設定節點集區模式。
+* 必須使用2020-03-01 或更高的 API 版本來設定節點集區模式。 在2020-03-01 之前的 API 版本上建立的叢集只會包含使用者節點集區，但可以遵循[更新集區模式步驟](#update-existing-cluster-system-and-user-node-pools)來遷移以包含系統節點集區。
 * 節點集區的模式是必要屬性，而且必須在使用 ARM 範本或直接 API 呼叫時明確設定。
 
 ## <a name="system-and-user-node-pools"></a>系統和使用者節點集區
@@ -56,7 +56,7 @@ ms.locfileid: "83125242"
 
 當您建立新的 AKS 叢集時，您會自動建立具有單一節點的系統節點集區。 初始節點集區預設為「系統」類型的模式。 當您使用 az aks nodepool add 建立新的節點集區時，這些節點集區是使用者節點集區，除非您明確指定 mode 參數。
 
-下列範例會在*eastus*區域中建立名為*myResourceGroup*的資源群組。
+下列範例會在 eastus 地區建立名為 myResourceGroup 的資源群組。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -115,7 +115,10 @@ az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n mynodepoo
 }
 ```
 
-## <a name="update-system-and-user-node-pools"></a>更新系統和使用者節點集區
+## <a name="update-existing-cluster-system-and-user-node-pools"></a>更新現有的叢集系統和使用者節點集區
+
+> [!NOTE]
+> 必須使用2020-03-01 或更高的 API 版本來設定系統節點集區模式。 在2020-03-01 之前的 API 版本上建立的叢集僅包含使用者節點集區。 若要在較舊的叢集上接收系統節點集區功能和優點，請在最新的 Azure CLI 版本上，使用下列命令來更新現有節點集區的模式。
 
 您可以變更系統和使用者節點集區的模式。 只有當 AKS 叢集上已有另一個系統節點集區時，您才可以將系統節點集區變更為使用者集區。
 

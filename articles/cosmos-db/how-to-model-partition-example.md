@@ -3,19 +3,18 @@ title: 在 Azure Cosmos DB 上使用真實世界的範例來建立模型和分�
 description: 了解如何使用 Azure Cosmos DB Core API 建立實際範例的模型及加以分割
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 10f8ffd90215a21ca03e112aea463d444c623d06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: af5211e82820c1052b9ea17ce1fbdb0ebd5b9f3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75445384"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800370"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用實際範例在 Azure Cosmos DB 上建立資料的模型及加以分割
 
-本文根據數個 Azure Cosmos DB 概念而撰寫 (例如[資料模型化](modeling-data.md)、[分割](partitioning-overview.md)和[佈建的輸送量](request-units.md))，以示範如何進行實際資料的設計演練。
+本文是以數種 Azure Cosmos DB 概念為基礎，例如[資料模型](modeling-data.md)化、[分割](partitioning-overview.md)和布[建的輸送量](request-units.md)，以示範如何處理真實世界的資料設計練習。
 
 如果您經常使用關聯式資料庫，您可能已有設計資料模型的習慣和觀念。 基於特定的條件約束，以及 Azure Cosmos DB 的獨特功能，這些最佳做法大多無法發揮實際功效，而可能迫使您選擇次佳的解決方案。 本文的目的，是要引導您在 Azure Cosmos DB 中完成為實際使用案例建立模型的程序，從建立項目模型、實體共置到容器分割，逐步完成。
 
@@ -65,10 +64,12 @@ ms.locfileid: "75445384"
 
 此容器只會儲存使用者項目：
 
-    {
-      "id": "<user-id>",
-      "username": "<username>"
-    }
+```json
+{
+    "id": "<user-id>",
+    "username": "<username>"
+}
+```
 
 我們依據 `id` 分割此容器，這表示該容器內的每個邏輯分割區都只會包含一個項目。
 
@@ -76,32 +77,34 @@ ms.locfileid: "75445384"
 
 此容器裝載貼文、留言和讚：
 
-    {
-      "id": "<post-id>",
-      "type": "post",
-      "postId": "<post-id>",
-      "userId": "<post-author-id>",
-      "title": "<post-title>",
-      "content": "<post-content>",
-      "creationDate": "<post-creation-date>"
-    }
+```json
+{
+    "id": "<post-id>",
+    "type": "post",
+    "postId": "<post-id>",
+    "userId": "<post-author-id>",
+    "title": "<post-title>",
+    "content": "<post-content>",
+    "creationDate": "<post-creation-date>"
+}
 
-    {
-      "id": "<comment-id>",
-      "type": "comment",
-      "postId": "<post-id>",
-      "userId": "<comment-author-id>",
-      "content": "<comment-content>",
-      "creationDate": "<comment-creation-date>"
-    }
+{
+    "id": "<comment-id>",
+    "type": "comment",
+    "postId": "<post-id>",
+    "userId": "<comment-author-id>",
+    "content": "<comment-content>",
+    "creationDate": "<comment-creation-date>"
+}
 
-    {
-      "id": "<like-id>",
-      "type": "like",
-      "postId": "<post-id>",
-      "userId": "<liker-id>",
-      "creationDate": "<like-creation-date>"
-    }
+{
+    "id": "<like-id>",
+    "type": "like",
+    "postId": "<post-id>",
+    "userId": "<liker-id>",
+    "creationDate": "<like-creation-date>"
+}
+```
 
 我們依據 `postId` 分割此容器，這表示該容器內的每個邏輯分割區都會包含一篇貼文、該貼文的所有留言，以及該貼文所有的讚。
 
@@ -122,9 +125,9 @@ ms.locfileid: "75445384"
 
 此要求很容易實作，因為我們剛剛才在 `users` 容器中建立或更新項目。 憑藉 `id` 分割區索引鍵的效用，要求會妥善分散到所有分割區。
 
-![將單一項目寫入使用者容器](./media/how-to-model-partition-example/V1-C1.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-C1.png" alt-text="將單一項目寫入使用者容器" border="false":::
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 7 毫秒 | 5.71 RU | ✅ |
 
@@ -132,9 +135,9 @@ ms.locfileid: "75445384"
 
 擷取使用者的作業會藉由從 `users` 容器中讀取對應的項目來完成。
 
-![從使用者容器中擷取單一項目](./media/how-to-model-partition-example/V1-Q1.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="從使用者容器中擷取單一項目" border="false":::
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 2 毫秒 | 1 RU | ✅ |
 
@@ -142,9 +145,9 @@ ms.locfileid: "75445384"
 
 類似於 **[C1]**，我們只需寫入 `posts` 容器即可。
 
-![將單一項目寫入貼文容器](./media/how-to-model-partition-example/V1-C2.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入貼文容器" border="false":::
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 9 毫秒 | 8.76 RU | ✅ |
 
@@ -152,11 +155,11 @@ ms.locfileid: "75445384"
 
 首先我們從 `posts` 容器中擷取對應的文件。 但這樣還不夠，根據我們的規格，我們還必須彙總貼文作者的使用者名稱、此貼文的留言數，和此貼文的按讚數，而為此還需要另行發出 3 個 SQL 查詢。
 
-![擷取貼文並和彙總額外的資料](./media/how-to-model-partition-example/V1-Q2.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="擷取貼文並和彙總額外的資料" border="false":::
 
 這些額外的查詢分別會依其各自容器的分割區索引鍵進行篩選，而這正是我們想盡可能提高效能和延展性所需要的。 但我們終究還是需要執行四項作業才能傳回單一貼文，因此我們將下次反覆執行時加以改善。
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 9 毫秒 | 19.54 RU | ⚠ |
 
@@ -164,14 +167,14 @@ ms.locfileid: "75445384"
 
 首先，我們必須使用會擷取該名使用者對應貼文的 SQL 查詢，來擷取所需的貼文。 但我們也須發出其他查詢，以彙總作者的使用者名稱以及留言數和按讚數。
 
-![擷取某個使用者的所有貼文並彙總其他資料](./media/how-to-model-partition-example/V1-Q3.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="擷取某個使用者的所有貼文並彙總其他資料" border="false":::
 
 此實作有許多缺點：
 
 - 必須針對第一個查詢所傳回的每篇貼文發出會彙總留言數和按讚數的查詢，
 - 主要查詢不會依 `posts` 容器的分割區索引鍵進行篩選，而導致整個容器的展開傳送和分割區掃描。
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 130 毫秒 | 619.41 RU | ⚠ |
 
@@ -179,9 +182,9 @@ ms.locfileid: "75445384"
 
 留言可藉由在 `posts` 容器中寫入對應的項目而建立。
 
-![將單一項目寫入貼文容器](./media/how-to-model-partition-example/V1-C2.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入貼文容器" border="false":::
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 7 毫秒 | 8.57 RU | ✅ |
 
@@ -189,11 +192,11 @@ ms.locfileid: "75445384"
 
 首先，我們以查詢擷取該貼文的所有留言，且同樣地，我們也必須個別彙總每個留言的使用者名稱。
 
-![擷取某篇貼文的所有留言並彙總其他資料](./media/how-to-model-partition-example/V1-Q4.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="擷取某篇貼文的所有留言並彙總其他資料" border="false":::
 
 雖然主要查詢會依容器的分割區索引鍵進行篩選，但個別彙總使用者仍會導致整體效能下降。 我們將在稍後加以改善。
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 23 毫秒 | 27.72 RU | ⚠ |
 
@@ -201,9 +204,9 @@ ms.locfileid: "75445384"
 
 如同 **[C3]**，我們在 `posts` 容器中建立對應的項目。
 
-![將單一項目寫入貼文容器](./media/how-to-model-partition-example/V1-C2.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入貼文容器" border="false":::
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 6 毫秒 | 7.05 RU | ✅ |
 
@@ -211,9 +214,9 @@ ms.locfileid: "75445384"
 
 如同 **[Q4]**，我們查詢該貼文的讚，然後彙總其使用者名稱。
 
-![擷取某篇貼文所有的讚並彙總其他資料](./media/how-to-model-partition-example/V1-Q5.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="擷取某篇貼文所有的讚並彙總其他資料" border="false":::
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 59 毫秒 | 58.92 RU | ⚠ |
 
@@ -221,11 +224,11 @@ ms.locfileid: "75445384"
 
 我們查詢依遞減的建立日期排序的 `posts` 容器以擷取最新的貼文，然後彙總每篇貼文的使用者名稱以及留言數和按讚數。
 
-![擷取最新的貼文並彙總其他資料](./media/how-to-model-partition-example/V1-Q6.png)
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="擷取最新的貼文並彙總其他資料" border="false":::
 
-同樣地，我們的初始查詢不會針對`posts`容器的分割區索引鍵進行篩選，這會觸發昂貴的展開傳送。當我們以較大的結果集為目標，並使用`ORDER BY`子句來排序結果時，這會變得更糟，這會使要求單位的成本更高。
+同樣地，我們的初始查詢不會針對容器的分割區索引鍵進行篩選 `posts` ，這會觸發昂貴的展開傳送。當我們以較大的結果集為目標，並使用子句來排序結果時，這會變得 `ORDER BY` 更糟，這會使要求單位的成本更高。
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 306 毫秒 | 2063.54 RU | ⚠ |
 
@@ -244,39 +247,43 @@ ms.locfileid: "75445384"
 
 在此範例中，我們將修改貼文項目，以新增貼文作者的使用者名稱、留言數和按讚數：
 
-    {
-      "id": "<post-id>",
-      "type": "post",
-      "postId": "<post-id>",
-      "userId": "<post-author-id>",
-      "userUsername": "<post-author-username>",
-      "title": "<post-title>",
-      "content": "<post-content>",
-      "commentCount": <count-of-comments>,
-      "likeCount": <count-of-likes>,
-      "creationDate": "<post-creation-date>"
-    }
+```json
+{
+    "id": "<post-id>",
+    "type": "post",
+    "postId": "<post-id>",
+    "userId": "<post-author-id>",
+    "userUsername": "<post-author-username>",
+    "title": "<post-title>",
+    "content": "<post-content>",
+    "commentCount": <count-of-comments>,
+    "likeCount": <count-of-likes>,
+    "creationDate": "<post-creation-date>"
+}
+```
 
 我們也會修改留言和讚這兩個項目，以新增其建立者的使用者名稱：
 
-    {
-      "id": "<comment-id>",
-      "type": "comment",
-      "postId": "<post-id>",
-      "userId": "<comment-author-id>",
-      "userUsername": "<comment-author-username>",
-      "content": "<comment-content>",
-      "creationDate": "<comment-creation-date>"
-    }
+```json
+{
+    "id": "<comment-id>",
+    "type": "comment",
+    "postId": "<post-id>",
+    "userId": "<comment-author-id>",
+    "userUsername": "<comment-author-username>",
+    "content": "<comment-content>",
+    "creationDate": "<comment-creation-date>"
+}
 
-    {
-      "id": "<like-id>",
-      "type": "like",
-      "postId": "<post-id>",
-      "userId": "<liker-id>",
-      "userUsername": "<liker-username>",
-      "creationDate": "<like-creation-date>"
-    }
+{
+    "id": "<like-id>",
+    "type": "like",
+    "postId": "<post-id>",
+    "userId": "<liker-id>",
+    "userUsername": "<liker-username>",
+    "creationDate": "<like-creation-date>"
+}
+```
 
 ### <a name="denormalizing-comment-and-like-counts"></a>反正規化留言數和按讚數
 
@@ -328,7 +335,7 @@ function createComment(postId, comment) {
 
 在此範例中，我們使用 `users` 的變更摘要，以在使用者更新其使用者名稱時做出因應。 發生這種情況時，我們將對 `posts` 容器呼叫另一個預存程序，以傳播變更：
 
-![將使用者名稱反正規化至貼文容器中](./media/how-to-model-partition-example/denormalization-1.png)
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="將使用者名稱反正規化至貼文容器中" border="false":::
 
 ```javascript
 function updateUsernames(userId, username) {
@@ -368,9 +375,9 @@ function updateUsernames(userId, username) {
 
 現在，反正規化作業已準備就緒，我們只需擷取單一項目來處理該要求即可。
 
-![從貼文容器中擷取單一項目](./media/how-to-model-partition-example/V2-Q2.png)
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="從貼文容器中擷取單一項目" border="false":::
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 2 毫秒 | 1 RU | ✅ |
 
@@ -378,9 +385,9 @@ function updateUsernames(userId, username) {
 
 同樣地，我們不需執行額外的要求來擷取使用者名稱，而只需要依分割區索引鍵進行篩選的單一查詢。
 
-![擷取某貼文的所有留言](./media/how-to-model-partition-example/V2-Q4.png)
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="擷取某貼文的所有留言" border="false":::
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 4 毫秒 | 7.72 RU | ✅ |
 
@@ -388,9 +395,9 @@ function updateUsernames(userId, username) {
 
 列出讚時的情況完全相同。
 
-![擷取某貼文所有的讚](./media/how-to-model-partition-example/V2-Q5.png)
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="擷取某貼文所有的讚" border="false":::
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 4 毫秒 | 8.92 RU | ✅ |
 
@@ -402,7 +409,7 @@ function updateUsernames(userId, username) {
 
 此要求獲益於 V2 導入的改進，因而不需要額外的查詢。
 
-![擷取某使用者的所有貼文](./media/how-to-model-partition-example/V2-Q3.png)
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="擷取某使用者的所有貼文" border="false":::
 
 但其餘查詢仍未依 `posts` 容器的分割區索引鍵進行篩選。
 
@@ -417,25 +424,27 @@ function updateUsernames(userId, username) {
 
 `users` 容器現在包含 2 種項目：
 
-    {
-      "id": "<user-id>",
-      "type": "user",
-      "userId": "<user-id>",
-      "username": "<username>"
-    }
+```json
+{
+    "id": "<user-id>",
+    "type": "user",
+    "userId": "<user-id>",
+    "username": "<username>"
+}
 
-    {
-      "id": "<post-id>",
-      "type": "post",
-      "postId": "<post-id>",
-      "userId": "<post-author-id>",
-      "userUsername": "<post-author-username>",
-      "title": "<post-title>",
-      "content": "<post-content>",
-      "commentCount": <count-of-comments>,
-      "likeCount": <count-of-likes>,
-      "creationDate": "<post-creation-date>"
-    }
+{
+    "id": "<post-id>",
+    "type": "post",
+    "postId": "<post-id>",
+    "userId": "<post-author-id>",
+    "userUsername": "<post-author-username>",
+    "title": "<post-title>",
+    "content": "<post-content>",
+    "commentCount": <count-of-comments>,
+    "likeCount": <count-of-likes>,
+    "creationDate": "<post-creation-date>"
+}
+```
 
 請注意：
 
@@ -444,13 +453,13 @@ function updateUsernames(userId, username) {
 
 為了完成此一反正規化，我們再次使用變更摘要。 這次，我們回應 `posts` 容器的變更摘要，以將任何新的或更新的貼文分派至 `users` 容器。 由於列出貼文並不需要傳回其完整內容，因此我們可以在處理時加以截斷。
 
-![將貼文反正規化至使用者容器中](./media/how-to-model-partition-example/denormalization-2.png)
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="將貼文反正規化至使用者容器中" border="false":::
 
 我們現在可以將查詢路由到依據容器的分割區索引鍵篩選的 `users` 容器。
 
-![擷取某使用者的所有貼文](./media/how-to-model-partition-example/V3-Q3.png)
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="擷取某使用者的所有貼文" border="false":::
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 4 毫秒 | 6.46 RU | ✅ |
 
@@ -458,30 +467,32 @@ function updateUsernames(userId, username) {
 
 在此我們必須處理類似的情況：即使已因 V2 中導入的反正規化而不再需要進行額外的查詢，其餘查詢仍不會依據容器的分割區索引鍵進行篩選：
 
-![擷取最新的貼文](./media/how-to-model-partition-example/V2-Q6.png)
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="擷取最新的貼文" border="false":::
 
 依循相同的方式，要讓此要求達到最高的效能和延展性，要求必須僅在一個分割區中。 這是可想而知的，因為我們只需要傳回有限數量的項目；若要填入我們部落格平台的首頁，我們只需要取得 100 篇最新的貼文，而不需要將整個資料集分頁。
 
 因此，為了將這最後一個要求最佳化，我們在設計中導入了第三個容器，完全用來處理此要求。 我們將貼文反正規化到這個新的 `feed` 容器：
 
-    {
-      "id": "<post-id>",
-      "type": "post",
-      "postId": "<post-id>",
-      "userId": "<post-author-id>",
-      "userUsername": "<post-author-username>",
-      "title": "<post-title>",
-      "content": "<post-content>",
-      "commentCount": <count-of-comments>,
-      "likeCount": <count-of-likes>,
-      "creationDate": "<post-creation-date>"
-    }
+```json
+{
+    "id": "<post-id>",
+    "type": "post",
+    "postId": "<post-id>",
+    "userId": "<post-author-id>",
+    "userUsername": "<post-author-username>",
+    "title": "<post-title>",
+    "content": "<post-content>",
+    "commentCount": <count-of-comments>,
+    "likeCount": <count-of-likes>,
+    "creationDate": "<post-creation-date>"
+}
+```
 
 此容器依 `type` 進行分割，這在我們項目中一律為 `post`。 這麼做可確保此容器中的所有項目將位於相同的分割區中。
 
 要完成反正規化，我們只需連結先前導入的變更摘要管線，以將貼文分派到這個新的容器即可。 需留意的一項重點，就是必須確定我們僅儲存了 100 篇最新的貼文；否則，容器的內容可能會超出分割區的大小上限。 每次在容器中新增文件後，您可以藉由呼叫[後置觸發程序](stored-procedures-triggers-udfs.md#triggers)來確認這一點：
 
-![將貼文反正規化至摘要容器中](./media/how-to-model-partition-example/denormalization-3.png)
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="將貼文反正規化至摘要容器中" border="false":::
 
 以下是會截斷集合的後續觸發程序主體：
 
@@ -532,9 +543,9 @@ function truncateFeed() {
 
 最後一個步驟是將查詢重新路由到新的 `feed` 容器：
 
-![擷取最新的貼文](./media/how-to-model-partition-example/V3-Q6.png)
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="擷取最新的貼文" border="false":::
 
-| **Latency** | **RU 費用** | **效能** |
+| **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
 | 9 毫秒 | 16.97 RU | ✅ |
 
@@ -545,10 +556,10 @@ function truncateFeed() {
 | | V1 | V2 | V3 |
 | --- | --- | --- | --- |
 | **C1** | 7 毫秒 / 5.71 RU | 7 毫秒 / 5.71 RU | 7 毫秒 / 5.71 RU |
-| **[Q1]** | 2 毫秒 / 1 RU | 2 毫秒 / 1 RU | 2 毫秒 / 1 RU |
+| **起** | 2 毫秒 / 1 RU | 2 毫秒 / 1 RU | 2 毫秒 / 1 RU |
 | **C2** | 9 毫秒 / 8.76 RU | 9 毫秒 / 8.76 RU | 9 毫秒 / 8.76 RU |
-| **[Q2]** | 9 毫秒 / 19.54 RU | 2 毫秒 / 1 RU | 2 毫秒 / 1 RU |
-| **[Q3]** | 130 毫秒 / 619.41 RU | 28 毫秒 / 201.54 RU | 4 毫秒 / 6.46 RU |
+| **Q2** | 9 毫秒 / 19.54 RU | 2 毫秒 / 1 RU | 2 毫秒 / 1 RU |
+| **季度** | 130 毫秒 / 619.41 RU | 28 毫秒 / 201.54 RU | 4 毫秒 / 6.46 RU |
 | **低耗** | 7 毫秒 / 8.57 RU | 7 毫秒 / 15.27 RU | 7 毫秒 / 15.27 RU |
 | **[Q4]** | 23 毫秒 / 27.72 RU | 4 毫秒 / 7.72 RU | 4 毫秒 / 7.72 RU |
 | **C4** | 6 毫秒 / 7.05 RU | 7 毫秒 / 14.67 RU | 7 毫秒 / 14.67 RU |
@@ -575,4 +586,4 @@ function truncateFeed() {
 
 - [使用資料庫、容器和項目](databases-containers-items.md)
 - [Azure Cosmos DB 中的資料分割](partitioning-overview.md)
-- [Azure Cosmos DB 中變更摘要](change-feed.md)
+- [變更 Azure Cosmos DB 中的摘要](change-feed.md)

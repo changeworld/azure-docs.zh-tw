@@ -8,12 +8,11 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5089174fcfd5a97128c1f789b818243243a5282f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b35af58141dc46e0cc36efe009023c1bf52850e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460764"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080071"
 ---
 #   <a name="text-translation-cognitive-skill"></a>文字翻譯認知技能
 
@@ -24,15 +23,15 @@ ms.locfileid: "75460764"
 [翻譯工具文字 API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)是非區域認知服務，這表示您的資料不一定會與您的 Azure 認知搜尋或附加認知服務資源保持在相同的區域。
 
 > [!NOTE]
-> 當您藉由增加處理頻率、新增更多檔或新增更多 AI 演算法來擴展範圍時，您將需要[附加可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
+> 當您透過增加處理頻率、新增更多文件或新增更多 AI 演算法來擴展範圍時，您必須[連結可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
 >
-> 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)。
+> 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://azure.microsoft.com/pricing/details/search/)。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.TranslationSkill
 
 ## <a name="data-limits"></a>資料限制
-記錄的大小上限應為50000個字元，如所測量[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)。 如果您需要在將資料傳送到文字翻譯技能之前先將其分解，請考慮使用[文字分割技能](cognitive-search-skill-textsplit.md)。
+記錄的大小上限應該是 50,000 個字元 (以 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) 為測量單位)。 如果您需要在將資料傳送到文字翻譯技能之前先將其分解，請考慮使用[文字分割技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-parameters"></a>技能參數
 
@@ -54,7 +53,7 @@ Microsoft.Skills.Text.TranslationSkill
 
 ## <a name="skill-outputs"></a>技能輸出
 
-| 輸出名稱    | 描述 |
+| 輸出名稱    | Description |
 |--------------------|-------------|
 | translatedText | 從 translatedFromLanguageCode 到 translatedToLanguageCode 之文字轉譯的字串結果。|
 | translatedToLanguageCode  | 表示文字轉譯成之語言代碼的字串。 如果您要翻譯成多種語言，而且想要能夠追蹤哪些文字是哪種語言，就很有用。|
@@ -148,7 +147,7 @@ Microsoft.Skills.Text.TranslationSkill
 如果您的文字是空白的，則會產生警告。
 如果您的文字大於50000個字元，則只會轉譯前50000個字元，併發出警告。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)

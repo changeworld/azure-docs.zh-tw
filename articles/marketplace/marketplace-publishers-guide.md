@@ -7,19 +7,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 7ddea556ea4a9c7c0306ebdf1eca1f60769c5318
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657850"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958169"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>商業市集發行指南
 
 此發行指南的目的是協助新的與現有的發行者了解如何在商業市集店面、[Azure Marketplace](https://azuremarketplace.microsoft.com) 和 [Microsoft AppSource](https://appsource.microsoft.com) 中列出應用程式和服務，與 Microsoft 合作提升業績。
 
 >[!Note]
->此處的 Marketplace 泛指 Azure Marketplace 和 AppSource。  如需詳細資訊，請參閱[一個市集，二間店面](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)。
+>此處的 Marketplace 泛指 Azure Marketplace 和 AppSource。  如需詳細資訊，請參閱[一個市集，二間店面](comparing-appsource-azure-marketplace.md)。
 
 本指南涵蓋下列主題： 
 *   Marketplace 是什麼及其運作方式 
@@ -62,7 +61,7 @@ Marketplace 是與 Microsoft 共同舉辦上市活動的跳板，有助於促進
 
 *   共同銷售：展開您的旅程或加快腳步，透過 Marketplace 與 Microsoft 合作銷售您的產品。 可取用各種方案與支援，與 Microsoft 團隊一同推動聯合銷售。
 
-[提交解決方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)到 Marketplace 之後，我們的上線團隊便會連絡您，為您的發行體驗提供支援。  如需詳細資訊，請參閱[如何建立合作夥伴中心帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+[提交解決方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)到 Marketplace 之後，我們的上線團隊便會連絡您，為您的發行體驗提供支援。  如需詳細資訊，請參閱[如何建立合作夥伴中心帳戶](partner-center-portal/create-account.md)。
 
 深入了解您的[商業市集權益](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)。
 

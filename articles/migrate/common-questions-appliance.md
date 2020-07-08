@@ -2,13 +2,12 @@
 title: Azure Migrate 設備常見問題
 description: 取得 Azure Migrate 設備的常見問題解答。
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 529ead1baa769ee3e71f6fcf77ef7e020ed196a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/03/2020
+ms.openlocfilehash: afdede99fa4485ba7e5494e844d795c2d5d3deee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81529683"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078980"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 設備：常見的問題
 
@@ -37,7 +36,7 @@ Azure Migrate 設備是一種輕量設備，Azure Migrate：伺服器評估工�
 
 - 使用適用于 VMware Vm 和 Hyper-v Vm （適用于 VMware 的 OVA 範本或適用于 Hyper-v 的 VHD）的範本。
 - 如果您不想要使用範本，或您處於 Azure Government 中，您可以使用 PowerShell 腳本來部署適用于 VMware 或 Hyper-v 的應用裝置。
-- 針對實體伺服器，您一律會使用腳本來部署應用裝置。
+- 針對實體伺服器，您一律會使用指令碼來部署設備。
 
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>設備如何連接到 Azure？
@@ -107,7 +106,7 @@ Azure Migrate 應用裝置所收集的資料會儲存在您建立 Azure Migrate 
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>我可以使用設備探索多少部 Vm 或伺服器？
 
-您最多可以探索10000個 VMware Vm、最多5000部 Hyper-v Vm，以及最多250個具有單一應用裝置的實體伺服器。 如果您的內部部署環境中有更多電腦，請閱讀[調整 hyper-v 評估](scale-hyper-v-assessment.md)、[調整 VMware 評估](scale-vmware-assessment.md)和[調整實體伺服器評](scale-physical-assessment.md)量。
+您最多可以探索10000個 VMware Vm、最多5000部 Hyper-v Vm，以及最多1000個具有單一應用裝置的實體伺服器。 如果您的內部部署環境中有更多電腦，請閱讀[調整 hyper-v 評估](scale-hyper-v-assessment.md)、[調整 VMware 評估](scale-vmware-assessment.md)和[調整實體伺服器評](scale-physical-assessment.md)量。
 
 ## <a name="can-i-delete-an-appliance"></a>我可以刪除設備嗎？
 

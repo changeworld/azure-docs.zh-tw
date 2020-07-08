@@ -1,19 +1,18 @@
 ---
 title: 使用 Active Directory 來修剪結果的安全性篩選
 titleSuffix: Azure Cognitive Search
-description: 使用安全性篩選和 Azure Active Directory （AAD）身分識別，對 Azure 認知搜尋內容進行存取控制。
+description: Azure 認知搜尋搜尋結果的檔層級安全性許可權，使用安全性篩選和 Azure Active Directory （AAD）身分識別。
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/04/2020
+ms.openlocfilehash: ee742eae38ae95756cf31d60b877f18629c569d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794310"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080500"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>使用 Active Directory 身分識別來修剪 Azure 認知搜尋結果的安全性篩選
 
@@ -28,9 +27,9 @@ ms.locfileid: "72794310"
 > - 使用群組識別碼篩選條件發出搜尋要求
 > 
 > [!NOTE]
-> 本文中的範例程式碼片段是以 C# 撰寫。 您可以 [在 GitHub](https://aka.ms/search-dotnet-howto)找到完整的原始程式碼。 
+> 本文中的範例程式碼片段是以 C# 撰寫。 您可以 [在 GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started)找到完整的原始程式碼。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您在 Azure 認知搜尋中的索引必須具有 [[安全性] 欄位](search-security-trimming-for-azure-search.md)，才能儲存具有檔讀取權限的群組身分識別清單。 此使用案例會假設安全性實體項目 (例如個人的大學應用程式) 與指定可存取該項目之人員 (許可人員) 的安全性欄位之間的一對一對應。
 
@@ -42,11 +41,11 @@ ms.locfileid: "72794310"
 
 這個步驟會就接受使用者和群組帳戶登入的目的，將您的應用程式與 AAD 整合。 如果您在貴組織中不是 AAD 系統管理員，可能需要[建立新的租用戶](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant)才能執行下列步驟。
 
-1. 移至[**應用程式註冊入口網站**](https://apps.dev.microsoft.com) >  交集**應用程式** > **新增應用**程式。
+1. 移至[**應用程式註冊入口網站**](https://apps.dev.microsoft.com)交集  >   **應用程式**  >  **新增應用**程式。
 2. 輸入應用程式的名稱，然後按一下 [建立]****。 
 3. 在 [我的應用程式] 頁面中，選取您新註冊的應用程式。
-4. 在 [應用程式註冊] 頁面上 >**平臺** > ] [**新增平臺**]，選擇 [ **Web API**]。
-5. 仍在 [應用程式註冊] 頁面上，移至 > **Microsoft Graph [許可權** > ] [**新增**]。
+4. 在 [應用程式註冊] 頁面上 >**平臺**]  >  [**新增平臺**]，選擇 [ **Web API**]。
+5. 仍在 [應用程式註冊] 頁面上，移至 > **Microsoft Graph [許可權**] [  >  **新增**]。
 6. 在 [選取權限] 中，新增下列委派的權限，然後按一下 [確定]****：
 
    + **Directory.ReadWrite.All**

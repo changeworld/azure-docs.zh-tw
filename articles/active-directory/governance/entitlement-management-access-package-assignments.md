@@ -10,24 +10,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12e3b86f41e7188778393ab717554907ef5d44ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 55f17703060d19baebe55ef648cb182cb2c6d00a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078836"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中查看、新增和移除存取套件的指派
 
 在 Azure AD 權利管理] 中，您可以看到誰已獲指派存取封裝、其原則和狀態。 如果存取套件具有適當的原則，您也可以直接將使用者指派給存取封裝。 本文說明如何查看、新增和移除存取封裝的指派。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要使用 Azure AD 權利管理並指派使用者存取套件，您必須具有下列其中一個授權：
 
@@ -58,7 +57,7 @@ ms.locfileid: "80631735"
 
 ### <a name="viewing-assignments-programmatically"></a>以程式設計方式查看指派
 
-您也可以使用 Microsoft Graph 來抓取存取套件中的指派。  具有具有委派`EntitlementManagement.ReadWrite.All`許可權之應用程式的適當角色中的使用者，可以呼叫 API 來[列出 accessPackageAssignments](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)。
+您也可以使用 Microsoft Graph 來抓取存取套件中的指派。  具有具有委派許可權之應用程式的適當角色中的使用者， `EntitlementManagement.ReadWrite.All` 可以呼叫 API 來[列出 accessPackageAssignments](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)。
 
 ## <a name="directly-assign-a-user"></a>直接指派使用者
 
@@ -90,7 +89,7 @@ ms.locfileid: "80631735"
 
 ### <a name="directly-assigning-users-programmatically"></a>以程式設計方式直接指派使用者
 
-您也可以使用 Microsoft Graph 直接將使用者指派給存取封裝。  具有具有委派`EntitlementManagement.ReadWrite.All`許可權之應用程式的適當角色中的使用者，可以呼叫 API 來[建立 accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)。
+您也可以使用 Microsoft Graph 直接將使用者指派給存取封裝。  具有具有委派許可權之應用程式的適當角色中的使用者， `EntitlementManagement.ReadWrite.All` 可以呼叫 API 來[建立 accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)。
 
 ## <a name="remove-an-assignment"></a>移除指派
 

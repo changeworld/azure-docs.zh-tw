@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 66682e953e4e262604d1b0c07720ebaab5995364
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: 60f83fae6e7e685a1065d1c01327a004d9bb2864
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195223"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675647"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>區塊 blob 的還原時間點（預覽）
 
@@ -26,15 +26,13 @@ ms.locfileid: "83195223"
 
 若要啟用還原時間點，請建立儲存體帳戶的管理原則，並指定保留期限。 在保留期間，您可以將區塊 blob 從目前狀態還原到先前時間點的狀態。
 
-若要起始時間點還原，請呼叫[還原 Blob 範圍](/rest/api/storagerp/storageaccounts/restoreblobranges)作業，並指定以 UTC 時程表示的還原點。 您可以指定要還原的容器和 blob 名稱的字典範圍，或省略範圍來還原儲存體帳戶中的所有容器。 「**還原 Blob 範圍**」作業會傳回可唯一識別作業的還原識別碼。
+若要起始時間點還原，請呼叫[還原 Blob 範圍](/rest/api/storagerp/storageaccounts/restoreblobranges)作業，並指定以 UTC 時程表示的還原點。 您可以指定要還原的容器和 blob 名稱的字典範圍，或省略範圍來還原儲存體帳戶中的所有容器。 每個還原作業支援最多10個字典的範圍。
 
 Azure 儲存體會分析已對所要求的還原點（以 UTC 時間指定）和目前時間所指定之 blob 進行的所有變更。 還原作業是不可部分完成的，因此它會完全成功還原所有變更，否則會失敗。 如果有任何 blob 無法還原，則作業會失敗，且受影響容器的讀取和寫入作業會繼續。
 
-當您要求還原作業時，Azure 儲存體會封鎖在作業持續時間內還原之 blob 的資料作業。 主要位置會封鎖讀取、寫入和刪除作業。 如果儲存體帳戶是異地複寫的，在還原作業期間，從次要位置進行的讀取作業可能會繼續進行。
-
 一個儲存體帳戶一次只能執行一個還原作業。 還原作業一旦進行中，就無法取消，但可以執行第二個還原作業來復原第一個作業。
 
-若要檢查時間點還原的狀態，請使用**還原 Blob 範圍**作業所傳回的還原識別碼來呼叫「**取得還原狀態**」作業。
+「**還原 Blob 範圍**」作業會傳回可唯一識別作業的還原識別碼。 若要檢查時間點還原的狀態，請使用**還原 Blob 範圍**作業所傳回的還原識別碼來呼叫「**取得還原狀態**」作業。
 
 請記住下列還原作業的限制：
 
@@ -42,6 +40,11 @@ Azure 儲存體會分析已對所要求的還原點（以 UTC 時間指定）和
 - 無法還原具有作用中租用的 blob。 如果要還原的 blob 範圍中包含作用中租用的 blob，還原作業將會以非自動的方式失敗。
 - 在還原作業中，不會建立或刪除快照集。 只有基底 blob 會還原為先前的狀態。
 - 如果在目前的時間與還原點之間，blob 已在經常性存取與非經常性存取層之間移動，blob 會還原至其先前的層級。 不過，已移至封存層的 blob 將不會還原。
+
+> [!IMPORTANT]
+> 當您執行還原作業時，Azure 儲存體會封鎖在作業期間還原之範圍中的 blob 資料作業。 主要位置會封鎖讀取、寫入和刪除作業。 基於這個理由，在進行還原作業時，如列出 Azure 入口網站中的容器可能無法如預期般執行。
+>
+> 如果儲存體帳戶是異地複寫的，在還原作業期間，從次要位置進行的讀取作業可能會繼續進行。
 
 > [!CAUTION]
 > 還原時間點僅支援在區塊 blob 上還原作業。 無法還原容器上的作業。 如果您在還原時間點期間呼叫「[刪除容器](/rest/api/storageservices/delete-container)」作業來刪除儲存體帳戶中的容器，就無法使用還原作業來還原該容器。 在預覽期間，如果您想要還原，請刪除個別的 blob，而不是刪除容器。
@@ -52,9 +55,9 @@ Azure 儲存體會分析已對所要求的還原點（以 UTC 時間指定）和
 
 - [虛刪除](soft-delete-overview.md)
 - [變更摘要（預覽）](storage-blob-change-feed.md)
-- [Blob 版本設定（預覽）](versioning-overview.md)
+- [Blob 版本設定 (預覽)](versioning-overview.md)
 
-在啟用時間點還原之前，請先為儲存體帳戶啟用這些功能。 請務必先註冊變更摘要和 blob 版本設定預覽，再加以啟用。
+在啟用時間點還原之前，請先為儲存體帳戶啟用這些功能。 請務必先註冊變更摘要和 Blob 版本設定預覽，然後才能加以啟用。
 
 ### <a name="retention-period-for-point-in-time-restore"></a>時間點還原的保留期間
 
@@ -81,7 +84,7 @@ Azure 儲存體會分析已對所要求的還原點（以 UTC 時間指定）和
 預覽包含下列限制：
 
 - 不支援還原 premium 區塊 blob。
-- 不支援還原封存層中的 blob。 例如，如果經常性存取層中的 blob 在兩天前已移至封存層，而還原作業在三天前還原到某個時間點，則 blob 不會還原至經常性存取層。
+- 不支援還原封存層中的 Blob。 例如，如果經常性存取層的 Blob 在兩天前已移至封存層，且還原作業還原至三天前的某個時間點，則 Blob 不會還原至經常性存取層。
 - 不支援還原 Azure Data Lake Storage Gen2 平面和階層命名空間。
 - 不支援使用客戶提供的金鑰來還原儲存體帳戶。
 
@@ -90,7 +93,9 @@ Azure 儲存體會分析已對所要求的還原點（以 UTC 時間指定）和
 
 ### <a name="register-for-the-preview"></a>註冊預覽
 
-若要註冊預覽版，請從 Azure PowerShell 執行下列命令：
+若要註冊預覽版，請執行下列命令：
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 # Register for the point-in-time restore preview
@@ -100,16 +105,28 @@ Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Mic
 Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
 
 # Register for blob versioning (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
+Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
 
 # Refresh the Azure Storage provider namespace
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az feature register --namespace Microsoft.Storage --name RestoreBlobRanges
+az feature register --namespace Microsoft.Storage --name Changefeed
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
+```
+
+---
+
 ### <a name="check-registration-status"></a>檢查註冊狀態
 
-若要檢查註冊的狀態，請執行下列命令：
+時間點還原的註冊會自動進行，且應不到10分鐘。 若要檢查註冊的狀態，請執行下列命令：
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
@@ -117,7 +134,20 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Changefeed
+
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName Versioning
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/RestoreBlobRanges')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Changefeed')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning')].{Name:name,State:properties.state}"
+```
+
+---
 
 ## <a name="pricing-and-billing"></a>價格和計費
 
@@ -134,6 +164,6 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 ## <a name="next-steps"></a>後續步驟
 
 - [啟用和管理區塊 blob 的時間點還原（預覽）](point-in-time-restore-manage.md)
-- [Azure Blob 儲存體中的變更摘要支援（預覽）](storage-blob-change-feed.md)
+- [Azure Blob 儲存體中的變更摘要支援 (預覽)](storage-blob-change-feed.md)
 - [啟用 blob 的虛刪除](soft-delete-enable.md)
-- [啟用和管理 blob 版本設定](versioning-enable.md)
+- [啟用和管理 Blob 版本設定](versioning-enable.md)

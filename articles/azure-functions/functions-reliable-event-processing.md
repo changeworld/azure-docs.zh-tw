@@ -5,12 +5,11 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75561862"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676126"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions 可靠的事件處理
 
@@ -55,7 +54,7 @@ Azure Functions 會在迴圈執行下列步驟時取用事件中樞事件：
 
 ## <a name="handling-exceptions"></a>處理例外狀況
 
-一般的規則是，每個函式都應該在最高層級的程式碼中包含[try/catch 區塊](./functions-bindings-error-pages.md)。 具體而言，使用事件中樞事件的所有函式都`catch`應該有一個區塊。 如此一來，當引發例外狀況時，catch 區塊會在指標進行前處理錯誤。
+一般的規則是，每個函式都應該在最高層級的程式碼中包含[try/catch 區塊](./functions-bindings-error-pages.md)。 具體而言，使用事件中樞事件的所有函式都應該有一個 `catch` 區塊。 如此一來，當引發例外狀況時，catch 區塊會在指標進行前處理錯誤。
 
 ### <a name="retry-mechanisms-and-policies"></a>重試機制和原則
 
@@ -91,7 +90,7 @@ Azure Functions 會在迴圈執行下列步驟時取用事件中樞事件：
 
 執行詳細資料可能會有所不同，但若要在實例之間共用狀態，您需要有儲存機制。 您可以選擇將狀態儲存在 Azure 儲存體、Redis 快取，或可由函式集合存取的任何其他帳戶。
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md)或[持久性實體](./durable/durable-functions-overview.md)是用來管理工作流程和線路狀態的自然調整。 其他服務也可以運作，但此範例中使用的是邏輯應用程式。 使用邏輯應用程式時，您可以暫停和重新開機函式的執行，讓您能夠控制執行斷路器模式所需的控制項。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md)或長期函式是用來管理工作流程和線路[狀態的自然](./durable/durable-functions-overview.md)調整。 其他服務也可以運作，但此範例中使用的是邏輯應用程式。 使用邏輯應用程式時，您可以暫停和重新開機函式的執行，讓您能夠控制執行斷路器模式所需的控制項。
 
 ### <a name="define-a-failure-threshold-across-instances"></a>定義實例間的失敗臨界值
 
@@ -123,7 +122,7 @@ Azure Logic Apps 隨附不同服務的內建連接器、功能具狀態的協調
 ## <a name="resources"></a>資源
 
 - [可靠的事件處理範例](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure Durable Functions 斷路器](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Azure 持久性實體斷路器](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>後續步驟
 

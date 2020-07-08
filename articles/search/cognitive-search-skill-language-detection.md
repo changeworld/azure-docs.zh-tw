@@ -7,13 +7,12 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 8439788c63ec1b9feaea148ab52aba498791dc12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/17/2020
+ms.openlocfilehash: bac2f86f4134cc8d22e9f388b46bc76ab2d0e5ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045029"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080796"
 ---
 #   <a name="language-detection-cognitive-skill"></a>語言偵測認知技能
 
@@ -24,16 +23,16 @@ ms.locfileid: "76045029"
 語言偵測會利用 Bing 的自然語言處理程式庫，超過文字分析列出的[支援語言和區域](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)數目。 不會發行確切的語言清單，但會包含所有廣泛讀出的語言，加上變種、方言，以及某些地區和文化特性語言。 如果您的內容是以較不常用的語言表示，您可以[嘗試語言偵測 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) ，以查看它是否傳回程序代碼。 對於無法偵測到的語言，會產生 `unknown` 回應。
 
 > [!NOTE]
-> 當您藉由增加處理頻率、新增更多檔或新增更多 AI 演算法來擴展範圍時，您將需要[附加可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
+> 當您透過增加處理頻率、新增更多文件或新增更多 AI 演算法來擴展範圍時，您必須[連結可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
 >
-> 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)。
+> 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://azure.microsoft.com/pricing/details/search/)。
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.LanguageDetectionSkill
 
 ## <a name="data-limits"></a>資料限制
-記錄的大小上限應為50000個字元，如所測量[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)。 如果您需要在將資料傳送到語言偵測技能之前先將其分解，您可以使用[文字分割技能](cognitive-search-skill-textsplit.md)。
+記錄的大小上限應該是 50,000 個字元 (以 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) 為測量單位)。 如果您需要在將資料傳送到語言偵測技能之前先將其分解，您可以使用[文字分割技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-inputs"></a>技能輸入
 
@@ -41,15 +40,15 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 
 | 輸入     | 描述 |
 |--------------------|-------------|
-| text | 要分析的文字。|
+| `text` | 要分析的文字。|
 
 ## <a name="skill-outputs"></a>技能輸出
 
-| 輸出名稱    | 描述 |
+| 輸出名稱    | Description |
 |--------------------|-------------|
-| languageCode | 所識別語言的 ISO 6391 語言代碼。 例如，"en"。 |
-| languageName | 語言的名稱。 例如，"English"。 |
-| score | 0 到 1 之間的值。 正確識別語言的可能性。 如果句子有混合的語言，分數可能會小於 1。  |
+| `languageCode` | 所識別語言的 ISO 6391 語言代碼。 例如，"en"。 |
+| `languageName` | 語言的名稱。 例如，"English"。 |
+| `score` | 0 到 1 之間的值。 正確識別語言的可能性。 如果句子有混合的語言，分數可能會小於 1。  |
 
 ##  <a name="sample-definition"></a>範例定義
 

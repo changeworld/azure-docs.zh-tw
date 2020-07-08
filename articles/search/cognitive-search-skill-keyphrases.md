@@ -8,12 +8,11 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ddcd95356f9b70fec5a74f36f5b80e55ea56b477
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 529e79abbd7fa8f9733254d207af570237044305
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744005"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080810"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>關鍵片語擷取認知技能
 
@@ -24,7 +23,7 @@ ms.locfileid: "83744005"
 > [!NOTE]
 > 當您透過增加處理頻率、新增更多文件或新增更多 AI 演算法來擴展範圍時，您必須[連結可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
 >
-> 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)。
+> 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://azure.microsoft.com/pricing/details/search/)。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -39,24 +38,35 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 | 輸入                | 描述 |
 |---------------------|-------------|
-| defaultLanguageCode | (選用) 要套用至未明確指定語言之文件的語言代碼。  如果未指定預設語言代碼，則會使用英文 (en) 做為預設語言代碼。 <br/> 請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)。 |
-| maxKeyPhraseCount   | (選用) 產生的關鍵片語數量上限。 |
+| `defaultLanguageCode` | (選用) 要套用至未明確指定語言之文件的語言代碼。  如果未指定預設語言代碼，則會使用英文 (en) 做為預設語言代碼。 <br/> 請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)。 |
+| `maxKeyPhraseCount`   | (選用) 產生的關鍵片語數量上限。 |
 
 ## <a name="skill-inputs"></a>技能輸入
 
 | 輸入  | 描述 |
 |--------------------|-------------|
-| text | 要分析的文字。|
-| languageCode  |  此字串表示記錄的語言。 如果未指定此參數，將使用預設語言代碼來分析記錄。 <br/>請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
+| `text` | 要分析的文字。|
+| `languageCode`    |  此字串表示記錄的語言。 如果未指定此參數，將使用預設語言代碼來分析記錄。 <br/>請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
 
 ## <a name="skill-outputs"></a>技能輸出
 
-| 輸出  | 描述 |
+| 輸出     | Description |
 |--------------------|-------------|
-| keyPhrases | 從輸入文字擷取的關鍵片語清單。 關鍵片語會依重要性順序傳回。 |
+| `keyPhrases` | 從輸入文字擷取的關鍵片語清單。 關鍵片語會依重要性順序傳回。 |
 
 
 ##  <a name="sample-definition"></a>範例定義
+
+請考慮具有下欄欄位的 SQL 記錄：
+
+```json
+{
+    "content": "Glaciers are huge rivers of ice that ooze their way over land, powered by gravity and their own sheer weight. They accumulate ice from snowfall and lose it through melting. As global temperatures have risen, many of the world’s glaciers have already started to shrink and retreat. Continued warming could see many iconic landscapes – from the Canadian Rockies to the Mount Everest region of the Himalayas – lose almost all their glaciers by the end of the century.",
+    "language": "en"
+}
+```
+
+然後您的技能定義看起來可能像這樣：
 
 ```json
  {
@@ -68,7 +78,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
       },
       {
         "name": "languageCode",
-        "source": "/document/languagecode" 
+        "source": "/document/language" 
       }
     ],
     "outputs": [
@@ -80,33 +90,12 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
   }
 ```
 
-##  <a name="sample-input"></a>範例輸入
-
-```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-             "text": "Glaciers are huge rivers of ice that ooze their way over land, powered by gravity and their own sheer weight. They accumulate ice from snowfall and lose it through melting. As global temperatures have risen, many of the world’s glaciers have already started to shrink and retreat. Continued warming could see many iconic landscapes – from the Canadian Rockies to the Mount Everest region of the Himalayas – lose almost all their glaciers by the end of the century.",
-             "language": "en"
-           }
-      }
-    ]
-```
-
-
 ##  <a name="sample-output"></a>範例輸出
 
+在上述範例中，您技能的輸出會寫入至擴充樹狀結構中名為 "document/myKeyPhrases" 的新節點，因為這是 `targetName` 我們所指定的。 如果您未指定 `targetName` ，則它會是 "document/keyPhrases"。
+
+#### <a name="documentmykeyphrases"></a>檔/myKeyPhrases 
 ```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-            "keyPhrases": 
             [
               "world’s glaciers", 
               "huge rivers of ice", 
@@ -115,12 +104,9 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
               "Mount Everest region",
               "Continued warming"
             ]
-           }
-      }
-    ]
-}
 ```
 
+您可以使用 "document/myKeyPhrases" 做為其他技能的輸入，或做為[輸出欄位對應](cognitive-search-output-field-mapping.md)的來源。
 
 ## <a name="errors-and-warnings"></a>錯誤和警告
 如果您提供不支援的語言代碼，則會產生錯誤，而且不會擷取關鍵片語。
@@ -131,3 +117,4 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
++ [如何定義輸出欄位對應](cognitive-search-output-field-mapping.md)

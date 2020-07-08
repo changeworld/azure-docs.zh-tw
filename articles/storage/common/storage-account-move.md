@@ -5,16 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.subservice: common
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 34f1c96d8336447b6ca2a4f55fefa9a061c38fa2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198495"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515018"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>將 Azure 儲存體帳戶移至另一個區域
 
@@ -31,13 +30,13 @@ ms.locfileid: "83198495"
 > * 將資料移至新的儲存體帳戶。
 > * 刪除來源區域中的資源。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-- 確定目的地區域中支援您的帳戶所使用的服務和功能。
+- 確定目的地區域中支援您帳戶所使用的服務和功能。
 
-- 針對預覽功能，請確定您的訂用帳戶已列入目的地區域的允許清單中。
+- 對於預覽功能，確定您的訂用帳戶已列入目標區域的白名單中。
 
-<a id="prepare" />
+<a id="prepare"></a>
 
 ## <a name="prepare"></a>準備
 
@@ -49,7 +48,7 @@ ms.locfileid: "83198495"
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-若要使用 Azure 入口網站匯出範本：
+使用 Azure 入口網站匯出範本：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
@@ -67,7 +66,7 @@ ms.locfileid: "83198495"
 
 若要使用 PowerShell 匯出範本：
 
-1. 使用[disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0)命令登入您的 Azure 訂用帳戶，並遵循畫面上的指示：
+1. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登入 Azure 訂用帳戶，並遵循畫面上的指示操作：
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -103,19 +102,19 @@ ms.locfileid: "83198495"
 
 1. 在 [Azure 入口網站中，選取 [**建立資源**]。
 
-2. 在 [搜尋 Marketplace]**** 中，輸入**範本部署**，然後按 **ENTER**。
+2. 在 **[搜尋 Marketplace**] 中，輸入**範本部署**，然後按**enter**。
 
 3. 選取 [**範本部署**]。
 
     ![Azure Resource Manager 範本程式庫](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. 選取 [建立]  。
+4. 選取 [建立]。
 
-5. 選取 [在編輯器中組建您自己的範本]****。
+5. **在編輯器中選取 [建立您自己的範本**]。
 
-6. 選取 [**載入**檔案]，然後依照指示載入您在上一節中下載的**範本. json**檔案。
+6. 選取 [**載入**檔案]，然後依照指示載入您在上一節中下載的檔案**template.js** 。
 
-7. 在**範本. json**檔案中，設定儲存體帳戶名稱的預設值，以命名目標儲存體帳戶。 這個範例會將儲存體帳戶名稱的預設值設定為 `mytargetaccount` 。
+7. 在 [ **template.js**檔案] 中，設定 [儲存體帳戶名稱] 的預設值來命名目標儲存體帳戶。 這個範例會將儲存體帳戶名稱的預設值設定為 `mytargetaccount` 。
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -143,7 +142,7 @@ ms.locfileid: "83198495"
 
 若要使用 PowerShell 部署範本：
 
-1. 在**範本. json**檔案中，設定儲存體帳戶名稱的預設值，以命名目標儲存體帳戶。 這個範例會將儲存體帳戶名稱的預設值設定為 `mytargetaccount` 。
+1. 在 [ **template.js**檔案] 中，設定 [儲存體帳戶名稱] 的預設值來命名目標儲存體帳戶。 這個範例會將儲存體帳戶名稱的預設值設定為 `mytargetaccount` 。
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -156,7 +155,7 @@ ms.locfileid: "83198495"
     },
     ``` 
 
-2. 將**範本. json**檔案中的**location**屬性編輯至目的地區域。 這個範例會將目的地區域設定為 `eastus` 。
+2. 將檔案**template.js**中的**location**屬性編輯至目的地區域。 這個範例會將目的地區域設定為 `eastus` 。
 
     ```json
     "resources": [{
@@ -174,19 +173,19 @@ ms.locfileid: "83198495"
     ```
 ---
 
-<a id="move" />
+<a id="move"></a>
 
 ## <a name="move"></a>移動
 
-部署範本，以在目的地區域中建立新的儲存體帳戶。 
+部署範本，以在目標區域中建立新的儲存體帳戶。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 儲存**範本. json**檔案。
+1. 將**template.js儲存在檔案上**。
 
 2. 輸入或選取屬性值：
 
-- 訂用帳戶  ：選取 Azure 訂用帳戶。
+- 訂用帳戶：選取 Azure 訂用帳戶。
 
 - **資源群組**：選取 [新建]**** 並指定資源群組名稱。
 
@@ -215,16 +214,16 @@ ms.locfileid: "83198495"
 
 ### <a name="configure-the-new-storage-account"></a>設定新的儲存體帳戶
 
-有些功能不會匯出至範本，因此您必須將它們新增至新的儲存體帳戶。 
+有些功能不會匯出至範本，因此您必須將這些功能新增至新的儲存體帳戶。 
 
-下表列出這些功能，以及將它們新增至新儲存體帳戶的指導方針。
+下表列出這些功能，以及將其新增至新儲存體帳戶的指導方針。
 
-| 功能    | 指導方針    |
+| 功能    | 指引    |
 |--------|-----------|
 | **生命週期管理原則** | [管理 Azure Blob 儲存體生命週期](../blobs/storage-lifecycle-management-concepts.md) |
-| **靜態網站** | [在 Azure 儲存體中裝載靜態網站](../blobs/storage-blob-static-website-how-to.md) |
+| **靜態網站** | [在 Azure 儲存體中託管靜態網站](../blobs/storage-blob-static-website-how-to.md) |
 | **事件訂閱** | [回應 Blob 儲存體事件](../blobs/storage-blob-event-overview.md) |
-| **警示** | [使用 Azure 監視器來建立、查看和管理活動記錄警示](../../azure-monitor/platform/alerts-activity-log.md) |
+| **警示** | [使用 Azure 監視器中建立、檢視及管理活動記錄警示](../../azure-monitor/platform/alerts-activity-log.md) |
 | **內容傳遞網路 (CDN)** | [使用 Azure CDN 透過 HTTPS 以自訂網域存取 Blob](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 
@@ -232,11 +231,11 @@ ms.locfileid: "83198495"
 
 ### <a name="move-data-to-the-new-storage-account"></a>將資料移至新的儲存體帳戶
 
-AzCopy 是將資料移到的慣用工具。 它已針對效能進行優化。  其中一個較快的方法是，資料會直接複製到存放伺服器之間，因此 AzCopy 不會使用您電腦的網路頻寬。 在命令列或自訂腳本中使用 AzCopy。 請參閱[開始使用 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+AzCopy 是將資料移到的慣用工具。 已針對效能最佳化。  其中一個較快的方法是，資料會直接在儲存體伺服器間複製，因此 AzCopy 不會使用電腦的網路頻寬。 在命令列或自訂指令碼中使用 AzCopy。 請參閱[開始使用 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 您也可以使用 Azure Data Factory 來移動您的資料。 它提供了直覺的使用者介面。 若要使用 Azure Data Factory，請參閱下列任何連結：。 
 
-  - [使用 Azure Data Factory 在 Azure Blob 儲存體之間複製資料](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+  - [使用 Azure Data Factory 將資料複製到 Azure Blob 儲存體或從該處複製資料](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
   - [使用 Azure Data Factory 從 Azure Data Lake Storage Gen2 來回複製資料](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
   - [使用 Azure Data Factory 從 Azure File Storage 複製資料，或將資料複製到 Azure File Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
   - [使用 Azure Data Factory 將資料複製到 Azure 資料表儲存體或從該處複製資料](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
@@ -251,7 +250,7 @@ AzCopy 是將資料移到的慣用工具。 它已針對效能進行優化。  �
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-若要使用 Azure 入口網站移除儲存體帳戶：
+使用 Azure 入口網站移除儲存體帳戶：
 
 1. 在 [Azure 入口網站中，展開左側的功能表以開啟服務的功能表，然後選擇 [**儲存體帳戶**] 以顯示您的儲存體帳戶清單。
 
@@ -270,8 +269,8 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已將 Azure 儲存體帳戶從一個區域移至另一個區域，並清除來源資源。  若要深入瞭解如何在 Azure 中的區域和嚴重損壞修復之間移動資源，請參閱：
+在本教學課程中，您已將 Azure 儲存體帳戶從一個區域移至另一個區域，並清除來源資源。  若要深入了解如何在 Azure 中的區域之間移動資源和災害復原，請參閱：
 
 
 - [將資源移至新的資源群組或訂用帳戶](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [將 Azure VM 移動到另一個區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [將 Azure VM 移至其他區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

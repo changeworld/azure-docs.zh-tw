@@ -3,16 +3,15 @@ title: 使用 CLI 進行 Azure 虛擬機器的維護控制
 description: 瞭解如何使用維護控制和 CLI，控制何時將維護套用至您的 Azure Vm。
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4843b4769e31748fd5f624005792c604db18f11e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 56f9873828e2f93008498beed986827a01872bf1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137496"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675854"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>控制維護控制和 Azure CLI 的更新
 
@@ -20,7 +19,7 @@ ms.locfileid: "82137496"
 
 ## <a name="create-a-maintenance-configuration"></a>建立維護設定
 
-使用`az maintenance configuration create`來建立維護設定。 這個範例會建立名為*myconfig.xml*的維護設定，範圍限定于主機。 
+使用 `az maintenance configuration create` 來建立維護設定。 這個範例會建立名為*myconfig.xml*的維護設定，範圍限定于主機。 
 
 ```azurecli-interactive
 az group create \
@@ -35,11 +34,11 @@ az maintenance configuration create \
 
 複製輸出中的設定識別碼，以供稍後使用。
 
-使用`--maintenanceScope host`可確保維護設定用於控制主機的更新。
+使用 `--maintenanceScope host` 可確保維護設定用於控制主機的更新。
 
 如果您嘗試使用相同的名稱建立設定，但在不同的位置，您會收到錯誤。 設定名稱在您的訂用帳戶中必須是唯一的。
 
-您可以使用`az maintenance configuration list`來查詢可用的維護設定。
+您可以使用來查詢可用的維護設定 `az maintenance configuration list` 。
 
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
@@ -47,11 +46,11 @@ az maintenance configuration list --query "[].{Name:name, ID:id}" -o table
 
 ## <a name="assign-the-configuration"></a>指派設定
 
-使用`az maintenance assignment create`將設定指派給隔離的 VM 或 Azure 專用主機。
+使用將設定 `az maintenance assignment create` 指派給隔離的 VM 或 Azure 專用主機。
 
 ### <a name="isolated-vm"></a>隔離的 VM
 
-使用設定的識別碼，將設定套用至 VM。 針對`--resource-type virtualMachines`指定虛擬機器的名稱`--resource-name`，並為中`--resource-group`的 vm 提供的資源群組，以及 vm 的位置。 `--location` 
+使用設定的識別碼，將設定套用至 VM。 針對指定 `--resource-type virtualMachines` 虛擬機器的名稱，並為中的 vm 提供的資源群組，以及 vm 的 `--resource-name` `--resource-group` 位置 `--location` 。 
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -66,9 +65,9 @@ az maintenance assignment create \
 
 ### <a name="dedicated-host"></a>專用主機
 
-若要將設定套用至專用主機，您需要包含`--resource-type hosts`， `--resource-parent-name`並以主機群組的名稱和。 `--resource-parent-type hostGroups` 
+若要將設定套用至專用主機，您需要包含 `--resource-type hosts` ， `--resource-parent-name` 並以主機群組的名稱和 `--resource-parent-type hostGroups` 。 
 
-參數`--resource-id`是主機的識別碼。 您可以使用[az vm host get 實例-view](/cli/azure/vm/host#az-vm-host-get-instance-view)來取得專用主機的識別碼。
+參數 `--resource-id` 是主機的識別碼。 您可以使用[az vm host get 實例-view](/cli/azure/vm/host#az-vm-host-get-instance-view)來取得專用主機的識別碼。
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -85,7 +84,7 @@ az maintenance assignment create \
 
 ## <a name="check-configuration"></a>檢查設定
 
-您可以確認設定已正確套用，或檢查以查看目前使用`az maintenance assignment list`套用的設定。
+您可以確認設定已正確套用，或檢查以查看目前使用套用的設定 `az maintenance assignment list` 。
 
 ### <a name="isolated-vm"></a>隔離的 VM
 
@@ -116,9 +115,9 @@ az maintenance assignment list \
 
 ## <a name="check-for-pending-updates"></a>檢查暫止的更新
 
-使用`az maintenance update list`查看是否有擱置中的更新。 更新--訂用帳戶為包含 VM 之訂用帳戶的識別碼。
+使用 `az maintenance update list` 查看是否有擱置中的更新。 更新--訂用帳戶為包含 VM 之訂用帳戶的識別碼。
 
-如果沒有任何更新，此命令會傳回錯誤訊息，其中將包含下列文字： `Resource not found...StatusCode: 404`。
+如果沒有任何更新，此命令會傳回錯誤訊息，其中將包含下列文字： `Resource not found...StatusCode: 404` 。
 
 如果有更新，即使有多個擱置中的更新，也只會傳回一個。 此更新的資料會在物件中傳回：
 
@@ -166,7 +165,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>套用更新
 
-使用`az maintenance apply update`來套用擱置中的更新。 成功時，此命令會傳回 JSON，其中包含更新的詳細資料。
+使用 `az maintenance apply update` 來套用擱置中的更新。 成功時，此命令會傳回 JSON，其中包含更新的詳細資料。
 
 ### <a name="isolated-vm"></a>隔離的 VM
 
@@ -199,9 +198,9 @@ az maintenance applyupdate create \
 
 ## <a name="check-the-status-of-applying-updates"></a>檢查套用更新的狀態 
 
-您可以使用`az maintenance applyupdate get`來檢查更新進度。 
+您可以使用來檢查更新進度 `az maintenance applyupdate get` 。 
 
-您可以使用`default`做為更新名稱來查看上次更新的結果，或將取代`myUpdateName`為您執行時所傳回的更新名稱`az maintenance applyupdate create`。
+您可以使用 `default` 做為更新名稱來查看上次更新的結果，或將取代 `myUpdateName` 為您執行時所傳回的更新名稱 `az maintenance applyupdate create` 。
 
 ```text
 Status         : Completed
@@ -245,7 +244,7 @@ az maintenance applyupdate get \
 
 ## <a name="delete-a-maintenance-configuration"></a>刪除維護設定
 
-用`az maintenance configuration delete`來刪除維護設定。 刪除設定會將維護控制從相關聯的資源中移除。
+用 `az maintenance configuration delete` 來刪除維護設定。 刪除設定會將維護控制從相關聯的資源中移除。
 
 ```azurecli-interactive
 az maintenance configuration delete \

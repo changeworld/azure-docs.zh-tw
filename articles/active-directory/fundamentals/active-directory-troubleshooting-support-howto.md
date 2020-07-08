@@ -7,7 +7,7 @@ author: msaburnley
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.subservice: fundamentals
 ms.workload: identity
 ms.date: 08/28/2017
@@ -15,15 +15,14 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1193bfc08ccbd86d4da09c4de472f09bb49208f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c49d795b80ed5e9536740e0d8fe877d070da87a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799357"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>尋求 Azure Active Directory 方面的協助及開立支援票證
-Microsoft 對 Azure Active Directory (Azure AD) 提供全球性的技術、售前、帳單和訂用帳戶支援。 Microsoft Azure 付費訂用帳戶與試用訂用帳戶則提供線上和電話支援 。 電話支援和線上帳單支援已推出其他語言版本。 
+Microsoft 對 Azure Active Directory (Azure AD) 提供全球性的技術、售前、帳單和訂用帳戶支援。 Microsoft Azure 付費訂用帳戶與試用訂用帳戶則提供線上和電話支援 。 電話支援與線上帳單支援提供其他語言服務。 
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>在不開啟支援票證的情況下尋找說明
 
@@ -46,30 +45,29 @@ Microsoft 對 Azure Active Directory (Azure AD) 提供全球性的技術、售�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，並開啟 **Azure Active Directory**。
    
-2. 向下捲動至 [疑難排解 + 支援]****，然後選取 [新增支援要求]****。
+1. 向下捲動至 [疑難排解 + 支援]****，然後選取 [新增支援要求]****。
    
-3. 在 [基本概念]**** 刀鋒視窗中，針對 [問題類型]**** 選取 [技術]****。
+1. 在 [基本概念]**** 刀鋒視窗中，針對 [問題類型]**** 選取 [技術]****。
 
-4. 選取您的**訂**用帳戶。
+1. 選取您的**訂**用帳戶。
 
-5. 針對 [**服務**]，選取 [ **Azure Active Directory**]。
+1. 針對 [**服務**]，選取 [ **Azure Active Directory**]。
 
-6. 建立要求的**摘要**。 摘要必須低於140個字元。
+1. 建立要求的**摘要**。 摘要必須低於140個字元。
   
-7. 選取**問題類型**，然後選取該類型的類別。 此時，您還會收到問題類別的自助資訊。
+1. 選取**問題類型**，然後選取該類型的類別。 此時，您還會收到問題類別的自助資訊。
   
-7. 新增其餘的問題資訊，然後按一下 [下一步]****。 
+1. 新增其餘的問題資訊，然後按一下 [下一步]****。 
 
-8. 此時，您會在 [**解決方案**] 分頁中提供自我協助解決方案和檔。 如果沒有任何解決方案能解決您的問題，請按 **[下一步]**。 
+1. 此時，您會在 [**解決方案**] 分頁中提供自我協助解決方案和檔。 如果沒有任何解決方案能解決您的問題，請按 **[下一步]**。 
 
-9. 在 [**詳細資料**] 分頁上，填寫必要的詳細資料，然後選取 [[嚴重性](https://azure.microsoft.com/support/plans/response/)]。 
+1. 在 [**詳細資料**] 分頁上，填寫必要的詳細資料，然後選取 [[嚴重性](https://azure.microsoft.com/support/plans/response/)]。 
  
-![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
+    ![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
  
-10. 提供您的連絡人資訊，然後選取 **[下一步]**。 
+1. 提供您的連絡人資訊，然後選取 **[下一步]**。 
 
-
-8. 提供您的連絡資訊，然後選取 [建立]****。
+1. 提供您的連絡資訊，然後選取 [建立]****。
   ![問題類別自助螢幕擷取畫面](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>如何在 Microsoft 365 系統管理中心開啟 Azure AD 的支援票證
@@ -79,19 +77,19 @@ Microsoft 對 Azure Active Directory (Azure AD) 提供全球性的技術、售�
 
 1. 使用具有 Enterprise Mobility + Security （EMS）授權的帳戶登入[Microsoft 365 系統管理中心](https://admin.microsoft.com)。
 
-2. 在 [支援]**** 圖格中，選取 [新增服務要求]****：
+1. 在 [支援]**** 圖格中，選取 [新增服務要求]****：
 
-3. 在 [支援概觀]**** 頁面上，選取 [身分識別管理]**** 或 [使用者和網域管理]****：
+1. 在 [支援概觀]**** 頁面上，選取 [身分識別管理]**** 或 [使用者和網域管理]****：
 
-4. 對於 [功能]****，選取您要支援的 Azure AD 功能。
+1. 對於 [功能]****，選取您要支援的 Azure AD 功能。
 
-5. 對於 [徵兆]****，選取適當的徵兆、摘要說明您的問題並提供相關的詳細資料，然後選取 [下一步]****。
+1. 對於 [徵兆]****，選取適當的徵兆、摘要說明您的問題並提供相關的詳細資料，然後選取 [下一步]****。
 
-6. 選取其中一個提供的自助資源，或者選取 [是，繼續]**** 或 [否，取消要求]****。
+1. 選取其中一個提供的自助資源，或者選取 [是，繼續]**** 或 [否，取消要求]****。
 
-7. 如果繼續，系統會要求您提供更多詳細資料。 您可以附加任何表示此問題的檔案，然後選取 [下一步]****。
+1. 如果繼續，系統會要求您提供更多詳細資料。 您可以附加任何表示此問題的檔案，然後選取 [下一步]****。
 
-8. 提供您的連絡資訊，然後選取 [提交要求]****。
+1. 提供您的連絡資訊，然後選取 [提交要求]****。
 
 ## <a name="get-phone-support"></a>取得電話支援
 

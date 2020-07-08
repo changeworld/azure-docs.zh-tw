@@ -9,12 +9,11 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 548cd488bc811ad16cd84950ce3819f2e1f3ddbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72792971"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080722"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>升級至 Azure 搜尋服務 .NET SDK 第3版
 
@@ -25,7 +24,7 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-如果您使用版本 2.0 預覽版或更舊版本的 [Azure 搜尋服務 .NET SDK](https://aka.ms/search-sdk)，本文可協助您將應用程式升級至版本 3。
+如果您使用版本 2.0 預覽版或更舊版本的 [Azure 搜尋服務 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文可協助您將應用程式升級至版本 3。
 
 如需包括範例的 SDK 一般逐步解說，請參閱 [如何從 .NET 應用程式使用 Azure 搜尋服務](search-howto-dotnet-sdk.md)。
 
@@ -41,7 +40,7 @@ Azure 搜尋服務 .NET SDK 版本 3 包含一些從舊版所做的變更。 這
 ## <a name="whats-new-in-version-3"></a>版本 3 的新功能
 Azure 搜尋服務 .NET SDK 版本 3 以最新推出的 Azure 搜尋服務 REST API 版本為目標，特別是 2016-09-01。 這樣可讓您從 .NET 應用程式中使用 Azure 搜尋服務的許多新功能，包括：
 
-* [自訂分析器](https://aka.ms/customanalyzers)
+* [自訂分析器](index-add-custom-analyzers.md)
 * [Azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)和 [Azure 表格儲存體](search-howto-indexing-azure-tables.md)索引子支援
 * 透過 [欄位對應](search-indexer-field-mappings.md)
 * 可安全地並行更新索引定義、索引子和資料來源的 ETag 支援

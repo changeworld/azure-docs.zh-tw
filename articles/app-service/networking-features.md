@@ -7,12 +7,11 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 87a8291387d50fae7027d007eedf49fa55b39b74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474899"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052767"
 ---
 # <a name="app-service-networking-features"></a>App Service 網路功能
 
@@ -85,7 +84,7 @@ App Service 有數個用來管理服務的端點。  這些位址會在個別的
 
 ### <a name="access-restrictions"></a>存取限制 
 
-「存取限制」功能可讓您根據來源 IP 位址篩選**輸入**要求。 篩選動作會在從您的應用程式執行所在之背景工作角色上游的前端角色上進行。 由於前端角色是來自背景工作的上游，因此可將存取限制功能視為您應用程式的網路層級保護。 此功能可讓您建立依優先順序評估的允許和拒絕位址區塊清單。 這類似于 Azure 網路中存在的「網路安全性群組」（NSG）功能。  您可以在 ASE 或多租使用者服務中使用這項功能。 與 ILB ASE 搭配使用時，您可以限制來自私人位址區塊的存取。
+「存取限制」功能可讓您根據原始 IP 位址篩選**輸入**要求。 篩選動作會在從您的應用程式執行所在之背景工作角色上游的前端角色上進行。 由於前端角色是來自背景工作的上游，因此可將存取限制功能視為您應用程式的網路層級保護。 此功能可讓您建立依優先順序評估的允許和拒絕位址區塊清單。 這類似于 Azure 網路中存在的「網路安全性群組」（NSG）功能。  您可以在 ASE 或多租使用者服務中使用這項功能。 與 ILB ASE 搭配使用時，您可以限制來自私人位址區塊的存取。
 
 ![存取限制](media/networking-features/access-restrictions.png)
 
@@ -114,7 +113,7 @@ App Service 有數個用來管理服務的端點。  這些位址會在個別的
 ### <a name="private-endpoint-preview"></a>私人端點（預覽）
 
 私人端點是一種網路介面，可讓您以私人且安全的方式，透過 Azure 私人連結連線到您的 Web 應用程式。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將 Web 應用程式帶入您的 VNet。 這項功能僅適用于您 Web 應用程式的**輸入**流量。
-[使用 Azure Web 應用程式的私用端點（預覽）][privateendpoints]
+[使用 Azure Web 應用程式的私人端點 (預覽)][privateendpoints]
  
 ### <a name="hybrid-connections"></a>混合式連線
 

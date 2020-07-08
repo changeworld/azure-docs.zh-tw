@@ -1,24 +1,23 @@
 ---
 title: M 系列-Azure 虛擬機器
 description: M 系列 Vm 的規格。
-services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 7b84537693b3ffc3f7398c6eb84615a96bf8e7df
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
-ms.translationtype: MT
+ms.openlocfilehash: 4050a74dfef1fb31939ba716cfbaf78577f1aaef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675939"
 ---
 # <a name="m-series"></a>M 系列
 
-M 系列提供高 vCPU 計數（最多128個 vcpu）和海量儲存體（最多 3.8 TiB）。 這也適用于極大的資料庫或其他受益于高 vCPU 計數和海量儲存體的應用程式。 Intel&reg; 8280M 的&reg; CPU E7-8890 v3 @ 2.50 g h z 和 intel&reg; &reg;白金（Cascade Lake）上都支援 M 系列大小。
+M 系列提供高 vCPU 計數 (最多 128 個 vCPU) 與大量記憶體 (最多 3.8 TiB)。 其也很適合用於受益於高 vCPU 計數與大量記憶體的極大型資料庫或其他應用程式。 Intel 8280M 的 &reg; &reg; CPU E7-8890 v3 @ 2.50 g h z 和 intel &reg; &reg; 白金（Cascade Lake）上都支援 M 系列大小。
 
-M 系列 VM 的功能 Intel&reg;超執行緒技術。
+M 系列 VM 的功能 Intel &reg; 超執行緒技術。
 
 ACU：160-180
 
@@ -32,7 +31,7 @@ ACU：160-180
 
 寫入加速器：[支援](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大未快取的磁片輸送量： IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
 |---|---|---|---|---|---|---|---|
 | Standard_M8ms                    | 8   | 218.75 | 256   | 8  | 10000/100 （793）     | 5000/125   | 4/2000  |
 | Standard_M16ms                   | 16  | 437.5  | 512   | 16 | 20000/200 （1587）    | 10000/250  | 8/4000  |
@@ -62,7 +61,7 @@ ACU：160-180
 - [儲存體最佳化](sizes-storage.md)
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
-- [上一代](sizes-previous-gen.md)
+- [前幾代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>後續步驟
 

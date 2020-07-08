@@ -6,12 +6,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 69686cad20bc4ce70bff2a92a216c9430522c301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dfb760477fc528575212d79d929661c2276effbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278840"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85079068"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Cache for Redis
 本主題說明如何執行管理工作，例如為 Azure Cache for Redis 執行個體進行[重新啟動](#reboot)和[排程更新](#schedule-updates)。
@@ -36,8 +35,8 @@ ms.locfileid: "79278840"
 對於用戶端應用程式的影響，會根據您重新啟動的節點而有所不同。
 
 * **主要** - 重新啟動主要節點時，Azure Cache for Redis 會容錯移轉至複本節點，並將其升級為主要節點。 在此容錯移轉期間，可能會有一小段時間無法連接快取。
-* **從屬** - 重新啟動從屬節點時，通常不會對快取用戶端產生任何影響。
-* **主要和從屬** - 重新啟動這兩個快取節點時，在主要節點恢復上線之前，將會遺失快取中的所有資料且無法連接快取。 如果您已設定[資料持續性](cache-how-to-premium-persistence.md)，則當快取恢復連線時，將會還原最近一次備份，但在此備份後發生的任何快取寫入將會遺失。
+* **複本**-重新開機複本節點時，通常不會對快取用戶端產生任何影響。
+* **主要和複本**-當這兩個快取節點重新開機時，所有資料都會在快取中遺失，而快取的連接會失敗，直到主要節點恢復上線為止。 如果您已設定[資料持續性](cache-how-to-premium-persistence.md)，則當快取恢復連線時，將會還原最近一次備份，但在此備份後發生的任何快取寫入將會遺失。
 * **已啟用叢集的進階快取節點** - 當您重新啟動一或多個已啟用叢集的進階快取節點時，所選節點的行為與您重新啟動回應節點或非叢集快取的節點時相同。
 
 ## <a name="reboot-faq"></a>重新啟動常見問題集
@@ -47,7 +46,7 @@ ms.locfileid: "79278840"
 * [我可以使用 PowerShell、CLI 或其他管理工具重新啟動我的快取嗎？](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
 
 ### <a name="which-node-should-i-reboot-to-test-my-application"></a>若要測試我的應用程式，我應該重新啟動哪一個節點？
-若要針對快取的主要節點失敗測試應用程式復原功能，重新啟動 **主要** 節點。 若要針對次要節點失敗測試應用程式復原功能，重新啟動 **從屬** 節點。 若要針對整體快取失敗測試應用程式復原功能，重新啟動 **這兩個** 節點。
+若要針對快取的主要節點失敗測試應用程式復原功能，重新啟動 **主要** 節點。 若要針對次要節點失敗測試應用程式的復原，請重新開機**複本**節點。 若要針對整體快取失敗測試應用程式復原功能，重新啟動 **這兩個** 節點。
 
 ### <a name="can-i-reboot-the-cache-to-clear-client-connections"></a>我可以重新啟動快取來清除用戶端連線嗎？
 是，如果您重新啟動快取，即會清除所有用戶端連線。 若發生所有用戶端連線都已用盡的情況 (因為發生邏輯錯誤或用戶端應用程式中發生錯誤)，重新啟動非常實用。 每個定價層對於各種不同大小都有不同的 [用戶端連線限制](cache-configure.md#default-redis-server-configuration) ，一旦觸達這些限制之後，就無法再接受任何用戶端連線。 重新啟動快取提供一種方式來清除所有用戶端連線。
@@ -58,7 +57,7 @@ ms.locfileid: "79278840"
 > 
 
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>如果我重新啟動，將會遺失快取中的資料嗎？
-如果您重新開機**主要**和**從屬**節點，快取中的所有資料（如果您使用已啟用叢集的高階快取，則會在該分區中）可能會遺失，但不保證這兩者。 如果您已設定[資料持續性](cache-how-to-premium-persistence.md)，則當快取恢復連線時，將會還原最近一次備份，但在此備份後發生的任何快取寫入將會遺失。
+如果您重新開機**主要**和**複本**節點，則快取中的所有資料（如果您使用已啟用叢集的高階快取，則會在該分區中）可能會遺失，但不保證這種情況。 如果您已設定[資料持續性](cache-how-to-premium-persistence.md)，則當快取恢復連線時，將會還原最近一次備份，但在此備份後發生的任何快取寫入將會遺失。
 
 如果您只重新啟動這其中一個節點，通常不會遺失資料，但仍有可能發生。 例如，如果重新啟動主要節點且快取寫入正在進行中，則來自快取寫入的資料即會遺失。 如果您重新啟動一個節點，而另一個節點剛好同時因為失敗而當機，也有可能造成資料遺失。 如需深入了解資料遺失的可能原因，請參閱[我在 Redis 中的資料怎麼了？](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 
@@ -66,7 +65,7 @@ ms.locfileid: "79278840"
 是，如需 PowerShell 指示，請參閱[重新啟動 Azure Cache for Redis](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis)。
 
 ## <a name="schedule-updates"></a>更新排程
-[**排程更新**] 分頁可讓您指定快取實例的維護視窗。 若指定了維護期間，即會在此期間進行任何 Redis 伺服器更新。 
+[**排程更新**] 分頁可讓您指定快取實例的維護視窗。 維護期間可讓您控制用來裝載快取的 VM 在一周中的日期和時間，以進行更新。 Azure Cache for Redis 會在您定義的指定時間範圍內，盡全力開始和完成更新 Redis 伺服器軟體。
 
 > [!NOTE] 
 > 維護期間僅適用於 Redis 伺服器更新，不適用於任何 Azure 更新，或是在裝載快取的 VM 上更新作業系統。

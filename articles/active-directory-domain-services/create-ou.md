@@ -9,69 +9,68 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 61f951c0dd6561fc8d5a5de6b80e3759fd42eb78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e0188a35289c22da784ca856c80212638052a609
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655549"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040277"
 ---
-# <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD Domain Services 受控網域中建立組織單位（OU）
+# <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>在 Azure Active Directory Domain Services 受控網域中建立組織單位（OU）
 
-Active Directory Domain Services （AD DS）中的組織單位（Ou）可讓您以邏輯方式將物件分組，例如使用者帳戶、服務帳戶或電腦帳戶。 接著，您可以將系統管理員指派給特定的 Ou，並套用群組原則來強制執行目標設定設定。
+Active Directory Domain Services （AD DS）受控網域中的組織單位（Ou）可讓您以邏輯方式將物件分組，例如使用者帳戶、服務帳戶或電腦帳戶。 接著，您可以將系統管理員指派給特定的 Ou，並套用群組原則來強制執行目標設定設定。
 
 Azure AD DS 受控網域包含下列兩個內建的 Ou：
 
 * *AADDC 電腦*-包含所有已加入受控網域之電腦的電腦物件。
 * *AADDC 使用者*-包含從 Azure AD 租使用者中同步處理的使用者和群組。
 
-當您建立和執行使用 Azure AD DS 的工作負載時，您可能需要建立服務帳戶，應用程式才能自行驗證。 若要組織這些服務帳戶，您通常會在 Azure AD DS 受控網域中建立自訂 OU，然後在該 OU 內建立服務帳戶。
+當您建立和執行使用 Azure AD DS 的工作負載時，您可能需要建立服務帳戶，應用程式才能自行驗證。 若要組織這些服務帳戶，您通常會在受控網域中建立自訂的 OU，然後在該 OU 內建立服務帳戶。
 
-在混合式環境中，在內部部署 AD DS 環境中建立的 Ou 不會同步處理至 Azure AD DS。 Azure AD DS 受控網域會使用單層的 OU 結構。 所有使用者帳戶和群組都會儲存在*AADDC Users*容器中，儘管是從不同的內部部署網域或樹系進行同步處理，即使您已在該處設定階層式 OU 結構也一樣。
+在混合式環境中，在內部部署 AD DS 環境中建立的 Ou 不會同步處理至受控網域。 受控網域會使用單層的 OU 結構。 所有使用者帳戶和群組都會儲存在*AADDC Users*容器中，儘管是從不同的內部部署網域或樹系進行同步處理，即使您已在該處設定階層式 OU 結構也一樣。
 
-本文說明如何在您的 Azure AD DS 受控網域中建立 OU。
+本文將示範如何在受控網域中建立 OU。
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要完成本文，您需要下列資源和許可權：
+若要完成本文章，您需要下列資源和權限：
 
 * 有效的 Azure 訂用帳戶。
     * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
-    * 如有需要，請完成教學課程，以[建立及設定 Azure Active Directory Domain Services 實例][create-azure-ad-ds-instance]。
+    * 如有需要，請完成教學課程，以[建立及設定 Azure Active Directory Domain Services 受控網域][create-azure-ad-ds-instance]。
 * 已加入 Azure AD DS 受控網域的 Windows Server 管理 VM。
     * 如有需要，請完成教學課程以[建立管理 VM][tutorial-create-management-vm]。
-* 屬於您 Azure AD 租用戶中 Azure AD DC 系統管理員  群組成員的使用者帳戶。
+* 屬於您 Azure AD 租用戶中 Azure AD DC 系統管理員** 群組成員的使用者帳戶。
 
 ## <a name="custom-ou-considerations-and-limitations"></a>自訂 OU 的考慮和限制
 
-當您在 Azure AD DS 受控網域中建立自訂 Ou 時，您會獲得額外的管理彈性以進行使用者管理和套用群組原則。 相較于內部部署 AD DS 環境，在 Azure AD DS 中建立和管理自訂 OU 結構時，有一些限制和考慮：
+當您在受控網域中建立自訂 Ou 時，您可以為使用者管理和套用群組原則取得額外的管理彈性。 相較于內部部署 AD DS 環境，在受控網域中建立和管理自訂 OU 結構時，有一些限制和考慮：
 
 * 若要建立自訂 Ou，使用者必須是*AAD DC 系統管理員*群組的成員。
 * 建立自訂 OU 的使用者會被授與該 OU 的系統管理許可權（完全控制），而且是資源擁有者。
     * 根據預設， *AAD DC 系統管理員*群組也具有自訂 OU 的完全控制權。
 * 系統會建立*AADDC 使用者*的預設 OU，其中包含您 Azure AD 租使用者中所有已同步處理的使用者帳戶。
-    * 您無法將使用者或群組從*AADDC users* OU 移至您所建立的自訂 ou。 只有在 Azure AD DS 受控網域中建立的使用者帳戶或資源可以移至自訂 Ou。
+    * 您無法將使用者或群組從*AADDC users* OU 移至您所建立的自訂 ou。 只有在受控網域中建立的使用者帳戶或資源可以移至自訂 Ou。
 * 您在自訂 Ou 底下建立的使用者帳戶、群組、服務帳戶和電腦物件，無法在您的 Azure AD 租使用者中使用。
-    * 這些物件不會使用 Microsoft Graph API 或在 Azure AD UI 中顯示;它們僅適用于您的 Azure AD DS 受控網域。
+    * 這些物件不會使用 Microsoft Graph API 或在 Azure AD UI 中顯示;它們僅適用于您的受控網域。
 
 ## <a name="create-a-custom-ou"></a>建立自訂 OU
 
-若要建立自訂 OU，您可以使用來自已加入網域之 VM 的 Active Directory 系統管理工具。 此 Active Directory 管理中心可讓您在 Azure AD DS 受控網域（包括 Ou）中，查看、編輯和建立資源。
+若要建立自訂 OU，您可以使用來自已加入網域之 VM 的 Active Directory 系統管理工具。 此 Active Directory 管理中心可讓您在受控網域（包括 Ou）中，查看、編輯和建立資源。
 
 > [!NOTE]
-> 若要在 Azure AD DS 受控網域中建立自訂 OU，您必須登入屬於*AAD DC 系統管理員*群組成員的使用者帳戶。
+> 若要在受控網域中建立自訂 OU，您必須登入屬於*AAD DC 系統管理員*群組成員的使用者帳戶。
 
 1. 登入您的管理 VM。 如需如何使用 Azure 入口網站進行連線的步驟，請參閱連線[到 Windows SERVER VM][connect-windows-server-vm]。
 1. 從 [開始] 畫面中，選取 [系統**管理工具**]。 已安裝在教學課程中的可用管理工具清單，以[建立管理 VM][tutorial-create-management-vm]。
 1. 若要建立和管理 Ou，請從系統管理工具清單中選取 [ **Active Directory 管理中心**]。
-1. 在左窗格中，選擇您的 Azure AD DS 受控網域，例如*aaddscontoso.com*。 隨即顯示現有 Ou 和資源的清單：
+1. 在左窗格中，選擇您的受控網域，例如*aaddscontoso.com*。 隨即顯示現有 Ou 和資源的清單：
 
-    ![在 Active Directory 管理中心中選取您的 Azure AD DS 受控網域](./media/create-ou/create-ou-adac-overview.png)
+    ![在 [Active Directory 管理中心中選取您的受控網域](./media/create-ou/create-ou-adac-overview.png)
 
 1. [**工作] 窗格**會顯示在 Active Directory 管理中心的右邊。 在網域下（例如*aaddscontoso.com*），選取 [**新增 > 組織單位**]。
 

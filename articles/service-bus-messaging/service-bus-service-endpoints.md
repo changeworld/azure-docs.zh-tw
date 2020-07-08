@@ -1,21 +1,13 @@
 ---
 title: 設定 Azure 服務匯流排的虛擬網路服務端點
 description: 本文提供如何將 Microsoft 服務端點新增至虛擬網路的相關資訊。
-services: service-bus
-documentationcenter: ''
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
-ms.author: aschhab
-ms.openlocfilehash: d1766ffb579bb1a86da91ac73a396ce0d008f89e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 2b3e7d23dcfd3f932aefa3809ebd13b9cfee0c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340985"
 ---
 # <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>設定 Azure 服務匯流排的虛擬網路服務端點
 
@@ -63,10 +55,10 @@ ms.locfileid: "82117619"
 ## <a name="use-azure-portal"></a>使用 Azure 入口網站
 本節說明如何使用 Azure 入口網站來新增虛擬網路服務端點。 若要限制存取，您需要整合此事件中樞命名空間的虛擬網路服務端點。
 
-1. 流覽至您在[Azure 入口網站](https://portal.azure.com)中的**服務匯流排命名空間**。
-2. 在左側功能表上，選取 [**網路**] 選項。 預設會選取 [**所有網路**] 選項。 您的命名空間會接受來自任何 IP 位址的連接。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
+1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)中的 [服務匯流排命名空間]。
+2. 在左側功能表上，選取 [網路] 選項。 依預設會選取 [所有網路] 選項。 您的命名空間會接受來自任何 IP 位址的連接。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
 
-    ![[防火牆-所有網路] 選項已選取](./media/service-endpoints/firewall-all-networks-selected.png)
+    ![防火牆 - 已選取 [所有網路] 選項](./media/service-endpoints/firewall-all-networks-selected.png)
 1. 選取頁面頂端的 [**選取的網路**] 選項。
 2. 在頁面的 [**虛擬網路**] 區段中，選取 [ **+ 新增現有的虛擬網路**]。 
 
@@ -81,7 +73,7 @@ ms.locfileid: "82117619"
 
     > [!NOTE]
     > 如果您無法啟用服務端點，您可以使用 Resource Manager 範本來忽略遺失的虛擬網路服務端點。 在入口網站上無法使用這項功能。
-6. 選取工具列上的 [**儲存**] 來儲存設定。 等候幾分鐘的時間，確認才會顯示在入口網站通知中。 [**儲存**] 按鈕應該是停用的。 
+6. 選取工具列上的 [儲存] 來儲存設定。 等候幾分鐘的時間，確認才會顯示在入口網站通知中。 [**儲存**] 按鈕應該是停用的。 
 
     ![儲存網路](./media/service-endpoints/save-vnet.png)
 
@@ -94,7 +86,7 @@ ms.locfileid: "82117619"
 * **virtualNetworkingSubnetId**：虛擬網路子網路的完整 Resource Manager 路徑，例如，`/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` 適用於虛擬網路的預設子網路。
 
 > [!NOTE]
-> 雖然無法使用任何拒絕規則，但 Azure Resource Manager 範本是將預設動作設定為不會限制連線的 **"Allow"**。
+> 雖然無法使用任何拒絕規則，但 Azure Resource Manager 範本是將預設動作設定為不會限制連線的 **"Allow"** 。
 > 在建立「虛擬網路」或「防火牆」規則時，我們必須將 ***"defaultAction"***
 > 
 > 從
@@ -208,7 +200,7 @@ ms.locfileid: "82117619"
   }
 ```
 
-若要部署範本，請依照 [Azure Resource Manager][lnk-deploy] 適用的指示執行。
+若要部署範本，請依照適用於 [Azure Resource Manager][lnk-deploy] 的指示執行。
 
 ## <a name="next-steps"></a>後續步驟
 

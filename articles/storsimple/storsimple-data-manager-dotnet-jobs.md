@@ -3,19 +3,18 @@ title: 將 .NET SDK 用於 Microsoft Azure StorSimple 資料管理員作業
 description: 了解如何使用 .NET SDK 啟動 StorSimple Data Manager 作業
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 316eddc98de78974bb2583f91ced635b148686c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76270732"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514889"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用 .NET SDK 起始資料轉換
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文說明如何使用 StorSimple Data Manager 服務中的資料轉換功能來轉換 StorSimple 裝置資料。 轉換後的資料由雲端中的其他 Azure 服務取用。
 
@@ -26,7 +25,7 @@ ms.locfileid: "76270732"
  
   本文詳細說明如何建立範例 .NET 主控台應用程式來起始資料轉換作業，然後追蹤直到完成為止。 若要深入了解如何透過自動化起始資料轉換，請前往[使用 Azure 自動化 Runbook 來觸發資料轉換作業](storsimple-data-manager-job-using-automation.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您有︰
 *   執行以下軟體的電腦：
@@ -68,7 +67,7 @@ ms.locfileid: "76270732"
     2. 選取 [已安裝] > [範本] > [Visual C#] > [主控台應用程式]****。
     3. 輸入 **DataTransformationApp** 做為 [名稱]****。
     4. 選取 **C:\DataTransformation** 做為 [位置]****。
-    6. 按一下 [確定]**** 建立專案。
+    6. 按一下 [確定]  以建立專案。
 
         ![建立專案 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
@@ -83,7 +82,7 @@ ms.locfileid: "76270732"
 
        ![新增 dll 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
-5. 將下列**using**語句新增至專案中的原始檔（Program.cs）。
+5. 將下列 **using** 陳述式加入專案的原始程式檔 (Program.cs) 中。
 
     ```
     using System;

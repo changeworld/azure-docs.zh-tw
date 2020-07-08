@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: 23049a2c-055e-4d0e-b8f5-af2a87ecf53f
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 650798fdb884e6494990efb533335a1dd8b4d89f
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67875398"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514910"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>針對 StorSimple 上裝載的檔案共用使用 Azure Site Recovery 的自動化災害復原解決方案
 
@@ -37,7 +36,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
 ## <a name="supported-azure-site-recovery-deployment-options"></a>支援的 Azure Site Recovery 部署選項
 客戶可以將檔案伺服器部署為在 Hyper-V 或 VMware 上執行的實體服務或虛擬機器 (VM)，然後從由 StorSimple 儲存體劃分出來的磁碟區建立檔案共用。 Azure Site Recovery 可以保護次要站台或 Azure 的實體與虛擬部署。 本文件涵蓋 DR 解決方案的詳細資料，該解決方案使用 Azure 做為 Hyper-V 上裝載之檔案伺服器 VM 的復原網站，並且在 StorSimple 儲存體上使用檔案共用。 檔案伺服器 VM 位於 VMware VM 或實體電腦上的其他案例也可以透過類似方式實作。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 實作單鍵災害復原解決方案 (針對 StorSimple 儲存體上裝載的檔案共用使用 Azure Site Recovery) 時，有下列先決條件：
 
    - Hyper-V 或 VMware 或實體電腦上裝載的內部部署 Windows Server 2012 R2 檔案伺服器 VM
@@ -91,9 +90,9 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
          > [!NOTE]
          > 視版本不同，檔案名稱可能會改變。
       
-1. 按 [下一步]  。
+1. 按 [下一步] 。
 1. 接受 [合約條款]**** 然後按一下 [下一步]****。
-1. 按一下 [完成]  。
+1. 按一下 [完成] 。
 1. 使用從 StorSimple 儲存體劃分出來的磁碟區建立檔案共用。 如需詳細資訊，請參閱 [使用 StorSimple Manager 服務管理磁碟區](storsimple-manage-volumes.md)。
    
    1. 在您的內部部署 VM 上，按 Windows 鍵 +Q 並搜尋 **iSCSI**。
@@ -177,7 +176,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
    - _RecoveryPlanName_**-DeviceIpAddress**：裝置的 IP 位址 (可在 [StorSimple 裝置管理員] 區段 [設定]&gt; ** [網路]** &gt; ** [DNS 設定]** &gt; **** 群組下方的 [裝置]**** 索引標籤中找到此資訊)。
    - _RecoveryPlanName_**-VolumeContainers**：裝置上的磁片區容器的逗號分隔字串，必須進行故障切換。例如： volcon1、volcon2、volcon3。
    - _RecoveryPlanName_**-TargetDeviceName**：要故障切換容器的 StorSimple 雲端設備。
-   - _RecoveryPlanName_**-TargetDeviceIpAddress**：目標裝置的 IP 位址（可在 [**虛擬機器**] 區段&gt; [**設定**] [群組&gt; ] [**網路**功能] 索引標籤中找到）。
+   - _RecoveryPlanName_**-TargetDeviceIpAddress**：目標裝置的 IP 位址（可在 [**虛擬機器**] 區段 [ &gt; **設定**] [群組] [網路功能] 索引標籤中找到 &gt; **Networking** ）。
    - _RecoveryPlanName_**-StorageAccountName**：將儲存腳本（必須在已故障的 VM 上執行）的儲存體帳戶名稱。 這可以是任何擁有一些空間可暫時儲存指令碼的儲存體帳戶。
    - _RecoveryPlanName_**-StorageAccountKey**：上述儲存體帳戶的存取金鑰。
    - _RecoveryPlanName_**-VMGUIDS**：在保護 VM 時，AZURE SITE RECOVERY 為每個 VM 指派一個唯一識別碼，以提供已故障 over VM 的詳細資料。 若要取得 VMGUID，請選取 [復原服務] **** 索引標籤，然後按一下 [受保護的項目] ** [保護群組] ** &gt; ** [機器] ** &gt; ** [屬性] ** &gt; ****。 如果您有多個 VM，請透過以逗號區隔的字串方式新增 GUID。
@@ -234,7 +233,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
    
    匯入 StorSimple 8000 系列模組後，[模組]**** 索引標籤應會如下所示：
    
-      ![模組](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
+      ![單元](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
 
 1. 移至 [復原服務] **** 區段並選取您之前建立的 Azure Site Recovery 保存庫。
 1. 從 [管理] **** 群組選取 [復原計劃 (站台復原)] **** 群組，然後如下所述建立新的復原計劃：

@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 8d4e9a1e255884b9250879ab486d7a4e2849473a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a2a9b149bd76ed276f3210f27ea0f60bbc7b7662
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192088"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84190881"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 入口網站在 HDInsight 中建立 Linux 型叢集
 
@@ -33,35 +32,38 @@ Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resour
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 從頂端功能表中，選取 [ **+ 建立資源**]。
+1. 在頂端功能表中，選取 [+ 建立資源]  。
 
     ![在 Azure 入口網站中建立新的叢集](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "在 Azure 入口網站中建立新的叢集")
 
-1. 選取 [**分析** > **Azure HDInsight**以移至 [**建立 HDInsight**叢集] 頁面。
+1. 選取 [分析]   > [Azure HDInsight]  以移至 [建立 HDInsight 叢集]  頁面。
 
 ## <a name="basics"></a>基本概念
 
 ![HDInsight 建立叢集基本概念](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "在 Azure 入口網站中建立新的叢集")
 
-從 [**基本**] 索引標籤中，提供下列資訊：
+在 [基本資料]  索引標籤中提供下列資訊：
 
 |屬性 |描述 |
 |---|---|
 |訂用帳戶|從下拉式清單中，選取用於此叢集的 Azure 訂用帳戶。|
 |資源群組|從下拉式清單中選取現有資源群組，或選取 [新建]  。|
 |叢集名稱|輸入全域唯一名稱。|
-|區域|從下拉式清單中，選取要建立叢集的區域。|
+|區域|從下拉式清單中，選取要在其中建立叢集的區域。|
 |叢集類型|按一下 [**選取叢集類型**] 以開啟清單。 從清單中選取想要的叢集類型。 HDInsight 叢集有不同的類型。 它們與調整叢集時所針對的工作負載或技術對應。 目前沒有任何支援的方法可建立結合多個類型的叢集。|
 |版本|從下拉式清單中選取**版本**。 如果您不知道要選擇哪一個項目，請使用預設版本。 如需詳細資訊，請參閱 [HDInsight 叢集版本](hdinsight-component-versioning.md)。|
 |叢集登入使用者名稱|提供使用者名稱，預設值為 **admin**。|
 |叢集登入密碼|請提供密碼。|
 |確認叢集登入密碼|重新輸入密碼|
-|安全殼層 (SSH) 使用者名稱|提供使用者名稱，預設值為**sshuser**|
+|安全殼層 (SSH) 使用者名稱|提供使用者名稱，預設值為 **sshuser**|
 |將叢集登入密碼用於 SSH|如果您想要與您稍早指定的系統管理員密碼相同的 SSH 密碼，請選取 [**使用 ssh**的叢集登入密碼] 核取方塊。 如果不要，請提供 [密碼]**** 或 [公開金鑰]**** 來驗證 SSH 使用者。 我們建議使用公開金鑰。 選擇底部的 [選取]**** 以儲存認證設定。  如需詳細資訊，請參閱[使用 SSH 連線到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。|
 
 選取 **[下一步]： [儲存體 >>** ] 繼續前往下一個索引標籤。
 
 ## <a name="storage"></a>儲存體
+
+> [!WARNING] 
+> 自6月15日起，2020客戶將無法使用 HDInsight 建立新的服務主體。 請參閱使用 Azure Active Directory[建立服務主體和憑證](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
 ![HDInsight 建立叢集儲存體](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "在 Azure 入口網站儲存體中建立新的叢集")
 
@@ -91,12 +93,12 @@ Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resour
 
 從 [**安全性 + 網路**] 索引標籤中，提供下列資訊：
 
-|屬性 |描述 |
+|屬性 |說明 |
 |---|---|
 |企業安全性套件|選擇性：選取要使用**企業安全性套件**的核取方塊。 如需詳細資訊，請參閱[使用 Azure Active Directory Domain Services 設定具有企業安全性套件的 HDInsight](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)叢集。|
 |TLS|選擇性：從下拉式清單中選取 [TLS 版本]。 如需詳細資訊，請參閱[傳輸層安全性](./transport-layer-security.md)。|
 |虛擬網路|選擇性：從下拉式清單中選取現有的虛擬網路和子網。 如需相關資訊，請參閱[規劃 Azure HDInsight 叢集的虛擬網路部署](hdinsight-plan-virtual-network-deployment.md)。 此文章包含虛擬網路的特定設定需求。|
-|磁片加密設定|選擇性：選取要使用加密的核取方塊。 如需詳細資訊，請參閱[客戶管理的金鑰磁片加密](./disk-encryption.md)。|
+|磁片加密設定|選擇性：選取要使用加密的核取方塊。 如需詳細資訊，請參閱[客戶管理的金鑰磁碟加密](./disk-encryption.md)。|
 |Kafka REST Proxy|此設定僅適用于叢集類型 Kafka。 如需詳細資訊，請參閱[使用 REST proxy](./kafka/rest-proxy.md)。|
 |身分識別|選擇性：從下拉式清單中選取現有的使用者指派服務識別。 如需詳細資訊，請參閱[Azure HDInsight 中的受控](./hdinsight-managed-identities.md)識別。|
 
@@ -108,7 +110,7 @@ Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resour
 
 從 [設定 **+ 定價**] 索引標籤中，提供下列資訊：
 
-|屬性 |描述 |
+|屬性 |說明 |
 |---|---|
 |+ 新增應用程式|選擇性：選取您想要的任何應用程式。 Microsoft、獨立軟體廠商 (ISV) 或您可以開發這些應用程式。 如需詳細資訊，請參閱[在叢集建立期間安裝應用程式](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation)。|
 |節點大小|選擇性：選取不同大小的節點。|

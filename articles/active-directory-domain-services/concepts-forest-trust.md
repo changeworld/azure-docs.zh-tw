@@ -8,14 +8,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f4bfffe54fb87953ae737ecf83ea898cfe78743c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476430"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040328"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 中資源樹系的信任關係如何運作
 
@@ -26,6 +25,10 @@ Active Directory Domain Services （AD DS）透過網域和樹系信任關係，
 AD DS 和 Windows 分散式安全性模型所提供的存取控制機制，提供網域和樹系信任的操作環境。 為了讓這些信任能夠正常運作，每個資源或電腦都必須擁有其所在網域中 DC 的直接信任路徑。
 
 使用已驗證的遠端程序呼叫（RPC）連線到受信任的網域授權單位時，Net Logon 服務會執行信任路徑。 受保護的通道也會透過區域間的信任關係，延伸至其他 AD DS 網域。 此安全通道可用來取得及驗證安全性資訊，包括使用者和群組的安全識別碼（Sid）。
+
+如需信任如何適用于 Azure AD DS 的總覽，請參閱[資源樹系概念和功能][create-forest-trust]。
+
+若要開始在 Azure AD DS 中使用信任，請[建立使用樹系信任的受控網域][tutorial-create-advanced]。
 
 ## <a name="trust-relationship-flows"></a>信任關係流程
 
@@ -58,7 +61,7 @@ AD DS 樹系中的所有網域信任都是雙向、可轉移的信任。 建立�
 
 每次您在樹系中建立新網域時，會自動在新的網域和其父系網域之間建立雙向、可轉移的信任關係。 如果將子域新增至新的網域，則信任路徑會沿著延伸新網域和其父系網域之間所建立之初始信任路徑的網域階層向上流動。 可轉移的信任會沿著其形成的網域樹系上溯，在網域樹系中所有網域之間建立可轉移的信任。
 
-驗證要求會遵循這些信任路徑，因此樹系中任何網域的帳戶都可以由樹系中的任何其他網域進行驗證。 透過單一登入程序，具有適當權限的帳戶可以存取樹系中任何網域內的資源。
+驗證要求會遵循這些信任路徑，因此樹系中任何網域的帳戶都可以由樹系中的任何其他網域進行驗證。 使用單一登入精靈，具有適當許可權的帳戶可以存取樹系中任何網域內的資源。
 
 ## <a name="forest-trusts"></a>樹系信任
 
@@ -70,7 +73,7 @@ AD DS 樹系中的所有網域信任都是雙向、可轉移的信任。 建立�
 
 下圖顯示在單一組織中，三個 AD DS 樹系之間的兩個不同樹系信任關係。
 
-![單一組織內樹系信任關係的圖表](./media/concepts-forest-trust/forest-trusts.png)
+![單一組織內樹系信任關係的圖表](./media/concepts-forest-trust/forest-trusts-diagram.png)
 
 此範例設定提供下列存取權：
 
@@ -128,7 +131,7 @@ Kerberos 通訊協定也會使用跨領域票證授與服務（TGS）的信任�
 
 2. 目前網域與信任路徑上的下一個網域之間是否有可轉移的信任關係？
     * 如果是，請將參考傳送至信任路徑上的下一個網域。
-    * 若為 [否]，則傳送拒絕登入的訊息給用戶端。
+    * 如果不是，請將登入拒絕的訊息傳送給用戶端。
 
 ### <a name="ntlm-referral-processing"></a>NTLM 參考處理
 
@@ -152,7 +155,7 @@ NTLM 驗證通訊協定取決於網域控制站上的 Net Logon 服務，以取�
 
 第一次建立樹系信任時，每個樹系會收集其夥伴樹系中的所有受信任命名空間，並將資訊儲存在[受信任的網域物件](#trusted-domain-object)中。 受信任的命名空間包括網域樹系名稱、使用者主體名稱（UPN）尾碼、服務主體名稱（SPN）尾碼，以及在另一個樹系中使用的安全識別碼（SID）命名空間。 TDO 物件已複寫至通用類別目錄。
 
-在驗證通訊協定可以遵循樹系信任路徑之前，資源電腦的服務主體名稱（SPN）必須解析成另一個樹系中的位置。 SPN 可以是下列其中一項：
+在驗證通訊協定可以遵循樹系信任路徑之前，資源電腦的服務主體名稱（SPN）必須解析成另一個樹系中的位置。 SPN 可以是下列其中一個名稱：
 
 * 主機的 DNS 名稱。
 * 網域的 DNS 名稱。
@@ -162,7 +165,7 @@ NTLM 驗證通訊協定取決於網域控制站上的 Net Logon 服務，以取�
 
 下圖和步驟提供 Kerberos 驗證程式的詳細描述，當執行 Windows 的電腦嘗試從位於另一個樹系中的電腦存取資源時，就會使用該進程。
 
-![透過樹系信任的 Kerberos 進程圖表](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![透過樹系信任的 Kerberos 進程圖表](media/concepts-forest-trust/kerberos-over-forest-trust-process-diagram.png)
 
 1. *User1*使用來自*europe.tailspintoys.com*網域的認證登入*Workstation1* 。 然後，使用者會嘗試存取位於*usa.wingtiptoys.com*樹系中*包含 fileserver1*上的共用資源。
 
@@ -228,7 +231,7 @@ TDO 中包含的資訊會根據是否由網域信任或樹系信任所建立的 
 
 如果使用新密碼進行驗證失敗，因為密碼無效，信任的網域控制站會嘗試使用舊密碼進行驗證。 如果它使用舊密碼進行驗證成功，則會在15分鐘內繼續執行密碼變更程式。
 
-信任密碼更新必須在30天內複寫到信任雙方的網域控制站。 如果在30天后變更信任密碼，且網域控制站只有 N-2 密碼，則不能使用信任端的信任，也無法在受信任的端建立安全通道。
+信任密碼更新必須在30天內複寫到信任雙方的網域控制站。 如果信任密碼在30天后變更，且網域控制站只有 N-2 密碼，則無法使用信任端的信任，也無法在受信任的端建立安全通道。
 
 ## <a name="network-ports-used-by-trusts"></a>信任所使用的網路埠
 
@@ -276,7 +279,7 @@ LSA 安全性子系統提供核心模式和使用者模式的服務，以驗證�
 
 若要深入瞭解資源樹系，請參閱[樹系信任在 AZURE AD DS 中的運作方式？][concepts-trust]
 
-若要開始建立具有資源樹系的 Azure AD DS 受控網域，請參閱[建立和設定 AZURE AD ds 受控網域][tutorial-create-advanced]。 接著，您可以對內部[部署網域（預覽）建立輸出樹系信任][create-forest-trust]。
+若要開始建立具有資源樹系的受控網域，請參閱[建立和設定 AZURE AD DS 受控網域][tutorial-create-advanced]。 接著，您可[建立內部部署網域的輸出樹系信任 (預覽)][create-forest-trust]。
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

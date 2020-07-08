@@ -11,12 +11,11 @@ ms.date: 08/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2ef259bf76815fdf8672b696d2260fe6a143b798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e9d5eae4ef926a5c05265b91526d03a17ca57781
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730180"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84674949"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中樞的身分識別登錄
 
@@ -110,7 +109,7 @@ IoT 中樞在身分識別建立或刪除時，可透過傳送生命週期通知�
 
 裝置的通知訊息：
 
-| 名稱 | 值 |
+| Name | 值 |
 | --- | --- |
 |$content-type | application/json |
 |$iothub-enqueuedtime |  傳送通知的時間 |
@@ -146,7 +145,7 @@ IoT 中樞在身分識別建立或刪除時，可透過傳送生命週期通知�
 ```
 模組的通知訊息：
 
-| 名稱 | 值 |
+| Name | 值 |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  傳送通知的時間 |
@@ -186,9 +185,9 @@ iothub-message-schema | moduleLifecycleNotification |
 
 裝置身分識別會以具有下列屬性的 JSON 文件表示：
 
-| 屬性 | 選項 | 描述 |
+| 屬性 | 選項 | Description |
 | --- | --- | --- |
-| deviceId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , = @ $ '`。 |
+| deviceId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , : = @ $ '`。 |
 | generationId |必要，唯讀 |IoT 中樞產生的區分大小寫字串，最長為 128 個字元。 此值可用來在刪除並重建裝置時，區分具有相同 **deviceId** 的裝置。 |
 | etag |必要，唯讀 |字串，代表裝置身分識別的弱式 ETag，依據[依據 rfc7232](https://tools.ietf.org/html/rfc7232)。 |
 | auth |選用 |包含驗證資訊和安全性資料的複合物件。 |
@@ -210,10 +209,10 @@ iothub-message-schema | moduleLifecycleNotification |
 
 模組身分識別會以具有下列屬性的 JSON 文件表示：
 
-| 屬性 | 選項 | 描述 |
+| 屬性 | 選項 | Description |
 | --- | --- | --- |
-| deviceId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , = @ $ '`。 |
-| moduleId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , = @ $ '`。 |
+| deviceId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , : = @ $ '`。 |
+| moduleId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , : = @ $ '`。 |
 | generationId |必要，唯讀 |IoT 中樞產生的區分大小寫字串，最長為 128 個字元。 此值可用來在刪除並重建裝置時，區分具有相同 **deviceId** 的裝置。 |
 | etag |必要，唯讀 |字串，代表裝置身分識別的弱式 ETag，依據[依據 rfc7232](https://tools.ietf.org/html/rfc7232)。 |
 | auth |選用 |包含驗證資訊和安全性資料的複合物件。 |
@@ -232,7 +231,7 @@ iothub-message-schema | moduleLifecycleNotification |
 
 IoT 中樞開發人員指南中的其他參考主題包括︰
 
-* [IoT 中樞端點](iot-hub-devguide-endpoints.md)說明每個 IoT 中樞針對執行時間和管理作業所公開的各種端點。
+* [IoT 中樞端點](iot-hub-devguide-endpoints.md)說明每個 IoT 中樞公開給執行階段和管理作業的各種端點。
 
 * [節流和配額](iot-hub-devguide-quotas-throttling.md)描述適用於 IoT 中樞服務的配額和節流行為。
 

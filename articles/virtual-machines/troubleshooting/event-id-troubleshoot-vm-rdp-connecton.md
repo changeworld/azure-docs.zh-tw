@@ -14,18 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d569bf454a62272a5c60cc92abc0f24715218894
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437069"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958390"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>依事件識別碼對 Azure VM 的 RDP 連線問題進行疑難排解 
 
 本文說明如何使用事件識別碼對無法透過遠端桌面通訊協定 (RDP) 連線至 Azure 虛擬機器 (VM) 的問題進行疑難排解。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 您嘗試使用遠端桌面通訊協定 (RDP) 工作階段連線至 Azure VM。 在您輸入認證後，連線失敗，並出現下列錯誤訊息：
 
@@ -45,7 +44,7 @@ ms.locfileid: "80437069"
 
 ## <a name="scenario-1"></a>實例 1
 
-### <a name="event-logs"></a>事件記錄
+### <a name="event-logs"></a>事件記錄檔
 
 在 CMD 執行個體中執行下列命令，以檢查在過去 24 小時內是否有事件 1058 或事件 1057 記錄在系統記錄中：
 
@@ -162,7 +161,7 @@ Start-Service -Name "SessionEnv"
 
 3. 在 [可用的嵌入式管理單元]**** 清單中選取 [憑證]****，然後選取 [新增]****。
 
-4. 選取 [電腦帳戶]****，然後選取 [下一步]****。
+4. 選取 [電腦帳戶]，然後選取 [下一步]。
 
 5. 選取 [其他電腦]****，然後針對有問題 VM 新增 IP 位址。
    >[!Note]

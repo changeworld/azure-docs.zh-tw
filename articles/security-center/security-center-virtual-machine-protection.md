@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8faff37e127e80447e0f066ef17e2885d4bcb597
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80435638"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799729"
 ---
 # <a name="protect-your-machines-and-applications"></a>保護您的機器和應用程式
 當 Azure 資訊安全中心識別潛在的安全性弱點時，它會建立建議，引導您完成設定所需控制項來強化和保護資源的程式。
@@ -100,7 +99,7 @@ ms.locfileid: "80435638"
 
 1. 搜尋 [**部署適用于 Windows 虛擬機器擴展集的 Log Analytics 代理程式**] 原則，然後按一下它。
 
-1. 按一下 [指派]****。
+1. 按一下 [指派]。
 
 1. 設定 [範圍]**** 和 [Log Analytics 工作區]****，然後按一下 [指派]****。
 
@@ -163,15 +162,13 @@ ms.locfileid: "80435638"
 
 ![容器主機](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) 容器主機-執行 docker 的 Vm 
 
-![Kubernetes 服務](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes Service （AKS）叢集
+![Kubernetes service ](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes Service （AKS）叢集。 [瞭解資訊安全中心的 AKS 配套](azure-kubernetes-service-integration.md)
 
-![容器登錄](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry （ACR）登錄-只有當您在標準定價層，且已啟用 Azure Container Registry 配套時，才會顯示。
+![Container registry ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry （ACR）登錄。 [瞭解資訊安全中心的 ACR 配套](azure-container-registry-integration.md)
 
 如需如何使用容器安全性功能的指示，請參閱[監視容器的安全性](monitor-container-security.md)。
 
-[此處](azure-container-registry-integration.md)說明 Azure Container Registry 套件組合的優點
 
-[這裡](azure-kubernetes-service-integration.md)說明 Kubernetes Services 配套的優點
 
 [![[容器] 索引標籤](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
 
@@ -199,7 +196,7 @@ ms.locfileid: "80435638"
 
 
 ## <a name="next-steps"></a>後續步驟
-若要深入瞭解適用于其他 Azure 資源類型的建議，請參閱下列文章：
+若要深入了解適用於其他 Azure 資源類型的建議，請參閱下列文章︰
 
 * [Azure 資訊安全中心安全性建議的完整參考清單](recommendations-reference.md)
 * [在 Azure 資訊安全中心監視身分識別和存取](security-center-identity-access.md)

@@ -5,15 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 321983fbe99d17dc78198feb195eed8ea26de569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f615ed5183142ca7684c7e705fa6a42bd3124d19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100612"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514822"
 ---
 # <a name="deploy-spot-vms-using-azure-powershell"></a>使用 Azure PowerShell 部署點 Vm
 
@@ -22,17 +21,18 @@ ms.locfileid: "82100612"
 
 點 Vm 的定價是以區域和 SKU 為依據的變數。 如需詳細資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定價。 如需設定最大價格的詳細資訊，請參閱[找出 vm-定價](spot-vms.md#pricing)。
 
-您可以選擇為 VM 設定您願意支付的最大價格（每小時）。 您可以使用最多5個小數位數，以美元（USD）來設定點 VM 的最大價格。 例如，此值`0.98765`是每小時 $0.98765 美元的最大價格。 如果您將最大價格設為`-1`，則不會根據價格來收回 VM。 VM 的價格將會是標準 VM 的目前價格或價格（這是較少的），只要有可用的容量和配額。
+您可以選擇為 VM 設定您願意支付的最大價格（每小時）。 您可以使用最多5個小數位數，以美元（USD）來設定點 VM 的最大價格。 例如，此值 `0.98765` 是每小時 $0.98765 美元的最大價格。 如果您將最大價格設為 `-1` ，則不會根據價格來收回 VM。 VM 的價格將會是標準 VM 的目前價格或價格（這是較少的），只要有可用的容量和配額。
 
 
 ## <a name="create-the-vm"></a>建立 VM
 
-使用[new-azvmconfig](/powershell/module/az.compute/new-azvmconfig)建立 spotVM 來建立設定。 包含`-Priority Spot` ，並`-MaxPrice`將設為下列其中一項：
+使用[new-azvmconfig](/powershell/module/az.compute/new-azvmconfig)建立 spotVM 來建立設定。 包含 `-Priority Spot` ，並將設 `-MaxPrice` 為下列其中一項：
 - `-1`因此不會根據價格來收回 VM。
-- 美元金額，最多5位數。 例如， `-MaxPrice .98765`表示一旦 spotVM 的價格每小時約 $. 98765，就會將 VM 解除配置。
+- 美元金額，最多5位數。 例如， `-MaxPrice .98765` 表示一旦 spotVM 的價格每小時約 $. 98765，就會將 VM 解除配置。
 
 
-此範例會建立不會根據定價解除配置的 spotVM （只有在 Azure 需要此容量時才會這麼做）。
+此範例會建立不會根據定價解除配置的 spotVM （只有在 Azure 需要此容量時才會這麼做）。 收回原則會設定為解除配置 VM，使其可在稍後重新開機。 如果您想要在虛擬機器收回時刪除 VM 和基礎磁片，請 `-EvictionPolicy` 在中將設定為 `Delete` `New-AzVMConfig` 。
+
 
 ```azurepowershell-interactive
 $resourceGroup = "mySpotRG"
@@ -57,7 +57,7 @@ $nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Loc
 
 # Create a virtual machine configuration and set this to be a Spot VM
 
-$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1 -Priority "Spot" -MaxPrice -1| `
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1 -Priority "Spot" -MaxPrice -1 -EvictionPolicy Deallocate | `
 Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
 Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter -Version latest | `
 Add-AzVMNetworkInterface -Id $nic.Id
@@ -74,6 +74,6 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="next-steps"></a>後續步驟
 
-您也可以使用[Azure CLI](../linux/spot-cli.md)或[範本](../linux/spot-template.md)來建立點 VM。
+您也可以使用[Azure CLI](../linux/spot-cli.md)、[入口網站](spot-portal.md)或[範本](../linux/spot-template.md)來建立點 VM。
 
 如果您遇到錯誤，請參閱[錯誤碼](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

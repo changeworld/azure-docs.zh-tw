@@ -1,23 +1,22 @@
 ---
-title: 使用預存程序
+title: 使用預存程式
 description: 在 Synapse SQL 集區（資料倉儲）中執行預存程式以開發解決方案的秘訣。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a431df1ff4ef0984d1197933e7ca78979fa23089
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0f88b994104ed8a2d80fb3b16f125f8a087cbe3c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430977"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958373"
 ---
-# <a name="using-stored-procedures-in-sql-pool"></a>在 SQL 集區中使用預存程式
+# <a name="use-stored-procedures-in-sql-pool"></a>在 SQL 集區中使用預存程式
 
 在 Synapse SQL 集區（資料倉儲）中執行預存程式以開發解決方案的秘訣。
 
@@ -68,7 +67,7 @@ EXEC prc_nesting
 ```
 
 > [!NOTE]
-> SQL 集區目前不支援[@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。 您需要追蹤巢狀層級。 您不太可能會超過八個巢狀層級限制，但如果會，則需要修改您的程式碼，以讓巢狀層級符合這項限制。
+> SQL 集區目前不支援[@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。 您需要追蹤巢狀層級。 您不太可能會超過八個巢狀層級限制，但如果會，則需要修改您的程式碼，以讓巢狀層級符合這項限制。
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 

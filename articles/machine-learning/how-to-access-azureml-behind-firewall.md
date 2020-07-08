@@ -5,30 +5,30 @@ description: 使用 Azure 防火牆控制 Azure Machine Learning 工作區的存
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
-ms.openlocfilehash: 40c25dda3fefa9c54df832e16149a68a4aa5a33b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 31daec93352c0e142075a55c61f2b8d3a6d56fab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080224"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>使用適用于 Azure Machine Learning 的 Azure 防火牆後方的工作區
 
 在本文中，您將瞭解如何設定 Azure 防火牆以搭配 Azure Machine Learning 工作區使用。
 
-您可以使用 Azure 防火牆來控制 Azure Machine Learning 工作區和公用網際網路的存取權。 如果未正確設定，防火牆可能會在使用您的工作區時發生問題。
+您可以使用 Azure 防火牆來控制 Azure Machine Learning 工作區和公用網際網路的存取權。 如果未正確設定，防火牆可能會在使用您的工作區時發生問題。 Azure Machine Learning 工作區會使用各種主機名稱，如本文中所述。
 
 ## <a name="network-rules"></a>網路規則
 
 在您的防火牆上，建立網路規則，允許本文中進出位址的流量。
 
 > [!TIP]
-> 新增網路規則時，請將__通訊協定__設定為 [任何]，並`*`將埠設為。
+> 新增網路規則時，請將__通訊協定__設定為 [任何]，並將埠設為 `*` 。
 >
 > 如需設定 Azure 防火牆的詳細資訊，請參閱[部署和設定 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)。
 
@@ -40,16 +40,18 @@ ms.locfileid: "82981960"
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | 定型叢集 |
 | **ml.azure.com** | Azure Machine Learning Studio |
+| **default.exp-tas.com** | 由 Azure Machine Learning studio 使用 |
 | **\*. azureml.ms** | Azure Machine Learning Api 使用 |
-| **\*. experiments.azureml.net** | 由 Azure Machine Learning 中執行的實驗所使用|
+| **\*. experiments.azureml.net** | 由 Azure Machine Learning 中執行的實驗所使用 |
 | **\*. modelmanagement.azureml.net** | 用來註冊和部署模型|
 | **mlworkspace.azure.ai** | 在查看工作區時由 Azure 入口網站使用 |
 | **\*. aether.ms** | 在執行 Azure Machine Learning 管線時使用 |
 | **\*. instances.azureml.net** | Azure Machine Learning 計算實例 |
+| **\*. instances.azureml.ms** | 當工作區已啟用私用連結時，Azure Machine Learning 計算實例 |
 | **windows.net** | Azure Blob 儲存體 |
 | **vault.azure.net** | Azure 金鑰保存庫 |
-| **microsoft.com** | 基底 docker 映射 |
 | **azurecr.io** | Azure Container Registry |
+| **mcr.microsoft.com** | 適用于基底 docker 映射的 Microsoft Container Registry |
 
 ## <a name="python-hosts"></a>Python 主機
 

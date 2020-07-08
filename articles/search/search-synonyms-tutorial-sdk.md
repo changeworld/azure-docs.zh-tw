@@ -8,12 +8,11 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8cc085fd27004928babd7df305a4452d1b068f6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85079442"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>範例：在 C 中新增 Azure 認知搜尋的同義字#
 
@@ -32,16 +31,16 @@ ms.locfileid: "72794241"
 > [!NOTE]
 > 同義字可以程式設計方式建立，但不能在入口網站中建立。 如果 Azure 入口網站的同義字支援對您很有用，請在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上提供您的意見反應
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 教學課程包含下列需求︰
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 認知搜尋服務](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET 程式庫](https://aka.ms/search-sdk)
+* [Microsoft.Azure.Search .NET 程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 * [如何從 .NET 應用程式使用 Azure 認知搜尋](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 之前與之後查詢會示範同義字的值。 在此範例中，使用執行查詢並傳回範例索引結果的範例應用程式。 範例應用程式會建立名為 "hotels" 並已填入兩份文件的小型索引。 此應用程式會使用未出現在索引中的詞彙和詞句來執行搜尋查詢，啟用同義字功能，然後再次發出相同的搜尋。 下列程式碼示範整體流程。
 
@@ -128,7 +127,7 @@ no document matched
 
     serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
    ```
-   同義字對應必須符合開放原始碼標準 `solr` 格式。 此格式會在[Azure 認知搜尋的同義字](search-synonyms.md)一節`Apache Solr synonym format`中說明。
+   同義字對應必須符合開放原始碼標準 `solr` 格式。 此格式會在[Azure 認知搜尋的同義字](search-synonyms.md)一節中說明 `Apache Solr synonym format` 。
 
 2. 設定可搜尋的欄位，以使用索引定義中的同義字對應。 在 `EnableSynonymsInHotelsIndex` 中，我們會將 `synonymMaps` 屬性設定為新上傳的同義字對應名稱，以在 `category` 和 `tags` 兩個欄位上啟用同義字。
    ```csharp

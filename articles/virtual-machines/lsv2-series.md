@@ -1,18 +1,17 @@
 ---
 title: Lsv2 系列-Azure 虛擬機器
 description: Lsv2 系列 Vm 的規格。
-services: virtual-machines
 author: sasha-melamed
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: bdb9e346b8deea71ef2af9f9f271ffa446be624e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: 9db5f391635505c18c7fe7c868431a0abc943730
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594333"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675973"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 

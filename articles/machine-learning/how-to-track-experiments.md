@@ -9,15 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9613b74b727d27bd47a05fadc1398bf898f667a5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835713"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675197"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>監視 Azure ML 實驗的執行和計量
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -127,6 +126,8 @@ ms.locfileid: "83835713"
         run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
 
         # Log the mean absolute error to the parent run to see the metric in the run details page.
+        # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
+        # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
         run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
     
         return dataframe1,
@@ -207,9 +208,11 @@ ms.locfileid: "83835713"
 
 當實驗完成執行時，您可以瀏覽記錄的實驗執行記錄。 您可以從 [Azure Machine Learning Studio](https://ml.azure.com) 存取歷程記錄。
 
-瀏覽至 [實驗] 索引標籤，然後選取您的實驗。 您會進入 [實驗執行] 儀表板，您可以在其中查看每次執行所記錄的追蹤計量和圖表。 在此情況下，我們會記錄 MSE 和 Alpha 值。
+瀏覽至 [實驗] 索引標籤，然後選取您的實驗。 您會進入 [實驗執行] 儀表板，您可以在其中查看每次執行所記錄的追蹤計量和圖表。 
 
-  ![Azure Machine Learning Studio 中的執行詳細資料](./media/how-to-track-experiments/experiment-dashboard.png)
+您可以編輯 [執行清單] 資料表，以顯示執行的最後一個、最小或最大記錄值。 您可以選取或取消選取 [執行] 清單中的多個回合，而選取的執行會將資料填入圖表。 您也可以加入新的圖表或編輯圖表，在多個回合之間比較記錄的計量（最小值、最大值、最後一個或所有值）。 若要更有效率地探索資料，您也可以將圖表最大化。
+
+:::image type="content" source="media/how-to-track-experiments/experimentation-tab.gif" alt-text="Azure Machine Learning Studio 中的執行詳細資料":::
 
 您可以向下切入至特定執行以檢視其輸出或記錄，或下載您所提交之實驗的快照集，以便與其他人共用實驗資料夾。
 

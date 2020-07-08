@@ -5,15 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c453e8a70a6cd4b9d33a6d40bebd2ac0a804e5e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3e4e80048453b7d6e0804bbef670f0544efaca49
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514848"
 ---
 # <a name="use-spot-vms-in-azure"></a>在 Azure 中使用點 Vm
 
@@ -21,7 +20,7 @@ ms.locfileid: "82100578"
 
 
 ## <a name="next-steps"></a>後續步驟
-使用[入口網站](spot-portal.md)、 [CLI](../linux/spot-cli.md)或[PowerShell](spot-powershell.md)來部署點 vm。
+使用[入口網站](spot-portal.md)、 [CLI](../linux/spot-cli.md)、 [ARM 範本](../linux/spot-template.md)或[PowerShell](spot-powershell.md)來部署點 vm。
 
 您也可以使用「[點」 VM 實例來部署擴展集](../../virtual-machine-scale-sets/use-spot.md)。
 

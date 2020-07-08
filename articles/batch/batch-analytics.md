@@ -3,17 +3,16 @@ title: Azure Batch 分析
 description: 批次分析中的主題包含批次服務資源所適用事件和警示的參考資訊。
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: b07d362c3cc2d3b086cf0a82325025604907a393
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 9d0e5c90c7bade82d76c7dbdfd4276e9671c961c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726854"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958101"
 ---
 # <a name="batch-analytics"></a>批次分析
 批次分析中的主題包含批次服務資源所適用事件和警示的參考資訊。
 
-請參閱[記錄事件以便對 Batch 解決方案進行診斷評估和監視](https://azure.microsoft.com/documentation/articles/batch-diagnostics/)，以取得啟用與取用批次診斷記錄的詳細資訊。
+請參閱[記錄事件以便對 Batch 解決方案進行診斷評估和監視](./batch-diagnostics.md)，以取得啟用與取用批次診斷記錄的詳細資訊。
 
 ## <a name="diagnostic-logs"></a>診斷記錄
 

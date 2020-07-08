@@ -10,28 +10,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 94d1bccc9a7f45d24d8c5b92aecba54d9f7f630a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800167"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center"></a>Azure Kubernetes Services 與資訊安全中心整合
 
 Azure Kubernetes Service （AKS）是 Microsoft 的受控服務，可用於開發、部署和管理容器化應用程式。 
 
-使用 AKS 搭配 Azure 資訊安全中心的標準層（請參閱[定價](security-center-pricing.md)），以深入瞭解您的 AKS 節點、雲端流量和安全性控制。
+如果您使用 Azure 資訊安全中心的標準層，您可以新增 AKS 配套（請參閱[定價](security-center-pricing.md)），以深入瞭解您的 AKS 節點、雲端流量和安全性控制。
 
-資訊安全中心使用 AKS 主要節點已收集的資料，為您的 AKS 叢集帶來安全性優勢。 
+資訊安全中心和 AKS 構成了最佳的雲端原生 Kubernetes 安全性供應專案。
 
-![Azure 資訊安全中心和 Azure Kubernetes Service （AKS）高階總覽](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+## <a name="what-are-the-components-of-security-centers-kubernetes-protection"></a>資訊安全中心的 Kubernetes 保護有哪些元件？
 
-這兩種工具共同構成了最佳的雲端原生 Kubernetes 安全性供應專案。 
+資訊安全中心的 Kubernetes 保護是由兩個元素的組合所提供：
 
-## <a name="benefits-of-integration"></a>整合的優點
+- **Azure 資訊安全中心的虛擬機器威脅防護**-使用資訊安全中心在其他 vm 上使用的相同 Log Analytics 代理程式，資訊安全中心會顯示 AKS 節點上發生的安全性問題。 代理程式也會監視容器特有的分析。
+
+- **Azure 資訊安全中心的選擇性 Kubernetes**配套-Kubernetes 配套會透過 AKS 服務從 Kubernetes 子系統接收記錄和資訊。 這些記錄已透過 AKS 服務在 Azure 中提供。 當您啟用資訊安全中心的 Kubernetes 配套時，您會將資訊安全中心存取權授與記錄。 因此資訊安全中心使用已由 AKS 主要節點收集的資料，為您的 AKS 叢集帶來安全性優勢。 Azure 資訊安全中心從您的 Kubernetes 環境掃描的部分資料可能包含機密資訊。
+
+    ![Azure 資訊安全中心和 Azure Kubernetes Service （AKS）高階總覽](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+
+## <a name="what-protections-are-provided"></a>提供哪些保護？
 
 同時使用這兩個服務可提供：
 
@@ -39,18 +44,25 @@ Azure Kubernetes Service （AKS）是 Microsoft 的受控服務，可用於開�
 
 * **環境強化**-資訊安全中心會持續監視 Kubernetes 叢集和 Docker 設定的設定。 然後，它會產生反映業界標準的安全性建議。
 
-* **執行時間保護**-透過持續分析下列 AKS 來源，資訊安全中心在主機*和*AKS 叢集層級偵測到威脅和惡意活動的警示：
-    * 原始的安全性事件，例如網路資料和進程建立
-    * Kubernetes audit 記錄檔
+* **執行時間保護**-透過持續分析下列 AKS 來源，資訊安全中心在主機*和*AKS 叢集層級偵測到威脅和惡意活動的警示。 [深入瞭解容器的威脅保護](threat-protection.md#azure-containers)。
 
-    如需詳細資訊，請參閱[Azure 容器的威脅防護](threat-protection.md#azure-containers)
 
-    如需可能的警示清單，請參閱警示參考資料表中的下列各節： [AKS 叢集層級警示](alerts-reference.md#alerts-akscluster)和[容器主機層級警示](alerts-reference.md#alerts-containerhost)。  
+     
 
 ![更詳細的 Azure 資訊安全中心和 Azure Kubernetes Service （AKS）](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
 
-> [!NOTE]
-> Azure 資訊安全中心從您的 Kubernetes 環境掃描的部分資料可能包含機密資訊。
+
+
+## <a name="aks-with-security-center-faq"></a>AKS 與資訊安全中心常見問題
+
+### <a name="can-i-still-get-aks-protections-without-the-log-analytics-agent"></a>如果沒有 Log Analytics 代理程式，仍然可以取得 AKS 保護嗎？
+
+如先前所述，選擇性的 Kubernetes 配套提供叢集層級的保護，Azure 資訊安全中心標準層的 Log Analytics 代理程式可保護您的節點。 
+
+我們建議您盡可能部署這兩個，以獲得最完整的保護。
+
+如果您選擇不在您的主機上安裝代理程式，您只會收到威脅防護權益和安全性警示的子集。 您仍會收到與網路分析以及與惡意伺服器通訊有關的警示。
+
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -61,4 +73,4 @@ Azure Kubernetes Service （AKS）是 Microsoft 的受控服務，可用於開�
 
 * [與 Azure Container Registry 整合](azure-container-registry-integration.md)
 
-* [Microsoft 的資料管理](https://www.microsoft.com/trust-center/privacy/data-management)-說明 microsoft 服務的資料原則（包括 Azure、Intune 和 Office 365）、microsoft 資料管理的詳細資料，以及影響您資料的保留原則
+* [Microsoft 的資料管理](https://www.microsoft.com/trust-center/privacy/data-management)-說明 microsoft 服務（包括 Azure、Intune 和 Microsoft 365）的資料原則、microsoft 資料管理的詳細資訊，以及影響您資料的保留原則

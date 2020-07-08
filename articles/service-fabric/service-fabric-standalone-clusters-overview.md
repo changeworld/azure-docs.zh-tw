@@ -5,12 +5,11 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: e8912ef5bc0fd6009443b736031fc9af57ab6c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6abe6fca77251a16bcb7663a5192f46fef3476b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75465635"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080664"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric 叢集獨立叢集的概觀
 
@@ -21,9 +20,16 @@ Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用�
 在內部部署環境建立 Service Fabric 叢集的程序會與在您所選擇、具有一組 VM 的任何雲端建立叢集的程序類似。 佈建 VM 的初始步驟取決於您要使用的雲端提供者或內部部署環境。 在您有一組彼此之間已啟用網路連線的 VM 之後，則安裝 Service Fabric 套件、編輯叢集設定，以及執行叢集建立與管理指令碼的步驟將會相同。 這可確保當您選擇以新裝載環境做為目標時，可將您操作和管理 Service Fabric 叢集方面的知識與經驗轉移過去。
 
 ## <a name="cluster-security"></a>叢集安全性
+
 Service Fabric 叢集是您所擁有的資源。  保護叢集是您的責任，從而協助避免未經授權的使用者與它們連線。 在叢集上執行生產工作負載時，安全的叢集尤其重要。
 
+> [!NOTE]
+> Windows 驗證是以 Kerberos 為基礎。 不支援 NTLM 作為驗證類型。
+>
+> 請盡可能針對 Service Fabric 叢集使用 x.509 憑證驗證。
+
 ### <a name="node-to-node-security"></a>節點對節點安全性
+
 節點對節點安全性會保護叢集中 VM 與電腦之間的通訊。 此安全性情節可確保只有獲得授權加入叢集的電腦可以參與裝載應用程式和叢集中的服務。 Service Fabric 會使用 X.509 憑證來保護叢集，並提供應用程式的安全性功能。  需要叢集憑證才能保護叢集流量，並提供叢集和伺服器驗證。  自我簽署憑證可用於測試叢集，但是應該使用來自受信任憑證授權單位的憑證來保護生產環境叢集。
 
 Windows 安全性也可以針對 Windows 獨立叢集啟用。 如果您有 Windows Server 2012 R2 和 Windows Active Directory，建議您搭配使用 Windows 安全性與群組受管理的服務帳戶。 否則，使用 Windows 安全性與 Windows 帳戶。
@@ -31,6 +37,7 @@ Windows 安全性也可以針對 Windows 獨立叢集啟用。 如果您有 Wind
 如需詳細資訊，請參閱[節點對節點安全性](service-fabric-cluster-security.md#node-to-node-security)
 
 ### <a name="client-to-node-security"></a>用戶端對節點安全性
+
 用戶端對節點安全性會驗證用戶端，並協助保護用戶端與叢集中個別節點之間的通訊。 這個類型的安全性可協助確保只有獲得授權的使用者能存取叢集與叢集上部署的應用程式。 用戶端是透過其 X.509 憑證安全性認證進行唯一識別。 任意數目的選擇性用戶端憑證可用來向叢集驗證系統管理員或使用者用戶端。
 
 除了用戶端憑證之外，也可以設定 Azure Active Directory 來向叢集驗證用戶端。
@@ -55,6 +62,7 @@ Service Fabric 也支援存取控制來限制不同使用者群組對特定叢�
 如需詳細資訊，請參閱[升級獨立叢集](service-fabric-cluster-upgrade-standalone.md)。
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
+
 您可以在執行下列作業系統的 VM 或電腦上建立叢集 (尚不支援 Linux)：
 
 * Windows Server 2012 R2
@@ -62,6 +70,7 @@ Service Fabric 也支援存取控制來限制不同使用者群組對特定叢�
 * Windows Server 2019
 
 ## <a name="next-steps"></a>後續步驟
+
 深入了解[保護](service-fabric-cluster-security.md)、[調整](service-fabric-cluster-scaling-standalone.md)及[升級](service-fabric-cluster-upgrade-standalone.md)獨立叢集。
 
 了解 [Service Fabric 支援選項](service-fabric-support.md)。

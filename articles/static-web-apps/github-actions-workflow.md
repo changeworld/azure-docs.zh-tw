@@ -2,17 +2,16 @@
 title: 適用於 Azure 靜態 Web Apps 的 GitHub Actions 工作流程
 description: 了解如何使用 GitHub 存放庫來設定持續部署至 Azure 靜態 Web Apps。
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.author: chnwamba
-ms.openlocfilehash: 44472eb697a4d191d4ed99b7879654fcca61383b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.author: cshoe
+ms.openlocfilehash: 92d445991aa8b90a343ad7d015787cff35ddf183
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655197"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340939"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>適用於 Azure 靜態 Web Apps 預覽版的 GitHub Actions 工作流程
 
@@ -50,7 +49,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
     - name: Build And Deploy
       id: builddeploy
       uses: Azure/static-web-apps-deploy@v0.0.1-preview
@@ -105,7 +106,7 @@ on:
 | 名稱  | 描述 |
 |---------|---------|
 |`build_and_deploy_job` | 當您推送認可或針對 `on` 屬性中所列的分支開啟提取要求時，即會執行。 |
-|`close_pull_request_job` | 只有在您關閉提取要求時才會執行。 |
+|`close_pull_request_job` | 只有在您關閉提取要求時才會執行，這會移除從提取要求建立的預備環境。 |
 
 ## <a name="steps"></a>步驟
 

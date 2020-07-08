@@ -2,17 +2,16 @@
 title: Azure IoT 中樞的 TLS 支援
 description: 使用安全 TLS 連線讓裝置和服務與 IoT 中樞通訊的最佳做法
 services: iot-hub
-author: rezasherafat
+author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.author: rezas
-ms.openlocfilehash: 5b9f6b993b0d0f527d041b4ee055bf51fefa1253
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/18/2020
+ms.author: jlian
+ms.openlocfilehash: 8c52037684215d1672ed813389d0bbace9a03e42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848240"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080606"
 ---
 # <a name="tls-support-in-iot-hub"></a>IoT 中樞的 TLS 支援
 
@@ -20,11 +19,17 @@ IoT 中樞使用傳輸層安全性 (TLS) 來保護 IoT 裝置和服務的連線�
 
 TLS 1.0 和 1.1 被視為舊版，並已規劃淘汰。 如需詳細資訊，請參閱 [IoT 中樞即將淘汰 TLS 1.0 和 1.1](iot-hub-tls-deprecating-1-0-and-1-1.md)。 強烈建議在連線到 IoT 中樞時，使用 TLS 1.2 作為慣用的 TLS 版本。
 
-## <a name="restrict-connections-to-tls-12-in-your-iot-hub-resource"></a>將 IoT 中樞資源的連線限制為 TLS 1.2
+## <a name="tls-12-enforcement-available-in-select-regions"></a>選取區域中可用的 TLS 1.2 強制
 
-為提高安全性，建議將 IoT 中樞設定為「只」允許使用 TLS 1.2 版的用戶端連線，並強制使用[建議的加密](#recommended-ciphers)。
+為了增加安全性，請將您的 IoT 中樞設定為*只*允許使用 TLS 1.2 版的用戶端連線，並強制使用[建議的密碼](#recommended-ciphers)。 這項功能僅在下欄區域中受到支援：
 
-基於此目的，請在任何[支援的區域](#supported-regions)中佈建新的 IoT 中樞，並在 Azure Resource Manager 範本的 IoT 中樞資源規格中，將 `minTlsVersion` 屬性設定為 `1.2`：
+* 美國東部
+* 美國中南部
+* 美國西部 2
+* US Gov 亞利桑那州
+* US Gov 維吉尼亞州
+
+基於此目的，請在任何支援的區域中佈建新的 IoT 中樞，並在 Azure Resource Manager 範本的 IoT 中樞資源規格中，將 `minTlsVersion` 屬性設定為 `1.2`：
 
 ```json
 {
@@ -53,18 +58,7 @@ TLS 1.0 和 1.1 被視為舊版，並已規劃淘汰。 如需詳細資訊，請
 
 > [!NOTE]
 > `minTlsVersion` 屬性是唯讀的，且無法在建立 IoT 中樞資源之後變更。 因此，您必須事先適當地測試並驗證「所有」IoT 裝置和服務都符合 TLS 1.2 和[建議的加密](#recommended-ciphers)規範。
-
-## <a name="supported-regions"></a>支援區域
-
-您可在下列區域建立需要使用 TLS 1.2 的 IoT 中樞：
-
-* 美國東部
-* 美國中南部
-* 美國西部 2
-* US Gov 亞利桑那州
-* US Gov 維吉尼亞州
-
-> [!NOTE]
+> 
 > 容錯移轉之後，您 IoT 中樞的 `minTlsVersion` 屬性會在容錯移轉後的異地配對區域中維持有效。
 
 ## <a name="recommended-ciphers"></a>建議的加密
