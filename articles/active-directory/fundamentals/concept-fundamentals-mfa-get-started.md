@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf05532f81d70d4d7b09de2ccbf9807273a85330
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 38f3a6d9cea1aa1ebcb76f61882dcf2615dc4832
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799586"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554653"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>適用於貴組織的 Azure Multi-Factor Authentication
 
@@ -53,7 +53,7 @@ ms.locfileid: "83799586"
 
 ## <a name="authentication-methods"></a>驗證方法
 
-|   | 安全性預設值 | 所有其他方法 |
+| 方法 | 安全性預設值 | 所有其他方法 |
 | --- | --- | --- |
 | 行動應用程式的通知 | X | X |
 | 來自行動應用程式或硬體 Token 的驗證碼 |   | X |

@@ -8,27 +8,27 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6bda61960efd9a5e176f8792601e315ba96bcca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76899942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553296"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>在 Azure Key Vault 中使用客戶管理的金鑰，在 Azure 認知搜尋中進行內容的待用加密
 
 根據預設，Azure 認知搜尋會使用[服務管理的金鑰](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)來加密靜止的索引內容。 您可以使用您在 Azure Key Vault 中建立和管理的金鑰，以額外的加密層補充預設加密。 本文會逐步引導您完成這些步驟。
 
-透過與[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)的整合來支援伺服器端加密。 您可以建立自己的加密金鑰，然後將其儲存在金鑰保存庫中，或是使用 Azure Key Vault 的 API 來產生加密金鑰。 您也可以使用 Azure Key Vault 來審核金鑰使用方式。 
+透過與[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)的整合來支援伺服器端加密。 您可以建立自己的加密金鑰，然後將其儲存在金鑰保存庫中，或是使用 Azure Key Vault 的 API 來產生加密金鑰。 您也可以使用 Azure Key Vault 來稽核金鑰使用方式。 
 
 使用客戶管理的金鑰進行加密時，會在建立這些物件時，于索引或同義字對應層級設定，而不是搜尋服務層級。 您無法加密已經存在的內容。 
 
 金鑰不一定要位於相同的 Key Vault。 單一搜尋服務可以裝載多個加密的索引或同義字對應，每個都是以自己的客戶管理的加密金鑰進行加密，並儲存在不同的金鑰保存庫中。  您也可以在使用客戶管理的金鑰未加密的相同服務中擁有索引和同義字對應。 
 
 > [!IMPORTANT] 
-> 這項功能適用于[REST API 版本 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/)和[.net SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md)。 目前不支援在 Azure 入口網站中設定客戶管理的加密金鑰。 搜尋服務必須在2019年1月之後建立，而且不能是免費（共用）服務。
+> 這項功能適用于[REST API](https://docs.microsoft.com/rest/api/searchservice/)和[.net SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md)。 目前不支援在 Azure 入口網站中設定客戶管理的加密金鑰。 搜尋服務必須在2019年1月之後建立，而且不能是免費（共用）服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 此範例會使用下列服務。 
 
@@ -38,7 +38,7 @@ ms.locfileid: "76899942"
 
 + [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)或[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)用於設定工作。
 
-+ 您可以使用[Postman](search-get-started-postman.md)、 [Azure PowerShell](search-create-index-rest-api.md)和[Azure 認知搜尋 SDK](https://aka.ms/search-sdk-preview)來呼叫 REST API。 目前不支援客戶管理的加密的入口網站。
++ 您可以使用[Postman](search-get-started-postman.md)、 [AZURE POWERSHELL](search-create-index-rest-api.md)和[.net SDK preview](https://aka.ms/search-sdk-preview)來呼叫 REST API。 目前不支援客戶管理的加密的入口網站。
 
 >[!Note]
 > 由於加密與客戶管理的金鑰功能的本質，如果您的 Azure 金鑰保存庫金鑰已刪除，Azure 認知搜尋將無法取得您的資料。 若要防止 Key Vault 意外刪除金鑰所造成的資料遺失，您**必須**先啟用 Key Vault 中的虛刪除和清除保護，才能使用它。 如需詳細資訊，請參閱[Azure Key Vault 虛刪除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)。   

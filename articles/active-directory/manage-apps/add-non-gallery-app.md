@@ -2,22 +2,22 @@
 title: 新增不在資源庫中的應用程式-Microsoft 身分識別平臺 |Microsoft Docs
 description: 將非資源庫應用程式新增至您的 Azure AD 租使用者。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbefcec884fcf179c182cd50efeb58a0fc357378
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555131"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>將未列出的（非資源庫）應用程式新增至您的 Azure AD 組織
 
@@ -34,7 +34,7 @@ ms.locfileid: "77063606"
 
 1. 使用您的 Microsoft 身分識別平臺系統管理員帳戶登入[Azure Active Directory 入口網站](https://aad.portal.azure.com/)。
 
-2. 選取 [**企業應用程式** > ] [**新增應用程式**]。
+2. 選取 [**企業應用程式**] [  >  **新增應用程式**]。
 
 3. （選擇性，但建議使用）在 [**流覽 Azure AD 資源庫]** 搜尋方塊中，輸入應用程式的顯示名稱。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "77063606"
    >* **設定應用程式 proxy 以進行內部部署應用程式的安全遠端存取**，會開啟 Azure AD 應用程式 Proxy 和連接器的設定頁面。
    >* **註冊您正在處理的應用程式，以整合 Azure AD**開啟 [**應用程式註冊**] 頁面。 此選項通常用於 OpenID Connect 應用程式。
 
-7. 選取 [建立]  。 應用程式的 [概觀]**** 頁面隨即開啟。
+7. 選取 [建立]。 應用程式的 [概觀]**** 頁面隨即開啟。
 
 ## <a name="configure-user-sign-in-properties"></a>設定使用者登入屬性
 
@@ -70,30 +70,30 @@ ms.locfileid: "77063606"
 
       **已指派**的使用者行為：
 
-       | 應用程式屬性設定 | | | 已指派的使用者體驗 | |
+       | 應用程式屬性 | 應用程式屬性 | 應用程式屬性 | 已指派的使用者體驗 | 已指派的使用者體驗 |
        |---|---|---|---|---|
        | 為使用者啟用登入？ | 需要使用者指派？ | 可讓使用者看見？ | 已指派的使用者可以登入？ | 已指派的使用者可以看見應用程式？* |
-       | 是 | 是 | 是 | 是 | 是  |
-       | 是 | 是 | 否  | 是 | 否   |
-       | 是 | 否  | 是 | 是 | 是  |
-       | 是 | 否  | 否  | 是 | 否   |
-       | 否  | 是 | 是 | 否  | 否   |
-       | 否  | 是 | 否  | 否  | 否   |
-       | 否  | 否  | 是 | 否  | 否   |
+       | 可以 | 可以 | 可以 | 可以 | 可以  |
+       | 可以 | 是 | 不可以  | 是 | 不可以   |
+       | 是 | 不可以  | 是 | 可以 | 可以  |
+       | 是 | 不可以  | 否  | 是 | 不可以   |
+       | 否  | 是 | 是 | 不可以  | 否   |
+       | 否  | 是 | 不可以  | 否  | 否   |
+       | 否  | 否  | 是 | 不可以  | 否   |
        | 否  | 否  | 否  | 否  | 否   |
 
       **未指派**的使用者行為：
 
-       | 應用程式屬性設定 | | | 未指派的使用者體驗 | |
+       | 應用程式屬性 | 應用程式屬性 | 應用程式屬性 | 未指派的使用者體驗 | 未指派的使用者體驗 |
        |---|---|---|---|---|
        | 為使用者啟用登入？ | 需要使用者指派？ | 可讓使用者看見？ | 未指派的使用者可以登入？ | 未指派的使用者可以看見應用程式？* |
-       | 是 | 是 | 是 | 否  | 否   |
-       | 是 | 是 | 否  | 否  | 否   |
-       | 是 | 否  | 是 | 是 | 否   |
-       | 是 | 否  | 否  | 是 | 否   |
-       | 否  | 是 | 是 | 否  | 否   |
-       | 否  | 是 | 否  | 否  | 否   |
-       | 否  | 否  | 是 | 否  | 否   |
+       | 可以 | 可以 | 是 | 不可以  | 否   |
+       | 是 | 是 | 不可以  | 否  | 否   |
+       | 是 | 不可以  | 是 | 是 | 不可以   |
+       | 是 | 不可以  | 否  | 是 | 不可以   |
+       | 否  | 是 | 是 | 不可以  | 否   |
+       | 否  | 是 | 不可以  | 否  | 否   |
+       | 否  | 否  | 是 | 不可以  | 否   |
        | 否  | 否  | 否  | 否  | 否   |
 
      *使用者是否可以在存取面板和 Office 365 應用程式啟動器中看到應用程式？
@@ -102,7 +102,7 @@ ms.locfileid: "77063606"
 
     ![變更標誌](media/add-non-gallery-app/change-logo.png)
 
-4. 完成之後，選取 [儲存]****。
+4. 當您完成時，請選取 [**儲存**]。
 
 ## <a name="next-steps"></a>後續步驟
 

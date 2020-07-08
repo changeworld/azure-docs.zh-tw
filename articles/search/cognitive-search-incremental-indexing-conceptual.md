@@ -1,5 +1,5 @@
 ---
-title: 增量擴充（預覽）
+title: 累加式擴充概念（預覽）
 titleSuffix: Azure Cognitive Search
 description: 從 Azure 儲存體中的 AI 擴充管線快取中繼內容和增量變更，以保留現有已處理檔的投資。 此功能目前為公開預覽狀態。
 manager: nitinme
@@ -7,20 +7,32 @@ author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: d4b36f00bad8c06c2f62794fa03a85120af79965
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77024138"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557394"
 ---
-# <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 認知搜尋中的增量擴充和快取簡介
+# <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 認知搜尋中的增量擴充和快取
 
 > [!IMPORTANT] 
-> 增量擴充目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供此功能。 目前沒有入口網站或 .NET SDK 支援。
+> 增量擴充目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-preview 和 2020-06-30-preview](search-api-preview.md)提供這項功能。 目前沒有入口網站或 .NET SDK 支援。
 
-增量擴充會將快取和 statefulness 新增至擴充管線，以保留您對現有輸出的投資，同時只變更受特定修改影響的檔。 這不僅會保留您在處理中的金錢投資（特別是 OCR 和影像處理），也可讓系統更有效率。 快取結構和內容時，索引子可以判斷哪些技能已變更，並只執行已修改的技能，以及任何下游相依技能。 
+累加*式擴充*是以[技能集](cognitive-search-working-with-skillsets.md)為目標的功能。 它會利用 Azure 儲存體來儲存擴充管線所發出的處理輸出，以供未來的索引子執行重複使用。 在可能的情況下，索引子會重複使用仍然有效的任何快取輸出。 
+
+增量擴充不僅會保留您對處理的金額（特別是 OCR 和影像處理），也可讓系統更有效率。 快取結構和內容時，索引子可以判斷哪些技能已變更，並只執行已修改的技能，以及任何下游相依技能。 
+
+使用累加式快取的工作流程包含下列步驟：
+
+1. [建立或識別](../storage/common/storage-account-create.md)用來儲存快取的 Azure 儲存體帳戶。
+1. 在索引子中[啟用累加擴充](search-howto-incremental-index.md)。
+1. [建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)-再加上[技能集](https://docs.microsoft.com/rest/api/searchservice/create-skillset)，以叫用管線。 在處理期間，會針對 Blob 儲存體中的每個檔儲存擴充的階段，供日後使用。
+1. 測試您的程式碼，並在進行變更之後，使用[Update 技能集](https://docs.microsoft.com/rest/api/searchservice/update-skillset)來修改定義。
+1. [執行索引子](https://docs.microsoft.com/rest/api/searchservice/run-indexer)來叫用管線，並抓取快取的輸出，以提供更快速且更符合成本效益的處理。
+
+如需使用現有索引子時的步驟和考慮的詳細資訊，請參閱[設定累加式擴充](search-howto-incremental-index.md)。
 
 ## <a name="indexer-cache"></a>索引子快取
 
@@ -30,7 +42,7 @@ ms.locfileid: "77024138"
 
 ## <a name="cache-configuration"></a>快取組態
 
-您將需要在索引子`cache`上設定屬性，以從累加擴充開始受益。 下列範例說明已啟用快取的索引子。 下列各節將說明這項設定的特定部分。 如需詳細資訊，請參閱[設定累加式擴充](search-howto-incremental-index.md)。
+您將需要在 `cache` 索引子上設定屬性，以從累加擴充開始受益。 下列範例說明已啟用快取的索引子。 下列各節將說明這項設定的特定部分。 如需詳細資訊，請參閱[設定累加式擴充](search-howto-incremental-index.md)。
 
 ```json
 {
@@ -52,7 +64,7 @@ ms.locfileid: "77024138"
 
 ## <a name="cache-management"></a>快取管理
 
-快取的生命週期由索引子所管理。 如果索引`cache`器上的屬性設定為 null，或連接字串已變更，則會在下一次索引子執行時刪除現有的快取。 快取生命週期也與索引子生命週期有關。 如果索引子遭到刪除，相關聯的快取也會一併刪除。
+快取的生命週期由索引子所管理。 如果 `cache` 索引子上的屬性設定為 null，或連接字串已變更，則會在下一次索引子執行時刪除現有的快取。 快取生命週期也與索引子生命週期有關。 如果索引子遭到刪除，相關聯的快取也會一併刪除。
 
 雖然累加式擴充的設計是要偵測並回應變更，而不需介入，但您還是可以使用參數來覆寫預設行為：
 
@@ -63,18 +75,18 @@ ms.locfileid: "77024138"
 
 ### <a name="prioritize-new-documents"></a>設定新檔的優先順序
 
-設定`enableReprocessing`屬性，以控制已在快取中表示的傳入檔處理。 如果`true`為（預設值），則當您重新執行索引子時，已在快取中的檔會被重新處理，前提是您的技能更新會影響到 
+設定 `enableReprocessing` 屬性，以控制已在快取中表示的傳入檔處理。 如果為 `true` （預設值），則當您重新執行索引子時，已在快取中的檔會被重新處理，前提是您的技能更新會影響到 
 
-若`false`為，則不會重新處理現有的檔，並有效地排列現有內容的新內送內容優先順序。 您應該只暫時`enableReprocessing`將`false`設為。 為了確保主體間的一致性， `enableReprocessing`應該是`true`大部分的時間，確保所有檔（包括新的和現有的）都是根據目前的技能集定義來有效。
+若 `false` 為，則不會重新處理現有的檔，並有效地排列現有內容的新內送內容優先順序。 您應該只暫時將設 `enableReprocessing` 為 `false` 。 為了確保主體間的一致性， `enableReprocessing` 應該是 `true` 大部分的時間，確保所有檔（包括新的和現有的）都是根據目前的技能集定義來有效。
 
 ### <a name="bypass-skillset-evaluation"></a>略過技能集評估
 
 修改技能集和重新處理該技能集通常會直接處理。 不過，技能集的某些變更不會導致重新處理（例如，將自訂技能部署到新位置或使用新的存取金鑰）。 最有可能的是，對技能集本身的物質沒有真正影響的周邊修改。 
 
-如果您知道技能集的變更確實是表面，您應該將`disableCacheReprocessingChangeDetection`參數設定為來`true`覆寫技能集評估：
+如果您知道技能集的變更確實是表面，您應該將參數設定為來覆寫技能集評估 `disableCacheReprocessingChangeDetection` `true` ：
 
 1. 呼叫 Update 技能集並修改技能集定義。
-1. 在要求`disableCacheReprocessingChangeDetection=true`上附加參數。
+1. `disableCacheReprocessingChangeDetection=true`在要求上附加參數。
 1. 提交變更。
 
 設定此參數可確保只會認可技能集定義的更新，而且不會針對現有主體的效果評估變更。
@@ -82,22 +94,22 @@ ms.locfileid: "77024138"
 下列範例顯示具有參數的更新技能集要求：
 
 ```http
-PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2019-05-06-Preview&disableCacheReprocessingChangeDetection=true
+PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
 ```
 
 ### <a name="bypass-data-source-validation-checks"></a>略過資料來源驗證檢查
 
-對資料來源定義進行的大部分變更都會使快取失效。 不過，在您知道變更不應使快取不正確情況下（例如變更連接字串或在儲存體帳戶上輪替金鑰），請在資料來源`ignoreResetRequirement`更新上附加參數。 將此參數設定`true`為可讓認可通過，而不觸發重設條件，這會導致所有物件從頭開始重建和填入。
+對資料來源定義進行的大部分變更都會使快取失效。 不過，在您知道變更不應使快取不正確情況下（例如變更連接字串或在儲存體帳戶上輪替金鑰），請 `ignoreResetRequirement` 在資料來源更新上附加參數。 將此參數設定為可 `true` 讓認可通過，而不觸發重設條件，這會導致所有物件從頭開始重建和填入。
 
 ```http
-PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2019-05-06-Preview&ignoreResetRequirement=true
+PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2020-06-30-Preview&ignoreResetRequirement=true
 ```
 
 ### <a name="force-skillset-evaluation"></a>強制技能集評估
 
 快取的目的是要避免不必要的處理，但假設您變更了索引子無法偵測的技能（例如，變更外部程式碼中的某個專案，例如自訂技能）。
 
-在此情況下，您可以使用[重設技能](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)來強制重新處理特定技能，包括任何相依于該技能輸出的下游技能。 此 API 會接受 POST 要求，其中包含應失效並標示為重新處理的技能清單。 重設技能之後，請執行索引子來叫用管線。
+在此情況下，您可以使用[重設技能](https://docs.microsoft.com/rest/api/searchservice/reset-skills)來強制重新處理特定技能，包括任何相依于該技能輸出的下游技能。 此 API 會接受 POST 要求，其中包含應失效並標示為重新處理的技能清單。 重設技能之後，請執行索引子來叫用管線。
 
 ## <a name="change-detection"></a>變更偵測
 
@@ -136,19 +148,19 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 * 變更知識存放區投射，導致文件重新投射
 * 索引子的輸出欄位對應已變更，導致文件重新投射至索引
 
-## <a name="api-reference"></a>應用程式開發介面參考
+## <a name="api-reference"></a>API 參考資料
 
-REST API 版本`2019-05-06-Preview`會透過索引子、技能集和資料來源上的其他屬性提供累加擴充。 除了參考檔之外，如需如何呼叫 Api 的詳細資訊，請參閱[設定增量擴充](search-howto-incremental-index.md)的快取。
+REST API 版本會 `2020-06-30-Preview` 透過索引子上的其他屬性提供累加擴充。 技能集和資料來源可以使用正式推出的版本。 除了參考檔之外，如需如何呼叫 Api 的詳細資訊，請參閱[設定增量擴充](search-howto-incremental-index.md)的快取。
 
-+ [建立索引子（api 版本 = 2019-05 06-01.5.1-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
++ [建立索引子（api 版本 = 2020-06-30-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-+ [更新索引子（api 版本 = 2019-05 06-01.5.1-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
++ [更新索引子（api 版本 = 2020-06-30-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-+ [Update 技能集（api 版本 = 2019-05 06-01.5.1-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) （要求上的新 URI 參數）
++ [Update 技能集（api 版本 = 2020-06-30）](https://docs.microsoft.com/rest/api/searchservice/update-skillset) （要求上的新 URI 參數）
 
-+ [重設技能 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
++ [重設技能（api 版本 = 2020-06-30）](https://docs.microsoft.com/rest/api/searchservice/reset-skills)
 
-+ 資料庫索引子（Azure SQL、Cosmos DB）。 某些索引子會透過查詢抓取資料。 若為抓取資料的查詢，[更新資料來源](https://docs.microsoft.com/rest/api/searchservice/update-data-source)支援要求**ignoreResetRequirement**上的新參數，當您的更新動作`true`不應使快取失效時，應將其設定為。 
++ 資料庫索引子（Azure SQL、Cosmos DB）。 某些索引子會透過查詢抓取資料。 若為抓取資料的查詢，[更新資料來源](https://docs.microsoft.com/rest/api/searchservice/update-data-source)支援要求**ignoreResetRequirement**上的新參數， `true` 當您的更新動作不應使快取失效時，應將其設定為。 
 
   請謹慎使用**ignoreResetRequirement** ，因為它可能會導致不容易偵測到的資料中發生非預期的不一致。
 

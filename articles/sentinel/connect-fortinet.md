@@ -1,6 +1,6 @@
 ---
 title: 將 Fortinet 資料連線到 Azure Sentinel |Microsoft Docs
-description: 瞭解如何將 Fortinet 資料連線到 Azure Sentinel。
+description: 將您的 Fortinet 應用裝置連接到 Azure Sentinel 以觀看儀表板、建立自訂警示，以及改善調查。 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: aabc95fcb8d3b32b89bb83f4f6892c3d40b03417
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72ba4acd694933db503b01611e63867af99a129f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555956"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>將 Fortinet 連接到 Azure Sentinel
 
@@ -50,7 +50,7 @@ ms.locfileid: "77588190"
    > [!NOTE] 
    > 如需詳細資訊，請移至[Fortinet 文件庫](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)。 選取您的版本，並使用**手冊**和**記錄訊息參考**。
 
-1. 若要在 Fortinet 事件的 Azure 監視器 Log Analytics 中使用相關的架構，請`CommonSecurityLog`搜尋。
+1. 若要在 Fortinet 事件的 Azure 監視器 Log Analytics 中使用相關的架構，請搜尋 `CommonSecurityLog` 。
 
 1. 繼續進行[步驟3：驗證連線能力](connect-cef-verify.md)。
 
@@ -59,6 +59,6 @@ ms.locfileid: "77588190"
 在本文中，您已瞭解如何將 Fortinet 設備連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
 
 

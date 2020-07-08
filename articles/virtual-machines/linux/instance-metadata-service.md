@@ -1,29 +1,31 @@
 ---
 title: Azure 執行個體中繼資料服務
-description: RESTful 介面，用以取得 Linux VM 的計算、網路和近期維護事件的相關資訊。
-services: virtual-machines-linux
+description: RESTful 介面，以取得 Vm 的計算、網路和近期維護事件的相關資訊。
+services: virtual-machines
 author: KumariSupriya
 manager: paulmey
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: monitoring
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
-ms.reviewer: azmetadata
-ms.openlocfilehash: ce3463d39b17e7099f85945caa92d1f009b696c0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.reviewer: azmetadatadev
+ms.openlocfilehash: e720be86c6505c2ddebaca91eeefa08e38170cbf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558611"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 執行個體中繼資料服務
 
 Azure Instance Metadata Service (IMDS) 提供目前執行中虛擬機器執行個體的相關資訊，而且可用來管理和設定您的虛擬機器。
-這包括 SKU、儲存體、網路組態及近期維護事件。 如需可用資料的完整清單，請參閱[中繼資料 API](#metadata-apis)。 Instance Metadata Service 適用於 VM 和虛擬機器擴展集執行個體。 其僅適用於使用 [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) 建立/管理的執行中 VM。 
+此資訊包括 SKU、儲存體、網路設定和即將進行的維護事件。 如需可用資料的完整清單，請參閱[中繼資料 API](#metadata-apis)。
+Instance Metadata Service 適用於 VM 和虛擬機器擴展集執行個體。 其僅適用於使用 [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) 建立/管理的執行中 VM。
 
-Azure 的 Instance Metadata Service 可以在已知的非可路由 IP 位址 (`169.254.169.254`) 取得的 REST 端點，該 IP 位址只能從 VM 內存取。
+Azure 的 IMDS 是可在已知的非可路由 IP 位址（）上取得的 REST 端點 `169.254.169.254` ，它只能從 VM 內進行存取。 VM 和 IMDS 之間的通訊永遠不會離開主機。
+最佳作法是讓您的 HTTP 用戶端在查詢 IMDS 時略過 VM 中的 web proxy，並 `169.254.169.254` 將相同的視為 [`168.63.129.16`](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) 。
 
 ## <a name="security"></a>安全性
 
@@ -45,7 +47,7 @@ Azure 的 Instance Metadata Service 可以在已知的非可路由 IP 位址 (`1
 **要求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
 ```
 
 **回應**
@@ -166,23 +168,24 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 
 ### <a name="data-output"></a>資料輸出
 
-根據預設，執行個體中繼資料服務會以 JSON 格式傳回資料 (`Content-Type: application/json`)。 不過，不同的 API 會依照要求傳回不同格式的資料。
+根據預設，執行個體中繼資料服務會以 JSON 格式傳回資料 (`Content-Type: application/json`)。 不過，某些 Api 可以視需要傳回不同格式的資料。
 下表是 API 可能支援之其他資料格式的參考。
 
 API | 預設資料格式 | 其他格式
 --------|---------------------|--------------
+/attested | json | 無
+/identity | json | 無
 /instance | json | text
 /scheduledevents | json | 無
-/attested | json | 無
 
 若要存取非預設的回應格式，請指定要求的格式作為要求中的查詢字串參數。 例如：
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 > [!NOTE]
-> 對於分葉節點，`format=json` 無法運作。 對於這些查詢，`format=text` 需要在預設格式為 json 時明確指定。
+> 若為/metadata/instance 中的分葉節點，則 `format=json` 無法使用。 必須明確指定這些查詢， `format=text` 因為預設格式為 json。
 
 ### <a name="versioning"></a>版本控制
 
@@ -202,7 +205,7 @@ Instance Metadata Service 已版本化，因此在 HTTP 要求中指定 API 版�
 **要求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance"
 ```
 
 **回應**
@@ -219,23 +222,24 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance"
 ```
 
 ## <a name="metadata-apis"></a>中繼資料 API
-IMDS 包含多個代表不同資料來源的 API 介面。 
 
-資料 | 描述 | 引進的版本
------|-------------|-----------------------
-instance | 請參閱[執行個體 API](#instance-api) | 2017-04-02
-attested | 請參閱[證明資料](#attested-data) | 2018-10-01
-身分識別 | 請參閱[取得存取權杖](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-scheduledevents | 請參閱[排定的事件](scheduled-events.md) | 2017-08-01
+Metadata Service 包含代表不同資料來源的多個 Api。
+
+API | 說明 | 引進的版本
+----|-------------|-----------------------
+/attested | 請參閱[證明資料](#attested-data) | 2018-10-01
+/identity | 請參閱[取得存取權杖](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
+/instance | 請參閱[執行個體 API](#instance-api) | 2017-04-02
+/scheduledevents | 請參閱[排定的事件](scheduled-events.md) | 2017-08-01
 
 ## <a name="instance-api"></a>執行個體 API
 
-執行個體 API 會公開 VM 執行個體的重要中繼資料，包括 VM、網路和儲存體。 您可以透過執行個體/計算來存取下列類別：
+實例 API 會公開 VM 實例的重要中繼資料，包括 VM、網路和儲存體。 您可以透過執行個體/計算來存取下列類別：
 
 資料 | 描述 | 引進的版本
 -----|-------------|-----------------------
 azEnvironment | VM 執行所在的 Azure 環境 | 2018-10-01
-customData | 這項功能目前已停用，我們將在其可用時更新此文件 | 2019-02-01
+customData | 這項功能目前已停用。 當此檔可用時，我們會將其更新 | 2019-02-01
 location | VM 執行所在的 Azure 區域 | 2017-04-02
 NAME | VM 的名稱 | 2017-04-02
 供應項目 | 提供 VM 映像的資訊，而且只針對從 Azure 映像資源庫部署的映像呈現 | 2017-04-02
@@ -267,7 +271,7 @@ vmSize | [VM 大小](sizes.md) | 2017-04-02
 **要求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 **回應**
@@ -285,7 +289,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 **要求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
 **回應**
@@ -301,7 +305,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 **要求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
 ```
 
 **回應**
@@ -399,13 +403,14 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Azure 有各種不同的主權雲端，例如 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)。 有時候您會需要 Azure 環境來進行一些執行階段決策。 下列範例會說明如何實現此行為。
 
 **要求**
+
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **回應**
 
-```bash
+```text
 AzurePublicCloud
 ```
 
@@ -436,13 +441,13 @@ macAddress | VM mac 位址 | 2017-04-02
 
 #### <a name="sample-1-retrieving-network-information"></a>範例 1：擷取網路資訊
 
-***要求***
+**要求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
 ```
 
-***回應***
+**回應**
 
 > [!NOTE]
 > 回應是 JSON 字串。 下列範例回應均列印清晰，很容易閱讀。
@@ -478,8 +483,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 #### <a name="sample-2-retrieving-public-ip-address"></a>範例 2：擷取公用 IP 位址
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
-
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 ## <a name="storage-metadata"></a>儲存體中繼資料
@@ -487,7 +491,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 儲存體中繼資料屬於執行個體/計算/storageProfile 端點下的執行個體 API。
 其會對與 VM 相關聯的儲存體磁碟提供詳細資料。 
 
-VM 的儲存體設定檔分成三個類別 - 映像參考、OS 磁碟和資料磁碟。
+VM 的儲存體設定檔分為三個類別：映射參考、OS 磁片和資料磁片。
 
 映像參考物件包含下列作業系統映像的相關資訊：
 
@@ -530,12 +534,12 @@ osType  | 磁碟中包含的 OS 類型
 vhd     | 虛擬硬碟
 writeAcceleratorEnabled | 是否在磁碟上啟用 writeAccelerator
 
-以下是如何查詢 VM 儲存體資訊的範例。
+下列範例顯示如何查詢 VM 的儲存體資訊。
 
 **要求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
 ```
 
 **回應**
@@ -607,7 +611,7 @@ VM 標籤包含執行個體/計算/標籤端點下的執行個體 API。
 **要求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
 ```
 
 **回應**
@@ -616,12 +620,12 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-`tags` 欄位是字串，其中包含以分號分隔的標記。 如果標籤本身使用分號，這可能會是個問題。 如果寫入剖析器以程式設計方式將標籤解壓縮，您應該依賴 `tagsList` 欄位，這是不含分隔符號的 JSON 陣列，因此更容易剖析。
+`tags` 欄位是字串，其中包含以分號分隔的標記。 如果標記本身使用分號，則此輸出可能會有問題。 如果寫入剖析器以程式設計方式將標記解壓縮，您應該依賴此 `tagsList` 欄位。 `tagsList`欄位是不含分隔符號的 JSON 陣列，因此更容易剖析。
 
 **要求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=json"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04"
 ```
 
 **回應**
@@ -652,17 +656,19 @@ Instance Metadata Service 所提供的部分案例，是為了保證所提供的
 > [!NOTE]
 > 所有 API 回應都是 JSON 字串。 下列範例回應均美化顯示，很容易閱讀。
 
-***要求***
+**要求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
-
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
 ```
 
 Api-version 是必要的欄位。 如需支援的 API 版本，請參閱[使用方式一節](#usage)。
-Nonce 是選用的 10 位數字串。 如果未提供，IMDS 會在其位置傳回目前的 UTC 時間戳記。 由於 IMDS 的快取機制，可能會傳回先前快取的 nonce 值。
+Nonce 是選用的 10 位數字串。 如果未提供，IMDS 會在其位置傳回目前的 UTC 時間戳記。
 
- ***回應***
+> [!NOTE]
+> 由於 IMDS 的快取機制，可能會傳回先前快取的 nonce 值。
+
+**回應**
 
 > [!NOTE]
 > 回應是 JSON 字串。 下列範例回應均列印清晰，很容易閱讀。
@@ -674,6 +680,17 @@ Nonce 是選用的 10 位數字串。 如果未提供，IMDS 會在其位置傳�
 ```
 
 簽章 Blob 是以 [pkcs7](https://aka.ms/pkcs7) 簽署的文件版本。 其包含用於簽署的憑證，以及 VM 詳細資料，例如 vmId、sku、nonce、subscriptionId、文件的建立和到期時間戳記，以及關於該映像的方案資訊。 Azure Marketplace 映像才會填入方案資訊。 憑證可以從回應中擷取出來，並可用來驗證回應有效且來自 Azure。
+檔包含下欄欄位：
+
+資料 | 描述
+-----|------------
+nonce | 可選擇性地隨要求提供的字串。 如果未提供 nonce，則會使用目前的 UTC 時間戳記
+計劃 | [Azure Marketplace 的影像計畫](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)。 包含方案識別碼（名稱）、產品影像或供應專案（產品）和發行者識別碼（發行者）。
+timestamp/createdOn | 建立已簽署檔時的 UTC 時間戳記
+timestamp/expiresOn | 簽署的檔過期時的 UTC 時間戳記
+vmId |  VM 的[唯一識別碼](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
+subscriptionId | 虛擬機器的 Azure 訂用帳戶，於 `2019-04-30` 引進
+sku | VM 映像的特定 SKU，於 `2019-11-01` 引進
 
 ### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>範例 2：驗證 VM 是在 Azure 中執行
 
@@ -682,74 +699,50 @@ Marketplace 廠商想要確保其軟體是授權為只在 Azure 中執行。 如
 > [!NOTE]
 > 必須安裝 jq。
 
-***要求***
+**要求**
 
 ```bash
-  # Get the signature
-   curl  --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2019-04-30 | jq -r '.["signature"]' > signature
-  # Decode the signature
-  base64 -d signature > decodedsignature
-  #Get PKCS7 format
-  openssl pkcs7 -in decodedsignature -inform DER -out sign.pk7
-  # Get Public key out of pkc7
-  openssl pkcs7 -in decodedsignature -inform DER  -print_certs -out signer.pem
-  #Get the intermediate certificate
-  wget -q -O intermediate.cer "$(openssl x509 -in signer.pem -text -noout | grep " CA Issuers -" | awk -FURI: '{print $2}')"
-  openssl x509 -inform der -in intermediate.cer -out intermediate.pem
-  #Verify the contents
-  openssl smime -verify -in sign.pk7 -inform pem -noverify
- ```
+# Get the signature
+curl --silent -H Metadata:True --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2019-04-30" | jq -r '.["signature"]' > signature
+# Decode the signature
+base64 -d signature > decodedsignature
+# Get PKCS7 format
+openssl pkcs7 -in decodedsignature -inform DER -out sign.pk7
+# Get Public key out of pkc7
+openssl pkcs7 -in decodedsignature -inform DER  -print_certs -out signer.pem
+# Get the intermediate certificate
+curl -s -o intermediate.cer "$(openssl x509 -in signer.pem -text -noout | grep " CA Issuers -" | awk -FURI: '{print $2}')"
+openssl x509 -inform der -in intermediate.cer -out intermediate.pem
+# Verify the contents
+openssl smime -verify -in sign.pk7 -inform pem -noverify
+```
 
- **回應**
+**回應**
 
 ```json
 Verification successful
-{"nonce":"20181128-001617",
+{
+  "nonce": "20181128-001617",
   "plan":
     {
-     "name":"",
-     "product":"",
-     "publisher":""
+      "name": "",
+      "product": "",
+      "publisher": ""
     },
-"timeStamp":
-  {
-    "createdOn":"11/28/18 00:16:17 -0000",
-    "expiresOn":"11/28/18 06:16:17 -0000"
-  },
-"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34",
-"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-"sku": "RS3-Pro"
+  "timeStamp":
+    {
+      "createdOn": "11/28/18 00:16:17 -0000",
+      "expiresOn": "11/28/18 06:16:17 -0000"
+    },
+  "vmId": "d3e0e374-fda6-4649-bbc9-7f20dc379f34",
+  "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+  "sku": "RS3-Pro"
 }
 ```
 
-資料 | 描述
------|------------
-nonce | 使用者隨要求提供的選擇性字串。 如果要求中未提供 nonce，則會傳回目前的 UTC 時間戳記
-計劃 | VM 在其 Azure Marketplace 映像中的[方案](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) \(英文\)，包含名稱、產品及發行者
-timestamp/createdOn | 建立第一份簽署文件的 UTC 時間戳記
-timestamp/expiresOn | 簽署文件到期的 UTC 時間戳記
-vmId |  VM 的[唯一識別碼](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
-subscriptionId | 虛擬機器的 Azure 訂用帳戶，於 `2019-04-30` 引進
-sku | VM 映像的特定 SKU，於 `2019-11-01` 引進
-
-#### <a name="sample-3-verifying-the-signature"></a>範例 3：驗證簽章
-
-收到上述簽章後，您可驗證簽章是來自 Microsoft 的。 此外，您也可以驗證中繼憑證和信任鏈結。 最後，您可以驗證訂用帳戶識別碼是否正確。
-
-> [!NOTE]
-> 公用雲端和主權雲端的憑證將會不同。
-
- Cloud | 憑證
----------|-----------------
-[所有正式推出的全域 Azure 區域](https://azure.microsoft.com/regions/)     | *.metadata.azure.com
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *.metadata.azure.us
-[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *.metadata.azure.cn
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | *.metadata.microsoftazure.de
-
-用於簽署的憑證發生已知問題。 憑證可能沒有完全符合公用雲端的 `metadata.azure.com`。 因此，認證驗證應該允許來自任何 `.metadata.azure.com` 子域的一般名稱。
+請確認簽章是來自 Microsoft Azure，並檢查憑證鏈是否有錯誤。
 
 ```bash
-
 # Verify the subject name for the main certificate
 openssl x509 -noout -subject -in signer.pem
 # Verify the issuer for the main certificate
@@ -762,14 +755,35 @@ openssl x509 -noout -issuer -in intermediate.pem
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
+> [!NOTE]
+> 由於 IMDS 的快取機制，可能會傳回先前快取的 nonce 值。
+
+如果您在初始要求中提供 nonce 參數，則可以比較已簽署檔中的 nonce。
+
+> [!NOTE]
+> 公用雲端和主權雲端的憑證將會不同。
+
+Cloud | 憑證
+------|------------
+[所有正式推出的全域 Azure 區域](https://azure.microsoft.com/regions/) | *.metadata.azure.com
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)          | *.metadata.azure.us
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)     | *.metadata.azure.cn
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                | *.metadata.microsoftazure.de
+
+> [!NOTE]
+> 用於簽署的憑證發生已知問題。 憑證可能沒有完全符合公用雲端的 `metadata.azure.com`。 因此，認證驗證應該允許來自任何 `.metadata.azure.com` 子域的一般名稱。
+
 在驗證期間由於網路限制而無法下載中繼憑證的情況下，可以釘選中繼憑證。 不過，Azure 會根據標準 PKI 作法來變換憑證。 釘選的憑證必須在變換發生時更新。 每當規劃更新中繼憑證的變更時，就會更新 Azure 部落格，並會通知 Azure 客戶。 您可以在[這裡](https://www.microsoft.com/pki/mscorp/cps/default.htm)找到中繼憑證。 每個區域的中繼憑證可能不同。
 
 > [!NOTE]
->適用於 Azure China 21Vianet 的中繼憑證將來自 DigiCert Global Root CA，而不是巴爾的摩。
+> 適用於 Azure China 21Vianet 的中繼憑證將來自 DigiCert Global Root CA，而不是巴爾的摩。
 此外，如果您已將 Azure 中國的中繼憑證釘選為根鏈結授權單位變更的一部分，則必須更新中繼憑證。
 
 ## <a name="managed-identity-via-metadata-service"></a>透過 Metadata Service 的受控識別
-使用者可以在 VM 上啟用受控識別，然後利用 Instance Metadata Service 來傳遞權杖以存取 Azure 服務。 在 VM 上執行的應用程式現在可以向 Azure Instance Metadata Service 端點要求權杖，然後使用該權杖向雲端服務進行驗證，包括金鑰保存庫。
+
+您可以在 VM 上啟用系統指派的受控識別，或可將一或多個使用者指派的受控識別指派給 VM。
+然後可以從 Instance Metadata Service 要求受控識別的權杖。 這些權杖可以用來向其他 Azure 服務（例如 Azure Key Vault）進行驗證。
+
 如需啟用這項功能的詳細步驟，請參閱[取得存取權杖](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
 
 ## <a name="scheduled-events-via-metadata-service"></a>透過中繼資料服務的已排定事件
@@ -777,28 +791,24 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 
 ## <a name="regional-availability"></a>區域可用性
 
-這項服務已在所有 Azure 區域中**正式推出**。 這包括： 
-1. [所有正式推出的全域 Azure 區域](https://azure.microsoft.com/regions/)
-2. [Azure Government](https://azure.microsoft.com/overview/clouds/government/)  
-3. [Azure China 21Vianet](https://www.azure.cn/) 
-4. [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/) 
+服務已在所有 Azure 雲端中**正式推出**。
 
 ## <a name="sample-code-in-different-languages"></a>不同語言的程式碼範例
 
 在 VM 內使用不同語言呼叫中繼資料服務的範例：
 
-Language | 範例
----------|----------------
-Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
-Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
-C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
-C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
-JavaScript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
-Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
-Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
-Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
-Puppet | https://github.com/keirans/azuremetadata
+Language      | 範例
+--------------|----------------
+Bash          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
+C#            | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
+Go            | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Java          | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
+NodeJS        | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
+Perl          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
+PowerShell    | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
+Puppet        | https://github.com/keirans/azuremetadata
+Python        | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
+Ruby          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 
 ## <a name="error-and-debugging"></a>測試和偵錯
 
@@ -807,7 +817,7 @@ Puppet | https://github.com/keirans/azuremetadata
 HTTP 狀態碼 | 原因
 ----------------|-------
 200 確定 |
-400 不正確的要求 | 查詢分葉節點時遺漏 `Metadata: true` 標頭或遺漏格式
+400 不正確的要求 | `Metadata: true` `format=json` 查詢分葉節點時遺漏標頭或遺漏參數
 404 找不到 | 要求的元素不存在
 405 不允許的方法 | 僅支援 `GET` 要求
 410 不存在 | 在一段時間後重試，上限為 70 秒
@@ -818,34 +828,77 @@ HTTP 狀態碼 | 原因
 
 1. 我收到錯誤 `400 Bad Request, Required metadata header not specified`。 這代表什麼？
    * 執行個體中繼資料服務需要在要求中傳遞標頭 `Metadata: true`。 在 REST 呼叫中傳遞此標頭可允許存取執行個體中繼資料服務。
-2. 為什麼我沒有收到我的 VM 計算資訊？
+1. 為什麼我沒有收到我的 VM 計算資訊？
    * 目前執行個體中繼資料服務僅支援使用 Azure Resource Manager 建立的執行個體。 未來可能會新增雲端服務 VM 的支援。
-3. 我在一陣子之後回過頭來透過 Azure Resource Manager 建立我的虛擬機器。 為什麼我看不到計算中繼資料資訊？
-   * 針對在 2016 年 9 月之後建立的 VM，新增[標記](../../azure-resource-manager/management/tag-resources.md)才會開始看到計算中繼資料。 針對較舊的 VM (在 2016 年 9 月之前建立)，對 VM 新增/移除擴充功能或資料磁碟，以重新整理中繼資料。
-4. 我看不到為新版本填入的所有資料
-   * 針對在 2016 年 9 月之後建立的 VM，新增[標記](../../azure-resource-manager/management/tag-resources.md)才會開始看到計算中繼資料。 針對較舊的 VM (在 2016 年 9 月之前建立)，對 VM 新增/移除擴充功能或資料磁碟，以重新整理中繼資料。
-5. 我為何收到錯誤 `500 Internal Server Error`？
-   * 請根據指數型輪詢系統重試您的要求。 若問題持續發生，請連絡 Azure 支援。
-6. 我要在哪裡共用其他問題/註解？
-   * 在 https://feedback.azure.com 上傳送您的註解。
-7. 這是否適用於虛擬機器擴展集執行個體？
-   * 是，中繼資料服務適用於擴展集執行個體。
-8. 如何取得服務支援？
-   * 若要取得服務支援，請在 Azure 入口網站中針對您無法在長時間重試後取得中繼資料回應的 VM 建立支援問題。
-9. 為何在呼叫服務時會出現要求逾時的狀況？
-   * 中繼資料呼叫必須從為 VM 的主要網路卡指派的主要 IP 位址執行，除非您已變更路由，否則您的網路卡一定會有 169.254.0.0/16 位址的路由。
-10. 我已更新虛擬機器擴展集內的標籤，但為何它們並未像 VM 一樣出現在執行個體中？
-    * 目前，只有對執行個體重新開機、重新安裝映像或變更磁碟時，ScaleSets 標籤才會對 VM 顯示。
+1. 我在一陣子之後回過頭來透過 Azure Resource Manager 建立我的虛擬機器。 為什麼我看不到計算中繼資料資訊？
+   * 針對在 2016 年 9 月之後建立的 VM，新增[標記](../../azure-resource-manager/management/tag-resources.md)才會開始看到計算中繼資料。 針對較舊的 Vm （在 Sep 2016 之前建立），請在 VM 實例中新增/移除擴充功能或資料磁片，以重新整理中繼資料。
+1. 我看不到為新版本填入的所有資料
+   * 針對在 2016 年 9 月之後建立的 VM，新增[標記](../../azure-resource-manager/management/tag-resources.md)才會開始看到計算中繼資料。 針對較舊的 Vm （在 Sep 2016 之前建立），請在 VM 實例中新增/移除擴充功能或資料磁片，以重新整理中繼資料。
+1. 為什麼會收到錯誤 `500 Internal Server Error` 或 `410 Resource Gone` ？
+   * 以指數後置關閉系統或[暫時性錯誤處理](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults)中所述的其他方法，重試您的要求。 如果問題持續發生，請在 VM 的 Azure 入口網站中建立支援問題。
+1. 這適用于虛擬機器擴展集實例嗎？
+   * 是中繼資料服務適用于擴展集實例。
+1. 我已更新虛擬機器擴展集中的標記，但它們不會出現在實例中，不同于單一實例 Vm 嗎？
+   * 目前擴展集的標籤只會在重新開機、重新安裝映射或對實例進行磁片變更時，向 VM 顯示。
+1. 為何在呼叫服務時會出現要求逾時的狀況？
+   * 中繼資料呼叫必須從指派給 VM 主要網路卡的主要 IP 位址進行。 此外，如果您已變更路由，VM 的本機路由表中必須有 169.254.169.254/32 位址的路由。
+   * <details>
+        <summary>正在驗證您的路由表</summary>
+
+        1. 使用類似的命令傾印您的本機路由表 `netstat -r` ，並尋找 IMDS 專案（例如）：
+            ```console
+            ~$ netstat -r
+            Kernel IP routing table
+            Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+            default         _gateway        0.0.0.0         UG        0 0          0 eth0
+            168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
+            169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
+            172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
+            ```
+        1. 確認的路由存在 `169.254.169.254` ，並記下對應的網路介面（例如 `eth0` ）。
+        1. 傾印路由表中對應介面的介面設定（請注意，設定檔的確切名稱可能會不同）
+            ```console
+            ~$ cat /etc/netplan/50-cloud-init.yaml
+            network:
+            ethernets:
+                eth0:
+                    dhcp4: true
+                    dhcp4-overrides:
+                        route-metric: 100
+                    dhcp6: false
+                    match:
+                        macaddress: 00:0d:3a:e4:c7:2e
+                    set-name: eth0
+            version: 2
+            ```
+        1. 如果您使用動態 IP，請記下 MAC 位址。 如果您使用靜態 IP，您可能會注意到列出的 IP 和（或） MAC 位址。
+        1. 確認介面對應至 VM 的主要 NIC 和主要 IP。 您可以藉由查看 Azure 入口網站中的網路設定，或藉由查詢[Azure CLI](https://docs.microsoft.com/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show)，來尋找主要 NIC/IP。 請注意公用和私人 Ip （如果使用 cli，則為 MAC 位址）。 PowerShell CLI 範例：
+            ```powershell
+            $ResourceGroup = '<Resource_Group>'
+            $VmName = '<VM_Name>'
+            $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+            foreach($NicName in $NicNames)
+            {
+                $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+                Write-Host $NicName, $Nic.primary, $Nic.macAddress
+            }
+            # Output: ipexample606 True 00-0D-3A-E4-C7-2E
+            ```
+        1. 如果兩者不相符，請更新路由表，讓主要 NIC/IP 成為目標。
+    </details>
 
 ## <a name="support-and-feedback"></a>支援與意見反應
 
-在 https://feedback.azure.com 上傳送您的意見反應和留言。
-若要取得服務支援，請在 Azure 入口網站中針對您無法在長時間重試後取得中繼資料回應的 VM 建立支援問題。
+提交您的意見反應和意見 https://feedback.azure.com 。
 
-![執行個體中繼資料支援](./media/instance-metadata-service/InstanceMetadata-support.png)
+若要取得服務支援，請在 Azure 入口網站中針對您無法在長時間重試後取得中繼資料回應的 VM 建立支援問題。
+使用的 [問題類型] `Management` ，並選取 `Instance Metadata Service` 做為類別目錄。
+
+![執行個體中繼資料支援](./media/instance-metadata-service/InstanceMetadata-support.png "螢幕擷取畫面：在 Instance Metadata Service 遇到問題時開啟支援案例")
 
 ## <a name="next-steps"></a>後續步驟
 
 深入了解：
-1.  [取得 VM 的 MSI 存取權杖](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
-2.  [已排定事件](scheduled-events.md) 
+1. [取得 VM 的 MSI 存取權杖](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
+1. [已排定事件](scheduled-events.md)
+

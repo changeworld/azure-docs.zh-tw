@@ -3,16 +3,18 @@ title: 資源命名限制
 description: 顯示命名 Azure 資源的規則和限制。
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 553d0e33c4b9bc1aa238cf582f37be1e148eea5e
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554336"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 資源的命名規則和限制
 
 本文摘要說明 Azure 資源的命名規則和限制。 如需如何命名資源的建議，請參閱[建議的命名和標記慣例](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)。
+
+本文依資源提供者命名空間列出資源。 如需資源提供者如何與 Azure 服務相符的清單，請參閱[azure 服務的資源提供者](azure-services-resource-providers.md)。
 
 除非在 [有效字元] 資料行中特別註明，否則資源名稱不區分大小寫。
 
@@ -34,7 +36,7 @@ ms.locfileid: "83758889"
 > [!div class="mx-tableFixed"]
 > | 單位 | 影響範圍 | 長度 | 有效字元 |
 > | --- | --- | --- | --- |
-> | 服務 | 全域 | 1-50 | 英數字元。<br><br>以字母開頭。 |
+> | 服務 | 全域 | 1-50 | 英數位元和連字號。<br><br>以字母開頭，並以英數字元結尾。 |
 > | service / apis | 服務 | 1-256 | 不能使用：<br> `*#&+:<>?` |
 > | service / apis / issues | api | 1-256 | 不能使用：<br> `*#&+:<>?` |
 > | service / apis / issues / attachments | 問題 | 1-256 | 不能使用：<br> `*#&+:<>?` |
@@ -81,9 +83,9 @@ ms.locfileid: "83758889"
 > | 單位 | 影響範圍 | 長度 | 有效字元 |
 > | --- | --- | --- | --- |
 > | locks | 指派範圍 | 1-90 | 英數字元、句號、底線、連字號和括弧。<br><br>不能以句號結尾。 |
-> | policyassignments | 指派範圍 | 1-128 (顯示名稱)<br><br>1-260 (資源名稱) | 顯示名稱可包含任何字元。<br><br>資源名稱不能包含 `%`，且不能以句號或空格結尾。 |
-> | policydefinitions | 定義範圍 | 1-128 (顯示名稱)<br><br>1-260 (資源名稱) | 顯示名稱可包含任何字元。<br><br>資源名稱不能包含 `%`，且不能以句號或空格結尾。 |
-> | policySetDefinitions | 定義範圍 | 1-128 (顯示名稱)<br><br>1-260 (資源名稱) | 顯示名稱可包含任何字元。<br><br>資源名稱不能包含 `%`，且不能以句號或空格結尾。  |
+> | policyAssignments | 指派範圍 | 1-128 (顯示名稱)<br><br>1-64 資源名稱 | 顯示名稱可包含任何字元。<br><br>資源名稱不能包含 `%`，且不能以句號或空格結尾。 |
+> | policyDefinitions | 定義範圍 | 1-128 (顯示名稱)<br><br>1-64 資源名稱 | 顯示名稱可包含任何字元。<br><br>資源名稱不能包含 `%`，且不能以句號或空格結尾。 |
+> | policySetDefinitions | 定義範圍 | 1-128 (顯示名稱)<br><br>1-64 資源名稱<br><br>1-24 管理群組範圍的資源名稱 | 顯示名稱可包含任何字元。<br><br>資源名稱不能包含 `%`，且不能以句號或空格結尾。  |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -172,8 +174,8 @@ ms.locfileid: "83758889"
 > | galleries / images / versions | image | 32 位元整數 | 數字和句號。 |
 > | images | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | snapshots | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
-> | virtualMachines | 資源群組 | 1-15 (Windows)<br>1-64 (Linux)<br><br>請參閱下方注意事項。 | 不能使用：<br> `\/""[]:|<>+=;,?*@&`<br><br>不能以底線開頭。 不能以句號或連字號結尾。 |
-> | virtualMachineScaleSets | 資源群組 | 1-15 (Windows)<br>1-64 (Linux)<br><br>請參閱下方注意事項。 | 不能使用：<br> `\/""[]:|<>+=;,?*@&`<br><br>不能以底線開頭。 不能以句號或連字號結尾。 |
+> | virtualMachines | 資源群組 | 1-15 (Windows)<br>1-64 (Linux)<br><br>請參閱下方注意事項。 | 不能使用：<br> `\/"'[]:|<>+=;,?*@&`<br><br>不能以底線開頭。 不能以句號或連字號結尾。 |
+> | virtualMachineScaleSets | 資源群組 | 1-15 (Windows)<br>1-64 (Linux)<br><br>請參閱下方注意事項。 | 不能使用：<br> `\/"'[]:|<>+=;,?*@&`<br><br>不能以底線開頭。 不能以句號或連字號結尾。 |
 
 > [!NOTE]
 > Azure 虛擬機器有兩個不同的名稱：資源名稱和主機名稱。 當在入口網站中建立虛擬機器時，會針對這兩個名稱使用相同的值。 上表中的限制適用於主機名稱。 實際資源名稱最多可以有 64 個字元。
@@ -522,7 +524,7 @@ ms.locfileid: "83758889"
 > [!div class="mx-tableFixed"]
 > | 單位 | 影響範圍 | 長度 | 有效字元 |
 > | --- | --- | --- | --- |
-> | 命名空間 | 全域 | 6-50 | 英數字元和連字號<br><br>以英數字元開頭及結尾。 |
+> | 命名空間 | 全域 | 6-50 | 英數字元和連字號<br><br>以字母開頭。 以英數字元結尾。 |
 > | namespaces / AuthorizationRules | 命名空間 | 1-256 | 英數字元、句號、連字號和底線。<br><br>以英數字元開頭。 |
 > | namespaces / notificationHubs | 命名空間 | 1-260 | 英數字元、句號、連字號和底線。<br><br>以英數字元開頭。 |
 > | namespaces / notificationHubs / AuthorizationRules | 通知中樞 | 1-256 | 英數字元、句號、連字號和底線。<br><br>以英數字元開頭。 |

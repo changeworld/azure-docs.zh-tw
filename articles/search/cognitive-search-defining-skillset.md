@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdbe157198ad62578613d86f3b3a55b72ca0acf8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75754559"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557453"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋的 AI 擴充管線中建立技能集 
 
@@ -55,7 +55,7 @@ AI 擴充會解壓縮和來擴充資料，使其可在 Azure 認知搜尋中進�
 技能集會定義為技能的陣列。 每項技能分別定義其輸入的來源和所產生的輸出名稱。 使用[建立技能集 REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)，可以定義對應於上圖的技能集： 
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -163,7 +163,7 @@ Content-Type: application/json
     }
 ```
 
-* 每個內建技能都`odata.type`有`input`、和`output`屬性。 技能特有的屬性可提供適用於該技能的其他資訊。 就實體辨識而言，`categories` 是預先定型的模型可從一組固定的實體類型中辨識出來的實體。
+* 每個內建技能都有 `odata.type` 、 `input` 和 `output` 屬性。 技能特有的屬性可提供適用於該技能的其他資訊。 就實體辨識而言，`categories` 是預先定型的模型可從一組固定的實體類型中辨識出來的實體。
 
 * 每項技能都應有 ```"context"```。 內容表示作業執行的層級。 在上述技能中，內容是整份檔，這表示每份檔會呼叫一次實體辨識技能。 輸出也會在該層級上產生。 更具體來說，```"organizations"``` 會產生作為 ```"/document"``` 的成員。 在下游技能中，您可以將這項新建立的資訊稱為 ```"/document/organizations"```。  如果 ```"context"``` 欄位未明確設定，預設內容將是文件。
 
@@ -247,7 +247,7 @@ Content-Type: application/json
 
 ## <a name="add-a-knowledge-store"></a>新增知識存放區
 
-[知識存放區](knowledge-store-concept-intro.md)是 Azure 認知搜尋中的預覽功能，可用於儲存擴充的檔。 您建立的知識存放區是由 Azure 儲存體帳戶所支援，這是您擴充的資料所在的存放庫。 
+[知識存放區](knowledge-store-concept-intro.md)是 Azure 認知搜尋中的一項功能，可用於儲存擴充的檔。 您建立的知識存放區是由 Azure 儲存體帳戶所支援，這是您擴充的資料所在的存放庫。 
 
 知識存放區定義會加入至技能集。 如需整個程式的逐步解說，請參閱[在 REST 中建立知識存放區](knowledge-store-create-rest.md)。
 

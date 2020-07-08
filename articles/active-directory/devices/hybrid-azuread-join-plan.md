@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22ab3e7403069ed1b579631b88c2ac2c41191ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181319"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554761"
 ---
-# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：規劃混合式 Azure Active Directory 聯結執行
+# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>How To:規劃混合式 Azure Active Directory Join 實作
 
 以類似的使用方式，裝置是您想要保護的另一個核心身分識別，可用來隨時隨地保護您的資源。 您可以使用下列其中一種方法，將裝置身分識別導入 Azure AD 中進行管理，以達到此目標：
 
@@ -30,7 +30,7 @@ ms.locfileid: "82181319"
 
 如果您有內部部署 Active Directory （AD）環境，而且想要將已加入 AD 網域的電腦加入 Azure AD，您可以執行混合式 Azure AD 聯結來完成這項作業。 本文提供在您的環境中實作混合式 Azure AD Join 的相關步驟。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已熟悉[Azure Active Directory 中的裝置身分識別管理簡介](../device-management-introduction.md)。
 
@@ -41,13 +41,12 @@ ms.locfileid: "82181319"
 
 若要規劃您的混合式 Azure AD 實作，您應該熟悉：
 
-|   |   |
-| --- | --- |
-| ![勾選][1] | 檢閱支援的裝置 |
-| ![勾選][1] | 檢閱您應該知道的事情 |
-| ![勾選][1] | 審查混合式 Azure AD 聯結的受控制驗證 |
-| ![勾選][1] | 根據您的身分識別基礎結構來選取您的案例 |
-| ![勾選][1] | 檢查混合式 Azure AD 聯結的內部部署 AD UPN 支援 |
+> [!div class="checklist"]
+> - 檢閱支援的裝置
+> - 檢閱您應該知道的事情
+> - 審查混合式 Azure AD 聯結的受控制驗證
+> - 根據您的身分識別基礎結構來選取您的案例
+> - 檢查混合式 Azure AD 聯結的內部部署 AD UPN 支援
 
 ## <a name="review-supported-devices"></a>檢閱支援的裝置
 
@@ -127,8 +126,8 @@ ms.locfileid: "82181319"
 
 同盟環境應具有支援下列需求的識別提供者。 如果您的同盟環境使用 Active Directory 同盟服務 (AD FS)，則已支援下列需求。
 
-- **WIAORMULTIAUTHN 宣告：** 需要此宣告，才能執行適用于舊版 Windows 裝置的混合式 Azure AD 聯結。
-- **Ws-trust 通訊協定：** 必須使用此通訊協定，才能向 Azure AD 驗證已加入 Windows 的混合式 Azure AD 裝置。 當您使用 AD FS 時，您必須啟用下列 WS-Trust 端點：`/adfs/services/trust/2005/windowstransport`  
+- **WIAORMULTIAUTHN 宣告：** 必須有此宣告才能對舊版 Windows 裝置進行混合式 Azure AD Join。
+- **WS-Trust 通訊協定：** 必須有此通訊協定才能向 Azure AD 驗證 Windows 目前的混合式 Azure AD 加入裝置。 當您使用 AD FS 時，您必須啟用下列 WS-Trust 端點：`/adfs/services/trust/2005/windowstransport`  
 `/adfs/services/trust/13/windowstransport`  
   `/adfs/services/trust/2005/usernamemixed` 
   `/adfs/services/trust/13/usernamemixed`
@@ -136,12 +135,12 @@ ms.locfileid: "82181319"
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 都只能啟用為內部網路對應端點，且不得透過 Web 應用程式 Proxy 公開為內部網路對應端點。 若要深入了解如何停用 WS-Trust Windows 端點，請參閱[在 Proxy上停用 WS-Trust Windows 端點](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 您可以在 AD FS 管理主控台的 [服務]   > [端點]  下方查看已啟用的端點。
+> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 都只能啟用為內部網路對應端點，且不得透過 Web 應用程式 Proxy 公開為內部網路對應端點。 若要深入了解如何停用 WS-Trust Windows 端點，請參閱[在 Proxy上停用 WS-Trust Windows 端點](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 您可以在 AD FS 管理主控台的 [服務] > [端點] 下方查看已啟用的端點。
 
 > [!NOTE]
 > Azure AD 不支援受控網域中的智慧卡或憑證。
 
-從 1.1.819.0 版開始，Azure AD Connect 即為您提供用來設定混合式 Azure AD Join 的精靈。 此精靈可讓您大幅簡化設定程序。 如果安裝必要的 Azure AD Connect 版本不適合您，請參閱[如何手動設定裝置註冊](hybrid-azuread-join-manual.md)。 
+從 1.1.819.0 版開始，Azure AD Connect 能提供設定混合式 Azure AD Join 的精靈。 此精靈可讓您大幅簡化設定程序。 如果安裝必要的 Azure AD Connect 版本不適合您，請參閱[如何手動設定裝置註冊](hybrid-azuread-join-manual.md)。 
 
 根據符合您身分識別基礎結構的案例，請參閱：
 
@@ -160,18 +159,18 @@ ms.locfileid: "82181319"
 
 下表提供有關在 Windows 10 混合式 Azure AD Join 中支援這些內部部署 AD UPN 的詳細資料
 
-| 內部部署 AD UPN 的類型 | 網域類型 | Windows 10 版本 | 描述 |
+| 內部部署 AD UPN 的類型 | 網域類型 | Windows 10 版本 | Description |
 | ----- | ----- | ----- | ----- |
 | 路由式 | 同盟 | 自 1703 版起 | 正式推出 |
 | 非可路由傳送 | 同盟 | 自 1803 版起 | 正式推出 |
-| 路由式 | 受管理 | 自 1803 版起 | 已正式推出，不支援 Windows 鎖屏上的 Azure AD SSPR |
-| 非可路由傳送 | 受管理 | 不支援 | |
+| 路由式 | 受控 | 自 1803 版起 | 已正式推出，不支援 Windows 鎖屏上的 Azure AD SSPR |
+| 非可路由傳送 | 受控 | 不支援 | |
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [設定同盟環境](hybrid-azuread-join-federated-domains.md)
-> 的混合式 Azure Active Directory 聯結[設定受管理環境的混合式 Azure Active Directory 聯結](hybrid-azuread-join-managed-domains.md)
+> [設定聯合環境](hybrid-azuread-join-federated-domains.md) 
+>  的混合式 Azure Active Directory 聯結[設定受管理環境的混合式 Azure Active Directory 聯結](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

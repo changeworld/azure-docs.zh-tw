@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2bc9bb8b79ca0a6f59e6c771109cf4d102cdd78e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 198ab9505c550ad5bf8dc75211864a562b45979f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682236"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553655"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 授權碼流程
 
@@ -274,13 +274,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 嘗試在 Postman 中執行這項要求！ (別忘了取代 `refresh_token`) [![請嘗試在 Postman 中執行此要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
-| 參數     |                | 描述        |
+| 參數     | 類型           | Description        |
 |---------------|----------------|--------------------|
-| `tenant`        | required     | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。   |
-| `client_id`     | required    | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
-| `grant_type`    | required    | 必須是授權碼流程此階段的 `refresh_token` 。 |
+| `tenant`        | 必要     | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。   |
+| `client_id`     | 必要    | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
+| `grant_type`    | 必要    | 必須是授權碼流程此階段的 `refresh_token` 。 |
 | `scope`         | required    | 範圍的空格分隔清單。 在此階段中要求的範圍必須相當於或為原始 authorization_code 要求階段中所要求的範圍子集。 如果這個要求中指定的範圍遍及多個資源伺服器，Microsoft 身分識別平台端點就會傳回第一個範圍中所指定資源的權杖。 如需範圍的詳盡說明，請參閱 [權限、同意和範圍](v2-permissions-and-consent.md)。 |
-| `refresh_token` | required    | 您在流程的第二個階段中取得的 refresh_token。 |
+| `refresh_token` | 必要    | 您在流程的第二個階段中取得的 refresh_token。 |
 | `client_secret` | Web Apps 所需 | 您在應用程式註冊入口網站中為應用程式建立的應用程式密碼。 此參數不應用於原生應用程式中，因為 client_secrets 無法可靠地儲存在裝置上。 這是 Web 應用程式和 Web API 的必要參數，能夠將 client_secret 安全地儲存在伺服器端。 此密碼必須經過 URL 編碼。 如需詳細資訊，請參閱 [URI 一般語法規格](https://tools.ietf.org/html/rfc3986#page-12)。 |
 
 #### <a name="successful-response"></a>成功回應

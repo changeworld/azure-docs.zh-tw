@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 828f738ff8923dc8194e2449f5fb0be74ef45ad7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70f1e4414888ceb8fb04fd92dc954d1a7c06dcb4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473552"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557985"
 ---
 # <a name="api-management-authentication-policies"></a>API 管理驗證原則
 本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -48,16 +48,16 @@ ms.locfileid: "79473552"
 
 ### <a name="elements"></a>元素
 
-|Name|描述|必要|
+|Name|說明|必要|
 |----------|-----------------|--------------|
-|authentication-basic|根元素。|是|
+|authentication-basic|根元素。|Yes|
 
 ### <a name="attributes"></a>屬性
 
-|Name|描述|必要|預設值|
+|Name|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
 |username|指定「基本驗證」認證的使用者名稱。|是|N/A|
-|password|指定「基本驗證」認證的密碼。|是|N/A|
+|密碼|指定「基本驗證」認證的密碼。|是|N/A|
 
 ### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
@@ -77,27 +77,38 @@ ms.locfileid: "79473552"
 
 ### <a name="examples"></a>範例
 
-在此範例中，用戶端憑證是由其指紋來識別。
+在此範例中，用戶端憑證是由其指紋來識別：
+
 ```xml
 <authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
 ```
-在此範例中，用戶端憑證是以資源名稱來識別。
+
+在此範例中，用戶端憑證是由資源名稱所識別：
+
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
-```  
+``` 
+
+在此範例中，用戶端憑證是在原則中設定，而不是從內建憑證存放區中抓取：
+
+```xml
+<authentication-certificate body="@(context.Variables.GetValueOrDefault<byte[]>("byteCertificate"))" password="optional-certificate-password" />
+```
 
 ### <a name="elements"></a>元素  
   
-|Name|描述|必要|  
+|Name|說明|必要|  
 |----------|-----------------|--------------|  
-|authentication-certificate|根元素。|是|  
+|authentication-certificate|根元素。|Yes|  
   
 ### <a name="attributes"></a>屬性  
   
-|Name|描述|必要|預設值|  
+|Name|說明|必要|預設|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|用戶端憑證的指紋。|必須`thumbprint`有`certificate-id`或。|N/A|  
-|憑證識別碼|憑證資源名稱。|必須`thumbprint`有`certificate-id`或。|N/A|  
+|thumbprint|用戶端憑證的指紋。|`thumbprint` `certificate-id` 必須有或。|N/A|
+|憑證識別碼|憑證資源名稱。|`thumbprint` `certificate-id` 必須有或。|N/A|
+|body|做為位元組陣列的用戶端憑證。|否|N/A|
+|密碼|用戶端憑證的密碼。|在中指定的憑證 `body` 受密碼保護時使用。|N/A|
   
 ### <a name="usage"></a>使用方式  
  此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。  
@@ -107,12 +118,14 @@ ms.locfileid: "79473552"
 -   **原則範圍：** 所有範圍  
 
 ##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a>使用受控識別進行驗證  
- 使用`authentication-managed-identity`原則，以使用 API 管理服務的受控識別向後端服務進行驗證。 此原則基本上會使用受控識別從 Azure Active Directory 取得存取權杖，以存取指定的資源。 成功取得權杖之後，原則會使用`Authorization` `Bearer`配置，在標頭中設定權杖的值。
+ 使用 `authentication-managed-identity` 原則，向使用受控識別的後端服務進行驗證。 此原則基本上會使用受控識別從 Azure Active Directory 取得存取權杖，以存取指定的資源。 成功取得權杖之後，原則會使用配置，在標頭中設定權杖的值 `Authorization` `Bearer` 。
+
+系統指派的身分識別和任何多個使用者指派的身分識別都可以用來要求權杖。 如果 `client-id` 未提供，則會假設為系統指派的身分識別。 如果 `client-id` 已提供變數，則會針對該使用者指派的身分識別，從 Azure Active Directory 要求此權杖
   
 ### <a name="policy-statement"></a>原則陳述式  
   
 ```xml  
-<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
+<authentication-managed-identity resource="resource" client-id="clientid of user-assigned identity" output-token-variable-name="token-variable" ignore-error="true|false"/>  
 ```  
   
 ### <a name="example"></a>範例  
@@ -127,7 +140,7 @@ ms.locfileid: "79473552"
 <authentication-managed-identity resource="https://vault.azure.net"/> <!--Azure Key Vault-->
 ```
 ```xml  
-<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Busr-->
+<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Bus-->
 ```
 ```xml  
 <authentication-managed-identity resource="https://storage.azure.com/"/> <!--Azure Blob Storage-->
@@ -135,7 +148,21 @@ ms.locfileid: "79473552"
 ```xml  
 <authentication-managed-identity resource="https://database.windows.net/"/> <!--Azure SQL-->
 ```
-  
+
+```xml
+<authentication-managed-identity resource="api://Client_id_of_Backend"/> <!--Your own Azure AD Application-->
+```
+
+#### <a name="use-managed-identity-and-set-header-manually"></a>使用受控識別並手動設定標頭
+
+```xml
+<authentication-managed-identity resource="api://Client_id_of_Backend"
+   output-token-variable-name="msi-access-token" ignore-error="false" /> <!--Your own Azure AD Application-->
+<set-header name="Authorization" exists-action="override">
+   <value>@("Bearer " + (string)context.Variables["msi-access-token"])</value>
+</set-header>
+```
+
 #### <a name="use-managed-identity-in-send-request-policy"></a>在傳送要求原則中使用受控識別
 ```xml  
 <send-request mode="new" timeout="20" ignore-error="false">
@@ -147,17 +174,18 @@ ms.locfileid: "79473552"
 
 ### <a name="elements"></a>元素  
   
-|Name|描述|必要|  
+|Name|說明|必要|  
 |----------|-----------------|--------------|  
-|驗證-受控-身分識別 |根元素。|是|  
+|驗證-受控-身分識別 |根元素。|Yes|  
   
 ### <a name="attributes"></a>屬性  
   
-|Name|描述|必要|預設值|  
+|Name|說明|必要|預設|  
 |----------|-----------------|--------------|-------------|  
-|資源|字串。 Azure Active Directory 中目標 Web API （受保護的資源）的應用程式識別碼。|是|N/A|  
-|輸出-token-變數-名稱|字串。 將接收 token 值做為物件類型`string`之內容變數的名稱。 |否|N/A|  
-|ignore-error|布林值。 如果設定為`true`，即使未取得存取權杖，原則管線仍會繼續執行。|否|false|  
+|resource|字串。 Azure Active Directory 中目標 Web API （受保護的資源）的應用程式識別碼。|是|N/A|
+|client-id|字串。 Azure Active Directory 中使用者指派之身分識別的應用程式識別碼。|No|系統指派的身分識別|
+|輸出-token-變數-名稱|字串。 將接收 token 值做為物件類型之內容變數的名稱 `string` 。 |否|N/A|  
+|ignore-error|布林值。 如果設定為 `true` ，即使未取得存取權杖，原則管線仍會繼續執行。|No|false|  
   
 ### <a name="usage"></a>使用方式  
  此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。  

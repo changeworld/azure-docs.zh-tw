@@ -2,21 +2,21 @@
 title: 偵錯工具 Proxy 應用程式-Azure Active Directory |Microsoft Docs
 description: Azure Active Directory （Azure AD）應用程式 Proxy 應用程式的 Debug 問題。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 575891d99c077299f5e7abf008c1ebb2b158373f
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: e61ea30f01e8ae141d24c9bd91b08edef4dbe74e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74382064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555057"
 ---
 # <a name="debug-application-proxy-application-issues"></a>針對應用程式 Proxy 應用程式問題進行偵錯 
 
@@ -39,7 +39,7 @@ ms.locfileid: "74382064"
 
 ![顯示偵錯工具之步驟的流程圖](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | 動作 | 描述 | 
+| 步驟 | 動作 | 描述 |
 |---------|---------|---------|
 |1 | 開啟瀏覽器、存取應用程式，然後輸入您的認證 | 請嘗試使用您的認證登入應用程式，並檢查是否有任何使用者相關的錯誤，例如[無法存取此公司應用程式](application-proxy-sign-in-bad-gateway-timeout-error.md)。 |
 |2 | 確認使用者對應用程式的指派 | 請確定您的使用者帳戶具有從公司網路內部存取應用程式的許可權，然後依照[測試應用程式](application-proxy-add-on-premises-application.md#test-the-application)中的步驟來測試登入應用程式。 如果登入問題仍然存在，請參閱如何針對登[入錯誤進行疑難排解](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。  |

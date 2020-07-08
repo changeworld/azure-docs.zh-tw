@@ -4,28 +4,27 @@ description: Azure AD 登入執行 Windows 的 Azure VM
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88ae3c45126403161e35ec46e5ccc2666c3edb55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554885"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication （預覽）登入 Azure 中的 Windows 虛擬機器
 
 組織現在可以針對執行**Windows Server 2019 Datacenter edition**或**windows 10 1809**及更新版本的 Azure 虛擬機器（vm），使用 Azure Active Directory （AD）驗證。 使用 Azure AD 向 Vm 進行驗證，可讓您集中控制及強制執行原則。 Azure 角色型存取控制（RBAC）和 Azure AD 條件式存取之類的工具，可讓您控制誰可以存取 VM。 本文說明如何建立和設定 Windows Server 2019 VM，以使用 Azure AD 驗證。
 
-|     |
-| --- |
-| 適用于 Azure Windows Vm 的 Azure AD 登入是 Azure Active Directory 的公開預覽功能。 如需有關預覽的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定|
-|     |
+> [!NOTE]
+> 適用于 Azure Windows Vm 的 Azure AD 登入是 Azure Active Directory 的公開預覽功能。 如需有關預覽的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
 
 使用 Azure AD 驗證來登入 Azure 中的 Windows Vm 有許多好處，包括：
 
@@ -33,14 +32,14 @@ ms.locfileid: "80050067"
 - 不再需要管理本機系統管理員帳戶。
 - Azure RBAC 可讓您根據需求授與 Vm 適當的存取權，並在不再需要時將其移除。
 - 在允許存取 VM 之前，Azure AD 條件式存取可以強制執行額外的需求，例如： 
-   - [Multi-Factor Authentication]
+   - Multi-Factor Authentication
    - 登入風險檢查
 - 將屬於您 VDI 部署的 Azure Windows Vm 的 Azure AD 聯結自動化並加以調整。
 
 > [!NOTE]
 > 一旦您啟用此功能，您在 Azure 中的 Windows Vm 將會 Azure AD 聯結。 您不能將它加入其他網域，例如內部部署 AD 或 Azure AD DS。 如果您需要這樣做，您必須卸載擴充功能，將 VM 從您的 Azure AD 租使用者中斷連線。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 ### <a name="supported-azure-regions-and-windows-distributions"></a>支援的 Azure 區域和 Windows 發行版本
 
@@ -63,10 +62,10 @@ ms.locfileid: "80050067"
 
 若要在 Azure 中為您的 Windows Vm 啟用 Azure AD 驗證，您必須確定您的 Vm 網路設定允許透過 TCP 埠443對下列端點進行輸出存取：
 
-- HTTPs：\//enterpriseregistration.windows.net
+- HTTPs： \/ /enterpriseregistration.windows.net
 - https:\//login.microsoftonline.com
-- HTTPs：\//device.login.microsoftonline.com
-- HTTPs：\//pas.windows.net
+- HTTPs： \/ /device.login.microsoftonline.com
+- HTTPs： \/ /pas.windows.net
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>在 Azure 中啟用 Windows VM 的 Azure AD 登入
 
@@ -99,7 +98,7 @@ ms.locfileid: "80050067"
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 Cloud Shell 中已預先安裝和設定共用 Azure 工具，以便您搭配自己的帳戶使用。 只要選取 [複製] 按鈕即可複製程式碼，將它貼到 Cloud Shell 中，然後按 Enter 鍵加以執行。 以下有幾種開啟 Cloud Shell 的方式：
 
-選取程式碼區塊右上角的 [試試看]  。
+選取程式碼區塊右上角的 [試試看]。
 在您的瀏覽器中開啟 Cloud Shell。
 在[Azure 入口網站](https://portal.azure.com)右上角的功能表上，選取 [Cloud Shell] 按鈕。
 
@@ -141,7 +140,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-在`provisioningState` VM `Succeeded`上安裝擴充功能之後，就會顯示的。
+在 `provisioningState` `Succeeded` VM 上安裝擴充功能之後，就會顯示的。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>設定 VM 的角色指派
 
@@ -188,7 +187,7 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> 如果您的`--assignee-object-id`AAD 網域和登入使用者名稱網域不相符，您必須使用指定使用者帳戶的物件識別碼，而不只是的使用者`--assignee`名稱。 您可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 取得使用者帳戶的物件識別碼。
+> 如果您的 AAD 網域和登入使用者名稱網域不相符，您必須使用指定使用者帳戶的物件識別碼 `--assignee-object-id` ，而不只是的使用者名稱 `--assignee` 。 您可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 取得使用者帳戶的物件識別碼。
 
 如需有關如何使用 RBAC 來管理 Azure 訂用帳戶資源存取權的詳細資訊，請參閱下列文章：
 
@@ -212,7 +211,7 @@ az role assignment create \
 
 1. 流覽至已使用 Azure AD 登入啟用之虛擬機器的 [總覽] 頁面。
 1. 選取 **[連線]** 以開啟 [連線至虛擬機器] 分頁。
-1. 選取 [下載 RDP 檔案]  。
+1. 選取 [下載 RDP 檔案]。
 1. 選取 [**開啟**] 以啟動遠端桌面連線用戶端。
 1. 選取 **[連線]** 以啟動 Windows 登入對話方塊。
 1. 使用您的 Azure AD 認證登入。
@@ -243,21 +242,21 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
    | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | 為指派給此 VM 的受控識別 Azure Active Directory 所簽發的有效存取權杖 |
 
    > [!NOTE]
-   > 存取權杖可以使用之類[http://calebb.net/](http://calebb.net/)的工具進行解碼。 確認存取權杖中的「appid」符合指派給 VM 的受控識別。
+   > 存取權杖可以使用之類的工具進行解碼 [http://calebb.net/](http://calebb.net/) 。 確認存取權杖中的「appid」符合指派給 VM 的受控識別。
 
 1. 請使用命令列，確定可從 VM 存取所需的端點：
    
-   - 捲曲的 HTTPs\/：/Login.microsoftonline.com/-D –
-   - 捲曲的 HTTPs\/：/`<TenantID>`login.microsoftonline.com//-D –
+   - 捲曲的 HTTPs： \/ /login.microsoftonline.com/-D –
+   - 捲曲的 HTTPs： \/ /login.microsoftonline.com/ `<TenantID>` /-D –
 
    > [!NOTE]
-   > 將`<TenantID>`取代為與 Azure 訂用帳戶相關聯的 Azure AD 租使用者識別碼。
+   > 將取代為 `<TenantID>` 與 Azure 訂用帳戶相關聯的 Azure AD 租使用者識別碼。
 
-   - 捲曲的 HTTPs\/：/Enterpriseregistration.windows.net/-D-
-   - 捲曲的 HTTPs\/：/Device.login.microsoftonline.com/-D-
-   - 捲曲的 HTTPs\/：/Pas.windows.net/-D-
+   - 捲曲的 HTTPs： \/ /enterpriseregistration.windows.net/-D-
+   - 捲曲的 HTTPs： \/ /device.login.microsoftonline.com/-D-
+   - 捲曲的 HTTPs： \/ /pas.windows.net/-D-
 
-1. 您可以執行來查看裝置狀態`dsregcmd /status`。 目標是讓裝置狀態顯示為`AzureAdJoined : YES`。
+1. 您可以執行來查看裝置狀態 `dsregcmd /status` 。 目標是讓裝置狀態顯示為 `AzureAdJoined : YES` 。
 
    > [!NOTE]
    > Azure AD 聯結活動會在 [事件檢視器] 的 [使用者裝置 Registration\Admin] 記錄下加以捕捉。
@@ -278,26 +277,26 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>問題2： AADLoginForWindows 延伸模組安裝失敗，結束代碼：-2145648607
 
-此`https://enterpriseregistration.windows.net`結束代碼會轉譯為 DSREG_AUTOJOIN_DISC_FAILED，因為延伸模組無法連線到端點。
+此結束代碼會轉譯為 DSREG_AUTOJOIN_DISC_FAILED，因為延伸模組無法連線到 `https://enterpriseregistration.windows.net` 端點。
 
 1. 使用命令列確認可從 VM 存取所需的端點：
 
-   - 捲曲的 HTTPs\/：/Login.microsoftonline.com/-D –
-   - 捲曲的 HTTPs\/：/`<TenantID>`login.microsoftonline.com//-D –
+   - 捲曲的 HTTPs： \/ /login.microsoftonline.com/-D –
+   - 捲曲的 HTTPs： \/ /login.microsoftonline.com/ `<TenantID>` /-D –
    
    > [!NOTE]
-   > 將`<TenantID>`取代為與 Azure 訂用帳戶相關聯的 Azure AD 租使用者識別碼。 如果您需要尋找 [租使用者識別碼]，您可以將滑鼠停留在帳戶名稱上以取得目錄/租使用者識別碼，或在 Azure 入口網站中選取 [Azure Active Directory > 屬性] > [目錄識別碼]。
+   > 將取代為 `<TenantID>` 與 Azure 訂用帳戶相關聯的 Azure AD 租使用者識別碼。 如果您需要尋找 [租使用者識別碼]，您可以將滑鼠停留在帳戶名稱上以取得目錄/租使用者識別碼，或在 Azure 入口網站中選取 [Azure Active Directory > 屬性] > [目錄識別碼]。
 
-   - 捲曲的 HTTPs\/：/Enterpriseregistration.windows.net/-D-
-   - 捲曲的 HTTPs\/：/Device.login.microsoftonline.com/-D-
-   - 捲曲的 HTTPs\/：/Pas.windows.net/-D-
+   - 捲曲的 HTTPs： \/ /enterpriseregistration.windows.net/-D-
+   - 捲曲的 HTTPs： \/ /device.login.microsoftonline.com/-D-
+   - 捲曲的 HTTPs： \/ /pas.windows.net/-D-
 
-1. 如果有任何命令失敗並出現「無法解析主機`<URL>`」，請嘗試執行此命令來判斷 VM 正在使用的 DNS 伺服器。
+1. 如果有任何命令失敗並出現「無法解析主機」 `<URL>` ，請嘗試執行此命令來判斷 VM 正在使用的 DNS 伺服器。
    
    `nslookup <URL>`
 
    > [!NOTE] 
-   > 以`<URL>`端點使用的完整功能變數名稱（例如 "login.microsoftonline.com"）取代。
+   > `<URL>`以端點使用的完整功能變數名稱（例如 "login.microsoftonline.com"）取代。
 
 1. 接下來，請查看是否指定公用 DNS 伺服器允許命令成功：
 
@@ -315,7 +314,7 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 當您嘗試使用 Azure AD 認證來進行 RDP 時，有一些常見的錯誤包括不會指派任何 RBAC 角色、未授權的用戶端或2FA 登入方法。 請使用下列資訊來更正這些問題。
 
-您可以執行來查看裝置和 SSO 狀態`dsregcmd /status`。 目標是讓裝置狀態顯示為`AzureAdJoined : YES` ，並`SSO State`顯示。 `AzureAdPrt : YES`
+您可以執行來查看裝置和 SSO 狀態 `dsregcmd /status` 。 目標是讓裝置狀態顯示為 `AzureAdJoined : YES` ，並 `SSO State` 顯示 `AzureAdPrt : YES` 。
 
 此外，使用 Azure AD 帳戶的 RDP 登入會在事件檢視器中的 AAD\Operational 事件記錄下加以捕捉。
 

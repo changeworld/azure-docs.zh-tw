@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67109323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555378"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定義混合式身分識別採用策略
 在這項工作中，您將為混合式身分識別解決方案，定義混合式身分識別採用策略，以滿足下列幾節已討論的商務需求：
@@ -63,7 +63,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 
 **加入網域和私人網路應用程式**：
 
-|  | 同步處理身分識別 | 同盟身分識別 |
+| Application | 同步處理身分識別 | 同盟身分識別 |
 | --- | --- | --- |
 | 網頁瀏覽器 |表單架構驗證 |單一登入，有時需要提供組織識別碼 |
 | Outlook |提示輸入認證 |提示輸入認證 |
@@ -73,7 +73,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 
 **外部或未受信任的來源**：
 
-|  | 同步處理身分識別 | 同盟身分識別 |
+| Application | 同步處理身分識別 | 同盟身分識別 |
 | --- | --- | --- |
 | 網頁瀏覽器 |表單架構驗證 |表單架構驗證 |
 | Outlook、商務用 Skype (Lync)、商務用 OneDrive、Office 訂用帳戶 |提示輸入認證 |提示輸入認證 |
@@ -111,7 +111,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 ### <a name="supported-topologies"></a>支援的拓撲
 定義同步處理策略時，必須判斷使用的拓撲。 您可以根據步驟 2 中已判斷的資訊，判斷適合使用的拓撲。 單一樹系、單一 Azure AD 拓撲最常見，由單一 Active Directory 樹系和單一 Azure AD 執行個體所組成。  這將用於大部分的案例中，也是在使用 Azure AD Connect Express 安裝時預期的拓撲，如下圖所示。
 
-![支援的](./media/plan-hybrid-identity-design-considerations/single-forest.png)拓撲單一樹系案例：大型甚至小型組織通常會有多個樹系，如 [圖 5] 所示。
+![支援的拓撲 ](./media/plan-hybrid-identity-design-considerations/single-forest.png) 單一樹系案例：大型甚至小型組織通常會有多個樹系，如 [圖 5] 所示。
 
 > [!NOTE]
 > 如需不同的內部部署和 Azure AD 拓撲與 Azure AD Connect 同步處理的詳細資訊，請參閱 [Azure AD Connect 的拓撲](plan-connect-topologies.md)一文。
@@ -158,7 +158,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 * DNS 網域只能在單一 Azure AD 目錄中註冊，因此內部部署 AD 中的使用者 UPN 必須使用個別的命名空間。
 * 一個 Azure AD 執行個體中的使用者只能看到他們的執行個體中的使用者。  他們看不到其他執行個體中的使用者
 * 只有其中一個 Azure AD 目錄可以啟用 Exchange 與內部部署 AD 混合
-* 回寫也有互斥性。  這造成此拓撲不支援部分回寫功能，因為這些功能都假設使用單一內部部署組態。  這包括：
+* 回寫也有互斥性。  這造成此拓撲不支援部分回寫功能，因為這些功能都假設使用單一內部部署組態。  其中包括：
   * 使用預設組態的群組回寫
   * 裝置寫回
 
@@ -185,8 +185,8 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 | Microsoft 應用程式 |是 |是 |
 | 應用程式資源庫中的 SaaS 應用程式 |是 |是 |
 | 透過 Azure AD App Proxy 發佈的 IIS 應用程式 |是 |是 |
-| 非透過 Azure AD App Proxy 發行的 IIS 應用程式 |否 |是 |
-| VPN、RDG 等遠端存取 |否 |是 |
+| 非透過 Azure AD App Proxy 發行的 IIS 應用程式 |不可以 |是 |
+| VPN、RDG 等遠端存取 |不可以 |是 |
 
 即使已選定策略的解決方案，您仍然需要使用上述評估來判斷使用者位於何處。  這可能會造成解決方案變更。  使用下表來協助判斷：
 

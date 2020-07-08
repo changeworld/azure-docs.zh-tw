@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e4521cb67ae95a1cd4a3e728a13e43bfd5773ab
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: ca08b81a71cd61e727b11bbeb88c0c235d25c5e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737022"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554902"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD 加入裝置
 
 Azure AD Join 適用於想要成為雲端優先或僅限雲端的組織。 任何組織都可以部署加入 Azure AD 的裝置，不論其大小或產業為何。 Azure AD Join 即使在混合式環境中也可以運作，可讓您同時存取雲端及內部部署應用程式與資源。
 
-|   | Azure AD Join |
+| Azure AD Join | Description |
 | --- | --- |
 | **[定義]** | 僅加入到需要組織帳戶才能登入裝置的 Azure AD |
 | **主要對象** | 適用於僅限雲端和混合式組織。 |

@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 51d9060eaf4b30c696ef2a3b5f798a31e2f2a98a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 481b17651afbd2c0e0cf7a683ae0838a7f3fd88f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71309688"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555581"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 來執行及測試 U-SQL
 
@@ -36,7 +36,9 @@ Data Lake U-SQL SDK 需要下列相依性︰
 
     ![Data Lake Tools for Visual Studio 本機執行的 Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-  - 安裝[適用于 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)。 您可以在 C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK 找到預先封裝的 Visual C++ 和 Windows SDK 檔案。 在此情況下，U-SQL 本機編譯器就無法自動找到相依性。 您必須為它指定 CppSDK 路徑。 您可以將檔案複製到另一個位置，或直接使用它。
+  - 安裝[適用于 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)。 您可以在上找到預先封裝的 Visual C++ 和 Windows SDK 檔案`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
+
+    在此情況下，U-SQL 本機編譯器就無法自動找到相依性。 您必須為它指定 CppSDK 路徑。 您可以將檔案複製到另一個位置，或直接使用它。
 
 ## <a name="understand-basic-concepts"></a>了解基本概念
 
@@ -63,7 +65,7 @@ Data Lake U-SQL SDK 需要下列相依性︰
 
 當在本機執行 U-SQL 指令碼時，系統會在編譯期間於目前執行的目錄下建立一個工作目錄。 除了編譯輸出，本機執行所需的執行階段檔案會陰影複製到這個工作目錄。 工作目錄根資料夾稱為 "ScopeWorkDir"，而在工作目錄下的檔案如下：
 
-|目錄/檔案|目錄/檔案|目錄/檔案|定義|描述|
+|目錄/檔案|目錄/檔案|目錄/檔案|定義|Description|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |執行階段版本的雜湊字串|陰影複製本機執行所需的執行階段檔案|
 | |Script_66AE4909AA0ED06C| |指令碼名稱 + 指令碼路徑的雜湊字串|編譯輸出和執行步驟記錄|
@@ -74,33 +76,35 @@ Data Lake U-SQL SDK 需要下列相依性︰
 | | |deployed_resources|資源部署|資源部署檔案|
 | | |xxxxxxxx.xxx[1..n]\_\*.\*|執行記錄檔|執行步驟的記錄檔|
 
-
 ## <a name="use-the-sdk-from-the-command-line"></a>從命令列使用 SDK
 
 ### <a name="command-line-interface-of-the-helper-application"></a>輔助應用程式的命令列介面
 
 在 SDK directory\build\runtime 底下，LocalRunHelper.exe 是命令列輔助應用程式，能為大部分最常使用的本機執行函式提供介面。 請注意，命令和引數參數都區分大小寫。 若要叫用此應用程式︰
 
-    LocalRunHelper.exe <command> <Required-Command-Arguments> [Optional-Command-Arguments]
+```console
+LocalRunHelper.exe <command> <Required-Command-Arguments> [Optional-Command-Arguments]
+```
 
 不使用引數執行 LocalRunHelper.exe，或使用 **help** 參數顯示說明資訊︰
 
-    > LocalRunHelper.exe help
-
-        Command 'help' :  Show usage information
-        Command 'compile' :  Compile the script
-        Required Arguments :
-            -Script param
-                    Script File Path
-        Optional Arguments :
-            -Shallow [default value 'False']
-                    Shallow compile
+```console
+> LocalRunHelper.exe help
+    Command 'help' :  Show usage information
+    Command 'compile' :  Compile the script
+    Required Arguments :
+        -Script param
+                Script File Path
+    Optional Arguments :
+        -Shallow [default value 'False']
+                Shallow compile
+```
 
 在說明資訊中︰
 
--  **Command** 提供命令的名稱。  
--  **Required Argument** 列出必須提供的引數。  
--  **Optional Argument** 列出選擇性的引數，並具有預設值。  選擇性的布林引數沒有參數，如果出現參數則表示其預設值的負值。
+- **Command** 提供命令的名稱。  
+- **Required Argument** 列出必須提供的引數。  
+- **Optional Argument** 列出選擇性的引數，並具有預設值。  選擇性的布林引數沒有參數，如果出現參數則表示其預設值的負值。
 
 ### <a name="return-value-and-logging"></a>傳回值和記錄
 
@@ -112,19 +116,19 @@ U-SQL 本機執行需要指定的資料根做為本機儲存體帳戶，以及�
 
 - 設定 **SCOPE_CPP_SDK** 環境變數。
 
-    如果您是透過安裝 Data Lake Tools for Visual Studio 來取得 Microsoft Visual C++ 和 Windows SDK，請確認您有下列資料夾︰
+  如果您是透過安裝 Data Lake Tools for Visual Studio 來取得 Microsoft Visual C++ 和 Windows SDK，請確認您有下列資料夾︰
 
-        C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK
+    `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
 
-    定義一個名為 **SCOPE_CPP_SDK** 的新環境變數來指向此目錄。 或將資料夾複製到其他位置，並依同樣方式將 **SCOPE_CPP_SDK** 指定為該資料夾。
+  定義一個名為 **SCOPE_CPP_SDK** 的新環境變數來指向此目錄。 或將資料夾複製到其他位置，並依同樣方式將 **SCOPE_CPP_SDK** 指定為該資料夾。
 
-    除了設定環境變數，您可以在使用命令列時指定 **-CppSDK** 引數。 這個引數會覆寫預設的 CppSDK 環境變數。
+  除了設定環境變數，您可以在使用命令列時指定 **-CppSDK** 引數。 這個引數會覆寫預設的 CppSDK 環境變數。
 
 - 設定**LOCALRUN_DATAROOT**環境變數。
 
-    定義一個名為 **LOCALRUN_DATAROOT** 的新環境變數指向資料根目錄。
+  定義一個名為 **LOCALRUN_DATAROOT** 的新環境變數指向資料根目錄。
 
-    除了設定環境變數，您可以在使用命令列時對資料根目錄路徑指定 **-DataRoot** 引數。 這個引數會覆寫預設的資料根環境變數。 您必須將這個引數加入您要執行的每個命令列，以覆寫所有作業的預設資料根環境變數。
+  除了設定環境變數，您可以在使用命令列時對資料根目錄路徑指定 **-DataRoot** 引數。 這個引數會覆寫預設的資料根環境變數。 您必須將這個引數加入您要執行的每個命令列，以覆寫所有作業的預設資料根環境變數。
 
 ### <a name="sdk-command-line-usage-samples"></a>SDK 命令列使用範例
 
@@ -132,10 +136,11 @@ U-SQL 本機執行需要指定的資料根做為本機儲存體帳戶，以及�
 
 **run** 命令用來編譯指令碼，然後執行編譯的結果。 其命令列引數結合 **compile** 和 **excute** 的引數。
 
-    LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
+```console
+LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
+```
 
 下列為 **run** 的選擇性引數：
-
 
 |引數|預設值|描述|
 |--------|-------------|-----------|
@@ -153,10 +158,9 @@ U-SQL 本機執行需要指定的資料根做為本機儲存體帳戶，以及�
 |-ScopeCEPTempPath|temp|用於串流資料的暫存路徑|
 |-OptFlags| |最佳化工具旗標的逗號分隔清單|
 
-
 以下是範例：
 
-    LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose
+`LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 
 除了結合 **compile** 和 **excute**，您可以分別編譯和執行已編譯的可執行檔。
 
@@ -164,12 +168,13 @@ U-SQL 本機執行需要指定的資料根做為本機儲存體帳戶，以及�
 
 **compile** 命令用來將 U-SQL 指令碼編譯為可執行檔。
 
-    LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
+```console
+LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
+```
 
 下列為 **compile** 的選擇性引數：
 
-
-|引數|描述|
+|引數|說明|
 |--------|-----------|
 | -CodeBehind [預設值 'False']|指令碼具有.cs 程式碼後置|
 | -CppSDK [預設值 '']|CppSDK 目錄|
@@ -184,26 +189,33 @@ U-SQL 本機執行需要指定的資料根做為本機儲存體帳戶，以及�
 | -ScopeCEPTempPath [預設值 'temp']|用於串流資料的暫存路徑|
 | -OptFlags [預設值 '']|最佳化工具旗標的逗號分隔清單|
 
-
 這裡有一些使用範例。
 
 編譯 U-SQL 指令碼：
 
-    LocalRunHelper compile -Script d:\test\test1.usql
+```console
+LocalRunHelper compile -Script d:\test\test1.usql
+```
 
 編譯 U-SQL 指令碼並設定資料根資料夾。 請注意，這將會覆寫設定環境變數。
 
-    LocalRunHelper compile -Script d:\test\test1.usql –DataRoot c:\DataRoot
+```console
+LocalRunHelper compile -Script d:\test\test1.usql –DataRoot c:\DataRoot
+```
 
 編譯 U-SQL 指令碼並設定工作目錄、參考組件和資料庫：
 
-    LocalRunHelper compile -Script d:\test\test1.usql -WorkDir d:\test\bin -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB
+```console
+LocalRunHelper compile -Script d:\test\test1.usql -WorkDir d:\test\bin -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB
+```
 
 #### <a name="execute-compiled-results"></a>執行編譯的結果
 
-**execute** 命令用來執行編譯的結果。   
+**execute** 命令用來執行編譯的結果。
 
-    LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_arguments]
+```console
+LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_arguments]
+```
 
 下列為 **execute** 的選擇性引數：
 
@@ -216,8 +228,9 @@ U-SQL 本機執行需要指定的資料根做為本機儲存體帳戶，以及�
 
 以下是使用範例︰
 
-    LocalRunHelper execute -Algebra d:\test\workdir\C6A101DDCB470506\Script_66AE4909AA0ED06C\__script__.abr –DataRoot c:\DataRoot –Parallel 5
-
+```console
+LocalRunHelper execute -Algebra d:\test\workdir\C6A101DDCB470506\Script_66AE4909AA0ED06C\__script__.abr –DataRoot c:\DataRoot –Parallel 5
+```
 
 ## <a name="use-the-sdk-with-programming-interfaces"></a>透過程式設計介面使用 SDK
 
@@ -228,15 +241,15 @@ U-SQL 本機執行需要指定的資料根做為本機儲存體帳戶，以及�
 - 透過 [檔案] > [新增] > [專案] > [Visual C#] > [測試] > [單元測試專案] 來建立 C# 單元測試專案。
 - 加入 LocalRunHelper.exe 做為專案的參考。 LocalRunHelper.exe 位於 Nuget 套件中的 \build\runtime\LocalRunHelper.exe。
 
-    ![Azure Data Lake U-SQL SDK 加入參考](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-add-reference.png)
+   ![Azure Data Lake U-SQL SDK 加入參考](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-add-reference.png)
 
 - U-SQL SDK「僅」**** 支援 x64 環境，請務必將建置平台目標設定為 [x64]。 您可以透過 [專案屬性] > [建置] > [平台目標] 來設定。
 
-    ![Azure Data Lake U-SQL SDK 設定 x64 專案](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
+   ![Azure Data Lake U-SQL SDK 設定 x64 專案](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
 
 - 請務必將測試環境設定為 [x64]。 在 Visual Studio 中，您可以透過 [測試] > [測試設定] > [預設處理器架構] > [x64] 來設定。
 
-    ![Azure Data Lake U-SQL SDK 設定 x64 測試環境](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-test-x64.png)
+   ![Azure Data Lake U-SQL SDK 設定 x64 測試環境](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-test-x64.png)
 
 - 請務必將 NugetPackage\build\runtime\ 下的所有相依性檔案複製到專案工作目錄 (通常位於 ProjectFolder\bin\x64\Debug 之下)。
 
@@ -244,101 +257,88 @@ U-SQL 本機執行需要指定的資料根做為本機儲存體帳戶，以及�
 
 以下是 U-SQL 指令碼測試的範例程式碼。 若要進行測試，您需要準備指令碼、輸入檔和預期的輸出檔。
 
-    using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.IO;
-    using System.Text;
-    using System.Security.Cryptography;
-    using Microsoft.Analytics.LocalRun;
-
-    namespace UnitTestProject1
+```usql
+using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
+using System.Text;
+using System.Security.Cryptography;
+using Microsoft.Analytics.LocalRun;
+namespace UnitTestProject1
+{
+    [TestClass]
+    public class USQLUnitTest
     {
-        [TestClass]
-        public class USQLUnitTest
+        [TestMethod]
+        public void TestUSQLScript()
         {
-            [TestMethod]
-            public void TestUSQLScript()
-            {
-                //Specify the local run message output path
-                StreamWriter MessageOutput = new StreamWriter("../../../log.txt");
-
-                LocalRunHelper localrun = new LocalRunHelper(MessageOutput);
-
-                //Configure the DateRoot path, Script Path and CPPSDK path
-                localrun.DataRoot = "../../../";
-                localrun.ScriptPath = "../../../Script/Script.usql";
-                localrun.CppSdkDir = "../../../CppSDK";
-
-                //Run U-SQL script
-                localrun.DoRun();
-
-                //Script output 
-                string Result = Path.Combine(localrun.DataRoot, "Output/result.csv");
-
-                //Expected script output
-                string ExpectedResult = "../../../ExpectedOutput/result.csv";
-
-                Test.Helpers.FileAssert.AreEqual(Result, ExpectedResult);
-
-                //Don't forget to close MessageOutput to get logs into file
-                MessageOutput.Close();
-            }
+            //Specify the local run message output path
+            StreamWriter MessageOutput = new StreamWriter("../../../log.txt");
+            LocalRunHelper localrun = new LocalRunHelper(MessageOutput);
+            //Configure the DateRoot path, Script Path and CPPSDK path
+            localrun.DataRoot = "../../../";
+            localrun.ScriptPath = "../../../Script/Script.usql";
+            localrun.CppSdkDir = "../../../CppSDK";
+            //Run U-SQL script
+            localrun.DoRun();
+            //Script output
+            string Result = Path.Combine(localrun.DataRoot, "Output/result.csv");
+            //Expected script output
+            string ExpectedResult = "../../../ExpectedOutput/result.csv";
+            Test.Helpers.FileAssert.AreEqual(Result, ExpectedResult);
+            //Don't forget to close MessageOutput to get logs into file
+            MessageOutput.Close();
         }
     }
-
-    namespace Test.Helpers
+}
+namespace Test.Helpers
+{
+    public static class FileAssert
     {
-        public static class FileAssert
+        static string GetFileHash(string filename)
         {
-            static string GetFileHash(string filename)
+            Assert.IsTrue(File.Exists(filename));
+            using (var hash = new SHA1Managed())
             {
-                Assert.IsTrue(File.Exists(filename));
-
-                using (var hash = new SHA1Managed())
-                {
-                    var clearBytes = File.ReadAllBytes(filename);
-                    var hashedBytes = hash.ComputeHash(clearBytes);
-                    return ConvertBytesToHex(hashedBytes);
-                }
-            }
-
-            static string ConvertBytesToHex(byte[] bytes)
-            {
-                var sb = new StringBuilder();
-
-                for (var i = 0; i < bytes.Length; i++)
-                {
-                    sb.Append(bytes[i].ToString("x"));
-                }
-                return sb.ToString();
-            }
-
-            public static void AreEqual(string filename1, string filename2)
-            {
-                string hash1 = GetFileHash(filename1);
-                string hash2 = GetFileHash(filename2);
-
-                Assert.AreEqual(hash1, hash2);
+                var clearBytes = File.ReadAllBytes(filename);
+                var hashedBytes = hash.ComputeHash(clearBytes);
+                return ConvertBytesToHex(hashedBytes);
             }
         }
+        static string ConvertBytesToHex(byte[] bytes)
+        {
+            var sb = new StringBuilder();
+            for (var i = 0; i < bytes.Length; i++)
+            {
+                sb.Append(bytes[i].ToString("x"));
+            }
+            return sb.ToString();
+        }
+        public static void AreEqual(string filename1, string filename2)
+        {
+            string hash1 = GetFileHash(filename1);
+            string hash2 = GetFileHash(filename2);
+            Assert.AreEqual(hash1, hash2);
+        }
     }
-
+}
+```
 
 ### <a name="programming-interfaces-in-localrunhelperexe"></a>LocalRunHelper.exe 中的程式設計介面
 
-Localrunhelper.exe 提供用於 U-SQL 本機編譯、執行等的程式設計介面。介面如下所示。
+LocalRunHelper.exe 提供用於 U-SQL 本機編譯、執行等的程式設計介面。介面如下所示。
 
-**建構函式**
+### <a name="constructor"></a>建構函式
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|參數|類型|描述|
+|參數|類型|Description|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|針對輸出訊息，請設為 null 以使用主控台|
 
-**屬性**
+### <a name="properties"></a>屬性
 
-|屬性|類型|描述|
+|屬性|類型|Description|
 |--------|----|-----------|
 |AlgebraPath|字串|代數檔案的路徑 (代數檔案是其中一個編譯結果)|
 |CodeBehindReferences|字串|如果指令碼具有其他程式碼後置參考，請指定路徑並以 ';' 分隔|
@@ -361,8 +361,7 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 |UseDataBase|字串|指定程式碼後置暫存組件註冊要使用的資料庫，預設為 master|
 |WorkDir|字串|慣用的工作目錄|
 
-
-**方法**
+### <a name="method"></a>方法
 
 |方法|描述|傳回|參數|
 |------|-----------|------|---------|
@@ -371,10 +370,10 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 |public bool DoRun()|執行 U-SQL 指令碼 (編譯 + 執行)|成功時為 True| |
 |public bool IsValidRuntimeDir(string path)|檢查指定的路徑是否為有效的執行階段路徑|有效則為 True|執行階段目錄的路徑|
 
-
 ## <a name="faq-about-common-issue"></a>有關常見問題的常見問題集
 
-### <a name="error-1"></a>錯誤 1：
+### <a name="error-1"></a>錯誤 1
+
 E_CSC_SYSTEM_INTERNAL: 內部錯誤! 無法載入檔案或組件 'ScopeEngineManaged.dll' 或其相依性的其中之一。 找不到指定的模組。
 
 請檢查下列項目：
@@ -382,11 +381,10 @@ E_CSC_SYSTEM_INTERNAL: 內部錯誤! 無法載入檔案或組件 'ScopeEngineMan
 - 確定您使用 x64 環境。 建置目標平台和測試環境應該要是 x64，請參閱上方的＜步驟 1︰建立 C# 單元測試專案和設定＞****。
 - 確定您已經將 NugetPackage\build\runtime\ 下的所有相依性檔案複製到專案工作目錄。
 
-
 ## <a name="next-steps"></a>後續步驟
 
-* 若要了解 U-SQL，請參閱 [開始使用 Azure Data Lake Analytics U-SQL 語言](data-lake-analytics-u-sql-get-started.md)。
-* 若要記錄診斷資訊，請參閱[存取 Azure Data Lake Analytics 的診斷記錄](data-lake-analytics-diagnostic-logs.md)。
-* 若要查看更複雜的查詢，請參閱[使用 Azure Data Lake Analytics 來分析網站記錄](data-lake-analytics-analyze-weblogs.md)。
-* 若要查看作業詳細資料，請參閱[使用作業瀏覽器和工作檢視進行 Azure Data Lake Analytics 作業](data-lake-analytics-data-lake-tools-view-jobs.md)。
-* 若要使用頂點執行視圖，請參閱[在適用于 Visual Studio 的 Data Lake 工具中使用頂點執行視圖](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
+- 若要了解 U-SQL，請參閱 [開始使用 Azure Data Lake Analytics U-SQL 語言](data-lake-analytics-u-sql-get-started.md)。
+- 若要記錄診斷資訊，請參閱[存取 Azure Data Lake Analytics 的診斷記錄](data-lake-analytics-diagnostic-logs.md)。
+- 若要查看更複雜的查詢，請參閱[使用 Azure Data Lake Analytics 來分析網站記錄](data-lake-analytics-analyze-weblogs.md)。
+- 若要查看作業詳細資料，請參閱[使用作業瀏覽器和工作檢視進行 Azure Data Lake Analytics 作業](data-lake-analytics-data-lake-tools-view-jobs.md)。
+- 若要使用頂點執行視圖，請參閱[在適用于 Visual Studio 的 Data Lake 工具中使用頂點執行視圖](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。

@@ -4,19 +4,19 @@ description: 說明在您的環境中實作已加入 Azure AD 的裝置所需執
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d43e6e89faa8eca720e3aeafc873af1a18b9753b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672687"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555015"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：規劃 Azure AD Join 實作
 
@@ -24,7 +24,7 @@ Azure AD Join 可讓您直接將裝置加入 Azure AD，而不需要加入內部
 
 本文將為您提供規劃 Azure AD Join 實作所需的資訊。
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您熟悉 [Azure Active Directory 中的裝置管理簡介](../device-management-introduction.md)。
 
@@ -32,15 +32,14 @@ Azure AD Join 可讓您直接將裝置加入 Azure AD，而不需要加入內部
 
 若要規劃您的 Azure AD 聯結執行，您應該熟悉：
 
-|   |   |
-|---|---|
-|![勾選][1]|檢閱您的案例|
-|![勾選][1]|檢閱您的身分識別基礎結構|
-|![勾選][1]|存取您的裝置管理|
-|![勾選][1]|了解應用程式和資源的考量|
-|![勾選][1]|了解您的佈建選項|
-|![勾選][1]|設定企業狀態漫遊|
-|![勾選][1]|設定條件式存取|
+> [!div class="checklist"]
+> - 檢閱您的案例
+> - 檢閱您的身分識別基礎結構
+> - 存取您的裝置管理
+> - 了解應用程式和資源的考量
+> - 了解您的佈建選項
+> - 設定企業狀態漫遊
+> - 設定條件式存取
 
 ## <a name="review-your-scenarios"></a>檢閱您的案例 
 
@@ -104,7 +103,7 @@ Azure AD Join：
 
 - 僅適用於 Windows 10 裝置。 
 - 不適用舊版的 Windows 或其他作業系統。 如果您有 Windows 7/8.1 裝置，您必須升級為 Windows 10，以部署 Azure AD Join。
-- 不支援 FIPS 模式中搭配 TPM 的裝置。
+- 支援 FIPS 相容的 TPM 2.0，但 TPM 1.2 不支援。 如果您的裝置具有 FIPS 相容的 TPM 1.2，您必須先停用它們，再繼續進行 Azure AD 聯結。 Microsoft 不會提供任何工具來停用 Tpm 的 FIPS 模式，因為它相依于 TPM 製造商。 請洽詢您的硬體 OEM 以取得支援。
  
 **建議：** 一律使用最新的 Windows 10 版本，以享有更新的功能。
 
@@ -185,6 +184,8 @@ Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM 
 
 若要從遠端桌面連線至已加入 Azure AD 的裝置，主機電腦必須已加入 Azure AD 或已加入混合式 Azure AD。 不支援從未加入或非 Windows 的裝置進行遠端桌面連線。 如需詳細資訊，請參閱[連線至已加入 Azure AD 的遠端 PC](/windows/client-management/connect-to-remote-aadj-pc)
 
+從 Windows 10 2004 update 開始，使用者可以 alo 使用遠端桌面，從已註冊的 Windows 10 裝置 Azure AD 到已加入 Azure AD 的裝置。 
+
 ## <a name="understand-your-provisioning-options"></a>了解您的佈建選項
 
 您可以使用下列方法來佈建 Azure AD Join：
@@ -195,12 +196,12 @@ Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM 
  
 以下是這三種方法的比較 
  
-|   | 自助式設定 | Windows Autopilot | 大量註冊 |
+| 元素 | 自助式設定 | Windows Autopilot | 大量註冊 |
 | --- | --- | --- | --- |
-| 需要使用者手動設定 | 是 | 是 | 否 |
-| 需要 IT 工作 | 否 | 是 | 是 |
+| 需要使用者手動設定 | Yes | 是 | 否 |
+| 需要 IT 工作 | 否 | 是 | Yes |
 | 適用的流程 | OOBE 和設定 | 僅限 OOBE | 僅限 OOBE |
-| 主要使用者的本機管理員權限 | 是，依照預設 | 可設定 | 否 |
+| 主要使用者的本機管理員權限 | 是，依照預設 | 可設定 | No |
 | 需要裝置 OEM 支援 | 否 | 是 | 否 |
 | 支援的版本 | 1511+ | 1709+ | 1703+ |
  
@@ -244,7 +245,7 @@ Azure 入口網站可讓您控制如何將已加入 Azure AD 的裝置部署到�
 **若要新增 MDM 提供者**：
 
 1. 在 [Azure Active Directory]**** 頁面的 [管理]**** 區段中，按一下 `Mobility (MDM and MAM)`。 
-1. 按一下 [**新增應用程式**]。
+1. 按一下 [新增應用程式]。
 1. 從清單中選取您的 MDM 提供者。
 
    ![新增應用程式](./media/azureadjoin-plan/04.png)
@@ -295,8 +296,8 @@ MAM 不適用於 Azure AD Join。
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [在第一次執行時，使用 Azure AD 加入新的 Windows 10 裝置](azuread-joined-devices-frx.md)
-> [將您的工作裝置加入組織的網路](/azure/active-directory/user-help/user-help-join-device-on-network)
+> 在[第一次執行期間使用 Azure AD 加入新的 Windows 10 裝置](azuread-joined-devices-frx.md) 
+> 將[您的工作裝置加入組織的網路](/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: f2f3e84462307f43ffe432fe878476d979f489f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 217b15b4004b1f06ef63414adc25890d4d87b027
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557580"
 ---
 # <a name="using-service-map-solution-in-azure"></a>在 Azure 中使用服務對應解決方案
 
@@ -154,7 +154,7 @@ ms.locfileid: "79480907"
 
 某些處理序在機器上扮演特殊角色︰Web 伺服器、應用程式伺服器及資料庫等。 服務對應會為程序和機器方塊加上角色圖示註解，以協助您一下就識別出程序或伺服器所扮演的角色。
 
-| 角色圖示 | 描述 |
+| 角色圖示 | Description |
 |:--|:--|
 | ![網頁伺服器](media/service-map/role-web-server.png) | 網頁伺服器 |
 | ![應用程式伺服器](media/service-map/role-application-server.png) | 應用程式伺服器 |
@@ -189,7 +189,7 @@ ms.locfileid: "79480907"
 
 ![伺服器連接埠群組](media/service-map/server-port-groups.png)
 
-## <a name="context-menu"></a>捷徑功能表
+## <a name="context-menu"></a>操作功能表
 
 按一下任何伺服器右上角的省略符號 (...)，會顯示該伺服器的內容功能表。
 
@@ -326,7 +326,7 @@ Linux：
 
 為了管理成本和複雜度，連線記錄不代表個別的實體網路連線。 將多個實體網路連線群組為一個邏輯連線，其接著會反映於各自的資料表中。  這表示，*VMConnection* 資料表中的記錄代表一個邏輯群組，而非觀測到的個別實體連線。 在指定的一分鐘時間間隔內，共用下列屬性相同值的實體網路連線會彙總為 *VMConnection* 中的單一邏輯記錄。 
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `Direction` |連線的方向，值為 *inbound* 或 *outbound* |
 | `Machine` |電腦 FQDN |
@@ -338,7 +338,7 @@ Linux：
 
 為了說明群組的影響，會在記錄的下列屬性中提供群組實體連線數目的相關資訊：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `LinksEstablished` |已在報告時間範圍內建立的實體網路連線數目 |
 | `LinksTerminated` |已在報告時間範圍內終止的實體網路連線數目 |
@@ -349,7 +349,7 @@ Linux：
 
 除了連線計數計量，在指定邏輯連線或網路連接埠上傳送與接收的資料量相關資訊也會包含於記錄的下列屬性中：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `BytesSent` |已在報告時間範圍內傳送的位元組總數 |
 | `BytesReceived` |已在報告時間範圍內接收的位元組總數 |
@@ -377,7 +377,7 @@ Linux：
 
 *VMConnection* 也會在記錄的下列屬性中，包含每個連線記錄遠端的地理位置資訊： 
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `RemoteCountry` |主控 RemoteIp 的國家/地區名稱。  例如，*美國* |
 | `RemoteLatitude` |地理位置緯度。  例如，*47.68* |
@@ -387,14 +387,14 @@ Linux：
 
 *VMConnection* 資料表中的每個 RemoteIp 屬性均會根據一組具有已知惡意活動的 IP 進行檢查。 如果 RemoteIp 被識別為惡意的，將在記錄的下列屬性中填入下列屬性 (如果 IP 被視為不是惡意的，則它們是空的)：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `MaliciousIp` |RemoteIp 位址 |
 | `IndicatorThreadType` |偵測到的威脅指標是下列值之一：*殭屍網路*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*惡意程式碼*、*網路釣魚*、*Proxy*、*PUA*、*關注清單*。   |
 | `Description` |觀察到的威脅的說明。 |
 | `TLPLevel` |號誌燈通訊協定 (TLP) 層級是已定義的值 (*白色*、*綠色*、*琥珀色*、*紅色*) 之一。 |
 | `Confidence` |值為 *0 – 100*。 |
-| `Severity` |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為 *3*。  |
+| `Severity` |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為*3*。  |
 | `FirstReportedDateTime` |提供者第一次回報指標。 |
 | `LastReportedDateTime` |Interflow 最後一次看到指標。 |
 | `IsActive` |使用 *True* 或 *False* 值表示指標停用。 |
@@ -405,7 +405,7 @@ Linux：
 
 類型為 *ServiceMapComputer_CL* 的記錄會有伺服器 (具有服務對應代理程式) 的清查資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -431,7 +431,7 @@ Linux：
 
 類型為 *ServiceMapProcess_CL* 的記錄會有伺服器 (具有服務對應代理程式) 上 TCP 連線處理程序的清查資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -565,15 +565,15 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 Microsoft Dependency Agent 建置於 Microsoft Visual Studio 執行階段程式庫之上。 如果程式庫安裝期間發生問題，就會出現訊息。 
 
-執行階段程式庫安裝程式會在 %LOCALAPPDATA%\temp 資料夾中建立記錄。 `dd_vcredist_arch_yyyymmddhhmmss.log`檔案是，其中的架構是`x86`或`amd64` *，而* *yyyymmddhhmmss.ffffff*是建立記錄時的日期和時間（24小時制）。 記錄會提供導致無法安裝之問題的詳細資料。
+執行階段程式庫安裝程式會在 %LOCALAPPDATA%\temp 資料夾中建立記錄。 檔案是 `dd_vcredist_arch_yyyymmddhhmmss.log` ，其中的*架構*是 `x86` 或， `amd64` 而*yyyymmddhhmmss.ffffff*是建立記錄時的日期和時間（24小時制）。 記錄會提供導致無法安裝之問題的詳細資料。
 
-先安裝[最新的運行](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)時間程式庫可能會很有用。
+如果可以先行安裝[最新的執行階段程式庫](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)，將會十分有用。
 
 下表列出代碼和建議的解決方式。
 
-| 程式碼 | 描述 | 解決方案 |
+| 程式碼 | 說明 | 解決方案 |
 |:--|:--|:--|
-| 0x17 | 程式庫安裝程式會要求尚未安裝的 Windows 更新。 | 查看最新的程式庫安裝程式記錄。<br><br>如果的參考後面`Windows8.1-KB2999226-x64.msu`接著一行`Error 0x80240017: Failed to execute MSU package,` ，表示您沒有安裝 KB2999226 的必要條件。 遵循[Windows 中通用 C 運行](https://support.microsoft.com/kb/2999226)時間的必要條件一節中的指示。 您可能需要執行 Windows Update 並重新開機多次，才能安裝必要條件。<br><br>再次執行 Microsoft Dependency Agent 安裝程式。 |
+| 0x17 | 程式庫安裝程式會要求尚未安裝的 Windows 更新。 | 查看最新的程式庫安裝程式記錄。<br><br>如果的參考 `Windows8.1-KB2999226-x64.msu` 後面接著一行 `Error 0x80240017: Failed to execute MSU package,` ，表示您沒有安裝 KB2999226 的必要條件。 請依照 [Windows 中的通用 C 執行階段](https://support.microsoft.com/kb/2999226)一文中必要條件一節的指示進行。 您可能需要執行 Windows Update 並重新開機多次，才能安裝必要條件。<br><br>再次執行 Microsoft Dependency Agent 安裝程式。 |
 
 ### <a name="post-installation-issues"></a>安裝後問題
 
@@ -584,22 +584,22 @@ Microsoft Dependency Agent 建置於 Microsoft Visual Studio 執行階段程式�
 **Windows**：尋找名為**Microsoft Dependency agent**的服務。
 **Linux**：尋找執行中的進程**microsoft 相依性代理程式**。
 
-* 您在[Log Analytics 免費層](https://azure.microsoft.com/pricing/details/monitor/)嗎？ 免費方案最多允許五部唯一的服務對應機。 任何後續的機器都不會出現在服務對應中，即使先前的五個已不再傳送資料也一樣。
+* 您在[Log Analytics 免費層](https://azure.microsoft.com/pricing/details/monitor/)嗎？ 免費方案允許最多五個唯一的服務對應機器。 任何後續機器則不會顯示在服務對應中，即使先前五個機器不會再傳送資料。
 
-* 您的伺服器是否將記錄和效能資料傳送至 Azure 監視器記錄？ 移至 Azure Monitor\Logs，並針對您的電腦執行下列查詢： 
+* 您的伺服器是否將記錄和效能資料傳送至 Azure 監視器記錄？ 移至 [Azure 監視器\記錄]，然後為您的電腦執行下列查詢︰ 
 
     ```kusto
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-您是否在結果中取得各種事件？ 是否為最新的資料？ 若是如此，您的 Log Analytics 代理程式會正常運作，並與工作區進行通訊。 如果不是，請檢查您電腦上的代理程式：[適用于 Windows 的 Log analytics 代理程式疑難排解](../platform/agent-windows-troubleshoot.md)或[適用于 Linux 的 log analytics 代理程式疑難排解](../platform/agent-linux-troubleshoot.md)。
+您是否在結果中取得各種事件？ 是否為最新的資料？ 如果是，您的 Log Analytics 代理程式會正確運作並與工作區通訊。 如果不是，請檢查您機器上的代理程式︰[適用於 Windows 的 Log Analytics 代理程式疑難排解](../platform/agent-windows-troubleshoot.md)或[適用於 Linux 的 Log Analytics 代理程式疑難排解](../platform/agent-linux-troubleshoot.md)。
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>伺服器顯示在服務對應中，但是沒有任何處理序
 
 如果您在服務對應中看到電腦，但它沒有進程或連接資料，表示相依性代理程式已安裝且正在執行，但未載入核心驅動程式。 
 
-檢查`C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` （Windows）或`/var/opt/microsoft/dependency-agent/log/service.log file` （Linux）。 檔案的最後幾行應該會指出未載入核心的原因。 例如，若您更新過核心，在 Linux 上可能會不受支援。
+檢查 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` （Windows）或 `/var/opt/microsoft/dependency-agent/log/service.log file` （Linux）。 檔案的最後幾行應該會指出未載入核心的原因。 例如，若您更新過核心，在 Linux 上可能會不受支援。
 
-## <a name="feedback"></a>意見反應
+## <a name="suggestions"></a>建議
 
 您對「服務對應」或這份文件有任何意見反應要提供給我們嗎？  請瀏覽我們的[使用者意見頁面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map) \(英文\)，您可以在此頁面提出功能建議或對現有的建議進行投票。

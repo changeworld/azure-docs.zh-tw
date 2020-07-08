@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fc1f1b5f7015efc604d461a5e292184398cba44f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c9b0b34202f35babcaa3dce37331d31edf641254
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005497"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557259"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>如何將 AI 擴充的欄位對應至可搜尋的索引
 
@@ -28,7 +28,7 @@ ms.locfileid: "83005497"
 若要對應欄位，請將 `outputFieldMappings` 新增至您的索引子定義，如下所示：
 
 ```http
-PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -117,7 +117,7 @@ sourceFieldName 中的路徑可以代表一個元素或多個元素。 在上述
 
 讓我們假設您的索引有一個名為 ' 疾病 ' 的欄位，其類型為 Collection （Edm. String），您想要在其中儲存實體的每個名稱。 
 
-這可以使用 "\*" 符號輕鬆完成，如下所示：
+這可以使用 " \* " 符號輕鬆完成，如下所示：
 
 ```json
     "outputFieldMappings": [

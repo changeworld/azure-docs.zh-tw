@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 62933a0e83a7494bc208068cb418f9ccc29ba637
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: HT
+ms.openlocfilehash: 385107f3bb5dd30a118d3a5f7a5f14213f0ad1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554537"
 ---
 # <a name="what-are-security-defaults"></a>什麼是安全性預設值？
 
@@ -92,7 +92,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 > [!WARNING]
 > 啟用安全性預設值之前，請確定系統管理員未使用舊版驗證通訊協定。 如需詳細資訊，請參閱[如何離開舊版驗證](concept-fundamentals-block-legacy-authentication.md)。
 
-- [如何將多功能裝置或應用程式設定為使用 Office 365 和 Microsoft 365 傳送電子郵件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [如何將多功能裝置或應用程式設定為使用 Office 365 和 Microsoft 365 傳送電子郵件](https://docs.microsoft.com/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>保護特殊權限動作
 
@@ -122,7 +122,7 @@ Microsoft 將安全性預設值提供給所有人。 目標是要確保所有組
 
 這些免費的安全性預設值允許註冊和使用 Azure Multi-Factor Authentication，且**只使用利用通知的 Microsoft Authenticator 應用程式**。 條件式存取允許使用系統管理員選擇啟用的任何驗證方法。
 
-|   | 安全性預設值 | 條件式存取 |
+| 方法 | 安全性預設值 | 條件式存取 |
 | --- | --- | --- |
 | 行動應用程式的通知 | X | X |
 | 來自行動應用程式或硬體 Token 的驗證碼 | X** | X |

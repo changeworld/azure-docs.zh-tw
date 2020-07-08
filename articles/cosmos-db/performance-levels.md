@@ -6,18 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dace7fb291cef24ad8b48a0791b2fadca22fa71b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556064"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>淘汰 S1、S2 和 S3 效能層級
 
 > [!IMPORTANT] 
 > 本文所討論的 S1、S2 和 S3 效能層級即將淘汰，而且再也無法供新的 Azure Cosmos DB 帳戶使用。
->
 
 本文概述 S1、S2 和 S3 效能層級，並討論如何將使用這些效能層級的集合移轉至單一分割區的集合。 閱讀本文後，您將能夠回答下列問題：
 
@@ -43,7 +42,7 @@ S1、S2 和 S3 效能層級不提供標準 Azure Cosmos DB 所提供的彈性。
 
 下表比較單一資料分割集合、資料分割集合和 S1、S2、S3 效能層級中可用的輸送量和儲存體選項。 美國東部 2 區域的範例如下︰
 
-|   |資料分割的集合|單一資料分割集合|S1|S2|S3|
+| 配額名稱  |資料分割的集合|單一資料分割集合|S1|S2|S3|
 |---|---|---|---|---|---|
 |最大輸送量|無限制|10K RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
 |輸送量下限|2.5 K RU/秒|400 RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
@@ -76,7 +75,7 @@ S1、S2 和 S3 效能層級不提供標準 Azure Cosmos DB 所提供的彈性。
 
 假設您在美國東部區域有 10 個 S1 集合，每個有 1 GB 的儲存空間，您將這 10 個 S1 集合以 400 RU/秒 (最小層級) 移轉至 10 個單一資料分割集合。 如果您一整個月保留 10 個單一資料分割集合，您的帳單會看起來如下︰
 
-![10 個集合的 S1 價格與使用單一資料分割集合的 10 個集合價格比較會如何](./media/performance-levels/s1-vs-standard-pricing.png)
+:::image type="content" source="./media/performance-levels/s1-vs-standard-pricing.png" alt-text="10 個集合的 S1 價格與使用單一資料分割集合的 10 個集合價格比較會如何" border="false":::
 
 <a name="more-storage-needed"></a>
 

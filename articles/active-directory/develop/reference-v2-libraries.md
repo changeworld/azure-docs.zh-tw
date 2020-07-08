@@ -6,18 +6,18 @@ author: negoe
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9e1480ad58390ea8c424bc6032940b4c743210e3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f4d442831658b276f74146ef91e69b92dec83619
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982052"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553899"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft 身分識別平臺驗證程式庫
 
@@ -72,14 +72,14 @@ Microsoft 身分識別平臺端點適用于兩種類型的程式庫：
 
 在支援的作業系統與語言方面，對應如下所示：
 
-|             | Windows    | Linux      | macOS      | iOS | Android    |
+| 平台    | Windows    | Linux      | macOS      | iOS | Android    |
 |-------------|------------|------------|------------|------------|------------|
 | ![JavaScript](media/sample-v2-code/logo_js.png)  |  MSAL.js | MSAL.js | MSAL.js | MSAL.js |  MSAL.js |
 | <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET、ASP.NET Core、MSAL.Net （.NET FW、Core、UWP）| ASP.NET Core，MSAL.Net （.NET Core） | ASP.NET Core，MSAL.Net （macOS）       | MSAL.Net （Xamarin. iOS） | MSAL.Net （Xamarin）|
 | Swift <br> Objective-C |            |            | [適用於 iOS 和 macOS 的 MSAL](msal-overview.md) | [適用於 iOS 和 macOS 的 MSAL](msal-overview.md) |            |
 | ![Java](media/sample-v2-code/logo_java.png) Java | msal4j | msal4j | msal4j | | MSAL Android |
 | ![Python](media/sample-v2-code/logo_python.png) Python | MSAL Python | MSAL Python | MSAL Python |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) Node.JS | Passport. node | Passport. node | Passport. node |
+| ![Node.Js](media/sample-v2-code/logo_nodejs.png) Node.JS | Passport. node | Passport. node | Passport. node |
 
 另請參閱[依支援的平臺和語言的案例](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)
 

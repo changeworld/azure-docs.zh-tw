@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e2a8cad7cd4410a95a6ebd60ada22de456737bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1ce0723c0064cee711e851d16f4080a722e7539
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67462755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554868"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD 註冊裝置
 
 Azure AD 已註冊裝置的目標，是要為您的使用者提供「攜帶您自己的裝置（BYOD）」或「行動裝置」案例的支援。 在這些案例中，使用者可以使用個人裝置存取您組織的 Azure Active Directory 控制資源。
 
-|   | 已註冊 Azure AD |
+| 已註冊 Azure AD | Description |
 | --- | --- |
 | **定義** | 已向 Azure AD 註冊，而不需要組織帳戶來登入裝置 |
-| **主要物件** | 適用于具有下列準則的所有使用者： |
+| **主要對象** | 適用于具有下列準則的所有使用者： |
 |   | 攜帶您自己的裝置 (BYOD) |
 |   | 行動裝置 |
 | **裝置擁有權** | 使用者或組織 |
@@ -38,7 +38,7 @@ Azure AD 已註冊裝置的目標，是要為您的使用者提供「攜帶您�
 |   | Windows Hello |
 |   | PIN 碼 |
 |   | 其他裝置的生物識別或模式 |
-| **裝置管理** | 行動裝置管理（範例： Microsoft Intune） |
+| **裝置管理** | 行動裝置管理 (例如：Microsoft Intune) |
 |   | 行動應用程式管理 |
 | **主要功能** | SSO 到雲端資源 |
 |   | 註冊至 Intune 時的條件式存取 |
@@ -47,7 +47,7 @@ Azure AD 已註冊裝置的目標，是要為您的使用者提供「攜帶您�
 
 ![Azure AD 註冊裝置](./media/concept-azure-ad-register/azure-ad-registered-device.png)
 
-Azure AD 已註冊的裝置會使用本機帳戶登入，例如 Windows 10 裝置上的 Microsoft 帳戶，但此外還會附加 Azure AD 帳戶以存取組織資源。 根據套用至裝置身分識別的 Azure AD 帳戶和條件式存取原則，可以進一步限制組織中資源的存取權。
+Azure AD 已註冊的裝置會使用本機帳戶登入，例如 Windows 10 裝置上的 Microsoft 帳戶，但此外還會附加 Azure AD 帳戶以存取組織資源。 根據 Azure AD 帳戶和套用至裝置身分識別的條件式存取原則，您可以進一步限制組織中資源的存取權。
 
 系統管理員可以使用 Microsoft Intune 等行動裝置管理（MDM）工具來保護及進一步控制這些 Azure AD 註冊的裝置。 MDM 提供一種方式來強制執行組織所需的設定，例如要求存放裝置加密、密碼複雜性和安全性軟體保持更新。 
 

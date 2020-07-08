@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15cdaba7d63d72aab25757e7ba6f5eadc48e026a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76512244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554918"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>混合式 Azure AD 已加入裝置
 
@@ -29,11 +29,11 @@ ms.locfileid: "76512244"
 
 如果您的環境具有內部部署 AD 使用量，而且您也想要從 Azure Active Directory 所提供的功能受益，您可以實作混合式 Azure AD 已加入裝置。 這些裝置是聯結至內部部署 Active Directory 並向您的 Azure Active Directory 註冊的裝置。
 
-|   | 混合式 Azure AD 加入 |
+| 混合式 Azure AD 加入 | Description |
 | --- | --- |
 | **定義** | 已加入內部部署 AD 和 Azure AD 需要組織帳戶才能登入裝置 |
-| **主要物件** | 適用于具有現有內部部署 AD 基礎結構的混合式組織 |
-|   | 適用于組織中的所有使用者 |
+| **主要對象** | 適用于具有現有內部部署 AD 基礎結構的混合式組織 |
+|   | 適用於組織中的所有使用者 |
 | **裝置擁有權** | 組織 |
 | **作業系統** | Windows 10、8.1 和7 |
 |   | Windows Server 2008/R2、2012/R2、2016和2019 |
@@ -41,15 +41,15 @@ ms.locfileid: "76512244"
 |   | 由 IT 加入網域，並透過 Azure AD Connect 或 ADFS config 進行自動連接 |
 |   | 透過 Windows Autopilot 加入網域，並透過 Azure AD Connect 或 ADFS config 進行自動連接 |
 |   | Windows 8.1、Windows 7、Windows Server 2012 R2、Windows Server 2012 和 Windows Server 2008 R2-需要 MSI |
-| **裝置登入選項** | 組織帳戶使用： |
+| **裝置登入選項** | 使用下列項目的組織帳戶： |
 |   | 密碼 |
 |   | 適用于 Win10 的 Windows Hello 企業版 |
 | **裝置管理** | 群組原則 |
 |   | 使用 Microsoft Intune Configuration Manager 獨立或共同管理 |
-| **主要功能** | SSO 到雲端和內部部署資源 |
+| **主要功能** | 雲端和內部部署資源的 SSO |
 |   | 透過網域加入或透過 Intune 的條件式存取（如果共同管理） |
 |   | 在鎖定畫面上進行自助式密碼重設和 Windows Hello PIN 重設 |
-|   | 跨裝置企業狀態漫遊 |
+|   | 跨裝置進行企業狀態漫遊 |
 
 ![混合式 Azure AD 已加入裝置](./media/concept-azure-ad-join-hybrid/azure-ad-hybrid-joined-device.png)
 
@@ -64,6 +64,6 @@ ms.locfileid: "76512244"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [規劃混合式 Azure AD 聯結實作](hybrid-azuread-join-plan.md)
+- [規劃混合式 Azure AD Join 實作](hybrid-azuread-join-plan.md)
 - [使用 Azure 入口網站管理裝置身分識別](device-management-azure-portal.md)
 - [管理 Azure AD 中的過時裝置](manage-stale-devices.md)

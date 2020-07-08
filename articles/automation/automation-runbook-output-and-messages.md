@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: fb7ddce34a32d7108587bf1a3d47be4b31214535
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 387e100a05cb51eb034f737b259bad4e5812465c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832277"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557878"
 ---
 # <a name="monitor-runbook-output"></a>監視 Runbook 輸出
 
@@ -88,7 +88,7 @@ Verbose inside of function
 
 #### <a name="declare-output-data-type-in-a-workflow"></a>在工作流程中宣告輸出資料類型
 
-工作流程可使用 [OutputType 屬性](https://technet.microsoft.com/library/hh847785.aspx)指定其輸出的資料類型。 這個屬性在執行階段沒有任何作用，但它會在設計時提供 Runbook 預期輸出的指示。 隨著 Runbook 的工具組持續發展，在設計時宣告輸出資料類型的重要性也隨之提升。 因此，最佳做法是在您建立的任何 Runbook 中包含此宣告。
+工作流程可使用 [OutputType 屬性](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute)指定其輸出的資料類型。 這個屬性在執行階段沒有任何作用，但它會在設計時提供 Runbook 預期輸出的指示。 隨著 Runbook 的工具組持續發展，在設計時宣告輸出資料類型的重要性也隨之提升。 因此，最佳做法是在您建立的任何 Runbook 中包含此宣告。
 
 以下範例 Runbook 會輸出字串物件，並包含其輸出類型的宣告。 如果您的 Runbook 會輸出特定類型的陣列，那麼您仍應指定類型而非陣列類型。
 

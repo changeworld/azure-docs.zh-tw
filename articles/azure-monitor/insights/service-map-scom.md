@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: a20884c33d5232661e858e0b3ec722f139825aea
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: dc9425b25fa594d06473865f1add9c91c7760a97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557225"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>整合 System Center Operations Manager 與適用於 VM 的 Azure 監視器對應功能
 
@@ -20,7 +20,7 @@ ms.locfileid: "82928001"
 >[!NOTE]
 >如果您已部署服務對應，您可以在適用於 VM 的 Azure 監視器中查看對應，其中包含可監視 VM 健全狀況和效能的其他功能。 適用於 VM 的 Azure 監視器的對應功能主要是用來取代獨立的服務對應解決方案。 若要深入了解，請參閱[適用於 VM 的 Azure 監視器概觀](vminsights-overview.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * System Center Operations Manager 管理群組（2012 R2 或更新版本）。
 * 設定為支援適用於 VM 的 Azure 監視器的 Log Analytics 工作區。
@@ -29,7 +29,7 @@ ms.locfileid: "82928001"
 
 ## <a name="install-the-service-map-management-pack"></a>安裝服務對應管理組件
 
-您可以藉由匯入 SystemCenter. ServiceMap 管理元件配套（SystemCenter. ServiceMap. .mpb）來啟用 Operations Manager 與對應功能之間的整合。 您可以從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=55763)下載管理組件配套。 此配套包含下列管理組件︰
+您可以藉由匯入 Microsoft.SystemCenter. ServiceMap 管理元件配套（Microsoft.SystemCenter. ServiceMap. .mpb），啟用 Operations Manager 與對應功能之間的整合。 您可以從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=55763)下載管理組件配套。 此配套包含下列管理組件︰
 
 * Microsoft Service Map Application Views
 * Microsoft System Center Service Map Internal
@@ -117,7 +117,7 @@ ms.locfileid: "82928001"
 
 ## <a name="configure-rules-and-overrides"></a>設定規則和覆寫
 
-*SystemCenter*規則會定期從適用於 VM 的 Azure 監視器對應] 功能提取資訊。 若要修改同步處理間隔，您可以覆寫規則，並修改參數**IntervalMinutes**的值。
+規則*Microsoft.SysTemCenter microsoft.systemcenter.servicemapimport.rule*會定期從適用於 VM 的 Azure 監視器對應功能提取資訊。 若要修改同步處理間隔，您可以覆寫規則，並修改參數**IntervalMinutes**的值。
 
 ![Operations Manager [覆寫內容] 視窗](media/service-map-scom/scom-overrides.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "82928001"
 * **TimeoutSeconds**：指定要求超時前的時間長度。
 * **TimeWindowMinutes**：指定用來查詢資料的時間範圍。 預設值是60分鐘，這是允許的最大間隔。
 
-## <a name="known-issues-and-limitations"></a>已知問題和限制
+## <a name="known-issues-and-limitations"></a>已知的問題及限制
 
 目前的設計有以下問題和限制︰
 
@@ -142,5 +142,6 @@ ms.locfileid: "82928001"
 * [使用 Azure CLI 建立服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 * [使用 Azure 入口網站建立服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
-### <a name="feedback"></a>意見反應
+### <a name="suggestions"></a>建議
+
 您是否有關于與適用於 VM 的 Azure 監視器對應功能或本檔整合的任何意見反應？ 請瀏覽我們的 [User Voice 頁面 (英文)](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，您可以在此頁面提出功能建議或對現有的建議進行投票。

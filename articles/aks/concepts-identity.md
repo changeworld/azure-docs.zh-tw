@@ -4,12 +4,12 @@ description: 深入了解 Azure Kubernetes Service (AKS) 中的存取與身分�
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: e4945535417f7d8d33308121267ba97e1f835e13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffb3f0a7aee63f8b655e7056ee870de80c2f814e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259600"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558166"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的存取與身分識別選項
 
@@ -67,6 +67,9 @@ ClusterRole 會以同樣方式將權限授與資源，但這些權限可以套�
 角色繫結會用來為指定命名空間指派角色。 此方法可讓您以邏輯方式區隔單一 AKS 叢集，讓使用者只能存取獲派命名空間中的應用程式資源。 如果您需要將角色繫結到整個叢集，或繫結到指定命名空間外部的叢集資源，可以改用 ClusterRoleBindings**。
 
 ClusterRoleBinding 會以同樣方式將角色繫結到使用者，但這些角色可以套用至整個叢集中的資源，而不是特定命名空間中的資源。 此方法可讓您允許系統管理員或支援工程師存取 AKS 叢集中的所有資源。
+
+> [!NOTE]
+> Microsoft 支援服務所採取的任何叢集動作，都是在名稱的內建 Kubernetes 「[編輯](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)」角色下，以使用者同意來進行 `aks-support-rolebinding` 。 使用此角色時，會啟用 AKS 支援來編輯叢集設定和資源，以疑難排解及診斷叢集問題，但角色無法修改許可權，也無法建立角色或角色系結。 只有在具有即時（JIT）存取權的主動式支援票證底下，才會啟用角色存取。 閱讀更多[AKS 支援原則](support-policies.md)的相關資訊。
 
 ## <a name="next-steps"></a>後續步驟
 

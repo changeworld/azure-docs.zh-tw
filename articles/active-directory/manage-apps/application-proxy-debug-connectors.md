@@ -2,21 +2,21 @@
 title: Debug 應用程式 Proxy 連接器-Azure Active Directory |Microsoft Docs
 description: Azure Active Directory （Azure AD）應用程式 Proxy 連接器的 Debug 問題。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39a27ce3b3e7946504298451233b6054302c45f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72311841"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555047"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>針對應用程式 Proxy 連接器問題進行偵錯 
 
@@ -40,7 +40,7 @@ ms.locfileid: "72311841"
 
 ![顯示偵錯工具步驟的流程圖](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-|  | 動作 | 描述 | 
+| 步驟 | 動作 | 描述 |
 |---------|---------|---------|
 |1 | 尋找指派給應用程式的連接器群組 | 您可能會在多部伺服器上安裝連接器，在此情況下，連接器應[指派給連接器群組](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)。 若要深入了解連接器群組，請參閱[使用連接器群組在個別的網路和位置上發佈應用程式](application-proxy-connector-groups.md)。 |
 |2 | 安裝連接器並指派群組 | 如果您未安裝連接器，請參閱[安裝並註冊連接器](application-proxy-add-on-premises-application.md#install-and-register-a-connector)。<br></br> 如果您在安裝連接器時遇到問題，請參閱[安裝連接器時發生問題](application-proxy-connector-installation-problem.md)。<br></br> 如果未將連接器指派給群組，請參閱[將連接器指派給群組](application-proxy-connector-groups.md#create-connector-groups)。<br></br>如果未將應用程式指派給連接器群組，請參閱[將應用程式指派給連接器群組](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)。|

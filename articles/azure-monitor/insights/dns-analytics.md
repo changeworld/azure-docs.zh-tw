@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 385f4a9ff1c299f49a514ad63bb3c8d633d8c191
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657328"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552809"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>收集搭配 DNS 分析預覽版解決方案使用 DNS 基礎結構的深入解析
 
@@ -33,18 +33,18 @@ DNS 分析可協助您︰
 
 下表描述此方案支援的連線來源：
 
-| **連接的來源** | **支援** | **說明** |
+| **連線的來源** | **支援** | **描述** |
 | --- | --- | --- |
-| [Windows 代理程式](../platform/agent-windows.md) | 是 | 此解決方案會收集來自 Windows 代理程式的 DNS 資訊。 |
-| [Linux 代理程式](../learn/quick-collect-linux-computer.md) | 否 | 此解決方案不會收集來自直接 Linux 代理程式的 DNS 資訊。 |
-| [System Center Operations Manager 管理群組](../platform/om-agents.md) | 是 | 此解決方案會收集來自連線 Operations Manager 管理群組的代理程式之中的 DNS 資訊。 Operations Manager 代理程式不需要直接連線到 Azure 監視器。 資料會從管理群組轉送至 Log Analytics 工作區。 |
-| [Azure 儲存體帳戶](../platform/collect-azure-metrics-logs.md) | 否 | 此解決方案沒有使用 Azure 儲存體。 |
+| [Windows 代理程式](../platform/agent-windows.md) | Yes | 此解決方案會收集來自 Windows 代理程式的 DNS 資訊。 |
+| [Linux 代理程式](../learn/quick-collect-linux-computer.md) | No | 此解決方案不會收集來自直接 Linux 代理程式的 DNS 資訊。 |
+| [System Center Operations Manager 管理群組](../platform/om-agents.md) | Yes | 此解決方案會收集來自連線 Operations Manager 管理群組的代理程式之中的 DNS 資訊。 Operations Manager 代理程式不需要直接連線到 Azure 監視器。 資料會從管理群組轉送至 Log Analytics 工作區。 |
+| [Azure 儲存體帳戶](../platform/collect-azure-metrics-logs.md) | No | 此解決方案沒有使用 Azure 儲存體。 |
 
 ### <a name="data-collection-details"></a>資料收集詳細資料
 
 此解決方案會從已安裝 Log Analytics 代理程式的 DNS 伺服器收集 DNS 清查和 DNS 事件相關資料。 這項資料會再上傳至 Azure 監視器，並顯示在解決方案儀表板中。 清查相關資料 (例如 DNS 伺服器數目、區域和資源記錄) 的收集方式是執行 DNS PowerShell Cmdlet。 此資料每兩天會更新一次。 事件相關資料是以接近即時的方式，從 Windows Server 2012 R2 增強的 DNS 記錄與診斷功能所提供的[分析和稽核記錄](https://technet.microsoft.com/library/dn800669.aspx#enhanc)進行收集。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 請使用下列資訊來設定此解決方案：
 
@@ -53,7 +53,7 @@ DNS 分析可協助您︰
 
 不需要進一步設定，此解決方案就會開始收集資料。 不過，您可以使用下列組態來自訂資料收集。
 
-### <a name="configure-the-solution"></a>設定方案
+### <a name="configure-the-solution"></a>設定解決方案
 
 在解決方案儀表板中，按一下 [組態]**** 以開啟 [DNS 分析組態] 頁面。 您可以進行兩種類型的組態變更︰
 
@@ -179,7 +179,7 @@ DNS 圖格包含收集到的資料所在的 DNS 伺服器之數目。 它也包�
 
 1. 遺失 DNS 查閱資料-若要對此問題進行疑難排解，請嘗試重設設定，或只在入口網站中載入設定頁面一次。 若要重設，只要將設定變更為另一個值，然後將它變更回原始值，然後儲存 config 即可。
 
-## <a name="feedback"></a>意見反應
+## <a name="suggestions"></a>建議
 
 若要提供意見反應，請造訪[Log Analytics UserVoice 頁面](https://aka.ms/dnsanalyticsuservoice)來張貼 DNS 分析功能的想法，以進行處理。 
 

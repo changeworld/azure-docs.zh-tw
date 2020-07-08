@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81453722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557918"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用 App Service 和 Azure Functions 的 Key Vault 參考
 
@@ -38,16 +38,20 @@ ms.locfileid: "81453722"
 Key Vault 參考格式為 `@Microsoft.KeyVault({referenceString})`，其中 `{referenceString}` 會由下列其中一個選項來取代：
 
 > [!div class="mx-tdBreakAll"]
-> | 參考字串                                                            | 描述                                                                                                                                                                                 |
+> | 參考字串                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri=_secretUri_                                                       | **SecretUri** 應該是 Key Vault 中祕密的完整資料平面 URI (包括版本在內)，例如 https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** 應該是您 Key Vault 資源的名稱。 **SecretName** 應該是目標祕密的名稱。 **SecretVersion** 應該是要使用的祕密版本。 |
 
-例如，具有版本的完整參考看起來會像下面這樣：
+> [!NOTE] 
+> 目前需要版本。 輪替祕密時，您必須在應用程式設定中更新版本。
+
+例如，完整的參考可能看起來如下：
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
+
 或者：
 
 ```
@@ -68,7 +72,7 @@ Key Vault 參照可以做為[應用程式設定](configure-common.md#configure-a
 
 透過 Azure Resource Manager 範本將資源部署自動化時，您可能需要以特定順序來排序相依性，才能使此功能運作。 請注意，您必須將應用程式設定定義為它們自己的資源，而不是使用網站定義中的 `siteConfig` 屬性。 這是因為必須先定義網站，才能使用它來建立系統指派的識別，並且可在存取原則中使用。
 
-函式應用程式的範例虛擬範本看起來可能如下：
+函數應用程式的範例虛擬範本可能如下所示：
 
 ```json
 {
@@ -176,7 +180,7 @@ Key Vault 參照可以做為[應用程式設定](configure-common.md#configure-a
 
 ## <a name="troubleshooting-key-vault-references"></a>Key Vault 參考的疑難排解
 
-如果未正確解析參考，則會改用參考值。 這表示針對應用程式設定，會建立其值具有`@Microsoft.KeyVault(...)`語法的環境變數。 這可能會導致應用程式擲回錯誤，因為它預期會有特定結構的秘密。
+如果未正確解析參考，則會改用參考值。 這表示針對應用程式設定，會建立其值具有語法的環境變數 `@Microsoft.KeyVault(...)` 。 這可能會導致應用程式擲回錯誤，因為它預期會有特定結構的秘密。
 
 最常見的原因是[Key Vault 存取原則](#granting-your-app-access-to-key-vault)的設定不正確。 不過，它也可能是因為秘密已不存在或參考本身的語法錯誤所導致。
 

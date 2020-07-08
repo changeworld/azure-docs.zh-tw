@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 12ca4df6e5dd4ba86ece8469255195e2fa1c155e
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 3aa48f42c767a8f1fb1c7bf0ad78fef8b8af1594
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558534"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>針對與 Azure 資料箱和 Azure Data Box Heavy 相關的問題進行疑難排解
 
@@ -23,7 +23,7 @@ ms.locfileid: "82628890"
 
 資料箱和 Data Box Heavy 中的錯誤摘要如下：
 
-| 錯誤類別 *        | 描述        | 建議的動作    |
+| 錯誤類別 *        | Description        | 建議的動作    |
 |----------------------------------------------|---------|--------------------------------------|
 | 容器或共用名稱 | 容器或共用名稱不會遵循 Azure 命名規則。  |下載錯誤清單。 <br> 重新命名容器或共用。 [深入了解](#container-or-share-name-errors)。  |
 | 容器或共用大小限制 | 容器或共用中的資料總計超過 Azure 限制。   |下載錯誤清單。 <br> 減少容器或共用中的整體資料。 [深入了解](#container-or-share-size-limit-errors)。|
@@ -51,8 +51,8 @@ ms.locfileid: "82628890"
     - 名稱只能包含字母、數位和連字號。
     - 名稱不能以連字號開頭或結尾。
     - 名稱不能包含連續的連字號。
-    - 有效名稱的範例： `my-folder-1`、`my-really-extra-long-folder-111`
-    - 無效名稱的範例`my-folder_1`：、 `my`、 `--myfolder`、、 `myfolder--``myfolder!`
+    - 有效名稱的範例： `my-folder-1` 、`my-really-extra-long-folder-111`
+    - 無效名稱的範例： `my-folder_1` 、 `my` 、 `--myfolder` 、 `myfolder--` 、`myfolder!`
 
     如需詳細資訊，請參閱[容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)和[共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)的 Azure 命名慣例。
 
@@ -70,8 +70,8 @@ ms.locfileid: "82628890"
     - 名稱只能包含字母、數位和連字號。
     - 名稱不能以連字號開頭或結尾。
     - 名稱不能包含連續的連字號。
-    - 有效名稱的範例： `my-folder-1`、`my-really-extra-long-folder-111`
-    - 無效名稱的範例`my-folder_1`：、 `my`、 `--myfolder`、、 `myfolder--``myfolder!`
+    - 有效名稱的範例： `my-folder-1` 、`my-really-extra-long-folder-111`
+    - 無效名稱的範例： `my-folder_1` 、 `my` 、 `--myfolder` 、 `myfolder--` 、`myfolder!`
 
     如需詳細資訊，請參閱[容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)和[共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)的 Azure 命名慣例。
 
@@ -88,8 +88,8 @@ ms.locfileid: "82628890"
     - 名稱只能包含字母、數位和連字號。
     - 名稱不能以連字號開頭或結尾。
     - 名稱不能包含連續的連字號。
-    - 有效名稱的範例： `my-folder-1`、`my-really-extra-long-folder-111`
-    - 無效名稱的範例`my-folder_1`：、 `my`、 `--myfolder`、、 `myfolder--``myfolder!`
+    - 有效名稱的範例： `my-folder-1` 、`my-really-extra-long-folder-111`
+    - 無效名稱的範例： `my-folder_1` 、 `my` 、 `--myfolder` 、 `myfolder--` 、`myfolder!`
 
     如需詳細資訊，請參閱[容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)和[共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)的 Azure 命名慣例。
     
@@ -102,7 +102,7 @@ ms.locfileid: "82628890"
 - 在本機 web UI 的 [連線並複製] 頁面上，下載並檢查錯誤檔案，以找出有問題的資料夾名稱。 
 - 重新命名目錄或容器，以確保它們符合 Azure 命名慣例。
 
-如需詳細資訊，請參閱 [目錄](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) 和[容器](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)的 Azure 命名慣例。
+如需詳細資訊，請參閱 [目錄](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   和[容器](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)的 Azure 命名慣例。
 
 ## <a name="container-or-share-size-limit-errors"></a>容器或共用大小限制錯誤
 

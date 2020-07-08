@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 775992d090b951c8de6fce36377dc91d6e017399
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402450"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558079"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service 支援原則
 
@@ -51,9 +51,12 @@ AKS 不是完全受控的叢集解決方案。 某些元件 (例如背景工作�
 
 Microsoft 可針對下列問題提供技術支援：
 
+> [!NOTE]
+> Microsoft 支援服務所採取的任何叢集動作，都是在名稱的內建 Kubernetes 「[編輯](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)」角色下，以使用者同意來進行 `aks-support-rolebinding` 。 使用此角色時，會啟用 AKS 支援來編輯叢集設定和資源，以疑難排解及診斷叢集問題，但角色無法修改許可權，也無法建立角色或角色系結。 只有在具有即時（JIT）存取權的主動式支援票證底下，才會啟用角色存取。
+
 * 連線至 Kubernetes 服務提供和支援的所有 Kubernetes 元件，例如 API 伺服器。
 * Kubernetes 控制平面服務的管理、運作時間、QoS 和作業 (例如 Kubernetes 主要節點、API 伺服器、etcd 和 kube-dns)。
-* Etcd。 支援包括每 30 分鐘自動且透明地備份所有 etcd 資料，以進行災害規劃和叢集狀態還原。 這些備份無法直接提供給客戶或使用者。 它們可確保資料的可靠性和一致性。
+* Etcd。 支援包括每 30 分鐘自動且透明地備份所有 etcd 資料，以進行災害規劃和叢集狀態還原。 這些備份無法直接提供給客戶或使用者。 它們可確保資料的可靠性和一致性。 Etcd。 「隨選復原」或「還原」不支援做為功能。
 * 適用於 Kubernetes 的 Azure 雲端提供者驅動程式中的任何整合點。 其中包括與其他 Azure 服務的整合，例如負載平衡器、永久性磁碟區或網路 (Kubernetes 和 Azure CNI)。
 * 自訂控制平面元件的相關問題，例如 Kubernetes API 伺服器、etcd 和 kube-dns。
 * 網路的相關問題，例如 Azure CNI、kubenet，或其他網路存取和功能問題。 問題可能包括 DNS 解析、封包遺失、路由等等。 Microsoft 支援各種網路功能案例：

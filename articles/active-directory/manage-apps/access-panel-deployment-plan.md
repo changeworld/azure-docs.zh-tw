@@ -2,25 +2,25 @@
 title: 規劃 Azure Active Directory 存取面板部署
 description: 部署 Azure Active Directory 存取面板的指引
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b8a74c85b63e3a532e49136ba3b33437d907694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555320"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>規劃 Azure Active Directory 存取面板部署
 
@@ -81,10 +81,10 @@ Azure AD 存取面板以下列方式獲益企業：
 
 下表概述存取面板部署的主要使用案例：
 
-| 區域| 描述 |
+| 區域| 說明 |
 | - | - |
-| 存取權| 您可以從公司網路內的公司和個人裝置存取存取面板入口網站。 |
-|存取權 | 存取面板入口網站可從公司網路外部的公司裝置存取。 |
+| Access| 您可以從公司網路內的公司和個人裝置存取存取面板入口網站。 |
+|Access | 存取面板入口網站可從公司網路外部的公司裝置存取。 |
 | 稽核| 使用量資料會至少每隔29天下載至公司系統。 |
 | 控管| 定義和監視 Azure AD 連線應用程式和群組的使用者指派生命週期。 |
 | 安全性| 資源的存取權是透過使用者和群組指派來控制。 只有授權的使用者可以管理資源存取權。 |
@@ -122,16 +122,16 @@ Azure AD 存取面板以下列方式獲益企業：
 
 下表列出數個重要的存取面板設定和您可能會使用的一般值：
 
-| 設定| 一般值 |
+| 組態| 一般值 |
 | - | - |
 | 判斷試驗群組| 識別要使用的 Azure AD 安全性群組，並確保所有試驗成員都是群組的一部分。 |
 | 決定要針對生產環境啟用的群組。| 識別要使用的 Azure AD 安全性群組或已同步處理至 Azure AD 的 Active Directory 群組。 請確定所有試驗成員都是群組的一部分。 |
 | 允許使用者對特定類型的應用程式使用 SSO| 同盟 SSO，OAuth，密碼 SSO，應用程式 Proxy |
-| 允許使用者使用自助密碼重設 | 是 |
-| 允許使用者使用多重要素驗證| 是 |
+| 允許使用者使用自助密碼重設 | Yes |
+| 允許使用者使用多重要素驗證| Yes |
 | 允許使用者針對特定類型的群組使用自助式群組管理| 安全性群組，Office 365 群組 |
-| 允許使用者使用自助應用程式管理| 是 |
-| 允許使用者使用存取權審查| 是 |
+| 允許使用者使用自助應用程式管理| Yes |
+| 允許使用者使用存取權審查| Yes |
 
 ### <a name="plan-consent-strategy"></a>規劃同意策略
 
@@ -145,13 +145,13 @@ Azure AD 存取面板以下列方式獲益企業：
 
 如需詳細資訊，請參閱[在 Azure Active Directory 中設定使用者同意應用程式的方式](configure-user-consent.md)。
 
-### <a name="engage-the-right-stakeholders"></a>參與適當的專案關係人
+### <a name="engage-the-right-stakeholders"></a>包含正確的專案關係人
 
 當技術專案失敗時，通常是因為對影響、結果和責任的預期不相符所造成。 若要避免這些錯誤，請[確定您正在吸引正確的專案關係人](../fundamentals/active-directory-deployment-plans.md)，而且已充分瞭解專案中的專案關係人角色。
 
-### <a name="plan-communications"></a>規劃溝通
+### <a name="plan-communications"></a>規劃通訊
 
-通訊對於任何新服務的成功非常重要。 主動通知使用者其經驗和時機，以及如何在需要時取得支援。
+溝通對於任何新服務的成功都非常重要。 主動通知使用者其經驗和時機，以及如何在需要時取得支援。
 
 雖然存取面板通常不會造成使用者的問題，但請務必準備。 開始之前，請先建立輔助支援人員的指南和所有資源的清單。
 
@@ -193,7 +193,7 @@ Azure AD 支援三種不同的方式，可[在應用程式中啟用單一登入]
 
 當使用者登入密碼 SSO 應用程式時，他們必須安裝並使用我的應用程式安全登入延伸模組。 延伸模組會執行腳本，將密碼傳送至應用程式的登入表單。 使用者第一次啟動密碼型 SSO 應用程式時，系統會提示他們安裝延伸模組。 如需擴充功能的詳細資訊，請參閱[安裝存取面板瀏覽器擴充](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)功能的檔。
 
-如果您必須整合密碼型 SSO 應用程式，您應該定義使用[支援的瀏覽器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)大規模部署擴充功能的機制。 選項包括：
+如果您必須整合密碼型 SSO 應用程式，您應該定義使用[支援的瀏覽器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)大規模部署擴充功能的機制。 這些選項包括：
 
 * [Internet Explorer 的群組原則](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 
@@ -215,7 +215,7 @@ Azure AD 支援三種不同的方式，可[在應用程式中啟用單一登入]
 
 ## <a name="plan-your-my-apps-deployment"></a>規劃您的我的應用程式部署
 
-存取面板的基礎是應用程式啟動器我的應用程式，使用者可在[https://myapps.microsoft.com](https://myapps.microsoft.com/)此存取。 我的應用程式頁面可讓使用者從單一位置開始工作，並取得其所需的應用程式。 在這裡，使用者會找到他們具有單一登入存取權的所有應用程式清單。 
+存取面板的基礎是應用程式啟動器我的應用程式，使用者可在此存取 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 。 我的應用程式頁面可讓使用者從單一位置開始工作，並取得其所需的應用程式。 在這裡，使用者會找到他們具有單一登入存取權的所有應用程式清單。 
 
 ![[應用程式] 面板的螢幕擷取畫面](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
 
@@ -261,7 +261,7 @@ Azure AD 支援三種不同的方式，可[在應用程式中啟用單一登入]
 
 Azure AD 提供可提供[技術和商務深入解析的報表](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)。 請與您的商務和技術應用程式擁有者合作，以取得這些報表的擁有權，並定期使用它們。 下表提供一般報告案例的一些範例。
 
-|   | 管理風險| 提高生產力| 治理和合規性 |
+| 範例 | 管理風險| 提高生產力| 治理和合規性 |
 |  - |- | - | - |
 | 報表類型|  應用程式許可權和使用方式| 帳戶佈建活動| 審查誰正在存取應用程式 |
 | 可能的動作| Audit access;撤銷許可權| 補救任何布建錯誤| [撤銷存取權] |
@@ -309,7 +309,7 @@ Azure AD 會將大部分的審核資料保留30天。 資料可透過 Azure 系�
 #### <a name="application-sso-access-test-case-examples"></a>應用程式 SSO 存取測試案例範例：
 
 
-| 商業案例| 預期的結果 |
+| 商務案例| 預期的結果 |
 | - | -|
 | 使用者登入我的應用程式入口網站| 使用者可以登入並查看其應用程式 |
 | 使用者啟動同盟 SSO 應用程式| 使用者會自動登入應用程式 |
@@ -322,7 +322,7 @@ Azure AD 會將大部分的審核資料保留30天。 資料可透過 Azure 系�
 #### <a name="application-self-service-capabilities-test-case-examples"></a>應用程式自助功能測試案例範例
 
 
-| 商業案例| 預期的結果 |
+| 商務案例| 預期的結果 |
 | - | - |
 | 使用者可以管理應用程式的成員資格| 使用者可以新增/移除具有應用程式存取權的成員 |
 | 使用者可以編輯應用程式| 使用者可以編輯密碼 SSO 應用程式的應用程式描述和認證 |

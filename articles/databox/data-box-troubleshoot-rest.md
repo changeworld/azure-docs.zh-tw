@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 7fe5afbc4984c430cbf393e4e2b44122bdd43983
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558564"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>針對 Azure 資料箱 Blob 儲存體的相關問題進行疑難排解
 
@@ -26,7 +26,7 @@ ms.locfileid: "80297134"
 |錯誤訊息  |建議的動作 |
 |---------|---------|
 |無法取出子資源。 其中一個 HTTP 標頭之值的格式不正確。|從 [**編輯**] 功能表中，選取 [**目標 Azure Stack api**]。 <br>重新開機 Azure 儲存體總管。|
-|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |檢查端點名稱`<accountname>.blob.<serialnumber>.microsoftdatabox.com`是否已新增至位於此路徑的 hosts 檔案： <li>`C:\Windows\System32\drivers\etc\hosts`在 Windows 上，或 </li><li> `/etc/hosts`在 Linux 上。</li>|
+|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |檢查端點名稱 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 是否已新增至位於此路徑的 hosts 檔案： <li>`C:\Windows\System32\drivers\etc\hosts`在 Windows 上，或 </li><li> `/etc/hosts`在 Linux 上。</li>|
 |無法取出子資源。 <br>詳細資料：自我簽署憑證 |將裝置的 TLS/SSL 憑證匯入 Azure 儲存體總管： <li>從 Azure 入口網站下載憑證。 如需詳細資訊，請移至[下載憑證](data-box-deploy-copy-data-via-rest.md#download-certificate)。</li><li>從 [**編輯**] 功能表中，選取 [ **SSL 憑證**]，然後選取 [匯**入憑證**]。</li>|
 
 ## <a name="errors-seen-in-azcopy-for-windows"></a>AzCopy for Windows 中出現的錯誤
@@ -35,7 +35,7 @@ ms.locfileid: "80297134"
 
 |錯誤訊息  |建議的動作 |
 |---------|---------|
-|AzCopy 命令似乎停止回應一分鐘，再顯示此錯誤： <br>無法列舉目錄 HTTPs://.。。 無法解析遠端名稱`<accountname>.blob.<serialnumber>.microsoftdatabox.com`|檢查端點名稱`<accountname>.blob.<serialnumber>.microsoftdatabox.com`是否已新增至 hosts 檔案，網址為： `C:\Windows\System32\drivers\etc\hosts`。|
+|AzCopy 命令似乎停止回應一分鐘，再顯示此錯誤： <br>無法列舉目錄 HTTPs://.。。 無法解析遠端名稱`<accountname>.blob.<serialnumber>.microsoftdatabox.com`|檢查端點名稱 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 是否已新增至 hosts 檔案，網址為： `C:\Windows\System32\drivers\etc\hosts` 。|
 |AzCopy 命令似乎停止回應一分鐘，再顯示此錯誤： <br>剖析來源位置時發生錯誤。 基礎連接已關閉：無法為 SSL/TLS 安全通道建立信任關係。|將裝置的 TLS/SSL 憑證匯入系統的憑證存放區。 如需詳細資訊，請移至[下載憑證](data-box-deploy-copy-data-via-rest.md#download-certificate)。|
 
 
@@ -45,7 +45,7 @@ ms.locfileid: "80297134"
 
 |錯誤訊息  |建議的動作 |
 |---------|---------|
-|AzCopy 命令似乎停止回應20分鐘，再顯示此錯誤： <br>剖析來源位置`https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>`時發生錯誤。 無此裝置或位址|檢查端點名稱`<accountname>.blob.<serialnumber>.microsoftdatabox.com`是否已新增至 hosts 檔案，網址為： `/etc/hosts`。|
+|AzCopy 命令似乎停止回應20分鐘，再顯示此錯誤： <br>剖析來源位置時發生錯誤 `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>` 。 無此裝置或位址|檢查端點名稱 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 是否已新增至 hosts 檔案，網址為： `/etc/hosts` 。|
 |AzCopy 命令似乎停止回應20分鐘，再顯示此錯誤： <br>剖析來源位置時發生錯誤 .。。 無法建立 SSL 連線。|將裝置的 TLS/SSL 憑證匯入系統的憑證存放區。 如需詳細資訊，請移至[下載憑證](data-box-deploy-copy-data-via-rest.md#download-certificate)。|
 
 ## <a name="errors-seen-in-azure-storage-library-for-python"></a>適用于 Python 的 Azure 儲存體程式庫中出現的錯誤

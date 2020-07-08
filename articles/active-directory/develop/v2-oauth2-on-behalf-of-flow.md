@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bcf971b56aa0dc343fdfaf34b329e49a82bba9a8
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: 9e653469eb5bffbf81a0e09982edcbd1e937ba61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771515"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553542"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 代理者流程
 
@@ -61,7 +61,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 使用共用密碼時，服務對服務存取權杖要求包含下列參數：
 
-| 參數 |  | 描述 |
+| 參數 | 類型 | 說明 |
 | --- | --- | --- |
 | `grant_type` | 必要 | 權杖要求的類型。 對於使用 JWT 的要求，值必須是 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
 | `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面指派給您應用程式的應用程式 (用戶端) 識別碼。 |
@@ -93,7 +93,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 使用憑證的服務對服務存取權杖要求包含下列參數：
 
-| 參數 |  | 描述 |
+| 參數 | 類型 | 說明 |
 | --- | --- | --- |
 | `grant_type` | 必要 | 權杖要求的類型。 對於使用 JWT 的要求，值必須是 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
 | `client_id` | 必要 |  [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面指派給您應用程式的應用程式 (用戶端) 識別碼。 |

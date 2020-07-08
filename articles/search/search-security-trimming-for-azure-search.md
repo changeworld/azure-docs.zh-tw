@@ -1,19 +1,19 @@
 ---
 title: 用於修剪結果的安全性篩選
 titleSuffix: Azure Cognitive Search
-description: 使用安全性篩選和使用者身分識別，對 Azure 認知搜尋內容進行存取控制。
+description: Azure 認知搜尋搜尋結果的檔層級安全性許可權，使用安全性篩選和使用者身分識別。
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 24f168f68a60ebb0408b7f1c367039ea5caea6d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: e97f607c17f746c3cb16a17b7f579a58d4914608
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794271"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553128"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure 認知搜尋中用於修剪結果的安全性篩選
 
@@ -27,12 +27,12 @@ ms.locfileid: "72794271"
 > [!div class="checklist"]
 > * 建立包含主體識別碼的欄位 
 > * 推送或更新具有相關主體識別碼的現有文件
-> * 使用`search.in`發出搜尋要求`filter`
+> * 使用 `search.in` 發出搜尋要求`filter`
 
 >[!NOTE]
 > 本文件未多加說明擷取主體識別碼的流程。 您應從身分識別服務提供者處取得主體識別碼。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您有[azure 訂](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)用帳戶、 [azure 認知搜尋服務](https://docs.microsoft.com/azure/search/search-create-service-portal)和[azure 認知搜尋索引](https://docs.microsoft.com/azure/search/search-create-index-portal)。  
 
@@ -60,7 +60,7 @@ ms.locfileid: "72794271"
 將 HTTP POST 要求發送至您索引的 URL 端點。 HTTP 要求主體是包含要新增之文件的 JSON 物件：
 
 ```
-POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2019-05-06  
+POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
 ```
@@ -118,7 +118,7 @@ api-key: [admin key]
 發出 HTTP POST 要求：
 
 ```
-POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
 ```
@@ -151,7 +151,7 @@ api-key: [admin or query key]
 ```
 ## <a name="conclusion"></a>結論
 
-這是您可以根據使用者身分識別和 Azure 認知搜尋`search.in()`功能來篩選結果的方式。 您可以使用此函式來傳入要求使用者的原則識別碼，以符合與每個目的檔案相關聯的主體識別碼。 處理搜尋要求時，`search.in` 函式會篩選出沒有任何使用者主體具備讀取權限的搜尋結果。 主體識別碼可代表安全性群組、角色等等，甚至可代表使用者的專屬身分識別。
+這是您可以根據使用者身分識別和 Azure 認知搜尋功能來篩選結果的方式 `search.in()` 。 您可以使用此函式來傳入要求使用者的原則識別碼，以符合與每個目的檔案相關聯的主體識別碼。 處理搜尋要求時，`search.in` 函式會篩選出沒有任何使用者主體具備讀取權限的搜尋結果。 主體識別碼可代表安全性群組、角色等等，甚至可代表使用者的專屬身分識別。
  
 ## <a name="see-also"></a>另請參閱
 

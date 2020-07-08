@@ -1,6 +1,6 @@
 ---
 title: 連接 Azure Sentinel 中的 DNS 資料 |Microsoft Docs
-description: 瞭解如何連接 Azure Sentinel 中的 DNS 資料。
+description: 瞭解如何在 DNS 機器上安裝代理程式，以將在 Windows 上執行的任何功能變數名稱伺服器（DNS）連接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 6d43b82ecd13ac5e082d270ee44ce61fef763d2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a88696ba69fdf53f5c7e15d174b126d69f4230ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588309"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555433"
 ---
 # <a name="connect-your-domain-name-server"></a>連接您的功能變數名稱伺服器
 
@@ -41,12 +41,12 @@ ms.locfileid: "77588309"
 
 下表描述此方案支援的連線來源：
 
-| **連接的來源** | **支援** | **說明** |
+| **連線的來源** | **支援** | **描述** |
 | --- | --- | --- |
-| [Windows 代理程式](../azure-monitor/platform/agent-windows.md) | 是 | 此解決方案會收集來自 Windows 代理程式的 DNS 資訊。 |
-| [Linux 代理程式](../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 此解決方案不會收集來自直接 Linux 代理程式的 DNS 資訊。 |
-| [System Center Operations Manager 管理群組](../azure-monitor/platform/om-agents.md) | 是 | 此解決方案會收集來自連線 Operations Manager 管理群組的代理程式之中的 DNS 資訊。 Operations Manager 代理程式不需要直接連線到 Azure 監視器。 資料會從管理群組轉送至 Log Analytics 工作區。 |
-| [Azure 儲存體帳戶](../azure-monitor/platform/collect-azure-metrics-logs.md) | 否 | 此解決方案沒有使用 Azure 儲存體。 |
+| [Windows 代理程式](../azure-monitor/platform/agent-windows.md) | Yes | 此解決方案會收集來自 Windows 代理程式的 DNS 資訊。 |
+| [Linux 代理程式](../azure-monitor/learn/quick-collect-linux-computer.md) | No | 此解決方案不會收集來自直接 Linux 代理程式的 DNS 資訊。 |
+| [System Center Operations Manager 管理群組](../azure-monitor/platform/om-agents.md) | Yes | 此解決方案會收集來自連線 Operations Manager 管理群組的代理程式之中的 DNS 資訊。 Operations Manager 代理程式不需要直接連線到 Azure 監視器。 資料會從管理群組轉送至 Log Analytics 工作區。 |
+| [Azure 儲存體帳戶](../azure-monitor/platform/collect-azure-metrics-logs.md) | No | 此解決方案沒有使用 Azure 儲存體。 |
 
 ### <a name="data-collection-details"></a>資料收集詳細資料
 

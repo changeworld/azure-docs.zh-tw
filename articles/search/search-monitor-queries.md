@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: da7a47bf61453c30f5c735b1282ae93d2442598c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127686"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552523"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>監視 Azure 認知搜尋中的查詢要求
 
@@ -36,12 +36,12 @@ ms.locfileid: "82127686"
 
 查詢通常是以毫秒執行，因此只有測量為秒的查詢才會出現在計量中。
 
-| 彙總類型 | 描述 |
+| 彙總類型 | Description |
 |------------------|-------------|
 | Average | 在一分鐘內發生查詢執行的平均秒數。|
-| 計數 | 一分鐘內發出至記錄的計量數目。 |
+| Count | 一分鐘內發出至記錄的計量數目。 |
 | 最大值 | 一分鐘內註冊的每秒搜尋查詢最高數目。 |
-| 最小值 | 一分鐘內註冊的每秒搜尋查詢最小數目。  |
+| 最低需求 | 一分鐘內註冊的每秒搜尋查詢最小數目。  |
 | Sum | 分鐘內執行之所有查詢的總和。  |
 
 例如，在一分鐘內，您可能會有如下的模式：一秒的高負載，這是最大值的 SearchQueriesPerSecond，後面加上58秒的平均負載，最後一秒只有一個查詢（這是最小值）。
@@ -57,9 +57,9 @@ ms.locfileid: "82127686"
 | 彙總類型 | Latency | 
 |------------------|---------|
 | Average | 平均查詢持續時間（以毫秒為單位）。 | 
-| 計數 | 一分鐘內發出至記錄的計量數目。 |
+| Count | 一分鐘內發出至記錄的計量數目。 |
 | 最大值 | 範例中執行時間最長的查詢。 | 
-| 最小值 | 範例中最短的執行查詢。  | 
+| 最低需求 | 範例中最短的執行查詢。  | 
 | 總計 | 範例中所有查詢的總執行時間，在間隔內執行（一分鐘）。  |
 
 請考慮下列**搜尋延遲**計量範例：已取樣86查詢，平均持續時間為23.26 毫秒。 最小值為0表示已捨棄一些查詢。 執行時間最長的查詢需要1000毫秒才能完成。 總執行時間為2秒。
@@ -85,9 +85,9 @@ ms.locfileid: "82127686"
 | 彙總類型 | 節流 |
 |------------------|-----------|
 | Average | 在間隔內捨棄的查詢百分比。 |
-| 計數 | 一分鐘內發出至記錄的計量數目。 |
+| Count | 一分鐘內發出至記錄的計量數目。 |
 | 最大值 | 在間隔內捨棄的查詢百分比。|
-| 最小值 | 在間隔內捨棄的查詢百分比。 |
+| 最低需求 | 在間隔內捨棄的查詢百分比。 |
 | 總計 | 在間隔內捨棄的查詢百分比。 |
 
 對於**節流的搜尋查詢百分比**、最小值、最大值、平均值和總計，全都具有相同的值 .. 已節流的搜尋查詢百分比，從搜尋查詢的總數（以一分鐘為單位）。
@@ -128,11 +128,11 @@ ms.locfileid: "82127686"
    AzureDiagnostics
    | project OperationName, Query_s, IndexName_s, Documents_d
    | where OperationName == "Query.Search"
-   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where Query_s != "?api-version=2020-06-30&search=*"
    | where IndexName_s != "realestate-us-sample-index"
    ```
 
-1. （選擇性）在*Query_s*上設定資料行篩選，以便在特定的語法或字串上進行搜尋。 例如，您可以篩選 [*等於* `?api-version=2019-05-06&search=*&%24filter=HotelName`]）。
+1. （選擇性）在*Query_s*上設定資料行篩選，以便在特定的語法或字串上進行搜尋。 例如，您可以篩選 [*等於*] `?api-version=2020-06-30&search=*&%24filter=HotelName` ）。
 
    ![記錄的查詢字串](./media/search-monitor-usage/log-query-strings.png "記錄的查詢字串")
 
@@ -181,7 +181,7 @@ ms.locfileid: "82127686"
 
    ![警示詳細資料](./media/search-monitor-usage/alert-details.png "警示詳細資料")
 
-如果您指定了電子郵件通知，您將會收到來自「Microsoft Azure」的電子郵件，主旨為「Azure：已啟用嚴重性`<your rule name>`：3」。
+如果您指定了電子郵件通知，您將會收到來自「Microsoft Azure」的電子郵件，主旨為「Azure：已啟用嚴重性：3」 `<your rule name>` 。
 
 <!-- ## Report query data
 

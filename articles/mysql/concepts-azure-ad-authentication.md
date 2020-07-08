@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 0c56652b4e098213bae0c69d4be5ac77e1b1393c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 12316abd4a738d54e01f88873498e4b299d6053d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556374"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>使用 Azure Active Directory 向 MySQL 進行驗證
 
@@ -66,14 +66,18 @@ Azure Active Directory 驗證支援下列方法，使用 Azure AD 身分識別�
 - Azure Active Directory 整合式
 - 包含 MFA 的 Active Directory 通用驗證
 - 使用 Active Directory 應用程式的憑證或用戶端密碼
+- [受控身分識別](howto-connect-with-managed-identity.md)
 
 針對 Active Directory 進行驗證後就可以擷取權杖。 此權杖是您用來登入的密碼。
+
+請注意，目前只有 Azure AD 的使用者角色才支援管理作業，例如新增使用者。
 
 > [!NOTE]
 > 如需如何使用 Active Directory 權杖來連線的詳細資訊，請參閱[使用「適用於 MySQL 的 Azure 資料庫」的 Azure AD 來進行設定和登入](howto-configure-sign-in-azure-ad-authentication.md)。
 
 ## <a name="additional-considerations"></a>其他考量
 
+- Azure Active Directory 驗證僅適用于 MySQL 5.7 和更新版本。
 - 任何時候都只能為「適用於 MySQL 的 Azure 資料庫」設定一個 Azure AD 系統管理員。
 - 只有適用於 MySQL 的 Azure AD 系統管理員可以一開始就使用 Azure Active Directory 帳戶連線到「適用於 MySQL 的 Azure 資料庫」。 Active Directory 系統管理員可以設定後續的 Azure AD 資料庫使用者。
 - 如果從 Azure AD 中刪除某個使用者，該使用者就無法再使用 Azure AD 進行驗證，因此將無法再取得該使用者的存取權杖。 在此情況下，雖然相符的使用者仍然會在資料庫中，但已無法使用該使用者來連線到伺服器。
