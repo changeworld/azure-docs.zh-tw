@@ -4,25 +4,24 @@ description: 在本文中，了解如何使用 Azure CLI 以路由表路由傳�
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 5fa94b93e081ab6334c39b848068f50682f5f1f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 70f7bd4443602f6f18be54c5bc4ff038e868e58e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703344"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>使用 Azure CLI 以路由表路由網路流量
 
@@ -210,7 +209,7 @@ az vm create \
 
 ## <a name="route-traffic-through-an-nva"></a>透過 NVA 路由傳送流量
 
-使用下列命令來對 myVmPrivate** 虛擬機器建立 SSH 工作階段。 以您 VM 的公用 IP 位址取代* \<publicIpAddress>* 。 在上述範例中，IP 位址是 *13.90.242.231*。
+使用下列命令來對 myVmPrivate** 虛擬機器建立 SSH 工作階段。 *\<publicIpAddress>* 以您 VM 的公用 IP 位址取代。 在上述範例中，IP 位址是 *13.90.242.231*。
 
 ```bash
 ssh azureuser@<publicIpAddress>

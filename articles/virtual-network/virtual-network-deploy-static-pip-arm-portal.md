@@ -7,18 +7,17 @@ author: asudbring
 manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.devlang: azurecli
-ms.topic: article
+ms.devlang: ''
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 3ef96c83b460346ba49051f6f5c4fd0dd5df34ab
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: 745b12e2278c487ed49a9d2d726a760a7df8f276
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703162"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>使用 Azure 入口網站建立具有靜態公用 IP 位址的虛擬機器
 
@@ -30,9 +29,9 @@ ms.locfileid: "82790162"
 
 ## <a name="create-a-virtual-machine"></a>建立虛擬機器
 
-1. 選取 Azure 入口網站左上角的 [+ 建立資源]****。
-2. 選取 [計算]****，然後選取 [Windows Server 2016 VM]**** 或您所選的另一個作業系統。
-3. 輸入或選取下列資訊、接受其餘設定的預設值，然後選取 **[確定]**：
+1. 選取 Azure 入口網站左上角的 [+ 建立資源]。
+2. 選取 [計算]，然後選取 [Windows Server 2016 VM] 或您所選的另一個作業系統。
+3. 輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [確定]：
 
     |設定|值|
     |---|---|
@@ -40,8 +39,8 @@ ms.locfileid: "82790162"
     |[使用者名稱]| 輸入您選擇的使用者名稱。|
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |訂用帳戶| 選取您的訂用帳戶。|
-    |資源群組| 選取 [使用現有項目]****，然後選取 [myResourceGroup]****。|
-    |Location| 選取 [**美國東部**]|
+    |資源群組| 選取 [使用現有項目]，然後選取 [myResourceGroup]。|
+    |Location| 選取 [美國東部]****|
 
 4. 選取 VM 的大小，然後選取 [選取]****。
 5. 在 [設定]**** 之下，選取 [公用 IP 位址]****。
@@ -51,12 +50,12 @@ ms.locfileid: "82790162"
 
    如果公用 IP 位址必須是標準 SKU，請在 [SKU]**** 之下選取 [標準]****。 深入了解[公用 IP 位址 SKU](virtual-network-ip-addresses-overview-arm.md#sku)。 如果虛擬機器將會新增至公用 Azure Load Balancer 的後端集區，則虛擬機器公用 IP 位址的 SKU 必須符合負載平衡器公用 IP 位址的 SKU。 如需詳細資訊，請參閱 [Azure Load Balancer](../load-balancer/skus.md)。
 
-6. 在 [選取公用輸入連接埠]**** 下選取一個連接埠，或不選取任何連接埠。 選取了連接埠 3389，就能夠從網際網路遠端存取 Windows Server 虛擬機器。 對於生產工作負載，不建議從網際網路開啟連接埠 3389。
+6. 在 [選取公用輸入連接埠] 下選取一個連接埠，或不選取任何連接埠。 選取了連接埠 3389，就能夠從網際網路遠端存取 Windows Server 虛擬機器。 對於生產工作負載，不建議從網際網路開啟連接埠 3389。
 
    ![選取連接埠](./media/virtual-network-deploy-static-pip-arm-portal/select-port.png)
 
-7. 接受其餘的預設設定，然後選取 [確定]****。
-8. 在 [摘要]  頁面上，選取 [建立]  。 部署虛擬機器需要幾分鐘的時間。
+7. 接受其餘的預設設定，然後選取 [確定]。
+8. 在 [摘要] 頁面上，選取 [建立]。 部署虛擬機器需要幾分鐘的時間。
 9. 部署虛擬機器後，請在入口網站頂端的搜尋方塊中輸入 *myPublicIpAddress*。 當 **myPublicIpAddress** 出現於搜尋結果時，請選取它。
 10. 您可以檢視已指派的公用 IP 位址，並將此位址指派給 **myVM** 虛擬機器，如下圖所示：
 
@@ -76,12 +75,12 @@ ms.locfileid: "82790162"
 當不再需要資源群組時，請將資源群組及其包含的所有資源刪除：
 
 1. 在入口網站頂端的 [搜尋]**** 方塊中，輸入 myResourceGroup**。 當您在搜尋結果中看到 myResourceGroup**** 時，請加以選取。
-2. 選取 [刪除資源群組]  。
-3. 針對 [輸入**資源組名：** ] 輸入*myResourceGroup* ，然後選取 [**刪除**]。
+2. 選取 [刪除資源群組]。
+3. 針對 [輸入資源群組名稱:]**** 輸入 myResourceGroup**，然後選取 [刪除]****。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解 Azure 中的[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- 深入了解所有[公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)
+- 深入瞭解 Azure 中的[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
+- 深入瞭解所有[公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)
 - 深入了解[私人 IP 位址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)，並將[靜態私人 IP 位址](virtual-network-network-interface-addresses.md#add-ip-addresses)指派給 Azure 虛擬機器
 - 深入了解如何建立 [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和 [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器

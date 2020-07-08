@@ -8,17 +8,16 @@ author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 720496c56cdae69e3b7415ac4d4d05d5796fbff9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4eac4a7ecc6febedd205fcde45ea550dd15a6b93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146359"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703837"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>建立、變更或刪除公用 IP 位址首碼
 
@@ -46,13 +45,13 @@ ms.locfileid: "82146359"
 3. 在 [公用 IP 位址首碼]**** 下方，選取 [建立]****。
 4. 在 [建立公用 IP 位址首碼]**** 下方，輸入或選取下列設定的值，然後選取 [建立]****：
 
-   |設定|必要？|詳細資料|
+   |設定|必要項？|詳細資料|
    |---|---|---|
-   |訂用帳戶|是|所在的[訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)必須與您想要與公用 IP 位址建立關聯的資源相同。|
+   |訂用帳戶|Yes|所在的[訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)必須與您想要與公用 IP 位址建立關聯的資源相同。|
    |資源群組|是|所在的[資源群組](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)可以與您想要與公用 IP 位址建立關聯的資源相同或不同。|
-   |Name|是|名稱必須是您選取的資源群組中唯一的名稱。|
-   |區域|是|必須與您從範圍指派位址的公用 IP 位址存在於相同[區域](https://azure.microsoft.com/regions)。|
-   |首碼大小|是| 您需要的首碼大小。 /28 或 16 個 IP 位址為預設值。
+   |Name|Yes|名稱必須是您選取的資源群組中唯一的名稱。|
+   |區域|Yes|必須與您從範圍指派位址的公用 IP 位址存在於相同[區域](https://azure.microsoft.com/regions)。|
+   |首碼大小|Yes| 您需要的首碼大小。 /28 或 16 個 IP 位址為預設值。
 
 **命令**
 
@@ -69,11 +68,11 @@ ms.locfileid: "82146359"
 3. 當它出現在搜尋結果時，請選取它，然後按一下 [概觀] 區段中的 [+ 新增 IP 位址]****。
 4. 在 [建立公用 IP 位址]**** 下方，輸入或選取下列設定的值。 由於首碼適用於標準 SKU、IPv4 和靜態，因此您只需要提供下列資訊：
 
-   |設定|必要？|詳細資料|
+   |設定|必要項？|詳細資料|
    |---|---|---|
-   |Name|是|公用 IP 位址名稱在您選取的資源群組中必須是唯一。|
-   |閒置逾時 (分鐘)|否|不需依賴用戶端傳送保持連線訊息，讓 TCP 或 HTTP 連線保持開啟的分鐘數。 |
-   |DNS 名稱標籤|否|在您建立名稱的 Azure 區域 (跨越所有訂用帳戶和所有客戶) 中必須是唯一。 Azure 會在其 DNS 中自動登錄名稱和 IP 位址，以便您連線至具有此名稱的資源。 Azure 會將 *location.cloudapp.azure.com* (其中 location 是您選取的位置) 之類的預設子網路附加至您提供的名稱，以建立完整的 DNS 名稱。如需詳細資訊，請參閱[使用具有 Azure 公用 IP 位址的 Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
+   |名稱|Yes|公用 IP 位址名稱在您選取的資源群組中必須是唯一。|
+   |閒置逾時 (分鐘)|No|不需依賴用戶端傳送保持連線訊息，讓 TCP 或 HTTP 連線保持開啟的分鐘數。 |
+   |DNS 名稱標籤|No|在您建立名稱的 Azure 區域 (跨越所有訂用帳戶和所有客戶) 中必須是唯一。 Azure 會在其 DNS 中自動登錄名稱和 IP 位址，以便您連線至具有此名稱的資源。 Azure 會將 *location.cloudapp.azure.com* (其中 location 是您選取的位置) 之類的預設子網路附加至您提供的名稱，以建立完整的 DNS 名稱。如需詳細資訊，請參閱[使用具有 Azure 公用 IP 位址的 Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
 
 或者，您可以使用下列 CLI 和 PS 命令搭配--public-ip 首碼（CLI）和-PublicIpPrefix （PS）參數，以建立公用 IP 位址資源。 
 

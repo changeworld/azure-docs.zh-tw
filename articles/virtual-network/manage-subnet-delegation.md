@@ -7,17 +7,16 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d2db8eb5b93d84a5ece182fffbca5870762ee89e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201861"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703871"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>新增或移除子網委派
 
@@ -33,15 +32,15 @@ ms.locfileid: "77201861"
 
 在本節中，您會建立虛擬網路和您稍後將委派給 Azure 服務的子網。
 
-1. 在畫面的左上方，選取 [**建立資源** > ] [**網路** > ] [**虛擬網路**]。
-1. 在 [建立虛擬網路]**** 中，輸入或選取這項資訊：
+1. 在畫面的左上方，選取 [**建立資源**] [網路] [  >  **Networking**  >  **虛擬網路**]。
+1. 在 [建立虛擬網路] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
     | 名稱 | 輸入*MyVirtualNetwork*。 |
     | 位址空間 | 輸入 *10.0.0.0/16*。 |
     | 訂用帳戶 | 選取您的訂用帳戶。|
-    | 資源群組 | 選取 [新建]****，輸入 *myResourceGroup*，然後選取 [確定]****。 |
+    | 資源群組 | 選取 [新建]，輸入 *myResourceGroup*，然後選取 [確定]。 |
     | 位置 | 選取 [ **EastUS**]。|
     | 子網路 - 名稱 | 輸入 mySubnet**。 |
     | 子網路 - 位址範圍 | 輸入 *10.0.0.0/24*。 |
@@ -50,7 +49,7 @@ ms.locfileid: "77201861"
 
 ### <a name="permissions"></a>權限
 
-如果您未建立想要委派給 Azure 服務的子網，您需要下列許可權： `Microsoft.Network/virtualNetworks/subnets/write`。
+如果您未建立想要委派給 Azure 服務的子網，您需要下列許可權： `Microsoft.Network/virtualNetworks/subnets/write` 。
 
 內建[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色也包含必要的許可權。
 
@@ -79,7 +78,7 @@ ms.locfileid: "77201861"
 ### <a name="create-a-resource-group"></a>建立資源群組
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
+下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
 
 ```azurecli-interactive
 
@@ -90,7 +89,7 @@ ms.locfileid: "77201861"
 ```
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
-使用[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet)，在**myResourceGroup**中建立名為**myVnet**的虛擬網路，並使用名為**mySubnet**的子網。
+使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet)，在 **myResourceGroup** 中建立名為 **myVNet**、具有子網路 **mySubnet** 的虛擬網路。
 
 ```azurecli-interactive
   az network vnet create \
@@ -103,7 +102,7 @@ ms.locfileid: "77201861"
 ```
 ### <a name="permissions"></a>權限
 
-如果您未建立想要委派給 Azure 服務的子網，您需要下列許可權： `Microsoft.Network/virtualNetworks/subnets/write`。
+如果您未建立想要委派給 Azure 服務的子網，您需要下列許可權： `Microsoft.Network/virtualNetworks/subnets/write` 。
 
 內建[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色也包含必要的許可權。
 
@@ -186,14 +185,14 @@ ms.locfileid: "77201861"
 ### <a name="create-a-resource-group"></a>建立資源群組
 使用 [New-AzResourceGroup](https://docs.microsoft.com/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
+下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
 
 ```azurepowershell-interactive
   New-AzResourceGroup -Name myResourceGroup -Location eastus
 ```
 ### <a name="create-virtual-network"></a>建立虛擬網路
 
-使用**myResourceGroup**中的[new-azvirtualnetworksubnetconfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) ，建立名為**myVnet**的虛擬網路，其名稱為**MySubnet**的子網使用 new [-new-azvirtualnetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest)。 虛擬網路的 IP 位址空間是**10.0.0.0/16**。 虛擬網路內的子網為**10.0.0.0/24**。  
+使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest)，在 **myResourceGroup** 中建立名為 **myVnet** 的虛擬網路，並使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) 建立名為 **mySubnet** 的子網路。 虛擬網路的 IP 位址空間是**10.0.0.0/16**。 虛擬網路內的子網為**10.0.0.0/24**。  
 
 ```azurepowershell-interactive
   $subnet = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix "10.0.0.0/24"
@@ -202,7 +201,7 @@ ms.locfileid: "77201861"
 ```
 ### <a name="permissions"></a>權限
 
-如果您未建立想要委派給 Azure 服務的子網，您需要下列許可權： `Microsoft.Network/virtualNetworks/subnets/write`。
+如果您未建立想要委派給 Azure 服務的子網，您需要下列許可權： `Microsoft.Network/virtualNetworks/subnets/write` 。
 
 內建[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色也包含必要的許可權。
 
