@@ -13,7 +13,7 @@ ms.locfileid: "79477267"
 ---
 檔中的專案會 `deploymentconfig.json` 對應至[LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py)的參數。 deploy_configuration。 下表描述 JSON 檔中的實體與方法的參數之間的對應：
 
-| JSON 實體 | 方法參數 | Description |
+| JSON 實體 | 方法參數 | 描述 |
 | ----- | ----- | ----- |
 | `computeType` | NA | 計算目標。 若為本機目標，此值必須是 `local` 。 |
 | `port` | `port` | 要在其上公開服務之 HTTP 端點的本機埠。 |

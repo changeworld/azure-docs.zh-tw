@@ -9,10 +9,10 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173918"
 ---
 Azure 虛擬機器 (VM) 會經歷不同狀態，這些狀態可以分成「佈建」** 和「電源」** 狀態。 本文的目的是要說明這些狀態，並具體指出何時會向客戶收取執行個體使用量費用。 
@@ -58,7 +58,7 @@ State
 </tr>
 <tr>
 <td>
-<p><b>正在執行</b></p>
+<p><b>執行中</b></p>
 </td>
 <td>
 <p>VM 的正常工作狀態</p>
@@ -178,7 +178,7 @@ State
 <p><b>狀態</b></p>
 </td>
 <td width="366">
-<p>說明</p>
+<p>描述</p>
 </td>
 </tr>
 <tr>
@@ -210,7 +210,7 @@ State
 </tr>
 <tr>
 <td width="162">
-<p><b>刪除</b></p>
+<p><b>刪除中</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>

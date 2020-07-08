@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173841"
 ---
 每個使用點對站連線來連線至 VNet 的用戶端電腦都必須安裝用戶端憑證。 您會從根憑證產生用戶端憑證，並將其安裝在每部用戶端電腦上。 如果您沒有安裝有效的用戶端憑證，用戶端嘗試連線至 VNet 時所進行的驗證將會失敗。
@@ -22,7 +22,7 @@ ms.locfileid: "67173841"
 
 - **企業憑證：**
 
-  - 如果您使用的是企業憑證解決方案，請產生具有一般名稱值格式*名稱\@yourdomain.com*的用戶端憑證。 請使用此格式，而不是「網域名稱\使用者名稱」** 的格式。
+  - 如果您使用的是企業憑證解決方案，請產生具有一般名稱值格式*名稱 \@ yourdomain.com*的用戶端憑證。 請使用此格式，而不是「網域名稱\使用者名稱」** 的格式。
   - 請確定用戶端憑證所根據的憑證範本，是將「用戶端驗證」** 列為使用者清單中第一個項目的使用者憑證範本。 按兩下憑證，然後檢視 [詳細資料]**** 索引標籤中的 [增強金鑰使用方法]****，即可檢查憑證。
 
 - **自我簽署根憑證：** 遵循下列其中一個 P2S 憑證文章中的步驟，讓您建立的用戶端憑證能夠與您的 P2S 連接相容。 這些文章中的步驟都會產生相容的用戶端憑證： 

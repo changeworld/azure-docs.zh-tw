@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68883776"
 ---
 ## <a name="create-a-module-identity"></a>建立模組身分識別
@@ -29,13 +29,13 @@ ms.locfileid: "68883776"
 
     ![輸入 Visual Studio 解決方案的名稱和架構](./media/iot-hub-get-started-create-module-identity-csharp/configure-createidentities-project.png)
 
-1. 在 Visual Studio 中，開啟 [**工具** > ] [**nuget 套件管理員** > ] [**管理方案的 nuget 套件**]。 選取 [瀏覽]**** 索引標籤。
+1. 在 Visual Studio 中，開啟 [**工具**] [  >  **nuget 套件管理員**] [  >  **管理方案的 nuget 套件**]。 選取 [瀏覽]**** 索引標籤。
 
 1. 搜尋 [ **Microsoft. Azure 裝置**]。 選取它，然後選取 [**安裝**]。
 
     ![安裝 Azure IoT 中樞 .NET 服務 SDK 目前版本](./media/iot-hub-get-started-create-module-identity-csharp/install-service-sdk.png)
 
-1. 在 Program.cs 檔案`using`的頂端新增下列語句： **Program.cs**
+1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
 
    ```csharp
    using Microsoft.Azure.Devices;
@@ -104,7 +104,7 @@ ms.locfileid: "68883776"
 
     `AddDeviceAsync`方法會建立識別碼為**myFirstDevice**的裝置身分識別。 如果該裝置識別碼已經存在身分識別登錄中，程式碼就會直接抓取現有的裝置資訊。 接著，應用程式會顯示該身分識別的主要金鑰。 您會在模擬裝置應用程式中使用此金鑰來連線到您的中樞。
 
-    方法會在裝置**myFirstDevice**下建立識別碼為 myFirstModule 的模組身分識別。 **myFirstModule** `AddModuleAsync` 如果該模組識別碼已存在身分識別登錄中，程式碼就會直接抓取現有的模組資訊。 接著，應用程式會顯示該身分識別的主要金鑰。 您會在模擬模組應用程式中使用此金鑰來連線到您的中樞。
+    `AddModuleAsync`方法會在裝置**myFirstDevice**下建立識別碼為**myFirstModule**的模組身分識別。 如果該模組識別碼已存在身分識別登錄中，程式碼就會直接抓取現有的模組資訊。 接著，應用程式會顯示該身分識別的主要金鑰。 您會在模擬模組應用程式中使用此金鑰來連線到您的中樞。
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 

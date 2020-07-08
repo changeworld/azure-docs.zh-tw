@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982188"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195987"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>利用資料管理閘道在內部部署來源和雲端之間移動資料
 > [!NOTE]
@@ -47,7 +47,7 @@ ms.locfileid: "75982188"
 
 * **Azure 訂用帳戶**。  如果您沒有訂用帳戶，則只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [免費試用](https://azure.microsoft.com/pricing/free-trial/) 一文。
 * **Azure 儲存體帳戶**。 在本教學課程中，您會使用 Blob 儲存體作為**目的地/接收**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../../storage/common/storage-account-create.md)一文，以瞭解建立的步驟。
-* **SQL Server**。 在本教學課程中，您會使用內部部署 SQL 資料庫作為**來源**資料存放區。
+* **SQL Server**。 在本教學課程中，您會使用 SQL Server 資料庫做為**源**資料存放區。
 
 ## <a name="create-data-factory"></a>建立資料處理站
 在此步驟中，您將使用 Azure 入口網站來建立名為 **ADFTutorialOnPremDF**的 Azure Data Factory 執行個體。
@@ -63,7 +63,7 @@ ms.locfileid: "75982188"
    > [!IMPORTANT]
    > Azure Data Factory 的名稱在全域必須是唯一的。 如果您收到錯誤： **Data Factory 名稱 “ADFTutorialOnPremDF” 無法使用**，請變更 Data Factory 名稱 (例如 yournameADFTutorialOnPremDF)，然後嘗試重新建立。 執行此教學課程中的其餘步驟時，請使用此名稱來取代 ADFTutorialOnPremDF。
    >
-   > 資料處理站的名稱未來可能註冊為 **DNS** 名稱，進而會公開顯示。
+   > Data factory 的名稱未來可能會註冊為**DNS**名稱，因此會變成公開可見。
    >
    >
 4. 選取您想要建立 Data Factory 的 [Azure 訂用帳戶] **** 。
@@ -104,7 +104,7 @@ ms.locfileid: "75982188"
 
     ![閘道 - [設定] 頁面](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    這是最簡單的方式 (一鍵)，透過單一步驟即可下載、安裝、設定和註冊閘道。 您可以看到 **Microsoft 資料管理閘道組態管理員**應用程式已安裝在電腦上。 您也可以在**ConfigManager**資料夾中找到可執行檔： **C:\Program Files\Microsoft 資料管理 Gateway\2.0\Shared**。
+    這是最簡單的方式 (一鍵)，透過單一步驟即可下載、安裝、設定和註冊閘道。 您可以看到 **Microsoft 資料管理閘道組態管理員**應用程式已安裝在電腦上。 您也可以在**C:\Program Files\Microsoft 資料管理 Gateway\2.0\Shared**資料夾中找到可執行檔**ConfigManager.exe** 。
 
     您也可以使用此頁面中的連結手動下載與安裝閘道器，並使用 [新金鑰] **** 文字方塊中顯示的金鑰來加以註冊。
 
@@ -140,7 +140,7 @@ ms.locfileid: "75982188"
    * 設定閘道要使用的 HTTP Proxy。     
 9. (選擇性) 切換到 [診斷]**** 索引標籤，如果您想啟用詳細資訊記錄功能，以便對閘道的任何問題進行疑難排解，請勾選 [啟用詳細資訊記錄]**** 選項。 在 [應用程式及服務記錄檔]**** ->  [資料管理閘道]**** 節點之下的 [事件檢視器]**** 中可找到記錄資訊。
 
-    ![[診斷] 索引標籤](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
+    ![診斷索引標籤](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
 
     您也可以在 [診斷] **** 索引標籤上執行以下動作：
 
@@ -152,9 +152,9 @@ ms.locfileid: "75982188"
 12. 左側的樹狀檢視中，[資料閘道]**** 下方應該會顯示 **adftutorialgateway**。  如果按一下，應該會看到相關聯的 JSON。
 
 ## <a name="create-linked-services"></a>建立連結的服務
-在此步驟中，您會建立兩個連結服務：**AzureStorageLinkedService** 和 **SqlServerLinkedService**。 **SqlServerLinkedService** 會連結內部部署 SQL Server 資料庫，而 **AzureStorageLinkedService** 連結服務則會將 Azure Blob 存放區連結至 Data Factory。 稍後在本逐步解說中，您會建立可將內部部署 SQL Server 資料庫的資料複製到 Azure Blob 存放區的管線。
+在此步驟中，您會建立兩個連結服務：**AzureStorageLinkedService** 和 **SqlServerLinkedService**。 **SqlServerLinkedService**會連結 SQL Server 資料庫，而**AzureStorageLinkedService**連結服務則會將 Azure blob 存放區連結至 data factory。 您稍後會在本逐步解說中建立管線，以將資料從 SQL Server 資料庫複製到 Azure blob 存放區。
 
-#### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>在內部部署 SQL Server 資料庫中新增連結服務
+#### <a name="add-a-linked-service-to-a-sql-server-database"></a>將連結服務新增至 SQL Server 資料庫
 1. 在 [Data Factory 編輯器]**** 中，按一下工具列上的 [新增資料存放區]****，然後選取 [SQL Server]****。
 
    ![新增 SQL Server 連結服務](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
@@ -189,7 +189,7 @@ ms.locfileid: "75982188"
 * 在您加入 Data Factory 作為連結服務的 Azure Blob 儲存體帳戶中，建立名為 **adftutorial** 的 Blob 容器。
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>準備用於教學課程的內部部署 SQL Server
-1. 在您指定用於內部部署 SQL Server 連結服務 (**SqlServerLinkedService**) 的資料庫中，使用下列 SQL 指令碼在資料庫中建立 **emp** 資料表。
+1. 在您為 SQL Server 連結服務（**SqlServerLinkedService**）指定的資料庫中，使用下列 SQL 腳本在資料庫中建立**emp**資料表。
 
     ```SQL   
     CREATE TABLE dbo.emp
@@ -279,7 +279,7 @@ ms.locfileid: "75982188"
    * **folderPath** 設定為 **adftutorial/outfromonpremdf**，其中 outfromonpremdf 是 adftutorial 容器中的資料夾。 建立 **adftutorial** 容器 (如果尚未存在)。
    * **Availability**設定為**每小時**（**frequency**設為**hour** ， **interval**設為**1**）。  Data Factory 服務會每隔一小時在 Azure SQL Database 的 **emp** 資料表中產生輸出資料配量。
 
-   如果您未指定**輸出資料表**的**fileName** ， **folderPath**中產生的檔案會依照下列格式命名： `Data.<Guid>.txt` （例如： Data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a .txt.）。
+   如果您未指定**輸出資料表**的**fileName** ， **folderPath**中產生的檔案會以下列格式命名： `Data.<Guid>.txt` （例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。）。
 
    若要根據 **SliceStart** 時間動態設定 **folderPath** 和 **fileName**，請使用 partitionedBy 屬性。 在下列範例中，folderPath 使用 SliceStart (所處理配量的開始時間) 中的年、月和日，fileName 使用 SliceStart 中的小時。 例如，如果配量產生於 2014-10-20T08:00:00，folderName 設定為 wikidatagateway/wikisampledataout/2014/10/20，而 fileName 設定為 08.csv。
 

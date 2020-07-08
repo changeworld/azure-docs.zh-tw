@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 4fdb891d668d99644d8a9ed9c15d158e65d53ba5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72793111"
 ---
 保護物聯網 (IoT) 基礎結構需要嚴格的深度安全性防禦策略。 此策略會要求您保護雲端中的資料、透過公用網際網路傳輸時保護資料完整性，以及安全地佈建裝置。 每一層都會在整體基礎結構中建置更佳的安全性保證。
