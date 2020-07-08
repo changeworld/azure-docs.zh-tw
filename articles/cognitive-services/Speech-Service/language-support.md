@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 148b344d469c78936b56b96090c76e379bb63731
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: eb9e0f126a25bfb0f2db18074bd7200e1a7c2001
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027489"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087141"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -100,27 +101,42 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 
 |Locale  | Language            | 性別 | 語音名稱 | 樣式支援 |
 |--|--|--|--|--|
+| `ar-EG` | 阿拉伯文 (埃及)                  | Female | `ar-EG-SalmaNeural`      | 一般 |
+| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)           | Female | `ar-SA-ZariyahNeura`     | 一般 |
+| `ca-ES` | 加泰蘭文 (西班牙)                 | Female | `ca-ES-AlbaNeural`       | 一般 |
+| `da-DK` | 丹麥文 (丹麥)                | Female | `da-DK-ChristelNeural`   | 一般 |
 | `de-DE` | 德文 (德國)                | Female | `de-DE-KatjaNeural`      | 一般 |
 | `en-AU` | 英文 (澳大利亞)             | Female | `en-AU-NatashaNeural`    | 一般 |
 | `en-CA` | 英文 (加拿大)                | Female | `en-CA-ClaraNeural`      | 一般 |
 | `en-GB` | 英文 (英國)                    | Female | `en-GB-LibbyNeural`      | 一般 |
 |         |                                 | Female | `en-GB-MiaNeural`        | 一般 |
+| `en-IN` | 英文 (印度)                 | Female | `en-IN-NeerjaNeural`     | 一般 |
 | `en-US` | 英文 (美國)                    | Female | `en-US-AriaNeural`       | 一般，提供多種語音樣式 |
 |         |                                 | Male   | `en-US-GuyNeural`        | 一般 |
 | `es-ES` | 西班牙文 (西班牙)                 | Female | `es-ES-ElviraNeural`     | 一般 |
 | `es-MX` | 西班牙文 (墨西哥)                | Female | `es-MX-DaliaNeural`      | 一般 |
+| `fi-FI` | 芬蘭文 (芬蘭)               | Female | `fi-FI-NooraNeural`      | 一般 |
 | `fr-CA` | 法文 (加拿大)                 | Female | `fr-CA-SylvieNeural`     | 一般 |
 | `fr-FR` | 法文 (法國)                 | Female | `fr-FR-DeniseNeural`     | 一般 |
+| `hi-IN` | 印度文 (印度)                   | Female | `hi-IN-SwaraNeural`      | 一般 |
 | `it-IT` | 義大利文 (義大利)                 | Female | `it-IT-ElsaNeural`       | 一般 |
 | `ja-JP` | 日文                        | Female | `ja-JP-NanamiNeural`     | 一般 |
 | `ko-KR` | 韓文                          | Female | `ko-KR-SunHiNeural`      | 一般 |
 | `nb-NO` | 挪威文                       | Female | `nb-NO-IselinNeural`     | 一般 |
-| `pt-BR` | 葡萄牙文 (巴西)             | Female | `pt-BR-FranciscaNeural`  | 一般 |
+| `nl-NL` | 荷蘭文（Netherland）              | Female | `nl-NL-ColetteNeural`    | 一般 |
+| `pl-PL` | 波蘭文 (波蘭)                 | Female | `pl-PL-ZofiaNeural`      | 一般 |
+| `pt-BR` | 葡萄牙文 (巴西)             | Female | `pt-BR-FranciscaNeural`  | 一般，提供多種語音樣式 |
 | `tr-TR` | 土耳其文                         | Female | `tr-TR-EmelNeural`       | 一般 |
+| `pt-PT` | 葡萄牙文 (葡萄牙)           | Female | `pt-PT-FernandaNeural`   | 一般 |
+| `ru-RU` | 俄文 (俄羅斯)                | Female | `ru-RU-DariyaNeural`     | 一般 |
+| `sv-SE` | 瑞典文 (瑞典)                | Female | `sv-SE-HilleviNeural`    | 一般 |
+| `th-TH` | 泰文 (泰國)                 | Female | `th-TH-AcharaNeural`     | 一般 |
 | `zh-CN` | 中文 (普通話，簡體)  | Female | `zh-CN-XiaoxiaoNeural`   | 一般，提供多種語音樣式 |
 |         |                                 | Female | `zh-CN-XiaoyouNeural`    | 兒童語音，針對故事敘述進行最佳化 |
 |         |                                 | Male   | `zh-CN-YunyangNeural`    | 針對新聞閱讀進行最佳化，提供多種語音樣式 |
 |         |                                 | Male   | `zh-CN-YunyeNeural`      | 針對故事敘述進行最佳化 |
+| `zh-HK` | 中文（廣東話，tranditional）   | Female | `zh-HK-HiuGaaiNeural`| 一般 |
+| `zh-TW` | 中文 (繁體，國語)   | Female | `zh-TW-HsiaoYuNeural`    | 一般 |
 
 > [!IMPORTANT]
 > `en-US-JessaNeural` 的語音已變更為 `en-US-AriaNeural`。 如果您之前使用過「Jessa」，請轉換為「Aria」。

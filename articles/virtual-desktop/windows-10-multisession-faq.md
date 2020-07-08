@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d6aa1fc1e5978f59fc01dd41a89800629fa60ded
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735093"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086920"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 企業版的多重工作階段常見問題集
 
@@ -61,7 +61,7 @@ Azure 映射庫有數個版本，包括 Windows 10 企業版多會話、版本18
  
 ## <a name="which-windows-10-enterprise-multi-session-versions-are-supported"></a>支援的 Windows 10 企業版多會話版本有哪些？
 
-Windows 10 企業版的多重會話（1809和更新版本）受到支援，並可在 Azure 映射庫中取得。 這些版本遵循與 Windows 10 企業版相同的支援生命週期原則，這表示春季版本支援18個月，而秋季版本則為30個月。
+Windows 10 企業版的多重會話（1809和更新版本）受到支援，並可在 Azure 映射庫中取得。 這些版本遵循與 Windows 10 企業版相同的支援週期原則，這表示年3月版本支援18個月，而9月版本則為30個月。
  
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Windows 10 企業版多會話應該使用哪個設定檔管理解決方案？
 

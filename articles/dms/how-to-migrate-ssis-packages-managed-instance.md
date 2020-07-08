@@ -1,5 +1,5 @@
 ---
-title: 將 SSIS 套件遷移至 SQL 受控實例
+title: 將 SSIS 套件遷移至 SQL 受控執行個體
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何使用 Azure 資料庫移轉服務或 Data Migration Assistant，將 SQL Server Integration Services （SSIS）套件和專案遷移至 Azure SQL 受控執行個體。
 services: database-migration
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: d27905acc60e953ec5ed92e77d7a352c1c3fec8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13fcda03f3ccd0c28e1dce594c46b8c0d9449054
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196572"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086563"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>將 SQL Server Integration Services 套件遷移至 Azure SQL 受控執行個體
 如果您使用 SQL Server Integration Services （SSIS），而且想要將 SSIS 專案/套件從 SQL Server 裝載的來源 SSISDB 遷移至 Azure SQL 受控執行個體所裝載的目的地 SSISDB，您可以使用 Azure 資料庫移轉服務。
@@ -84,7 +85,7 @@ ms.locfileid: "84196572"
 
     如需有關如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
 
-    如需其他詳細資訊，請參閱[了解使用 Azure 資料庫移轉服務進行 Azure SQL DB 受控執行個體移轉的網路拓樸](https://aka.ms/dmsnetworkformi)一文。
+    如需其他詳細資訊，請參閱[使用 Azure 資料庫移轉服務的 AZURE SQL 受控執行個體遷移的網路拓撲](https://aka.ms/dmsnetworkformi)一文。
 
 6. 選取定價層。
 

@@ -6,13 +6,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/02/2020
-ms.openlocfilehash: 1c79d0390a80a1358ddb09707fbabf6a5a2affdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d3568e3869415a3223154af30b22d85c8104199
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75660234"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087617"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight 上適用于 ML 服務的 Azure 儲存體解決方案
 
@@ -173,7 +174,7 @@ Azure 檔案的主要優點是，只要是擁有受支援作業系統 (例如 Wi
 - [如何搭配 Linux 使用 Azure 檔案儲存體](../../storage/files/storage-how-to-use-files-linux.md)
 - [如何在 Windows 上使用 Azure 檔案儲存體](../../storage/files/storage-dotnet-how-to-use-files.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [HDInsight 上的 ML 服務叢集概觀](r-server-overview.md)
 - [在 HDInsight 上計算 ML 服務叢集的內容選項](r-server-compute-contexts.md)

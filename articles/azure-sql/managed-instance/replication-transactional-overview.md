@@ -12,30 +12,30 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: 2163a6e47767f6ce990526c7ececb7b4b554bf4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00f456d87bd5791b7d49644cb801dca20431b0b5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708492"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086393"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>使用 Azure SQL 受控執行個體進行異動複寫
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 異動複寫是 Azure SQL 受控執行個體和 SQL Server 的功能，可讓您將資料從 Azure SQL 受控執行個體或 SQL Server 實例中的資料表複寫到遠端資料庫上的資料表。 此功能可讓您同步處理不同資料庫中的多個資料表。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 您可以使用異動複寫，將 Azure SQL 受控執行個體中所做的變更推送至：
 
 - SQL Server 資料庫-內部部署或 Azure VM 上
-- Azure SQL Database 中的單一或集區資料庫
-- Azure SQL 受控執行個體中的單一或集區資料庫
+- Azure SQL Database 中的資料庫
+- Azure SQL 受控執行個體中的實例資料庫
 
   > [!NOTE]
   > 若要使用 Azure SQL 受控執行個體的所有功能，您必須使用最新版本的[SQL Server Management Studio （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)和[SQL Server Data Tools （SSDT）](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。
 
-### <a name="components"></a>單元
+### <a name="components"></a>元件
 
 異動複寫中的重要元件是「**發行者**」 **、「** 散發者」和「**訂閱者**」，如下圖所示：  
 
@@ -46,7 +46,7 @@ ms.locfileid: "84708492"
 | **發行者** | 否 | 是 |
 | **散發者** | 否 | 是|
 | **提取訂閱者** | 否 | 是|
-| **發送訂閱者**| 是 | Yes|
+| **發送訂閱者**| 是 | 是|
 | &nbsp; | &nbsp; | &nbsp; |
 
 發行者會藉由將更新傳送至散發**者**，來發行對某些資料表（發行項）所做的變更。 發行者可以是 Azure SQL 受控執行個體或 SQL Server 實例。
@@ -72,8 +72,8 @@ Azure SQL 受控執行個體可以支援來自下列版本 SQL Server 的訂閱�
 
 | 複寫 | Azure SQL Database | Azure SQL 受控執行個體 |
 | :----| :------------- | :--------------- |
-| [**標準交易式**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | 是 (僅作為訂閱者) | Yes |
-| [**快照式**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | 是 (僅作為訂閱者) | Yes|
+| [**標準交易式**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | 是 (僅作為訂閱者) | 是 |
+| [**快照式**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | 是 (僅作為訂閱者) | 是|
 | [**合併式複寫**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | 否 | 否|
 | [**對等**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
 | [**雙向**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | 否 | 是|

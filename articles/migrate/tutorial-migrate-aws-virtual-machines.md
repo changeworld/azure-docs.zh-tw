@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將 AWS VM 遷移至 Azure�
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 739439f63c81ef75cdcbe0b9e1d3f367d073d43b
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 6eeff73bdcac214eb3836731fcbfd2f9410c6045
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85198810"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102798"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>探索、評估 Amazon Web Services (AWS) VM，並將其遷移至 Azure
 
@@ -39,8 +39,8 @@ ms.locfileid: "85198810"
 
 設定評量，如下所示：
 
-1. 您可以將 AWS VM 視為實體機器來執行評量，以使用 Azure Migrate 進行評估：伺服器評量工具。 請遵循[教學課程](https://docs.microsoft.com/azure/migrate/tutorial-prepare-physical)來設定 Azure，並準備 AWS VM 來進行評量。
-2. 然後，遵循此[教學課程](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical)來設定 Azure Migrate 專案和設備，以探索及評估您的 AWS VM。
+1. 您可以將 AWS VM 視為實體機器來執行評量，以使用 Azure Migrate 進行評估：伺服器評量工具。 請遵循[教學課程](./tutorial-prepare-physical.md)來設定 Azure，並準備 AWS VM 來進行評量。
+2. 然後，遵循此[教學課程](./tutorial-assess-physical.md)來設定 Azure Migrate 專案和設備，以探索及評估您的 AWS VM。
 
 雖然我們建議您嘗試進行評量，但執行評量並不是遷移 VM 的必要步驟。
 
@@ -48,9 +48,9 @@ ms.locfileid: "85198810"
 
 ## <a name="1-prerequisites-for-migration"></a>1.進行移轉的必要條件
 
-- 確定您想要遷移的 AWS VM 正執行支援的 OS 版本。 基於此移轉的目的，我們會將 AWS VM 視為實體機器來處理。 請參閱實體伺服器移轉工作流程所[支援的作業系統](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines)。 建議您執行測試移轉 (測試容錯移轉) 來驗證 VM 是否如預期般運作，然後再繼續進行實際的移轉。
-- 請確定您的 AWS VM 符合[支援的設定](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical-migration#physical-server-requirements)，以順利遷移至 Azure。
-- 確認您複寫到 Azure 的 AWS VM 符合 [Azure VM 需求](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical-migration#azure-vm-requirements)。
+- 確定您想要遷移的 AWS VM 正執行支援的 OS 版本。 基於此移轉的目的，我們會將 AWS VM 視為實體機器來處理。 請參閱實體伺服器移轉工作流程所[支援的作業系統](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)。 建議您執行測試移轉 (測試容錯移轉) 來驗證 VM 是否如預期般運作，然後再繼續進行實際的移轉。
+- 請確定您的 AWS VM 符合[支援的設定](./migrate-support-matrix-physical-migration.md#physical-server-requirements)，以順利遷移至 Azure。
+- 確認您複寫到 Azure 的 AWS VM 符合 [Azure VM 需求](./migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 - 在您將 VM 遷移至 Azure 之前，VM 需要進行一些變更。
     - 在某些作業系統上，Azure Migrate 會自動進行這些變更。
     - 請務必先進行這些變更再開始移轉。 如果您先遷移 VM 再進行變更，VM 可能無法在 Azure 中啟動。
@@ -98,7 +98,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
 準備設備部署，如下所示：
 
-- 設定個別的 EC2 VM 來裝載複寫設備。 此執行個體必須執行 Windows Server 2012 R2 或 Windows Server 2016。 [請參閱](https://docs.microsoft.com/azure/migrate/migrate-replication-appliance#appliance-requirements)設備的硬體、軟體和網路需求。
+- 設定個別的 EC2 VM 來裝載複寫設備。 此執行個體必須執行 Windows Server 2012 R2 或 Windows Server 2016。 [請參閱](./migrate-replication-appliance.md#appliance-requirements)設備的硬體、軟體和網路需求。
 - 設備不應該安裝在您想要複寫的來源 VM 上。 應該部署在不同的 VM 上。
 - 要遷移的來源 AWS VM 應該能透過網路直達複寫設備。 設定必要的安全性群組規則以啟用此動作。 建議您將複寫設備和要遷移的來源 VM 部署在相同的 VPC 中。 如果複寫設備必須位於不同的 VPC，則這些 VPC 必須透過 VPC 對等互連來連線。
 - 來源 AWS VM 會在連接埠 HTTPS 443 (控制通道協調流程) 和用於輸入的 TCP 9443 (資料傳輸) 上與複寫設備通訊，以管理複寫和傳輸複寫資料。 複寫設備接著會透過連接埠 HTTPS 443 (輸出) 來協調複寫資料，並將其傳送至 Azure。 若要設定這些規則，請使用適當的連接埠和來源 IP 資訊來編輯安全性群組的輸入/輸出規則。
@@ -183,7 +183,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
 1. 登入複寫設備。
 2. 瀏覽至 **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**。
-3. 尋找來源 AWS VM 作業系統和版本適用的安裝程式。 檢閱[支援的作業系統](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines)。
+3. 尋找來源 AWS VM 作業系統和版本適用的安裝程式。 檢閱[支援的作業系統](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)。
 4. 將安裝程式檔案複製到要遷移的來源 AWS VM。
 5. 請確定您已儲存安裝複寫設備時所建立的複雜密碼文字檔。
     - 如果您忘記儲存複雜密碼，您可以使用此步驟來查看複寫設備上的複雜密碼。 從命令列執行 **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe -v**，可檢視目前的複雜密碼。
@@ -335,7 +335,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
     - 停止 AWS VM 的複寫。
     - 從 Azure Migrate 中的**複寫伺服器**計數移除 AWS VM：伺服器移轉。
     - 清除 VM 的複寫狀態資訊。
-2. 在移轉的機器上安裝 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 代理程式。 Azure VM Windows 代理程式會在移轉過程中預先安裝。
+2. 在移轉的機器上安裝 [Linux](../virtual-machines/extensions/agent-linux.md) 代理程式。 Azure VM Windows 代理程式會在移轉過程中預先安裝。
 3. 執行任何移轉後應用程式調整，例如更新資料庫連接字串和 Web 伺服器設定。
 4. 在現在於 Azure 中執行的已移轉應用程式上，執行最終的應用程式和移轉接受度測試。
 5. 將流量完全移轉至已遷移的 Azure VM 執行個體。
@@ -347,16 +347,16 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
     - 使用「Azure 備份」服務來備份 Azure VM 以維護資料安全。 [深入了解](../backup/quick-backup-vm-portal.md)。
     - 使用 Site Recovery 將 Azure VM 複寫至次要區域，讓工作負載保持執行且持續可供使用。 [深入了解](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - 針對提升安全性：
-    - 使用 [Azure 資訊安全中心 - Just In Time 系統管理](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)來鎖定並限制輸入流量存取。
-    - 使用[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview)來限制傳送至管理端點的網路流量。
-    - 部署 [Azure 磁碟加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)以協助保護磁碟，以及防止資料遭到竊取和受到未經授權的存取。
+    - 使用 [Azure 資訊安全中心 - Just In Time 系統管理](../security-center/security-center-just-in-time.md)來鎖定並限制輸入流量存取。
+    - 使用[網路安全性群組](../virtual-network/security-overview.md)來限制傳送至管理端點的網路流量。
+    - 部署 [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)以協助保護磁碟，以及防止資料遭到竊取和受到未經授權的存取。
     - 深入了解如何[保護 IaaS 資源](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，並瀏覽 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)。
 - 針對監視及管理：
-    - 可考慮部署 [Azure 成本管理](https://docs.microsoft.com/azure/cost-management/overview)來監視資源使用情況和花費。
+    - 可考慮部署 [Azure 成本管理](../cost-management-billing/cloudyn/overview.md)來監視資源使用情況和花費。
 
 ## <a name="next-steps"></a>後續步驟
 
-調查 Azure 雲端採用架構中的[雲端移轉旅程](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)。
+調查 Azure 雲端採用架構中的[雲端移轉旅程](/azure/architecture/cloud-adoption/getting-started/migrate)。
 
 ## <a name="troubleshooting--tips"></a>疑難排解 / 秘訣
 

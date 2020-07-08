@@ -11,14 +11,82 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 13a7250bc89b1c9f81996dfa4e15d7d4469779ab
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c4e9668459856af52ae1a905de8ba76dc36758fd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607868"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086279"
 ---
 # <a name="release-notes"></a>版本資訊
+
+## <a name="text-to-speech-2020-july-release"></a>文字轉換語音 2020-7 月版本
+
+### <a name="new-features"></a>新功能
+
+* **神經 tts，15個新的類神經語音**：新增至神經 TTS 組合的新語音是以阿拉伯文（埃及）、阿拉伯文（沙烏地阿拉伯）中的 Zariyah、在加泰羅尼亞文（西班牙）中 Alba、以丹麥文（丹麥） Christel、英文（印度）的 Neerja Salma，Swara 印度文（印度），Colette in 荷蘭文（荷蘭），Zofia in 波蘭文（波蘭），Fernanda in 葡萄牙文（葡萄牙），Dariya in 俄文（俄羅斯），Hillevi in 瑞典文（瑞典），Achara in 泰文（泰國），Iselin （HiuGaai），Hongkong in 中文（臺灣）。 檢查所有[支援的語言](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)。  
+
+* **自訂語音、使用訓練流程簡化語音測試，以簡化使用者體驗**：利用新的測試功能，每個聲音都會自動以針對每種語言優化的預先定義測試集進行測試，以涵蓋一般和語音助理案例。 這些測試集會謹慎地選取並經過測試，以包含語言中的一般使用案例和音素。 此外，使用者仍然可以選擇在定型模型時，上傳自己的測試腳本。
+
+* **建立音訊內容：發行一組新功能，以啟用更強大的語音微調和音訊管理功能**
+
+    * `Pitch`、 `rate` 和 `volume` 已增強為支援以預先定義的值進行微調，例如緩慢、中度和快速。 使用者現在可以直接挑選「常數」值來進行音訊編輯。
+
+    ![音訊微調](media/release-notes/audio-tuning.png)
+
+    * 使用者現在可以檢查 `Audio history` 其工作檔案的。 使用這項功能，使用者可以輕鬆地追蹤所有與工作檔案相關的產生音訊。 他們可以檢查歷程記錄版本，並在同時調整時比較品質。 
+
+    ![音訊歷程記錄](media/release-notes/audio-history.png)
+
+    * `Clear`這項功能現在更有彈性。 使用者可以清除特定的微調參數，同時保留所選內容的其他參數。  
+
+    * 已在[登陸頁面](https://speech.microsoft.com/audiocontentcreation)上新增教學課程影片，協助使用者快速開始使用 TTS 語音微調和音訊管理。 
+
+### <a name="general-tts-voice-quality-improvements"></a>一般 TTS 語音品質改良功能
+
+* 改善中的 TTS vocoder，以提供更高的精確度和較低的延遲。
+
+    * 已將義大利文中的 Elsa 更新為新的 vocoder，其達成了 + 0.464 CMOS （比較平均的觀點），合成中的40% 更快，且第一個位元組延遲減少30%。 
+    * 將中文的 Xiaoxiao 更新為具有 + 0148 CMOS 增益的新 vocoder （適用于一般網域，+ 0.348 適用于 newscast 樣式）和 + 0.195 （適用于 lyrical 樣式）。 
+
+* 已更新 `de-DE` 和 `ja-JP` 語音模型，讓 TTS 輸出更自然。
+    
+    * 以最新的韻律模型方法更新德文的 Katja，MOS （Mean 觀點分數）的增益為 + 0.13。 
+    * 以新的音調輔色韻律模型更新日文中的 Nanami，MOS （Mean 觀點分數）增益為 + 0.19;  
+
+* 改善5種語言的單字層級發音準確度。
+
+    | 語言 | 發音錯誤減少 |
+    |---|---|
+    | en-GB | 51% |
+    | ko-KR | 17% |
+    | pt-BR | 39% |
+    | pt-PT | 77% |
+    | id-ID | 46% |
+
+### <a name="bug-fixes"></a>Bug 修正
+
+* 貨幣閱讀
+    * 已修正和的貨幣讀取問題 `es-ES``es-MX`
+     
+    | 語言 | 輸入 | 改進後的讀出 |
+    |---|---|---|
+    | es-MX | $1.58 | un 比索 cincuenta y ocho centavos |
+    | es-ES | $1.58 | un dólar cincuenta y ocho centavos |
+
+    * 支援下列地區設定中的負數貨幣（例如 "-€325"）： `en-US` 、 `en-GB` 、 `fr-FR` 、 `it-IT` 、 `en-AU` 、 `en-CA` 。
+
+* 已改善中的讀取位址 `pt-PT` 。
+* 已修正 Natasha （ `en-AU` ）和 Libby （）在 " `en-UK` for" 和 "四" 字組上的發音問題。  
+* 已修正音訊內容建立工具的 bug
+    * 修正第二個段落之後的額外和非預期的暫停。  
+    * 「不中斷」功能會從回歸 bug 加回。 
+    * 已修正語音 Studio 的隨機重新整理問題。  
+
+### <a name="samplessdk"></a>範例/SDK
+
+* JavaScript：修正 FireFox 中的播放問題，以及 macOS 和 iOS 上的 Safari。 
+
 ## <a name="speech-sdk-1121-2020-june-release"></a>語音 SDK 1.12.1： 2020-六月版本
 **語音 CLI （也稱為 SPX）**
 -   已新增 CLI 內的說明搜尋功能：
@@ -87,8 +155,8 @@ ms.locfileid: "84607868"
 - C #，c + +：已 `UtteranceId` 在中新增 `ConversationTranscriptionResult` ，在所有中繼和最終語音辨識結果中都是一致的識別碼。 [C #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet)、 [c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)的詳細資料。
 - Python：已新增的支援 `Language ID` 。 請參閱[GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)存放庫中的 speech_sample .py。
 - Windows：已針對所有 win32 主控台應用程式，在 Windows 平臺上新增壓縮的音訊輸入格式支援。 詳細資料請參閱[這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)。 
-- JavaScript：支援 NodeJS 中的語音合成（文字轉換語音）。 請按一下[這裡](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)進一步了解。 
-- JavaScript：加入新的 API，以啟用所有傳送和接收訊息的檢查。 請按一下[這裡](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript)進一步了解。 
+- JavaScript：支援 NodeJS 中的語音合成（文字轉換語音）。 [在此](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)深入了解。 
+- JavaScript：加入新的 API，以啟用所有傳送和接收訊息的檢查。 [在此](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript)深入了解。 
         
 **Bug 修正**
 - C #，c + +：已修正問題，因此 `SendMessageAsync` 現在會將二進位訊息當做二進位類型傳送。 [C #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_)、 [c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)的詳細資料。
@@ -215,7 +283,7 @@ ms.locfileid: "84607868"
 - 已 `Compressed` 針對 Android、iOS 和 Linux 上的 ALaw、Mulaw、FLAC 新增輸入支援
 - 已 `SendMessageAsync` 在 `Connection` 將訊息傳送至服務的類別中新增
 - 已 `SetMessageProperty` 在 `Connection` 用於設定訊息屬性的類別中新增
-- TTS 已新增 JAVA （Jre 和 Android）、Python、Swift 和目標-C 的系結
+- TTS 已新增 JAVA （JRE 和 Android）、Python、Swift 和目標-C 的系結
 - TTS 新增了 macOS、iOS 和 Android 的播放支援。
 - 已新增 TTS 的「字邊界」資訊。
 
@@ -322,7 +390,7 @@ ms.locfileid: "84607868"
 - 適用于 JAVA、.NET core、c + + 和目標的語音 SDK 已取得 macOS 支援。 MacOS 的目標-C 支援目前為搶鮮版（Beta）。
 - iOS：適用于 iOS 的語音 SDK （目標-C）現在也會發佈為 CocoaPod。
 - JavaScript：支援非預設麥克風作為輸入裝置。
-- JavaScript：適用于 node.js 的 Proxy 支援。
+- JavaScript： Node.js 的 Proxy 支援。
 
 **範例**
 
@@ -421,7 +489,7 @@ ms.locfileid: "84607868"
 - Android
   - 已在 APK 產生期間啟用 ProGuard 支援。
 
-**措施**
+**改善項目**
 
 - 改進內部執行緒使用方式，並減少執行緒、鎖定、Mutex 的數目。
 - 已改善錯誤回報 / 資訊。 在幾種情況下，錯誤訊息並未立即傳播出去。
@@ -453,7 +521,7 @@ ms.locfileid: "84607868"
 - Proxy 支援：在 `SpeechConfig` 物件中，您現在可以呼叫函式來設定 proxy 資訊（主機名稱、埠、使用者名稱和密碼）。 此功能尚無法在 iOS 上取得。
 - 改善的錯誤碼和訊息。 如果辨識傳回錯誤，系統現在會將 `Reason` (在取消的事件中) 或 `CancellationDetails` (在辨識結果中) 設為 `Error`。 取消的事件現在包含兩個額外的成員，`ErrorCode` 和 `ErrorDetails`。 如果伺服器隨報告的錯誤傳回其他錯誤資訊，現在將可以透過新成員取得這些資訊。
 
-**措施**
+**改善項目**
 
 - 已在辨識器設定中新增其他驗證，及新增其他錯誤訊息。
 - 已改善對音訊檔案中長時間無聲之部分的處理。

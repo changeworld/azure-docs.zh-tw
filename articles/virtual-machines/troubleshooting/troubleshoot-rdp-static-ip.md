@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: 92ad33fbc759605ae901c3bcf09283c8e0b1c4b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49f3f44c7de8c700d0093c5eb6f166a1dffb34a4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918184"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087243"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>因為靜態 IP 而無法將遠端桌面連線到 Azure 虛擬機器
 
@@ -55,18 +56,27 @@ VM 具有在 Windows 中的網路介面上定義的靜態 IP 位址。 此 IP �
 )。 如果未在 VM 上啟用序列主控台，請參閱[重設網路介面](reset-network-interface.md)。
 2. 請檢查是否已在網路介面上停用 DHCP：
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
+
 3. 如果已停用 DHCP，請您網路介面的組態還原為使用 DHCP：
 
-        netsh interface ip set address name="<NIC Name>" source=dhc
+    ```console
+    netsh interface ip set address name="<NIC Name>" source=dhc
+    ```
 
     比方說，如果交互作用介面名稱為「乙太網路 2」，請執行下列命令：
 
-        netsh interface ip set address name="Ethernet 2" source=dhc
+    ```console
+    netsh interface ip set address name="Ethernet 2" source=dhc
+    ```
 
 4. 再次查詢 IP 組態，確定現在已正確設定網路介面。 新的 IP 位址應符合 Azure 所提供的 IP 位址。
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
 
     此時您不需要重新啟動 VM。 您可回頭連線 VM。
 

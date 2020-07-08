@@ -13,11 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8b872cc30ae66e83274f189138dad6d609e3f536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ce40d1a46a6448e678a8a86812d08e9013310d7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74927060"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086903"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>使用 Azure Data Factory 複製精靈輕鬆地複製或移動資料
 > [!NOTE]
@@ -65,10 +66,12 @@ Azure Data Factory 複製精靈會簡化內嵌資料的程序，這通常是端�
 
 假設您的輸入資料夾格式如下︰
 
-    2016/03/01/01
-    2016/03/01/02
-    2016/03/01/03
-    ...
+```text
+2016/03/01/01
+2016/03/01/02
+2016/03/01/03
+...
+```
 
 按一下 [檔案或資料夾] 的 [瀏覽] 按鈕、瀏覽至其中一個資料夾 (例如 2016->03->01->02)，然後按一下 [選擇]。 您應該會在文字方塊中看到 `2016/03/01/02`。 現在，以 **{year}**、 **03**取代為 **{Month}**、 **01**加上 { **day}**，以及**02**與 **{hour}** 來取代**2016** ，然後按 tab 鍵。您應該會看到下拉式清單來選取這四個變數的格式：
 

@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: ac51b77e1ffc2b476b0a73dac9b6917552a86ce4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ec0bf460a73f95e18e2e9221e8cbd8d4e14ff77
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74807148"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086206"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>使用 YARN 建立高可用性 Apache Spark 串流作業
 
@@ -116,7 +117,7 @@ Rdd 有數個可協助高可用性和容錯 Spark 串流作業的屬性：
     // to be able to recover on restart, store all offsets in an external database
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [Apache Spark 串流概觀](apache-spark-streaming-overview.md)
 * [建立只處理一次事件的 Apache Spark 串流作業](apache-spark-streaming-exactly-once.md)

@@ -5,14 +5,14 @@ services: vnf-manager
 author: ganesr
 ms.service: vnf-manager
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: 90e796c244950d6d374a02757b608099c229c1ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65a5f7e261913fa38c41930cc44341ca872d1b44
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82146938"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086886"
 ---
 # <a name="about-azure-edge-zone-preview"></a>關於 Azure Edge 區域預覽
 
@@ -74,7 +74,9 @@ Azure Edge 區域將在下列 metro 區域內上市：
 
 邊緣區域將與下列操作員合作提供：
 
-- 在&T （亞特蘭大、達拉斯和洛杉磯）
+- 在&T （亞特蘭大、達拉斯和洛杉磯） 
+
+如需詳細資訊，[請聯絡 Edge 區域小組](https://aka.ms/EdgeZones)。
 
 ## <a name="azure-private-edge-zones"></a><a name="private-edge-zones"></a>Azure 私人邊緣區域
 
@@ -183,7 +185,7 @@ SD-WAN 可讓您建立具有下列優點的企業級廣域網路（Wan）：
 SD-WAN 提供順暢的分公司連線，以較低的擁有成本，從冗余的中央控制器協調。
 SD-私人邊緣區域上的 WAN 可讓您從以 capex 為中心的模型移至軟體即服務（SaaS）模型，以降低 IT 預算。 您可以使用您選擇的 SD-WAN 合作夥伴（orchestrator 或 controller）來啟用新服務，並立即將其傳播到整個網路中。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需詳細資訊，請洽詢下列小組：
 

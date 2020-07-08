@@ -1,20 +1,20 @@
 ---
-title: 將 Azure HDInsight 3.6 Hive 工作負載遷移至 HDInsight 4。0
+title: 將 Azure HDInsight 3.6 Hive 工作負載遷移至 HDInsight 4.0
 description: 瞭解如何將 HDInsight 3.6 上的 Apache Hive 工作負載遷移至 HDInsight 4.0。
 author: msft-tacox
 ms.author: tacox
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 14849dd1f68f281009808d1bd1dc1cae62927ab4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 313b6afb8bd96f8ae507118cd552110d5f07ff78
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594231"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087511"
 ---
-# <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>將 Azure HDInsight 3.6 Hive 工作負載遷移至 HDInsight 4。0
+# <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>將 Azure HDInsight 3.6 Hive 工作負載遷移至 HDInsight 4.0
 
 本檔說明如何將 HDInsight 3.6 上的 Apache Hive 和 LLAP 工作負載遷移至 HDInsight 4.0。 HDInsight 4.0 提供較新的 Hive 和 LLAP 功能，例如具體化視圖和查詢結果快取。 當您將工作負載遷移至 HDInsight 4.0 時，您可以使用在 HDInsight 3.6 上未提供的多個 Hive 3 新功能。
 
@@ -34,12 +34,12 @@ Hive 的其中一個優點是能夠將中繼資料匯出到外部資料庫（稱
 HDInsight 3.6 和 HDInsight 4.0 ACID 資料表會以不同的方式瞭解 ACID 差異。 遷移前唯一需要的動作是針對3.6 叢集上的每個 ACID 資料表執行「主要」壓縮。 如需有關壓縮的詳細資訊，請參閱[Hive 語言手冊](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact)。
 
 ### <a name="2-copy-sql-database"></a>2. 複製 SQL database
-建立外部中繼存放區的新複本。 如果您使用的是外部中繼存放區，建立中繼存放區複本的其中一個安全且簡單的方法，就是使用 SQL Database restore 函數來還原具有不同名稱的[資料庫](../../sql-database/sql-database-recovery-using-backups.md#point-in-time-restore)。  請參閱[在 Azure HDInsight 中使用外部中繼資料存放區](../hdinsight-use-external-metadata-stores.md)，以深入瞭解如何將外部中繼存放區附加至 HDInsight 叢集。
+建立外部中繼存放區的新複本。 如果您使用的是外部中繼存放區，建立中繼存放區複本的其中一個安全且簡單的方法，就是使用函式來還原具有不同名稱的[資料庫](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) `RESTORE` 。  請參閱[在 Azure HDInsight 中使用外部中繼資料存放區](../hdinsight-use-external-metadata-stores.md)，以深入瞭解如何將外部中繼存放區附加至 HDInsight 叢集。
 
 ### <a name="3-upgrade-metastore-schema"></a>3. 升級中繼存放區架構
 中繼存放區**複製**完成後，請在現有 HDInsight 3.6 叢集上的[腳本動作](../hdinsight-hadoop-customize-cluster-linux.md)中執行架構升級腳本，將新的中繼存放區升級至 Hive 3 架構。 （此步驟不需要將新的中繼存放區連接到叢集）。這可讓資料庫附加為 HDInsight 4.0 中繼存放區。
 
-使用下表中的值。 將`SQLSERVERNAME DATABASENAME USERNAME PASSWORD`取代為 Hive 中繼存放區**複製**的適當值，並以空格分隔。 指定 SQL server 名稱時，請勿包含 ". database.windows.net"。
+使用下表中的值。 將取代為 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` Hive 中繼存放區**複製**的適當值，並以空格分隔。 指定 SQL server 名稱時，請勿包含 ". database.windows.net"。
 
 |屬性 | 值 |
 |---|---|
@@ -124,7 +124,7 @@ HDInsight 3.6 和4.0 叢集必須使用相同的儲存體帳戶。
     chmod 755 exporthive_hdi_3_6.sh
     ```
 
-    * 若為一般 HDInsight 叢集（不含 ESP）， `exporthive_hdi_3_6.sh`只需執行即可。
+    * 若為一般 HDInsight 叢集（不含 ESP），只需執行即可 `exporthive_hdi_3_6.sh` 。
 
     * 針對具有 ESP 的叢集，請 kinit 並修改 beeline 的引數：執行下列程式，為具有完整 Hive 許可權的 Azure AD 使用者定義使用者和網域。
 
@@ -221,14 +221,14 @@ HDInsight 3.6 和4.0 叢集必須使用相同的儲存體帳戶。
 |Bash 指令碼 URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |節點類型|Head|
 
-等待10到15分鐘，然後使用此 URL 啟動資料分析 Studio： `https://CLUSTERNAME.azurehdinsight.net/das/`。
+等待10到15分鐘，然後使用此 URL 啟動資料分析 Studio： `https://CLUSTERNAME.azurehdinsight.net/das/` 。
 
 在存取 DAS 之前，可能需要重新整理 Ambari UI 和/或重新開機所有 Ambari 元件。
 
 安裝 DAS 之後，如果您沒有看到您在查詢檢視器中執行的查詢，請執行下列步驟：
 
 1. 如本指南中所述，設定 Hive、Tez 和 DAS 的配置，以進行[DAS 安裝的疑難排解](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html)。
-2. 請確定下列 Azure 儲存體目錄的設置是分頁 blob，而且它們列在`fs.azure.page.blob.dirs`下面：
+2. 請確定下列 Azure 儲存體目錄的設置是分頁 blob，而且它們列在下面 `fs.azure.page.blob.dirs` ：
     * `hive.hook.proto.base-directory`
     * `tez.history.logging.proto-base-dir`
 3. 在兩個前端節點上重新開機 HDFS、Hive、Tez 和 DAS。

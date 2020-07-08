@@ -5,13 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75638877"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087464"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>在 HDInsight 上的 Apache Spark 上使用自動化機器學習來執行 Azure Machine Learning 工作負載
 
@@ -72,7 +73,7 @@ dataflow_with_token = dprep.read_csv(
 
 在[自動化機器學習](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)設定中，應該將屬性 `spark_context` 設為要在分散式模式上執行的封裝。 `concurrent_iterations` 屬性會決定可平行執行的反覆項目數量上限，其值應設為小於 Spark 應用程式的執行程式核心數目。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需有關自動化機器學習服務背後動機的詳細資訊，請參閱[使用 Microsoft 自動化機器學習服務的步調發行模型！](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
 * 如需使用 Azure ML 自動化 ML 功能的詳細資訊，請參閱[Azure Machine Learning 中的新自動化機器學習功能](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)

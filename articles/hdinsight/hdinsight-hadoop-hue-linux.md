@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: fabc8b7b2a97b75959eb7d82723d6af6bc55bbe5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: ef30672e250e598688d1b81fd33fe0a995e78c7d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835473"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087719"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 叢集上安裝和使用 Hue
 
@@ -72,7 +72,9 @@ Hue 是一組用來與 Apache Hadoop 叢集進行互動的 Web 應用程式。 �
 
     此命令會傳回類似以下的名稱：
 
-        myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+    ```output
+    myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+    ```
 
     這是 Hue 網站所在之主要前端節點的主機名稱。
 
@@ -115,7 +117,7 @@ Hue 是一組用來與 Apache Hadoop 叢集進行互動的 Web 應用程式。 �
 
 1. Hue 並不了解 Apache Tez 作業，這是 Hive 目前的預設值。 如果您想要使用 MapReduce 做為 Hive 執行引擎，請更新指令碼以在您的指令碼中使用下列命令：
 
-         set hive.execution.engine=mr;
+   `set hive.execution.engine=mr;`
 
 1. 使用 Linux 叢集，您就可以擁有在主要前端節點上執行服務，在次要前端節點上執行 Resource Manager 的案例。 使用 Hue 以檢視叢集上「執行中」工作的詳細資料時，此類案例可能會導致錯誤 (如下所示)。 不過，您可以在工作完成時檢視工作詳細資料。
 

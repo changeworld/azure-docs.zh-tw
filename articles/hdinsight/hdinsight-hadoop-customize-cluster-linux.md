@@ -1,21 +1,21 @@
 ---
-title: 使用腳本動作自訂 Azure HDInsight 叢集
+title: 使用指令碼動作來自訂 Azure HDInsight 叢集
 description: 使用腳本動作，將自訂群組件新增至 HDInsight 叢集。 腳本動作是可用於自訂叢集設定的 Bash 腳本。 或新增其他服務和公用程式，例如色調、Solr 或 R。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f78157fc0873787ce13ed4e9e62ebfd3d3271d5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36aaee030dd5267a391dd9a235dd5f8dc0932fa0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192071"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087086"
 ---
-# <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用腳本動作自訂 Azure HDInsight 叢集
+# <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用指令碼動作來自訂 Azure HDInsight 叢集
 
 Azure HDInsight 提供稱為**腳本動作**的設定方法，其會叫用自訂腳本以自訂叢集。 這些指令碼可用來安裝其他元件和變更組態設定。 叢集建立期間或叢集建立之後，可以使用指令碼動作。
 
@@ -25,8 +25,8 @@ Azure HDInsight 提供稱為**腳本動作**的設定方法，其會叫用自訂
 
 針對已加入網域的 HDInsight 叢集，當您對叢集使用指令碼動作時，必須有兩個 Apache Ambari 權限︰
 
-* **AMBARI。執行\_自\_定義命令**。 依預設，Ambari 系統管理員角色會具有此權限。
-* **CLUSTER。執行\_自\_定義命令**。 依預設，HDInsight 叢集系統管理員和 Ambari 系統管理員會具有此權限。
+* **AMBARI。執行 \_ 自訂 \_ 命令**。 依預設，Ambari 系統管理員角色會具有此權限。
+* **CLUSTER。執行 \_ 自訂 \_ 命令**。 依預設，HDInsight 叢集系統管理員和 Ambari 系統管理員會具有此權限。
 
 如需有關使用已加入網域之 HDInsight 的權限詳細資訊，請參閱[使用企業安全性套件管理 HDInsight 叢集](./domain-joined/apache-domain-joined-manage.md)。
 
@@ -62,11 +62,11 @@ Azure HDInsight 提供稱為**腳本動作**的設定方法，其會叫用自訂
 
 * 可限制為只在特定節點類型上執行。 例如前端節點或背景工作節點。
 
-* 可以保存或`ad hoc`。
+* 可以保存或 `ad hoc` 。
 
     持續性指令碼動作必須有唯一的名稱。 持續性指令碼可用來自訂透過調整規模作業新增至叢集的新背景工作節點。 持續性指令碼也可以在進行調整規模作業時，將變更套用至另一個節點類型。 例如前端節點。
 
-    `Ad hoc`不會保存腳本。 建立叢集期間使用的指令碼動作會自動保存下來。 它們不會套用至在指令碼執行後新增至叢集的背景工作節點。 然後您可以將`ad hoc`腳本升級為持續性腳本，或將持續性腳本降級`ad hoc`為腳本。 失敗的指令碼即使您特別指示應保存，也不會保存下來。
+    `Ad hoc`不會保存腳本。 建立叢集期間使用的指令碼動作會自動保存下來。 它們不會套用至在指令碼執行後新增至叢集的背景工作節點。 然後您可以將 `ad hoc` 腳本升級為持續性腳本，或將持續性腳本降級為 `ad hoc` 腳本。 失敗的指令碼即使您特別指示應保存，也不會保存下來。
 
 * 可以接受指令碼在執行期間所使用的參數。
 
@@ -110,10 +110,12 @@ Azure HDInsight 提供稱為**腳本動作**的設定方法，其會叫用自訂
 
 當您將指令碼套用至叢集時，叢集狀態會從 [正在執行]**** 變更為 [已接受]****。 然後，它會變更為 [HDInsight 設定]****，最後，如果指令碼成功，就會再變更回 [正在執行]****。 指令碼狀態會記錄在指令碼動作歷程記錄中。 此資訊會告訴您指令碼成功還是失敗。 例如，`Get-AzHDInsightScriptActionHistory` PowerShell Cmdlet 會顯示指令碼的狀態。 它會傳回類似以下文字的資訊：
 
-    ScriptExecutionId : 635918532516474303
-    StartTime         : 8/14/2017 7:40:55 PM
-    EndTime           : 8/14/2017 7:41:05 PM
-    Status            : Succeeded
+```output
+ScriptExecutionId : 635918532516474303
+StartTime         : 8/14/2017 7:40:55 PM
+EndTime           : 8/14/2017 7:41:05 PM
+Status            : Succeeded
+```
 
 > [!IMPORTANT]  
 > 如果您在叢集建立後變更叢集使用者、系統管理員、密碼，則針對此叢集執行的指令碼動作可能會失敗。 如果您有任何以背景工作節點為目標的持續性指令碼動作，當您調整叢集的規模時，這些指令碼動作可能會失敗。
@@ -129,7 +131,7 @@ Azure HDInsight 提供稱為**腳本動作**的設定方法，其會叫用自訂
 
 HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
 
-| 名稱 | 指令碼 |
+| Name | 指令碼 |
 | --- | --- |
 | 新增 Azure 儲存體帳戶 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. 請參閱[將其他儲存體帳戶新增至 HDInsight](hdinsight-hadoop-add-storage.md)。 |
 | 安裝 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. 請參閱[在 HDInsight Hadoop 叢集上安裝和使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
@@ -154,7 +156,7 @@ HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
     | 屬性 | 值 |
     | --- | --- |
     | 選取指令碼 | 若要使用自己的指令碼，請選取 [自訂]____。 或是選取其中一個提供的指令碼。 |
-    | 名稱 |指定指令碼動作的名稱。 |
+    | Name |指定指令碼動作的名稱。 |
     | Bash 指令碼 URI |指定指令碼的 URI。 |
     | Head/Worker/ZooKeeper |指定執行腳本的節點： [ **Head**]、[ **Worker**] 或 [ **ZooKeeper**]。 |
     | 參數 |如果指令碼要求，請指定參數。 |
@@ -228,7 +230,7 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
     | 屬性 | 值 |
     | --- | --- |
     | 選取指令碼 | 若要使用您自己的腳本，請選取 [__自訂__]。 否則，請選取提供的指令碼。 |
-    | 名稱 |指定指令碼動作的名稱。 |
+    | Name |指定指令碼動作的名稱。 |
     | Bash 指令碼 URI |指定指令碼的 URI。 |
     | Head/Worker/Zookeeper |指定執行腳本的節點： [ **Head**]、[ **Worker**] 或 [ **ZooKeeper**]。 |
     | 參數 |如果指令碼要求，請指定參數。 |
@@ -245,16 +247,18 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 
 在作業完成之後，您會收到類似以下文字的訊息：
 
-    OperationState  : Succeeded
-    ErrorMessage    :
-    Name            : Giraph
-    Uri             : https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
-    Parameters      :
-    NodeTypes       : {HeadNode, WorkerNode}
+```output
+OperationState  : Succeeded
+ErrorMessage    :
+Name            : Giraph
+Uri             : https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
+Parameters      :
+NodeTypes       : {HeadNode, WorkerNode}
+```
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>從 Azure CLI 將指令碼動作套用到執行中的叢集
 
-在您開始之前，請務必先安裝和設定 Azure CLI。 請確定您有最新版本。 如需詳細資訊，請參閱 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+在您開始之前，請務必先安裝和設定 Azure CLI。 確認您擁有最新版本。 如需詳細資訊，請參閱 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 1. 向您的 Azure 訂用帳戶進行驗證：
 
@@ -268,7 +272,7 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
     az hdinsight script-action execute --cluster-name CLUSTERNAME --name SCRIPTNAME --resource-group RESOURCEGROUP --roles ROLES
     ```
 
-    有效的角色`headnode`為`workernode`、 `zookeepernode`、 `edgenode`、。 如果腳本應該套用至數個節點類型，請以空格分隔這些角色。 例如： `--roles headnode workernode` 。
+    有效的角色為 `headnode` 、 `workernode` 、 `zookeepernode` 、 `edgenode` 。 如果腳本應該套用至數個節點類型，請以空格分隔這些角色。 例如： `--roles headnode workernode` 。
 
     若要保存指令碼，請新增 `--persist-on-success`。 您之後也可以使用 `az hdinsight script-action promote` 來保存指令碼。
 
@@ -306,8 +310,8 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 | --- | --- |
 | `Get-AzHDInsightPersistedScriptAction` |擷取持續性指令碼動作的相關資訊。 此 Cmdlet 不會復原腳本所執行的動作，它只會移除保存的旗標。|
 | `Get-AzHDInsightScriptActionHistory` |擷取已套用到叢集的指令碼動作歷程記錄，或特定指令碼的詳細資料。 |
-| `Set-AzHDInsightPersistedScriptAction` |將`ad hoc`腳本動作升級為持續性腳本動作。 |
-| `Remove-AzHDInsightPersistedScriptAction` |將持續性腳本動作降級為`ad hoc`動作。 |
+| `Set-AzHDInsightPersistedScriptAction` |將 `ad hoc` 腳本動作升級為持續性腳本動作。 |
+| `Remove-AzHDInsightPersistedScriptAction` |將持續性腳本動作降級為 `ad hoc` 動作。 |
 
 下列範例指令碼示範如何使用 Cmdlet 將指令碼先升級後再降級。
 
@@ -315,7 +319,7 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-| Command | 描述 |
+| Command | 說明 |
 | --- | --- |
 | [`az hdinsight script-action delete`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-delete) |刪除叢集的指定持續性腳本動作。 此命令不會復原腳本所執行的動作，它只會移除保存的旗標。|
 |[`az hdinsight script-action execute`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)|在指定的 HDInsight 叢集上執行指令碼動作。|
@@ -331,9 +335,9 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 > [!NOTE]  
 > 這個範例也示範如何使用 .NET SDK 來安裝 HDInsight 應用程式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-* [開發 HDInsight 的腳本動作腳本](hdinsight-hadoop-script-actions-linux.md)
+* [開發 HDInsight 的指令碼動作指令碼](hdinsight-hadoop-script-actions-linux.md)
 * [在 HDInsight 叢集新增儲存體](hdinsight-hadoop-add-storage.md)
 * [針對指令碼動作進行疑難排解](troubleshoot-script-action.md)
 

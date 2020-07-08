@@ -5,19 +5,20 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/12/2019
-ms.openlocfilehash: 1bea8adbdb39d2ce83cfe7821ef052fdc1f1d512
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: ff7cb3c03edf9b421347815311796896caaffd70
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921336"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086597"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>使用識別碼代理程式（預覽）進行認證管理
 
 本文說明如何在 Azure HDInsight 中設定和使用識別碼訊息代理程式功能。 您可以使用這項功能透過 Azure 多重要素驗證登入 Apache Ambari，並取得必要的 Kerberos 票證，而不需要在 Azure Active Directory Domain Services （Azure AD DS）中使用密碼雜湊。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 在下列案例中，識別碼 Broker 會簡化複雜的驗證程式：
 
@@ -105,7 +106,7 @@ SSH 驗證需要在 Azure AD DS 中使用雜湊。 如果您只想要在系統�
 * AppId：7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   許可權：（name： Cluster. ReadWrite，id：8f89faa0-ffef-4007-974d-4989b39ad77d）
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [使用 Azure Active Directory Domain Services 設定具有企業安全性套件的 HDInsight 叢集](apache-domain-joined-configure-using-azure-adds.md)
 * [將 Azure Active Directory 使用者同步至 HDInsight 叢集](../hdinsight-sync-aad-users-to-cluster.md)

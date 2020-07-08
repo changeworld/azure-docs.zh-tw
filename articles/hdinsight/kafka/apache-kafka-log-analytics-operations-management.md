@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 593d6861ee5913fffb25bfdea4829e1b1ce6ddc6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77471175"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087396"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上分析 Apache Kafka 的記錄
 
@@ -24,7 +25,7 @@ ms.locfileid: "77471175"
 
 叢集中的 Apache Kafka 記錄檔位於 `/var/log/kafka` 。 無論是否使用受控磁片，Kafka 記錄都不會在叢集生命週期中儲存或保存。 下表顯示可用的記錄檔。
 
-|記錄檔 |說明 |
+|記錄檔 |描述 |
 |---|---|
 |kafka。|Kafka 進程的 stdout 和 stderr。 您會在此檔案中找到 Kafka 的啟動和關閉記錄。|
 |伺服器 .log|主要的 Kafka 伺服器記錄檔。 所有 Kafka broker 記錄都會在此結束。|
@@ -93,7 +94,7 @@ ms.locfileid: "77471175"
 
     您也可以輸入 `*` 來搜尋所有記錄的類型。 目前我們提供以下記錄的查詢：
 
-    | 記錄類型 | Description |
+    | 記錄類型 | 描述 |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka broker server.log |
     | log\_kafkacontroller\_CL | Kafka broker controller.log |

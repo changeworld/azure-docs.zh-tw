@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1ffd26a243d15f7ee6e06d6c52406a16327b4a0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918201"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086767"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>因為 VM 開機到安全模式而無法連線到 VM
 
@@ -46,7 +47,9 @@ ms.locfileid: "77918201"
    )。 如果 VM 上未啟用序列主控台，請參閱[修復離線的 VM](#repair-the-vm-offline)一節。
 2. 檢查開機設定資料：
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
     若 VM 已設定為開機到安全模式，您將會在 [Windows 開機載入器]**** 區段下看到稱為 [安全開機]**** 的額外旗標。 若您沒有看到 [安全開機]**** 旗標，表示 VM 並非處於安全模式。 此文章不適用於您的案例。
 
@@ -60,11 +63,15 @@ ms.locfileid: "77918201"
 
 3. 刪除 [安全開機]**** 旗標，這樣 VM 就會開機到標準模式：
 
-        bcdedit /deletevalue {current} safeboot
+    ```console
+    bcdedit /deletevalue {current} safeboot
+    ```
 
 4. 檢查開機設定資料以確定已移除 [安全開機]**** 旗標：
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
 5. 重新啟動 VM，然後檢查問題是否已解決。
 
@@ -114,7 +121,10 @@ ms.locfileid: "77918201"
 1. 開啟提升許可權的命令提示字元會話（**以系統管理員身分執行**）。
 2. 檢查開機設定資料。 在下列命令中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
     記下包含 **\windows** 資料夾的分割區識別碼名稱。 根據預設，識別碼名稱為 "Default"。
 
     若 VM 已設定為開機到安全模式，您將會在 [Windows 開機載入器]**** 區段下看到稱為 [安全開機]**** 的額外旗標。 如果沒有看到 [安全開機]**** 旗標，代表此文章不適用於您的案例。
@@ -123,8 +133,14 @@ ms.locfileid: "77918201"
 
 3. 移除 [安全開機]**** 旗標，VM 就會開機到標準模式：
 
-        bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```console
+    bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```
+
 4. 檢查開機設定資料以確定已移除 [安全開機]**** 旗標：
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
 5. [將 OS 磁碟中斷連結並建立 VM](../windows/troubleshoot-recovery-disks-portal.md)。 然後檢查問題是否已解決。

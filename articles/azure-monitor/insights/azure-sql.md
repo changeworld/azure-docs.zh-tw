@@ -7,11 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249409"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087175"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL 分析來監視 Azure SQL Database (預覽)
 
@@ -71,7 +72,7 @@ Azure SQL 分析是僅限雲端的監視解決方案，可支援所有 Azure SQL
 
 ![Azure SQL 分析摘要磚](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-載入之後，磚會顯示 SQL Database 中的資料庫和彈性集區數目，以及 Azure SQL 分析接收診斷遙測之 SQL 受控執行個體中的實例資料庫。
+載入之後，磚會顯示 SQL Database 中的資料庫和彈性集區數目，以及 Azure SQL 分析接收診斷遙測的 SQL 受控執行個體實例和實例資料庫。
 
 ![Azure SQL 分析圖格](./media/azure-sql/azure-sql-sol-tile-02.png)
 
@@ -105,7 +106,7 @@ Azure SQL 分析提供兩個不同的視圖，一個用於監視 SQL Database，
 
 選取任何磚，以便在特定的檢視方塊中開啟向下鑽研報表。 一旦選取檢視方塊，向下鑽研報表隨即開啟。
 
-選取 [SQL 受控執行個體] 視圖，會顯示受控實例使用率的詳細資料、其包含的資料庫，以及在實例上執行之查詢的遙測。
+選取 [SQL 受控執行個體] 視圖，會針對在受控實例上執行的查詢，顯示實例使用率、實例資料庫和遙測的詳細資料。
 
 ![Azure SQL 分析逾時](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
@@ -268,7 +269,7 @@ AzureDiagnostics
 
 > [!NOTE]
 >
-> - 設定此警示的必要條件是，監視受控實例已啟用 ResourceUsageStats 記錄的串流以 Azure SQL 分析。
+> - 設定此警示的必要條件是受監視的受控實例已啟用 ResourceUsageStats 記錄的串流以 Azure SQL 分析。
 > - 此查詢需要設定警示規則，以便在從查詢存在結果（> 0 結果）時引發警示，表示該條件存在於受控實例上。 輸出是受控實例上的儲存體耗用量百分比。
 
 #### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>過去1小時內 CPU 平均耗用量高於95%
@@ -291,7 +292,7 @@ AzureDiagnostics
 
 雖然 Azure SQL 分析可免費使用，但超過每個月所配置的免費資料提取單位數，才會耗用診斷遙測，請參閱[Log Analytics 定價](https://azure.microsoft.com/pricing/details/monitor)。 所提供的免費資料擷取單位可讓您每個月免費監視多個資料庫。 較繁重工作負載的更多作用中資料庫會內嵌更多資料與閒置資料庫。 您可以在 Azure SQL 分析的導覽功能表上選取 [OMS 工作區]，然後選取 [使用量和估計成本]，輕鬆地監視 Azure SQL 分析中的資料內嵌耗用量。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 使用 Azure 監視器中的[記錄查詢](../log-query/log-query-overview.md)來查看詳細的 Azure SQL 資料。
 - [建立您自己的儀表板](../learn/tutorial-logs-dashboards.md)來顯示 Azure SQL 資料。

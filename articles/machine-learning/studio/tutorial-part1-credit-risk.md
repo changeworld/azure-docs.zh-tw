@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 09026d7f2aeb25f9a7c4a3c31c4f8d0b4cdb223a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2e2edd7930ba4555748791210ad303c54f93c347
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117821"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086104"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教學課程 1：預測信用風險 - Azure Machine Learning Studio (傳統)
 
@@ -99,11 +99,15 @@ UCI 網站上的資料集描述提及，個人信用風險若分類錯誤，將�
 
 有許多方法可以轉換此資料。 其中一種是使用下列的 Windows PowerShell 命令：   
 
-    cat german.data | %{$_ -replace " ",","} | sc german.csv  
+```powershell
+cat german.data | %{$_ -replace " ",","} | sc german.csv  
+```
 
 另一種方法是使用 Unix Sed 命令：  
 
-    sed 's/ /,/g' german.data > german.csv  
+```console
+sed 's/ /,/g' german.data > german.csv
+```
 
 無論採用何種方法，您都已在名為 **german.csv** 的檔案中建立以逗號分隔的資料，供您在實驗中使用。
 
@@ -256,11 +260,13 @@ UCI 網站上的資料集描述提及，個人信用風險若分類錯誤，將�
 
 1. 在 [屬性]  窗格中，刪除 [R 指令碼]  參數中的預設文字，然後輸入此指令碼：
    
-       dataset1 <- maml.mapInputPort(1)
-       data.set<-dataset1[dataset1[,21]==1,]
-       pos<-dataset1[dataset1[,21]==2,]
-       for (i in 1:5) data.set<-rbind(data.set,pos)
-       maml.mapOutputPort("data.set")
+    ```r
+    dataset1 <- maml.mapInputPort(1)
+    data.set<-dataset1[dataset1[,21]==1,]
+    pos<-dataset1[dataset1[,21]==2,]
+    for (i in 1:5) data.set<-rbind(data.set,pos)
+    maml.mapOutputPort("data.set")
+    ```
 
     ![執行 R 指令碼模組中的 R 指令碼](./media/tutorial-part1-credit-risk/execute-r-script.png)
 

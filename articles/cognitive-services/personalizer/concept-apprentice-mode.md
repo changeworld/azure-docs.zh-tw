@@ -3,12 +3,12 @@ title: 新手模式-個人化工具
 description: ''
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 2697ab4b32edbd4841f2b11725fda46e90e7ae7e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5ee8242fbc9ab5bed4e3eed8997feb122b131062
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599575"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087192"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>使用新手模式來定型個人化工具，而不影響現有的應用程式
 
@@ -30,7 +30,7 @@ ms.locfileid: "83599575"
 
 使用新手模式的兩個主要原因如下：
 
-* 緩和**冷啟動**：新手模式可協助管理及評估「新」模型學習時間的成本-不會傳回最佳的動作，也無法達成大約75-85% 的令人滿意的效能等級。
+* 緩和**冷啟動**：新手模式可協助管理及評估「新」模型學習時間的成本-不會傳回最佳的動作，也無法達成大約60-80% 的令人滿意的效能等級。
 * **驗證動作和內容功能**：在動作和內容中傳送的功能可能不足或不正確、太多、錯誤或太特定而無法訓練個人化工具來達到理想的有效性率。 使用[功能評估](concept-feature-evaluation.md)來尋找及修正功能的問題。
 
 ## <a name="when-should-you-use-apprentice-mode"></a>何時應該使用新手模式？
@@ -68,7 +68,7 @@ ms.locfileid: "83599575"
 新手模式效果的相關注意事項：
 
 * 個人化工具在新手模式下的效率幾乎不會達到應用程式基準的 100%;而且絕對不會超過它。
-* 最佳做法不會嘗試達到100% 的完成;但是，範圍為75–85% 應根據使用案例進行鎖定。
+* 最佳做法不會嘗試達到100% 的完成;但根據使用案例，應以60% –80% 為目標的範圍。
 
 ## <a name="using-apprentice-mode-to-train-with-historical-data"></a>使用新手模式來定型歷程記錄資料
 
@@ -90,6 +90,6 @@ ms.locfileid: "83599575"
 
 一旦您有使用個人化工具和線上學習的使用案例，A/B 實驗就可讓您對結果進行控制的世代和科學比較，可能比用於報酬的信號更為複雜。 A/B 測試可以回答的範例問題是：`In a retail website, Personalizer optimizes a layout and gets more users to _check out_ earlier, but does this reduce total revenue per transaction?`
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解作用中[和非作用中的事件](concept-active-inactive-events.md)

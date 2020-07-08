@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 47f766e8e5c1ea43d0c9bde8138c0ab17533f539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ef109dc5fad73a19eabefb8eb872c02d62698ba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708642"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087566"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server 實例遷移至 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-在本文中，您將瞭解將 SQL Server 2005 或更新版本實例遷移至[AZURE SQL 受控執行個體](sql-managed-instance-paas-overview.md)的方法。 如需移轉至單一資料庫或彈性集區的相關資訊，請參閱[移轉至單一或集區資料庫](../database/migrate-to-database-from-sql-server.md)。 如需從其他平台移轉的移轉資訊，請參閱 [Azure 資料庫移轉指南](https://datamigration.microsoft.com/) \(英文\)。
+在本文中，您將瞭解將 SQL Server 2005 或更新版本實例遷移至[AZURE SQL 受控執行個體](sql-managed-instance-paas-overview.md)的方法。 如需遷移至單一資料庫或彈性集區的詳細資訊，請參閱[遷移至 SQL Database](../database/migrate-to-database-from-sql-server.md)。 如需從其他平台移轉的移轉資訊，請參閱 [Azure 資料庫移轉指南](https://datamigration.microsoft.com/) \(英文\)。
 
 > [!NOTE]
 > 如果您想要快速啟動並試用 Azure SQL 受控執行個體，您可能會想要移至[快速入門手冊](quickstart-content-reference-guide.md)，而不是此頁面。
@@ -202,7 +202,7 @@ SQL 受控執行個體提供許多先進的工具來進行監視和疑難排解�
 
 除了先進的管理和安全性功能之外，受控實例還提供一組可協助您[監視和微調工作負載](../database/monitor-tune-overview.md)的先進工具。 [Azure SQL 分析](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql)可讓您監視大型的受控實例集，並集中監視大量實例和資料庫。 受控實例中的[自動調整](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)會持續監視 SQL 計畫執行統計資料的效能，並自動修正已識別的效能問題。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需 Azure SQL 受控執行個體的相關資訊，請參閱[什麼是 AZURE sql 受控執行個體？](sql-managed-instance-paas-overview.md)。
 - 如需包含從備份還原的教學課程，請參閱[建立受控實例](instance-create-quickstart.md)。

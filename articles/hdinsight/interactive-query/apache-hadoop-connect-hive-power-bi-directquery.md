@@ -6,13 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: adcd4d9e81eecad9540a4ef1be5e675f940ffb8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc84c8ef27b86244a7f467109525bdcb14bd030b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79367987"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087532"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>在 HDInsight 中使用直接查詢以 Microsoft Power BI 將互動式查詢 Apache Hive 資料視覺化
 
@@ -74,7 +75,7 @@ ms.locfileid: "79367987"
 
 3. 展開地圖。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 在本文中，您已了解如何使用 Microsoft Power BI 將 HDInsight 中的資料視覺化。  如需資料視覺效果的詳細資訊，請參閱下列文章：
 
 * [使用 Azure HDInsight 中的 ODBC，以 Microsoft Power BI 將 Apache Hive 資料視覺化](../hadoop/apache-hadoop-connect-hive-power-bi.md)。 

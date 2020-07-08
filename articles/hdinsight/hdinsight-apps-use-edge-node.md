@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: 17c73866a11aae23efea90073f64b61808c13a35
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834708"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086478"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 叢集上使用空白邊緣節點
 
@@ -62,7 +62,6 @@ ms.locfileid: "83834708"
 > 邊緣節點上安裝的自訂元件會收到來自 Microsoft 的商業上合理支援。 可能可以解決您遇到的問題。 或者，您可能需要參考社群資源以取得進一步協助。 以下是從社群取得協助的一些最活躍網站：
 >
 > * [適用於 HDInsight 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-hdinsight.html
-
 > * [https://stackoverflow.com](https://stackoverflow.com)＞。
 >
 > 如果您使用 Apache 技術，您可以透過位於 [https://apache.org](https://apache.org) 的 Apache 專案網站 (例如 [Apache Hadoop](https://hadoop.apache.org/) 網站) 尋求協助。
@@ -143,11 +142,15 @@ ms.locfileid: "83834708"
 
 2. 在使用 SSH 連線到邊緣節點之後，使用下列命令來開啟 Hive 主控台︰
 
-        hive
+    ```console
+    hive
+    ```
 
 3. 執行下列命令，以顯示叢集中的 Hive 資料表︰
 
-        show tables;
+    ```hiveql
+    show tables;
+    ```
 
 ## <a name="delete-an-edge-node"></a>刪除邊緣節點
 

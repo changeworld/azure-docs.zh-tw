@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 278d976f044deb8a7387763306cf07f8b6b55d90
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749886"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087787"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>因為停用 DHCP 用戶端服務，而無法 RDP 連線至 Azure 虛擬機器
 
@@ -39,7 +40,9 @@ ms.locfileid: "75749886"
 
 針對 Resource Manager VM，您可以使用 [序列存取主控台] 功能並透過下列命令來查詢事件記錄 7022：
 
-    wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```console
+wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```
 
 針對傳統 VM，您必須在 [離線] 模式中作業，並以手動方式收集記錄。
 
@@ -62,14 +65,21 @@ VM 上的 DHCP 用戶端服務並未執行。
 ). 如果未在 VM 上啟用序列主控台，請參閱[重設網路介面](reset-network-interface.md)。
 2. 請檢查是否已在網路介面上停用 DHCP：
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
+
 3. 如果 DHCP 已停止，請嘗試啟動服務
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
 
 4. 再次查詢服務，以確定服務已成功啟動。
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
 
     嘗試連線至 VM 並查看問題是否已解決。
 5. 如果服務未啟動，請根據您收到的錯誤訊息，使用下列適當的解決方法：
@@ -156,23 +166,38 @@ VM 上的 DHCP 用戶端服務並未執行。
 
 1. 如果此服務的啟動帳戶有所變更，就會發生這個問題，請將帳戶還原為其預設狀態：
 
-        sc config DHCP obj= 'NT Authority\Localservice'
+    ```console
+    sc config DHCP obj= 'NT Authority\Localservice'
+    ```
+
 2. 啟動服務：
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 3. 嘗試使用遠端桌面來連線至 VM。
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>DHCP 用戶端服務當機或停止回應
 
 1. 如果服務狀態停滯在 [起始]**** 或 [停止]**** 狀態，請嘗試停止服務：
 
-        sc stop DHCP
+    ```console
+    sc stop DHCP
+    ```
+
 2. 將服務隔離在其自己的 'svchost' 容器上：
 
-        sc config DHCP type= own
+    ```console
+    sc config DHCP type= own
+    ```
+
 3. 啟動服務：
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 4. 如果服務仍然未啟動，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="repair-the-vm-offline"></a>修復離線的 VM

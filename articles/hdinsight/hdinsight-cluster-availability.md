@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 4b26128b794a6a667edc578f56ad0bc9fb8303a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 615e23dc388f36f5ae1cd7e0d846acc14ffa2236
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82691141"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086410"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>如何在 Azure HDInsight 中使用 Apache Ambari 監視叢集可用性
 
@@ -55,7 +55,7 @@ Ambari 也提供數個可設定的警示，以提供特定事件的通知。 觸
 
 Ambari 提供許多與可用性相關的預先定義警示，包括：
 
-| 警示名稱                        | 描述   |
+| 警示名稱                        | Description   |
 |---|---|
 | DataNode 健全狀況摘要           | 如果有狀況不良的 Datanode，就會觸發此服務層級警示|
 | NameNode 高可用性健全狀況 | 如果作用中的 NameNode 或待命 NameNode 不在執行中，就會觸發此服務層級警示。|
@@ -85,7 +85,7 @@ Ambari 提供許多與可用性相關的預先定義警示，包括：
 > [!TIP]
 > 設定 Ambari 電子郵件通知，是在管理許多 HDInsight 叢集時，可以在一個位置接收警示的好方法。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [HDInsight 中 Apache Hadoop 叢集的可用性和可靠性](hdinsight-high-availability-linux.md)
 - [叢集可用性 - Azure 監視器記錄](./cluster-availability-monitor-logs.md)

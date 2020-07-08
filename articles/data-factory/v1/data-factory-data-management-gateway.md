@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a83020af17758b570030a4c6129ffdd7dec58094
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188298"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087073"
 ---
 # <a name="data-management-gateway"></a>資料管理閘道
 > [!NOTE]
@@ -36,7 +37,7 @@ ms.locfileid: "84188298"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 ### <a name="capabilities-of-data-management-gateway"></a>資料管理閘道功能
 資料管理閘道提供下列功能：
 
@@ -139,7 +140,7 @@ ms.locfileid: "84188298"
 
 在公司防火牆層級，您需要設定下列網域和輸出連接埠：
 
-| 網域名稱 | 連接埠 | Description |
+| 網域名稱 | 連接埠 | 描述 |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |用於與「資料移動服務」後端進行通訊 |
 | *.core.windows.net |443 |用於使用 Azure Blob 的分段複製 (如果已設定)|
@@ -246,7 +247,9 @@ Windows 防火牆層級通常會啟用這些輸出連接埠。 如果沒有，�
 
 如果您使用協力廠商的防火牆，則可以手動開啟連接埠 8050。 如果您在設定閘道時遇到防火牆問題，您可以嘗試使用下列命令來安裝閘道，而不設定防火牆。
 
-    msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```cmd
+msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```
 
 如果您選擇不開啟閘道機器上的連接埠 8050，則請使用「設定認證」 **** 應用程式以外的機制來設定資料存放區認證。 例如，您可以使用[AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell Cmdlet。 若要了解如何設定資料存放區認證，請參閱＜設定認證和安全性＞一節。
 
@@ -361,9 +364,9 @@ Windows 防火牆層級通常會啟用這些輸出連接埠。 如果沒有，�
 
 下表說明 [閘道節點]**** 清單中的資料行：
 
-監視屬性 | 說明
+監視屬性 | 描述
 :------------------ | :----------
-Name | 邏輯閘道和閘道相關聯節點的名稱。 節點是安裝了閘道的內部部署 Windows 機器。 若要了解如何在單一邏輯閘道中擁有一個以上的節點 (最多四個節點)，請參閱[資料管理閘道 - 高可用性和延展性](data-factory-data-management-gateway-high-availability-scalability.md)。
+名稱 | 邏輯閘道和閘道相關聯節點的名稱。 節點是安裝了閘道的內部部署 Windows 機器。 若要了解如何在單一邏輯閘道中擁有一個以上的節點 (最多四個節點)，請參閱[資料管理閘道 - 高可用性和延展性](data-factory-data-management-gateway-high-availability-scalability.md)。
 狀態 | 邏輯閘道和閘道節點的狀態。 範例：線上/離線/有限/等。如需這些狀態的相關資訊，請參閱[閘道狀態](#gateway-status)一節。
 版本 | 顯示邏輯閘道和每個閘道節點的版本。 邏輯閘道的版本取決於群組中大多數節點的版本。 如果邏輯閘道設定中有不同版本的節點，則只有版本號碼和邏輯閘道相同的節點會正常運作。 其他節點會進入受限制模式，並需要加以手動更新 (如果自動更新失敗才需要這麼做)。
 可用的記憶體 | 閘道節點上可用的記憶體。 這個值是近乎即時的快照集。

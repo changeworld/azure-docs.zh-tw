@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a793de35ffff84009d362f005e599b4419f0763f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50bf1502589ea0932fd45367c039e6e37135d761
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532768"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086053"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>適用於 MySQL 之 Azure 資料庫中的高可用性概念
 「適用於 MySQL 的 Azure 資料庫」服務可提供保證的高可用性等級。 以財務為後盾的服務等級協定 (SLA) 在正式運作時可達 99.99%。 使用此服務時幾乎不會有應用程式停機時間。
@@ -29,7 +29,7 @@ ms.locfileid: "79532768"
 ## <a name="scaling-up-or-down"></a>擴大或縮小規模
 與 HA 模型類似，當「適用於 MySQL 的 Azure 資料庫」擴大或縮小規模時，會以指定的大小建立新的伺服器執行個體。 現有的資料儲存體會與原始執行個體中斷連結，然後連結到新的執行個體。
 
-進行規模調整作業時，會發生資料庫連線中斷。 系統會將用戶端應用程式中斷連線，並將已開啟的未認可交易取消。 一旦用戶端應用程式重試連線或建立新連線，閘道就會將該連線導向到新調整過大小的執行個體。 
+進行規模調整作業時，會發生資料庫連線中斷。 系統會將用戶端應用程式中斷連線，並將已開啟的未認可交易取消。 一旦用戶端應用程式重試連線或建立新連線，閘道就會將該連線導向到新調整過大小的執行個體。
 
 ## <a name="next-steps"></a>後續步驟
 - 了解如何[處理暫時性連線錯誤](concepts-connectivity.md)

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 55373f71c78b6d45b9c78c52dea61a37b89b4a00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: baf350e23025342cc74b4d063d9a1604e8ad2ffd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383048"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087417"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>使用 Azure Kubernetes Service 搭配 HDInsight 上的 Apache Kafka
 
@@ -92,9 +92,9 @@ HDInsight 和 AKS 均使用 Azure 虛擬網路作為計算資源的容器。 若
 
     |屬性 |值 |
     |---|---|
-    |從\<此 VN> 到遠端虛擬網路的對等互連名稱|輸入此對等互連設定的唯一名稱。|
+    |從 \<this VN> 到遠端虛擬網路的對等互連名稱|輸入此對等互連設定的唯一名稱。|
     |虛擬網路|選取 **AKS 叢集**的虛擬網路。|
-    |從 \<此 AKS VN> 到 \<此 VN> 的對等互連名稱|輸入唯一名稱。|
+    |與 \<AKS VN> 之間的對等互連名稱\<this VN>|輸入唯一名稱。|
 
     讓所有其他欄位保留預設值，然後選取 [確定] 來設定對等互連。
 

@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, tracking-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 71709e2f1dcbab188646241eaeb4809e168d5697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8f13a8420873bdc753ed1b7d8c8928705e1f43
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608769"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086869"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>在 HDInsight 上使用 Python 開發 Apache Storm 拓撲
 
@@ -142,6 +143,6 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 
 若要停止拓撲，請使用 __Ctrl+C__。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需搭配 HDInsight 使用 Python 的其他方式，請參閱下列檔：[如何在 Apache Pig 中使用 Python 使用者定義函數（UDF）和 Apache Hive](../hadoop/python-udf-hdinsight.md)。

@@ -6,13 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2020
-ms.openlocfilehash: da3387dd9846847f7643ded43c8cbff8ed8b166e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3807f54de672642bfc6454cf38babbf189c210a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77135729"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086070"
 ---
 # <a name="jar-dependency-management-best-practices"></a>JAR 相依性管理最佳作法
 
@@ -76,7 +77,7 @@ assemblyShadeRules in assembly := Seq(
 
 接著，您可以執行 `sbt clean` 和 `sbt assembly` 以建立陰影的 jar 檔案。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [使用 HDInsight IntelliJ 工具](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox)
 

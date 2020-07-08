@@ -6,13 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/15/2018
-ms.openlocfilehash: ee4f9b84e822cb370e5fe3d55fcceb9c8a9f2ab9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e0037f6aea4aef53efc192066027e0a0143bda1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74228978"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086172"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>透過一次性事件處理來建立 Apache Spark 串流作業
 
@@ -86,7 +87,7 @@ Spark 串流支援使用預寫記錄檔，其中每個收到的事件會先寫�
 
 另一個範例是使用已分割的檔案系統，例如 Azure 儲存體 Blob 或 Azure Data Lake Storage。 在此情況下，您的接收邏輯不需要檢查檔案是否存在。 如果代表事件的檔案存在，則會直接以相同的資料覆寫。 否則會在計算的路徑上建立新檔案。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [Apache Spark 串流概觀](apache-spark-streaming-overview.md)
 * [在 Apache Hadoop YARN 中建立高可用性 Apache Spark 串流作業](apache-spark-streaming-high-availability.md)

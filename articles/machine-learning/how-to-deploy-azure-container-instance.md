@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: dc2acefd69695e34fcf60877591faf4f838ab695
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44c197b7d9935a7b0631c6cbcd96fde783c2fffe
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753175"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087260"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>將模型部署到 Azure 容器執行個體
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,6 +48,10 @@ ms.locfileid: "84753175"
 ## <a name="deploy-to-aci"></a>部署到 ACI
 
 若要將模型部署到 Azure 容器實例，請建立__部署__設定，以描述所需的計算資源。 例如，核心和記憶體數目。 您也需要__推斷__設定，其中描述裝載模型和 web 服務所需的環境。 如需建立推斷設定的詳細資訊，請參閱[如何和部署模型的位置](how-to-deploy-and-where.md)。
+
+> [!NOTE]
+> * ACI 僅適用于大小 <1GB 的小型模型。 
+> * 我們建議使用單一節點 AKS 來進行較大型模型的開發測試。
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
