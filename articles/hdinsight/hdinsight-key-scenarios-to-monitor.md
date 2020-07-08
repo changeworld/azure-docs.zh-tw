@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79082875"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>監視 Azure HDInsight 中的叢集效能
@@ -27,7 +26,7 @@ ms.locfileid: "79082875"
 
 若要取得叢集節點和其載入的高階查看，請登入[Ambari WEB UI](hdinsight-hadoop-manage-ambari.md)，然後選取 [**主機**] 索引標籤。您的主機會依照其完整功能變數名稱列出。 每個主機的操作狀態是依彩色的健康情況指示器來顯示：
 
-| Color | 說明 |
+| Color | Description |
 | --- | --- |
 | 紅色 | 主機上至少有一個主要元件已關閉。 暫留以查看列出受影響元件的工具提示。 |
 | 橙色 | 主機上至少有一個次要元件已關閉。 暫留以查看列出受影響元件的工具提示。 |
@@ -95,7 +94,7 @@ YARN 可讓我們將資源配置給這些佇列，並顯示是否已指派所有
     du -h --max-depth=1 / | sort -h
     ```
 
-1. 檢查輸出，並檢查`mnt`資料夾或其他資料夾中是否有任何大型檔案。 `usercache`通常，和`appcache` （mnt/resource/hadoop/yarn/local/usercache/hive/appcache/）資料夾包含大型檔案。
+1. 檢查輸出，並檢查 `mnt` 資料夾或其他資料夾中是否有任何大型檔案。 通常， `usercache` 和 `appcache` （mnt/resource/hadoop/yarn/local/usercache/hive/appcache/）資料夾包含大型檔案。
 
 1. 如果有大型檔案，可能是目前的工作造成檔案成長，或先前的工作已失敗。 若要檢查此行為是否由目前的作業所造成，請執行下列命令：
 
@@ -109,7 +108,7 @@ YARN 可讓我們將資源配置給這些佇列，並顯示是否已指派所有
     yarn application -kill -applicationId <application_id>
     ```
 
-    以`application_id`應用程式識別碼取代。 如果沒有指定特定的工作，請移至下一個步驟。
+    `application_id`以應用程式識別碼取代。 如果沒有指定特定的工作，請移至下一個步驟。
 
 1. 在上述命令完成之後，或如果沒有指定特定的工作，請執行類似下列的命令來刪除您所識別的大型檔案：
 

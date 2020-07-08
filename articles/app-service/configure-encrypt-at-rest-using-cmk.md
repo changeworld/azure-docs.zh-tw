@@ -4,10 +4,9 @@ description: 在 Azure 儲存體中加密您的應用程式資料，並將它部
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 7e5e809fe8b670ae6ec5bfd15e54f9a8019e76d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79408738"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客戶管理的金鑰進行待用加密
@@ -31,7 +30,7 @@ ms.locfileid: "79408738"
 
 ### <a name="configure-running-from-a-package-from-your-storage-account"></a>設定從儲存體帳戶的封裝執行
   
-將檔案上傳至 Blob 儲存體並擁有該檔案的 SAS URL 後，請將`WEBSITE_RUN_FROM_PACKAGE`應用程式設定設為 sas url。 下列範例會使用 Azure CLI 來執行此動作：
+將檔案上傳至 Blob 儲存體並擁有該檔案的 SAS URL 後，請將 `WEBSITE_RUN_FROM_PACKAGE` 應用程式設定設為 SAS url。 下列範例會使用 Azure CLI 來執行此動作：
 
 ```
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_RUN_FROM_PACKAGE="<your-SAS-URL>"
@@ -41,9 +40,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="encrypt-the-application-setting-using-key-vault-references"></a>使用 Key Vault 參考來加密應用程式設定
 
-現在您可以使用 SAS 編碼 URL 的`WEBSITE_RUN_FROM_PACKAGE` Key Vault 參考來取代應用程式設定的值。 這會在 Key Vault 中將 SAS URL 保持加密，以提供額外的安全性層級。
+現在您可以 `WEBSITE_RUN_FROM_PACKAGE` 使用 SAS 編碼 URL 的 Key Vault 參考來取代應用程式設定的值。 這會在 Key Vault 中將 SAS URL 保持加密，以提供額外的安全性層級。
 
-1. 使用下列[`az keyvault create`](/cli/azure/keyvault#az-keyvault-create)命令來建立 Key Vault 實例。       
+1. 使用下列 [`az keyvault create`](/cli/azure/keyvault#az-keyvault-create) 命令來建立 Key Vault 實例。       
 
     ```azurecli    
     az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus    
@@ -51,19 +50,19 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 1. 請遵循[這些指示，將您的應用程式存取權授](app-service-key-vault-references.md#granting-your-app-access-to-key-vault)與您的金鑰保存庫：
 
-1. 使用下列[`az keyvault secret set`](/cli/azure/keyvault/secret#az-keyvault-secret-set)命令，將您的外部 URL 新增為金鑰保存庫中的秘密：   
+1. 使用下列 [`az keyvault secret set`](/cli/azure/keyvault/secret#az-keyvault-secret-set) 命令，將您的外部 URL 新增為金鑰保存庫中的秘密：   
 
     ```azurecli    
     az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<SAS-URL>"    
     ```    
 
-1.  使用下列[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set)命令來建立`WEBSITE_RUN_FROM_PACKAGE`應用程式設定，並將其值做為外部 URL 的 Key Vault 參考：
+1.  使用下列 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令來建立 `WEBSITE_RUN_FROM_PACKAGE` 應用程式設定，並將其值做為外部 URL 的 Key Vault 參考：
 
     ```azurecli    
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    
     ```
 
-    `<secret-version>`會在前一個`az keyvault secret set`命令的輸出中。
+    `<secret-version>`會在前一個命令的輸出中 `az keyvault secret set` 。
 
 更新此應用程式設定會使您的 web 應用程式重新開機。 應用程式重新開機之後，請流覽至它，確定它已使用 Key Vault 參考正確啟動。
 
@@ -71,7 +70,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 最佳做法是定期輪替儲存體帳戶的 SAS 金鑰。 若要確保 web 應用程式不會不慎鬆散存取，您也必須更新 Key Vault 中的 SAS URL。
 
-1. 藉由流覽至您在 Azure 入口網站中的儲存體帳戶來輪替 SAS 金鑰。 在 [**設定** > ] [**存取金鑰**] 底下，按一下圖示以旋轉 SAS 金鑰。
+1. 藉由流覽至您在 Azure 入口網站中的儲存體帳戶來輪替 SAS 金鑰。 在 [**設定**]  >  [**存取金鑰**] 底下，按一下圖示以旋轉 SAS 金鑰。
 
 1. 複製新的 SAS URL，然後使用下列命令，在您的金鑰保存庫中設定更新的 SAS URL：
 
@@ -85,7 +84,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    
     ```
 
-    `<secret-version>`會在前一個`az keyvault secret set`命令的輸出中。
+    `<secret-version>`會在前一個命令的輸出中 `az keyvault secret set` 。
 
 ## <a name="how-to-revoke-the-web-apps-data-access"></a>如何撤銷 web 應用程式的資料存取權
 
@@ -99,7 +98,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 您可以藉由停用 web 應用程式對 Key Vault 的存取權，撤銷 web 應用程式對網站資料的存取權。 若要這麼做，請移除 web 應用程式身分識別的存取原則。 這是您稍早在設定金鑰保存庫參考時所建立的相同身分識別。
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 您的應用程式檔現在會在您的儲存體帳戶中進行待用加密。 當您的 web 應用程式啟動時，它會從您的金鑰保存庫抓取 SAS URL。 最後，web 應用程式會從儲存體帳戶載入應用程式檔。 
 
@@ -113,7 +112,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="how-does-running-from-the-deployment-package-affect-my-web-app"></a>從部署套件執行如何影響我的 web 應用程式？
 
-- 從部署套件執行應用程式會使`wwwroot/`其成為唯讀狀態。 當您的應用程式嘗試寫入此目錄時，會收到錯誤。
+- 從部署套件執行應用程式會使其成為 `wwwroot/` 唯讀狀態。 當您的應用程式嘗試寫入此目錄時，會收到錯誤。
 - 不支援 TAR 和 GZIP 格式。
 - 這項功能與本機快取不相容。
 

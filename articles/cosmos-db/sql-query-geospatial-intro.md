@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79367579"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB 中的地理空間和 GeoJSON 位置資料
@@ -38,7 +37,7 @@ Azure Cosmos DB 支援下列空間資料類型：
 
 - Point
 - LineString
-- Polygon
+- 多邊形
 - MultiPolygon
 
 ### <a name="points"></a>點
@@ -174,7 +173,7 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-如果您使用的是 SQL api，您可以`Point`使用`LineString` `Polygon` `MultiPolygon` `Microsoft.Azure.Cosmos.Spatial`命名空間中的、、和類別，將位置資訊內嵌在應用程式物件中。 這些類別可協助將空間資料序列化和還原序列化簡化成 GeoJSON。
+如果您使用的是 SQL api，您可以使用 `Point` `LineString` `Polygon` 命名空間中的、、和 `MultiPolygon` 類別， `Microsoft.Azure.Cosmos.Spatial` 將位置資訊內嵌在應用程式物件中。 這些類別可協助將空間資料序列化和還原序列化簡化成 GeoJSON。
 
 **以 .NET 建立具有地理空間資料的文件**
 

@@ -10,10 +10,9 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79265697"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 入口網站來管理 Azure Data Lake Analytics
@@ -30,14 +29,14 @@ ms.locfileid: "79265697"
 ### <a name="create-an-account"></a>建立帳戶
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 按一下 [**建立資源** > **智慧 + 分析** > ] [**Data Lake Analytics**]。
+2. 按一下 [**建立資源**  >  **智慧 + 分析**] [  >  **Data Lake Analytics**]。
 3. 選取下列項目的值︰ 
    1. **名稱**：Data Lake Analytics 帳戶的名稱。
    2. **訂用帳戶**：用於此帳戶的 Azure 訂用帳戶。
    3. **資源群組**：在其中建立帳戶的 Azure 資源群組。 
    4. **位置**：Data Lake Analytics 帳戶的 Azure 資料中心。 
    5. **Data Lake Store**：Data Lake Analytics 帳戶所要使用的預設存放區。 Azure Data Lake Store 帳戶和 Data Lake Analytics 帳戶必須位於相同位置。
-4. 按一下 [建立]  。 
+4. 按一下 [建立]。 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>刪除 Data Lake Analytics 帳戶
 
@@ -89,7 +88,7 @@ Data Lake Analytics 支援下列資料來源：
 3. 選取使用者，然後按一下 [選取]****。
 4. 選取角色，然後按一下 [選取]****。 若要設定新的開發人員以使用 Azure Data Lake，請選取 [Data Lake Analytics 開發人員]**** 角色。
 5. 選取 U-SQL 資料庫的存取控制清單 (ACL)。 當您對您的選擇感到滿意時，請按一下 [選取]****。
-6. 選取檔案的 ACL。 對於預設存放區，請不要變更根資料夾 "/" 和 /system 資料夾的 ACL。 按一下 [選取]  。
+6. 選取檔案的 ACL。 對於預設存放區，請不要變更根資料夾 "/" 和 /system 資料夾的 ACL。 按一下 [選取]。
 7. 檢閱您選取的所有變更，然後按一下 [執行]****。
 8. 當精靈完成時，按一下 [完成]****。
 
@@ -111,10 +110,10 @@ Data Lake Analytics 支援下列資料來源：
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>將使用者或安全性群組新增到 Data Lake Analytics 帳戶
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
-2. 按一下 **[存取控制（IAM）** > ] [**新增角色指派**]。
+2. 按一下 **[存取控制（IAM）] [**  >  **新增角色指派**]。
 3. 選取角色。
 4. 新增使用者。
-5. 按一下 [確定]  。
+5. 按一下 [確定]。
 
 >[!NOTE]
 >如果使用者或安全性群組需要提交作業，他們也需要有存放區帳戶的權限。 如需詳細資訊，請參閱[保護儲存在 Data Lake Store 中的資料](../data-lake-store/data-lake-store-secure-data.md)。
@@ -131,7 +130,7 @@ Data Lake Analytics 支援下列資料來源：
 
 2. 按一下 [ **新增工作**]。 對於每項作業，請設定：
 
-    1. **作業名稱**：作業名稱。
+    1. **作業名稱**：作業的名稱。
     2. **優先順序**：數字越小，優先順序越高。 如果有兩項作業排入佇列，優先順序值較小的作業會優先執行。
     3. **平行處理原則**：要為此作業保留的計算程序數目上限。
 

@@ -4,10 +4,9 @@ description: 如何查看和管理 ACR 工作產生的執行記錄。
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79246964"
 ---
 # <a name="view-and-manage-task-run-logs"></a>查看和管理工作執行記錄
@@ -64,8 +63,8 @@ Azure Container Registry 儲存所有工作的執行記錄。 您可以在 Azure
 
 若要在入口網站中查看執行記錄：
 
-1. 流覽至您的 container registry。
-1. 在 [**服務**] 中 **，選取** > [工作] [**執行**]。
+1. 瀏覽至您的容器登錄。
+1. 在 [**服務**] 中 **，選取 [** 工作] [  >  **執行**]。
 1. 選取**執行識別碼**以查看執行狀態和執行記錄。 記錄檔包含與資料流程處理記錄檔相同的資訊（如果有產生的話）。
 
 ![View task 執行登入入口網站](./media/container-registry-tasks-logs/portal-task-run-logs.png)

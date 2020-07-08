@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79082858"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中存取 Grafana
@@ -28,7 +27,7 @@ ms.locfileid: "79082858"
 
 ## <a name="access-the-grafana-dashboard"></a>存取 Grafana 儀表板
 
-1. 從網頁瀏覽器流覽至`https://CLUSTERNAME.azurehdinsight.net/grafana/` ，其中 CLUSTERNAME 是您的叢集名稱。
+1. 從網頁瀏覽器流覽至， `https://CLUSTERNAME.azurehdinsight.net/grafana/` 其中 CLUSTERNAME 是您的叢集名稱。
 
 1. 輸入 Hadoop 叢集使用者認證。
 
@@ -42,9 +41,9 @@ ms.locfileid: "79082858"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight**。
+1. 在頂端的 [搜尋] 方塊中，輸入 **HDInsight**。
 
-1. 在 [服務]  底下，選取 [HDInsight 叢集]  。
+1. 在 [服務] 底下，選取 [HDInsight 叢集]。
 
 1. 在出現的 HDInsight 叢集清單中，選取您所建立叢集旁的 [ **...** ]。
 

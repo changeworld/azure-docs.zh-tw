@@ -16,16 +16,15 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79267530"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple Virtual Array：在 Hyper-V 中佈建
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -93,11 +92,11 @@ ms.locfileid: "79267530"
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image1.png)  
 
    如果您執行的是 Windows Server 2008 R2，請開啟「Hyper-V 管理員」。 在 [伺服器管理員] 中，按一下 [角色] > [Hyper-V] > [Hyper-V 管理員]****。
-3. 在 [Hyper-V 管理員]**** 的範圍窗格中，於您的系統節點上按一下滑鼠右鍵以開啟操作功能表，然後按一下 [新增]**** >  [虛擬機器]****。
+3. 在 [Hyper-V 管理員] 的範圍窗格中，於您的系統節點上按一下滑鼠右鍵以開啟操作功能表，然後按一下 [新增] >  [虛擬機器]。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
-4. 在「新增虛擬機器精靈」的 [開始之前]**** 頁面上，按一下 [下一步]****。
-5. 在 [指定名稱和位置]**** 頁面上，提供虛擬陣列的 [名稱]****。 按 [下一步]  。
+4. 在「新增虛擬機器精靈」的 [開始之前] 頁面上，按一下 [下一步]。
+5. 在 [指定名稱和位置]**** 頁面上，提供虛擬陣列的 [名稱]****。 按 [下一步] 。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
 6. 在 [指定世代]**** 頁面上，選擇裝置映像類型，然後按一下 [下一步]****。 如果您使用的是 Windows Server 2008 R2，則不會出現此頁面。
@@ -106,50 +105,50 @@ ms.locfileid: "79267530"
    * 如果您已下載適用於 Windows Server 2008 R2 或更新版本的 .vhd 映像，請選擇 [第 1 代] **** 。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image5.png)
-7. 在 [指派記憶體]**** 頁面上，至少指定 **8192 MB** 的「啟動記憶體」****，請勿啟用動態記憶體，然後按一下 [下一步]****。
+7. 在 [指派記憶體] 頁面上，至少指定 **8192 MB** 的「啟動記憶體」，請勿啟用動態記憶體，然後按一下 [下一步]。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image6.png)  
-8. 在 [設定網路功能]**** 頁面上，指定連線到網際網路的虛擬交換器，然後按一下 [下一步]****。
+8. 在 [設定網路功能] 頁面上，指定連線到網際網路的虛擬交換器，然後按一下 [下一步]。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image7.png)
 9. 在 [連接虛擬硬碟]**** 頁面上，選擇 [使用現有的虛擬硬碟]****，指定虛擬陣列映像 (.vhdx 或.vhd) 的位置，然後按一下 [下一步]****。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image8m.png)
-10. 檢閱「摘要」****，然後按一下 [結束]**** 來建立虛擬機器。
+10. 檢閱「摘要」，然後按一下 [結束] 來建立虛擬機器。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image9.png)
-11. 您需要 4 顆核心才能符合最低需求。 若要新增 4 顆虛擬處理器，請在 [Hyper-V 管理員]**** 視窗中選取您的主機系統。 在右窗格中的 [虛擬機器]**** 清單下，找出您剛才建立的虛擬機器。 選取虛擬機器的名稱並按一下滑鼠右鍵，然後選取 [設定] ****。
+11. 您需要 4 顆核心才能符合最低需求。 若要新增 4 顆虛擬處理器，請在 [Hyper-V 管理員] 視窗中選取您的主機系統。 在右窗格中的 [虛擬機器] 清單下，找出您剛才建立的虛擬機器。 選取虛擬機器的名稱並按一下滑鼠右鍵，然後選取 [設定] 。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image10.png)
-12. 在 [設定]**** 頁面上，按一下左窗格中的 [處理器]****。 在右窗格中，將 [虛擬處理器數目]**** 設定為 4 (或更多)。 按一下 [套用]  。
+12. 在 [設定] 頁面上，按一下左窗格中的 [處理器]。 在右窗格中，將 [虛擬處理器數目] 設定為 4 (或更多)。 按一下 [套用]。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image11.png)
-13. 您也必須新增 500 GB 的虛擬資料磁碟，才能符合最低需求。 在 [設定]**** 頁面中：
+13. 您也必須新增 500 GB 的虛擬資料磁碟，才能符合最低需求。 在 [設定] 頁面中：
 
-    1. 在左窗格中，選取 [SCSI 控制器]****。
-    2. 在右窗格中，選取 [硬碟]****，然後按一下 [新增]****。
+    1. 在左窗格中，選取 [SCSI 控制器]。
+    2. 在右窗格中，選取 [硬碟]，然後按一下 [新增]。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image12.png)
-14. 在 [硬碟]**** 頁面上，選取 [虛擬硬碟]**** 選項，然後按一下 [新增]****。 [新增虛擬硬碟精靈]**** 會啟動。
+14. 在 [硬碟] 頁面上，選取 [虛擬硬碟] 選項，然後按一下 [新增]。 [新增虛擬硬碟精靈] 會啟動。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image13.png)
-15. 在「新增虛擬硬碟精靈」的 [開始之前]**** 頁面上，按一下 [下一步]****。
-16. 在 [選擇磁碟格式]**** 頁面上，接受 [VHDX]**** 格式預設選項。 按 [下一步]  。 如果您執行的是 Windows Server 2008 R2，則不會出現此畫面。
+15. 在「新增虛擬硬碟精靈」的 [開始之前] 頁面上，按一下 [下一步]。
+16. 在 [選擇磁碟格式] 頁面上，接受 [VHDX] 格式預設選項。 按 [下一步] 。 如果您執行的是 Windows Server 2008 R2，則不會出現此畫面。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image15.png)
-17. 在 [選擇磁碟類型]**** 頁面上，將虛擬硬碟類型設定為 [動態擴充]**** \(建議選項)。 [固定大小]**** 磁碟可以運作，但您可能需要等待很長一段時間。 建議您不要使用 [差異] **** 選項。 按 [下一步]  。 在 Windows Server 2012 R2 和 Windows Server 2012 中，[動態擴充]**** 是預設選項，而在 Windows Server 2008 R2 中，預設值是 [固定大小]****。
+17. 在 [選擇磁碟類型] 頁面上，將虛擬硬碟類型設定為 [動態擴充] \(建議選項)。 [固定大小] 磁碟可以運作，但您可能需要等待很長一段時間。 建議您不要使用 [差異]  選項。 按 [下一步] 。 在 Windows Server 2012 R2 和 Windows Server 2012 中，[動態擴充]**** 是預設選項，而在 Windows Server 2008 R2 中，預設值是 [固定大小]****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image16.png)
-18. 在 [指定名稱和位置]**** 頁面上，提供資料磁碟的「名稱」**** 和「位置」****(您可以瀏覽至該位置)。 按 [下一步]  。
+18. 在 [指定名稱和位置] 頁面上，提供資料磁碟的「名稱」和「位置」(您可以瀏覽至該位置)。 按 [下一步] 。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. 在「設定磁碟」**** 頁面上，選取 [建立新的空白虛擬硬碟]**** 選項，然後將大小指定為 **500 GB** (或更多)。 500 GB 是最低需求，您永遠可以佈建更大的磁碟。 請注意，佈建之後您無法擴充或縮小磁碟。 如需布建磁片大小的詳細資訊，請參閱[最佳作法檔](storsimple-ova-best-practices.md)中的調整大小一節。 按 [下一步]  。
+19. 在「設定磁碟」**** 頁面上，選取 [建立新的空白虛擬硬碟]**** 選項，然後將大小指定為 **500 GB** (或更多)。 500 GB 是最低需求，您永遠可以佈建更大的磁碟。 請注意，佈建之後您無法擴充或縮小磁碟。 如需布建磁片大小的詳細資訊，請參閱[最佳作法檔](storsimple-ova-best-practices.md)中的調整大小一節。 按 [下一步] 。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
-20. 在 [摘要]**** 頁面上，檢閱虛擬資料磁碟的詳細資料，如果您對這些資料感到滿意，請按一下 [完成]**** 來建立磁碟。 精靈會關閉，虛擬硬碟會新增至您的電腦。
+20. 在 [摘要] 頁面上，檢閱虛擬資料磁碟的詳細資料，如果您對這些資料感到滿意，請按一下 [完成] 來建立磁碟。 精靈會關閉，虛擬硬碟會新增至您的電腦。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image19.png)
-21. 返回 [設定]**** 頁面。 按一下 [確定]**** 來關閉「設定」**** 頁面並返回 [Hyper-V 管理員] 視窗。
+21. 返回 [設定] 頁面。 按一下 [確定] 來關閉「設定」頁面並返回 [Hyper-V 管理員] 視窗。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image20.png)
 
@@ -160,10 +159,10 @@ ms.locfileid: "79267530"
 1. 啟動虛擬陣列。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image21.png)
-2. 當裝置開始執行之後，選取裝置並按一下滑鼠右鍵，然後選取 [連接] ****。
+2. 當裝置開始執行之後，選取裝置並按一下滑鼠右鍵，然後選取 [連接] 。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image22.png)
-3. 您可能需要等待 5 至 10 分鐘，裝置才會準備就緒。 主控台會顯示狀態訊息以表明進度。 裝置就緒之後，請前往 [動作] ****。 按 `Ctrl + Alt + Delete` 來登入虛擬陣列。 預設使用者為 *StorSimpleAdmin*，預設密碼為 *Password1*。
+3. 您可能需要等待 5 至 10 分鐘，裝置才會準備就緒。 主控台會顯示狀態訊息以表明進度。 裝置就緒之後，請前往 [動作] 。 按 `Ctrl + Alt + Delete` 來登入虛擬陣列。 預設使用者為 *StorSimpleAdmin*，預設密碼為 *Password1*。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. 基於安全性理由，裝置系統管理員密碼會在第一次登入時過期。 系統會提示您變更密碼。
@@ -214,7 +213,7 @@ ms.locfileid: "79267530"
 
 如果您在使用本機 Web UI 進行初始設定時碰到其他任何錯誤，請參閱下列工作流程：
 
-* 執行診斷測試來 [疑難排解 Web UI 安裝程式錯誤](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)。
+* 執行診斷測試來[疑難排解 WEB UI 安裝程式](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)。
 * [產生記錄檔封裝及檢視記錄檔](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
 
 ## <a name="next-steps"></a>後續步驟

@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
 ms.openlocfilehash: e76fc2da8da2325a8bb0cda47c4405c9eb03c8f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79249993"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解
@@ -26,7 +25,7 @@ ms.locfileid: "79249993"
 疑難排解程序如下所示︰
 
 1. 停止受影響的 VM。
-1. 為 VM 的 OS 磁片建立快照集。
+1. 建立 VM 的 OS 磁碟快照集。
 1. 從快照集建立虛擬硬碟。
 1. 將虛擬硬碟連結和掛接至另一個 Windows VM，以進行疑難排解。
 1. 連接至疑難排解 VM。 編輯檔案或執行任何工具來修正原始虛擬硬碟的問題。
@@ -127,7 +126,7 @@ ms.locfileid: "79249993"
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>交換 VM 的 OS 磁片
 
-Azure 入口網站現在支援變更 VM 的 OS 磁片。 若要執行此動作，請依照下列步驟執行：
+Azure 入口網站現在支援變更 VM 的 OS 磁片。 若要這樣做，請執行下列步驟：
 
 1. 移至 [Azure 入口網站 ](https://portal.azure.com)。 從側邊欄選取 [**虛擬機器**]，然後選取發生問題的 VM。
 1. 在左窗格中選取 [**磁片**]，然後選取 [**交換 OS 磁片**]。

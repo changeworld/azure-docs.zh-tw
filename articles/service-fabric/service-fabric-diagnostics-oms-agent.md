@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79366733"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure 監視器記錄進行效能監視
@@ -33,7 +32,7 @@ ms.locfileid: "79366733"
 
 3. 如果您要建立 Windows 叢集，請按一下 [Windows 伺服器]****，如果您要建立 Linux 叢集，請按一下 [Linux 伺服器]****。 此頁面會顯示您的 `workspace ID` 和 `workspace key` (列為入口網站中的主索引鍵)。 您在下一個步驟需要上述兩項。
 
-4. 執行命令，將 Log Analytics 代理程式安裝到您的`vmss extension set`叢集上，並使用 API：
+4. 執行命令，將 Log Analytics 代理程式安裝到您的叢集上，並使用 `vmss extension set` API：
 
     若為 Windows 叢集：
 
@@ -67,7 +66,7 @@ ms.locfileid: "79366733"
 
 現在您已新增 Log Analytics 代理程式，請前往 Log Analytics 入口網站來選擇您要收集的效能計數器。
 
-1. 在 Azure 入口網站中，移至您建立 Service Fabric 分析解決方案所在的資源群組。 選取 [ServiceFabric\<nameOfLog AnalyticsWorkspace\>]****。
+1. 在 Azure 入口網站中，移至您建立 Service Fabric 分析解決方案所在的資源群組。 選取 **[ \<nameOfLog AnalyticsWorkspace\> ServiceFabric**]。
 
 2. 按一下 [Log Analytics]****。
 

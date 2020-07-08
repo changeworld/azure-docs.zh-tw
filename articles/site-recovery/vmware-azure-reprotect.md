@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
 ms.openlocfilehash: 976888f57269cc9fe6107a38e30d78c73eb5c124
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79257169"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>從 Azure 移至內部部署來重新保護
@@ -55,7 +54,7 @@ ms.locfileid: "79257169"
 
 啟用重新保護，如下所示：
 
-1. 選取 [保存**庫** > ] [複寫的**專案**]。 以滑鼠右鍵按一下已容錯移轉的虛擬機器，然後選取 [重新保護]****。 或者，從命令按鈕選取機器，然後選取 [重新保護]****。
+1. 選取 [保存**庫**] [複寫  >  的**專案**]。 以滑鼠右鍵按一下已容錯移轉的虛擬機器，然後選取 [重新保護]****。 或者，從命令按鈕選取機器，然後選取 [重新保護]****。
 2. 確認已選取 [Azure 到內部部署]**** 作為保護方向。
 3. 在 [主要目標伺服器]**** 和 [處理伺服器]**** 中，選取內部部署主要目標伺服器和處理伺服器。  
 4. 對於 [資料存放區]****，選取您想要將內部部署磁碟復原至該位置的資料存放區。 當內部部署虛擬機器已被刪除且您需要建立新的磁碟時，請使用此選項。 如果磁碟已存在，則會忽略此選項。 您仍需要指定一個值。

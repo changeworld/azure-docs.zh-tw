@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79250084"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用適用於 SysRq 和 NMI 呼叫的序列主控台
@@ -98,7 +97,7 @@ echo "1" >/proc/sys/kernel/sysrq
 - [收集損毀記錄](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="non-maskable-interrupt-nmi"></a>非遮罩式插斷 (NMI)
-非遮罩式插斷 (NMI) 旨在建立虛擬機器上軟體不會忽略的訊號。 在過去，NMI 已用來監視系統上需要特定回應時間的硬體問題。  目前，程式設計人員和系統管理員通常會使用 NMI 做為不回應系統的一種機制來進行程式設計或疑難排解。
+非遮罩式插斷 (NMI) 旨在建立虛擬機器上軟體不會忽略的訊號。 在過去，NMI 已用來監視系統上需要特定回應時間的硬體問題。  現在，程式設計人員和系統管理員通常會使用 NMI 作為對無回應系統進行偵錯和疑難排解的機制。
 
 使用序列主控台命令列中的鍵盤圖示，即可將 NMI 傳送至 Azure 虛擬機器，如下所示。 NMI 序列傳遞出去後，虛擬機器組態將會控制系統的回應方式。  Linux 作業系統可以設定為損毀，並在作業系統收到 NMI 時，建立記憶體傾印。
 
@@ -131,4 +130,4 @@ echo "1" >/proc/sys/kernel/sysrq
 * 主要序列主控台 Linux 文件頁面在[這裡](serial-console-linux.md)。
 * 使用序列主控台在開機時進入 [GRUB 並進入單一使用者模式](serial-console-grub-single-user-mode.md)
 * 「序列主控台」也適用於 [Windows](serial-console-windows.md) VM
-* 深入了解[開機診斷](boot-diagnostics.md)
+* 深入瞭解[開機診斷](boot-diagnostics.md)

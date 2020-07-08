@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
 ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79214713"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>在 Azure 雲端服務角色上安裝 .NET
@@ -36,7 +35,7 @@ ms.locfileid: "79214713"
 
 若要新增 web** 角色的安裝程式：
   1. 在 [方案總管]**** 中，於雲端服務專案中的 [角色]**** 下，以滑鼠右鍵按一下您的 web** 角色，然後依序選取 [新增]**** > [新增資料夾]****。 建立名為**bin**的資料夾。
-  2. 在 bin 資料夾上按一下滑鼠右鍵，然後選取 [**加入** > **現有專案**]。 選取 .NET 安裝程式，並將它加入至 bin 資料夾。
+  2. 在 bin 資料夾上按一下滑鼠右鍵，然後選取 [**加入**  >  **現有專案**]。 選取 .NET 安裝程式，並將它加入至 bin 資料夾。
   
 若要新增 worker** 角色的安裝程式：
 * 以滑鼠右鍵按一下您的 worker** 角色，然後依序選取 [新增]**** > [現有項目]****。 選取 .NET 安裝程式，並將它加入至角色。 
@@ -197,7 +196,7 @@ ms.locfileid: "79214713"
    EXIT /B 0
    ```
 
-3. 使用**方案總管**中的 [**加入** > **現有專案**]，將 install .cmd 檔案新增至每個角色，如本主題稍早所述。 
+3. 使用方案總管中的 [**加入**現有專案]，將 install .cmd 檔案新增至每個角色，  >  **Existing Item**如本主題稍早所述。 **Solution Explorer** 
 
     完成此步驟之後，所有角色應該都有 .NET 安裝程式檔案，以及 install.cmd 檔案。
 

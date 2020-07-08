@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78968903"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
@@ -75,9 +74,9 @@ GitHub 存放庫包括 DB2server.rsp 回應檔 (.rsp)，此檔案可讓您產生
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | 歡迎使用                   |                                              | 新安裝                                                                                           |
 | 選擇產品          |                                              | DB2 版本 11.1.3.3。 具有 DB2 pureScale 的伺服器版本                                              |
-| 設定             | 目錄                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| 組態             | 目錄                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | 選取安裝類型                 | 一般                                                                                               |
-|                           | 我同意 IBM 條款                     | 已核取                                                                                               |
+|                           | 我同意 IBM 條款                     | 已檢查                                                                                               |
 | 執行個體擁有者            | 例如現有使用者、使用者名稱        | DB2sdin1                                                                                              |
 | 受限使用者               | 現有使用者、使用者名稱                     | DB2sdfe1                                                                                              |
 | 叢集檔案系統       | 共用磁碟磁碟分割裝置路徑            | /dev/dm-2                                                                                             |

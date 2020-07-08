@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79271937"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 為 Apache Spark 進行疑難排解
@@ -21,11 +20,11 @@ ms.locfileid: "79271937"
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>如何使用 Apache Ambari 在叢集上設定 Apache Spark 應用程式？
 
-Spark 設定值可以微調，協助避免 Apache Spark 應用程式`OutofMemoryError`例外狀況。 下列步驟顯示 Azure HDInsight 中的預設 Spark 設定值：
+Spark 設定值可以微調，協助避免 Apache Spark 應用程式 `OutofMemoryError` 例外狀況。 下列步驟顯示 Azure HDInsight 中的預設 Spark 設定值：
 
 1. `https://CLUSTERNAME.azurehdidnsight.net`使用您的叢集認證登入 Ambari。 初始畫面會顯示 [總覽] 儀表板。 HDInsight 3.6 和4.0 之間有些微的表面差異。
 
-1. 流覽至**Spark2** > **的 [** 的] [進行]。
+1. 流覽至**Spark2**的 [的] [進行]  >  ** **。
 
     ![選取 [設定] 索引標籤](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
@@ -37,7 +36,7 @@ Spark 設定值可以微調，協助避免 Apache Spark 應用程式`OutofMemory
 
 1. 將值設為建議的設定。 這項設定的建議值為 **2048m**。
 
-1. 儲存此值，然後儲存設定。 選取 [儲存]  。
+1. 儲存此值，然後儲存設定。 選取 [儲存]。
 
     ![將值變更為 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
@@ -109,8 +108,8 @@ spark-submit --master yarn-cluster --class com.microsoft.spark.application --num
 
 * [在 HDInsight 叢集上進行 Spark 應用程式的偵錯工具](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)。
 
-* 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
-* 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，以改善客戶體驗。 將 Azure 社區連接到正確的資源：解答、支援和專家。
+* 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

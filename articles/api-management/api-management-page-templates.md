@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79249538"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的頁面範本
@@ -27,7 +26,7 @@ ms.locfileid: "79249538"
   
 -   [登入](#SignIn)  
   
--   [註冊](#SignUp)  
+-   [登記](#SignUp)  
   
 -   [找不到頁面](#PageNotFound)  
   
@@ -104,7 +103,7 @@ ms.locfileid: "79249538"
   
 -   [basic-signin](api-management-page-controls.md#basic-signin)  
   
--   [都會](api-management-page-controls.md#providers)  
+-   [提供者](api-management-page-controls.md#providers)  
   
 ### <a name="data-model"></a>資料模型  
  [使用者登入](api-management-template-data-model-reference.md#UseSignIn)實體。  
@@ -185,7 +184,7 @@ ms.locfileid: "79249538"
 }  
 ```  
   
-##  <a name="page-not-found"></a><a name="PageNotFound"></a> 找不到頁面  
+##  <a name="page-not-found"></a><a name="PageNotFound"></a>找不到頁面  
  「找不到頁面」**** 範本可讓您自訂開發人員入口網站中的「找不到頁面」頁面。  
   
  ![找不到頁面](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM 找不到頁面開發人員入口網站範本")  
@@ -227,7 +226,7 @@ ms.locfileid: "79249538"
   
 ### <a name="data-model"></a>資料模型  
   
-|屬性|類型|描述|  
+|屬性|類型|Description|  
 |--------------|----------|-----------------|  
 |referenceCode|字串|因發生內部錯誤而顯示此頁面時所產生的代碼。|  
 |errorCode|字串|因發生內部錯誤而顯示此頁面時所產生的代碼。|  

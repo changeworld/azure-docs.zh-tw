@@ -8,17 +8,16 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79254751"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打開包裝、掛接機架和佈線 StorSimple 8600 裝置
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 您的 Microsoft Azure StorSimple 8600 是雙重機箱裝置，包含主要及 EBOD 機箱。 本教學課程說明如何在您設定 StorSimple 軟體之前，打開包裝、利用機架掛接和配接 StorSimple 8600 裝置硬體纜線。
 
 ## <a name="unpack-your-storsimple-8600-device"></a>打開您的 StorSimple 8600 裝置包裝
@@ -119,7 +118,7 @@ ms.locfileid: "79254751"
    
     **將滑軌組件連接至機架**
    
-   | 標籤 | 描述 |
+   | 標籤 | 說明 |
    | --- | --- |
    |   1 |固定螺絲 |
    |   2 |方孔前端機架柱螺絲 |
@@ -145,7 +144,7 @@ ms.locfileid: "79254751"
    
     **安裝輪緣蓋**
    
-   | 標籤 | 描述 |
+   | 標籤 | 說明 |
    | --- | --- |
    |   1 |機箱鎖固螺絲 |
 
@@ -164,7 +163,7 @@ ms.locfileid: "79254751"
 ## <a name="cable-your-storsimple-8600-device"></a>佈線您的 StorSimple 8600 裝置
 下列程序說明如何針對 StorSimple 8600 裝置的電源、網路和序列連線進行佈線。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 開始您的裝置佈線之前，您需要：
 
 * 完全打開您的主要機箱與 EBOD 機箱的包裝

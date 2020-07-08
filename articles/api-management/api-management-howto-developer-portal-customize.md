@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
 ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79244091"
 ---
 # <a name="access-and-customize-developer-portal"></a>存取和自訂開發人員入口網站
@@ -36,9 +35,9 @@ ms.locfileid: "79244091"
 
 ![API 管理開發人員入口網站-管理員模式](media/api-management-howto-developer-portal-customize/cover.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 完成下列快速入門：[建立 AZURE API 管理實例](get-started-create-service-instance.md)
+- 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)
 - 匯入並發佈 Azure API 管理執行個體。 如需詳細資訊，請參閱匯[入和發佈](import-and-publish.md)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
@@ -68,7 +67,7 @@ ms.locfileid: "79244091"
 
 版面配置定義頁面的顯示方式。 例如，在預設內容中，有兩個配置-一個適用于首頁，另一個則套用至所有剩餘的頁面。
 
-版面配置會藉由將其 URL 範本與頁面的 URL 進行比對，套用至頁面。 例如，具有 url 範本`/wiki/*`的配置會套用至 url 中含有`/wiki/`區段的每個頁面： `/wiki/getting-started`、 `/wiki/styles`等等。
+版面配置會藉由將其 URL 範本與頁面的 URL 進行比對，套用至頁面。 例如，具有 URL 範本的配置會套用 `/wiki/*` 至 url 中含有區段的每個頁面 `/wiki/` ： `/wiki/getting-started` 、 `/wiki/styles` 等等。
 
 在上圖中，屬於版面配置的內容會以藍色標示，而頁面則會以紅色標示。 功能表區段會分別標示。
 
@@ -91,7 +90,7 @@ ms.locfileid: "79244091"
 在您將入口網站提供給訪客使用之前，您應該將自動產生的內容個人化。 建議的變更包括 [首頁] 的版面配置、樣式和內容。
 
 > [!NOTE]
-> 由於整合考慮`/404`，下列頁面無法在不同的 URL 下移除或移動：、 `/500`、 `/captcha`、 `/change-password`、 `/config.json`、 `/confirm/invitation` `/confirm-v2/identities/basic/signup` `/confirm-v2/password` `/internal-status-0123456789abcdef` `/publish` `/signin` `/signin-sso`、、、、、、、。 `/signup`
+> 由於整合考慮，下列頁面無法在不同的 URL 下移除或移動： `/404` 、 `/500` 、、、 `/captcha` `/change-password` `/config.json` 、 `/confirm/invitation` `/confirm-v2/identities/basic/signup` `/confirm-v2/password` `/internal-status-0123456789abcdef` `/publish` `/signin` `/signin-sso` `/signup` 、、、、、、、。
 
 ### <a name="home-page"></a>首頁
 
@@ -124,7 +123,7 @@ ms.locfileid: "79244091"
 
 ## <a name="visit-the-published-portal"></a>造訪已發佈的入口網站
 
-發佈入口網站後，您可以在與系統管理面板相同的 URL 上存取它，例如`https://contoso-api.developer.azure-api.net`。 以獨立的瀏覽器會話（incognito/私用瀏覽模式）來觀看，做為外部訪客。
+發佈入口網站後，您可以在與系統管理面板相同的 URL 上存取它，例如 `https://contoso-api.developer.azure-api.net` 。 以獨立的瀏覽器會話（incognito/私用瀏覽模式）來觀看，做為外部訪客。
 
 ## <a name="apply-the-cors-policy-on-apis"></a>對 Api 套用 CORS 原則
 

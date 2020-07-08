@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79266984"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
@@ -69,7 +68,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
   - 驅動程式資訊
 
 - 硬體
-  - PCI 裝置 [`*`]
+  - PCI 裝置 [ `*` ]
 
 - 進程和記憶體
   - 進程清單（工作名稱、使用的記憶體、開啟的檔案）
@@ -103,7 +102,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
   - /var/log/waagent.log
-  - /var/log/azure/[延伸模組資料夾]\*/記錄\*
+  - /var/log/azure/[延伸模組資料夾]/ \* 記錄\*
   - /var/opt/microsoft/omsconfig/omsconfig.log
   - /var/opt/microsoft/omsagent/log/omsagent.log
   - /etc/waagent.config
@@ -112,7 +111,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 - [Azure 虛擬機器實例中繼資料](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 >[!Note]
->[`*`] 尚未在 DEBIAN 和 SLES 發行版本上收集 PCI 資訊
+>[ `*` ] 尚未在 Debian 和 SLES 發行版本上收集 PCI 資訊
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>在您的 VM 上執行 PerfInsights Linux
 
@@ -127,16 +126,16 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
     | 散發               | 版本                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux 伺服器        | 6.10 [`*`]、7.3、7.6、7.5 （Oracle-資料庫-Ee 13.8 marketplace 映射）|
-    | CentOS                     | 6.5 [`*`]，7。6                                    |
-    | RHEL                       | 7.2、7.5、8.0 [`*`]                               |
+    | Oracle Linux 伺服器        | 6.10 [ `*` ]、7.3、7.6、7.5 （Oracle-資料庫-Ee 13.8 marketplace 映射）|
+    | CentOS                     | 6.5 [ `*` ]，7。6                                    |
+    | RHEL                       | 7.2、7.5、8.0 [ `*` ]                               |
     | Ubuntu                     | 14.04、16.04、18.04                               |
-    | Debian                     | 8、9、10 [`*`]                                    |
-    | SLES                       | 12 SP4 [`*`]                                      |
+    | Debian                     | 8、9、10 [ `*` ]                                    |
+    | SLES                       | 12 SP4 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
->[`*`] 請參閱[已知問題](#known-issues)一節
+>[ `*` ] 請參閱[已知問題](#known-issues)一節
 
 ### <a name="known-issues"></a>已知問題
 
@@ -173,7 +172,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. 流覽至包含`perfinsights.py`檔案的資料夾，然後執行`perfinsights.py`以查看可用的命令列參數。
+2. 流覽至包含檔案的資料夾 `perfinsights.py` ，然後執行 `perfinsights.py` 以查看可用的命令列參數。
 
     ```bash
     cd <the path of PerfInsights folder>
@@ -205,11 +204,11 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
     >
     >如果您有 Microsoft 的主動式支援票證，並根據您所使用之支援工程師的要求來執行 PerfInsights，請務必使用 **-s 或--support-要求**選項提供支援票證號碼。
 
-當執行完成時，新的 tar 檔案會出現在與 PerfInsights 相同的資料夾中，除非沒有指定輸出檔案夾。 檔案的名稱是**PerformanceDiagnostics\_yyyy-mm-dd\_hh-mm-ss-fff.zip. gz。** 您可以將此檔案傳送給支援代理程式進行分析，或在檔案內開啟報表來審查結果和建議。
+當執行完成時，新的 tar 檔案會出現在與 PerfInsights 相同的資料夾中，除非沒有指定輸出檔案夾。 檔案的名稱是**PerformanceDiagnostics \_ yyyy-mm-dd \_ hh-mm-ss-fff.zip. gz。** 您可以將此檔案傳送給支援代理程式進行分析，或在檔案內開啟報表來審查結果和建議。
 
 ## <a name="review-the-diagnostics-report"></a>檢閱診斷報告
 
-在**\_PerformanceDiagnostics 的 yyyy-mm-dd\_hh-mm-ss-fff.zip**中，您可以找到詳細說明 PerfInsights 結果的 HTML 報表。 若要檢查報表，請展開 **[\_PerformanceDiagnostics yyyy-mm-dd\_Hh-mm-ss-fff.zip** ]，然後開啟**PerfInsights 報告 .html**檔案。
+在**PerformanceDiagnostics 的 \_ yyyy-mm-dd \_ hh-mm-ss-fff.zip**中，您可以找到詳細說明 PerfInsights 結果的 HTML 報表。 若要檢查報表，請展開 [ **PerformanceDiagnostics \_ yyyy-mm-dd \_ hh-mm-ss-fff.zip** ]，然後開啟**PerfInsights Report.html**檔案。
 
 ### <a name="overview-tab"></a>Overview (概觀) 索引標籤
 
@@ -254,4 +253,4 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
 請依照訊息中的指示來存取檔案傳輸工作區。 為增加安全性，您必須在第一次使用時變更密碼。
 
-登入之後，您會發現一個對話方塊，可讓您上傳 PerfInsights 所收集的**\_PerformanceDiagnostics\_yyyy-mm-dd hh-mm-ss-fff.zip. gz**檔案。
+登入之後，您會發現一個對話方塊，可讓您上傳 PerfInsights 所收集的**PerformanceDiagnostics \_ yyyy-mm-dd \_ hh-mm-ss-fff.zip. gz**檔案。

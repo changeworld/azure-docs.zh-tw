@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79256961"
 ---
 # <a name="manage-the-mobility-agent"></a>管理行動代理程式 
@@ -29,7 +28,7 @@ ms.locfileid: "79256961"
 
      ![[複寫的項目] 視窗](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
-4. 按一下通知，然後在 [代理程式更新]**** 中，選取您想要升級行動服務的機器。 然後按一下 [ **確定**]。
+4. 按一下通知，然後在 [代理程式更新]**** 中，選取您想要升級行動服務的機器。 然後按一下 [確定] 。
 
      ![複寫的項目 VM 清單](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
@@ -66,7 +65,7 @@ Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Acco
 
 從 UI 或命令提示字元解除安裝。
 
-- **從 UI**：在機器的 [控制台] 中，選取 [程式集]****。 選取 [ **Microsoft Azure Site Recovery 行動服務/主要目標伺服器** > ] [**卸載**]。
+- **從 UI**：在機器的 [控制台] 中，選取 [程式集]****。 選取 [ **Microsoft Azure Site Recovery 行動服務/主要目標伺服器**] [  >  **卸載**]。
 - **從命令提示字元**：以機器上的系統管理員身分開啟命令提示字元視窗。 執行下列命令： 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"

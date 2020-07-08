@@ -8,10 +8,9 @@ ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79096773"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>準備封存至儲存體帳戶 Azure 監視器平臺記錄的格式變更
@@ -25,7 +24,7 @@ ms.locfileid: "79096773"
 Azure 監視器提供一項功能，可讓您將資源記錄和活動記錄傳送至 Azure 儲存體帳戶、事件中樞命名空間，或 Azure 監視器中的 Log Analytics 工作區。 若要解決系統效能問題，請在**2018 年11月1日下午12:00 午夜**，記錄資料傳送至 blob 儲存體的格式已變更。 如果您有工具會從 Blob 儲存體讀取資料，便需要更新工具才能了解新的資料格式。
 
 * 在 12:00 2018 年11月1日星期四的 UTC 午夜，blob 格式已變更為[JSON 行](http://jsonlines.org/)。 這表示每筆記錄都會以新行字元隔開、沒有外部記錄陣列，而且 JSON 記錄之間沒有逗號。
-* 所有訂用帳戶的所有診斷設定一次變更的 blob 格式。 11月1日發出的第一個 PT1H 檔案使用了這種新格式。 Blob 和容器名稱維持不變。
+* 所有訂用帳戶的所有診斷設定一次變更的 blob 格式。 第一個在11月1日發出的檔案 PT1H.js使用這種新格式。 Blob 和容器名稱維持不變。
 * 在11月1日之前設定診斷設定，會繼續以目前的格式發出資料，直到11月1日為止。
 * 這種變更會在所有公用雲端區域發生一次。 這項變更不會發生在由世紀、Azure 德國或 Azure Government 雲端操作 Microsoft Azure。
 * 這項變更會影響下列資料類型：

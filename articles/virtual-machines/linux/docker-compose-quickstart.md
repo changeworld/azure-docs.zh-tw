@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78970313"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>在 Azure 中開始使用 Docker 和 Compose 定義並執行多容器應用程式
@@ -21,7 +20,7 @@ ms.locfileid: "78970313"
 ## <a name="create-docker-host-with-azure-cli"></a>使用 Azure CLI 建立 Docker 主機
 請安裝最新的 [Azure CLI](/cli/azure/install-az-cli2)，並使用 [az login](/cli/azure/reference-index) 來登入 Azure 帳戶。
 
-首先，使用 [az group create](/cli/azure/group) 建立 Docker 環境的資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
+首先，使用 [az group create](/cli/azure/group) 建立 Docker 環境的資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
 
 ```azurecli-interactive
 az group create --name myDockerGroup --location eastus
@@ -33,7 +32,7 @@ az group create --name myDockerGroup --location eastus
 #include https://get.docker.com
 ```
 
-現在，使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM。 使用 `--custom-data` 參數以傳入 cloud-init 組態檔。 如果您將檔案儲存於目前工作目錄之外的位置，請提供 cloud-init.txt** 組態的完整路徑。 下列範例會建立名為 *myDockerVM* 的 VM，並針對 Web 流量開啟連接埠 80。
+現在，使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM。 使用 `--custom-data` 參數以傳入 cloud-init 組態檔。 如果您將檔案儲存於目前工作目錄之外的位置，請提供 cloud-init.txt 組態的完整路徑。 下列範例會建立名為 *myDockerVM* 的 VM，並針對 Web 流量開啟連接埠 80。
 
 ```azurecli-interactive
 az vm create \

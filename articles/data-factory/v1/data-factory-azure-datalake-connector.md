@@ -13,10 +13,9 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b6a60536bae6fbedf01eda7aa340e90ced58e004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281596"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>使用 Data Factory 從 Data Lake Storage Gen1 來回複製資料
@@ -71,9 +70,9 @@ Data Lake Store 連接器支援這些驗證類型：
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| **type** | 類型屬性必須設定為 **AzureDataLakeStore**。 | 是 |
+| **type** | 類型屬性必須設定為 **AzureDataLakeStore**。 | Yes |
 | **dataLakeStoreUri** | Azure Data Lake Store 帳戶相關資訊。 此資訊會採用下列其中一種格式：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
-| **訂閱** | Data Lake Store 帳戶所屬的 Azure 訂用帳戶識別碼。 | 接收 (Sink) 的必要項目 |
+| **subscriptionId** | Data Lake Store 帳戶所屬的 Azure 訂用帳戶識別碼。 | 接收 (Sink) 的必要項目 |
 | **resourceGroupName** | Data Lake Store 帳戶所屬的 Azure 資源群組名稱。 | 接收 (Sink) 的必要項目 |
 
 ### <a name="service-principal-authentication-recommended"></a>服務主體驗證 (建議)
@@ -92,9 +91,9 @@ Data Lake Store 連接器支援這些驗證類型：
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | 指定應用程式的用戶端識別碼。 | 是 |
-| **servicePrincipalKey** | 指定應用程式的金鑰。 | 是 |
-| **出租** | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
+| **servicePrincipalId** | 指定應用程式的用戶端識別碼。 | Yes |
+| **servicePrincipalKey** | 指定應用程式的金鑰。 | Yes |
+| **tenant** | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
 
 **範例：服務主體驗證**
 ```json
@@ -119,8 +118,8 @@ Data Lake Store 連接器支援這些驗證類型：
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| **驗證** | 按一下「資料處理站編輯器」中的 [授權]**** 按鈕，然後輸入您的認證，此動作會將自動產生的授權 URL 指派給此屬性。 | 是 |
-| **Id** | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用「資料處理站編輯器」時便會自動產生此設定。 | 是 |
+| **驗證** | 按一下「資料處理站編輯器」中的 [授權]**** 按鈕，然後輸入您的認證，此動作會將自動產生的授權 URL 指派給此屬性。 | Yes |
+| **Id** | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用「資料處理站編輯器」時便會自動產生此設定。 | Yes |
 
 > [!IMPORTANT]
 > 請確定您將 Azure Data Lake Store 中適當的權限授與使用者：
@@ -201,7 +200,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 1. Azure Data Lake Store 已連結服務中指定的 `resourceGroupName` 和/或 `subscriptionId` 不正確；
 2. 使用者或服務主體沒有所需的權限。
 
-**解決方案：**
+**解決方法：**
 
 1. 確定您在已連結的服務 `typeProperties` 中指定的 `subscriptionId` 和 `resourceGroupName` 確實是您 Data Lake 帳戶所屬的項目。
 
@@ -238,11 +237,11 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| **folderPath** |Data Lake Store 中容器與資料夾的路徑。 |是 |
-| **名稱** |Azure Data Lake Store 中的檔案名稱。 fileName 屬性是選擇性的，而且區分大小寫****。 <br/><br/>如果您指定 fileName****，活動 (包括複製) 適用於特定的檔案。<br/><br/>如果您未指定 fileName，複製會在輸入資料集中包含 folderPath 中的所有檔案********。<br/><br/>當未指定輸出資料集的**fileName** ，且在活動接收中未指定**preserveHierarchy**時，所產生檔案的名稱格式`Data._Guid_.txt`為。 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |否 |
-| **partitionedBy** |partitionedBy**** 屬性為選擇性。 您可以用來指定時間序列資料的動態路徑與檔案名稱。 例如，folderPath **** 可針對每小時的資料進行參數化。 如需詳細資料和範例，請參閱「partitionedBy 屬性」。 |否 |
-| **format** | 支援下列格式類型：TextFormat****、JsonFormat****、AvroFormat****、OrcFormat**** 和 ParquetFormat****。 將 [format]**** 下的 [type]**** 屬性設定為下列其中一個值。 如需詳細資訊，請參閱 [Azure Data Factory 支援的檔案與壓縮格式](data-factory-supported-file-and-compression-formats.md)一文中[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[ORC 格式](data-factory-supported-file-and-compression-formats.md#orc-format)及 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)各節。 <br><br> 如果您想要在以檔案為基礎的存放區之間「依原樣」複製檔案 (二進位複本)，請略過輸入和輸出資料集定義中的 `format` 區段。 |否 |
-| **程度** | 指定此資料的壓縮類型和層級。 支援的類型為：GZip****、Deflate****、BZip2**** 及 ZipDeflate****。 支援的層級為 **Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 支援的檔案與壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| **folderPath** |Data Lake Store 中容器與資料夾的路徑。 |Yes |
+| **fileName** |Azure Data Lake Store 中的檔案名稱。 fileName 屬性是選擇性的，而且區分大小寫****。 <br/><br/>如果您指定 fileName****，活動 (包括複製) 適用於特定的檔案。<br/><br/>如果您未指定 fileName，複製會在輸入資料集中包含 folderPath 中的所有檔案********。<br/><br/>當未指定輸出資料集的**fileName** ，且在活動接收中未指定**preserveHierarchy**時，所產生檔案的名稱格式為 `Data._Guid_.txt` 。 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |No |
+| **partitionedBy** |partitionedBy**** 屬性為選擇性。 您可以用來指定時間序列資料的動態路徑與檔案名稱。 例如，folderPath **** 可針對每小時的資料進行參數化。 如需詳細資料和範例，請參閱「partitionedBy 屬性」。 |No |
+| **format** | 支援下列格式類型：TextFormat****、JsonFormat****、AvroFormat****、OrcFormat**** 和 ParquetFormat****。 將 [format] 下的 [type] 屬性設定為下列其中一個值。 如需詳細資訊，請參閱 [Azure Data Factory 支援的檔案與壓縮格式](data-factory-supported-file-and-compression-formats.md)一文中[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[ORC 格式](data-factory-supported-file-and-compression-formats.md#orc-format)及 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)各節。 <br><br> 如果您想要在以檔案為基礎的存放區之間「依原樣」複製檔案 (二進位複本)，請略過輸入和輸出資料集定義中的 `format` 區段。 |No |
+| **compression** | 指定此資料的壓縮類型和層級。 支援的類型為：GZip、Deflate、BZip2 及 ZipDeflate。 支援的層級為 **Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 支援的檔案與壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |No |
 
 ### <a name="the-partitionedby-property"></a>partitionedBy 屬性
 您可以使用 partitionedBy 屬性、Data Factory 函式及系統變數，來指定時間序列資料的動態 folderPath**** 和 fileName**** 屬性****。 如需詳細資料，請參閱 [Azure Data Factory - 函式與系統變數](data-factory-functions-variables.md)一文。
@@ -280,13 +279,13 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 AzureDataLakeStoreSource**** 支援 [typeProperties]**** 區段中的下列屬性：
 
-| 屬性 | 說明 | 允許的值 | 必要 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| **recursive** |指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 |True (預設值)、False |否 |
+| **recursive** |指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 |True (預設值)、False |No |
 
 AzureDataLakeStoreSink**** 支援 [typeProperties]**** 區段中的下列屬性：
 
-| 屬性 | 說明 | 允許的值 | 必要 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | **copyBehavior** |指定複製行為。 |<b>PreserveHierarchy</b>：保留目的檔案夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><br/><b>FlattenHierarchy</b>：來源資料夾的中所有檔案都會建立在目標資料夾的第一層中。 建立的目標檔案會具有自動產生的名稱。<br/><br/><b>MergeFiles</b>：將來源資料夾的所有檔案合併為一個檔案。 如果有指定檔案或 Blob 名稱，合併檔案的名稱會是指定的名稱。 否則，會自動產生檔案名稱。 |否 |
 
@@ -356,7 +355,7 @@ AzureDataLakeStoreSink**** 支援 [typeProperties]**** 區段中的下列屬性�
 > 如需組態詳細資料，請參閱[連結服務屬性](#linked-service-properties)一節。
 >
 
-**Azure blob 輸入資料集**
+**Azure Blob 輸入資料集**
 
 在下列範例中，每小時 (`"frequency": "Hour", "interval": 1`) 會從新的 Blob 中挑選資料。 根據正在處理之配量的開始時間，以動態方式評估 Blob 的資料夾路徑和檔案名稱。 資料夾路徑會使用開始時間的年、月和日部分。 檔案名稱會使用開始時間的小時部分。 `"external": true` 設定會通知 Data Factory 服務：這是資料處理站外部的資料表，且不是由資料處理站中的活動所產生。
 

@@ -9,10 +9,9 @@ ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79139108"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>管理 Azure Red Hat OpenShift 叢集中的專案、範本、影像串流 
@@ -21,11 +20,11 @@ ms.locfileid: "79139108"
 
 ## <a name="self-provisioning-projects"></a>自我布建專案
 
-您可以讓開發人員建立自己的專案。 API 端點會負責根據名為專案要求的範本來布建專案。 當開發人員建立新`oc new-project`的專案時，web 主控台和命令會使用此端點。
+您可以讓開發人員建立自己的專案。 API 端點會負責根據名為專案要求的範本來布建專案。 `oc new-project`當開發人員建立新的專案時，web 主控台和命令會使用此端點。
 
 提交專案要求時，API 會替代範本中的下列參數：
 
-| 參數               | 描述                                    |
+| 參數               | 說明                                    |
 | ----------------------- | ---------------------------------------------- |
 | PROJECT_NAME            | 專案的名稱。 必要。             |
 | PROJECT_DISPLAYNAME     | 專案的顯示名稱。 可以是空的。 |
@@ -37,7 +36,7 @@ API 的存取權會授與具有自我 provisioners 叢集角色系結的開發�
 
 ## <a name="modify-the-template-for-a-new-project"></a>修改新專案的範本 
 
-1. 以具有`customer-admin`許可權的使用者身分登入。
+1. 以具有許可權的使用者身分登入 `customer-admin` 。
 
 2. 編輯 [預設專案-要求] 範本。
 
@@ -61,7 +60,7 @@ API 的存取權會授與具有自我 provisioners 叢集角色系結的開發�
 
 您可以防止已驗證的使用者群組自行布建新專案。
 
-1. 以具有`customer-admin`許可權的使用者身分登入。
+1. 以具有許可權的使用者身分登入 `customer-admin` 。
 
 2. 編輯自我 provisioners 叢集角色系結。
 
@@ -69,7 +68,7 @@ API 的存取權會授與具有自我 provisioners 叢集角色系結的開發�
    oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
-3. 藉由新增下列注釋，從 ARO 更新程式中移除角色： `openshift.io/reconcile-protect: "true"`。
+3. 藉由新增下列注釋，從 ARO 更新程式中移除角色： `openshift.io/reconcile-protect: "true"` 。
 
    ```
    ...
@@ -79,7 +78,7 @@ API 的存取權會授與具有自我 provisioners 叢集角色系結的開發�
    ...
    ```
 
-4. 變更叢集角色系結以防止`system:authenticated:oauth`建立專案：
+4. 變更叢集角色系結以防止 `system:authenticated:oauth` 建立專案：
 
    ```
    apiVersion: rbac.authorization.k8s.io/v1
@@ -101,18 +100,18 @@ API 的存取權會授與具有自我 provisioners 叢集角色系結的開發�
 
 ## <a name="manage-default-templates-and-imagestreams"></a>管理預設範本和 imageStreams
 
-在 Azure Red Hat OpenShift 中，您可以停用命名空間內`openshift`任何預設範本和影像串流的更新。
-若要在命名空間`Templates`中`ImageStreams`停`openshift`用所有和的更新：
+在 Azure Red Hat OpenShift 中，您可以停用命名空間內任何預設範本和影像串流的更新 `openshift` 。
+若要 `Templates` `ImageStreams` 在命名空間中停用所有和的更新 `openshift` ：
 
-1. 以具有`customer-admin`許可權的使用者身分登入。
+1. 以具有許可權的使用者身分登入 `customer-admin` 。
 
-2. 編輯`openshift`命名空間：
+2. 編輯 `openshift` 命名空間：
 
    ```
    oc edit namespace openshift
    ```
 
-3. 藉`openshift`由新增下列注釋，從 ARO 更新程式中移除命名空間：`openshift.io/reconcile-protect: "true"`
+3. 藉 `openshift` 由新增下列注釋，從 ARO 更新程式中移除命名空間：`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -122,7 +121,7 @@ API 的存取權會授與具有自我 provisioners 叢集角色系結的開發�
    ...
    ```
 
-   `openshift`命名空間中的任何個別物件都可以藉由在其中加入批註`openshift.io/reconcile-protect: "true"` ，從更新程式中移除。
+   命名空間中的任何個別物件 `openshift` 都可以藉由在其中加入批註，從更新程式中移除 `openshift.io/reconcile-protect: "true"` 。
 
 ## <a name="next-steps"></a>後續步驟
 

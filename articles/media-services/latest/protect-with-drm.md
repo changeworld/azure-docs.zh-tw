@@ -16,10 +16,9 @@ ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 14ba5f270138db22a76fd697b264046e22577427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79086727"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教學課程：使用 DRM 動態加密與授權傳遞服務
@@ -48,7 +47,7 @@ ms.locfileid: "79086727"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 需要有下列項目，才能完成教學課程：
 
@@ -57,7 +56,7 @@ ms.locfileid: "79086727"
 * 安裝 Visual Studio Code 或 Visual Studio。
 * 建立新的 Azure 媒體服務帳戶，如[此快速入門](create-account-cli-quickstart.md)所述。
 * 藉由遵循[存取 API](access-api-cli-how-to.md) 以取得使用媒體服務 API 所需的認證
-* 在應用程式佈建檔案（appsettings）中設定適當的值。
+* 在應用程式佈建檔中設定適當的值（appsettings.js開啟）。
 
 ## <a name="download-code"></a>下載程式碼
 
@@ -86,7 +85,7 @@ ms.locfileid: "79086727"
 
 ## <a name="get-or-create-an-encoding-transform"></a>取得或建立編碼轉換
 
-建立新的[轉換](transforms-jobs-concept.md)執行個體時，您需要指定想要其產生的輸出是什麼。 必要的參數是`transformOutput`物件，如下列程式碼所示。 每個 TransformOutput 都會包含 **Preset (預設)** 。 Preset 會描述影片和/或音訊處理作業的逐步指示，以產生所需的 TransformOutput。 本文中所述的範例會使用稱為 **AdaptiveStreaming** 的內建 Preset。 預設會根據輸入解析度和位元速率，將輸入影片編碼成自動產生的位元速率階梯（位元速率解析組），並使用 h.264 video 和 AAC 音訊（對應于每個位元速率解析組）來產生 ISO 的已執行檔。 
+建立新的[轉換](transforms-jobs-concept.md)執行個體時，您需要指定想要其產生的輸出是什麼。 必要的參數是 `transformOutput` 物件，如下列程式碼所示。 每個 TransformOutput 都會包含 **Preset (預設)** 。 Preset 會描述影片和/或音訊處理作業的逐步指示，以產生所需的 TransformOutput。 本文中所述的範例會使用稱為 **AdaptiveStreaming** 的內建 Preset。 預設會根據輸入解析度和位元速率，將輸入影片編碼成自動產生的位元速率階梯（位元速率解析組），並使用 h.264 video 和 AAC 音訊（對應于每個位元速率解析組）來產生 ISO 的已執行檔。 
 
 在建立新的**轉換**之前，您應該先使用 **Get** 方法檢查是否已有轉換存在，如後續程式碼所示。  在媒體服務 v3 中，如果實體不存在，對實體執行的 **Get** 方法會傳回 **null** (檢查名稱時不區分大小寫)。
 
@@ -114,7 +113,7 @@ ms.locfileid: "79086727"
 
 您必須在**內容金鑰原則**上設定需要符合的需求（限制），才能使用指定的設定來傳遞金鑰。 在此範例中，我們會設定下列組態和需求：
 
-* 設定
+* 組態
 
     設定 [PlayReady](playready-license-template-overview.md) 和 [Widevine](widevine-license-template-overview.md) 授權，使其可由媒體服務授權傳遞服務來傳遞。 雖然此範例應用程式不會設定[FairPlay](fairplay-license-overview.md)授權，但它包含可用來設定 FairPlay 的方法。 您可以新增 FairPlay 設定作為另一個選項。
 
@@ -135,7 +134,7 @@ ms.locfileid: "79086727"
 
 建立**串流定位器**的程式稱為「發行」。 根據預設，**串流定位器**會在您進行 API 呼叫之後立即生效。 除非您設定選擇性的開始和結束時間，否則它會持續到刪除為止。
 
-建立**串流定位器**時，您需要指定所需`StreamingPolicyName`的。 在本教學課程中，我們會使用其中一個預先定義的串流原則，告訴 Azure 媒體服務如何發佈內容以進行串流處理。 在此範例中，我們將 StreamingLocator.StreamingPolicyName 設定為 "Predefined_MultiDrmCencStreaming" 原則。 會套用 PlayReady 和 Widevine 加密，並根據所設定的 DRM 授權將金鑰傳遞至播放用戶端。 如果您也想要使用 CBCS (FairPlay) 為串流加密，請使用 "Predefined_MultiDrmStreaming"。
+建立**串流定位器**時，您需要指定所需的 `StreamingPolicyName` 。 在本教學課程中，我們會使用其中一個預先定義的串流原則，告訴 Azure 媒體服務如何發佈內容以進行串流處理。 在此範例中，我們將 StreamingLocator.StreamingPolicyName 設定為 "Predefined_MultiDrmCencStreaming" 原則。 會套用 PlayReady 和 Widevine 加密，並根據所設定的 DRM 授權將金鑰傳遞至播放用戶端。 如果您也想要使用 CBCS (FairPlay) 為串流加密，請使用 "Predefined_MultiDrmStreaming"。
 
 > [!IMPORTANT]
 > 使用自訂的[串流原則](streaming-policy-concept.md)時，您應該為媒體服務帳戶設計一組受限的這類原則，並且在需要相同的加密選項和通訊協定時，對 StreamingLocators 重新使用這些原則。 媒體服務帳戶有 StreamingPolicy 項目的數量配額。 您不應該為每個 StreamingLocator 建立新的 StreamingPolicy。

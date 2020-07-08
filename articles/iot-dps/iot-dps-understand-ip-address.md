@@ -8,10 +8,9 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: f6afd5c4cc5aa0215f943979ae91389b39d449f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79284924"
 ---
 # <a name="iot-hub-dps-ip-addresses"></a>IoT 中樞 DPS IP 位址
@@ -28,9 +27,9 @@ IoT 中樞裝置佈建服務（DPS）公用端點的 IP 位址首碼會定期發
 
 ## <a name="best-practices"></a>最佳作法
 
-* 在裝置的防火牆設定中新增允許規則時，最好提供[適用的通訊協定所使用的特定埠](../iot-hub/iot-hub-devguide-protocols.md#port-numbers)。
+* 在裝置的防火牆設定中新增允許規則時，最好提供[適用的通訊協定所使用的特定連接埠](../iot-hub/iot-hub-devguide-protocols.md#port-numbers)。
 
-* IoT DPS 實例的 IP 位址首碼可能會變更。 這些變更會在生效之前透過服務標籤定期發佈。 因此，請務必開發處理常式，以定期取得並使用最新的服務標記。 此程式可透過[服務標記探索 API](../virtual-network/service-tags-overview.md#service-tags-on-premises)來自動化。 服務標籤探索 API 仍處於預覽階段，而且在某些情況下，可能不會產生標記和 IP 位址的完整清單。 在探索 API 正式推出之前，請考慮使用[可下載 JSON 格式的服務標記](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。 
+* IoT DPS 實例的 IP 位址首碼可能會變更。 這些變更會在生效之前透過服務標籤定期發佈。 因此，請務必開發處理序，以定期取得並使用最新的服務標籤。 此處理序可透過[服務標記探索 API](../virtual-network/service-tags-overview.md#service-tags-on-premises) 進行自動化。 服務標籤探索 API 仍處於預覽階段，而且在某些情況下，可能不會產生標記和 IP 位址的完整清單。 在探索 API 正式推出之前，請考慮使用[可下載之 JSON 格式的服務標籤](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。 
 
 * 使用*AzureIoTHub。 [區功能變數名稱稱]* 標記，用以識別特定區域中 DPS 端點所使用的 IP 首碼。 若要考慮資料中心嚴重損壞修復或[區域性容錯移轉](../iot-hub/iot-hub-ha-dr.md)，請確認您的 DPS 實例地理配對區域的 IP 首碼連線也已啟用。
 
@@ -39,11 +38,11 @@ IoT 中樞裝置佈建服務（DPS）公用端點的 IP 位址首碼會定期發
 
 ## <a name="limitations-and-workarounds"></a>限制和因應措施
 
-* DPS IP 篩選器功能的限制為100個規則。 此限制可透過 Azure 客戶支援的要求來引發。 
+* DPS IP 篩選器功能的限制為100個規則。 此限制可透過 Azure 客戶支援的要求來提高。 
 
 * 您設定的[IP 篩選規則](iot-dps-ip-filtering.md)只會套用到您的 DPS 端點，而不會套用至連結的 IoT 中樞端點。 連結的 IoT 中樞的 IP 篩選必須分別設定。 如需詳細資訊，請參閱[IOT 中樞 IP 篩選規則](../iot-hub/iot-hub-ip-filtering.md)。
 
-## <a name="support-for-ipv6"></a>IPv6 的支援 
+## <a name="support-for-ipv6"></a>支援 IPv6 
 
 IoT 中樞或 DPS 目前不支援 IPv6。
 

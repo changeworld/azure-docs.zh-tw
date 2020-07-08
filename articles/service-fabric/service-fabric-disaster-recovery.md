@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b29985d40ae3a1bf582099e998e000fed83460f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79371642"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric 中的災害復原
@@ -60,7 +59,7 @@ Service Fabric 的目標是自動管理失敗。 但是，若要處理某些類�
 
 無論服務類型為何，如果程式碼的單一複本因故失敗，執行單一執行個體會造成該服務停機。 
 
-若要處理任何單一失敗，最簡單的方法就是確保您的服務預設會在多個節點上執行。 針對無狀態服務，請確定`InstanceCount`大於1。 對於具狀態服務，最小的建議`TargetReplicaSetSize`是`MinReplicaSetSize`和都設定為3。 執行服務程式碼的多個複本可確保您的服務可自動處理任何單一失敗。 
+若要處理任何單一失敗，最簡單的方法就是確保您的服務預設會在多個節點上執行。 針對無狀態服務，請確定 `InstanceCount` 大於1。 對於具狀態服務，最小的建議是 `TargetReplicaSetSize` 和都 `MinReplicaSetSize` 設定為3。 執行服務程式碼的多個複本可確保您的服務可自動處理任何單一失敗。 
 
 ### <a name="handling-coordinated-failures"></a>處理協調失敗
 叢集中的協調失敗可能是因為計畫或非計畫的基礎結構失敗和變更，或已規劃的軟體變更所造成。 Service Fabric 會將發生協調失敗的基礎結構區域模型視為*容錯網域*。 將會遇到協調軟體變更的區域會模型化為「*升級網域*」。 如需容錯網域、升級網域和叢集拓撲的詳細資訊，請參閱[使用叢集 Resource Manager 描述 Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)叢集。
@@ -97,7 +96,7 @@ Service Fabric 的目標是自動管理失敗。 但是，若要處理某些類�
 #### <a name="stateless-services"></a>無狀態服務
 無狀態服務的實例計數會指出需要執行的實例數目。 當任何（或所有）實例失敗時，Service Fabric 會在其他節點上自動建立取代實例來進行回應。 Service Fabric 會繼續建立取代，直到服務回到所需的實例計數為止。
 
-例如，假設無狀態服務的`InstanceCount`值為-1。 此值表示一個實例應該在叢集中的每個節點上執行。 如果其中一些實例失敗，Service Fabric 會偵測到該服務不是處於預期的狀態，而且會嘗試在其遺失的節點上建立實例。
+例如，假設無狀態服務的 `InstanceCount` 值為-1。 此值表示一個實例應該在叢集中的每個節點上執行。 如果其中一些實例失敗，Service Fabric 會偵測到該服務不是處於預期的狀態，而且會嘗試在其遺失的節點上建立實例。
 
 #### <a name="stateful-services"></a>具狀態服務
 有兩種類型的具狀態服務：
@@ -125,12 +124,12 @@ Service Fabric 的目標是自動管理失敗。 但是，若要處理某些類�
 
    如果已宣告仲裁遺失（自動或透過系統管理動作），則 Service Fabric 和服務會繼續判斷資料是否真的遺失。 此時，Service Fabric 也知道其他複本不會回傳。 這是停止等待自行解決仲裁遺失時會作出的決定。 服務採用的最佳方法通常是凍結，並等待特定的管理介入處理。
    
-   當 Service Fabric 呼叫`OnDataLossAsync`方法時，它一律是因為_可疑_的資料遺失。 Service Fabric 可確保此呼叫會傳遞至_最佳_剩餘複本。 這是進度最多的複本。 
+   當 Service Fabric 呼叫 `OnDataLossAsync` 方法時，它一律是因為_可疑_的資料遺失。 Service Fabric 可確保此呼叫會傳遞至_最佳_剩餘複本。 這是進度最多的複本。 
    
    我們總是說出_可疑_的資料遺失的原因是，當仲裁遺失時，其餘複本可能會有相同的狀態。 不過，如果沒有與其相比的狀態，Service Fabric 或運算子確實沒有好方法可用。     
    
    那麼，`OnDataLossAsync` 方法的典型做法是什麼？
-   1. 已觸發的執行`OnDataLossAsync`記錄，並會引發任何必要的系統管理警示。
+   1. 已觸發的執行記錄 `OnDataLossAsync` ，並會引發任何必要的系統管理警示。
    1. 通常，此實作為會暫停並等候進一步的決策，以及採取手動動作。 這是因為即使備份可供使用，也可能需要備妥。 
    
       例如，如果兩個不同的服務協調資訊，則可能需要修改這些備份，以確保在進行還原之後，這兩個服務關心的資訊是一致的。 
@@ -171,8 +170,8 @@ Service Fabric 的目標是自動管理失敗。 但是，若要處理某些類�
 > 針對特定的分割區，以目標方式來使用這些方法並_不_安全。 
 >
 
-- 使用`Repair-ServiceFabricPartition -PartitionId`或`System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API。 此 API 可讓您指定分割區的識別碼，以移出仲裁遺失並導致資料遺失。
-- 如果您的叢集經常遇到導致服務進入仲裁遺失狀態的失敗，而且可能_會有資料遺失，則_指定適當的[QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps)值可協助您的服務自動復原。 Service Fabric 在執行復原之前， `QuorumLossWaitDuration`會等待提供的值（預設值為無限）。 我們*不*建議這種方法，因為它可能會導致非預期的資料遺失。
+- 使用 `Repair-ServiceFabricPartition -PartitionId` 或 `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API。 此 API 可讓您指定分割區的識別碼，以移出仲裁遺失並導致資料遺失。
+- 如果您的叢集經常遇到導致服務進入仲裁遺失狀態的失敗，而且可能_會有資料遺失，則_指定適當的[QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps)值可協助您的服務自動復原。 Service Fabric 在執行復原之前，會等待提供的 `QuorumLossWaitDuration` 值（預設值為無限）。 我們*不*建議這種方法，因為它可能會導致非預期的資料遺失。
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Service Fabric 叢集的可用性
 一般來說，Service Fabric 叢集是高度分散的環境，不會有單一失敗點。 任何一個節點的失敗都不會造成叢集的可用性或可靠性問題，主要是因為 Service Fabric 系統服務遵循先前所提供的相同指導方針。 也就是說，它們一律會根據預設執行三個或多個複本，而在所有節點上執行無狀態的系統服務。 

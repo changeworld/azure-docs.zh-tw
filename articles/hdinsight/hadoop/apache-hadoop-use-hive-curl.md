@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79298745"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>搭配 HDInsight 中的 Apache Hadoop 使用 REST 來執行 Apache Hive 查詢
@@ -21,7 +20,7 @@ ms.locfileid: "79298745"
 
 了解如何搭配「Azure HDInsight 上的 Apache Hadoop」叢集使用 WebHCat REST API 來執行 Hive 查詢。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 Apache Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -31,7 +30,7 @@ ms.locfileid: "79298745"
 
 ## <a name="base-uri-for-rest-api"></a>Rest API 的基底 URI
 
-HDInsight 上 REST API 的基底統一資源識別元（URI）是`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`，其中`CLUSTERNAME`是您的叢集名稱。  Uri 中的叢集名稱會區分**大小寫**。  雖然 URI （`CLUSTERNAME.azurehdinsight.net`）的完整功能變數名稱（FQDN）部分中的叢集名稱不區分大小寫，但 uri 中的其他專案會區分大小寫。
+HDInsight 上 REST API 的基底統一資源識別元（URI）是 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` ，其中 `CLUSTERNAME` 是您的叢集名稱。  Uri 中的叢集名稱會區分**大小寫**。  雖然 URI （）的完整功能變數名稱（FQDN）部分中的叢集名稱 `CLUSTERNAME.azurehdinsight.net` 不區分大小寫，但 uri 中的其他專案會區分大小寫。
 
 ## <a name="authentication"></a>驗證
 
@@ -42,7 +41,7 @@ HDInsight 上 REST API 的基底統一資源識別元（URI）是`https://CLUSTE
 保留您的認證，以避免在每個範例中重新輸入。  叢集名稱將會在個別的步驟中保留。
 
 **A Bash**  
-以您的實際密碼取代`PASSWORD` ，以編輯下面的腳本。  然後輸入命令。
+`PASSWORD`以您的實際密碼取代，以編輯下面的腳本。  然後輸入命令。
 
 ```bash
 export password='PASSWORD'
@@ -58,7 +57,7 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 
 視叢集的建立方式而定，叢集名稱的實際大小寫可能與您預期的不同。  此處的步驟會顯示實際的大小寫，然後將它儲存在所有後續範例的變數中。
 
-編輯下列腳本，將取代`CLUSTERNAME`為您的叢集名稱。 然後輸入命令。 （FQDN 的叢集名稱不區分大小寫）。
+編輯下列腳本，將取代為 `CLUSTERNAME` 您的叢集名稱。 然後輸入命令。 （FQDN 的叢集名稱不區分大小寫）。
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')

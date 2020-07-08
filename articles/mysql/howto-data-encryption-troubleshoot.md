@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: 42956d115590fd322d2851fd546c505a76a851fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79297035"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>針對適用於 MySQL 的 Azure 資料庫中的資料加密進行疑難排解
@@ -21,7 +20,7 @@ ms.locfileid: "79297035"
 
 當您設定資料加密以在 Azure Key Vault 中使用客戶管理的金鑰時，伺服器需要持續存取金鑰。 如果伺服器無法存取 Azure Key Vault 中客戶管理的金鑰，它會拒絕所有連線、傳回適當的錯誤訊息，並將其狀態變更為在 Azure 入口網站中***無法***存取。
 
-如果您不再需要適用於 MySQL 的 Azure 資料庫伺服器無法存取，您可以將它刪除，以停止產生成本。 除非已還原金鑰保存庫的存取權，而且伺服器可供使用，否則不允許伺服器上的其他任何動作。 當使用客戶管理的金鑰進行加密時，也無法`Yes`將資料加密選項從（ `No`客戶管理的）變更為（服務管理）。 您必須手動重新驗證金鑰，才能再次存取伺服器。 這是保護資料免于未經授權存取的必要動作，同時撤銷對客戶管理的金鑰的許可權。
+如果您不再需要適用於 MySQL 的 Azure 資料庫伺服器無法存取，您可以將它刪除，以停止產生成本。 除非已還原金鑰保存庫的存取權，而且伺服器可供使用，否則不允許伺服器上的其他任何動作。 當使用客戶管理的金鑰進行加密時，也無法將資料加密選項從 `Yes` （客戶管理的）變更為 `No` （服務管理）。 您必須手動重新驗證金鑰，才能再次存取伺服器。 這是保護資料免于未經授權存取的必要動作，同時撤銷對客戶管理的金鑰的許可權。
 
 ## <a name="common-errors-that-cause-the-server-to-become-inaccessible"></a>導致伺服器變成無法存取的常見錯誤
 
@@ -51,7 +50,7 @@ ms.locfileid: "79297035"
 - `AzureKeyVaultMissingPermissionsMessage`
 - **說明**：伺服器沒有所需的 Get、Wrap 和解除包裝許可權可 Azure Key Vault。 將任何缺少的許可權授與識別碼為的服務主體。
 
-### <a name="mitigation"></a>緩和措施
+### <a name="mitigation"></a>降低
 
 - 確認客戶管理的金鑰存在於金鑰保存庫中。
 - 識別金鑰保存庫，並在 Azure 入口網站中移至該金鑰保存庫。

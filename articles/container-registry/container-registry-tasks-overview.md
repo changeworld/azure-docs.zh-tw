@@ -4,10 +4,9 @@ description: ACR 工作簡介，這是 Azure Container Registry 中的一套功�
 ms.topic: article
 ms.date: 01/22/2020
 ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087287"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 工作自動化容器映射組建和維護
@@ -56,10 +55,10 @@ Azure CLI 中的 [az acr build][az-acr-build]命令會使用熟悉的 `docker bu
 
 當您將 Git 存放庫設定為工作的內容時，ACR 工作支援下列觸發程式：
 
-| 觸發程序 | 預設已啟用 |
+| 觸發程序 | 預設為啟用 |
 | ------- | ------------------ |
-| Commit | 是 |
-| 提取要求 | 否 |
+| Commit | Yes |
+| 提取要求 | No |
 
 若要設定原始程式碼更新觸發程式，您必須提供工作個人存取權杖（PAT），以在公用或私人 GitHub 或 Azure DevOps 存放庫中設定 webhook。
 
@@ -117,7 +116,7 @@ Azure CLI 中的 [az acr build][az-acr-build]命令會使用熟悉的 `docker bu
 
 ## <a name="image-platforms"></a>映射平臺
 
-根據預設，ACR 工作會建立 Linux OS 和 amd64 架構的映射。 指定`--platform`標記以建立其他架構的 Windows 映像或 Linux 映射。 指定 os/架構格式（例如， `--platform Linux/arm`）的作業系統和選擇性的支援架構。 針對 ARM 架構，選擇性地指定 OS/架構/變異格式的 variant （例如， `--platform Linux/arm64/v8`）：
+根據預設，ACR 工作會建立 Linux OS 和 amd64 架構的映射。 指定 `--platform` 標記以建立其他架構的 Windows 映像或 Linux 映射。 指定 os/架構格式（例如，）的作業系統和選擇性的支援架構 `--platform Linux/arm` 。 針對 ARM 架構，選擇性地指定 OS/架構/變異格式的 variant （例如， `--platform Linux/arm64/v8` ）：
 
 | OS | 架構|
 | --- | ------- | 

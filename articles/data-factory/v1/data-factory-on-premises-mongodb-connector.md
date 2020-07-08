@@ -10,10 +10,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281336"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>使用 Azure Data Factory 從 MongoDB 移動資料
@@ -30,7 +29,7 @@ ms.locfileid: "79281336"
 
 您可以將資料從內部部署的 MongoDB 資料存放區複製到任何支援的接收資料存放區。 如需複製活動所支援作為接收器的資料存放區清單，請參閱[支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表格。 Data Factory 目前只支援將資料從 MongoDB 資料存放區移到其他資料存放區，而不支援將資料從其他資料存放區移到 MongoDB 資料存放區。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 如果是能夠連接到您內部部署 MongoDB 資料庫的 Azure Data Factory 服務，您就必須安裝下列元件：
 
 - 支援的 MongoDB 版本為：2.4、2.6、3.0、3.2、3.4 和3.6。
@@ -61,17 +60,17 @@ ms.locfileid: "79281336"
 ## <a name="linked-service-properties"></a>連結服務屬性
 下表提供 **OnPremisesMongoDB** 連結服務專屬 JSON 元素的描述。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| type |類型屬性必須設為： **OnPremisesMongoDb** |是 |
-| 伺服器 |MongoDB 伺服器的 IP 位址或主機名稱。 |是 |
+| type |類型屬性必須設為： **OnPremisesMongoDb** |Yes |
+| 伺服器 |MongoDB 伺服器的 IP 位址或主機名稱。 |Yes |
 | 連接埠 |MongoDB 伺服器用來接聽用戶端連線的 TCP 連接埠。 |選用，預設值︰27017 |
 | authenticationType |基本或匿名。 |是 |
 | username |用來存取 MongoDB 的使用者帳戶。 |是 (如果使用基本驗證)。 |
-| password |使用者的密碼。 |是 (如果使用基本驗證)。 |
+| 密碼 |使用者的密碼。 |是 (如果使用基本驗證)。 |
 | authSource |您想要用來檢查驗證所用之認證的 MongoDB 資料庫名稱。 |選用 (如果使用基本驗證)。 預設值︰使用以 databaseName 屬性指定的系統管理員帳戶和資料庫。 |
-| databaseName |您想要存取之 MongoDB 資料庫的名稱。 |是 |
-| gatewayName |存取資料存放區之閘道的名稱。 |是 |
+| databaseName |您想要存取之 MongoDB 資料庫的名稱。 |Yes |
+| gatewayName |存取資料存放區之閘道的名稱。 |Yes |
 | encryptedCredential |由閘道加密的認證。 |選擇性 |
 
 ## <a name="dataset-properties"></a>資料集屬性
@@ -79,9 +78,9 @@ ms.locfileid: "79281336"
 
 每個資料集類型的**typeProperties**區段都不同，並提供資料存放區中資料位置的相關資訊。 **MongoDbCollection** 類型資料集的 typeProperties 區段具有下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| collectionName |MongoDB 資料庫中集合的名稱。 |是 |
+| collectionName |MongoDB 資料庫中集合的名稱。 |Yes |
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 如需定義活動的區段和屬性完整清單，請參閱[建立管線](data-factory-create-pipelines.md)一文。 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) 適用於所有類型的活動。
@@ -293,7 +292,7 @@ Azure Data Factory 服務會使用 MongoDB 集合中最新的 100 份文件，�
 | MongoDB 類型 | .NET Framework 類型 |
 | --- | --- |
 | Binary |Byte[] |
-| Boolean |Boolean |
+| 布林值 |Boolean |
 | Date |Datetime |
 | NumberDouble |Double |
 | NumberInt |Int32 |

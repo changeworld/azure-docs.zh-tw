@@ -8,21 +8,20 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79086744"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>使用入口網站將 Vm 部署至專用主機
 
-本文會引導您瞭解如何建立 Azure[專用主機](dedicated-hosts.md)來裝載您的虛擬機器（vm）。 
+本文會引導您瞭解如何建立 Azure [專用主機](dedicated-hosts.md)來裝載您的虛擬機器 (VM)。 
 
 [!INCLUDE [virtual-machines-common-dedicated-hosts-portal](../../../includes/virtual-machines-common-dedicated-hosts-portal.md)]
 
 ## <a name="create-a-vm"></a>建立 VM
 
-1. 選擇 Azure 入口網站左上角的 [建立資源]****。
+1. 選擇 Azure 入口網站左上角的 [建立資源]  。
 1. 在 Azure Marketplace 資源清單上方的搜尋方塊中，依 Canonical 搜尋並選取**Ubuntu Server 16.04 LTS**，然後選擇 [建立]****。
 1. 在 [**基本**] 索引標籤的 [**專案詳細資料**] 底下，確認已選取正確的訂用帳戶，然後選取 [ *myDedicatedHostsRG* ] 作為**資源群組**。 
 1. 在 [執行個體詳細資料]**** 底下，輸入 myVM** 作為 [虛擬機器名稱]****，然後選擇 [美國東部]** 作為您的 [位置]****。
@@ -32,7 +31,7 @@ ms.locfileid: "79086744"
 
     ![系統管理員帳戶](./media/quick-create-portal/administrator-account.png)
 
-1. 在 [**輸入連接埠規則** > ] [**公用輸入埠**] 底下，選擇 [**允許選取的埠**]，然後從下拉式選單選取 [ **SSH （22）** ]。 
+1. 在 [**輸入連接埠規則**] [  >  **公用輸入埠**] 底下，選擇 [**允許選取的埠**]，然後從下拉式選單選取 [ **SSH （22）** ]。 
 1. 在頁面頂端，選取 [ **Advanced** ] 索引標籤，然後在 [**主機**] 區段中，針對 [**主機群組**] 和 [ *myhost 代表*]**選取 [** *myHostGroup* ]。 
     ![選取主機群組和主機](./media/dedicated-hosts-portal/advanced.png)
 1. 保留其餘預設值，然後在頁面底部選取 [檢閱 + 建立]  按鈕。
@@ -62,9 +61,9 @@ ms.locfileid: "79086744"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需詳細資訊，請參閱[專用主機](dedicated-hosts.md)總覽。
+- 如需詳細資訊，請參閱[專用主機](dedicated-hosts.md)概觀。
 
-- [這裡](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有範例範本，它會使用區域和容錯網域來取得區域中的最大復原。
+- [這裡](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有範例範本，範例中使用區域和容錯網域來獲得區域中的最大復原。
 
 - 您也可以使用[Azure CLI](dedicated-hosts-cli.md)部署專用主機。
 

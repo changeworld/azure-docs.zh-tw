@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
 ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79258183"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric 總管視覺化叢集
@@ -37,7 +36,7 @@ Service Fabric Explorer (SFX) 是開放原始碼工具，可檢查及管理 Azur
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>從叢集執行 Service Fabric Explorer
 
-Service Fabric Explorer 也裝載於 Service Fabric 叢集的 HTTP 管理端點。 若要在網頁瀏覽器中啟動 SFX，請從任何瀏覽器流覽至叢集的 HTTP 管理端點，例如\/HTTPs：/clusterFQDN：19080。
+Service Fabric Explorer 也裝載於 Service Fabric 叢集的 HTTP 管理端點。 若要在網頁瀏覽器中啟動 SFX，請從任何瀏覽器流覽至叢集的 HTTP 管理端點，例如 HTTPs： \/ /clusterFQDN：19080。
 
 針對開發人員工作站設定，您可以瀏覽至 https://localhost:19080/Explorer，在本機叢集上啟動 Service Fabric Explorer。 請參閱此文章以[準備您的開發環境](service-fabric-get-started.md)。
 
@@ -47,7 +46,7 @@ Service Fabric Explorer 也裝載於 Service Fabric 叢集的 HTTP 管理端點�
 >
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>連線至 Service Fabric 叢集
-若要連線至 Service Fabric 叢集，您需要叢集管理端點 (FQDN/IP) 和 HTTP 管理端點連接埠 (預設為 19080)。 例如 HTTPs\://mysfcluster.westus.cloudapp.azure.com:19080。 使用 [連線至 localhost] 核取方塊，連線至工作站上的本機叢集。
+若要連線至 Service Fabric 叢集，您需要叢集管理端點 (FQDN/IP) 和 HTTP 管理端點連接埠 (預設為 19080)。 例如 HTTPs \: //mysfcluster.westus.cloudapp.azure.com:19080。 使用 [連線至 localhost] 核取方塊，連線至工作站上的本機叢集。
 
 ### <a name="connect-to-a-secure-cluster"></a>連線到安全的叢集
 您可以為使用憑證或使用 Azure Active Directory (AAD) 來控制用戶端對您 Service Fabric 叢集的存取。
@@ -83,7 +82,7 @@ Service Fabric 叢集中的節點會橫跨容錯網域和升級網域的二維�
 ## <a name="actions"></a>動作
 「Service Fabric 總管」提供一個對您叢集內的節點、應用程式及服務快速叫用動作的方式。
 
-例如，若要刪除應用程式實例，請從左邊的樹狀目錄中選擇應用程式，然後選擇 [**動作** > ] [**刪除應用程式**]。
+例如，若要刪除應用程式實例，請從左邊的樹狀目錄中選擇應用程式，然後選擇 [**動作**] [  >  **刪除應用程式**]。
 
 ![在 Service Fabric 總管中刪除應用程式][sfx-delete-application]
 

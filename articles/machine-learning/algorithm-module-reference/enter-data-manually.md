@@ -10,15 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 35e31e5ace53654e8aad794dd3e25fc04bd9a088
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79367511"
 ---
 # <a name="enter-data-manually-module"></a>手動輸入資料模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 使用 [**手動輸入資料**] 模組，藉由輸入值來建立小型資料集。 Dataset 可以有多個資料行。
   
@@ -57,7 +56,7 @@ ms.locfileid: "79367511"
   
    - **ARFF**：貼上現有的 ARFF 格式檔案。 如果您要直接輸入值，請務必在資料的開頭加入選擇性的標頭和必要的屬性欄位。 
 
-     例如，您可以將下列標頭和屬性資料列加入至簡單列表。 資料行標題會是`SampleText`。 請注意，不支援字串類型。
+     例如，您可以將下列標頭和屬性資料列加入至簡單列表。 資料行標題會是 `SampleText` 。 請注意，不支援字串類型。
     
      ```text
      % Title: SampleText.ARFF  
@@ -96,4 +95,4 @@ ms.locfileid: "79367511"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

@@ -8,10 +8,9 @@ author: albecker1
 ms.author: albecker
 ms.date: 03/12/2020
 ms.openlocfilehash: f2b960c2198800e04da77ad6b5be78d7b4762354
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79299799"
 ---
 # <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Azure 入口網站中的磁片計量淘汰
@@ -24,11 +23,11 @@ ms.locfileid: "79299799"
 
 |已淘汰的度量|新增（取代）度量|
 |----|----|
-|資料磁片 QD （已淘汰）|資料磁片佇列深度（預覽）|
-|資料磁片讀取位元組數/秒（已淘汰）|資料磁碟讀取位元組/秒 (預覽)|
-|資料磁片讀取作業數/秒（已淘汰）|資料磁碟讀取作業/秒 (預覽)|
-|資料磁片寫入位元組數/秒（已淘汰）|資料磁碟寫入位元組/秒 (預覽)|
-|資料磁片寫入作業數/秒（已淘汰）|資料磁碟寫入作業/秒 (預覽)|
+|資料磁碟 QD (已淘汰)|資料磁碟佇列深度 (預覽)|
+|資料磁碟讀取位元組數/秒 (已淘汰)|資料磁碟讀取位元組/秒 (預覽)|
+|資料磁碟讀取作業數/秒 (已淘汰)|資料磁碟讀取作業/秒 (預覽)|
+|資料磁碟寫入位元組數/秒 (已淘汰)|資料磁碟寫入位元組/秒 (預覽)|
+|資料磁碟寫入作業數/秒 (已淘汰)|資料磁碟寫入作業/秒 (預覽)|
 |OS QD （已淘汰）|OS 佇列深度（預覽）|
 |OS 讀取位元組數/秒（已淘汰）|OS 讀取位元組/秒（預覽）|
 |OS 讀取作業數/秒（已淘汰）|OS 讀取作業數/秒（預覽）|

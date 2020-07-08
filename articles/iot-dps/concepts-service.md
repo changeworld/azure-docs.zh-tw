@@ -9,10 +9,9 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79285210"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT 中樞裝置佈建服務服務概念
@@ -73,6 +72,6 @@ IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於�
 
 註冊是記載裝置透過裝置佈建服務成功向 IoT 中樞申請以及佈建至該處的記錄。 系統會自動建立註冊記錄；您可以刪除但無法更新這些記錄。
 
-## <a name="operations"></a>作業
+## <a name="operations"></a>Operations
 
 作業是裝置佈建服務的計費單位。 一個作業代表成功完成該服務需進行的一個指示。 作業包括裝置註冊和重新註冊，也包括服務端的變更，例如新增和更新申請清單項目。

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
 ms.openlocfilehash: 802e76614f51e1f6479a311e61a49d83b8125546
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79282571"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux 叢集上的憑證和安全性
@@ -33,7 +32,7 @@ ms.locfileid: "79282571"
 
 ### <a name="using-x509-securitycredentialstype"></a>使用 X509 SecurityCredentialsType
 
-透過 .NET 或 Java SDK，您可以指定 **SecurityCredentialsType** 的 **X509**。 這會對應至`X509Credentials` [ ](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx) /（[.net](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)[java）類型](https://docs.microsoft.com/java/api/system.fabric.x509credentials) `SecurityCredentials` 。
+透過 .NET 或 Java SDK，您可以指定 **SecurityCredentialsType** 的 **X509**。 這會對應至（.net java） `X509Credentials` [.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx) / [Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)類型 `SecurityCredentials` [.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx) / [ ](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)。
 
 **X509** 參考可將憑證定位於憑證存放區中。 下列 XML 顯示用來指定憑證位置的參數：
 
@@ -43,7 +42,7 @@ ms.locfileid: "79282571"
     <Parameter Name="CertificateStoreName" Value="My" />
 ```
 
-對於在 Linux 上執行的服務， **LocalMachine**/**my**指向憑證的預設位置，也就是 */var/lib/sfcerts*目錄。 對於 Linux，**CertificateStoreLocation** 和 **CertificateStoreName** 的任何其他組合皆不會定義。 
+對於在 Linux 上執行的服務， **LocalMachine** / **my**指向憑證的預設位置，也就是 */var/lib/sfcerts*目錄。 對於 Linux，**CertificateStoreLocation** 和 **CertificateStoreName** 的任何其他組合皆不會定義。 
 
 請一律將 **CertificateStoreLocation** 參數指定為 **LocalMachine**。 您不需要指定 **CertificateStoreName** 參數，因為該參數預設為 "My"。 使用 **X509** 參考時，憑證檔案必須位於叢集節點的 */var/lib/sfcerts* 目錄中。  
 

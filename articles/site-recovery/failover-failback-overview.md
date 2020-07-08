@@ -4,10 +4,9 @@ description: 深入瞭解 Azure Site Recovery 中的容錯移轉和 failable。
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281804"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>關於內部部署嚴重損壞修復容錯移轉/容錯回復
@@ -45,7 +44,7 @@ Site Recovery 中的容錯移轉和容錯回復有四個階段：
 
 **容錯移轉** | **位置** | **動作**
 --- | --- | ---
-**Azure VM （Windows （）** | 在容錯移轉前的內部部署機器上 | 透過**網際網路存取**：啟用 RDP。 請確定已針對 [**公用**] 新增 TCP 和 UDP 規則，且在 [ **Windows 防火牆** > ] [**允許的應用程式**] 中的所有設定檔允許 RDP。<br/><br/> 透過**站對站 VPN 存取**：在電腦上啟用 RDP。 檢查 [ **Windows 防火牆** -> ] [**允許的應用程式和功能**] 中的 [**網域] 和 [私人**] 網路允許 RDP。<br/><br/>  確定作業系統的 SAN 原則已設為 **OnlineAll**。 [深入了解](https://support.microsoft.com/kb/3031135)。<br/><br/> 觸發容錯移轉時，請確定 VM 上沒有任何暫止的 Windows 更新。 Windows Update 可能會在您故障時啟動，而且您將無法登入 VM，直到更新完成為止。
+**Azure VM （Windows （）** | 在容錯移轉前的內部部署機器上 | 透過**網際網路存取**：啟用 RDP。 請確定已針對 [**公用**] 新增 TCP 和 UDP 規則，且在 [ **Windows 防火牆**] [  >  **允許的應用程式**] 中的所有設定檔允許 RDP。<br/><br/> 透過**站對站 VPN 存取**：在電腦上啟用 RDP。 檢查 [ **Windows 防火牆**] [  ->  **允許的應用程式和功能**] 中的 [**網域] 和 [私人**] 網路允許 RDP。<br/><br/>  確定作業系統的 SAN 原則已設為 **OnlineAll**。 [深入了解](https://support.microsoft.com/kb/3031135)。<br/><br/> 觸發容錯移轉時，請確定 VM 上沒有任何暫止的 Windows 更新。 Windows Update 可能會在您故障時啟動，而且您將無法登入 VM，直到更新完成為止。
 **執行 Windows 的 Azure VM** | 在容錯移轉後的 Azure VM 上 |  [新增 VM 的公用 IP 位址](https://aka.ms/addpublicip)。<br/><br/> 已故障 over 的 VM 上的網路安全性群組規則（以及它所連線的 Azure 子網）必須允許 RDP 埠的連入連線。<br/><br/> 勾選 [開機診斷]**** 以確認 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢查[疑難排解秘訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 **執行 Linux 的 Azure VM** | 在容錯移轉前的內部部署機器上 | 確定 VM 上的安全殼層服務已設定為在系統開機時自動啟動。<br/><br/> 請檢查防火牆規則是否允許 SSH 連線。
 **執行 Linux 的 Azure VM** | 在容錯移轉後的 Azure VM 上 | 已容錯移轉的 VM 上的網路安全性群組規則 (以及它所連線的 Azure 子網路) 必須允許 SSH 連接埠的連入連線。<br/><br/> [新增 VM 的公用 IP 位址](https://aka.ms/addpublicip)。<br/><br/> 勾選 [開機診斷]**** 以檢視 VM 的螢幕擷取畫面。<br/><br/>
@@ -78,12 +77,12 @@ Site Recovery 提供不同的容錯移轉選項。
 
 **選項** | **詳細資料**
 --- | ---
-**最新（最低 RPO）** | 此選項提供最低的復原點目標（RPO）。 它會先處理所有已傳送至 Site Recovery 服務的資料，以建立每個 VM 的復原點，然後再進行容錯移轉。 此復原點會在觸發容錯移轉時，將所有資料複寫到 Site Recovery。
-**最近處理的**  | 此選項會將 Vm 故障通過 Site Recovery 所處理的最新復原點。 若要查看特定 VM 的最新復原點，請檢查 VM 設定中的**最新復原點**。 此選項提供低 RTO (復原時間目標)，因為無須花費時間處理未處理的資料。
+**最新（最低 RPO）** | 此選項提供最低的復原點目標 (RPO)。 它會先處理所有已傳送至 Site Recovery 服務的資料，以建立每個 VM 的復原點，然後再進行容錯移轉。 此復原點會在觸發容錯移轉時，將所有資料複寫到 Site Recovery。
+**最近處理的**  | 此選項會將 Vm 故障通過 Site Recovery 所處理的最新復原點。 若要查看特定 VM 的最新復原點，請檢查 VM 設定中的 [最新復原點]。 此選項提供低 RTO (復原時間目標)，因為無須花費時間處理未處理的資料。
 **最新應用程式一致** |  如果已啟用應用程式一致復原點，此選項會將 Vm 損毀修復至 Site Recovery 所處理的最新應用程式一致復原點。 檢查 VM 設定中的最新復原點。
 **已處理最新多個 VM** | 此選項適用於一或多部 VM 已啟用多部 VM 一致性的復原計劃。 啟用這項設定的 VM 會容錯移轉至最新的一般多部 VM 一致復原點。 方案中的任何其他 Vm 會故障切換至最新處理的復原點。
 **最新多 VM 應用程式一致** |  此選項適用於一或多部 VM 已啟用多部 VM 一致性的復原計劃。 屬於最新一般多部 VM 應用程式一致復原點的複寫群組容錯移轉一部分的 VM。 對於最新應用程式一致復原點進行的其他 VM 容錯移轉。
-**Custom** | 使用此選項可將特定 VM 故障切換至特定的復原點。 此選項不適用於復原方案。
+**自訂** | 使用此選項可將特定 VM 故障切換至特定的復原點。 此選項不適用於復原方案。
 
 > [!NOTE]
 > 復原點無法遷移至另一個復原服務保存庫。

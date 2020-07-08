@@ -6,17 +6,16 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79275096"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理和維護適用於 Windows 和 Linux 的 Log Analytics 代理程式
 
 初始部署 Azure 監視器中的 Log Analytics Windows 或 Linux 代理程式之後，您可能需要重新設定代理程式、將它升級，或將它從電腦中移除（如果已達到其生命週期的淘汰階段）。 您可以手動或自動的方式輕鬆地管理這些例行維護工作，後者可以降低操作錯誤和費用。
 
-## <a name="upgrading-agent"></a>正在升級代理程式
+## <a name="upgrading-agent"></a>升級代理程式
 
 適用于 Windows 和 Linux 的 Log Analytics 代理程式可以手動或自動升級為最新版本，視 VM 執行所在的部署案例和環境而定。 下列方法可用於升級代理程式。
 
@@ -28,13 +27,13 @@ ms.locfileid: "79275096"
 
 ### <a name="upgrade-windows-agent"></a>升級 Windows 代理程式 
 
-若要將 Windows VM 上的代理程式更新為未使用 Log Analytics VM 延伸模組安裝的最新版本，您可以從命令提示字元、腳本或其他自動化解決方案，或使用 MMASetup-\<Platform\>.msi 安裝程式來執行。  
+若要將 Windows VM 上的代理程式更新為未使用 Log Analytics VM 延伸模組安裝的最新版本，您可以從命令提示字元、腳本或其他自動化解決方案，或使用 MMASetup- \<platform\> .Msi 安裝程式來執行。  
 
 您可以執行下列步驟，從您的 Log Analytics 工作區下載最新版本的 Windows 代理程式。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 在 [Azure 入口網站中，按一下 [**所有服務**]。 在資源清單中，輸入**Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]****。
+2. 在 Azure 入口網站中，按一下 [所有服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]。
 
 3. 在您的 Log Analytics 工作區清單中，選取工作區。
 
@@ -50,7 +49,7 @@ ms.locfileid: "79275096"
 
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 執行**MMASetup-\<Platform\> ** ，啟動安裝精靈。
+2. 執行**MMASetup- \<platform\> .exe** ，啟動安裝精靈。
 
 3. 在安裝精靈的第一頁，按 **[下一步]**。
 
@@ -60,7 +59,7 @@ ms.locfileid: "79275096"
 
 6. 當**Microsoft Monitoring Agent 設定成功完成時。** 頁面出現時，按一下 **[完成]**。
 
-#### <a name="to-upgrade-from-the-command-line"></a>從命令列升級
+#### <a name="to-upgrade-from-the-command-line"></a>若要從命令列升級
 
 1. 以具有系統管理權限的帳戶登入電腦。
 
@@ -97,7 +96,7 @@ ms.locfileid: "79275096"
 
 5. 若要新增工作區，請按一下 [新增]****，然後在 [新增 Log Analytics 工作區]**** 對話方塊中，貼上工作區識別碼和工作區索引鍵 (主索引鍵)。 如果電腦應該向 Azure Government 雲端中的 Log Analytics 工作區報告，請從 Azure 雲端下拉式清單中選取 [Azure US Government]。
 
-6. 按一下 [確定]**** 以儲存您的變更。
+6. 按一下 [確定]  以儲存變更。
 
 #### <a name="remove-a-workspace-using-powershell"></a>使用 PowerShell 移除工作區
 

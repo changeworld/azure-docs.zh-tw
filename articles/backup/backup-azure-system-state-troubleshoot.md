@@ -5,10 +5,9 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
 ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969582"
 ---
 # <a name="troubleshoot-system-state-backup"></a>針對系統狀態備份進行疑難排解
@@ -19,9 +18,9 @@ ms.locfileid: "78969582"
 
 我們建議您在開始針對系統狀態備份進行疑難排解之前，先執行下列驗證：
 
-- [確定 Microsoft Azure 復原服務（MARS）代理程式為最新狀態](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [確定 Microsoft Azure 復原服務 (MARS) 代理程式是最新版本](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [確保 MARS 代理程式和 Azure 之間具有網路連線能力](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
-- 確保 Microsoft Azure 復原服務正在執行中 (在服務主控台中)。 如有必要，請重新開機，然後重試操作
+- 確保 Microsoft Azure 復原服務正在執行中 (在服務主控台中)。 如有必要，請重新開機，然後重試作業
 - [確保草稿資料夾位置具有 5-10% 的磁碟區空間可供使用](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [檢查是否有其他程序或防毒軟體在干擾 Azure 備份](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
 - [已排程的備份失敗，但可以手動備份](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)
@@ -40,7 +39,7 @@ ms.locfileid: "78969582"
 - Microsoft 不建議使用系統狀態復原來復原到不同的硬體
 - 系統狀態備份目前支援「內部部署」 Windows 伺服器。 此功能不適用於 Azure Vm。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在使用 Azure 備份進行系統狀態備份的疑難排解之前，請先執行下列必要條件檢查。  
 
@@ -106,7 +105,7 @@ Microsoft 軟體陰影複製提供者（SWPRV） | 手動
 
 - 確定 WSB PowerShell 正在執行
 
-  - 從`Get-WBJob`提高許可權的 PowerShell 執行，並確定它不會傳回下列錯誤：
+  - `Get-WBJob`從提高許可權的 PowerShell 執行，並確定它不會傳回下列錯誤：
 
     > [!WARNING]
     > Get-wbjob： ' Get-wbjob ' 一詞無法辨識為 Cmdlet、函式、指令檔或可執行程式的名稱。 請檢查名稱拼字，如果名稱含有路徑，請確認路徑正確，然後再試一次。
@@ -120,8 +119,8 @@ Microsoft 軟體陰影複製提供者（SWPRV） | 手動
       > [!NOTE]
       >以您要儲存系統狀態備份映射的磁片區磁碟機號取代 X。
 
-    - 從提高許可權的 PowerShell 執行`Get-WBJob`命令，以定期檢查作業的狀態
-    - 備份作業完成後，請執行`Get-WBJob -Previous 1`命令來檢查作業的最終狀態
+    - 從提高許可權的 PowerShell 執行命令，以定期檢查作業的狀態 `Get-WBJob`
+    - 備份作業完成後，請執行命令來檢查作業的最終狀態 `Get-WBJob -Previous 1`
 
 如果作業失敗，則表示可能會導致 MARS 代理程式系統狀態備份失敗的 WSB 問題。
 
@@ -137,7 +136,7 @@ Microsoft 軟體陰影複製提供者（SWPRV） | 手動
 
 | 徵狀 | 解決方案
 | -- | --
-| -MARS 代理程式失敗，並出現錯誤訊息：備份失敗，因為陰影複製磁片區的磁碟空間不足，因此包含系統檔案 <br/><br/> -Volsnap 系統事件記錄檔中出現下列錯誤/警告記錄檔：「磁片區 C 上的磁碟空間不足：若要為 C：增加陰影複製的陰影複製儲存區」，由於發生此錯誤，所有 volume C 的陰影複製都有刪除的風險。」 | -釋放事件記錄檔中反白顯示磁片區的空間，讓陰影複製有足夠的空間可在備份進行時成長 <br/><br/> -設定陰影複製空間時，我們可以限制用於陰影複製的空間量。 如需詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
+| -MARS 代理程式失敗，並出現錯誤訊息：備份失敗，因為陰影複製磁片區的磁碟空間不足，因此包含系統檔案 <br/><br/> -Volsnap 系統事件記錄檔中出現下列錯誤/警告記錄檔：「磁片區 C 上的磁碟空間不足：若要為 C：增加陰影複製的陰影複製儲存區」，由於發生此錯誤，所有 volume C 的陰影複製都有刪除的風險。」 | -釋放事件記錄檔中反白顯示磁片區的空間，讓陰影複製有足夠的空間可在備份進行時成長 <br/><br/> -設定陰影複製空間時，我們可以限制用於陰影複製的空間量。 如需詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
 
 ### <a name="efi-partition-locked"></a>EFI 磁碟分割已鎖定
 

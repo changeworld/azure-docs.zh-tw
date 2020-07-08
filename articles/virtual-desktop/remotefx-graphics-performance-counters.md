@@ -9,10 +9,9 @@ ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 84cee86dbddff77f6142925eec01889cf793a466
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79127564"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>診斷遠端桌面的圖形效能問題
@@ -35,7 +34,7 @@ ms.locfileid: "79127564"
 
 在您決定遠端會話名稱之後，請遵循這些指示來收集遠端會話的 RemoteFX 圖形效能計數器。
 
-1. 選取 [**啟動** > 系統**管理工具** > ] [**效能監視器**]。
+1. 選取 [**啟動**系統  >  **管理工具**] [  >  **效能監視器**]。
 2. 在 [**效能監視器**] 對話方塊中，展開 [**監視工具**]，選取 [**效能監視器**]，然後選取 [**新增**]。
 3. 在 [**新增計數器**] 對話方塊的 [**可用的計數器**] 清單中，展開 RemoteFX 圖形的區段。
 4. 選取要監視的計數器。
@@ -78,7 +77,7 @@ ms.locfileid: "79127564"
 
 使用 [畫面格品質] 計數器來診斷畫面格品質問題。 此計數器會以來源框架品質的百分比表示輸出框架的品質。 品質損失可能是因為 RemoteFX，或可能是圖形來源的固有。 如果 RemoteFX 導致品質遺失，問題可能是缺少網路或伺服器資源來傳送更高精確度的內容。
 
-## <a name="mitigation"></a>緩和措施
+## <a name="mitigation"></a>降低
 
 如果伺服器資源造成瓶頸，請嘗試下列其中一種方法來改善效能：
 

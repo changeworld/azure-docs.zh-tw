@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79285145"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制 Azure IoT 中樞裝置佈建服務的存取權
@@ -75,9 +74,9 @@ SharedAccessSignature sr =
 
 以下是預期的值：
 
-| 值 | 說明 |
+| 值 | 描述 |
 | --- | --- |
-| {signature} |HMAC-SHA256 簽章字串，格式為： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要事項**：金鑰是從 base64 解碼而來，並且會做為用來執行 HMAC-SHA256 計算的金鑰。|
+| {signature} |HMAC-SHA256 簽章字串，格式為： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要**：金鑰是從 base64 解碼而來，並且會做為用來執行 HMAC-SHA256 計算的金鑰。|
 | {expiry} |從新紀元時間 (Epoch) 1970 年 1 月 1日 00:00:00 UTC 時間至今秒數的 UTF8 字串。 |
 | {URL-encoded-resourceURI} | 小寫資源 URI 的小寫 URL 編碼。 可使用此權杖存取之端點的 URI 前置詞 (依區段)，開頭為 IoT 裝置佈建服務的主機名稱 (無通訊協定)。 例如： `mydps.azure-devices-provisioning.net` 。 |
 | {policyName} |此權杖所參考的共用存取原則名稱。 |
@@ -177,7 +176,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 下表列出可用來控制您的 IoT 裝置佈建服務存取權的權限。
 
-| 權限 | 備忘錄 |
+| 權限 | 注意 |
 | --- | --- |
 | **ServiceConfig** |授與變更服務設定的存取權。 <br/>後端雲端服務會使用此權限。 |
 | **EnrollmentRead** |授與對裝置註冊和註冊群組進行讀取的權限。 <br/>後端雲端服務會使用此權限。 |

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
 ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79126599"
 ---
 # <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Azure Kubernetes Service 診斷（預覽）總覽
@@ -29,7 +28,7 @@ ms.locfileid: "79126599"
 
 ![首頁](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
-## <a name="view-a-diagnostic-report"></a>查看診斷報表
+## <a name="view-a-diagnostic-report"></a>檢視診斷報告
 
 按一下類別之後，您就可以查看叢集專屬的診斷報告。 如果您的叢集中有任何狀態圖示的問題，診斷報表會以智慧方式呼叫。 您可以按一下 [**詳細資訊**]，以查看問題的詳細描述、建議的動作、實用檔的連結、相關的計量和記錄資料，以向下切入每個主題。 在執行各種檢查之後，會根據您叢集的目前狀態，以智慧方式產生診斷報告。 診斷報告可以用來查明叢集的問題，並尋找解決問題的後續步驟。
 

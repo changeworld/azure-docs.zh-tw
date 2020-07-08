@@ -4,10 +4,9 @@ description: 說明使用 Azure Resource Manager 部署資源時，如何解決�
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79273783"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解決資源配額的錯誤
@@ -84,7 +83,7 @@ Total Regional Cores                         0   100 Count
 Virtual Machines                             0 10000 Count
 ```
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 若要要求增加配額，請移至入口網站並提出支援問題。 請在支援問題中，要求提高您要部署的區域的配額。
 
@@ -93,9 +92,9 @@ Virtual Machines                             0 10000 Count
 >
 >
 
-1. 選取 **[** 訂用帳戶]。
+1. 選取 **訂用帳戶** 。
 
-   ![訂閱](./media/error-resource-quota/subscriptions.png)
+   ![訂用帳戶](./media/error-resource-quota/subscriptions.png)
 
 2. 選取需要增加配額的訂用帳戶。
 

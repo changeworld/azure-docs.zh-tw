@@ -7,10 +7,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087866"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 串流分析作業的相容性層級
@@ -103,9 +102,9 @@ Upsert 行為是*insert 或 replace*。
 
 **先前的層級：** 函數前置詞沒有嚴格的驗證。
 
-**1.2 層級：** Azure 串流分析具有嚴格的函數前置詞驗證。 將前置詞加入至內建函數會造成錯誤。 例如，`myprefix.ABS(…)`不支援。
+**1.2 層級：** Azure 串流分析具有嚴格的函數前置詞驗證。 將前置詞加入至內建函數會造成錯誤。 例如， `myprefix.ABS(…)` 不支援。
 
-將前置詞加入至內建匯總也會導致錯誤。 例如， `myprefix.SUM(…)`不支援。
+將前置詞加入至內建匯總也會導致錯誤。 例如， `myprefix.SUM(…)` 不支援。
 
 針對任何使用者定義函數使用前置詞 "system" 會導致錯誤。
 

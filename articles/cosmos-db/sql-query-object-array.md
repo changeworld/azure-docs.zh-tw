@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79246548"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用陣列和物件
@@ -52,7 +51,7 @@ SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as Ch
 FROM f
 ```
 
-## <a name="iteration"></a><a id="Iteration"></a>反覆運算
+## <a name="iteration"></a><a id="Iteration"></a>反覆項目
 
 SQL API 支援反覆運算 JSON 陣列，並透過從來源的[in 關鍵字](sql-query-keywords.md#in)新增結構。 在下例中︰
 
@@ -90,7 +89,7 @@ SQL API 支援反覆運算 JSON 陣列，並透過從來源的[in 關鍵字](sql
     ]
 ```
 
-下一個查詢會`children`在`Families`容器中執行反復專案。 輸出陣列與先前的查詢不同。 這個範例會`children`分割，並將結果簡維成單一陣列：  
+下一個查詢會 `children` 在容器中執行反復專案 `Families` 。 輸出陣列與先前的查詢不同。 這個範例會分割 `children` ，並將結果簡維成單一陣列：  
 
 ```sql
     SELECT *
@@ -157,6 +156,6 @@ SQL API 支援反覆運算 JSON 陣列，並透過從來源的[in 關鍵字](sql
 
 ## <a name="next-steps"></a>後續步驟
 
-- [開始使用](sql-query-getting-started.md)
+- [快速入門](sql-query-getting-started.md)
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [聯結](sql-query-join.md)

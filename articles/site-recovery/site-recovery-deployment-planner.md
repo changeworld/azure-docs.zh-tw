@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
 ms.openlocfilehash: 70d84516e2d7a42b1c6a3714d9060bedf6535f58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79366291"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>關於 VMware 至 Azure 的 Azure Site Recovery 部署規劃工具
@@ -27,7 +26,7 @@ ms.locfileid: "79366291"
 
 此工具提供下列詳細資料︰
 
-**相容性評定**
+**相容性評定** \(部分機器翻譯\)
 
 * 以磁碟數目、磁碟大小、IOPS、變換、開機類型 (EFI/BIOS) 和作業系統版本為基礎的 VM 合適性評估
 
@@ -64,17 +63,17 @@ ms.locfileid: "79366291"
 
 | | **VMware 至 Azure** |**Hyper-V 至 Azure**|**Azure 至 Azure**|**Hyper-V 至次要網站**|**VMware 至次要網站**
 --|--|--|--|--|--
-支援的案例 |是|是|否|是*|否
+支援的案例 |Yes|是|否|是*|No
 支援的版本 | vCenter 6.7、6.5、6.0 或5。5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
 支援的設定|vCenter、ESXi| Hyper-V 叢集、Hyper-V 主機|NA|Hyper-V 叢集、Hyper-V 主機|NA|
 每個執行中的 Site Recovery 部署規劃工具執行個體可以分析的伺服器數目 |單一 (屬於一個 vCenter Server 或一個 ESXi 伺服器的 VM 可同時加以分析)|多個 (跨多部主機或主機叢集的 VM 可同時加以分析)| NA |多個 (跨多部主機或主機叢集的 VM 可同時加以分析)| NA
 
 *此工具主要用於 Hyper-V 到 Azure 的災害復原案例。 若為 Hyper-V 到次要站台的災害復原，此工具只能用來了解來源端建議，例如所需的網路頻寬、每個來源 Hyper-V 伺服器上所需的可用儲存體空間，以及初始複寫批次處理數目和批次定義。 請忽略報告中的 Azure 建議和成本。 此外，取得輸送量作業不適用於 Hyper-V 到次要站台的災害復原案例。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 此工具有兩個主要階段：分析和報告產生。 另外還有第三個選項：只計算輸送量。 下表列出起始分析 / 輸送量測量之伺服器的需求。
 
-| 伺服器需求 | 描述|
+| 伺服器需求 | Description|
 |---|---|
 |分析和輸送量測量| <ul><li>作業系統：Windows Server 2016 或 Windows Server 2012 R2<br>(最好至少符合[組態伺服器的大小建議](https://aka.ms/asr-v2a-on-prem-components))</li><li>機器組態︰8 個 vCPU、16 GB RAM、300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[適用於 Visual Studio 2012 的 Visual C++ 可轉散發套件](https://aka.ms/vcplusplus-redistributable)</li><li>從這部伺服器的網際網路存取 Azure （*. blob.core.windows.net），埠443<br>[這是選擇性的。 您可以選擇在報告產生期間手動提供可用的頻寬。]</li><li>Azure 儲存體帳戶</li><li>伺服器的系統管理員存取權</li><li>100 GB 的可用磁碟空間下限 (假設分析平均各有 3 個磁碟的 1,000 部 VM 30 天)</li><li>VMware vCenter 統計資料層級設定可以是 1 或更高層級</li><li>允許 vCenter 連接埠 (預設為 443)：Site Recovery 部署規劃工具使用此連接埠來連線至 vCenter 伺服器/ESXi 主機</ul></ul>|
 | 報告產生 | 具有 Excel 2013 或更新版本的 Windows 電腦或 Windows Server。<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[適用於 Visual Studio 2012 的 Visual C++ 可轉散發套件](https://aka.ms/vcplusplus-redistributable)</li><li>只有在您會於報告產生命令中傳遞 -User 選項，以擷取 VM 之最新 VM 設定資訊的情況下，才需要 [VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) \(英文\)。 部署規劃工具會連線至 vCenter 伺服器。 允許 vCenter 連接埠 (預設為 443) 以連線至 vCenter 伺服器。</li>|
