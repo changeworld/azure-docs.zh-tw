@@ -2,23 +2,21 @@
 title: 如何建立 Azure 支援要求 | Microsoft Docs
 description: 需要協助的客戶可以使用 Azure 入口網站來尋找自助式解決方案，以及建立和管理支援要求。
 services: Azure Supportability
-author: ganganarayanan
+author: mgblythe
 manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
-ms.topic: article
-ms.date: 03/31/2020
-ms.author: kfollis
-ms.openlocfilehash: 0bd1191c0b92203b100b1713971119ec828352ea
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.topic: how-to
+ms.date: 06/25/2020
+ms.author: mblythe
+ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835541"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851904"
 ---
-# <a name="how-to-create-an-azure-support-request"></a>如何建立 Azure 支援要求
-
-## <a name="overview"></a>概觀
+# <a name="create-an-azure-support-request"></a>建立 Azure 支援要求
 
 Azure 可讓您建立及管理支援要求，也稱為支援票證。 您可以在 [Azure 入口網站](https://portal.azure.com)中建立及管理要求，如本文所述。 您也可以使用 [Azure 支援票證 REST API](/rest/api/support)，以程式設計方式建立和管理要求。
 
@@ -28,14 +26,14 @@ Azure 可讓您建立及管理支援要求，也稱為支援票證。 您可以�
 >* 商業用途的 Azure 入口網站是：[https://portal.azure.com](https://portal.azure.com)
 >* 德國的 Azure 入口網站是：[https://portal.microsoftazure.de](https://portal.microsoftazure.de)
 >* 美國政府的 Azure 入口網站是：[https://portal.azure.us](https://portal.azure.us)
->
->
 
-根據客戶的意見反應，我們已更新支援要求體驗，著重在三個主要目標︰
+支援要求體驗著重于三個主要目標：
 
 * **簡化**：將支援和疑難排解的尋找變得更容易，並簡化提交支援要求的方式。
 * **整合**：當您針對 Azure 資源進行疑難排解時，可以很簡單地開啟支援要求，而不需要轉換操作情境。
-* **效率**：收集支援專員所需的重要資訊，有效率地解決問題。
+* **有效**︰收集支援工程師所需的重要資訊，有效率地解決問題。
+
+Azure 為訂用帳戶管理提供無限制的支援，包括帳單、配額調整、帳戶轉換等。 如需技術支援，您必須加入支援計劃。 如需詳細資訊，請參閱[比較支援方案](https://azure.microsoft.com/support/plans)。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -43,7 +41,7 @@ Azure 可讓您建立及管理支援要求，也稱為支援票證。 您可以�
 
 ### <a name="role-based-access-control"></a>角色型存取控制
 
-若要建立支援要求，您必須是[擁有者](../../role-based-access-control/built-in-roles.md#owner)、[參與者](../../role-based-access-control/built-in-roles.md#contributor)，或是獲派訂用帳戶層級的[支援要求參與者](../../role-based-access-control/built-in-roles.md#support-request-contributor)角色。 若要建立無訂用帳戶的支援要求，例如 Azure Active Directory (AAD) 的案例，您必須是[管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+若要建立支援要求，您必須是[擁有者](../../role-based-access-control/built-in-roles.md#owner)、[參與者](../../role-based-access-control/built-in-roles.md#contributor)，或是獲派訂用帳戶層級的[支援要求參與者](../../role-based-access-control/built-in-roles.md#support-request-contributor)角色。 若要建立不含訂用帳戶的支援要求（例如 Azure Active Directory 案例），您必須是系統[管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
 ### <a name="go-to-help--support-from-the-global-header"></a>從全域標頭進入 [說明 + 支援]
 
@@ -53,7 +51,7 @@ Azure 可讓您建立及管理支援要求，也稱為支援票證。 您可以�
 
    ![說明與支援](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-2. 選取 [新增支援要求]。 按照提示提供您的問題相關資訊給我們。 我們會建議一些可能的解決辦法，收集有關問題的詳細資訊，並協助您提交及追蹤支援要求。
+1. 選取 [新增支援要求]。 依照提示提供問題的相關資訊。 我們會建議一些可能的解決辦法，收集有關問題的詳細資訊，並協助您提交及追蹤支援要求。
 
    ![新的支援要求](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
 
@@ -65,7 +63,7 @@ Azure 可讓您建立及管理支援要求，也稱為支援票證。 您可以�
 
    ![在內容中](./media/how-to-create-azure-support-request/incontext2lower.png)
 
-2. 遵循提示，提供您問題的相關資訊給我們。 當您從資源啟動支援要求程序時，系統會為您預先選擇一些選項。
+1. 遵循提示，提供您問題的相關資訊給我們。 當您從資源啟動支援要求程序時，系統會為您預先選擇一些選項。
 
 ## <a name="create-a-support-request"></a>建立支援要求
 
@@ -75,14 +73,9 @@ Azure 可讓您建立及管理支援要求，也稱為支援票證。 您可以�
 
 支援要求程序的第一個步驟會收集您的問題和支援計劃的基本資訊。
 
-在 [新的支援要求] 的 [基本資訊] 中，使用選取器開始描述問題。 首先，您要區別問題類型的一些常規分類，然後選擇相關的訂用帳戶。 選取服務，例如 [執行 Windows 的虛擬機器]。 選取資源，例如，您的虛擬機器名稱。 以您的文字描述問題，然後 [選取問題類型] 讓問題更明確。
+在 [新的支援要求] 的 [基本資訊] 中，使用選取器開始描述問題。 首先，您要區別問題類型的一些常規分類，然後選擇相關的訂用帳戶。 選取服務，例如執行**Windows 的虛擬機器**。 選取資源，例如，您的虛擬機器名稱。 以您自己的單字描述問題，然後選取 [**問題類型**] 和 [**問題子類型**]，以取得更具體的資訊。
 
 ![基本概念刀鋒視窗](./media/how-to-create-azure-support-request/basics2lower.png)
-
-> [!NOTE]
-> Azure 為訂用帳戶管理提供無限制的支援，包括帳單、配額調整、帳戶轉換等。 如需技術支援，您必須加入支援計劃。 [深入了解支援計劃](https://azure.microsoft.com/support/plans)。
->
->
 
 ### <a name="solutions"></a>方案
 
@@ -90,42 +83,35 @@ Azure 可讓您建立及管理支援要求，也稱為支援票證。 您可以�
 
 ### <a name="details"></a>詳細資料
 
-接下來，我們會收集有關該問題的更多詳細資訊。 在這個步驟提供完整詳細的資訊能幫助我們將您的支援要求轉交給合適的支援專員。
+接下來，我們會收集有關該問題的更多詳細資訊。 在此步驟中提供完整且詳細的資訊，可協助我們將您的支援要求路由至正確的工程師。
 
-如果可能，請告訴我們問題何時開始發生以及能重現問題的任何步驟。 您可以上傳檔案，例如記錄檔、診斷的輸出。
+1. 如果可能，請告訴我們問題何時開始發生以及能重現問題的任何步驟。 您可以上傳檔案，例如記錄檔、診斷的輸出。 如需檔案上傳的詳細資訊，請參閱檔案[上傳指導方針](how-to-manage-azure-support-request.md#file-upload-guidelines)。
 
-提供有關問題的所有資訊之後，請選擇如何獲得支援。 在 [詳細資料] 的 [支援方法] 區段中，選取影響的嚴重性。 提供您偏好的聯絡方法、適當的聯絡時間以及您的支援語言。
+1. 提供有關問題的所有資訊之後，請選擇如何獲得支援。 在 [詳細資料] 的 [支援方法] 區段中，選取影響的嚴重性。 最大嚴重性層級取決於您的[支援方案](https://azure.microsoft.com/support/plans)。
 
-然後，完成 [聯絡資訊] 區段讓我們知道如何聯絡您。
+    預設會選取 [**共用診斷資訊**] 選項。 這可讓 Azure 支援從您的 Azure 資源收集[診斷資訊](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)。 在某些情況下，預設不會選取第二個問題，例如要求存取虛擬機器的記憶體。
+
+1. 提供您偏好的聯絡方法、適當的聯絡時間以及您的支援語言。
+
+1. 然後，完成 [聯絡資訊] 區段讓我們知道如何聯絡您。
 
 ### <a name="review--create"></a>檢閱 + 建立
 
-完成每個索引標籤中的所有必要資訊，然後選取 [檢閱 + 建立]。 檢查您將傳送給客戶支援的詳細資訊。 如有需要，可回到任何索引標籤進行所需的變更。 當您滿意支援要求的填寫內容後，選取 [建立]。
+完成每個索引標籤中的所有必要資訊，然後選取 [檢閱 + 建立]。 請檢查您將傳送給支援的詳細資料。 如有需要，可回到任何索引標籤進行所需的變更。 當您滿意支援要求的填寫內容後，選取 [建立]。
 
-支援專員將使用您提供的方法與您聯絡。 如需初始回應時間的相關資訊，請參閱[支援範圍與回應能力](https://azure.microsoft.com/support/plans/response/)。
+支援工程師會使用您所指定的方法與您聯繫。 如需初始回應時間的詳細資訊，請參閱[支援範圍和回應](https://azure.microsoft.com/support/plans/response/)性。
 
-## <a name="all-support-requests"></a>所有支援要求
 
-您可以移至 [說明+ 支援]  >   [所有支援要求]，檢視支援要求的詳細資料和狀態。
+## <a name="next-steps"></a>後續步驟
 
-![所有支援要求](./media/how-to-create-azure-support-request/allrequestslower.png)
-
-在此頁面中，您可以依 [訂用帳戶]、[建立日期 (UTC)]、[狀態] 來篩選支援要求。 此外，您可以在此頁面上排序和搜尋支援要求。
-
-選取支援要求即可檢視詳細資料，包括嚴重性，並等待一些時間讓支援專員做出回應。
-
-如果您想要變更要求的嚴重性，請選取 [業務衝擊]。 從嚴重性清單中選擇並指定嚴重性。
-
-> [!NOTE]
-> 最高嚴重性層級取決於您的支援計劃。 [深入了解支援計劃](https://azure.microsoft.com/support/plans)。
->
->
 若要深入了解 Azure 中的自助式支援選項，請看這支影片：
 
 > [!VIDEO https://www.youtube.com/embed/gNhzR5FE9DY]
 
-## <a name="next-steps"></a>後續步驟
+若要深入瞭解，請遵循下列連結：
 
+* [如何管理 Azure 支援要求](how-to-manage-azure-support-request.md)
+* [Azure 支援票證 REST API](/rest/api/support)
 * [將您的意見反應和建議傳送給我們](https://feedback.azure.com/forums/266794-support-feedback)
 * 在 [Twitter](https://twitter.com/azuresupport) 上與我們互動
 * 在 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/products/azure)中從同儕獲得幫助

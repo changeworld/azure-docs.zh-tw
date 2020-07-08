@@ -3,12 +3,12 @@ title: 使用復原服務保存庫的診斷設定
 description: 本文說明如何使用 Azure 備份的舊和新診斷事件。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 4efc00da96493c751c4a85dbdcc280d1ca0ef5ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be99b73a4dac12c9e70e4cb8a85f34b97f5c42d7
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183699"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854803"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>使用復原服務保存庫的診斷設定
 
@@ -29,6 +29,8 @@ Azure 備份提供下列診斷事件。 每個事件都會在一組特定的備�
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
+如果您使用的是[舊版事件](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)AzureBackupReport，建議您在最早的時間切換到使用上述事件。
+
 如需詳細資訊，請參閱[Azure 備份診斷事件的資料模型](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)。
 
 這些事件的資料可以傳送到儲存體帳戶、Log Analytics 工作區或事件中樞。 如果您要將此資料傳送至 Log Analytics 工作區，請選取 [**診斷設定**] 畫面上的 [**資源特定**] 切換。 如需詳細資訊，請參閱下列幾節。
@@ -43,7 +45,7 @@ Azure 備份提供下列診斷事件。 每個事件都會在一組特定的備�
 1. 為 [診斷] 設定指定名稱。
 1. 選取 [**傳送至 Log analytics** ] 核取方塊，然後選取 Log analytics 工作區。
 1. 選取切換中的 [資源] [**特定**]，然後選取下列六個事件： **CoreAzureBackup**、 **AddonAzureBackupJobs**、 **AddonAzureBackupAlerts**、 **AddonAzureBackupPolicy**、 **AddonAzureBackupStorage**和**AddonAzureBackupProtectedInstance**。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
    ![資源特定模式](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
@@ -112,7 +114,7 @@ Azure 備份和 Azure Site Recovery 事件會從相同的復原服務保存庫�
 
 ![Site Recovery 事件](./media/backup-azure-diagnostics-events/site-recovery-settings.png)
 
-總結：
+總括來說：
 
 * 如果您已使用 Azure 診斷設定 Log Analytics 診斷，並在其上撰寫自訂查詢，請將該設定保持不*變*，直到您將查詢遷移到使用新事件的資料為止。
 * 如果您也想要上架新的資料表（如我們所建議），請建立**新**的診斷設定，選取 [資源] [**特定**]，然後選取六個新的事件。

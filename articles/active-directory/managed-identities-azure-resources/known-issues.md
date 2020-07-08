@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: d29689b088759b73465b24d06d4341571b599782
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714044"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855131"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 資源適用受控識別的常見問題集與已知問題
 
@@ -32,6 +32,24 @@ ms.locfileid: "83714044"
 
 > [!NOTE]
 > 先前稱為「受控服務識別」(MSI) 的服務，其新名稱為「Azure 資源適用受控識別」。
+
+
+### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>您要如何尋找具有受控識別的資源？
+
+您可以使用下列 Azure CLI 命令，尋找具有系統指派之受控識別的資源清單： 
+
+`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
+
+
+
+
+### <a name="do-managed-identities-have-a-backing-app-object"></a>受控識別是否有支援的應用程式物件？
+
+否。 受控識別和 Azure AD App 註冊在目錄中的情況並不相同。 
+
+應用程式註冊有兩個元件：應用程式物件 + 服務主體物件。 適用于 Azure 資源的受控識別只有其中一個元件：服務主體物件。 
+
+受控識別在目錄中沒有應用程式物件，這通常是用來授與 MS graph 的應用程式許可權。 相反地，受控識別的 MS graph 許可權必須直接授與服務主體。  
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Azure 資源適用受控識別是否可與 Azure 雲端服務一起使用？
 
@@ -114,6 +132,8 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
  - 若為系統指派的受控識別：停用然後重新啟用。 
  - 若為使用者指派的受控識別：加以刪除、重新建立，然後重新連結至所需的資源 (例如虛擬機器)
+
+如需詳細資訊，請參閱將[Azure 訂用帳戶轉移至不同的 Azure AD 目錄（預覽）](../../role-based-access-control/transfer-subscription.md)。
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>將使用者指派的受控識別移至不同的資源群組/訂用帳戶
 

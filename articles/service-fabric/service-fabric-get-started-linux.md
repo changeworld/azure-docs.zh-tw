@@ -3,12 +3,12 @@ title: 在 Linux 上設定開發環境
 description: 在 Linux 上安裝執行階段和 SDK，並建立本機開發叢集。 完成此設定之後，您就可以開始建置應用程式。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfc97a540ed8c4c17ca4030c45b16021b926d7c5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854786"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上準備您的開發環境
 > [!div class="op_single_selector"]
@@ -25,11 +25,11 @@ ms.locfileid: "82193406"
 不支援在適用於 Linux 的 Windows 子系統上安裝 Service Fabric 執行階段。 您可以使用支援的 Azure Service Fabric 命令列介面 (CLI)，管理裝載於雲端或內部部署中其他地方的 Service Fabric 實體。 如需如何安裝 CLI 的資訊，請參閱[設定 Service Fabric CLI](./service-fabric-cli.md)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 以下為支援開發的作業系統版本。
 
-* Ubuntu 16.04 (`Xenial Xerus`)
+* Ubuntu 16.04 （ `Xenial Xerus` ）、18.04 （ `Bionic Beaver` ）
 
     請確定已安裝 `apt-transport-https` 安裝套件。
          
@@ -60,46 +60,40 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
 ### <a name="ubuntu"></a>Ubuntu
 
 1. 開啟終端機。
-2. 將 Service Fabric 存放庫新增至來源清單。
+
+2. 將存放庫新增 `dotnet` 至您的散發套件對應的 [來源] 清單。
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
-    ```
-
-3. 將 `dotnet` 存放庫新增至來源清單。
-
-    ```bash
-    wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+    wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-4. 將新的 Gnu Privacy Guard (GnuPG 或 GPG) 金鑰新增至 APT keyring。
+3. 將新的 MS Open Tech Gnu 隱私權防護（GnuPG 或 GPG）金鑰新增至您的 APT keyring。
 
     ```bash
-    curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
+    sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
-5. 將官方的 Docker GPG 金鑰新增至 APT keyring。
+4. 將官方的 Docker GPG 金鑰新增至 APT keyring。
 
     ```bash
-    sudo apt-get install curl
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-6. 設定 Docker 存放庫。
+5. 設定 Docker 存放庫。
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. 將 Azul JDK 金鑰新增至 APT Keyring，並設定其存放庫。
+6. 將 Azul JDK 金鑰新增至 APT Keyring，並設定其存放庫。
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
-8. 根據新增的存放庫重新整理套件清單。
+7. 根據新增的存放庫重新整理套件清單。
 
     ```bash
     sudo apt-get update
@@ -179,7 +173,7 @@ RHEL | - | OpenJDK 1.8 | 內含於 npm | 最新 |
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. 開啟網頁瀏覽器並移至**Service Fabric Explorer** （`http://localhost:19080/Explorer`）。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
+2. 開啟網頁瀏覽器並移至**Service Fabric Explorer** （ `http://localhost:19080/Explorer` ）。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
 
     ![Linux 上的 Service Fabric Explorer][sfx-linux]
 
@@ -261,13 +255,13 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 > 
 > 在 Ubuntu 上，建議您直接從 Eclipse 網站安裝，而不要使用套件安裝程式 (`apt` 或 `apt-get`)。 這麼做可確保您會取得最新版的 Eclipse。 您可以安裝適用於 Java 開發人員或 Java EE 開發人員的 Eclipse IDE。
 
-1. 在 Eclipse 中，確定您已安裝 Eclipse Neon 或更新版本以及 Buildship 2.2.1 版或更新版本。 **選取** > [說明] [**關於 Eclipse** > ] [**安裝詳細資料**]，檢查已安裝的元件版本。 您可以使用 [Eclipse Buildship：適用於 Gradle 的 Eclipse 外掛程式][buildship-update]的指示來更新 Buildship。
+1. 在 Eclipse 中，確定您已安裝 Eclipse Neon 或更新版本以及 Buildship 2.2.1 版或更新版本。 **選取 [** 說明] [  >  **關於 Eclipse**] [  >  **安裝詳細資料**]，檢查已安裝的元件版本。 您可以使用 [Eclipse Buildship：適用於 Gradle 的 Eclipse 外掛程式][buildship-update]的指示來更新 Buildship。
 
-2. 若要安裝 Service Fabric 外掛程式，**請選取** > [說明] [**安裝新軟體**]。
+2. 若要安裝 Service Fabric 外掛程式，**請選取 [** 說明] [  >  **安裝新軟體**]。
 
-3. **在 [使用**] 方塊中，輸入**HTTPs\/：/dl.microsoft.com/eclipse**。
+3. **在 [使用**] 方塊中，輸入**HTTPs： \/ /dl.microsoft.com/eclipse**。
 
-4. 選取 [新增]  。
+4. 選取 [新增]。
 
     ![可用的軟體頁面][sf-eclipse-plugin]
 
@@ -275,7 +269,7 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 
 6. 執行安裝步驟。 然後接受使用者授權合約。
 
-如果您已安裝 Service Fabric Eclipse 外掛程式，請確定您擁有的是最新版本。 **選取** > [說明] [**關於 Eclipse** > ] [**安裝詳細資料**] 以進行檢查。 然後在已安裝的外掛程式清單中搜尋 Service Fabric。如果有較新的版本可用，請選取 [**更新**]。
+如果您已安裝 Service Fabric Eclipse 外掛程式，請確定您擁有的是最新版本。 **選取 [** 說明] [  >  **關於 Eclipse**] [  >  **安裝詳細資料**] 以進行檢查。 然後在已安裝的外掛程式清單中搜尋 Service Fabric。如果有較新的版本可用，請選取 [**更新**]。
 
 如需詳細資訊，請參閱[適用於 Eclipse Java 應用程式開發的 Service Fabric 外掛程式](service-fabric-get-started-eclipse.md)。
 

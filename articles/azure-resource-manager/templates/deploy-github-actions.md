@@ -2,13 +2,13 @@
 title: 使用 GitHub Actions 部署 Resource Manager 範本
 description: 描述如何使用 GitHub Actions 部署 Azure Resource Manager 範本。
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: f2e0d73c838d16c161605972b87d6f07ef8869b9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.date: 07/02/2020
+ms.openlocfilehash: 313354499901bc69ec6e00f0ba7c385065cae615
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869178"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854735"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 Azure Resource Manager 範本
 
@@ -82,7 +82,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 
 ## <a name="create-workflow"></a>建立工作流程
 
-工作流程檔案必須儲存於存放庫根目錄上的 **.github/workflow** 資料夾中。 工作流程副檔名可以是 **.yml** 或 **.yaml**。
+工作流程檔案必須儲存在您存放庫根目錄的**github/工作流程**資料夾中。 工作流程副檔名可以是 **.yml** 或 **.yaml**。
 
 您可以建立工作流程檔案，然後將檔案推送/上傳至存放庫，或使用下列程序：
 

@@ -3,12 +3,12 @@ title: 安裝 Microsoft Azure 復原服務（MARS）代理程式
 description: 瞭解如何安裝 Microsoft Azure 復原服務（MARS）代理程式來備份 Windows 電腦。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422923"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855230"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安裝 Azure 備份 MARS 代理程式
 
@@ -42,7 +42,7 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
 
 ## <a name="modify-storage-replication"></a>修改儲存體複寫
 
-根據預設，保存庫會使用[異地多餘儲存體（GRS）](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+根據預設，保存庫會使用[異地備援儲存體 (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
 
 * 如果保存庫是您的主要備份機制，我們建議您使用 GRS。
 * 您可以使用[本機多餘的儲存體（LRS）](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)來降低 Azure 儲存體成本。
@@ -58,7 +58,7 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
     ![更新備份設定](./media/backup-afs/backup-configuration.png)
 
 > [!NOTE]
-> 設定保存庫並包含備份專案之後，即無法修改儲存體複寫類型。 如果您想要這樣做，您必須重新建立保存庫。
+> 當保存庫設定完成且包含備份項目之後，您就無法修改儲存體複寫類型。 如果您想要這樣做，您必須重新建立保存庫。
 >
 
 ### <a name="verify-internet-access"></a>確認網際網路存取
@@ -66,11 +66,12 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
 如果您的電腦具有有限的網際網路存取權，請確定電腦或 proxy 上的防火牆設定允許下列 Url 和 IP 位址：
 
 * URL
-  * `www\.msftncsi.com`
+  * `www.msftncsi.com`
   * `*.Microsoft.com`
   * `*.WindowsAzure.com`
   * `*.microsoftonline.com`
   * `*.windows.net`
+  * `www.msftconnecttest.com`
 * IP 位址
   * 20.190.128.0/18
   * 40.126.0.0/18
@@ -82,6 +83,7 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
 若要使用公用對等互連，請先確定存取下列網域和位址：
 
 * `http://www.msftncsi.com/ncsi.txt`
+* `http://www.msftconnecttest.com/connecttest.txt`
 * `microsoft.com`
 * `.WindowsAzure.com`
 * `.microsoftonline.com`
@@ -89,7 +91,7 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
 
 若要使用 Microsoft 對等互連，請選取下列 [服務]、[區域] 和 [相關的社區] 值：
 
-* Azure Active Directory （12076:5060）
+* Azure Active Directory (12076:5060)
 * Azure 區域（根據復原服務保存庫的位置）
 * 根據復原服務保存庫的位置 Azure 儲存體
 
@@ -129,18 +131,18 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
 
     ![下載保存庫認證](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-1. 選取 [儲存]  。 檔案會下載到您的 [下載] 資料夾。 您無法開啟保存庫認證檔案。
+1. 選取 [儲存]。 檔案會下載到您的 [下載] 資料夾。 您無法開啟保存庫認證檔案。
 
 ## <a name="install-and-register-the-agent"></a>安裝和註冊代理程式
 
-1. 在您要備份的電腦上執行*marsagentinstaller.exe。*
-1. 在 [MARS 代理程式安裝精靈] 中，選取 [**安裝設定**]。 在這裡，選擇要安裝代理程式的位置，然後選擇快取的位置。 然後選取 [下一步]  。
+1. 在您要備份的電腦上執行*MARSagentinstaller.exe*檔案。
+1. 在 [MARS 代理程式安裝精靈] 中，選取 [**安裝設定**]。 在這裡，選擇要安裝代理程式的位置，然後選擇快取的位置。 然後選取 [下一步]。
    * Azure 備份會先使用快取來儲存資料快照集，然後再將其傳送至 Azure。
    * 快取位置的可用空間應該等於您要備份的資料大小至少5%。
 
     ![選擇 MARS 代理程式安裝精靈中的安裝設定](./media/backup-configure-vault/mars1.png)
 
-1. 在 [ **Proxy**設定] 中，指定在 Windows 電腦上執行的代理程式將如何連線到網際網路。 然後選取 [下一步]  。
+1. 在 [ **Proxy**設定] 中，指定在 Windows 電腦上執行的代理程式將如何連線到網際網路。 然後選取 [下一步]。
 
    * 如果您使用自訂 proxy，請指定任何必要的 proxy 設定和認證。
    * 請記住，代理程式需要存取[特定的 url](#before-you-start)。
@@ -149,7 +151,7 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
 
 1. 若要**安裝**，請檢查必要條件，然後選取 [**安裝**]。
 1. 安裝代理程式之後，選取 [**繼續註冊**]。
-1. 在 [**註冊伺服器]** > [保存**庫識別**] 中，流覽並選取您下載的認證檔案。 然後選取 [下一步]  。
+1. 在 [**註冊伺服器]**  >  [保存**庫識別**] 中，流覽並選取您下載的認證檔案。 然後選取 [下一步]。
 
     ![使用註冊伺服器嚮導來新增保存庫認證](./media/backup-configure-vault/register1.png)
 
@@ -158,7 +160,7 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
     * 將複雜密碼儲存在安全的位置。 您需要它來還原備份。
     * 如果您遺失或忘記複雜密碼，Microsoft 將無法協助您復原備份資料。
 
-1. 選取 [完成]  。 現在已安裝代理程式，且您的電腦已註冊到保存庫。 您已準備好可以設定及排程備份。
+1. 選取 [完成]。 現在已安裝代理程式，且您的電腦已註冊到保存庫。 您已準備好可以設定及排程備份。
 
 ## <a name="next-steps"></a>後續步驟
 

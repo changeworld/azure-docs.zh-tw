@@ -3,12 +3,12 @@ title: Azure 監視器記錄資料模型
 description: 在本文中，您將詳盡了解 Azure 備份資料的 Azure 監視器 Log Analytics 資料模型。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 78d43e4c65f31b47f4b6070f071c932692cee883
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
-ms.translationtype: HT
+ms.openlocfilehash: e776649ff22e3249e2472adbe298c869ff5c946a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83707984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854752"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>適用於 Azure 備份資料的 Log Analytics 資料模型
 
@@ -22,7 +22,7 @@ ms.locfileid: "83707984"
 
 ## <a name="using-azure-backup-data-model"></a>使用 Azure 備份資料模型
 
-若要根據您的需求建立視覺效果、自訂查詢及儀表板，您可以使用下列提供作為資料模型一部分的欄位。
+您可以使用下列資料模型中提供的欄位，根據您的需求建立視覺效果、自訂查詢和儀表板。
 
 ### <a name="alert"></a>警示
 
@@ -466,6 +466,30 @@ ms.locfileid: "83707984"
 基於回溯相容性，Azure 備份代理程式和 Azure VM 備份的診斷資料現在會同時傳送至 V1 和 V2 結構描述中的 Azure 診斷資料表 (V1 結構描述現在位於淘汰的路徑上)。 您可以在記錄查詢中篩選 SchemaVersion_s=="V1" 的記錄，以識別 Log Analytics 中的哪些記錄屬於 V1 結構描述。 
 
 請參閱前述[資料模型](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model)中的第三個資料行「描述」，以識別哪些資料行僅屬於 V1 結構描述。
+
+### <a name="modifying-your-queries-to-use-the-v2-schema"></a>修改您的查詢以使用 V2 架構
+當 V1 架構位於取代路徑上時，建議您在 Azure 備份診斷資料的所有自訂查詢中只使用 V2 架構。 以下範例說明如何更新您的查詢，以移除 V1 架構的相依性：
+
+1. 識別您的查詢是否使用僅適用于 V1 架構的任何欄位。 假設您有一個查詢可列出所有備份專案及其相關聯的受保護伺服器，如下所示：
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+````
+
+上述查詢會使用僅適用于 V1 架構的欄位 ProtectedServerUniqueId_s。 此欄位對等的 V2 架構是 ProtectedContainerUniqueId_s （請參閱上面的表格）。 欄位 BackupItemUniqueId_s 也適用于 V2 架構，而且相同的欄位可以在此查詢中使用。
+
+2. 將查詢更新為使用 V2 架構功能變數名稱。 建議的作法是在所有查詢中使用 filter ' where SchemaVersion_s = = "V2" '，如此一來，查詢就只會剖析對應至 V2 架構的記錄：
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| where SchemaVersion_s=="V2"
+| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
+````
 
 ## <a name="next-steps"></a>後續步驟
 

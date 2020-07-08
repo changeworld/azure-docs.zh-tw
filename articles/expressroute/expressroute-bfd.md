@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: rambala
-ms.openlocfilehash: 378b639e89ffd46f6b32d7004f934104dd4b5407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec9c6248f4054329bd3cd9b74855964c4acf72c4
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064847"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855147"
 ---
 # <a name="configure-bfd-over-expressroute"></a>透過 ExpressRoute 設定 BFD
 
@@ -37,22 +37,24 @@ BFD 預設會設定於 MSEE 上所有新建立的 ExpressRoute 私用對等互�
 
 範例 CE/PE （使用 Cisco IOS XE）設定如下所示。 
 
-    interface TenGigabitEthernet2/0/0.150
-       description private peering to Azure
-       encapsulation dot1Q 15 second-dot1q 150
-       ip vrf forwarding 15
-       ip address 192.168.15.17 255.255.255.252
-       bfd interval 300 min_rx 300 multiplier 3
+```console
+interface TenGigabitEthernet2/0/0.150
+   description private peering to Azure
+   encapsulation dot1Q 15 second-dot1q 150
+   ip vrf forwarding 15
+   ip address 192.168.15.17 255.255.255.252
+   bfd interval 300 min_rx 300 multiplier 3
 
 
-    router bgp 65020
-       address-family ipv4 vrf 15
-          network 10.1.15.0 mask 255.255.255.128
-          neighbor 192.168.15.18 remote-as 12076
-          neighbor 192.168.15.18 fall-over bfd
-          neighbor 192.168.15.18 activate
-          neighbor 192.168.15.18 soft-reconfiguration inbound
-       exit-address-family
+router bgp 65020
+   address-family ipv4 vrf 15
+      network 10.1.15.0 mask 255.255.255.128
+      neighbor 192.168.15.18 remote-as 12076
+      neighbor 192.168.15.18 fall-over bfd
+      neighbor 192.168.15.18 activate
+      neighbor 192.168.15.18 soft-reconfiguration inbound
+   exit-address-family
+```
 
 >[!NOTE]
 >若要在已經存在的私用對等互連下方啟用 BFD，您需要重設該對等互連。 請參閱[重設 ExpressRoute 對等互連][ResetPeering]
