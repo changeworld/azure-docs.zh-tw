@@ -6,21 +6,21 @@ ms.author: mhopkins
 ms.date: 05/11/2017
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.openlocfilehash: 4fe543010df9514cb2b22c56482a4b592574e917
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.openlocfilehash: 0ae099e74db3137be49d59d01c83807108bf370f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75941770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809265"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>如何使用 C++ 的佇列儲存體
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本指南將示範如何使用 Azure 佇列儲存體服務執行一般案例。 這些範例均以 C++ 撰寫，並使用 [Azure Storage Client Library for C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)。 所涵蓋的案例包括「插入」****、「查看」****、「取得」**** 和「刪除」**** 佇列訊息，以及「建立和刪除佇列」****。
 
 > [!NOTE]

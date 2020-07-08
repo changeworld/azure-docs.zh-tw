@@ -7,13 +7,13 @@ ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
-ms.reviewer: cbrooks
-ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: dineshm
+ms.openlocfilehash: 8f51b6f94ae8a245471757d256a923570582bb12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811536"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809078"
 ---
 # <a name="reacting-to-blob-storage-events"></a>回應 Blob 儲存體事件
 
@@ -39,7 +39,7 @@ Blob 儲存體事件會使用[Azure 事件方格](https://azure.microsoft.com/se
 - [教學課程：使用 Event Grid 自動調整已上傳映像的大小](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
-> 只有種類為 StorageV2 的儲存體帳戶 **（一般用途 v2）**、 **BlockBlobStorage**和**BlobStorage**支援事件整合。 **儲存體 (一般用途 v1)** 不  支援與事件方格整合。
+> 只有種類為 StorageV2 的儲存體帳戶 **（一般用途 v2）**、 **BlockBlobStorage**和**BlobStorage**支援事件整合。 **儲存體（一般用途 v1）** 不*支援與*事件方格整合。
 
 ## <a name="the-event-model"></a>事件模型
 
@@ -60,7 +60,7 @@ Blob 儲存體事件會使用[Azure 事件方格](https://azure.microsoft.com/se
 
 Blob[事件可以](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)依事件種類、容器名稱或已建立/刪除之物件的名稱進行篩選。 事件方格中的篩選準則符合主體的開頭或結尾，因此具有相符主旨的事件會前往訂閱者。
 
-若要深入瞭解如何套用篩選器，請參閱[篩選事件方格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
+若要深入瞭解如何套用篩選，請參閱[事件方格的篩選事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
 
 Blob 儲存體事件的主體使用格式：
 
@@ -102,7 +102,7 @@ Blob 儲存體事件的主體使用格式：
 > * 請使用 [blobType] 欄位以了解 Blob 允許何種類型的作業，以及您應該使用何種類型的用戶端程式庫來存取 Blob。 有效值為 `BlockBlob` 或 `PageBlob`。 
 > * 請使用帶有 `CloudBlockBlob` 和 `CloudAppendBlob` 建構函式的 [url] 欄位存取 Blob。
 > * 請忽略您不了解的欄位。 此做法將有助於保持未來可能新增功能的彈性。
-> * 如果您想要確保只有在完全認可區塊 Blob 時才會觸發**microsoft.storage.blobcreated**事件`CopyBlob`，請篩選`PutBlob`、 `PutBlockList`或`FlushWithClose` REST API 呼叫的事件。 只有在資料完全認可至區塊 Blob 之後，這些 API 呼叫才會觸發**microsoft.storage.blobcreated**事件。 若要瞭解如何建立篩選準則，請參閱[篩選事件方格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
+> * 如果您想要確保只有在完全認可區塊 Blob 時才會觸發**microsoft.storage.blobcreated**事件，請篩選 `CopyBlob` 、 `PutBlob` `PutBlockList` 或 `FlushWithClose` REST API 呼叫的事件。 只有在資料完全認可至區塊 Blob 之後，這些 API 呼叫才會觸發**microsoft.storage.blobcreated**事件。 若要瞭解如何建立篩選準則，請參閱[篩選事件方格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
 
 
 ## <a name="next-steps"></a>後續步驟

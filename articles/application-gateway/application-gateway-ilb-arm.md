@@ -4,15 +4,15 @@ description: 本頁面提供使用 Azure 資源管理員建立、設定、啟動
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 406dcdb419dba2e8044a173f4c05028abbaba3da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 439523fe55f231548ebc80ebc5d3b53c2f0d6e2f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312409"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808133"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>利用內部負載平衡器 (ILB) 建立應用程式閘道
 

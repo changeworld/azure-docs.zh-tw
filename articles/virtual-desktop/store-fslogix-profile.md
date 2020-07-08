@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4bb315991846b115070854b6e81caf16232fef6b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3dfa5d6bc5707679bbe5dada9f28046202e7aae5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607176"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808524"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows 虛擬桌面中 FSLogix 設定檔容器的儲存體選項
 
-Azure 提供多個儲存體解決方案，可讓您用來儲存 FSLogix 設定檔容器。 本文會比較 Azure 為 Windows 虛擬桌面 FSLogix 使用者設定檔容器所提供的儲存體解決方案。
+Azure 提供多個儲存體解決方案，可讓您用來儲存 FSLogix 設定檔容器。 本文會比較 Azure 為 Windows 虛擬桌面 FSLogix 使用者設定檔容器所提供的儲存體解決方案。 我們建議您將 FSLogix 設定檔容器儲存在大多數客戶的 Azure 檔案儲存體上。 
 
-Windows 虛擬桌面提供 FSLogix 設定檔容器作為建議的使用者設定檔解決方案。 FSLogix 是設計用來漫遊遠端運算環境中的設定檔，例如 Windows 虛擬桌面。 在登入時，此容器會使用原生支援的虛擬硬碟（VHD）和 Hyper-v 虛擬硬碟（VHDX），以動態方式連接到計算環境。 使用者設定檔會立即可供使用，而且會與原生使用者設定檔完全出現在系統中。
+Windows 虛擬桌面提供 FSLogix 設定檔容器作為建議的使用者設定檔解決方案。 FSLogix 可用來漫遊遠端運算環境中的設定檔，例如 Windows 虛擬桌面。 在登入時，此容器會使用原生支援的虛擬硬碟（VHD）和 Hyper-v 虛擬硬碟（VHDX），以動態方式連接到計算環境。 使用者設定檔會立即可供使用，而且會與原生使用者設定檔完全出現在系統中。
 
 下表比較 Windows 虛擬桌面 FSLogix 設定檔容器使用者設定檔的儲存體解決方案 Azure 儲存體提供專案。
 
 ## <a name="azure-platform-details"></a>Azure 平臺詳細資料
 
-|特性|Azure 檔案|Azure NetApp Files|儲存空間直接存取|
+|特性|Azure 檔案|Azure NetApp Files|儲存空間 Direct|
 |--------|-----------|------------------|---------------------|
 |使用案例|一般用途|來自 NetApp 內部部署的 Ultra 效能或遷移|跨平台|
 |平臺服務|是，Azure-原生解決方案|是，Azure-原生解決方案|否，自我管理|
@@ -38,10 +38,10 @@ Windows 虛擬桌面提供 FSLogix 設定檔容器作為建議的使用者設定
 
 ## <a name="azure-management-details"></a>Azure 管理詳細資料
 
-|特性|Azure 檔案|Azure NetApp Files|儲存空間直接存取|
+|特性|Azure 檔案|Azure NetApp Files|儲存空間 Direct|
 |--------|-----------|------------------|---------------------|
-|存取|雲端、內部部署和混合式（Azure 檔案同步）|雲端，內部部署（透過 ExpressRoute）|雲端，內部部署|
-|Backup |Azure 備份快照集整合|Azure NetApp Files 快照集|Azure 備份快照集整合|
+|Access|雲端、內部部署和混合式（Azure 檔案同步）|雲端，內部部署（透過 ExpressRoute）|雲端，內部部署|
+|備份|Azure 備份快照集整合|Azure NetApp Files 快照集|Azure 備份快照集整合|
 |安全性與合規性|[所有 Azure 支援的憑證](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO 已完成|[所有 Azure 支援的憑證](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory 整合|[原生 Active Directory 和 Azure Active Directory Domain Services](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)|[Azure Active Directory Domain Services 和原生 Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|僅限原生 Active Directory 或 Azure Active Directory Domain Services 支援|
 

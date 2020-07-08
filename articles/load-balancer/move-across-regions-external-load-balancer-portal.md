@@ -3,15 +3,15 @@ title: 使用 Azure 入口網站將 Azure 外部負載平衡器移至另一個 A
 description: 使用 Azure Resource Manager 範本，使用 Azure 入口網站將外部負載平衡器從一個 Azure 區域移至另一個區域。
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 5cd5ce2635ce05c4d5962f12ddc3945342897ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0598f21cddbaeef6b3cd10cd77250eeae8bd34bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638488"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808718"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>使用 Azure 入口網站將外部負載平衡器移至另一個區域
 
@@ -20,7 +20,7 @@ ms.locfileid: "75638488"
 就常值而言，您無法將 Azure 外部負載平衡器從一個區域移至另一個區域。 但是，您可以使用 Azure Resource Manager 範本來匯出外部負載平衡器的現有設定和公用 IP 位址。 接著，您可以將負載平衡器和公用 IP 匯出至範本、修改參數以符合目的地區域，然後將範本部署到新的區域，藉此將資源放在另一個區域中。 如需 Resource Manager 和範本的詳細資訊，請參閱[將資源群組匯出至範本](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 請確定 Azure 外部負載平衡器位於您要移動的 Azure 區域中。
 
@@ -34,7 +34,7 @@ ms.locfileid: "75638488"
 
 - 請確定您的訂用帳戶有足夠的資源可支援新增負載平衡器。 請參閱 [Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
-## <a name="prepare-and-move"></a>準備和移動
+## <a name="prepare-and-move"></a>準備及移動
 下列程式說明如何使用 Resource Manager 範本來準備移動的外部負載平衡器，並使用 Azure 入口網站將外部負載平衡器設定移至目的地區域。 您必須先匯出外部負載平衡器的公用 IP 設定。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -43,9 +43,9 @@ ms.locfileid: "75638488"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [資源群組]  。
 2. 找出包含來源公用 IP 的資源群組，然後選取它。
-3. 選取 [**設定** > ] [**匯出範本**]。
+3. 選取 [**設定**] [  >  **匯出範本**]。
 4. 選取 [**匯出範本**] 底下的 [**部署**]。
-5. 選取 [**範本** > ] [**編輯參數**]，以在線上編輯器中開啟 parameters json 檔案。
+5. 選取 [**範本**]  >  [**編輯參數**]，在線上編輯器中開啟檔案的 parameters.js。
 8. 若要編輯公用 IP 名稱的參數，請將 [**參數**] 底下的 [**值**] 屬性從來源 [公用 ip 名稱] 變更為您的目標公用 ip 名稱。 將名稱括在引號中。
 
     ```json
@@ -63,7 +63,7 @@ ms.locfileid: "75638488"
 
     在編輯器中選取 [**儲存**]。
 
-9.  選取 [**範本** > ] [**編輯範本**]，在線上編輯器中開啟範本. json 檔案。
+9.  選取 [**範本**]  >  [**編輯範本**]，在線上編輯器中開啟檔案的 template.js。
 
 10. 若要編輯將會移動公用 IP 的目的地區域，請變更 [**資源**] 底下的 [**位置**] 屬性：
 
@@ -95,7 +95,7 @@ ms.locfileid: "75638488"
     
 12. 視您的需求而定，您也可以變更範本中的其他參數：
 
-    * **SKU**。 您可以變更範本. json 檔案中**SKU**底下的**名稱**屬性，將設定中的公用 IP sku 從 standard 變更為基本或從基本變更為標準版：
+    * **SKU**。 您可以變更檔案中 template.js[ **SKU** ] 底下的 [**名稱**] 屬性，將設定中的公用 IP sku 從 [標準] 變更為 [基本] 或 [從基本] 變更為 [標準]：
 
         ```json
           "resources": [
@@ -141,11 +141,11 @@ ms.locfileid: "75638488"
  
 13. 在線上編輯器中選取 [**儲存**]。
 
-14. 選取 [**基本** > ] [**訂**用帳戶]，以選擇將部署目標公用 IP 的訂用帳戶。
+14. 選取 [**基本**]  >  [**訂**用帳戶]，以選擇將部署目標公用 IP 的訂用帳戶。
 
-15. 選取 [**基本** > ] [**資源群組**]，選擇將部署目標公用 IP 的資源群組。 您可以選取 [**建立新**的]，為目標公用 IP 建立新的資源群組。 請確定名稱與現有來源公用 IP 的來源資源群組不同。
+15. 選取 [**基本**]  >  [**資源群組**]，選擇將部署目標公用 IP 的資源群組。 您可以選取 [**建立新**的]，為目標公用 IP 建立新的資源群組。 請確定名稱與現有來源公用 IP 的來源資源群組不同。
 
-16. 確認 [**基本** > **位置**] 已設定為您想要部署公用 IP 的目標位置。
+16. 確認 [**基本**  >  **位置**] 已設定為您想要部署公用 IP 的目標位置。
 
 17. 在 [**設定**] 底下，確認名稱與您稍早在 [參數編輯器] 中輸入的名稱相符。
 
@@ -159,9 +159,9 @@ ms.locfileid: "75638488"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [資源群組]  。
 2. 找出包含來源外部負載平衡器的資源群組，然後選取它。
-3. 選取 [**設定** > ] [**匯出範本**]。
+3. 選取 [**設定**] [  >  **匯出範本**]。
 4. 選取 [**匯出範本**] 底下的 [**部署**]。
-5. 選取 [**範本** > ] [**編輯參數**]，以在線上編輯器中開啟 parameters json 檔案。
+5. 選取 [**範本**]  >  [**編輯參數**]，在線上編輯器中開啟檔案的 parameters.js。
 
 5. 若要編輯外部負載平衡器名稱的參數，請將來源外部負載平衡器名稱的**value**屬性變更為目標外部負載平衡器的名稱。 將名稱括在引號中。
 
@@ -178,11 +178,11 @@ ms.locfileid: "75638488"
 
     ```
 
-6.  若要編輯您在先前步驟中移動的目標公用 IP 值，您必須先取得資源識別碼，然後將它貼到 parameters json 檔案中。 若要取得識別碼：
+6.  若要編輯您在先前步驟中移動的目標公用 IP 值，您必須先取得資源識別碼，然後將它貼入檔案中的 parameters.js。 若要取得識別碼：
 
     1. 在另一個瀏覽器索引標籤或視窗中，登入[Azure 入口網站](https://portal.azure.com)，然後選取 [**資源群組**]。
-    2. 找出包含您在先前步驟中移動之公用 IP 的目標資源群組。 請選取它。
-    3. 選取 [**設定** > ] [**屬性**]。
+    2. 找出包含您在先前步驟中移動之公用 IP 的目標資源群組。 請加以選取。
+    3. 選取 [**設定**] [  >  **屬性**]。
     4. 在右側的分頁中，反白顯示**資源識別碼**，並將它複製到剪貼簿。 或者，您也可以選取**資源識別碼**路徑右邊的 [**複製到剪貼**簿]。
     5. 在其他瀏覽器視窗或索引標籤中開啟的 [**編輯參數**編輯器] 中，將 [資源識別碼] 貼到 [**值**] 屬性中：
 
@@ -202,7 +202,7 @@ ms.locfileid: "75638488"
     6. 在線上編輯器中選取 [**儲存**]。
 
 
-7.  如果您已設定負載平衡器的輸出 NAT 和輸出規則，您會在此檔案中看到輸出公用 IP 的外部識別碼的第三個專案。 在**目的地區域**中重複上述步驟，以取得輸出公用 IP 的識別碼。 將該識別碼貼入 parameters json 檔案：
+7.  如果您已設定負載平衡器的輸出 NAT 和輸出規則，您會在此檔案中看到輸出公用 IP 的外部識別碼的第三個專案。 在**目的地區域**中重複上述步驟，以取得輸出公用 IP 的識別碼。 將該識別碼貼入檔案中的 parameters.js：
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -223,8 +223,8 @@ ms.locfileid: "75638488"
         },
     ```
 
-8.  選取 [**範本** > ] [**編輯範本**]，在線上編輯器中開啟範本. json 檔案。
-9.  若要編輯將移動外部負載平衡器設定的目的地區域，請在 [json 檔案] 中變更 [**資源**] 底下的 [**位置**] 屬性：
+8.  選取 [**範本**]  >  [**編輯範本**]，在線上編輯器中開啟檔案的 template.js。
+9.  若要編輯將移動外部負載平衡器設定的目的地區域，請變更檔案中 [template.js**資源**] 底下的 [**位置**] 屬性：
 
     ```json
         "resources": [
@@ -243,7 +243,7 @@ ms.locfileid: "75638488"
 
 11. 視您的需求而定，您也可以變更範本中的其他參數：
 
-    * **SKU**。 您可以變更範本. json 檔案中**SKU**底下的**名稱**屬性，以將設定中的外部負載平衡器 SKU 從 [標準] 變更為 [基本] 或 [從基本] 變更為 [標準]。
+    * **SKU**。 您可以變更檔案中 template.js[ **SKU** ] 底下的 [**名稱**] 屬性，將設定中的外部負載平衡器 SKU 從 [標準] 變更為 [基本] 或 [從基本] 變更為 [標準]：
 
         ```json
         "resources": [
@@ -259,7 +259,7 @@ ms.locfileid: "75638488"
         ```
       如需基本和標準 SKU 負載平衡器之間差異的詳細資訊，請參閱[Azure Standard Load Balancer 總覽](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
 
-    * **負載平衡規則**。 您可以藉由新增或移除範本 json 檔案的**loadBalancingRules**區段中的專案，在設定中新增或移除負載平衡規則：
+    * **負載平衡規則**。 您可以藉由新增或移除檔案上 template.js**loadBalancingRules**區段中的專案，在設定中新增或移除負載平衡規則：
 
         ```json
         "loadBalancingRules": [
@@ -291,7 +291,7 @@ ms.locfileid: "75638488"
         ```
        如需負載平衡規則的相關資訊，請參閱[什麼是 Azure Load Balancer？](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。
 
-    * **探查**。 您可以藉由在範本 json 檔案的**探查**區段中新增或移除專案，在設定中新增或移除負載平衡器的探查：
+    * **探查**。 您可以新增或移除檔案上 template.js的**探查**區段中的專案，以在設定中新增或移除負載平衡器的探查：
 
         ```json
         "probes": [
@@ -311,7 +311,7 @@ ms.locfileid: "75638488"
         ```
        如需詳細資訊，請參閱[Load Balancer 健康情況探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
-    * **輸入 NAT 規則**。 您可以加入或移除負載平衡器的輸入 NAT 規則，方法是新增或移除範本 json 檔案的**loadbalancer.inboundnatrules**區段中的專案：
+    * **輸入 NAT 規則**。 您可以在 template.json 檔案的**loadbalancer.inboundnatrules**區段中新增或移除專案，以新增或移除負載平衡器的輸入 NAT 規則：
 
         ```json
         "inboundNatRules": [
@@ -333,7 +333,7 @@ ms.locfileid: "75638488"
                     }
                 ]
         ```
-        若要完成輸入 NAT 規則的新增或移除，此規則必須存在，或已在範本 json 檔案結尾作為**類型**屬性移除：
+        若要完成輸入 NAT 規則的新增或移除，此規則必須存在，或移除為檔案上 template.js結尾的**類型**屬性：
 
         ```json
         {
@@ -359,7 +359,7 @@ ms.locfileid: "75638488"
         ```
         如需輸入 NAT 規則的詳細資訊，請參閱[什麼是 Azure Load Balancer？](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。
 
-    * **輸出規則**。 您可以藉由編輯範本. json 檔案中的**outboundRules**屬性，來新增或移除設定中的輸出規則：
+    * **輸出規則**。 您可以藉由編輯 template.json 檔案中的**outboundRules**屬性，來新增或移除設定中的輸出規則：
 
         ```json
         "outboundRules": [
@@ -389,11 +389,11 @@ ms.locfileid: "75638488"
 
 12. 在線上編輯器中選取 [**儲存**]。
 
-13. 選取 [**基本** > ] [**訂**用帳戶]，選擇將部署目標外部負載平衡器的訂用帳戶。
+13. 選取 [**基本**]  >  [**訂**用帳戶]，選擇將部署目標外部負載平衡器的訂用帳戶。
 
-15. 選取 [**基本** > ] [**資源群組**]，選擇將部署目標負載平衡器的資源群組。 您可以選取 [**建立新**的]，為目標外部負載平衡器建立新的資源群組。 或者，您可以選擇您稍早為公用 IP 建立的現有資源群組。 請確定名稱與現有來源外部負載平衡器的來源資源群組不同。
+15. 選取 [**基本**]  >  [**資源群組**]，選擇將部署目標負載平衡器的資源群組。 您可以選取 [**建立新**的]，為目標外部負載平衡器建立新的資源群組。 或者，您可以選擇您稍早為公用 IP 建立的現有資源群組。 請確定名稱與現有來源外部負載平衡器的來源資源群組不同。
 
-16. 確認 [**基本** > **位置**] 已設定為您要部署外部負載平衡器的目標位置。
+16. 確認 [**基本**  >  **位置**] 已設定為您要部署外部負載平衡器的目標位置。
 
 17. 在 [**設定**] 底下，確認 [名稱] 符合您稍早在 [參數編輯器] 中輸入的名稱。 確認設定中的資源識別碼已填入任何公用 Ip。
 
@@ -415,4 +415,4 @@ ms.locfileid: "75638488"
 
 
 - [將資源移至新的資源群組或訂用帳戶](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [將 Azure VM 移動到另一個區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [將 Azure VM 移至其他區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

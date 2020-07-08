@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/13/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 0df0ba4ce76d249bcb4738b41c94677e061f14ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f16902a779fdb7c86fb7506711d2bce77ca9d05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409845"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809231"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>判斷用於儲存體帳戶的 Azure 儲存體加密金鑰模型
 
@@ -57,7 +57,7 @@ $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
 $account.Encryption.KeySource
 ```
 
-如果**keysource filename**屬性的值為`Microsoft.Storage`，則會使用 Microsoft 管理的金鑰來加密帳戶。 如果**keysource filename**屬性的值為`Microsoft.Keyvault`，則會使用客戶管理的金鑰來加密帳戶。
+如果**keysource filename**屬性的值為，則 `Microsoft.Storage` 會使用 Microsoft 管理的金鑰來加密帳戶。 如果**keysource filename**屬性的值為，則 `Microsoft.Keyvault` 會使用客戶管理的金鑰來加密帳戶。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
@@ -71,7 +71,7 @@ key_source=$(az storage account show \
     --output tsv)
 ```
 
-如果**keysource filename**屬性的值為`Microsoft.Storage`，則會使用 Microsoft 管理的金鑰來加密帳戶。 如果**keysource filename**屬性的值為`Microsoft.Keyvault`，則會使用客戶管理的金鑰來加密帳戶。
+如果**keysource filename**屬性的值為，則 `Microsoft.Storage` 會使用 Microsoft 管理的金鑰來加密帳戶。 如果**keysource filename**屬性的值為，則 `Microsoft.Keyvault` 會使用客戶管理的金鑰來加密帳戶。
 
 ---
 

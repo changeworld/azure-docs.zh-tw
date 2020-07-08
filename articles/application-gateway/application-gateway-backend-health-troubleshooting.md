@@ -4,15 +4,15 @@ description: 說明如何針對 Azure 應用程式閘道的後端健康情況問
 services: application-gateway
 author: surajmb
 ms.service: application-gateway
-ms.topic: article
-ms.date: 08/30/2019
+ms.topic: troubleshooting
+ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: c51d79d55f77468030100fa10973e2a31148ceae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: b5524d0612bf8f5d69979a8392f664e417c5f98d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648435"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808184"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>針對應用程式閘道中的後端健康情況問題進行疑難排解
 ==================================================
@@ -81,7 +81,7 @@ BackendAddressPoolsText : [
 [詳細資料] 資料行中顯示的訊息會提供有關此問題的詳細見解，而您可根據這些見解，開始針對問題進行疑難排解。
 
 > [!NOTE]
-> 預設探查要求會以 \<protocol\>://127.0.0.1:\<port\>/ 格式傳送。 例如， http://127.0.0.1:80 適用於連接埠 80上的 HTTP 探查。 只有 200 到 399 的 HTTP 狀態碼會被視為狀況良好。 通訊協定和目的地連接埠均繼承自 HTTP 設定值。 如果您希望應用程式閘道探查不同的通訊協定、主機名稱或路徑，並將不同的狀態碼辨識為「良好」，請設定自訂探查並使其與 HTTP 設定產生關聯。
+> 預設的探查要求會以 \<protocol\> ：//127.0.0.1：/的格式傳送 \<port\> 。 例如， http://127.0.0.1:80 適用於連接埠 80上的 HTTP 探查。 只有 200 到 399 的 HTTP 狀態碼會被視為狀況良好。 通訊協定和目的地連接埠均繼承自 HTTP 設定值。 如果您希望應用程式閘道探查不同的通訊協定、主機名稱或路徑，並將不同的狀態碼辨識為「良好」，請設定自訂探查並使其與 HTTP 設定產生關聯。
 
 <a name="error-messages"></a>錯誤訊息
 ------------------------
@@ -170,7 +170,7 @@ BackendAddressPoolsText : [
 
 **訊息：** 後端 HTTP 回應的狀態碼與探查設定不相符。 預期：{HTTPStatusCode0} 收到：{HTTPStatusCode1}。
 
-**原因：** 建立 TCP 連線並完成 TLS 交握後 (如果已啟用 TLS)，應用程式閘道會將探查當作 HTTP GET 要求傳送至後端伺服器。 如先前所述，預設探查會是 \<protocol\>://127.0.0.1:\<port\>/，而且會將範圍 200 到 399 的回應狀態碼視為「良好」。 如果伺服器傳回任何其他狀態碼，此訊息就會將其視為「狀況不良」。
+**原因：** 建立 TCP 連線並完成 TLS 交握後 (如果已啟用 TLS)，應用程式閘道會將探查當作 HTTP GET 要求傳送至後端伺服器。 如先前所述，預設探查會是 \<protocol\> ：//127.0.0.1： \<port\> /，而它會將開始風行200到399中的回應狀態碼視為狀況良好。 如果伺服器傳回任何其他狀態碼，此訊息就會將其視為「狀況不良」。
 
 **解決方案：** 視後端伺服器的回應碼而定，您可以採取下列步驟。 以下列出一些常見的狀態碼：
 
@@ -209,7 +209,7 @@ BackendAddressPoolsText : [
 
 #### <a name="backend-server-certificate-invalid-ca"></a>後端伺服器憑證 CA 無效
 
-**訊息：** 後端所使用的伺服器憑證不是由知名的憑證授權單位單位 (CA) 所簽署。 上傳後端所用伺服器憑證的根憑證，以將應用程式閘道上的後端列入白名單。
+**訊息：** 後端所使用的伺服器憑證不是由知名的憑證授權單位單位 (CA) 所簽署。 藉由上傳後端所使用之伺服器憑證的根憑證，來允許應用程式閘道上的後端。
 
 **原因：** 進行應用程式閘道 v2 的端對端 SSL 時，必須先驗證後端伺服器的憑證，才能將伺服器視為「良好」。
 若要讓 TLS/SSL 憑證受到信任，後端伺服器的該憑證必須由應用程式閘道的信任存放區中所包含的 CA 發行。 如果憑證不是由信任的 CA 所發行 (例如，若使用自我簽署憑證)，則使用者應將簽發者的憑證上傳至應用程式閘道。

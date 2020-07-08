@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b802cab7d52fd886770c326e97d0378a0da64762
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75752164"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
@@ -23,7 +23,7 @@ VpnGw1、VpnGw2 和 VpnGw3 SKU 可支援 RADIUS 驗證。 如果您使用舊版 
  
 ### <a name="is-radius-authentication-supported-for-the-classic-deployment-model"></a>傳統部署模型是否支援 RADIUS 驗證？
  
-不可以。 傳統部署模型不支援 RADIUS 驗證。
+否。 傳統部署模型不支援 RADIUS 驗證。
  
 ### <a name="are-3rd-party-radius-servers-supported"></a>是否支援第 3 方的 RADIUS 伺服器？
 
@@ -35,7 +35,7 @@ VpnGw1、VpnGw2 和 VpnGw3 SKU 可支援 RADIUS 驗證。 如果您使用舊版 
  
 ### <a name="can-traffic-to-an-on-premises-radius-server-from-the-azure-vpn-gateway-be-routed-over-an-expressroute-connection"></a>是否可以透過 ExpressRoute 連線來路由傳送從 Azure VPN 閘道流往內部部署 RADIUS 伺服器的流量？
 
-不可以。 該流量只能透過站對站連線來路由傳送。
+否。 該流量只能透過站對站連線來路由傳送。
  
 ### <a name="is-there-a-change-in-the-number-of-sstp-connections-supported-with-radius-authentication-what-is-the-maximum-number-of-sstp-and-ikev2-connections-supported"></a>RADIUS 驗證所支援的 SSTP 連線數目是否有變更？ 所支援的 SSTP 和 IKEv2 連線數目上限為何？
 

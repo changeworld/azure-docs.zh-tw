@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75772957"
 ---
 如果您在共用映像資源庫、映像定義及映像版本上執行任何作業時遇到問題，請再次以偵錯模式執行失敗的命令。 藉由使用 CLI 傳遞 **-debug**參數和 **-Debug**參數搭配 PowerShell 來啟用「偵測」模式。 一旦您找到錯誤，請遵循本文件來針對錯誤進行疑難排解。
@@ -24,7 +24,7 @@ ms.locfileid: "75772957"
 
 資源庫名稱無效。**
 
-資源庫名稱允許的字元為大寫或小寫字母、數字、點和句點。 圖庫名稱不能包含連字號。 變更資源庫名稱並再試一次。 
+資源庫名稱允許的字元為大寫或小寫字母、數字、點和句點。 資源庫名稱不能包含連字號。 變更資源庫名稱並再試一次。 
 
 資源庫名稱在您的訂用帳戶內不是唯一的。**
 
@@ -52,7 +52,7 @@ ms.locfileid: "75772957"
 
 映像版本名稱無效。**
 
-映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion.MinorVersion.Patch*。 變更映像版本名稱並再試一次。
+映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式： *MajorVersion. MinorVersion. Patch*。 變更映像版本名稱並再試一次。
 
 找不到從中建立映像版本的來源受控映像。** 
 

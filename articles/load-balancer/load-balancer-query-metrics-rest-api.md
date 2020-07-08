@@ -7,15 +7,15 @@ author: asudbring
 manager: KumudD
 ms.service: load-balancer
 ms.custom: REST, seodec18
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b5aedb20bc7a8d2aa6f3aa3d8691a71af4cd3a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74225249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808376"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>使用 REST API 取得 Load Balancer 使用計量
 
@@ -42,17 +42,17 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="uri-parameters"></a>URI 參數
 
-| 名稱 | 說明 |
+| Name | 說明 |
 | :--- | :---------- |
 | subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂用帳戶，請參閱使用[多個訂閱](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 包含資源的資源群組名稱。 您可以從 Azure Resource Manager API、CLI 或入口網站取得這個值。 |
 | loadBalancerName | Azure Load Balancer 的名稱。 |
 | 度量名稱 | 以逗號分隔的有效 [Load Balancer 計量](/azure/load-balancer/load-balancer-standard-diagnostics)清單。 |
 | api-version | 要用於要求的 API 版本。<br /><br /> 本文件涵蓋 api-version `2018-01-01`，內含於上述 URL 中。  |
-| 時間範圍 | 查詢的時間範圍。 它是具有下列格式`startDateTime_ISO/endDateTime_ISO`的字串。 此選用參數會設定為傳回此範例中一天份的資料。 |
+| 時間範圍 | 查詢的時間範圍。 它是具有下列格式的字串 `startDateTime_ISO/endDateTime_ISO` 。 此選用參數會設定為傳回此範例中一天份的資料。 |
 | &nbsp; | &nbsp; |
 
-### <a name="request-body"></a>要求本文
+### <a name="request-body"></a>Request body
 
 這項作業不需要要求本文。
 

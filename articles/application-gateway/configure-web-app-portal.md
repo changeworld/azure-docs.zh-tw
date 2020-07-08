@@ -5,21 +5,21 @@ description: 本文提供如何在現有或新的應用程式閘道上，將 Azu
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
-ms.date: 11/14/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 0ec417b3c7a025d2d05bdd74ec683a2891c3b0de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1109dae90790c9667b3c60afb6416c20061a95fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74075169"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808098"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>透過應用程式閘道設定 App Service
 
 由於 app service 是多租使用者服務，而不是專用的部署，因此它會在連入要求中使用主機標頭，以將要求解析為正確的 app service 端點。 通常，應用程式的 DNS 名稱（也就是與 app service 面向的應用程式閘道相關聯的 DNS 名稱）與後端 app 服務的功能變數名稱不同。 因此，應用程式閘道收到的原始要求中的主機標頭與後端服務的主機名稱不同。 因此，除非從應用程式閘道到後端的要求中的主機標頭變更為後端服務的主機名稱，否則多租使用者後端無法將要求解析為正確的端點。
 
-應用程式閘道提供一個稱為`Pick host name from backend address`的交換器，其會在要求從應用程式閘道路由傳送至後端時，以後端的主機名稱覆寫要求中的主機標頭。 這項功能可支援多租使用者後端，例如 Azure app service 和 API 管理。 
+應用程式閘道提供一個稱為的交換器， `Pick host name from backend address` 其會在要求從應用程式閘道路由傳送至後端時，以後端的主機名稱覆寫要求中的主機標頭。 這項功能可支援多租使用者後端，例如 Azure app service 和 API 管理。 
 
 在本文中，您將學會如何：
 
@@ -28,7 +28,7 @@ ms.locfileid: "74075169"
 > - 建立後端集區，並在其中新增 App Service
 > - 建立 HTTP 設定和自訂探查並啟用「挑選主機名稱」交換器
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 應用程式閘道：如果您沒有現有的應用程式閘道，請參閱如何[建立應用程式閘道](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 - App service：如果您沒有現有的 App service，請參閱[app service 檔](https://docs.microsoft.com/azure/app-service/)。
@@ -59,13 +59,13 @@ ms.locfileid: "74075169"
 3. 依據您的使用案例，選擇 HTTP 或 HTTPS 通訊協定。 
 
    > [!NOTE]
-   > 如果您選取 [HTTPS]，則不需要上傳任何驗證憑證或受信任的根憑證，即可將 app service 後端列入允許清單，因為 app service 是受信任的 Azure 服務。
+   > 如果您選取 [HTTPS]，則不需要上傳任何驗證憑證或受信任的根憑證，即可允許 app service 後端，因為 app service 是受信任的 Azure 服務。
 
-4. 勾選 [用於**App Service**的方塊。 請注意，和`Create a probe with pick host name from backend address` `Pick host name from backend address`參數會自動啟用。`Pick host name from backend address` 將要求從應用程式閘道路由傳送至後端時，會以後端的主機名稱覆寫要求中的主機標頭。  
+4. 勾選 [用於**App Service**的方塊。 請注意， `Create a probe with pick host name from backend address` 和參數 `Pick host name from backend address` 會自動啟用。`Pick host name from backend address` 將要求從應用程式閘道路由傳送至後端時，會以後端的主機名稱覆寫要求中的主機標頭。  
 
-   `Create a probe with pick host name from backend address`會自動建立健康狀態探查，並將其與此 HTTP 設定產生關聯。 您不需要為此 HTTP 設定建立任何其他健全狀況探查。 您可以檢查是否已在健康情況探查清單<HTTP Setting name> <Unique GUID>中新增名稱為的新探查，而且它已經有參數`Pick host name from backend http settings enabled`。
+   `Create a probe with pick host name from backend address`會自動建立健康狀態探查，並將其與此 HTTP 設定產生關聯。 您不需要為此 HTTP 設定建立任何其他健全狀況探查。 您可以檢查是否已 <HTTP Setting name> <Unique GUID> 在健康情況探查清單中新增名稱為的新探查，而且它已經有參數 `Pick host name from backend http settings enabled` 。
 
-   如果您已經有一或多個用於 App service 的 HTTP 設定，而這些 HTTP 設定使用的通訊協定與您在所建立的相同， `Create a probe with pick host name from backend address`則您會看到一個下拉式清單來選取其中一個自訂探查。 這是因為應用程式服務已經有 HTTP 設定，因此也有一個具有交換器`Pick host name from backend http settings enabled`的健全狀況探查。 從下拉式清單中選擇自訂探查。
+   如果您已經有一或多個用於 App service 的 HTTP 設定，而這些 HTTP 設定使用的通訊協定與您在所建立的相同，則 `Create a probe with pick host name from backend address` 您會看到一個下拉式清單來選取其中一個自訂探查。 這是因為應用程式服務已經有 HTTP 設定，因此也有一個具有交換器的健全狀況探查 `Pick host name from backend http settings enabled` 。 從下拉式清單中選擇自訂探查。
 
 5. 按一下 **[確定]** 以建立 HTTP 設定。
 

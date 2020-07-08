@@ -6,18 +6,27 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 05/06/2020
+ms.date: 06/17/2020
 tags: connectors
-ms.openlocfilehash: 7635d98bb48543dd07f05f34ea854af870876cc3
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c2f3af4b0e2fafdd95798b412f37ed20204cd42f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927440"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807739"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>藉由使用 SSH 和 Azure Logic Apps 來監視、建立及管理 SFTP 檔案
 
-若要使用 [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) 通訊協定在[安全檔案傳輸通訊協定 (SFTP)](https://www.ssh.com/ssh/sftp/) \(英文\) 伺服器上，將監視、建立、傳送及接收檔案的工作自動化，您可以使用 Azure Logic Apps 和 SFTP-SSH 連接器來建置整合工作流程並自動化。 SFTP 是一個網路通訊協定，可透過任何可靠的資料流提供檔案存取、檔案傳輸和檔案管理。 以下是一些您可自動化的範例工作：
+若要使用 [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) 通訊協定在[安全檔案傳輸通訊協定 (SFTP)](https://www.ssh.com/ssh/sftp/) \(英文\) 伺服器上，將監視、建立、傳送及接收檔案的工作自動化，您可以使用 Azure Logic Apps 和 SFTP-SSH 連接器來建置整合工作流程並自動化。 SFTP 是一個網路通訊協定，可透過任何可靠的資料流提供檔案存取、檔案傳輸和檔案管理。
+
+> [!NOTE]
+> SFTP SSH 連接器目前不支援這些 SFTP 伺服器：
+> 
+> * IBM DataPower
+> * OpenText Secure MFT
+> * OpenText GXS
+
+以下是一些您可自動化的範例工作：
 
 * 監視檔案何時新增或變更。
 * 取得、建立、複製、重新命名、更新、列出及刪除檔案。
@@ -25,7 +34,7 @@ ms.locfileid: "82927440"
 * 取得檔案內容與中繼資料。
 * 將封存檔案解壓縮到資料夾。
 
-您可以使用觸發程序來監視 SFTP 伺服器上的事件，並讓輸出可供其他動作使用。 您可以使用動作，在 SFTP 伺服器上執行各種工作。 您也可以讓邏輯應用程式中的其他動作使用 SFTP 動作的輸出。 例如，如果您定期從 SFTP 伺服器擷取檔案，可以藉由使用 Office 365 Outlook 連接器或 Outlook.com 連接器，傳送關於那些檔案及其內容的電子郵件警示。 如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
+您可以使用觸發程序來監視 SFTP 伺服器上的事件，並讓輸出可供其他動作使用。 您可以使用動作，在 SFTP 伺服器上執行各種工作。 您也可以讓邏輯應用程式中的其他動作使用 SFTP 動作的輸出。 例如，如果您定期從 SFTP 伺服器擷取檔案，可以藉由使用 Office 365 Outlook 連接器或 Outlook.com 連接器，傳送關於那些檔案及其內容的電子郵件警示。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
 如需 SFTP SSH 連接器與 SFTP 連接器之間的差異，請參閱本主題稍後的[比較 sftp-ssh 與 sftp](#comparison)一節。
 
@@ -76,7 +85,7 @@ ms.locfileid: "82927440"
 
 * 可將連線快取至 SFTP 伺服器*最多 1 小時*，這可以改善效能並減少嘗試連線伺服器的次數。 若要設定此快取行為的持續期間，請編輯 SFTP 伺服器 SSH 組態中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 屬性。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -95,18 +104,18 @@ ms.locfileid: "82927440"
   > 將您想要的 SFTP-SSH 觸發程式或動作新增至邏輯應用程式之後，您必須提供 SFTP 伺服器的連線資訊。 當您提供此連線的 SSH 私密金鑰時，***請勿手動輸入或編輯金鑰***，這可能會導致連線失敗。 相反地，請務必從您的 SSH 私密金鑰檔案***複製金鑰***，並將該金鑰***貼入***連線詳細資料。 
   > 如需詳細資訊，請參閱本文稍後的[使用 SSH 連接到 SFTP](#connect)一節。
 
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 您要在其中存取 SFTP 帳戶的邏輯應用程式。 若要開始使用 SFTP-SSH 觸發程序，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP-SSH 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」**** 觸發程序。
 
-## <a name="how-sftp-ssh-triggers-work"></a>SFTP-SSH 觸發程式的工作方式
+## <a name="how-sftp-ssh-triggers-work"></a>SFTP-SSH 觸發程序的運作方式
 
 SFTP-SSH 觸發程式的作用是輪詢 SFTP 檔案系統，並尋找自上次輪詢後已變更的任何檔案。 某些工具可讓您在檔案變更時保留時間戳記。 在這些情況下，您必須停用此功能，以便讓您的觸發程序可以運作。 以下是一些常見的設定：
 
 | SFTP 用戶端 | 動作 |
 |-------------|--------|
-| Winscp | 移至**選項** > **喜好** > 設定**傳輸** > **編輯** > **保留時間戳** > **停**用 |
-| FileZilla | 移至 [**傳輸** > ] [**保留傳輸** > 的檔案的時間戳記]**停**用 |
+| Winscp | 移至**選項**  >  **喜好**設定  >  **傳輸**  >  **編輯**  >  **保留時間戳**  >  **停**用 |
+| FileZilla | 移至 [**傳輸**] [  >  **保留傳輸的檔案的時間戳記**]  >  **停**用 |
 |||
 
 當觸發程序找到新檔案時，觸發程序會確認該新檔案是完整檔案，而不是部分寫入的檔案。 例如，當觸發程序檢查檔案伺服器時，檔案可能正在進行變更。 為避免傳回部分寫入的檔案，觸發程序會備註最近發生變更之檔案的時間戳記，但不會立即傳回該檔案。 觸發程序只有在再次輪詢伺服器時，才會傳回該檔案。 有時，此行為可能會導致最長可達觸發程序輪詢間隔兩倍的延遲。
@@ -133,7 +142,7 @@ SFTP-SSH 觸發程式的作用是輪詢 SFTP 檔案系統，並尋找自上次�
 
 ### <a name="windows-os"></a>Windows 作業系統
 
-1. 如果您尚未這麼做，請[下載最新的 PuTTY 產生器（puttygen）工具](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)，然後啟動工具。
+1. 如果您尚未這麼做，請[下載最新的 PuTTY 產生器（puttygen.exe）工具](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)，然後啟動工具。
 
 1. 在此畫面上，選取 [**載入**]。
 
@@ -145,7 +154,7 @@ SFTP-SSH 觸發程式的作用是輪詢 SFTP 檔案系統，並尋找自上次�
 
    ![選取 [匯出 OpenSSH 金鑰]](./media/connectors-sftp-ssh/export-openssh-key.png)
 
-1. 儲存副檔名為的私密金鑰`.pem`檔案。
+1. 儲存副檔名為的私密金鑰檔案 `.pem` 。
 
 ## <a name="considerations"></a>考量
 
@@ -155,7 +164,7 @@ SFTP-SSH 觸發程式的作用是輪詢 SFTP 檔案系統，並尋找自上次�
 
 ### <a name="create-file"></a>建立檔案
 
-若要在 SFTP 伺服器上建立檔案，您可以使用 [SFTP-SSH**建立**檔案] 動作。 當此動作建立檔案時，Logic Apps 服務也會自動呼叫您的 SFTP 伺服器，以取得檔案的中繼資料。 不過，如果您在 Logic Apps 服務可以進行呼叫以取得中繼資料之前移動新建立的檔案，您會收到`404`錯誤訊息。 `'A reference was made to a file or folder which does not exist'` 若要在檔案建立後略過讀取檔案的中繼資料，請遵循下列步驟，[將 [**取得所有檔案中繼資料**] 屬性加入並設定為 [**否**](#file-does-not-exist)]。
+若要在 SFTP 伺服器上建立檔案，您可以使用 [SFTP-SSH**建立**檔案] 動作。 當此動作建立檔案時，Logic Apps 服務也會自動呼叫您的 SFTP 伺服器，以取得檔案的中繼資料。 不過，如果您在 Logic Apps 服務可以進行呼叫以取得中繼資料之前移動新建立的檔案，您會收到 `404` 錯誤訊息 `'A reference was made to a file or folder which does not exist'` 。 若要在檔案建立後略過讀取檔案的中繼資料，請遵循下列步驟，[將 [**取得所有檔案中繼資料**] 屬性加入並設定為 [**否**](#file-does-not-exist)]。
 
 <a name="connect"></a>
 
@@ -165,13 +174,13 @@ SFTP-SSH 觸發程式的作用是輪詢 SFTP 檔案系統，並尋找自上次�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，如果邏輯應用程式尚未開啟，請在邏輯應用程式設計工具中開啟邏輯應用程式。
 
-1. 針對空白邏輯應用程式，請在搜尋方塊中`sftp ssh`輸入做為您的篩選準則。 在觸發程序清單底下，選取您想要的觸發程序。
+1. 針對空白邏輯應用程式，請在搜尋方塊中輸入 `sftp ssh` 做為您的篩選準則。 在觸發程序清單底下，選取您想要的觸發程序。
 
    -或-
 
    針對現有的邏輯應用程式，在您想要新增動作的最後一個步驟底下，選取 [**新增步驟**]。 在搜尋方塊中，輸入 `sftp ssh` 作為篩選條件。 在動作清單底下，選取您想要的動作。
 
-   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選取顯示的加號（**+**），然後選取 [**新增動作**]。
+   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選擇所顯示的加號 ( **+** )，然後選取 [新增動作]。
 
 1. 為您的連線提供必要的詳細資料。
 
@@ -185,7 +194,7 @@ SFTP-SSH 觸發程式的作用是輪詢 SFTP 檔案系統，並尋找自上次�
 
    1. 在 [記事本**編輯**] 功能表上，選取 [**全選**]。
 
-   1. 選取 [**編輯** > **複本**]。
+   1. 選取 [**編輯**  >  **複本**]。
 
    1. 在您新增的 SFTP-SSH 觸發程序或動作中，將所複製的「完整」** 金鑰貼到 [SSH 私密金鑰]**** 屬性中，此屬性支援多行。  ***請確定您會貼上***金鑰。 ***請勿手動輸入或編輯此金鑰***。
 
@@ -203,11 +212,11 @@ SFTP-SSH 觸發程式的作用是輪詢 SFTP 檔案系統，並尋找自上次�
 
    ![開啟 SFTP-SSH 設定](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
-1. 在 [**內容傳輸**] 的 [**區塊大小**] 屬性中，輸入從`5`到`50`的整數值，例如： 
+1. 在 [**內容傳輸**] 的 [**區塊大小**] 屬性中，輸入從到的整數值 `5` `50` ，例如： 
 
    ![請指定要改用的區塊大小](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
-1. 完成之後，選取 [完成]  。
+1. 完成之後，選取 [完成]。
 
 ## <a name="examples"></a>範例
 
@@ -235,7 +244,7 @@ SFTP-SSH 觸發程式的作用是輪詢 SFTP 檔案系統，並尋找自上次�
 
 ### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404錯誤：「對不存在的檔案或資料夾進行參考」
 
-當您的邏輯應用程式透過 SFTP-SSH**建立**檔案動作在 sftp 伺服器上建立新檔案，但新建立的檔案接著立即移動，而 Logic Apps 服務可以取得檔案的中繼資料之前，就會發生此錯誤。 當您的邏輯應用程式執行 [**建立**檔案] 動作時，Logic Apps 服務也會自動呼叫您的 SFTP 伺服器，以取得檔案的中繼資料。 不過，如果檔案已移動，Logic Apps 服務就無法再找到檔案，因此您會收到`404`錯誤訊息。
+當您的邏輯應用程式透過 SFTP-SSH**建立**檔案動作在 sftp 伺服器上建立新檔案，但新建立的檔案接著立即移動，而 Logic Apps 服務可以取得檔案的中繼資料之前，就會發生此錯誤。 當您的邏輯應用程式執行 [**建立**檔案] 動作時，Logic Apps 服務也會自動呼叫您的 SFTP 伺服器，以取得檔案的中繼資料。 不過，如果檔案已移動，Logic Apps 服務就無法再找到檔案，因此您會收到 `404` 錯誤訊息。
 
 如果您無法避免或延遲移動檔案，可以在檔案建立後略過讀取檔案的中繼資料，而不是依照下列步驟執行：
 

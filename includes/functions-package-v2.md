@@ -10,10 +10,10 @@ ms.date: 01/28/2020
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 2eb82eb8b4a64cbbfef91539f46ba084aa73f207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77205745"
 ---
 使用下列方法，在您慣用的開發環境中新增支援。

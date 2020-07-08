@@ -5,17 +5,17 @@ description: 瞭解如何使用 Azure CLI 來建立具有 Azure Active Directory
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: e1a81b25042501a166cee122279d21e3702cd419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bad97f9bc9eaa3aad02dfcb5e82d2171e93f2dac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "75371984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809019"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>使用 Azure CLI 建立容器或 blob 的使用者委派 SAS
 
@@ -29,7 +29,7 @@ ms.locfileid: "75371984"
 
 若要使用 Azure CLI 來保護具有 Azure AD 認證的 SAS，請先確定您已安裝最新版本的 Azure CLI。 如需有關安裝 Azure CLI 的詳細資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-若要使用 Azure CLI 建立使用者委派 SAS，請確定您已安裝2.0.78 版或更新版本。 若要檢查您已安裝的`az --version`版本，請使用命令。
+若要使用 Azure CLI 建立使用者委派 SAS，請確定您已安裝2.0.78 版或更新版本。 若要檢查您已安裝的版本，請使用 `az --version` 命令。
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>使用 Azure AD 認證登入
 
@@ -60,7 +60,7 @@ az role assignment create \
 
 因為使用者委派金鑰有效的最大間隔是從開始日期起算的7天，所以您應該指定在開始時間的7天內的 SAS 到期時間。 在使用者委派金鑰過期之後，SAS 無效，因此到期時間超過7天的 SAS 仍然有效7天。
 
-建立使用者委派 SAS 時，需要`--auth-mode login`和。 `--as-user parameters` 指定*login* `--auth-mode`參數的登入，以便向 Azure 儲存體提出的要求會以您的 Azure AD 認證進行授權。 指定`--as-user`參數以指出傳回的 sas 應該是使用者委派 sas。
+建立使用者委派 SAS 時， `--auth-mode login` `--as-user parameters` 需要和。 指定參數的*登*入， `--auth-mode` 以便向 Azure 儲存體提出的要求會以您的 Azure AD 認證進行授權。 指定 `--as-user` 參數以指出傳回的 sas 應該是使用者委派 sas。
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>建立容器的使用者委派 SAS
 
@@ -92,7 +92,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 Blob 上使用者委派 SAS 的支援許可權包括 [新增]、[建立]、[刪除]、[讀取] 和 [寫入]。 可以單獨或結合指定許可權。 如需這些許可權的詳細資訊，請參閱[建立使用者委派 SAS](/rest/api/storageservices/create-user-delegation-sas)。
 
-下列語法會傳回 blob 的使用者委派 SAS。 此範例會指定`--full-uri`參數，傳回已附加 SAS 權杖的 blob URI。 請記得以您自己的值取代括弧中的預留位置值：
+下列語法會傳回 blob 的使用者委派 SAS。 此範例會指定 `--full-uri` 參數，傳回已附加 SAS 權杖的 BLOB URI。 請記得以您自己的值取代括弧中的預留位置值：
 
 ```azurecli-interactive
 az storage blob generate-sas \

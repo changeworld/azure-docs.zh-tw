@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ba190f40d3b9451aec6e86ea69b7d0fe6e66aa3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807850"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions 版本總覽
 
@@ -50,19 +50,19 @@ ms.locfileid: "77152885"
 
 Durable Functions 2.x 引進了幾項重大變更。 Durable Functions 1.x 應用程式與 Durable Functions 2.x 不相容，而不需要變更程式碼。 本節列出將1.x 版功能更新至2.x 時必須進行的一些變更。
 
-#### <a name="hostjson-schema"></a>Host. json 架構
+#### <a name="hostjson-schema"></a>架構上的 Host.js
 
-Durable Functions 2.x 使用新的 host. json 架構。 1. x 的主要變更包括：
+Durable Functions 2.x 會在架構上使用新的 host.js。 1. x 的主要變更包括：
 
-* `"storageProvider"`（和`"azureStorage"`子區段），用於儲存特定設定。
+* `"storageProvider"`（和子區段 `"azureStorage"` ），用於儲存特定設定。
 * `"tracing"`用於追蹤和記錄設定。
-* `"notifications"`事件方格通知`"eventGrid"`設定的（和子區段）。
+* `"notifications"`事件方格通知設定的（和子區段 `"eventGrid"` ）。
 
-如需詳細資訊，請參閱[Durable Functions host. json 參考檔](durable-functions-bindings.md#durable-functions-2-0-host-json)。
+如需詳細資訊，請參閱[參考檔上的 Durable Functions host.js](durable-functions-bindings.md#durable-functions-2-0-host-json) 。
 
 #### <a name="default-taskhub-name-changes"></a>預設的 taskhub 名稱變更
 
-在1.x 版中，如果未在 host. json 中指定工作中樞名稱，則預設為 "DurableFunctionsHub"。 在2.x 版中，預設的工作中樞名稱現在是衍生自函式應用程式的名稱。 因此，如果您在升級至2.x 時未指定工作中樞名稱，則您的程式碼將會使用新的「工作中樞」，而且所有進行中的協調流程都不會再處理它們。 若要解決此情況，您可以將工作中樞名稱明確設定為 "DurableFunctionsHub" 的 v1. x 預設值，或者您可以遵循我們的[零停機部署指引](durable-functions-zero-downtime-deployment.md)，取得如何處理進行中協調流程的重大變更的詳細資料。
+在1.x 版中，如果未在 host.js中指定工作中樞名稱，則預設為 "DurableFunctionsHub"。 在2.x 版中，預設的工作中樞名稱現在是衍生自函式應用程式的名稱。 因此，如果您在升級至2.x 時未指定工作中樞名稱，則您的程式碼將會使用新的「工作中樞」，而且所有進行中的協調流程都不會再處理它們。 若要解決此情況，您可以將工作中樞名稱明確設定為 "DurableFunctionsHub" 的 v1. x 預設值，或者您可以遵循我們的[零停機部署指引](durable-functions-zero-downtime-deployment.md)，取得如何處理進行中協調流程的重大變更的詳細資料。
 
 #### <a name="public-interface-changes-net-only"></a>公用介面變更（僅限 .NET）
 
@@ -77,8 +77,12 @@ Durable Functions 2.x 使用新的 host. json 架構。 1. x 的主要變更包�
 | `DurableActivityContext` 或 `DurableActivityContextBase` | `IDurableActivityContext` |
 | `OrchestrationClientAttribute` | `DurableClientAttribute` |
 
-在抽象基類包含虛擬方法的情況下，這些虛擬方法已由中`DurableContextExtensions`定義的擴充方法所取代。
+在抽象基類包含虛擬方法的情況下，這些虛擬方法已由中定義的擴充方法所取代 `DurableContextExtensions` 。
 
-#### <a name="functionjson-changes-javascript-and-c-script"></a>函數. json 變更（JavaScript 和 c # 腳本）
+#### <a name="functionjson-changes-javascript-and-c-script"></a>變更時 function.js（JavaScript 和 c # 腳本）
 
-在 Durable Functions 1.x 中，協調流程用戶端系結會`type`使用`orchestrationClient`的。 2.x 版改為使用`durableClient` 。
+在 Durable Functions 1.x 中，協調流程用戶端系結會使用 `type` 的 `orchestrationClient` 。 2.x 版改為使用 `durableClient` 。
+
+#### <a name="raise-event-changes"></a>引發事件變更
+
+在 Durable Functions 1.x 中，呼叫「[引發事件](durable-functions-external-events.md#send-events)API」並指定不存在的實例會導致無訊息失敗。 從2.x 開始，引發事件到不存在的協調流程會導致例外狀況。

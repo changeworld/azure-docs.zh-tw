@@ -5,15 +5,15 @@ description: 本文提供有關如何使用私人前端 IP 位址來設定應用
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535582"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808118"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>設定具有內部負載平衡器（ILB）端點的應用程式閘道
 
@@ -59,7 +59,7 @@ Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。 您�
 10. 選取 [**新增後端集**區]。
 11. 針對 [**名稱**]，輸入*appGatewayBackendPool*。
 12. 針對 [**新增沒有目標的後端集**區]，選取 **[是]**。 您會在稍後新增目標。
-13. 選取 [新增]  。
+13. 選取 [新增]。
 14. 選取 **[下一步：設定]**。
 15. 在 [**路由規則**] 底下，選取 [**新增規則**]。
 16. 在 [**規則名稱**] 中，輸入*Rrule-01*。
@@ -74,7 +74,7 @@ Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。 您�
 25. 接受其餘的預設值，然後選取 [**新增**]。
 26. 在 [**新增路由規則**] 頁面上，選取 [**新增**]。
 27. 選取 **[下一步：標記]**。
-28. 選取 **[下一步]： [檢查 + 建立]**。
+28. 完成時，選取 [下一步:檢閱 + 建立]。
 29. 檢查 [摘要] 頁面上的設定，然後選取 [**建立**] 以建立網路資源和應用程式閘道。 可能需要幾分鐘的時間來建立應用程式閘道。 請等候部署成功完成後，再繼續進行至下一節。
 
 ## <a name="add-backend-pool"></a>新增後端集區
@@ -89,7 +89,7 @@ Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。 您�
 
 ### <a name="create-a-virtual-machine"></a>建立虛擬機器
 
-1. 選取 [建立資源]  。
+1. 選取 [建立資源]。
 2. 選取 [**計算**]，然後選取 [**虛擬機器**]。
 4. 依虛擬機器輸入這些值：
    - 針對 [**資源群組**] 選取 [ *myResourceGroupAG* ]。
@@ -101,11 +101,11 @@ Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。 您�
 6. 接受預設值，然後選取 **[下一步：網路]**。
 7. 確定您已選取 [myVNet]**** 作為虛擬網路，而且子網路是 [myBackendSubnet]****。
 8. 接受其餘的預設值，然後選取 **[下一步：管理]**。
-9. 選取 [關閉]  來停用開機診斷。
+9. 選取 [關閉] 來停用開機診斷。
 10. 接受其餘的預設值，然後選取 **[下一步： Advanced]**。
 11. 選取 **[下一步：標記]**。
 12. 選取 **[下一步]： [檢查 + 建立]**。
-13. 檢閱摘要頁面上的設定，然後選取 [建立]****。 建立 VM 可能需要幾分鐘的時間。 請等候部署成功完成後，再繼續進行至下一節。
+13. 檢閱摘要頁面上的設定，然後選取 [建立]。 建立 VM 可能需要幾分鐘的時間。 請等候部署成功完成後，再繼續進行至下一節。
 
 ### <a name="install-iis"></a>安裝 IIS
 

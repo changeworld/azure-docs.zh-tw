@@ -5,15 +5,15 @@ description: 本文提供有關如何針對 Azure 應用程式閘道中的會話
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f5f5c16f3d6aa1d7115e99cbae0dbd6cd926b25a
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 5acf4ac1ec75d5cec057e4b66e3c6cbd8a463271
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202531"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808021"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>針對 Azure 應用程式閘道會話親和性問題進行疑難排解
 
@@ -22,7 +22,7 @@ ms.locfileid: "82202531"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 當您想要在同一個後端保留使用者工作階段時，以 Cookie 為基礎的工作階段親和性非常有用。 使用受閘道管理的 Cookie，應用程式閘道即可將來自使用者工作階段的後續流量導向至同一部伺服器進行處理。 當使用者工作階段的工作階段狀態儲存在伺服器本機時，這項功能很重要。
 
@@ -38,7 +38,7 @@ ms.locfileid: "82202531"
 
 有時候，當您忘記啟用「以 Cookie 為基礎的親和性」設定時，可能會發生會話親和性問題。 若要判斷您是否已在 Azure 入口網站的 [HTTP 設定] 索引標籤上啟用 [以 Cookie 為基礎的親和性] 設定，請遵循下列指示：
 
-1. 登入[Azure 入口網站](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 2. 在**左側流覽**窗格中，按一下 [**所有資源**]。 按一下 [所有資源] 分頁中的應用程式閘道名稱。 如果您選取的訂用帳戶中已有數個資源，您可以在 [**依名稱篩選**...] 中輸入應用程式閘道名稱。 輕鬆地存取應用程式閘道。
 
@@ -75,7 +75,7 @@ ms.locfileid: "82202531"
 
 #### <a name="symptom"></a>徵狀
 
-您已啟用以 Cookie 為基礎的親和性設定，當您在 Internet Explorer 中使用簡短名稱 URL 存取應用程式閘道時（例如`http://website` ：），要求仍會在後端伺服器之間跳動。
+您已啟用以 Cookie 為基礎的親和性設定，當您在 Internet Explorer 中使用簡短名稱 URL 存取應用程式閘道時（例如： `http://website` ），要求仍會在後端伺服器之間跳動。
 
 若要找出此問題，請遵循下列指示：
 
@@ -97,7 +97,7 @@ ms.locfileid: "82202531"
 
 #### <a name="resolution"></a>解決方案
 
-若要修正此問題，建議使用 FQDN 來存取應用程式閘道。 例如，請使用[http://website.com](https://website.com/)或[http://appgw.website.com](http://website.com/) 。
+若要修正此問題，建議使用 FQDN 來存取應用程式閘道。 例如，請使用 [http://website.com](https://website.com/) 或 [http://appgw.website.com](http://website.com/) 。
 
 ## <a name="additional-logs-to-troubleshoot"></a>要疑難排解的其他記錄檔
 
@@ -161,7 +161,7 @@ Web 偵錯工具（例如 Fiddler）可透過捕捉網際網路和測試電腦�
 
 使用您選擇的 web 偵錯工具。 在此範例中，我們將使用 Fiddler 來捕獲和分析 HTTP 或 HTTPs 流量，請遵循下列指示：
 
-1. 下載 Fiddler 工具，網址<https://www.telerik.com/download/fiddler>為。
+1. 下載 Fiddler 工具，網址為 <https://www.telerik.com/download/fiddler> 。
 
     > [!NOTE]
     > 如果捕獲電腦已安裝 .NET 4，請選擇 [Fiddler4]。 否則，請選擇 [Fiddler2]。
@@ -174,7 +174,7 @@ Web 偵錯工具（例如 Fiddler）可透過捕捉網際網路和測試電腦�
 
     ![疑難排解-會話-親和性-問題-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. 最可能的情況是，您會對解密的 HTTPs 流量感興趣，而且您可以選取 [**工具** > ] [**Fiddler 選項**] 來啟用 HTTPS 解密，然後勾選 [**解密 HTTPS 流量**] 方塊。
+4. 最可能的情況是，您會對解密的 HTTPs 流量感興趣，而且您可以選取 [**工具**  >  ] [**Fiddler 選項**] 來啟用 HTTPS 解密，然後勾選 [**解密 HTTPS 流量**] 方塊。
 
     ![疑難排解-會話-親和性-問題-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
@@ -182,7 +182,7 @@ Web 偵錯工具（例如 Fiddler）可透過捕捉網際網路和測試電腦�
 
     ![疑難排解-會話-親和性-問題-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
-6. 重現此問題之後，**請選取** > [檔案] [**儲存** > **所有會話**] 來儲存檔案以供審查 
+6. 重現此問題之後，**請選取 [** 檔案] [  >  **儲存**  >  **所有會話**] 來儲存檔案以供審查 
 
     ![疑難排解-會話親和性-問題-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 

@@ -5,16 +5,16 @@ description: 瞭解如何使用 Azure 入口網站來建立具有端對端 TLS �
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 6f86f32e64bbbe79ea5a403d04f7d6c29ee6b980
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33240d1f44d2f26569791f72a3d5fc3a6656a757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80133018"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808027"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>透過入口網站使用應用程式閘道設定端對端 TLS
 
@@ -27,7 +27,7 @@ ms.locfileid: "80133018"
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要使用應用程式閘道設定端對端 TLS，您需要閘道的憑證。 後端伺服器也需要憑證。 閘道憑證可用來衍生對稱金鑰，以符合 TLS 通訊協定規格。 接著會使用對稱金鑰來加密和解密傳送至閘道的流量。 
+若要使用應用程式閘道設定端對端 TLS，您需要閘道的憑證。 後端伺服器也需要憑證。 閘道憑證可用來衍生對稱金鑰，以符合 TLS 通訊協定規格。 接下來，對稱金鑰可以用來加密和解密傳送至閘道的流量。 
 
 對於端對端 TLS 加密，應用程式閘道中必須允許正確的後端伺服器。 若要允許這項存取，請將後端伺服器的公開憑證（也稱為驗證憑證（v1）或受信任的根憑證（v2））上傳至應用程式閘道。 新增憑證可確保應用程式閘道只會與已知的後端實例通訊。 此設定會進一步保護端對端通訊。
 
@@ -51,7 +51,7 @@ ms.locfileid: "80133018"
 
 4. 在 [**通訊協定**] 底下，選取 [ **HTTPS**]。 **後端驗證憑證或受信任的根憑證**的窗格隨即出現。
 
-5. 選取 [建立新的]  。
+5. 選取 [建立新的]。
 
 6. 在 [**名稱**] 欄位中，輸入適當的名稱。
 
@@ -67,7 +67,7 @@ ms.locfileid: "80133018"
 
    ![根憑證](./media/end-to-end-ssl-portal/trustedrootcert.png)
 
-8. 選取 [儲存]  。
+8. 選取 [儲存]。
 
 ## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>針對現有的應用程式閘道啟用端對端 TLS
 
@@ -105,7 +105,7 @@ ms.locfileid: "80133018"
 
 4. 在 [**通訊協定**] 底下，選取 [ **HTTPS**]。 **後端驗證憑證或受信任的根憑證**的窗格隨即出現。 
 
-5. 選取 [建立新的]  。
+5. 選取 [建立新的]。
 
 6. 在 [**名稱**] 欄位中，輸入適當的名稱。
 
@@ -119,7 +119,7 @@ ms.locfileid: "80133018"
 
    ![新增受信任的根憑證](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
-8. 選取 [儲存]  。
+8. 選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 

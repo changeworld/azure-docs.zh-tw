@@ -4,16 +4,16 @@ description: 瞭解如何使用 Azure 入口網站設定 Azure 應用程式閘�
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: b90736b3ed1c1f69488fde4a386cf215d751c362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4626d40acc9ae84e7fcc5da16add0de7ffe6ffcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74012848"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807905"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>使用 Azure 應用程式閘道 Azure 入口網站重寫 HTTP 要求和回應標頭
 
@@ -67,7 +67,7 @@ ms.locfileid: "74012848"
 
    - 在 [**名稱**] 方塊中，輸入重寫集的名稱。
    - 選取 [**相關聯的路由規則**] 清單中所列的一或多個規則。 您只能選取尚未與其他重寫集相關聯的規則。 已與其他重寫集相關聯的規則會呈現暗灰色。
-   - 選取 [下一步]  。
+   - 選取 [下一步]。
    
      ![新增名稱和關聯](media/rewrite-http-headers-portal/name-and-association.png)
 
@@ -99,9 +99,9 @@ ms.locfileid: "74012848"
 
    - 在 [**運算子**] 清單中，選取 [**等於（=）**]。
 
-   - 輸入正則運算式模式。 在此範例中，我們將使用模式`(https?):\/\/.*azurewebsites\.net(.*)$`。
+   - 輸入正則運算式模式。 在此範例中，我們將使用模式 `(https?):\/\/.*azurewebsites\.net(.*)$` 。
 
-   - 選取 [確定]  。
+   - 選取 [確定]。
 
      ![設定 If 條件](media/rewrite-http-headers-portal/condition.png)
 
@@ -115,9 +115,9 @@ ms.locfileid: "74012848"
 
    - 在 [**通用標題**] 清單中，選取 [**位置**]。
 
-   - 輸入標頭值。 在此範例中，我們將`{http_resp_Location_1}://contoso.com{http_resp_Location_2}`使用做為標頭值。 此值會以 location 標頭中的*contoso.com*取代*azurewebsites.net* 。
+   - 輸入標頭值。 在此範例中，我們將使用 `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` 做為標頭值。 此值會以 location 標頭中的*contoso.com*取代*azurewebsites.net* 。
 
-   - 選取 [確定]  。
+   - 選取 [確定]。
 
      ![新增動作](media/rewrite-http-headers-portal/action.png)
 

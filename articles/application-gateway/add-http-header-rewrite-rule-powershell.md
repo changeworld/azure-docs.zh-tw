@@ -4,15 +4,15 @@ description: 本文提供有關如何使用 Azure PowerShell 在 Azure 應用程
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: 47fe6a5247622e3ad3b3720955068580e0329913
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f205b3a604aa38854969f6f62cbce44f46fa7d25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "64947196"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808261"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>使用 Azure 應用程式閘道 Azure PowerShell 重寫 HTTP 要求和回應標頭
 
@@ -22,7 +22,7 @@ ms.locfileid: "64947196"
 
 ## <a name="before-you-begin"></a>開始之前
 
-- 您必須在本機執行 Azure PowerShell，才能完成本文中的步驟。 您也需要安裝 Az 模組1.0.0 版或更新版本。 執行`Import-Module Az` ，然後`Get-Module Az`判斷您已安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。 驗證 PowerShell 版本之後，請執行 `Login-AzAccount` 以建立與 Azure 的連線。
+- 您必須在本機執行 Azure PowerShell，才能完成本文中的步驟。 您也需要安裝 Az 模組1.0.0 版或更新版本。 執行 `Import-Module Az` ，然後 `Get-Module Az` 判斷您已安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。 驗證 PowerShell 版本之後，請執行 `Login-AzAccount` 以建立與 Azure 的連線。
 - 您需要有應用程式閘道 v2 SKU 實例。 V1 SKU 不支援重寫標頭。 如果您沒有 v2 SKU，請在開始之前建立[應用程式閘道 V2 sku](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps)實例。
 
 ## <a name="create-required-objects"></a>建立必要的物件
@@ -62,7 +62,7 @@ Select-AzSubscription -Subscription "<sub name>"
 
 ## <a name="specify-the-http-header-rewrite-rule-configuration"></a>指定 HTTP 標頭重寫規則設定
 
-在此範例中，每當 location 標頭包含 azurewebsites.net 的參考時，我們將會在 HTTP 回應中重寫 location 標頭，以修改重新導向 URL。 為了這麼做，我們將新增條件，以評估回應中的位置標頭是否包含 azurewebsites.net。 我們將使用模式`(https?):\/\/.*azurewebsites\.net(.*)$`。 我們會使用`{http_resp_Location_1}://contoso.com{http_resp_Location_2}`做為標頭值。 此值會以 location 標頭中的*contoso.com*取代*azurewebsites.net* 。
+在此範例中，每當 location 標頭包含 azurewebsites.net 的參考時，我們將會在 HTTP 回應中重寫 location 標頭，以修改重新導向 URL。 為了這麼做，我們將新增條件，以評估回應中的位置標頭是否包含 azurewebsites.net。 我們將使用模式 `(https?):\/\/.*azurewebsites\.net(.*)$` 。 我們會使用 `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` 做為標頭值。 此值會以 location 標頭中的*contoso.com*取代*azurewebsites.net* 。
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"

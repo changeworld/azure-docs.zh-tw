@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7563eb4d22048021886925f6864e3616bed83a75
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 1c8acd2d8055359288608f7bd2e5f54f8c4f6cc3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858758"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809182"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>公用基礎負載平衡器的 Azure 監視器記錄
 
@@ -38,9 +38,9 @@ ms.locfileid: "82858758"
 登入 [Azure 入口網站](https://portal.azure.com)。 如果您還沒有負載平衡器，請先 [建立負載平衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) 再繼續。
 
 1. 在入口網站中，按一下 [**資源群組**]。
-2. 選取負載平衡器所在** \<>[資源群組-名稱**]。
+2. 選取 **\<resource-group-name>** 負載平衡器所在的位置。
 3. 選取您的負載平衡器。
-4. 選取 [**監視** > ] [**診斷設定**]。
+4. 選取 [**監視**] [  >  **診斷設定**]。
 5. 在 [**診斷設定**] 窗格的 [**診斷設定**] 底下，選取 [ **+ 新增診斷設定**]。
 6. 在 [**診斷設定**] 建立窗格的 [**名稱**] 欄位中，輸入**myLBDiagnostics** 。
 7. 您有三個**診斷設定**選項。  您可以選擇其中一個、兩個或全部三個，並針對您的需求進行設定：

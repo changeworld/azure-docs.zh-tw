@@ -3,17 +3,17 @@ title: 將 Azure Blob 儲存體事件傳送至 Web 端點 - Azure CLI | Microsof
 description: 使用 Azure Event Grid 以訂閱 Blob 儲存體事件。 將事件傳送到 Webhook。 在 Web 應用程式中處理事件。
 author: normesta
 ms.author: normesta
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: ad5662a722db764d09c1ead528a98c09c1d3df7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6cf929af951a6bbd498d13cd514b8cae8e353f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745523"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809146"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>快速入門：使用 Azure CLI 將儲存體事件路由至 web 端點
 

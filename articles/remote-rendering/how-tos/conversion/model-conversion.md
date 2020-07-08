@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 135c58a665779ffaad8750ffe618bdbe38639b66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681489"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808614"
 ---
 # <a name="convert-models"></a>轉換模型
 
@@ -38,6 +38,11 @@ Azure 遠端呈現可讓您呈現非常複雜的模型。 若要達到最大效�
     - 或藉由提供*共用存取簽章（SAS）*。
 
 所有模型資料（輸入和輸出）都會儲存在使用者提供的 Azure blob 儲存體中。 Azure 遠端呈現可讓您完全掌控資產管理。
+
+## <a name="pricing"></a>定價
+
+如需轉換價格的相關資訊，請參閱[遠端轉譯定價](https://azure.microsoft.com/pricing/details/remote-rendering)頁面。
+
 
 ## <a name="conversion-parameters"></a>轉換參數
 

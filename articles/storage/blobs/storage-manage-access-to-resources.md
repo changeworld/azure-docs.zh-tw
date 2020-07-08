@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: tamram
-ms.reviewer: cbrooks
-ms.openlocfilehash: 7c524cb30b73c95329650924123b2ebc26a5d8a5
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.reviewer: ozgun
+ms.openlocfilehash: 61f27d81cda2e57eb5730016dcc22252508fdd01
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808995"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>管理對容器與 Blob 的匿名讀取權限。
 
@@ -44,7 +44,7 @@ ms.locfileid: "82856019"
 
 下列螢幕擷取畫面顯示如何變更所選容器的公用存取層級。
 
-![顯示如何在入口網站中設定公用存取層級的螢幕擷取畫面](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![螢幕擷取畫面顯示如何在入口網站中設定公用存取層級](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
 > [!NOTE]
 > 您無法變更個別 blob 的公用存取層級。 公用存取層級只會在容器層級設定。

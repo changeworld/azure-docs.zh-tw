@@ -8,19 +8,19 @@ author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
 ms.author: allensu
-ms.openlocfilehash: d3d836ddea8d07a25ad09e6f19d9f17a680decd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68714053ac92faf8550a3e5f83a526afa1222971
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294411"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808468"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle"></a>在閒置時使用 TCP 重設 Load Balancer
+# <a name="load-balancer-with-tcp-reset-on-idle"></a>具有閒置 TCP 重設的 Load Balancer
 
 您可以使用 [Standard Load Balancer](load-balancer-standard-overview.md)，藉由對某個指定規則啟用「閒置時重設 TCP」，來為您的案例建立更容易預測的應用程式行為。 Load Balancer 的預設行為是在達到流程的閒置逾時時，以無訊息模式卸除流程。  啟用此功能會讓 Load Balancer 在閒置逾時的時候，傳送雙向的 TCP 重設 (TCP RST 封包)。  這會讓您的應用程式端點知道，連線已逾時且無法再供使用。  如有需要，端點可以立即建立新的連線。
 

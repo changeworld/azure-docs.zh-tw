@@ -7,14 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c07167a9f3a9194b7c45932ac749324429943ea9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93a142ddca360b3d85519a0531a221794ad3a892
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450117"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808808"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure 儲存體的用戶端加密和 Azure Key Vault 金鑰保存庫
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -61,7 +61,7 @@ ms.locfileid: "81450117"
 > 
 > 
 
-下載加密的 blob 牽涉到使用**DownloadTo**/**BlobReadStream**便利方法來抓取整個 blob 的內容。 包裝的 CEK 會解除包裝，並與 IV (在此情況下儲存為 blob 中繼資料) 一起用來傳回解密的資料給使用者。
+下載加密的 blob 牽涉到使用**DownloadTo** / **BlobReadStream**便利方法來抓取整個 blob 的內容。 包裝的 CEK 會解除包裝，並與 IV (在此情況下儲存為 blob 中繼資料) 一起用來傳回解密的資料給使用者。
 
 在加密的 blob 中下載任意範圍（**DownloadRange**方法）牽涉到調整使用者所提供的範圍，以取得少量額外的資料，可用來成功解密所要求的範圍。
 

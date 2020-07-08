@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa7464c70593c83c708aba49235ecdde1be0cc9f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276474"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807766"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 詞彙︰Azure 平台上的雲端術語字典
 
@@ -31,7 +31,7 @@ Microsoft Azure 詞彙是 Azure 平台上簡短的雲端術語字典。 另請�
 
 ## <a name="account"></a>account
 用來存取和管理 Azure 訂用帳戶的帳戶。 通常稱為 Azure 帳戶，雖然帳戶可以是以下任何一項：現有公司、學校或個人 Microsoft 帳戶，或 Office 365 使用者名稱和密碼。 當您註冊[免費試用版](https://azure.microsoft.com)時，也可以建立帳戶來管理 Azure 訂用帳戶。  
-請參閱[ Office 365 帳戶註冊 Azure 訂用帳戶](cost-management-billing/manage/office-365-account-for-azure-subscription.md)和[您可以用來登入的帳戶](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+請參閱使用您的 Microsoft 365 帳戶和[可用來登入的帳戶](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)來[註冊 Azure 訂用帳戶](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md)。
 
 ## <a name="api-app"></a>API 應用程式
 [App Service 應用程式](#app-service-app)的另一個名稱。
@@ -94,7 +94,7 @@ Microsoft Azure 詞彙是 Azure 平台上簡短的雲端術語字典。 另請�
 地理區域內不會跨越國界且包含一或多個資料中心的地區。 定價、區域性服務和供應項目類型是在區域層級公開。 區域通常會與另一個區域配對，兩者可多達數百英哩遠。 區域配對可用來做為災害復原及高可用性案例的機制。 也稱為「位置」**。  
 請參閱 [Azure 區域](best-practices-availability-paired-regions.md)
 
-## <a name="resource"></a>資源
+## <a name="resource"></a>resource
 Azure 方案一部分的項目。 每個 Azure 服務可讓您部署不同類型的資源，例如資料庫或虛擬機器。   
 請參閱 [Azure Resource Manager 概觀](azure-resource-manager/management/overview.md)
 
@@ -118,7 +118,7 @@ Azure 方案一部分的項目。 每個 Azure 服務可讓您部署不同類型
 此協定會描述 Microsoft 對執行時間與連線能力的承諾。 每個 Azure 服務都有特定的 SLA。  
 請參閱[服務等級協定](https://azure.microsoft.com/support/legal/sla/)
 
-## <a name="shared-access-signature-sas"></a><a name="sas"></a>共用存取簽章 (SAS)
+## <a name="shared-access-signature-sas"></a><a name="sas"></a>共用存取簽章（SAS）
 不需公開帳戶金鑰，即可讓您授與有限資源存取權的簽章。 例如，[Azure 儲存體使用 SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) 授與 blob 等物件的用戶端存取權。 [IoT 中樞會使用 SAS](iot-hub/iot-hub-devguide-security.md#security-tokens) 授與裝置權限以傳送遙測。
 
 ## <a name="storage-account"></a>storage account
@@ -129,7 +129,7 @@ Azure 方案一部分的項目。 每個 Azure 服務可讓您部署不同類型
 客戶與 Microsoft 的合約，可讓他們取得 Azure 服務。 訂用帳戶定價及相關條款是由針對訂用帳戶所選擇的供應項目來控管。
 請參閱 [Microsoft 線上訂用帳戶合約](https://azure.microsoft.com/support/legal/subscription-agreement/)和 [Azure 訂用帳戶如何與 Azure Active Directory 產生關聯](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-## <a name="tag"></a>tag
+## <a name="tag"></a>標籤
 一個編製索引的詞彙，可讓您根據管理或計費需求將資源分類。 當您有複雜的資源集合時，您可使用標籤以最有利的方式將這些資產視覺化。 例如，您可以標記在組織中具有類似角色，或屬於相同部門的資源。  
 請參閱[使用標籤來組織您的 Azure 資源](resource-group-using-tags.md)
 
@@ -153,7 +153,7 @@ Azure 方案一部分的項目。 每個 Azure 服務可讓您部署不同類型
 ## <a name="web-app"></a>Web 應用程式
 [App Service 應用程式](#app-service-app)的另一個名稱。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [開始使用 Azure](https://azure.microsoft.com/get-started/)
 * [雲端資源中心](https://azure.microsoft.com/resources/)  

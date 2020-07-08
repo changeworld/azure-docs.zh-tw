@@ -8,10 +8,10 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: ee430241173a6c19e2a32e176f28411631d9cb19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80272630"
 ---
 您可以在訂用帳戶內建立多個服務。 每一個都可以在特定層布建。 您只受限於每一層所允許的服務數目。 例如，您最多可在基本層建立 12 個服務，並在同一個訂用帳戶內的 S1 層另外建立 12 個服務。 如需有關階層的詳細資訊，請參閱[選擇 Azure 認知搜尋的 SKU 或層級](../articles/search/search-sku-tier.md)。

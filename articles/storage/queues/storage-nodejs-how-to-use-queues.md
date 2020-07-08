@@ -1,28 +1,31 @@
 ---
-title: 使用 node.js 的 Azure 佇列儲存體-Azure 儲存體
+title: 使用 Node.js 的 Azure 佇列儲存體 Azure 儲存體
 description: 了解如何使用 Azure 佇列服務來建立和刪除佇列，以及插入、取得和刪除訊息。 範例以 Node.js 撰寫。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
+ms.topic: how-to
+ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b8f15831c02a74bbba85ca4327369af6a4dbb2a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060925"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808798"
 ---
-# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>使用 Azure 佇列服務從 node.js 建立和刪除佇列
+# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>使用 Azure 佇列服務來建立和刪除 Node.js 的佇列
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本指南示範如何使用 Microsoft Azure 佇列服務執行常見案例。 這些範例使用 Node.js API 撰寫。 所涵蓋的案例包括「插入」****、「查看」****、「取得」**** 和「刪除」**** 佇列訊息，以及「建立和刪除佇列」****。
+
+> [!IMPORTANT]
+> 本文是指 JavaScript 的舊版 Azure 儲存體用戶端程式庫。 若要開始使用最新版本，請參閱[快速入門：適用于 JavaScript 的 Azure 佇列儲存體用戶端程式庫](storage-quickstart-queues-nodejs.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -82,8 +85,8 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 
 如果建立佇列，則 `result.created` 為 true。 如果佇列已存在，則 `result.created` 為 false。
 
-### <a name="filters"></a>篩選條件
-可以將選用性的篩選操作套用到使用 **QueueService** 執行的操作。 篩選作業可包括記錄、自動重試等。篩選器是使用簽章來執行方法的物件：
+### <a name="filters"></a>篩選器
+可以將選用性的篩選操作套用到使用 **QueueService** 執行的操作。 篩選作業可包括記錄、自動重試等等。篩選器是使用簽章實作方法的物件：
 
 ```javascript
 function handle (requestOptions, next)

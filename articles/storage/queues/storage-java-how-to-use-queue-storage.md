@@ -6,25 +6,23 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.openlocfilehash: 7658b8541e7a79a5e547a6649b35681446e34b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.openlocfilehash: a0c94f3c9af9220bb3cf6476c50799d1f3313ffc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067136"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809235"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何使用 Java 的佇列儲存體
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
-[!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
-
 本指南將示範如何使用 Azure 佇列儲存體服務執行一般案例。 相關範例是以 Java 撰寫並使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 涵蓋的案例包括**插入**、**查看**、**取得**和**刪除**佇列訊息，以及**建立**和**刪除**佇列。 如需佇列的詳細資訊，請參閱[後續步驟](#next-steps)一節。
 
-> [!NOTE]
-> 有一套 SDK 可供在 Android 裝置上使用 Azure 儲存體的開發人員使用。 如需詳細資訊，請參閱 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
+> [!IMPORTANT]
+> 本文指的是舊版的 Azure 儲存體用戶端程式庫（適用于 JAVA）。 若要開始使用最新版本，請參閱[快速入門：適用于 JAVA 的 Azure 佇列儲存體用戶端程式庫](storage-quickstart-queues-java.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -390,6 +388,11 @@ catch (Exception e)
     e.printStackTrace();
 }
 ```
+
+[!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
+
+> [!NOTE]
+> 有一套 SDK 可供在 Android 裝置上使用 Azure 儲存體的開發人員使用。 如需詳細資訊，請參閱 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
 
 ## <a name="next-steps"></a>後續步驟
 了解佇列儲存體的基礎概念之後，請參考下列連結以了解有關更複雜的儲存工作。

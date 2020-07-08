@@ -4,23 +4,23 @@ description: 瞭解如何針對應用程式閘道 Server 錯誤進行疑難排�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: a48ed39af243296bcb76cb61f1fe64e4e95ab7e7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808145"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>疑難排解應用程式閘道中閘道不正確的錯誤
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=66c070b6-1c47-4c7f-b928-317a8c8b452f" target='_blank'> </a></span><span class="has-padding-small">使用虛擬代理程式執行<b>自動化診斷</b>，開始快速解決您的問題。</span><div align="right"> <sub>Privacy Statement</sub>隱私權聲明<span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
+
 瞭解如何疑難排解使用 Azure 應用程式閘道時所收到的錯誤閘道（502）錯誤。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 設定應用程式閘道之後，您可能會看到的其中一個錯誤是「伺服器錯誤： 502-網頁伺服器作為閘道或 proxy 伺服器時收到不正確回應」。 發生此錯誤的主要原因如下：
 
@@ -41,7 +41,7 @@ NSG/UDR 可能會出現在應用程式閘道子網中，或是應用程式 Vm �
 
 同樣地，VNet 中是否有自訂 DNS 也可能會造成問題。 使用者為 VNet 設定的 DNS 伺服器可能無法正確解析用於後端集區成員的 FQDN。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 透過下列步驟來驗證 NSG、UDR 和 DNS 設定：
 
@@ -82,14 +82,14 @@ DhcpOptions            : {
 
 下表列出與預設健全狀況探查相關聯的值：
 
-| 探查屬性 | 值 | 描述 |
+| 探查屬性 | 值 | 說明 |
 | --- | --- | --- |
 | 探查 URL |`http://127.0.0.1/` |URL 路徑 |
 | 間隔 |30 |探查間隔 (秒) |
 | 逾時 |30 |探查逾時 (秒) |
 | 狀況不良臨界值 |3 |探查重試計數。 連續探查失敗計數到達狀況不良臨界值後，就會將後端伺服器標示為故障。 |
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 * 確定預設網站已設定且正於 127.0.0.1 上進行接聽。
 * 如果 BackendHttpSetting 指定了 80 以外的連接埠，則應將預設網站設定為在該連接埠上進行接聽。
@@ -106,23 +106,23 @@ DhcpOptions            : {
 
 新增下列其他屬性：
 
-| 探查屬性 | 描述 |
+| 探查屬性 | 說明 |
 | --- | --- |
 | 名稱 |探查的名稱。 此名稱用來在後端 HTTP 設定中指出探查。 |
 | 通訊協定 |用來傳送探查的通訊協定。 探查會使用後端 HTTP 設定中定義的通訊協定 |
-| 主機 |用來傳送探查的主機名稱。 僅適用于在應用程式閘道上設定多網站時。 這與 VM 主機名稱不同。 |
-| 路徑 |探查的相對路徑。 有效路徑的開頭為 '/'。 探查會傳送到 \<通訊協定\>://\<主機\>:\<連接埠\>\<路徑\> |
+| Host |用來傳送探查的主機名稱。 僅適用于在應用程式閘道上設定多網站時。 這與 VM 主機名稱不同。 |
+| Path |探查的相對路徑。 有效路徑的開頭為 '/'。 探查會傳送至/ \<protocol\> / \<host\> ：\<port\>\<path\> |
 | 間隔 |探查間隔 (秒)。 這是兩個連續探查之間的時間間隔。 |
-| 逾時 |探查逾時 (秒)。 如果在此超時期間內未收到有效的回應，則會將探查標示為失敗。 |
+| 逾時 |探查逾時 (秒)。 如果在這個逾時期間內未收到有效的回應，則會將探查標示為失敗。 |
 | 狀況不良臨界值 |探查重試計數。 連續探查失敗計數到達狀況不良臨界值後，就會將後端伺服器標示為故障。 |
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 確認已按照上述資料表正確設定 [自訂健全狀態探查]。 除了上述的疑難排解步驟，也請確定下列各項：
 
 * 確定已根據 [指南](application-gateway-create-probe-ps.md)正確指定探查。
-* 如果已針對單一網站設定應用程式閘道，則預設應將主機名稱指定為`127.0.0.1`，除非在自訂探查中另有設定。
-* 確定對 http://\<主機\>:\<連接埠\>\<路徑\> 的呼叫會傳回 HTTP 結果碼 200。
+* 如果已針對單一網站設定應用程式閘道，則預設應將主機名稱指定為 `127.0.0.1` ，除非在自訂探查中另有設定。
+* 確定對 HTTP://：的呼叫會傳回 \<host\> \<port\> \<path\> HTTP 結果碼200。
 * 確定 Interval、Timeout 和 UnhealtyThreshold 都在可接受的範圍內。
 * 若使用 HTTPS 探查，請在後端伺服器本身設定後援憑證，以確定後端伺服器不會要求您提供 SNI。
 
@@ -132,7 +132,7 @@ DhcpOptions            : {
 
 收到使用者要求時，應用程式閘道會將已設定的規則套用至要求，並將其路由傳送至後端集區實例。 其會等候一段可設定的時間間隔以接收來自後端應用程式的回應。 根據預設，此間隔為**20**秒。 如果應用程式閘道未在此間隔內收到來自後端應用程式的回應，則使用者要求會得到502錯誤。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 應用程式閘道可讓您透過 BackendHttpSetting 設定此設定，然後將它套用至不同的集區。 不同的後端集區可以有不同的 BackendHttpSetting，並已設定不同的要求超時。
 
@@ -146,7 +146,7 @@ DhcpOptions            : {
 
 如果應用程式閘道沒有在後端位址集區中設定的 Vm 或虛擬機器擴展集，它就無法路由傳送任何客戶要求，也不會送出錯誤的閘道錯誤。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 請確定後端位址集區不是空的。 這可透過 PowerShell、CLI 或入口網站來完成。
 
@@ -188,7 +188,7 @@ BackendAddressPoolsText：
 
 如果 BackendAddressPool 的所有實例都狀況不良，則應用程式閘道不會有任何後端將使用者要求路由傳送至。 當後端實例狀況良好，但未部署必要的應用程式時，也可能會發生這種情況。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 確定執行個體的狀況良好且已正確設定應用程式。 檢查後端實例是否可以從相同 VNet 中的另一個 VM 回應 ping。 如果設定了公用端點，請確定對 web 應用程式的瀏覽器要求可供維修。
 

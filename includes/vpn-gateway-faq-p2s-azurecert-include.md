@@ -9,10 +9,10 @@ ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75751715"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "75751715"
 
 ### <a name="can-i-use-certificates-from-azure-key-vault"></a>我可以使用來自 Azure Key Vault 的憑證嗎？
 
-不可以。
+否。
 
 ### <a name="what-tools-can-i-use-to-create-certificates"></a>我可以使用哪些工具來建立憑證？
 

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a2038b44cf55f2a322b6bda202b8c33372f3716
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808282"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 來授權開發人員帳戶
 
 本文說明如何讓使用者能夠從 Azure Active Directory (Azure AD) 來存取開發人員入口網站。 本指南也說明如何新增包含 Azure AD 使用者的外部群組來管理使用者。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 完成下列快速入門：[建立 Azure APIM 執行個體](get-started-create-service-instance.md)。
 - 匯入並發佈 Azure API 管理執行個體。 如需詳細資訊，請參閱[匯入和發佈](import-and-publish.md)。
@@ -34,7 +34,7 @@ ms.locfileid: "81868400"
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>使用 Azure AD 來授權開發人員帳戶
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
-2. Select ![箭號](./media/api-management-howto-aad/arrow.png).
+2. 選取 ![箭號](./media/api-management-howto-aad/arrow.png).
 3. 在搜尋方塊中輸入**api** 。
 4. 選取 [ **API 管理服務**]。
 5. 選取 API 管理服務執行個體。
@@ -84,11 +84,11 @@ ms.locfileid: "81868400"
 
 在為 Azure AD 租使用者中的使用者啟用存取之後，您可以將 Azure AD 群組新增至 API 管理。 因此，您可以使用 Azure AD 群組來控制產品可見度。
 
-若要將外部 Azure AD 群組新增至 APIM，您必須先完成上一節。 此外，您所註冊的應用程式必須透過下列步驟，以許可權`Directory.Read.All`授與 Microsoft Graph API 的存取權： 
+若要將外部 Azure AD 群組新增至 APIM，您必須先完成上一節。 此外，您所註冊的應用程式必須透過下列步驟，以許可權授與 Microsoft Graph API 的存取權 `Directory.Read.All` ： 
 
 1. 返回您在上一節中建立的應用程式註冊。
 2. 選取 [ **API 許可權**]，然後按一下 [ **+ 新增許可權**]。 
-3. 在 [**要求 API 許可權**] 窗格中，選取 [ **Microsoft api** ] 索引標籤，然後選取 [ **Microsoft Graph** ] 磚。 選取 [**應用程式許可權**]，搜尋 [**目錄**]，然後選取 [**目錄. 讀取**] 許可權。 
+3. 在 [**要求 API 許可權**] 窗格中，選取 [ **Microsoft api** ] 索引標籤，然後依序按一下 [ **Azure Active Directory 圖形**] 磚。 選取 [**應用程式許可權**]，搜尋 [**目錄**]，然後選取 [**目錄. 讀取**] 許可權。 
 4. 按一下窗格底部的 [**新增許可權**]，然後按一下 [授與系統**管理員同意] {tenantname}** ，讓您授與此目錄中所有使用者的存取權。 
 
 現在您可以從 API 管理實例的 [**群組**] 索引標籤新增外部 Azure AD 群組。
@@ -103,7 +103,7 @@ ms.locfileid: "81868400"
  
 所設定 Azure AD 執行個體的使用者現在可以登入開發人員入口網站。 這些使用者也可以檢視和訂閱所能看見的任何群組。
 
-## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/>開發人員入口網站-新增 Azure AD 帳戶驗證
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a>開發人員入口網站-新增 Azure AD 帳戶驗證
 
 在開發人員入口網站中，您可以透過登入**按鈕： OAuth** widget 來登入 AAD。 Widget 已包含在預設開發人員入口網站內容的登入頁面上。
 

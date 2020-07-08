@@ -5,15 +5,15 @@ description: 了解如何使用入口網站建立應用程式閘道的自訂探�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 15daf47a1cb44635932311e60b3690af9ff58677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc599eef349c2d65483de18b0cc8c04c5c2e53ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74074599"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808226"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>使用入口網站建立應用程式閘道的自訂探查
 
@@ -44,17 +44,17 @@ ms.locfileid: "74074599"
 
 4. 在 [**新增健康情況探查**] 頁面上，填寫探查的必要資訊，然後在完成時選取 **[確定]**。
 
-   |**設定** | **ReplTest1** | **詳細資料**|
+   |**設定** | **值** | **詳細資料**|
    |---|---|---|
    |**名稱**|customProbe|此值是可在入口網站中存取之探查的易記名稱。|
    |**通訊協定**|HTTP 或 HTTPS | 健康狀態探查所使用的通訊協定。 |
-   |**主機**|亦即 contoso.com|此值是在應用程式伺服器上執行的虛擬主機名稱稱（與 VM 主機名稱不同）。 探查會傳送至（通訊協定）：//（主機名稱）:(HTTPsetting 的埠）/urlPath。  這適用于在應用程式閘道上設定多網站時。 如果已針對單一網站設定應用程式閘道，請輸入 ' 127.0.0.1 '。|
+   |**主控件**|亦即 contoso.com|此值是在應用程式伺服器上執行的虛擬主機名稱稱（與 VM 主機名稱不同）。 探查會傳送至（通訊協定）：//（主機名稱）:(HTTPsetting 的埠）/urlPath。  這適用于在應用程式閘道上設定多網站時。 如果已針對單一網站設定應用程式閘道，請輸入 ' 127.0.0.1 '。|
    |**從後端 HTTP 設定挑選主機名稱**|[是] 或 [否]|將探查中的*主機*標頭設定為後端集區中，與與此探查相關聯之 HTTP 設定相關聯的後端資源的主機名稱。 在多租使用者後端（例如 Azure app service）的情況下特別需要。 [深入了解](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**路徑**|/ 或另一個路徑|自訂探查完整 URL 的其餘部分。 有效路徑的開頭為 '/'。 針對 HTTP：\//contoso.com 的預設路徑，只要使用 '/' |
+   |**路徑**|/ 或另一個路徑|自訂探查完整 URL 的其餘部分。 有效路徑的開頭為 '/'。 針對 HTTP：/contoso.com 的預設路徑， \/ 只要使用 '/' |
    |**間隔 (秒)**|30|執行探查以檢查健康狀態的頻率。 建議您不要設定低於 30 秒。|
    |**逾時 (秒)**|30|探查在超時前等待的時間量。如果在此超時期間內未收到有效的回應，則會將探查標示為失敗。 逾時間隔需要高到足以進行 http 呼叫，以確保可使用後端的健康狀態頁面。 請注意，超時值不應大於此探查設定中使用的「間隔」值，或 HTTP 設定中將與此探查相關聯的「要求超時」值。|
-|**狀況不良閾值**|3|連續失敗嘗試視為狀況不良的次數。 閾值可以設定為1或更多。|
-   |**使用探查符合條件**|[是] 或 [否]|根據預設，狀態碼介於200和399之間的 HTTP （S）回應視為狀況良好。 您可以變更後端回應碼或後端回應主體的可接受範圍。 [深入了解](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
+|**狀況不良臨界值**|3|連續失敗嘗試視為狀況不良的次數。 閾值可以設定為1或更多。|
+   |**使用探查符合條件**|[是] 或 [否]|根據預設，狀態碼介於 200 和 399 之間的 HTTP(S) 回應視為良好。 您可以變更後端回應碼或後端回應主體的可接受範圍。 [深入了解](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
    |**HTTP 設定**|從下拉式清單選取|探查會與此處所選的 HTTP 設定相關聯，因此，會監視與所選 HTTP 設定相關聯之後端集區的健全狀況。 它會使用與所選 HTTP 設定中所使用的相同的探查要求埠。 您只能選擇與其他任何自訂探查沒有關聯的 HTTP 設定。 <br>請注意，只有這些 HTTP 設定適用于關聯，其通訊協定與此探查設定中所選擇的通訊協定相同，而且具有*從後端 HTTP 設定參數挑選主機名稱*的相同狀態。|
    
    > [!IMPORTANT]
@@ -93,17 +93,17 @@ ms.locfileid: "74074599"
 
 4. 在 [**新增健康情況探查**] 分頁上，填寫探查的必要資訊，然後在完成時選取 **[確定]**。
 
-   |**設定** | **ReplTest1** | **詳細資料**|
+   |**設定** | **值** | **詳細資料**|
    |---|---|---|
    |**名稱**|customProbe|此值是可在入口網站中存取之探查的易記名稱。|
    |**通訊協定**|HTTP 或 HTTPS | 健康狀態探查所使用的通訊協定。 |
-   |**主機**|亦即 contoso.com|此值是在應用程式伺服器上執行的虛擬主機名稱稱（與 VM 主機名稱不同）。 探查會傳送至（通訊協定）：//（主機名稱）:(HTTPsetting 的埠）/urlPath。  這適用于在應用程式閘道上設定多網站時。 如果已針對單一網站設定應用程式閘道，請輸入 ' 127.0.0.1 '。|
+   |**主控件**|亦即 contoso.com|此值是在應用程式伺服器上執行的虛擬主機名稱稱（與 VM 主機名稱不同）。 探查會傳送至（通訊協定）：//（主機名稱）:(HTTPsetting 的埠）/urlPath。  這適用于在應用程式閘道上設定多網站時。 如果已針對單一網站設定應用程式閘道，請輸入 ' 127.0.0.1 '。|
    |**從後端 HTTP 設定挑選主機名稱**|[是] 或 [否]|將探查中的*主機*標頭設定為後端集區中，與與此探查相關聯之 HTTP 設定相關聯的後端資源的主機名稱。 在多租使用者後端（例如 Azure app service）的情況下特別需要。 [深入了解](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**路徑**|/ 或另一個路徑|自訂探查完整 URL 的其餘部分。 有效路徑的開頭為 '/'。 針對 HTTP：\//contoso.com 的預設路徑，只要使用 '/' |
+   |**路徑**|/ 或另一個路徑|自訂探查完整 URL 的其餘部分。 有效路徑的開頭為 '/'。 針對 HTTP：/contoso.com 的預設路徑， \/ 只要使用 '/' |
    |**間隔 (秒)**|30|執行探查以檢查健康狀態的頻率。 建議您不要設定低於 30 秒。|
    |**逾時 (秒)**|30|探查在超時前等待的時間量。如果在此超時期間內未收到有效的回應，則會將探查標示為失敗。 逾時間隔需要高到足以進行 http 呼叫，以確保可使用後端的健康狀態頁面。 請注意，超時值不應大於此探查設定中使用的「間隔」值，或 HTTP 設定中將與此探查相關聯的「要求超時」值。|
-|**狀況不良閾值**|3|連續失敗嘗試視為狀況不良的次數。 閾值可以設定為1或更多。|
-   |**使用探查符合條件**|[是] 或 [否]|根據預設，狀態碼介於200和399之間的 HTTP （S）回應視為狀況良好。 您可以變更後端回應碼或後端回應主體的可接受範圍。 [深入了解](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
+|**狀況不良臨界值**|3|連續失敗嘗試視為狀況不良的次數。 閾值可以設定為1或更多。|
+   |**使用探查符合條件**|[是] 或 [否]|根據預設，狀態碼介於 200 和 399 之間的 HTTP(S) 回應視為良好。 您可以變更後端回應碼或後端回應主體的可接受範圍。 [深入了解](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
 
    > [!IMPORTANT]
    > 主機名稱與伺服器名稱不同。 此值是在應用程式伺服器上執行的虛擬主機名稱。 探查會傳送到 http://(host name):(port from httpsetting)/urlPath

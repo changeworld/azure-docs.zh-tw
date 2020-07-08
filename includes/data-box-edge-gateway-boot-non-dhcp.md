@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 880b630ae48eda086f6454f0d7108d27d3403b77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174647"
 ---
 如果您在非 DHCP 環境中開機，請遵循下列步驟來為您的資料箱閘道部署虛擬機器。
 
 1. [連接至裝置的 Windows PowerShell 介面](#connect-to-the-powershell-interface)。
-2. 使用`Get-HcsIpAddress` Cmdlet 來列出虛擬裝置上已啟用的網路介面。 如果您的裝置有已啟用的單一網路介面，系統指派給該介面的預設名稱會是 `Ethernet`。
+2. 使用 `Get-HcsIpAddress` Cmdlet 來列出虛擬裝置上已啟用的網路介面。 如果您的裝置有已啟用的單一網路介面，系統指派給該介面的預設名稱會是 `Ethernet`。
 
     下列範例顯示此 Cmdlet 的使用方式：
 
