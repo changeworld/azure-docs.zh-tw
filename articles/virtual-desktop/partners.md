@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 06/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692217"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038050"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虛擬桌面合作夥伴整合
 
@@ -33,12 +33,12 @@ Citrix 利用強大的企業工具擴充 Windows 虛擬桌面的價值，以提�
 
 ![VMware 標誌](./media/partners/vmware.png)
 
-Microsoft Azure 的 VMware 範圍雲端可讓組織將自己的 Microsoft Azure 實例連線到簡單、直覺的雲端控制平面，建立安全、全方位的雲端裝載解決方案，以提供虛擬化的 Windows 應用程式和桌上型電腦。 隨著 Windows 虛擬桌面的發行，VMware 已與 Microsoft 合作，將 Windows 虛擬桌面的功能延伸到在 Microsoft Azure 上使用水準雲端的客戶。 這項功能將于2019年底的技術預覽中提供。
- 
-身為核准的提供者，Windows 虛擬桌面的優點將會延伸到 Microsoft Azure 客戶的 VMware 範圍雲端，包括 Windows 10 企業版（含）長達三年的免費擴充安全性更新，以及 FSLogix。 此外，客戶將會收到大規模雲端的企業級功能，例如廣泛的端點支援;全域、雲端優化的仲介;彈性的桌面選項和設定;使用者-環境管理;和混合式環境的支援。
+Microsoft Azure 上的 VMware 範圍雲端是一種原生雲端服務，可讓組織從現有的 Microsoft Azure 訂用帳戶快速部署遠端桌面和應用程式，同時充分利用 VMware 的所有功能。 「水準」雲端使用水準控制平面，針對所有適用于內部部署或雲端的水準環境提供單一管理介面。 這會啟用混合式桌面虛擬化，並可讓客戶依自己的步調將其工作負載移至 Azure。
 
-- [在 Microsoft Azure 上註冊適用于地平線雲端的技術預覽](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)。
+做為 Windows 虛擬桌面核准的提供者，VMware 可以協助想要使用 Windows 虛擬桌面的客戶，同時仍然享有 VMware 的額外功能，例如整合式和便於使用的電源管理、雲端式監視，以及群發的通訊協定。 這些功能可讓您即時變更網路狀況，以提供一致的使用者體驗。 Vmware 範圍雲端也隨附 VMware 應用程式磁片區和動態環境管理員，可新增可搭配 MSIX 應用程式附加和 FSLogix 使用的先進應用程式和使用者環境管理功能。
+
 - [前往合作夥伴網站](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)。
+- [閱讀 VMWare 範圍的雲端技術檔](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure)。
 
 ## <a name="10zig"></a>10ZiG
 
@@ -102,6 +102,28 @@ deviceTRUST 利用其內容相關的安全性技術來擴充 Windows 虛擬桌�
 
 - [前往合作夥伴網站](https://devicetrust.com/wvd)。
 
+## <a name="ekran-system"></a>Ekran 系統
+
+![Ekran 系統標誌](./media/partners/ekran.png)
+
+Ekran System 是 Windows 虛擬桌面的增值合作夥伴，可讓 IT 小組監視 Microsoft Azure 虛擬機器上的所有遠端使用者活動。 在 Ekran 系統中，您可以在已發佈的應用程式或虛擬桌面電腦中，記錄每個使用者會話的螢幕活動，同時收集各種內容豐富的中繼資料，例如應用程式名稱、使用中視窗標題、流覽的 Url 和按鍵。 先進的功能可提供深入的可見度和快速事件回應時間，讓 Ekran 系統成為有效率的內部威脅管理和合規性解決方案。  
+
+Ekran 系統用戶端的唯一浮動端點授權已自動化，可支援動態變更虛擬桌面。 Ekran System 可讓您從已刪除的非持續性虛擬桌面自動取消指派授權，並將其從資料庫中移除。 Ekran 系統與 Azure Active Directory 和 Azure Sentinel 緊密整合。
+
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8)。
+- [移至 [合作夥伴] 頁面](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring)。
+
+## <a name="flexxible-it"></a>Flexxible IT
+
+![Flexxible IT 標誌](./media/partners/flexxible.png)
+
+Flexxible 是 Windows 虛擬桌面的增值合作夥伴，讓組織能夠快速調整、監視及有效率地管理 Windows 虛擬桌面和 Citrix 工作區基礎結構。 Flexxible |套件可讓 IT 系統管理員以智慧方式布建和管理內部部署的 Windows 虛擬桌面工作負載，並裝載于 Azure 中。
+ 
+Flexxible IT 技術將原生 Windows 虛擬桌面和 Citrix 工作區的價值延伸，方法是將一般程式自動化，以簡化基礎結構設定、桌面布建和日常管理。 由於不需要複雜的 PowerShell 腳本或耗時的手動程式，因此套件提供可擴充的桌面部署、廣泛的監視和報告，以及安全的委派管理。 這些功能可讓您專注于為您的使用者提供增強的服務層級和品質 Windows 虛擬桌面體驗。
+
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7A)。
+- [前往合作夥伴網站](https://www.flexxible.com/suite-for-windows-virtual-desktop)。
+
 ## <a name="hp"></a>HP
 
 ![HP 標誌](./media/partners/hp.png)
@@ -127,7 +149,7 @@ IGEL OS 支援 Citrix、Microsoft 和 VMware 的所有熱門虛擬應用程式�
 
 ![Ivanti 標誌](./media/partners/ivanti.png)
 
-Ivanti 使用者工作區管理員是一項 Windows 虛擬桌面的增值服務，可將使用者資料與桌上型電腦分開以方便移植，藉此簡化桌面部署和管理。 透過 Ivanti，使用者可以提供複雜的專案，例如遷移至 Windows 10、採用 Office 365，或更快速地將服務移至雲端。 
+Ivanti 使用者工作區管理員是一項 Windows 虛擬桌面的增值服務，可將使用者資料與桌上型電腦分開以方便移植，藉此簡化桌面部署和管理。 透過 Ivanti，使用者可以提供複雜的專案，例如遷移至 Windows 10、採用 Microsoft 365，或更快速地將服務移至雲端。 
 
 與 Windows 虛擬桌面搭配使用時，Ivanti 的使用者工作區管理員可提供使用者桌面體驗的簡單內容管理，並排除長時間登入和 eradicating 群組原則惡夢。 Ivanti 使用者工作區管理員現成的範本可簡化使用者透過代理程式和現有主控台的安裝。 Ivanti 使用者工作區管理員可提供快速且安全的桌上型電腦，讓使用者喜愛、節省伺服器的成本、更有效率地管理使用者，以及降低端點安全性風險。 
 
@@ -163,6 +185,7 @@ Liquit 應用程式匯總與傳遞軟體可讓企業和服務提供者與所有�
 
 身為認證的整合合作夥伴，Liquit 有助於加速轉換至雲端，而不需要進行 rip 和取代延遲。 Windows 虛擬桌面可以輕鬆地連接到現有的環境、建立工作區，以及提供桌面。 然後您可以將時間從舊平臺移出，並在後端進行變更，而不需要您的使用者注意到。 無論應用程式位於何處，都能獲得一致的使用者體驗、彈性的基礎結構，以及維持其控制。
 
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yol8)。
 - [前往合作夥伴網站](https://www.liquit.com/wvd/)。
 
 ## <a name="login-vsi"></a>登入 .VSI
@@ -232,9 +255,20 @@ Printix 是一種 Windows 虛擬桌面值新增的服務提供者，可將使用
 
 RDPSoft 是 Windows 虛擬桌面合作夥伴，提供強大且實惠的監視、管理和報告解決方案。 其遠端桌面指揮供應專案可讓 IT 專業人員深入瞭解其 Windows 虛擬桌面部署的健康情況、效能、使用者活動、授權和安全性。 
  
-RDPSoft 的遠端桌面指揮解決方案增強了 Windows 虛擬桌面系統管理。 高階管理功能藉由提供遠端協助、使用者會話和流程管理，簡化 Windows 虛擬桌面管理工作的委派，以支援服務台人員。 同時，遠端桌面操作套件會收集有關每個使用者的效能和負載、使用者活動和審核、Windows 虛擬桌面連線品質（延遲和頻寬）、授權和安全性到中央 Azure SQL database 實例以供審查的豐富計量。 有了 RDPSoft，豐富的歷程記錄報告和完整的儀表板只需按一下即可。
+RDPSoft 的遠端桌面指揮解決方案增強了 Windows 虛擬桌面系統管理。 高階管理功能藉由提供遠端協助、使用者會話和流程管理，簡化 Windows 虛擬桌面管理工作的委派，以支援服務台人員。 同時，遠端桌面操作套件也會收集有關每個使用者的效能和負載、使用者活動和審核、Windows 虛擬桌面連接品質（延遲和頻寬）、授權和安全性到中央 Azure SQL Database 實例以供審查的豐富計量。 有了 RDPSoft，豐富的歷程記錄報告和完整的儀表板只需按一下即可。
 
 - [前往合作夥伴網站](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)。
+
+## <a name="rimo3"></a>Rimo3
+
+![Rimo3 標誌](./media/partners/rimo3.png)
+
+Rimo3 藉由加速部署並改善進行中的變更管理，來增強 Windows 虛擬桌面體驗。 Rimo3 為 IT 小組提供了支援應用程式工作負載的 Azure 遷移準備就緒所需的知識。 使用者可以將應用程式上架，並快速輕鬆地在其目標 Windows 虛擬桌面工作區中進行測試。 使用者也可以主動瞭解任何變更的影響，因為其組織會推出新的應用程式和更新。 最後，IT 系統管理員可以利用 Rimo3's 的智慧型冒煙測試功能並自動化功能測試，而不會中斷使用者會話。
+
+Rimo3 提供便於使用、可擴充的自動化應用程式測試平臺。 此平臺包含三種應用程式測試基本概念的功能：相容性、功能和效能。 它可讓組織、領導人和小組改善商務持續性、更快速地採用變更，以及優化使用者體驗。
+
+- [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B)。
+- [前往合作夥伴網站](https://rimo3.com/outcomes/)。
 
 ## <a name="sepago"></a>sepago
 
@@ -245,7 +279,7 @@ sepago 在2002中是由 Cologne 中的四位朋友所建立。 現今，sepago �
 sepago 的創新和開發實驗室使用海量資料和 AI 技術建立智慧型解決方案。 這些解決方案的重點在於提升企業、使用者體驗，以及 Windows 虛擬桌面等合作夥伴產品的管理中心。
 
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm)。
-- [前往合作夥伴網站](https://www.sepago.de/wvd-value-add-tools/)。
+- [前往合作夥伴網站](https://www.sepago.de/en/)。
 
 ## <a name="thinprint"></a>ThinPrint
 

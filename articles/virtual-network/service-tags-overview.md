@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: ea756b965a2539886e695585c9b5f5034eac7684
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: HT
+ms.openlocfilehash: fd44c07ea44e7487a22b0de67737dcc135c813b6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263181"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038033"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
@@ -96,7 +96,7 @@ ms.locfileid: "84263181"
 | **PowerQueryOnline** | Power Query Online。 | 兩者 | 否 | 否 |
 | **ServiceBus** | 使用進階服務層級的 Azure 服務匯流排流量。 | 輸出 | 是 | 是 |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此標籤代表各區域控制平面的 Service Fabric 服務端點。 此標籤可讓客戶從其 VNET 執行 Service Fabric 叢集的管理作業 (端點，例如 https:// westus.servicefabric.azure.com) | 兩者 | 否 | 否 |
-| **Sql** | Azure SQL Database、適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫和 Azure SQL 資料倉儲。<br/><br/>*注意：* 此標籤代表服務，但不代表服務的特定執行個體。 例如，標籤代表 SQL Database 或伺服器服務，但不代表特定的 Azure SQL Database。 此標籤不適用於 SQL 受控執行個體。 | 輸出 | 是 | 是 |
+| **Sql** | Azure SQL Database、適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫和 Azure SQL 資料倉儲。<br/><br/>*注意：* 此標籤代表服務，但不代表服務的特定執行個體。 例如，標籤代表 SQL Database 或伺服器服務，但不代表特定的 Azure SQL Database。 此標記不適用於 SQL 受控執行個體。 | 輸出 | 是 | 是 |
 | **SqlManagement** | SQL 專用部署的管理流量。 | 兩者 | 否 | 是 |
 | **Storage** | Azure 儲存體。 <br/><br/>*注意：* 此標籤代表服務，但不代表服務的特定執行個體。 例如，標籤代表 Azure 儲存體服務，但不代表特定的 Azure 儲存體帳戶。 | 輸出 | 是 | 是 |
 | **StorageSyncService** | 儲存體同步服務。 | 兩者 | 否 | 否 |
@@ -139,6 +139,8 @@ ms.locfileid: "84263181"
 - [Azure US Gov](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)   
+
+這些檔案中的 IP 位址範圍是 CIDR 標記法。 
 
 > [!NOTE]
 >這項資訊的子集已發佈在 XML 檔案中，適用於 [Azure 公用](https://www.microsoft.com/download/details.aspx?id=41653)、[Azure 中國](https://www.microsoft.com/download/details.aspx?id=42064)和 [Azure 德國](https://www.microsoft.com/download/details.aspx?id=54770)。 這些 XML 下載將於 2020 年 6 月 30 日淘汰，且在該日期後即無法使用。 您應依照先前幾節的說明進行遷移，以使用探索 API 或 JSON 檔案下載。
