@@ -5,18 +5,18 @@ description: 瞭解如何呼叫從 Azure Machine Learning 部署模型時所產�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 04/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: 0222b63323c4e546628d790fabb881eba006494e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: ced9453982615485e25b56be9b7a36dc8f6ce988
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383383"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974665"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署為 Web 服務的 Azure Machine Learning 模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,8 +41,8 @@ ms.locfileid: "81383383"
 
 [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) 類別可提供建立用戶端所需的資訊。 建立用戶端應用程式時，下列 `Webservice` 屬性很有用：
 
-* `auth_enabled`-如果已啟用金鑰驗證， `True`則為;否則為`False`。
-* `token_auth_enabled`-如果已啟用權杖驗證， `True`則為;否則為`False`。
+* `auth_enabled`-如果已啟用金鑰驗證， `True` 則為，否則為 `False` 。
+* `token_auth_enabled`-如果已啟用權杖驗證， `True` 則為，否則為 `False` 。
 * `scoring_uri` - REST API 的位址。
 * `swagger_uri`-OpenAPI 規格的位址。 如果您已啟用自動產生架構，就可以使用此 URI。 如需詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
@@ -80,7 +80,7 @@ ms.locfileid: "81383383"
 > [!IMPORTANT]
 > Azure Machine Learning 部署的 Web 服務僅支援 TLS 版本1.2。 建立用戶端應用程式時，請確定它支援此版本。
 
-如需詳細資訊，請參閱[透過 Azure Machine Learning 使用 TLS 來保護 web 服務](how-to-secure-web-service.md)。
+如需詳細資訊，請參閱[使用 TLS 來透過 Azure Machine Learning 保護 Web 服務](how-to-secure-web-service.md) \(部分機器翻譯\)。
 
 ### <a name="authentication-for-services"></a>服務的驗證
 
@@ -88,10 +88,10 @@ Azure Machine Learning 提供兩種方式來控制對 web 服務的存取。
 
 |驗證方法|ACI|AKS|
 |---|---|---|
-|Key|預設為停用| 預設已啟用|
-|權杖| 無法使用| 預設為停用 |
+|Key|預設為停用| 預設為啟用|
+|Token| 無法使用| 預設為停用 |
 
-將要求傳送至以金鑰或權杖保護的服務時，請使用__Authorization__標頭來傳遞金鑰或權杖。 金鑰或 token 必須格式化為`Bearer <key-or-token>`，其中`<key-or-token>`是您的金鑰或 token 值。
+將要求傳送至以金鑰或權杖保護的服務時，請使用__Authorization__標頭來傳遞金鑰或權杖。 金鑰或 token 必須格式化為 `Bearer <key-or-token>` ，其中 `<key-or-token>` 是您的金鑰或 token 值。
 
 #### <a name="authentication-with-keys"></a>使用金鑰進行驗證
 
@@ -110,7 +110,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> 如果您需要重新產生金鑰，請使用[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)。
+> 如果您需要重新產生金鑰，請使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) 。
 
 #### <a name="authentication-with-tokens"></a>使用權杖進行驗證
 
@@ -119,17 +119,25 @@ print(primary)
 * 當您部署到 Azure Kubernetes Service 時，預設會停用權杖驗證。
 * 當您部署至 Azure 容器實例時，不支援權杖驗證。
 
-若要控制權杖驗證，請`token_auth_enabled`在建立或更新部署時使用參數。
+若要控制權杖驗證，請在 `token_auth_enabled` 建立或更新部署時使用參數。
 
-如果已啟用權杖驗證，您可以使用`get_token`方法來抓取持有人權杖和權杖到期時間：
+如果已啟用權杖驗證，您可以使用 `get_token` 方法來抓取持有人權杖和權杖到期時間：
 
 ```python
 token, refresh_by = service.get_token()
 print(token)
 ```
 
+如果您有[Azure CLI 和機器學習擴充](reference-azure-machine-learning-cli.md)功能，您可以使用下列命令來取得權杖：
+
+```azurecli
+az ml service get-access-token -n <service-name>
+```
+
 > [!IMPORTANT]
-> 您將需要在權杖的`refresh_by`時間之後要求新的權杖。 
+> 目前取得權杖的唯一方式是使用 Azure Machine Learning SDK 或 Azure CLI 機器學習服務延伸模組。
+
+您將需要在權杖的時間之後要求新的權杖 `refresh_by` 。 
 
 ## <a name="request-data"></a>要求資料
 

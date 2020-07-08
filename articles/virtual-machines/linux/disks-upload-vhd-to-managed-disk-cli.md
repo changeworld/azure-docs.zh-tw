@@ -4,22 +4,22 @@ description: 瞭解如何使用 Azure CLI，透過直接上傳，將 VHD 上傳�
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
-ms.topic: article
+ms.date: 06/15/2020
+ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: c32915617d3149eee42bfdfd03d22f9ce5799ef2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 259b46d21cee4c1106e1d307eeb325a4c430613f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945625"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>將 VHD 上傳至 Azure，或將受控磁碟複製到另一個區域-Azure CLI
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 下載最新[版本的 AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安裝 Azure CLI](/cli/azure/install-azure-cli)。
@@ -38,15 +38,18 @@ ms.locfileid: "82580221"
 - ActiveUpload，這表示磁片已準備好接收上傳，並已產生 SAS。
 
 > [!NOTE]
-> 在上述任一種狀態中，不論實際的磁片類型為何，受控磁片都會以[標準 HDD 定價](https://azure.microsoft.com/pricing/details/managed-disks/)計費。 例如，P10 會以 S10 計費。 在對受控磁片呼叫`revoke-access`之前，這會是 true，這是將磁片連結至 VM 所需的值。
+> 在上述任一種狀態中，不論實際的磁片類型為何，受控磁片都會以[標準 HDD 定價](https://azure.microsoft.com/pricing/details/managed-disks/)計費。 例如，P10 會以 S10 計費。 在對受控磁片呼叫之前，這會是 true `revoke-access` ，這是將磁片連結至 VM 所需的值。
 
 ## <a name="create-an-empty-managed-disk"></a>建立空的受控磁片
 
-在您可以建立空的標準 HDD 以進行上傳之前，您需要上傳的 VHD 檔案大小（以位元組為單位）。 若要取得此項，您可以`wc -c <yourFileName>.vhd`使用`ls -al <yourFileName>.vhd`或。 指定 **--upload-size-bytes**參數時，會使用這個值。
+在您可以建立空的標準 HDD 以進行上傳之前，您需要上傳的 VHD 檔案大小（以位元組為單位）。 若要取得此項，您可以使用 `wc -c <yourFileName>.vhd` 或 `ls -al <yourFileName>.vhd` 。 指定 **--upload-size-bytes**參數時，會使用這個值。
 
 藉由在[disk create](/cli/azure/disk#az-disk-create) Cmdlet 中指定 **--for-upload**參數和 **--upload-size-bytes**參數，建立空的標準 HDD 來進行上傳：
 
-以您選擇的值取代`<yourdiskname>`、 `<yourresourcegroupname>` `<yourregion>` `--upload-size-bytes`參數包含的`34359738880`範例值，請將它取代為適合您的值。
+`<yourdiskname>` `<yourresourcegroupname>` `<yourregion>` 以您選擇的值取代、。 `--upload-size-bytes`參數包含的範例值 `34359738880` ，請將它取代為適合您的值。
+
+> [!TIP]
+> 如果您要建立 OS 磁片，請將--hyper-v 世代新增 <yourGeneration> 至 `az disk create` 。
 
 ```azurecli
 az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
@@ -56,7 +59,7 @@ az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --fo
 
 既然您已建立為上傳程式設定的空受控磁片，您可以將 VHD 上傳至其中。 若要將 VHD 上傳至磁片，您將需要可寫入的 SAS，以便將它當做您上傳的目的地。
 
-若要產生空受控磁片的可寫入 SAS，請`<yourdiskname>`將`<yourresourcegroupname>`和取代為，然後使用下列命令：
+若要產生空受控磁片的可寫入 SAS，請將和取代為 `<yourdiskname>` `<yourresourcegroupname>` ，然後使用下列命令：
 
 ```azurecli
 az disk grant-access -n <yourdiskname> -g <yourresourcegroupname> --access-level Write --duration-in-seconds 86400
@@ -84,7 +87,7 @@ AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 
 上傳完成之後，而且您不再需要將任何其他資料寫入磁片，請撤銷 SAS。 撤銷 SAS 將會變更受控磁片的狀態，並可讓您將磁片連結至 VM。
 
-取代`<yourdiskname>`和`<yourresourcegroupname>`，然後使用下列命令將磁片設為可用：
+取代 `<yourdiskname>` 和 `<yourresourcegroupname>` ，然後使用下列命令將磁片設為可用：
 
 ```azurecli
 az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
@@ -99,7 +102,10 @@ az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
 > [!IMPORTANT]
 > 當您從 Azure 提供受控磁片的磁片大小（以位元組為單位）時，您需要新增512的位移。 這是因為在傳回磁片大小時，Azure 會省略頁尾。 如果您不這麼做，複製將會失敗。 下列腳本已經為您執行這項工作。
 
-使用您`<sourceResourceGroupHere>`的`<sourceDiskNameHere>`值`<targetDiskNameHere>`取代`<targetResourceGroupHere>`、、 `<yourTargetLocationHere>` 、和（位置值的範例），然後執行下列腳本以複製受控磁片。
+`<sourceResourceGroupHere>` `<sourceDiskNameHere>` 使用您的值取代、、 `<targetDiskNameHere>` 、 `<targetResourceGroupHere>` 和 `<yourTargetLocationHere>` （位置值的範例），然後執行下列腳本以複製受控磁片。
+
+> [!TIP]
+> 如果您要建立 OS 磁片，請將--hyper-v 世代新增 <yourGeneration> 至 `az disk create` 。
 
 ```azurecli
 sourceDiskName = <sourceDiskNameHere>

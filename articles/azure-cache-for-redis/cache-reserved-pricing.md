@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: aded023c9f4c045f612e33d32c1e3ac71afddf02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77530298"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974835"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>預付 Azure Cache for Redis 使用保留容量的計算資源
 
@@ -30,15 +30,15 @@ ms.locfileid: "77530298"
 
 ## <a name="determine-the-right-cache-size-before-purchase"></a>在購買前判斷正確的快取大小
 
-保留大小應根據特定區域內現有或即將部署的快取所使用的總計算量，並使用相同的服務層級。
+保留大小應根據特定區域內現有或即將部署的快取所使用的記憶體大小總計，並使用相同的服務層級。
 
-例如，假設您執行的是一個一般用途、第5代– 32 vCore 快取，以及兩個記憶體優化、第5代– 16 vCore 快取。 此外，假設您計畫在下個月部署其他一般用途第5代– 32 vCore 資料庫伺服器，以及一個記憶體優化、第5代– 16 vCore 資料庫伺服器。 假設您知道您至少需要一年的這些資源。 在此情況下，您應該購買64（2x32）虛擬核心，單一資料庫一般目的-第5代和48（2x16 + 16） vCore 1 年保留，適用于單一資料庫記憶體優化-第5代
+例如，假設您正在執行兩個快取，一個是 13 GB，另一個則是 26 GB。 您至少需要一年。 此外，假設您計畫將現有的 13 GB 快取調整為每月 26 GB，以符合您的季節性需求，然後再進行相應放大。 在此情況下，您可以在一年保留期購買1個 P1 快取和1個 P2 快取或3個 P1 快取，以達到最大的節省成本。 您會收到保留的快取記憶體總量的折扣，而不受您在快取中配置該數量的影響。
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>購買 Azure Cache for Redis 保留容量
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取 [**所有服務** > ] [**保留**]。
+2. 選取 [所有服務] > [保留]。
 3. 選取 [**新增**]，然後在 [購買保留] 窗格中，選取 [ **Azure Cache for Redis** ] 來為您的快取購買新的保留。
 4. 填寫必要欄位。 符合您所選屬性的現有或新資料庫，可以取得保留容量折扣。 取得折扣的 Azure Cache for Redis 實例實際數目取決於選取的範圍和數量。
 
@@ -59,7 +59,7 @@ ms.locfileid: "77530298"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 
-您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱[Azure 保留的自助交換和退款](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
+您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
 
 ## <a name="cache-size-flexibility"></a>快取大小彈性
 
@@ -77,7 +77,7 @@ ms.locfileid: "77530298"
 
 * 若要深入了解 Azure 保留項目，請參閱下列文章：
 
-    * [什麼是 Azure 保留專案？](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+    * [什麼是 Azure 保留項目？](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
     * [管理 Azure 保留項目](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
     * [了解 Azure 保留折扣](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
     * [了解隨用隨付訂用帳戶的保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: 202acff5bae87174781dc6c914bebf0494dfcf05
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 2dc7b0447a97cdafc88d2cee4612aba22c1e0eea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871446"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84975787"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>使用 Azure PowerShell 建立具有加速網路的 Windows VM
 
@@ -57,7 +57,7 @@ ms.locfileid: "82871446"
 - **Windows Server 2016 Datacenter** 
 - **Windows Server 2012 R2 Datacenter**
 
-## <a name="limitations-and-constraints"></a>限制和限制
+## <a name="limitations-and-constraints"></a>限制和條件約束
 
 ### <a name="supported-vm-instances"></a>支援的 VM 執行個體
 
@@ -66,6 +66,10 @@ ms.locfileid: "82871446"
 在支援超執行緒的實例上，具有四個或更多個 vcpu 的 VM 實例支援加速網路。 支援的系列為： D/Dsv3、D/Dsv4、E/Esv3、Ea/Easv4、Fsv2、Lsv2、Ms/Mms 和 Ms/Mmsv2。
 
 如需 VM 實例的詳細資訊，請參閱[Azure 中的 Windows 虛擬機器大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+
+### <a name="custom-images"></a>自訂映像
+
+如果您使用自訂映射，而且您的映射支援加速網路，請確定您有在 Azure 上搭配 Mellanox ConnectX-3 和 ConnectX-4 Lx Nic 使用的必要驅動程式。
 
 ### <a name="regions"></a>區域
 
@@ -88,7 +92,7 @@ ms.locfileid: "82871446"
 
 建立 VM 之後，您可以確認是否已啟用加速網路。 遵循下列指示：
 
-1. 請移至[Azure 入口網站](https://portal.azure.com)來管理您的 vm。 搜尋並選取 [虛擬機器]  。
+1. 請移至[Azure 入口網站](https://portal.azure.com)來管理您的 vm。 搜尋並選取 [虛擬機器]。
 
 2. 在 [虛擬機器] 清單中，選擇您的新 VM。
 
@@ -192,7 +196,7 @@ ms.locfileid: "82871446"
 
 ### <a name="create-a-vm-and-attach-the-network-interface"></a>建立 VM 並連接網路介面
 
-1. 使用 [[取得-認證](/powershell/module/microsoft.powershell.security/get-credential)] `$cred`將您的 VM 認證設定為變數，這會提示您登入：
+1. 使用 [取得-認證] 將您的 VM 認證設定為 `$cred` 變數，這會提示您登入： [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)
 
     ```azurepowershell
     $cred = Get-Credential
@@ -238,13 +242,13 @@ ms.locfileid: "82871446"
 
 在 Azure 中建立 VM 之後，請連線至 VM，並確認已在 Windows 中安裝乙太網路控制器。
 
-1. 請移至[Azure 入口網站](https://portal.azure.com)來管理您的 vm。 搜尋並選取 [虛擬機器]  。
+1. 請移至[Azure 入口網站](https://portal.azure.com)來管理您的 vm。 搜尋並選取 [虛擬機器]。
 
 2. 在 [虛擬機器] 清單中，選擇您的新 VM。
 
 3. 在 VM [總覽] 頁面中，如果 VM 的**狀態**列為 [**建立**中]，請等到 Azure 完成 vm 的建立。 VM 建立完成後，**狀態**會變更為 [**執行中]** 。
 
-4. 從 VM 總覽工具列，選取 [連線**RDP**  >  **] [** > **下載 rdp**檔案]。
+4. 從 VM 總覽工具列，選取 [連線 RDP **] [**  >  **RDP**  >  **下載 rdp**檔案]。
 
 5. 開啟 .rdp 檔案，然後使用您在[建立 vm 和附加網路介面](#create-a-vm-and-attach-the-network-interface)一節中輸入的認證來登入 VM。 如果您從未連線到 Azure 中的 Windows VM，請參閱[連線至虛擬機器](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine)。
 
@@ -327,7 +331,7 @@ ms.locfileid: "82871446"
 3. 將套用的更新設定為 [自動]，以立即挑選變更：
 
     ```azurepowershell
-    $vmss.UpgradePolicy.AutomaticOSUpgrade = $true
+    $vmss.UpgradePolicy.Mode = "Automatic"
     
     Update-AzVmss -ResourceGroupName "myResourceGroup" `
         -VMScaleSetName "myScaleSet" `

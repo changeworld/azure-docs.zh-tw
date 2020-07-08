@@ -5,16 +5,16 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 514cc25e1959145c65fe60cd3054cec4ed28f44d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa2b82e70b1a1372076483c7405c32b66da377af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974409"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>從 Azure Kubernetes Service 對 Azure Container Registry 進行驗證
 
-當您搭配使用 Azure Container Service (AKS) 與 Azure Kubernetes Registry (ACR) 時，必須建立驗證機制。 本文提供在這兩個 Azure 服務之間設定驗證的範例。 
+當您搭配使用 Azure Container Service (AKS) 與 Azure Kubernetes Registry (ACR) 時，必須建立驗證機制。 這項作業會藉由將必要的許可權授與您的 ACR，而實作為 CLI 和入口網站體驗的一部分。 本文提供在這兩個 Azure 服務之間設定驗證的範例。 
 
 您可以使用 Azure CLI 的幾個簡單命令來設定 ACR 整合的 AKS。 此整合會將 AcrPull 角色指派給與 AKS 叢集相關聯的服務主體。
 
@@ -23,7 +23,7 @@ ms.locfileid: "80617414"
 這些範例需要：
 
 * **Azure 訂**用帳戶的**擁有**者或**azure 帳戶管理員**角色
-* Azure CLI 2.0.73 或更新版本
+* Azure CLI 2.7.0 或更新版本
 
 若要避免需要**擁有**者或**Azure 帳戶管理員**角色，您可以手動設定服務主體，或使用現有的服務主體來驗證來自 AKS 的 ACR。 如需詳細資訊，請參閱[使用服務主體進行 ACR 驗證](../container-registry/container-registry-auth-service-principal.md)或[使用提取密碼從 Kubernetes 進行驗證](../container-registry/container-registry-auth-kubernetes.md)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "80617414"
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
-$MYACR=myContainerRegistry
+MYACR=myContainerRegistry
 
 # Run the following line to create an Azure Container Registry if you do not already have one
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
@@ -142,6 +142,10 @@ NAME                                 READY   STATUS    RESTARTS   AGE
 nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
+
+### <a name="troubleshooting"></a>疑難排解
+* 深入瞭解[ACR 診斷](../container-registry/container-registry-diagnostics-audit-logs.md)
+* 深入瞭解[ACR 健全狀況](../container-registry/container-registry-check-health.md)
 
 <!-- LINKS - external -->
 [AKS AKS CLI]:  https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create

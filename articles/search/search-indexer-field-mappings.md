@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fa815d9fb653ee61d647023f7867549aa8d655aa
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 7d853a8e935f7732a05b33d9b8581dcf753d8873
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005790"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84975328"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 認知搜尋索引子的欄位對應和轉換
 
@@ -22,7 +22,7 @@ ms.locfileid: "83005790"
 
 欄位對應在某些情況下很有用︰
 
-* 您的資料來源具有名為`_id`的欄位，但 Azure 認知搜尋不允許以底線開頭的功能變數名稱。 欄位對應可讓您有效地重新命名欄位。
+* 您的資料來源具有名為的欄位 `_id` ，但 Azure 認知搜尋不允許以底線開頭的功能變數名稱。 欄位對應可讓您有效地重新命名欄位。
 * 您想要從相同的資料來源資料填入索引中的幾個欄位。 例如，您可能會想要將不同的分析器套用至這些欄位。
 * 您想要將來自多個資料來源的資料填入索引欄位，而每個資料來源都使用不同的功能變數名稱。
 * 您必須以 Base64 格式編碼或解碼資料。 欄位對應支援數個 **對應函式**，包括 Base64 編碼和解碼的函式。
@@ -38,7 +38,10 @@ ms.locfileid: "83005790"
 2. 選擇性的 `targetFieldName`，表示搜尋索引中的欄位。 如果省略，則會使用資料來源中的相同名稱。
 3. 選擇性的 `mappingFunction`，可以使用數個預先定義的函式之一轉換您的資料。 這可以同時套用在輸入和輸出欄位對應上。 函式的完整清單 [如下](#mappingFunctions)。
 
-欄位對應會加入索引子`fieldMappings`定義的陣列中。
+欄位對應會加入 `fieldMappings` 索引子定義的陣列中。
+
+> [!NOTE]
+> 如果沒有加入欄位對應，則索引子會假設資料來源欄位應對應至具有相同名稱的索引欄位。 加入欄位對應會移除 [來源] 和 [目標] 欄位的這些預設欄位對應。 某些索引子，例如[blob 儲存體索引子](search-howto-indexing-azure-blob-storage.md)，會加入 [索引鍵] 欄位的預設欄位對應。
 
 ## <a name="map-fields-using-the-rest-api"></a>使用 REST API 對應欄位
 
@@ -75,9 +78,9 @@ api-key: [admin key]
 
 ## <a name="map-fields-using-the-net-sdk"></a>使用 .NET SDK 對應欄位
 
-您可以使用[FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping)類別定義 .net SDK 中的欄位對應，其具有屬性`SourceFieldName`和`TargetFieldName`，以及選擇性`MappingFunction`的參考。
+您可以使用[FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping)類別定義 .net SDK 中的欄位對應，其具有屬性 `SourceFieldName` 和 `TargetFieldName` ，以及選擇性的 `MappingFunction` 參考。
 
-您可以在建立索引子時指定欄位對應，或在稍後直接設定`Indexer.FieldMappings`屬性。
+您可以在建立索引子時指定欄位對應，或在稍後直接設定 `Indexer.FieldMappings` 屬性。
 
 下列 c # 範例會在建立索引子時設定欄位對應。
 
@@ -120,9 +123,9 @@ api-key: [admin key]
 
 #### <a name="example---document-key-lookup"></a>範例-檔索引鍵查閱
 
-Azure 認知搜尋檔金鑰中僅能出現 URL 安全的字元（因為客戶必須能夠使用[查閱 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document)來處理檔）。 如果您金鑰的來源欄位包含不安全的 URL 字元，您可以使用`base64Encode`函式在索引時間進行轉換。 不過，檔索引鍵（在轉換前後）長度不能超過1024個字元。
+Azure 認知搜尋檔金鑰中僅能出現 URL 安全的字元（因為客戶必須能夠使用[查閱 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document)來處理檔）。 如果您金鑰的來源欄位包含不安全的 URL 字元，您可以使用函式 `base64Encode` 在索引時間進行轉換。 不過，檔索引鍵（在轉換前後）長度不能超過1024個字元。
 
-當您在搜尋時抓取編碼的金鑰時，您可以使用`base64Decode`函式來取得原始索引鍵值，並使用該值來抓取來源文件。
+當您在搜尋時抓取編碼的金鑰時，您可以使用函式 `base64Decode` 來取得原始索引鍵值，並使用該值來抓取來源文件。
 
 ```JSON
 
@@ -137,7 +140,28 @@ Azure 認知搜尋檔金鑰中僅能出現 URL 安全的字元（因為客戶必
   }]
  ```
 
-如果您未包含對應函數的 parameters 屬性，它會預設為值`{"useHttpServerUtilityUrlTokenEncode" : true}`。
+#### <a name="example---preserve-original-values"></a>範例-保留原始值
+
+如果未指定欄位對應， [blob 儲存體索引子](search-howto-indexing-azure-blob-storage.md)會自動將欄位對應從 `metadata_storage_path` blob 的 URI 新增至索引鍵欄位。 這個值是以 Base64 編碼，因此可以安全地當做 Azure 認知搜尋檔金鑰使用。 下列範例顯示如何同時將*URL 安全*的 Base64 編碼版本對應 `metadata_storage_path` 至 `index_key` 欄位，並將原始值保留在 `metadata_storage_path` 欄位中：
+
+```JSON
+
+"fieldMappings": [
+  {
+    "sourceFieldName": "metadata_storage_path",
+    "targetFieldName": "metadata_storage_path"
+  },
+  {
+    "sourceFieldName": "metadata_storage_path",
+    "targetFieldName": "index_key",
+    "mappingFunction": {
+       "name": "base64Encode"
+    }
+  }
+]
+```
+
+如果您未包含對應函數的 parameters 屬性，它會預設為值 `{"useHttpServerUtilityUrlTokenEncode" : true}` 。
 
 Azure 認知搜尋支援兩種不同的 Base64 編碼。 編碼和解碼相同的欄位時，您應該使用相同的參數。 如需詳細資訊，請參閱[base64 編碼選項](#base64details)，以決定要使用哪些參數。
 
@@ -149,7 +173,7 @@ Azure 認知搜尋支援兩種不同的 Base64 編碼。 編碼和解碼相同�
 
 #### <a name="example---decode-blob-metadata-or-urls"></a>範例-將 blob 中繼資料或 Url 解碼
 
-您的來源資料可能包含您想要以純文字形式搜尋的 Base64 編碼字串，例如 blob 中繼資料字串或 web Url。 填入您的搜尋`base64Decode`索引時，您可以使用函式將編碼的資料轉換回一般字串。
+您的來源資料可能包含您想要以純文字形式搜尋的 Base64 編碼字串，例如 blob 中繼資料字串或 web Url。 填入您的搜尋索引時，您可以使用函式 `base64Decode` 將編碼的資料轉換回一般字串。
 
 ```JSON
 
@@ -164,7 +188,7 @@ Azure 認知搜尋支援兩種不同的 Base64 編碼。 編碼和解碼相同�
   }]
 ```
 
-如果您未包含 parameters 屬性，它會預設為值`{"useHttpServerUtilityUrlTokenEncode" : true}`。
+如果您未包含 parameters 屬性，它會預設為值 `{"useHttpServerUtilityUrlTokenEncode" : true}` 。
 
 Azure 認知搜尋支援兩種不同的 Base64 編碼。 編碼和解碼相同的欄位時，您應該使用相同的參數。 如需詳細資訊，請參閱[base64 編碼選項](#base64details)，以決定要使用哪些參數。
 
@@ -174,12 +198,12 @@ Azure 認知搜尋支援兩種不同的 Base64 編碼。 編碼和解碼相同�
 
 Azure 認知搜尋支援 URL 安全的 base64 編碼和一般 base64 編碼。 在編制索引期間以 base64 編碼的字串應該在之後使用相同的編碼選項進行解碼，否則結果不會符合原始的。
 
-如果用於`useHttpServerUtilityUrlTokenEncode`編碼`useHttpServerUtilityUrlTokenDecode`和解碼的或參數分別`true`設為，則`base64Encode`的行為會像[HttpServerUtility. HTTPserverutility.urltokenencode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) ，而`base64Decode`行為就像[HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx)。
+如果 `useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` 用於編碼和解碼的或參數分別設為 `true` ，則的 `base64Encode` 行為會像[HttpServerUtility. HTTPserverutility.urltokenencode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) ，而 `base64Decode` 行為就像[HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx)。
 
 > [!WARNING]
-> 如果`base64Encode`用來產生索引鍵值， `useHttpServerUtilityUrlTokenEncode`必須設定為 true。 只有 URL 安全的 base64 編碼可以用於索引鍵值。 如需索引鍵值中字元的完整限制，請參閱[&#40;Azure 認知搜尋&#41;的命名規則](https://docs.microsoft.com/rest/api/searchservice/naming-rules)。
+> 如果 `base64Encode` 用來產生索引鍵值， `useHttpServerUtilityUrlTokenEncode` 必須設定為 true。 只有 URL 安全的 base64 編碼可以用於索引鍵值。 如需索引鍵值中字元的完整限制，請參閱[&#40;Azure 認知搜尋&#41;的命名規則](https://docs.microsoft.com/rest/api/searchservice/naming-rules)。
 
-Azure 認知搜尋中的 .NET 程式庫會假設完整的 .NET Framework，它會提供內建的編碼方式。 `useHttpServerUtilityUrlTokenEncode`和`useHttpServerUtilityUrlTokenDecode`選項會利用這項內建功能。 如果您使用 .NET Core 或其他架構，建議您將這些選項設定為`false` ，並直接呼叫您架構的編碼和解碼函數。
+Azure 認知搜尋中的 .NET 程式庫會假設完整的 .NET Framework，它會提供內建的編碼方式。 `useHttpServerUtilityUrlTokenEncode`和 `useHttpServerUtilityUrlTokenDecode` 選項會利用這項內建功能。 如果您使用 .NET Core 或其他架構，建議您將這些選項設定為 `false` ，並直接呼叫您架構的編碼和解碼函數。
 
 下表比較 `00>00?00` 字串的不同 base64 編碼。 若要判斷您的 base64 函式需要的額外處理 (如果有的話)，將您的程式庫編碼函式套用在 `00>00?00` 字串，然後比較輸出與預期的輸出 `MDA-MDA_MDA`。
 
@@ -232,7 +256,7 @@ Azure 認知搜尋中的 .NET 程式庫會假設完整的 .NET Framework，它�
 
 #### <a name="example---populate-collection-from-relational-data"></a>範例-從關聯式資料填入集合
 
-Azure SQL Database 沒有內建的資料類型，自然對應至`Collection(Edm.String)` Azure 認知搜尋中的欄位。 若要填入字串集合欄位，您可以將來源資料預先處理為 JSON 字串陣列，然後使用`jsonArrayToStringCollection`對應函數。
+Azure SQL Database 沒有內建的資料類型，自然對應至 `Collection(Edm.String)` Azure 認知搜尋中的欄位。 若要填入字串集合欄位，您可以將來源資料預先處理為 JSON 字串陣列，然後使用 `jsonArrayToStringCollection` 對應函數。
 
 ```JSON
 
@@ -251,11 +275,11 @@ Azure SQL Database 沒有內建的資料類型，自然對應至`Collection(Edm.
 
 #### <a name="example---document-key-lookup"></a>範例-檔索引鍵查閱
 
-`urlEncode`函式可用來`base64Encode`做為函式的替代方案，如果只轉換 URL unsafe 字元，則保留其他字元。
+`urlEncode`函式可用來做為函式的替代方案 `base64Encode` ，如果只轉換 URL unsafe 字元，則保留其他字元。
 
-假設輸入字串為`<hello>` -，則類型`(Edm.String)`的目標欄位會填入值`%3chello%3e`
+假設輸入字串為-， `<hello>` 則類型的目標欄位 `(Edm.String)` 會填入值`%3chello%3e`
 
-當您在搜尋時抓取編碼的金鑰時，您可以使用`urlDecode`函式來取得原始索引鍵值，並使用該值來抓取來源文件。
+當您在搜尋時抓取編碼的金鑰時，您可以使用函式 `urlDecode` 來取得原始索引鍵值，並使用該值來抓取來源文件。
 
 ```JSON
 
@@ -277,7 +301,7 @@ Azure SQL Database 沒有內建的資料類型，自然對應至`Collection(Edm.
 
  ### <a name="example---decode-blob-metadata"></a>範例-解碼 blob 中繼資料
 
- 某些 Azure 儲存體用戶端會自動對 blob 中繼資料進行 url 編碼（如果它包含非 ASCII 字元）。 不過，如果您想要讓這類中繼資料可供搜尋（純文字），則`urlDecode`在填入搜尋索引時，您可以使用函式將編碼的資料轉換回一般字串。
+ 某些 Azure 儲存體用戶端會自動對 blob 中繼資料進行 url 編碼（如果它包含非 ASCII 字元）。 不過，如果您想要讓這類中繼資料可供搜尋（純文字），則在填入搜尋索引時，您可以使用函式 `urlDecode` 將編碼的資料轉換回一般字串。
 
  ```JSON
 

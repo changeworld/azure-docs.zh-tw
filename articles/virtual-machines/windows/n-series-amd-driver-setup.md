@@ -1,19 +1,19 @@
 ---
 title: 適用於 Windows 的 Azure N 系列 AMD GPU 驅動程式設定
 description: 如何針對 Azure 中執行 Windows Server 或 Windows 的 N 系列虛擬機器設定 AMD GPU 驅動程式
-author: vikancha
+author: vikancha-MSFT
 manager: jkabat
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 745ec7ebf792fe1165022516be4c83fb9e864cc9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: c4ab6f8dd1c2484ca560fd570f88476f31897b28
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799872"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84975177"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在執行 Windows 的 N 系列 VM 上安裝 AMD GPU 驅動程式
 
@@ -38,9 +38,11 @@ NVv4 VM 只支援 Microsoft 所發佈的 GPU 驅動程式。 請「不要」從�
 
 1. 由遠端桌面連線至每個 NVv4 系列 VM。
 
-2. 下載並安裝最新版驅動程式。
+2. 如果您需要卸載先前的驅動程式版本，請在[此](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)下載 AMD 清理公用程式，請勿使用舊版驅動程式隨附的公用程式。
 
-3. 重新啟動 VM。
+3. 下載並安裝最新版驅動程式。
+
+4. 重新啟動 VM。
 
 ## <a name="verify-driver-installation"></a>確認驅動程式安裝
 
@@ -50,7 +52,7 @@ NVv4 VM 只支援 Microsoft 所發佈的 GPU 驅動程式。 請「不要」從�
 
 您可以使用 dxdiag 來驗證 GPU 顯示內容，包括影片 RAM。 下列範例會顯示 Azure NVv4 VM 上 Radeon Instinct MI25 卡的 1/2 分割區。
 <br />
-![GPU 驅動程式屬性](./media/n-series-amd-driver-setup/dxdiag-output.png)
+![GPU 驅動程式屬性](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
 
 如果您執行的是 Windows 10 組建 1903 或更新版本，則 dxdiag 不會在 [顯示] 索引標籤中顯示任何資訊。請使用底部的 [儲存所有資訊] 選項，輸出檔案將會顯示與 AMD MI25 GPU 相關的資訊。
 
