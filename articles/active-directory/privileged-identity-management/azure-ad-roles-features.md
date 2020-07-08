@@ -9,19 +9,19 @@ ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5d63577cbdbdf18cb17618bdb5c9e3b5de0e44a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 501efaf2e9e97f37521daa770e6c760cc794fa36
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84742856"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的管理功能
 
@@ -56,9 +56,9 @@ Privileged Identity Management 中 Azure AD 角色的管理體驗已更新，以
 
 ## <a name="api-changes"></a>API 變更
 
-當客戶將更新版本推出至其 Azure AD 組織時，現有的圖形 API 將會停止運作。 您必須轉換為使用[Azure 資源角色的圖形 API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)。 若要使用該 API 管理 Azure AD 角色， `/azureResources`請`/aadroles`在簽章中使用來交換，並使用`resourceId`的目錄識別碼。
+當客戶將更新版本推出至其 Azure AD 組織時，現有的圖形 API 將會停止運作。 您必須轉換為使用[Azure 資源角色的圖形 API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)。 若要使用該 API 管理 Azure AD 角色，請在簽章中使用來交換， `/azureResources` `/aadroles` 並使用的目錄識別碼 `resourceId` 。
 
-我們已嘗試與使用先前 API 的所有客戶，讓他們事先瞭解這項變更。 如果您的 Azure AD 組織已移至新版本，而您仍相依于舊的 API，請在pim_preview@microsoft.com上與小組聯繫。
+我們已嘗試與使用先前 API 的所有客戶，讓他們事先瞭解這項變更。 如果您的 Azure AD 組織已移至新版本，而您仍相依于舊的 API，請在上與小組聯繫 pim_preview@microsoft.com 。
 
 ## <a name="powershell-change"></a>PowerShell 變更
 

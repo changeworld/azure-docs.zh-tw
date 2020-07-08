@@ -9,15 +9,15 @@ ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 962c884eb8adc05e5d50b6b254d5c3f0b18af556
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471501"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743570"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>針對常見路由問題進行疑難排解
 
@@ -39,7 +39,7 @@ ms.locfileid: "79471501"
 
 - 直接將要求傳送給您的後端（不需要透過 Front），並查看您的後端需要什麼時間來回應。
 - 透過前門傳送要求，並查看您是否看到任何503回應。 如果沒有，則這可能不是超時問題。 請聯絡支援人員。
-- 如果透過 Front 門板進行，會產生503錯誤回應碼，然後設定您的前門的 sendReceiveTimeout 欄位，將預設的超時時間延長為4分鐘（240秒）。 設定位於底下`backendPoolSettings` ，而且會呼叫`sendRecvTimeoutSeconds`。 
+- 如果透過 Front 門板進行，會產生503錯誤回應碼，然後設定您的前門的 sendReceiveTimeout 欄位，將預設的超時時間延長為4分鐘（240秒）。 設定位於底下 `backendPoolSettings` ，而且會呼叫 `sendRecvTimeoutSeconds` 。 
 
 ## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>傳送至自訂網域的要求會傳回400狀態碼
 

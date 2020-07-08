@@ -4,15 +4,15 @@ description: Azure Internet Analyzer 的常見問題。
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
-ms.topic: guide
+ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: a05c704f62d93bdc110d8a5943dd266ca22eb5f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ed8621fbfd1528bfffeaa986fa9c2e17c19f82b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73512882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744029"
 ---
 # <a name="interpreting-your-scorecard"></a>解譯您的計分卡
 
@@ -21,7 +21,7 @@ ms.locfileid: "73512882"
 [計分卡] 索引標籤可在 [網際網路分析器資源] 功能表中找到。 
 
 
-## <a name="filters"></a>篩選條件
+## <a name="filters"></a>篩選器
 
 * ***測試：*** 選取您想要查看其結果的測試-每個測試都有自己的計分卡。 當有足夠的資料可完成分析時，將會顯示測試資料–在大多數情況下，這應該會在24小時內。 
 * ***& 結束日期的時間週期：*** 每日產生三個計分卡–每個計分卡都會反映不同的匯總期間–24小時前（日）、前七天（周）和前30天（月）。 使用 [結束日期] 篩選準則，選取您想要查看之時間週期的最後一天。 

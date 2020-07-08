@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e17eee8de789b813e5aab726207233e8607ec97f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: HT
+ms.openlocfilehash: f7134d0e8087d17e78a13c958298006e321bd192
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200419"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84346211"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>是否所有的 Azure VPN 閘道 SKU 都支援自訂 IPsec/IKE 原則？
 除了基本的 SKU 以外，所有 Azure SKU 都支援自訂 IPsec/IKE 原則。
@@ -104,7 +104,7 @@ SA 存留期只需要在本機指定，不需要相符。
 否。 IPsec/IKE 原則只適用於透過 Azure VPN 閘道的 S2S VPN 連線和 VNet 對 VNet 連線。
 
 ### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>如何建立與 IKEv1 或 IKEv2 通訊協定類型的連線？
-除了舊版 SKU 以外，您可以在所有 RouteBased VPN 類型 SKU 上建立 IKEv1 連線。 建立連線時，您可以指定 IKEv1 或 IKEv2 的連線通訊協定類型。 如果您未指定連線通訊協定類型，即會在適用的情況下，使用 IKEv2 作為預設選項。 如需詳細資訊，請參閱 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) 文件。 如需 SKU 類型與 IKEv1/IKEv2 支援，請參閱[將閘道連線至設定原則的 VPN 裝置](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) (機器翻譯)。
+除了基本 SKU、標準 SKU 和其他[舊版 sku](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku)以外，您可以在所有 RouteBased VPN 類型 sku 上建立 IKEv1 連接。 建立連線時，您可以指定 IKEv1 或 IKEv2 的連線通訊協定類型。 如果您未指定連線通訊協定類型，即會在適用的情況下，使用 IKEv2 作為預設選項。 如需詳細資訊，請參閱 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) 文件。 如需 SKU 類型與 IKEv1/IKEv2 支援，請參閱[將閘道連線至設定原則的 VPN 裝置](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) (機器翻譯)。
 
 ### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>在 IKEv1 與 IKEv2 連線之間，是否可以進行傳輸？
 是。 支援在 IKEv1 與 IKEv2 連線之間進行傳輸。

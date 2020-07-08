@@ -9,19 +9,19 @@ ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0303d37ef5bbbf266feb5456b0bc224ce272ee13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80a75664b977c7f37808de7ca68b332363886a4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77499237"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84742976"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management (PIM) 中指派 Azure AD 自訂角色
 
@@ -74,7 +74,7 @@ Privileged Identity Management 可管理您可在 Azure Active Directory (Azure 
 1. 如果 [永久]**** 核取方塊顯示且可用 (視角色設定而定)，您可以指定指派是否為永久的。 選取此核取方塊，可讓指派永久符合資格或永久指派。 清除此核取方塊可指定指派持續時間。
 1. 若要建立新的角色指派，請按一下 [儲存]****，然後按 [新增]****。 指派程序狀態的通知會隨即顯示。
 
-若要確認角色指派，請在開啟的角色 > 中**選取 [指派]**，並確認您的**角色指派已**正確識別為 [合格] 或 [作用中]。
+若要確認角色指派，請在開啟的角色中**選取 [指派]**  >  **，** 並確認您的角色指派已正確識別為 [合格] 或 [作用中]。
 
  ![查看角色指派是否顯示為 [合格] 或 [有效]](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 

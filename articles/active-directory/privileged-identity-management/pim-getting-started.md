@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.subservice: pim
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/23/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f8d41fb3e6233d319725cac924c0c0ed41b7ce4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cad6c41b465e14b11d4fa7b8e7fa6037d49e8eae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84742901"
 ---
 # <a name="start-using-privileged-identity-management"></a>開始使用 Privileged Identity Management
 
@@ -27,7 +27,7 @@ ms.locfileid: "82234293"
 
 使用 Privileged Identity Management （PIM）來管理、控制及監視您的 Azure Active Directory （Azure AD）組織內的存取權。 使用 PIM，您可以為 Azure 資源、Azure AD 資源及其他 Microsoft 線上服務（例如 Office 365 或 Microsoft Intune）提供必要和即時的存取權。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要使用 Privileged Identity Management，您必須具有下列其中一個授權：
 
@@ -63,7 +63,7 @@ ms.locfileid: "82234293"
 
 ![Privileged Identity Management 中的導覽視窗，其中顯示工作和管理選項](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| 工作 + 管理 | 描述 |
+| 工作 + 管理 | Description |
 | --- | --- |
 | **我的角色**  | 顯示一個清單，列出已指派給您的合格和使用中角色。 您可以在這裡啟動任何指派的合格角色。 |
 | **我的要求** | 顯示您啟動合格角色指派的任何擱置要求。 |

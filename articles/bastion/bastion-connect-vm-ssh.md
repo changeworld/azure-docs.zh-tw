@@ -4,15 +4,15 @@ description: 在本文中，您將瞭解如何使用 Azure 防禦來連線到 Li
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 381f45a51002188c72174cff83c26b829912a0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 98f1f3d02d8433dd88fed844a587a961ea9f8c82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596822"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744284"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>使用 Azure 防禦將 SSH 連線至 Linux 虛擬機器
 
@@ -23,7 +23,7 @@ ms.locfileid: "77596822"
 * 您手動輸入的私用金鑰
 * 包含私密金鑰資訊的檔案
 
-SSH 私密金鑰的格式必須以開頭`"-----BEGIN RSA PRIVATE KEY-----"`且以結尾。 `"-----END RSA PRIVATE KEY-----"`
+SSH 私密金鑰的格式必須以開頭 `"-----BEGIN RSA PRIVATE KEY-----"` 且以結尾 `"-----END RSA PRIVATE KEY-----"` 。
 
 ## <a name="before-you-begin"></a>開始之前
 

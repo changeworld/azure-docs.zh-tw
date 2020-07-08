@@ -4,24 +4,24 @@ description: 您可以使用 P2S VPN，使用 Azure AD authentication 來連線�
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: af5ff5817ee9ae7e6d7432fe281ecb440bf25b9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1471226bcc22373904e65f95d0c07c2d5041f55
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060707"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84749825"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>建立 P2S OpenVPN 通訊協定連接的 Azure Active Directory 租使用者
+# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>建立 Azure Active Directory 租用戶以進行 P2S OpenVPN 通訊協定連線
 
 連線到您的 VNet 時，您可以使用以憑證為基礎的驗證或 RADIUS 驗證。 不過，當您使用 Open VPN 通訊協定時，您也可以使用 Azure Active Directory 驗證。 如果您想要讓不同的使用者集合能夠連線到不同的閘道，您可以在 AD 中註冊多個應用程式，並將它們連結至不同的閘道。
 
 本文可協助您設定 P2S OpenVPN authentication 的 Azure AD 租使用者，並在 Azure AD 中建立並註冊多個應用程式，以允許不同的使用者和群組進行不同的存取。
 
 > [!NOTE]
-> 只有 OpenVPN&reg;通訊協定連線支援 Azure AD 驗證。
+> 只有 OpenVPN 通訊協定連線支援 Azure AD 驗證 &reg; 。
 >
 
 [!INCLUDE [create](../../includes/openvpn-azure-ad-tenant-multi-app.md)]
@@ -63,7 +63,7 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
 5. 輸入要從中將 IP 位址指派給 VPN 用戶端的 [位址集區]  。
 
-6. 按一下 [**確認**]。
+6. 按一下 [確認]。
 
 7. 此作業最多可能需要 30 分鐘才能完成。
 
@@ -83,14 +83,14 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
 6. 流覽至解壓縮的 "AzureVPN" 資料夾。
 
-7. 記下 "azurevpnconfig" 檔案的位置。 Azurevpnconfig 包含 VPN 連線的設定，而且可以直接匯入至 Azure VPN 用戶端應用程式。 您也可以將此檔案散發給所有需要透過電子郵件或其他方式連接的使用者。 使用者需要有效的 Azure AD 認證，才能成功連接。
+7. 記下「azurevpnconfig.xml」檔案的位置。 azurevpnconfig.xml 包含 VPN 連線的設定，而且可以直接匯入至 Azure VPN 用戶端應用程式。 您也可以將此檔案散發給所有需要透過電子郵件或其他方式連接的使用者。 使用者需要有效的 Azure AD 認證，才能成功連接。
 
 ## <a name="9-configure-user-vpn-clients"></a>9. 設定使用者 VPN 用戶端
 
 若要連線，您必須下載 Azure VPN Client，並匯入在先前的步驟中在要連線至 VNet 的每一部電腦上下載的 VPN 用戶端設定檔。
 
 > [!NOTE]
-> 只有 OpenVPN&reg;通訊協定連線支援 Azure AD 驗證。
+> 只有 OpenVPN 通訊協定連線支援 Azure AD 驗證 &reg; 。
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>下載 Azure VPN Client
@@ -101,33 +101,33 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
 1. 在頁面上，選取 [匯入]****。
 
-    ![入口](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
+    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
 
 2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]****。
 
-    ![入口](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
+    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
 
 3. 指定設定檔的名稱，然後選取 [儲存]****。
 
-    ![入口](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
+    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
 
 4. 選取 [連線]**** 以連線至 VPN。
 
-    ![入口](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
+    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
 
 5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]****。
 
-    ![入口](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
+    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
 
 #### <a name="to-delete-a-client-profile"></a><a name="delete"></a>刪除用戶端設定檔
 
 1. 選取要刪除的用戶端設定檔旁的省略符號 (...)。 然後，選取 [移除]****。
 
-    ![[刪除]](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
+    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
 2. 選取 [移除]**** 以刪除。
 
-    ![[刪除]](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
+    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>若要診斷連接問題
 

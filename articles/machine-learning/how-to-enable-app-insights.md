@@ -5,17 +5,18 @@ description: 使用 Azure 應用程式 Insights 監視以 Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 03/12/2020
-ms.openlocfilehash: 464ec1fcf0986dc04bd92bbe9e31b5675e5822d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.custom: tracking-python
+ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136188"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743501"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>從 ML Web 服務端點監視及收集資料
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +34,7 @@ ms.locfileid: "79136188"
 [深入瞭解 Azure 應用程式 Insights](../azure-monitor/app/app-insights-overview.md)。 
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)
 
@@ -43,10 +44,12 @@ ms.locfileid: "79136188"
 
 ## <a name="web-service-metadata-and-response-data"></a>Web 服務中繼資料和回應資料
 
->[!Important]
-> Azure 應用程式 Insights 只會記錄最多64kb 的承載。 如果達到此限制，則只會記錄模型的最新輸出。 
+> [!IMPORTANT]
+> Azure 應用程式 Insights 只會記錄最多64kb 的承載。 若達到此限制，您可能會看到錯誤，例如記憶體不足，或無法記錄任何資訊。
 
-對應至 web 服務中繼資料和模型預測之服務的中繼資料和回應，會記錄到訊息`"model_data_collection"`底下的 Azure 應用程式 Insights 追蹤。 您可以直接查詢 Azure 應用程式深入解析以存取此資料，或設定[連續匯出](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)至儲存體帳戶，以延長保留期或進一步處理。 然後，可以在 Azure Machine Learning 中使用模型資料來設定標籤、重新定型、可解釋性、資料分析或其他用途。 
+若要記錄 web 服務要求的資訊，請將 `print` 語句加入至 score.py 檔案。 每個語句都會在 `print` 訊息底下 Application Insights 的追蹤資料表中產生一個專案 `STDOUT` 。 語句的內容 `print` 將包含在 `customDimensions` `Contents` 追蹤資料表中的底下。 如果您列印 JSON 字串，它會在底下的追蹤輸出中產生階層式資料結構 `Contents` 。
+
+您可以直接查詢 Azure 應用程式深入解析以存取此資料，或設定[連續匯出](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)至儲存體帳戶，以延長保留期或進一步處理。 然後，可以在 Azure Machine Learning 中使用模型資料來設定標籤、重新定型、可解釋性、資料分析或其他用途。 
 
 <a name="python"></a>
 
@@ -54,7 +57,7 @@ ms.locfileid: "79136188"
 
 ### <a name="update-a-deployed-service"></a>更新已部署的服務
 
-1. 識別您工作區中的服務。 的值`ws`是您工作區的名稱
+1. 識別您工作區中的服務。 的值 `ws` 是您工作區的名稱
 
     ```python
     from azureml.core.webservice import Webservice
@@ -70,10 +73,51 @@ ms.locfileid: "79136188"
 
 如果您想要記錄自訂追蹤，請依循[部署方式及位置](how-to-deploy-and-where.md)文件中的 AKS 或 ACI 標準部署程序。 然後使用下列步驟：
 
-1. 藉由加入 print 語句來更新評分檔案
+1. 若要在推斷期間將資料傳送至 Application Insights，請藉由加入 print 語句來更新評分檔案。 若要記錄較複雜的資訊，例如要求資料和回應，我們是 JSON 結構。 下列範例 score.py 檔會記錄模型初始化的時間、推斷期間的輸入和輸出，以及發生任何錯誤的時間：
+
+    > [!IMPORTANT]
+    > Azure 應用程式 Insights 只會記錄最多64kb 的承載。 若達到此限制，您可能會看到像是記憶體不足之類的錯誤，或者不會記錄任何資訊。 如果您想要記錄的資料大於64kb，您應該改為使用在[生產環境中收集模型的資料](how-to-enable-data-collection.md)中的資訊，將它儲存至 blob 儲存體。
     
     ```python
-    print ("model initialized" + time.strftime("%H:%M:%S"))
+    import pickle
+    import json
+    import numpy 
+    from sklearn.externals import joblib
+    from sklearn.linear_model import Ridge
+    from azureml.core.model import Model
+    import time
+
+    def init():
+        global model
+        #Print statement for appinsights custom traces:
+        print ("model initialized" + time.strftime("%H:%M:%S"))
+        
+        # note here "sklearn_regression_model.pkl" is the name of the model registered under the workspace
+        # this call should return the path to the model.pkl file on the local disk.
+        model_path = Model.get_model_path(model_name = 'sklearn_regression_model.pkl')
+        
+        # deserialize the model file back into a sklearn model
+        model = joblib.load(model_path)
+    
+
+    # note you can pass in multiple rows for scoring
+    def run(raw_data):
+        try:
+            data = json.loads(raw_data)['data']
+            data = numpy.array(data)
+            result = model.predict(data)
+            # Log the input and output data to appinsights:
+            info = {
+                "input": raw_data,
+                "output": result.tolist()
+                }
+            print(json.dumps(info))
+            # you can return any datatype as long as it is JSON-serializable
+            return result.tolist()
+        except Exception as e:
+            error = str(e)
+            print (error + time.strftime("%H:%M:%S"))
+            return error
     ```
 
 2. 更新服務設定
@@ -117,19 +161,19 @@ ms.locfileid: "79136188"
 
     [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. 選取 [**總覽**] 索引標籤，以查看您服務的一組基本計量
+1. 從左側清單中的 [**總覽**] 索引標籤或 [__監視__] 區段中，選取 [__記錄__]。
 
-   [![概觀](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
+    [![監視的 [總覽] 索引標籤](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-1. 若要查看您的 web 服務要求中繼資料和回應，請選取 [**記錄（分析）** ] 區段中的 [**要求**] 資料表，然後選取 [**執行**] 以查看要求
+1. 若要查看從 score.py 檔案記錄的資訊，請查看 [__追蹤__] 資料表。 下列查詢會搜尋已記錄__輸入__值的記錄：
 
-   [![模型資料](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
+    ```kusto
+    traces
+    | where customDimensions contains "input"
+    | limit 10
+    ```
 
-
-3. 若要查看您的自訂追蹤，請選取 [**分析**]
-4. 在 [結構描述] 區段中，選取 [追蹤]****。 然後選取 [執行]**** 來執行查詢。 資料應以資料表格式出現，且應該對應至您評分檔案中的自訂呼叫
-
-   [![自訂追蹤](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
+   [![追蹤資料](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 若要深入瞭解如何使用 Azure 應用程式深入解析，請參閱[什麼是 Application Insights？](../azure-monitor/app/app-insights-overview.md)。
 
@@ -138,7 +182,7 @@ ms.locfileid: "79136188"
 >[!Important]
 > Azure 應用程式 Insights 僅支援將匯出至 blob 儲存體。 此匯出功能的其他限制列在[來自 App Insights 的匯出遙測](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration)。
 
-您可以使用 Azure 應用程式 Insights 的[連續匯出](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)，將訊息傳送至支援的儲存體帳戶，其中可以設定較長的保留期。 `"model_data_collection"`訊息會以 JSON 格式儲存，而且可以輕鬆地剖析以解壓縮模型資料。 
+您可以使用 Azure 應用程式 Insights 的[連續匯出](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)，將訊息傳送至支援的儲存體帳戶，其中可以設定較長的保留期。 資料會以 JSON 格式儲存，而且可以輕鬆地剖析以解壓縮模型資料。 
 
 Azure Data Factory、Azure ML 管線或其他資料處理工具可以視需要用來轉換資料。 當您轉換資料之後，您可以使用 Azure Machine Learning 工作區將它註冊為資料集。 若要這麼做，請參閱[如何建立及註冊資料集](how-to-create-register-datasets.md)。
 

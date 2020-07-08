@@ -4,15 +4,15 @@ description: 在本文中，您將瞭解如何建立 Azure 防禦主機
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 43d834f0c834696cd4a836466c9663fe7c31a392
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c62ac014513f3e93a04008af06ef8ffe5008ed2a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80520508"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744250"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>使用 Azure PowerShell 建立 Azure 防禦主機
 
@@ -30,7 +30,7 @@ ms.locfileid: "80520508"
 
 本節可協助您使用 Azure PowerShell 建立新的 Azure 防禦資源。
 
-1. 建立虛擬網路和 Azure 防禦子網。 您必須使用 [名稱] 值**AzureBastionSubnet**來建立 Azure 防禦子網。 此值可讓 Azure 知道要將防禦資源部署到哪一個子網。 這與閘道子網不同。 您必須使用至少為/27 或更大子網的子網（/27、/26 等等）。 建立不含任何路由表或委派的**AzureBastionSubnet** 。 如果您在**AzureBastionSubnet**上使用網路安全性群組，請參閱[使用 nsg](bastion-nsg.md)一文。
+1. 建立虛擬網路和 Azure 防禦子網。 您必須使用 [名稱] 值**AzureBastionSubnet**來建立 Azure 防禦子網。 此值可讓 Azure 知道要將 Bastion 資源部署到哪一個子網路。 這與閘道子網路不同。 您必須使用至少為/27 或更大子網的子網（/27、/26 等等）。 建立不含任何路由表或委派的**AzureBastionSubnet** 。 如果您在**AzureBastionSubnet**上使用網路安全性群組，請參閱[使用 nsg](bastion-nsg.md)一文。
 
    ```azurepowershell-interactive
    $subnetName = "AzureBastionSubnet"
@@ -38,7 +38,7 @@ ms.locfileid: "80520508"
    $vnet = New-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myBastionRG" -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
    ```
 
-2. 建立 Azure 防禦的公用 IP 位址。 公用 IP 是公用 IP 位址，即會存取 RDP/SSH 的防禦資源（透過埠443）。 公用 IP 位址必須與您建立的防禦資源位於相同的區域中。
+2. 建立 Azure 防禦的公用 IP 位址。 公用 IP 是公用 IP 位址，即會存取 RDP/SSH 的防禦資源（透過埠443）。 公用 IP 位址必須與您建立的 Bastion 資源位於相同的區域中。
 
    ```azurepowershell-interactive
    $publicip = New-AzPublicIpAddress -ResourceGroupName "myBastionRG" -name "myPublicIP" -location "westeurope" -AllocationMethod Static -Sku Standard
@@ -54,4 +54,4 @@ ms.locfileid: "80520508"
 
 * 如需其他資訊，請閱讀防禦[常見問題](bastion-faq.md)。
 
-* 若要搭配使用網路安全性群組與 Azure 防禦子網，請參閱使用[nsg](bastion-nsg.md)。
+* 若要搭配使用網路安全性群組與 Azure Bastion子網路，請參閱[使用 NSG](bastion-nsg.md)。

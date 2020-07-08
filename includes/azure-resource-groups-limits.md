@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: c883383d3c870689bb95f808f6f60c5185c165c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33a63280f6973d2c5e29db29f7a6f3fc68c57c77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334946"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84424710"
 ---
 | 資源 | 限制 |
 | --- | --- |
@@ -22,7 +22,7 @@ ms.locfileid: "80334946"
 | 標記金鑰長度 |512 |
 | 標記值長度 |256 |
 
-<sup>1</sup>如果您達到每個資源群組的800部署限制，請從已不再需要的歷程記錄中刪除部署。 從部署歷程記錄中刪除專案並不會影響已部署的資源。 如需詳細資訊，請參閱[解決部署計數超過800時的錯誤](../articles/azure-resource-manager/templates/deployment-quota-exceeded.md)。
+<sup>1</sup>從2020年6月開始，部署將會在您接近限制時自動從歷程記錄中刪除。 從部署歷程記錄中刪除專案並不會影響已部署的資源。 如需詳細資訊，請參閱[從部署歷程記錄自動刪除](../articles/azure-resource-manager/templates/deployment-history-deletions.md)。
 
 #### <a name="template-limits"></a>範本限制
 

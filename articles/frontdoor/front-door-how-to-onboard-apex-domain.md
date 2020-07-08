@@ -4,22 +4,22 @@ description: 瞭解如何使用 Azure 入口網站將根或頂點網域上架至
 services: front-door
 author: sharad4u
 ms.service: frontdoor
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878879"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743587"
 ---
-# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>在您的大門上上架根或頂點網域
+# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>在 Front Door 上將根或 apex 網域上線
 Azure Front 門板會使用 CNAME 記錄來驗證網域擁有權，以進行自訂網域的上架。 此外，Front 門不會公開與您的前門設定檔相關聯的前端 IP 位址，因此如果您的頂點網域是要將它上線至 Azure Front，就無法將其對應到 IP 位址。
 
-DNS 通訊協定可防止在區域頂點指派 CNAME 記錄。 例如，如果您的網域為`contoso.com`;您可以為`somelabel.contoso.com`建立 CNAME 記錄;但您無法`contoso.com`自行建立 CNAME。 這種限制會針對在 Azure Front 後方具有負載平衡應用程式的應用程式擁有者帶來問題。 由於使用 Front 門板設定檔需要建立 CNAME 記錄，因此無法從區域頂點指向 Front 設定檔。
+DNS 通訊協定可防止在區域頂點指派 CNAME 記錄。 例如，如果您的網域是， `contoso.com` 您可以建立的 cname 記錄， `somelabel.contoso.com` 但無法為 `contoso.com` 其本身建立 cname。 這種限制會針對在 Azure Front 後方具有負載平衡應用程式的應用程式擁有者帶來問題。 由於使用 Front 門板設定檔需要建立 CNAME 記錄，因此無法從區域頂點指向 Front 設定檔。
 
-這個問題是使用 Azure DNS 上的別名記錄來解決。 不同于 CNAME 記錄，別名記錄會在區域頂點建立，而應用程式擁有者可以使用它將其區域頂點記錄指向具有公用端點的 Front 設定檔。 應用程式擁有者會指向其 DNS 區域內的任何其他網域所使用的同一個前門設定檔。 例如， `contoso.com`和`www.contoso.com`可以指向相同的 Front 門設定檔。 
+這個問題是使用 Azure DNS 上的別名記錄來解決。 不同于 CNAME 記錄，別名記錄會在區域頂點建立，而應用程式擁有者可以使用它將其區域頂點記錄指向具有公用端點的 Front 設定檔。 應用程式擁有者會指向其 DNS 區域內的任何其他網域所使用的同一個前門設定檔。 例如， `contoso.com` 和 `www.contoso.com` 可以指向相同的 Front 門設定檔。 
 
 將您的頂點或根域對應至您的 Front 門設定檔，基本上需要 CNAME 簡維或 DNS 追蹤，這是 DNS 提供者中的機制，會以遞迴方式解析 CNAME 專案，直到它達到 IP 位址為止。 適用于 Front 門板的 Azure DNS 支援這項功能。 
 
@@ -48,12 +48,12 @@ DNS 通訊協定可防止在區域頂點指派 CNAME 記錄。 例如，如果�
 
     ![區域頂點的別名記錄](./media/front-door-apex-domain/front-door-apex-alias-record.png)
 
-6. 上述步驟會建立指向您的 Front 門板資源的區域頂點記錄，以及將用來在您的前門設定檔上上線`afdverify.contosonews.com`網域的`afdverify.<name>.azurefd.net` CNAME 記錄對應 ' afdverify ' （範例-）。
+6. 上述步驟會建立指向您的 Front 門板資源的區域頂點記錄，以及 `afdverify.contosonews.com` `afdverify.<name>.azurefd.net` 將用來在您的前門設定檔上上線網域的 CNAME 記錄對應 ' afdverify ' （範例-）。
 
 ## <a name="onboard-the-custom-domain-on-your-front-door"></a>在您的 Front 中將自訂網域上線
 
 1. 在 [Front 入口設計工具] 索引標籤上，按一下 [前端主機] 區段上的 [+] 圖示，以新增自訂網域。
-2. 在 [自訂主機名稱] 欄位中輸入根或頂點功能變數名稱， `contosonews.com`例如。
+2. 在 [自訂主機名稱] 欄位中輸入根或頂點功能變數名稱，例如 `contosonews.com` 。
 3. 一旦將來自網域的 CNAME 對應驗證完成後，請按一下 [**新增**] 以新增自訂網域。
 4. 按一下 [**儲存**] 以提交變更。
 

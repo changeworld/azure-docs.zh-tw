@@ -4,15 +4,15 @@ description: 在本文中，您將瞭解如何將此視圖變更為全螢幕。
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 2e72eb9ffc3affa0bf09692ac0780f9310308521
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4aa2c5aa3f40802db7be64eeb778866819bfe67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744216"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>變更 vm 會話的全螢幕視圖： Azure 防禦
 
@@ -22,7 +22,7 @@ ms.locfileid: "80619283"
 
 在遠端會話期間，選取位於會話左邊中間的兩個箭號，啟動 [防禦剪貼簿存取工具] 選擇區。
 
-![工具](./media/bastion-vm-manage/left.png)
+![tools](./media/bastion-vm-manage/left.png)
 
 ## <a name="select-full-screen"></a>選取全螢幕
 
@@ -32,5 +32,5 @@ ms.locfileid: "80619283"
  
 ## <a name="next-steps"></a>後續步驟
 
-閱讀防禦[常見問題](bastion-faq.md)。
+閱讀 [Bastion 常見問題集](bastion-faq.md)。
 瞭解如何在 Azure VM 之間進行[複製和貼](bastion-vm-copy-paste.md)上。

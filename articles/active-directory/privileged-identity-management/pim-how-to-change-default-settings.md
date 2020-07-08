@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dd525973a8c8ba5bb3103126b4ddb5b6973590a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 334f239ea8382a67add9655d4a25f98d254567d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78205019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743944"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure AD 角色設定
 
@@ -44,7 +44,7 @@ ms.locfileid: "78205019"
 
 1. 以特殊[許可權角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色中的使用者身分登入[Azure 入口網站](https://portal.azure.com/)。
 gt
-1. 開啟**Azure AD Privileged Identity Management** &gt; **Azure AD 角色** &gt; ]**角色設定**。
+1. 開啟**Azure AD Privileged Identity Management** &gt; **Azure AD 角色**] &gt; **角色設定**。
 
     ![列出 Azure AD 角色的角色設定頁面](./media/pim-how-to-change-default-settings/role-settings.png)
 
@@ -131,7 +131,7 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 1. 選取 [ **Azure AD 角色**]。
 
-1. 選取 [設定]****。
+1. 選取 [設定]。
 
     ![Azure AD 角色-設定](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
@@ -167,10 +167,10 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 使用 [Multi-Factor Authentication]**** 的切換，指定是否要要求使用者在啟用其角色之前，先以 MFA 驗證其身分識別。 他們只需要在每個會話中驗證其身分識別一次，而不是每次啟動角色。 啟用 MFA 時，需要記住兩個秘訣：
 
-- 擁有 Microsoft 帳戶作為其電子郵件地址（通常@outlook.com是，但不一定）的使用者無法註冊 Azure 多重要素驗證。 如果您想要將角色指派給具有 Microsoft 帳戶的使用者，您應該將其設為永久系統管理員或停用該角色的多重要素驗證。
+- 擁有 Microsoft 帳戶作為其電子郵件地址（通常是 @outlook.com ，但不一定）的使用者無法註冊 Azure 多重要素驗證。 如果您想要將角色指派給具有 Microsoft 帳戶的使用者，您應該將其設為永久系統管理員或停用該角色的多重要素驗證。
 - 您無法針對 Azure AD 和 Office 365 的高特殊許可權角色停用 Azure 多重要素驗證。 此安全性功能可協助保護下列角色：  
   
-  - Azure 資訊保護系統管理員
+  - Azure 資訊保護管理員
   - 計費管理員
   - 雲端應用程式系統管理員
   - 規範管理員
@@ -180,8 +180,8 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
   - 目錄寫入器
   - Exchange 系統管理員
   - 全域管理員
-  - Intune 系統管理員
-  - Power BI 系統管理員
+  - Intune 管理員
+  - Power BI 管理員
   - 特殊權限角色管理員
   - 安全性系統管理員
   - SharePoint 管理員

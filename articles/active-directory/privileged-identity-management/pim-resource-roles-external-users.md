@@ -7,7 +7,7 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2efcf77d65fa2f9e203ed805cd7d78b9802ee3aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 046a0d61bb7a6d715a1d732790d2b472b3e83c13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74021945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743774"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>邀請來賓使用者並在 Privileged Identity Management 中指派 Azure 資源角色
 
@@ -55,7 +55,7 @@ Azure Active Directory （Azure AD）來賓使用者是 Azure AD 內的企業對
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 選取 [ **Azure Active Directory** > **使用者設定**]。
+1. 選取 [ **Azure Active Directory**  >  **使用者設定**]。
 
 1. 選取 [**管理外部**共同作業設定]。
 
@@ -71,7 +71,7 @@ Azure Active Directory （Azure AD）來賓使用者是 Azure AD 內的企業對
 
 1. 開啟**Azure AD Privileged Identity Management**。
 
-1. 選取 [Azure 資源]****。
+1. 選取 [ **Azure 資源**]。
 
 1. 使用 [資源篩選]**** 來篩選管理的資源清單。
 
@@ -157,7 +157,7 @@ Azure Active Directory （Azure AD）來賓使用者是 Azure AD 內的企業對
 
     ![Azure 資源-資源 audit 頁面，列出時間、要求者和動作](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. 若要查看來賓的活動，請選取 [ **Azure Active Directory** > **使用者** > *來賓名稱*]。
+1. 若要查看來賓的活動，請選取 [ **Azure Active Directory**  >  **使用者**  >  *來賓名稱*]。
 
 1. 選取 [ **audit logs** ] 以查看組織的審核記錄。 如有需要，您可以搜尋篩選條件。
 

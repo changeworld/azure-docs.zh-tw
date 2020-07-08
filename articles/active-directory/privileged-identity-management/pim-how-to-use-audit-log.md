@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b8aef68e0f61e6ca995fc2bb362d59aba73ead2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0a5a20498ccd0a133c6e02d366af690acf2665e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84742261"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>查看 Privileged Identity Management 中 Azure AD 角色的審核歷程記錄
 
@@ -90,12 +90,12 @@ ms.locfileid: "78329493"
 
     | 資料行 | 描述 |
     | --- | --- |
-    | 時間 | 當動作發生時。 |
+    | Time | 當動作發生時。 |
     | 要求者 | 要求啟用或變更角色的使用者。 如果值是**Azure 系統**，請查看 azure audit 歷程記錄以取得詳細資訊。 |
     | 動作 | 要求者所採取的動作。 動作可以包含指派、解除指派、啟用、停用或 AddedOutsidePIM。 |
-    | member | 啟用或指派給角色的使用者。 |
-    | [角色] | 使用者指派或啟用的角色。 |
-    | 推理 | 啟用期間輸入 [原因] 欄位中的文字。 |
+    | 成員 | 啟用或指派給角色的使用者。 |
+    | 角色 | 使用者指派或啟用的角色。 |
+    | 理由 | 啟用期間輸入 [原因] 欄位中的文字。 |
     | 到期 | 當已啟用的角色過期時。 僅適用于合格的角色指派。 |
 
 1. 若要排序 audit 歷程記錄，請按一下 [**時間**]、[**動作**] 和 [**角色**] 按鈕。
@@ -117,7 +117,7 @@ ms.locfileid: "78329493"
 ## <a name="get-reason-approver-and-ticket-number-for-approval-events"></a>取得核准事件的原因、核准者和票證號碼
 
 1. 使用具有特殊許可權的角色管理員角色許可權登入[Azure 入口網站](https://aad.portal.azure.com)，然後開啟 Azure AD。
-1. 選取 [ **Audit logs**]。
+1. 選取 [稽核記錄]。
 1. 使用**服務**篩選器，只顯示特殊許可權身分識別管理服務的 audit 事件。 在 [**審核記錄**] 頁面上，您可以：
 
     - 請在 [**狀態原因**] 資料行中查看 audit 事件的原因。

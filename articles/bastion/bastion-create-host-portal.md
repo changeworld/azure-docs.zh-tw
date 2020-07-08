@@ -4,15 +4,15 @@ description: 在本文中，您將瞭解如何使用入口網站建立 Azure 防
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1fa4b6a33b055f2042c9bf941a33ae03ead6ebde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d18d520419e77a225431d9c2a395f62411656537
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148345"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744267"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>使用入口網站建立 Azure 防禦主機
 
@@ -50,8 +50,8 @@ ms.locfileid: "82148345"
     * **子網**：虛擬網路中將部署新防禦主機的子網。 子網將專門用於防禦主機，而且必須命名為**AzureBastionSubnet**。 此子網必須至少為/27 或更大。
     
        **AzureBastionSubnet**不支援[使用者定義的路由](../virtual-network/virtual-networks-udr-overview.md#custom-routes)，但支援[網路安全性群組](bastion-nsg.md)。
-    * **公用 ip 位址**：將存取 RDP/SSH 之防禦資源的公用 ip （透過埠443）。 建立新的公用 IP，或使用現有的。 公用 IP 位址必須與您建立的防禦資源位於相同的區域中。
-    * **公用 ip 位址名稱**：公用 ip 位址資源的名稱。
+    * **公用 ip 位址**：將存取 RDP/SSH 之防禦資源的公用 ip （透過埠443）。 建立新的公用 IP 或使用現有 IP。 公用 IP 位址必須與您建立的 Bastion 資源位於相同的區域中。
+    * **公用 IP 位址名稱**：公用 IP 位址資源的名稱。
     * **公用 IP 位址 SKU**：此設定預設為 [**標準**]。 Azure 防禦僅使用/支援標準公用 IP SKU。
     * **指派**：此設定預設會預先填入**靜態**。
 
@@ -63,4 +63,4 @@ ms.locfileid: "82148345"
 
 * 如需其他資訊，請閱讀防禦[常見問題](bastion-faq.md)。
 
-* 若要搭配使用網路安全性群組與 Azure 防禦子網，請參閱使用[nsg](bastion-nsg.md)。
+* 若要搭配使用網路安全性群組與 Azure Bastion子網路，請參閱[使用 NSG](bastion-nsg.md)。

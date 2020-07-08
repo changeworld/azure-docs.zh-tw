@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: pim
 ms.date: 01/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70696cdb95fffc1e5faa46ca1b5f2180633ed63a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42d931206e99516e0320d0cbedd0812389ee41aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75932327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84742159"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>使用 Privileged Identity Management 的授權要求
 
@@ -34,7 +34,7 @@ ms.locfileid: "75932327"
 
 ## <a name="how-many-licenses-must-you-have"></a>您必須擁有多少個授權？
 
-請確定您的目錄至少有多個 Azure AD Premium P2 授權，因為您擁有將執行下列工作的員工：
+請確定您目錄擁有的 Azure AD Premium P2 授權至少與將執行下列工作的員工一樣多：
 
 - 指派為符合使用 PIM 管理之 Azure AD 角色資格的使用者
 - 能夠在 PIM 中核准或拒絕啟用要求的使用者
@@ -46,7 +46,7 @@ ms.locfileid: "75932327"
 
 - 具有設定 PIM 的全域管理員或特殊許可權角色管理員角色的使用者，不需要任何授權、設定原則、接收警示和設定存取審查。
 
-如需有關授權的詳細資訊，請參閱[使用 Azure Active Directory 入口網站指派或移除授權](../fundamentals/license-users-groups.md)。
+如需授權的詳細資訊，請參閱[使用 Azure Active Directory 入口網站指派或移除授權](../fundamentals/license-users-groups.md)。
 
 ## <a name="example-license-scenarios"></a>範例授權案例
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/28/2020
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6740ea320f2d950386da12eb44726e2c826b60a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90cd1d8968963d428eb2d1de4efb458b5f89ca74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80386132"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84436096"
 ---
 ## <a name="premium-ssd"></a>進階 SSD
 
@@ -32,7 +32,7 @@ ms.locfileid: "80386132"
 
 預設會在適用磁片大小的新部署上啟用磁片高載支援，而不需要使用者動作。 對於適用大小的現有磁片，您可以使用兩個選項的其中一個來啟用負載平衡：卸離並重新連結磁片，或停止並重新啟動連接的 VM。 當磁片連接到支援30分鐘尖峰高載上限的虛擬機器時，所有高載適用的磁片大小都會以完整的高載點數 bucket 開始。 若要深入瞭解 Azure 磁片上的高載如何工作，請參閱[進階 SSD](../articles/virtual-machines/linux/disk-bursting.md)負載平衡。 
 
-### <a name="transactions"></a>異動
+### <a name="transactions"></a>交易
 
 針對高階 Ssd，小於或等於 256 KiB 輸送量的每個 i/o 作業都會被視為單一 i/o 作業。 大於 256 KiB 輸送量的 i/o 作業會視為大小為 256 KiB 的多個 i/o。
 
@@ -45,7 +45,7 @@ Azure 標準 SSD 是符合成本效益的儲存體選項，已針對在較低 IO
 
 標準 Ssd 的設計是為了提供單一位數毫秒延遲，以及上表99% 當時所述限制的 IOPS 和輸送量。 實際的 IOPS 和輸送量有時會因流量模式而有所不同。 與 HDD 磁碟相比，「標準 SSD」將可提供延遲更低的更一致效能。
 
-### <a name="transactions"></a>異動
+### <a name="transactions"></a>交易
 
 針對標準 Ssd，小於或等於 256 KiB 輸送量的每個 i/o 作業都會被視為單一 i/o 作業。 大於 256 KiB 輸送量的 i/o 作業會視為大小為 256 KiB 的多個 i/o。 這些交易會產生計費影響。
 
@@ -56,7 +56,7 @@ Azure 標準 SSD 是符合成本效益的儲存體選項，已針對在較低 IO
 ### <a name="disk-size"></a>磁碟大小
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-### <a name="transactions"></a>異動
+### <a name="transactions"></a>交易
 
 針對標準 Hdd，不論 i/o 大小為何，每個 IO 作業都會被視為單一交易。 這些交易會產生計費影響。
 
@@ -70,6 +70,6 @@ Azure 標準 SSD 是符合成本效益的儲存體選項，已針對在較低 IO
 - 輸出資料傳輸
 - 交易數
 
-**受控磁碟大小**：受控磁碟會依佈建大小計費。 Azure 會將佈建大小對應 (無條件進位) 至供應項目中最接近的磁碟大小。 若要深入了解提供的磁碟大小，請參閱之前的資料表。 每一個磁碟會對應至供應項目中支援的佈建磁碟大小，並據此計費。 例如，如果您佈建了 200 GiB 的「標準 SSD」，它將會與 E15 (256 GiB) 的磁碟大小供應項目對應。 任何已佈建的磁碟都是使用每月的進階儲存體供應項目價格，以每小時的方式計費。 例如，如果您佈建了 E10 磁碟並在 20 小時後刪除它，便會按 20 小時的比例向您收取 E10 供應項目的費用。 這與寫入磁碟的實際資料量無關。
+**受控磁碟大小**：受控磁碟會依佈建大小計費。 Azure 會將佈建大小對應 (無條件進位) 至供應項目中最接近的磁碟大小。 若要深入了解提供的磁碟大小，請參閱之前的資料表。 每一個磁碟會對應至供應項目中支援的佈建磁碟大小，並據此計費。 例如，如果您佈建了 200 GiB 的「標準 SSD」，它將會與 E15 (256 GiB) 的磁碟大小供應項目對應。 任何已布建磁片的計費方式都是使用儲存體供應專案的每月價格，按小時按比例計算。 例如，如果您佈建了 E10 磁碟並在 20 小時後刪除它，便會按 20 小時的比例向您收取 E10 供應項目的費用。 這與寫入磁碟的實際資料量無關。
 
 **快照**集：快照集是根據使用的大小來計費。 例如，如果建立佈建容量為 64 GiB 的受控磁碟快照集，而實際使用資料大小為 10 GiB，則只會對已使用的 10 GiB 資料大小收取快照集費用。

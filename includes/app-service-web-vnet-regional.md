@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488780"
 ---
 使用區域 VNet 整合可讓您的應用程式存取：
 
@@ -56,11 +56,7 @@ ms.locfileid: "81604890"
 
 如果您想要讓其他方案中的應用程式連線到另一個方案中已由應用程式連接的 VNet，請選取與預先存在的 VNet 整合所使用的子網不同的子網。
 
-適用于 Linux 的功能處於預覽狀態。 這項功能的 Linux 形式僅支援呼叫 RFC 1918 位址（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16）。
-
-### <a name="web-or-function-app-for-containers"></a>容器的 Web 或函數應用程式
-
-如果您使用內建映射在 Linux 上裝載您的應用程式，區域 VNet 整合就能運作，而不需要進行其他變更。 如果您使用容器的 Web 或函數應用程式，您必須修改 docker 映射以使用 VNet 整合。 在您的 docker 映射中，使用埠環境變數作為主要 web 伺服器的接聽埠，而不是使用硬式編碼的埠號碼。 平臺會在容器啟動時自動設定埠環境變數。 如果您使用 SSH，則當您使用區域 VNet 整合時，SSH 背景程式必須設定為接聽 SSH_PORT 環境變數所指定的埠號碼。 Linux 上不支援閘道所需的 VNet 整合。
+Windows 和 Linux web 應用程式都完全支援此功能。 所有的行為在 Windows 應用程式和 Linux 應用程式之間都有相同的作用。
 
 ### <a name="service-endpoints"></a>服務端點
 

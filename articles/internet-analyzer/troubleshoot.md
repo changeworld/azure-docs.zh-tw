@@ -4,15 +4,15 @@ description: Azure Internet Analyzer 的疑難排解參考。
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
-ms.topic: guide
+ms.topic: troubleshooting
 ms.date: 12/04/2019
 ms.author: dibotero
-ms.openlocfilehash: 0c9e203d7e8be7b24c711f73e2152a7745a57dac
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: fe173ec4d4f28444d43739ea2ed51e43021916b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745474"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744352"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Azure Internet Analyzer 疑難排解
 
@@ -20,7 +20,7 @@ ms.locfileid: "83745474"
 
 ## <a name="things-to-keep-in-mind"></a>要牢記在心的事項
 - 用戶端指令碼必須內嵌到 **HTTPS** 網站中。 如果指令碼在純文字 (**http://** ) 或本機 (**file://** ) 網站中執行，則不會收集測量。
-- 只有當 Internet Analyzer 設定檔的用戶端指令碼已內嵌至接收實際使用者流量的應用程式時，才會收集測量資料。 綜合流量 (例如，Azure WebApp 效能測試) 通常不會執行內嵌的 Javascript 程式碼，因此該類型的流量不會產生任何測量。
+- 只有當 Internet Analyzer 設定檔的用戶端指令碼已內嵌至接收實際使用者流量的應用程式時，才會收集測量資料。 綜合流量（例如，Azure WebApp 效能測試）通常不會執行內嵌的 JavaScript 程式碼，因此不會由該類型的流量產生任何測量。
 
 ## <a name="azure-portal"></a>Azure 入口網站
 **計分卡區段中的「尚未針對所選的篩選條件組合產生計分卡」**

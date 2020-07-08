@@ -2,14 +2,14 @@
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 07/10/2019
+ms.date: 06/01/2020
 ms.author: danlep
-ms.openlocfilehash: 8106b1a77f11874b1b13f41bfc9e62ea800afc98
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b9e275cbdaf264df3d0a40f032693fd93553e520
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68361527"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84317472"
 ---
 ### <a name="database-tier"></a>資料庫層
 
@@ -17,7 +17,7 @@ ms.locfileid: "68361527"
 
 如果選擇使用 Oracle DB，則可以透過 Azure Marketplace 上提供的 Oracle DB 映射，將資料庫實例部署在 Azure 上。 或者，您可以使用 Azure 和 OCI 之間的互連，將 Oracle DB 部署到 OCI 上的 PaaS 模型。
 
-針對 Oracle RAC，您可以在 IaaS 模型中的 Azure CloudSimple 或 PaaS 模型的 OCI 中部署 Oracle RAC。 建議使用兩個節點的 RAC 系統。 
+若是 Oracle RAC，您可以在 PaaS 模型中使用 OCI。 建議使用兩個節點的 RAC 系統。 雖然您可以在 IaaS 模型的 Azure CloudSimple 上部署 Oracle RAC，但 Oracle 並不支援這種設定。 請參閱[適用于授權雲端環境的 Oracle 程式](http://www.oracle.com/us/corporate/pricing/authorized-cloud-environments-3493562.pdf)。
 
 最後，對於 Exadata 系統，請使用 OCI 互連，並在 OCI 中部署 Exadata 系統。 上述架構圖顯示跨兩個子網部署于 OCI 中的 Exadata 系統。
 

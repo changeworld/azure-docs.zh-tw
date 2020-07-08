@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 32d978ee766f6dbe95bd7158b8060a0302ef8206
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189057"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738629"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用開放原始碼工具將往返於 VM 的網路流量模式視覺化
 
@@ -78,13 +78,13 @@ CapAnalysis 提供各種選項將封包擷取視覺化，各以不同的觀點�
 
     ![geomap][8]
 
-1. 篩選條件
+1. 篩選器
 
     CapAnalysis 提供一組可快速分析特定封包的篩選器。 例如，您可以選擇依通訊協定來篩選資料，以具體深入探索該流量子集。
 
     ![filters][11]
 
-    若[https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about)要深入瞭解所有 CapAnalysis 的功能，請造訪。
+    [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about)若要深入瞭解所有 CapAnalysis 的功能，請造訪。
 
 ## <a name="conclusion"></a>結論
 

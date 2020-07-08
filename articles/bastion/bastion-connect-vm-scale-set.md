@@ -4,15 +4,15 @@ description: 在本文中，您將瞭解如何使用 Azure 防禦來連線到 Az
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 290a20fcd827841c24983f3bdd54b6db8e154462
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3dc7ce36e773b5a615b1abf4f50406fcb07826b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619347"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744301"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>使用 Azure 防禦連接到虛擬機器擴展集
 
@@ -26,7 +26,7 @@ ms.locfileid: "80619347"
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。 流覽至您想要連接的虛擬機器擴展集。
 
-   ![navigate](./media/bastion-connect-vm-scale-set/1.png)
+   ![瀏覽](./media/bastion-connect-vm-scale-set/1.png)
 2. 流覽至您想要連接的虛擬機器擴展集實例，然後選取 [連線 **]**。 使用 RDP 連線時，虛擬機器擴展集應為 Windows 虛擬機器擴展集。
 
    ![虛擬機器擴展集](./media/bastion-connect-vm-scale-set/2.png)
@@ -35,9 +35,9 @@ ms.locfileid: "80619347"
    ![防禦索引標籤](./media/bastion-connect-vm-scale-set/3.png)
 4. 在 [防禦] 索引標籤上，輸入虛擬機器擴展集的使用者名稱和密碼，然後選取 **[連線]**。
 
-   ![connect](./media/bastion-connect-vm-scale-set/4.png)
-5. 透過防禦的此虛擬機器的 RDP 連線，會使用埠443和防禦服務，直接在 Azure 入口網站（透過 HTML5）中開啟。
+   ![連線](./media/bastion-connect-vm-scale-set/4.png)
+5. 透過 Bastion 的這個虛擬機器 RDP 連線，會使用連接埠 443 和 Bastion 服務直接在 Azure 入口網站中開啟 (透過 HTML5)。
 
 ## <a name="next-steps"></a>後續步驟
 
-閱讀防禦[常見問題](bastion-faq.md)。
+閱讀 [Bastion 常見問題集](bastion-faq.md)。

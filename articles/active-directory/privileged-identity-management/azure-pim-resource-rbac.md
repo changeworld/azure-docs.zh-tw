@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/10/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf65ad595fb1ab70eb6613b6d54ac2a4f69141e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329569"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743145"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中查看 Azure 資源角色的活動和審核歷程記錄
 
@@ -34,7 +34,7 @@ ms.locfileid: "78329569"
 
 1. 開啟**Azure AD Privileged Identity Management**。
 
-1. 選取 [Azure 資源]****。
+1. 選取 [ **Azure 資源**]。
 
 1. 選取您想要查看其活動和啟用的資源。
 
@@ -56,11 +56,11 @@ ms.locfileid: "78329569"
 
 1. 開啟**Azure AD Privileged Identity Management**。
 
-1. 選取 [Azure 資源]****。
+1. 選取 [ **Azure 資源**]。
 
 1. 選取您想要匯出角色指派的資源，例如訂用帳戶。
 
-1. 選取 [成員]****。
+1. 選取 [成員]。
 
 1. 選取 [**匯出**] 以開啟 [匯出成員資格] 窗格。
 
@@ -76,7 +76,7 @@ ms.locfileid: "78329569"
 
 1. 開啟**Azure AD Privileged Identity Management**。
 
-1. 選取 [Azure 資源]****。
+1. 選取 [ **Azure 資源**]。
 
 1. 選取您想要查看其 audit 歷程記錄的資源。
 
@@ -88,7 +88,7 @@ ms.locfileid: "78329569"
 
 1. 在 [稽核類型]**** 中，選取 [啟動 (已指派 + 已啟動)]****。
 
-    由啟用 audit 類型篩選的 [[![啟用 audit 類型](media/azure-pim-resource-rbac/rbac-audit-activity.png "依啟用篩選的資源審核清單")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![資源] audit 清單所篩選的資源審核清單](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+    [![依啟用 audit 類型篩選的資源審核清單](media/azure-pim-resource-rbac/rbac-audit-activity.png "依啟用篩選的資源審核清單")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![依啟用 audit 類型篩選的資源審核清單](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
 1. 在 [動作]**** 底下，按一下使用者的 [(活動)]**** 以查看該使用者在 Azure 資源中的活動詳細資料。
 
@@ -100,7 +100,7 @@ ms.locfileid: "78329569"
 
 1. 開啟**Azure AD Privileged Identity Management**。
 
-1. 選取 [Azure 資源]****。
+1. 選取 [ **Azure 資源**]。
 
 1. 選取您想要查看其 audit 歷程記錄的資源。
 
@@ -116,7 +116,7 @@ ms.locfileid: "78329569"
 ## <a name="get-reason-approver-and-ticket-number-for-approval-events"></a>取得核准事件的原因、核准者和票證號碼
 
 1. 使用具有特殊許可權的角色管理員角色許可權登入[Azure 入口網站](https://aad.portal.azure.com)，然後開啟 Azure AD。
-1. 選取 [ **Audit logs**]。
+1. 選取 [稽核記錄]。
 1. 使用**服務**篩選器，只顯示特殊許可權身分識別管理服務的 audit 事件。 在 [**審核記錄**] 頁面上，您可以：
 
     - 請在 [**狀態原因**] 資料行中查看 audit 事件的原因。
