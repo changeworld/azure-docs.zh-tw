@@ -4,12 +4,12 @@ description: 在雲端集區上啟用自動調整，以動態調整集區中的�
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: ad1bf47cd2b9d8db950154b5a36786c294549566
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: cb40ea72dad2313618fb3c38bf73bf822f4b4433
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780237"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960838"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>建立自動公式以調整 Batch 集區中的計算節點
 
@@ -127,6 +127,9 @@ $NodeDeallocationOption = taskcompletion;
 | $CurrentLowPriorityNodes |目前的低優先順序計算節點數目，包括任何已先佔的節點。 |
 | $PreemptedNodeCount | 優先佔用狀態的集區中之節點數目。 |
 
+> [!IMPORTANT]
+> 作業釋放工作目前並未包含在上述變數中，以提供工作計數，例如 $ActiveTasks 和 $PendingTasks。 視您的自動調整公式而定，這可能會導致節點被移除，而且沒有任何節點可用來執行作業釋放工作。
+
 > [!TIP]
 > 上表中服務定義的唯讀變數是可提供各種方法來存取相關聯資料的物件。 如需詳細資訊，請參閱本文稍後的[取得範例資料](#getsampledata)。
 >
@@ -172,12 +175,12 @@ $NodeDeallocationOption = taskcompletion;
 | double 運算子  timeinterval |* |timeinterval |
 | doubleVec 運算子  double |+、-、*、/ |doubleVec |
 | doubleVec 運算子  doubleVec |+、-、*、/ |doubleVec |
-| timeinterval 運算子  double |*、/ |timeinterval |
+| timeinterval 運算子  double |*, / |timeinterval |
 | timeinterval 運算子  timeinterval |+、 - |timeinterval |
 | timeinterval 運算子  timestamp |+ |timestamp |
 | timestamp 運算子  timeinterval |+ |timestamp |
 | timestamp  timestamp |- |timeinterval |
-| double |-、! |double |
+| double |-, ! |double |
 | timeinterval |- |timeinterval |
 | double 運算子  double |<、<=、==、>=、>、!= |double |
 | string  string |<、<=、==、>=、>、!= |double |
@@ -372,17 +375,17 @@ $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 
 ## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>使用 Batch SDK 建立已啟用自動調整的集區
 
-[Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)、[Batch REST API](https://docs.microsoft.com/rest/api/batchservice/)、[Batch PowerShell Cmdlet](batch-powershell-cmdlets-get-started.md) 和 [Batch CLI](batch-cli-get-started.md) 都可用來設定集區自動調整。 在本節中，您會看到 .NET 和 Python 的範例。
+[Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)、[Batch REST API](/rest/api/batchservice/)、[Batch PowerShell Cmdlet](batch-powershell-cmdlets-get-started.md) 和 [Batch CLI](batch-cli-get-started.md) 都可用來設定集區自動調整。 在本節中，您會看到 .NET 和 Python 的範例。
 
 ### <a name="net"></a>.NET
 
 若要在 .NET 中建立已啟用自動調整的集區，請遵循下列步驟：
 
-1. 使用 [BatchClient.PoolOperations.CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool) 建立集區。
-1. 將 [CloudPool.AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) 屬性設定為 `true`。
-1. 使用自動調整公式來設定 [CloudPool.AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) 屬性。
-1. (選擇性) 設定 [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) 屬性 (預設值為 15 分鐘)。
-1. 使用 [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) 或 [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) 認可集區。
+1. 使用 [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) 建立集區。
+1. 將 [CloudPool.AutoScaleEnabled](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) 屬性設定為 `true`。
+1. 使用自動調整公式來設定 [CloudPool.AutoScaleFormula](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) 屬性。
+1. (選擇性) 設定 [CloudPool.AutoScaleEvaluationInterval](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) 屬性 (預設值為 15 分鐘)。
+1. 使用 [CloudPool.Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) 或 [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) 認可集區。
 
 下列程式碼片段在 .NET 中建立已啟用自動調整的集區。 集區的自動調整公式會將星期一的專用節點目標數目設定為 5，而將一週其他各天的節點目標數目設定為 1。 [自動調整間隔](#automatic-scaling-interval) 設定為 30 分鐘。 在此程式碼片段及本文的其他 C# 程式碼片段中，`myBatchClient` 是 [BatchClient][net_batchclient] 類別適當初始化的執行個體。
 
@@ -519,11 +522,11 @@ await myBatchClient.PoolOperations.EnableAutoScaleAsync(
 
 若要評估自動調整公式，您必須先使用有效的公式在集區啟用自動調整。 若要在尚未啟用自動調整的集區上測試公式，在第一次啟用自動調整時使用一行公式 `$TargetDedicatedNodes = 0`。 然後，使用下列其中之一來評估您想要測試的公式︰
 
-* [BatchClient.PoolOperations.EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) 或 [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
+* [BatchClient.PoolOperations.EvaluateAutoScale](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) 或 [EvaluateAutoScaleAsync](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
 
     這些 Batch .NET 方法都需要現有集區的識別碼以及包含要評估之自動調整公式的字串。
 
-* [評估自動調整公式](https://docs.microsoft.com/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
+* [評估自動調整公式](/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
 
     在這個 REST 要求中，於 URI 中指定集區識別碼，以及於要求主體的 *autoScaleFormula* 元素中指定自動調整公式。 作業的回應會包含可能與公式相關的任何錯誤資訊。
 
@@ -609,13 +612,13 @@ AutoScaleRun.Results:
 
 若要確保您的公式如預期般執行，我們建議您定期檢查 Batch 對您的集區執行之自動調整執行的結果。 若要這麼做，請取得 (或重新整理) 集區的參考，並檢查其上次自動調整執行的內容。
 
-在 Batch .NET 中，[CloudPool.AutoScaleRun](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) 屬性有數個屬性，可提供最近在集區上執行之自動調整的相關資訊：
+在 Batch .NET 中，[CloudPool.AutoScaleRun](/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) 屬性有數個屬性，可提供最近在集區上執行之自動調整的相關資訊：
 
-* [AutoScaleRun.Timestamp](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
-* [AutoScaleRun.Results](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.results)
-* [AutoScaleRun.Error](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.error)
+* [AutoScaleRun.Timestamp](/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
+* [AutoScaleRun.Results](/dotnet/api/microsoft.azure.batch.autoscalerun.results)
+* [AutoScaleRun.Error](/dotnet/api/microsoft.azure.batch.autoscalerun.error)
 
-在 REST API 中，[取得集區的相關資訊](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool)要求會傳回集區的相關資訊，其中包含 [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) 屬性中最近執行的自動調整資訊。
+在 REST API 中，[取得集區的相關資訊](/rest/api/batchservice/get-information-about-a-pool)要求會傳回集區的相關資訊，其中包含 [autoScaleRun](/rest/api/batchservice/get-information-about-a-pool) 屬性中最近執行的自動調整資訊。
 
 下列 C# 程式碼片段會使用 Batch .NET 程式庫來列印集區 _myPool_ 上次自動調整執行的相關資訊︰
 
@@ -732,15 +735,15 @@ string formula = string.Format(@"
 * [使用並行節點工作最大化 Azure Batch 計算資源使用量](batch-parallel-node-tasks.md) 包含有關如何對集區中的計算節點同時執行多項工作的詳細資料。 除了自動調整，這項功能有助於減少某些工作負載的作業持續時間，進而節省金錢。
 * 另一種效率提升方式，則是確定您的 Batch 應用程式以最佳方式查詢 Batch 服務。 請參閱[有效率地查詢 Azure Batch 服務](batch-efficient-list-queries.md)，以了解如何在查詢可能數千個計算節點或工作的狀態時，限制越過網路的資料量。
 
-[net_api]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
-[net_batchclient]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient
-[net_cloudpool_autoscaleformula]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
-[net_cloudpool_autoscaleevalinterval]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
-[net_enableautoscaleasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
-[net_maxtasks]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
-[net_poolops_resizepoolasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
+[net_api]: /dotnet/api/microsoft.azure.batch
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudpool_autoscaleformula]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
+[net_cloudpool_autoscaleevalinterval]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
+[net_enableautoscaleasync]: /dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
+[net_maxtasks]: /dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
+[net_poolops_resizepoolasync]: /dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
 
-[rest_api]: https://docs.microsoft.com/rest/api/batchservice/
-[rest_autoscaleformula]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_autoscaleinterval]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_enableautoscale]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_api]: /rest/api/batchservice/
+[rest_autoscaleformula]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_autoscaleinterval]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_enableautoscale]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool

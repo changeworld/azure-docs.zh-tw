@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 9ff961638aa170948d51793a21e86d18dd7e1d80
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69016782"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960362"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何建置 Smooth Streaming Windows 市集應用程式  
 
@@ -32,7 +32,7 @@ Smooth Streaming Client SDK for Windows 8 可讓開發人員建置能夠播放�
 3. 選取 Smooth Streaming 資料流
 4. 選取 Smooth Streaming 曲目
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 > [!NOTE]
 > Windows 市集 8.1 版和更早版本的專案在 Visual Studio 2017 不受支援。  如需詳細資訊，請參閱 [Visual Studio 2017 平台目標及相容性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)。
 
@@ -66,35 +66,35 @@ Smooth Streaming Client SDK for Windows 8 可讓開發人員建置能夠播放�
 1. **在 [檔案**] 功能表上，按一下 [**新增**]，然後按一下 [**專案**]。
 1. 從 [新增專案] 對話方塊中，輸入或選取下列值：
 
-    | 名稱 | 值 |
+    | Name | 值 |
     | --- | --- |
     | 範本群組 |已安裝/範本/Visual C#/Windows 市集 |
     | [範本] |空白應用程式 (XAML) |
-    | 名稱 |SSPlayer |
+    | Name |SSPlayer |
     | 位置 |C:\SSTutorials |
     | 方案名稱 |SSPlayer |
     | 為方案建立目錄 |(已選取) |
 
-1. 按一下 [確定]  。
+1. 按一下 [確定]。
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>新增 Smooth Streaming Client SDK 的參考
 
 1. 從 [方案總管] 中，在 [SSPlayer]**** 上按一下滑鼠右鍵，然後按一下 [加入參考]****。
 1. 輸入或選取下列值：
 
-    | 名稱 | 值 |
+    | Name | 值 |
     | --- | --- |
     | 參考群組 |Windows/延伸 |
-    | 參考資料 |選取 Microsoft Smooth Streaming Client SDK for Windows 8 和 Microsoft Visual C++ Runtime Package |
+    | 參考 |選取 Microsoft Smooth Streaming Client SDK for Windows 8 和 Microsoft Visual C++ Runtime Package |
 
-1. 按一下 [確定]  。 
+1. 按一下 [確定]。 
 
 加入參考之後，您必須選取目標平台 (x64 或 x86)，而加入參考在「任何 CPU 平台」組態中將沒有作用。  在方案總管中，您會看到這些加入的參考具有黃色警告標記。
 
 ### <a name="to-design-the-player-user-interface"></a>設計播放程式使用者介面
 
 1. 從 [方案總管] 中，按兩下 [MainPage.xaml] **** ，以設計檢視來開啟它。
-2. 找出** &lt;方格&gt; **並** &lt;/Grid&gt; **標記 XAML 檔案，並在兩個標記之間貼上下列程式碼：
+2. 找出** &lt; 方格 &gt; **並** &lt; /Grid &gt; **標記 XAML 檔案，並在兩個標記之間貼上下列程式碼：
 
    ```xml
          <Grid.RowDefinitions>
@@ -151,15 +151,24 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
 
 1. 從 [方案總管] 中，在 [MainPage.xaml]**** 上按一下滑鼠右鍵，然後按一下 [檢視程式碼]****。
 2. 在檔案的頂端，新增下列 using 陳述式：
-   
+
+    ```csharp
         using Windows.Media;
+    ```
+
 3. 在 **MainPage** 類別的開頭，新增下列資料成員：
-   
-         private MediaExtensionManager extensions = new MediaExtensionManager();
+
+    ```csharp
+        private MediaExtensionManager extensions = new MediaExtensionManager();
+    ```
+
 4. 在 **MainPage** 建構函式的結尾，新增下列兩行：
-   
+
+    ```csharp
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
+    ```
+
 5. 在 **MainPage** 類別結尾貼上下列程式碼：
    ```csharp
          # region UI Button Click Events

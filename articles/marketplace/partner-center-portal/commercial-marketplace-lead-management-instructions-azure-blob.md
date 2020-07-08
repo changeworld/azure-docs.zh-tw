@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 9ac7640dd8b63c72bac83c98e07cf861fb26c870
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 471675de58161fc0c0110e2968089da062c6da87
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845779"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960557"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure Blob 儲存體來管理商業市集潛在客戶
 
@@ -33,11 +33,11 @@ ms.locfileid: "83845779"
 3. 在 Azure 入口網站中，使用下列程序建立儲存體帳戶。  
     1. 在左側功能表列中，選取 [+ 建立資源]。  [新增] 窗格 (刀鋒視窗) 將會顯示於右側。
     2. 在 [新增] 窗格中，選取 [儲存體]。  [精選] 清單會顯示於右側。
-    3. 選取 [儲存體帳戶] 以開始建立帳戶。  遵循[建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) \(部分機器翻譯\) 一文中的指示。
+    3. 選取 [儲存體帳戶] 以開始建立帳戶。  遵循[建立儲存體帳戶](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal) \(部分機器翻譯\) 一文中的指示。
 
     ![建立 Azure 儲存體帳戶的步驟](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
-    如需儲存體帳戶的詳細資訊，請參閱[快速入門教學課程](https://docs.microsoft.com/azure/storage/)。  如需儲存體定價的詳細資訊，請參閱[儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。
+    如需有關儲存體帳戶的詳細資訊，請參閱此[快速入門](../../storage/blobs/storage-quickstart-blobs-portal.md)。  如需儲存體定價的詳細資訊，請參閱[儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。
 
 4. 等候系統將您的儲存體帳戶佈建完成，此程序通常需要花費幾分鐘的時間。  然後從 Azure 入口網站的 [首頁] 存取您的儲存體帳戶，方法是選取 [查看所有資源]，或是從 Azure 入口網站的左側導覽功能表列選取 [所有資源]。
 

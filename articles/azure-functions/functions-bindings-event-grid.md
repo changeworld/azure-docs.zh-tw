@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21654a3b325e8b8f0a3e49ee64b7624c8540d0d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dc1198ab9c546ef1defa1891777c4c8081171e9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77461074"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957173"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>適用于 Azure Functions 的 Azure 事件方格系結
 
@@ -32,13 +32,13 @@ Event Grid 是一項 Azure 服務，會傳送 HTTP 要求通知您「發行者�
 
 ## <a name="add-to-your-functions-app"></a>新增至函數應用程式
 
-### <a name="functions-2x-and-higher"></a>函數2.x 和更新版本
+### <a name="functions-2x-and-higher"></a>Functions 2.x 和更新版本
 
 使用觸發程式和系結時，您需要參考適當的套件。 NuGet 套件適用于 .NET 類別庫，而延伸模組配套則用於所有其他應用程式類型。
 
-| Language                                        | 加入者 .。。                                   | 備註 
+| 語言                                        | 加入者 .。。                                   | 備註 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | 安裝[NuGet 套件]3.x 版 | |
+| C#                                              | 安裝[NuGet 套件]2.x 版 | |
 | C # 腳本，JAVA，JavaScript，Python，PowerShell | 註冊[延伸]模組配套          | 建議使用[Azure Tools 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)功能搭配 Visual Studio Code。 |
 | C # 腳本（僅限線上 Azure 入口網站）         | 新增系結                            | 若要更新現有的系結延伸模組而不需要重新發佈函式應用程式，請參閱[更新您的擴充]功能。 |
 

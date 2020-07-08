@@ -4,22 +4,22 @@ description: 取得 Azure CLI 中 Batch 命令的快速簡介，以便管理 Azu
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2bb3dd2e67c3c3bf9139a25935ab0dd074799c6f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: b07045bc0a756c5565356bb0a674188cf84c8785
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780218"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960855"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 資源
 
 Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 它可以用於 macOS、Linux 和 Windows。 Azure CLI 已針對從命令列管理 Azure 資源進行最佳化。 您可以使用 Azure CLI 來管理 Azure Batch 帳戶，以及管理集區、作業和工作等資源。 許多使用 Batch API、Azure 入口網站和 Batch PowerShell Cmdlet 執行的工作，也都可以使用 Azure CLI 來撰寫指令碼。
 
-本文概述如何使用搭配 [Azure CLI 2.0 版](https://docs.microsoft.com/cli/azure) 與 Batch。 如需 CLI 與 Azure 搭配使用的概觀，請參閱[開始使用 Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。
+本文概述如何使用搭配 [Azure CLI 2.0 版](/cli/azure) 與 Batch。 如需 CLI 與 Azure 搭配使用的概觀，請參閱[開始使用 Azure CLI](/cli/azure/get-started-with-azure-cli)。
 
 ## <a name="set-up-the-azure-cli"></a>設定 Azure CLI
 
-您可以在 [Azure Cloud Shell](../cloud-shell/overview.md) 中執行最新的 Azure CLI。 若要在本機安裝 Azure CLI，請遵循[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 中概述的步驟。
+您可以在 [Azure Cloud Shell](../cloud-shell/overview.md) 中執行最新的 Azure CLI。 若要在本機安裝 Azure CLI，請遵循[安裝 Azure CLI](/cli/azure/install-azure-cli) 中概述的步驟。
 
 > [!TIP]
 > 建議您經常更新您的 Azure CLI 安裝以利用服務更新和增強功能。
@@ -51,10 +51,10 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 它可以用於 mac
 
 如 [登入 Azure CLI](/cli/azure/authenticate-azure-cli) 中的詳細描述，有幾種不同方式可登入 Azure：
 
-1. [以互動方式登入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)。 當您自行從命令列執行 Azure CLI 命令時以互動方式登入。
-2. [使用服務主體來登入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)。 當您從指令碼或應用程式執行 Azure CLI 命令時，使用服務主體來登入。
+1. [以互動方式登入](/cli/azure/authenticate-azure-cli)。 當您自行從命令列執行 Azure CLI 命令時以互動方式登入。
+2. [使用服務主體來登入](/cli/azure/authenticate-azure-cli)。 當您從指令碼或應用程式執行 Azure CLI 命令時，使用服務主體來登入。
 
-基於本文的目的，我們會示範如何以互動方式登入 Azure。 在命令列上輸入 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login)：
+基於本文的目的，我們會示範如何以互動方式登入 Azure。 在命令列上輸入 [az login](/cli/azure/reference-index#az-login)：
 
 ```azurecli
 # Log in to Azure and authenticate interactively.
@@ -69,7 +69,7 @@ az login
 
 ### <a name="log-in-to-your-batch-account"></a>登入您的 Batch 帳戶
 
-若要使用 Azure CLI 來管理 Batch 資源 (例如集區、作業和工作)，您需要登入您的 Batch 帳戶和進行驗證。 若要登入 Batch 服務，請使用 [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login) 命令。 
+若要使用 Azure CLI 來管理 Batch 資源 (例如集區、作業和工作)，您需要登入您的 Batch 帳戶和進行驗證。 若要登入 Batch 服務，請使用 [az batch account login](/cli/azure/batch/account#az-batch-account-login) 命令。 
 
 您有兩個對 Batch 帳戶進行驗證的選項︰
 
@@ -81,7 +81,7 @@ az login
 
     Azure AD 的優點就是它會提供角色型存取控制 (RBAC)。 使用 RBAC，使用者的存取權取決於他們被指派的角色，而不是他們是否擁有帳戶金鑰。 您可以管理 RBAC 角色，並且讓 Azure AD 處理存取和驗證，而不用管理帳戶金鑰。  
 
-     若要使用 Azure AD 登入 Batch 帳戶，請呼叫 [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login) 命令： 
+     若要使用 Azure AD 登入 Batch 帳戶，請呼叫 [az batch account login](/cli/azure/batch/account#az-batch-account-login) 命令： 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount
@@ -162,10 +162,10 @@ az batch task list --job-id job001
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+* 請參閱 [Azure CLI 文件](/cli/azure)。
 * 了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
 * 若要了解如何使用 Batch 範本來建立集區、作業和工作，而不需要撰寫程式碼，請參閱[使用 Azure Batch CLI 範本和檔案傳輸](batch-cli-templates.md)。
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
-[rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
-[rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[rest_api]: /rest/api/batchservice/
+[rest_add_pool]: /rest/api/batchservice/pool/add

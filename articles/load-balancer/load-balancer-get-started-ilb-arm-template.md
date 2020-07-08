@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 0d7cc4d571ddeb0b57fd4f025b8cbf7b204f61e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e8f34f3d68a957dbd5bb13b69f751184d224e2c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79456959"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961110"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>使用範本建立內部負載平衡器
 
@@ -27,8 +27,6 @@ ms.locfileid: "79456959"
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [範本](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
@@ -66,7 +64,9 @@ ms.locfileid: "79456959"
 
     此為上述命令的預期輸出內容：
 
-        info:    New mode is arm
+    ```output
+    info:    New mode is arm
+    ```
 
 3. 開啟參數檔案，選取其內容，然後將該內容儲存至您電腦中的一個檔案。 在此範例中，我們將參數檔案儲存為 *parameters.json*。
 4. 執行 **azure group deployment create** 命令，使用先前下載並修改的範本和參數檔案來部署新的內部負載平衡器。 輸出後顯示的清單可說明所使用的參數。

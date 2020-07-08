@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 44f1f7ae3b290e1dbf01877f3881e1d95a238446
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70208139"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959138"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>在資料科學虛擬機器上設定通用身分識別
 
@@ -41,9 +41,9 @@ Azure AD DS 可透過在 Azure 上提供完全受控的服務，讓您輕鬆地�
     
    1. 在 [**使用者和群組**] 中，選取 [**所有使用者**]，然後選取 [**新增使用者**]。
    
-           The **User** pane opens:
+        [**使用者**] 窗格隨即開啟：
       
-      ![[使用者] 窗格](./media/add-user.png)
+        ![[使用者] 窗格](./media/add-user.png)
     
    1. 輸入使用者的詳細資料，例如「名稱」**** 和「使用者名稱」****。 使用者名稱的網域名稱部分必須是初始預設網域名稱 "[網域名稱].onmicrosoft.com"，或是已驗證的非同盟[自訂網域名稱](../../active-directory/add-custom-domain.md)，例如"contoso.com"。
     

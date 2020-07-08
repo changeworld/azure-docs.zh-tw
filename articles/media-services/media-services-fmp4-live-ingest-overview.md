@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ff356ef67630429b72208107541b1696e4eceac
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74888048"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958560"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure 媒體服務的分散 MP4 即時內嵌規格 
 
@@ -56,9 +56,9 @@ ms.locfileid: "74888048"
 ## <a name="4-protocol-format--http"></a>4. 通訊協定格式– HTTP
 媒體服務的 ISO 分散 MP4 式即時內嵌，使用標準的長時間運作 HTTP POST 要求，以將採用分散 MP4 格式封裝的編碼媒體資料傳輸至服務。 每個 HTTP POST 會傳送完整的分散 MP4 位元資料流 ("stream")，其開頭為標頭方塊 (**ftyp**、**Live Server Manifest Box** 及 **moov** 方塊)，並接續著連串的片段 (**moof** 與 **mdat** 方塊)。 如需 HTTP POST 要求的 URL 語法，請參閱 [1] 的第 9.2 節。 以下是 POST URL 的範例： 
 
-    http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
+`http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
-### <a name="requirements"></a>需求
+### <a name="requirements"></a>規格需求
 詳細需求如下：
 
 1. 編碼器「應該」使用相同的內嵌 URL 來傳送空白 “body” (零內容長度) 的 HTTP POST 要求，藉此開始廣播。 這可協助編碼器快速偵測即時內嵌端點是否有效，以及是否需要任何的驗證或其他條件。 伺服器無法對每個 HTTP 通訊協定傳回 HTTP 回應，直到收到整個要求為止，包括 POST 內文。 由於即時事件其長時間執行的性質，若無此步驟，編碼器在完成傳送所有資料之前，無法偵測到任何錯誤。
@@ -75,7 +75,7 @@ ms.locfileid: "74888048"
 ## <a name="6-definition-of-stream"></a>6. "stream" 的定義
 「資料流」是指在撰寫即時簡報、處理資料流容錯移轉和備援案例的即時內嵌中，作業的基本單位。 「資料流」定義為一個唯一的分散 MP4 位元資料流，其中可能包含單一資料軌或多個資料軌。 完整即時簡報可包含一或多個資料流，視即時編碼器組態而定。 以下範例說明各種使用資料流撰寫完整即時簡報的選項。
 
-**範例：** 
+**範例︰** 
 
 客戶想要建立一個即時資料流簡報，其中包含下列音訊/視訊位元速率：
 
@@ -174,7 +174,7 @@ ms.locfileid: "74888048"
 
     f. 當讓時間戳記值相等或更大的對應上層資料軌片段可供用戶端使用時，疏鬆資料軌片段便會對用戶端變成可用狀態。 例如，如果疏鬆片段的時間戳記 t=1000，則預期在用戶端看見視訊 (假設上層資料軌名稱為視訊) 片段時間戳記為 1000 或以上後，便可下載 t=1000 的疏鬆片段。 請注意，實際訊號能夠在簡報時間軸上的不同位置上，運用在其指定用途。 在此範例中，t=1000 的疏鬆片段具有 XML 承載，可將廣告插入到數秒後的位置上。
 
-    g. 疏鬆資料軌片段的承載可以是不同格式 (例如 XML、文字或二進位)，視情況而定。
+    如 疏鬆資料軌片段的承載可以是不同格式 (例如 XML、文字或二進位)，視情況而定。
 
 ### <a name="redundant-audio-track"></a>備援音訊資料軌
 在一般的 HTTP 彈性資料流案例中 (例如 Smooth Streaming 或 DASH)，通常在整個簡報中只有一個音訊資料軌。 具有多個品質層級的視訊資料軌可讓用戶端在錯誤條件中選擇，而音訊資料軌不同於這類資料軌，當內嵌的資料流中有損壞的音訊資料軌時，音訊資料軌會是唯一的故障點。 
