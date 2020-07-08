@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f328b86d07a997ea761b4381f1d6a2f8a1dae269
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: f12f080f2b1b7379b622fe4d7c5e0b35e358d0ef
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683072"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041722"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什麼是自動化機器學習 (AutoML)？
 
-自動化機器學習 (亦稱為自動化 ML 或 AutoML) 是使機器學習模型開發中耗時的反覆工作自動化的程序。 其可讓資料科學家、分析師和開發人員以高擴充性、效率和生產力來建置 ML 模型，同時維持模型品質。 自動化 ML 是以我們 [Microsoft Research 部門](https://arxiv.org/abs/1705.05355) \(英文\) 的突破為基礎。
+自動化機器學習 (亦稱為自動化 ML 或 AutoML) 是使機器學習模型開發中耗時的反覆工作自動化的程序。 其可讓資料科學家、分析師和開發人員以高擴充性、效率和生產力來建置 ML 模型，同時維持模型品質。 自動化 ML 是以我們 [Microsoft Research 部門](https://www.microsoft.com/research/project/automl/) \(英文\) 的突破為基礎。
 
 傳統機器學習模型的開發會耗用大量資源，需要大量的領域知識和時間來產生和比較數十種模型。 透過自動化機器學習，您將可以更輕鬆、更高效率地縮短取得生產就緒 ML 模型所需的時間。
 
@@ -35,14 +35,15 @@ ms.locfileid: "83683072"
 
 ### <a name="classification"></a>分類
 
-分類是一個常見的機器學習工作。 分類是一種監督式學習，其中模型會學習使用定型資料，並將那些學習套用至新的資料。 Azure Machine Learning 特別針對這些工作提供特徵化，例如用於分類的深度類神經網路文字功能。 深入了解[特徵化選項](how-to-use-automated-ml-for-ml-models.md#featurization)。 
+分類是一個常見的機器學習工作。 分類是一種監督式學習，其中模型會學習使用定型資料，並將那些學習套用至新的資料。 Azure Machine Learning 特別針對這些工作提供特徵化，例如用於分類的深度類神經網路文字功能。 深入了解[特徵化選項](how-to-configure-auto-features.md#featurization)。 
 
-分類模型的主要目標，是根據從其定型資料中的學習，來預測新資料將屬於哪些類別。 常見的分類範例包括詐騙偵測、手寫辨識和物件偵測。  深入了解並查看[使用自動化機器學習分類](tutorial-train-models-with-aml.md)的範例。
+分類模型的主要目標，是根據從其定型資料中的學習，來預測新資料將屬於哪些類別。 常見的分類範例包括詐騙偵測、手寫辨識和物件偵測。 若要深入瞭解，請參閱[使用自動化 ML 建立分類模型](tutorial-first-experiment-automated-ml.md)中的範例。
 
 請參閱下列 Python 筆記本中的分類和自動化機器學習的範例：[詐騙偵測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb) \(英文\)、[行銷預測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) \(英文\)，以及[新聞群組資料分類](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb) \(英文\)
 
 ### <a name="regression"></a>迴歸
-與分類類似，迴歸工作也是常見的監督式學習工作。 Azure Machine Learning [針對這些工作提供的特徵化](how-to-use-automated-ml-for-ml-models.md#featurization)。
+
+與分類類似，迴歸工作也是常見的監督式學習工作。 Azure Machine Learning [針對這些工作提供的特徵化](how-to-configure-auto-features.md#featurization)。
 
 不同於預測輸出值為類別的分類，迴歸模型會根據獨立的預測指標來預測數值輸出值。 在迴歸中，目標是藉由評估一個變數如何影響其他變數，來協助您建立那些獨立預測變數之間的關聯性。 例如，以諸如油耗、安全等級等特徵為基礎的汽車價格。 深入了解並查看[使用自動化機器學習進行迴歸](tutorial-auto-train-models.md)的範例。
 
@@ -97,20 +98,25 @@ ms.locfileid: "83683072"
 
 在自動化模型建置的同時，您還可以了解對產生的模型而言，[功能的重要性或相關性](how-to-configure-auto-train.md#explain)。
 
+瞭解如何使用[遠端計算目標](how-to-auto-train-remote.md)。
+
+
+
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
-<a name="preprocess"></a>
 
-## <a name="preprocessing"></a>前置處理
+## <a name="feature-engineering"></a>特徵設計
 
-在每個自動化機器學習實驗中，您的資料會使用預設方法 (與選擇性地透過進階前置處理) 進行前置處理。
+特色工程是使用資料的領域知識來建立功能的程式，以協助 ML 演算法更深入瞭解。 在 Azure Machine Learning 中，會套用調整和正規化技術，以促進功能設計。 這些技術和特徵設計統稱為特徵化。
+
+針對自動化機器學習實驗，特徵化會自動套用，但也可以根據您的資料進行自訂。 [深入了解包含哪些特徵化](how-to-configure-auto-features.md#featurization)。  
 
 > [!NOTE]
-> 自動化機器學習前置處理步驟 (功能正規化、處理遺漏的資料、將文字轉換成數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同前置處理步驟會自動套用至您的輸入資料。
+> 自動化機器學習特徵化步驟 (功能標準化、處理遺漏的資料、將文字轉換為數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同特徵化步驟會自動套用至您的輸入資料。
 
-### <a name="automatic-preprocessing-standard"></a>自動前置處理 (標準)
+### <a name="automatic-featurization-standard"></a>自動特徵化（標準）
 
-在每個自動化機器學習實驗中，您的資料都會自動調整或正規化，以協助演算法執行良好。  在模型定型期間，下列其中一個調整或正規化技術將會套用至每個模型。 了解 autoML 如何協助[防止模型中的資料過度調整和不平衡](concept-manage-ml-pitfalls.md)。
+在每個自動化機器學習實驗中，您的資料都會自動調整或正規化，以協助演算法執行良好。 在模型定型期間，下列其中一個調整或正規化技術將會套用至每個模型。 瞭解 AutoML 如何協助[防止過度調整和不平衡](concept-manage-ml-pitfalls.md)模型中的資料。
 
 |調整&nbsp;&&nbsp;正規化| 描述 |
 | ------------- | ------------- |
@@ -122,15 +128,15 @@ ms.locfileid: "83683072"
 | [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |此轉換器會藉由截斷奇異值分解 (SVD) 來執行線性維度縮減。 相對於 PCA，此估算器不會在計算奇異值分解之前，先將資料置中，這表示其可以有效率地使用 scipy.sparse 矩陣 |
 | [SparseNormalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | 具有至少一個非零分量的每個樣本 (即資料矩陣的每個資料列) 會獨立於其他樣本之外進行重新調整，使其範數 (l1 或 l2) 等於 1 |
 
-### <a name="advanced-preprocessing--featurization"></a>進階前置處理與特徵化
+### <a name="customize-featurization"></a>自訂特徵化
 
-另外還提供額外的進階前置處理和特徵化，例如資料護欄、編碼和轉換。 [深入了解包含哪些特徵化](how-to-use-automated-ml-for-ml-models.md#featurization)。 啟用此設定的方式：
+還有其他功能工程技術，例如，編碼和轉換也可供使用。 
 
-+ Azure Machine Learning Studio：[透過這些步驟](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)，在 [檢視其他設定] 區段中啟用 [自動特徵化]。
+啟用此設定的方式：
 
-+ Python SDK：針對 [`AutoMLConfig` 類別指定 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)。 
++ Azure Machine Learning Studio：[透過這些步驟](how-to-use-automated-ml-for-ml-models.md#customize-featurization)，在 [檢視其他設定] 區段中啟用 [自動特徵化]。
 
-
++ Python SDK： `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` 在您的[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)物件中指定。 深入瞭解 [啟用特徵化] （（如何設定-自動 features.md）。 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a> 集團模型
 
@@ -265,17 +271,30 @@ ONNX 執行階段也支援 C#，因此您可以使用在 C# 應用程式中自�
 
 ## <a name="next-steps"></a>後續步驟
 
-查看範例並了解如何使用自動化機器學習來建置模型：
+有多個資源可讓您開始使用 AutoML。 
 
-+ 設定自動定型實驗的設定：
-  + 在 Azure Machine Learning Studio 中，[使用這些步驟](how-to-use-automated-ml-for-ml-models.md)。
-  + 對於 Python SDK，[使用這些步驟](how-to-configure-auto-train.md)。
+### <a name="tutorials-how-tos"></a>教學課程/how-to
+教學課程是 AutoML 案例的端對端簡介範例。
++ **如需程式碼的第一個體驗**，請遵循[教學課程：使用 Azure Machine Learning Python SDK 自動定型回歸模型](tutorial-auto-train-models.md)。
 
-+ 了解如何使用[遠端計算目標](how-to-auto-train-remote.md)
+ + **如需低或無程式碼的體驗**，請參閱[教學課程：使用 Azure Machine Learning STUDIO 建立自動化 ML 分類模型](tutorial-first-experiment-automated-ml.md)。
 
-+ 遵循[教學課程：使用 Azure Machine Learning 自動定型迴歸模型](tutorial-auto-train-models.md) 
+如何文章提供 AutoML 所提供功能的其他詳細資料。 例如， 
 
-+ 了解如何使用時間序列資料自動定型，[使用這些步驟](how-to-auto-train-forecast.md)。
++ 設定自動訓練實驗的設定
+    + 在 Azure Machine Learning Studio 中，[使用這些步驟](how-to-use-automated-ml-for-ml-models.md)。 
+    + 針對 Python SDK，[使用這些步驟](how-to-configure-auto-train.md)。
 
-+ 試用[自動化機器學習的 Jupyter Notebook 範例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
-* 自動化 ML 也適用於其他 Microsoft 解決方案，例如 [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) 和 [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
++  瞭解如何使用時間序列資料，[以這些步驟](how-to-auto-train-forecast.md)自動定型。
+
+### <a name="jupyter-notebook-samples"></a>Jupyter 筆記本範例 
+
+[如需自動化機器學習範例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)，請參閱 Github 筆記本存放庫中的詳細程式碼範例和使用案例。
+
+### <a name="python-sdk-reference"></a>Python SDK 參考 
+
+透過[AutoML 類別參考檔](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)，加深您 SDK 設計模式和類別規格的專業知識。 
+
+> [!Note]
+> 自動化機器學習功能也適用于其他 Microsoft 解決方案，例如[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、 [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、 [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)和[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
+

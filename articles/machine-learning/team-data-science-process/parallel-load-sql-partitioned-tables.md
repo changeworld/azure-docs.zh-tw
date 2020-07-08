@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ae03a655347d7be7372bae93eb0c3aaf75a8ea29
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 30c4838dd5a6f4e8b08d3619588ee3ae746349ef
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891693"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042130"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>建置和最佳化資料表，以便快速地將資料平行匯入至 Azure VM 上的 SQL Server
 
-本文說明如何建置資料分割資料表，以快速的平行處理方式將大量資料匯入 SQL Server 資料庫。 若要將巨量資料載入/傳輸至 SQL Database，可使用*資料分割資料表和檢視*，來改善將資料匯入 SQL DB 和後續查詢的效能。 
+本文說明如何建置資料分割資料表，以快速的平行處理方式將大量資料匯入 SQL Server 資料庫。 若要將大量資料載入/傳送至 SQL 資料庫，您可以使用資料*分割資料表和 Views*來改善匯入 sql 資料庫和後續查詢的資料。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>建立新的資料庫和一組檔案群組
 * [建立新的資料庫](https://technet.microsoft.com/library/ms176061.aspx) (如果尚不存在)。
@@ -35,13 +35,14 @@ ms.locfileid: "82891693"
 
 下列範例會建立含有三個檔案群組的新資料庫，這三個檔案群組不包括主要和記錄群組，且每個檔案群組中都會包含一個實體檔案。 資料庫檔案建立於預設的 SQL Server [資料] 資料夾中，如 SQL Server 執行個體中所設定。 如需關於預設檔案位置的詳細資訊，請參閱 [SQL Server 的預設和具名執行個體的檔案位置](https://msdn.microsoft.com/library/ms143547.aspx)。
 
-    DECLARE @data_path nvarchar(256);
-    SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
+```sql
+   DECLARE @data_path nvarchar(256);
+   SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
       FROM master.sys.master_files
       WHERE database_id = 1 AND file_id = 1);
 
-    EXECUTE ('
-        CREATE DATABASE <database_name>
+   EXECUTE ('
+      CREATE DATABASE <database_name>
          ON  PRIMARY 
         ( NAME = ''Primary'', FILENAME = ''' + @data_path + '<primary_file_name>.mdf'', SIZE = 4096KB , FILEGROWTH = 1024KB ), 
          FILEGROUP [filegroup_1] 
@@ -53,6 +54,7 @@ ms.locfileid: "82891693"
          LOG ON 
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
+```
 
 ## <a name="create-a-partitioned-table"></a>建立資料分割資料表
 為了要根據資料結構描述建立資料分割資料表，來對應到上一個步驟建立的資料庫檔案群組，您必須先建立資料分割函數和結構描述。 將資料大量匯入資料分割資料表時，記錄將根據資料分割配置分佈於檔案群組中，如下所述。
@@ -60,36 +62,44 @@ ms.locfileid: "82891693"
 ### <a name="1-create-a-partition-function"></a>1. 建立資料分割函數
 [建立資料分割函數](https://msdn.microsoft.com/library/ms187802.aspx)。此函數定義要在每個個別資料分割資料表中包含的值/界限範圍，例如，若要依 2013 年的月份來限制資料分割 (some\_datetime\_field)：
   
-        CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
-        AS RANGE RIGHT FOR VALUES (
-            '20130201', '20130301', '20130401',
-            '20130501', '20130601', '20130701', '20130801',
-            '20130901', '20131001', '20131101', '20131201' )
+```sql
+   CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
+      AS RANGE RIGHT FOR VALUES (
+         '20130201', '20130301', '20130401',
+         '20130501', '20130601', '20130701', '20130801',
+         '20130901', '20131001', '20131101', '20131201' )
+```
 
 ### <a name="2-create-a-partition-scheme"></a>2. 建立資料分割配置
 [建立資料分割配置](https://msdn.microsoft.com/library/ms179854.aspx)。 此配置會將資料分割函數中的每個資料分割範圍對應至實體檔案群組，例如：
   
-        CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
+```sql
+      CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
         <filegroup_1>, <filegroup_2>, <filegroup_3>, <filegroup_4>,
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
+```
+ 
+若要根據函式/配置確認範圍會在每個資料分割中生效，請執行下列查詢：
   
-  若要根據函式/配置確認範圍會在每個資料分割中生效，請執行下列查詢：
-  
-        SELECT psch.name as PartitionScheme,
+```sql
+   SELECT psch.name as PartitionScheme,
             prng.value AS PartitionValue,
             prng.boundary_id AS BoundaryID
-        FROM sys.partition_functions AS pfun
-        INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
-        INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
-        WHERE pfun.name = <DatetimeFieldPFN>
+   FROM sys.partition_functions AS pfun
+   INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
+   INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
+   WHERE pfun.name = <DatetimeFieldPFN>
+```
 
 ### <a name="3-create-a-partition-table"></a>3. 建立資料分割資料表
 根據您的資料結構描述來[建立資料分割資料表](https://msdn.microsoft.com/library/ms174979.aspx)，並指定用來為資料表進行資料分割的資料分割配置和條件約束欄位，例如：
   
-        CREATE TABLE <table_name> ( [include schema definition here] )
+```sql
+   CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
+```
 
 如需詳細資訊，請參閱 [建立分割區資料表及索引](https://msdn.microsoft.com/library/ms188730.aspx)。
 
@@ -98,11 +108,14 @@ ms.locfileid: "82891693"
 * 您可以使用 BCP、BULK INSERT 或其他方法，例如 [SQL Server 移轉精靈](https://sqlazuremw.codeplex.com/)。 所提供的範例會使用 BCP 方法。
 * [修改資料庫](https://msdn.microsoft.com/library/bb522682.aspx)，將交易記錄配置變更為 BULK_LOGGED，以便將記錄額外負荷降到最低，例如：
   
-        ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
+   ```sql
+      ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
+   ```
 * 若要加速資料載入，可以平行方式啟動大量匯入作業。 如需加速將大型資料大量匯入 SQL Server 資料庫的秘訣，請參閱[在1小時內載入 1 TB](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)。
 
 下列 PowerShell 指令碼是使用 BCP 平行載入資料的範例。
 
+```powershell
     # Set database name, input data directory, and output log directory
     # This example loads comma-separated input data files
     # The example assumes the partitioned data files are named as <base_file_name>_<partition_number>.csv
@@ -163,19 +176,21 @@ ms.locfileid: "82891693"
     date
     While (Get-Job -State "Running") { Start-Sleep 10 }
     date
-
+```
 
 ## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>建立索引以將聯結和查詢效能最佳化
 * 如果您會從多個資料表擷取資料來進行模型化，請在聯結索引鍵上建立索引來提升聯結效能。
 * [建立索引](https://technet.microsoft.com/library/ms188783.aspx) (叢集或非叢集) 會將每個資料分割的目標設定為相同的檔案群組，例如：
   
-        CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
+```sql
+   CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-  或者，
+--  or,
   
         CREATE INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-  
+ ```
+ 
   > [!NOTE]
   > 您可以選擇在大量匯入資料之前建立索引。 在大量匯入之前建立索引，會讓資料載入的速度變慢。
   > 

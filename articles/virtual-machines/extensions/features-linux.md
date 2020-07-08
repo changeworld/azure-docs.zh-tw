@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250513"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042113"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>適用於 Linux 的虛擬機器擴充功能和功能
 
@@ -37,7 +37,7 @@ Azure 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure 虛�
 
 除了處理序特定擴充功能，自訂指令碼延伸模組適用於 Windows 和 Linux 虛擬機器。 適用於 Linux 的自訂指令碼擴充可讓任何 Bash 指令碼在虛擬機器上執行。 自訂指令碼對於設計需要超過原生 Azure 工具可提供之設定的 Azure 部署很有用。 如需詳細資訊，請參閱 [Linux VM 自訂指令碼延伸模組](custom-script-linux.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要處理虛擬機器上的擴充，您需要安裝 Azure Linux 代理程式。 某些個別的擴充會有先決條件，例如可存取資源或相依性。
 
@@ -49,11 +49,11 @@ Azure 虛擬機器代理程式可管理 Azure 虛擬機器與 Azure 網狀架構
 
 #### <a name="supported-agent-versions"></a>支援的代理程式版本
 
-為了提供最佳使用體驗，代理程式的版本數量盡可能精簡。 如需詳細資訊，請參閱 [本篇文章](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
+為了提供最佳使用體驗，代理程式的版本數量盡可能精簡。 如需詳細資訊，請參閱[這篇文章](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
 
 #### <a name="supported-oses"></a>支援的作業系統
 
-Linux 代理程式可在多種作業系統上執行，但擴充功能作業系統的擴充功能架構有其限制。 如需詳細資訊，請參閱 [本篇文章](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+Linux 代理程式可在多種作業系統上執行，但擴充功能作業系統的擴充功能架構有其限制。 如需詳細資訊，請參閱[這篇文章](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
 )。
 
 某些擴充功能並非所有作業系統都可支援，可能會發出錯誤碼 51：「不支援的 OS」**。 請查看個別的擴充功能文件以了解支援度。
@@ -85,7 +85,7 @@ Azure 虛擬機器擴充功能可以在現有的虛擬機器上執行，這在�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure 虛擬機器擴充功能可以透過 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 命令，針對現有的虛擬機器執行。 下列範例會針對名為*myResourceGroup*的資源群組中名為*myVM*的 VM 執行自訂腳本延伸模組。 以您自己的資訊取代範例資源組名、VM 名稱和要執行\/的腳本（HTTPs：/raw.githubusercontent.com/me/project/hello.sh）。 
+Azure 虛擬機器擴充功能可以透過 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 命令，針對現有的虛擬機器執行。 下列範例會針對名為*myResourceGroup*的資源群組中名為*myVM*的 VM 執行自訂腳本延伸模組。 以您自己的資訊取代範例資源組名、VM 名稱和要執行的腳本（HTTPs： \/ /raw.githubusercontent.com/me/project/hello.sh）。 
 
 ```azurecli
 az vm extension set `
@@ -115,7 +115,7 @@ info:    vm extension set command OK
 
 ### <a name="azure-resource-manager-templates"></a>Azure 資源管理員範本
 
-VM 擴充功能可以新增至 Azure Resource Manager 範本，並使用範本的部署執行。 當您使用範本部署擴充功能時，可以建立完全設定的 Azure 部署。 例如，下列 JSON 是取自 Resource Manager 範本，而該範本部署了一組經過負載平衡處理的虛擬機器和 Azure SQL 資料庫，然後在每個虛擬機器上安裝 .NET Core 應用程式。 VM 擴充功能會處理軟體安裝。
+VM 擴充功能可以新增至 Azure Resource Manager 範本，並使用範本的部署執行。 當您使用範本部署擴充功能時，可以建立完全設定的 Azure 部署。 例如，下列 JSON 是取自部署一組負載平衡 Vm 和 Azure SQL Database 的 Resource Manager 範本，然後在每部 VM 上安裝 .NET Core 應用程式。 VM 擴充功能會處理軟體安裝。
 
 如需詳細資訊，請參閱完整的 [Resource Manager 範本](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
 
@@ -336,7 +336,7 @@ INFO [Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027] Launch command:diagnost
 
 1. 若要查看 Linux 代理程式記錄，請在 */var/log/waagent.log* 中檢視您佈建擴充功能時的活動
 
-2. 檢查實際的擴充記錄，以取得*\</var/log/azure/extensionName>* 中的詳細資料
+2. 請在 */var/log/azure/\<extensionName>* 中查看實際延伸模記錄的詳細資訊
 
 3. 在擴充功能特定的疑難排解章節中，查看錯誤碼、已知問題等。
 
@@ -403,7 +403,7 @@ az vm extension delete \
 
 ## <a name="common-vm-extension-reference"></a>常見的 VM 擴充功能參考
 
-| 擴充功能名稱 | 描述 | 更多資訊 |
+| 擴充功能名稱 | 說明 | 更多資訊 |
 | --- | --- | --- |
 | Linux 的自訂指令碼擴充功能 |對「Azure 虛擬機器」執行指令碼 |[適用于 Linux 的自訂腳本擴充功能](custom-script-linux.md) |
 | VM 存取擴充功能 |重新取得對「Azure 虛擬機器」的存取權 |[VM 存取擴充功能](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
