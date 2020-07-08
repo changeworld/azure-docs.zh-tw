@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5d064b0953d8d6e9089dcfa765ff29bb97088f34
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 680b6ec17b65cd9452dd3bd5c0c470e395688cb8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801105"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025670"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教學課程：在 Azure 容器執行個體中部署映像分類模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -235,18 +235,19 @@ print('Overall accuracy:', np.average(y_hat == y_test))
 
 輸出會顯示混淆矩陣：
 
-    [[ 960    0    1    2    1    5    6    3    1    1]
-     [   0 1112    3    1    0    1    5    1   12    0]
-     [   9    8  920   20   10    4   10   11   37    3]
-     [   4    0   17  921    2   21    4   12   20    9]
-     [   1    2    5    3  915    0   10    2    6   38]
-     [  10    2    0   41   10  770   17    7   28    7]
-     [   9    3    7    2    6   20  907    1    3    0]
-     [   2    7   22    5    8    1    1  950    5   27]
-     [  10   15    5   21   15   27    7   11  851   12]
-     [   7    8    2   13   32   13    0   24   12  898]]
-    Overall accuracy: 0.9204
-   
+```output
+[[ 960    0    1    2    1    5    6    3    1    1]
+ [   0 1112    3    1    0    1    5    1   12    0]
+ [   9    8  920   20   10    4   10   11   37    3]
+ [   4    0   17  921    2   21    4   12   20    9]
+ [   1    2    5    3  915    0   10    2    6   38]
+ [  10    2    0   41   10  770   17    7   28    7]
+ [   9    3    7    2    6   20  907    1    3    0]
+ [   2    7   22    5    8    1    1  950    5   27]
+ [  10   15    5   21   15   27    7   11  851   12]
+ [   7    8    2   13   32   13    0   24   12  898]]
+Overall accuracy: 0.9204
+```
 
 使用 `matplotlib`，將混淆矩陣作為圖表顯示。 在此圖表中，X 軸代表實際值，Y 軸代表預測值。 每一格中的顏色代表錯誤率。 顏色越淡，表示錯誤率越高。 例如，很多 5 都錯誤分類為 3。 因此，您會在 (5,3) 看到明亮的方格。
 

@@ -5,16 +5,17 @@ description: 了解如何從您的 Azure Machine Learning 標記專案匯出資�
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.topic: conceptual
+ms.subservice: core
+ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 657b1dbb169d80a3e5563dd1a4fa52eac2278aae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 80932ebbedeca3f5e0a1b4cc2e68d73ef5b0d63a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655759"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025721"
 ---
-# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>建立和探索具有標籤的 Azure Machine Learning 資料集
+# <a name="create-and-explore-azure-machine-learning-dataset-with-labels-preview"></a>使用標籤建立和探索 Azure Machine Learning 資料集（預覽）
 
 在本文中，您將了解如何從 Azure Machine Learning 資料標記專案中匯出資料標籤，並將其載入常用格式，例如，適用於資料探索的 Pandas 資料框架或用於影像轉換的 Torchvision 資料集。 
 

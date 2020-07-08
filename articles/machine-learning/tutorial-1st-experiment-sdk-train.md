@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: e82ed66240144f94e18c3343dc0559f47722a2c4
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 2a65579ea7ea1a8e1611b604fa64f6b108c88784
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667079"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025143"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教學課程：定型第一個 ML 模型
 
@@ -176,8 +176,10 @@ print("Best run_id: " + minimum_rmse_runid)
 print("Best run_id rmse: " + str(minimum_rmse))
 ```
 
-    Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
-    Best run_id rmse: 57.234760283951765
+```output
+Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
+Best run_id rmse: 57.234760283951765
+```
 
 使用最佳執行識別碼搭配實驗物件的 `Run` 建構函式來提取個別執行。 然後呼叫 `get_file_names()`來查看可從此執行下載的所有檔案。 在此案例中，您在訓練期間只會為每個執行上傳一個檔案。
 
@@ -187,7 +189,9 @@ best_run = Run(experiment=experiment, run_id=minimum_rmse_runid)
 print(best_run.get_file_names())
 ```
 
-    ['model_alpha_0.1.pkl']
+```output
+['model_alpha_0.1.pkl']
+```
 
 在執行物件上呼叫 `download()`，並指定要下載的模型檔案名稱。 根據預設，此函式會將項目下載至目前的目錄。
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d224bd9e9e7b1f8fc9eb45d85e78811d8642fc78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b22c653d25dc23bbcb249344affaf83a07f190af
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519545"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024875"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 Azure 入口網站來指派用於存取 blob 和佇列資料的 RBAC 角色
 
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../
 
     ![顯示如何指派 RBAC 角色的螢幕擷取畫面](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
 
-1. 按一下 **[儲存]** 。 您對其指派角色的身分識別會出現在該角色下方。 如下圖所示，新增的使用者現在有權對名為 sample-container** 容器讀取資料。
+1. 按一下 [檔案] 。 您對其指派角色的身分識別會出現在該角色下方。 如下圖所示，新增的使用者現在有權對名為 sample-container** 容器讀取資料。
 
     ![顯示指派給角色的使用者清單的螢幕擷取畫面](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
