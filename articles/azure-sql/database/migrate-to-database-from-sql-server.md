@@ -1,5 +1,5 @@
 ---
-title: SQL Server 資料庫移轉至 Azure SQL Database 中的單一或集區資料庫
+title: 將 SQL Server 資料庫移轉至 Azure SQL Database
 description: 深入瞭解 SQL Server 資料庫移轉至 Azure SQL Database。
 keywords: database migration,sql server database migration,database migration tools,migrate database,migrate sql database,資料庫移轉,sql server 資料庫移轉,資料庫移轉工具,移轉資料庫,移轉 sql database
 services: sql-database
@@ -12,20 +12,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 861c6749c7843d64a39376366544668c77883c9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 106337fb4756052ee682624290620093bf4a70b3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338340"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081905"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>將 SQL Server 資料庫移轉至 Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在本文中，您將了解用來將 SQL Server 2005 或更新版本的資料庫移轉至 Azure SQL Database 中單一或集區資料庫的主要方法。 如需遷移至 Azure SQL 受控執行個體的詳細資訊，請參閱[將 SQL Server 實例遷移至 AZURE sql 受控執行個體](../managed-instance/migrate-to-instance-from-sql-server.md)。 如需從其他平台移轉的移轉資訊，請參閱 [Azure 資料庫移轉指南](https://datamigration.microsoft.com/) \(英文\)。
+在本文中，您將瞭解將 SQL Server 2005 或更新版本的資料庫移轉至 Azure SQL Database 的主要方法。 如需遷移至 Azure SQL 受控執行個體的詳細資訊，請參閱[將 SQL Server 實例遷移至 AZURE sql 受控執行個體](../managed-instance/migrate-to-instance-from-sql-server.md)。 如需從其他平台移轉的移轉資訊，請參閱 [Azure 資料庫移轉指南](https://datamigration.microsoft.com/) \(英文\)。
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>移轉至單一資料庫或集區資料庫
 
-將 SQL Server 2005 或更新版本的資料庫移轉至 Azure SQL Database 中單一或集區資料庫的主要方法有兩種。 第一種方法比較簡單，但在移轉期間需要一些可能較長期的停機時間。 第二種方法比較複雜，但可大幅免去移轉期間的停機時間。
+有兩個主要方法可將 SQL Server 2005 或更新版本的資料庫移轉至 Azure SQL Database。 第一種方法比較簡單，但在移轉期間需要一些可能較長期的停機時間。 第二種方法比較複雜，但可大幅免去移轉期間的停機時間。
 
 不論是哪一種方法，您都需要使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) 來確定來源資料庫與 Azure SQL Database 相容。 除了與伺服器層級和跨資料庫作業相關的問題之外，SQL Database 正接近與 SQL Server 的[功能](features-comparison.md)同位。 依賴[部分支援或未支援功能](transact-sql-tsql-differences-sql-server.md)的資料庫和應用程式需要一些[再造來修正這些不相容情況](migrate-to-database-from-sql-server.md#resolving-database-migration-compatibility-issues)，然後才能移轉 SQL Server 資料。
 

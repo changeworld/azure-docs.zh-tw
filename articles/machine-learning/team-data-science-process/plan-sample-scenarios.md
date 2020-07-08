@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d462f146f3f094602835d88e48815d5537c58665
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687441"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078777"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>在 Azure 機器學習中的進階分析案例
 本文概述可以運用 [Team Data Science Process (TDSP)](overview.md)來處理的各種範例資料來源和目標案例。 TDSP 提供系統化的方法，可讓小組共同建置智慧型應用程式。 此處呈現的案例將根據資料特性、來源位置和在 Azure 中的目標儲存機制，來說明資料處理工作流程中可用的選項。
@@ -193,9 +194,7 @@ ms.locfileid: "84687441"
 1. 建立 Azure HDInsight Hadoop 叢集。
 1. (選擇性) 前置處理和清除資料。
    
-   a.  前置處理和清除 IPython Notebook 中的資料，從 Azure 存取資料
-   
-       blobs.
+   a.  前置處理和清除 IPython Notebook 中的資料 (從 Azure Blob 存取資料)。
    
    b.  如有需要，將資料轉換為已清除的表格式表單。
    

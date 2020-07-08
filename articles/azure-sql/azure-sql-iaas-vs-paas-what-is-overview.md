@@ -13,11 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/27/2020
-ms.openlocfilehash: 1ad7dc2452cdc2756413db1a07da74e2a1dc3fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a4f26b11911caaa7bce40b77570331b492ceb9d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344623"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080171"
 ---
 # <a name="what-is-azure-sql"></a>什麼是 Azure SQL？ 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -33,7 +34,7 @@ Azure SQL 建基於熟悉的 SQL Server 引擎，因此您可以輕鬆地遷移�
 瞭解每個產品如何融入 Microsoft 的 Azure SQL 資料平臺，以符合您業務需求的正確選項。 無論您的成本節約或最低管理優先順序，本文都可以協助您決定哪一種方法符合您最關心的商務需求。
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 在現今的資料驅動世界中，推動數位轉型的方式越來越大，因為我們能夠管理大量資料，並充分發揮其潛力。 但是現今的資料資產越來越複雜，資料裝載于內部部署、雲端或網路邊緣。 建立智慧型和沉浸式應用程式的開發人員，可能會發現其本身受到限制，而這些限制最終會影響他們的經驗。 因平臺不相容而產生的限制、資料安全性不佳、資源不足和價格效能屏障，會造成可能阻礙應用程式現代化和開發的複雜性。 
 
@@ -58,7 +59,7 @@ Azure 會持續監視您的資料是否有威脅。 有了 Azure SQL，您可以
 有數個因素會影響您在不同資料供應專案之間選擇的決定：
 
 - [成本](#cost)： PaaS 和 IaaS 選項都包含基本價格，涵蓋基礎結構和授權。 不過，使用 IaaS 選項時，您必須投入額外的時間和資源來管理您的資料庫，而在 PaaS 中，您可以取得這些系統管理功能（價格包括在內）。 IaaS 可讓您在不使用資源時將其關機以降低成本，而 PaaS 一律會執行，除非您在需要時卸載並重新建立資源。
-- [管理](#administration)： PaaS 選項可縮短管理資料庫所需投入的時間量。 不過，它也會限制您可以執行或執行的自訂管理工作和腳本的範圍。 例如，單一或集區資料庫不支援 CLR，但是 SQL 受控執行個體的實例支援。 此外，PaaS 中沒有任何部署選項支援使用追蹤旗標。
+- [管理](#administration)： PaaS 選項可縮短管理資料庫所需投入的時間量。 不過，它也會限制您可以執行或執行的自訂管理工作和腳本的範圍。 例如，SQL Database 不支援 CLR，但是 SQL 受控執行個體的實例支援。 此外，PaaS 中沒有任何部署選項支援使用追蹤旗標。
 - [服務等級協定](#service-level-agreement-sla)： IaaS 和 PaaS 皆提供高標準 SLA。 針對基礎架構，PaaS 選項可保證 99.99 % 的 SLA，而 IaaS 保證 99.95% 的 SLA，這表示您需要實作其他的機制來確保資料庫的可用性。 您可以藉由建立額外的 SQL 虛擬機器，並執行 SQL Server Always On 可用性群組高可用性解決方案，來達到99.99% 的 SLA。 
 - [移至 azure 的時間](#market)： azure VM 上的 SQL Server 與您的環境完全相符，因此從內部部署至 Azure vm 的遷移與將資料庫從一部內部部署伺服器移至另一部伺服器並無不同。 SQL 受控執行個體也可以輕鬆地進行遷移;不過，在您的遷移之前，可能需要套用一些變更。 
 

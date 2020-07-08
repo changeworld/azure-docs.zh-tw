@@ -5,14 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: fa94b7461907a2337ba448a91d67fe93c5ab2f8f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 93136286dc14a5c7c69fe8c17829eddabddbfacf
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957557"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080052"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
@@ -72,7 +73,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 以下是一些相關的屬性：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | -- | -- |
 | AutoCommit | 布林值，用來表示是否為 Phoenix 交易啟用 `autoCommit`。 |
 | 唯讀 | 布林值，用來表示連線是否為唯讀連線。 |
@@ -83,7 +84,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 以下是 `TransactionIsolation` 值：
 
-| 隔離值 | 說明 |
+| 隔離值 | 描述 |
 | -- | -- |
 | 0 | 不支援交易。 |
 | 1 | 允許進行中途讀取、不可重複的讀取，以及虛設項目讀取。 |

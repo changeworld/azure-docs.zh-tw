@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/4/2020
-ms.openlocfilehash: d9d600b4ac34e4608b7747bee0e0a704ad2ab3be
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 7/7/2020
+ms.openlocfilehash: b733ef771444e080eb794b300e75d4396c3ef674
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846047"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079168"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>讀取「適用於 MySQL 的 Azure 資料庫」中的複本
 
@@ -20,6 +20,12 @@ ms.locfileid: "83846047"
 複本是新伺服器，管理方式類似於一般適用於 MySQL 的 Azure 資料庫伺服器。 針對每個讀取複本，系統每月會針對在虛擬核心中所佈建的計算量，以及在儲存體中所佈建的容量 (以 GB 為單位) 向您收費。
 
 若要深入了解 MySQL 複寫功能與問題，請參閱 [MySQL 複寫文件](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) \(英文\)。
+
+> [!NOTE]
+> 偏差-免費通訊
+>
+> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對_一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+>
 
 ## <a name="when-to-use-a-read-replica"></a>何時應該使用讀取複本
 
@@ -41,9 +47,7 @@ ms.locfileid: "83846047"
 ### <a name="universal-replica-regions"></a>全球的複本區域
 無論您的主要伺服器位於何處，您都可以在下列任何區域中建立讀取複本。 支援的全球複本區域包括：
 
-澳大利亞東部、澳大利亞東南部、美國中部、東亞、美國東部、美國東部 2、日本東部、日本西部、南韓中部、南韓南部、美國中北部、北歐、美國中南部、東南亞、英國南部、英國西部、西歐、美國西部。
-
-*美國西部 2 暫時無法作為跨區域複本的位置。
+澳大利亞東部、澳大利亞東南部、美國中部、東亞、美國東部、美國東部2、日本東部、日本西部、韓國中部、南韓南部、美國中北部、北歐、美國中南部、東南亞、英國南部、英國西部、西歐、美國西部、美國西部2、美國中西部。
 
 ### <a name="paired-regions"></a>配對的區域
 除了全球複本區域外，您還可以在主要伺服器的 Azure 配對區域中建立讀取複本。 如果您不知道所在區域的配對，則可以從 [Azure 配對區域](../best-practices-availability-paired-regions.md)一文深入了解。
@@ -52,16 +56,19 @@ ms.locfileid: "83846047"
 
 不過，其中有一些限制需要考慮： 
 
-* 區域可用性：美國西部 2、法國中部、阿拉伯聯合大公國北部和德國中部有提供「適用於 MySQL 的 Azure 資料庫」。 不過，卻沒有提供其配對區域。
+* 區域可用性：適用於 MySQL 的 Azure 資料庫適用于法國中部、阿拉伯聯合大公國北部和德國中部。 不過，卻沒有提供其配對區域。
     
 * 單向配對：某些 Azure 區域只會單向配對。 這些區域包括印度西部、巴西南部和 US Gov 維吉尼亞州。 
    這表示位於印度西部的主要伺服器可以在印度南部建立複本。 但位於印度南部的主要伺服器無法在印度西部建立複本。 其原因是印度西部的次要區域是印度南部，但印度南部的次要區域卻不是印度西部。
 
 ## <a name="create-a-replica"></a>建立複本
 
+> [!IMPORTANT]
+> 讀取複本功能僅供「適用於 MySQL 的 Azure 資料庫」伺服器用於一般用途或記憶體最佳化定價層。 請確定主要伺服器處於這些定價層中。
+
 如果主要伺服器沒有現有的複本伺服器，則主要伺服器會先重新開啟動以準備好進行複寫。
 
-當您開始建立複本的工作流程時，系統會建立空白的「適用於 MySQL 的 Azure 資料庫」伺服器。 新的伺服器會具有主要伺服器上的資料。 建立時間取決於主要伺服器上的資料量，以及距離上次每週完整備份的時間。 時間的範圍可能介於數分鐘到數小時。複本伺服器一律會建立在與主要伺服器相同的資源群組和訂用帳戶中。 如果您想要將複本伺服器建立到不同的資源群組或不同的訂用帳戶，您可以[在建立後移動複本伺服器](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)。
+當您開始建立複本的工作流程時，系統會建立空白的「適用於 MySQL 的 Azure 資料庫」伺服器。 新的伺服器會具有主要伺服器上的資料。 建立時間取決於主要伺服器上的資料量，以及距離上次每週完整備份的時間。 時間的範圍可能介於數分鐘到數小時。 複本伺服器一律會在與主要伺服器相同的資源群組和訂閱中建立。 如果您想要將複本伺服器建立到不同的資源群組或不同的訂閱，您可以在建立後[移動複本伺服器](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)。
 
 每個複本都會啟用儲存體[自動成長](concepts-pricing-tiers.md#storage-auto-grow)。 自動成長功能可讓複本跟上複寫至其中的資料，並防止因儲存空間不足的錯誤而造成複寫中斷。
 
@@ -101,11 +108,33 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 了解如何[停止複寫至複本](howto-read-replicas-portal.md)。
 
+## <a name="failover"></a>容錯移轉
+
+主要和複本伺服器之間沒有自動容錯移轉。 
+
+由於複寫是非同步，因此主要和複本之間會有延遲。 延遲量可能會受到一些因素的影響，例如，在主伺服器上執行的工作負載有多長，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘的時間。 您可以使用每個複本可用的計量*複本延遲*來追蹤實際的複寫延遲。 此度量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察複本延遲，以識別您的平均延遲。 您可以針對複本延遲設定警示，如此一來，如果它超出預期的範圍，您就可以採取動作。
+
+> [!Tip]
+> 如果您容錯移轉至複本，從主伺服器取消複本時的延遲將會指出遺失的資料量。
+
+一旦決定要容錯移轉至複本之後， 
+
+1. 停止複寫至複本<br/>
+   若要讓複本伺服器能夠接受寫入，必須執行此步驟。 做為此程式的一部分，複本伺服器將會從主機 delinked。 一旦您起始停止複寫，後端進程通常需要大約2分鐘的時間才能完成。 請參閱本文的[停止](#stop-replication)複寫一節，以瞭解此動作的含意。
+    
+2. 將您的應用程式指向（先前的）複本<br/>
+   每部伺服器都有唯一的連接字串。 更新您的應用程式，使其指向（先前）複本，而不是 master。
+    
+一旦您的應用程式成功處理讀取和寫入，您就已完成容錯移轉。 您的應用程式體驗所需的停機時間將取決於您偵測到問題，並完成上述步驟1和2。
+
 ## <a name="considerations-and-limitations"></a>考量與限制
 
 ### <a name="pricing-tiers"></a>定價層
 
 目前只有「一般用途」與「記憶體最佳化」定價層提供讀取複本。
+
+> [!NOTE]
+> 執行複本伺服器的成本取決於執行複本伺服器的區域。
 
 ### <a name="master-server-restart"></a>主要伺服器重新啟動
 

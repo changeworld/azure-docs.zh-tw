@@ -11,11 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: f53c7ccec5e82b79966807f12978adfb00940354
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9da25a7d7521108195d3183f52b914e13105e8d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195374"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082262"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure Data Factory 中搭配使用 Azure SQL 受控執行個體與 SQL Server Integration Services （SSIS）
 
@@ -35,25 +36,25 @@ ms.locfileid: "84195374"
 
 1. 選擇 Azure Active Directory 驗證時，[在 AZURE SQL 受控執行個體上啟用 Azure Active Directory （Azure AD）](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)。
 
-1. 選擇如何透過私人端點或透過公用端點連線到 SQL 受控執行個體：
+1. 選擇如何透過私用端點或透過公用端點連接 SQL 受控執行個體：
 
     - 透過私人端點 (偏好選項)
 
         1. 選擇 Azure-SSIS IR 要加入的虛擬網路：
-            - 與 SQL 受控執行個體位於相同虛擬網路內，但有**不同的子網路**。
-            - 與 SQL 受控執行個體位於不同虛擬網路內，透過虛擬網路對等互連 (因全球 VNet 對等互連限制而僅限相同的區域) 或從虛擬網路到虛擬網路的連線。
+            - 在與受控實例相同的虛擬網路內，使用**不同的子網**。
+            - 在與受控實例不同的虛擬網路中，透過虛擬網路對等互連（因為全域 VNet 對等互連條件約束而限制為相同區域），或從虛擬網路到虛擬網路的連線。
 
-            如需 SQL 受控實例連線的詳細資訊，請參閱[將您的應用程式連線到 AZURE sql 受控執行個體](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)。
+            如需 SQL 受控執行個體連線的詳細資訊，請參閱[將您的應用程式連線到 AZURE sql 受控執行個體](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)。
 
         1. [設定虛擬網路](#configure-virtual-network)。
 
     - 透過公用端點
 
-        Azure SQL 受控實例可透過[公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)提供連線能力。 輸入和輸出需求必須符合，才能允許 SQL 受控執行個體與 Azure-SSIS IR 之間的流量：
+        Azure SQL 受控實例可透過[公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)提供連線能力。 輸入和輸出需求必須符合，才能允許 SQL 受控執行個體與 Azure SSIS IR 之間的流量：
 
         - 當 Azure-SSIS IR 不在虛擬網路內時 (偏好選項)
 
-            **SQL 受控執行個體的輸入需求**，以允許來自 Azure-SSIS IR 的輸入流量。
+            **SQL 受控執行個體的輸入需求**，以允許來自 AZURE SSIS IR 的輸入流量。
 
             | 傳輸通訊協定 | 來源 | 來源連接埠範圍 | Destination | 目的地連接埠範圍 |
             |---|---|---|---|---|
@@ -63,15 +64,15 @@ ms.locfileid: "84195374"
 
         - 當 Azure-SSIS IR 在虛擬網路內時
 
-            在特殊情況下，若 SQL 受控執行個體位於 Azure-SSIS IR 不支援的區域，則 Azure-SSIS IR 會因全球 VNet 對等互連限制而位於沒有 VNet 對等互連的虛擬網路內。 在此情況下，**虛擬網路內的 Azure-SSIS IR** 會**透過公用端點**連線到 SQL 受控執行個體。 使用下列網路安全性群組 (NSG) 規則來允許 SQL 受控執行個體與 Azure-SSIS IR 之間的流量：
+            當 SQL 受控執行個體位於 Azure SSIS IR 不支援的區域時，會有一個特殊案例，因為全域 VNet 對等互連限制，Azure SSIS IR 在沒有 VNet 對等互連的虛擬網路內。 在此案例中，**虛擬網路內的 AZURE SSIS IR**會透過**公用端點**連接 SQL 受控執行個體。 使用以下網路安全性群組（NSG）規則，以允許 SQL 受控執行個體與 Azure SSIS IR 之間的流量：
 
-            1. **SQL 受控執行個體的輸入需求**，以允許來自 Azure-SSIS IR 的輸入流量。
+            1. **SQL 受控執行個體的輸入需求**，以允許來自 AZURE SSIS IR 的輸入流量。
 
                 | 傳輸通訊協定 | 來源 | 來源連接埠範圍 | Destination |目的地連接埠範圍 |
                 |---|---|---|---|---|
                 |TCP|Azure-SSIS IR 的靜態 IP 位址 <br> 如需詳細資料，請參閱[針對 Azure-SSIS IR 使用自己的公用 IP](join-azure-ssis-integration-runtime-virtual-network.md#publicIP)。|*|VirtualNetwork|3342|
 
-             1. **Azure-SSIS IR 的輸出需求**，以允許 SQL 受控執行個體的輸出流量。
+             1. **AZURE SSIS IR 的輸出需求**，以允許對 SQL 受控執行個體的輸出流量。
 
                 | 傳輸通訊協定 | 來源 | 來源連接埠範圍 | Destination |目的地連接埠範圍 |
                 |---|---|---|---|---|
@@ -101,14 +102,14 @@ ms.locfileid: "84195374"
         - Microsoft.Network/LoadBalancers
         - Microsoft.Network/NetworkSecurityGroups
 
-    1. 在網路安全性群組 (NSG) 規則上允許流量，以允許 SQL 受控執行個體與 Azure-SSIS IR 之間的流量，以及 Azure-SSIS IR 所需的流量。
-        1. **SQL 受控執行個體的輸入需求**，以允許來自 Azure-SSIS IR 的輸入流量。
+    1. 允許網路安全性群組（NSG）規則上的流量，以允許 SQL 受控執行個體與 Azure SSIS IR 之間的流量，以及 Azure SSIS IR 所需的流量。
+        1. **SQL 受控執行個體的輸入需求**，以允許來自 AZURE SSIS IR 的輸入流量。
 
             | 傳輸通訊協定 | 來源 | 來源連接埠範圍 | Destination | 目的地連接埠範圍 | 註解 |
             |---|---|---|---|---|---|
             |TCP|VirtualNetwork|*|VirtualNetwork|1433、11000-11999|如果 SQL Database 伺服器連線原則設定為 [Proxy] 而不是 [重新導向]，則只需要連接埠 1433。|
 
-        1. **Azure-SSIS IR 的輸出需求**，以允許 SQL 受控執行個體的輸出流量，以及 Azure-SSIS IR 所需的其他流量。
+        1. **AZURE SSIS ir 的輸出需求**，以允許對 SQL 受控執行個體的輸出流量，以及 AZURE SSIS IR 所需的其他流量。
 
         | 傳輸通訊協定 | 來源 | 來源連接埠範圍 | Destination | 目的地連接埠範圍 | 註解 |
         |---|---|---|---|---|---|
@@ -134,9 +135,9 @@ ms.locfileid: "84195374"
 
 ### <a name="provision-azure-ssis-integration-runtime"></a>佈建 Azure-SSIS Integration Runtime
 
-1. 選取 SQL 受控執行個體私人端點或公用端點。
+1. 選取 [SQL 受控執行個體私人端點] 或 [公用端點]。
 
-    在 Azure 入口網站/ADF 應用程式中[佈建 Azure-SSIS IR](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime) 時，請在 [SQL 設定] 頁面上，使用 SQL 受控執行個體**私人端點**或**公用端點**來建立 SSIS 目錄 (SSISDB)。
+    在 Azure 入口網站/ADF 應用程式中布建[AZURE SSIS IR](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime)時，請在 [sql 設定] 頁面上，于建立 SSIS 目錄（SSISDB）時，使用 sql 受控執行個體**私人端點**或**公用端點**。
 
     公用端點主機名稱的格式為 <MI 名稱>.public.<DNZ 區域>.database.windows.net，而用於連線的連接埠為 3342。  
 
@@ -152,7 +153,7 @@ ms.locfileid: "84195374"
 
     在進階設定頁面上，選取要加入的虛擬網路和子網路。
     
-    若與 SQL 受控執行個體位於相同的虛擬網路內，請選擇與 SQL 受控執行個體**不同的子網路**。 
+    在與 SQL 受控執行個體相同的虛擬網路內，選擇不同于 SQL 受控執行個體的**子網**。 
 
     如需如何將 Azure-SSIS IR 加入虛擬網路的詳細資訊，請參閱[將 Azure-SSIS Integration Runtime 加入虛擬網路](join-azure-ssis-integration-runtime-virtual-network.md)。
 
@@ -172,7 +173,7 @@ SSISDB 記錄保留原則是由 [catalog.catalog_properties](https://docs.micros
 
     作業詳細資訊和作業訊息儲存在目錄中的天數。 當值為 -1 時，保留週期為無限。 注意:如果不想要清除，請將 OPERATION_CLEANUP_ENABLED 設定為 FALSE。
 
-若要將保留週期 (由系統管理員設定) 以外的 SSISDB 記錄移除，您可觸發預存程序 `[internal].[cleanup_server_retention_window_exclusive]`。 (選擇性) 您可排程 SQL 受控執行個體代理程式作業執行來觸發預存程序。
+若要將保留週期 (由系統管理員設定) 以外的 SSISDB 記錄移除，您可觸發預存程序 `[internal].[cleanup_server_retention_window_exclusive]`。 （選擇性）您可以排程 SQL 受控執行個體 agent 作業執行，以觸發預存程式。
 
 ## <a name="next-steps"></a>後續步驟
 

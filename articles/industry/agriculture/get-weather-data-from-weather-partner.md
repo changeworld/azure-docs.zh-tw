@@ -5,17 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 66138fb04b1053215a2c2ec07cec1b56e38fed0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39d37b1a032a386219a98a409f2eb04a6ccc6eca
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800642"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078719"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>從氣象合作夥伴取得天氣資料
 
 Azure FarmBeats 可協助您使用以 docker 為基礎的連接器架構，將氣象資料提供者的天氣資料帶入其中。 使用此架構，氣象資料提供者會執行可與 FarmBeats 整合的 docker。 目前支援下列天氣資料提供者：
 
-[DTN](https://www.dtn.com/dtn-content-integration/)
+  ![DTN](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+
+  [DTN](https://www.dtn.com/dtn-content-integration/)
 
 天氣資料可以用來產生可操作的深入解析，並在 FarmBeats 上建立 AI/ML 模型。
 
@@ -59,6 +62,9 @@ Azure FarmBeats 可協助您使用以 docker 為基礎的連接器架構，將�
    ```
 
    例如，若要從 DTN 取得天氣資料，請使用以下的承載。 您可以依據您的喜好設定來修改名稱和描述。
+
+   > [!NOTE]
+   > 下列步驟需要 API 金鑰，請聯絡 DTN 以取得 DTN 訂用帳戶的相同帳戶。
 
    ```json
    {
@@ -220,6 +226,6 @@ Azure FarmBeats 可協助您使用以 docker 為基礎的連接器架構，將�
 |  NAME   |   FarmBeats 系統中合作夥伴的所需名稱   |
 |  description |  Description   |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 您現在已從 Azure FarmBeats 實例查詢感應器資料。 現在，請瞭解如何為您的伺服器陣列[產生對應](generate-maps-in-azure-farmbeats.md#generate-maps)。

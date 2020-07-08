@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d5e44d6b34a16f03d4ca1f82453f1f6e9f074917
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860608"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080732"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>建立 Hive 資料表，並從 Azure Blob 儲存體載入資料
 
@@ -29,7 +30,7 @@ ms.locfileid: "83860608"
 * 啟用叢集的遠端存取、登入，然後開啟 Hadoop 命令列主控台。 如需指示，請參閱[管理 Apache Hadoop 叢集](../../hdinsight/hdinsight-administer-use-portal-linux.md)。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>將資料上傳至 Azure Blob 儲存體
-如果您遵循[設定適用於進階分析的 Azure 虛擬機器](../../machine-learning/data-science-virtual-machine/overview.md)中所提供的指示建立了 Azure 虛擬機器，應該已將這個指令碼檔案下載至虛擬機器上的 *C:\\Users\\\<使用者名稱\>\\Documents\\Data Science Scripts* 目錄中。 這些 Hive 查詢只要求您在適當欄位中提供準備好進行提交的資料結構描述和 Azure Blob 儲存體組態。
+如果您遵循[設定適用于高階分析的 Azure 虛擬機器](../../machine-learning/data-science-virtual-machine/overview.md)中所提供的指示來建立 Azure 虛擬機器，則應該已將這個腳本檔案下載至虛擬機器上的*C： \\ Users \\ \<user name\> \\ 檔 \\ 資料科學腳本*目錄。 這些 Hive 查詢只要求您在適當欄位中提供準備好進行提交的資料結構描述和 Azure Blob 儲存體組態。
 
 我們假設 Hive 資料表的資料為 **未壓縮的** 表格格式，而且資料已上傳至 Hadoop 叢集所使用之儲存體帳戶的預設 (或其他) 容器。
 
@@ -69,7 +70,9 @@ Hive 查詢類似 SQL。 如果您熟悉 SQL，您可能會發現 [Hive for SQL 
 #### <a name="submit-hive-queries-in-hql-files"></a>提交 '.hql' 檔案中的 Hive 查詢
 若 Hive 查詢更複雜且有多行，則在命令列或 Hive 命令主控台中編輯查詢並不實際。 替代方法是在 Hadoop 叢集的前端節點中使用文字編輯器，將 Hive 查詢儲存於前端節點本機目錄上的 '.hql' 檔案中。 然後可以使用 `-f` 引數提交 '.hql' 檔案中的 Hive 查詢，如下所示：
 
-    hive -f "<path to the '.hql' file>"
+```console
+hive -f "<path to the '.hql' file>"
+```
 
 !['.hql' 檔案中的 Hive 查詢](./media/move-hive-tables/run-hive-queries-3.png)
 
@@ -77,8 +80,10 @@ Hive 查詢類似 SQL。 如果您熟悉 SQL，您可能會發現 [Hive for SQL 
 
 根據預設，在 Hadoop 命令列中提交 Hive 查詢之後，Map/Reduce 作業的進度會顯示於螢幕上。 若要隱藏 Map/Reduce 工作進度的畫面顯示，您可以在命令列中使用引數 `-S` (大寫的 "S")，如下所示：
 
-    hive -S -f "<path to the '.hql' file>"
-    hive -S -e "<Hive queries>"
+```console
+hive -S -f "<path to the '.hql' file>"
+hive -S -e "<Hive queries>"
+```
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>在 Hive 命令主控台中提交 Hive 查詢。
 您也可以在 Hadoop 命令列中執行 `hive` 命令，先進入 Hive 命令主控台，然後在 Hive 命令主控台中提交 Hive 查詢。 範例如下。 在此範例中，這兩個紅色方塊反白顯示的命令分別是用來進入 Hive 命令主控台，以及在 Hive 命令主控台中提交 Hive 查詢。 綠色方塊反白顯示的是 Hive 查詢的輸出。
@@ -90,7 +95,9 @@ Hive 查詢類似 SQL。 如果您熟悉 SQL，您可能會發現 [Hive for SQL 
 **將 Hive 查詢結果輸出到本機檔案。**
 若要將 Hive 查詢結果輸出到前端節點上的本機目錄，您必須在 Hadoop 命令列中提交 Hive 查詢，如下所示：
 
-    hive -e "<hive query>" > <local path in the head node>
+```console
+hive -e "<hive query>" > <local path in the head node>
+```
 
 在下列範例中，Hive 查詢的輸出會寫入 `hivequeryoutput.txt` 目錄中的 `C:\apps\temp` 檔案。
 
@@ -100,7 +107,9 @@ Hive 查詢類似 SQL。 如果您熟悉 SQL，您可能會發現 [Hive for SQL 
 
 您也可以將 Hive 查詢結果輸出到 Hadoop 叢集預設容器內的 Azure Blob。 此作業的 Hive 查詢如下所示：
 
-    insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+```console
+insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+```
 
 在下列範例中，Hive 查詢的輸出會寫入 Hadoop 叢集預設容器內的 Blob 目錄 `queryoutputdir` 。 在此處，您只需提供目錄名稱，而不需提供 Blob 名稱。 如果您同時提供目錄和 Blob 名稱 (例如 `wasb:///queryoutputdir/queryoutput.txt`)，則會擲回錯誤。
 
@@ -111,7 +120,7 @@ Hive 查詢類似 SQL。 如果您熟悉 SQL，您可能會發現 [Hive for SQL 
 ![Azure 儲存體總管顯示的 Hive 查詢輸出](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="submit-hive-queries-with-the-hive-editor"></a><a name="hive-editor"></a>利用 Hive 編輯器提交 Hive 查詢
-您也可以在網頁瀏覽器中輸入 *https:\//\<Hadoop 叢集名稱>.azurehdinsight.net/Home/HiveEditor* 格式的 URL，以使用查詢主控台 (Hive 編輯器)。 您必須登入才能看到此主控台，因此您在這裡需要 Hadoop 叢集認證。
+您也可以使用查詢主控台（Hive 編輯器），方法是在網頁瀏覽器中輸入*HTTPs： \/ / \<Hadoop cluster name> . azurehdinsight.net/Home/HiveEditor*格式的 URL。 您必須登入才能看到此主控台，因此您在這裡需要 Hadoop 叢集認證。
 
 ### <a name="submit-hive-queries-with-azure-powershell-commands"></a><a name="ps"></a>利用 Azure PowerShell 命令提交 Hive 查詢
 您也可以使用 PowerShell 提交 Hive 查詢。 如需指示，請參閱 [使用 PowerShell 提交 Hive 工作](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)。
@@ -121,34 +130,38 @@ Hive 查詢會在 [GitHub 存放庫](https://github.com/Azure/Azure-MachineLearn
 
 以下是建立 Hive 資料表的 Hive 查詢。
 
-    create database if not exists <database name>;
-    CREATE EXTERNAL TABLE if not exists <database name>.<table name>
-    (
-        field1 string,
-        field2 int,
-        field3 float,
-        field4 double,
-        ...,
-        fieldN string
-    )
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
-    STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
+```hiveql
+create database if not exists <database name>;
+CREATE EXTERNAL TABLE if not exists <database name>.<table name>
+(
+    field1 string,
+    field2 int,
+    field3 float,
+    field4 double,
+    ...,
+    fieldN string
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
+STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
+```
 
 以下是您需要插入的欄位和其他設定的說明：
 
-* **\<資料庫名稱\>** ：您要建立之資料庫的名稱。 如果您只想要使用預設資料庫，則可省略 "*create database...* " 查詢。
-* **\<資料表名稱\>** ：您想要在指定資料庫內建立之資料表的名稱。 如果您想要使用預設資料庫，可透過 *\<資料表名稱\>* 直接參考資料表，而不需要使用\<資料庫名稱\>。
-* **\<欄位分隔符號\>** ：上傳至 Hive 資料表的資料檔中分隔欄位的分隔符號。
-* **\<資料行分隔符號\>** ：用來分隔資料檔中各行的分隔符號。
-* **\<儲存體位置\>** ：用來儲存 Hive 資料表資料的 Azure 儲存體位置。 如果您未指定 *LOCATION\< 儲存體位置\>* ，資料庫和資料表預設會儲存在 Hive 叢集之預設容器的 *hive/warehouse/* 目錄中。 如果您想要指定儲存體位置，儲存體位置必須位於資料庫和資料表的預設容器內。 這個位置必須是叢集之預設容器的相對位置，其格式為 *'wasb:///\<directory 1>/'* 或 *'wasb:///\<directory 1>/\<directory 2>/'* 等。執行查詢之後，系統會在預設容器內建立相對目錄。
+* **\<database name\>**：您想要建立的資料庫名稱。 如果您只想要使用預設資料庫，則可省略 "*create database...* " 查詢。
+* **\<table name\>**：您要在指定的資料庫中建立的資料表名稱。 如果您想要使用預設資料庫，則可以直接參考資料表， *\<table name\>* 而不需要 \<database name\> 。
+* **\<field separator\>**：分隔資料檔案中要上傳至 Hive 資料表之欄位的分隔符號。
+* **\<line separator\>**：分隔資料檔中各行的分隔符號。
+* **\<storage location\>**：用來儲存 Hive 資料表資料的 Azure 儲存體位置。 如果您未指定 *LOCATION \<storage location\>*，資料庫和資料表預設會儲存在 Hive 叢集之預設容器的 hive/warehouse/** 目錄中。 如果您想要指定儲存體位置，儲存體位置必須位於資料庫和資料表的預設容器內。 此位置必須參照為相對於叢集之預設容器的位置，其格式為 *' wasb:/// \<directory 1> /'* 或 *' wasb:/// \<directory 1> / \<directory 2> /'* 等等。執行查詢之後，會在預設容器內建立相對目錄。
 * **TBLPROPERTIES("skip.header.line.count"="1")** ：如果資料檔案有標頭行，您就必須在*建立資料表*查詢的**結尾**處新增這個屬性。 否則，載入的標頭行會做為資料表的記錄。 如果資料檔不含標頭行，則可在查詢中省略此設定。
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>將資料載入至 Hive 資料表
 以下是將資料載入 Hive 資料表的 Hive 查詢。
 
-    LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+```hiveql
+LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+```
 
-* **\<Blob 資料路徑\>** ：如果要上傳至 Hive 資料表的 Blob 檔案是在 HDInsight Hadoop 叢集的預設容器中，則 *\<Blob 資料路徑\>* 的格式應該是 *'wasb://\<此容器中的目錄>/\<blob 檔案名稱>'* 。 Blob 檔案也可以位於 HDInsight Hadoop 叢集的其他容器中。 在此情況下， *\<blob 資料路徑\>* 的格式應該是 *'wasb://\<容器名稱>@\<儲存體帳戶名稱>.blob.core.windows.net/\<blob 檔案名稱>'* 。
+* **\<path to blob data\>**：如果要上傳至 Hive 資料表的 blob 檔案是在 HDInsight Hadoop 叢集的預設容器中，則的 *\<path to blob data\>* 格式應該是 *' wasb:// \<directory in this container> / \<blob file name> '*。 Blob 檔案也可以位於 HDInsight Hadoop 叢集的其他容器中。 在此情況下， *\<path to blob data\>* 的格式應該是 *' wasb:// \<container name> @ \<storage account name> . blob.core.windows.net/ \<blob file name> '*。
 
   > [!NOTE]
   > 上傳至 Hive 資料表的 Blob 資料必須位於 Hadoop 叢集儲存體帳戶的預設或其他容器中。 否則，「LOAD DATA」  查詢會失敗並提報它無法存取資料。
@@ -163,69 +176,83 @@ Hive 查詢會在 [GitHub 存放庫](https://github.com/Azure/Azure-MachineLearn
 ### <a name="partitioned-table"></a>資料分割資料表
 以下是建立資料分割資料表和並將資料載入其中的 Hive 查詢。
 
-    CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
-    (field1 string,
-    ...
-    fieldN string
-    )
-    PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
-         lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
-    LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
-        PARTITION (<partitionfieldname>=<partitionfieldvalue>);
+```hiveql
+CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
+(field1 string,
+...
+fieldN string
+)
+PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
+    lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
+LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
+    PARTITION (<partitionfieldname>=<partitionfieldvalue>);
+```
 
 查詢資料分割資料表時，建議在 **子句的** 開頭 `where` 新增資料分割條件，這樣就能提升搜尋效率。
 
-    select
-        field1, field2, ..., fieldN
-    from <database name>.<partitioned table name>
-    where <partitionfieldname>=<partitionfieldvalue> and ...;
+```hiveql
+select
+    field1, field2, ..., fieldN
+from <database name>.<partitioned table name>
+where <partitionfieldname>=<partitionfieldvalue> and ...;
+```
 
 ### <a name="store-hive-data-in-orc-format"></a><a name="orc"></a>使用 ORC 格式儲存 Hive 資料
 您無法將資料從 Blob 儲存體直接載入以 ORC 格式儲存的 Hive 資料表。 以下是您為了將資料從 Azure Blob 載入到以 ORC 格式儲存的 Hive 資料表所需採取的步驟。
 
 建立外部資料表 **STORED AS TEXTFILE** ，並將資料從 Blob 儲存體載入該資料表。
 
-        CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
-        (
-            field1 string,
-            field2 int,
-            ...
-            fieldN date
-        )
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
-            lines terminated by '<line separator>' STORED AS TEXTFILE
-            LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
+```hiveql
+CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
+(
+    field1 string,
+    field2 int,
+    ...
+    fieldN date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
+    lines terminated by '<line separator>' STORED AS TEXTFILE
+    LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
 
-        LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+```
 
 建立和步驟 1 中建立的外部資料表具備相同結構描述及相同欄位分隔符號的內部資料表，並使用 ORC 格式儲存 Hive 資料。
 
-        CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
-        (
-            field1 string,
-            field2 int,
-            ...
-            fieldN date
-        )
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
+```hiveql
+CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
+(
+    field1 string,
+    field2 int,
+    ...
+    fieldN date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
+```
 
 從步驟 1 中的外部資料表選取資料，並插入 ORC 資料表
 
-        INSERT OVERWRITE TABLE <database name>.<ORC table name>
-            SELECT * FROM <database name>.<external textfile table name>;
+```hiveql
+INSERT OVERWRITE TABLE <database name>.<ORC table name>
+    SELECT * FROM <database name>.<external textfile table name>;
+```
 
 > [!NOTE]
-> 如果 TEXTFILE 資料表 *\<資料庫名稱\>.\<外部文字檔資料表名稱\>* 具有資料分割，則在步驟 3 中，`SELECT * FROM <database name>.<external textfile table name>` 命令會選取資料分割變數做為傳回資料集中的欄位。 將它插入 *\<資料庫名稱\>.\<資料表名稱\>* 會失敗，因為 *\<資料庫名稱\>.\<ORC 資料表名稱\>* 沒有資料分割參數可做為資料表結構描述中的欄位。 在此情況下，您需要明確選取要插入 *\<資料庫名稱\>.\<ORC 資料表名稱\>* 的欄位，如下所示： 將所有資料插入 *\<資料庫名稱\>.\<ORC 資料表名稱\>* 之後，當您使用下列查詢時，即可安全捨棄 *\<外部文字檔資料表名稱\>* ： 依照此程序執行之後，您應該會有含 ORC 格式之資料的資料表可供使用。 In this case, you need to specifically select the fields to be inserted to <bpt id="p1">*</bpt><ph id="ph1">\&lt;database name\&gt;</ph>.<ph id="ph2">\&lt;ORC table name\&gt;</ph><ept id="p1">*</ept> as follows:
+> 如果 TEXTFILE 資料表，則為* \<database name\> 。 \<external textfile table name\> * 具有資料分割，則在步驟 3 中，`SELECT * FROM <database name>.<external textfile table name>` 命令會選取資料分割變數作為所傳回資料集中的欄位。 將它插入* \<database name\> 。 \<ORC table name\> * 自起失敗* \<database name\> 。 \<ORC table name\> * 沒有在資料表結構描述中作為欄位的資料分割變數。 在此情況下，您需要特別選取要插入的欄位* \<database name\> 。 \<ORC table name\> * 如下所示：
 >
 >
 
-        INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
-           SELECT field1, field2, ..., fieldN
-           FROM <database name>.<external textfile table name>
-           WHERE <partition variable>=<partition value>;
+```hiveql
+INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
+    SELECT field1, field2, ..., fieldN
+    FROM <database name>.<external textfile table name>
+    WHERE <partition variable>=<partition value>;
+```
 
-It is safe to drop the <bpt id="p1">*</bpt><ph id="ph1">\&lt;external text file table name\&gt;</ph><ept id="p1">*</ept> when using the following query after all data has been inserted into <bpt id="p2">*</bpt><ph id="ph2">\&lt;database name\&gt;</ph>.<ph id="ph3">\&lt;ORC table name\&gt;</ph><ept id="p2">*</ept>:
+當您在將 *\<external text file table name\>* 所有資料插入之後，使用下列查詢時，可以安全地捨棄* \<database name\> 。 \<ORC table name\> *：
 
-        DROP TABLE IF EXISTS <database name>.<external textfile table name>;
+```hiveql
+    DROP TABLE IF EXISTS <database name>.<external textfile table name>;
+```
 
-After following this procedure, you should have a table with data in the ORC format ready to use.  
+依照此程序執行之後，您應該會有含 ORC 格式之資料的資料表可供使用。  

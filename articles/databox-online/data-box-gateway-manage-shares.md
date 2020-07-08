@@ -8,11 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5ca8f5d629a110d2a4d3b35cb357af2c723ec312
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2b26016ec67f0eecd785e3bfb951fe5fd607545
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339190"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079137"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 入口網站來管理 Azure 資料箱閘道上的共用 
 
@@ -91,23 +92,23 @@ ms.locfileid: "84339190"
 
 在 Azure 入口網站中執行下列步驟，以重新整理共用。
 
-1.   在 Azure 入口網站中，移至 [共用]****。 選取並按一下您想要重新整理的共用。
+1. 在 Azure 入口網站中，移至 [共用]****。 選取並按一下您想要重新整理的共用。
 
-    ![選取共用](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![選取共用](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.   按一下 [重新整理]****。 
+2. 按一下 [重新整理]****。 
 
-    ![按一下 [重新整理]](media/data-box-gateway-manage-shares/refresh-2.png)
+   ![按一下 [重新整理]](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.   當提示確認時，請按一下 [是]****。 系統會開始一項作業，以重新整理內部部署共用的內容。 
+3. 當提示確認時，請按一下 [是]****。 系統會開始一項作業，以重新整理內部部署共用的內容。 
 
-    ![確認重新整理](media/data-box-gateway-manage-shares/refresh-3.png)
+   ![確認重新整理](media/data-box-gateway-manage-shares/refresh-3.png)
  
 4.   進行重新整理時，操作功能表中的重新整理選項會呈現灰色。 按一下作業通知來檢視重新整理作業狀態。
 
-5.   重新整理的時間取決於 Azure 容器中的檔案數目，以及裝置上的檔案。 成功完成重新整理之後，共用時間戳記就會更新。 即使重新整理有部分失敗，此作業都會被視為成功，而且時間戳記會更新。 
+5. 重新整理的時間取決於 Azure 容器中的檔案數目，以及裝置上的檔案。 成功完成重新整理之後，共用時間戳記就會更新。 即使重新整理有部分失敗，此作業都會被視為成功，而且時間戳記會更新。 
 
-    ![已更新的時間戳記](media/data-box-gateway-manage-shares/refresh-4.png)
+   ![已更新的時間戳記](media/data-box-gateway-manage-shares/refresh-4.png)
  
 如有錯誤，則會引發警示。 警示會詳述原因和修正問題的建議。 警示也會連結到具有完整失敗摘要的檔案，包括無法更新或刪除的檔案。
 
@@ -133,6 +134,6 @@ ms.locfileid: "84339190"
 > 您只需要針對指定的儲存體帳戶執行此作業一次。 不需要針對與相同儲存體帳戶相關聯的所有共用，重複此動作。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 了解如何[透過 Azure 入口網站管理使用者](data-box-gateway-manage-users.md)。

@@ -3,12 +3,12 @@ title: Azure 檔案共用備份的移難排解
 description: 本文說明如何排解您在保護 Azure 檔案共用時所發生的問題。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 15cea28ee6c6a969b56e34242e2631b0aa760331
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130393"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079882"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>針對備份 Azure 檔案共用時的問題進行疑難排解
 
@@ -278,8 +278,6 @@ ms.locfileid: "85130393"
 
 等候另一個進行中的作業完成，然後稍後再試一次。
 
-從檔案： troubleshoot-azure-files.md
-
 ## <a name="common-soft-delete-related-errors"></a>一般虛刪除相關錯誤
 
 ### <a name="usererrorrestoreafsinsoftdeletestate--this-restore-point-is-not-available-as-the-snapshot-associated-with-this-point-is-in-a-file-share-that-is-in-soft-deleted-state"></a>UserErrorRestoreAFSInSoftDeleteState-此還原點無法使用，因為與此點關聯的快照集位於已虛刪除狀態的檔案共用中
@@ -317,7 +315,7 @@ ms.locfileid: "85130393"
 
 檢查是否已永久刪除備份的檔案共用。 如果是，請停止檔案共用的備份，以避免重複的備份失敗。 若要瞭解如何停止保護，請參閱[停止保護 Azure 檔案共用](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需備份 Azure 檔案共用的更多資訊，請參閱︰
 

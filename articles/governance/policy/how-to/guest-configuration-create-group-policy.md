@@ -3,12 +3,12 @@ title: 如何從 Windows 群組原則基準建立來賓設定原則定義
 description: 瞭解如何將 Windows Server 2019 安全性基準的群組原則轉換成原則定義。
 ms.date: 06/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 021e8cc4aa34a21f980363e71de1a4b9afbf3ec9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbb634ed55acf8aa994045fbef6569fae031c841
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268662"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080664"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>如何從 Windows 群組原則基準建立來賓設定原則定義
 
@@ -92,7 +92,7 @@ DSC 社區已發佈[BaselineManagement 模組](https://github.com/microsoft/Base
 1. 下列指令碼包含可供用來自動執行這項工作的函式。 請注意，函式中使用的命令 `publish` 需要 `Az.Storage` 模組。
 
    ```azurepowershell-interactive
-    function publish {
+    function Publish-Configuration {
         param(
         [Parameter(Mandatory=$true)]
         $resourceGroup,
@@ -147,25 +147,29 @@ DSC 社區已發佈[BaselineManagement 模組](https://github.com/microsoft/Base
 
 1. 使用 publish 函數搭配指派的參數，將來賓設定封裝發佈至公用 blob 儲存體。
 
-   ```azurepowershell-interactive
-   $uri = publish `
-    -resourceGroup $resourceGroup `
-    -storageAccountName $storageAccount `
-    -storageContainerName $storageContainer `
-    -filePath $path `
-    -blobName $blob
-    -FullUri
-    ```
 
+   ```azurepowershell-interactive
+   $PublishConfigurationSplat = @{
+       resourceGroup = $resourceGroup
+       storageAccountName = $storageAccount
+       storageContainerName = $storageContainer
+       filePath = $path
+       blobName = $blob
+       FullUri = $true
+   }
+   $uri = Publish-Configuration @PublishConfigurationSplat
+    ```
 1. 在完成建立並上傳客體設定自訂原則套件後，請建立客體設定原則定義。 使用 `New-GuestConfigurationPolicy` Cmdlet 來建立來賓設定。
 
    ```azurepowershell-interactive
-   New-GuestConfigurationPolicy `
-    -ContentUri $Uri `
-    -DisplayName 'Server 2019 Configuration Baseline' `
-    -Description 'Validation of using a completely custom baseline configuration for Windows VMs' `
-    -Path C:\git\policyfiles\policy  `
-    -Platform Windows 
+    $NewGuestConfigurationPolicySplat = @{
+        ContentUri = $Uri 
+        DisplayName = 'Server 2019 Configuration Baseline' 
+        Description 'Validation of using a completely custom baseline configuration for Windows VMs' 
+        Path = 'C:\git\policyfiles\policy'  
+        Platform = Windows 
+        }
+   New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
     
 1. 使用 Cmdlet 發佈原則定義 `Publish-GuestConfigurationPolicy` 。 此 Cmdlet 只有 **Path** 參數，該參數會指向由 `New-GuestConfigurationPolicy` 所建立的 JSON 檔案位置。 若要執行 Publish 命令，您需要在 Azure 中建立原則定義的存取權。 如需特定的授權需求，請參閱 [Azure 原則概觀](../overview.md#getting-started)頁面。 最佳的內建角色為**資源原則參與者**。

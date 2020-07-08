@@ -7,14 +7,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: ea960a92aee1c9447bb12d27cffdc42de9fd907a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb6c540573ecd3163e9200be66edb58ed2ca4751
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77672118"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079202"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>在 HDInsight 上搭配 Apache Hadoop 使用 Apache Pig
 
@@ -36,7 +36,7 @@ Pig Latin 語言可讓您從原始輸入描述資料流 (經過一或多個轉�
 
 * 傾印**或儲存**：將資料輸出至畫面，或儲存以供處理。
 
-### <a name="user-defined-functions"></a>使用者定義的函式
+### <a name="user-defined-functions"></a>使用者自訂函數
 
 Pig Latin 也支援使用者定義函數 (UDF)，此函數讓您可用叫用外部元件，這些元件會實作很難以 Pig Latin 模型化的邏輯。
 
@@ -48,7 +48,9 @@ HDInsight 提供各種範例資料集，儲存在 `/example/data` 和 `/HdiSampl
 
 檔案中的每一筆記錄均由一列欄位組成，包括以 `[LOG LEVEL]` 欄位來顯示類型和嚴重性，例如：
 
-    2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
+```output
+2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
+```
 
 在上一個範例中，記錄層級是「錯誤」。
 
@@ -59,15 +61,15 @@ HDInsight 提供各種範例資料集，儲存在 `/example/data` 和 `/HdiSampl
 
 以下 Pig Latin 作業會從 HDInsight 叢集的預設儲存體載入 `sample.log` 檔案。 然後該工作會執行一系列轉換，進而產生輸入資料中每個記錄層級出現次數的計數。 結果會寫入 STDOUT。
 
-    ```
-    LOGS = LOAD 'wasb:///example/data/sample.log';
-    LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
-    FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
-    GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
-    FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
-    RESULT = order FREQUENCIES by COUNT desc;
-    DUMP RESULT;
-    ```
+```output
+LOGS = LOAD 'wasb:///example/data/sample.log';
+LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
+FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
+GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
+FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
+RESULT = order FREQUENCIES by COUNT desc;
+DUMP RESULT;
+```
 
 下圖顯示每個轉換如何處理資料的摘要。
 
@@ -94,7 +96,7 @@ HDInsight 可以使用各種方法執行 Pig Latin 工作。 請使用下表決�
 * [將資料上傳至 HDInsight](hdinsight-upload-data.md)
 * [搭配 HDInsight 使用 Apache Hive](./hadoop/hdinsight-use-hive.md)
 * [搭配 HDInsight 使用 Apache Sqoop](hdinsight-use-sqoop.md)
-* [搭配 HDInsight 使用 MapReduce 作業](./hadoop/hdinsight-use-mapreduce.md)
+* [搭配 HDInsight 使用 MapReduce 工作](./hadoop/hdinsight-use-mapreduce.md)
 
 [apachepig-home]: https://pig.apache.org/
 [putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html

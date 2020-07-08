@@ -12,11 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: b7cf4ab817f222f3a36a047e1e4d379f5bd6b73e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acc61cefbc9d89f11eae5b6549add57871035ddb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668401"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078964"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>針對 SQL Database 和 SQL 受控執行個體中的暫時性連接錯誤進行疑難排解
 
@@ -104,7 +105,7 @@ ms.locfileid: "84668401"
 - 使用 **Console.ReadLine** 方法或含 [確定] 按鈕的對話方塊，暫停進一步執行。 使用者在電腦連上網路之後按下 Enter 鍵。
 - 重新嘗試連接，預期成功。
 
-#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>連接時拼錯資料庫名稱以進行測試
+#### <a name="test-by-misspelling-the-user-name-when-connecting"></a>在連接時以拼錯的方式測試使用者名稱
 
 在第一次連接嘗試之前，您的程式可以故意拼錯使用者名稱。 錯誤是：
 
@@ -275,7 +276,7 @@ Enterprise Library 6 (EntLib60) 提供 .NET 受控類別來協助記錄。 如�
 
 以下是一些可查詢錯誤記錄和其他資訊的 Transact-SQL SELECT 陳述式。
 
-| 記錄查詢 | Description |
+| 記錄查詢 | 描述 |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx) 檢視可提供個別事件的資訊，包括會導致暫時性錯誤或連線失敗的某些事件。<br/><br/>在理想的情況下，您可以讓 **start_time** 或 **end_time** 值與用戶端程式發生問題時的相關資訊相互關聯。<br/><br/>您必須連線到 master** 資料庫來執行此查詢。 |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) view 提供事件種類的匯總計數來進行額外的診斷。<br/><br/>您必須連線到 master** 資料庫來執行此查詢。 |

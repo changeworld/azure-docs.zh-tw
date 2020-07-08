@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918235"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078624"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>因網路介面已停用而無法將遠端桌面連線到 VM
 
@@ -39,21 +40,29 @@ ms.locfileid: "77918235"
 )。 如果 VM 上未啟用序列主控台，請參閱[重設網路介面](#reset-network-interface)。
 2. 檢查網路介面的狀態：
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     記下停用的網路介面名稱。
 
 3. 啟用網路介面：
 
-        netsh interface set interface name="interface Name" admin=enabled
+    ```console
+    netsh interface set interface name="interface Name" admin=enabled
+    ```
 
     例如，如果交互作用介面名稱為「乙太網路 2」，請執行下列命令：
 
-        netsh interface set interface name="Ethernet 2" admin=enabled
+    ```console
+    netsh interface set interface name="Ethernet 2" admin=enabled
+    ```
 
 4.  再次檢查網路介面的狀態，確定網路介面已啟用。
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     此時您不需要重新啟動 VM。 您可回頭連線 VM。
 

@@ -8,11 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05d2ec362a81052b94746bdcfb0653e6366a3b32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcd0bbad41964e09665552a716d2577b1ccc0856
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513562"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080324"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 建立和設定 Azure 磁碟加密的金鑰保存庫（舊版）
 
@@ -152,10 +153,10 @@ Azure 磁碟加密會與 [Azure Key Vault](https://azure.microsoft.com/documenta
 使用 [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) 來設定存取原則。 如需詳細資訊，請參閱[使用 CLI 2.0 管理 Key Vault](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)。
 
 使用下列命令，提供您透過 Azure CLI 存取權所建立的服務主體，來取得祕密並包裝金鑰：
- 
-     ```azurecli-interactive
-     az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
-     ```
+
+```azurecli-interactive
+az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
+```
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a> 使用入口網站設定 Azure AD 應用程式的金鑰保存庫存取原則
 
@@ -454,6 +455,6 @@ Azure 平台需要存取您金鑰保存庫中的加密金鑰或密碼，讓該�
 ```
 
  
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [在 Windows Vm 上使用 Azure AD 啟用 Azure 磁碟加密（舊版）](disk-encryption-windows-aad.md)

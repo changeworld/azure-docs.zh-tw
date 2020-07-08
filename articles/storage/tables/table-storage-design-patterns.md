@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 5478163a6103bcc84b4f3608d7513c6e7cb11c01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbafe7c3e3b76ea13a8ca7a82b2968662b43685a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79529334"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081225"
 ---
 # <a name="table-design-patterns"></a>資料表設計模式
 本文將說明一些適用於表格服務方案的模式。 此外，您會了解如何有效處理其他表格儲存體設計文章中討論的一些問題和取捨。 下圖摘要說明不同模式之間的關聯性：  
@@ -539,7 +539,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 
 Storage Analytics 會以分隔格式將記錄訊息儲存在多個 Blob 中。 分隔格式可方便用戶端應用程式剖析記錄訊息中的資料。  
 
-Storage Analytics 會為 Blob 使用命名慣例，讓您找出含有您要搜尋之記錄訊息的一或多個 Blob。 例如，名為 "queue/2014/07/31/1800/000001.log" 的 Blob，會包含與始於 2014 年 7 月 31 日 18:00 的佇列服務有關的記錄訊息。 "000001"表示這是這段期間的第一個記錄檔。 儲存體分析也會記錄在檔案中儲存為 Blob 中繼資料的第一個和最後一個記錄訊息的時間戳記。 Blob 儲存體的 API 可讓您根據名稱前置詞找出容器中的 Blob：若要尋找所有內含從 18:00 開始之佇列記錄資料的 Blob，您可以使用前置詞 "queue/2014/07/31/1800"。  
+Storage Analytics 會為 Blob 使用命名慣例，讓您找出含有您要搜尋之記錄訊息的一或多個 Blob。 例如，名為 "queue/2014/07/31/1800/000001.log" 的 Blob，會包含與始於 2014 年 7 月 31 日 18:00 的佇列服務有關的記錄訊息。 "000001"表示這是這段期間的第一個記錄檔。 儲存體分析也會記錄在檔案中儲存為 Blob 中繼資料的第一個和最後一個記錄訊息的時間戳記。 適用于 blob 儲存體的 API 可讓您根據名稱前置詞找出容器中的 blob：若要找出包含一小時的佇列記錄資料的所有 blob （從18:00 開始），您可以使用前置詞 "queue/2014/07/31/1800"。  
 
 Storage Analytics 會在內部緩衝處理記錄訊息，然後定期更新適當的 Blob，或建立新的 Blob 來容納記錄項目的最新批次。 這會減少它必須對 Blob 服務執行的寫入數目。  
 

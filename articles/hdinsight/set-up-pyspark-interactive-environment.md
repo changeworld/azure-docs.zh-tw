@@ -6,14 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020, tracking-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 0a434e09e940bcfaa459b45ef402b72229bb9375
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea2bda905879f6bdc6cc515f43474ff570e881b4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610010"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078879"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>設定 Visual Studio Code 的 PySpark 互動式環境
 
@@ -54,7 +55,7 @@ sudo apt-get install python-dev
 
 重新開機 VSCode，然後返回 [VSCode 編輯器] 並執行**Spark： PySPark Interactive**命令。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 ### <a name="demo"></a>示範
 

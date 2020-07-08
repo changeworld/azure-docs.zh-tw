@@ -3,11 +3,12 @@ title: 使用 Azure 備份伺服器來備份 VMware VM
 description: 在本文中，您將瞭解如何使用 Azure 備份伺服器來備份在 VMware vCenter/ESXi 伺服器上執行的 VMware Vm。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed088a9c5eea461f93c844dcb0eead74761237e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628457"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081055"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 備份伺服器來備份 VMware VM
 
@@ -26,9 +27,8 @@ ms.locfileid: "84628457"
 - 請確認您正在執行支援備份的 vCenter/ESXi 版本。 請參閱[這裡](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)的支援矩陣。
 - 確定您已設定 Azure 備份伺服器。 如果還沒，請在開始之前[進行設定](backup-azure-microsoft-azure-backup.md)。 您應該執行具有最新更新的 Azure 備份伺服器。
 - 確認下列網路連接埠已開放：
-    - MABS 與 vCenter 之間的 TCP 443
-    - MABS 與 ESXi 主機之間的 TCP 443 與 TCP 902
-
+  - MABS 與 vCenter 之間的 TCP 443
+  - MABS 與 ESXi 主機之間的 TCP 443 與 TCP 902
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>建立 vCenter Server 的安全連線
 
@@ -133,72 +133,75 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
 ### <a name="role-permissions"></a>角色權限
 
-| VCenter 6.7 使用者帳戶的許可權                     | VCenter 6.5 使用者帳戶的許可權                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| U datatstore 叢集的資料存放區 cluster.Config            | U datatstore 叢集的資料存放區 cluster.Config            |
-| Datastore.AllocateSpace                                      | Datastore.AllocateSpace                                      |
-| 資料存放區。瀏覽資料存放區                                   | 資料存放區。瀏覽資料存放區                                   |
-| 資料存放區。低層級檔案作業                          | 資料存放區。低層級檔案作業                          |
-| 全域。停用方法                                       | 全域。停用方法                                       |
-| 全域。啟用方法                                        | 全域。啟用方法                                        |
-| 全域。授權                                              | 全域。授權                                              |
-| 全域。記錄事件                                             | 全域。記錄事件                                             |
-| 全域。管理自訂屬性                              | 全域。管理自訂屬性                              |
-| 全域。設定自訂屬性                                  | 全域。設定自訂屬性                                  |
-| 主機。本機作業。建立虛擬機器                | 主機。本機作業。建立虛擬機器                |
-| 網路。指派網路                                       | 網路。指派網路                                       |
-| 資源。 將虛擬機器指派給資源集區           | 資源。 將虛擬機器指派給資源集區           |
-| vApp。新增虛擬機器                                     | vApp。新增虛擬機器                                     |
-| vApp。指派資源集區                                    | vApp。指派資源集區                                    |
-| vApp。取消註冊                                              | vApp。取消註冊                                              |
-| VirtualMachine.Configuration. 新增或移除裝置          | VirtualMachine.Configuration. 新增或移除裝置          |
-| 虛擬 machine.Configuration。取得磁片租用            | 虛擬機器。設定。磁碟租用                     |
-| 虛擬機器。設定。新增磁碟                   | 虛擬機器。設定。新增磁碟                   |
-| 虛擬 machine.Configuration。Advanced configuration        | 虛擬機器。設定。進階                       |
-| 虛擬 machine.Configuration。切換磁片變更追蹤   | 虛擬 machine.Configuration。磁片變更追蹤          |
-| 虛擬 machine.Configuration.Configu 主機 USB 裝置     | 虛擬 machine.Configuration。主機 USB 裝置               |
-| 虛擬 machine.Configuration。擴充虛擬磁片           | 虛擬 machine.Configuration。擴充虛擬磁片           |
-| 虛擬 machine.Configuration。查詢未擁有的檔案           | 虛擬 machine.Configuration。查詢未擁有的檔案           |
-| 虛擬 machine.Configuration。變更 Cloud-init 位置     | 虛擬 machine.Configuration。Cloud-init 位置            |
-| 虛擬機器。來賓操作。來賓作業程式執行 | 虛擬機器。來賓操作。來賓作業程式執行 |
-| 虛擬機器。來賓作業。來賓操作修改 | 虛擬機器。來賓作業。來賓操作修改 |
-| 虛擬機器。來賓作業。來賓操作查詢    | 虛擬機器。來賓作業。來賓操作查詢    |
-| 虛擬機器。操作.裝置連線             | 虛擬機器。操作.裝置連線             |
-| 虛擬機器。操作.VIX API 的客體作業系統管理 | 虛擬機器。操作.VIX API 的客體作業系統管理 |
-| 虛擬機器。互動。關閉電源                      | 虛擬機器。互動。關閉電源                      |
-| 虛擬機器。清查。建立新的                        | 虛擬機器。清查。建立新的                        |
-| 虛擬機器。清查。移除                            | 虛擬機器。清查。移除                            |
-| 虛擬機器。清查。註冊                          | 虛擬機器。清查。註冊                          |
-| 虛擬機器。布建。允許磁片存取             | 虛擬機器。布建。允許磁片存取             |
-| 虛擬機器。布建。允許檔案存取             | 虛擬機器。布建。允許檔案存取             |
-| 虛擬機器。布建。允許唯讀磁片存取   | 虛擬機器。布建。允許唯讀磁片存取   |
-| 虛擬機器。布建。允許虛擬機器下載 | 虛擬機器。布建。允許虛擬機器下載 |
-| 虛擬機器。快照集管理。  建立快照集       | 虛擬機器。快照集管理。  建立快照集       |
-| 虛擬機器。快照集管理。移除快照集        | 虛擬機器。快照集管理。移除快照集        |
-| 虛擬機器。快照集管理。還原為快照集     | 虛擬機器。快照集管理。還原為快照集     |
+下表會針對您所建立的使用者帳戶，擷取您需要指派的權限：
 
-<br>
+| vCenter 6.5 使用者帳戶的權限                          | vCenter 6.7 使用者帳戶的權限                            |
+|----------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| 資料存放區叢集。設定資料存放區叢集                           | 資料存放區叢集。設定資料存放區叢集                           |
+| Datastore.AllocateSpace                                                    | Datastore.AllocateSpace                                                    |
+| 資料存放區。瀏覽資料存放區                                                 | 資料存放區。瀏覽資料存放區                                                 |
+| 資料存放區。低層級檔案作業                                        | 資料存放區。低層級檔案作業                                        |
+| 全域。停用方法                                                     | 全域。停用方法                                                     |
+| 全域。啟用方法                                                      | 全域。啟用方法                                                      |
+| 全域。授權                                                            | 全域。授權                                                            |
+| 全域。記錄事件                                                           | 全域。記錄事件                                                           |
+| 全域。管理自訂屬性                                            | 全域。管理自訂屬性                                            |
+| 全域。設定自訂屬性                                                | 全域。設定自訂屬性                                                |
+| 本機。本機作業。建立虛擬機器                               | 本機。本機作業。建立虛擬機器                               |
+| 網路。指派網路                                                     | 網路。指派網路                                                     |
+| 資源。 將虛擬機器指派給資源集區                          | 資源。 將虛擬機器指派給資源集區                          |
+| vApp。新增虛擬機器                                                   | vApp。新增虛擬機器                                                   |
+| vApp。指派資源集區                                                  | vApp。指派資源集區                                                  |
+| vApp。取消註冊                                                            | vApp。取消註冊                                                            |
+| VirtualMachine.Configuration. 新增或移除裝置                         | VirtualMachine.Configuration. 新增或移除裝置                         |
+| 虛擬機器。設定。磁碟租用                                   | 虛擬機器。設定。取得磁碟租用                           |
+| 虛擬機器。設定。新增磁碟                                 | 虛擬機器。設定。新增磁碟                                 |
+| 虛擬機器。設定。進階                                     | 虛擬機器。設定。進階設定                       |
+| 虛擬機器。設定。磁碟變更追蹤                         | 虛擬機器。設定。切換磁碟變更追蹤                  |
+| 虛擬機器。設定。裝載 USB 裝置                              | 虛擬機器。設定。設定裝載 USB 裝置                    |
+| 虛擬機器。設定。延伸虛擬磁碟                          | 虛擬機器。設定。延伸虛擬磁碟                          |
+| 虛擬機器。設定。查詢未知的檔案                          | 虛擬機器。設定。查詢未知的檔案                          |
+| 虛擬機器。設定。交換檔放置                           | 虛擬機器。設定。變更交換檔放置                    |
+| 虛擬機器。客體作業。客體作業程式執行         | 虛擬機器。客體作業。客體作業程式執行         |
+| 虛擬機器。客體作業。客體作業修改             | 虛擬機器。客體作業。客體作業修改             |
+| 虛擬機器。客體作業。客體作業查詢                   | 虛擬機器。客體作業。客體作業查詢                   |
+| 虛擬機器。互動。裝置連線                            | 虛擬機器。互動。裝置連線                            |
+| 虛擬機器。互動。由 VIX API 進行的客體作業系統管理 | 虛擬機器。互動。由 VIX API 進行的客體作業系統管理 |
+| 虛擬機器。互動。關閉電源                                    | 虛擬機器。互動。關閉電源                                    |
+| 虛擬機器。清查。建立新的                                      | 虛擬機器。清查。建立新的                                      |
+| 虛擬機器。清查。移除                                          | 虛擬機器。清查。移除                                          |
+| 虛擬機器。清查。註冊                                        | 虛擬機器。清查。註冊                                        |
+| 虛擬機器。佈建。允許磁碟存取                            | 虛擬機器。佈建。允許磁碟存取                            |
+| 虛擬機器。佈建。允許檔案存取                            | 虛擬機器。佈建。允許檔案存取                            |
+| 虛擬機器。佈建。允許唯讀磁碟存取                  | 虛擬機器。佈建。允許唯讀磁碟存取                  |
+| 虛擬機器。佈建。允許虛擬機器下載               | 虛擬機器。佈建。允許虛擬機器下載               |
+| 虛擬機器。快照集管理。 建立快照集                      | 虛擬機器。快照集管理。 建立快照集                      |
+| 虛擬機器。快照集管理。移除快照集                       | 虛擬機器。快照集管理。移除快照集                       |
+| 虛擬機器。快照集管理。還原為快照集                    | 虛擬機器。快照集管理。還原為快照集                    |
 
-| **vCenter 6.0 使用者帳戶的權限**                | **vCenter 5.5 使用者帳戶的權限** |
-| ---------------------------------------------------------- | ------------------------------------------- |
-| Datastore.AllocateSpace                                    | Network.Assign                              |
-| Global. 管理自訂屬性                           | Datastore.AllocateSpace                     |
-| Global. 設定自訂屬性                               | VirtualMachine.Config.ChangeTracking        |
-| 主機。本機作業。建立虛擬機器              | VirtualMachine.State.RemoveSnapshot         |
-| 網路。  指派網路                                   | VirtualMachine.State.CreateSnapshot         |
-| 資源。  將虛擬機器指派給資源集區         | VirtualMachine.Provisioning.DiskRandomRead  |
-| 虛擬 machine.Configuration。加入新的磁片                | VirtualMachine.Interact.PowerOff            |
-| 虛擬 machine.Configuration。提前                    | VirtualMachine.Inventory.Create             |
-| 虛擬 machine.Configuration。磁片變更追蹤        | VirtualMachine.Config.AddNewDisk            |
-| 虛擬 machine.Configuration。主機 USB 裝置             | VirtualMachine.Config.HostUSBDevice         |
-| 虛擬 machine.Configuration。查詢未擁有的檔案         | VirtualMachine.Config.AdvancedConfig        |
-| 虛擬 machine.Configuration。Cloud-init 位置          | VirtualMachine.Config.SwapPlacement         |
-| 虛擬機器。互動。關閉電源                     | Global.ManageCustomFields                   |
-| 虛擬機器。進程. 新建                     |                                             |
-| 虛擬機器。布建。允許磁片存取            |                                             |
-| 虛擬機器。調配. 允許唯讀磁碟存取 |                                             |
-| 虛擬機器。快照集管理。建立快照集       |                                             |
-| 虛擬機器。快照集管理。移除快照集       |                                             |
+> [!NOTE]
+> 下列表格列出 vCenter 6.0 與 vCenter 5.5 使用者帳戶的權限。
+
+| vCenter 6.0 使用者帳戶的權限 | vCenter 5.5 使用者帳戶的權限 |
+| --- | --- |
+| Datastore.AllocateSpace | Network.Assign |
+| 全域。管理自訂屬性 | Datastore.AllocateSpace |
+| 全域。設定自訂屬性 | VirtualMachine.Config.ChangeTracking |
+| 本機。本機作業。建立虛擬機器 | VirtualMachine.State.RemoveSnapshot |
+| 網路。 指派網路 | VirtualMachine.State.CreateSnapshot |
+| 資源。 將虛擬機器指派給資源集區 | VirtualMachine.Provisioning.DiskRandomRead |
+| 虛擬機器。設定。新增磁碟 | VirtualMachine.Interact.PowerOff |
+| 虛擬機器。設定。進階 | VirtualMachine.Inventory.Create |
+| 虛擬機器。設定。磁碟變更追蹤 | VirtualMachine.Config.AddNewDisk |
+| 虛擬機器。設定。裝載 USB 裝置 | VirtualMachine.Config.HostUSBDevice |
+| 虛擬機器。設定。查詢未知的檔案 | VirtualMachine.Config.AdvancedConfig |
+| 虛擬機器。設定。交換檔放置 | VirtualMachine.Config.SwapPlacement |
+| 虛擬機器。互動。關閉電源 | Global.ManageCustomFields |
+| 虛擬機器。清查。 新建 |   |
+| 虛擬機器。佈建。允許磁碟 |   |
+| 虛擬機器。佈建。 允許唯讀磁碟存取 |   |
+| 虛擬機器。快照集管理。建立快照集 |   |
+| 虛擬機器。快照集管理。移除快照集 |   |
 
 ## <a name="create-a-vmware-account"></a>建立 VMware 帳戶
 

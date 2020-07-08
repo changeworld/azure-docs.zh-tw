@@ -3,15 +3,16 @@ title: Azure Application Insights 中的相依性追蹤 | Microsoft Docs
 description: 使用 Application Insights 監視來自內部部署或 Microsoft Azure web 應用程式的相依性呼叫。
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 17fa2120df45b5cb940f6c1b6887718023a3926f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 472d7d26c8a478f521159a44959d7e0a5d749e0d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445214"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081344"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure 應用程式深入解析中的相依性追蹤 
 
-「相依性」（ *dependency* ）是指應用程式所呼叫的外部元件。 這通常是使用 HTTP 呼叫的服務，或資料庫，或檔案系統。 [Application Insights](../../azure-monitor/app/app-insights-overview.md)會測量相依性呼叫的持續時間，不論其是否失敗，以及其他資訊（例如相依性的名稱等等）。 您可以調查特定的相依性呼叫，並將它們與要求和例外狀況相互關聯。
+「相依性」（ *dependency* ）是指應用程式所呼叫的元件。 這通常是使用 HTTP 呼叫的服務，或資料庫，或檔案系統。 [Application Insights](../../azure-monitor/app/app-insights-overview.md)會測量相依性呼叫的持續時間，不論其是否失敗，以及其他資訊（例如相依性的名稱等等）。 您可以調查特定的相依性呼叫，並將它們與要求和例外狀況相互關聯。
 
 ## <a name="automatically-tracked-dependencies"></a>自動追蹤的相依性
 
@@ -199,7 +200,7 @@ services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o)
 ## <a name="open-source-sdk"></a>開放原始碼 SDK
 就像每個 Application Insights SDK，相依性集合模組也是開放原始碼。 閱讀並貢獻程式碼，或報告[官方 GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server)存放庫的問題。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [例外狀況](../../azure-monitor/app/asp-net-exceptions.md)
 * [使用者和頁面資料](../../azure-monitor/app/javascript.md)

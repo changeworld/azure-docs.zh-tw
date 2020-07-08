@@ -3,12 +3,12 @@ title: 使用 Azure Advisor 降低服務成本
 description: 使用 Azure Advisor 程式將 Azure 部署的成本最佳化。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 8ff4e2d8f778d05e9a0fa271600446e1c24380be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad8340595b10ce9c729c9c89f0099434c15a9ff2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130624"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078556"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>使用 Azure Advisor 降低服務成本
 
@@ -60,7 +60,7 @@ Advisor 會針對下列資源分析過去30天的使用量模式，並建議將�
 Advisor 會分析您過去30天的 Azure Cosmos DB 使用模式，並建議保留容量購買以將成本優化。 藉由使用保留容量，您可以預先購買 Azure Cosmos DB 每小時使用量，並省下隨用隨付費用。 保留容量是計費權益，會自動套用至新的和現有的部署。 Advisor 會使用3年期保留定價，並推斷過去30天內觀察到的使用模式，來計算個別訂用帳戶的節約預估。 共用範圍建議適用于保留容量購買，並可增加節省量。
 
 ### <a name="sql-paas-reserved-capacity"></a>SQL PaaS 保留容量
-Advisor 會分析 SQL PaaS 彈性資料庫集區和過去30天內的受控實例使用模式。 然後建議保留的容量購買，以將成本優化。 藉由使用保留容量，您可以預先購買 SQL DB 每小時使用量，並節省您的 SQL 計算成本。 您的 SQL 授權會分開計費，而且不會被保留折扣。 保留容量是計費權益，會自動套用至新的和現有的部署。 Advisor 會使用3年期保留定價，並推斷過去30天內觀察到的使用模式，來計算個別訂用帳戶的節約預估。 共用範圍建議適用于保留容量購買，並可增加節省量。
+Advisor 會分析 SQL PaaS 彈性資料庫集區，以及過去30天內的 SQL 受控執行個體使用模式。 然後建議保留的容量購買，以將成本優化。 藉由使用保留容量，您可以預先購買 SQL DB 每小時使用量，並節省您的 SQL 計算成本。 您的 SQL 授權會分開計費，而且不會被保留折扣。 保留容量是計費權益，會自動套用至新的和現有的部署。 Advisor 會使用3年期保留定價，並推斷過去30天內觀察到的使用模式，來計算個別訂用帳戶的節約預估。 共用範圍建議適用于保留容量購買，並可增加節省量。
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>App Service 戳記費用保留容量
 Advisor 會分析您在過去30天內 Azure App Service 隔離環境的戳記費用使用模式，並建議將成本優化的保留容量購買。 藉由使用保留容量，您可以針對隔離的環境戳記費用，預先購買每小時的使用量，並節省您的隨用隨付費用。 請注意，保留容量僅適用于戳記費用，而不會 App Service 實例。 保留容量是計費權益，會自動套用至新的和現有的部署。 Advisor 會根據過去30天的使用量模式，使用3年保留定價來計算個別訂閱的儲存估價。
@@ -105,7 +105,7 @@ Advisor 會偵測重複失敗 Azure Data Factory 管線。 如果您不需要，
 
 1. 在**Advisor**儀表板上，選取 [**成本**] 索引標籤。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入了解 Advisor 建議，請參閱：
 * [Advisor 簡介](advisor-overview.md)

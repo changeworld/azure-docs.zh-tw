@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75435231"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078794"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>使用 HDInsight 上的 Apache Spark 分析 Application Insights 遙測記錄
 
@@ -21,7 +21,7 @@ ms.locfileid: "75435231"
 
 [Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) 是一項分析服務，可監視您的 Web 應用程式。 可以將 Application Insights 產生的遙測資料匯出至 Azure 儲存體。 資料一旦位於 Azure 儲存體中，HDInsight 便可用於進行分析。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 設定要使用 Application Insights 的應用程式。
 
@@ -70,7 +70,7 @@ Application Insights 提供 [匯出資料模型](../../azure-monitor/app/export-
 
 ## <a name="analyze-the-data-pyspark"></a>分析資料︰PySpark
 
-1. 從網頁瀏覽器流覽至`https://CLUSTERNAME.azurehdinsight.net/jupyter` ，其中 CLUSTERNAME 是您的叢集名稱。
+1. 從網頁瀏覽器流覽至， `https://CLUSTERNAME.azurehdinsight.net/jupyter` 其中 CLUSTERNAME 是您的叢集名稱。
 
 2. 在 Jupyter 頁面右上角依序選取 [新增]****、[PySpark]****。 隨即開啟新的瀏覽器索引標籤，其中包含以 Python 為基礎的 Jupyter Notebook。
 
@@ -84,15 +84,17 @@ Application Insights 提供 [匯出資料模型](../../azure-monitor/app/export-
 
 4. 使用 **SHIFT + ENTER** 執行程式碼。 在儲存格左邊，方括號之間出現 '\*' 即表示正在執行此儲存格中的程式碼。 當執行完成之後，'\*' 就會變成數字，而儲存格下方會顯示類似以下文字的輸出：
 
-        Creating SparkContext as 'sc'
+    ```output
+    Creating SparkContext as 'sc'
 
-        ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
-        3    application_1468969497124_0001    pyspark    idle    Link    Link    ✔
+    ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
+    3    application_1468969497124_0001    pyspark    idle    Link    Link    ✔
 
-        Creating HiveContext as 'sqlContext'
-        SparkContext and HiveContext created. Executing user code ...
+    Creating HiveContext as 'sqlContext'
+    SparkContext and HiveContext created. Executing user code ...
+    ```
 
-5. 新的儲存格會建立在第一個儲存格之下。 在新的儲存格中輸入下列文字。 將`CONTAINER`和`STORAGEACCOUNT`取代為包含 Application Insights 資料的 Azure 儲存體帳戶名稱和 blob 容器名稱。
+5. 新的儲存格會建立在第一個儲存格之下。 在新的儲存格中輸入下列文字。 `CONTAINER`將和取代為 `STORAGEACCOUNT` 包含 Application Insights 資料的 Azure 儲存體帳戶名稱和 blob 容器名稱。
 
    ```python
    %%bash
@@ -101,10 +103,12 @@ Application Insights 提供 [匯出資料模型](../../azure-monitor/app/export-
 
     使用 **SHIFT + ENTER** 執行程此儲存格。 您會看到類似以下文字的結果：
 
-        Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```output
+    Found 1 items
+    drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```
 
-    傳回的 wasbs 路徑是 Application Insights 遙測資料的位置。 將資料`hdfs dfs -ls`格中的那一行變更為使用傳回的 wasbs 路徑，然後使用**SHIFT + ENTER**再次執行資料格。 此時，結果應該會顯示包含遙測資料的目錄。
+    傳回的 wasbs 路徑是 Application Insights 遙測資料的位置。 將資料 `hdfs dfs -ls` 格中的那一行變更為使用傳回的 wasbs 路徑，然後使用**SHIFT + ENTER**再次執行資料格。 此時，結果應該會顯示包含遙測資料的目錄。
 
    > [!NOTE]  
    > 本節中步驟的其餘部分使用 `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` 目錄。 您的目錄結構可能不同。
@@ -125,66 +129,68 @@ Application Insights 提供 [匯出資料模型](../../azure-monitor/app/export-
 
     每種類型的遙測結構描述皆不同。 以下範例是針對 Web 要求產生的結構描述 (資料儲存在 `Requests` 子目錄中)：
 
-        root
-        |-- context: struct (nullable = true)
-        |    |-- application: struct (nullable = true)
-        |    |    |-- version: string (nullable = true)
-        |    |-- custom: struct (nullable = true)
-        |    |    |-- dimensions: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |    |-- metrics: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- eventTime: string (nullable = true)
-        |    |    |-- isSynthetic: boolean (nullable = true)
-        |    |    |-- samplingRate: double (nullable = true)
-        |    |    |-- syntheticSource: string (nullable = true)
-        |    |-- device: struct (nullable = true)
-        |    |    |-- browser: string (nullable = true)
-        |    |    |-- browserVersion: string (nullable = true)
-        |    |    |-- deviceModel: string (nullable = true)
-        |    |    |-- deviceName: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- osVersion: string (nullable = true)
-        |    |    |-- type: string (nullable = true)
-        |    |-- location: struct (nullable = true)
-        |    |    |-- city: string (nullable = true)
-        |    |    |-- clientip: string (nullable = true)
-        |    |    |-- continent: string (nullable = true)
-        |    |    |-- country: string (nullable = true)
-        |    |    |-- province: string (nullable = true)
-        |    |-- operation: struct (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |-- session: struct (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- isFirst: boolean (nullable = true)
-        |    |-- user: struct (nullable = true)
-        |    |    |-- anonId: string (nullable = true)
-        |    |    |-- isAuthenticated: boolean (nullable = true)
-        |-- internal: struct (nullable = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- documentVersion: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |-- request: array (nullable = true)
-        |    |-- element: struct (containsNull = true)
-        |    |    |-- count: long (nullable = true)
-        |    |    |-- durationMetric: struct (nullable = true)
-        |    |    |    |-- count: double (nullable = true)
-        |    |    |    |-- max: double (nullable = true)
-        |    |    |    |-- min: double (nullable = true)
-        |    |    |    |-- sampledValue: double (nullable = true)
-        |    |    |    |-- stdDev: double (nullable = true)
-        |    |    |    |-- value: double (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |    |-- responseCode: long (nullable = true)
-        |    |    |-- success: boolean (nullable = true)
-        |    |    |-- url: string (nullable = true)
-        |    |    |-- urlData: struct (nullable = true)
-        |    |    |    |-- base: string (nullable = true)
-        |    |    |    |-- hashTag: string (nullable = true)
-        |    |    |    |-- host: string (nullable = true)
-        |    |    |    |-- protocol: string (nullable = true)
+    ```output
+    root
+    |-- context: struct (nullable = true)
+    |    |-- application: struct (nullable = true)
+    |    |    |-- version: string (nullable = true)
+    |    |-- custom: struct (nullable = true)
+    |    |    |-- dimensions: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |    |-- metrics: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- eventTime: string (nullable = true)
+    |    |    |-- isSynthetic: boolean (nullable = true)
+    |    |    |-- samplingRate: double (nullable = true)
+    |    |    |-- syntheticSource: string (nullable = true)
+    |    |-- device: struct (nullable = true)
+    |    |    |-- browser: string (nullable = true)
+    |    |    |-- browserVersion: string (nullable = true)
+    |    |    |-- deviceModel: string (nullable = true)
+    |    |    |-- deviceName: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- osVersion: string (nullable = true)
+    |    |    |-- type: string (nullable = true)
+    |    |-- location: struct (nullable = true)
+    |    |    |-- city: string (nullable = true)
+    |    |    |-- clientip: string (nullable = true)
+    |    |    |-- continent: string (nullable = true)
+    |    |    |-- country: string (nullable = true)
+    |    |    |-- province: string (nullable = true)
+    |    |-- operation: struct (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |-- session: struct (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- isFirst: boolean (nullable = true)
+    |    |-- user: struct (nullable = true)
+    |    |    |-- anonId: string (nullable = true)
+    |    |    |-- isAuthenticated: boolean (nullable = true)
+    |-- internal: struct (nullable = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- documentVersion: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |-- request: array (nullable = true)
+    |    |-- element: struct (containsNull = true)
+    |    |    |-- count: long (nullable = true)
+    |    |    |-- durationMetric: struct (nullable = true)
+    |    |    |    |-- count: double (nullable = true)
+    |    |    |    |-- max: double (nullable = true)
+    |    |    |    |-- min: double (nullable = true)
+    |    |    |    |-- sampledValue: double (nullable = true)
+    |    |    |    |-- stdDev: double (nullable = true)
+    |    |    |    |-- value: double (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |    |-- responseCode: long (nullable = true)
+    |    |    |-- success: boolean (nullable = true)
+    |    |    |-- url: string (nullable = true)
+    |    |    |-- urlData: struct (nullable = true)
+    |    |    |    |-- base: string (nullable = true)
+    |    |    |    |-- hashTag: string (nullable = true)
+    |    |    |    |-- host: string (nullable = true)
+    |    |    |    |-- protocol: string (nullable = true)
+    ```
 
 8. 使用下列命令將資料框架註冊為暫存資料表，並針對資料執行查詢︰
 
@@ -201,19 +207,21 @@ Application Insights 提供 [匯出資料模型](../../azure-monitor/app/export-
 
     此查詢會傳回類似以下文字的資訊：
 
-        +---------+
-        |     city|
-        +---------+
-        | Bellevue|
-        |  Redmond|
-        |  Seattle|
-        |Charlotte|
-        ...
-        +---------+
+    ```output
+    +---------+
+    |     city|
+    +---------+
+    | Bellevue|
+    |  Redmond|
+    |  Seattle|
+    |Charlotte|
+    ...
+    +---------+
+    ```
 
 ## <a name="analyze-the-data-scala"></a>分析資料︰Scala
 
-1. 從網頁瀏覽器流覽至`https://CLUSTERNAME.azurehdinsight.net/jupyter` ，其中 CLUSTERNAME 是您的叢集名稱。
+1. 從網頁瀏覽器流覽至， `https://CLUSTERNAME.azurehdinsight.net/jupyter` 其中 CLUSTERNAME 是您的叢集名稱。
 
 2. 在 Jupyter 頁面右上角依序選取 [新增]****、[Scala]****。 新的瀏覽器索引標籤隨即出現，其中包含以 Scala 為基礎的 Jupyter Notebook。
 
@@ -227,15 +235,17 @@ Application Insights 提供 [匯出資料模型](../../azure-monitor/app/export-
 
 4. 使用 **SHIFT + ENTER** 執行程式碼。 在儲存格左邊，方括號之間出現 '\*' 即表示正在執行此儲存格中的程式碼。 當執行完成之後，'\*' 就會變成數字，而儲存格下方會顯示類似以下文字的輸出：
 
-        Creating SparkContext as 'sc'
+    ```output
+    Creating SparkContext as 'sc'
 
-        ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
-        3    application_1468969497124_0001    spark    idle    Link    Link    ✔
+    ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
+    3    application_1468969497124_0001    spark    idle    Link    Link    ✔
 
-        Creating HiveContext as 'sqlContext'
-        SparkContext and HiveContext created. Executing user code ...
+    Creating HiveContext as 'sqlContext'
+    SparkContext and HiveContext created. Executing user code ...
+    ```
 
-5. 新的儲存格會建立在第一個儲存格之下。 在新的儲存格中輸入下列文字。 將`CONTAINER`和`STORAGEACCOUNT`取代為包含 Application Insights 記錄的 Azure 儲存體帳戶名稱和 blob 容器名稱。
+5. 新的儲存格會建立在第一個儲存格之下。 在新的儲存格中輸入下列文字。 `CONTAINER`將和取代為 `STORAGEACCOUNT` 包含 Application Insights 記錄的 Azure 儲存體帳戶名稱和 blob 容器名稱。
 
    ```scala
    %%bash
@@ -244,10 +254,12 @@ Application Insights 提供 [匯出資料模型](../../azure-monitor/app/export-
 
     使用 **SHIFT + ENTER** 執行程此儲存格。 您會看到類似以下文字的結果：
 
-        Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```output
+    Found 1 items
+    drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```
 
-    傳回的 wasbs 路徑是 Application Insights 遙測資料的位置。 將資料`hdfs dfs -ls`格中的那一行變更為使用傳回的 wasbs 路徑，然後使用**SHIFT + ENTER**再次執行資料格。 此時，結果應該會顯示包含遙測資料的目錄。
+    傳回的 wasbs 路徑是 Application Insights 遙測資料的位置。 將資料 `hdfs dfs -ls` 格中的那一行變更為使用傳回的 wasbs 路徑，然後使用**SHIFT + ENTER**再次執行資料格。 此時，結果應該會顯示包含遙測資料的目錄。
 
    > [!NOTE]  
    > 本節中步驟的其餘部分使用 `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` 目錄。 這個目錄可能不存在，除非您的遙測資料是用於 Web 應用程式。
@@ -270,66 +282,68 @@ Application Insights 提供 [匯出資料模型](../../azure-monitor/app/export-
 
     每種類型的遙測結構描述皆不同。 以下範例是針對 Web 要求產生的結構描述 (資料儲存在 `Requests` 子目錄中)：
 
-        root
-        |-- context: struct (nullable = true)
-        |    |-- application: struct (nullable = true)
-        |    |    |-- version: string (nullable = true)
-        |    |-- custom: struct (nullable = true)
-        |    |    |-- dimensions: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |    |-- metrics: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- eventTime: string (nullable = true)
-        |    |    |-- isSynthetic: boolean (nullable = true)
-        |    |    |-- samplingRate: double (nullable = true)
-        |    |    |-- syntheticSource: string (nullable = true)
-        |    |-- device: struct (nullable = true)
-        |    |    |-- browser: string (nullable = true)
-        |    |    |-- browserVersion: string (nullable = true)
-        |    |    |-- deviceModel: string (nullable = true)
-        |    |    |-- deviceName: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- osVersion: string (nullable = true)
-        |    |    |-- type: string (nullable = true)
-        |    |-- location: struct (nullable = true)
-        |    |    |-- city: string (nullable = true)
-        |    |    |-- clientip: string (nullable = true)
-        |    |    |-- continent: string (nullable = true)
-        |    |    |-- country: string (nullable = true)
-        |    |    |-- province: string (nullable = true)
-        |    |-- operation: struct (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |-- session: struct (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- isFirst: boolean (nullable = true)
-        |    |-- user: struct (nullable = true)
-        |    |    |-- anonId: string (nullable = true)
-        |    |    |-- isAuthenticated: boolean (nullable = true)
-        |-- internal: struct (nullable = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- documentVersion: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |-- request: array (nullable = true)
-        |    |-- element: struct (containsNull = true)
-        |    |    |-- count: long (nullable = true)
-        |    |    |-- durationMetric: struct (nullable = true)
-        |    |    |    |-- count: double (nullable = true)
-        |    |    |    |-- max: double (nullable = true)
-        |    |    |    |-- min: double (nullable = true)
-        |    |    |    |-- sampledValue: double (nullable = true)
-        |    |    |    |-- stdDev: double (nullable = true)
-        |    |    |    |-- value: double (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |    |-- responseCode: long (nullable = true)
-        |    |    |-- success: boolean (nullable = true)
-        |    |    |-- url: string (nullable = true)
-        |    |    |-- urlData: struct (nullable = true)
-        |    |    |    |-- base: string (nullable = true)
-        |    |    |    |-- hashTag: string (nullable = true)
-        |    |    |    |-- host: string (nullable = true)
-        |    |    |    |-- protocol: string (nullable = true)
+    ```output
+    root
+    |-- context: struct (nullable = true)
+    |    |-- application: struct (nullable = true)
+    |    |    |-- version: string (nullable = true)
+    |    |-- custom: struct (nullable = true)
+    |    |    |-- dimensions: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |    |-- metrics: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- eventTime: string (nullable = true)
+    |    |    |-- isSynthetic: boolean (nullable = true)
+    |    |    |-- samplingRate: double (nullable = true)
+    |    |    |-- syntheticSource: string (nullable = true)
+    |    |-- device: struct (nullable = true)
+    |    |    |-- browser: string (nullable = true)
+    |    |    |-- browserVersion: string (nullable = true)
+    |    |    |-- deviceModel: string (nullable = true)
+    |    |    |-- deviceName: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- osVersion: string (nullable = true)
+    |    |    |-- type: string (nullable = true)
+    |    |-- location: struct (nullable = true)
+    |    |    |-- city: string (nullable = true)
+    |    |    |-- clientip: string (nullable = true)
+    |    |    |-- continent: string (nullable = true)
+    |    |    |-- country: string (nullable = true)
+    |    |    |-- province: string (nullable = true)
+    |    |-- operation: struct (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |-- session: struct (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- isFirst: boolean (nullable = true)
+    |    |-- user: struct (nullable = true)
+    |    |    |-- anonId: string (nullable = true)
+    |    |    |-- isAuthenticated: boolean (nullable = true)
+    |-- internal: struct (nullable = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- documentVersion: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |-- request: array (nullable = true)
+    |    |-- element: struct (containsNull = true)
+    |    |    |-- count: long (nullable = true)
+    |    |    |-- durationMetric: struct (nullable = true)
+    |    |    |    |-- count: double (nullable = true)
+    |    |    |    |-- max: double (nullable = true)
+    |    |    |    |-- min: double (nullable = true)
+    |    |    |    |-- sampledValue: double (nullable = true)
+    |    |    |    |-- stdDev: double (nullable = true)
+    |    |    |    |-- value: double (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |    |-- responseCode: long (nullable = true)
+    |    |    |-- success: boolean (nullable = true)
+    |    |    |-- url: string (nullable = true)
+    |    |    |-- urlData: struct (nullable = true)
+    |    |    |    |-- base: string (nullable = true)
+    |    |    |    |-- hashTag: string (nullable = true)
+    |    |    |    |-- host: string (nullable = true)
+    |    |    |    |-- protocol: string (nullable = true)
+    ```
 
 8. 使用下列命令將資料框架註冊為暫存資料表，並針對資料執行查詢︰
 
@@ -345,17 +359,19 @@ Application Insights 提供 [匯出資料模型](../../azure-monitor/app/export-
 
     此查詢會傳回類似以下文字的資訊：
 
-        +---------+
-        |     city|
-        +---------+
-        | Bellevue|
-        |  Redmond|
-        |  Seattle|
-        |Charlotte|
-        ...
-        +---------+
+    ```output
+    +---------+
+    |     city|
+    +---------+
+    | Bellevue|
+    |  Redmond|
+    |  Seattle|
+    |Charlotte|
+    ...
+    +---------+
+    ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需在 Azure 中使用 Apache Spark 處理資料和服務的範例，請參閱下列文件：
 

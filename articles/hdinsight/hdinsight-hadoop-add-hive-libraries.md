@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 02/14/2020
-ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c678372fbd54e528a8a16eacc601e815cfd32e58
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77471018"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082228"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>建立 HDInsight 叢集時新增自訂 Apache Hive 程式庫
 
@@ -70,6 +71,6 @@ ms.locfileid: "77471018"
 
 叢集建立完成後，您就可以使用從 Hive 透過此腳本加入的 jar，而不需要使用 `ADD JAR` 語句。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需使用 Hive 的詳細資訊，請參閱 [搭配使用 Apache Hive 與 HDInsight](hadoop/hdinsight-use-hive.md)

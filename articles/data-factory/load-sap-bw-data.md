@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 96b23696164514ad2f16de72f0f76aa237ffce2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5403abab0f93edf14237dcc73f29ffb00a6581f0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415845"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081276"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Business 倉儲複製資料
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -269,7 +269,7 @@ SAP 開放式中樞目的地不是資料超市控制的資料目標（在2015之
 
 若要將差異 DTP 的狀態設定為 [已**提取**]，您可以使用下列選項，以手動方式執行差異 dtp：
 
-    *No Data Transfer; Delta Status in Source: Fetched*
+*無資料傳輸;來源中的差異狀態：已提取*
 
 ## <a name="next-steps"></a>後續步驟
 

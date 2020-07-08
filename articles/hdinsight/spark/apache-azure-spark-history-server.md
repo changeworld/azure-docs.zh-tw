@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76548929"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079287"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>使用 Apache Spark 歷程記錄伺服器的擴充功能來偵測和診斷 Spark 應用程式
 
@@ -32,7 +32,7 @@ Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的 web UI
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>依 URL 開啟 Spark 歷程記錄伺服器 web UI
 
-流覽至以`https://CLUSTERNAME.azurehdinsight.net/sparkhistory`開啟 Spark 歷程記錄伺服器，其中**CLUSTERNAME**是您 Spark 叢集的名稱。
+流覽至以開啟 Spark 歷程記錄伺服器 `https://CLUSTERNAME.azurehdinsight.net/sparkhistory` ，其中**CLUSTERNAME**是您 Spark 叢集的名稱。
 
 Spark 歷程記錄伺服器 web UI 看起來可能像這樣的影像：
 
@@ -97,7 +97,7 @@ Spark 歷程記錄伺服器 web UI 看起來可能像這樣的影像：
    ![Spark 應用程式 & [作業圖形] 頁面上的熱度圖。](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Color |描述 |
+    |Color |Description |
     |---|---|
     |綠色|作業已成功完成。|
     |橙色|工作失敗，但這不會影響作業的最終結果。 這些工作具有稍後可能會成功的重複或重試實例。|
@@ -179,7 +179,7 @@ Spark 歷程記錄伺服器 web UI 看起來可能像這樣的影像：
 
 ### <a name="time-skew"></a>時間扭曲
 
-[時間扭曲]**** 索引標籤會根據工作執行時間顯示扭曲的工作。
+[時間扭曲] 索引標籤會根據工作執行時間顯示扭曲的工作。
 
 #### <a name="specify-parameters"></a>指定參數
 
@@ -208,12 +208,12 @@ Spark 歷程記錄伺服器 web UI 看起來可能像這樣的影像：
 若要還原為「社區」版本，請執行下列步驟。
 
 1. 在 Ambari 中開啟叢集。
-1. 流覽至**Spark2** > **的 [** 的] [進行]。
+1. 流覽至**Spark2**的 [的] [進行]  >  ** **。
 1. 選取 [**自訂 spark2-預設值**]。
 1. 選取 [**新增屬性 ...**]。
 1. 新增**spark. ui. 增強功能。 enabled = false**，然後加以儲存。
 1. 屬性現在會設定為 **false**。
-1. 選取 [儲存]**** 以儲存組態。
+1. 選取 [**儲存**] 以儲存設定。
 
     ![關閉 Apache Ambari 中的功能。](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
@@ -245,7 +245,7 @@ Spark 歷程記錄伺服器 web UI 看起來可能像這樣的影像：
 
 ### <a name="how-do-i-upgrade-a-jar-file-in-a-hotfix-scenario"></a>如何? 在修補程式案例中升級 .jar 檔案嗎？
 
-如果您想要使用修補程式升級，請使用下列將升級`spark-enhancement.jar*`的腳本。
+如果您想要使用修補程式升級，請使用下列將升級的腳本 `spark-enhancement.jar*` 。
 
 **upgrade_spark_enhancement.sh**：
 
@@ -294,7 +294,7 @@ Spark 歷程記錄伺服器 web UI 看起來可能像這樣的影像：
     fi
    ```
 
-#### <a name="usage"></a>使用方式
+#### <a name="usage"></a>使用狀況
 
 `upgrade_spark_enhancement.sh https://${jar_path}`
 
@@ -310,7 +310,7 @@ Spark 歷程記錄伺服器 web UI 看起來可能像這樣的影像：
     |屬性 |值 |
     |---|---|
     |指令碼類型|- 自訂|
-    |Name|UpgradeJar|
+    |名稱|UpgradeJar|
     |Bash 指令碼 URI|`https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh`|
     |節點類型|Head、Worker|
     |參數|`https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`|
@@ -323,11 +323,11 @@ Spark 歷程記錄伺服器 web UI 看起來可能像這樣的影像：
 
 + 使用 RDD 的輸入和輸出資料不會顯示在 [**資料**] 索引標籤中。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 + [在 HDInsight 上管理 Apache Spark 叢集的資源](apache-spark-resource-manager.md)
 + [設定 Apache Spark 設定](apache-spark-settings.md)
 
-## <a name="feedback"></a>意見反應
+## <a name="suggestions"></a>建議
 
-如果您有任何意見反應或在使用此工具時遇到任何問題，請將電子郵件[hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)傳送至（）。
+如果您有任何意見反應或在使用此工具時遇到任何問題，請將電子郵件傳送至（ [hdivstool@microsoft.com](mailto:hdivstool@microsoft.com) ）。

@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d1dff01c9e7b5232cfac0cf5581c077e67f6937
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75552639"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079491"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix 效能最佳做法
 
@@ -82,13 +82,17 @@ Phoenix 可讓您控制資料散佈的區域數量，進而大幅增加讀/寫�
 
 若要在資料表建立期間 salt 化，請指定 salt 貯體的數目：
 
-    CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```sql
+CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```
 
 此 salt 化作業會將資料表沿著主索引鍵的值分割，並自動選擇值。 
 
 若要控制發生資料表分割的位置，只有提供發生分割的範圍值，即可預先分割資料表。 例如，若要建立沿著三個區域分割的資料表：
 
-    CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```sql
+CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```
 
 ## <a name="index-design"></a>索引設計
 
@@ -120,11 +124,15 @@ Phoenix 索引是一個 HBase 資料表，其中儲存索引資料表中部分�
 
 不過，如果您通常會查閱指定 socialSecurityNum 的 firstName 和 lastName，您可以建立涵蓋性索引，其中包含 firstName 和 lastName 作為索引資料表中的實際資料：
 
-    CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```sql
+CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```
 
 此涵蓋性索引可讓下列查詢只要讀取包含次要索引的資料表，就可以取得所有資料：
 
-    SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```sql
+SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```
 
 ### <a name="use-functional-indexes"></a>使用功能性索引
 
@@ -132,7 +140,9 @@ Phoenix 索引是一個 HBase 資料表，其中儲存索引資料表中部分�
 
 例如，您可以建立一個索引，讓您對人員的名字和姓氏組合執行不區分大小寫的搜尋：
 
-     CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```sql
+CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```
 
 ## <a name="query-design"></a>查詢設計
 
@@ -153,46 +163,64 @@ Phoenix 索引是一個 HBase 資料表，其中儲存索引資料表中部分�
 
 例如，假設您有一個名為 FLIGHTS 的資料表，其中儲存航班延誤資訊。
 
-若要選取 airlineid 為的`19805`所有航班，其中 airlineid 是不在主鍵或任何索引中的欄位：
+若要選取 airlineid 為的所有航班 `19805` ，其中 airlineid 是不在主鍵或任何索引中的欄位：
 
-    select * from "FLIGHTS" where airlineid = '19805';
+```sql
+select * from "FLIGHTS" where airlineid = '19805';
+```
 
 執行 explain (解說) 命令，如下所示︰
 
-    explain select * from "FLIGHTS" where airlineid = '19805';
+```sql
+explain select * from "FLIGHTS" where airlineid = '19805';
+```
 
 查詢計劃如下所示：
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
-        SERVER FILTER BY AIRLINEID = '19805'
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
+   SERVER FILTER BY AIRLINEID = '19805'
+```
 
 在此計劃中，請注意 FULL SCAN OVER FLIGHTS 字詞。 這段字詞表示執行會對資料表中的所有資料列進行 TABLE SCAN，而不是使用更有效率的 RANGE SCAN 或 SKIP SCAN 選項。
 
 現在，假設您要查詢 2014 年 1 月 2 日 `AA` 航空公司且航班編號大於 1 的航班。 假設範例資料表中有 year、month、dayofmonth、carrier、flightnum 資料行，而且這些資料行會組成複合主索引鍵。 查詢應如下所示：
 
-    select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 讓我們檢查此查詢的計畫：
 
-    explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 產生的計畫如下：
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```
 
 方括號中的值是主索引鍵的值範圍。 在此案例下，範圍值是固定為 year 2014、month 1、dayofmonth 2，但允許 flightnum 的值從 2 和以上 (`*`) 開始。 此查詢計劃確認系統將如預期般使用主索引鍵。
 
 接下來，只在 FLIGHTS 資料表的 carrier 欄位建立名為 `carrier2_idx` 的索引。 此索引也包含 flightdate、tailnum、origin、flightnum 涵蓋性資料行，其資料也會儲存在索引中。
 
-    CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```sql
+CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```
 
 假設您想要取得 carrier 以及 flightdate 和 tailnum，如下列查詢所示：
 
-    explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```sql
+explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```
 
 您應會看見系統使用此索引：
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```
 
 如需 explain 計劃結果中可以出現的完整項目清單，請參閱 [Apache Phoenix 微調指南](https://phoenix.apache.org/tuning_guide.html)中的＜解說計劃＞。
 
@@ -222,11 +250,13 @@ Phoenix 索引是一個 HBase 資料表，其中儲存索引資料表中部分�
 
 如果您的案例偏重於寫入速度而較不重視資料完整性，請考慮在建立資料表時停用預寫記錄檔：
 
-    CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```sql
+CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```
 
 如需這個選項及其他選項的詳細資料，請參閱 [Apache Phoenix 文法](https://phoenix.apache.org/language/index.html#options)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [Apache Phoenix 微調指南](https://phoenix.apache.org/tuning_guide.html)
 * [次要索引](https://phoenix.apache.org/secondary_indexing.html)

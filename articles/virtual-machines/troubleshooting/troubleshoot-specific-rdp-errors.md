@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3e06ff28c7980910636edeb06c5863859120484
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701876"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081565"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>針對 Azure 中 Windows VM 的特定 RDP 錯誤訊息進行疑難排解
 您在 Azure 中針對 Windows 虛擬機器 (VM) 使用遠端桌面連線時，可能會接收到特定錯誤訊息。 本文將詳述一些較常發生的錯誤訊息，並提供解決它們的疑難排解步驟。 如果您無法使用 RDP 連線到 VM，但沒有遇到特定錯誤訊息，請參閱[遠端桌面的疑難排解指南](troubleshoot-rdp-connection.md)。
@@ -39,7 +40,9 @@ ms.locfileid: "84701876"
 
 作為因應措施，請從入口網站儲存 RDP 檔案的本機複本，並在 PowerShell 命令提示字元執行該命令來連接。 此步驟只會停用該連線的授權：
 
-        mstsc <File name>.RDP /admin
+```powershell
+mstsc <File name>.RDP /admin
+```
 
 如果您並非真的需要多於兩個對 VM 的同步遠端桌面連線，則您可以使用伺服器管理員來移除遠端桌面伺服器角色。
 
@@ -54,9 +57,11 @@ ms.locfileid: "84701876"
 
 * 如果您位於組織內部網路，請確保您的電腦能存取 Proxy 伺服器，並能將 HTTPS 流量傳送給 Proxy 伺服器。
 * 如果您使用本機儲存的 RDP 檔案，請嘗試使用入口網站所產生的檔案。 此步驟可確保您擁有虛擬機器的正確 DNS 名稱，或是 VM 的雲端服務和端點連接埠。 以下是由入口網站產生的 RDP 檔案範例：
-  
-        full address:s:tailspin-azdatatier.cloudapp.net:55919
-        prompt for credentials:i:1
+
+    ```output
+    full address:s:tailspin-azdatatier.cloudapp.net:55919
+    prompt for credentials:i:1
+    ```
 
 此 RDP 檔案的位址部分包含︰
 

@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767547"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082245"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 開發指令碼動作
 
@@ -123,7 +123,7 @@ fi
 > [!IMPORTANT]  
 > 使用的儲存體帳戶必須是叢集的預設儲存體帳戶，或是位於其他任何儲存體帳戶上的公用唯讀容器。
 
-例如，Microsoft 所提供的範例會儲存在[https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/)儲存體帳戶中。 這個位置是 HDInsight 小組維護的公用、唯讀容器。
+例如，Microsoft 所提供的範例會儲存在 [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) 儲存體帳戶中。 這個位置是 HDInsight 小組維護的公用、唯讀容器。
 
 ### <a name="use-pre-compiled-resources"></a><a name="bPS4"></a>使用預先編譯的資源
 
@@ -173,7 +173,7 @@ echo "Getting ready to install Foo"
 >&2 echo "An error occurred installing Foo"
 ```
 
-這會將寫入 STDOUT 的資訊改為重新導向至 STDERR (2)。 如需 IO 重新導向的詳細資訊[https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)，請參閱。
+這會將寫入 STDOUT 的資訊改為重新導向至 STDERR (2)。 如需 IO 重新導向的詳細資訊，請參閱 [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html) 。
 
 如需有關如何查看腳本動作所記錄之資訊的詳細資訊，請參閱針對[腳本動作進行疑難排解](./troubleshoot-script-action.md)。
 
@@ -226,7 +226,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helper-methods-for-custom-scripts"></a><a name="helpermethods"></a>自訂指令碼的協助程式方法
 
-指令碼動作協助程式方法是您在撰寫字訂指令碼時可以使用的公用程式。 這些方法包含在[https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh)腳本中。 請使用下列命令下載這些方法，然後在您的指令碼中使用︰
+指令碼動作協助程式方法是您在撰寫字訂指令碼時可以使用的公用程式。 這些方法包含在腳本中 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) 。 請使用下列命令下載這些方法，然後在您的指令碼中使用︰
 
 ```bash
 # Import the helper method module.
@@ -264,11 +264,15 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 下列陳述式可以設定環境變數：
 
-    VARIABLENAME=value
+```bash
+VARIABLENAME=value
+```
 
 其中 VARIABLENAME 是變數的名稱。 若要存取變數，請使用 `$VARIABLENAME`。 例如，若要將位置參數提供的值指派為名為 PASSWORD 的環境變數，請使用下列陳述式：
 
-    PASSWORD=$1
+```bash
+PASSWORD=$1
+```
 
 後續的資訊存取則可以使用 `$PASSWORD`。
 
@@ -328,7 +332,7 @@ Microsoft 提供了在 HDInsight 叢集上安裝元件的範例指令碼。 如�
 
 以下是您在使用已開發的腳本時可能會遇到的錯誤：
 
-**錯誤**： `$'\r': command not found`。 有時候後面接續 `syntax error: unexpected end of file`。
+**錯誤**： `$'\r': command not found` 。 有時候後面接續 `syntax error: unexpected end of file`。
 
 原因**：這個錯誤的原因是指令碼中以 CRLF 作為行尾結束符號。 Unix 系統預期只有 LF 當做行尾結束符號。
 
@@ -346,13 +350,15 @@ Microsoft 提供了在 HDInsight 叢集上安裝元件的範例指令碼。 如�
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | 直接修改檔案 |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |OUTFILE 會包含只有 LF 行尾結束符號的版本。 |
 
-**錯誤**： `line 1: #!/usr/bin/env: No such file or directory`。
+**錯誤**： `line 1: #!/usr/bin/env: No such file or directory` 。
 
 *原因*：指令碼儲存為具有位元組順序標記 (BOM) 的 UTF-8 時，就會發生這個錯誤。
 
 *解決方式*：將檔案儲存為 ASCII，或不具有 BOM 的 UTF-8。 您也可以在 Linux 或 Unix 系統上使用下列命令，以建立不具有 BOM 的檔案：
 
-    awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```bash
+awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```
 
 以包含 BOM 的檔案取代 `INFILE`。 `OUTFILE` 應該是新檔案的名稱，且包含不具有 BOM 的指令碼。
 

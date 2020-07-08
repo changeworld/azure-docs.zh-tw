@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 2ed7a5b9c81d1b50f80f379a88688b69c49ed382
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13b6753d7c04951839852b3090e99fd8cde1fe2d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78897935"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079797"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>將 HDInsight 連線至內部部署網路
 
@@ -23,7 +24,7 @@ ms.locfileid: "78897935"
 * 設定網路安全性群組來限制網際網路存取 HDInsight。
 * HDInsight 在虛擬網路上提供的連接埠。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 若要允許聯結網路中的 HDInsight 和資源依名稱進行通訊，您必須執行下列動作：
 
