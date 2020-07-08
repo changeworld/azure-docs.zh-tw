@@ -3,18 +3,18 @@ title: Batch 服務工作流程和資源
 description: 從開發觀點了解 Batch 服務的功能及其高階工作流程。
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: 5084ae222d0a9da0d8aa171bc89dba48377a9dd4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 76a0b140f3bea4b07a6de632abbcbc3fd26e582d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835915"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965207"
 ---
 # <a name="batch-service-workflow-and-resources"></a>Batch 服務工作流程和資源
 
 在 Azure Batch 服務的核心元件概觀中，我們會討論 Batch 開發人員可用來建置大規模平行計算解決方案的高階工作流程，以及所使用的主要服務資源。
 
-不論您正在開發可發出直接 [REST API](https://docs.microsoft.com/rest/api/batchservice/) 呼叫的分散式計算應用程式或服務，還是正在使用另外一個 [Batch SDK](batch-apis-tools.md#batch-service-apis)，都會使用此處所討論的眾多資源和功能。
+不論您正在開發可發出直接 [REST API](/rest/api/batchservice/) 呼叫的分散式計算應用程式或服務，還是正在使用另外一個 [Batch SDK](batch-apis-tools.md#batch-service-apis)，都會使用此處所討論的眾多資源和功能。
 
 > [!TIP]
 > 如需更高層級的 Batch 服務簡介，請參閱 [Azure Batch 的基本概念](batch-technical-overview.md)。 另請參閱最新的 [Batch 服務更新](https://azure.microsoft.com/updates/?product=batch)。
@@ -47,4 +47,4 @@ ms.locfileid: "83835915"
 - 了解可用來建置 Batch 解決方案的 [Batch API 和工具](batch-apis-tools.md)。
 - 了解使用 [Batch .NET 用戶端程式庫](quick-run-dotnet.md)或 [Python](quick-run-python.md) 開發啟用 Batch 之應用程式的基本概念。 這些快速入門會介紹使用 Batch 服務在多個計算節點上執行工作負載的範例應用程式，並說明如何使用 Azure 儲存體進行工作負載檔案的預備和擷取。
 - 下載並安裝 [Batch Explorer](https://azure.github.io/BatchExplorer/)，以在開發 Batch 解決方案時使用。 使用 Batch Explorer 有助於建立、偵錯和監視 Azure Batch 應用程式。
-- 請參閱社群資源，包括 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch)、[Batch 社群存放庫](https://github.com/Azure/Batch)以及 [Azure Batch 論壇](https://docs.microsoft.com/answers/topics/azure-batch.html)。
+- 請參閱社群資源，包括 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch)、[Batch 社群存放庫](https://github.com/Azure/Batch)以及 [Azure Batch 論壇](/answers/topics/azure-batch.html)。

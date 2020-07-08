@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5a37ebba7dd0622db7e76ecef1c3eda24d72b27
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726395"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965241"
 ---
 # <a name="using-azure-batch-rendering"></a>使用 Azure Batch 轉譯
 
@@ -19,8 +19,8 @@ ms.locfileid: "83726395"
 * API：
   * 使用任何 Batch API 撰寫程式碼。  開發人員可將 Azure Batch 功能整合到其現有的應用程式或工作流程中，無論在雲端還是內部部署皆可。
 * 命令列工具：
-  * [Azure 命令列](https://docs.microsoft.com/cli/azure/)或 [PowerShell](https://docs.microsoft.com/powershell/azure/overview) 可用來編寫 Batch 適用的指令碼。
-  * 特別是，[Batch CLI 範本](https://docs.microsoft.com/azure/batch/batch-cli-templates)支援大幅簡化了建立集區和提交作業的程序。
+  * [Azure 命令列](/cli/azure/)或 [PowerShell](/powershell/azure/overview) 可用來編寫 Batch 適用的指令碼。
+  * 特別是，[Batch CLI 範本](./batch-cli-templates.md)支援大幅簡化了建立集區和提交作業的程序。
 * Batch Explorer UI：
   * [Batch Explorer](https://github.com/Azure/BatchLabs) 是一種也可讓 Batch 帳戶受到管理及監視的跨平台用戶端工具。
   * 針對各種轉譯應用程式，我們提供了許多可用來輕鬆建立集區及提交作業的集區和作業範本。  應用程式 UI 中列出了範本集，以及可從 GitHub 存取的範本檔案。
@@ -32,7 +32,7 @@ ms.locfileid: "83726395"
 
 ## <a name="using-batch-explorer"></a>使用 Batch Explorer
 
-如需使用 Batch Explorer 執行轉譯的逐步教學課程，請參閱 [Blender 教學課程](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)。
+如需使用 Batch Explorer 執行轉譯的逐步教學課程，請參閱 [Blender 教學課程](./tutorial-rendering-batchexplorer-blender.md)。
 
 ### <a name="download-and-install"></a>下載並安裝
 
@@ -65,5 +65,5 @@ Batch Explorer 中的 [資料] 區段可用來在本機檔案系統與 Azure 儲
 
 如需 Batch 轉譯的範例，請試著進行以下兩個教學課程：
 
-* [使用 Azure CLI 進行轉譯](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [使用 Batch Explorer 進行轉譯](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [使用 Azure CLI 進行轉譯](./tutorial-rendering-cli.md)
+* [使用 Batch Explorer 進行轉譯](./tutorial-rendering-batchexplorer-blender.md)

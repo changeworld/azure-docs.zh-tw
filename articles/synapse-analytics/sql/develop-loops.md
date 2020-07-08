@@ -6,18 +6,18 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: baff2806b1a8c3c99546365c2496238c24b2b243
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec15f87bdbf381b71faa7cefd986dd5e55e17a19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429950"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964986"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql"></a>在 Synapse SQL 中使用 T-sql 迴圈
+# <a name="use-t-sql-loops-in-synapse-sql"></a>在 Synapse SQL 中使用 T-sql 迴圈
 本文提供在 Synapse SQL 中使用 T-sql 迴圈、取代資料指標，以及使用 SQL 集區開發相關解決方案的重要秘訣。
 
 ## <a name="purpose-of-while-loops"></a>WHILE 迴圈的用途

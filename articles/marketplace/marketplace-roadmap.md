@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ae482a4c7b656a4bc84895501c49bf0a98517acc
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 89a60016f8f4496e44c138a79a3864782791d1db
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800651"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963286"
 ---
 # <a name="microsoft-commercial-marketplace-resources"></a>Microsoft 商業市集資源
 
@@ -28,9 +28,8 @@ ms.locfileid: "83800651"
 * [合作夥伴中心的商業市集分析](./partner-center-portal/analytics.md)
 * [Microsoft Build Marketplace 部落格](https://aka.ms/marketplacebuildblog)
 * [Marketplace 可能更新部落格](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
-* 合作夥伴中心：[建立帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [管理帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / [從 CPP 移轉](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
-* 合作夥伴中心：[建立 SaaS 供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / [發佈狀態](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
-) / [更新現有的供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [提供分析](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
-* [取得合作夥伴中心的市集支援](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+* 合作夥伴中心：[建立帳戶](partner-center-portal/create-account.md) / [管理帳戶](partner-center-portal/manage-account.md) / [從 CPP 移轉](partner-center-portal/account-migration-from-cpp-to-pc.md)
+* 合作夥伴中心：[建立 SaaS 供應](partner-center-portal/create-new-saas-offer.md)專案  /  [發佈狀態](partner-center-portal/publishing-status.md)）/[更新現有供應](partner-center-portal/update-existing-offer.md)專案  /  [供應專案分析](partner-center-portal/analytics.md)
+* [取得合作夥伴中心的市集支援](partner-center-portal/support.md)
 
 歡迎您提供寶貴意見！ 請到 [Microsoft 合作夥伴社群](https://www.microsoftpartnercommunity.com/)來聊聊，了解新功能、計劃和活動的最新訊息。

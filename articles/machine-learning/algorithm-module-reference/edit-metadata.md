@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 9853a3decc8d145fee58d1da526926e224ee2030
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: 5078e625f86affb8d16ffab538d11b839d2d7bda
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064251"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965003"
 ---
 # <a name="edit-metadata-module"></a>編輯中繼資料模組
 
@@ -34,7 +34,7 @@ ms.locfileid: "80064251"
   
 + 重新命名資料行。
   
- 每當您需要修改資料行的定義時，請使用 [編輯中繼資料]，通常是為了符合下游模組的需求。 例如，有些模組僅適用于特定的資料類型，或需要資料行上的旗標`IsFeature` ， `IsCategorical`例如或。  
+ 每當您需要修改資料行的定義時，請使用 [編輯中繼資料]，通常是為了符合下游模組的需求。 例如，有些模組僅適用于特定的資料類型，或需要資料行上的旗標，例如 `IsFeature` 或 `IsCategorical` 。  
   
  執行必要的作業之後，您可以將中繼資料重設為其原始狀態。
   
@@ -55,7 +55,8 @@ ms.locfileid: "80064251"
     + 當您執行 [編輯中繼資料] 作業之後，資料行類型和值將會變更。 您可以隨時使用 [編輯中繼資料] 來重設資料行資料類型，以復原原始資料類型。  
 
     > [!NOTE]
-    > 如果您將任何類型的數位變更為**datetime**類型，請將 [**日期時間格式**] 欄位保留空白。 目前無法指定目標資料格式。  
+    > **日期時間格式**遵循[Python 內建日期時間格式](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)。  
+    > 如果您將任何類型的數位變更為**datetime**類型，請將 [**日期時間格式**] 欄位保留空白。 目前無法指定目標資料格式。
 
 1. 選取 [**類別**] 選項，指定應將所選資料行中的值視為分類。
 
@@ -98,4 +99,4 @@ ms.locfileid: "80064251"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。

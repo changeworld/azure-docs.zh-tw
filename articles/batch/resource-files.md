@@ -3,12 +3,12 @@ title: 建立和使用資源檔
 description: 了解如何從各種輸入來源建立 Batch 資源檔。 此文章涵蓋一些常見的方法，說明如何建立並將其放置在 VM 上。
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ea349c3a190b78297d9ad4555258d0cfd8828ed4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 481ac8843f871f9f1eaa61e782e273e27715a473
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723454"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964017"
 ---
 # <a name="creating-and-using-resource-files"></a>建立和使用資源檔
 
@@ -50,7 +50,7 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 > [!NOTE]
 > 若要存取容器，您必須同時具備 `Read` 和 `List` 權限；若要存取 Blob，您只需要 `Read` 權限。
 
-設定權限之後，建立 SAS 權杖並設定 SAS URL 格式，以存取儲存體容器。 針對儲存體容器使用格式化的 SAS URL 可產生具有 [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) 的資源檔。
+設定權限之後，建立 SAS 權杖並設定 SAS URL 格式，以存取儲存體容器。 針對儲存體容器使用格式化的 SAS URL 可產生具有 [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) 的資源檔。
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -99,7 +99,7 @@ ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt",
 
 如果針對工作指定了數百個資源檔，Batch 可能會因為太大而拒絕工作。 最好是將工作本身的資源檔數目減至最少，讓您的工作變小。
 
-如果沒有任何方法可將您工作所需的檔案數目減至最少，您可以建立能夠參考資源檔儲存體容器的單一資源檔，以便將工作最佳化。 若要這麼做，請將您的資源檔放入 Azure 儲存體容器中，並針對資源檔使用不同的「容器」[方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods)。 使用 Blob 前置詞選項指定要為您的工作下載的檔案集合。
+如果沒有任何方法可將您工作所需的檔案數目減至最少，您可以建立能夠參考資源檔儲存體容器的單一資源檔，以便將工作最佳化。 若要這麼做，請將您的資源檔放入 Azure 儲存體容器中，並針對資源檔使用不同的「容器」[方法](/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods)。 使用 Blob 前置詞選項指定要為您的工作下載的檔案集合。
 
 ## <a name="next-steps"></a>後續步驟
 

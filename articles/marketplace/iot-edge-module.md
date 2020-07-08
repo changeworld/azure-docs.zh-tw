@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 49f86a79eb5358d27c15d93004db396436c3e680
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 9783eb1dbcbfc3ee01008dfa33ff2429a87cf62a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657966"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963371"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模組
 
@@ -30,7 +30,7 @@ ms.locfileid: "83657966"
 
 ## <a name="what-is-an-iot-edge-module"></a>什麼是 IoT Edge 模組？
 
-Azure IoT Edge 可讓您以模組形式，在邊緣上部署及管理商務邏輯。 Azure IoT Edge 模組是 IoT Edge 所管理的最小計算單位，並可包含 Microsoft 服務 (例如「Azure 串流分析」)、第三方服務，或您自己的解決方案特定程式碼。 若要深入了解 IoT Edge 模組，請參閱[了解 Azure IoT Edge 模組](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)。
+Azure IoT Edge 可讓您以模組形式，在邊緣上部署及管理商務邏輯。 Azure IoT Edge 模組是 IoT Edge 所管理的最小計算單位，並可包含 Microsoft 服務 (例如「Azure 串流分析」)、第三方服務，或您自己的解決方案特定程式碼。 若要深入了解 IoT Edge 模組，請參閱[了解 Azure IoT Edge 模組](../iot-edge/iot-edge-modules.md)。
 
 **容器供應項目類型與 IoT Edge 模組供應項目類型之間有何差異？**
 
@@ -40,7 +40,7 @@ IoT Edge 模組供應項目類型是一種在 IoT Edge 裝置上執行的特定�
 
 **選取正確的店面**
 
-IoT Edge 模組只會發佈至 Azure Marketplace，AppSource 則不適用。  如需有關各店面之差異和目標對象的詳細資訊，請參閱[決定您解決方案的發佈選項](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。
+IoT Edge 模組只會發佈至 Azure Marketplace，AppSource 則不適用。  如需有關各店面之差異和目標對象的詳細資訊，請參閱[決定您解決方案的發佈選項](determine-your-listing-type.md)。
  
 **帳單選項**
 
@@ -48,7 +48,7 @@ Marketplace 目前針對 IoT Edge 模組支援 [免費] 和 [自備授權 (BYOL)
  
 **發佈選項**
 
-在所有情況下，IoT Edge 模組都應該選取 [交易] 發佈選項。  如需有關發佈選項的更多詳細資料，請參閱[選擇發佈選項](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
+在所有情況下，IoT Edge 模組都應該選取 [交易] 發佈選項。  如需有關發佈選項的更多詳細資料，請參閱[選擇發佈選項](determine-your-listing-type.md)。  
 
 ## <a name="eligibility-criteria"></a>適用性準則
 
@@ -58,7 +58,7 @@ Marketplace 目前針對 IoT Edge 模組支援 [免費] 和 [自備授權 (BYOL)
 
 若要將 IoT Edge 模組發佈至 Azure Marketplace，您必須滿足下列先決條件：
 
-- 存取合作夥伴中心。 如需詳細資訊，請參閱 [Azure Marketplace 和 AppSource 發行指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
+- 存取合作夥伴中心。 如需詳細資訊，請參閱 [Azure Marketplace 和 AppSource 發行指南](marketplace-publishers-guide.md)。
 - 將您的 IoT Edge 模組裝載在 Azure Container Registry 中。 
 - 備妥您的 IoT Edge 模組中繼資料，例如 (非完整清單)： 
     - 標題

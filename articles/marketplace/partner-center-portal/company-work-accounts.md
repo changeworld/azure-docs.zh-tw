@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 3c0ee2f8d5291f7904435dea32d913adeaaf25c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27a51a1203b0c25474bdb292c467a40b67309757
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262361"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964425"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>公司工作帳戶和合作夥伴中心
 
@@ -23,7 +23,7 @@ ms.locfileid: "81262361"
 如果您的公司訂閱了 Microsoft 雲端服務（例如 Azure、Microsoft Intune 或 Office 365），則您已經擁有可與合作夥伴中心搭配使用的工作電子郵件帳戶網域（也稱為 Azure Active Directory 租使用者）。
 
 請遵循下列步驟來檢查：
-1. 登入 Azure 系統管理員入口網站， https://portal.azure.com網址為。
+1. 登入 Azure 系統管理員入口網站，網址為 https://portal.azure.com 。
 2. 從左側導覽功能表中選取 [ **Azure Active Directory** ]，然後選取 [**自訂功能變數名稱**]。
 3. 如果您已經有工作帳戶，將會列出您的網域名稱。
 
@@ -37,14 +37,14 @@ ms.locfileid: "81262361"
 
 若要為您的公司建立新的工作帳戶，請遵循下列步驟。 您可能需要向擁有貴公司 Microsoft Azure 帳戶之系統管理許可權的人員要求協助。
 
-1. 登入[Microsoft Azure 入口網站](https://portal.azure.com)。
-2. 從左側導覽功能表中，選取 [ **Azure Active Directory** -> **使用者**]。
+1. 登入 [Microsoft Azure 入口網站](https://portal.azure.com)。
+2. 從左側導覽功能表中，選取 [ **Azure Active Directory**  ->  **使用者**]。
 3. 選取 [**新增使用者**]，然後輸入名稱和電子郵件地址來建立新的 Azure 工作帳戶。 確定 [**目錄角色**] 已設定為 [**使用者**]，然後選取底部的 [**顯示密碼**] 核取方塊以查看並記下自動產生的密碼。
 4. 選取 [**建立**] 以儲存新的使用者。
 
-使用者帳戶的電子郵件地址必須是您目錄中已驗證的功能變數名稱。 您可以選取左側導覽功能表中的 [ **Azure Active Directory** -> **自訂功能變數名稱**]，列出目錄中所有已驗證的網域。
+使用者帳戶的電子郵件地址必須是您目錄中已驗證的功能變數名稱。 您可以選取左側導覽功能表中的 [ **Azure Active Directory**  ->  **自訂功能變數名稱**]，列出目錄中所有已驗證的網域。
 
-若要深入瞭解如何在 Azure Active Directory 中新增自訂網域，請參閱[在 Azure AD 中新增或關聯網域](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain)。
+若要深入瞭解如何在 Azure Active Directory 中新增自訂網域，請參閱[在 Azure AD 中新增或關聯網域](../../active-directory/active-directory-add-domain.md)。
 
 ## <a name="troubleshoot-work-email-sign-in"></a>針對工作電子郵件登入進行疑難排解
 
@@ -54,4 +54,4 @@ ms.locfileid: "81262361"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [在合作夥伴中心管理您的商業 marketplace 帳戶](./manage-account.md) 
+- [在合作夥伴中心管理您的商業市集帳戶](./manage-account.md) 

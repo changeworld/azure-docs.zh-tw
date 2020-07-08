@@ -6,30 +6,30 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/13/2020
-ms.openlocfilehash: 4b3a2ed71845b8848c9cb0ac5002e0c69a170410
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 05/21/2020
+ms.openlocfilehash: 0f8078c52945b52a27144c1f73ea4a136bf536d8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642320"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963150"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace 計量服務驗證策略
 
 Marketplace 計量服務支援兩種驗證策略：
 
-* [Azure AD 安全性權杖](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
-* [受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
+* [Azure AD 安全性權杖](../../active-directory/develop/access-tokens.md)
+* [受控識別](../../active-directory/managed-identities-azure-resources/overview.md) 
 
 本文會說明應在何時如何使用不同的驗證策略，以使用 Marketplace 計量服務安全地提交自訂計量。
 
 ## <a name="using-the-azure-ad-security-token"></a>使用 Azure AD 安全性權杖
 
-適用的供應項目類型為 SaaS 和具有受控應用程式方案類型的 Azure 應用程式。  
+適用的供應專案類型為 transactable SaaS 和具備受控應用程式方案類型的 Azure 應用程式。  
 
-請使用預先定義的固定應用程式識別碼進行驗證，以此方式提交自訂計量。
+使用預先定義的固定 Azure AD 應用程式識別碼來提交自訂計量以進行驗證。
 
-就 SaaS 供應項目而言，Azure AD 是唯一可用的選項。
+針對 SaaS 供應專案，這是唯一可用的選項。 如[註冊 saas 應用程式](./pc-saas-registration.md)中所述，這是發佈任何 saas 供應專案的必要步驟。
 
 若為具有受控應用程式方案的 Azure 應用程式，建議於下列情況考慮使用此策略：
 
@@ -38,7 +38,7 @@ Marketplace 計量服務支援兩種驗證策略：
 
 註冊應用程式之後，您可以透過程式設計方式來要求 Azure AD 安全性權杖。 發行者需使用此權杖並提出解析要求。
 
-如需這類權杖的詳細資訊，請參閱 [Azure Active Directory 存取權杖](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)。
+如需這類權杖的詳細資訊，請參閱 [Azure Active Directory 存取權杖](../../active-directory/develop/access-tokens.md)。
 
 ### <a name="get-a-token-based-on-the-azure-ad-app"></a>取得以 Azure AD 應用程式為基礎的權杖
 
@@ -52,26 +52,26 @@ Marketplace 計量服務支援兩種驗證策略：
 
 #### <a name="uri-parameter"></a>*URI 參數*
 
-|  **參數名稱** |  **必要**  |  **說明**          |
+|  **參數名稱** |  **必要**  |  **描述**          |
 |  ------------------ |--------------- | ------------------------  |
 |  `tenantId`         |   True         | 已註冊的 Azure AD 應用程式租用戶識別碼。   |
 | | | |
 
 #### <a name="request-header"></a>*要求標頭*
 
-|  **標頭名稱**    |  **必要**  |  **說明**          |
+|  **標頭名稱**    |  **必要**  |  **描述**          |
 |  ------------------ |--------------- | ------------------------  |
 |  `Content-Type`     |   True         | 與要求相關聯的內容類型。 預設值是 `application/x-www-form-urlencoded`。  |
 | | | |
 
 #### <a name="request-body"></a>*要求本文*
 
-|  **屬性名稱**  |  **必要**  |  **說明**          |
+|  **屬性名稱**  |  **必要**  |  **描述**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True         | 授與類型。 預設值是 `client_credentials`。 |
+|  `Grant_type`       |   True         | 授與類型。 使用 `client_credentials`。 |
 |  `Client_id`        |   True         | 與 Azure AD 應用程式相關聯的用戶端/應用程式識別碼。|
 |  `client_secret`    |   True         | 與 Azure AD 應用程式相關聯的密碼。  |
-|  `Resource`         |   True         | 要求權杖的目標資源。 預設值是 `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`。  |
+|  `Resource`         |   True         | 要求權杖的目標資源。 使用 `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`。 |
 | | | |
 
 #### <a name="response"></a>*回應*
@@ -106,17 +106,17 @@ Marketplace 計量服務支援兩種驗證策略：
 >[!Note]
 >發行者應確保發出使用量的資源已鎖定，不會遭到篡改。
 
-您的受控應用程式可以含有從虛擬機器到 Azure Functions 等不同類型的資源。  若想進一步了解如何使用不同服務的受控識別進行驗證，請參閱[如何使用適用於 Azure 資源的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-can-i-use-managed-identities-for-azure-resources)。
+您的受控應用程式可以含有從虛擬機器到 Azure Functions 等不同類型的資源。  如需有關如何使用不同服務的受控識別進行驗證的詳細資訊，請參閱[如何使用適用于 Azure 資源的受控](../../active-directory/managed-identities-azure-resources/overview.md#how-can-i-use-managed-identities-for-azure-resources)識別）。
 
 舉例來說，請按照下列步驟以使用 Windows VM 進行驗證。
 
 1. 請務必使用下列其中一種方法來設定受控識別：
-    * [Azure 入口網站 UI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
-    * [CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
-    * [PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-    * [Azure Resource Manager 範本](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
-    * [REST](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm#system-assigned-managed-identity)
-    * [Azure SDK](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+    * [Azure 入口網站 UI](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+    * [CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+    * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+    * [Azure Resource Manager 範本](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [REST](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity)）
+    * [Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 1. 使用系統身分識別取得 Marketplace 計量服務應用程式識別碼的存取權杖 (`20e940b3-4c77-4b0b-9a53-9e16a1b010a7`)、透過 RDP 連接到 VM、開啟 PowerShell 主控台，然後執行下列命令
 
@@ -145,7 +145,7 @@ Marketplace 計量服務支援兩種驗證策略：
 
     ```powershell
     # Get resourceUsageId from the managed app
-    $managedAppUrl = "https://management.azure.com/subscriptions/" + $metadata.compute.subscriptionId + "/resourceGroups/" + $metadata.compute.resourceGroupName + "/providers/Microsoft.Solutions/applications/" + $managedappId + "\?api-version=2019-07-01"
+    $managedAppUrl = "https://management.azure.com" + $managedappId + "\?api-version=2019-07-01"
     $ManagedApp = curl $managedAppUrl -H $Headers | Select-Object -Expand Content | ConvertFrom-Json
     # Use this resource ID to emit usage 
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
@@ -156,3 +156,4 @@ Marketplace 計量服務支援兩種驗證策略：
 ## <a name="next-steps"></a>後續步驟
 
 * [建立 Azure 應用程式供應項目](./create-new-azure-apps-offer.md)
+* [建立 transactable SaaS 供應專案](./offer-creation-checklist.md)

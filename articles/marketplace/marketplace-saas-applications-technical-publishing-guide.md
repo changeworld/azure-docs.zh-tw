@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 4d1ee4fc0760e76af7475dd3b2dc83f306e7a7bd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 46f8da8b2b688900e50548bbece01117a7a47e24
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657820"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963830"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 應用程式供應項目發佈指南
 
@@ -62,11 +62,9 @@ SaaS 應用程式的技術需求很簡單。 發行者只需要與 Azure Active 
 
 您可以在下列網站取得最適合的 Azure Active Directory 文件、範例和指引： 
 
-* [Azure Active Directory 開發人員指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+* [Azure Active Directory 開發人員指南](../active-directory/develop/index.yml)
 
-* [與 Azure Active Directory 整合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
-
-* [整合應用程式與 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+* [與 Azure Active Directory 整合](../active-directory/develop/active-directory-how-to-integrate.md)
 
 * [Azure 藍圖 - 安全性與身分識別](https://azure.microsoft.com/roadmap/?category=security-identity)
 
@@ -90,7 +88,7 @@ SaaS 應用程式的技術需求很簡單。 發行者只需要與 Azure Active 
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>使用 Azure Active Directory 啟用試用版  
 
-Microsoft 可使用 Azure AD 來驗證所有 Marketplace 使用者，因此已驗證的使用者點選試用版清單並重新導向至試用版環境時，您可以將使用者直接佈建置至試用版，而不需要額外的登入步驟。 應用程式在驗證期間從 Azure AD 收到的權杖，包括可用以在應用程式中建立使用者帳戶的寶貴使用者資訊，讓您將佈建體驗自動化並增加轉換的可能性。 如需有關權杖的詳細資訊，請參閱[權杖範例](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
+Microsoft 可使用 Azure AD 來驗證所有 Marketplace 使用者，因此已驗證的使用者點選試用版清單並重新導向至試用版環境時，您可以將使用者直接佈建置至試用版，而不需要額外的登入步驟。 應用程式在驗證期間從 Azure AD 收到的權杖，包括可用以在應用程式中建立使用者帳戶的寶貴使用者資訊，讓您將佈建體驗自動化並增加轉換的可能性。 如需有關權杖的詳細資訊，請參閱[權杖範例](../active-directory/develop/active-directory-token-and-claims.md)。
 
 使用 Azure AD 對應用程式或試用版啟用單鍵驗證，可達到以下效果：  
 * 簡化客戶從 Marketplace 至試用版的體驗。  
@@ -106,15 +104,15 @@ Microsoft 可使用 Azure AD 來驗證所有 Marketplace 使用者，因此已�
 
 如果您已支援 Azure AD，請執行下列動作：
 1.    在 Azure 入口網站註冊您的應用程式
-2.    在 Azure AD 中啟用多租用戶支援功能，以獲得「單鍵」試用體驗。 您可以在[此處](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)找到更多特定資訊。  
+2.    在 Azure AD 中啟用多租用戶支援功能，以獲得「單鍵」試用體驗。 您可以在[此處](../active-directory/develop/active-directory-integrating-applications.md)找到更多特定資訊。  
 
 如果您剛剛接觸 Azure AD 同盟 SSO，請執行下列動作： 
 1.  在 Azure 入口網站註冊您的應用程式
-2.  使用 [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) 或 [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)，開發透過 Azure AD 的 SSO。
-3.  啟用 AAD 中的多租用戶支援功能以獲得「單鍵」試用版體驗，您可以在[此處](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)找到更多特定資訊。  
+2.  使用 [OpenID Connect](../active-directory/develop/active-directory-protocols-openid-connect-code.md) 或 [OAuth 2.0](../active-directory/develop/active-directory-protocols-oauth-code.md)，開發透過 Azure AD 的 SSO。
+3.  啟用 AAD 中的多租用戶支援功能以獲得「單鍵」試用版體驗，您可以在[此處](../active-directory/develop/active-directory-devhowto-appsource-certified.md)找到更多特定資訊。  
 
 **對於單一租用戶應用程式，請使用下列任一選項：**  
-* 使用 [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) 將使用者新增至目錄作為來賓使用者
+* 使用 [Azure B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 將使用者新增至目錄作為來賓使用者
 * 使用「與我連絡」為客戶手動佈建試用版
 * 開發每個客戶的「試用產品」
 * 建置使用 SSO 的多租用戶範例示範應用程式

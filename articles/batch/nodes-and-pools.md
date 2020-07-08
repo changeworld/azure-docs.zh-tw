@@ -2,13 +2,13 @@
 title: Azure Batch 中的節點和集區
 description: 從開發觀點了解計算節點和集區，以及如何在 Azure Batch 工作流程中使用。
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: eadc5236926fed12ebee087f7354c492ae5fc745
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.date: 06/16/2020
+ms.openlocfilehash: f71be75c0358dbc7f76a61680df2c54f44bc4173
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790915"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964037"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的節點和集區
 
@@ -27,6 +27,8 @@ Batch 中的所有計算節點也包括︰
 - 工作可參考的標準[資料夾結構](files-and-directories.md)與相關聯的[環境變數](jobs-and-tasks.md)。
 - **防火牆** 設定。
 - [遠端存取](error-handling.md#connect-to-compute-nodes) Windows (遠端桌面通訊協定 (RDP)) 和 Linux (安全殼層 (SSH)) 節點。
+
+根據預設，節點可以彼此通訊，但無法與不屬於相同集區的虛擬機器進行通訊。 若要允許節點與其他虛擬機器或內部部署網路安全地進行通訊，您可以[在 Azure 虛擬網路（VNet）的子網中](batch-virtual-network.md)布建集區。 當您這麼做時，可以透過公用 IP 位址存取您的節點。 這些公用 IP 位址是由 Batch 所建立，而且可能會在集區的存留期間變更。 您也可以使用您控制的[靜態公用 IP 位址來建立集](create-pool-public-ip.md)區，以確保它們不會意外變更。
 
 ## <a name="pools"></a>集區
 
@@ -78,7 +80,7 @@ Batch 中有兩種類型的集區設定可供使用。
 
 ### <a name="node-agent-skus"></a>節點代理程式 SKU
 
-當您建立一個集區時，必須選取適當的 **nodeAgentSkuId**，視您 VHD 的基礎映像 OS 而定。 您可以呼叫[列出受支援節點代理程式 SKU 的清單](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus)作業，藉此取得對應至其 OS 映像參考的可用節點代理程式 SKU 識別碼。
+當您建立一個集區時，必須選取適當的 **nodeAgentSkuId**，視您 VHD 的基礎映像 OS 而定。 您可以呼叫[列出受支援節點代理程式 SKU 的清單](/rest/api/batchservice/list-supported-node-agent-skus)作業，藉此取得對應至其 OS 映像參考的可用節點代理程式 SKU 識別碼。
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>適用於虛擬機器集區的自訂映像
 
@@ -127,7 +129,7 @@ Azure 多餘的容量不足時，可能會佔用低優先順序的節點。 如�
 - **資源度量** 是以 CPU 使用量、頻寬使用量、記憶體使用量和節點的數目為基礎。
 - **工作計量**是以工作狀態為基礎，例如 [作用中] \(已排入佇列)、[執行中] 或 [已完成]。
 
-當自動調整減少集區中的計算節點數目時，您必須考量如何處理在減少作業時正在執行的工作。 為了配合這一點，Batch 會提供您可以納入公式中的[「節點解除配置選項」](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption)。 例如，您可以指定執行中的工作立即停止，然後重新排入佇列以便在另一個節點上執行，或允許先完成再從集區中移除節點。 請注意，將節點解除配置選項設定為 `taskcompletion` 或 `retaineddata` 會避免集區調整大小作業，直到所有工作都完成，或所有工作保留期間都已過期為止。
+當自動調整減少集區中的計算節點數目時，您必須考量如何處理在減少作業時正在執行的工作。 為了配合這一點，Batch 會提供您可以納入公式中的[「節點解除配置選項」](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption)。 例如，您可以指定執行中的工作立即停止，然後重新排入佇列以便在另一個節點上執行，或允許先完成再從集區中移除節點。 請注意，將節點解除配置選項設定為 `taskcompletion` 或 `retaineddata` 會避免集區調整大小作業，直到所有工作都完成，或所有工作保留期間都已過期為止。
 
 如需關於自動調整應用程式的詳細資訊，請參閱 [自動調整 Azure Batch 集區中的計算節點](batch-automatic-scaling.md)。
 
@@ -162,13 +164,16 @@ Azure 多餘的容量不足時，可能會佔用低優先順序的節點。 如�
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>虛擬網路 (VNet) 和防火牆設定
 
-當您在 Batch 中佈建計算節點集區時，可以將此集區與 Azure [虛擬網路 (VNet)](../virtual-network/virtual-networks-overview.md) 的子網路產生關聯。 若要使用 Azure VNet，Batch 用戶端 API 必須使用 Azure Active Directory (AD) 驗證。 Azure Batch 對於 Azure AD 的支援記載於[使用 Active Directory 驗證 Batch 服務解決方案](batch-aad-auth.md)中。  
+當您在 Batch 中佈建計算節點集區時，可以將此集區與 Azure [虛擬網路 (VNet)](../virtual-network/virtual-networks-overview.md) 的子網路產生關聯。 若要使用 Azure VNet，Batch 用戶端 API 必須使用 Azure Active Directory (AD) 驗證。 Azure Batch 對於 Azure AD 的支援記載於[使用 Active Directory 驗證 Batch 服務解決方案](batch-aad-auth.md)中。
 
 ### <a name="vnet-requirements"></a>VNet 需求
 
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
 如需在 VNet 中設定 Batch 集區的詳細資訊，請參閱[使用虛擬網路建立虛擬機器的集區](batch-virtual-network.md)。
+
+> [!TIP]
+> 若要確保用來存取節點的公用 IP 位址不會變更，您可以[使用您所控制的指定公用 ip 位址來建立集](create-pool-public-ip.md)區。
 
 ## <a name="pool-and-compute-node-lifetime"></a>集區和計算節點存留期
 
@@ -184,7 +189,7 @@ Azure 多餘的容量不足時，可能會佔用低優先順序的節點。 如�
 
 在加密或解密工作的敏感資訊 (例如 [Azure 儲存體帳戶](accounts.md#azure-storage-accounts)的金鑰) 時，您通常需要使用憑證。 若要支援此功能，您可以在節點上安裝憑證。 加密的機密資料會透過命令列參數或內嵌在其中一個工作資源中而傳遞至工作，已安裝的憑證可用來解密這些資料。
 
-您可以使用[新增憑證](https://docs.microsoft.com/rest/api/batchservice/certificate/add)作業 (Batch REST) 或 [CertificateOperations.CreateCertificate](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificateoperations) 方法 (Batch .NET)，將憑證新增至 Batch 帳戶。 然後，您可以將憑證與新的或現有的集區產生關聯。
+您可以使用[新增憑證](/rest/api/batchservice/certificate/add)作業 (Batch REST) 或 [CertificateOperations.CreateCertificate](/dotnet/api/microsoft.azure.batch.certificateoperations) 方法 (Batch .NET)，將憑證新增至 Batch 帳戶。 然後，您可以將憑證與新的或現有的集區產生關聯。
 
 當憑證與集區相關聯時，Batch 服務會在集區中的每個節點上安裝憑證。 當節點啟動時，在啟動任何工作之前 (包括[開始工作](jobs-and-tasks.md#start-task)和[作業管理員工作](jobs-and-tasks.md#job-manager-task))，Batch 服務會安裝適當的憑證。
 

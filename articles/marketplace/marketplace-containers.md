@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 99aecee930e5d77302ad54babd927588519e33fd
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: fae11343332fe741301016d4871d098b0214c7f5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160455"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964442"
 ---
 # <a name="publishing-guide-for-container-offers"></a>容器供應專案發佈指南
 
@@ -34,14 +34,14 @@ Microsoft 目前支援免費和自備授權 (BYOL) 授權模型。
 |:--- |:--- |  
 | 計費和計量 | 支援免費或 BYOL 計費模型。<br><br> |  
 | 從 Dockerfile 建立的映射 | 容器映射必須以 Docker 映射規格為基礎，並且是從 Dockerfile 建立而成。<br> <br>如需建立 Docker 映射的詳細資訊，請參閱[Dockerfile 參考](https://docs.docker.com/engine/reference/builder/#usage)的「使用方式」一節。<br><br> |  
-| 在 Azure Container Registry 存放庫中裝載 | 容器映射必須裝載在 Azure Container Registry 存放庫中。<br> <br>如需使用 Azure Container Registry 的詳細資訊，請參閱[快速入門：使用 Azure 入口網站建立私人容器](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)登錄。<br><br> |  
-| 映像標記 | 容器映射必須包含至少一個標記（標記數目上限：16）。<br><br>如需有關標記映射的詳細資訊，請`docker tag`參閱[Docker 檔](https://docs.docker.com/engine/reference/commandline/tag)網站上的頁面。<br><br> |  
+| 在 Azure Container Registry 存放庫中裝載 | 容器映射必須裝載在 Azure Container Registry 存放庫中。<br> <br>如需使用 Azure Container Registry 的詳細資訊，請參閱[快速入門：使用 Azure 入口網站建立私人容器](../container-registry/container-registry-get-started-portal.md)登錄。<br><br> |  
+| 映像標記 | 容器映射必須包含至少一個標記（標記數目上限：16）。<br><br>如需有關標記映射的詳細資訊，請參閱 `docker tag` [Docker 檔](https://docs.docker.com/engine/reference/commandline/tag)網站上的頁面。<br><br> |  
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您尚未這麼做，請瞭解如何[使用 Azure Marketplace 來拓展您的雲端業務](https://azuremarketplace.microsoft.com/sell)。
+了解如何[使用 Azure Marketplace 來拓展您的雲端業務](https://azuremarketplace.microsoft.com/sell) (若您尚不了解)。
 
 若要註冊並開始使用合作夥伴中心：
 
-- 登[入合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以建立或完成您的供應專案。
+- [登入合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以建立或完成您的供應項目。
 - 如需詳細資訊，請參閱[建立 Azure 容器供應](./partner-center-portal/create-azure-container-offer.md)專案。

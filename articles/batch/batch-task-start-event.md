@@ -3,12 +3,12 @@ title: Azure Batch 工作開始事件
 description: Batch 工作開始事件的參考資訊。 一旦排程器已排程工作在計算節點上執行時，就會發出此事件。
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: f872e6c89e2f528729ae08125c6cc3eb5718e19a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: ed7b3014279fc87fbaae6f1c270f056e95073aaf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725783"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965088"
 ---
 # <a name="task-start-event"></a>工作開始事件
 
@@ -46,7 +46,7 @@ ms.locfileid: "83725783"
 |`taskType`|String|工作類型。 可以是 'JobManager'，表示這是作業管理員工作，或是 'User'，表示不是作業管理員工作。|
 |`systemTaskVersion`|Int32|這是作業上的內部重試計數器。 Batch 服務可在內部重試工作，以處理暫時性問題。 這些問題包含內部排程錯誤，或嘗試從不正常狀態的計算節點復原。|
 |[`nodeInfo`](#nodeInfo)|複雜類型|包含工作執行所在計算節點的相關資訊。|
-|[`multiInstanceSettings`](#multiInstanceSettings)|複雜類型|指定工作為需要多個計算節點的多重執行個體工作。  請參閱 [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) (英文) 以取得詳細資訊。|
+|[`multiInstanceSettings`](#multiInstanceSettings)|複雜類型|指定工作為需要多個計算節點的多重執行個體工作。  請參閱 [multiInstanceSettings](/rest/api/batchservice/get-information-about-a-task) (英文) 以取得詳細資訊。|
 |[`constraints`](#constraints)|複雜類型|套用至此工作的執行限制。|
 |[`executionInfo`](#executionInfo)|複雜類型|包含執行工作的相關資訊。|
 

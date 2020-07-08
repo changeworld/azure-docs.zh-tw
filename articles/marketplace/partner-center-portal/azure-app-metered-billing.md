@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 180015a6bab576c02dcfaaea589628e40c6adde4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 5a867243e57790bf72cef6991d6d8ac06639be49
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736171"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963915"
 ---
 # <a name="managed-application-metered-billing"></a>受控應用程式計量付費計費 
 
@@ -67,7 +67,7 @@ ms.locfileid: "82736171"
 定義維度本身的屬性會在供應專案的所有計劃之間共用。 發行供應專案之前，從任何計畫內容對這些屬性所做的變更，將會影響所有計劃的維度定義。 發行供應專案之後，這些屬性將無法再編輯。 屬性包括：
 
 * 識別碼
-* 名稱
+* Name
 * 測量單位
 
 維度的其他屬性是每個方案特有的，而且可以有不同的值從計畫到計畫。  發行方案之前，您可以編輯這些值，而且只會影響此計畫。 一旦您發行計畫之後，這些屬性將無法再編輯。 屬性包括：
@@ -93,7 +93,7 @@ ms.locfileid: "82736171"
 一旦供應專案與維度一併發行，就無法再變更該維度的供應專案層級詳細資料：
 
 * 識別碼
-* 名稱
+* Name
 * 測量單位
 
 方案發佈之後，就無法再變更計畫層級的詳細資料：
@@ -125,7 +125,7 @@ ms.locfileid: "82736171"
 4. 在 [選取最能描述問題的問題] 底下，選取 [**計量付費**]。
 5. 選取 [**下一步]** 按鈕，系統會將您導向至 [**問題詳細資料**] 頁面，您可以在其中輸入有關問題的詳細資料。
 
-如需更多發行者支援選項，請參閱[合作夥伴中心的商業 marketplace 方案支援](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)。
+如需更多發行者支援選項，請參閱[合作夥伴中心的商業 marketplace 方案支援](support.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

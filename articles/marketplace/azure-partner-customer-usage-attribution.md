@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 20f8e0bea460c20ed3af0c2844ebc3510bd2d6b6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 7a48da25c60eb2db3b918ebe9523440c49ed9693
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800797"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963796"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業市集合作夥伴與客戶使用狀況歸因
 
@@ -59,11 +59,14 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 將 GUID 新增至範本或使用者代理程式，並在合作夥伴中心註冊 GUID 之後，就會追蹤未來的部署。
 
+> [!NOTE]
+> 如果您要透過合作夥伴中心將您的[Azure 應用程式](./partner-center-portal/create-new-azure-apps-offer.md)供應專案發佈至 Azure Marketplace，在範本上傳時，您的範本內所使用的任何新 GUID 都會自動註冊到您的合作夥伴中心設定檔。  
+
 1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard)。
 
 1. 註冊為[商業市集發行者](https://aka.ms/JoinMarketplace)。
 
-   * 合作夥伴[在合作夥伴中心需要有設定檔](https://docs.microsoft.com/azure/marketplace/become-publisher)。 我們鼓勵您在 Azure Marketplace 或 AppSource 中列出該供應項目。
+   * 合作夥伴[在合作夥伴中心需要有設定檔](become-publisher.md)。 我們鼓勵您在 Azure Marketplace 或 AppSource 中列出該供應項目。
    * 合作夥伴可以註冊多個 GUID。
    * 合作夥伴可以註冊非市集解決方案範本和供應項目的 GUID。
 
@@ -71,7 +74,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 1. 在 [帳戶設定] 頁面上，選取 [新增追蹤 GUID]。
 
-1. 在 [GUID] 方塊中，輸入追蹤 GUID。 只輸入 GUID，不要輸入 **pid-** 前置詞。 在 [描述] 方塊中，輸入供應項目名稱或描述。
+1. 在 [GUID] 方塊中，輸入追蹤 GUID。 只輸入不含前置詞的 GUID `pid-` 。 在 [描述] 方塊中，輸入供應項目名稱或描述。
 
 1. 若要註冊多個 GUID，請再次選取 [新增追蹤 GUID]。 頁面上會出現額外的方塊。
 
@@ -82,7 +85,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 > [!NOTE]
 > 如需有關建立及發佈「解決方案範本」的詳細資訊，請參閱
-> * [建立及部署第一個 Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+> * [建立及部署第一個 Resource Manager 範本](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 >* [Azure 應用程式供應項目](./partner-center-portal/create-new-azure-apps-offer.md)。
 >* 視訊：[為 Azure Marketplace 建置解決方案範本和受控應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603) \(英文\)。
 
@@ -95,7 +98,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 1. 在主要範本檔案中加入新的資源。 資源只需要置於 **mainTemplate.json** 或 **azuredeploy.json** 檔案中，而非任何巢狀或連結的範本中。
 
-1. 在 **pid-** 前置詞後方輸入 GUID 值 (例如 pid-eb7927c8-dd66-43e1-b0cf-c346a422063)。
+1. 在前置詞之後輸入 GUID 值 `pid-` （例如，pid-前置-pid-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063）。
 
 1. 檢查範本是否有任何錯誤。
 
@@ -134,12 +137,12 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 ### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>使用 Resource Manager API 標記部署
 
-若要啟用客戶使用狀況歸因，當您設計 API 呼叫時，請在要求中的使用者代理程式標頭中包含 GUID。 針對每個供應項目或 SKU 新增 GUID。 使用 **pid-** 前置詞設定字串格式，並包括合作夥伴產生的 GUID。 以下是可插入到使用者代理程式中的 GUID 格式範例：
+若要啟用客戶使用狀況歸因，當您設計 API 呼叫時，請在要求中的使用者代理程式標頭中包含 GUID。 針對每個供應項目或 SKU 新增 GUID。 使用前置詞將字串格式化 `pid-` ，並包含合作夥伴產生的 GUID。 以下是可插入到使用者代理程式中的 GUID 格式範例：
 
 ![範例 GUID 格式](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
 > [!NOTE]
-> 此字串的格式至關重要。 若未包括 **pid-** 前置詞，就無法查詢資料。 不同的 SDK 會以不同的方式追蹤。 若要實作此方法，請檢閱支援和適用於慣用 Azure SDK 的方法。
+> 此字串的格式至關重要。 如果 `pid-` 未包含前置詞，就不可能查詢資料。 不同的 SDK 會以不同的方式追蹤。 若要實作此方法，請檢閱支援和適用於慣用 Azure SDK 的方法。
 
 #### <a name="example-the-python-sdk"></a>範例：Python SDK
 
@@ -165,7 +168,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-如需詳細資訊，請參閱 [Azure SDK for Go](https://docs.microsoft.com/azure/go/)。
+如需詳細資訊，請參閱 [Azure SDK for Go](https://docs.microsoft.com/azure/developer/go/)。
 
 ## <a name="use-terraform"></a>使用 Terraform
 
@@ -238,15 +241,15 @@ foreach ($deployment in $deployments){
 
 ## <a name="notify-your-customers"></a>通知您的客戶
 
-如果有部署採用客戶使用狀況歸因，合作夥伴應該告知客戶。 Microsoft 會向合作夥伴回報與這些部署關聯的 Azure 使用狀況。 下列範例包括您可以用來通知客戶有關這些部署的內容。 在範例中，將 \<PARTNER> 取代為您的公司名稱。 合作夥伴應該確保通知符合他們的資料隱私權和收集原則，包括讓客戶從追蹤排除的選項。
+如果有部署採用客戶使用狀況歸因，合作夥伴應該告知客戶。 Microsoft 會向合作夥伴回報與這些部署關聯的 Azure 使用狀況。 下列範例包括您可以用來通知客戶有關這些部署的內容。 在範例中，將取代 \<PARTNER> 為您的公司名稱。 合作夥伴應該確保通知符合他們的資料隱私權和收集原則，包括讓客戶從追蹤排除的選項。
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Resource Manager 範本部署的通知
 
-當您部署此範本時，Microsoft 可以透過已部署的 Azure 資源來識別 \<PARTNER> 軟體的安裝。 Microsoft 可讓用來支援軟體的 Azure 資源相互關聯。 Microsoft 會收集這項資訊，以透過其產品提供最佳體驗以及經營業務。 Microsoft 隱私權原則 (位於 https://www.microsoft.com/trustcenter ) 規範此資料的收集與控管。
+當您部署此範本時，Microsoft 可以識別 \<PARTNER> 已部署 Azure 資源的軟體安裝。 Microsoft 可讓用來支援軟體的 Azure 資源相互關聯。 Microsoft 會收集這項資訊，以透過其產品提供最佳體驗以及經營業務。 Microsoft 隱私權原則 (位於 https://www.microsoft.com/trustcenter ) 規範此資料的收集與控管。
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>SDK 或 API 部署的通知
 
-當您部署 \<PARTNER> 軟體時，Microsoft 可以透過已部署的 Azure 資源來識別 \<PARTNER> 軟體的安裝。 Microsoft 可讓用來支援軟體的 Azure 資源相互關聯。 Microsoft 會收集這項資訊，以透過其產品提供最佳體驗以及經營業務。 Microsoft 隱私權原則 (位於 https://www.microsoft.com/trustcenter ) 規範此資料的收集與控管。
+當您部署 \<PARTNER> 軟體時，Microsoft 可以識別 \<PARTNER> 已部署之 Azure 資源的軟體安裝。 Microsoft 可讓用來支援軟體的 Azure 資源相互關聯。 Microsoft 會收集這項資訊，以透過其產品提供最佳體驗以及經營業務。 Microsoft 隱私權原則 (位於 https://www.microsoft.com/trustcenter ) 規範此資料的收集與控管。
 
 ## <a name="get-support"></a>取得支援
 
@@ -254,7 +257,7 @@ foreach ($deployment in $deployments){
 
 如果您在合作夥伴中心遇到任何問題，例如查看客戶使用狀況歸因報告或登入，請向合作夥伴中心支援小組提出支援要求：[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
-![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
+![[取得支援] 頁面的螢幕擷取畫面](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
 一般來說，如果您在 Marketplace 上線和 (或) 客戶使用狀況歸因方面需要協助，像是如何設定客戶使用狀況溯源，請遵循下列步驟：
 
@@ -329,7 +332,7 @@ Azure 儲存體的 GUID 產生器表單保證會產生所需格式的 GUID。 �
 
 **對於 Azure Marketplace 中的解決方案範本供應項目，我可以使用私人自訂的 VHD 嗎？**
 
-不可以。 虛擬機器映像必須來自 Azure Marketplace，請參閱：[https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)。
+不可以。 虛擬機器映射必須來自 Azure Marketplace，請參閱： [Azure Marketplace 上虛擬機器供應專案的發佈指南](marketplace-virtual-machines.md)。
 
 您可以在市集使用自訂 VHD 建立 VM 供應項目，並標示為「私人」，不讓任何人看到。 然後，在您的解決方案範本中參考此 VM。
 

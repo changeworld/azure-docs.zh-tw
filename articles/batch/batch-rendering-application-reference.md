@@ -5,16 +5,16 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726497"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964867"
 ---
 # <a name="rendering-applications"></a>轉譯應用程式
 
-轉譯應用程式可藉由建立 Batch 作業和工作來使用。 工作命令列屬性會指定適當的命令列和參數。  要建立作業工作，最簡單的方式是使用[這篇文章](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer)中指定的 Batch Explorer 範本。  您可以檢視範本，並視需要修改已建立的版本。
+轉譯應用程式可藉由建立 Batch 作業和工作來使用。 工作命令列屬性會指定適當的命令列和參數。  要建立作業工作，最簡單的方式是使用[這篇文章](./batch-rendering-using.md#using-batch-explorer)中指定的 Batch Explorer 範本。  您可以檢視範本，並視需要修改已建立的版本。
 
 本文將簡單說明如何執行每個轉譯應用程式。
 

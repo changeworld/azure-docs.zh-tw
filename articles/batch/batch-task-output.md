@@ -4,12 +4,12 @@ description: 深入了解從 Batch 工作和作業保存輸出資料的不同選
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 492de237acdf2d6d42f27638bac3adc0f6549828
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726293"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965105"
 ---
 # <a name="persist-job-and-task-output"></a>持續作業及工作輸出
 
@@ -35,7 +35,7 @@ ms.locfileid: "83726293"
 
 ### <a name="use-the-batch-service-api"></a>使用 Batch 服務 API
 
-當您[將工作新增至作業](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job)或[將工作集合新增至作業](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)時，Batch 服務支援在 Azure 儲存體中指定工作資料的輸出檔案。
+當您[將工作新增至作業](/rest/api/batchservice/add-a-task-to-a-job)或[將工作集合新增至作業](/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)時，Batch 服務支援在 Azure 儲存體中指定工作資料的輸出檔案。
 
 如需有關使用 Batch 服務 API 保存工作輸出的詳細資訊，請參閱[使用 Batch 服務 API 將工作資料保存到 Azure 儲存體](batch-task-output-files.md)。
 

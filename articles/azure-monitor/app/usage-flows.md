@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8622ede9e6f7fba2fde2e0b2e90eb31520a23d04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892439"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963411"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>在 Application Insights 中使用使用者流程分析使用者瀏覽模式
 
-![Application Insights 使用者流程工具](./media/usage-flows/00001-flows.png)
+![Application Insights 使用者流程工具](./media/usage-flows/flows.png)
 
 「使用者流程」工具會視覺化使用者如何在網站的分頁和功能之間進行瀏覽。 適合用來回答問題，例如：
 
@@ -33,7 +33,7 @@ ms.locfileid: "80892439"
 
 ## <a name="start-by-choosing-an-initial-event"></a>一開始先選擇初始事件
 
-![為使用者流程選擇初始事件](./media/usage-flows/00002-flows-initial-event.png)
+![為使用者流程選擇初始事件](./media/usage-flows/initial-event.png)
 
 若要開始使用「使用者流程」工具回答問題，請選擇初始網頁檢視、自訂事件或例外狀況來作為視覺效果的起點：
 
@@ -58,7 +58,7 @@ ms.locfileid: "80892439"
 
 ## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>造訪分頁或功能之後，使用者的去向以及他們按了什麼？
 
-![使用「使用者流程」以了解使用者點擊的位置](./media/usage-flows/00003-flows-one-step.png)
+![使用「使用者流程」以了解使用者點擊的位置](./media/usage-flows/one-step.png)
 
 如果您的初始事件是分頁檢視，視覺效果的第一個資料行 ([步驟 1]) 是了解使用者造訪分頁之後隨即做了什麼的快速方法。 請嘗試在「使用者流程」視覺效果旁邊的視窗中開啟您的網站。 比較您預期使用者與分頁的互動方式與 [步驟 1] 資料行中的事件清單。 通常，看起來對於小組微不足道之分頁的 UI 元素，會是分頁上的最常用元素之一。 它是為網站設計增強功能的絕佳起點。
 

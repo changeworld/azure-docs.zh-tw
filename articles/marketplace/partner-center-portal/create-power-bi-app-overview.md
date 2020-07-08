@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: c40ea07fc4224052aa2474ebd61ef7838ba2cedf
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 82e131b0e6209089b658c622b415e997b40e9e4b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837833"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964646"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI 應用程式建立總覽
 
@@ -20,14 +20,14 @@ ms.locfileid: "82837833"
 
 ## <a name="publishing-benefits"></a>發佈的優點
 
-發佈至商用 marketplace 的優點：
+發佈至商業市集的優點：
 
-- 使用 Microsoft 品牌來宣傳您的公司。
-- 透過 Azure Marketplace，有可能觸及超過100000000個 Office 365 和 Dynamics 365 AppSource 和超過200000個組織的使用者。
-- 從這些市場獲得高品質的潛在客戶。
+- 使用 Microsoft 品牌來推廣您的公司。
+- 可能接觸到 AppSource 上超過 100 萬個 Office 365 和 Dynamics 365 使用者，且透過 Azure Marketplace 接觸 200,000 個以上的組織。
+- 從這些市集獲得高品質潛在客戶。
 - 由 Microsoft 現場和電話銷售團隊推廣您的服務。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 :::image type="content" source="media/power-bi-app-publishing-steps.png" alt-text="發佈 Power BI 應用程式的步驟總覽" border="false":::
 
@@ -50,7 +50,7 @@ ms.locfileid: "82837833"
 - [撰寫 Power BI 應用程式的秘訣](https://docs.microsoft.com/power-bi/service-template-apps-tips)
 - [範例](https://docs.microsoft.com/power-bi/service-template-apps-samples)
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 若要在商業 marketplace 中發佈，您的 Power BI 應用程式供應專案必須符合下列技術和商務需求。
 
@@ -66,16 +66,16 @@ ms.locfileid: "82837833"
 2. 在 Power BI 中建立及測試您的應用程式。
 3. 當您收到應用程式安裝網址時，請將它新增至 [合作夥伴中心] 的 [**技術**設定] 頁面。
 
-在 Power BI 中建立並測試您的應用程式之後，請儲存應用程式安裝 web 位址，因為您需要它來[建立 Power BI 應用程式供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)專案。
+在 Power BI 中建立並測試您的應用程式之後，請儲存應用程式安裝 web 位址，因為您需要它來[建立 Power BI 應用程式供應](create-power-bi-app-offer.md)專案。
 
 ### <a name="business-requirements"></a>商業需求
 
 商務需求包括程式性、合約和法律責任。 您必須：
 
-- 為已註冊的商用 marketplace 發行者。 如果您未註冊，請依照[成為商用 Marketplace 發行者](https://docs.microsoft.com/azure/marketplace/become-publisher)中的步驟進行。
+- 為已註冊的商用 marketplace 發行者。 如果您未註冊，請依照在[合作夥伴中心建立商業 marketplace 帳戶](create-account.md)中的步驟進行。
 - 提供符合準則的內容，以在 AppSource 上列出您的供應專案。 如需詳細資訊，請參閱[讓應用程式在 AppSource 上列出？做法如下](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)：
 - 同意並遵循[Microsoft 隱私權聲明](https://privacy.microsoft.com/privacystatement)。
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 
-- [在合作夥伴中心建立 Power BI 應用程式供應專案](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
+- [在合作夥伴中心建立 Power BI 應用程式供應專案](create-power-bi-app-offer.md)

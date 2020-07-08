@@ -4,12 +4,12 @@ description: 使用作業排程來管理您的工作。
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: c75f635a937dcddd2c1c02cc717f96f1441efe81
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 89881808e48b3fbe44fbcd5352a15afc4eb427ef
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726633"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964340"
 ---
 # <a name="schedule-jobs-for-efficiency"></a>排定作業以提高效率
 
@@ -67,7 +67,7 @@ ms.locfileid: "83726633"
 
 ## <a name="for-more-information"></a>取得詳細資訊
 
-若要使用 Azure CLI 來管理作業，請參閱 [az batch job-schedule](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest)。
+若要使用 Azure CLI 來管理作業，請參閱 [az batch job-schedule](/cli/azure/batch/job-schedule?view=azure-cli-latest)。
 
 ## <a name="next-steps"></a>後續步驟
 

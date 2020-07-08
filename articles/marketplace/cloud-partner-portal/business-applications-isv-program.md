@@ -1,5 +1,5 @@
 ---
-title: Microsoft Business Applications 獨立軟體廠商（ISV） Connect 程式上線指南
+title: Microsoft Business Applications 獨立軟體廠商 (ISV) Connect 計畫上線指南
 description: 以下說明如何上架至 Business Applications ISV Connect 計畫。
 author: qianw211
 ms.service: marketplace
@@ -7,14 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
 ms.author: dsindona
-ms.openlocfilehash: f7fd3f43c7faddb5481411dc9c4c94864b6dc0b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f312fad8e4cbdbfae6bd17f293f65fc3bb637a3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80288966"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964884"
 ---
-# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 獨立軟體廠商（ISV） Connect 程式上線指南
+# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 獨立軟體廠商 (ISV) Connect 計畫上線指南
 
 [BUSINESS APPLICATIONS ISV Connect 計畫](https://partner.microsoft.com/solutions/business-applications/isv-overview)的目標，是要加速獨立軟體廠商（isv）建立現代化、雲端式、企業營運（LOB）解決方案與*Dynamics 365 Customer Engagement 和 PowerApps* （「dynamics CE 供應專案」）或*dynamics 365 財務和營運*（「dynamics Ops 優惠」）的成長和整體成功。 以下是其中的一部分。
 
@@ -43,7 +43,7 @@ ms.locfileid: "80288966"
 1. 在[Cloud Partner 入口網站](https://cloudpartner.azure.com/)中，登入您的**發行者設定檔**頁面。
 2. 如果您看到橫幅顯示您的帳戶設定已遷移至合作夥伴中心，請繼續進行下一節。 否則，請選取橫幅，提示您啟用合作夥伴中心帳戶。
 
-如需詳細資訊，請參閱[從 Cloud Partner 入口網站到合作夥伴中心的帳戶遷移](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)。
+如需詳細資訊，請參閱[從 Cloud Partner 入口網站到合作夥伴中心的帳戶遷移](../partner-center-portal/account-migration-from-cpp-to-pc.md)。
 
 ## <a name="accept-the-business-applications-isv-program-addendum"></a>接受 Business Applications ISV 方案附錄
 
@@ -77,7 +77,7 @@ ms.locfileid: "80288966"
 
 5. 提供稅務識別碼/加值稅 ID 設定（如果適用的話）。
 
-6. 選取 [儲存]  來儲存變更。
+6. 選取 [儲存] 來儲存變更。
 
 您可以隨時更新帳單設定檔，但無法在稍後變更*公司名稱*和帳單位址*國家/地區*。
 
@@ -88,7 +88,7 @@ ms.locfileid: "80288966"
 在 Business Applications ISV Connect 計畫中註冊的最後一個步驟，就是 recertifying 您現有的應用程式。
 
 1. [請遵循下列步驟](https://partner.microsoft.com/solutions/business-applications/isv-publish)，將您的應用程式重新認證至 AppSource。
-2. [建立併發布新的供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)專案。 這項供應專案將是全新的供應專案，並不會取代現有的供應專案。
+2. [建立併發布新的供應](../partner-center-portal/create-new-customer-engagement-offer.md)專案。 這項供應專案將是全新的供應專案，並不會取代現有的供應專案。
 
 ## <a name="further-info"></a>進一步資訊
 

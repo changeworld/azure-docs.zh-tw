@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ba746710227cba95dc4c73a910c22bb6cdaae0ed
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792899"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963745"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>有關 SaaS 履行 Api 的常見問題
 
@@ -46,11 +46,11 @@ ms.locfileid: "82792899"
 
 ![客戶訂用帳戶流程](media/saas-metering-service-integration-flow-a.png)
 
-如需有關在 SaaS 供應專案生命週期中處理交易案例之 API 合約的詳細資訊，請參閱[saas 履行 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)。
+如需有關在 SaaS 供應專案生命週期中處理交易案例之 API 合約的詳細資訊，請參閱[saas 履行 API](pc-saas-fulfillment-api-v2.md)。
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>您如何知道使用者在 Azure 中訂閱的 SaaS 供應專案？
 
-`Resolve` API 的回應包含與 SaaS 訂用帳戶相關聯的供應專案和方案資訊。
+API 的回應 `Resolve` 包含與 SaaS 訂用帳戶相關聯的供應專案和方案資訊。
 
 ### <a name="how-can-the-azure-user-change-the-plan-associated-with-this-azure-subscription"></a>Azure 使用者可以如何變更與此 Azure 訂用帳戶相關聯的方案？
 

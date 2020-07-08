@@ -7,16 +7,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 633656af72790c7dfebeee567713875ce0d609b4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798141"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964204"
 ---
 # <a name="cloud-solution-provider-program"></a>雲端解決方案提供者計畫
 
-本文說明如何將您的供應項目設定為適用於雲端解決方案提供者 (CSP) 計畫。 除了透過[商業市集網路店面](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)發佈供應項目外，您也可以透過 CSP 計畫來銷售，以觸及該計畫所服務的數百萬個合格 Microsoft 客戶。
+本文說明如何將您的供應項目設定為適用於雲端解決方案提供者 (CSP) 計畫。 除了透過[商業市集網路店面](comparing-appsource-azure-marketplace.md)發佈供應項目外，您也可以透過 CSP 計畫來銷售，以觸及該計畫所服務的數百萬個合格 Microsoft 客戶。
 
 您可以設定新的或現有的供應項目來選擇讓供應項目加入 CSP 計畫，這可讓 CSP 合作夥伴銷售您的產品，並為客戶建立配套的解決方案。
 
@@ -191,7 +191,7 @@ CSP 轉銷商的對象頁面上隨即會出現資料表，裡面會顯示您所�
 
 ## <a name="next-steps"></a>後續步驟
 
-請瀏覽 [Azure Marketplace 和 AppSource 發行者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
+請瀏覽 [Azure Marketplace 和 AppSource 發行者指南](marketplace-publishers-guide.md)。
 
 若要深入了解市集 GTM 服務，請參閱[進入市場服務](https://partner.microsoft.com/reach-customers/gtm)。
 

@@ -6,19 +6,19 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b80fe79a2c27de7dbaaa2edccf7b4598c6c63f47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6321fa484c883e196279ddf33661e78397bc3855
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431042"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963881"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>載入資料倉儲資料的最佳作法
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>用於載入資料以進行資料倉儲作業的最佳做法
 
 載入資料的建議和效能優化
 
@@ -144,6 +144,6 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入了解 PolyBase 及如何設計擷取、載入和轉換 (ELT) 程序，請參閱[設計 SQL 資料倉儲的 ELT](data-loading-overview.md)。
+- 若要深入了解 PolyBase 及如何設計擷取、載入和轉換 (ELT) 程序，請參閱[設計 SQL 資料倉儲的 ELT](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 - 如需載入教學課程，請參閱[使用 PolyBase 將資料從 Azure Blob 儲存體載入 SQL 資料倉儲中](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 - 若要監視資料載入，請參閱[使用 DMV 監視工作負載](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。

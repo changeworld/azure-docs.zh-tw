@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/19/2019
-ms.openlocfilehash: f47c7412bdd5ada1e50d1005b8e740e3f46ffd8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536228"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964629"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps 的定價模式
 
@@ -47,9 +47,9 @@ ms.locfileid: "81536228"
 
 * **Premium**ISE：此 SKU 的基礎單位有固定的容量，但如果您需要更多的輸送量，您可以在 ISE 建立期間或之後[新增更多縮放單位](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 如需 ISE 限制，請參閱[Azure Logic Apps 的限制和](logic-apps-limits-and-config.md#integration-service-environment-ise)設定。
 
-* **開發人員**ISE：此 SKU 沒有相應增加、沒有服務等級協定（SLA）和已發佈限制的功能。 此 SKU 僅供實驗、開發和測試之用，而不是實際執行或效能測試。
+* **開發人員**ISE：此 SKU 沒有相應增加、沒有服務等級協定（SLA）和已發佈限制的功能。 此 SKU 僅供實驗、開發和測試之用，而不是供生產環境或效能測試之用。
 
-對於您在 ISE 中建立及執行的邏輯應用程式，您必須針對這些功能支付[固定的每月價格](https://azure.microsoft.com/pricing/details/logic-apps)：
+對於您在 ISE 中建立及執行的邏輯應用程式，您需支付這些功能的[固定價格](https://azure.microsoft.com/pricing/details/logic-apps)（相對於每次使用付費）：
 
 * [內建觸發程式](../connectors/apis-list.md#built-in)和動作
 
@@ -57,7 +57,7 @@ ms.locfileid: "81536228"
 
 * [標準](../connectors/apis-list.md#managed-connectors)連接器和[企業](../connectors/apis-list.md#enterprise-connectors)連接器，可讓您擁有所需數量的企業連線
 
-   顯示**ise**標籤的標準和企業連接器，會在與邏輯應用程式相同的 ise 中執行。 未顯示 ISE 標籤的連接器會在公用、「全域」、多租使用者 Logic Apps 服務中執行。 每月固定價格也適用于在多租使用者服務中執行的連接器，當您搭配在 ISE 中執行的邏輯應用程式使用它們時。
+   顯示**ise**標籤的標準和企業連接器，會在與邏輯應用程式相同的 ise 中執行。 未顯示 ISE 標籤的連接器會在公用、「全域」、多租使用者 Logic Apps 服務中執行。 已修正的定價也適用于在多租使用者服務中執行的連接器，當您搭配在 ISE 中執行的邏輯應用程式使用它們時。
 
 * [整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)的使用量不需額外費用，視您的[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)而定：
 
@@ -116,13 +116,13 @@ Azure Logic Apps 將所有成功和失敗的動作當做執行計量。 不過�
 
 [固定定價模式](https://azure.microsoft.com/pricing/details/logic-apps)適用于[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)，您可以在其中探索、開發及測試 Azure Logic Apps 中的[B2B 和 EDI](logic-apps-enterprise-integration-b2b.md)和[XML 處理](logic-apps-enterprise-integration-xml.md)功能，而不需額外費用。 每個 Azure 訂用帳戶最多可以有個[特定的整合帳戶限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 每個整合帳戶最多可以儲存特定[的成品限制](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)，包括交易夥伴、合約、地圖、架構、元件、憑證、批次設定等。
 
-Azure Logic Apps 提供免費、基本和標準整合帳戶。 「基本」和「標準」層是由 Logic Apps 服務等級協定（SLA）所支援，而「免費」層則不受 SLA 支援，而且具有輸送量和使用量的限制。 除了免費層整合帳戶以外，您可以在每個 Azure 區域中有一個以上的整合帳戶。 如需定價費率，請參閱[Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/)。
+Azure Logic Apps 提供免費、基本和標準整合帳戶。 「基本」和「標準」層是由 Logic Apps 服務等級協定（SLA）所支援，而免費層不受 SLA 支援，而且具有區域可用性、輸送量和使用量方面的限制。 除了免費層整合帳戶以外，您可以在每個 Azure 區域中有一個以上的整合帳戶。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
-如果您有[Premium 或 Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)的[*整合服務環境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，您的 ISE 可以有5個整合帳戶總數。 若要瞭解適用于 ISE 的固定定價模式，請參閱本主題中的先前的[固定定價模式](#fixed-pricing)一節。 如需定價費率，請參閱[Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
+如果您有[Premium 或 Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)的[*整合服務環境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，您的 ISE 可以有5個整合帳戶總數。 若要瞭解適用于 ISE 的固定定價模式，請參閱本主題中的先前的[固定定價模式](#fixed-pricing)一節。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 若要在免費、基本或標準整合帳戶之間進行選擇，請參閱下列使用案例描述：
 
-* **免費**：當您想要嘗試探索案例，而不是生產案例時
+* **免費**：當您想要嘗試探索案例，而不是生產案例時。 這一層僅適用于 Azure 中的公用區域（例如美國西部或東南亞），但不適用於[Azure 中國的世紀](https://docs.microsoft.com/azure/china/overview-operations)或[Azure Government](../azure-government/documentation-government-welcome.md)。
 
 * **基本**：當您只想要處理訊息，或做為與較大商務實體有交易夥伴關係的小型企業夥伴時
 
@@ -132,7 +132,7 @@ Azure Logic Apps 提供免費、基本和標準整合帳戶。 「基本」和�
 
 ## <a name="data-retention"></a>資料保留
 
-除了在整合服務環境（ISE）中執行的邏輯應用程式以外，儲存在邏輯應用程式執行歷程記錄中的所有輸入和輸出都會根據邏輯應用程式的[執行保留期限](logic-apps-limits-and-config.md#run-duration-retention-limits)來計費。 在 ISE 中執行的邏輯應用程式不會產生資料保留成本。 如需定價費率，請參閱[Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
+除了在整合服務環境（ISE）中執行的邏輯應用程式以外，儲存在邏輯應用程式執行歷程記錄中的所有輸入和輸出都會根據邏輯應用程式的[執行保留期限](logic-apps-limits-and-config.md#run-duration-retention-limits)來計費。 在 ISE 中執行的邏輯應用程式不會產生資料保留成本。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 為了協助您監視邏輯應用程式的儲存體耗用量，您可以：
 

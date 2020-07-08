@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 1eae45eea35a118be51dc1e2f95055238212560d
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 985a8ac83d48de11ac134bc9a942c766e4ff5d32
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800664"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963592"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Microsoft 商業市集的常見問題
 
@@ -67,7 +67,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 在您註冊並接受發行者合約之後，就可以存取合作夥伴中心的商業市集頁面。 這是您建立及管理供應項目的位置，以及檢視分析報告的位置。 若為 Microsoft 365 應用程式，您也必須在合作夥伴中心內啟用 Office Store 程式。
 
-如需詳細資訊，請參閱[歡迎使用商業市集](https://docs.microsoft.com/azure/marketplace/)和[透過 Microsoft 商業市集從您的 Office 365 增益集獲利](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
+如需詳細資訊，請參閱[歡迎使用商業市集](index.yml)和[透過 Microsoft 商業市集從您的 Office 365 增益集獲利](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>如何取得商業市集的支援協助？
 
@@ -77,7 +77,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>我的組織可以從商業市集取得哪些分析？
 
-我們會在商業市場內提供您供應項目的報告。 若要存取客戶、訂單、商店業務開發等等的相關資料，請前往[合作夥伴中心商業市集的分析](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)。
+我們會在商業市場內提供您供應項目的報告。 若要存取客戶、訂單、商店業務開發等等的相關資料，請前往[合作夥伴中心商業市集的分析](partner-center-portal/analytics.md)。
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Microsoft 與我客戶之間的關係為何？
 
@@ -89,7 +89,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 您可以建立適用於所有客戶的變更，也可以對特定客戶進行特有的變更。 您也可以完全自訂您的條款及條件，這可在文字方塊中輸入或裝載於將顯示為網址的網站上。
 
-若要深入了解，請參閱 [Microsoft 商業市集的標準合約](https://docs.microsoft.com/azure/marketplace/standard-contract)。
+若要深入了解，請參閱 [Microsoft 商業市集的標準合約](standard-contract.md)。
 
 ### <a name="is-azure-marketplace-available-in-azure-government"></a>Azure Marketplace 適用於 Azure Government 嗎？
 
@@ -126,7 +126,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 當客戶在 Microsoft AppSource 和 Azure Marketplace 店面上使用您的供應項目時，就會擷取資訊。 在客戶展現出足夠的興趣之後，就會建立潛在客戶，並將商機傳送至您選擇的系統。 成功使用我們商業市集的發行者通常會尋求潛在客戶、開發關聯性，並將興趣化為交易。
 
-如需詳細資訊，請參閱[來自您市集供應項目的潛在客戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)。
+如需詳細資訊，請參閱[來自您市集供應項目的潛在客戶](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
 ### <a name="why-arent-my-changes-reflected-in-the-offer-on-microsoft-appsource-or-azure-marketplace"></a>為什麼我的變更不會反映在 Microsoft AppSource 或 Azure Marketplace 上的供應項目中？
 
@@ -146,7 +146,7 @@ Microsoft AppSource 是商務和產業解決方案的目的地，而 Azure Marke
 
 我們的全球轉銷商網路包含數十個參與雲端解決方案提供者計畫的組織。 CSP 計畫可讓組織從商業市集轉售我們的產品和供應項目，並提供他們可成功執行此工作的工具。
 
-如需詳細資訊，請參閱[雲端解決方案提供者](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)。
+如需詳細資訊，請參閱[雲端解決方案提供者](cloud-solution-providers.md)。
 
 ### <a name="how-can-i-find-resellers-to-establish-partnerships"></a>如何找出轉銷商來建立合作關係？
 
@@ -156,7 +156,7 @@ Microsoft AppSource 是商務和產業解決方案的目的地，而 Azure Marke
 
 是，您可以將供應項目提供給雲端解決方案提供者計畫中的所有轉銷商，或僅提供給您指定的轉銷商。
 
-如需詳細資訊，請參閱[雲端解決方案提供者](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)。
+如需詳細資訊，請參閱[雲端解決方案提供者](cloud-solution-providers.md)。
 
 ### <a name="how-can-i-pay-margin-to-resellers"></a>我要如何支付轉銷商的利潤？
 
@@ -229,7 +229,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 客戶可以從世界各地 141 個位置的商業市場取得解決方案。
 
-若要檢閱位置清單，請前往[商業市集發行者的稅賦詳細資料](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions)。
+若要檢閱位置清單，請前往[商業市集發行者的稅賦詳細資料](partner-center-portal/tax-details-paid-transactions.md)。
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>商業市集支援哪些貨幣？
 
@@ -252,7 +252,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 - 新台幣
 - 美元
 
-若要檢閱貨幣清單，請參閱[商業市集的各地區上市情況和貨幣支援](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
+若要檢閱貨幣清單，請參閱[商業市集的各地區上市情況和貨幣支援](marketplace-geo-availability-currencies.md)。
 
 ### <a name="can-customers-change-subscriptions-or-license-volumes-mid-term"></a>客戶可以中期變更訂用帳戶或授權量嗎？
 
@@ -274,29 +274,32 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>多常透過商業市集收到銷售的支出？
 
-支出每月發生一次。 在上個月中處理的集合會一次支出，而銷售必須具有最小的合併值 $50.00。
+支出每月發生一次。 如需付款排程的詳細資料、在合作夥伴中心尋找即將推出的支出，以及如何處理客戶的非付款，請參閱[支出原則詳細資料](partner-center-portal/payout-policy-details.md)。
 
-信用卡訂閱和購買會按月計費，而針對 Microsoft 客戶合約或 Enterprise 合約的發票可能不常開立。 從客戶計費的時間開始，我們會提供他們 30 天來付款。 在我們收到其付款之後，信用卡交易就會進入 30 天委付期間。
+- 對於客戶使用 Enterprise 合約的交易，支出會在下一期的付款週期中，于客戶發票後30天內發行。 
+- 對於客戶使用信用卡的交易，我們會在收到付款以確保資金清楚，而且沒有任何退款或可疑的詐騙後，有30天的額外申請期間。
 
-如需詳細資訊，請參閱[付款閾值、方法和時間範圍](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payment-thresholds-methods-timeframes)。
+只有在 sales 已達到最小結合值 $50.00 時，才會發出支出。
+
+如需詳細資訊，請參閱[付款閾值、方法和時間範圍](partner-center-portal/payment-thresholds-methods-timeframes.md)。
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>在哪些國家/地區中，可代表我管理稅賦？
 
 客戶可以從世界各地的商業市場尋找解決方案，而且我們會管理許多位置中的稅賦。 
 
-若要檢閱完整位置清單，請前往[商業市集發行者的稅賦詳細資料](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions)。
+若要檢閱完整位置清單，請前往[商業市集發行者的稅賦詳細資料](partner-center-portal/tax-details-paid-transactions.md)。
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>哪裡可以找到商業市集的支出報告？
 
 在合作夥伴中心內，具有*擁有者*或*財務參與者*權限的使用者可以檢視支出報告。 這些使用者可以在右上方存取報告，方法是選取其中顯示手拿帳單的圖示。
 
-如需詳細資訊，請參閱[支付報告](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-summary)。
+如需詳細資訊，請參閱[支付報告](partner-center-portal/payout-summary.md)。
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>如何設定我的支出方法和目的地？
 
 搭配合作夥伴中心，具有*擁有者*權限的使用者可以設定支出帳戶和稅單。 使用者可以選取右上方的 [設定] 按鈕 (齒輪圖示) 來執行這項操作。
 
-如需詳細資訊，請前往[支出帳戶和稅單](https://docs.microsoft.com/azure/marketplace/partner-center-portal/set-up-your-payout-account-tax-forms)。
+如需詳細資訊，請前往[支出帳戶和稅單](partner-center-portal/set-up-your-payout-account-tax-forms.md)。
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>商業市集支援退貨和退款嗎？
 
@@ -310,7 +313,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 - [簡介 Microsoft 商業市集](/azure/marketplace/marketplace-publishers-guide)
 - [Microsoft 商業市集合作夥伴中樞](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
-- [歡迎使用商業市集](https://docs.microsoft.com/azure/marketplace/)
+- [歡迎使用商業市集](index.yml)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>如何與 Microsoft 和其他合作夥伴交流？
 
@@ -322,7 +325,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 ### <a name="where-can-i-learn-more-about-partner-center"></a>可以在哪裡深入了解合作夥伴中心？
 
 - [合作夥伴中心文件](https://docs.microsoft.com/partner-center/)
-- [歡迎使用商業市集](https://docs.microsoft.com/azure/marketplace/)
+- [歡迎使用商業市集](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>可以在哪裡深入了解 Microsoft 管理中心？
 
@@ -330,14 +333,14 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>可以在哪裡深入了解 Azure 計費？
 
-- [Azure 成本管理 + 計費文件](https://docs.microsoft.com/azure/cost-management-billing/)
-- [了解 Azure 計費上的 Azure Marketplace 費用](https://docs.microsoft.com/azure/cost-management-billing/understand/understand-azure-marketplace-charges)
-- [將 Azure 訂用帳戶轉換為發票付款](https://docs.microsoft.com/azure/cost-management-billing/manage/pay-by-invoice)
+- [Azure 成本管理 + 計費文件](../cost-management-billing/index.yml)
+- [了解 Azure 計費上的 Azure Marketplace 費用](../cost-management-billing/understand/understand-azure-marketplace-charges.md)
+- [將 Azure 訂用帳戶轉換為發票付款](../cost-management-billing/manage/pay-by-invoice.md)
 
 ### <a name="where-can-i-learn-about-azure-government-and-the-azure-government-marketplace"></a>可以在哪裡了解 Azure Government 和 Azure Government Marketplace？
 
 - [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
 - [Microsoft 信任中心](https://www.microsoft.com/trust-center)
-- [Azure Government 文件](https://docs.microsoft.com/azure/azure-government/)
-- [Azure Government Marketplace](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace)
-- [Azure Government 合規性](https://docs.microsoft.com/azure/azure-government/documentation-government-plan-compliance)
+- [Azure Government 文件](../azure-government/index.yml)
+- [Azure Government Marketplace](../azure-government/documentation-government-manage-marketplace.md)
+- [Azure Government 合規性](../azure-government/documentation-government-plan-compliance.md)

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 76eb0638d2b67e7859b25cdda8a6f4cbda285920
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 6dbadee427abfa82fb32ebb7db85adf627dd5e0a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800211"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964833"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心管理您的商業市集帳戶
 
@@ -128,7 +128,7 @@ ms.locfileid: "83800211"
 
 報告是由合作夥伴值 (Microsoft 合作夥伴 ID) 與 GUID 所完成。 您也能以與供應項目中每個方案一致的更細微層級來追蹤 GUID。
 
-如需詳細資訊，請參閱[使用 GUID 追蹤 Azure 客戶使用情況的常見問題集](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq)。
+如需詳細資訊，請參閱[使用 Guid 追蹤 Azure 客戶使用量的常見問題](../azure-partner-customer-usage-attribution.md#faq)）。
 
 ## <a name="create-a-billing-profile"></a>建立帳單設定檔
 
@@ -138,7 +138,7 @@ ms.locfileid: "83800211"
 
 ## <a name="multi-user-account-management"></a>多使用者帳戶管理
 
-合作夥伴中心利用 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) 進行多使用者帳戶存取和管理。 您組織的 Azure AD 會在註冊過程中，自動與您的合作夥伴中心帳戶建立關聯。
+合作夥伴中心利用 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 進行多使用者帳戶存取和管理。 您組織的 Azure AD 會在註冊過程中，自動與您的合作夥伴中心帳戶建立關聯。
 
 ## <a name="manage-users"></a>管理使用者
 
@@ -168,7 +168,7 @@ ms.locfileid: "83800211"
 
 ### <a name="create-new-users"></a>建立新的使用者
 
-若要建立全新的使用者帳戶，您必須擁有具備[**全域管理員**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)權限的帳戶。 
+若要建立全新的使用者帳戶，您必須擁有具備[**全域管理員**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)權限的帳戶。 
 
 1. 移至 [使用者] (在 [帳戶設定] 下)，選取 [新增使用者]，然後選擇 [建立新的使用者]。
 1. 輸入每個新使用者的名字、姓氏和使用者名稱。 
@@ -182,7 +182,7 @@ ms.locfileid: "83800211"
 
 ### <a name="invite-new-users-by-email"></a>透過電子郵件邀請新的使用者
 
-若要透過電子郵件邀請目前不屬於您公司帳戶 (Azure AD 租用戶) 的使用者，您必須擁有具備[**全域管理員**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)權限的帳戶。
+若要透過電子郵件邀請目前不屬於您公司帳戶 (Azure AD 租用戶) 的使用者，您必須擁有具備[**全域管理員**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)權限的帳戶。
 
 1. 移至 [使用者] (在 [帳戶設定] 下)，選取 [新增使用者]，然後選擇 [Invite users by email] \(透過電子郵件邀請使用者\)。
 2. 輸入一或多個以逗號或分號分隔的電子郵件地址 (最多 10 個)。
@@ -202,7 +202,7 @@ ms.locfileid: "83800211"
 
 ### <a name="change-a-user-password"></a>變更使用者密碼
 
-如果有使用者需要變更其密碼，而且您在建立使用者帳戶時已提供**密碼復原電子郵件**，則該使用者可以自行執行這項操作。 您也可以依照下列步驟來更新使用者的密碼。 若要變更您公司帳戶 (Azure AD 租用戶) 的使用者密碼，您必須使用[**全域管理員**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)權限登入帳戶。 請注意，這會變更您 Azure AD 租用戶中的使用者密碼，以及用來存取合作夥伴中心的密碼。
+如果有使用者需要變更其密碼，而且您在建立使用者帳戶時已提供**密碼復原電子郵件**，則該使用者可以自行執行這項操作。 您也可以依照下列步驟來更新使用者的密碼。 若要變更您公司帳戶 (Azure AD 租用戶) 的使用者密碼，您必須使用[**全域管理員**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)權限登入帳戶。 請注意，這會變更您 Azure AD 租用戶中的使用者密碼，以及用來存取合作夥伴中心的密碼。
 
 1. 從 [使用者] 頁面 (在 [帳戶設定] 下)，選取您要編輯的使用者帳戶名稱。
 2. 選取頁面底部的 [重設密碼] 按鈕。
@@ -264,7 +264,7 @@ ms.locfileid: "83800211"
 1. 從 [使用者] 頁面 (在 [帳戶設定] 下)，選取 [新增 Azure AD 應用程式]。
 2. 在下一個頁面上，選取 [新增 Azure AD 應用程式]。
 3. 輸入新 Azure AD 應用程式的 [回覆 URL]。 這是使用者可以登入並使用您 Azure AD 應用程式的 URL (有時也稱為「應用程式 URL」或「登入 URL」)。 [回覆 URL] 的長度不能超過 256 個字元，而且在您的目錄中必須是唯一的。
-4. 輸入新 Azure AD 應用程式的 [應用程式識別碼 URI]。 這是將單一登入要求傳送至 Azure AD 時，所顯示 Azure AD 應用程式的邏輯識別碼。 請注意，每個 Azure AD 應用程式的 [應用程式識別碼 URI] 在您的目錄中必須是唯一的。 此識別碼的長度不能超過 256 個字元。 如需應用程式識別碼 URI 的詳細資訊，請參閱[整合應用程式與 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts)。
+4. 輸入新 Azure AD 應用程式的 [應用程式識別碼 URI]。 這是將單一登入要求傳送至 Azure AD 時，所顯示 Azure AD 應用程式的邏輯識別碼。 請注意，每個 Azure AD 應用程式的 [應用程式識別碼 URI] 在您的目錄中必須是唯一的。 此識別碼的長度不能超過 256 個字元。 如需應用程式識別碼 URI 的詳細資訊，請參閱[整合應用程式與 Azure Active Directory](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)）。
 5. 在 [角色] 區段中，指定 Azure AD 應用程式的角色或自訂權限。
 6. 選取 [儲存]。
 
@@ -328,7 +328,7 @@ Azure Active Directory (AD) 租用戶 (在此文件中也稱為您的「公司�
 3. 選取 [建立]，確認新的網域和帳戶資訊。
 4. 使用新的 Azure AD 全域管理員使用者名稱和密碼登入，開始[新增和管理使用者](#manage-users)。
 
-如需在 Azure 入口網站內 (而不是透過合作夥伴中心入口網站) 建立新租用戶的詳細資訊，請參閱[在 Azure Active Directory 中建立新的租用戶](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)一文。
+如需在 Azure 入口網站內 (而不是透過合作夥伴中心入口網站) 建立新租用戶的詳細資訊，請參閱[在 Azure Active Directory 中建立新的租用戶](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)一文。
 
 ### <a name="remove-a-tenant"></a>移除租用戶
 
