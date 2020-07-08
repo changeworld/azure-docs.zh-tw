@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 7d4618382c31f0b1f2efa42fe87a6efe4bc85319
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: 04708a307cd0eedfbe0510324930eb2327adf06e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608246"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84449731"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>有關 Azure Cosmos DB 中的 Cassandra API 常見問題
 
@@ -32,7 +31,7 @@ ms.locfileid: "82608246"
 
 ### <a name="what-protocol-version-does-the-cassandra-api-support"></a>Cassandra API 支援哪些通訊協定版本？
 
-適用于 Azure Cosmos DB 的 Cassandra API 支援 CQL 3.x. x 版。 其 CQL 相容性是以公用[Apache Cassandra GitHub 存放庫](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile)為基礎。 如果您有關于支援其他通訊協定的意見反應，請透過[user voice 意見](https://feedback.azure.com/forums/263030-azure-cosmos-db)反應讓我們[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)知道，或傳送電子郵件至。
+適用于 Azure Cosmos DB 的 Cassandra API 支援 CQL 3.x. x 版。 其 CQL 相容性是以公用[Apache Cassandra GitHub 存放庫](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile)為基礎。 如果您有關于支援其他通訊協定的意見反應，請透過[user voice 意見](https://feedback.azure.com/forums/263030-azure-cosmos-db)反應讓我們知道，或傳送電子郵件至 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 。
 
 ### <a name="why-is-choosing-throughput-for-a-table-a-requirement"></a>為何需要為數據表選擇輸送量？
 
@@ -85,7 +84,7 @@ Azure Cosmos DB 能提供效能和延遲上的保證，限定作業時的上限�
 
 Azure Cosmos DB 是以服務等級協定（SLA）為基礎的系統。 它提供無限制的規模，並保證延遲、輸送量、可用性和一致性。 這種無限制的儲存體是以水準向外延展資料為基礎，使用分割做為關鍵概念。 資料分割概念的詳細說明請見[在 Azure Cosmos DB 中進行資料分割和調整](partition-data.md)一文。
 
-您應該遵守每個邏輯分割區的實體或專案數目的 10 GB 限制。 為了確保您的應用程式能夠進行適當的調整，建議您「避免」** 建立常用資料分割 (將所有資訊儲存在一個資料分割，然後進行查詢)。 只有當您的資料扭曲時，才會發生此錯誤：也就是說，您有許多資料用於一個分割區索引鍵（&nbsp;超過 10 GB）。 您可以使用儲存體入口網站來尋找資料的散發。 修正此錯誤的方法是重新建立資料表，然後選擇細微的主要（資料分割索引鍵），這可允許更好的資料散發。
+您應該遵守每個邏輯分割區的實體或專案數目的 10 GB 限制。 為了確保您的應用程式能夠進行適當的調整，建議您「避免」** 建立常用資料分割 (將所有資訊儲存在一個資料分割，然後進行查詢)。 只有當您的資料扭曲時，才會發生此錯誤：也就是說，您有許多資料用於一個分割區索引鍵（超過 10 &nbsp; GB）。 您可以使用儲存體入口網站來尋找資料的散發。 修正此錯誤的方法是重新建立資料表，然後選擇細微的主要（資料分割索引鍵），這可允許更好的資料散發。
 
 ### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>我可以使用 Cassandra API 做為具有百萬或數十億個數據分割索引鍵的金鑰值存放區嗎？
 
@@ -101,15 +100,15 @@ Azure Cosmos DB 是適用于資料和控制平面活動的資源控管系統。 
 
 ### <a name="what-is-the-maximum-number-of-tables-that-i-can-create"></a>我可以建立的資料表數目上限為何？
 
-資料表數目沒有實體限制。 如果您有大量的資料表（穩定大小總計超過 10 TB 的資料）需要建立（而不是一般的數十或數百個），請傳送電子郵件至[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)。
+資料表數目沒有實體限制。 如果您有大量的資料表（穩定大小總計超過 10 TB 的資料）需要建立（而不是一般的數十或數百個），請傳送電子郵件至 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 。
 
 ### <a name="what-is-the-maximum-number-of-keyspaces-that-i-can-create"></a>我可以建立的 keyspace 數目上限為何？
 
-Keyspace 數目沒有實體限制，因為它們是中繼資料容器。 如果您有大量的 keyspace，請傳送電子郵件至[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)。
+Keyspace 數目沒有實體限制，因為它們是中繼資料容器。 如果您有大量的 keyspace，請傳送電子郵件至 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 。
 
 ### <a name="can-i-bring-in-a-lot-of-data-after-starting-from-a-normal-table"></a>從一般資料表開始之後，我可以導入大量資料嗎？
 
-可以。 假設有一致的分散式分割區，儲存容量會自動受到管理，並隨著您推送更多資料而增加。 因此，您可以放心地匯入您所需的資料，而不需要管理和布建節點等等。 但是，如果您預期會有許多立即的資料成長，請直接布建[預期的輸送量](set-throughput.md)，而不是從較低的速度開始，然後立即增加。
+是。 假設有一致的分散式分割區，儲存容量會自動受到管理，並隨著您推送更多資料而增加。 因此，您可以放心地匯入您所需的資料，而不需要管理和布建節點等等。 但是，如果您預期會有許多立即的資料成長，請直接布建[預期的輸送量](set-throughput.md)，而不是從較低的速度開始，然後立即增加。
 
 ### <a name="can-i-use-yaml-file-settings-to-configure-api-behavior"></a>我可以使用 YAML 檔案設定來設定 API 行為嗎？
 
@@ -141,7 +140,7 @@ Azure Cosmos DB 是一種平台服務，可協助您提高產能，而不必擔�
 
 ### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>哪些用戶端 Sdk 可以與 Cassandra API 搭配使用？
 
-使用 CQLv3 的 Apache Cassandra SDK 用戶端驅動程式會用於用戶端程式。 如果您使用其他驅動程式，或如果您遇到問題，請傳送電子郵件至[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)。
+使用 CQLv3 的 Apache Cassandra SDK 用戶端驅動程式會用於用戶端程式。 如果您使用其他驅動程式，或如果您遇到問題，請傳送電子郵件至 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 。
 
 ### <a name="are-composite-partition-keys-supported"></a>是否支援複合資料分割索引鍵？
 
@@ -153,13 +152,13 @@ Azure Cosmos DB 是一種平台服務，可協助您提高產能，而不必擔�
 
 ### <a name="can-i-pair-an-on-premises-apache-cassandra-cluster-with-the-cassandra-api"></a>我可以將內部部署 Apache Cassandra 叢集與 Cassandra API 配對嗎？
 
-目前，Azure Cosmos DB 對於雲端環境有優化的體驗，而不會產生作業的額外負荷。 如果您需要配對，請傳送電子[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)郵件至，並提供您案例的描述。 我們正致力於提供服務，以協助將內部部署或雲端 Cassandra 叢集與 Azure Cosmos DB 的 Cassandra API 配對。
+目前，Azure Cosmos DB 對於雲端環境有優化的體驗，而不會產生作業的額外負荷。 如果您需要配對，請傳送電子郵件至， [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 並提供您案例的描述。 我們正致力於提供服務，以協助將內部部署或雲端 Cassandra 叢集與 Azure Cosmos DB 的 Cassandra API 配對。
 
 ### <a name="does-the-cassandra-api-provide-full-backups"></a>Cassandra API 是否提供完整備份？
 
 Azure Cosmos DB 提供兩個在所有 Api 的四小時間隔內執行的免費完整備份。 因此，您不需要設定備份排程。 
 
-如果您想要修改保留和頻率，請傳送電子[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)郵件至或提出支援案例。 [使用 Azure Cosmos DB 進行自動線上備份及還原](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)一文會提供備份功能的相關資訊。
+如果您想要修改保留和頻率，請傳送電子郵件至 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 或提出支援案例。 [使用 Azure Cosmos DB 進行自動線上備份及還原](online-backup-and-restore.md)一文會提供備份功能的相關資訊。
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>當區域發生服務中斷時，Cassandra API 帳戶如何處理容錯移轉？
 
@@ -169,7 +168,7 @@ Cassandra API 從 Azure Cosmos DB 的全域分散式平臺借用。 若要確保
 
 ### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Cassandra API 預設會為實體的所有屬性編制索引嗎？
 
-不需要。 Cassandra API 支援[次要索引](cassandra-secondary-index.md)，其運作方式類似于 Apache Cassandra。 根據預設，API 不會為每個屬性編制索引。  
+否。 Cassandra API 支援[次要索引](cassandra-secondary-index.md)，其運作方式類似于 Apache Cassandra。 根據預設，API 不會為每個屬性編制索引。  
 
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>我可以在本機搭配使用新的 Cassandra API SDK 與模擬器嗎？

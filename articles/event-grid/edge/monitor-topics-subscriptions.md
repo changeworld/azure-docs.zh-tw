@@ -1,19 +1,18 @@
 ---
 title: 監視主題和事件訂閱-Azure Event Grid IoT Edge |Microsoft Docs
 description: 監視主題和事件訂閱
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.reviewer: spelluru
 ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d4fbc5232722bfb08bde9be51d44e8e8d7514570
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77086670"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84554363"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>監視主題和事件訂閱
 
@@ -21,7 +20,7 @@ ms.locfileid: "77086670"
 
 ## <a name="enable-metrics"></a>啟用度量
 
-在容器建立選項中，將`metrics__reporterType`環境變數設為`prometheus` ，以設定要發出計量的模組：
+`metrics__reporterType` `prometheus` 在容器建立選項中，將環境變數設為，以設定要發出計量的模組：
 
  ```json
         {
@@ -40,7 +39,7 @@ ms.locfileid: "77086670"
         }
  ```    
 
-計量會在適用于`5888/metrics` HTTP 和`4438/metrics` HTTPs 的模組中提供。 例如， `http://<modulename>:5888/metrics?api-version=2019-01-01-preview`針對 HTTP。 此時，計量模組可以輪詢端點以收集此[範例架構](https://github.com/veyalla/ehm)中的計量。
+計量會在適用于 `5888/metrics` HTTP 和 HTTPs 的模組中提供 `4438/metrics` 。 例如， `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` 針對 HTTP。 此時，計量模組可以輪詢端點以收集此[範例架構](https://github.com/veyalla/ehm)中的計量。
 
 ## <a name="available-metrics"></a>可用的計量
 

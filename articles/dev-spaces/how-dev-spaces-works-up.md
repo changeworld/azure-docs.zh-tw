@@ -5,34 +5,33 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 描述在 Azure Kubernetes Service 上使用 Azure Dev Spaces 執行程式碼的流程
 keywords: azds. yaml，Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器
-ms.openlocfilehash: 6851c04ac0b72db1bd13c991875c16b0beadc573
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 02b928009b1f82e2b6a193a41376265f8bfb9ea7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241357"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84307464"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>如何搭配 Azure Dev Spaces 執行您的程式碼
 
-Azure Dev Spaces 提供多種方式來快速反復查看和 Kubernetes 應用程式，並在 Azure Kubernetes Service （AKS）叢集上與您的小組共同作業。 當您的[專案準備好要在開發人員空間中執行][how-it-works-prep]之後，您就可以使用 dev Spaces，在 AKS 叢集中建立並執行您的專案。
+Azure Dev Spaces 提供了多種方式，可供迅速逐一查看 Kubernetes 應用程式並偵錯，以及在 Azure Kubernetes Service (AKS) 叢集上與您的小組共同作業。 當您的[專案準備好要在開發人員空間中執行][how-it-works-prep]之後，您就可以使用 dev Spaces，在 AKS 叢集中建立並執行您的專案。
 
 本文說明在 AKS 中使用 Dev Spaces 執行程式碼的情況。
 
 ## <a name="run-your-code"></a>執行您的程式碼
 
-若要在開發人員空間中執行您的程式`up`代碼，請在與`azds.yaml`檔案相同的目錄中發出命令：
+若要在開發人員空間中執行您的程式碼，請 `up` 在與檔案相同的目錄中發出命令 `azds.yaml` ：
 
 ```cmd
 azds up
 ```
 
-`up`命令會將您的應用程式來源檔案和其他成品上傳到開發人員空間，以建立並執行您的專案。 在此，您的開發人員空間中的控制器：
+命令會將 `up` 您的應用程式來源檔案和其他成品上傳到開發人員空間，以建立並執行您的專案。 在此，您的開發人員空間中的控制器：
 
 1. 建立 Kubernetes 物件以部署您的應用程式。
 1. 建立應用程式的容器。
 1. 將您的應用程式部署至開發人員空間。
 1. 如果已設定，則為您的應用程式端點建立可公開存取的 DNS 名稱。
-1. 使用*埠向前轉送*，以使用http://localhost來提供應用程式端點的存取權。
+1. 使用*埠向前轉送*，以使用來提供應用程式端點的存取權 http://localhost 。
 1. 將 stdout 和 stderr 轉送至用戶端工具。
 
 
@@ -40,14 +39,14 @@ azds up
 
 當您在開發人員空間中啟動服務時，用戶端工具和控制器會協調以同步處理您的來源檔案、建立容器和 Kubernetes 物件，以及執行您的應用程式。
 
-在更細微的層級中，當您執行`azds up`時，會發生下列情況：
+在更細微的層級中，當您執行時，會發生 `azds up` 下列情況：
 
 1. 檔案會從使用者的電腦[同步][sync-section]處理到使用者的 AKS 叢集獨有的 Azure 檔案儲存體。 已上傳原始程式碼、Helm 圖和設定檔案。
 1. 控制器會建立一個要求來啟動新的會話。 此要求包含數個屬性，包括唯一的識別碼、空間名稱、原始程式碼的路徑，以及偵錯工具旗標。
 1. 控制器會以唯一的會話識別碼取代 Helm 圖中的 *$ （tag）* 預留位置，並為您的服務安裝 Helm 圖表。 將唯一會話識別碼的參考新增至 Helm 圖表，可讓針對此特定會話部署至 AKS 叢集的容器，系結回到會話要求和相關聯的資訊。
 1. 在安裝 Helm 圖期間，Kubernetes webhook 許可伺服器會將額外的容器新增至您應用程式的 pod，以進行檢測並存取專案的原始程式碼。 新增 devspaces-proxy 和 devspaces proxy-init 容器，以提供 HTTP 追蹤和空間路由。 已新增 devspaces-build 容器，以提供可存取 Docker 實例和專案原始程式碼的 pod，以建立應用程式的容器。
 1. 啟動應用程式的 pod 時，會使用 devspaces-build 容器和 devspaces proxy-init 容器來建立應用程式容器。 接著會啟動應用程式容器和 devspaces proxy 容器。
-1. 在應用程式容器啟動之後，用戶端功能會使用 Kubernetes 的*埠轉送*功能，透過將 HTTP 存取提供給您的應用http://localhost程式。 此埠轉送會將您的開發電腦連接到您的開發人員空間中的服務。
+1. 在應用程式容器啟動之後，用戶端功能會使用 Kubernetes 的*埠轉送*功能，透過將 HTTP 存取提供給您的應用程式 http://localhost 。 此埠轉送會將您的開發電腦連接到您的開發人員空間中的服務。
 1. 當 pod 中的所有容器都已啟動時，服務就會在執行中。 此時，用戶端功能會開始串流 HTTP 追蹤、stdout 和 stderr。 這項資訊是由開發人員的用戶端功能所顯示。
 
 ## <a name="updating-a-running-service"></a>正在更新執行中的服務
@@ -68,7 +67,7 @@ azds up
 * 重建應用程式
 * 重新開機與應用程式相關聯的進程
 
-*Devhostagent*執行上述步驟的方式是[在中`azds.yaml`設定][azds-yaml-section]。
+*Devhostagent*執行上述步驟的方式是[在中 `azds.yaml` 設定][azds-yaml-section]。
 
 專案檔（例如 Dockerfile、.csproj 檔案或 Helm 圖表的任何部分）的更新需要重建和重新部署應用程式的容器。 當其中一個檔案同步處理到開發人員空間時，控制器會執行[helm upgrade][helm-upgrade]命令，並重建並重新部署應用程式的容器。
 
@@ -76,7 +75,7 @@ azds up
 
 第一次在開發人員空間中啟動應用程式時，會上傳所有應用程式的來源檔案。 當應用程式正在執行，且稍後重新開機時，只會上傳變更的檔案。 有兩個檔案用來協調這個進程：用戶端檔案和控制器端檔案。
 
-用戶端檔案會儲存在臨時目錄中，並根據您在 Dev Spaces 中執行之專案目錄的雜湊來命名。 例如，在 Windows 上，您的專案會有類似*Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog*的檔案。 在 Linux 上，用戶端檔案會儲存在 */tmp*目錄中。 您可以執行`echo $TMPDIR`命令，在 macOS 上尋找目錄。
+用戶端檔案會儲存在臨時目錄中，並根據您在 Dev Spaces 中執行之專案目錄的雜湊來命名。 例如，在 Windows 上，您的專案會有類似*Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog*的檔案。 在 Linux 上，用戶端檔案會儲存在 */tmp*目錄中。 您可以執行命令，在 macOS 上尋找目錄 `echo $TMPDIR` 。
 
 這個檔案是 JSON 格式，而且包含：
 
@@ -94,7 +93,7 @@ azds up
 
 ## <a name="how-running-your-code-is-configured"></a>如何設定執行您的程式碼
 
-Azure Dev Spaces 使用`azds.yaml`檔案來安裝和設定您的服務。 控制器會使用檔案`install`中`azds.yaml`的屬性來安裝 Helm 圖表，並建立 Kubernetes 物件：
+Azure Dev Spaces 使用檔案 `azds.yaml` 來安裝和設定您的服務。 控制器會使用檔案 `install` 中的屬性 `azds.yaml` 來安裝 Helm 圖表，並建立 Kubernetes 物件：
 
 ```yaml
 ...
@@ -120,9 +119,9 @@ install:
 ...
 ```
 
-根據預設，此`prep`命令會產生 Helm 圖表。 它也會將 [*安裝] 圖表*屬性設定為 Helm 圖表的目錄。 如果您想要在不同位置使用 Helm 圖，可以更新此屬性，以使用該位置。
+根據預設，此 `prep` 命令會產生 Helm 圖表。 它也會將 [*安裝] 圖表*屬性設定為 Helm 圖表的目錄。 如果您想要在不同位置使用 Helm 圖，可以更新此屬性，以使用該位置。
 
-安裝 Helm 圖表時，Azure Dev Spaces 會提供覆寫 Helm 圖表中之值的方法。 Helm 圖表的預設值為`charts/APP_NAME/values.yaml`。
+安裝 Helm 圖表時，Azure Dev Spaces 會提供覆寫 Helm 圖表中之值的方法。 Helm 圖表的預設值為 `charts/APP_NAME/values.yaml` 。
 
 您可以使用*install. values*屬性來列出一個或多個檔案，這些檔案會定義您想要在 Helm 圖中取代的值。 例如，如果您想要在開發人員空間中執行應用程式時，特別要有主機名稱或資料庫設定，您可以使用此覆寫功能。 您也可以加入 *？* 在任何檔案名的結尾，將它設定為選擇性。
 
@@ -130,15 +129,15 @@ install:
 
 在上述範例中， *replicaCount*屬性會告訴控制器您的應用程式有多少實例要在您的開發人員空間中執行。 根據您的案例而定，您可以增加這個值，但它會影響將偵錯工具附加至應用程式的 pod。 如需詳細資訊，請參閱[疑難排解文章][troubleshooting]。
 
-在產生的 Helm 圖表中，容器映射會設定為 *{{。值。圖像儲存機制}}： {{。值。圖像標記}}*。 檔案預設會將*install. image. tag*屬性定義為 *$ （tag）* ，這會當做 {{的值使用。 `azds.yaml` *值。圖像標記}}*。 藉由以這種方式設定*install. tag*屬性，可讓您應用程式的容器映射在執行 Azure Dev Spaces 時以不同的方式標記。 在此特定案例中，影像會標記為* \<影像中的值。存放庫>： $ （tag）*。 您必須使用 *$ （標記）* 變數作為 [ *install* ] 的值，才能辨識 DEV Spaces 並在 AKS 叢集中尋找容器。
+在產生的 Helm 圖表中，容器映射會設定為 *{{。值。圖像儲存機制}}： {{。值。圖像標記}}*。 檔案 `azds.yaml` 預設會將*install. image. tag*屬性定義為 *$ （tag）* ，這會當做 {{的值使用 *。值。圖像標記}}*。 藉由以這種方式設定*install. tag*屬性，可讓您應用程式的容器映射在執行 Azure Dev Spaces 時以不同的方式標記。 在此特定案例中，影像會標記為* \<value from image.repository> ： $ （tag）*。 您必須使用 *$ （標記）* 變數作為 [ *install* ] 的值，才能辨識 DEV Spaces 並在 AKS 叢集中尋找容器。
 
-在上述範例中， `azds.yaml`會定義*install. set. hosts*。 [ *Install* ] 屬性會定義公用端點的主機名稱格式。 這個屬性也會使用 *$ （spacePrefix）*、 *$ （rootSpacePrefix）* 和 *$ （hostSuffix）*，這是控制器所提供的值。
+在上述範例中，會 `azds.yaml` 定義*install. set. hosts*。 [ *Install* ] 屬性會定義公用端點的主機名稱格式。 這個屬性也會使用 *$ （spacePrefix）*、 *$ （rootSpacePrefix）* 和 *$ （hostSuffix）*，這是控制器所提供的值。
 
-*$ （SpacePrefix）* 是子開發人員空間的名稱，其採用的格式為*SPACENAME*。 *$ （RootSpacePrefix）* 是父空間的名稱。 例如，如果*azureuser*是*預設*的子空間， *$ （rootSpacePrefix）* 的值就是*default* ， *$ （spacePrefix）* 的值則是*azureuser. s*。 如果空間不是子空間， *$ （spacePrefix）* 是空白。 例如，如果*預設*空間沒有父空間， *$ （rootSpacePrefix）* 的值為*default* ， *$ （spacePrefix）* 的值則為空白。 *$ （HostSuffix）* 是 DNS 尾碼，指向在您的 AKS 叢集中執行的 Azure Dev Spaces 輸入控制器。 此 DNS 尾碼會對應至萬用字元 DNS 專案，例如* \*。* Azure Dev Spaces 控制器新增至 AKS 叢集時所建立的 RANDOM_VALUE eus. azds。
+*$ （SpacePrefix）* 是子開發人員空間的名稱，其採用的格式為*SPACENAME*。 *$ （RootSpacePrefix）* 是父空間的名稱。 例如，如果*azureuser*是*預設*的子空間， *$ （rootSpacePrefix）* 的值就是*default* ， *$ （spacePrefix）* 的值則是*azureuser. s*。 如果空間不是子空間， *$ （spacePrefix）* 是空白。 例如，如果*預設*空間沒有父空間， *$ （rootSpacePrefix）* 的值為*default* ， *$ （spacePrefix）* 的值則為空白。 *$ （HostSuffix）* 是 DNS 尾碼，指向在您的 AKS 叢集中執行的 Azure Dev Spaces 輸入控制器。 此 DNS 尾碼會對應至萬用字元 DNS 專案，例如* \* 。* Azure Dev Spaces 控制器新增至 AKS 叢集時所建立的 RANDOM_VALUE eus. azds。
 
-在上述`azds.yaml`檔案中，您也可以更新*install. set. hosts*來變更應用程式的主機名稱。 例如，如果您想要將應用程式的主機名稱從 *$ （spacePrefix） $ （rootSpacePrefix） webfrontend $ （hostSuffix）* 簡化為 $ （spacePrefix） $ （rootSpacePrefix） *Web $ （hostSuffix）*。
+在上述檔案中 `azds.yaml` ，您也可以更新*install. set. hosts*來變更應用程式的主機名稱。 例如，如果您想要將應用程式的主機名稱從 *$ （spacePrefix） $ （rootSpacePrefix） webfrontend $ （hostSuffix）* 簡化為 $ （spacePrefix） $ （rootSpacePrefix） *Web $ （hostSuffix）*。
 
-若要為您的應用程式建立容器，控制器會使用`azds.yaml`設定檔的下列區段：
+若要為您的應用程式建立容器，控制器會使用設定檔的下列區段 `azds.yaml` ：
 
 ```yaml
 build:
@@ -157,11 +156,11 @@ configurations:
 
 控制器會使用 Dockerfile 來建立及執行您的應用程式。
 
-[ *Build. coNtext* ] 屬性會列出 dockerfile 所在的目錄。 *Dockerfile*屬性會定義 dockerfile 的名稱，以建立應用程式的實際執行版本。 *Dockerfile*屬性會針對應用程式的開發版本設定 dockerfile 的名稱。
+[ *Build. coNtext* ] 屬性會列出 dockerfile 所在的目錄。 *build.dockerfile*屬性會定義 Dockerfile 的名稱，以建立應用程式的實際執行版本。 *configurations.develop.build.dockerfile*屬性會針對應用程式的開發版本設定 Dockerfile 的名稱。
 
 針對開發和生產環境使用不同的 Dockerfile，可讓您在開發期間啟用某些專案，並針對生產環境部署停用這些專案。 例如，您可以在開發期間啟用偵錯工具或更詳細的記錄，並在生產環境中停用。 如果您的 Dockerfile 名稱不同或位於不同的位置，您也可以更新這些屬性。
 
-為了協助您在開發期間快速反復查看，Azure Dev Spaces 會同步處理本機專案的變更，並以累加方式更新您的應用程式。 `azds.yaml`設定檔中的下一節是用來設定同步處理和更新：
+為了協助您在開發期間快速反復查看，Azure Dev Spaces 會同步處理本機專案的變更，並以累加方式更新您的應用程式。 設定檔中的下一節 `azds.yaml` 是用來設定同步處理和更新：
 
 ```yaml
 ...
@@ -182,13 +181,13 @@ configurations:
 ...
 ```
 
-將同步變更的檔案和目錄會列在 [設定]. [*開發] 容器*中。 這些目錄一開始會在您執行`up`命令以及偵測到變更時進行同步處理。 如果您想要將其他或不同的目錄同步到您的開發人員空間，您可以變更此屬性。
+將同步變更的檔案和目錄會列在 [設定]. [*開發] 容器*中。 這些目錄一開始會在您執行命令以及偵測 `up` 到變更時進行同步處理。 如果您想要將其他或不同的目錄同步到您的開發人員空間，您可以變更此屬性。
 
 *BuildCommands*屬性會指定如何在開發案例中建立應用程式。 [設定] 會*提供命令，* 讓您在開發案例中執行應用程式。 如果您想要在開發期間使用其他組建或執行時間旗標或參數，您可能會想要更新其中一個屬性。
 
 *ProcessesToKill*會列出要終止的進程，以停止應用程式。 如果您想要在開發期間變更應用程式的重新開機行為，您可能會想要更新此屬性。 例如，如果您更新了*buildCommands*或設定，請使用 [*開發*] 來變更應用程式的建立或啟動方式，您可能需要變更停止的進程。
 
-使用`azds prep`命令來準備程式碼時，您可以選擇新增`--enable-ingress`旗標。 新增`--enable-ingress`旗標會為您的應用程式建立可公開存取的 URL。 如果您省略此旗標，則只能在叢集內或使用 localhost 通道來存取應用程式。 執行`azds prep`命令之後，您可以變更此設定，修改中`charts/APPNAME/values.yaml`的 [*啟用*] 屬性：
+使用命令來準備程式碼時 `azds prep` ，您可以選擇新增 `--enable-ingress` 旗標。 新增旗標會 `--enable-ingress` 為您的應用程式建立可公開存取的 URL。 如果您省略此旗標，則只能在叢集內或使用 localhost 通道來存取應用程式。 執行 `azds prep` 命令之後，您可以變更此設定，修改中的 [*啟用*] 屬性 `charts/APPNAME/values.yaml` ：
 
 ```yaml
 ingress:
@@ -199,20 +198,20 @@ ingress:
 
 若要深入瞭解網路功能以及如何在中路由傳送要求 Azure Dev Spaces 查看[路由如何與 Azure Dev Spaces 搭配運作][how-it-works-routing]。
 
-若要深入瞭解如何使用 Azure Dev Spaces 快速反復查看和開發，請參閱將[您的開發電腦連接到開發人員空間的運作][how-it-works-connect]方式，以及[如何使用 Azure Dev Spaces 運作的遠端偵錯程式碼][how-it-works-remote-debugging]。
+若要深入瞭解如何使用 Azure Dev Spaces 快速反復查看和開發，請參閱[使用 Kubernetes 的本機程式如何運作][how-it-works-local-process-kubernetes]，以及[如何使用 Azure Dev Spaces 進行遠端偵錯程式碼][how-it-works-remote-debugging]。
 
 若要開始使用 Azure Dev Spaces 來執行您的專案，請參閱下列快速入門：
 
 * [使用 Visual Studio Code 和 JAVA 快速反復查看和調試][quickstart-java]
 * [使用 Visual Studio Code 和 .NET 快速反復查看和調試][quickstart-netcore]
-* [使用 Visual Studio Code 和 node.js 快速反復查看和調試][quickstart-node]
+* [使用 Visual Studio Code 和 Node.js快速反復查看和調試][quickstart-node]
 * [使用 Visual Studio 和 .NET Core 快速反復查看和調試][quickstart-vs]
 * [使用 CLI 在 Kubernetes 上開發應用程式][quickstart-cli]
 
 
 [azds-yaml-section]: #how-running-your-code-is-configured
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

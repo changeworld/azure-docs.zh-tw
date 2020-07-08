@@ -3,12 +3,11 @@ title: 沒有要進行疑難排解的資料 - Application Insights for .NET
 description: 在 Azure Application Insights 中看不到資料？ 試試這裡。
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 882081f28a53e347612a4b30374e294bb7352796
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485159"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>針對沒有資料進行疑難排解 - Application Insights for .NET/.NET Core
 
@@ -158,7 +157,6 @@ ApplicationInsights.config 中的檢測金鑰會控制遙測傳送的位置。 �
 * Windows Server 2008：請確定您已安裝下列更新：[KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217)。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>我曾經看到資料，但是已停止
-* 檢查 [狀態部落格](https://blogs.msdn.com/b/applicationinsights-status/)。
 * 您有達到資料點的每月配額嗎？ 開啟 [設定/配額和定價] 即可查看。若有達到配額，您可以升級您的方案，或付費取得額外容量。 請參閱 [定價配置](https://azure.microsoft.com/pricing/details/application-insights/)。
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>我並沒有看到預期的所有資料

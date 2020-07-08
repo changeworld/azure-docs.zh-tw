@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
-ms.openlocfilehash: cb3ddf0c4147fa982e8ab0f9d440292d12803d35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: b88ff6e1a58690d1781989a32607d490d791a690
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71309697"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84555452"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>針對 Visual Studio Code 中的 Azure Data Lake Analytics 使用 Python、R 和 C# 開發 U-SQL
 了解如何使用 Visual Studio Code (VSCode) 以透過 U-SQL 撰寫 Python、R 和 C# 的程式碼後置，並將作業提交至 Azure Data Lake 服務。 如需關於 Azure Data Lake Tools for VSCode 的詳細資訊，請參閱[使用 Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)。
@@ -24,9 +24,9 @@ ms.locfileid: "71309697"
 ## <a name="prerequisites-for-python-and-r"></a>Python 和 R 的必要條件
 為您的 ADL 帳戶註冊 Python 和 R 擴充功能組件。 
 1. 在入口網站開啟您的帳戶。
-   - 選取 [概觀]  。 
+   - 選取 [概觀]。 
    - 按一下 [範例指令碼]****。
-2. 按一下 [其他]****。
+2. 按一下 [其他]  。
 3. 選取 [安裝 U-SQL 擴充功能]****。 
 4. 安裝 U-SQL 擴充功能之後，會顯示確認訊息。 
 

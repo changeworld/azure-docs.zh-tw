@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 16c3676a881dc5dc979891dfd870274581be255b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84310380"
 ---
 # <a name="frequently-asked-questions-faq"></a>常見問題集 (FAQ)
 
@@ -115,7 +114,7 @@ Azure 專用硬體安全模組 (HSM) 服務使用 SafeNet Luna Network HSM 7 (�
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>問：專用 HSM 用戶端軟體支援哪些作業系統？
 
 * Windows、Linux、Solaris、AIX、HP-UX、FreeBSD
-* 虛擬：VMware、hyperv、Xen、KVM
+* 虛擬： VMware、Hyper-v、Xen、KVM
 
 ### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>問：如何設定我的用戶端應用程式，從多個 HSM 以多個分割區來建立高可用性設定？
 
@@ -242,7 +241,7 @@ Microsoft 無法連線至配置給客戶的 HSM。 客戶必須自行升級與�
 
 ### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>問：如果我需要重新開機 HSM，該怎麼辦？
 
-HSM 有命令列重新開機選項，不過，我們間歇性地發生重新開機停止回應問題，因此建議您在最安全的重新開機中提出支援要求，以讓裝置實際重新開機。 
+HSM 有命令列重新開機選項，不過，我們遇到了重新開機停止回應的問題，因此，建議您在最安全的重新開機中提出支援要求，以讓裝置實際重新開機。 
 
 ## <a name="cryptography-and-standards"></a>密碼編譯和標準
 
@@ -286,7 +285,7 @@ HSM 有命令列重新開機選項，不過，我們間歇性地發生重新開�
 
 在要求取消佈建前，客戶必須先使用 Gemalto 提供的 HSM 用戶端工具，將 HSM 歸零。
 
-## <a name="performance-and-scale"></a>效能和延展性
+## <a name="performance-and-scale"></a>效能和擴充
 
 ### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>問：專用 HSM 支援每秒多少個密碼編譯作業？
 

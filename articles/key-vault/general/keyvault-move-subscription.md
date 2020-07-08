@@ -11,18 +11,17 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 450aa58d4ad9cbb721e621ec3db8b4ca7e914aa1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 6fe25efe8f38772162c916c8d0b965267d457c0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488812"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>將 Azure Key Vault 移至另一個訂用帳戶
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 **將金鑰保存庫移至另一個訂用帳戶將會對您的環境造成重大變更。**
 
@@ -46,11 +45,11 @@ ms.locfileid: "83121179"
 
 您的應用程式已連線到金鑰保存庫，以建立兩年的有效憑證。 您嘗試移動金鑰保存庫的訂用帳戶具有原則指派，其會封鎖憑證的建立，且有效期超過一年。 將金鑰保存庫移至新的訂用帳戶之後，Azure 原則指派將會封鎖用來建立有效期為兩年之憑證的作業。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 請確定您已移至 Azure 入口網站上的 [Azure 原則] 頁面，並查看您目前訂用帳戶的原則指派，以及您要移至的訂用帳戶，並確定沒有任何不符。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 您的金鑰保存庫所在的目前訂用帳戶的參與者層級存取權或更高等級。
 * 參與者層級存取或更高版本，可供您想要移動金鑰保存庫的訂用帳戶使用。
@@ -61,14 +60,13 @@ ms.locfileid: "83121179"
 ### <a name="initial-steps-moving-key-vault"></a>初始步驟（移動 Key Vault）
 
 1. 登入 Azure 入口網站
-2. 流覽至您的金鑰保存庫
+2. 瀏覽至您的金鑰保存庫
 3. 按一下 [總覽] 索引標籤
 4. 選取 [移動] 按鈕
 5. 從下拉式清單選項中選取 [移至另一個訂用帳戶]
 6. 選取您想要移動金鑰保存庫的資源群組
-7. 選取您想要移動金鑰保存庫的資源群組
-8. 認可有關移動資源的警告
-9. 選取 [確定]
+7. 認可有關移動資源的警告
+8. 選取 [確定]
 
 ### <a name="additional-steps-post-move"></a>其他步驟（移動後）
 

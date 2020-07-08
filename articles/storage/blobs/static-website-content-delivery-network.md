@@ -4,15 +4,14 @@ description: 瞭解如何使用 Azure 內容傳遞網路（CDN）從 Azure 儲�
 author: normesta
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: 4516e9f48174a0f1f5201c46cf114badf13d99d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878798"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465213"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>整合靜態網站與 Azure CDN
 
@@ -41,7 +40,7 @@ ms.locfileid: "80878798"
    若要尋找靜態網站端點，請瀏覽至儲存體帳戶的 [靜態網站]**** 設定。  複製主要端點，並將它貼入 CDN 設定。
 
    > [!IMPORTANT]
-   > 請務必移除 URL 中的通訊協定識別碼（*例如*，HTTPS）和尾端斜線。 例如，如果靜態網站端點是`https://mystorageaccount.z5.web.core.windows.net/`，則您會在 [ `mystorageaccount.z5.web.core.windows.net` **原始主機名稱**] 欄位中指定。
+   > 請務必移除 URL 中的通訊協定識別碼（*例如*，HTTPS）和尾端斜線。 例如，如果靜態網站端點是，則 `https://mystorageaccount.z5.web.core.windows.net/` 您會 `mystorageaccount.z5.web.core.windows.net` 在 [**原始主機名稱**] 欄位中指定。
 
    下圖顯示端點設定範例：
 
@@ -53,7 +52,7 @@ ms.locfileid: "80878798"
 
     ![螢幕擷取畫面：顯示 CDN 端點概觀](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-1. 布建 CDN 端點之後，流覽至 CDN 端點會顯示您先前上傳至靜態網站之索引 .html 檔案的內容。
+1. 布建 CDN 端點之後，流覽至 CDN 端點會顯示您先前上傳至靜態網站之 index.html 檔案的內容。
 
 1. 若要檢閱 CDN 端點的原始設定，請瀏覽至 CDN 端點 [設定]**** 區段底下的 [原始來源]****。 您會看到 [原始來源類型]**** 欄位設定為 [自訂原始來源]** 且 [原始主機名稱]**** 欄位會顯示靜態網站端點。
 
@@ -67,7 +66,7 @@ ms.locfileid: "80878798"
 * 使用 Azure 入口網站來停用或刪除 CDN 端點。
 * 修改託管服務，使其不再回應物件的要求。
 
-已在 Azure CDN 中快取的物件會保持快取狀態，直到物件的存留時間週期過期，或直到[清除](../../cdn/cdn-purge-endpoint.md)端點為止。 有效存留期已滿時，Azure CDN 會判斷 CDN 端點是否仍然有效，以及物件是否仍可匿名存取。 如果不是的話，將不再快取物件。
+已在 Azure CDN 中快取的物件會保持快取狀態，直到物件的有效存留期已滿或端點已[清除](../../cdn/cdn-purge-endpoint.md)為止。 有效存留期已滿時，Azure CDN 會判斷 CDN 端點是否仍然有效，以及物件是否仍可匿名存取。 如果不是的話，將不再快取物件。
 
 ## <a name="next-steps"></a>後續步驟
 

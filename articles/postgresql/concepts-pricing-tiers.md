@@ -6,12 +6,11 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 95795f287a369edec84b68ac920874808966ff1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3a813a9b8c2a81a85d1c4a96d5a4da2256832d3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84487979"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫定價層 - 單一伺服器
 
@@ -51,7 +50,7 @@ ms.locfileid: "82097076"
 | IOPS | 變數 |3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS | 3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS |
 
 > [!NOTE]
-> 下欄區域支援高達16TB 和 20000 IOPS 的儲存體：美國東部、美國東部2、美國中部、美國西部、美國中北部、美國中南部、北歐、西歐、英國南部、英國西部、東南亞、東亞、日本東部、日本西部、韓國中部、南韓南部、澳大利亞東部、澳大利亞東南部。
+> 下欄區域支援高達16TB 和 20000 IOPS 的儲存體：美國東部、美國東部2、美國中部、美國西部、美國中北部、美國中南部、北歐、西歐、英國南部、英國西部、東南亞、東亞、日本東部、日本西部、韓國中部、南韓南部、澳大利亞東部、澳大利亞東南部、美國西部2和美國中西部。
 >
 > 所有其他區域最多支援4TB 的儲存體和 6000 IOPS。
 >
@@ -85,7 +84,7 @@ ms.locfileid: "82097076"
 
 請記住，儲存體只能相應增加，而不能相應縮小。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>備份
 
 服務會自動採用伺服器的備份。 您可以選取介於7到35天的保留期間。 一般用途和記憶體優化伺服器可以選擇使用異地多餘的儲存空間來進行備份。 若要深入瞭解備份，請參閱[概念文章](concepts-backup.md)。
 

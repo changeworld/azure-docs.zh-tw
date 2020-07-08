@@ -4,18 +4,17 @@ description: 深入瞭解 Azure Blob 儲存體中的變更摘要記錄，以及�
 author: normesta
 ms.author: normesta
 ms.date: 11/04/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 4287bd766d73d7fae42aec54950ad5a3f09b5ba3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 0c9ee65a50b9fff13fca7a1989e7bb8801e5f621
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465179"
 ---
-# <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的變更摘要支援（預覽）
+# <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的變更摘要支援 (預覽)
 
 變更摘要的目的是要為儲存體帳戶中 blob 和 blob 中繼資料所發生的所有變更提供交易記錄。 變更摘要會提供這些變更的已**排序**、**保證**、**持久**、**不可變**、**唯讀**記錄。 用戶端應用程式可以隨時在串流處理或批次模式中讀取這些記錄。 變更摘要可讓您建立有效率且可調整的解決方案，以低成本處理 Blob 儲存體帳戶中發生的變更事件。
 
@@ -37,7 +36,7 @@ ms.locfileid: "83120414"
 
   - 建立連接的應用程式管線，以根據所建立或變更的物件來回應變更事件或排程執行。
   
-變更摘要是[區塊 blob 的時間點還原](point-in-time-restore-overview.md)的必要條件功能。
+變更摘要是區塊 blob 的[物件](object-replication-overview.md)複寫和[時間點還原](point-in-time-restore-overview.md)的必要條件功能。
 
 > [!NOTE]
 > 變更摘要為 blob 所發生的變更提供持久、已排序的記錄模型。 變更會以幾分鐘的時間，在變更摘要記錄檔中寫入並提供使用。 如果您的應用程式必須更快速地回應事件，請考慮改為使用[Blob 儲存體事件](storage-blob-event-overview.md)。 [Blob 儲存體事件](storage-blob-event-overview.md)會提供即時的一次性事件，讓您的 Azure Functions 或應用程式能夠快速回應 Blob 所發生的變更。 
@@ -63,9 +62,9 @@ ms.locfileid: "83120414"
 
 使用 Azure 入口網站，在您的儲存體帳戶上啟用變更摘要：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您的儲存體帳戶。
+1. 在 [Azure 入口網站中](https://portal.azure.com/)，選取您的儲存體帳戶。
 
-2. 流覽至 [ **Blob 服務**] 底下的 [**資料保護**] 選項。
+2. 瀏覽至 [Blob 服務] 底下的 [資料保護] 選項。
 
 3. 按一下 [ **Blob 變更**摘要] 底下的 [**已啟用**]。
 
@@ -108,7 +107,7 @@ ms.locfileid: "83120414"
 
 1. 在 [Azure 入口網站中，選擇 [**建立資源**]。
 
-2. 在 [搜尋 Marketplace]**** 中，輸入**範本部署**，然後按 **ENTER**。
+2. 在 **[搜尋 Marketplace**] 中，輸入**範本部署**，然後按**enter**。
 
 3. 選擇 [**[部署自訂範本](https://portal.azure.com/#create/Microsoft.Template)**]，然後**在編輯器中選擇 [建立您自己的範本**]。
 
@@ -323,7 +322,7 @@ az provider register --namespace 'Microsoft.Storage'
 - 變更任何單一變更的事件記錄，可能會在變更摘要中出現一次以上。
 - 您還無法藉由在其上設定以時間為基礎的保留原則，而無法刪除 blob，來管理變更摘要記錄檔的存留期。
 - 記錄檔的 `url` 屬性目前一律是空的。
-- `LastConsumable`區段. json 檔案的屬性不會列出變更摘要最終完成的第一個區段。 只有在第一個區段完成後，才會發生此問題。 第一個小時之後的所有後續區段會正確地在 `LastConsumable` 屬性中捕捉。
+- 檔案 `LastConsumable` 上 segments.js的屬性不會列出變更摘要完成的第一個區段。 只有在第一個區段完成後，才會發生此問題。 第一個小時之後的所有後續區段會正確地在 `LastConsumable` 屬性中捕捉。
 - 當您呼叫 ListContainers API 時，您目前無法看到 **$blobchangefeed**容器，而且容器不會顯示在 Azure 入口網站或儲存體總管上。 您可以直接在 $blobchangefeed 容器上呼叫 ListBlobs API 來查看內容。
 - 先前已起始[帳戶容錯移轉](../common/storage-disaster-recovery-guidance.md)的儲存體帳戶，可能會有記錄檔未出現的問題。 任何未來的帳戶容錯移轉也可能會在預覽期間影響記錄檔。
 

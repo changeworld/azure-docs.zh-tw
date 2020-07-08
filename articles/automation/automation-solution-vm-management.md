@@ -3,20 +3,22 @@ title: Azure 自動化的停機期間啟動/停止 VM 概觀
 description: 本文說明「停機期間啟動/停止 VM」功能，此功能會依排程啟動或停止 VM，並從 Azure 監視器記錄中主動監視這些 VM。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/28/2020
+ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: e2f23f4045f0326ffea14ddeb4d588261872188f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743712"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84424069"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>停機期間啟動/停止 VM 概觀
 
-「停機期間啟動/停止 VM」功能會啟動或停止已啟用的 Azure VM。 此功能會依使用者定義的排程來啟動或停止機器、透過 Azure 監視器記錄來提供深入解析，以及使用[動作群組](../azure-monitor/platform/action-groups.md)傳送選用的電子郵件。 在大多數情況下，Azure Resource Manager 和傳統 VM 上都可以啟用此功能。 
+[在離峰期間啟動/停止 Vm] 功能會啟動或停止已啟用的 Azure Vm。 此功能會依使用者定義的排程來啟動或停止機器、透過 Azure 監視器記錄來提供深入解析，以及使用[動作群組](../azure-monitor/platform/action-groups.md)傳送選用的電子郵件。 在大多數情況下，Azure Resource Manager 和傳統 VM 上都可以啟用此功能。 
 
-此功能使用 [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) Cmdlet 來啟動 VM。 此功能使用 [Stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) 來停止 VM。
+這項功能會使用[update-azvm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) Cmdlet 來啟動 vm。 它會使用[停止 update-azvm](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)來停止 vm。
+
+> [!NOTE]
+> 雖然 runbook 已更新為使用新的 Azure Az module Cmdlet，但它們會使用 AzureRM 前置詞別名。
 
 > [!NOTE]
 > 「停機期間啟動/停止 VM」已更新為支援最新可用的 Azure 模組版本。 此功能的更新版本 (已在 Marketplace 中推出) 不支援 AzureRM 模組，因為我們已從 AzureRM 遷移至 Az 模組。
@@ -90,7 +92,7 @@ ms.locfileid: "83743712"
 
 ## <a name="components"></a>元件
 
-「停機期間啟動/停止 VM」功能包含預先設定的 Runbook、排程，以及與 Azure 監視器記錄的整合。 您可以使用這些元素來量身打造 VM 的啟動和關機，以符合您的商務需求。
+[在離峰期間啟動/停止 Vm] 功能包括預先設定的 runbook、排程，以及與 Azure 監視器記錄的整合。 您可以使用這些元素來量身打造 VM 的啟動和關機，以符合您的商務需求。
 
 ### <a name="runbooks"></a>Runbook
 
@@ -104,7 +106,7 @@ ms.locfileid: "83743712"
 |Runbook | 參數 | 描述|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 從父系 Runbook 呼叫。 在自動停止案例中，此 Runbook 會為每個資源建立警示。|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目標訂用帳戶或資源群組中的 VM 上建立或更新 Azure 警示規則。 <br> `VMList` 是以逗號分隔的 VM 清單。 例如： `vm1, vm2, vm3` 。<br> `WhatIf` 可驗證 Runbook 邏輯但不執行。|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目標訂用帳戶或資源群組中的 VM 上建立或更新 Azure 警示規則。 <br> `VMList`是以逗號分隔的 Vm 清單（不含空格），例如 `vm1,vm2,vm3` 。<br> `WhatIf` 可驗證 Runbook 邏輯但不執行。|
 |AutoStop_Disable | None | 停用「自動停止」警示和預設排程。|
 |AutoStop_VM_Child | WebHookData | 從父系 Runbook 呼叫。 警示規則會呼叫此 Runbook 以停止傳統 VM。|
 |AutoStop_VM_Child_ARM | WebHookData |從父系 Runbook 呼叫。 警示規則會呼叫此 Runbook 以停止 VM。  |
@@ -112,7 +114,7 @@ ms.locfileid: "83743712"
 |ScheduledStartStop_Child | VMName <br> 動作：啟動或停止 <br> resourceGroupName | 從父系 Runbook 呼叫。 針對排程的停止執行啟動或停止動作。|
 |ScheduledStartStop_Child_Classic | VMName<br> 動作：啟動或停止<br> resourceGroupName | 從父系 Runbook 呼叫。 針對傳統 VM 已排定的停止，執行啟動或停止動作。 |
 |ScheduledStartStop_Parent | 動作：啟動或停止 <br>VMList <br> WhatIf：True 或 False | 啟動或停止訂用帳戶中的所有 VM。 編輯 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames` 變數，只在這些目標資源群組上執行。 您也可以更新 `External_ExcludeVMNames` 變數來排除特定的 VM。|
-|SequencedStartStop_Parent | 動作：啟動或停止 <br> WhatIf：True 或 False<br>VMList| 在您要序列啟動/停止活動的每個 VM 上，建立名為 **sequencestart** 和 **sequencestop** 的標記。 這些標記名稱會區分大小寫。 標記值應為正整數 (1, 2, 3)，對應至您要啟動或停止的順序。 <br>**注意**：VM 必須位於 `External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames` 和 `External_ExcludeVMNames` 變數所定義的資源群組內。 虛擬機器必須具有適當的標記以使動作生效。|
+|SequencedStartStop_Parent | 動作：啟動或停止 <br> WhatIf：True 或 False<br>VMList| 在您要序列啟動/停止活動的每個 VM 上，建立名為 **sequencestart** 和 **sequencestop** 的標記。 這些標記名稱會區分大小寫。 標記的值應該是正整數的清單，例如， `1,2,3` 對應至您想要開始或停止的順序。 <br>**注意**：VM 必須位於 `External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames` 和 `External_ExcludeVMNames` 變數所定義的資源群組內。 虛擬機器必須具有適當的標記以使動作生效。|
 
 ### <a name="variables"></a>變數
 
@@ -132,7 +134,7 @@ ms.locfileid: "83743712"
 |External_AutoStop_TimeAggregationOperator | 時間彙總運算子，可套用至選取的時間範圍大小來評估條件。 可接受的值為 `Average`、`Minimum`、`Maximum`、`Total` 和 `Last`。|
 |External_AutoStop_TimeWindow | 時間範圍大小，在此期間，Azure 分析選取的計量以觸發警示。 此參數接受時間範圍格式的輸入。 可能的值為 5 分鐘到 6 小時。|
 |External_EnableClassicVMs| 值可指定此功能是否以傳統 VM 為目標。 預設值為 true。 針對 Azure 雲端方案提供者 (CSP) 訂用帳戶，請將此變數設定為 False。 傳統 VM 需要[傳統執行身分帳戶](automation-create-standalone-account.md#create-a-classic-run-as-account)。|
-|External_ExcludeVMNames | 要排除的 VM 名稱清單 (以逗號分隔)，限制為 140 個 VM。 如果您新增至清單的 VM 超過 140 個，則可能會不小心啟動或停止已設定排除的 VM。|
+|External_ExcludeVMNames | 要排除的 VM 名稱清單 (以逗號分隔)，限制為 140 個 VM。 如果您將超過140個 Vm 新增至清單，指定要排除的 Vm 可能會不慎啟動或停止。|
 |External_Start_ResourceGroupNames | 由啟動動作鎖定為目標的一或多個資源群組 (以逗號分隔的清單)。|
 |External_Stop_ResourceGroupNames | 由停止動作鎖定為目標的一或多個資源群組 (以逗號分隔的清單)。|
 |External_WaitTimeForVMRetrySeconds |針對 **SequencedStartStop_Parent** Runbook，等待在 VM 上執行動作的時間 (以秒為單位)。 此變數可讓 Runbook 在指定的秒數內等待子作業，再繼續下一個動作。 最長等待時間為 10800 秒 (即三小時)。 預設值為 2100 秒。|
@@ -170,7 +172,7 @@ ms.locfileid: "83743712"
 如果每個雲端服務有 20 個以上的 VM，以下提供一些建議：
 
 * 使用父代 Runbook **ScheduledStartStop_Parent** 建立多個排程，並為每個排程指定 20 個 VM。 
-* 在排程屬性中，使用 `VMList` 參數以逗號分隔清單指定 VM 名稱。 
+* 在 [排程] 屬性中，使用 `VMList` 參數將 VM 名稱指定為逗號分隔清單（無空格）。 
 
 否則，如果此功能的自動化作業執行超過三個小時，則根據[公平共用](automation-runbook-execution.md#fair-share)限制，作業會暫時卸載或停止。
 

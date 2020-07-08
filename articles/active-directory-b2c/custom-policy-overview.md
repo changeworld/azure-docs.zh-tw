@@ -7,25 +7,24 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 06/06/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1a7cb964064e229ee29591ca14aa8ef33e393a7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678153"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484176"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自訂原則
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-自訂原則是定義 Azure Active Directory B2C （Azure AD B2C）租使用者行為的設定檔。 對於最常用的身分識別工作，Azure AD B2C 入口網站中預先定義了使用者流程。 身分識別開發人員可以完全編輯自訂原則，以完成許多不同的工作。
+自訂原則是定義 Azure Active Directory B2C (Azure AD B2C) 租用戶行為的設定檔。 對於最常用的身分識別工作，Azure AD B2C 入口網站中預先定義了使用者流程。 身分識別開發人員可以完全編輯自訂原則，以完成許多不同的工作。
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>比較使用者流程與自訂原則
 
-| | 使用者流程 | 自訂原則 |
+| Context | 使用者流程 | 自訂原則 |
 |-|-------------------|-----------------|
 | 目標使用者 | 所有具備或不具備身分識別專業知識的應用程式開發人員。 | 身分識別專業人員、系統整合人員、顧問和內部身分識別小組。 他們熟悉 OpenID Connect 流程，並瞭解身分識別提供者和以宣告為基礎的驗證。 |
 | 設定方法 | 有使用者介面 (UI) 方便使用的 Azure 入口網站。 | 直接編輯 XML 檔案，然後上傳至 Azure 入口網站。 |

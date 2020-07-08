@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
-ms.openlocfilehash: 52aae3bdd2fe82eea6cbd500723192c88c293a1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260491"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343015"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 規則引擎的 X-EC-Debug HTTP 標頭
 偵錯快取要求標頭 `X-EC-Debug` 會提供與要求的資產所套用的快取原則有關的其他資訊。 這些標頭是**來自 Verizon 的 Azure CDN 進階**產品特有的標頭。
@@ -27,7 +26,7 @@ ms.locfileid: "81260491"
 ## <a name="usage"></a>使用方式
 只有在符合下列條件時，從 POP 伺服器傳送給使用者的回應才會包含 `X-EC-Debug` 標頭：
 
-- 已在指定要求的規則引擎上啟用 [偵錯快取回應標頭](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) 功能。
+- 已在指定要求的規則引擎上啟用 [偵錯快取回應標頭](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) 功能。
 - 指定的要求會定義一組將包含於回應中的偵錯快取回應標頭。
 
 ## <a name="requesting-debug-cache-information"></a>要求偵錯快取資訊
@@ -41,7 +40,7 @@ X-EC-Debug: x-ec-check-cacheable | [可快取](#cacheable-response-header)
 X-EC-Debug: x-ec-cache-key | [快取索引鍵](#cache-key-response-header)
 X-EC-Debug: x-ec-cache-state | [快取狀態](#cache-state-response-header)
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>Syntax
 
 偵錯快取回應標頭可能是藉由在要求中包含下列標頭和指定的指示詞來要求：
 
@@ -54,7 +53,7 @@ X-EC-Debug: x-ec-cache-state | [快取狀態](#cache-state-response-header)
 ## <a name="cache-status-code-information"></a>快取狀態碼資訊
 X-EC-Debug 回應標頭可透過下列指示詞來識別伺服器及其處理回應的方式：
 
-頁首 | 描述
+Header | Description
 -------|------------
 X-EC-Debug: x-ec-cache | 每當透過 CDN 路由內容時，就會報告此標頭。 此標頭可識別已回應要求的 POP 伺服器。
 X-EC-Debug: x-ec-cache-remote | 只有在原始保護盾伺服器或 ADN 閘道伺服器上快取要求的內容時，才會報告此標頭。

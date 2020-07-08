@@ -1,5 +1,5 @@
 ---
-title: 取得合作夥伴中心的商業 Marketplace 入口網站支援
+title: 取得合作夥伴中心的商業 marketplace 入口網站支援
 description: 瞭解合作夥伴中心的支援選項，包括如何提出支援要求。
 author: qianw211
 ms.author: dsindona
@@ -7,14 +7,13 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: fd7582877a74aa998de3a6d0a0f38e56c3c3af91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a007fe80c7c95305d65819eaa7081a8ff69e1cfc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733123"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463683"
 ---
-# <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>合作夥伴中心的商業 Marketplace 方案支援
+# <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>合作夥伴中心的商業 marketplace 方案支援
 
 Microsoft 提供各式各樣的產品和服務支援。 尋找正確的支援小組對於確保適當且及時的回應非常重要。 請考慮下列案例，這些案例應有助於將您的查詢傳送給適當的團隊： 
 
@@ -40,7 +39,7 @@ Microsoft 提供各式各樣的產品和服務支援。 尋找正確的支援小
 
 5. 選取 [ **[Marketplace 合作夥伴社區論壇](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)**]，利用其他 Microsoft 發行者的知識來回答您的問題。 
 
-6. 選取 [**[其他協助](https://partner.microsoft.com/support/v2/?stage=1)**] 以開啟**新的支援要求**票證。  
+6. 選取 [**[其他協助](https://aka.ms/marketplacepublishersupport)**] 以開啟**新的支援要求**票證。  
 
 ## <a name="how-to-open-a-support-ticket"></a>如何開啟支援票證
 
@@ -57,7 +56,7 @@ Microsoft 提供各式各樣的產品和服務支援。 尋找正確的支援小
 
 找到您選擇的主題之後，請選取 [**審查解決方案**]。
 
-![後續步驟](./media/next-step.png)
+![下一步](./media/next-step.png)
 
 下列選項將會變成可用：
 

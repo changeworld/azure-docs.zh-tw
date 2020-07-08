@@ -1,14 +1,13 @@
 ---
 title: Azure Container Registry 中存放庫的權限
-description: 建立權杖，其權限範圍限於登錄中的特定存放庫，以提取或推送映像，或執行其他動作
+description: 建立權杖，其許可權範圍限於 Premium 登錄中的特定存放庫，以提取或推送映射，或執行其他動作
 ms.topic: article
-ms.date: 02/13/2020
-ms.openlocfilehash: eeb2155e035dd4a3a7aa09f634c229676cd87db3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.date: 05/27/2020
+ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509401"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>建立具有存放庫範圍權限的權杖
 
@@ -20,12 +19,13 @@ ms.locfileid: "83683463"
 * 提供外部組織特定存放庫的權限 
 * 為貴組織中的不同使用者群組限制存放庫存取權限。 例如，為負責組建特定映像的開發人員提供寫入和讀取權限，而為從這些存放庫進行部署的群組提供讀取權限。
 
+**進階**容器登錄服務層級中提供這項功能。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure Container Registry 服務層級](container-registry-skus.md)。
+
 > [!IMPORTANT]
 > 此功能目前在預覽階段，但[有某些限制](#preview-limitations)。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
 ## <a name="preview-limitations"></a>預覽限制
 
-* **進階**容器登錄中提供這項功能。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure Container Registry 服務層級](container-registry-skus.md)。
 * 您目前無法將存放庫範圍的權限指派給 Azure Active Directory 身分識別，例如服務主體或受控識別。
 * 您無法在啟用[匿名提取存取](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)的登錄中建立範圍對應。
 
@@ -52,7 +52,7 @@ ms.locfileid: "83683463"
     * 使用與一組存放庫相同的權限來設定多個權杖
     * 在您新增或移除範圍對應中的存放庫動作，或套用不同的範圍對應時，更新權杖權限 
 
-  Azure Container Registry 也提供數個您可以套用的系統定義範圍對應，以及所有存放庫的固定權限。
+  Azure Container Registry 也會提供數個系統定義的範圍對應，您可以在建立權杖時加以套用。 系統定義範圍對應的許可權會套用至登錄中的所有存放庫。
 
 下圖顯示權杖與範圍對應之間的關聯性。 
 
@@ -68,7 +68,7 @@ ms.locfileid: "83683463"
 
 ### <a name="create-token-and-specify-repositories"></a>建立權杖並指定存放庫
 
-使用 [az acr Token create][az-acr-token-create] 命令來建立權杖。 建立權杖時，您可以在每個存放庫上指定一個或多個存放庫和相關聯的動作。 存放庫還不需要在登錄中。 若要指定現有的範圍對應來建立權杖，請參閱下一節。
+使用 [az acr Token create][az-acr-token-create] 命令來建立權杖。 建立權杖時，您可以在每個存放庫上指定一個或多個存放庫和相關聯的動作。 存放庫還不需要在登錄中。 若要指定現有的範圍對應來建立權杖，請參閱[下一節](#create-token-and-specify-scope-map)。
 
 下列範例會在登錄 *myregistry* 中使用 `samples/hello-world` 存放庫的下列權限建立權杖：`content/write` 和 `content/read`。 根據預設，此命令會將預設權杖狀態設定為 `enabled`，但您可以隨時將狀態更新為 [`disabled`]。
 
@@ -78,7 +78,7 @@ az acr token create --name MyToken --registry myregistry \
   content/write content/read
 ```
 
-輸出會顯示權杖的詳細資料，包括所產生的兩組密碼。 建議您將密碼儲存在安全的位置，以供稍後用來進行驗證。 系統無法再次擷取密碼，但可以產生新的密碼。
+輸出會顯示權杖的詳細資料。 根據預設，會產生兩個密碼。 建議您將密碼儲存在安全的位置，以供稍後用來進行驗證。 系統無法再次擷取密碼，但可以產生新的密碼。
 
 ```console
 {
@@ -111,6 +111,9 @@ az acr token create --name MyToken --registry myregistry \
   "type": "Microsoft.ContainerRegistry/registries/tokens"
 ```
 
+> [!NOTE]
+> 如果您想要重新產生權杖密碼並設定密碼到期期限，請參閱本文稍後的[重新產生權杖密碼](#regenerate-token-passwords)。
+
 輸出會包含命令所建立的範圍對應詳細資料。 您可以使用這裡命名為 `MyToken-scope-map` 的範圍對應，將相同的存放庫動作套用至其他權杖。 或者，稍後更新範圍對應，以變更相關聯權杖的權限。
 
 ### <a name="create-token-and-specify-scope-map"></a>建立權杖並指定範圍對應
@@ -134,7 +137,10 @@ az acr token create --name MyToken \
   --scope-map MyScopeMap
 ```
 
-輸出會顯示權杖的詳細資料，包括所產生的兩組密碼。 建議您將密碼儲存在安全的位置，以供稍後用來進行驗證。 系統無法再次擷取密碼，但可以產生新的密碼。
+輸出會顯示權杖的詳細資料。 根據預設，會產生兩個密碼。 建議您將密碼儲存在安全的位置，以供稍後用來進行驗證。 系統無法再次擷取密碼，但可以產生新的密碼。
+
+> [!NOTE]
+> 如果您想要重新產生權杖密碼並設定密碼到期期限，請參閱本文稍後的[重新產生權杖密碼](#regenerate-token-passwords)。
 
 ## <a name="create-token---portal"></a>建立權杖 - 入口網站
 
@@ -143,14 +149,16 @@ az acr token create --name MyToken \
 下列範例會建立權杖，並在 `samples/hello-world` 存放庫上建立具有下列權限的範圍對應：`content/write` 和 `content/read`。
 
 1. 在入口網站中，瀏覽到您的容器登錄。
-1. 在 [服務] 底下，選取 [權杖 (預覽)] > + [新增]。
-  ![在入口網站中建立權杖 ](media/container-registry-repository-scoped-permissions/portal-token-add.png)
+1. 在 [存放**庫許可權**] 底下，選取 **[權杖（預覽）] > + 新增**]。
+
+      :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-add.png" alt-text="在入口網站中建立權杖 ":::
 1. 輸入權杖名稱。
 1. 在 [範圍對應] 底下，選取 [新建]。
 1. 設定範圍對應：
     1. 輸入範圍對應的名稱及描述。 
     1. 在 [存放庫] 下，輸入 `samples/hello-world`，然後在 [權限] 底下，選取 [`content/read`] 和 [`content/write`]。 然後選取 [+新增]。  
-    ![在入口網站中建立範圍對應](media/container-registry-repository-scoped-permissions/portal-scope-map-add.png)
+
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="在入口網站中建立範圍對應":::
 
     1. 新增存放庫和權限之後，請選取 [新增] 以新增範圍對應。
 1. 接受 [已啟用] 的預設權杖**狀態**，然後選取 [建立]。
@@ -159,26 +167,26 @@ az acr token create --name MyToken \
 
 ### <a name="add-token-password"></a>新增權杖密碼
 
-建立權杖後產生密碼。 若要使用登錄進行驗證，必須啟用權杖並具有有效的密碼。
-
-您可以產生一或兩組密碼，並為每組密碼設定一個到期日。 
+若要使用在入口網站中建立的權杖，您必須產生密碼。 您可以產生一或兩組密碼，並為每組密碼設定一個到期日。 
 
 1. 在入口網站中，瀏覽到您的容器登錄。
-1. 在 [服務] 底下，選取 [權杖 (預覽)]，然後選取權杖。
+1. 在 [存放**庫許可權**] 底下，選取 **[權杖（預覽）**]，然後選取權杖。
 1. 在權杖詳細資料中，選取 [password1] 或 [password2]，然後選取 [產生] 圖示。
-1. 在 [密碼] 畫面中，選擇設定密碼的到期日，然後選取 [產生]。
+1. 在 [密碼] 畫面中，選擇設定密碼的到期日，然後選取 [產生]。 建議您設定到期日。
 1. 產生密碼之後，請複製密碼並儲存到安全的位置。 您無法在關閉畫面後取出產生的密碼，但您可以產生新的密碼。
 
-    ![在入口網站中建立權杖密碼](media/container-registry-repository-scoped-permissions/portal-token-password.png)
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="在入口網站中建立權杖密碼":::
 
 ## <a name="authenticate-with-token"></a>使用權杖進行驗證
 
-使用者或服務使用權杖向目標登錄進行驗證時，目標登錄會提供權杖名稱做為使用者名稱和其中一個產生的密碼。 驗證方法取決於已設定的動作或與權杖相關聯的動作。
+使用者或服務使用權杖向目標登錄進行驗證時，目標登錄會提供權杖名稱做為使用者名稱和其中一個產生的密碼。 
+
+驗證方法取決於已設定的動作或與權杖相關聯的動作。
 
 |動作  |如何驗證  |
   |---------|---------|
-  |`content/delete`    | 在 Azure CLI 中的 `az acr repository delete` |
-  |`content/read`     |  `docker login`<br/><br/>在 Azure CLI 中的 `az acr login`  |
+  |`content/delete`    | 在 Azure CLI 中的 `az acr repository delete`<br/><br/>範例：`az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
+  |`content/read`     |  `docker login`<br/><br/>在 Azure CLI 中的 `az acr login`<br/><br/>範例：`az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
   |`content/write`     |  `docker login`<br/><br/>在 Azure CLI 中的 `az acr login`     |
   |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>在 Azure CLI 中的 `az acr repository show-manifests`   |
   |`metadata/write`     |  `az acr repository untag`<br/><br/>在 Azure CLI 中的 `az acr repository update` |
@@ -200,7 +208,7 @@ docker tag hello-world myregistry.azurecr.io/samples/alpine:v1
 
 ### <a name="authenticate-using-token"></a>使用權杖進行驗證
 
-執行 `docker login` 向登錄進行驗證、提供權杖名稱做為使用者名稱，並提供其中一個密碼。 權杖必須具有 `Enabled` 狀態。
+執行 `docker login` 或 `az acr login` 來向登錄進行驗證，以推送或提取映射。 提供權杖名稱做為使用者名稱，並提供其中一個密碼。 權杖必須具有 `Enabled` 狀態。
 
 下列範例會針對 Bash 殼層進行格式化，並使用環境變數來提供值。
 
@@ -231,7 +239,7 @@ docker push myregistry.azurecr.io/samples/hello-world:v1
 docker push myregistry.azurecr.io/samples/alpine:v1
 ```
 
-### <a name="change-pushpull-permissions"></a>變更推送/提取權限
+### <a name="update-token-permissions"></a>更新權杖許可權
 
 若要更新權杖的權限，請更新相關聯範圍對應中的權限。 更新的範圍對應會立即套用至所有相關聯的權杖。 
 
@@ -250,7 +258,7 @@ az acr scope-map update \
 在 Azure 入口網站中：
 
 1. 瀏覽至您的容器登錄。
-1. 在 [服務] 底下，選取 [範圍對應 (預覽)]，然後選取要更新的範圍對應。
+1. 在 [存放**庫許可權**] 底下，選取 [**範圍對應（預覽）**]，然後選取要更新的範圍對應。
 1. 在 [存放庫] 下，輸入 `samples/alpine`，然後在 [權限] 底下，選取 [`content/read`] 和 [`content/write`]。 然後選取 [+新增]。
 1. 在 [存放庫] 底下，選取 [`samples/hello-world`]，然後在 [權限] 下，取消選取 `content/write`。 然後選取 [儲存]。
 
@@ -285,9 +293,9 @@ az acr scope-map update \
   --add samples/alpine content/delete
 ``` 
 
-若要使用入口網站更新範圍對應，請參閱上一節。
+若要使用入口網站更新範圍對應，請參閱[上一節](#update-token-permissions)。
 
-使用下列 [az acr repository delete][az-acr-repository-delete] 命令刪除 `samples/alpine` 存放庫。 若要刪除映像或存放庫，權杖不會透過 `docker login` 進行驗證。 相反地，請將權杖的名稱和密碼傳遞給命令。 下列範例會使用稍早在本文中建立的環境變數：
+使用下列 [az acr repository delete][az-acr-repository-delete] 命令刪除 `samples/alpine` 存放庫。 若要刪除映射或存放庫，請將權杖的名稱和密碼傳遞給命令。 下列範例會使用稍早在本文中建立的環境變數：
 
 ```azurecli
 az acr repository delete \
@@ -308,11 +316,11 @@ az acr scope-map update \
   --add samples/hello-world metadata/read 
 ```  
 
-若要使用入口網站更新範圍對應，請參閱上一節。
+若要使用入口網站更新範圍對應，請參閱[上一節](#update-token-permissions)。
 
 若要讀取 `samples/hello-world` 存放庫中的中繼資料，請執行 [az acr repository show-manifests][az-acr-repository-show-manifests] 或 [az acr repository show-tags][az-acr-repository-show-tags] 命令。 
 
-若要讀取中繼資料，權杖不會透過 `docker login` 進行驗證。 相反地，請將權杖的名稱和密碼傳遞給任一個命令。 下列範例會使用稍早在本文中建立的環境變數：
+若要讀取中繼資料，請將權杖的名稱和密碼傳遞至任一命令。 下列範例會使用稍早在本文中建立的環境變數：
 
 ```azurecli
 az acr repository show-tags \
@@ -327,6 +335,7 @@ az acr repository show-tags \
   "v1"
 ]
 ```
+
 ## <a name="manage-tokens-and-scope-maps"></a>管理權杖和範圍對應
 
 ### <a name="list-scope-maps"></a>列出範圍對應
@@ -338,7 +347,7 @@ az acr scope-map list \
   --registry myregistry --output table
 ```
 
-輸出會顯示您所定義的範圍對應，以及您可以用來設定權杖的數個系統定義範圍對應：
+輸出包含三個系統定義的範圍對應，以及您所產生的其他範圍對應。 您可以使用任何一個範圍對應來設定權杖。
 
 ```
 NAME                 TYPE           CREATION DATE         DESCRIPTION
@@ -364,9 +373,9 @@ az acr scope-map show \
 az acr token list --registry myregistry --output table
 ```
 
-### <a name="generate-passwords-for-token"></a>產生權杖的密碼
+### <a name="regenerate-token-passwords"></a>重新產生權杖密碼
 
-如果您沒有權杖密碼，或您想要產生新的密碼，請執行 [az acr token credential generate][az-acr-token-credential-generate] 命令。 
+如果您未產生權杖密碼，或您想要產生新的密碼，請執行[az acr token credential 產生][az-acr-token-credential-generate]命令。 
 
 下列範例會針對 *MyToken* 權杖產生新的 password1 值，並在 30 天內到期。 這會將密碼儲存在環境變數 `TOKEN_PWD` 中。 此範例會針對 Bash Shell 加以格式化。
 

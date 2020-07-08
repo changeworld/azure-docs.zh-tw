@@ -1,16 +1,15 @@
 ---
 title: Azure 自動化的變更追蹤和清查概觀
-description: 本文將說明「變更追蹤和清查」功能，以協助您識別環境中發生的軟體和 Microsoft 服務變更。
+description: 本文說明變更追蹤和清查功能，可協助您識別環境中的軟體和 Microsoft 服務變更。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/28/2019
+ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4f6ae1ad5b0f3904b84d47316c11aa1a67531a28
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835099"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84555040"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>變更追蹤和清查概觀
 
@@ -26,35 +25,36 @@ ms.locfileid: "83835099"
 > [!NOTE]
 > 若要追蹤 Azure Resource Manager 的屬性變更，請參閱 Azure Resource Graph 的[變更歷程記錄](../governance/resource-graph/how-to/get-resource-changes.md)。
 
-變更追蹤和清查會從 Azure 監視器取得其資料。 連線至 Log Analytics 工作區的虛擬機器會使用 Log Analytics 代理程式，對已安裝的軟體、Microsoft 服務、Windows 登錄和檔案及受監視伺服器上任何 Linux 精靈程式收集變更相關資料。 當資料可供使用時，代理程式會將其傳送至 Azure 監視器進行處理。 Azure 監視器會將邏輯套用至接收的資料、進行記錄並使其可供使用。 
-
-變更追蹤和清查功能會在 Azure 自動化中啟用變更追蹤和清查功能區域。 由於這兩個區域都使用相同的 Log Analytics 代理程式，因此在任一功能區域中新增 VM 的程序都相同。 
+變更追蹤和清查會從 Azure 監視器取得其資料。 連線至 Log Analytics 工作區的虛擬機器會使用 Log Analytics 代理程式，來收集受監視伺服器上已安裝軟體、Microsoft 服務、Windows 登錄和檔案以及 Linux 守護程式變更的相關資料。 當資料可供使用時，代理程式會將其傳送至 Azure 監視器進行處理。 Azure 監視器會將邏輯套用至接收的資料、進行記錄並使其可供使用。 
 
 > [!NOTE]
 > 若要使用變更追蹤和清查功能，您必須在與自動化帳戶相同的訂用帳戶和區域中找出所有 VM。
 
 變更追蹤和清查目前不支援下列項目：
 
-* Windows 登錄追蹤的遞迴
-* 網路檔案系統
-* 不同安裝方法
-* Windows 的 * **.exe**檔案
+- Windows 登錄追蹤的遞迴
+- 網路檔案系統
+- 不同安裝方法
+- Windows 的 * **.exe**檔案
 
 其他限制：
 
-* [最大檔案大小] 資料行和值未用於目前實作中。
-* 如果您在 30 分鐘的收集週期收集超過 2500 個檔案，則變更追蹤和清查的效能可能會下降。
-* 網路流量高時，變更記錄最多可能需要六個小時才會顯示。
-* 如果您在關閉電腦時修改組態，電腦可能會提出屬於舊有組態的變更。
+- [最大檔案大小] 資料行和值未用於目前實作中。
+- 如果您在30分鐘的收集週期內收集超過2500個檔案，變更追蹤和清查效能可能會降低。
+- 網路流量高時，變更記錄最多可能需要六個小時才會顯示。
+- 如果您在關閉電腦時修改組態，電腦可能會提出屬於舊有組態的變更。
 
 變更追蹤和清查目前遇到下列問題：
 
-* Windows Server 2016 Core RS3 機器不會收集 Hotfix 更新。
-* 即使未發生任何變更，Linux 精靈程式也可能會顯示已變更的狀態。 之所以發生此問題，是因為 Azure 監視器 [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) 記錄中的 `SvcRunLevels` 資料擷取方式。
+- 在 Windows Server 2016 Core RS3 電腦上不會收集修補程式更新。
+
+- 即使未發生任何變更，Linux 精靈程式也可能會顯示已變更的狀態。 發生此問題的原因 `SvcRunLevels` 是 Azure 監視器[ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange)記錄中的資料被捕捉到的方式。
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
-所有符合 Log Analytics 代理程式需求的作業系統都可支援變更追蹤和清查。 正式支援的 Windows 作業系統版本為 Windows Server 2008 SP1 或更新版本，以及 Windows 7 SP1 或更新版本。 此外，也支援一些 Linux 作業系統。 請參閱 [Log Analytics 代理程式概觀](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。 
+所有符合 Log Analytics 代理程式需求的作業系統都可支援變更追蹤和清查。 正式的作業系統版本為 Windows Server 2008 SP1 或更新版本，以及 Windows 7 SP1 或更新版本。 許多 Linux 作業系統也支援此功能。 如需支援 Log Analytics 的作業系統，請參閱[Log analytics 代理程式總覽](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。
+
+若要瞭解 TLS 1.2 的用戶端需求，請參閱[Azure 自動化的 tls 1.2 強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
 ## <a name="network-requirements"></a>網路需求
 
@@ -77,16 +77,27 @@ ms.locfileid: "83835099"
 
 您可以按一下變更或事件，以顯示其詳細資料。 可用的變更類型如下：
 
-* 事件
-* 精靈
-* 檔案
-* 登錄
-* 軟體
-* Microsoft 服務
+- 事件
+- 精靈
+- 檔案
+- 登錄
+- 軟體
+- Microsoft 服務
 
-您可以新增、修改或移除每項變更。 在下列範例中，您可以看到從「手動」變成「自動」的服務啟動類型變更。
+您可以新增、修改或移除每項變更。 下列範例顯示從手動到自動的服務啟動類型變更。
 
-![變更追蹤詳細資料](./media/change-tracking/change-tracking-details.png)
+![變更追蹤和清查詳細資料](./media/change-tracking/change-tracking-details.png)
+
+## <a name="fim-support-in-azure-security-center"></a>Azure 資訊安全中心中的 FIM 支援
+
+變更追蹤和清查會使用 [Azure 資訊安全中心檔案完整性監視 (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)。 雖然 FIM 只會監視檔案和登錄，但完整的變更追蹤和清查功能也包括追蹤下列項目：
+
+- 軟體變更
+- Microsoft 服務
+- Linux 精靈
+
+> [!NOTE]
+> 啟用完整的變更追蹤和清查功能，可能會產生額外的費用。 請參閱 [Automation 定價](https://azure.microsoft.com/pricing/details/automation/)。 您可以從 Azure 入口網站所提供的[已安裝監視解決方案清單](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)中刪除 FIM。 請參閱[移除監視解決方案](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)。
 
 ## <a name="tracking-of-file-changes"></a>檔案變更的追蹤
 
@@ -94,24 +105,23 @@ ms.locfileid: "83835099"
 
 ## <a name="tracking-of-file-content-changes"></a>檔案內容變更的追蹤
 
-變更追蹤和清查可讓您檢視 Windows 或 Linux 檔案變更之前和之後的內容。 對於檔案的每項變更，變更追蹤和清查都會將檔案的內容儲存在 [Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)中。 當您要追蹤檔案時，您可以檢視其變更前後的內容。 您可以透過內嵌或並排方式來檢視內容。 
+變更追蹤和清查可讓您查看 Windows 或 Linux 檔案的內容。 對於檔案的每項變更，變更追蹤和清查都會將檔案的內容儲存在 [Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)中。 當您要追蹤檔案時，可以在變更前後查看其內容。 檔案內容可以內嵌或並排查看。 
 
 ![檢視檔案中的變更](./media/change-tracking/view-file-changes.png)
 
 ## <a name="tracking-of-registry-keys"></a>登錄機碼的追蹤
 
-變更追蹤和清查可讓您監視登錄機碼的變更。 監視可讓您找出第三方程式碼和惡意程式碼可啟用的擴充點。 下表列出預先設定 (但未啟用) 的登錄機碼。 若要追蹤這些機碼，則必須啟用每個機碼。
+變更追蹤和清查允許監視 Windows 登錄機碼的變更。 監視可讓您找出第三方程式碼和惡意程式碼可啟用的擴充點。 下表列出預先設定 (但未啟用) 的登錄機碼。 若要追蹤這些機碼，則必須啟用每個機碼。
 
 > [!div class="mx-tdBreakAll"]
 > |登錄金鑰 | 目的 |
 > | --- | --- |
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | 監視直接連結到 Windows 檔案總管中，且通常使用 **explorer.exe** 以內含方式執行的一般自動啟動項目。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | 監視在啟動時執行的指令碼。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | 監視在關機時執行的指令碼。
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | 監視使用者登入 Windows 帳戶之前載入的金鑰。 此金鑰供 64 位元電腦上執行的 32 位元應用程式使用。
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | 監視應用程式設定的變更。
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | 監視直接連結到 Windows 檔案總管中，且通常使用 **explorer.exe** 以內含方式執行的一般自動啟動項目。
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | 監視直接連結到 Windows 檔案總管中，且通常使用 **explorer.exe** 以內含方式執行的一般自動啟動項目。
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | 監視直接連結到 Windows Explorer 的操作功能表處理常式，而且通常會以**explorer.exe**執行同進程。
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | 監視直接與 Windows Explorer 連結的複製攔截處理常式，而且通常會以**explorer.exe**執行同進程。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | 監視圖示覆疊處理常式註冊。
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | 針對在 64 位元電腦上執行的 32 位元應用程式，監視圖示覆疊處理常式註冊。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Internet Explorer 之新瀏覽器協助程式物件外掛程式的監視器。 用以存取當前頁面的文件物件模型 (DOM) 並控制瀏覽。
@@ -120,25 +130,20 @@ ms.locfileid: "83835099"
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | 針對在 64 位元電腦上執行的 32 位元應用程式，監視新的 Internet Explorer 擴充功能，例如自訂工具功能表和自訂工具列按鈕。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | 監視與 wavemapper、wave1 和 wave2、msacm.imaadpcm、.msadpcm、.msgsm610 和 vidc 相關聯的 32 位元驅動程式。 類似 **system.ini** 檔案中的 [drivers] 區段。
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | 針對在 64 位元電腦上執行的 32 位元應用程式，監視與 wavemapper、wave1 和 wave2、msacm.imaadpcm、.msadpcm、.msgsm610 和 vidc 相關聯的 32 位元驅動程式。 類似 **system.ini** 檔案中的 [drivers] 區段。
-> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | 監視已知或常用系統 DLL 的清單。 此系統可防止人員放入特洛伊木馬病毒版本的系統 DLL 來利用弱式應用程式目錄權限。
+> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | 監視已知或常用系統 DLL 的清單。 監視會藉由卸載系統 Dll 的木馬程式版本，防止人們利用弱式應用程式目錄許可權。
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | 監視可從 **winlogon.exe** (Windows 的互動式登入支援模型) 接收事件通知的套件清單。
-
-## <a name="support-for-file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心的檔案完整性監視支援
-
-變更追蹤和清查會使用 [Azure 資訊安全中心檔案完整性監視 (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)。 雖然 FIM 只會監視檔案和登錄，但完整的變更追蹤和清查功能也包括追蹤下列項目：
-
-- 軟體變更
-- Microsoft 服務
-- Linux 精靈
 
 ## <a name="recursion-support"></a>遞迴支援
 
-變更追蹤和清查支援遞迴，可讓您指定萬用字元以簡化跨目錄的追蹤。 遞迴也提供了環境變數，可讓您在具有多個或動態磁碟機名稱的環境中追蹤檔案。 以下清單包含您在設定遞迴時所應知悉的一般資訊：
+變更追蹤和清查支援遞迴，可讓您指定萬用字元以簡化跨目錄的追蹤。 遞迴也提供了環境變數，可讓您在具有多個或動態磁碟機名稱的環境中追蹤檔案。 下列清單包含設定遞迴時應該知道的一般資訊：
 
-* 追蹤多個檔案時需要萬用字元。
-* 萬用字元只能用在路徑的最後一個區段中，例如 **c:\folder\\file*** 或 **/etc/*.conf**。
-* 如果環境變數具有不正確路徑，驗證雖然會成功，但路徑會在執行期間失敗。
-* 設定路徑時應避免一般路徑名稱，因為這類設定可能會導致無法遍歷太多資料夾。
+- 追蹤多個檔案時需要萬用字元。
+
+- 您只能在檔案路徑的最後一個區段中使用萬用字元，例如， **c:\folder \\ file*** 或 **/etc/*. 會議**。
+
+- 如果環境變數具有不正確路徑，驗證雖然會成功，但路徑會在執行期間失敗。
+
+- 設定路徑時，您應該避免一般路徑名稱，因為這種設定可能會導致無法遍歷太多資料夾。
 
 ## <a name="change-tracking-and-inventory-data-collection"></a>變更追蹤和清查的資料收集
 
@@ -165,11 +170,11 @@ ms.locfileid: "83835099"
 |服務|250|
 |精靈|250|
 
-對於使用變更追蹤和清查的機器，其 Log Analytics 資料使用量平均大約是每月 40 MB (視您的環境而定)。 使用 Log Analytics 工作區的「使用量和估計成本」功能，您可以在使用量圖表中檢視由變更追蹤和清查內嵌的資料。 您可以使用此資料檢視來評估您的資料使用量，並判斷其對帳單的影響。 請參閱[了解您的使用量並估算成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)。  
+對於使用變更追蹤和清查的機器，其 Log Analytics 資料使用量平均大約是每月 40 MB (視您的環境而定)。 使用 Log Analytics 工作區的 [使用量和估計成本] 功能，您可以在使用量圖表中變更追蹤和清查來查看資料內嵌。 使用此資料檢視來評估您的資料使用量，並判斷它如何影響您的帳單。 請參閱[了解您的使用量並估算成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)。
 
 ### <a name="microsoft-service-data"></a>Microsoft 服務資料
 
-Microsoft 服務的預設收集頻率為 30 分鐘。 在 [編輯設定] 底下的 [Microsoft 服務] 索引標籤上，您可以使用滑杆來設定頻率。 
+Microsoft 服務的預設收集頻率為 30 分鐘。 在 [編輯設定] 底下的 [Microsoft 服務] 索引標籤上，您可以使用滑杆來設定頻率。
 
 ![Microsoft 服務滑桿](./media/change-tracking/windowservices.png)
 
@@ -180,13 +185,13 @@ Microsoft 服務的預設收集頻率為 30 分鐘。 在 [編輯設定] 底下�
 
 ## <a name="support-for-alerts-on-configuration-state"></a>設定狀態的警示支援
 
-變更追蹤和清查的重要功能，就是能夠針對混合式環境組態狀態的變更提出警示。 有許多實用動作可在警示的回應中觸發，例如 Azure 函式、自動化 Runbook 及 Webhook 等動作。 針對機器中 **C:\windows\system32\drivers\etc\hosts** 檔案的變更發出警示，就是變更追蹤和清查資料警示的一個良好應用。 此外還有許多警示案例，包括下表中定義的查詢案例。 
+變更追蹤和清查的重要功能，就是能夠針對混合式環境組態狀態的變更提出警示。 有許多實用動作可在警示的回應中觸發，例如 Azure 函式、自動化 Runbook 及 Webhook 等動作。 對電腦的**c:\windows\system32\drivers\etc\hosts**檔案進行變更時發出警示，是變更追蹤和清查資料警示的一個良好應用。 此外還有許多警示案例，包括下表中定義的查詢案例。
 
 |查詢  |描述  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|適用於追蹤系統重要檔案的變更。|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|適用於追蹤重要組態檔的修改。|
-|ConfigurationChange <br>&#124; where ConfigChangeType == "Microsoft services" and SvcName contains "w3svc" and SvcState == "Stopped"|適用於追蹤系統重要服務的變更。|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|適用於追蹤系統重要服務的變更。|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Daemons" and SvcName contains "ssh" and SvcState!= "Running"|適用於追蹤系統重要服務的變更。|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Added"|適用於需要鎖定軟體組態的環境。|
 |ConfigurationData <br>&#124; where SoftwareName contains "Monitoring Agent" and CurrentVersion!= "8.0.11081.0"|適用於查看哪些電腦已過時或不符合所安裝軟體版本的規範。 此查詢會報告上次回報的組態狀態，但不會報告變更。|
@@ -195,10 +200,10 @@ Microsoft 服務的預設收集頻率為 30 分鐘。 在 [編輯設定] 底下�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需有關使用變更追蹤和清查的詳細資訊，請參閱[管理變更追蹤和清查](change-tracking-file-contents.md)。
-* 若要從 Runbook 啟用此功能，請參閱[從 Runbook 啟用變更追蹤和清查](automation-enable-changes-from-runbook.md)。
-* 若要從自動化帳戶啟用此功能，請參閱[從自動化帳戶啟用變更追蹤和清查](automation-enable-changes-from-auto-acct.md)。
-* 若要藉由瀏覽 Azure 入口網站來啟用此功能，請參閱[從 Azure 入口網站啟用變更追蹤和清查](automation-onboard-solutions-from-browse.md)。
-* 若要從 Azure VM 啟用此功能，請參閱[從 Azure VM 啟用變更追蹤和清查](automation-enable-changes-from-vm.md)。
-* 如果您需要搜尋儲存在 Log Analytics 工作區中的記錄，請參閱 [Azure 監視器記錄中的記錄搜尋](../log-analytics/log-analytics-log-searches.md)。
-* 若要針對功能錯誤進行疑難排解，請參閱[針對變更追蹤和清查問題進行疑難排解](troubleshoot/change-tracking.md)。
+- 若要從自動化帳戶啟用此功能，請參閱[從自動化帳戶啟用變更追蹤和清查](automation-enable-changes-from-auto-acct.md)。
+
+- 若要流覽 Azure 入口網站來啟用此功能，請參閱[從 Azure 入口網站啟用變更追蹤和清查](automation-onboard-solutions-from-browse.md)。
+
+- 若要從 Runbook 啟用此功能，請參閱[從 Runbook 啟用變更追蹤和清查](automation-enable-changes-from-runbook.md)。
+
+- 若要從 Azure VM 啟用此功能，請參閱[從 Azure VM 啟用變更追蹤和清查](automation-enable-changes-from-vm.md)。

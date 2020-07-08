@@ -3,12 +3,11 @@ title: 設定 Azure 備份報告
 description: 使用 Log Analytics 和 Azure 活頁簿來設定及檢視 Azure 備份的報告
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e0c7418d7141a3b12f367f1b12ee740eaac64703
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797537"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484984"
 ---
 # <a name="configure-azure-backup-reports"></a>設定 Azure 備份報告
 
@@ -22,7 +21,7 @@ ms.locfileid: "83797537"
 
 ## <a name="supported-scenarios"></a>支援的案例
 
-- Azure VM、Azure VM 中的 SQL、Azure VM 中的 SAP HANA、Microsoft Azure 復原服務 (MARS) 代理程式、Microsoft Azure 備份伺服器 (MABS) 和 System Center Data Protection Manager (DPM) 都支援備份報告。 Azure 檔案共用備份的資料目前不會顯示在備份報告中。
+- Azure VM、Azure VM 中的 SQL、Azure VM 中的 SAP HANA、Microsoft Azure 復原服務 (MARS) 代理程式、Microsoft Azure 備份伺服器 (MABS) 和 System Center Data Protection Manager (DPM) 都支援備份報告。 針對 Azure 檔案共用備份，在2020年6月1日之後建立的所有記錄都會顯示資料。
 - 對於 DPM 工作負載，DPM 版本 5.1.363.0 和更新版本及代理程式版本 2.0.9127.0 和更新版本都支援備份報告。
 - 對於 MABS 工作負載，MABS 版本 13.0.415.0 和更新版本及代理程式版本 2.0.9170.0 和更新版本都支援備份報告。
 - 只要將資料傳送到使用者有權存取的 Log Analytics 工作區，即可跨所有備份項目、保存庫、訂用帳戶和區域檢視備份報告。 若要檢視一組保存庫的報告，您只需要對保存庫資料傳送至的 Log Analytics 工作區擁有讀者存取權即可。 您不需要擁有個別保存庫的存取權。

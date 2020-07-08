@@ -5,16 +5,16 @@ description: 在 Python 中，對您的 Azure Machine Learning 管線進行偵�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 4f0eb6aa92dd8999baed6868a159c86d5e7bd0c8
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 3eb0cf85dce02595f3679a96b497e286682840bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594609"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84557442"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機器學習管線的偵錯和疑難排解
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "82594609"
 ## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK 中的調試和疑難排解
 下列各節概述建立管線時的常見陷阱，以及用來偵測管線中執行之程式碼的不同策略。 當您無法如預期般執行管線時，請使用下列秘訣。
 
-### <a name="testing-scripts-locally"></a>在本機測試腳本
+### <a name="testing-scripts-locally"></a>在本機測試指令碼
 
 管線中最常見的失敗之一，就是附加的腳本（資料清理腳本、計分腳本等）並未如預期執行，或包含遠端計算內容中的執行階段錯誤，這在您的工作區中很容易在 Azure Machine Learning studio 中進行偵錯工具。 
 
@@ -48,11 +48,11 @@ ms.locfileid: "82594609"
 > [!TIP] 
 > 一旦您可以驗證您的腳本是否如預期般執行，在嘗試使用多個步驟在管線中執行腳本之前，一個好的下一個步驟是在單一步驟管線中執行腳本。
 
-### <a name="debugging-scripts-from-remote-context"></a>從遠端內容調試腳本
+### <a name="debugging-scripts-from-remote-context"></a>從遠端內容偵錯指令碼
 
-在本機測試腳本是一種很好的方法，可在您開始建立管線之前，先將主要程式碼片段和複雜邏輯進行偵錯工具，但在某些情況下，您可能需要在實際管線執行期間先行編譯腳本，特別是在診斷管線步驟之間互動時所發生的行為。 我們建議您在步驟`print()`腳本中使用語句，讓您可以在遠端執行期間看到物件狀態和預期的值，這與偵錯工具代碼的方式類似。
+在本機測試腳本是一種很好的方法，可在您開始建立管線之前，先將主要程式碼片段和複雜邏輯進行偵錯工具，但在某些情況下，您可能需要在實際管線執行期間先行編譯腳本，特別是在診斷管線步驟之間互動時所發生的行為。 我們建議您 `print()` 在步驟腳本中使用語句，讓您可以在遠端執行期間看到物件狀態和預期的值，這與偵錯工具代碼的方式類似。
 
-記錄檔`70_driver_log.txt`包含： 
+記錄檔 `70_driver_log.txt` 包含： 
 
 * 腳本執行期間所有列印的語句
 * 腳本的堆疊追蹤 
@@ -76,13 +76,13 @@ ms.locfileid: "82594609"
 
 下表包含管線開發期間的常見問題，以及可能的解決方案。
 
-| 問題 | 可能的解決方法 |
+| 問題 | 可能的解決方案 |
 |--|--|
-| 無法將資料傳遞至`PipelineData`目錄 | 請確定您已在對應至管線預期步驟輸出資料所在位置的腳本中建立目錄。 在大部分情況下，輸入引數會定義輸出目錄，然後您會明確建立目錄。 使用`os.makedirs(args.output_dir, exist_ok=True)`來建立輸出目錄。 如需顯示此設計模式的評分腳本範例，請參閱[教學](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script)課程。 |
+| 無法將資料傳遞至 `PipelineData` 目錄 | 請確定您已在對應至管線預期步驟輸出資料所在位置的腳本中建立目錄。 在大部分情況下，輸入引數會定義輸出目錄，然後您會明確建立目錄。 使用 `os.makedirs(args.output_dir, exist_ok=True)` 來建立輸出目錄。 如需顯示此設計模式的評分腳本範例，請參閱[教學](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script)課程。 |
 | 相依性 bug | 如果您已在本機開發和測試腳本，但在管線的遠端計算上執行時發現相依性問題，請確定您的計算環境相依性和版本符合您的測試環境。 （請參閱[環境建立、快取和重複使用](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
 | 計算目標的不明確錯誤 | 刪除和重新建立計算目標可以解決計算目標的特定問題。 |
-| 管線未重複使用步驟 | 預設會啟用步驟重複使用，但請確定您未在管線步驟中停用它。 如果已停用重複使用`allow_reuse` ，則步驟中的參數會設定`False`為。 |
-| 管線重新執行不必要 | 若要確保步驟只會在基礎資料或腳本變更時重新執行，請將您的目錄與每個步驟分離。 如果您使用相同的來原始目錄進行多個步驟，您可能會遇到不必要的重新執行。 在管線`source_directory`步驟物件上使用參數，以指向該步驟的隔離目錄，並確保您不會針對多個步驟`source_directory`使用相同的路徑。 |
+| 管線未重複使用步驟 | 預設會啟用步驟重複使用，但請確定您未在管線步驟中停用它。 如果已停用重複使用，則 `allow_reuse` 步驟中的參數會設定為 `False` 。 |
+| 管線重新執行不必要 | 若要確保步驟只會在基礎資料或腳本變更時重新執行，請將您的目錄與每個步驟分離。 如果您使用相同的來原始目錄進行多個步驟，您可能會遇到不必要的重新執行。 `source_directory`在管線步驟物件上使用參數，以指向該步驟的隔離目錄，並確保您不會 `source_directory` 針對多個步驟使用相同的路徑。 |
 
 ### <a name="logging-options-and-behavior"></a>記錄選項和行為
 
@@ -136,7 +136,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 1. 在撰寫畫布中選取已完成執行的模組。
 1. 在模組的右窗格中，移至 [**輸出 + 記錄**] 索引標籤。
-1. 展開右窗格，然後選取 [ **70_driver_log** ]，在瀏覽器中查看檔案。 您也可以在本機下載記錄檔。
+1. 展開右窗格，然後選取 [ **70_driver_log.txt**在瀏覽器中查看檔案。 您也可以在本機下載記錄檔。
 
     ![設計工具中的展開輸出窗格](./media/how-to-debug-pipelines/designer-logs.png)
 
@@ -150,7 +150,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 1. 在預覽窗格中選取模組。
 1. 在模組的右窗格中，移至 [**輸出 + 記錄**] 索引標籤。
-1. 展開右窗格以在瀏覽器中查看**70_driver_log .txt**檔案，或選取要在本機下載記錄檔的檔案。
+1. 展開右窗格以在瀏覽器中查看**70_driver_log.txt**檔案，或選取要在本機下載記錄檔的檔案。
 
 > [!IMPORTANT]
 > 若要從 [管線執行詳細資料] 頁面更新管線，您必須將管線執行**複製**到新的管線草稿。 管線執行是管線的快照集。 它類似于記錄檔，而且無法變更。 
@@ -162,7 +162,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 在某些情況下，您可能需要以互動方式來對 ML 管線中使用的 Python 程式碼進行偵錯工具。 藉由使用 Visual Studio Code （VS Code）和適用於 Visual Studio 的 Python 工具（PTVSD），您可以附加至在定型環境中執行的程式碼。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 * 設定為使用__Azure 虛擬網路__的__Azure Machine Learning 工作區__。
 * 在管線步驟中使用 Python 腳本的__Azure Machine Learning 管線__。 例如，PythonScriptStep。
@@ -185,7 +185,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 3. 從您的開發環境中，您可以監視定型程式所建立的記錄，以找出執行腳本的 IP 位址。
 
-4. 您可以使用`launch.json`檔案，告訴 VS Code 要將偵錯工具連接到的 IP 位址。
+4. 您可以使用檔案，告訴 VS Code 要將偵錯工具連接到的 IP 位址 `launch.json` 。
 
 5. 您會附加偵錯工具，並以互動方式逐步執行腳本。
 
@@ -218,7 +218,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
     run = Run.get_context()
     ```
 
-1. 加入可`if`啟動 PTVSD 的語句，並等候偵錯工具附加。 如果偵錯工具在超時之前沒有附加，腳本會繼續正常運作。
+1. 加入可 `if` 啟動 PTVSD 的語句，並等候偵錯工具附加。 如果偵錯工具在超時之前沒有附加，腳本會繼續正常運作。
 
     ```python
     if args.remote_debug:
@@ -233,7 +233,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
         print(f'Debugger attached = {ptvsd.is_attached()}')
     ```
 
-下列 Python 範例顯示可啟用調試`train.py`程式的基本檔案：
+下列 Python 範例顯示 `train.py` 可啟用偵錯工具的基本檔案：
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.
@@ -287,7 +287,7 @@ if not (args.output_train is None):
 
 ### <a name="configure-ml-pipeline"></a>設定 ML 管線
 
-若要提供啟動 PTVSD 並取得執行內容所需的 Python 套件，請建立環境並設定`pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`。 變更 SDK 版本，使其符合您所使用的版本。 下列程式碼片段示範如何建立環境：
+若要提供啟動 PTVSD 並取得執行內容所需的 Python 套件，請建立環境並設定 `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']` 。 變更 SDK 版本，使其符合您所使用的版本。 下列程式碼片段示範如何建立環境：
 
 ```python
 # Use a RunConfiguration to specify some additional requirements for this step.
@@ -312,7 +312,7 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
                                                                            pip_packages=['ptvsd', 'azureml-sdk==1.0.83'])
 ```
 
-在 [[設定 Python 腳本](#configure-python-scripts)] 區段中，已將兩個新的引數新增至 ML 管線步驟所使用的腳本。 下列程式碼片段示範如何使用這些引數來啟用元件的偵錯工具，以及設定超時。 它也會示範如何使用稍早建立的環境， `runconfig=run_config`方法是設定：
+在 [[設定 Python 腳本](#configure-python-scripts)] 區段中，已將兩個新的引數新增至 ML 管線步驟所使用的腳本。 下列程式碼片段示範如何使用這些引數來啟用元件的偵錯工具，以及設定超時。 它也會示範如何使用稍早建立的環境，方法是設定 `runconfig=run_config` ：
 
 ```python
 # Use RunConfig from a pipeline step
@@ -325,14 +325,14 @@ step1 = PythonScriptStep(name="train_step",
                          allow_reuse=False)
 ```
 
-當管線執行時，每個步驟都會建立子執行。 如果已啟用偵錯工具，修改過的腳本會在子執行的中`70_driver_log.txt`記錄類似下列文字的資訊：
+當管線執行時，每個步驟都會建立子執行。 如果已啟用偵錯工具，修改過的腳本會在子執行的中記錄類似下列文字的資訊 `70_driver_log.txt` ：
 
 ```text
 Timeout for debug connection: 300
 ip_address: 10.3.0.5
 ```
 
-儲存`ip_address`值。 此資訊使用於下一節。
+儲存 `ip_address` 值。 此資訊使用於下一節。
 
 > [!TIP]
 > 您也可以從針對此管線步驟執行的子系執行記錄中，尋找 IP 位址。 如需有關如何查看此資訊的詳細資訊，請參閱[監視 AZURE ML 實驗執行和計量](how-to-track-experiments.md)。
@@ -345,13 +345,13 @@ ip_address: 10.3.0.5
     python -m pip install --upgrade ptvsd
     ```
 
-    如需搭配 VS Code 使用 PTVSD 的詳細資訊，請參閱[遠端偵錯](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)程式。
+    如需搭配 VS Code 使用 PTVSD 的詳細資訊，請參閱[遠端偵錯](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)。
 
 1. 若要設定 VS Code 與執行偵錯工具的 Azure Machine Learning 計算通訊，請建立新的 debug 設定：
 
-    1. 從 VS Code 選取 [__調試__] 功能表，然後選取 [__開啟__設定]。 隨即開啟名為 [__啟動 json__ ] 的檔案。
+    1. 從 VS Code 選取 [偵錯] 功能表，然後選取 [開啟組態]。 隨即開啟名為 launch.json 的檔案。
 
-    1. 在__啟動 json__檔案中，尋找包含`"configurations": [`的行，並在其後插入下列文字。 將`"host": "10.3.0.5"`專案變更為您在上一節記錄中傳回的 IP 位址。 將`"localRoot": "${workspaceFolder}/code/step"`專案變更為包含正在進行調試之腳本複本的本機目錄：
+    1. 在 [ __launch.js__檔案] 中，尋找包含的行 `"configurations": [` ，並在其後插入下列文字。 將 `"host": "10.3.0.5"` 專案變更為您在上一節記錄中傳回的 IP 位址。 將 `"localRoot": "${workspaceFolder}/code/step"` 專案變更為包含正在進行調試之腳本複本的本機目錄：
 
         ```json
         {
@@ -371,25 +371,25 @@ ip_address: 10.3.0.5
         ```
 
         > [!IMPORTANT]
-        > 如果 [設定] 區段中已經有其他專案，請在您插入的程式碼後面新增逗號（，）。
+        > 如果組態區段中已經有其他項目，請在您插入的程式碼後面新增逗號 (,)。
 
         > [!TIP]
-        > 最佳做法是將腳本的資源保留在不同的目錄中，這就是範例`localRoot`值的參考`/code/step1`原因。
+        > 最佳做法是將腳本的資源保留在不同的目錄中，這就是 `localRoot` 範例值的參考原因 `/code/step1` 。
         >
         > 如果您要對多個腳本進行偵錯工具，請在不同的目錄中為每個腳本建立個別的設定區段。
 
-    1. 儲存 [__啟動 json__檔案]。
+    1. 儲存 launch.json檔案。
 
 ### <a name="connect-the-debugger"></a>連接偵錯工具
 
 1. 開啟 VS Code 並開啟腳本的本機複本。
 2. 在附加之後，設定您想要讓腳本停止的中斷點。
-3. 當子進程正在執行腳本，且`Timeout for debug connection`顯示在記錄中時，請使用 F5 鍵或選取 [ __Debug__]。 出現提示時，選取 [ __Azure Machine Learning 計算：遠端 debug__ ] 設定。 您也可以從側邊列選取 [debug] 圖示，從 [偵錯工具] 下拉式功能表中選取 [ __Azure Machine Learning：遠端 debug__ ] 專案，然後使用綠色箭號來附加偵錯工具。
+3. 當子進程正在執行腳本，且 `Timeout for debug connection` 顯示在記錄中時，請使用 F5 鍵或選取 [ __Debug__]。 出現提示時，選取 [ __Azure Machine Learning 計算：遠端 debug__ ] 設定。 您也可以從側邊列選取 [debug] 圖示，從 [偵錯工具] 下拉式功能表中選取 [ __Azure Machine Learning：遠端 debug__ ] 專案，然後使用綠色箭號來附加偵錯工具。
 
-    此時，VS Code 會連接到計算節點上的 PTVSD，並在您先前設定的中斷點停止。 您現在可以在程式碼執行時逐步執行、查看變數等。
+    此時，VS Code 會連接到計算節點上的 PTVSD，並在您先前設定的中斷點停止。 您現在可以在程式碼執行時逐步執行、檢視變數等。
 
     > [!NOTE]
-    > 如果記錄檔顯示的專案指出`Debugger attached = False`，則超時時間已過期，而且腳本不會繼續使用偵錯工具。 再次提交管線，並在`Timeout for debug connection`訊息之後和超時時間到期之前，連接偵錯工具。
+    > 如果記錄檔顯示的專案指出 `Debugger attached = False` ，則超時時間已過期，而且腳本不會繼續使用偵錯工具。 再次提交管線，並在 `Timeout for debug connection` 訊息之後和超時時間到期之前，連接偵錯工具。
 
 ## <a name="next-steps"></a>後續步驟
 

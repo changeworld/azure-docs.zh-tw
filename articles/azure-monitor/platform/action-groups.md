@@ -3,15 +3,14 @@ title: 在 Azure 入口網站中建立和管理動作群組
 description: 了解如何在 Azure 入口網站中建立和管理動作群組。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 4/17/2020
+ms.date: 6/5/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8075574556375b7c07de2abd6c5aff792880b497
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465247"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
@@ -118,7 +117,7 @@ ITSM 動作需要 ITSM 連線。 了解如何建立 [ITSM 連線](../../azure-mo
     > 您必須是 [Azure AD 應用程式系統管理員角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成員，才能執行此指令碼。
     
     - 修改 PowerShell 指令碼的 Connect-AzureAD 呼叫，以使用您的 Azure AD 租用戶識別碼。
-    - 修改 PowerShell 指令碼的變數 $myAzureADApplicationObjectId，以使用 Azure AD 應用程式的物件識別碼
+    - 修改 PowerShell 腳本的變數 $myAzureADApplicationObjectId，以使用您 Azure AD 應用程式的物件識別碼。
     - 執行修改過的指令碼。
     
 1. 設定動作群組安全 Webhook 動作。
@@ -217,7 +216,12 @@ Write-Host $myApp.AppRoles
 支援的國家/區域定價會列在 [Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。
 
 ### <a name="webhook"></a>Webhook
-Webhook 會使用下列規則來重試。 傳回下列 HTTP 狀態碼時，最多會重試 2 次 Webhook 呼叫：408、429、503、504 或 HTTP 端點沒有回應。 第一次重試會在 10 秒後執行。 第二次重試會在 100 秒後執行。 兩次失敗之後，在 30 分鐘內沒有動作群組會呼叫端點。 
+Webhook 會使用下列規則來處理
+- 嘗試的 webhook 呼叫數上限為3次。
+- 如果未在超時時間內收到回應，或傳回下列其中一個 HTTP 狀態碼，則會重試呼叫：408、429、503或504。
+- 第一次呼叫將會等待10秒的回應。
+- 第二次和第三次嘗試會等待30秒的回應。
+- 在3次嘗試呼叫 webhook 後，沒有任何動作群組會呼叫端點15分鐘。
 
 來源 IP 位址範圍
  - 13.72.19.232
@@ -245,7 +249,7 @@ Webhook 會使用下列規則來重試。 傳回下列 HTTP 狀態碼時，最�
 ## <a name="next-steps"></a>後續步驟
 * 進一步了解 [SMS 警示行為](../../azure-monitor/platform/alerts-sms-behavior.md)。  
 * 了解[活動記錄警示 Webhook 結構描述](../../azure-monitor/platform/activity-log-alerts-webhook.md)。  
-* 深入了解 [ITSM 連接器](../../azure-monitor/platform/itsmc-overview.md)
+* 深入瞭解[ITSM 連接器](../../azure-monitor/platform/itsmc-overview.md)。
 * 深入了解警示的[速率限制](../../azure-monitor/platform/alerts-rate-limiting.md)。
 * 取得[活動記錄警示的概觀](../../azure-monitor/platform/alerts-overview.md)，並了解如何收到警示。  
 * 了解如何[設定每當服務健康狀態通知公佈時的警示](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。

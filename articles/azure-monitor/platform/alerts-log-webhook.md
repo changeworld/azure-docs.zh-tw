@@ -7,12 +7,11 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6c9bacfc4354351cbbf2eb735414ff3334cd7d0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77667698"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84323666"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook 動作記錄警示規則
 [在 Azure 中建立記錄警示](alerts-log.md)時，您可以選擇[使用動作群組](action-groups.md)來設定它，以執行一或多個動作。 本文說明可用的不同 webhook 動作，並說明如何設定以 JSON 為基礎的自訂 webhook。
@@ -44,19 +43,23 @@ Webhook 包含 URL 和以 JSON 格式格式化的內容，這些資料會傳送�
 | *AlertThresholdOperator* |#thresholdoperator |警示規則的臨界值運算子，其使用 [大於] 或 [小於]。 |
 | *AlertThresholdValue* |#thresholdvalue |警示規則的臨界值。 |
 | *LinkToSearchResults* |#linktosearchresults |從建立警示的查詢傳回記錄的分析入口網站連結。 |
+| *LinkToSearchResultsAPI* |#linktosearchresultsapi |從建立警示的查詢傳回記錄的分析 API 連結。 |
+| *LinkToFilteredSearchResultsUI* |#linktofilteredsearchresultsui |連結至分析入口網站，它會傳回查詢中的記錄，而篩選準則是由建立警示的維度值組合所篩選。 |
+| *LinkToFilteredSearchResultsAPI* |#linktofilteredsearchresultsapi |連結至分析 API，此應用程式會傳回查詢中的記錄，而篩選準則是由建立警示的維度值組合所篩選。 |
 | *ResultCount* |#searchresultcount |搜尋結果中的記錄數目。 |
 | *搜尋間隔結束時間* |#searchintervalendtimeutc |查詢的結束時間（UTC），格式為 mm/dd/yyyy HH： mm： ss AM/PM。 |
 | *搜尋間隔* |#searchinterval |警示規則的時間範圍，其格式為 HH： mm： ss。 |
 | *搜尋間隔開始時間* |#searchintervalstarttimeutc |查詢的開始時間（UTC），格式為 mm/dd/yyyy HH： mm： ss AM/PM。 
 | *SearchQuery* |#searchquery |警示規則所使用的記錄檔搜尋查詢。 |
-| *SearchResults* |"IncludeSearchResults": true|在自訂 JSON webhook 定義中將 "IncludeSearchResults"： true 新增為最上層屬性時，查詢所傳回的記錄為 JSON 資料表，受限於前1000筆記錄。 |
+| *SearchResults* |"IncludeSearchResults": true|查詢所傳回的記錄為 JSON 資料表，受限於前1000筆記錄。 "IncludeSearchResults"： true 會在自訂 JSON webhook 定義中新增為最上層屬性。 |
+| *維度* |"IncludeDimensions"： true|當做 JSON 區段觸發該警示的維度值組合。 "IncludeDimensions"： true 會在自訂 JSON webhook 定義中新增為最上層屬性。 |
 | *警示類型*| #alerttype | 設定為[計量量測](alerts-unified-log.md#metric-measurement-alert-rules)或[結果數目](alerts-unified-log.md#number-of-results-alert-rules)的記錄警示規則類型。|
 | *WorkspaceID* |#workspaceid |Log Analytics 工作區的識別碼。 |
 | *應用程式識別碼* |#applicationid |Application Insights 應用程式的識別碼。 |
 | *訂用帳戶識別碼* |#subscriptionid |您的 Azure 訂用帳戶識別碼。 
 
 > [!NOTE]
-> *LinkToSearchResults*會將 URL 中的參數（例如*SearchQuery*、*搜尋間隔 StartTime*和*搜尋間隔結束時間*）傳遞至 Azure 入口網站在 [分析] 區段中進行查看。 Azure 入口網站的 URI 大小限制大約為2000個字元。 如果參數值超過限制，入口網站將*不*會開啟警示中提供的連結。 您可以手動輸入詳細資料，以在 Analytics 入口網站中查看結果。 或者，您可以使用[Application Insights 分析 REST API](https://dev.applicationinsights.io/documentation/Using-the-API)或[Log Analytics REST API](/rest/api/loganalytics/)以程式設計方式取得結果。 
+> 提供的連結會將 URL 中的參數（例如*SearchQuery*、*搜尋間隔 StartTime*和*搜尋間隔結束時間*）傳遞給 Azure 入口網站或 API。
 
 例如，您可以指定下列自訂承載，其中包含稱為 text ** 的單一參數。 此 webhook 呼叫的服務需要此參數。
 
@@ -88,9 +91,9 @@ Webhook 包含 URL 和以 JSON 格式格式化的內容，這些資料會傳送�
 
 ```json
 {
-    "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule",
-    "SearchQuery":"Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
+    "SubscriptionId": "12345a-1234b-123c-123d-12345678e",
+    "AlertRuleName": "AcmeRule",
+    "SearchQuery": "Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
     "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
     "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
     "AlertThresholdOperator": "Greater Than",
@@ -98,28 +101,56 @@ Webhook 包含 URL 和以 JSON 格式格式化的內容，這些資料會傳送�
     "ResultCount": 2,
     "SearchIntervalInSeconds": 3600,
     "LinkToSearchResults": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "LinkToFilteredSearchResultsUI": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "LinkToSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
+    "LinkToFilteredSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
     "Description": "log alert rule",
     "Severity": "Warning",
-    "SearchResult":
+    "AffectedConfigurationItems": [
+        "INC-Gen2Alert"
+    ],
+    "Dimensions": [
         {
-        "tables":[
-                    {"name":"PrimaryResult","columns":
-                        [
-                        {"name":"$table","type":"string"},
-                        {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"}
-                        ],
-                    "rows":
-                        [
-                            ["Fabrikam","33446677a","2018-02-02T15:03:12.18Z"],
-                            ["Contoso","33445566b","2018-02-02T15:16:53.932Z"]
-                        ]
+            "name": "Computer",
+            "value": "INC-Gen2Alert"
+        }
+    ],
+    "SearchResult": {
+        "tables": [
+            {
+                "name": "PrimaryResult",
+                "columns": [
+                    {
+                        "name": "$table",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Computer",
+                        "type": "string"
+                    },
+                    {
+                        "name": "TimeGenerated",
+                        "type": "datetime"
                     }
+                ],
+                "rows": [
+                    [
+                        "Fabrikam",
+                        "33446677a",
+                        "2018-02-02T15:03:12.18Z"
+                    ],
+                    [
+                        "Contoso",
+                        "33445566b",
+                        "2018-02-02T15:16:53.932Z"
+                    ]
                 ]
-        },
-    "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
+            }
+        ]
+    },
+    "WorkspaceId": "12345a-1234b-123c-123d-12345678e",
     "AlertType": "Metric measurement"
- }
+}
  ```
 
 > [!NOTE]
@@ -131,39 +162,64 @@ Webhook 包含 URL 和以 JSON 格式格式化的內容，這些資料會傳送�
     
 ```json
 {
-    "schemaId":"Microsoft.Insights/LogAlert","data":
-    { 
-    "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule",
-    "SearchQuery":"requests | where resultCode == \"500\"",
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "3",
-    "SearchResult":
-        {
-        "tables":[
-                    {"name":"PrimaryResult","columns":
+    "schemaId": "Microsoft.Insights/LogAlert",
+    "data": {
+        "SubscriptionId": "12345a-1234b-123c-123d-12345678e",
+        "AlertRuleName": "AcmeRule",
+        "SearchQuery": "requests | where resultCode == \"500\" | summarize AggregatedValue = Count by bin(Timestamp, 5m), IP",
+        "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
+        "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
+        "AlertThresholdOperator": "Greater Than",
+        "AlertThresholdValue": 0,
+        "ResultCount": 2,
+        "SearchIntervalInSeconds": 3600,
+        "LinkToSearchResults": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+        "LinkToFilteredSearchResultsUI": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+        "LinkToSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/0MyAppId0/metrics/requests/count",
+        "LinkToFilteredSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/0MyAppId0/metrics/requests/count",
+        "Description": null,
+        "Severity": "3",
+        "Dimensions": [
+            {
+                "name": "IP",
+                "value": "1.1.1.1"
+            }
+        ],
+        "SearchResult": {
+            "tables": [
+                {
+                    "name": "PrimaryResult",
+                    "columns": [
+                        {
+                            "name": "$table",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Id",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Timestamp",
+                            "type": "datetime"
+                        }
+                    ],
+                    "rows": [
                         [
-                        {"name":"$table","type":"string"},
-                        {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"}
+                            "Fabrikam",
+                            "33446677a",
+                            "2018-02-02T15:03:12.18Z"
                         ],
-                    "rows":
                         [
-                            ["Fabrikam","33446677a","2018-02-02T15:03:12.18Z"],
-                            ["Contoso","33445566b","2018-02-02T15:16:53.932Z"]
+                            "Contoso",
+                            "33445566b",
+                            "2018-02-02T15:16:53.932Z"
                         ]
-                    }
-                ]
+                    ]
+                }
+            ]
         },
-    "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1",
-    "AlertType": "Number of results"
+        "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1",
+        "AlertType": "Metric measurement"
     }
 }
 ```

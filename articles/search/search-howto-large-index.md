@@ -8,16 +8,15 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 915243fb4dbc6bb274e26261bc5741811ef24592
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: e544e720f024b265e957e67d5bd2ee8af91f5c7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484568"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中為大型資料集編制索引
 
-Azure 認知搜尋支援[兩種](search-what-is-data-import.md)將資料匯入搜尋索引的基本方法：以程式設計方式將資料*推送*至索引，或指向支援的資料來源上的[Azure 認知搜尋索引子](search-indexer-overview.md)以*提取*資料。
+Azure 認知搜尋支援[兩種基本方法](search-what-is-data-import.md)以供您將資料匯入到搜尋索引中：以程式設計方式將資料*推送*至索引，或將 [Azure 認知搜尋索引子](search-indexer-overview.md)指向受支援的資料來源，以*提取*資料。
 
 隨著資料量的成長或處理需求的變更，您可能會發現簡單或預設的索引編制策略已不再可行。 針對 Azure 認知搜尋，有數種方法可以容納較大的資料集，範圍從您如何結構資料上傳要求，到針對已排程和分散式工作負載使用來源特定索引子。
 
@@ -52,38 +51,38 @@ Azure 認知搜尋支援[兩種](search-what-is-data-import.md)將資料匯入�
 
 若要為較大型的資料集編製索引，其中一個最簡單的機制是在單一要求中提交多個文件或記錄。 只要整個承載的大小在 16 MB 以內，要求便可以在大量上傳作業中處理多達 1000 個文件。 無論您使用的是 [[新增檔] REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)或 .net SDK 中的[Index 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)，都適用這些限制。 針對任一 API，您會在每個要求的主體中封裝1000檔。
 
-使用批次來編制檔索引，可大幅提升編制索引的效能。 為您的資料決定最佳的批次大小，是優化索引編制速度的關鍵元件。 影響最佳批次大小的兩個主要因素如下：
-+ 索引的架構
+使用批次來編制檔索引，可大幅提升編制索引的效能。 為您的資料決定最佳批次大小是將索引編製速度最佳化的關鍵要素。 影響最佳批次大小的兩個主要因素如下：
++ 索引的結構描述
 + 資料的大小
 
 由於最佳的批次大小取決於您的索引和資料，因此最好的方法是測試不同的批次大小，以判斷在您的案例中，最快編制索引速度的結果。 本[教學](tutorial-optimize-indexing-push-api.md)課程提供使用 .net SDK 來測試批次大小的範例程式碼。 
 
 ### <a name="number-of-threadsworkers"></a>執行緒/背景工作角色數目
 
-若要充分利用 Azure 認知搜尋的索引速度，您可能需要使用多個執行緒，同時將批次索引要求同時傳送給服務。  
+為了充分利用 Azure 認知搜尋的索引編製速度，您很可能必須使用多個執行緒，以將批次索引要求同時傳送給服務。  
 
 最佳的執行緒數目取決於：
 
 + 搜尋服務的層級
 + 資料分割的數目
 + 您的批次大小
-+ 索引的架構
++ 索引的結構描述
 
-您可以修改此範例，並使用不同的執行緒計數進行測試，以判斷案例的最佳執行緒計數。 不過，只要您有多個執行緒同時執行，您就應該能夠利用大部分的效率提升。 
+您可以修改此範例，並使用不同的執行緒計數進行測試，以判斷您所處情況的最佳執行緒計數。 不過，只要您有數個同時執行的執行緒，應該就能利用絕大多數的效率增益。 
 
 > [!NOTE]
 > 當您增加搜尋服務的層級或增加分割區時，您也應該增加平行線程的數目。
 
-當您增加搜尋服務的要求時，可能會遇到[HTTP 狀態碼](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)，指出要求未完全成功。 在編制索引期間，兩個常見的 HTTP 狀態碼為：
+當抵達搜尋服務的要求增加時，您可能會遇到 [HTTP 狀態碼](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)指出要求並未完全成功。 在索引編製期間，兩個常見的 HTTP 狀態碼如下：
 
-+ **503 服務無法使用**-此錯誤表示系統負載過重，目前無法處理您的要求。
-+ **207 多重狀態**-此錯誤表示部分檔已成功，但至少有一個失敗。
++ **503 服務無法使用** - 此錯誤表示系統負載過重，因此目前無法處理要求。
++ **207多重狀態** - 此錯誤表示有些文件成功，但至少有一個文件失敗。
 
 ### <a name="retry-strategy"></a>重試策略 
 
-如果發生失敗，則應該使用[指數輪詢重試策略](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)來重試要求。
+如果發生失敗，系統應該就會使用[指數輪詢重試策略](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)來重試要求。
 
-Azure 認知搜尋的 .NET SDK 會自動重試503s 和其他失敗的要求，但您必須先執行自己的邏輯，才能重試207s。 [Polly](https://github.com/App-vNext/Polly)之類的開放原始碼工具也可以用來執行重試策略。
+Azure 認知搜尋的 .NET SDK 會自動重試 503 和其他失敗的要求，但您必須實作自己的邏輯才能重試 207。 您也可以使用 [Polly](https://github.com/App-vNext/Polly) 等開放原始碼工具來實作重試策略。
 
 ### <a name="network-data-transfer-speeds"></a>網路資料傳送速率
 
@@ -139,7 +138,7 @@ Azure 認知搜尋的 .NET SDK 會自動重試503s 和其他失敗的要求，�
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，在搜尋服務儀表板的 [概觀]**** 頁面上查看 [定價層]****，以確認足供平行索引之用。 基本層和標準層都提供多個複本。
 
-2. 在 [**設定** > ] [**調整**] 中，增加平行處理的[複本](search-capacity-planning.md)：每個索引子工作負載一個額外的複本。 現有的查詢磁碟區保留足夠的數目。 為了編製索引而犧牲查詢工作負載，不是理想的取捨。
+2. 您可以將多個索引子平行執行為服務中的搜尋單位數目。 在 [**設定**] [  >  **調整**] 中，[增加複本](search-capacity-planning.md)或分割區以進行平行處理：每個索引子工作負載一個額外的複本或資料分割 現有的查詢磁碟區保留足夠的數目。 為了編製索引而犧牲查詢工作負載，不是理想的取捨。
 
 3. 將資料分散到 Azure 認知搜尋索引子可連線的層級上的多個容器。 這可以是 Azure SQL Database 中的多個資料表、Azure Blob 儲存體中的多個容器，或是多個集合。 為每個資料表或容器定義一個資料來源物件。
 

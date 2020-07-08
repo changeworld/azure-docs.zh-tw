@@ -4,16 +4,15 @@ description: 在本文中，您將瞭解使用 Azure 入口網站 Azure 備份�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485096"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>監視 Azure 備份工作負載
 
-Azure 備份根據備份需求和基礎結構拓撲（內部部署與 Azure）提供多個備份解決方案。 所有的備份使用者或系統管理員應該都會看到所有解決方案的情況，而且預期會在重要案例中收到通知。 本文詳細說明 Azure 備份服務所提供的監視和通知功能。
+Azure 備份根據備份需求和基礎結構拓撲（內部部署與 Azure）提供多個備份解決方案。 所有的備份使用者或系統管理員應該都會看到所有解決方案的情況，而且可能會在重要案例中收到通知。 本文詳細說明 Azure 備份服務所提供的監視和通知功能。
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>復原服務保存庫中的備份作業
 
@@ -33,7 +32,7 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 系統不會顯示來自 System Center Data Protection Manager （SC-DPM）、Microsoft Azure 備份 Server （MABS）的作業。
 
 > [!NOTE]
-> Azure Vm 中的 azure 工作負載（例如 SQL 和 SAP Hana 備份）具有大量的備份作業。 例如，記錄備份可以每隔15分鐘執行一次。 因此，針對這類資料庫工作負載，只會顯示使用者觸發的作業。 不會顯示已排程的備份作業。
+> Azure Vm 中的 azure 工作負載（例如 SQL 和 SAP Hana 備份）具有大量的備份作業。 例如，記錄備份可以每隔15分鐘執行一次。 因此，對於這類資料庫工作負載，只會顯示使用者觸發的作業。 不會顯示已排程的備份作業。
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>復原服務保存庫中的備份警示
 
@@ -77,8 +76,8 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 根據警示嚴重性，警示可以定義為下列三種類型：
 
 - **重大**：原則是，任何備份或復原失敗（已排程或使用者觸發）都會導致產生警示，並顯示為重大警示，以及破壞性作業，例如刪除備份。
-- **警告**：如果備份作業成功，但有幾個警告，則會列為警告警示。
-- **資訊**：從今天起，Azure 備份服務不會產生任何資訊警示。
+- **警告**：如果備份作業成功，但有幾個警告，則會列為警告警示。 警告警示目前僅適用于 Azure 備份代理程式備份。
+- **資訊**：目前 Azure 備份服務不會產生任何資訊警示。
 
 ## <a name="notification-for-backup-alerts"></a>備份警示的通知
 
@@ -91,7 +90,7 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 
 當設定通知時，您會收到歡迎或簡介電子郵件。 這會確認當警示引發時，Azure 備份可以傳送電子郵件給這些位址。<br>
 
-如果 [頻率] 設定為 [每小時摘要]，而且在一小時內引發警示並加以解決，則不會成為即將到來的每小時摘要的一部分。
+如果 [頻率] 設定為 [每小時摘要]，而且在一小時內引發警示並加以解決，就不會成為即將到來的每小時摘要的一部分。
 
 > [!NOTE]
 >

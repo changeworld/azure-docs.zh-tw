@@ -2,18 +2,17 @@
 title: 將 Azure Data Lake Storage 從 Gen1 遷移至 Gen2
 description: 將 Azure Data Lake Storage 從 Gen1 遷移至 Gen2。
 author: normesta
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: aa4881aef9f3a9ba5d19fb0b768f13a1eb372296
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6c50ceae36c784b8b869977f14351ab5858fc7c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131424"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84466012"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>將 Azure Data Lake Storage 從 Gen1 遷移至 Gen2
 
@@ -79,7 +78,7 @@ Azure Data Lake Storage Gen2 建置於[Azure Blob 儲存體](storage-blobs-intro
    
 5. 將腳本更新為使用 Data Lake Storage Gen2 [PowerShell Cmdlet](data-lake-storage-directory-file-acl-powershell.md)，並[Azure CLI 命令](data-lake-storage-directory-file-acl-cli.md)。
    
-6. 在程式碼檔案或 Databricks 筆記本中`adl://` ，搜尋包含字串的 URI 參考，Apache Hive HQL 檔案或工作負載中使用的任何其他檔案。 以新儲存體帳戶的[Gen2 格式化 URI](data-lake-storage-introduction-abfs-uri.md)取代這些參考。 例如： Gen1 URI： `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile`可能會變成。 `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` 
+6. 在程式碼檔案或 Databricks 筆記本中，搜尋包含字串的 URI 參考， `adl://` APACHE HIVE HQL 檔案或工作負載中使用的任何其他檔案。 以新儲存體帳戶的[Gen2 格式化 URI](data-lake-storage-introduction-abfs-uri.md)取代這些參考。 例如： Gen1 URI： `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` 可能會變成 `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` 。 
 
 7. 在您的帳戶上設定安全性，以包含[角色型存取控制（RBAC）角色](../common/storage-auth-aad-rbac-portal.md)、檔案[和資料夾層級安全性](data-lake-storage-access-control.md)，以及[Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md)。
 
@@ -87,7 +86,7 @@ Azure Data Lake Storage Gen2 建置於[Azure Blob 儲存體](storage-blobs-intro
 
 在您確信應用程式和工作負載在 Gen2 上是穩定的之後，就可以開始使用 Gen2 來滿足您的商務案例。 關閉在 Gen1 上執行的任何剩餘管線，並解除委任您的 Gen1 帳戶。 
 
-<a id="gen1-gen2-feature-comparison" />
+<a id="gen1-gen2-feature-comparison"></a>
 
 ## <a name="gen1-vs-gen2-capabilities"></a>Gen1 vs Gen2 功能
 
@@ -103,9 +102,9 @@ Azure Data Lake Storage Gen2 建置於[Azure Blob 儲存體](storage-blobs-intro
 |VNET 支援|[VNET 整合](../../data-lake-store/data-lake-store-network-security.md)|[服務端點](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)，[私人端點](../common/storage-private-endpoints.md)|
 |開發人員體驗|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md)、 [.net](../../data-lake-store/data-lake-store-data-operations-net-sdk.md)、 [JAVA](../../data-lake-store/data-lake-store-get-started-java-sdk.md)、 [Python](../../data-lake-store/data-lake-store-data-operations-python.md)、 [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、 [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|正式推出- [REST](/rest/api/storageservices/data-lake-storage-gen2)、 [.net](data-lake-storage-directory-file-acl-dotnet.md)、 [JAVA](data-lake-storage-directory-file-acl-java.md)、 [Python](data-lake-storage-directory-file-acl-python.md)<br>公開預覽- [JavaScript](data-lake-storage-directory-file-acl-javascript.md)、 [PowerShell](data-lake-storage-directory-file-acl-powershell.md)、 [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |資源記錄|傳統記錄<br>[Azure 監視器整合](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[傳統記錄](../common/storage-analytics-logging.md)-正式推出<br>Azure 監視器整合-時程表 TBD|
-|生態系統|[HDInsight （3.6）](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)、 [Azure Databricks （3.1 和](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)更新版本）、 [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)、 [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight （3.6、4.0）](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、 [Azure Databricks （5.1 和](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2)更新版本）、 [SQL DW](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)、 [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|生態系統|[HDInsight （3.6）](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)、 [Azure Databricks （3.1 和](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)更新版本）、 [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)、 [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight （3.6、4.0）](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、 [Azure Databricks （5.1 和](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2)更新版本）、 [SQL DW](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)、 [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
-<a id="migration-patterns" />
+<a id="migration-patterns"></a>
 
 ## <a name="gen1-to-gen2-patterns"></a>Gen1 至 Gen2 模式
 

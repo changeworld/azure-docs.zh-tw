@@ -7,18 +7,17 @@ ms.service: site-recovery
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: cd4cc90fb102d517a47ba458619e22b8921dd498
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aed015b67aa36e7678b31d7f2f047cb1e77c6a3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495319"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485324"
 ---
 # <a name="fail-back-vmware-vms-to-on-premises-site"></a>將 VMware Vm 容錯回復至內部部署網站
 
 本文說明如何使用[Azure Site Recovery](site-recovery-overview.md)將內部部署 vm[容錯移轉](site-recovery-failover.md)至 Azure 後，將 azure vm 容錯回復至內部部署網站。 容錯回復至內部部署之後，您會啟用複寫，讓內部部署 Vm 開始複寫至 Azure。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 1. 瞭解[VMware 容錯回復](failover-failback-overview.md#vmwarephysical-reprotectionfailback)。 
 2. 請確定您已審查並完成[準備容錯回復](vmware-azure-prepare-failback.md)的步驟，並已部署所有必要的元件。 元件包括 Azure 中的進程伺服器、內部部署主要目標伺服器，以及用於容錯回復的 VPN 站對站連線（或 ExpressRoute 私人對等互連）。
@@ -29,7 +28,7 @@ ms.locfileid: "75495319"
 
 ## <a name="run-a-failover-to-fail-back"></a>執行容錯移轉以容錯回復
 
-1. 請確定 Azure Vm 已重新保護並複寫至內部部署網站。 
+1. 請確定 Azure Vm 已重新保護並複寫至內部部署網站。
     - VM 必須至少有一個復原點，才能進行容錯回復。
     - 如果您容錯回復復原方案，則方案中的所有機器都應該至少有一個復原點。
 2. 在 [保存庫] > [複寫的**專案**] 中，選取 VM。 以滑鼠右鍵按一下 VM > 非**計畫的容錯移轉**。

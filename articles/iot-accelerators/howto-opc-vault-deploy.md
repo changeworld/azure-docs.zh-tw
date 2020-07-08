@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84307923"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>建立並部署 OPC 保存庫憑證管理服務
 
@@ -22,7 +21,7 @@ ms.locfileid: "81686945"
 > [!NOTE]
 > 如需詳細資訊，請參閱 GitHub [OPC 保存庫儲存](https://github.com/Azure/azure-iiot-opc-vault-service)機制。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="install-required-software"></a>安裝必要軟體
 
@@ -51,11 +50,11 @@ cd azure-iiot-opc-vault-service
 PowerShell 腳本提供簡單的方法來部署 OPC 保存庫微服務和應用程式。
 
 1. 在存放庫根目錄中開啟 PowerShell 視窗。 
-3. 移至 [部署] `cd deploy`資料夾。
-3. 選擇的名稱可能`myResourceGroup`會與其他已部署的網頁發生衝突。 請參閱本文稍後的「網站名稱已在使用中」一節。
-5. 開始`.\deploy.ps1`進行部署，以進行互動式安裝，或輸入完整的命令列：  
+3. 移至 [部署] 資料夾 `cd deploy` 。
+3. 選擇的名稱 `myResourceGroup` 可能會與其他已部署的網頁發生衝突。 請參閱本文稍後的「網站名稱已在使用中」一節。
+5. 開始 `.\deploy.ps1` 進行部署，以進行互動式安裝，或輸入完整的命令列：  
 `.\deploy.ps1  -subscriptionName "MySubscriptionName" -resourceGroupLocation "East US" -tenantId "myTenantId" -resourceGroupName "myResourceGroup"`
-7. 如果您打算使用此部署進行開發，請`-development 1`新增來啟用 Swagger UI，以及部署 debug 組建。
+7. 如果您打算使用此部署進行開發，請新增 `-development 1` 來啟用 SWAGGER UI，以及部署 debug 組建。
 6. 依照腳本中的指示登入您的訂用帳戶，並提供其他資訊。
 9. 成功完成組建和部署作業之後，您應該會看到下列訊息：
    ```
@@ -78,24 +77,24 @@ PowerShell 腳本提供簡單的方法來部署 OPC 保存庫微服務和應用�
 8. 開啟您慣用的瀏覽器，然後開啟 [應用程式] 頁面：`https://myResourceGroup.azurewebsites.net`
 8. 提供 web 應用程式和 OPC 保存庫微服務幾分鐘的時間，以在部署之後準備。 Web 首頁可能會在第一次使用時停止回應，最多一分鐘，直到您取得第一個回應為止。
 11. 若要查看 Swagger API，請開啟：`https://myResourceGroup-service.azurewebsites.net`
-13. 若要使用 dotnet 啟動本機 GDS 伺服器，請`.\myResourceGroup-gds.cmd`啟動。 使用 Docker，啟動`.\myResourceGroup-dockergds.cmd`。
+13. 若要使用 dotnet 啟動本機 GDS 伺服器，請啟動 `.\myResourceGroup-gds.cmd` 。 使用 Docker，啟動 `.\myResourceGroup-dockergds.cmd` 。
 
 您可以使用完全相同的設定來重新部署組建。 請注意，這類作業會更新所有應用程式密碼，而且可能會重設 Azure Active Directory （Azure AD）應用程式註冊中的某些設定。
 
-您也可以只重新部署 web 應用程式二進位檔。 使用參數`-onlyBuild 1`，服務和應用程式的新 zip 套件會部署至 web 應用程式。
+您也可以只重新部署 web 應用程式二進位檔。 使用參數 `-onlyBuild 1` ，服務和應用程式的新 zip 套件會部署至 web 應用程式。
 
 部署成功之後，您就可以開始使用服務。 請參閱[管理 OPC 保存庫憑證管理服務](howto-opc-vault-manage.md)。
 
 ## <a name="delete-the-services-from-the-subscription"></a>從訂用帳戶刪除服務
 
-方法：
+其做法如下：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 移至部署服務的資源群組。
-3. 選取 [刪除資源群組]**** 並且確認。
+3. 選取 [刪除資源群組] 並且確認。
 4. 一小段時間之後，就會刪除所有已部署的服務元件。
-5. 移至**Azure Active Directory** > **應用程式註冊**。
-6. 針對每個已部署的資源群組，應該會列出三個註冊。 註冊具有下列名稱： `resourcegroup-client`、 `resourcegroup-module`、。 `resourcegroup-service` 分別刪除每個註冊。
+5. 移至**Azure Active Directory**  >  **應用程式註冊**。
+6. 針對每個已部署的資源群組，應該會列出三個註冊。 註冊具有下列名稱： `resourcegroup-client` 、 `resourcegroup-module` 、 `resourcegroup-service` 。 分別刪除每個註冊。
 
 現在已移除所有已部署的元件。
 
@@ -107,7 +106,7 @@ PowerShell 腳本提供簡單的方法來部署 OPC 保存庫微服務和應用�
 
 ### <a name="website-name-already-in-use"></a>網站名稱已在使用中
 
-網站的名稱可能已在使用中。 您需要使用不同的資源組名。 部署腳本所使用的主機名稱為： HTTPs：\//resourcegroupname.azurewebsites.net 和 HTTPs：\//resourgroupname-service.azurewebsites.net。
+網站的名稱可能已在使用中。 您需要使用不同的資源組名。 部署腳本所使用的主機名稱為： HTTPs： \/ /resourcegroupname.azurewebsites.net 和 HTTPs： \/ /resourgroupname-service.azurewebsites.net。
 服務的其他名稱是由簡短名稱雜湊的組合所建立，而且不太可能與其他服務衝突。
 
 ### <a name="azure-ad-registration"></a>Azure AD 註冊 
@@ -161,7 +160,7 @@ PowerShell 腳本提供簡單的方法來部署 OPC 保存庫微服務和應用�
 -development 0|1
 ```
 
-這是為了進行開發而部署。 使用 [debug build]，並將 ASP.NET 環境設定為 [開發]。 建立`.publishsettings`以在 Visual Studio 2017 中匯入，讓它能夠直接部署應用程式和服務。 這個參數也是選擇性的。
+這是為了進行開發而部署。 使用 [debug build]，並將 ASP.NET 環境設定為 [開發]。 建立以 `.publishsettings` 在 Visual Studio 2017 中匯入，讓它能夠直接部署應用程式和服務。 這個參數也是選擇性的。
 
 ```
 -onlyBuild 0|1

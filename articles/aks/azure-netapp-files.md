@@ -2,16 +2,13 @@
 title: 整合 Azure NetApp Files 與 Azure Kubernetes Service
 description: 瞭解如何整合 Azure NetApp Files 與 Azure Kubernetes Service
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
-ms.author: zarhoads
-ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c0648100e155d1462f3291a7f5f078cf316bc0aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273758"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465638"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>整合 Azure NetApp Files 與 Azure Kubernetes Service
 
@@ -23,7 +20,7 @@ ms.locfileid: "78273758"
 > [!IMPORTANT]
 > 您的 AKS 叢集也必須[位於支援 Azure NetApp Files 的區域中][anf-regions]。
 
-您也需要安裝並設定 Azure CLI 版本2.0.59 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 ### <a name="limitations"></a>限制
 
@@ -148,7 +145,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-建立定義`pv-nfs.yaml` PersistentVolume 的。 將`path`取代為*creationToken* ， `server`並使用上一個命令的*ipAddress* 。 例如：
+建立 `pv-nfs.yaml` 定義 PersistentVolume 的。 將取代 `path` 為*creationToken* ，並 `server` 使用上一個命令的*ipAddress* 。 例如：
 
 ```yaml
 ---
@@ -180,7 +177,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>建立 PersistentVolumeClaim
 
-建立定義`pvc-nfs.yaml` PersistentVolume 的。 例如：
+建立 `pvc-nfs.yaml` 定義 PersistentVolume 的。 例如：
 
 ```yaml
 apiVersion: v1
@@ -210,7 +207,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>使用 pod 掛接
 
-建立， `nginx-nfs.yaml`以定義使用 PersistentVolumeClaim 的 pod。 例如：
+建立，以 `nginx-nfs.yaml` 定義使用 PersistentVolumeClaim 的 pod。 例如：
 
 ```yaml
 kind: Pod
@@ -246,7 +243,7 @@ kubectl apply -f nginx-nfs.yaml
 kubectl describe pod nginx-nfs
 ```
 
-使用[kubectl exec][kubectl-exec]來連線到 pod，然後`df -h`檢查是否已掛接磁片區，以確認您的磁片區已掛接到 pod 中。
+使用[kubectl exec][kubectl-exec]來連線到 pod，然後檢查是否已掛接磁片區，以確認您的磁片區已掛接到 pod 中 `df -h` 。
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash

@@ -4,19 +4,18 @@ description: 了解如何設定 Azure AD Identity Protection 多重要素驗證�
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fa6a4cf184b426355f62117ea51642127eee529
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d4c6b57eaa2a68906053faade48dd0e63fbf0db7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74382133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84464329"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>如何：設定 Azure 多重要素驗證註冊原則
 
@@ -35,14 +34,14 @@ Azure 多因素驗證提供一種方法來驗證您使用的不只是使用者�
 
 ## <a name="policy-configuration"></a>原則組態
 
-1. 流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
-1. 流覽至**Azure Active Directory** > **安全性** > 身分**識別保護** > **MFA 註冊原則**。
+1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
+1. 流覽至**Azure Active Directory**  >  **安全性**身分  >  **識別保護**  >  **MFA 註冊原則**。
    1. 在 [**指派**] 底下
       1. **使用者**-選擇 [**所有使用者**] **，或選取個人和群組**（如果您要限制首度發行）。
          1. （選擇性）您可以選擇從原則中排除使用者。
    1. 在**控制項**底下
       1. 確定已核取 [**需要 AZURE MFA 註冊**] 核取方塊，然後選擇 [**選取**]。
-   1. **強制執行原則** -  ** **
+   1. **強制執行原則**  - **于**
    1. **儲存**
 
 ## <a name="user-experience"></a>使用者體驗
@@ -55,7 +54,7 @@ Azure Active Directory Identity Protection 會在下次以互動方式登入時�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [啟用登入和使用者風險原則](howto-identity-protection-configure-risk-policies.md)
+- [啟用登入與使用者風險原則](howto-identity-protection-configure-risk-policies.md)
 
 - [啟用 Azure AD 自助式密碼重設](../authentication/howto-sspr-deployment.md)
 

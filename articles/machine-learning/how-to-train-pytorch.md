@@ -5,18 +5,17 @@ description: 瞭解如何使用 Azure Machine Learning 的 PyTorch 估計工具�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 136ee197271fc659497c169e27a6399c3940c19e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: df49a8e5a183f56c8584e9d85fe9cfa73bc17491
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75834868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84433820"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 以大規模訓練 Pytorch 深度學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,11 +28,11 @@ ms.locfileid: "75834868"
 
 [深入瞭解深度學習與機器學習](concept-deep-learning-vs-machine-learning.md)服務。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在下列任一環境中執行此程式碼：
 
-- Azure Machine Learning 計算實例-不需要下載或安裝
+- Azure Machine Learning 計算執行個體 - 不需要下載或安裝
 
     - 完成[教學課程：設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)，以建立預先載入 SDK 和範例存放庫的專用筆記本伺服器。
     - 在筆記本伺服器上的範例深入學習資料夾中，流覽至此目錄以尋找已完成且已展開的筆記本：**使用方法 > 訓練-具有深度學習 > 訓練-超參數-微調-部署-使用-pytorch**資料夾。 
@@ -68,9 +67,9 @@ from azureml.train.dnn import PyTorch
 
 ### <a name="initialize-a-workspace"></a>初始化工作區
 
-[Azure Machine Learning 工作區](concept-workspace.md)是服務的最上層資源。 它可為您提供一個集中的位置，以處理您建立的所有成品。 在 Python SDK 中，您可以藉由建立[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)物件來存取工作區構件。
+[Azure Machine Learning 工作區](concept-workspace.md)是服務的最上層資源。 其可提供集中式位置以處理您建立的所有成品。 在 Python SDK 中，您可以藉由建立物件來存取工作區構件 [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) 。
 
-從[必要條件一節](#prerequisites)中建立`config.json`的檔案建立工作區物件。
+從 `config.json` [必要條件一節](#prerequisites)中建立的檔案建立工作區物件。
 
 ```Python
 ws = Workspace.from_config()
@@ -90,19 +89,19 @@ experiment = Experiment(ws, name=experiment_name)
 
 ### <a name="get-the-data"></a>取得資料
 
-此資料集包含每個 turkeys 和 chickens 的大約120定型影像，每個類別都有100個驗證影像。 我們會下載資料集並將其解壓縮，做為定型`pytorch_train.py`腳本的一部分。 映射是[開啟影像 V5 資料集](https://storage.googleapis.com/openimages/web/index.html)的子集。
+此資料集包含每個 turkeys 和 chickens 的大約120定型影像，每個類別都有100個驗證影像。 我們會下載資料集並將其解壓縮，做為定型腳本的一部分 `pytorch_train.py` 。 映射是[開啟影像 V5 資料集](https://storage.googleapis.com/openimages/web/index.html)的子集。
 
 ### <a name="prepare-training-scripts"></a>準備訓練腳本
 
-在本教學課程中，已經提供`pytorch_train.py`訓練腳本。 在實務上，您可以採用任何自訂訓練腳本，並以 Azure Machine Learning 執行。
+在本教學課程中， `pytorch_train.py` 已經提供訓練腳本。 在實務上，您可以採用任何自訂訓練腳本，並以 Azure Machine Learning 執行。
 
-上傳 Pytorch 訓練腳本`pytorch_train.py`。
+上傳 Pytorch 訓練腳本 `pytorch_train.py` 。
 
 ```Python
 shutil.copy('pytorch_train.py', project_folder)
 ```
 
-不過，如果您想要使用 Azure Machine Learning 追蹤和計量功能，就必須在訓練腳本內新增少量的程式碼。 您可以在中`pytorch_train.py`找到計量追蹤的範例。
+不過，如果您想要使用 Azure Machine Learning 追蹤和計量功能，就必須在訓練腳本內新增少量的程式碼。 您可以在中找到計量追蹤的範例 `pytorch_train.py` 。
 
 ## <a name="create-a-compute-target"></a>建立計算目標
 
@@ -130,9 +129,9 @@ except ComputeTargetException:
 
 [PyTorch 估計工具](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)提供一種簡單的方式，在計算目標上啟動 PyTorch 訓練作業。
 
-PyTorch 估計工具是透過泛型[`estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)類別來執行，它可以用來支援任何架構。 如需使用泛型估計工具定型模型的詳細資訊，請參閱[使用估計工具以 Azure Machine Learning 定型模型](how-to-train-ml-models.md)
+PyTorch 估計工具是透過泛型類別來執行 [`estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) ，它可以用來支援任何架構。 如需如何使用泛型估算器來將模型定型的詳細資訊，請參閱[藉由估算器使用 Azure Machine Learning 將模型定型](how-to-train-ml-models.md)
 
-如果您的訓練腳本需要額外的 pip 或 conda 封裝來執行，您可以藉由透過`pip_packages`和`conda_packages`引數傳遞它們的名稱，將套件安裝在產生的 docker 映射上。
+如果您的訓練腳本需要額外的 pip 或 conda 封裝來執行，您可以藉由透過 `pip_packages` 和引數傳遞它們的名稱，將套件安裝在產生的 docker 映射上 `conda_packages` 。
 
 ```Python
 script_params = {
@@ -148,7 +147,7 @@ estimator = PyTorch(source_directory=project_folder,
                     pip_packages=['pillow==5.4.1'])
 ```
 
-如需自訂 Python 環境的詳細資訊，請參閱[建立和管理用於定型和部署的環境](how-to-use-environments.md)。
+如需自訂 Python 環境的詳細資訊，請參閱[建立和管理用於訓練和部署的環境](how-to-use-environments.md)。
 
 ## <a name="submit-a-run"></a>提交執行
 
@@ -171,7 +170,7 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="register-or-download-a-model"></a>註冊或下載模型
 
-定型模型之後，您就可以將它註冊到您的工作區。 模型註冊可讓您在工作區中儲存模型並為其建立版本，以簡化[模型管理和部署](concept-model-management-and-deployment.md)。
+定型模型之後，您就可以將它註冊到您的工作區。 註冊模型可讓您在工作區中儲存模型並設定其版本，以簡化[模型管理和部署](concept-model-management-and-deployment.md)。
 
 ```Python
 model = run.register_model(model_name='pt-dnn', model_path='outputs/')
@@ -180,7 +179,7 @@ model = run.register_model(model_name='pt-dnn', model_path='outputs/')
 > [!TIP]
 > 您剛註冊的模型部署的方式與 Azure Machine Learning 中任何其他已註冊的模型完全相同，不論您使用哪一個估計工具來進行定型。 部署如何包含註冊模型的區段，但您可以直接跳到建立部署的[計算目標](how-to-deploy-and-where.md#choose-a-compute-target)，因為您已經有已註冊的模型。
 
-您也可以使用執行物件來下載模型的本機複本。 在定型腳本`pytorch_train.py`中，PyTorch 儲存物件會將模型保存到本機資料夾（計算目標的本機）。 您可以使用執行物件來下載複本。
+您也可以使用執行物件來下載模型的本機複本。 在定型腳本中 `pytorch_train.py` ，PyTorch 儲存物件會將模型保存到本機資料夾（計算目標的本機）。 您可以使用執行物件來下載複本。
 
 ```Python
 # Create a model folder in the current directory
@@ -195,12 +194,12 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>分散式定型
 
-估計工具[`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)也支援跨 CPU 和 GPU 叢集的分散式訓練。 您可以輕鬆地執行分散式 PyTorch 作業，Azure Machine Learning 將會為您管理協調流程。
+[`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)估計工具也支援跨 CPU 和 GPU 叢集的分散式訓練。 您可以輕鬆地執行分散式 PyTorch 作業，Azure Machine Learning 將會為您管理協調流程。
 
 ### <a name="horovod"></a>Horovod
 [Horovod](https://github.com/uber/horovod)是一個開放原始碼，所有 Uber 所開發的分散式訓練都能縮減架構。 它提供分散式 GPU PyTorch 作業的簡單路徑。
 
-若要使用 Horovod，請[`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py)在 PyTorch 函數`distributed_training`中指定參數的物件。 此參數可確保已安裝 Horovod 程式庫，以供您在定型腳本中使用。
+若要使用 Horovod，請 [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) `distributed_training` 在 PyTorch 函數中指定參數的物件。 此參數可確保已安裝 Horovod 程式庫，以供您在定型腳本中使用。
 
 
 ```Python
@@ -216,7 +215,7 @@ estimator= PyTorch(source_directory=project_folder,
                       framework_version='1.13',
                       use_gpu=True)
 ```
-系統會為您安裝 Horovod 及其相依性，因此您可以在定型腳本`train.py`中匯入它，如下所示：
+系統會為您安裝 Horovod 及其相依性，因此您可以在定型腳本中匯入它，如下所示 `train.py` ：
 
 ```Python
 import torch
@@ -233,7 +232,7 @@ import horovod
 > [!div class="nextstepaction"]
 > [部署模型的方式和位置](how-to-deploy-and-where.md)
 * [追蹤定型期間的執行計量](how-to-track-experiments.md)
-* [微調超參數](how-to-tune-hyperparameters.md)
-* [部署已完成訓練的模型](how-to-deploy-and-where.md)
+* [調整超參數](how-to-tune-hyperparameters.md)
+* [部署定型的模型](how-to-deploy-and-where.md)
 * [Azure 中分散式深度學習訓練的參考架構](/azure/architecture/reference-architectures/ai/training-deep-learning)
 

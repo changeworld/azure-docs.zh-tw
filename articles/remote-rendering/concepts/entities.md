@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7981a28db23ab8c0aed05013dd260ffd97a11c07
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: 5f6f7fc52a186117afcb92f6a2f80bf068e50ab9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758719"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509197"
 ---
 # <a name="entities"></a>實體
 
@@ -25,6 +24,33 @@ ms.locfileid: "83758719"
 實體是由其父系唯一擁有的，這表示當父系使用 `Entity.Destroy()` 終結時，其子系和所有連線的[元件](components.md)都會終結。 因此，從場景中移除模型是藉由在模型的根節點上呼叫 `Destroy` 來完成，並由 `AzureSession.Actions.LoadModelAsync()` 或其 SAS 變體 `AzureSession.Actions.LoadModelFromSASAsync()` 傳回。
 
 當伺服器載入內容，或使用者想將物件新增至場景時，會建立實體。 例如，如果使用者想要新增切割平面以將網格的內部視覺化，可以建立一個應該存在的平面，然後在其中新增「切割平面」元件。
+
+## <a name="create-an-entity"></a>建立實體
+
+若要將新實體新增至場景，例如，若要將它當做載入模型的根物件傳遞，或將元件附加至它，請使用下列程式碼：
+
+```cs
+Entity CreateNewEntity(AzureSession session)
+{
+    Entity entity = session.Actions.CreateEntity();
+    entity.Position = new LocalPosition(1, 2, 3);
+    return entity;
+}
+```
+
+```cpp
+ApiHandle<Entity> CreateNewEntity(ApiHandle<AzureSession> session)
+{
+    ApiHandle<Entity> entity(nullptr);
+    if (auto entityRes = session->Actions()->CreateEntity())
+    {
+        entity = entityRes.value();
+        entity->Position(Double3{ 1, 2, 3 });
+        return entity;
+    }
+    return entity;
+}
+```
 
 ## <a name="query-functions"></a>查詢函式
 

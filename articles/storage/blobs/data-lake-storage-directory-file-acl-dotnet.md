@@ -5,27 +5,26 @@ author: normesta
 ms.service: storage
 ms.date: 03/20/2020
 ms.author: normesta
-ms.topic: article
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: b83d0d2d765b60585832f1a3e7c610f05eac075c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fc2013a3875c74a1371196cacb0096356cf3ffdf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061574"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84466114"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 .NET 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
 本文說明如何使用 .NET 來建立和管理已啟用階層命名空間（HNS）之儲存體帳戶中的目錄、檔案和許可權。 
 
-[封裝（NuGet）](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) | [範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API 參考](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake) | [Gen1 至 Gen2 對應](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [提供意見](https://github.com/Azure/azure-sdk-for-net/issues)反應
+[封裝（NuGet）](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)  | [範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)  | [API 參考](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake)  | [Gen1 至 Gen2 對應](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)  | [提供意見](https://github.com/Azure/azure-sdk-for-net/issues)反應
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-> * 已啟用階層命名空間（HNS）的儲存體帳戶。 請遵循[這些](data-lake-storage-quickstart-create-account.md)指示來建立一個。
+> * 已啟用階層命名空間 (HNS) 的儲存體帳戶。 遵循[下列](data-lake-storage-quickstart-create-account.md)指示以建立帳戶。
 
 ## <a name="set-up-your-project"></a>設定專案
 
@@ -43,7 +42,7 @@ using System.IO;
 using Azure;
 ```
 
-## <a name="connect-to-the-account"></a>連接到帳戶
+## <a name="connect-to-the-account"></a>連線到帳戶
 
 若要使用本文中的程式碼片段，您必須建立代表儲存體帳戶的[DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient)實例。 
 
@@ -93,9 +92,9 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 
 ## <a name="create-a-file-system"></a>建立檔案系統
 
-檔案系統作為檔案的容器。 您可以藉由呼叫[DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync)方法來建立一個。
+檔案系統可做為您的檔案的容器。 您可以藉由呼叫[DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync)方法來建立一個。
 
-這個範例會建立名為`my-file-system`的檔案系統。 
+此範例會建立名為 `my-file-system` 的檔案系統。 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -109,7 +108,7 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 藉由呼叫[DataLakeFileSystemClient. CreateDirectoryAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createdirectoryasync)方法來建立目錄參考。
 
-這個範例會將名`my-directory`為的目錄新增至檔案系統，然後新增名`my-subdirectory`為的子目錄。 
+這個範例會將名為的目錄新增 `my-directory` 至檔案系統，然後新增名為的子目錄 `my-subdirectory` 。 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -125,11 +124,11 @@ public async Task<DataLakeDirectoryClient> CreateDirectory
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>重新命名目錄或移動目錄
+## <a name="rename-or-move-a-directory"></a>重新命名或移動目錄
 
 藉由呼叫[DataLakeDirectoryClient. RenameAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.renameasync)方法來重新命名或移動目錄。 傳遞所需目錄的路徑 a 參數。 
 
-這個範例會將子目錄重新命名為名稱`my-subdirectory-renamed`。
+這個範例會將子目錄重新命名為名稱 `my-subdirectory-renamed` 。
 
 ```cs
 public async Task<DataLakeDirectoryClient> 
@@ -142,7 +141,7 @@ public async Task<DataLakeDirectoryClient>
 }
 ```
 
-這個範例會將名`my-subdirectory-renamed`為的目錄移至名`my-directory-2`為之目錄的子目錄。 
+這個範例會將名為的目錄移 `my-subdirectory-renamed` 至名為之目錄的 `my-directory-2` 子目錄。 
 
 ```cs
 public async Task<DataLakeDirectoryClient> MoveDirectory
@@ -159,7 +158,7 @@ public async Task<DataLakeDirectoryClient> MoveDirectory
 
 藉由呼叫[DataLakeDirectoryClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.delete)方法來刪除目錄。
 
-這個範例會刪除名為`my-directory`的目錄。  
+此範例刪除名為 `my-directory` 的目錄。  
 
 ```cs
 public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
@@ -176,9 +175,9 @@ public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
 呼叫[DataLakeDirectoryClient. GetAccessControlAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.getaccesscontrolasync)方法以取得目錄的存取控制清單（ACL），並呼叫[DataLakeDirectoryClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.setaccesscontrollist)方法來設定 ACL。
 
 > [!NOTE]
-> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入瞭解如何套用 ACL 許可權，以及變更它們的影響，請參閱[Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
+> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
 
-這個範例會取得並設定名為`my-directory`之目錄的 ACL。 此字串`user::rwx,group::r-x,other::rw-`提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供所有其他讀取和寫入權限。
+這個範例會取得並設定名為之目錄的 ACL `my-directory` 。 此字串 `user::rwx,group::r-x,other::rw-` 提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供所有其他讀取和寫入權限。
 
 ```cs
 public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
@@ -201,11 +200,11 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>將檔案上傳到目錄
+## <a name="upload-a-file-to-a-directory"></a>將檔案上傳至目錄
 
 首先，建立[DataLakeFileClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient)類別的實例，以建立目標目錄中的檔案參考。 藉由呼叫[DataLakeFileClient. AppendAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync)方法來上傳檔案。 請務必呼叫[DataLakeFileClient. FlushAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.flushasync)方法來完成上傳。
 
-這個範例會將文字檔上傳至名為`my-directory`的目錄。    
+這個範例會將文字檔上傳至名為的目錄 `my-directory` 。    
 
 ```cs
 public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
@@ -258,9 +257,9 @@ public async Task UploadFileBulk(DataLakeFileSystemClient fileSystemClient)
 藉由呼叫[DataLakeFileClient. GetAccessControlAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.getaccesscontrolasync)方法來取得檔案的存取控制清單（ACL），並藉由呼叫[DataLakeFileClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.setaccesscontrollist)方法來設定 ACL。
 
 > [!NOTE]
-> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入瞭解如何套用 ACL 許可權，以及變更它們的影響，請參閱[Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
+> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
 
-這個範例會取得並設定名為`my-file.txt`之檔案的 ACL。 此字串`user::rwx,group::r-x,other::rw-`提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供所有其他讀取和寫入權限。
+這個範例會取得並設定名為之檔案的 ACL `my-file.txt` 。 此字串 `user::rwx,group::r-x,other::rw-` 提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供所有其他讀取和寫入權限。
 
 ```cs
 public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
@@ -327,7 +326,7 @@ public async Task DownloadFile(DataLakeFileSystemClient fileSystemClient)
 
 藉由呼叫[FileSystemClient. GetPathsAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getpathsasync)方法來列出目錄內容，然後逐一列舉結果。
 
-這個範例會列印位於名`my-directory`為的目錄中的每個檔案的名稱。
+這個範例會列印位於名為的目錄中的每個檔案的名稱 `my-directory` 。
 
 ```cs
 public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient)
@@ -354,10 +353,10 @@ public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient
 }
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [API 參考文件](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake)
-* [封裝（NuGet）](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)
+* [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)
 * [範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)
 * [Gen1 至 Gen2 對應](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
 * [已知問題](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)

@@ -8,17 +8,16 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/05/2020
-ms.openlocfilehash: ccf9d0c3eef50c7dfd838f1929e52506e8984879
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/05/2020
+ms.openlocfilehash: e2b4233f8f59a26e7da532fca48aecbb41857b66
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78395260"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488625"
 ---
 # <a name="apply-transformation-module"></a>套用轉換模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 使用此模組來根據先前計算的轉換來修改輸入資料集。
 
@@ -32,13 +31,13 @@ ms.locfileid: "78395260"
 
 1. 選取 [**輸出 + 記錄**] 索引標籤。
 
-1. 選取**儲存圖示**以儲存**結果轉換**。
+1. 尋找轉換輸出，並選取 [**註冊資料集**]，將它儲存為模組選擇區中 [**資料集**] 類別下的模組。
 
 ## <a name="how-to-use-apply-transformation"></a>如何使用套用轉換  
   
 1. 將 [套用**轉換**] 模組新增至您的管線。 您可以在模組選擇區的**模型評分 & 評估**一節中找到此模組。 
   
-1. 在模組選擇區的 [ > **我的資料集** **] 下，** 尋找您想要使用的已儲存轉換。
+1. 在模組選擇區的 [**資料集**] 下，尋找您要使用的已儲存轉換。
 
 1. 將已儲存轉換的輸出連接到 [套用**轉換**] 模組的左側輸入埠。
 
@@ -50,4 +49,4 @@ ms.locfileid: "78395260"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

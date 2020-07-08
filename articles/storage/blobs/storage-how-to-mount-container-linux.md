@@ -4,16 +4,15 @@ description: 在 Linux 上使用 FUSE 掛接 Azure Blob 儲存體容器
 author: rishabpoh
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: a0a03df59bc6ecffcb4f0a701616297f2da78fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3505cdaa009520f581e2ccf9f8bc60cbfb65586c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061418"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465468"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統
 
@@ -52,7 +51,7 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-同樣地，將 URL 變更`.../ubuntu/16.04/...`為`.../ubuntu/18.04/...`或，以參考另一個 Ubuntu 版本。
+同樣地，將 URL 變更為 `.../ubuntu/16.04/...` 或， `.../ubuntu/18.04/...` 以參考另一個 Ubuntu 版本。
 
 ### <a name="install-blobfuse"></a>安裝 Blobfuse
 

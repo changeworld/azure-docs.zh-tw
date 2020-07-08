@@ -9,16 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: cb7f11f184ba8e19eb8786817da58edf8ddee44e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6b72d80f0be65af22bf334752052757346457a67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137088"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84448626"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>促進式決策樹回歸模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 使用此模組來建立使用提升的迴歸樹狀結構集團。 [*提升*] 表示每個樹狀結構都相依于先前的樹系。 此演算法會藉由調整剩餘的樹狀結構來學習。 因此，決策樹集團中的促進有助於提高精確度，但稍微有涵蓋範圍不足的風險。  
   
@@ -99,10 +98,10 @@ ms.locfileid: "82137088"
 
 定型完成後：
 
-+ 若要使用模型進行評分，請將其連接到 [[評分模型](./score-model.md)]，以預測新輸入範例的值。
++ 若要使用模型進行評分，請將[定型模型](train-model.md)連接到[計分模型](./score-model.md)，以預測新輸入範例的值。
 
 + 若要儲存定型模型的快照集，請選取**定型模型**右面板中的 [**輸出**] 索引標籤，然後按一下 [**註冊資料集**] 圖示。 定型模型的複本會儲存為模組樹狀結構中的模組，而且不會在後續的管線執行時更新。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

@@ -3,12 +3,11 @@ title: 在 Azure Site Recovery 中建立/自訂復原方案
 description: 了解如何使用 Azure Site Recovery 服務建立及自訂用於災害復原的復原方案。
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 6540317324a9f0d9bccc046ecf95824d4128bd09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76705831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485331"
 ---
 # <a name="create-and-customize-recovery-plans"></a>建立並自訂復原方案
 
@@ -16,7 +15,7 @@ ms.locfileid: "76705831"
 
 ## <a name="create-a-recovery-plan"></a>建立復原計畫
 
-1. 在復原服務保存庫中，選取 [復原**方案（Site Recovery）** > **+ 復原方案**]。
+1. 在復原服務保存庫中，選取 [復原**方案（Site Recovery）**  >  **+ 復原方案**]。
 2. 在 [建立復原方案]**** 中，指定方案的名稱。
 3. 根據方案中的機器選擇來源和目標，並針對部署模型選取 [資源管理員]****。 來源位置必須有已啟用容錯移轉和復原功能的機器。 
 
@@ -29,13 +28,13 @@ ms.locfileid: "76705831"
    Hyper-v （受 VMM 管理）至 Azure  | 選取 VMM 伺服器 | 選取 Azure
   
     請注意：
-    -  您只能使用從來源位置容錯移轉至 Azure 的復原方案。 您無法使用復原方案來從 Azure 容錯回復。
-    - 來源位置必須有已啟用容錯移轉和復原功能的機器。 
-    - 復原方案可以包含具有相同來源和目標的機器。 
+    - 您可以使用復原方案來容錯移轉至 Azure，以及從 Azure 容錯回復。
+    - 來源位置必須有已啟用容錯移轉和復原功能的機器。
+    - 復原方案可以包含具有相同來源和目標的機器。
     - 您可以在相同的方案中包含受 VMM 管理的 VMware Vm 和 Hyper-v Vm。
     - VMware Vm 和實體伺服器可以位於相同的方案中。
 
-4. 在 [選取項目虛擬機器]**** 中，選取您要新增至方案的機器 (或複寫群組)。 然後按一下 [ **確定**]。
+4. 在 [選取項目虛擬機器]**** 中，選取您要新增至方案的機器 (或複寫群組)。 然後按一下 [確定] 。
     - 機器會新增至方案中的預設群組 (群組 1)。 容錯移轉之後，此群組中的所有機器會在相同的時間啟動。
     - 您只能選取您所指定之來源和目標位置中的機器。 
 5. 按一下 [確定]**** 以建立方案。
@@ -74,9 +73,9 @@ ms.locfileid: "76705831"
 2. 在 [插入動作]**** 中，選取 [指令碼]**** 或 [手動動作]****。
 3. 如果您想要新增手動動作，請執行下列步驟：
     1. 輸入動作的名稱，然後輸入動作指示。 執行容錯移轉的使用者會看到這些指示。
-    1. 指定您是否要針對所有類型的容錯移轉 (測試、容錯移轉、規劃的容錯移轉 (如果相關)) 新增手動動作。 然後按一下 [ **確定**]。
+    1. 指定您是否要針對所有類型的容錯移轉 (測試、容錯移轉、規劃的容錯移轉 (如果相關)) 新增手動動作。 然後按一下 [確定] 。
 4. 如果您想要新增腳本，請執行下列動作：
-    1. 如果是新增 VMM 指令碼，請選取 [容錯移轉至 VMM 指令碼]****，然後在 [指令碼路徑]**** 中輸入共用的相對路徑。 例如，如果共用\\ \<位於 VMMServerName> 為 \msscvmmlibrary\rpscripts，請指定路徑： \rpscripts\rpscript.ps1。
+    1. 如果是新增 VMM 指令碼，請選取 [容錯移轉至 VMM 指令碼]****，然後在 [指令碼路徑]**** 中輸入共用的相對路徑。 例如，如果共用的位置為 \\\<VMMServerName>\MSSCVMMLibrary\RPScripts，則指定路徑：\RPScripts\RPScript.PS1。
     1. 如果是新增 Azure 自動化 Runbook，請指定 Runbook 所在的 [Azure 自動化帳戶]****，並選取適當的 [Azure Runbook 指令碼]****。
 5. 請執行復原方案的測試容錯移轉，以確保指令碼會如預期般運作。
 

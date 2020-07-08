@@ -11,23 +11,22 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d28f93f316ac2a63be6b3a8eb0b80678bd7607f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81271398"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84483791"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>與 Azure Multi-Factor Authentication 相關的常見問題
 
 此常見問題集回答關於 Azure Multi-Factor Authentication 和使用 Multi-Factor Authentication 服務的常見問題。 並將問題細分為一般服務問題、計費模式、使用者體驗和疑難排解。
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 將不再為新的部署提供 MFA 伺服器。 新客戶若想要從他們的使用者要求多重要素驗證，應該使用雲端式 Azure 多重要素驗證。 在7月1日前啟動 MFA Server 的現有客戶將能夠下載最新版本、未來的更新，並如往常般產生啟用認證。
+> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 希望要求使用者使用多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。 在 7 月 1 日前啟用 MFA 伺服器的現有客戶，將能夠下載最新版本及未來的更新，並如常產生啟用認證。
 >
 > 下列關於 Azure 多因素驗證服務器的共用資訊僅適用于已執行 MFA Server 的使用者。
 >
-> 自2018年9月1日起，新客戶將無法再使用以耗用量為基礎的授權。
+> 自 2018 年 9 月 1 日起，以耗用量為基礎的授權不再供新客戶使用。
 > 自2018年9月1日起，可能不再建立新的驗證提供者。 現有的驗證提供者可繼續使用與更新。 多重要素驗證將繼續為 Azure AD Premium 授權中的可用功能。
 
 ## <a name="general"></a>一般
@@ -70,7 +69,7 @@ ms.locfileid: "81271398"
 * *759731*
 * *673801*
 
-不保證會有相同數目的一致 SMS 或以語音為基礎的多重要素驗證提示傳遞。 隨著我們的使用者的興趣，我們可以在進行路由調整以改善 SMS 傳遞能力時，隨時新增或移除簡短的代碼。 美國和加拿大以外的國家或地區不支援簡短代碼。
+不保證會有相同數目的一致 SMS 或以語音為基礎的多重要素驗證提示傳遞。 為了使用者的利益，我們可能會在調整路由來改善 SMS 傳遞能力時，隨時新增或移除簡短代碼。 美國和加拿大以外的國家或地區不支援簡短代碼。
 
 ## <a name="billing"></a>計費
 
@@ -163,7 +162,7 @@ ms.locfileid: "81271398"
 
 ### <a name="what-if-a-user-cant-sign-in-to-non-browser-apps"></a>如果使用者無法登入非瀏覽器的應用程式該怎麼辦？
 
-如果貴組織仍然使用舊版的用戶端，但您已[允許使用應用程式密碼](howto-mfa-mfasettings.md#app-passwords)，則您的使用者無法使用他們的使用者名稱和密碼登入這些舊版用戶端。 相反地，他們需要[設定應用程式密碼](../user-help/multi-factor-authentication-end-user-app-passwords.md)。 您的使用者必須先清除 (刪除) 登入資訊、重新啟動應用程式，然後使用他們的使用者名稱和*應用程式密碼* (不是他們慣用的密碼) 登入。
+如果貴組織仍然使用舊版的用戶端，但您已[允許使用應用程式密碼](howto-mfa-app-passwords.md)，則您的使用者無法使用他們的使用者名稱和密碼登入這些舊版用戶端。 相反地，他們需要[設定應用程式密碼](../user-help/multi-factor-authentication-end-user-app-passwords.md)。 您的使用者必須先清除 (刪除) 登入資訊、重新啟動應用程式，然後使用他們的使用者名稱和*應用程式密碼* (不是他們慣用的密碼) 登入。
 
 如果您的組織沒有舊版用戶端，您不應該允許使用者建立應用程式密碼。
 
@@ -186,7 +185,7 @@ ms.locfileid: "81271398"
 
 若為具有 Azure MFA Server v7.0 或更高版本的單向 SMS，您可以設定登錄機碼來設定逾時設定。 MFA 雲端服務傳送文字訊息之後，驗證碼 (或單次密碼) 就會傳回 MFA 伺服器。 依預設，MFA 伺服器會將程式碼儲存在記憶體中達 300 秒。 如果使用者在 300 秒內未輸入代碼，則他們的驗證會遭到拒絕。 若要變更預設逾時設定，請使用下列步驟：
 
-1. 移至 `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor` 。
+1. 移至 `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor`。
 2. 建立名為*pfsvc_pendingSmsTimeoutSeconds*的**DWORD**登錄機碼，並設定您想要讓 Azure MFA Server 儲存一次密碼的時間（以秒為單位）。
 
 >[!TIP]
@@ -230,7 +229,7 @@ Windows Server 2012 R2 中的安全性變更已改變 Azure Multi-Factor Authent
 - 組織建立已套用至使用者的 MFA 註冊原則並加以啟用。
 - 使用者先前已註冊過 MFA，但選擇的驗證方法已由系統管理員停用。 使用者必須因此再次進行 MFA 註冊，以選取新的預設驗證方法。
 
-## <a name="errors"></a>Errors
+## <a name="errors"></a>錯誤
 
 * [如果使用者在使用行動代理程式更新時看到「驗證要求不適用於已啟用的帳戶」錯誤訊息，該怎麼辦？](#what-should-users-do-if-they-see-an-authentication-request-is-not-for-an-activated-account-error-message-when-using-mobile-app-notifications)
 * [如果使用者在登入非瀏覽器應用程式時看到0x800434D4L 錯誤訊息，該怎麼辦？](#what-should-users-do-if-they-see-a-0x800434d4l-error-message-when-signing-in-to-a-non-browser-application)
@@ -240,7 +239,7 @@ Windows Server 2012 R2 中的安全性變更已改變 Azure Multi-Factor Authent
 要求使用者完成下列程式，以從 Microsoft Authenticator 中移除其帳戶，然後再次新增：
 
 1. 移至[他們的 Azure 入口網站設定檔](https://account.activedirectory.windowsazure.com/profile/)，並使用組織帳戶登入。
-2. 選取 [其他安全性驗證]****。
+2. 選取 [**其他安全性驗證**]。
 3. 從 Microsoft Authenticator 應用程式中移除現有的帳戶。
 4. 按一下 [**設定**]，然後依照指示重新設定 Microsoft Authenticator。
 
@@ -257,4 +256,4 @@ Windows Server 2012 R2 中的安全性變更已改變 Azure Multi-Factor Authent
 * 在 [Microsoft 支援知識庫](https://support.microsoft.com)搜尋常見技術問題的解決方案。
 * 搜尋並流覽來自社區的技術問題與解答，或在[Azure Active Directory Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)中詢問您自己的問題。
 * 透過[Azure 多因素驗證服務器支援](https://support.microsoft.com/oas/default.aspx?prid=14947)來與 Microsoft 專業人員聯繫。 連絡我們時，請盡量包含有關問題的最多資訊，這樣會十分有幫助。 您可以提供的資訊包含您看到錯誤的頁面、特定錯誤碼、特定工作階段識別碼，以及看到錯誤的使用者的識別碼。
-* 如果您是舊版 PhoneFactor 客戶，而且您有疑問或需要重設密碼的協助，請使用[phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com)電子郵件地址來開啟支援案例。
+* 如果您是舊版 PhoneFactor 客戶，而且您有疑問或需要重設密碼的協助，請使用 [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) 電子郵件地址來開啟支援案例。

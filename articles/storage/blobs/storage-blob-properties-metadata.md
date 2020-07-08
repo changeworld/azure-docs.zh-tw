@@ -7,13 +7,12 @@ ms.author: mhopkins
 ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 74c023c06e7b28183a53772be6798419c91dd37a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 3d86b6e39d6199d2f0268070cfa5456e512daa49
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692455"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465876"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>使用 .NET 管理 blob 屬性和中繼資料
 
@@ -30,14 +29,14 @@ ms.locfileid: "82692455"
 >
 > 若要深入瞭解這項功能，請參閱[使用 Blob 索引來管理和尋找 Azure Blob 儲存體上的資料（預覽）](storage-manage-find-blobs.md)。
 
-抓取 Blob 儲存體資源的中繼資料和屬性值是兩個步驟的程式。 在您可以讀取這些值之前，您必須呼叫`FetchAttributes`或`FetchAttributesAsync`方法明確地提取它們。 此規則的例外狀況是`Exists`和`ExistsAsync`方法會在幕後呼叫適當`FetchAttributes`的方法。 當您呼叫其中一種方法時，您也不需要呼叫`FetchAttributes`。
+抓取 Blob 儲存體資源的中繼資料和屬性值是兩個步驟的程式。 在您可以讀取這些值之前，您必須呼叫或方法明確地提取它們 `FetchAttributes` `FetchAttributesAsync` 。 此規則的例外狀況是 `Exists` 和方法會 `ExistsAsync` 在幕後呼叫適當的 `FetchAttributes` 方法。 當您呼叫其中一種方法時，您也不需要呼叫 `FetchAttributes` 。
 
 > [!IMPORTANT]
-> 如果您發現尚未填入儲存體資源的屬性或中繼資料值，請檢查您的程式碼是否呼叫`FetchAttributes`或`FetchAttributesAsync`方法。
+> 如果您發現尚未填入儲存體資源的屬性或中繼資料值，請檢查您的程式碼是否呼叫 `FetchAttributes` 或 `FetchAttributesAsync` 方法。
 
 ## <a name="set-and-retrieve-properties"></a>設定和取出屬性
 
-下列程式碼範例會在`ContentType` blob `ContentLanguage`上設定和系統屬性。
+下列程式碼範例會 `ContentType` `ContentLanguage` 在 blob 上設定和系統屬性。
 
 ```csharp
 public static async Task SetBlobPropertiesAsync(CloudBlob blob)
@@ -65,7 +64,7 @@ public static async Task SetBlobPropertiesAsync(CloudBlob blob)
 }
 ```
 
-若要抓取 blob 屬性，請`FetchAttributes`在`FetchAttributesAsync`您的 blob 上呼叫或方法`Properties` ，以填入屬性。 下列程式碼範例會取得 blob 的系統屬性，並顯示一些值：
+若要抓取 blob 屬性，請 `FetchAttributes` `FetchAttributesAsync` 在您的 blob 上呼叫或方法，以填入 `Properties` 屬性。 下列程式碼範例會取得 blob 的系統屬性，並顯示一些值：
 
 ```csharp
 private static async Task GetBlobPropertiesAsync(CloudBlob blob)
@@ -94,7 +93,7 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 
 ## <a name="set-and-retrieve-metadata"></a>設定和取得中繼資料
 
-您可以針對 Blob 或容器資源，將中繼資料指定為一個或多個名稱/值組。 若要設定中繼資料，請將名稱/值`Metadata`組加入至資源上的集合。 然後，呼叫下列其中一種方法來寫入值：
+您可以針對 Blob 或容器資源，將中繼資料指定為一個或多個名稱/值組。 若要設定中繼資料，請將名稱/值組加入至 `Metadata` 資源上的集合。 然後，呼叫下列其中一種方法來寫入值：
 
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
@@ -103,7 +102,7 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 
 您的中繼資料名稱必須符合 C# 識別碼的命名慣例。 中繼資料名稱會維持建立時所使用的大小寫，但在設定或讀取時不區分大小寫。 如果為資源提交了兩個或多個使用相同名稱的中繼資料標頭，Azure Blob 儲存體會傳回 HTTP 錯誤碼400（不正確的要求）。
 
-下列程式碼範例會在 blob 上設定中繼資料。 其中一個值是使用集合的`Add`方法來設定。 其他值是使用隱含的索引鍵/值語法來設定。
+下列程式碼範例會在 blob 上設定中繼資料。 其中一個值是使用集合的方法來設定 `Add` 。 其他值是使用隱含的索引鍵/值語法來設定。
 
 ```csharp
 public static async Task AddBlobMetadataAsync(CloudBlob blob)
@@ -130,7 +129,7 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
 }
 ```
 
-若要取得中繼資料， `FetchAttributes`請`FetchAttributesAsync`在您的 blob 或容器上呼叫或`Metadata`方法來填入集合，然後讀取值，如下列範例所示。
+若要取得中繼資料， `FetchAttributes` 請 `FetchAttributesAsync` 在您的 blob 或容器上呼叫或方法來填入 `Metadata` 集合，然後讀取值，如下列範例所示。
 
 ```csharp
 public static async Task ReadBlobMetadataAsync(CloudBlob blob)

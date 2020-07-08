@@ -5,22 +5,22 @@ description: 使用適用于 Python 的 Azure Machine Learning SDK 來排程 Azu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: 8e1e718fa4e6660d72203ac98bb6d427cdba2059
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 3fede6bf194d0dd6b18118df7a44b7ccd0224a25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024552"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84552184"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>使用適用于 Python 的 Azure Machine Learning SDK 來排程機器學習管線
 
 在本文中，您將瞭解如何以程式設計方式排程管線以在 Azure 上執行。 您可以選擇根據經過時間或檔案系統變更來建立排程。 以時間為基礎的排程可以用來處理例行的工作，例如監視資料漂移。 以變更為基礎的排程可用於回應異常或無法預期的變更，例如上傳的新資料或正在編輯的舊資料。 學習如何建立排程之後，您將瞭解如何取出和停用排程。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://aka.ms/AMLFree)。
 
@@ -54,9 +54,9 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 
 ## <a name="create-a-schedule"></a>建立排程
 
-若要定期執行管線，您必須建立排程。 會`Schedule`使管線、實驗和觸發程式產生關聯。 觸發`ScheduleRecurrence`程式可以是，它會描述執行之間的等候，或指定要監看是否有變更之目錄的資料存放區路徑。 不論是哪一種情況，您都需要管線識別碼和用來建立排程的實驗名稱。
+若要定期執行管線，您必須建立排程。 會使 `Schedule` 管線、實驗和觸發程式產生關聯。 觸發程式可以是 `ScheduleRecurrence` ，它會描述執行之間的等候，或指定要監看是否有變更之目錄的資料存放區路徑。 不論是哪一種情況，您都需要管線識別碼和用來建立排程的實驗名稱。
 
-在 python 檔案的頂端，匯入`Schedule`和`ScheduleRecurrence`類別：
+在 python 檔案的頂端，匯入 `Schedule` 和 `ScheduleRecurrence` 類別：
 
 ```python
 
@@ -65,9 +65,9 @@ from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 
 ### <a name="create-a-time-based-schedule"></a>建立以時間為基礎的排程
 
-此`ScheduleRecurrence`函式具有必要`frequency`的引數，必須是下列其中一個字串： "Minute"、"Hour"、"Day"、"Week" 或 "Month"。 它也需要整數`interval`引數，指定排程開始之間`frequency`應經過多少單位。 選擇性引數可讓您更明確地瞭解開始時間，如[SCHEDULERECURRENCE SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py)檔中所述。
+此函式 `ScheduleRecurrence` 具有必要的 `frequency` 引數，必須是下列其中一個字串： "Minute"、"Hour"、"Day"、"Week" 或 "Month"。 它也需要整數 `interval` 引數，指定 `frequency` 排程開始之間應經過多少單位。 選擇性引數可讓您更明確地瞭解開始時間，如[SCHEDULERECURRENCE SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py)檔中所述。
 
-建立一`Schedule`開始每15分鐘執行一次的：
+建立一 `Schedule` 開始每15分鐘執行一次的：
 
 ```python
 recurrence = ScheduleRecurrence(frequency="Minute", interval=15)
@@ -82,11 +82,11 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 檔案變更所觸發的管線，可能比以時間為基礎的排程更有效率。 例如，您可能會想要在檔案變更時，或將新檔案新增至資料目錄時，執行前置處理步驟。 您可以監視資料存放區的任何變更，或資料存放區內特定目錄中的變更。 如果您監視特定的目錄，該目錄的子目錄內的變更將_不_會觸發執行。
 
-若要建立檔案-回應`Schedule`，您必須在對`datastore` [Schedule. create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)的呼叫中設定參數。 若要監視資料夾，請設定`path_on_datastore`引數。
+若要建立檔案-回應 `Schedule` ，您必須在對 `datastore` [Schedule. create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)的呼叫中設定參數。 若要監視資料夾，請設定 `path_on_datastore` 引數。
 
 `polling_interval`引數可讓您指定資料存放區檢查變更的頻率（以分鐘為單位）。
 
-如果管線是使用[資料路徑](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py)所建立，您可以藉由設定`data_path_parameter_name`引數，將該變數設定為已變更檔案的名稱。
+如果管線是使用[資料路徑](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py)所建立，您可以藉由設定引數，將該變數設定為已變更檔案的名稱 `data_path_parameter_name` 。
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -97,7 +97,7 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
 
 ### <a name="optional-arguments-when-creating-a-schedule"></a>建立排程時的選擇性引數
 
-除了先前討論的引數之外，您也可以將`status`引數`"Disabled"`設定為，以建立非作用中的排程。 最後，可`continue_on_step_failure`讓您傳遞會覆寫管線預設失敗行為的布林值。
+除了先前討論的引數之外，您也可以將 `status` 引數設定為， `"Disabled"` 以建立非作用中的排程。 最後，可 `continue_on_step_failure` 讓您傳遞會覆寫管線預設失敗行為的布林值。
 
 ### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>針對更複雜的工作流程使用 Azure Logic Apps
 
@@ -113,7 +113,7 @@ Azure Logic Apps 支援更複雜的工作流程，而且比 Azure Machine Learni
 
 ## <a name="deactivate-the-pipeline"></a>停用管線
 
-如果您有已`Pipeline`發佈但未排程的，您可以使用將它停用：
+如果您有已 `Pipeline` 發佈但未排程的，您可以使用將它停用：
 
 ```python
 pipeline = PublishedPipeline.get(ws, id=pipeline_id)
@@ -128,7 +128,7 @@ for s in ss:
     print(s)
 ```
 
-一旦您想要`schedule_id`停用，請執行：
+一旦您 `schedule_id` 想要停用，請執行：
 
 ```python
 def stop_by_schedule_id(ws, schedule_id):
@@ -139,11 +139,11 @@ def stop_by_schedule_id(ws, schedule_id):
 stop_by_schedule_id(ws, schedule_id)
 ```
 
-如果您再次執行`Schedule.list(ws)` ，您應該會得到空白清單。
+如果您再次執行 `Schedule.list(ws)` ，您應該會得到空白清單。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您使用了適用于 Python 的 Azure Machine Learning SDK，以兩種不同的方式來排程管線。 一個排程會根據經過的時鐘時間而重複。 如果在指定`Datastore`的上或在該存放區的目錄內修改檔案，就會執行另一個排程。 您已瞭解如何使用入口網站來檢查管線和個別執行。 最後，您已瞭解如何停用排程，讓管線停止執行。
+在本文中，您使用了適用于 Python 的 Azure Machine Learning SDK，以兩種不同的方式來排程管線。 一個排程會根據經過的時鐘時間而重複。 如果在指定的上 `Datastore` 或在該存放區的目錄內修改檔案，就會執行另一個排程。 您已瞭解如何使用入口網站來檢查管線和個別執行。 最後，您已瞭解如何停用排程，讓管線停止執行。
 
 如需詳細資訊，請參閱：
 

@@ -9,12 +9,11 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
-ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125021"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84310558"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>適用于虛擬機器擴展集的 Azure 位置 Vm 
 
@@ -115,7 +114,7 @@ $vmssConfig = New-AzVmssConfig `
 
 **問：** 如何管理適用于點的配額？
 
-**答：** 點實例和標準實例會有不同的配額集區。 點配額會在 Vm 與擴展集實例之間共用。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額與條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+**答：** 點實例和標準實例會有不同的配額集區。 點配額會在 Vm 與擴展集實例之間共用。 如需詳細資訊，請參閱[Azure 訂用帳戶和服務限制、配額和條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
 
 
 **問：** 我可以要求額外的時間配額嗎？
@@ -156,11 +155,11 @@ $vmssConfig = New-AzVmssConfig `
 
 | Azure 頻道               | Azure 點 Vm 可用性       |
 |------------------------------|-----------------------------------|
-| Enterprise 合約         | 是                               |
-| 隨用隨付                | 是                               |
+| Enterprise 合約         | Yes                               |
+| 隨用隨付                | Yes                               |
 | 雲端服務提供者 (CSP) | [聯絡您的合作夥伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | 優點                     | 無法使用                     |
-| 商                    | 無法使用                     |
+| 商                    | Yes                               |
 | 免費試用                   | 無法使用                     |
 
 

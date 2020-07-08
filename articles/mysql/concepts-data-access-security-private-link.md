@@ -6,16 +6,15 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: c2cc4986542404281424286882c046dec39f5daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f780bf946e81e9873a1828f9d697f69c81cef513
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371285"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509316"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫的私用連結
 
-Private Link 可讓您透過私人端點連線到 Azure 中的各種 PaaS 服務。 Azure 私用連結基本上會將 Azure 服務帶入您的私用虛擬網路（VNet）內。 您可以使用私人 IP 位址來存取 PaaS 資源，就像 VNet 中的任何其他資源一樣。
+Private Link 可讓您透過私人端點連線到 Azure 中的各種 PaaS 服務。 Azure Private Link 基本上會將 Azure 服務帶入私人虛擬網路 (VNet) 內部。 您可以使用私人 IP 位址來存取 PaaS 資源，就像 VNet 中的任何其他資源一樣。
 
 如需支援私用連結功能之 PaaS 服務的清單，請參閱私用連結[檔](https://docs.microsoft.com/azure/private-link/index)。 私人端點是特定 [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) 和子網內的私人 IP 位址。
 
@@ -46,6 +45,10 @@ Private Link 可讓您透過私人端點連線到 Azure 中的各種 PaaS 服務
 當您從內部部署機器連線到公用端點時，必須使用伺服器層級防火牆規則，將您的 IP 位址新增至以 IP 為基礎的防火牆。 雖然此模型可針對開發或測試工作負載來允許個別機器的存取，但難以在生產環境中進行管理。
 
 使用私人連結，您可以使用[Express Route](https://azure.microsoft.com/services/expressroute/) （ER）、私用對等互連或[VPN](https://docs.microsoft.com/azure/vpn-gateway/)通道，啟用對私人端點的跨單位存取。 他們之後可以透過公用端點停用所有存取，而不使用以 IP 為基礎的防火牆。
+
+> [!NOTE]
+> 在某些案例中，適用於 MySQL 的 Azure 資料庫和 VNet 子網路是位於不同的訂用帳戶。 在這些情況下，您必須確保下列設定：
+> - 請確定這兩個訂用帳戶都已註冊**microsoft.dbformysql**資源提供者。 如需詳細資訊，請參閱 [resource-manager-registration][resource-manager-portal]
 
 ## <a name="configure-private-link-for-azure-database-for-mysql"></a>設定適用於 MySQL 的 Azure 資料庫的私人連結
 
@@ -97,13 +100,13 @@ Private Link 可讓您透過私人端點連線到 Azure 中的各種 PaaS 服務
 * [站對站 VPN 連線](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
 * [ExpressRoute 線路](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)
 
-## <a name="private-link-combined-with-firewall-rules"></a>結合防火牆規則的私用連結
+## <a name="private-link-combined-with-firewall-rules"></a>Private Link 搭配防火牆規則
 
-當您使用私用連結搭配防火牆規則時，可能會發生下列情況和結果：
+當搭配防火牆規則使用 Private Link 時，可能會發生下列情況和結果：
 
 * 如果您未設定任何防火牆規則，則根據預設，不會有任何流量可以存取適用於 MySQL 的 Azure 資料庫。
 
-* 如果您設定公用流量或服務端點，並建立私人端點，則不同類型的連入流量會由對應類型的防火牆規則所授權。
+* 如果您設定公用流量或服務端點並建立私人端點，則不同類型之傳入流量會由對應類型的防火牆規則所授權。
 
 * 如果您未設定任何公用流量或服務端點，並建立私人端點，則適用於 MySQL 的 Azure 資料庫只能透過私人端點來存取。 如果您未設定公用流量或服務端點，則在拒絕或刪除所有已核准的私人端點之後，就不會有任何流量可以存取適用於 MySQL 的 Azure 資料庫。
 
@@ -111,7 +114,7 @@ Private Link 可讓您透過私人端點連線到 Azure 中的各種 PaaS 服務
 
 如果您只想要依賴私人端點來存取其適用於 MySQL 的 Azure 資料庫，您可以在資料庫伺服器上設定**拒絕公用網路存取**設定，以停用設定所有公用端點（例如[防火牆規則](concepts-firewall-rules.md)和[VNet 服務端點](concepts-data-access-and-security-vnet.md)）。 
 
-當此設定設為 *[是]* 時，只允許透過私人端點的連線到您的適用於 MySQL 的 Azure 資料庫。 當此設定設為 [*否*] 時，用戶端可以根據您的防火牆或 VNet 服務端點設定連線到您的適用於 MySQL 的 Azure 資料庫。 此外，一旦設定了 [私人網路存取] 的值，您就無法新增和/或更新現有的防火牆和 VNet 服務端點規則。
+當此設定設為 *[是]* 時，只允許透過私人端點的連線到您的適用於 MySQL 的 Azure 資料庫。 當此設定設為 [*否*] 時，用戶端可以根據您的防火牆或 VNet 服務端點設定連線到您的適用於 MySQL 的 Azure 資料庫。 此外，一旦設定了私人網路存取的值，客戶就無法新增和/或更新現有的「防火牆規則」和「VNet 服務端點規則」。
 
 > [!Note]
 > 這項功能適用于所有 Azure 區域，其中適用於 PostgreSQL 的 Azure 資料庫單一伺服器支援一般用途和記憶體優化定價層。
@@ -129,3 +132,6 @@ Private Link 可讓您透過私人端點連線到 Azure 中的各種 PaaS 服務
 * 若要瞭解如何為您的適用於 MySQL 的 Azure 資料庫設定虛擬網路服務端點，請參閱[設定從虛擬網路的存取](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet)。
 
 * 如需適用於 MySQL 的 Azure 資料庫連線的總覽，請參閱[適用於 MySQL 的 Azure 資料庫連線性架構](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

@@ -5,14 +5,13 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/5/2019
+ms.date: 06/06/2020
 ms.author: absha
-ms.openlocfilehash: a4770b3ae7c52b9a05ff704915a3e9f401fd1741
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: bf02bdc4d824a47bdaad4821ffc9562b9fe2dd40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84482623"
 ---
 # <a name="metrics-for-application-gateway"></a>應用程式閘道的計量
 
@@ -24,7 +23,7 @@ ms.locfileid: "82889618"
 
 應用程式閘道提供數個與要求和回應相關的內建計時計量，全都以毫秒為單位來測量。 
 
-![](./media/application-gateway-metrics/application-gateway-metrics.png)
+![計時計量的圖表，適用于應用程式閘道。](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >
@@ -86,7 +85,7 @@ ms.locfileid: "82889618"
 
 - **目前的容量單位**
 
-   對流量進行負載平衡所耗用的容量單位元數目。 容量單位有三個 determinants：計算單位、持續連線和輸送量。 每個容量單位最多包含：1個計算單位，或2500持續連線，或 2.22-Mbps 輸送量。
+   對流量進行負載平衡所耗用的容量單位元數目。 容量單位有三個 determinants：計算單位、持續連線和輸送量。 每個容量單位最多包含：1 個「計算單位」或 2500 個「持續連線數」，或 2.22-Mbps 的「輸送量」。
 
 - **目前的計算單位**
 
@@ -141,7 +140,7 @@ ms.locfileid: "82889618"
 
   健康情況探查所判定為狀況不良的後端數目。 您可以根據每個後端集區進行篩選，以顯示特定後端集區中狀況不良的主機數目。
   
-- **每部狀況良好主機的每分鐘要求數**
+- **每個健康情況主機每分鐘的要求**
 
   後端集區中每個狀況良好的成員所收到的平均要求數（以分鐘為單位）。 您必須使用*BackendPool HTTPsettings)* 維度來指定後端集區。  
   
@@ -156,7 +155,7 @@ ms.locfileid: "82889618"
 
   顯示配置給應用程式閘道的 CPU 使用率。  在正常情況下，CPU 使用量不應經常超過 90%，因為這可能會導致應用程式閘道背後的網站中出現延遲，並且會中斷用戶端體驗。 您可以藉由增加執行個體計數或移至較大的 SKU 大小 (或同時執行這兩種方式) 來修改應用程式閘道的設定，以間接控制或改善 CPU 使用率。
 
-- **目前的連線數**
+- **目前的連接**
 
   目前與應用程式閘道建立的連線計數
 
@@ -178,7 +177,7 @@ ms.locfileid: "82889618"
 
 - **Web 應用程式防火牆封鎖的要求計數**
 - **Web 應用程式防火牆封鎖要求散發**
-- **Web 應用程式防火牆的規則散發總數**
+- **Web 應用程式防火牆的規則散發總計**
 
 ### <a name="backend-metrics"></a>後端計量
 

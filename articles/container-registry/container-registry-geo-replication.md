@@ -1,16 +1,15 @@
 ---
 title: 異地複寫登錄
-description: 開始建立和管理異地複寫的Azure container registry，讓登錄能夠使用多重主要區域複本服務多個區域。
+description: 開始建立和管理異地複寫的Azure container registry，讓登錄能夠使用多重主要區域複本服務多個區域。 異地複寫是 Premium 提供層的一項功能。
 author: stevelas
 ms.topic: article
 ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: bea71695c66c77a8e9fff3cb708113a04f24ed96
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 35525906135db02c453c55d8798e1405396c8598
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711562"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84508789"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器登錄中的異地複寫
 

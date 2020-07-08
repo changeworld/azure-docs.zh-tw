@@ -1,20 +1,44 @@
 ---
-title: 管理 Azure 自動化資料
-description: 本文提供 Azure 自動化的資料管理概念，包括資料保留和備份。
+title: Azure 自動化資料安全性
+description: 本文可協助您瞭解 Azure 自動化如何保護您的隱私權及保護您的資料。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/23/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: de60ef31a39a698f9a797a5836546f9b75b67594
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 2dbaebac2228c11aef5fb33af4588f75ea15677a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343049"
 ---
 # <a name="management-of-azure-automation-data"></a>管理 Azure 自動化資料
 
-本文包含在 Azure 自動化環境中管理資料的數個主題。
+本文包含幾個主題，說明如何在 Azure 自動化環境中保護和保護資料。
+
+## <a name="tls-12-enforcement-for-azure-automation"></a>Azure 自動化的 TLS 1.2 強制
+
+若要確保傳輸中的資料安全性以 Azure 自動化，我們強烈建議您設定傳輸層安全性（TLS）1.2 的使用。 以下是透過 HTTPS 與 Automation 服務通訊的方法或用戶端清單：
+
+* Webhook 呼叫
+
+* 混合式 Runbook 背景工作角色，包括由更新管理管理的電腦，以及變更追蹤和清查。
+
+* DSC 節點
+
+我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並**不建議使用**這些版本。 從2020年9月開始，我們會開始強制執行 TLS 1.2 和更新版本的加密通訊協定。
+
+除非有絕對必要，否則我們不建議將代理程式明確地設定為只使用 TLS 1.2，因為這樣可能會中斷平台層級的安全性功能，此功能可在更安全的較新通訊協定 (例如 TLS 1.3) 推出時，自動偵測並加以運用。
+
+如需使用適用于 Windows 和 Linux 的 Log Analytics 代理程式的 TLS 1.2 支援相關資訊，這是混合式 Runbook 背景工作角色的相依性，請參閱[Log analytics 代理程式總覽-TLS 1.2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol)。 
+
+### <a name="platform-specific-guidance"></a>平台專屬的指引
+
+|平台/語言 | 支援 | 相關資訊 |
+| --- | --- | --- |
+|Linux | Linux 發行版本通常會依賴 [OpenSSL](https://www.openssl.org) 來取得 TLS 1.2 支援。  | 請檢查 [OpenSSL 變更記錄](https://www.openssl.org/news/changelog.html)來確認支援的 OpenSSL 版本。|
+| Windows 8.0 - 10 | 支援，而且已預設為啟用。 | 請確認您仍在使用[預設設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。  |
+| Windows Server 2012 - 2016 | 支援，而且已預設為啟用。 | 確認您仍在使用[預設設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 支援，但預設為不啟用。 | 請參閱[傳輸層安全性 (TLS) 登錄設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)頁面，了解詳細的啟用方式。  |
 
 ## <a name="data-retention"></a>資料保留
 
@@ -53,16 +77,16 @@ ms.locfileid: "83835201"
 
 您無法使用 Cmdlet 擷取加密變數或認證密碼欄位的值。 如果不知道這些值，則可在 Runbook 中加以擷取。 如需擷取變數值，請參閱 [Azure 自動化中的變數資產](shared-resources/variables.md)。 若要深入了解如何擷取認證值的詳細資訊，請參閱 [Azure 自動化中的認證資產](shared-resources/credentials.md)。
 
- ### <a name="dsc-configurations"></a>DSC 組態
+### <a name="dsc-configurations"></a>DSC 組態
 
 您可使用 Azure 入口網站或 Windows PowerShell 中的 [Export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
 ) Cmdlet，將 DSC 設定匯出為指令碼檔案。 您可匯入至另一個自動化帳戶中來使用這些設定。
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure 自動化中的異地複寫
 
-異地複寫在 Azure 自動化帳戶中是標準功能。 在設定帳戶時，選擇主要區域。 內部自動化地理複寫服務會自動將次要區域指派給該帳戶。 然後，服務會持續從主要區域將帳戶資料備份到次要區域。 如需主要和次要區域的完整清單，請參閱[商務持續性和災害復原 (BCDR)：Azure 配對的區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
+異地複寫在 Azure 自動化帳戶中是標準功能。 在設定帳戶時，選擇主要區域。 內部自動化地理複寫服務會自動將次要區域指派給該帳戶。 然後，服務會持續從主要區域將帳戶資料備份到次要區域。 如需主要和次要區域的完整清單，請參閱[商務持續性和災害復原 (BCDR)：Azure 配對的區域](../best-practices-availability-paired-regions.md)。
 
-自動化異地複寫服務所建立備份是自動化資產、設定與其他類似項目等的完整複本。 如果主要區域停止服務且遺失資料，即可使用此備份。 萬一主要區域的資料遺失，Microsoft 即會嘗試將其復原。 如果公司無法復原主要資料，則會使用自動容錯移轉，並透過 Azure 訂用帳戶來通知狀況。 
+自動化異地複寫服務所建立備份是自動化資產、設定與其他類似項目等的完整複本。 如果主要區域停止服務且遺失資料，即可使用此備份。 萬一主要區域的資料遺失，Microsoft 即會嘗試將其復原。 如果公司無法復原主要資料，則會使用自動容錯移轉，並透過 Azure 訂用帳戶來通知狀況。
 
 如果發生區域性失敗，則外部客戶將無法直接存取自動化異地複寫服務。 如果想要在發生區域性失敗時保留自動化設定和 Runbook：
 
@@ -77,4 +101,5 @@ ms.locfileid: "83835201"
 ## <a name="next-steps"></a>後續步驟
 
 * 若要深入了解 Azure 自動化中的安全資產，請參閱 [Azure 自動化中的安全資產加密](automation-secure-asset-encryption.md)。
-* 若要深入了解異地複寫的詳細資訊，請參閱[建立並使用主動式異地複寫](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication) (英文)。
+
+* 若要深入了解異地複寫的詳細資訊，請參閱[建立並使用主動式異地複寫](../sql-database/sql-database-active-geo-replication.md) (英文)。

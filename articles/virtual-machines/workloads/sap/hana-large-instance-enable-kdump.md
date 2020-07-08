@@ -13,12 +13,11 @@ ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 16dc15b4369904643d0138a4b8e5b94c47868d31
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 6d723e95212e457a81eedf7726bf3c5bd2499643
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488880"
 ---
 # <a name="enable-kdump-service"></a>啟用 Kdump 服務
 
@@ -30,18 +29,34 @@ ms.locfileid: "82204932"
 |-----------------------------|--------------|-----------------------|-------------|
 |   類型 I                    |  SuSE        |   SLES 12 SP3         |  S224m      |
 |   類型 I                    |  SuSE        |   SLES 12 SP4         |  S224m      |
+|   類型 I                    |  SuSE        |   SLES 12 SP2         |  S72        |
 |   類型 I                    |  SuSE        |   SLES 12 SP2         |  S72m       |
 |   類型 I                    |  SuSE        |   SLES 12 SP3         |  S72m       |
 |   類型 I                    |  SuSE        |   SLES 12 SP2         |  S96        |
 |   類型 I                    |  SuSE        |   SLES 12 SP3         |  S96        |
+|   類型 I                    |  SuSE        |   SLES 12 SP2         |  S192       |
+|   類型 I                    |  SuSE        |   SLES 12 SP3         |  S192       |
+|   類型 I                    |  SuSE        |   SLES 12 SP4         |  S192       |
+|   類型 I                    |  SuSE        |   SLES 12 SP2         |  S192m      |
+|   類型 I                    |  SuSE        |   SLES 12 SP3         |  S192m      |
+|   類型 I                    |  SuSE        |   SLES 12 SP4         |  S192m      |
+|   類型 I                    |  SuSE        |   SLES 12 SP2         |  S144       |
+|   類型 I                    |  SuSE        |   SLES 12 SP3         |  S144       |
+|   類型 I                    |  SuSE        |   SLES 12 SP2         |  S144m      |
+|   類型 I                    |  SuSE        |   SLES 12 SP3         |  S144m      |
+|   類型 II                   |  SuSE        |   SLES 12 SP2         |  S384       |
 |   類型 II                   |  SuSE        |   SLES 12 SP3         |  S384       |
-|   類型 II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
+|   類型 II                   |  SuSE        |   SLES 12 SP4         |  S384       |
+|   類型 II                   |  SuSE        |   SLES 12 SP2         |  S384xm     |
 |   類型 II                   |  SuSE        |   SLES 12 SP3         |  S384xm     |
 |   類型 II                   |  SuSE        |   SLES 12 SP4         |  S384xm     |
+|   類型 II                   |  SuSE        |   SLES 12 SP2         |  S576m      |
+|   類型 II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
+|   類型 II                   |  SuSE        |   SLES 12 SP4         |  S576m      |
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-- Kdump 服務會`/var/crash`使用目錄來寫入傾印，請確定磁碟分割對應到此目錄有足夠的空間可容納傾印。
+- Kdump 服務會使用 `/var/crash` 目錄來寫入傾印，請確定磁碟分割對應到此目錄有足夠的空間可容納傾印。
 
 ## <a name="setup-details"></a>設定詳細資料
 
@@ -68,13 +83,12 @@ ms.locfileid: "82204932"
 - 觸發核心損毀
 
     ```bash
-    echo 1 > /proc/sys/kernel/sysrq
     echo c > /proc/sysrq-trigger
     ```
 
-- 在系統順利重新開機之後，請`/var/crash`檢查核心損毀記錄檔的目錄。
+- 在系統順利重新開機之後，請檢查 `/var/crash` 核心損毀記錄檔的目錄。
 
-- 如果`/var/crash`具有目前日期的目錄，則會成功啟用 Kdump。
+- 如果 `/var/crash` 具有目前日期的目錄，則會成功啟用 Kdump。
 
 ## <a name="support-issue"></a>支援問題
 

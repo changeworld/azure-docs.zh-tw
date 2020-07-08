@@ -1,18 +1,17 @@
 ---
-title: 參考
+title: reference
 description: ''
 author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437514"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488030"
 ---
-# <a name="references"></a>參考
+# <a name="references"></a>reference
 
 本文說明 Azure FarmBeats Api。
 
@@ -27,24 +26,24 @@ Azure FarmBeats Api 為農業企業提供具有以 JSON 為基礎之回應的標
 - 自動產生快速模型建立的時間序列匯總。
 - 整合式 Azure Data Factory 引擎，輕鬆建立自訂資料處理管線。
 
-## <a name="application-development"></a>應用程式開發
+## <a name="application-development"></a>XBOX Video Application Development
 
 FarmBeats Api 包含 Swagger 技術檔。 如需所有 Api 及其對應要求或回應的詳細資訊，請參閱[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
 
 下表摘要說明 FarmBeats Datahub 中的所有物件和資源：
 
-| 物件和資源 | 描述
+| 物件和資源 | Description
 --- | ---|
 Farm | 伺服器陣列會對應至 FarmBeats 系統內的相關實體位置。 每個伺服器陣列都有伺服器陣列名稱和唯一的伺服器陣列識別碼。 |
 裝置  | 裝置對應至存在於伺服器陣列上的實體裝置。 每個裝置都有唯一的裝置識別碼。 裝置通常會布建到具有伺服器陣列識別碼的伺服器陣列。
 DeviceModel  | Devicemodel 傳遞會對應至裝置的中繼資料，例如製造商和裝置類型，也就是 [閘道] 或 [節點]。
-感應器  | 感應器會對應到記錄值的實體感應器。 感應器通常會連接到裝置識別碼為的裝置。
+感應器  | 感應器會對應到記錄值的實體感應器。 感應器通常會使用裝置識別碼連線到裝置。
 SensorModel  | SensorModel 對應于感應器的中繼資料，例如製造商、感應器類型（類比或數位）和感應器測量，例如環境溫度和壓力。
 遙測  | 遙測可讓您讀取特定感應器和時間範圍的遙測訊息。
 工作 (Job)  | 作業會對應至在 FarmBeats 系統中執行之活動的任何工作流程，以取得所需的輸出。 每項作業都與作業識別碼和作業類型相關聯。
 JobType  | JobType 對應到系統支援的不同工作類型。 包含系統定義和使用者定義的作業類型。
 ExtendedType  | ExtendedType 會對應至系統中的系統和使用者定義類型的清單。 ExtendedType 可協助在 FarmBeats 系統中設定新的感應器、場景或場景檔案類型。
-合作夥伴  | 合作夥伴對應至 FarmBeats 的感應器和影像整合合作夥伴。
+Partner  | 合作夥伴對應至 FarmBeats 的感應器和影像整合合作夥伴。
 場景  | 場景會對應至伺服器陣列內容中產生的任何輸出。 每個場景都有一個場景識別碼、場景來源、場景類型，以及與其相關聯的伺服器陣列識別碼。 每個場景識別碼都可以有多個相關聯的場景檔案。
 SceneFile |SceneFile 會對應至針對單一場景產生的所有檔案。 單一場景識別碼可以有多個相關聯的 SceneFile 識別碼。
 規則  |規則會對應至伺服器陣列相關資料的條件，以觸發警示。 每個規則都在伺服器陣列資料的內容中。
@@ -54,7 +53,7 @@ RoleAssignment  |RoleAssignment 對應至使用者或服務主體的角色指派
 
 ### <a name="data-format"></a>資料格式
 
-JSON 是一種與語言無關的通用資料格式，可提供任意資料結構的簡單文字標記法。 如需詳細資訊，請參閱[JSON 網站](https://www.json.org/)。
+JSON 是一種與語言無關的通用資料格式，可提供任意資料結構的簡單文字表示。 如需詳細資訊，請參閱[JSON 網站](https://www.json.org/)。
 
 ## <a name="authentication-and-authorization"></a>驗證與授權
 
@@ -74,17 +73,17 @@ headers = {"Authorization": "Bearer " + **access_token**}
 
 **標頭** | **描述及範例**
 --- | ---
-Content-Type  | 要求格式（Content-type： application/<format>）。 針對 Azure FarmBeats Datahub Api，格式為 JSON。 Content-Type: application/json
-授權  | 指定進行 API 呼叫所需的存取權杖。 授權：持有人 <存取權杖>
-Accept | 回應格式。 針對 Azure FarmBeats Datahub Api，格式為 JSON。 Accept： application/json
+Content-Type  | 要求格式 (Content-Type: application/<format>)。 針對 Azure FarmBeats Datahub Api，格式為 JSON。 Content-Type: application/json
+授權  | 指定進行 API 呼叫所需的存取權杖。 授權：Bearer <Access-Token>
+Accept | 回應格式。 針對 Azure FarmBeats Datahub Api，格式為 JSON。 Accept: application/json
 
 ### <a name="api-requests"></a>API 要求
 
 若要提出 REST API 要求，請結合 HTTP （GET、POST、PUT 或 DELETE）方法、API 服務的 URL、要查詢的資源 URI、提交資料至、更新或刪除，然後新增一或多個 HTTP 要求標頭。
 
-API 服務的 URL 是您的 Datahub URL，例如 HTTPs://\<yourdatahub-網站名稱>. azurewebsites.net。
+API 服務的 URL 是您的 Datahub URL，例如 HTTPs:// \<yourdatahub-website-name> . azurewebsites.net。
 
-（選擇性）您可以在 GET 呼叫上包含查詢參數來篩選、限制的大小，以及排序回應中的資料。
+您可選擇性地在 GET 呼叫上包含查詢參數來篩選回應中的資料、限制其大小及進行排序。
 
 下列範例要求是用來取得裝置的清單：
 
@@ -92,7 +91,7 @@ API 服務的 URL 是您的 Datahub URL，例如 HTTPs://\<yourdatahub-網站名
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
-大部分的 GET、POST 和 PUT 呼叫都需要 JSON 要求主體。
+大多數 GET、POST 和 PUT 呼叫都需要 JSON 要求本文。
 
 下列範例要求會建立裝置。 此要求的輸入 JSON 包含要求主體。
 
@@ -113,7 +112,7 @@ Azure FarmBeats Datahub Api 會傳回標準 HTTP 錯誤。 最常見的錯誤碼
 
  |錯誤碼             | 描述 |
  |---                    | --- |
- |200                    | 成功 |
+ |200                    | Success |
  |201                    | 建立（Post）成功 |
  |400                    | 不正確的要求。 要求中有錯誤。 |
  |401                    | 未經授權。 API 的呼叫者未獲授權，無法存取資源。 |
@@ -147,13 +146,13 @@ Azure FarmBeats Datahub Api 會傳回標準 HTTP 錯誤。 最常見的錯誤碼
 
 Azure Active Directory 中的使用者或應用程式註冊可以存取 Azure FarmBeats Api。 若要在 Azure Active Directory 中建立應用程式註冊，請遵循下列步驟：
 
-1. 移至 [ [Azure 入口網站](https://portal.azure.com)]，然後選取 [ **Azure Active Directory** > **應用程式註冊** > **新增註冊**]。 或者，您可以使用現有的帳戶。
+1. 移至 [ [Azure 入口網站](https://portal.azure.com)]，然後選取 [ **Azure Active Directory**  >  **應用程式註冊**  >  **新增註冊**]。 或者，您可以使用現有的帳戶。
 2. 針對新帳戶，請執行下列動作：
 
     - 輸入名稱。
     - 選取 **[僅此組織目錄中的帳戶（單一租使用者）**]。
     - 在其餘的欄位中使用預設值。
-    - 選取 [註冊]  。
+    - 選取 [註冊]。
 
 3. 在 [新增和現有的應用程式註冊]**總覽**窗格中，執行下列動作：
 
@@ -162,9 +161,18 @@ Azure Active Directory 中的使用者或應用程式註冊可以存取 Azure Fa
     - 返回 **[總覽**]，然後選取 [**管理本機目錄中的應用程式**] 旁的連結。
     - 移至 [**屬性**] 來捕捉**物件識別碼**。
 
-4. 移至您的 Datahub Swagger （<yourdatahub>HTTPs://. azurewebsites.net/swagger/index.html）並執行下列動作：
+4. 移至您的 Datahub Swagger （HTTPs:// <yourdatahub> . azurewebsites.net/swagger/index.html）並執行下列動作：
     - 移至**ROLEASSIGNMENT API**。
     - 執行 POST，為您剛建立的**物件識別碼**建立**RoleAssignment**物件。
+ 
+```json
+{
+  "roleDefinitionId": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
+  "objectId": "objectId from step 3 above",
+  "objectIdType": "ServicePrincipalId",
+  "tenantId": "tenant id of your Azure subscription"
+}
+```
 
   > [!NOTE]
   > 如需如何新增使用者和 Active Directory 註冊的詳細資訊，請參閱[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。

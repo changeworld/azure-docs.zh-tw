@@ -5,18 +5,17 @@ description: 瞭解如何將您的資料集和版本設定與機器學習管線�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
-ms.custom: ''
-ms.openlocfilehash: 5bd4436fc63fb570f052606ab557dbcf243cf5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: e0b2d7abb378a6717eb4444882ede54debdb5968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476864"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84555634"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>版本和追蹤實驗中的資料集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +27,7 @@ ms.locfileid: "80476864"
 * 當有新資料可供重新定型時
 * 當您要套用不同的資料準備或功能工程方法時
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在本教學課程中，您需要：
 
@@ -52,7 +51,7 @@ ms.locfileid: "80476864"
 
 ### <a name="register-a-dataset-version"></a>註冊資料集版本
 
-下列程式碼會將`titanic_ds` `create_new_version`參數設定為，以`True`註冊新版本的資料集。 如果沒有任何現有`titanic_ds`的資料集向工作區註冊，則程式碼會建立具有該名稱`titanic_ds`的新資料集，並將其版本設定為1。
+下列程式碼會 `titanic_ds` 將參數設定為，以註冊新版本的資料集 `create_new_version` `True` 。 如果沒有任何現有的 `titanic_ds` 資料集向工作區註冊，則程式碼會建立具有該名稱的新資料集， `titanic_ds` 並將其版本設定為1。
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -63,9 +62,9 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>依名稱取得資料集
 
-根據預設， `Dataset`類別上的[get_by_name （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)方法會傳回已向工作區註冊之資料集的最新版本。 
+根據預設，類別上的[get_by_name （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)方法會傳回 `Dataset` 已向工作區註冊之資料集的最新版本。 
 
-下列程式碼會取得`titanic_ds`資料集的第1版。
+下列程式碼會取得資料集的第1版 `titanic_ds` 。
 
 ```Python
 from azureml.core import Dataset
@@ -156,9 +155,9 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>在實驗中追蹤資料集
 
-針對每個 Machine Learning 實驗，您可以透過實驗`Run`物件，輕鬆地追蹤當做輸入使用的資料集。
+針對每個 Machine Learning 實驗，您可以透過實驗物件，輕鬆地追蹤當做輸入使用的資料集 `Run` 。
 
-下列程式碼會使用[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--)方法來追蹤哪些輸入資料集與實驗執行搭配使用：
+下列程式碼會使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) 方法來追蹤哪些輸入資料集與實驗執行搭配使用：
 
 ```Python
 # get input datasets
@@ -169,9 +168,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-您也可以使用`input_datasets` https://ml.azure.com/，從實驗中尋找。 
+您也可以使用， `input_datasets` 從實驗中尋找 https://ml.azure.com/ 。 
 
-下圖顯示在 Azure Machine Learning studio 上尋找實驗之輸入資料集的位置。 在此範例中，請移至您的**實驗**窗格，然後開啟特定實驗執行的 [**屬性**] `keras-mnist`索引標籤。
+下圖顯示在 Azure Machine Learning studio 上尋找實驗之輸入資料集的位置。 在此範例中，請移至您的**實驗**窗格，然後開啟特定實驗執行的 [**屬性**] 索引標籤 `keras-mnist` 。
 
 ![輸入資料集](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +182,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-註冊之後，您可以使用 Python 查看已向資料集註冊的模型清單，或移至https://ml.azure.com/。
+註冊之後，您可以使用 Python 查看已向資料集註冊的模型清單，或移至 https://ml.azure.com/ 。
 
 下列視圖來自 [**資產**] 底下的 [**資料集**] 窗格。 選取資料集，然後選取 [**模型**] 索引標籤，以取得已向資料集註冊的模型清單。 
 

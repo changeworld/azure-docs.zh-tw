@@ -6,13 +6,12 @@ ms.author: mhopkins
 ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 2e168abaf522fa1126e3cb4618941952b562df31
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.topic: how-to
+ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831869"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465485"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>如何使用 iOS 的 Blob 儲存體
 
@@ -82,7 +81,7 @@ ms.locfileid: "83831869"
 #import <AZSClient/AZSClient.h>
 ```
 
-如果您使用 Swift，必須建立橋接標頭並在標頭匯入 \<AZSClient/AZSClient.h>：
+如果您使用 Swift，就必須建立橋接標頭並匯入到 \<AZSClient/AZSClient.h> 該處：
 
 1. 建立標頭檔 `Bridging-Header.h`，並加入上述匯入陳述式。
 2. 移至 [建置設定] 索引標籤，搜尋[OBJECTIVE-C 橋接標頭]。

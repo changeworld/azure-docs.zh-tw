@@ -6,12 +6,11 @@ ms.author: paelaz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2249dbdebecc52a8f5d6decccb83d3b1fc0777f7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747383"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84432014"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>使用 Azure 原則來實作 Azure Cosmos DB 資源的治理和控制
 
@@ -79,21 +78,24 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 
 您可以使用[自訂原則定義規則](../governance/policy/tutorials/create-custom-policy-definition.md#policy-rule)中的任何屬性別名名稱。
 
-以下是範例原則定義，可檢查 Azure Cosmos DB SQL 資料庫的佈建輸送量是否大於允許的最大限制 400 RU/秒。 自訂原則定義包含兩個規則：一個用來檢查特定類型的屬性別名，另一個則用於類型的特定屬性。 這兩個規則都會使用別名名稱。
+以下是原則定義的範例，它會檢查是否已針對多個寫入位置設定 Azure Cosmos DB 帳戶。 自訂原則定義包含兩個規則：一個用來檢查特定類型的屬性別名，另一個則用於類型的特定屬性，在此案例中是儲存多個寫入位置設定的欄位。 這兩個規則都會使用別名名稱。
 
 ```json
 "policyRule": {
   "if": {
     "allOf": [
       {
-      "field": "type",
-      "equals": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings"
+        "field": "type",
+        "equals": "Microsoft.DocumentDB/databaseAccounts"
       },
       {
-      "field": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/default.resource.throughput",
-      "greater": 400
+        "field": "Microsoft.DocumentDB/databaseAccounts/enableMultipleWriteLocations",
+        "notEquals": true
       }
     ]
+  },
+  "then": {
+    "effect": "Audit"
   }
 }
 ```
@@ -106,21 +108,26 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 
 您可以在 [Azure 入口網站](../governance/policy/how-to/get-compliance-data.md#portal)中，或透過 [Azure CLI](../governance/policy/how-to/get-compliance-data.md#command-line) 或 [Azure 監視器記錄](../governance/policy/how-to/get-compliance-data.md#azure-monitor-logs)，來檢閱合規性結果和補救詳細資料。
 
-下列螢幕擷取畫面顯示兩個範例原則指派。 其中一個指派是以內建原則定義為基礎，會檢查 Azure Cosmos DB 資源是否只部署到允許的 Azure 區域。 另一個指派是以自訂原則定義為基礎。 此指派會檢查 Azure Cosmos DB 資源上的佈建輸送量未超過指定上限。
+下列螢幕擷取畫面顯示兩個範例原則指派。
 
-部署原則指派之後，合規性儀表板會顯示評估結果。 請注意，部署原則指派之後最多可能需要 30 分鐘的時間。
+其中一個指派是以內建原則定義為基礎，會檢查 Azure Cosmos DB 資源是否只部署到允許的 Azure 區域。 資源合規性會針對範圍內的資源顯示原則評估結果（符合規範或不符合規範）。
 
-螢幕擷取畫面顯示下列合規性評估結果：
+另一個指派是以自訂原則定義為基礎。 此指派會檢查是否已為多個寫入位置設定 Cosmos DB 帳戶。
 
-- 指定範圍內一個 Azure Cosmos DB 帳戶中有零個符合原則指派規範，以檢查資源是否已部署至允許的區域。
-- 指定範圍內兩個 Azure Cosmos DB 資料庫或集合資源有一個符合原則指派規範，以檢查超過指定上限的佈建輸送量。
+部署原則指派之後，合規性儀表板會顯示評估結果。 請注意，部署原則指派之後最多可能需要 30 分鐘的時間。 此外，在建立原則指派之後，[可以立即視需要啟動原則評估掃描](../governance/policy/how-to/get-compliance-data.md#on-demand-evaluation-scan)。
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="搜尋 Azure Cosmos DB 內建原則定義":::
+螢幕擷取畫面顯示下列範圍內 Azure Cosmos DB 帳戶的相容性評估結果：
 
-若要補救不符合規範的資源，請參閱[使用 Azure 原則補救](../governance/policy/how-to/remediate-resources.md)一文。
+- 兩個帳戶中有零個符合必須設定虛擬網路（VNet）篩選的原則。
+- 兩個帳戶中有零個符合原則，需要為多個寫入位置設定帳戶
+- 兩個帳戶中有零個符合原則，即資源已部署到允許的 Azure 區域。
+
+:::image type="content" source="./media/policy/compliance.png" alt-text="列出的 Azure 原則指派的相容性結果":::
+
+若要修復不符合規範的資源，請參閱[如何使用 Azure 原則補救資源](../governance/policy/how-to/remediate-resources.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [檢閱適用於 Azure Cosmos DB 的範例自訂原則定義](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)
+- 請[參閱 Azure Cosmos DB 的自訂原則定義範例](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)，包括以上所示的多個寫入位置和 VNet 篩選原則。
 - [在 Azure 入口網站中建立原則指派](../governance/policy/assign-policy-portal.md)
 - [檢閱適用於 Azure Cosmos DB 的 Azure 原則內建原則定義](./policy-samples.md)

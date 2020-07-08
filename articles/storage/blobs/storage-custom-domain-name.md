@@ -4,17 +4,16 @@ titleSuffix: Azure Storage
 description: 將自訂網域對應至 Azure 儲存體帳戶中的 Blob 儲存體或 web 端點。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 95fd62584ef73f3f2f198c84913652f460fc5b1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370469"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465536"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>將自訂網域對應至 Azure Blob 儲存體端點
 
@@ -23,9 +22,9 @@ ms.locfileid: "79370469"
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> 這個對應僅適用于子域（例如： `www.contoso.com`）。 如果您想要在根域（例如： `contoso.com`）上使用 web 端點，則必須使用 Azure CDN。 如需指導方針，請參閱本文的[對應已啟用 HTTPS 的自訂網域](#enable-https)一節。 因為您前往本文的那一節來啟用自訂網域的根域，所以啟用 HTTPS 的那一節內的步驟是選擇性的。 
+> 這個對應僅適用于子域（例如： `www.contoso.com` ）。 如果您想要在根域（例如：）上使用 web 端點，則必須 `contoso.com` 使用 AZURE CDN。 如需指導方針，請參閱本文的[對應已啟用 HTTPS 的自訂網域](#enable-https)一節。 因為您前往本文的那一節來啟用自訂網域的根域，所以啟用 HTTPS 的那一節內的步驟是選擇性的。 
 
-<a id="enable-http" />
+<a id="enable-http"></a>
 
 ## <a name="map-a-custom-domain-with-only-http-enabled"></a>對應僅啟用 HTTP 的自訂網域
 
@@ -33,7 +32,7 @@ ms.locfileid: "79370469"
 
 若要啟用 HTTPS 存取，請參閱本文的[對應已啟用 HTTPs 的自訂網域](#enable-https)一節。 
 
-<a id="map-a-domain" />
+<a id="map-a-domain"></a>
 
 ### <a name="map-a-custom-domain"></a>對應自訂網域
 
@@ -50,7 +49,7 @@ ms.locfileid: "79370469"
 
 ： heavy_check_mark：步驟4：測試您的自訂網域。
 
-<a id="endpoint" />
+<a id="endpoint"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>步驟1：取得儲存體端點的主機名稱 
 
@@ -71,7 +70,7 @@ ms.locfileid: "79370469"
   
    請稍後再設定此值。
 
-<a id="create-cname-record" />
+<a id="create-cname-record"></a>
 
 #### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>步驟2：使用您的網域提供者建立正式名稱（CNAME）記錄
 
@@ -87,11 +86,11 @@ ms.locfileid: "79370469"
 
 3. 建立 CNAME 記錄。 作為該記錄的一部分，請提供下列專案： 
 
-   - 子域別名，例如`www`或。 `photos` 子域是必要的，不支援根域。 
+   - 子域別名，例如 `www` 或 `photos` 。 子域是必要的，不支援根域。 
       
    - 您在本文稍早的[取得儲存體端點的主機名稱](#endpoint)一節中取得的主機名稱。 
 
-<a id="register" />
+<a id="register"></a>
 
 #### <a name="step-3-register-your-custom-domain-with-azure"></a>步驟3：向 Azure 註冊您的自訂網域
 
@@ -105,7 +104,7 @@ ms.locfileid: "79370469"
 
 3. 在 [**功能變數名稱**] 文字方塊中，輸入自訂網域的名稱，包括子域  
    
-   例如，如果您的網域是*contoso.com* ，而子域別名是*www*，請`www.contoso.com`輸入。 如果您的子域是*相片*， `photos.contoso.com`請輸入。
+   例如，如果您的網域是*contoso.com* ，而子域別名是*www*，請輸入 `www.contoso.com` 。 如果您的子域是*相片*，請輸入 `photos.contoso.com` 。
 
 4. 若要註冊自訂網域，請選擇 [**儲存**] 按鈕。
 
@@ -117,7 +116,7 @@ ms.locfileid: "79370469"
 
 例如，若要存取 *photos.contoso.com* 自訂子網域之 *myforms*容器中的 Web 表單，您可以使用以下 URI：`http://photos.contoso.com/myforms/applicationform.htm`
 
-<a id="zero-down-time" />
+<a id="zero-down-time"></a>
 
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>對應自訂網域零停機時間
 
@@ -136,7 +135,7 @@ ms.locfileid: "79370469"
 
 ： heavy_check_mark：步驟5：測試您的自訂網域。
 
-<a id="endpoint-2" />
+<a id="endpoint-2"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>步驟1：取得儲存體端點的主機名稱 
 
@@ -171,13 +170,13 @@ ms.locfileid: "79370469"
 
 3. 建立 CNAME 記錄。 作為該記錄的一部分，請提供下列專案： 
 
-   - 子域別名，例如`www`或。 `photos` 子域是必要的，不支援根域。
+   - 子域別名，例如 `www` 或 `photos` 。 子域是必要的，不支援根域。
 
-     將`asverify`子域新增至別名。 例如：`asverify.www` 或 `asverify.photos`。
+     將 `asverify` 子域新增至別名。 例如：`asverify.www` 或 `asverify.photos`。
        
    - 您在本文稍早的[取得儲存體端點的主機名稱](#endpoint)一節中取得的主機名稱。 
 
-     將子域`asverify`新增至主機名稱。 例如： `asverify.mystorageaccount.blob.core.windows.net` 。
+     將子域新增 `asverify` 至主機名稱。 例如： `asverify.mystorageaccount.blob.core.windows.net` 。
 
 4. 若要註冊自訂網域，請選擇 [**儲存**] 按鈕。
 
@@ -197,7 +196,7 @@ ms.locfileid: "79370469"
 
 3. 在 [**功能變數名稱**] 文字方塊中，輸入自訂網域的名稱，包括子域  
    
-   例如，如果您的網域是*contoso.com* ，而子域別名是*www*，請`www.contoso.com`輸入。 如果您的子域是*相片*， `photos.contoso.com`請輸入。
+   例如，如果您的網域是*contoso.com* ，而子域別名是*www*，請輸入 `www.contoso.com` 。 如果您的子域是*相片*，請輸入 `photos.contoso.com` 。
 
 4. 選取 [使用間接 CNAME 驗證]**** 核取方塊。
 
@@ -219,7 +218,7 @@ ms.locfileid: "79370469"
 
 3. 建立 CNAME 記錄。 作為該記錄的一部分，請提供下列專案： 
 
-   - 子域別名，例如`www`或。 `photos` 子域是必要的，不支援根域。
+   - 子域別名，例如 `www` 或 `photos` 。 子域是必要的，不支援根域。
       
    - 您在本文稍早的[取得儲存體端點的主機名稱](#endpoint-2)一節中取得的主機名稱。 
 
@@ -295,7 +294,7 @@ ms.locfileid: "79370469"
   ```
 ---
 
-<a id="enable-https" />
+<a id="enable-https"></a>
 
 ## <a name="map-a-custom-domain-with-https-enabled"></a>對應已啟用 HTTPS 的自訂網域
 

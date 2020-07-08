@@ -5,17 +5,16 @@ description: 如何在叢集、分類或回歸實驗中，針對受監督和不�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
-ms.openlocfilehash: ad384896301e809940f6e99df2f5562cfdb6a6fe
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: 582d6077a4b84e5b2d8c0d69da7b00b807a355b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927576"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84433152"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>如何選取 Azure Machine Learning 的演算法
 
@@ -46,27 +45,27 @@ Machine Learning 設計工具提供完整的演算法組合，例如[多元決�
 
 下表摘要列出分類、回歸和叢集系列中一些最重要的演算法特性：
 
-| **演算法** | **精確** | **定型時間** | **線性** | **參數** | **注意事項** |
+| **演算法** | **精確** | **定型時間** | **線性** | **參數** | **備註** |
 | --- |:---:|:---:|:---:|:---:| --- |
 | **分類系列** | | | | | |
-| [雙類別羅吉斯回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |好  |快速 |是 |4 | |
-| [雙類別決策樹系](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |非常好 |中度 |否 |5 |顯示較慢的計分時間。 建議不要使用一個 vs-All 多元，因為在累積樹狀結構預測中，因踏板鎖定而造成的評分時間較慢 |
-| [二元推進式決策樹](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |非常好 |中度 |否 |6 |高記憶體使用量 |
-| [雙類別類神經網路](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |好 |中度 |否 |8 | |
-| [雙類別平均認知](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |好 |中度 |是 |4 | |
-| [雙類別支援向量機器](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |好 |快速 |是 |5 |適用於大型特徵集 |
-| [多元羅吉斯回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |好 |快速 |是 |4 | |
-| [多元決策樹系](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |非常好 |中度 |否 |5 |顯示較慢的計分時間 |
-| [多元促進式決策樹](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |非常好 |中度 |否 |6 | 通常會以較少涵蓋範圍的一些小風險來改善精確度 |
-| [多元類神經網路](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |好 |中度 |否 |8 | |
+| [雙類別羅吉斯回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |好  |快速 |Yes |4 | |
+| [雙類別決策樹系](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |非常好 |中 |No |5 |顯示較慢的計分時間。 建議不要使用一個 vs-All 多元，因為在累積樹狀結構預測中，因踏板鎖定而造成的評分時間較慢 |
+| [二元推進式決策樹](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |非常好 |中 |No |6 |高記憶體使用量 |
+| [雙類別類神經網路](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |好 |中 |No |8 | |
+| [雙類別平均認知](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |好 |中 |Yes |4 | |
+| [雙類別支援向量機器](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |好 |快速 |Yes |5 |適用於大型特徵集 |
+| [多元羅吉斯回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |好 |快速 |Yes |4 | |
+| [多元決策樹系](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |非常好 |中 |No |5 |顯示較慢的計分時間 |
+| [多元促進式決策樹](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |非常好 |中 |No |6 | 通常會以較少涵蓋範圍的一些小風險來改善精確度 |
+| [多元類神經網路](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |好 |中 |No |8 | |
 | [一對一與所有多元](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |請參閱選取的兩個類別方法的屬性 |
 | **回歸系列** | | | | | |
-| [線性回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |好 |快速 |是 |4 | |
-| [決策樹系回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|非常好 |中度 |否 |5 | |
-| [促進式決策樹回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |非常好 |中度 |否 |6 |高記憶體使用量 |
-| [類神經網路回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |好 |中度 |否 |8 | |
+| [線性回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |好 |快速 |Yes |4 | |
+| [決策樹系回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|非常好 |中 |No |5 | |
+| [促進式決策樹回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |非常好 |中 |No |6 |高記憶體使用量 |
+| [類神經網路回歸](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |好 |中 |No |8 | |
 | **群集系列** | | | | | |
-| [K-表示群集](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |非常好 |中度 |是 |8 |叢集演算法 |
+| [K-表示群集](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |非常好 |中 |Yes |8 |叢集演算法 |
 
 ## <a name="requirements-for-a-data-science-scenario"></a>資料科學案例的需求
 

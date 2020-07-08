@@ -7,13 +7,12 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 9262d01e35bd03a9116a30b070b023f578f0b15a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/03/2020
+ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74112549"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84462833"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>設定 Azure 認知搜尋的系統管理存取權的 RBAC 角色
 
@@ -26,7 +25,7 @@ Azure 特別為透過入口網站或 Resource Manager API 管理的所有服務�
 
 針對 Azure 認知搜尋，角色會與支援下列管理工作的許可權層級相關聯：
 
-| [角色] | 工作 |
+| 角色 | Task |
 | --- | --- |
 | 擁有者 |建立或刪除服務或服務上的任何物件，包括 api 索引鍵、索引、索引子、索引子資料來源和索引子排程。<p>檢視服務狀態，包括計數和儲存體大小。<p>新增或刪除角色成員資格 (只有「擁有者」可以管理角色成員資格)。<p>訂用帳戶管理員和服務擁有者在擁有者角色具有自動成員資格。 |
 | 參與者 |與「擁有者」相同層級的存取權，減去 RBAC 角色管理。 例如，參與者可以建立或刪除物件，或檢視和重新產生 [API 金鑰](search-security-api-keys.md)，但不能修改角色成員資格。 |
@@ -34,6 +33,21 @@ Azure 特別為透過入口網站或 Resource Manager API 管理的所有服務�
 | 讀取者 |檢視服務的基本資訊和計量。 此角色的成員無法檢視索引、索引子、資料來源，或索引鍵資訊。  |
 
 角色不會授與服務端點的存取權限。 搜尋服務作業 (例如索引管理、索引母體擴展，以及搜尋資料查詢) 可透過 api-key 而非角色來控制。 如需詳細資訊，請參閱[管理 API 金鑰](search-security-api-keys.md)。
+
+## <a name="permissions-table"></a>許可權資料表
+
+下表摘要說明 Azure 認知搜尋中允許的作業，以及哪些金鑰可解除鎖定特定操作。
+
+| 操作 | 權限 |
+|-----------|-------------------------|
+| 建立服務 | Azure 訂用帳戶持有者 |
+| 調整服務規模 | 資源上的系統管理金鑰、RBAC 擁有者或參與者  |
+| 刪除服務 | 資源上的系統管理金鑰、RBAC 擁有者或參與者 |
+| 在服務上建立、修改、刪除物件： <br>索引和元件部分（包括分析器定義、評分設定檔、CORS 選項）、索引子、資料來源、同義字、建議工具 | 資源上的系統管理金鑰、RBAC 擁有者或參與者 |
+| 查詢索引 | 管理或查詢金鑰 (RBAC 不適用) |
+| 查詢系統資訊，例如傳回統計資料、計數和物件清單 | 管理金鑰、資源的 RBAC (擁有者、參與者、讀者) |
+| 管理管理金鑰 | 管理金鑰、資源的 RBAC 擁有者或參與者 |
+| 管理查詢金鑰 |  管理金鑰、資源的 RBAC 擁有者或參與者  |
 
 ## <a name="see-also"></a>另請參閱
 

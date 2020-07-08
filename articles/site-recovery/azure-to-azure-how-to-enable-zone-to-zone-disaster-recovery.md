@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 27b433ba33d287a183d8ce6cc05d87649b2d0b00
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: 543be2b408d9442c61ae2c052776e63c33206188
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891507"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488931"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>針對 Azure 虛擬機器啟用區域的損毀修復
 
@@ -20,7 +19,7 @@ ms.locfileid: "82891507"
 
 >[!NOTE]
 >
->- Site Recovery 目前不支援區域損毀修復的復原計畫。 
+>- Site Recovery 目前不支援透過入口網站進列區域到區域嚴重損壞修復的復原計畫。 請使用 PowerShell 或 REST API，利用區域的復原計畫來進列區域嚴重損壞修復。 
 >- 區域對區域嚴重損壞修復的支援目前限制為兩個區域：東南亞和英國南部。  
 
 Site Recovery 服務會在規劃和非計畫的中斷期間，讓您的商務應用程式繼續運作，藉此提供您的商務持續性和嚴重損壞修復策略。 這是建議的嚴重損壞修復選項，可讓您的應用程式在發生區域性中斷的情況下繼續運作。
@@ -88,7 +87,7 @@ Site Recovery 服務會在規劃和非計畫的中斷期間，讓您的商務應
 
 1. 在 Azure 入口網站功能表上，選取 [虛擬機器]，或在任何頁面上搜尋並選取 [虛擬機器]。 選取您要複寫的 VM。 針對區域損毀修復，此 VM 必須已在可用性區域中。
 
-2. 在 [作業] 中，選取 [嚴重損壞修復]。
+2. 在 [作業] 中，選取 [災害復原]。
 
 3. 如下所示，在 [基本] 索引標籤中，針對 [可用性區域間的嚴重損壞修復] 選取 [是]
 
@@ -117,6 +116,9 @@ Site Recovery 小組和 Azure 容量管理小組會規劃足夠的基礎結構�
 
 **4. 支援哪些作業系統？**
 區域的嚴重損壞修復支援與 Azure 相同的作業系統與 azure 的嚴重損壞修復。 請參閱[這裡](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)的支援矩陣。
+
+**5. 來源和目標資源群組可以是相同的嗎？**
+否，您必須容錯移轉至不同的資源群組。
 
 ## <a name="next-steps"></a>後續步驟
 

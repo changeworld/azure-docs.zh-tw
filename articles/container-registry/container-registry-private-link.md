@@ -1,14 +1,13 @@
 ---
 title: 設定私人連結
-description: 在容器登錄上設定私人端點，並透過本機虛擬網路中的私人連結啟用存取權
+description: 在容器登錄上設定私用端點，並透過本機虛擬網路中的私人連結啟用存取。 私用連結存取是高階服務層的一項功能。
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: da51a35b66b793294f146c5a0a30b6a91d8aa01b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509333"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>設定 Azure Container Registry 的 Azure Private Link 
 
@@ -272,7 +271,7 @@ az network private-dns record-set a add-record \
 
 建立私人端點之後，私人區域中的 DNS 設定會出現在入口網站的 [私人端點] 頁面上：
 
-1. 在入口網站中，導覽至您的容器登錄，然後選取 [設定 > 網路]。
+1. 在入口網站中，瀏覽至您的容器登錄，然後選取 [設定] > [網路]。
 1. 在 [私人端點] 索引標籤上，選取您建立的私人端點。
 1. 在 [概觀] 頁面上，檢閱連結設定和自訂 DNS 設定。
 
@@ -286,7 +285,7 @@ az network private-dns record-set a add-record \
 
 ### <a name="disable-public-access---cli"></a>停用公用存取 - CLI
 
-若要使用 Azure CLI 來停用公用存取，請執行 [az acr update][az-acr-update]，並將 `--public-network-enabled` 設定為 `false`。 
+若要使用 Azure CLI 停用公用存取，請執行 [az acr update][az-acr-update]，並將 `--public-network-enabled` 設定為 `false`。 
 
 > [!NOTE]
 > `public-network-enabled` 引數需要 Azure CLI 2.6.0 或更新版本。 
@@ -298,7 +297,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 
 ### <a name="disable-public-access---portal"></a>停用公用存取 - 入口網站
 
-1. 在入口網站中，導覽至您的容器登錄，然後選取 [設定 > 網路]。
+1. 在入口網站中，瀏覽至您的容器登錄，然後選取 [設定] > [網路]。
 1. 在 [公用存取] 索引標籤的 [允許公用網路存取] 中，選取 [停用]。 然後選取 [儲存]。
 
 ## <a name="validate-private-link-connection"></a>驗證私人連結連線

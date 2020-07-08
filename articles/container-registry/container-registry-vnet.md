@@ -1,14 +1,13 @@
 ---
 title: 使用服務端點來限制存取
-description: 使用 Azure 虛擬網路中的服務端點來限制對 Azure 容器登錄的存取
+description: 使用 Azure 虛擬網路中的服務端點來限制對 Azure container registry 的存取。 服務端點存取是 Premium 服務層的一項功能。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 5a3cc9638fb12853e0e26f3806c17dc47f522249
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 0f320bb86549c801711cafdbce4500ff7737cb89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509282"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>使用 Azure 虛擬網路中的服務端點來限制對容器登錄的存取
 

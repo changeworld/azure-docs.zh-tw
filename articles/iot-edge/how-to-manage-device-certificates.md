@@ -4,16 +4,15 @@ description: 在 Azure IoT Edge 裝置上建立測試憑證、安裝及管理，
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/02/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c18c3d560adb3c3cae54bda808ee5842c260fd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b13944e30c339357997fbc5f0919e5eb8485a0a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79539204"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84308773"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 裝置上的憑證
 
@@ -23,15 +22,15 @@ ms.locfileid: "79539204"
 
 當您第一次安裝 IoT Edge 並布建裝置時，會使用暫時憑證設定裝置，讓您可以測試服務。
 這些暫時性憑證會在90天后到期，或者可以藉由重新開機電腦來重設。
-當您準備好要將裝置移到生產環境案例，或想要建立閘道案例時，您需要提供自己的憑證。
+一旦您進入生產環境案例，或想要建立閘道裝置，您必須提供自己的憑證。
 本文示範在您的 IoT Edge 裝置上安裝憑證的步驟。
 
-若要在 IoT Edge 案例中深入瞭解不同類型的憑證及其角色，請參閱[瞭解 Azure IoT Edge 如何使用憑證](iot-edge-certs.md)。
+若要深入瞭解不同類型的憑證和其角色，請參閱[瞭解 Azure IoT Edge 如何使用憑證](iot-edge-certs.md)。
 
 >[!NOTE]
 >本文中使用的「根 CA」一詞指的是 IoT 解決方案的憑證鏈最上層授權公開憑證。 您不需要使用聯合憑證授權單位單位的憑證根目錄，或組織的憑證授權單位單位的根。 在許多情況下，它實際上是中繼 CA 公開憑證。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 * 在[Windows](how-to-install-iot-edge-windows.md)或[Linux](how-to-install-iot-edge-linux.md)上執行的 IoT Edge 裝置。
 * 擁有根憑證授權單位（CA）憑證，可以自我簽署或從受信任的商業憑證授權單位單位（例如巴爾的摩、Verisign、DigiCert 或透過 globalsign）購買。
@@ -62,40 +61,40 @@ ms.locfileid: "79539204"
 
 1. 將三個憑證和金鑰檔案複製到您的 IoT Edge 裝置上。
 
-   您可以使用像是[Azure Key Vault](https://docs.microsoft.com/azure/key-vault)的服務或類似[安全複製通訊協定](https://www.ssh.com/ssh/scp/)的功能來移動憑證檔案。  如果您在 IoT Edge 裝置本身產生憑證，可以略過此步驟，並使用工作目錄的路徑。
+   您可使用如 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) 的服務或類似[安全複製通訊協定](https://www.ssh.com/ssh/scp/)等功能來移動憑證檔案。  如果您在 IoT Edge 裝置本身產生憑證，可以略過此步驟，並使用工作目錄的路徑。
 
 1. 開啟 IoT Edge 安全性精靈組態檔。
 
    * Windows：`C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-1. 將 yaml 檔案中的**憑證**屬性設定為憑證的完整路徑和 IoT Edge 裝置上的金鑰檔案。 移除憑證`#`屬性前面的字元，以取消批註四行。 請確定 [**憑證：** ] 行沒有前面的空白字元，且已將該嵌套專案縮排為兩個空格。 例如：
+1. 將 yaml 中的**憑證**屬性設為憑證的檔案 URI 路徑和 IoT Edge 裝置上的金鑰檔案。 移除 `#` 憑證屬性前面的字元，以取消批註四行。 請確定 [**憑證：** ] 行沒有前面的空白字元，且已將該嵌套專案縮排為兩個空格。 例如：
 
    * Windows：
 
       ```yaml
       certificates:
-        device_ca_cert: "c:\\<path>\\device-ca.cert.pem"
-        device_ca_pk: "c:\\<path>\\device-ca.key.pem"
-        trusted_ca_certs: "c:\\<path>\\root-ca.root.ca.cert.pem"
+        device_ca_cert: "file:///C:/<path>/<device CA cert>"
+        device_ca_pk: "file:///C:/<path>/<device CA key>"
+        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
       ```
 
    * Linux：
 
       ```yaml
       certificates:
-        device_ca_cert: "<path>/device-ca.cert.pem"
-        device_ca_pk: "<path>/device-ca.key.pem"
-        trusted_ca_certs: "<path>/root-ca.root.ca.cert.pem"
+        device_ca_cert: "file:///<path>/<device CA cert>"
+        device_ca_pk: "file:///<path>/<device CA key>"
+        trusted_ca_certs: "file:///<path>/<root CA cert>"
       ```
 
 1. 在 Linux 裝置上，請確定使用者**iotedge**具有保存憑證之目錄的 [讀取] 許可權。
 
 1. 如果您之前已在裝置上使用任何其他憑證來進行 IoT Edge，請先刪除下列兩個目錄中的檔案，然後再啟動或重新開機 IoT Edge：
 
-   * Windows： `C:\ProgramData\iotedge\hsm\certs`和`C:\ProgramData\iotedge\hsm\cert_keys`
+   * Windows： `C:\ProgramData\iotedge\hsm\certs` 和`C:\ProgramData\iotedge\hsm\cert_keys`
 
-   * Linux： `/var/lib/iotedge/hsm/certs`和`/var/lib/iotedge/hsm/cert_keys`
+   * Linux： `/var/lib/iotedge/hsm/certs` 和`/var/lib/iotedge/hsm/cert_keys`
 
 ## <a name="customize-certificate-lifetime"></a>自訂憑證存留期
 
@@ -125,7 +124,7 @@ certificates:
 
 在 yaml 檔案中指定旗標之後，請執行下列步驟：
 
-1. 刪除`hsm`資料夾的內容。
+1. 刪除資料夾的內容 `hsm` 。
 
    Windows： `C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux：`/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
 

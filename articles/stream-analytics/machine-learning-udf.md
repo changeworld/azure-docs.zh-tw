@@ -7,12 +7,11 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488744"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>整合 Azure 串流分析與 Azure Machine Learning (預覽)
 
@@ -24,7 +23,7 @@ ms.locfileid: "83874076"
 
 1. 使用 Azure Machine Learning [將您的模型部署為 Web 服務](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)。
 
-2. 您的評分指令碼應該會有[範例輸入和輸出](../machine-learning/how-to-deploy-and-where.md#example-entry-script)，由 Azure Machine Learning 用來產生結構描述規格。 串流分析會使用結構描述來了解 Web 服務的函式簽章。
+2. 您的評分指令碼應該會有[範例輸入和輸出](../machine-learning/how-to-deploy-and-where.md#example-entry-script)，由 Azure Machine Learning 用來產生結構描述規格。 串流分析會使用結構描述來了解 Web 服務的函式簽章。 您可以使用此[範例 swagger 定義](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json)做為參考，以確保您已正確設定它。
 
 3. 請確定您的 Web 服務接受並傳回 JSON 序列化資料。
 

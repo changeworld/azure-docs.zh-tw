@@ -11,12 +11,11 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 56d80571253d95d28c839ed81b6e1ce6dda9dc46
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 10f0079f47e5d2fd99b358fcc5cfb4c80aa9bd91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84508891"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>建立會執行管線來回應事件的觸發程序
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +30,7 @@ ms.locfileid: "83652397"
 
 
 > [!NOTE]
-> 本文章中說明的整合，仰賴 [Azure 事件方格](https://azure.microsoft.com/services/event-grid/)。 請確認您的訂用帳戶已向事件方格資源提供者註冊。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
+> 本文章中說明的整合，仰賴 [Azure 事件方格](https://azure.microsoft.com/services/event-grid/)。 請確認您的訂用帳戶已向事件方格資源提供者註冊。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。 您必須能夠執行*EventGrid/eventSubscriptions/** 動作。 此動作是 EventGrid EventSubscription 參與者內建角色的一部分。
 
 ## <a name="data-factory-ui"></a>Data Factory UI
 
@@ -50,7 +49,7 @@ ms.locfileid: "83652397"
 1. 從 Azure 訂用帳戶下拉式清單中選取您的儲存體帳戶，或使用其儲存體帳戶資源識別碼手動進行。 選擇您希望發生事件的容器。 容器選取是選擇性作業，但請注意，選取所有容器可能會導致大量的事件。
 
    > [!NOTE]
-   > 事件觸發程序目前僅支援 Azure Data Lake Storage Gen2 和一般用途的第 2 版儲存體帳戶。 由於 Azure 事件方格的限制，Azure Data Factory 只支援每個儲存體帳戶最多 500 個事件觸發程序。
+   > 事件觸發程序目前僅支援 Azure Data Lake Storage Gen2 和一般用途的第 2 版儲存體帳戶。 您必須至少擁有儲存體帳戶的*擁有*者存取權。  由於 Azure 事件方格的限制，Azure Data Factory 只支援每個儲存體帳戶最多 500 個事件觸發程序。
 
 1. [Blob 路徑開頭] 和 [Blob 路徑結尾] 屬性可讓您指定要收到事件的容器、資料夾和 Blob 名稱。 您的事件觸發程序至少需要定義其中一個屬性。 您可以針對 **Blob path begins with** 和 **Blob path ends with** 屬性使用各種不同的模式，如本文稍後的範例所示。
 

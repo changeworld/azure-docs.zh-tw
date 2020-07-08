@@ -2,16 +2,13 @@
 title: 概念 - 在 Azure Kubernetes Service (AKS) 中調整應用程式
 description: 了解 Azure Kubernetes Service (AKS) 中的調整功能，包括水平 Pod 自動調整程式、叢集自動調整程式，以及 Azure 容器執行個體連接器。
 services: container-service
-author: zr-msft
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: zarhoads
-ms.openlocfilehash: c5c1180acec726d0863e11a3fe0825ffc7c48e3f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 83cbaf49f26a53518b1aa1e211b61af1959642a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232525"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465332"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中調整應用程式的選項
 
@@ -94,7 +91,7 @@ ACI 可讓您快速部署容器執行個體，不需要額外的基礎結構成�
 
 - 手動調整 [Pod][aks-manually-scale-pods] 或[節點][aks-manually-scale-nodes]
 - 使用[水平 Pod 自動調整程式][aks-hpa]
-- 使用[叢集自動調整程式][aks-cluster-autoscaler]
+- 使用叢集[自動調整程式][aks-cluster-autoscaler]
 
 如需有關 Kubernetes 及 AKS 核心概念的詳細資訊，請參閱下列文章：
 

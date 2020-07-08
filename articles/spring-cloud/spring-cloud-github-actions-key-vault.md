@@ -6,12 +6,11 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4a836ae195674556c486592a421c188f7c40e3f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945476"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484356"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>使用 GitHub 動作中的 Key Vault 來驗證 Azure 春季雲端
 金鑰保存庫是儲存金鑰的安全位置。 企業使用者需要將 CI/CD 環境的認證儲存在他們所控制的範圍內。 要在金鑰保存庫中取得認證的金鑰應限制為資源範圍。  它只能存取金鑰保存庫範圍，而不是整個 Azure 範圍。 就像是只能開啟一個強式箱的索引鍵，而不是可以開啟大樓所有大門的主要金鑰。 這是使用另一個金鑰來取得金鑰的方法，這在 CICD 工作流程中很有用。 
@@ -21,7 +20,7 @@ ms.locfileid: "78945476"
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
-`--scopes`參數所指定的範圍會限制資源的金鑰存取。  它只能存取 [強式] 方塊。
+參數所指定的範圍會 `--scopes` 限制資源的金鑰存取。  它只能存取 [強式] 方塊。
 
 結果：
 ```
@@ -42,13 +41,13 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 ## <a name="add-access-policies-for-the-credential"></a>新增認證的存取原則
 您在上面建立的認證只能取得 Key Vault 的一般資訊，而不是它所儲存的內容。  若要取得儲存在 Key Vault 中的秘密，您需要設定認證的存取原則。
 
-移至 Azure 入口網站中的 [ **Key Vault**儀表板]，按一下 [**存取控制**] 功能表，然後開啟 [**角色指派**] 索引卷`This resource`標。選取 [**類型**] 和 [**範圍**] 的**應用程式**。  您應該會看到您在上一個步驟中建立的認證：
+移至 Azure 入口網站中的 [ **Key Vault**儀表板]，按一下 [**存取控制**] 功能表，然後開啟 [**角色指派**] 索引標籤。選取 [**類型**] 和 [範圍] 的**應用程式**。 `This resource` **scope**  您應該會看到您在上一個步驟中建立的認證：
 
  ![設定存取原則](./media/github-actions/key-vault1.png)
 
-複製認證名稱，例如`azure-cli-2020-01-19-04-39-02`。 開啟 [**存取原則**] 功能表，按一下 [ **+ 新增存取原則**] 連結。  選取`Secret Management` [針對**範本**]，然後選取 [**主體**]。 在 [**主體**/]**選取**輸入方塊中貼上認證名稱：
+複製認證名稱，例如 `azure-cli-2020-01-19-04-39-02` 。 開啟 [**存取原則**] 功能表，按一下 [ **+ 新增存取原則**] 連結。  選取 [ `Secret Management` 針對**範本**]，然後選取 [**主體**]。 在 [**主體**] / **選取**輸入方塊中貼上認證名稱：
 
- ![Select](./media/github-actions/key-vault2.png)
+ ![選取](./media/github-actions/key-vault2.png)
 
  按一下 [**新增存取原則**] 對話方塊中的 [**新增**] 按鈕，然後按一下 [**儲存**]。
 
@@ -73,7 +72,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-複製整個 JSON 字串。  返回**Key Vault**儀表板。 開啟 [**秘密**] 功能表，然後按一下 [**產生/匯入**] 按鈕。 輸入秘密名稱，例如`AZURE-CRENDENTIALS-FOR-SPRING`。 將 JSON 認證字串貼入 [**值**] 輸入方塊。 您可能會注意到 [值] 輸入方塊是單行文字欄位，而不是多行文字區域。  您可以在該處貼上完整的 JSON 字串。
+複製整個 JSON 字串。  返回**Key Vault**儀表板。 開啟 [**秘密**] 功能表，然後按一下 [**產生/匯入**] 按鈕。 輸入秘密名稱，例如 `AZURE-CREDENTIALS-FOR-SPRING` 。 將 JSON 認證字串貼入 [**值**] 輸入方塊。 您可能會注意到 [值] 輸入方塊是單行文字欄位，而不是多行文字區域。  您可以在該處貼上完整的 JSON 字串。
 
  ![完整範圍認證](./media/github-actions/key-vault3.png)
 
@@ -92,7 +91,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}           # Strong box key you generated in the first step
     - uses: Azure/get-keyvault-secrets@v1.0
       with:
-        keyvault: "zlhe-test"
+        keyvault: "<Your Key Vault Name>"
         secrets: "AZURE-CREDENTIALS-FOR-SPRING"           # Master key to open all doors in the building
       id: keyvaultaction
     - uses: azure/login@v1

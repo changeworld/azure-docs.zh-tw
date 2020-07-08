@@ -5,12 +5,11 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 50ce0d57ec7395c69bf65e41b67f0cb005a43cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84464567"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -21,7 +20,7 @@ Application Insights 可以使用於任何網頁 - 您剛剛新增 JavaScript �
 ## <a name="adding-the-javascript-sdk"></a>新增 JavaScript SDK
 
 1. 首先，您需要 Application Insights 資源。 如果您還沒有資源和檢測金鑰，請遵循[建立新的資源指示](create-new-resource.md)。
-2. 從您想要傳送 JavaScript 遙測的資源複製檢測金鑰。
+2. 針對您想要在其中傳送 JavaScript 遙測的資源（來自步驟1），複製_檢測金鑰_（也稱為 "iKey"）。您會將它新增至 `instrumentationKey` Application Insights JAVASCRIPT SDK 的設定。
 3. 透過下列兩個選項的其中一個，將 Application Insights JavaScript SDK 新增至您的網頁或應用程式：
     * [npm 設定](#npm-based-setup)
     * [JavaScript 程式碼片段](#snippet-based-setup)
@@ -34,6 +33,14 @@ Application Insights 可以使用於任何網頁 - 您剛剛新增 JavaScript �
 
 ### <a name="npm-based-setup"></a>以 npm 為基礎的設定
 
+透過 NPM 安裝。
+
+```sh
+npm i --save @microsoft/applicationinsights-web
+```
+
+> *注意：* **Typings 隨附于此封裝**，因此您**不**需要安裝個別的 Typings 套件。
+    
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
@@ -47,21 +54,67 @@ appInsights.trackPageView(); // Manually call trackPageView to establish the cur
 
 ### <a name="snippet-based-setup"></a>以程式碼片段為基礎的設定
 
-如果您的應用程式不使用 npm，您可以在每個頁面的頂端貼上此程式碼片段，直接使用 Application Insights 檢測您的網頁。 最好是`<head>`區段中的第一個腳本，如此一來，它就可以監視所有相依性的潛在問題。 如果您使用 Blazor 伺服器應用程式，請在`_Host.cshtml` `<head>`區段中的檔案頂端新增程式碼片段。
+如果您的應用程式不使用 npm，您可以在每個頁面的頂端貼上此程式碼片段，直接使用 Application Insights 檢測您的網頁。 最好是區段中的第一個腳本， `<head>` 如此一來，它就可以監視所有相依性的潛在問題，並選擇性地監控任何 JavaScript 錯誤。 如果您使用 Blazor 伺服器應用程式，請在區段中的檔案頂端新增程式碼片段 `_Host.cshtml` `<head>` 。
+
+為了協助追蹤您應用程式所使用的程式碼片段版本，從版本2.5.5 開始，網頁檢視事件會包含新的標記 "ai. internal. 程式碼片段"，其中將包含已識別的程式碼片段版本。
+
+目前的程式碼片段（如下所列）將識別為版本 "3"。
 
 ```html
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
-{
-  instrumentationKey:"INSTRUMENTATION_KEY"
-}
-);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+!function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", // The SDK URL Source
+//name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+//ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+//useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+//crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag 
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    /* ...Other Configuration Options... */
+}});
 </script>
 ```
 
+> [!NOTE]
+> 為了方便閱讀並減少可能的 JavaScript 錯誤，所有可能的設定選項都會列在上述程式碼片段中的新行上，如果您不想要變更批註行的值，可以將它移除。
+
+
+#### <a name="reporting-script-load-failures"></a>報告腳本載入失敗
+
+此版本的程式碼片段會偵測並報告失敗，從 CDN 載入 SDK 作為 Azure 監視器入口網站的例外狀況（在 [失敗] &gt; 例外狀況 &gt; 瀏覽器底下），此例外狀況會提供此類型失敗的可見度，讓您知道應用程式不會如預期般報告遙測（或其他例外狀況）。 此信號是瞭解您已遺失遙測的重要度量，因為 SDK 並未載入或初始化，而這可能會導致：
+- 在報告中，使用者如何使用（或嘗試使用）您的網站;
+- 您的終端使用者如何使用您的網站缺少遙測;
+- 缺少 JavaScript 錯誤，可能會封鎖您的終端使用者，使其無法成功使用您的網站。
+
+如需此例外狀況的詳細資訊，請參閱[SDK 載入失敗](javascript-sdk-load-failure.md)疑難排解頁面。
+
+將此錯誤報表為入口網站的例外狀況，並不會使用 application insights 設定中的設定選項 ```disableExceptionTracking``` ，因此如果發生此失敗，它一律會由程式碼片段報告，即使已停用 windows onerror 支援也一樣。
+
+SDK 載入失敗的報告在 IE 8 （或更少）上特別不受支援。 這有助於減少程式碼片段的縮減大小，方法是假設大部分的環境不是專門的 IE 8 或更少。 如果您有此需求，而且想要收到這些例外狀況，您將需要包含提取 poly 填滿或建立使用的程式碼片段版本（ ```XDomainRequest``` 而不是 ```XMLHttpRequest``` ），建議您使用[提供的程式碼片段原始程式碼](https://github.com/microsoft/ApplicationInsights-JS/blob/master/AISKU/snippet/snippet.js)做為起點。
+
+> [!NOTE]
+> 如果您使用的是舊版程式碼片段，則強烈建議您將更新為最新版本，以便收到先前未報告的問題。
+
+#### <a name="snippet-configuration-options"></a>程式碼片段設定選項
+
+所有設定選項現在都已移至腳本結尾，以協助避免不小心引進不會導致 SDK 無法載入的 JavaScript 錯誤，同時也會停用失敗的報告。
+
+如果您不想要覆寫列為 [選用] 之專案的預設值，則每個設定選項都會顯示在上面，而您可以移除該行，將所傳回頁面的產生大小降到最低。
+
+可用的設定選項為 
+
+| 名稱 | 類型 | Description
+|------|------|----------------
+| src | 字串 **[必要]** | 要從中載入 SDK 的完整 URL。 這個值會用於動態加入之腳本/標記的 "src" 屬性 &lt; &gt; 。 您可以使用公用 CDN 位置，或您自己的私人託管。
+| NAME | 字串 *[選擇性]* | 已初始化 SDK 的全域名稱，預設為 appInsights。 因此， ```window.appInsights``` 會參考初始化的實例。 注意：如果您提供名稱值或先前的實例會被指派（透過全域名稱 appInsightsSDK），則此名稱值也會在全域命名空間中定義為 ```window.appInsightsSDK=<name value>``` ，這是 SDK 初始化程式碼所需的，以確保它會初始化並更新正確的程式碼片段基本架構和 proxy 方法。
+| 個 | 以毫秒為單位的數位 *[選擇性]* | 定義要在嘗試載入 SDK 之前等待的載入延遲。 預設值為0毫秒，任何負值會立即將腳本標記新增至頁面的 &lt; 前端 &gt; 區域，接著會封鎖頁面載入事件直到載入腳本（或失敗）。
+| useXhr | 布林值 *[選擇性]* | 此設定僅用於報告 SDK 載入失敗。 報告會先嘗試使用 fetch （）（如果有的話），然後回到 XHR，將此值設定為 true 只會略過提取檢查。 只有當您的應用程式在提取無法傳送失敗事件的環境中使用時，才需要使用此值。
+| crossOrigin | 字串 *[選擇性]* | 藉由包含此設定，新增來下載 SDK 的腳本標記會包含具有此字串值的 crossOrigin 屬性。 如果未定義（預設值），則不會加入任何 crossOrigin 屬性。 建議的值未定義（預設值）;"";或「匿名」（針對所有有效值，請參閱[HTML 屬性： crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)檔）
+| cfg | 物件 **[必要]** | 初始化期間傳遞至 Application Insights SDK 的設定。
+
 ### <a name="sending-telemetry-to-the-azure-portal"></a>將遙測傳送至 Azure 入口網站
 
-根據預設，Application Insights JavaScript SDK 會 autocollects 一些遙測專案，這有助於判斷應用程式的健康情況和基礎使用者體驗。 它們包括：
+根據預設，Application Insights JavaScript SDK 會 autocollects 一些遙測專案，這有助於判斷應用程式的健康情況和基礎使用者體驗。 這些包括：
 
 - 應用程式中未攔截到的**例外**狀況，包括的相關資訊
     - 堆疊追蹤
@@ -80,9 +133,9 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 - **會話資訊**
 
 ### <a name="telemetry-initializers"></a>遙測初始化運算式
-遙測初始化運算式是用來在從使用者的瀏覽器傳送之前，修改所收集遙測的內容。 您也可以藉由傳回，使用它們來防止傳送特定遙測`false`。 您可以將多個遙測初始化運算式新增至您的 Application Insights 實例，並依加入它們的循序執行。
+遙測初始化運算式是用來在從使用者的瀏覽器傳送之前，修改所收集遙測的內容。 您也可以藉由傳回，使用它們來防止傳送特定遙測 `false` 。 您可以將多個遙測初始化運算式新增至您的 Application Insights 實例，並依加入它們的循序執行。
 
-的輸入引數`addTelemetryInitializer`是回呼，其接受[`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer)做為引數，並傳回`boolean`或`void`。 如果傳回`false`，則不會傳送遙測專案，否則會繼續進行下一個遙測初始化運算式（如果有的話），或傳送至遙測集合端點。
+的輸入引數 `addTelemetryInitializer` 是回呼，其接受 [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer) 做為引數，並傳回 `boolean` 或 `void` 。 如果傳回 `false` ，則不會傳送遙測專案，否則會繼續進行下一個遙測初始化運算式（如果有的話），或傳送至遙測集合端點。
 
 使用遙測初始化運算式的範例：
 ```ts
@@ -97,9 +150,9 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
 ## <a name="configuration"></a>組態
-大部分設定欄位的名稱都是，讓它們可以預設為 false。 除了以外，所有欄位都`instrumentationKey`是選擇性的。
+大部分設定欄位的名稱都是，讓它們可以預設為 false。 除了以外，所有欄位都是選擇性的 `instrumentationKey` 。
 
-| 名稱 | 預設 | 描述 |
+| Name | 預設 | 描述 |
 |------|---------|-------------|
 | instrumentationKey | null | **必要**<br>從 Azure 入口網站取得的檢測金鑰。 |
 | accountId | null | 選擇性的帳戶識別碼，如果您的應用程式將使用者群組為帳戶。 不含空格、逗號、分號、等於或分隔號 |
@@ -109,7 +162,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | maxBatchInterval | 15000 | 在傳送之前，批次遙測的時間長度（毫秒） |
 | disableExceptionTracking | false | 若為 true，則不會實驗自動收集例外狀況。 預設值為 false。 |
 | disableTelemetry | false | 若為 true，則不會收集或傳送遙測。 預設值為 false。 |
-| enableDebug | false | 若為 true，則不論 SDK 記錄設定為何，**內部**的偵錯工具資料都會擲回為例外狀況，**而不**是記錄。 預設值為 false。 <br>***注意：*** 啟用此設定將會在發生內部錯誤時產生已捨棄的遙測。 這有助於快速找出您的設定或使用 SDK 的問題。 如果您不想在進行調試時遺失遙測，請考慮`consoleLoggingLevel`使用`telemetryLoggingLevel`或， `enableDebug`而不是。 |
+| enableDebug | false | 若為 true，則不論 SDK 記錄設定為何，**內部**的偵錯工具資料都會擲回為例外狀況，**而不**是記錄。 預設值為 false。 <br>***注意：*** 啟用此設定將會在發生內部錯誤時產生已捨棄的遙測。 這有助於快速找出您的設定或使用 SDK 的問題。 如果您不想在進行調試時遺失遙測，請考慮使用 `consoleLoggingLevel` 或， `telemetryLoggingLevel` 而不是 `enableDebug` 。 |
 | loggingLevelConsole | 0 | 將**內部**Application Insights 錯誤記錄到主控台。 <br>0：關閉， <br>1：只有嚴重錯誤， <br>2：所有專案（錯誤 & 警告） |
 | loggingLevelTelemetry | 1 | 將**內部**Application Insights 錯誤當做遙測傳送。 <br>0：關閉， <br>1：只有嚴重錯誤， <br>2：所有專案（錯誤 & 警告） |
 | diagnosticLogInterval | 10000 | 內部內部記錄佇列的輪詢間隔（以毫秒為單位） |
@@ -136,23 +189,28 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | appId | null | AppId 會用於用戶端上發生的 AJAX 相依性與伺服器端要求之間的相互關聯。 啟用「指標 API」時，無法自動使用它，但可在設定中手動設定。 預設值為 null |
 | enableCorsCorrelation | false | 若為 true，SDK 會將兩個標頭（「要求識別碼」和「要求-內容」）新增至所有 CORS 要求，以將外寄 AJAX 相依性與伺服器端上的對應要求相互關聯。 預設值為 false。 |
 | namePrefix | 未定義 | 選擇性值，將會作為 localStorage 和 cookie 名稱的名稱後置詞使用。
-| enableAutoRouteTracking | false | 自動追蹤單一頁面應用程式（SPA）中的路由變更。 若為 true，則每個路由變更都會將新的 Pageview 傳送至 Application Insights。 雜湊路由變更`example.com/foo#bar`（）也會記錄為新的頁面流覽。
+| enableAutoRouteTracking | false | 自動追蹤單一頁面應用程式（SPA）中的路由變更。 若為 true，則每個路由變更都會將新的 Pageview 傳送至 Application Insights。 雜湊路由變更（ `example.com/foo#bar` ）也會記錄為新的頁面流覽。
 | enableRequestHeaderTracking | false | 若為 true，則會追蹤 AJAX & 提取要求標頭，預設值為 false。
 | enableResponseHeaderTracking | false | 若為 true，則會追蹤 AJAX & 提取要求的回應標頭，預設值為 false。
-| distributedTracingMode | `DistributedTracingModes.AI` | 設定分散式追蹤模式。 如果已設定 AI_AND_W3C 模式或 W3C 模式，則會產生 W3C 追蹤內容標頭（traceparent/tracestate），並將其包含在所有傳出的要求中。 AI_AND_W3C 是針對與任何舊版 Application Insights 檢測服務的回溯相容性而提供的。
+| distributedTracingMode | `DistributedTracingModes.AI` | 設定分散式追蹤模式。 如果已設定 AI_AND_W3C 模式或 W3C 模式，則會產生 W3C 追蹤內容標頭（traceparent/tracestate），並將其包含在所有傳出的要求中。 AI_AND_W3C 是針對與任何舊版 Application Insights 檢測服務的回溯相容性而提供的。 請參閱[這裡](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)的範例。
+| enableAjaxErrorStatusText | false | 預設值為 false。 若為 true，則在失敗的 AJAX 要求上包含相依性事件中的回應錯誤資料文字。
+| enableAjaxPerfTracking | false | 預設值為 false。 旗標，可讓您查閱和包含額外的瀏覽器視窗。報告的 ajax （XHR 和 fetch）報告的計量中的效能計時。
+| maxAjaxPerfLookupAttempts | 3 | 預設值為3。 要尋找視窗的最大次數。效能時間（如果有的話），因為並非所有瀏覽器都填入視窗，所以這是必要的。在報告 XHR 要求的結尾和提取要求之後，就會在其完成後新增這項功能。
+| ajaxPerfLookupDelay | 25 | 預設為25毫秒。 重新嘗試尋找 windows 之前等待的時間量。 ajax 要求的效能時間（以毫秒為單位），並會直接傳遞到 setTimeout （）。
+| enableUnhandledPromiseRejectionTracking | false | 若為 true，未處理的承諾拒絕將會實驗自動收集，並回報為 JavaScript 錯誤。 當 disableExceptionTracking 為 true （不追蹤例外狀況）時，將會忽略設定值，而且不會回報未處理的承諾拒絕。
 
 ## <a name="single-page-applications"></a>單一頁面應用程式
 
-根據預設，此 SDK**不**會處理在單一頁面應用程式中發生的狀態型路由變更。 若要為您的單一頁面應用程式啟用自動路由變更追蹤， `enableAutoRouteTracking: true`您可以將新增到您的安裝程式設定。
+根據預設，此 SDK**不**會處理在單一頁面應用程式中發生的狀態型路由變更。 若要為您的單一頁面應用程式啟用自動路由變更追蹤，您可以將新增 `enableAutoRouteTracking: true` 到您的安裝程式設定。
 
 目前，我們提供了個別的[回應外掛程式](#react-extensions)，您可以使用這個 SDK 來初始化。 它也會為您完成路由變更追蹤，並收集[其他回應特定的遙測](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)。
 
 > [!NOTE]
-> 只有`enableAutoRouteTracking: true`在您**未**使用「回應」外掛程式時，才使用。 這兩者都能夠在路由變更時傳送新的 PageViews。 如果兩者都已啟用，可能會傳送重複的 PageViews。
+> `enableAutoRouteTracking: true`只有在您**未**使用「回應」外掛程式時，才使用。 這兩者都能夠在路由變更時傳送新的 PageViews。 如果兩者都已啟用，可能會傳送重複的 PageViews。
 
 ## <a name="configuration-autotrackpagevisittime"></a>設定： autoTrackPageVisitTime
 
-藉由`autoTrackPageVisitTime: true`設定，會追蹤使用者在每個頁面上花費的時間。 在每個新的 PageView 上，使用者花費在*上一頁*的持續時間會當做名`PageVisitTime`為的[自訂](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)計量傳送。 此自訂計量可在[計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)中看到為「記錄式計量」。
+藉由設定 `autoTrackPageVisitTime: true` ，會追蹤使用者在每個頁面上花費的時間。 在每個新的 PageView 上，使用者花費在*上一頁*的持續時間會當做名為的[自訂](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)計量傳送 `PageVisitTime` 。 此自訂計量可在[計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)中看到為「記錄式計量」。
 
 ## <a name="react-extensions"></a>回應延伸模組
 
@@ -183,7 +241,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ### <a name="analytics"></a>分析
 
-若要查詢 JavaScript SDK 所收集的遙測資料，請選取 [**記錄（分析）** ] 按鈕中的 [查看]。 藉由新增`where`的語句`client_Type == "Browser"`，您只會看到來自 JavaScript SDK 的資料，而其他 sdk 所收集的任何伺服器端遙測也會被排除。
+若要查詢 JavaScript SDK 所收集的遙測資料，請選取 [**記錄（分析）** ] 按鈕中的 [查看]。 藉由新增的 `where` 語句 `client_Type == "Browser"` ，您只會看到來自 JavaScript SDK 的資料，而其他 sdk 所收集的任何伺服器端遙測也會被排除。
  
 ```kusto
 // average pageView duration by name
@@ -220,7 +278,7 @@ dataset
 ```
 npm i --save @microsoft/applicationinsights-web-basic
 ```
-此版本隨附最少的特性和功能，並視您的需要建立它。 例如，它不會執行任何 autocollection （未攔截的例外狀況、AJAX 等等）。 此版本不包含傳送特定遙測類型的`trackTrace`api `trackException`，例如、等等，因此您必須提供自己的包裝函式。 唯一可用的 API 是`track`。 [範例](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html)位於此處。
+此版本隨附最少的特性和功能，並視您的需要建立它。 例如，它不會執行任何 autocollection （未攔截的例外狀況、AJAX 等等）。 此版本不包含傳送特定遙測類型的 Api，例如 `trackTrace` 、 `trackException` 等等，因此您必須提供自己的包裝函式。 唯一可用的 API 是 `track` 。 [範例](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html)位於此處。
 
 ## <a name="examples"></a>範例
 
@@ -231,10 +289,10 @@ npm i --save @microsoft/applicationinsights-web-basic
 SDK V2 版本中的重大變更：
 - 為了允許更好的 API 簽章，某些 API 呼叫（例如 trackPageView 和 trackException）已更新。 不支援在 Internet Explorer 8 和舊版的瀏覽器中執行。
 - 遙測信封因數據架構更新而有欄位名稱和結構變更。
-- 已`context.operation`移`context.telemetryTrace`至。 有些欄位也已變更（`operation.id` --> `telemetryTrace.traceID`）。
-  - 若要手動重新整理目前的 pageview 識別碼（例如，在 SPA 應用程式中`appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`），請使用。
+- 已移 `context.operation` 至 `context.telemetryTrace` 。 有些欄位也已變更（ `operation.id`  -->  `telemetryTrace.traceID` ）。
+  - 若要手動重新整理目前的 pageview 識別碼（例如，在 SPA 應用程式中），請使用 `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` 。
     > [!NOTE]
-    > 若要保留唯一的追蹤識別碼（您先前使用`Util.newId()`的位置） `Util.generateW3CId()`，現在請使用。 最後最後是作業識別碼。
+    > 若要保留唯一的追蹤識別碼（您先前使用的位置 `Util.newId()` ），現在請使用 `Util.generateW3CId()` 。 最後最後是作業識別碼。
 
 如果您使用目前的 application insights 生產 SDK （1.0.20），而且想要查看新的 SDK 是否在執行時間中運作，請根據您目前的 SDK 載入案例更新 URL。
 
@@ -243,7 +301,7 @@ SDK V2 版本中的重大變更：
    "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
    ```
 
-- npm 案例：呼叫`downloadAndSetup`以從 CDN 下載完整的 ApplicationInsights 腳本，並使用檢測金鑰將它初始化：
+- npm 案例：呼叫 `downloadAndSetup` 以從 CDN 下載完整的 ApplicationInsights 腳本，並使用檢測金鑰將它初始化：
 
    ```ts
    appInsights.downloadAndSetup({
@@ -256,12 +314,13 @@ SDK V2 版本中的重大變更：
 
 ## <a name="sdk-performanceoverhead"></a>SDK 效能/額外負荷
 
-在只有 25 KB 的 gzipped，而且只需要約15毫秒的時間初始化，Application Insights 在您的網站中增加 loadtime 的數量。 藉由使用程式碼片段，會快速載入程式庫的最小元件。 在此同時，完整的腳本會在背景下載。
+在只有 36 KB 的 gzipped，而且只需要約15毫秒的時間初始化，Application Insights 在您的網站中增加了可忽略的 loadtime 數量。 藉由使用程式碼片段，會快速載入程式庫的最小元件。 在此同時，完整的腳本會在背景下載。
 
 從 CDN 下載腳本時，會將頁面的所有追蹤排入佇列。 下載的腳本完成非同步初始化之後，所有已排入佇列的事件都會被追蹤。 因此，您不會在頁面的整個生命週期期間遺失任何遙測。 這個安裝程式會為您的頁面提供無縫分析系統，讓您的使用者看不到。
 
 > 摘要：
-> - **25 KB** gzipped
+> - ![npm 版本](https://badge.fury.io/js/%40microsoft%2Fapplicationinsights-web.svg)
+> - ![gzip 壓縮大小](https://img.badgesize.io/https://js.monitor.azure.com/scripts/b/ai.2.min.js.svg?compression=gzip)
 > - **15 毫秒**的整體初始化時間
 > - 在頁面生命週期期間遺漏了**零**追蹤
 
@@ -269,7 +328,15 @@ SDK V2 版本中的重大變更：
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-Chrome 最新✔ |  Firefox 最新✔ | IE 9 + & Edge ✔ | Opera 最新✔ | Safari 最新✔ |
+Chrome 最新✔ |  Firefox 最新✔ | IE 9 + & Edge ✔<br>IE 8 相容 | Opera 最新✔ | Safari 最新✔ |
+
+## <a name="es3ie8-compatibility"></a>以及 ES3/IE8 相容性
+
+身為 SDK，有許多使用者無法控制其客戶所使用的瀏覽器。 因此，我們需要確保此 SDK 會繼續「工作」，而且不會在舊版瀏覽器載入時中斷 JS 的執行。 雖然不支援 IE8 和較舊的層代（以及 ES3）瀏覽器，但有許多大型客戶/使用者會繼續要求頁面「工作」，而且會注意到他們可能會或無法控制使用者選擇使用的瀏覽器。
+
+這並不表示我們只會支援最常見的功能集，只是我們需要維護以及 ES3 的程式碼相容性，而且加入新功能時，必須以不會中斷以及 ES3 JavaScript 剖析並新增為選擇性功能的方式新增。
+
+[如需 IE8 支援的完整詳細資料，請參閱 GitHub](https://github.com/Microsoft/ApplicationInsights-JS#es3ie8-compatibility)
 
 ## <a name="open-source-sdk"></a>開放原始碼 SDK
 
@@ -279,3 +346,4 @@ Application Insights JavaScript SDK 是開放原始碼，可供您查看原始�
 * [追蹤流量](usage-overview.md)
 * [自訂事件和計量](api-custom-events-metrics.md)
 * [Build-measure-learn](usage-overview.md)
+* [針對 SDK 載入失敗進行疑難排解](javascript-sdk-load-failure.md)

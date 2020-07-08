@@ -6,16 +6,15 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: f1d8189068278b46e3ec3ea66875d79bb91e5e16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9c8f91cee01273aa2ed1cbfe1812130b600a094a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010200"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84456737"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>適用於 Azure Redis 快取的 ASP.NET 輸出快取提供者
 
-Redis 輸出快取提供者為輸出快取資料的程序外儲存體機制。 此資料特別適用於完整 HTTP 回應 (頁面輸出快取)。 提供者插入 ASP.NET 4 中導入的新輸出快取提供者擴充點。
+Redis 輸出快取提供者為輸出快取資料的程序外儲存體機制。 此資料特別適用於完整 HTTP 回應 (頁面輸出快取)。 提供者插入 ASP.NET 4 中導入的新輸出快取提供者擴充點。 針對 ASP.NET Core 應用程式，請參閱[ASP.NET Core 中的回應](https://docs.microsoft.com/aspnet/core/performance/caching/response)快取。 
 
 若要使用 Redis 輸出快取提供者，請先設定您的快取，然後使用「Redis 輸出快取提供者 NuGet 封裝」設定 ASP.NET 應用程式。 本主題提供為使用 Redis 輸出快取提供者而進行應用程式設定的相關指引。 如需有關建立及設定「Azure Redis 快取」執行個體的詳細資訊，請參閱[建立快取](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
 
@@ -54,13 +53,13 @@ NuGet 封裝會下載和加入必要的組件參考，並將下列區段加入�
 | 屬性 | 類型 | 預設 | 描述 |
 | --------- | ---- | ------- | ----------- |
 | *設立* | 字串 | 發出 | Redis 伺服器 IP 位址或主機名稱 |
-| *移植* | 正整數 | 6379（非 TLS/SSL）<br/>6380（TLS/SSL） | Redis 伺服器埠 |
+| *port* | 正整數 | 6379（非 TLS/SSL）<br/>6380（TLS/SSL） | Redis 伺服器埠 |
 | *accessKey* | 字串 | "" | 啟用 Redis 授權時的 Redis 伺服器密碼。 此值預設為空字串，這表示會話狀態提供者連接到 Redis 伺服器時，不會使用任何密碼。 **如果您的 Redis 伺服器位於可公開存取的網路（例如 Azure Redis Cache）中，請務必啟用 Redis 授權以改善安全性，並提供安全密碼。** |
 | *ssl* | boolean | **false** | 是否透過 TLS 連接到 Redis 伺服器。 此值預設為**false** ，因為 Redis 不支援現成的 TLS。 **如果您使用的 Azure Redis Cache 支援現成可用的 SSL，請務必將此設定為 true，以改善安全性。**<br/><br/>針對新的快取，非 TLS 埠預設為停用。 指定**true**表示此設定會使用 TLS 埠。 如需啟用非 TLS 埠的詳細資訊，請參閱[設定](cache-configure.md)快取主題中的[存取埠](cache-configure.md#access-ports)一節。 |
 | *databaseIdNumber* | 正整數 | 0 | *這個屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>指定要使用的 Redis 資料庫。 |
 | *connectionTimeoutInMilliseconds* | 正整數 | 由 Stackexchange.redis 所提供。 Redis | 建立 Stackexchange.redis 時用來設定*ConnectTimeout* 。 Redis. ConnectionMultiplexer。 |
 | *operationTimeoutInMilliseconds* | 正整數 | 由 Stackexchange.redis 所提供。 Redis | 建立 Stackexchange.redis 時用來設定*SyncTimeout* 。 Redis. ConnectionMultiplexer。 |
-| *connectionString* （有效的 Stackexchange.redis. Redis 連接字串） | 字串 | *n/a* | AppSettings 或 web.config 的參數參考，否則為有效的 Stackexchange.redis. Redis 連接字串。 這個屬性可以提供*host*、 *port*、 *AccessKey*、 *ssl*和其他 stackexchange.redis Redis 屬性的值。 如需進一步瞭解*connectionString*，請參閱[屬性附注](#attribute-notes)一節中的[設定 connectionString](#setting-connectionstring) 。 |
+| *connectionString* （有效的 Stackexchange.redis. Redis 連接字串） | 字串 | *n/a* | 可以是 AppSettings 或 web.config 的參數參考，或是有效的 Stackexchange.redis. Redis 連接字串。 這個屬性可以提供*host*、 *port*、 *AccessKey*、 *ssl*和其他 stackexchange.redis Redis 屬性的值。 如需進一步瞭解*connectionString*，請參閱[屬性附注](#attribute-notes)一節中的[設定 connectionString](#setting-connectionstring) 。 |
 | *settingsClassName*<br/>*settingsMethodName* | 字串<br/>字串 | *n/a* | *這些屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>請使用這些屬性來提供連接字串。 *settingsClassName*應該是元件限定的類別名稱，其中包含*settingsMethodName*所指定的方法。<br/><br/>*SettingsMethodName*所指定的方法應該是 public、static 和 void （不接受任何參數），且傳回類型為**string**。 這個方法會傳回實際的連接字串。 |
 | *loggingClassName*<br/>*loggingMethodName* | 字串<br/>字串 | *n/a* | *這些屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>您可以使用這些屬性，透過從會話狀態/輸出快取提供記錄，連同 Stackexchange.redis. Redis 中的記錄，來對應用程式進行 debug。 *loggingClassName*應該是元件限定的類別名稱，其中包含*loggingMethodName*所指定的方法。<br/><br/>*LoggingMethodName*所指定的方法應該是 public、static 和 void （不接受任何參數），且傳回**類型為 system.servicemodel**。 |
 | *applicationName* | 字串 | 目前進程的模組名稱，或 "/" | *僅限 SessionStateProvider*<br/>*這個屬性只能透過 web.config 或 AppSettings 來指定。*<br/><br/>要在 Redis 快取中使用的應用程式名稱前置詞。 客戶可能會基於不同目的使用相同的 Redis 快取。 為確保工作階段金鑰不會發生衝突，它可以加上應用程式名稱的前置詞。 |
@@ -72,7 +71,7 @@ NuGet 封裝會下載和加入必要的組件參考，並將下列區段加入�
 
 ### <a name="setting-connectionstring"></a>設定*connectionString*
 
-如果 AppSettings 中有這類字串， *connectionString*的值會當做從 AppSettings 提取實際連接字串的索引鍵使用。 如果在 AppSettings 中找不到， *connectionString*的值將會當做索引鍵使用，以從 web.config **connectionString**區段中提取實際的連接字串（如果該區段存在的話）。 如果連接字串不存在於 AppSettings 或 web.config **ConnectionString**區段中，則在建立 Stackexchange.redis. Redis 時， *ConnectionString*的常值會當做連接字串使用。
+如果 AppSettings 中有這類字串， *connectionString*的值會當做從 AppSettings 提取實際連接字串的索引鍵使用。 如果在 AppSettings 中找不到， *connectionString*的值將會作為索引鍵，以從 web.config **connectionString**區段中提取實際的連接字串（如果該區段存在的話）。 如果連接字串不存在 AppSettings 或 web.config **connectionstring**區段中，則在建立 Stackexchange.redis. Redis 時， *ConnectionString*的常值會當做連接字串使用。
 
 下列範例說明如何使用*connectionString* 。
 
@@ -84,7 +83,7 @@ NuGet 封裝會下載和加入必要的組件參考，並將下列區段加入�
 </connectionStrings>
 ```
 
-在`web.config`中，請使用上述金鑰做為參數值，而不是實際值。
+在中 `web.config` ，請使用上述金鑰做為參數值，而不是實際值。
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -104,7 +103,7 @@ NuGet 封裝會下載和加入必要的組件參考，並將下列區段加入�
 </appSettings>
 ```
 
-在`web.config`中，請使用上述金鑰做為參數值，而不是實際值。
+在中 `web.config` ，請使用上述金鑰做為參數值，而不是實際值。
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -193,7 +192,7 @@ namespace MyCompany.Redis
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-在上一個範例中，已快取的頁面資料會留在快取中 60 秒，而且會對每一個參數組合快取不同版本的頁面。 如需 OutputCache 指示詞的詳細資訊， [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837)請參閱。
+在上一個範例中，已快取的頁面資料會留在快取中 60 秒，而且會對每一個參數組合快取不同版本的頁面。 如需 OutputCache 指示詞的詳細資訊，請參閱 [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837) 。
 
 一旦執行這些步驟，您的應用程式將設定為使用 Redis 輸出快取提供者。
 
