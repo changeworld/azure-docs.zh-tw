@@ -4,26 +4,23 @@ description: 與 Facebook 同盟，以允許外部使用者 (來賓) 使用自�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: e9fa9d9e23de9a4ec93cbef6d2696d7bec70d41d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551256"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>將自助式註冊使用者流程新增至應用程式 (預覽)
-|     |
-| --- |
-| 自助式註冊是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+> [!NOTE]
+> 自助式註冊是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 您可以針對由您的組織所建置的應用程式建立使用者流程。 將您的使用者流程與應用程式建立關聯，可讓您啟用該應用程式的註冊。 您可以選擇多個要與使用者流程建立關聯的應用程式。 當您將使用者流程與一或多個應用程式建立關聯後，瀏覽該應用程式的使用者即可透過使用者流程中設定的選項進行註冊並取得來賓帳戶。
 
@@ -109,3 +106,5 @@ Azure AD 是自助式註冊的預設識別提供者。 這表示使用者依預�
 
 - [將 Google 新增至您的社交識別提供者清單](google-federation.md)
 - [將 Facebook 新增至您的社交識別提供者清單](facebook-federation.md)
+- [使用 API 連接器，透過 web Api 自訂和擴充您的使用者流程](api-connectors-overview.md)
+- [將自訂核准工作流程新增至您的使用者流程](self-service-sign-up-add-approvals.md)

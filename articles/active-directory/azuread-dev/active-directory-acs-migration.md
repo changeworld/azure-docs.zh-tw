@@ -7,18 +7,18 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.custom: aaddev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3168d36bf4c2d3c696173725f669b12dc168dcc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bae052e06aae4881dd7203a5616b35e9c96997fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154996"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551733"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>操作說明：從 Azure 存取控制服務遷移
 
@@ -26,7 +26,7 @@ ms.locfileid: "80154996"
 
 Microsoft Azure 存取控制服務 (ACS) 是 Azure Active Directory (Azure AD) 的一項服務，將於 2018 年 11 月 7 日淘汰。 目前使用存取控制的應用程式和服務，必須在淘汰前完全移轉到其他驗證機制。 本文說明給目前客戶的建議移轉選項，協助您規劃汰換存取控制的事宜。 如果您目前未使用存取控制，不需要採取任何動作。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 存取控制是雲端驗證服務，能以簡單的方式驗證和授權使用者，使其得以存取您的 Web 應用程式和服務。 它讓您不需要考慮您的程式碼也能享有許多驗證和授權功能。 存取控制的主要使用者包括 Microsoft .NET 用戶端、ASP.NET Web 應用程式及 Windows Communication Foundation (WCF) Web 服務的開發人員和架構設計師。
 
@@ -114,7 +114,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 - **2017 年 11 月**：Azure 傳統入口網站中的 Azure AD 管理員體驗[已淘汰](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/)。 目前，可在以下新的專用 URL 進行「存取控制」的命名空間管理：`https://manage.windowsazure.com?restoreClassic=true`。 該 URL 可以用來檢視現有的命名空間、啟用和停用命名空間，若您有需要，也可以刪除命名空間。
 - **2018 年 4 月 2 日**：Azure 傳統入口網站已完全淘汰，這意謂著透過任何 URL 都無法進行「存取控制」命名空間管理。 屆時，您將無法停用或啟用、刪除或列舉存取控制命名空間。 不過，「存取控制」管理入口網站將會在 `https://\<namespace\>.accesscontrol.windows.net` 運作並提供完整功能。 存取控制的其他所有元件都將繼續正常運作。
-- **2018 年 11 月 7 日**：所有「存取控制」元件將永久關閉。 這包括存取控制管理入口網站、管理服務、STS 和權杖轉換規則引擎。 屆時，所有傳送給存取控制 (網指 \<namespace\>.accesscontrol.windows.net) 的要求都會失敗。 在那之前，請確實將所有現有的應用程式和服務移轉至其他技術。
+- **2018 年 11 月 7 日**：所有「存取控制」元件將永久關閉。 這包括存取控制管理入口網站、管理服務、STS 和權杖轉換規則引擎。 此時，傳送至存取控制（位於. accesscontrol.windows.net）的任何要求都會 \<namespace\> 失敗。 在那之前，請確實將所有現有的應用程式和服務移轉至其他技術。
 
 > [!NOTE]
 > 原則會停用在一段期間內未要求權杖的命名空間。 自 2018 年 9 月起，這段期間目前為 14 天的非使用狀態，但在未來的幾週內，這將縮短成 7 天的非使用狀態。 如果您有目前停用的「存取控制」命名空間，您可以[下載並安裝 ACS PowerShell](#download-and-install-acs-powershell) 來重新啟用這些命名空間。
@@ -127,7 +127,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 接受存取控制簽發之權杖的每項 Microsoft 雲端服務，現在支援至少一個其他驗證方式。 每項服務適合的驗證機制不盡相同。 建議您參閱每項服務的特定文件，了解官方指導。 為了方便起見，以下提供每一組文件：
 
-| Service | 指引 |
+| 服務 | 指引 |
 | ------- | -------- |
 | Azure 服務匯流排 | [遷移至共用存取簽章](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure 服務匯流排轉送 | [遷移至共用存取簽章](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
@@ -206,7 +206,7 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 | SAML 2.0 | 支援 | 支援 |
 | SWT | 支援 | 不支援 |
 | **自訂** | | |
-| 可自訂的首頁領域探索/帳戶挑選 UI | 可下載的程式碼，可以納入應用程式 | 不受支援 |
+| 可自訂的首頁領域探索/帳戶挑選 UI | 可下載的程式碼，可以納入應用程式 | 不支援 |
 | 上傳自訂權杖簽署憑證 | 支援 | 支援 |
 | 在權杖中自訂宣告 |- 從識別提供者傳遞輸入宣告<br />- 從識別提供者取得宣告形式的存取權杖<br />- 根據輸入宣告值簽發輸出宣告<br />- 簽發具有常數值的輸出宣告 |- 無法從同盟識別提供者傳遞宣告<br />- 無法從識別提供者取得宣告形式的存取權杖<br />- 無法根據輸入宣告值簽發輸出宣告<br />- 可以簽發具有常數值的輸出宣告<br />- 可以根據同步至 Azure AD 的使用者屬性簽發輸出宣告 |
 | **自動化** | | |
@@ -265,7 +265,7 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 
 如果您決定 Azure AD B2C 是適合您應用程式和服務的移轉方式，請先了解下列資源的內容：
 
-- [Azure AD B2C 檔](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
+- [Azure AD B2C 文件](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
 - [Azure AD B2C 自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
 - [Azure AD B2C 定價](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
@@ -281,10 +281,13 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 
 在這些情況下，您可能會想考慮將 Web 應用程式移轉至另一個雲端驗證服務。 我們建議您探索下列選項。 以下每個選項均提供類似存取控制的功能：
 
-|     |     |
-| --- | --- |
-| ![此圖顯示 Auth0 標誌](./media/active-directory-acs-migration/rsz-auth0.png) | [Auth0](https://auth0.com/acs) 是彈性的雲端識別服務，不僅建立了[適用於存取控制客戶的高階移轉指南](https://auth0.com/acs)，而且幾乎能支援 ACS 支援的所有功能。 |
-| ![此圖顯示 Ping 身分識別標誌](./media/active-directory-acs-migration/rsz-ping.png) | [Ping Identity](https://www.pingidentity.com) 提供兩種類似 ACS 的解決方案。 PingOne 是雲端身分識別服務，支援許多與 ACS 相同的功能，而 PingFederate 則是類似的內部部署身分識別產品，可提供更大的彈性。 如需有關使用這些產品的詳細資料，請參閱 [Ping 的 ACS 淘汰指導](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
+![此圖顯示 Auth0 標誌](./media/active-directory-acs-migration/rsz-auth0.png) 
+
+[Auth0](https://auth0.com/acs) 是彈性的雲端識別服務，不僅建立了[適用於存取控制客戶的高階移轉指南](https://auth0.com/acs)，而且幾乎能支援 ACS 支援的所有功能。
+
+![此圖顯示 Ping 身分識別標誌](./media/active-directory-acs-migration/rsz-ping.png)
+
+[Ping Identity](https://www.pingidentity.com) 提供兩種類似 ACS 的解決方案。 PingOne 是雲端身分識別服務，支援許多與 ACS 相同的功能，而 PingFederate 則是類似的內部部署身分識別產品，可提供更大的彈性。 如需有關使用這些產品的詳細資料，請參閱 [Ping 的 ACS 淘汰指導](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。
 
 我們與 Ping Identity 和 Auth0 合作的目的是，確保所有存取控制客戶都能獲得從存取控制中，盡可能簡單地搬移其應用程式和服務的移轉方式。
 
@@ -343,10 +346,12 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 在這些情況下，您可能需考慮將 Web 應用程式移轉至另一個雲端驗證服務。 我們建議您探索下列選項。 以下每個選項均提供類似存取控制的功能：
 
-|     |     |
-| --- | --- |
-| ![此圖顯示 Auth0 標誌](./media/active-directory-acs-migration/rsz-auth0.png) | [Auth0](https://auth0.com/acs) 是彈性的雲端識別服務，不僅建立了[適用於存取控制客戶的高階移轉指南](https://auth0.com/acs)，而且幾乎能支援 ACS 支援的所有功能。 |
-| ![此圖顯示 Ping 身分識別標誌](./media/active-directory-acs-migration/rsz-ping.png) | [Ping Identity](https://www.pingidentity.com) 提供兩種類似 ACS 的解決方案。 PingOne 是雲端身分識別服務，支援許多與 ACS 相同的功能，而 PingFederate 則是類似的內部部署身分識別產品，可提供更大的彈性。 如需有關使用這些產品的詳細資料，請參閱 [Ping 的 ACS 淘汰指導](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
+![此圖顯示 Auth0 標誌](./media/active-directory-acs-migration/rsz-auth0.png)
+
+[Auth0](https://auth0.com/acs) 是彈性的雲端識別服務，不僅建立了[適用於存取控制客戶的高階移轉指南](https://auth0.com/acs)，而且幾乎能支援 ACS 支援的所有功能。
+
+![此圖顯示 Ping 身分識別標誌 ](./media/active-directory-acs-migration/rsz-ping.png)
+ [Ping 身分識別](https://www.pingidentity.com)提供兩種類似 ACS 的解決方案。 PingOne 是雲端身分識別服務，支援許多與 ACS 相同的功能，而 PingFederate 則是類似的內部部署身分識別產品，可提供更大的彈性。 如需有關使用這些產品的詳細資料，請參閱 [Ping 的 ACS 淘汰指導](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。
 
 我們與 Ping Identity 和 Auth0 合作的目的是，確保所有存取控制客戶都能獲得從存取控制中，盡可能簡單地搬移其應用程式和服務的移轉方式。
 

@@ -3,15 +3,15 @@ title: 管理及更新 Azure HPC Cache
 description: 如何使用 Azure 入口網站來管理及更新 Azure HPC 快取
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
-ms.date: 1/29/2020
-ms.author: rohogue
-ms.openlocfilehash: 57d6a2024cd6fd979426ca5de5e261f110f6156f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: 825b8a34e130286a5772363107311fe4170e8743
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515567"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>從 Azure 入口網站管理您的快取
 
@@ -30,6 +30,10 @@ ms.locfileid: "81537945"
 * [**刪除**](#delete-the-cache)-永久終結快取
 
 如需這些選項的詳細資訊，請參閱下方。
+
+按一下下方影像觀看示範快取管理工作的[影片](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)。
+
+[![影片縮圖： Azure HPC 快取：管理（按一下以流覽影片頁面）](media/video-5-manage.png)](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)
 
 ## <a name="stop-the-cache"></a>停止快取
 

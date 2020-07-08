@@ -4,21 +4,21 @@ description: 自訂 Azure AD authentication 會話設定，包括使用者登入
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 11/21/2019
+ms.topic: how-to
+ms.date: 06/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263279"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552122"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>使用條件式存取來設定驗證會話管理
+# <a name="configure-authentication-session-management-with-conditional-access"></a>使用條件式存取來設定驗證工作階段管理
 
 在複雜的部署中，組織可能需要限制驗證會話。 某些案例可能包括：
 
@@ -39,7 +39,7 @@ ms.locfileid: "79263279"
 
 這聽起來可能會令使用者不會要求重新登入，事實上，違反 IT 原則會撤銷會話。 某些範例包括（但不限於）密碼變更、incompliant 裝置或帳戶停用。 您也可以[使用 PowerShell 來明確撤銷使用者的會話](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 Azure AD 預設設定會變成「不詢問使用者在其會話的安全性狀態未變更時提供認證」。
 
-登入頻率設定適用于已根據標準來執行 OAUTH2 或 OIDC 通訊協定的應用程式。 大部分適用于 Windows、Mac 和行動裝置的 Microsoft 原生應用程式，包括下列 web 應用程式都符合設定。
+[登入頻率] 設定適用于已根據標準來執行 OAUTH2 或 OIDC 通訊協定的應用程式。 大部分適用于 Windows、Mac 和行動裝置的 Microsoft 原生應用程式，包括下列 web 應用程式都符合設定。
 
 - Word、Excel、PowerPoint Online
 - OneNote Online
@@ -51,9 +51,17 @@ ms.locfileid: "79263279"
 - Dynamics CRM Online
 - Azure 入口網站
 
+登入頻率設定也適用于 SAML 應用程式，但前提是它們不會捨棄自己的 cookie，並會定期重新導向至 Azure AD 進行驗證。
+
+### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>使用者登入頻率和多重要素驗證
+
+登入頻率先前僅適用于已聯結 Azure AD 的裝置上的第一個因素驗證，混合式 Azure AD 聯結，並 Azure AD 註冊。 我們的客戶沒有簡單的方法可以在這些裝置上重新強制執行多重要素驗證（MFA）。 根據客戶的意見反應，登入頻率也將適用于 MFA。
+
+[![登入頻率和 MFA](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart-small.png)](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart.png#lightbox)
+
 ### <a name="user-sign-in-frequency-and-device-identities"></a>使用者登入頻率和裝置身分識別
 
-如果您已加入 Azure AD、混合式 Azure AD 加入，或 Azure AD 註冊的裝置，當使用者解除鎖定其裝置或以互動方式登入時，此事件也會符合「登入頻率」原則。 在下列2個範例中，使用者登入頻率設定為1小時：
+如果您已加入 Azure AD、混合式 Azure AD 加入，或 Azure AD 註冊的裝置，當使用者解除鎖定其裝置或以互動方式登入時，此事件也會滿足登入頻率原則。 在下列兩個範例中，使用者登入頻率設定為1小時：
 
 範例 1：
 
@@ -90,7 +98,7 @@ ms.locfileid: "79263279"
    > [!NOTE]
    > 建議您為金鑰 Microsoft Office 應用程式（例如 Exchange Online 和 SharePoint Online）設定相同的驗證提示頻率，以獲得最佳的使用者體驗。
 
-1. 移至 [**存取控制** > ]**會話**，然後按一下 [登**入頻率**]
+1. 移至 [**存取控制**]  >  **會話**，然後按一下 [登**入頻率**]
 1. 在第一個文字方塊中輸入必要的 [日] 和 [小時] 值
 1. 從下拉式清單中選取 [**小時**] 或 [**天**] 的值
 1. 儲存原則
@@ -109,7 +117,7 @@ ms.locfileid: "79263279"
    > [!NOTE]
    > 請注意，此控制項必須選擇 [所有雲端應用程式] 做為條件。 瀏覽器會話持續性是由驗證會話權杖所控制。 瀏覽器會話中的所有索引標籤都會共用單一會話權杖，因此它們全都必須共用持續性狀態。
 
-1. 移至 [**存取控制** > ]**會話**，然後按一下 [持續性**瀏覽器會話**]
+1. 移至 [**存取控制**]  >  **會話**，然後按一下 [**持續性瀏覽器會話**]
 1. 從下拉式清單中選取值
 1. 儲存原則
 

@@ -4,15 +4,15 @@ description: 瞭解如何使用 Azure 診斷設定來監視儲存在 Azure Cosmo
 author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sngun
-ms.openlocfilehash: b1a507c54c6a6555fc945dd35ee6e54d37d49bfd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 881ddfec587df61201f2c251fd0dd0a8164496c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549967"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>使用 Azure 中的診斷設定來監視 Azure Cosmos DB 資料
 
@@ -20,7 +20,7 @@ Azure 中的診斷設定可用來收集資源記錄。 資源會發出 Azure 資
 
 系統會自動收集平臺計量和活動記錄，而您必須建立診斷設定來收集資源記錄，或將它們轉送到 Azure 監視器外部。 您可以使用下列步驟來開啟 Azure Cosmos 帳戶的診斷設定：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入[Azure 入口網站](https://portal.azure.com)。
 
 1. 瀏覽至 Azure Cosmos 帳戶。 開啟 [**診斷設定**] 窗格，然後選取 [**新增診斷設定**] 選項。
 
@@ -32,19 +32,19 @@ Azure 中的診斷設定可用來收集資源記錄。 資源會發出 Azure 資
 
 1. 當您建立診斷設定時，可以指定要收集的記錄類別。 下面列出 Azure Cosmos DB 所支援的記錄類別，以及它們所收集的範例記錄檔：
 
- * **DataPlaneRequests**：選取此選項可將後端要求記錄到所有 api，包括 SQL、Graph、MongoDB、Cassandra，以及 Azure Cosmos DB 中的資料表 API 帳戶。 要注意的重要屬性包括`Requestcharge`： `statusCode`、 `clientIPaddress`、和`partitionID`。
+ * **DataPlaneRequests**：選取此選項可將後端要求記錄到所有 api，包括 SQL、Graph、MongoDB、Cassandra，以及 Azure Cosmos DB 中的資料表 API 帳戶。 要注意的重要屬性包括： `Requestcharge` 、 `statusCode` 、 `clientIPaddress` 和 `partitionID` 。
 
     ```json
     { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
     ```
 
-* **MongoRequests**：選取此選項可從前端記錄使用者起始的要求，以向 Azure Cosmos DB 的 MongoDB API 提供要求。 其他 API 帳戶無法使用此記錄類型。 要注意的重要屬性包括`Requestcharge`： `opCode`、。 當您在診斷記錄中啟用 MongoRequests 時，請務必關閉 DataPlaneRequests。 針對 API 提出的每個要求，您會看到一個記錄檔。
+* **MongoRequests**：選取此選項可從前端記錄使用者起始的要求，以向 Azure Cosmos DB 的 MongoDB API 提供要求。 其他 API 帳戶無法使用此記錄類型。 要注意的重要屬性包括： `Requestcharge` 、 `opCode` 。 當您在診斷記錄中啟用 MongoRequests 時，請務必關閉 DataPlaneRequests。 針對 API 提出的每個要求，您會看到一個記錄檔。
 
     ```json
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
 
-* **CassandraRequests**：選取此選項可從前端記錄使用者起始的要求，以提供要求給 Cassandra AZURE COSMOS DB 的 API。 其他 API 帳戶無法使用此記錄類型。 要注意的索引鍵屬性`operationName`是`requestCharge`、 `piiCommandText`、。 當您在診斷記錄中啟用 CassandraRequests 時，請務必關閉 DataPlaneRequests。 針對 API 提出的每個要求，您會看到一個記錄檔。
+* **CassandraRequests**：選取此選項可從前端記錄使用者起始的要求，以提供要求給 Cassandra AZURE COSMOS DB 的 API。 其他 API 帳戶無法使用此記錄類型。 要注意的索引鍵屬性是 `operationName` 、 `requestCharge` 、 `piiCommandText` 。 當您在診斷記錄中啟用 CassandraRequests 時，請務必關閉 DataPlaneRequests。 針對 API 提出的每個要求，您會看到一個記錄檔。
 
    ```json
    { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
@@ -146,6 +146,21 @@ Azure 中的診斷設定可用來收集資源記錄。 資源會發出 Azure 資
    | limit 100
    ```
 
+1. 如何取得查詢的要求費用和執行持續時間？
+
+   ```kusto
+   AzureDiagnostics
+   | where TimeGenerated >= ago(24hr)
+   | where Category == "QueryRuntimeStatistics"
+   | join (
+   AzureDiagnostics
+   | where TimeGenerated >= ago(24hr)
+   | where Category == "DataPlaneRequests"
+   ) on $left.activityId_g == $right.activityId_g
+   | project databasename_s, collectionname_s, OperationName1 , querytext_s,requestCharge_s1, duration_s1, bin(TimeGenerated, 1min)
+   ```
+
+
 1. 如何取得不同作業的散發？
 
    ```Kusto
@@ -234,5 +249,5 @@ Azure 中的診斷設定可用來收集資源記錄。 資源會發出 Azure 資
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure Cosmos DB 的 Azure 監視器](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json)
+* [適用於 Azure Cosmos DB 的 Azure 監視器](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json)
 * [使用 Azure Cosmos DB 中的計量進行監視及偵錯](use-metrics.md)

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 26646ad5ae42d2fa301a7f894084a78a64c73bd4
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: cd8771afdc9c4462faaff758ffdd073382f69f53
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884666"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550984"
 ---
 # <a name="blob-snapshots"></a>Blob 快照集
 
@@ -25,7 +25,7 @@ ms.locfileid: "82884666"
 
 ## <a name="about-blob-snapshots"></a>關於 blob 快照集
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 Blob 的快照集與其基底 Blob 相同，除了 Blob URI 附加了 [日期時間] **** 值以表示擷取快照當時的時間。 例如，如果分頁 Blob URI 為 `http://storagesample.core.blob.windows.net/mydrives/myvhd`，則快照集 URI 類似於 `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`。
 
@@ -91,5 +91,5 @@ VHD 檔案是用來儲存 VM 磁碟目前的資訊和狀態。 您可以從 VM �
 
 ## <a name="next-steps"></a>後續步驟
 
-- [在 .NET 中建立和管理 blob 快照集](snapshots-manage-dotnet.md)
+- [在 .NET 中建立和管理 Blob 快照集](snapshots-manage-dotnet.md)
 - [以遞增快照集備份 Azure 非受控 VM 磁碟](../../virtual-machines/windows/incremental-snapshots.md)

@@ -11,21 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 181e8192170cd7394d6817edd655f4e8257b48a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81cd2649ff056ab107491cf60602f0da7435b228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654032"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550637"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>啟用無密碼安全性金鑰使用 Azure Active Directory 登入內部部署資源（預覽）
 
 本檔著重于針對同時加入**Azure AD**和**混合式 Azure AD** Windows 10 裝置的環境，啟用內部部署資源的無密碼 authentication。 這項功能會使用與 Microsoft 相容的安全性金鑰，提供對內部部署資源的無縫單一登入（SSO）。
 
-|     |
-| --- |
-| FIDO2 安全性金鑰是 Azure Active Directory 的公開預覽功能。 如需有關預覽的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定|
-|     |
+> [!NOTE]
+> FIDO2 安全性金鑰是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>使用 FIDO2 金鑰的 SSO 至內部部署資源
 
@@ -42,7 +40,7 @@ Azure Active Directory （AD）可以針對一或多個 Active Directory 網域�
 1. 用戶端機器會聯絡內部部署 AD 網域控制站，並針對完整格式的 TGT 來交易部分 TGT。
 1. 用戶端電腦現在具有 Azure AD PRT 和完整的 Active Directory TGT，而且可以存取雲端和內部部署資源。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 組織必須在完成本文中的步驟之前，先完成[啟用無密碼安全性金鑰登入 Windows 10 裝置（預覽）](howto-authentication-passwordless-security-key.md)的步驟。
 
@@ -81,7 +79,7 @@ Azure Active Directory （AD）可以針對一或多個 Active Directory 網域�
 1. 執行下列 PowerShell 命令，以在您的內部部署 Active Directory 網域和 Azure Active Directory 租使用者中建立新的 Azure AD Kerberos 伺服器物件。
 
 > [!NOTE]
-> 將`contoso.corp.com`下列範例中的取代為您的內部部署 Active Directory 功能變數名稱。
+> `contoso.corp.com`將下列範例中的取代為您的內部部署 Active Directory 功能變數名稱。
 
 ```powerShell
 Import-Module ".\AzureAdKerberos.psd1"
@@ -113,7 +111,7 @@ Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCre
 
 | 屬性 | 描述 |
 | --- | --- |
-| 識別碼 | AD DS DC 物件的唯一識別碼。 此識別碼有時稱為「位置」或其為「分支識別碼」。 |
+| ID | AD DS DC 物件的唯一識別碼。 此識別碼有時稱為「位置」或其為「分支識別碼」。 |
 | DomainDnsName | Active Directory 網域的 DNS 功能變數名稱。 |
 | ComputerAccount | Azure AD Kerberos 伺服器物件（DC）的電腦帳戶物件。 |
 | UserAccount | 保留 Azure AD Kerberos 伺服器 TGT 加密金鑰的已停用使用者帳戶物件。 此帳戶的 DN 為`CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
@@ -148,7 +146,7 @@ Remove-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -Domain
 
 Azure AD 的 Kerberos 伺服器物件會在 Azure AD 中以*KerberosDomain*物件表示。 每個內部部署 Active Directory 網域都會以 Azure AD 中的單一*KerberosDomain*物件表示。
 
-例如，您的組織有一個 Active Directory 樹系，其中包含`contoso.com`兩`fabrikam.com`個網域：和。 如果您選擇允許 Azure AD 針對整個樹系發出 Kerberos Tgt，Azure AD 中有兩個*KerberosDomain*物件。 的*KerberosDomain* `contoso.com`一個 KerberosDomain 物件，另一個用於`fabrikam.com`。 如果您有多個 Active Directory 樹系，每個樹系中的每個網域都有一個*KerberosDomain*物件。
+例如，您的組織有一個 Active Directory 樹系，其中包含兩個網域： `contoso.com` 和 `fabrikam.com` 。 如果您選擇允許 Azure AD 針對整個樹系發出 Kerberos Tgt，Azure AD 中有兩個*KerberosDomain*物件。 的一個*KerberosDomain*物件 `contoso.com` ，另一個用於 `fabrikam.com` 。 如果您有多個 Active Directory 樹系，每個樹系中的每個網域都有一個*KerberosDomain*物件。
 
 您必須執行這些步驟，以在組織中包含 Azure AD 使用者的每個網域和樹系中[建立 Kerberos 伺服器物件](#create-kerberos-server-object)。
 
@@ -156,7 +154,7 @@ Azure AD 的 Kerberos 伺服器物件會在 Azure AD 中以*KerberosDomain*物�
 
 如果您的密碼已過期，則會封鎖使用 FIDO 登入。 預期會讓使用者重設其密碼，然後才能使用 FIDO 登入。
 
-## <a name="troubleshooting-and-feedback"></a>疑難排解與意見反應
+## <a name="troubleshooting-and-feedback"></a>疑難排解和意見反應
 
 如果您想要在預覽這項功能時分享意見反應或遇到問題，請使用下列步驟透過 Windows 意見反應中樞應用程式共用：
 
@@ -192,12 +190,12 @@ Azure AD 的 Kerberos 伺服器物件會在 Azure AD 中以*KerberosDomain*物�
 
 如果安裝混合式 Azure AD 已加入電腦，在加入網域和重新開機程式之後，您必須使用密碼登入，並等待原則進行同步處理，才能使用 FIDO 登入。
 
-- 藉由在命令視窗中`dsregcmd /status`輸入來檢查您目前的狀態，並檢查*AzureAdJoined*和*Enterpriseregistration.windows.net domainjoined*是否顯示為 *[是*]。
+- 藉由在命令視窗中輸入來檢查您目前的狀態 `dsregcmd /status` ，並檢查*AzureAdJoined*和*Enterpriseregistration.windows.net domainjoined*是否顯示為 *[是*]。
 - 這項延遲是已加入網域之裝置的已知限制，而且不是 FIDO 特有的。
 
 ### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>我無法在使用 FIDO 登入之後，將 SSO 提供給我的 NTLM 網路資源，並取得認證提示
 
-請確定已修補足夠的網域控制站，以回應您的資源要求。 若要檢查是否可以看到執行此功能的網域控制站，請檢查的輸出`nltest /dsgetdc:contoso /keylist /kdc`。
+請確定已修補足夠的網域控制站，以回應您的資源要求。 若要檢查是否可以看到執行此功能的網域控制站，請檢查的輸出 `nltest /dsgetdc:contoso /keylist /kdc` 。
 
 ## <a name="next-steps"></a>後續步驟
 

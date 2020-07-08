@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67d867249286ad1591b441bbe5ea2637971e104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 841b12b27447c4d32d25b8eb0d5bcf51ff8e2932
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80652619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550286"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>監視及審查內部部署 Azure AD 密碼保護環境的記錄
 
@@ -63,7 +63,7 @@ DC 代理程式的系統管理記錄是有關軟體如何運作之資訊的主�
 
 主要的密碼驗證相關事件如下：
 
-|   |密碼變更 |密碼設定|
+| 事件 |密碼變更 |密碼設定|
 | --- | :---: | :---: |
 |通過 |10014 |10015|
 |失敗 (由於客戶密碼原則)| 10016、30002| 10017、30003|
@@ -235,7 +235,7 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Paramete
 
 DC 代理程式服務軟體會安裝名為 **Azure AD 密碼保護**的效能計數器物件。 以下是目前可用的效能計數器：
 
-|效能計數器名稱 | 描述|
+|效能計數器名稱 | Description|
 | --- | --- |
 |已處理的密碼 |此計數器會顯示自上次重新啟動後已處理 (已接受或拒絕) 的密碼總數。|
 |已接受的密碼 |此計數器會顯示自上次重新啟動後已接受的密碼總數。|

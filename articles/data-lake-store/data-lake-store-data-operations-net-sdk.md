@@ -3,15 +3,15 @@ title: .NET SDK-Data Lake Storage Gen1 上的檔案系統作業-Azure
 description: 在 Data Lake Storage Gen1 上使用 Azure Data Lake Storage Gen1 .NET SDK 進行檔案系統作業，例如建立資料夾等。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: 9e52a3cb8d31b5fccc9a0b5a3a76d4e9b43de123
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: eb950f6029511cf834791c161e6a730bcadcabcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515669"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>使用 .NET SDK 在 Data Lake Storage Gen1 上進行檔案系統作業
 
@@ -27,11 +27,11 @@ ms.locfileid: "82690955"
 
 如需有關如何使用 .NET SDK 在 Data Lake Storage Gen1 上進行帳戶管理作業的指示，請參閱[使用 .NET sdk Data Lake Storage Gen1 上的帳戶管理作業](data-lake-store-get-started-net-sdk.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * **Visual Studio 2013 或**更新版本。 本文中的指示使用 Visual Studio 2019。
 
-* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure Data Lake Storage Gen1 帳戶**。 如需有關如何建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)。
 
@@ -156,7 +156,7 @@ var directoryEntry = client.GetDirectoryEntry(fileName);
 PrintDirectoryEntry(directoryEntry);
 ```
 
-此`PrintDirectoryEntry`方法的定義可做為[GitHub 上](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)範例的一部分。
+此方法的定義 `PrintDirectoryEntry` 可做為[GitHub 上](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)範例的一部分。
 
 ## <a name="rename-a-file"></a>重新命名檔案
 
@@ -180,7 +180,7 @@ foreach (var entry in client.EnumerateDirectory("/Test"))
 }
 ```
 
-此`PrintDirectoryEntry`方法的定義可做為[GitHub 上](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)範例的一部分。
+此方法的定義 `PrintDirectoryEntry` 可做為[GitHub 上](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)範例的一部分。
 
 ## <a name="delete-directories-recursively"></a>以遞迴方式刪除目錄
 

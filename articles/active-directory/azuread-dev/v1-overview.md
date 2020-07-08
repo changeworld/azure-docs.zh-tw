@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: overview
 ms.workload: identity
 ms.date: 10/24/2018
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ade350c91ebd2f3a68b52011e598f739a14c220f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db158a50cfc164a0fc839e858cc6e7c46558eb77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154486"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551596"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>開發人員適用的 Azure Active Directory (v1.0) 概觀
 
@@ -29,11 +29,8 @@ Azure Active Directory (Azure AD) 是一項雲端識別服務，可讓開發人�
 > [!NOTE]
 > 此頁面上的內容大部分著重於 v1.0 端點及平台，此端點只支援 Microsoft 的公司或學校帳戶。 如果您想要登入消費者或個人的 Microsoft 帳戶，請參閱 [v2.0 端點及平台](../develop/v2-overview.md)上的資訊。 v2.0 端點會針對想要登入所有 Microsoft 身分識別的應用程式，提供統一的開發人員體驗。
 
-| | |
-| --- | --- |
-|[驗證基本概念](v1-authentication-scenarios.md) | 使用 Azure AD 進行驗證的簡介。 |
-|[應用程式類型](app-types.md) | Azure AD 所支援的驗證案例概觀。 |
-| | |
+- [驗證基本概念](v1-authentication-scenarios.md)使用 Azure AD 進行驗證的簡介。
+- [應用程式類型](app-types.md)Azure AD 所支援的驗證案例總覽。
 
 ## <a name="get-started"></a>開始使用
 
@@ -47,12 +44,9 @@ v1.0 快速入門和教學課程會逐步引導您使用 Azure AD 驗證程式�
 
 下列文章提供 Azure AD 中所用 API、通訊協定訊息和詞彙的詳細資訊。
 
-|                                                                                   | |
-| ----------------------------------------------------------------------------------| --- |
-| [驗證程式庫 (ADAL)](active-directory-authentication-libraries.md)   | Azure AD 所提供的程式庫和 SDK 概觀。 |
-| [程式碼範例](sample-v1-code.md)                                  | 所有 Azure AD 程式碼範例的清單。 |
-| [詞彙](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | 本文件中使用的術語和文字定義。 |
-|  |  |
+- [驗證程式庫（ADAL）](active-directory-authentication-libraries.md)概述 Azure AD 提供的程式庫和 Sdk。
+- 程式[代碼範例](sample-v1-code.md)所有 Azure AD 程式碼範例的清單。
+- [詞彙](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)本檔中使用的詞彙和單字定義。
 
 ## <a name="videos"></a>影片
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 13c640d25265b2663520ef7ab203b0b0a33829e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68301683"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549927"
 ---
 # <a name="create-a-group-for-assessment"></a>建立用於評量的群組
 
@@ -43,11 +43,11 @@ ms.locfileid: "68301683"
 
 2. 按一下 [**群組**] 圖示。
 3. 在 [**建立群組**] 中指定組名，然後在 [**設備名稱**] 中，選取您要用於機器探索的 Azure Migrate 設備。
-1. 從 [電腦] 清單中，選取您要新增至群組 >**建立**的電腦。
+4. 從 [電腦] 清單中，選取您要新增至群組 >**建立**的電腦。
 
     ![建立群組](./media/how-to-create-a-group/create-group.png)
 
-當您[建立評](how-to-create-assessment.md)量時，您現在可以使用此群組。
+當您[建立 AZURE VM 評估](how-to-create-assessment.md)或[azure VMWARE 解決方案（AVS）評估](how-to-create-azure-vmware-solution-assessment.md)時，您現在可以使用此群組。 請注意，您可以在只有 VMware Vm 的群組上建立 AVS 評量。 
 
 ## <a name="refine-a-group-with-dependency-mapping"></a>使用相依性對應來精簡群組
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 300bb317d521ac9202fdd1a02328f844110a48e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550414"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>啟用無密碼安全性金鑰登入（預覽）
 
@@ -24,12 +24,10 @@ ms.locfileid: "81450916"
 
 本檔著重于啟用以安全性金鑰為基礎的無密碼 authentication。 在本文結尾，您將能夠使用 FIDO2 的安全性金鑰，以您的 Azure AD 帳戶登入 web 應用程式。
 
-|     |
-| --- |
-| FIDO2 安全性金鑰是 Azure Active Directory 的公開預覽功能。 如需有關預覽的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定|
-|     |
+> [!NOTE]
+> FIDO2 安全性金鑰是 Azure Active Directory 的公開預覽功能。 如需有關預覽的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [結合的安全性資訊註冊預覽](concept-registration-mfa-sspr-combined.md)
@@ -53,7 +51,7 @@ ms.locfileid: "81450916"
 ### <a name="enable-fido2-security-key-method"></a>啟用 FIDO2 安全性金鑰方法
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Azure Active Directory** > **安全性** > **驗證方法** > **驗證方法原則（預覽）**。
+1. 流覽至**Azure Active Directory**  >  **安全性**  >  **驗證方法**  >  **驗證方法原則（預覽）**。
 1. 在 [方法**FIDO2] 安全性金鑰**底下，選擇下列選項：
    1. **啟用**-是或否
    1. **目標**-所有使用者或選取使用者
@@ -61,7 +59,7 @@ ms.locfileid: "81450916"
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 安全性金鑰的使用者註冊與管理
 
-1. 瀏覽至 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 。
+1. 瀏覽至 [https://myprofile.microsoft.com](https://myprofile.microsoft.com)。
 1. 如果尚未登入，請先登入。
 1. 按一下 [**安全性資訊**]。
    1. 如果使用者已註冊至少一個 Azure 多因素驗證方法，他們可以立即註冊 FIDO2 的安全性金鑰。
@@ -70,7 +68,7 @@ ms.locfileid: "81450916"
 1. 選擇 [ **USB 裝置**] 或 [ **NFC 裝置**]。
 1. 備妥您的金鑰，然後選擇 **[下一步]**。
 1. 隨即會出現一個方塊，並要求使用者建立/輸入您的安全性金鑰的 PIN，然後執行金鑰的必要手勢，也就是生物識別或觸控。
-1. 使用者將會回到合併的註冊體驗，並要求您提供有意義的金鑰名稱，讓使用者可以識別有多個索引鍵（如果有的話）。 按 [下一步]  。
+1. 使用者將會回到合併的註冊體驗，並要求您提供有意義的金鑰名稱，讓使用者可以識別有多個索引鍵（如果有的話）。 按 [下一步] 。
 1. 按一下 [**完成**] 完成程式。
 
 ## <a name="sign-in-with-passwordless-credential"></a>使用無密碼認證登入
@@ -79,7 +77,7 @@ ms.locfileid: "81450916"
 
 ![安全性金鑰登入 Microsoft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 
-## <a name="troubleshooting-and-feedback"></a>疑難排解與意見反應
+## <a name="troubleshooting-and-feedback"></a>疑難排解和意見反應
 
 如果您想要在預覽這項功能時分享意見反應或遇到問題，請使用下列步驟透過 Windows 意見反應中樞應用程式共用：
 

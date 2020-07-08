@@ -4,26 +4,24 @@ description: 如果您有合作夥伴、轉銷商、供應商、廠商和其他�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 783fc0fa6f6c4e6c918fa3ff5fe0b53a71fa0178
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680166"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551364"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>邀請內部使用者進行 B2B 共同作業
 
-|     |
-| --- |
-| 邀請內部使用者使用 B2B 共同作業是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 |
-|     |
+> [!NOTE]
+> 邀請內部使用者使用 B2B 共同作業是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 在 Azure AD B2B 共同作業的可用性之前，組織可以藉由為他們設定內部認證，與轉銷商、供應商、廠商和其他來賓使用者共同作業。 如果您有像這樣的內部來賓使用者，您可以邀請他們使用 B2B 共同作業，讓您可以利用 Azure AD 的 B2B 權益。 您的 B2B 來賓使用者將能夠使用自己的身分識別和認證來登入，而且您不需要維護密碼或管理帳戶生命週期。
 
@@ -62,7 +60,7 @@ ms.locfileid: "81680166"
 ```powershell
 Uninstall-Module AzureADPreview
 Install-Module AzureADPreview
-$ADGraphUser = Get-AzureADUser -searchstring "<<external email>>"
+$ADGraphUser = Get-AzureADUser -objectID "UPN of Internal User"
 $msGraphUser = New-Object Microsoft.Open.MSGraph.Model.User -ArgumentList $ADGraphUser.ObjectId
 New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitationMessage $True -InviteRedirectUrl "http://myapps.microsoft.com" -InvitedUser $msGraphUser
 ```

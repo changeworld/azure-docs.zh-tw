@@ -1,16 +1,16 @@
 ---
-title: Azure Migrate Server 評估的評量
+title: Azure Migrate Server 評估中的 Azure VM 評量
 description: 瞭解 Azure Migrate Server 評估的評量
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 2f76ea5f195be2914cdcdb4de9e93af38504d66e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/27/2020
+ms.openlocfilehash: 33051fbcfb792d3fa9734a818d293775486de647
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549960"
 ---
-# <a name="assessments-in-azure-migrate-server-assessment"></a>Azure Migrate 中的評量：伺服器評定
+# <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure Migrate 中的 Azure VM 評量：伺服器評定
 
 本文概述[Azure Migrate： Server 評估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具中的評量。 此工具可以評估要遷移至 Azure 的內部部署 VMware 虛擬機器、Hyper-v Vm 和實體伺服器。
 
@@ -23,7 +23,14 @@ ms.locfileid: "81769929"
 
 ## <a name="types-of-assessments"></a>評量類型
 
-使用伺服器評估所建立的評量是資料的時間點快照集。 伺服器評估提供兩種類型的評量。
+您可以使用 Azure Migrate：伺服器評量來建立的評量有兩種。
+
+**評量類型** | **詳細資料**
+--- | --- 
+**Azure VM** | 將內部部署伺服器遷移至 Azure 虛擬機器的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[實體伺服器](how-to-set-up-appliance-physical.md)，以遷移至 Azure。
+**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](https://docs.microsoft.com/azure/azure-vmware/introduction)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。[深入瞭解](concepts-azure-vmware-solution-assessment-calculation.md)
+
+使用伺服器評估所建立的評量是資料的時間點快照集。 伺服器評估中的 Azure VM 評估提供兩個調整準則選項：
 
 **評量類型** | **詳細資料** | **Data**
 --- | --- | ---
@@ -45,7 +52,7 @@ ms.locfileid: "81769929"
 1. 針對您的第一次評估，請建立 Azure 專案，並在其中新增伺服器評估工具。
 1. 部署輕量 Azure Migrate 設備。 設備會持續探索內部部署機器，並將電腦中繼資料和效能資料傳送至 Azure Migrate。 將設備部署為 VM 或實體機器。 您不需要在要評估的電腦上安裝任何專案。
 
-在設備開始探索機器之後，您可以將想要評估的機器收集到群組中，然後執行該群組的評量。
+在設備開始探索機器之後，您可以將想要評估的機器收集到群組中，並針對具有評量類型 [ **AZURE VM**] 的群組執行評量。
 
 請遵循我們的[VMware](tutorial-prepare-vmware.md)、 [hyper-v](tutorial-prepare-hyper-v.md)或[實體伺服器](tutorial-prepare-physical.md)教學課程，嘗試執行這些步驟。
 
@@ -57,7 +64,7 @@ ms.locfileid: "81769929"
 1. 針對您的第一次評估，請建立 Azure 專案，並在其中新增伺服器評估工具。
 1. 下載 CSV 範本，並在其中新增伺服器資料。
 1. 將範本匯入伺服器評估。
-1. 探索使用匯入新增的伺服器、將它們收集到群組中，然後執行群組的評量。
+1. 探索使用匯入新增的伺服器、將它們收集到群組中，然後針對具有評量類型**AZURE VM**的群組執行評量。
 
 ## <a name="what-data-does-the-appliance-collect"></a>設備會收集哪些資料？
 
@@ -89,7 +96,7 @@ ms.locfileid: "81769929"
     - 磁片輸送量（讀取和寫入）
     - 網路輸送量（進出）
 
-## <a name="how-are-assessments-calculated"></a>如何計算評量？
+## <a name="how-are-azure-vm-assessments-calculated"></a>如何計算 Azure VM 評量？
 
 伺服器評估會使用內部部署機器的中繼資料和效能資料來計算評量。 如果您部署 Azure Migrate 設備，評量會使用設備所收集的資料。 但是，如果您執行使用 CSV 檔案匯入的評量，則會提供用於計算的中繼資料。
 
@@ -101,16 +108,16 @@ ms.locfileid: "81769929"
 
 計算會依照先前的順序排序。 只有當機器伺服器通過前一個階段時，電腦才會移至稍後的階段。 例如，如果伺服器無法通過 Azure 準備階段，則會標示為不適合 Azure。 不會為該伺服器完成調整大小和成本計算。
 
-## <a name="whats-in-an-assessment"></a>評估包含什麼？
+## <a name="whats-in-an-azure-vm-assessment"></a>Azure VM 評估有哪些？
 
-以下這是什麼包含在伺服器評估的評量中：
+以下這是什麼包含在伺服器評估的 Azure VM 評估中：
 
-屬性 | 詳細資料
+**屬性** | **詳細資料**
 --- | ---
 **目標位置** | 您要遷移的目標位置。 伺服器評估目前支援下列目標 Azure 區域：<br/><br/> 澳大利亞東部、澳大利亞東南部、巴西南部、加拿大中部、加拿大東部、印度中部、美國中部、中國東部、中國北部、東亞、美國東部、美國東部2、德國中部、德國東北部、日本東部、日本西部、韓國中部、南韓南部、美國中北部、北歐、美國中南部、東南亞、印度南部、英國南部、英國西部、US Gov 亞利桑那州、US Gov 德克薩斯州、US Gov 維吉尼亞州、美國中西部、西歐、印度西部、美國西部和美國西部2。
 **目標儲存體磁片（依大小調整）** | 要在 Azure 中用於儲存的磁片類型。 <br/><br/> 將目標儲存體磁片指定為 [高階管理]、[標準 SSD 管理] 或 [標準 HDD 管理]。
 **目標儲存體磁片（以效能為基礎的調整大小）** | 將目標儲存體磁片的類型指定為 [自動]、[Premium 管理]、[標準 HDD 管理] 或 [標準 SSD 管理]。<br/><br/> **自動**：磁片建議是以磁片的效能資料為基礎，亦即 IOPS 和輸送量。<br/><br/>**Premium 或 Standard**：評估會建議所選儲存體類型內的磁片 SKU。<br/><br/> 如果您想要單一實例的 VM 服務等級協定（SLA）99.9%，請考慮使用 Premium 受控磁片。 這種使用方式可確保將評估中的所有磁片都建議為高階受控磁片。<br/><br/> Azure Migrate 僅支援用於遷移評估的受控磁片。
-**Azure 保留的虛擬機器執行個體** | 指定[保留實例](https://azure.microsoft.com/pricing/reserved-vm-instances/)，讓評估中的成本預估納入考慮。<br/><br/> Azure Migrate 目前僅支援隨用隨付供應專案的 Azure 保留的 VM 執行個體。
+**Azure 保留的 VM 執行個體** | 指定[保留實例](https://azure.microsoft.com/pricing/reserved-vm-instances/)，讓評估中的成本預估納入考慮。<br/><br/> 當您選取 [保留實例] 時，[折扣（%）]和「VM 執行時間」屬性不適用。<br/><br/> Azure Migrate 目前僅支援隨用隨付供應專案的 Azure 保留的 VM 執行個體。
 **調整大小準則** | 用來將 Azure VM。<br/><br/> [使用]-[大小] 或 [以效能為基礎的大小調整]。
 **效能歷程記錄** | 用於以效能為基礎的大小調整。 效能歷程記錄會指定評估效能資料時所使用的持續時間。
 **百分位數使用率** | 用於以效能為基礎的大小調整。 百分位數使用率指定用於規模小型化優化之效能範例的百分位數值。
@@ -121,12 +128,14 @@ ms.locfileid: "81769929"
 **折扣 (%)** | 您在 Azure 供應專案上所收到的任何訂用帳戶特定折扣。 預設設定為 0%。
 **VM 運作時間** | 不會連續執行之 Azure Vm 的每月天數和每日小時數。 成本預估是以該持續時間為基礎。<br/><br/> 預設值是每月31天和每天24小時。
 **Azure Hybrid Benefit** | 指定您是否擁有軟體保證，以及是否符合[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/)的資格。 如果設定的預設值為 [是]，則 Windows Vm 會考慮 Windows 以外作業系統的 Azure 價格。
+**EA 訂用帳戶** | 指定使用 Enterprise 合約（EA）訂用帳戶進行成本預估。 考慮適用于訂用帳戶的折扣。 <br/><br/> 保留保留實例的設定、折扣（%）和 VM 執行時間屬性及其預設設定。
+
 
 請參閱使用伺服器評估來建立評量[的最佳作法](best-practices-assessment.md)。
 
 ## <a name="calculate-readiness"></a>計算準備就緒
 
-並非所有機器都適合在 Azure 中執行。 伺服器評估會評估所有內部部署機器，並為其指派一個就緒類別。
+並非所有機器都適合在 Azure 中執行。 Azure VM 評估會評估所有內部部署機器，並為其指派一個就緒類別。
 
 - **適用于 azure**：機器可以依現有方式遷移至 azure，而不需要任何變更。 它會在 Azure 中以完整 Azure 支援開始。
 - **有條件地準備好使用 azure**：電腦可能會在 azure 中啟動，但可能不會有完整的 Azure 支援。 例如，Azure 不支援執行舊版 Windows Server 的電腦。 將這些機器遷移至 Azure 之前，您必須先小心。 若要修正任何準備就緒的問題，請遵循評估所建議的補救指導方針。
@@ -137,22 +146,23 @@ ms.locfileid: "81769929"
 
 ### <a name="machine-properties"></a>機器屬性
 
-伺服器評估會檢查內部部署 VM 的下列屬性，以判斷它是否可以在 Azure 上執行。
+針對 Azure VM 評估，伺服器評估會檢查內部部署 VM 的下列屬性，以判斷它是否可以在 Azure Vm 上執行。
 
 屬性 | 詳細資料 | Azure 移轉整備程度狀態
 --- | --- | ---
 **開機類型** | Azure 支援開機類型為 BIOS 而不是 UEFI 的 Vm。 | 有條件地準備開機類型為 UEFI
 **核心** | 每部電腦都必須有128個以上的核心，也就是 Azure VM 支援的最大數目。<br/><br/> 如果有提供效能記錄，則 Azure Migrate 會將已使用的核心納入考量，進行比較。 如果評估設定指定緩和因數，則已使用的核心數目會乘以緩和因數。<br/><br/> 如果沒有效能歷程記錄，Azure Migrate 會使用已配置的核心，而不套用緩和因數。 | 如果核心數目在限制內，則為就緒
-**RAM** | 每部電腦都必須有 3892 GB 的 RAM，這是 Azure M 系列 Standard_M128m&nbsp;<sup>2</sup> VM 支援的大小上限。 [深入了解](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> 如果有可用的效能歷程記錄，Azure Migrate 會考慮使用的 RAM 進行比較。 如果指定了緩和因數，則會將使用的 RAM 乘以緩和因數。<br/><br/> 如果沒有歷程記錄，則會使用所配置的 RAM，而不會有緩和因素的應用。<br/><br/> | 如果 RAM 容量在限制內，則為就緒
+**RAM** | 每部電腦都必須有 3892 GB 的 RAM，這是 Azure M 系列 Standard_M128m &nbsp; <sup>2</sup> VM 支援的大小上限。 [深入了解](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> 如果有可用的效能歷程記錄，Azure Migrate 會考慮使用的 RAM 進行比較。 如果指定了緩和因數，則會將使用的 RAM 乘以緩和因數。<br/><br/> 如果沒有歷程記錄，則會使用所配置的 RAM，而不會有緩和因素的應用。<br/><br/> | 如果 RAM 容量在限制內，則為就緒
 **存放磁碟** | 配置的磁片大小不得超過 32 TB。 雖然 Azure 支援具有 Azure Ultra SSD 磁片的 64-TB 磁片，Azure Migrate：伺服器評量目前會檢查 32 TB 是否為磁片大小限制，因為它尚不支援 Ultra SSD。 <br/><br/> 連接至機器的磁片數目（包括 OS 磁片）必須是65或更少。 | 如果磁片大小和數目在限制內，則為就緒
 **網路功能** | 電腦上必須連接的網路介面（Nic）不超過32。 | 如果 Nic 數目在限制內，則為就緒
 
 ### <a name="guest-operating-system"></a>客體作業系統
 
-除了審查 VM 屬性之外，伺服器評估也會查看機器的客體作業系統，判斷它是否可以在 Azure 上執行。
+針對 Azure VM 評估以及查看 VM 內容，伺服器評估會查看機器的客體作業系統，以判斷它是否可以在 Azure 上執行。
 
 > [!NOTE]
-> 為了處理 VMware Vm 的來賓分析，伺服器評估會在 vCenter Server 中使用為 VM 指定的作業系統。 針對在 VMware 上執行的 Linux Vm，伺服器評定目前不會識別虛擬作業系統的核心版本。
+> 為了處理 VMware Vm 的來賓分析，伺服器評估會在 vCenter Server 中使用為 VM 指定的作業系統。 不過，vCenter Server 不會提供 Linux VM 作業系統的核心版本。 若要探索版本，您必須設定[應用程式探索](https://docs.microsoft.com/azure/migrate/how-to-discover-applications)。 然後，設備會使用您在設定應用程式探索時所指定的來賓認證來探索版本資訊。
+
 
 伺服器評估會使用下列邏輯來識別以作業系統為基礎的 Azure 就緒程度：
 
@@ -175,11 +185,11 @@ Linux | 請參閱 Azure 背書的[Linux 作業系統](../virtual-machines/linux/
 
 ## <a name="calculating-sizing"></a>計算大小
 
-電腦標示為 [準備好進行 Azure] 之後，伺服器評估會進行大小調整建議。 這些建議會識別 Azure VM 和磁片 SKU。 大小計算取決於您是使用 as-內部部署調整大小或以效能為基礎的大小調整。
+電腦標示為 [準備好用於 Azure] 之後，伺服器評估會在 Azure VM 評估中做出大小調整建議。 這些建議會識別 Azure VM 和磁片 SKU。 大小計算取決於您是使用 as-內部部署調整大小或以效能為基礎的大小調整。
 
 ### <a name="calculate-sizing-as-is-on-premises"></a>計算大小（依內部部署的情況）
 
- 如果您使用的是內部部署調整大小，伺服器評估並不會考慮 Vm 和磁片的效能歷程記錄。
+ 如果您使用的是內部部署調整大小，伺服器評定不會考慮到 Azure VM 評估中 Vm 和磁片的效能歷程記錄。
 
 - **計算大小**：伺服器評估會根據內部部署所配置的大小來配置 AZURE VM SKU。
 - **儲存體和磁片大小**：伺服器評估會查看評量屬性中指定的儲存體類型，並建議適當的磁片類型。 可能的儲存類型為標準 HDD、標準 SSD 和 Premium。 預設儲存體類型為 Premium。
@@ -187,7 +197,7 @@ Linux | 請參閱 Azure 背書的[Linux 作業系統](../virtual-machines/linux/
 
 ### <a name="calculate-sizing-performance-based"></a>計算大小（以效能為基礎）
 
-如果您使用以效能為基礎的大小調整，伺服器評估會進行大小調整建議，如下所示：
+如果您在 Azure VM 評估中使用以效能為基礎的大小調整，伺服器評估會進行大小調整建議，如下所示：
 
 - 伺服器評估會考慮機器的效能歷程記錄，以識別 Azure 中的 VM 大小和磁片類型。
 - 如果您使用 CSV 檔案匯入伺服器，則會使用您指定的值。 如果您已過度分配內部部署機器、使用率很低，而您想要將 Azure VM 以節省成本，此方法特別有用。
@@ -195,9 +205,10 @@ Linux | 請參閱 Azure 背書的[Linux 作業系統](../virtual-machines/linux/
 
 #### <a name="calculate-storage-sizing"></a>計算儲存體大小
 
-針對儲存體大小調整，Azure Migrate 嘗試將連接至機器的每個磁片對應至 Azure 磁片。 大小調整的運作方式如下：
+針對 Azure VM 評估中的儲存體大小調整，Azure Migrate 嘗試將連接至機器的每個磁片對應至 Azure 磁片。 大小調整的運作方式如下：
 
-1. 伺服器評估會新增磁片的讀取和寫入 IOPS，以取得所需的總 IOPS。 同樣地，它會新增讀取和寫入輸送量值，以取得每個磁片的總輸送量。
+1. 伺服器評估會新增磁片的讀取和寫入 IOPS，以取得所需的總 IOPS。 同樣地，它會新增讀取和寫入輸送量值，以取得每個磁片的總輸送量。 如果是以匯入為基礎的評量，您可以選擇提供總 IOPS、總輸送量和總計否。 在匯入檔案中的磁片，而不指定個別磁片設定。 如果您這樣做，則會略過個別磁片大小調整，並直接使用提供的資料來計算大小，並選取適當的 VM SKU。
+
 1. 如果您已將儲存體類型指定為 [自動]，則選取的類型會以有效的 IOPS 和輸送量值為基礎。 伺服器評估會決定是否要將磁片對應至 Azure 中的標準 HDD、標準 SSD 或 Premium 磁片。 如果儲存類型設定為這些磁片類型的其中一種，伺服器評估會嘗試在選取的儲存體類型內尋找磁片 SKU。
 1. 選取的磁片如下所示：
     - 如果伺服器評估找不到具有所需 IOPS 和輸送量的磁片，它會將機器標示為不適合 Azure。
@@ -207,7 +218,7 @@ Linux | 請參閱 Azure 背書的[Linux 作業系統](../virtual-machines/linux/
 
 #### <a name="calculate-network-sizing"></a>計算網路大小
 
-伺服器評估會嘗試尋找 Azure VM，以支援連接至內部部署機器的網路介面卡數目和所需的效能。
+針對 Azure VM 評估，伺服器評估會嘗試尋找 Azure VM，以支援連接至內部部署機器的網路介面卡數目和所需的效能。
 
 - 為了取得內部部署 VM 的有效網路效能，伺服器評估會匯總所有網路介面卡上電腦（網路輸出）的資料傳輸速率。 然後，它會套用緩和因數。 它會使用產生的值來尋找可支援所需網路效能的 Azure VM。
 - 除了網路效能，伺服器評估也會考慮 Azure VM 是否可支援所需的網路介面卡數目。
@@ -224,7 +235,7 @@ Linux | 請參閱 Azure 背書的[Linux 作業系統](../virtual-machines/linux/
 
 ## <a name="confidence-ratings-performance-based"></a>信賴評等（以效能為基礎）
 
-Azure Migrate 中的每個效能型評量會與信賴評等建立關聯。 評等範圍從一（最低）到五（最高）顆星。 信賴評等可協助您預估 Azure Migrate 所提供的大小建議的可靠性。
+Azure Migrate 中每個以效能為基礎的 Azure VM 評量與信賴評等相關聯。 評等範圍從一（最低）到五（最高）顆星。 信賴評等可協助您預估 Azure Migrate 所提供的大小建議的可靠性。
 
 - 信賴評等會指派給評量。 評等是以計算評量所需的資料點可用性為基礎。
 - 針對以效能為基礎的大小調整，伺服器評量需求：
@@ -262,7 +273,7 @@ Azure Migrate 中的每個效能型評量會與信賴評等建立關聯。 評�
 
 ## <a name="calculate-monthly-costs"></a>計算每月成本
 
-調整大小建議完成後，Azure Migrate 會計算遷移後的計算和儲存成本。
+調整建議完成後，Azure Migrate 中的 Azure VM 評估會計算遷移後的計算和儲存成本。
 
 - **計算成本**： Azure Migrate 使用建議的 azure vm 大小和 AZURE 計費 API 來計算 VM 的每月成本。
 
@@ -284,7 +295,7 @@ Azure Migrate 中的每個效能型評量會與信賴評等建立關聯。 評�
 
 ## <a name="next-steps"></a>後續步驟
 
-請[參閱](best-practices-assessment.md)建立評量的最佳做法。 
+[檢閱](best-practices-assessment.md)適用於建立評估的最佳做法。 
 
 - 瞭解如何執行[VMware vm](tutorial-prepare-vmware.md)、 [hyper-v vm](tutorial-prepare-hyper-v.md)和[實體伺服器](tutorial-prepare-physical.md)的評量。
 - 瞭解如何評估[使用 CSV](tutorial-assess-import.md)檔案匯入的伺服器。

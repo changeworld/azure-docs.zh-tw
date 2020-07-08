@@ -3,15 +3,15 @@ title: 針對 Azure HPC Cache NFS 儲存體目標進行疑難排解
 description: 在建立 NFS 儲存體目標時，可避免並修正設定錯誤和其他問題的秘訣
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: 72b6b0b78da23fd0891c0571c9137fefbfb0b077
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186612"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515452"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>針對 NAS 設定和 NFS 存放裝置目標問題進行疑難排解
 
@@ -32,7 +32,7 @@ Azure HPC 快取需要對後端 NAS 儲存系統上的數個 UDP/TCP 埠進行�
 
 一般而言，快取需要存取這些埠：
 
-| 通訊協定 | 連接埠  | Service  |
+| 通訊協定 | Port  | 服務  |
 |----------|-------|----------|
 | TCP/UDP  | 111   | rpcbind  |
 | TCP/UDP  | 2049  | NFS      |
@@ -40,7 +40,7 @@ Azure HPC 快取需要對後端 NAS 儲存系統上的數個 UDP/TCP 埠進行�
 | TCP/UDP  | 4046  | mountd   |
 | TCP/UDP  | 4047  | status   |
 
-若要瞭解您的系統所需的特定埠，請``rpcinfo``使用下列命令。 下列命令會列出埠，並將相關的結果格式化為資料表。 （使用您系統的 IP 位址來取代 *<storage_IP>* 期限）。
+若要瞭解您的系統所需的特定埠，請使用下列 ``rpcinfo`` 命令。 下列命令會列出埠，並將相關的結果格式化為資料表。 （使用您系統的 IP 位址來取代 *<storage_IP>* 期限）。
 
 您可以從已安裝 NFS 基礎結構的任何 Linux 用戶端發出此命令。 如果您使用叢集子網內的用戶端，它也可以協助驗證子網與儲存體系統之間的連線能力。
 
@@ -48,7 +48,7 @@ Azure HPC 快取需要對後端 NAS 儲存系統上的數個 UDP/TCP 埠進行�
 rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
 ```
 
-請確定查詢所``rpcinfo``傳回的所有埠都允許來自 Azure HPC 快取子網的不受限制流量。
+請確定查詢所傳回的所有埠都 ``rpcinfo`` 允許來自 AZURE HPC 快取子網的不受限制流量。
 
 請同時在 NAS 本身以及儲存系統與快取子網之間的任何防火牆上檢查這些設定。
 
@@ -58,7 +58,7 @@ Azure HPC 快取需要存取您儲存體系統的匯出，才能建立儲存體�
 
 不同的儲存系統會使用不同的方法來啟用此存取：
 
-* Linux 伺服器通常會``no_root_squash``將新增至中``/etc/exports``匯出的路徑。
+* Linux 伺服器通常會將新增 ``no_root_squash`` 至中匯出的路徑 ``/etc/exports`` 。
 * NetApp 和 EMC 系統通常會使用系結至特定 IP 位址或網路的匯出規則來控制存取。
 
 如果使用匯出規則，請記住快取可以從快取子網使用多個不同的 IP 位址。 允許從一系列可能的子網 IP 位址進行存取。
@@ -79,17 +79,17 @@ Azure HPC 快取需要存取您儲存體系統的匯出，才能建立儲存體�
 * ``/ifs/accounting``
 * ``/ifs/accounting/payroll``
 
-匯出``/ifs/accounting/payroll``是的``/ifs/accounting``子系，本身``/ifs/accounting``就是的子系。 ``/ifs``
+匯出 ``/ifs/accounting/payroll`` 是的子系 ``/ifs/accounting`` ， ``/ifs/accounting`` 本身就是的子系 ``/ifs`` 。
 
-如果您將``payroll``匯出新增為 HPC 快取儲存體目標，則快取實際上``/ifs/``會從該處掛接和存取薪資目錄。 因此，Azure HPC 快取需要根``/ifs``存取權，才能存取``/ifs/accounting/payroll``匯出。
+如果您將 ``payroll`` 匯出新增為 HPC 快取儲存體目標，則快取實際上會 ``/ifs/`` 從該處掛接和存取薪資目錄。 因此，Azure HPC 快取需要根存取權，才能 ``/ifs`` 存取 ``/ifs/accounting/payroll`` 匯出。
 
 這項需求與快取使用儲存系統提供的檔案控制代碼來編制索引檔案和避免檔案衝突的方式有關。
 
-如果您從不同的匯出檔案抓取檔案，具有階層式匯出的 NAS 系統可以為同一個檔案提供不同的檔案控制代碼。 例如，用戶端可以掛接``/ifs/accounting``和存取檔案。 ``payroll/2011.txt`` 另一個客戶``/ifs/accounting/payroll``端裝載並存取``2011.txt``檔案。 根據儲存系統指派檔案控制代碼的方式而定，這兩個用戶端可能會收到具有不同檔案控制代碼``<mount2>/payroll/2011.txt``的相同檔案``<mount3>/2011.txt``（一個用於，一個用於）。
+如果您從不同的匯出檔案抓取檔案，具有階層式匯出的 NAS 系統可以為同一個檔案提供不同的檔案控制代碼。 例如，用戶端可以掛接 ``/ifs/accounting`` 和存取檔案 ``payroll/2011.txt`` 。 另一個用戶端裝載 ``/ifs/accounting/payroll`` 並存取檔案 ``2011.txt`` 。 根據儲存系統指派檔案控制代碼的方式而定，這兩個用戶端可能會收到具有不同檔案控制代碼的相同檔案（一個用於，一個用於 ``<mount2>/payroll/2011.txt`` ``<mount3>/2011.txt`` ）。
 
 後端儲存體系統會保留檔案控制代碼的內部別名，但 Azure HPC Cache 無法分辨其索引中的哪些檔案控制代碼會參考相同的專案。 因此，快取可能會針對相同的檔案快取不同的寫入，並不正確地套用變更，因為它不知道它們是相同的檔案。
 
-為避免多個匯出中的檔案發生這種可能的檔案衝突，Azure HPC 快取會自動在路徑中``/ifs``掛接 shallowest 可用的匯出（在此範例中為），並使用該匯出所提供的檔案控制代碼。 如果多個匯出使用相同的基底路徑，則 Azure HPC 快取需要該路徑的根存取權。
+為避免多個匯出中的檔案發生這種可能的檔案衝突，Azure HPC 快取會自動在路徑中掛接 shallowest 可用的匯出（ ``/ifs`` 在此範例中為），並使用該匯出所提供的檔案控制代碼。 如果多個匯出使用相同的基底路徑，則 Azure HPC 快取需要該路徑的根存取權。
 
 ## <a name="enable-export-listing"></a>啟用匯出清單
 <!-- link in prereqs article -->

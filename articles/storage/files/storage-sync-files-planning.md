@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 778a18edafadc0bd043df1e9a5ab1d660fab6525
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 561ec6d59349fca585beda8b1bd60073d2603077
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869714"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552177"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>規劃 Azure 檔案同步部署
 
@@ -130,13 +130,14 @@ Invoke-AzStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
  
 若只要測試系統需求：
 ```powershell
-Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name>
+Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name> -SkipNamespaceChecks
 ```
  
 若要以 CSV 格式顯示結果：
 ```powershell
 $errors = Invoke-AzStorageSyncCompatibilityCheck […]
-$errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
+$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path
+    C:\results.csv -Encoding utf8
 ```
 
 ### <a name="file-system-compatibility"></a>檔案系統相容性
@@ -254,9 +255,7 @@ Azure 檔案同步代理程式會使用 Azure 檔案同步 REST 通訊協定和 
 - 設定 Azure 檔案同步，以在您的環境中支援您的 Proxy。
 - 節流來自 Azure 檔案同步的網路活動。
 
-若要深入了解如何設定 Azure 檔案同步的網路功能，請參閱：
-- [Azure 檔案同步 Proxy 和防火牆設定](storage-sync-files-firewall-and-proxy.md)
-- [確保 Azure 檔案同步對於您的資料中心不會有不良影響](storage-sync-files-server-registration.md)
+若要深入瞭解 Azure 檔案同步和網路功能，請參閱[Azure 檔案同步網路功能考慮](storage-sync-files-networking-overview.md)。
 
 ## <a name="encryption"></a>加密
 使用 Azure 檔案同步時，需要考慮三個不同層級的加密：在 Windows Server 的待用儲存體加密、在 Azure 檔案同步代理程式與 Azure 之間的傳輸中加密，以及在 Azure 檔案共用中資料的待用加密。 
@@ -304,37 +303,37 @@ Azure 檔案同步可在下列區域提供：
 
 | Azure 雲端 | 地理區域 | Azure 區域 | 區域碼 |
 |-------------|-------------------|--------------|-------------|
-| 公開 | Asia | 東亞 | `eastasia` |
-| 公開 | Asia | 東南亞 | `southeastasia` |
-| 公開 | 澳大利亞 | 澳大利亞東部 | `australiaeast` |
-| 公開 | 澳大利亞 | 澳大利亞東南部 | `australiasoutheast` |
-| 公開 | 巴西 | 巴西南部 | `brazilsouth` |
-| 公開 | Canada | 加拿大中部 | `canadacentral` |
-| 公開 | Canada | 加拿大東部 | `canadaeast` |
-| 公開 | 歐洲 | 北歐 | `northeurope` |
-| 公開 | 歐洲 | 西歐 | `westeurope` |
-| 公開 | 法國 | 法國中部 | `francecentral` |
-| 公開 | 法國 | 法國南部* | `francesouth` |
-| 公開 | 印度 | 印度中部 | `centralindia` |
-| 公開 | 印度 | 印度南部 | `southindia` |
-| 公開 | 日本 | 日本東部 | `japaneast` |
-| 公開 | 日本 | 日本西部 | `japanwest` |
-| 公開 | 南韓 | 南韓中部 | `koreacentral` |
-| 公開 | 南韓 | 南韓南部 | `koreasouth` |
-| 公開 | 南非 | 南非北部 | `southafricanorth` |
-| 公開 | 南非 | 南非西部* | `southafricawest` |
+| 公用 | Asia | 東亞 | `eastasia` |
+| 公用 | Asia | 東南亞 | `southeastasia` |
+| 公用 | 澳大利亞 | 澳大利亞東部 | `australiaeast` |
+| 公用 | 澳大利亞 | 澳大利亞東南部 | `australiasoutheast` |
+| 公用 | 巴西 | 巴西南部 | `brazilsouth` |
+| 公用 | Canada | 加拿大中部 | `canadacentral` |
+| 公用 | Canada | 加拿大東部 | `canadaeast` |
+| 公用 | 歐洲 | 北歐 | `northeurope` |
+| 公用 | 歐洲 | 西歐 | `westeurope` |
+| 公用 | 法國 | 法國中部 | `francecentral` |
+| 公用 | 法國 | 法國南部* | `francesouth` |
+| 公用 | 印度 | 印度中部 | `centralindia` |
+| 公用 | 印度 | 印度南部 | `southindia` |
+| 公用 | 日本 | 日本東部 | `japaneast` |
+| 公用 | 日本 | 日本西部 | `japanwest` |
+| 公用 | 南韓 | 南韓中部 | `koreacentral` |
+| 公用 | 南韓 | 南韓南部 | `koreasouth` |
+| 公用 | 南非 | 南非北部 | `southafricanorth` |
+| 公用 | 南非 | 南非西部* | `southafricawest` |
 | 公開 | 阿拉伯聯合大公國 | 阿拉伯聯合大公國中部* | `uaecentral` |
-| 公開 | 阿拉伯聯合大公國 | 阿拉伯聯合大公國北部 | `uaenorth` |
-| 公開 | 英國 | 英國南部 | `uksouth` |
-| 公開 | 英國 | 英國西部 | `ukwest` |
-| 公開 | US | 美國中部 | `centralus` |
-| 公開 | US | 美國東部 | `eastus` |
-| 公開 | US | 美國東部 2 | `eastus2` |
-| 公開 | US | 美國中北部 | `northcentralus` |
-| 公開 | US | 美國中南部 | `southcentralus` |
-| 公開 | US | 美國中西部 | `westcentralus` |
-| 公開 | US | 美國西部 | `westus` |
-| 公開 | US | 美國西部 2 | `westus2` |
+| 公用 | 阿拉伯聯合大公國 | 阿拉伯聯合大公國北部 | `uaenorth` |
+| 公用 | 英國 | 英國南部 | `uksouth` |
+| 公用 | 英國 | 英國西部 | `ukwest` |
+| 公開 | 美國 | 美國中部 | `centralus` |
+| 公開 | 美國 | 美國東部 | `eastus` |
+| 公開 | 美國 | 美國東部 2 | `eastus2` |
+| 公開 | 美國 | 美國中北部 | `northcentralus` |
+| 公開 | 美國 | 美國中南部 | `southcentralus` |
+| 公開 | 美國 | 美國中西部 | `westcentralus` |
+| 公開 | 美國 | 美國西部 | `westus` |
+| 公開 | 美國 | 美國西部 2 | `westus2` |
 | US Gov | US | US Gov 亞利桑那州 | `usgovarizona` |
 | US Gov | US | US Gov 德克薩斯州 | `usgovtexas` |
 | US Gov | US | US Gov 維吉尼亞州 | `usgovvirginia` |
@@ -358,7 +357,7 @@ Azure 檔案同步僅支援與位於和儲存體同步服務相同之區域中�
 
 您也可以使用資料箱，將資料遷移至 Azure 檔案同步部署。 在大部分的時候，當客戶想要使用資料箱來內嵌資料時，這麼做的原因是認為其會增加部署速度，或有助於頻寬受限的案例。 雖然使用資料箱將資料內嵌到您的 Azure 檔案同步部署的確會降低頻寬使用率，但在大部分的情況下，透過上述其中一種方法來執行線上資料上傳可能會更快。 若要深入了解如何使用資料箱將資料內嵌至您的 Azure 檔案同步部署，請參閱[使用 Azure 資料箱將資料遷移到 Azure 檔案同步](storage-sync-offline-data-transfer.md)。
 
-客戶在將資料遷移至新的 Azure 檔案同步部署時，常見的錯誤是將資料直接複製到 Azure 檔案共用，而不是其 Windows 檔案伺服器。 雖然 Azure 檔案同步會識別 Azure 檔案共用上的所有新檔案，並將其同步回您的 Windows 檔案共用，但這通常會比透過 Windows 檔案伺服器載入資料的速度慢很多。 許多 Azure 複製工具 (例如 AzCopy) 都有額外的缺點，那就是不會複製檔案的所有重要中繼資料，例如時間戳記和 ACL。
+客戶在將資料遷移至新的 Azure 檔案同步部署時，常見的錯誤是將資料直接複製到 Azure 檔案共用，而不是其 Windows 檔案伺服器。 雖然 Azure 檔案同步會識別 Azure 檔案共用上的所有新檔案，並將其同步回您的 Windows 檔案共用，但這通常會比透過 Windows 檔案伺服器載入資料的速度慢很多。 使用 Azure 複製工具（例如 AzCopy）時，請務必使用最新版本。 請檢查檔案[複製工具資料表](storage-files-migration-overview.md#file-copy-tools)以取得 Azure 複製工具的總覽，以確保您可以複製檔案的所有重要中繼資料，例如時間戳記和 acl。
 
 ## <a name="antivirus"></a>防毒
 因為防毒程式的運作方式是掃描檔案中的已知惡意程式碼，所以防毒產品可能會導致階層式檔案的重新叫用。 在 4.0 版和更新版本的 Azure 檔案同步代理程式中，階層式檔案已設定安全的 Windows 屬性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS。 建議您洽詢您的軟體廠商，以了解如何設定其解決方案來略過讀取已設定此屬性的檔案 (很多軟體會自動這麼做)。 

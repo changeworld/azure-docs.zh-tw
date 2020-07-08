@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4caaf8704f2ee49f8f094ad22065ae462154be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87cec45ac3d7bf491278a4ba8520e8257fd0f6c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143912"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550675"
 ---
 # <a name="combined-security-information-registration-overview"></a>結合的安全性資訊註冊總覽
 
-在合併註冊之前，使用者會分別為 Azure 多因素驗證和自助式密碼重設（SSPR）註冊驗證方法。 人們混淆了類似的方法用於多重要素驗證和 SSPR，但他們必須註冊這兩項功能。 現在，透過合併的註冊，使用者可以註冊一次，並獲得多重要素驗證和 SSPR 的優點。
+在有合併註冊之前，使用者要分開註冊 Azure Multi-Factor Authentication 和自助式密碼重設 (SSPR) 的驗證方法。 人們混淆了類似的方法用於多重要素驗證和 SSPR，但他們必須註冊這兩項功能。 現在，透過合併的註冊，使用者可以註冊一次，並獲得多重要素驗證和 SSPR 的優點。
 
 本文概述安全性註冊的結合。 若要開始使用結合的安全性註冊，請參閱下列文章：
 
@@ -34,11 +34,11 @@ ms.locfileid: "82143912"
 Azure 美國政府、Azure 德國或 Azure 中國世紀等國家雲端目前無法使用 Azure AD 結合的安全性資訊註冊。
 
 > [!IMPORTANT]
-> 已同時啟用原始預覽和增強合併註冊體驗的使用者，將會看到新的行為。 針對這兩種體驗啟用的使用者，只會看到新的 [我的設定檔] 體驗。 新的 [我的設定檔] 符合結合註冊的外觀與風格，並為使用者提供順暢的體驗。 使用者可以前往來[https://myprofile.microsoft.com](https://myprofile.microsoft.com)查看我的設定檔。
+> 已同時啟用原始預覽和增強合併註冊體驗的使用者，將會看到新的行為。 針對這兩種體驗啟用的使用者，只會看到新的 [我的設定檔] 體驗。 新的 [我的設定檔] 符合結合註冊的外觀與風格，並為使用者提供順暢的體驗。 使用者可以前往來查看我的設定檔 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 。
 >
 > 嘗試存取 [安全性資訊] 選項時，您可能會遇到錯誤訊息。 例如，「抱歉，我們無法將您登入」。 在此情況下，請確認您沒有任何設定或群組原則物件在網頁瀏覽器上封鎖協力廠商 cookie。
 
-我的設定檔頁面面會根據存取頁面之電腦的語言設定來當地語系化。 Microsoft 會儲存瀏覽器快取中使用的最新語言，因此後續存取頁面的嘗試會繼續以所用的最後一個語言呈現。 如果您清除快取，頁面將會重新呈現。 如果您想要強制使用特定語言，可以將新增`?lng=<language>`至 URL 結尾，其中`<language>`是您要轉譯之語言的程式碼。
+我的設定檔頁面面會根據存取頁面之電腦的語言設定來當地語系化。 Microsoft 會儲存瀏覽器快取中使用的最新語言，因此後續存取頁面的嘗試會繼續以所用的最後一個語言呈現。 如果您清除快取，頁面將會重新呈現。 如果您想要強制使用特定語言，可以將新增 `?lng=<language>` 至 URL 結尾，其中 `<language>` 是您要轉譯之語言的程式碼。
 
 ![設定 SSPR 或其他安全性驗證方法](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
@@ -46,18 +46,18 @@ Azure 美國政府、Azure 德國或 Azure 中國世紀等國家雲端目前無�
 
 合併的註冊支援下列驗證方法和動作：
 
-|   | 註冊 | 變更 | 刪除 |
+| 方法 | 註冊 | 變更 | 刪除 |
 | --- | --- | --- | --- |
 | Microsoft 驗證器 | 是（最多5個） | 否 | 是 |
 | 其他驗證器應用程式 | 是（最多5個） | 否 | 是 |
 | 硬體權杖 | 否 | 否 | 是 |
-| 電話 | 是 | 是 | 是 |
-| 備用手機 | 是 | 是 | 是 |
+| 電話 | Yes | Yes | Yes |
+| 備用手機 | Yes | Yes | Yes |
 | 辦公室電話 | 否 | 否 | 否 |
-| 電子郵件 | 是 | 是 | 是 |
+| 電子郵件 | Yes | Yes | Yes |
 | 安全性問題 | 是 | 否 | 是 |
 | 應用程式密碼 | 是 | 否 | 是 |
-| FIDO2 安全性金鑰<br />*僅從 [[安全性資訊](https://mysignins.microsoft.com/security-info)] 頁面管理模式*| 是 | 是 | 是 |
+| FIDO2 安全性金鑰<br />*僅從 [[安全性資訊](https://mysignins.microsoft.com/security-info)] 頁面管理模式*| Yes | Yes | Yes |
 
 > [!NOTE]
 > 應用程式密碼僅適用于已強制執行多重要素驗證的使用者。 應用程式密碼無法供透過條件式存取原則啟用多重要素驗證的使用者使用。
@@ -111,7 +111,7 @@ Azure 美國政府、Azure 德國或 Azure 中國世紀等國家雲端目前無�
 
 ### <a name="manage-mode"></a>管理模式
 
-使用者可以前往[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)或從 [我的設定檔] 選取 [**安全性資訊**] 來存取 [管理] 模式。 使用者可以從該處新增方法、刪除或變更現有的方法、變更預設方法等等。
+使用者可以前往 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 或從 [我的設定檔] 選取 [**安全性資訊**] 來存取 [管理] 模式。 使用者可以從該處新增方法、刪除或變更現有的方法、變更預設方法等等。
 
 ## <a name="key-usage-scenarios"></a>金鑰使用案例
 
@@ -125,15 +125,15 @@ Azure 美國政府、Azure 德國或 Azure 中國世紀等國家雲端目前無�
 
 系統管理員未強制註冊。
 
-尚未設定所有必要安全性資訊的使用者會進入[https://myprofile.microsoft.com](https://myprofile.microsoft.com)。 使用者會在左窗格中選取 [**安全性資訊**]。 使用者可以從該處加入宣告方法、選取任何可用的方法，並遵循步驟來設定該方法。 完成後，使用者會看到剛剛在 [安全性資訊] 頁面上設定的方法。
+尚未設定所有必要安全性資訊的使用者會進入 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 。 使用者會在左窗格中選取 [**安全性資訊**]。 使用者可以從該處加入宣告方法、選取任何可用的方法，並遵循步驟來設定該方法。 完成後，使用者會看到剛剛在 [安全性資訊] 頁面上設定的方法。
 
 ### <a name="delete-security-info-from-my-profile"></a>從我的設定檔刪除安全性資訊
 
-先前已設定至少一個方法流覽至[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)的使用者。 使用者選擇刪除其中一個先前註冊的方法。 完成後，使用者就不會再于 [安全性資訊] 頁面上看到該方法。
+先前已設定至少一個方法流覽至的使用者 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 。 使用者選擇刪除其中一個先前註冊的方法。 完成後，使用者就不會再于 [安全性資訊] 頁面上看到該方法。
 
 ### <a name="change-the-default-method-from-my-profile"></a>從我的設定檔變更預設方法
 
-先前已設定一個可用於多重要素驗證之方法的使用者，會流覽至[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)。 使用者會將目前的預設方法變更為不同的預設方法。 完成時，使用者會在 [安全性資訊] 頁面上看到新的預設方法。
+先前已設定一個可用於多重要素驗證之方法的使用者，會流覽至 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 。 使用者會將目前的預設方法變更為不同的預設方法。 完成時，使用者會在 [安全性資訊] 頁面上看到新的預設方法。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -141,4 +141,4 @@ Azure 美國政府、Azure 德國或 Azure 中國世紀等國家雲端目前無�
 
 瞭解如何[在您的租使用者中啟用合併的註冊](howto-registration-mfa-sspr-combined.md)，或[強制使用者重新註冊驗證方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)。
 
-您也可以查看[適用于 Azure 多因素驗證和 SSPR 的可用方法](concept-authentication-methods.md)。
+您也可以檢閱 [Azure Multi-Factor Authentication 與 SSPR 的可用方法](concept-authentication-methods.md)。

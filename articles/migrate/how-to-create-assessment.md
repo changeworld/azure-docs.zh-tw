@@ -1,91 +1,95 @@
 ---
-title: 使用 Azure Migrate Server 評估來建立評量 |Microsoft Docs
-description: 說明如何使用 Azure Migrate Server 評估工具來建立評量
+title: 使用 Azure Migrate Server 評估來建立 Azure VM 評估 |Microsoft Docs
+description: 說明如何使用 Azure Migrate Server 評估工具來建立 Azure VM 評估
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: cffde2a677650387dffd19733e082ff7002ccb55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec95cde1f023b4d034c2fae9cc5a54744ccdc9a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68229098"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549810"
 ---
-# <a name="create-an-assessment"></a>建立評估
+# <a name="create-an-azure-vm-assessment"></a>建立 Azure VM 評量
 
-本文說明如何使用 Azure Migrate： Server 評估來建立內部部署 VMware Vm 或 Hyper-v Vm 的評量。
+本文說明如何為內部部署 VMware Vm 或具有 Azure Migrate： Server 評估的 Hyper-v Vm 建立 Azure VM 評估。
 
 [Azure Migrate](migrate-services-overview.md)可協助您遷移至 Azure。 Azure Migrate 能提供集中式的中樞，以追蹤針對 Azure 的內部部署基礎結構、應用程式與資料的探索、評量及移轉。 該中樞能提供 Azure 工具以進行評量和移轉，也提供協力廠商獨立軟體廠商 (ISV) 供應項目。 
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 請確定您已[建立](how-to-add-tool-first-time.md)Azure Migrate 專案。
 - 如果您已經建立專案，請確定您已[新增](how-to-assess.md)Azure Migrate：伺服器評估工具。
 - 若要建立評量，您需要設定適用于[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 設備。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 [深入了解](migrate-appliance.md)。
 
 
-## <a name="assessment-overview"></a>評量概觀
-您可以使用 Azure Migrate：伺服器評量來建立的評量有兩種。
+## <a name="azure-vm-assessment-overview"></a>Azure VM 評估總覽
+有兩種類型的調整大小準則，您可以使用 Azure Migrate：伺服器評估來建立 Azure VM 評估。
 
 **評量** | **詳細資料** | **Data**
 --- | --- | ---
 **以效能為基礎** | 以所收集效能資料為基礎的評估 | **建議的 VM 大小**：以 CPU 和記憶體使用量資料為基礎。<br/><br/> **建議的磁碟類型 (標準或進階受控磁碟**)：以內部部署磁碟的 IOPS 和輸送量為基礎。
 **作為內部部署** | 以內部部署大小調整為基礎的評估。 | **建議的 VM 大小**：以內部部署 VM 大小為基礎<br/><br> **建議的磁碟類型**：以您為評估選取的儲存體類型設定為基礎。
 
-[深入瞭解](concepts-assessment-calculation.md)評量。
+[深入了解](concepts-assessment-calculation.md)評估。
 
 ## <a name="run-an-assessment"></a>執行評估
 
 執行評估，如下所示：
 
 1. 檢閱適用於建立評估的[最佳做法](best-practices-assessment.md)。
-2. 在 [伺服器]  索引標籤的 **[Azure Migrate：伺服器評量]** 磚中，按一下 [評估]  。
+2. 在 [伺服器] 索引標籤的 **[Azure Migrate：伺服器評量]** 磚中，按一下 [評估]。
 
     ![評定](./media/how-to-create-assessment/assess.png)
 
-2. 在 [評估伺服器]  中，指定評估的名稱。
-3. 按一下 [檢視全部]  來檢閱評估屬性。
+3. 在 [**評估伺服器**] 中，選取 [Azure VM] 做為 [評估類型]，選取 [探索來源] 並指定評量名稱。
+
+    ![評量基本概念](./media/how-to-create-assessment/assess-servers-azurevm.png)
+
+4. 按一下 [檢視全部] 來檢閱評估屬性。
 
     ![評量屬性](./media/how-to-create-assessment//view-all.png)
 
-3. 在 [選取或建立群組]  中，選取 [新建]  ，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
-4. 在 [將機器新增至群組]  中，選取要新增至群組的 VM。
-5. 按一下 [建立評估]  以建立群組，然後執行評估。
+5. 按 **[下一步]** 以**選取要評估的機器**。 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
+6. 在 [將機器新增至群組] 中，選取要新增至群組的 VM。
+7. 按 **[下一步]** 以**查看 [+ 建立評估**]，以查看評量詳細資料。
+8. 按一下 [建立評估] 以建立群組，然後執行評估。
 
     ![建立評估](./media/how-to-create-assessment//assessment-create.png)
 
-6. 評量建立好之後，可在 [伺服器]   >  **[Azure Migrate：伺服器評量]**  > [評量]  中加以檢視。
-7. 按一下 [匯出評估]  ，將其下載為 Excel 檔案。
+9. 評量建立好之後，可在 [伺服器] >  **[Azure Migrate：伺服器評量]**  > [評量] 中加以檢視。
+10. 按一下 [匯出評估]，將其下載為 Excel 檔案。
 
 
 
-## <a name="review-an-assessment"></a>檢閱評量
+## <a name="review-an-azure-vm-assessment"></a>審查 Azure VM 評估
 
-評量會說明：
+Azure VM 評估會說明：
 
 - **Azure 移轉整備程度**：VM 是否適合移轉至 Azure。
 - **每月成本預估**：在 Azure 中執行 VM 的預估每月計算和儲存體成本。
 - **每月儲存體成本預估**：移轉之後的磁碟儲存體預估成本。
 
-### <a name="view-an-assessment"></a>檢視評估
+### <a name="view-an-azure-vm-assessment"></a>查看 Azure VM 評估
 
-1. 在 [移轉目標]   >  [伺服器]  中，按一下 [Azure Migrate：伺服器評量]  中的 [評量]  。
-2. 在 [評量]  中，按一下評量來加以開啟。
+1. 在 [移轉目標] >  [伺服器] 中，按一下 [Azure Migrate：伺服器評量] 中的 [評量]。
+2. 在 [評量] 中，按一下評量來加以開啟。
 
     ![評量摘要](./media/how-to-create-assessment/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>檢閱 Azure 移轉整備程度
 
-1. 在 [Azure 移轉整備程度]  中，確認 VM 是否已準備好移轉至 Azure。
+1. 在 [Azure 移轉整備程度] 中，確認 VM 是否已準備好移轉至 Azure。
 2. 檢查 VM 狀態：
     - **可供 Azure 使用**：Azure Migrate 會針對評估中的 VM 建議 VM大小和成本估計值。
     - **有條件的備妥**：顯示問題和建議的補救措施。
     - **未備妥供 Azure 使用**：顯示問題和建議的補救措施。
     - **移轉整備程度未知**：當 Azure Migrate 因資料可用性問題而無法評估整備程度時，便會使用此狀態。
 
-2. 按一下 [Azure 移轉整備程度]  狀態。 您可以檢視 VM 的整備程度詳細資料，並向下切入以查看 VM 詳細資料，包括計算、儲存體和網路設定。
+3. 按一下 [Azure 移轉整備程度] 狀態。 您可以檢視 VM 的整備程度詳細資料，並向下切入以查看 VM 詳細資料，包括計算、儲存體和網路設定。
 
 
 

@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 3e1d000ed316a1a92e6dcdab0f9b7d577fd33d8b
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: 75c211ea61359c244c6280b9664a4f412b3d2279
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552011"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 身分識別平台存取權杖
 
@@ -230,11 +230,13 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 ## <a name="user-and-application-tokens"></a>使用者和應用程式權杖
 
-應用程式可能會代表使用者接收權杖 (一般流程)，或直接從應用程式接收權杖 (透過用戶端認證流程([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md))。 這些應用程式專用的權杖表示此呼叫來自應用程式，而且沒有使用者的支援。 這些權杖的處理大部分都相同，但其間有些差異：
+您的應用程式可能會收到使用者（通常會討論的流程）或直接從應用程式（透過[用戶端認證流程](v1-oauth2-client-creds-grant-flow.md)）的權杖。 這些應用程式專用的權杖表示此呼叫來自應用程式，而且沒有使用者的支援。 這些權杖的處理方式大致相同：
 
-* 應用程式專用的權杖沒有 `scp` 宣告，而是可能具有 `roles` 宣告。 這是會記錄應用程式權限 (而不是委派的權限) 的位置。 如需委派權限和應用程式權限的詳細資訊，請參閱權限與同意 ([v1.0](../azuread-dev/v1-permissions-consent.md)、[v2.0](v2-permissions-and-consent.md))。
-* 許多人員特定宣告會遺失，例如 `name` 或 `upn`。
-* `sub` 和 `oid` 宣告將會相同。
+* 使用 `roles` 來查看已授與權杖主體（服務主體，而不是在此案例中的使用者）的許可權。
+* 使用 `oid` 或 `sub` 來驗證呼叫的服務主體是否為預期的主體。
+
+如果您的應用程式需要區分僅限應用程式存取權杖和使用者的存取權杖，請使用 `idtyp` [選擇性](active-directory-optional-claims.md)宣告。  藉由將宣告新增 `idtyp` 至 `accessToken` 欄位，並檢查值 `app` ，您可以偵測僅限應用程式的存取權杖。  使用者的識別碼權杖和存取權杖將不會包含該宣告 `idtyp` 。
+
 
 ## <a name="token-revocation"></a>權杖撤銷
 
@@ -254,7 +256,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 伺服器可能因認證變更，或因使用或系統管理動作而撤銷重新整理權杖。  重新整理權杖可分為兩個類別：簽發給機密用戶端的類別 (最右側的資料行)，以及簽發給公用用戶端的類別 (所有其他資料行)。   
 
-|   | 密碼型 Cookie | 密碼型權杖 | 非密碼型 Cookie | 非密碼型權杖 | 機密用戶端權杖 |
+| 變更 | 密碼型 Cookie | 密碼型權杖 | 非密碼型 Cookie | 非密碼型權杖 | 機密用戶端權杖 |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | 密碼到期 | 保持運作 | 保持運作 | 保持運作 | 保持運作 | 保持運作 |
 | 使用者已變更密碼 | 已撤銷 | 已撤銷 | 保持運作 | 保持運作 | 保持運作 |

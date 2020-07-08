@@ -7,12 +7,12 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: a964a28b728a2b1741fb555f47fe6e329bc9902a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 10d4c2d6650502510bd160cc452ac2289130263b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655663"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549492"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安裝和設定 Windows Azure 診斷擴充功能 (WAD)
 [Azure 診斷擴充功能](diagnostics-extension-overview.md)是 Azure 監視器中的代理程式，可收集來自客體作業系統的監視資料，以及 Azure 虛擬機器和其他計算資源的工作負載。 本文提供有關安裝和設定 Windows 診斷擴充功能的詳細資訊，以及說明如何在 Azure 儲存體帳戶中儲存資料。
@@ -20,7 +20,7 @@ ms.locfileid: "83655663"
 在 Azure 中診斷擴充功能會當作[虛擬機器擴充功能](../../virtual-machines/extensions/overview.md)實作，因此支援使用 Resource Manager 範本、PowerShell 和 CLI 的相同安裝選項。 請參閱[虛擬機器擴充功能和功能 (Windows)](../../virtual-machines/extensions/features-windows.md)，以取得安裝及維護虛擬機器擴充功能的詳細資訊。
 
 ## <a name="overview"></a>概觀
-當您設定 Windows Azure 診斷擴充功能時，必須指定儲存體帳戶，所有指定的資料都會傳送到該帳戶。 您可以選擇性地新增一或多個「資料接收器」，將資料傳送到不同的位置。
+當您設定 Windows Azure 診斷擴充功能時，必須指定儲存體帳戶，所有指定的資料都會傳送到該帳戶。 您可以選擇性地加入一個或多個*資料接收*，以將資料傳送至不同的位置。
 
 - Azure 監視器接收器 - 將來賓效能資料傳送至 Azure 監視器計量。
 - 事件中樞接收器 - 將來賓效能和記錄資料傳送至 Azure 事件中樞，以在 Azure 外部轉送。 無法在 Azure 入口網站中設定此接收器。

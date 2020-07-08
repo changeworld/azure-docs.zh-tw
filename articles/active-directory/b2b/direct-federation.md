@@ -4,26 +4,25 @@ description: 直接與 SAML 或 WS-Fed 識別提供者同盟，讓來賓可以�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591211"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551542"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>直接與來賓使用者的 AD FS 和第三方提供者同盟 (預覽)
-|     |
-| --- |
-| 直接同盟是 Azure Active Directory 的一項公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+
+> [!NOTE]
+>  直接同盟是 Azure Active Directory 的一項公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文說明如何設定與其他組織的直接同盟，以進行 B2B 共同作業。 您可以針對其識別提供者 (IdP) 可支援 SAML 2.0 或 WS-Fed 通訊協定的任何組織來設定直接同盟。
 在設定與合作夥伴 IdP 的直接同盟時，來自該網域的新來賓使用者可以使用其由 IdP 管理的自有組織帳戶登入您的 Azure AD 租用戶，並開始與您共同作業。 來賓使用者不需要另外建立一個 Azure AD 帳戶。
@@ -221,3 +220,7 @@ IdP 所簽發 WS-Fed 權杖所需的宣告：
    ```powershell
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
    ```
+
+## <a name="next-steps"></a>後續步驟
+
+深入瞭解外部使用者使用各種身分識別提供者登入時的[邀請兌換體驗](redemption-experience.md)。

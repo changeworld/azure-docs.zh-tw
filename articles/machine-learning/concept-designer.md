@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
-ms.date: 11/12/2019
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 7a756a09e135f664074e64a611755845d8dfb8b7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 184db0280629e07314f9589338a33cdf442e63cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85517355"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什麼是 Azure Machine Learning 設計工具 (預覽)？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -38,19 +38,19 @@ Azure Machine Learning 設計工具可讓您以視覺化方式連結[資料集](
 設計工具會提供您建置、測試及部署機器學習模型的視覺化畫布。 透過設計工具，您可以：
 
 + 將[資料集](#datasets)和[模組](#module)拖放到畫布上。
-+ 將模組連結在一起，以建立[管線草稿](#pipeline-draft)。
++ 連接模組以建立[管線草稿](#pipeline-draft)。
 + 使用 Azure Machine Learning 工作區中的計算資源，提交[管線執行](#pipeline-run)。
 + 將您的**訓練管線**轉換為**推斷管線**。
-+ [將管線](#publish)發佈至 REST **管線端點**，以不同的參數和資料集提交新的管線執行。
++ 將管線[發佈](#publish)至 REST**管線端點**，以提交使用不同的參數和資料集執行的新管線。
     + 發佈**訓練管線**，以在變更參數和資料集時重複使用單一管線來訓練多個模型。
     + 發佈**批次推斷管線**，以使用先前訓練的模型對新資料進行預測。
-+ 將**即時推斷管線**[部署](#deploy)到即時端點，以針對新資料進行即時預測。
++ 將**即時推斷管線**[部署](#deploy)至即時端點，以即時預測新的資料。
 
 ![設計工具中的訓練、批次推斷和即時推斷工作流程圖](./media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>管線
 
-[管線](concept-azure-machine-learning-architecture.md#ml-pipelines)是由您連結的資料集和分析模組所組成。 管線有許多用途：您可以建立用來訓練單一模型的管線，或是用來訓練多個模型的管線。 您可以建立可即時或以批次方式進行預測的管線，或建立只清除資料的管線。 管線可讓您重複使用工作及組織您的專案。
+[管線](concept-azure-machine-learning-architecture.md#ml-pipelines)是由您所連接的資料集和分析模組所組成。 管線有許多用途：您可以建立用來訓練單一模型的管線，或是用來訓練多個模型的管線。 您可以建立一個管線，以即時或批次方式進行預測，或建立只清除資料的管線。 管線可讓您重複使用工作及組織您的專案。
 
 ### <a name="pipeline-draft"></a>管線草稿
 
@@ -73,15 +73,16 @@ Azure Machine Learning 設計工具可讓您以視覺化方式連結[資料集](
 
 ## <a name="datasets"></a>資料集
 
-機器學習資料集可讓您輕鬆地存取和使用您的資料。 設計工具中包含數個範例資料集，可供您在實驗時使用。 您可以視需要來[註冊](how-to-create-register-datasets.md)更多資料集。
+機器學習資料集可讓您輕鬆地存取和使用您的資料。 有數個範例資料集包含在設計工具中，供您進行實驗。 您可以視需要來[註冊](how-to-create-register-datasets.md)更多資料集。
 
 ## <a name="module"></a>模組
 
-模組是指您在資料上可執行的演算法。 設計工具有許多模組，從資料輸入函數到訓練、評分和驗證程序都有。
+模組是指您在資料上可執行的演算法。 設計工具有數個模組，範圍從資料輸入函數到定型、評分和驗證程式。
 
 模組可能有一組參數可用來設定模組的內部演算法。 當您在畫布上選取模組時，模組的參數會顯示在畫布右邊的 [屬性] 窗格中。 您可以在此窗格中修改參數來調整模型。 您可以在設計工具中設定個別模組的計算資源。 
 
-![模組屬性](./media/concept-designer/properties.png)
+:::image type="content" source="./media/concept-designer/properties.png"alt-text="模組屬性":::
+
 
 如需瀏覽可用機器學習服務演算法程式庫的協助，請參閱[演算法和模組參考概觀](algorithm-module-reference/module-reference.md)。 如需演算法選擇的協助，請參閱 [Azure Machine Learning 演算法功能提要](algorithm-cheat-sheet.md)。
 
@@ -99,7 +100,7 @@ Azure Machine Learning 設計工具可讓您以視覺化方式連結[資料集](
 
 ## <a name="deploy"></a>部署
 
-若要執行即時推斷，您必須將管線部署為**即時端點**。 即時端點會在外部應用程式和您的評分模型之間建立介面。 呼叫即時端點會即時將預測結果傳回到應用程式。 若要對即時端點進行呼叫，請傳遞部署端點時所建立的 API 金鑰。 端點會以 REST 為基礎，這是一種常見的 Web 程式設計專案架構。
+若要執行即時推斷，您必須將管線部署為**即時端點**。 即時端點會在外部應用程式和您的評分模型之間建立介面。 即時端點的呼叫會即時將預測結果傳回到應用程式。 若要對即時端點進行呼叫，請傳遞部署端點時所建立的 API 金鑰。 端點會以 REST 為基礎，這是一種常見的 Web 程式設計專案架構。
 
 即時端點必須部署到 Azure Kubernetes Service 叢集。
 
@@ -138,4 +139,3 @@ Azure Machine Learning 設計工具可讓您以視覺化方式連結[資料集](
 
 * 透過以下教學課程，了解預測性分析和機器學習的基本概念：[教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)來試用設計工具
 * 了解如何修改現有的[設計工具範例](samples-designer.md)，以符合您的需求。
-

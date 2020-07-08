@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: borisb
-ms.openlocfilehash: 27cc0c758a1f8cec5ad7f124f39c01c4e770676e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: b9f4fdb0cc750fdee1fe34694656f5252e16ba5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660523"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552107"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle VM 映像及其部署
 
@@ -30,7 +30,7 @@ ms.locfileid: "83660523"
 az vm image list --publisher oracle -o table --all
 ```
 
-從 2020 年 5 月起，可取得下列映像：
+從2020年6月起，有下列可用的映射：
 
 ```bash
 Offer                   Publisher    Sku                     Urn                                                          Version
@@ -62,23 +62,35 @@ Oracle-Linux            Oracle       77                      Oracle:Oracle-Linux
 Oracle-Linux            Oracle       77                      Oracle:Oracle-Linux:77:7.7.2                                 7.7.2
 Oracle-Linux            Oracle       77                      Oracle:Oracle-Linux:77:7.7.3                                 7.7.3
 Oracle-Linux            Oracle       77                      Oracle:Oracle-Linux:77:7.7.4                                 7.7.4
+Oracle-Linux            Oracle       77                      Oracle:Oracle-Linux:77:7.7.5                                 7.7.5
 Oracle-Linux            Oracle       77-ci                   Oracle:Oracle-Linux:77-ci:7.7.01                             7.7.01
 Oracle-Linux            Oracle       77-ci                   Oracle:Oracle-Linux:77-ci:7.7.02                             7.7.02
 Oracle-Linux            Oracle       77-ci                   Oracle:Oracle-Linux:77-ci:7.7.03                             7.7.03
+Oracle-Linux            Oracle       78                      Oracle:Oracle-Linux:78:7.8.01                                7.8.01
 Oracle-Linux            Oracle       8                       Oracle:Oracle-Linux:8:8.0.2                                  8.0.2
 Oracle-Linux            Oracle       8-ci                    Oracle:Oracle-Linux:8-ci:8.0.11                              8.0.11
 Oracle-Linux            Oracle       81                      Oracle:Oracle-Linux:81:8.1.0                                 8.1.0
+Oracle-Linux            Oracle       81                      Oracle:Oracle-Linux:81:8.1.2                                 8.1.2
 Oracle-Linux            Oracle       81-ci                   Oracle:Oracle-Linux:81-ci:8.1.0                              8.1.0
+Oracle-Linux            Oracle       81-gen2                 Oracle:Oracle-Linux:81-gen2:8.1.11                           8.1.11
 Oracle-Linux            Oracle       ol77-ci-gen2            Oracle:Oracle-Linux:ol77-ci-gen2:7.7.1                       7.7.1
 Oracle-Linux            Oracle       ol77-gen2               Oracle:Oracle-Linux:ol77-gen2:7.7.01                         7.7.01
+Oracle-Linux            Oracle       ol77-gen2               Oracle:Oracle-Linux:ol77-gen2:7.7.02                         7.7.02
+Oracle-Linux            Oracle       ol78-gen2               Oracle:Oracle-Linux:ol78-gen2:7.8.11                         7.8.11
 Oracle-WebLogic-Server  Oracle       Oracle-WebLogic-Server  Oracle:Oracle-WebLogic-Server:Oracle-WebLogic-Server:12.1.2  12.1.2
+weblogic-122130-jdk8u3  Oracle       owls-122130-8u131-ol73  Oracle:weblogic-122130-jdk8u131-ol73:owls-122130-8u131-ol7   1.1.6
+weblogic-122130-jdk8u4  Oracle       owls-122130-8u131-ol74  Oracle:weblogic-122130-jdk8u131-ol74:owls-122130-8u131-ol7   1.1.1
+weblogic-122140-jdk8u6  Oracle       owls-122140-8u251-ol76  Oracle:weblogic-122140-jdk8u251-ol76:owls-122140-8u251-ol7   1.1.1
+weblogic-141100-jdk116  Oracle       owls-141100-11_07-ol76  Oracle:weblogic-141100-jdk11_07-ol76:owls-141100-11_07-ol7   1.1.1
+weblogic-141100-jdk8u6  Oracle       owls-141100-8u251-ol76  Oracle:weblogic-141100-jdk8u251-ol76:owls-141100-8u251-ol7   1.1.1
 ```
 
-系統會將這些映像視為「自備授權」，因此您只會支付執行 VM 產生的計算成本、儲存成本和網路成本。  其假設您已取得使用 Oracle 軟體的適當授權，且與 Oracle 之間已擁有支援合約。 Oracle 已保證從內部部署至 Azure 的授權行動性。 如需有關授權行動性的詳細資訊，請參閱已發佈的 [Oracle 和 Microsoft](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html) (英文) 附註。 
+系統會將這些映像視為「自備授權」，因此您只會支付執行 VM 產生的計算成本、儲存成本和網路成本。  其假設您已取得使用 Oracle 軟體的適當授權，且與 Oracle 之間已擁有支援合約。 Oracle 已保證從內部部署至 Azure 的授權行動性。 如需有關授權行動性的詳細資訊，請參閱已發佈的 [Oracle 和 Microsoft](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html) (英文) 附註。
 
 個人也可以選擇將其在 Azure 中從頭建立的自訂映像，或從內部部署環境上傳的自訂映像作為解決方案的基礎。
 
 ## <a name="oracle-database-vm-images"></a>Oracle 資料庫 VM 映像
+
 Oracle 支援在以 Oracle Linux 為基礎的虛擬機器映像上，在 Azure 中執行 Oracle Database 12.1 及更高的 Standard 和 Enterprise 版本。  若要讓 Azure 上的 Oracle Database 生產工作負載提供最佳效能，請務必適當地調整 VM 映像的大小，並使用進階 SSD 或 Ultra SSD 受控磁碟。 如需有關如何使用 Oracle 已發佈之 VM 映像在 Azure 中快速地讓 Oracle Database 啟動並執行的指示，[請嘗試 Oracle Database 快速入門逐步解說](oracle-database-quick-create.md)。
 
 ### <a name="attached-disk-configuration-options"></a>連接的磁碟組態選項
@@ -88,6 +100,7 @@ Oracle 支援在以 Oracle Linux 為基礎的虛擬機器映像上，在 Azure �
 ### <a name="shared-storage-configuration-options"></a>共用儲存體設定選項
 
 Azure NetApp Files 的設計訴求是為了符合執行高效能工作負載 (例如雲端的資料庫) 的核心需求，並提供：
+
 - Azure 原生共用 NFS 儲存體服務，以便透過 VM 原生 NFS 用戶端或 Oracle dNFS 執行 Oracle 工作負載
 - 可調整的效能層級，以反映 IOPS 需求的實質範圍
 - 低延遲
@@ -96,19 +109,20 @@ Azure NetApp Files 的設計訴求是為了符合執行高效能工作負載 (�
 
 這些功能是可行的，因為 Azure NetApp Files 是以在 Azure 資料中心環境中執行的 NetApp® ONTAP® 全快閃系統為基礎 – 作為 Azure 原生服務。 結果是可以像其他 Azure 儲存體選項一樣佈建和取用的理想資料庫儲存體技術。 如需如何部署和存取 Azure NetApp Files NFS 磁碟區的詳細資訊，請參閱 [Azure NetApp Files 文件](https://docs.microsoft.com/azure/azure-netapp-files/)。 如需在 Azure NetApp Files 上操作 Oracle 資料庫的最佳做法建議，請參閱 [Oracle on Azure Deployment Best Practice Guide Using Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)。
 
-
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure 上的授權 Oracle Database 和軟體
+
 Microsoft Azure 是執行 Oracle Database 的授權雲端環境。 在雲端授權 Oracle 資料庫時，不適用 Oracle Core Factor 資料表。 相反地，使用已針對 Enterprise Edition 資料庫啟用超執行緒技術的 VM 時，如果已啟用超執行緒，請將兩個虛擬 CPU 計算為等同於一個 Oracle Processor 授權 (如原則文件所述)。 在[這裡](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)可以找到原則詳細資料。
 Oracle 資料庫通常需要較高的記憶體和 IO。 基於這個理由，建議針對這些工作負載使用[記憶體最佳化 VM](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)。 若要將您的工作負載進一步最佳化，建議針對需要高記憶體、儲存體和 I/O 頻寬，但不是高核心計數的 Oracle Database 工作負載使用[限制核心虛擬 CPU](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu)。
 
 將 Oracle 軟體和工作負載從內部部署遷移至 Microsoft Azure 時，Oracle 會提供如 [Oracle on Azure FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) 所述的授權行動性。
 
-
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
+
 Oracle Real Application Clusters (Oracle RAC) 是用來在內部部署的多節點叢集組態中，減少發生單一節點錯誤的機率。 它依賴以下兩個內部部署技術，而這兩個技術並非大規模公用雲端環境的原生技術︰網路多點傳送和共用磁碟。 若您的資料庫解決方案需要位在 Azure 中的 Oracle RAC，則您會需要第三方軟體才能啟用這些技術。 如需 Oracle RAC 的詳細資訊，請參閱 [FlashGrid SkyCluster 頁面](https://www.flashgrid.io/oracle-rac-in-azure/)。
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性和災害復原考量
-在 Azure 中使用 Oracle 資料庫時，您必須負責實作高可用性和災害復原解決方案，以避免任何停機。 
+
+在 Azure 中使用 Oracle 資料庫時，您必須負責實作高可用性和災害復原解決方案，以避免任何停機。
 
 在 Azure 上可以使用 [Data Guard、Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html) 或 [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate) 來達成 Oracle Database Enterprise Edition 的高可用性和災害復原 (不需倚賴 Oracle RAC)，且兩個資料庫位於兩個不同的虛擬機器上。 這兩個虛擬機器應該位於相同的[虛擬網路](https://azure.microsoft.com/documentation/services/virtual-network/)中，以確保它們可以透過永續私人 IP 位址互相存取。  此外，建議您將虛擬機器放置於相同的可用性設定組，讓 Azure 將其放置於不同的容錯網域和升級網域。 如果您想要擁有異地備援，請將這兩個資料庫設定為在兩個不同的區域之間進行複寫，並透過 VPN 閘道連接兩個執行個體。
 
@@ -120,10 +134,9 @@ Oracle Real Application Clusters (Oracle RAC) 是用來在內部部署的多節�
 
 除了已在 Azure 中建構 HA 和 DR 解決方案架構，您還應該擁有可用於還原資料庫的備份策略。 [備份及復原 Oracle 資料庫](oracle-backup-recovery.md)教學課程會引導您完成建立一致性備份的基本程序。
 
-
 ## <a name="support-for-jd-edwards"></a>JD Edwards 的支援
-根據 Oracle 支援附註 [Doc ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4)，符合其特定 `Minimum Technical Requirements` (MTR) 的**任何公用雲端供應項目**都支援 JD Edwards EnterpriseOne 9.2 版和更新版本。  您必須建立符合其 OS 和軟體應用程式相容性之 MTR 規格的自訂映像。 
 
+根據 Oracle 支援附註 [Doc ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4)，符合其特定 `Minimum Technical Requirements` (MTR) 的**任何公用雲端供應項目**都支援 JD Edwards EnterpriseOne 9.2 版和更新版本。  您必須建立符合其 OS 和軟體應用程式相容性之 MTR 規格的自訂映像。
 
 ## <a name="oracle-weblogic-server-virtual-machine-offers"></a>Oracle WebLogic Server 虛擬機器供應項目
 
@@ -131,39 +144,43 @@ Oracle 正與 Microsoft 攜手合作，以一組 Azure 應用程式供應項目�
 
 ### <a name="oracle-weblogic-server-virtual-machine-images"></a>Oracle WebLogic Server 虛擬機器映像
 
-* **只有在 Enterprise Edition 上才支援叢集。** 只有當您使用的是 Oracle WebLogic Server Enterprise Edition 時，才會獲授權使用 WebLogic 叢集。 請勿在使用 Oracle WebLogic Server Standard Edition 時使用叢集。
-* **不支援 UDP 多點傳送。** Azure 支援 UDP 單點傳播，但不支援多點傳送或廣播。 Oracle WebLogic Server 可以依賴 Azure 的 UDP 單點傳播功能。 若要依賴 UDP 單點傳播獲得最佳結果，建議 WebLogic 叢集大小保持靜態，或保持不超過 10 部受控伺服器。
-* **Oracle WebLogic Server 預期針對 T3 存取的公用和私人連接埠是相同的 (例如，使用 Enterprise JavaBeans 時)。** 請考慮使用多層式案例，其中服務層 (EJB) 應用程式會在 Oracle WebLogic Server 叢集上執行，而該叢集包含兩個或多個 VM，且都位於名為 *SLWLS* 的虛擬網路中。 用戶端層位於相同虛擬網路中的不同子網路，並執行簡單的 Java 程式，嘗試呼叫服務層中的 EJB。 由於負載平衡服務層是必要動作，所以必須先為 Oracle WebLogic Server 叢集中的虛擬機器建立公用負載平衡端點。 如果您指定的私人連接埠與公用連接埠不同 (例如，7006:7008)，則會發生下列錯誤：
+- **只有在 Enterprise Edition 上才支援叢集。** 只有當您使用的是 Oracle WebLogic Server Enterprise Edition 時，才會獲授權使用 WebLogic 叢集。 請勿在使用 Oracle WebLogic Server Standard Edition 時使用叢集。
+- **不支援 UDP 多點傳送。** Azure 支援 UDP 單點傳播，但不支援多點傳送或廣播。 Oracle WebLogic Server 可以依賴 Azure 的 UDP 單點傳播功能。 若要依賴 UDP 單點傳播獲得最佳結果，建議 WebLogic 叢集大小保持靜態，或保持不超過 10 部受控伺服器。
+- **Oracle WebLogic Server 預期針對 T3 存取的公用和私人連接埠是相同的 (例如，使用 Enterprise JavaBeans 時)。** 請考慮使用多層式案例，其中服務層 (EJB) 應用程式會在 Oracle WebLogic Server 叢集上執行，而該叢集包含兩個或多個 VM，且都位於名為 *SLWLS* 的虛擬網路中。 用戶端層位於相同虛擬網路中的不同子網路，並執行簡單的 Java 程式，嘗試呼叫服務層中的 EJB。 由於負載平衡服務層是必要動作，所以必須先為 Oracle WebLogic Server 叢集中的虛擬機器建立公用負載平衡端點。 如果您指定的私人連接埠與公用連接埠不同 (例如，7006:7008)，則會發生下列錯誤：
 
-       [java] javax.naming.CommunicationException [Root exception is java.net.ConnectException: t3://example.cloudapp.net:7006:
+```bash
+   [java] javax.naming.CommunicationException [Root exception is java.net.ConnectException: t3://example.cloudapp.net:7006:
 
-       Bootstrap to: example.cloudapp.net/138.91.142.178:7006' over: 't3' got an error or timed out]
+   Bootstrap to: example.cloudapp.net/138.91.142.178:7006' over: 't3' got an error or timed out]
+```
 
    這是因為對於任何遠端 T3 存取，Oracle WebLogic Server 預期負載平衡器連接埠和 WebLogic 受控伺服器連接埠是相同的。 在上述情況中，用戶端正在存取連接埠 7006 (負載平衡器連接埠)，而受控伺服器正在接聽 7008 (私人連接埠)。 這項限制只適用於 T3 存取，不適用於 HTTP。
 
    若要避免此問題，請使用下列其中一種因應措施：
 
-  * 針對 T3 存取專用的負載平衡端點使用相同的私人和公用連接埠號碼。
-  * 啟動 Oracle WebLogic Server 時包含下列 JVM 參數：
+- 針對 T3 存取專用的負載平衡端點使用相同的私人和公用連接埠號碼。
+- 啟動 Oracle WebLogic Server 時包含下列 JVM 參數：
 
-    ```
-    -Dweblogic.rjvm.enableprotocolswitch=true
-    ```
+```bash
+   -Dweblogic.rjvm.enableprotocolswitch=true
+```
 
 如需相關資訊，請參閱位於 <https://support.oracle.com> 的 KB 文章 **860340.1**。
 
-* **動態叢集和負載平衡限制。** 假設您想要在 Oracle WebLogic Server 中使用動態叢集，並透過 Azure 中的單一、公用負載平衡端點將其公開。 做法是只要您使用各個受控伺服器的固定連接埠號碼 (不是從範圍動態指派)，且不要啟動比系統管理員正在追蹤之機器的數量還多的受控伺服器。 也就是每台虛擬機器不超過一個受控伺服器。 若您的設定會導致啟動的 Oracle WebLogic Server 多於可用的虛擬機器 (也就是多個 Oracle WebLogic Server 執行個體共用相同的虛擬機器)，則那些 Oracle WebLogic Server 執行個體中只有一個可以繫結到指定的連接埠號碼。 該虛擬機器上的其他執行個體則會失敗。
+- **動態叢集和負載平衡限制。** 假設您想要在 Oracle WebLogic Server 中使用動態叢集，並透過 Azure 中的單一、公用負載平衡端點將其公開。 做法是只要您使用各個受控伺服器的固定連接埠號碼 (不是從範圍動態指派)，且不要啟動比系統管理員正在追蹤之機器的數量還多的受控伺服器。 也就是每台虛擬機器不超過一個受控伺服器。 若您的設定會導致啟動的 Oracle WebLogic Server 多於可用的虛擬機器 (也就是多個 Oracle WebLogic Server 執行個體共用相同的虛擬機器)，則那些 Oracle WebLogic Server 執行個體中只有一個可以繫結到指定的連接埠號碼。 該虛擬機器上的其他執行個體則會失敗。
 
    若您設定管理伺服器自動將唯一的連接埠號碼指派給其受控伺服器，則無法進行負載平衡，因為 Azure 不支援從單一公用連接埠對應至多個私人連接埠，而此設定中需要這樣做。
-* **虛擬機器上的多個 Oracle Weblogic Server 執行個體。** 根據您的部署需求，如果虛擬機器夠大，您可以考慮在相同虛擬機器上執行多個 Oracle WebLogic Server 的執行個體。 例如，在中型大小虛擬機器上 (包含 2 個核心)，您可以選擇執行兩個 Oracle WebLogic Server 的執行個體。 不過，仍然建議您避免將單一失敗點引入您的架構，如果您僅使用一個執行多個 Oracle WebLogic Server 執行個體的虛擬機器也是如此。 使用至少兩個虛擬機器可能是較好的方法，每個虛擬機器可以執行多個 Oracle WebLogic Server 執行個體。 每個 Oracle WebLogic Server 的執行個體仍可以是相同叢集的一部分。 不過，目前無法使用 Azure 對相同虛擬機器內此類 Oracle WebLogic Server 部署所公開的端點進行負載平衡，因為 Azure 負載平衡器需要負載平衡伺服器在唯一的虛擬機器內散佈。
+- **虛擬機器上的多個 Oracle Weblogic Server 執行個體。** 根據您的部署需求，如果虛擬機器夠大，您可以考慮在相同虛擬機器上執行多個 Oracle WebLogic Server 的執行個體。 例如，在中型大小虛擬機器上 (包含 2 個核心)，您可以選擇執行兩個 Oracle WebLogic Server 的執行個體。 不過，仍然建議您避免將單一失敗點引入您的架構，如果您僅使用一個執行多個 Oracle WebLogic Server 執行個體的虛擬機器也是如此。 使用至少兩個虛擬機器可能是較好的方法，每個虛擬機器可以執行多個 Oracle WebLogic Server 執行個體。 每個 Oracle WebLogic Server 的執行個體仍可以是相同叢集的一部分。 不過，目前無法使用 Azure 對相同虛擬機器內此類 Oracle WebLogic Server 部署所公開的端點進行負載平衡，因為 Azure 負載平衡器需要負載平衡伺服器在唯一的虛擬機器內散佈。
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Oracle JDK 虛擬機器映像
-* **JDK 6 和 7 最新更新。** 雖然建議使用 Java 的最新公開支援版本 (目前為 Java 8)，Azure 也提供 JDK 6 和 7 映像。 這是針對尚未準備升級至 JDK 8 的舊版應用程式。 雖然舊版 JDK 映像的更新可能不再提供一般大眾使用，憑藉 Microsoft 與 Oracle 的合作夥伴關係，Azure 提供的 JDK 6 和 7 映像會包含最新的非公用更新，該更新通常是由 Oracle 僅提供給 Oracle 支援客戶的選取群組。 新版本的 JDK 映像與 JDK 6 和 7 的更新版本會在一段時間內供取用。
+
+- **JDK 6 和 7 最新更新。** 雖然建議使用 Java 的最新公開支援版本 (目前為 Java 8)，Azure 也提供 JDK 6 和 7 映像。 這是針對尚未準備升級至 JDK 8 的舊版應用程式。 雖然舊版 JDK 映像的更新可能不再提供一般大眾使用，憑藉 Microsoft 與 Oracle 的合作夥伴關係，Azure 提供的 JDK 6 和 7 映像會包含最新的非公用更新，該更新通常是由 Oracle 僅提供給 Oracle 支援客戶的選取群組。 新版本的 JDK 映像與 JDK 6 和 7 的更新版本會在一段時間內供取用。
 
    JDK 6 和 7 映像中可用的 JDK，以及從中衍生的虛擬機器和映像，只能在 Azure 內使用。
-* **64 位元 JDK。** Oracle WebLogic Server 虛擬機器映像和 Azure 所提供的 Oracle JDK 虛擬機器映像包含 Windows Server 和 JDK 的 64 位元版本。
+- **64 位元 JDK。** Oracle WebLogic Server 虛擬機器映像和 Azure 所提供的 Oracle JDK 虛擬機器映像包含 Windows Server 和 JDK 的 64 位元版本。
 
 ## <a name="next-steps"></a>後續步驟
+
 您現在已大致了解以 Microsoft Azure 中的虛擬機器映像為基礎的現行 Oracle 解決方案。 下一個步驟是在 Azure 上部署第一個 Oracle 資料庫。
 
 > [!div class="nextstepaction"]

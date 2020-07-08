@@ -5,17 +5,17 @@ description: 了解如何在 Azure Machine Learning 設計工具中轉換資料�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
-ms.date: 05/04/2020
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 718023424834ffca7a026dc5b3d35b8fb11fe633
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: ea0ba58c3eb38a54be5ff777519ca12d6a2cf9ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85517508"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>在 Azure Machine Learning 設計工具中轉換資料 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -78,7 +78,7 @@ ms.locfileid: "83644292"
 
 您的管線應會顯示如下：
 
-![顯示如何設定管線和分割資料模組的螢幕擷取畫面](media/how-to-designer-transform-data/split-data.png)。
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png"alt-text="顯示如何設定管線和分割資料模組的螢幕擷取畫面":::
 
 
 ## <a name="save-the-datasets"></a>儲存資料集
@@ -93,7 +93,7 @@ ms.locfileid: "83644292"
 
     管線看起來應該會如下：
 
-    ![顯示如何連線匯出資料模組的螢幕擷取畫面](media/how-to-designer-transform-data/export-data-pipeline.png)。
+    ![顯示如何連線匯出資料模組的螢幕擷取畫面](media/how-to-designer-transform-data/export-data-pipeline.png).
 
 1. 選取連線到**分割資料**模組「最左側」連接埠的**匯出資料**模組。
 
@@ -132,7 +132,7 @@ ms.locfileid: "83644292"
 
     管線和設定應會如下：
     
-    ![顯示如何設定匯出資料模組的螢幕擷取畫面](media/how-to-designer-transform-data/us-income-export-data.png)。
+    ![顯示如何設定匯出資料模組的螢幕擷取畫面](media/how-to-designer-transform-data/us-income-export-data.png).
 
 ### <a name="submit-the-run"></a>提交執行
 

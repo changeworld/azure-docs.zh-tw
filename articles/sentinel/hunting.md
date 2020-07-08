@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel 中的搜尋功能 |Microsoft Docs
-description: 本文說明如何使用 Azure Sentinel 的搜尋功能。
+description: 使用 Azure Sentinel 的內建搜尋查詢，引導您詢問適當的問題以找出資料中的問題。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cceeb1fc9715dfd7b1ac714c424421c51d292757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686641"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552287"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>利用 Azure Sentinel 尋找威脅
 
@@ -143,4 +143,4 @@ Azure Sentinel 中的搜尋是以 Kusto 查詢語言為基礎。 如需查詢語
 
 
 - [使用筆記本來執行自動化的搜尋活動](notebooks.md)
-- [搜尋時使用書簽來儲存有趣的資訊](bookmarks.md)
+- [搜捕時使用書籤來儲存感興趣的資訊](bookmarks.md)

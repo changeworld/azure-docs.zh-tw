@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261888"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550311"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中變更存取套件的資源角色
 
@@ -86,11 +86,11 @@ ms.locfileid: "79261888"
 
     ![存取套件-新增資源角色-選取群組](./media/entitlement-management-access-package-resources/group-select.png)
 
-1. 按一下 [選取]。 
+1. 按一下 [選取]。
 
     一旦您選取群組或小組之後，[**子類型**] 欄將會列出下列其中一個子類型：
 
-    |  |  |
+    | 子類型 | Description |
     | --- | --- |
     | 安全性 | 用來授與資源的存取權。 |
     | 散發 | 用來傳送通知給一群人。 |
@@ -128,7 +128,7 @@ ms.locfileid: "79261888"
 
     ![存取套件-新增資源角色-選取應用程式](./media/entitlement-management-access-package-resources/application-select.png)
 
-1. 按一下 [選取]。 
+1. 按一下 [選取]。
 
 1. 在 [**角色**] 清單中，選取應用程式角色。
 
@@ -148,7 +148,7 @@ ms.locfileid: "79261888"
 
     ![存取套件-新增資源角色-選取 SharePoint Online 網站](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
-1. 按一下 [選取]。 
+1. 按一下 [選取]。
 
 1. 在 [**角色**] 清單中，選取 SharePoint Online 網站角色。
 

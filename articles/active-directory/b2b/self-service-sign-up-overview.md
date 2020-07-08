@@ -11,18 +11,17 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98456f26fbc7ca3955883eb283b54084bd86d503
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 34b08e2e530843dd98c87e424812706247388228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737753"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551324"
 ---
 # <a name="self-service-sign-up-preview"></a>自助式註冊 (預覽)
-|     |
-| --- |
-| 自助式註冊是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+
+> [!NOTE]
+> 自助式註冊是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 與外部使用者共用應用程式時，您不一定都能事先知道哪些人需要存取應用程式。 除了直接將邀請傳送給個人以外，您還可以允許外部使用者藉由啟用自助式註冊，來註冊特定的應用程式。 您可以自訂自助式註冊使用者流程，藉以建立個人化的註冊體驗。 例如，您可以提供使用 Azure AD 或社交識別提供者註冊的選項，並在註冊程序期間收集使用者的相關資訊。
 
