@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173654"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -27,7 +27,7 @@ ms.locfileid: "67173654"
 
 ### <a name="add-table-entities"></a>新增資料表實體
 
-使用**add-AzTableRow**將實體加入至資料表。 這些範例會使用資料分割索引`partition1`鍵`partition2`，其值為和，而資料列索引鍵等於州縮寫。 每個實體中的屬性`username`為`userid`和。 
+使用**add-AzTableRow**將實體加入至資料表。 這些範例會使用資料分割索引鍵，其值 `partition1` `partition2` 為和，而資料列索引鍵等於州縮寫。 每個實體中的屬性為 `username` 和 `userid` 。 
 
 ```powershell
 $partitionKey1 = "partition1"

@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 4eb794fa35164e3f86a5e3d6f67d446321f91f0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67133074"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>準備驗證 Azure Resource Manager 要求
@@ -41,8 +41,8 @@ ms.locfileid: "67133074"
 3. 使用下列命令並取代預留位置，以建立新的 Azure Active Directory 應用程式：
    
    * **{Display name}：** 應用程式的顯示名稱，如 **MySampleApp**
-   * **{Home PAGE URL}：** 應用程式首頁的 url，例如**HTTP：\//mysampleapp/home**。 此 URL 不需要指向實際的應用程式。
-   * **{應用程式識別碼}：** 唯一識別碼，例如**HTTP：\//mysampleapp**。 此 URL 不需要指向實際的應用程式。
+   * **{Home PAGE URL}：** 應用程式首頁的 url，例如**HTTP： \/ /mysampleapp/home**。 此 URL 不需要指向實際的應用程式。
+   * **{應用程式識別碼}：** 唯一識別碼，例如**HTTP： \/ /mysampleapp**。 此 URL 不需要指向實際的應用程式。
    * **{Password}：** 您用來驗證應用程式的密碼。
      
      ```powershell

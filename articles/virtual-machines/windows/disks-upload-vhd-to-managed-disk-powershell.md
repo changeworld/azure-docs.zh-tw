@@ -3,23 +3,23 @@ title: 將 VHD 上傳至 Azure 或跨區域複製磁片-Azure PowerShell
 description: 瞭解如何使用 Azure PowerShell，透過直接上傳，將 VHD 上傳至 Azure 受控磁片，以及跨區域複製受控磁片。
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
-ms.topic: article
+ms.date: 06/15/2020
+ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 6242baf5a541231d367d456450388ef455312780
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d03e911b88e6a7729b0519e74941b47d85a97901
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944622"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>將 VHD 上傳至 Azure，或將受控磁碟複製到另一個區域-Azure PowerShell
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 下載最新[版本的 AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
@@ -38,15 +38,18 @@ ms.locfileid: "82182509"
 - ActiveUpload，這表示磁片已準備好接收上傳，並已產生 SAS。
 
 > [!NOTE]
-> 在上述任一種狀態中，不論實際的磁片類型為何，受控磁片都會以[標準 HDD 定價](https://azure.microsoft.com/pricing/details/managed-disks/)計費。 例如，P10 會以 S10 計費。 在對受控磁片呼叫`revoke-access`之前，這會是 true，這是將磁片連結至 VM 所需的值。
+> 在上述任一種狀態中，不論實際的磁片類型為何，受控磁片都會以[標準 HDD 定價](https://azure.microsoft.com/pricing/details/managed-disks/)計費。 例如，P10 會以 S10 計費。 在對受控磁片呼叫之前，這會是 true `revoke-access` ，這是將磁片連結至 VM 所需的值。
 
 ## <a name="create-an-empty-managed-disk"></a>建立空的受控磁片
 
-在您可以建立空的標準 HDD 以進行上傳之前，您需要上傳的 VHD 檔案大小（以位元組為單位）。 範例程式碼會為您取得，但是您也可以使用來執行此動作： `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`。 指定 **-UploadSizeInBytes**參數時，會使用這個值。
+在您可以建立空的標準 HDD 以進行上傳之前，您需要上傳的 VHD 檔案大小（以位元組為單位）。 範例程式碼會為您取得，但是您也可以使用來執行此動作： `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` 。 指定 **-UploadSizeInBytes**參數時，會使用這個值。
 
 現在，在您的本機 shell 上，藉由在 **-CreateOption**參數中指定**上傳**設定，並在[new-azdiskconfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0)指令程式中指定 **-UploadSizeInBytes**參數，來建立要上傳的空標準 HDD。 然後呼叫[new-azdisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0)以建立磁片。
 
-取代`<yourdiskname>`、 `<yourresourcegroupname>`， `<yourregion>`然後執行下列命令：
+取代 `<yourdiskname>` 、 `<yourresourcegroupname>` ， `<yourregion>` 然後執行下列命令：
+
+> [!TIP]
+> 如果您要建立 OS 磁片，請將-HyperVGeneration ' <yourGeneration> ' 新增至 `New-AzDiskConfig` 。
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -60,7 +63,7 @@ New-AzDisk -ResourceGroupName '<yourresourcegroupname' -DiskName '<yourdiskname>
 
 既然您已建立為上傳程式設定的空受控磁片，您可以將 VHD 上傳至其中。 若要將 VHD 上傳至磁片，您將需要可寫入的 SAS，以便將它當做您上傳的目的地。
 
-若要產生空受控磁片的可寫入 SAS，請`<yourdiskname>`將`<yourresourcegroupname>`和取代為，然後使用下列命令：
+若要產生空受控磁片的可寫入 SAS，請將和取代為 `<yourdiskname>` `<yourresourcegroupname>` ，然後使用下列命令：
 
 ```powershell
 $diskSas = Grant-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>' -DurationInSecond 86400 -Access 'Write'
@@ -82,7 +85,7 @@ AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlo
 
 上傳完成之後，而且您不再需要將任何其他資料寫入磁片，請撤銷 SAS。 撤銷 SAS 將會變更受控磁片的狀態，並可讓您將磁片連結至 VM。
 
-取代`<yourdiskname>`和`<yourresourcegroupname>`，然後執行下列命令：
+取代 `<yourdiskname>` 和 `<yourresourcegroupname>` ，然後執行下列命令：
 
 ```powershell
 Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>'
@@ -97,7 +100,10 @@ Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<you
 > [!IMPORTANT]
 > 當您從 Azure 提供受控磁片的磁片大小（以位元組為單位）時，您需要新增512的位移。 這是因為在傳回磁片大小時，Azure 會省略頁尾。 如果您不這麼做，複製將會失敗。 下列腳本已經為您執行這項工作。
 
-使用您`<sourceResourceGroupHere>`的`<sourceDiskNameHere>`值`<targetDiskNameHere>`取代`<targetResourceGroupHere>`、 `<yourOSTypeHere>` 、 `<yourTargetLocationHere>` 、和（位置值的範例），然後執行下列腳本以複製受控磁片。
+`<sourceResourceGroupHere>` `<sourceDiskNameHere>` 使用您的值取代、、 `<targetDiskNameHere>` 、 `<targetResourceGroupHere>` `<yourOSTypeHere>` 和 `<yourTargetLocationHere>` （位置值的範例），然後執行下列腳本以複製受控磁片。
+
+> [!TIP]
+> 如果您要建立 OS 磁片，請將-HyperVGeneration ' <yourGeneration> ' 新增至 `New-AzDiskConfig` 。
 
 ```powershell
 

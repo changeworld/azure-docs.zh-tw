@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/17/2020
-ms.openlocfilehash: d154029e20ed952ca371685b00d5520f9d7850c8
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.date: 06/15/2020
+ms.openlocfilehash: 146deba7a0ef1e0dc5ffe03f9ad414e752058274
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873832"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945370"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的項目為何？
 本文說明 Azure 監視器監視的不同應用程式和服務。 
@@ -31,7 +31,7 @@ ms.locfileid: "83873832"
 | [適用於網路的 Azure 監視器 (預覽)](insights/network-insights-overview.md) | 針對您所有的網路資源，提供健康情況和計量的全面性檢視。 進階搜尋功能可協助您識別資源相依性，藉由直接搜尋您的網站名稱，來實現不同案例，例如識別裝載網站的資源。 |
 [適用於資源群組的 Azure 監視器 (預覽)](insights/resource-group-insights.md) |  將個別資源碰到的任何問題加以分級與診斷，同時就資源群組整體的健康狀態與效能提供內容。 |
 | [適用於儲存體的 Azure 監視器](insights/storage-insights-overview.md) | 藉由提供 Azure 儲存體服務效能、容量和可用性的統一檢視，讓您能夠全面監視 Azure 儲存體帳戶。 |
-| [適用於 VM 的 Azure 監視器](insights/container-insights-overview.md) | 會大規模監視您的 Azure 虛擬機器 (VM) 和虛擬機器擴展集。 此服務會分析您 Windows 和 Linux VM 的效能與健康情況，並且在其他資源和外部處理序上監視其處理序及相依性。 |
+| [適用於 VM 的 Azure 監視器](insights/vminsights-overview.md) | 會大規模監視您的 Azure 虛擬機器 (VM) 和虛擬機器擴展集。 此服務會分析您 Windows 和 Linux VM 的效能與健康情況，並且在其他資源和外部處理序上監視其處理序及相依性。 |
 | [適用於 Key Vault 的 Azure 監視器 (預覽)](insights/key-vaults-insights-overview.md) | 可針對您的 Key Vault 要求、效能、失敗和延遲提供統合檢視，讓您能夠全面監視金鑰保存庫。 |
 | [適用於 Azure Cache for Redis 的 Azure 監視器 (預覽)](insights/redis-cache-insights-overview.md) |  提供整體效能、失敗、容量、作業健康情況的統一、互動檢視。 |
 
@@ -137,37 +137,36 @@ ms.locfileid: "83873832"
 |通知中樞 | 是 | 否 | 否 |  |
 |Open Datasets | 否 | 否 | 否 |  |
 |原則 | 否 | 否 | 否 |  |
-|Power BI | 是 | 是 | 否 |  |
-|Power BI Embedded | 否 | 否 | 否 |  |
+|Power BI Embedded | 是 | 是 | 否 |  |
 |私人連結 | 否 | 否 | 否 |  |
 |Project Spool Communication Platform | 否 | 否 | 否 |  |
 |Red Hat OpenShift | 否 | 否 | 否 |  |
-|Redis 快取 | 是 | 是 | [是](insights/redis-cache-insights-overview.md) | |
-|Resource Graph | 否 | 否 | 否 |  |
+|Redis 快取 | Yes | 是 | [是](insights/redis-cache-insights-overview.md) | |
+|Resource Graph | 否 | 否 | No |  |
 |Resource Manager | 否 | 否 | 否 |  |
 |Retail Search – Bing 提供 | 否 | 否 | 否 |  |
-|搜尋 | 是 | 是 | 否 |  |
+|搜尋 | Yes | Yes | 否 |  |
 |服務匯流排 | 是 | 是 | 否 |  |
-|Service Fabric | 否 | 是 | 否 | 監視客體作業系統和工作流程所需的代理程式。  |
-|註冊入口網站 | 否 | 否 | 否 |  |
-|Site Recovery | 否 | 是 | 否 |  |
+|Service Fabric | No | 是 | 否 | 監視客體作業系統和工作流程所需的代理程式。  |
+|註冊入口網站 | 否 | 否 | No |  |
+|Site Recovery | 否 | Yes | 否 |  |
 |Spring Cloud Service | 否 | 否 | 否 |  |
-|SQL 資料倉儲 | 是 | 是 | 否 |  |
+|SQL 資料倉儲 | Yes | Yes | 否 |  |
 |SQL Database | 是 | 是 | 否 |  |
 |SQL Server Stretch Database | 是 | 是 | 否 |  |
 |Stack | 否 | 否 | 否 |  |
-|儲存體 | 是 | 否 | [是](insights/storage-insights-overview.md) |  |
-|儲存體快取 | 否 | 否 | 否 |  |
+|儲存體 | Yes | 否 | [是](insights/storage-insights-overview.md) |  |
+|儲存體快取 | 否 | 否 | No |  |
 |儲存體同步服務 | 否 | 否 | 否 |  |
-|串流分析 | 是 | 是 | 否 |  |
+|串流分析 | Yes | Yes | 否 |  |
 |時間序列深入解析 | 是 | 是 | 否 |  |
 |TINA | 否 | 否 | 否 |  |
-|流量管理員 | 是 | 是 | 否 |  |
+|流量管理員 | Yes | Yes | 否 |  |
 |通用列印 | 否 | 否 | 否 |  |
 |虛擬機器擴展集 | 否 | 是 | [是](insights/vminsights-overview.md) | 監視客體作業系統和工作流程所需的代理程式。 |
 |虛擬機器 | 是 | 是 | [是](insights/vminsights-overview.md) | 監視客體作業系統和工作流程所需的代理程式。 |
 |虛擬網路 | 是 | 是 | [是](insights/network-insights-overview.md) |  |
-|虛擬網路 - NSG 流量記錄 | 否 | 是 | 否 |  |
+|虛擬網路 - NSG 流量記錄 | No | 是 | 否 |  |
 |VPN 閘道 | 是 | 是 | 否 |  |
 |Windows 虛擬桌面 | 否 | 否 | 否 |  |
 
@@ -201,7 +200,7 @@ ms.locfileid: "83873832"
 |:---|:---|
 | [Active Directory 健康情況檢查](insights/ad-assessment.md) | 評估 Active Directory 環境的風險與健康情況。 |
 | [Active Directory 複寫狀態](insights/ad-replication-status.md) | 定期監視您的 Active Directory 環境是否有任何複寫失敗。 |
-| [活動記錄分析](platform/activity-log-view.md#azure-portal) | 檢視活動記錄項目。 |
+| [活動記錄分析](platform/activity-log.md#activity-log-analytics-monitoring-solution) | 檢視活動記錄項目。 |
 | [DNS 分析 (預覽)](insights/dns-analytics.md) | 收集、分析 Windows DNS 分析和稽核記錄，並將其與 DNS 伺服器中的其他相關資料關聯。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 收集、檢視及分析多個部署的 Cloud Foundry 系統健康情況和效能計量。 |
 | [容器](insights/containers.md) | 檢視及管理 Docker 和 Windows 容器主機。 |

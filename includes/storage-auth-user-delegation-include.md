@@ -9,10 +9,10 @@ ms.date: 01/15/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: a0a4a10797109cb3363027e2445259d06d9aa071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76118091"
 ---
 ## <a name="about-the-user-delegation-sas"></a>關於使用者委派 SAS
@@ -24,4 +24,4 @@ Microsoft 建議您盡可能使用 Azure AD 認證做為安全性最佳作法，
 > [!CAUTION]
 > 任何擁有有效 SAS 的用戶端，都可以存取該 SAS 所允許的儲存體帳戶中的資料。 保護 SAS 不受惡意或非預期的使用是很重要的。 散發 SAS 時請謹慎使用，並備妥用於撤銷遭入侵 SAS 的計畫。
 
-如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權](../articles/storage/common/storage-sas-overview.md)。
+如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章 (SAS) 授與 Azure 儲存體資源的有限存取權](../articles/storage/common/storage-sas-overview.md)。

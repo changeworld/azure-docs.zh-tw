@@ -3,15 +3,15 @@ title: 使用適用於儲存體的 Azure 監視器監視 Azure 儲存體服務 |
 description: 此文章描述適用於儲存體的 Azure 監視器功能，可讓儲存體管理員快速了解其 Azure 儲存體帳戶的效能和使用率問題。
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: e69e00eb9db43a76af1d6e541f44f750452cf858
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 7ab7071f504231290f72646e59a30fa855cff6cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800063"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944486"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用適用於儲存體的 Azure 監視器監視儲存體服務
 
@@ -228,6 +228,8 @@ ms.locfileid: "83800063"
 
 ## <a name="troubleshooting"></a>疑難排解
 
+如需一般疑難排解指導方針，請參閱專用的活頁簿型深入解析[疑難排解文章](troubleshoot-workbooks.md)。
+
 此節將協助您診斷在使用適用於儲存體的 Azure 監視器時可能遇到的一些常見問題，並進行疑難排解。 請使用下列清單，找到與您的特定問題相關的資訊。
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>解決效能、容量或可用性問題
@@ -237,24 +239,6 @@ ms.locfileid: "83800063"
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>為什麼我只能看到 200 個儲存體帳戶？
 
 無論選取了多少個訂用帳戶，選取的儲存體帳戶數目均限定為 200 個。
-
-### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>當我在儀表板中按一下最近釘選的磚時，會發生什麼事？
-
-* 如果您按一下磚上的任何位置，即會帶您前往從中釘選磚的索引標籤。 例如，如果您在 [儲存體帳戶概觀] 索引標籤中釘選圖表，那麼，當您按一下儀表板中的磚時，就會開啟該預設檢視，不過，如果您從自己儲存的複本釘選圖表，則將開啟您儲存之複本的檢視。
-* 標題左上方的篩選圖示會開啟 [設定磚的設定] 索引標籤。
-* 右上方的省略符號圖示將為您提供 [自訂標題資料]、[自訂]、[重新整理] 和 [從儀表板移除] 等選項。
-
-### <a name="what-happens-when-i-save-a-workbook"></a>當我儲存活頁簿時，會發生什麼事？
-
-* 當您儲存活頁簿時，其可讓您使用編輯和變更標題來建立活頁簿的新複本。 儲存不會覆寫活頁簿，目前的活頁簿一律為預設檢視。
-* **未儲存的**活頁簿只是預設檢視。
-
-
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>為什麼我在入口網站中看不到我所有的訂用帳戶？
-
-入口網站啟動時，入口網站只會針對選取的訂用帳戶顯示資料。 若要變更選取的訂用帳戶，請移至右上方，然後按一下具有篩選圖示的筆記本。 這將會顯示 [目錄 + 訂用帳戶] 索引標籤。
-
-![目錄 + 訂用帳戶](./media/storage-insights-overview/fqa3.png)
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>如何變更色彩設定和可用性閾值？
 
@@ -273,7 +257,7 @@ ms.locfileid: "83800063"
 
     ![移至計量、按一下編輯，然後按一下 [交易、總和]](./media/storage-insights-overview/fqa7.png)
 
-1. 接著，變更 [分割數目]。
+3. 接著，變更 [分割數目]。
 
     ![選取計量參數](./media/storage-insights-overview/fqa7-2.png)
 
@@ -282,37 +266,6 @@ ms.locfileid: "83800063"
 ###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>我已將活頁簿儲存於某個儲存體帳戶上。 為什麼我現在找不到該活頁簿？
 
 每個活頁簿都會儲存於您儲存時所使用的儲存體帳戶中。 嘗試尋找使用者儲存活頁簿時所使用的特定儲存體帳戶。 否則，就無法在不知道資源 (儲存體帳戶) 的情況下，尋找特定的活頁簿。
-
-### <a name="what-is-time-range"></a>什麼是時間範圍？
-
-時間範圍會顯示特定時間範圍內的資料。 例如，如果時間範圍是 24 小時，則會顯示過去 24 小時內的資料。
-
-### <a name="what-is-time-granularity-time-grain"></a>什麼是時間細微性 (時間粒紋)？
-
-時間細微性是兩個資料點之間的時間差異。 例如，如果將時間粒紋設定為 1 秒，即表示每秒都會收集計量。
-
-### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>當我們將活頁簿的任何部分釘選到儀表板之後，時間細微性為何？
-
-預設的時間細微性會設定為自動，目前無法變更。
-
-### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>如何在儀表板上變更活頁簿步驟的時間範圍？
-
-根據預設，儀表板磚上的時間會設定為 24 小時，若要變更此值，按一下右上方的省略符號、選取 [自訂磚的資料]、勾選 [在標題等級覆寫儀表板時間設定] 方塊，然後使用下拉式功能表挑選時間範圍。  
-
-![選取磚右上角的省略符號，然後選擇 [自訂此資料]](./media/storage-insights-overview/fqa-data-settings.png)
-
-![在 [設定磚的設定] 中，選取時間範圍下拉式清單，以變更時間範圍](./media/storage-insights-overview/fqa-timespan.png)
-
-### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>如何變更釘選到儀表板之活頁簿或活頁簿步驟的標題？
-
-釘選到儀表板之活頁簿或活頁簿步驟的標題，會保留其在活頁簿中的相同名稱。 若要變更標題，您必須儲存自己的活頁簿複本。 接著，就能夠在按下儲存圖示之前，先將活頁簿命名。
-
-![選取頂端的儲存圖示，以儲存活頁簿的複本，並變更其名稱](./media/storage-insights-overview/fqa-change-workbook-name.png)
-
-若要變更已儲存活頁簿中步驟的名稱，選取步驟底下的 [編輯]，然後選取設定最下方的齒輪。
-
-![選取活頁簿步驟底部的 [編輯]，以開啟設定](./media/storage-insights-overview/fqa-edit.png)
-![在 [設定] 中選取底部的齒輪，即可變更步驟名稱](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>後續步驟
 

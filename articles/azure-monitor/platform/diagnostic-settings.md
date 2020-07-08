@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中使用診斷設定來收集平臺計量和記錄
+title: 建立診斷設定以將平臺記錄和計量傳送至不同的目的地
 description: 使用診斷設定，將 Azure 監視器平臺計量和記錄傳送至 Azure 監視器記錄、Azure 儲存體或 Azure 事件中樞。
 author: bwren
 ms.author: bwren
@@ -7,21 +7,18 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: cbef0244f30a7cf14f8fea4c6a445cf0de662dc4
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: a037eddb13645036fcbe501ecba33923733b6d03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82737890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944367"
 ---
-# <a name="create-diagnostic-setting-to-collect-resource-logs-and-metrics-in-azure"></a>建立診斷設定以收集 Azure 中的資源記錄和計量
-
-Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄檔和資源記錄，可針對 Azure 資源和其相依的 azure 平臺提供詳細的診斷和審核資訊。 預設會收集[平臺計量](data-platform-metrics.md)，而且通常會儲存在 Azure 監視器計量資料庫中。
-
-本文提供有關建立及設定診斷設定的詳細資料，以將平臺計量和平臺記錄檔傳送至不同的目的地。
+# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>建立診斷設定以將平臺記錄和計量傳送至不同的目的地
+Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄檔和資源記錄，可針對 Azure 資源和其相依的 azure 平臺提供詳細的診斷和審核資訊。 預設會收集[平臺計量](data-platform-metrics.md)，而且通常會儲存在 Azure 監視器計量資料庫中。 本文提供有關建立及設定診斷設定的詳細資料，以將平臺計量和平臺記錄檔傳送至不同的目的地。
 
 > [!IMPORTANT]
-> 建立診斷設定以收集活動記錄檔之前，您應該先停用任何舊版設定。 如需詳細資訊，請參閱[使用舊版設定收集 Azure 活動記錄](diagnostic-settings-legacy.md)。
+> 建立活動記錄的診斷設定之前，您應該先停用任何舊版設定。 如需詳細資訊，請參閱[舊版收集方法](activity-log.md#legacy-collection-methods)。
 
 每個 Azure 資源都需要自己的診斷設定，以定義下列準則：
 
@@ -31,7 +28,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 單一診斷設定只能定義其中一個目的地。 如果您想要將資料傳送至超過一個的特定目的地類型 (例如，兩個不同的 Log Analytics 工作區)，請建立多個設定。 每個資源可以有最多 5 個診斷設定。
 
 > [!NOTE]
-> 系統會自動收集[平臺計量](metrics-supported.md)以[Azure 監視器計量](data-platform-metrics.md)。 診斷設定可以用來將特定 Azure 服務的計量收集到 Azure 監視器記錄中，以使用具有特定限制的[記錄查詢](../log-query/log-query-overview.md)來分析其他監視資料。 
+> [平臺計量](metrics-supported.md)會自動傳送至[Azure 監視器計量](data-platform-metrics.md)。 診斷設定可以用來將特定 Azure 服務的計量傳送至 Azure 監視器記錄，以使用具有特定限制的[記錄查詢](../log-query/log-query-overview.md)來分析其他監視資料。 
 >  
 >  
 > 目前不支援透過診斷設定傳送多維度計量。 跨維度值所彙總的維度計量會匯出為扁平化單一維度計量。 *例如*：您可以在每個節點層級上探索區塊鏈上的 ' IOReadBytes ' 計量並繪製成圖表。 不過，透過診斷設定匯出時，匯出的計量會代表所有節點的所有讀取位元組。 此外，由於內部限制，並非所有計量都可匯出以 Azure 監視器記錄/Log Analytics。 如需詳細資訊，請參閱可[匯出的計量清單](metrics-supported-export-diagnostic-settings.md)。 
@@ -39,17 +36,43 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 >  
 > 若要解決特定計量的這些限制，建議您使用 [[計量 REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list)手動將其解壓縮，並使用[Azure 監視器資料收集器 API](data-collector-api.md)將它們匯入 Azure 監視器記錄。  
 
+
 ## <a name="destinations"></a>Destinations
 
 平臺記錄和計量可以傳送至下表中的目的地。 請遵循下表中的每個連結，以取得將資料傳送至該目的地的詳細資訊。
 
 | Destination | 描述 |
 |:---|:---|
-| [Log Analytics 工作區](resource-logs-collect-workspace.md) | 將記錄和計量收集到 Log Analytics 工作區，可讓您使用功能強大的記錄查詢 Azure 監視器所收集的其他監視資料進行分析，也可以利用警示和視覺效果等其他 Azure 監視器功能。 |
-| [事件中樞](resource-logs-stream-event-hubs.md) | 將記錄和計量傳送至事件中樞可讓您將資料串流至外部系統，例如協力廠商 Siem 和其他 log analytics 解決方案。 |
-| [Azure 儲存體帳戶](resource-logs-collect-storage.md) | 將記錄和計量封存到 Azure 儲存體帳戶適用于 audit、靜態分析或備份。 相較于 Azure 監視器記錄和 Log Analytics 工作區，Azure 儲存體的成本較低，而且記錄可以無限期保存。 |
+| [Log Analytics 工作區](#log-analytics-workspace) | 將記錄和計量傳送至 Log Analytics 工作區，可讓您使用功能強大的記錄查詢 Azure 監視器所收集的其他監視資料進行分析，也可以利用警示和視覺效果等其他 Azure 監視器功能。 |
+| [事件中樞](#event-hub) | 將記錄和計量傳送至事件中樞可讓您將資料串流至外部系統，例如協力廠商 Siem 和其他 log analytics 解決方案。 |
+| [Azure 儲存體帳戶](#azure-storage) | 將記錄和計量封存到 Azure 儲存體帳戶適用于 audit、靜態分析或備份。 相較于 Azure 監視器記錄和 Log Analytics 工作區，Azure 儲存體的成本較低，而且記錄可以無限期保存。 |
 
-## <a name="create-diagnostic-settings-in-azure-portal"></a>在 Azure 入口網站中建立診斷設定
+
+## <a name="prerequisites"></a>必要條件
+您必須使用必要的許可權來建立診斷設定的任何目的地。 請參閱下列各節，以瞭解每個目的地的必要條件需求。
+
+### <a name="log-analytics-workspace"></a>Log Analytics 工作區
+[建立新的工作區](../learn/quick-create-workspace.md)（如果您還沒有的話）。 工作區不一定要與資源傳送記錄位於相同的訂用帳戶中，前提是設定此設定的使用者具有這兩個訂用帳戶的適當 RBAC 存取權。
+
+### <a name="event-hub"></a>事件中樞
+[建立事件中樞](../../event-hubs/event-hubs-create.md)（如果您還沒有的話）。 事件中樞命名空間不一定要和發出記錄的訂用帳戶屬於相同的訂用帳戶，只要進行設定的使用者有這兩個訂用帳戶的適當 RBAC 存取權，而且這兩個訂用帳戶都屬於同一個 ADD 租用戶。
+
+命名空間的共用存取原則會定義串流機制擁有的許可權。 串流至事件中樞需要 [管理]、[傳送] 和 [接聽] 許可權。 您可以在事件中樞命名空間的 [設定] 索引標籤下的 Azure 入口網站中，建立或修改共用存取原則。 若要更新診斷設定以包含串流，您必須具有該事件中樞授權規則的 ListKey 許可權。 
+
+
+### <a name="azure-storage"></a>Azure 儲存體
+如果您還沒有[Azure 儲存體帳戶](../../storage/common/storage-account-create.md)，請建立一個。 儲存體帳戶不一定要與資源傳送記錄位於相同的訂用帳戶中，前提是設定此設定的使用者具有這兩個訂用帳戶的適當 RBAC 存取權。
+
+您不應該使用已儲存其他非監視資料的現有儲存體帳戶，讓您可以更有效地控制資料的存取權。 不過，如果您要同時封存活動記錄檔和資源記錄，您可以選擇使用相同的儲存體帳戶，將所有監視資料保留在中央位置。
+
+若要將資料傳送至不可變的儲存體，請設定儲存體帳戶的不可變原則，如[設定和管理 Blob 儲存體](../../storage/blobs/storage-blob-immutability-policies-manage.md)的不可變性原則中所述。 您必須遵循本文中的所有步驟，包括啟用受保護的附加 blob 寫入。
+
+> [!NOTE]
+> Azure Data Lake Storage Gen2 帳戶目前不支援做為診斷設定的目的地，即使其在 Azure 入口網站中可能列為有效的選項。
+
+
+
+## <a name="create-in-azure-portal"></a>在 Azure 入口網站中建立
 
 您可以從 [Azure 監視器] 功能表或從資源的功能表，設定 Azure 入口網站中的診斷設定。
 
@@ -112,11 +135,11 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
         >
         > 例如，如果您將*WorkflowRuntime*的保留原則設定為180天，並在24小時後將它設定為365天，則前24小時內儲存的記錄將會在180天后自動刪除，而該類型的所有後續記錄檔將會在365天后自動刪除。 稍後變更保留原則並不會讓前24小時的記錄持續365天。
 
-6. 按一下 [檔案]  。
+6. 按一下 [檔案] 。
 
 幾分鐘之後，新的設定就會出現在此資源的設定清單中，而且記錄會在產生新的事件資料時串流處理至指定的目的地。 在事件發出和[記錄分析工作區中顯示](data-ingestion-time.md)時，可能需要15分鐘的時間。
 
-## <a name="create-diagnostic-settings-using-powershell"></a>使用 PowerShell 建立診斷設定
+## <a name="create-using-powershell"></a>使用 PowerShell 建立
 
 使用[set-azdiagnosticsetting 指令程式](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)建立具有[Azure PowerShell](powershell-quickstart-samples.md)的診斷設定。 如需其參數的描述，請參閱此 Cmdlet 的檔。
 
@@ -129,7 +152,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault -Category AuditEvent -MetricCategory AllMetrics -Enabled $true -StorageAccountId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount -WorkspaceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace  -EventHubAuthorizationRuleId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-## <a name="create-diagnostic-settings-using-azure-cli"></a>使用 Azure CLI 建立診斷設定
+## <a name="create-using-azure-cli"></a>使用 Azure CLI 建立
 
 使用[az monitor [診斷-設定](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create)] [建立] 命令，以[Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest)建立診斷設定。 如需其參數的描述，請參閱此命令的檔。
 
@@ -149,13 +172,15 @@ az monitor diagnostic-settings create  \
 --event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-### <a name="configure-diagnostic-settings-using-rest-api"></a>使用 REST API 設定診斷設定
+## <a name="create-using-resource-manager-template"></a>使用 Resource Manager 範本建立
+[如需 Azure 監視器中的診斷設定 Resource Manager 範本範例](../samples/resource-manager-diagnostic-settings.md)，請參閱使用 Resource Manager 範本建立或更新診斷設定。
 
+## <a name="create-using-rest-api"></a>使用 REST API 建立
 請參閱[診斷設定](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)，以使用[Azure 監視器 REST API](https://docs.microsoft.com/rest/api/monitor/)來建立或更新診斷設定。
 
-### <a name="configure-diagnostic-settings-using-resource-manager-template"></a>使用 Resource Manager 範本設定診斷設定
+## <a name="create-using-azure-policy"></a>使用 Azure 原則建立
+因為需要為每個 Azure 資源建立診斷設定，所以 Azure 原則可以用來在每個資源建立時自動建立診斷設定。 如需詳細資訊，請參閱[使用 Azure 原則大規模部署 Azure 監視器](deploy-scale.md)。
 
-請參閱[使用 Resource Manager 範本在 Azure 監視器中建立診斷設定](diagnostic-settings-template.md)，以 Resource Manager 範本建立或更新診斷設定。
 
 ## <a name="next-steps"></a>後續步驟
 

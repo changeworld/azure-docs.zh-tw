@@ -1,37 +1,39 @@
 ---
-title: 評估模型效能
+title: 評估 & 交叉驗證模型
 titleSuffix: ML Studio (classic) - Azure
-description: 瞭解如何在 Azure Machine Learning Studio （傳統）中評估模型效能，以及這項工作可用的計量。
+description: 瞭解您可用來監視 Azure Machine Learning Studio （傳統）中模型效能的計量。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 3c041834b9ad191817cdf1380b0a75efc7639bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd6c291cd703d56f86dc26c041eb39023bba0578
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218148"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945098"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>如何在 Azure Machine Learning Studio (傳統) 中評估模型效能
+# <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>評估 Azure Machine Learning Studio 中的模型效能（傳統）
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+在本文中，您可以瞭解可用來監視 Azure Machine Learning Studio （傳統）中模型效能的計量。  評估模型的效能是資料科學流程中的核心階段之一。 它會指出定型模型如何成功地為資料集評分 (預測)。 Azure Machine Learning Studio （傳統）支援透過兩個主要機器學習服務模組進行模型評估： 
++ [評估模型][evaluate-model] 
++ [交叉驗證模型][cross-validate-model]
 
-本文示範如何在 Azure Machine Learning Studio （傳統）中評估模型的效能，並提供這項工作可用計量的簡短說明。 提供三種常見的受監督的學習案例： 
+這些模組可讓您根據 Machine Learning 和統計資料中常用的一些度量，查看您模型的運作方式。
 
+評估模型應該與一起考慮：
++ [演算法的參數優化](algorithm-parameters-optimize.md)
++ [模型可解釋性](interpret-model-results.md)
+
+提供三種常見的受監督的學習案例： 
 * 迴歸
 * 二進位分類 
 * 多元分類
 
-
-
-評估模型的效能是資料科學流程中的核心階段之一。 它會指出定型模型如何成功地為資料集評分 (預測)。 
-
-Azure Machine Learning Studio （傳統）支援透過兩個主要機器學習服務模組進行模型評估：[評估模型][evaluate-model]和[交叉驗證模型][cross-validate-model]。 這些模組可讓您根據 Machine Learning 和統計資料中常用的一些度量，查看您模型的運作方式。
 
 ## <a name="evaluation-vs-cross-validation"></a>評估與交叉驗證
 評估與交叉驗證是測量模型效能的標準方式。 它們都會產生您可以對照其他模型的度量檢查或比較的評估度量。
@@ -50,8 +52,8 @@ Azure Machine Learning Studio （傳統）支援透過兩個主要機器學習�
 
 * 汽車價格資料 (原始)
 * [線性迴歸][linear-regression]
-* [定型模型][train-model]
-* [計分模型][score-model]
+* [訓練模型][train-model]
+* [評分模型][score-model]
 * [評估模型][evaluate-model]
 
 如下圖 1 所示連接連接埠，並將[訓練模型][train-model]模組的 [標籤] 資料行設定為 [價格]**。
@@ -92,8 +94,8 @@ Azure Machine Learning Studio （傳統）支援透過兩個主要機器學習�
 
 * 成人收入普查二進位分類資料集
 * [二元羅吉斯迴歸][two-class-logistic-regression]
-* [定型模型][train-model]
-* [計分模型][score-model]
+* [訓練模型][train-model]
+* [評分模型][score-model]
 * [評估模型][evaluate-model]
 
 如下圖 5 所示連接連接埠，並將[訓練模型][train-model]模組的 [標籤] 資料行設定為 [收入]**。
@@ -142,9 +144,9 @@ Azure Machine Learning Studio （傳統）支援透過兩個主要機器學習�
 
 * [匯入資料][import-data]
 * [多元決策樹系][multiclass-decision-forest]
-* [分割資料][split]
-* [定型模型][train-model]
-* [計分模型][score-model]
+* [資料分割][split]
+* [訓練模型][train-model]
+* [評分模型][score-model]
 * [評估模型][evaluate-model]
 
 連接連接埠，如以下圖 10 中所示。

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: d594f3cf556fe311e0b7400a23fd61d0336fe5f1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 1d8275d11b845df43238dce82beabe89d6464799
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651126"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944690"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>關於 Azure 儲存體移轉的常見問題集
 
@@ -215,19 +215,20 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 - 從儲存體帳戶內的共用複製到 Blob 容器，或複製到不同的儲存體帳戶。
 
 如需詳細資訊，請參閱[使用 AzCopy on Windows 傳送資料](storage-use-azcopy.md)。
+
 ## <a name="configuration"></a>組態
 
 **如何將儲存體帳戶的次要位置變更為歐洲地區？**
 
 建立儲存體帳戶時，您可以為帳戶選取主要區域。 次要地區的選擇是以主要地區為準，無法變更。 如需詳細資訊，請參閱[異地備援儲存體 (GRS)：適用於 Azure 儲存體的跨區域複寫](storage-redundancy.md)。
 
-**我可以從哪裡取得更多關於 Azure 儲存體服務加密 (SSE) 的資訊？**  
+**哪裡可以取得 Azure 儲存體加密的詳細資訊？**  
 
 查看下列文章：
 
--  [Azure 儲存體安全性指南](../blobs/security-recommendations.md)
-
--  [待用資料的 Azure 儲存體服務加密](storage-service-encryption.md)
+- [待用資料的 Azure 儲存體加密](storage-service-encryption.md)
+- [搭配 Azure Key Vault 使用客戶管理的金鑰來管理 Azure 儲存體加密](encryption-customer-managed-keys.md)
+- [在 Blob 儲存體的要求上提供加密金鑰（預覽）](encryption-customer-provided-keys.md)
 
 **如何加密儲存體帳戶的資料？**
 
@@ -253,19 +254,19 @@ Azure 檔案共用不允許使用進階儲存體。
 
 若要讓其他人存取儲存體資源：
 
--   請使用共用存取簽章 (SAS) 權杖來提供資源的存取權。
+- 使用共用存取簽章（SAS）權杖來提供資源的存取權。
 
--   將儲存體帳戶的主要或次要金鑰提供給使用者。 如需詳細資訊，請參閱[管理儲存體帳戶存取金鑰](storage-account-keys-manage.md)。
+- 將儲存體帳戶的主要或次要金鑰提供給使用者。 如需詳細資訊，請參閱[管理儲存體帳戶存取金鑰](storage-account-keys-manage.md)。
 
--   變更存取原則，以允許匿名存取。 如需詳細資訊，請參閱[授與容器和 Blob 的匿名使用者權限](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
+- 變更存取原則，以允許匿名存取。 如需詳細資訊，請參閱[授與容器和 Blob 的匿名使用者權限](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
 
 **AzCopy 的安裝位置？**
 
--   如果您是從 Microsoft Azure 儲存體命令列存取 AzCopy，請輸入 **AzCopy**。 命令列是與 AzCopy 一同安裝的。
+- 如果您是從 Microsoft Azure 儲存體命令列存取 AzCopy，請輸入 **AzCopy**。 命令列是與 AzCopy 一同安裝的。
 
--   如果您安裝的是 32 位元版本，則位於： **%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\AzCopy**。
+- 如果您安裝的是 32 位元版本，則位於： **%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\AzCopy**。
 
--   如果您安裝的是 64 位元版本，則位於： **%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy**。
+- 如果您安裝的是 64 位元版本，則位於： **%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy**。
 
 **如何將 HTTPS 自訂網域與我的儲存體帳戶搭配使用？例如，如何讓 "https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" 顯示為 "https:\//www.contoso.com/images/image.gif"？**
 
@@ -284,15 +285,15 @@ Azure 檔案共用不允許使用進階儲存體。
 
 **對於複寫的儲存體帳戶 (例如，區域備援儲存體、異地備援儲存體或讀取權限異地備援儲存體)，如何存取儲存在次要區域的資料？**
 
--   如果您使用的是區域備援儲存體或異地備援儲存體，除非您起始以該區域為目的地的容錯移轉，否則無法從次要區域存取資料。 如需容錯移轉程序的詳細資訊，請參閱[災害復原和儲存體帳戶容錯移轉](storage-disaster-recovery-guidance.md)。
+- 如果您使用的是區域備援儲存體或異地備援儲存體，除非您起始以該區域為目的地的容錯移轉，否則無法從次要區域存取資料。 如需容錯移轉程序的詳細資訊，請參閱[災害復原和儲存體帳戶容錯移轉](storage-disaster-recovery-guidance.md)。
 
--   如果您使用的是讀取權限異地備援儲存體，可以隨時存取次要區域中的資料。 請使用下列其中一個方法：  
+- 如果您使用的是讀取權限異地備援儲存體，可以隨時存取次要區域中的資料。 請使用下列其中一個方法：  
 
-    - **AzCopy**：將 **-secondary** 附加至 URL 中的儲存體帳戶名稱，即可存取次要端點。 例如：  
+  - **AzCopy**：將 **-secondary** 附加至 URL 中的儲存體帳戶名稱，即可存取次要端點。 例如：  
 
       `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
-    - **SAS 權杖**：使用 SAS 權杖以存取來自端點的資料。 如需詳細資訊，請參閱[使用共用存取簽章](storage-sas-overview.md)。
+  - **SAS 權杖**：使用 SAS 權杖以存取來自端點的資料。 如需詳細資訊，請參閱[使用共用存取簽章](storage-sas-overview.md)。
 
 **如何使用 FTP 存取儲存體帳戶中的資料？**
 
@@ -300,6 +301,6 @@ Azure 檔案共用不允許使用進階儲存體。
 
 如果您只是要下載資料，而不想使用儲存體總管或類似的應用程式，則可以使用 SAS 權杖。 如需詳細資訊，請參閱[使用共用存取簽章](storage-sas-overview.md)。
 
-## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員。
+## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
 
 如果仍需要協助，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解決您的問題。

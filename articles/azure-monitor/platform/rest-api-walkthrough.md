@@ -5,12 +5,12 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1de3afc380c5c3c82a869de0ff2319b013e26438
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945336"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API 逐步解說
 
@@ -95,7 +95,7 @@ $authHeader = @{
 
 **方法**：GET
 
-**要求 URI**： HTTPs：\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{coNtext.resourcename}*/providers/microsoft.insights/metricdefinitions api-version？ api 版本 =*{apiVersion}*
+**要求 URI**： HTTPs： \/ \/ management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}* / *{resourceType}* / *{coNtext.resourcename}*/providers/microsoft.insights/metricdefinitions api-version？ api 版本 =*{apiVersion}*
 
 例如，若要取出 Azure 儲存體帳戶的計量定義，則要求看起來如下所示：
 
@@ -239,7 +239,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**要求 URI**： HTTPs\://management.azure.com/subscriptions/*{訂用帳戶識別碼}*/resourceGroups/*{資源群組名稱}*/providers/*{資源提供者-命名空間}*/*{資源類型}*/*{資源名稱}*/providers/microsoft.insights/metrics？ metricnames =*{公制}*&timespan =*{starttime/endtime}*&$filter =*{filter}*&resultType = 中繼資料&api 版本 =*{apiVersion}*
+**要求 URI**： HTTPs \: //management.azure.com/subscriptions/*{訂用帳戶識別碼}*/resourceGroups/*{資源群組名稱}*/providers/*{資源提供者-命名空間}* / *{資源類型}* / *{資源名稱}*/providers/microsoft.insights/metrics？ metricnames =*{公制}*&timespan =*{starttime/endtime}*&$filter =*{filter}*&resultType = 中繼資料&api 版本 =*{apiVersion}*
 
 例如，若要擷取 'Transactions' 計量之 'API Name dimension' 中發出的維度值清單，其中指定時間範圍內的 GeoType 維度 = 'Primary'，要求將如下所示：
 
@@ -312,7 +312,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**要求 URI**： HTTPs：\//management.azure.com/subscriptions/*{訂用帳戶識別碼}*/resourceGroups/*{資源群組名稱}*/providers/*{資源提供者-命名空間}*/*{資源類型}*/*{資源名稱}*/providers/microsoft.insights/metrics？ metricnames =*{公制}*&timespan =*{starttime/endtime}*&$filter =*{filter}*&interval =*{timeGrain}*&匯總 =*{aggreation}*&api 版本 =*{apiVersion}*
+**要求 URI**： HTTPs： \/ /management.azure.com/subscriptions/*{訂用帳戶識別碼}*/resourceGroups/*{資源群組名稱}*/providers/*{資源提供者-命名空間}* / *{資源類型}* / *{資源名稱}*/providers/microsoft.insights/metrics？ metricnames =*{公制}*&timespan =*{starttime/endtime}*&$filter =*{filter}*&interval =*{timeGrain}*&匯總 =*{aggreation}*&api 版本 =*{apiVersion}*
 
 例如，若要根據 5 分鐘範圍內的 'Transactions' 數量 (其中 GeotType 是 'Primary')，擷取排名前 3 個 API (依遞減值排列)，要求如下所示：
 
@@ -391,7 +391,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**要求 URI**： HTTPs：\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{coNtext.resourcename}*/providers/microsoft.insights/metricdefinitions api-version？ api 版本 =*{apiVersion}*
+**要求 URI**： HTTPs： \/ \/ management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}* / *{resourceType}* / *{coNtext.resourcename}*/providers/microsoft.insights/metricdefinitions api-version？ api 版本 =*{apiVersion}*
 
 例如，若要取出 Azure Logic App 的計量定義，則要求看起來如下所示：
 
@@ -654,7 +654,7 @@ Version        : 08586982649483762729
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要使用 Azure CLI 抓取 Azure 儲存體帳戶的資源識別碼，請執行`az storage account show`命令，如下列範例所示：
+若要使用 Azure CLI 抓取 Azure 儲存體帳戶的資源識別碼，請執行 `az storage account show` 命令，如下列範例所示：
 
 ```azurecli
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
@@ -705,16 +705,30 @@ az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 
 ## <a name="retrieve-activity-log-data"></a>取出活動記錄資料
 
-除了計量定義及相關值，也可以使用 Azure Monitor REST API 取出關於 Azure 資源的其他有用的深入解析。 例如，可以查詢 [活動記錄檔](https://msdn.microsoft.com/library/azure/dn931934.aspx) 資料。 下列範例示範使用 Azure 監視器 REST API 查詢 Azure 訂用帳戶特定日期範圍內的活動記錄檔資料︰
+除了計量定義及相關值，也可以使用 Azure Monitor REST API 取出關於 Azure 資源的其他有用的深入解析。 例如，可以查詢 [活動記錄檔](https://msdn.microsoft.com/library/azure/dn931934.aspx) 資料。 下列範例要求會使用 Azure 監視器 REST API 來查詢活動記錄。
 
-```powershell
-$apiVersion = "2015-04-01"
-$filter = "eventTimestamp ge '2017-08-18' and eventTimestamp le '2017-08-19'and eventChannels eq 'Admin, Operation'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.insights/eventtypes/management/values?api-version=${apiVersion}&`$filter=${filter}"
-Invoke-RestMethod -Uri $request `
-    -Headers $authHeader `
-    -Method Get `
-    -Verbose
+利用 filter 取得活動記錄：
+
+``` HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2018-01-21T20:00:00Z' and eventTimestamp le '2018-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'
+```
+
+利用 filter 和 select 取得活動記錄：
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+利用 select 取得活動記錄：
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+不利用 filter 或 select 取得活動記錄：
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
 
 ## <a name="next-steps"></a>後續步驟

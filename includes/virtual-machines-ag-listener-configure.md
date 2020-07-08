@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75468560"
 ---
 可用性群組接聽程式是一個 IP 位址及網路名稱，可供 SQL Server 可用性群組接聽。 若要建立可用性群組接聽程式，請執行下列步驟：
@@ -28,7 +28,7 @@ ms.locfileid: "75468560"
 
     a. 展開叢集名稱，然後按一下 [角色]****。
 
-    b. 在 [**角色**] 窗格中，以滑鼠右鍵按一下可用性組名，然後選取 [**新增資源** > ] [**用戶端存取點**]。
+    b. 在 [**角色**] 窗格中，以滑鼠右鍵按一下可用性組名，然後選取 [**新增資源**] [  >  **用戶端存取點**]。
 
    ![用戶端存取點](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
@@ -76,7 +76,7 @@ ms.locfileid: "75468560"
 
    ![IP 資源](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. 按一下 [相依**性] 索引**標籤。請確認 IP 位址是相依性。 如果不是，請在 IP 位址上設定相依性。 如果列出多個資源，請確認 IP 位址具有 OR 相依性，而非 AND。 按一下 [確定]  。 
+    c. 按一下 [相依**性] 索引**標籤。請確認 IP 位址是相依性。 如果不是，請在 IP 位址上設定相依性。 如果列出多個資源，請確認 IP 位址具有 OR 相依性，而非 AND。 按一下 [確定]。 
 
    ![IP 資源](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 

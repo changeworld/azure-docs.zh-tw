@@ -5,10 +5,10 @@ author: ecfan
 ms.author: estfan
 ms.date: 11/09/2018
 ms.openlocfilehash: 89c2467843d7abc7c005804fd5263fe3beb668b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74793439"
 ---
 若要更精確地預估耗用成本，請考慮任何一天可能送達的訊息或事件數目，而非只根據輪詢間隔來計算成本。 當事件或訊息符合觸發條件時，許多觸發程序會立即嘗試讀取任何和所有其他符合條件的等候事件或訊息。 這個行為表示，即使在您選取較長的輪詢間隔時，觸發程序也會根據有資格啟動工作流程的等候事件或訊息數目而引發。 遵循此行為的觸發程序包括 Azure 服務匯流排和 Azure 事件中樞。

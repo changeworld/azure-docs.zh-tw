@@ -9,10 +9,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
 ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75541799"
 ---
 1. 登入 [Azure Machine Learning Studio](https://ml.azure.com)。
@@ -26,7 +26,7 @@ ms.locfileid: "75541799"
     
 1. 移至工作區的 [設計工具] 區段，以查看您的管線草稿清單。 
     
-    流覽至 [**端點** > ] [**即時端點**]，即可找到已轉換的 web 服務。
+    流覽至 [**端點**] [  >  **即時端點**]，即可找到已轉換的 web 服務。
 
 1. 選取管線草稿以開啟它。
 

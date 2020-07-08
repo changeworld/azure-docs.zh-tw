@@ -1,15 +1,15 @@
 ---
-title: 容器實例的安全性
+title: 容器實例的安全性考慮
 description: 針對 Azure 容器實例保護映射和秘密的建議，以及任何容器平臺的一般安全性考慮
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907018"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure 容器實例的安全性考慮
 
@@ -18,6 +18,9 @@ ms.locfileid: "81457989"
 > [!div class="checklist"]
 > * 管理 Azure 容器實例之映射和秘密的**安全性建議**
 > * 整個容器生命週期中的**容器生態系統考慮**，適用于任何容器平臺
+
+如需可協助您改善部署之安全性狀態的完整建議，請參閱[容器實例的 Azure 安全性基準](security-baseline.md)。
+
 
 ## <a name="security-recommendations-for-azure-container-instances"></a>Azure 容器實例的安全性建議
 
@@ -140,6 +143,8 @@ ms.locfileid: "81457989"
 * [Azure 容器實例](container-instances-log-analytics.md)和[Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)的資源記錄
 
 ## <a name="next-steps"></a>後續步驟
+
+* 如需可協助您改善部署安全性狀態的完整建議，請參閱[容器實例的 Azure 安全性基準](security-baseline.md)。
 
 * 深入瞭解如何在您的容器化環境中使用[Azure 資訊安全中心](../security-center/container-security.md)進行即時威脅偵測。
 

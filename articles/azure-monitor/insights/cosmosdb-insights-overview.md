@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 05000f4c670860be249d80b0e695a8a8760510be
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797582"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945489"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探索適用於 Azure Cosmos DB 的 Azure 監視器
 
@@ -119,6 +119,10 @@ ms.locfileid: "83797582"
 活頁簿會儲存在資源群組內，保存在您私人使用的 [我的報表] 區段中，或是可供每個具有資源群組存取權的人員存取的 [共用報表] 區段中。 儲存自訂活頁簿之後，您必須移至活頁簿資源庫加以啟動。
 
 ![從命令列啟動活頁簿資源庫](./media/cosmosdb-insights-overview/gallery.png)
+
+## <a name="troubleshooting"></a>疑難排解
+
+如需疑難排解指引，請參閱專用的活頁簿型深入解析[疑難排解文章](troubleshoot-workbooks.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66814881"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "66814881"
 
 ## <a name="scale-with-the-azure-cli"></a>使用 Azure CLI 進行調整
 
-[安裝 Azure CLI](/cli/azure/install-azure-cli)並使用`az login`登入 Azure 帳戶。
+[安裝 Azure CLI](/cli/azure/install-azure-cli)並使用登入 Azure 帳戶 `az login` 。
 
 ### <a name="see-the-current-agent-count"></a>查看目前的代理程式計數
 若要查看叢集中目前擁有的代理程式數目，請執行 `az acs show` 命令。 這會顯示叢集組態。 例如，下列命令會顯示資源群組 `myResourceGroup` 中名為 `containerservice-myACSName` 之容器服務的組態：
@@ -64,7 +64,7 @@ Azure CLI 會傳回 JSON 字串，這個字串代表容器服務的新組態，�
 * 您可以根據您在叢集中部署的 Orchestrator，個別地調整在叢集上執行之容器的執行個體數目。 例如，在 DC/OS 叢集中，使用 [Marathon UI](../articles/container-service/dcos-swarm/container-service-mesos-marathon-ui.md) 來變更容器應用程式的執行個體數目。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 請參閱[更多範例](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)，以了解如何搭配使用 Azure CLI 命令與 Azure Container Service。
 * 深入了解 Azure Container Service 中的 [DC/OS 代理程式集區](../articles/container-service/dcos-swarm/container-service-dcos-agents.md)。
 

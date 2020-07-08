@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f6049a69b88c85f4e1bdf1c2400866739a6718d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478750"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944316"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全性 
 
@@ -87,7 +87,7 @@ ms.locfileid: "80478750"
 > [!NOTE]
 > Service Fabric 叢集將會使用在主機的憑證存放區中找到的第一個有效憑證。 在 Windows 中，這將會是到期日期最慢、並且與一般名稱和簽發者指紋相符的憑證。
 
-Azure 網域，例如 *\<YOUR SUBDOMAIN\>.cloudapp.azure.com 或 \<YOUR SUBDOMAIN\>.trafficmanager.net，由 Microsoft 擁有。 憑證授權單位不會發出網域憑證給未經授權的使用者。 大部分的使用者必須向註冊機構購買網域，或本身為授權的網域系統管理員，憑證授權單位才會發出具備該一般名稱的憑證給您。
+Azure 網域（例如 * \<YOUR SUBDOMAIN\> . cloudapp.azure.com 或 \<YOUR SUBDOMAIN\> . trafficmanager.net）由 Microsoft 所擁有。 憑證授權單位不會發出網域憑證給未經授權的使用者。 大部分的使用者必須向註冊機構購買網域，或本身為授權的網域系統管理員，憑證授權單位才會發出具備該一般名稱的憑證給您。
 
 如需有關如何設定 DNS 服務以將網域解析為 Microsoft IP 位址的其他詳細資訊，請檢閱如何設定 [Azure DNS 來裝載您的網域](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。
 
@@ -157,7 +157,7 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>使用受控服務識別 (MSI) 向 Azure 資源驗證 Service Fabric 應用程式
 
-若要了解適用於 Azure 資源的受控識別，請參閱[什麼是適用於 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。
+若要了解適用於 Azure 資源的受控識別，請參閱[什麼是適用於 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md)。
 Azure Service Fabric 叢集裝載在虛擬機器擴展集中，支援[受控服務識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)。
 若要取得 MSI 可用來進行驗證的服務清單，請參閱[支援 Azure Active Directory 驗證的 Azure 服務](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)。
 
@@ -217,7 +217,12 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 這些防火牆規則可讓您的允許輸出網路安全性群組（包括 ServiceFabric 和儲存體）成為虛擬網路中允許的目的地。
 
 ## <a name="tls-12"></a>TLS 1.2
-[技術](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
+
+Microsoft [Azure 建議](https://azure.microsoft.com/updates/azuretls12/)所有客戶完整遷移至支援傳輸層安全性（TLS）1.2 的解決方案，並確保預設會使用 TLS 1.2。
+
+包括[Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493)在內的 Azure 服務已完成工程工作，以移除對 TLS 1.0/1.1 通訊協定的相依性，並為想要將其工作負載設定為接受並僅起始 tls 1.2 連線的客戶提供完整支援。
+
+客戶應設定其 Azure 裝載的工作負載，以及與 Azure 服務互動的內部部署應用程式，以預設使用 TLS 1.2。 以下說明如何將[Service Fabric 叢集節點和應用程式設定](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)為使用特定的 TLS 版本。
 
 ## <a name="windows-defender"></a>Windows Defender 
 

@@ -6,17 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: bfb0a73631564c96a4af745fe9d7540a3a84f9c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0f31ddb0e0aeabff06d14d40d254c2577b38b5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655356"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84906797"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>在 Azure 監視器（預覽）中的 Log Analytics 工作區中建立自訂欄位
 
 > [!NOTE]
 > 本文說明如何在 Log Analytics 工作區中剖析收集的文字資料。 我們建議您遵循[剖析 Azure 監視器中的文字資料](../log-query/parse-text.md)中所述的指導方針，來剖析查詢篩選器中的文字資料。 它透過使用自訂欄位來提供數個優點。
+
+> [!IMPORTANT]
+> 自訂欄位會增加 Log Analytics 工作區中收集的資料量，而這可能會增加您的成本。 如需詳細資訊，請參閱[使用 Azure 監視器記錄來管理使用量和成本](manage-cost-storage.md#pricing-model)。
 
 Azure 監視器的**自訂欄位**功能可讓您藉由新增自己的可搜尋欄位，來擴充 Log Analytics 工作區中的現有記錄。  自訂欄位會自動填入擷取自同一筆記錄中其他屬性的資料。
 
@@ -50,7 +53,7 @@ Azure 監視器的**自訂欄位**功能可讓您藉由新增自己的可搜尋�
 ### <a name="step-2---perform-initial-extract"></a>步驟 2 - 執行初始擷取。
 一旦您識別出將會具有自訂欄位的記錄，您就已識別您想要擷取的資料。  Log Analytics 會使用這項資訊來識別類似記錄中的類似模式。  在這之後的步驟中，您將可以驗證結果，並提供更進一步的詳細資料以供 Log Analytics 用於其分析中。
 
-1. 在範例記錄中醒目提示您想要填入自訂欄位的文字。  接著會出現一個對話方塊，讓您提供欄位的名稱和資料類型，以及執行初始的解壓縮。  系統會自動附加字元** \_CF** 。
+1. 在範例記錄中醒目提示您想要填入自訂欄位的文字。  接著會出現一個對話方塊，讓您提供欄位的名稱和資料類型，以及執行初始的解壓縮。  系統會自動附加字元** \_ CF** 。
 2. 按一下 [擷取] **** 以對收集的記錄進行分析。  
 3. [摘要]**** 和 [搜尋結果]**** 區段會顯示擷取結果，以供您檢查其正確性。  **** 會顯示用來識別記錄的準則，以及每個所識別之資料值的計數。  **** 會提供符合準則之記錄的詳細清單。
 

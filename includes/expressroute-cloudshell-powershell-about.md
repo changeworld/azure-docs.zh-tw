@@ -9,10 +9,10 @@ ms.date: 12/13/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ff5a42150140035105298802a7ce8b4d0e25959c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75436921"
 ---
 您可以使用 Azure Cloud Shell 來執行大部分的 PowerShell Cmdlet 和 CLI 命令，而不是在本機安裝 Azure PowerShell 或 CLI。 Azure Cloud Shell 是免費的互動式 Shell，其已預先安裝了通用 Azure 工具，並已設定為與您的帳戶搭配使用。

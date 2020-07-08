@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中安裝及�
 services: container-service
 ms.topic: article
 ms.date: 04/27/2020
-ms.openlocfilehash: e5b3d1c94de8406c12222eea59beafd7277d646d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 049df92fcbc6126516fef5cf463b1485b1d19b0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561959"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945540"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建立輸入控制器
 
@@ -41,7 +41,7 @@ ms.locfileid: "82561959"
 > 下列範例會建立名為「輸入 *-基本*」的輸入資源的 Kubernetes 命名空間。 視需要指定您自己環境的命名空間。
 
 > [!TIP]
-> 如果您想要為叢集中的容器要求啟用[用戶端來源 IP 保留][client-source-ip]，請將`--set controller.service.externalTrafficPolicy=Local`新增至 Helm install 命令。 用戶端來源 IP 會儲存在要求標頭的 [ *X-轉送-*] 下。 當使用已啟用用戶端來源 IP 保留的輸入控制器時，SSL 傳遞將無法運作。
+> 如果您想要為叢集中的容器要求啟用[用戶端來源 IP 保留][client-source-ip]，請將新增 `--set controller.service.externalTrafficPolicy=Local` 至 Helm install 命令。 用戶端來源 IP 會儲存在要求標頭的 [ *X-轉送-*] 下。 當使用已啟用用戶端來源 IP 保留的輸入控制器時，SSL 傳遞將無法運作。
 
 ```console
 # Create a namespace for your ingress resources
@@ -72,7 +72,7 @@ nginx-ingress-default-backend    ClusterIP      10.0.192.145   <none>        80/
 
 ## <a name="run-demo-applications"></a>執行示範應用程式
 
-若要查看作用中的輸入控制器，請在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，您`kubectl apply`會使用來部署簡單*Hello world*應用程式的兩個實例。
+若要查看作用中的輸入控制器，請在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，您會使用 `kubectl apply` 來部署簡單*Hello world*應用程式的兩個實例。
 
 建立*aks-helloworld-one yaml*檔案，並複製下列範例 yaml：
 
@@ -80,7 +80,7 @@ nginx-ingress-default-backend    ClusterIP      10.0.192.145   <none>        80/
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aks-helloworld-one
+  name: aks-helloworld-one  
 spec:
   replicas: 1
   selector:
@@ -103,7 +103,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: aks-helloworld-one
+  name: aks-helloworld-one  
 spec:
   type: ClusterIP
   ports:
@@ -118,7 +118,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aks-helloworld-two
+  name: aks-helloworld-two  
 spec:
   replicas: 1
   selector:
@@ -141,7 +141,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: aks-helloworld-two
+  name: aks-helloworld-two  
 spec:
   type: ClusterIP
   ports:
@@ -150,7 +150,7 @@ spec:
     app: aks-helloworld-two
 ```
 
-使用`kubectl apply`執行兩個示範應用程式：
+使用執行兩個示範應用程式 `kubectl apply` ：
 
 ```console
 kubectl apply -f aks-helloworld-one.yaml --namespace ingress-basic
@@ -161,7 +161,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 這兩個應用程式現在都已在您的 Kubernetes 叢集上執行。 若要將流量路由至每個應用程式，請建立 Kubernetes 輸入資源。 輸入資源會設定將流量路由至這兩個應用程式之一的規則。
 
-在下列範例中， *EXTERNAL_IP*的流量會路由傳送至名為`aks-helloworld-one`的服務。 *EXTERNAL_IP/hello-world-two*的流量會路由傳送至`aks-helloworld-two`服務。 *EXTERNAL_IP/靜態*的流量會路由傳送至名`aks-helloworld-one`為的靜態資產服務。
+在下列範例中， *EXTERNAL_IP*的流量會路由傳送至名為的服務 `aks-helloworld-one` 。 *EXTERNAL_IP/hello-world-two*的流量會路由傳送至 `aks-helloworld-two` 服務。 *EXTERNAL_IP/靜態*的流量會路由傳送至名 `aks-helloworld-one` 為的靜態資產服務。
 
 建立名為 `hello-world-ingress.yaml` 的檔案，並複製到下列範例 YAML 中。
 
@@ -169,8 +169,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: hello-world-ingress
-  namespace: ingress-basic
+  name: hello-world-ingress  
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -232,7 +231,7 @@ ingress.extensions/hello-world-ingress-static created
 
 ### <a name="delete-the-sample-namespace-and-all-resources"></a>刪除範例命名空間和所有資源
 
-若要刪除整個範例命名空間，請`kubectl delete`使用命令並指定您的命名空間名稱。 命名空間中的所有資源都會被刪除。
+若要刪除整個範例命名空間，請使用 `kubectl delete` 命令並指定您的命名空間名稱。 命名空間中的所有資源都會被刪除。
 
 ```console
 kubectl delete namespace ingress-basic
@@ -240,7 +239,7 @@ kubectl delete namespace ingress-basic
 
 ### <a name="delete-resources-individually"></a>個別刪除資源
 
-或者，更細微的方法是刪除所建立的個別資源。 使用`helm list`命令來列出 Helm 版本。 尋找名為nginx-ingress** 和 aks-helloworld** 的圖表，如下列範例輸出所示：
+或者，更細微的方法是刪除所建立的個別資源。 使用命令來列出 Helm 版本 `helm list` 。 尋找名為nginx-ingress** 和 aks-helloworld** 的圖表，如下列範例輸出所示：
 
 ```
 $ helm list --namespace ingress-basic
@@ -249,7 +248,7 @@ NAME                    NAMESPACE       REVISION        UPDATED                 
 nginx-ingress           ingress-basic   1               2020-01-06 19:55:46.358275 -0600 CST    deployed        nginx-ingress-1.27.1    0.26.1  
 ```
 
-使用`helm uninstall`命令卸載發行。 下列範例會卸載 NGINX 輸入部署。
+使用命令卸載發行 `helm uninstall` 。 下列範例會卸載 NGINX 輸入部署。
 
 ```
 $ helm uninstall nginx-ingress --namespace ingress-basic
@@ -270,7 +269,7 @@ kubectl delete -f aks-helloworld-two.yaml --namespace ingress-basic
 kubectl delete -f hello-world-ingress.yaml
 ```
 
-最後，您可以刪除本身的命名空間。 使用`kubectl delete`命令，並指定您的命名空間名稱：
+最後，您可以刪除本身的命名空間。 使用 `kubectl delete` 命令，並指定您的命名空間名稱：
 
 ```console
 kubectl delete namespace ingress-basic

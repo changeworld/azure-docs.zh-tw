@@ -9,10 +9,10 @@ ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b8073240bdda38757a5e4feee66c9f54746966c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80632065"
 ---
 ### <a name="portal"></a>入口網站
@@ -21,10 +21,10 @@ ms.locfileid: "80632065"
 
 #### <a name="setting-up-your-azure-key-vault"></a>設定您的 Azure Key Vault
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 登入[Azure 入口網站](https://portal.azure.com/)。
 1. 搜尋並選取 [**金鑰保存庫**]。
 
-    [![sse-key-vault-portal-search .png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
+    [![sse-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
 
     > [!IMPORTANT]
     > 您的 Azure 金鑰保存庫、磁片加密集、VM、磁片和快照必須全都位於相同的區域和訂用帳戶，部署才會成功。
@@ -38,7 +38,7 @@ ms.locfileid: "80632065"
 
 1. 完成部署金鑰保存庫後，請選取它。
 1. 選取 [**設定**] 底下的 [**金鑰**]。
-1. 選取 [產生/匯入]  。
+1. 選取 [產生/匯入]。
 
     ![[Key Vault 資源設定] 窗格的螢幕擷取畫面。 顯示 [設定] 內的 [產生/匯入] 按鈕。](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
@@ -102,7 +102,7 @@ VM 部署程式類似于標準部署程式，唯一的差異在於您需要在�
     ![範例 VM 的螢幕擷取畫面，其中已開啟 [磁片] 分頁。 系統會反白顯示 OS 磁片，做為您要選取的範例磁片。](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
 
 1. 選取 [**加密**]，然後選取 [**使用客戶管理的金鑰進行待用加密**]，然後在下拉式清單中選取您的磁片加密集。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
     ![範例作業系統磁片的螢幕擷取畫面。 [加密] 分頁已開啟，同時選取了 [使用客戶管理的金鑰進行待用加密]，以及您的範例 Azure Key Vault。 進行這些選擇之後，就會選取 [儲存] 按鈕。](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
 

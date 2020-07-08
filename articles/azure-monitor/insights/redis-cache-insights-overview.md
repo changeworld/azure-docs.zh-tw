@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: d892c58413803ff65fbd8ca8b25a61bc5ffeb26f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847356"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945404"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>探索適用於 Azure Cache for Redis 的 Azure 監視器 (預覽)
 
@@ -179,6 +179,10 @@ ms.locfileid: "83847356"
 儲存自訂活頁簿之後，請移至活頁簿資源庫加以開啟。
 
 ![醒目提示 [資源庫] 的命令列](./media/cosmosdb-insights-overview/gallery.png)
+
+## <a name="troubleshooting"></a>疑難排解
+
+如需疑難排解指引，請參閱專用的活頁簿型深入解析[疑難排解文章](troubleshoot-workbooks.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

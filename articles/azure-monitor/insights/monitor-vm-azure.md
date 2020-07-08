@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: ebb25d49250b71ab8d948833ac982ef244225539
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: HT
+ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945387"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 虛擬機器
 本文說明如何使用 Azure 監視器來收集和分析來自 Azure 虛擬機器的監視資料，以維持資料健康。 您可以使用 Azure 監視器來監視虛擬機器的可用性和效能，如同監視任何[其他 Azure 資源](monitor-azure-resource.md)一樣，但虛擬機器與其他資源不同，因為您也需要監視客體作業和系統，及其在其中執行的工作負載。 
@@ -105,9 +105,9 @@ Azure 中的虛擬機器會針對虛擬機器主機產生下列資料，與其�
 如需在 Linux 虛擬機器上設定 Telegraf 代理程式的詳細資訊，請參閱[安裝和設定 Telegraf](../platform/collect-custom-metrics-linux-telegraf.md#install-and-configure-telegraf)。 **診斷設定**功能表選項適用於 Linux，但只允許您將資料傳送至 Azure 儲存體。
 
 ### <a name="collect-platform-metrics-and-activity-log"></a>收集平台計量和活動記錄
-您可以在 Azure 入口網站中，檢視針對每部虛擬機器主機收集的平台計量和活動記錄。 將此資料收集到與適用於 VM 的 Azure 監視器相同的 Log Analytics 工作區，以使用針對虛擬機器所收集的其他監視資料進行分析。 您可以使用[診斷設定](../platform/diagnostic-settings.md)來設定此收集。 使用[訂用帳戶的診斷設定](../platform/diagnostic-settings.md#create-diagnostic-settings-in-azure-portal)收集活動記錄。
+您可以在 Azure 入口網站中，檢視針對每部虛擬機器主機收集的平台計量和活動記錄。 將此資料收集到與適用於 VM 的 Azure 監視器相同的 Log Analytics 工作區，以使用針對虛擬機器所收集的其他監視資料進行分析。 您可以使用[診斷設定](../platform/diagnostic-settings.md)來設定此收集。 使用[訂用帳戶的診斷設定](../platform/diagnostic-settings.md#create-in-azure-portal)收集活動記錄。
 
-使用虛擬機器的診斷設定收集平台計量。 不同於其他 Azure 資源，您無法在 Azure 入口網站中建立虛擬機器的診斷設定，必須使用[另一種方法](../platform/diagnostic-settings.md#create-diagnostic-settings-using-powershell)。 下列範例示範如何使用 PowerShell 和 CLI 來收集虛擬機器的計量。
+使用虛擬機器的診斷設定收集平台計量。 不同於其他 Azure 資源，您無法在 Azure 入口網站中建立虛擬機器的診斷設定，必須使用[另一種方法](../platform/diagnostic-settings.md#create-using-powershell)。 下列範例示範如何使用 PowerShell 和 CLI 來收集虛擬機器的計量。
 
 ```powershell
 Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"

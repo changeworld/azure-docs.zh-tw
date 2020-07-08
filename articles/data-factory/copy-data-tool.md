@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/18/2018
+ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: df078673aed60086a88961ff64f9bfa596d96346
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: a10f7c3dda4d16a264cf52f9fddcf2bf0ed93348
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907497"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory 中的複製資料工具
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,7 +37,7 @@ Azure Data Factory「複製資料」工具把將資料內嵌到 Data Lake 的程
 
 若要啟動「複製資料」工具，請按一下您資料處理站首頁上的 [複製資料] 圖格。
 
-![開始使用頁面 -「複製資料」工具連結](./media/copy-data-tool/get-started-page.png)
+![開始使用頁面 -「複製資料」工具連結](./media/doc-common-process/get-started-page.png)
 
 
 ## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>將資料載入至 Data Lake 的直覺式流程

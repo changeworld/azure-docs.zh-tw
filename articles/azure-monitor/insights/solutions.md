@@ -6,18 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 2627cd540efe644315e303337b7dce95a6e2d126
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 4edcb22ed6bd33b1174354cf0cbb9a590e35c207
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84906882"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的監視解決方案
-
-監視解決方案會運用 Azure 中的服務，提供特定應用程式或服務的額外作業見解。 本文提供 Azure 中監視解決方案的簡短概觀，以及使用和安裝它們的詳細資料。
-
-您可以針對您使用的任何應用程式和服務，將監視解決方案新增至 Azure 監視器。 這些監視解決方案通常免費提供，但是會收集可能造成使用費用的資料。 除了 [Microsoft 所提供的解決方案](solutions-creating.md)，合作夥伴和客戶可以建立要用於其自己的環境中或可透過社群供您客戶使用的管理解決方案。
+監視解決方案會利用 Azure 中的服務來提供特定應用程式或服務之作業的額外分析。 本文提供 Azure 中監視解決方案的簡短概觀，以及使用和安裝它們的詳細資料。 您可以針對您使用的任何應用程式和服務，將監視解決方案新增至 Azure 監視器。 這些監視解決方案通常免費提供，但是會收集可能造成使用費用的資料。
 
 ## <a name="use-monitoring-solutions"></a>使用監視解決方案
 

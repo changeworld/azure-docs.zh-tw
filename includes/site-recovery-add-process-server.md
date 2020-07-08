@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173684"
 ---
 1. 啟動 Azure Site Recovery UnifiedSetup.exe
@@ -34,7 +34,7 @@ ms.locfileid: "67173684"
 
      ![新增處理序伺服器 4](./media/site-recovery-add-process-server/ps-page-4.png)
 
-6. 在 [環境詳細資料]**** 中，選取您是否要複寫 VMware VM。 如果是的話，安裝程式會檢查是否已安裝 PowerCLI 6.0。
+6. 在 [環境詳細資料] 中，選取您是否要複寫 VMware VM。 如果是的話，安裝程式會檢查是否已安裝 PowerCLI 6.0。
 
      ![新增處理序伺服器 5](./media/site-recovery-add-process-server/ps-page-5.png)
 

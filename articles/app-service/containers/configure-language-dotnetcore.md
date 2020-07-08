@@ -3,13 +3,13 @@ title: 設定 Linux ASP.NET Core 應用程式
 description: 瞭解如何為您的應用程式設定預先建立的 ASP.NET Core 容器。 本文說明最常見的設定工作。
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/13/2019
-ms.openlocfilehash: b1d9e59109f5ace25abb9840b48e44ff03d394e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: e009f5b1fc656f700b3f0e76dda6e545aed535d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255918"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905760"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Linux ASP.NET Core 應用程式
 
@@ -39,25 +39,25 @@ az webapp list-runtimes --linux | grep DOTNETCORE
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
 ```
 
-## <a name="customize-build-automation"></a>自訂群組建自動化
+## <a name="customize-build-automation"></a>自訂組建自動化
 
-如果您使用 Git 或已開啟組建自動化的 zip 套件來部署應用程式，App Service 組建自動化會逐步執行下列順序：
+如果您使用 Git 或 zip 套件並開啟組建自動化來部署應用程式，App Service 組建自動化將會依下列順序逐步執行：
 
-1. 執行自訂腳本（如果`PRE_BUILD_SCRIPT_PATH`有指定）。
-1. 執行`dotnet restore`以還原 NuGet 相依性。
-1. 執行`dotnet publish`以建立用於生產的二進位檔。
-1. 執行自訂腳本（如果`POST_BUILD_SCRIPT_PATH`有指定）。
+1. 執行自訂指令碼 (如果 `PRE_BUILD_SCRIPT_PATH` 已指定)。
+1. 執行 `dotnet restore` 以還原 NuGet 相依性。
+1. 執行 `dotnet publish` 以建立用於生產的二進位檔。
+1. 執行自訂指令碼 (如果 `POST_BUILD_SCRIPT_PATH` 已指定)。
 
-`PRE_BUILD_COMMAND`和`POST_BUILD_COMMAND`是預設為空白的環境變數。 若要執行預先建立的命令， `PRE_BUILD_COMMAND`請定義。 若要執行建立後命令，請`POST_BUILD_COMMAND`定義。
+`PRE_BUILD_COMMAND` 和 `POST_BUILD_COMMAND` 是預設為空值的環境變數。 若要執行建置前命令，請定義 `PRE_BUILD_COMMAND`。 若要執行建置後命令，請定義 `POST_BUILD_COMMAND`。
 
-下列範例會指定一系列命令的兩個變數，並以逗號分隔。
+下列範例會將兩個變數指定給一系列的命令 (以逗號分隔)。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-如需其他環境變數以自訂群組建自動化，請參閱[Oryx configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
+若要了解其他可自訂組建自動化的環境變數，請參閱 [Oryx 設定](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
 
 如需有關 App Service 如何在 Linux 中執行和建立 ASP.NET Core 應用程式的詳細資訊，請參閱[Oryx 檔：如何偵測和建立 .Net Core 應用程式](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md)。
 
@@ -81,8 +81,8 @@ namespace SomeNamespace
     
         public SomeMethod()
         {
-            // retrieve App Service app setting
-            var myAppSetting = _configuration["MySetting"];
+            // retrieve nested App Service app setting
+            var myHierarchicalConfig = _configuration["My:Hierarchical:Config:Data"];
             // retrieve App Service connection string
             var myConnString = _configuration.GetConnectionString("MyDbConnection");
         }
@@ -90,11 +90,18 @@ namespace SomeNamespace
 }
 ```
 
-例如，如果您在 App Service 和*appsettings*中設定具有相同名稱的應用程式設定，則 App Service 值的優先順序會高於*appsettings. json*值。 本機*appsettings*可讓您在本機上對應用程式進行調試，但 App Service 值可讓您在產品中使用生產環境設定來執行應用程式。 連接字串的工作方式相同。 如此一來，您就可以在程式碼存放庫之外保留應用程式秘密，並存取適當的值，而不需要變更您的程式碼。
+例如，如果您在 App Service 中設定具有相同名稱的應用程式設定，並在中*appsettings.js*，則 App Service 值會優先于值*appsettings.js* 。 本機appsettings.js值可讓您在本機*上*對應用程式進行調試，但 App Service 值可讓您使用生產環境設定在產品中執行應用程式。 連接字串的工作方式相同。 如此一來，您就可以在程式碼存放庫之外保留應用程式秘密，並存取適當的值，而不需要變更您的程式碼。
+
+> [!NOTE]
+> 請注意， *appsettings.js*中的[階層](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data)式設定資料是使用 `:` .net Core 標準的分隔符號來存取。 若要覆寫 App Service 中的特定階層式設定，請在索引鍵中設定具有相同分隔格式的應用程式設定名稱。 您可以在[Cloud Shell](https://shell.azure.com)中執行下列範例：
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
+```
 
 ## <a name="get-detailed-exceptions-page"></a>取得詳細例外狀況頁面
 
-當您的 ASP.NET 應用程式在 Visual Studio 偵錯工具中產生例外狀況時，瀏覽器會顯示詳細的例外狀況頁面，但在 App Service 該頁面會由一般**HTTP 500**錯誤取代，或在**處理您的要求時發生錯誤。** 訊息。 若要在 App Service 中顯示詳細的例外狀況頁面`ASPNETCORE_ENVIRONMENT` ，請在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中執行下列命令，以將應用程式設定新增至您的應用程式。
+當您的 ASP.NET 應用程式在 Visual Studio 偵錯工具中產生例外狀況時，瀏覽器會顯示詳細的例外狀況頁面，但在 App Service 該頁面會由一般**HTTP 500**錯誤取代，或在**處理您的要求時發生錯誤。** 訊息。 若要在 App Service 中顯示詳細的例外狀況頁面，請 `ASPNETCORE_ENVIRONMENT` 在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中執行下列命令，以將應用程式設定新增至您的應用程式。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -106,7 +113,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 - 請使用 [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) 來設定中介軟體以轉送 `Startup.ConfigureServices` 中的 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭。
 - 將私人 IP 位址範圍新增至已知的網路，讓中介軟體可以信任 App Service 負載平衡器。
-- 呼叫其他[UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)中介軟體之前， `Startup.Configure`請先在中叫用 UseForwardedHeaders 方法。
+- 呼叫其他中介軟體之前，請先在中叫用[UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法 `Startup.Configure` 。
 
 將這三個元素全部放在一起，您的程式碼看起來如下列範例所示：
 
@@ -154,7 +161,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>使用應用程式設定
 
-在<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>中，執行下列 CLI 命令，以將應用程式設定新增至您的 App Service 應用程式。 以適當的值取代* \<應用程式名稱>*、 * \<資源群組名稱>* 和* \<專案名稱>* 。
+在<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>中，執行下列 CLI 命令，以將應用程式設定新增至您的 App Service 應用程式。 *\<app-name>* *\<resource-group-name>* *\<project-name>* 以適當的值取代、和。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -162,7 +169,26 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="access-diagnostic-logs"></a>存取診斷記錄
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+ASP.NET Core 提供[App Service 的內建記錄提供者](https://docs.microsoft.com/aspnet/core/fundamentals/logging/#azure-app-service)。 在專案的*Program.cs*中，透過擴充方法將提供者新增至您的應用程式 `ConfigureLogging` ，如下列範例所示：
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureLogging(logging =>
+        {
+            logging.AddAzureWebAppDiagnostics();
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
+```
+
+接著，您可以使用[標準 .Net Core 模式](https://docs.microsoft.com/aspnet/core/fundamentals/logging)來設定和產生記錄。
+
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
+
+如需 App Service 中 ASP.NET Core 應用程式疑難排解的詳細資訊，請參閱[針對 Azure App Service 和 IIS 上的 ASP.NET Core 進行疑難排解](https://docs.microsoft.com/aspnet/core/test/troubleshoot-azure-iis)
 
 ## <a name="open-ssh-session-in-browser"></a>在瀏覽器中開啟 SSH 工作階段
 
