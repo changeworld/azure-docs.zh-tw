@@ -4,16 +4,16 @@ description: 了解如何使用 Azure PowerShell，根據 URL 將網路流量路
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8ca5c411db5644182f7e87f1ee1c63f3cbc4d2e9
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: fccc7281ed2978ccc63cd7b53a82c8a00b57d3c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73200411"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806001"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>使用 Azure PowerShell 根據 URL 路由網路流量
 
@@ -86,8 +86,8 @@ $pip = New-AzPublicIpAddress `
 在本節中，您會建立支援應用程式閘道的資源，並在最後建立應用程式閘道。 您所建立的資源包括：
 
 - *IP 設定和前端埠*-將您先前建立的子網與應用程式閘道產生關聯，並指派用來存取它的通訊埠。
-- 預設集區** - 所有應用程式閘道都必須具有至少一個伺服器後端集區。
-- 預設接聽程式和規則** - 預設接聽程式會接聽所指派連接埠上的流量，而預設規則會將流量傳送到預設集區。
+- 預設集區 - 所有應用程式閘道都必須具有至少一個伺服器後端集區。
+- 預設接聽程式和規則 - 預設接聽程式會接聽所指派連接埠上的流量，而預設規則會將流量傳送到預設集區。
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>建立 IP 設定與前端連接埠
 
@@ -422,11 +422,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![在應用程式閘道中測試基底 URL](./media/tutorial-url-route-powershell/application-gateway-iistest.png)
 
-將 URL 變更為 HTTP://&lt;ip 位址&gt;：8080/images/test.htm，取代 ip 位址的&lt;ip 位址&gt;，您應該會看到如下列範例所示的內容：
+將 URL 變更為 HTTP:// &lt; ip 位址 &gt; ： 8080/images/test.htm，取代 ip 位址的 ip 位址 &lt; &gt; ，您應該會看到如下列範例所示的內容：
 
 ![在應用程式閘道中測試影像 URL](./media/tutorial-url-route-powershell/application-gateway-iistest-images.png)
 
-將 URL 變更為 HTTP://&lt;ip 位址&gt;：8080/video/test.htm，取代 ip 位址的&lt;ip 位址&gt;，您應該會看到如下列範例所示的內容：
+將 URL 變更為 HTTP:// &lt; ip 位址 &gt; ： 8080/video/test.htm，取代 ip 位址的 ip 位址 &lt; &gt; ，您應該會看到如下列範例所示的內容：
 
 ![在應用程式閘道中測試影片 URL](./media/tutorial-url-route-powershell/application-gateway-iistest-video.png)
 

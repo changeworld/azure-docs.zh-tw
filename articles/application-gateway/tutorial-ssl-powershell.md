@@ -5,16 +5,16 @@ description: 瞭解如何建立應用程式閘道，並使用 Azure PowerShell �
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2bd625982ebd051b92df2f66515fd5b0d0612303
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af1ba6bdf8edc3ce8653c9ecf196a599fb984ae4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311928"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805921"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>使用 Azure PowerShell 建立具有 TLS 終止的應用程式閘道
 

@@ -4,15 +4,15 @@ description: 本文提供如何使用新應用程式閘道部署應用程式閘�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807148"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何使用新的應用程式閘道安裝應用程式閘道輸入控制器（AGIC）
 
@@ -38,7 +38,7 @@ ms.locfileid: "80585890"
 
 ## <a name="create-an-identity"></a>建立身分識別
 
-請遵循下列步驟來建立 Azure Active Directory （AAD）[服務主體物件](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 請記錄`appId`、和`password` `objectId`值，這些會在下列步驟中使用。
+請遵循下列步驟來建立 Azure Active Directory （AAD）[服務主體物件](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 請記錄 `appId` 、 `password` 和值， `objectId` 這些會在下列步驟中使用。
 
 1. 建立 AD 服務主體（[進一步瞭解 RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)）：
     ```azurecli
@@ -46,14 +46,14 @@ ms.locfileid: "80585890"
     appId=$(jq -r ".appId" auth.json)
     password=$(jq -r ".password" auth.json)
     ```
-    下列`appId`步驟`password`將使用 JSON 輸出中的和值
+    `appId` `password` 下列步驟將使用 JSON 輸出中的和值
 
 
-1. 使用上`appId`一個命令輸出中的來取得`objectId`新服務主體的：
+1. 使用 `appId` 上一個命令輸出中的來取得 `objectId` 新服務主體的：
     ```azurecli
     objectId=$(az ad sp show --id $appId --query "objectId" -o tsv)
     ```
-    此命令的輸出是`objectId`，將用於下面的 Azure Resource Manager 範本
+    此命令的輸出是 `objectId` ，將用於下面的 Azure Resource Manager 範本
 
 1. 建立稍後將在 Azure Resource Manager 範本部署中使用的參數檔。
     ```bash
@@ -66,7 +66,7 @@ ms.locfileid: "80585890"
     }
     EOF
     ```
-    若要部署已啟用**RBAC**的叢集， `aksEnabledRBAC`請將欄位設定為`true`
+    若要部署已啟用**RBAC**的叢集，請將 `aksEnableRBAC` 欄位設定為`true`
 
 ## <a name="deploy-components"></a>部署元件
 此步驟會將下列元件新增至您的訂用帳戶：
@@ -82,7 +82,7 @@ ms.locfileid: "80585890"
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/deploy/azuredeploy.json -O template.json
     ```
 
-1. 使用`az cli`部署 Azure Resource Manager 範本。 這可能需要5分鐘的時間。
+1. 使用部署 Azure Resource Manager 範本 `az cli` 。 這可能需要5分鐘的時間。
     ```azurecli
     resourceGroupName="MyResourceGroup"
     location="westus2"
@@ -99,7 +99,7 @@ ms.locfileid: "80585890"
             --parameters parameters.json
     ```
 
-1. 部署完成之後，請將部署輸出下載到名為`deployment-outputs.json`的檔案中。
+1. 部署完成之後，請將部署輸出下載到名為的檔案中 `deployment-outputs.json` 。
     ```azurecli
     az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
@@ -109,7 +109,7 @@ ms.locfileid: "80585890"
 使用上一節中的指示，我們建立並設定了新的 AKS 叢集和應用程式閘道。 我們現在已準備好將範例應用程式和輸入控制器部署到新的 Kubernetes 基礎結構。
 
 ### <a name="setup-kubernetes-credentials"></a>設定 Kubernetes 認證
-在下列步驟中，我們需要安裝[kubectl](https://kubectl.docs.kubernetes.io/)命令，我們將用它來連接到新的 Kubernetes 叢集。 已安裝[Cloud Shell。](https://shell.azure.com/) `kubectl` 我們將使用`az` CLI 來取得 Kubernetes 的認證。
+在下列步驟中，我們需要安裝[kubectl](https://kubectl.docs.kubernetes.io/)命令，我們將用它來連接到新的 Kubernetes 叢集。 已安裝[Cloud Shell](https://shell.azure.com/) `kubectl` 。 我們將使用 `az` CLI 來取得 Kubernetes 的認證。
 
 取得新部署之 AKS 的認證（[閱讀更多](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)）：
 ```azurecli
@@ -124,7 +124,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
   Azure Active Directory Pod 身分識別會提供權杖型存取給[Azure Resource Manager （ARM）](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
 
   [AAD Pod 身分識別](https://github.com/Azure/aad-pod-identity)會將下列元件新增至您的 Kubernetes 叢集：
-   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)： `AzureIdentity`、 `AzureAssignedIdentity`、`AzureIdentityBinding`
+   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)： `AzureIdentity` 、 `AzureAssignedIdentity` 、`AzureIdentityBinding`
    * [受控識別控制器 (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic) 元件
    * [節點受控識別 (NMI)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi) 元件
 
@@ -144,9 +144,9 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
      ```
 
 ### <a name="install-helm"></a>安裝 Helm
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm)是 Kubernetes 的套件管理員。 我們將利用它來安裝`application-gateway-kubernetes-ingress`套件：
+[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm)是 Kubernetes 的套件管理員。 我們將利用它來安裝 `application-gateway-kubernetes-ingress` 套件：
 
-1. 安裝[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm)並執行下列步驟，以`application-gateway-kubernetes-ingress`新增 Helm 套件：
+1. 安裝[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm)並執行下列步驟，以新增 `application-gateway-kubernetes-ingress` Helm 套件：
 
     - *已啟用 RBAC*AKS 叢集
 
@@ -170,7 +170,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
 ### <a name="install-ingress-controller-helm-chart"></a>安裝輸入控制器 Helm 圖表
 
-1. 使用上面`deployment-outputs.json`建立的檔案，並建立下列變數。
+1. 使用 `deployment-outputs.json` 上面建立的檔案，並建立下列變數。
     ```bash
     applicationGatewayName=$(jq -r ".applicationGatewayName.value" deployment-outputs.json)
     resourceGroupName=$(jq -r ".resourceGroupName.value" deployment-outputs.json)
@@ -237,7 +237,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
         apiServerAddress: <aks-api-server-address>
     ```
 
-1. 編輯新下載的 helm yaml，並填寫區段`appgw`和。 `armAuth`
+1. 編輯新下載的 helm yaml，並填寫區段 `appgw` 和 `armAuth` 。
     ```bash
     sed -i "s|<subscriptionId>|${subscriptionId}|g" helm-config.yaml
     sed -i "s|<resourceGroupName>|${resourceGroupName}|g" helm-config.yaml
@@ -254,16 +254,16 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
      - `appgw.subscriptionId`：應用程式閘道所在的 Azure 訂用帳戶識別碼。 範例：`a123b234-a3b4-557d-b2df-a0bc12de1234`
      - `appgw.resourceGroup`：應用程式閘道建立所在之 Azure 資源群組的名稱。 範例：`app-gw-resource-group`
      - `appgw.name`：應用程式閘道的名稱。 範例：`applicationgatewayd0f0`
-     - `appgw.shared`：這個布林值旗標應該預設`false`為。 如果您`true`需要[共用應用程式閘道](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)，請將設定為。
+     - `appgw.shared`：這個布林值旗標應該預設為 `false` 。 如果 `true` 您需要[共用應用程式閘道](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)，請將設定為。
      - `kubernetes.watchNamespace`：指定 AGIC 應該監看的命名空間。 這可以是單一字串值，或命名空間的逗號分隔清單。
-    - `armAuth.type`：可以是`aadPodIdentity`或`servicePrincipal`
+    - `armAuth.type`：可以是 `aadPodIdentity` 或`servicePrincipal`
     - `armAuth.identityResourceID`： Azure 受控識別的資源識別碼
     - `armAuth.identityClientId`：身分識別的用戶端識別碼。 如需身分識別的詳細資訊，請參閱下文
-    - `armAuth.secretJSON`：只有在選擇服務主體秘密類型時才需要（ `armAuth.type`當已設定為`servicePrincipal`時） 
+    - `armAuth.secretJSON`：只有在選擇服務主體秘密類型時才需要（當 `armAuth.type` 已設定為時 `servicePrincipal` ） 
 
 
    > [!NOTE]
-   > `identityResourceID`和`identityClientID`是在「[部署元件](ingress-controller-install-new.md#deploy-components)」步驟期間建立的值，而且可以使用下列命令重新取得：
+   > `identityResourceID`和 `identityClientID` 是在「[部署元件](ingress-controller-install-new.md#deploy-components)」步驟期間建立的值，而且可以使用下列命令重新取得：
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```

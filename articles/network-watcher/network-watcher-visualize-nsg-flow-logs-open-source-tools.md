@@ -7,26 +7,23 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840633"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807675"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用開放原始碼工具將 Azure 網路監看員 NSG 流量記錄視覺化
 
 網路安全性群組流量記錄提供的資訊可用於了解網路安全性群組上的輸入和輸出 IP 流量。 這些流量記錄顯示每一個規則的輸出和輸入流量、套用流量的 NIC、有關流量的 5 Tuple 資訊 (來源/目的地 IP、來源/目的地連接埠、通訊協定)，以及允許或拒絕流量。
 
 這些流量記錄難以手動剖析和獲得見解。 不過，有幾種開放原始碼工具可協助您將此資料視覺化。 本文提供的解決方案使用「彈性堆疊」將這些記錄視覺化，該功能可讓您快速編製索引並以視覺化方式在 Kibana 儀表板上呈現流量記錄。
-
-> [!Warning]  
-> 下列步驟適用於流量記錄第 1 版。 如需詳細資訊，請參閱[網路安全性群組流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。 下列指示若未經修改，則不適用於第 2 版的記錄檔。
 
 ## <a name="scenario"></a>狀況
 
@@ -138,6 +135,11 @@ ms.locfileid: "76840633"
                   "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
                   "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
                   "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
+                  "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+                   "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+                   "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+                   "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+                   "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
                    }
       convert => {"unixtimestamp" => "integer"}
       convert => {"srcPort" => "integer"}

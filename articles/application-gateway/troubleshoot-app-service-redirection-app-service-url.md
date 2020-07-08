@@ -5,15 +5,15 @@ description: 本文提供有關如何在搭配 Azure App Service 使用 Azure �
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 961ed17bcef19b445c2546a557725bb6bd8653cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80293528"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806487"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>針對應用程式閘道中的 App Service 問題進行疑難排解
 
@@ -77,7 +77,7 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-在上一個範例中，請注意回應標頭的狀態碼為301以進行重新導向。 Location 標頭具有 app service 的主機名稱，而不是原始主機名稱`www.contoso.com`。
+在上一個範例中，請注意回應標頭的狀態碼為301以進行重新導向。 Location 標頭具有 app service 的主機名稱，而不是原始主機名稱 `www.contoso.com` 。
 
 ## <a name="solution-rewrite-the-location-header"></a>解決方案：重寫 location 標頭
 
@@ -98,9 +98,9 @@ App service 現在會在相同的原始主機標頭上執行重新導向（如�
 
     ![App service 自訂網域清單](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- 您的 app service 已準備好接受主機名稱`www.contoso.com`。 變更 DNS 中的 CNAME 專案，將它指向應用程式閘道的 FQDN，例如`appgw.eastus.cloudapp.azure.com`。
+- 您的 app service 已準備好接受主機名稱 `www.contoso.com` 。 變更 DNS 中的 CNAME 專案，將它指向應用程式閘道的 FQDN，例如 `appgw.eastus.cloudapp.azure.com` 。
 
-- 當您執行 DNS 查詢`www.contoso.com`時，請確定您的網域會解析為應用程式閘道的 FQDN。
+- 當您執行 DNS 查詢時，請確定您的網域會 `www.contoso.com` 解析為應用程式閘道的 FQDN。
 
 - 將您的自訂探查設定為停**用從後端 HTTP 設定中挑選主機名稱**。 在 [Azure 入口網站中，清除 [探查設定] 中的核取方塊。 在 PowerShell 中，請勿在**AzApplicationGatewayProbeConfig**命令中使用 **-PickHostNameFromBackendHttpSettings**參數。 在探查的 [主機名稱] 欄位中，輸入您的 app service 的 FQDN，example.azurewebsites.net。 從應用程式閘道傳送的探查要求會在主機標頭中攜帶此 FQDN。
 
@@ -111,7 +111,7 @@ App service 現在會在相同的原始主機標頭上執行重新導向（如�
 
 - 將自訂探查關聯回後端 HTTP 設定，並確認後端狀況良好。
 
-- 應用程式閘道現在應該將相同的主機名稱`www.contoso.com`轉送到 app service。 重新導向會在相同的主機名稱上執行。 請檢查下列範例要求和回應標頭。
+- 應用程式閘道現在應該將相同的主機名稱轉送 `www.contoso.com` 到 app service。 重新導向會在相同的主機名稱上執行。 請檢查下列範例要求和回應標頭。
 
 若要針對現有的安裝程式使用 PowerShell 來執行先前的步驟，請使用下列範例 PowerShell 腳本。 請注意，我們尚未在探查和 HTTP 設定中使用 **-PickHostname**參數。
 

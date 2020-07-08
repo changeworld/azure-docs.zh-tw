@@ -4,15 +4,15 @@ description: 本文提供有關如何使用 Helm 升級應用程式閘道輸入�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 3903ccd1c15765d06cd1794a40567e2c70062538
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f20302a4993da1754255254ce6d69c000750d4ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806769"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>如何使用 Helm 來升級應用程式閘道輸入控制器 
 
@@ -42,7 +42,7 @@ ms.locfileid: "73795895"
     helm repo update
     ```
 
-1. 查看圖表的`application-gateway-kubernetes-ingress`可用版本：
+1. 查看圖表的可用版本 `application-gateway-kubernetes-ingress` ：
 
     ``` bash
     helm search -l application-gateway-kubernetes-ingress
@@ -71,7 +71,7 @@ ms.locfileid: "73795895"
     odd-billygoat   22              Fri Jun 21 15:56:06 2019        FAILED  ingress-azure-0.7.0-rc1 0.7.0-rc1       default
     ```
 
-    上述範例回應中的 Helm 圖安裝名稱`odd-billygoat`為。 我們會將此名稱用於其餘的命令。 您的實際部署名稱可能會有所不同。
+    上述範例回應中的 Helm 圖安裝名稱為 `odd-billygoat` 。 我們會將此名稱用於其餘的命令。 您的實際部署名稱可能會有所不同。
 
 1. 將 Helm 部署升級為新版本：
 
@@ -100,7 +100,7 @@ ms.locfileid: "73795895"
     2               Fri Jun 21 15:56:06 2019        FAILED          ingress-azure-xx        xxxx
     ```
 
-    從`helm history`命令的範例輸出，看起來就像是最後一次成功部署`odd-billygoat`我們的 was 修訂`1`
+    從命令的範例輸出， `helm history` 看起來就像是最後一次成功部署我們的 `odd-billygoat` was 修訂`1`
 
 1. 復原到上一個成功的修訂：
 

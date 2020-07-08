@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 1413035c879198cf333aeeb5d8fe993162939172
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e95d25e4f26abc48f2a734cf8456739e6ef55b84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807701"
 ---
 # <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 PowerShell 來指派用於存取 blob 和佇列資料的 RBAC 角色
 
@@ -61,7 +61,7 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 ### <a name="container-scope"></a>容器範圍
 
-若要指派容器範圍內的角色，請指定包含`--scope`參數容器範圍的字串。 容器的範圍格式如下：
+若要指派容器範圍內的角色，請指定包含參數容器範圍的字串 `--scope` 。 容器的範圍格式如下：
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
@@ -77,7 +77,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="queue-scope"></a>佇列範圍
 
-若要指派範圍限於佇列的角色，請指定包含`--scope`參數佇列範圍的字串。 佇列的範圍格式如下：
+若要指派範圍限於佇列的角色，請指定包含參數佇列範圍的字串 `--scope` 。 佇列的範圍格式如下：
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
@@ -93,7 +93,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="storage-account-scope"></a>儲存體帳戶範圍
 
-若要指派範圍限定在儲存體帳戶的角色，請為`--scope`參數指定儲存體帳戶資源的範圍。 儲存體帳戶的範圍格式如下：
+若要指派範圍限定在儲存體帳戶的角色，請為參數指定儲存體帳戶資源的範圍 `--scope` 。 儲存體帳戶的範圍格式如下：
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
@@ -109,7 +109,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="resource-group-scope"></a>資源群組範圍
 
-若要指派資源群組範圍內的角色，請為`--resource-group`參數指定資源組名或識別碼。 下列範例會將**儲存體佇列資料讀取**者角色指派給資源群組層級的使用者。 請務必以您自己的值取代括弧中的範例值和預留位置值： 
+若要指派資源群組範圍內的角色，請為參數指定資源組名或識別碼 `--resource-group` 。 下列範例會將**儲存體佇列資料讀取**者角色指派給資源群組層級的使用者。 請務必以您自己的值取代括弧中的範例值和預留位置值： 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -119,7 +119,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="subscription-scope"></a>訂用帳戶範圍
 
-若要指派屬於訂用帳戶範圍的角色，請為`--scope`參數指定訂用帳戶的範圍。 訂用帳戶的範圍格式如下：
+若要指派屬於訂用帳戶範圍的角色，請為參數指定訂用帳戶的範圍 `--scope` 。 訂用帳戶的範圍格式如下：
 
 ```
 /subscriptions/<subscription>

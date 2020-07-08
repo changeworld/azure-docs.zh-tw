@@ -5,15 +5,15 @@ description: 了解如何在資源管理員中使用 PowerShell 建立應用程�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a244cd17ecf1f6165936d86791f9b2e320666c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312594"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807164"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用 Azure 資源管理員的 PowerShell 建立 Azure 應用程式閘道的自訂探查
 
@@ -91,7 +91,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 |---|---|
 | **閘道 IP 設定** | 應用程式閘道的 IP 設定。|
 | **後端集區** | 這是應用程式伺服器的 IP 位址、FQDN 或 NIC 的集區，此應用程式伺服器負責裝載 Web 應用程式|
-| **健全狀況探查** | 用於監視後端集區成員健康狀態的自訂探查|
+| **健康狀態探查** | 用於監視後端集區成員健康狀態的自訂探查|
 | **HTTP 設定** | 包括連接埠、通訊協定、以 Cookie 為依據的親和性、探查和逾時等設定的集合。  這些設定會決定流量路由傳送到後端集區成員的方式|
 | **前端連接埠** | 應用程式閘道接聽流量的連接埠|
 | **接聽程式** | 通訊協定、前端 IP 設定以及前端連接埠的組合。 這是用於接聽傳入要求的項目。

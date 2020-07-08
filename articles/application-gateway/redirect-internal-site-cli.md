@@ -5,19 +5,19 @@ description: 了解如何使用 Azure CLI，建立會將內部 Web 流量重新�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 7d37e36a4cdfed462904e2d02871345ad89d7ac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d889d0c13c911e02d73bb1de76b7c3d1aa240027
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74074558"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806809"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>使用 Azure CLI 以建立具有內部重新導向的應用程式閘道
 
-您可以使用 Azure CLI，在建立[應用程式閘道](overview.md)時設定 [Web 流量重新導向](multiple-site-overview.md)。 在本教學課程中，您將使用虛擬機器擴展集來定義後端集區。 接著，您可以根據擁有的網域來設定接聽程式和規則，以確保網路流量會抵達適當的集區。 本教學課程假設您擁有多個網域，並使用*www\.contoso.com*和*www\.contoso.org*的範例。
+您可以使用 Azure CLI，在建立[應用程式閘道](overview.md)時設定 [Web 流量重新導向](multiple-site-overview.md)。 在本教學課程中，您將使用虛擬機器擴展集來定義後端集區。 接著，您可以根據擁有的網域來設定接聽程式和規則，以確保網路流量會抵達適當的集區。 本教學課程假設您擁有多個網域，並使用 *www\.contoso.com* 和 *www\.contoso.org* 範例。
 
 在本文中，您將學會如何：
 
@@ -68,7 +68,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>建立應用程式閘道
 
-您可以使用[az network application-gateway create](/cli/azure/network/application-gateway)來建立名為*myAppGateway*的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myAGPublicIPAddress**。 
+您可以使用 [az network application-gateway create](/cli/azure/network/application-gateway) 來建立名為 myAppGateway 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myAGPublicIPAddress**。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -88,16 +88,16 @@ az network application-gateway create \
 
 可能需要幾分鐘的時間來建立應用程式閘道。 建立應用程式閘道後，您可以看到它的這些新功能：
 
-- appGatewayBackendPool** - 應用程式閘道必須至少有一個後端位址集區。
-- appGatewayBackendHttpSettings** - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
-- appGatewayHttpListener** - 與 appGatewayBackendPool** 相關聯的預設接聽程式。
-- appGatewayFrontendIP** - 將 myAGPublicIPAddress** 指派給 appGatewayHttpListener**。
-- rule1** - 與 appGatewayHttpListener** 相關聯的預設路由規則。
+- appGatewayBackendPool - 應用程式閘道必須至少有一個後端位址集區。
+- appGatewayBackendHttpSettings - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
+- appGatewayHttpListener - 與 appGatewayBackendPool 相關聯的預設接聽程式。
+- appGatewayFrontendIP - 將 myAGPublicIPAddress 指派給 appGatewayHttpListener。
+- rule1 - 與 appGatewayHttpListener 相關聯的預設路由規則。
 
 
 ## <a name="add-listeners-and-rules"></a>新增接聽程式和規則 
 
-需要接聽程式才能讓應用程式閘道將流量適當地路由到後端集區。 在本教學課程中，您會為兩個網域建立兩個接聽程式。 在此範例中，系統會針對*www\.contoso.com*和*www\.contoso.org*的網域建立接聽程式。
+需要接聽程式才能讓應用程式閘道將流量適當地路由到後端集區。 在本教學課程中，您會為兩個網域建立兩個接聽程式。 在此範例中，會為 *www\.contoso.com* 和 *www\.contoso.org* 網域建立接聽程式。
 
 使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create)，以新增路由流量時所需的後端接聽程式。
 
@@ -120,7 +120,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>新增重新導向設定
 
-使用[az network application-gateway 重新導向-config create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)，在應用程式閘道中新增將流量從*www\.consoto.org*傳送至*\.contoso.com*的接聽程式。
+使用[az network application-gateway 重新導向-config create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)，在應用程式閘道中新增將流量從*www \. consoto.org*傳送至* \. contoso.com*的接聽程式。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -213,7 +213,7 @@ az network public-ip show \
 
 ![在應用程式閘道中測試 contoso 網站](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-將位址變更為您的其他網域，例如 HTTP：\//www.contoso.org，您應該會看到流量已重新導向回到 www\.contoso.com 的接聽程式。
+將位址變更為您的其他網域，例如 HTTP： \/ /www.contoso.org，您應該會看到流量已重新導向回到 www contoso.com 的接聽程式 \. 。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,32 +9,32 @@ ms.subservice: common
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: tamram
-ms.reviewer: cbrooks
-ms.openlocfilehash: 724c250b56107cb68da387bdd531602e8d239e1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: ozgun
+ms.openlocfilehash: f69301bdbc0af9334858940fbfd3d7d0a0a63153
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127536"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807635"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>設定 Azure 儲存體的先進威脅防護
 
 Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可偵測不尋常且可能有害的存取或惡意探索儲存體帳戶的嘗試。 這一層保護可讓您在不是安全性專家或管理安全性監視系統的情況下處理威脅。
 
-當活動發生異常時，就會觸發安全性警示。 這些安全性警示會與[Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)整合，並透過電子郵件傳送給訂用帳戶系統管理員，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。
+出現異常活動時，就會觸發安全性警示。 這些安全性警示會與[Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)整合，並透過電子郵件傳送給訂用帳戶系統管理員，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。
 
 服務會內嵌讀取、寫入及刪除要求 Blob 儲存體的資源記錄，以進行威脅偵測。 若要調查 [advanced 威脅防護] 中的警示，您可以使用儲存體分析記錄來查看相關的儲存體活動。 如需詳細資訊，請參閱在[Azure 入口網站中設定監視儲存體帳戶中](storage-monitor-storage-account.md#configure-logging)的**記錄**。
 
 ## <a name="availability"></a>可用性
 
-Azure 儲存體的先進威脅防護目前僅適用于[Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)。 支援「先進的威脅防護」的帳戶類型包括一般用途 v2、區塊 blob 和 Blob 儲存體帳戶。 先進的威脅防護功能適用于所有公用雲端和美國政府雲端，但不適用於其他主權或 Azure 政府機構地區。
+Azure 儲存體的進階威脅防護目前僅適用於 [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)。 支援「先進的威脅防護」的帳戶類型包括一般用途 v2、區塊 blob 和 Blob 儲存體帳戶。 先進的威脅防護功能適用于所有公用雲端和美國政府雲端，但不適用於其他主權或 Azure 政府機構地區。
 
 如需定價詳細資料，包括免費的30天試用版，請參閱[Azure 資訊安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
 
 ## <a name="set-up-advanced-threat-protection"></a>設定先進的威脅防護
 
-您可以透過下列各節所述的任一種方式來設定「先進的威脅防護」。
+您可以透過下列各節所述的任一種方式設定進階威脅防護。
 
 ### <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -60,7 +60,7 @@ Azure 儲存體的先進威脅防護目前僅適用于[Blob 儲存體](https://a
 1. 在 [**依資源類型選取定價層**] 區段的 [**儲存體帳戶**] 資料列中，按一下 [**已啟用**] 或 [**已停用**]。
 
     ![在資訊安全中心中啟用 ATP](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案] 。
 
 ### <a name="template"></a>[範本](#tab/template)
 
@@ -78,7 +78,7 @@ Azure 儲存體的先進威脅防護目前僅適用于[Blob 儲存體](https://a
 
 1. 選取 Azure 訂用帳戶或資源群組。
 
-    ![選取訂用帳戶或群組](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
+    ![選取 [訂閱] 或 [群組]](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
 
 1. 指派原則。
 
@@ -128,4 +128,4 @@ Azure 儲存體的先進威脅防護目前僅適用于[Blob 儲存體](https://a
 ## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解[Azure 儲存體帳戶中的記錄](/rest/api/storageservices/About-Storage-Analytics-Logging)
-* 深入瞭解[Azure 資訊安全中心](../../security-center/security-center-intro.md)
+* 深入了解 [Azure 資訊安全中心](../../security-center/security-center-intro.md)

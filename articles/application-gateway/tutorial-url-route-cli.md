@@ -4,16 +4,16 @@ description: 在本文中，請了解如何使用 Azure CLI 根據 URL 將網路
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: fc32dd5c477a76a20bc3a641ec8761e95c129554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68688183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805896"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 根據 URL 路由傳送網路流量
 
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>建立包含 URL 對應的應用程式閘道
 
-使用 `az network application-gateway create` 建立名為 myAppGateway** 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給 myAGSubnet** 和 myAGPublicIPAddress**。
+使用 `az network application-gateway create` 建立名為 myAppGateway** 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給 myAGSubnet 和 myAGPublicIPAddress。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -98,7 +98,7 @@ az network application-gateway create \
  可能需要幾分鐘的時間來建立應用程式閘道。 建立應用程式閘道後，您可以看到這些新功能：
 
 
-|功能  |描述  |
+|功能  |說明  |
 |---------|---------|
 |appGatewayBackendPool     |應用程式閘道必須至少有一個後端位址集區。|
 |appGatewayBackendHttpSettings     |指定以連接埠 80 和 HTTP 通訊協定來進行通訊。|
@@ -252,7 +252,7 @@ az network public-ip show \
 
 ![在應用程式閘道中測試影像 URL](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-將 URL 變更為 HTTP://&lt;ip 位址&gt;：8080/video/test.html，取代 ip 位址的&lt;ip 位址&gt;，您應該會看到類似下列範例的內容。
+將 URL 變更為 HTTP:// &lt; ip 位址 &gt; ： 8080/video/test.html，取代 ip 位址的 ip 位址 &lt; &gt; ，您應該會看到類似下列範例的內容。
 
 ![在應用程式閘道中測試影片 URL](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 

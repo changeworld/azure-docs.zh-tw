@@ -4,16 +4,16 @@ description: 瞭解如何建立應用程式閘道，並使用 Azure CLI 新增 T
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6cd8cca65762de3da6a0e69e93c8d79bbe498dde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16ad8d7fd0f46381f2e2e7076015af65bd4bddcd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806155"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>使用 Azure CLI 建立具有 TLS 終止的應用程式閘道
 
@@ -114,11 +114,11 @@ az network application-gateway create \
 
  可能需要幾分鐘的時間來建立應用程式閘道。 建立應用程式閘道後，您可以看到它的這些新功能：
 
-- appGatewayBackendPool** - 應用程式閘道必須至少有一個後端位址集區。
-- appGatewayBackendHttpSettings** - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
-- appGatewayHttpListener** - 與 appGatewayBackendPool** 相關聯的預設接聽程式。
-- appGatewayFrontendIP** - 將 myAGPublicIPAddress** 指派給 appGatewayHttpListener**。
-- rule1** - 與 appGatewayHttpListener** 相關聯的預設路由規則。
+- appGatewayBackendPool - 應用程式閘道必須至少有一個後端位址集區。
+- appGatewayBackendHttpSettings - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
+- appGatewayHttpListener - 與 appGatewayBackendPool 相關聯的預設接聽程式。
+- appGatewayFrontendIP - 將 myAGPublicIPAddress 指派給 appGatewayHttpListener。
+- rule1 - 與 appGatewayHttpListener 相關聯的預設路由規則。
 
 ## <a name="create-a-virtual-machine-scale-set"></a>建立虛擬機器擴展集
 
@@ -165,7 +165,7 @@ az network public-ip show \
   --output tsv
 ```
 
-將公用 IP 位址複製並貼到您瀏覽器的網址列。 在此範例中，URL 為： **https://52.170.203.149**。
+將公用 IP 位址複製並貼到您瀏覽器的網址列。 在此範例中，URL 為： **https://52.170.203.149** 。
 
 ![安全警告](./media/tutorial-ssl-cli/application-gateway-secure.png)
 

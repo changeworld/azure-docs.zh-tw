@@ -4,15 +4,15 @@ description: 了解如何使用 Azure CLI 建立具有虛擬機器擴展集的�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
-ms.openlocfilehash: 3064def2eac0aaee5c04f7ab736cf539ae372cb4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: d4a72017b1ec86f10a746a9530a1ff9a2742fa20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68359895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806286"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>使用 Azure CLI 以應用程式閘道管理網路流量
 
@@ -91,11 +91,11 @@ az network application-gateway create \
 
  可能需要幾分鐘的時間來建立應用程式閘道。 建立應用程式閘道後，您可以看到這些新功能：
 
-- appGatewayBackendPool** - 應用程式閘道必須至少有一個後端位址集區。
-- appGatewayBackendHttpSettings** - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
-- appGatewayHttpListener** - 與 appGatewayBackendPool** 相關聯的預設接聽程式。
-- appGatewayFrontendIP** - 將 myAGPublicIPAddress** 指派給 appGatewayHttpListener**。
-- rule1** - 與 appGatewayHttpListener** 相關聯的預設路由規則。
+- appGatewayBackendPool - 應用程式閘道必須至少有一個後端位址集區。
+- appGatewayBackendHttpSettings - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
+- appGatewayHttpListener - 與 appGatewayBackendPool 相關聯的預設接聽程式。
+- appGatewayFrontendIP - 將 myAGPublicIPAddress 指派給 appGatewayHttpListener。
+- rule1 - 與 appGatewayHttpListener 相關聯的預設路由規則。
 
 ## <a name="create-a-virtual-machine-scale-set"></a>建立虛擬機器擴展集
 

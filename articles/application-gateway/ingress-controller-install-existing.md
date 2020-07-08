@@ -4,15 +4,15 @@ description: 本文提供如何使用現有應用程式閘道部署應用程式�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 949f1b3ee3db72e1c541c3dd4c5f74f364f1b514
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807092"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>使用現有的應用程式閘道安裝應用程式閘道輸入控制器（AGIC）
 
@@ -27,24 +27,24 @@ AGIC 會[監視 Kubernetes 輸入](https://kubernetes.io/docs/concepts/services-
 - [使用 Helm 安裝輸入控制器](#install-ingress-controller-as-a-helm-chart)
 - [多叢集/共用應用程式閘道](#multi-cluster--shared-application-gateway)：在環境中安裝 AGIC，其中應用程式閘道會在一或多個 AKS 叢集和（或）其他 Azure 元件之間共用。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 本檔假設您已安裝下列工具和基礎結構：
 - 已啟用[Advanced 網路](https://docs.microsoft.com/azure/aks/configure-azure-cni)的[AKS](https://azure.microsoft.com/services/kubernetes-service/)
 - 在與 AKS 相同的虛擬網路中[應用程式閘道 v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant)
 - 安裝在 AKS 叢集上的[AAD Pod 身分識別](https://github.com/Azure/aad-pod-identity)
-- [Cloud Shell](https://shell.azure.com/)是 Azure Shell 環境，其已`az`安裝 CLI、 `kubectl`和。 `helm` 下列命令需要這些工具。
+- [Cloud Shell](https://shell.azure.com/)是 Azure Shell 環境，其已 `az` 安裝 CLI、 `kubectl` 和 `helm` 。 下列命令需要這些工具。
 
 安裝 AGIC 之前，請先__備份您的應用程式閘道__設定：
-  1. 使用[Azure 入口網站](https://portal.azure.com/)流覽至您`Application Gateway`的實例
-  2. 從`Export template`按一下`Download`
+  1. 使用[Azure 入口網站](https://portal.azure.com/)流覽至您的 `Application Gateway` 實例
+  2. 從 `Export template` 按一下`Download`
 
 您下載的 zip 檔案會有 JSON 範本、bash 和 PowerShell 腳本，您可以用來還原應用程式閘道，這是必要的
 
 ## <a name="install-helm"></a>安裝 Helm
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm)是 Kubernetes 的套件管理員。 我們將利用它來安裝`application-gateway-kubernetes-ingress`封裝。
+[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm)是 Kubernetes 的套件管理員。 我們將利用它來安裝 `application-gateway-kubernetes-ingress` 封裝。
 使用[Cloud Shell](https://shell.azure.com/)安裝 Helm：
 
-1. 安裝[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm)並執行下列步驟，以`application-gateway-kubernetes-ingress`新增 Helm 套件：
+1. 安裝[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm)並執行下列步驟，以新增 `application-gateway-kubernetes-ingress` Helm 套件：
 
     - *已啟用 RBAC*AKS 叢集
 
@@ -79,19 +79,19 @@ AGIC 會與 Kubernetes API 伺服器和 Azure Resource Manager 通訊。 它需�
 接下來，我們需要建立 Azure 身分識別並為其授與 ARM 許可權。
 使用[Cloud Shell](https://shell.azure.com/)執行下列所有命令，並建立身分識別：
 
-1. **在與 AKS 節點相同的資源群組中**建立 Azure 身分識別。 挑選正確的資源群組很重要。 下列命令中所需的資源群組，*不*是 AKS 入口網站窗格上所參考。 這是`aks-agentpool`虛擬機器的資源群組。 一般來說，資源群組會以`MC_`開頭，並包含您的 AKS 名稱。 例如：`MC_resourceGroup_aksABCD_westus`
+1. **在與 AKS 節點相同的資源群組中**建立 Azure 身分識別。 挑選正確的資源群組很重要。 下列命令中所需的資源群組，*不*是 AKS 入口網站窗格上所參考。 這是虛擬機器的資源群組 `aks-agentpool` 。 一般來說，資源群組會以開頭 `MC_` ，並包含您的 AKS 名稱。 例如：`MC_resourceGroup_aksABCD_westus`
 
     ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
     ```
 
-1. 針對下面的角色指派命令，我們需要取得`principalId`新建立的身分識別：
+1. 針對下面的角色指派命令，我們需要取得 `principalId` 新建立的身分識別：
 
     ```azurecli
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. 將身分識別`Contributor`存取權授與您的應用程式閘道。 為此，您需要應用程式閘道的識別碼，看起來會像這樣：`/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. 將身分識別 `Contributor` 存取權授與您的應用程式閘道。 為此，您需要應用程式閘道的識別碼，看起來會像這樣：`/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
     使用下列方式取得訂用帳戶中的應用程式閘道識別碼清單：`az network application-gateway list --query '[].id'`
 
@@ -102,7 +102,7 @@ AGIC 會與 Kubernetes API 伺服器和 Azure Resource Manager 通訊。 它需�
         --scope <App-Gateway-ID>
     ```
 
-1. 將身分識別`Reader`存取權授與應用程式閘道資源群組。 資源群組識別碼看起來會像這樣`/subscriptions/A/resourceGroups/B`：。 您可以使用下列方式取得所有資源群組：`az group list --query '[].id'`
+1. 將身分識別 `Reader` 存取權授與應用程式閘道資源群組。 資源群組識別碼看起來會像這樣： `/subscriptions/A/resourceGroups/B` 。 您可以使用下列方式取得所有資源群組：`az group list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -120,7 +120,7 @@ AGIC 會與 Kubernetes API 伺服器和 Azure Resource Manager 通訊。 它需�
 az ad sp create-for-rbac --sdk-auth | base64 -w0
 ```
 
-2. 將 base64 編碼的 JSON blob 新增至`helm-config.yaml`檔案。 下一節`helm-config.yaml`將詳細說明。
+2. 將 base64 編碼的 JSON blob 新增至檔案 `helm-config.yaml` 。 下一節將詳細說明 `helm-config.yaml` 。
 ```yaml
 armAuth:
     type: servicePrincipal
@@ -130,7 +130,7 @@ armAuth:
 ## <a name="install-ingress-controller-as-a-helm-chart"></a>安裝輸入控制器作為 Helm 圖
 在前幾個步驟中，我們會將 Helm 的 Tiller 安裝在您的 Kubernetes 叢集中。 使用[Cloud Shell](https://shell.azure.com/)安裝 AGIC Helm 套件：
 
-1. 新增`application-gateway-kubernetes-ingress` helm 存放庫並執行 helm 更新
+1. 新增 helm 存放庫 `application-gateway-kubernetes-ingress` 並執行 helm 更新
 
     ```bash
     helm repo add application-gateway-kubernetes-ingress https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
@@ -196,21 +196,21 @@ armAuth:
         apiServerAddress: <aks-api-server-address>
     ```
 
-1. 編輯 helm yaml，並填入`appgw`和`armAuth`的值。
+1. 編輯 helm yaml，並填入和的值 `appgw` `armAuth` 。
     ```bash
     nano helm-config.yaml
     ```
 
     > [!NOTE] 
-    > `<identity-resource-id>`和`<identity-client-id>`是您在上一節中設定之 Azure AD 身分識別的屬性。 您可以藉由執行下列命令來抓取這項`az identity show -g <resourcegroup> -n <identity-name>`資訊： `<resourcegroup>` ，其中是用來部署頂層 AKS 叢集物件應用程式閘道和受控識別的資源群組。
+    > `<identity-resource-id>`和 `<identity-client-id>` 是您在上一節中設定之 Azure AD 身分識別的屬性。 您可以藉由執行下列命令來抓取這項資訊： `az identity show -g <resourcegroup> -n <identity-name>` ，其中 `<resourcegroup>` 是用來部署頂層 AKS 叢集物件應用程式閘道和受控識別的資源群組。
 
-1. 使用上一個`application-gateway-kubernetes-ingress`步驟中`helm-config.yaml`的設定安裝 Helm 圖表
+1. `application-gateway-kubernetes-ingress`使用 `helm-config.yaml` 上一個步驟中的設定安裝 Helm 圖表
 
     ```bash
     helm install -f <helm-config.yaml> application-gateway-kubernetes-ingress/ingress-azure
     ```
 
-    或者，您可以在`helm-config.yaml`一個步驟中結合和 Helm 命令：
+    或者，您可以 `helm-config.yaml` 在一個步驟中結合和 Helm 命令：
     ```bash
     helm install ./helm/ingress-azure \
          --name ingress-azure \
@@ -238,8 +238,8 @@ armAuth:
 根據預設，AGIC 會假設其所連結之應用程式閘道的完整擁有權。 AGIC version 0.8.0 版和更新版本可以與其他 Azure 元件共用單一應用程式閘道。 例如，針對虛擬機器擴展集和 AKS 叢集上裝載的應用程式，我們可以使用相同的應用程式閘道。
 
 請先__備份您的應用程式閘道__設定，然後再啟用此設定：
-  1. 使用[Azure 入口網站](https://portal.azure.com/)流覽至您`Application Gateway`的實例
-  2. 從`Export template`按一下`Download`
+  1. 使用[Azure 入口網站](https://portal.azure.com/)流覽至您的 `Application Gateway` 實例
+  2. 從 `Export template` 按一下`Download`
 
 您下載的 zip 檔案將具有可用於還原的 JSON 範本、bash 和 PowerShell 腳本應用程式閘道
 
@@ -248,9 +248,9 @@ armAuth:
   - `dev.contoso.com`-裝載于新的 AKS 上，使用應用程式閘道和 AGIC
   - `prod.contoso.com`-裝載于[Azure 虛擬機器擴展集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)上
 
-使用預設設定時，AGIC 會假設其指向的應用程式閘道100% 的擁有權。 AGIC 會覆寫所有應用程式閘道的設定。 如果我們要以手動方式建立的接聽`prod.contoso.com`程式（在應用程式閘道上），而不在 Kubernetes 輸入中定義它，AGIC `prod.contoso.com`會在數秒內刪除設定。
+使用預設設定時，AGIC 會假設其指向的應用程式閘道100% 的擁有權。 AGIC 會覆寫所有應用程式閘道的設定。 如果我們要以手動方式建立的接聽程式 `prod.contoso.com` （在應用程式閘道上），而不在 Kubernetes 輸入中定義它，AGIC 會在 `prod.contoso.com` 數秒內刪除設定。
 
-若要安裝 AGIC，也`prod.contoso.com`可從我們的虛擬機器擴展集機器提供服務，我們必須`dev.contoso.com`將 AGIC 限制為僅設定。 藉由具現化下列[.crd](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)來加速此動作：
+若要安裝 AGIC，也可 `prod.contoso.com` 從我們的虛擬機器擴展集機器提供服務，我們必須將 AGIC 限制為 `dev.contoso.com` 僅設定。 藉由具現化下列[.crd](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)來加速此動作：
 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -263,12 +263,12 @@ spec:
 EOF
 ```
 
-上述命令會建立`AzureIngressProhibitedTarget`物件。 這讓 AGIC （版本0.8.0 版和更新版本）知道應用程式閘道 config 是否存在`prod.contoso.com` ，並明確指示它避免變更與該主機名稱相關的任何設定。
+上述命令會建立 `AzureIngressProhibitedTarget` 物件。 這讓 AGIC （版本0.8.0 版和更新版本）知道應用程式閘道 config 是否存在 `prod.contoso.com` ，並明確指示它避免變更與該主機名稱相關的任何設定。
 
 
 ### <a name="enable-with-new-agic-installation"></a>以新的 AGIC 安裝啟用
-若要將 AGIC （version 0.8.0 版和更新版本）限制為應用程式閘道設定的子集， `helm-config.yaml`請修改範本。
-在`appgw:`區段下新增`shared`金鑰，並將它設定為`true`。
+若要將 AGIC （version 0.8.0 版和更新版本）限制為應用程式閘道設定的子集，請修改 `helm-config.yaml` 範本。
+在 `appgw:` 區段下新增 `shared` 金鑰，並將它設定為 `true` 。
 
 ```yaml
 appgw:
@@ -279,7 +279,7 @@ appgw:
 ```
 
 套用 Helm 變更：
-  1. 請確定`AzureIngressProhibitedTarget` .crd 是與一起安裝：
+  1. 請確定 `AzureIngressProhibitedTarget` .crd 是與一起安裝：
       ```bash
       kubectl apply -f https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/ae695ef9bd05c8b708cedf6ff545595d0b7022dc/crds/AzureIngressProhibitedTarget.yaml
       ```
@@ -291,20 +291,20 @@ appgw:
           ingress-azure application-gateway-kubernetes-ingress/ingress-azure
       ```
 
-因此，您的 AKS 會有一個名`AzureIngressProhibitedTarget` `prohibit-all-targets`為的新實例：
+因此，您的 AKS 會有一個名為的新實例 `AzureIngressProhibitedTarget` `prohibit-all-targets` ：
 ```bash
 kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
 ```
 
-如其`prohibit-all-targets`名所示，物件禁止 AGIC 變更*任何*主機和路徑的設定。
-Helm install with `appgw.shared=true`會部署 AGIC，但不會對應用程式閘道進行任何變更。
+`prohibit-all-targets`如其名所示，物件禁止 AGIC 變更*任何*主機和路徑的設定。
+Helm install with `appgw.shared=true` 會部署 AGIC，但不會對應用程式閘道進行任何變更。
 
 
 ### <a name="broaden-permissions"></a>放寬許可權
-由於使用`appgw.shared=true` Helm，且預設`prohibit-all-targets`區塊會 AGIC 套用任何設定。
+由於使用 Helm， `appgw.shared=true` 且預設 `prohibit-all-targets` 區塊會 AGIC 套用任何設定。
 
 使用下列方式擴大 AGIC 許可權：
-1. 使用您的`AzureIngressProhibitedTarget`特定設定來建立新的：
+1. 使用您的特定設定來建立新的 `AzureIngressProhibitedTarget` ：
     ```bash
     cat <<EOF | kubectl apply -f -
     apiVersion: "appgw.ingress.k8s.io/v1"
@@ -323,11 +323,11 @@ Helm install with `appgw.shared=true`會部署 AGIC，但不會對應用程式�
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>針對現有的 AGIC 安裝啟用
-假設我們的叢集中已有運作中的 AKS、應用程式閘道和設定的 AGIC。 我們有的輸入`prod.contosor.com` ，且已成功從 AKS 為其提供流量。 我們想要新增`staging.contoso.com`至現有的應用程式閘道，但必須將它裝載在[VM](https://azure.microsoft.com/services/virtual-machines/)上。 我們即將重複使用現有的應用程式閘道，並手動設定的接聽程式`staging.contoso.com`和後端集區。 但手動調整應用程式閘道 config （透過[入口網站](https://portal.azure.com)、 [ARM api](https://docs.microsoft.com/rest/api/resources/)或[Terraform](https://www.terraform.io/)）會與 AGIC 的完整擁有權假設發生衝突。 在我們套用變更之後，AGIC 將會覆寫或刪除它們。
+假設我們的叢集中已有運作中的 AKS、應用程式閘道和設定的 AGIC。 我們有的輸入 `prod.contosor.com` ，且已成功從 AKS 為其提供流量。 我們想要新增 `staging.contoso.com` 至現有的應用程式閘道，但必須將它裝載在[VM](https://azure.microsoft.com/services/virtual-machines/)上。 我們即將重複使用現有的應用程式閘道，並手動設定的接聽程式和後端集區 `staging.contoso.com` 。 但手動調整應用程式閘道 config （透過[入口網站](https://portal.azure.com)、 [ARM api](https://docs.microsoft.com/rest/api/resources/)或[Terraform](https://www.terraform.io/)）會與 AGIC 的完整擁有權假設發生衝突。 在我們套用變更之後，AGIC 將會覆寫或刪除它們。
 
 我們可以禁止 AGIC 對設定子集進行變更。
 
-1. 建立`AzureIngressProhibitedTarget`物件：
+1. 建立 `AzureIngressProhibitedTarget` 物件：
     ```bash
     cat <<EOF | kubectl apply -f -
     apiVersion: "appgw.ingress.k8s.io/v1"
@@ -344,4 +344,4 @@ Helm install with `appgw.shared=true`會部署 AGIC，但不會對應用程式�
     kubectl get AzureIngressProhibitedTargets
     ```
 
-3. 透過入口網站修改應用程式閘道 config-新增接聽程式、路由規則、後端等。我們建立的新物件（`manually-configured-staging-environment`）會禁止 AGIC 覆寫與相關的應用程式閘道`staging.contoso.com`設定。
+3. 透過入口網站修改應用程式閘道 config-新增接聽程式、路由規則、後端等。我們建立的新物件（ `manually-configured-staging-environment` ）會禁止 AGIC 覆寫與相關的應用程式閘道設定 `staging.contoso.com` 。

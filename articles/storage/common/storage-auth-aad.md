@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 2/23/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a5417d20229356eb2a0574a35b8a5a884e50193
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255362"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807625"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授權存取 blob 和佇列
 
@@ -33,11 +33,11 @@ Azure 資料表儲存體不支援具有 Azure AD 的授權。 使用共用金鑰
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Blob 和佇列的 Azure AD 總覽
 
-當安全性主體（使用者、群組或應用程式）嘗試存取 blob 或佇列資源時，必須授權要求，除非它是可供匿名存取的 blob。 有了 Azure AD，對資源的存取是兩個步驟的程式。 首先，安全性主體的身分識別已通過驗證，並傳回 OAuth 2.0 權杖。 接下來，權杖會當做要求的一部分傳遞至 Blob 或佇列服務，並由服務用來授權存取指定的資源。
+當安全性主體（使用者、群組或應用程式）嘗試存取 blob 或佇列資源時，必須授權要求，除非它是可供匿名存取的 blob。 使用 Azure AD，對資源的存取是兩個步驟的程序。 首先，安全性主體的身分識別已通過驗證，並傳回 OAuth 2.0 權杖。 接下來，權杖會當做要求的一部分傳遞至 Blob 或佇列服務，並由服務用來授權存取指定的資源。
 
 驗證步驟要求應用程式在執行時間要求 OAuth 2.0 存取權杖。 如果應用程式是從 azure 實體（例如 Azure VM、虛擬機器擴展集或 Azure Functions 應用程式）中執行，它可以使用[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)來存取 blob 或佇列。 若要瞭解如何授權受控識別對 Azure Blob 或佇列服務提出的要求，請參閱[使用適用于 Azure 資源的 Azure Active Directory 和受控識別來授權對 blob 和佇列的存取](storage-auth-aad-msi.md)。
 
-授權步驟需要將一個或多個 RBAC 角色指派給安全性主體。 Azure 儲存體提供的 RBAC 角色包含 blob 和佇列資料的通用許可權集。 指派給安全性主體的角色會決定主體將擁有的許可權。 若要深入瞭解如何指派 Azure 儲存體的 RBAC 角色，請參閱[使用 Rbac 管理儲存體資料的存取權限](storage-auth-aad-rbac.md)。
+授權步驟需要將一或多個 RBAC 角色指派給安全性主體。 Azure 儲存體提供的 RBAC 角色包含 blob 和佇列資料的通用許可權集。 指派給安全性主體的角色會決定主體將擁有的許可權。 若要深入瞭解如何指派 Azure 儲存體的 RBAC 角色，請參閱[使用 Rbac 管理儲存體資料的存取權限](storage-auth-aad-rbac.md)。
 
 向 Azure Blob 或佇列服務提出要求的原生應用程式和 web 應用程式，也可以使用 Azure AD 授權存取。 若要瞭解如何要求存取權杖，並使用它來授權 blob 或佇列資料的要求，請參閱[使用 Azure 儲存體應用程式的 Azure AD 授權存取 Azure 儲存體](storage-auth-aad-app.md)。
 
