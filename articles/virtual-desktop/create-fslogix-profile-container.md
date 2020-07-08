@@ -4,18 +4,18 @@ description: 如何使用 Windows 虛擬桌面中的 Azure NetApp Files 建立 F
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 04/13/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 2656c7ee433198d2ccd883b1c3a175c141c43813
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607379"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362980"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>使用 Azure NetApp Files 建立主機集區的 FSLogix 設定檔容器
+# <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>使用 Azure NetApp Files 和 AD DS 建立設定檔容器
 
 我們建議使用 FSLogix 設定檔容器作為[Windows 虛擬桌面服務](overview.md)的使用者設定檔解決方案。 FSLogix 設定檔容器會將完整的使用者設定檔儲存在單一容器中，並設計為在 Windows 虛擬桌面之類的非持續性遠端運算環境中漫遊設定檔。 當您登入時，容器會使用本機支援的虛擬硬碟（VHD）和 Hyper-v 虛擬硬碟（VHDX），以動態方式連接到計算環境。 這些先進的篩選驅動程式技術可讓使用者設定檔立即可用，並以本機使用者設定檔的形式出現在系統中。 若要深入瞭解 FSLogix 設定檔容器，請參閱[FSLogix 設定檔容器和 Azure 檔案](fslogix-containers-azure-files.md)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "82607379"
 >[!NOTE]
 >如果您要尋找 Azure 上不同 FSLogix 設定檔容器儲存體選項的比較資料，請參閱[FSLogix 設定檔容器的儲存體選項](store-fslogix-profile.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您必須先執行下列動作，才能建立主機集區的 FSLogix 設定檔容器：
 
@@ -53,7 +53,8 @@ ms.locfileid: "82607379"
 
 4. 如果這是您第一次使用 Azure Cloud Shell，請在相同的訂用帳戶中建立儲存體帳戶，以保留您的 Azure NetApp Files 和 Windows 虛擬桌面。
 
-   ![[儲存體帳戶] 視窗，並在視窗底部以紅色反白顯示 [建立儲存體] 按鈕。](media/create-storage-button.png)
+   > [!div class="mx-imgBorder"]
+   > ![[儲存體帳戶] 視窗，並在視窗底部以紅色反白顯示 [建立儲存體] 按鈕。](media/create-storage-button.png)
 
 5. Azure Cloud Shell 載入之後，請執行下列兩個 Cmdlet。
 
@@ -67,12 +68,13 @@ ms.locfileid: "82607379"
 
 6. 在視窗左側，選取 [**所有服務**]。 在出現于功能表頂端的 [搜尋] 方塊中，輸入**Azure NetApp Files** 。
 
-   ![使用者在 [所有服務] 搜尋方塊中輸入「Azure NetApp Files」的螢幕擷取畫面。 搜尋結果會顯示 Azure NetApp Files 資源。](media/azure-netapp-files-search-box.png)
+   > [!div class="mx-imgBorder"]
+   > ![使用者在 [所有服務] 搜尋方塊中輸入「Azure NetApp Files」的螢幕擷取畫面。 搜尋結果會顯示 Azure NetApp Files 資源。](media/azure-netapp-files-search-box.png)
 
 
 7. 在搜尋結果中選取 [ **Azure NetApp Files** ]，然後選取 [**建立**]。
 
-8. 選取 [**新增**] 按鈕。
+8. 選取 [新增] 按鈕。
 9. 當 [**新的 NetApp 帳戶**] 索引標籤開啟時，輸入下列值：
 
     - 針對 [**名稱**]，輸入您的 NetApp 帳戶名稱。
@@ -87,7 +89,7 @@ ms.locfileid: "82607379"
 
 ## <a name="create-a-capacity-pool"></a>建立容量集區
 
-接下來，建立新的容量集區： 
+接下來，建立新的容量集區：
 
 1. 移至 Azure NetApp Files 功能表，然後選取您的新帳戶。
 2. 在 [帳戶] 功能表中，選取 [儲存體服務] 底下的 [**容量**集區]。
@@ -108,7 +110,8 @@ ms.locfileid: "82607379"
 
 1. 在頁面左側的功能表中選取 [ **Active Directory 連接**]，然後選取 [**聯結**] 按鈕以開啟 [**聯結 Active Directory** ] 頁面。
 
-   ![[聯結 Active Directory 連接] 功能表的螢幕擷取畫面。](media/active-directory-connections-menu.png)
+   > [!div class="mx-imgBorder"]
+   > ![[聯結 Active Directory 連接] 功能表的螢幕擷取畫面。](media/active-directory-connections-menu.png)
 
 2. 在 [**聯結 Active Directory** ] 頁面中輸入下列值，以加入連接：
 
@@ -132,7 +135,7 @@ ms.locfileid: "82607379"
     - 針對 [**虛擬網路**]，從下拉式功能表中選取可連線到網域控制站的現有虛擬網路。
     - 在 [**子網**] 下，選取 [**新建**]。 請記住，此子網將會委派給 Azure NetApp Files。
 
-3.  選取 **[下一\>步：通訊協定**] 以開啟 [通訊協定] 索引標籤，並設定磁片區存取參數
+3.  選取 **[下一 \> \> 步：通訊協定**] 以開啟 [通訊協定] 索引標籤，並設定磁片區存取參數
 
 ## <a name="configure-volume-access-parameters"></a>設定磁片區存取參數
 
@@ -142,13 +145,14 @@ ms.locfileid: "82607379"
 2.  在 [ **Active Directory** ] 下拉式功能表的 [設定] 下，選取您原本在 [[加入 Active Directory 連接](create-fslogix-profile-container.md#join-an-active-directory-connection)] 中連接的相同目錄。 請記住，每個訂用帳戶有一個 Active Directory 的限制。
 3.  在 [**共用名稱**] 文字方塊中，輸入工作階段主機集區及其使用者所使用的共用名稱。
 
-4.  選取頁面底部的 [審核] 和 [**建立**]。 這會開啟 [驗證] 頁面。 成功驗證您的磁片區之後，請選取 [**建立**]。
+4.  選取頁面底部的 [檢閱 + 建立]。 這會開啟 [驗證] 頁面。 成功驗證您的磁片區之後，請選取 [**建立**]。
 
 5.  此時，新的磁片區將會開始部署。 部署完成之後，您就可以使用 Azure NetApp Files 共用。
 
 6.  若要查看掛接路徑，請選取 [**移至資源**]，然後在 [總覽] 索引標籤中尋找它。
 
-    ![[總覽] 畫面的螢幕擷取畫面，其中紅色箭號指向掛接路徑。](media/overview-mount-path.png)
+    > [!div class="mx-imgBorder"]
+    > ![[總覽] 畫面的螢幕擷取畫面，其中紅色箭號指向掛接路徑。](media/overview-mount-path.png)
 
 ## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>在工作階段主機虛擬機器（Vm）上設定 FSLogix
 
@@ -158,19 +162,19 @@ ms.locfileid: "82607379"
 
 2. 將下載的檔案解壓縮。
 
-3. 在檔案中，移至 [ **x64** > **發行**] 並執行**FSLogixAppsSetup**。 [安裝] 功能表隨即開啟。
+3. 在檔案中，移至 [ **x64**  >  **發行**] 並執行**FSLogixAppsSetup.exe**。 [安裝] 功能表隨即開啟。
 
 4.  如果您有產品金鑰，請在 [產品金鑰] 文字方塊中輸入。
 
 5. 選取 [**我同意授權條款及條件**] 旁的核取方塊。
 
-6. 選取 [安裝]  。
+6. 選取 [安裝]。
 
-7. 流覽至**C：\\Program Files\\FSLogix\\Apps**以確認代理程式已安裝。
+7. 流覽至**C： \\ Program Files \\ FSLogix \\ Apps**以確認代理程式已安裝。
 
 8. 在 [開始] 功能表中，以系統管理員身分執行**RegEdit** 。
 
-9. 流覽至 **[\\電腦\\HKEY_LOCAL_MACHINE\\軟體 FSLogix**]。
+9. 流覽至 [**電腦 \\ HKEY_LOCAL_MACHINE \\ 軟體 \\ FSLogix**]。
 
 10. 建立名為**Profiles**的金鑰。
 
@@ -210,7 +214,7 @@ ms.locfileid: "82607379"
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>請確定使用者可以存取 Azure NetApp File share
 
-1. 開啟網際網路瀏覽器並移至<https://rdweb.wvd.microsoft.com/arm/webclient>。
+1. 開啟網際網路瀏覽器並移至 <https://rdweb.wvd.microsoft.com/arm/webclient> 。
 
 2. 使用指派給遠端桌面群組之使用者的認證登入。
 
@@ -218,16 +222,20 @@ ms.locfileid: "82607379"
 
 4. 開啟 [ **Azure Netapp files**]，選取您的 Azure netapp files 帳戶，然後選取 [**磁片**區]。 [磁片區] 功能表開啟之後，請選取對應的磁片區。
 
-   ![您稍早在 Azure 入口網站中設定的 NetApp 帳戶螢幕擷取畫面，並已選取 [磁片區] 按鈕。](media/netapp-account.png)
+   > [!div class="mx-imgBorder"]
+   > ![您稍早在 Azure 入口網站中設定的 NetApp 帳戶螢幕擷取畫面，並已選取 [磁片區] 按鈕。](media/netapp-account.png)
 
 5. 移至 [**總覽**] 索引標籤，並確認 FSLogix 設定檔容器使用空間。
 
-6. 使用遠端桌面直接連接到主機集區的任何 VM 部分，然後開啟檔案**瀏覽器。** 然後流覽至**掛接路徑**（在下列範例中，掛接路徑為\\ \\anf-SMB-3863.gt1107.onmicrosoft.com\\及-VOL）。
+6. 使用遠端桌面直接連接到主機集區的任何 VM 部分，然後開啟檔案**瀏覽器。** 然後流覽至**掛接路徑**（在下列範例中，掛接路徑為 \\ \\ anf-SMB-3863.gt1107.onmicrosoft.com \\ 及-VOL）。
 
    在此資料夾中，應該會有一個設定檔 VHD （或 VHDX），如下列範例所示。
 
-   ![掛接路徑中資料夾內容的螢幕擷取畫面。 內部是名為 "Profile_ssbb" 的單一 VHD 檔案。](media/mount-path-folder.png)
+   > [!div class="mx-imgBorder"]
+   > ![掛接路徑中資料夾內容的螢幕擷取畫面。 內部是名為 "Profile_ssbb" 的單一 VHD 檔案。](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>後續步驟
 
 您可以使用 FSLogix 設定檔容器來設定使用者設定檔共用。 若要瞭解如何使用新的容器建立使用者設定檔共用，請參閱[使用檔案共用建立主機集區的設定檔容器](create-host-pools-user-profile.md)。
+
+您也可以建立 Azure 檔案儲存體檔案共用，以將 FSLogix 設定檔儲存在中。 若要深入瞭解，請參閱[建立具有網域控制站的 Azure 檔案儲存體檔案共用](create-file-share.md)。

@@ -3,12 +3,12 @@ title: 使用可靠的集合
 description: 瞭解在 Azure Service Fabric 應用程式中使用可靠集合的最佳做法。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 94836a37a62e3eeffb94d891980cc02694bd973e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374690"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠的集合
 Service Fabric 透過可靠的集合向 .NET 開發人員提供具狀態的程式設計模型。 具體來說，Service Fabric 提供了可靠的字典和可靠的佇列類別。 當您使用這些類別時，您的狀態是分割的 (延展性)、複寫的 (可用性)，且在分割區內交易 (ACID 語意)。 讓我們看看可靠字典物件的一般用法，並查看其實際執行的作業。
@@ -42,9 +42,14 @@ catch (TimeoutException)
 
 在上述程式碼中，ITransaction 物件會傳遞至可靠字典的 AddAsync 方法。 就內部而言，接受索引鍵的字典方法會採用與該索引鍵相關聯的讀取器/寫入器鎖定。 如果方法修改索引鍵的值，方法會在索引鍵上使用寫入鎖定，如果方法只會從索引鍵的值讀取，則會對索引鍵進行讀取鎖定。 由於 AddAsync 會將索引鍵的值修改為新的傳入值，因此會採用金鑰的寫入鎖定。 因此，如果有 2 個 (或多個) 執行緒同時嘗試新增具相同索引鍵的值，則其中一個執行緒將會取得寫入鎖定，而另一個執行緒將會封鎖。 方法預設最多封鎖 4 秒以取得鎖定，4 秒後方法就會擲回 TimeoutException。 如果您想要的話，方法多載可讓您傳遞明確的超時值。
 
-通常，您撰寫程式碼回應 TimeoutException 的方式是攔截它，然後重試整個作業 (如上面的程式碼所示)。 在我的簡單程式碼中，我只是呼叫工作，每次延遲傳遞100毫秒。 但在實際狀況裡，最好還是改用某種指數型的撤退延遲。
+通常，您撰寫程式碼回應 TimeoutException 的方式是攔截它，然後重試整個作業 (如上面的程式碼所示)。 在這個簡單的程式碼中，我們只是呼叫工作，每次延遲傳遞100毫秒。 但在實際狀況裡，最好還是改用某種指數型的撤退延遲。
 
-一旦取得鎖定，AddAsync 就會在與 ITransaction 物件相關聯的內部暫存字典中加入索引鍵和值物件參考。 這就完成了讀取自己撰寫的語意。 也就是說，在您呼叫 AddAsync 之後，稍後對 TryGetValueAsync 的呼叫 (使用相同的 ITransaction 物件) 會傳回值，即使您尚未認可交易。 接下來，AddAsync 會將索引鍵和值物件序列化為位元組陣列，並將這些位元組陣列附加至本機節點的記錄檔。 最後，AddAsync 會將位元組陣列傳送給所有次要複本，讓它們有相同的索引鍵/值資訊。 即使索引鍵/值資訊已寫入記錄檔，在相關交易獲認可之前，資訊都不會被視為字典的一部分。
+一旦取得鎖定，AddAsync 就會在與 ITransaction 物件相關聯的內部暫存字典中加入索引鍵和值物件參考。 這就完成了讀取自己撰寫的語意。 也就是說，在您呼叫 AddAsync 之後，使用相同 ITransaction 物件的後續 TryGetValueAsync 呼叫將會傳回值，即使您尚未認可交易也一樣。
+
+> [!NOTE]
+> 使用新的交易呼叫 TryGetValueAsync 將會傳回上一個認可值的參考。 請勿直接修改該參考，因為這會略過保存和複寫變更的機制。 建議您將值設為唯讀，讓變更金鑰值的唯一方法是透過可靠的字典 Api。
+
+接下來，AddAsync 會將索引鍵和值物件序列化為位元組陣列，並將這些位元組陣列附加至本機節點的記錄檔。 最後，AddAsync 會將位元組陣列傳送給所有次要複本，讓它們有相同的索引鍵/值資訊。 即使索引鍵/值資訊已寫入記錄檔，在相關交易獲認可之前，資訊都不會被視為字典的一部分。
 
 在上述程式碼中，CommitAsync 的呼叫會認可所有交易的作業。 具體來說，它會將認可資訊附加到本機節點的記錄檔，也會將認可記錄傳送給所有的次要複本。 一旦回覆了複本的仲裁 (多數)，則所有資料變更就會視為永久性，並且會釋出透過 ITransaction 物件所操作的任何索引鍵相關聯鎖定，讓其他執行緒/交易可以操作相同的索引鍵及其值。
 
@@ -55,13 +60,13 @@ catch (TimeoutException)
 
 目前，volatile 支援僅適用于可靠的字典和可靠的佇列，而不是 ReliableConcurrentQueues。 請參閱[警告](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)清單，告知您是否要使用變動性集合。
 
-若要在服務中啟用變動性支援， ```HasPersistedState```請將服務型別宣告中```false```的旗標設定為，如下所示：
+若要在服務中啟用變動性支援，請將 ```HasPersistedState``` 服務型別宣告中的旗標設定為 ```false``` ，如下所示：
 ```xml
 <StatefulServiceType ServiceTypeName="MyServiceType" HasPersistedState="false" />
 ```
 
 >[!NOTE]
->現有的持續性服務無法變成 volatile，反之亦然。 如果您想要這麼做，就必須刪除現有的服務，然後使用更新的旗標來部署服務。 這表示如果您想要變更```HasPersistedState```旗標，則必須願意產生完整的資料遺失。 
+>現有的持續性服務無法變成 volatile，反之亦然。 如果您想要這麼做，就必須刪除現有的服務，然後使用更新的旗標來部署服務。 這表示如果您想要變更旗標，則必須願意產生完整的資料遺失 ```HasPersistedState``` 。 
 
 ## <a name="common-pitfalls-and-how-to-avoid-them"></a>常見陷阱以及如何避免
 既然您已經瞭解可靠的集合在內部的工作方式，讓我們來看看其中一些常見的誤用。 參閱下列程式碼：
@@ -145,7 +150,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>定義不可變的資料類型，以防止程式設計人員犯錯。
-在理想的情況下，我們希望編譯器在您意外產生程式碼時報告錯誤，以變動此您應該視為不可變的物件狀態。 但是 C# 編譯器做不到這一點。 所以，為避免潛在的程式設計人員錯誤，我們強烈建議您將可靠集合所使用的類型定義為不可變的類型。 具體來說，這表示您要堅持核心值類型 (例如數字 [Int32、UInt64 等等]、DateTime、Guid、TimeSpan 等等)。 您也可以使用 String。 最好避免使用集合屬性，因為將其序列化和還原序列化經常會降低效能。 不過，如果您想要使用集合屬性，我們強烈建議使用。NET 的不可變集合程式庫（[system.object](https://www.nuget.org/packages/System.Collections.Immutable/)）。 此程式庫可從https://nuget.org下載。我們也建議您盡可能密封類別，並將欄位設為唯讀。
+在理想的情況下，我們希望編譯器在您意外產生程式碼時報告錯誤，以變動此您應該視為不可變的物件狀態。 但是 C# 編譯器做不到這一點。 所以，為避免潛在的程式設計人員錯誤，我們強烈建議您將可靠集合所使用的類型定義為不可變的類型。 具體來說，這表示您要堅持核心值類型 (例如數字 [Int32、UInt64 等等]、DateTime、Guid、TimeSpan 等等)。 您也可以使用 String。 最好避免使用集合屬性，因為將其序列化和還原序列化經常會降低效能。 不過，如果您想要使用集合屬性，我們強烈建議使用。NET 的不可變集合程式庫（[system.object](https://www.nuget.org/packages/System.Collections.Immutable/)）。 此程式庫可從下載 https://nuget.org 。我們也建議您盡可能密封類別，並將欄位設為唯讀。
 
 以下的 UserInfo 類型會示範如何利用上述建議定義不可變的類型。
 

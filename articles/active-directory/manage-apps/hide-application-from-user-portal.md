@@ -1,29 +1,29 @@
 ---
-title: 在 Azure AD 的使用者體驗中隱藏應用程式
-description: 如何從 Azure Active Directory 存取面板或 Office 365 啟動器的使用者體驗中隱藏應用程式。
+title: 在 Azure AD 的使用者體驗中隱藏企業應用程式
+description: 如何在 Azure Active Directory 存取面板或 Office 365 啟動器中，從使用者體驗中隱藏企業應用程式。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5718adf4fd76e2fbd0ff793dd2fa33ee08f7c0fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d21ba14fba24c9b8e0b460e56b93d0e5212bfb27
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295057"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367694"
 ---
-# <a name="hide-applications-from-end-users-in-azure-active-directory"></a>對 Azure Active Directory 中的使用者隱藏應用程式
+# <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Azure Active Directory 中的使用者隱藏企業應用程式
 
 如何在使用者的 MyApps 面板或 Office 365 啟動器中隱藏應用程式的指示。 隱藏應用程式時，使用者仍有應用程式的權限。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 需具備應用程式管理員權限，才能對 MyApps 面板和 Office 365 啟動器隱藏應用程式。
 
@@ -35,12 +35,15 @@ ms.locfileid: "80295057"
 
 1.  以目錄的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 2.  選取 **Azure Active Directory**。
-3.  選取 [企業應用程式]****。 [企業應用程式 - 所有應用程式]**** 刀鋒視窗隨即開啟。
+3.  選取 [企業應用程式]。 [企業應用程式 - 所有應用程式]**** 刀鋒視窗隨即開啟。
 4.  在 [應用程式類型]**** 下，選取 [企業應用程式]\(如果尚未選取)****。
 5.  搜尋您想要隱藏的庫應用程式，然後按一下該應用程式。  應用程式的概觀隨即開啟。
-6.  按一下 **[屬性]**。 
+6.  按一下 **[屬性]** 。 
 7.  針對 [是否要向使用者顯示]**** 問題，按一下 [否]****。
-8.  按一下 **[儲存]** 。
+8.  按一下 [檔案] 。
+
+> [!NOTE]
+> 這些指示僅適用于企業應用程式。
 
 ## <a name="use-azure-ad-powershell-to-hide-an-application"></a>使用 Azure AD PowerShell 來隱藏應用程式
 
@@ -62,10 +65,11 @@ Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
 
 1.  以目錄的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 2.  選取 **Azure Active Directory**。
-3.  選取 [**使用者設定**]。
-4.  在 [企業應用程式]**** 之下，按一下 [管理終端使用者如何啟動及檢視其應用程式]****。
-5.  針對 [使用者只能在 Office 365 入口網站看到 Office 365 應用程式]****，按一下 [是]****。
-6.  按一下 **[儲存]** 。
+3.  選取 [**使用者**]。
+4.  選取 [**使用者設定**]。
+5.  在 [企業應用程式]**** 之下，按一下 [管理終端使用者如何啟動及檢視其應用程式]****。
+6.  針對 [使用者只能在 Office 365 入口網站看到 Office 365 應用程式]****，按一下 [是]****。
+7.  按一下 [檔案] 。
 
 ## <a name="next-steps"></a>後續步驟
 * [查看我的所有群組](../fundamentals/active-directory-groups-view-azure-portal.md)

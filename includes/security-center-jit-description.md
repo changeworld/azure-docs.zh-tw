@@ -4,20 +4,18 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 02/24/2020
 ms.topic: include
-ms.openlocfilehash: 78bf29a170152666d82ec26504ee8f61ed90636a
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 5efa8b845952c8ab5b66b781fb534c3754239b4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615979"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677420"
 ---
 ## <a name="attack-scenario"></a>攻擊案例
 
 暴力密碼破解攻擊通常會以管理連接埠為目標，作為取得 VM 存取權的手段。 如果成功，攻擊者便可以控制 VM，並在您的環境中建立據點。
 
 若要降低暴露於暴力密碼破解攻擊，其中一個方法是限制的連接埠開啟時間。 管理埠不需要在任何時間開啟。 只有在您連線到 VM 時，才需要開啟它們，例如執行管理或維護工作。 當啟用時，資訊安全中心會使用[網路安全性群組](../articles/virtual-network/security-overview.md#security-rules)（NSG）和 Azure 防火牆規則，以限制對管理埠的存取，讓攻擊者無法將其設為目標。
-
-![Just-in-time 案例](../articles/security-center/media/security-center-just-in-time/just-in-time-scenario.png)
 
 ## <a name="how-does-jit-access-work"></a>JIT 存取如何運作？
 

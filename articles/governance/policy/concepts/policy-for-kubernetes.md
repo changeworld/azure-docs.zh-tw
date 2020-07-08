@@ -1,14 +1,14 @@
 ---
 title: 預覽 - 了解適用於 Kubernetes 的 Azure 原則
 description: 了解 Azure 原則如何使用 Rego 和 Open Policy Agent 來管理在 Azure 或內部部署中執行 Kubernetes 的叢集。 這是預覽功能。
-ms.date: 05/20/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0d663d7bf7ce70c605551422f600258943d1efd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373619"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>了解適用於 Kubernetes 叢集的 Azure 原則 (預覽)
 
@@ -25,7 +25,7 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 - [AKS 引擎](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> 適用於 Kubernetes 的 Azure 原則處於 [預覽] 狀態，且僅支援 Linux 節點集區與內建的原則定義。 內建的原則定義位在 **Kubernetes** 類別中。 具有 **EnforceRegoPolicy** 效果及相關 **Kubernetes 服務**類別的有限預覽原則定義將會遭到_取代_。 請改為使用更新後的 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 效果。
+> 適用於 Kubernetes 的 Azure 原則處於 [預覽] 狀態，且僅支援 Linux 節點集區與內建的原則定義。 內建的原則定義位在 **Kubernetes** 類別中。 具有**EnforceOPAConstraint**和**EnforceRegoPolicy**效果的有限預覽原則定義，以及相關的**Kubernetes 服務**類別已被_取代_。 相反地，請使用_audit_和_Deny_與資源提供者模式的效果 `Microsoft.Kubernetes.Data` 。
 
 ## <a name="overview"></a>概觀
 
@@ -35,6 +35,9 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
    - [Azure Kubernetes Service (AKS)](#install-azure-policy-add-on-for-aks)
    - [已啟用 Azure Arc 的 Kubernetes](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
    - [AKS 引擎](#install-azure-policy-add-on-for-aks-engine)
+
+   > [!NOTE]
+   > 如需安裝的常見問題，請參閱[疑難排解-Azure 原則附加](../troubleshoot/general.md#add-on-installation-errors)元件。
 
 1. [了解適用於 Kubernetes 的 Azure 原則語言](#policy-language)
 
@@ -49,9 +52,6 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 1. 您必須安裝並設定 Azure CLI 2.0.62 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 註冊資源提供者和預覽功能。
-
-   > [!CAUTION]
-   > 當您在訂用帳戶上註冊功能時，無法取消註冊該功能。 啟用部分預覽功能之後，預設值可能會用於在訂用帳戶中建立的所有 AKS 叢集。 請勿在生產訂用帳戶上啟用預覽功能。 使用個別的訂用帳戶測試預覽功能並收集意見反應。
 
    - Azure 入口網站：
 
@@ -367,7 +367,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="policy-language"></a>原則語言
 
-用於管理 Kubernetes 的 Azure 原則語言結構會遵循現有原則定義的結構。 _EnforceOPAConstraint_ 效果用來管理您的 Kubernetes 叢集，並取得使用 [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) 和 Gatekeeper v3 時專屬的 details 屬性。 如需詳細資料和範例，請參閱 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 效果。
+用於管理 Kubernetes 的 Azure 原則語言結構會遵循現有原則定義的結構。 使用的[資源提供者模式](./definition-structure.md#resource-provider-modes)時 `Microsoft.Kubernetes.Data` ，會使用[audit](./effects.md#audit)和[deny](./effects.md#deny)的效果來管理 Kubernetes 叢集。 _Audit_和_deny_必須提供特定的**詳細資料**屬性，以使用[OPA 條件約束架構](https://github.com/open-policy-agent/frameworks/tree/master/constraint)和閘道管理員 v3。
 
 在原則定義中的 _details.constraintTemplate_ 和 _details.constraint_ 屬性中，Azure 原則會將這些 [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) 的 URI 傳遞至附加元件。 Rego 是 OPA 和 Gatekeeper 向 Kubernetes 叢集驗證要求時的支援語言。 藉由支援現有的 Kubernetes 管理標準，Azure 原則可讓您重複使用現有的規則，並可將其與 Azure 原則結合，以取得統一的雲端合規性報告體驗。 如需詳細資訊，請參閱[什麼是 Rego？](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)。
 

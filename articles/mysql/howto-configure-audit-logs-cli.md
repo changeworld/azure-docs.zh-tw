@@ -5,22 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: d532e1990586d80d675a8ccb247c0c9f7908bb6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/24/2020
+ms.openlocfilehash: 813e86e8446932d1618fff1853cee8972570f43f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81384164"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85363014"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>設定和存取 Azure CLI 中的 audit 記錄
 
 您可以從 Azure CLI 設定[適用於 MySQL 的 Azure 資料庫的審核記錄](concepts-audit-logs.md)。
 
-> [!IMPORTANT]
-> Audit log 功能目前為預覽狀態。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要逐步執行本作法指南，您需要︰
 
@@ -32,6 +29,9 @@ ms.locfileid: "81384164"
 > 本操作說明指南會要求您使用 Azure CLI 2.0 版或更新版本。 若要確認版本，請在 Azure CLI 命令提示字元中輸入 `az --version`。 若要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="configure-audit-logging"></a>設定審核記錄
+
+>[!IMPORTANT]
+> 建議您只記錄您的審核目的所需的事件種類和使用者，以確保伺服器的效能不會受到嚴重影響。
 
 使用下列步驟來啟用及設定 audit 記錄：
 

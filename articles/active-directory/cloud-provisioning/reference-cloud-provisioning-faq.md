@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: overview
-ms.date: 02/26/2020
+ms.topic: reference
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: 3ef482804c80602771963633bcc46feaf014c363
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77916569"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373823"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常見問題集
 
@@ -32,9 +32,9 @@ ms.locfileid: "77916569"
 
 這是預期行為。 失敗的原因是使用者物件不存在於 Azure AD 中。 使用者佈建到 Azure AD 後，應該會接著執行密碼雜湊的佈建。 請等候幾次執行，並確認密碼雜湊同步作業不再發生錯誤。
 
-**問：如果 Active Directory 執行個體具有雲端佈建不支援的屬性 (例如目錄延伸模組)，會發生什麼事？**
+**問：如果 Active Directory 實例具有雲端布建不支援的屬性（例如，目錄延伸模組），會發生什麼事？**
 
-雲端佈建將會執行及佈建支援的屬性。 不支援的屬性將不會佈建到 Azure AD。 請參閱 Active Directory 中的目錄延伸模組，並確定您不需要讓這些屬性流向 Azure AD。 如果需要一個或多個屬性，請考慮使用 Azure AD Connect 同步，或將所需的資訊移至其中一個支援的屬性 (例如，延伸模組屬性 1-15)。
+雲端佈建將會執行及佈建支援的屬性。 不支援的屬性將不會佈建到 Azure AD。 請參閱 Active Directory 中的目錄延伸模組，並確定您不需要這些屬性流入 Azure AD。 如果需要一個或多個屬性，請考慮使用 Azure AD Connect 同步，或將所需的資訊移至其中一個支援的屬性 (例如，延伸模組屬性 1-15)。
 
 **問：Azure AD Connect 同步與雲端佈建之間有何差異？**
 
@@ -62,7 +62,7 @@ Microsoft 會自動升級代理程式。 對於 IT 小組而言，這會減輕�
 
 **問：如果已同步的使用者在下次登入時需要變更密碼，會發生什麼情況？**
 
-如果已在雲端佈建中啟用密碼雜湊同步處理，且已同步的使用者在內部部署 AD 中的下一次登入時需要變更密碼，則雲端佈建不會將要變更的密碼雜湊佈建到 Azure AD。 使用者變更密碼後，就會將使用者密碼雜湊從 AD 佈建到 Azure AD。
+如果已在雲端布建中啟用密碼雜湊同步處理，且在內部部署 AD 中的下次登入時需要已同步處理的使用者變更密碼，則雲端布建不會將「已變更」密碼雜湊提供給 Azure AD。 使用者變更密碼後，就會將使用者密碼雜湊從 AD 佈建到 Azure AD。
 
 **問：雲端佈建是否支援任何物件的 ms-ds-consistencyGUID 回寫？**
 
@@ -70,7 +70,7 @@ Microsoft 會自動升級代理程式。 對於 IT 小組而言，這會減輕�
 
 **問：我使用雲端佈建進行使用者的佈建。我已刪除組態。為何我仍在 Azure AD 中看到已同步的舊物件？** 
 
-當您刪除組態時，雲端佈建並不會清除 Azure AD 中已同步的物件。 若要確保不會有舊物件，請將組態的範圍變更為空的群組或組織單位。 佈建執行並清除物件後，請停用並刪除組態。 
+當您刪除設定時，雲端布建不會自動移除 Azure AD 中已同步處理的物件。 若要確保不會有舊物件，請將組態的範圍變更為空的群組或組織單位。 佈建執行並清除物件後，請停用並刪除組態。 
 
 **問：Exchange 混合不受支援是什麼意思？**
 
@@ -79,6 +79,10 @@ Exchange 混合部署功能允許在內部部署和 Office 365 中並存 Exchang
 **問：我是否可在 Windows Server Core 上安裝雲端佈建代理程式？**
 
 否，不支援在 Server Core 上安裝代理程式。
+
+**問：是否可以搭配使用預備伺服器與雲端布建代理程式？**
+
+否，不支援暫存伺服器。
 
 ## <a name="next-steps"></a>後續步驟 
 

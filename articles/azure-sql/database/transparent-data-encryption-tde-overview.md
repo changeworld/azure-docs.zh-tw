@@ -14,6 +14,7 @@ ms.reviewer: vanto
 ms.date: 06/15/2020
 ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84986969"
@@ -119,7 +120,7 @@ Microsoft 也會視異地複寫和還原的需要順暢地移動和管理金鑰�
 
 使用在主要資料庫中作為系統管理員或 **dbmanager** 角色成員的登入，連線至資料庫。
 
-| Command | 說明 |
+| Command | 描述 |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) | SET ENCRYPTION ON/OFF 可加密或解密資料庫 |
 | [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |傳回資料庫及其相關資料庫加密金鑰的加密狀態相關資訊 |
@@ -135,7 +136,7 @@ Microsoft 也會視異地複寫和還原的需要順暢地移動和管理金鑰�
 若要透過 REST API 設定 TDE，您必須以 Azure 擁有者、參與者或 SQL 安全性管理員的身分連線。
 針對 Azure SQL Database 和 Azure Synapse 使用下列命令集：
 
-| Command | 說明 |
+| Command | 描述 |
 | --- | --- |
 |[建立或更新伺服器](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|將 Azure Active Directory 身分識別加入至伺服器。 （用來授與 Key Vault 的存取權）|
 |[建立或更新伺服器金鑰](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|將 Key Vault 鍵加入至伺服器。|

@@ -3,24 +3,24 @@ title: 使用 Azure AD 應用程式 proxy 登入內部部署應用程式時發�
 description: 針對無法使用 Azure AD 應用程式 Proxy 登入與 Azure AD 整合的內部部署應用程式時的常見問題進行疑難排解
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91a00e243032fd9702e8b549c75363f1a3e1c87f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29aa4eb0bc40f0b2b960c49cf7b17dc62d92b0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74232333"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367711"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 登入內部部署應用程式時遇到問題
 
@@ -36,7 +36,7 @@ ms.locfileid: "74232333"
 
 ## <a name="im-having-a-connectivity-problem-my-application"></a>我的應用程式在連線時遇到問題
   下列文件可協助您解決此類別的一些最常見問題。
-  * [我不知道要為我的應用程式開啟哪些連接埠](application-proxy-connectivity-ports-how-to.md)
+  * [我不知道要為我的應用程式開啟哪些連接埠](application-proxy-add-on-premises-application.md)
   * [我遇到問題，連接器群組中沒有作用中的連接器可用於我的應用程式](application-proxy-connectivity-no-working-connector.md)
 
 ## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>我在管理入口網站中設定 Azure AD 應用程式 Proxy 時遇到問題

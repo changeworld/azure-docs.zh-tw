@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
 ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76037998"
 ---
 本文逐步解說當使用 Azure Resource Manager 範本佈建虛擬機器時，受控與非受控磁碟之間的差異。 這些範例有助於您將使用非受控磁碟的現有範本，更新為使用受控磁碟。 如需參考，我們會使用 [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) \(英文\) 範本作為指南。 如果您想要直接進行比較，您可以看到使用[受控磁碟](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) \(英文\) 的範本以及使用[非受控磁碟](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) \(英文\) 的先前版本。
@@ -97,9 +97,9 @@ ms.locfileid: "76037998"
 若要建立具有受控磁片的 VM，您不再需要建立儲存體帳戶資源。 參考下列範本範例，與先前的 unmanaged 磁片範例有一些差異，請注意：
 
 - `apiVersion`是支援受控磁片的版本。
-- `osDisk`和`dataDisks`不再參考 VHD 的特定 URI。
+- `osDisk`和 `dataDisks` 不再參考 VHD 的特定 URI。
 - 部署時，若未指定其他屬性，磁片將會根據 VM 的大小使用儲存體類型。 例如，如果您使用支援高階儲存體的 VM 大小（其名稱中包含 "s" 的大小，例如 Standard_D2s_v3），則預設會設定 premium 磁片。 您可以使用磁片的 sku 設定來指定儲存類型，以變更此值。
-- 如果沒有指定磁片的名稱，它會採用 OS 磁片和`<VMName>_OsDisk_1_<randomstring>` `<VMName>_disk<#>_<randomstring>`每個資料磁片的格式。
+- 如果沒有指定磁片的名稱，它會採用 `<VMName>_OsDisk_1_<randomstring>` OS 磁片和 `<VMName>_disk<#>_<randomstring>` 每個資料磁片的格式。
   - 如果 VM 是從自訂映射建立，則儲存體帳戶類型和磁片名稱的預設設定會從自訂映射資源中定義的磁片屬性中抓取。 您可以在範本中指定這些值來覆寫這些方法。
 - Azure 磁片加密預設為停用。
 - 根據預設，磁碟快取是作業系統磁片的讀取/寫入，而不是資料磁片的快取。

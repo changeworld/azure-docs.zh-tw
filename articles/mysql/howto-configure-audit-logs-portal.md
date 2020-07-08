@@ -5,28 +5,28 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: fcd436f87b24d8cdc246d2f1d33a49311e72d46b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/24/2020
+ms.openlocfilehash: 1c48c16666305e9b9c342869e52aa04cfd4dac07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362963"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>設定及存取 Azure 入口網站中適用於 MySQL 的 Azure 資料庫的 audit 記錄
 
 您可以從 Azure 入口網站設定[適用於 MySQL 的 Azure 資料庫的審核記錄](concepts-audit-logs.md)和診斷設定。
 
-> [!IMPORTANT]
-> Audit log 功能目前為預覽狀態。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要逐步執行本作法指南，您需要︰
 
 - [適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="configure-audit-logging"></a>設定審核記錄
+
+>[!IMPORTANT]
+> 建議您只記錄您的審核目的所需的事件種類和使用者，以確保伺服器的效能不會受到嚴重影響。
 
 啟用和設定 audit 記錄。
 
@@ -53,7 +53,7 @@ ms.locfileid: "81380293"
 
 1. 在提要欄位的 [**監視**] 區段下，選取 [**診斷設定**]。
 
-1. 按一下 [+ 新增診斷設定] [ ![新增診斷設定]](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. 按一下 [+ 新增診斷設定] [ ![ 新增診斷設定]](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
 1. 提供診斷設定名稱。
 

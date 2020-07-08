@@ -4,21 +4,21 @@ description: 如何使用 PowerShell Cmdlet 為 Windows 虛擬桌面使用者自
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a93aa35353940cfdbded1634448d4f6d2865c365
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 58f05b2f9f15166e161b31578b47cf06afcb13a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614833"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362572"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>適用於 Windows 虛擬桌面使用者的自訂摘要
 
 >[!IMPORTANT]
->此內容適用于不支援 Azure Resource Manager Windows 虛擬桌面物件的秋季2019版。 如果您嘗試管理春季2020更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../customize-feed-for-virtual-desktop-users.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../customize-feed-for-virtual-desktop-users.md)。
 
 您可以自訂摘要，讓 RemoteApp 和遠端桌面資源以可辨識的方式顯示給使用者。
 
@@ -37,14 +37,18 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```powershell
 Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![已反白顯示 [名稱] 和 [FriendlyName] 的 PowerShell Cmdlet RDSRemoteApp 螢幕擷取畫面。](../media/get-rdsremoteapp.png)
+
+> [!div class="mx-imgBorder"]
+> ![已反白顯示 [名稱] 和 [FriendlyName] 的 PowerShell Cmdlet RDSRemoteApp 螢幕擷取畫面。](../media/get-rdsremoteapp.png)
 
 若要為 RemoteApp 指派易記名稱，請執行下列 PowerShell Cmdlet：
 
 ```powershell
 Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
 ```
-![已反白顯示 [名稱] 和 [新增 FriendlyName] 的 PowerShell Cmdlet 集 RDSRemoteApp 螢幕擷取畫面。](../media/set-rdsremoteapp.png)
+
+> [!div class="mx-imgBorder"]
+> ![已反白顯示 [名稱] 和 [新增 FriendlyName] 的 PowerShell Cmdlet 集 RDSRemoteApp 螢幕擷取畫面。](../media/set-rdsremoteapp.png)
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>自訂遠端桌面的顯示名稱
 
@@ -55,18 +59,22 @@ Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroup
 ```powershell
 Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![已反白顯示 [名稱] 和 [FriendlyName] 的 PowerShell Cmdlet RDSRemoteApp 螢幕擷取畫面。](../media/get-rdsremotedesktop.png)
+
+> [!div class="mx-imgBorder"]
+> ![已反白顯示 [名稱] 和 [FriendlyName] 的 PowerShell Cmdlet RDSRemoteApp 螢幕擷取畫面。](../media/get-rdsremotedesktop.png)
 
 若要為遠端桌面資源指派易記名稱，請執行下列 PowerShell Cmdlet：
 
 ```powershell
 Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
 ```
-![已反白顯示 [名稱] 和 [新增 FriendlyName] 的 PowerShell Cmdlet 集 RDSRemoteApp 螢幕擷取畫面。](../media/set-rdsremotedesktop.png)
+
+> [!div class="mx-imgBorder"]
+> ![已反白顯示 [名稱] 和 [新增 FriendlyName] 的 PowerShell Cmdlet 集 RDSRemoteApp 螢幕擷取畫面。](../media/set-rdsremotedesktop.png)
 
 ## <a name="next-steps"></a>後續步驟
 
 既然您已自訂使用者的摘要，您可以登入 Windows 虛擬桌面的用戶端來進行測試。若要這麼做，請繼續進行連線至 Windows 虛擬桌面的作法：
-    
+
  * [從 Windows 10 或 Windows 7 連線](../connect-windows-7-and-10.md)
- * [從網頁瀏覽器連線](connect-web-2019.md) 
+ * [從網頁瀏覽器連線](connect-web-2019.md)

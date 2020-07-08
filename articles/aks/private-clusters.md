@@ -3,13 +3,13 @@ title: 建立私人 Azure Kubernetes Service 叢集
 description: 了解如何建立私人 Azure Kubernetes Service (AKS) 叢集
 services: container-service
 ms.topic: article
-ms.date: 2/21/2020
-ms.openlocfilehash: 49776fb50eabeef8238e54c7a2f3128c99c2514b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 6/18/2020
+ms.openlocfilehash: ebbe2f754aa70c6c65ec7016da29a4a1b0bd7dd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849683"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374520"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>建立私人 Azure Kubernetes Service 叢集
 
@@ -71,11 +71,11 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您使
 
 如前所述，VNet 對等互連是存取私人叢集的一種方式。 若要使用 VNet 對等互連，您需要設定虛擬網路與私人 DNS 區域之間的連結。
     
-1. 在 Azure 入口網站中，移至 MC_* 資源群組。  
+1. 移至 Azure 入口網站中的節點資源群組。  
 2. 選取私人 DNS 區域。   
 3. 在左側窗格中，選取 [虛擬網路連結]。  
 4. 建立新的連結，將 VM 的虛擬網路新增至私人 DNS 區域。 需要幾分鐘的時間，DNS 區域連結才會變成可供使用。  
-5. 返回 Azure 入口網站中的 MC_* 資源群組。  
+5. 在 [Azure 入口網站中，流覽至包含您叢集 VNet 的資源群組。  
 6. 在右側窗格中，選取虛擬網路。 虛擬網路名稱的格式為 aks-vnet-\*。  
 7. 在左側窗格中選取 [對等互連]。  
 8. 選取 [新增]、新增 VM 的虛擬網路，然後建立對等互連。  
@@ -91,7 +91,7 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您使
 
 2. 私人 DNS 區域只會連結至叢集節點所連結的 VNet (3)。 這表示私人端點只能由該連結 VNet 中的主機解析。 未在 VNet 上設定任何自訂 DNS 的情況下 (預設值)，這會在主機點向 DNS 的 168.63.129.16 時，沒有問題地正常運作，DNS 可以因為連結而在私人 DNS 區域中解析記錄。
 
-3. 在包含叢集的 VNet 有自訂 DNS 設定 (4) 的情況下，除非私人 DNS 區域已連結至包含自訂 DNS 解析程式 (5) 的 VNet，否則叢集部署將會失敗。 在叢集佈建期間建立私人區域之後，您可以手動建立此連結，或使用 Azure 原則或其他事件型部署機制 (例如 Azure 事件方格和 Azure Functions)，在偵測到區域建立時，透過自動化來建立此連結。
+3. 在包含叢集的 VNet 有自訂 DNS 設定 (4) 的情況下，除非私人 DNS 區域已連結至包含自訂 DNS 解析程式 (5) 的 VNet，否則叢集部署將會失敗。 此連結可在叢集布建期間建立私人區域之後，或在使用事件架構部署機制（例如，Azure Event Grid 和 Azure Functions）偵測到建立區域之後，以手動方式建立。
 
 ## <a name="dependencies"></a>相依性  
 
@@ -100,9 +100,8 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您使
 
 ## <a name="limitations"></a>限制 
 * IP 授權範圍無法套用至私人 API 伺服器端點，這些範圍只適用於公用 API 伺服器
-* 可用性區域目前會針對特定地區提供支援，請參閱本文件的開頭 
+* 目前支援特定地區的[可用性區域][availability-zones]。 
 * [Azure Private Link 服務限制][private-link-service]適用於私人叢集。
-* 私人叢集中不支援使用虛擬節點來微調私人 Azure 虛擬網路中的私人 Azure 容器執行個體 (ACI)
 * 不支援搭配私人叢集使用 Azure DevOps Microsoft 裝載的代理程式。 請考慮使用[自我裝載代理程式][devops-agents]。 
 * 對於需要啟用 Azure Container Registry 以使用私人 AKS 的客戶，必須以代理程式叢集虛擬網路來與 Container Registry 虛擬網路對等互連。
 * 目前不支援 Azure Dev Spaces
@@ -122,3 +121,4 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您使
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 [devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops
+[availability-zones]: availability-zones.md

@@ -2,23 +2,23 @@
 title: 規劃 Azure Active Directory 單一登入部署
 description: 協助您在組織中規劃、部署和管理 SSO 的指南。
 services: active-directory
-author: jeevansd
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 06/10/2020
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4b5836ffe721aa3e329651c3709ce64344363728
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197860"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374435"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>規劃單一登入部署
 
@@ -163,7 +163,7 @@ Microsoft Cloud 的應用程式安全性（MCAS）會話控制適用于任何作
 
 ### <a name="attribute-requirements"></a>屬性需求
 
-Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，有一組預先設定的屬性和屬性對應。 某些應用程式會管理其他類型的物件，例如群組。 規劃將使用者屬性從 Azure AD 到應用程式的對應，並根據您的業務需求[自訂預設的屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)對應。
+在 Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，有一組預先設定的屬性和屬性對應。 某些應用程式會管理其他類型的物件，例如群組。 規劃將使用者屬性從 Azure AD 到應用程式的對應，並根據您的業務需求[自訂預設的屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)對應。
 
 ### <a name="certificate-requirements"></a>憑證需求
 
@@ -194,8 +194,6 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
    如果找不到您的應用程式，請參閱[自訂應用程式檔](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)。 這會逐步引導您瞭解如何新增不在 Azure AD 資源庫中的應用程式。
 
    （選擇性）您可以使用[Microsoft 的指引檔](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)，針對企業應用程式的 SAML 權杖中發出的宣告。 請確定這會對應到您預期會在應用程式的 SAML 回應中收到的內容。 如果您在設定期間遇到問題，請使用我們的指引[來進行 SSO 整合的調試](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)。
-
-自訂應用程式上架是 Azure AD Premium P1 或 P2 授權功能。
 
 ### <a name="provide-sso-change-communications-to-end-users"></a>為使用者提供 SSO 變更通訊
 
@@ -237,11 +235,11 @@ Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，�
 
 | 生活| 角色 | Azure AD 角色（如有必要） |
 |--------|-------|-----------------------------|
-| 技術支援中心系統管理員 | 第1層支援 | 無 |
+| 技術支援中心系統管理員 | 第1層支援 | None |
 | 身分識別管理員 | 在問題影響時設定和調試 Azure AD | 全域系統管理員 |
-| 應用程式管理員 | 應用程式中的使用者證明，具有許可權的使用者設定 | 無 |
+| 應用程式管理員 | 應用程式中的使用者證明，具有許可權的使用者設定 | None |
 | 基礎結構管理員 | 憑證變換擁有者 | 全域系統管理員 |
-| 商務擁有者/專案關係人 | 應用程式中的使用者證明，具有許可權的使用者設定 | 無 |
+| 商務擁有者/專案關係人 | 應用程式中的使用者證明，具有許可權的使用者設定 | None |
 
 我們建議使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) （PIM）來管理您的角色，以針對具有目錄許可權的使用者提供額外的審核、控制和存取權審查。
 

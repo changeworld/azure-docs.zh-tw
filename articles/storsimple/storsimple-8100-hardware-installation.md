@@ -9,6 +9,7 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699102"
@@ -17,7 +18,7 @@ ms.locfileid: "84699102"
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 您的 Microsoft Azure StorSimple 8100 是單一機箱、機架掛接裝置。 本教學課程說明如何在您設定與部署 StorSimple 裝置之前，打開包裝、利用機架掛接和配接 StorSimple 8100 裝置硬體纜線。
 
 ## <a name="unpack-your-storsimple-8100-device"></a>打開您的 StorSimple 8100 裝置包裝
@@ -143,7 +144,7 @@ ms.locfileid: "84699102"
    
     **安裝輪緣蓋**
    
-   | 標籤 | 說明 |
+   | 標籤 | 描述 |
    | --- | --- |
    |   1 |機箱鎖固螺絲 |
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 41a6cc3a4fd604c4272783f528ed3d37372044fb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 1a516374e0ac478b24fa1c3ced1627c4814f9bbd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367592"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>教學課程：設定 Juno Journey 來自動佈建使用者
 
@@ -40,7 +40,7 @@ ms.locfileid: "83647734"
 
 * [Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式系統管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
-*  [Juno Journey 租用戶](https://www.junojourney.com/blank)。
+*  [Juno Journey 租用戶](https://www.junojourney.com/getstarted)。
 *  Juno Journey 中具有管理員權限的使用者帳戶。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署

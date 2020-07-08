@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: 545d04bdede76a6ce25c9e4665f39c01ff6caa73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/24/2020
+ms.openlocfilehash: 0d678d900ec31b00d27eba19617d533c5010c1dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367985"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>讀取適用於 PostgreSQL 的 Azure 資料庫中的複本-單一伺服器
 
@@ -31,31 +31,31 @@ ms.locfileid: "81531978"
 讀取複本功能會使用 PostgreSQL 非同步複寫。 此功能不適用於同步複寫案例。 主要伺服器和複本之間將會有顯著的延遲。 複本上的資料最終仍會與主要伺服器上的資料保持一致。 請針對可接受此延遲的工作負載使用此功能。
 
 ## <a name="cross-region-replication"></a>跨區域複寫
-您可以從主伺服器在不同的區域中建立讀取複本。 跨區域複寫適用于嚴重損壞修復計畫之類的案例，或將資料帶入更接近您的使用者。
+您可以從主要伺服器在不同的區域中建立讀取複本。 跨區域複寫有助於災害復原規劃或讓資料更接近使用者之類的案例。
 
-您可以在任何[適用於 PostgreSQL 的 Azure 資料庫區域](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)中擁有主伺服器。 主伺服器的配對區域或通用複本區域中可以有複本。 下圖顯示哪些複本區域可供使用，視您的主要區域而定。
+>[!NOTE]
+> 基本層伺服器僅支援相同的區域複寫。
 
-[![讀取複本區域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+您可以在任何[適用於 PostgreSQL 的 Azure 資料庫區域](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)中擁有主伺服器。 主要伺服器可以在其配對區域或全球複本區域中擁有複本。 下圖顯示根據您的主要區域而可供使用的複本區域。
 
-### <a name="universal-replica-regions"></a>通用複本區域
+[ ![讀取複本區域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+
+### <a name="universal-replica-regions"></a>全球的複本區域
 無論您的主伺服器位於何處，您都可以在下列任何區域中建立讀取複本。 這些是通用複本區域：
 
-澳大利亞東部、澳大利亞東南部、美國中部、東亞、美國東部、美國東部2、日本東部、日本西部、韓國中部、南韓南部、美國中北部、北歐、美國中南部、東南亞、英國南部、英國西部、西歐、美國西部。
+澳大利亞東部、澳大利亞東南部、美國中部、東亞、美國東部、美國東部2、日本東部、日本西部、韓國中部、南韓南部、美國中北部、北歐、美國中南部、東南亞、英國南部、英國西部、西歐、美國西部、美國西部2、美國中西部。
 
-* 美國西部2暫時無法當做跨區域複本位置使用。
+### <a name="paired-regions"></a>配對的區域
+除了全球複本區域外，您還可以在主要伺服器的 Azure 配對區域中建立讀取複本。 如果您不知道所在區域的配對，則可以從 [Azure 配對區域](../best-practices-availability-paired-regions.md)一文深入了解。
 
-
-### <a name="paired-regions"></a>配對區域
-除了通用複本區域之外，您還可以在主伺服器的 Azure 配對區域中建立讀取複本。 如果您不知道您的區域配對，可以從[Azure 配對區域一文](../best-practices-availability-paired-regions.md)深入瞭解。
-
-如果您使用跨區域複本進行嚴重損壞修復計畫，建議您在配對的區域中建立複本，而不是在其他其中一個區域。 配對的區域會避免同時更新，並排定實體隔離和資料存放區的優先順序。  
+如果您使用跨區域複本來規劃災害復原，建議您在配對區域中建立複本，而不要在其他區域之一建立。 配對區域可避免同時更新，並排定實體隔離和資料落地的優先順序。  
 
 有一些限制需要考慮： 
 
-* 區域可用性：適用於 PostgreSQL 的 Azure 資料庫適用于美國西部2、法國中部、阿拉伯聯合大公國北部和德國中部。 不過，它們的配對區域無法使用。
+* 區域可用性：適用於 PostgreSQL 的 Azure 資料庫適用于法國中部、阿拉伯聯合大公國北部和德國中部。 不過，卻沒有提供其配對區域。
     
-* 單向配對：某些 Azure 區域只會以單一方向配對。 這些區域包括印度西部、巴西南部。 
-   這表示印度西部的主伺服器可以在印度南部中建立複本。 不過，印度南部中的主伺服器無法在印度西部建立複本。 這是因為印度西部的次要地區印度南部，但印度南部的次要地區並非印度西部。
+* 單向配對：某些 Azure 區域只會單向配對。 這些區域包括印度西部、巴西南部。 
+   這表示位於印度西部的主要伺服器可以在印度南部建立複本。 但位於印度南部的主要伺服器無法在印度西部建立複本。 其原因是印度西部的次要區域是印度南部，但印度南部的次要區域卻不是印度西部。
 
 
 ## <a name="create-a-replica"></a>建立複本
@@ -85,7 +85,7 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 
 [**跨越複本的最大延遲**] 計量會顯示主伺服器和最延遲複本之間的延遲（以位元組為單位）。 此計量僅適用於主要伺服器。
 
-[**複本延遲**] 度量會顯示上次重新執行交易之後的時間。 如果主要伺服器上沒有發生交易，計量會反映此時間延隔。 此度量僅適用于複本伺服器。 複本延遲是從`pg_stat_wal_receiver` view 計算而來：
+[**複本延遲**] 度量會顯示上次重新執行交易之後的時間。 如果主要伺服器上沒有發生交易，計量會反映此時間延隔。 此度量僅適用于複本伺服器。 複本延遲是從 view 計算而來 `pg_stat_wal_receiver` ：
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
@@ -146,8 +146,16 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 本節將摘要說明有關讀取複本功能的考量。
 
-### <a name="prerequisites"></a>先決條件
-建立讀取複本之前，`azure.replication_support` 參數必須在主要伺服器上設定為 **REPLICA**。 變更此參數後，必須重新啟動伺服器，才能讓變更生效。 `azure.replication_support` 參數僅適用於「一般用途」和「記憶體最佳化」層級。
+### <a name="prerequisites"></a>必要條件
+讀取複本和[邏輯解碼](concepts-logical.md)兩者都相依于 Postgres 寫前記錄檔（WAL）以取得資訊。 這兩個功能需要來自 Postgres 的不同記錄層級。 邏輯解碼需要比讀取複本更高的記錄層級。
+
+若要設定正確的記錄層級，請使用 Azure 複寫支援參數。 Azure 複寫支援有三個設定選項：
+
+* **Off** -將最少的資訊放在 WAL 中。 大部分適用於 PostgreSQL 的 Azure 資料庫伺服器上都無法使用此設定。  
+* **複本**-比**關閉**更詳細的資訊。 這是[讀取複本](concepts-read-replicas.md)正常執行所需的最基本記錄層級。 這是大多數伺服器上的預設設定。
+* **邏輯**比**複本**更詳細。 這是要使用之邏輯解碼的最低記錄層級。 讀取複本也適用于此設定。
+
+此參數變更之後，必須重新開機伺服器。 就內部而言，此參數會設定 Postgres 參數 `wal_level` 、 `max_replication_slots` 和 `max_wal_senders` 。
 
 ### <a name="new-replicas"></a>新複本
 讀取複本會建立為最新適用於 PostgreSQL 的 Azure 資料庫伺服器。 現有伺服器無法設定為複本。 您無法為另一個讀取複本建立複本。
@@ -164,8 +172,11 @@ PostgreSQL 會要求讀取複本上的 `max_connections` 參數值大於或等�
 
 建立複本或之後，防火牆規則、虛擬網路規則和參數設定不會從主伺服器繼承到複本。
 
+### <a name="basic-tier"></a>基本層
+基本層伺服器僅支援相同的區域複寫。
+
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
-[于 postgresql 要求](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS)讀取複本上的`max_prepared_transactions`參數值必須大於或等於主要值;否則，複本將不會啟動。 如果您想要在`max_prepared_transactions`主伺服器上變更，請先在複本上變更它。
+[于 postgresql 要求](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) `max_prepared_transactions` 讀取複本上的參數值必須大於或等於主要值，否則複本將不會啟動。 如果您想要 `max_prepared_transactions` 在主伺服器上變更，請先在複本上變更它。
 
 ### <a name="stopped-replicas"></a>已停止的複本
 如果您停止主要伺服器和讀取複本之間的複寫，複本將會重新啟動以套用變更。 停止的複本會變成支接受讀取和寫入的獨立伺服器。 獨立伺服器無法再次設定為複本。

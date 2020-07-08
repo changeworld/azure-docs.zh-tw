@@ -6,23 +6,23 @@ author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/20/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11c337f4838279771523a1f375b7349387d68f45
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 1bbc1644294a471bbb704d10c5f684d7404eae95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582544"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374571"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>關閉非受控 Azure AD 組織中的公司或學校帳戶
 
-如果您是非受控 Azure Active 組織（Azure AD）組織中的使用者，而且您不再需要使用該組織的應用程式或維護其任何關聯，您可以隨時關閉您的帳戶。 未受管理的組織沒有全域管理員。 非受控組織中的使用者可以自行關閉其帳戶，而不需要洽詢系統管理員。
+如果您是非受控 Azure Active Directory （Azure AD）組織中的使用者，且不再需要使用該組織的應用程式或維護其任何關聯，您可以隨時關閉您的帳戶。 未受管理的組織沒有全域管理員。 非受控組織中的使用者可以自行關閉其帳戶，而不需要洽詢系統管理員。
 
 在自助式註冊期間，通常會建立非受控組織中的使用者。 其中一個範例可能是註冊免費服務之組織中的資訊工作者。 如需自助式註冊的詳細資訊，請參閱[什麼是適用于 Azure Active Directory 的自助式註冊？](directory-self-service-signup.md)。
 

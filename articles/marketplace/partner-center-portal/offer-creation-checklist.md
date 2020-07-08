@@ -1,33 +1,36 @@
 ---
-title: SaaS 供應項目建立檢查清單 -適用於 Azure 的商業市集
-description: 您可以在 SaaS 供應項目建立程序中提供的詳細資料。 - 適用於 Azure 的商業市集
+title: Microsoft 商業 marketplace 中的 SaaS 供應專案建立檢查清單
+description: 您可以在合作夥伴中心的 SaaS 供應專案建立程式中提供的詳細資料。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: ec276c765c2a574dbbc2fc14b7b23507b4cc4798
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 05/08/2020
+ms.openlocfilehash: b30afd4ef69b9b4ecb49b99f4455bf136a6e6eb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374401"
 ---
-# <a name="saas-offer-creation-checklist"></a>SaaS 供應項目建立檢查清單
+# <a name="saas-offer-creation-checklist-in-partner-center"></a>合作夥伴中心的 SaaS 供應專案建立檢查清單
 
-SaaS 供應項目建立程序會帶您瀏覽多個頁面。 以下是您可以在每個頁面上提供的詳細資料，以及可深入瞭解每個項目的連結。
+SaaS 供應項目建立程序會帶您瀏覽多個頁面。  以下是您可以在每個頁面上提供的詳細資料，以及可深入瞭解每個項目的連結。
 
-您必須提供或指定的項目如下所示。 某些區域屬於選擇性，或有提供預設值，可視需要加以變更。 並不需要按照此處所列的順序來處理這些區段。
+您必須提供或指定的項目如下所示。  某些區域屬於選擇性，或有提供預設值，可視需要加以變更。  並不需要按照此處所列的順序來處理這些區段。
+
+>[!Note]
+>如果您要建立 transactable SaaS 供應專案，請確定您已實施與[saas 履行 api](./pc-saas-fulfillment-apis.md)的整合。  與 Api 整合是 Marketplace 中銷售正常運作的唯一方式。
 
 | **Item**    | **目的**  |
 | :---------- | :-------------------|
 | [**新增供應項目強制回應**](#new-offer-modal) | 收集供應項目身分識別資訊。  |
 | [供應項目設定頁面](#offer-setup-page) | 可讓您選擇使用主要功能，並選擇如何透過 Microsoft 銷售您的供應項目。  |
 | [屬性頁面](#properties-page) | 定義用來在市集上將供應項目分組的類別和產業、支援供應項目的法律合約，以及應用程式版本。 |
-| [供應項目清單頁面](#offer-listing-page) | 定義要在市集中顯示的供應項目詳細資料，包括供應項目和行銷資產的說明。 |
-| [預覽頁面](#preview-page) | 定義受限的預覽對象，以便在將供應項目即時發行給範圍更廣的市集對象之前，先發行您的供應項目。 |
-| [供應項目技術設定頁面](#technical-configuration-page)  | 只有在您選擇透過 Microsoft 銷售供應項目時才可使用。 定義用來連接到供應項目的技術詳細資料 (URL 路徑、Webhook、租用戶識別碼和應用程式識別碼)。 |
+| [供應項目清單頁面](#offer-listing-page) | 定義要在市集中顯示的供應項目詳細資料，包括供應項目和行銷資產的說明。|
+| [預覽頁面](#preview-page) | 定義受限的預覽對象，以便在將供應項目即時發行給範圍更廣的市集對象之前，先發行您的供應項目。|
+| [供應項目技術設定頁面](#technical-configuration-page)  |  只有在您選擇透過 Microsoft 銷售供應項目時才可使用。  定義 marketplace 用來連線到您的供應專案的技術詳細資料（登陸頁面 URL、連接 webhook URL、Azure AD 租使用者識別碼，以及 Azure AD 應用程式識別碼）。  需要這些參數，才能正確地與 SaaS 履行和 Marketplace 計量付費計費 Api 進行整合。|
 | [**新的方案強制回應**](#plan-identity-modal) | 收集方案身分識別資訊。  |
 | [方案清單頁面](#plan-listing-page)  | 只有在您選擇透過 Microsoft 銷售供應項目時才可使用。 定義用來在市集中列出方案的詳細資料。  |
 | [方案定價和可用性頁面](#plan-pricing--availability-page)  | 只有在您選擇透過 Microsoft 銷售供應項目時才可使用。  對於您供應項目的每個方案 (版本) 收集商務特性 (計價模式)、對象和市場可用性。  |
@@ -89,7 +92,7 @@ SaaS 供應項目建立程序會帶您瀏覽多個頁面。 以下是您可以�
 | 有用的連結標題 + URL  | 選擇性。 |
 | 支援文件標題 + 檔案  | 必要，最小值為 1、最大值為 3。 必須是 PDF 檔案格式。 |
 | 螢幕擷取畫面  | 必要，最少 1 個、最多 5 個螢幕擷取畫面；建議使用 4 個以上。 必須是 1280 X 720 的 PNG 格式。 |
-| 商店標誌 (小、中、大、寬、主圖)  | 需要小 (48 X 48) 和大 (216 X 216)；其他大小為選用，但建議使用：中 (90 x 90)、寬 (255 x 115)、主圖 (815 x 290)。 必須是 PNG 格式。 |
+| 商店標誌（小型、中型、大型、寬）  | 需要小型（48 X 48）和大型（216 X 216）;其他是選擇性的，但建議使用：中（90 x 90）、寬（255 x 115）。 必須在中。PNG 格式。 |
 | 影片名稱 + URL + 縮圖  | 選用，建議，最多 4 個影片。 縮圖必須是 1280 X 720 的 PNG 格式。 影片必須裝載於 YouTube 或 Vimeo。 |
 | 連絡人 (CSP 方案、工程、支援)  | 需要工程和支援連絡人 (名稱、電子郵件和電話號碼)；CSP 方案連絡人為選用，但建議使用。 |
 | 支援 URL  | 必要。 |

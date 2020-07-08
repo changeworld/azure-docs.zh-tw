@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 217e48ab21439f03e0b52c894c9aace5b51b1502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 995339f91be37b71d73b409f3eaeafb3dd1777ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79086200"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84754637"
 ---
 Azure Data Factory 是多租使用者服務，具有下列預設限制，以確保客戶訂用帳戶會受到彼此的工作負載保護。 若要提高訂用帳戶的最大限制，請聯絡支援人員。
 
@@ -46,7 +46,7 @@ Azure Data Factory 是多租使用者服務，具有下列預設限制，以確�
 | 監視每分鐘查詢次數 | 1,000 | [聯絡支援](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 每分鐘的實體 CRUD 作業 | 50 | [聯絡支援](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 資料流程 debug 會話的最長時間 | 8小時 | 8小時 |
-| 每個 factory 的並行資料流程數 | 50 | [聯絡支援](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| 每個 integration runtime 的並行資料流程數 | 50 | [聯絡支援](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 每個處理站的每個使用者的資料流程多個資料流程 debug 會話數目 | 3 | 3 |
 | 資料流程 Azure IR TTL 限制 | 4小時 | [聯絡支援](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 

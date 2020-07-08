@@ -3,25 +3,25 @@ title: Azure AD 應用程式 Proxy 中的萬用字元應用程式
 description: 了解如何在 Azure Active Directory 應用程式 Proxy 中使用萬用字元應用程式。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/06/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770291"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367728"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 應用程式 Proxy 中的萬用字元應用程式
 
@@ -43,7 +43,7 @@ ms.locfileid: "81770291"
 
 如果內部和外部 URL 都是以下格式，您可以發行具有萬用字元的應用程式：
 
-> http(s)://*.\<domain\>
+> HTTP （s）：//*。\<domain\>
 
 例如： `http(s)://*.adventure-works.com` 。
 
@@ -51,7 +51,7 @@ ms.locfileid: "81770291"
 
 建立萬用字元應用程式是根據可用於所有其他應用程式的相同[應用程式發行流程](application-proxy-add-on-premises-application.md)。 唯一的差別是您在 URL (也可能在 SSO 設定) 中包含萬用字元。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用，請確定您符合這些需求。
 
@@ -62,7 +62,7 @@ ms.locfileid: "81770291"
 1. 在 Azure 中建立已驗證的網域。
 1. 將 TLS/SSL 憑證（PFX 格式）上傳至您的應用程式 proxy。
 
-您應該考慮使用萬用字元憑證，以符合您打算建立的應用程式。 或者，您也可以使用僅列出特定應用程式的憑證。 在此情況下，只有憑證中列出的應用程式可透過此萬用字元應用程式存取。
+您應該考慮使用萬用字元憑證，以符合您打算建立的應用程式。 
 
 基於安全性理由，這是硬性需求，而且我們不會對無法使用自訂網域作為外部 URL 的應用程式支援萬用字元。
 
@@ -82,11 +82,11 @@ ms.locfileid: "81770291"
 
 針對萬用字元應用程式，**內部 URL** 必須格式化為 `http(s)://*.<domain>`。
 
-![針對 [內部 URL]，使用 HTTP （s）：//* 格式。\<網域>](./media/application-proxy-wildcard/22.png)
+![針對 [內部 URL]，使用 HTTP （s）：//* 格式。 \<網域>](./media/application-proxy-wildcard/22.png)
 
 在設定**外部 URL** 時，您必須使用下列格式：`https://*.<custom domain>`
 
-![若為外部 URL，請使用 HTTPs://* 格式。\<自訂網域>](./media/application-proxy-wildcard/21.png)
+![若為外部 URL，請使用 HTTPs://* 格式。 \<自訂網域>](./media/application-proxy-wildcard/21.png)
 
 其他位置的萬用字元、多個萬用字元或其他 regex 字串不受支援，而且會導致錯誤。
 
@@ -156,7 +156,7 @@ ms.locfileid: "81770291"
 
 ![顯示範例設定所執行的結構](./media/application-proxy-wildcard/05.png)
 
-| Color | 描述 |
+| Color | Description |
 | ---   | ---         |
 | 藍色  | 應用程式會明確發佈並顯示在 Azure 入口網站中。 |
 | 灰色  | 可以透過父代應用程式存取的應用程式。 |

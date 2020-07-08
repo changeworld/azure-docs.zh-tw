@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3eec6583ebdff35d7e40d2eec305a947de0cb87c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d63ec0c2d82ec316a61771b4642731c932b045cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299445"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84224941"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -32,11 +32,11 @@ ms.locfileid: "79299445"
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-一旦安裝之後，請使用`az login`登入您的 PowerShell 會話。
+一旦安裝之後，請使用登入您的 PowerShell 會話 `Connect-AzAccount` 。
 
-若要使用 Azure PowerShell 建立增量快照集，請使用[AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0)搭配`-Incremental`參數來設定設定，然後透過`-Snapshot`參數將其做為變數傳遞至[new-azsnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) 。
+若要使用 Azure PowerShell 建立增量快照集，請使用[AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0)搭配參數來設定設定， `-Incremental` 然後透過參數將其做為變數傳遞至[new-azsnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) `-Snapshot` 。
 
-將`<yourDiskNameHere>`、 `<yourResourceGroupNameHere>`和`<yourDesiredSnapShotNameHere>`取代為您的值，然後您可以使用下列腳本來建立增量快照集：
+將 `<yourDiskNameHere>` 、 `<yourResourceGroupNameHere>` 和取代 `<yourDesiredSnapShotNameHere>` 為您的值，然後您可以使用下列腳本來建立增量快照集：
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -47,9 +47,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-您可以使用`SourceResourceId`和快照集的`SourceUniqueId`屬性，從相同的磁片識別增量快照集。 `SourceResourceId`這是父磁片的 Azure Resource Manager 資源識別碼。 `SourceUniqueId`這是從磁片的`UniqueId`屬性繼承而來的值。 如果您要刪除磁片，然後使用相同的名稱建立新的磁片， `UniqueId`屬性的值就會變更。
+您可以使用和快照集的屬性，從相同的磁片識別增量快照集 `SourceResourceId` `SourceUniqueId` 。 `SourceResourceId`這是父磁片的 Azure Resource Manager 資源識別碼。 `SourceUniqueId`這是從磁片的屬性繼承而來的值 `UniqueId` 。 如果您要刪除磁片，然後使用相同的名稱建立新的磁片，屬性的值就會 `UniqueId` 變更。
 
-您可以使用`SourceResourceId`和`SourceUniqueId`來建立與特定磁片相關聯的所有快照集清單。 將`<yourResourceGroupNameHere>`取代為您的值，然後您可以使用下列範例來列出現有的增量快照集：
+您可以使用 `SourceResourceId` 和 `SourceUniqueId` 來建立與特定磁片相關聯的所有快照集清單。 將取代 `<yourResourceGroupNameHere>` 為您的值，然後您可以使用下列範例來列出現有的增量快照集：
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>

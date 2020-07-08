@@ -2,17 +2,15 @@
 title: 預覽-將位置節點集區新增至 Azure Kubernetes Service （AKS）叢集
 description: 瞭解如何將點節點集區新增至 Azure Kubernetes Service （AKS）叢集。
 services: container-service
-author: zr-msft
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: zarhoads
-ms.openlocfilehash: 466ad7c88547b6676ba0ae263b74d14059322f1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77622049"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374605"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>預覽-將位置節點集區新增至 Azure Kubernetes Service （AKS）叢集
 
@@ -44,9 +42,6 @@ ms.locfileid: "77622049"
 
 若要建立使用點節點集區的 AKS 叢集，您必須在您的訂用帳戶上啟用*spotpoolpreview*功能旗標。 這項功能會在設定叢集時提供最新的服務增強功能。
 
-> [!CAUTION]
-> 當您在訂用帳戶上註冊功能時，目前無法取消註冊該功能。 啟用一些預覽功能之後，預設值可能會用於在訂用帳戶中建立的所有 AKS 叢集。 請勿在生產訂用帳戶上啟用預覽功能。 使用個別的訂用帳戶來測試預覽功能並收集意見反應。
-
 使用[az feature register][az-feature-register]命令來註冊*spotpoolpreview*功能旗標，如下列範例所示：
 
 ```azurecli-interactive
@@ -67,7 +62,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>安裝 aks-preview CLI 擴充功能
 
-若要建立使用點節點集區的 AKS 叢集，您需要*AKS-preview* CLI 擴充功能版本0.4.32 或更高版本。 使用[az extension add][az-extension-add]命令來安裝*aks-preview* Azure CLI 擴充功能，然後使用[az extension update][az-extension-update]命令檢查是否有任何可用的更新：
+若要建立使用點節點集區的 AKS 叢集，您需要*AKS-preview* CLI 擴充功能版本0.4.32 或更高版本。 請使用 [az extension add][az-extension-add] 命令安裝 aks-preview Azure CLI 擴充功能，然後使用 [az extension update][az-extension-update] 命令檢查是否有任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -111,7 +106,7 @@ az aks nodepool add \
 
 根據預設，當您建立具有多個節點集區的叢集時，您會在 AKS 叢集中建立*優先順序*為 [*一般*] 的節點集區。 上述命令會將輔助節點集區新增至具有「*點*」*優先順序*的現有 AKS 叢集。 *點*的*優先順序*讓節點集區成為一個點節點集區。 在上述範例中，收回*原則*參數設定為 [*刪除*]，這是預設值。 當您將收回[原則][eviction-policy]設定為 [*刪除*] 時，節點集區的基礎擴展集中的節點會在它們被回收時刪除。 您也可以將收回原則設定為*解除配置*。 當您將收回原則設定為*解除配置*時，基礎擴展集中的節點會在收回時設定為已停止解除配置的狀態。 已停止（已解除配置）狀態中的節點會根據您的計算配額，而造成叢集調整或升級的問題。 只有在建立節點集區時，才可以設定*優先順序*和收回*原則*的值。 這些值稍後無法更新。
 
-此命令也會啟用叢集[自動調整程式][cluster-autoscaler]，這是建議搭配點節點集區使用的。 根據叢集中執行的工作負載，叢集自動調整程式會相應增加並相應減少節點集區中的節點數目。 對於點節點集區，如果仍然需要其他節點，叢集自動調整程式會在收回之後相應增加節點數目。 如果您變更節點集區可以擁有的節點數目上限，您也需要調整與叢集自動調整程式`maxCount`相關聯的值。 如果您未使用叢集自動調整程式，在收回時，該點集區最終會降低為零，而且需要手動操作以接收任何額外的點節點。
+此命令也會啟用叢集[自動調整程式][cluster-autoscaler]，這是建議搭配點節點集區使用的。 根據叢集中執行的工作負載，叢集自動調整程式會相應增加並相應減少節點集區中的節點數目。 對於點節點集區，如果仍然需要其他節點，叢集自動調整程式會在收回之後相應增加節點數目。 如果您變更節點集區可以擁有的節點數目上限，您也需要調整 `maxCount` 與叢集自動調整程式相關聯的值。 如果您未使用叢集自動調整程式，在收回時，該點集區最終會降低為零，而且需要手動操作以接收任何額外的點節點。
 
 > [!Important]
 > 只會排程可處理中斷的點節點集區上的工作負載，例如批次處理作業和測試環境。 建議您在您的點節點集區上設定[污點和容差][taints-tolerations]，以確保只有可處理節點收回的工作負載才會排程在點節點集區上。 例如，上述命令 ny 預設會新增*kubernetes.azure.com/scalesetpriority=spot:NoSchedule*的污點，因此只有具有對應 toleration 的 pod 會在此節點上排程。

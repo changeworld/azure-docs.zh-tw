@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: c28c5494c1cff2c198a94ea6b92003ae74ee2c8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08e7805d9eff1f53c43882f2180e298abd008346
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85368323"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>使用 CLI 建立和管理適用於 MariaDB 的 Azure 資料庫的私用連結
 
@@ -20,7 +20,7 @@ ms.locfileid: "79371693"
 > [!NOTE]
 > 這項功能適用于所有 Azure 區域，其中適用於 MariaDB 的 Azure 資料庫支援一般用途和記憶體優化定價層。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要逐步執行本作法指南，您需要︰
 
@@ -39,7 +39,7 @@ az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
-使用[az Network vnet create](/cli/azure/network/vnet)來建立虛擬網路。 此範例會建立一個名為 myVirtualNetwork** 的預設虛擬網路，其中含有一個名為 mySubnet** 的子網路：
+使用 [az network vnet create](/cli/azure/network/vnet) 建立虛擬網路。 此範例會建立一個名為 myVirtualNetwork 的預設虛擬網路，其中含有一個名為 mySubnet 的子網路：
 
 ```azurecli-interactive
 az network vnet create \
@@ -49,7 +49,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>停用子網路的私人端點原則 
-Azure 會將資源部署到虛擬網路內的子網路，因此您必須建立或更新子網路，以停用私人端點網路原則。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 來更新名為 mySubnet** 的子網路設定：
+Azure 會將資源部署到虛擬網路內的子網，因此您必須建立或更新子網，以停用私人端點[網路原則](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 來更新名為 mySubnet 的子網路設定：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -59,7 +59,7 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>建立 VM 
-使用 az vm create 建立 VM。 出現提示時，請提供密碼以作為 VM 的登入認證。 此範例會建立名為 myVm** 的 VM： 
+使用 az vm create 建立 VM。 出現提示時，請提供密碼以作為 VM 的登入認證。 此範例會建立名為 myVm 的 VM： 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
@@ -72,7 +72,7 @@ az vm create \
 使用 az 適用于 mariadb server create 命令來建立適用於 MariaDB 的 Azure 資料庫。 請記住，適用于 mariadb 伺服器的名稱在整個 Azure 中必須是唯一的，因此請以您自己唯一的值取代括弧中的預留位置值： 
 
 ```azurecli-interactive
-# Create a logical server in the resource group 
+# Create a server in the resource group 
 az mariadb server create \
 --name mydemoserver \
 --resource-group myResourcegroup \
@@ -82,20 +82,24 @@ az mariadb server create \
 --sku-name GP_Gen5_2
 ```
 
-請注意，適用于 mariadb 伺服器識別碼類似于 ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforMariaDB/servers/servername.```您將在下一個步驟中使用適用于 MARIADB 伺服器識別碼。 
+> [!NOTE]
+> 在某些案例中，適用於 MariaDB 的 Azure 資料庫和 VNet 子網路是位於不同的訂用帳戶。 在這些情況下，您必須確保下列設定：
+> - 請確定這兩個訂用帳戶都已註冊**DBforMariaDB**資源提供者。 如需詳細資訊，請參閱 [resource-manager-registration][resource-manager-portal]
 
 ## <a name="create-the-private-endpoint"></a>建立私人端點 
 在虛擬網路中建立適用于 mariadb 伺服器的私用端點： 
+
 ```azurecli-interactive
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "<MariaDB Server ID>" \  
-    --group-ids mariadbServer \  
+    --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforMariaDB/servers" --query "id") \    
+    --group-id mariadbServer \  
     --connection-name myConnection  
  ```
+
 
 ## <a name="configure-the-private-dns-zone"></a>設定私人 DNS 區域 
 建立 MariDB 伺服器網域的私人 DNS 區域，並使用虛擬網路建立關聯連結。 
@@ -126,26 +130,26 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>從網際網路連線至 VM
 
-從網際網路連線至 VM：myVm**，如下所示：
+從網際網路連線至 VM：myVm，如下所示：
 
-1. 在入口網站的搜尋列中，輸入 myVm  。
+1. 在入口網站的搜尋列中，輸入 myVm。
 
-1. 選取 [連線]  按鈕。 選取 [連線]  按鈕之後，隨即會開啟 [連線至虛擬機器]  。
+1. 選取 [連線]  按鈕。 選取 [連線] 按鈕之後，隨即會開啟 [連線至虛擬機器]。
 
-1. 選取 [下載 RDP 檔案]  。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
+1. 選取 [下載 RDP 檔案]。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
 
 1. 開啟 *downloaded.rdp* 檔案。
 
-    1. 如果出現提示，請選取 [連接]  。
+    1. 如果出現提示，請選取 [連接]。
 
     1. 輸入您在建立 VM 時指定的使用者名稱和密碼。
 
         > [!NOTE]
-        > 您可能需要選取 [其他選擇]   > [使用不同的帳戶]  ，以指定您在建立 VM 時輸入的認證。
+        > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
-1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是]  或 [繼續]  。
+1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
 1. 當 VM 桌面出現之後，將它最小化以回到您的本機桌面。  
 
@@ -172,7 +176,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
     | ------- | ----- |
     | 連線名稱| 選取您選擇的 [連接名稱]。|
     | 主機名稱 | 選取*mydemoserver.privatelink.mariadb.database.azure.com* |
-    | 使用者名稱 | 輸入適用于 mariadb 伺服器*username@servername*建立期間所提供的使用者名稱。 |
+    | 使用者名稱 | 輸入 *username@servername* 適用于 mariadb 伺服器建立期間所提供的使用者名稱。 |
     | 密碼 | 輸入適用于 mariadb 伺服器建立期間所提供的密碼。 |
     ||
 
@@ -191,3 +195,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>後續步驟
 深入瞭解[什麼是 Azure 私用端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

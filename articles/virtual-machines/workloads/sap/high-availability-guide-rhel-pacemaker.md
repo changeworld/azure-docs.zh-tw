@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/21/2020
+ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 3b65422a9baf33a2b55de9f1bdfcc85918616d65
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 999ab77538a145189e0576c920216fa55d8508f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800741"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85366812"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上設定 Pacemaker
 
@@ -196,6 +196,11 @@ ms.locfileid: "83800741"
    <pre><code>sudo pcs quorum expected-votes 2
    </code></pre>
 
+1. **[1]** 允許並行的防護動作
+
+   <pre><code>sudo pcs property set concurrent-fencing=true
+   </code></pre>
+
 ## <a name="create-stonith-device"></a>建立 STONITH 裝置
 
 STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下列步驟來建立服務主體。
@@ -204,11 +209,11 @@ STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下
 1. 開啟 [Azure Active Directory] 刀鋒視窗  
    移至 [屬性]，並記下目錄識別碼。 這是「租用戶識別碼」。
 1. 按一下 [應用程式註冊]
-1. 按一下 [新增註冊]
+1. 按一下新增註冊
 1. 輸入名稱，選取 [僅限此組織目錄中的帳戶] 
 2. 選取應用程式類型 [Web]，輸入登入 URL (例如，http:\//localhost)，然後按一下 [新增]  
    登入 URL 並未使用，而且可以是任何有效的 URL
-1. 選取 [憑證和祕密]，然後按一下 [新增用戶端密碼]
+1. 選取 [憑證和祕密]，然後按一下 [新增用戶端秘密]
 1. 輸入新金鑰的說明、選取 [永不過期]，然後按一下 [新增]
 1. 記下值。 此值會用來做為服務主體的**密碼**
 1. 選取 [概觀]。 記下應用程式識別碼。 此識別碼會用來做為服務主體的使用者名稱 (以下步驟中的「登入識別碼」)
@@ -221,21 +226,26 @@ STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to power-off and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/powerOff/action",
-    "Microsoft.Compute/virtualMachines/start/action"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
@@ -267,7 +277,13 @@ sudo pcs property set stonith-timeout=900
 > [!NOTE]
 > 如果 RHEL 主機名稱和 Azure 節點名稱不相同，則命令中只需要選項「pcmk_host_map」。 請參閱命令中的粗體區段。
 
-<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+> [!IMPORTANT]
+> 監視和隔離作業會解除序列化。 因此，如果有較長的執行中監視作業和同時隔離的事件，叢集容錯移轉就不會延遲，因為已經在執行監視作業。  
 
 ### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]** 啟用 STONITH 裝置的使用
 
@@ -282,4 +298,4 @@ sudo pcs property set stonith-timeout=900
 * [適用於 SAP 的 Azure 虛擬機器規劃和實作][planning-guide]
 * [適用於 SAP 的 Azure 虛擬機器部署][deployment-guide]
 * [適用於 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
-* 若要了解如何建立高可用性並為 Azure VM 上的 SAP HANA 規劃災害復原，請參閱 [Azure 虛擬機器 (VM) 上 SAP HANA 的高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性，並為 Azure VM 上的 SAP HANA 規劃災害復原，請參閱 [Azure 虛擬機器 (VM) 上 SAP HANA 的高可用性][sap-hana-ha]

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a6baf8b4609382be4a5a31d12cac581da2c17de6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7edb8efb8a4ff509287565888a24b69b0dd0ca4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011662"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367799"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 建立和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的私人連結
 
@@ -20,7 +20,7 @@ ms.locfileid: "81011662"
 > [!NOTE]
 > 這項功能適用于所有 Azure 區域，其中適用於 PostgreSQL 的 Azure 資料庫單一伺服器支援一般用途和記憶體優化定價層。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要逐步執行本作法指南，您需要︰
 
@@ -39,7 +39,7 @@ az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
-使用[az Network vnet create](/cli/azure/network/vnet)來建立虛擬網路。 此範例會建立一個名為 myVirtualNetwork** 的預設虛擬網路，其中含有一個名為 mySubnet** 的子網路：
+使用 [az network vnet create](/cli/azure/network/vnet) 建立虛擬網路。 此範例會建立一個名為 myVirtualNetwork 的預設虛擬網路，其中含有一個名為 mySubnet 的子網路：
 
 ```azurecli-interactive
 az network vnet create \
@@ -49,7 +49,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>停用子網路的私人端點原則 
-Azure 會將資源部署到虛擬網路內的子網路，因此您必須建立或更新子網路，以停用私人端點網路原則。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 來更新名為 mySubnet** 的子網路設定：
+Azure 會將資源部署到虛擬網路內的子網，因此您必須建立或更新子網，以停用私人端點[網路原則](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 來更新名為 mySubnet 的子網路設定：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -59,7 +59,7 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>建立 VM 
-使用 az vm create 建立 VM。 出現提示時，請提供密碼以作為 VM 的登入認證。 此範例會建立名為 myVm** 的 VM： 
+使用 az vm create 建立 VM。 出現提示時，請提供密碼以作為 VM 的登入認證。 此範例會建立名為 myVm 的 VM： 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
@@ -72,7 +72,7 @@ az vm create \
 使用 az postgres server create 命令來建立適用於 PostgreSQL 的 Azure 資料庫。 請記住，于 postgresql 伺服器的名稱在整個 Azure 中必須是唯一的，因此請以您自己唯一的值取代括弧中的預留位置值： 
 
 ```azurecli-interactive
-# Create a logical server in the resource group 
+# Create a server in the resource group 
 az postgres server create \
 --name mydemoserver \
 --resource-group myresourcegroup \
@@ -82,18 +82,17 @@ az postgres server create \
 --sku-name GP_Gen5_2
 ```
 
-請注意，于 postgresql 伺服器識別碼類似于 ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/servername.```您將在下一個步驟中使用於 POSTGRESQL 伺服器識別碼。 
-
 ## <a name="create-the-private-endpoint"></a>建立私人端點 
 在虛擬網路中建立于 postgresql 伺服器的私用端點： 
+
 ```azurecli-interactive
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "<PostgreSQL Server ID>" \  
-    --group-ids postgresqlServer \  
+    --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforPostgreSQL/servers" --query "id") \    
+    --group-id postgresqlServer \  
     --connection-name myConnection  
  ```
 
@@ -124,28 +123,32 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 > [!NOTE] 
 > 客戶 DNS 設定中的 FQDN 不會解析為設定的私人 IP。 您將必須為設定的 FQDN 設定 DNS 區域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
 
+> [!NOTE]
+> 某些案例中，適用於 PostgreSQL 的 Azure 資料庫和 VNet 子網路是在不同的訂用帳戶。 在這些情況下，您必須確保下列設定：
+> - 請確定這兩個訂用帳戶都已註冊**DBforPostgreSQL**資源提供者。 如需詳細資訊，請參閱 [resource-manager-registration][resource-manager-portal]
+
 ## <a name="connect-to-a-vm-from-the-internet"></a>從網際網路連線至 VM
 
-從網際網路連線至 VM：myVm**，如下所示：
+從網際網路連線至 VM：myVm，如下所示：
 
-1. 在入口網站的搜尋列中，輸入 myVm  。
+1. 在入口網站的搜尋列中，輸入 myVm。
 
-1. 選取 [連線]  按鈕。 選取 [連線]  按鈕之後，隨即會開啟 [連線至虛擬機器]  。
+1. 選取 [連線]  按鈕。 選取 [連線] 按鈕之後，隨即會開啟 [連線至虛擬機器]。
 
-1. 選取 [下載 RDP 檔案]  。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
+1. 選取 [下載 RDP 檔案]。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
 
 1. 開啟 *downloaded.rdp* 檔案。
 
-    1. 如果出現提示，請選取 [連接]  。
+    1. 如果出現提示，請選取 [連接]。
 
     1. 輸入您在建立 VM 時指定的使用者名稱和密碼。
 
         > [!NOTE]
-        > 您可能需要選取 [其他選擇]   > [使用不同的帳戶]  ，以指定您在建立 VM 時輸入的認證。
+        > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
-1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是]  或 [繼續]  。
+1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
 1. 當 VM 桌面出現之後，將它最小化以回到您的本機桌面。  
 
@@ -172,12 +175,12 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     | ------- | ----- |
     | 伺服器類型| 選取 [**于 postgresql**]。|
     | 伺服器名稱| 選取*mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | 使用者名稱 | 輸入于 postgresql 伺服器username@servername建立期間所提供的使用者名稱。 |
+    | 使用者名稱 | 輸入 username@servername 于 postgresql 伺服器建立期間所提供的使用者名稱。 |
     |密碼 |輸入于 postgresql 伺服器建立期間所提供的密碼。 |
     |SSL|選取 [**必要**]。|
     ||
 
-5. 選取 [連接]  。
+5. 選取 [連接]。
 
 6. 瀏覽左側功能表中的資料庫。
 
@@ -194,3 +197,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>後續步驟
 - 深入瞭解[什麼是 Azure 私用端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

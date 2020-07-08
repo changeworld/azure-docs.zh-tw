@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55f2167552e21973d304f98693be022683fdf661
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870937"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373857"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 雲端佈建的先決條件
 本文提供如何選擇及使用 Azure Active Directory (Azure AD) Connect 雲端佈建作為身分識別的指引。
@@ -26,8 +26,8 @@ ms.locfileid: "83870937"
 ## <a name="cloud-provisioning-agent-requirements"></a>雲端佈建代理程式需求
 需要下列各項才能使用 Azure AD Connect 雲端佈建：
     
-- 您 Azure AD 租用戶中不是來賓使用者的全域管理員帳戶。
-- 佈建代理程式的 Windows 2012 R2 或更新版本內部部署伺服器。
+- 您的 Azure AD 租使用者的混合式身分識別系統管理員帳戶，不是來賓使用者。
+- 佈建代理程式的 Windows 2012 R2 或更新版本內部部署伺服器。  此伺服器應該是以[Active Directory 系統管理層模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)為基礎的第0層伺服器。
 - 內部部署防火牆設定。
 
 >[!NOTE]
@@ -37,7 +37,7 @@ ms.locfileid: "83870937"
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>於 Azure Active Directory 管理中心
 
-1. 在 Azure AD 租用戶上建立僅限雲端的全域管理員帳戶。 如此一來，如果內部部署服務失敗或無法使用，即可管理租用戶設定。 了解如何[新增僅限雲端的全域管理員帳戶](../active-directory-users-create-azure-portal.md)。 完成此步驟對於確保不會被租用戶封鎖至關重要。
+1. 在您的 Azure AD 租使用者上建立僅限雲端的混合式身分識別系統管理員帳戶。 如此一來，如果內部部署服務失敗或無法使用，即可管理租用戶設定。 深入瞭解如何[新增僅限雲端的混合式身分識別系統管理員帳戶](../active-directory-users-create-azure-portal.md)。 完成此步驟對於確保不會被租用戶封鎖至關重要。
 1. 將一或多個[自訂網域名稱](../active-directory-domains-add-azure-portal.md)新增至 Azure AD 租用戶。 您的使用者可以使用其中一個網域名稱登入。
 
 ### <a name="in-your-directory-in-active-directory"></a>在 Active Directory 目錄中

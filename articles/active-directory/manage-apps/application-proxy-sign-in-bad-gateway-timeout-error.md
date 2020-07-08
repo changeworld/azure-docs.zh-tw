@@ -3,25 +3,25 @@ title: App Proxy 應用程式發生「無法存取此公司應用程式」錯誤
 description: 如何解決使用 Azure AD 應用程式 Proxy 應用程式時常見的存取問題。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbb3743251f2818ab1e4255b3dc6e7f4f9cbbcba
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 6eca304901e391c931aba892abf3cb2a19d4ae3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846727"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367745"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>使用 Application Proxy 應用程式時發生「無法存取此企業應用程式」錯誤
 
@@ -71,7 +71,7 @@ ms.locfileid: "83846727"
 若要確認應用程式已指派至運作中的連接器群組：
 
 1. 移至 [Azure Active Directory]，然後依序按一下 [企業應用程式]、[所有應用程式]，以開啟入口網站中的應用程式  。 開啟應用程式，然後選取左側功能表中的 [Application Proxy]。
-1. 找到 [連接器群組] 欄位。 如果群組中沒有作用中的連接器，您會看到一則警告。 如果您沒有看到任何警告，請進一步確認已允許所有[必要的連接埠](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to)。
+1. 找到 [連接器群組] 欄位。 如果群組中沒有作用中的連接器，您會看到一則警告。 如果您沒有看到任何警告，請進一步確認已允許所有[必要的連接埠](application-proxy-add-on-premises-application.md)。
 1. 如果顯示的是錯誤的連接器群組，請使用下拉式清單選取正確的群組，並確認未再出現任何警告。 如果顯示的是所需的連接器群組，請按一下警告訊息以開啟內含連接器管理資訊的頁面。
 1. 此頁面提供數種方法可進一步向下切入：
 
@@ -83,7 +83,7 @@ ms.locfileid: "83846727"
 
 ## <a name="check-all-required-ports-are-open"></a>檢查所有必要的連接埠都已開啟
 
-若要確認所有必要連接埠皆已開啟，請參閱[開啟連接埠的相關文件](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to)。 如果所有必要連接埠皆已開啟，請移至下一節。
+確認所有必要的埠皆已開啟。 如需必要的埠，請參閱教學課程[：在 Azure Active Directory 中透過應用程式 Proxy 新增內部部署應用程式以進行遠端存取](application-proxy-add-on-premises-application.md)的開放埠一節。 如果所有必要連接埠皆已開啟，請移至下一節。
 
 ## <a name="check-for-other-connector-errors"></a>檢查有無其他連接器錯誤
 

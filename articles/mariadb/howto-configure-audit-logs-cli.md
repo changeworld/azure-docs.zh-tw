@@ -5,22 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: e9716f0fa8e0ae44d614bbb28ed6846105e683d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/24/2020
+ms.openlocfilehash: 1dcad61ed94926aa2aa2237ea735287cd9c9f137
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81384190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362691"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>設定和存取 Azure CLI 中的 audit 記錄
 
 您可以從 Azure CLI 設定[適用於 MariaDB 的 Azure 資料庫的審核記錄](concepts-audit-logs.md)。
 
-> [!IMPORTANT]
-> Audit log 功能目前為預覽狀態。
-
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要逐步執行本作法指南，您需要︰
 
@@ -33,6 +30,9 @@ ms.locfileid: "81384190"
 
 ## <a name="configure-audit-logging"></a>設定審核記錄
 
+>[!IMPORTANT]
+> 建議您只記錄您的審核目的所需的事件種類和使用者，以確保伺服器的效能不會受到嚴重影響。
+
 使用下列步驟來啟用及設定 audit 記錄： 
 
 1. 藉由將**audit_logs_enabled**參數設為 "on" 來開啟 audit 記錄。 
@@ -40,7 +40,7 @@ ms.locfileid: "81384190"
     az mariadb server configuration set --name audit_log_enabled --resource-group myresourcegroup --server mydemoserver --value ON
     ```
 
-1. 藉由更新**audit_log_egitvents**參數來選取要記錄的[事件種類](concepts-audit-logs.md#configure-audit-logging)。
+1. 藉由更新**audit_log_events**參數來選取要記錄的[事件種類](concepts-audit-logs.md#configure-audit-logging)。
     ```azurecli-interactive
     az mariadb server configuration set --name audit_log_events --resource-group myresourcegroup --server mydemoserver --value "ADMIN,CONNECTION"
     ```

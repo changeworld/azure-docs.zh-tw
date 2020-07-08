@@ -1,15 +1,14 @@
 ---
 title: 如何移動 Azure 備份復原服務保存庫
 description: 有關如何跨 Azure 訂用帳戶和資源群組移動復原服務保存庫的指示。
-ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 93c3f2db6500023755796d50e71d44a427a2ce82
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 9373ea41c3cd5d35c86b8b306a20b5c106105217
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85368221"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 訂用帳戶和資源群組移動復原服務保存庫
 
@@ -25,7 +24,7 @@ ms.locfileid: "82597989"
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>移動復原服務保存庫的必要條件
 
-- 在跨資源群組移動保存庫期間，來源和目標資源群組都會被鎖定，而導致寫入和刪除作業無法執行。 如需詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
+- 在跨資源群組移動保存庫期間，來源和目標資源群組都會被鎖定，而導致寫入和刪除作業無法執行。 如需詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
 - 只有管理訂用帳戶具有移動保存庫的許可權。
 - 針對跨訂用帳戶移動保存庫，目標訂用帳戶必須位於與來源訂用帳戶相同的租使用者中，且其狀態應為 [已啟用]。
 - 您必須擁有在目標資源群組上執行寫入作業的權限。
@@ -35,9 +34,13 @@ ms.locfileid: "82597989"
 - 無論 VM 是否隨著保存庫移動，您一律可以從保留在保存庫內的備份記錄還原 VM。
 - Azure 磁碟加密需要金鑰保存庫和 Vm 位於相同的 Azure 區域和訂用帳戶中。
 - 若要移動具有受控磁碟的虛擬機器，請參閱這篇[文章](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)。
-- 移動透過傳統模型所部署之資源的選項，會根據您是要移動訂用帳戶內的資源還是新的訂用帳戶而有所不同。 如需詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
+- 移動透過傳統模型所部署之資源的選項，會根據您是要移動訂用帳戶內的資源還是新的訂用帳戶而有所不同。 如需詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
 - 在保存庫跨訂用帳戶或往新的資源群組移動之後，為保存庫所定義的備份原則會保留下來。
-- 只有在 Azure 虛擬機器是保存庫中唯一的備份專案時，您才能移動保存庫。
+- 您只能移動保存庫，其中包含下列任何類型的備份專案。 下面未列出之類型的任何備份專案都必須停止，且資料在移動保存庫之前會永久刪除。
+  - Azure 虛擬機器
+  - Microsoft Azure 復原服務（MARS）代理程式
+  - Microsoft Azure 備份伺服器（MABS）
+  - Data Protection Manager (DPM)
 - 如果您移動的保存庫包含 VM 備份資料，則您必須將 Vm 移至相同的訂用帳戶，並使用相同的目標 VM 資源組名（如同舊的訂用帳戶）來繼續備份。
 
 > [!NOTE]

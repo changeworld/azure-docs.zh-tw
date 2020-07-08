@@ -3,8 +3,8 @@ title: 規劃 Azure Active Directory 應用程式 Proxy 部署
 description: 規劃在組織內部署應用程式 proxy 的端對端指南
 services: active-directory
 documentationcenter: azure
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: baselden
-ms.custom: has-adal-ref
-ms.openlocfilehash: a293bd33d3a25f26e5374184da42db335041284d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.author: kenwith
+ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367779"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>規劃 Azure AD 應用程式 Proxy 部署
 
@@ -34,7 +33,7 @@ Azure Active Directory （Azure AD）應用程式 Proxy 是適用于內部部署
 
 下一節提供主要規劃元素的廣泛觀點，這些專案會為您設定有效率的部署體驗。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 開始執行之前，您必須符合下列必要條件。 在本[教學](application-proxy-add-on-premises-application.md)課程中，您可以查看有關設定環境的詳細資訊，包括這些必要條件。
 
@@ -117,7 +116,7 @@ Azure Active Directory （Azure AD）應用程式 Proxy 是適用于內部部署
 
 * 已核准的個人裝置的遠端使用者可以安全地存取已發佈的應用程式，前提是它們已在 MFA 中註冊，並已在行動電話上將 Microsoft Authenticator 應用程式註冊為驗證方法。
 
-**控管**
+**監管**
 
 * 系統管理員可以定義並監視透過應用程式 Proxy 發佈之應用程式的使用者指派生命週期。
 
@@ -228,13 +227,13 @@ Azure Active Directory （Azure AD）應用程式 Proxy 是適用于內部部署
 
 將此選項設定為 [否] 可讓使用者在沒有許可權的情況下，透過 Azure AD App Proxy 存取內部部署應用程式，因此請小心使用。
 
-一旦您的應用程式發佈之後，您就可以在瀏覽器中輸入其外部 URL，或在使用[https://myapps.microsoft.com](https://myapps.microsoft.com/)其圖示來存取它。
+一旦您的應用程式發佈之後，您就可以在瀏覽器中輸入其外部 URL，或在使用其圖示來存取它 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 。
 
 ### <a name="enable-pre-authentication"></a>啟用預先驗證
 
 確認您的應用程式可透過應用程式 Proxy 存取，其方式是經由外部 URL 存取它。
 
-1. 流覽至**Azure Active Directory** > **企業應用** > 程式] [**所有應用程式**]，然後選擇您想要管理的應用程式。
+1. 流覽至**Azure Active Directory**  >  **企業應用**程式]  >  [**所有應用程式**]，然後選擇您想要管理的應用程式。
 
 2. 選取 [應用程式 Proxy]****。
 
@@ -254,7 +253,7 @@ SSO 可提供最佳的使用者體驗和安全性，因為使用者只需要在�
 
 ###  <a name="working-with-other-types-of-applications"></a>使用其他類型的應用程式
 
-Azure AD 應用程式 Proxy 也可以支援已開發的應用程式，以使用我們的 Azure AD 驗證程式庫（[ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)）或 Microsoft Authentication Library （[MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)）。 它支援原生用戶端應用程式，方法是使用在用戶端要求的標頭資訊中收到的 Azure AD 發出的權杖，以代表使用者執行預先驗證。
+Azure AD 應用程式 Proxy 也可以支援已開發使用[Microsoft 驗證程式庫（MSAL）](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)的應用程式。 它支援原生用戶端應用程式，方法是使用在用戶端要求的標頭資訊中收到的 Azure AD 發出的權杖，以代表使用者執行預先驗證。
 
 請參閱[發佈原生和行動用戶端應用](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client)程式和以[宣告為基礎的應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps)，以瞭解應用程式 Proxy 的可用設定。
 
@@ -318,7 +317,7 @@ Azure AD 透過[audit 記錄和報告，](../reports-monitoring/concept-provisio
 * [顯示應用程式頁面時發生問題](application-proxy-page-appearance-broken-problem.md)
 * [應用程式載入時間過長](application-proxy-page-load-speed-problem.md)
 * [應用程式頁面連結無效](application-proxy-page-links-broken-problem.md)
-* [要開啟哪些適用於應用程式的連接埠](application-proxy-connectivity-ports-how-to.md)
+* [要開啟哪些適用於應用程式的連接埠](application-proxy-add-on-premises-application.md)
 * [適用於應用程式的連接器群組中沒有運作中的連接器](application-proxy-connectivity-no-working-connector.md)
 * [在管理入口網站中設定](application-proxy-config-how-to.md)
 * [在應用程式中設定單一登入](application-proxy-config-sso-how-to.md)

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36aa0a4a87e439c128c5247b6850100a7f2e826e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: 66ad9c27ca69df230d9ce1d2282e734420fa14f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373655"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>設定 Azure Static Web Apps 預覽版本的應用程式設定
 
@@ -105,9 +105,11 @@ Azure 入口網站提供的介面可用來建立、更新、刪除應用程式�
 
     :::image type="content" source="media/application-settings/configuration.png" alt-text="Azure Static Web Apps 的設定檢視":::
 
-1. 輸入 [名稱] 和 [值]
+1. 輸入 [**名稱**] 和 [**值**]。
 
-1. 按一下 [檔案] &gt; [新增] &gt; [專案] 
+1. 按一下 [確定]。
+
+1. 按一下 [檔案] 。
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
 
@@ -156,7 +158,7 @@ Azure CLI 命令需要幾個您帳戶的專屬值才能執行上傳。 從您的
 
 您可以透過 Azure CLI 來檢視應用程式設定。
 
-1. 從終端機或命令列，執行下列命令。 請務必以您的值取代預留位置 `<YOUR_SUBSCRIPTION_ID>`、`<YOUR_RESOURCE_GROUP_NAME>`、`<YOUR_STATIC_SITE_NAME>`。
+- 從終端機或命令列，執行下列命令。 請務必以您的值取代預留位置 `<YOUR_SUBSCRIPTION_ID>`、`<YOUR_RESOURCE_GROUP_NAME>`、`<YOUR_STATIC_SITE_NAME>`。
 
    ```bash
    az rest --method post --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/listFunctionAppSettings?api-version=2019-12-01-preview"

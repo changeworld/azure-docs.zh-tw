@@ -12,6 +12,7 @@ ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 8d129ae2c6048e592bfc43f07ee609ce930aa3fd
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558780"

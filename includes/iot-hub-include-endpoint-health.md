@@ -18,7 +18,7 @@ ms.locfileid: "84792079"
 您可以使用 REST API[取得端點健全狀況](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)來取得端點的健全狀況狀態。 我們建議使用與路由訊息延遲相關的[IoT 中樞計量](../articles/iot-hub/iot-hub-metrics.md)，在端點健康狀態為 [無作用] 或 [狀況不良] 時識別和偵測錯誤，因為當端點處於其中一種狀態時，我們預期會有更高的延遲。
 
 
-|健康情況狀態|Description|
+|健康情況狀態|描述|
 |---|---|
 |healthy|端點會如預期般接受訊息。|
 |isapi|端點不接受訊息，IoT 中樞正在重試將訊息傳送到此端點。|

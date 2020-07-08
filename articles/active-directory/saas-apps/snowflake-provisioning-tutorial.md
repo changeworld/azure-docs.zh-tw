@@ -15,44 +15,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 2c5d91894ba35233f3fbebffdff9104edcfdd27b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99565c8dc8b5cbaea9f449a9f6262a37ae5b66d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367184"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的雪花
 
-本教學課程的目的是要示範在雪花和 Azure Active Directory （Azure AD）中執行的步驟，以設定 Azure AD 自動布建和取消布建使用者和/或群組至雪花。
+本教學課程的目的是要示範在雪花和 Azure Active Directory （Azure AD）中執行的步驟，以設定 Azure AD 自動布建和取消布建使用者和/或群組至[雪花](https://www.Snowflake.com/pricing/)。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+
 
 > [!NOTE]
-> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
->
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="capabilities-supported"></a>支援的功能
+> [!div class="checklist"]
+> * 在雪花中建立使用者
+> * 當使用者不再需要存取權時，移除雪花中的使用者
+> * 讓使用者屬性在 Azure AD 和雪花之間保持同步
+> * 雪花中的布建群組和群組成員資格
+> * 雪花的[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/snowflake-tutorial)（建議）
+
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* Azure AD 租用戶。
+* [Azure AD 租](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)使用者。
+* Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
 * [雪花租](https://www.Snowflake.com/pricing/)使用者。
 * 雪花中具有系統管理員許可權的使用者帳戶。
 
-## <a name="assigning-users-to-snowflake"></a>將使用者指派給雪花
+## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署
+1. 了解[佈建服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) \(部分機器翻譯\)。
+2. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
+3. 決定要[在 Azure AD 和雪花之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的資料。 
 
-Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中，只有已指派給 Azure AD 中應用程式的使用者和/或群組會進行同步處理。
-
-在設定並啟用自動使用者布建之前，您應該決定 Azure AD 中的哪些使用者和/或群組需要雪花的存取權。 一旦決定後，您可以遵循此處的指示，將這些使用者和/或群組指派給雪花：
-* [將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
-
-## <a name="important-tips-for-assigning-users-to-snowflake"></a>將使用者指派給雪花的重要秘訣
-
-* 建議將單一 Azure AD 使用者指派給雪花，以測試自動使用者布建設定。 其他使用者及/或群組可能會稍後再指派。
-
-* 將使用者指派給雪花時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色（如果有的話）。 具有**預設存取**角色的使用者會從佈建中排除。
-
-## <a name="setup-snowflake-for-provisioning"></a>設定布建的雪花
+## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定雪花以支援以 Azure AD 布建
 
 設定雪花以 Azure AD 自動布建使用者之前，您必須在雪花上啟用 SCIM 布建。
 
@@ -68,38 +68,26 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![雪花新增 SCIM](media/Snowflake-provisioning-tutorial/image02.png)
 
-## <a name="add-snowflake-from-the-gallery"></a>從資源庫新增雪花
+## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增雪花
 
-若要使用 Azure AD 設定雪花來自動布建使用者，您需要從 Azure AD 應用程式庫 addSnowflake 至受控 SaaS 應用程式清單。
+從 Azure AD 應用程式庫新增雪花，開始管理布建至雪花。 如果您先前已設定適用于 SSO 的雪花，則可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
 
-**若要從 Azure AD 應用程式庫新增雪花，請執行下列步驟：**
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員 
 
-1. 在**[Azure 入口網站](https://portal.azure.com)** 的左側導覽窗格中，選取 [ **Azure Active Directory**]。
+Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選條件。 
 
-    ![Azure Active Directory 按鈕](common/select-azuread.png)
+* 將使用者和群組指派給雪花時，您必須選取 [**預設存取**] 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
 
-2. 移至 [**企業應用程式**]，然後選取 [**所有應用程式**]。
+* 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
-    ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請選取窗格頂端的 [**新增應用程式**] 按鈕。
-
-    ![新增應用程式按鈕](common/add-new-app.png)
-
-4. 在搜尋方塊中，輸入**雪花**，在結果面板中選取 [**雪花**]，然後按一下 [**新增**] 按鈕以新增應用程式。
-
-    ![結果清單中的 Snowflake](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-snowflake"></a>設定自動使用者布建至雪花 
+## <a name="step-5-configure-automatic-user-provisioning-to-snowflake"></a>步驟 5。 設定自動使用者布建至雪花 
 
 本節將引導您逐步設定 Azure AD 布建服務，以根據 Azure AD 中的使用者和/或群組指派，在雪花中建立、更新和停用使用者和/或群組。
 
-> [!TIP]
-> 您也可以選擇啟用雪花的 SAML 型單一登入，請遵循[雪花式單一登入教學](Snowflake-tutorial.md)課程中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將它們分開設定。
-
 ### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>若要在 Azure AD 中設定雪花的自動使用者布建：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**]，然後選取 [**所有應用程式**]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [企業應用程式]，然後選取 [所有應用程式]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -107,17 +95,15 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![應用程式清單中的 Snowflake 連結](common/all-applications.png)
 
-3. 選取 [**布**建] 索引標籤。
+3. 選取 [佈建] 索引標籤。
 
-    ![布建索引標籤](common/provisioning.png)
+    ![佈建索引標籤](common/provisioning.png)
 
-4. 將布建模式設定為 [**自動** **]** 。
+4. 將 [佈建模式] 設定為 [自動]。
 
-    ![布建索引標籤](common/provisioning-automatic.png)
+    ![[佈建] 索引標籤](common/provisioning-automatic.png)
 
-5. 在 [管理員認證] 區段下`https://<Snowflake Account URL>/scim/v2` ，輸入 [租使用者 URL]。 租使用者 URL 的範例：`https://acme.snowflakecomputing.com/scim/v2`
-
-6. 輸入稍早在**秘密權杖**中所取得的**SCIM Authentication Token**值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到雪花。 如果連線失敗，請確定您的雪花帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [系統管理員認證] 區段下，分別輸入 [**租使用者 URL** ] 和 [**秘密權杖**] 欄位中的 [ **SCIM 2.0 基底 Url] 和 [驗證權杖**] 值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到雪花。 如果連線失敗，請確定您的雪花帳戶具有系統管理員許可權，然後再試一次。
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -125,23 +111,31 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-8. 按一下 **[儲存]** 。
+8. 按一下 [檔案] 。
 
 9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至雪花**]。
 
-    ![雪花使用者對應](media/Snowflake-provisioning-tutorial/user-mapping.png)
+10. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至雪花的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對雪花中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-10. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至雪花的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對雪花中的使用者帳戶以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
-
-    ![雪花式使用者屬性](media/Snowflake-provisioning-tutorial/user-attribute.png)
+   |屬性|類型|
+   |---|---|
+   |作用中|Boolean|
+   |displayName|String|
+   |emails[type eq "work"].value|String|
+   |userName|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |urn： ietf： params： scim：架構： extension： enterprise：2.0： User： defaultRole|String|
+   |urn： ietf： params： scim：架構： extension： enterprise：2.0： User： defaultWarehouse|String|
 
 11. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至雪花**]。
 
-    ![雪花群組對應](media/Snowflake-provisioning-tutorial/group-mapping.png)
+12. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至雪花的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對雪花中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-12. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至雪花的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對雪花中的群組以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
-
-    ![雪花群組屬性](media/Snowflake-provisioning-tutorial/group-attribute.png)
+      |屬性|類型|
+      |---|---|
+      |displayName|String|
+      |members|參考|
 
 13. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
@@ -153,13 +147,18 @@ Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-16. 當您準備好要佈建時，按一下 [儲存]****。
+16. 當您準備好要佈建時，按一下 [儲存]。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-    此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [**同步處理詳細資料**] 區段來監視進度，並遵循連結來布建活動報告，其中描述雪花上的 Azure AD 布建服務所執行的所有動作。
+    此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。
 
-    如需如何讀取 Azure AD 布建記錄的詳細資訊，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告
+## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
+設定佈建後，請使用下列資源來監視您的部署：
+
+1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
+2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
 
 ## <a name="connector-limitations"></a>連接器限制
 

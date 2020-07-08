@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 10b3a6bb9592c955d16b070ae412374b8a1f4444
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 269cc52f1e96a6864de55f729fe39a5f609d35c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84902666"
 ---
 Azure ultra 磁片提供高輸送量、高 IOPS 以及一致的低延遲磁片儲存體，適用于 Azure IaaS 虛擬機器（Vm）。 這個新的供應項目可提供絕佳的效能，同時保有我們現有磁碟供應項目的相同可用性層級。 Ultra 磁片的一個主要優點是能夠以動態方式變更 SSD 的效能和您的工作負載，而不需要重新開機您的 Vm。 Ultra 磁碟適用於處理大量資料的工作負載 (例如 SAP Hana)、最上層資料庫，以及高交易量的工作負載。
 
@@ -30,11 +30,11 @@ Azure ultra 磁片提供高輸送量、高 IOPS 以及一致的低延遲磁片�
 #### <a name="cli"></a>CLI
 
 ```azurecli
-$subscription = "<yourSubID>"
+subscription="<yourSubID>"
 # example value is southeastasia
-$region = "<yourLocation>"
+region="<yourLocation>"
 # example value is Standard_E64s_v3
-$vmSize = "<yourVMSize>"
+vmSize="<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
@@ -51,7 +51,7 @@ $vmSize = "Standard_E64s_v3"
 
 保留 [**區域**] 值，它代表您的可用性區域，而您將需要它來部署 Ultra 磁片。
 
-|ResourceType  |名稱  |Location  |區域  |限制  |功能  |值  |
+|ResourceType  |名稱  |位置  |區域  |限制  |功能  |值  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -65,10 +65,10 @@ $vmSize = "Standard_E64s_v3"
 部署在美國西部的 Ultra 磁片必須立即部署，而不需要任何複製選項。 不過，並非每個支援 ultra 磁片的磁片大小都可以在此區域中。 若要判斷美國西部中的哪些人支援 ultra 磁片，您可以使用下列其中一個程式碼片段。 請務必 `vmSize` 先取代和 `subscription` 值：
 
 ```azurecli
-$subscription = "<yourSubID>"
-$region = "westus"
+subscription="<yourSubID>"
+region="westus"
 # example value is Standard_E64s_v3
-$vmSize = "<yourVMSize>"
+vmSize="<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
 ```
@@ -132,12 +132,12 @@ UltraSSDAvailable                            True
 - 以您選擇的選項填入其餘專案。
 - 選取 [磁碟]****。
 
-![create-ultra-disk-enabled-vm .png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
+![create-ultra-disk-enabled-vm.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
 
 - 在 [磁片] 分頁上，針對 [**啟用 Ultra 磁片相容性** **] 選取 [是]** 。
 - 選取 [**建立] 並連接新的磁片**，以立即連接 ultra 磁片。
 
-![enable-and-attach-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
+![enable-and-attach-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
 
 - 在 [**建立新的磁片**] 分頁上，輸入名稱，然後選取 [**變更大小**]。
 - 將**帳戶類型**變更為 [ **Ultra 磁片**]。
@@ -145,36 +145,36 @@ UltraSSDAvailable                            True
 - 在兩個 blade 中選取 **[確定]** 。
 - 繼續進行 VM 部署，它會與部署任何其他 VM 相同。
 
-![create-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
+![create-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
 
 ## <a name="attach-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 入口網站連接 ultra 磁片
 
 或者，如果您現有的 VM 位於能夠使用 ultra 磁片的區域/可用性區域中，您可以使用 ultra 磁片，而不需要建立新的 VM。 藉由在現有的 VM 上啟用 ultra 磁片，然後將它們附加為數據磁片。
 
 - 流覽至您的 VM，然後選取 [**磁片**]。
-- 選取 [編輯]  。
+- 選取 [編輯]。
 
-![options-selector-ultra-disks .png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
+![options-selector-ultra-disks.png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
 
 - 針對 [**啟用 Ultra 磁片相容性** **] 選取 [是]** 。
 
-![ultra-options-yes-enable .png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
+![ultra-options-yes-enable.png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
 
-- 選取 [儲存]  。
+- 選取 [儲存]。
 - 選取 [**新增資料磁片**]，然後在 [**名稱**] 的下拉式清單中選取 [**建立磁片**]。
 
-![create-and-attach-new-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
+![create-and-attach-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
 
 - 填入新磁片的名稱，然後選取 [**變更大小**]。
 - 將**帳戶類型**變更為 [ **Ultra 磁片**]。
 - 將 [**自訂磁片大小（GiB）**]、[**磁片 IOPS**] 和 [**磁片輸送量**] 的值變更為您選擇的值。
 - 選取 **[確定]** ，然後選取 [**建立**]。
 
-![making-a-new-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
+![making-a-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
 
 - 回到磁片的分頁之後，請選取 [**儲存**]。
 
-![saving-and-attaching-new-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
+![saving-and-attaching-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
 
 ### <a name="adjust-the-performance-of-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 入口網站調整 ultra 磁片的效能
 
@@ -183,12 +183,12 @@ Ultra 磁片提供獨特的功能，可讓您調整其效能。 您可以從 Azu
 - 流覽至您的 VM，然後選取 [**磁片**]。
 - 選取您想要修改其效能的 ultra 磁片。
 
-![selecting-ultra-disk-to-modify .png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
+![selecting-ultra-disk-to-modify.png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
 
 - 選取 [設定] **，然後進行**修改。
-- 選取 [儲存]  。
+- 選取 [儲存]。
 
-![configuring-ultra-disk-performance-and-size .png](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
+![configuring-ultra-disk-performance-and-size.png](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
 
 ## <a name="deploy-an-ultra-disk-using-cli"></a>使用 CLI 部署 ultra 磁片
 
@@ -219,12 +219,12 @@ az vm start -n $vmName -g $rgName
 現在您已有能夠連接 ultra 磁片的 VM，您可以建立 ultra 磁片並將其連結至該虛擬機器。
 
 ```azurecli-interactive
-$location="eastus2"
-$subscription="xxx"
-$rgname="ultraRG"
-$diskname="ssd1"
-$vmname="ultravm1"
-$zone=123
+location="eastus2"
+subscription="xxx"
+rgname="ultraRG"
+diskname="ssd1"
+vmname="ultravm1"
+zone=123
 
 #create an ultra disk
 az disk create `
@@ -244,10 +244,10 @@ az disk create `
 或者，如果您現有的 VM 位於能夠使用 ultra 磁片的區域/可用性區域中，您可以使用 ultra 磁片，而不需要建立新的 VM。
 
 ```azurecli
-$rgName = "<yourResourceGroupName>"
-$vmName = "<yourVMName>"
-$diskName = "<yourDiskName>"
-$subscriptionId = "<yourSubscriptionID>"
+rgName="<yourResourceGroupName>"
+vmName="<yourVMName>"
+diskName="<yourDiskName>"
+subscriptionId="<yourSubscriptionID>"
 
 az vm disk attach -g $rgName --vm-name $vmName --disk $diskName --subscription $subscriptionId
 ```

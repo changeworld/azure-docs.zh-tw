@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 02/22/2016
+ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 65182ce16b8785a3a0e497b3ed8003fa9e7b67bc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: c003d66f59f932d818740bdd378280049bbeb7d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655422"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373874"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>針對 VM 擴展集使用 Resource Manager 範本的進階自動調整設定
 您可以根據效能標準臨界值、循環排程或特定日期，針對虛擬機器擴展集進行相應縮小和放大。 您也可以針對調整動作設定電子郵件和 webhook 通知。 本逐步解說會示範在 VM 擴展集上使用 Resource Manager 範本設定所有這些物件。

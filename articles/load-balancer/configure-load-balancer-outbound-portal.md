@@ -5,15 +5,15 @@ description: 本文說明如何使用 Azure 入口網站，在 Standard Load Bal
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: b75f49155991bfc71f788ad88f166c0bec281841
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77590009"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367388"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>使用 Azure 入口網站在 Standard Load Balancer 中設定負載平衡和輸出規則
 
@@ -35,7 +35,7 @@ ms.locfileid: "77590009"
 
 在本節中，您會建立負載平衡器，以平衡虛擬機器的負載。 您可以建立公用負載平衡器或內部負載平衡器。 當您建立公用負載平衡器時，您會建立新的公用 IP 位址，並將其設定為負載平衡器的前端。 前端預設會命名為**LoadBalancerFrontEnd** 。
 
-1. 在畫面的左上方，選取 [**建立資源** > ] [**網路** > ] [**Load Balancer**]。
+1. 在畫面的左上方，選取 [建立資源]**** > [網路]**** > [負載平衡器]****。
 2. 在 [**建立負載平衡器**] 頁面的 [**基本**] 索引標籤中，輸入或選取下列資訊：
 
     | 設定                 | 值                                              |
@@ -44,9 +44,9 @@ ms.locfileid: "77590009"
     | 資源群組         | 選取 [新建]****，並在文字方塊中輸入 **myResourceGroupSLB**。|
     | 名稱                   | **myLoadBalancer**                                   |
     | 區域         | 選取 [西歐]****。                                        |
-    | 類型          | 選取 [公用]  。                                        |
-    | SKU           | 選取 [標準]**** 或 [基本]****。 Microsoft 建議對生產工作負載使用「標準」。 |
-    | 公用 IP 位址 | 選取 [建立新的]  。 如果您有想要使用的現有公用 IP，請選取 [**使用現有**的]。  現有的公用 IP 必須是**標準**SKU。  基本公用 Ip 與**標準**SKU 負載平衡器不相容。  |
+    | 類型          | 選取 [公用]。                                        |
+    | SKU           | 選取 [標準]。 |
+    | 公用 IP 位址 | 選取 [建立新的]。 如果您有想要使用的現有公用 IP，請選取 [**使用現有**的]。  現有的公用 IP 必須是**標準**SKU。  基本公用 Ip 與**標準**SKU 負載平衡器不相容。  |
     | 公用 IP 位址名稱              | 在文字方塊中輸入 **myPublicIP**。|
     | 可用性區域 | 選取 [**區域-多餘**] 以建立可復原的 Load Balancer。 若要建立區域性 Load Balancer，請從 1、2 或 3 選取特定區域 |
 
@@ -54,7 +54,7 @@ ms.locfileid: "77590009"
 4. 選取 [**審核] + [建立**]
 
     > [!IMPORTANT]
-    > 本快速入門的其餘部分會假設在上述 SKU 選取程式期間，會選擇**標準**SKU。
+    > 本快速入門的其餘部分假設在上述 SKU 選取程序期間會選擇**標準** SKU。
 
 5. 在 [檢閱 + 建立]**** 索引標籤中，選取 [建立]****。   
 
@@ -81,13 +81,13 @@ ms.locfileid: "77590009"
     
     | 設定 | 值 |
     | ------- | ----- |
-    | 名稱 | 輸入 **myHealthProbe**。 |
+    | Name | 輸入 **myHealthProbe**。 |
     | 通訊協定 | 選取 [HTTP]****。 |
     | 連接埠 | 輸入 **80**。|
     | 間隔 | 輸入 **15** 作為探查嘗試之間的 [間隔] **** 秒數。 |
     | 狀況不良臨界值 | 選取 [2]**** 作為 [狀況不良閾值]**** 的數值，或將 VM 視為狀況不良之前，必須達到的連續探查失敗次數。|
     | | |
-4. 選取 [確定]  。
+4. 選取 [確定]****。
 
 ### <a name="create-a-load-balancer-rule"></a>建立負載平衡器規則
 負載平衡器規則用來定義如何將流量分散至 VM。 
@@ -109,10 +109,10 @@ ms.locfileid: "77590009"
     | 設定 | 值 |
     | ------- | ----- |
     | 名稱 | 輸入 **myHTTPRule**。 |
-    | 通訊協定 | 選取 [ **TCP**]。 |
+    | 通訊協定 | 選取 [TCP]****。 |
     | 連接埠 | 輸入 **80**。|
     | 後端連接埠 | 輸入 **80**。 |
-    | 後端集區 | 選取 [myBackendPool]  。|
+    | 後端集區 | 選取 [myBackendPool]****。|
     | 健全狀況探查 | 選取 [myHealthProbe]****。 |
     | 建立隱含輸出規則 | 選取 [否]****。 我們會使用專用的公用 IP，在稍後的區段中建立輸出規則。 |
 4. 保留其餘的預設值，然後選取 [確定]****。
@@ -131,11 +131,11 @@ ms.locfileid: "77590009"
     | 設定 | 值 |
     | ------- | ----- |
     | 名稱 | 輸入**LoadBalancerFrontEndOutbound**。 |
-    | IP 版本 | 選取 [IPv4]  。 |
+    | IP 版本 | 選取 [IPv4]****。 |
     | IP 類型 | 選取 [ **IP 位址**]。|
-    | 公用 IP 位址 | 選取 [建立新的]  。 在 [**新增公用 IP 位址**] 中，輸入**myPublicIPOutbound**。  選取 [確定]  。 |
+    | 公用 IP 位址 | 選取 [建立新的]。 在 [**新增公用 IP 位址**] 中，輸入**myPublicIPOutbound**。  選取 [確定]。 |
 
-4. 選取 [新增]  。
+4. 選取 [新增]。
 
 ### <a name="create-an-outbound-backend-pool"></a>建立輸出後端集區
 
@@ -158,13 +158,13 @@ ms.locfileid: "77590009"
     | 名稱 | 輸入**myOutboundRule**。 |
     | 前端 IP 位址 | 選取 [ **LoadBalancerFrontEndOutbound**]。 |
     | 閒置逾時 (分鐘) | 將滑杆移至 * * 15 分鐘。|
-    | TCP 重設 | 選取 [已啟用]  。|
+    | TCP 重設 | 選取 [啟用]。|
     | 後端集區 | 選取**myBackendPoolOutbound** |
     | 埠配置-> 埠配置 | 選取 **[手動選擇輸出埠數目**] |
     | 輸出埠-> 選擇依據 | 選取**每個實例的埠** |
     | 輸出埠-每個實例 > 埠 | 輸入**10000**。 |
 
-4. 選取 [新增]  。
+4. 選取 [新增]。
 
 ## <a name="clean-up-resources"></a>清除資源
 

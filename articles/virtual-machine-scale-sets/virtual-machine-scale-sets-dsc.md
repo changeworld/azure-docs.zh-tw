@@ -6,15 +6,15 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: extensions
-ms.date: 04/05/2017
+ms.date: 6/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 4a972cab0559ff8a4bb22588c712515daa2fab16
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6939339ce8d0f324fbd9e14ba31d23a6febcfcbe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124836"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373892"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>搭配 Azure DSC 擴充功能使用虛擬機器擴展集
 [虛擬機器擴展集](virtual-machine-scale-sets-overview.md)可以搭配 [Azure 期望狀態設定 (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 擴充功能處理常式來使用。 虛擬機器擴展集提供一個部署及管理大量虛擬機器的方式，可以因應負載情況來彈性地相應縮小和放大。 當 VM 上線時，可使用 DSC 來設定它們，因為它們正在執行生產環境的軟體。

@@ -5,28 +5,28 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: 506bf076c955beb5c5e57811bbdb42bfedb8cbe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/24/2020
+ms.openlocfilehash: f05f26c54d9f3ea62180c598aada59d405c3c805
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382959"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362674"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>設定和存取 Azure 入口網站中的 audit 記錄
 
 您可以從 Azure 入口網站設定[適用於 MariaDB 的 Azure 資料庫的審核記錄](concepts-audit-logs.md)和診斷設定。
 
-> [!IMPORTANT]
-> Audit log 功能目前為預覽狀態。
-
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要逐步執行本作法指南，您需要︰
 
 - [適用於 MariaDB 的 Azure 資料庫伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 ## <a name="configure-audit-logging"></a>設定審核記錄
+
+>[!IMPORTANT]
+> 建議您只記錄您的審核目的所需的事件種類和使用者，以確保伺服器的效能不會受到嚴重影響。
 
 啟用和設定 audit 記錄。
 
@@ -53,7 +53,7 @@ ms.locfileid: "81382959"
 
 1. 在提要欄位的 [**監視**] 區段下，選取 [**診斷設定**]。
 
-1. 按一下 [+ 新增診斷設定] [ ![新增診斷設定]](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. 按一下 [+ 新增診斷設定] [ ![ 新增診斷設定]](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
 1. 提供診斷設定名稱。
 

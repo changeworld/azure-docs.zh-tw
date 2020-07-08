@@ -6,15 +6,15 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: networking
-ms.date: 07/17/2017
+ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 46a12006274ca8516c936e37189c9233dde9b410
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0f8075af53752da0e0abc2dec7ab49c28af2e3ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374724"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的網路
 
@@ -44,13 +44,15 @@ Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>具有 Azure Load Balancer 的 Azure 虛擬機器擴展集
 
-使用虛擬機器擴展集和負載平衡器時，應該考慮下列事項：
+使用虛擬機器擴展集和負載平衡器時，應該考慮下列專案：
 
 * **多個虛擬機器擴展集不能使用相同的負載平衡器**。
 * **埠轉送和輸入 NAT 規則**：
   * 每個虛擬機器擴展集都必須有輸入 NAT 規則。
   * 建立擴展集之後，無法修改負載平衡器健全狀況探查所使用的負載平衡規則的後端埠。 若要變更埠，您可以藉由更新 Azure 虛擬機器擴展集來移除健康情況探查、更新埠，然後再次設定健康情況探查。
   * 在負載平衡器的後端集區中使用虛擬機器擴展集時，會自動建立預設的輸入 NAT 規則。
+* **輸入 NAT 集**區：
+  * 輸入 NAT 集區是輸入 NAT 規則的集合。 其中一個輸入 NAT 集區無法支援多個虛擬機器擴展集。
 * **負載平衡規則**：
   * 在負載平衡器後端集區中使用虛擬機器擴展集時，會自動建立預設的負載平衡規則。
 * **輸出規則**：
@@ -144,7 +146,7 @@ Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR
 ```
 
 ## <a name="public-ipv4-per-virtual-machine"></a>每個虛擬機器的公用 IPv4
-一般情況下，Azure 擴展集虛擬機器不需要自己的公用 IP 位址。 大部分情況下，將公用 IP 位址與負載平衡器或個別虛擬機器 (也稱為 jumpbox) 相關聯，然後視需要將輸入連線路由至擴展集虛擬機器 (例如，透過輸入 NAT 規則)，是較為經濟且安全的。
+一般情況下，Azure 擴展集虛擬機器不需要自己的公用 IP 位址。 在大部分情況下，將公用 IP 位址與負載平衡器或個別虛擬機器（也稱為 jumpbox）建立關聯，然後視需要將連入連線路由至擴展集虛擬機器（例如，透過輸入 NAT 規則），會比較經濟且安全。
 
 但是，某些情況會要求擴展集虛擬機器具備自己的公用 IP 位址。 例如遊戲，其中主控台需要直接連線至雲端虛擬機器，進而執行遊戲實體流程。 另一個範例是虛擬機器需要對另一個分散式資料庫中跨區域的虛擬機器進行外部連線。
 

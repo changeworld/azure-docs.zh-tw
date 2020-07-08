@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/24/2017
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d70aed6fbe0f09ea6284f913c88186ecf94e297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fcb407735cff5a0c43d3a584ff37a0eabc178381
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367439"
 ---
-# <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 外部共用與 Azure Active Directory B2B 共同作業
+# <a name="office-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Office 365 外部共用和 Azure Active Directory （Azure AD） B2B 共同作業
 
-Office 365 (OneDrive、SharePoint Online、整合群組等) 中的外部共用與 Azure Active Directory (Azure AD) B2B 共同作業在技術上而言是相同的。 所有外部共用 (OneDrive/SharePoint Online 除外)，包括 Office 365 群組中的來賓都已使用 Azure AD B2B 共同作業邀請 API 來進行共用。
+在 Azure AD B2B 共同作業和 Office 365 外部共用（OneDrive、SharePoint Online、整合群組等）中，外部使用者會使用 Azure AD B2B 進行驗證。
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Azure AD B2B 與 SharePoint Online 中的外部共用有何不同？
 
@@ -49,4 +49,4 @@ OneDrive/SharePoint Online 有個別的邀請管理員。 OneDrive/SharePoint On
 * [將 B2B 共同作業使用者新增至角色](add-guest-to-role.md)
 * [委派 B2B 共同作業邀請](delegate-invitations.md)
 * [動態群組與 B2B 共同作業](use-dynamic-groups.md)
-* [針對 Azure Active Directory B2B 共同作業問題進行疑難排解](troubleshoot.md)
+* [針對 B2B 共同作業 Azure Active Directory 進行疑難排解](troubleshoot.md)

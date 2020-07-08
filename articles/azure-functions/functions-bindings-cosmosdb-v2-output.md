@@ -1,22 +1,23 @@
 ---
-title: 函數2.x 的 Azure Cosmos DB 輸出系結
+title: 函數2.x 和更新版本的 Azure Cosmos DB 輸出系結
 description: 瞭解如何在 Azure Functions 中使用 Azure Cosmos DB 的輸出系結。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 743bd21a4fd974654760402a639c661fe086d2d5
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: tracking-python
+ms.openlocfilehash: 2228a9609b0e0325dc4e6f7ccbe88417c900b688
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374333"
 ---
-# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Functions 2.x 的 Azure Cosmos DB 輸出系結
+# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 和更新版本的 Azure Cosmos DB 輸出系結
 
 Azure Cosmos DB 輸出繫結可讓您使用 SQL API，將新的文件寫入 Azure Cosmos DB 資料庫。
 
-如需安裝和設定詳細資料的相關資訊，請參閱[總覽](./functions-bindings-cosmosdb-v2.md)。
+如需安裝和設定詳細資料的相關資訊，請參閱[概觀](./functions-bindings-cosmosdb-v2.md)。
 
 <a id="example" name="example"></a>
 
@@ -112,7 +113,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 本區段包含下列範例：
 
@@ -306,7 +307,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 
 下列範例示範如何將檔寫入 Azure CosmosDB 資料庫，做為函數的輸出。
 
-系結定義定義于*function json*中，其中*type*設為`cosmosDB`。
+系結定義定義于的*function.js上*，其*類型*設定為 `cosmosDB` 。
 
 ```json
 {
@@ -340,7 +341,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-若要寫入資料庫，請將檔物件傳遞至 database `set`參數的方法。
+若要寫入資料庫，請將檔物件傳遞至 `set` database 參數的方法。
 
 ```python
 import azure.functions as func
@@ -426,7 +427,7 @@ public String cosmosDbQueryById(
 
 ### <a name="http-trigger-save-one-document-to-database-via-outputbinding"></a>HTTP 觸發程序，透過 OutputBinding 將一份文件儲存至資料庫
 
-下列範例所示範的 Java 函式，會透過 ```OutputBinding<T>``` 輸出參數將一份文件寫入至 CosmosDB。 在此範例中， ```outputItem```參數需要以標注```@CosmosDBOutput```，而不是函數簽章。 使用 ```OutputBinding<T>``` 可讓您的函式利用繫結來將文件寫入至 CosmosDB，同時又能將不同的值傳回給函式呼叫端，例如 JSON 或 XML 文件。
+下列範例所示範的 Java 函式，會透過 ```OutputBinding<T>``` 輸出參數將一份文件寫入至 CosmosDB。 在此範例中， ```outputItem``` 參數需要以標注 ```@CosmosDBOutput``` ，而不是函數簽章。 使用 ```OutputBinding<T>``` 可讓您的函式利用繫結來將文件寫入至 CosmosDB，同時又能將不同的值傳回給函式呼叫端，例如 JSON 或 XML 文件。
 
 ```java
     @FunctionName("WriteOneDocOutputBinding")
@@ -472,7 +473,7 @@ public String cosmosDbQueryById(
 
 ### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding"></a>HTTP 觸發程序，透過 OutputBinding 將多份文件儲存至資料庫
 
-下列範例所示範的 Java 函式，會透過 ```OutputBinding<T>``` 輸出參數將多份文件寫入至 CosmosDB。 在此範例中， ```outputItem```參數是以```@CosmosDBOutput```標注，而非函式簽章。 輸出參數 ```outputItem``` 有一份 ```ToDoItem``` 物件清單作為其範本參數類型。 使用 ```OutputBinding<T>``` 可讓您的函式利用繫結來將多份文件寫入至 CosmosDB，同時又能將不同的值傳回給函式呼叫端，例如 JSON 或 XML 文件。
+下列範例所示範的 Java 函式，會透過 ```OutputBinding<T>``` 輸出參數將多份文件寫入至 CosmosDB。 在此範例中， ```outputItem``` 參數是以標注 ```@CosmosDBOutput``` ，而非函式簽章。 輸出參數 ```outputItem``` 有一份 ```ToDoItem``` 物件清單作為其範本參數類型。 使用 ```OutputBinding<T>``` 可讓您的函式利用繫結來將多份文件寫入至 CosmosDB，同時又能將不同的值傳回給函式呼叫端，例如 JSON 或 XML 文件。
 
 ```java
     @FunctionName("WriteMultipleDocsOutputBinding")
@@ -523,7 +524,7 @@ public String cosmosDbQueryById(
 
 ---
 
-## <a name="attributes-and-annotations"></a>屬性和注釋
+## <a name="attributes-and-annotations"></a>屬性和註釋
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -541,9 +542,9 @@ public String cosmosDbQueryById(
     }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-C # 腳本不支援屬性。
+C# 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -551,31 +552,31 @@ JavaScript 不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支援屬性。
+Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`CosmosDBOutput`批註可用來將資料寫入 Cosmos DB。 您可以將批註套用至函式或個別的函數參數。 在函式方法上使用時，函式的傳回值會寫入 Cosmos DB。 如果您使用具有參數的注釋，則參數的類型必須宣告為`OutputBinding<T>` `T`原生 JAVA 類型或 POJO 的。
+`CosmosDBOutput`批註可用來將資料寫入 Cosmos DB。 您可以將批註套用至函式或個別的函數參數。 在函式方法上使用時，函式的傳回值會寫入 Cosmos DB。 如果您使用具有參數的注釋，則參數的類型必須宣告為 `OutputBinding<T>` `T` 原生 JAVA 類型或 POJO 的。
 
 ---
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
-下表說明您在*函數 json*檔案和`CosmosDB`屬性中設定的系結設定屬性。
+下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `CosmosDB` 屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type**     | n/a | 必須設為 `cosmosDB`。        |
-|**方向**     | n/a | 必須設為 `out`。         |
+|**direction**     | n/a | 必須設為 `out`。         |
 |**name**     | n/a | 代表函式中之文件的繫結參數名稱。  |
 |**名稱** | **DatabaseName**|包含其中將建立文件之集合的資料庫。     |
 |**collectionName** |**CollectionName**  | 包含其中將建立文件之集合的名稱。 |
-|**createIfNotExists**  |**CreateIfNotExists**    | 一個布林值，用來指出當集合不存在時，是否要建立集合。 預設是 false**，因為會使用保留的輸送量來建立新集合，可能會涉及成本。 如需詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |
-|**partitionKey**|**PartitionKey** |當`CreateIfNotExists`為 true 時，它會定義所建立集合的分割區索引鍵路徑。|
-|**collectionThroughput**|**CollectionThroughput**| 當`CreateIfNotExists`為 true 時，它會定義所建立集合的[輸送量](../cosmos-db/set-throughput.md)。|
+|**createIfNotExists**  |**CreateIfNotExists**    | 一個布林值，用來指出當集合不存在時，是否要建立集合。 預設是 false**，因為會使用保留的輸送量來建立新集合，可能會涉及成本。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |
+|**partitionKey**|**PartitionKey** |當 `CreateIfNotExists` 為 true 時，它會定義所建立集合的分割區索引鍵路徑。|
+|**collectionThroughput**|**CollectionThroughput**| 當 `CreateIfNotExists` 為 true 時，它會定義所建立集合的[輸送量](../cosmos-db/set-throughput.md)。|
 |**connectionStringSetting**    |**ConnectionStringSetting** |包含 Azure Cosmos DB 連接字串的應用程式設定名稱。        |
 |**preferredLocations**| **PreferredLocations**| 選擇性定義 Azure Cosmos DB 服務中異地複寫資料庫帳戶的慣用位置（區域）。 值應該以逗號分隔。 例如，「美國東部、美國中南部、北歐」。 |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| 選擇性當設定為`true`時`PreferredLocations`，它可以利用 Azure Cosmos DB 服務中的[多區域寫入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)。 |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| 選擇性當設定為時 `true` `PreferredLocations` ，它可以利用 Azure Cosmos DB 服務中的[多區域寫入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
