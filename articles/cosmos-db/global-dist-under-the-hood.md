@@ -4,21 +4,21 @@ description: 此文章提供有關 Azure Cosmos DB 全域散發的技術詳細�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e315a7366793d355967f777cbc1dda0f9277087
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74872123"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955908"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>透過 Azure Cosmos DB 全域資料散發 - 運作原理
 
 Azure Cosmos DB 是 Azure 中的基礎服務，因此它會部署在全球所有 Azure 區域，包括公用、主權、國防部（DoD）和政府雲端。 在資料中心內，我們會在大規模戳記的機器上部署及管理 Azure Cosmos DB，每部都有專屬的本機儲存體。 在資料中心內，Azure Cosmos DB 會跨許多叢集進行部署，每個可能都會執行多個世代的硬體。 叢集中的機器通常會散佈到10-20 容錯網域，以在區域內提供高可用性。 下圖顯示 Cosmos DB 全域散發系統拓撲：
 
-![系統拓撲](./media/global-dist-under-the-hood/distributed-system-topology.png)
+:::image type="content" source="./media/global-dist-under-the-hood/distributed-system-topology.png" alt-text="系統拓撲" border="false":::
 
 **Azure Cosmos DB 中的全域散發是全包式的：** 無論何時，只要按幾下，或以程式設計方式使用單一 API 呼叫，您就可以新增或移除與您的 Cosmos 資料庫相關聯的地理區域。 Cosmos 資料庫又是由一組 Cosmos 容器所組成。 在 Cosmos DB 中，容器可用來作為散發和延展性的邏輯單元。 您所建立的集合、資料表和圖形 (在內部) 只是 Cosmos 容器。 容器與架構完全無關，並提供查詢的範圍。 Cosmos 容器中的資料都會在擷取時自動編製索引。 自動編制索引可讓使用者查詢資料，而不會有任何麻煩的架構或索引管理，尤其是在全域散發的安裝程式中。  
 
@@ -30,7 +30,7 @@ Azure Cosmos DB 是 Azure 中的基礎服務，因此它會部署在全球所有
 
 如下圖所示，容器內的資料會沿著兩個維度散佈-在區域內，以及跨區域（全球）：  
 
-![實體分割區](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
+:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="實體分割區" border="false":::
 
 實體分割區是由一組複本（稱為「*複本集*」）所執行。 每部機器都會裝載數百個對應至一組固定進程內各種實體分割區的複本，如上圖所示。 對應到實體分割區的複本均會動態放置，並在區域中叢集和資料中心內的機器間進行負載平衡。  
 
@@ -52,7 +52,7 @@ Cosmos DB 的全域散發依賴兩個重要的抽象概念–*複本集*和資�
 
 實體分割區的群組（每個設定為 Cosmos 資料庫區域的資料分割），是用來管理在所有已設定區域上複寫的同一組索引鍵。 這個較高的協調基本類型稱為*分割集*-一種地理位置分散式動態重迭，可管理一組指定的索引鍵。 當指定的實體分割區（複本集）的範圍限定于叢集內時，分割集可以跨越叢集、資料中心和地理區域，如下圖所示：  
 
-![分割集](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
+:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="分割集" border="false":::
 
 您可以將分割集想像為地理位置分散的「進階複本集」，其會由擁有相同索引鍵的多個複本集所組成。 類似于複本集，資料分割集的成員資格也是動態的–它會根據隱含的實體分割區管理作業，將新的分割區新增/移除到指定的分割集（例如，當您在容器上相應放大輸送量、在 Cosmos 資料庫中新增/移除區域，或發生失敗時）。 藉由讓每個分割區（屬於分割集）管理它自己的複本集內的分割集成員資格，成員資格會完全分散且高度可用。 重新設定分割集期間，也會建立在實體分割區之間重疊的拓撲。 拓撲會根據一致性層級、地理距離，以及來源和目標實體分割區之間的可用網路頻寬，以動態方式選取。  
 

@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7efae8fb3c00868e2740eac2d4d5bcb3c82f663a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/29/2020
+ms.openlocfilehash: 05a76a1434b5a63229b335fb3973897896ec733d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75977545"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955807"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB 的計價模式 
 
@@ -28,18 +28,18 @@ Azure Cosmos DB 的計價模式可簡化成本管理和規劃。 使用 Azure Co
 
 如需詳細資訊，請參閱 [Azure Cosmos DB 定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)和[了解您的 Azure Cosmos DB 計費](understand-your-bill.md)。
 
-Azure Cosmos DB 的計價模式在所有 API 之間都是一致的。 若要深入了解，請參閱 [Azure Cosmos DB 計價模式如何為客戶提供符合成本效益的解決方案](total-cost-ownership.md)。 資料庫或容器有必要的最小輸送量，以確保 SLA 和您可以每 100 RU/秒 6 元的價格，增加或減少佈建的輸送量。
+Azure Cosmos DB 的計價模式在所有 API 之間都是一致的。 若要深入了解，請參閱 [Azure Cosmos DB 計價模式如何為客戶提供符合成本效益的解決方案](total-cost-ownership.md)。 資料庫或容器需要最低輸送量，以確保 Sla，而且您可以增加或減少每個 100 RU/秒的布建輸送量。
 
-目前資料庫和容器型輸送量的最低價格是 24 元/月，如需最新資訊，請參閱 [Azure Cosmos DB 定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。 如果您的工作負載使用多個容器，可以藉由使用資料庫層級輸送量，針對成本進行最佳化，因為資料庫層級輸送量可讓您在資料庫中具有任意數量的容器，在容器之間共用輸送量。 下表摘要說明不同實體的佈建的輸送量和成本：
+如果您將 Azure Cosmos DB 帳戶部署到美國的非政府區域，目前資料庫和容器型輸送量的最小價格大約是 $ 24/月。 定價會依您使用的區域而有所不同，請參閱[Azure Cosmos DB 定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)以取得最新的定價資訊。 如果您的工作負載使用多個容器，可以藉由使用資料庫層級輸送量，針對成本進行最佳化，因為資料庫層級輸送量可讓您在資料庫中具有任意數量的容器，在容器之間共用輸送量。 下表摘要說明不同實體的佈建的輸送量和成本：
 
-|**本體**  | **輸送量下限和成本** |**縮放增量和成本** |**佈建範圍** |
+|**實體**  | **最小輸送量** |**調整增量** |**佈建範圍** |
 |---------|---------|---------|-------|
-|資料庫    | 400 RU/秒 (24 元/月)    | 100 RU/秒 (6 元/月)   |輸送量是針對資料庫保留，可供資料庫內的容器共用 |
-|容器     | 400 RU/秒 (24 元/月)    | 100 RU/秒 (6 元/月)  |輸送量是針對特定容器保留 |
+|資料庫    | 400 RU/秒    | 100 RU/秒   |輸送量是針對資料庫保留，可供資料庫內的容器共用 |
+|容器     | 400 RU/秒   | 100 RU/秒  |輸送量是針對特定容器保留 |
 
-如上表所示，Azure Cosmos DB 中的輸送量下限從 24 元/月價格起算。 如果您是從輸送量下限開始，隨著時間相應增加以支援您的生產環境工作負載，您的成本會平順地增加，增量為 6 元/月。 Azure Cosmos DB 的計價模式具有彈性，當您相應增加或減少時，價格會平順地增減。
+如上表所示，Azure Cosmos DB 的最小輸送量以大約 $ 24/月的價格開始。 如果您從最小輸送量開始，並隨著時間相應增加以支援您的生產工作負載，您的成本將會以大約 $ 6/月的增量逐漸順暢地增加。 定價會依您使用的區域而有所不同，請參閱[Azure Cosmos DB 定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)以取得最新的定價資訊。 Azure Cosmos DB 的計價模式具有彈性，當您相應增加或減少時，價格會平順地增減。
 
-## <a name="try-azure-cosmos-db-for-free"></a>免費試用 Azure Cosmos DB 
+## <a name="try-azure-cosmos-db-for-free"></a>免費試用 Azure Cosmos DB
 
 Azure Cosmos DB 為開發人員提供數個免費選項。 這些選項包含︰
 

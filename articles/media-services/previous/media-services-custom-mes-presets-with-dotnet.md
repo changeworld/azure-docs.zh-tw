@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9509a38dbe9655cd7f70096bc5f3283f35c190f0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251241"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956705"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>自訂媒體編碼器標準預設  
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文章說明如何透過使用自訂預設的媒體編碼器標準 (MES) 執行進階編碼。 本文章使用 .NET 建立編碼工作與執行此工作的作業。  
 
@@ -120,9 +120,11 @@ ms.locfileid: "79251241"
 - 建立編碼工作。
 - 取得對 Media Encoder Standard 編碼器的參考
 - 載入您在上一節建立的自訂 JSON 預設。 
-  
-        // Load the JSON from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the JSON from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
 
 - 將編碼工作新增至作業。 
 - 指定要編碼的輸入資產。

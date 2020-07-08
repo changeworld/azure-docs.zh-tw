@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75771252"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956367"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer 的多個前端
 
@@ -102,20 +102,31 @@ Azure Load Balancer 提供在多個前端重複使用前端連接埠的彈性，
 
 若要取得您的 VM 上所擁有的介面名稱清單，請輸入下列命令：
 
-    netsh interface show interface 
+```console
+netsh interface show interface 
+```
 
 針對 [VM NIC （Azure 受控）]，輸入下列命令：
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
-   （將介面名稱取代為此介面的名稱）
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+```
+
+（將介面名稱取代為此介面的名稱）
 
 針對您新增的每個回送介面，重複下列命令：
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
-   （將介面名稱取代為此回送介面的名稱）
-     
-    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
-   （將介面名稱取代為此回送介面的名稱）
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+```
+
+（將介面名稱取代為此回送介面的名稱）
+
+```console
+netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+```
+
+（將介面名稱取代為此回送介面的名稱）
 
 > [!IMPORTANT]
 > 回送介面的設定是在客體 OS 內進行。 這項設定不是由 Azure 執行或管理。 沒有此設定，規則將無法運作。 健康狀態探查定義使用 VM 的 DIP，而不是代表 DSR 前端的回送介面。 因此，您的服務必須提供 DIP 連接埠的探查回應，以反映代表 DSR 前端之回送介面上所提供服務的狀態。
@@ -146,7 +157,7 @@ Azure Load Balancer 提供在多個前端重複使用前端連接埠的彈性，
 
 請注意，此範例沒有變更目的地連接埠。 雖然這是浮動 IP 案例，Azure Load Balancer 也支援定義規則來重寫後端的目的地連接埠，使其和前端的目的地連接埠不同。
 
-浮動 IP 規則類型是數種負載平衡器設定模式的基礎。 [具有多個接聽程式的 SQL AlwaysOn](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) 設定是目前可看到其運用的範例。 經過一段時間，我們會記載更多這類案例。
+浮動 IP 規則類型是數種負載平衡器設定模式的基礎。 [具有多個接聽程式的 SQL AlwaysOn](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) 設定是目前可看到其運用的範例。 經過一段時間，我們會記載更多這類案例。
 
 ## <a name="limitations"></a>限制
 

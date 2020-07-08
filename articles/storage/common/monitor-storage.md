@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: HT
+ms.openlocfilehash: 9810d29750e7c741c84b11b296099a37d67fc595
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267608"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955160"
 ---
 # <a name="monitor-azure-storage"></a>監視 Azure 儲存體
 
@@ -78,7 +78,9 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 
 系統會自動收集平台計量和活動記錄，但您必須建立診斷設定來收集資源記錄，或將其轉送到 Azure 監視器外部。 如需使用 Azure 入口網站、Azure CLI 或 PowerShell 建立診斷設定的程序，請參閱[建立診斷設定以在 Azure中收集平台記錄和計量](../../azure-monitor/platform/diagnostic-settings.md)。
 
-當您建立診斷設定時，請選擇您要啟用記錄的儲存體類型，例如 Blob、佇列、資料表或檔案。 如果您在 Azure 入口網站中建立診斷設定，可以從清單中選取資源。 如果您使用 PowerShell 或 Azure CLI，則必須使用儲存體類型的資源識別碼。 在 Azure 入口網站中，開啟您儲存體帳戶的 [屬性] 頁面，即可尋找資源識別碼。
+當您建立診斷設定時，請選擇您要啟用記錄的儲存體類型，例如 Blob、佇列、資料表或檔案。 Data Lake Storage Gen2 不會顯示為儲存體類型。 這是因為 Data Lake Storage Gen2 是可供 Blob 儲存體使用的一組功能。 
+
+如果您在 Azure 入口網站中建立診斷設定，可以從清單中選取資源。 如果您使用 PowerShell 或 Azure CLI，則必須使用儲存體類型的資源識別碼。 在 Azure 入口網站中，開啟您儲存體帳戶的 [屬性] 頁面，即可尋找資源識別碼。
 
 您也必須指定您要收集記錄的作業類別。 下表列出 Azure 儲存體的類別。
 
@@ -343,6 +345,8 @@ Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.
 |StorageFileLogs | 描述檔案共用中活動的記錄。 |
 |StorageQueueLogs | 描述佇列中活動的記錄。|
 |StorageTableLogs| 描述資料表中活動的記錄。|
+
+Data Lake Storage Gen2 的記錄不會出現在專用的資料表中。 這是因為 Data Lake Storage Gen2 不是服務。 這是您可以在 Blob 儲存體帳戶上啟用的一組功能。 如果您已啟用這些功能，記錄將會繼續出現在 StorageBlobLogs 資料表中。 
 
 ### <a name="azure-storage-log-analytics-queries-in-azure-monitor"></a>Azure 監視器中的 Azure 儲存體 Log Analytics 查詢
 

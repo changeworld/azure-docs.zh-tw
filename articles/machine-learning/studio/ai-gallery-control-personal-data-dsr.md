@@ -5,18 +5,18 @@ description: 您可以使用介面或 AI 資源庫目錄 API，從 Azure AI 資�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6bf0d889d70272988c9d2b243ae255f9654656bd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204540"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955585"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>從 Azure AI 資源庫檢視和刪除產品中的使用者資料
 
@@ -45,11 +45,13 @@ ms.locfileid: "79204540"
 ### <a name="get-an-author-id"></a>取得建立者識別碼
 建立者識別碼是以發行至 Azure AI 資源庫時所使用的電子郵件地址為基礎的。 它不會變更：
 
-1.    登入 [Azure AI 資源庫](https://gallery.azure.ai/)。
-2.    按一下右上角的個人資料圖片，然後按一下帳戶名稱以載入個人資料頁面。
-3.    網址列中的 URL 會在 `authorId=` 後面顯示英數字元識別碼。 例如，若 URL 為：`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
-        
-    則建立者識別碼為：`99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1. 登入 [Azure AI 資源庫](https://gallery.azure.ai/)。
+2. 按一下右上角的個人資料圖片，然後按一下帳戶名稱以載入個人資料頁面。
+3. 網址列中的 URL 會在 `authorId=` 後面顯示英數字元識別碼。 例如，針對 URL： \
+    `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+
+    作者識別碼： \
+    `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
 ### <a name="get-your-access-token"></a>取得存取權杖
 
@@ -61,22 +63,23 @@ ms.locfileid: "79204540"
 2.    按一下右上角的個人資料圖片，然後按一下帳戶名稱以載入個人資料頁面。
 3.    按 F12 來開啟瀏覽器的 [開發人員工具] 窗格、選取 [網路] 索引標籤，然後重新整理頁面。 
 4. 在 [篩選條件] 文字方塊中輸入「目錄」** 字串來對該字串篩選要求。
-5.    在 URL `https://catalog.cortanaanalytics.com/entities`的 [要求] 中，尋找 GET 要求，然後選取 [*標頭*] 索引標籤。向下移至 [*要求標頭*] 區段。
+5.    在 URL 的 [要求 `https://catalog.cortanaanalytics.com/entities` ] 中，尋找 GET 要求，然後選取 [*標頭*] 索引標籤。向下移至 [*要求標頭*] 區段。
 6.    `DataLabAccessToken`　標頭下方是英數字元權杖。 為了讓資料保持安全，請勿共用此權杖。
 
 ### <a name="view-user-information"></a>檢視使用者資訊
 使用您在先前步驟中取得的建立者識別碼取代下列 URL 中的 `[AuthorId]`，來檢視使用者個人資料中的資訊：
 
-    https://catalog.cortanaanalytics.com/users/[AuthorID]
+`https://catalog.cortanaanalytics.com/users/[AuthorID]`
 
 例如，此 URL 要求：
-    
-    https://catalog.cortanaanalytics.com/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA
+
+`https://catalog.cortanaanalytics.com/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
 傳回如下回應：
 
-    {"entities_count":9,"contribution_score":86.351575190956922,"scored_at":"2018-05-07T14:30:25.9305671+00:00","contributed_at":"2018-05-07T14:26:55.0381756+00:00","created_at":"2017-12-15T00:49:15.6733094+00:00","updated_at":"2017-12-15T00:49:15.6733094+00:00","name":"First Last","slugs":["First-Last"],"tenant_id":"14b2744cf8d6418c87ffddc3f3127242","community_id":"9502630827244d60a1214f250e3bbca7","id":"99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA","_links":{"self":"https://catalog.azureml.net/tenants/14b2744cf8d6418c87ffddc3f3127242/communities/9502630827244d60a1214f250e3bbca7/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA"},"etag":"\"2100d185-0000-0000-0000-5af063010000\""}
-
+```json
+{"entities_count":9,"contribution_score":86.351575190956922,"scored_at":"2018-05-07T14:30:25.9305671+00:00","contributed_at":"2018-05-07T14:26:55.0381756+00:00","created_at":"2017-12-15T00:49:15.6733094+00:00","updated_at":"2017-12-15T00:49:15.6733094+00:00","name":"First Last","slugs":["First-Last"],"tenant_id":"14b2744cf8d6418c87ffddc3f3127242","community_id":"9502630827244d60a1214f250e3bbca7","id":"99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA","_links":{"self":"https://catalog.azureml.net/tenants/14b2744cf8d6418c87ffddc3f3127242/communities/9502630827244d60a1214f250e3bbca7/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA"},"etag":"\"2100d185-0000-0000-0000-5af063010000\""}
+```
 
 ### <a name="view-public-entities"></a>檢視公開實體
 
@@ -84,11 +87,11 @@ ms.locfileid: "79204540"
 
 若要檢視已發行的實體，請瀏覽下列 URL，並將 `[AuthorId]` 取代為上面的[取得建立者識別碼](#get-an-author-id)中所取得的建立者識別碼。
 
-    https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
+`https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'`
 
 例如：
 
-    https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'
+`https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'`
 
 ### <a name="view-unlisted-and-public-entities"></a>檢視未列出和公開的實體
 

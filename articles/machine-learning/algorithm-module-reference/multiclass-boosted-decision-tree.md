@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
-ms.openlocfilehash: cfe35f81526a729092edf522f693ccd18494d1ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 023b731216605746e838306ce1ab69ebe8c6c6fd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137819"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955772"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>多元促進式決策樹
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 使用此模組來建立以促進式決策樹演算法為基礎的機器學習模型。
 
@@ -40,21 +40,21 @@ ms.locfileid: "82137819"
 
 1. **每個樹狀結構的葉數上限**限制可以在任何樹狀結構中建立的終端機節點數目上限（葉子）。
     
-        By increasing this value, you potentially increase the size of the tree and achieve higher precision, at the risk of overfitting and longer training time.
+    藉由增加此值，您可能會增加樹狀結構的大小，並達到更高的精確度，但有過度學習和較長定型時間的風險。
   
 1. [**每個分葉節點的樣本數下限**] 表示在樹狀結構中建立任何終端節點（分葉）所需的案例數目。  
 
-         By increasing this value, you increase the threshold for creating new rules. For example, with the default value of 1, even a single case can cause a new rule to be created. If you increase the value to 5, the training data would have to contain at least five cases that meet the same conditions.
+    藉由增加此值，您會增加建立新規則的臨界值。 例如，若預設值是 1，即使單一案例可能會造成新規則的建立。 如果您將此值增加為 5，則定型資料必須至少包含五個符合相同條件的案例。
 
 1. 學習**速率**會定義學習時的步驟大小。 請輸入介於0和1之間的數位。
 
-         The learning rate determines how fast or slow the learner converges on an optimal solution. If the step size is too large, you might overshoot the optimal solution. If the step size is too small, training takes longer to converge on the best solution.
+    學習速率會決定學習模組在最佳解決方案上的快速或緩慢。 如果步驟大小太大，您可能會下限最佳的解決方案。 如果步驟大小太小，訓練會花更長的時間在最佳解決方案上融合。
 
 1. [**樹狀結構數**] 表示要在集團中建立的決策樹總數。 藉由建立多個決策樹，您或許能夠有較佳的涵蓋範圍，但是定型時間會拉長。
 
 1. **亂數字種子**可選擇性地設定非負整數，做為隨機種子值使用。 指定種子可確保跨回合的重現性具有相同的資料和參數。  
 
-         The random seed is set by default to 42. Successive runs using different random seeds can have different results.
+    隨機種子預設會設定為42。 使用不同隨機種子的後續執行可能會有不同的結果。
 
 1. 將模型定型：
 
@@ -72,4 +72,4 @@ ms.locfileid: "82137819"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

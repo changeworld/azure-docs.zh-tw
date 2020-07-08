@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 06/08/2020
 ms.author: b-juche
-ms.openlocfilehash: a8c299a6f0e6732d50b40fc29bde07179fc2c412
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be18a9d54049562eebc27720988b085c3e14f2da
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185637"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956504"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -29,7 +29,7 @@ ms.locfileid: "82185637"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 資料路徑是否經過網際網路？  
 
-不可以。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是一種 Azure 原生服務，可部署到提供服務的 Azure 虛擬網路（VNet）中。 Azure NetApp Files 會使用委派的子網，並直接在 VNet 上布建網路介面。 
+否。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是一種 Azure 原生服務，可部署到提供服務的 Azure 虛擬網路（VNet）中。 Azure NetApp Files 會使用委派的子網，並直接在 VNet 上布建網路介面。 
 
 如需詳細資訊，請參閱[Azure NetApp Files 網路規劃的指導方針](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)。  
 
@@ -48,7 +48,7 @@ ms.locfileid: "82185637"
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>我可以針對 Azure NetApp Files 磁片區設定或選取自己的 IP 位址嗎？  
 
-不可以。 將 IP 指派給 Azure NetApp Files 磁片區是動態的。 不支援靜態 IP 指派。 
+否。 將 IP 指派給 Azure NetApp Files 磁片區是動態的。 不支援靜態 IP 指派。 
  
 ## <a name="security-faqs"></a>安全性常見問題集
 
@@ -64,7 +64,7 @@ ms.locfileid: "82185637"
 
 Azure NetApp Files 的金鑰管理是由服務所處理。 會針對每個磁片區產生唯一的 XTS-AES-256 資料加密金鑰。 加密金鑰階層用來加密和保護所有磁片區金鑰。 這些加密金鑰永遠不會以未加密的格式顯示或報告。 刪除磁片區時，會立即刪除加密金鑰。
 
-使用 Azure 專用 HSM 的使用者管理金鑰（攜帶您自己的金鑰）支援可在美國東部、美國西部2和美國中南部區域以控制的基礎提供。  您可以在**anffeedback@microsoft.com**要求存取權。 當容量可供使用時，將會核准要求。
+使用 Azure 專用 HSM 的使用者管理金鑰（攜帶您自己的金鑰）支援可在美國東部、美國西部2和美國中南部區域以控制的基礎提供。  您可以在要求存取權 **anffeedback@microsoft.com** 。 當容量可供使用時，將會核准要求。
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>我可以設定 NFS 匯出原則規則來控制 Azure NetApp Files 服務裝載目標的存取權嗎？
 
@@ -79,7 +79,7 @@ Azure NetApp Files 的金鑰管理是由服務所處理。 會針對每個磁片
 
 是，Azure NetApp Files 支援使用 Azure IAM 的 RBAC 功能。
 
-## <a name="performance-faqs"></a>效能常見問題
+## <a name="performance-faqs"></a>效能常見問題集
 
 ### <a name="what-should-i-do-to-optimize-or-tune-azure-netapp-files-performance"></a>我該怎麼做才能優化或調整 Azure NetApp Files 效能？
 
@@ -103,11 +103,11 @@ Azure NetApp Files 的金鑰管理是由服務所處理。 會針對每個磁片
 
 Azure NetApp Files 提供磁片區效能計量。 您也可以使用 Azure 監視器來監視 Azure NetApp Files 的使用計量。  如需 Azure NetApp Files 的效能計量清單，請參閱[Azure Netapp files 的計量](azure-netapp-files-metrics.md)。
 
-## <a name="nfs-faqs"></a>NFS 常見問題
+## <a name="nfs-faqs"></a>NFS 常見問題集
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>我想要在 Azure VM 啟動或重新開機時，自動裝載磁片區。  如何? 為持續性 NFS 磁片區設定我的主機嗎？
 
-若要讓 NFS 磁片區在 VM 啟動或重新開機時自動掛接，請將`/etc/fstab`專案新增至主機上的檔案。 
+若要讓 NFS 磁片區在 VM 啟動或重新開機時自動掛接，請將專案新增至 `/etc/fstab` 主機上的檔案。 
 
 如需詳細資訊，請參閱[掛接或卸載 Windows 或 Linux 虛擬機器的磁片](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)區。  
 
@@ -123,7 +123,11 @@ Azure NetApp Files 支援 NFSv3 和 NFSv 4.1。 您可以使用任何一個 NFS 
 
 目前不支援根抓。
 
-## <a name="smb-faqs"></a>SMB 常見問題
+## <a name="smb-faqs"></a>SMB 常見問題集
+
+### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Azure NetApp Files 支援哪些 SMB 版本？
+
+Azure NetApp Files 支援 SMB 2.1 和 SMB 3.1 （其中包含 SMB 3.0 的支援）。    
 
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>SMB 存取需要 Active Directory 連接嗎？ 
 
@@ -139,7 +143,7 @@ AD 連線設定為每個 NetApp 帳戶;AD 連線只會透過其建立所在的 N
 
 同時支援[Azure Active Directory （AD）網域服務](https://docs.microsoft.com/azure/active-directory-domain-services/overview)和[Active Directory Domain Services （AD DS）](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) 。 您可以使用現有的 Active Directory 網域控制站搭配 Azure NetApp Files。 網域控制站可位於 Azure 中做為虛擬機器，或透過 ExpressRoute 或 S2S VPN 在內部部署。 Azure NetApp Files 目前不支援[Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/)的 AD 聯結。
 
-如果您使用具有 Azure Active Directory Domain Services 的 Azure NetApp Files，則當您設定 NetApp `OU=AADDC Computers`帳戶的 Active Directory 時，組織單位路徑就會是。
+如果您將 Azure NetApp Files 與 Azure Active Directory Domain Services 搭配使用，當您為 NetApp 帳戶設定 Active Directory 時，組織單位路徑是 `OU=AADDC Computers`。
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>支援哪些版本的 Windows Server Active Directory？
 
@@ -169,27 +173,30 @@ Azure NetApp Files 提供容量集區和磁片區使用計量。 您也可以使
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>我可以透過 Azure 儲存體總管來管理 Azure NetApp Files 嗎？
 
-不可以。 Azure 儲存體總管不支援 Azure NetApp Files。
+否。 Azure 儲存體總管不支援 Azure NetApp Files。
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何? 判斷目錄是否已接近限制大小？
 
-您可以從客戶`stat`端使用命令來查看目錄是否接近大小上限（320 MB）。
+您可以 `stat` 從用戶端使用命令來查看目錄是否已接近目錄中繼資料（320 MB）的大小上限。
 
 若為 320 MB 目錄，區塊數目為655360，每個區塊大小為512個位元組。  （也就是 320x1024x1024/512）。  
 
 範例：
 
-    [makam@cycrh6rtp07 ~]$ stat bin
-    File: 'bin'
-    Size: 4096            Blocks: 8          IO Block: 65536  directory
+```console
+[makam@cycrh6rtp07 ~]$ stat bin
+File: 'bin'
+Size: 4096            Blocks: 8          IO Block: 65536  directory
 
-    [makam@cycrh6rtp07 ~]$ stat tmp
-    File: 'tmp'
-    Size: 12288           Blocks: 24         IO Block: 65536  directory
+[makam@cycrh6rtp07 ~]$ stat tmp
+File: 'tmp'
+Size: 12288           Blocks: 24         IO Block: 65536  directory
  
-    [makam@cycrh6rtp07 ~]$ stat tmp1
-    File: 'tmp1'
-    Size: 4096            Blocks: 8          IO Block: 65536  directory
+[makam@cycrh6rtp07 ~]$ stat tmp1
+File: 'tmp1'
+Size: 4096            Blocks: 8          IO Block: 65536  directory
+```
+
 
 ## <a name="data-migration-and-protection-faqs"></a>資料移轉和保護常見問題
 
@@ -223,16 +230,16 @@ NetApp 提供以 SaaS 為基礎的解決方案，即[Netapp Cloud Sync](https://
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>是否支援使用 Azure 資料箱進行遷移？
 
-不可以。 Azure 資料箱目前不支援 Azure NetApp Files。 
+否。 Azure 資料箱目前不支援 Azure NetApp Files。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支援使用 Azure 匯入/匯出服務進行遷移？
 
-不可以。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
+否。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
 
 ## <a name="next-steps"></a>後續步驟  
 
 - [Microsoft Azure ExpressRoute 常見問題](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Microsoft Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
 - [如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
-- [Azure 資料箱](https://docs.microsoft.com/azure/databox-family/)
+- [Azure 資料箱](https://docs.microsoft.com/azure/databox)
 - [適用于 Azure NetApp Files 的 SMB 效能常見問題](azure-netapp-files-smb-performance.md)

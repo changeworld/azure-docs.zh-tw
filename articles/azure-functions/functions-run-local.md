@@ -7,6 +7,7 @@ ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
 ms.openlocfilehash: 35d408c636e20aef9495e72bc8535e0d7a99431e
 ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/05/2020
 ms.locfileid: "85955263"
@@ -203,7 +204,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init`支援下列版本 3.x/2. x-only 的選項，除非另有注明：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | 初始化[c # 類別庫（.cs）專案](functions-dotnet-class-library.md)。 |
 | **`--csx`** | 初始化[c # 腳本（. .csx）專案](functions-reference-csharp.md)。 您必須在後續的命令中指定 `--csx`。 |
@@ -304,7 +305,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 您也可以使用下列引數，在命令中指定這些選項：
 
-| 引數     | 說明                            |
+| 引數     | 描述                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | （版本 3.x/2.x）產生在1.x 版和入口網站中使用的相同 c # 腳本（. .csx）範本。 |
 | **`--language`**, **`-l`**| 範本程式語言，例如 C#、F# 或 JavaScript。 這是 1.x 版中的必要選項。 在 3.x/2.x 版中，請勿使用此選項，或選擇符合背景工作執行時間的語言。 |
@@ -363,7 +364,7 @@ npm start
 
 `func start` 支援下列選項：
 
-| 選項     | Description                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 執行前請勿建置目前的專案。 僅適用於 dotnet 專案。 預設會設定為 false。 1.x 版不支援。 |
 | **`--cert`** | 包含私密金鑰的 .pfx 檔案路徑。 僅能與 `--useHttps` 搭配使用。 1.x 版不支援。 |
@@ -473,7 +474,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 
 `func run` 支援下列選項：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | 內嵌內容。 |
 | **`--debug`**, **`-d`** | 在執行函式之前，請先將偵錯工具附加到主機處理序。|
@@ -512,14 +513,14 @@ func azure functionapp publish <FunctionAppName>
 
 下列發行選項適用于3.x、2.x 和1.x 版：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  將 local.settings.json 中的設定發佈至 Azure，若設定已經存在，則提示進行覆寫。 如果您使用 Microsoft Azure 儲存體模擬器，請先將應用程式設定變更為[實際的儲存體連接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 在使用 `--publish-local-settings -i` 時隱藏覆寫應用程式設定的提示。|
 
 只有3.x 和2.x 版才支援下列發行選項：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  僅發佈設定而略過內容。 預設值為提示。 |
 |**`--list-ignored-files`** | 顯示在發佈期間忽略的檔案清單，以 .funcignore 檔案為準。 |
@@ -543,7 +544,7 @@ func deploy
 
 以下是可用的自訂容器部署選項：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 目前的使用者所登入的 Docker 登錄名稱。 |
 | **`--platform`** | 函式應用程式的裝載平台。 有效選項為 `kubernetes` |

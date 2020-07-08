@@ -3,12 +3,12 @@ title: Azure Batch 中的作業和工作
 description: 從開發觀點了解作業和工作，以及如何在 Azure Batch 工作流程中使用。
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: aeffd05a26066675ca320ab4b3c3c09e6807e6df
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 5120b76f34e81c2ceeba88767a656b5ee0d40c2f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790805"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955364"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Azure Batch 中的作業和工作
 
@@ -22,7 +22,7 @@ ms.locfileid: "83790805"
 
 ### <a name="job-priority"></a>作業優先順序
 
-您可以將選擇性的作業優先順序指派給您所建立的作業。 Batch 服務會使用作業的優先順序值，以決定帳戶內的作業排程順序 (這不會與 [排程的作業](#scheduled-jobs)混淆)。 優先順序值可以介於 -1000 到 1000，-1000 表示最低優先順序，1000 表示最高優先順序。 若要更新作業的屬性，呼叫[更新作業的屬性](https://docs.microsoft.com/rest/api/batchservice/job/update)作業 (Batch REST) 或藉由修改 [CloudJob.Priority](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) 屬性 (Batch .NET)。
+您可以將選擇性的作業優先順序指派給您所建立的作業。 Batch 服務會使用作業的優先順序值，以決定帳戶內的作業排程順序 (這不會與 [排程的作業](#scheduled-jobs)混淆)。 優先順序值可以介於 -1000 到 1000，-1000 表示最低優先順序，1000 表示最高優先順序。 若要更新作業的屬性，呼叫[更新作業的屬性](/rest/api/batchservice/job/update)作業 (Batch REST) 或藉由修改 [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) 屬性 (Batch .NET)。
 
 在相同的帳戶內，較高優先順序的作業具有比低優先順序作業更高的排程優先順序。 一個帳戶中具有較高優先順序值的作業，其排程優先順序並不高於不同帳戶中較低優先順序值的另一項作業。 已在執行中的較低優先順序作業中的工作不會被優先佔用。
 
@@ -39,13 +39,13 @@ ms.locfileid: "83790805"
 
 用戶端應用程式可以在作業中新增工作，或者您可以指定 [作業管理員工作](#job-manager-task)。 作業管理員工作包含為作業建立必要工作所需的資訊，而作業管理員工作會在集區內的其中一個計算節點上執行。 Batch 會特別處理作業管理員工作，此工作會在作業建立後立即排入佇列，且在失敗時會重新啟動。 由[作業排程](#scheduled-jobs)建立的作業需要有作業管理員工作，因為其為在作業具現化之前唯一可定義工作的方法。
 
-根據預設，作業內的所有工作都完成時，作業仍會保持作用中狀態。 您可以變更此行為，讓作業在其中的所有工作完成時自動終止。 將作業的 **onAllTasksComplete** 屬性 (在 Batch .NET 中為 [OnAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob)) 設定為 terminatejob，以在作業的所有工作處於已完成狀態時，自動終止該作業。
+根據預設，作業內的所有工作都完成時，作業仍會保持作用中狀態。 您可以變更此行為，讓作業在其中的所有工作完成時自動終止。 將作業的 **onAllTasksComplete** 屬性 (在 Batch .NET 中為 [OnAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob)) 設定為 terminatejob，以在作業的所有工作處於已完成狀態時，自動終止該作業。
 
 Batch 服務會將「沒有」工作的作業視為其所有工作都已完成。 因此，這個選項最常搭配 [作業管理員工作](#job-manager-task)使用。 如果您想要使用自動作業終止，而不透過作業管理員，您一開始就應該將新作業的 **onAllTasksComplete** 屬性設定為 noaction，而只在您完成將工作新增至作業之後，將它設定為 terminatejob。
 
 ### <a name="scheduled-jobs"></a>Scheduled jobs
 
-[作業排程](https://docs.microsoft.com/rest/api/batchservice/jobschedule)可讓您在 Batch 服務內建立週期性作業。 作業排程會指定何時要執行作業，並且包含要執行之作業的規格。 您可以指定排程的持續時間 (排程的有效時間和生效時間)，以及在排程期間建立作業的頻率。
+[作業排程](/rest/api/batchservice/jobschedule)可讓您在 Batch 服務內建立週期性作業。 作業排程會指定何時要執行作業，並且包含要執行之作業的規格。 您可以指定排程的持續時間 (排程的有效時間和生效時間)，以及在排程期間建立作業的頻率。
 
 ## <a name="tasks"></a>工作
 
@@ -153,11 +153,11 @@ Batch 會提供作業準備工作，以進行前置作業的執行設定，以�
 
 ### <a name="environment-settings-for-tasks"></a>工作的環境設定
 
-Batch 服務所執行的每個工作都可以存取在計算節點上設定的環境變數。 這包括 Batch 服務所定義 ([服務定義的](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables)) 的環境變數，以及您可以為工作定義的自訂環境變數。 工作所執行的應用程式和指令碼，可以在執行期間存取這些環境變數。
+Batch 服務所執行的每個工作都可以存取在計算節點上設定的環境變數。 這包括 Batch 服務所定義 ([服務定義的](./batch-compute-node-environment-variables.md)) 的環境變數，以及您可以為工作定義的自訂環境變數。 工作所執行的應用程式和指令碼，可以在執行期間存取這些環境變數。
 
-您可以填入這些實體的「環境設定」  屬性，以在工作或作業層級設定自訂環境變數。 例如，請參閱[將工作新增至作業](https://docs.microsoft.com/rest/api/batchservice/task/add?)作業 (Batch REST API) 或 Batch .NET 中的 [CloudTask.EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) 和 [CloudJob.CommonEnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) 屬性。
+您可以填入這些實體的「環境設定」  屬性，以在工作或作業層級設定自訂環境變數。 例如，請參閱[將工作新增至作業](/rest/api/batchservice/task/add?)作業 (Batch REST API) 或 Batch .NET 中的 [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) 和 [CloudJob.CommonEnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudjob) 屬性。
 
-您的用戶端應用程式或服務可藉由使用[取得工作的相關資訊](https://docs.microsoft.com/rest/api/batchservice/task/get)作業 (Batch REST) 或存取 [CloudTask.EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) 屬性 (Batch .NET)，取得工作的環境變數 (服務定義和自訂)。 在計算節點上執行的程序可以在節點上存取這些和其他環境變數，例如，藉由使用熟悉的 `%VARIABLE_NAME%` (Windows) 或 `$VARIABLE_NAME` (Linux) 語法。
+您的用戶端應用程式或服務可藉由使用[取得工作的相關資訊](/rest/api/batchservice/task/get)作業 (Batch REST) 或存取 [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) 屬性 (Batch .NET)，取得工作的環境變數 (服務定義和自訂)。 在計算節點上執行的程序可以在節點上存取這些和其他環境變數，例如，藉由使用熟悉的 `%VARIABLE_NAME%` (Windows) 或 `$VARIABLE_NAME` (Linux) 語法。
 
 您可以在[計算節點環境變數](batch-compute-node-environment-variables.md)中找到所有服務定義的環境變數完整清單。
 

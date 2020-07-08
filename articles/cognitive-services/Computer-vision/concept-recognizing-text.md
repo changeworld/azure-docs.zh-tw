@@ -1,7 +1,7 @@
 ---
-title: 從影像和檔讀取文字-電腦視覺
+title: 光學字元辨識（OCR）-電腦視覺
 titleSuffix: Azure Cognitive Services
-description: 使用電腦視覺 API 的列印和手寫文字之影像和檔中的光學字元辨識（OCR）和文字的相關概念。
+description: 使用電腦視覺 API，從影像和檔與列印和手寫文字的光學字元辨識（OCR）相關概念。
 services: cognitive-services
 author: msbbonsu
 manager: netahw
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 416a7edfdcd7e7915aa7886a8f53cf822b43fe93
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: d1c642a660b24cfc54c9c4308b8956582e13d50a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560802"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954735"
 ---
-# <a name="read-text-from-images-and-documents"></a>讀取影像和文件中的文字
+# <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
 
 電腦視覺包括以深度學習為基礎的新光學字元辨識（OCR）功能，可從影像和 PDF 檔中解壓縮列印或手寫文字。 電腦視覺會從類比檔（影像、掃描的檔）和數位檔中解壓縮文字。 您可以從真實影像中取出文字，例如授權盤子的相片或具有序號的容器，以及檔-發票、帳單、財務報告、文章等等。 此 OCR 功能可作為雲端或內部部署（容器）中受控服務的一部分。 此外，它也支援虛擬網路和私人端點，以符合您的企業級合規性和隱私權需求。
 
