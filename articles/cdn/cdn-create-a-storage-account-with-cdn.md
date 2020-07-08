@@ -114,7 +114,7 @@ http://<*endpoint-name*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 在前述步驟中，您在資源群組中建立了 CDN 設定檔和端點。 如果您想移至[後續步驟](#next-steps)並了解如何將自訂網域新增至您的端點，請儲存這些資源。 不過，如果您認為未來不需要使用這些資源，可以藉由刪除資源群組的方式將其刪除，以避免額外的費用：
 
-1. 從 Azure 入口網站的左側功能表中，依序選取 [資源群組] 和 *CDNQuickstart-rg**。
+1. 從 Azure 入口網站的左側功能表中，依序選取 [資源群組] 和 *CDNQuickstart-rg*\*。
 
 2. 在 [資源群組] 頁面上選取 [刪除資源群組]，在文字方塊中輸入 *CDNQuickstart-rg*，然後選取 [刪除]。
 
