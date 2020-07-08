@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d2dba0f657b418267db90c07014dc8996ed12a10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80059966"
 ---
 建立自我簽署根憑證之後，請匯出根憑證公開金鑰.cer 檔案 (而非私密金鑰)。 您稍後會將此檔案上傳至 Azure。 下列步驟可協助您匯出自我簽署根憑證的 .cer 檔案：
@@ -29,7 +29,7 @@ ms.locfileid: "80059966"
 4. 在 [匯出檔案格式]**** 頁面上，選取 [Base-64 編碼 X.509 (.CER)]****，然後按 [下一步]****。
 
    ![Base-64 編碼](./media/vpn-gateway-certificates-export-public-key-include/base64.png)
-5. 針對 [要匯出的檔案]****，[瀏覽]**** 至您要匯出憑證的位置。 針對 [檔案名稱] ****，請為憑證檔案命名。 然後按 [下一步]  。
+5. 針對 [要匯出的檔案]****，[瀏覽]**** 至您要匯出憑證的位置。 針對 [檔案名稱] ****，請為憑證檔案命名。 然後按 [下一步] ****。
 
    ![瀏覽](./media/vpn-gateway-certificates-export-public-key-include/browse.png)
 6. 按一下 [完成]**** 匯出憑證。

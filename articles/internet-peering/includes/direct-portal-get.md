@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e50f53c65c330265d3d9ec1b1804a7910b632b1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81678834"
 ---
 1. 移至 [**資源群組**]，然後選取您在建立對**等互連**資源時選取的資源群組。 如果您有太多的資源群組，請使用 [**篩選**] 方塊。

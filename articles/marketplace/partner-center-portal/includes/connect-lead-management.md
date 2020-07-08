@@ -10,17 +10,17 @@ ms.date: 08/16/2019
 ms.author: dsindona
 ms.custom: include file
 ms.openlocfilehash: cf6a5730f92eba8f0a4e63bf40a4d2b50f76eb3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131108"
 ---
 當您透過合作夥伴中心將供應專案發佈至 marketplace 時，您需要將您的供應專案連線到您的 CRM 系統。 如此一來，您就可以在客戶表示感興趣或部署您的產品之後，立即收到客戶連絡人資訊。
 
 1. 選取您要我們傳送潛在客戶至其中的潛在客戶目的地。 以下為支援的 CRM 系統：
 
-    * [Dynamics 365](../commercial-marketplace-lead-management-instructions-dynamics.md) For Customer Engagement
+    * [Dynamics 365](../commercial-marketplace-lead-management-instructions-dynamics.md) \(部分機器翻譯\) for Customer Engagement
     * [Marketo](../commercial-marketplace-lead-management-instructions-marketo.md)
     * [Salesforce](../commercial-marketplace-lead-management-instructions-salesforce.md)
 

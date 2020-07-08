@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79500194"
 ---
 1. 在 Windows 10 用戶端上安裝用戶端憑證，如此[點對站 VPN 用戶端一](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)文所示。 憑證必須位於 [目前使用者] 存放區中。
@@ -23,7 +23,7 @@ ms.locfileid: "79500194"
 
 設定虛擬網路閘道並在 Windows 10 用戶端的本機電腦存放區中安裝用戶端憑證之後，請使用下列範例來設定用戶端裝置通道：
 
-1. 複製下列文字，並將它儲存為*usercert*：
+1. 複製下列文字，並將它儲存為*usercert.ps1*：
 
    ```
    Param(
@@ -75,7 +75,7 @@ ms.locfileid: "79500194"
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 複製下列文字，並將它儲存為*VPNProfile*與*usercert*相同的資料夾中。 編輯下列文字以符合您的環境：
+1. 複製下列文字，並將它儲存為與*usercert.ps1*相同資料夾中的*VPNProfile.xml* 。 編輯下列文字以符合您的環境：
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
@@ -121,7 +121,7 @@ ms.locfileid: "79500194"
    ```
 1. 以系統管理員身分執行 PowerShell。
 
-1. 在 PowerShell 中，切換至*usercert*和*VPNProfile*所在的資料夾，然後執行下列命令：
+1. 在 PowerShell 中，切換至*usercert.ps1*和*VPNProfile.xml*所在的資料夾，然後執行下列命令：
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest

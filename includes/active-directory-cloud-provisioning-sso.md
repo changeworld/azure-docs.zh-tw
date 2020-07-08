@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
 ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79504365"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>啟用單一登入的步驟
@@ -37,10 +37,10 @@ ms.locfileid: "79504365"
 1. 呼叫 `Enable-AzureADSSOForest`。 出現提示時，輸入預定 Active Directory 樹系的網域管理員認證。
 
    > [!NOTE]
-   >必須以 SAM 帳戶名稱格式（contoso\johndoe 或 contoso. com\johndoe）輸入網域系統管理員認證的使用者名稱。 我們使用使用者名稱的網域部分，透過 DNS 找出網域系統管理員的網域控制站。
+   >必須以 SAM 帳戶名稱格式 (contoso\johndoe 或 contoso.com\johndoe) 輸入網域系統管理員認證使用者名稱。 我們會利用使用者名稱的網域部分，使用 DNS 來尋找網域系統管理員的網域控制站。
 
    >[!NOTE]
-   >使用的網域系統管理員帳戶不得為 Protected Users 群組的成員。 若是如此，作業將會失敗。
+   >使用的網域系統管理員帳戶不得為「受保護的使用者」群組的成員。 若是如此，作業會失敗。
 
 2. 已設定此功能的每個 Active Directory 樹系，均重複上述步驟。
 

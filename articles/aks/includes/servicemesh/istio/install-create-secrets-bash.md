@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: e8b94b4adc39de81dbdf17dfd24fcff39532b482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77593931"
 ---
 ### <a name="add-grafana-secret"></a>新增 Grafana 秘密
 
-以您`REPLACE_WITH_YOUR_SECURE_PASSWORD`的密碼取代權杖，然後執行下列命令：
+`REPLACE_WITH_YOUR_SECURE_PASSWORD`以您的密碼取代權杖，然後執行下列命令：
 
 ```bash
 GRAFANA_USERNAME=$(echo -n "grafana" | base64)
@@ -35,7 +35,7 @@ EOF
 
 ### <a name="add-kiali-secret"></a>新增 Kiali 秘密
 
-以您`REPLACE_WITH_YOUR_SECURE_PASSWORD`的密碼取代權杖，然後執行下列命令：
+`REPLACE_WITH_YOUR_SECURE_PASSWORD`以您的密碼取代權杖，然後執行下列命令：
 
 ```bash
 KIALI_USERNAME=$(echo -n "kiali" | base64)

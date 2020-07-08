@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 11/15/2019
 ms.author: pabouwer
 ms.openlocfilehash: b310de560f9791e1fc49d54dfbf0789c38d37f57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77593929"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>下載並安裝 Istio istioctl 用戶端二進位檔
 
-在 linux 或[適用于 linux 的 Windows 子系統][install-wsl]上以 bash 為基礎的`curl` shell 中，使用下載 Istio 版本，然後`tar`以解壓縮，如下所示：
+在 linux 或[適用于 linux 的 Windows 子系統][install-wsl]上以 bash 為基礎的 shell 中，使用 `curl` 下載 Istio 版本，然後以解壓縮， `tar` 如下所示：
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions

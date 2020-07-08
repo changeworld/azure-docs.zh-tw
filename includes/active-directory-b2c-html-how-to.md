@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
 ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80117200"
 ---
 ## <a name="use-custom-page-content"></a>使用自訂頁面內容
@@ -24,9 +24,9 @@ Azure AD B2C 使用[跨原始資源分享（CORS）](https://www.w3.org/TR/cors/
 
 ## <a name="custom-html-page-content"></a>自訂 HTML 網頁內容
 
-使用您自己的商標建立 HTML 網頁，以提供您的自訂頁面內容。 此頁面可以是靜態`*.html`頁面，或動態頁面，例如 .net、NODE.JS 或 PHP。
+使用您自己的商標建立 HTML 網頁，以提供您的自訂頁面內容。 此頁面可以是靜態 `*.html` 頁面，或動態頁面（例如 .net、Node.js 或 PHP）。
 
-您的自訂頁面內容可以包含任何 HTML 專案，包括 CSS 和 JavaScript，但不能包含不安全的元素，例如 iframe。 唯一必要的元素是`id`設定為`api`的 DIV 元素，例如 HTML 網頁`<div id="api"></div>`中的這個專案。
+您的自訂頁面內容可以包含任何 HTML 專案，包括 CSS 和 JavaScript，但不能包含不安全的元素，例如 iframe。 唯一必要的元素是設定為的 div 元素 `id` `api` ，例如 `<div id="api"></div>` HTML 網頁中的這個專案。
 
 ```html
 <!DOCTYPE html>
@@ -46,11 +46,11 @@ Azure AD B2C 使用[跨原始資源分享（CORS）](https://www.w3.org/TR/cors/
 
 下表列出 Azure AD B2C 所提供的預設頁面內容。 下載檔案，並使用它們做為建立您自己的自訂頁面的起點。
 
-| 預設頁面 | 描述 | 內容定義識別碼<br/>（僅限自訂原則） |
+| 預設頁面 | Description | 內容定義識別碼<br/>（僅限自訂原則） |
 |:-----------------------|:--------|-------------|
-| [例外狀況 .html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **錯誤頁面**。 在發生例外狀況或錯誤時，系統會顯示此頁面。 | api.error** |
+| [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **錯誤頁面**。 在發生例外狀況或錯誤時，系統會顯示此頁面。 | api.error** |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **自我判斷頁**。 使用此檔案作為社交帳戶註冊頁面、本機帳戶註冊頁面、本機帳戶登入頁面、密碼重設等的自訂頁面內容。 此表單可以包含各種輸入控制項，例如文字輸入方塊、密碼輸入方塊、選項按鈕、單選下拉式清單方塊和多選核取方塊。 | *localaccountsignin*，api. *localaccountsignup*， *api. localaccountpasswordreset*， *api. selfasserted* |
-| [multifactor-1.0.0 .html](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-Factor Authentication 頁面**。 在此頁面上，使用者可以在註冊或登入期間驗證其電話號碼 (藉由使用文字或語音)。 | *api.phonefactor* |
+| [multifactor-1.0.0.html](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-Factor Authentication 頁面**。 在此頁面上，使用者可以在註冊或登入期間驗證其電話號碼 (藉由使用文字或語音)。 | *api.phonefactor* |
 | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **設定檔更新頁面**。 此頁面包含一份表單，使用者可用來更新其設定檔。 此頁面類似於社交帳戶註冊頁面，但密碼輸入欄位除外。 | *api.selfasserted.profileupdate* |
 | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **統一的註冊或登入頁面**。 此頁面可處理使用者的註冊和登入程序。 使用者可以使用企業識別提供者、社交識別提供者 (如 Facebook 或 Google+) 或本機帳戶。 | *api.signuporsignin* |
 
@@ -61,7 +61,7 @@ Azure AD B2C 使用[跨原始資源分享（CORS）](https://www.w3.org/TR/cors/
 ## <a name="guidelines-for-using-custom-page-content"></a>使用自訂頁面內容的指導方針
 
 - 當您在 HTML 檔案中包含媒體、CSS 和 JavaScript 檔案之類的外部資源時，請使用絕對 URL。
-- 使用[頁面配置](../articles/active-directory-b2c/page-layout.md)1.2.0 和更新版本，您可以在 HTML `data-preload="true"`標記中加入屬性，以控制 CSS 和 JavaScript 的載入順序。 使用`data-preload=true`時，會先建立頁面，然後才向使用者顯示。 此屬性可透過預先載入 CSS 檔案來防止頁面「閃爍」，而不會對使用者顯示未使用樣式的 HTML。 下列 HTML 程式碼片段顯示`data-preload`標記的用法。
+- 使用[頁面配置](../articles/active-directory-b2c/page-layout.md)1.2.0 和更新版本，您可以 `data-preload="true"` 在 HTML 標籤中加入屬性，以控制 CSS 和 JavaScript 的載入順序。 使用 `data-preload=true` 時，會先建立頁面，然後才向使用者顯示。 此屬性可透過預先載入 CSS 檔案來防止頁面「閃爍」，而不會對使用者顯示未使用樣式的 HTML。 下列 HTML 程式碼片段顯示標記的用法 `data-preload` 。
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
@@ -73,14 +73,14 @@ Azure AD B2C 使用[跨原始資源分享（CORS）](https://www.w3.org/TR/cors/
   - Google Chrome 42.0 和更新版本
   - Mozilla Firefox 38.0 和更新版本
   - 適用于 iOS 和 macOS 的 Safari，第12版及更新版本
-- 由於安全性限制，Azure AD B2C 不支援`frame`、 `iframe`或`form` HTML 元素。
+- 由於安全性限制，Azure AD B2C 不支援 `frame` 、 `iframe` 或 `form` HTML 元素。
 
 ## <a name="custom-page-content-walkthrough"></a>自訂頁面內容逐步解說
 
 以下是處理常式的總覽：
 
 1. 準備一個位置來裝載您的自訂頁面內容（可公開存取、具備 CORS 功能的 HTTPS 端點）。
-1. 下載並自訂預設頁面內容檔案，例如`unified.html`。
+1. 下載並自訂預設頁面內容檔案，例如 `unified.html` 。
 1. 發佈您的自訂頁面內容公開可用的 HTTPS 端點。
 1. 為您的 Web 應用程式設定跨原始來源資源分享 (CORS)。
 1. 將您的原則指向您的自訂原則內容 URI。
@@ -89,7 +89,7 @@ Azure AD B2C 使用[跨原始資源分享（CORS）](https://www.w3.org/TR/cors/
 
 在標題中使用產品的品牌名稱建立自訂頁面內容。
 
-1. 複製下列 HTML 程式碼片段。 它是語式正確的 HTML5，其名* \<為 div id = "api"\>\</div\> *位於* \<主體\> *標記內。 這個元素指出要插入 Azure AD B2C 內容的地方。
+1. 複製下列 HTML 程式碼片段。 它是語式正確的 HTML5，具有名為的空元素， *\<div id="api"\>\</div\>* 位於 *\<body\>* 標記內。 這個元素指出要插入 Azure AD B2C 內容的地方。
 
    ```html
    <!DOCTYPE html>
@@ -115,7 +115,7 @@ Azure AD B2C 使用[跨原始資源分享（CORS）](https://www.w3.org/TR/cors/
 若要在 Blob 儲存體中裝載您的 HTML 內容，請執行下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在 [**中樞**] 功能表上，選取 [**新增** > ] [**儲存體** > ] [儲存體**帳戶**]。
+1. 在 [**中樞**] 功能表上，選取 [**新增**] [儲存體] [儲存體  >  **Storage**  >  **帳戶**]。
 1. 選取儲存體帳戶的**訂**用帳戶。
 1. 建立**資源群組**，或選取現有的一個。
 1. 為您的儲存體帳戶輸入唯一的**名稱**。
@@ -140,14 +140,14 @@ Azure AD B2C 使用[跨原始資源分享（CORS）](https://www.w3.org/TR/cors/
 
 #### <a name="22-upload-your-custom-page-content-files"></a>2.2 上傳您的自訂頁面內容檔案
 
-1. 選取 [上傳]****。
+1. 選取 [上傳] 。
 1. 選取 [**選取**檔案] 旁的資料夾圖示。
-1. 流覽至 [customize-ui.html]，然後選取您稍早在 [頁面 UI 自訂] 區段中建立的 [ **.html**]。
+1. 流覽並選取您稍早在 [頁面 UI 自訂] 區段中建立的**customize-ui.html**。
 1. 如果您想要上傳至子資料夾，請展開 [ **Advanced** ]，然後在 **[上傳到資料夾**] 中輸入資料夾名稱。
-1. 選取 [上傳]****。
+1. 選取 [上傳] 。
 1. 選取您上傳的**customize-ui.html** blob。
 1. 在 [ **URL** ] 文字方塊的右邊，選取 [**複製到剪貼**簿] 圖示，將 URL 複製到剪貼簿。
-1. 在網頁瀏覽器中，流覽至您複製的 URL，以確認您上傳的 blob 可供存取。 如果無法存取，例如，如果您遇到`ResourceNotFound`錯誤，請確定容器的存取類型設定為 [ **blob**]。
+1. 在網頁瀏覽器中，流覽至您複製的 URL，以確認您上傳的 blob 可供存取。 如果無法存取，例如，如果您遇到 `ResourceNotFound` 錯誤，請確定容器的存取類型設定為 [ **blob**]。
 
 ### <a name="3-configure-cors"></a>3. 設定 CORS
 
@@ -159,7 +159,7 @@ Azure AD B2C 使用[跨原始資源分享（CORS）](https://www.w3.org/TR/cors/
 1. 針對 [允許的標頭]****，輸入星號 (*)。
 1. 針對 [公開的標頭]****，輸入星號 (*)。
 1. 針對 [最大壽命]****，輸入 200。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 #### <a name="31-test-cors"></a>3.1 測試 CORS
 
@@ -169,5 +169,5 @@ Azure AD B2C 使用[跨原始資源分享（CORS）](https://www.w3.org/TR/cors/
 1. 流覽至[www.test-cors.org](https://www.test-cors.org/) 
 1. 在 [**遠端 URL** ] 方塊中，貼上 HTML 檔案的 URL。 例如， `https://your-account.blob.core.windows.net/azure-ad-b2c/unified.html`
 1. 選取 [**傳送要求**]。
-    結果應該是`XHR status: 200`。 
+    結果應該是 `XHR status: 200` 。 
     如果您收到錯誤，請確定您的 CORS 設定正確無誤。 您也可能需要清除瀏覽器快取，或按 Ctrl+Shift+P 來開啟 InPrivate 瀏覽工作階段。

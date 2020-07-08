@@ -8,15 +8,15 @@ ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 6bb59db4c1b31033b1e116742dedc94621b1c60d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80117071"
 ---
 [Durable Functions](../articles/azure-functions/durable-functions-overview.md) 的組態設定。
 
-### <a name="durable-functions-1x"></a>Durable Functions 1。x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -43,7 +43,7 @@ ms.locfileid: "80117071"
 }
 ```
 
-### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Durable Functions 2。x
+### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Durable Functions 2.x
 
 ```json
 {
@@ -104,15 +104,15 @@ ms.locfileid: "80117071"
 |maxConcurrentOrchestratorFunctions |目前電腦上的 10 倍處理器數目|可以在單一主機執行個體上同時處理的協調器函式數目上限。|
 |maxQueuePollingInterval|30 秒|最大控制和工作專案佇列輪詢間隔 *（以 hh： mm： ss*格式）。 較高的值可能會導致訊息處理延遲較高。 較低的值會因為儲存體交易增加而導致儲存成本較高。|
 |azureStorageConnectionStringName |AzureWebJobsStorage|具有 Azure 儲存體連接字串的應用程式設定名稱，而該連接字串用來管理基礎的 Azure 儲存體資源。|
-|trackingStoreConnectionStringName||用於記錄和實例資料表的連接字串名稱。 如果未指定，則`azureStorageConnectionStringName`會使用連接。|
-|trackingStoreNamePrefix||當指定時`trackingStoreConnectionStringName` ，用於歷程記錄和實例資料表的前置詞。 如果未設定，預設的前置詞值會`DurableTask`是。 如果`trackingStoreConnectionStringName`未指定，則歷程記錄和實例資料表會使用`hubName`值做為其前置詞，且的`trackingStoreNamePrefix`任何設定都會被忽略。|
+|trackingStoreConnectionStringName||用於記錄和實例資料表的連接字串名稱。 如果未指定，則 `azureStorageConnectionStringName` 會使用連接。|
+|trackingStoreNamePrefix||當指定時，用於歷程記錄和實例資料表的前置詞 `trackingStoreConnectionStringName` 。 如果未設定，預設的前置詞值會是 `DurableTask` 。 如果 `trackingStoreConnectionStringName` 未指定，則歷程記錄和實例資料表會使用 `hubName` 值做為其前置詞，且的任何設定 `trackingStoreNamePrefix` 都會被忽略。|
 |traceInputsAndOutputs |false|此值指出是否要追蹤函式呼叫的輸入和輸出。 追蹤函式執行事件時的預設行為就是在函式呼叫的序列化輸入和輸出中包含位元組數目。 這種行為可提供輸入和輸出外觀的最小資訊，而不需小心記錄或不小心公開機密資訊。 將此屬性設定為 true，會導致預設函式記錄功能記錄函式輸入和輸出的整個內容。|
 |logReplayEvents|false|此值可指出是否要將協調流程重新執行事件寫入 Application Insights。|
 |eventGridTopicEndpoint ||Azure 事件方格自訂主題端點的 URL。 設定此屬性時，協調流程生命週期通知事件會發佈到此端點。 這個屬性支援應用程式設定解析。|
 |eventGridKeySettingName ||應用程式設定的名稱，其中包含在 `EventGridTopicEndpoint` 用來向 Azure 事件方格自訂主題進行驗證的金鑰。|
 |eventGridPublishRetryCount|0|如果發佈到 Event Grid 主題失敗，重試的次數。|
 |eventGridPublishRetryInterval|5 分鐘|「事件方格」會以 *hh:mm:ss* 格式發佈重試間隔。|
-|eventGridPublishEventTypes||要發佈至事件方格的事件種類清單。 如果未指定，則會發行所有事件種類。 允許的值`Started`包括`Completed`、 `Failed`、 `Terminated`、。|
+|eventGridPublishEventTypes||要發佈至事件方格的事件種類清單。 如果未指定，則會發行所有事件種類。 允許的值包括 `Started` 、 `Completed` 、 `Failed` 、 `Terminated` 。|
 |useGracefulShutdown|false|預覽啟用正常關機，以降低主機關機失敗的進程內函式執行的機會。|
 
-這些設定中有許多都是用來優化效能。 如需詳細資訊，請參閱[效能和級別](../articles/azure-functions/durable-functions-perf-and-scale.md)。
+這些設定中有許多都是用來優化效能。 如需詳細資訊，請參閱[效能和擴充](../articles/azure-functions/durable-functions-perf-and-scale.md)。

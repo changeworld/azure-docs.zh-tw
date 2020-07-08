@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4ea97e2dbee87f7ab129c4295276c9024c0212c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80117073"
 ---
 Windows 10 VPN 用戶端 Always On 的新功能，就是維護 VPN 連線的能力。 使用 Always On 時，作用中的 VPN 設定檔可以根據觸發程式自動連線並保持連接狀態，例如使用者登入、網路狀態變更或裝置螢幕作用中。

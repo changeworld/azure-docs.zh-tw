@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 727b2985711b51f1474fecb014906b08d18437cb
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562115"
 ---
 - 若要存取 Azure Stack Edge 服務，您的組織必須具有 Enterprise 合約（EA）或雲端解決方案提供者（CSP）訂用帳戶。 如需詳細資訊，請參閱[註冊 Azure 訂](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)用帳戶。

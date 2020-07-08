@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: tamram
 ms.openlocfilehash: 27617da97ced9ac775beae71e4c25202944b2aba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78940947"
 ---
 下表描述資料表儲存體的容量、擴充性和效能目標。

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/20/2020
 ms.author: ilayr
 ms.openlocfilehash: d9e23e74cd980ecf44cd04ad2b6f89dc6a4cf868
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76548187"
 ---
 下表描述 Azure 資料總管叢集的最大限制。
@@ -22,7 +22,7 @@ ms.locfileid: "76548187"
 
 下表描述在 Azure 資料總管叢集上執行之管理作業的限制。
 
-| 影響範圍 | 作業 | 限制 |
+| 影響範圍 | 操作 | 限制 |
 | --- | --- | --- |
 | 叢集 | 讀取（例如，取得叢集） | 每5分鐘500 |
 | 叢集 | 寫入（例如，建立資料庫） | 每小時1000 |

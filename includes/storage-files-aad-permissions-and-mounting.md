@@ -9,10 +9,10 @@ ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
 ms.openlocfilehash: 5fc106bfd97e8decd47ac7d43383907dcbbbda9c
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792969"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2指派身分識別的存取權限
@@ -39,7 +39,7 @@ ms.locfileid: "82792969"
 若要使用[Azure 入口網站](https://portal.azure.com)將 RBAC 角色指派給 Azure AD 身分識別，請依照下列步驟執行：
 
 1. 在 Azure 入口網站中，移至您的檔案共用，或[建立檔案共用](../articles/storage/files/storage-how-to-create-file-share.md)。
-2. 選取 **[存取控制（IAM）**]。
+2. 選取 [存取控制 (IAM)]。
 3. 選取 [**新增角色指派**]
 4. 在 [**新增角色指派**] 分頁中，從 [**角色**] 清單中選取適當的內建角色（儲存體檔案資料 smb 共用讀取器、儲存體檔案資料 smb 共用參與者）。 將 [**指派存取權**] 保留為預設設定： [ **Azure AD 使用者]、[群組] 或 [服務主體**]。 依名稱或電子郵件地址選取目標 Azure AD 身分識別。
 5. 選取 [**儲存**] 以完成角色指派作業。
@@ -106,9 +106,9 @@ net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<
 3. 選取 [**編輯]。** 變更許可權。
 4. 您可以變更現有使用者的許可權，或選取 [**新增**] 以將許可權授與新的使用者。
 5. 在新增使用者的 [提示] 視窗中，于 [**輸入要選取的物件名稱**] 方塊中輸入您要授與許可權的目標使用者名稱，然後選取 [**檢查名稱**] 以尋找目標使用者的完整 UPN 名稱。
-7.    選取 [確定]  。
+7.    選取 [確定]。
 8.    在 [**安全性**] 索引標籤中，選取您想要授與新使用者的擁有權限。
-9.    選取 [套用]  。
+9.    選取 [套用]。
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>使用 icacls 設定 NTFS 權限
 使用以下 Windows 命令，授與完整權限至檔案共用下的所有目錄和檔案，包括根目錄。 請記得使用您自己的值取代預留位置值。

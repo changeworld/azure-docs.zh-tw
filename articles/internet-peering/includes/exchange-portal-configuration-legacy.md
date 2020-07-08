@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: b8869e93a7156b24d61ac555c95b9ca7f850ae34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81678525"
 ---
 1. 在 [**建立對等互連** **] 頁面**的 [設定] 索引標籤上，填寫方塊，如下所示。
@@ -31,7 +31,7 @@ ms.locfileid: "81678525"
         > 您無法修改舊版對等互連連接的設定。 如果您想要在選取的**Metro**位置新增與 Microsoft 的其他對等互連連線，**請選取 [新建]**。 如需詳細資訊，請參閱[使用入口網站建立或修改 Exchange 對等互連](../howto-exchange-portal.md)。
         >
 
-1. 選取 [檢閱 + 建立]  。 請注意，入口網站會對您所輸入的資訊執行基本驗證。 頂端的功能區會顯示執行*最終驗證*的訊息 ...。
+1. 選取 [檢閱 + 建立]。 請注意，入口網站會對您所輸入的資訊執行基本驗證。 頂端的功能區會顯示執行*最終驗證*的訊息 ...。
 
     > [!div class="mx-imgBorder"]
     > ![對等驗證索引標籤](../media/setup-direct-review-tab-validation.png)
@@ -41,7 +41,7 @@ ms.locfileid: "81678525"
     > [!div class="mx-imgBorder"]
     > ![對等互連提交](../media/setup-exchange-review-tab-submit.png)
 
-1. 提交要求之後，請等候部署完成。 如果部署失敗，請聯絡[Microsoft 對等互連](mailto:peering@microsoft.com)。 成功的部署隨即出現，如下所示。
+1. 提交要求之後，請等候部署完成。 如果部署失敗，請連絡 [Microsoft 對等互連](mailto:peering@microsoft.com)。 成功的部署隨即出現，如下所示。
 
     > [!div class="mx-imgBorder"]
     > ![對等互連成功](../media/setup-direct-success.png)

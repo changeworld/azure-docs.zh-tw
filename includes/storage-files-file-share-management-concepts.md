@@ -9,10 +9,10 @@ ms.date: 12/26/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a67ad4c5010cf93ff55123013a35c697ce5971f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77597778"
 ---
 Azure 檔案共用會部署到*儲存體帳戶*，這是代表共用儲存體集區的最上層物件。 此儲存體集區可用來部署多個檔案共用，以及其他儲存體資源（例如 blob 容器、佇列或資料表）。 部署到儲存體帳戶的所有儲存體資源都會共用適用于該儲存體帳戶的限制。 若要查看儲存體帳戶目前的限制，請參閱[Azure 檔案儲存體擴充性和效能目標](../articles/storage/files/storage-files-scale-targets.md)。

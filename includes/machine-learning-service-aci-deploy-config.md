@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: 4f13c171c5fafb13875f5f87d4eb3d6013f0ff30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79486027"
 ---
-檔中的專案會對應至 AciWebservice 的參數。 [deploy_configuration。](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py) `deploymentconfig.json` 下表描述 JSON 檔中的實體與方法的參數之間的對應：
+檔中的專案會 `deploymentconfig.json` 對應至[AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py)的參數。 deploy_configuration。 下表描述 JSON 檔中的實體與方法的參數之間的對應：
 
-| JSON 實體 | 方法參數 | 說明 |
+| JSON 實體 | 方法參數 | Description |
 | ----- | ----- | ----- |
-| `computeType` | NA | 計算目標。 若為 ACI，此值必須`ACI`是。 |
+| `computeType` | NA | 計算目標。 若為 ACI，此值必須是 `ACI` 。 |
 | `containerResourceRequirements` | NA | CPU 和記憶體實體的容器。 |
 | &emsp;&emsp;`cpu` | `cpu_cores` | 要配置的 CPU 核心數目。 設置`0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | 要為此 web 服務配置的記憶體數量（以 GB 為單位）。 預設`0.5` |

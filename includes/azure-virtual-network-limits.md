@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82096042"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>網路限制-Azure Resource Manager
@@ -70,23 +70,23 @@ ms.locfileid: "82096042"
 | 負載平衡器                          | 1,000                         |
 | 每個資源的規則                      | 1,500                         |
 | 每個 NIC 的規則（在 NIC 上的所有 Ip） | 300                           |
-| 前端 IP 設定              | 600                           |
+| 前端 IP 組態              | 600                           |
 | 後端集區大小                       | 1000 IP 設定，單一虛擬網路 |
-| 每個 Load Balancer <sup>的後端資源1<sup> | 150                   |
+| 每個 Load Balancer 的後端資源 <sup> 1<sup> | 150                   |
 | 高可用性埠                 | 每個內部前端 1 個       |
 | 每個 Load Balancer 的輸出規則        | 600                           |
 | [TCP 閒置超時](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4分鐘/30 分鐘          |
 
 <sup>1</sup>限制是最多150資源，獨立虛擬機器資源、可用性設定組資源和虛擬機器擴展集放置群組的任何組合。
 
-**基本 Load Balancer**
+**基本負載平衡器**
 
 | 資源                                | 限制        |
 |-----------------------------------------|------------------------------|
 | 負載平衡器                          | 1,000                        |
 | 每個資源的規則                      | 250                          |
 | 每個 NIC 的規則（在 NIC 上的所有 Ip） | 300                          |
-| 前端 IP 設定              | 200                          |
+| 前端 IP 組態              | 200                          |
 | 後端集區大小                       | 300 IP 設定，單一可用性設定組 |
 | 每個 Load Balancer 的可用性設定組     | 150                          |
 
@@ -105,6 +105,6 @@ ms.locfileid: "82096042"
 | 每個路由表的使用者定義路由 |400 |400 |
 | 公用 IP 位址 (動態) |500 |500 |
 | 保留的公用 IP 位址 |500 |500 |
-| 每個部署的公用 VIP |5 |請連絡支援人員 |
+| 每個部署的公用 VIP |5 |請連絡支援部門 |
 | 每個部署的私人 VIP （內部負載平衡） |1 |1 |
 | 端點存取控制清單（Acl） |50 |50 |

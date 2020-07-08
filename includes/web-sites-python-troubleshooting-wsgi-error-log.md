@@ -9,10 +9,10 @@ ms.date: 06/11/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 020e59f029b09f3c7656f67039731e4141e68d31
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174583"
 ---
 如果 Python 在啟動應用程式時發生錯誤，則只會傳回簡單的錯誤頁面 (例如，「無法顯示網頁，因為發生內部伺服器錯誤」)。

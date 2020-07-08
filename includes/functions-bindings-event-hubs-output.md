@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 78836ca4e51875be4237267b3bb9256cc4541fe2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81791679"
 ---
 使用事件中樞輸出繫結將事件寫入事件串流。 您必須具備事件中樞的傳送權限，才能將事件寫入其中。
@@ -31,7 +31,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-下列範例顯示如何使用`IAsyncCollector`介面來傳送訊息批次。 當您處理來自某個事件中樞的訊息，並將結果傳送至另一個事件中樞時，此案例很常見。
+下列程式碼示範如何使用 `IAsyncCollector` 介面來傳送一批訊息。 當您處理來自某個事件中樞的訊息，並將結果傳送至另一個事件中樞時，此案例很常見。
 
 ```csharp
 [FunctionName("EH2EH")]
@@ -51,7 +51,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 下列範例示範 function.json** 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](../articles/azure-functions/functions-reference-csharp.md)。 此函式會將訊息寫入事件中樞。
 
@@ -202,7 +202,7 @@ public String sendTime(
 
 ---
 
-## <a name="attributes-and-annotations"></a>屬性和注釋
+## <a name="attributes-and-annotations"></a>屬性和註釋
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -221,9 +221,9 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 如需完整範例，請參閱[輸出-c # 範例](#example)。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-C # 腳本不支援屬性。
+C# 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -231,50 +231,50 @@ JavaScript 不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支援屬性。
+Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 JAVA 函式執行時間連結[庫](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，對其值會發佈至事件中樞的參數使用[EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput)注釋。 參數的類型`OutputBinding<T>`應該是，其中`T`是 POJO 或任何原生 JAVA 類型。
+在 JAVA 函式執行時間連結[庫](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，對其值會發佈至事件中樞的參數使用[EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput)注釋。 參數的類型應該是 `OutputBinding<T>` ，其中 `T` 是 POJO 或任何原生 JAVA 類型。
 
 ---
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
-下表說明您在*函數 json*檔案和`EventHub`屬性中設定的系結設定屬性。
+下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `EventHub` 屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 |**type** | n/a | 必須設定為 "eventHub"。 |
-|**方向** | n/a | 必須設定為 "out"。 當您在 Azure 入口網站中建立繫結時，會自動設定此參數。 |
+|**direction** | n/a | 必須設定為 "out"。 當您在 Azure 入口網站中建立繫結時，會自動設定此參數。 |
 |**name** | n/a | 函式程式碼中所使用的變數名稱，代表事件。 |
 |**path** |**EventHubName** | 僅限 Functions 1.x。 事件中樞的名稱。 當事件中樞名稱也呈現於連接字串時，該值會在執行階段覆寫這個屬性。 |
 |**eventHubName** |**EventHubName** | 函數2.x 和更新版本。 事件中樞的名稱。 當事件中樞名稱也呈現於連接字串時，該值會在執行階段覆寫這個屬性。 |
-|**connection** |**建立** | 應用程式設定的名稱，其中包含事件中樞命名空間的連接字串。 按一下*命名空間*的 [**連接資訊**] 按鈕（而不是事件中樞本身），來複製此連接字串。 此連接字串必須具有傳送權限，才能將訊息傳送至事件資料流。|
+|**connection** |**[連接]** | 應用程式設定的名稱，其中包含事件中樞命名空間的連接字串。 按一下*命名空間*的 [**連接資訊**] 按鈕（而不是事件中樞本身），來複製此連接字串。 此連接字串必須具有傳送權限，才能將訊息傳送至事件資料流。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-使用方法參數（例如） `out string paramName`來傳送訊息。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 若要寫入多則訊息，您可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 取代 `out string`。
+使用方法參數 (例如 `out string paramName`) 來傳送訊息。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 若要寫入多則訊息，您可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 取代 `out string`。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-使用方法參數（例如） `out string paramName`來傳送訊息。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 若要寫入多則訊息，您可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 取代 `out string`。
+使用方法參數 (例如 `out string paramName`) 來傳送訊息。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 若要寫入多則訊息，您可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 取代 `out string`。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用`context.bindings.<name>`來存取輸出事件，其中`<name>`是在*函數. json*的`name`屬性中指定的值。
+使用 `context.bindings.<name>` 存取輸出事件，其中 `<name>` 是 *function.json* 的 `name` 屬性中指定的值。
 
 # <a name="python"></a>[Python](#tab/python)
 
 有兩個選項可從函式輸出事件中樞訊息：
 
-- 傳回**值**：將*函數. json*中的`$return` `name`屬性設定為。 使用此設定時，函式的傳回值會保存為事件中樞訊息。
+- 傳回**值**：將 `name` 中*function.js*的屬性設定為 `$return` 。 使用此設定時，函式的傳回值會保存為事件中樞訊息。
 
-- **命令式**：將值傳遞給宣告為[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)類型之參數的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 傳遞給`set`的值會保存為事件中樞訊息。
+- **命令式**：將值傳遞給宣告為[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)類型之參數的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 傳遞給的值 `set` 會保存為事件中樞訊息。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -282,7 +282,7 @@ Python 不支援屬性。
 
 - 傳回**值**：藉由將注釋套用至函式本身，函式的傳回值會保存為事件中樞訊息。
 
-- **命令式**：若要明確設定訊息值，請將注釋套用至類型[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)的特定參數，其中`T`是 POJO 或任何原生 JAVA 類型。 使用此設定時，將值傳遞至`setValue`方法會將值保存為事件中樞訊息。
+- **命令式**：若要明確設定訊息值，請將注釋套用至類型的特定參數 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) ，其中 `T` 是 POJO 或任何原生 JAVA 類型。 使用此設定時，將值傳遞至 `setValue` 方法會將值保存為事件中樞訊息。
 
 ---
 
