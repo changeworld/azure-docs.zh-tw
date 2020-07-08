@@ -9,17 +9,16 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 3095e398d7e5cfe59085144d5bb4e8dc33618064
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76960694"
 ---
 # <a name="429001-throttlingexception"></a>429001 ThrottlingException
 
 本文說明**429001 ThrottlingException**錯誤的原因和解決方案。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 您 IoT 中樞的要求失敗，並出現錯誤**429001 ThrottlingException**。
 
@@ -27,7 +26,7 @@ ms.locfileid: "76960694"
 
 已超過要求之作業的 IoT 中樞[節流限制](./iot-hub-devguide-quotas-throttling.md)。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 藉由比較您的*遙測訊息傳送嘗試*計量與上述指定的限制，檢查您是否達到節流限制。 您也可以檢查*節流錯誤*度量的數目。 如需 IoT 中樞可用的這些和其他計量的詳細資訊，請參閱[IoT 中樞計量和使用方式](./iot-hub-metrics.md#iot-hub-metrics-and-how-to-use-them)。
 

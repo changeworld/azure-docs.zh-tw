@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 6054c595bca26dc2a0432c53369a60a61e3efde0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841858"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在內部虛擬網路中使用 Azure API 管理服務
@@ -39,7 +38,7 @@ ms.locfileid: "76841858"
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要執行本文所述的步驟，您必須具有：
 
@@ -56,14 +55,14 @@ ms.locfileid: "76841858"
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>使用 Azure 入口網站啟用虛擬網路連線
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中瀏覽至您的 Azure API 管理執行個體。
-2. 選取 [**虛擬網路**]。
+2. 選取 [虛擬網路]。
 3. 將 API 管理執行個體設定為在虛擬網路內部署。
 
     ![用於在內部虛擬網路中設定 Azure API 管理的功能表][api-management-using-internal-vnet-menu]
 
-4. 選取 [儲存]  。
+4. 選取 [儲存]。
 
-部署成功之後，您應該會在 [總覽] 分頁上看到 API 管理服務的**私人**虛擬 ip 位址和**公用**虛擬 ip 位址。 **私人**虛擬 ip 位址是來自 API 管理委派子網內的負載平衡 IP 位址，可以在`gateway`此`portal`位置`management`存取`scm` 、和端點。 **公用**虛擬 IP 位址**僅**用於透過埠3443對`management`端點的控制平面流量，而且可以鎖定至[ApiManagement][ServiceTags] servicetag。
+部署成功之後，您應該會在 [總覽] 分頁上看到 API 管理服務的**私人**虛擬 ip 位址和**公用**虛擬 ip 位址。 **私人**虛擬 ip 位址是來自 API 管理委派子網內的負載平衡 IP 位址，可以在此位置 `gateway` `portal` 存取、 `management` 和 `scm` 端點。 **公用**虛擬 IP 位址**僅**用於透過埠3443對端點的控制平面流量 `management` ，而且可以鎖定至[ApiManagement][ServiceTags] servicetag。
 
 ![已設定內部虛擬網路的 API 管理儀表板][api-management-internal-vnet-dashboard]
 
@@ -122,10 +121,10 @@ ms.locfileid: "76841858"
 
 2. 然後，您可以在 DNS 伺服器中建立記錄，以存取只能從虛擬網路存取的端點。
 
-## <a name="routing"></a><a name="routing"> </a>路由
+## <a name="routing"></a><a name="routing"> </a> 路由
 
 * 來自子網範圍的負載平衡*私人*虛擬 IP 位址將會保留，並用來存取虛擬網路中的 API 管理服務端點。 您可以在 Azure 入口網站中服務的 [總覽] 分頁上找到此*私人*IP 位址。 此位址必須向虛擬網路所使用的 DNS 伺服器註冊。
-* 負載平衡的*公用*IP 位址（VIP）也會保留，以透過埠3443提供管理服務端點的存取權。 您可以在 [Azure 入口網站中服務的 [總覽] 分頁上找到此*公用*IP 位址。 *公用*IP 位址只用于透過埠3443對`management`端點的控制平面流量，而且可以鎖定到[ApiManagement][ServiceTags] servicetag。
+* 負載平衡的*公用*IP 位址（VIP）也會保留，以透過埠3443提供管理服務端點的存取權。 您可以在 [Azure 入口網站中服務的 [總覽] 分頁上找到此*公用*IP 位址。 *公用*IP 位址只用于透過埠3443對端點的控制平面流量 `management` ，而且可以鎖定到[ApiManagement][ServiceTags] servicetag。
 * 子網 IP 範圍（DIP）中的 IP 位址將會指派給服務中的每個 VM，並將用來存取虛擬網路中的資源。 公用 IP 位址（VIP）將用來存取虛擬網路外部的資源。 如果使用 IP 限制清單來保護虛擬網路中的資源，則必須指定部署 API 管理服務之子網的整個範圍，以授與或限制服務的存取權。
 * 負載平衡的公用和私人 IP 位址可在 [Azure 入口網站的 [總覽] 分頁中找到。
 * 如果服務已從中移除，然後再新增回虛擬網路，則指派給公用和私用存取的 IP 位址可能會變更。 如果發生這種情況，可能需要更新虛擬網路中的 DNS 註冊、路由規則和 IP 限制清單。

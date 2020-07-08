@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76757963"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 管理 IBM Informix 資料庫資源
@@ -25,7 +24,7 @@ ms.locfileid: "76757963"
 
 本主題說明如何在邏輯應用程式中使用連接器來處理資料庫作業。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -39,7 +38,7 @@ ms.locfileid: "76757963"
 
 1. 在您要新增 Informix 動作的步驟中，選取 [**新增步驟**]。
 
-   若要在現有步驟之間新增動作，請將滑鼠放在連接箭頭上。 選取顯示的加號（**+**），然後選取 [**新增動作**]。
+   若要在現有步驟之間新增動作，請將滑鼠放在連接箭頭上。 選擇所顯示的加號 ( **+** )，然後選取 [新增動作]。
 
 1. 在搜尋方塊中，輸入 `informix` 作為篩選條件。 從 [動作] 清單中，選取您想要的動作，例如：
 
@@ -47,25 +46,25 @@ ms.locfileid: "76757963"
 
    連接器會提供這些動作，以執行對應的資料庫作業：
 
-   * 取得資料表-使用`CALL`語句列出資料庫資料表
-   * 取得資料列-使用`SELECT *`語句讀取所有資料列
-   * 使用`SELECT WHERE`語句取得資料列讀取資料列
-   * 使用`INSERT`語句加入資料列
-   * 使用`UPDATE`語句來編輯資料列
-   * 使用`DELETE`語句來刪除資料列
+   * 取得資料表-使用語句列出資料庫資料表 `CALL`
+   * 取得資料列-使用語句讀取所有資料列 `SELECT *`
+   * 使用語句取得資料列讀取資料列 `SELECT WHERE`
+   * 使用語句加入資料列 `INSERT`
+   * 使用語句來編輯資料列 `UPDATE`
+   * 使用語句來刪除資料列 `DELETE`
 
 1. 如果系統提示您提供 Informix 資料庫的連線詳細資料，請遵循建立連線的[步驟](#create-connection)，然後繼續下一個步驟。
 
 1. 提供所選動作的資訊：
 
-   | 動作 | 描述 | 屬性和描述 |
+   | 動作 | Description | 屬性和描述 |
    |--------|-------------|-----------------------------|
-   | **取得資料表** | 藉由執行 Informix CALL 語句來列出資料庫資料表。 | 無 |
-   | **取得多個資料列** | 藉由執行 Informix `SELECT *`語句，提取指定之資料表中的所有資料列。 | **資料表名稱**：您想要的 Informix 資料表名稱 <p><p>若要將其他屬性新增至此動作，請從 [**加入新的參數**] 清單中選取它們。 如需詳細資訊，請參閱[連接器的參考主題](/connectors/informix/)。 |
-   | **取得單一資料列** | 藉由執行 Informix `SELECT WHERE`語句，從指定的資料表提取一個資料列。 | - **資料表名稱**：您想要的 Informix 資料表名稱 <br>- 資料**列識別碼**：資料列的唯一識別碼，例如`9999` |
-   | **插入資料列** | 藉由執行 Informix `INSERT`語句，將資料列加入至指定的 Informix 資料表。 | - **資料表名稱**：您想要的 Informix 資料表名稱 <br>- **item**：包含要加入之值的資料列 |
-   | **更新資料列** | 藉由執行 Informix `UPDATE`語句來變更指定的 Informix 資料表中的資料列。 | - **資料表名稱**：您想要的 Informix 資料表名稱 <br>- 資料**列識別碼**：要更新之資料列的唯一識別碼，例如`9999` <br>- **Row**：具有更新值的資料列，例如`102` |
-   | **刪除資料列** | 藉由執行 Informix `DELETE`語句，從指定的 Informix 資料表中移除資料列。 | - **資料表名稱**：您想要的 Informix 資料表名稱 <br>- 資料**列識別碼**：要刪除之資料列的唯一識別碼，例如`9999` |
+   | **取得資料表** | 藉由執行 Informix CALL 語句來列出資料庫資料表。 | None |
+   | **取得多個資料列** | 藉由執行 Informix 語句，提取指定之資料表中的所有資料列 `SELECT *` 。 | **資料表名稱**：您想要的 Informix 資料表名稱 <p><p>若要將其他屬性新增至此動作，請從 [**加入新的參數**] 清單中選取它們。 如需詳細資訊，請參閱[連接器的參考主題](/connectors/informix/)。 |
+   | **取得單一資料列** | 藉由執行 Informix 語句，從指定的資料表提取一個資料列 `SELECT WHERE` 。 | - **資料表名稱**：您想要的 Informix 資料表名稱 <br>- 資料**列識別碼**：資料列的唯一識別碼，例如`9999` |
+   | **插入資料列** | 藉由執行 Informix 語句，將資料列加入至指定的 Informix 資料表 `INSERT` 。 | - **資料表名稱**：您想要的 Informix 資料表名稱 <br>- **item**：包含要加入之值的資料列 |
+   | **更新資料列** | 藉由執行 Informix 語句來變更指定的 Informix 資料表中的資料列 `UPDATE` 。 | - **資料表名稱**：您想要的 Informix 資料表名稱 <br>- 資料**列識別碼**：要更新之資料列的唯一識別碼，例如`9999` <br>- **Row**：具有更新值的資料列，例如`102` |
+   | **刪除資料列** | 藉由執行 Informix 語句，從指定的 Informix 資料表中移除資料列 `DELETE` 。 | - **資料表名稱**：您想要的 Informix 資料表名稱 <br>- 資料**列識別碼**：要刪除之資料列的唯一識別碼，例如`9999` |
    ||||
 
 1. 儲存您的邏輯應用程式。 現在，請[測試您的邏輯應用程式](#test-logic-app)，或繼續建立邏輯應用程式。
@@ -80,12 +79,12 @@ ms.locfileid: "76757963"
 
    | 屬性 | JSON 屬性 | 必要 | 範例值 | 描述 |
    |----------|---------------|----------|---------------|-------------|
-   | 連接名稱 | `name` | 是 | `informix-demo-connection` | 要用於連線至 Informix 資料庫的名稱 |
-   | Server (伺服器) | `server` | 是 | 形成`informixdemo.cloudapp.net:9089` <br>-內部部署：`informixdemo:9089` | 採用 IPv4 或 IPv6 格式的 TCP/IP 位址或別名，後面接著冒號和 TCP/IP 埠號碼 |
-   | 資料庫 | `database` | 是 | `nwind` | DRDA 關係資料庫名稱（RDBNAM）或 Informix 資料庫名稱（dbname）。 Informix 接受128位元組的字串。 |
+   | 連接名稱 | `name` | Yes | `informix-demo-connection` | 要用於連線至 Informix 資料庫的名稱 |
+   | 伺服器 | `server` | Yes | 形成`informixdemo.cloudapp.net:9089` <br>-內部部署：`informixdemo:9089` | 採用 IPv4 或 IPv6 格式的 TCP/IP 位址或別名，後面接著冒號和 TCP/IP 埠號碼 |
+   | 資料庫 | `database` | Yes | `nwind` | DRDA 關係資料庫名稱（RDBNAM）或 Informix 資料庫名稱（dbname）。 Informix 接受128位元組的字串。 |
    | 驗證 | `authentication` | 僅內部部署 | **基本**或**Windows** （kerberos） | 您的 Informix 資料庫所需的驗證類型。 只有當您選取 [透過內部**部署資料閘道**進行連線] 時，才會出現此屬性。 |
-   | 使用者名稱 | `username` | 否 | <*資料庫-使用者名稱*> | 資料庫的使用者名稱 |
-   | 密碼 | `password` | 否 | <*資料庫-密碼*> | 資料庫的密碼 |
+   | 使用者名稱 | `username` | No | <*資料庫-使用者名稱*> | 資料庫的使用者名稱 |
+   | 密碼 | `password` | No | <*資料庫-密碼*> | 資料庫的密碼 |
    | 閘道 | `gateway` | 僅內部部署 | -<*Azure-訂*用帳戶> <br>-<*Azure-內部部署-資料閘道-資源*> | 您在 Azure 入口網站中建立之內部部署資料閘道的 Azure 訂用帳戶和 Azure 資源名稱。 只有當您選取 [透過內部**部署資料閘道連線]** 時，才會顯示**閘道**屬性和子屬性。 |
    ||||||
 
@@ -107,7 +106,7 @@ ms.locfileid: "76757963"
 
 1. 在邏輯應用程式設計工具工具列上，選取 [**執行**]。 執行邏輯應用程式之後，您可以從該執行中查看輸出。
 
-1. 從邏輯應用程式的功能表中，選取 **[總覽**]。 在 [總覽] 窗格的 [**摘要** > ] [**執行歷程記錄**] 底下，選取最新的執行。
+1. 從邏輯應用程式的功能表中，選取 **[總覽**]。 在 [總覽] 窗格的 [**摘要**] [執行歷程  >  **記錄**] 底下，選取最新的執行。
 
 1. 在 [**邏輯應用程式執行**] 底下，選取 [**執行詳細資料**]。
 

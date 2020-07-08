@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905430"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>將您的應用程式和解決方案從 BizTalk 服務遷移至 Azure Logic Apps
@@ -34,7 +33,7 @@ BizTalk 服務包含兩個子服務：
 
 | BizTalk 服務   | Logic Apps            | 目的                      |
 | ------------------ | --------------------- | ---------------------------- |
-| 連接子          | 連接子             | 傳送及接收資料   |
+| 連接器          | 連接器             | 傳送及接收資料   |
 | 橋接器             | 邏輯應用程式             | 管線處理器           |
 | 驗證階段     | XML 驗證動作 | 驗證 XML 文件的結構描述 | 
 | 擴充階段       | 資料權杖           | 將屬性升級為訊息或針對路由決策升級屬性 |

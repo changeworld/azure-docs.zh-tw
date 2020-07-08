@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76838253"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>如何在 AI 擴充案例中處理和解壓縮影像中的資訊
@@ -29,7 +28,7 @@ Azure 認知搜尋有數個功能可處理影像和影像檔案。 在文件破�
 
 影像標準化無法關閉。 反覆執行影像的技術會產生標準化影像。 在索引子上啟用映射正規化時，需要將技能集附加至該索引子。
 
-| 設定參數 | 描述 |
+| 設定參數 | Description |
 |--------------------|-------------|
 | imageAction   | 如果無需對內嵌影像或影像檔案採取任何動作，則設為「none」。 <br/>若設為「generateNormalizedImages」，則會在文件破解期間產生一系列的標準化影像。<br/>設定為 "generateNormalizedImagePerPage" 以產生正規化影像的陣列，其中，針對您資料來源中的 Pdf，每個頁面都會轉譯成一個輸出影像。  其功能與適用於非 PDF 檔案類型的 "generateNormalizedImages" 相同。<br/>針對不是 "none" 的所有選項，這些影像將會公開在 *normalized_images* 欄位中。 <br/>預設值為「none」。 當「dataToExtract」設為「contentAndMetadata」時，此設定僅與 blob 資料來源有直接相關。 <br/>最多可從指定的檔解壓縮1000個影像。 如果檔中有超過1000的影像，將會解壓縮第一個1000，並產生警告。 |
 |  normalizedImageMaxWidth | 所產生的標準化影像的最大寬度 (以像素為單位)。 預設值為 2000。 允許的最大值為10000。 | 
@@ -60,7 +59,7 @@ Azure 認知搜尋有數個功能可處理影像和影像檔案。 在文件破�
 
 當 *imageAction* 被設為 "none" 以外的值時，新的 *normalized_images* 欄位將會包含影像的陣列。 每個影像皆為具有下列成員的複雜類型：
 
-| 影像成員       | 描述                             |
+| 影像成員       | Description                             |
 |--------------------|-----------------------------------------|
 | data               | 以 BASE64 編碼的 JPEG 格式標準化影像字串。   |
 | width              | 標準化影像的寬度，以像素為單位。 |
@@ -213,10 +212,10 @@ Azure 認知搜尋有數個功能可處理影像和影像檔案。 在文件破�
         }
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 + [建立索引子（REST）](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [影像分析技能](cognitive-search-skill-image-analysis.md)
-+ [OCR 技術](cognitive-search-skill-ocr.md) (英文)
++ [OCR 技術](cognitive-search-skill-ocr.md)
 + [文字合併技術](cognitive-search-skill-textmerger.md) (英文)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
 + [如何對應豐富型欄位](cognitive-search-output-field-mapping.md) (英文)

@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841742"
 ---
 # <a name="output-batching"></a>輸出批次處理
@@ -79,8 +78,8 @@ ms.locfileid: "76841742"
 
 | 屬性名稱 | 描述 |
 | ------------- | ----------- | 
-| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | `PreferredBatchSizeInKilobytes`旋鈕允許的最大值。 預設`1033`值。
-| `api__deliveryPolicyLimits__maxEventsPerBatch` | `MaxEventsPerBatch`旋鈕允許的最大值。 預設`50`值。
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | 旋鈕允許的最大值 `PreferredBatchSizeInKilobytes` 。 預設值 `1033` 。
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | 旋鈕允許的最大值 `MaxEventsPerBatch` 。 預設值 `50` 。
 
 ## <a name="configuring-runtime-default-values"></a>設定執行時間預設值
 
@@ -88,5 +87,5 @@ ms.locfileid: "76841742"
 
 | 屬性名稱 | 描述 |
 | ------------- | ----------- |
-| `broker__defaultMaxBatchSizeInBytes` | 只有`MaxEventsPerBatch`在指定時，傳遞要求大小上限。 預設`1_058_576`值。
-| `broker__defaultMaxEventsPerBatch` | 只有在指定時，才`MaxBatchSizeInBytes`會新增至批次的事件數目上限。 預設`10`值。
+| `broker__defaultMaxBatchSizeInBytes` | 只有在指定時，傳遞要求大小上限 `MaxEventsPerBatch` 。 預設值 `1_058_576` 。
+| `broker__defaultMaxEventsPerBatch` | 只有在指定時，才會新增至批次的事件數目上限 `MaxBatchSizeInBytes` 。 預設值 `10` 。

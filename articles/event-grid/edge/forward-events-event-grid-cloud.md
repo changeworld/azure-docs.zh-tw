@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844712"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>教學課程：將事件轉寄至事件方格雲端
@@ -25,7 +24,7 @@ ms.locfileid: "76844712"
 
  若要完成本教學課程，您需要瞭解[edge](concepts.md)和[Azure](../concepts.md)上的事件方格概念。 如需其他目的地類型，請參閱[事件處理常式](event-handlers.md)。 
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 若要完成這個教學課程，您將需要：
 
 * **Azure 訂**用帳戶-如果您還沒有帳戶，請建立一個[免費帳戶](https://azure.microsoft.com/free)。 
@@ -34,9 +33,9 @@ ms.locfileid: "76844712"
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
 ## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>在雲端中建立事件方格主題和訂用帳戶
 
-遵循[本教學](../custom-event-quickstart-portal.md)課程，在雲端中建立事件方格主題和訂用帳戶。 請記`topicURL`下`sasKey`您稍後`topicName`將在本教學課程中使用之新建立主題的、和。
+遵循[本教學](../custom-event-quickstart-portal.md)課程，在雲端中建立事件方格主題和訂用帳戶。 請記 `topicURL` 下 `sasKey` `topicName` 您稍後將在本教學課程中使用之新建立主題的、和。
 
-例如，如果您在美國西部建立名`testegcloudtopic`為的主題，這些值看起來會像這樣：
+例如，如果您在美國西部建立名為的主題 `testegcloudtopic` ，這些值看起來會像這樣：
 
 * **TopicUrl**：`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
 * **TopicName**：`testegcloudtopic`
@@ -44,7 +43,7 @@ ms.locfileid: "76844712"
 
 ## <a name="create-event-grid-topic-at-the-edge"></a>在邊緣建立事件方格主題
 
-1. 使用下列內容建立 topic3。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
+1. 使用下列內容，在上建立 topic3.js。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
     ```json
         {
@@ -85,7 +84,7 @@ ms.locfileid: "76844712"
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. 使用下列內容建立 subscription3。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
+1. 使用下列內容，在上建立 subscription3.js。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
    ```json
         {
@@ -157,7 +156,7 @@ ms.locfileid: "76844712"
 
 ## <a name="publish-an-event-at-the-edge"></a>在邊緣發佈事件
 
-1. 使用下列內容建立 event3。 如需裝載的詳細資訊，請參閱[API 檔](api.md)。
+1. 使用下列內容，在上建立 event3.js。 如需裝載的詳細資訊，請參閱[API 檔](api.md)。
 
     ```json
         [

@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: b2fe3a7995cdd88a8f63d0d865e72e9f161cf9d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905956"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
@@ -19,7 +18,7 @@ ms.locfileid: "76905956"
 
 |Command|描述|
 | --- | --- |
-| [刪除] | 刪除選定祕密資源的指定值。 |
+| delete | 刪除選定祕密資源的指定值。 |
 | list | 列出指定祕密資源所有值的名稱。 |
 | 顯示 | 列出秘密資源的指定值。 |
 
@@ -30,14 +29,14 @@ ms.locfileid: "76905956"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --secret-name -n [必要] | 祕密資源的名稱。 |
 | --version -v     [必要] | 祕密版本的名稱。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -52,13 +51,13 @@ ms.locfileid: "76905956"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --secret-name -n [必要] | 祕密資源的名稱。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -71,7 +70,7 @@ ms.locfileid: "76905956"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --secret-name -n [必要] | 祕密資源的名稱。 |
 | --version -v     [必要] | 祕密版本的名稱。 |
@@ -79,7 +78,7 @@ ms.locfileid: "76905956"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |

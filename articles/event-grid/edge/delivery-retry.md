@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841707"
 ---
 # <a name="delivery-and-retry"></a>傳遞和重試
@@ -29,7 +28,7 @@ Event Grid 提供持久的傳遞。 它會嘗試立即為每個相符的訂用�
 
 有兩個預先設定的反向佇列，可決定嘗試重試的排程。 其中包括：
 
-| 排程 | 描述 |
+| 排程 | Description |
 | ---------| ------------ |
 | 1 分鐘 | 每分鐘會嘗試在這裡結束的訊息。
 | 10 分鐘 | 每隔10分鐘就會嘗試在這裡結束的訊息。
@@ -52,7 +51,7 @@ Event Grid 提供持久的傳遞。 它會嘗試立即為每個相符的訂用�
 
 ## <a name="configuring-defaults-for-all-subscribers"></a>設定所有訂閱者的預設值
 
-有兩個屬性： `brokers__defaultMaxDeliveryAttempts`和`broker__defaultEventTimeToLiveInSeconds` ，可以設定為事件方格部署的一部分，以控制所有訂閱者的重試原則預設值。
+有兩個屬性： `brokers__defaultMaxDeliveryAttempts` 和 `broker__defaultEventTimeToLiveInSeconds` ，可以設定為事件方格部署的一部分，以控制所有訂閱者的重試原則預設值。
 
 | 屬性名稱 | 描述 |
 | ---------------- | ------------ |

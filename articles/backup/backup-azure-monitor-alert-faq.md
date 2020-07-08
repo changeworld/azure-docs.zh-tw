@@ -5,10 +5,9 @@ ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76989564"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 備份監視警示-常見問題
@@ -23,14 +22,14 @@ ms.locfileid: "76989564"
 
 ### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>將資料推送至 LA 工作區的頻率為何？
 
-保存庫中的診斷資料會抽出至 Log Analytics 工作區，並有一些延遲。 每個事件從復原服務保存庫推送後的20到30分鐘都會抵達 Log Analytics 工作區。 以下是延遲的進一步詳細資料：
+保存庫中的診斷資料會抽出至 Log Analytics 工作區，並且有一些延遲。 每個事件都會在從復原服務保存庫推送之後的 20 到 30 分鐘抵達 Log Analytics 工作區。 以下是延遲的進一步詳細資料：
 
-* 在所有解決方案中，備份服務的內建警示會在建立後立即推送。 因此，它們通常會在20到30分鐘後出現在 Log Analytics 工作區中。
+* 在所有解決方案中，備份服務的內建警示會在建立後立即推送。 因此，這些通常會在 20 到 30 分鐘後出現在 Log Analytics 工作區中。
 * 在所有解決方案中，隨選備份作業和還原作業會在完成時立即推送。
 * 對於 SQL 備份以外的所有解決方案，排程的備份作業會在完成時立即推送。
-* 針對 SQL 備份，因為記錄備份可能每隔15分鐘發生一次，所以所有已完成的排程備份作業（包括記錄）的資訊每隔6小時會進行批次處理和推送。
-* 在所有解決方案中，其他資訊（例如備份專案、原則、復原點、儲存體等等）都會一次推送至少一次。
-* 備份設定的變更（例如變更原則或編輯原則）會觸發所有相關備份資訊的推送。
+* 針對 SQL 備份，因為記錄備份可能每隔 15 分鐘發生一次，所以所有已完成的排程備份作業 (包括記錄) 的資訊每隔 6 小時會進行批次處理和推送。
+* 在所有解決方案中，其他資訊 (例如，備份項目、原則、復原點、儲存體等等) 會一天至少一次推送。
+* 備份設定的變更 (例如變更原則或編輯原則) 會觸發所有相關備份資訊的推送。
 
 ### <a name="how-long-can-i-retain-reporting-data"></a>可以保留報告資料多久？
 

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76963847"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 建立 Azure 復原服務備份原則
@@ -29,7 +28,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要建立 Azure VM 備份的原則，以下是要求本文的元件。
 
-|Name  |必要  |類型  |描述  |
+|名稱  |必要  |類型  |Description  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy：[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 屬性        |
 |tags     |         | Object        |  資源標籤       |
@@ -137,9 +136,9 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 它會傳回兩個回應：在建立另一個作業時，202（已接受），然後在該作業完成時傳回200（確定）。
 
-|名稱  |類型  |描述  |
+|Name  |類型  |Description  |
 |---------|---------|---------|
-|200 確定     |    [保護 PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  [確定]       |
+|200 確定     |    [保護 PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  確定       |
 |202 已接受     |         |     已接受    |
 
 ### <a name="example-responses"></a>範例回應

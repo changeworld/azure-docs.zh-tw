@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906214"
 ---
 # <a name="sfctl"></a>sfctl
@@ -18,21 +17,21 @@ ms.locfileid: "76906214"
 命令會依循「名詞-動詞」模式。 如需詳細資訊，請參閱＜子群組＞。
 
 ## <a name="subgroups"></a>子群組
-|子群組|描述|
+|子群組|Description|
 | --- | --- |
 | [應用程式](service-fabric-sfctl-application.md) | 建立、刪除與管理應用程式和應用程式類型。 |
 | [chaos](service-fabric-sfctl-chaos.md) | 啟動、停止及報告 chaos 測試服務。 |
 | [該群](service-fabric-sfctl-cluster.md) | 選取、管理和操作 Service Fabric 叢集。 |
 | [成為](service-fabric-sfctl-compose.md) | 建立、刪除和管理 Docker Compose 應用程式。 |
-| [箱](service-fabric-sfctl-container.md) | 在叢集節點上執行容器相關命令。 |
-| [事件](service-fabric-sfctl-events.md) | 從事件存放區取出事件（如果已安裝 EventStore 服務）。 |
-| [是](service-fabric-sfctl-is.md) | 查詢命令，並將其傳送至基礎結構服務。 |
+| [container](service-fabric-sfctl-container.md) | 在叢集節點上執行容器相關命令。 |
+| [events](service-fabric-sfctl-events.md) | 從事件存放區取出事件（如果已安裝 EventStore 服務）。 |
+| [均](service-fabric-sfctl-is.md) | 查詢命令，並將其傳送至基礎結構服務。 |
 | [mesh](service-fabric-sfctl-mesh.md) | 刪除及管理 Service Fabric Mesh 應用程式。 |
 | [節點](service-fabric-sfctl-node.md) | 管理形成叢集的節點。 |
 | [劃分](service-fabric-sfctl-partition.md) | 查詢和管理任何服務的資料分割。 |
 | [property](service-fabric-sfctl-property.md) | 在 Service Fabric 名稱底下儲存和查詢屬性。 |
 | [副本](service-fabric-sfctl-replica.md) | 管理屬於服務分割區的複本。 |
-| [rpm](service-fabric-sfctl-rpm.md) | 查詢命令，並將其傳送至修復管理員服務。 |
+| [轉](service-fabric-sfctl-rpm.md) | 查詢命令，並將其傳送至修復管理員服務。 |
 | [sa-cluster](service-fabric-sfctl-sa-cluster.md) | 管理獨立 Service Fabric 叢集。 |
 | [維護](service-fabric-sfctl-service.md) | 建立、刪除與管理服務、服務類型和服務套件。 |
 | [設定](service-fabric-sfctl-settings.md) | 在 sfctl 的此執行個體設定本機設定。 |

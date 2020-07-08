@@ -4,10 +4,9 @@ description: 了解如何在 Azure 容器執行個體中設定活躍度探查，
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 11c6c9d39067c536bf4325f74eb24b2ab64ef515
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76934169"
 ---
 # <a name="configure-liveness-probes"></a>設定活躍度探查
@@ -63,9 +62,9 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="start-command"></a>Start 命令
 
-此部署包含定義`command`啟動命令的屬性，該命令會在容器第一次開始執行時執行。 這個屬性會接受字串陣列。 此命令會模擬進入狀況不良狀態的容器。
+此部署包含 `command` 定義啟動命令的屬性，該命令會在容器第一次開始執行時執行。 這個屬性會接受字串陣列。 此命令會模擬進入狀況不良狀態的容器。
 
-首先，它會啟動 bash 會話，並在`healthy` `/tmp`目錄中建立名為的檔案。 然後，它會在刪除檔案之前睡眠30秒，然後進入10分鐘的睡眠狀態：
+首先，它會啟動 bash 會話，並在目錄中建立名為的檔案 `healthy` `/tmp` 。 然後，它會在刪除檔案之前睡眠30秒，然後進入10分鐘的睡眠狀態：
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
@@ -73,21 +72,21 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="liveness-command"></a>活躍度命令
 
-這個部署`livenessProbe`會定義，它支援`exec`做為活動檢查的活動命令。 如果此命令以非零值結束，容器將會終止並重新啟動，併發出信號`healthy` ，找不到檔案。 如果此命令成功結束，結束代碼為0，則不會採取任何動作。
+這個部署會定義 `livenessProbe` ，它支援 `exec` 做為活動檢查的活動命令。 如果此命令以非零值結束，容器將會終止並重新啟動，併發出信號， `healthy` 找不到檔案。 如果此命令成功結束，結束代碼為0，則不會採取任何動作。
 
 `periodSeconds` 屬性會指定活躍度命令應該每隔 5 秒執行一次。
 
 ## <a name="verify-liveness-output"></a>確認活躍度輸出
 
-在第一個 30 秒內，啟動命令所建立的 `healthy` 就會存在。 當活動命令檢查檔案是否存在`healthy`時，狀態碼會傳回0，表示信號成功，因此不會重新開機。
+在第一個 30 秒內，啟動命令所建立的 `healthy` 就會存在。 當活動命令檢查檔案 `healthy` 是否存在時，狀態碼會傳回0，表示信號成功，因此不會重新開機。
 
-30秒之後， `cat /tmp/healthy`命令就會開始失敗，而導致發生狀況不良和終止的事件。
+30秒之後，命令就會 `cat /tmp/healthy` 開始失敗，而導致發生狀況不良和終止的事件。
 
 這些事件可從 Azure 入口網站或 Azure CLI 來檢視。
 
 ![入口網站狀況不良的事件][portal-unhealthy]
 
-藉由在 Azure 入口網站中查看事件，會在活動`Unhealthy`命令失敗時觸發類型的事件。 後續事件的類型`Killing`為，表示容器刪除，因此可以開始重新開機。 每次發生此事件時，容器的重新開機計數會遞增。
+藉由在 Azure 入口網站中查看事件， `Unhealthy` 會在活動命令失敗時觸發類型的事件。 後續事件的類型為 `Killing` ，表示容器刪除，因此可以開始重新開機。 每次發生此事件時，容器的重新開機計數會遞增。
 
 重新開機會就地完成，因此會保留公用 IP 位址和節點特定內容之類的資源。
 
@@ -97,7 +96,7 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ## <a name="liveness-probes-and-restart-policies"></a>活躍度探查和重新啟動原則
 
-重新啟動原則會取代活躍度探查所觸發的重新啟動行為。 例如，如果您設定`restartPolicy = Never` *和*活動探查，容器群組將不會因為失敗的活動檢查而重新開機。 容器群組會改為遵守的容器群組重新開機原則`Never`。
+重新啟動原則會取代活躍度探查所觸發的重新啟動行為。 例如，如果您設定 `restartPolicy = Never` *和*活動探查，容器群組將不會因為失敗的活動檢查而重新開機。 容器群組會改為遵守的容器群組重新開機原則 `Never` 。
 
 ## <a name="next-steps"></a>後續步驟
 

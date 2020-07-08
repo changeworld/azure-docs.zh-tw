@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76989904"
 ---
 # <a name="animated-character-detection-preview"></a>動畫字元偵測（預覽）
@@ -40,7 +39,7 @@ Azure 媒體服務影片索引子可透過與[認知服務自訂視覺](https://
 
 ### <a name="trial-vs-paid"></a>試用版與付費
 
-|功能|試用版|付費|
+|功能|試用版|已支付|
 |---|---|---|
 |自訂視覺帳戶|由影片索引子在幕後進行管理。 |您的自訂視覺帳戶已連線到影片索引子。|
 |動畫模型的數目|一個|每個帳戶最多100個模型（自訂視覺限制）。|

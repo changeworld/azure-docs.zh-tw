@@ -4,10 +4,9 @@ description: 瞭解如何設定探查，以確保 Azure 容器實例中的容器
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76935687"
 ---
 # <a name="configure-readiness-probes"></a>設定整備度探查
@@ -23,7 +22,7 @@ Azure 容器實例也支援「[活動探查](container-instances-liveness-probe.
 
 ## <a name="yaml-configuration"></a>YAML 設定
 
-例如，使用包含準備就緒`readiness-probe.yaml`探查的下列程式碼片段來建立檔案。 此檔案會定義由執行小型 web 應用程式的容器所組成的容器群組。 應用程式會從公用`mcr.microsoft.com/azuredocs/aci-helloworld`映射進行部署。 此容器化應用程式也會在使用 Azure CLI 和其他快速入門在[Azure 中部署容器實例](container-instances-quickstart.md)中示範。
+例如， `readiness-probe.yaml` 使用包含準備就緒探查的下列程式碼片段來建立檔案。 此檔案會定義由執行小型 web 應用程式的容器所組成的容器群組。 應用程式會從公用映射進行部署 `mcr.microsoft.com/azuredocs/aci-helloworld` 。 此容器化應用程式也會在使用 Azure CLI 和其他快速入門在[Azure 中部署容器實例](container-instances-quickstart.md)中示範。
 
 ```yaml
 apiVersion: 2018-10-01
@@ -63,9 +62,9 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>Start 命令
 
-此部署包含定義`command`啟動命令的屬性，該命令會在容器第一次開始執行時執行。 這個屬性會接受字串陣列。 此命令會模擬 web 應用程式執行的時間，但容器尚未就緒。 
+此部署包含 `command` 定義啟動命令的屬性，該命令會在容器第一次開始執行時執行。 這個屬性會接受字串陣列。 此命令會模擬 web 應用程式執行的時間，但容器尚未就緒。 
 
-首先，它會啟動 shell 會話，並執行`node`命令以啟動 web 應用程式。 它也會開始睡眠240秒的命令，之後它會在`ready` `/tmp`目錄中建立名為的檔案：
+首先，它會啟動 shell 會話，並執行 `node` 命令以啟動 web 應用程式。 它也會開始睡眠240秒的命令，之後它會在目錄中建立名為的檔案 `ready` `/tmp` ：
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
@@ -73,9 +72,9 @@ node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
 
 ### <a name="readiness-command"></a>準備就緒命令
 
-這個 YAML 檔會定義`readinessProbe` ，其支援`exec`作為準備檢查的準備就緒命令。 這個範例準備命令會測試`ready` `/tmp`目錄中的檔案是否存在。
+這個 YAML 檔會定義， `readinessProbe` 其支援作為 `exec` 準備檢查的準備就緒命令。 這個範例準備命令會測試目錄中的檔案是否存在 `ready` `/tmp` 。
 
-`ready`當檔案不存在時，準備就緒命令會以非零值結束;容器會繼續執行，但無法存取。 當命令成功結束，結束代碼為0時，就可以存取容器。 
+當檔案 `ready` 不存在時，準備就緒命令會以非零值結束; 容器會繼續執行，但無法存取。 當命令成功結束，結束代碼為0時，就可以存取容器。 
 
 `periodSeconds`屬性會指定應每隔5秒執行一次的準備就緒命令。 準備就緒探查會在容器群組的存留期內執行。
 
@@ -89,9 +88,9 @@ az container create --resource-group myResourceGroup --file readiness-probe.yaml
 
 ## <a name="view-readiness-checks"></a>查看準備就緒檢查
 
-在此範例中，在前240秒期間，準備就緒命令會在檢查`ready`檔案是否存在時失敗。 狀態碼傳回的信號表示容器尚未就緒。
+在此範例中，在前240秒期間，準備就緒命令會在檢查檔案 `ready` 是否存在時失敗。 狀態碼傳回的信號表示容器尚未就緒。
 
-這些事件可從 Azure 入口網站或 Azure CLI 來檢視。 例如，入口網站會顯示在準備就緒`Unhealthy`命令失敗時觸發類型的事件。 
+這些事件可從 Azure 入口網站或 Azure CLI 來檢視。 例如，入口網站會顯示在 `Unhealthy` 準備就緒命令失敗時觸發類型的事件。 
 
 ![入口網站狀況不良的事件][portal-unhealthy]
 
@@ -117,7 +116,7 @@ Connecting to 192.0.2.1... connected.
 HTTP request sent, awaiting response... 
 ```
 
-240秒之後，準備就緒命令會成功，通知容器已就緒。 現在，當您執行`wget`命令時，它會成功：
+240秒之後，準備就緒命令會成功，通知容器已就緒。 現在，當您執行 `wget` 命令時，它會成功：
 
 ```
 $ wget 192.0.2.1

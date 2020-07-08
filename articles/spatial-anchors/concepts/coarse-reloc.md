@@ -9,10 +9,9 @@ ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844389"
 ---
 # <a name="coarse-relocalization"></a>粗略地重新當地語系化
@@ -91,7 +90,7 @@ cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
 cloudSpatialAnchorSession.setLocationProvider(sensorProvider);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 // Create the sensor fingerprint provider
@@ -105,7 +104,7 @@ cloudSpatialAnchorSession = std::make_shared<CloudSpatialAnchorSession>();
 cloudSpatialAnchorSession->LocationProvider(sensorProvider);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 ```cpp
 // Create the sensor fingerprint provider
 PlatformLocationProvider sensorProvider = PlatformLocationProvider();
@@ -123,9 +122,9 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 
 |             | 室內 | 戶外 |
 |-------------|---------|----------|
-| GPS         | Off | 另一 |
-| WiFi        | 另一 | On （選擇性） |
-| BLE 信標 | On （選擇性加上注意事項，請參閱下文） | Off |
+| GPS         | 關閉 | 開啟 |
+| WiFi        | 開啟 | On （選擇性） |
+| BLE 信標 | On （選擇性加上注意事項，請參閱下文） | 關閉 |
 
 
 ### <a name="enabling-gps"></a>啟用 GPS
@@ -159,14 +158,14 @@ SensorCapabilities sensors = sensorProvider.getSensors();
 sensors.setGeoLocationEnabled(true);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->GeoLocationEnabled(true);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 SensorCapabilities sensors = sensorProvider.Sensors()
@@ -272,7 +271,7 @@ while (m_isRunning)
 sensorProvider.stop();
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 // Game about to start, start tracking the sensors
@@ -292,7 +291,7 @@ while (m_isRunning)
 sensorProvider->Stop();
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 // Game about to start, start tracking the sensors
@@ -345,14 +344,14 @@ SensorCapabilities sensors = sensorProvider.getSensors();
 sensors.setWifiEnabled(true);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->WifiEnabled(true);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 SensorCapabilities sensors = sensorProvider.Sensors()
@@ -403,14 +402,14 @@ SensorCapabilities sensors = sensorProvider.getSensors();
 sensors.setBluetoothEnabled(true);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->BluetoothEnabled(true);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 SensorCapabilities sensors = sensorProvider.Sensors();
@@ -467,7 +466,7 @@ SensorCapabilities sensors = sensorProvider.getSensors();
 sensors.setKnownBeaconProximityUuids(uuids);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 std::vector<std::string> uuids;
@@ -478,7 +477,7 @@ const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->KnownBeaconProximityUuids(uuids);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 std::vector<winrt::hstring> uuids;
@@ -559,7 +558,7 @@ AnchorLocateCriteria anchorLocateCriteria = new AnchorLocateCriteria();
 anchorLocateCriteria.setNearDevice(nearDeviceCriteria);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 auto nearDeviceCriteria = std::make_shared<NearDeviceCriteria>();
@@ -574,7 +573,7 @@ auto anchorLocateCriteria = std::make_shared<AnchorLocateCriteria>();
 anchorLocateCriteria->NearDevice(nearDeviceCriteria);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 NearDeviceCriteria nearDeviceCriteria = NearDeviceCriteria();
@@ -592,9 +591,9 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 ---
 
-`DistanceInMeters`參數可控制我們要探索錨定圖表以取得內容的距離。 假設您已在每個計量的常數密度中，以錨點填入一些空間。 此外，您裝置上的相機會觀察到單一錨點，而且服務已成功找到它。 您很可能會想要抓取您放在附近的所有錨點，而不是您目前觀察到的單一錨點。 假設您放置的錨點已連接在圖形中，則服務可以遵循圖形中的邊緣，為您抓取所有附近的錨點。 完成的圖形遍歷量由控制`DistanceInMeters`;系統會將所有錨點都連接到您已找出的錨點，其距離`DistanceInMeters`接近。
+`DistanceInMeters`參數可控制我們要探索錨定圖表以取得內容的距離。 假設您已在每個計量的常數密度中，以錨點填入一些空間。 此外，您裝置上的相機會觀察到單一錨點，而且服務已成功找到它。 您很可能會想要抓取您放在附近的所有錨點，而不是您目前觀察到的單一錨點。 假設您放置的錨點已連接在圖形中，則服務可以遵循圖形中的邊緣，為您抓取所有附近的錨點。 完成的圖形遍歷量是由所控制 `DistanceInMeters` ; 您會將所有錨點都連接到您所找到的，這會比更接近 `DistanceInMeters` 。
 
-請記住，的大型值`MaxResultCount`可能會對效能造成負面影響。 將它設定為您應用程式的合理值。
+請記住，的大型值可能會對 `MaxResultCount` 效能造成負面影響。 將它設定為您應用程式的合理值。
 
 最後，您必須告訴會話使用以感應器為基礎的查詢：
 
@@ -622,13 +621,13 @@ cloudSpatialAnchorSession!.createWatcher(anchorLocateCriteria)
 cloudSpatialAnchorSession.createWatcher(anchorLocateCriteria);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 cloudSpatialAnchorSession->CreateWatcher(anchorLocateCriteria);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);

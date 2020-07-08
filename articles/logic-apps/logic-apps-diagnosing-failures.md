@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905064"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>針對 Azure Logic Apps 中的失敗進行疑難排解和診斷
@@ -31,7 +30,7 @@ ms.locfileid: "76905064"
 
    觸發程式輸入包括觸發程式所預期的資料，以及啟動工作流程所需的資訊。 檢查這些輸入可協助您判斷觸發程式輸入是否正確，以及是否符合條件，讓工作流程可以繼續。
 
-   例如，這裡的`feedUrl`屬性具有不正確的 RSS 摘要值：
+   例如，這裡的 `feedUrl` 屬性具有不正確的 RSS 摘要值：
 
    ![審查觸發程式輸入中的錯誤](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
 

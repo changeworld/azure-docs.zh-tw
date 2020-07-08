@@ -5,15 +5,14 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76766261"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions 中的自訂協調流程狀態 (Azure Functions)
 
-自訂協調流程狀態可讓您為協調器函式設定自訂狀態值。 此狀態是透過[HTTP GetStatus API](durable-functions-http-api.md#get-instance-status)或協調流程用戶端上的[ `GetStatusAsync` api](durable-functions-instance-management.md#query-instances)提供。
+自訂協調流程狀態可讓您為協調器函式設定自訂狀態值。 此狀態是透過[HTTP GETSTATUS API](durable-functions-http-api.md#get-instance-status)或協調流程用戶端上的[ `GetStatusAsync` api](durable-functions-instance-management.md#query-instances)提供。
 
 ## <a name="sample-use-cases"></a>範例使用案例
 

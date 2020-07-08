@@ -9,17 +9,16 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 8312c3267e826088f34b3bffe1520703eec00bdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76961110"
 ---
 # <a name="403002-iothubquotaexceeded"></a>403002 IoTHubQuotaExceeded
 
 本文說明**403002 IoTHubQuotaExceeded**錯誤的原因和解決方案。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 IoT 中樞的所有要求都會失敗，並出現錯誤**403002 IoTHubQuotaExceeded**。 在 Azure 入口網站中，IoT 中樞裝置清單不會載入。
 
@@ -27,7 +26,7 @@ IoT 中樞的所有要求都會失敗，並出現錯誤**403002 IoTHubQuotaExcee
 
 已超過 IoT 中樞的每日訊息配額。 
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 [升級或增加 IoT 中樞的單位數](iot-hub-upgrade.md)，或等待下一個 UTC 日，讓每日配額重新整理。
 

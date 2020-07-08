@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774874"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>使用 REST 設定 Azure 媒體服務遙測
@@ -34,7 +33,7 @@ ms.locfileid: "76774874"
 - 取得通知端點
 - 建立用於監視的通知端點。 
 
-    若要建立通知端點，請將 EndPointType 設定為 AzureTable （2），並將將 endpontaddress 設定為儲存體資料表（例如，HTTPs\/：/telemetryvalidationstore.table.core.windows.net/）。
+    若要建立通知端點，請將 EndPointType 設定為 AzureTable （2），並將將 endpontaddress 設定為儲存體資料表（例如，HTTPs： \/ /telemetryvalidationstore.table.core.windows.net/）。
   
 - 取得監視組態
 
@@ -126,7 +125,7 @@ ms.locfileid: "76774874"
     }
 
 > [!NOTE]
-> 別忘了將 "HTTPs：\//telemetryvalidationstore.table.core.windows.net" 值變更為您的儲存體帳戶。
+> 別忘了將 "HTTPs： \/ /telemetryvalidationstore.table.core.windows.net" 值變更為您的儲存體帳戶。
 
 ### <a name="response"></a>回應
 

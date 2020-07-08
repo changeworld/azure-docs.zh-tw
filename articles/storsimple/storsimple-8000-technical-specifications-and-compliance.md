@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68965279"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>適用於 StorSimple 裝置的技術規格和相容性
@@ -46,7 +45,7 @@ EBOD 機箱使用 580 W PCM，而主要機箱會使用 764 W PCM。 下表列出
 | 輸出 |5V 待機電壓 \@ 2.0 A |5V 待機電壓 \@ 2.7 A |
 | +5V \@ 42 A |+5V \@ 40 A | |
 | +12V \@ 38 A |+12V \@ 38 A | |
-| 隨插即用 |是 |是 |
+| 隨插即用 |是 |Yes |
 | 開關和 LED |AC ON/OFF 開關和四個狀態指示器 LED |AC ON/OFF 開關和六個狀態指示器 LED |
 | 機箱冷卻 |具有變動風扇速度控制的軸流散熱風扇 |具有變動風扇速度控制的軸流散熱風扇 |
 

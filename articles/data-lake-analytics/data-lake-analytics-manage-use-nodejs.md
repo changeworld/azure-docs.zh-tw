@@ -10,10 +10,9 @@ ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 21d59f6543df7fe9d1fad47a006260bff9c93e2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76988051"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>使用 Node.js 的 Azure SDK 管理 Azure 資料湖分析
@@ -27,7 +26,7 @@ ms.locfileid: "76988051"
 * **目錄的 REST API 版本：2015-10-01-preview**
 * **作業的 REST API 版本：2016-03-20-preview**
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 * 帳戶管理：建立、取得、列出、更新及刪除。
 * 作業管理︰提交、取得、列出及取消。
 * 目錄管理：取得及列出。
@@ -129,5 +128,5 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 });
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)

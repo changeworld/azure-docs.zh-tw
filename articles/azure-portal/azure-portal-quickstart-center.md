@@ -1,5 +1,5 @@
 ---
-title: 開始使用 Azure 快速入門中心
+title: 開始使用 Azure Databricks Center
 description: 使用 Azure 快速入門中心引導式體驗來開始使用 Azure。 瞭解如何設定、遷移及創新。
 services: azure-portal
 keywords: ''
@@ -10,13 +10,12 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 21dd43b5179d0752699bb56b51a2c08976aa037b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76900701"
 ---
-# <a name="get-started-with-the-azure-quickstart-center"></a>開始使用 Azure 快速入門中心
+# <a name="get-started-with-the-azure-quickstart-center"></a>開始使用 Azure Databricks Center
 
 Azure 快速入門中心是 Azure 入口網站的引導式體驗，可供想要改善 Azure 知識的任何人使用。 對於 Azure 新手的組織而言，這是上線和設定雲端環境的最快方式。
 
@@ -36,7 +35,7 @@ Azure 快速入門中心有三個開始使用選項：
 
 1. 從 [Azure 入口網站] 功能表中選取 [**所有服務**]。
 
-1. 選取 **[一般** > **快速入門中心**]。
+1. 選取 **[一般**  >  **快速入門中心**]。
 
 若要深入瞭解 Azure 快速入門中心可以為您做什麼，請觀看這段影片：
 > [!VIDEO https://www.youtube.com/embed/0bSA7RXrbAg]

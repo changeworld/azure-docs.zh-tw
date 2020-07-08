@@ -5,15 +5,14 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76934984"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>設定應用程式的儲存機制認證以下載容器映射
 
-將新增`RepositoryCredentials`至應用程式資訊清單的`ContainerHostPolicies`區段，以設定容器登錄驗證。 新增容器登錄的帳戶和密碼（在下列範例中為*myregistry.azurecr.io* ），這可讓服務從存放庫下載容器映射。
+將新增 `RepositoryCredentials` 至 `ContainerHostPolicies` 應用程式資訊清單的區段，以設定容器登錄驗證。 新增容器登錄的帳戶和密碼（在下列範例中為*myregistry.azurecr.io* ），這可讓服務從存放庫下載容器映射。
 
 ```xml
 <ServiceManifestImport>
@@ -35,7 +34,7 @@ ms.locfileid: "76934984"
 
 Service Fabric 可讓您設定整個叢集的認證，以供應用程式用來作為預設存放庫認證。
 
-若要啟用或停用這項功能， `UseDefaultRepositoryCredentials`您可以`ContainerHostPolicies`在 ApplicationManifest 中，使用`true`或`false`值將屬性新增至。
+若要啟用或停用這項功能，您可以 `UseDefaultRepositoryCredentials` 在中將屬性新增至 `ContainerHostPolicies` ApplicationManifest.xml 具有 `true` 或 `false` 值。
 
 ```xml
 <ServiceManifestImport>
@@ -49,14 +48,14 @@ Service Fabric 可讓您設定整個叢集的認證，以供應用程式用來�
 </ServiceManifestImport>
 ```
 
-Service Fabric 接著會使用可在`Hosting`區段下的 ClusterManifest 中指定的預設存放庫認證。  如果 `UseDefaultRepositoryCredentials` 是 `true`，Service Fabric 會從 ClusterManifest 中讀取下列值：
+Service Fabric 接著會使用可在區段下的 ClusterManifest 中指定的預設存放庫認證 `Hosting` 。  如果 `UseDefaultRepositoryCredentials` 是 `true`，Service Fabric 會從 ClusterManifest 中讀取下列值：
 
 * DefaultContainerRepositoryAccountName (字串)
 * DefaultContainerRepositoryPassword (字串)
 * IsDefaultContainerRepositoryPasswordEncrypted (布林值)
 * DefaultContainerRepositoryPasswordType （字串）
 
-以下是可在 ClusterManifestTemplate 的`Hosting`區段內新增哪些內容的範例。 您`Hosting`可以在建立叢集時或稍後於設定升級中新增區段。 如需詳細資訊，請參閱[變更 Azure Service Fabric 叢集設定](service-fabric-cluster-fabric-settings.md)及[管理 Azure Service Fabric 應用程式祕密](service-fabric-application-secret-management.md)
+以下是可在 ClusterManifestTemplate.js檔案的區段內新增內容的範例 `Hosting` 。 您 `Hosting` 可以在建立叢集時或稍後於設定升級中新增區段。 如需詳細資訊，請參閱[變更 Azure Service Fabric 叢集設定](service-fabric-cluster-fabric-settings.md)及[管理 Azure Service Fabric 應用程式祕密](service-fabric-application-secret-management.md)
 
 ```json
 "fabricSettings": [
@@ -101,7 +100,7 @@ Service Fabric 支援使用權杖做為認證，以下載容器的映射。  此
 
     ![將 VM 主體新增至 ACR](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
-3. 接下來，修改您的應用程式資訊清單。 在`ContainerHostPolicies`區段中加入屬性`‘UseTokenAuthenticationCredentials=”true”`。
+3. 接下來，修改您的應用程式資訊清單。 在 `ContainerHostPolicies` 區段中加入屬性 `‘UseTokenAuthenticationCredentials=”true”` 。
 
     ```xml
       <ServiceManifestImport>
@@ -116,7 +115,7 @@ Service Fabric 支援使用權杖做為認證，以下載容器的映射。  此
     ```
 
     > [!NOTE]
-    > 旗`UseDefaultRepositoryCredentials`標設為 true 時`UseTokenAuthenticationCredentials` ，如果為 true，則會在部署期間造成錯誤。
+    > 旗標 `UseDefaultRepositoryCredentials` 設為 true 時， `UseTokenAuthenticationCredentials` 如果為 true，則會在部署期間造成錯誤。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,20 +8,19 @@ ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76836451"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的限制-單一伺服器
 下列各節說明資料庫服務中的容量和功能限制。 如果您想要瞭解資源（計算、記憶體、儲存體）層，請參閱[定價層](concepts-pricing-tiers.md)一文。
 
 
-## <a name="maximum-connections"></a>最大連線數
+## <a name="maximum-connections"></a>連線數目上限
 每個定價層和虛擬核心的連線數目上限如下所示。 Azure 系統需要五個連線，以用於監控適用於 PostgreSQL 伺服器的 Azure 資料庫。 
 
-|定價層 | **虛擬核心**| **連線數目上限** | **使用者連線數上限** |
+|定價層| **vCore(s)**| **連線數目上限** | **使用者連線數上限** |
 |---|---|---|---|
 |基本| 1| 55 | 50|
 |基本| 2| 105 | 100|
@@ -43,7 +42,7 @@ ms.locfileid: "76836451"
 > [!IMPORTANT]
 > 為了獲得最佳體驗，建議您使用連線共用器（例如 pgBouncer）來有效率地管理連接。
 
-于 postgresql 連線（甚至是閒置）可能會佔用大約 10 MB 的記憶體。 此外，建立新的連接需要一些時間。 大部分的應用程式會要求許多短期連線，這會將這種情況下。 結果會減少實際工作負載的可用資源，因而導致效能降低。 會減少閒置連線並重複使用現有連接的連接共用器有助於避免這種情況。 若要深入瞭解，請造訪我們的[blog 文章](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)。
+于 postgresql 連線（甚至是閒置）可能會佔用大約 10 MB 的記憶體。 此外，建立新的連接需要一些時間。 大部分應用程式會要求許多短期連線，這會加重這種情況。 結果會減少實際工作負載的可用資源，因而導致效能降低。 減少閒置連線並重複使用現有連線的連接共用器，有助於避免這種情況。 若要深入瞭解，請造訪我們的[blog 文章](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)。
 
 ## <a name="functional-limitations"></a>功能限制：
 ### <a name="scale-operations"></a>調整作業

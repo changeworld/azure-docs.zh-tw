@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
 ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76938917"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric Reliable Collections 中的交易和鎖定模式
@@ -28,7 +27,7 @@ ms.locfileid: "76938917"
 可靠的集合支援兩種隔離等級：
 
 * **可重複讀取**：指定陳述式無法讀取已經修改但尚未由其他交易確認的資料，以及指定在目前的交易完成之前，任何其他交易都不能修改已經由目前交易讀取的資料。
-* **快照集**：指定交易中任何陳述式所讀取的資料都會與交易開始時就存在的資料版本一致。
+* **Snapshot**：指定交易中任何語句所讀取的資料，都是交易開始時所存在之資料的交易一致性版本。
   交易只能辨識交易開始之前所認可的資料修改。
   在目前交易中執行的陳述式，看不到其他交易在目前交易開始之後所進行的資料修改。
   效果就如同交易中的陳述式會取得認可資料的快照集，因為這項資料於交易開始時就存在。
@@ -37,7 +36,7 @@ ms.locfileid: "76938917"
 可靠的集合會依據交易建立時的作業和複本角色，自動選擇要用於指定讀取作業的隔離層級。
 下表說明可靠的字典和佇列作業的隔離等級預設值。
 
-| 作業 \ 角色 | Primary | 次要 |
+| 作業 \ 角色 | 主要 | 次要 |
 | --- |:--- |:--- |
 | 單一實體讀取 |可重複讀取 |快照式 |
 | 列舉、計數 |快照式 |快照式 |
@@ -55,7 +54,7 @@ ms.locfileid: "76938917"
 
 可靠的字典會針對所有單一實體作業使用資料列層級鎖定。
 可靠的佇列則會針對嚴格交易的 FIFO 屬性交換並行。
-可靠的佇列會使用作業層級的鎖定， `TryPeekAsync`允許一次`TryDequeueAsync`有和/或`EnqueueAsync`的一筆交易，並使用一筆交易。
+可靠的佇列會使用作業層級的鎖定，允許一次有和/或的一筆交易 `TryPeekAsync` `TryDequeueAsync` ，並使用一筆交易 `EnqueueAsync` 。
 請注意，為維持 FIFO，如果 `TryPeekAsync` 或 `TryDequeueAsync` 曾觀察到可靠的佇列是空的，則它們也會鎖定 `EnqueueAsync`。
 
 寫入作業一律會採取「獨佔」鎖定。
@@ -68,9 +67,9 @@ ms.locfileid: "76938917"
 
 下表中可找到鎖定相容性矩陣：
 
-| 要求 \ 授與 | 無 | Shared | 更新 | 獨佔 |
+| 要求 \ 授與 | None | 共用 | 更新 | 獨佔 |
 | --- |:--- |:--- |:--- |:--- |
-| Shared |無衝突 |無衝突 |衝突 |衝突 |
+| 共用 |無衝突 |無衝突 |衝突 |衝突 |
 | 更新 |無衝突 |無衝突 |衝突 |衝突 |
 | 獨佔 |無衝突 |衝突 |衝突 |衝突 |
 

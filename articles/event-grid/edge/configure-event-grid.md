@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 841b5092775353bbe3340dbbd55610026f998a15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76846465"
 ---
 # <a name="event-grid-configuration"></a>事件方格設定
@@ -75,10 +74,10 @@ ms.locfileid: "76846465"
 
 | 屬性名稱 | 描述 |
 | ---------------- | ------------ |
-| `api__deliveryPolicyLimits__maxBatchSizeInBytes` | `ApproxBatchSizeInBytes`旋鈕允許的最大值。 預設值為 `1_058_576`。
-| `api__deliveryPolicyLimits__maxEventsPerBatch` | `MaxEventsPerBatch`旋鈕允許的最大值。 預設值為 `50`。
-| `broker__defaultMaxBatchSizeInBytes` | 只有`MaxEventsPerBatch`在指定時，傳遞要求大小上限。 預設值為 `1_058_576`。
-| `broker__defaultMaxEventsPerBatch` | 只有在指定時，才`MaxBatchSizeInBytes`會新增至批次的事件數目上限。 預設值為 `10`。
+| `api__deliveryPolicyLimits__maxBatchSizeInBytes` | 旋鈕允許的最大值 `ApproxBatchSizeInBytes` 。 預設值為 `1_058_576`。
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | 旋鈕允許的最大值 `MaxEventsPerBatch` 。 預設值為 `50`。
+| `broker__defaultMaxBatchSizeInBytes` | 只有在指定時，傳遞要求大小上限 `MaxEventsPerBatch` 。 預設值為 `1_058_576`。
+| `broker__defaultMaxEventsPerBatch` | 只有在指定時，才會新增至批次的事件數目上限 `MaxBatchSizeInBytes` 。 預設值為 `10`。
 
 ## <a name="metrics"></a>計量
 
@@ -86,4 +85,4 @@ ms.locfileid: "76846465"
 
 | 屬性名稱 | 描述 |
 | ---------------- | ------------ |
-| `metrics__reporterType` | 計量端點的報告類型。 預設值`none`為，並停用計量。 將設定`prometheus`為，可啟用 Prometheus 展示格式的計量。
+| `metrics__reporterType` | 計量端點的報告類型。 預設值為 `none` ，並停用計量。 將設定為，可 `prometheus` 啟用 Prometheus 展示格式的計量。

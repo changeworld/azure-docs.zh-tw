@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 28c4dc7831f97d66eb4d47f08e640344d5cca0d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77014941"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>VMware vCenter 的 CloudSimple 私用雲端許可權模型
@@ -24,7 +23,7 @@ CloudSimple 會保留私用雲端環境的完整系統管理存取權。 每個 
 當您建立私人雲端時，會在 vCenter 單一登入網域中建立**CloudOwner**使用者，其具有**雲端擁有者角色**的存取權，可管理私人雲端中的物件。 此使用者也可以設定額外的[vCenter 身分識別來源](set-vcenter-identity.md)，以及其他使用者到私人雲端 vCenter。
 
 > [!NOTE]
-> 您 CloudSimple 私用雲端 vCenter 的預設使用者cloudowner@cloudsimple.local是建立私用雲端的時間。
+> 您 CloudSimple 私用雲端 vCenter 的預設使用者是 cloudowner@cloudsimple.local 建立私用雲端的時間。
 
 ## <a name="user-groups"></a>使用者群組
 
@@ -32,7 +31,7 @@ CloudSimple 會保留私用雲端環境的完整系統管理存取權。 每個 
 
 ### <a name="pre-created-groups"></a>預先建立的群組
 
-| 群組名稱 | 目的 | [角色] |
+| 群組名稱 | 目的 | 角色 |
 | -------- | ------- | ------ |
 | 雲端擁有者-群組 | 此群組的成員具有私用雲端 vCenter 的系統管理許可權 | [雲端擁有者-角色](#cloud-owner-role) |
 | 雲端-全域叢集-系統管理-群組 | 此群組的成員具有私用雲端 vCenter 叢集的系統管理許可權 | [雲端-叢集-系統管理-角色](#cloud-cluster-admin-role) |
@@ -61,7 +60,7 @@ CloudSimple 會保留私用雲端環境的完整系統管理存取權。 每個 
 | **分機** | 註冊延伸模組 <br> 取消註冊延伸模組 <br> 更新延伸模組 |
 | **外部統計資料提供者**| 註冊 <br> Unregister  <br> 更新 |
 | **資料夾** | 建立資料夾 <br> 刪除資料夾 <br> 移動資料夾 <br> 重新命名資料夾 |
-| **全域性** | 取消工作 <br> 容量規劃 <br> 診斷 <br> 停用方法 <br> 啟用方法 <br> 全域標記 <br> 健康情況 <br> 授權 <br> 記錄事件 <br> 管理自訂屬性 <br> Proxy <br> 腳本動作 <br> 服務管理員 <br> 設定自訂屬性 <br> 系統標記 |
+| **全球** | 取消工作 <br> 容量規劃 <br> 診斷 <br> 停用方法 <br> 啟用方法 <br> 全域標記 <br> 醫療 <br> 授權 <br> 記錄事件 <br> 管理自訂屬性 <br> Proxy <br> 腳本動作 <br> 服務管理員 <br> 設定自訂屬性 <br> 系統標記 |
 | **健全狀況更新提供者** | 註冊 <br> Unregister  <br> 更新 |
 | **主機 > 設定** | 儲存體分割區設定 |
 | **主機 > 清查** | 修改叢集 |
@@ -79,7 +78,7 @@ CloudSimple 會保留私用雲端環境的完整系統管理存取權。 每個 
 | **傳送服務**| 管理 <br> 監視 |
 | **vApp** | 新增虛擬機器 <br> 指派資源集區 <br> 指派 vApp <br> 複製 <br> 建立 <br> 刪除 <br> 匯出 <br> 匯入 <br> 移動 <br> 關閉電源 <br> 開啟電源 <br> 重新命名 <br> 暫止 <br> Unregister  <br> View OVF 環境 <br> vApp 應用程式設定 <br> vApp 實例設定 <br> vApp managedBy 設定 <br> vApp 資源設定 |
 | **VRMPolicy** | 查詢 VRMPolicy <br> 更新 VRMPolicy |
-| **虛擬機器 > 設定** | 新增現有的磁片 <br> 加入新的磁片 <br> 新增或移除裝置 <br> 進階 <br> 變更 CPU 計數 <br> 變更資源 <br> 設定 managedBy <br> 磁片變更追蹤 <br> 磁片租用 <br> 顯示連線設定 <br> 擴充虛擬磁片 <br> 主機 USB 裝置 <br> 記憶體 <br> 修改裝置設定 <br> 查詢容錯相容性 <br> 查詢未擁有的檔案 <br> 原始裝置 <br> 從路徑重載 <br> 移除磁片 <br> 重新命名 <br> 重設來賓資訊 <br> 設定注釋 <br> 設定 <br> Cloud-init 位置 <br> 切換分叉父系 <br> 解除鎖定虛擬機器 <br> 升級虛擬機器相容性 |
+| **虛擬機器 > 設定** | 新增現有的磁片 <br> 加入新的磁片 <br> 新增或移除裝置 <br> 進階 <br> 變更 CPU 計數 <br> 變更資源 <br> 設定 managedBy <br> 磁片變更追蹤 <br> 磁片租用 <br> 顯示連線設定 <br> 擴充虛擬磁片 <br> 主機 USB 裝置 <br> Memory <br> 修改裝置設定 <br> 查詢容錯相容性 <br> 查詢未擁有的檔案 <br> 原始裝置 <br> 從路徑重載 <br> 移除磁片 <br> 重新命名 <br> 重設來賓資訊 <br> 設定注釋 <br> 設定 <br> Cloud-init 位置 <br> 切換分叉父系 <br> 解除鎖定虛擬機器 <br> 升級虛擬機器相容性 |
 | **虛擬機器 > 來賓作業** | 修改來賓操作別名 <br> 來賓操作別名查詢 <br> 來賓操作修改 <br> 執行來賓操作程式 <br> 來賓操作查詢 |
 | **虛擬機器 > 互動** | 回答問題 <br> 虛擬機器上的備份操作 <br> 設定 CD 媒體 <br> 設定軟碟媒體 <br> 主控台互動 <br> 建立螢幕擷取畫面 <br> 重組所有磁片 <br> 裝置連線 <br> 拖放 <br> VIX API 的客體作業系統管理 <br> 插入 USB HID 掃描碼 <br> 暫停或 Unpause <br> 執行抹除或壓縮作業 <br> 關閉電源 <br> 開啟電源 <br> 在虛擬機器上記錄會話 <br> 虛擬機器上的重新執行會話 <br> 重設 <br> 繼續容錯 <br> 暫止 <br> 暫止容錯 <br> 測試容錯移轉 <br> 測試重新開機次要 VM <br> 關閉容錯功能 <br> 開啟容錯功能 <br> VMware 工具安裝 |
 | **虛擬機器 > 清查** | 從現有的建立 <br> 新建 <br> 移動 <br> 註冊 <br> 移除 <br> Unregister  |
@@ -101,7 +100,7 @@ CloudSimple 會保留私用雲端環境的完整系統管理存取權。 每個 
 | **Resource** | 套用建議 <br> 將 vApp 指派給資源集區 <br> 將虛擬機器指派給資源集區 <br> 建立資源集區 <br> 遷移已關閉電源的虛擬機器 <br> 遷移已啟動的虛擬機器 <br> 修改資源集區 <br> 移動資源集區 <br> 查詢 vMotion <br> 移除資源集區 <br> 重新命名資源集區 |
 | **vApp** | 新增虛擬機器 <br> 指派資源集區 <br> 指派 vApp <br> 複製 <br> 建立 <br> 刪除 <br> 匯出 <br> 匯入 <br> 移動 <br> 關閉電源 <br> 開啟電源 <br> 重新命名 <br> 暫止 <br> Unregister  <br> View OVF 環境 <br> vApp 應用程式設定 <br> vApp 實例設定 <br> vApp managedBy 設定 <br> vApp 資源設定 |
 | **VRMPolicy** | 查詢 VRMPolicy <br> 更新 VRMPolicy |
-| **虛擬機器 > 設定** | 新增現有的磁片 <br> 加入新的磁片 <br> 新增或移除裝置 <br> 進階 <br> 變更 CPU 計數 <br> 變更資源 <br> 設定 managedBy <br> 磁片變更追蹤 <br> 磁片租用 <br> 顯示連線設定 <br> 擴充虛擬磁片 <br> 主機 USB 裝置 <br> 記憶體 <br> 修改裝置設定 <br> 查詢容錯相容性 <br> 查詢未擁有的檔案 <br> 原始裝置 <br> 從路徑重載 <br> 移除磁片 <br> 重新命名 <br> 重設來賓資訊 <br> 設定注釋 <br> 設定 <br> Cloud-init 位置 <br> 切換分叉父系 <br> 解除鎖定虛擬機器 <br> 升級虛擬機器相容性 |
+| **虛擬機器 > 設定** | 新增現有的磁片 <br> 加入新的磁片 <br> 新增或移除裝置 <br> 進階 <br> 變更 CPU 計數 <br> 變更資源 <br> 設定 managedBy <br> 磁片變更追蹤 <br> 磁片租用 <br> 顯示連線設定 <br> 擴充虛擬磁片 <br> 主機 USB 裝置 <br> Memory <br> 修改裝置設定 <br> 查詢容錯相容性 <br> 查詢未擁有的檔案 <br> 原始裝置 <br> 從路徑重載 <br> 移除磁片 <br> 重新命名 <br> 重設來賓資訊 <br> 設定注釋 <br> 設定 <br> Cloud-init 位置 <br> 切換分叉父系 <br> 解除鎖定虛擬機器 <br> 升級虛擬機器相容性 |
 | **虛擬機器 > 來賓作業** | 修改來賓操作別名 <br> 來賓操作別名查詢 <br> 來賓操作修改 <br> 執行來賓操作程式 <br> 來賓操作查詢 |
 | **虛擬機器 > 互動** | 回答問題 <br> 虛擬機器上的備份操作 <br> 設定 CD 媒體 <br> 設定軟碟媒體 <br> 主控台互動 <br> 建立螢幕擷取畫面 <br> 重組所有磁片 <br> 裝置連線 <br> 拖放 <br> VIX API 的客體作業系統管理 <br> 插入 USB HID 掃描碼 <br> 暫停或 Unpause <br> 執行抹除或壓縮作業 <br> 關閉電源 <br> 開啟電源 <br> 在虛擬機器上記錄會話 <br> 虛擬機器上的重新執行會話 <br> 重設 <br> 繼續容錯 <br> 暫止 <br> 暫止容錯 <br> 測試容錯移轉 <br> 測試重新開機次要 VM <br> 關閉容錯功能 <br> 開啟容錯功能 <br> VMware 工具安裝
 | **虛擬機器 > 清查** | 從現有的建立 <br> 新建 <br> 移動 <br> 註冊 <br> 移除 <br> Unregister  |
@@ -137,7 +136,7 @@ CloudSimple 會保留私用雲端環境的完整系統管理存取權。 每個 
 | **Network** | 指派網路 |
 | **Resource** | 將虛擬機器指派給資源集區 <br> 遷移已關閉電源的虛擬機器 <br> 遷移已啟動的虛擬機器
 | **vApp** | 匯出 <br> 匯入 |
-| **虛擬機器 > 設定** | 新增現有的磁片 <br> 加入新的磁片 <br> 新增或移除裝置 <br> 進階 <br> 變更 CPU 計數 <br> 變更資源 <br> 設定 managedBy <br> 磁片變更追蹤 <br> 磁片租用 <br> 顯示連線設定 <br> 擴充虛擬磁片 <br> 主機 USB 裝置 <br> 記憶體 <br> 修改裝置設定 <br> 查詢容錯相容性 <br> 查詢未擁有的檔案 <br> 原始裝置 <br> 從路徑重載 <br> 移除磁片 <br> 重新命名 <br> 重設來賓資訊 <br> 設定注釋 <br> 設定 <br> Cloud-init 位置 <br> 切換分叉父系 <br> 解除鎖定虛擬機器 <br> 升級虛擬機器相容性 |
+| **虛擬機器 > 設定** | 新增現有的磁片 <br> 加入新的磁片 <br> 新增或移除裝置 <br> 進階 <br> 變更 CPU 計數 <br> 變更資源 <br> 設定 managedBy <br> 磁片變更追蹤 <br> 磁片租用 <br> 顯示連線設定 <br> 擴充虛擬磁片 <br> 主機 USB 裝置 <br> Memory <br> 修改裝置設定 <br> 查詢容錯相容性 <br> 查詢未擁有的檔案 <br> 原始裝置 <br> 從路徑重載 <br> 移除磁片 <br> 重新命名 <br> 重設來賓資訊 <br> 設定注釋 <br> 設定 <br> Cloud-init 位置 <br> 切換分叉父系 <br> 解除鎖定虛擬機器 <br> 升級虛擬機器相容性 |
 | **虛擬機器 >來賓作業** | 修改來賓操作別名 <br> 來賓操作別名查詢 <br> 來賓操作修改 <br> 執行來賓操作程式 <br> 來賓操作查詢    |
 | **虛擬機器 >互動** | 回答問題 <br> 虛擬機器上的備份操作 <br> 設定 CD 媒體 <br> 設定軟碟媒體 <br> 主控台互動 <br> 建立螢幕擷取畫面 <br> 重組所有磁片 <br> 裝置連線 <br> 拖放 <br> VIX API 的客體作業系統管理 <br> 插入 USB HID 掃描碼 <br> 暫停或 Unpause <br> 執行抹除或壓縮作業 <br> 關閉電源 <br> 開啟電源 <br> 在虛擬機器上記錄會話 <br> 虛擬機器上的重新執行會話 <br> 重設 <br> 繼續容錯 <br> 暫止 <br> 暫止容錯 <br> 測試容錯移轉 <br> 測試重新開機次要 VM <br> 關閉容錯功能 <br> 開啟容錯功能 <br> VMware 工具安裝 |
 | **虛擬機器 >清查** | 從現有的建立 <br> 新建 <br> 移動 <br> 註冊 <br> 移除 <br> Unregister  |

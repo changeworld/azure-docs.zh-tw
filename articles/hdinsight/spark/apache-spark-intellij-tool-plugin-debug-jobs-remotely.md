@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.openlocfilehash: 393356bd8604f6e7622acd778817681aad31f1f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76935013"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用 Azure Toolkit for IntelliJ 來在 HDInsight 中透過 VPN 遠端偵錯 Apache Spark 應用程式
@@ -27,15 +26,15 @@ ms.locfileid: "76935013"
 1. 在 IntelliJ IDEA 中建立 Scala 應用程式，然後設定它以進行遠端偵錯。
 1. 執行和偵錯應用程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* **Azure 訂**用帳戶。 如需詳細資訊，請參閱[取得 Azure 的免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* **Azure 訂用帳戶**。 如需詳細資訊，請參閱[取得 Azure 的免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **HDInsight 中的 Apache Spark 叢集**。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
 * **Oracle JAVA 開發工具組**。 您可以從 [Oracle 網站](https://aka.ms/azure-jdks) \(英文\) 安裝它。
 * **IntelliJ 的想法**。 本文章使用 2017.1 版。 您可以從 [JetBrains 網站](https://www.jetbrains.com/idea/download/) \(英文\) 安裝它。
 * **適用於 IntelliJ 的 Azure 工具組中的 HDInsight 工具**。 適用於 IntelliJ 的 HDInsight 工具是適用於 IntelliJ 的 Azure 工具組的一部分。 如需有關如何安裝 Azure 工具組的指示，請參閱[安裝適用於 IntelliJ 的 Azure 工具組](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation)。
 * **從 IntelliJ IDEA 登入您的 Azure 訂用帳戶**。 請依照[使用 Azure Toolkit for IntelliJ 為 HDInsight 叢集建立 Apache Spark 應用程式](apache-spark-intellij-tool-plugin.md)中的指示進行。
-* **例外狀況的因應措施**。 在 Windows 電腦上執行 Spark Scala 應用程式以進行遠端偵錯時，可能會發生例外狀況。 這個例外狀況會在 [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356) 中說明，並會因 Windows 中的 WinUtils.exe 檔案遺失而發生。 若要解決此錯誤，您必須將[winutils.exe](https://github.com/steveloughran/winutils)下載至位置，例如**C:\WinUtils\bin**。 新增環境變數 **HADOOP_HOME**，然後將變數的值設為 **C\WinUtils**。
+* **例外狀況的因應措施**。 在 Windows 電腦上執行 Spark Scala 應用程式以進行遠端偵錯時，可能會發生例外狀況。 這個例外狀況會在 [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356) 中說明，並會因 Windows 中的 WinUtils.exe 檔案遺失而發生。 若要解決此錯誤，您必須將[Winutils.exe](https://github.com/steveloughran/winutils)下載到**C:\WinUtils\bin**之類的位置。 新增環境變數 **HADOOP_HOME**，然後將變數的值設為 **C\WinUtils**。
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>步驟 1：建立 Azure 虛擬網路
 
@@ -98,16 +97,16 @@ ms.locfileid: "76935013"
 
     ![在 IntelliJ IDEA 中選取新的專案範本](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
 
-    a. 選取**HDInsight** > **[hdinsight 上的 hdinsight Spark （Scala）**]。
+    a. 選取 [HDInsight] > [HDInsight 上的 Spark (Scala)]。
 
-    b. 選取 [下一步]  。
+    b. 選取 [下一步]。
 1. 在下一個 [新增專案]**** 對話方塊中，執行下列操作，然後選取 [完成]****：
 
     - 輸入專案名稱和位置。
 
     - 在 [Project SDK]  \(專案 SDK\) 下拉式清單中，針對 Spark 2.x 叢集，請選取 [Java 1.8]  ，針對 Spark 1.x 叢集，則選取 [Java 1.7]  。
 
-    - 在 [Spark 版本]**** 下拉式清單中，Scala 專案建立精靈會為 Spark SDK 和 Scala SDK 整合正確的版本。 如果 Spark 叢集版本早於 2.0，請選取 [Spark 1.x]  。 否則，請選取 [Spark 2.x]  。 此範例使用 [Spark 2.0.2 (Scala 2.11.8)]  。
+    - 在 [Spark 版本]**** 下拉式清單中，Scala 專案建立精靈會為 Spark SDK 和 Scala SDK 整合正確的版本。 如果 Spark 叢集版本早於 2.0，請選取 [Spark 1.x]。 否則，請選取 [Spark 2.x]  。 此範例使用 [Spark 2.0.2 (Scala 2.11.8)]  。
   
    ![選取專案 SDK 和 Spark 版本](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
   
@@ -281,7 +280,7 @@ ms.locfileid: "76935013"
 
     ![IntelliJ 概念觀看偵錯工具索引標籤](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
 
-1. 若要新增監看式，請**+** 選取（）圖示。
+1. 若要新增監看式，請選取（ **+** ）圖示。
 
     ![IntelliJ debug-新增-監看式-變數](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
 

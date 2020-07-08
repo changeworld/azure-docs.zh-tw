@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
 ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76840548"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用網路監看員功能時所需的角色型存取控制權限
@@ -102,7 +101,7 @@ Azure 角色型存取控制 (RBAC) 可將指派給組織成員的動作，限縮
 
 網路監看員功能也需要下列動作：
 
-| 動作（秒）                                                           | 描述                                                    |
+| 動作（秒）                                                           | Description                                                    |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Authorization/\*/Read                                     | 用來提取 RBAC 角色指派和原則定義          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | 用來列舉訂用帳戶中的所有資源群組    |

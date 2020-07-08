@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76908159"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>將 Service Fabric 網格應用程式移至另一個 Azure 區域
@@ -19,10 +18,10 @@ ms.locfileid: "76908159"
 
  [Service Fabric 網格不支援](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh)在 Azure 區域之間直接移動資源的能力。 不過，您可以將目前 Azure Resource Manager 範本的複本部署到新的目的地區域，然後將輸入流量和相依性重新導向至新建立的 Service Fabric 網狀應用程式，以間接移動資源。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 輸入控制器（例如[應用程式閘道](https://docs.microsoft.com/azure/application-gateway/)）做為路由傳送用戶端和 Service Fabric 網狀應用程式之間流量的媒介
-* 目標 Azure 區域中的 Service Fabric 網格（預覽）可用性（`westus`、 `eastus`或`westeurope`）
+* 目標 Azure 區域中的 Service Fabric 網格（預覽）可用性（ `westus` 、 `eastus` 或 `westeurope` ）
 
 ## <a name="prepare"></a>準備
 
@@ -30,7 +29,7 @@ ms.locfileid: "76908159"
 
 2. 如果適用的話，請[匯出相同資源群組中的其他資源](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource-group)，以在目的地區域中重新部署。
 
-3. 檢查（並視需要編輯）匯出的範本，以確保現有的屬性值是您想要在目的地區域中使用的內容。 新`location`的（Azure 區域）是您將在重新部署期間提供的參數。
+3. 檢查（並視需要編輯）匯出的範本，以確保現有的屬性值是您想要在目的地區域中使用的內容。 新的 `location` （Azure 區域）是您將在重新部署期間提供的參數。
 
 ## <a name="move"></a>移動
 
@@ -40,7 +39,7 @@ ms.locfileid: "76908159"
 
 3. 如需有關移動相關資源（例如[Azure 儲存體帳戶](../storage/common/storage-account-move.md)）的指引，請參閱[跨區域移動 Azure 資源](../azure-resource-manager/management/move-region.md)主題底下所列之個別服務的指導方針。
 
-## <a name="verify"></a>Verify
+## <a name="verify"></a>確認
 
 1. 當部署完成時，請測試應用程式端點，以確認應用程式的功能。
 

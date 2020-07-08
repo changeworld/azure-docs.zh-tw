@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905871"
 ---
 # <a name="sfctl-node"></a>sfctl node
@@ -41,7 +40,7 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --config-參數-覆寫-清單 [必要] | 新增設定覆寫清單的描述。 |
 | --node-name [Required] | 節點的名稱。 |
@@ -50,7 +49,7 @@ ms.locfileid: "76905871"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -65,7 +64,7 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --deactivation-intent | 描述停用節點的意圖或理由。 可能的值如下。 |
@@ -73,7 +72,7 @@ ms.locfileid: "76905871"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -88,14 +87,14 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -110,14 +109,14 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -132,7 +131,7 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --events-health-state-filter | 可根據健康情況狀態來篩選所傳回的 HealthEvent 物件集合。 此參數的可能值包括下列其中一個健康情況狀態的整數值。 只會傳回符合篩選條件的事件。 所有事件都會用來評估彙總的健康情況狀態。 如果未指定，則會傳回所有項目。 狀態值是以旗標為基礎的列舉，因而此值可以是使用位元 'OR' 運算子所取得這些值的組合。 例如，如果提供的值為 6，則會傳回 HealthState 值為 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 預設值。 符合任何 HealthState。 值為零。  <br> - None - 不符合任何 HealthState 值的篩選條件。 用來在指定狀態集合沒有任何結果時傳回。 值為 1。  <br> - Ok - 符合輸入含 HealthState 值 Ok 的篩選條件。 值為 2。  <br> - Warning - 符合輸入含 HealthState 值 Warning 的篩選條件。 值為 4。  <br> - Error - 符合輸入含 HealthState 值 Error 的篩選條件。 值為 8。  <br> - All - 符合輸入含任何 HealthState 值的篩選條件。 值為 65535。 |
@@ -140,7 +139,7 @@ ms.locfileid: "76905871"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -155,14 +154,14 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -177,7 +176,7 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --continuation-token | 接續權杖參數可用來取得下一組結果。 當來自系統的結果無法放入單一回應中時，API 的回應中會包含具有非空白值的接續權杖。 當此值傳遞至下一個 API 呼叫時，API 會傳回下一組結果。 如果沒有任何進一步的結果，接續權杖就不會包含值。 此參數的值不能經過 URL 編碼。 |
 | --max-results | 分頁式查詢時傳回的最大結果數目。 此參數定義傳回結果數目的上限。 根據設定中所定義的訊息大小限制上限，如果所傳回的結果無法放入訊息中，則它們可以小於指定的結果上限。 如果此參數為零或未指定，則分頁式查詢會在傳回訊息中盡可能包含較多結果。 |
@@ -186,7 +185,7 @@ ms.locfileid: "76905871"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -201,14 +200,14 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -223,14 +222,14 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -241,18 +240,18 @@ ms.locfileid: "76905871"
 ## <a name="sfctl-node-remove-state"></a>sfctl node remove-state
 通知 Service Fabric 某個節點上的永續性狀態已永久移除或遺失。
 
-這意謂著無法復原該節點的永續性狀態。 通常如果已將硬碟抹除乾淨或硬碟損毀，就會發生這種情況。 節點必須停止運作，此作業才能成功。 此作業可讓 Service Fabric 知道該節點上的複本已不存在，而 Service Fabric 應該停止等候這些複本恢復運作。 如果節點上的狀態尚未移除，而節點能夠在其狀態保持不變的情況下恢復運作，則請勿執行此 Cmdlet。 從 Service Fabric 6.5 開始，若要將此 API 用於種子節點，請將種子節點變更為一般（非種子）節點，然後叫用此 API 以移除節點狀態。 如果叢集在 Azure 上執行，則種子節點關閉後，Service Fabric 會嘗試自動將其變更為非種子節點。 若要進行這項操作，請確定主要節點類型中的非種子節點數目不小於向下種子節點的數目。 如有必要，請將更多節點新增至主要節點類型，以達成此目的。 針對獨立叢集，如果 [關閉種子] 節點不會在其狀態保持不變的情況下進行備份，請從叢集移除節點，請\:參閱 HTTPs//docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes。
+這意謂著無法復原該節點的永續性狀態。 通常如果已將硬碟抹除乾淨或硬碟損毀，就會發生這種情況。 節點必須停止運作，此作業才能成功。 此作業可讓 Service Fabric 知道該節點上的複本已不存在，而 Service Fabric 應該停止等候這些複本恢復運作。 如果節點上的狀態尚未移除，而節點能夠在其狀態保持不變的情況下恢復運作，則請勿執行此 Cmdlet。 從 Service Fabric 6.5 開始，若要將此 API 用於種子節點，請將種子節點變更為一般（非種子）節點，然後叫用此 API 以移除節點狀態。 如果叢集在 Azure 上執行，則種子節點關閉後，Service Fabric 會嘗試自動將其變更為非種子節點。 若要進行這項操作，請確定主要節點類型中的非種子節點數目不小於向下種子節點的數目。 如有必要，請將更多節點新增至主要節點類型，以達成此目的。 針對獨立叢集，如果 [關閉種子] 節點不會在其狀態保持不變的情況下進行備份，請從叢集移除節點，請參閱 HTTPs \: //docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes。
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -267,7 +266,7 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --health-property [必要] | 健康情況資訊的屬性。 <br><br> 實體可以有不同屬性的健康情況報告。 屬性是一個字串而不是固定的列舉，以便讓報告程式在分類觸發報告的狀態條件時較有彈性。 例如，SourceId 為 "LocalWatchdog" 的報告程式可以監視節點上可用磁碟的狀態，因此可以針對該節點回報 "AvailableDisk" 屬性。 該相同報告程式還可以監視節點連線能力，因此可以針對該相同節點回報 "Connectivity" 屬性。 在健康狀態資料存放區中，會將這些報告視為所指定節點的個別健康情況事件。 與 SourceId 搭配使用時，此屬性可唯一識別健康情況資訊。 |
 | --health-state    [必要] | 可能的值包括：'Invalid'、'Ok'、'Warning'、'Error'、'Unknown'。 |
@@ -282,7 +281,7 @@ ms.locfileid: "76905871"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -297,7 +296,7 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --create-fabric-dump | 指定 True 以建立網狀架構節點處理程序的傾印。 這區分大小寫。  預設值：False。 |
@@ -306,7 +305,7 @@ ms.locfileid: "76905871"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -321,7 +320,7 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-instance-id [必要] | 目標節點的節點執行個體識別碼。 這可透過 GetNodeInfo API 來決定。 |
 | --node-name [必要] | 節點的名稱。 |
@@ -332,7 +331,7 @@ ms.locfileid: "76905871"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -347,7 +346,7 @@ ms.locfileid: "76905871"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --node-name [必要] | 節點的名稱。 |
 | --operation-id [必要] | 識別此 API 呼叫的 GUID。  這會傳遞至對應的 GetProgress API。 |
@@ -355,7 +354,7 @@ ms.locfileid: "76905871"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |

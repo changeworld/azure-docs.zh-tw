@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 474ef03d482288b6bf7b5a8b1c224349a8e2d3a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77014958"
 ---
 # <a name="create-resource-pools-for-your-private-cloud-with-azure-subscription-mapping"></a>使用 Azure 訂用帳戶對應來建立私人雲端的資源集區
@@ -30,4 +29,4 @@ Azure 訂用帳戶對應可讓您從可用的 vSphere 資源集區建立私人�
 
     ![Azure 訂用帳戶](media/resources-azure-mapping.png)
 
-6. 按一下 [確定]  。
+6. 按一下 [確定] 。

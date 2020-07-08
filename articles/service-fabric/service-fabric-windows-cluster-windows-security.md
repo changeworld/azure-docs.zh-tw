@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: dekapur
 ms.openlocfilehash: 46be6acc1ef08770826a2e020c8930eba0787791
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774452"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>使用 Windows 安全性保護 Windows 上的獨立叢集
@@ -21,7 +20,7 @@ ms.locfileid: "76774452"
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>使用 gMSA 設定 Windows 安全性  
-使用 Clusterconfig.unsecure.multimachine.json」下載的範例*clusterconfig.x509.multimachine.json. gMSA.. JSON*設定檔案[。\<版本> .zip](https://go.microsoft.com/fwlink/?LinkId=730690)獨立叢集套件包含使用[群組受管理的服務帳戶（gMSA）](https://technet.microsoft.com/library/hh831782.aspx)來設定 Windows 安全性的範本：  
+隨著 [Microsoft.Azure.ServiceFabric.WindowsServer\<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) 獨立叢集封裝下載的範例 *ClusterConfig.gMSA.Windows.MultiMachine.JSON* 組態檔，包含可供使用[群組受控服務帳戶 (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) 來設定 Windows 安全性的範本：  
 
 ```
 "security": {
@@ -40,19 +39,19 @@ ms.locfileid: "76774452"
 }
 ```
 
-| **設定** | **說明** |
+| **設定** | **描述** |
 | --- | --- |
 | ClusterCredentialType |設定為 [ *windows* ] 可啟用節點節點通訊的 windows 安全性。  | 
 | ServerCredentialType |設定為 [Windows]** 可為用戶端對節點通訊啟用 Windows 安全性。 |
 | WindowsIdentities |包含叢集和用戶端身分識別。 |
-| ClustergMSAIdentity |設定節點對節點安全性。 群組受控服務帳戶。 |
+| ClustergMSAIdentity |設定節點對節點安全性。 群組受管理的服務帳戶。 |
 | ClusterSPN |gMSA 帳戶的已註冊 SPN|
 | ClientIdentities |設定用戶端對節點安全性。 用戶端使用者帳戶的陣列。 |
 | 身分識別 |新增網域使用者 (domain\username) 以做為用戶端身分識別。 |
 | IsAdmin |設定為 true 可指定網域使用者具有系統管理員用戶端存取權，設定為 false 則具有使用者用戶端存取權。 |
 
 > [!NOTE]
-> ClustergMSAIdentity 值的格式必須是 "mysfgmsa@mydomain"。
+> ClustergMSAIdentity 值的格式必須是 " mysfgmsa@mydomain "。
 
 需要在 gMSA 下執行 Service Fabric 時，可透過 **ClustergMSAIdentity** 來設定[節點對節點安全性](service-fabric-cluster-security.md#node-to-node-security)。 為了建置節點之間的信任關係，它們必須注意彼此。 有兩種不同的方式可達成此目的︰指定群組受控服務帳戶 (其中包含叢集中的所有節點)，或指定包含叢集中所有節點的網域電腦群組。 強烈建議使用 [群組受控服務帳戶 (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) 方法，特別適合於較大型的叢集 (超過 10 個節點) 或可能會擴大或縮小的叢集。  
 此方法不需要建立叢集系統管理員已獲得存取權限的網域群組，即可加入和移除成員。 進行自動密碼管理時，這些帳戶也很有用。 如需詳細資訊，請參閱 [開始使用群組受控服務帳戶](https://technet.microsoft.com/library/jj128431.aspx)。  
@@ -77,7 +76,7 @@ ms.locfileid: "76774452"
 ```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>使用電腦群組設定 Windows 安全性  
-此模型已被淘汰。 建議使用 gMSA，如上所述。 已使用 ServiceFabric 下載的範例*Clusterconfig.x509.multimachine.json clusterconfig.unsecure.multimachine.json」. JSON*設定檔案[。\<版本> .zip](https://go.microsoft.com/fwlink/?LinkId=730690)獨立叢集套件包含用來設定 Windows 安全性的範本。  Windows 安全性於 **Properties** 區段中設定︰ 
+此模型已被淘汰。 建議使用 gMSA，如上所述。 隨著 [Microsoft.Azure.ServiceFabric.WindowsServer\<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) 獨立叢集封裝下載的範例 *ClusterConfig.Windows.MultiMachine.JSON* 組態檔包含可供設定 Windows 安全性的範本。  Windows 安全性於 **Properties** 區段中設定︰ 
 
 ```
 "security": {
@@ -93,7 +92,7 @@ ms.locfileid: "76774452"
 }
 ```
 
-| **設定** | **說明** |
+| **設定** | **描述** |
 | --- | --- |
 | ClusterCredentialType |設定為 [ *windows* ] 可啟用節點節點通訊的 windows 安全性。  |
 | ServerCredentialType |設定為 [Windows]** 可為用戶端對節點通訊啟用 Windows 安全性。 |

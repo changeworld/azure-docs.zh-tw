@@ -6,17 +6,16 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: b805b7047b00f416664a001f02f311f6b387af19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76896270"
 ---
 # <a name="sfctl-settings"></a>sfctl settings
 在 sfctl 的此執行個體設定本機設定。
 
 ## <a name="subgroups"></a>子群組
-|子群組|描述|
+|子群組|Description|
 | --- | --- |
 | [清單](service-fabric-sfctl-settings-telemetry.md) | 在 sfctl 的此執行個體設定遙測設定。 |
 

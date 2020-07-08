@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77014992"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>在 Azure 中管理您的 CloudSimple 私用雲端虛擬機器
@@ -23,10 +22,10 @@ ms.locfileid: "77014992"
 
 您可以從所選虛擬機器的 [**總覽**] 頁面取得下列控制項。
 
-| 控制 | 描述 |
+| 控制 | Description |
 | ------------ | ------------- |
 | 連線 | 連接到指定的 VM。  |
-| 啟動 | 啟動指定的 VM。  |
+| 開始 | 啟動指定的 VM。  |
 | 重新啟動 | 關閉並開啟指定的 VM。  |
 | Stop | 關閉特定的 VM。  |
 | 擷取 | 捕獲指定 VM 的映射，讓它可以用來做為建立其他 Vm 的映射。 請參閱[在 Azure 中建立一般化 VM 的受控映射](../virtual-machines/windows/classic/capture-image.md)。   |
@@ -40,7 +39,7 @@ ms.locfileid: "77014992"
 
 系統會顯示下列圖表。
 
-| 項目 | 描述 |
+| 項目 | 說明 |
 | ------------ | ------------- |
 | CPU （平均） | 所選間隔的平均 CPU 使用率（以百分比表示）。   |
 | 網路 | 在所選間隔內進出網路的流量（MB）。  |
@@ -49,12 +48,12 @@ ms.locfileid: "77014992"
 
 ## <a name="manage-vm-disks"></a>管理虛擬機器磁碟
 
-若要新增 VM 磁片，請開啟所選取 VM 的 [**磁片**] 頁面。 若要新增磁片，請按一下 [**新增磁片**]。 輸入或選取內嵌選項，以設定下列每個設定。 按一下 **[儲存]** 。
+若要新增 VM 磁片，請開啟所選取 VM 的 [**磁片**] 頁面。 若要新增磁片，請按一下 [**新增磁片**]。 輸入或選取內嵌選項，以設定下列每個設定。 按一下 [檔案] 。
 
-   | 項目 | 描述 |
+   | 項目 | 說明 |
    | ------------ | ------------- |
-   | 名稱 | 輸入識別磁碟的名稱。  |
-   | Size | 選取其中一個可用的大小。  |
+   | Name | 輸入識別磁碟的名稱。  |
+   | 大小 | 選取其中一個可用的大小。  |
    | SCSI 控制器 | 選取 SCSI 控制器。 可用的控制器會因不同的支援作業系統而有所不同。  |
    | [模式] | 決定磁片如何參與快照集。 請選擇其中一個選項： <br> 獨立的持續性：寫入磁片的所有資料都會永久寫入。<br> 獨立的非持續性：當您關閉或重設虛擬機器時，會捨棄寫入磁片的變更。  此模式可讓您一律以相同的狀態重新開機 VM。 如需詳細資訊，請參閱 [VMware 文件](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)。 |
 
@@ -64,7 +63,7 @@ ms.locfileid: "77014992"
 
 若要變更 VM 的容量，請開啟所選取 VM 的 [**大小**] 頁面。 指定下列任何一項，然後按一下 [**儲存**]。
 
-| 項目 | 描述 |
+| 項目 | 說明 |
 | ------------ | ------------- |
 | 核心數目 | 指派給 VM 的核心數目。  |
 | 硬體虛擬化 | 選取核取方塊，將硬體虛擬化公開給客體作業系統。 請參閱 VMware 一文：[公開 Vmware 硬體輔助虛擬化](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html)。 |
@@ -72,11 +71,11 @@ ms.locfileid: "77014992"
 
 ## <a name="manage-network-interfaces"></a>管理網路介面
 
-若要新增介面，請按一下 [**新增網路介面**]。 輸入或選取內嵌選項，以設定下列每個設定。 按一下 **[儲存]** 。
+若要新增介面，請按一下 [**新增網路介面**]。 輸入或選取內嵌選項，以設定下列每個設定。 按一下 [檔案] 。
 
-   | 控制 | 描述 |
+   | 控制 | 說明 |
    | ------------ | ------------- |
-   | 名稱 | 輸入識別介面的名稱。  |
+   | Name | 輸入識別介面的名稱。  |
    | 網路 | 從私人雲端 vSphere 中已設定的網路清單中選取。  |
    | 配接器 | 從為 VM 設定的可用類型清單中，選取 vSphere 介面卡。 如需詳細資訊，請參閱 VMware 知識庫文章[選擇虛擬機器的網路介面卡](https://kb.vmware.com/s/article/1001805)。 |
    | 在開機時開啟電源 | 選擇是否要在 VM 開機時啟用 NIC 硬體。 預設值為 [啟用]****。 |

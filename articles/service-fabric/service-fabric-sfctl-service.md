@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 696de713129ca71dd7f2451501a7cc9eca0ee9b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906231"
 ---
 # <a name="sfctl-service"></a>sfctl service
@@ -22,7 +21,7 @@ ms.locfileid: "76906231"
 | app-name | 取得服務的 Service Fabric 應用程式名稱。 |
 | code-package-list | 取得 Service Fabric 節點上所部署的程式碼套件清單。 |
 | 建立 | 建立指定的 Service Fabric 服務。 |
-| [刪除] | 刪除現有 Service Fabric 服務。 |
+| delete | 刪除現有 Service Fabric 服務。 |
 | deployed-type | 針對 Service Fabric 叢集節點上所部署的應用程式，取得其指定服務類型的相關資訊。 |
 | deployed-type-list | 從 Service Fabric 叢集節點上所部署的應用程式，取得包含服務類型相關資訊的清單。 |
 | description | 取得現有 Service Fabric 服務的描述。 |
@@ -48,14 +47,14 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --service-id [必要] | 服務的身分識別。 此識別碼通常是不含 'fabric\:' URI 配置的服務完整名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果服務名稱是 "fabric\:/myapp/app1/svc1"，則服務識別在 6.0+ 中會是 "myapp\~app1\~svc1"，而在舊版中會是 "myapp/app1/svc1"。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -70,7 +69,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-id [必要] | 應用程式的身分識別。 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
 | --node-name      [必要] | 節點的名稱。 |
@@ -80,7 +79,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -93,7 +92,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --app-id       [必要] | 應用程式的身分識別。 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 '\~' 字元分隔。 例如，如果應用程式名稱是 'fabric\:/myapp/app1'，則應用程式識別在 6.0+ 中會是 'myapp\~app1'，而在舊版中會是 'myapp/app1'。 |
 | --name         [必要] | 服務的名稱。 這應該是應用程式識別碼的子系。 這是包含 `fabric\:` URI 的完整名稱。 例如，服務 `fabric\:/A/B` 是應用程式 `fabric\:/A` 的子系。 |
@@ -110,11 +109,11 @@ ms.locfileid: "76906231"
 | --int-scheme-low | 使用統一整數分割區配置時，索引鍵整數範圍的開頭。 |
 | --load-metrics | 在節點之間進行服務負載平衡時，所使用的計量 JSON 編碼清單。 |
 | --min-replica-set-size | 以數字表示的最小複本集大小。 這只適用於具狀態服務。 |
-| --move-cost | 指定服務的移動成本。 可能的值\:為 [零]、[低]、[中]、[高]、[VeryHigh]。 |
+| --move-cost | 指定服務的移動成本。 可能的值為 [ \: 零]、[低]、[中]、[高]、[VeryHigh]。 |
 | --named-scheme | 指出服務應該有多個具名資料分割。 |
 | --named-scheme-list | 使用具名分割區配置時，要在其間分割服務的名稱 JSON 編碼清單。 |
 | --no-persisted-state | 如果為 true，即表示服務不會在本機磁碟上儲存任何持續性狀態，或只會將狀態儲存在記憶體中。 |
-| --placement-policy-list | 服務的放置原則 JSON 編碼清單，以及任何相關聯的網域名稱。 原則可以是一個或多\: `NonPartiallyPlaceService`個、 `PreferPrimaryDomain`、 `RequireDomain`、 `RequireDomainDistribution`。 |
+| --placement-policy-list | 服務的放置原則 JSON 編碼清單，以及任何相關聯的網域名稱。 原則可以是一個或多個 \: `NonPartiallyPlaceService` 、 `PreferPrimaryDomain` 、 `RequireDomain` 、 `RequireDomainDistribution` 。 |
 | --quorum-loss-wait | 允許分割區處於仲裁遺失狀態的持續時間上限 (秒)。 這只適用於具狀態服務。 |
 | --replica-restart-wait | 關閉複本與建立新複本之間的持續時間 (秒)。 這只適用於具狀態服務。 |
 | --scaling-policies | 此服務的規模調整原則 JSON 編碼清單。 |
@@ -128,7 +127,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -143,7 +142,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --service-id [必要] | 服務的身分識別。 此識別碼通常是不含 'fabric\:' URI 配置的服務完整名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果服務名稱是 "fabric\:/myapp/app1/svc1"，則服務識別在 6.0+ 中會是 "myapp\~app1\~svc1"，而在舊版中會是 "myapp/app1/svc1"。 |
 | --force-remove | 強制移除 Service Fabric 應用程式或服務，而不經過正常關機順序。 當因服務程式碼中有導致無法正常關閉複本的問題，而使得應用程式或服務的刪除逾時時，可使用此參數來強制刪除應用程式或服務。 |
@@ -151,7 +150,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -166,7 +165,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-id    [必要] | 應用程式的身分識別。 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
 | --node-name         [必要] | 節點的名稱。 |
@@ -176,7 +175,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -191,7 +190,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-id [必要] | 應用程式的身分識別。 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
 | --node-name      [必要] | 節點的名稱。 |
@@ -200,7 +199,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -215,14 +214,14 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --service-id [必要] | 服務的身分識別。 此識別碼通常是不含 'fabric\:' URI 配置的服務完整名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果服務名稱是 "fabric\:/myapp/app1/svc1"，則服務識別在 6.0+ 中會是 "myapp\~app1\~svc1"，而在舊版中會是 "myapp/app1/svc1"。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -237,7 +236,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-id        [必要] | 應用程式的身分識別。 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
 | --code-package-name     [必要] | 服務資訊清單中所指定的程式碼套件名稱，此資訊清單已註冊為 Service Fabric 叢集中應用程式類型的一部分。 |
@@ -249,7 +248,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -264,7 +263,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --service-id          [必要] | 服務的身分識別。 此識別碼通常是不含 'fabric\:' URI 配置的服務完整名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果服務名稱是 "fabric\:/myapp/app1/svc1"，則服務識別在 6.0+ 中會是 "myapp\~app1\~svc1"，而在舊版中會是 "myapp/app1/svc1"。 |
 | --events-health-state-filter | 可根據健康情況狀態來篩選所傳回的 HealthEvent 物件集合。 此參數的可能值包括下列其中一個健康情況狀態的整數值。 只會傳回符合篩選條件的事件。 所有事件都會用來評估彙總的健康情況狀態。 如果未指定，則會傳回所有項目。 狀態值是以旗標為基礎的列舉，因而此值可以是使用位元 'OR' 運算子所取得這些值的組合。 例如，如果提供的值為 6，則會傳回 HealthState 值為 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 預設值。 符合任何 HealthState。 值為零。  <br> - None - 不符合任何 HealthState 值的篩選條件。 用來在指定狀態集合沒有任何結果時傳回。 值為 1。  <br> - Ok - 符合輸入含 HealthState 值 Ok 的篩選條件。 值為 2。  <br> - Warning - 符合輸入含 HealthState 值 Warning 的篩選條件。 值為 4。  <br> - Error - 符合輸入含 HealthState 值 Error 的篩選條件。 值為 8。  <br> - All - 符合輸入含任何 HealthState 值的篩選條件。 值為 65535。 |
@@ -274,7 +273,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -289,7 +288,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-id [必要] | 應用程式的身分識別。 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
 | --service-id     [必要] | 服務的身分識別。 此識別碼通常是不含 'fabric\:' URI 配置的服務完整名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果服務名稱是 "fabric\:/myapp/app1/svc1"，則服務識別在 6.0+ 中會是 "myapp\~app1\~svc1"，而在舊版中會是 "myapp/app1/svc1"。 |
@@ -297,7 +296,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -312,7 +311,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-id [必要] | 應用程式的身分識別。 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
 | --continuation-token | 接續權杖參數可用來取得下一組結果。 當來自系統的結果無法放入單一回應中時，API 的回應中會包含具有非空白值的接續權杖。 當此值傳遞至下一個 API 呼叫時，API 會傳回下一組結果。 如果沒有任何進一步的結果，接續權杖就不會包含值。 此參數的值不能經過 URL 編碼。 |
@@ -321,7 +320,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -336,7 +335,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-type-name    [必要] | 應用程式類型的名稱。 |
 | --application-type-version [必要] | 應用程式類型的版本。 |
@@ -345,7 +344,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -358,7 +357,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --app-type-name         [必要] | 對應所要求服務資訊清單的應用程式資訊清單名稱。 |
 | --app-type-version      [必要] | 對應所要求服務資訊清單的應用程式資訊清單版本。 |
@@ -369,7 +368,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -384,7 +383,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-id       [必要] | 應用程式的身分識別。 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
 | --node-name            [必要] | 節點的名稱。 |
@@ -394,7 +393,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -409,7 +408,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-id       [必要] | 應用程式的身分識別。 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
 | --node-name            [必要] | 節點的名稱。 |
@@ -418,7 +417,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -433,7 +432,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-id [必要] | 應用程式的身分識別。 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
 | --node-name      [必要] | 節點的名稱。 |
@@ -441,7 +440,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -456,14 +455,14 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --service-id [必要] | 服務的身分識別。 此識別碼通常是不含 'fabric\:' URI 配置的服務完整名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果服務名稱是 "fabric\:/myapp/app1/svc1"，則服務識別在 6.0+ 中會是 "myapp\~app1\~svc1"，而在舊版中會是 "myapp/app1/svc1"。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -478,7 +477,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --health-property [必要] | 健康情況資訊的屬性。 <br><br> 實體可以有不同屬性的健康情況報告。 屬性是一個字串而不是固定的列舉，以便讓報告程式在分類觸發報告的狀態條件時較有彈性。 例如，SourceId 為 "LocalWatchdog" 的報告程式可以監視節點上可用磁碟的狀態，因此可以針對該節點回報 "AvailableDisk" 屬性。 該相同報告程式還可以監視節點連線能力，因此可以針對該相同節點回報 "Connectivity" 屬性。 在健康狀態資料存放區中，會將這些報告視為所指定節點的個別健康情況事件。 與 SourceId 搭配使用時，此屬性可唯一識別健康情況資訊。 |
 | --health-state    [必要] | 可能的值包括：'Invalid'、'Ok'、'Warning'、'Error'、'Unknown'。 |
@@ -493,7 +492,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -508,7 +507,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --service-id [必要] | 服務的身分識別。 此識別碼通常是不含 'fabric\:' URI 配置的服務完整名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果服務名稱是 "fabric\:/myapp/app1/svc1"，則服務識別在 6.0+ 中會是 "myapp\~app1\~svc1"，而在舊版中會是 "myapp/app1/svc1"。 |
 | --partition-key-type | 資料分割的索引鍵類型。 如果服務的分割區配置是 Int64Range 或 Named，就必須設定此參數。 可能的值如下。 - None (1) - 指出未指定 PartitionKeyValue 參數。 這適用於分割區配置為 Singleton 的分割區。 這是預設值。 值為 1。 - Int64Range (2) - 指出 PartitionKeyValue 參數是 int64 分割區索引鍵。 這適用於分割區配置為 Int64Range 的分割區。 值為 2。 - Named (3) - 指出 PartitionKeyValue 參數是分割區名稱。 這適用於分割區配置為 Named 的分割區。 此值為 3。 |
@@ -518,7 +517,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -533,7 +532,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-type-name    [必要] | 應用程式類型的名稱。 |
 | --application-type-version [必要] | 應用程式類型的版本。 |
@@ -541,7 +540,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -554,7 +553,7 @@ ms.locfileid: "76906231"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --service-id   [必要] | 服務的身分識別。 這通常是不含 'fabric\:' URI 配置的完整服務名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果服務名稱是 'fabric\:/myapp/app1/svc1'，則服務識別在 6.0+ 中會是 'myapp\~app1\~svc1'，而在舊版中會是 'myapp/app1/svc1'。 |
 | --constraints | 以字串表示的放置限制式。 放置條件約束是節點屬性上的布林運算式，可允許根據服務需求將服務限制在特定節點。 例如，若要在 NodeType 為 blue 的節點上放置服務，請指定："NodeColor == blue"。 |
@@ -563,8 +562,8 @@ ms.locfileid: "76906231"
 | --instance-count | 執行個體計數。 這只適用於無狀態服務。 |
 | --load-metrics | 在節點之間進行負載平衡時所使用計量的 JSON 編碼清單。 |
 | --min-replica-set-size | 以數字表示的最小複本集大小。 這只適用於具狀態服務。 |
-| --move-cost | 指定服務的移動成本。 可能的值\:為 [零]、[低]、[中]、[高]、[VeryHigh]。 |
-| --placement-policy-list | 服務的放置原則 JSON 編碼清單，以及任何相關聯的網域名稱。 原則可以是一個或多\: `NonPartiallyPlaceService`個、 `PreferPrimaryDomain`、 `RequireDomain`、 `RequireDomainDistribution`。 |
+| --move-cost | 指定服務的移動成本。 可能的值為 [ \: 零]、[低]、[中]、[高]、[VeryHigh]。 |
+| --placement-policy-list | 服務的放置原則 JSON 編碼清單，以及任何相關聯的網域名稱。 原則可以是一個或多個 \: `NonPartiallyPlaceService` 、 `PreferPrimaryDomain` 、 `RequireDomain` 、 `RequireDomainDistribution` 。 |
 | --quorum-loss-wait | 允許分割區處於仲裁遺失狀態的持續時間上限 (秒)。 這只適用於具狀態服務。 |
 | --replica-restart-wait | 關閉複本與建立新複本之間的持續時間 (秒)。 這只適用於具狀態服務。 |
 | --scaling-policies | 此服務的規模調整原則 JSON 編碼清單。 |
@@ -577,7 +576,7 @@ ms.locfileid: "76906231"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |

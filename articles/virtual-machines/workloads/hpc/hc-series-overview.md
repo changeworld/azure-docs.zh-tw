@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906738"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虛擬機器總覽
@@ -44,7 +43,7 @@ Intel 更強的白金、金級和銀級 Cpu 也引進了一種可在 CPU 通訊�
 | 核心                            | 44（已停用 HT）                 |
 | CPU                              | Intel 8168 級白金 *        |
 | CPU 頻率（非 AVX）          | 3.7 GHz （單一核心）、2.7-3.4 GHz （所有核心） |
-| 記憶體                           | 8 GB/核心（352總計）            |
+| Memory                           | 8 GB/核心（352總計）            |
 | 本機磁碟                       | 700 GB NVMe                      |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5 * * |
 | 網路                          | 50 Gb 乙太網路（40 Gb 可用） Azure second Gen SmartNIC * * * |
@@ -58,7 +57,7 @@ Intel 更強的白金、金級和銀級 Cpu 也引進了一種可在 CPU 通訊�
 | 其他架構       | 整合通訊 X、libfabric、PGAS |
 | Azure 儲存體支援       | Std + Premium （最多4個磁片） |
 | SRIOV RDMA 的 OS 支援   | CentOS/RHEL 7.6 +、SLES 12 SP4 +、WinServer 2016 + |
-| Azure CycleCloud 支援    | 是                         |
+| Azure CycleCloud 支援    | Yes                         |
 | Azure Batch 支援         | 是                         |
 
 ## <a name="next-steps"></a>後續步驟

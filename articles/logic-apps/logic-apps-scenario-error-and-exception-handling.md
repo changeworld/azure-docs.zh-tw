@@ -8,10 +8,9 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76902696"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>案例︰適用於邏輯應用程式的例外狀況處理與記錄錯誤
@@ -111,7 +110,7 @@ ms.locfileid: "76902696"
 
    **檢查建立記錄失敗**
 
-   ![狀況](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![條件](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>邏輯應用程式原始程式碼
 
@@ -468,7 +467,7 @@ Azure Cosmos DB 中的每個文件都必須具有唯一識別碼。 我們將會
 
 上述程式碼範例的運算式會檢查 Create_NewPatientRecord** 狀態是否為 **Failed**。
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 * 您可以在邏輯應用程式中輕鬆地實作記錄和錯誤處理。
 * 您可以使用 Azure Cosmos DB 作為記錄檔和錯誤記錄 (文件) 的存放庫。
@@ -481,5 +480,5 @@ Logic Apps 例外狀況管理 API 應用程式的原始程式碼可在此 GitHub
 ## <a name="next-steps"></a>後續步驟
 
 * [檢視更多邏輯應用程式的範例和案例](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [監視邏輯應用程式](../logic-apps/monitor-logic-apps.md)
-* [將邏輯應用程式部署自動化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [監視 Logic Apps](../logic-apps/monitor-logic-apps.md)
+* [自動部署邏輯應用程式](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841824"
 ---
 # <a name="rest-api"></a>REST API
@@ -164,7 +163,7 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 **回應**： HTTP 200，空白承載
 
 ## <a name="manage-event-subscriptions"></a>管理事件訂閱
-本節中的範例使用`EndpointType=Webhook;`。 下一節會`EndpointType=EdgeHub / EndpointType=EventGrid`提供的 json 範例。 
+本節中的範例使用 `EndpointType=Webhook;` 。 下一節會提供的 json 範例 `EndpointType=EdgeHub / EndpointType=EventGrid` 。 
 
 ### <a name="put-event-subscription-create--update"></a>Put 事件訂用帳戶（建立/更新）
 
@@ -572,7 +571,7 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 ```
 
 ### <a name="set-up-topic-with-custom-schema"></a>使用自訂架構設定主題
-設定一個主題，要求在中`customschema`發行事件。
+設定一個主題，要求在中發行事件 `customschema` 。
 
 ```json
     {
@@ -585,7 +584,7 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 ```
 
 ### <a name="set-up-topic-with-cloud-event-schema"></a>使用雲端事件架構設定主題
-設定一個主題，要求在中`cloudeventschema`發行事件。
+設定一個主題，要求在中發行事件 `cloudeventschema` 。
 
 ```json
     {
@@ -617,13 +616,13 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 }
 ```
 
-屬性的`endpointUrl`條件約束：
+屬性的條件約束 `endpointUrl` ：
 - 必須為非 null。
 - 它必須是絕對 URL。
 - 如果 outbound__webhook__HTTPsOnly 在 EventGridModule 設定中設為 true，則必須僅為 HTTPS。
 - 如果 outbound__webhook__HTTPsOnly 設定為 false，則可以是 HTTP 或 HTTPS。
 
-屬性的`eventDeliverySchema`條件約束：
+屬性的條件約束 `eventDeliverySchema` ：
 - 它必須符合訂閱主題的輸入架構。
 - 它可以是 Null。 預設為主題的輸入架構。
 
@@ -672,8 +671,8 @@ IoT Edge 上的事件方格具有透過 HTTP （埠5888）和 HTTPS （埠4438�
 EndpointUrl
 - 必須為非 null。
 - 它必須是絕對 URL。
-- 路徑`/api/events`必須定義在要求 URL 路徑中。
-- 查詢字串中`api-version=2018-01-01`必須有。
+- 路徑 `/api/events` 必須定義在要求 URL 路徑中。
+- `api-version=2018-01-01`查詢字串中必須有。
 - 如果 outbound__eventgrid__HTTPsOnly 在 EventGridModule 設定中設定為 true （預設值為 true），則必須為僅限 HTTPS。
 - 如果 outbound__eventgrid__HTTPsOnly 設定為 false，則可以是 HTTP 或 HTTPS。
 - 如果 outbound__eventgrid__allowInvalidHostnames 設定為 false （預設為 false），它必須以下列其中一個端點為目標：
@@ -690,7 +689,7 @@ TopicName:
 
 ## <a name="set-up-event-hubs-as-a-destination"></a>將事件中樞設定為目的地
 
-若要發佈至事件中樞，請將`endpointType`設定`eventHub`為，並提供：
+若要發佈至事件中樞，請將設定 `endpointType` 為， `eventHub` 並提供：
 
 * connectionString：透過共用存取原則產生的特定事件中樞的連接字串。
 
@@ -712,7 +711,7 @@ TopicName:
 
 ## <a name="set-up-service-bus-queues-as-a-destination"></a>將服務匯流排佇列設定為目的地
 
-若要發行至服務匯流排的佇列，請`endpointType`將`serviceBusQueue`設定為，並提供：
+若要發行至服務匯流排的佇列，請將設定 `endpointType` 為， `serviceBusQueue` 並提供：
 
 * connectionString：透過共用存取原則所設定的目標特定服務匯流排佇列的連接字串。
 
@@ -734,7 +733,7 @@ TopicName:
 
 ## <a name="set-up-service-bus-topics-as-a-destination"></a>將服務匯流排主題設定為目的地
 
-若要發行至服務匯流排主題，請將`endpointType`設定`serviceBusTopic`為，並提供：
+若要發行至服務匯流排主題，請將設定 `endpointType` 為， `serviceBusTopic` 並提供：
 
 * connectionString：您透過共用存取原則所設定的目標特定服務匯流排主題的連接字串。
 
@@ -756,7 +755,7 @@ TopicName:
 
 ## <a name="set-up-storage-queues-as-a-destination"></a>將儲存體佇列設定為目的地
 
-若要發行至儲存體佇列，請將`endpointType`設定`storageQueue`為，並提供：
+若要發行至儲存體佇列，請將設定 `endpointType` 為， `storageQueue` 並提供：
 
 * queueName：您要發行的儲存體佇列的名稱。
 * connectionString：儲存體佇列所在儲存體帳戶的連接字串。

@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 908bc941ee7379de067621e10adf5fd6ee6df559
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841805"
 ---
 # <a name="configure-event-grid-api-protocols"></a>設定事件方格 API 通訊協定
@@ -23,7 +22,7 @@ ms.locfileid: "76841805"
 | 通訊協定 | 連接埠 | 描述 |
 | ---------------- | ------------ | ------------ |
 | HTTP | 5888 | 預設會關閉。 只有在測試期間才有用。 不適合用于生產工作負載。
-| HTTPS | 4438 | 預設值
+| HTTPS | 4438 | 預設
 
 如需所有可能的設定，請參閱[安全性和驗證](security-authentication.md)指南。
 

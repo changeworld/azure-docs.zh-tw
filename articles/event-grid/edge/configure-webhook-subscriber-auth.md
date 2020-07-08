@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 101dcae5870322878cec48098f2efae32cc68c14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841725"
 ---
 # <a name="configure-webhook-subscriber-authentication"></a>設定 Webhook 訂閱者驗證
@@ -45,7 +44,7 @@ ms.locfileid: "76841725"
  ```
 
 >[!NOTE]
->只有在測試`outbound__webhook__allowUnknownCA`環境`true`中，才會將屬性設定為，因為您通常會使用自我簽署憑證。 對於生產工作負載，我們建議將它們設定為**false**。
+>`outbound__webhook__allowUnknownCA` `true` 只有在測試環境中，才會將屬性設定為，因為您通常會使用自我簽署憑證。 對於生產工作負載，我們建議將它們設定為**false**。
 
 ## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>允許 HTTPS 訂閱者，但略過憑證驗證
 
@@ -60,7 +59,7 @@ ms.locfileid: "76841725"
  ```
 
 >[!NOTE]
->請只在`outbound__webhook__skipServerCertValidation`測試`true`環境中將屬性設定為，因為您可能不會呈現需要驗證的憑證。 對於生產工作負載，我們建議將它們設定為**false**
+>`outbound__webhook__skipServerCertValidation` `true` 請只在測試環境中將屬性設定為，因為您可能不會呈現需要驗證的憑證。 對於生產工作負載，我們建議將它們設定為**false**
 
 ## <a name="allow-both-http-and-https-with-self-signed-certificates"></a>同時允許 HTTP 和 HTTPS 與自我簽署憑證
 
@@ -75,4 +74,4 @@ ms.locfileid: "76841725"
  ```
 
 >[!NOTE]
->只在測試`outbound__webhook__httpsOnly`環境`false`中，將屬性設定為，因為您可能想要先顯示 HTTP 訂閱者。 對於生產工作負載，我們建議將它們設定為**true**
+>`outbound__webhook__httpsOnly`只在測試環境中，將屬性設定為， `false` 因為您可能想要先顯示 HTTP 訂閱者。 對於生產工作負載，我們建議將它們設定為**true**

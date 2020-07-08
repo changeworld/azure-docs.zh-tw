@@ -7,17 +7,16 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 46989ed2468469443d4e91a1834bc20b12c25a1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76908068"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>在 Azure Logic Apps 的 Azure 監視器記錄中，查看並建立用於監視和追蹤的查詢
 
 您可以從[Azure 監視器記錄](../log-analytics/log-analytics-overview.md)中查看產生結果的基礎查詢，並建立根據特定準則來篩選結果的查詢。 例如，您可以找到根據特定交換控制編號的訊息。 查詢會使用[Kusto 查詢語言](https://aka.ms/LogAnalyticsLanguageReference)，如果您想要查看不同的結果，您可以進行編輯。 如需詳細資訊，請參閱[Azure 監視器記錄查詢](../azure-monitor/log-query/query-language.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Log Analytics 工作區。 如果您沒有 Log Analytics 工作區，請了解[如何建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。
 
@@ -53,7 +52,7 @@ ms.locfileid: "76908068"
 
 1. 從空白查詢或任何可用的常設查詢開始。
 
-   * 若要檢查是否有任何現有的查詢可供使用，請在 [查詢] 工具列上，選取 [**範例查詢** > **記錄**]，其中顯示先前查詢執行的查詢，或選取 [**查詢瀏覽器**]，其中顯示預先建立的查詢。
+   * 若要檢查是否有任何現有的查詢可供使用，請在 [查詢] 工具列上，選取 [**範例查詢**  >  **記錄**]，其中顯示先前查詢執行的查詢，或選取 [**查詢瀏覽器**]，其中顯示預先建立的查詢。
 
      例如，Logic Apps B2B 解決方案會提供這些預先建立的查詢：
 

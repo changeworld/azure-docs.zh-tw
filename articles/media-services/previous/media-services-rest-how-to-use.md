@@ -16,16 +16,15 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773666"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒體服務作業 REST API 概觀 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 **媒體服務作業 REST** API 用於在媒體服務帳戶中建立作業、資產、直播頻道和其他資源。 如需詳細資訊，請參閱[媒體服務作業 REST API 參考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)。
 
@@ -58,9 +57,9 @@ ms.locfileid: "76773666"
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>媒體服務支援的標準 HTTP 要求標頭
 您對媒體服務每次呼叫，有一組必須在要求中包含的必要標頭，以及一組可能會想要包含的選擇性標頭。 下表列出必要的標頭：
 
-| 頁首 | 類型 | 值 |
+| Header | 類型 | 值 |
 | --- | --- | --- |
-| 授權 |Bearer |Bearer 是唯一接受的授權機制。 此值也必須包含 Azure Active Directory 所提供的存取權杖。 |
+| 授權 |持有人 |Bearer 是唯一接受的授權機制。 此值也必須包含 Azure Active Directory 所提供的存取權杖。 |
 | x-ms-version |Decimal |2.17 (或最新版本)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
@@ -72,32 +71,32 @@ ms.locfileid: "76773666"
 
 以下是一組選擇性標頭：
 
-| 頁首 | 類型 | 值 |
+| Header | 類型 | 值 |
 | --- | --- | --- |
-| Date |RFC 1123 日期 |要求的時間戳記 |
-| Accept |內容類型 |如下所示的回應要求內容類型：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 回應可能會有不同的內容類型，例如 Blob 擷取，成功的回應會在其中包含 Blob 資料流做為裝載。 |
+| 日期 |RFC 1123 日期 |要求的時間戳記 |
+| 接受 |內容類型 |如下所示的回應要求內容類型：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 回應可能會有不同的內容類型，例如 Blob 擷取，成功的回應會在其中包含 Blob 資料流做為裝載。 |
 | Accept-Encoding |Gzip、deflate |GZIP 和 DEFLATE 編碼 (適用時)。 注意：若是大型資源，媒體服務可能會忽略此標頭，並傳回未壓縮的資料。 |
 | Accept-Language |"en"、"es" 等。 |指定回應的慣用語言。 |
 | Accept-Charset |字元集類型，如 "UTF-8" |預設值為 UTF-8。 |
 | X-HTTP-Method |HTTP 方法 |可讓不支援 PUT 或 DELETE 等 HTTP 方法的用戶端或防火牆，透過 GET 呼叫通道傳送使用這些方法。 |
 | Content-Type |內容類型 |PUT 或 POST 要求中的要求主體內容類型。 |
-| client-request-id |字串 |呼叫端定義的值，識別指定的要求。 如果指定，回應訊息中將包含此值以做為對應要求的方式。 <p><p>**重要**<p>值的上限應該為 2096b (2k)。 |
+| client-request-id |String |呼叫端定義的值，識別指定的要求。 如果指定，回應訊息中將包含此值以做為對應要求的方式。 <p><p>**重要事項**<p>值的上限應該為 2096b (2k)。 |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>媒體服務支援的標準 HTTP 回應標頭
 以下是一組可能會根據您所要求的資源，以及您要執行的動作而傳回給您的標頭。
 
-| 頁首 | 類型 | 值 |
+| Header | 類型 | 值 |
 | --- | --- | --- |
-| request-id |字串 |目前作業的唯一識別碼，由服務產生。 |
-| client-request-id |字串 |在原始要求中，呼叫者所指定的識別碼 (如果有的話)。 |
-| Date |RFC 1123 日期 |處理要求的日期/時間。 |
+| request-id |String |目前作業的唯一識別碼，由服務產生。 |
+| client-request-id |String |在原始要求中，呼叫者所指定的識別碼 (如果有的話)。 |
+| 日期 |RFC 1123 日期 |處理要求的日期/時間。 |
 | Content-Type |不定 |回應主體的內容類型。 |
 | Content-Encoding |不定 |Gzip 或 deflate (視情況)。 |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>媒體服務支援的標準 HTTP 指令動詞
 以下是進行 HTTP 要求時，可以使用的 HTTP 指令動詞完整清單：
 
-| 動詞命令 | 描述 |
+| 動詞命令 | Description |
 | --- | --- |
 | GET |傳回物件的目前值。 |
 | POST |根據提供的資料建立物件或提交命令。 |

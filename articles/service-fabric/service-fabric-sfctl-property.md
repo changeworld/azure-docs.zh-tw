@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905823"
 ---
 # <a name="sfctl-property"></a>sfctl property
@@ -19,7 +18,7 @@ ms.locfileid: "76905823"
 
 |Command|描述|
 | --- | --- |
-| [刪除] | 刪除指定的 Service Fabric 屬性。 |
+| delete | 刪除指定的 Service Fabric 屬性。 |
 | get | 取得指定的 Service Fabric 屬性。 |
 | list | 取得指定名稱下所有 Service Fabric 屬性的相關資訊。 |
 | put | 建立或更新 Service Fabric 屬性。 |
@@ -31,7 +30,7 @@ ms.locfileid: "76905823"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --name-id       [必要] | 不含 'fabric\:' URI 配置的 Service Fabric 名稱。 |
 | --property-name [必要] | 指定要取得之屬性的名稱。 |
@@ -39,7 +38,7 @@ ms.locfileid: "76905823"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -54,7 +53,7 @@ ms.locfileid: "76905823"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --name-id       [必要] | 不含 'fabric\:' URI 配置的 Service Fabric 名稱。 |
 | --property-name [必要] | 指定要取得之屬性的名稱。 |
@@ -62,7 +61,7 @@ ms.locfileid: "76905823"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -77,7 +76,7 @@ Service Fabric 名稱可以包含一或多個儲存自訂資訊的具名屬性�
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --name-id [必要] | 不含 'fabric\:' URI 配置的 Service Fabric 名稱。 |
 | --continuation-token | 接續權杖參數可用來取得下一組結果。 當來自系統的結果無法放入單一回應中時，API 的回應中會包含具有非空白值的接續權杖。 當此值傳遞至下一個 API 呼叫時，API 會傳回下一組結果。 如果沒有任何進一步的結果，接續權杖就不會包含值。 此參數的值不能經過 URL 編碼。 |
@@ -86,7 +85,7 @@ Service Fabric 名稱可以包含一或多個儲存自訂資訊的具名屬性�
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -101,7 +100,7 @@ Service Fabric 名稱可以包含一或多個儲存自訂資訊的具名屬性�
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --name-id       [必要] | 不含 'fabric\:' URI 配置的 Service Fabric 名稱。 |
 | --property-name [必要] | Service Fabric 屬性的名稱。 |
@@ -111,7 +110,7 @@ Service Fabric 名稱可以包含一或多個儲存自訂資訊的具名屬性�
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |

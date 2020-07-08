@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77014261"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>壓縮 CloudSimple 私用雲端
@@ -63,4 +62,4 @@ CloudSimple 提供動態縮減私用雲端的彈性。  私人雲端是由一或
 ## <a name="next-steps"></a>後續步驟
 
 * [在 Azure 上取用 VMware VM](quickstart-create-vmware-virtual-machine.md)
-* 深入瞭解[私人](cloudsimple-private-cloud.md)雲端
+* 深入了解[私人雲端](cloudsimple-private-cloud.md)

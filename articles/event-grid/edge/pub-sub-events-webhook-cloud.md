@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844579"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教學課程：發佈、訂閱雲端中的事件
@@ -22,7 +21,7 @@ ms.locfileid: "76844579"
 
 請參閱[事件方格概念](concepts.md)，以瞭解事件方格主題和訂用帳戶在繼續之前的功能。
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 若要完成這個教學課程，您將需要：
 
 * **Azure 訂**用帳戶-如果您還沒有帳戶，請建立一個[免費帳戶](https://azure.microsoft.com/free)。 
@@ -67,7 +66,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 身為事件的發行者，您必須建立事件方格主題。 主題是指發行者可以將事件傳送至其中的端點。
 
-1. 使用下列內容建立 topic2。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
+1. 使用下列內容，在上建立 topic2.js。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
     ```json
          {
@@ -110,7 +109,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. 使用下列內容建立 subscription2。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
+1. 使用下列內容，在上建立 subscription2.js。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
     ```json
         {
@@ -159,7 +158,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 ## <a name="publish-an-event"></a>發佈事件
 
-1. 使用下列內容建立 event2。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
+1. 使用下列內容，在上建立 event2.js。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
     ```json
         [

@@ -6,16 +6,15 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 635bddef1a98d6ed2b112662d8c9c44fe65e9e32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906101"
 ---
 # <a name="sfctl-events"></a>sfctl 事件
 從事件存放區取出事件（如果已安裝 EventStore 服務）。
 
-您可以透過設定升級，將 EventStore 系統服務新增至任何執行 >= 6.4 的 SFRP 叢集。 請檢查下列 url\: HTTPs\://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-eventstore。
+您可以透過設定升級，將 EventStore 系統服務新增至任何執行 >= 6.4 的 SFRP 叢集。 請檢查下列 url \: HTTPs \: //docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-eventstore。
 
 ## <a name="commands"></a>命令
 
@@ -40,10 +39,10 @@ ms.locfileid: "76906101"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ。 |
-| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ 為限）。 |
+| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH \: MM \: ssZ。 |
+| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH MM ssZ 為限 \: ） \: 。 |
 | --事件-類型-篩選 | 這是以逗號分隔的字串，用來指定應該只包含在回應中的 FabricEvents 類型。 |
 | --排除-分析-事件 | 如果傳遞 true，這個參數會停用 AnalysisEvents 的抓取。 |
 | --skip-相互關聯-查閱 | 如果傳遞 true，這個參數會停用 CorrelatedEvents 資訊的搜尋。 否則，就會填入每個 FabricEvent 中的 [CorrelationEvents 處理] 和 [HasCorrelatedEvents] 欄位。 |
@@ -51,7 +50,7 @@ ms.locfileid: "76906101"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -66,10 +65,10 @@ ms.locfileid: "76906101"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ。 |
-| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ 為限）。 |
+| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH \: MM \: ssZ。 |
+| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH MM ssZ 為限 \: ） \: 。 |
 | --事件-類型-篩選 | 這是以逗號分隔的字串，用來指定應該只包含在回應中的 FabricEvents 類型。 |
 | --排除-分析-事件 | 如果傳遞 true，這個參數會停用 AnalysisEvents 的抓取。 |
 | --skip-相互關聯-查閱 | 如果傳遞 true，這個參數會停用 CorrelatedEvents 資訊的搜尋。 否則，就會填入每個 FabricEvent 中的 [CorrelationEvents 處理] 和 [HasCorrelatedEvents] 欄位。 |
@@ -77,7 +76,7 @@ ms.locfileid: "76906101"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -92,10 +91,10 @@ ms.locfileid: "76906101"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ。 |
-| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ 為限）。 |
+| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH \: MM \: ssZ。 |
+| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH MM ssZ 為限 \: ） \: 。 |
 | --事件-類型-篩選 | 這是以逗號分隔的字串，用來指定應該只包含在回應中的 FabricEvents 類型。 |
 | --排除-分析-事件 | 如果傳遞 true，這個參數會停用 AnalysisEvents 的抓取。 |
 | --skip-相互關聯-查閱 | 如果傳遞 true，這個參數會停用 CorrelatedEvents 資訊的搜尋。 否則，就會填入每個 FabricEvent 中的 [CorrelationEvents 處理] 和 [HasCorrelatedEvents] 欄位。 |
@@ -103,7 +102,7 @@ ms.locfileid: "76906101"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -118,10 +117,10 @@ ms.locfileid: "76906101"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ。 |
-| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ 為限）。 |
+| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH \: MM \: ssZ。 |
+| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH MM ssZ 為限 \: ） \: 。 |
 | --事件-類型-篩選 | 這是以逗號分隔的字串，用來指定應該只包含在回應中的 FabricEvents 類型。 |
 | --排除-分析-事件 | 如果傳遞 true，這個參數會停用 AnalysisEvents 的抓取。 |
 | --skip-相互關聯-查閱 | 如果傳遞 true，這個參數會停用 CorrelatedEvents 資訊的搜尋。 否則，就會填入每個 FabricEvent 中的 [CorrelationEvents 處理] 和 [HasCorrelatedEvents] 欄位。 |
@@ -129,7 +128,7 @@ ms.locfileid: "76906101"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -144,11 +143,11 @@ ms.locfileid: "76906101"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --application-id [必要] | 應用程式的身分識別。 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
-| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ。 |
-| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ 為限）。 |
+| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH \: MM \: ssZ。 |
+| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH MM ssZ 為限 \: ） \: 。 |
 | --事件-類型-篩選 | 這是以逗號分隔的字串，用來指定應該只包含在回應中的 FabricEvents 類型。 |
 | --排除-分析-事件 | 如果傳遞 true，這個參數會停用 AnalysisEvents 的抓取。 |
 | --skip-相互關聯-查閱 | 如果傳遞 true，這個參數會停用 CorrelatedEvents 資訊的搜尋。 否則，就會填入每個 FabricEvent 中的 [CorrelationEvents 處理] 和 [HasCorrelatedEvents] 欄位。 |
@@ -156,7 +155,7 @@ ms.locfileid: "76906101"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -171,10 +170,10 @@ ms.locfileid: "76906101"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ。 |
-| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ 為限）。 |
+| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH \: MM \: ssZ。 |
+| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH MM ssZ 為限 \: ） \: 。 |
 | --事件-類型-篩選 | 這是以逗號分隔的字串，用來指定應該只包含在回應中的 FabricEvents 類型。 |
 | --排除-分析-事件 | 如果傳遞 true，這個參數會停用 AnalysisEvents 的抓取。 |
 | --skip-相互關聯-查閱 | 如果傳遞 true，這個參數會停用 CorrelatedEvents 資訊的搜尋。 否則，就會填入每個 FabricEvent 中的 [CorrelationEvents 處理] 和 [HasCorrelatedEvents] 欄位。 |
@@ -182,7 +181,7 @@ ms.locfileid: "76906101"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -197,11 +196,11 @@ ms.locfileid: "76906101"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ。 |
+| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH \: MM \: ssZ。 |
 | --node-name      [必要] | 節點的名稱。 |
-| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ 為限）。 |
+| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH MM ssZ 為限 \: ） \: 。 |
 | --事件-類型-篩選 | 這是以逗號分隔的字串，用來指定應該只包含在回應中的 FabricEvents 類型。 |
 | --排除-分析-事件 | 如果傳遞 true，這個參數會停用 AnalysisEvents 的抓取。 |
 | --skip-相互關聯-查閱 | 如果傳遞 true，這個參數會停用 CorrelatedEvents 資訊的搜尋。 否則，就會填入每個 FabricEvent 中的 [CorrelationEvents 處理] 和 [HasCorrelatedEvents] 欄位。 |
@@ -209,7 +208,7 @@ ms.locfileid: "76906101"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -224,11 +223,11 @@ ms.locfileid: "76906101"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ。 |
+| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH \: MM \: ssZ。 |
 | --partition-id   [必要] | 分割區的識別。 |
-| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ 為限）。 |
+| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH MM ssZ 為限 \: ） \: 。 |
 | --事件-類型-篩選 | 這是以逗號分隔的字串，用來指定應該只包含在回應中的 FabricEvents 類型。 |
 | --排除-分析-事件 | 如果傳遞 true，這個參數會停用 AnalysisEvents 的抓取。 |
 | --skip-相互關聯-查閱 | 如果傳遞 true，這個參數會停用 CorrelatedEvents 資訊的搜尋。 否則，就會填入每個 FabricEvent 中的 [CorrelationEvents 處理] 和 [HasCorrelatedEvents] 欄位。 |
@@ -236,7 +235,7 @@ ms.locfileid: "76906101"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -251,11 +250,11 @@ ms.locfileid: "76906101"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ。 |
+| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH \: MM \: ssZ。 |
 | --partition-id   [必要] | 分割區的識別。 |
-| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ 為限）。 |
+| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH MM ssZ 為限 \: ） \: 。 |
 | --事件-類型-篩選 | 這是以逗號分隔的字串，用來指定應該只包含在回應中的 FabricEvents 類型。 |
 | --排除-分析-事件 | 如果傳遞 true，這個參數會停用 AnalysisEvents 的抓取。 |
 | --skip-相互關聯-查閱 | 如果傳遞 true，這個參數會停用 CorrelatedEvents 資訊的搜尋。 否則，就會填入每個 FabricEvent 中的 [CorrelationEvents 處理] 和 [HasCorrelatedEvents] 欄位。 |
@@ -263,7 +262,7 @@ ms.locfileid: "76906101"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -278,12 +277,12 @@ ms.locfileid: "76906101"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ。 |
+| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH \: MM \: ssZ。 |
 | --partition-id   [必要] | 分割區的識別。 |
 | --replica-id [必要] | 複本的識別碼。 |
-| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ 為限）。 |
+| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH MM ssZ 為限 \: ） \: 。 |
 | --事件-類型-篩選 | 這是以逗號分隔的字串，用來指定應該只包含在回應中的 FabricEvents 類型。 |
 | --排除-分析-事件 | 如果傳遞 true，這個參數會停用 AnalysisEvents 的抓取。 |
 | --skip-相互關聯-查閱 | 如果傳遞 true，這個參數會停用 CorrelatedEvents 資訊的搜尋。 否則，就會填入每個 FabricEvent 中的 [CorrelationEvents 處理] 和 [HasCorrelatedEvents] 欄位。 |
@@ -291,7 +290,7 @@ ms.locfileid: "76906101"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -306,11 +305,11 @@ ms.locfileid: "76906101"
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ。 |
+| --結束時間-utc [必要] | 查詢的結束時間，以 ISO UTC yyyy-mm-dd-ddTHH \: MM \: ssZ。 |
 | --service-id     [必要] | 服務的身分識別。 此識別碼通常是不含 'fabric\:' URI 配置的服務完整名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果服務名稱是 "fabric\:/myapp/app1/svc1"，則服務識別在 6.0+ 中會是 "myapp\~app1\~svc1"，而在舊版中會是 "myapp/app1/svc1"。 |
-| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH\:MM\:ssZ 為限）。 |
+| --start-time-utc [必要] | 查詢的開始時間（以 ISO UTC yyyy-mm-dd-ddTHH MM ssZ 為限 \: ） \: 。 |
 | --事件-類型-篩選 | 這是以逗號分隔的字串，用來指定應該只包含在回應中的 FabricEvents 類型。 |
 | --排除-分析-事件 | 如果傳遞 true，這個參數會停用 AnalysisEvents 的抓取。 |
 | --skip-相互關聯-查閱 | 如果傳遞 true，這個參數會停用 CorrelatedEvents 資訊的搜尋。 否則，就會填入每個 FabricEvent 中的 [CorrelationEvents 處理] 和 [HasCorrelatedEvents] 欄位。 |
@@ -318,7 +317,7 @@ ms.locfileid: "76906101"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |

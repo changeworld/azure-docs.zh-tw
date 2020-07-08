@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76845572"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 監視器自動調整的常用度量
@@ -52,10 +51,10 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \Processor(_Total)\% Processor Time |百分比 |
 | \Processor(_Total)\% Privileged Time |百分比 |
 | \Processor(_Total)\% User Time |百分比 |
-| \Processor Information(_Total)\Processor Frequency |計數 |
-| \System\Processes |計數 |
-| \Process(_Total)\Thread Count |計數 |
-| \Process(_Total)\Handle Count |計數 |
+| \Processor Information(_Total)\Processor Frequency |Count |
+| \System\Processes |Count |
+| \Process(_Total)\Thread Count |Count |
+| \Process(_Total)\Handle Count |Count |
 | \Memory\% Committed Bytes In Use |百分比 |
 | \Memory\Available Bytes |位元組 |
 | \Memory\Committed Bytes |位元組 |
@@ -71,11 +70,11 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk(_Total)\Disk Bytes/sec |每秒位元組 |
 | \PhysicalDisk(_Total)\Disk Read Bytes/sec |每秒位元組 |
 | \PhysicalDisk(_Total)\Disk Write Bytes/sec |每秒位元組 |
-| \PhysicalDisk （_Total） \Avg. 磁片佇列長度 |計數 |
-| \PhysicalDisk （_Total） \Avg. 磁片讀取佇列長度 |計數 |
-| \PhysicalDisk （_Total） \Avg. 磁片寫入佇列長度 |計數 |
+| \PhysicalDisk （_Total） \Avg. 磁片佇列長度 |Count |
+| \PhysicalDisk （_Total） \Avg. 磁片讀取佇列長度 |Count |
+| \PhysicalDisk （_Total） \Avg. 磁片寫入佇列長度 |Count |
 | \LogicalDisk(_Total)\% Free Space |百分比 |
-| \LogicalDisk(_Total)\Free Megabytes |計數 |
+| \LogicalDisk(_Total)\Free Megabytes |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>客體 OS 度量 Linux VM
 當您在 Azure 中建立 VM 時，根據預設會使用診斷擴充來啟用診斷。
@@ -119,15 +118,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |秒 |
 | \PhysicalDisk\AverageWriteTime |秒 |
 | \PhysicalDisk\AverageTransferTime |秒 |
-| \PhysicalDisk\AverageDiskQueueLength |計數 |
+| \PhysicalDisk\AverageDiskQueueLength |Count |
 | \NetworkInterface\BytesTransmitted |位元組 |
 | \NetworkInterface\BytesReceived |位元組 |
-| \NetworkInterface\PacketsTransmitted |計數 |
-| \NetworkInterface\PacketsReceived |計數 |
+| \NetworkInterface\PacketsTransmitted |Count |
+| \NetworkInterface\PacketsReceived |Count |
 | \NetworkInterface\BytesTotal |位元組 |
-| \NetworkInterface\TotalRxErrors |計數 |
-| \NetworkInterface\TotalTxErrors |計數 |
-| \NetworkInterface\TotalCollisions |計數 |
+| \NetworkInterface\TotalRxErrors |Count |
+| \NetworkInterface\TotalTxErrors |Count |
+| \NetworkInterface\TotalCollisions |Count |
 
 ## <a name="commonly-used-app-service-server-farm-metrics"></a>常用 App Service （伺服器陣列）計量
 您也可以根據常用的 Web 伺服器度量 (如 Http 佇列長度) 執行自動調整。 其度量名稱是**HttpQueueLength**。  下一節會列出可用的伺服器陣列（App Service）計量。
@@ -145,8 +144,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | --- | --- |
 | CpuPercentage |百分比 |
 | MemoryPercentage |百分比 |
-| DiskQueueLength |計數 |
-| HttpQueueLength |計數 |
+| DiskQueueLength |Count |
+| HttpQueueLength |Count |
 | BytesReceived |位元組 |
 | BytesSent |位元組 |
 

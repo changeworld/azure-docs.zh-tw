@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
 ms.openlocfilehash: 09b77862ad3379efeb8b3063a9d6c60b062ca2d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905133"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>在 Azure Logic Apps 中設定整合帳戶的跨區域嚴重損壞修復
@@ -112,7 +111,7 @@ EDI X12 文件的商務持續性是根據控制編號：
 
    ![新增或更新控制編號](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
-7. 若要將動作連線到次要區域整合帳戶，請針對可用的整合帳戶清單選取 [**變更** > 連線] [**新增**連線]。 輸入連線名稱，選取清單中的 [次要地區整合帳戶]**，然後選擇 [建立]****。 
+7. 若要將動作連線到次要區域整合帳戶，請**Change connection**  >  針對可用的整合帳戶清單選取 [變更連線] [**新增**連線]。 輸入連線名稱，選取清單中的 [次要地區整合帳戶]**，然後選擇 [建立]****。 
 
    ![次要地區整合帳戶名稱](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -167,7 +166,7 @@ EDI EDIFACT 文件的商務持續性是根據控制編號。
 
    ![新增或更新控制編號](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
-8. 若要將動作連線到次要區域整合帳戶，請針對可用的整合帳戶清單選取 [**變更** > 連線] [**新增**連線]。 輸入連線名稱，選取清單中的 [次要地區整合帳戶]**，然後選擇 [建立]****。
+8. 若要將動作連線到次要區域整合帳戶，請**Change connection**  >  針對可用的整合帳戶清單選取 [變更連線] [**新增**連線]。 輸入連線名稱，選取清單中的 [次要地區整合帳戶]**，然後選擇 [建立]****。
 
    ![次要地區整合帳戶名稱](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -219,7 +218,7 @@ EDI EDIFACT 文件的商務持續性是根據控制編號。
 
    ![MIC 新增或更新](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. 若要將動作連線到次要整合帳戶，請選取 [**變更** > 連線] [**新增**連線]，以取得可用整合帳戶的清單。 輸入連線名稱，選取清單中的 [次要地區整合帳戶]**，然後選擇 [建立]****。
+7. 若要將動作連線到次要整合帳戶，請選取 [**變更**連線] [新增連線]，  >  **Add new connection**以取得可用整合帳戶的清單。 輸入連線名稱，選取清單中的 [次要地區整合帳戶]**，然後選擇 [建立]****。
 
    ![次要地區整合帳戶名稱](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 

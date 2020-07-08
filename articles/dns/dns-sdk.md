@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.openlocfilehash: c497209e456ff838786edaa19e46ebc5c1858d5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76938870"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 建立 DNS 區域和記錄集
@@ -43,7 +42,7 @@ ms.locfileid: "76938870"
 若要使用 Azure DNS .NET SDK，您需要安裝 **Azure DNS 管理程式庫** NuGet 封裝以及其他必要的 Azure 封裝。
 
 1. 在 **Visual Studio**中，開啟專案或新專案。
-2. 移至 [**工具** **>** ] [ **nuget 套件管理員** **>** ] [**管理解決方案的 nuget 套件**...]。
+2. 移至 [**工具**] [ **>** **nuget 套件管理員**] [ **>** **管理解決方案的 nuget 套件**...]。
 3. 按一下 [瀏覽]****，啟用 [包括發行前版本]**** 核取方塊，然後在搜尋方塊中輸入 **Microsoft.Azure.Management.Dns**。
 4. 選取封裝，然後按一下 [安裝] **** 將它加入至您的 Visual Studio 專案。
 5. 重複上述程序以便一併安裝下列封裝︰**Microsoft.Rest.ClientRuntime.Azure.Authentication** 和 **Microsoft.Azure.Management.ResourceManager**。

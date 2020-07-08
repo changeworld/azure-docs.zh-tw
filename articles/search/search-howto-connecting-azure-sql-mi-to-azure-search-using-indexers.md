@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76964884"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>設定從 Azure 認知搜尋索引子到 SQL 受控執行個體的連線
@@ -25,7 +24,7 @@ ms.locfileid: "76964884"
    ![啟用公用端點](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "啟用公用端點")
 
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>啟用 Azure SQL 受控執行個體公用端點
-您也可以在 [**安全性** > ] [**虛擬網路** > ] [**公用端點** > **啟用**] 底下的現有 SQL 受控執行個體上啟用公用端點。
+您也可以在 [**安全性**] [  >  **虛擬網路**] [  >  **公用端點**  >  **啟用**] 底下的現有 SQL 受控執行個體上啟用公用端點。
 
    ![啟用公用端點](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "啟用公用端點")
 
@@ -36,13 +35,13 @@ ms.locfileid: "76964884"
 
 > [!NOTE]
 > 索引子仍需要使用公用端點來設定 SQL 受控執行個體，才能讀取資料。
-> 不過，您可以選擇使用下列2個規則來取代目前的規則（`public_endpoint_inbound`），以限制該公用端點的輸入存取：
+> 不過，您可以選擇 `public_endpoint_inbound` 使用下列2個規則來取代目前的規則（），以限制該公用端點的輸入存取：
 >
-> * 允許來自`AzureCognitiveSearch` [服務標記](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)的輸入存取（"SOURCE" = `AzureCognitiveSearch`，"NAME" = `cognitive_search_inbound`）
+> * 允許來自 `AzureCognitiveSearch` [服務標記](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)的輸入存取（"SOURCE" = `AzureCognitiveSearch` ，"NAME" = `cognitive_search_inbound` ）
 >
-> * 允許從搜尋服務的 IP 位址進行輸入存取，其可透過 ping 其完整功能變數名稱（例如`<your-search-service-name>.search.windows.net`）來取得。 （"SOURCE" = `IP address`，"NAME" = `search_service_inbound`）
+> * 允許從搜尋服務的 IP 位址進行輸入存取，其可透過 ping 其完整功能變數名稱（例如）來取得 `<your-search-service-name>.search.windows.net` 。 （"SOURCE" = `IP address` ，"NAME" = `search_service_inbound` ）
 >
-> 針對這兩個規則的每個，設定 "PORT `3342`" =、"PROTOCOL `TCP`" =、"DESTINATION `Any`" =、"ACTION" =`Allow`
+> 針對這兩個規則的每個，設定 "PORT" = `3342` 、"PROTOCOL" = `TCP` 、"DESTINATION" = `Any` 、"ACTION" =`Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>取得公用端點連接字串
 請確定您使用的是**公用端點**的連接字串（埠3342，而不是埠1433）。

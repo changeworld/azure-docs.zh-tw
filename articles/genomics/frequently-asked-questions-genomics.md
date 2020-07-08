@@ -10,10 +10,9 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76986031"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics：常見問題
@@ -22,10 +21,10 @@ ms.locfileid: "76986031"
 
 
 ## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>如何? 在 Microsoft Genomics 上執行 GATK4 工作流程？
-在 Microsoft Genomics 服務的 config.xml 檔案中，指定的 process_name `gatk4`。 請注意，您將以一般計費費率計費。
+在 Microsoft Genomics 服務的 config.txt 檔案中，指定的 process_name `gatk4` 。 請注意，您將以一般計費費率計費。
 
 ## <a name="how-do-i-enable-output-compression"></a>如何? 啟用輸出壓縮？
-您可以使用選擇性引數來壓縮輸出的工作或 gvcf，以進行輸出壓縮。 這相當於在 [ `-bgzip` .vcf] `-tabix`或 [gvcf] 輸出上執行之後的`.gz` ，以產生（bgzip `.tbi`輸出）和（tabix 輸出）檔案。 `bgzip`壓縮 .vcf 或 gvcf 檔案，並`tabix`建立壓縮檔案的索引。 引數是布林值，預設會針對 .vcf `false`輸出`true`設定為，預設為 gcvf 輸出。 若要在命令列上使用， `-bz`請`--bgzip-output`將`true`或指定為（執行 bgzip 和`false`tabix）或。 若要在 config.xml 檔案中使用這個引數，請`bgzip_output: true`將`bgzip_output: false`或新增至檔案。
+您可以使用選擇性引數來壓縮輸出的工作或 gvcf，以進行輸出壓縮。 這相當於在 `-bgzip` `-tabix` [.vcf] 或 [gvcf] 輸出上執行之後的，以產生 `.gz` （bgzip 輸出）和 `.tbi` （tabix 輸出）檔案。 `bgzip`壓縮 .vcf 或 gvcf 檔案，並 `tabix` 建立壓縮檔案的索引。 引數是布林值，預設會針對 .vcf 輸出設定為，預設為 `false` `true` gcvf 輸出。 若要在命令列上使用，請將 `-bz` 或指定 `--bgzip-output` 為 `true` （執行 bgzip 和 tabix）或 `false` 。 若要在 config.txt 檔案中使用此引數，請將 `bgzip_output: true` 或新增 `bgzip_output: false` 至檔案。
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>什麼是適用於 Microsoft Genomics 的 SLA？
 我們保證 99.9% 的時間 Microsoft Genomics 服務都可用於接收工作流程 API 要求。 如需詳細資訊，請參閱 [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/)。
@@ -88,5 +87,5 @@ msgen 了解以下列格式的組態檔：
 
 使用下列資源來開始使用 Microsoft Genomics：
 - 透過 Microsoft Genomics 服務開始執行您的第一個工作流程。 [透過 Microsoft Genomics 服務執行工作流程](quickstart-run-genomics-workflow-portal.md)
-- 提交您自己的資料以供 Microsoft Genomics 服務處理：[配對的 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [多個 FASTQ 或 bam](quickstart-input-multiple.md) 
+- 提交您自己的資料以供 Microsoft Genomics 服務處理：[配對的 FASTQ](quickstart-input-pair-FASTQ.md)  |  [BAM](quickstart-input-BAM.md)  |  [多個 FASTQ 或 bam](quickstart-input-multiple.md) 
 

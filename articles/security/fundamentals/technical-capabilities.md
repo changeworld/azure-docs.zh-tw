@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
 ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76845354"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全性技術功能
@@ -73,7 +72,7 @@ Azure Active Directory (Azure AD) 的安全性優點包括下列功能：
 
 - 單一登入
 
-- [Multi-Factor Authentication]
+- Multi-Factor Authentication
 
 - 安全性監視、警示以及機器學習服務型報告
 
@@ -95,7 +94,7 @@ Azure Active Directory (Azure AD) 的安全性優點包括下列功能：
 
 不只使用者不需要管理多組使用者名稱和密碼，還可根據組織群組，以及其身為員工的狀態，自動佈建或解除佈建其應用程式的存取權。 [Azure AD 引進了安全性和存取管理控制](../../active-directory/active-directory-enterprise-apps-manage-sso.md)，可讓您集中管理使用者跨 SaaS 應用程式的存取權。
 
-#### <a name="multi-factor-authentication"></a>[Multi-Factor Authentication]
+#### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 [Azure 多重要素驗證（MFA）](../../active-directory/authentication/multi-factor-authentication.md)是一種驗證方法，需要使用多種驗證方法，並在使用者登入和交易中新增重要的第二層安全性。 [MFA 有助於保護](../../active-directory/authentication/concept-mfa-howitworks.md)對資料和應用程式的存取，同時滿足使用者對簡單登入流程的需求。 它可以透過一些驗證選項 (例如電話、文字訊息，或行動應用程式通知或驗證代碼，以及第三方 OAuth 權杖) 來提供強大的驗證功能。
 
@@ -406,7 +405,7 @@ Azure 作業安全性的基礎架構涵蓋透過 Microsoft 特有之各種功能
 
 ### <a name="azure-security-center"></a>Azure 資訊安全中心
 
-[Azure 資訊安全中心](../../security-center/security-center-intro.md)利用加強對您 Azure 資源的能見度及安全性控制權，來協助您預防、偵測及回應威脅。 它提供您 Azure 訂用帳戶之間的整合式安全性監視和原則管理，協助您偵測可能會忽略的威脅，且適用於廣泛的安全性解決方案生態系統。
+[Azure 資訊安全中心](../../security-center/security-center-intro.md)透過增加對 Azure 資源的可見度及控制權，協助您防止、偵測及回應威脅。 它提供您 Azure 訂用帳戶之間的整合式安全性監視和原則管理，協助您偵測可能會忽略的威脅，且適用於廣泛的安全性解決方案生態系統。
 
 資訊安全中心會分析 Azure 資源的安全性狀態，以識別潛在的安全性弱點。 建議清單會引導您完成設定所需控制項的程序。
 
@@ -511,9 +510,9 @@ Resource Manager 會提供數個優點：
 
 - [設計與作業安全性 (英文)](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
 
-- [加密][](https://www.microsoft.com/en-us/trustcenter/security/encryption)
+- [加密](https://www.microsoft.com/en-us/trustcenter/security/encryption)
 
-- [身分識別和存取管理](https://www.microsoft.com/en-us/trustcenter/security/identity)
+- [身分識別與存取管理](https://www.microsoft.com/en-us/trustcenter/security/identity)
 
 - [網路安全性](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 

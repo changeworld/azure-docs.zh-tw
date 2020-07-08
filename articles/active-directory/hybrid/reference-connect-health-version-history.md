@@ -17,10 +17,9 @@ ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76897045"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health︰版本發行歷程記錄
@@ -42,11 +41,11 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
    1. 新增 TestWindowsTransport 測試和移除 CheckOffice365Endpoints 測試中的 WsTrust 端點檢查
    2. 記錄 OS 和 .NET 資訊
    3. 將 RP 設定訊息上傳大小增加至 1 MB。
-   4. 錯誤修正
+   4. Bug 修正
    
 * AD DS 的 Azure AD Connect Health 代理程式（版本3.1.56.0） 
    1. 記錄 OS 和 .NET 資訊 
-   2. 錯誤修正
+   2. Bug 修正
 
 ## <a name="may-2019"></a>2019 年 5 月
 **代理程式更新：** 
@@ -153,7 +152,7 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
   2. 代理程式可用性改善 
   3. Bug 修正和一般改善
   
-## <a name="october-2017"></a>2017 年 10 月
+## <a name="october-2017"></a>2017年 10 月
 **代理程式更新：**
 
  * 隨著 Azure AD Connect 1.1.649.0 版發行的 Azure AD Connect Health Agent for Sync (3.0.129.0 版)
@@ -196,7 +195,7 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
 
 * Azure AD Connect 的同步處理錯誤報告
 
-**新功能：**
+**新功能︰**
 
 * 適用於 AD FS 的 Azure AD Connect Health - IP 位址欄位可用於報告中大約前 50 位使用者名稱/密碼不正確的使用者。
 
@@ -210,25 +209,25 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
 
 * 適用於 AD FS 的 Azure AD Connect Health 代理程式 (2.6.91.1512 版)
 
-**新功能：**
+**新功能︰**
 
 * [Azure AD Connect Health 代理程式的測試連線工具](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)
 
 ## <a name="november-2015"></a>2015 年 11 月
-**新功能：**
+**新功能︰**
 
 * 支援 [角色型存取控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
 
 **新的預覽功能：**
 
-* [Azure AD Connect Health 進行同步](how-to-connect-health-sync.md)處理。
+* [適用於同步的 Azure AD Connect Health](how-to-connect-health-sync.md)。
 
 **已修正的問題：**
 
 * 針對代理程式註冊期間看到的錯誤進行修正。
 
 ## <a name="september-2015"></a>2015 年 9 月
-**新功能：**
+**新功能︰**
 
 * AD FS 的錯誤使用者名稱密碼報告
 * 支援設定未經驗證的 HTTP Proxy
@@ -243,7 +242,7 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
 ## <a name="june-2015"></a>2015 年 6 月
 **適用於 AD FS 和 AD FS Proxy 的 Azure AD Connect Health 初始版本。**
 
-**新功能：**
+**新功能︰**
 
 * 監視 AD FS 與 AD FS Proxy 伺服器時以電子郵件通知發出警示。
 * 在 AD FS 效能計數器中輕鬆存取 AD FS 拓撲和模式。
