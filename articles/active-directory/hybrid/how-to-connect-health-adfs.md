@@ -13,17 +13,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9401532964e984147436f664b366fd613f3f919f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359376"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視 AD FS
 下列文件適用於使用 Azure AD Connect Health 來監視 AD FS 基礎結構。 如需使用 Azure AD Connect Health 監視 Azure AD Connect （同步）的相關資訊，請參閱[使用 Azure AD Connect Health 進行同步](how-to-connect-health-sync.md)處理。此外，如需使用 Azure AD Connect Health 監視 Active Directory Domain Services 的詳細資訊，請參閱搭配[使用 Azure AD Connect Health 與 AD DS](how-to-connect-health-adds.md)。
@@ -53,7 +53,7 @@ Azure AD Connect Health 使用情況分析會分析您的同盟伺服器的驗�
 | --- | --- |
 | 全部 | 顯示所有 AD FS 伺服器所處理要求總數的計數。|
 | Application | 根據目標信賴憑證者，為要求總數分組。 這個分組對於了解哪個應用程式收到多少百分比的總流量非常有幫助。 |
-|  Server (伺服器) |根據處理要求的伺服器，為要求總數分組。 這個分組對於了解總流量的負載分佈非常有幫助。
+|  伺服器 |根據處理要求的伺服器，為要求總數分組。 這個分組對於了解總流量的負載分佈非常有幫助。
 | 加入工作場所 |根據要求是否來自已加入工作場所的裝置 (已知)，為要求總數分組。 這個分組對於了解是否使用識別基礎結構未知的裝置存取您的資源非常有幫助。 |
 |  驗證方法 | 根據用於驗證的驗證方法，為要求總數分組。 這個分組對於了解用於驗證的常見驗證方法非常有幫助。 以下是可能的驗證方法 <ol> <li>Windows 整合式驗證 (Windows)</li> <li>表單型驗證 (表單)</li> <li>SSO (單一登入)</li> <li>X509 憑證驗證 (憑證)</li> <br>如果同盟伺服器收到的要求含有 SSO Cookie，該要求就視為 SSO (單一登入)。 在這種情況下，如果 Cookie 有效，則不會要求使用者提供認證，並不間斷地存取應用程式。 如果您有多個同盟伺服器所保護的信賴憑證者，此行為非常常見。 |
 | 網路位置 | 根據使用者的網路位置，為要求總數分組。 它可以是內部網路或外部網路。 這個分組對於了解流量百分比是來自內部網路還是外部網路非常有幫助。 |
@@ -64,7 +64,7 @@ Azure AD Connect Health 使用情況分析會分析您的同盟伺服器的驗�
 |群組依據 | 分組是什麼意思，為什麼分組很有用？ |
 | --- | --- |
 | 錯誤類型 | 根據預先定義的錯誤類型，顯示錯誤數目。 這個分組對於了解常見的錯誤類型非常有幫助。 <ul><li>不正確的使用者名稱或密碼：由於不正確的使用者名稱或密碼而導致錯誤。</li> <li>「外部網路鎖定」：由於從外部網路收到已鎖定的使用者送來的要求而導致失敗 </li><li> 「已過期的密碼」：由於使用者以過期密碼登入而導致失敗。</li><li>「已停用的帳戶」：由於使用者以停用的帳戶登入而導致失敗。</li><li>「裝置驗證」：由於使用者無法使用裝置驗證來驗證而導致失敗。</li><li>「使用者憑證驗證」：由於憑證無效，使用者無法通過驗證而導致失敗。</li><li>"MFA"：由於使用者無法使用 Multi-Factor Authentication 通過驗證而導致失敗。</li><li>「其他認證」：「發行授權」：由於授權失敗而導致失敗。</li><li>「發行委派」：由於發行委派錯誤而導致失敗。</li><li>「權杖接受」：由於 ADFS 拒絕來自協力廠商識別提供者的權杖而導致失敗。</li><li>「通訊協定」：由於通訊協定錯誤而導致失敗。</li><li>「未知」：全部攔截。 無法歸入已定義的類別內的其他任何失敗。</li> |
-| Server (伺服器) | 依伺服器為錯誤分組。 此分組對於了解跨伺服器的錯誤分佈非常有幫助。 分佈不平均可能是伺服器處於錯誤狀態的指標。 |
+| 伺服器 | 依伺服器為錯誤分組。 此分組對於了解跨伺服器的錯誤分佈非常有幫助。 分佈不平均可能是伺服器處於錯誤狀態的指標。 |
 | 網路位置 | 根據要求的網路位置 (內部網路與外部網路)，為錯誤分組。 此分組對於了解失敗的要求類型非常有幫助。 |
 |  Application | 根據目標應用程式 (信賴憑證者)，為失敗分組。 此分組對於了解哪個目標應用程式將看到最多錯誤數目非常有幫助。 |
 
@@ -108,7 +108,7 @@ Azure AD Connect Health for ADFS 會提供一份報告，內容有關因為使�
 
 此報表會提供下列資訊：
 
-| 報告項目 | 描述 |
+| 報告項目 | Description |
 | --- | --- |
 | 使用者識別碼 |顯示所使用的使用者識別碼。 這個值是使用者所輸入的內容，在某些情況下是所使用的錯誤使用者識別碼。 |
 | 嘗試失敗 |顯示該特定使用者識別碼的嘗試失敗總數。 此資料表是依據最多失敗嘗試次數以遞減順序排序。 |

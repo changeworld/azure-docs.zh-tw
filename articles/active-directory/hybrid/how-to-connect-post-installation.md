@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a859a10e02a5738ee023db5d653ea14403b9bcad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358441"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>接下來的步驟，以及如何管理 Azure AD Connect
 使用本文中的操作程序來自訂 Azure Active Directory (Azure AD) Connect，以符合您組織的需要和需求。  
@@ -59,7 +59,7 @@ ms.locfileid: "79261290"
 2. 按一下 [設定]****。
 3. 在 [工作] 畫面上選取 [**自訂同步**處理] 選項，然後按 **[下一步**
 4. 輸入您的 Azure AD 認證
-5. 按 [下一步]  。 按 [下一步]  。  按 [下一步]  。
+5. 按 [下一步] 。 按 [下一步] 。  按 [下一步] 。
 5.  在 [**準備好設定**] 畫面上，確定已選取 [在設定**完成時啟動同步處理**程式] 核取方塊。
 6.  按一下 [設定]****。
 
@@ -72,7 +72,7 @@ ms.locfileid: "79261290"
 
 ![其他工作清單](./media/how-to-connect-post-installation/addtasks2.png)
 
-| 其他工作 | 說明 |
+| 其他工作 | Description |
 | --- | --- |
 |**隱私權設定**|查看哪些遙測資料正在與 Microsoft 共用。|
 |**檢視目前的組態**|檢視目前的 Azure AD Connect 解決方案。  這包括一般設定、同步處理的目錄，以及同步處理設定。 |

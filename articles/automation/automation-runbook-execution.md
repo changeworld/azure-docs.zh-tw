@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9e602f9ed6a9132c78dbdf0ea3246cbeae80671
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 4f62a94c8ed8baa9979aa1469e785d26781af7f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832345"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361620"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure 自動化中的 Runbook 執行
 
@@ -79,7 +79,7 @@ Azure [訂用帳戶](https://docs.microsoft.com/office365/enterprise/subscriptio
 
 ## <a name="azure-monitor"></a>Azure 監視器
 
-Azure 自動化利用 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)來監視其機器作業。 這些作業需要 Log Analytics 工作區和 [Log Analytics 代理程式](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。
+Azure 自動化會使用[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)來監視其機器作業。 這些作業需要 Log Analytics 工作區和 [Log Analytics 代理程式](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。
 
 ### <a name="log-analytics-agent-for-windows"></a>適用於 Windows 的 Log Analytics 代理程式
 

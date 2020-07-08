@@ -1,7 +1,7 @@
 ---
 title: Microsoft 安全性程式碼分析檔總覽
 description: 本文概述 Microsoft 安全性程式碼分析延伸模組
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 963bc909b69962cded0a50d717e3a653d3d69769
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e42ea5c6863e769f6d2664b3bcd48d15f00b6b5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74851463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361314"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>關於 Microsoft 安全性程式碼分析
 
@@ -65,15 +65,11 @@ Microsoft 安全性程式碼分析延伸模組讓您隨時都能使用最新版�
 
 ### <a name="binskim"></a>BinSkim
 
-BinSkim 是可移植的執行檔（PE）輕量掃描器，可驗證編譯器設定、連結器設定，以及二進位檔案的其他安全性相關特性。 此組建工作提供 binskim 的命令列包裝函式。 BinSkim 是一個開放原始碼工具。 如需詳細資訊，請參閱[GitHub 上的 BinSkim](https://github.com/Microsoft/binskim)。
+BinSkim 是可移植的執行檔（PE）輕量掃描器，可驗證編譯器設定、連結器設定，以及二進位檔案的其他安全性相關特性。 此組建工作會在 binskim.exe 主控台應用程式周圍提供命令列包裝函式。 BinSkim 是一個開放原始碼工具。 如需詳細資訊，請參閱[GitHub 上的 BinSkim](https://github.com/Microsoft/binskim)。
 
 ### <a name="credential-scanner"></a>認證掃描器
 
 儲存在原始程式碼中的密碼和其他秘密都是嚴重的問題。 認證掃描器是一種專屬的靜態分析工具，可協助解決此問題。 此工具會偵測您的原始程式碼和組建輸出中的認證、秘密、憑證和其他機密內容。
-
-### <a name="microsoft-security-risk-detection"></a>Microsoft 安全性風險偵測
-
-Microsoft 安全性風險偵測（MSRD）是一種雲端式服務，可進行模糊測試。 它會識別軟體中可利用的安全性錯誤。 此服務需要個別的訂用帳戶和啟用。 如需詳細資訊，請參閱[MSRD 開發人員中心](https://docs.microsoft.com/security-risk-detection/)。
 
 ### <a name="roslyn-analyzers"></a>Roslyn 分析器
 

@@ -4,22 +4,22 @@ description: 本文說明如何使用 Azure 檔案儲存體和 Azure Active Dire
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 4ee1b8d849051b9192e53f761050f1c4b6480e1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607277"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362436"
 ---
-# <a name="create-an-fslogix-profile-container-with-azure-files"></a>建立具有 Azure 檔案儲存體的 FSLogix 設定檔容器
+# <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>建立具有 Azure 檔案儲存體和 Azure AD DS 的設定檔容器
 
 本文將說明如何使用 Azure 檔案儲存體和 Azure Active Directory Domain Services （AD DS）來建立 FSLogix 設定檔容器。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已設定 Azure AD DS 實例。 如果您還沒有帳戶，請遵循[建立基本受控網域](../active-directory-domain-services/tutorial-create-instance.md)中的指示，然後回到這裡。
 
@@ -41,7 +41,7 @@ ms.locfileid: "82607277"
 
 ## <a name="set-up-an-azure-storage-account"></a>設定 Azure 儲存體帳戶
 
-現在可以啟用透過伺服器訊息區（SMB）進行 Azure AD DS 驗證的時機。 
+現在可以啟用透過伺服器訊息區（SMB）進行 Azure AD DS 驗證的時機。
 
 若要啟用驗證：
 
@@ -49,7 +49,7 @@ ms.locfileid: "82607277"
 
 2. 完成帳戶設定後，請選取 [**前往資源**]。
 
-3. 從畫面左側的**窗格中選取**[設定]，然後在主窗格中啟用**Azure 檔案儲存體的 Azure Active Directory 驗證**。 完成時，選取 [儲存]****。
+3. 從畫面左側的**窗格中選取**[設定]，然後在主窗格中啟用**Azure 檔案儲存體的 Azure Active Directory 驗證**。 完成時，選取 [儲存]。
 
 4. 在畫面左側的窗格中選取 **[總覽**]，然後在主窗格**中選取 [** 檔案]。
 
@@ -63,9 +63,9 @@ ms.locfileid: "82607277"
 
 1. 從 [Azure 入口網站] 中，開啟您在[設定 Azure 儲存體帳戶](#set-up-an-azure-storage-account)中所建立的檔案共用。
 
-2. 選取 **[存取控制（IAM）**]。
+2. 選取 [存取控制 (IAM)]。
 
-3. 選取 [新增角色指派]****。
+3. 選取 [**新增角色指派**]。
 
 4. 在 [**新增角色指派**] 索引標籤中，從 [角色] 清單中選取適當的內建角色。 您至少需要為帳戶選取 [**儲存體檔案資料] [SMB 共用參與者**]，才能取得適當的許可權。
 
@@ -73,7 +73,7 @@ ms.locfileid: "82607277"
 
 6. 選取目標 Azure Active Directory 身分識別的名稱或電子郵件地址。
 
-7. 選取 [儲存]  。
+7. 選取 [儲存]。
 
 ## <a name="get-the-storage-account-access-key"></a>取得儲存體帳戶存取金鑰
 
@@ -93,23 +93,24 @@ ms.locfileid: "82607277"
 
     這會下載可讓您使用自己的認證登入 VM 的 RDP 檔案。
 
-    ![[連線至虛擬機器] 視窗的 [RDP] 索引標籤螢幕擷取畫面。](media/rdp-tab.png)
+    > [!div class="mx-imgBorder"]
+    > ![[連線至虛擬機器] 視窗的 [RDP] 索引標籤螢幕擷取畫面。](media/rdp-tab.png)
 
 6. 當您已登入 VM 時，請以系統管理員身分執行命令提示字元。
 
-7. 執行以下命令：
+7. 執行下列命令：
 
      ```cmd
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
      ```
 
-    - 將`<desired-drive-letter>`取代為您選擇的磁碟機號（例如`y:`）。
-    - 將的`<storage-account-name>`所有實例取代為您稍早指定的儲存體帳戶名稱。
-    - 將`<share-name>`取代為您稍早建立的共用名稱。
-    - 將`<storage-account-key>`取代為 Azure 中的儲存體帳戶金鑰。
+    - `<desired-drive-letter>`將取代為您選擇的磁碟機號（例如 `y:` ）。
+    - 將的所有實例取代 `<storage-account-name>` 為您稍早指定的儲存體帳戶名稱。
+    - 將取代 `<share-name>` 為您稍早建立的共用名稱。
+    - `<storage-account-key>`將取代為 Azure 中的儲存體帳戶金鑰。
 
-    例如：  
-  
+    例如：
+
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
@@ -120,11 +121,11 @@ ms.locfileid: "82607277"
      icacls <mounted-drive-letter>: /grant <user-email>:(f)
      ```
 
-    - 將`<mounted-drive-letter>`取代為您想要讓使用者使用的磁片磁碟機字母。
-    - 將`<user-email>`取代為將使用此設定檔來存取工作階段主機 vm 的使用者 UPN。
+    - 將取代 `<mounted-drive-letter>` 為您想要讓使用者使用的磁片磁碟機字母。
+    - 將取代為 `<user-email>` 將使用此設定檔來存取工作階段主機 vm 的使用者 UPN。
 
     例如：
-     
+
      ```cmd
      icacls y: /grant john.doe@contoso.com:(f)
      ```
@@ -137,30 +138,32 @@ ms.locfileid: "82607277"
 
 1. 登入您在本文開頭設定的工作階段主機 VM，然後[下載並安裝 FSLogix 代理程式](/fslogix/install-ht/)。
 
-2. 將您下載的 FSLogix 代理程式檔案解壓縮，並移至**x64** > **版本**，然後開啟**FSLogixAppsSetup**。
+2. 將您下載的 FSLogix 代理程式檔案解壓縮，並移至**x64**  >  **版本**，然後開啟**FSLogixAppsSetup.exe**。
 
 3. 安裝程式啟動後，請選取 **[我同意授權條款及條件]。** 如果適用的話，請提供新的金鑰。
 
-4. 選取 [安裝]  。
+4. 選取 [安裝]。
 
-5. 開啟**磁片磁碟機 C**，然後移至**Program Files** > **FSLogix** > **Apps** ，以確定 FSLogix 代理程式已正確安裝。
+5. 開啟**磁片磁碟機 C**，然後移至**Program Files**  >  **FSLogix**  >  **Apps** ，以確定 FSLogix 代理程式已正確安裝。
 
      >[!NOTE]
      > 如果主機集區中有多個 Vm，您必須針對每個 VM 重複步驟1到5。
 
 6. 以系統管理員身分執行**登錄編輯程式**（RegEdit）。
 
-7. 流覽至 **[Computer** > **HKEY_LOCAL_MACHINE** > **software** > **FSLogix**]，以滑鼠右鍵按一下**FSLogix**，選取 [**新增**]，然後選取 [**金鑰**]。
+7. 流覽至 [ **Computer**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**]，以滑鼠右鍵按一下**FSLogix**，選取 [**新增**]，然後選取 [**金鑰**]。
 
 8. 建立名為**Profiles**的新金鑰。
 
 9.  以滑鼠右鍵按一下 [**設定檔**]，選取 [**新增**]，然後選取 **[DWORD （32-位）值]。** 將值命名為**Enabled** ，並將**資料**值設定為**1**。
 
-    ![設定檔索引鍵的螢幕擷取畫面。 REG_DWORD 檔案會反白顯示，且其資料值會設為1。](media/dword-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![設定檔索引鍵的螢幕擷取畫面。 REG_DWORD 檔案會反白顯示，且其資料值會設為1。](media/dword-value.png)
 
-10. 以滑鼠右鍵按一下 [**設定檔**]，選取 [**新增**]，然後選取 [**多字串值**]。 將值命名為**VHDLocations** ，並將 Azure 檔案儲存體共用`\\fsprofile.file.core.windows.net\share`的 URI 輸入為數據值。
+10. 以滑鼠右鍵按一下 [**設定檔**]，選取 [**新增**]，然後選取 [**多字串值**]。 將值命名為**VHDLocations** ，並將 Azure 檔案儲存體共用的 URI 輸入 `\\fsprofile.file.core.windows.net\share` 為數據值。
 
-    ![顯示 VHDLocations 檔案的設定檔索引鍵的螢幕擷取畫面。 其資料值會顯示 Azure 檔案儲存體共用的 URI。](media/multi-string-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![顯示 VHDLocations 檔案的設定檔索引鍵的螢幕擷取畫面。 其資料值會顯示 Azure 檔案儲存體共用的 URI。](media/multi-string-value.png)
 
 ## <a name="assign-users-to-a-session-host"></a>將使用者指派給工作階段主機
 
@@ -197,19 +200,19 @@ ms.locfileid: "82607277"
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
-    如同先前的 Cmdlet，請務必將、 `<your-wvd-tenant>` `<wvd-pool>`和`<user-principal>`取代為相關的值。
+    如同先前的 Cmdlet，請務必將 `<your-wvd-tenant>` 、和取代為 `<wvd-pool>` `<user-principal>` 相關的值。
 
     例如：
 
      ```powershell
      $pool1 = "contoso"
-     
+
      $tenant = "contoso"
-     
+
      $appgroup = "Desktop Application Group"
-     
+
      $user1 = "jane.doe@contoso.com"
-     
+
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
@@ -231,7 +234,7 @@ ms.locfileid: "82607277"
 
 6. 選取 [**檔案**] 圖示，然後展開您的共用。
 
-    如果一切都設定正確，您應該會看到名為的**目錄**，其格式如下： `<user SID>-<username>`。
+    如果一切都設定正確，您應該會看到名為的**目錄**，其格式如下： `<user SID>-<username>` 。
 
 ## <a name="next-steps"></a>後續步驟
 

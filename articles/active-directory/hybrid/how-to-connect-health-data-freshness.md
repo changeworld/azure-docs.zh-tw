@@ -11,20 +11,20 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a94bd07cf5020981cdf028ec0eccfa8fa531d240
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63d1d87d9b576a8e181b5b339052a6b6512f18a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897176"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359223"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>健康情況服務的資料並非最新警示
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Azure AD Connect Health 監視的內部部署電腦上的代理程式會定期將資料上傳至 Azure AD Connect Health 服務。 如果服務未收到來自代理程式的資料，則入口網站所提供的資訊將會過時。 若要醒目提示此問題，服務將會引發 [**健全狀況服務資料不是最**新的狀態] 警示。 當服務在過去兩小時內未收到完整資料時，就會產生此警示。  
 

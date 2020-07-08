@@ -12,22 +12,22 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f3e521fb7668305ce511aaddd63ed2cce8dfed0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360090"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>使用 Azure AD Connect 管理與 Azure AD 的 AD FS 信任
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Azure AD Connect 可以管理內部部署 Active Directory Federation Service (AD FS) 與 Azure AD 之間的同盟。 本文提供下列內容的概觀：
 
@@ -39,7 +39,7 @@ Azure AD Connect 可以管理內部部署 Active Directory Federation Service (A
 
 Azure AD Connect **只**會管理與 Azure AD 信任相關的設定。 Azure AD Connect 不會在 AD FS 中修改有關其他信賴憑證者信任的任何設定。 下表指出由 Azure AD Connect 所控制的設定。
 
-| 設定 | 描述 |
+| 設定 | 說明 |
 | :--- | :--- |
 | 權杖簽署憑證 | Azure AD Connect 可以用來重設並重新建立與 Azure AD 的信任。 Azure AD Connect 會針對 AD FS 進行權杖簽署憑證的單次立即變換，並更新 Azure AD 網域同盟設定。|
 | 權杖簽署演算法 | Microsoft 建議使用 SHA-256 作為權杖簽署演算法。 Azure AD Connect 可以偵測是否將權杖簽署演算法設定為比 SHA-256 更不安全的值。 它將在下一個可能的設定作業中將設定更新為 SHA-256。 必須更新其他信賴憑證者信任，才能使用新的權杖簽署憑證。 |
@@ -77,7 +77,7 @@ Azure AD Connect 不會在設定流程期間更新 Azure AD 信任的所有設�
 
 Azure AD Connect 確保一律會使用一組正確的建議宣告規則來設定 Azure AD 信任。 Microsoft 建議使用 Azure AD Connect 來管理您的 Azure AD 信任。 本節會列出發行轉換規則集及其描述。
 
-| 規則名稱 | 描述 |
+| 規則名稱 | Description |
 | --- | --- |
 | 發行 UPN | 此規則會針對 userprincipalname 從同步處理設定中設定的屬性，查詢 userprincipalname 的值。|
 | 針對自訂的 ImmutableId 宣告，查詢 objectguid 和 msdsconsistencyguid | 此規則會在管線中，針對 objectguid 和 msdsconsistencyguid 值 (如果有的話) 新增暫存值 |

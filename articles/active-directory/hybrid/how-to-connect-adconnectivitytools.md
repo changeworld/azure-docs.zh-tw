@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7eed3e06ab42671d9674ad3893a88dfe9817e22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "64571124"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360175"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>使用 ADConnectivityTool PowerShell 模組對 Azure AD 連線進行疑難排解
 
@@ -47,7 +47,7 @@ ADConnectivity 工具是 PowerShell 模組，可在下列其中一種情況使�
 
 背後實際的情況是，Azure AD Connect 正在呼叫 `Start-NetworkConnectivityDiagnosisTools` 函式。  由於網路連線問題，導致認證驗證失敗時，會呼叫此函式。
 
-最後，每當從精靈呼叫此工具時，都會產生詳細的記錄檔。 記錄檔位於**C:\ProgramData\AADConnect\ADConnectivityTool-\<date>\<time> .log**
+最後，每當從精靈呼叫此工具時，都會產生詳細的記錄檔。 記錄檔位於 C:\ProgramData\AADConnect\ADConnectivityTool-中** \<date> - \<time> 。**
 
 ## <a name="adconnectivitytools-post-installation"></a>ADConnectivityTools 後續安裝
 在安裝 Azure AD Connect 之後，可以使用 ADConnectivityTools PowerShell 模組中的任何函式。  
@@ -74,7 +74,7 @@ ADConnectivity 工具是 PowerShell 模組，可在下列其中一種情況使�
 
 
 ## <a name="next-steps"></a>後續步驟
-- [Azure AD Connect：帳戶與權限](reference-connect-accounts-permissions.md)
+- [Azure AD Connect：帳戶和權限](reference-connect-accounts-permissions.md)
 - [快速安裝](how-to-connect-install-express.md)
 - [自訂安裝](how-to-connect-install-custom.md)
 - [ADConnectivityTools 參考](reference-connect-adconnectivitytools.md)

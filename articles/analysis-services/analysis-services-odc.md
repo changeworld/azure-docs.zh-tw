@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 36031006f155f1651845dbce48b6c6ec84397e93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572677"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361416"
 ---
 # <a name="create-an-office-data-connection-file"></a>建立 Office 資料連線檔案
 
-本文中的資訊說明如何從 Excel 2016 版本號碼 16.0.7369.2117 或更早版本或 Excel 2013，建立 Office 資料連線檔案，以連線至 Azure Analysis Services 伺服器。 還需要有更新的 [MSOLAP.7 提供者](analysis-services-data-providers.md)。
+本文中的資訊說明如何從 Excel 2016 版本號碼 16.0.7369.2117 或更早版本或 Excel 2013，建立 Office 資料連線檔案，以連線至 Azure Analysis Services 伺服器。 還需要有更新的 [MSOLAP.7 提供者](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)。
 
 
 1. 複製下面的範例連線檔案，然後貼到文字編輯器。 

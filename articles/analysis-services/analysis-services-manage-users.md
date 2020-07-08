@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5ca9b1d9fbd18f60de80a80c932f0e27b8dc8583
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361484"
 ---
 # <a name="authentication-and-user-permissions"></a>驗證和使用者權限
 
@@ -24,7 +24,7 @@ Azure Analysis Services 支援 [Azure AD B2B 共同作業](../active-directory/a
 
 ## <a name="authentication"></a>驗證
 
-所有用戶端應用程式和工具會使用一或多個 Analysis Services [用戶端程式庫](analysis-services-data-providers.md) (AMO、MSOLAP、ADOMD) 連線到伺服器。 
+所有用戶端應用程式和工具會使用一或多個 Analysis Services [用戶端程式庫](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO、MSOLAP、ADOMD) 連線到伺服器。 
 
 這三個用戶端程式庫全都支援 Azure AD 互動式流程和非互動式驗證方法。 兩種非互動式方法 (Active Directory 密碼和 Active Directory 整合式驗證) 可以在利用 AMOMD 和 MSOLAP 的應用程式中使用。 這兩種方法絕對不會產生快顯對話方塊。
 

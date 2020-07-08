@@ -4,21 +4,21 @@ description: 如何部署 Windows 虛擬桌面的診斷 UX 工具。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6635fff957512b601fe0927769e4ea91e9270450
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615171"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362334"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署診斷工具
 
 >[!IMPORTANT]
->此內容適用于不支援 Azure Resource Manager Windows 虛擬桌面物件的秋季2019版。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。
 
 >[!IMPORTANT]
 >從2020年3月16日起，我們已暫時停用因服務需求增加而影響使用者體驗的診斷查詢。 這會導致工具停止運作，因為它依賴這些查詢來運作。 當診斷查詢再次可供使用時，我們將會更新本文。
@@ -34,7 +34,7 @@ ms.locfileid: "82615171"
 - 將訊息傳送給特定工作階段主機上的作用中使用者。
 - 將使用者登出工作階段主機。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您必須先建立 Azure Active Directory 應用程式註冊和 Log Analytics 工作區，才能部署工具的 Azure Resource Manager 範本。 您或系統管理員需要這些許可權才能執行此動作：
 
@@ -68,7 +68,7 @@ ms.locfileid: "82615171"
    ```powershell
    Connect-AzureAD
    ```
-4. 移至[RDS 範本 github](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)存放庫，並在 PowerShell 中執行**CreateADAppRegistrationforDiagnostics**腳本。
+4. 移至[RDS 範本 GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)存放庫，然後在 PowerShell 中執行**CreateADAppRegistrationforDiagnostics.ps1**腳本。
 5.  當腳本要求您為應用程式命名時，請輸入唯一的應用程式名稱。
 
 
@@ -93,7 +93,7 @@ ms.locfileid: "82615171"
 若要執行 PowerShell 腳本：
 
 1.  以系統管理員身分開啟 PowerShell。
-2.  移至[RDS 範本 github](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)存放庫，並在 PowerShell 中執行**CreateLogAnalyticsWorkspaceforDiagnostics**腳本。
+2.  移至[RDS 範本 GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)存放庫，然後在 PowerShell 中執行**CreateLogAnalyticsWorkspaceforDiagnostics.ps1**腳本。
 3. 為各個參數輸入下列值︰
 
     - 針對 [ **ResourceGroupName**]，輸入資源群組的名稱。
@@ -115,13 +115,13 @@ ms.locfileid: "82615171"
 1. 開啟網際網路瀏覽器，並使用您的系統管理帳戶登入[Azure 入口網站](https://portal.azure.com/)。
 2. 接下來，移至**Log Analytics 工作區**以檢查已設定的 Windows 效能計數器。
 3. 在 [**設定**] 區段中，選取 [ **Advanced Settings**]。
-4. 之後，流覽至 [**資料** > ] [**Windows 效能計數器**]，並新增下列計數器：
+4. 之後，流覽至 [**資料**] [  >  **Windows 效能計數器**]，並新增下列計數器：
 
-    -   LogicalDisk （\*）\\% 可用空間百分比
-    -   LogicalDisk （C：\\） Avg. Disk Queue Length
-    -   記憶體（\*）\\可用的 mb
-    -   處理器資訊（\*）\\處理器時間
-    -   每個會話的使用者輸入\*延遲\\（）最大輸入延遲
+    -   LogicalDisk （ \* ） \\ % 可用空間百分比
+    -   LogicalDisk （C：） \\ Avg. Disk Queue Length
+    -   記憶體（ \* ） \\ 可用的 mb
+    -   處理器資訊（ \* ） \\ 處理器時間
+    -   每個會話的使用者輸入延遲（ \* ） \\ 最大輸入延遲
 
 [在 Azure 監視器中深入瞭解 Windows 和 Linux 效能資料來源中](/azure/azure-monitor/platform/data-sources-performance-counters)的效能計數器。
 
@@ -147,14 +147,14 @@ ms.locfileid: "82615171"
 
 1. 在[Azure 入口網站](https://portal.azure.com/)中，移至**Log Analytics 工作區**以檢查已設定的 Windows 效能計數器。
 2. 在 [**設定**] 底下，選取 [ **Advanced Settings**]。
-3. 之後，請移至 [**資料** > ] [**Windows 效能計數器**]。
+3. 之後，請移至 [**資料**] [  >  **Windows 效能計數器**]。
 4. 請確定已預先設定下列計數器：
 
-   - LogicalDisk （\*）\\% Free space：顯示磁片上可用空間總計的可用空間量（以百分比表示）。
-   - LogicalDisk （C：\\） Avg. Disk Queue length：您的 C 磁片磁碟機的磁片傳輸要求長度。 此值不應超過2個長時間。
-   - 記憶體（\*）\\可用 mb：系統的可用記憶體（以 mb 為單位）。
-   - 處理器資訊（\*）\\處理器時間：處理器花費在執行非閒置執行緒所經過時間的百分比。
-   - 每個會話的使用者輸入\*延遲\\（）最大輸入延遲
+   - LogicalDisk （ \* ） \\ % Free Space：顯示磁片上可用空間總計的可用空間量（以百分比表示）。
+   - LogicalDisk （C：） \\ Avg. Disk Queue length：您的 C 磁片磁碟機的磁片傳輸要求長度。 此值不應超過2個長時間。
+   - 記憶體（ \* ） \\ 可用 mb：系統的可用記憶體（以 mb 為單位）。
+   - 處理器資訊（ \* ） \\ 處理器時間：處理器花費在執行非閒置執行緒所經過時間的百分比。
+   - 每個會話的使用者輸入延遲（ \* ） \\ 最大輸入延遲
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>連接到 Log Analytics 工作區中的 Vm
 
@@ -164,7 +164,7 @@ ms.locfileid: "82615171"
 2. 移至您的 Log Analytics 工作區。
 3. 在左面板中的 [工作區資料來源] 底下，選取 [**虛擬機器**]。
 4. 選取您想要連接的 VM 名稱。
-5. 選取 [連接]  。
+5. 選取 [連接]。
 
 ## <a name="deploy-the-diagnostics-tool"></a>部署診斷工具
 
@@ -195,11 +195,12 @@ ms.locfileid: "82615171"
 6. 在 [類型] 底下的下拉式功能表中選取 [ **Web** ]。
 7. 輸入應用程式總覽頁面中的 URL，並將 **/security/signin-callback**新增至它的結尾。 例如： `https://<yourappname>.azurewebsites.net/security/signin-callback` 。
 
-   ![[重新導向 URI] 頁面](../media/redirect-uri-page.png)
+   > [!div class="mx-imgBorder"]
+   > ![[重新導向 URI] 頁面](../media/redirect-uri-page.png)
 
-8. 現在，移至您的 Azure 資源，使用您在範本中提供的名稱選取 [Azure App Services] 資源，然後流覽至與其相關聯的 URL。 （例如，如果您在範本中使用的應用程式名稱是`contosoapp45`，則關聯的 URL 會<https://contosoapp45.azurewebsites.net>是）。
+8. 現在，移至您的 Azure 資源，使用您在範本中提供的名稱選取 [Azure App Services] 資源，然後流覽至與其相關聯的 URL。 （例如，如果您在範本中使用的應用程式名稱是 `contosoapp45` ，則關聯的 URL 會是 <https://contosoapp45.azurewebsites.net> ）。
 9. 使用適當的 Azure Active Directory 使用者帳戶登入。
-10.   選取 [接受]  。
+10.   選取 [接受]。
 
 ## <a name="distribute-the-diagnostics-tool"></a>散發診斷工具
 
@@ -226,7 +227,7 @@ ms.locfileid: "82615171"
 
 連接活動可能會有一個以上的錯誤。 您可以展開活動類型，以查看使用者所遇到的任何其他錯誤。 選取錯誤碼的名稱以開啟對話方塊，以查看其詳細資訊。
 
-### <a name="investigate-the-session-host"></a>調查工作階段主機 
+### <a name="investigate-the-session-host"></a>調查工作階段主機
 
 在搜尋結果中，尋找並選取您想要其相關資訊的工作階段主機。
 
@@ -242,26 +243,26 @@ ms.locfileid: "82615171"
 
 ### <a name="windows-performance-counter-thresholds"></a>Windows 效能計數器閾值
 
-- LogicalDisk （\*）\\% 可用空間：
+- LogicalDisk （ \* ） \\ % 可用空間：
 
     - 顯示邏輯磁片上可用的總可用空間百分比。
     - 閾值：小於20% 標記為狀況不良。
 
-- LogicalDisk （C：\\） Avg. Disk Queue Length：
+- LogicalDisk （C：） \\ Avg. Disk Queue Length：
 
     - 代表儲存系統的條件。
     - 閾值：高於5的標記為狀況不良。
 
-- 記憶體（\*）\\可用 mb：
+- 記憶體（ \* ） \\ 可用 mb：
 
     - 系統的可用記憶體。
     - 閾值：小於 500 mb，標示為狀況不良。
 
-- 處理器資訊（\*）\\處理器時間：
+- 處理器資訊（ \* ） \\ 處理器時間：
 
     - 閾值：高於80% 會標示為狀況不良。
 
-- [使用者輸入延遲（）每\*個\\會話（）最大輸入延遲](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)：
+- [使用者輸入延遲（）每個會話（ \* ） \\ 最大輸入延遲](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)：
 
     - 閾值：高於2000毫秒會標示為狀況不良。
 

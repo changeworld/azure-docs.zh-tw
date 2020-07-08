@@ -8,16 +8,16 @@ manager: daveba
 ms.subservice: hybrid
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 6a89c5e3fb84f797d9ad7f81626fb7185ce3e076
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 72ec59d0082071746cb8db2b06412d90b4958914
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359954"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>使用 Azure Active Directory 設定應用程式的群組宣告
 
@@ -84,7 +84,7 @@ Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊
 
 ![宣告 UI](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
-| 選項 | 描述 |
+| 選取項目 | 描述 |
 |----------|-------------|
 | **所有群組** | 發出安全性群組和通訊群組清單與角色。  |
 | **安全性群組** | 在群組宣告中發出使用者所屬的安全性群組 |
@@ -140,10 +140,10 @@ Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊
 
 有效值為：
 
-| 選項 | 描述 |
+| 選取項目 | 描述 |
 |----------|-------------|
 | **這** | 發出安全性群組、通訊群組清單和角色 |
-| **SecurityGroup** | 在群組宣告中發出使用者所屬的安全性群組 |
+| **"SecurityGroup"** | 在群組宣告中發出使用者所屬的安全性群組 |
 | **「DirectoryRole** | 如果使用者被指派目錄角色，則會以 ' wids ' 宣告的形式發出，而不會發出群組宣告） |
 | **「ApplicationGroup** | 只發出明確指派給應用程式的群組，以及使用者的成員 |
 
@@ -153,20 +153,20 @@ Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊
    "groupMembershipClaims": "SecurityGroup"
    ```
 
-   根據預設，會在群組宣告值中發出群組 Objectid。  若要將宣告值修改為包含內部部署群組屬性，或將宣告類型變更為角色，請使用 OptionalClaims 設定，如下所示：
+   預設會在群組宣告值中發出群組 ObjectID。  若要將宣告值修改為包含內部部署群組屬性，或將宣告類型變更為角色，請使用 OptionalClaims 設定，如下所示：
 
-3. 設定組名 configuration 選擇性宣告。
+3. 設定群組名稱設定的選擇性宣告。
 
    如果您想要讓權杖中的群組包含內部部署 AD 群組屬性，請在 [選擇性宣告] 區段中指定應套用哪一個權杖類型的選擇性宣告。  可以列出多個權杖類型：
 
-   - OIDC 識別碼權杖的 idToken
+   - idToken，代表 OIDC 識別碼權杖
    - OAuth/OIDC 存取權杖的 accessToken
-   - SAML 權杖的 Saml2Token。
+   - Saml2Token，代表 SAML 權杖。
 
    > [!NOTE]
-   > Saml2Token 類型同時適用于 SAML 1.1 和 SAML 2.0 格式權杖
+   > Saml2Token 類型適用於 SAML1.1 和 SAML2.0 格式的權杖
 
-   針對每個相關的權杖類型，修改群組宣告以使用資訊清單中的 OptionalClaims 區段。 OptionalClaims 架構如下所示：
+   針對每個相關的權杖類型，將群組宣告修改為使用資訊清單中的 OptionalClaims 區段。 OptionalClaims 結構描述如下所示：
 
    ```json
    {
@@ -179,17 +179,17 @@ Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊
 
    | 選擇性宣告架構 | 值 |
    |----------|-------------|
-   | **檔案名** | 必須是「群組」 |
-   | **來源** | 未使用。 省略或指定 null |
-   | **基本** | 未使用。 省略或指定 false |
-   | **AdditionalProperties** | 其他屬性的清單。  有效的選項為「sam_account_name」、「dns_domain_and_sam_account_name」、「netbios_domain_and_sam_account_name」、「emit_as_roles」 |
+   | **name:** | 必須是 "groups" |
+   | **source:** | 未使用。 省略或指定 null |
+   | **essential:** | 未使用。 省略或指定 false |
+   | **additionalProperties:** | 額外屬性的清單。  有效的選項為「sam_account_name」、「dns_domain_and_sam_account_name」、「netbios_domain_and_sam_account_name」、「emit_as_roles」 |
 
-   在 additionalProperties 中，只需要「sam_account_name」、「dns_domain_and_sam_account_name」、「netbios_domain_and_sam_account_name」其中一個。  如果有多個，則會使用第一個，並忽略其他任何專案。
+   在 additionalProperties 中，只需要「sam_account_name」、「dns_domain_and_sam_account_name」、「netbios_domain_and_sam_account_name」其中一個。  如果出現多個，則會使用第一個，其他都忽略。
 
-   某些應用程式需要角色宣告中的使用者群組資訊。  若要將宣告類型從群組宣告變更為角色宣告，請將 "emit_as_roles" 新增至其他屬性。  群組值會在角色宣告中發出。
+   某些應用程式在角色宣告中需要使用者的群組資訊。  若要將宣告類型從群組宣告變更為角色宣告，請將 "emit_as_roles" 新增至其他屬性。  角色宣告中會發出群組值。
 
    > [!NOTE]
-   > 如果使用「emit_as_roles」，則設定為使用者指派的任何應用程式角色都不會出現在角色宣告中。
+   > 如果使用 "emit_as_roles"，則任何已設定指派給使用者的應用程式角色，將不會出現在角色宣告中。
 
 ### <a name="examples"></a>範例
 
@@ -222,6 +222,6 @@ Azure Active Directory 可以在權杖中提供使用者群組成員資格資訊
 
 ## <a name="next-steps"></a>後續步驟
 
-[將使用者或群組指派給企業應用程式](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
-
-[設定角色宣告](../../active-directory/develop/active-directory-enterprise-app-role-management.md)
+- [使用群組新增授權 & 將宣告加入 ASP.NET Core web 應用程式（程式碼範例）](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/5-WebApp-AuthZ/5-2-Groups/README.md)
+- [將使用者或群組指派給企業應用程式](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
+- [設定角色宣告](../../active-directory/develop/active-directory-enterprise-app-role-management.md)

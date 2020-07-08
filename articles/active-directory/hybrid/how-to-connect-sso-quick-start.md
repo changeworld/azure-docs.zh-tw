@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：無縫單一登入 - 快速入門 | Microsoft Docs
+title: Azure AD Connect：無縫單一登入-快速入門 |Microsoft Docs
 description: 本文描述如何開始使用 Azure Active Directory 無縫單一登入
 services: active-directory
 keywords: 何謂 Azure AD Connect、安裝 Active Directory、Azure AD、SSO、單一登入的必要元件
@@ -11,19 +11,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58e779e6feeba27711a1746fbf7d6878725790fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357999"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 無縫單一登入：快速入門
+# <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory 無縫單一登入：快速入門
 
 ## <a name="deploy-seamless-single-sign-on"></a>部署無縫單一登入
 
@@ -37,7 +37,7 @@ ms.locfileid: "79261199"
 
 * **設定 Azure AD Connect 伺服器**：如果您使用[傳遞驗證](how-to-connect-pta.md)作為登入方法，不需要進行額外的必要條件檢查。 如果您使用[密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)作為登入方法，而且 Azure AD Connect 與 Azure AD 之間有防火牆，請確定︰
    - 您使用 Azure AD Connect 1.1.644.0 或更新版本。 
-   - 如果您的** \*** 防火牆或 proxy 允許 DNS 允許清單，請透過埠443將 msappproxy.net url 的連線列入白名單。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。 只有啟用此功能時，此必要條件才適用。 不需要實際的使用者登入。
+   - 如果您的防火牆或 proxy 允許，請透過埠443將連線新增至** \* msappproxy.net** url 的允許清單。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。 只有啟用此功能時，此必要條件才適用。 不需要實際的使用者登入。
 
     >[!NOTE]
     >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有與密碼雜湊同步處理相關的問題。 如果您_不_想要使用密碼雜湊同步處理搭配傳遞驗證，請閱讀[Azure AD Connect 版本](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)資訊以深入瞭解。
@@ -93,10 +93,10 @@ ms.locfileid: "79261199"
 ![Azure 入口網站：Azure AD Connect 窗格](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> 無縫 SSO 會在您的`AZUREADSSOACC`內部部署 ACTIVE DIRECTORY （AD）中，于每個 AD 樹系中建立名為的電腦帳戶。 基於`AZUREADSSOACC`安全考慮，電腦帳戶必須受到嚴格的保護。 只有網域系統管理員才能夠管理電腦帳戶。 請確定已停用電腦帳戶上的 Kerberos 委派，而且 Active Directory 中的其他帳戶都具有電腦帳戶的`AZUREADSSOACC`委派許可權。 將電腦帳戶儲存在組織單位（OU）中，以防止意外刪除，而且只有網域系統管理員才有存取權。
+> 無縫 SSO 會在 `AZUREADSSOACC` 您的內部部署 Active Directory （AD）中，于每個 AD 樹系中建立名為的電腦帳戶。 基於 `AZUREADSSOACC` 安全考慮，電腦帳戶必須受到嚴格的保護。 只有網域系統管理員才能夠管理電腦帳戶。 請確定已停用電腦帳戶上的 Kerberos 委派，而且 Active Directory 中的其他帳戶都具有電腦帳戶的委派許可權 `AZUREADSSOACC` 。 將電腦帳戶儲存在組織單位（OU）中，以防止意外刪除，而且只有網域系統管理員才有存取權。
 
 >[!NOTE]
-> 如果您在內部部署環境中使用傳遞雜湊和認證竊取風險降低架構，請進行適當的變更，以確保`AZUREADSSOACC`電腦帳戶不會出現在隔離容器中。 
+> 如果您在內部部署環境中使用傳遞雜湊和認證竊取風險降低架構，請進行適當的變更，以確保 `AZUREADSSOACC` 電腦帳戶不會出現在隔離容器中。 
 
 ## <a name="step-3-roll-out-the-feature"></a>步驟 3：推出功能
 
@@ -115,7 +115,7 @@ ms.locfileid: "79261199"
 
 有兩種方式可修改使用者的內部網路區域設定：
 
-| 選項 | 管理考量 | 使用者經驗 |
+| 選項 | 管理考量 | 使用者體驗 |
 | --- | --- | --- |
 | 群組原則 | 管理員鎖定內部網路區域設定的編輯 | 使用者無法修改自己的設定 |
 | 群組原則喜好設定 |  管理員允許在內部網路區域設定上進行編輯 | 使用者可以修改自己的設定 |
@@ -124,7 +124,7 @@ ms.locfileid: "79261199"
 
 1. 開啟群組原則管理編輯器工具。
 2. 編輯套用至部分或所有使用者的群組原則。 此範例使用**預設網域原則**。
-3. 流覽至 **[使用者** > **設定原則** > ]**系統管理範本** > [**Windows 元件** > ] [**網際網路** > ] [**控制台** > ] [安全性]**頁面**。 然後選取 [指派網站到區域清單]****。
+3. 流覽至 [**使用者**設定  >  **原則**]  >  **系統管理範本**[  >  **Windows 元件**] [網際網路] [控制台] [  >  **Internet Explorer**  >  **Internet Control Panel**  >  **安全性] 頁面**。 然後選取 [指派網站到區域清單]****。
     ![單一登入](./media/how-to-connect-sso-quick-start/sso6.png)
 4. 啟用原則，然後在對話方塊中輸入下列值：
    - **值名稱**：轉送 Kerberos 票證的 Azure AD URL。
@@ -144,7 +144,7 @@ ms.locfileid: "79261199"
 
     ![單一登入](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. 流覽至 [**使用者** > 設定**原則** > ]**系統管理範本** > [**Windows 元件** > ] [網際網路] [**控制台** > ] [安全性]**頁面** > **內部****網路** > 區域。 然後選取 [允許透過指令碼更新狀態列]****。
+6. 流覽至 [**使用者**設定原則] 系統管理範本 [Windows 元件] [網際網路] [控制台] [  >  **Policy**  >  **Administrative Templates**  >  **Windows Components**  >  **Internet Explorer**  >  **Internet Control Panel**  >  **安全性] 頁面**  >  **內部網路區域**。 然後選取 [允許透過指令碼更新狀態列]****。
 
     ![單一登入](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -156,7 +156,7 @@ ms.locfileid: "79261199"
 
 1. 開啟群組原則管理編輯器工具。
 2. 編輯套用至部分或所有使用者的群組原則。 此範例使用**預設網域原則**。
-3. 流覽至 [**使用者** > 設定**偏好** > 設定] [**Windows 設定** > **Registry** > ] [登錄] [**新** > 登錄**專案**]
+3. 流覽至 [**使用者**  >  設定**偏好**設定] [  >  **Windows 設定**  >  **Registry**  >  **New**  >  ** **] [登錄] [新登錄專案]
 
     ![單一登入](./media/how-to-connect-sso-quick-start/sso15.png)
 
@@ -185,13 +185,13 @@ Mozilla Firefox 不會自動使用 Kerberos 驗證。 每個使用者都必須�
 
 確定執行 macOS 的電腦已加入 AD。 將您的 macOS 裝置加入 AD 的指示並不在本文的討論之列。
 
-#### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>以 Chromium 為基礎的 Microsoft Edge （所有平臺）
+#### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>以 Chromium 為基礎的 Microsoft Edge (所有平台)
 
-如果您已覆寫環境中的[AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist)或[AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist)原則設定，請確定您也將 Azure AD 的 URL （`https://autologon.microsoftazuread-sso.com`）新增至其中。
+如果您已覆寫環境中的[AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist)或[AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist)原則設定，請確定您也將 Azure AD 的 URL （ `https://autologon.microsoftazuread-sso.com` ）新增至其中。
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>以 Chromium 為基礎的 Microsoft Edge （macOS 和其他非 Windows 平臺）
 
-針對以 Mac OS 和其他非 Windows 平臺上的 Chromium 為基礎的 Microsoft Edge，請參閱以[Chromium 原則為基礎的 Microsoft Edge 清單](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist)，以取得如何將整合式驗證的 Azure AD URL 新增至您的允許清單的相關資訊。
+針對以 macOS 和其他非 Windows 平臺上的 Chromium 為基礎的 Microsoft Edge，請參閱以[Chromium 原則為基礎的 Microsoft Edge 清單](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist)，以取得如何將整合式驗證的 Azure AD URL 新增至您的允許清單的相關資訊。
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (所有平台)
 
@@ -199,7 +199,7 @@ Mozilla Firefox 不會自動使用 Kerberos 驗證。 每個使用者都必須�
 
 #### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome (macOS 和其他非 Windows 平台)
 
-針對 Mac OS 和其他非 Windows 平台上的 Google Chrome，請參閱 [Chromium 專案原則清單](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)，以了解如何將 Azure AD URL 設為允許清單以進行整合式驗證的資訊。
+如需 macOS 和其他非 Windows 平臺上的 Google Chrome，請參閱[Chromium 專案原則清單](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)，以取得如何控制 Azure AD URL 的允許清單以進行整合式驗證的相關資訊。
 
 使用協力廠商 Active Directory 群組原則延伸模組，向 Mac 使用者上的 Firefox 和 Google Chrome 推出 Azure AD URL，不在本文的範圍內。
 

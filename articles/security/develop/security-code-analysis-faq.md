@@ -1,7 +1,7 @@
 ---
 title: Microsoft 安全性程式碼分析檔常見問題
 description: 本文包含關於 Microsoft 安全性程式碼分析延伸模組的常見問題
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: cb04a8e5a6d8c982a35cb5c448e4b6d93825bf73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460217"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362069"
 ---
 # <a name="frequently-asked-questions"></a>常見問題集
 有任何問題嗎？ 如需詳細資訊，請參閱下列常見問題。
@@ -48,7 +48,7 @@ ms.locfileid: "81460217"
 
 明顯的差異：
 
-- 工具會從代理程式 $ （SourcesDirectory）的源資料夾，或從% BUILD_SOURCESDIRECTORY% 執行。 例如，C:\agent\_work\1\s。
+- 工具會從代理程式 $ （SourcesDirectory）的源資料夾，或從% BUILD_SOURCESDIRECTORY% 執行。 例如，C:\agent \_ work\1\s。
 - 引數中的路徑可以相對於先前列出之來原始目錄的根目錄。 路徑也可以是絕對的。 您可以使用 Azure DevOps 組建變數或執行具有本機資源已知部署位置的內部部署代理程式，來取得絕對路徑。
 - 工具會自動提供輸出檔案路徑或資料夾。 如果您提供組建工作的輸出位置，該位置會被取代為組建代理程式上已知記錄檔位置的路徑
 - 某些工具的一些其他命令列引數已變更。 其中一個範例是新增或移除選項，以確保不會啟動 GUI。
@@ -63,7 +63,7 @@ ms.locfileid: "81460217"
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>這些工具所產生的輸出檔會儲存在哪裡？ 
 
-組建工作會自動將輸出路徑加入至組建代理程式上的這個已知位置： $ （BuildDirectory）\_sdt\logs。 因為我們會在這個位置上標準化，所以產生或取用程式碼分析記錄的所有小組都有輸出的存取權。
+組建工作會自動將輸出路徑加入至組建代理程式上的這個已知位置： $ （BuildDirectory） \_ sdt\logs。 因為我們會在這個位置上標準化，所以產生或取用程式碼分析記錄的所有小組都有輸出的存取權。
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>我可以將組建排入佇列，以便在裝載的組建代理程式上執行這些工作嗎？ 
 
@@ -123,15 +123,15 @@ ms.locfileid: "81460217"
 
 檔案運算式可以是檔案名。 它也可以是完整檔案路徑或檔案名的 basename 部分。 不支援萬用字元。
 
-下列範例示範如何隱藏 file \<InputPath> \src\js\lib\angular.js
+下列範例示範如何隱藏檔案 \<InputPath>\src\JS\lib\angular.js
 
 有效隱藏項規則的範例：
 
-- \<InputPath> \src\JS\lib\angular.js-抑制指定路徑中的檔案
+- \<InputPath>\src\JS\lib\angular.js-抑制指定路徑中的檔案
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
-- 角 .js-抑制任何具有相同名稱的檔案
+- angular.js-隱藏所有具有相同名稱的檔案
 
         {
             "tool": "Credential Scanner",
@@ -155,7 +155,7 @@ ms.locfileid: "81460217"
 下列資源可協助您從應用程式內安全地管理秘密和存取機密資訊：
 
  - [Azure 金鑰保存庫](../../key-vault/index.yml)
- - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
+ - [Azure Active Directory （Azure AD）](../../azure-sql/database/authentication-aad-overview.md)
  - [Azure AD 受控服務識別（MSI）](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [適用於 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Azure App Service 和 Azure Functions 中的受控識別](../../app-service/overview-managed-identity.md)
@@ -166,14 +166,14 @@ ms.locfileid: "81460217"
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>我可以撰寫自己的自訂 searchers 嗎？
 
-認證掃描器依賴一組通常在 buildsearchers 檔案中定義的內容 searchers。 檔案包含代表**ContentSearcher**物件的 XML 序列化物件陣列。 此程式會與一組經過妥善測試的 searchers 一起散發。 但是您也可以執行自己的自訂 searchers。
+認證掃描器依賴一組通常在 buildsearchers.xml 檔案中定義的內容 searchers。 檔案包含代表**ContentSearcher**物件的 XML 序列化物件陣列。 此程式會與一組經過妥善測試的 searchers 一起散發。 但是您也可以執行自己的自訂 searchers。
 
 內容搜尋會定義如下：
 
 - **名稱**：要在認證掃描器輸出檔案中使用的描述性搜尋程式名稱。 我們建議您針對搜尋者名稱使用 camel 大小寫的命名慣例。
 - **RuleId**：搜尋者的穩定不透明識別碼：
     - 認證掃描器的預設搜尋者會被指派一個**RuleId**值，例如 CSCAN0010、CSCAN0020 或 CSCAN0030。 最後一個數位保留給可能會透過正則運算式（RegEx）合併或分割搜尋者群組。
-    - 自訂的搜尋者的**RuleId**值應該有自己的命名空間。 範例包括 CSCAN-\<namespace\>mylnxstorage02、CSCAN-\<namespace\>0020 和 CSCAN-\<namespace\>0030。
+    - 自訂的搜尋者的**RuleId**值應該有自己的命名空間。 範例包括 CSCAN- \<Namespace\> mylnxstorage02、CSCAN \<Namespace\> 0020 和 CSCAN- \<Namespace\> 0030。
     - 完整的搜尋者名稱是**RuleId**值和搜索者名稱的組合。 範例包括 CSCAN0010。KeyStoreFiles 和 CSCAN0020。Base64EncodedCertificate.
 - **ResourceMatchPattern**：用來檢查搜尋者的檔案副檔名 Regex。
 - **ContentSearchPatterns**：包含要比對之 RegEx 語句的字串陣列。 如果未定義任何搜尋模式，則會傳回符合**ResourceMatchPattern**值的所有檔案。
@@ -196,23 +196,23 @@ ms.locfileid: "81460217"
 
 由於 Roslyn 分析器工作會在編譯過程中執行，因此組建電腦上的來源樹狀結構必須處於可建置狀態。
 
-主要組建和 Roslyn 分析器步驟之間的步驟可能會使來源樹狀結構進入防止建立的狀態。 這個額外的步驟可能是**dotnet 發行**。 請嘗試複製在 Roslyn 分析器步驟之前進行 NuGet 還原的步驟。 這個重複的步驟可能會使來源樹狀結構回到可建置狀態。
+主要組建和 Roslyn 分析器步驟之間的步驟可能會使來源樹狀結構進入防止建立的狀態。 這個額外的步驟可能**dotnet.exe 發佈**。 請嘗試複製在 Roslyn 分析器步驟之前進行 NuGet 還原的步驟。 這個重複的步驟可能會使來源樹狀結構回到可建置狀態。
 
-##### <a name="cscexe-cant-create-an-analyzer-instance"></a>csc 無法建立分析器實例
+##### <a name="cscexe-cant-create-an-analyzer-instance"></a>csc.exe 無法建立分析器實例
 
 完整的錯誤訊息：
 
-"' csc .exe ' 已結束，錯誤碼為 1--無法從 C： *AAAA* \\ *mm.nn.bbbb.rr*建立分析器 AAAA 的實例：無法載入檔案或元件 ' CodeAnalysis，Version =*x*. x，Culture = 中性，PublicKeyToken = 31bf3856ad364e35 ' 或其相依性的其中之一。 系統找不到指定的檔案。」
+"' csc.exe ' 已結束，錯誤碼為 1--無法從 C： Mm.nn.bbbb.rr 建立分析器*AAAA*的實例 \\ * *：無法載入檔案或元件 ' CodeAnalysis，Version =*x*. x，Culture = 中性，PublicKeyToken = 31bf3856ad364e35 ' 或其相依性的其中之一。 系統找不到指定的檔案。」
 
-請確定您的編譯器支援 Roslyn 分析器。 執行 **/version**命令時，應該會報告2.6 或更新版本的 version 值。
+請確定您的編譯器支援 Roslyn 分析器。 執行命令**csc.exe/version**應該會報告2.6 或更新版本的版本值。
 
 有時候 .csproj 檔案可以藉由參考 Microsoft.Net 中的套件，來覆寫組建電腦的 Visual Studio 安裝。 如果您不想要使用特定版本的編譯器，請移除 Microsoft.Net 的參考。 否則，請確定所參考封裝的版本也是2.6 或更新版本。
 
-嘗試取得在**printbrm.exe/errorlog**選項中指定的錯誤記錄檔路徑。 選項和路徑會出現在 Roslyn 分析器組建工作的記錄檔中。 它們看起來可能像是 **/errorlog： f:\ts-services-\_123 work\456\s\Some\Project\Code\Code.csproj.sarif**
+嘗試取得錯誤記錄檔路徑，這是在 [ **csc.exe/errorlog** ] 選項中指定的。 選項和路徑會出現在 Roslyn 分析器組建工作的記錄檔中。 它們看起來可能像是 **/errorlog： f:\ts-services-123 \_ work\456\s\Some\Project\Code\Code.csproj.sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>C # 編譯器版本不夠新
 
-若要取得最新版本的 c # 編譯器，請移至[Microsoft.Net](https://www.nuget.org/packages/Microsoft.Net.Compilers)。 若要取得已安裝的版本，請在命令提示字元中執行 **/version** 。 請確定您參考的是2.6 或更新版本的 Microsoft.Net NuGet 套件。
+若要取得最新版本的 c # 編譯器，請移至[Microsoft.Net](https://www.nuget.org/packages/Microsoft.Net.Compilers)。 若要取得已安裝的版本，請在命令提示字元中執行**csc.exe/version** 。 請確定您參考的是2.6 或更新版本的 Microsoft.Net NuGet 套件。
 
 ##### <a name="msbuild-and-vsbuild-logs-arent-found"></a>找不到 MSBuild 和 VSBuild 記錄
 

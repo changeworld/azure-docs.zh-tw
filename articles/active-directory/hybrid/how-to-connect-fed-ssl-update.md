@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/09/2018
 ms.subservice: hybrid
 author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cc768162d98402fe52b52b2826a9dbf2840a581
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1983b5090604516265ea8e041ac68200ca2dc7b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331743"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359580"
 ---
 # <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>更新 Active Directory 同盟服務（AD FS）伺服器陣列的 TLS/SSL 憑證
 
@@ -36,7 +36,7 @@ ms.locfileid: "80331743"
 >[!NOTE]
 >若要深入了解 AD FS 所使用的憑證，請參閱[了解 AD FS 所使用的憑證](https://technet.microsoft.com/library/cc730660.aspx)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * **AD FS 伺服器陣列**︰請確定您的 AD FS 伺服器陣列是 Windows Server 2012 R2 型或更新版本。
 * **Azure AD Connect**︰請確定 Azure AD Connect 版本為 1.1.553.0 或更新版本。 您會使用工作「更新 AD FS SSL 憑證」****。

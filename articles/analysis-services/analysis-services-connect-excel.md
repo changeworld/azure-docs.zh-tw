@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b5c46c8b85af59efaf611300e2ab7129b3ef3cde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 123e271ae1b83603d599b9ef0381e25b3c963def
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411377"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361552"
 ---
 # <a name="connect-with-excel"></a>使用 Excel 進行連接
 
@@ -40,9 +40,9 @@ ms.locfileid: "80411377"
     ![從 Excel 選取模型來進行連接](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-[用戶端程式庫](analysis-services-data-providers.md)   
+[用戶端程式庫](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
 [管理您的伺服器](analysis-services-manage.md)     
 
 

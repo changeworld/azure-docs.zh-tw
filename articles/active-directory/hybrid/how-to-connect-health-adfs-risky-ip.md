@@ -11,17 +11,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: defdf8118f1b07f8d6ddc4d232cda0fc423ef9f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f98109199f489839253965bef3033d27935cff13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897266"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359343"
 ---
 # <a name="risky-ip-report-public-preview"></a>有風險的 IP 報告（公開預覽）
 AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證服務讓終端使用者能夠存取 Office 365 之類的 SaaS 應用程式。 在此情況下，不良執行者便有機會嘗試登入您的 AD FS 系統，以猜出終端使用者的密碼並存取應用程式資源。 自 Windows Server 2012 R2 中的 AD FS 開始，AD FS 會提供外部網路帳戶鎖定功能以避免這類攻擊。 如果您使用較低的版本，我們強烈建議您將 AD FS 系統升級至 Windows Server 2016。 <br />
@@ -41,7 +41,7 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 ## <a name="what-is-in-the-report"></a>報表中的內容為何？
 失敗的登入活動用戶端 IP 位址是透過 Web 應用程式 Proxy 伺服器進行匯總。 「具風險的 IP 報告」中的每個項目會顯示有關已超過指定閾值之失敗 AD FS 登入活動的彙總資訊。 此報告可提供下列資訊：![Azure AD Connect Health 入口網站](./media/how-to-connect-health-adfs/report4a.png)
 
-| 報告項目 | 描述 |
+| 報告項目 | Description |
 | ------- | ----------- |
 | 時間戳記 | 根據 Azure 入口網站的本機時間，顯示偵測時間範圍開始時的時間戳記。<br /> 所有每日事件都會在午夜 UTC 時間產生。 <br />每小時事件的時間戳記會四捨五入到該小時的開始。 您可以在所匯出檔案的 “firstAuditTimestamp” 中找到第一個活動的開始時間。 |
 | 觸發程序類型 | 顯示偵測時間範圍的類型。 彙總觸發程序類型是每小時或每日。 這有助於偵測嘗試次數會分散在整天的高頻率暴力密碼破解攻擊與緩慢攻擊。 |
@@ -68,7 +68,7 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 ## <a name="download-risky-ip-report"></a>下載具風險的 IP 報告 
 使用**下載**功能，即可從 Connect Health 入口網站匯出過去 30 天內的整個「具風險的 IP 位址」清單。匯出結果會包含每個偵測時間範圍中的所有失敗 AD FS 登入活動，以供您在匯出後自訂篩選。 除了入口網站中醒目提示的彙總外，匯出結果還會顯示有關每一 IP 位址之失敗登入活動的更多詳細資料：
 
-|  報告項目  |  描述  | 
+|  報告項目  |  Description  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | 顯示屬於偵測時間範圍內失敗活動開始時間的第一個時間戳記。  | 
 | lastAuditTimestamp | 顯示屬於偵測時間範圍內失敗活動結束時間的最後一個時間戳記。  | 
@@ -83,7 +83,7 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 
 ![Azure AD Connect Health 入口網站](./media/how-to-connect-health-adfs/report4d.png)
 
-| 閾值項目 | 描述 |
+| 閾值項目 | Description |
 | --- | --- |
 | (錯誤 U/P + 外部網路鎖定) / 天  | 當每**天**的不正確密碼計數加上外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 |
 | (錯誤 U/P + 外部網路鎖定) / 小時 | 當每**小時**的不正確密碼計數加上外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 |

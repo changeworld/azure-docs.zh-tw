@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1b4e56dfeae2d4b7826f3ad30bc5eb4b8672b85
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676654"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361467"
 ---
 # <a name="connecting-to-servers"></a>連線至伺服器
 
@@ -20,7 +20,7 @@ ms.locfileid: "81676654"
 
 ## <a name="client-libraries"></a>用戶端程式庫
 
-[取得最新的用戶端程式庫](analysis-services-data-providers.md)
+[取得最新的用戶端程式庫](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
 所有連到伺服器的連線 (不論是哪一種類型) 都需要已更新的 AMO、ADOMD.NET 及 OLEDB 用戶端程式庫，才能連接到 Analysis Services 伺服器並與其銜接。 針對 SSMS、Visual Studio、Excel 2016 和更新版本，以及 Power BI，會安裝最新的用戶端程式庫，或以每月版本進行更新。 不過，在某些情況下，應用程式的版本可能不會是最新的。 例如，當原則延遲更新，或 Office 365 更新是在「順延通道」上時。
 

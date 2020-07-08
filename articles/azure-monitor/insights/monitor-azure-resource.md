@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 8072dec6b5f5dbd35c86573dd43d3925a271bc43
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 430b1c044ac5fc22dbf3a4f4df33ff9017e21d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849666"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361950"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 資源
 當您有依賴 Azure 資源的重要應用程式和商務程序時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure 資源所產生的監視資料，以如何使用 Azure 監視器的功能來分析此資料並發出警示。
@@ -90,7 +90,7 @@ Azure 中的資源會產生下圖所示的[記錄](../platform/data-platform-log
  您可以從資源位於 Azure 入口網站中的功能表來存取大部分 Azure 資源的監視資料。 這可讓您使用標準的 Azure 監視器工具來存取單一資源的資料。 某些 Azure 服務會提供不同的選項，因此請參考該服務的文件，以取得其他資訊。 使用 [Azure 監視器] 功能表可分析來自所有受監視資源的資料。 
 
 ### <a name="overview"></a>概觀
-許多服務都會在其 [概觀] 頁面上包含監視資料，以便快速瀏覽其作業。 這通常會以 Azure 監視器計量中儲存的平台計量子集為基礎。 其他監視選項一般會在服務的 [監視] 區段中提供。 功能表。
+許多服務都會在其 [概觀] 頁面上包含監視資料，以便快速瀏覽其作業。 這通常會以 Azure 監視器計量中儲存的平台計量子集為基礎。 其他監視選項通常會在服務功能表的 [**監視**] 區段中提供。
 
 ![概觀分頁](media/monitor-azure-resource/overview-page.png)
 

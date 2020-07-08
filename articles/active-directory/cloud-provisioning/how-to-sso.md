@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3667dd529ce5542be84c5e357053d8cd11eb91e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca9afda3303d828bdbb162a9e18ac817b7f8091e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76908984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360651"
 ---
 # <a name="using-single-sign-on-with-cloud-provisioning"></a>搭配雲端布建使用單一登入
 下列檔說明如何搭配使用單一登入與雲端布建。

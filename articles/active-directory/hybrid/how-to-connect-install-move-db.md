@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdc8b68206161abdd1782561c904d4e670ecca22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77019276"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358951"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>將 Azure AD Connect 資料庫從 SQL Server Express 移至 SQL Server 
 
@@ -36,13 +36,13 @@ ms.locfileid: "77019276"
 4. 移至 [控制台] -> [程式] -> [程式和功能]，將 Azure AD Connect 解除安裝。  選取 Microsoft Azure AD Connect 並按一下最上方的 [解除安裝]。
 5. 在遠端 SQL Server 上，開啟 SQL Server Management Studio。
 6. 在 [資料庫] 上，按一下滑鼠右鍵並選取 [連結]。
-7. 在 [連結資料庫]**** 畫面上，按一下 [新增]**** 並瀏覽至 ADSync.mdf 檔案。  按一下 [確定]  。
+7. 在 [連結資料庫]**** 畫面上，按一下 [新增]**** 並瀏覽至 ADSync.mdf 檔案。  按一下 [確定]。
    ![附加資料庫](media/how-to-connect-install-move-db/move2.png)
 
 8. 連結資料庫之後，請回到 Azure AD Connect 伺服器並安裝 Azure AD Connect。
 9. 一旦 MSI 安裝完成後，Azure AD Connect 精靈就會開始使用快速模式安裝。 按一下 [結束] 圖示將畫面關閉。
    ![歡迎使用](./media/how-to-connect-install-move-db/db1.png)
-10. 啟動新的命令提示字元或 PowerShell 工作階段。 流覽至資料夾\<drive> \program files\Microsoft Azure AD Connect。 執行 .\AzureADConnect.exe /useexistingdatabase 命令，可在「使用現有資料庫」安裝模式中啟動 Azure AD Connect 精靈。
+10. 啟動新的命令提示字元或 PowerShell 工作階段。 瀏覽至 \<drive>\program files\Microsoft Azure AD Connect 資料夾。 執行 .\AzureADConnect.exe /useexistingdatabase 命令，可在「使用現有資料庫」安裝模式中啟動 Azure AD Connect 精靈。
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. [歡迎使用 Azure AD Connect] 畫面隨即迎接您。 一旦您同意授權條款及隱私權注意事項後，請按一下 [繼續]****。
     ![歡迎使用](./media/how-to-connect-install-move-db/db3.png)
@@ -55,19 +55,19 @@ ms.locfileid: "77019276"
 14. 在 [連線您的目錄]**** 畫面上，會列出針對目錄同步作業設定的現有 AD 樹系，旁邊會有紅色十字圖示。 若要同步處理內部部署 AD 樹系的變更，需要 AD DS 帳戶。 Azure AD Connect 精靈無法擷取儲存在 ADSync 資料庫的 AD DS 帳戶認證，因為認證會予以加密，且只能由先前的 Azure AD Connect 伺服器進行解密。 按一下 [變更認證]**** 可指定 AD 樹系的 AD DS 帳戶。
     ![Directories](./media/how-to-connect-install-move-db/db6.png)
  
- 
+
 15. 在快顯對話方塊中，您可以 (i) 提供企業管理員認證，並且讓 Azure AD Connect 為您建立 AD DS 帳戶，或 (ii) 自行建立 AD DS 帳戶，並且為 Azure AD Connect 提供其認證。 一旦您選取選項並提供必要的認證後，請按一下 [確定]**** 以關閉快顯對話方塊。
     ![歡迎使用](./media/how-to-connect-install-move-db/db7.png)
  
- 
-16. 一旦提供認證後，紅色十字圖示會取代為綠色勾號圖示。 按 [下一步]  。
+
+16. 一旦提供認證後，紅色十字圖示會取代為綠色勾號圖示。 按 [下一步] 。
     ![歡迎使用](./media/how-to-connect-install-move-db/db8.png)
  
- 
+
 17. 在 [**準備好設定**] 畫面上，按一下 [**安裝**]。
     ![歡迎使用](./media/how-to-connect-install-move-db/db9.png)
  
- 
+
 18. 安裝完成之後，Azure AD Connect 伺服器會自動啟用暫存模式。 建議您先檢閱伺服器組態和擱置的未預期變更匯出，然後再停用暫存模式。 
 
 ## <a name="next-steps"></a>後續步驟

@@ -9,25 +9,25 @@ editor: ''
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735754"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361899"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>使用 Azure 入口網站為外部來賓使用者新增或移除 Azure 角色指派
 
 [Azure 角色型存取控制（AZURE RBAC）](overview.md)可讓大型組織及小型和中型企業使用需要存取您環境中特定資源，但不一定是整個基礎結構或任何計費相關範圍的中小型企業進行更好的安全性管理。 您可以使用[AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md)中的功能，與外部來賓使用者共同作業，而且您可以使用 Azure RBAC 僅授與來賓使用者在您的環境中所需的許可權。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要新增或移除角色指派，您必須具有：
 
@@ -49,9 +49,9 @@ ms.locfileid: "82735754"
 
 請遵循下列步驟，使用 [Azure Active Directory] 頁面，將來賓使用者新增至您的目錄。
 
-1. 請確定您組織的外部協同作業設定已設定為允許您邀請來賓。 如需詳細資訊，請參閱[啟用 B2B 外部共同作業和管理可以邀請來賓的人員](../active-directory/b2b/delegate-invitations.md)。
+1. 請確定貴組織的外部共同作業設定已設定為允許您邀請來賓。 如需詳細資訊，請參閱[啟用 B2B 外部共同作業和管理可以邀請來賓的人員](../active-directory/b2b/delegate-invitations.md)。
 
-1. 在 [Azure 入口網站中，按一下 [ **Azure Active Directory** > **使用者** > ] [**新增來賓使用者**]。
+1. 在 [Azure 入口網站中，按一下 [ **Azure Active Directory**  >  **使用者**] [  >  **新增來賓使用者**]。
 
     ![Azure 入口網站中的新來賓使用者功能](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -71,13 +71,13 @@ ms.locfileid: "82735754"
 
 在 Azure RBAC 中，若要授與存取權，請指派角色。 若要新增來賓使用者的角色指派，請遵循與成員使用者、群組、服務主體或受控識別[相同的步驟](role-assignments-portal.md#add-a-role-assignment)。 請遵循下列步驟，為不同範圍的來賓使用者新增角色指派。
 
-1. 在 [Azure 入口網站中，按一下 [**所有服務**]。
+1. 在 Azure 入口網站中，按一下 [所有服務]。
 
 1.  選取要套用存取權的資源集，也稱為「範圍」。 例如，您可以選取 [管理群組]****、[訂用帳戶]****、[資源群組]**** 或資源。
 
 1. 按一下特定的資源。
 
-1. 按一下 **[存取控制（IAM）**]。
+1. 按一下 [存取控制 (IAM)]。
 
     下列螢幕擷取畫面顯示資源群組的 [存取控制（IAM）] 分頁範例。 如果您在這裡進行任何存取控制變更，它們只會套用至資源群組。
 
@@ -85,11 +85,13 @@ ms.locfileid: "82735754"
 
 1. 按一下 [角色指派]**** 索引標籤以檢視此範圍中的所有角色指派。
 
-1. 按一下 [**新增** > ] [**新增角色指派**] 以開啟 [新增角色指派] 窗格。
+1. 按一下 [新增]   > [新增角色指派]  ，以開啟 [新增角色指派] 窗格。
 
     若您沒有指派角色的權限，[新增角色指派] 選項將會被停用。
 
-    ![[新增] 功能表](./media/role-assignments-external-users/add-menu.png)
+    ![[新增角色指派] 功能表](./media/shared/add-role-assignment-menu.png)
+
+    [新增角色指派] 窗格隨即開啟。
 
 1. 在 [角色]**** 下拉式清單中選取角色，例如 [虛擬機器參與者]****。
 
@@ -107,19 +109,21 @@ ms.locfileid: "82735754"
 
 如果來賓使用者尚未在您的目錄中，您可以直接從 [新增角色指派] 窗格邀請使用者。
 
-1. 在 [Azure 入口網站中，按一下 [**所有服務**]。
+1. 在 Azure 入口網站中，按一下 [所有服務]。
 
 1.  選取要套用存取權的資源集，也稱為「範圍」。 例如，您可以選取 [管理群組]****、[訂用帳戶]****、[資源群組]**** 或資源。
 
 1. 按一下特定的資源。
 
-1. 按一下 **[存取控制（IAM）**]。
+1. 按一下 [存取控制 (IAM)]。
 
 1. 按一下 [角色指派]**** 索引標籤以檢視此範圍中的所有角色指派。
 
-1. 按一下 [**新增** > ] [**新增角色指派**] 以開啟 [新增角色指派] 窗格。
+1. 按一下 [新增]   > [新增角色指派]  ，以開啟 [新增角色指派] 窗格。
 
-    ![[新增] 功能表](./media/role-assignments-external-users/add-menu.png)
+    ![[新增角色指派] 功能表](./media/shared/add-role-assignment-menu.png)
+
+    [新增角色指派] 窗格隨即開啟。
 
 1. 在 [角色]**** 下拉式清單中選取角色，例如 [虛擬機器參與者]****。
 
@@ -155,13 +159,13 @@ ms.locfileid: "82735754"
 
    ![移除角色指派](./media/role-assignments-external-users/remove-role-assignment-select.png)
 
-1. 按一下 [移除]****。
+1. 按一下 **[移除]** 。
 
    ![移除角色指派訊息](./media/role-assignments-external-users/remove-role-assignment.png)
 
-1. 在顯示的移除角色指派訊息中，按一下 [是]****。
+1. 在顯示的移除角色指派訊息中，按一下 [是]  。
 
-1. 在左側導覽列中，按一下 [ **Azure Active Directory** > **使用者**]。
+1. 在左側導覽列中，按一下 [ **Azure Active Directory**  >  **使用者**]。
 
 1. 按一下您要移除的來賓使用者。
 

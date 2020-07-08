@@ -16,6 +16,7 @@ ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711845"
@@ -24,7 +25,7 @@ ms.locfileid: "84711845"
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 8000 系列雲端設備是 Microsoft Azure StorSimple 解決方案提供的另一項功能。 StorSimple 雲端設備會在 Microsoft Azure 虛擬網路中的虛擬機器上執行，您可以使用它將主機上的資料進行備份和複製。
 

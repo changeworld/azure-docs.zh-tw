@@ -4,16 +4,16 @@ description: 如何使用 Azure 自動化自動調整 Windows 虛擬桌面工作
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f659a40cbb9e3ef2d0e7fe4e527518a76507d5ee
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: f94852a99f0bc430ac193b9951de607cdd7fa933
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745702"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362538"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自動化調整工作階段主機
 
@@ -33,7 +33,7 @@ ms.locfileid: "83745702"
 調整工具為想要最佳化其工作階段主機 VM 成本的客戶提供低成本的自動化選項。
 
 使用調整工具可以：
- 
+
 - 根據尖峰和離峰上班時間來排程要啟動和停止的 VM。
 - 根據每個 CPU 核心的工作階段數目來擴增 VM。
 - 在離峰時間縮減 VM，讓維持在執行狀態的工作階段主機 VM 數目最少。
@@ -67,7 +67,7 @@ ms.locfileid: "83745702"
 - 透過 Windows 虛擬桌面服務設定和註冊的工作階段主機集區 VM
 - 對 Azure 訂閱具有[參與者存取權](../../role-based-access-control/role-assignments-portal.md)的使用者
 
-您用來部署工具的機器必須具備： 
+您用來部署工具的機器必須具備：
 
 - Windows PowerShell 5.1 或更新版本
 - Microsoft Az PowerShell 模組
@@ -106,7 +106,8 @@ ms.locfileid: "83745702"
 
 6. 設定 Azure 自動化帳戶之後，請登入您的 Azure 訂閱，並檢查以確定您的 Azure 自動化帳戶和相關的 Runbook 已出現在您指定的資源群組中，如下圖所示：
 
-![Azure 概觀頁面圖，顯示新建立的自動化帳戶和 Runbook。](../media/automation-account.png)
+> [!div class="mx-imgBorder"]
+> ![Azure 概觀頁面圖，顯示新建立的自動化帳戶和 Runbook。](../media/automation-account.png)
 
   若要檢查您的 Webhook 是否在其應所在的位置，請選取您的 Runbook 名稱。 接下來，移至 Runbook 的 [資源] 區段，然後選取 [Webhook]。
 
@@ -180,21 +181,21 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
      ```powershell
      $aadTenantId = (Get-AzContext).Tenant.Id
-     
+
      $azureSubscription = Get-AzSubscription | Out-GridView -PassThru -Title "Select your Azure Subscription"
      Select-AzSubscription -Subscription $azureSubscription.Id
      $subscriptionId = $azureSubscription.Id
-     
+
      $resourceGroup = Get-AzResourceGroup | Out-GridView -PassThru -Title "Select the resource group for the new Azure Logic App"
      $resourceGroupName = $resourceGroup.ResourceGroupName
      $location = $resourceGroup.Location
-     
+
      $wvdTenant = Get-RdsTenant | Out-GridView -PassThru -Title "Select your WVD tenant"
      $tenantName = $wvdTenant.TenantName
-     
+
      $wvdHostpool = Get-RdsHostPool -TenantName $wvdTenant.TenantName | Out-GridView -PassThru -Title "Select the host pool you'd like to scale"
      $hostPoolName = $wvdHostpool.HostPoolName
-     
+
      $recurrenceInterval = Read-Host -Prompt "Enter how often you'd like the job to run in minutes, e.g. '15'"
      $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
      $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
@@ -204,12 +205,12 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
      $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
      $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
      $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
-     
+
      $automationAccount = Get-AzAutomationAccount -ResourceGroupName $resourceGroup.ResourceGroupName | Out-GridView -PassThru
      $automationAccountName = $automationAccount.AutomationAccountName
      $automationAccountConnection = Get-AzAutomationConnection -ResourceGroupName $resourceGroup.ResourceGroupName -AutomationAccountName $automationAccount.AutomationAccountName | Out-GridView -PassThru -Title "Select the Azure RunAs connection asset"
      $connectionAssetName = $automationAccountConnection.Name
-     
+
      $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
      $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don't want to be managed by this scaling tool"
 
@@ -236,11 +237,13 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
      執行指令碼之後，Logic 應用程式應該會出現在資源群組中，如下圖所示。
 
-     ![範例 Azure Logic 應用程式概觀頁面範例。](../media/logic-app.png)
+     > [!div class="mx-imgBorder"]
+     > ![範例 Azure Logic 應用程式概觀頁面範例。](../media/logic-app.png)
 
 若要對執行排程進行變更 (例如變更週期間隔或時區)，請移至自動調整排程器，然後選取 [編輯] 以移至 Logic Apps 設計工具。
 
-![Logic Apps 設計工具的影像。 隨即開啟Recurrence 與 Webhook 功能表，可讓使用者編輯週期時間與 Webhook 檔案。](../media/logic-apps-designer.png)
+> [!div class="mx-imgBorder"]
+> ![Logic Apps 設計工具的影像。 隨即開啟Recurrence 與 Webhook 功能表，可讓使用者編輯週期時間與 Webhook 檔案。](../media/logic-apps-designer.png)
 
 ## <a name="manage-your-scaling-tool"></a>管理調整工具
 
@@ -252,7 +255,8 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
 在所選自動化帳戶的右邊，您可以在 [作業統計資料] 下方，看到所有 Runbook 作業摘要清單。 開啟視窗左側的 [作業] 頁面，會顯示目前的工作狀態、開始時間和完成時間。
 
-![作業狀態頁面的螢幕擷取畫面。](../media/jobs-status.png)
+> [!div class="mx-imgBorder"]
+> ![作業狀態頁面的螢幕擷取畫面。](../media/jobs-status.png)
 
 ### <a name="view-logs-and-scaling-tool-output"></a>檢視記錄和調整工具輸出
 
@@ -260,5 +264,6 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
 在裝載 Azure 自動化帳戶的資源群組中，瀏覽至 Runbook (預設名稱是 WVDAutoScaleRunbook)，然後選取 [概觀]。 在概觀頁面上，選取 [最近的作業] 底下的作業，以檢視其調整工具輸出，如下圖所示。
 
-![縮放工具的輸出視窗影像。](../media/tool-output.png)
+> [!div class="mx-imgBorder"]
+> ![縮放工具的輸出視窗影像。](../media/tool-output.png)
 

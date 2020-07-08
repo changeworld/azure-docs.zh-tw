@@ -5,15 +5,15 @@ author: billmath
 ms.author: billmath
 manager: daveba
 ms.date: 12/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: e41be4b76245f2567015eb0ede317830120ee61a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75549480"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360787"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>雲端布建疑難排解
 
@@ -22,7 +22,7 @@ ms.locfileid: "75549480"
 
 ## <a name="common-troubleshooting-areas"></a>常見的疑難排解區域
 
-|名稱|描述|
+|Name|說明|
 |-----|-----|
 |[代理程式問題](#agent-problems)|請確認代理程式已正確安裝，且與 Azure Active Directory （Azure AD）通訊。|
 |[物件同步處理問題](#object-synchronization-problems)|使用布建記錄來針對物件同步處理問題進行疑難排解。|
@@ -44,14 +44,14 @@ ms.locfileid: "75549480"
 若要確認 Azure 已看到代理程式且狀況良好，請遵循下列步驟。
 
 1. 登入 Azure 入口網站。
-1. 在左側，選取 [ **Azure Active Directory** > **Azure AD Connect**]。 在中央，選取 [**管理布建（預覽）**]。
-1. 在 [ **Azure AD 布建（預覽）** ] 畫面上，選取 [**審查所有代理**程式]。
+1. 從左側選取 [Azure Active Directory]  > [Azure AD Connect]。 在中間選取 [管理佈建 (預覽)]。
+1. 在 [Azure AD 佈建 (預覽)] 畫面上，選取 [檢閱所有代理程式]。
 
    ![審查所有代理程式](media/how-to-install/install7.png)</br>
  
 1. 在 [**內部部署布建代理**程式] 畫面上，您會看到您已安裝的代理程式。 確認有問題的代理程式存在，而且標示為*狀況良好*。
 
-   ![內部部署布建代理程式畫面](media/how-to-install/install8.png)</br>
+   ![內部部署佈建代理程式畫面](media/how-to-install/install8.png)</br>
 
 ### <a name="verify-the-port"></a>驗證埠
 
@@ -65,10 +65,10 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 
 ### <a name="on-the-local-server"></a>在本機伺服器上
 
-若要確認代理程式是否正在執行，請遵循下列步驟。
+若要確認代理程式正在執行中，請遵循下列步驟。
 
-1. 在安裝代理程式的伺服器上，藉由流覽至它或移至 [**開始** > **執行** > **services.msc**] 來開啟 [**服務**]。
-1. 在 [**服務**] 下，確定**Microsoft Azure AD 連接代理程式更新**程式，並**Microsoft Azure AD connect 布建代理程式***已存在*，且其狀態為執行中。
+1. 在安裝代理程式的伺服器上，藉**Services**由流覽至它或移至 [**開始**  >  **執行**  >  **services.msc**] 來開啟 [服務]。
+1. 在 [服務] 底下，確定 **Microsoft Azure AD Connect 代理程式更新程式**和 **Microsoft Azure AD Connect 佈建代理程式**皆位於該處，且狀態為 [執行中]。
 
    ![服務畫面](media/how-to-troubleshoot/troubleshoot1.png)
 
@@ -82,12 +82,12 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 
 **服務 ' Microsoft Azure AD Connect 布建代理程式 ' 無法啟動。請確認您有足夠的許可權可以啟動系統服務。** 
 
-此問題通常是因為群組原則導致無法將許可權套用至安裝程式所建立的本機 NT 服務登入帳戶（NT SERVICE\AADConnectProvisioningAgent）。 需要有這些許可權才能啟動服務。
+此問題通常是因為群組原則導致無法將許可權套用至安裝程式所建立的本機 NT 服務登入帳戶（NT SERVICE\AADConnectProvisioningAgent）。 需要有這些權限，才能啟動服務。
 
 若要解決此問題，請遵循下列步驟。
 
-1. 使用系統管理員帳戶登入伺服器。
-1. 藉由流覽至或移至 [**啟動** > ] [**執行** > **services.msc**] 來開啟**服務**。
+1. 使用管理員帳戶登入伺服器。
+1. 瀏覽至 [服務]，或前往 [開始] > [執行] > [Services.msc]，以開啟 [服務]。
 1. 在 [**服務**] 底下，按兩下 **[Microsoft Azure AD 連接布建代理程式]**。
 1. 在 [**登**入] 索引標籤上，將**此帳戶**變更為網域系統管理員。然後重新開機服務。 
 
@@ -99,10 +99,10 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 
 ![逾時錯誤訊息](media/how-to-troubleshoot/troubleshoot4.png)
 
-此問題通常是因為代理程式無法連線到混合式身分識別服務，而且需要您設定 HTTP proxy。 若要解決此問題，請設定輸出 proxy。 
+此問題通常是因為代理程式無法連線到混合式識別服務所造成的，而需要您設定 HTTP Proxy。 若要解決此問題，請設定輸出 Proxy。 
 
-布建代理程式支援使用輸出 proxy。 您可以藉由編輯代理程式設定檔*C:\Program Files\Microsoft Azure AD Connect*布建 Agent\AADConnectProvisioningAgent.exe.config 來設定它。將下列幾行加入至結尾`</configuration>`標記前面的檔案結尾。
-將變數`[proxy-server]`和`[proxy-port]`取代為您的 proxy 伺服器名稱和埠值。
+布建代理程式支援使用輸出 proxy。 您可以編輯代理程式設定檔案*C:\Program Files\Microsoft Azure AD Connect*布建 Agent\AADConnectProvisioningAgent.exe.config來設定它。將下列幾行加入至結束記號前面的檔案結尾 `</configuration>` 。
+將變數和取代為 `[proxy-server]` `[proxy-port]` 您的 proxy 伺服器名稱和埠值。
 
 ```xml
     <system.net>
@@ -131,8 +131,8 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 若要收集針對代理程式相關問題進行疑難排解的其他詳細資料，請遵循下列步驟。
 
 1. 停止服務**Microsoft Azure AD 連接布建代理程式**。
-1. 建立原始設定檔案的複本： *C:\Program Files\Microsoft Azure AD Connect*布建 Agent\AADConnectProvisioningAgent.exe.config。
-1. 以下列內容`<system.diagnostics>`取代現有的區段，所有追蹤訊息將會移至*ProvAgentTrace*檔案。
+1. 建立原始設定檔的複本： *C:\Program Files\Microsoft Azure AD Connect*布建 Agent\AADConnectProvisioningAgent.exe.config。
+1. `<system.diagnostics>`以下列內容取代現有的區段，所有追蹤訊息將會移至*ProvAgentTrace*檔案。
 
    ```xml
      <system.diagnostics>

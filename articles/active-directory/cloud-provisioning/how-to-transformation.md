@@ -5,15 +5,15 @@ author: billmath
 ms.author: billmath
 manager: davba
 ms.date: 12/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: ec12927b40096b7ff04fae6b7cbc69a7bc11e8f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a15a25ce4fbe1a43c2a5065bf88f5c40c5865721
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75549290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360685"
 ---
 # <a name="transformations"></a>轉換
 
@@ -34,7 +34,7 @@ ms.locfileid: "75549290"
 1. 在架構中找出您想要更新的物件。
 
    ![架構中的物件](media/how-to-transformation/transform1.png)</br>
-1. 找出使用者物件`ExtensionAttribute3`底下的程式碼。
+1. 找出使用者物件底下的程式碼 `ExtensionAttribute3` 。
 
     ```
                             {
@@ -62,7 +62,7 @@ ms.locfileid: "75549290"
                                 }
                             },
     ```
-1. 編輯程式碼，使 company 屬性對應至`ExtensionAttribute3`。
+1. 編輯程式碼，使 company 屬性對應至 `ExtensionAttribute3` 。
 
    ```
                                     {
@@ -98,7 +98,7 @@ ms.locfileid: "75549290"
 
     ![重新開機布建](media/how-to-transformation/transform3.png)
 
- 1. 稍待一段時間之後，請在 Graph Explorer 中執行下列查詢來確認屬性是否已`https://graph.microsoft.com/beta/users/{Azure AD user UPN}`填入：。
+ 1. 稍待一段時間之後，請在 Graph Explorer 中執行下列查詢來確認屬性是否已填入： `https://graph.microsoft.com/beta/users/{Azure AD user UPN}` 。
  1. 您現在應該會看到此值。
 
     ![值隨即出現](media/how-to-transformation/transform4.png)

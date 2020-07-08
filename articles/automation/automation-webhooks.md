@@ -3,14 +3,14 @@ title: 從 Webhook 啟動 Azure 自動化 Runbook
 description: 此文章說明如何使用 Webhook，透過 HTTP 呼叫在 Azure 自動化中啟動 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/16/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2578e15a60b2021d9e599018043c4834d0c07d34
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: e64f437b65964b585311aeae25e5f3a92275754a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361671"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>從 Webhook 啟動 Runbook
 
@@ -21,11 +21,13 @@ Webhook 可讓外部服務在 Azure 自動化中，透過單一 HTTP 要求啟�
 
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
+若要瞭解 TLS 1.2 與 webhook 的用戶端需求，請參閱[Azure 自動化的 tls 1.2 強制執行](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
+
 ## <a name="webhook-properties"></a>Webhook 屬性
 
 下表描述您必須為 Webhook 設定的屬性。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:--- |
 | 名稱 |Webhook 的名稱。 您可以提供任何想要的名稱，因為這並不會向用戶端公開。 該名稱僅供您用來識別 Azure 自動化中的 Runbook。 最佳做法是您給予 Webhook 的名稱應該與要使用它的用戶端相關。 |
 | URL |Webhook 的 URL。 這是唯一性的位址，即用戶端用來呼叫 HTTP POST 以啟動連結至 Webhook 的 Runbook。 當您建立 Webhook 時其會自動產生。 您無法指定自訂 URL。 <br> <br> URL 包含可讓協力廠商系統不需進一步驗證即可叫用 Runbook 的安全性權杖。 基於此原因，您應該將 URL 視為密碼。 基於安全性原因，您僅能於 Webhook 建立時在 Azure 入口網站中檢視 URL。 請在安全的位置記下 URL 以供日後使用。 |
@@ -42,7 +44,7 @@ Webhook 可以定義 Runbook 啟動時所使用的 Runbook 參數值。 Webhook 
 
 `WebhookData` 參數具有下列屬性：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:--- |
 | `WebhookName` | Webhook 的名稱。 |
 | `RequestHeader` | 包含傳入 POST 要求標頭的雜湊表。 |
@@ -81,9 +83,13 @@ Webhook 可以定義 Runbook 啟動時所使用的 Runbook 參數值。 Webhook 
 
 Webhook 的安全性仰賴其 URL 的隱私權，其中包含允許叫用 Webhook 的安全性權杖。 只要針對正確的 URL 進行要求，Azure 自動化就不會對要求執行任何驗證。 基於此原因，若不使用驗證要求的替代方式時，您的用戶端不應使用執行高度敏感性作業的 Webhook。
 
-您可以在 Runbook 中包含邏輯，以判斷 Runbook 是否由 Webhook 呼叫。 讓 Runbook 檢查 `WebhookData` 參數的 `WebhookName` 屬性。 Runbook 可以透過尋找 `RequestHeader` 或 `RequestBody` 屬性中的特定資訊來執行進一步的驗證。
+請考慮下列策略：
 
-另一個策略是當 Runbook 收到 Webhook 要求時，使其執行某些外部條件的驗證。 例如，請考慮每當 GitHub 存放庫出現新的認可時，就會由 GitHub 呼叫的 Runbook。 該 Runbook 在繼續執行之前，可能會先連線到 GitHub，以驗證新的認可已經出現。
+* 您可以在 Runbook 中包含邏輯，以判斷 Runbook 是否由 Webhook 呼叫。 讓 Runbook 檢查 `WebhookData` 參數的 `WebhookName` 屬性。 Runbook 可以透過尋找 `RequestHeader` 或 `RequestBody` 屬性中的特定資訊來執行進一步的驗證。
+
+* 讓 runbook 在收到 webhook 要求時，執行部分外部條件的驗證。 例如，請考慮每當 GitHub 存放庫出現新的認可時，就會由 GitHub 呼叫的 Runbook。 該 Runbook 在繼續執行之前，可能會先連線到 GitHub，以驗證新的認可已經出現。
+
+* Azure 自動化支援 Azure 虛擬網路服務標籤，特別是[GuestAndHybridManagement](../virtual-network/service-tags-overview.md)。 您可以使用服務標籤來定義[網路安全性群組](../virtual-network/security-overview.md#security-rules)或[Azure 防火牆](../firewall/service-tags.md)上的網路存取控制，以及從您的虛擬網路內觸發 webhook。 當您建立安全性規則時，可以使用服務標記來取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標記名稱**GuestAndHybridManagement** ，您可以允許或拒絕自動化服務的流量。 此服務標記不支援將 IP 範圍限制在特定區域，以允許更細微的控制。
 
 ## <a name="create-a-webhook"></a>建立 Webhook
 
@@ -101,7 +107,8 @@ Webhook 的安全性仰賴其 URL 的隱私權，其中包含允許叫用 Webhoo
    ![Webhook URL](media/automation-webhooks/copy-webhook-url.png)
 
 1. 按一下 [參數]  來提供 Runbook 的參數值。 如果 Runbook 有強制參數，除非您提供值，否則無法建立 Webhook。
-1. 按一下 [ **建立** ] 來建立 Webhook。
+
+2. 按一下 [ **建立** ] 來建立 Webhook。
 
 ## <a name="use-a-webhook"></a>使用 Webhook
 

@@ -5,24 +5,24 @@ services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
-ms.topic: reference
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa1046dc64fed3edb6c9d04f76a96f488769ff42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5db99f5e8ed2ea5844acba5500bc94d8fb0db2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358339"
 ---
 # <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>使用 Azure AD Connect [不要設定] 時停用 PTA
 
 如果您使用傳遞驗證與 Azure AD Connect，而且您已將它設定為 [不要設定]，您可以將它停用。 您可以使用下列 Cmdlet 來停用 PTA。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 需要下列必要條件：
 - 已安裝 PTA 代理程式的任何 windows 電腦。 
 - 代理程式必須是1.5.1742.0 或更新版本。 
@@ -34,7 +34,7 @@ ms.locfileid: "81726796"
 > [!IMPORTANT]
 > 如果您使用 Azure Government 雲端，則必須傳入具有下列值的 ENVIRONMENTNAME 參數。 
 >
->| 環境名稱 | 雲端 |
+>| 環境名稱 | Cloud |
 >| - | - |
 >| AzureUSGovernment | US Gov|
 
@@ -50,7 +50,7 @@ ms.locfileid: "81726796"
 如果您沒有代理程式電腦，可以使用下列命令來安裝代理程式。
 
 1. 從 portal.azure.com 下載最新的驗證代理程式。
-2. 安裝功能： `.\AADConnectAuthAgentSetup.exe`或`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
+2. 安裝功能： `.\AADConnectAuthAgentSetup.exe` 或`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa763c875b06bd7e22be0e814838f2e79b24e283
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185510"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358016"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 傳遞驗證來進行使用者登入
 
@@ -39,11 +39,11 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 
 ## <a name="key-benefits-of-using-azure-ad-pass-through-authentication"></a>使用 Azure AD 傳遞驗證的主要好處
 
-- 良好的使用者體驗**
+- 良好的使用者體驗
   - 使用者使用相同的密碼來登入內部部署和雲端型的應用程式。
   - 使用者可以減少尋求 IT 技術服務人員解決密碼相關問題所耗費的對話時間。
   - 使用者可以在雲端中完成[自助式密碼管理](../authentication/active-directory-passwords-overview.md)工作。
-- 容易部署和管理**
+- 容易部署和管理
   - 不必再進行複雜的內部部署或網路設定。
   - 只需要在內部部署環境安裝輕量型代理程式。
   - 沒有任何額外的管理負荷。 代理程式會自動收到改進和錯誤的修正。

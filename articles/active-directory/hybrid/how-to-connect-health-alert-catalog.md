@@ -11,16 +11,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/15/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 635924d16fb9baee40fbc076cf8ace1cf26fb511
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d3e952d79698d128b5f2b7d9a8ac465c57754bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331501"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359240"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health 警示目錄 
 
@@ -30,15 +30,15 @@ Azure AD Connect Health 警示會在成功情況下獲得解決。 Azure AD Conn
 
 ## <a name="general-alerts"></a>一般警示
 
-| 警示名稱 | 描述 | 補救 |
+| 警示名稱 | Description | 修復 |
 | --- | --- | ----- |
 | 健全狀況服務的資料並非最新 | 有一或多部伺服器上執行的健康情況代理程式未與健康情況服務連線，因此健康情況服務未收到此伺服器的最新資料。 健康情況服務上次處理的資料已是 2 小時前的資料。 | 請確認健康情況代理程式能夠連出到所需的服務端點。 [閱讀更多](how-to-connect-health-data-freshness.md) |
 
 ## <a name="alerts-for-azure-ad-connect-sync"></a>Azure AD Connect (同步) 的警示
 
-| 警示名稱 | 描述 | 補救 |
+| 警示名稱 | Description | 修復 |
 | --- | --- | ----- |
-| Azure AD Connect Sync 服務不在執行中 | Microsoft Azure AD 同步 Windows 服務不在執行中或無法啟動。 因此，物件與無法與 Azure Active Directory 同步。 | 啟動 Microsoft Azure Active Directory 同步服務</b> <ol> <li>依序按一下 [啟動]<b></b>、[執行]<b></b>，輸入 <b>Services.msc</b>，然後按一下 [確定]<b></b>。</li> <li>找到 <b>Microsoft Azure AD 同步服務</b>，然後檢查服務是否已啟動。 如果服務未啟動，請在服務上按一下滑鼠右鍵，然後按一下 [啟動]<b></b>。 | 
+| Azure AD Connect Sync 服務不在執行中 | Microsoft Azure AD 同步 Windows 服務不在執行中或無法啟動。 因此，物件與無法與 Azure Active Directory 同步。 | 啟動 Microsoft Azure Active Directory 同步服務</b> <ol> <li>按一下 [<b>開始</b>]，按一下 [<b>執行</b>]，輸入<b>Services.msc</b>，然後按一下<b>[確定]</b>。</li> <li>找出<b>Microsoft Azure AD 同步處理服務</b>，然後檢查服務是否已啟動。 如果服務未啟動，請在服務上按一下滑鼠右鍵，然後按一下 [啟動]<b></b>。 | 
 | 從 Azure Active Directory 匯入失敗 | 從 Azure Active Directory 連接器匯入的作業失敗。 |  請調查匯入作業的事件記錄檔錯誤，以取得進一步的詳細資料。  |
 | 由於驗證失敗，導致連線到 Azure Active Directory 失敗 | 由於驗證失敗，導致連線到 Azure Active Directory 失敗。 因此，物件將不會與 Azure Active Directory 同步。  | 請調查事件記錄檔錯誤，以取得進一步的詳細資料。 |
 | 匯出至 Active Directory 失敗 | 匯出至 Active Directory 連接器的作業失敗。 | 請調查匯出作業的事件記錄檔錯誤，以取得進一步的詳細資料。 | 
@@ -47,13 +47,13 @@ Azure AD Connect Health 警示會在成功情況下獲得解決。 Azure AD Conn
 | 在過去 120 分鐘內，已跳過密碼雜湊同步處理活動訊號 | 密碼雜湊同步處理在過去 120 分鐘內皆未與 Azure Active Directory 連線。 因此，密碼將不會與 Azure Active Directory 同步。 | 重新啟動 Microsoft Azure Active Directory 同步服務：</b><br> 目前執行的所有同步處理作業都會中斷。 您可以選擇在未進行同步處理作業時執行下列步驟。<br> 1. 按一下 [<b>開始</b>]，按一下 [<b>執行</b>]，輸入<b>Services.msc</b>，然後按一下<b>[確定]</b>。<br> 2. 找出<b>Microsoft Azure AD 同步</b>]，以滑鼠右鍵按一下它，然後按一下 [<b>重新開機</b>]。 | 
 | 偵測到高 CPU 使用率 | 此伺服器的 CPU 耗用量百分比超出建議的臨界值。 | <li>這可能是 CPU 耗用量暫時突然增加。 請查看 [監視] 區段中的 CPU 使用量趨勢。</li><li>檢查伺服器上 CPU 使用量最高的前幾名處理序。<ol type="a"><li>您可以使用工作管理員或執行下列 PowerShell 命令： <br> <i>get-process \| Sort-Object -Descending CPU \| Select-Object -First 10</i></li><li>如有未預期的處理序正在耗用大量的 CPU，請使用下列 PowerShell 命令停止這些處理序： <br> <i>停止-進程-ProcessName [進程的名稱]</i></li></li></ol><li>若上述清單中出現的處理序是預期會在伺服器上執行的處理序，而 CPU 耗用量持續趨近臨界值，請考慮重新評估此伺服器的部署需求。</li><li>為了保險起見，您可以考慮重新啟動伺服器。 |
 | 偵測到高記憶體耗用量 | 此伺服器的記憶體耗用量百分比超出建議的臨界值。 | 檢查伺服器上記憶體使用量最高的前幾名處理序。 您可以使用工作管理員或執行下列 PowerShell 命令：<br> <i>get-process \| Sort-Object -Descending WS \| Select-Object -First 10</i> </br> 如有未預期的處理序正在耗用大量的記憶體，請使用下列 PowerShell 命令停止這些處理序：<br><i>stop-process -ProcessName [處理序名稱] </i></li><li> 若上述清單中出現的處理序是預期會在伺服器上執行的處理序，請考慮重新評估此伺服器的部署需求。</li><li>為了保險起見，您可以考慮重新啟動伺服器。 | 
-| 密碼雜湊同步處理已停止運作 | 密碼雜湊同步處理已停止。 因此，密碼將不會與 Azure Active Directory 同步。 | 重新啟動 Microsoft Azure Active Directory 同步服務： <br /> 目前執行的所有同步處理作業都會中斷。 您可以選擇在未進行同步處理作業時執行下列步驟。 <br /> <ol> <li>依序按一下 [啟動]<b></b>、[執行]<b></b>，輸入 <b>Services.msc</b>，然後按一下 [確定]<b></b>。</li> <li>找到 [Microsoft Azure AD 同步]<b></b>，按一下滑鼠右鍵，再按一下 [重新啟動]<b></b>。</li> </ol> </p>  | 
+| 密碼雜湊同步處理已停止運作 | 密碼雜湊同步處理已停止。 因此，密碼將不會與 Azure Active Directory 同步。 | 重新啟動 Microsoft Azure Active Directory 同步服務： <br /> 目前執行的所有同步處理作業都會中斷。 您可以選擇在未進行同步處理作業時執行下列步驟。 <br /> <ol> <li>按一下 [<b>開始</b>]，按一下 [<b>執行</b>]，輸入<b>Services.msc</b>，然後按一下<b>[確定]</b>。</li> <li>找到 [Microsoft Azure AD 同步]<b></b>，按一下滑鼠右鍵，再按一下 [重新啟動]<b></b>。</li> </ol> </p>  | 
 | 匯出至 Azure Active Directory 已停止。 已達意外刪除臨界值 | 匯出至 Azure Active Directory 的作業失敗。 要刪除的物件數目超過設定的臨界值。 因此未匯出任何物件。 | <li> 標示要刪除的物件數目大於設定的臨界值。 請確定這是想要的結果。</li> <li> 若要繼續匯出，請執行下列步驟： <ol type="a"> <li>執行 Disable-ADSyncExportDeletionThreshold 以停用臨界值</li> <li>啟動 Synchronization Service Manager</li> <li>在 Azure Active Directory 類型的連接器上執行匯出</li> <li>成功匯出物件之後，執行 Enable-ADSyncExportDeletionThreshold 來啟用臨界值</li> </ol> </li> |
 
 ## <a name="alerts-for-active-directory-federation-services"></a>Active Directory 同盟服務的警示
-| 警示名稱 | 描述 | 補救 |
+| 警示名稱 | Description | 修復 |
 | --- | --- | ----- |
-|測試驗證要求 (綜合交易) 無法取得權杖 | 從這部伺服器起始的測試驗證要求 (綜合交易) 在 5 次重試後仍無法取得權杖。 這可能是因為暫時性的網路問題、AD DS 網域控制站可用性或未正確設定 AD FS 伺服器所造成。  因此，Federation Service 所處理的驗證要求可能會失敗。 代理程式會使用本機電腦帳戶內容從 Federation Service 取得權杖。 | 請確定已採取下列步驟，驗證伺服器的健全狀況。<ol><li>請驗證伺服器陣列中的這部 AD FS 伺服器或其他 AD FS 伺服器，沒有任何其他未解決的警示。</li><li>以測試使用者身分從 AD FS 登入頁面 (https://{your_adfs_server_name}/adfs/ls/idpinitiatedsignon.aspx) 登入，藉以驗證此情況不是暫時性失敗。</li><li>前往<a href="https://testconnectivity.microsoft.com">https://testconnectivity.microsoft.com</a>並選擇 [office 365] 索引標籤。執行「Office 365 單一登入測試」。</li><li>從這部伺服器上的命令提示字元執行下列命令，藉以驗證是否能從這部伺服器解析您的 AD FS 服務名稱。 nslookup your_adfs_server_name</li></ol><p>如果無法解析該服務名稱，請參閱常見問題集一節以取得指示，說明如何使用此伺服器的 IP 位址，新增 AD FS 服務的 HOST 檔案項目。 如此即能讓此伺服器上執行的綜合交易模組申請權杖</p> | 
+|測試驗證要求 (綜合交易) 無法取得權杖 | 從這部伺服器起始的測試驗證要求 (綜合交易) 在 5 次重試後仍無法取得權杖。 這可能是因為暫時性的網路問題、AD DS 網域控制站可用性或未正確設定 AD FS 伺服器所造成。  因此，Federation Service 所處理的驗證要求可能會失敗。 代理程式會使用本機電腦帳戶內容從 Federation Service 取得權杖。 | 請確定已採取下列步驟，驗證伺服器的健全狀況。<ol><li>請驗證伺服器陣列中的這部 AD FS 伺服器或其他 AD FS 伺服器，沒有任何其他未解決的警示。</li><li>以測試使用者身分從 AD FS 登入頁面 (https://{your_adfs_server_name}/adfs/ls/idpinitiatedsignon.aspx) 登入，藉以驗證此情況不是暫時性失敗。</li><li>前往 <a href="https://testconnectivity.microsoft.com">https://testconnectivity.microsoft.com</a> 並選擇 [office 365] 索引標籤。執行「office 365 單一登入測試」。</li><li>從這部伺服器上的命令提示字元執行下列命令，藉以驗證是否能從這部伺服器解析您的 AD FS 服務名稱。 nslookup your_adfs_server_name</li></ol><p>如果無法解析該服務名稱，請參閱常見問題集一節以取得指示，說明如何使用此伺服器的 IP 位址，新增 AD FS 服務的 HOST 檔案項目。 如此即能讓此伺服器上執行的綜合交易模組申請權杖</p> | 
 | Proxy 伺服器無法連線至同盟伺服器 | 這部 AD FS Proxy 伺服器無法連絡 AD FS 服務。 因此，這部伺服器所處理的驗證要求將會失敗。 | 執行下列步驟，以驗證這部伺服器和 AD FS 服務之間的連線。 <ol><li> 確認已正確設定這部伺服器和 AD FS 服務之間的防火牆。 </li><li> 確認 AD FS 服務名稱的 DNS 解析，正確地指向位於公司網路內的 AD FS 服務。 您可以透過在周邊網路服務此伺服器的 DNS 伺服器，或透過 AD FS 服務名稱之 HOSTS 檔案中的項目，來完成此作業。 </li><li> 藉由開啟此伺服器上的瀏覽器並存取同盟中繼資料端點（位於），來驗證網路連線能力。`https://<your-adfs-service-name>/federationmetadata/2007-06/federationmetadata.xml` </li> | 
 | SSL 憑證即將到期 | 同盟伺服器所使用的 TLS/SSL 憑證即將在90天內過期。 過期之後，任何需要有效 TLS 連線的要求將會失敗。 例如，Office 365 客戶的郵件用戶端將無法進行驗證。 | 更新每部 AD FS 伺服器上的 TLS/SSL 憑證。<ol><li>取得具有下列需求的 TLS/SSL 憑證。<ol type="a"><li>增強金鑰使用方法至少須是「伺服器驗證」。 </li><li>憑證主體或主體別名 (SAN) 包含 Federation Service 的 DNS 名稱或適當的萬用字元。 例如：sso.contoso.com 或 *.contoso.com</li></ol></li><li>在每部伺服器的本機電腦憑證存放區中，安裝新的 TLS/SSL 憑證。</li><li>確認 AD FS 服務帳戶有權讀取憑證的私密金鑰</li></ol></p><p><b>Windows Server 2008 R2 中的 AD FS 2.0：</b><ul><li>將新的 TLS/SSL 憑證系結至裝載同盟服務的 IIS 網站。 請注意，您必須在每部同盟伺服器及同盟伺服器 Proxy 上執行此步驟。</li></ul></p><p><b>Windows Server 2012 R2 和更新版本中的 AD FS：</b> <li>  請參閱<a href="https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap">在 AD FS 和 WAP 中管理 SSL 憑證</a> </li> | 
 | AD FS 服務並未在伺服器上執行 | Active Directory Federation Service (Windows 服務) 未執行於這部伺服器上。 所有以這部伺服器為目標的要求都會失敗。 | 若要啟動 Active Directory Federation Service (Windows 服務)：<ol><li>以系統管理員身分登入伺服器。</li><li> 開啟 services.msc</li><li>尋找 [Active Directory 同盟服務]。 </li><li>以滑鼠右鍵按一下並選取 [啟動]。 | 
@@ -69,16 +69,16 @@ Azure AD Connect Health 警示會在成功情況下獲得解決。 Azure AD Conn
 | SSL 憑證已過期 | AD FS 服務的 TLS/SSL 憑證已過期。 因此，任何需要有效 TLS 連線的驗證要求將會失敗。 例如：Office 365 的郵件用戶端驗證將無法進行驗證。 | 更新每部 AD FS 伺服器上的 TLS/SSL 憑證。<ol><li>取得具有下列需求的 TLS/SSL 憑證。<li>增強金鑰使用方法至少須是「伺服器驗證」。 </li><li>憑證主體或主體別名 (SAN) 包含 Federation Service 的 DNS 名稱或適當的萬用字元。 例如：sso.contoso.com 或 *.contoso.com</li></li><li>在每部伺服器的本機電腦憑證存放區中，安裝新的 TLS/SSL 憑證。</li><li>確認 AD FS 服務帳戶有權讀取憑證的私密金鑰</li></ol></p><p><b>Windows Server 2008 R2 中的 AD FS 2.0：</b><ul><li>將新的 TLS/SSL 憑證系結至裝載同盟服務的 IIS 網站。 請注意，您必須在每部同盟伺服器及同盟伺服器 Proxy 上執行此步驟。</li></ul></p><p><b>Windows Server 2012 R2 或更新版本中的 AD FS：</b>請參閱：<a href="https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap">在 AD FS 和 WAP 中管理 SSL 憑證</a> </li> | 
 | 未啟用 Azure Active Directory (適用於 Office 365) 的必要端點 | 未對 Federation Service 啟用 Exchange Online 服務、Azure AD 和 Office 365 所需的下列一組端點： <li>/adfs/services/trust/2005/usernamemixed</li><li>/adfs/ls/</li> |  在您的 Federation Service 上啟用 Microsoft 雲端服務所需的端點。<br>Windows Server 2012 R2 或更新版本中的 AD FS <li> 請參閱：<a href="https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap">在 AD FS 和 WAP 中管理 SSL 憑證</a> </li></p> | 
 | 同盟伺服器無法連線到 AD FS 設定資料庫 | 當 AD FS 服務帳戶連線到 AD FS 設定資料庫時發生問題。 這部電腦上的 AD FS 服務可能會因此而無法正常運作。 | <li> 確認 AD FS 服務帳戶具有設定資料庫的存取權。 </li><li>確認 AD FS 設定資料庫服務可以使用且可以連線。 </li> | 
-| 必要的 SSL 繫結遺漏或未設定 | 此同盟伺服器為了成功執行驗證所需的 TLS 系結，設定錯誤。 因此，AD FS 無法處理任何連入要求。 | 針對 Windows Server 2012 R2</b><br>開啟更高權限的系統管理員命令提示字元，並執行下列命令： <ol> <li> 若要查看目前的 TLS 系結：<i> Get-set-adfssslcertificate</i> <li> 若要新增系結： <i>netsh HTTP add sslcert hostnameport\<= federation service name>： 443 certhash = 0102030405060708090A0B0C0D0E0F1011121314 appid = {00112233-4455-6677-8899-AABBCCDDEEFF} certstorename = MY</i> |
+| 必要的 SSL 繫結遺漏或未設定 | 此同盟伺服器為了成功執行驗證所需的 TLS 系結，設定錯誤。 因此，AD FS 無法處理任何連入要求。 | 針對 Windows Server 2012 R2</b><br>開啟更高權限的系統管理員命令提示字元，並執行下列命令： <ol> <li> 若要查看目前的 TLS 系結：<i> Get-set-adfssslcertificate</i> <li> 若要新增繫結：<i>netsh http add sslcert hostnameport=\<federation service name>:443 certhash=0102030405060708090A0B0C0D0E0F1011121314 appid={00112233-4455-6677-8899-AABBCCDDEEFF} certstorename=MY </i> |
 | 主要 AD FS 權杖簽署憑證已過期 | AD FS 權杖簽署憑證已過期。 當這個憑證無效時，AD FS 將無法發行簽署的權杖。 | 如果已啟用自動憑證變換，AD FS 將會管理權杖簽署憑證的更新作業。</p><p>如果以手動方式管理憑證，請遵循下列指示。 <ol><li><b>取得新的權杖簽署憑證。</b><ol type="a"><li>確認增強金鑰使用方法 (EKU) 包含「數位簽章」。 </li><li>主體或主體別名 (SAN) 沒有任何限制。 </li><li>請記住，驗證權杖簽署憑證時，您的同盟伺服器、資源夥伴同盟伺服器和信賴憑證者應用程式伺服器，需要能夠鏈結至信任的根憑證授權單位。</li></ol></li><li><b>在每部同盟伺服器的本機憑證存放區中，安裝憑證。</b> <ul><li>確認憑證安裝檔案具有每部伺服器上憑證的私密金鑰。</li></ul></li><li><b>確認 Federation Service 帳戶具有新憑證私密金鑰的存取權。</b></li><li> <b>新增憑證至 AD FS。</b><ol type="a"><li>從 [系統管理工具] 功能表啟動 AD FS 管理。</li><li>展開服務並選取憑證</li><li>在 [動作] 窗格中，按一下 [新增權杖簽署憑證...]。</li><li>您將會看到對權杖簽署有效的憑證清單。 如果您發現清單中沒有新憑證，則需要返回並確定本機電腦的個人存放區中，有這個與私密金鑰相關聯的憑證，且該憑證具有數位簽章 KU。</li><li>請選取新的權杖簽署憑證，然後按一下 [確定]。</li></ol></li><li><b>通知所有信賴憑證者有關權杖簽署憑證的變更。</b><ol type="a"><li>使用 AD FS 同盟中繼資料的信賴憑證者，必須提取新的同盟中繼資料，才能開始使用新的憑證。</li><li>「未」使用 AD FS 同盟中繼資料的信賴憑證者，必須手動更新新權杖簽署憑證的公開金鑰。 請與信賴憑證者分享 .cer 檔案。</li></ol></li><li><b>將新的權杖簽署憑證設為主要。</b><ol type="a"><li>選取了 AD FS 管理中的 [憑證] 節點時，現在應會在 [權杖簽署] 下看到列有兩個憑證：現有的憑證和新憑證。</li><li>選取新的權杖簽署憑證，按一下滑鼠右鍵並選取 [設為<b>主要</b>]。</li><li>保留舊憑證作為用於變換的次要憑證。 一旦您確信不再需要舊憑證進行變換或該憑證已過期時，應規劃移除舊的憑證。 請記住，目前使用者的 SSO 工作階段皆已簽署。 目前的 AD FS Proxy 信任關係會利用透過舊憑證簽署及加密的權杖。 </li></ol></li>|
 | Proxy 伺服器為控制阻塞，正在卸除要求 | 這部 Proxy 伺服器目前正在從外部網路卸除要求，因為這部 Proxy 伺服器和同盟伺服器之間的延遲比正常延遲高。 因此，AD FS Proxy 伺服器所處理的驗證要求特定部分可能會失敗。 | <li>確認同盟 Proxy 伺服器和同盟伺服器之間的網路延遲，是否落在容許的範圍內。 請參考 [監視] 區段，以取得 [權杖要求延遲] 的趨勢值。 應將大於 [1500 毫秒] 的延遲視為高延遲。 如果觀察到高延遲，請確認 AD FS 和 AD FS Proxy 伺服器之間的網路沒有任何連線問題。</li><li>確認同盟伺服器未因驗證要求而超載。 [監視] 區段提供每秒權杖要求數目、CPU 使用量和記憶體耗用量的趨勢檢視。</li><li>如果上述項目已驗證完成但仍看到這個問題，請依據相關連結上的指示，調整每部同盟 Proxy 伺服器上的阻塞避免設定。 | 
-| 已拒絕 AD FS 服務帳戶存取其中一個憑證的私密金鑰。 | AD FS 服務帳戶沒有這部電腦上其中一個 AD FS 憑證的私密金鑰存取權。 | 請確定已針對儲存在 [本機電腦] 憑證存放區中的 TLS、權杖簽署和權杖解密憑證，提供 AD FS 服務帳戶的存取權。<ol> <li> 從命令列輸入 MMC。</li><li>移至 [檔案] -> [新增/移除嵌入式管理單元]。</li><li> 選取憑證，然後按一下 [新增]。 -> 選取電腦帳戶，然後按 [下一步]。 -> 選取本機電腦，然後按一下 [完成]。 按一下 [確定]。 </li></ol> <br>開啟 Certificates(Local Computer)/Personal/Certificates。對於 AD FS 使用的所有憑證：<ol><li>以滑鼠右鍵按一下憑證。</li><li>選取 [所有工作] -> [管理私密金鑰]。</li><li>在群組或使用者名稱下方的 [安全性] 索引標籤上，確認會出現 AD FS 服務帳戶。 若未出現，請選取 [新增] 並新增 AD FS 服務帳戶。</li><li>選取 AD FS 服務帳戶，並在 [AD FS 服務\<帳戶名稱> 的許可權] 底下，確認 [允許讀取] 許可權（核取記號）。 | 
+| 已拒絕 AD FS 服務帳戶存取其中一個憑證的私密金鑰。 | AD FS 服務帳戶沒有這部電腦上其中一個 AD FS 憑證的私密金鑰存取權。 | 請確定已針對儲存在 [本機電腦] 憑證存放區中的 TLS、權杖簽署和權杖解密憑證，提供 AD FS 服務帳戶的存取權。<ol> <li> 從命令列輸入 MMC。</li><li>移至 [檔案] -> [新增/移除嵌入式管理單元]。</li><li> 選取憑證，然後按一下 [新增]。 -> 選取電腦帳戶，然後按 [下一步]。 -> 選取本機電腦，然後按一下 [完成]。 按一下 [確定]。 </li></ol> <br>開啟 Certificates(Local Computer)/Personal/Certificates。對於 AD FS 使用的所有憑證：<ol><li>以滑鼠右鍵按一下憑證。</li><li>選取 [所有工作] -> [管理私密金鑰]。</li><li>在群組或使用者名稱下方的 [安全性] 索引標籤上，確認會出現 AD FS 服務帳戶。 若未出現，請選取 [新增] 並新增 AD FS 服務帳戶。</li><li>選取 AD FS 服務帳戶，然後在 [\<AD FS Service Account Name> 的權限] 下，確認允許 (核取) 讀取權限。 | 
 | AD FS SSL 憑證沒有私密金鑰 | 已安裝 AD FS 的 TLS/SSL 憑證，但沒有私密金鑰。 因此，透過 SSL 的所有驗證要求都會失敗。 例如，Office 365 的郵件用戶端驗證將會失敗。 | 更新每部 AD FS 伺服器上的 TLS/SSL 憑證。<ol><li>取得公開信任的 TLS/SSL 憑證，並提供下列需求。<ol type="a"><li>憑證安裝檔案包含其私密金鑰。</li><li>增強金鑰使用方法至少須是「伺服器驗證」。 </li><li>憑證主體或主體別名 (SAN) 包含 Federation Service 的 DNS 名稱或適當的萬用字元。 例如：sso.contoso.com 或 *.contoso.com</li></ol></li><li>在每部伺服器的本機電腦憑證存放區中，安裝新的 TLS/SSL 憑證。</li><li>確認 AD FS 服務帳戶有權讀取憑證的私密金鑰</li></ol></p><p><b>Windows Server 2008 R2 中的 AD FS 2.0：</b><ul><li>將新的 TLS/SSL 憑證系結至 IIS 中裝載同盟服務的網站。 請注意，您必須在每部同盟伺服器及同盟伺服器 Proxy 上執行此步驟。</li></ul></p><p><b>針對 Windows Server 2012 R2 或更新版本中的 AD FS：</b> <li> 請參閱：<a href="https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap">在 AD FS 和 WAP 中管理 SSL 憑證</a> </li> | 
 | 主要 AD FS 權杖解密憑證已過期 | 主要 AD FS 權杖解密憑證已過期。 AD FS 無法解密來自信任的宣告提供者的權杖。 AD FS 無法將加密的 SSO Cookie 解密。 使用者將無法進行驗證以存取資源。 | <p>如果已啟用自動憑證變換，AD FS 會管理權杖解密憑證。</p><p>如果以手動方式管理憑證，請遵循下列指示。<ol><li><b>取得新的權杖解密憑證。</b><ul><li>確認增強金鑰使用方法 (EKU) 包含「金鑰編密」。</li><li>主體或主體別名 (SAN) 沒有任何限制。</li><li>請注意，驗證權杖解密憑證時，您的同盟伺服器和宣告提供者夥伴，需要能夠鏈結至信任的根憑證授權單位。</li></ul></li><li><b>決定宣告提供者夥伴將如何信任新的權杖解密憑證。</b><ul><li>要求夥伴在更新憑證之後，提取同盟中繼資料。</li><li>與夥伴共用新憑證 (.cer 檔案) 的公開金鑰。 在宣告提供者夥伴的 AD FS 伺服器上，從 [系統管理工具] 功能表啟動 AD FS 管理。 在 [信任關係]/[信賴憑證者信任] 下，選取為您所建立的信任。 在 [內容]/[加密] 下，按一下 [瀏覽] 以選取新的權杖解密憑證，然後按一下 [確定]。</li></ul></li><li><b>在每部同盟伺服器的本機憑證存放區中，安裝憑證。</b><ul><li>確認憑證安裝檔案具有每部伺服器上憑證的私密金鑰。</li></ul></li><li><b>確認 federation service 帳戶具有新憑證私密金鑰的存取權。</b></li><li><b>新增憑證至 AD FS。</b><ul><li>從 [系統管理工具] 功能表啟動 AD FS 管理</li><li>展開服務並選取憑證</li><li>在 [動作] 窗格中，按一下 [新增權杖解密憑證]</li><li>您將會看到對權杖解密有效的憑證清單。 如果您發現清單中沒有您的新憑證，則需要返回並確定本機電腦個人存放區中有這個與私密金鑰相關聯的憑證，且該憑證的增強金鑰使用方法為「金鑰編密」。</li><li>選取您的新權杖解密憑證，然後按一下 [確定]。</li></ul></li><li><b>將新的權杖解密憑證設為主要憑證。</b><ul><li>選取了 AD FS 管理中的 [憑證] 節點時，現在應該會在 [權杖解密] 下看到列有兩項憑證：現有憑證和新的憑證。</li><li>選取新的權杖解密憑證，按一下滑鼠右鍵並選取 [設為主要]。</li><li>保留舊憑證作為用於變換的次要憑證。 一旦確信不再需要舊憑證進行變換，或憑證已過期，即應規劃移除這個憑證。 </li></ul></li> | 
 
 ## <a name="alerts-for-active-directory-domain-services"></a>Active Directory Domain Services 的警示
 
-| 警示名稱 | 描述 | 補救 |
+| 警示名稱 | Description | 修復 |
 | --- | --- | ----- |
 | 無法透過 LDAP Ping 連線到網域控制站 | 無法透過 LDAP Ping 連線網域控制站。 這可能是因為網路問題或電腦問題所致。 因此 LDAP Ping 將會失敗。 |  <li>檢查相關警示的警示清單，例如：網域控制站未公告。 </li><li>請確認受影響的網域控制站有足夠的磁碟空間。 若磁碟空間不足，DC 將停止自行公告為 LDAP 伺服器。 </li><li> 嘗試尋找 PDC：在受影響的網域控制站上執行 <br> <i>netdom query fsmo </i> </br> 。 <li> 請確認實體網路已正確設定/連接。 </li> |
 | 發生 Active Directory 複寫錯誤 | 此網域控制站發生複寫問題，前往複寫狀態儀表板即可看到。 設定不正確或其他相關問題，都可能引發複寫錯誤。 未處理的複寫錯誤可能會導致資料不一致。 | 請參閱受影響的來源與目的地 DC 之名稱的其他詳細資料。 巡覽至複寫狀態儀表板，並查看受影響 DC 的現有錯誤。 按一下該錯誤即可開啟刀鋒視窗，取得如何修復特定錯誤的更多詳細資料。| 

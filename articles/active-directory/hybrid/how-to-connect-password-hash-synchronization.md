@@ -8,19 +8,19 @@ manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41b11ab65f5710d338ce0041579e1eb4678ec42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47f0dea435af56f6994b57079983a63b3a29600d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331375"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358557"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步來實作密碼雜湊同步處理
 本文提供您所需資訊，以讓您將使用者密碼從內部部署 Active Directory 執行個體同步處理至雲端式 Azure Active Directory (Azure AD) 執行個體。
@@ -89,14 +89,13 @@ Active Directory 網域服務是以使用者實際密碼的雜湊值表示法格
 
 您可以使用內部部署環境中已過期的同步處理密碼，繼續登入雲端服務。 您的雲端密碼會於下一次您在內部部署環境中變更密碼時更新。
 
-##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>*EnforceCloudPasswordPolicyForPasswordSyncedUsers*功能的公開預覽
+##### <a name="enforcecloudpasswordpolicyforpasswordsyncedusers"></a>EnforceCloudPasswordPolicyForPasswordSyncedUsers
 
 如果有同步處理的使用者只與 Azure AD 整合式服務互動，而且也必須符合密碼到期原則，您可以藉由啟用*EnforceCloudPasswordPolicyForPasswordSyncedUsers*功能，強制他們符合您 Azure AD 的密碼到期原則。
 
 停用*EnforceCloudPasswordPolicyForPasswordSyncedUsers*時（這是預設設定），Azure AD Connect 將同步處理使用者的 PasswordPolicies 屬性設定為 "DisablePasswordExpiration"。 這會在每次同步處理使用者的密碼時完成，並指示 Azure AD 忽略該使用者的雲端密碼到期原則。 您可以使用 Azure AD PowerShell 模組搭配下列命令來檢查屬性的值：
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
-
 
 若要啟用 EnforceCloudPasswordPolicyForPasswordSyncedUsers 功能，請使用 MSOnline PowerShell 模組執行下列命令，如下所示。 您必須為 Enable 參數輸入 yes，如下所示：
 
@@ -110,23 +109,22 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-啟用之後，Azure AD 不會移至每個已同步處理的`DisablePasswordExpiration`使用者，以從 PasswordPolicies 屬性中移除值。 相反地，當每位使用者`None`下次在內部部署 AD 中變更其密碼時，其值會設定為。  
+啟用之後，Azure AD 不會移至每個已同步處理的使用者，以 `DisablePasswordExpiration` 從 PasswordPolicies 屬性中移除值。 相反地， `None` 當每位使用者下次在內部部署 AD 中變更其密碼時，其值會設定為。  
 
-建議您先啟用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，再啟用密碼雜湊同步處理，讓密碼雜湊的初始同步處理不會將`DisablePasswordExpiration`值新增至使用者的 PasswordPolicies 屬性。
+建議您先啟用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，再啟用密碼雜湊同步處理，讓密碼雜湊的初始同步處理不會將 `DisablePasswordExpiration` 值新增至使用者的 PasswordPolicies 屬性。
 
 預設 Azure AD 密碼原則會要求使用者每90天變更密碼一次。 如果您在 AD 中的原則也是90天，則這兩個原則應相符。 不過，如果 AD 原則不是90天，您可以使用 Set-msolpasswordpolicy PowerShell 命令，將 Azure AD 密碼原則更新為相符。
 
 Azure AD 針對每個已註冊的網域支援不同的密碼到期原則。
 
-警告：如果已同步處理的帳戶在 Azure AD 中需要有未過期的密碼，您必須在 Azure AD 中`DisablePasswordExpiration`明確地將此值新增至使用者物件的 PasswordPolicies 屬性。  您可以藉由執行下列命令來完成此動作。
+警告：如果已同步處理的帳戶在 Azure AD 中需要有未過期的密碼，您必須在 Azure AD 中明確地將此 `DisablePasswordExpiration` 值新增至使用者物件的 PasswordPolicies 屬性。  您可以藉由執行下列命令來完成此動作。
 
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> 這項功能目前處於公開預覽狀態。
 > Set-msolpasswordpolicy PowerShell 命令將無法在同盟網域上作用。 
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>同步處理暫時密碼和「下次登入時強制密碼變更」的公開預覽
+#### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>同步處理暫時密碼和「下次登入時強制密碼變更」
 
 通常會強制使用者在第一次登入時變更其密碼，特別是在發生系統管理員密碼重設之後。  這通常稱為設定「暫時」密碼，並透過在 Active Directory （AD）中的使用者物件上核取 [使用者必須在下次登入時變更密碼] 旗標來完成。
   
@@ -141,9 +139,6 @@ Azure AD 針對每個已註冊的網域支援不同的密碼到期原則。
 
 > [!CAUTION]
 > 只有在租使用者上啟用 SSPR 和密碼回寫時，您才應該使用這項功能。  如此一來，如果使用者透過 SSPR 變更其密碼，則會同步處理到 Active Directory。
-
-> [!NOTE]
-> 這項功能目前處於公開預覽狀態。
 
 #### <a name="account-expiration"></a>帳戶到期
 

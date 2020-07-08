@@ -11,20 +11,20 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48ed9abf3e088e2581a3dd81b7c89e6b99da3ceb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359087"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>對重複屬性同步處理錯誤進行診斷和修復
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 為了更進一步地點出同步處理錯誤，Azure Active Directory (Azure AD) Connect Health 導入了自助服務修復功能。 此功能會對重複屬性同步處理錯誤進行疑難排解，並修正來自 Azure AD 的孤立物件。
 診斷功能具有下列功效：
 - 可提供診斷程序，來縮小重複屬性同步處理錯誤的範圍。 此外，還可提供特定的修正方法。
@@ -34,7 +34,7 @@ ms.locfileid: "76897189"
 
 ## <a name="problems"></a>問題
 ### <a name="a-common-scenario"></a>常見案例
-發生 **QuarantinedAttributeValueMustBeUnique** 和 **AttributeValueMustBeUnique** 同步處理錯誤時，您常會在 Azure AD 中發現 **UserPrincipalName** 或 **Proxy 位址**衝突。 您可以從內部部署端更新衝突的來源物件，藉以解決同步處理錯誤。 同步處理錯誤將在下一次同步處理後解決。例如，此影像表示兩個使用者的**UserPrincipalName**有衝突。 兩者都是**Joe.\@J contoso.com**。 有衝突的物件會在 Azure AD 中隔離。
+發生 **QuarantinedAttributeValueMustBeUnique** 和 **AttributeValueMustBeUnique** 同步處理錯誤時，您常會在 Azure AD 中發現 **UserPrincipalName** 或 **Proxy 位址**衝突。 您可以從內部部署端更新衝突的來源物件，藉以解決同步處理錯誤。 同步處理錯誤將在下一次同步處理後解決。例如，此影像表示兩個使用者的**UserPrincipalName**有衝突。 兩者都是**Joe. J \@ contoso.com**。 有衝突的物件會在 Azure AD 中隔離。
 
 ![診斷同步處理錯誤的常見案例](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 

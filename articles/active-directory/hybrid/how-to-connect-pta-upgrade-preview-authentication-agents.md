@@ -11,22 +11,22 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 494ccc3b90b8c249ee935087dcf0f0b5264b02ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d27018a19db85e8544029db4f1b638ef7cae448a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60386738"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358135"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory 傳遞驗證：將預覽驗證代理程式升級
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文適用於透過預覽版使用 Azure AD 傳遞驗證的客戶。 我們最近已將驗證代理程式軟體升級 (及改版)。 您需要 _手動_ 升級在內部部署伺服器上安裝的預覽驗證代理程式。 此手動升級只是一次性動作。 驗證代理程式的所有未來更新都是自動的。 升級的原因如下所示：
 
@@ -74,7 +74,7 @@ ms.locfileid: "60386738"
 5. **已安裝最新版本**：如之前所示，請移至 [控制台]-> [程式]-> [程式和功能]****，並確認有 [Microsoft Azure AD Connect 驗證代理程式]**** 項目。
 
 >[!NOTE]
->完成前述步驟後，若到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)查看傳遞驗證刀鋒視窗，將會發現每個伺服器有兩個驗證代理程式項目：一個項目會顯示驗證代理程式為**使用中**，另一個則顯示為**非使用中**。 這是 _預期行為_ 。 **非使用中**的項目會在幾天後自動卸除。
+>完成前述步驟後，若到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)查看傳遞驗證刀鋒視窗，將會發現每個伺服器有兩個驗證代理程式項目：一個項目會顯示驗證代理程式為**使用中**，另一個則顯示為**非使用中**。 這是_預期_的情況。 **非使用中**的項目會在幾天後自動卸除。
 
 ## <a name="upgrading-the-authentication-agent-on-other-servers"></a>在其他伺服器上升級驗證代理程式
 
@@ -86,7 +86,7 @@ ms.locfileid: "60386738"
 4. **已安裝最新版本**：如之前所示，請移至 [控制台]-> [程式]-> [程式和功能]****，並確認有一個叫做 [Microsoft Azure AD Connect 驗證代理程式]**** 的項目。
 
 >[!NOTE]
->完成前述步驟後，若到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)查看傳遞驗證刀鋒視窗，將會發現每個伺服器有兩個驗證代理程式項目：一個項目會顯示驗證代理程式為**使用中**，另一個則顯示為**非使用中**。 這是 _預期行為_ 。 **非使用中**的項目會在幾天後自動卸除。
+>完成前述步驟後，若到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)查看傳遞驗證刀鋒視窗，將會發現每個伺服器有兩個驗證代理程式項目：一個項目會顯示驗證代理程式為**使用中**，另一個則顯示為**非使用中**。 這是_預期_的情況。 **非使用中**的項目會在幾天後自動卸除。
 
 ## <a name="next-steps"></a>後續步驟
-- [**疑難排解**](tshoot-connect-pass-through-authentication.md)-瞭解如何解決此功能的常見問題。
+- [**疑難排解**](tshoot-connect-pass-through-authentication.md) - 了解如何解決此功能的常見問題。

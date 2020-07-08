@@ -1,5 +1,5 @@
 ---
-title: 將防火牆或 proxy 伺服器上的 Azure 入口網站 Url
+title: 將 Azure 入口網站 URL 列入防火牆或 Proxy 伺服器的安全清單
 description: 將這些 Url 新增至 proxy 伺服器略過，以與 Azure 入口網站及其服務進行通訊
 services: azure-portal
 keywords: ''
@@ -9,14 +9,14 @@ ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67ccf6e2f113c0ec72cfcbccedf88017e452ec4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361654"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>將防火牆或 proxy 伺服器上的 Azure 入口網站 Url
+# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>將 Azure 入口網站 URL 列入防火牆或 Proxy 伺服器的安全清單
 
 您可以設定內部部署安全性裝置，略過 Azure 入口網站 Url 的安全性限制。 此設定可改善您的本機或廣域網路與 Azure 雲端之間的效能和連線能力。
 
@@ -53,6 +53,7 @@ Azure 入口網站的安全的 URL 端點是您組織部署所在的 Azure 雲�
 #### <a name="us-government-cloud"></a>[美國政府雲端](#tab/us-government-cloud)
 
 ```
+*.applicationinsights.us
 *.azure.us
 *.loganalytics.us
 *.microsoft.us

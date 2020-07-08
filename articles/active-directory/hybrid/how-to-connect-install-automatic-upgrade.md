@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05de8bf6a6e4ab79e63d6634ddb1b79fae6045f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 749c97549661f2b2d647f8f7ba718d7696ef8355
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680227"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359002"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自動升級
 此功能已隨組建 [1.1.105.0 (於 2016 年 2 月發行)](reference-connect-version-history.md#111050) 一起推出。  這項功能已在[組建 1.1.561](reference-connect-version-history.md#115610) 中更新，且現在支援先前未支援的其他案例。
@@ -57,6 +57,10 @@ ms.locfileid: "83680227"
 
 如果您認為有問題，請先執行 `Get-ADSyncAutoUpgrade` 確保已啟用自動升級。
 
+如果狀態是 [已暫停]，您可以使用 `Get-ADSyncAutoUpgrade -Detail` 來查看原因。  暫止原因可以包含任何字串值，但通常會包含 UpgradeResult 的字串值，也就是 `UpgradeNotSupportedNonLocalDbInstall` 或 `UpgradeAbortedAdSyncExeInUse` 。  可能也會傳回復合值，例如 `UpgradeFailedRollbackSuccess-GetPasswordHashSyncStateFailed` 。
+
+也可以取得不是 UpgradeResult 的結果，例如 ' AADHealthEndpointNotDefined ' 或 ' DirSyncInPlaceUpgradeNonLocalDb '。
+
 然後，確定您已在您的 Proxy 或防火牆中開啟所需的 URL。 自動更新會如 [概觀](#overview)所述使用 Azure AD Connect Health。 如果您使用 Proxy，請確定 Health 已設定為使用 [roxy 伺服器](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)。 而且測試對 Azure AD 的 [Health 連線](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) 。
 
 透過對已驗證 Azure AD 的連線，即可查看事件記錄檔。 啟動事件檢視器，並查看 **應用程式** 事件記錄。 新增來源 **Azure AD Connect 升級**的事件記錄篩選以及事件識別碼範圍 **300-399**。  
@@ -67,7 +71,7 @@ ms.locfileid: "83680227"
 
 結果碼前面會有包含狀態概觀的前置詞。
 
-| 結果碼前置詞 | 描述 |
+| 結果碼前置詞 | 說明 |
 | --- | --- |
 | Success |安裝已順利升級。 |
 | UpgradeAborted |發生暫時狀況導致升級停止。 它將會重試一次，而且預期稍後成功。 |
@@ -89,18 +93,11 @@ ms.locfileid: "83680227"
 | UpgradeAbortedSyncExeInUse |伺服器上的 [Synchronization Service Manager UI](how-to-connect-sync-service-manager-ui.md) 為開啟。 |
 | UpgradeAbortedSyncOrConfigurationInProgress |安裝精靈正在執行或排程器外部已排定同步處理。 |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedAdfsSignInMethod | 您已選取 ADFS 作為登入方法。 |
 | UpgradeNotSupportedCustomizedSyncRules |您已將自己的自訂規則加入組態。 |
-| UpgradeNotSupportedDeviceWritebackEnabled |您已啟用 [裝置回寫](how-to-connect-device-writeback.md) 功能。 |
-| UpgradeNotSupportedGroupWritebackEnabled |您已啟用群組回寫功能。 |
 | UpgradeNotSupportedInvalidPersistedState |安裝不是快速設定或 DirSync 升級。 |
-| UpgradeNotSupportedMetaverseSizeExceeeded |Metaverse 中的物件超過 100,000 個。 |
-| UpgradeNotSupportedMultiForestSetup |您正連接到多個樹系。 快速安裝只會連接到一個樹系。 |
 | UpgradeNotSupportedNonLocalDbInstall |您不是使用 SQL Server Express LocalDB 資料庫。 |
-| UpgradeNotSupportedNonMsolAccount |[AD DS 連接器帳戶](reference-connect-accounts-permissions.md#ad-ds-connector-account)已不再是預設的 MSOL_ 帳戶。 |
-| UpgradeNotSupportedNotConfiguredSignInMethod | 若要設定 AAD Connect，請在選取登入方法時，選擇 [不設定]。 |
-| UpgradeNotSupportedStagingModeEnabled |伺服器設定為 [預備模式](how-to-connect-sync-staging-server.md)。 |
-| UpgradeNotSupportedUserWritebackEnabled |您已啟用 [使用者回寫](how-to-connect-preview.md#user-writeback) 功能。 |
+|UpgradeNotSupportedLocalDbSizeExceeded|本機資料庫大小大於或等於 8 GB|
+|UpgradeNotSupportedAADHealthUploadDisabled|已從入口網站停用健全狀況資料上傳|
 
 ## <a name="next-steps"></a>後續步驟
 深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

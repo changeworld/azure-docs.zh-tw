@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 04/15/2019
+ms.topic: how-to
+ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce5f47fe662092219180064f7ea49f5573b27818
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185548"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358237"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 傳遞驗證安全性深入探討
 
@@ -72,9 +72,12 @@ ms.locfileid: "77185548"
 
 ### <a name="authentication-agent-installation"></a>驗證代理程式安裝
 
-只有全域管理員可以在內部部署伺服器上安裝驗證代理程式 (使用 Azure AD Connect 或獨立安裝)。 安裝會在 [**控制台** > **Programs** > ] 的 [程式**和功能**] 清單中新增兩個新專案：
+只有全域管理員可以在內部部署伺服器上安裝驗證代理程式 (使用 Azure AD Connect 或獨立安裝)。 安裝會在 [控制台] 的**Control Panel**  >  **[程式**  >  **和功能**] 清單中新增兩個新專案：
 - 驗證代理程式應用程式本身。 此應用程式會以 [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) 權限執行。
 - 用來自動更新驗證代理程式的更新程式應用程式。 此應用程式會以 [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) 權限執行。
+
+>[!IMPORTANT]
+>從安全性的觀點來看，系統管理員應該將執行 PTA 代理程式的伺服器視為網域控制站。  PTA 代理程式伺服器應該與[保護網域控制站免于遭受攻擊](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)時所述的同一行一起強化
 
 ### <a name="authentication-agent-registration"></a>驗證代理程式註冊
 
@@ -103,7 +106,7 @@ ms.locfileid: "77185548"
     - 此 CA 僅供傳遞驗證功能使用。 此 CA 只會在驗證代理程式註冊期間用來簽署 CSR。
     -  沒有任何其他 Azure AD 服務會使用此 CA。
     - 此憑證的主體 (辨別名稱或 DN) 設定為您的租用戶識別碼。 此 DN 是可唯一識別租用戶的 GUID。 此 DN 可將憑證的範圍限制為只能用於您的租用戶。
-6. Azure AD 會將驗證代理程式的公開金鑰儲存在只有 Azure AD 可存取的 Azure SQL 資料庫中。
+6. Azure AD 會將驗證代理程式的公開金鑰儲存在 Azure SQL Database 的資料庫中，只有 Azure AD 具有的存取權。
 7. 在步驟 5 中核發的憑證會儲存在內部部署伺服器上的 Windows 憑證存放區 (具體而言是在 [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) 位置) 中。 驗證代理程式和更新程式應用程式都會加以使用。
 
 ### <a name="authentication-agent-initialization"></a>驗證代理程式初始化
@@ -136,7 +139,7 @@ ms.locfileid: "77185548"
 4. 使用者將其使用者名稱輸入 [使用者登入]**** 頁面中，然後選取 [下一步]**** 按鈕。
 5. 使用者將其密碼輸入 [使用者登入]**** 頁面中，然後選取 [登入]**** 按鈕。
 6. 使用者名稱與密碼會在 HTTPS POST 要求中提交至 Azure AD STS。
-7. Azure AD STS 會針對您的租用戶上註冊的所有驗證代理程式，擷取 Azure SQL 資料庫中的公開金鑰，並使用這些金鑰為其密碼加密。
+7. Azure AD STS 會從 Azure SQL Database 的租使用者上註冊的所有驗證代理程式中抓取公開金鑰，並使用這些金鑰來加密密碼。
     - Azure AD STS 會針對您的租用戶上註冊的 "N" 個驗證代理程式，產生 "N" 個加密密碼值。
 8. Azure AD STS 會將密碼驗證要求 (其中包含使用者名稱和加密的密碼值) 放到您的租用戶專用的服務匯流排佇列上。
 9. 初始化的驗證代理程式會持續連線至服務匯流排佇列，因此其中一個可用的驗證代理程式會擷取密碼驗證要求。
@@ -175,7 +178,7 @@ ms.locfileid: "77185548"
 6. 如果現有的憑證已過期，Azure AD 會從租用戶的已註冊驗證代理程式清單中，刪除該驗證代理程式。 然後，全域管理員必須手動安裝並註冊新的驗證代理程式。
     - 使用 Azure AD 根 CA 來簽署憑證。
     - 將憑證的主體 (辨別名稱或 DN) 設定為您的租用戶識別碼，亦即可唯一識別租用戶的 GUID。 DN 會將憑證的範圍限定於您的租用戶。
-6. Azure AD 會將驗證代理程式的新公開金鑰儲存在只有 Azure AD 可存取的 Azure SQL 資料庫中。 而與驗證代理程式相關聯的舊公開金鑰則會失效。
+6. Azure AD 會將驗證代理程式的新公開金鑰儲存在只能存取的 Azure SQL Database 資料庫中。 而與驗證代理程式相關聯的舊公開金鑰則會失效。
 7. 然後，在步驟 5 中核發的新憑證會儲存在伺服器上的 Windows 憑證存放區 (具體而言是在 [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) 位置) 中。
     - 由於信任更新程序會以非互動方式執行 (不需要有全域管理員的存在)，驗證代理程式不再具有存取權以更新 CERT_SYSTEM_STORE_LOCAL_MACHINE 位置中的現有憑證。 
     

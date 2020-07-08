@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c086227d23901cb7904d8cc0a768e9f4b5ad43db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50f02ea42bb792320da6e2523b733f09afd412a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77620980"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360957"
 ---
 # <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>建立 Azure AD Connect 雲端式布建的新設定
 
@@ -48,7 +48,7 @@ ms.locfileid: "77620980"
 
     ![[設定] 區段](media/how-to-configure/scope1.png)
 
-1.  在 [設定]**** 底下選取 [所有使用者]****，以變更組態規則的範圍。
+1.  在 [設定] 底下選取 [所有使用者]，以變更組態規則的範圍。
 
     ![[所有使用者] 選項](media/how-to-configure/scope2.png)
 

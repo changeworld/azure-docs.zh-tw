@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1e4428fecdbb5d664111adc591812a5122bf2eda
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: df2990e3799d0b16f316c522185ac9b779ca48e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125109"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362351"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>設定工作階段主機虛擬機器
 
@@ -121,7 +121,8 @@ ms.locfileid: "83125109"
 
 ### <a name="error-the-status-filed-in-get-azwvdsessionhost-cmdlet-shows-status-as-unavailable"></a>錯誤： AzWvdSessionHost Cmdlet 中的狀態會顯示為 [無法使用] 狀態
 
-![AzWvdSessionHost Cmdlet 會將狀態顯示為 [無法使用]。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![AzWvdSessionHost Cmdlet 會將狀態顯示為 [無法使用]。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **原因：** 代理程式無法將自己更新為新的版本。
 
@@ -136,7 +137,7 @@ ms.locfileid: "83125109"
 
 ## <a name="error-windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>錯誤： Windows 虛擬桌面 Agent 登錄專案 IsRegistered 顯示0的值
 
-**原因：** 註冊權杖已過期，或已產生，其到期值為999999。
+**原因：** 註冊權杖已過期。
 
 **修正：** 請遵循這些指示來修正代理程式登錄錯誤。
 
@@ -182,7 +183,7 @@ ms.locfileid: "83125109"
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>針對 Windows 虛擬桌面並存堆疊的問題進行疑難排解
 
-Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 使用 Microsoft Installer （MSI）在 Microsoft Windows Server 2016 或 Windows Server 2012 R2 上安裝並存堆疊。 針對 Microsoft Windows 10，會使用**enablesxstackrs**來啟用 Windows 虛擬桌面並存堆疊。
+Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 使用 Microsoft Installer （MSI）在 Microsoft Windows Server 2016 或 Windows Server 2012 R2 上安裝並存堆疊。 針對 Microsoft Windows 10，會使用**enablesxstackrs.ps1**啟用 Windows 虛擬桌面並存堆疊。
 
 在工作階段主機集區 Vm 上安裝或啟用並存堆疊的主要方式有三種：
 
@@ -194,7 +195,8 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 
 如果已安裝並啟用並存堆疊， **qwinsta**的輸出會列出輸出中的**rdp-sxs** 。
 
-![安裝或啟用並存堆疊的 qwinsta 會在輸出中列為 rdp-sxs。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![安裝或啟用並存堆疊的 qwinsta 會在輸出中列為 rdp-sxs。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 檢查下列登錄專案，並確認它們的值相符。 如果登錄機碼遺失或值不相符，請遵循[使用 PowerShell 建立主機集](create-host-pools-powershell.md)區中的指示，以瞭解如何重新安裝並存堆疊。
 
@@ -208,7 +210,8 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>錯誤： O_REVERSE_CONNECT_STACK_FAILURE
 
-![O_REVERSE_CONNECT_STACK_FAILURE 錯誤碼。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![O_REVERSE_CONNECT_STACK_FAILURE 錯誤碼。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **原因：** 並存堆疊不會安裝在工作階段主機 VM 上。
 
@@ -224,8 +227,8 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 - 未遵循步驟的正確順序來啟用並存堆疊
 - 自動更新至 Windows 10 增強型光碟（EVD）
 - 缺少遠端桌面工作階段主機（RDSH）角色
-- 執行 enablesxsstackrc 多次
-- 在不具備本機系統管理員許可權的帳戶中執行 enablesxsstackrc
+- 多次執行 enablesxsstackrc.ps1
+- 在不具備本機系統管理員許可權的帳戶中執行 enablesxsstackrc.ps1
 
 本節中的指示可協助您卸載 Windows 虛擬桌面並存堆疊。 卸載並存堆疊之後，請移至[使用 PowerShell 建立主機集](create-host-pools-powershell.md)區中的「向 Windows 虛擬桌面主機集區註冊 VM」，以重新安裝並存堆疊。
 
@@ -244,19 +247,21 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
             psexec.exe \\<VMname> cmd
     ```
 
-    >[!Note]
+    >[!NOTE]
     >VMname 是 VM 的電腦名稱稱，具有故障的並存堆疊。
 
 7. 按一下 [同意] 以接受 PsExec 授權合約。
 
-    ![軟體授權合約螢幕擷取畫面。](media/SoftwareLicenseTerms.png)
+    > [!div class="mx-imgBorder"]
+    > ![軟體授權合約螢幕擷取畫面。](media/SoftwareLicenseTerms.png)
 
-    >[!Note]
+    >[!NOTE]
     >只有第一次執行 PsExec 時，才會顯示此對話方塊。
 
 8. 在具有故障並存堆疊的 VM 上開啟命令提示字元會話之後，請執行 qwinsta，並確認名為 rdp-sxs 的專案可供使用。 如果不是，VM 上就不會有並存堆疊，因此問題不會系結至並存堆疊。
 
-    ![系統管理員命令提示字元](media/AdministratorCommandPrompt.png)
+    > [!div class="mx-imgBorder"]
+    > ![系統管理員命令提示字元](media/AdministratorCommandPrompt.png)
 
 9. 執行下列命令，這會列出在 VM 上安裝的 Microsoft 元件，且其並存堆疊無法正常運作。
 
@@ -278,7 +283,7 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 
 如果您的作業系統是 Microsoft Windows 10，請繼續執行下列指示：
 
-14. 從執行 PsExec 的 VM 中，開啟 [檔案瀏覽器]，並將 disablesxsstackrc 複製到 VM 的系統磁片磁碟機，其中的並存堆疊無法運作。
+14. 從執行 PsExec 的 VM 中，開啟 [檔案瀏覽器]，然後將 disablesxsstackrc.ps1 複製到 VM 的系統磁片磁碟機，並將其並存堆疊。
 
     ```cmd
         \\<VMname>\c$\
@@ -287,7 +292,7 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
     >[!NOTE]
     >VMname 是 VM 的電腦名稱稱，具有故障的並存堆疊。
 
-15. 建議的程式：從 PsExec 工具啟動 PowerShell，然後流覽至上一個步驟中的資料夾，並執行 disablesxsstackrc。 或者，您可以執行下列 Cmdlet：
+15. 建議的程式：從 PsExec 工具啟動 PowerShell 並流覽至上一個步驟中的資料夾，然後執行 disablesxsstackrc.ps1。 或者，您可以執行下列 Cmdlet：
 
     ```PowerShell
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\ClusterSettings" -Name "SessionDirectoryListener" -Force
@@ -324,7 +329,8 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 3. 選取 [**關於您的電腦**]。
 4. 檢查「版本」旁邊的數位。 數位應該是 "1809" 或 "1903"，如下圖所示。
 
-    ![Windows 規格視窗的螢幕擷取畫面。 版本號碼會以藍色反白顯示。](media/windows-specifications.png)
+    > [!div class="mx-imgBorder"]
+    > ![Windows 規格視窗的螢幕擷取畫面。 版本號碼會以藍色反白顯示。](media/windows-specifications.png)
 
 既然您已經知道您的版本號碼，請直接跳到相關的章節。
 
@@ -344,12 +350,12 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需疑難排解 Windows 虛擬桌面和擴大追蹤的總覽，請參閱[疑難排解總覽、意見反應和支援](troubleshoot-set-up-overview.md)。
+- 如需 Windows 虛擬桌面疑難排解和擴大追蹤的概觀，請參閱[疑難排解概觀、意見反應和支援](troubleshoot-set-up-overview.md)。
 - 若要針對在 Windows 虛擬桌面環境中建立主機集區的問題進行疑難排解，請參閱[環境和主機集區建立](troubleshoot-set-up-issues.md)。
-- 若要在 Windows 虛擬桌面中設定虛擬機器（VM）時針對問題進行疑難排解，請參閱[工作階段主機虛擬機器](troubleshoot-vm-configuration.md)設定。
+- 若要針對在 Windows 虛擬桌面中設定虛擬機器 (VM) 時的問題進行疑難排解，請參閱[工作階段主機虛擬機器設定](troubleshoot-vm-configuration.md)。
 - 若要針對 Windows 虛擬桌面用戶端連接的問題進行疑難排解，請參閱[Windows 虛擬桌面服務連接](troubleshoot-service-connection.md)。
 - 若要疑難排解遠端桌面用戶端的問題，請參閱針對[遠端桌面用戶端進行疑難排解](troubleshoot-client.md)
-- 若要針對搭配 Windows 虛擬桌面使用 PowerShell 時的問題進行疑難排解，請參閱[Windows 虛擬桌面 PowerShell](troubleshoot-powershell.md)。
+- 若要針對使用 PowerShell 搭配 Windows 虛擬桌面時的問題進行疑難排解，請參閱 [Windows 虛擬桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要深入瞭解此服務，請參閱[Windows 虛擬桌面環境](environment-setup.md)。
 - 若要進行疑難排解教學課程，請參閱[教學課程：針對 Resource Manager 範本部署進行疑難排解](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
 - 若要了解稽核動作，請參閱 [使用 Resource Manager 來稽核作業](../azure-resource-manager/management/view-activity-logs.md)。

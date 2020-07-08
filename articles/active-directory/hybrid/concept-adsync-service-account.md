@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f228da5afc5998d8fa59ce2d720cec4c9f955b67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9614def5310bdc6fa8c6f37d7cdcc0a5f081a96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67478715"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360294"
 ---
 # <a name="adsync-service-account"></a>ADSync 服務帳戶
 Azure AD Connect 會安裝內部部署服務，以協調 Active Directory 和 Azure Active Directory 之間的同步處理。  Microsoft Azure AD 同步同步處理服務（ADSync）會在內部部署環境中的伺服器上執行。  服務的認證預設會在快速安裝中設定，但您可以根據組織的安全性需求進行自訂。  這些認證不會用來連接到您的內部部署樹系或 Azure Active Directory。

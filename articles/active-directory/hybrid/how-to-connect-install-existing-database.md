@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23bcb63b6b499e72cb43089659e513d276bd8306
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60245207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358968"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>使用現有的 ADSync 資料庫安裝 Azure AD Connect
 Azure AD Connect 需要 SQL Server 資料庫來儲存資料。 您可以使用 Azure AD Connect 安裝的預設 SQL Server 2012 Express LocalDB 或使用您自己的完整版 SQL。 在先前，當您安裝 Azure AD Connect 時，一律會建立名為 ADSync 的新資料庫。 使用 Azure AD Connect 1.1.613.0 版 (或更新版本)，您可以選擇指向現有的 ADSync 資料庫來安裝 Azure AD Connect。
@@ -76,19 +76,15 @@ Azure AD Connect 需要 SQL Server 資料庫來儲存資料。 您可以使用 A
 1. 在 [連線您的目錄]**** 畫面上，會列出針對目錄同步作業設定的現有 AD 樹系，旁邊會有紅色十字圖示。 若要同步處理內部部署 AD 樹系的變更，需要 AD DS 帳戶。 Azure AD Connect 精靈無法擷取儲存在 ADSync 資料庫的 AD DS 帳戶認證，因為認證會予以加密，且只能由先前的 Azure AD Connect 伺服器進行解密。 按一下 [變更認證]**** 可指定 AD 樹系的 AD DS 帳戶。
    ![Directories](./media/how-to-connect-install-existing-database/db6.png)
  
- 
 1. 在快顯對話方塊中，您可以 (i) 提供企業管理員認證，並且讓 Azure AD Connect 為您建立 AD DS 帳戶，或 (ii) 自行建立 AD DS 帳戶，並且為 Azure AD Connect 提供其認證。 一旦您選取選項並提供必要的認證後，請按一下 [確定]**** 以關閉快顯對話方塊。
    ![歡迎使用](./media/how-to-connect-install-existing-database/db7.png)
  
- 
-1. 一旦提供認證後，紅色十字圖示會取代為綠色勾號圖示。 按 [下一步]  。
+1. 一旦提供認證後，紅色十字圖示會取代為綠色勾號圖示。 按 [下一步] 。
    ![歡迎使用](./media/how-to-connect-install-existing-database/db8.png)
  
- 
 1. 在 [**準備好設定**] 畫面上，按一下 [**安裝**]。
    ![歡迎使用](./media/how-to-connect-install-existing-database/db9.png)
  
- 
 1. 安裝完成之後，Azure AD Connect 伺服器會自動啟用暫存模式。 建議您先檢閱伺服器組態和擱置的未預期變更匯出，然後再停用暫存模式。 
 
 ## <a name="post-installation-tasks"></a>後續安裝工作
@@ -106,6 +102,6 @@ Azure AD Connect 需要 SQL Server 資料庫來儲存資料。 您可以使用 A
 ## <a name="next-steps"></a>後續步驟
 
 - 安裝了 Azure AD Connect 之後，您可以 [驗證安裝和指派授權](how-to-connect-post-installation.md)。
-- 深入了解這些在安裝時啟用的功能︰[防止意外刪除](how-to-connect-sync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](how-to-connect-health-sync.md)。
+- 深入了解這些在安裝時啟用的功能︰[防止意外刪除](how-to-connect-sync-feature-prevent-accidental-deletes.md)及 [Azure AD Connect Health](how-to-connect-health-sync.md)。
 - 深入了解這些常見主題︰[排程器和如何觸發同步處理](how-to-connect-sync-feature-scheduler.md)。
 - 深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

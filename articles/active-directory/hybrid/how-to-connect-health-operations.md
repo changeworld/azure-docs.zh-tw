@@ -11,16 +11,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef908429d359020282920d73480a472bfde0aa60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cc7c256ca6866e5b981f8740c9953534d830316
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359155"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 作業
 本主題說明您可以使用 Azure Active Directory (Azure AD) Connect Health 來執行的各種作業。
@@ -109,7 +109,7 @@ Azure AD Connect Health 的[角色型存取控制 (RBAC)](../../role-based-acces
 ### <a name="roles"></a>角色
 Azure AD Connect Health 支援下列內建角色：
 
-| [角色] | 權限 |
+| 角色 | 權限 |
 | --- | --- |
 | 擁有者 |擁有者可以在 Azure AD Connect Health 內「管理存取」**(例如將角色指派給使用者或群組)、「檢視入口網站中的所有資訊」**(例如檢視警示)，以及「變更設定」**(例如電子郵件通知)。 <br>預設會指派此角色給 Azure AD 全域管理員，而且無法變更。 |
 | 參與者 |參與者可以在 Azure AD Connect Health 內「檢視入口網站中的所有資訊」**(例如檢視警示)，以及「變更設定」**(例如電子郵件通知)。 |
@@ -133,12 +133,12 @@ Azure AD Connect Health 支援在兩個層級上管理存取：
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>步驟 2：新增使用者和群組及指派角色
 1. 從 [設定]**** 區段中，按一下 [使用者]****。<br>
    ![Azure AD Connect Health 資源提要欄位的螢幕擷取畫面](./media/how-to-connect-health-operations/startRBAC.png)
-2. 選取 [新增]  。
+2. 選取 [新增]。
 3. 在 [選取角色]**** 窗格中，選取角色 (例如，**擁有者**)。<br>
    ![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_add.png)
-4. 輸入目標使用者或群組的名稱或識別碼。 您可以同時選取一或多個使用者或群組。 按一下 [選取]  。
+4. 輸入目標使用者或群組的名稱或識別碼。 您可以同時選取一或多個使用者或群組。 按一下 [選取]。
    ![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_select_users.png)
-5. 選取 [確定]  。<br>
+5. 選取 [確定]。<br>
 6. 完成角色指派之後，使用者和群組就會出現在清單中。<br>
    ![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面，其中已醒目提示新使用者](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
