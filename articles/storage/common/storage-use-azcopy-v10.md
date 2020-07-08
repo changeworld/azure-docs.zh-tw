@@ -1,29 +1,29 @@
 ---
 title: 使用 AzCopy v10 將資料複製或移動到 Azure 儲存體 |Microsoft Docs
-description: AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料。 本文可協助您下載 AzCopy、連接到您的儲存體帳戶，然後傳輸檔案。
+description: AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料。 本文可協助您下載 AzCopy、連線到您的儲存體帳戶，然後傳輸檔案。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6e6bd55fbb73113dfbcd01e94753c4fb21219c14
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: f0d957c05aded6641377b47c3fe383c141480b30
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780873"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504469"
 ---
 # <a name="get-started-with-azcopy"></a>開始使用 AzCopy
 
-AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 blob 或檔案。 本文可協助您下載 AzCopy、連接到您的儲存體帳戶，然後傳輸檔案。
+AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob 或檔案。 本文可協助您下載 AzCopy、連線到您的儲存體帳戶，然後傳輸檔案。
 
 > [!NOTE]
 > AzCopy **V10**是目前支援的 AzCopy 版本。
 >
 > 如果您需要使用舊版的 AzCopy，請參閱本文的[使用舊版 AzCopy](#previous-version)一節。
 
-<a id="download-and-install-azcopy" />
+<a id="download-and-install-azcopy"></a>
 
 ## <a name="download-azcopy"></a>下載 AzCopy
 
@@ -42,13 +42,13 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 blob �
 
 ## <a name="run-azcopy"></a>執行 AzCopy
 
-為了方便起見，請考慮將 AzCopy 可執行檔的目錄位置新增至您的系統路徑，以方便使用。 如此一來，您`azcopy`就可以從系統上的任何目錄進行輸入。
+為了方便起見，請考慮將 AzCopy 可執行檔的目錄位置新增至您的系統路徑，以方便使用。 如此一來，您就可以 `azcopy` 從系統上的任何目錄進行輸入。
 
-如果您選擇不要將 AzCopy 目錄新增至您的路徑，則必須將目錄變更為 AzCopy 可執行檔的位置，並在`azcopy` Windows `.\azcopy` PowerShell 命令提示字元中輸入或。
+如果您選擇不要將 AzCopy 目錄新增至您的路徑，則必須將目錄變更為 AzCopy 可執行檔的位置，並 `azcopy` `.\azcopy` 在 Windows PowerShell 命令提示字元中輸入或。
 
-若要查看命令清單，請輸入`azcopy -h` ，然後按 enter 鍵。
+若要查看命令清單，請輸入， `azcopy -h` 然後按 enter 鍵。
 
-若要瞭解特定的命令，請只包含命令的名稱（例如： `azcopy list -h`）。
+若要瞭解特定的命令，請只包含命令的名稱（例如： `azcopy list -h` ）。
 
 ![內嵌說明](media/storage-use-azcopy-v10/azcopy-inline-help.png)
 
@@ -117,7 +117,7 @@ azcopy login
 azcopy login --tenant-id=<tenant-id>
 ```
 
-將`<tenant-id>`預留位置取代為儲存體帳戶所屬組織的租使用者識別碼。 若要尋找租使用者識別碼，請在 Azure 入口網站中選取 [ **Azure Active Directory > 屬性] > [目錄識別碼**]。
+將預留位置取代為 `<tenant-id>` 儲存體帳戶所屬組織的租使用者識別碼。 若要尋找租使用者識別碼，請在 Azure 入口網站中選取 [ **Azure Active Directory > 屬性] > [目錄識別碼**]。
 
 此命令傳回驗證碼和網站的 URL。 開啟網站，提供程式碼，然後選擇 [下一步]**** 按鈕。
 
@@ -125,7 +125,7 @@ azcopy login --tenant-id=<tenant-id>
 
 隨即會出現登入視窗。 在該視窗中，使用您的 Azure 帳戶認證登入 Azure 帳戶。 順利登入之後，您可以關閉瀏覽器視窗，然後開始使用 AzCopy。
 
-<a id="service-principal" />
+<a id="service-principal"></a>
 
 #### <a name="authenticate-a-service-principal"></a>驗證服務主體
 
@@ -141,7 +141,7 @@ azcopy login --tenant-id=<tenant-id>
 
 ##### <a name="using-a-client-secret"></a>使用用戶端密碼
 
-首先，將`AZCOPY_SPA_CLIENT_SECRET`環境變數設定為服務主體之應用程式註冊的用戶端密碼。
+首先，將 `AZCOPY_SPA_CLIENT_SECRET` 環境變數設定為服務主體之應用程式註冊的用戶端密碼。
 
 > [!NOTE]
 > 請務必從您的命令提示字元設定此值，而不是作業系統的環境變數設定。 如此一來，此值僅適用于目前的會話。
@@ -158,10 +158,10 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 接下來，輸入下列命令，然後按 ENTER 鍵。
 
 ```azcopy
-azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
+azcopy login --service-principal --certificate-path path-to-certificate-file --application-id application-id --tenant-id=tenant-id
 ```
 
-以服務`<application-id>`主體之應用程式註冊的應用程式識別碼取代預留位置。 將`<tenant-id>`預留位置取代為儲存體帳戶所屬組織的租使用者識別碼。 若要尋找租使用者識別碼，請在 Azure 入口網站中選取 [ **Azure Active Directory > 屬性] > [目錄識別碼**]。 
+`<application-id>`以服務主體之應用程式註冊的應用程式識別碼取代預留位置。 將預留位置取代為 `<tenant-id>` 儲存體帳戶所屬組織的租使用者識別碼。 若要尋找租使用者識別碼，請在 Azure 入口網站中選取 [ **Azure Active Directory > 屬性] > [目錄識別碼**]。 
 
 ##### <a name="using-a-certificate"></a>使用憑證
 
@@ -169,7 +169,7 @@ azcopy login --service-principal --application-id <application-id> --tenant-id=<
 
 除了將憑證上傳至您的應用程式註冊之外，您還需要將憑證的複本儲存到 AzCopy 執行所在的電腦或 VM。 這個憑證複本應該在中。PFX 或。PEM 格式，而且必須包含私密金鑰。 私密金鑰應受密碼保護。 如果您使用的是 Windows，而您的憑證只存在於憑證存放區中，請務必將該憑證匯出到 PFX 檔案（包括私密金鑰）。 如需指引，請參閱[Export-get-pfxcertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)
 
-接下來，將`AZCOPY_SPA_CERT_PASSWORD`環境變數設定為憑證密碼。
+接下來，將 `AZCOPY_SPA_CERT_PASSWORD` 環境變數設定為憑證密碼。
 
 > [!NOTE]
 > 請務必從您的命令提示字元設定此值，而不是作業系統的環境變數設定。 如此一來，此值僅適用于目前的會話。
@@ -186,12 +186,12 @@ $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
 azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>
 ```
 
-將`<path-to-certificate-file>`預留位置取代為憑證檔案的相對或完整路徑。 AzCopy 會儲存此憑證的路徑，但不會儲存憑證的複本，因此請務必將該憑證保留在原處。 將`<tenant-id>`預留位置取代為儲存體帳戶所屬組織的租使用者識別碼。 若要尋找租使用者識別碼，請在 Azure 入口網站中選取 [ **Azure Active Directory > 屬性] > [目錄識別碼**]。
+將 `<path-to-certificate-file>` 預留位置取代為憑證檔案的相對或完整路徑。 AzCopy 會儲存此憑證的路徑，但不會儲存憑證的複本，因此請務必將該憑證保留在原處。 將預留位置取代為 `<tenant-id>` 儲存體帳戶所屬組織的租使用者識別碼。 若要尋找租使用者識別碼，請在 Azure 入口網站中選取 [ **Azure Active Directory > 屬性] > [目錄識別碼**]。
 
 > [!NOTE]
 > 請考慮使用如下列範例所示的提示。 如此一來，您的密碼就不會出現在主控台的命令歷程記錄中。 
 
-<a id="managed-identity" />
+<a id="managed-identity"></a>
 
 #### <a name="authenticate-a-managed-identity"></a>驗證受控識別
 
@@ -221,19 +221,19 @@ azcopy login --identity
 azcopy login --identity --identity-client-id "<client-id>"
 ```
 
-以使用者`<client-id>`指派的受控識別的用戶端識別碼取代預留位置。
+`<client-id>`以使用者指派的受控識別的用戶端識別碼取代預留位置。
 
 ```azcopy
 azcopy login --identity --identity-object-id "<object-id>"
 ```
 
-以使用者`<object-id>`指派的受控識別的物件識別碼取代預留位置。
+`<object-id>`以使用者指派的受控識別的物件識別碼取代預留位置。
 
 ```azcopy
 azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
-以使用者`<resource-id>`指派受控識別的資源識別碼取代預留位置。
+`<resource-id>`以使用者指派受控識別的資源識別碼取代預留位置。
 
 ### <a name="option-2-use-a-sas-token"></a>選項2：使用 SAS 權杖
 
@@ -277,7 +277,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
 
 > [!NOTE]
-> 針對 Linux， `--strip-components=1`在`tar`命令上會移除包含版本名稱的最上層資料夾，並改為直接將二進位檔解壓縮至目前的資料夾。 如此一來，只要更新`azcopy` `wget` URL，就能以新版本更新腳本。
+> 針對 Linux， `--strip-components=1` 在 `tar` 命令上會移除包含版本名稱的最上層資料夾，並改為直接將二進位檔解壓縮至目前的資料夾。 如此一來，只要更新 URL，就能以新版本更新腳本 `azcopy` `wget` 。
 
 此 URL 會出現在此命令的輸出中。 接著，您的腳本就可以使用該 URL 來下載 AzCopy。
 
@@ -288,7 +288,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>在 SAS 權杖中換用特殊字元
 
-在副檔名為`.cmd`的批次檔中，您必須將出現在 SAS `%`權杖中的字元加以轉義。 若要這麼做，您可以在`%` SAS 權杖字串的`%`現有字元旁新增額外的字元。
+在副檔名為的批次檔中 `.cmd` ，您必須將 `%` 出現在 SAS 權杖中的字元加以轉義。 若要這麼做，您可以在 `%` SAS 權杖字串的現有字元旁新增額外的字元 `%` 。
 
 ### <a name="run-scripts-by-using-jenkins"></a>使用 Jenkins 執行腳本
 
@@ -300,11 +300,11 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 ## <a name="use-azcopy-in-azure-storage-explorer"></a>在 Azure 儲存體總管中使用 AzCopy
 
-[儲存體總管](https://azure.microsoft.com/features/storage-explorer/)使用 AzCopy 來執行其所有的資料傳輸作業。 如果您想要利用 AzCopy 的效能優勢，可以使用[儲存體總管](https://azure.microsoft.com/features/storage-explorer/)，但是您想要使用圖形化使用者介面，而不是命令列來與您的檔案互動。
+[儲存體總管](https://azure.microsoft.com/features/storage-explorer/)使用 AzCopy 來執行其所有資料傳輸作業。 如果您想要利用 AzCopy 的效能優勢，可以使用[儲存體總管](https://azure.microsoft.com/features/storage-explorer/)，但是您想要使用圖形化使用者介面，而不是命令列來與您的檔案互動。
 
 儲存體總管會使用您的帳戶金鑰來執行作業，因此當您登入儲存體總管之後，就不需要提供額外的授權認證。
 
-<a id="previous-version" />
+<a id="previous-version"></a>
 
 ## <a name="use-the-previous-version-of-azcopy"></a>使用舊版的 AzCopy
 

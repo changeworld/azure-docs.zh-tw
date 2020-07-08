@@ -5,17 +5,17 @@ description: 瞭解如何變更工作區所使用之 Azure 儲存體帳戶的存
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/06/2020
-ms.openlocfilehash: f1541c177cea2d223a5e7df576d95fab7eafb310
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/19/2020
+ms.openlocfilehash: 3a99bff20eb7135b384bfef5be4ece9c5fff0461
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80296928"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483307"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新產生儲存體帳戶存取金鑰
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,11 +24,14 @@ ms.locfileid: "80296928"
 
 基於安全考慮，您可能需要變更 Azure 儲存體帳戶的存取金鑰。 當您重新產生存取金鑰時，必須將 Azure Machine Learning 更新為使用新的金鑰。 Azure Machine Learning 可能會同時針對模型儲存體和資料存放區使用儲存體帳戶。
 
-## <a name="prerequisites"></a>先決條件
+> [!IMPORTANT]
+> 使用資料存放區已註冊的認證會儲存在與工作區相關聯的 Azure Key Vault 中。 如果您已為您的 Key Vault 啟用虛[刪除](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)，請務必遵循這篇文章來更新認證。 取消註冊資料存放區，並以相同名稱重新註冊，將會失敗。
+
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure Machine Learning 工作區。 如需詳細資訊，請參閱[建立工作區](how-to-manage-workspace.md)文章。
 
-* [AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
 * [AZURE MACHINE LEARNING CLI 擴充](reference-azure-machine-learning-cli.md)功能。
 
@@ -85,7 +88,7 @@ for name, ds in datastores.items():
 
 1. 重新產生金鑰。 如需重新產生存取金鑰的詳細資訊，請參閱[管理儲存體帳戶存取金鑰](../storage/common/storage-account-keys-manage.md)。 儲存新的金鑰。
 
-1. 若要更新工作區以使用新的金鑰，請使用下列步驟：
+1. Azure Machine Learning 工作區會自動同步處理新的金鑰，並在一小時後開始使用它。 若要強制工作區立即同步至新的金鑰，請使用下列步驟：
 
     1. 若要使用下列 Azure CLI 命令登入包含您工作區的 Azure 訂用帳戶：
 
@@ -95,7 +98,7 @@ for name, ds in datastores.items():
 
         [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
-    1. 若要更新工作區以使用新的金鑰，請使用下列命令。 將`myworkspace`取代為您的 Azure Machine Learning 工作區名稱`myresourcegroup` ，並將取代為包含工作區的 Azure 資源組名。
+    1. 若要更新工作區以使用新的金鑰，請使用下列命令。 `myworkspace`將取代為您的 Azure Machine Learning 工作區名稱，並 `myresourcegroup` 將取代為包含工作區的 Azure 資源組名。
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
@@ -105,28 +108,36 @@ for name, ds in datastores.items():
 
         此命令會自動為工作區所使用的 Azure 儲存體帳戶同步處理新的金鑰。
 
-1. 若要重新註冊使用儲存體帳戶的資料存放區，請使用 [[需要更新的內容](#whattoupdate)] 區段中的值，以及步驟1中包含下列程式碼的金鑰：
-
-    ```python
-    # Re-register the blob container
-    ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+1. 您可以透過 SDK 或[Azure Machine Learning studio](https://ml.azure.com)，重新註冊使用儲存體帳戶的資料存放區。
+    1. **若要透過 PYTHON SDK 重新註冊資料存放區**，請使用 [必須更新的[內容](#whattoupdate)] 區段中的值，以及步驟1中包含下列程式碼的索引鍵。 
+    
+        由於 `overwrite=True` 指定了，此程式碼會覆寫現有的註冊，並將其更新為使用新的金鑰。
+    
+        ```python
+        # Re-register the blob container
+        ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+                                                  datastore_name='your datastore name',
+                                                  container_name='your container name',
+                                                  account_name='your storage account name',
+                                                  account_key='new storage account key',
+                                                  overwrite=True)
+        # Re-register file shares
+        ds_file = Datastore.register_azure_file_share(workspace=ws,
                                               datastore_name='your datastore name',
-                                              container_name='your container name',
+                                              file_share_name='your container name',
                                               account_name='your storage account name',
                                               account_key='new storage account key',
                                               overwrite=True)
-    # Re-register file shares
-    ds_file = Datastore.register_azure_file_share(workspace=ws,
-                                          datastore_name='your datastore name',
-                                          file_share_name='your container name',
-                                          account_name='your storage account name',
-                                          account_key='new storage account key',
-                                          overwrite=True)
+        
+        ```
     
-    ```
-
-    由於`overwrite=True`指定了，此程式碼會覆寫現有的註冊，並將其更新為使用新的金鑰。
+    1. **若要透過 studio 重新註冊資料存放區**，請從 studio 的左窗格中選取 [**資料存放區**]。 
+        1. 選取您想要更新的資料存放區。
+        1. 選取左上方的 [**更新認證**] 按鈕。 
+        1. 使用步驟1中的新存取金鑰來填入表單，然後按一下 [**儲存**]。
+        
+            如果您要更新**預設資料**存放區的認證，請完成此步驟，並重複步驟2b 以重新同步處理新的金鑰與工作區的預設資料存放區。 
 
 ## <a name="next-steps"></a>後續步驟
 
-如需註冊資料存放區的詳細資訊，請[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)參閱類別參考。
+如需註冊資料存放區的詳細資訊，請參閱 [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) 類別參考。

@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: b-juche
-ms.openlocfilehash: b21db3e842898e8ce11b560714888b946373300e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d76af4901103b0eed8cd1cffac744f8fb41d9689
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80616441"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483494"
 ---
 # <a name="set-up-a-capacity-pool"></a>設定容量集區
 
@@ -41,7 +41,7 @@ ms.locfileid: "80616441"
     [新增容量集區] 視窗隨即出現。
 
 3. 請提供新容量集區的下列資訊：  
-   * **Name**  
+   * **名稱**  
      指定容量集區的名稱。  
      每個 NetApp 帳戶的容量集區名稱必須是唯一的。
 
@@ -55,7 +55,7 @@ ms.locfileid: "80616441"
       
      ![新增容量集區](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. 按一下 [確定]  。
+4. 按一下 [確定]。
 
 ## <a name="next-steps"></a>後續步驟 
 

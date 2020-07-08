@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed13c61646bd2a6672b613964507d291a69a6821
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78267909"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483596"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理快照集
 
@@ -41,7 +41,7 @@ ms.locfileid: "78267909"
 
     ![新增快照集](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. 按一下 [確定]  。 
+4. 按一下 [確定]。 
 
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>將快照集還原至新磁碟區
 
@@ -68,7 +68,7 @@ ms.locfileid: "78267909"
     * **配額**  
         指定配置給磁碟區的邏輯儲存體大小。  
 
-        [可用配額]**** 欄位會顯示所選容量集區中可用來建立新磁碟區的未使用空間量。 新磁碟區的大小不可超過可用配額。
+        [可用配額] 欄位會顯示所選容量集區中可用來建立新磁碟區的未使用空間量。 新磁碟區的大小不可超過可用配額。
 
     *   **虛擬網路**  
         指定您要從中存取磁碟區的 Azure 虛擬網路 (Vnet)。  
@@ -81,7 +81,7 @@ ms.locfileid: "78267909"
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
    -->
 
-5. 按一下 [確定]  。   
+5. 按一下 [確定]。   
     快照集還原到的新磁碟區會出現在 [磁碟區] 刀鋒視窗中。
 
 ## <a name="next-steps"></a>後續步驟

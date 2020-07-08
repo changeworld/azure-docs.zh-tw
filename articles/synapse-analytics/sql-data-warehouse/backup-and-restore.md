@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 1d82c7c22bb5aeb2740884b0d7ede4a4d8f07f86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4a08035b03c104555c39311bfb812218cca44b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631208"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482542"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Azure Synapse SQL 集區中的備份與還原
 
@@ -30,7 +30,7 @@ ms.locfileid: "80631208"
 
 ## <a name="automatic-restore-points"></a>自動還原點
 
-快照集是服務的內建功能，可建立還原點。 您不需啟用此功能。 不過，SQL 集區應處於作用中狀態，才能建立還原點。 如果 SQL 集區經常暫停，可能就不會建立自動還原點，因此請務必先建立使用者定義的還原點，再暫停 SQL 集區。 使用者目前無法刪除自動還原點，因為服務會使用這些還原點來維護修復的 Sla。
+快照集是內建的功能，可建立還原點。 您不需啟用此功能。 不過，SQL 集區應處於作用中狀態，才能建立還原點。 如果 SQL 集區經常暫停，可能就不會建立自動還原點，因此請務必先建立使用者定義的還原點，再暫停 SQL 集區。 使用者目前無法刪除自動還原點，因為服務會使用這些還原點來維護修復的 Sla。
 
 資料倉儲的快照集會在一天內進行，並建立可供7天使用的還原點。 此保留期無法變更。 SQL 集區支援八小時的復原點目標（RPO）。 您可以透過過去七天內所建立的任一個快照集，在主要區域中還原資料倉儲。
 
@@ -65,7 +65,7 @@ order by run_id desc
 當您卸載 SQL 集區時，會建立最後一個快照，並儲存7天。 您可以將 SQL 集區還原至刪除時所建立的最後一個還原點。 如果 SQL 集區在暫停狀態下卸載，則不會建立任何快照。 在這種情況下，請務必先建立使用者定義的還原點，然後再卸載 SQL 集區。
 
 > [!IMPORTANT]
-> 如果您刪除邏輯 SQL Server 執行個體，所有屬於該執行個體的資料庫也會一併刪除，且無法復原。 您無法還原已刪除的伺服器。
+> 如果您刪除裝載 SQL 集區的伺服器，所有屬於該伺服器的資料庫也會一併刪除，而且無法復原。 您無法還原已刪除的伺服器。
 
 ## <a name="geo-backups-and-disaster-recovery"></a>異地備份和災害復原
 
@@ -96,7 +96,7 @@ order by run_id desc
 
 ## <a name="cross-subscription-restore"></a>跨訂用帳戶還原
 
-如果您需要在訂用帳戶之間直接還原，請[在這裡](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)投票這項功能。 還原至不同的邏輯伺服器，並在訂用帳戶之間「[移動](/azure/azure-resource-manager/resource-group-move-resources?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)」伺服器，以執行跨訂閱還原。
+如果您需要在訂用帳戶之間直接還原，請[在這裡](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)投票這項功能。 還原至不同的伺服器，並在訂用帳戶之間「[移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)」伺服器，以執行跨訂閱還原。
 
 ## <a name="geo-redundant-restore"></a>異地備援還原
 
@@ -107,4 +107,4 @@ order by run_id desc
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關災害規劃的詳細資訊，請參閱[商務持續性概觀](../../sql-database/sql-database-business-continuity.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+如需還原點的詳細資訊，請參閱[使用者定義的還原點](sql-data-warehouse-restore-points.md)。

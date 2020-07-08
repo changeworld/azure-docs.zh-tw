@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9a291971ce0edead9ca28a47f7ad0689b0f65547
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: ff4781109b2572d5555ec0a03c65359ef5a89d8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834946"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482508"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Synapse SQL 的開發最佳做法
 本文說明您在開發資料倉儲解決方案時可遵循的指引和最佳做法。 
@@ -150,7 +150,7 @@ SQL 隨選可讓您查詢 Azure 儲存體帳戶中的檔案。 其不具有本�
 
 資料通常會組織成分割區。 您可以指示 SQL 隨選查詢特定的資料夾和檔案。 這會減少查詢需要讀取和處理的檔案數目和資料量。 
 
-因此，您將可獲得更佳的效能。 如需詳細資訊，請參閱 [filename](develop-storage-files-overview.md#filename-function) 和 [filepath](develop-storage-files-overview.md#filepath-function) 函式和範例，以了解如何[查詢特定檔案](query-specific-files.md)。
+因此，您將可獲得更佳的效能。 如需詳細資訊，請參閱 [filename](query-data-storage.md#filename-function) 和 [filepath](query-data-storage.md#filepath-function) 函式和範例，以了解如何[查詢特定檔案](query-specific-files.md)。
 
 如果您在儲存體中的資料未分割，請考慮將其分割，以便使用這些函式來最佳化以這些檔案為目標的查詢。
 

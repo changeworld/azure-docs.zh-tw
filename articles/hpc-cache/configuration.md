@@ -3,15 +3,15 @@ title: 設定 Azure HPC 快取設定
 description: 說明如何設定快取的其他設定，例如 MTU 和無根目錄 squash，以及如何從 Azure Blob 儲存體目標存取快速快照集。
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 88aea7e58aacd9a630771948c6dbc6ed5712a674
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871424"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505302"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>設定其他 Azure HPC 快取設定
 
@@ -22,6 +22,9 @@ ms.locfileid: "82871424"
 若要查看設定，請在 [Azure 入口網站中開啟快取的 [設定 **] 頁面。**
 
 ![Azure 入口網站中設定頁面的螢幕擷取畫面](media/configuration.png)
+
+> [!TIP]
+> [管理 AZURE HPC](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)快取影片會顯示 [設定] 頁面及其設定。
 
 ## <a name="adjust-mtu-value"></a>調整 MTU 值
 <!-- linked from troubleshoot-nas article -->
@@ -48,9 +51,9 @@ ms.locfileid: "82871424"
 
 如果已停用根 squash，用戶端根使用者（UID 0）的要求會傳遞至後端 NFS 儲存體系統作為根。 此設定可能會允許不適當的檔案存取。
 
-在快取上設定 root squash 有助於補償做為儲存體``no_root_squash``目標的 NAS 系統上所需的設定。 （深入瞭解[NFS 儲存體目標必要條件](hpc-cache-prereqs.md#nfs-storage-requirements)）。當搭配 Azure Blob 儲存體目標使用時，它也可以改善安全性。
+在快取上設定 root squash 有助於補償 ``no_root_squash`` 做為儲存體目標的 NAS 系統上所需的設定。 （深入瞭解[NFS 儲存體目標必要條件](hpc-cache-prereqs.md#nfs-storage-requirements)）。當搭配 Azure Blob 儲存體目標使用時，它也可以改善安全性。
 
-預設設定為 **[是]**。 （2020年4月之前建立的快取可能預設設定為 [**否**]）。
+預設值為 [是]。 （2020年4月之前建立的快取可能預設設定為 [**否**]）。
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>查看 blob 儲存體目標的快照集
 
@@ -73,4 +76,4 @@ Azure HPC 快取會儲存每日、每週和每月快照集，直到它們被新�
 * 最多8個每週快照集
 * 最多3個月快照
 
-從 blob 儲存體目標命名`.snapshot`空間中的目錄存取快照集。
+從 `.snapshot` blob 儲存體目標命名空間中的目錄存取快照集。

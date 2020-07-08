@@ -3,15 +3,15 @@ title: 掛接 Avere vFXT - Azure
 description: 如何使用 Avere vFXT for Azure 掛接用戶端
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6a4b2c1d95bc803d10697ce2164ea190f824d96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505438"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>掛接 Avere vFXT 叢集
 
@@ -78,7 +78,7 @@ vserver 路徑由其 *IP 位址*和*命名空間連接點*的路徑組合而成�
 
 如果您的叢集是使用 Blob 儲存體所建立，則該容器的命名空間路徑為`/msazure`
 
-範例： ``mount 10.0.0.12:/msazure /mnt/vfxt``
+範例：``mount 10.0.0.12:/msazure /mnt/vfxt``
 
 如果您在建立叢集之後新增儲存體，命名空間的連接路徑就是您在建立連接點時，于**命名空間路徑**中設定的值。 例如，如果您使用 ``/avere/files`` 作為命名空間路徑，則用戶端會將 *IP_address*:/ avere/files 掛接至其本機掛接點。
 

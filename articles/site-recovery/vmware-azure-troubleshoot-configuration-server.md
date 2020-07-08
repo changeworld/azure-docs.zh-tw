@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26376c6b20816d2e7302403c8391195e16092fa3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478298"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504315"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>針對組態伺服器問題進行疑難排解
 
@@ -52,6 +52,8 @@ ms.locfileid: "80478298"
     b. 開啟 Installation_Directory/Vx/bin/uninstall.sh 檔案，並為 **stop_services** 函式的呼叫加上註解。
     c. 開啟 Installation_Directory/Fx/uninstall.sh 檔案，並將嘗試停止 Fx 服務的整個區段加上註解。
     d. [卸載](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)行動代理程式。 成功解除安裝之後，請將系統重新開機，然後嘗試重新安裝代理程式。
+
+8. 請確定未針對使用者帳戶啟用多重要素驗證。 Azure Site Recovery 目前不支援使用者帳戶的多重要素驗證。 在未啟用多重要素驗證的使用者帳戶的情況下，註冊設定伺服器。  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>安裝失敗：無法載入帳戶
 
@@ -191,7 +193,7 @@ ms.locfileid: "80478298"
 若要解決此問題，請登入 Azure 入口網站並執行下列其中一項：
 
 - 在 AAD 中要求應用程式開發人員角色。 如需應用程式開發人員角色的詳細資訊，請參閱 [Azure Active Directory 中的系統管理員角色權限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
-- 在 AAD 中確認 [使用者可以建立應用程式]**** 旗標設為 true**。 如需詳細資訊，請參閱[如何：使用入口網站建立可存取資源的 Azure AD 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
+- 在 AAD 中確認 [使用者可以建立應用程式]**** 旗標設為 true**。 如需詳細資訊，請參閱[如何：使用入口網站建立可存取資源的 Azure AD 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>處理序伺服器/主要目標無法與組態伺服器通訊 
 
@@ -203,7 +205,7 @@ ms.locfileid: "80478298"
 
 若要確認主要目標代理程式可以針對組態伺服器 IP 建立 TCP 工作階段，請在主要目標代理程式記錄中尋找類似以下的追蹤：
 
-TCP \<在此將 ip 取代為 cs ip> \<：52739將 IP 更換為 cs ip，>： 443 SYN_SENT 
+TCP \<Replace IP with CS IP here>:52739 \<Replace IP with CS IP here>:443 SYN_SENT 
 
 TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // 以這裡的 CS IP 取代 IP
 

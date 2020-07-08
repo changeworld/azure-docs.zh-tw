@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 03/30/2020
-ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/26/2020
+ms.openlocfilehash: 8b0fa1402452d8e1f348cd353b00d0ef050d866c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780108"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483273"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning 中的計算目標是什麼？ 
 
-**計算目標**是指定的計算資源/環境，您可以在其中執行定型腳本或裝載您的服務部署。 此位置可能是您的本機電腦或雲端式計算資源。 使用計算目標可讓您更輕鬆地在稍後變更計算環境，而不需要變更您的程式碼。  
+**計算目標**是指定的計算資源/環境，您可以在其中執行定型腳本或裝載您的服務部署。 這個位置可能是您的本機電腦或雲端式計算資源。 使用計算目標可讓您更輕鬆地在稍後變更計算環境，而不需要變更您的程式碼。  
 
 在典型的模型開發生命週期中，您可能會：
 1. 從開發和實驗少量的資料開始。 在這個階段，我們建議您的本機環境（本機電腦或雲端式 VM）做為您的計算目標。 
@@ -52,21 +52,23 @@ Azure Machine Learning 在不同的計算資源上有不同的支援。  您也�
 * Azure Machine Learning Studio
 * Azure 入口網站
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py)和[AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)類別
-* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) （預覽）
 * Resource Manager 範本
-
-您也可以使用適用于 Azure CLI 的[機器學習擴充](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)功能來建立計算叢集。
+* [Azure CLI 的](reference-azure-machine-learning-cli.md#resource-management)機器學習服務延伸模組。  
 
 建立這些計算資源時，會自動成為您工作區的一部分，而不像其他類型的計算目標。
 
-### <a name="compute-clusters"></a>計算叢集
 
-您可以使用 Azure Machine Learning 計算叢集來進行定型和批次推斷（預覽）。  使用此計算資源，您可以：
+|功能  |計算叢集  |計算執行個體  |
+|---------|---------|---------|
+|單一或多節點叢集     |    **&check;**       |         |
+|每次提交執行時自動調整     |     **&check;**      |         |
+|自動叢集管理和作業排程     |   **&check;**        |     **&check;**      |
+|同時支援 CPU 和 GPU 資源     |  **&check;**         |    **&check;**       |
 
-* 單一或多節點叢集
-* 每次提交執行時自動調整 
-* 自動叢集管理和作業排程 
-* 同時支援 CPU 和 GPU 資源
+
+> [!NOTE]
+> 當計算叢集閒置時，它會自動調整為0個節點，因此您不需支付其使用時間。  不過，計算*實例*一律為開啟，且不會自動調整。  當您未使用[計算實例](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance)來避免產生額外成本時，您應該將它停止。
 
 ### <a name="supported-vm-series-and-sizes"></a>支援的 VM 系列和大小
 
@@ -80,17 +82,17 @@ Azure Machine Learning 在不同的計算資源上有不同的支援。  您也�
 
 | **支援的 VM 系列**  | **限制** |
 |------------|------------|
-| D | 無 |
-| Dv2 | 無 |  
-| DSv2 | 無 |  
-| FSv2 | 無 |  
+| D | None |
+| Dv2 | None |  
+| DSv2 | None |  
+| FSv2 | None |  
 | M | 需要核准 |
-| NC | 無 |    
+| NC | None |    
 | NCsv2 | 需要核准 |
 | NCsv3 | 需要核准 |  
 | NDs | 需要核准 |
 | NDv2 | 需要核准 |
-| NV | 無 |
+| NV | None |
 | NVv3 | 需要核准 | 
 
 

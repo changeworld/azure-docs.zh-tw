@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 0db3d46edf1b6bb0b425235654824e26293eb4a9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: aa77ac3652d8646a3354cb137ba7cf4240e58e6c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800497"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482882"
 ---
 # <a name="about-azure-networking-msp-partners"></a>關於 Azure 網路 MSP 合作夥伴
 
@@ -28,11 +28,12 @@ Azure 網路 MSP 是一組特製化的受控服務提供者，可解決雲端和
 
 使用本節中的連結，可深入了解 Azure 網路 MSP 合作夥伴提供的受控雲端網路服務。 如果您的雲端網路服務合作夥伴未列在下一節，請讓提供者與我們連絡。 他們可以傳送電子郵件到 ManagedVirtualWAN@microsoft.com 來與我們連絡。 
 
-| **MSP** | **雲端網路轉換服務** | **受控 ExpressRoute** | **受控虛擬 WAN** |
-| ---| ---| ---| ---|
-|[ANS 群組 (UK)](https://www.ans.co.uk/)|[Azure 受控服務 + ANS Glass 10wk 實作](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
+| **MSP** | **雲端網路轉換服務** | **受控 ExpressRoute** | **受控虛擬 WAN** | **受控私用邊緣區域**|
+| ---| ---| ---| ---| ---|
+|[ANS 群組 (UK)](https://www.ans.co.uk/)|[Azure 受控服務 + ANS Glass 10wk 實作](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|[ExpressRoute & 連線能力：2周評估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_er)|[Azure 虛擬 WAN + Fortinet：2周評估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_vw)|||
 |[Aryaka 網路](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Azure 虛擬 WAN](https://azuremarketplace.microsoft.com/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview) | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[網路轉換諮詢：1小時評量](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting)；[BT Cloud Connect Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-001?tab=Overview)|[BT Cloud Connect Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-003?tab=Overview)|[BT Cloud Connect Azure VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-002?tab=Overview)|||
+|[CenturyLink](https://www.centurylink.com/business.html)||[ExpressRoute 諮詢 Svcs： 8-wk 實施](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/centurylink2362604-2362604.centurylink_consultingservicesforexpressroute)||||
 |[Coevolve](https://www.coevolve.com/services/azure-networking-services/)|||[受控 SD-WAN 虛擬邊緣](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Azure 上的網路最佳化：2 小時評量](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
 |[NTT 資料](https://us.nttdata.com/en/digital/cloud-transformation)|[受控服務：2 週實作](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||
@@ -48,10 +49,11 @@ Azure 網路 MSP 是一組特製化的受控服務提供者，可解決雲端和
 |[SoftBank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Azure 網路諮詢服務：1 週評量](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure)；[Azure 評量服務：1 週](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
 |[TCTS](https://www.tatacommunications-ts.com/index.php)|[Azure 移轉：3 週評量](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
 |[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)||[受控 Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_expressroute?tab=Overview)|[受控虛擬 WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_azure_vwan_for_sdwan?tab=Overview)|||
+|[技術 Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)|[E2E 受控網路解決方案](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-network-transformstrategy?tab=Overview)|||[Azure 私用 LTE MSP](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-networking-azureprivate5g?tab=Overview)|
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure 健康情況檢查：5 天評量](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute：5 天實作](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis 受控 ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[由 Fortinet 提供技術支援的 Vandis 受控 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview)；[由 Palo Alto Networks 提供技術支援的 Vandis 受控 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Azure Marketplace 供應項目中新的受控安全性服務，以及來自下列 Azure 網路 MSP 合作夥伴的受控 MEC 服務，皆在我們的藍圖上：[Amdocs](https://www.amdocs.com/)；[AXESDN](https://www.axesdn.com/en/azure-msp.html)；[CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html)；[Deutsche Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406)；[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)；[InterCloud](https://intercloud.com/partners/microsoft-azure/)；[KINX](https://www.kinx.net/service/cloud/?lang=en)[OmniClouds](https://omniclouds.com/services/)；[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)；[Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)；[Federated Wireless](https://www.federatedwireless.com/caas/)
+Azure Marketplace 的供應專案包括新的受控安全性服務，以及來自下列 Azure 網路 MSP 合作夥伴的受管理的 MEC 服務，其藍圖如下： [Amdocs](https://www.amdocs.com/);[AXESDN](https://www.axesdn.com/en/azure-msp.html);[CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html); [德國 Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406); [IX 觸及](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en);[OmniClouds](https://omniclouds.com/services/); [Sejong 電信](https://www.sejongtelecom.net/en/pages/service/cloud_ms);[聯盟無線](https://www.federatedwireless.com/caas/)
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute 合作夥伴
 

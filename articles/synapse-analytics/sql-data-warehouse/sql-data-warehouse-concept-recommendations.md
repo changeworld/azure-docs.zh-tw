@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
-ms.date: 04/30/2020
+ms.subservice: sql-dw
+ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 17b8ce04cb5029d1bea11344617bf65718ca579c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653036"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482848"
 ---
 # <a name="synapse-sql-recommendations"></a>Synapse SQL 建議
 
@@ -70,3 +70,7 @@ Advisor 會持續運用工作負載型啟發學習法 (例如資料表存取頻�
 ## <a name="tempdb-contention"></a>Tempdb 爭用
 
 當 tempdb 爭用很高時，查詢效能可能會降低。  Tempdb 爭用可能會透過使用者定義的暫存資料表，或在大量的資料移動時發生。 在此情節中，您可以針對更多 tempdb 配置進行調整，並[設定資源類別和工作負載管理](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) \(部分機器翻譯\)，為您的查詢提供更多記憶體。 
+
+## <a name="data-loading-misconfiguration"></a>資料載入設定錯誤
+
+您應該一律從與 SQL 集區相同的區域中的儲存體帳戶載入資料，以將延遲降至最低。 使用[COPY 語句來進行高輸送量資料的](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)內嵌，並將您的暫存檔案分割到您的儲存體帳戶中，以達到最大的輸送量。 如果您無法使用 COPY 語句，您可以使用 SqlBulkCopy API 或具有高批次大小的 bcp，以獲得更好的輸送量。 如需其他資料載入指引，請流覽下列[檔](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)。 

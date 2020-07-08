@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fb49802adf6242f445b700d06622d7e6aa336b4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67357045"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504332"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>適用於定期資料轉送的解決方案
  
@@ -45,7 +45,7 @@ ms.locfileid: "67357045"
 | 功能                  | AzCopy                                 | Azure 儲存體 REST API       |
 |-----------------------------|----------------------------------------|-------------------------------|
 | 板型規格                 | 來自 Microsoft 的命令列工具       | 客戶對儲存體開發 <br> 使用 Azure 用戶端程式庫的 REST API |
-| 初始的單次設定     | 最小                                | 中度、變動的開發投入量    |
+| 初始的單次設定     | 基本                                | 中度、變動的開發投入量    |
 | 資料格式                 | Azure Blob、Azure 檔案、Azure 資料表 | Azure Blob、Azure 檔案、Azure 資料表   |
 | 效能                 | 已最佳化                      | 開發時最佳化                  |
 | 定價                     | 適用免費資料輸出費用      | 適用免費資料輸出費用        |
@@ -58,8 +58,8 @@ ms.locfileid: "67357045"
 | 硬體                                      | 您的 Hypervisor            | 由 Microsoft 提供    | NA                                                            |
 | 初始設定投入量                          | 低 (<30 分鐘)。            | 中 (~數小時) | 大 (~數天)                                                 |
 | 資料格式                                   | Azure Blob、Azure 檔案   | Azure Blob、Azure 檔案 | [支援 70 種以上的資料存放區和格式化資料連接器](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
-| 資料預先處理                           | 否                         | 是，透過 Edge 計算    | 是                                                           |
-| 本機快取<br>(儲存內部部署資料)    | 是                        | 是                      | 否                                                            |
+| 資料預先處理                           | No                         | 是，透過 Edge 計算    | Yes                                                           |
+| 本機快取<br>(儲存內部部署資料)    | Yes                        | 是                      | 否                                                            |
 | 從其他雲端轉送                    | 否                         | 否                       | 是                                                           |
 | 定價                                       | [定價](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [定價](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [定價](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 

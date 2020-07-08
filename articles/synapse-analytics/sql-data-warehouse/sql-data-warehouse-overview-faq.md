@@ -6,16 +6,16 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: ef8196cebfbdda72f98fee0e9c75bcb80172a55e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b3ee3f729e1e2f03d7c72a72081ad2e3f0316cbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791454"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482525"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics （先前稱為 SQL DW）常見問題
 
@@ -47,7 +47,7 @@ A. 請造訪 [Microsoft 合規性](https://www.microsoft.com/trustcenter/complia
 
 Q. 我可以連接 Power BI 嗎？
 
-A. 可以！ 雖然 Power BI 支援使用 Azure Synapse 進行直接查詢，但它並不適用于大量的使用者或即時資料。 若要進一步優化 Power BI 效能，請考慮在 Azure Analysis Services 或 Analysis Service IaaS 上使用 Power BI。
+A. 是的！ 雖然 Power BI 支援使用 Azure Synapse 進行直接查詢，但它並不適用于大量的使用者或即時資料。 若要進一步優化 Power BI 效能，請考慮在 Azure Analysis Services 或 Analysis Service IaaS 上使用 Power BI。
 
 Q. 什麼是 Synapse SQL 集區容量限制？
 
@@ -85,7 +85,7 @@ A. 支援許多功能。 不支援的功能可以在不支援的[資料表功能
 
 Q. Synapse SQL 集區是否支援 REST Api？
 
-A. 可以。 可搭配 SQL Database 使用的大部分 REST 功能也適用于 Synapse SQL 集區。 您可以在 REST 檔頁面或[資料庫](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中找到 API 資訊。
+A. 是。 可搭配 SQL Database 使用的大部分 REST 功能也適用于 Synapse SQL 集區。 您可以在 REST 檔頁面或[資料庫](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中找到 API 資訊。
 
 ## <a name="loading"></a>載入
 

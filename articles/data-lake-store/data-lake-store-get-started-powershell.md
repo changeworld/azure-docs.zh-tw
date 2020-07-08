@@ -3,15 +3,15 @@ title: 開始使用 Azure Data Lake Storage Gen1-PowerShell |Microsoft Docs
 description: 使用 Azure PowerShell 建立 Azure Data Lake Storage Gen1 帳戶，並執行基本作業。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 42ddab6991b418af3e41da9966cdab69ded87461
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8c97064af6fecf08af4608cfcd9874ff9bb1936
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73837883"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504777"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>使用 Azure PowerShell 開始使用 Azure Data Lake Storage Gen1
 
@@ -26,11 +26,11 @@ ms.locfileid: "73837883"
 
 瞭解如何使用 Azure PowerShell 建立 Azure Data Lake Storage Gen1 帳戶，並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需 Data Lake Storage Gen1 的詳細資訊，請參閱[Data Lake Storage Gen1 的總覽](data-lake-store-overview.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure PowerShell 1.0 或更新版本**。 請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="authentication"></a>驗證

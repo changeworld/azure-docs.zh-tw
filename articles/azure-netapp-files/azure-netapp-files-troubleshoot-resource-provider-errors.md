@@ -12,15 +12,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: 62e67d4965444df0e731b4387808ed3b89e4673a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72597197"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483460"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>針對 Azure NetApp Files 資源提供者錯誤進行疑難排解 
 
@@ -30,12 +30,12 @@ ms.locfileid: "72597197"
 
 ***無法變更 BareMetalTenantId。***  
 
-當您嘗試更新或修補磁片區，且`BaremetalTenantId`屬性的值已變更時，就會發生此錯誤。
+當您嘗試更新或修補磁片區，且 `BaremetalTenantId` 屬性的值已變更時，就會發生此錯誤。
 
 * 原因：   
-您嘗試更新磁片區，且`BaremetalTenantId`屬性的值與 Azure 中儲存的值不同。
+您嘗試更新磁片區，且屬性的 `BaremetalTenantId` 值與 Azure 中儲存的值不同。
 * 解決方案：   
-請勿包含`BaremetalTenantId`在 patch 和 update （put）要求中。 或者，請確定`BaremetalTenantId`要求中的相同。
+請勿包含 `BaremetalTenantId` 在 patch 和 update （put）要求中。 或者，請確定 `BaremetalTenantId` 要求中的相同。
 
 ***無法變更 ServiceLevel。***  
 
@@ -50,32 +50,32 @@ ms.locfileid: "72597197"
 
 ***無法變更 PoolId***  
 
-當您嘗試使用已變更`PoolId`的屬性來更新或修補容量集區時，就會發生此錯誤。
+當您嘗試使用已變更的屬性來更新或修補容量集區時，就會發生此錯誤 `PoolId` 。
 
 * 原因：   
-您正嘗試更新容量集`PoolId`區屬性。 `PoolId`屬性是唯讀屬性，而且無法變更。
+您正嘗試更新容量集區 `PoolId` 屬性。 `PoolId`屬性是唯讀屬性，而且無法變更。
 * 解決方案：   
-請勿包含`PoolId`在 patch 和 update （put）要求中。  或者，請確定`PoolId`要求中的相同。
+請勿包含 `PoolId` 在 patch 和 update （put）要求中。  或者，請確定 `PoolId` 要求中的相同。
 
 ***無法變更 CreationToken。***
 
-當您嘗試在建立磁片區之後變更檔案路徑（`CreationToken`）時，就會發生此錯誤。 建立磁片區`CreationToken`時，必須設定檔案路徑（），且稍後無法變更。
+當您嘗試在建立磁片區之後變更檔案路徑（）時，就會發生此錯誤 `CreationToken` 。 `CreationToken`建立磁片區時，必須設定檔案路徑（），且稍後無法變更。
 
 * 原因：   
-您嘗試在建立磁片區之後變更檔案`CreationToken`路徑（），這不是支援的作業。 
+您嘗試在建立磁片區之後變更檔案路徑（ `CreationToken` ），這不是支援的作業。 
 * 解決方案：   
 如果不需要變更檔案路徑，請考慮從要求中移除參數，以關閉錯誤訊息。
 * 因應措施：   
-如果您需要變更檔案路徑（`CreationToken`），可以使用新的檔案路徑建立新的磁片區，然後將資料移轉到新的磁片區。
+如果您需要變更檔案路徑（ `CreationToken` ），可以使用新的檔案路徑建立新的磁片區，然後將資料移轉到新的磁片區。
 
 ***CreationToken 的長度至少必須有16個字元。***
 
-當檔案路徑（`CreationToken`）不符合長度需求時，就會發生此錯誤。 檔案路徑的長度至少必須為一個字元。
+當檔案路徑（ `CreationToken` ）不符合長度需求時，就會發生此錯誤。 檔案路徑的長度至少必須為一個字元。
 
 * 原因：   
 檔案路徑是空的。  當您使用 API 建立磁片區時，需要建立權杖。 如果您使用 Azure 入口網站，則會自動產生檔案路徑。
 * 解決方案：   
-輸入至少一個字元做為檔案路徑（`CreationToken`）。
+輸入至少一個字元做為檔案路徑（ `CreationToken` ）。
 
 ***功能變數名稱無法變更。***
 
@@ -101,7 +101,7 @@ ms.locfileid: "72597197"
 
 ***錯誤 {action} {resourceTypeName}***
 
-當其他錯誤處理在資源上執行動作無法處理錯誤時，就會顯示此錯誤。   其中包含文字「錯誤」。 `{action}`可以是任何`getting`（、 `creating`、 `updating`或`deleting`）。  `{resourceTypeName}`是`resourceTypeName` `netAppAccount`（ `capacityPool`例如、、 `volume`等）。
+當其他錯誤處理在資源上執行動作無法處理錯誤時，就會顯示此錯誤。   其中包含文字「錯誤」。 `{action}`可以是任何（ `getting` 、 `creating` 、 `updating` 或 `deleting` ）。  是（例如、、 `{resourceTypeName}` `resourceTypeName` `netAppAccount` `capacityPool` `volume` 等）。
 
 * 原因：   
 此錯誤是未知原因的未處理例外狀況。
@@ -123,43 +123,43 @@ ms.locfileid: "72597197"
 
 ***無法變更 FileSystemId。***
 
-當您嘗試變更`FileSystemId`時，就會發生此錯誤。  變更`FileSystemdId`不是支援的作業。 
+當您嘗試變更時，就會發生此錯誤 `FileSystemId` 。  變更 `FileSystemdId` 不是支援的作業。 
 
 * 原因：   
 建立磁片區時，會設定檔案系統的識別碼。 `FileSystemId`之後無法變更。
 * 解決方案：   
-請勿包含`FileSystemId`在 patch 和 update （put）要求中。  或者， `FileSystemId`請確定要求中的相同。
+請勿包含 `FileSystemId` 在 patch 和 update （put）要求中。  或者，請確定 `FileSystemId` 要求中的相同。
 
 ***識別碼為 ' {string} ' 的 ActiveDirectory 不存在。***
 
-`{string}`部分是您在 Active Directory 連接的`ActiveDirectoryId`屬性中輸入的值。
+`{string}`部分是您在 Active Directory 連接的屬性中輸入的值 `ActiveDirectoryId` 。
 
 * 原因：   
-當您建立具有 Active Directory 設定的帳戶時，您已輸入的值應該`ActiveDirectoryId`是空的。
+當您建立具有 Active Directory 設定的帳戶時，您已輸入的值 `ActiveDirectoryId` 應該是空的。
 * 解決方案：   
-不包含`ActiveDirectoryId`在建立（put）要求中。
+不包含 `ActiveDirectoryId` 在建立（put）要求中。
 
 ***不正確 api 版本。***
 
 API 版本未提交或包含不正確值。
 
 * 原因：   
-查詢參數`api-version`中的值包含不正確值。
+查詢參數中的值 `api-version` 包含不正確值。
 * 解決方案：   
 請使用正確的 API 版本值。  資源提供者支援許多 API 版本。 值的格式為 yyyy-mm-dd。
 
-***收到的{1}值 ' {value} ' 無效。***
+***收到的值 ' {value} ' 無效 {1} 。***
 
-此`RuleIndex`訊息表示、 `AllowedClients`、 `UnixReadOnly`、 `UnixReadWrite`、 `Nfsv3`和`Nfsv4`的欄位發生錯誤。
+此訊息表示 `RuleIndex` 、 `AllowedClients` 、、 `UnixReadOnly` `UnixReadWrite` 、 `Nfsv3` 和 `Nfsv4` 的欄位發生錯誤。
 
 * 原因：   
-下列至少一個欄位的輸入驗證要求失敗`RuleIndex`：、 `AllowedClients`、 `UnixReadOnly`、 `UnixReadWrite`、 `Nfsv`3 和。 `Nfsv4`
+下列至少一個欄位的輸入驗證要求失敗： `RuleIndex` 、 `AllowedClients` 、 `UnixReadOnly` 、 `UnixReadWrite` 、 `Nfsv` 3 和 `Nfsv4` 。
 * 解決方案：   
-請務必在命令列上設定所有必要的和 nonconflicting 參數。 例如，您不能同時設定`UnixReadOnly`和`UnixReadWrite`參數。
+請務必在命令列上設定所有必要的和 nonconflicting 參數。 例如，您不能同時設定 `UnixReadOnly` 和 `UnixReadWrite` 參數。
 * 因應措施：   
 請參閱上述解決方案。
 
-***Vlan {2}的{0} IP {1}範圍已在使用中***
+***Vlan 的 IP 範圍 {0} {1} {2} 已在使用中***
 
 之所以發生此錯誤，是因為所使用之 IP 範圍的內部記錄與新指派的 IP 位址發生衝突。
 
@@ -183,9 +183,9 @@ API 版本未提交或包含不正確值。
 當使用者嘗試更新或修補磁片區 MountTargets 屬性時，就會發生此錯誤。
 
 * 原因：   
-您正嘗試更新磁片`MountTargets`區屬性。 不支援變更此屬性。
+您正嘗試更新磁片區 `MountTargets` 屬性。 不支援變更此屬性。
 * 解決方案：   
-請勿包含`MountTargets`在 patch 和 update （put）要求中。  或者，請確定這`MountTargets`在要求中是相同的。
+請勿包含 `MountTargets` 在 patch 和 update （put）要求中。  或者，請確定這 `MountTargets` 在要求中是相同的。
 
 ***名稱已在使用中。***
 
@@ -252,7 +252,7 @@ Azure API 依賴 Azure NetApp Files API 來管理磁片區。 此錯誤表示 AP
 * 因應措施：   
 無。 基礎 API 是管理磁片區的必要程式。
 
-***找不到 '{0}' 的作業結果識別碼。***
+***找不到 ' ' 的作業結果識別碼 {0} 。***
 
 此錯誤表示發生內部錯誤，導致作業無法完成。
 
@@ -310,9 +310,9 @@ Azure API 依賴 Azure NetApp Files API 來管理磁片區。 此錯誤表示 AP
 當您嘗試變更磁片區的 OwnerId 屬性時，就會發生此錯誤。 變更 OwnerId 不是支援的操作。 
 
 * 原因：   
-建立`OwnerId`磁片區時，會設定屬性。 之後就無法變更屬性。
+建立 `OwnerId` 磁片區時，會設定屬性。 之後就無法變更屬性。
 * 解決方案：   
-請勿包含`OwnerId`在 patch 和 update （put）要求中。 或者，請確定這`OwnerId`在要求中是相同的。
+請勿包含 `OwnerId` 在 patch 和 update （put）要求中。 或者，請確定這 `OwnerId` 在要求中是相同的。
 
 ***找不到父集區***
 
@@ -335,7 +335,7 @@ Azure API 依賴 Azure NetApp Files API 來管理磁片區。 此錯誤表示 AP
 
 ***集區大小太小，無法用於總磁片區大小。***
 
-當您更新容量集區大小，且大小小於該容量集區中所有磁片區的`usedBytes`總計值時，就會發生此錯誤。  當您建立新的磁片區，或調整現有磁片區的大小時，新的磁片區大小超過容量集區中的可用空間時，也可能會發生此錯誤。
+當您更新容量集區大小，且大小小於 `usedBytes` 該容量集區中所有磁片區的總計值時，就會發生此錯誤。  當您建立新的磁片區，或調整現有磁片區的大小時，新的磁片區大小超過容量集區中的可用空間時，也可能會發生此錯誤。
 
 * 原因：   
 您嘗試將容量集區更新為容量集區中所有磁片區的大小，而不是 usedBytes。  或者，您嘗試建立的磁片區大於容量集區中的可用空間。  或者，您嘗試調整磁片區大小，而新的大小超過容量集區中的可用空間。
@@ -355,30 +355,30 @@ Azure API 依賴 Azure NetApp Files API 來管理磁片區。 此錯誤表示 AP
 
 ***{ResourceType} 名稱必須與資源識別碼名稱相同。***
 
-當您建立資源時，就會發生此錯誤，而且您必須填入 name 屬性與的 name 屬性以外的值`resourceId`。
+當您建立資源時，就會發生此錯誤，而且您必須填入 name 屬性與的 name 屬性以外的值 `resourceId` 。
 
 * 原因：   
 當您建立資源時，name 屬性中的值無效。
 * 解決方案：   
-將 [名稱] 屬性保留空白，或允許它使用和中的 [名稱] 屬性相同的值（在中`resourceId`的最後一個反斜線 "/" 與問號 "？" 之間）。
+將 [名稱] 屬性保留空白，或允許它使用和中的 [名稱] 屬性相同的值（在中的最後一個反斜線 "/" 與問號 "？" 之間） `resourceId` 。
 
 ***通訊協定類型 {value} 未知***
 
 當您建立具有未知通訊協定類型的磁片區時，就會發生此錯誤。  有效值為「NFSv3」、「NFSv4」和「CIFS」。
 
 * 原因：   
-您嘗試在磁片`protocolType`區屬性中設定不正確值。
+您嘗試在磁片區屬性中設定不正確值 `protocolType` 。
 * 解決方案：   
-在中`protocolType`設定有效的字串。
+在中設定有效的字串 `protocolType` 。
 * 因應措施：   
-設定`protocolType`為 null。
+設定 `protocolType` 為 null。
 
 ***無法變更通訊協定類型***
 
-當您嘗試更新或修補`ProtocolType`磁片區時，就會發生此錯誤。  變更 ProtocolType 不是支援的操作。
+當您嘗試更新或修補磁片區時，就會發生此錯誤 `ProtocolType` 。  變更 ProtocolType 不是支援的操作。
 
 * 原因：   
-建立`ProtocolType`磁片區時，會設定屬性。  無法更新。
+建立 `ProtocolType` 磁片區時，會設定屬性。  無法更新。
 * 解決方案：   
 無。
 * 因應措施：   
@@ -386,10 +386,10 @@ Azure API 依賴 Azure NetApp Files API 來管理磁片區。 此錯誤表示 AP
 
 ***建立 {resourceType} 類型的資源，將會超過 {resourceType} 個 {parentResourceType} 類型的 {quota} 資源配額。目前的資源計數是 {currentCount}，請先刪除此類型的一些資源，再建立新的資源。***
 
-當您嘗試建立資源`NetAppAccount`（、 `CapacityPool`、 `Volume`或`Snapshot`），但您的配額已達到其限制時，就會發生此錯誤。
+當您嘗試建立資源（ `NetAppAccount` 、 `CapacityPool` 、 `Volume` 或 `Snapshot` ），但您的配額已達到其限制時，就會發生此錯誤。
 
 * 原因：   
-您嘗試建立資源，但達到配額限制（例如： `NetAppAccounts`每個訂用帳戶或`CapacityPools`每個`NetAppAccount`）。
+您嘗試建立資源，但達到配額限制（例如： `NetAppAccounts` 每個訂用帳戶或 `CapacityPools` 每個 `NetAppAccount` ）。
 * 解決方案：   
 增加配額限制。
 * 因應措施：   
@@ -439,34 +439,34 @@ SMB 伺服器名稱的長度超過10個字元。
 
 ***無法變更 SubnetId。***
 
-當您嘗試在建立磁片區`subnetId`之後變更時，就會發生此錯誤。  `SubnetId`建立磁片區時必須設定，而且稍後無法變更。
+當您嘗試在建立磁片區之後變更時，就會發生此錯誤 `subnetId` 。  `SubnetId`建立磁片區時必須設定，而且稍後無法變更。
 
 * 原因：   
-您嘗試在建立磁片區`subnetId`之後變更，這不是支援的作業。 
+您嘗試在 `subnetId` 建立磁片區之後變更，這不是支援的作業。 
 * 解決方案：   
-如果不需要`subnetId`變更，請考慮從要求中移除參數，以關閉錯誤訊息。
+如果 `subnetId` 不需要變更，請考慮從要求中移除參數，以關閉錯誤訊息。
 * 因應措施：   
-如果您需要變更`subnetId`，可以使用新`subnetId`的來建立新的磁片區，然後將資料移轉到新的磁片區。
+如果您需要變更 `subnetId` ，可以使用新的來建立新的磁片區 `subnetId` ，然後將資料移轉到新的磁片區。
 
 ***SubnetId 的格式無效。***
 
-當您嘗試建立新的磁片區，但`subnetId` `resourceId`不是子網的時，就會發生此錯誤。
+當您嘗試建立新的磁片區，但不是子網的時，就會發生此錯誤 `subnetId` `resourceId` 。
 
 * 原因：   
-當您嘗試建立新的磁片區，但`subnetId` `resourceId`不是子網的時，就會發生此錯誤。 
+當您嘗試建立新的磁片區，但不是子網的時，就會發生此錯誤 `subnetId` `resourceId` 。 
 * 解決方案：   
-檢查的值`subnetId` ，確定它包含`resourceId`所使用子網的。
+檢查的值， `subnetId` 確定它包含 `resourceId` 所使用子網的。
 * 因應措施：   
 無。 請參閱上述解決方案。 
 
 ***子網必須有 ' Microsoft NetApp/磁片區 ' 委派。***
 
-當您建立磁片區，而選取的子網未委派給`Microsoft.NetApp/volumes`時，就會發生此錯誤。
+當您建立磁片區，而選取的子網未委派給時，就會發生此錯誤 `Microsoft.NetApp/volumes` 。
 
 * 原因：   
-您嘗試建立磁片區，且選取了未委派的子網`Microsoft.NetApp/volumes`。
+您嘗試建立磁片區，且選取了未委派的子網 `Microsoft.NetApp/volumes` 。
 * 解決方案：   
-選取另一個委派給`Microsoft.NetApp/volumes`的子網。
+選取另一個委派給的子網 `Microsoft.NetApp/volumes` 。
 * 因應措施：   
 將正確的委派新增至子網。
 

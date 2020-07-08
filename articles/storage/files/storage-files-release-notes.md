@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 5/19/2020
+ms.date: 6/26/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 8e62d00deed2310437b231bf68ccd9f0cca2fe57
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: 54a7f3f50de27747ab15f6895ebfb4f65faf5fdf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758923"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85484055"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 檔案同步代理程式的版本資訊
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 您的 Windows Server 安裝會轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料 (包括 SMB、NFS 和 FTPS)。 您可以視需要存取多個散佈於世界各地的快取。
@@ -25,14 +25,15 @@ Azure 檔案同步代理程式支援下列版本：
 
 | 里程碑 | 代理程式版本號碼 | 發行日期 | 狀態 |
 |----|----------------------|--------------|------------------|
+| 10.1 版本- [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 2020年6月5日 | 支援-試驗 |
 | 2020 年 5 月更新彙總套件 - [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 2020 年 5 月 19 日 | 支援 |
 | V10 發行版本 - [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 2020 年 4 月 9 日 | 支援 |
 | 2019 年 12 月更新彙總套件 - [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12 日 | 支援 |
 | V9 發行版本 - [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019 年 12 月 2 日 | 支援 |
 | V8 發行版本 - [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | 支援 |
-| 2019 年 7 月更新彙總套件 - [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019 年 7 月 24 日 | 支援 - 代理程式版本將於 2020 年 9 月 1 日到期 |
-| 2019 年 7 月更新彙總套件 - [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019 年 7 月 12 日 | 支援 - 代理程式版本將於 2020 年 9 月 1 日到期 |
-| V7 發行版本- [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019 年 6 月 19 日 | 支援 - 代理程式版本將於 2020 年 9 月 1 日到期 |
+| 2019 年 7 月更新彙總套件 - [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019 年 7 月 24 日 | 支援的代理程式版本將于2020年9月1日到期 |
+| 2019 年 7 月更新彙總套件 - [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019 年 7 月 12 日 | 支援的代理程式版本將于2020年9月1日到期 |
+| V7 發行版本- [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019 年 6 月 19 日 | 支援的代理程式版本將于2020年9月1日到期 |
 | V6 發行版本 | 6.0.0.0 - 6.3.0.0 | N/A | 不支援 - 代理程式版本已於 2020 年 4 月 21 日過期 |
 | V5 發行版本 | 5.0.2.0 - 5.2.0.0 | N/A | 不支援 - 代理程式版本已於 2020 年 3 月 18 日過期 |
 | V4 版本 | 4.0.1.0 - 4.3.0.0 | N/A | 不支援 - 代理程式版本已於 2019 年 11 月 6 日過期 |
@@ -41,6 +42,16 @@ Azure 檔案同步代理程式支援下列版本：
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 檔案同步代理程式更新原則
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-10100"></a>代理程式版本10.1.0。0
+下列版本資訊適用于2020年6月5日發行之 Azure 檔案同步代理程式的版本10.1.0.0。 這些注意事項是針對10.0.0.0 和10.0.2.0 版所列出的版本資訊以外的資訊。
+
+### <a name="improvements-and-issues-that-are-fixed"></a>增強功能和已修正的問題
+
+- Azure 私用端點支援
+    - 儲存體同步服務的同步流量現在可以傳送至私人端點。 這可讓您透過 ExpressRoute 或 VPN 連線進行通道處理。 若要深入瞭解，請參閱設定[Azure 檔案同步網路端點](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints)。
+- [已同步處理的檔案] 計量現在會在執行大型同步處理時顯示進度，而不是結束。
+- 代理程式安裝、雲端階層處理、同步和遙測的其他可靠性改進
 
 ## <a name="agent-version-10020"></a>代理程式版本 10.0.2.0
 下列版本資訊適用於 Azure 檔案同步代理程式版本 10.0.2.0 (2020 年 5 月 19 日發行)。 這些是針對版本 10.0.0.0 所列的版本資訊以外的版本資訊。
@@ -119,7 +130,7 @@ Azure 檔案同步代理程式支援下列版本：
 
 ### <a name="cloud-endpoint"></a>雲端端點
 - Azure 檔案同步支援直接對 Azure 檔案共用進行變更。 不過，在 Azure 檔案共用上所做的任何變更，都必須先由 Azure 檔案同步變更偵測作業做出探索。 針對雲端端點的變更偵測作業，每隔 24 小時會起始一次。 若要立即同步處理 Azure 檔案共用中變更的檔案，您可以使用 [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell Cmdlet，手動在 Azure 檔案共用中起始變更偵測。 此外，透過 REST 通訊協定對 Azure 檔案共用所做的變更，將不會更新 SMB 上次修改時間，而且將不會同步顯示為變更。
-- 可將儲存體同步服務及 (或) 儲存體帳戶移至現有 Azure AD 租用戶中的不同資源群組或訂用帳戶。 如果移動儲存體帳戶，您需要將儲存體帳戶的存取權給予混合式檔案同步服務 (請參閱[確保 Azure 檔案同步有儲存體帳戶的存取權](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac))。
+- 可以將儲存體同步服務及/或儲存體帳戶移至不同的資源群組、訂用帳戶或 Azure AD 租使用者。 移動儲存體同步服務或儲存體帳戶之後，您必須將儲存體帳戶的存取權授與 Microsoft.storagesync 應用程式（請參閱[確認 Azure 檔案同步有儲存體帳戶的存取](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)權）。
 
     > [!Note]  
     > 建立雲端端點時，儲存體同步服務和儲存體帳戶必須位於相同的 Azure AD 租用戶中。 建立雲端端點之後，可以將儲存體同步服務和儲存體帳戶移至不同的 Azure AD 租用戶。

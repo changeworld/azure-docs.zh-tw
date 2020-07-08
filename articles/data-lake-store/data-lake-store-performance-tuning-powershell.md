@@ -3,15 +3,15 @@ title: Azure Data Lake Storage Gen1 效能調整-PowerShell
 description: 在搭配 Azure Data Lake Storage Gen1 使用 Azure PowerShell 時，如何改善效能的秘訣。
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: c975af1799d427651b76bb9fde5ff765afed3f86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73904569"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504690"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>使用 PowerShell 搭配 Azure Data Lake Storage Gen1 的效能微調指導方針
 
@@ -26,7 +26,7 @@ ms.locfileid: "73904569"
 | PerFileThreadCount  | 10      | 這個參數可讓您選擇可用於上傳或下載每個檔案的平行執行緒數目。 此數字代表每個檔案可以配置的執行緒數目上限，但視您的案例而定，您可能會收到比較少的執行緒 (例如︰如果您要上傳 1-KB 檔案，即使您要求 20 個執行緒，但您將取得一個執行緒)。  |
 | ConcurrentFileCount | 10      | 這個參數特別用於上傳或下載資料夾。 這個參數會決定可以上傳或下載的並行檔案數目。 此數字代表可以一次上傳或下載的並行檔案數目上限，但視您的案例而定，可能會收到比較少的並行檔案 (例如︰如果您要上傳兩個檔案，即使您要求 15 個檔案，但您將取得兩個並行檔案)。 |
 
-**範例：**
+**範例︰**
 
 此命令會使用每個檔案 20 個執行緒和 100 個並行檔案，將檔案從 Data Lake Storage Gen1 下載至使用者的本機磁碟。
 
@@ -48,7 +48,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
     `Total thread count = total physical cores * 6`
 
-    **範例：**
+    **範例︰**
 
     假設您正從有 16 個核心的 D14 VM 執行 PowerShell 命令
 
@@ -58,7 +58,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
     `PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size`
 
-    **範例：**
+    **範例︰**
 
     假設您有 100 個 1 GB 到 10 GB 的檔案，我們使用 10 GB 作為等式的最大檔案大小，該等式會如下所示。
 
@@ -68,7 +68,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
     `Total thread count = PerFileThreadCount * ConcurrentFileCount`
 
-    **範例：**
+    **範例︰**
 
     以我們使用的範例值為基礎
 

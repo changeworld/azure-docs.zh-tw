@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 9e8817f802ca1d73ca0f6bfa2b32b1b14b37d7da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8935dd4138095aa9b8e84ddf75c06307f9ce00d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274082"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483630"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 NFS 磁碟區
 
@@ -52,39 +52,39 @@ Azure NetApp Files 支援 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 磁片區。 磁
 
 ## <a name="create-an-nfs-volume"></a>建立 NFS 磁片區
 
-1.  按一下 [容量集區] 分頁中的 [**磁片**區] 分頁。 
+1.  從 [容量集區] 刀鋒視窗按一下 [磁碟區] 刀鋒視窗。 
 
-    ![流覽至磁片區](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
+    ![導覽至磁碟區](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
-2.  按一下 [+ 新增磁碟區]**** 以建立磁碟區。  
-    [建立磁片區] 視窗隨即出現。
+2.  按一下 [+ 新增磁碟區] 以建立磁碟區。  
+    隨即顯示 [建立磁碟區] 視窗。
 
-3.  在 [建立磁片區] 視窗中，按一下 [**建立**]，並提供下欄欄位的資訊：   
-    * **磁片區名稱**      
+3.  在 [建立磁碟區] 視窗中，按一下 [建立]，並提供下列欄位的資訊：   
+    * **磁碟區名稱**      
         為您要建立的磁碟區指定名稱。   
 
-        在每個容量集區中，磁片區名稱都必須是唯一的。 長度至少必須有三個字元。 您可以使用任何英數位元。   
+        在每個容量集區中，磁碟區名稱必須是唯一的。 長度至少必須有三個字元。 您可以使用任何英數字元。   
 
-        您不能`default`使用做為磁片區名稱。
+        您不能使用 `default` 做為磁片區名稱。
 
     * **容量集區**  
-        指定您想要在其中建立磁片區的容量集區。
+        指定您想要在其中建立磁碟區的容量集區。
 
     * **配額**  
         指定配置給磁碟區的邏輯儲存體大小。  
 
-        [可用配額]**** 欄位會顯示所選容量集區中可用來建立新磁碟區的未使用空間量。 新磁碟區的大小不可超過可用配額。  
+        [可用配額] 欄位會顯示所選容量集區中可用來建立新磁碟區的未使用空間量。 新磁碟區的大小不可超過可用配額。  
 
     * **虛擬網路**  
         指定您要從中存取磁碟區的 Azure 虛擬網路 (Vnet)。  
 
-        您指定的 Vnet 必須有委派給 Azure NetApp Files 的子網路。 Azure NetApp Files 服務只能從相同的 Vnet 存取，或透過 Vnet 對等互連與磁碟區位於相同區域的 Vnet 存取。 您也可以透過 Express Route 從內部部署網路存取磁片區。   
+        您指定的 Vnet 必須有委派給 Azure NetApp Files 的子網路。 Azure NetApp Files 服務只能從相同的 Vnet 存取，或透過 Vnet 對等互連與磁碟區位於相同區域的 Vnet 存取。 您也可以透過 Express Route 從內部部署網路存取磁碟區。   
 
     * **子網路**  
         指定要用於磁碟區的子網路。  
         您指定的子網路必須委派給 Azure NetApp Files。 
         
-        如果您尚未委派子網路，您可以按一下 [建立磁碟區] 頁面上的 [新建]****。 在 [建立子網路] 頁面上指定子網路資訊，然後選取 [Microsoft.NetApp/volumes]**** 以委派 Azure NetApp Files 的子網路。 在每個 Vnet 中，只有一個子網可委派給 Azure NetApp Files。   
+        如果您尚未委派子網路，您可以按一下 [建立磁碟區] 頁面上的 [新建]****。 在 [建立子網路] 頁面上指定子網路資訊，然後選取 [Microsoft.NetApp/volumes] 以委派 Azure NetApp Files 的子網路。 在每個 Vnet 中，只有一個子網可委派給 Azure NetApp Files。   
  
         ![建立磁碟區](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
@@ -103,9 +103,9 @@ Azure NetApp Files 支援 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 磁片區。 磁
 
     ![指定 NFS 通訊協定](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
 
-5. 按一下 [**檢查 + 建立**] 以查看磁片區詳細資料。  然後按一下 [**建立**] 以建立 NFS 磁片區。
+5. 按一下 [檢閱 + 建立]，以檢閱磁碟區詳細資料。  然後按一下 [**建立**] 以建立 NFS 磁片區。
 
-    您所建立的磁片區會出現在 [磁片區] 頁面中。 
+    建立的磁碟區會出現在 [磁碟區] 頁面中。 
  
     磁碟區會從其容量集區繼承訂用帳戶、資源群組、位置屬性。 若要監視磁碟區部署狀態，您可以使用 [通知] 索引標籤。
 
@@ -116,4 +116,4 @@ Azure NetApp Files 支援 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 磁片區。 磁
 * [對 Windows 或 Linux 虛擬機器掛接或取消掛接磁碟區](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [設定 NFS 磁碟區的匯出原則](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp Files 的資源限制](azure-netapp-files-resource-limits.md)
-* [瞭解 Azure 服務的虛擬網路整合](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [了解 Azure 服務的虛擬網路整合](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

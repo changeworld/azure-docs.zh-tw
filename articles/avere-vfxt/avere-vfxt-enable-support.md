@@ -3,15 +3,15 @@ title: 啟用對 Avere vFXT 的支援 - Azure
 description: 如何啟用支援從「適用於 Azure 的 Avere vFXT」上傳的功能
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: d12bbd1708ceb948aea982f9ed1ab36879e3751c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc86cca1b73eb58a038a0a6da109e86b995709c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75415358"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505472"
 ---
 # <a name="enable-support-uploads"></a>啟用支援上傳的功能
 
@@ -30,13 +30,13 @@ Avere vFXT for Azure 可以自動上傳叢集的相關支援資料。 這些上�
 1. 按一下 [Revalidate upload information] \(重新驗證上傳資訊\)**** 按鈕。
 1. 在 [**唯一叢集名稱**] 中設定叢集的支援名稱。 請確定此名稱可唯一識別您的叢集，以支援人員。
 1. 勾選 [Statistics Monitoring] \(統計資料監視\)****、[General Information Upload] \(一般資訊上傳\)**** 及 [Crash Information Upload] \(當機資訊上傳\)**** 方塊。
-1. 按一下 [提交]  。
+1. 按一下 [提交] 。
 
    ![包含支援設定頁面上已完成的客戶資訊區段的螢幕擷取畫面](media/avere-vfxt-support-info.png)
 
 1. 按一下 [Secure Proactive Support (SPS)] \(安全的主動式支援 (SPS)\)**** 左側的三角形以展開該區段。
 1. 勾選 [Enable SPS Link] \(啟用 SPS 連結\)**** 方塊。
-1. 按一下 [提交]  。
+1. 按一下 [提交] 。
 
    ![包含支援設定頁面上已完成的安全主動式支援區段的螢幕擷取畫面](media/avere-vfxt-support-sps.png)
 
