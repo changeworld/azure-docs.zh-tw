@@ -5,17 +5,17 @@ description: 針對從虛擬網路對儲存體帳戶進行安全存取的私用�
 services: storage
 author: santoshc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299051"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513274"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure 儲存體使用私人端點
 
@@ -82,8 +82,8 @@ VNet 中的應用程式可以**使用相同的連接字串和授權機制**，�
 | 名稱                                                  | 類型  | 值                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<儲存體服務公用端點\>                   |
-| \<儲存體服務公用端點\>                   | A     | \<儲存體服務公用 IP 位址\>                 |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
+| \<storage service public endpoint\>                   | A     | \<storage service public IP address\>                 |
 
 如先前所述，您可以透過使用儲存體防火牆的公用端點，拒絕或控制 VNet 外部的用戶端存取。
 
@@ -137,7 +137,7 @@ Vnet 中具有現有私用端點的用戶端，在存取其他具有私人端點
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>具有私人端點的子網路所適用的網路安全性群組規則
 
-目前，您無法為私人端點設定[網路安全性群組](../../virtual-network/security-overview.md)（NSG）規則和使用者定義的路由。 套用至裝載私用端點之子網的 NSG 規則會套用至私用端點。 此問題的有限因應措施是在來源子網上為私人端點執行存取規則，不過這種方法可能需要較高的管理負荷。
+目前，您無法為私人端點設定[網路安全性群組](../../virtual-network/security-overview.md)（NSG）規則和使用者定義的路由。 套用至裝載私用端點之子網的 NSG 規則，只會套用至與私用端點不同的其他端點（例如 Nic）。 此問題的有限因應措施是在來源子網上為私人端點執行存取規則，不過這種方法可能需要較高的管理負荷。
 
 ## <a name="next-steps"></a>後續步驟
 

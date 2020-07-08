@@ -3,16 +3,16 @@ title: Azure 檔案儲存體效能疑難排解指南
 description: Azure 檔案共用和相關的因應措施的已知效能問題。
 author: gunjanj
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64c7e56f14fb06e7b211954eb93e4858563a8f08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598080"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511958"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>針對 Azure 檔案儲存體效能問題進行疑難排解
 
@@ -45,7 +45,7 @@ Premium 共用上的預設配額為 100 GiB，可提供100基準 IOPS （最高�
 > [!NOTE]
 > 若要在檔案共用受到節流處理時收到警示，請參閱如何在檔案[共用已節流時建立警示](#how-to-create-an-alert-if-a-file-share-is-throttled)。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 - 藉由在您的共用上指定較高的配額，以增加共用布建的容量。
 
@@ -66,7 +66,7 @@ Premium 共用上的預設配額為 100 GiB，可提供100基準 IOPS （最高�
 
 如果客戶使用的應用程式是單一執行緒，這可能會導致 IOPS/輸送量明顯低於根據您布建的共用大小所可能的最大值。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 - 藉由增加執行緒的數目來增加應用程式平行處理原則。
 - 切換至可以平行處理的應用程式。 例如，對於複製作業，客戶可以從 Windows 用戶端使用 AzCopy 或 RoboCopy，或在 Linux 用戶端上使用**parallel**命令。
@@ -77,7 +77,7 @@ Premium 共用上的預設配額為 100 GiB，可提供100基準 IOPS （最高�
 
 用戶端 VM 可能位於與檔案共用不同的區域中。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 - 從與檔案共用位於相同區域的 VM 執行應用程式。
 
@@ -113,7 +113,7 @@ Premium 共用上的預設配額為 100 GiB，可提供100基準 IOPS （最高�
 ### <a name="workaround"></a>因應措施
 
 - 可能的話，請在短時間內避免在同一個目錄上有過度的開啟/關閉控制碼。
-- 針對 Linux Vm，請將**actimeo =\<sec>** 指定為掛接選項，以增加目錄專案快取超時。 根據預設，它是一秒，因此較大的值（例如三或五）可能會有説明。
+- 針對 Linux Vm，請將**actimeo = \<sec> **指定為掛接選項，以增加目錄專案快取超時。 根據預設，它是一秒，因此較大的值（例如三或五）可能會有説明。
 - 針對 Linux Vm，請將核心升級為4.20 或更高版本。
 
 ## <a name="low-iops-on-centosrhel"></a>CentOS/RHEL 上的低 IOPS
@@ -187,7 +187,7 @@ CentOS/RHEL 不支援大於1的 IO 深度。
 6. 在 [**設定信號邏輯**] 分頁上，移至 [**回應類型**] 維度，按一下 [**維度值**] 下拉式選單，然後選取 [ **SuccessWithThrottling** （適用于 SMB）] 或 [ **ClientThrottlingError** （適用于 REST）]。 
 
   > [!NOTE]
-  > 如果未列出 [SuccessWithThrottling] 或 [ClientThrottlingError] 維度值，這表示資源尚未進行節流。  若要加入維度值，請按一下**+** [**維度值**] 下拉式標題旁的，**輸入 SuccessWithThrottling**或**ClientThrottlingError**，按一下 **[確定]** ，然後重複步驟 #6。
+  > 如果未列出 [SuccessWithThrottling] 或 [ClientThrottlingError] 維度值，這表示資源尚未進行節流。  若要加入維度值，請按一下 **+** [**維度值**] 下拉式標題旁的，**輸入 SuccessWithThrottling**或**ClientThrottlingError**，按一下 **[確定]** ，然後重複步驟 #6。
 
 7. 移至 [檔案**共用**] 維度，按一下 [**維度值**] 下拉式選單，然後選取您想要警示的檔案共用。 
 

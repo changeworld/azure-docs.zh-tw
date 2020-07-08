@@ -9,20 +9,20 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
-ms.openlocfilehash: aa69d8b07d31b5cf0386e34c113475cbf4191891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 483fa81b409e1bd740af85b431a86b6c814831e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60319542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511505"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple 本機固定磁碟區︰常見問題集 (FAQ)
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 以下是在建立 StorSimple 本機固定磁碟區、將階層式磁碟區轉換成本機固定磁碟區 (反之亦然)，或備份及還原本機固定磁碟區時，您可能會有的問題和解答。
 
 問題和解答可分為下列幾個類別：

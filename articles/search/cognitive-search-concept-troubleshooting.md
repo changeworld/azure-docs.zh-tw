@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/08/2020
+ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510865"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 擴充秘訣
 
@@ -49,7 +49,16 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>秘訣 4：查看幕後的擴充文件 
+> [!NOTE]
+> 最佳做法是將生產工作負載的 maxFailedItems、maxFailedItemsPerBatch 設定為0
+
+## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>秘訣4：使用 Debug 會話來識別和解決技能集的問題 
+
+「偵錯工作階段」是一種視覺化編輯器，適用於 Azure 入口網站中的現有技能。 在 debug 會話中，您可以識別並解決錯誤、驗證變更，以及將變更認可至 AI 擴充管線中的生產環境技能集。 這是一項預覽功能，可[閱讀檔](https://docs.microsoft.com/azure/search/cognitive-search-debug-session)。 如需概念和開始使用的詳細資訊，請參閱[Debug 會話](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions)。
+
+在單一檔上工作的「Debug 會話」是一種很好的方式，可讓您反復建立更複雜的擴充管線。
+
+## <a name="tip-5-looking-at-enriched-documents-under-the-hood"></a>秘訣5：查看幕後的擴充檔 
 擴充的文件是在擴充期間建立的暫時性結構，在程序完成後即會刪除。
 
 若要擷取在索引編製期間建立之擴充文件的快照集，請將名為 ```enriched``` 的欄位新增至您的索引。 索引子會自動在該欄位中傾印該文件所有擴充項目的字串表示法。
@@ -77,15 +86,15 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 }
 ```
 
-## <a name="tip-5-expected-content-fails-to-appear"></a>秘訣 5：未出現預期的內容
+## <a name="tip-6-expected-content-fails-to-appear"></a>秘訣6：預期的內容無法顯示
 
 內容遺失可能是由於文件在索引編製期間遭到捨棄所致。 免費和基本層的文件大小限制較低。 任何超過限制的檔案在索引編製期間都會被捨棄。 您可以在 Azure 入口網站中查看遭到捨棄的文件。 請在搜尋服務儀表板中按兩下索引子圖格。 檢閱成功編製索引的文件比率。 如果不是 100%，您可以按一下該比例以取得更多詳細資料。 
 
-如果問題與檔案大小有關，您可能會看到類似如下的錯誤：「blob \<檔案名>」大小為檔案大小> 個位元組， \<超過目前服務層級的檔解壓縮大小上限」。 如需關於索引子限制的詳細資訊，請參閱[服務限制](search-limits-quotas-capacity.md)。
+如果問題與檔案大小有關，您可能會看到類似如下的錯誤：「blob」 \<file-name> 的大小為 \<file-size> 位元組，超過目前服務層級的檔解壓縮大小上限。」 如需關於索引子限制的詳細資訊，請參閱[服務限制](search-limits-quotas-capacity.md)。
 
 無法顯示內容的另一個原因，可能與輸入/輸出對應錯誤有關。 例如，輸出目標名稱為 "People"，但索引欄位名稱為小寫的 "people"。 系統可能會為整個管線傳回 201 成功訊息，因此您認為索引編製成功，而事實上欄位卻是空白的。 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>秘訣 6：將處理延伸至執行時間上限 (24 小時的時間範圍) 以外
+## <a name="tip-7-extend-processing-beyond-maximum-run-time-24-hour-window"></a>提示7：將處理延伸至執行時間上限（24小時制時段）
 
 影像分析即使在簡單的情況下也需要密集運算，因此在影像時特別大型或複雜時，處理時間可能會超過允許的時間上限。 
 
@@ -98,12 +107,12 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 對於以入口網站為基礎的索引編製 (如快速入門所說明)，選擇 [執行一次] 索引子選項，會將處理時間限制為 1 小時 (`"maxRunTime": "PT1H"`)。 您可以延長處理時間範圍。
 
-## <a name="tip-7-increase-indexing-throughput"></a>提示 7：提高索引編製輸送量
+## <a name="tip-8-increase-indexing-throughput"></a>秘訣8：增加索引輸送量
 
 對於[平行索引編製](search-howto-large-index.md)，請將您的資料放入多個容器中，或是相同容器內的多個虛擬資料夾中。 接著，請建立多個資料來源和索引子配對。 所有索引子將可使用相同的技能集，並寫入至相同的目標搜尋索引，而讓您的搜尋應用程式無須辨識此分割。
 如需詳細資訊，請參閱[為大型資料集編製索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 + [快速入門：在入口網站中建立 AI 擴充管線](cognitive-search-quickstart-blob.md)
 + [教學課程：瞭解 AI 擴充 REST Api](cognitive-search-tutorial-blob.md)
 + [指定資料來源認證](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)

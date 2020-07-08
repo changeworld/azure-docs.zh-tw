@@ -9,21 +9,21 @@ editor: ''
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
-ms.openlocfilehash: 094b996cd3227903995c7a74ef14ed8c0561f59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb0d330b833c8841e65d650599d74211003843bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511500"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>使用 StorSimple Snapshot Manager 來檢視和管理備份作業
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 [範圍]**** 窗格中的 [作業]**** 節點會顯示您以互動方式或透過已設定之原則起始的 [已排程]****、[過去 24 小時]**** 和 [執行中]**** 備份工作。 
 
 本教學課程說明如何使用 [ **作業** ] 節點，以顯示已排程、最近和目前執行中之備份作業的相關資訊。 （作業清單和對應資訊會出現在 [**結果**] 窗格中）。此外，您可以在列出的作業上按一下滑鼠右鍵，並查看列出可用動作的快顯功能表。

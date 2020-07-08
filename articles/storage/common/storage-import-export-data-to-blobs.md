@@ -4,22 +4,22 @@ description: 了解如何在 Azure 入口網站中建立匯入和匯出作業，
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 570c663861361a19190f6fb5d608b6aa029a0885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282489"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514208"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 匯入/匯出服務將資料匯入 Azure Blob 儲存體
 
 本文提供的逐步指示會說明如何使用 Azure 匯入/匯出服務，安全地將大量資料匯入 Azure Blob 儲存體。 若要將資料匯入到 Azure Blob，服務會要求您將包含資料的加密磁碟機寄送到 Azure 資料中心。  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在建立匯入作業來將資料傳入 Azure Blob 儲存體之前，請仔細檢閱並完成此服務的下列必要條件清單。
 您必須：
@@ -34,7 +34,7 @@ ms.locfileid: "80282489"
 * 在 Windows 系統上[下載最新的 WAImportExport 第1版](https://www.microsoft.com/download/details.aspx?id=42659)。 最新版的工具具有安全性更新，可允許外部保護裝置的 BitLocker 金鑰，以及已更新的解除鎖定模式功能。
 
   * 將檔案解壓縮至預設資料夾 `waimportexportv1`。 例如： `C:\WaImportExportV1` 。
-* 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的貨運公司，請聯絡 Azure 資料箱營運小組`adbops@microsoft.com`，網址為。  
+* 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的貨運公司，請聯絡 Azure 資料箱營運小組，網址為 `adbops@microsoft.com` 。  
   * 帳戶必須是有效的、需要有餘額，且必須有退貨運送功能。
   * 產生匯出作業的追蹤號碼。
   * 每個作業都應該具有個別的追蹤號碼。 不支援多個作業使用相同的追蹤號碼。
@@ -77,7 +77,7 @@ ms.locfileid: "80282489"
 
     下表會說明使用的參數：
 
-    |選項  |描述  |
+    |選項  |說明  |
     |---------|---------|
     |/j:     |日誌檔案的名稱 (具有 .jrn 副檔名)。 每個磁碟機都會產生日誌檔案。 我們建議您使用磁碟序號作為日誌檔案名稱。         |
     |/id:     |工作階段識別碼。 針對命令的每個執行個體使用唯一的工作階段號碼。      |
@@ -85,9 +85,9 @@ ms.locfileid: "80282489"
     |/bk:     |磁碟機的 BitLocker 金鑰。 其數字密碼來自 `manage-bde -protectors -get D:` 的輸出      |
     |/srcdir:     |要寄送之磁碟的磁碟機代號，其後緊接著 `:\`。 例如： `D:\` 。         |
     |/dstdir:     |Azure 儲存體中目的地容器的名稱。         |
-    |/blobtype     |此選項會指定您想要匯入資料的 blob 類型。 對於區塊 blob，這是`BlockBlob` ，而針對分頁 blob，則`PageBlob`是。         |
+    |/blobtype     |此選項會指定您想要匯入資料的 blob 類型。 對於區塊 blob，這是 `BlockBlob` ，而針對分頁 blob，則是 `PageBlob` 。         |
     |/skipwrite：     |此選項表示不需要複製新資料，且即將準備磁碟上的現有資料。          |
-    |/enablecontentmd5:     |啟用此選項時，可確保在每個 blob 上計算`Content-md5` MD5 並設定為屬性。 只有當您想要在資料上傳至`Content-md5` Azure 之後使用欄位時，才使用此選項。 <br> 此選項不會影響資料完整性檢查（預設會發生）。 此設定會增加將資料上傳至雲端所花費的時間。          |
+    |/enablecontentmd5:     |啟用此選項時，可確保在每個 blob 上計算 MD5 並設定為 `Content-md5` 屬性。 只有當您想要在 `Content-md5` 資料上傳至 Azure 之後使用欄位時，才使用此選項。 <br> 此選項不會影響資料完整性檢查（預設會發生）。 此設定會增加將資料上傳至雲端所花費的時間。          |
 8. 為每個要寄送的磁碟重複上述步驟。 每次執行命令列時，都會使用提供的名稱來建立日誌檔案。
 
     > [!IMPORTANT]
@@ -106,7 +106,7 @@ ms.locfileid: "80282489"
 
     ![按一下 [建立匯入/匯出作業]](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. 在 [基本]**** 中：
+4. 在 [基本] 中：
 
    * 選取 [匯入至 Azure]****。
    * 輸入匯入作業的描述性名稱。 使用此名稱來追蹤作業進度。
@@ -127,7 +127,7 @@ ms.locfileid: "80282489"
 
 6. 在 [寄返資訊]**** 中：
 
-   * 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的貨運公司，請從下拉式清單中選擇現有的選項。 請聯絡 Azure 資料箱營運小組`adbops@microsoft.com` ，其中包含您打算使用之電訊廠商的相關資訊。
+   * 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的貨運公司，請從下拉式清單中選擇現有的選項。 請聯絡 Azure 資料箱營運小組， `adbops@microsoft.com` 其中包含您打算使用之電訊廠商的相關資訊。
    * 輸入您在該貨運公司中建立的有效貨運帳戶號碼。 當匯入作業完成時，Microsoft 會透過此帳戶將磁碟機寄還給您。 如果您沒有帳戶號碼，請建立 [FedEx](https://www.fedex.com/us/oadr/) 或 [DHL](https://www.dhl.com/) 貨運帳戶。
    * 提供完整且有效的連絡人名稱、電話、電子郵件、街道地址、城市、郵遞區號、州/省和國家/地區。
 

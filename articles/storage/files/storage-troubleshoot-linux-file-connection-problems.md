@@ -3,16 +3,16 @@ title: 針對 Linux 中的 Azure 檔案服務問題進行疑難排解 | Microsof
 description: 針對 Linux 中的 Azure 檔案服務問題進行疑難排解
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 95e220102cba290664a32cb6bbebef881ae4ffde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159484"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512003"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>針對 Linux 中的 Azure 檔案服務問題進行疑難排解
 
@@ -44,7 +44,7 @@ ms.locfileid: "80159484"
 - 您嘗試從 Azure VM 連線到 Azure 檔案共用，而該 VM 與儲存體帳戶位於不同的區域。
 - 如果儲存體帳戶上已啟用 [需要安全傳輸]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)設定，則 Azure 檔案服務僅允許使用 SMB 3.0 加密的連線。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 若要解決此問題，請使用[適用於 Linux 上 Azure 檔案服務掛接錯誤的疑難排解工具](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)。 這項工具可以：
 
@@ -80,7 +80,7 @@ ms.locfileid: "80159484"
 
 在 Linux 中，您會收到類似以下的錯誤訊息︰
 
-**\<檔案名> [拒絕許可權] 已超過磁片配額**
+**\<filename>[拒絕許可權]超過磁片配額**
 
 ### <a name="cause"></a>原因
 
@@ -88,7 +88,7 @@ ms.locfileid: "80159484"
 
 單一檔案的開啟控制代碼配額為 2,000 個。 當您擁有 2,000 個開啟控制代碼時，會顯示一則錯誤訊息以指出已達到配額。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 關閉一些控點以減少同時開啟的控點數，然後再次嘗試操作。
 
@@ -106,14 +106,14 @@ ms.locfileid: "80159484"
 - 使用正確的複製方法：
     - 在兩個檔案共用之間進行任何傳輸時，請使用[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 。
     - 使用具有平行的 cp 或 dd 可以改善複製速度，執行緒的數目取決於您的使用案例和工作負載。 下列範例使用六個： 
-    - cp 範例（cp 會使用檔案系統的預設區塊大小作為區塊大小）： `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`。
+    - cp 範例（cp 會使用檔案系統的預設區塊大小作為區塊大小）： `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` 。
     - dd 範例（此命令會將區塊大小明確設定為 1 MiB）：`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - 開放原始碼協力廠商工具，例如：
         - [GNU Parallel](https://www.gnu.org/software/parallel/)。
         - [Fpart](https://github.com/martymac/fpart) -排序檔案並將它們封裝成分割區。
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -使用 Fpart 和複製工具來產生多個實例，以將資料從 src_dir 遷移至 dst_url。
         - 以 GNU coreutils 為基礎的[多](https://github.com/pkolano/mutil)執行緒 cp 和 check md5sum。
-- 預先設定檔案大小，而不是讓每個寫入擴充寫入，而是在已知檔案大小的情況下，協助改善複製速度。 如果必須避免擴充寫入，您可以使用`truncate - size <size><file>`命令來設定目的地檔案大小。 之後，命令`dd if=<source> of=<target> bs=1M conv=notrunc`會複製原始程式檔，而不需要重複更新目標檔案的大小。 例如，您可以針對想要複製的每個檔案設定目的地檔案大小（假設共用會裝載在/mnt/share 底下）：
+- 預先設定檔案大小，而不是讓每個寫入擴充寫入，而是在已知檔案大小的情況下，協助改善複製速度。 如果必須避免擴充寫入，您可以使用命令來設定目的地檔案大小 `truncate - size <size><file>` 。 之後， `dd if=<source> of=<target> bs=1M conv=notrunc` 命令會複製原始程式檔，而不需要重複更新目標檔案的大小。 例如，您可以針對想要複製的每個檔案設定目的地檔案大小（假設共用會裝載在/mnt/share 底下）：
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
     - 然後-複製檔案，而不以平行方式擴充寫入：`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
@@ -124,7 +124,7 @@ ms.locfileid: "80159484"
 
 部分 Linux 散發套件尚未支援 SMB 3.0 中的加密功能。 如果使用者嘗試使用 SMB 3.0 來掛接 Azure 檔案，可能會因缺少功能而收到「115」錯誤訊息。 目前僅有使用 Ubuntu 16.04 或更新版本時才支援 SMB 3.0 與完整加密。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可從內部部署或不同 Azure 區域的 Azure 檔案共用進行掛接。 某些 Linux 散發套件可能已 backport 從4.11 核心變更為其維護的舊版 Linux 核心。 若要協助判斷您的 Linux 版本是否支援使用加密的 SMB 3.0，請參閱搭配[使用 Azure 檔案儲存體與 Linux](storage-how-to-use-files-linux.md)。 
 
@@ -134,7 +134,7 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>當您嘗試存取或刪除 Azure 檔案共用時發生錯誤「沒有存取權」  
 當您嘗試存取或刪除入口網站中的 Azure 檔案共用時，可能會收到下列錯誤：
 
-沒有存取權  
+無存取權  
 錯誤碼：403 
 
 ### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因1：已在儲存體帳戶上啟用虛擬網路或防火牆規則
@@ -155,7 +155,7 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 ### <a name="cause"></a>原因
 如果檔案或目錄有開啟的控制碼，通常就會發生此問題。 
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 如果 SMB 用戶端已關閉所有開啟的控制碼，且問題持續發生，請執行下列動作：
 
@@ -206,7 +206,7 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 
 ### <a name="cause"></a>原因
 
-COPYFILE 中的強制旗標 **f** 會導致在 Unix 上執行 **cp -p -f**。 此命令也無法保留您並不擁有之檔案的時間戳記。
+COPYFILE 中的 force 旗標**f**會導致在 Unix 上執行**cp-p-f** 。 此命令也無法保留您並不擁有之檔案的時間戳記。
 
 ### <a name="workaround"></a>因應措施
 
@@ -224,7 +224,7 @@ COPYFILE 中的強制旗標 **f** 會導致在 Unix 上執行 **cp -p -f**。 �
 **ls：無法存取 '&lt;path&gt;'：輸入/輸出錯誤**
 
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 將 Linux 核心升級為下列已修正此問題的版本：
 
 - 4.4.87+
@@ -240,7 +240,7 @@ COPYFILE 中的強制旗標 **f** 會導致在 Unix 上執行 **cp -p -f**。 �
 ln -s linked -n t
 ln: failed to create symbolic link 't': Operation not supported
 ```
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 Linux CIFS 用戶端不支援透過 SMB 2 或 SMB 3 通訊協定，建立 Windows 樣式的符號連結。 Linux 用戶端目前支援另一種符號連結樣式，稱為 [Minshall+French symlinks](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) (Mishall + 法文符號連結)，可用於建立和遵循作業。 需要符號連結的客戶可以使用 "mfsymlinks" 掛接選項。 我們建議您使用 "mfsymlinks"，因為它也是 Mac 使用的格式。
 
 若要使用符號連結，請將下列內容新增至 CIFS 掛接命令結尾：
@@ -271,13 +271,13 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 -   使用預設的「軟」掛接選項時，造成無法重新建立 TCP 連線以連線到伺服器的網路通訊失敗
 -   未出現在較舊核心中的最近重新連線修正
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 此 Linux 核心中的重新連線問題已隨下列變更修正：
 
 - [修正重新連線在通訊端重新連線許久之後不會延遲 SMB3 工作階段重新連線 (英文)](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
 - [在通訊端重新連線之後立即呼叫 Echo 服務 (英文)](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
-- [CIFS：修正重新連線期間可能發生的記憶體損毀 (英文)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+- [CIFS：修正重新連線期間可能發生的記憶體損毀](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b) \(英文\)
 - [CIFS：修正重新連線期間可能發生的 Mutex 雙重鎖定 (針對核心 4.9 版與更新版本)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183) \(英文\)
 
 但是，這些變更可能尚未移植到所有 Linux 發行版本。 如果您使用的是熱門的 Linux 散發套件，您可以查看[使用 Azure 檔案儲存體搭配 linux](storage-how-to-use-files-linux.md) ，以查看您的散發版本有必要的核心變更。
@@ -293,7 +293,7 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 ### <a name="cause"></a>原因
 因為 Azure 檔案儲存體[目前不支援 SMB 多重](https://docs.microsoft.com/rest/api/storageservices/features-not-supported-by-the-azure-file-service)通道，所以會記錄這個錯誤。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 可以忽略這個錯誤。
 
 ## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員。

@@ -1,23 +1,23 @@
 ---
 title: 啟用虛刪除 - Azure 檔案共用
-description: 了解如何在 Azure 檔案共用上啟用虛刪除以進行資料復原，以及防止意外刪除。
+description: 瞭解如何在 Azure 檔案共用上啟用虛刪除（預覽）以進行資料復原，以及防止意外刪除。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 05/26/2020
+ms.topic: how-to
+ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 755ccd266b8a88471bf7dbc0d2deb790f35f3457
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 84da8993bd1b0a61ef885d03f7c2bc80b92d47cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83883011"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510820"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>在 Azure 檔案共用上啟用虛刪除
 
-Azure 儲存體提供檔案共用的虛刪除功能，因此，當應用程式或其他儲存體帳戶使用者錯誤地刪除您的資料時，您將可更輕鬆地復原資料。 若要深入了解虛刪除，請參閱[如何防止意外刪除 Azure 檔案共用](storage-files-prevent-file-share-deletion.md)。
+Azure 儲存體提供檔案共用的虛刪除（預覽），因此當應用程式或其他儲存體帳戶使用者錯誤地刪除資料時，您可以更輕鬆地復原資料。 若要深入了解虛刪除，請參閱[如何防止意外刪除 Azure 檔案共用](storage-files-prevent-file-share-deletion.md)。
 
 下列各節說明如何在現有的儲存體帳戶上，啟用和使用 Azure 檔案共用的虛刪除：
 
@@ -97,3 +97,7 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false
 ```
 ---
+
+## <a name="next-steps"></a>後續步驟
+
+若要瞭解另一種資料保護和復原形式，請參閱[Azure 檔案儲存體的共用快照](storage-snapshots-files.md)集的總覽。

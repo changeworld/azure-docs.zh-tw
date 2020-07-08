@@ -9,31 +9,31 @@ editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
-ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab9f34995cea0dee39fa002f0472298a31b9a48e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254686"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513985"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>使用 StorSimple Snapshot Manager 來連接和管理 StorSimple 裝置
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 您可以使用 StorSimple Snapshot Manager [ **範圍** ] 窗格中的節點，來確認已匯入的 StorSimple 裝置資料，並重新整理已連接的儲存體裝置。 此外，當您按一下 [裝置]**** 節點時，您可以在 [結果]**** 窗格中看到連接的裝置清單及對應的狀態資訊。
 
-![連接的裝置](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
+![已連線的裝置](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
 
 **圖 1：StorSimple Snapshot Manager 連接的裝置** 
 
 根據您的 [檢視]**** 選擇，[結果]**** 窗格會顯示下列每個裝置的相關資訊。 (如需設定檢視的詳細資訊，請移至 [檢視功能表](storsimple-use-snapshot-manager.md#view-menu)。
 
-| 結果資料行 | 描述 |
+| 結果資料行 | 說明 |
 |:--- |:--- |
-| 名稱 |Azure 傳統入口網站中設定的裝置名稱 |
+| Name |Azure 傳統入口網站中設定的裝置名稱 |
 | 型號 |裝置的型號 |
 | 版本 |裝置上安裝的軟體版本 |
 | 狀態 |裝置是否可用 |
@@ -83,7 +83,7 @@ ms.locfileid: "79254686"
    
     ![設定 StorSimple 裝置](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
 3. 在 [ **裝置** ] 下拉式清單方塊中，選取裝置或虛擬裝置的 IP 位址。 
-4. 在 [密碼] **** 文字方塊中，輸入您在 Azure 傳統入口網站中為裝置建立的 StorSimple Snapshot Manager 密碼。 按一下 [確定]  。 StorSimple Snapshot Manager 會搜尋您所識別的裝置。 
+4. 在 [密碼] **** 文字方塊中，輸入您在 Azure 傳統入口網站中為裝置建立的 StorSimple Snapshot Manager 密碼。 按一下 [確定]。 StorSimple Snapshot Manager 會搜尋您所識別的裝置。 
    
    * 如果裝置可供使用，StorSimple Snapshot Manager 會新增連接。
    * 如果由於任何原因而無法使用裝置，StorSimple Snapshot Manager 會傳回錯誤訊息。 按一下 [確定]**** 以關閉錯誤訊息，然後按一下 [取消]**** 以關閉 [設定裝置]**** 對話方塊。
@@ -101,7 +101,7 @@ ms.locfileid: "79254686"
 3. 在 [領域]**** 窗格中的最上層節點上按一下滑鼠右鍵，然後按一下 [切換匯入顯示]****。
    
     ![選取 [切換匯入顯示]](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
-4. [切換匯入顯示]**** 對話方塊隨即出現，其中顯示已匯入之磁碟區群組與備份的狀態。 按一下 [確定]  。
+4. [切換匯入顯示]**** 對話方塊隨即出現，其中顯示已匯入之磁碟區群組與備份的狀態。 按一下 [確定]。
 
 在順利匯入磁碟區群組和備份之後，您可以使用 StorSimple Snapshot Manager 來管理它們，就如同您管理您使用 StorSimple Snapshot Manager 所建立並設定的磁碟區群組和備份一般。 
 
@@ -166,7 +166,7 @@ ms.locfileid: "79254686"
 
 #### <a name="to-change-the-expired-password"></a>若要變更過期的密碼
 1. 在 Azure 傳統入口網站中，啟動 StorSimple Manager 服務。
-2. 按一下 [**裝置** > ] [**設定**]。
+2. 按一下 [**裝置**]  >  [**設定**]。
 3. 向下捲動到 StorSimple Snapshot Manager 區段。 輸入 14 或 15 個字元的密碼。 請確定密碼混有大寫、小寫、數字和特殊字元。
 4. 請重新輸入密碼加以確認。
 5. 按一下頁面底部的 **[儲存]**。
@@ -206,7 +206,7 @@ ms.locfileid: "79254686"
 4. 啟動 StorSimple Snapshot Manager。
 5. 若要設定新的 StorSimple 裝置，請完成＜部署 StorSimple Snapshot Manager＞中的 [步驟 2：連接 StorSimple 裝置](storsimple-snapshot-manager-deployment.md)中的步驟。
 6. 以滑鼠右鍵按一下 [範圍]**** 窗格中的最上層節點 (範例中的 StorSimple Snapshot Manager)，然後按一下 [切換匯入顯示]****。 
-7. 當可在 StorSimple Snapshot Manager 中看到匯入的磁碟區群組和備份時，即會出現一則訊息。 按一下 [確定]  。
+7. 當可在 StorSimple Snapshot Manager 中看到匯入的磁碟區群組和備份時，即會出現一則訊息。 按一下 [確定]。
 
 ## <a name="next-steps"></a>後續步驟
 * 了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。

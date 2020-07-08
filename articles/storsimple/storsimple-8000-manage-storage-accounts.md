@@ -16,13 +16,14 @@ ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515032"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>使用 StorSimple 裝置管理員服務來管理儲存體帳戶認證
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 裝置管理員服務的刀鋒視窗中，[設定]**** 區段會顯示所有可在 StorSimple 裝置管理員服務中建立的全域服務參數。 這些參數可以套用到與該服務連線的所有裝置，還包括：
 

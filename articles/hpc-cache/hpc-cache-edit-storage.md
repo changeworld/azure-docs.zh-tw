@@ -3,19 +3,22 @@ title: 更新 Azure HPC Cache 儲存體目標
 description: 如何編輯 Azure HPC Cache 儲存體目標
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 1/08/2020
-ms.author: rohogue
-ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: v-erkel
+ms.openlocfilehash: 0fa8be58db9754c652d6e1ee5349c950a1c19109
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75866993"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513842"
 ---
 # <a name="edit-storage-targets"></a>編輯儲存體目標
 
 您可以從快取的 [**儲存體目標**] 頁面中移除或修改儲存體目標。
+
+> [!TIP]
+> [管理 AZURE HPC](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)快取影片顯示如何編輯儲存體目標。
 
 ## <a name="remove-a-storage-target"></a>移除儲存體目標
 

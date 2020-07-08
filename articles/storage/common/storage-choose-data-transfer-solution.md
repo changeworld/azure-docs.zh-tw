@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: df261dbf8af8ffdb4ccb10626594626150245748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7094fffa1ea8ca2c2557e75fcb31b700abc43da5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514435"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>選擇適合資料轉送的 Azure 解決方案
 
@@ -35,7 +35,7 @@ ms.locfileid: "82176391"
 
     - **圖形化介面**：如果您偶爾轉送幾個檔案，且不需要將資料轉送自動化，您可以選擇圖形化介面工具，例如 Azure 儲存體總管或 Azure 入口網站中的 Web 型瀏覽工具。
     - **以指令碼或程式設計方式轉送**：您可以使用我們所提供已最佳化的軟體工具，或是直接呼叫 REST API/SDK。 可用的指令碼工具為 AzCopy、Azure PowerShell 和 Azure CLI。 針對程式設計介面，使用 .NET、Java、Python、Node/JS、C++、Go、PHP 或 Ruby 的 SDK。
-    - **內部部署裝置**：我們提供位於您資料中心內部的實體或虛擬裝置，並將透過網路的資料轉送最佳化。 這些裝置也提供常用檔案的本機快取。 實體裝置是 Data Box Edge，而虛擬裝置是資料箱閘道。 兩者都可在您的內部部署中永久執行，並透過網路連線到 Azure。
+    - **內部部署裝置**：我們提供位於您資料中心內部的實體或虛擬裝置，並將透過網路的資料轉送最佳化。 這些裝置也提供常用檔案的本機快取。 實體裝置是 Azure Stack 的邊緣，而虛擬裝置則是資料箱閘道。 兩者都可在您的內部部署中永久執行，並透過網路連線到 Azure。
     - **受控資料管線**：您可以設定雲端管線，定期在數個 Azure 服務、內部部署或兩者的結合之間轉送檔案。 使用 Azure Data Factory 設定和管理資料管線，並移動和轉換資料以供分析。
 
 下圖說明根據可用來轉送的網路頻寬、要轉送的資料大小和轉送頻率，選擇各種 Azure 資料轉送工具的指導方針。
@@ -72,12 +72,12 @@ ms.locfileid: "82176391"
 
 - [取得 Azure 儲存體總管簡介](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/) \(英文\)。
 - [閱讀 AzCopy 的概觀](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)。
-- [快速入門：使用 PowerShell 上傳、下載及列出 blob](../blobs/storage-quickstart-blobs-powershell.md)
-- [快速入門：使用 Azure CLI 建立、下載及列出 blob](../blobs/storage-quickstart-blobs-cli.md)
+- [快速入門：使用 PowerShell 上傳、下載及列出 Blob](../blobs/storage-quickstart-blobs-powershell.md)
+- [快速入門：使用 Azure CLI 建立、下載及列出 Blob](../blobs/storage-quickstart-blobs-cli.md)
 - 了解：
 
     - [適用於離線轉送的 Azure 資料箱、Azure 資料箱磁碟和 Azure Data Box Heavy ](https://docs.microsoft.com/azure/databox/)。
-    - [適用於線上轉送的 Azure 資料箱閘道和 Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/)。
+    - [Azure 資料箱閘道和 Azure Stack Edge 進行線上傳輸](https://docs.microsoft.com/azure/databox-online/)。
 - [了解 Azure Data Factory 是什麼](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)。
 - 使用 REST API 轉送資料
 

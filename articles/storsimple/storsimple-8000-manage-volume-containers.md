@@ -16,13 +16,14 @@ ms.date: 07/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 5a6cd904d7baa71c8b383022523909ca30000ce8
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515005"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>使用 StorSimple 裝置管理員服務管理 StorSimple 磁碟區容器
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本教學課程說明如何使用 StorSimple 裝置管理員服務建立和管理 StorSimple 磁碟區容器。
 
 Microsoft Azure StorSimple 裝置中的磁碟區容器包含一個或多個可共用儲存體帳戶、加密和頻寬耗用量設定的磁碟區。 一個裝置可以有多個磁碟區容器，供其所有磁碟區使用。 

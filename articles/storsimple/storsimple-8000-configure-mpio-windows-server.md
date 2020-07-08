@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc88d5b7a458c3666cdb4469d7021917d27115f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60363244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514335"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>為 StorSimple 裝置設定多重路徑 I/O
 
@@ -58,15 +58,15 @@ MPIO 是 Windows 伺服器預設不會安裝的選擇性功能。 您應該透�
 3. 在 [新增角色及功能]**** 精靈中，執行下列步驟：
    
    1. 在 [在您開始前]  頁面上，按一下 [下一步]  。
-   2. 在 [選取安裝類型]**** 頁面上，接受 [角色型或功能型安裝]**** 的預設值。 按 [下一步]  。
+   2. 在 [選取安裝類型]**** 頁面上，接受 [角色型或功能型安裝]**** 的預設值。 按 [下一步] 。
    
        ![新增角色及功能精靈 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
-   3. 在 [選取目的地伺服器]**** 頁面上，選擇 [從伺服器集區選取伺服器]****。 應該會自動探索主機伺服器。 按 [下一步]  。
+   3. 在 [選取目的地伺服器]**** 頁面上，選擇 [從伺服器集區選取伺服器]****。 應該會自動探索主機伺服器。 按 [下一步] 。
    4. 在 [選取伺服器角色]**** 頁面上，按 [下一步]****。
    5. 在 [選取功能]**** 頁面上，選取 [多重路徑 I/O]****，然後按 [下一步]****。
    
        ![新增角色及功能精靈 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
-   6. 在 [**確認安裝選項**] 頁面上，確認選取專案，然後選取 [必要**時自動重新開機目的地伺服器**]，如下所示。 按一下 [Install]  。
+   6. 在 [**確認安裝選項**] 頁面上，確認選取專案，然後選取 [必要**時自動重新開機目的地伺服器**]，如下所示。 按一下 [安裝]。
    
        ![新增角色及功能精靈 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
    7. 完成安裝時，您會收到通知。 按一下 [關閉]**** 以關閉精靈。
@@ -120,7 +120,7 @@ MPIO 是 Windows 伺服器預設不會安裝的選擇性功能。 您應該透�
    2. 在 [啟動器 IP]**** 下拉式清單中，選取主機的 IP 位址。
    3. 在 [目標入口 IP] **** 下拉式清單中，選取裝置介面的 IP。
    4. 按一下 [確定]****，返回 [iSCSI 啟動器屬性]**** 對話方塊。
-9. 按一下 **[屬性]**。 在 [屬性]**** 對話方塊中，按一下 [新增工作階段]****。
+9. 按一下 **[屬性]** 。 在 [屬性]**** 對話方塊中，按一下 [新增工作階段]****。
 10. 在 [連接到目標]**** 對話方塊中，選取 [啟用多重路徑]**** 核取方塊。 按一下 [進階]****。
 11. 在 [進階設定]**** 對話方塊中：
 

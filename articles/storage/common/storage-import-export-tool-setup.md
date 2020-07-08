@@ -4,16 +4,16 @@ description: 了解如何設定 Azure 匯入/匯出服務的磁碟機準備及�
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/29/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 01432ab68fc399f3e97eac2de5a7c356bef7078a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7d2cac9402477090ae412dcf21265bec4609278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74979031"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514188"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>設定 Azure 匯入/匯出工具
 
@@ -23,7 +23,7 @@ Microsoft Azure 匯入/匯出工具是磁碟機準備及修復工具，可搭配
 * 匯入工作完成後，您可以使用此工具來修復損毀、遺漏或與其他 Blob 衝突的任何 Blob。
 * 當您收到已完成的匯出工作中的磁碟機後，您可以使用此工具來修復磁碟機上損毀或遺漏的任何檔案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您正針對匯入作業**準備磁碟機**，就必須符合下列必要條件：
 
@@ -49,7 +49,7 @@ Microsoft Azure 匯入/匯出工具是磁碟機準備及修復工具，可搭配
 
 ## <a name="installing-the-azure-importexport-tool"></a>安裝 Azure 匯入/匯出工具
 
-首先，[下載 Azure 匯入/匯出工具](https://www.microsoft.com/download/details.aspx?id=55280)，並將它解壓縮至您電腦上的目錄， `c:\WAImportExport`例如。
+首先，[下載 Azure 匯入/匯出工具](https://www.microsoft.com/download/details.aspx?id=55280)，並將它解壓縮至您電腦上的目錄，例如 `c:\WAImportExport` 。
 
 Azure 匯入/匯出工具包含下列檔案：
 

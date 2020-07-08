@@ -3,31 +3,31 @@ title: 使用 AzCopy v10 在 Azure Blob 儲存體之間傳輸資料 |Microsoft D
 description: 本文包含 AzCopy 範例命令的集合，可協助您建立容器、複製檔案，以及在本機檔案系統和容器之間同步處理目錄。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: b676c2647fbf7c93d271e1d7f68653452125e39b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac96008987b0dbed9e3a39f92e608b8ae6c82512
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513767"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 儲存體傳輸資料
 
 AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料。 本文包含可搭配 Blob 儲存體使用的範例命令。
 
 > [!TIP]
-> 本文中的範例會以單引號（' '）括住路徑引數。 在所有命令 shell 中使用單引號，但 Windows 命令介面（cmd.exe）除外。 如果您使用 Windows 命令 Shell （cmd.exe），請將路徑引數括在雙引號（""），而不是單引號（' '）。
+> 本文中的範例會以單引號（' '）括住路徑引數。 在所有命令 shell 中使用單引號，但 Windows 命令介面（cmd.exe）除外。 如果您使用 Windows 命令 Shell （cmd.exe），請用雙引號（""）來括住路徑引數，而不是單引號（' '）。
 
 ## <a name="get-started"></a>開始使用
 
 請參閱[開始使用 AzCopy](storage-use-azcopy-v10.md)一文以下載 AzCopy，並瞭解您可以為儲存體服務提供授權認證的方式。
 
 > [!NOTE]
-> 本文中的範例假設您已使用`AzCopy login`命令驗證您的身分識別。 然後，AzCopy 會使用您的 Azure AD 帳戶來授權存取 Blob 儲存體中的資料。
+> 本文中的範例假設您已使用命令驗證您的身分識別 `AzCopy login` 。 然後，AzCopy 會使用您的 Azure AD 帳戶來授權存取 Blob 儲存體中的資料。
 >
 > 如果您想要使用 SAS 權杖來授權 blob 資料的存取權，您可以在每個 AzCopy 命令中，將該權杖附加至資源 URL。
 >
@@ -35,7 +35,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 
 ## <a name="create-a-container"></a>建立容器
 
-您可以使用[azcopy make](storage-ref-azcopy-make.md)命令來建立容器。 本節中的範例會建立名為`mycontainer`的容器。
+您可以使用[azcopy make](storage-ref-azcopy-make.md)命令來建立容器。 本節中的範例會建立名為的容器 `mycontainer` 。
 
 |    |     |
 |--------|-----------|
@@ -60,10 +60,10 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 > [!TIP]
 > 您可以使用選擇性旗標來調整您的上傳作業。 以下是一些範例。
 >
-> |案例|旗標|
+> |狀況|旗標|
 > |---|---|
-> |以附加 Blob 或分頁 Blob 的形式上傳檔案。|**--blob-類型**=\[BlockBlob\|PageBlob\|AppendBlob\]|
-> |上傳至特定的存取層（例如封存層）。|**--區塊-blob-層**=\[無\|\|\|經常性存取封存\]|
+> |以附加 Blob 或分頁 Blob 的形式上傳檔案。|**--blob-類型** = \[BlockBlob \| PageBlob \| AppendBlob\]|
+> |上傳至特定的存取層（例如封存層）。|**--區塊-blob 層** = \[無經常性存取封存 \| \| \|\]|
 > 
 > 如需完整清單，請參閱[選項](storage-ref-azcopy-copy.md#options)。
 
@@ -75,7 +75,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 | **範例** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 | **範例**（階層式命名空間） | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
-您也可以在檔案路徑或檔案名中的任何位置使用萬用字元符號（*）上傳檔案。 例如： `'C:\myDirectory\*.txt'`、或`C:\my*\*.txt`。
+您也可以在檔案路徑或檔案名中的任何位置使用萬用字元符號（*）上傳檔案。 例如： `'C:\myDirectory\*.txt'` 、或 `C:\my*\*.txt` 。
 
 ### <a name="upload-a-directory"></a>上傳目錄
 
@@ -107,7 +107,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 | **範例**（階層式命名空間） | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
 
 > [!NOTE]
-> 附加`--recursive`旗標，以上傳所有子目錄中的檔案。
+> 附加 `--recursive` 旗標，以上傳所有子目錄中的檔案。
 
 ### <a name="upload-specific-files"></a>上傳特定檔案
 
@@ -115,7 +115,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多個完整的檔案名
 
-使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配`--include-path`選項。 使用分號（`;`）分隔個別的檔案名。
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-path` 選項。 使用分號（）分隔個別的檔案名 `;` 。
 
 |    |     |
 |--------|-----------|
@@ -123,13 +123,13 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 | **範例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 | **範例**（階層式命名空間） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 
-在此範例中，AzCopy 會`C:\myDirectory\photos`傳送目錄和`C:\myDirectory\documents\myFile.txt`檔案。 您必須包含`--recursive`選項，才能傳送`C:\myDirectory\photos`目錄中的所有檔案。
+在此範例中，AzCopy 會傳送 `C:\myDirectory\photos` 目錄和檔案 `C:\myDirectory\documents\myFile.txt` 。 您必須包含 `--recursive` 選項，才能傳送目錄中的所有檔案 `C:\myDirectory\photos` 。
 
-您也可以使用`--exclude-path`選項來排除檔案。 若要深入瞭解，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
+您也可以使用選項來排除檔案 `--exclude-path` 。 若要深入瞭解，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
 
 #### <a name="use-wildcard-characters"></a>使用萬用字元
 
-使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配`--include-pattern`選項。 指定包含萬用字元的部分名稱。 使用 semicolin （`;`）來分隔名稱。 
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-pattern` 選項。 指定包含萬用字元的部分名稱。 使用 semicolin （）來分隔名稱 `;` 。 
 
 |    |     |
 |--------|-----------|
@@ -137,9 +137,9 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 | **範例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 | **範例**（階層式命名空間） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 
-您也可以使用`--exclude-pattern`選項來排除檔案。 若要深入瞭解，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
+您也可以使用選項來排除檔案 `--exclude-pattern` 。 若要深入瞭解，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
 
-`--include-pattern`和`--exclude-pattern`選項僅適用于檔案名，而不會套用至路徑。  如果您想要複製存在於目錄樹狀結構中的所有文字檔，請使用`–recursive`選項來取得整個目錄樹狀結構，然後使用`–include-pattern`並指定`*.txt`來取得所有文字檔。
+`--include-pattern`和 `--exclude-pattern` 選項僅適用于檔案名，而不會套用至路徑。  如果您想要複製存在於目錄樹狀結構中的所有文字檔，請使用 `–recursive` 選項來取得整個目錄樹狀結構，然後使用 `–include-pattern` 並指定 `*.txt` 來取得所有文字檔。
 
 ## <a name="download-files"></a>下載檔案
 
@@ -156,16 +156,16 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 > [!TIP]
 > 您可以使用選擇性旗標來調整您的下載作業。 以下是一些範例。
 >
-> |案例|旗標|
+> |狀況|旗標|
 > |---|---|
 > |自動解壓縮檔案。|**--解壓縮**|
-> |指定您想要複製相關記錄專案的詳細程度。|**--記錄層級**=\[警告\|錯誤\|資訊\|無\]|
-> |指定是否和如何覆寫目的地端的衝突檔案和 blob。|**--覆寫**=\[\|true\|false\|ifSourceNewer 提示\]|
+> |指定您想要複製相關記錄專案的詳細程度。|**--記錄層級** = \[警告 \| 錯誤 \| 資訊 \| 無\]|
+> |指定是否和如何覆寫目的地端的衝突檔案和 blob。|**--覆寫** = \[true \| false \| ifSourceNewer \| 提示字元\]|
 > 
 > 如需完整清單，請參閱[選項](storage-ref-azcopy-copy.md#options)。
 
 > [!NOTE]
-> 如果 blob `Content-md5`的屬性值包含雜湊，則 AzCopy 會計算已下載資料的 md5 雜湊，並驗證儲存在 blob `Content-md5`屬性中的 md5 雜湊是否符合計算的雜湊。 如果這些值不相符，除非您將或`--check-md5=NoCheck` `--check-md5=LogOnly`附加至 copy 命令來覆寫此行為，否則下載將會失敗。
+> 如果 `Content-md5` blob 的屬性值包含雜湊，則 AzCopy 會計算已下載資料的 md5 雜湊，並驗證儲存在 blob 屬性中的 md5 雜湊是否 `Content-md5` 符合計算的雜湊。 如果這些值不相符，除非您將 `--check-md5=NoCheck` 或附加 `--check-md5=LogOnly` 至 copy 命令來覆寫此行為，否則下載將會失敗。
 
 ### <a name="download-a-file"></a>下載檔案
 
@@ -183,7 +183,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 | **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 | **範例**（階層式命名空間） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 
-這個範例會產生名為`C:\myDirectory\myBlobDirectory`的目錄，其中包含所有下載的檔案。
+這個範例會產生名為 `C:\myDirectory\myBlobDirectory` 的目錄，其中包含所有下載的檔案。
 
 ### <a name="download-the-contents-of-a-directory"></a>下載目錄的內容
 
@@ -198,7 +198,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 | **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/*' 'C:\myDirectory'` |
 
 > [!NOTE]
-> 附加旗`--recursive`標以下載所有子目錄中的檔案。
+> 附加 `--recursive` 旗標以下載所有子目錄中的檔案。
 
 ### <a name="download-specific-files"></a>下載特定檔案
 
@@ -206,7 +206,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多個完整的檔案名
 
-使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配`--include-path`選項。 使用 semicolin （`;`）來分隔個別的檔案名。
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-path` 選項。 使用 semicolin （）來分隔個別的檔案名 `;` 。
 
 |    |     |
 |--------|-----------|
@@ -214,13 +214,13 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 | **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 | **範例**（階層式命名空間） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
 
-在此範例中，AzCopy 會`https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos`傳送目錄和`https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt`檔案。 您必須包含`--recursive`選項，才能傳送`https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos`目錄中的所有檔案。
+在此範例中，AzCopy 會傳送 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 目錄和檔案 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` 。 您必須包含 `--recursive` 選項，才能傳送目錄中的所有檔案 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 。
 
-您也可以使用`--exclude-path`選項來排除檔案。 若要深入瞭解，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
+您也可以使用選項來排除檔案 `--exclude-path` 。 若要深入瞭解，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
 
 #### <a name="use-wildcard-characters"></a>使用萬用字元
 
-使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配`--include-pattern`選項。 指定包含萬用字元的部分名稱。 使用 semicolin （`;`）來分隔名稱。
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-pattern` 選項。 指定包含萬用字元的部分名稱。 使用 semicolin （）來分隔名稱 `;` 。
 
 |    |     |
 |--------|-----------|
@@ -228,21 +228,21 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 | **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 | **範例**（階層式命名空間） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
-您也可以使用`--exclude-pattern`選項來排除檔案。 若要深入瞭解，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
+您也可以使用選項來排除檔案 `--exclude-pattern` 。 若要深入瞭解，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
 
-`--include-pattern`和`--exclude-pattern`選項僅適用于檔案名，而不會套用至路徑。  如果您想要複製存在於目錄樹狀結構中的所有文字檔，請使用`–recursive`選項來取得整個目錄樹狀結構，然後使用`–include-pattern`並指定`*.txt`來取得所有文字檔。
+`--include-pattern`和 `--exclude-pattern` 選項僅適用于檔案名，而不會套用至路徑。  如果您想要複製存在於目錄樹狀結構中的所有文字檔，請使用 `–recursive` 選項來取得整個目錄樹狀結構，然後使用 `–include-pattern` 並指定 `*.txt` 來取得所有文字檔。
 
 ## <a name="copy-blobs-between-storage-accounts"></a>在儲存體帳戶間複製 Blob
 
-您可以使用 AzCopy 將 blob 複製到其他儲存體帳戶。 複製作業是同步的，因此當命令傳回時，表示已複製所有檔案。 
+您可以使用 AzCopy 將Bblob 複製到其他儲存體帳戶。 複製作業是同步的，因此當命令傳回時，表示已複製所有檔案。 
 
-AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [api](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)，因此資料會直接複製到存放伺服器之間。 這些複製作業不會使用您電腦的網路頻寬。 您可以藉由設定`AZCOPY_CONCURRENCY_VALUE`環境變數的值來增加這些作業的輸送量。 若要深入瞭解，請參閱將[輸送量優化](storage-use-azcopy-configure.md#optimize-throughput)。
+AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [api](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)，因此資料會直接複製到存放伺服器之間。 這些複製作業不會使用您電腦的網路頻寬。 您可以藉由設定環境變數的值來增加這些作業的輸送量 `AZCOPY_CONCURRENCY_VALUE` 。 若要深入瞭解，請參閱將[輸送量優化](storage-use-azcopy-configure.md#optimize-throughput)。
 
 > [!NOTE]
 > 此案例在目前版本中具有下列限制。
 >
-> - 您必須將 SAS 權杖附加至每個來源 URL。 如果您使用 Azure Active Directory （AD）提供授權認證，則只能從目的地 URL 省略 SAS 權杖。
->-  Premium 區塊 blob 儲存體帳戶不支援存取層。 將設定`s2s-preserve-access-tier`為（例如： `false` `--s2s-preserve-access-tier=false`），以從複製作業中省略 blob 的存取層。
+> - 您必須將 SAS 權杖附加至每個來源 URL。 如果您使用 Azure Active Directory （AD）提供授權認證，則只能從目的地 URL 省略 SAS 權杖。 請確定您已在目的地帳戶中設定適當的角色。 請參閱[選項1：使用 Azure Active Directory](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)。
+>-  Premium 區塊 blob 儲存體帳戶不支援存取層。 將設定 `s2s-preserve-access-tier` 為（例如：），以從複製作業中省略 blob 的存取層 `false` `--s2s-preserve-access-tier=false` 。
 
 本區段包含下列範例：
 
@@ -252,22 +252,22 @@ AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/stor
 > * 將容器複製到另一個儲存體帳戶
 > * 將所有容器、目錄和檔案複製到另一個儲存體帳戶
 
-這些範例也適用于具有階層式命名空間的帳戶。 [Data Lake Storage 上的多重通訊協定存取](../blobs/data-lake-storage-multi-protocol-access.md)，可讓您在這些帳戶上`blob.core.windows.net`使用相同的 URL 語法（）。
+這些範例也適用于具有階層式命名空間的帳戶。 [Data Lake Storage 上的多重通訊協定存取](../blobs/data-lake-storage-multi-protocol-access.md)，可讓您在這些帳戶上使用相同的 URL 語法（ `blob.core.windows.net` ）。
 
 > [!TIP]
 > 您可以使用選擇性旗標來調整複製作業。 以下是一些範例。
 >
-> |案例|旗標|
+> |狀況|旗標|
 > |---|---|
-> |將檔案複製成附加 Blob 或分頁 Blob。|**--blob-類型**=\[BlockBlob\|PageBlob\|AppendBlob\]|
-> |複製到特定的存取層（例如封存層）。|**--區塊-blob-層**=\[無\|\|\|經常性存取封存\]|
-> |自動解壓縮檔案。|**--解壓縮**=\[gzip\|deflate\]|
+> |將檔案複製成附加 Blob 或分頁 Blob。|**--blob-類型** = \[BlockBlob \| PageBlob \| AppendBlob\]|
+> |複製到特定的存取層（例如封存層）。|**--區塊-blob 層** = \[無經常性存取封存 \| \| \|\]|
+> |自動解壓縮檔案。|**--解壓縮** = \[gzip \| deflate\]|
 > 
 > 如需完整清單，請參閱[選項](storage-ref-azcopy-copy.md#options)。
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>將 blob 複製到另一個儲存體帳戶
 
-針對具有階層式命名空間`blob.core.windows.net`的帳戶，請使用相同的 URL 語法（）。
+針對具有階層式命名空間的帳戶，請使用相同的 URL 語法（ `blob.core.windows.net` ）。
 
 |    |     |
 |--------|-----------|
@@ -277,7 +277,7 @@ AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/stor
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>將目錄複寫到另一個儲存體帳戶
 
-針對具有階層式命名空間`blob.core.windows.net`的帳戶，請使用相同的 URL 語法（）。
+針對具有階層式命名空間的帳戶，請使用相同的 URL 語法（ `blob.core.windows.net` ）。
 
 |    |     |
 |--------|-----------|
@@ -287,7 +287,7 @@ AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/stor
 
 ### <a name="copy-a-container-to-another-storage-account"></a>將容器複製到另一個儲存體帳戶
 
-針對具有階層式命名空間`blob.core.windows.net`的帳戶，請使用相同的 URL 語法（）。
+針對具有階層式命名空間的帳戶，請使用相同的 URL 語法（ `blob.core.windows.net` ）。
 
 |    |     |
 |--------|-----------|
@@ -297,7 +297,7 @@ AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/stor
 
 ### <a name="copy-all-containers-directories-and-blobs-to-another-storage-account"></a>將所有容器、目錄和 blob 複製到另一個儲存體帳戶
 
-針對具有階層式命名空間`blob.core.windows.net`的帳戶，請使用相同的 URL 語法（）。
+針對具有階層式命名空間的帳戶，請使用相同的 URL 語法（ `blob.core.windows.net` ）。
 
 |    |     |
 |--------|-----------|
@@ -312,21 +312,21 @@ AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/stor
 > [!NOTE]
 > 目前的 AzCopy 版本不會在其他來源和目的地之間同步處理（例如：檔案儲存體或 Amazon Web Services （AWS） S3 bucket）。
 
-[同步](storage-ref-azcopy-sync.md)命令會比較檔案名和上次修改的時間戳記。 將`--delete-destination`選擇性旗標設定為`true`或`prompt` ，如果這些檔案已不存在於來原始目錄中，則會刪除目的地目錄中的檔案。
+[同步](storage-ref-azcopy-sync.md)命令會比較檔案名和上次修改的時間戳記。 將 `--delete-destination` 選擇性旗標設定為 `true` 或 `prompt` ，如果這些檔案已不存在於來原始目錄中，則會刪除目的地目錄中的檔案。
 
-如果您將`--delete-destination`旗標設定`true`為 AzCopy 刪除檔案，而不提供提示。 如果您想要在 AzCopy 刪除檔案之前出現提示，請將`--delete-destination`旗標設定`prompt`為。
+如果您將旗標設定 `--delete-destination` 為 `true` AzCopy 刪除檔案，而不提供提示。 如果您想要在 AzCopy 刪除檔案之前出現提示，請將旗標設定 `--delete-destination` 為 `prompt` 。
 
 > [!NOTE]
-> 若要防止意外刪除，請務必先啟用虛[刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能，然後再使用`--delete-destination=prompt|true`旗標。
+> 若要防止意外刪除，請務必先啟用虛[刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能，然後再使用 `--delete-destination=prompt|true` 旗標。
 
 > [!TIP]
 > 您可以使用選擇性旗標來調整同步作業。 以下是一些範例。
 >
-> |案例|旗標|
+> |狀況|旗標|
 > |---|---|
-> |指定下載時應如何驗證嚴格的 MD5 雜湊。|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |指定下載時應如何驗證嚴格的 MD5 雜湊。|**--check-md5** = \[NoCheck \| LogOnly \| FailIfDifferent \| FailIfDifferentOrMissing\]|
 > |根據模式排除檔案。|**--排除-路徑**|
-> |指定您想要同步處理相關記錄專案的詳細程度。|**--記錄層級**=\[警告\|錯誤\|資訊\|無\]|
+> |指定您想要同步處理相關記錄專案的詳細程度。|**--記錄層級** = \[警告 \| 錯誤 \| 資訊 \| 無\]|
 > 
 > 如需完整清單，請參閱[選項](storage-ref-azcopy-sync.md#options)。
 

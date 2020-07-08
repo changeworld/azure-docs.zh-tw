@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 59dee7b9-ca6d-4fd9-96e6-a0071e8d248e
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60630563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512979"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 監視指示器來管理您的裝置
 
@@ -55,13 +55,13 @@ StorSimple 裝置包括發光二極體 (LED) 與警示，您可以用來監控�
 
 | 系統電源 | 模組錯誤 | 邏輯錯誤 | 警示 | 狀態 |
 | --- | --- | --- | --- | --- |
-| 紅琥珀色 |OFF |OFF |不適用 |AC 電源中斷、以備用電源運作，或 AC 電源已開但已移除控制器模組。 |
-| 綠色 |開啟 |開啟 |不適用 |操作面板電源開啟 (5 秒) 測試狀態 |
-| 綠色 |OFF |OFF |不適用 |電源開啟、所有功能正常 |
-| 綠色 |開啟 |不適用 |PCM 故障 LED、風扇故障 LED |任何 PCM 故障、 風扇故障、 溫度過高或過低 |
-| 綠色 |開啟 |不適用 |I/O 模組 LED |任何控制器模組錯誤 |
-| 綠色 |開啟 |不適用 |不適用 |機箱邏輯錯誤 |
-| 綠色 |閃爍 |不適用 |控制器模組上的模組狀態 LED。 PCM 故障 LED、風扇故障 LED |安裝的控制器模組類型不明、I2C 匯流排故障、控制器模組重要產品資料 (VPD) 組態錯誤 |
+| 紅琥珀色 |OFF |OFF |N/A |AC 電源中斷、以備用電源運作，或 AC 電源已開但已移除控制器模組。 |
+| 綠色 |開啟 |開啟 |N/A |操作面板電源開啟 (5 秒) 測試狀態 |
+| 綠色 |OFF |OFF |N/A |電源開啟、所有功能正常 |
+| 綠色 |開啟 |N/A |PCM 故障 LED、風扇故障 LED |任何 PCM 故障、 風扇故障、 溫度過高或過低 |
+| 綠色 |開啟 |N/A |I/O 模組 LED |任何控制器模組錯誤 |
+| 綠色 |開啟 |N/A |N/A |機箱邏輯錯誤 |
+| 綠色 |閃爍 |N/A |控制器模組上的模組狀態 LED。 PCM 故障 LED、風扇故障 LED |安裝的控制器模組類型不明、I2C 匯流排故障、控制器模組重要產品資料 (VPD) 組態錯誤 |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>電源冷卻模組 (PCM) LED 指示燈
 電源冷卻模組 (PCM) LED 指示燈位於每個 PCM 模組上主要機箱或 EBOD 機箱的背面。 本主題討論如何使用下列 LED 來監控 StorSimple 裝置的狀態。  
@@ -91,7 +91,7 @@ LED 面板上會指出 PCM 的狀態。 裝置 PCM LED 面板有六個 LED。 �
 | 沒有 AC 電源 (機箱) |OFF |OFF |OFF |OFF |
 | 沒有 AC 電源 (只有此 PCM) |OFF |開啟 |OFF |開啟 |
 | 有 AC 且 PCM 開啟 - 正常 |開啟 |OFF |OFF |OFF |
-| PCM 故障 (風扇故障) |OFF |OFF |開啟 |不適用 |
+| PCM 故障 (風扇故障) |OFF |OFF |開啟 |N/A |
 | PCM 故障 (安培、 電壓、電流過高) |OFF |開啟 |開啟 |開啟 |
 | PCM (風扇超出容許範圍) |開啟 |OFF |OFF |開啟 |
 | 待命模式 |不停閃爍 |OFF |OFF |OFF |
@@ -136,7 +136,7 @@ StorSimple 裝置包含主要控制器的 LED 與 EBOD 控制器模組的 LED。
 使用下表來判斷控制器模組是否運作正常。  
 
 ### <a name="controller-indicator-leds"></a>控制器 LED 指示燈
-| LED | 描述 |
+| LED | Description |
 | --- | --- |
 | ID LED (藍色) |指出已找到此模組。 如果主動控制器上閃爍著藍色 LED，即表示該控制器處於作用中，而另一控制器則處於待命中。 如需詳細資訊，請參閱 [識別裝置上的作用中控制器](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)。 |
 | 錯誤 LED (琥珀色) |指出控制器中發生錯誤。 |
@@ -219,7 +219,7 @@ StorSimple 裝置包含和主要機箱與 EBOD 機箱相關聯的有聲警報器
 下表說明各種警示狀況。
 
 ### <a name="alarm-conditions"></a>警示狀況
-| 狀態 | Severity | 警示 | 操作面板 LED |
+| 狀態 | 嚴重性 | 警示 | 操作面板 LED |
 | --- | --- | --- | --- |
 | PCM 警示 – 失去單一 PCM 提供的 DC 電源 |錯誤 – 未失去備援 |S1 |模組錯誤 |
 | PCM 警示 – 失去單一 PCM 提供的 DC 電源 |錯誤 – 失去備援 |S1 |模組錯誤 |

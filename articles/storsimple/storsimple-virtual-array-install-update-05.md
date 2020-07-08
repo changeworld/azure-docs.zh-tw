@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: e09ff4bcbc141b1a1f80bc278918a291639c1885
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 9b95593dd7ce7e10300ecef9b3636073a3096a7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61445298"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513647"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安裝 Update 0.5
 
@@ -57,7 +57,7 @@ ms.locfileid: "61445298"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下載更新或 Hotfix
 
-1. 啟動 Internet Explorer 並流覽至[https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
+1. 啟動 Internet Explorer 並流覽至 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
 
 2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝] **** 。
 
@@ -67,7 +67,7 @@ ms.locfileid: "61445298"
    
     ![搜尋目錄](./media/storsimple-virtual-array-install-update-05/download1.png)
 
-4. 按一下 [下載]  。 
+4. 按一下 [下載] 。 
 
 5. 您應該會看到下載兩個檔案，分別是 .msu** 與 .cab** 檔案。 將這兩個檔案一一下載至資料夾。 資料夾也可以複製到裝置可連線的網路共用位置。
 
@@ -90,11 +90,11 @@ ms.locfileid: "61445298"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安裝更新或 Hotfix
 
-1. 在本機 web UI 中，移至 [**維護** > ] [**軟體更新**]。
+1. 在本機 web UI 中，移至 [**維護**] [  >  **軟體更新**]。
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. 在 [更新檔案路徑] **** 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用]  。
+2. 在 [更新檔案路徑] **** 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用] 。
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "61445298"
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護** > ] [**軟體更新**]。 顯示的軟體版本應該是 10.0.0.0.0.10290.0**** (適用於 Update 0.5)。
+5. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**] [  >  **軟體更新**]。 顯示的軟體版本應該是 10.0.0.0.0.10290.0**** (適用於 Update 0.5)。
    
    > [!NOTE]
    > 我們在本機 Web UI 和 Azure 入口網站中回報軟體版本的方式略有不同。 例如，本機 Web UI 會回報 10.0.0.0.0.10290****，而相同版本在 Azure 入口網站則會回報為 10.0.10290.0****。

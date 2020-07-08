@@ -7,15 +7,15 @@ ms.author: kartup
 manager: dcscontentpm
 ms.date: 10/25/2019
 ms.service: storage
-ms.subservice: common
+ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: d3a3763a8964810626bcdc47da230a9ee406f1f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c50f54491e0284005c4b762b0c4b35a8460f5ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74196487"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511970"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure 檔案共用 – 無法刪除 Azure 檔案共用中的檔案
 
@@ -36,7 +36,7 @@ Not enough quota is available to process this command
 
 當您在裝載檔案共用的電腦上達到檔案所允許的並行開啟控制碼上限時，就會發生錯誤1816。 如需詳細資訊，請參閱[Azure 儲存體效能和擴充性檢查清單](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist)。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 關閉一些控點以減少並行開啟的控制碼數目。
 
@@ -72,13 +72,13 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 
 ## <a name="example-result"></a>範例結果：
 
-|HandleId|Path|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
+|HandleId|路徑|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
 |---|---|---|---|---|---|---|---|---|
 |259101229083|---|10.222.10.123|62758|2019-10-05|12：16：50Z|0|0|9507758546259807489|
 |259101229131|---|10.222.10.123|62758|2019-10-05|12：36：20Z|0|0|9507758546259807489|
 |259101229137|---|10.222.10.123|62758|2019-10-05|12：36：53Z|0|0|9507758546259807489|
-|259101229136|新增資料夾/測試 .zip|10.222.10.123|62758|2019-10-05|12：36：29Z|13835132822072852480|9223446803645464576|9507758546259807489|
-|259101229135|測試 .zip|37.222.22.143|62758|2019-10-05|12：36：24Z|11529250230440558592|0|9507758546259807489|
+|259101229136|新增資料夾/test.zip|10.222.10.123|62758|2019-10-05|12：36：29Z|13835132822072852480|9223446803645464576|9507758546259807489|
+|259101229135|test.zip|37.222.22.143|62758|2019-10-05|12：36：24Z|11529250230440558592|0|9507758546259807489|
 
 ### <a name="close-an-open-handle"></a>關閉開啟的控制碼：
 

@@ -4,22 +4,22 @@ description: 了解如何在 Azure 入口網站中建立匯出作業，以轉送
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a5afa6439caa6b7c1572447e3b212f3357bf296a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282506"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513509"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 匯入/匯出服務匯出 Azure Blob 儲存體中的資料
 
 本文提供的逐步指示會說明如何使用 Azure 匯入/匯出服務，安全地從 Azure Blob 儲存體匯出大量資料。 此服務需要您將空磁碟機寄送至 Azure 資料中心。 此服務會將您儲存體帳戶的資料匯出至磁碟機，然後將磁碟機寄回給您。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在建立匯出作業來轉送 Azure Blob 儲存體中的資料之前，請仔細檢閱並完成此服務的下列必要條件清單。
 您必須：
@@ -27,7 +27,7 @@ ms.locfileid: "80282506"
 - 具有可用於匯入/匯出服務的有效 Azure 訂用帳戶。
 - 具有至少一個 Azure 儲存體帳戶。 請參閱[匯入/匯出服務支援的儲存體帳戶和儲存體類型](storage-import-export-requirements.md)清單。 如需建立新儲存體帳戶的詳細資訊，請參閱 [如何建立儲存體帳戶](storage-account-create.md)(英文)。
 - 具有屬於[支援類型](storage-import-export-requirements.md#supported-disks)的磁碟，且數量足夠。
-- 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的貨運公司，請聯絡 Azure 資料箱營運小組`adbops@microsoft.com`，網址為。
+- 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的貨運公司，請聯絡 Azure 資料箱營運小組，網址為 `adbops@microsoft.com` 。
   - 帳戶必須是有效的、需要有餘額，且必須有退貨運送功能。
   - 產生匯出作業的追蹤號碼。
   - 每個作業都應該具有個別的追蹤號碼。 不支援多個作業使用相同的追蹤號碼。
@@ -39,7 +39,7 @@ ms.locfileid: "80282506"
 
 在 Azure 入口網站中執行下列步驟，以建立匯出作業。
 
-1. 登入 https://portal.azure.com/。
+1. 登入 <https://portal.azure.com/>。
 2. 移至 [所有服務] > [儲存體] > [匯入/匯出作業]****。
 
     ![移至匯入/匯出作業](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -48,7 +48,7 @@ ms.locfileid: "80282506"
 
     ![按一下 [匯入/匯出作業]](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
 
-4. 在 [基本]**** 中：
+4. 在 [基本] 中：
 
     - 選取 [從 Azure 匯出]****。
     - 輸入匯出作業的描述性名稱。 使用您選擇的名稱來追蹤作業進度。
@@ -83,7 +83,7 @@ ms.locfileid: "80282506"
 
 6. 在 [寄返資訊]**** 中：
 
-    - 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的貨運公司，請從下拉式清單中選擇現有的選項。 請聯絡 Azure 資料箱營運小組`adbops@microsoft.com` ，其中包含您打算使用之電訊廠商的相關資訊。
+    - 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的貨運公司，請從下拉式清單中選擇現有的選項。 請聯絡 Azure 資料箱營運小組， `adbops@microsoft.com` 其中包含您打算使用之電訊廠商的相關資訊。
     - 輸入您在該貨運公司中建立的有效貨運帳戶號碼。 當您的匯出作業完成後，Microsoft 會使用此帳戶將磁片磁碟機寄回給您。
     - 提供完整且有效的連絡人名稱、電話、電子郵件、街道地址、城市、郵遞區號、州/省和國家/地區。
 
@@ -129,7 +129,11 @@ ms.locfileid: "80282506"
 
 如果使用 WAImportExport 工具的版本1.4.0.300，請使用下列命令來解除鎖定磁片磁碟機：
 
-    `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+
+以下是範例輸入的範例。
+
+   `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
 
 如果使用舊版的工具，請使用 [BitLocker] 對話方塊來解除鎖定磁片磁碟機。
 
@@ -143,15 +147,15 @@ ms.locfileid: "80282506"
 2. 將檔案解壓縮至預設資料夾 `waimportexportv1`。 例如： `C:\WaImportExportV1` 。
 3. 以系統管理權限開啟 PowerShell 或命令列視窗。 若要將目錄變更為解壓縮的資料夾，請執行下列命令：
 
-    `cd C:\WaImportExportV1`
+   `cd C:\WaImportExportV1`
 
 4. 若要為所選 Blob 確認所需的磁碟機數目，請執行下列命令：
 
-    `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
+   `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
 
     下表會說明這些參數：
 
-    |命令列參數|描述|  
+    |命令列參數|Description|  
     |--------------------------|-----------------|  
     |**/logdir**|選擇性。 記錄檔目錄。 詳細資訊記錄檔會寫入至這個目錄。 如未指定，將使用目前的目錄做為記錄目錄。|  
     |**/sn**|必要。 匯出作業的儲存體帳戶名稱。|  
@@ -205,7 +209,7 @@ Number of drives needed:        3
 
 下表顯示有效 Blob 路徑範例：
 
-   | 選取器 | Blob 路徑 | 描述 |
+   | 選取器 | Blob 路徑 | Description |
    | --- | --- | --- |
    | 開頭為 |/ |匯出儲存體帳戶中的所有 Blob |
    | 開頭為 |/$root/ |匯出根容器中的所有 Blob |

@@ -3,19 +3,35 @@ title: Azure HPC 快取必要條件
 description: 使用 Azure HPC 快取的必要條件
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
-ms.date: 04/03/2020
-ms.author: rohogue
-ms.openlocfilehash: 4508ef7583760a7ef7503f8a6f37202af2684d81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: d7a5bfe56a17ecc2377be7b59dcbe3254d813a0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513240"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 快取的必要條件
 
 在使用 Azure 入口網站建立新的 Azure HPC 快取之前，請確定您的環境符合這些需求。
+
+## <a name="video-overviews"></a>影片概覽
+
+觀看這些影片以快速瞭解系統的元件，以及它們需要如何搭配使用。
+
+（按一下影片影像或要監看的連結。）
+
+* [運作方式](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)-說明 Azure HPC 快取如何與儲存體和用戶端互動
+
+  [![影片縮圖影像： Azure HPC 快取：運作方式（按一下以流覽影片頁面）](media/video-2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
+
+* [必要條件](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)-描述 NAS 儲存體、Azure Blob 儲存體、網路存取和用戶端存取的需求
+
+  [![影片縮圖影像： Azure HPC 快取：必要條件（按一下以流覽影片頁面）](media/video-3-prerequisites.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
+
+如需特定建議，請閱讀本文的其餘部分。
 
 ## <a name="azure-subscription"></a>Azure 訂用帳戶
 
@@ -80,7 +96,7 @@ Azure HPC 快取需要具有下列品質的專用子網：
 
 * 效能：**標準**
 * 帳戶種類： **StorageV2 （一般用途 v2）**
-* 複寫：**本地備援儲存體 (LRS)**
+* 複寫：**本機多餘的儲存體（LRS）**
 * 存取層（預設）：**熱**
 
 最佳做法是在與快取相同的位置中使用儲存體帳戶。
@@ -103,7 +119,7 @@ Azure HPC 快取需要具有下列品質的專用子網：
 
   若要檢查您的儲存系統設定，請遵循此程式。
 
-  * 發出`rpcinfo`命令給您的儲存系統，以檢查所需的埠。 下列命令會列出埠，並將相關的結果格式化為資料表。 （使用您系統的 IP 位址來取代 *<storage_IP>* 期限）。
+  * 發出 `rpcinfo` 命令給您的儲存系統，以檢查所需的埠。 下列命令會列出埠，並將相關的結果格式化為資料表。 （使用您系統的 IP 位址來取代 *<storage_IP>* 期限）。
 
     您可以從已安裝 NFS 基礎結構的任何 Linux 用戶端發出此命令。 如果您使用叢集子網內的用戶端，它也可以協助驗證子網與儲存體系統之間的連線能力。
 
@@ -111,11 +127,11 @@ Azure HPC 快取需要具有下列品質的專用子網：
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
-  請確定查詢所``rpcinfo``傳回的所有埠都允許來自 Azure HPC 快取子網的不受限制流量。
+  請確定查詢所傳回的所有埠都 ``rpcinfo`` 允許來自 AZURE HPC 快取子網的不受限制流量。
 
-  * 如果您無法使用此`rpcinfo`命令，請確定這些常用的埠允許輸入和輸出流量：
+  * 如果您無法使用此 `rpcinfo` 命令，請確定這些常用的埠允許輸入和輸出流量：
 
-    | 通訊協定 | 連接埠  | Service  |
+    | 通訊協定 | Port  | 服務  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |
@@ -127,10 +143,10 @@ Azure HPC 快取需要具有下列品質的專用子網：
 
   * 檢查防火牆設定，確定它們允許所有這些必要端口上的流量。 請務必檢查 Azure 中所使用的防火牆，以及您資料中心內的內部部署防火牆。
 
-* **目錄存取：** 在儲存`showmount`系統上啟用命令。 Azure HPC 快取會使用此命令來檢查您的儲存體目標設定是否指向有效的匯出，同時確保多個掛接不會存取相同的子目錄（發生檔案衝突的風險）。
+* **目錄存取：**`showmount`在儲存系統上啟用命令。 Azure HPC 快取會使用此命令來檢查您的儲存體目標設定是否指向有效的匯出，同時確保多個掛接不會存取相同的子目錄（發生檔案衝突的風險）。
 
   > [!NOTE]
-  > 如果您的 NFS 儲存體系統使用 NetApp 的 ONTAP 9.2 作業系統，**請勿啟用`showmount` **。 [請洽詢 Microsoft 服務和支援](hpc-cache-support-ticket.md)以取得協助。
+  > 如果您的 NFS 儲存體系統使用 NetApp 的 ONTAP 9.2 作業系統，**請勿啟用 `showmount` **。 [請洽詢 Microsoft 服務和支援](hpc-cache-support-ticket.md)以取得協助。
 
   若要深入瞭解目錄清單存取權，請參閱 NFS 儲存體目標[疑難排解一文](troubleshoot-nas.md#enable-export-listing)。
 

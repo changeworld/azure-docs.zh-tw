@@ -9,21 +9,21 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ab874bbdcd47a4bfa9abfba721afa46d0f23a338
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: becbf7f89266fb0f56aaa053eb7cba9291da6896
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514103"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>使用 StorSimple 裝置管理員服務變更您的 StorSimple 密碼
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Azure 入口網站的 [裝置設定]**** 選項包含所有裝置參數，可讓您重新設定 StorSimple 裝置管理員服務所管理的 StorSimple 裝置。 本教學課程說明如何使用 [裝置設定]**** 下的 [安全性]**** 選項，變更您的裝置系統管理員或 StorSimple Snapshot Manager 密碼。
 
 ## <a name="change-the-device-administrator-password"></a>變更裝置系統管理員密碼

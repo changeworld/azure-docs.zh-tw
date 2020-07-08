@@ -9,20 +9,20 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d8b75c48da2bb13d843258ead378d3e849da951
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514073"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>更換 StorSimple 裝置上的控制器模組
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程說明如何取下並更換 StorSimple 裝置中的一個或兩個控制器模組。 它也會討論單一和雙重控制器更換案例的基礎邏輯。
 
 > [!NOTE]
@@ -195,7 +195,7 @@ ms.locfileid: "79267920"
    > [!NOTE]
    > 最多可能需要 5 分鐘，控制器和 LED 即會啟動。
   
-5. 若要確認更換成功，請在 Azure 入口網站中，移至您的裝置，然後流覽至 [**監視** > ] [**硬體健康**情況]，並確定控制器0和控制器1皆狀況良好（狀態為綠色）。
+5. 若要確認更換成功，請在 Azure 入口網站中，移至您的裝置，然後流覽至 [**監視**]  >  [**硬體健康**情況]，並確定控制器0和控制器1皆狀況良好（狀態為綠色）。
 
 ## <a name="identify-the-active-controller-on-your-device"></a>識別您裝置上的作用中控制器
 有許多情況，例如第一次裝置註冊或控制器更換，會要求您在 StorSimple 裝置上找出作用中控制器。 作用中控制器會處理所有磁碟韌體和網路作業。 您可以使用下列任一方法來識別作用中控制器：
@@ -207,7 +207,7 @@ ms.locfileid: "79267920"
 接著說明上述各程序。
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>使用 Azure 入口網站來識別作用中控制器
-在 [Azure 入口網站中，流覽至您的裝置，然後**監視** > **硬體健全狀況**，並流覽至 [**控制器**] 區段。 在這裡您可以確認哪一個控制站作用中。
+在 [Azure 入口網站中，流覽至您的裝置，然後**監視**  >  **硬體健全狀況**，並流覽至 [**控制器**] 區段。 在這裡您可以確認哪一個控制站作用中。
 
 ![識別 Azure 入口網站中的作用中控制器](./media/storsimple-controller-replacement/IC752072.png)
 

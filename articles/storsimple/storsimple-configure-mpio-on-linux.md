@@ -4,15 +4,15 @@ description: 在連線到執行 CentOS 6.6 之 Linux 主機的 StorSimple 上設
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9978be9182bbb2923fa5db0b4e5ada422ef0da9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76278370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511606"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在執行 CentOS 的 StorSimple 主機上設定 MPIO
 本文說明在 Centos 6.6 主機伺服器上設定多重路徑 IO (MPIO) 所需的步驟。 主機伺服器會連線到您的 Microsoft Azure StorSimple 裝置，以透過 iSCSI 啟動器取得高可用性。 文中詳細描述多重路徑裝置的自動探索，以及 StorSimple 磁碟區特有的設定。
@@ -60,7 +60,7 @@ multipath.conf 有五個區段：
 
 下列程序描述有兩個網路介面的 StorSimple 裝置連接到有兩個網路介面的主機時，要如何設定多重路徑。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 本節將詳細說明 CentOS 伺服器和 StorSimple 裝置的設定必要條件。
 
 ### <a name="on-centos-host"></a>在 CentOS 主機上
@@ -338,7 +338,7 @@ A. 確定這兩個路徑位於相同的子網路上並可路由傳送。 如果�
 
 Q. 當我列出可用的路徑時，我看不到任何輸出。
 
-A. 一般來說，看不到任何多重路徑路徑，都是指多重路徑 daemon 的問題，而這裡`multipath.conf`很有可能發生任何問題。
+A. 一般來說，看不到任何多重路徑路徑，都是指多重路徑 daemon 的問題，而這裡很有可能發生任何問題 `multipath.conf` 。
 
 此外，您也可以檢查連線到目標之後，實際看到一些磁片，因為從多重路徑清單中沒有任何回應也可能表示您沒有任何磁片。
 
@@ -349,7 +349,7 @@ A. 一般來說，看不到任何多重路徑路徑，都是指多重路徑 daem
   
     `$ dmesg | grep sd*`
      
-     或者
+     Or
   
     `$ fdisk -l`
   

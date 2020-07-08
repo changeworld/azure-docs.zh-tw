@@ -3,19 +3,19 @@ title: 建立 StorSimple 8000 系列支援封裝
 description: 了解如何建立、解密和編輯 StorSimple 8000 系列裝置的支援封裝。
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8f84542cd52d8ad4affd64627637d4e95b1fb10
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277062"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514041"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>建立及管理 StorSimple 8000 系列的支援封裝
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 StorSimple 支援封裝是一種簡便的機制，可收集所有相關的記錄以協助 Microsoft 支援服務針對任何 StorSimple 裝置問題進行疑難排解。 收集的記錄都會經過加密並壓縮。
 
@@ -43,7 +43,7 @@ StorSimple 支援封裝是一種簡便的機制，可收集所有相關的記錄
    2. 在開啟的對話方塊中，輸入您的裝置系統管理員密碼。 預設密碼為 _Password1_。
      
       ![[PowerShell 認證] 對話方塊](./media/storsimple-8000-create-manage-support-package/IC740962.png)
-   3. 選取 [確定]  。
+   3. 選取 [確定]。
    4. 在命令提示字元中，輸入：
      
       `Enter-PSSession $MS`

@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: f4e0bbd546b770b9e81bb9142cdd97e3927db7bd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.topic: how-to
+ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195950"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512149"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>使用 Azurite 模擬器進行本機 Azure 儲存體開發和測試（預覽）
 
@@ -70,7 +70,7 @@ Azurite 是未來的儲存體模擬器平臺。 Azurite 會取代[Azure 儲存�
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安裝及執行 Azurite
 
-此安裝方法會要求您必須安裝[node.js 8.0 版或更新](https://nodejs.org)版本。 節點套件管理員（npm）是每個 node.js 安裝內含的套件管理工具。 安裝 node.js 之後，請執行下列 `npm` 命令來安裝 Azurite。
+此安裝方法需要安裝[Node.js 8.0 版或更新版本](https://nodejs.org)。 節點套件管理員（npm）是每個 Node.js 安裝所包含的封裝管理工具。 安裝 Node.js 之後，請執行下列 `npm` 命令來安裝 Azurite。
 
 ```console
 npm install -g azurite
@@ -148,7 +148,7 @@ azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 
 本節詳細說明啟動 Azurite 時可用的命令列參數。
 
-### <a name="help"></a>説明
+### <a name="help"></a>[說明]
 
 **選擇性**-使用或參數取得命令列說明 `-h` `--help` 。
 
@@ -464,7 +464,7 @@ var client = new QueueClient(
  1. 選取 [**管理帳戶**] 圖示
  1. 選取 [**新增帳戶**]
  1. 選取 [**附加至本機模擬器**]
- 1. 選取 [下一步] 
+ 1. 選取 [**下一步**]
  1. 將 [**顯示名稱**] 欄位編輯為您選擇的名稱
  1. 再次選取 **[下一步]**
  1. 選取 **[連線]**
@@ -490,10 +490,10 @@ var client = new QueueClient(
 1. 選取 [**本機 & 附加**]
 1. 以滑鼠右鍵按一下 [**儲存體帳戶**]，然後選取 **[連線到 Azure 儲存體]**。
 1. 選取 [**使用連接字串**]
-1. 選取 [下一步]  。
+1. 選取 [下一步]。
 1. 在 [**顯示名稱**] 欄位中輸入值。
 1. 輸入本檔上一節的[HTTPS 連接字串](#https-connection-strings)
-1. 選取 [下一步] 
+1. 選取 [**下一步**]
 1. 選取 **[連線]**
 
 ## <a name="workspace-structure"></a>工作區結構

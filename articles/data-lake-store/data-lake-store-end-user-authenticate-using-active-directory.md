@@ -3,16 +3,16 @@ title: 使用者驗證-使用 Azure AD 的 Data Lake Storage Gen1
 description: 了解如何使用 Azure Active Directory 向 Azure Data Lake Storage Gen1 完成使用者驗證
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5a0c3e1df5cd283ad08f905ed0bd4f329dcfcc7e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688245"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511314"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 向 Azure Data Lake Storage Gen1 進行使用者驗證
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
 
 本文說明如何建立 **Azure AD 原生應用程式以進行使用者驗證**。 如需服務對服務驗證的 Azure AD 應用程式設定的指示，請參閱[使用 Azure Active Directory 向 Data Lake Storage Gen1 進行服務對服務驗證](data-lake-store-authenticate-using-active-directory.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 * 您的訂用帳戶識別碼。 您可以在 Azure 入口網站擷取。 例如，可從 [Data Lake Storage Gen1] 帳戶刀鋒視窗取得。
@@ -41,7 +41,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
 
     ![取得 AAD 網域](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* 您的 Azure 租用戶識別碼。 如需有關如何擷取租用戶識別碼的指示，請參閱[取得租用戶識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。
+* 您的 Azure 租用戶識別碼。 如需有關如何擷取租用戶識別碼的指示，請參閱[取得租用戶識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 
 ## <a name="end-user-authentication"></a>終端使用者驗證
 如果您想要讓終端使用者透過 Azure AD 登入您的應用程式，則建議使用此驗證機制。 您的應用程式接著能夠以與登入的終端使用者相同的存取層級，來存取 Azure 資源。 您的終端使用者必須定期提供其認證，您的應用程式才能繼續存取。
@@ -74,11 +74,11 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
 
 遵循連結中的指示進行時，請確定如以下螢幕擷取畫面所示，選取 [原生]**** 應用程式類型：
 
-![建立 web 應用程式](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "建立原生應用程式")
+![建立 Web 應用程式](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "建立原生應用程式")
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>步驟 2：取得應用程式識別碼和重新導向 URI
 
-若要擷取應用程式識別碼，請參閱[取得應用程式識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。
+若要擷取應用程式識別碼，請參閱[取得應用程式識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 
 若要擷取重新導向 URI，請進行下列步驟。
 
@@ -107,7 +107,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
 
     ![用戶端識別碼](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
-    按一下 [完成]  。
+    按一下 [完成] 。
 
 5. 重複最後兩個步驟，以便將權限也授與 **Windows Azure 服務管理 API**。
 
