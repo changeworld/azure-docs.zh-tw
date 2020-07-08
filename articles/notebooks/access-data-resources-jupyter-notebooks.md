@@ -3,22 +3,23 @@ title: 存取 Jupyter 筆記本中的資料-Azure Notebooks 預覽
 description: 瞭解如何從 Jupyter 筆記本存取檔案、REST Api、資料庫和不同的 Azure 儲存體資源。
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: e0473a885860fad71c066f9d129f859528fa16e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833480"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在 Notebook 中存取雲端資料
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 要在 Jupyter Notebook 中執行有趣的工作，必須要有資料。 資料是 Notebook 的原動力。
 
 您可以[將資料檔案匯入專案中](work-with-project-data-files.md)，即使是在 Notebook 內使用 `curl` 之類的命令直接下載檔案，也都沒有問題。 不過，您很可能需要處理更龐雜的資料，而這些資料可能來自於非檔案的來源，例如 REST API、關聯式資料庫，以及雲端儲存體 (例如 Azure 資料表)。
 
 本文將簡要概述這些不同的選項。 由於資料存取在執行時最易於觀察，您可以在 [Azure Notebooks 範例 - 存取您的資料](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb)中找到可執行的程式碼。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>REST API
 
@@ -41,11 +42,11 @@ if response.status_code == 200:
     print(dataframe_rest2)
 ```
 
-## <a name="azure-sql-databases"></a>Azure SQL 資料庫
+## <a name="azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database 和 SQL 受控執行個體
 
-您可以藉由 pyodbc 或 pymssql 程式庫的輔助來存取 SQL Server 資料庫。
+您可以使用 pyodbc 或 pymssql 程式庫的協助來存取 SQL Database 或 SQL 受控執行個體中的資料庫。
 
-[使用 Python 查詢 Azure SQL 資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)提供了相關指示，說明如何建立包含 AdventureWorks 資料的資料庫，以及如何查詢該資料。 本文的範例 Notebook 中顯示了相同的程式碼。
+[使用 Python 查詢 AZURE SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)提供有關在包含 AdventureWorks 資料的 SQL Database 中建立資料庫的指示，並示範如何查詢該資料。 本文的範例 Notebook 中顯示了相同的程式碼。
 
 ## <a name="azure-storage"></a>Azure 儲存體
 
@@ -64,7 +65,7 @@ Azure Cosmos DB 針對 JSON 文件提供了具完整索引的 NoSQL 存放區。
 - [使用適用於 MongoDB 的 Azure Cosmos DB API 建置 Flask 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [使用 Python 和 Gremlin API 建立圖形資料庫](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
 - [使用 Python 和 Azure Cosmos DB 建立 Cassandra 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [使用 Python 和 Azure Cosmos DB 建立資料表 API 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [使用 Python 與 Azure Cosmos DB 建置資料表 API 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
 使用 Cosmos DB 時，您可以使用 [azure-cosmosdb-table](https://pypi.org/project/azure-cosmosdb-table/) 程式庫。
 

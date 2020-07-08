@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36268910003c4235d7ae60d2fd68bc30d7b8b858
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277995"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830004"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>如何調整 Azure Redis 快取的規模
 「Azure Redis 快取」具有各種不同的快取供應項目，可讓您彈性選擇快取大小和功能。 建立快取之後，如果您應用程式的需求改變，您可以調整快取的大小和定價層。 本文說明如何使用 Azure 入口網站和 Azure PowerShell 與 Azure CLI 之類的工具來調整快取。
@@ -24,7 +24,7 @@ ms.locfileid: "79277995"
 * Redis 伺服器負載
 * 記憶體使用量
 * 網路頻寬
-* CPU 使用率
+* CPU 使用量
 
 如果您判斷快取不再符合您應用程式的需求，則可以調整為適合您應用程式的較大或較小快取定價層。 如需有關判斷要使用哪個快取定價層的詳細資訊，請參閱 [我應該使用哪個 Azure Redis 快取供應項目和大小](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
 
@@ -64,9 +64,11 @@ ms.locfileid: "79277995"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-修改`Size`、或`Sku` `ShardCount`屬性時，您可以使用[new-azrediscache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) Cmdlet 來調整 Azure Cache for Redis 實例與 PowerShell。 下列範例示範如何將名為 `myCache` 的快取調整為 2.5 GB 快取。 
+[Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) `Size` 修改、或屬性時，您可以使用 new-azrediscache Cmdlet 來調整 Azure Cache for Redis 實例與 PowerShell `Sku` `ShardCount` 。 下列範例示範如何將名為 `myCache` 的快取調整為 2.5 GB 快取。 
 
-    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+```powershell
+   Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+```
 
 如需有關如何使用 PowerShell 來調整規模的詳細資訊，請參閱[使用 Powershell 來調整 Azure Redis 快取的規模](cache-how-to-manage-redis-cache-powershell.md#scale)。
 
@@ -78,6 +80,7 @@ ms.locfileid: "79277995"
 ### <a name="scale-using-maml"></a>使用 MAML 進行調整
 若要使用 [Microsoft Azure 管理庫 (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/) 來調整您的「Azure Redis 快取」執行個體規模，請呼叫 `IRedisOperations.CreateOrUpdate` 方法並傳入 `RedisProperties.SKU.Capacity` 的新大小。
 
+```csharp
     static void Main(string[] args)
     {
         // For instructions on getting the access token, see
@@ -95,6 +98,7 @@ ms.locfileid: "79277995"
         var redisParams = new RedisCreateOrUpdateParameters(redisProperties, redisCacheRegion);
         client.Redis.CreateOrUpdate(resourceGroupName,cacheName, redisParams);
     }
+```
 
 如需詳細資訊，請參閱[使用 MAML 來管理 Azure Redis 快取](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) \(英文\) 範例。
 

@@ -3,14 +3,16 @@ title: 用於 Azure Notebooks 預覽的使用者設定檔和識別碼
 description: 如何使用 Azure Notebooks 建立及管理您的使用者設定檔和使用者識別碼，這會成為共用筆記本 URL 的一部分。
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646274"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831347"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Azure Notebooks 預覽的設定檔和使用者識別碼
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 在 Azure Notebooks 功能強大的共同作業空間內，在您的使用者設定檔可將您的公共形象呈現給他人：
 
@@ -23,8 +25,6 @@ ms.locfileid: "75646274"
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`：專案檔案。
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`：特定專案的複製。
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`：特定筆記本或檔案的 HTML 預覽。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="your-user-id"></a>您的使用者識別碼
 
@@ -49,7 +49,7 @@ ms.locfileid: "75646274"
 
 若要編輯您的設定檔，請在您的設定檔頁面上使用**編輯設定檔資訊**命令。 設定檔的各區段如下所示：
 
-| 區段 | 內容 |
+| 區段 | 目錄 |
 | --- | --- |
 | 設定檔相片 | 您的設定檔頁面上顯示的影像。 |
 | 帳戶資訊 | 您的顯示名稱、使用者識別碼和公用電子郵件帳戶。 此處的電子郵件帳戶可提供其他使用者與您連絡的管道，且此帳戶可與您用來登入 Azure Notebook 本身的[帳戶](azure-notebooks-user-account.md)不同。 |
@@ -61,4 +61,4 @@ ms.locfileid: "75646274"
 ## <a name="next-steps"></a>後續步驟  
 
 > [!div class="nextstepaction"]
-> [教學課程：建立和執行 Jupyter Notebook 來執行線性迴歸](tutorial-create-run-jupyter-notebook.md)
+> [教學課程：建立和執行 Jupyter 筆記本以執行線性回歸](tutorial-create-run-jupyter-notebook.md)

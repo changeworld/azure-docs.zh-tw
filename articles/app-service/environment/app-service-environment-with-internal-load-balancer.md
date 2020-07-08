@@ -1,18 +1,18 @@
 ---
 title: 建立 ILB ASE v1
-description: 建立和使用具有 ILB 的 ASE。 本檔僅為使用舊版 v1 ASE 的客戶提供。
+description: 建立和使用具有 ILB 的 ASE。 本文件僅提供給使用舊版 v1 ASE 的客戶。
 author: ccompy
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0c03905017629e28e41cce2adaa65eac347b8185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294725"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833098"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>搭配 App Service 環境使用內部負載平衡器
 
@@ -68,7 +68,7 @@ ASE 可以使用網際網路可存取的端點或您 Vnet 中的 IP 位址加以
 3. 選取您的訂用帳戶。
 4. 選取或建立資源群組。
 5. 選取或建立 App Service 方案 (ASP)。 如果是建立新的 ASP，請選取您的 ASE 作為位置，並選取您希望在其中建立 ASP 的背景工作角色集區。 當您建立 ASP 時，可以選取您的 ASE 作為位置與背景工作角色集區。 當您指定 app 的名稱時，您會看見您 app 名稱底下的子網域會由您 ASE 的子網域取代。 
-6. 選取 [建立]  。 如果您希望 app 顯示在儀表板上，請務必選取 [釘選到儀表板]**** 核取方塊。 
+6. 選取 [建立]。 如果您希望 app 顯示在儀表板上，請務必選取 [釘選到儀表板]**** 核取方塊。 
 
 ![][2]
 
@@ -118,9 +118,10 @@ ILB ASE 可讓您的應用程式與網路隔離。 app 無法透過網際網路�
 #### <a name="dns-configuration"></a>DNS 組態
 使用外部 VIP 時，DNS 是由 Azure 管理。 在您 ASE 中建立的任何 app 都會自動新增至 Azure DNS，這是一個公用 DNS。 在 ILB ASE 中，您必須管理您自己的 DNS。 針對指定的子網域 (例如 contoso.corp.net)，您必須為以下項目建立指向您的 ILB 位址的 DNS A 記錄︰
 
-    * 
-    *.scm ftp 發佈 
-
+- \*
+- *.scm
+- ftp
+- publish
 
 ## <a name="getting-started"></a>開始使用
 若要開始使用 App Service 環境，請參閱[App Service 環境簡介][WhatisASE]

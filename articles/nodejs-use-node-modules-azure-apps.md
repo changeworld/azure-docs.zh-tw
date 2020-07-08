@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 8621dde43ff38cee15feb1d30b6ea80ab681c855
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: HT
+ms.openlocfilehash: 7e78a8dfdf902c4c2548e0521a79d67716987791
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594775"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832078"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>使用 Node.js 模組與 Azure 應用程式搭配
 本文提供有關使用 Node.js 模組與 Azure 上代管之應用程式搭配的指引。 它提供有關確保應用程式使用模組特定版本，以及搭配使用原生模組與 Azure 的指引。
@@ -32,8 +32,8 @@ ms.locfileid: "82594775"
 
 > [!NOTE]
 > 本文中將不會討論 Azure 虛擬機器，因為 VM 中的部署經驗會視虛擬機器所代管的作業系統而定。
-> 
-> 
+>
+>
 
 ## <a name="nodejs-modules"></a>Node.js 模組
 模組是指可載入的 JavaScript 封裝，可為您的應用程式提供特定功能。 模組的安裝方式通常是使用 **npm** 命令列工具，不過，也有一些模組 (例如 http 模組) 會以核心 Node.js 封裝的一部分提供。
@@ -63,12 +63,12 @@ Azure App Service 不支援所有的原生模組，而且在編譯具有特定�
 
 > [!NOTE]
 > 部署到 Azure App Service 時，如果您的 <b>package.json</b> 檔案參考原生模組，當使用 Git 發行應用程式時，可能會看到類似以下範例的錯誤：
-> 
+>
 > npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
-> 
+>
 > npm ERR! 'cmd "/c" "node-gyp configure build"' failed with 1
-> 
-> 
+>
+>
 
 ### <a name="using-a-npm-shrinkwrapjson-file"></a>使用 npm-shrinkwrap.json 檔案
 **npm-shrinkwrap.json** 檔案嘗試解決 **package.json** 檔案的模組版本設定限制。 **package.json** 檔案只包含最上層模組的版本，而 **npm-shrinkwrap.json** 檔案包含完整模組相依性鏈結的版本需求。
@@ -77,17 +77,17 @@ Azure App Service 不支援所有的原生模組，而且在編譯具有特定�
 
 > [!NOTE]
 > 部署到 Azure App Service 時，如果您的 <b>npm-shrinkwrap.json</b> 檔案參考原生模組，當使用 Git 發行應用程式時，可能會看到類似以下範例的錯誤：
-> 
+>
 > npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
-> 
+>
 > npm ERR! 'cmd "/c" "node-gyp configure build"' failed with 1
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>後續步驟
 現在，您了解如何搭配使用 Node.js 模組與 Azure，接著了解如何[指定 Node.js 版本](https://github.com/squillace/nodejs-microservice)、[建置與部署 Node.js Web 應用程式](app-service/app-service-web-get-started-nodejs.md)，和[如何使用適用於 Mac 和 Linux 的 Azure 命令列介面](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)。
 
-如需詳細資訊，請參閱 [Node.js 開發人員中心](/azure/javascript/)。
+如需詳細資訊，請參閱 [Node.js 開發人員中心](/azure/developer/javascript/)。
 
 [specify the Node.js version]: nodejs-specify-node-version-azure-apps.md
 [How to use the Azure Command-Line Interface for Mac and Linux]:cli-install-nodejs.md

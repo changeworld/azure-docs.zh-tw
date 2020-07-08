@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4541874a9e8fc4111e5c65d02f07535c4d14f9f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77565973"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829868"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>如何保護您的私用雲端環境
 
@@ -29,16 +29,16 @@ ms.locfileid: "77565973"
 
 只有在資源群組上擁有 **「擁有者」或「** **參與者**」許可權的使用者，才會看到 CloudSimple 服務和啟動 CloudSimple 入口網站。
 
-如需 RBAC 的詳細資訊，請參閱[什麼是適用于 Azure 資源的角色型存取控制（RBAC）](../role-based-access-control/overview.md)。
+如需詳細資訊，請參閱[什麼是 azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/overview.md)。
 
 ## <a name="rbac-for-private-cloud-vcenter"></a>私用雲端 vCenter 的 RBAC
 
-建立私人雲端`CloudOwner@cloudsimple.local`時，會在 vCenter SSO 網域中建立預設使用者。  CloudOwner 使用者有管理 vCenter 的許可權。 其他身分識別來源會新增至 vCenter SSO，以提供存取權給不同的使用者。  已在 vCenter 上設定預先定義的角色和群組，可用來新增其他使用者。
+`CloudOwner@cloudsimple.local`建立私人雲端時，會在 VCENTER SSO 網域中建立預設使用者。  CloudOwner 使用者有管理 vCenter 的許可權。 其他身分識別來源會新增至 vCenter SSO，以提供存取權給不同的使用者。  已在 vCenter 上設定預先定義的角色和群組，可用來新增其他使用者。
 
 ### <a name="add-new-users-to-vcenter"></a>將新的使用者新增至 vCenter
 
-1. [提升](escalate-private-cloud-privileges.md) **CloudOwner\@Cloudsimple**的許可權。私人雲端上的本機使用者。
-2. 使用**CloudOwner\@Cloudsimple**登入 vCenter
+1. [提升](escalate-private-cloud-privileges.md) **CloudOwner \@ Cloudsimple**的許可權。私人雲端上的本機使用者。
+2. 使用**CloudOwner \@ cloudsimple**登入 vCenter
 3. [新增 VCenter 單一登入使用者](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html)。
 4. 將使用者新增至[vCenter 單一登入群組](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)。
 
@@ -51,8 +51,8 @@ ms.locfileid: "77565973"
 * [使用 Active Directory 做為](set-vcenter-identity.md)私人雲端 vCenter 上的身分識別提供者。
 * [使用 Azure AD 做為](azure-ad.md)私人雲端 vCenter 上的身分識別提供者
 
-1. [提升](escalate-private-cloud-privileges.md) **CloudOwner\@Cloudsimple**的許可權。私人雲端上的本機使用者。
-2. 使用**CloudOwner\@Cloudsimple**登入 vCenter
+1. [提升](escalate-private-cloud-privileges.md) **CloudOwner \@ Cloudsimple**的許可權。私人雲端上的本機使用者。
+2. 使用**CloudOwner \@ cloudsimple**登入 vCenter
 3. 將使用者從識別提供者新增至[vCenter 單一登入群組](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)。
 
 ## <a name="secure-network-on-your-private-cloud-environment"></a>保護私人雲端環境中的網路

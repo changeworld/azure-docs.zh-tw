@@ -3,22 +3,22 @@ title: 登入 Azure Notebooks 預覽
 description: 使用 Microsoft 帳戶或公司/學校帳戶，設定您的 Azure Notebook 使用者帳戶。
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 929a21785b5b48c81c2d2016874feed61021d3c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646291"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832180"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Azure Notebooks 預覽的使用者帳戶
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 不論您是否使用使用者帳戶登入，都可以使用 Azure Notebooks：
 
 - 不登入時，您可以建立和執行 Notebooks，但無法將 Notebooks 或資料檔案保留在專案中。 例如，使用者收到可至 Azure Notebook 的連結，即可享用 Notebook 而不需要登入。
 - 登入時，Azure Notebooks 會將所有專案保留在您的帳戶。 登入的使用者也會有使用者識別碼，使他們能與其他人共用其專案和 Notebooks。
 - 當用於 Azure Notebooks 的帳戶也與 Azure 訂用帳戶相關聯時，可獲得其他權益，例如在更強大的伺服器上執行 Notebooks、建立私人 Notebooks，以及將 Notebooks 的權限授與個別使用者。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 需要 Microsoft 帳戶或「公司或學校」帳戶才能登入 Azure Notebooks。 當您選取 Notebooks 頁面右上方的 [登入]**** 命令時，會提示您輸入您的帳戶：
 
@@ -53,7 +53,7 @@ Microsoft 帳戶可用來登入數目不拘的 Microsoft 產品與服務，例�
 
 ## <a name="work-or-school-accounts"></a>工作或學校帳戶
 
-由組織的系統管理員建立的公司或學校帳戶，可讓組織成員存取 Microsoft 雲端服務，例如 Office 365，以及作為在已加入網域的電腦上登入 Windows 的帳戶。 公司或學校帳戶通常會使用組織的電子郵件地址，例如 any-user@contoso.com。
+公司或學校帳戶是由組織的系統管理員所建立，可讓組織成員存取 Microsoft 雲端服務（例如 Microsoft 365），也可以在已加入網域的電腦上登入 Windows 的帳戶。 公司或學校帳戶通常會使用組織的電子郵件地址，例如 any-user@contoso.com。
 
 Azure Notebooks 會收集或使用 (但不會揭露) 如帳戶的電子郵件地址與使用者的瀏覽器資訊等資訊，因此使用公司或學校帳戶登入 Azure Notebooks 可能需要系統管理員的同意。 (使用瀏覽器資料，根據最熱門的使用方式將功能最佳化。)
 

@@ -11,20 +11,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89de1495dc6bb411d5d43986177f11abb016cf15
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: f0c8134cdb72f8bff74fa68dff81fc9d6f1f5ccc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830446"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>更新 Office 365 和 Azure Active Directory 的同盟憑證
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 為了讓 Azure Active Directory (Azure AD) 與 Active Directory Federation Services (AD FS) 之間能夠成功地同盟，AD FS 用來向 Azure AD 簽署安全性權杖的憑證應該符合 Azure AD 中所設定的憑證。 任何不相符都可能導致信任受損。 Azure AD 會確保這項資訊在您部署 AD FS 和 Web 應用程式 Proxy (適用於外部網路存取) 時保持同步。
 
 本文提供您其他資訊，以便在下列情況時管理權杖簽署憑證，並讓憑證與 Azure AD 保持同步︰
@@ -62,7 +62,9 @@ Azure AD 會嘗試監視同盟中繼資料，並依照此中繼資料的指示�
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>步驟 1︰檢查 AutoCertificateRollover 狀態
 在 AD FS 伺服器上開啟 Powershell。 檢查 AutoCertificateRollover 值是否已設定為 True。
 
-    Get-Adfsproperties
+```azurepowershell-interactive
+Get-Adfsproperties
+```
 
 ![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
@@ -78,16 +80,22 @@ Azure AD 會嘗試監視同盟中繼資料，並依照此中繼資料的指示�
 > 
 >
 
-    Install-Module MSOnline
+```azurepowershell-interactive
+Install-Module MSOnline
+```
 
 使用 MSOnline PowerShell 模組連線至 Azure AD。
 
-    Import-Module MSOnline
-    Connect-MsolService
+```azurepowershell-interactive
+Import-Module MSOnline
+Connect-MsolService
+```
 
 檢查 AD FS 和 Azure AD 信任屬性中針對指定網域所設定的憑證。
 
-    Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```azurepowershell-interactive
+Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```
 
 ![Get-MsolFederationProperty](./media/how-to-connect-fed-o365-certs/certsync.png)
 
@@ -98,9 +106,9 @@ Azure AD 會嘗試監視同盟中繼資料，並依照此中繼資料的指示�
 
 | AutoCertificateRollover | 憑證與 Azure AD 同步 | 可公開取得同盟中繼資料 | 有效期 | 動作 |
 |:---:|:---:|:---:|:---:|:---:|
-| 是 |是 |是 |- |不需採取動作。 請參閱 [自動更新權杖簽署憑證](#autorenew)。 |
+| Yes |是 |是 |- |不需採取動作。 請參閱 [自動更新權杖簽署憑證](#autorenew)。 |
 | 是 |否 |- |小於 15 天 |立即更新。 請參閱 [手動更新權杖簽署憑證](#manualrenew)。 |
-| 否 |- |- |少於 30 天 |立即更新。 請參閱 [手動更新權杖簽署憑證](#manualrenew)。 |
+| No |- |- |少於 30 天 |立即更新。 請參閱 [手動更新權杖簽署憑證](#manualrenew)。 |
 
 \[-]  無關緊要
 
@@ -118,7 +126,7 @@ Azure AD 會嘗試監視同盟中繼資料，並依照此中繼資料的指示�
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-其中`(your_FS_name)` ，會取代為您的組織使用的同盟服務主機名，例如 fs.contoso.com。  如果您能夠成功確認上述兩個設定，您就不必執行任何動作。  
+其中， `(your_FS_name)` 會取代為您的組織使用的同盟服務主機名，例如 fs.contoso.com。  如果您能夠成功確認上述兩個設定，您就不必執行任何動作。  
 
 範例：`https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml`
 ## <a name="renew-the-token-signing-certificate-manually"></a>手動更新權杖簽署憑證 <a name="manualrenew"></a>

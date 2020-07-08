@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9317999f8862cd9930870fecaf5be44d291c07a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829664"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>針對 Azure Cache for Redis 用戶端問題進行疑難排解
 
@@ -30,7 +30,7 @@ ms.locfileid: "79277943"
 若要偵測用戶端上的記憶體壓力：
 
 - 監視電腦上的記憶體使用量，以確保它不會超過可用的記憶體。
-- 監視用戶端的`Page Faults/Sec`效能計數器。 在正常作業期間，大部分的系統都會發生分頁錯誤。 與要求超時對應的分頁錯誤尖峰可能表示記憶體不足的壓力。
+- 監視用戶端的 `Page Faults/Sec` 效能計數器。 在正常作業期間，大部分的系統都會發生分頁錯誤。 與要求超時對應的分頁錯誤尖峰可能表示記憶體不足的壓力。
 
 用戶端的高記憶體壓力可以透過數種方式來減輕：
 
@@ -41,23 +41,25 @@ ms.locfileid: "79277943"
 
 流量暴增加上不當的 `ThreadPool` 設定，可能會導致延遲處理 Redis 伺服器已傳送但用戶端上尚未使用的資料。
 
-使用[範例`ThreadPoolLogger`](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)監視`ThreadPool`統計資料隨著時間變更的方式。 您可以使用`TimeoutException`來自 Stackexchange.redis 的 Redis 訊息，如下所示進一步調查：
+`ThreadPool`使用[範例 `ThreadPoolLogger` ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)監視統計資料隨著時間變更的方式。 您可以使用 `TimeoutException` 來自 stackexchange.redis 的 Redis 訊息，如下所示進一步調查：
 
+```output
     System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0,
     IOCP: (Busy=6,Free=999,Min=2,Max=1000), WORKER: (Busy=7,Free=8184,Min=2,Max=8191)
+```
 
 在上述的例外狀況中，有幾個有趣的問題：
 
-- 請注意，在 `IOCP` 區段和 `WORKER` 區段中，`Busy` 值大於 `Min` 值。 這種差異表示`ThreadPool`您的設定需要調整。
+- 請注意，在 `IOCP` 區段和 `WORKER` 區段中，`Busy` 值大於 `Min` 值。 這種差異表示您的 `ThreadPool` 設定需要調整。
 - 您也可以查看 `in: 64221`。 此值表示在用戶端的核心通訊端層收到64211個位元組，但應用程式尚未讀取。 這種差異通常表示您的應用程式（例如，Stackexchange.redis. Redis）在伺服器將資料傳送給您時，不會快速地從網路讀取資料。
 
-您可以設定[您`ThreadPool`的設定](cache-faq.md#important-details-about-threadpool-growth)，以確定您的執行緒集區會在高載案例下快速地相應增加。
+您可以設定[您的 `ThreadPool` 設定](cache-faq.md#important-details-about-threadpool-growth)，以確定您的執行緒集區會在高載案例下快速地相應增加。
 
 ## <a name="high-client-cpu-usage"></a>用戶端 CPU 使用量很高
 
 [高用戶端 CPU 使用量] 表示系統無法跟上要求的工作。 雖然快取會快速傳送回應，但用戶端可能無法及時處理回應。
 
-使用 Azure 入口網站中可用的計量，或透過電腦上的效能計數器，監視用戶端全系統的 CPU 使用量。 請小心不要監視*處理*程式 CPU，因為單一進程可能會有較低的 cpu 使用量，但全系統的 cpu 可能很高。 請監看與逾時對應的 CPU 使用量暴增。 高 CPU 可能也會導致`in: XXX`錯誤訊息`TimeoutException`中的高值，如[流量](#traffic-burst)激增一節中所述。
+使用 Azure 入口網站中可用的計量，或透過電腦上的效能計數器，監視用戶端全系統的 CPU 使用量。 請小心不要監視*處理*程式 CPU，因為單一進程可能會有較低的 cpu 使用量，但全系統的 cpu 可能很高。 請監看與逾時對應的 CPU 使用量暴增。 高 CPU 可能也會導致 `in: XXX` `TimeoutException` 錯誤訊息中的高值，如[流量](#traffic-burst)激增一節中所述。
 
 > [!NOTE]
 > StackExchange.Redis 1.1.603 和更新版本在 `TimeoutException` 錯誤訊息中包含 `local-cpu` 度量。 請確定您使用最新版的 [StackExchange.Redis NuGet 封裝](https://www.nuget.org/packages/StackExchange.Redis/)。 程式碼中的錯誤會經常修正，以便更能應付逾時問題，因此請務必要擁有最新版本。
@@ -72,7 +74,7 @@ ms.locfileid: "79277943"
 
 用戶端機器可用的網路頻寬多寡可能會有限制 (視其架構而定)。 如果用戶端因為多載網路容量而超過可用的頻寬，則資料在用戶端上的處理速度不會和伺服器傳送時一樣快。 這種情況可能會導致逾時。
 
-使用[範例`BandwidthLogger` ](https://github.com/JonCole/SampleCode/blob/master/BandWidthMonitor/BandwidthLogger.cs)，監視頻寬使用量如何隨著時間變更。 此程式碼可能無法在具有限制權限的某些環境 (例如 Azure 網站) 中順利執行。
+使用[範例 `BandwidthLogger` ](https://github.com/JonCole/SampleCode/blob/master/BandWidthMonitor/BandwidthLogger.cs)，監視頻寬使用量如何隨著時間變更。 此程式碼可能無法在具有限制權限的某些環境 (例如 Azure 網站) 中順利執行。
 
 若要減輕問題，請減少網路頻寬耗用量，或將用戶端 VM 大小增加到具有更多網路容量的帳戶。
 

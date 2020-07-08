@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: fb13e4f062976e39c3cec607001e6982db228873
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/30/2020
+ms.openlocfilehash: 056962483fe10e8b6558d2ca0aeb92d1ec970734
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74765625"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830972"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>如何使用 Azure 入口網站在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中備份和還原伺服器
 
@@ -33,8 +33,8 @@ ms.locfileid: "74765625"
 如需在建立期間設定這些值的詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫伺服器快速入門](quickstart-create-server-database-portal.md)。
 
 透過下列步驟可變更伺服器的備份保留期限：
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取適用於 PostgreSQL 的 Azure 資料庫伺服器。 這個動作會開啟 [概觀]**** 頁面。
+1. 登入[Azure 入口網站](https://portal.azure.com/)。
+2. 選取適用於 PostgreSQL 的 Azure 資料庫伺服器。 這個動作會開啟 [概觀] 頁面。
 3. 在 [設定]**** 下方的功能表中選取 [定價層]****。 您可以使用滑桿將 [備份保留期限]**** 變更為想要的天數 (7 到 35 天)。
 下列螢幕擷取畫面中的期限已增加到 34 天。
 ![已增加的備份保留期限](./media/howto-restore-server-portal/3-increase-backup-days.png)
@@ -69,30 +69,55 @@ ms.locfileid: "74765625"
 
 所選時間點上的現有伺服器與時間點還原所建立的新伺服器，具有相同且有效的伺服器管理員登入名稱和密碼。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
-在還原期間建立的新伺服器沒有存在於源伺服器上的防火牆規則或 VNet 服務端點。 這些規則必須針對這個新的伺服器分別設定。
-
+在還原期間建立的新伺服器不會有原始伺服器中的防火牆規則或 VNet 服務端點。 您必須為新伺服器分別設定這些規則。
 
 ## <a name="geo-restore"></a>異地還原
 
 如果您已將伺服器設定為使用異地備援備份，則可以從現有伺服器的備份建立新的伺服器。 您可以在任何可使用「適用於 PostgreSQL 的 Azure 資料庫」的區域中建立這個新伺服器。  
 
-1. 選取入口網站左上角的 [**建立資源**] 按鈕（+）。 選取 [**資料庫** > ]**適用於 PostgreSQL 的 Azure 資料庫**。
+1. 選取入口網站左上角的 [**建立資源**] 按鈕（+）。 選取 [**資料庫**]  >  **適用於 PostgreSQL 的 Azure 資料庫**。
 
-   !["Azure Database for PostgreSQL" 選項](./media/howto-restore-server-portal/1-navigate-to-postgres.png)
+   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="流覽至適用於 PostgreSQL 的 Azure 資料庫。":::
 
-2. 在表單的 [選取來源]**** 下拉式清單中，選擇 [備份]****。 這個動作會載入已啟用異地備援備份的伺服器清單。 選取其中一個備份來作為新伺服器的來源。
-   ![選取來源：備份和異地備援備份清單](./media/howto-restore-server-portal/2-georestore.png)
+2. 選取 [單一伺服器]**** 部署選項。
 
+   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="選取 [適用於 PostgreSQL 的 Azure 資料庫-單一伺服器] 部署選項。":::
+ 
+3. 提供新伺服器的 [訂用帳戶]、[資源群組] 和 [名稱]。 
+
+4. 選取 [**備份**] 做為**資料來源**。 此動作會載入下拉式清單，其中會提供已啟用異地多餘備份的伺服器清單。
+   
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="選取 [資料來源]。":::
+    
    > [!NOTE]
    > 第一次建立伺服器時，可能無法立即用來進行異地還原。 必要的中繼資料可能需要幾小時才會填入。
    >
 
-3. 根據您的需要填寫表單的其餘部分。 您可以選取任何**位置**。 選好位置之後，您可以選取 [定價層]****。 根據預設，系統會顯示要作為還原來源的現有伺服器參數。 您可以按一下 [確定]****，不進行任何變更地繼承這些設定。 或者，您可以變更**計算世代** (如果適用於您選擇的區域)、**虛擬核心**數目、**備份保留期限**及**備份備援選項**。 還原期間不支援變更**定價層** (基本、一般用途或記憶體最佳化) 或**儲存體**大小。
+5. 選取 [**備份**] 下拉式清單。
+   
+   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="選取 [備份] 下拉式清單。":::
 
+6. 選取要從中還原的來源伺服器。
+   
+   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="選取 [備份]。":::
+
+7. 伺服器會預設為 [**虛擬核心**數]、[**備份保留期限**]、[**備份冗余選項**]、[**引擎版本**] 和 [系統**管理員認證**] 的值。 選取 [繼續]。 
+   
+   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="繼續進行備份。":::
+
+8. 根據您的需要填寫表單的其餘部分。 您可以選取任何**位置**。
+
+    選取位置之後，您可以選取 [**設定伺服器**] 來更新**計算世代**（如果您選擇的區域中有提供）、[**虛擬核心**數目]、[**備份保留期限**] 和 [**備份冗余] 選項**。 還原期間不支援變更**定價層** (基本、一般用途或記憶體最佳化) 或**儲存體**大小。
+
+   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="填滿表單。"::: 
+
+9. 選取 [檢閱 + 建立]**** 以檢閱您的選項。 
+
+10. 選取 [建立]**** 以佈建伺服器。 這項作業可能需要幾分鐘的時間。
 
 還原啟動時的現有伺服器與異地還原所建立的新伺服器，具有相同且有效的伺服器管理員登入名稱和密碼。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
-在還原期間建立的新伺服器沒有存在於源伺服器上的防火牆規則或 VNet 服務端點。 這些規則必須針對這個新的伺服器分別設定。
+在還原期間建立的新伺服器不會有原始伺服器中的防火牆規則或 VNet 服務端點。 您必須為新伺服器分別設定這些規則。
 
 
 ## <a name="next-steps"></a>後續步驟

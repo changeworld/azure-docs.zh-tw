@@ -2,14 +2,16 @@
 title: 概念 - Azure Kubernetes Service (AKS) 中的安全性
 description: 了解 Azure Kubernetes Service (AKS) 中的安全性，包括主要和節點的通訊、網路原則和 Kubernetes 祕密。
 services: container-service
+author: mlearned
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: f3c4fd922ef0e4243344b34dd90f7e48f903abcd
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 07/01/2020
+ms.author: mlearned
+ms.openlocfilehash: 15bd0791917ca95e61a441b71947b70c81c0598e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981386"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831534"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的應用程式和叢集的安全性概念
 
@@ -37,7 +39,7 @@ AKS 節點是您所管理和維護的 Azure 虛擬機器。 Linux 節點會使�
 
 Azure 平臺會在夜間自動將 OS 安全性修補程式套用至 Linux 節點。 如果 Linux OS 安全性更新需要重新開機主機，則不會自動執行重新開機。 您可以手動重新開機 Linux 節點，或常見的方法是使用[Kured][kured]，這是 Kubernetes 的開放原始碼重新開機背景程式。 Kured 會以 [DaemonSet][aks-daemonsets] 執行，並監視每個節點，查看是否有檔案指示需重新啟動。 系統會使用相同的 [cordon 和 drain 程序](#cordon-and-drain)作為叢集升級，跨叢集管理作業系統重新啟動。
 
-對於 Windows Server 節點，Windows Update 不會自動執行並套用最新的更新。 依照 Windows Update 發行週期和您自己的驗證程式的定期排程，您應該在 AKS 叢集中的 Windows Server 節點集區上執行升級。 此升級程式會建立節點來執行最新的 Windows Server 映射和修補程式，然後移除較舊的節點。 如需此程式的詳細資訊，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
+對於 Windows Server 節點，Windows Update 不會自動執行並套用最新的更新。 依照 Windows Update 發行週期和您自己的驗證程式的定期排程，您應該在 AKS 叢集中的 Windows Server 節點集區上執行升級。 此升級程序會建立節點來執行最新的 Windows Server 映像和修補程式，然後移除較舊的節點。 如需此程序的詳細資訊，請參閱[在 AKS 中升級節點集區][nodepool-upgrade]。
 
 節點會部署至私人虛擬網路子網路中，且不會指派公用 IP 位址。 基於疑難排解和管理用途，依預設會啟用 SSH。 此 SSH 存取僅供內部 IP 位址使用。
 
@@ -78,6 +80,8 @@ Kubernetes *祕密*可用來將敏感性資料插入 Pod 中，例如存取認�
 
 使用祕密可減少在 Pod 或服務 YAML 資訊清單中定義的敏感性資訊。 秘密會以 YAML 資訊清單的形式儲存在 Kubernetes API 伺服器中，供您要求。 此方法僅可供特定 Pod 存取祕密。 請注意：原始密碼資訊清單檔案包含 base64 格式的秘密資料（如需詳細資訊，請參閱[官方檔][secret-risks]）。 因此，這個檔案應該被視為機密資訊，而且永遠不會認可到原始檔控制。
 
+Kubernetes 秘密會儲存在 etcd 中，也就是分散式索引鍵/值存放區。 Etcd 存放區是由 AKS 完全管理，而且[資料會在 Azure 平臺中待用加密][encryption-atrest]。 
+
 ## <a name="next-steps"></a>後續步驟
 
 若要開始保護您的 AKS 叢集，請參閱[升級 AKS 叢集][aks-upgrade-cluster]。
@@ -96,6 +100,7 @@ Kubernetes *祕密*可用來將敏感性資料插入 Pod 中，例如存取認�
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
+[encryption-atrest]: https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets

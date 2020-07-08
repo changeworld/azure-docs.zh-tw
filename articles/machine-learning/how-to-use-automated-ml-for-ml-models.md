@@ -1,22 +1,22 @@
 ---
-title: 使用 autoML 建立模型及部署
+title: 使用 AutoML 建立 & 部署的模型
 titleSuffix: Azure Machine Learning
 description: 使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: nibaccam
-author: tsikiksr
+author: aniththa
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 03/10/2020
-ms.openlocfilehash: 841d518c02dbc76a172890f6019d78d048f4e8bb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 05/20/2020
+ms.openlocfilehash: 9871d2ef46a4bbcaa0de7a2aee7d2c91f2bfefab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653842"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831908"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -106,7 +106,7 @@ ms.locfileid: "83653842"
 
     選取 [下一步] 。
 
-1. 在 [工作類型和設定] 表單上，選取工作類型：分類、迴歸，或預測。 如需詳細資訊，請參閱[如何定義工作類型](how-to-define-task-type.md)。
+1. 在 [工作類型和設定] 表單上，選取工作類型：分類、迴歸，或預測。 如需詳細資訊，請參閱支援的工作[類型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
 
     1. 針對分類，您也可以啟用用於文字特徵化的深度學習。
 
@@ -120,14 +120,16 @@ ms.locfileid: "83653842"
     其他組態|描述
     ------|------
     主要計量| 用來評分模型的主要計量。 [深入了解模型計量](how-to-configure-auto-train.md#explore-model-metrics)。
-    自動特製化| 選取以啟用或停用自動化機器學習執行的前置處理。 前置處理包括自動資料清理、準備以及轉換，以產生綜合功能。 不支援時間序列預測工作類型。 [深入了解前置處理](#featurization)。 
+    自動特製化| 選取以啟用或停用自動化機器學習完成的特徵化。 自動特徵化包含自動資料清理、準備和轉換，以產生綜合功能。 不支援時間序列預測工作類型。 [深入瞭解特徵化](how-to-configure-auto-features.md#featurization)。 
     解釋最佳模型 | 選取以啟用或停用顯示建議最佳模型的說明能力
     封鎖的演算法| 選取要從訓練作業中排除的演算法。
     結束準則| 當符合其中任何一項準則時，訓練作業即會停止。 <br> 訓練作業時間 (小時)：允許訓練作業執行的時間長度。 <br> 計量分數閾值：所有管線的最低計量分數。 這可確保若擁有想要達到的已定義目標計量，則不會在訓練作業上花費超過必要程度的時間。
-    驗證| 選取要在訓練作業中使用的交叉驗證選項。 [深入了解交叉驗證](how-to-configure-auto-train.md)。
+    驗證| 選取要在訓練作業中使用的交叉驗證選項。 [深入了解交叉驗證](how-to-configure-cross-validation-data-splits.md#prerequisites)。
     並行| *並行反覆項目上限*：要在訓練作業中測試的管線 (反覆項目) 數量上限。 作業不會執行超過指定數量的反覆項目。
 
-1. (選擇性) 檢視特徵化設定：若選擇在 [其他組態設定] 中啟用 [自動特徵化]，則可在此表單中指定要在其上執行特徵化的資料行，以及選取要針對遺漏值插補使用的統計值。
+1. 選擇性查看特徵化設定：如果您選擇在 [**其他設定**] 表單中啟用 [**自動特徵化**]，則會套用預設的特徵化技術。 在 [ **View 特徵化] 設定**中，您可以變更這些預設值，並據以進行自訂。 瞭解如何[自訂 featurizations](#customize-featurization)。 
+
+    ![Azure Machine Learning studio 工作類型表單](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
 <a name="profile"></a>
 
@@ -138,7 +140,7 @@ ms.locfileid: "83653842"
 >[!NOTE]
 > 針對無關類型特徵顯示的空白項目。
 
-統計資料|描述
+統計資料|Description
 ------|------
 功能| 要進行摘要的資料行名稱。
 設定檔| 以推斷類型為基礎的內嵌視覺效果。 例如，字串、布林值和日期會具備值的計數，小數 (數值) 則會包含近似長條圖。 這可供快速了解資料的分佈。
@@ -155,58 +157,19 @@ Variance| 此資料行資料從其平均值分散程度的量值。
 偏度| 此資料行資料與常態分佈相異程度的量值。
 峰度| 相較於常態分佈，此資料行資料集中於尾端程度的量值。
 
-<a name="featurization"></a>
+## <a name="customize-featurization"></a>自訂特徵化
 
-## <a name="advanced-featurization-options"></a>進階特徵化選項
+在**特徵化**表單中，您可以啟用/停用自動特徵化，並為您的實驗自訂自動特徵化設定。 若要開啟此表單，請參閱[建立和執行實驗](#create-and-run-experiment)一節中的步驟10。 
 
-自動化機器學習會自動提供前置處理和資料護欄，以協助識別和管理資料的潛在問題，例如[過度學習和不平衡的資料](concept-manage-ml-pitfalls.md#prevent-over-fitting)。 
+下表摘要說明目前可透過 studio 取得的自訂專案。 
 
-### <a name="preprocessing"></a>前置處理
+資料行| 自訂
+---|---
+已包括 | 指定要包含哪些資料行以進行定型。
+功能類型| 變更所選資料行的數值型別。
+插補與| 選取要在資料中插補遺漏值的值。
 
-> [!NOTE]
-> 如果計劃將自動 ML 建立的模型匯出到 [ONNX 模型](concept-onnx.md)，則 ONNX 格式僅支援具備 * 標記的特徵化選項。 深入了解[將模型轉換為 ONNX](concept-automated-ml.md#use-with-onnx)。 
-
-|前置處理步驟&nbsp;| 描述 |
-| ------------- | ------------- |
-|卸除高基數或無變異數特徵* |從訓練和驗證集卸除所有高基數或無變異數的特徵，包括所有遺漏值、在所有資料列上皆相同的值，或具備極高基數的值 (例如雜湊、識別碼或 GUID)。|
-|插補遺漏值* |針對數值特徵，使用資料行中的值平均進行插補。<br/><br/>針對類別特徵，使用最頻繁的值進行插補。|
-|產生其他特徵* |針對 DateTime 特徵：年、月、日、星期幾、幾月幾日、季、第幾週、小時、分鐘、秒。<br/><br/>針對文字特徵：以單字母組、雙字母組和三字母組為基礎的字詞頻率。|
-|轉換和編碼*|具有較少唯一值的數值特徵會轉換成類別特徵。<br/><br/>針對低基數的類別執行 one-hot 編碼；針對高基數的特徵執行 one-hot-hash 編碼。|
-|字組內嵌|文字 Featurizer 會使用預先定型的模型，將文字權杖的向量轉換成句子向量。 文件中每個文字的內嵌向量都會彙總在一起，以產生文件特徵向量。|
-|目標編碼|針對類別特徵，針對迴歸問題將每個類別與平均目標值進行對應，以及針對分類問題將每個類別對應到每個類別的類別機率。 其會套用以頻率為基礎的加權和 K 折交叉驗證，以減少對應的過度學習和疏鬆資料類別所造成雜訊。|
-|文字目標編碼|針對文字輸入，會使用具備文字袋 (bag-of-words) 的堆疊線性模型來產生每個類別其機率。|
-|證據權數 (WoE)|將 WoE 作為類別資料行相互關聯與目標資料行相互關聯的量值計算。 其計算方式是類別內機率與類別外機率比例的對數。 此步驟會為每個類別輸出一個數值特徵資料行，而不需要明確插補遺漏值和極端值處理。|
-|叢集距離|在所有數值資料行上定型 K-Means 叢集模型。  輸出 k 個新特徵，每個叢集一個新的數值特徵，其中包含每個樣本與每個叢集距心的距離。|
-
-### <a name="data-guardrails"></a>資料護欄
-
-啟用自動特徵化或將驗證設為自動時，即會套用資料護欄。資料護欄有助於識別資料的潛在問題 (例如遺漏值或類別不平衡)，並協助採取矯正動作來改善結果。 
-
-使用者可在自動化 ML 執行 [資料護欄] 索引標籤內的工作室中檢閱資料護欄，或在使用 Python SDK 提交實驗時設定 ```show_output=True```。 
-
-#### <a name="data-guardrail-states"></a>資料護欄狀態
-
-資料護欄會顯示三種狀態的其中一種：**通過**、**完成**，或**警示**。
-
-State| 描述
-----|----
-已通過| 未偵測到任何資料問題，因此不需要任何使用者動作。 
-完成| 已成功將變更套用到資料。 我們鼓勵使用者檢閱自動化 ML 採取的矯正動作，以確保變更與預期的結果一致。 
-警示| 偵測到無法救濟的資料問題。 我們鼓勵使用者修訂並修正問題。 
-
->[!NOTE]
-> 先前版本的自動化 ML 實驗會顯示第四個狀態：**已修正**。 較新的實驗將不會顯示此狀態，且顯示**已修正**狀態的所有資料護欄現在會顯示**完成**。   
-
-下表描述目前支援的資料護欄，以及使用者在提交實驗時可能會遇到的相關聯狀態。
-
-護欄|狀態|觸發條件&nbsp;&nbsp;
----|---|---
-遺漏特徵值插補 |**通過** <br><br><br> **完成**| 在訓練資料中沒有偵測到任何遺漏特徵值。 深入了解[遺漏值插補。](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> 在訓練資料中偵測到遺漏的特徵值，並已進行插補。
-高基數特徵處理 |**通過** <br><br><br> **完成**| 輸入已進行分析，且沒有偵測到任何高基數特徵。 深入了解[高基數特徵偵測。](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> 在輸入中偵測到高基數特徵，並已進行處理。
-驗證分割處理 |**完成**| 驗證設定已設為「自動」，且訓練資料包含**少於** 20,000 個資料列。 <br> 已透過交叉驗證驗證定型模型的每個反覆項目。 深入了解[驗證資料。](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> 驗證設定已設為「自動」，且訓練資料包含**超過** 20,000 個資料列。 <br> 輸入資料已分割成訓練資料集和驗證資料集，以用於模型驗證。
-類別平衡偵測 |**通過** <br><br><br><br> **警示** | 已分析輸入，且訓練資料中所有類別都是平衡的。 如果每個類別在資料集中的代表程度良好 (以樣本數和比例測量)，即會將資料集視為平衡。 <br><br><br> 在輸入中偵測到不平衡的類別。 若要修正模型偏差，請修正平衡問題。 深入了解[不平衡的資料。](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)
-記憶體問題偵測 |**通過** <br><br><br><br> **完成** |<br> 已分析選取的 {範圍、延隔時間、移動視窗} 值，且沒有偵測到任何潛在的記憶體不足問題。 深入了解時間序列[預測設定。](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>已分析選取的 {範圍、延隔時間、移動視窗} 值，且可能會導致實驗記憶體不足。 延隔時間或移動視窗設定已關閉。
-頻率偵測 |**通過** <br><br><br><br> **完成** |<br> 已分析時間序列，且所有資料點都與偵測到的頻率相符。 <br> <br> 已分析時間序列，並偵測到有些資料點與偵測到的頻率不相符。 這些資料點已從資料集移除。 深入了解[時間序列預測的資料準備。](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+![Azure Machine Learning studio 工作類型表單](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
 
 ## <a name="run-experiment-and-view-results"></a>執行實驗並檢視結果
 
@@ -255,6 +218,7 @@ State| 描述
     「進階」功能表提供預設部署功能，例如[資料收集](how-to-enable-app-insights.md)和資源使用率設定。 若想要覆寫這些預設，請在此功能表中進行。
 
 1. 選取 [部署]。 部署需要約 20 分鐘才能完成。
+    開始部署之後，[**模型詳細資料**] 索引標籤隨即出現。 請在 [**屬性**] 窗格的 [**部署狀態**] 區段底下，查看部署進度。 
 
 現在您已擁有可運作的 Web 服務，可用來產生預測！ 您可從 [Power BI 內建的 Azure Machine Learning 支援](how-to-consume-web-service.md#consume-the-service-from-power-bi)以透過查詢服務來測試預測。
 

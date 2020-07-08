@@ -4,15 +4,15 @@ description: 在本文中，您將瞭解如何針對 Azure 防禦進行疑難排
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 749d7125c013f419197ef8243d2475e612dc81b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619176"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831925"
 ---
 # <a name="troubleshoot-azure-bastion"></a>對 Azure Bastion 進行疑難排解
 
@@ -20,7 +20,7 @@ ms.locfileid: "80619176"
 
 ## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>無法在 AzureBastionSubnet 上建立 NSG
 
-**問：** 當我嘗試在 Azure 防禦子網上建立 NSG 時，收到下列錯誤：「*網路安全性群組<NSG name>沒有 Azure 防禦子網的必要規則 AzureBastionSubnet*」。
+**問：** 當我嘗試在 Azure 防禦子網上建立 NSG 時，收到下列錯誤：「*網路安全性群組沒有 Azure 防禦 <NSG name> 子網的必要規則 AzureBastionSubnet*」。
 
 **答：** 如果您建立 NSG 並將其套用至*AzureBastionSubnet*，請確定您已在 NSG 中新增下列規則。 如果您未新增這些規則，則 NSG 建立/更新將會失敗。
 
@@ -28,7 +28,7 @@ ms.locfileid: "80619176"
 2. 診斷記錄和其他專案–443到 AzureCloud 的輸出（尚不支援此服務標籤內的地區標記）。
 3. 目標 VM –3389和22的輸出至 VirtualNetwork
 
-NSG 規則的範例可在[快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)中參考。
+NSG 規則的範例可在[快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)中參考。
 如需詳細資訊，請參閱[Azure 防禦的 NSG 指引](bastion-nsg.md)。
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>無法搭配 Azure 防禦使用我的 SSH 金鑰
@@ -39,7 +39,7 @@ NSG 規則的範例可在[快速入門範本](https://github.com/Azure/azure-qui
 
 例如，您可以使用下列命令來建立新的 RSA SSH 金鑰：
 
-**ssh-keygen-t rsa-b 4096-C "email@domain.com"**
+**ssh-keygen-t rsa-b 4096-C " email@domain.com "**
 
 輸出：
 
@@ -71,7 +71,7 @@ The key's randomart image is:
 
 **問：** 我無法連接到已加入網域的 Windows 虛擬機器。
 
-**答：** Azure 防禦僅支援以使用者名稱-密碼為基礎的網域登入加入網域的 VM 登入。 在 Azure 入口網站中指定網域認證時，請使用 UPN （）username@domain格式，而不是可登入的網域*\* （&）格式。 這適用于已加入網域或已加入混合式（已加入網域以及已加入 Azure AD 的虛擬機器）。 不支援僅限已加入 Azure AD 的虛擬機器。
+**答：** Azure 防禦僅支援以使用者名稱-密碼為基礎的網域登入加入網域的 VM 登入。 在 Azure 入口網站中指定網域認證時，請使用 UPN （ username@domain ）格式，而不是可登入的網域*\* （&）格式。 這適用于已加入網域或已加入混合式（已加入網域以及已加入 Azure AD 的虛擬機器）。 不支援僅限已加入 Azure AD 的虛擬機器。
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>檔案傳輸問題
 

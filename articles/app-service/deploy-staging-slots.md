@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 17ba8f5bbbf0ac17e0ccb6881379a511afc7c1c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597906"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833267"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>在 Azure App Service 中設定預備環境
 <a name="Overview"></a>
@@ -38,7 +38,7 @@ ms.locfileid: "82597906"
     ![搜尋應用程式服務](./media/web-sites-staged-publishing/search-for-app-services.png)
    
 
-2. 在左窗格中，選取 [**部署** > 位置] [**新增**位置]。
+2. 在左窗格中，選取 [**部署**位置] [  >  **新增**位置]。
    
     ![新增部署位置](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
@@ -58,7 +58,7 @@ ms.locfileid: "82597906"
    
     ![部署位置標題](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    預備位置和任何其他 App Service 應用程式一樣，具有管理頁面。 您可以變更位置的組態。 為提醒您正在查看部署位置，應用程式名稱會顯示為** \<應用程式名稱>\</位置名稱>**，而應用程式類型為**App Service （位置）**。 您也可以在資源群組中，以相同的方式來查看此位置的個別應用程式。
+    預備位置和任何其他 App Service 應用程式一樣，具有管理頁面。 您可以變更位置的組態。 若要提醒您正在查看部署位置，應用程式名稱會顯示為 **\<app-name>/\<slot-name>** ，而應用程式類型為**App Service （位置）**。 您也可以在資源群組中，以相同的方式來查看此位置的個別應用程式。
 
 6. 在位置的資源頁面上選取應用程式 URL。 部署位置有自己的主機名稱，而且也是即時應用程式。 若要限制對部署位置的公用存取，請參閱[AZURE APP SERVICE IP 限制](app-service-ip-restrictions.md)。
 
@@ -85,7 +85,7 @@ ms.locfileid: "82597906"
 
 1. 如果使用[自訂](#Warm-up)準備啟用[自動交換](#Auto-Swap)，則會對來源位置的每個實例上的應用程式根目錄（"/"）提出 HTTP 要求，以觸發[應用程式初始](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)。
 
-    如果`applicationInitialization`未指定，請對每個實例上來源位置的應用程式根目錄觸發 HTTP 要求。 
+    如果 `applicationInitialization` 未指定，請對每個實例上來源位置的應用程式根目錄觸發 HTTP 要求。 
     
     如果實例傳回任何 HTTP 回應，則會被視為準備就緒。
 
@@ -151,7 +151,7 @@ ms.locfileid: "82597906"
 
 2. 當您準備好要開始交換時，請選取 [**開始交換**]。
 
-    當第1階段完成時，您會在對話方塊中收到通知。 前往，預覽來源位置中的交換`https://<app_name>-<source-slot-name>.azurewebsites.net`。 
+    當第1階段完成時，您會在對話方塊中收到通知。 前往，預覽來源位置中的交換 `https://<app_name>-<source-slot-name>.azurewebsites.net` 。 
 
 3. 當您準備好要完成暫止的交換時，請選取 [在**交換動作**中**完成交換**]，然後選取 [**完成交換**]。
 
@@ -183,7 +183,7 @@ ms.locfileid: "82597906"
 
 若要設定自動交換：
 
-1. 移至您應用程式的資源頁面。 選取**部署** > 位置*\<所需的來源位置>* **Configuration**  >   > **設定的一般設定**。
+1. 移至您應用程式的資源頁面。 選取 [**部署**位置]  >  *\<desired source slot>*  >  **Configuration**  >  **[一般設定**]。
    
 2. 若**已啟用自動交換**，請選取 [**開啟**]。 然後選取所需的 [**自動交換部署**位置] 目標位置，然後在命令列上選取 [**儲存**]。 
    
@@ -197,24 +197,26 @@ ms.locfileid: "82597906"
 
 ## <a name="specify-custom-warm-up"></a>指定自訂的暖開機
 
-某些應用程式在交換之前可能需要自訂的準備動作。 Web.config `applicationInitialization`中的 configuration 元素可讓您指定自訂的初始化動作。 [交換](#AboutConfiguration)作業會等候此自訂準備完成，然後再與目標位置交換。 以下是範例 web.config 片段。
+某些應用程式在交換之前可能需要自訂的準備動作。 `applicationInitialization`web.config 中的 configuration 元素可讓您指定自訂的初始化動作。 [交換](#AboutConfiguration)作業會等候此自訂準備完成，然後再與目標位置交換。 以下是 web.config 片段的範例。
 
-    <system.webServer>
-        <applicationInitialization>
-            <add initializationPage="/" hostName="[app hostname]" />
-            <add initializationPage="/Home/About" hostName="[app hostname]" />
-        </applicationInitialization>
-    </system.webServer>
+```xml
+<system.webServer>
+    <applicationInitialization>
+        <add initializationPage="/" hostName="[app hostname]" />
+        <add initializationPage="/Home/About" hostName="[app hostname]" />
+    </applicationInitialization>
+</system.webServer>
+```
 
-如需自訂元素的`applicationInitialization`詳細資訊，請參閱[最常見的部署位置交換失敗和修正方法](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)。
+如需自訂元素的詳細資訊 `applicationInitialization` ，請參閱[最常見的部署位置交換失敗和修正方法](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)。
 
 您也可以使用下列其中一個或兩個[應用程式設定](configure-common.md)來自訂暖開機行為：
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`：用來準備您的網站的 ping 路徑。 請指定開頭為斜線的自訂路徑作為值，以新增此應用程式設定。 例如 `/statuscheck`。 預設值為 `/`。 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`：準備操作的有效 HTTP 回應碼。 請以 HTTP 代碼的逗號分隔清單方式新增此應用程式設定。 例如`200,202` 。 如果傳回的狀態碼不在清單中，則會停止準備和交換作業。 預設是所有回應碼都有效。
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`：準備操作的有效 HTTP 回應碼。 請以 HTTP 代碼的逗號分隔清單方式新增此應用程式設定。 例如 `200,202` 。 如果傳回的狀態碼不在清單中，則會停止準備和交換作業。 預設是所有回應碼都有效。
 
 > [!NOTE]
-> `<applicationInitialization>` Configuration 元素是每個應用程式啟動的一部分，而這兩個準備行為應用程式設定只適用于位置交換。
+> `<applicationInitialization>`Configuration 元素是每個應用程式啟動的一部分，而這兩個準備行為應用程式設定只適用于位置交換。
 
 如果您有任何問題，請參閱針對[交換進行疑難排解](#troubleshoot-swaps)。
 
@@ -236,7 +238,7 @@ ms.locfileid: "82597906"
 
 1. 移至您應用程式的資源頁面，然後選取 [**部署**位置]。
 
-2. 針對您要路由到的位置，在其 [流量百分比]**** 資料行中指定百分比 (介於 0 到 100 之間)，以代表您要路由的總流量。 選取 [儲存]  。
+2. 針對您要路由到的位置，在其 [流量百分比]**** 資料行中指定百分比 (介於 0 到 100 之間)，以代表您要路由的總流量。 選取 [儲存]。
 
     ![設定流量百分比](./media/web-sites-staged-publishing/RouteTraffic.png)
 
@@ -245,7 +247,7 @@ ms.locfileid: "82597906"
 用戶端自動路由至特定位置之後，就會在該位置「釘選」在該用戶端會話的生命週期內。 用戶端瀏覽器中，您可以查看 HTTP 標頭中的 `x-ms-routing-name` Cookie，以確認您的工作階段固定到哪個位置。 路由至「預備」位置的要求具有 Cookie `x-ms-routing-name=staging`。 路由至生產位置的要求具有 Cookie `x-ms-routing-name=self`。
 
    > [!NOTE]
-   > 在 [Azure 入口網站] 旁，您也可以使用[`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) Azure CLI 中的命令，從 DevOps 管線或其他自動化系統等 CI/CD 工具設定路由百分比。
+   > 在 [Azure 入口網站] 旁，您也可以使用 [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) Azure CLI 中的命令，從 DevOps 管線或其他自動化系統等 CI/CD 工具設定路由百分比。
    > 
 
 ### <a name="route-production-traffic-manually"></a>手動路由生產流量
@@ -254,11 +256,11 @@ ms.locfileid: "82597906"
 
 例如，若要讓使用者退出宣告您的 Beta 應用程式，您可以將此連結放在您的網頁上：
 
-```HTML
+```html
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-字串 `x-ms-routing-name=self` 會指定生產位置。 在用戶端瀏覽器存取連結之後，它會重新導向至生產位置。 每個後續要求都`x-ms-routing-name=self`具有將會話釘選到生產位置的 cookie。
+字串 `x-ms-routing-name=self` 會指定生產位置。 在用戶端瀏覽器存取連結之後，它會重新導向至生產位置。 每個後續要求都具有將 `x-ms-routing-name=self` 會話釘選到生產位置的 cookie。
 
 若要讓使用者加入宣告您的 Beta 應用程式，請將相同的查詢參數設定為非生產位置的名稱。 以下是範例：
 
@@ -266,13 +268,13 @@ ms.locfileid: "82597906"
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
 
-根據預設，新的位置會獲得的路由規則`0%`（以灰色顯示）。 當您明確地將此值`0%`設定為（以黑色文字顯示）時，您的使用者可以使用`x-ms-routing-name`查詢參數，以手動方式存取預備位置。 但因為路由百分比設定為0，所以不會自動將它們路由傳送至位置。 這是一個先進的案例，您可以從公用「隱藏」您的預備位置，同時允許內部團隊測試位置上的變更。
+根據預設，新的位置會獲得的路由規則 `0%` （以灰色顯示）。 當您明確地將此值設定為 `0%` （以黑色文字顯示）時，您的使用者可以使用查詢參數，以手動方式存取預備位置 `x-ms-routing-name` 。 但因為路由百分比設定為0，所以不會自動將它們路由傳送至位置。 這是一個先進的案例，您可以從公用「隱藏」您的預備位置，同時允許內部團隊測試位置上的變更。
 
 <a name="Delete"></a>
 
 ## <a name="delete-a-slot"></a>刪除位置
 
-搜尋並選取您的應用程式。 選取**部署** >   > **位置位置***以刪除>\<* 總覽。 應用程式類型會顯示為**App Service （位置）** ，以提醒您正在查看部署位置。 選取命令列上的 [**刪除**]。  
+搜尋並選取您的應用程式。 選取**部署**位置  >  *\<slot to delete>*  >  **總覽**。 應用程式類型會顯示為**App Service （位置）** ，以提醒您正在查看部署位置。 選取命令列上的 [**刪除**]。  
 
 ![刪除部署位置](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -336,11 +338,11 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 [Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview)是用來自動化 Azure 資源部署和設定的宣告式 JSON 檔案。 若要使用 Resource Manager 範本交換位置，您會在*Microsoft web/sites/* 位置和*microsoft web/sites*資源上設定兩個屬性：
 
 - `buildVersion`：這是字串屬性，代表在位置中部署之應用程式的目前版本。 例如： "v1"、"1.0.0.1" 或 "2019-09-20T11：53： 25.2887393-07： 00"。
-- `targetBuildVersion`：這個字串屬性會指定位置應該具有`buildVersion`的內容。 如果 targetBuildVersion 不等於目前`buildVersion`的，則這會藉由尋找具有指定`buildVersion`之的位置來觸發交換操作。
+- `targetBuildVersion`：這個字串屬性會指定位置 `buildVersion` 應該具有的內容。 如果 targetBuildVersion 不等於目前的 `buildVersion` ，則這會藉由尋找具有指定之的位置來觸發交換操作 `buildVersion` 。
 
 ### <a name="example-resource-manager-template"></a>範例 Resource Manager 範本
 
-下列 Resource Manager 範本會更新`buildVersion`預備`targetBuildVersion`位置的，並在生產位置上設定。 這會交換兩個位置。 此範本假設您已經使用名為「預備」的位置建立 webapp。
+下列 Resource Manager 範本會更新 `buildVersion` 預備位置的，並 `targetBuildVersion` 在生產位置上設定。 這會交換兩個位置。 此範本假設您已經使用名為「預備」的位置建立 webapp。
 
 ```json
 {
@@ -384,7 +386,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 }
 ```
 
-此 Resource Manager 範本具有等冪性，這表示它可以重複執行，並產生相同的位置狀態。 第一次執行之後`targetBuildVersion` ，會符合目前`buildVersion`的，因此不會觸發交換。
+此 Resource Manager 範本具有等冪性，這表示它可以重複執行，並產生相同的位置狀態。 第一次執行之後， `targetBuildVersion` 會符合目前的 `buildVersion` ，因此不會觸發交換。
 
 <!-- ======== Azure CLI =========== -->
 
@@ -396,7 +398,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="troubleshoot-swaps"></a>針對交換進行疑難排解
 
-如果在位置[交換](#AboutConfiguration)期間發生任何錯誤，則會記錄在*D:\home\LogFiles\eventlog.xml*中。 它也會記錄在應用程式特定的錯誤記錄檔中。
+如果在位置[交換](#AboutConfiguration)期間發生任何錯誤，則會將它登入*D:\home\LogFiles\eventlog.xml*。 它也會記錄在應用程式特定的錯誤記錄檔中。
 
 以下是一些常見的交換錯誤：
 
@@ -404,7 +406,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 - 當應用程式內容超過為本機快取指定的本機磁片配額時，本機快取初始化可能會失敗。 如需詳細資訊，請參閱本機快取[總覽](overview-local-cache.md)。
 
-- 在[自訂](#Warm-up)準備期間，HTTP 要求會在內部進行（而不會經過外部 URL）。 它們可能會*因 web.config 中*的某些 URL 重寫規則而失敗。例如，重新導向功能變數名稱或強制執行 HTTPS 的規則，可能會讓準備要求無法到達應用程式的程式碼。 若要解決此問題，請新增下列兩個條件來修改您的重寫規則：
+- 在[自訂](#Warm-up)準備期間，HTTP 要求會在內部進行（而不會經過外部 URL）。 在*Web.config*中，它們可能會因特定的 URL 重寫規則而失敗。例如，重新導向功能變數名稱或強制執行 HTTPS 的規則，可能會讓準備要求無法到達應用程式的程式碼。 若要解決此問題，請新增下列兩個條件來修改您的重寫規則：
 
     ```xml
     <conditions>
@@ -421,9 +423,9 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
       ...
     </conditions>
     ```
-- 某些[IP 限制規則](app-service-ip-restrictions.md)可能會讓交換作業無法將 HTTP 要求傳送至您的應用程式。 以為開頭`10.`且`100.`在部署內部的 IPv4 位址範圍。 您應該允許它們連接到您的應用程式。
+- 某些[IP 限制規則](app-service-ip-restrictions.md)可能會讓交換作業無法將 HTTP 要求傳送至您的應用程式。 以為開頭 `10.` 且在部署內部的 IPv4 位址範圍 `100.` 。 您應該允許它們連接到您的應用程式。
 
-- 在位置交換之後，應用程式可能會遇到非預期的重新開機。 這是因為在交換之後，主機名稱系結設定會不同步，而這本身不會造成重新開機。 不過，某些基礎儲存體事件（例如存放磁片區容錯移轉）可能會偵測到這些不一致的情況，並強制重新開機所有工作者進程。 若要將這些重新開機類型降到最低，請在*所有*位置上設定[ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`應用程式設定](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)。 不過，此應用程式設定*無法*與 WINDOWS COMMUNICATION FOUNDATION （WCF）應用程式搭配使用。
+- 在位置交換之後，應用程式可能會遇到非預期的重新開機。 這是因為在交換之後，主機名稱系結設定會不同步，而這本身不會造成重新開機。 不過，某些基礎儲存體事件（例如存放磁片區容錯移轉）可能會偵測到這些不一致的情況，並強制重新開機所有工作者進程。 若要將這些重新開機類型降到最低，請在*所有*位置上設定[ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` 應用程式設定](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)。 不過，此應用程式設定*無法*與 WINDOWS COMMUNICATION FOUNDATION （WCF）應用程式搭配使用。
 
 ## <a name="next-steps"></a>後續步驟
 [封鎖對非生產位置的存取](app-service-ip-restrictions.md)

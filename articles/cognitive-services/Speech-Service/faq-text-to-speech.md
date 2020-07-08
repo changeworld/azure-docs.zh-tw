@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 19b8be83a3678164197ec0650b07091e941a04d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f647727c01bbddafe3b10877af3e1d5652bedd29
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74110503"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833582"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>文字轉換語音常見問題集
 
@@ -59,7 +59,7 @@ ms.locfileid: "74110503"
 
 **問：我的要求會被節流嗎？**
 
-**答**：REST API 限制每 5 秒 25 個要求。 詳情請參閱我們的[文字轉換語音](text-to-speech.md)頁面。
+**答**： REST API 將標準訂閱的要求限制為每5秒25個。 免費層（F0）的限制為每分鐘20個要求。
 
 ## <a name="next-steps"></a>後續步驟
 

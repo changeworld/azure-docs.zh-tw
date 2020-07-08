@@ -3,12 +3,12 @@ title: 在 Application Insights 中探索 .NET 追蹤記錄
 description: 搜尋 Trace、NLog 或 Log4Net 產生的記錄。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: bcd21286a547e0b0a6b5b93e8b05921e8e8cc1e2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: d010fe4389e22c9909800f5329911b6b5619d7b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829528"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>在 Application Insights 中探索 .NET/.NET Core 和 Python 追蹤記錄
 
@@ -73,11 +73,15 @@ NuGet 套件會安裝必要的組件，並在適用的情況下修改 web.config
 ## <a name="insert-diagnostic-log-calls"></a>插入診斷記錄呼叫
 如果您使用 System.Diagnostics.Trace，典型的呼叫如下：
 
-    System.Diagnostics.Trace.TraceWarning("Slow response - database01");
+```csharp
+System.Diagnostics.Trace.TraceWarning("Slow response - database01");
+```
 
 如果您偏好 log4net 或 NLog，請使用：
 
+```csharp
     logger.Warn("Slow response - database01");
+```
 
 ## <a name="use-eventsource-events"></a>使用 EventSource 事件
 您可以將 [System.Diagnostics.Tracing.EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 設定為要傳送至 Application Insights 作為追蹤的事件。 首先，安裝 `Microsoft.ApplicationInsights.EventSourceListener` NuGet 套件。 然後編輯 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 檔案的 `TelemetryModules` 區段。
@@ -133,17 +137,21 @@ NuGet 套件會安裝必要的組件，並在適用的情況下修改 web.config
 
 例如：
 
-    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-    telemetry.TrackTrace("Slow response - database01");
+```csharp
+var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+telemetry.TrackTrace("Slow response - database01");
+```
 
 TrackTrace 的優點在於您可以將較長的資料放在訊息中。 例如，您可以在該處編碼 POST 資料。
 
 您也可以將嚴重性層級新增至訊息。 就像其他遙測一樣，您可以新增屬性值，以協助篩選或搜尋不同的追蹤集。 例如：
 
-    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-    telemetry.TrackTrace("Slow database response",
-                   SeverityLevel.Warning,
-                   new Dictionary<string,string> { {"database", db.ID} });
+  ```csharp
+  var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+  telemetry.TrackTrace("Slow database response",
+                 SeverityLevel.Warning,
+                 new Dictionary<string,string> { {"database", db.ID} });
+  ```
 
 這可讓您在[搜尋][diagnostic]中輕鬆地篩選出與特定資料庫相關且具有特定嚴重性層級的所有訊息。
 

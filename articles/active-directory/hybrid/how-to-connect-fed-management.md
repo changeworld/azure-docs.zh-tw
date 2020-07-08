@@ -12,18 +12,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcbeedddc65a916f869a778616779917a9571181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58bc154f4ffb234df52faf3c02b5ed7ecaf77c2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830922"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自訂 Active Directory Federation Services
 本文說明如何使用 Azure Active Directory (Azure AD) Connect 管理及自訂 Active Directory Federation Services (AD FS)。 它也包含您可能需要進行以完整設定 AD FS 伺服器陣列的其他常見 AD FS 工作。
@@ -176,7 +176,7 @@ AD FS 替代登入識別碼的設定作業包含兩個主要步驟︰
 
     選擇網域之後，精靈會提供您關於精靈將採取的進一步動作和組態影響的適當資訊。 在某些情況下，如果您選取尚未在 Azure AD 中驗證的網域，精靈將提供資訊協助您驗證網域。 如需詳細資訊，請參閱 [將您的自訂網域名稱新增至 Azure Active Directory](../active-directory-domains-add-azure-portal.md) 。
 
-5. 按 [下一步]  。 按 [下一步]****，然後 [準備設定] 頁面就會顯示 Azure AD Connect 將會執行的動作清單。 按一下 [安裝] **** 以完成組態。
+5. 按 [下一步] 。 按 [下一步]****，然後 [準備設定] 頁面就會顯示 Azure AD Connect 將會執行的動作清單。 按一下 [安裝] **** 以完成組態。
 
    ![準備設定](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
@@ -192,7 +192,9 @@ AD FS 替代登入識別碼的設定作業包含兩個主要步驟︰
 > [!NOTE]
 > 建議的標誌尺寸為 260 x 35 \@ 96 dpi，檔案大小不超過 10 KB。
 
-    Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
+```azurepowershell-interactive
+Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
+```
 
 > [!NOTE]
 > *TargetName* 是必要參數。 隨著 AD FS 釋出的預設佈景主題為指定的預設值。
@@ -200,7 +202,9 @@ AD FS 替代登入識別碼的設定作業包含兩個主要步驟︰
 ## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>新增登入說明 
 若要在 [登入] **** 頁面中新增登入頁面描述，請使用下列 Windows PowerShell Cmdlet 和語法。
 
-    Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
+```azurepowershell-interactive
+Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
+```
 
 ## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>修改 AD FS 宣告規則 
 AD FS 支援豐富的宣告語言，您可以用它來建立自訂宣告規則。 如需詳細資訊，請參閱 [宣告規則語言的角色](https://technet.microsoft.com/library/dd807118.aspx)。
@@ -214,8 +218,10 @@ Azure AD Connect 可在將物件同步處理至 Azure AD 時，讓您指定要�
 
 **規則 1：查詢屬性**
 
-    c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
-    => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
+```claim-rule-language
+c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
+=> add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
+```
 
 在此規則中，您會從 Active Directory 查詢使用者的 **ms-ds-consistencyguid** 和 **objectGuid** 值。 在 AD FS 部署中，將存放區名稱變更為適當的存放區名稱。 另外，也將依照針對 **objectGuid** 和 **ms-ds-consistencyguid** 所定義的，將宣告類型變更為您的同盟適用的宣告類型。
 
@@ -223,23 +229,29 @@ Azure AD Connect 可在將物件同步處理至 Azure AD 時，讓您指定要�
 
 **規則 2：檢查使用者是否存在 ms-ds-consistencyguid**
 
-    NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
-    => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
+```claim-rule-language
+NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
+=> add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
+```
 
 此規則會定義稱為 **idflag** 的暫時旗標，如果沒有為使用者填入 **ms-ds-concistencyguid**，則此旗標會設為 **useguid**。 背後邏輯是實際上 AD FS 不允許空的宣告。 因此，當您在「規則 1」中新增宣告 `http://contoso.com/ws/2016/02/identity/claims/objectguid` 和 `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` 時，只有已為使用者填入值時，您最終才會具有 **msdsconsistencyguid** 宣告。 如果未填入，AD FS 會看到它將具有空值，並因此立即捨棄。 所有物件都會有 **objectGuid**，因此執行規則 1 之後，宣告一律會在該處。
 
 **規則 3：發出 ms-ds-consistencyguid 為固定 ID (如果有的話)**
 
-    c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
-    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
+```claim-rule-language
+c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
+=> issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
+```
 
 這是隱含的 **存在** 檢查。 如果宣告的值存在，則發出做為固定 ID。 上述範例使用 **nameidentifier** 宣告。 您必須為您的環境中的固定 ID 將此宣告變更為適當的宣告類型。
 
 **規則 4：發出 objectGuid 做為固定 ID，如果未出現 ms-ds-consistencyGuid**
 
-    c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
-    && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
-    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
+```claim-rule-language
+c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
+&& c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
+=> issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
+```
 
 在這項規則中，您只會檢查暫存旗標 **idflag**。 您必須根據宣告值來決定是否要發出宣告。
 

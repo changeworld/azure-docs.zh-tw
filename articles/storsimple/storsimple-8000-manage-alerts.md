@@ -3,19 +3,19 @@ title: 查看和管理 StorSimple 8000 系列裝置的警示
 description: 描述 StorSimple 警示條件和嚴重性、如何設定警示通知，以及如何使用 StorSimple 裝置管理員服務管理警示。
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36f416183bd44180bee59142714e924e0ac8fefe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830038"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple 裝置管理員服務來檢視和管理 StorSimple 警示
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 StorSimple 裝置管理員服務的 [警示]**** 刀鋒視窗可讓您即時檢閱並清除 StorSimple 裝置的相關警示。 從這個刀鋒視窗中，您可以集中監視 StorSimple 裝置和整個 Microsoft Azure StorSimple 解決方案的健康問題。
 
@@ -48,11 +48,11 @@ StorSimple 裝置會產生警示以回應各種不同的狀況。 以下是最�
 > [!NOTE]
 > 您可以對每一裝置輸入最多 20 個電子郵件地址。
 
-啟用裝置的電子郵件通知之後，每當發生重大警示時，通知清單的成員將會收到電子郵件訊息。 訊息將會從*storsimple-alerts-\@noreply mail.windowsazure.com*傳送，並將描述警示條件。 收件者可以按一下 [取消訂閱]**** 從電子郵件通知清單將自己移除。
+啟用裝置的電子郵件通知之後，每當發生重大警示時，通知清單的成員將會收到電子郵件訊息。 訊息將會從*storsimple-alerts-noreply \@ mail.windowsazure.com*傳送，並將描述警示條件。 收件者可以按一下 [取消訂閱]**** 從電子郵件通知清單將自己移除。
 
 #### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>啟用裝置的警示電子郵件通知
 1. 移至您的 StorSimple 裝置管理員服務。 從裝置清單中，選取並按一下您想要設定的裝置。
-2. 移至裝置的 [**設定** > ]**[一般**]。
+2. 移至**Settings**  >  裝置的 [設定]**[一般**]。
 
    ![警示刀鋒視窗](./media/storsimple-8000-manage-alerts/configure-alerts-email2.png)
    
@@ -60,7 +60,7 @@ StorSimple 裝置會產生警示以回應各種不同的狀況。 以下是最�
    
    1. 在 [傳送電子郵件通知]**** 欄位中，選取 [是]****。
    2. 若要讓服務管理員和所有共同管理員收到警示通知，請在 [電子郵件服務管理員]**** 欄位中選取 [是]****。
-   3. 在 [其他電子郵件收件者] **** 欄位中，輸入應該收到警示通知的其他所有收件者的電子郵件地址。 以 [*其他人\@] somewhere.com*的格式輸入名稱。 使用分號來分隔電子郵件地址。 您可以對每一裝置設定最多 20 個電子郵件地址。 
+   3. 在 [其他電子郵件收件者] **** 欄位中，輸入應該收到警示通知的其他所有收件者的電子郵件地址。 以 [*其他人] \@ somewhere.com*的格式輸入名稱。 使用分號來分隔電子郵件地址。 您可以對每一裝置設定最多 20 個電子郵件地址。 
       
 3. 若要傳送測試電子郵件通知，請按一下 [傳送測試電子郵件]****。 StorSimple 裝置管理員服務在轉寄測試通知時會顯示狀態訊息。
 
@@ -120,6 +120,7 @@ StorSimple 裝置管理員服務的摘要刀鋒視窗，可讓您快速概覽裝
 * [效能警示](#performance-alerts)
 * [安全性警示](#security-alerts)
 * [支援封裝警示](#support-package-alerts)
+* [主機殼環境警示](#enclosure-environment-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>雲端連線能力警示
 
@@ -192,9 +193,9 @@ StorSimple 裝置管理員服務的摘要刀鋒視窗，可讓您快速概覽裝
 | 警示文字 | 事件 | 詳細資訊 / 建議的動作 |
 |:--- |:--- |:--- |
 | 無法啟動 StorSimple 服務。 |資料路徑錯誤 |如果問題持續發生，請連絡 Microsoft 支援服務。 |
-| 偵測到 'Data0' 的 IP 位址重複。 | |系統已偵測到 IP 位址 '10.0.0.1' 衝突。 裝置* \<device1>* 上的網路資源 ' Data0 ' 已離線。 確定此網路中的其他任何實體並未使用此 IP 位址。 若要疑難排解網路問題，請移至 [Get-NetAdapter Cmdlet 疑難排解](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 請連絡網路系統管理員協助解決此問題。 如果問題持續發生，請連絡 Microsoft 支援服務。 |
-| 'Data0' 的 IPv4 (或 IPv6) 位址已離線。 | |網路資源 'Data0' 與 IP 位址 '10.0.0.1'。 裝置* \<device1>* 的前置長度 ' 22 ' 已離線。 請確定此介面所連接的交換器連接埠運作正常。 若要疑難排解網路問題，請移至 [Get-NetAdapter Cmdlet 疑難排解](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 |
-| 無法連線到驗證服務。 |資料路徑錯誤 |無法連線到用來驗證的 URL。 請確定您的防火牆規則有包含為 StorSimple 裝置指定的 URL 模式。 如需 Azure 入口網站中 URL 模式的詳細資訊，請移至\/HTTPs：/aka.ms/ss-8000-network-reqs。 如果使用 Azure Government 雲端，請移至 HTTPs：\//aka.ms/ss8000-gov-network-reqs 中的 URL 模式。|
+| 偵測到 'Data0' 的 IP 位址重複。 | |系統已偵測到 IP 位址 '10.0.0.1' 衝突。 裝置上的網路資源 ' Data0 ' *\<device1>* 已離線。 確定此網路中的其他任何實體並未使用此 IP 位址。 若要疑難排解網路問題，請移至 [Get-NetAdapter Cmdlet 疑難排解](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 請連絡網路系統管理員協助解決此問題。 如果問題持續發生，請連絡 Microsoft 支援服務。 |
+| 'Data0' 的 IPv4 (或 IPv6) 位址已離線。 | |網路資源 'Data0' 與 IP 位址 '10.0.0.1'。 裝置上的前置長度 ' 22 ' *\<device1>* 已離線。 請確定此介面所連接的交換器連接埠運作正常。 若要疑難排解網路問題，請移至 [Get-NetAdapter Cmdlet 疑難排解](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 |
+| 無法連線到驗證服務。 |資料路徑錯誤 |無法連線到用來驗證的 URL。 請確定您的防火牆規則有包含為 StorSimple 裝置指定的 URL 模式。 如需 Azure 入口網站中 URL 模式的詳細資訊，請移至 HTTPs： \/ /aka.ms/ss-8000-network-reqs。 如果使用 Azure Government 雲端，請移至 HTTPs：/aka.ms/ss8000-gov-network-reqs 中的 URL 模式 \/ 。|
 
 ### <a name="performance-alerts"></a>效能警示
 
@@ -219,7 +220,12 @@ StorSimple 裝置管理員服務的摘要刀鋒視窗，可讓您快速概覽裝
 |:--- |:--- |:--- |
 | 建立支援封裝失敗。 |StorSimple 無法產生封裝。 |重試此作業。 如果問題持續發生，請連絡 Microsoft 支援服務。 解決問題之後，請從警示頁面清除此警示。 |
 
+### <a name="enclosure-environment-alerts"></a>主機殼環境警示
+
+| 警示文字 | 事件 | 詳細資訊 / 建議的動作 |
+|:--- |:--- |:--- |
+| 硬體元件環境溫度感應器會將狀態報表為 [失敗]。  | 主機殼類型：主要主機殼 | 當 StorSimple 周圍的環境超出可接受的範圍時，就會觸發此警示。 檢查資料中心的溫度外的環境或來自 AC 通風管的空氣流量。 當溫度恢復正常時，警示會在經過一段時間後自動清除。 如果問題持續發生， 請連絡 Microsoft 支援服務。   |
+
 ## <a name="next-steps"></a>後續步驟
 
 深入了解 [StorSimple 錯誤和裝置部署問題的疑難排解](storsimple-8000-troubleshoot-deployment.md)。
-

@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
-ms.custom: seodec18
-ms.openlocfilehash: 09f0e0f47ecd94c6db67b3973218cc1323bccde3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 519d9f25276ea54fbfd49970ba3c288245ce9653
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736104"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833684"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "83736104"
 
 ## <a name="select-your-experiment-type"></a>選取您的實驗類型
 
-在開始實驗之前，您應先決定所要解決的機器學習問題類型。 自動化機器學習支援分類、迴歸和預測等工作類型。 深入了解[工作類型](how-to-define-task-type.md)。
+在開始實驗之前，您應先決定所要解決的機器學習問題類型。 自動化機器學習支援分類、迴歸和預測等工作類型。 深入了解[工作類型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
 
 在自動化和調整程序期間，自動化機器學習支援下列演算法。 身為使用者，您不需要指定演算法。
 
@@ -58,12 +58,10 @@ ms.locfileid: "83736104"
 [隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN 分類器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN 迴歸輸入變數](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN 迴歸輸入變數](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN 線性分類器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[線性迴歸輸入變數](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[線性迴歸輸入變數](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[貝氏機率分類](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[快速線性迴歸輸入變數](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[線上梯度下降迴歸輸入變數](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
-|[平均感知分類器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
-|[線性 SVM 分類器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
+[平均感知分類器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)|[線上梯度下降迴歸輸入變數](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest) |[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[貝氏機率分類](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[快速線性迴歸輸入變數](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
+|[線性 SVM 分類器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)*||
 
 在 `AutoMLConfig` 建構函式中使用 `task` 參數指定您的實驗類型。
 
@@ -117,13 +115,14 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="train-and-validation-data"></a>訓練和驗證資料
 
-您可以直接在 `AutoMLConfig` 建構函式中指定個別的定型和驗證集。
+您可以使用下列選項，直接在此函式中指定個別的定型和驗證集 `AutoMLConfig` 。 深入瞭解如何為您的 AutoML 實驗[設定資料分割和交叉驗證](how-to-configure-cross-validation-data-splits.md)。 
 
 ### <a name="k-folds-cross-validation"></a>k 疊交叉驗證
 
 使用 `n_cross_validations` 設定來指定交叉驗證的數目。 訓練資料集會隨機分割為相同大小的 `n_cross_validations` 疊。 在每個交叉驗證回合中，將使用其中一個疊來驗證以其餘幾疊進行訓練的模型。 此程序會重複執行 `n_cross_validations` 回合，直到每一疊都已作為驗證集執行一次。 將會報告 `n_cross_validations` 個回合的總平均分數，並以整個訓練資料集重新訓練對應的模型。
 
 深入了解自動 ML 如何套用交叉驗證以[防止過度調整模型](concept-manage-ml-pitfalls.md#prevent-over-fitting)。
+
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>蒙地卡羅交叉驗證 (重複隨機子取樣)
 
 使用 `validation_size` 指定應該用於驗證的訓練資料集百分比，並使用 `n_cross_validations` 指定交叉驗證的數目。 在每個交叉驗證回合中，將隨機選取 `validation_size` 大小的子集來驗證以其餘資料進行訓練的模型。 最後將會報告 `n_cross_validations` 個回合的總平均分數，並以整個訓練資料集重新訓練對應的模型。 時間序列預測不支援蒙地卡羅。
@@ -196,15 +195,15 @@ automl_config = AutoMLConfig(task = "classification")
 
 ### <a name="data-featurization"></a>資料特徵化
 
-在每個自動化機器學習實驗中，您的資料都會[自動調整並標準化](concept-automated-ml.md#preprocess)，以利易受不同規模的特徵所影響的*特定*演算法能妥善運作。  不過，您也可以啟用其他特徵化，例如遺漏值插補、編碼和轉換。 [深入了解包含哪些特徵化](how-to-use-automated-ml-for-ml-models.md#featurization)。
+在每個自動化機器學習實驗中，您的資料都會[自動調整並標準化](how-to-configure-auto-features.md#)，以利易受不同規模的特徵所影響的*特定*演算法能妥善運作。  不過，您也可以啟用其他特徵化，例如遺漏值插補、編碼和轉換。
 
-在設定實驗時，您可以啟用進階設定 `featurization`。 下表顯示 [AutoMLConfig 類別](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中已接受的特徵化設定。
+在物件中設定您的實驗時 `AutoMLConfig` ，您可以啟用/停用此設定 `featurization` 。 下表顯示 [AutoMLConfig 類別](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中已接受的特徵化設定。
 
 |特徵化設定 | 描述 |
 | ------------- | ------------- |
-|`"featurization":`&nbsp;`'FeaturizationConfig'`| 指出應使用自訂的特徵化步驟。 [了解如何自訂特徵化](how-to-configure-auto-train.md#customize-feature-engineering)。|
+|`"featurization": 'auto'`| 指出在前置處理過程中，會自動執行[資料護欄和特徵化步驟](how-to-configure-auto-features.md#featurization)。 **預設設定**|
 |`"featurization": 'off'`| 指出不應自動執行特徵化步驟。|
-|`"featurization": 'auto'`| 指出在前置處理過程中，會自動執行[資料護欄和特徵化步驟](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options)。|
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| 指出應使用自訂的特徵化步驟。 [了解如何自訂特徵化](how-to-configure-auto-features.md#customize-featurization)。|
 
 > [!NOTE]
 > 自動化機器學習特徵化步驟 (功能標準化、處理遺漏的資料、將文字轉換為數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同特徵化步驟會自動套用至您的輸入資料。
@@ -345,6 +344,8 @@ run = experiment.submit(automl_config, show_output=True)
 
 如果您使用筆記本，您可以在小工具中或以內嵌方式檢視定型結果。 請參閱[追蹤和評估模型](how-to-track-experiments.md#view-run-details)以取得更多詳細資料。
 
+如需有關如何下載或註冊模型以部署至 web 服務的詳細資訊，請參閱[如何和部署模型的位置](how-to-deploy-and-where.md)。
+
 ## <a name="understand-automated-ml-models"></a>了解自動化 ML 模型
 
 任何使用自動化 ML 產生的模型都包含下列步驟：
@@ -361,7 +362,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>自動化特徵工程
 
-請參閱在 `"featurization": 'auto'` 時發生的前置處理和[自動化特徵工程](concept-automated-ml.md#preprocess)的清單。
+請參閱在 `"featurization": 'auto'` 時發生的前置處理和[自動化特徵工程]()的清單。
 
 請思考此範例：
 + 輸入特徵共有四種：A (數值)、B (數值)、C (數值)、D (日期時間)
@@ -430,36 +431,9 @@ best_run, fitted_model = automl_run.get_output()
    |Dropped|指出是已卸除還是使用了輸入特徵。|
    |EngineeringFeatureCount|透過自動化特徵工程轉換而產生的特徵數目。|
    |轉換|套用至輸入特徵以產生工程特徵的轉換清單。|
-   
-### <a name="customize-feature-engineering"></a>自訂特徵工程
-若要自訂特徵工程，請指定 `"featurization": FeaturizationConfig`。
-
-支援的自訂包括：
-
-|自訂|定義|
-|--|--|
-|資料行用途更新|覆寫指定資料行的特徵類型。|
-|轉換器參數更新 |更新指定轉換器的參數。 目前支援 Imputer (平均值、最頻繁的值與中位數) 和 HashOneHotEncoder。|
-|卸除資料行 |不進行特徵化的資料行。|
-|區塊轉換器| 要在特徵化程序中使用的區塊轉換器。|
-
-使用 API 呼叫來建立 FeaturizationConfig 物件：
-```python
-featurization_config = FeaturizationConfig()
-featurization_config.blocked_transformers = ['LabelEncoder']
-featurization_config.drop_columns = ['aspiration', 'stroke']
-featurization_config.add_column_purpose('engine-size', 'Numeric')
-featurization_config.add_column_purpose('body-style', 'CategoricalHash')
-#default strategy mean, add transformer param for for 3 columns
-featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strategy": "median"})
-featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
-featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
-featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
-```
-
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>使用超參數值的調整/標準化和演算法：
 
-若要了解管線的調整/標準化和演算法/超參數值，請使用 fitted_model.steps。 [深入了解調整/標準化](concept-automated-ml.md#preprocess)。 以下是範例輸出：
+若要了解管線的調整/標準化和演算法/超參數值，請使用 fitted_model.steps。 [深入了解調整/標準化]()。 以下是範例輸出：
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))
@@ -536,6 +510,9 @@ class_prob = fitted_model.predict_proba(X_test)
 若要了解如何在自動化機器學習實驗中明確啟用可解釋性特徵，請參閱[操作說明](how-to-machine-learning-interpretability-automl.md)中的程式碼範例。
 
 如需如何在自動化機器學習以外的其他 SDK 區域中啟用模型說明和特徵重要性的一般資訊，請參閱[概念](how-to-machine-learning-interpretability.md)一文中有關於可解釋性的部分。
+
+> [!NOTE]
+> 說明用戶端目前不支援 ForecastTCN 模型。 如果將 [說明] 儀表板當做最佳模型傳回，且不支援隨選說明執行，此模型將不會傳回。
 
 ## <a name="next-steps"></a>後續步驟
 

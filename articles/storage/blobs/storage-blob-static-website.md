@@ -3,26 +3,27 @@ title: Azure 儲存體中的靜態網站代管
 description: Azure 儲存體靜態網站代管，提供符合成本效益且可延展的解決方案來代管新式 Web 應用程式。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: 6a007525f8402bb163195b623173d665f9721bff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: e2dcc070baa94ecf1ea27100fd49d4cde1dac637
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648500"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833341"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 儲存體中的靜態網站代管
 
 您可以直接從名為 *$web* 的儲存體容器提供靜態內容 (HTML、CSS、JavaScript 和影像檔)。 在 Azure 儲存體中託管內容可讓您使用無伺服器架構，其中包括 [Azure Functions](/azure/azure-functions/functions-overview)，以及其他平台即服務 (PaaS) 服務。
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
 > 如果您的網站相依於伺服器端程式碼，請改用 [Azure App Service](/azure/app-service/overview)。
+請務必建立一般用途 v2 標準儲存體帳戶。 靜態網站無法在任何其他類型的儲存體帳戶中使用。
 
 ## <a name="setting-up-a-static-website"></a>設定靜態網站
 
@@ -46,7 +47,7 @@ ms.locfileid: "83648500"
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code 擴充功能](/azure/javascript/tutorial-vscode-static-website-node-01) \(英文\)
+> * [Visual Studio Code 擴充功能](/azure/developer/javascript/tutorial-vscode-static-website-node-01) \(英文\)
 
 ## <a name="viewing-content"></a>檢視內容
 
@@ -63,11 +64,11 @@ ms.locfileid: "83648500"
 
 雖然該代碼必須留在 URL 中，但僅供內部使用，而且您不需要以任何其他方式使用該代碼。
 
-當您啟用靜態網站代管時指定的索引文件，會在使用者開啟網站但未指定特定檔案時顯示 (例如：`https://contosoblobaccount.z22.web.core.windows.net`)。  
+當您啟用靜態網站代管時指定的索引文件，會在使用者開啟網站但未指定特定檔案時顯示 (例如：`https://contosoblobaccount.z22.web.core.windows.net`)。
 
 ### <a name="secondary-endpoints"></a>次要端點
 
-如果您已設定[次要地區的備援](../common/storage-redundancy.md#redundancy-in-a-secondary-region)，您也可以使用次要端點存取網站內容。 由於資料會以非同步方式複寫到次要地區，因此次要端點上可用的檔案不一定會與主要端點上可用的檔案同步。 
+如果您已設定[次要地區的備援](../common/storage-redundancy.md#redundancy-in-a-secondary-region)，您也可以使用次要端點存取網站內容。 由於資料會以非同步方式複寫到次要地區，因此次要端點上可用的檔案不一定會與主要端點上可用的檔案同步。
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>設定 Web 容器的公用存取層級的影響
 
@@ -85,11 +86,11 @@ ms.locfileid: "83648500"
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>將自訂網域對應至靜態網站 URL
 
-您可以透過自訂網域，讓您的靜態網站可供使用。 
+您可以透過自訂網域，讓您的靜態網站可供使用。
 
 為您的自訂網域啟用 HTTP 存取比較容易，因為 Azure 儲存體原本就支援該存取。 若要啟用 HTTPS，您必須使用 Azure CDN，因為 Azure 儲存體原本就不支援使用自訂網域的 HTTPS。 如需逐步指引，請參閱[將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)。
 
-如果儲存體帳戶設為[需要透過 HTTPS 的安全傳輸](../common/storage-require-secure-transfer.md)，則使用者必須使用 HTTPS 端點。 
+如果儲存體帳戶設為[需要透過 HTTPS 的安全傳輸](../common/storage-require-secure-transfer.md)，則使用者必須使用 HTTPS 端點。
 
 > [!TIP]
 > 請考慮在 Azure 上託管您的網域。 如需詳細資訊，請參閱[在 Azure DNS 中託管您的網域](../../dns/dns-delegate-domain-azure-dns.md)。

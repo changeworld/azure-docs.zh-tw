@@ -6,27 +6,27 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79164874"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830021"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure Logic Apps 中將資源新增至您的整合服務環境（ISE）
 
 在您建立[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)之後，請新增邏輯應用程式、整合帳戶和連接器等資源，讓它們可以存取您 Azure 虛擬網路中的資源。 例如，您在建立 ISE 之後變成可用的受控 ISE 連接器，並不會自動出現在邏輯應用程式設計工具中。 在您可以使用這些 ISE 連接器之前，您必須手動[新增這些連接器，並將它們部署到 ISE](#add-ise-connectors-environment) ，使其出現在邏輯應用程式設計工具中。
 
 > [!IMPORTANT]
-> 若要讓邏輯應用程式和整合帳戶在 ISE 中一起工作，兩者都必須使用與其位置*相同的 ISE* 。
+> 若要讓邏輯應用程式和整合帳戶可在 ISE 中一起運作，兩者都必須使用「相同的 ISE」作為其位置。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * 您建立用來執行邏輯應用程式的 ISE。 如果您沒有 ISE，請[先建立 ise](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
 
-* 若要建立、新增或更新部署至 ISE 的資源，您必須在該 ISE 上指派擁有者或參與者角色，或是您透過與 ISE 相關聯的 Azure 訂用帳戶或 Azure 資源群組來繼承許可權。 對於沒有擁有者、參與者或繼承許可權的人員，他們可以獲指派「整合服務環境參與者」角色或「整合服務環境開發人員」角色。 如需角色型存取控制（RBAC）的詳細資訊，請參閱[什麼是適用于 Azure 資源的角色型存取控制（rbac）](../role-based-access-control/overview.md)？
+* 若要建立、新增或更新部署至 ISE 的資源，您必須在該 ISE 上指派擁有者或參與者角色，或是您透過與 ISE 相關聯的 Azure 訂用帳戶或 Azure 資源群組來繼承許可權。 對於沒有擁有者、參與者或繼承許可權的人員，他們可以獲指派「整合服務環境參與者」角色或「整合服務環境開發人員」角色。 如需詳細資訊，請參閱[什麼是 azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/overview.md)？
 
 <a name="create-logic-apps-environment"></a>
 
@@ -34,7 +34,7 @@ ms.locfileid: "79164874"
 
 若要建立在整合服務環境（ISE）中執行的邏輯應用程式，請遵循下列步驟：
 
-1. 尋找並開啟您的 ISE （如果尚未開啟）。 從 ISE 功能表的 [**設定**] 底下，選取 [**邏輯應用程式** > ] [**新增**]。
+1. 尋找並開啟您的 ISE （如果尚未開啟）。 從 ISE 功能表的 [**設定**] 底下，選取 [**邏輯應用程式**] [  >  **新增**]。
 
    ![將新的邏輯應用程式新增至 ISE](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
@@ -44,13 +44,13 @@ ms.locfileid: "79164874"
 
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | **名稱** | 是 | 要建立之邏輯應用程式的名稱 |
-   | **訂用帳戶** | 是 | 要使用的 Azure 訂用帳戶的名稱 |
-   | **資源群組** | 是 | 要使用的 Azure 資源群組（新的或現有的）名稱 |
+   | **名稱** | Yes | 要建立之邏輯應用程式的名稱 |
+   | **訂用帳戶** | Yes | 要使用的 Azure 訂用帳戶的名稱 |
+   | **資源群組** | Yes | 要使用的 Azure 資源群組（新的或現有的）名稱 |
    | **位置** | 是 | 在 [**整合服務環境**] 底下，選取要使用的 ISE （如果尚未選取）。 <p><p> **重要**：若要將邏輯應用程式與整合帳戶搭配使用，兩者都必須使用相同的 ISE。 |
    ||||
 
-1. 當您完成時，選取 [建立]  。
+1. 當您完成時，請選取 [建立]。
 
 1. 繼續[以一般方式建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "79164874"
 
 若要建立使用 ISE 的整合帳戶，請遵循下列步驟：
 
-1. 尋找並開啟您的 ISE （如果尚未開啟）。 從 ISE 功能表的 [**設定**] 底下，選取 [**整合帳戶** > ] [**新增**]。
+1. 尋找並開啟您的 ISE （如果尚未開啟）。 從 ISE 功能表的 [**設定**] 底下，選取 [**整合帳戶**] [  >  **新增**]。
 
    ![將新的整合帳戶新增至 ISE](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
@@ -76,14 +76,14 @@ ms.locfileid: "79164874"
 
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | **名稱** | 是 | 您想要建立之整合帳戶的名稱 |
-   | **訂用帳戶** | 是 | 您想要使用之 Azure 訂用帳戶的名稱 |
-   | **資源群組** | 是 | 要使用的 Azure 資源群組（新的或現有的）名稱 |
-   | **定價層** | 是 | 要用於整合帳戶的定價層 |
+   | **名稱** | Yes | 您想要建立之整合帳戶的名稱 |
+   | **訂用帳戶** | Yes | 您想要使用之 Azure 訂用帳戶的名稱 |
+   | **資源群組** | Yes | 要使用的 Azure 資源群組（新的或現有的）名稱 |
+   | **定價層** | Yes | 要用於整合帳戶的定價層 |
    | **位置** | 是 | 在 [**整合服務環境**] 底下，選取您的邏輯應用程式所使用的相同 ISE （如果尚未選取）。 <p><p> **重要**：若要將整合帳戶與邏輯應用程式搭配使用，兩者都必須使用相同的 ISE。 |
    ||||
 
-1. 當您完成時，選取 [建立]  。
+1. 當您完成時，請選取 [建立]。
 
 1. [以一般方式將邏輯應用程式連結到您的整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
@@ -101,7 +101,7 @@ ms.locfileid: "79164874"
 
    ![查看受管理的連接器](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. 在 [新增**受管理的連接器**] 窗格中，開啟 [**尋找連接器**] 清單。 選取您想要使用但尚未部署在 ISE 中的 ISE 連接器。 選取 [建立]  。
+1. 在 [新增**受管理的連接器**] 窗格中，開啟 [**尋找連接器**] 清單。 選取您想要使用但尚未部署在 ISE 中的 ISE 連接器。 選取 [建立]。
 
    ![選取您想要在 ISE 中部署的 ISE 連接器](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
@@ -113,7 +113,7 @@ ms.locfileid: "79164874"
 
 若要在 ISE 中使用自訂連接器，請直接在 ISE 內建立這些自訂連接器。
 
-1. 尋找並開啟您的 ISE （如果尚未開啟）。 從 ISE 功能表的 [**設定**] 底下，選取 [**自訂連接器** > ] [**新增**]。
+1. 尋找並開啟您的 ISE （如果尚未開啟）。 從 ISE 功能表的 [**設定**] 底下，選取 [**自訂連接器**] [  >  **新增**]。
 
    ![建立自訂連接器](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 

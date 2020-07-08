@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 348ddb0fa8bd973a7e8ebcf5ae14de1eee57d5a5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 1aea1f3b2401d7b9639c32927ffa7390727d25b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827485"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833633"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -54,7 +54,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 | 存取&nbsp;平面 | 存取端點 | 作業 | 存取&nbsp;控制機制 |
 | --- | --- | --- | --- |
-| 管理平面 | **全域：**<br> management.azure.com:443<br><br> **Azure China 21Vianet：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Gov︰**<br> management.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> management.microsoftazure.de:443 | 建立、讀取、更新及刪除金鑰保存庫<br><br>設定 Key Vault 存取原則<br><br>設定 Key Vault 標籤 | Azure Resource Manager RBAC |
+| 管理平面 | **全域：**<br> management.azure.com:443<br><br> **Azure China 21Vianet：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Gov︰**<br> management.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> management.microsoftazure.de:443 | 建立、讀取、更新及刪除金鑰保存庫<br><br>設定 Key Vault 存取原則<br><br>設定 Key Vault 標籤 | Azure RBAC |
 | 資料平面 | **全域：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Gov︰**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure 德國︰**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | 金鑰︰解密、加密、<br> 解除包裝、包裝、驗證、登入、<br> 取得、列出、更新、建立、<br> 匯入、刪除、備份、還原<br><br> 祕密︰取得、列出、設定、刪除 | Key Vault 存取原則 |
 
 ## <a name="management-plane-and-rbac"></a>管理平面和 RBAC
@@ -79,6 +79,8 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 您可以藉由設定金鑰保存庫的 Key Vault 存取原則來授與資料平面的存取權。 若要設定這些存取原則，使用者、群組或應用程式必須具有該金鑰保存庫管理平面的 `Contributor` 權限。
 
 您可以對使用者、群組或應用程式授與權限，來為金鑰保存庫中的金鑰或密碼執行特定作業。 Key Vault 最多可支援 1,024 個存取原則項目。 若要對數名使用者授與資料平面存取權，請建立 Azure AD 安全性群組並在該群組中新增使用者。
+
+您可以查看保存庫和秘密作業的完整清單，並瞭解您在設定 key vault 存取原則時所允許的作業，方法是參閱下列參考。 [Key Vault 作業參考](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
 
 <a id="key-vault-access-policies"></a>Key Vault 存取原則可分別授與金鑰、祕密和憑證的權限。 您只能對使用者授與存取金鑰 (而非祕密) 的權限。 金鑰、祕密和憑證的存取權限位於保存庫層級。 Key Vault 存取原則不支援細微物件層級的權限，例如特定金鑰、祕密或憑證。 若要設定金鑰保存庫的存取原則，請使用 [Azure 入口網站](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或 [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx)。
 

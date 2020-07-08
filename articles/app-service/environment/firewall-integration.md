@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: e56e5878c2f3528bee50137b4d40d947feda3ece
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: HT
+ms.openlocfilehash: 8e63c0678967a21a6b2763574e594a1a6c2ba25b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84197157"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832979"
 ---
 # <a name="locking-down-an-app-service-environment"></a>鎖定 App Service 環境
 
@@ -96,8 +96,10 @@ ASE 輸出相依性幾乎完全使用 FQDN 定義，它背後並沒有靜態位�
 
 Azure 防火牆可以將記錄傳送至 Azure 儲存體、事件中樞或 Azure 監視器記錄。 若要將您的應用程式與任何支援的目的地整合，請移至 [Azure 防火牆入口網站 &gt; 診斷記錄]，並啟用所需目的地的記錄。 如果您與 Azure 監視器記錄整合，則可以看到傳送至 Azure 防火牆的任何流量記錄。 若要查看被拒絕的流量，請開啟 [Log Analytics 工作區入口網站] &gt; [記錄]，然後輸入如下查詢 
 
-    AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
- 
+```kusto
+AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
+```
+
 在不知道所有應用程式相依性存在時，第一次讓應用程式正常運作時，將 Azure 防火牆與 Azure 監視器記錄整合是非常有用的。 您可以從[分析 Azure 監視器中的記錄資料](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)深入了解 Azure 監視器記錄。
  
 ## <a name="dependencies"></a>相依性
@@ -248,6 +250,7 @@ Azure 防火牆可以將記錄傳送至 Azure 儲存體、事件中樞或 Azure 
 |security.ubuntu.com:80 |
 | \*.cdn.mscr.io:443 |
 |mcr.microsoft.com:443 |
+|\*. data.mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |
 |packages.fluentbit.io:443 |
 |apt-mo.trafficmanager.net:80 |

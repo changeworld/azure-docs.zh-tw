@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: c66b521b5cd75825fcafe07b24d5d527c45f5153
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 455595a2e41ecc05f7064044e09df8efcd9d4548
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833395"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>使用 .NET 管理容器屬性和中繼資料
 
@@ -25,14 +25,27 @@ ms.locfileid: "79135916"
 
 - **使用者定義的中繼資料**：使用者定義的中繼資料是由您為 Blob 儲存體資源指定的一或多個名稱/值配對所組成。 您可以使用中繼資料來儲存資源的額外值。 中繼資料值僅供您自己使用，並不會影響資源的運作方式。
 
+中繼資料名稱/值組是有效的 HTTP 標頭，因此應遵守管理 HTTP 標頭的所有限制。 中繼資料名稱必須是有效的 HTTP 標頭名稱和有效的 c # 識別碼、只能包含 ASCII 字元，而且應該視為不區分大小寫。 包含非 ASCII 字元的中繼資料值應該是以 Base64 編碼或以 URL 編碼。
+
+## <a name="retrieve-container-properties"></a>取得容器屬性
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+若要取得容器屬性，請呼叫下列其中一個方法：
+
+- [GetProperties](/dotnet/api/azure.storage.blobs.blobcontainerclient.getproperties)
+- [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getpropertiesasync)
+
+下列程式碼範例會提取容器的系統屬性，並將一些屬性值寫入主控台視窗：
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 抓取 Blob 儲存體資源的屬性和中繼資料值是兩個步驟的程式。 您必須先呼叫 **FetchAttributes** 或 **FetchAttributesAsync** 方法明確地擷取這些值，才能開始讀取這些值。 此規則的例外狀況是**Exists**和**ExistsAsync**方法會在幕後呼叫適當的**FetchAttributes**方法。 當您呼叫其中一種方法時，您也不需要呼叫**FetchAttributes**。
 
 > [!IMPORTANT]
 > 如果您發現尚未擴展儲存體資源的屬性或中繼資料值，請檢查您的程式碼是否呼叫 **FetchAttributes** 或 **FetchAttributesAsync** 方法。
-
-中繼資料名稱/值組是有效的 HTTP 標頭，因此應遵守管理 HTTP 標頭的所有限制。 中繼資料名稱必須是有效的 HTTP 標頭名稱和有效的 c # 識別碼、只能包含 ASCII 字元，而且應該視為不區分大小寫。 包含非 ASCII 字元的中繼資料值應該是以 Base64 編碼或以 URL 編碼。
-
-## <a name="retrieve-container-properties"></a>取得容器屬性
 
 若要取得容器屬性，請呼叫下列其中一個方法：
 
@@ -63,14 +76,40 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 }
 ```
 
+---
+
 ## <a name="set-and-retrieve-metadata"></a>設定和取得中繼資料
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+您可以針對 Blob 或容器資源，將中繼資料指定為一個或多個名稱/值組。 若要設定中繼資料，請將名稱/值組加入至[IDictionary](/dotnet/api/system.collections.idictionary)物件，然後呼叫下列其中一個方法來寫入值：
+
+- [SetMetadata](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadata)
+- [SetMetadataAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadataasync)
+
+您的中繼資料名稱必須符合 C# 識別碼的命名慣例。 中繼資料名稱會保留其建立時的大小寫，但在設定或讀取時不區分大小寫。 如果為資源提交了兩個或多個具有相同名稱的中繼資料標頭，Blob 儲存體會以逗號分隔並串連這兩個值，並傳回 HTTP 回應碼200（確定）。
+
+下列程式碼範例會在容器上設定中繼資料。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_AddContainerMetadata":::
+
+若要取出中繼資料，請呼叫下列其中一個方法：
+
+- [GetProperties](/dotnet/api/azure.storage.blobs.blobcontainerclient.getproperties)
+- [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getpropertiesasync)。
+
+然後，讀取值，如下列範例所示。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 您可以針對 Blob 或容器資源，將中繼資料指定為一個或多個名稱/值組。 若要設定中繼資料，請將名稱/值組加入至資源的**中繼資料**集合，然後呼叫下列其中一種方法來寫入值：
 
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadataasync)
 
-您的中繼資料名稱必須符合 C# 識別碼的命名慣例。 中繼資料名稱會保留其建立時的大小寫，但在設定或讀取時不區分大小寫。 如果為資源提交了兩個或多個具有相同名稱的中繼資料標頭，Blob 儲存體會傳回 HTTP 錯誤碼400（不正確的要求）。
+您的中繼資料名稱必須符合 C# 識別碼的命名慣例。 中繼資料名稱會保留其建立時的大小寫，但在設定或讀取時不區分大小寫。 如果為資源提交了兩個或多個具有相同名稱的中繼資料標頭，Blob 儲存體會以逗號分隔並串連這兩個值，並傳回 HTTP 回應碼200（確定）。
 
 下列程式碼範例會在容器上設定中繼資料。 其中一個值是使用集合的 **Add** 方法設定。 其他值是使用隱含的索引鍵/值語法來設定。 兩者都有效。
 
@@ -126,10 +165,12 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 }
 ```
 
+---
+
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [取得容器屬性作業](/rest/api/storageservices/get-container-properties)
 - [設定容器中繼資料作業](/rest/api/storageservices/set-container-metadata)
-- [取得容器中繼資料作業](/rest/api/storageservices/set-container-metadata)
+- [取得容器中繼資料作業](/rest/api/storageservices/get-container-metadata)
