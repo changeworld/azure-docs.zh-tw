@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 04/14/2020
+ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: c06ad5ab2688bd62fdf898950a8f64cd655a9fcc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: af0dea5297cca02b12aecdc8252e62030032b93e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601338"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虛擬機器擴展集的 OS 映像自動升級
 
@@ -46,11 +46,11 @@ ms.locfileid: "83124970"
 擴展集的 OS 升級協調器在升級每個批次之前，都會先檢查整體的擴展集健康情況。 在升級某個批次時，可能會有其他計劃性或非計劃性維護活動也在並行執行，而影響到擴展集執行個體的健康情況。 在此情況下，如果擴展集的執行個體有超過 20% 變得狀況不良，則擴展集升級程序會在當前的批次結束時停止。
 
 ## <a name="supported-os-images"></a>支援的作業系統映像
-目前僅支援特定的作業系統平台映像。 自訂映射支援是透過[共用映射庫](shared-image-galleries.md)提供自訂映射的[預覽](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images-preview)版本。
+目前僅支援特定的作業系統平台映像。 如果擴展集透過[共用映射資源庫](shared-image-galleries.md)使用自訂映射，則[支援](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)自訂映射。
 
 目前支援下列平臺 Sku （並會定期新增更多）：
 
-| 發行者               | OS 供應項目      |  SKU               |
+| Publisher               | OS 供應項目      |  SKU               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
@@ -77,90 +77,25 @@ ms.locfileid: "83124970"
 ### <a name="service-fabric-requirements"></a>Service Fabric 需求
 
 如果您使用 Service Fabric，請確定符合下列條件：
--   Service Fabric[耐久性等級](../service-fabric/service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)為銀級或金級，而非銅。
+-   Service Fabric[耐久性等級](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)為銀級或金級，而非銅。
 -   擴展集模型定義上的 Service Fabric 擴充功能必須具有 TypeHandlerVersion 1.1 或更新版本。
 -   持久性層級在 Service Fabric 叢集和擴展集模型定義的 Service Fabric 延伸中應該相同。
+- 不需要額外的健全狀況探查或應用程式健康情況延伸模組的使用。
 
 請確定 Service Fabric 叢集和 Service Fabric 延伸模組的持久性設定不相符，因為不符合會導致升級錯誤。 您可以根據[此頁面](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)上所述的指導方針來修改持久性層級。
 
 
-## <a name="automatic-os-image-upgrade-for-custom-images-preview"></a>自訂映射的作業系統映射自動升級（預覽）
+## <a name="automatic-os-image-upgrade-for-custom-images"></a>自訂映射的作業系統映射自動升級
 
-> [!IMPORTANT]
-> 自訂映射的 OS 映射自動升級目前為公開預覽狀態。 使用以下所述的公開預覽功能時，需要有加入宣告程式。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-自動 OS 映射升級適用于透過[共用映射資源庫](shared-image-galleries.md)部署的自訂映射。 不支援自動 OS 映射升級的其他自訂映射。
-
-啟用預覽功能需要一次性加入宣告每個訂用帳戶的功能*AutomaticOSUpgradeWithGalleryImage* ，如下所述。
-
-### <a name="rest-api"></a>REST API
-下列範例說明如何為您的訂用帳戶啟用預覽：
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage/register?api-version=2015-12-01`
-```
-
-功能註冊最多可能需要15分鐘的時間。 若要檢查註冊狀態：
-
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage?api-version=2015-12-01`
-```
-
-為訂用帳戶註冊此功能之後，請將變更傳播到計算資源提供者，以完成加入宣告程式。
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
-```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-使用[AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) Cmdlet 來啟用訂用帳戶的預覽。
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-功能註冊最多可能需要15分鐘的時間。 若要檢查註冊狀態：
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-為訂用帳戶註冊此功能之後，請將變更傳播到計算資源提供者，以完成加入宣告程式。
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用[az feature register](/cli/azure/feature#az-feature-register)啟用您訂用帳戶的預覽。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-功能註冊最多可能需要15分鐘的時間。 若要檢查註冊狀態：
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-為訂用帳戶註冊此功能之後，請將變更傳播到計算資源提供者，以完成加入宣告程式。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+透過[共用映射資源庫](shared-image-galleries.md)部署的自訂映射支援自動 OS 映射升級。 不支援自動 OS 映射升級的其他自訂映射。
 
 ### <a name="additional-requirements-for-custom-images"></a>自訂映射的其他需求
-- 以上所述的加入宣告程式只需要針對每個訂用帳戶完成一次。 在加入宣告完成後，您可以針對該訂用帳戶中的任何擴展集啟用自動 OS 升級。
-- 共用映射資源庫可以位於任何訂用帳戶中，而且不需要另外加入宣告。 只有擴展集訂用帳戶需要功能加入宣告。
-- 所有擴展集的自動 OS 映射升級設定程式都相同，如本頁面的設定[一節](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade)中所述。
+- 針對所有擴展集，自動 OS 映射升級的安裝和設定程式都相同，如本頁的[configuration 區段](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade)中所述。
 - 針對自動 OS 映射升級設定的擴展集實例，會在新版本的映射[發行並複寫](shared-image-galleries.md#replication)至該擴展集的區域時，升級至最新版本的共用映射庫映射。 如果新的映射未複寫至部署規模的區域，擴展集實例將不會升級為最新版本。 區域影像複寫可讓您控制擴展集新映射的推出。
 - 不應從該圖庫映射的最新版本中排除新的映射版本。 從資源庫映射的最新版本排除的映射版本，不會透過自動 OS 映射升級向擴展集推出。
 
 > [!NOTE]
->擴展集在設定自動 OS 升級之後，最多需要3小時的時間，才會觸發第一個映射升級首度發行。 這是每個擴展集一次的延遲。 後續的映射推出會在30分鐘內于擴展集上觸發。
+>第一次為自動 OS 升級設定擴展集之後，擴展集最多需要3小時才會觸發第一個映射升級首度發行。 這是每個擴展集一次的延遲。 後續的映射推出會在30-60 分鐘內于擴展集上觸發。
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>設定 OS 映像自動升級
@@ -193,11 +128,14 @@ Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" 
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用[az vmss update](/cli/azure/vmss#az-vmss-update)來設定擴展集的自動 OS 映射升級。 使用 Azure CLI 2.0.47 或更新版本。 下列範例會針對名為*myResourceGroup*的資源群組中名為*myscaleset 擴展集*的擴展集，設定自動升級：
+用於設定 `[az vmss update](/cli/azure/vmss#az-vmss-update)` 擴展集的自動 OS 映射升級。 使用 Azure CLI 2.0.47 或更新版本。 下列範例會針對名為*myResourceGroup*的資源群組中名為*myscaleset 擴展集*的擴展集，設定自動升級：
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
 ```
+
+> [!NOTE]
+>設定擴展集的自動 OS 映射升級之後，如果您的擴展集使用「手動」[升級原則](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，您也必須將擴展集 vm 帶入最新的擴展集模型。
 
 ## <a name="using-application-health-probes"></a>使用應用程式健康狀態探查
 

@@ -1,24 +1,24 @@
 ---
 title: 了解 Azure IoT 中樞裝置對應項 | Microsoft Docs
 description: 開發人員指南 - 使用裝置對應項同步處理 IoT 中樞與裝置之間的狀態和組態資料
-author: wesmc7777
+author: ash2017
 manager: philmea
-ms.author: wesmc
+ms.author: asrastog
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.custom: mqtt
-ms.openlocfilehash: 3bec3d19ed68b7eb8bb50baa8f6c11135ef778cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f61748a0a0d3d999670b6129e0e58758715ba3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731473"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601848"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解和使用 Azure IoT 中樞的裝置對應項
 
-*裝置對應項*是存放裝置狀態資訊的 JSON 文件，包括中繼資料、組態和條件。 Azure IoT 中樞會為連線到 IoT 中樞的每個裝置維持裝置對應項。 
+*裝置 twins*是儲存裝置狀態資訊的 JSON 檔，包括中繼資料、設定和條件。 Azure IoT 中樞會為連線到 IoT 中樞的每個裝置維持裝置對應項。 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -53,13 +53,13 @@ ms.locfileid: "81731473"
 
 裝置的兩個是 JSON 文件，其中含有︰
 
-* **標記**。 解決方案後端可以讀取及寫入的 JSON 文件區段。 裝置應用程式看不到標籤。
+* **標籤**。 解決方案後端可以讀取及寫入的 JSON 文件區段。 裝置應用程式看不到標籤。
 
-* **所需的屬性**。 搭配報告屬性使用，以便同步處理裝置的組態或狀況。 解決方案後端可以設定所需的屬性，以及裝置應用程式可以讀取它們。 裝置應用程式也可以接收所需屬性中的變更通知。
+* **所需屬性**。 搭配報告屬性使用，以便同步處理裝置的組態或狀況。 解決方案後端可以設定所需的屬性，以及裝置應用程式可以讀取它們。 裝置應用程式也可以接收所需屬性中的變更通知。
 
 * **報告屬性**。 搭配所需屬性使用，以便同步處理裝置的組態或狀況。 裝置應用程式可以設定報告的屬性，以及解決方案後端可以讀取並查詢它們。
 
-* **裝置身分識別屬性**。 裝置對應項 JSON 文件的根目錄包含來自對應之裝置身分識別的唯讀屬性，此身分識別儲存在[身分識別登錄](iot-hub-devguide-identity-registry.md)中。 將`connectionStateUpdatedTime`不`generationId`會包含屬性和。
+* **裝置身分識別屬性**。 裝置對應項 JSON 文件的根目錄包含來自對應之裝置身分識別的唯讀屬性，此身分識別儲存在[身分識別登錄](iot-hub-devguide-identity-registry.md)中。 `connectionStateUpdatedTime` `generationId` 將不會包含屬性和。
 
 ![裝置對應項屬性的螢幕擷取畫面](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -197,7 +197,7 @@ ms.locfileid: "81731473"
 
     訊息系統屬性前面會加上 `$` 符號。
 
-  - body
+  - 主體
         
     本節包含所有對應項變更 (JSON 格式)。 它使用與修補程式相同的格式，其差異在於它可以包含所有對應項區段：標籤、屬性（property）、所需的屬性（property）和包含 "$metadata" 元素。 例如，
 
@@ -288,7 +288,7 @@ ms.locfileid: "81731473"
 
 ## <a name="device-twin-size"></a>裝置對應項大小
 
-IoT 中樞在的值上強制執行 8 KB 的大小`tags`限制，以及每個`properties/desired`和`properties/reported`的值都有 32 kb 的大小限制。 這些總計是專有的唯讀元素`$etag`，例如、 `$version`和。 `$metadata/$lastUpdated`
+IoT 中樞在的值上強制執行 8 KB 的大小限制 `tags` ，以及每個和的值都有 32 kb 的大小限制 `properties/desired` `properties/reported` 。 這些總計是專有的唯讀元素 `$etag` ，例如、 `$version` 和 `$metadata/$lastUpdated` 。
 
 對應項大小的計算方式如下：
 
@@ -302,7 +302,7 @@ IoT 中樞在的值上強制執行 8 KB 的大小`tags`限制，以及每個`pro
 
 * 複雜的屬性值（嵌套物件）是根據屬性索引鍵的匯總大小和其所包含的屬性值計算而得。
 
-IoT 中樞會拒絕所有會增加`tags`、 `properties/desired`或`properties/reported`檔案大小高於限制的作業錯誤。
+IoT 中樞會拒絕所有會增加 `tags` 、 `properties/desired` 或檔案大小高於限制的作業錯誤 `properties/reported` 。
 
 ## <a name="device-twin-metadata"></a>裝置對應項中繼資料
 
@@ -394,7 +394,7 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 * [IoT 中樞 MQTT 支援](iot-hub-mqtt-support.md)一文針對 MQTT 通訊協定提供 IoT 中樞支援的詳細資訊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已了解裝置對應項，接下來您可能會對下列 IoT 中樞開發人員指南主題感興趣︰
 

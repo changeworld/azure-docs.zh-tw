@@ -8,14 +8,14 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 96e37afd8bf7d59eef4a4c0c831f535faa36d34d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.topic: how-to
+ms.date: 06/27/2020
+ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681436"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601443"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作區中執行 Jupyter Notebook
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,10 +51,12 @@ ms.locfileid: "83681436"
 1. 選取檔案目錄。
 1. 選取 [建立]。
 
-> [!TIP]
-> 您也可以建立文字檔。  選取 [文字] 做為檔案類型，並將副檔名加入名稱 (例如，myfile.py 或 myfile.txt .txt)。  
+您也可以建立文字檔。  選取 [文字] 做為檔案類型，並將副檔名加入名稱 (例如，myfile.py 或 myfile.txt .txt)。  
 
 您也可以使用 [筆記本] 頁面頂端的工具上傳資料夾和檔案，包括筆記本。  在 [預覽] 區段中會顯示筆記本和大部分的文字檔案類型。  其他檔案類型大多不能預覽。
+
+> [!IMPORTANT]
+> 筆記本和腳本中的內容可能會從您的會話讀取資料，並在 Azure 中存取資料，而不需要您的組織。  僅從信任的來源載入檔案。 如需詳細資訊，請參閱[安全程式碼最佳作法](concept-secure-code-best-practice.md#azure-ml-studio-notebooks)。
 
 ### <a name="clone-samples"></a>複製範例
 
@@ -95,15 +97,37 @@ ms.locfileid: "83681436"
 
 若要編輯筆記本，開啟工作區的 [使用者檔案] 區段中的任何筆記本。 按一下您要編輯的儲存格。 
 
-當計算執行個體正在執行時，您還可以在任何 Python 筆記本中使用 [Intellisense](https://code.visualstudio.com/docs/editor/intellisense) 技術的程式碼來完成。
+您可以編輯筆記本，而不需要連接到計算實例。  當您想要執行筆記本中的資料格時，請選取或建立計算實例。  如果您選取已停止的計算實例，它會在您執行第一個資料格時自動啟動。
+
+當計算實例正在執行時，您也可以使用任何 Python 筆記本中的程式碼完成（由[Intellisense](https://code.visualstudio.com/docs/editor/intellisense)提供技術支援）。
 
 您也可以從 [筆記本] 工具列啟動 Jupyter 或 JupyterLab。  Azure Machine Learning 不會提供 Jupyter 或 JupyterLab 的更新和修正錯誤，因為它們是 Microsoft 支援服務界限外的開放原始碼產品。
+
+### <a name="use-intellisense"></a>使用 IntelliSense
+
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)是一種程式碼完成輔助工具，其中包含許多功能：列出成員、參數資訊、快速諮詢和完整文字。 這些功能有助於深入了解您使用的程式碼、追蹤所鍵入的參數，以及幾個按鍵即可新增屬性和方法呼叫。  
+
+輸入程式碼時，請使用 Ctrl + 空格鍵來觸發 IntelliSense。
+
+### <a name="save-and-checkpoint-a-notebook"></a>儲存和檢查點筆記本
+
+當您建立 *ipynb*檔案時，Azure Machine Learning 會建立檢查點檔案   。
+
+在 [筆記本] 工具列中，選取功能表，然後選取 [檔案] [ ** &gt; 儲存與檢查點**] 以手動儲存筆記本，它會新增與筆記本相關聯的檢查點檔案。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="筆記本工具列中儲存工具的螢幕擷取畫面":::
+
+每隔30秒會自動儲存每個筆記本。自動儲存只會更新初始 *ipynb*檔案   ，而不是檢查點檔案。
+ 
+選取 [筆記本] 功能表中的 [**檢查點**] 以建立命名的檢查點，並將筆記本還原至儲存的檢查點。
+
 
 ### <a name="useful-keyboard-shortcuts"></a>實用的鍵盤快速鍵
 
 |鍵盤  |動作  |
 |---------|---------|
 |Shift+Enter     |  執行儲存格       |
+|Ctrl+空格鍵 | 啟動 IntelliSense |
 |Ctrl+M (Windows)     |  啟用/停用筆記本中的 Tab 鍵捕捉。       |
 |Ctrl+Shift+M (Mac 和 Linux)     |    啟用/停用筆記本中的 Tab 鍵捕捉。     |
 |Tab 鍵 (啟用 Tab 鍵捕捉時) | 新增 ' \t ' 字元 (縮排)

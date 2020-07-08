@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1ec7328363cf835c733a4d0c266732c6748c829
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: HT
+ms.openlocfilehash: 3fbbeaeafd8de5a38489034a13738ca3a9b934d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218624"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601375"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁碟加密案例
 
@@ -38,7 +38,7 @@ Azure 磁碟加密會與 [Azure Key Vault](disk-encryption-key-vault.md) 整合�
 
 ## <a name="install-tools-and-connect-to-azure"></a>安裝工具並連線至 Azure
 
-Azure 磁碟加密可以透過 [Azure CLI](/cli/azure) 和 [Azure PowerShell](/powershell/azure/new-azureps-module-az) 來加以啟用及管理。 若要這麼做，您必須在本機安裝工具，並連線到您的 Azure 訂用帳戶。
+Azure 磁碟加密可以透過 [Azure CLI](/cli/azure) 和 [Azure PowerShell](/powershell/azure/new-azureps-module-az) 來加以啟用及管理。 若要這樣做，您必須在本機安裝這些工具，並聯機到您的 Azure 訂用帳戶。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -388,23 +388,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 
 ## <a name="disable-encryption-for-linux-vms"></a>停用 Linux VM 的加密
-您可以使用 Azure PowerShell、Azure CLI 或 Resource Manager 範本來停用加密。 
-
->[!IMPORTANT]
->只有資料磁碟區支援在 Linux VM 上透過 Azure 磁碟加密停用加密。 如果 OS 磁碟區已加密，則不支援在資料或 OS 磁碟區上停用加密。  
-
-- **停用使用 Azure PowerShell 的磁碟加密：** 若要停用加密，請使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) Cmdlet。 
-     ```azurepowershell-interactive
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [-VolumeType DATA]
-     ```
-
-- **使用 Azure CLI 停用加密：** 若要停用加密，請使用 [az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) 命令。 
-     ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
-     ```
-- **透過 Resource Manager 範本停用加密：** 使用[在執行中的 Linux VM 上停用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad)範本來停用加密。
-     1. 按一下 [ **部署至 Azure**]。
-     2. 選取訂用帳戶、資源群組、位置、VM、法律條款及合約。
+[!INCLUDE [disk-encryption-disable-encryption-cli](../../../includes/disk-encryption-disable-cli.md)]
 
 ## <a name="unsupported-scenarios"></a>不支援的情節
 
@@ -412,7 +396,7 @@ Azure 磁碟加密不適用於下列 Linux 案例、功能和技術：
 
 - 將基本層 VM 或透過傳統 VM 建立方法所建立的 VM 加密。
 - 在加密 OS 磁碟機時，於 OS 磁碟機或 Linux VM 的資料磁碟機上停用加密。
-- 將 Linux 虛擬機器擴展集的 OS 磁碟機加密。
+- 將 Linux 虛擬機器擴展集的 OS 磁片磁碟機加密。
 - 加密 Linux VM 上的自訂映像。
 - 與內部部署金鑰管理系統整合。
 - Azure 檔案 (共用檔案系統)。
@@ -420,12 +404,15 @@ Azure 磁碟加密不適用於下列 Linux 案例、功能和技術：
 - 動態磁碟區。
 - 暫時性 OS 磁碟。
 - 加密共用/分散式檔案系統，例如 (但不限於)：DFS、GFS、DRDB 和 CephFS。
-- 將已加密的 VM 移到另一個訂用帳戶。
+- 將已加密的 VM 移到另一個訂用帳戶或區域。
+- 建立已加密 VM 的映射或快照集，並使用它來部署額外的 Vm。
 - 核心損毀傾印 (kdump)。
 - Oracle ACFS (ASM 叢集檔案系統)。
 - Gen2 VM (請參閱：[Azure 上第 2 代 VM 的支援](generation-2.md#generation-1-vs-generation-2-capabilities)。
 - Lsv2 系列 VM (請參閱：[Lsv2 系列](../lsv2-series.md))。
 - 具有「巢狀掛接點」的 VM；也就是在單一路徑中有多個掛接點 (例如 "/1stmountpoint/data/2stmountpoint")。
+- 將資料磁片磁碟機掛接在 OS 資料夾頂端的 VM。
+- 具有寫入加速器磁片的 M 系列 Vm。
 
 ## <a name="next-steps"></a>後續步驟
 

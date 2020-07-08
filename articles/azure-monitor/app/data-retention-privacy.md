@@ -2,13 +2,13 @@
 title: Azure Application Insights 中的資料保留和儲存 | Microsoft Docs
 description: 保留和隱私權原則聲明
 ms.topic: conceptual
-ms.date: 09/29/2019
-ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275993"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601355"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的資料收集、保留和儲存
 
@@ -18,8 +18,8 @@ ms.locfileid: "79275993"
 
 * 「現成可用」的標準遙測模組不太可能將敏感資料傳送至服務。 遙測會考量負載、效能和使用度量、例外狀況報告和其他診斷資料。 診斷報告中顯示的主要使用者資料的 URL；但是，您的應用程式在任何情況下都應該不會將敏感資料以純文字形式放在 URL 中。
 * 您可以撰寫會傳送其他自訂遙測的程式碼，以利診斷與監視使用情形。 （此擴充性是 Application Insights 的絕佳功能）。您可以不小心撰寫此程式碼，使其包含個人和其他敏感性資料。 如果您的應用程式可以使用這類資料，您應該將完整的審查流程套用至您撰寫的所有程式碼。
-* 在開發及測試您的應用程式時，可以輕易地檢查由 SDK 傳送的內容。 資料會出現在 IDE 和瀏覽器的偵錯輸出視窗中。 
-* 資料會保存在美國或歐洲的 [Microsoft Azure](https://azure.com) 伺服器中。 （但是您的應用程式可以在任何地方執行）。Azure 具備[強大的安全性程式，並符合各種合規性標準](https://azure.microsoft.com/support/trust-center/)。 只有您和您指定的小組可以存取您的資料。 Microsoft 工作人員只有在您知情的特定有限情況下，才具有其限定存取權。 它會在傳輸中和待用時加密。
+* 在開發及測試您的應用程式時，可以輕易地檢查由 SDK 傳送的內容。 資料會出現在 IDE 和瀏覽器的偵錯輸出視窗中。
+* 建立新的 Application Insights 時，您可以選取位置。 請[在這裡](https://azure.microsoft.com/global-infrastructure/services/?products=all)深入瞭解每個區域的 Application Insights 可用性。
 *   請檢查所收集的資料，因為這可能包含某些情況下允許的資料，而不是其他情況。  裝置名稱就是一個很好的例子。 伺服器的裝置名稱不會影響隱私權，而且很有用，但來自電話或膝上型電腦的裝置名稱可能會影響隱私權，而且較不實用。 SDK 主要是針對目標伺服器而開發，預設會收集裝置名稱，而這可能需要在一般事件和例外狀況中覆寫。
 
 本文的其餘部分將詳細說明上述問題的答案。 本文設計為自助式，以便您可以將其顯示給不屬於您直屬小組的同事。
@@ -52,7 +52,7 @@ Application Insights SDK 可用於多種應用程式類型：裝載於您自己�
 * [網頁](../../azure-monitor/app/javascript.md) - 頁面、使用者和工作階段計數。 頁面載入時間。 例外狀況。 Ajax 呼叫。
 * 效能計數器 - 記憶體、CPU、IO、網路佔用量。
 * 用戶端和伺服器內容 - OS、地區設定、裝置類型、瀏覽器和螢幕解析度。
-* [例外](../../azure-monitor/app/asp-net-exceptions.md)狀況和損**stack dumps**毀-堆疊`build id`傾印、、CPU 類型。 
+* [例外](../../azure-monitor/app/asp-net-exceptions.md)狀況和損毀-**堆疊**傾印、 `build id` 、CPU 類型。 
 * [相依性](../../azure-monitor/app/asp-net-dependencies.md) - 對外部服務的呼叫，例如 REST、SQL、AJAX。 URI 或連接字串、持續時間、成功、命令。
 * [可用性測試](../../azure-monitor/app/monitor-web-app-availability.md) - 測試的持續時間、步驟、回應。
 * [追蹤記錄](../../azure-monitor/app/asp-net-trace-logs.md)和[自訂遙測](../../azure-monitor/app/api-custom-events-metrics.md) - **任何您以程式碼撰寫到記錄或遙測中的項目**。
@@ -173,15 +173,15 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 
 ### <a name="javascript-browser"></a>JavaScript （瀏覽器）
 
-[HTML5 會話儲存體](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)用來保存資料。 會使用兩個不同的`AI_buffer`緩衝區`AI_sent_buffer`：和。 已批次處理並等候傳送的遙測資料會儲存在中`AI_buffer`。 剛傳送的遙測資料會放入`AI_sent_buffer`中，直到內嵌伺服器回應已成功接收為止。 成功收到遙測時，就會從所有緩衝區中移除它。 在暫時性失敗（例如，使用者遺失網路連線）上，遙測會一直保持`AI_buffer`在狀態，直到成功收到遙測，或讓伺服器回應遙測無效（例如，不正確的架構或太舊）。
+[HTML5 會話儲存體](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)用來保存資料。 會使用兩個不同的緩衝區： `AI_buffer` 和 `AI_sent_buffer` 。 已批次處理並等候傳送的遙測資料會儲存在中 `AI_buffer` 。 剛傳送的遙測資料會放入中， `AI_sent_buffer` 直到內嵌伺服器回應已成功接收為止。 成功收到遙測時，就會從所有緩衝區中移除它。 在暫時性失敗（例如，使用者遺失網路連線）上，遙測會一直保持在狀態， `AI_buffer` 直到成功收到遙測，或讓伺服器回應遙測無效（例如，不正確的架構或太舊）。
 
-藉由將設定[`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31)為， `false`即可停用遙測緩衝區。 當會話儲存體關閉時，會改為使用本機陣列做為持續性儲存體。 由於 JavaScript SDK 會在用戶端裝置上執行，因此使用者可以透過其瀏覽器的開發人員工具存取此儲存位置。
+藉由將設定為，即可停用遙測緩衝區 [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) `false` 。 當會話儲存體關閉時，會改為使用本機陣列做為持續性儲存體。 由於 JavaScript SDK 會在用戶端裝置上執行，因此使用者可以透過其瀏覽器的開發人員工具存取此儲存位置。
 
 ### <a name="opencensus-python"></a>OpenCensus Python
 
-根據預設，OpenCensus Python SDK 會使用目前的`%username%/.opencensus/.azure/`使用者資料夾。 存取此資料夾的權限僅限定於目前的使用者和系統管理員。 （請參閱這裡的[實](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py)作為）。具有保存資料的資料夾將會在產生遙測的 Python 檔案之後命名。
+根據預設，OpenCensus Python SDK 會使用目前的使用者資料夾 `%username%/.opencensus/.azure/` 。 存取此資料夾的權限僅限定於目前的使用者和系統管理員。 （請參閱這裡的[實](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py)作為）。具有保存資料的資料夾將會在產生遙測的 Python 檔案之後命名。
 
-您可以藉由在您所使用之匯出工具的函`storage_path`式中傳入參數，來變更儲存體檔案的位置。
+您可以藉由在 `storage_path` 您所使用之匯出工具的函式中傳入參數，來變更儲存體檔案的位置。
 
 ```python
 AzureLogHandler(
@@ -202,11 +202,11 @@ AzureLogHandler(
 
 |平台/語言 | 支援 | 相關資訊 |
 | --- | --- | --- |
-| Azure App Service  | 支援，可能需要設定。 | 已在 2018 年 4 月宣告支援。 請參閱公告以了解[設定的詳細資訊](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)。  |
-| Azure 函式應用程式 | 支援，可能需要設定。 | 已在 2018 年 4 月宣告支援。 請參閱公告以了解[設定的詳細資訊](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)。 |
+| Azure App Service  | 支援，可能需要設定。 | 已在 2018 年 4 月宣告支援。 請參閱公告以了解[設定的詳細資訊](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)。  |
+| Azure 函式應用程式 | 支援，可能需要設定。 | 已在 2018 年 4 月宣告支援。 請參閱公告以了解[設定的詳細資訊](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)。 |
 |.NET | 支援，設定會因版本不同而有所差異。 | 如需 .NET 4.7 和舊版的詳細設定資訊，請參閱[這些指示](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)。  |
-|狀態監視器 | 支援，需要設定 | 狀態監視器依賴[OS](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + 設定[.net](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)設定來支援 TLS 1.2。
-|Node.js |  支援，可能需要對 v10.5.0 進行設定。 | 針對任何應用程式特定的設定，請使用[官方的 NODE.JS TLS/SSL 檔](https://nodejs.org/api/tls.html)。 |
+|狀態監視器 | 支援，需要設定 | 狀態監視器依賴[OS](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)設定  +  [.net](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)設定來支援 TLS 1.2。
+|Node.js |  支援，可能需要對 v10.5.0 進行設定。 | 針對任何應用程式特定的設定，使用[官方 Node.js TLS/SSL 檔](https://nodejs.org/api/tls.html)。 |
 |Java | 支援，[JDK 6 更新 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) 和 [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html) 中已新增 TLS 1.2 的 JDK 支援。 | JDK 8 會使用[預設的 TLS 1.2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default)。  |
 |Linux | Linux 發行版本通常會依賴 [OpenSSL](https://www.openssl.org) 來取得 TLS 1.2 支援。  | 請檢查 [OpenSSL 變更記錄](https://www.openssl.org/news/changelog.html)來確認支援的 OpenSSL 版本。|
 | Windows 8.0 - 10 | 支援，而且已預設為啟用。 | 請確認您仍在使用[預設設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。  |
@@ -277,7 +277,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 | Requests |URL、持續時間、回應碼 |
 | 相依性 |Type （SQL，HTTP，...），連接字串，或 URI，同步/非同步，持續時間，成功，SQL 語句（含狀態監視器） |
 | **例外狀況** |類型、**訊息**、呼叫堆疊、原始程式檔、行號、`thread id` |
-| 損毀 |`Process id`, `parent process id`, `crash thread id`;應用程式修補`id`，，組建; 例外狀況類型、位址、原因;模糊符號和暫存器、二進位開始和結束位址、二進位檔名稱和路徑、cpu 類型 |
+| 損毀 |`Process id`、 `parent process id` 、 `crash thread id` ; 應用程式修補程式、 `id` 、組建; 例外狀況類型、位址、原因;模糊符號和暫存器、二進位開始和結束位址、二進位檔名稱和路徑、cpu 類型 |
 | 追蹤 |**訊息** 和嚴重性層級 |
 | 效能計數器 |處理器時間、可用記憶體、要求率、例外狀況率、處理序私用位元組、IO 率、要求持續期間、要求佇列長度 |
 | 可用性 |Web 測試回應程式碼、每個測試步驟的持續時間、測試名稱、時間戳記、成功、回應時間、測試位置 |
@@ -289,7 +289,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 > 用戶端 IP 會用來推斷地理位置，但預設不會再儲存 IP 資料，而且所有的零會寫入相關聯的欄位。 若要深入了解個人資料的處理，建議您閱讀這篇[文章](../../azure-monitor/platform/personal-data-mgmt.md#application-data)。 如果您需要儲存 IP 位址資料，我們的[ip 位址集合文章](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)會引導您完成選項。
 
 ## <a name="credits"></a>學分
-本產品包含 MaxMind 所建立的 GeoLite2 資料（可[https://www.maxmind.com](https://www.maxmind.com)從取得）。
+本產品包含 MaxMind 所建立的 GeoLite2 資料（可從取得） [https://www.maxmind.com](https://www.maxmind.com) 。
 
 
 

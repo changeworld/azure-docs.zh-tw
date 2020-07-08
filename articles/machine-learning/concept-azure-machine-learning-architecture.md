@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 49c23774fe16c24ba90daa02cdda1688b79b12d3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 8cfa7a7b251f2aa74230d8883a0335582387aa06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683052"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602511"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning 的運作方式：架構和概念
 
@@ -45,9 +45,9 @@ ms.locfileid: "83683052"
 請使用下列適用於 Azure Machine Learning 的工具：
 
 +  使用[適用於 Python 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)，與任何 Python 環境中的服務互動。
-+ 使用[適用於 R 的 Azure Machine Learning SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)，與任何 R 環境中的服務互動。
++ 使用[適用于 r 的 AZURE MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) （預覽），在任何 R 環境中與服務互動。
 + 使用 [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)，將您的機器學習活動自動化。
-+ 使用 [Azure Machine Learning 設計工具 (預覽)](concept-designer.md) 來執行工作流程步驟，而不需要撰寫程式碼。
++ 使用 [Azure Machine Learning 設計工具 (預覽)](concept-designer.md) 來執行工作流程步驟，而不需要撰寫程式碼。 （[企業工作區](concept-workspace.md#upgrade)）需要使用 [設計工具]）。
 + [Many Models Solution Accelerator](https://aka.ms/many-models) (預覽) 建置在 Azure Machine Learning 中，可讓您定型、操作及管理上百個或甚至數千個機器學習模型。
 
 > [!NOTE]
@@ -212,7 +212,7 @@ Azure ML 環境可用來指定設定 (Docker/Python/Spark 等等)，以供建立
 Azure IoT Edge 會確保模組正在執行，並監視裝載模組的裝置。
 
 
-### <a name="compute-instance-preview"></a><a name="compute-instance"></a>計算執行個體 (預覽)
+### <a name="compute-instance"></a><a name="compute-instance"></a>計算執行個體
 
 **Azure Machine Learning 計算執行個體** (先前稱為 Notebook VM) 是完全受控的雲端式工作站，其內含針對機器學習所安裝的多個工具和環境。 計算執行個體可用來作為定型作業和推斷作業的計算目標。 針對大型工作，具有多節點擴縮功能的 [Azure Machine Learning 計算叢集](how-to-set-up-training-targets.md#amlcompute)會是比較好的計算目標選擇。
 

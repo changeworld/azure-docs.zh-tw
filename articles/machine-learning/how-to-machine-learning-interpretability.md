@@ -5,17 +5,17 @@ description: 瞭解如何使用 Azure Machine Learning SDK 來說明您的模型
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/02/2020
-ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 06/30/2020
+ms.openlocfilehash: 97401b2bdbcc2dc1379505f8dade443a4f1eb318
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601678"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning 中的模型 interpretability
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,13 +44,11 @@ Interpretability 類別可透過多個 SDK 套件取得：（瞭解如何[安裝
 
 * `azureml.contrib.interpret`，您可以嘗試的、預覽和實驗性功能。
 
-* `azureml.train.automl.automlexplainer`用來解讀自動化機器學習模型的封裝。
-
-使用`pip install azureml-interpret`和`pip install azureml-interpret-contrib`進行一般使用，並`pip install azureml-interpret-contrib`讓 AutoML 用來取得 interpretability 套件。
+使用 `pip install azureml-interpret` 和 `pip install azureml-interpret-contrib` 進行一般使用，並 `pip install azureml-contrib-interpret` 讓 AutoML 用來取得 interpretability 套件。
 
 
 > [!IMPORTANT]
-> 未完全支援`contrib`命名空間中的內容。 當實驗性功能變得成熟時，它們會逐漸移至主要命名空間。
+> `contrib`未完全支援命名空間中的內容。 當實驗性功能變得成熟時，它們會逐漸移至主要命名空間。
 .
 
 
@@ -84,7 +82,7 @@ Interpretability 類別可透過多個 SDK 套件取得：（瞭解如何[安裝
 
 
 
-除了上述的 interpretability 技術之外，我們還支援另一個以 SHAP 為基礎`TabularExplainer`的說明，稱為。 視模型而定， `TabularExplainer`會使用其中一個支援的 SHAP explainers：
+除了上述的 interpretability 技術之外，我們還支援另一個以 SHAP 為基礎的說明，稱為 `TabularExplainer` 。 視模型而定，會 `TabularExplainer` 使用其中一個支援的 SHAP explainers：
 
 * 所有以樹狀結構為基礎的模型 TreeExplainer
 * DNN 模型的 DeepExplainer
@@ -103,13 +101,13 @@ Interpretability 類別可透過多個 SDK 套件取得：（瞭解如何[安裝
 
 ## <a name="supported-machine-learning-models"></a>支援的機器學習模型
 
-SDK `azureml.interpret`的封裝支援使用下列資料集格式定型的模型：
+`azureml.interpret`SDK 的封裝支援使用下列資料集格式定型的模型：
 - `numpy.array`
 - `pandas.DataFrame`
 - `iml.datatypes.DenseData`
 - `scipy.sparse.csr_matrix`
 
-說明函式接受模型和管線做為輸入。 如果提供模型，則模型必須實作用或`predict` `predict_proba`符合 scikit-learn 慣例的預測函數。 如果您的模型不支援這項功能，您可以將模型包裝在函式中，此函`predict`式`predict_proba`會在 scikit-learn 中產生與或相同的結果，並使用該包裝函式來搭配選取的說明。 如果提供管線，說明函式會假設執行中的管線腳本傳回預測。 使用這種包裝技術`azureml.interpret` ，可以支援透過 PyTorch、TensorFlow 和 Keras 深度學習架構，以及傳統機器學習模型定型的模型。
+說明函式接受模型和管線做為輸入。 如果提供模型，則模型必須實作用 `predict` 或 `predict_proba` 符合 scikit-learn 慣例的預測函數。 如果您的模型不支援這項功能，您可以將模型包裝在函式中，此函式會在 Scikit-learn 中產生與或相同的結果， `predict` `predict_proba` 並使用該包裝函式來搭配選取的說明。 如果提供管線，說明函式會假設執行中的管線腳本傳回預測。 使用這種包裝技術， `azureml.interpret` 可以支援透過 PyTorch、TensorFlow 和 Keras 深度學習架構，以及傳統機器學習模型定型的模型。
 
 ## <a name="local-and-remote-compute-target"></a>本機和遠端計算目標
 

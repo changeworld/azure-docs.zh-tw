@@ -2,27 +2,27 @@
 title: 包含檔案
 description: 包含檔案
 services: automation
-author: georgewallace
+author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 12/13/2018
-ms.author: gwallace
+ms.date: 06/29/2020
+ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: d700dfcf5a7b6e9ada2a755335689ffa571e4c3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa7b997fe112be5d974d0e82597e786fa219e1f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570157"
 ---
 #### <a name="process-automation"></a>程序自動化
 
-| 資源 | 限制 |備忘錄|
+| 資源 | 限制 |注意|
 | --- | --- |---|
 | 每個 Azure 自動化帳戶每隔30秒可提交的新作業數上限（nonscheduled 作業） |100 |達到此限制時，後續建立作業的要求將會失敗。 用戶端會收到錯誤回應。|
 | 每個自動化帳戶在相同時間實例上並存執行的作業數目上限（nonscheduled 作業） |200 |達到此限制時，後續建立作業的要求將會失敗。 用戶端會收到錯誤回應。|
 | 30天累積期間內作業中繼資料的最大儲存體大小 | 10 GB （大約4000000個工作）|達到此限制時，後續建立作業的要求將會失敗。 |
-| 最大作業串流限制|1MB|單一資料流程不可大於 1 MB。|
+| 最大作業串流限制|1 MiB|單一資料流程不可大於 1 MB。|
 | 每個自動化帳戶每隔30秒可匯入的模組數目上限 |5 ||
 | 模組的大小上限 |100 MB ||
 | 作業執行時間，免費層 |每個訂用帳戶每行事曆月份 500 分鐘 ||
@@ -45,7 +45,7 @@ ms.locfileid: "80334913"
 
 下表顯示每一部電腦的追蹤專案限制，以進行變更追蹤。
 
-| **Resource** | **限制**| **注意事項** |
+| **Resource** | **限制**| **備註** |
 |---|---|---|
 |檔案|500||
 |登錄|250||
@@ -58,6 +58,6 @@ ms.locfileid: "80334913"
 
 下表顯示更新管理的限制。
 
-| **Resource** | **限制**| **注意事項** |
+| **Resource** | **限制**| **備註** |
 |---|---|---|
 |每個更新部署的機器數目|1000||

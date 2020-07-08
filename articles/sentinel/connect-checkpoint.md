@@ -1,6 +1,6 @@
 ---
 title: 將檢查點資料連線到 Azure Sentinel |Microsoft Docs
-description: 瞭解如何將檢查點資料連線到 Azure Sentinel。
+description: 設定您的檢查點設備，透過 Syslog 代理程式將 Syslog 訊息以 CEF 格式轉送至您的 Azure Sentinel 工作區。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 70836ec557eff1be035d92e8e7db30a882e05fc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32cbdabef4d89c7fabb47a52ebf0589690b7ab33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588411"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566052"
 ---
 # <a name="connect-check-point-to-azure-sentinel"></a>將檢查點連接到 Azure Sentinel
 
@@ -44,6 +44,6 @@ ms.locfileid: "77588411"
 在本檔中，您已瞭解如何將檢查點設備連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - [驗證連線能力](connect-cef-verify.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
 
 

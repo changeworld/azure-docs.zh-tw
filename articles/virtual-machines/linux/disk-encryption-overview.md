@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c227c6ab24d6b71445354d1b17d238e80bf6313
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 75e469b30632bb7e7e8f6445db78acda784ac5da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655859"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601270"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>適用於 Linux VM 的 Azure 磁碟加密 
 
@@ -64,7 +64,6 @@ Azure 磁碟加密也適用於具有進階儲存體的 VM。
 | Canonical | Ubuntu 14.04.5</br>[搭配更新至 4.15 或更新版本的 Azure 調整核心](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical:UbuntuServer:14.04.5-LTS:latest | 作業系統和資料磁碟 |
 | Canonical | Ubuntu 14.04.5</br>[搭配更新至 4.15 或更新版本的 Azure 調整核心](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | 作業系統和資料磁碟 |
 | RedHat | RHEL 7.7 | 7.7 | RedHat:RHEL:7.7:latest | 作業系統和資料磁碟 (請參閱下列注意事項) |
-| RedHat | RHEL 7.7 | 7-RAW | RedHat:RHEL:7-RAW:latest | 作業系統和資料磁碟 (請參閱下列注意事項) |
 | RedHat | RHEL 7.7 | 7-LVM | RedHat:RHEL:7-LVM:latest | 作業系統和資料磁碟 (請參閱下列注意事項) |
 | RedHat | RHEL 7.6 | 7.6 | RedHat:RHEL:7.6:latest | 作業系統和資料磁碟 (請參閱下列注意事項) |
 | RedHat | RHEL 7.5 | 7.5 | RedHat:RHEL:7.5:latest | 作業系統和資料磁碟 (請參閱下列注意事項) |
@@ -94,7 +93,7 @@ Azure 磁碟加密也適用於具有進階儲存體的 VM。
 
 ## <a name="additional-vm-requirements"></a>其他 VM 需求
 
-Azure 磁碟加密需要系統中存在 dm-crypt 和 vfat 模組。 從預設映像中移除或停用 vfat，會讓系統無法讀取金鑰磁碟區，也無法在後續重新啟動時，取得解除鎖定磁碟所需的金鑰。 從系統移除 vfat 模組的系統強化步驟與 Azure 磁碟加密不相容。 
+Azure 磁碟加密需要系統中存在 dm-crypt 和 vfat 模組。 從預設映像中移除或停用 vfat，會讓系統無法讀取金鑰磁碟區，也無法在後續重新啟動時，取得解除鎖定磁碟所需的金鑰。 將 vfat 模組從系統中移除，或強制擴充資料磁片磁碟機上的 OS 掛接點/資料夾的系統強化步驟，與 Azure 磁碟加密不相容。 
 
 在啟用加密之前，要加密的資料磁碟必須在 /etc/fstab 中正確列出。 建立項目時，請使用「nofail」選項，並選擇持續性封鎖裝置名稱 (因為「/dev/sdX」格式的裝置名稱在重新啟動時，不會與相同磁碟相關聯，尤其是加密後；如需關於此行為的詳細資料，請參閱：[針對 Linux VM 裝置名稱變更進行疑難排解](troubleshoot-device-names-problems.md))。
 

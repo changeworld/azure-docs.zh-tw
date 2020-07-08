@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 948090d0ee956ca1798d7b0f46bb33276c4d6354
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0d963d6491574bf630061749ba4d3538549fa34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143617"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570199"
 ---
 在此步驟中，您會評估您需要多少個 Azure 檔案共用。 單一 Windows Server 實例（或叢集）最多可以同步30個 Azure 檔案共用。
 
@@ -58,7 +58,7 @@ Azure 檔案同步的另一個重要層面，以及平衡的效能和經驗，�
 > [!IMPORTANT]
 > Azure 檔案同步最重要的縮放向量是需要同步處理的專案（檔案和資料夾）數目。
 
-Azure 檔案同步支援將最多100000個專案同步至單一 Azure 檔案共用。 可以超過此限制，而且只會顯示 Azure 檔案同步小組定期測試的內容。
+Azure 檔案同步支援將最多100000000個專案同步至單一 Azure 檔案共用。 可以超過此限制，而且只會顯示 Azure 檔案同步小組定期測試的內容。
 
 最佳做法是讓每個同步處理範圍的專案數降低。 這是您將資料夾對應至 Azure 檔案共用時所需考慮的重要因素。
 

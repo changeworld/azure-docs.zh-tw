@@ -8,14 +8,14 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8bb10c8e0e1f62e72d48d80014d75dd656490889
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565928"
 ---
-# <a name="how-full-text-search-works-in-azure-cognitive-search"></a>全文檢索搜尋如何在 Azure 認知搜尋中運作
+# <a name="full-text-search-in-azure-cognitive-search"></a>Azure 認知搜尋中的全文檢索搜尋
 
 本文適用于需要更深入瞭解 Lucene 全文檢索搜尋如何在 Azure 認知搜尋中運作的開發人員。 針對文字查詢，Azure 認知搜尋在大部分情況下會順暢地提供預期的結果，但有時結果看起來可能會有點「偏差」。 在這些情況下，Lucene 查詢執行之四個階段 (查詢剖析、語彙分析、文件相符、評分) 中的背景，可協助您識別查詢參數的特定變更或要提供所需結果的索引組態。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "79282935"
 下列範例是您可能會使用[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)傳送至 Azure 認知搜尋的搜尋要求。  
 
 ~~~~
-POST /indexes/hotels/docs/search?api-version=2019-05-06
+POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
     "searchFields": "description, title",
@@ -69,7 +69,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 2. 執行查詢。 在此範例中，搜尋查詢是由片語和詞彙所組成︰`"Spacious, air-condition* +\"Ocean view\""` (使用者通常不會輸入標點符號，但將它包含在範例中，可讓我們解釋分析器如何處理它)。 對於此查詢，搜尋引擎會掃描 `searchFields` 中指定的描述和標題欄位，以找出包含 "Ocean view"的文件，並額外掃描 "spacious" 這個詞彙或以 "air-condition" 這個前置詞開頭的詞彙。 `searchMode` 參數是在並非明確需要詞彙的案例 (`+`) 中，用來比對任何詞彙 (預設值) 或所有這些詞彙。
 3. 依特定地理位置之鄰近性將旅館的結果集進行排序，然後傳回給呼叫應用程式。 
 
-本文大部分是關於*搜尋查詢*的處理： `"Spacious, air-condition* +\"Ocean view\""`。 篩選和排序不在範圍內。 如需詳細資訊，請參閱[搜尋服務 API 參考文件](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
+本文大部分是關於*搜尋查詢*的處理： `"Spacious, air-condition* +\"Ocean view\""` 。 篩選和排序不在範圍內。 如需詳細資訊，請參閱[搜尋服務 API 參考文件](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 
 <a name="stage1"></a>
 ## <a name="stage-1-query-parsing"></a>第 1 階段︰查詢剖析 
@@ -96,7 +96,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 ### <a name="supported-parsers-simple-and-full-lucene"></a>支援的剖析器︰簡單和完整的 Lucene 
 
- Azure 認知搜尋會公開兩種不同的`simple`查詢語言：（ `full`預設值）和。 藉由使用搜尋要求來設定 `queryType` 參數，您告知查詢剖析器所選擇的查詢語言，讓它知道如何解譯運算子和語法。 [簡單的查詢語言](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)是直覺式且強固的，通常適用於以現況解譯使用者輸入而無用戶端處理。 它支援 web 搜尋引擎熟悉的查詢運算子。 [完整的 Lucene 查詢語言](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)是您藉由設定 `queryType=full` 所取得，會透過新增更多運算子與查詢類型 (例如萬用字元、模糊、Regex 和欄位範圍查詢) 的支援，來擴充預設的簡單查詢語言。 例如，簡單查詢語法傳入的規則運算式會解譯為查詢字串而非運算式。 本文中的範例要求會使用完整的 Lucene 查詢語言。
+ Azure 認知搜尋會公開兩種不同的查詢語言： `simple` （預設值）和 `full` 。 藉由使用搜尋要求來設定 `queryType` 參數，您告知查詢剖析器所選擇的查詢語言，讓它知道如何解譯運算子和語法。 [簡單的查詢語言](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)是直覺式且強固的，通常適用於以現況解譯使用者輸入而無用戶端處理。 它支援 web 搜尋引擎熟悉的查詢運算子。 [完整的 Lucene 查詢語言](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)是您藉由設定 `queryType=full` 所取得，會透過新增更多運算子與查詢類型 (例如萬用字元、模糊、Regex 和欄位範圍查詢) 的支援，來擴充預設的簡單查詢語言。 例如，簡單查詢語法傳入的規則運算式會解譯為查詢字串而非運算式。 本文中的範例要求會使用完整的 Lucene 查詢語言。
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>SearchMode 在剖析器上的影響 
 
@@ -239,13 +239,13 @@ Spacious,||air-condition*+"Ocean view"
 若要在反向索引中產生詞彙，搜尋引擎會透過文件的內容執行語彙分析，類似於查詢處理期間所發生的動作：
 
 1. *文字輸入*會傳遞至分析器、小寫、除去標點符號等等，視分析器組態而定。 
-2. *權杖*是文字分析的輸出。
+2. *標記*是詞法分析的輸出。
 3. *字詞*會新增至索引。
 
 使用相同的分析器進行搜尋和編製索引作業很常見但並非必要，可讓查詢詞彙看起來比較像索引內的詞彙。
 
 > [!Note]
-> Azure 認知搜尋可讓您指定不同的分析器來編制索引， `indexAnalyzer`並`searchAnalyzer`透過額外的欄位參數進行搜尋。 如果未指定，以 `analyzer` 屬性設定的分析器可用於編製索引和搜尋。  
+> Azure 認知搜尋可讓您指定不同的分析器來編制索引，並透過額外 `indexAnalyzer` 的 `searchAnalyzer` 欄位參數進行搜尋。 如果未指定，以 `analyzer` 屬性設定的分析器可用於編製索引和搜尋。  
 
 **範例文件的反向索引**
 
@@ -268,7 +268,7 @@ Spacious,||air-condition*+"Ocean view"
 | 詞彙 | 文件清單 |
 |------|---------------|
 | air | 3
-| 和 | 4
+| 及 | 4
 | beach | 1
 | conditioned | 3
 | comfortable | 3
@@ -309,7 +309,7 @@ Spacious,||air-condition*+"Ocean view"
 + "ocean view" 這個 PhraseQuery 會查閱 "ocean" 和 "view" 這兩個詞彙，並檢查原始文件中的詞彙鄰近性。 文件 1、2 和 3 在描述欄位中符合這項查詢。 請注意，文件 4 在標題中有 ocean 這個詞彙，但不被認為相符，因為我們是要尋找 "ocean view" 片語而非個別單字。 
 
 > [!Note]
-> 搜尋查詢會針對 Azure 認知搜尋索引中的所有可搜尋欄位獨立執行，除非您使用`searchFields`參數來限制設定的欄位，如範例搜尋要求中所示。 會傳回任何選取欄位中相符的文件。 
+> 搜尋查詢會針對 Azure 認知搜尋索引中的所有可搜尋欄位獨立執行，除非您使用參數來限制設定的欄位 `searchFields` ，如範例搜尋要求中所示。 會傳回任何選取欄位中相符的文件。 
 
 整體來說，針對問題中的查詢，相符的文件是 1、2、3。 
 
@@ -360,7 +360,7 @@ search=Spacious, air-condition* +"Ocean view"
 有兩種方式可以調整 Azure 認知搜尋中的相關性分數：
 
 1. **評分設定檔**會根據一組規則，依結果的排名清單來升級文件。 在範例中，我們可以認為 [標題] 欄位中相符的文件比 [描述] 欄位中相符的文件更為相關。 此外，如果索引有每家旅館的價格欄位，我們便可以提升包含較低價格的文件。 深入了解如何[將評分設定檔新增至搜尋索引。](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. **詞彙提升**(僅適用於完整的 Lucene 查詢語法) 提供 `^` 這個提升運算子，可以套用到查詢樹狀結構的任何部分。 在我們的範例中，您可以搜尋確切的*空氣*條件或前置詞，而不是搜尋前置的*空氣條件*\*，但符合確切詞彙的檔會藉由將提升套用至詞彙查詢： * 空氣-條件 ^ 2 | |空氣條件 * *。 深入了解[詞彙提升](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)。
+2. **詞彙提升**(僅適用於完整的 Lucene 查詢語法) 提供 `^` 這個提升運算子，可以套用到查詢樹狀結構的任何部分。 在我們的範例中，您可以搜尋確切的空氣條件或前置詞，而不是搜尋前置的*空氣條件*， \* 但符合確切詞彙的檔會藉由將提升套用至詞彙查詢： * 空氣-條件 ^ 2 | | *air-condition*空氣條件 * *。 深入了解[詞彙提升](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)。
 
 
 ### <a name="scoring-in-a-distributed-index"></a>分散式索引中的評分
@@ -391,7 +391,7 @@ Azure 認知搜尋中的所有索引都會自動分割成多個分區，讓我�
 
 + [設定自訂分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)以進行最少的處理，或是在特定欄位上進行特殊的處理。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [搜尋檔 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

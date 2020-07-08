@@ -4,20 +4,17 @@ description: IP 群組可讓您分組和管理 Azure 防火牆規則的 IP 位�
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: conceptual
-ms.date: 02/18/2020
+ms.topic: how-to
+ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: 7e8b2350b9e85d07ce1c399ce4536703ec998cbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3ae62bf5b4f0b4796cac2e7079c8a09116d4895
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77444533"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602528"
 ---
-# <a name="create-ip-groups-preview"></a>建立 IP 群組（預覽）
-
-> [!IMPORTANT]
-> 此公開預覽版是在沒有服務等級協定的情況下提供，不得用於生產工作負載。 可能不支援特定功能、可能已經限制功能，或者可能無法在所有 Azure 位置提供使用。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="create-ip-groups"></a>建立 IP 群組
 
 IP 群組可讓您分組和管理 Azure 防火牆規則的 IP 位址。 它們可以有單一 IP 位址、多個 IP 位址，或一或多個 IP 位址範圍。
 
@@ -25,7 +22,7 @@ IP 群組可讓您分組和管理 Azure 防火牆規則的 IP 位址。 它們�
 
 1. 從 Azure 入口網站首頁，選取 [建立資源]****。
 2. 在 [搜尋] 文字方塊中輸入**Ip 群組**，然後選取 [ **ip 群組**]。
-3. 選取 [建立]  。
+3. 選取 [建立]。
 4. 選取您的訂用帳戶。
 5. 選取資源群組或建立新的資源群組。
 6. 輸入 IP 群組的唯一名稱，然後選取區域。
@@ -42,7 +39,7 @@ IP 群組可讓您分組和管理 Azure 防火牆規則的 IP 位址。 它們�
    當您輸入 IP 位址時，入口網站會驗證它，以檢查是否有重迭、重複和格式化的問題。
 
 5. 完成後，選取 [審核] [ **+ 建立**]。
-6. 選取 [建立]  。
+6. 選取 [建立]。
 
 
 ## <a name="next-steps"></a>後續步驟

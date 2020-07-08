@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 816e8843467588cbfaeb5eb6e531d2221d28656b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190425"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565946"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>虛擬 WAN 合作夥伴的自動化指導方針
 
@@ -54,7 +54,7 @@ ms.locfileid: "77190425"
 
 ###  <a name="access-control"></a><a name="access"></a>存取控制
 
-客戶必須能夠在裝置 UI 中針對虛擬 WAN 設定適當的存取控制。 建議使用 Azure 服務主體進行此設定。 服務主體型存取為裝置控制器提供適當的驗證，以上傳分支資訊。 如需詳細資訊，請參閱[建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。 雖然這項功能不包含在 Azure 虛擬 WAN 產品中，但是我們下面列出在 Azure 中設定存取權所需採取的一般步驟，之後相關的詳細資料會放入裝置管理儀表板
+客戶必須能夠在裝置 UI 中針對虛擬 WAN 設定適當的存取控制。 建議使用 Azure 服務主體進行此設定。 服務主體型存取為裝置控制器提供適當的驗證，以上傳分支資訊。 如需詳細資訊，請參閱[建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 雖然這項功能不包含在 Azure 虛擬 WAN 產品中，但是我們下面列出在 Azure 中設定存取權所需採取的一般步驟，之後相關的詳細資料會放入裝置管理儀表板
 
 * 為內部部署裝置控制器建立 Azure Active Directory 應用程式。
 * 取得應用程式識別碼和驗證金鑰
