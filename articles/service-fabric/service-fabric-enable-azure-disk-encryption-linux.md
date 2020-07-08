@@ -4,10 +4,9 @@ description: 本文說明如何使用 Azure Resource Manager 和 Azure Key Vault
 ms.topic: article
 ms.date: 03/22/2019
 ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78252821"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>針對 Linux 中的 Azure Service Fabric 叢集節點啟用磁片加密 
@@ -29,11 +28,11 @@ ms.locfileid: "78252821"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
  **自我註冊**
 
-虛擬機器擴展集的磁片加密預覽版需要自行註冊。 使用下列步驟：
+虛擬機器擴展集的磁片加密預覽版需要自行註冊。 請使用下列步驟：
 
 1. 執行下列命令： 
     ```powershell

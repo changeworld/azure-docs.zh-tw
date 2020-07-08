@@ -9,13 +9,12 @@ ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 422b814f1d9738ca4f03d08dfecc6761b764f997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78196020"
 ---
-# <a name="open-source-platforms-that-support-azure-data-lake-storage-gen2"></a>支援 Azure Data Lake Storage Gen2 的開放原始碼平臺
+# <a name="open-source-platforms-that-support-azure-data-lake-storage-gen2"></a>支援 Azure Data Lake Storage Gen2 的開放原始碼平台
 
 本文列出支援 Data Lake Storage Gen2 的開放原始碼平臺。  
 
@@ -34,7 +33,7 @@ ms.locfileid: "78196020"
 | [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1+ | [Databricks Runtime 版本](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
 |[Hortonworks](https://hortonworks.com/)| 3.1.x++ | [設定雲端資料存取](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) \(英文\) |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [Azure Data Lake Storage Gen2 的已知問題](data-lake-storage-known-issues.md)
 - [Azure Data Lake Storage Gen2 中可用的 Blob 儲存體功能](data-lake-storage-supported-blob-storage-features.md)

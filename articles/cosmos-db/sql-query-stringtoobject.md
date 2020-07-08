@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78296376"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject （Azure Cosmos DB）
@@ -34,7 +33,7 @@ StringToObject(<str_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例顯示不同類型`StringToObject`的行為。 
+  下列範例顯示 `StringToObject` 不同類型的行為。 
   
  以下是具有有效輸入的範例。
 
@@ -56,7 +55,7 @@ SELECT
 ```
 
  以下是具有無效輸入的範例。
-雖然它們在查詢中是有效的，但它們不會剖析成有效的物件。 物件字串\\內的字串必須是 "{" a\\"：\\" str\\"}"，或周圍的引號必須是單一 ' {"a"： "str"} '。
+雖然它們在查詢中是有效的，但它們不會剖析成有效的物件。 物件字串內的字串必須是 "{ \\ " a \\ "： \\ " str \\ "}"，或周圍的引號必須是單一 ' {"a"： "str"} '。
 
 括住屬性名稱的單引號不是有效的 JSON。
 

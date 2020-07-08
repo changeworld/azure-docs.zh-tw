@@ -16,10 +16,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78299324"
 ---
 # <a name="understand-the-azure-ad-schema"></a>瞭解 Azure AD 架構
@@ -42,7 +41,7 @@ Azure AD 有兩種類型的屬性：
 
 屬性同步處理可能是直接的，其中 Azure AD 中的值會直接設定為內部部署屬性的值。 或者，程式設計運算式可能會處理同步處理。 必須進行某些邏輯或判斷以填入值時，就需要程式設計運算式。
 
-例如，如果您有 mail 屬性 "john.smith@contoso.com"，而且需要去除 "@contoso.com" 部分，而且只傳送 "john. smith" 的值，您就會使用如下所示的內容：
+例如，如果您有 mail 屬性 " john.smith@contoso.com "，而且需要去除 " @contoso.com " 部分，而且只傳送 "john. smith" 的值，您就會使用如下所示的內容：
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
@@ -61,7 +60,7 @@ Azure AD 有兩種類型的屬性：
 |cn|直接|commonName
 |countryCode|直接|countryCode|
 |displayName|直接|displayName|
-|givenName|運算是|givenName|
+|givenName|運算式|givenName|
 |objectGUID|直接|sourceAnchorBinary|  
 |userprincipalName|直接|userPrincipalName|
 |ProxyAdress|直接|ProxyAddress|
@@ -75,8 +74,8 @@ Azure AD 有兩種類型的屬性：
 1.  移至 [ [Graph Explorer]](https://developer.microsoft.com/graph/graph-explorer)。
 1.  使用您的全域管理員帳戶登入。
 1.  在左側選取 [**修改許可權**]，並確定已*同意*[**全部**]。
-1.  執行查詢`https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`。 此查詢會傳回已篩選的服務主體清單。
-1.  找`"appDisplayName": "Active Directory to Azure Active Directory Provisioning"`出並記下的`"id"`值。
+1.  執行查詢 `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')` 。 此查詢會傳回已篩選的服務主體清單。
+1.  找 `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` 出並記下的值 `"id"` 。
     ```
     "value": [
             {
@@ -149,8 +148,8 @@ Azure AD 有兩種類型的屬性：
                 "passwordCredentials": []
             },
     ```
-1. 將`{Service Principal id}`取代為您的值，然後執行`https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`查詢。
-1. 找`"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"`出並記下的`"id"`值。
+1. `{Service Principal id}`將取代為您的值，然後執行查詢 `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/` 。
+1. 找 `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` 出並記下的值 `"id"` 。
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -241,11 +240,11 @@ Azure AD 有兩種類型的屬性：
                 ]
             }
     ```
-1. 現在執行查詢`https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`。
+1. 現在執行查詢 `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema` 。
  
     範例：https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
-   將`{Service Principal Id}`和`{AD2ADD Provisioning Id}`取代為您的值。
+   `{Service Principal Id}`將和取代 `{AD2ADD Provisioning Id}` 為您的值。
 
 1. 此查詢會傳回架構。
 

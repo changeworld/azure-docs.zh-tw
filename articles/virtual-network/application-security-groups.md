@@ -14,10 +14,9 @@ ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: 775ef92a0ca486d1f8a6c44c78a4df04cd5ef467
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78274706"
 ---
 # <a name="application-security-groups"></a>應用程式安全性群組
@@ -32,15 +31,15 @@ ms.locfileid: "78274706"
 
 需要此規則才能讓流量從網際網路流向 Web 伺服器。 因為來自網際網路的輸入流量會遭到 **DenyAllInbound** 預設安全性規則拒絕，而 AsgLogic** 或 AsgDb** 應用程式安全性群組則不需要其他規則。
 
-|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | 存取權 |
+|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
 |---|---|---|---|---|---|---|
-| 100 | Internet | * | AsgWeb | 80 | TCP | Allow |
+| 100 | Internet | * | AsgWeb | 80 | TCP | 允許 |
 
 ## <a name="deny-database-all"></a>Deny-Database-All
 
 由於 **AllowVNetInBound** 預設安全性規則允許相同虛擬網路中各資源之間的所有通訊，因此需要此規則才能拒絕來自所有資源的流量。
 
-|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | 存取權 |
+|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | 任意 | 拒絕 |
 
@@ -48,9 +47,9 @@ ms.locfileid: "78274706"
 
 此規則會允許流量從 AsgLogic** 應用程式安全性群組流向 AsgDb** 應用程式安全性群組。 此規則的優先順序高於 Deny-Database-All ** 規則的優先順序。 如此一來，此規則會在 Deny-Database-All** 規則之前進行處理，因此系統會允許來自 AsgLogic** 應用程式安全性群組的流量，但所有其他流量仍會遭到封鎖。
 
-|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | 存取權 |
+|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
 |---|---|---|---|---|---|---|
-| 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
+| 110 | AsgLogic | * | AsgDb | 1433 | TCP | 允許 |
 
 用於將應用程式安全性群組指定為來源或目的地的規則，只會套用至屬於此應用程式安全性群組成員的網路介面。 如果網路介面不是應用程式安全性群組的成員，則此規則不適用於此網路介面，即使子網路與網路安全性群組相關聯也一樣。
 
@@ -66,4 +65,4 @@ ms.locfileid: "78274706"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解如何[建立網路安全性群組](tutorial-filter-network-traffic.md)。
+* 瞭解如何[建立網路安全性群組](tutorial-filter-network-traffic.md)。

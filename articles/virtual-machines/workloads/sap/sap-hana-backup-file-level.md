@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: 93b67936166eb73db5e9a15db42c2c6135794108
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78271393"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>檔案層級的 SAP HANA Azure 備份
@@ -65,7 +64,7 @@ Azure 中的不同 VM 類型允許連接不同數目的 VHD。 確切的詳細�
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>將 SAP HANA 備份檔案複製到 Azure Blob 儲存體
 所提及的效能數位、備份持續時間數目和複製持續時間數目，可能不代表 Azure 技術的最新狀態。 Microsoft 會穩定地改善 Azure 儲存體，以提供更多的輸送量和較低的延遲。 因此，數位僅供示範之用。 您需要在您選擇的 Azure 區域中測試您個人的需求，才能使用方法來進行判斷。
 
-快速儲存 SAP HANA 備份檔案的另一個選項是 Azure Blob 儲存體。 一個單一 blob 容器的限制為大約 500 TB，對於 SAP Hana 系統而言，使用 M32ts、M32ls、M64ls 和 GS5 VM 類型的 Azure，以保留足夠的 SAP Hana 備份。 客戶可以選擇&quot;經常性&quot;和&quot;非經常性&quot; blob 儲存體（請參閱[Azure blob 儲存體：經常性存取、非經常性存取和封存存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)）。
+快速儲存 SAP HANA 備份檔案的另一個選項是 Azure Blob 儲存體。 一個單一 blob 容器的限制為大約 500 TB，對於 SAP Hana 系統而言，使用 M32ts、M32ls、M64ls 和 GS5 VM 類型的 Azure，以保留足夠的 SAP Hana 備份。 客戶可以選擇經常性 &quot; 和非 &quot; 經常性 &quot; &quot; blob 儲存體（請參閱[Azure blob 儲存體：經常性存取、非經常性存取和封存存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)）。
 
 使用 blobxfer 工具，將 SAP HANA 備份檔案直接複製到 Azure Blob 儲存體很容易。
 
@@ -95,7 +94,7 @@ Microsoft Azure 透過[Azure NetApp Files](https://azure.microsoft.com/services/
 除了透過及使用 Azure 的原生 NFS 磁片區之外，在 Azure 上建立可提供 NFS 共用的專屬部署也有許多不同的可能性。 全都是您需要自行部署和管理這些解決方案的缺點。 這些可能的部分會記載于下列文章中：
 
 - [SUSE Linux Enterprise Server 上 Azure VM 的 NFS 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-- [Red Hat Enterprise Linux for SAP NetWeaver 上的 GlusterFS on Azure VM](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
+- [Red Hat Enterprise Linux for SAP NetWeaver 上適用於 Azure VM 的 GlusterFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
 
 透過上述方式建立的 NFS 共用可以用來直接執行 HANA 備份，或將針對本機磁片執行的備份複製到這些 NFS 共用。
 

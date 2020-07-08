@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 758ac13530752df481d27e7e253f025f5c8d6430
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302197"
 ---
 # <a name="replace-azure-cosmos-db"></a>取代（Azure Cosmos DB）
@@ -40,7 +39,7 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
   
 ## <a name="examples"></a>範例
   
-  下列範例顯示如何在查詢中`REPLACE`使用。  
+  下列範例顯示如何 `REPLACE` 在查詢中使用。  
   
 ```sql
 SELECT REPLACE("This is a Test", "Test", "desk") AS replace

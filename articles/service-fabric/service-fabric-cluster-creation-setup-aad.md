@@ -4,10 +4,9 @@ description: 了解如何設定 Azure Active Directory (Azure AD) 以驗證 Serv
 ms.topic: conceptual
 ms.date: 6/28/2019
 ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78193370"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>設定用戶端驗用的 Azure Active Directory
@@ -26,7 +25,7 @@ Service Fabric 叢集提供其管理功能的各種進入點 (包括 Web 型 [Se
 
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 在本文中，我們假設您已經建立租用戶。 如果您尚未建立租用戶，請從閱讀[如何取得 Azure Active Directory 租用戶][active-directory-howto-tenant]開始進行。
 
 為了簡化與設定 Azure AD 搭配 Service Fabric 叢集相關的一些步驟，我們建立了一組 Windows PowerShell 指令碼。
@@ -49,7 +48,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 > [!NOTE]
 > 對於國家雲 (例如 Azure Government、Azure 中國、Azure 德國)，您也應指定 `-Location` 參數。
 
-您可以藉由*TenantId*執行 PowerShell 命令`Get-AzureSubscription`來找出您的 TenantId。 執行此命令會顯示每個訂用帳戶的 TenantId。
+您可以藉由執行 PowerShell 命令來找出您的*TenantId* `Get-AzureSubscription` 。 執行此命令會顯示每個訂用帳戶的 TenantId。
 
 *ClusterName* 會用來為指令碼所建立的 Azure AD 應用程式加上前置詞。 它不需要與實際叢集名稱完全相符。 其用意只是要讓您更容易將 Azure AD 構件對應到與之搭配使用的 Service Fabric 叢集。
 
@@ -84,14 +83,14 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 #### <a name="reason"></a>原因
 使用者未獲指派 Azure AD 叢集應用程式中的角色。 因此，Azure AD 驗證在 Service Fabric 叢集上發生失敗。 Service Fabric Explorer 會回復到憑證驗證。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 請依照設定 Azure AD 的指示進行操作，然後指派使用者角色。 另外，建議您如 `SetupApplications.ps1` 所做的一樣，開啟 [存取應用程式需要使用者指派]。
 
 ### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>使用 PowerShell 進行連線時失敗，發生錯誤：「指定的認證無效」
 #### <a name="problem"></a>問題
 在您順利登入 Azure AD 之後，於使用 PowerShell 以 “AzureActiveDirectory” 安全性模式連接到叢集時連線失敗，發生錯誤：「指定的認證無效」。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 此解決方案與前一個相同。
 
 ### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer 在您登入時傳回失敗："AADSTS50011"
@@ -103,20 +102,20 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 #### <a name="reason"></a>原因
 代表 Service Fabric Explorer 的叢集 (Web) 應用程式嘗試對照 Azure AD 來進行驗證，而它在要求中提供重新導向傳回 URL。 但該 URL 並未列在 Azure AD 應用程式 [回覆 URL]**** 清單中。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 在您叢集的 [Azure AD 應用程式註冊] 頁面上，選取 [**驗證**]，然後在 [重新**導向 uri** ] 區段下，將 Service Fabric Explorer URL 新增至清單。 儲存變更。
 
 ![Web 應用程式回復 URL][web-application-reply-url]
 
 ### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>使用 Azure AD 驗證透過 PowerShell 連線到叢集時，會在您登入時發生錯誤： "AADSTS50011"
 #### <a name="problem"></a>問題
-當您嘗試使用 Azure AD 透過 PowerShell 連線到 Service Fabric 叢集時，登入頁面會傳回失敗：「AADSTS50011：要求中指定的回復 url 不符合為應用程式設定的回復 url： &lt;guid&gt;」。
+當您嘗試使用 Azure AD 透過 PowerShell 連線到 Service Fabric 叢集時，登入頁面會傳回失敗：「AADSTS50011：要求中指定的回復 url 不符合為應用程式設定的回復 url： &lt; guid」 &gt; 。
 
 #### <a name="reason"></a>原因
 與前述問題類似，PowerShell 會嘗試對 Azure AD 進行驗證，以提供未列在 [Azure AD 應用程式**回復 url** ] 清單中的重新導向 URL。  
 
-#### <a name="solution"></a>解決方法
-使用與上述問題相同的程式，但 URL 必須設定為`urn:ietf:wg:oauth:2.0:oob`，這是命令列驗證的特殊重新導向。
+#### <a name="solution"></a>解決方案
+使用與上述問題相同的程式，但 URL 必須設定為 `urn:ietf:wg:oauth:2.0:oob` ，這是命令列驗證的特殊重新導向。
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>透過 PowerShell 使用 Azure AD 驗證來連接叢集
 若要連接 Service Fabric 叢集，請使用下列 PowerShell 命令範例︰

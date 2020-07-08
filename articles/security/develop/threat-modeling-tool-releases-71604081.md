@@ -9,10 +9,9 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 59d385ba7de5bf7bceae4dc8ddadbca813046094
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78269719"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool 更新版本 7.1.60408.1-4/9/2019
@@ -22,7 +21,7 @@ Microsoft Threat Modeling Tool （TMT）的版本7.1.60408.1 已于 9 2019 年4�
 - Azure Key Vault 和 Azure 流量管理員的新樣板
 - TMT 版本號碼現在會顯示在主畫面上
 - 支援連結已更新
-- 錯誤修正
+- Bug 修正
 
 ## <a name="feature-changes"></a>功能變更
 
@@ -40,7 +39,7 @@ Threat Modeling Tool 的用戶端版本現在會顯示在應用程式的主畫�
 
 ### <a name="support-links-have-been-updated"></a>支援連結已更新
 
-此工具內的所有支援連結都已更新，可將[tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com)使用者導向至，而不是 MSDN 論壇。
+此工具內的所有支援連結都已更新，可將使用者導向至， [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) 而不是 MSDN 論壇。
 
 ## <a name="system-requirements"></a>系統需求
 

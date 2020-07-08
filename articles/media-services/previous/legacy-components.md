@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 02/27/2020
 ms.author: juliako
 ms.openlocfilehash: 94a70a1234d902787f248890f0cb538a4ba9c2f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921074"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒體服務舊版元件
@@ -26,7 +25,7 @@ ms.locfileid: "77921074"
  
 ## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>舊版元件和遷移指引的淘汰計畫
 
-我們宣佈*Windows Azure 媒體編碼器*（WAME）和*Azure 媒體編碼器*（AME）媒體處理器已淘汰。 這些處理器將于2020年3月31日淘汰。
+我們宣布淘汰「Windows Azure 媒體編碼器」(WAME) 和「Azure 媒體編碼器」(AME) 媒體處理器。 這些處理器將于2020年3月31日淘汰。
 
 * [從 Windows Azure 媒體編碼器遷移至媒體編碼器標準](migrate-windows-azure-media-encoder.md)
 * [從 Azure 媒體編碼器遷移至媒體編碼器標準](migrate-azure-media-encoder.md)

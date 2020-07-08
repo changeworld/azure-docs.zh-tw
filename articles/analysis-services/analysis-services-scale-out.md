@@ -8,10 +8,9 @@ ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78247998"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 擴充
@@ -44,9 +43,9 @@ ms.locfileid: "78247998"
 
 * 即使查詢集區中沒有任何複本，也允許同步處理。 如果您要從零向外延展到一個或多個複本，並在主伺服器上處理作業的新資料，請先執行同步處理，而不要在查詢集區中使用任何複本，然後再向外延展。在相應放大之前進行同步處理，可避免新加入複本的重複序列化。
 
-* 從主伺服器刪除模型資料庫時，不會自動從查詢集區中的複本刪除它。 您必須執行同步處理作業，方法是使用[AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell 命令，從複本的共用 blob 儲存位置移除該資料庫的檔案，然後刪除查詢集區中複本上的 model 資料庫。 若要判斷模型資料庫是否存在於查詢集區中的複本上，但不在主伺服器上，請確定 [**從查詢集區中個別的處理伺服器**] 設定為 **[是]**。 然後使用此`:rw`辨識符號，透過 SSMS 連接到主伺服器，以查看資料庫是否存在。 然後連接到查詢集區中的複本，方法是`:rw`不使用限定詞連接，以查看相同的資料庫是否也存在。 如果資料庫存在於查詢集區中的複本上，而不是在主伺服器上，請執行同步作業。   
+* 從主伺服器刪除模型資料庫時，不會自動從查詢集區中的複本刪除它。 您必須執行同步處理作業，方法是使用[AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell 命令，從複本的共用 blob 儲存位置移除該資料庫的檔案，然後刪除查詢集區中複本上的 model 資料庫。 若要判斷模型資料庫是否存在於查詢集區中的複本上，但不在主伺服器上，請確定 [**從查詢集區中個別的處理伺服器**] 設定為 **[是]**。 然後使用此辨識符號，透過 SSMS 連接到主伺服器， `:rw` 以查看資料庫是否存在。 然後連接到查詢集區中的複本，方法是不使用限定詞連接， `:rw` 以查看相同的資料庫是否也存在。 如果資料庫存在於查詢集區中的複本上，而不是在主伺服器上，請執行同步作業。   
 
-* 重新命名主伺服器上的資料庫時，需要額外的步驟，以確保資料庫已正確地同步處理至任何複本。 重新命名之後，請使用[AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance)命令來指定具有舊資料庫名稱的`-Database`參數，以執行同步處理。 這個同步處理會從任何複本移除具有舊名稱的資料庫和檔案。 然後執行另一個同步處理`-Database` ，並指定具有新資料庫名稱的參數。 第二次同步處理會將新命名的資料庫複製到第二組檔案，並會產生任何複本。 無法使用入口網站中的 [同步處理模型] 命令來執行這些同步作業。
+* 重新命名主伺服器上的資料庫時，需要額外的步驟，以確保資料庫已正確地同步處理至任何複本。 重新命名之後，請使用[AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance)命令來指定 `-Database` 具有舊資料庫名稱的參數，以執行同步處理。 這個同步處理會從任何複本移除具有舊名稱的資料庫和檔案。 然後執行另一個同步 `-Database` 處理，並指定具有新資料庫名稱的參數。 第二次同步處理會將新命名的資料庫複製到第二組檔案，並會產生任何複本。 無法使用入口網站中的 [同步處理模型] 命令來執行這些同步作業。
 
 ### <a name="synchronization-mode"></a>同步處理模式
 
@@ -98,7 +97,7 @@ ms.locfileid: "78247998"
 
 1. 在入口網站中，按一下 [**相應**放大]。使用滑杆來選取查詢複本伺服器的數目。 所選擇的複本數目不包括現有的伺服器。  
 
-2. 在 [Separate the processing server from the querying pool]\(區隔處理伺服器與查詢集區\)**** 中，選取 [是] 以將處理伺服器從查詢伺服器排除。 使用[connections](#connections)預設連接字串（不含`:rw`）的用戶端連接會重新導向至查詢集區中的複本。 
+2. 在 [Separate the processing server from the querying pool]\(區隔處理伺服器與查詢集區\)**** 中，選取 [是] 以將處理伺服器從查詢伺服器排除。 使用預設連接字串（不含）的用戶端[連接](#connections) `:rw` 會重新導向至查詢集區中的複本。 
 
    ![擴充滑桿](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
@@ -136,8 +135,8 @@ ms.locfileid: "78247998"
 |-1     |  無效       |
 |0     | Replicating        |
 |1     |  解除凍結       |
-|2     |   Completed       |
-|3     |   Failed      |
+|2     |   已完成       |
+|3     |   失敗      |
 |4     |    正在完成     |
 |||
 
@@ -152,7 +151,7 @@ ms.locfileid: "78247998"
 
 若要設定查詢複本的數目，請使用[AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 指定選擇性的 `-ReadonlyReplicaCount` 參數。
 
-若要將處理伺服器與查詢集區分開，請使用[AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 指定要使用`-DefaultConnectionMode` `Readonly`的選擇性參數。
+若要將處理伺服器與查詢集區分開，請使用[AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 指定 `-DefaultConnectionMode` 要使用的選擇性參數 `Readonly` 。
 
 若要深入瞭解，請參閱[使用服務主體搭配 Az microsoft.analysisservices 模組](analysis-services-service-principal.md#azmodule)。
 
@@ -172,9 +171,9 @@ ms.locfileid: "78247998"
 
 ## <a name="troubleshoot"></a>疑難排解
 
-**問題︰** 使用者收到錯誤「找不到處於連線模式 'ReadOnly' 的伺服器 '\<伺服器名稱>' 執行個體。****
+**問題：** 使用者收到錯誤** \<Name of the server> ：在連接模式 ' ReadOnly ' 中找不到伺服器 ' ' 實例。**
 
-**解決方案：****從 [查詢集區] 選項選取不同的處理伺服器**時，使用預設連接字串（不含`:rw`）的用戶端連接會重新導向至查詢集區複本。 如果查詢集區中的複本因為尚未完成同步處理而未上線，則重新導向的用戶端連線可能會失敗。 若要避免連線失敗，則在執行同步處理時，查詢集區中必須有至少兩部伺服器。 每部伺服器會個別同步，而其他伺服器則維持線上狀態。 如果您選擇在處理期間查詢集區中不要有處理中的伺服器，可以選擇從集區中移除該伺服器以供處理，然後在處理完成之後，但在同步處理之前，將它加回集區。 使用記憶體和 QPU 計量來監視同步處理狀態。
+**解決方案：****從 [查詢集區] 選項選取不同的處理伺服器**時，使用預設連接字串（不含）的用戶端連接 `:rw` 會重新導向至查詢集區複本。 如果查詢集區中的複本因為尚未完成同步處理而未上線，則重新導向的用戶端連線可能會失敗。 若要避免連線失敗，則在執行同步處理時，查詢集區中必須有至少兩部伺服器。 每部伺服器會個別同步，而其他伺服器則維持線上狀態。 如果您選擇在處理期間查詢集區中不要有處理中的伺服器，可以選擇從集區中移除該伺服器以供處理，然後在處理完成之後，但在同步處理之前，將它加回集區。 使用記憶體和 QPU 計量來監視同步處理狀態。
 
 
 

@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78250188"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>測試 Azure 受控應用程式的入口網站介面
 
-建立受控應用程式[的 createUiDefinition json](create-uidefinition-overview.md)檔案之後，您需要測試使用者體驗。 若要簡化測試，請使用在入口網站中載入檔案的沙箱環境。 您不需要實際部署受控應用程式。 沙箱會在目前的全螢幕入口網站體驗中呈現您的使用者介面。 或者，您可以使用腳本來測試介面。 本文中會展示這兩種方法。 沙箱是預覽介面的建議方式。
+建立受控應用程式[的檔案 createUiDefinition.js](create-uidefinition-overview.md)之後，您必須測試使用者經驗。 若要簡化測試，請使用在入口網站中載入檔案的沙箱環境。 您不需要實際部署受控應用程式。 沙箱會在目前的全螢幕入口網站體驗中呈現您的使用者介面。 或者，您可以使用腳本來測試介面。 本文中會展示這兩種方法。 沙箱是預覽介面的建議方式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * **createUiDefinition.json** 檔案。 如果您沒有此檔案，請複製[範例](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)檔案。
 
@@ -28,7 +27,7 @@ ms.locfileid: "78250188"
 
    ![顯示沙箱](./media/test-createuidefinition/show-sandbox.png)
 
-1. 以您的 createUiDefinition 的內容取代空白定義。 選取 [預覽]****。
+1. 將空白定義取代為檔案上 createUiDefinition.js的內容。 選取 [預覽]****。
 
    ![選取預覽](./media/test-createuidefinition/select-preview.png)
 

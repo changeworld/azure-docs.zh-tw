@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18
 ms.openlocfilehash: e7ad45ea4cb1049ed7eeb454162e23e81ed35019
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255193"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 複製 Azure App Service App
@@ -35,13 +34,13 @@ $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-
 New-AzAppServicePlan -Location "North Central US" -ResourceGroupName DestinationAzureResourceGroup -Name DestinationAppServicePlan -Tier Standard
 ```
 
-您可以`New-AzWebApp`使用命令，在美國中北部區域建立新的應用程式，並將它與現有的 App Service 方案結合。 此外，您可以使用與來源應用程式相同的資源群組，也可以定義新的資源群組，如下列命令所示：
+`New-AzWebApp`您可以使用命令，在美國中北部區域建立新的應用程式，並將它與現有的 App Service 方案結合。 此外，您可以使用與來源應用程式相同的資源群組，也可以定義新的資源群組，如下列命令所示：
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
 ```
 
-若要複製現有的應用程式 (包括所有相關聯的部署位置)，您必須使用 `IncludeSourceWebAppSlots` 參數。  請注意， `IncludeSourceWebAppSlots`只有在複製整個應用程式（包括其所有位置）時，才支援此參數。 下列 PowerShell 命令示範如何搭配 `New-AzWebApp` 命令使用該參數：
+若要複製現有的應用程式 (包括所有相關聯的部署位置)，您必須使用 `IncludeSourceWebAppSlots` 參數。  請注意， `IncludeSourceWebAppSlots` 只有在複製整個應用程式（包括其所有位置）時，才支援此參數。 下列 PowerShell 命令示範如何搭配 `New-AzWebApp` 命令使用該參數：
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
@@ -122,7 +121,7 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * 如果複製到不同縮放單位，輸出 IP 位址將會變更
 * 不適用於 Linux 應用程式
 
-### <a name="references"></a>參考
+### <a name="references"></a>參考資料
 * [App Service 複製](app-service-web-app-cloning.md)
 * [在 Azure App Service 中備份應用程式](manage-backup.md)
 * [Azure Resource Manager 的 Azure 流量管理員支援預覽](../traffic-manager/traffic-manager-powershell-arm.md)

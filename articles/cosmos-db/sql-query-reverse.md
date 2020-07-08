@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a22e1c8a5f4350bd2f966ee48f96368c648a4a1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302163"
 ---
 # <a name="reverse-azure-cosmos-db"></a>反轉（Azure Cosmos DB）
@@ -26,7 +25,7 @@ REVERSE(<str_expr>)
 ## <a name="arguments"></a>引數
   
 *str_expr*  
-   這是字串運算式。  
+   是字串運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -34,7 +33,7 @@ REVERSE(<str_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例顯示如何在查詢中`REVERSE`使用。  
+  下列範例顯示如何 `REVERSE` 在查詢中使用。  
   
 ```sql
 SELECT REVERSE("Abc") AS reverse  

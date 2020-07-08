@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
 ms.openlocfilehash: 86938c582745cb0759eda9cd0693f407471a0529
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921482"
 ---
 # <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Azure 虛擬機器開機時 Windows 顯示「正在檢查檔案系統」
@@ -35,7 +34,7 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](boot-diagnostics.md)
 
 如果在檔案系統中發現 NTFS 錯誤，則 Windows 會在下一次重新啟動時檢查與修復磁碟的一致性。 這通常發生在虛擬機器有任何未預期的重新啟動，或如果虛擬機器關機處理序突然中斷時。
 
-## <a name="solution"></a>解決方法 
+## <a name="solution"></a>解決方案 
 
 在「檢查磁碟」處理序完成時，Windows 將正常開機。 如果虛擬機器卡在「檢查磁碟」處理序，請嘗試在虛擬機器離線時執行「磁碟檢查」：
 1.  擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。

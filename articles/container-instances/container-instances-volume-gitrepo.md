@@ -4,10 +4,9 @@ description: 了解如何掛接 gitRepo 磁碟區，以將 Git 存放庫複製�
 ms.topic: article
 ms.date: 06/15/2018
 ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78252093"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>在 Azure 容器執行個體中掛接 gitRepo 磁碟區
@@ -23,17 +22,17 @@ ms.locfileid: "78252093"
 
 當您掛接 *gitRepo* 磁碟區時，您可以設定三個屬性來設定磁碟區：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | -------- | -------- | ----------- |
-| `repository` | 是 | 要複製之 Git 存放庫的完整 URL，包括 `http://` 或 `https://`。|
-| `directory` | 否 | 要在其中複製存放庫的目錄。 路徑不能包含或開頭為 "`..`"。  如果您指定 "`.`"，存放庫會複製到磁碟區的目錄中。 否則，Git 存放庫會複製到磁碟區目錄內指定名稱的子目錄中。 |
-| `revision` | 否 | 要複製之修訂的認可雜湊。 如果未指定，則 `HEAD` 修訂已複製。 |
+| `repository` | Yes | 要複製之 Git 存放庫的完整 URL，包括 `http://` 或 `https://`。|
+| `directory` | No | 要在其中複製存放庫的目錄。 路徑不能包含或開頭為 "`..`"。  如果您指定 "`.`"，存放庫會複製到磁碟區的目錄中。 否則，Git 存放庫會複製到磁碟區目錄內指定名稱的子目錄中。 |
+| `revision` | No | 要複製之修訂的認可雜湊。 如果未指定，則 `HEAD` 修訂已複製。 |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>掛接 gitRepo 磁碟區：Azure CLI
 
 當您使用 [Azure CLI](/cli/azure) 部署容器執行個體時，若要掛接 gitRepo 磁碟區，請將 `--gitrepo-url` 和 `--gitrepo-mount-path` 參數提供給 [az container create][az-container-create] 命令。 您可以選擇性地指定磁碟區內要複製存放庫到其中的目錄 (`--gitrepo-dir`)，以及要複製的修訂認可雜湊 (`--gitrepo-revision`)。
 
-此範例命令會將 Microsoft [aci-helloworld][aci-helloworld]範例應用程式`/mnt/aci-helloworld`複製到容器實例中的：
+此範例命令會將 Microsoft [aci-helloworld][aci-helloworld]範例應用程式複製到 `/mnt/aci-helloworld` 容器實例中的：
 
 ```azurecli-interactive
 az container create \

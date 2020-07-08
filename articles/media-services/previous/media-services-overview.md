@@ -14,10 +14,9 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
 ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78197499"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒體服務概觀 
@@ -27,7 +26,7 @@ ms.locfileid: "78197499"
 > * [第 2 版](media-services-overview.md)
 
 > [!NOTE]
-> 媒體服務 v2 中不會新增任何新功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 中不會新增任何新功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure 媒體服務 (AMS) 是一個可延伸的雲端式平台，供開發人員建置可擴充的媒體管理和傳遞應用程式。 媒體服務是以 REST API 為基礎，可讓您安全地上傳、儲存、編碼和封裝視訊或音訊內容，以用於隨選和即時資料流傳遞給各種用戶端 (例如電視、電腦和行動裝置)。
 
@@ -38,15 +37,15 @@ Microsoft Azure 媒體服務 (AMS) 是一個可延伸的雲端式平台，供開
 
 重要提醒是，您必須遵守使用 Azure 媒體服務時的所有相關法律，而且不得以違反其他人的權利或可能對其他人有害的方式使用媒體服務或任何 Azure 服務。
 
-將任何影片/影像上傳至媒體服務之前，您必須擁有所有適當的許可權，才能使用影片/影像，包括在法律要求的情況下，所有必要的同意（如果有的話）在影片/影像中，以便在媒體服務和 Azure 中使用、處理和儲存其資料。 有些司法轄區可能會對集合、線上處理和儲存特定類別的資料（例如生物識別資料）施加特殊的法律需求。 在使用媒體服務和 Azure 來處理及儲存任何資料，以因應特殊法律需求之前，您必須確保符合貴使用者可能適用的任何這類法律需求。
+將任何影片/影像上傳至媒體服務之前，您必須擁有所有適當的許可權，才能使用影片/影像，包括在法律要求的情況下，所有必要的同意（如果有的話）在影片/影像中，以便在媒體服務和 Azure 中使用、處理和儲存其資料。 有些司法管轄區可能會對特定資料類別 (例如生物識別資料) 的收集、線上處理和儲存施加特殊的法律要求。 在使用媒體服務和 Azure 來處理及儲存任何資料，以因應特殊法律需求之前，您必須確保符合貴使用者可能適用的任何這類法律需求。
 
 若要瞭解媒體服務的合規性、隱私權和安全性，請流覽 Microsoft[信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 如需 Microsoft 的隱私權義務、資料處理和保留做法，包括如何刪除您的資料，請參閱 Microsoft 的[隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1)（「OST」）和[資料處理](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)增補（「DPA」）。 藉由使用媒體服務，即表示您同意遵守 OST、DPA 和隱私權聲明。
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用 Azure 媒體服務，您應該具備下列項目：
 
-* 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com)。
+* 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com)。
 * Azure 媒體服務帳戶。 如需詳細資訊，請參閱[建立帳戶](media-services-portal-create-account.md)。
 * (選擇性) 設定開發環境。 針對開發環境選擇 .NET 或 REST API。 如需詳細資訊，請參閱 [設定環境](media-services-dotnet-how-to-use.md)。
 

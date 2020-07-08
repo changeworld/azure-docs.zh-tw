@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
 ms.openlocfilehash: 1933db624dfef2ffa747ecb043be6730b6b884b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206549"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>使用 Microsoft 辨識工具組深入了解模型與 Azure HDInsight Spark 叢集
@@ -61,20 +60,20 @@ Jupyter Notebook 中涵蓋下列剩餘步驟。
 |屬性 |值 |
 |---|---|
 |指令碼類型|- 自訂|
-|Name| 安裝 MCT|
+|名稱| 安裝 MCT|
 |Bash 指令碼 URI|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |節點類型：|Head、Worker|
-|參數|無|
+|參數|None|
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>將 Jupyter Notebook 上傳至 Azure HDInsight Spark 叢集
 
-若要使用 Microsoft 辨識工具組搭配 Azure HDInsight Spark 叢集，您必須將 Jupyter Notebook **CNTK_model_scoring_on_Spark_walkthrough.ipynb** 載入至 Azure HDInsight Spark 叢集。 您可以在 GitHub 上取得此[https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration)筆記本，網址為。
+若要使用 Microsoft 辨識工具組搭配 Azure HDInsight Spark 叢集，您必須將 Jupyter Notebook **CNTK_model_scoring_on_Spark_walkthrough.ipynb** 載入至 Azure HDInsight Spark 叢集。 您可以在 GitHub 上取得此筆記本，網址為 [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) 。
 
-1. 下載並解壓縮[https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration)。
+1. 下載並解壓縮 [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) 。
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net/jupyter`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 從 Jupyter 筆記本中，選取右上角的 **[上傳**]，然後流覽至 [下載] 並選取`CNTK_model_scoring_on_Spark_walkthrough.ipynb`[檔案]。
+1. 從 Jupyter 筆記本中，選取右上角的 **[上傳**]，然後流覽至 [下載] 並選取 [檔案] `CNTK_model_scoring_on_Spark_walkthrough.ipynb` 。
 
     ![將 Jupyter 筆記本上傳至 Azure HDInsight Spark 叢集](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "將 Jupyter 筆記本上傳至 Azure HDInsight Spark 叢集")
 
@@ -82,7 +81,7 @@ Jupyter Notebook 中涵蓋下列剩餘步驟。
 
 1. 上傳筆記本之後，按一下筆記本的名稱，然後遵循筆記本本身的指示，瞭解如何載入資料集並執行該文章。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 

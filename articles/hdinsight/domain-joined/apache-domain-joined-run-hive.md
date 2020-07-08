@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78196921"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企業安全性套件的 HDInsight 中設定 Apache Hive 原則
 
 了解如何針對 Apache Hive 設定 Apache Ranger 原則。 在本文中，您會建立兩個 Ranger 原則來限制 hivesampletable 的存取權。 HDInsight 叢集隨附 hivesampletable。 設定原則之後，您可以使用 Excel 和 ODBC 驅動程式連接到 HDInsight 中的 Hive 資料表。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 具有企業安全性套件的 HDInsight 叢集。 請參閱[設定具有 ESP 的 HDInsight 叢集](apache-domain-joined-configure.md)。
 * 安裝 Office 2016、Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone 或 Office 2010 Professional Plus 的工作站。
@@ -27,7 +26,7 @@ ms.locfileid: "78196921"
 ## <a name="connect-to-apache-ranger-admin-ui"></a>連線到 Apache Ranger 系統管理 UI
 **到 Ranger 系統管理 UI**
 
-1. 從瀏覽器流覽至 Ranger 管理 UI， `https://CLUSTERNAME.azurehdinsight.net/Ranger/`其中 CLUSTERNAME 是您的叢集名稱。
+1. 從瀏覽器流覽至 Ranger 管理 UI， `https://CLUSTERNAME.azurehdinsight.net/Ranger/` 其中 CLUSTERNAME 是您的叢集名稱。
 
    > [!NOTE]  
    > Ranger 會使用與 Apache Hadoop 叢集不同的認證。 若要避免瀏覽器使用快取的 Hadoop 認證，請使用新的 InPrivate 瀏覽器視窗連線至 Ranger 系統管理 UI。
@@ -66,7 +65,7 @@ ms.locfileid: "78196921"
     > [!NOTE]  
     > 如果 [選取使用者] 中未填入網域使用者，請稍等一下讓 Ranger 與 AAD 同步處理。
 
-4. 選取 [新增]**** 以儲存規則。
+4. 選取 [新增] 以儲存規則。
 
 5. 重複最後兩個步驟，使用下列屬性建立另一個原則︰
 
@@ -83,11 +82,11 @@ ms.locfileid: "78196921"
 
 在[建立 Hive ODBC 資料來源](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)中可找到相關指示。  
 
- | 屬性  |描述 |
+ | 屬性  |說明 |
  | --- | --- |
  | 資料來源名稱 | 為資料來源指定名稱 |
  | 主機 | 輸入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
- | 連接埠 | 使用 **443** (此連接埠已從 563 變更為 443)。 |
+ | Port | 使用 **443** (此連接埠已從 563 變更為 443)。 |
  | 資料庫 | 使用**預設值**。 |
  | Hive 伺服器類型 | 選取 [Hive Server 2]**** |
  | 機制 | 選取 [Azure HDInsight 服務]**** |
@@ -115,7 +114,7 @@ ms.locfileid: "78196921"
 
 1. 選取 [ **Hivesampletable**]，然後選取 **[下一步]**。
 
-1. 選取 [完成]  。
+1. 選取 [完成]。
 
 1. 在 [匯入資料] **** 對話方塊中，您可以變更或指定查詢。 若要這麼做，請選取 [**屬性**]。 這可能需要幾秒鐘的時間。
 
@@ -142,7 +141,7 @@ ms.locfileid: "78196921"
 
         SELECT * FROM "HIVE"."default"."hivesampletable"
 
-    至：
+    變更為：
 
         SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
 

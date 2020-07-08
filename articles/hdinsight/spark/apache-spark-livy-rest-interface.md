@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: ac3904284ebf20fa1d5e75f9249732be3963f677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206277"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 將遠端作業提交至 HDInsight Spark 叢集
@@ -77,7 +76,7 @@ curl -k --user "admin:mypassword1!" -v -X DELETE "https://<spark_cluster_name>.a
 
 ### <a name="example"></a>範例
 
-刪除具有批次識別碼`5`的批次作業。
+刪除具有批次識別碼的批次作業 `5` 。
 
 ```cmd
 curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/5"
@@ -99,7 +98,7 @@ Livy 可為在叢集上執行的 Spark 作業提供高可用性。 以下是一�
 
 執行下列步驟：
 
-1. 為了方便使用，請設定環境變數。 這個範例是以 Windows 環境為基礎，視您的環境需要修改變數。 以`CLUSTERNAME`適當的`PASSWORD`值取代、和。
+1. 為了方便使用，請設定環境變數。 這個範例是以 Windows 環境為基礎，視您的環境需要修改變數。 `CLUSTERNAME` `PASSWORD` 以適當的值取代、和。
 
     ```cmd
     set clustername=CLUSTERNAME

@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: 08fa94dbe71299a6653df0b40aa5083375526172
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255583"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教學課程：使用 DMS 在離線狀態下將 MongoDB 遷移至 Azure Cosmos DB 的 MongoDB API
@@ -33,7 +32,7 @@ ms.locfileid: "78255583"
 
 在本教學課程中，您會使用 Azure 資料庫移轉服務，從裝載在 Azure 虛擬機器中的 MongoDB，將其中的某個資料集遷移至 Azure Cosmos DB 的 Mongo 版 API。 如果您尚未設定 MongoDB 來源，請參閱[在 Azure 中的 Windows VM 上安裝及設定 MongoDB](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb) 一文。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 
@@ -64,7 +63,7 @@ ms.locfileid: "78255583"
 
     ![顯示資源提供者](media/tutorial-mongodb-to-cosmosdb/portal-select-resource-provider.png)
 
-3. 搜尋 [遷移]，然後在 [ **microsoft.datamigration**] 的右邊，選取 [**註冊**]。
+3. 搜尋移轉，然後在 [Microsoft.DataMigration] 的右邊，選取 [註冊]。
 
     ![註冊資源提供者](media/tutorial-mongodb-to-cosmosdb/portal-register-resource-provider.png)    
 
@@ -151,7 +150,7 @@ ms.locfileid: "78255583"
 
    ![指定來源詳細資料](media/tutorial-mongodb-to-cosmosdb/dms-specify-source.png)
 
-2. 選取 [儲存]  。
+2. 選取 [儲存]。
 
 ## <a name="specify-target-details"></a>指定目標詳細資料
 
@@ -159,7 +158,7 @@ ms.locfileid: "78255583"
 
     ![指定目標詳細資料](media/tutorial-mongodb-to-cosmosdb/dms-specify-target.png)
 
-2. 選取 [儲存]  。
+2. 選取 [儲存]。
 
 ## <a name="map-to-target-databases"></a>對應到目標資料庫
 
@@ -173,7 +172,7 @@ ms.locfileid: "78255583"
 
     ![對應到目標資料庫](media/tutorial-mongodb-to-cosmosdb/dms-map-target-databases.png)
 
-2. 選取 [儲存]  。
+2. 選取 [儲存]。
 3. 在 [集合設定]**** 畫面上，展開集合清單，然後檢閱要遷移的集合清單。
 
     Azure 資料庫移轉服務會自動選取所有存在於來源 MongoDB 執行個體上，卻不存在於目標 Azure Cosmos DB 帳戶上的集合。 如果您想要重新移轉已包含資料的集合，就必須在此刀鋒視窗上明確地選取集合。
@@ -187,7 +186,7 @@ ms.locfileid: "78255583"
 
     ![選取集合資料表](media/tutorial-mongodb-to-cosmosdb/dms-collection-setting.png)
 
-4. 選取 [儲存]  。
+4. 選取 [儲存]。
 
 5. 在 [移轉摘要]**** 畫面上的 [活動名稱]**** 文字方塊中，指定移轉活動的名稱。
 

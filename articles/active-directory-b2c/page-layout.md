@@ -12,10 +12,9 @@ ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78183970"
 ---
 # <a name="page-layout-versions"></a>頁面配置版本
@@ -26,20 +25,20 @@ ms.locfileid: "78183970"
 
 ## <a name="200"></a>2.0.0
 
-- 自我判斷頁（`selfasserted`）
+- 自我判斷頁（ `selfasserted` ）
   - 已新增自訂原則中的[顯示控制項](display-controls.md)支援。
 
 ## <a name="120"></a>1.2.0
 
 - 所有頁面
   -  協助工具修正
-  - 您現在可以`data-preload="true"` [在 HTML 標籤中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content)加入屬性，以控制 CSS 和 JavaScript 的載入順序。
+  - 您現在可以 `data-preload="true"` [在 HTML 標籤中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content)加入屬性，以控制 CSS 和 JavaScript 的載入順序。
     - 將連結的 CSS 檔案與您的 HTML 範本同時載入，使其不會在載入檔案時「閃爍」。
-    - 控制在頁面載入之前提取`script`和執行標記的順序。
-  - [電子郵件] `type=email`欄位現在是，而行動電話鍵盤會提供正確的建議
+    - 控制在 `script` 頁面載入之前提取和執行標記的順序。
+  - [電子郵件] 欄位現在是 `type=email` ，而行動電話鍵盤會提供正確的建議
   - 支援 Chrome 轉譯
 - 統一和自我判斷的頁面
-  - [使用者名稱/電子郵件] 和 [密碼`form` ] 欄位現在會使用 HTML 元素，讓 Edge 和 Internet EXPLORER （IE）適當地儲存此資訊。
+  - [使用者名稱/電子郵件] 和 [密碼] 欄位現在會使用 `form` HTML 元素，讓 Edge 和 Internet Explorer （IE）適當地儲存此資訊。
 
 ## <a name="110"></a>1.1.0
 

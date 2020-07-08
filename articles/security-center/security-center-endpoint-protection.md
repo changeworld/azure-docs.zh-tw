@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
 ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78208537"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure 資訊安全中心中的 Endpoint protection 評估和建議
@@ -55,7 +54,7 @@ Azure 資訊安全中心提供 Endpoint protection 解決方案[支援](security
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center endpoint protection
 
-* 資訊安全中心建議您在匯入**SCEPMpModule （"$env:P Rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1"）** 並執行具有**AMServiceEnabled = false**的**MProtComputerStatus**結果時，「**在虛擬機器上安裝端點保護解決方案**」
+* 資訊安全中心建議您在匯入**SCEPMpModule （"$env:P Rogramfiles\microsoft 安全性 Client\MpProvider\MpProvider.psd1"）** 時，**于虛擬機器上安裝端點保護解決方案**，並使用**AMServiceEnabled = false**執行**MProtComputerStatus**結果
 
 * 資訊安全中心在**MprotComputerStatus**執行時，建議您「**解決電腦上的 endpoint protection 健康情況問題**」，併發生下列任何一種情況：
 
@@ -94,7 +93,7 @@ Azure 資訊安全中心提供 Endpoint protection 解決方案[支援](security
 
 * **HKLM： \ Software\Symantec\Symantec 端點 Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-或者
+Or
 
 * **HKLM： \ Software\Wow6432Node\Symantec\Symantec 端點 Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
@@ -163,7 +162,7 @@ Azure 資訊安全中心提供 Endpoint protection 解決方案[支援](security
 
 當不符合下列任何一項檢查時，資訊安全中心建議您「**解決電腦上的 endpoint protection 健康情況問題**」：
 
-- **"/opt/sophos-av/bin/savlog--maxage = 7 |grep-i "已排程掃描。\* completed "|tail-1 "**，傳回值
+- **"/opt/sophos-av/bin/savlog--maxage = 7 |grep-i "已排程掃描。 \*completed "|tail-1 "**，傳回值
 
 - **"/opt/sophos-av/bin/savlog--maxage = 7 |grep 「掃描已完成**」 |tail-1 "，傳回值
 
@@ -181,4 +180,4 @@ Microsoft Antimalware 擴充功能記錄檔位於： **%Systemdrive%\WindowsAzur
 
 ### <a name="support"></a>支援
 
-如需更多協助，請洽詢[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家。 或提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如需更多協助，請洽詢[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家。 或提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

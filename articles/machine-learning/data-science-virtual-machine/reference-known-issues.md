@@ -10,10 +10,9 @@ ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
 ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206515"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Azure 資料科學虛擬機器的已知問題和疑難排解
@@ -24,7 +23,7 @@ ms.locfileid: "78206515"
 
 ### <a name="installing-packages-with-pip-breaks-dependencies-on-linux"></a>在 Linux 上安裝具有 pip 中斷相依性的套件
 
-安裝`sudo pip install`套件時`pip install` ，請使用而不是。
+`sudo pip install`安裝套件時，請使用而不是 `pip install` 。
 
 ## <a name="disk-encryption-issues"></a>磁碟加密問題
 

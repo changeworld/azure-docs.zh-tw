@@ -11,10 +11,9 @@ ms.date: 12/06/2016
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5195241003b1ce4ea505002e2cc3c10410e6cde1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78183715"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C：提出支援要求
@@ -52,7 +51,7 @@ ms.locfileid: "78183715"
 
      ![[下一步] 按鈕已反白顯示 Azure 入口網站中的問題頁面](./media/support-options/support-problem.png)
 
-1. 在 [連絡資訊] **** 刀鋒視窗中，加入您的連絡資訊。 按一下頁面底部的 [新增]  。
+1. 在 [連絡資訊] **** 刀鋒視窗中，加入您的連絡資訊。 按一下 [建立]。
 
     ![入口網站中已醒目提示 [建立] 按鈕的 [連絡人資訊] 頁面](./media/support-options/support-contact.png)
 

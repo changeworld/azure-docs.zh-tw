@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 7e17547f88465103b61eabec04978ea806ffa2c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78296434"
 ---
 # <a name="stringtonull-azure-cosmos-db"></a>StringToNull （Azure Cosmos DB）
@@ -34,7 +33,7 @@ StringToNull(<str_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例顯示不同類型`StringToNull`的行為。 
+  下列範例顯示 `StringToNull` 不同類型的行為。 
 
 以下是具有有效輸入的範例。
 

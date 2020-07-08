@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255240"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SAP HANA 備份指南
@@ -41,7 +40,7 @@ SAP HANA 提供備份 API，可讓第三方備份工具直接與 SAP HANA 整合
 
 ## <a name="azure-backup-service"></a>Azure 備份服務
 
-第一個顯示的案例是 Azure 備份服務使用 SAP Hana `backint`介面，從 SAP Hana 資料庫執行串流備份的案例。 或者，您也可以使用 Azure 備份服務的一般功能，建立應用程式一致的磁片快照集，並將其傳送至 Azure 備份服務。
+第一個顯示的案例是 Azure 備份服務使用 SAP Hana `backint` 介面，從 SAP Hana 資料庫執行串流備份的案例。 或者，您也可以使用 Azure 備份服務的一般功能，建立應用程式一致的磁片快照集，並將其傳送至 Azure 備份服務。
 
 Azure 備份整合並通過認證，可使用稱為[backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)的專屬 SAP Hana 介面，做為 SAP Hana 的備份解決方案。 如需解決方案的詳細資訊、其功能和可用的 Azure 區域，請參閱[Azure vm 上 SAP Hana 資料庫備份的支援對照表](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)一文。 如需有關 Azure 備份 service for HANA 的詳細資訊和原則，請參閱[關於 Azure vm 中 SAP Hana 資料庫備份](https://docs.microsoft.com/azure/backup/sap-hana-db-about)的文章。 
 
@@ -116,12 +115,12 @@ SAP 不特別偏好 HANA 備份或儲存體快照集之中的任何一個。 它
 > 以磁片快照集為基礎的備份，用於在使用多個資料庫容器的部署中 SAP Hana，需要 HANA 2.0 SP04 的最低版本
 > 
 
-Azure 儲存體不會提供在快照集進程期間連接至 VM 的多個磁片或磁片區的檔案系統一致性。 這表示在快照集期間的應用程式一致性必須由應用程式傳遞，在此案例中 SAP Hana 本身。 [SAP 附注 2039883](https://launchpad.support.sap.com/#/notes/2039883)具有儲存體快照集 SAP Hana 備份的重要資訊。 例如，使用 XFS 檔案系統時，必須先執行**XFS\_凍結**，才能啟動儲存體快照集以提供應用程式一致性（如需**XFS\_凍結**的詳細資料，請參閱[\_XFS 凍結（8）-Linux 手冊頁面](https://linux.die.net/man/8/xfs_freeze)）。
+Azure 儲存體不會提供在快照集進程期間連接至 VM 的多個磁片或磁片區的檔案系統一致性。 這表示在快照集期間的應用程式一致性必須由應用程式傳遞，在此案例中 SAP Hana 本身。 [SAP 附注 2039883](https://launchpad.support.sap.com/#/notes/2039883)具有儲存體快照集 SAP Hana 備份的重要資訊。 例如，使用 XFS 檔案系統時，必須先執行**XFS \_ 凍結**，才能啟動儲存體快照集以提供應用程式一致性（如需**XFS \_ 凍結**的詳細資料，請參閱[XFS \_ 凍結（8）-Linux 手冊頁面](https://linux.die.net/man/8/xfs_freeze)）。
 
 假設有個橫跨四個 Azure 虛擬磁碟的 XFS 檔案系統，下列步驟提供可表示 HANA 資料區域的一致快照集︰
 
 1. 建立 HANA 資料快照集準備
-1. 凍結所有磁片/磁片區的檔案系統（例如，使用**xfs\_凍結**）
+1. 凍結所有磁片/磁片區的檔案系統（例如，使用**xfs \_ 凍結**）
 1. 在 Azure 上建立所有必要的 blob 快照集
 1. 取消凍結檔案系統
 1. 確認 HANA 資料快照集（將刪除快照集）

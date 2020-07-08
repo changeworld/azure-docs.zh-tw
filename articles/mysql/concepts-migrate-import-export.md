@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78163721"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用匯入和匯出移轉您的 MySQL 資料庫
@@ -31,7 +30,7 @@ ms.locfileid: "78163721"
 ## <a name="create-a-database-on-the-azure-database-for-mysql-server"></a>在適用於 MySQL 伺服器的 Azure 資料庫上建立資料庫
 在您要移轉資料的適用於 MySQL 伺服器的 Azure 資料庫上建立空白資料庫。 使用例如 MySQL Workbench、Toad 或 Navicat 的工具來建立資料庫。 資料庫名稱可以與包含傾印資料的資料庫名稱相同，或者您可以建立名稱不同的資料庫。
 
-若要連線，在適用於 MySQL 之 Azure 資料庫的 [概觀]**** 中找到連線資訊。
+若要連線，在適用於 MySQL 之 Azure 資料庫的 [概觀] 中找到連線資訊。
 
 ![在 Azure 入口網站中尋找連線資訊](./media/concepts-migrate-import-export/1_server-overview-name-login.png)
 
@@ -83,7 +82,7 @@ ms.locfileid: "78163721"
 下列範例會從 CSV 檔案匯入資料表：
 1. 以滑鼠右鍵按一下要匯入之資料庫的資料表。 
 2. 瀏覽並選取要匯入的 CSV 檔案，然後按 [下一步]****。 
-3. 選取目的地資料表 (新的或現有的)、選取或取消選取 [匯入前截斷資料表]**** 核取方塊。 按 [下一步]  。
+3. 選取目的地資料表 (新的或現有的)、選取或取消選取 [匯入前截斷資料表]**** 核取方塊。 按 [下一步] 。
 4. 選取編碼方式和要匯入的資料行，然後按 [下一步]****。 
 5. 在 [匯入資料]**** 分頁上，按 [下一步]****。 精靈會據以匯入資料。
 

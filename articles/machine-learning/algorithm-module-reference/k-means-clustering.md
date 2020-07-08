@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
 ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921159"
 ---
 # <a name="module-k-means-clustering"></a>模組： K-表示群集
@@ -101,7 +100,7 @@ K-表示是其中一個最簡單且最知名的*不受監督*學習演算法。 
 
 8.  如果您想要在定型之前先標準化功能，請選取 [正規化**功能**] 選項。
   
-     如果您套用正規化，在定型之前，資料點會`[0,1]`依 MinMaxNormalizer 正規化。
+     如果您套用正規化，在定型之前，資料點會 `[0,1]` 依 MinMaxNormalizer 正規化。
 
 10. 將模型定型。  
   
@@ -145,4 +144,4 @@ K-表示是其中一個最簡單且最知名的*不受監督*學習演算法。 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

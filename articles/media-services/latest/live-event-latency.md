@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
 ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78199643"
 ---
 # <a name="live-event-low-latency-settings"></a>即時事件低延遲設定
@@ -27,7 +26,7 @@ ms.locfileid: "78199643"
 若要使用新的 **LowLatency** 功能，您可以在 **LiveEvent** 上將 **StreamOptionsFlag** 設定為 **LowLatency**。 在建立 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) 以便播放 HLS 時，請將 [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 設定為 1。 串流啟動並執行之後，您可以使用[Azure 媒體播放機](https://ampdemo.azureedge.net/)（AMP 示範頁面），並將播放選項設定為使用 [低延遲啟發學習法設定檔]。
 
 > [!NOTE]
-> 目前，Azure 媒體播放機中的 LowLatency HeuristicProfile 是設計用來以 MPEG 破折號通訊協定播放資料流程，其中包含 CSF 或 CMAF 格式（例如`format=mdp-time-csf`或`format=mdp-time-cmaf`）。 
+> 目前，Azure 媒體播放機中的 LowLatency HeuristicProfile 是設計用來以 MPEG 破折號通訊協定播放資料流程，其中包含 CSF 或 CMAF 格式（例如 `format=mdp-time-csf` 或 `format=mdp-time-cmaf` ）。 
 
 下列 .NET 範例會示範如何在 **LiveEvent** 上設定 **LowLatency**：
 

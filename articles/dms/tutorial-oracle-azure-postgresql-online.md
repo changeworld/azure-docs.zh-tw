@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
 ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255571"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教學課程：使用 DMS 將 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫 online （預覽）
@@ -43,7 +42,7 @@ ms.locfileid: "78255571"
 
 本文說明如何在線上從 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 
@@ -221,7 +220,7 @@ Azure 資料庫移轉服務也可以建立 PostgreSQL 資料表結構描述。 �
     ![顯示入口網站訂用帳戶](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> 如果您需要將來源資料表名稱對應至具有不同名稱的資料表， [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com)請使用電子郵件，我們可以提供腳本來自動化程式。
+> 如果您需要將來源資料表名稱對應至具有不同名稱的資料表，請使用電子郵件 [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) ，我們可以提供腳本來自動化程式。
 
 ### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>當 PostgreSQL 資料表結構描述不存在時
 
@@ -249,7 +248,7 @@ Azure 資料庫移轉服務也可以建立 PostgreSQL 資料表結構描述。 �
     | HR | targetHR.HR | "HR"."COUNTRIES"."COUNTRY_ID" |
     | HR | targetHR.Hr | *無法對應混合大小寫 |
 
-    * 若要在目標于 postgresql 中建立混合大小寫架構和資料表[dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)名稱，請聯絡。 我們可以提供指令碼供您在目標 PostgreSQL 資料庫中設定混合大小寫的資料表結構描述。
+    * 若要在目標于 postgresql 中建立混合大小寫架構和資料表名稱，請聯絡 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) 。 我們可以提供指令碼供您在目標 PostgreSQL 資料庫中設定混合大小寫的資料表結構描述。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>註冊 Microsoft.DataMigration 資源提供者
 
@@ -261,7 +260,7 @@ Azure 資料庫移轉服務也可以建立 PostgreSQL 資料表結構描述。 �
 
     ![顯示資源提供者](media/tutorial-oracle-azure-postgresql-online/portal-select-resource-provider.png)
 
-3. 搜尋 [遷移]，然後在 [ **microsoft.datamigration**] 的右邊，選取 [**註冊**]。
+3. 搜尋移轉，然後在 [Microsoft.DataMigration] 的右邊，選取 [註冊]。
 
     ![註冊資源提供者](media/tutorial-oracle-azure-postgresql-online/portal-register-resource-provider.png)
 

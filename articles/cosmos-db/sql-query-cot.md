@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 25c907644f58ee40ea08e5636d68dc0e84564a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78299482"
 ---
 # <a name="cot-azure-cosmos-db"></a>COT （Azure Cosmos DB）
@@ -34,7 +33,7 @@ COT(<numeric_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例會計算`COT`指定角度的。  
+  下列範例會計算 `COT` 指定角度的。  
   
 ```sql
 SELECT COT(124.1332) AS cot  

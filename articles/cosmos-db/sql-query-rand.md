@@ -8,16 +8,15 @@ ms.date: 09/16/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: e44878b6d65725f08aeca4eb07088315ae2bb78a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302214"
 ---
 # <a name="rand-azure-cosmos-db"></a>RAND （Azure Cosmos DB）
  從 [0，1）傳回隨機產生的數位值。
  
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
   
 ```sql
 RAND ()  
@@ -29,7 +28,7 @@ RAND ()
 
 ## <a name="remarks"></a>備註
 
-  `RAND` 是非決定性函數。 的`RAND`重複呼叫不會傳回相同的結果。
+  `RAND` 是非決定性函數。 的重複呼叫 `RAND` 不會傳回相同的結果。
 
 ## <a name="examples"></a>範例
   

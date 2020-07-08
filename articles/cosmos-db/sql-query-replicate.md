@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 19fcde522c5cb0355e53a5616145f27fada7dad9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302180"
 ---
 # <a name="replicate-azure-cosmos-db"></a>複寫（Azure Cosmos DB）
@@ -26,7 +25,7 @@ REPLICATE(<str_expr>, <num_expr>)
 ## <a name="arguments"></a>引數
   
 *str_expr*  
-   這是字串運算式。
+   是字串運算式。
   
 *num_expr*  
    為數值運算式。 如果*num_expr*為負數或非有限，則結果為未定義。
@@ -40,7 +39,7 @@ REPLICATE(<str_expr>, <num_expr>)
 
 ## <a name="examples"></a>範例
   
-  下列範例顯示如何在查詢中`REPLICATE`使用。
+  下列範例顯示如何 `REPLICATE` 在查詢中使用。
   
 ```sql
 SELECT REPLICATE("a", 3) AS replicate

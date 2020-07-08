@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78244650"
 ---
 # <a name="live-event-types-comparison"></a>實況活動類型比較
@@ -42,7 +41,7 @@ ms.locfileid: "78244650"
 | 輸出中的層級數上限| 與輸入相同|最多6個（請參閱下方的系統預設值）|
 | 發佈摘要的彙總頻寬上限|60 Mbps|N/A|
 | 發佈中單一層級的最大位元速率 |20 Mbps|20 Mbps|
-| 支援多種語言音訊播放軌|是|否|
+| 支援多種語言音訊播放軌|Yes|否|
 | 支援的輸入視訊轉碼器 |H.264/AVC 和 H.265/HEVC|H.264/AVC|
 | 支援的輸出視訊轉碼器|與輸入相同|H.264/AVC|
 | 支援的視訊位元深度、輸入及輸出|最多 10 位元，包括 HDR 10/HLG|8 位元|
@@ -53,15 +52,15 @@ ms.locfileid: "78244650"
 | 輸入通訊協定|RTMP，分散式 MP4 (Smooth Streaming)|RTMP，分散式 MP4 (Smooth Streaming)|
 | Price|請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤|請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤|
 | 最長執行時間| 24 小時 x 365 天，即時線性 | 24小時 x 365 天，即時線性（預覽）|
-| 能夠透過內嵌的 CEA 608/708 字幕資料傳遞|是|是|
-| 開啟即時轉譯的能力|是|是|
+| 能夠透過內嵌的 CEA 608/708 字幕資料傳遞|Yes|Yes|
+| 開啟即時轉譯的能力|Yes|Yes|
 | 插入靜態圖像支援|否|否|
 | 支援透過 API 發出廣告訊號| 否|否|
-| 支援透過 SCTE-35 頻內訊息發出廣告訊號|是|是|
+| 支援透過 SCTE-35 頻內訊息發出廣告訊號|Yes|Yes|
 | 在比重摘要內能從短暫延遲中復原的能力|是|部分|
-| 支援未統一輸入的 GOP|是|否 – 輸入必須有固定的 GOP 持續期間|
-| 支援變動畫面播放速率輸入|是|否 – 輸入必須為固定畫面播放速率。 輕微的差異可以接受，例如：處於高速動態場景的情況。 但是，貢獻摘要無法捨棄畫面播放速率（例如，到15個畫面）。|
-| 在遺失輸入摘要時自動關閉實況活動|否|經過 12 個小時，如果沒有 LiveOutput 仍在執行|
+| 支援未統一輸入的 GOP|Yes|否 – 輸入必須有固定的 GOP 持續期間|
+| 支援變動畫面播放速率輸入|Yes|否 – 輸入必須為固定畫面播放速率。 輕微的差異可以接受，例如：處於高速動態場景的情況。 但是，貢獻摘要無法捨棄畫面播放速率（例如，到15個畫面）。|
+| 在遺失輸入摘要時自動關閉實況活動|No|經過 12 個小時，如果沒有 LiveOutput 仍在執行|
 
 ## <a name="system-presets"></a>系統預設
 

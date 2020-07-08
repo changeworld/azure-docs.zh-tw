@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
 ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206231"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何透過「Azure 監視器」警示觸發複雜動作
@@ -53,7 +52,7 @@ Azure 監視器警示會在觸發時呼叫[動作群組](../../azure-monitor/pla
 
     ![HTTP 要求觸發程式](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP 要求觸發程式")
 
-7.  選取 [使用範例承載來產生結構描述]****。
+7.  選取 [使用範例承載來產生結構描述]。
 
     ![使用範例承載](media/action-groups-logic-app/use-sample-payload-button.png "使用範例承載")
 
@@ -100,7 +99,7 @@ Azure 監視器警示會在觸發時呼叫[動作群組](../../azure-monitor/pla
 
     ![設定 Content-type 標頭](media/action-groups-logic-app/content-type-header.png "設定 Content-type 標頭")
 
-10. 選取**+** [**新增步驟**]，然後選擇 [**加入動作**]。
+10. 選取 **+** [**新增步驟**]，然後選擇 [**加入動作**]。
 
     ![新增動作](media/action-groups-logic-app/add-action.png "新增動作")
 
@@ -110,7 +109,7 @@ Azure 監視器警示會在觸發時呼叫[動作群組](../../azure-monitor/pla
 
 12. 設定 Microsoft Teams 動作。 [Logic Apps 設計工具]**** 會要求您向 Office 365 帳戶進行驗證。 選擇要對其傳送訊息的 [小組識別碼]**** 和 [通道識別碼]****。
 
-13. 使用靜態文字與對動態內容中 \<欄位\> 之參考的組合來設定訊息。 將下列文字複製並貼到 [訊息]**** 欄位中：
+13. 使用靜態文字的組合和動態內容中的參考，來設定訊息 \<fields\> 。 將下列文字複製並貼到 [訊息]**** 欄位中：
 
     ```text
       Activity Log Alert: <eventSource>
@@ -119,7 +118,7 @@ Azure 監視器警示會在觸發時呼叫[動作群組](../../azure-monitor/pla
       resourceId: <resourceId>
     ```
 
-    然後搜尋 \<欄位\>，並以相同名稱的動態內容標記取代這些欄位。
+    然後搜尋，並 \<fields\> 以相同名稱的動態內容標記取代。
 
     > [!NOTE]
     > 有兩個名為 **status** 的動態欄位。 請將這兩個欄位都新增到訊息中。 使用 **activityLog** 屬性包中的欄位，並刪除另一個欄位。 將滑鼠停留在 **status** 欄位上，即可看到完整的欄位參考，如以下螢幕擷取畫面所示：
@@ -186,7 +185,7 @@ Azure 監視器警示會在觸發時呼叫[動作群組](../../azure-monitor/pla
 -  步驟 9 和 10 相同。
 -  針對步驟 11 至 14，請使用下列程序：
 
-   1. 選取**+** [**新增步驟**]，然後選擇 [**加入條件**]。 設定下列條件，只有當輸入資料符合下列值的時候，邏輯應用程式才會執行。  將版本值輸入到文字方塊時，在值的周圍加上引號 ("0.1.1")，以確保系統會將值評估為字串，而不是數值類型。  如果您返回頁面，但是基礎程式碼仍然維持字串類型，則系統不會顯示引號。   
+   1. 選取 **+** [**新增步驟**]，然後選擇 [**加入條件**]。 設定下列條件，只有當輸入資料符合下列值的時候，邏輯應用程式才會執行。  將版本值輸入到文字方塊時，在值的周圍加上引號 ("0.1.1")，以確保系統會將值評估為字串，而不是數值類型。  如果您返回頁面，但是基礎程式碼仍然維持字串類型，則系統不會顯示引號。   
        - `schemaId == Microsoft.Insights/activityLogs`
        - `eventSource == ServiceHealth`
        - `version == "0.1.1"`
@@ -274,7 +273,7 @@ Azure 監視器警示會在觸發時呼叫[動作群組](../../azure-monitor/pla
 - 步驟 9 和 10 相同。
 - 針對步驟 11 至 14，請使用下列程序：
 
-  1. 選取**+** [**新增步驟**]，然後選擇 [**加入條件**]。 設定下列條件，只有當輸入資料符合下列值的時候，邏輯應用程式才會執行。 將版本值輸入到文字方塊時，在值的周圍加上引號 ("2.0")，以確保系統會將值評估為字串，而不是數值類型。  如果您返回頁面，但是基礎程式碼仍然維持字串類型，則系統不會顯示引號。 
+  1. 選取 **+** [**新增步驟**]，然後選擇 [**加入條件**]。 設定下列條件，只有當輸入資料符合下列值的時候，邏輯應用程式才會執行。 將版本值輸入到文字方塊時，在值的周圍加上引號 ("2.0")，以確保系統會將值評估為字串，而不是數值類型。  如果您返回頁面，但是基礎程式碼仍然維持字串類型，則系統不會顯示引號。 
      - `schemaId == AzureMonitorMetricAlert`
      - `version == "2.0"`
        
@@ -296,5 +295,5 @@ Logic Apps 有許多不同的連接器，可讓您在各種應用程式和資料
 ## <a name="next-steps"></a>後續步驟
 * 取得 [Azure 活動記錄警示的概觀](../../azure-monitor/platform/alerts-overview.md)，並了解如何接收警示。  
 * 了解如何[設定 Azure 服務健康狀態通知公佈時的警示](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
-* 深入瞭解[動作群組](../../azure-monitor/platform/action-groups.md)。
+* 深入了解[動作群組](../../azure-monitor/platform/action-groups.md)。
 
