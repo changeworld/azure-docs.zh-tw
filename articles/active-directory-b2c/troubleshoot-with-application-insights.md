@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 403dbe6106cb7a1d277ba672112d2bc45dbc2987
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fad29c32731ee2470354a51acf32e350eb0c4cfc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186262"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85384867"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>使用 Application Insights 收集 Azure Active Directory B2C 記錄
 
@@ -42,28 +42,28 @@ ms.locfileid: "78186262"
 
 ## <a name="configure-the-custom-policy"></a>設定自訂原則
 
-1. 開啟信賴憑證者（RP）檔案，例如*signuporsignin.xml*。
+1. 開啟信賴憑證者（RP）檔案，例如*SignUpOrSignin.xml*。
 1. 將下列屬性新增至 `<TrustFrameworkPolicy>` 元素：
 
-   ```XML
+   ```xml
    DeploymentMode="Development"
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. 如果尚未存在，請將`<UserJourneyBehaviors>`子節點加入至`<RelyingParty>`節點。 它必須緊接在之後`<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`。
-1. 新增下列節點作為 `<UserJourneyBehaviors>` 元素的子節點。 請務必將取代`{Your Application Insights Key}`為您稍早記錄的 Application Insights**檢測金鑰**。
+1. 如果尚未存在，請將 `<UserJourneyBehaviors>` 子節點加入至 `<RelyingParty>` 節點。 它必須緊接在之後 `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` 。
+1. 新增下列節點作為 `<UserJourneyBehaviors>` 元素的子節點。 請務必將取代為 `{Your Application Insights Key}` 您稍早記錄的 Application Insights**檢測金鑰**。
 
-    ```XML
+    ```xml
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
     * `DeveloperMode="true"`告訴 ApplicationInsights 透過處理管線加速遙測。 適用于開發，但受限於大量磁片區。
-    * `ClientEnabled="true"`傳送 ApplicationInsights 用戶端腳本，以追蹤網頁檢視和用戶端錯誤。 您可以在 Application Insights 入口網站的 [ **browserTimings** ] 資料表中查看這些功能。 藉由`ClientEnabled= "true"`設定，您可以將 Application Insights 新增至頁面腳本，並取得頁面載入和 ajax 呼叫、計數、瀏覽器例外狀況與 ajax 失敗的詳細資料，以及使用者和會話計數的時間。 這個欄位是**選擇性**的，而且預設會`false`設定為。
+    * `ClientEnabled="true"`傳送 ApplicationInsights 用戶端腳本，以追蹤網頁檢視和用戶端錯誤。 您可以在 Application Insights 入口網站的 [ **browserTimings** ] 資料表中查看這些功能。 藉由設定 `ClientEnabled= "true"` ，您可以將 Application Insights 新增至頁面腳本，並取得頁面載入和 ajax 呼叫、計數、瀏覽器例外狀況與 ajax 失敗的詳細資料，以及使用者和會話計數的時間。 這個欄位是**選擇性**的，而且預設會設定為 `false` 。
     * `ServerEnabled="true"` 會將現有的 UserJourneyRecorder JSON 當作自訂事件傳送至 Application Insights。
 
     例如：
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
       ...
       TenantId="fabrikamb2c.onmicrosoft.com"

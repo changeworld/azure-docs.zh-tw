@@ -9,18 +9,18 @@ ms.subservice: azuread-dev
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0b87a9cd0ae29281faad4209f4449d547921835d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67378cd363e22351198389f4480e3f6792e885bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154809"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383677"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>操作說明：使用 ADAL 在 Android 上啟用跨應用程式的 SSO
 
@@ -32,7 +32,7 @@ Microsoft 的身分識別平台搭配 SDK，能讓您在整個裝置中，更輕
 
 在本操作說明中，您會了解如何在應用程式中設定 SDK 以提供 SSO 給客戶。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 此操作說明會假設您知道如何：
 

@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f65e98cec04991fe9edef1b81bcb3ecc3d93d76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1b51792c86cfce15fa718040dfcbcc13997ee26
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85384952"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>針對 Azure AD B2C 自訂原則和身分識別體驗架構進行疑難排解
 
@@ -43,7 +43,7 @@ ms.locfileid: "78186350"
 
 * ClaimType 值可能拼字錯誤，或不存在於結構描述中。
 * ClaimType 值至少必須定義於原則內的其中一個檔案中。
-    例如： `<ClaimType Id="issuerUserId">`
+    例如：`<ClaimType Id="issuerUserId">`
 * 如果 ClaimType 定義於擴充檔案中，但也用於基底檔案的 TechnichalProfile 值中，則上傳基底檔案會導致錯誤。
 
 > 錯誤程式碼片段︰`...makes a reference to a ClaimsTransformation with id...`
@@ -52,13 +52,13 @@ ms.locfileid: "78186350"
 
 > 錯誤程式碼片段︰`Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 
-* 檢查`<TrustFrameworkPolicy\>`和`<BasePolicy\>`元素中的 TenantId 值是否符合您的目標 Azure AD B2C 租使用者。
+* 檢查和元素中的 TenantId 值 `<TrustFrameworkPolicy\>` 是否 `<BasePolicy\>` 符合您的目標 Azure AD B2C 租使用者。
 
 ## <a name="troubleshoot-the-runtime"></a>針對執行階段進行疑難排解
 
-* 使用 [**立即執行**]，並`https://jwt.ms`測試您的 web 或行動應用程式以外的原則。 此網站的作用就像信賴憑證者應用程式。 它會顯示 Azure AD B2C 原則所產生的 JSON web 權杖（JWT）內容。
+* 使用 [**立即執行**]，並 `https://jwt.ms` 測試您的 web 或行動應用程式以外的原則。 此網站的作用就像信賴憑證者應用程式。 它會顯示 Azure AD B2C 原則所產生的 JSON web 權杖（JWT）內容。
 
-    若要建立可重新導向至`https://jwt.ms`以進行權杖檢查的測試應用程式：
+    若要建立可重新導向至以進行權杖檢查的測試應用程式 `https://jwt.ms` ：
 
     [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

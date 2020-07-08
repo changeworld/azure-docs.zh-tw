@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7a596454a48a1d6fcee77634363dd38f34a4d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c439bbded7fe55f1edd5eb1597f98b339e340956
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603357"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386329"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署方案
 正在尋找部署 Azure Active Directory （Azure AD）功能的端對端指引嗎？ Azure AD 部署計畫會引導您瞭解成功部署常見 Azure AD 功能所需的商業價值、規劃考慮和操作程式。
@@ -29,7 +29,7 @@ ms.locfileid: "81603357"
 
 角色可能包括下列各項 
 
-|角色 |描述 |
+|角色 |Description |
 |-|-|
 |終端使用者|將會實作為功能的代表性使用者群組。 通常會預覽試驗計畫中的變更。
 |IT 支援經理|IT 支援組織代表誰可以從技術支援人員的觀點來提供這項變更的可支援性。  
@@ -61,17 +61,18 @@ ms.locfileid: "81603357"
 
 | 功能 | 說明|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure Multi-Factor Authentication (MFA) 是 Microsoft 的雙步驟驗證解決方案。 Azure MFA 使用系統管理員核准的驗證方法，協助保護對您的資料和應用程式的存取，同時滿足簡單登入流程的需求。 |
-| [條件式存取](../conditional-access/plan-conditional-access.md)| 透過條件式存取，您可以根據條件，針對可存取雲端應用程式的人員執行自動化存取控制決策。 |
+| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure Multi-Factor Authentication (MFA) 是 Microsoft 的雙步驟驗證解決方案。 Azure MFA 可使用管理員核准的驗證方法，以利保護對資料與應用程式的存取，同時達到對簡單登入程序的需求。 |
+| [條件式存取](../conditional-access/plan-conditional-access.md)| 使用條件式存取，您可以實作自動化的存取控制決定，以根據條件指出誰可以存取雲端應用程式。 |
 | [自助式密碼重設](../authentication/howto-sspr-deployment.md)| 自助式密碼重設可協助您的使用者在不需要系統管理員介入的情況下，重設其密碼。 |
 | [無密碼](../authentication/howto-authentication-passwordless-deployment.md) | 在您的組織中使用 Microsoft Authenticator 應用程式或 FIDO2 安全性金鑰來執行無密碼驗證 |
 
-## <a name="deploy-application-management"></a>部署應用程式管理
+## <a name="deploy-application-and-device-management"></a>部署應用程式和裝置管理
 
 | 功能 | 說明|
 | -| - |
 | [單一登入](../manage-apps/plan-sso-deployment.md)| 單一登入可協助您的使用者在只登入一次時，存取所需的應用程式和資源來執行業務。 登入之後，他們可以從 Microsoft Office 到 SalesForce 到 Box，到內部應用程式，而不需要再次輸入認證。 |
-| [存取面板](../manage-apps/access-panel-deployment-plan.md)| 為使用者提供可探索及存取其所有應用程式的簡單中樞。 使用自助功能讓它們更具生產力，例如要求應用程式和群組的存取權，或代表其他人管理資源的存取權。 |
+| [存取面板](../manage-apps/access-panel-deployment-plan.md)| 為使用者提供可探索及存取其所有應用程式的簡單中樞。 讓他們能藉由自助式功能提升生產力，例如，要求存取應用程式和群組，或代表其他人管理資源的存取權。 |
+| [裝置](../devices/plan-device-deployment.md) | 本文可協助您評估將裝置與 Azure AD 整合的方法、選擇執行計畫，並提供支援的裝置管理工具的重要連結。 |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>部署混合式案例
@@ -80,7 +81,7 @@ ms.locfileid: "81603357"
 | -| -|
 | [以 ADFS 進行密碼雜湊同步處理](../hybrid/plan-migrate-adfs-password-hash-sync.md)| 使用密碼雜湊同步處理時，使用者密碼的雜湊會從內部部署 Active Directory 同步到 Azure AD，讓 Azure AD 驗證使用者，而不需要與內部部署互動 Active Directory |
 | [以 ADFS 通過驗證](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Azure AD 傳遞驗證可協助您的使用者使用相同的密碼登入內部部署和雲端式應用程式。 這項功能可為使用者提供更好的體驗，也就是要記住的密碼較少，並降低 IT 技術服務人員的成本，因為使用者較不可能忘記登入的方式。 當使用者使用 Azure AD 登入時，此功能會向您的內部部署 Active Directory 直接驗證使用者的密碼。 |
-| [Azure AD 應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) |現今的員工想要隨時隨地都能在任何裝置發揮生產力。 他們需要存取雲端中的 SaaS 應用程式和內部部署的公司應用程式。 Azure AD 應用程式 proxy 可讓這種健全的存取不需要昂貴且複雜的虛擬私人網路（Vpn）或非軍事區域（Dmz）。 |
+| [Azure AD 應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) |現今的員工想要隨時隨地都能在任何裝置發揮生產力。 他們需要存取雲端中的 SaaS 應用程式和內部部署的公司應用程式。 Azure AD 應用程式 Proxy 可提供這種健全的存取，且不需要昂貴和複雜的虛擬私人網路 (VPN) 或遮蔽式子網路 (DMZ)。 |
 | [無縫 SSO](../hybrid/how-to-connect-sso-quick-start.md)| 使用者位於連線到公司網路的公司裝置時，Azure Active Directory 無縫單一登入 (Azure AD 無縫 SSO) 就會自動將他們登入。 有了這項功能，使用者就不需要輸入密碼就能登入 Azure AD，而且通常不需要輸入他們的使用者名稱。 這項功能可讓授權使用者輕鬆存取您的雲端應用程式，而不需要任何額外的內部部署元件。 |
 
 ## <a name="deploy-user-provisioning"></a>部署使用者布建

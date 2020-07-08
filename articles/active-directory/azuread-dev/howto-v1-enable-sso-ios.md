@@ -9,18 +9,18 @@ ms.subservice: azuread-dev
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 082cbb931c9dae60b39f9ee5323337bf051fb56d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154775"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383694"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>操作說明：使用 ADAL 在 iOS 上啟用跨應用程式的 SSO
 
@@ -39,7 +39,7 @@ Microsoft 的身分識別平台搭配 SDK，能讓您在整個裝置中，更輕
 * Azure Active Directory B2B
 * Azure Active Directory 條件式存取
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 此操作說明會假設您知道如何：
 
@@ -230,7 +230,7 @@ App3 重新導向 URI： `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 </plist>
 ```
 
-一旦您已在每個應用程式中啟用 keychain 權利，而且您已準備好使用 SSO，請使用中`ADAuthenticationSettings`的下列設定來告訴身分識別 SDK 有關 keychain 的資訊：
+一旦您已在每個應用程式中啟用 keychain 權利，而且您已準備好使用 SSO，請使用中的下列設定來告訴身分識別 SDK 有關 keychain 的資訊 `ADAuthenticationSettings` ：
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
@@ -239,7 +239,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 > [!WARNING]
 > 當您跨應用程式共用金鑰鍊時，任何應用程式都可以刪除使用者，更糟的是可以跨應用程式刪除所有權杖。 如果您的應用程式依賴這些權杖來執行背景工作，這樣會造成可怕的災難。 共用金鑰鏈表示您在整個身分識別 SDK 必須非常小心進行任何移除作業。
 
-這樣就完成了！ SDK 現在會跨所有應用程式共用認證。 使用者清單也會跨應用程式執行個體共用。
+就這麼簡單！ SDK 現在會跨所有應用程式共用認證。 使用者清單也會跨應用程式執行個體共用。
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>開啟訊息代理程式協助 SSO 的 SSO
 
@@ -309,7 +309,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 
 #### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>步驟 4：將設定參數新增至您的應用程式
 
-ADAL 會使用 –canOpenURL: 檢查裝置上是否已安裝訊息代理程式。 在 iOS 9 和更新版本中，Apple 已鎖定應用程式可以查詢的配置。 您必須將 "msauth" 新增至的 LSApplicationQueriesSchemes 區段`info.plist file`。
+ADAL 會使用 –canOpenURL: 檢查裝置上是否已安裝訊息代理程式。 在 iOS 9 和更新版本中，Apple 已鎖定應用程式可以查詢的配置。 您必須將 "msauth" 新增至的 LSApplicationQueriesSchemes 區段 `info.plist file` 。
 
 ```
     <key>LSApplicationQueriesSchemes</key>

@@ -4,19 +4,19 @@ description: 說明 Azure AD B2B 來賓使用者如何使用 [存取面板] 從�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/13/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bce67c81b924d768826402b707c41c085b7767b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386975"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>以來賓使用者的身分從組織離職
 
@@ -49,10 +49,10 @@ Azure Active Directory (Azure AD) B2B 使用者如果不再需要組織的應用
 
 使用者從組織離職後，其帳戶將在目錄中「虛刪除」。 根據預設，使用者物件會移至 Azure AD 中的 [**已刪除的使用者**] 區域，但不會永久刪除30天。 透過虛刪除的作法，若使用者在 30 天內提出要求，系統管理員便可還原使用者帳戶 (包括群組和權限)。
 
-如有需要，租用戶系統管理員在 30 天內隨時可永久刪除帳戶。 若要這樣做：
+如有需要，租用戶系統管理員在 30 天內隨時可永久刪除帳戶。 作法：
 
-1. 在 [[Azure 入口網站]](https://portal.azure.com) 中，選取 **[Azure Active Directory]**。
-2. 在 [管理]  底下選取 [使用者]  。
+1. 在 [Azure 入口網站](https://portal.azure.com) 中，選取 [Azure Active Directory]。
+2. 在 [管理] 下，選取 [使用者]。
 3. 選取 [刪除的使用者]****。
 4. 選取已刪除使用者旁邊的核取方塊，然後選取 [永久刪除]****。
 

@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f5400b47c1e0b4657e40d2c57f8212711bbdaf3f
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: ed10a9258590f8f9037a574bd0322a82dd309a5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927066"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385241"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中設定會話行為
 
@@ -37,15 +37,15 @@ Azure Active Directory B2C （Azure AD B2C）中的[單一登入（SSO）會話]
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 請選取頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您 Azure AD B2C 租使用者的目錄，以確定您使用的是包含 Azure AD B2C 租使用者的目錄。
-3. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
-4. 選取 **[使用者流程（原則）**]。
+3. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+4. 選取 [使用者流程 (原則)]。
 5. 開啟您先前建立的使用者流程。
-6. 選取 [屬性]  。
+6. 選取 [屬性] 。
 7. 設定**web 應用程式會話存留期（分鐘）**、 **web 應用程式會話超時**、**單一登入**設定，並視需要**在登出要求中要求識別碼權杖**。
 
     ![Azure 入口網站中的會話行為屬性設定](./media/session-behavior/session-behavior.png)
 
-8. 按一下 [檔案]  。
+8. 按一下 [檔案] 。
 
 ## <a name="next-steps"></a>後續步驟
 

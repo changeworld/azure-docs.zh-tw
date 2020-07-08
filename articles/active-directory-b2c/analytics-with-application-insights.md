@@ -6,17 +6,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 25e62e7c6865f91daa242a33a0f491f8015be41a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67ea7324419d86fa5b5c23a2f0aa5f8c057495d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80672526"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385972"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>使用 Application Insights 在 Azure Active Directory B2C 中追蹤使用者行為
 
@@ -46,23 +46,23 @@ Application Insights 可以使用相互關聯識別碼來記錄使用者工作�
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 請選取頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您訂用帳戶的目錄，以確定您使用的是包含 Azure 訂用帳戶的目錄。 此租用戶不是您的 Azure AD B2C 租用戶。
 3. 選擇 Azure 入口網站左上角的 [建立資源]****，然後搜尋並選取 [Application Insights]****。
-4. 按一下頁面底部的 [新增]  。
+4. 按一下 [建立]。
 5. 輸入資源的 [名稱]****。
 6. 針對 [應用程式類型]****，選取 [ASP.NET Web 應用程式]****。
 7. 針對 [資源群組]****，選取現有的群組或輸入新群組的名稱。
-8. 按一下頁面底部的 [新增]  。
+8. 按一下 [建立]。
 4. 建立 Application Insights 資源後，開啟資源、展開 [基本資訊]****，並複製檢測金鑰。
 
 ![Application Insights 概觀與檢測金鑰](./media/analytics-with-application-insights/app-insights.png)
 
 ## <a name="define-claims"></a>定義宣告
 
-宣告會在 Azure AD B2C 原則執行期間，提供資料的暫時儲存。 [宣告架構](claimsschema.md)是您宣告宣告的位置。
+宣告會在 Azure AD B2C 原則執行期間，提供資料的暫時儲存。 [宣告結構描述](claimsschema.md)是您宣告自有宣告的位置。
 
-1. 開啟原則的擴充檔案。 例如， <em> `SocialAndLocalAccounts/` </em>。
+1. 開啟您原則的擴充檔。 例如，<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>。
 1. 搜尋 [BuildingBlocks](buildingblocks.md) 元素。 如果此元素不存在，請加以新增。
-1. 找出[ClaimsSchema](claimsschema.md)元素。 如果此元素不存在，請加以新增。
-1. 將下列宣告新增至**ClaimsSchema**元素。 
+1. 尋找 [ClaimsSchema](claimsschema.md) (機器翻譯) 元素。 如果此元素不存在，請加以新增。
+1. 將下列宣告新增至 **ClaimsSchema** 元素。 
 
 ```xml
 <ClaimType Id="EventType">
@@ -104,12 +104,12 @@ Application Insights 可以使用相互關聯識別碼來記錄使用者工作�
 
 技術設定檔可視為是 Azure AD B2C 身分識別體驗架構中的功能。 此資料表會定義技術設定檔，用來開啟工作階段並張貼事件。
 
-| 技術設定檔 | 工作 |
+| 技術設定檔 | Task |
 | ----------------- | -----|
 | AppInsights-一般 | 要包含在所有 Azure Insights 技術設定檔中的一組通用參數。 |
-| AppInsights-SignInRequest | 收到登`SignInRequest`入要求時，會使用一組宣告來記錄事件。 |
-| AppInsights-UserSignUp | 當使用者`UserSignUp`觸發註冊/登入旅程圖中的註冊選項時，記錄事件。 |
-| AppInsights-SignInComplete | 當令牌`SignInComplete`已傳送至信賴憑證者應用程式時，記錄成功完成驗證的事件。 |
+| AppInsights-SignInRequest | 收到登 `SignInRequest` 入要求時，會使用一組宣告來記錄事件。 |
+| AppInsights-UserSignUp | `UserSignUp`當使用者觸發註冊/登入旅程圖中的註冊選項時，記錄事件。 |
+| AppInsights-SignInComplete | `SignInComplete`當令牌已傳送至信賴憑證者應用程式時，記錄成功完成驗證的事件。 |
 
 從入門套件將設定檔新增至 TrustFrameworkExtensions.xml** 檔案。 將這些元素新增至 **ClaimsProviders** 元素：
 
@@ -171,7 +171,7 @@ Application Insights 可以使用相互關聯識別碼來記錄使用者工作�
 
 ```xml
 <!-- Track that we have received a sign in request -->
-<OrchestrationStep Order="1" Type="ClaimsExchange">
+<OrchestrationStep Order="2" Type="ClaimsExchange">
   <ClaimsExchanges>
     <ClaimsExchange Id="TrackSignInRequest" TechnicalProfileReferenceId="AppInsights-SignInRequest" />
   </ClaimsExchanges>
@@ -220,7 +220,7 @@ Application Insights 可以使用相互關聯識別碼來記錄使用者工作�
 儲存並上傳 TrustFrameworkExtensions.xml** 檔案。 然後，從您的應用程式或使用 Azure 入口網站中的**立即執行**呼叫信賴憑證者原則。 您的事件將在數秒內於 Application Insights 中變成可用狀態。
 
 1. 在 Azure Active Directory 租用戶中開啟 **Application Insights** 資源。
-2. 選取 [**使用** > **事件**]。
+2. 選取 [**使用**  >  **事件**]。
 3. 將 [期間]**** 設定為 [過去一小時內]****，將 [間隔]**** 設定為 [3 分鐘]****。  您可能需要選取 [重新整理]**** 才能檢視結果。
 
 ![Application Insights 使用量事件刀鋒視窗](./media/analytics-with-application-insights/app-ins-graphic.png)
@@ -233,7 +233,7 @@ Application Insights 可以使用相互關聯識別碼來記錄使用者工作�
 - **PartnerClaimType** 是出現在 Azure Insights 中的屬性名稱。 使用 `{property:NAME}` 的語法，其中 `NAME` 是新增至事件的屬性。
 - **DefaultValue** 會使用任何字串值或宣告解析程式。
 
-```XML
+```xml
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />
 <InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="{property:loyalty_number}" DefaultValue="{OAUTH-KV:loyalty_number}" />
 <InputClaim ClaimTypeReferenceId="language" PartnerClaimType="{property:language}" DefaultValue="{Culture:RFC5646}" />

@@ -4,29 +4,29 @@ description: 了解如何將 Azure 角色指派給 Windows 裝置的本機系統
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc1812d955590ec0c7372e1311c9d69f93b9957c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128888"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386363"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的裝置上的本機系統管理員群組
 
 若要管理 Windows 裝置，您必須是本機系統管理員群組的成員。 在 Azure Active Directory (Azure AD) 加入程序中，Azure AD 會在裝置上更新此群組的成員資格。 您可以自訂成員資格更新，以符合自己的商務需求。 舉例來說，如果您想要讓技術服務人員能夠在裝置上執行需要系統管理員權限的工作，成員資格更新就有其效益。
 
-本文說明成員資格更新的運作方式，以及如何在 Azure AD Join 期間加以自訂。 本文的內容不適用於**混合式** Azure AD Join。
+本文說明本機系統管理員成員資格更新的運作方式，以及如何在 Azure AD 聯結期間進行自訂。 本文內容不適用於**混合式 Azure AD 加入**的裝置。
 
 ## <a name="how-it-works"></a>運作方式
 
-當您使用 Azure AD Join 連接 Windows 裝置與 Azure AD 時，Azure AD 會將下列安全性準則新增至裝置的本機系統管理員群組：
+當您使用 Azure AD 聯結來連接具有 Azure AD 的 Windows 裝置時，Azure AD 會將下列安全性主體新增至裝置上的本機系統管理員群組：
 
 - Azure AD 全域管理員角色
 - Azure AD 裝置管理員角色 
@@ -48,7 +48,7 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 在 Azure 入口網站中，您可以在 [裝置]**** 頁面上管理裝置管理員角色。 若要開啟 [裝置]**** 頁面：
 
 1. 以全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋並選取 [Azure Active Directory]  。
+1. 搜尋並選取 [Azure Active Directory]。
 1. 在 [管理]**** 區段中，按一下 [裝置]****。
 1. 在 [裝置]**** 頁面上，按一下 [裝置設定]****。
 
@@ -59,10 +59,13 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 >[!NOTE]
 > 此選項需要 Azure AD Premium 租用戶。 
 
-裝置管理員會指派給所有加入 Azure AD 的裝置。 您無法將裝置管理員的範圍設定為一組特定的裝置。 更新裝置管理員角色不一定會對受影響的使用者產生直接的影響。 在使用者已登入的裝置上，會在下列*兩個*動作發生時進行許可權更新：
+裝置管理員會指派給所有加入 Azure AD 的裝置。 您無法將裝置管理員的範圍設定為一組特定的裝置。 更新裝置管理員角色不一定會對受影響的使用者產生直接的影響。 在使用者已登入的裝置上，執行下列*兩個*動作時，會進行許可權提升：
 
-- 已為 Azure AD 傳遞4小時，以適當的許可權發出新的主要重新整理權杖。 
+- 已為 Azure AD 傳遞最多4小時的時間，以適當的許可權發出新的主要重新整理權杖。 
 - 使用者登出並登入，而不是鎖定/解除鎖定，以重新整理其設定檔。
+
+>[!NOTE]
+> 上述動作不適用於先前未登入相關裝置的使用者。 在此情況下，系統管理員許可權會在其第一次登入裝置之後立即套用。 
 
 ## <a name="manage-regular-users"></a>管理一般使用者
 
@@ -88,7 +91,7 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 
 裝置管理員會指派給所有加入 Azure AD 的裝置。 這些管理員無法以一組特定的裝置為範圍。
 
-當您從裝置管理員角色中移除使用者時，這些使用者只要仍在裝置上處於登入狀態，就仍具有本機系統管理員權限。 權限會在下一次登入期間撤銷，或在經過 4 小時後，於簽發新的主要重新整理權杖時撤銷。
+當您從裝置管理員角色中移除使用者時，這些使用者只要仍在裝置上處於登入狀態，就仍具有本機系統管理員權限。 發行新的主要重新整理權杖時，會在下次登入時撤銷許可權。 此撤銷與許可權提升類似，可能需要最多4小時的時間。
 
 ## <a name="next-steps"></a>後續步驟
 

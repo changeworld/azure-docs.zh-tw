@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173927"
 ---
 接下來，如果叢集上的任何伺服器正在執行 Windows Server 2008 R2 或 Windows Server 2012，您必須確認在屬於叢集一部分的每台內部部署伺服器或 Azure VM 上安裝了 Hotfix [KB2854082](https://support.microsoft.com/kb/2854082) 。 在叢集不在的可用性群組中的任何伺服器或 VM，也應該安裝這個 Hotfix。

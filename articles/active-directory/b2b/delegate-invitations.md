@@ -4,19 +4,19 @@ description: 了解如何啟用 Active Directory B2B 外部共同作業，以及
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf872991adbf1361a482f6618e57304e33ec1261
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: c6a2c1a9b908503ee5afc2687ebef473ffed626a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591279"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387175"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>啟用 B2B 外部共同作業和管理誰可以邀請來賓
 
@@ -48,6 +48,9 @@ ms.locfileid: "83591279"
    - **來賓可邀請**：若要允許來賓邀請其他來賓，請將此原則設定為 [是]。
    - **為來賓啟用電子郵件一次性密碼 (預覽)** ：如需一次性密碼功能的詳細資訊，請參閱[電子郵件一次性密碼驗證 (預覽)](one-time-passcode.md)。
    - **共同作業限制**：如需允許或封鎖特定網域邀請的詳細資訊，請參閱[允許或封鎖特定組織中的 B2B 使用者邀請](allow-deny-list.md)。
+   
+   > [!NOTE]
+   > 如果 [**成員可以邀請**] 設定為 [**否**]，而且 **[來賓邀請者角色中的系統管理員和使用者可以邀請**] 設定為 **[是]**，則**來賓邀請者**角色中的使用者仍然可以邀請來賓。
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>將來賓邀請者角色指派給使用者
 
@@ -66,5 +69,4 @@ Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMembe
 - [何謂 Azure AD B2B 共同作業？](what-is-b2b.md)
 - [在沒有邀請的情況下新增 B2B 共同作業來賓使用者](add-user-without-invite.md)
 - [將 B2B 共同作業使用者新增至角色](add-guest-to-role.md)
-
 

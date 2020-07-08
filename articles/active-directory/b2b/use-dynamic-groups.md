@@ -4,19 +4,19 @@ description: 說明如何搭配 Azure Active Directory B2B 共同作業使用 Az
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41e8b81bc3594c6a378757636f70058510a38cc7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6adf7e6c5abbba3c018f9a03b5167aec7537c704
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78226873"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386652"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動態群組與 Azure Active Directory B2B 共同作業
 
@@ -38,11 +38,11 @@ ms.locfileid: "78226873"
    ```
    user.objectId -ne null
    ```
-1. 選取 [確定]  。 規則會出現在 [規則語法] 方塊中：
+1. 選取 [確定]。 規則會出現在 [規則語法] 方塊中：
 
    ![所有使用者動態群組的規則語法](media/use-dynamic-groups/all-user-rule-syntax.png)
 
-1.  選取 [儲存]  。 新的動態群組現在會包含 B2B 來賓使用者和成員使用者。
+1.  選取 [儲存]。 新的動態群組現在會包含 B2B 來賓使用者和成員使用者。
 
 
 1. 選取 [**新增群組**] 頁面上的 [**建立**] 來建立群組。

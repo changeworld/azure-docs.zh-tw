@@ -4,7 +4,7 @@ description: 使用和 Azure AD B2B 共同作業相同的認證，對本機管�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc8c0538bb3362818a4172dd42905fd72b19812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76b17391008160cfea9cbf029932d7081466cf3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386924"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>使用 Azure AD B2B 共同作業對本機管理的夥伴帳戶授與雲端資源的存取權
 
@@ -32,7 +32,7 @@ ms.locfileid: "74272607"
 針對此一目的，常見的方法有二：
 
 - 指定未使用的內部部署 Active Directory 屬性 (例如 extensionAttribute1) 來作為來源屬性。 
-- 或者，從其他屬性衍生 UserType 屬性的值。 例如，如果他們的內部部署 Active Directory UserPrincipalName 屬性的結尾是* \@partners.contoso.com*網域，您就會想要將所有使用者同步處理為「來賓」。
+- 或者，從其他屬性衍生 UserType 屬性的值。 例如，如果他們的內部部署 Active Directory UserPrincipalName 屬性的結尾是* \@ partners.contoso.com*網域，您就會想要將所有使用者同步處理為「來賓」。
  
 如需詳細的屬性需求，請參閱[啟用 UserType 的同步處理](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype)。 
 

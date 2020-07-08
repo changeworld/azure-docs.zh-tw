@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ae99ba6540250d18c0bb5f6365e2ed3b9939ac9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383864"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 應用程式庫中列出您的應用程式
 
@@ -35,7 +35,7 @@ ms.locfileid: "80666932"
 - 共同客戶可取得逐步設定教學課程。
 - 使用系統進行跨網域身分識別管理（[SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)）的客戶，可以針對相同的應用程式使用布建。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 針對同盟應用程式（Open ID 和 SAML/WS-ADDRESSING），應用程式必須支援軟體即服務（SaaS）模型，才能列在 Azure AD 應用程式庫中。 企業資源庫應用程式必須支援多個客戶設定，而不是任何特定的客戶。
 - 針對 Open ID Connect，應用程式必須是 multitenanted，且必須正確地為應用程式實作為[Azure AD 同意架構](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 使用者可以將登入要求傳送給通用端點，讓任何客戶都能同意應用程式。 您可以根據租用戶識別碼和在權杖中收到的使用者 UPN 來控制使用者存取權。
@@ -51,7 +51,7 @@ ms.locfileid: "80666932"
 
 當您測試過應用程式整合與 Azure AD 搭配運作之後，請在[Microsoft 應用程式網路入口網站](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交您的應用程式要求。
 
-如果您在登入後出現下列頁面，請聯絡[AZURE AD SSO 整合小組](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 提供您要用來提交要求的電子郵件帳戶。 慣用的商務電子郵件地址[name@yourbusiness.com](mailto:name@yourbusiness.com) （例如）。 Azure AD 小組會在 Microsoft 應用程式網路入口網站中新增帳戶。
+如果您在登入後出現下列頁面，請聯絡[AZURE AD SSO 整合小組](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 提供您要用來提交要求的電子郵件帳戶。 慣用的商務電子郵件地址（例如） [name@yourbusiness.com](mailto:name@yourbusiness.com) 。 Azure AD 小組會在 Microsoft 應用程式網路入口網站中新增帳戶。
 
 ![SharePoint portal 上的存取要求訊息](./media/howto-app-gallery-listing/errorimage.png)
 
@@ -79,11 +79,11 @@ ms.locfileid: "80666932"
  
 **保護解決方案：**
 
-* MFA 已註冊的來賓使用者會補救他們自己的使用者風險。 這可以由來賓使用者執行安全的密碼變更或重設（https://aka.ms/sspr)在主要租使用者上，這需要在主要租使用者的 MFA 和 SSPR）來完成。 受保護的密碼變更或重設必須在 Azure AD 起始，而不是在內部部署上。
+* MFA 已註冊的來賓使用者會補救他們自己的使用者風險。 這可以由來賓使用者執行安全的密碼變更或重設（在主要租使用者 https://aka.ms/sspr) 上，這需要在主要租使用者的 MFA 和 SSPR）來完成。 受保護的密碼變更或重設必須在 Azure AD 起始，而不是在內部部署上。
 
-* 來賓使用者的系統管理員可以修復其風險。 在此情況下，系統管理員會執行密碼重設（暫時產生密碼）。 這不需要身分識別保護。 來賓使用者的系統管理員可以移至https://aka.ms/RiskyUsers ，然後按一下 [重設密碼]。
+* 來賓使用者的系統管理員可以修復其風險。 在此情況下，系統管理員會執行密碼重設（暫時產生密碼）。 這不需要身分識別保護。 來賓使用者的系統管理員可以移至 https://aka.ms/RiskyUsers ，然後按一下 [重設密碼]。
 
-* 來賓使用者的系統管理員關閉/關閉其風險。 同樣地，這不需要身分識別保護。 系統管理員可以前往https://aka.ms/RiskyUsers ，並按一下 [解除使用者風險]。 不過，系統管理員必須執行逾期的努力，以確保在關閉使用者風險之前，這是誤報的風險評估。 否則，他們會藉由隱藏風險評估而不進行調查，將其和 Microsoft 的資源放在風險中。
+* 來賓使用者的系統管理員關閉/關閉其風險。 同樣地，這不需要身分識別保護。 系統管理員可以前往 https://aka.ms/RiskyUsers ，並按一下 [解除使用者風險]。 不過，系統管理員必須執行逾期的努力，以確保在關閉使用者風險之前，這是誤報的風險評估。 否則，他們會藉由隱藏風險評估而不進行調查，將其和 Microsoft 的資源放在風險中。
 
 > [!NOTE]
 > 如果您有任何存取的問題，請洽詢[AZURE AD SSO 整合小組](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
@@ -136,7 +136,7 @@ ms.locfileid: "80666932"
 
 ## <a name="list-requests-by-customers"></a>列出客戶提出的要求
 
-客戶可以藉由選取 [客戶 > **提交新要求****的應用程式要求**] 來提交列出應用程式的要求。
+客戶可以藉由選取 [**客戶**  >  **提交新要求**的應用程式要求] 來提交列出應用程式的要求。
 
 ![顯示客戶要求的應用程式圖格](./media/howto-app-gallery-listing/customer-submit-request.png)
 
@@ -156,4 +156,4 @@ ms.locfileid: "80666932"
 
 ## <a name="escalations"></a>呈報
 
-若要進行任何呈報，請將電子郵件傳送至[AZURE AD SSO 整合小組](mailto:SaaSApplicationIntegrations@service.microsoft.com) SaaSApplicationIntegrations@service.microsoft.com，我們會儘快回應。
+若要進行任何呈報，請將電子郵件傳送至[AZURE AD SSO 整合小組](mailto:SaaSApplicationIntegrations@service.microsoft.com) SaaSApplicationIntegrations@service.microsoft.com ，我們會儘快回應。

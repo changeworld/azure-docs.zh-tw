@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/21/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3ad4efa3b8126a9b9c6557822f61e3bfff3fe120
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 163087461dbbcfd036b348f69362f0ad0010e791
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154877"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383847"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何讓 AppSource 取得 Azure Active Directory 認證
 
@@ -104,7 +104,7 @@ ms.locfileid: "80154877"
 </tr>
 </table>
 
-### <a name="more-information"></a>詳細資訊
+### <a name="more-information"></a>更多資訊
 
 如需 AppSource 試用體驗的詳細資訊，請參閱[這段影片](https://aka.ms/trialexperienceforwebapps)。 
 
@@ -117,7 +117,7 @@ ms.locfileid: "80154877"
 
 對於 Azure AD 整合，我們使用 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) \(英文\) 搭配社群來提供支援。
 
-我們強烈建議您先在 Stack Overflow 上詢問您的問題，並瀏覽現有的問題，以查看先前是否有人已提出您的問題。 請確定您的問題或意見已標記為[ `[azure-active-directory]`和`[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)。
+我們強烈建議您先在 Stack Overflow 上詢問您的問題，並瀏覽現有的問題，以查看先前是否有人已提出您的問題。 請確定您的問題或意見已標記為[ `[azure-active-directory]` 和 `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)。
 
 使用下列意見區段來提供意見反應，並協助我們改善及設計我們的內容。
 

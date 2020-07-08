@@ -7,23 +7,23 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c659280ebc8c91b53cbc3a176c84397edd942c23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186823"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85384935"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C︰使用 iOS 應用程式登入
 
 Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID Connect。 使用開放式標準通訊協定讓開發人員在選取程式庫來與我們的服務整合時，有更多的選擇。 我們提供本逐步解說和其他類似的逐步解說，協助開發人員撰寫應用程式來連線至 Microsoft 身分識別平台。 大部分實作 [RFC6749 OAuth2 規格](https://tools.ietf.org/html/rfc6749)的程式庫都能連線至 Microsoft 身分識別平台。
 
 > [!WARNING]
-> Microsoft 並不提供第三方程式庫的修正程式，也尚未審查這些程式庫。 此範例使用已藉由 Azure AD B2C 在基本案例中進行過相容性測試的第三方程式庫，稱為 AppAuth。 問題和功能要求應導向到程式庫的開放原始碼專案。 如需詳細資訊，請參閱 [本篇文章](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)。
+> Microsoft 並不提供第三方程式庫的修正程式，也尚未審查這些程式庫。 此範例使用已藉由 Azure AD B2C 在基本案例中進行過相容性測試的第三方程式庫，稱為 AppAuth。 問題和功能要求應導向到程式庫的開放原始碼專案。 如需詳細資訊，請參閱[這篇文章](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)。
 >
 >
 
@@ -34,11 +34,11 @@ Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID 
 
 ## <a name="create-an-application"></a>建立應用程式
 
-接下來，在您的 Azure AD B2C 租使用者中註冊應用程式。 這會提供 Azure AD 與您的應用程式安全地通訊所需的資訊。
+然後，在您的 Azure AD B2C 租用戶中註冊應用程式。 這會為 Azure AD 提供其所需的資訊，使其與應用程式安全地進行通訊。
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-記錄 [應用程式 (用戶端) 識別碼]****，以便在稍後的步驟中使用。
+記錄 [應用程式 (用戶端) 識別碼]，以便在稍後的步驟中使用。
 
 另請記錄您的自訂重新導向 URI，以便在稍後的步驟中使用。 例如： `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
@@ -47,7 +47,7 @@ Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID 
 
 * 在 [註冊屬性]**** 下方，選取 [顯示名稱]**** 屬性。  您也可以選取其他屬性。
 * 在 [應用程式宣告]**** 下方，選取 [顯示名稱]**** 和 [使用者的物件識別碼]**** 宣告。 您也可以選取其他宣告。
-* 建立每個使用者流程之後，請複製其 [名稱]****。 當您儲存使用者流程時，使用者流程名稱前面會加上 `b2c_1_`。  您稍後需要用到此使用者流程名稱。
+* 建立每個使用者流程之後，請複製其 [名稱]。 當您儲存使用者流程時，使用者流程名稱前面會加上 `b2c_1_`。  您稍後需要用到此使用者流程名稱。
 
 建立您的使用者流程後，就可以開始建置您的應用程式。
 
@@ -62,7 +62,7 @@ Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID 
 > AppAuth 支援 iOS 7 及更新版本。  不過，若要在 Google 上支援社交登入，需要有 SFSafariViewController，而這需要 iOS 9 或更新版本。
 >
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 您可以指定授權端點和權杖端點 URI，以設定與 Azure AD B2C 通訊。  若要產生這些 URI，您需要下列資訊︰
 * 租用戶識別碼 (例如，contoso.onmicrosoft.com)
@@ -92,8 +92,8 @@ OIDServiceConfiguration *configuration =
 
 設定或擷取授權服務組態之後，就可以建構授權要求。 若要建立要求，您需要下列資訊︰
 
-* 您先前記錄的用戶端識別碼（應用程式識別碼）。 例如： `00000000-0000-0000-0000-000000000000` 。
-* 您稍早記錄的自訂重新導向 URI。 例如： `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
+* 您先前記錄的用戶端識別碼 (應用程式識別碼)。 例如： `00000000-0000-0000-0000-000000000000` 。
+* 您先前記錄的自訂重新導向 URI。 例如： `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
 這兩個項目應該已在您[註冊應用程式](#create-an-application)時儲存。
 

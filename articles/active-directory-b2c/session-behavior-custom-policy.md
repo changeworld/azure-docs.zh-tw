@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f6af5e8e1cfadd302eadfedf189a6710ac4aeca
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966593"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385258"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則設定會話行為
 
@@ -36,7 +36,7 @@ Azure Active Directory B2C （Azure AD B2C）中的[單一登入（SSO）會話]
 
 若要變更工作階段行為和 SSO 組態，您可以在 [RelyingParty](relyingparty.md) 元素內新增 **UserJourneyBehaviors** 元素。  **UserJourneyBehaviors** 元素必須緊跟著 **DefaultUserJourney**。 您的**UserJourneyBehavors**元素看起來應該如下列範例所示：
 
-```XML
+```xml
 <UserJourneyBehaviors>
    <SingleSignOn Scope="Application" />
    <SessionExpiryType>Absolute</SessionExpiryType>
@@ -48,9 +48,9 @@ Azure Active Directory B2C （Azure AD B2C）中的[單一登入（SSO）會話]
 
 ### <a name="configure-the-applications"></a>設定應用程式
 
-當您將使用者重新導向至 Azure AD B2C 登出端點（適用于 OAuth2 和 SAML 通訊協定）時，Azure AD B2C 會從瀏覽器清除使用者的會話。  若要允許[單一登出](session-overview.md#single-sign-out)，請從 Azure 入口網站`LogoutUrl`設定應用程式的：
+當您將使用者重新導向至 Azure AD B2C 登出端點（適用于 OAuth2 和 SAML 通訊協定）時，Azure AD B2C 會從瀏覽器清除使用者的會話。  若要允許[單一登出](session-overview.md#single-sign-out)，請 `LogoutUrl` 從 Azure 入口網站設定應用程式的：
 
-1. 流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
+1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 1. 在頁面右上角按一下您的帳戶，以選擇您的 Azure AD B2C 目錄。
 1. 在左側功能表中，選擇 [ **Azure AD B2C**]，選取 [**應用程式註冊**]，然後選取您的應用程式。
 1. 選取 [**設定**]，選取 [**屬性**]，然後尋找 [**登出 URL** ] 文字方塊。 
@@ -60,7 +60,7 @@ Azure Active Directory B2C （Azure AD B2C）中的[單一登入（SSO）會話]
 若要支援單一登出，JWT 和 SAML 的權杖簽發者技術設定檔都必須指定：
 
 - 通訊協定名稱，例如`<Protocol Name="OpenIdConnect" />`
-- 會話技術設定檔的參考，例如`UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />`。
+- 會話技術設定檔的參考，例如 `UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />` 。
 
 下列範例說明具有單一登出的 JWT 和 SAML 權杖簽發者：
 
@@ -74,7 +74,7 @@ Azure Active Directory B2C （Azure AD B2C）中的[單一登入（SSO）會話]
       <Protocol Name="OpenIdConnect" />
       <OutputTokenFormat>JWT</OutputTokenFormat>
       ...    
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />
     </TechnicalProfile>
 
     <!-- Session management technical profile for OIDC based tokens -->

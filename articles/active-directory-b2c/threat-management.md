@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a438363b054361420222804dffac7973470e82e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5184698cab1874f327173fb30cf527feee48cad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183596"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85384969"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>管理對 Azure Active Directory B2C 中的資源與資料的威脅
 
@@ -40,7 +40,7 @@ Azure AD B2C 使用複雜的策略來鎖定帳戶。 帳戶會依據要求的 IP
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)
 1. 使用上方功能表中的 [**目錄 + 訂**用帳戶] 篩選，選取包含您 Azure AD B2C 租使用者的目錄。
-1. 在左側功能表中，選取 [Azure AD B2C]  。 或者，選取 [所有服務]  ，然後搜尋並選取 [Azure AD B2C]  。
+1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
 1. 在 [**安全性**] 底下，選取 **[驗證方法（預覽）**]，然後選取 [**密碼保護**]。
 1. 輸入您想要的密碼保護設定，然後選取 [**儲存**]。
 
@@ -49,7 +49,7 @@ Azure AD B2C 使用複雜的策略來鎖定帳戶。 帳戶會依據要求的 IP
 
 ## <a name="view-locked-out-accounts"></a>查看鎖定的帳戶
 
-若要取得鎖定帳戶的相關資訊，您可以檢查 Active Directory 登[入活動報告](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)。 在 [**狀態**] 底下，選取 [**失敗**]。 嘗試登入失敗，登入**錯誤碼**為`50053` ，指出已鎖定的帳戶：
+若要取得鎖定帳戶的相關資訊，您可以檢查 Active Directory 登[入活動報告](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)。 在 [**狀態**] 底下，選取 [**失敗**]。 嘗試登入失敗，登入**錯誤碼**為， `50053` 指出已鎖定的帳戶：
 
 ![顯示已鎖定帳戶的 Azure AD 登入報告區段](./media/threat-management/portal-01-locked-account.png)
 

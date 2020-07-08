@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c9ed0e329b498112feafaf21c34e85ea436cbb77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71040f831ed7a64f2bc7be7f3a75218976fc2559
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332811"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385938"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自訂原則中定義 Azure MFA 技術設定檔
 
@@ -42,7 +42,7 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 下列範例顯示 Azure MFA 技術設定檔：
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-SendSms">
     <DisplayName>Send Sms</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -57,43 +57,43 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 **InputClaims**元素包含要傳送至 Azure MFA 的宣告清單。 您也可以將宣告的名稱對應至 MFA 技術設定檔中定義的名稱。
 
-| ClaimReferenceId | 必要 | 描述 |
+| ClaimReferenceId | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| userPrincipalName | 是 | 擁有電話號碼之使用者的識別碼。 |
-| phoneNumber | 是 | 要用來傳送 SMS 代碼的電話號碼。 |
-| companyName | 否 |SMS 中的公司名稱。 如果未提供，則會使用您的應用程式名稱。 |
-| 地區設定 | 否 | SMS 的地區設定。 如果未提供，則會使用使用者的瀏覽器地區設定。 |
+| userPrincipalName | Yes | 擁有電話號碼之使用者的識別碼。 |
+| phoneNumber | Yes | 要用來傳送 SMS 代碼的電話號碼。 |
+| companyName | No |SMS 中的公司名稱。 如果未提供，則會使用您的應用程式名稱。 |
+| 地區設定 | No | SMS 的地區設定。 如果未提供，則會使用使用者的瀏覽器地區設定。 |
 
 **InputClaimsTransformations**元素可能包含**InputClaimsTransformation**元素的集合，這些專案是用來修改輸入宣告，或在傳送至 Azure MFA 服務之前產生新的宣告。
 
 ### <a name="output-claims"></a>輸出宣告
 
-Azure MFA 通訊協定提供者不會傳回任何**OutputClaims**，因此不需要指定輸出宣告。 不過，只要您設定了`DefaultValue`屬性，您就可以包含 Azure MFA 識別提供者未傳回的宣告。
+Azure MFA 通訊協定提供者不會傳回任何**OutputClaims**，因此不需要指定輸出宣告。 不過，只要您設定了屬性，您就可以包含 Azure MFA 識別提供者未傳回的宣告 `DefaultValue` 。
 
 **OutputClaimsTransformations** 元素可能含有 **OutputClaimsTransformation** 的集合，用於修改輸出宣告或產生新的輸出宣告。
 
 ### <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| 作業 | 是 | 必須是**OneWaySMS**。  |
+| 操作 | Yes | 必須是**OneWaySMS**。  |
 
 #### <a name="ui-elements"></a>UI 元素
 
-您可以使用下列中繼資料來設定傳送 SMS 失敗時所顯示的錯誤訊息。 應該在[自我](self-asserted-technical-profile.md)判斷技術設定檔中設定中繼資料。 可以將錯誤訊息[當地語系化](localization-string-ids.md#azure-mfa-error-messages)。
+您可以使用下列中繼資料來設定傳送 SMS 失敗時所顯示的錯誤訊息。 應該在[自我](self-asserted-technical-profile.md)判斷技術設定檔中設定中繼資料。 錯誤訊息可以[當地語系化](localization-string-ids.md#azure-mfa-error-messages)。
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| UserMessageIfCouldntSendSms | 否 | 如果提供的電話號碼不接受 SMS，則為使用者錯誤訊息。 |
-| UserMessageIfInvalidFormat | 否 | 如果提供的電話號碼不是有效的電話號碼，則為使用者錯誤訊息。 |
-| UserMessageIfServerError | 否 | 如果伺服器發生內部錯誤，則為使用者錯誤訊息。 |
-| UserMessageIfThrottled| 否 | 使用者錯誤訊息（如果要求已節流）。|
+| UserMessageIfCouldntSendSms | No | 如果提供的電話號碼不接受 SMS，則為使用者錯誤訊息。 |
+| UserMessageIfInvalidFormat | No | 如果提供的電話號碼不是有效的電話號碼，則為使用者錯誤訊息。 |
+| UserMessageIfServerError | No | 如果伺服器發生內部錯誤，則為使用者錯誤訊息。 |
+| UserMessageIfThrottled| No | 使用者錯誤訊息（如果要求已節流）。|
 
 ### <a name="example-send-an-sms"></a>範例：傳送 SMS
 
 下列範例顯示透過 SMS 傳送程式碼時所使用的 Azure MFA 技術設定檔。
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-SendSms">
   <DisplayName>Send Sms</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -119,41 +119,41 @@ Azure MFA 通訊協定提供者不會傳回任何**OutputClaims**，因此不需
 
 **InputClaims**元素包含要傳送至 Azure MFA 的宣告清單。 您也可以將宣告的名稱對應至 MFA 技術設定檔中定義的名稱。
 
-| ClaimReferenceId | 必要 | 描述 |
+| ClaimReferenceId | 必要 | 說明 |
 | --------- | -------- | ----------- | ----------- |
-| phoneNumber| 是 | 與先前用來傳送程式碼的電話號碼相同。 它也可用來尋找電話驗證會話。 |
-| verificationCode  | 是 | 要驗證的使用者所提供的驗證碼 |
+| phoneNumber| Yes | 與先前用來傳送程式碼的電話號碼相同。 它也可用來尋找電話驗證會話。 |
+| verificationCode  | Yes | 要驗證的使用者所提供的驗證碼 |
 
 **InputClaimsTransformations**元素可能包含**InputClaimsTransformation**元素的集合，這些專案是用來修改輸入宣告或產生新的專案，然後才呼叫 Azure MFA 服務。
 
 ### <a name="output-claims"></a>輸出宣告
 
-Azure MFA 通訊協定提供者不會傳回任何**OutputClaims**，因此不需要指定輸出宣告。 不過，只要您設定了`DefaultValue`屬性，您就可以包含 Azure MFA 識別提供者未傳回的宣告。
+Azure MFA 通訊協定提供者不會傳回任何**OutputClaims**，因此不需要指定輸出宣告。 不過，只要您設定了屬性，您就可以包含 Azure MFA 識別提供者未傳回的宣告 `DefaultValue` 。
 
 **OutputClaimsTransformations** 元素可能含有 **OutputClaimsTransformation** 的集合，用於修改輸出宣告或產生新的輸出宣告。
 
 ### <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| 作業 | 是 | 必須**驗證** |
+| 操作 | Yes | 必須**驗證** |
 
 #### <a name="ui-elements"></a>UI 元素
 
-下列中繼資料可用來設定程式碼驗證失敗時所顯示的錯誤訊息。 應該在[自我](self-asserted-technical-profile.md)判斷技術設定檔中設定中繼資料。 可以將錯誤訊息[當地語系化](localization-string-ids.md#azure-mfa-error-messages)。
+下列中繼資料可用來設定程式碼驗證失敗時所顯示的錯誤訊息。 應該在[自我](self-asserted-technical-profile.md)判斷技術設定檔中設定中繼資料。 錯誤訊息可以[當地語系化](localization-string-ids.md#azure-mfa-error-messages)。
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| UserMessageIfMaxAllowedCodeRetryReached| 否 | 使用者錯誤訊息（如果使用者嘗試驗證碼太多次）。 |
-| UserMessageIfServerError | 否 | 如果伺服器發生內部錯誤，則為使用者錯誤訊息。 |
-| UserMessageIfThrottled| 否 | 如果要求已節流，則為使用者錯誤訊息。|
-| UserMessageIfWrongCodeEntered| 否| 如果輸入要驗證的程式碼錯誤，則會顯示使用者錯誤訊息。|
+| UserMessageIfMaxAllowedCodeRetryReached| No | 使用者錯誤訊息（如果使用者嘗試驗證碼太多次）。 |
+| UserMessageIfServerError | No | 如果伺服器發生內部錯誤，則為使用者錯誤訊息。 |
+| UserMessageIfThrottled| No | 如果要求已節流，則為使用者錯誤訊息。|
+| UserMessageIfWrongCodeEntered| No| 如果輸入要驗證的程式碼錯誤，則會顯示使用者錯誤訊息。|
 
 ### <a name="example-verify-a-code"></a>範例：驗證程式代碼
 
 下列範例顯示用來驗證程式代碼的 Azure MFA 技術設定檔。
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-VerifySms">
     <DisplayName>Verify Sms</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

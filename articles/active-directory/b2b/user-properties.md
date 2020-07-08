@@ -4,20 +4,20 @@ description: Azure Active Directory B2B 來賓使用者屬性和邀請兌換前�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 03/19/2020
+ms.topic: how-to
+ms.date: 06/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40f5002e361653614c966dc43301afa83eb7b200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7271c4de6d5c186c9e561aa37a140eaa04cbc0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386618"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 共同作業使用者的屬性
 
@@ -28,7 +28,7 @@ ms.locfileid: "80050803"
 - 狀態 1：位於 Azure AD 的外部執行個體並表示為提出邀請之組織中的來賓使用者。 在此情況下，B2B 使用者會使用屬於受邀租用戶的 Azure AD 帳戶登入。 如果夥伴組織未使用 Azure AD，仍會在 Azure AD 中建立來賓使用者。 他們必須兌換其邀請，而且 Azure AD 必須確認其電子郵件地址。 此排列也稱為 Just-In-Time (JIT) 租用或「熱門」租用。
 
    > [!IMPORTANT]
-   > 自**2021 年3月31日起**，Microsoft 將不再支援兌換邀請，方法是建立適用于 B2B 共同作業案例的非受控 Azure AD 帳戶和租使用者。 在準備過程中，我們鼓勵客戶選擇[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且很高興能建立更多共同作業的方式。
+   > **自 2021 年 3 月 31 日起**，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
 
 - 狀態2：位於 Microsoft 或其他帳戶中，並表示為主機組織中的來賓使用者。 在此情況下，來賓使用者會使用 Microsoft 帳戶或社交帳戶 (google.com 或類似帳戶) 來登入。 受邀使用者的身分識別會在供應項目兌換期間，建立為邀請方組織目錄中的 Microsoft 帳戶。
 
@@ -104,7 +104,11 @@ ms.locfileid: "80050803"
 ![顯示 [使用者設定] 中 [外部使用者] 選項的螢幕擷取畫面](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全域通訊清單中顯示來賓使用者？
-是。 根據預設，來賓物件不會在貴組織的全域通訊清單中顯示，但您可以使用 Azure Active Directory PowerShell 讓其顯示。 如需詳細資訊，請參閱[管理 Office 365 群組中的來賓存取](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#add-guests-to-the-global-address-list) \(機器翻譯\) 中的＜能否在全域通訊清單中顯示來賓物件？＞****。 
+是。 根據預設，來賓物件不會在貴組織的全域通訊清單中顯示，但您可以使用 Azure Active Directory PowerShell 讓其顯示。 如需詳細資訊，請參閱[管理 Office 365 群組中的來賓存取](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups) \(機器翻譯\) 中的＜能否在全域通訊清單中顯示來賓物件？＞****。
+
+## <a name="can-i-update-a-guest-users-email-address"></a>我可以更新來賓使用者的電子郵件地址嗎？
+
+如果來賓使用者接受您的邀請，且後續變更其電子郵件地址，新的電子郵件不會自動同步至您目錄中的來賓使用者物件。 Mail 屬性是透過[MICROSOFT GRAPH API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)建立的。 您可以透過 Exchange 系統管理中心或[Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)更新 mail 屬性，而變更會反映在 Azure AD 來賓使用者物件中。
 
 ## <a name="next-steps"></a>後續步驟
 

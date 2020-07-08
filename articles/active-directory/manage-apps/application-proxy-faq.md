@@ -3,24 +3,24 @@ title: Azure AD 應用程式 Proxy 的常見問題 |Microsoft Docs
 description: 瞭解有關使用 Azure AD 應用程式 Proxy 將內部部署應用程式發佈至遠端使用者的常見問題（FAQ）的解答。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386278"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory （Azure AD）應用程式 Proxy 的常見問題
 
@@ -65,12 +65,19 @@ ms.locfileid: "82583076"
 其中包含隨連接器一起安裝的效能監視器計數器。 檢視方法：  
 
 1. 選取 [**開始**]，輸入 "Perfmon"，然後按 enter。
-2. 選取 [**效能監視器**]，然後**+** 按一下綠色圖示。
+2. 選取 [**效能監視器**]，然後按一下綠色 **+** 圖示。
 3. 新增您想要監視的**MICROSOFT AAD 應用程式 Proxy 連接器**計數器。
 
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Azure AD 應用程式 Proxy 連接器是否必須與資源位於相同的子網？
 
 連接器不一定要位於相同的子網上。 不過，它需要資源的名稱解析（DNS、主機檔案）和必要的網路連線（路由傳送至資源、在資源上開啟埠等等）。 如需建議，請參閱[使用 Azure Active Directory 應用程式 Proxy 時的網路拓撲考慮](application-proxy-network-topology.md)。
+
+### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>我可以在哪些版本的 Windows Server 上安裝連接器？
+應用程式 Proxy 需要 Windows Server 2012 R2 或更新版本。 Windows Server 2019 目前有 HTTP2 的限制。 若要在 Windows Server 2019 上成功使用連接器，您必須新增下列登錄機碼，然後重新開機伺服器：
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+    ```
+
 
 ## <a name="application-configuration"></a>應用程式設定
 
@@ -146,13 +153,13 @@ SharePoint 行動裝置[應用程式](https://docs.microsoft.com/sharepoint/admi
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>我可以使用 Azure AD 應用程式 Proxy 做為 AD FS Proxy （例如 Web 應用程式 Proxy）嗎？
 
-不可以。 Azure AD 應用程式 Proxy 是設計用來與 Azure AD 搭配運作，並不符合作為 AD FS Proxy 的需求。
+否。 Azure AD 應用程式 Proxy 是設計用來與 Azure AD 搭配運作，並不符合作為 AD FS Proxy 的需求。
 
 ## <a name="websocket"></a>WebSocket
 
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>WebSocket 支援適用于 QlikSense 以外的應用程式嗎？
 
-目前，WebSocket 通訊協定支援仍處於公開預覽狀態，對其他應用程式可能無法使用。 有些客戶使用 WebSocket 通訊協定與其他應用程式的混合成功。 如果您測試過這類案例，我們很樂意聽到您的結果。 請將您的aadapfeedback@microsoft.com意見反應傳送給我們。
+目前，WebSocket 通訊協定支援仍處於公開預覽狀態，對其他應用程式可能無法使用。 有些客戶使用 WebSocket 通訊協定與其他應用程式的混合成功。 如果您測試過這類案例，我們很樂意聽到您的結果。 請將您的意見反應傳送給我們 aadapfeedback@microsoft.com 。
 
 Windows Admin Center （WAC）或遠端桌面 Web 用戶端（HTML5）中的功能（檢視、PowerShell 和遠端桌面服務）目前無法透過 Azure AD 應用程式 Proxy 來處理。
 
@@ -160,7 +167,7 @@ Windows Admin Center （WAC）或遠端桌面 Web 用戶端（HTML5）中的功�
 
 ### <a name="does-using-link-translation-affect-performance"></a>使用連結轉譯會影響效能嗎？
 
-可以。 連結轉譯會影響效能。 應用程式 Proxy 服務會掃描應用程式中是否有硬式編碼的連結，並將它們取代為其各自的已發佈外部 Url，然後才呈現給使用者。 
+是。 連結轉譯會影響效能。 應用程式 Proxy 服務會掃描應用程式中是否有硬式編碼的連結，並將它們取代為其各自的已發佈外部 Url，然後才呈現給使用者。 
 
 為了達到最佳效能，我們建議您藉由設定[自訂網域](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)來使用相同的內部和外部 url。 如果無法使用自訂網域，您可以在行動裝置上使用我的應用程式安全登入延伸模組或 Microsoft Edge 瀏覽器來改善連結轉譯效能。 請參閱重新[導向使用 Azure AD 應用程式 Proxy 發佈之應用程式的硬式編碼連結](application-proxy-configure-hard-coded-link-translation.md)。
 

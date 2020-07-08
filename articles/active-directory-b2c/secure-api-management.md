@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ffadca550a3a28b0ab490dd43c3b884602c93df
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638488"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385411"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保護 Azure API 管理 API
 
@@ -35,23 +35,23 @@ ms.locfileid: "83638488"
 
 當您在 Azure API 管理中使用 Azure AD B2C 保護 API 時，您需要數個適用於在 APIM 中建立之[輸入原則](../api-management/api-management-howto-policies.md)的值。 首先，記錄您先前在 Azure AD B2C 租用戶中建立之應用程式的應用程式識別碼。 如果您使用的是您在先決條件中所建立的應用程式，請使用 *webapp1* 的應用程式識別碼。
 
-您可以使用目前的**應用程式**體驗，或使用新整合的**應用程式註冊 (預覽)** 體驗來取得應用程式識別碼。 [深入了解新的體驗](https://aka.ms/b2cappregintro)。
+若要在您的 Azure AD B2C 租用戶中註冊應用程式，您可以使用我們新的整合**應用程式註冊**體驗，或使用舊版**應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
 
-#### <a name="applications"></a>[應用程式](#tab/applications/)
-
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
-1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
-1. 在 [管理] 底下，選取 [應用程式]。
-1. 針對 *webapp1* 或您先前建立的另一個應用程式，記錄 [應用程式識別碼] 欄的值。
-
-#### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
 1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
-1. 選取 [應用程式註冊 (預覽)]，然後選取 [擁有的應用程式] 索引標籤。
+1. 選取 [**應用程式註冊**]，然後選取 [**擁有的應用程式**] 索引標籤。
 1. 針對 *webapp1* 或您先前建立的另一個應用程式，記錄 [應用程式 (用戶端) 識別碼] 欄的值。
+
+#### <a name="applications-legacy"></a>[應用程式 (舊版)](#tab/applications-legacy/)
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
+1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+1. 在 [**管理**] 底下，選取 **[應用程式（舊版）**]。
+1. 針對 *webapp1* 或您先前建立的另一個應用程式，記錄 [應用程式識別碼] 欄的值。
 
 * * *
 
@@ -88,7 +88,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 1. 選取 [API]。
 1. 選取您想要使用 Azure AD B2C 保護的 API。
 1. 選取 [設計] 索引標籤。
-1. 在 [輸入處理] 底下，選取 [\</\>] 以開啟原則程式碼編輯器。
+1. 在 [**輸入處理**] 底下，選取 **\</\>** 以開啟 [原則程式碼編輯器]。
 1. 將下列 `<validate-jwt>` 標記放置於 `<inbound>` 原則內。
 
     1. 使用原則已知的設定 URL 來更新 `<openid-config>` 元素中的 `url` 值。
@@ -171,7 +171,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 1. 選取 Postman 中的 [傳送] 按鈕，以執行要求。 如果您已正確設定所有內容，您應該會看到具有一組會議喇叭的 JSON 回應 (此處顯示的內容已截斷)：
 
-    ```JSON
+    ```json
     {
       "collection": {
         "version": "1.0",
@@ -206,7 +206,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 1. 選取 [傳送] 按鈕，以執行要求。 使用無效的權杖時，預期的結果是 `401` 未經授權的狀態碼：
 
-    ```JSON
+    ```json
     {
         "statusCode": 401,
         "message": "Unauthorized. Access token is missing or invalid."
@@ -219,7 +219,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 數個應用程式通常會與單一 REST API 互動。 若要讓您的 API 接受適用於多個應用程式的權杖，請將其應用程式識別碼新增至 APIM 輸入原則中的 `<audiences>` 元素。
 
-```XML
+```xml
 <!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
@@ -229,7 +229,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 同樣地，若要支援多個權杖簽發者，將其端點 URI 新增至 APIM 輸入原則中的 `<issuers>` 元素。
 
-```XML
+```xml
 <!-- Accept tokens from multiple issuers -->
 <issuers>
     <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
@@ -249,7 +249,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 下列範例 APIM 輸入原則說明如何接受 b2clogin.com 和 login.microsoftonline.com 所簽發的權杖。 此外，其也支援來自兩個應用程式的 API 要求。
 
-```XML
+```xml
 <policies>
     <inbound>
         <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

@@ -6,18 +6,18 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264215"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383932"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>存取 Azure AD B2C 稽核記錄
 
@@ -32,12 +32,12 @@ Audit log 事件只會保留**七天**。 如果您需要更長的保留期，�
 
 稽核記錄中的 **B2C** 類別包含以下類型的活動：
 
-|活動類型 |說明  |
+|活動類型 |描述  |
 |---------|---------|
 |授權 |有關授權使用者存取 B2C 資源的活動（例如，存取 B2C 原則清單的系統管理員）。         |
 |目錄 |當系統管理員使用 Azure 入口網站登入時，所抓取之目錄屬性的相關活動。 |
 |Application | 在 B2C 應用程式上建立、讀取、更新和刪除（CRUD）作業。 |
-|Key |在 B2C 金鑰容器中儲存之金鑰的 CRUD 作業。 |
+|答案 |在 B2C 金鑰容器中儲存之金鑰的 CRUD 作業。 |
 |資源 |B2C 資源的 CRUD 作業。 例如，原則和識別提供者。
 |驗證 |驗證使用者認證和權杖發行。|
 
@@ -51,7 +51,7 @@ Audit log 事件只會保留**七天**。 如果您需要更長的保留期，�
 
 [活動詳細資料] 面板包含下列相關資訊：
 
-|區段|欄位|描述|
+|區段|欄位|說明|
 |-------|-----|-----------|
 | 活動 | Name | 發生了哪個活動。 例如，對*應用程式發出 id_token*，這會結束實際的使用者登入。 |
 | 啟動者 (執行者) | ObjectId | 使用者所登入之 B2C 應用程式的**物件識別碼**。 此識別碼不會顯示在 Azure 入口網站中，但可透過 Microsoft Graph API 存取。 |
@@ -100,9 +100,9 @@ Azure 入口網站提供 Azure AD B2C 租使用者中 audit 記錄事件的存�
 
 ### <a name="access-the-api"></a>存取 API
 
-若要透過 API 下載 Azure AD B2C audit 記錄事件，請篩選`B2C`類別目錄中的記錄。 若要依類別篩選，請`filter`在呼叫 AZURE AD 報告 API 端點時使用查詢字串參數。
+若要透過 API 下載 Azure AD B2C audit 記錄事件，請篩選類別目錄中的記錄 `B2C` 。 若要依類別篩選，請在 `filter` 呼叫 Azure AD 報告 API 端點時使用查詢字串參數。
 
-```HTTP
+```http
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
 ```
 
@@ -158,7 +158,7 @@ if ($oauth.access_token -ne $null) {
 
 以下是本文稍早所示之範例活動事件的 JSON 標記法：
 
-```JSON
+```json
 {
     "id": "B2C_DQO3J_4984536",
     "category": "Authentication",

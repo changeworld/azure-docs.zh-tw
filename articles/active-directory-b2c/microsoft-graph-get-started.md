@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32117d4bfcf0c0af94eced095b94ab0c1b6f88af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d95b45b9be0893282a532bae9ec0278c3a141686
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184332"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385921"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
@@ -36,15 +36,25 @@ ms.locfileid: "78184332"
 
 * **Interactive** -適用于僅執行一次的工作，您可以使用 B2C 租使用者中的系統管理員帳戶來執行管理工作。 此模式需要系統管理員使用其認證登入，才能呼叫 Microsoft Graph API。
 
-* **自動化**-針對已排程或連續執行的工作，這個方法會使用您以執行管理工作所需的許可權來設定的服務帳戶。 您會在 Azure AD B2C 中建立「服務帳戶」，方法是註冊應用程式和腳本使用其*應用程式（用戶端）識別碼*和 OAuth 2.0 用戶端認證授與進行驗證所用的應用程式。 在此情況下，應用程式本身就是呼叫 Microsoft Graph API，而不是系統管理員使用者，就像先前所述的互動式方法一樣。
+* **自動化**-針對已排程或連續執行的工作，這個方法會使用您以執行管理工作所需的許可權來設定的服務帳戶。 您會在 Azure AD B2C 中建立「服務帳戶」，方法是註冊應用程式和腳本使用其*應用程式（用戶端）識別碼*和**OAuth 2.0 用戶端認證**授與進行驗證所用的應用程式。 在此情況下，應用程式本身就是呼叫 Microsoft Graph API，而不是系統管理員使用者，就像先前所述的互動式方法一樣。
 
 您可以藉由建立下列各節所示的應用程式註冊，來啟用**自動化**互動案例。
+
+雖然 Azure AD B2C authentication 服務目前不直接支援 OAuth 2.0 用戶端認證授與流程，但您可以使用 Azure AD B2C 租使用者中應用程式的 Azure AD 和 Microsoft 身分識別平臺/token 端點來設定用戶端認證流程。 Azure AD B2C 租用戶會與 Azure AD 企業租用戶共用某些功能。
 
 ## <a name="register-management-application"></a>註冊管理應用程式
 
 在您的腳本和應用程式可以與[MICROSOFT GRAPH API][ms-graph-api]互動以管理 Azure AD B2C 資源之前，您需要在 Azure AD B2C 租使用者中建立應用程式註冊，以授與所需的 API 許可權。
 
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
+1. 在 Azure 入口網站中，搜尋並選取 [Azure AD B2C]。
+1. 選取 [應用程式註冊]，然後選取 [新增註冊]。
+1. 輸入應用程式的 [名稱]。 例如， *managementapp1*。
+1. 選取 [**僅此組織目錄中的帳戶**]。
+1. 在 [**許可權**] 底下，清除 [授與系統*管理員同意 openid 和 offline_access 許可權*] 核取方塊。
+1. 選取 [註冊]。
+1. 記錄顯示在應用程式總覽頁面上的**應用程式（用戶端）識別碼**。 您會在稍後的步驟中使用此值。
 
 ### <a name="grant-api-access"></a>授與 API 存取權限
 
@@ -65,17 +75,18 @@ ms.locfileid: "78184332"
 如果您的應用程式或腳本需要刪除使用者或更新其密碼，請將*使用者系統管理員*角色指派給您的應用程式：
 
 1. 登入[Azure 入口網站](https://portal.azure.com)，然後使用 [**目錄 + 訂**用帳戶] 篩選器切換至您的 Azure AD B2C 租使用者。
-1. 搜尋並選取 [ **Azure AD B2C**]。
+1. 搜尋並選取 [Azure AD B2C]。
 1. 在 [**管理**] 底下，選取 [**角色和系統管理員**]。
 1. 選取 [**使用者系統管理員**] 角色。
 1. 選取 [**新增指派**]。
 1. 在 [**選取**] 文字方塊中，輸入您先前註冊之應用程式的名稱，例如*managementapp1*。 當您的應用程式出現在搜尋結果中時，請加以選取。
-1. 選取 [新增]  。 可能需要幾分鐘的時間才能完全傳播許可權。
+1. 選取 [新增]。 可能需要幾分鐘的時間才能完全傳播許可權。
 
 ## <a name="next-steps"></a>後續步驟
+既然您已註冊您的管理應用程式，並將其授與必要的許可權，您的應用程式和服務（例如 Azure Pipelines）可以使用其認證和許可權來與 Microsoft Graph API 互動。 
 
-既然您已註冊您的管理應用程式，並將其授與必要的許可權，您的應用程式和服務（例如 Azure Pipelines）可以使用其認證和許可權來與 Microsoft Graph API 互動。
-
+* [從 Azure AD 取得存取權杖](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
+* [使用存取權杖來呼叫 Microsoft Graph](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
 * [Microsoft Graph 支援 B2C 作業](microsoft-graph-operations.md)
 * [使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶](manage-user-accounts-graph-api.md)
 * [使用 Azure AD 報告 API 取得 audit 記錄](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)

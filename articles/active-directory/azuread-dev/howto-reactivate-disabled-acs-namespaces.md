@@ -7,18 +7,18 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ff0ce05b13fea8409475e3415c5d810d7c79769a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154860"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383712"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>操作說明：重新啟用已停用的存取控制服務命名空間
 
@@ -96,7 +96,7 @@ ms.locfileid: "80154860"
     |-----------------------|--------------------|
     | **問題類型** | `Technical` |
     | **訂用帳戶** | 設為您的訂用帳戶 |
-    | **Service** | `All services` |
+    | **服務** | `All services` |
     | **Resource** | `General question/Resource not available` |
     | **問題類型** | `ACS to SAS Migration` |
     | **主旨** | 描述問題 |

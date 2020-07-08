@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8052f94755019d8ad3fe818d979d2eb7f8ba0a5e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: e175a81efc1ab0950c1fda314efb206ff97a2b7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738756"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385377"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>在 Azure AD B2C 中定義電話號碼宣告轉換
 
@@ -37,7 +37,7 @@ ms.locfileid: "83738756"
 
 在此範例中，數值類型為 `phoneNumber` 的 cellPhoneNumber 宣告會轉換成數值類型為 `string` 的行動電話宣告。
 
-```XML
+```xml
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
@@ -72,7 +72,7 @@ ms.locfileid: "83738756"
 
 您可以使用此宣告轉換來確保提供的字串宣告是有效的電話號碼。 如果沒有，則會擲回錯誤訊息。 下列範例會確認 **phoneString** ClaimType 確實是有效的電話號碼，然後傳回標準 Azure AD B2C 格式的電話號碼。 否則會擲回錯誤訊息。
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
@@ -86,7 +86,7 @@ ms.locfileid: "83738756"
 
 自我判斷技術設定檔呼叫的驗證技術設定檔若包含此宣告轉換，則自我判斷技術設定檔可以定義錯誤訊息。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationInvalidPhoneNumber">Custom error message if the phone number is not valid.</Item>
@@ -132,7 +132,7 @@ ms.locfileid: "83738756"
 
 下列範例會嘗試將電話號碼分割成國家/地區號碼和國家/地區代碼。 如果電話號碼有效，該電話號碼將會由國家/地區號碼覆寫。 如果電話號碼無效，將不會擲回例外狀況，而且電話號碼仍會有其原始值。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="phoneNumber" />
@@ -150,7 +150,7 @@ ms.locfileid: "83738756"
 
 自我判斷技術設定檔呼叫的驗證技術設定檔若包含此宣告轉換，則自我判斷技術設定檔可以定義錯誤訊息。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfPhoneNumberParseFailure">Custom error message if the phone number is not valid.</Item>

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386210"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure 監視器監視 Azure AD B2C
 
@@ -25,12 +25,12 @@ ms.locfileid: "81392882"
 您可以將記錄事件路由至：
 
 * Azure[儲存體帳戶](../storage/blobs/storage-blobs-introduction.md)。
-* Azure[事件中樞](../event-hubs/event-hubs-about.md)（並與您的 Splunk 和 Sumo 邏輯實例整合）。
 * [Log Analytics 工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)（用來分析資料、建立儀表板，以及針對特定事件發出警示）。
+* Azure[事件中樞](../event-hubs/event-hubs-about.md)（並與您的 Splunk 和 Sumo 邏輯實例整合）。
 
 ![Azure 監視器](./media/azure-monitor/azure-monitor-flow.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文中的步驟，請使用 Azure PowerShell 模組來部署 Azure Resource Manager 範本。
 
@@ -59,7 +59,7 @@ Azure AD B2C 利用[Azure Active Directory 監視](../active-directory/reports-m
 Azure AD B2C 目錄（也稱為租使用者識別碼）的**目錄識別碼**。
 
 1. 以具有*使用者系統管理員*角色（或更高版本）的使用者身分登入[Azure 入口網站](https://portal.azure.com/)。
-1. 在入口網站工具列中選取 [**目錄 + 訂**用帳戶] 圖示，然後選取包含您 Azure AD B2C 租使用者的目錄。
+1. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 1. 選取 [ **Azure Active Directory**]，然後選取 [**屬性**]。
 1. 記錄**目錄識別碼**。
 
@@ -72,7 +72,7 @@ Azure AD B2C 目錄（也稱為租使用者識別碼）的**目錄識別碼**。
 
 ### <a name="create-an-azure-resource-manager-template"></a>建立 Azure Resource Manager 範本
 
-若要讓您的 Azure AD 租使用者（**客戶**）上線，請使用下列資訊為您的供應專案建立[Azure Resource Manager 範本](../lighthouse/how-to/onboard-customer.md)。 當`mspOfferName`您`mspOfferDescription`在 Azure 入口網站的 [[服務提供者] 頁面](../lighthouse/how-to/view-manage-service-providers.md)中，查看供應專案詳細資料時，會顯示和值。
+若要讓您的 Azure AD 租使用者（**客戶**）上線，請使用下列資訊為您的供應專案建立[Azure Resource Manager 範本](../lighthouse/how-to/onboard-customer.md)。 `mspOfferName` `mspOfferDescription` 當您在 Azure 入口網站的 [[服務提供者] 頁面](../lighthouse/how-to/view-manage-service-providers.md)中，查看供應專案詳細資料時，會顯示和值。
 
 | 欄位   | 定義 |
 |---------|------------|
@@ -87,9 +87,9 @@ Azure AD B2C 目錄（也稱為租使用者識別碼）的**目錄識別碼**。
 - [rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
 - [rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
-接下來，使用您稍早記錄的值來更新參數檔案。 下列 JSON 程式碼片段顯示 Azure Resource Manager 範本參數檔案的範例。 針對`authorizations.value.roleDefinitionId`，請使用*參與者角色*的`b24988ac-6180-42a0-ab88-20f7382dd24c`[內建角色](../role-based-access-control/built-in-roles.md)值。
+接下來，使用您稍早記錄的值來更新參數檔案。 下列 JSON 程式碼片段顯示 Azure Resource Manager 範本參數檔案的範例。 針對 `authorizations.value.roleDefinitionId` ，請使用*參與者角色*的[內建角色](../role-based-access-control/built-in-roles.md)值 `b24988ac-6180-42a0-ab88-20f7382dd24c` 。
 
-```JSON
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
@@ -123,7 +123,7 @@ Azure AD B2C 目錄（也稱為租使用者識別碼）的**目錄識別碼**。
 
 更新參數檔案之後，請將 Azure Resource Manager 範本部署至 Azure 租使用者，做為訂用帳戶層級部署。 這是訂用帳戶層級部署，因此無法在 Azure 入口網站中起始。 您可以使用 Azure PowerShell 模組或 Azure CLI 來進行部署。 Azure PowerShell 方法如下所示。
 
-使用[[Disconnect-azaccount]](/powershell/azure/authenticate-azureps)登入包含訂用帳戶的目錄。 使用`-tenant`旗標來強制驗證正確的目錄。
+使用[[Disconnect-azaccount]](/powershell/azure/authenticate-azureps)登入包含訂用帳戶的目錄。 使用 `-tenant` 旗標來強制驗證正確的目錄。
 
 ```PowerShell
 Connect-AzAccount -tenant contoso.onmicrosoft.com
@@ -141,7 +141,7 @@ Get-AzSubscription
 Select-AzSubscription <subscription ID>
 ```
 
-最後，部署您先前下載並更新的 Azure Resource Manager 範本和參數檔案。 據以`Location`取代`TemplateFile`、和`TemplateParameterFile`值。
+最後，部署您先前下載並更新的 Azure Resource Manager 範本和參數檔案。 據以取代 `Location` 、 `TemplateFile` 和 `TemplateParameterFile` 值。
 
 ```PowerShell
 New-AzDeployment -Name "AzureADB2C" `
@@ -199,7 +199,7 @@ Parameters              :
 
 1. 如果您目前已登入，**請登出 Azure 入口網站**。 這會執行下列步驟，以在入口網站會話中重新整理您的認證。
 1. 使用您的 Azure AD B2C 系統管理帳戶登入[Azure 入口網站](https://portal.azure.com)。
-1. 在入口網站工具列中選取 [**目錄 + 訂**用帳戶] 圖示。
+1. 選取入口網站工具列中的**目錄 + 訂閱**圖示。
 1. 選取包含您的訂用帳戶的目錄。
 
     ![切換目錄](./media/azure-monitor/azure-monitor-portal-03-select-subscription.png)
@@ -224,7 +224,7 @@ Parameters              :
 若要設定 Azure AD B2C 活動記錄的監視設定：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-1. 在入口網站工具列中選取 [**目錄 + 訂**用帳戶] 圖示，然後選取包含您 Azure AD B2C 租使用者的目錄。
+1. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 1. 選取**Azure Active Directory**
 1. 在 [監視]**** 下方，選取 [診斷設定]****。
 1. 如果資源上有現有的設定，您會看到已設定的設定清單。 請選取 [新增**診斷設定**] 以新增設定，或按一下 [**編輯**設定] 來編輯現有的設定。 每個設定都不能有一個以上的目的地類型。
@@ -234,14 +234,14 @@ Parameters              :
 1. 如果您的設定還沒有名稱，請將其命名為。
 1. 勾選每個目的地的方塊以傳送記錄。 選取 [**設定**] 以指定其設定，如下表所述。
 
-    | 設定 | 描述 |
+    | 設定 | 說明 |
     |:---|:---|
     | 封存至儲存體帳戶 | 儲存體帳戶的名稱。 |
     | 串流至事件中樞 | 建立事件中樞的命名空間（如果這是您第一次串流記錄），或串流處理至（如果已經有資源正在將該記錄類別串流至這個命名空間）。
     | 傳送至 Log Analytics | 工作區的名稱。 |
 
 1. 選取 [ **AuditLogs**和**SignInLogs**]。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 

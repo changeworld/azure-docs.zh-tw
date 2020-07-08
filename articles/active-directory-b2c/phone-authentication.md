@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d432912cb0442744061500fc01bdd86a4c5d97ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183953"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385343"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>在 Azure AD B2C （預覽）中使用自訂原則設定電話註冊和登入
 
@@ -30,7 +30,7 @@ Azure Active Directory B2C （Azure AD B2C）中的電話註冊和登入可讓�
 
 單次密碼會使用 SMS 文字訊息傳送給您的使用者，而且您可能會針對每個傳送的訊息收費。 如需定價資訊，請參閱[Azure Active Directory B2C 定價](https://azure.microsoft.com/pricing/details/active-directory-b2c/)的**個別費用**一節。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在設定 OTP 之前，您必須先準備好下列資源。
 
@@ -48,31 +48,31 @@ Azure Active Directory B2C （Azure AD B2C）中的電話註冊和登入可讓�
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. 在每個檔案中，將`yourtenant`字串取代為您 Azure AD B2C 租使用者的名稱。 例如，如果您的 B2C 租使用者名稱是*contosob2c*，的`yourtenant.onmicrosoft.com`所有實例就會`contosob2c.onmicrosoft.com`變成。
+1. 在每個檔案中，將字串取代 `yourtenant` 為您 Azure AD B2C 租使用者的名稱。 例如，如果您的 B2C 租使用者名稱是*contosob2c*，的所有實例就 `yourtenant.onmicrosoft.com` 會變成 `contosob2c.onmicrosoft.com` 。
 
-1. 完成在[Azure Active Directory B2C 中開始使用自訂](custom-policy-get-started.md)原則中的[將應用程式識別碼新增至自訂原則](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)一節中的步驟。 在此情況下， `/phone-number-passwordless/` **`Phone_Email_Base.xml`** 請使用您在完成必要條件、 *IdentityExperienceFramework*和*ProxyIdentityExperienceFramework*時所註冊的兩個應用程式的**應用程式（用戶端）識別碼**來進行更新。
+1. 完成在[Azure Active Directory B2C 中開始使用自訂](custom-policy-get-started.md)原則中的[將應用程式識別碼新增至自訂原則](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)一節中的步驟。 在此情況下，請 `/phone-number-passwordless/` **`Phone_Email_Base.xml`** 使用您在完成必要條件、 *IdentityExperienceFramework*和*ProxyIdentityExperienceFramework*時所註冊的兩個應用程式的**應用程式（用戶端）識別碼**來進行更新。
 
 ## <a name="upload-the-policy-files"></a>上傳原則檔案
 
 1. 登入[Azure 入口網站](https://portal.azure.com)，然後流覽至您的 Azure AD B2C 租使用者。
-1. 在 [**原則**] 底下，選取 [ **Identity Experience Framework**]。
-1. 選取 **[上傳自訂原則**]。
+1. 在 [原則] 之下，選取 [Identity Experience Framework]。
+1. 選取 [上傳自訂原則]。
 1. 依下列順序上傳原則檔案：
-    1. *Phone_Email_Base .xml*
-    1. *SignUpOrSignInWithPhone .xml*
-    1. *SignUpOrSignInWithPhoneOrEmail .xml*
-    1. *ProfileEditPhoneOnly .xml*
-    1. *ProfileEditPhoneEmail .xml*
-    1. *ChangePhoneNumber .xml*
-    1. *PasswordResetEmail .xml*
+    1. *Phone_Email_Base.xml*
+    1. *SignUpOrSignInWithPhone.xml*
+    1. *SignUpOrSignInWithPhoneOrEmail.xml*
+    1. *ProfileEditPhoneOnly.xml*
+    1. *ProfileEditPhoneEmail.xml*
+    1. *ChangePhoneNumber.xml*
+    1. *PasswordResetEmail.xml*
 
-當您上傳每個檔案時，Azure `B2C_1A_`會加上前置詞。
+當您上傳每個檔案時，Azure 會加上前置詞 `B2C_1A_` 。
 
 ## <a name="test-the-custom-policy"></a>測試自訂原則
 
 1. 在 [**自訂原則**] 底下，選取 [ **B2C_1A_SignUpOrSignInWithPhone**]。
 1. 在 [**選取應用程式**] 下，選取您在完成必要條件時註冊的*webapp1*應用程式。
-1. 針對 [**選取回復 url**] `https://jwt.ms`，選擇。
+1. 針對 [**選取回復 url**]，選擇 `https://jwt.ms` 。
 1. 選取 [**立即執行**]，然後使用電子郵件地址或電話號碼進行註冊。
 1. 再次選取 [**立即執行**]，然後使用相同的帳戶登入，以確認您擁有正確的設定。
 

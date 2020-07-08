@@ -8,16 +8,16 @@ ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.custom: aaddev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8973412b2d6575d524874ba05b34af7661655e19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80981064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383729"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 驗證程式庫 (ADAL) 用戶端的錯誤處理最佳做法
 
@@ -51,7 +51,7 @@ AcquireTokenSilent 會嘗試取得可保證終端使用者不會看到使用者�
 
 基本上，AcquireTokenSilent 錯誤有兩種情況：
 
-| 案例 | 描述 |
+| 案例 | Description |
 |------|-------------|
 | **案例 1**：可透過互動式登入解決錯誤 | 若為缺少有效權杖所造成的錯誤，則必須有互動式要求。 具體而言，快取查閱及無效/過期的重新整理權杖需要 AcquireToken 呼叫才能解決。<br><br>在這些案例中，終端使用者必須在提示下登入。 應用程式可選擇在終端使用者互動之後 (例如點擊登入按鈕)，立即執行互動式要求，或是稍後再執行。 這項選擇取決於應用程式所需的行為。<br><br>請參閱下節中的程式碼，了解此特定案例和其診斷錯誤。|
 | **案例 2**：無法透過互動式登入解決錯誤 | 對於網路和暫時性/暫存錯誤或其他失敗，執行互動式 AcquireToken 要求並無法解決問題。 不必要的互動式登入提示也可能讓終端使用者不耐煩。 對於大部分有關 AcquireTokenSilent 失敗的錯誤，ADAL 會自動嘗試一次重試。<br><br>用戶端應用程式也可以在稍後的某個時間點嘗試重試，但何時和如何依賴應用程式行為和所需的終端使用者體驗。 例如，應用程式可以在幾分鐘後或回應某些終端使用者動作之後，執行 AcquireTokenSilent 重試。 立即重試將會導致應用程式進行節流處理，不該嘗試這麼做。<br><br>後續具有相同錯誤的重試失敗並不表示用戶端應使用 AcquireToken 執行互動式要求，因為這無法解決錯誤。<br><br>請參閱下節中的程式碼，了解此特定案例和其診斷錯誤。 |
