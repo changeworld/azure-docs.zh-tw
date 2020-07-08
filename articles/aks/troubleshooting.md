@@ -3,13 +3,13 @@ title: 針對常見的 Azure Kubernetes Service 問題進行疑難排解
 description: 了解在使用 Azure Kubernetes Service (AKS) 時，如何針對常見問題進行疑難排解並加以解決
 services: container-service
 ms.topic: troubleshooting
-ms.date: 05/16/2020
-ms.openlocfilehash: f9831077d1f2850d39e4ef5e5ba35245f16cd683
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.date: 06/20/2020
+ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724989"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054384"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑難排解
 
@@ -31,11 +31,34 @@ ms.locfileid: "83724989"
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>當我使用進階網路設定部署 AKS 叢集時，收到 insufficientSubnetSize 錯誤。 我該怎麼辦？
 
-使用 Azure CNI 網路外掛程式時，AKS 會根據每個節點的 "--max-pod" 參數來配置 IP 位址。 子網路的大小必須大於節點數目乘以每個節點的最大 Pod 數設定。 下列方程式會概述此設定：
+此錯誤表示叢集使用中的子網不再具有 CIDR 中的可用 Ip，因此無法成功指派資源。 針對 Kubenet 叢集，此需求是叢集中每個節點的足夠 IP 空間。 針對 Azure CNI 叢集，需求是叢集中每個節點和 pod 的足夠 IP 空間。
+深入瞭解[AZURE CNI 的設計，以將 ip 指派給](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)pod。
 
-子網路大小 > 叢集中的節點數目 (將未來的調整需求納入考量) * 每個節點集的最大 Pod 數。
+這些錯誤也會出現在[AKS 診斷](https://docs.microsoft.com/azure/aks/concepts-diagnostics)中，這會主動呈現子網大小不足的問題。
 
-如需詳細資訊，請參閱[為你的叢集規劃 IP 位址](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)。
+下列三（3）個案例會導致子網大小不足的錯誤：
+
+1. AKS Scale 或 AKS Nodepool scale
+   1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of new nodes requested` 。
+   1. 如果使用 Azure CNI，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of nodes requested times (*) the node pool's --max-pod value` 。
+
+1. AKS Upgrade 或 AKS Nodepool upgrade
+   1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade` 。
+   1. 如果使用 Azure CNI，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` 。
+   
+   根據預設，AKS 叢集會設定一（1）的最大浪湧（升級緩衝區）值，但您可以藉由設定[節點集區的最大浪湧值](upgrade-cluster.md#customize-node-surge-upgrade-preview)來自訂此升級行為，這會增加完成升級所需的可用 ip 數目。
+
+1. AKS 建立或 AKS Nodepool 新增
+   1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of nodes requested for the node pool` 。
+   1. 如果使用 Azure CNI，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of nodes requested times (*) the node pool's --max-pod value` 。
+
+藉由建立新的子網，可以採取下列緩和措施。 因為無法更新現有子網的 CIDR 範圍，所以必須要有建立新子網的許可權。
+
+1. 重建具有較大 CIDR 範圍的新子網，以滿足作業目標：
+   1. 使用新的所需非重迭範圍來建立新的子網。
+   1. 在新的子網上建立新的 nodepool。
+   1. 從舊的子網中的舊 nodepool 清空 pod，以予以取代。
+   1. 刪除舊的子網和舊的 nodepool。
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>我的 Pod 會在 CrashLoopBackOff 模式中停滯。 我該怎麼辦？
 
@@ -46,6 +69,19 @@ ms.locfileid: "83724989"
 
 如需有關如何針對 Pod 問題進行疑難排解的詳細資訊，請參閱[偵錯應用程式](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
 
+## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>我 `TCP timeouts` 在使用 `kubectl` 或其他協力廠商工具連接到 API 伺服器時收到
+AKS 具有 HA 控制平面，會根據核心數目垂直調整，以確保其服務等級目標（Slo）和服務等級協定（Sla）。 如果您遇到連線超時的問題，請檢查下列內容：
+
+- **您的所有 API 命令是否一致地計時，或只是幾個？** 如果只有少數幾個，您的 `tunnelfront` pod 或 `aks-link` pod （負責節點 > 的控制平面通訊）可能不會處於執行中狀態。 請確定裝載此 pod 的節點未過度使用或在壓力下。 請考慮將它們移至自己的[ `system` 節點集](use-system-pools.md)區。
+- **您是否已開啟[AKS 限制輸出流量](limit-egress-traffic.md)檔中所述的所有必要端口、Fqdn 和 ip？** 否則，可能會有數個命令呼叫失敗。
+- **您目前的 IP 是否由[API Ip 授權範圍](api-server-authorized-ip-ranges.md)所涵蓋？** 如果您使用這項功能，而且您的 IP 未包含在範圍內，則會封鎖您的呼叫。 
+- **您是否有用戶端或應用程式正在洩漏對 API 伺服器的呼叫？** 請務必使用監看式，而不是頻繁的 get 呼叫，而您的協力廠商應用程式不會洩漏這類呼叫。 例如，Istio 混音器中的錯誤會導致每次在內部讀取秘密時，都會建立新的 API 伺服器監看式連線。 因為此行為會定期發生，監看連接會快速累積，而且最終會導致 API 伺服器因為調整模式而變得多載。 https://github.com/istio/istio/issues/19481
+- **您的 helm 部署中有多個版本嗎？** 此案例可能會導致這兩個 tiller 在節點上使用過多的記憶體，以及大量的 `configmaps` ，這可能會造成 API 伺服器上不必要的尖峰。 請考慮在 `--history-max` 中設定 `helm init` ，並利用新的 Helm 3。 下列問題的詳細資訊： 
+    - https://github.com/helm/helm/issues/4821
+    - https://github.com/helm/helm/issues/3500
+    - https://github.com/helm/helm/issues/4543
+
+
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>我正嘗試在現有叢集上啟用角色型存取控制 (RBAC)。 如何執行該作業？
 
 目前不支援在現有叢集上啟用角色型存取控制 (RBAC)，其必須在建立新叢集時加以設定。 使用 CLI、入口網站或高於 `2020-03-01` 的 API 版本時，預設會啟用 RBAC。
@@ -53,12 +89,6 @@ ms.locfileid: "83724989"
 ## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>我建立了已啟用 RBAC 的叢集，而現在我在 Kubernetes 儀表板上看到許多警告。 該儀表板一直可正常運作，而且未產生任何警告。 我該怎麼辦？
 
 警告的原因是叢集已啟用 RBAC，而對儀表板的存取現在預設會受到限制。 這種方法通常是良好的做法，因為預設向叢集的所有使用者公開該儀表板可能會導致安全性威脅。 如果您仍然想要啟用該儀表板，請依照[這篇部落格文章](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/) \(英文\) 中的步驟執行。
-
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>我無法連線到儀表板。 我該怎麼辦？
-
-存取叢集外部服務的最簡單方法是執行 `kubectl proxy`，它會將傳送至 localhost 連接埠 8001 的要求 Proxy 到 Kubernetes API 伺服器。 API 伺服器可以從該處 Proxy 到您的服務：`http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/`。
-
-如果沒有看到 Kubernetes 儀表板，請檢查 `kube-proxy` Pod 是否正在 `kube-system` 命名空間中執行。 如果它並未處於執行中狀態，請刪除該 Pod，而它會重新啟動。
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>我無法使用 kubectl 記錄取得記錄，或無法連線到 API 伺服器。 我收到「伺服器發生錯誤: 撥接後端時發生錯誤: 撥接 tcp...」。 我該怎麼辦？
 
@@ -119,6 +149,7 @@ ms.locfileid: "83724989"
 * AKS 節點/*MC_* 資源群組名稱會合併資源群組名稱與資源名稱。 自動產生的 `MC_resourceGroupName_resourceName_AzureRegion` 語法不得超過 80 個字元。 視需要縮短資源群組名稱或 AKS 叢集名稱的長度。 您也可以[自訂節點資源群組名稱](cluster-configuration.md#custom-resource-group-name)。
 * *dnsPrefix* 必須以英數字元值開頭和結束，且必須介於 1-54 個字元之間。 有效字元包含英數字元值和連字號 (-)。 *dnsPrefix* 不能包含特殊字元，例如句號 (.)。
 * 針對 Linux 節點集區，AKS 節點集區名稱必須全部小寫且為 1-11 個字元，針對 Windows 節點集區則是 1-6 個字元。 名稱的開頭必須是字母，而唯一允許的字元為字母與數字。
+* *管理員使用者名稱*（可設定 Linux 節點的系統管理員使用者名稱）必須以字母開頭，且只能包含字母、數位、連字號和底線，且長度上限為64個字元。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>我在嘗試建立、更新、調整、刪除或升級叢集時收到錯誤，指出因為另一個作業正在進行，所以不允許該作業。
 

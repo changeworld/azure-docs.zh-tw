@@ -4,25 +4,29 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: 652d42d6e2d9e909c3a03bd82a3a36f91bc73807
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff54d60573fbc7b6694b8d02d1378869674c1e81
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80419572"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050329"
 ---
-這項功能很容易設定，但這並不表示您的體驗會是免費的問題。 如果您在存取所需的端點時遇到問題，您可以使用一些公用程式來測試應用程式主控台的連線能力。 有兩個您可以使用的主控台。 其中一個是 Kudu 主控台，另一個則是 Azure 入口網站中的主控台。 若要從您的應用程式連接到 Kudu 主控台，請移至 [**工具** > ] [**Kudu**]。 您也可以連線到位於 [sitename]. azurewebsites. net 的 Kudo 主控台。 在網站載入之後，移至 [**調試主控台**] 索引標籤。若要從您的應用程式進入 Azure 入口網站裝載的主控台，請移至 [**工具** > ] [**主控台**]。
+這項功能很容易設定，但這並不表示您的體驗會是免費的問題。 如果您在存取所需的端點時遇到問題，您可以使用一些公用程式來測試應用程式主控台的連線能力。 有兩個您可以使用的主控台。 其中一個是 Kudu 主控台，另一個則是 Azure 入口網站中的主控台。 若要從您的應用程式連接到 Kudu 主控台，請移至 [**工具**] [  >  **Kudu**]。 您也可以連線到位於 [sitename]. azurewebsites. net 的 Kudo 主控台。 在網站載入之後，移至 [**調試主控台**] 索引標籤。若要從您的應用程式進入 Azure 入口網站裝載的主控台，請移至 [**工具**] [  >  **主控台**]。
 
 #### <a name="tools"></a>工具
-由於安全性限制，工具**ping**、 **nslookup**和**tracert**無法透過主控台來處理。 為了填滿 void，會新增兩個不同的工具。 為了測試 DNS 功能，我們新增了名為**nameresolver**的工具。 語法為：
+由於安全性限制，工具**ping**、 **nslookup**和**tracert**無法透過主控台來處理。 為了填滿 void，會新增兩個不同的工具。 為了測試 DNS 功能，我們新增了名為**nameresolver.exe**的工具。 語法為：
 
-    nameresolver.exe hostname [optional: DNS Server]
+```console
+nameresolver.exe hostname [optional: DNS Server]
+```
 
 您可以使用 nameresolver 來檢查應用程式依賴的主機名稱。 如此一來，您可以測試您的 DNS 是否有任何設定錯誤，或可能無法存取您的 DNS 伺服器。 您可以查看您的應用程式在主控台中使用的 DNS 伺服器，方法是查看環境變數 WEBSITE_DNS_SERVER 並 WEBSITE_DNS_ALT_SERVER。
 
 您可以使用下一個工具來測試對主機和埠組合的 TCP 連線能力。 此工具稱為 **tcpping**，語法如下：
 
-    tcpping.exe hostname [optional: port]
+```console
+tcpping.exe hostname [optional: port]
+```
 
 **Tcpping**公用程式會告訴您是否可以連線到特定的主機和埠。 只有當應用程式接聽主機和埠組合，而且有從您的應用程式到指定主機和埠的網路存取權時，才會顯示成功。
 
@@ -62,7 +66,9 @@ ms.locfileid: "80419572"
 
 * 連線至虛擬網路中的 VM，並嘗試從該處連線到您的資源主機：埠。 若要測試 TCP 存取，請使用 PowerShell 命令 **test-netconnection**。 語法為：
 
-      test-netconnection hostname [optional: -Port]
+```powershell
+test-netconnection hostname [optional: -Port]
+```
 
 * 在 VM 上啟動應用程式，並使用**tcpping**從您的應用程式中的主控台測試該主機和埠的存取。
 

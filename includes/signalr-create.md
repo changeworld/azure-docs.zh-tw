@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 39bff26baea622e6c0ed524ca68c3c8bae4e770d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ba46d4dbe90b696398ed4c78383e127861c1a066
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76021165"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050251"
 ---
 1. 若要建立 Azure SignalR Service 資源，請先登入 [Azure 入口網站](https://portal.azure.com)。 在頁面的左側，選取 [+ 建立資源]  。 在 [搜尋 Marketplace]  文字方塊中，輸入 **SignalR Service**。
 
@@ -36,4 +36,4 @@ ms.locfileid: "76021165"
 
     連接字串的格式如下：
     
-        Endpoint=<service_endpoint>;AccessKey=<access_key>;
+    `Endpoint=<service_endpoint>;AccessKey=<access_key>;`

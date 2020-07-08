@@ -123,7 +123,7 @@
           href: partitioning-overview.md
         - name: 資料分割與水平放大
           href: partition-data.md
-        - name: 建立綜合分割區索引鍵
+        - name: 綜合磁碟分割索引鍵
           href: synthetic-partition-keys.md
     - name: 佈建的輸送量
       items:

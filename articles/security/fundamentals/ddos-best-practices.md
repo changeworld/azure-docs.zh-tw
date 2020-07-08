@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 8be1f1161ac1c4611ddb2a5ec61592394014c488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d44c1da27a1440e105ce76436bc284a537503c7
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548669"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054435"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保護設計彈性解決方案
 
@@ -97,7 +97,7 @@ Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶�
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 防護原則
 
-在 [Azure 入口網站中，選取 [**監視** > **計量**]。 在 [計量]**** 窗格中，選取資源群組、選取 [公用 IP 位址]**** 的資源類型，並選取您的 Azure 公用 IP 位址。 DDoS 計量會顯示在 [可用計量]**** 窗格中。
+在 [Azure 入口網站中，選取 [**監視**  >  **計量**]。 在 [計量]**** 窗格中，選取資源群組、選取 [公用 IP 位址]**** 的資源類型，並選取您的 Azure 公用 IP 位址。 DDoS 計量會顯示在 [可用計量]**** 窗格中。
 
 「標準 DDoS 保護」會在啟用 DDoS 的虛擬網路中，對受保護資源的每個公用 IP 套用三個自動調整的風險降低原則 (TCP SYN、TCP、UDP)。 可選取**要觸發 DDoS 防護的輸入封包**計量，藉此檢視原則閾值。
 
@@ -235,7 +235,7 @@ Azure 標準 DDoS 保護會識別 DDoS 攻擊並降低風險，無須使用者�
 
 #### <a name="paas-web-application"></a>PaaS Web 應用程式
 
-此參考架構示範在單一區域中執行的 Azure App Service 應用程式。 此架構顯示一組經過證實的作法，適用于使用 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) 和 [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)的 web 應用程式。
+此參考架構示範在單一區域中執行的 Azure App Service 應用程式。 此架構顯示一組經過證實的作法，適用于使用 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/)   和 [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)的 web 應用程式。
 針對容錯移轉案例，會設定一個待命區域。
 
 ![PaaS Web 應用程式的架構參考圖](./media/ddos-best-practices/image11.png)
@@ -269,7 +269,5 @@ Azure 流量管理員會將連入要求路由到其中一個區域中的應用�
 ## <a name="next-steps"></a>後續步驟
 
 * [雲端中共同承擔的責任](shared-responsibility.md)
-
 * [Azure DDoS 保護產品頁面](https://azure.microsoft.com/services/ddos-protection/)
-
 * [Azure DDoS 保護文件](/azure/virtual-network/ddos-protection-overview)

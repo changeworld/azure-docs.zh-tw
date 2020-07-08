@@ -4,17 +4,19 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: aeca3550b5fc58694779e7e54ce6ca547ba30e17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e5afeffa6f47ff79e31f189abc6d5e26d8f2586
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67174594"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050208"
 ---
 儲存體 Blob 中的每個 Blob 必須位於一個容器中。 此容器會組成 blob 名稱的一部分。 例如， `mycontainer` 是這些範例 blob URI 中容器的名稱：
 
-    https://storagesample.blob.core.windows.net/mycontainer/blob1.txt
-    https://storagesample.blob.core.windows.net/mycontainer/photos/myphoto.jpg
+```http
+https://storagesample.blob.core.windows.net/mycontainer/blob1.txt
+https://storagesample.blob.core.windows.net/mycontainer/photos/myphoto.jpg
+```
 
 容器名稱必須是有效的 DNS 名稱，且符合下列命名規則：
 
