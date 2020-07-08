@@ -1,26 +1,13 @@
 ---
 title: 自動相應增加輸送量單位 - Azure 事件中樞 | Microsoft Docs
 description: 在命名空間上啟用自動擴充，以自動相應增加輸送量單位。
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: dc6edaebebe89b6d4a35ada58d40795f86a935d3
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 382d407bde61a4ca24ab5833ea51d540c8904adc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72264466"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322548"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>自動相應增加 Azure 事件中樞輸送量單位
 Azure 事件中樞為可高度擴充的資料串流平台。 因此，事件中樞使用量通常會在開始使用服務之後增加。 這類使用量需要增加預先決定的[輸送量單位](event-hubs-scalability.md#throughput-units)，以調整事件中樞並處理較大的傳輸速率。 「事件中樞」的「自動擴充」**** 功能會自動增加輸送量單位數以進行相應增加，進而符合使用量需求。 增加輸送量單位可避免發生節流情況，其中：

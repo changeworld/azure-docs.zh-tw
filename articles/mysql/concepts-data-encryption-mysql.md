@@ -6,17 +6,13 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 24b52042e037e998069550599ca006eded70d1c4
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: e2f732a8cf51c51de1b6125717eafb672d7fff74
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849719"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027404"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>適用於 MySQL 的 Azure 資料庫資料加密 (使用客戶管理的金鑰)
-
-> [!NOTE]
-> 此時，您必須要求存取權限，才能使用此功能。 若要這樣做，請連絡 AskAzureDBforMySQL@service.microsoft.com。
 
 適用於 MySQL 的 Azure 資料庫使用客戶管理金鑰的資料加密，可讓您攜帶自己的金鑰 (BYOK) 來保護待用資料。 此外也可讓組織在金鑰和資料的管理中實作職責區分。 使用客戶管理的加密時，您將負責處理並全權掌控金鑰的生命週期、金鑰使用權限，以及金鑰的作業稽核。
 
@@ -129,6 +125,19 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 * 從主要「適用於 MySQL 的 Azure 資料庫」起始還原或讀取複本建立程序。
 * 將新建立的伺服器 (還原/複本) 保留在無法存取的狀態，因為其唯一身分識別尚未授與 Key Vault 權限。
 * 在還原/複本伺服器上，重新驗證資料加密設定中客戶管理的金鑰，以確保會針對新建立的伺服器提供 Key Vault 中儲存之金鑰的包裝和解除包裝權限。
+
+## <a name="limitations"></a>限制
+
+針對適用於 MySQL 的 Azure 資料庫，使用客戶管理的金鑰（CMK）對待用資料進行加密的支援有少數限制-
+
+* 此功能的支援僅限於**一般用途**和**記憶體優化**定價層。
+* 只有在支援最多 16 TB 儲存體的區域和伺服器上，才支援這項功能。 如需支援儲存體最多16TB 的 Azure 區域清單，請參閱[這裡](concepts-pricing-tiers.md#storage)的檔中的儲存體一節。
+
+    > [!NOTE]
+    > - 所有新的 MySQL 伺服器都是在以上所列的區域中建立，並**提供**對客戶管理員金鑰進行加密的支援。 還原時間點（PITR）伺服器或讀取複本在理論上不會有任何限制，而是「新」。
+    > - 若要驗證您布建的伺服器是否支援最多16TB，您可以移至入口網站中的 [定價層] 分頁，並查看已布建伺服器所支援的最大儲存體大小。 如果您可以將滑杆移至4TB，您的伺服器可能不支援使用客戶管理的金鑰進行加密。 不過，資料會隨時使用服務管理的金鑰進行加密。 AskAzureDBforMySQL@service.microsoft.com如果您有任何問題，請聯繫。
+
+* 僅支援使用 RSA 2048 密碼編譯金鑰進行加密。
 
 ## <a name="next-steps"></a>後續步驟
 

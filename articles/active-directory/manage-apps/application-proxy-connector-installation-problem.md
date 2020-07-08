@@ -3,25 +3,24 @@ title: 安裝應用程式 Proxy 代理程式連接器時遇到問題 | Microsoft
 description: 如何針對在安裝應用程式 Proxy 代理程式連接器時可能遇到的問題進行疑難排解
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f73d46b612c1dcf94554e10b4820c3f2442248f
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82172401"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764684"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安裝應用程式 Proxy 代理程式連接器時遇到問題
 
@@ -67,7 +66,7 @@ Microsoft AAD 應用程式 Proxy 連接器是內部網域元件，它會使用�
 
 **若要確認用戶端憑證：**
 
-確認目前用戶端憑證的指紋。 憑證存放區可以在%ProgramData%\microsoft\Microsoft AAD 應用程式 Proxy Connector\Config\TrustSettings.xml 中找到。
+確認目前用戶端憑證的指紋。 憑證存放區可以在%ProgramData%\microsoft\Microsoft AAD 應用程式 Proxy 中找到 Connector\Config\TrustSettings.xml
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -93,8 +92,8 @@ Microsoft AAD 應用程式 Proxy 連接器是內部網域元件，它會使用�
 
 請遵循下列步驟來驗證憑證：
 
-1. 下載[PsTools .zip](https://docs.microsoft.com/sysinternals/downloads/pstools)
-2. 從封裝中解壓縮[psexec](https://docs.microsoft.com/sysinternals/downloads/psexec) ，並從提高許可權的命令提示字元執行**psexec-i-u "nt authority\network service" cmd.exe** 。
+1. 下載[PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools)
+2. 從封裝中解壓縮[psexec](https://docs.microsoft.com/sysinternals/downloads/psexec) ，然後從提升許可權的命令提示字元執行**psexec-i-u "nt authority\network service" cmd.exe** 。
 3. 在新出現的命令提示字元中執行**certmgr.msc**
 2. 在管理主控台中，展開 [個人] 容器，然後按一下 [憑證]
 3. 找出**connectorregistrationca.msappproxy.net**所簽發的憑證
@@ -120,9 +119,9 @@ Register-AppProxyConnector
 
 **確認認證是否正確：**
 
-連線至 `https://login.microsoftonline.com` 並使用相同的認證。 確定登入成功。 您可以前往 [ **Azure Active Directory**  - &gt; **使用者] 和 [群組** - &gt; ] [**所有使用者**] 來檢查使用者角色。 
+連線至 `https://login.microsoftonline.com` 並使用相同的認證。 確定登入成功。 您可以前往 [ **Azure Active Directory**使用者] 和 [群組] [  - &gt; **Users and Groups**  - &gt; **所有使用者**] 來檢查使用者角色。 
 
 選取您的使用者帳戶，然後在產生的功能表中選取 [目錄角色]。 確認選取的角色為 [應用程式系統管理員]。 如果您無法存取這些步驟上的任何頁面，表示您沒有必要的角色。
 
 ## <a name="next-steps"></a>後續步驟
-[瞭解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)
+[了解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)

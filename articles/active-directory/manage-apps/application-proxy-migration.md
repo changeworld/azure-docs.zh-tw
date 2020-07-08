@@ -3,8 +3,8 @@ title: 升級到 Azure AD 應用程式 Proxy | Microsoft Docs
 description: 如果您是從 Microsoft Forefront 或 Unified Access Gateway 升級，選擇哪一個 Proxy 解決方案最適合。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4790dc7ebeeee3407e89bcf38d7e3f25699ed328
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ef1ffb5ec0b39c5331afbc55d99268d9a3997e62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67108416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764446"
 ---
 # <a name="compare-remote-access-solutions"></a>比較遠端存取解決方案
 
@@ -38,17 +37,17 @@ Azure Active Directory 應用程式 Proxy 是 Microsoft 提供的兩個遠端存
 | 選擇性地發佈瀏覽器應用程式 | 是 | 是 | 是 | 是 |
 | 預先驗證和單一登入 | 是 | 是 | 是 | 是 | 
 | 第 2 層/第 3 層防火牆 | 是 | 是 | - | - |
-| 轉接 Proxy 功能 | 是 | - | - | - |
+| 轉接 Proxy 功能 | Yes | - | - | - |
 | VPN 功能 | 是 | 是 | - | - |
-| 豐富通訊協定支援 | - | 是 | 是，如果是透過 HTTP 執行 | 是，如果是透過 HTTP 或透過遠端桌面閘道執行 |
+| 豐富通訊協定支援 | - | Yes | 是，如果是透過 HTTP 執行 | 是，如果是透過 HTTP 或透過遠端桌面閘道執行 |
 | 作為 ADFS Proxy 伺服器 | - | 是 | 是 | - |
 | 應用程式存取的單一入口網站 | - | 是 | - | 是 |
 | 回應內文連結轉譯 | 是 | 是 | - | 是 | 
-| 使用標頭進行驗證 | - | 是 | - | 是，使用 PingAccess | 
-| 雲端級別安全性 | - | - | - | 是 | 
+| 使用標頭進行驗證 | - | Yes | - | 是，使用 PingAccess | 
+| 雲端級別安全性 | - | - | - | Yes | 
 | 條件式存取 | - | 是 | - | 是 |
-| 周邊網路 (DMZ) 中沒有任何元件 | - | - | - | 是 |
-| 沒有輸入連線 | - | - | - | 是 |
+| 周邊網路 (DMZ) 中沒有任何元件 | - | - | - | Yes |
+| 沒有輸入連線 | - | - | - | Yes |
 
 在大部分的情況下，我們建議 Azure AD 應用程式 Proxy 作為現代化解決方案。 Web 應用程式 Proxy 只建議用在需要 AD FS Proxy 伺服器的情節中，而且您無法使用 Azure Active Directory 中的自訂網域。 
 

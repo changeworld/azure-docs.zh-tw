@@ -3,8 +3,8 @@ title: 在 Azure AD 中管理同盟憑證 | Microsoft Docs
 description: 了解如何自訂同盟憑證的到期日期，以及如何更新即將到期的憑證。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de60dc5095ce4ab4d0219a388c445b08f544e1f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77159024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763205"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中管理同盟單一登入的憑證
 
@@ -30,7 +29,7 @@ ms.locfileid: "77159024"
 
 ## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>為資源庫和非資源庫應用程式自動產生的憑證
 
-當您從資源庫新增應用程式，並設定 saml 型登入（從應用程式的 [總覽] 頁面選取 [**單一登入** > **saml** ]）時，Azure AD 會為應用程式產生三年有效的憑證。 若要下載作用中的憑證做為安全性憑證（**.cer**）檔案，請回到該頁面（以**saml 為基礎**的登入），然後選取 [ **saml 簽署憑證**] 標題中的下載連結。 您可以在原始（二進位）憑證或 Base64 （base 64 編碼文字）憑證之間做選擇。 針對資源庫應用程式，此區段可能也會顯示一個連結，將憑證下載為同盟中繼資料 XML **（.xml 檔案**），視應用程式的需求而定。
+當您從資源庫新增應用程式，並設定 saml 型登入（從應用程式的 [總覽] 頁面選取 [**單一登入**  >  **saml** ]）時，Azure AD 會為應用程式產生三年有效的憑證。 若要下載作用中的憑證做為安全性憑證（**.cer**）檔案，請回到該頁面（以**saml 為基礎**的登入），然後選取 [ **saml 簽署憑證**] 標題中的下載連結。 您可以在原始（二進位）憑證或 Base64 （base 64 編碼文字）憑證之間做選擇。 針對資源庫應用程式，此區段可能也會顯示一個連結，將憑證下載為同盟中繼資料 XML **（.xml 檔案**），視應用程式的需求而定。
 
 ![SAML active 簽署憑證下載選項](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
@@ -54,7 +53,7 @@ ms.locfileid: "77159024"
 
 首先，建立並儲存具有不同到期日的新憑證：
 
-1. 登入[Azure Active Directory 入口網站](https://aad.portal.azure.com/)。 [ **Azure Active Directory 系統管理中心**] 頁面隨即出現。
+1. 登入 [Azure Active Directory 入口網站](https://aad.portal.azure.com/)。 [ **Azure Active Directory 系統管理中心**] 頁面隨即出現。
 1. 在左側窗格中，選取 [企業應用程式]****。 您帳戶中的企業應用程式清單隨即出現。
 1. 選取受影響的應用程式。 應用程式的 [總覽] 頁面隨即出現。
 1. 在 [應用程式總覽] 頁面的左窗格中，選取 [**單一登入**]。
@@ -63,7 +62,7 @@ ms.locfileid: "77159024"
 1. 選取 [**新增憑證**]。 [憑證] 清單下方會出現新的資料列，其中到期日預設為目前日期後的三年。 （尚未儲存您的變更，因此您仍可修改到期日）。
 1. 在 [新憑證] 列中，將滑鼠停留在 [到期日] 資料行上，然後選取 [**選取日期**] 圖示（行事曆）。 行事曆控制項隨即出現，其中顯示新資料列目前到期日的月份天數。
 1. 使用行事曆控制項來設定新的日期。 您可以設定目前日期與目前日期後三年之間的任何日期。
-1. 選取 [儲存]  。 新憑證現在會顯示為 [**非**作用中] 狀態、您選擇的到期日和 [指紋]。
+1. 選取 [儲存]。 新憑證現在會顯示為 [**非**作用中] 狀態、您選擇的到期日和 [指紋]。
 1. 選取**X**以返回 [以**SAML-Preview 設定單一登入**] 頁面。
 
 ### <a name="upload-and-activate-a-certificate"></a>上傳並啟動憑證
@@ -88,7 +87,7 @@ Azure AD 會在 SAML 憑證到期前，傳送電子郵件通知60、30和7天。
 1. 在最後的電子郵件地址底下，輸入應接收憑證到期通知的電子郵件地址，然後按 Enter。
 1. 針對您想要新增的每個電子郵件地址，重複上一個步驟。
 1. 針對您想要刪除的每個電子郵件地址，選取電子郵件地址旁的 [**刪除**] 圖示（「垃圾可以」）。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 您會收到來自 aadnotification@microsoft.com 的通知電子郵件。 若要避免電子郵件傳送到您的垃圾郵件位置，請將此電子郵件新增至您的連絡人。
 
@@ -109,6 +108,6 @@ Azure AD 會在 SAML 憑證到期前，傳送電子郵件通知60、30和7天。
 ## <a name="related-articles"></a>相關文章
 
 - [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](../saas-apps/tutorial-list.md)
-- [搭配 Azure Active Directory 的應用程式管理](what-is-application-management.md)
+- [使用 Azure Active Directory 的應用程式管理](what-is-application-management.md)
 - [Azure Active Directory 中的應用程式單一登入](what-is-single-sign-on.md)
-- [在 Azure Active Directory 中，對應用程式的 SAML 型單一登入進行 Debug](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- [針對 Azure Active Directory 中應用程式的 SAML 型單一登入進行偵錯](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

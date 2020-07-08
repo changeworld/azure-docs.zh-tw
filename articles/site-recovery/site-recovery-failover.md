@@ -4,12 +4,11 @@ description: 如何使用 Azure Site Recovery 將 Vm/實體伺服器故障切換
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: 99a197e8f5ebac8a3b0be1b567ee41b43a2c4476
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bebc4cd56f248d09579dcde2fc234f63dd65a09f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471263"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84309963"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>執行從內部部署容錯移轉至 Azure
 
@@ -32,7 +31,7 @@ ms.locfileid: "79471263"
 
 **容錯移轉之後** | **位置** | **動作**
 --- | --- | ---
-**執行 Windows 的 Azure VM** | 在容錯移轉前的內部部署機器 | 若要透過網際網路存取 Azure VM，請啟用 RDP，並確定已針對 [公用]**** 新增 TCP 和 UDP 規則，且在 [Windows 防火牆]**** > [允許的應用程式]**** 中已針對所有設定檔允許 RDP。<br/><br/> 若要透過站對站連線來存取 Azure VM，請在機器上啟用 rdp，並確定在 [ **Windows 防火牆** -> ] [**允許的應用程式和功能**] 中，針對 [**網域] 和 [私人**] 網路允許 rdp。<br/><br/> <br/><br/> 移除任何靜態持續性路由和 WinHTTP proxy。 確定作業系統的 SAN 原則已設為 **OnlineAll**。 [深入了解](https://support.microsoft.com/kb/3031135)。<br/><br/> 觸發容錯移轉時，請確定 VM 上沒有任何暫止的 Windows 更新。 容錯移轉時，可能會啟動 Windows 更新，必須等到更新完成，才能登入 VM。
+**執行 Windows 的 Azure VM** | 在容錯移轉前的內部部署機器 | 若要透過網際網路存取 Azure VM，請啟用 RDP，並確定已針對 [公用]**** 新增 TCP 和 UDP 規則，且在 [Windows 防火牆]**** > [允許的應用程式]**** 中已針對所有設定檔允許 RDP。<br/><br/> 若要透過站對站連線來存取 Azure VM，請在機器上啟用 rdp，並確定在 [ **Windows 防火牆**] [  ->  **允許的應用程式和功能**] 中，針對 [**網域] 和 [私人**] 網路允許 rdp。<br/><br/> <br/><br/> 移除任何靜態持續性路由和 WinHTTP proxy。 確定作業系統的 SAN 原則已設為 **OnlineAll**。 [深入了解](https://support.microsoft.com/kb/3031135)。<br/><br/> 觸發容錯移轉時，請確定 VM 上沒有任何暫止的 Windows 更新。 容錯移轉時，可能會啟動 Windows 更新，必須等到更新完成，才能登入 VM。
 **執行 Linux 的 Azure VM** | 在容錯移轉前的內部部署機器 | 確定 VM 上的安全殼層服務已設定為在系統開機時自動啟動。<br/><br/> 請檢查防火牆規則是否允許 SSH 連線。
 
 
@@ -43,15 +42,16 @@ ms.locfileid: "79471263"
 
 執行復原方案容錯移轉，如下所示：
 
-1. 在 Site Recovery 保存庫中，選取 [復原**方案** > ]*recoveryplan_name*。
+1. 在 Site Recovery 保存庫中，選取 [復原**方案**]  >  *recoveryplan_name*。
 2. 按一下 [容錯移轉]****。
 
     ![容錯移轉](./media/site-recovery-failover/Failover.png)
 
-3. 如果您要複寫至 Azure，請在 [**容錯移轉** > **容錯移轉方向**] 中保留預設值。
+3. 如果您要複寫至 Azure，請在 [**容錯移轉**  >  **容錯移轉方向**] 中保留預設值。
 4. 在 [**容錯移轉**] 中，選取要容錯移轉的目標**復原點**。
 
     - **最新**：使用最新的點。 這會處理已傳送到 Site Recovery 服務的所有資料，並為每部機器建立復原點。 此選項會提供最低的 RPO （復原點目標），因為在容錯移轉後建立的 VM 會在觸發容錯移轉時，將所有資料複寫到 Site Recovery。
+    請注意，當來源區域停止運作時，就無法再進行記錄處理。 因此，您必須容錯移轉至最新處理的復原點。 若要深入瞭解，請參閱下一個重點。
    - **最新處理**：使用此選項可將 vm 損毀修復到已由 Site Recovery 處理的最新復原點。 您可以在 VM**最新的復原點**中看到最新處理的復原點。 此選項提供低 RTO，因為沒有時間花費在處理未處理的資料
    - **最新的應用程式一致**：使用此選項可將 vm 故障，移至 Site Recovery 所處理的最新應用程式一致復原點。
    - 已**處理最新多個 vm**：使用此選項時，屬於複寫群組的 vm 會容錯移轉至最新的一般多部 VM 一致復原點。 其他虛擬機器故障切換至其最近處理的復原點。 此選項僅適用于至少有一部 VM 已啟用多部 VM 一致性的復原計畫。

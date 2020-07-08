@@ -1,19 +1,13 @@
 ---
 title: 使用 Azure 事件中樞中的共用存取簽章來授權存取
 description: 本文提供的資訊說明如何使用共用存取簽章（SAS）來授權 Azure 事件中樞資源的存取權。
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.author: spelluru
-ms.openlocfilehash: bdb1896f8a40c6de21ae76b536bfccec316341cd
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69992792"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85323129"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>使用共用存取簽章授權事件中樞資源的存取權
 共用存取簽章（SAS）可讓您將有限的存取權授與事件中樞命名空間中的資源。 SAS 會根據授權規則來保護事件中樞資源的存取權。 這些規則是在命名空間或實體（事件中樞或主題）上設定。 本文提供 SAS 模型的總覽，並回顧 SAS 最佳做法。
@@ -33,7 +27,7 @@ SAS 是使用簡單權杖以宣告為基礎的授權機制。 使用 SAS 時，�
 
 ## <a name="shared-access-authorization-policies"></a>共用存取授權原則
 每個事件中樞命名空間和每個事件中樞實體（事件中樞實例或 Kafka 主題）都具有由規則組成的共用存取授權原則。 命名空間層級的原則會套用至命名空間內的所有實體，無論其個別的原則組態為何。
-對於每個授權原則規則，您會決定三項資訊：名稱、範圍和權限。 名稱是該範圍內的唯一名稱。 範圍是有問題之資源的 URI。 針對事件中樞命名空間，範圍是完整功能變數名稱（FQDN），例如`https://<yournamespace>.servicebus.windows.net/`。
+對於每個授權原則規則，您會決定三項資訊：名稱、範圍和權限。 名稱是該範圍內的唯一名稱。 範圍是有問題之資源的 URI。 針對事件中樞命名空間，範圍是完整功能變數名稱（FQDN），例如 `https://<yournamespace>.servicebus.windows.net/` 。
 
 原則規則所提供的許可權可以是下列各項的組合：
 - **Send** –提供將訊息傳送至實體的許可權

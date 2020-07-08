@@ -4,15 +4,14 @@ description: 傳統部署模型現已由 Resource Manager 模型取代，會強�
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: a3d5106cafc1d3bfe77f3e42e85cedb668fc4fa0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: afdb8b2b677321239f240e74d49711195ac186c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76835544"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763902"
 ---
 # <a name="classic-deployment-model"></a>傳統部署模型
 
@@ -30,11 +29,11 @@ ms.locfileid: "76835544"
 
 請依照下列指示，使用 Azure 入口網站中的 [說明 **+ 支援**] 來建立支援要求。
 
-1. 從 [ [Azure 入口網站](https://portal.azure.com)] 功能表中，選取 [說明 **+ 支援**]。
+1. 從 [Azure 入口網站](https://portal.azure.com)功能表中，選取 [説明 + 支援]。
 
    ![在 [Azure 入口網站中選取 [說明 + 支援]](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-1. 選取 [新增支援要求]****。
+1. 選取 [新增支援要求]。
 
    ![在 Azure 入口網站中建立新的支援要求](./media/resource-manager-core-quotas-request/new-support-request.png)
 

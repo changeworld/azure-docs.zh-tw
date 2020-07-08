@@ -4,15 +4,14 @@ description: 使用 Azure 入口網站建立傳統的點對站 VPN 閘道連線�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5d80cb2f2ed844126d1e9311151e6c53fcb11840
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244572"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984781"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用憑證驗證設定點對站連線 (傳統)
 
@@ -35,7 +34,7 @@ ms.locfileid: "79244572"
 
 ![Point-to-Site-diagram](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 點對站憑證驗證連線需要下列先決條件：
 
@@ -202,7 +201,7 @@ ms.locfileid: "79244572"
 >
 >
 
-1. 若要連接到您的 VNet，請在用戶端電腦上移至 Azure 入口網站中的 [ **vpn**連線]，並找出您所建立的 vpn 連線。 VPN 連線的名稱會與虛擬網路相同。 選取 [連線]  。 如果出現關於憑證的快顯訊息，請選取 [繼續]**** 以使用較高的權限。
+1. 若要連接到您的 VNet，請在用戶端電腦上移至 Azure 入口網站中的 [ **vpn**連線]，並找出您所建立的 vpn 連線。 VPN 連線的名稱會與虛擬網路相同。 選取 [連接]。 如果出現關於憑證的快顯訊息，請選取 [繼續]**** 以使用較高的權限。
 
 2. 在 [連線]**** 狀態頁面上，選取 [連線]**** 以便開始連線。 如果您看到 [選取憑證]**** 畫面，請確認所顯示的用戶端憑證是否正確。 如果不正確，請從下拉式清單中選取正確的憑證，然後選取 [確定]****。
 

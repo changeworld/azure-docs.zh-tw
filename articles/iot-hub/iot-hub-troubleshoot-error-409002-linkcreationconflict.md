@@ -10,17 +10,16 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: amqp
 ms.openlocfilehash: 20d39b1f5a11f20eb5d12f34337787b382c820f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758749"
 ---
 # <a name="409002-linkcreationconflict"></a>409002 LinkCreationConflict
 
 本文說明**409002 LinkCreationConflict**錯誤的原因和解決方案。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 您會看到錯誤**409002 LinkCreationConflict**記錄在診斷記錄中，以及裝置中斷連線或雲端到裝置訊息失敗。 
 
@@ -38,6 +37,6 @@ ms.locfileid: "81758749"
 
 錯誤的裝置端邏輯會導致裝置在已開啟的狀態時建立連接。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 此錯誤通常會顯現為不同暫時性問題的副作用，所以請尋找記錄中的其他錯誤，進一步進行疑難排解。 否則，請務必在連線中斷後才發出新的連線要求。

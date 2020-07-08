@@ -4,11 +4,10 @@ description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務�
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247861"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84709873"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的支援矩陣
 
@@ -41,12 +40,12 @@ Azure 備份使用 MARS 代理程式，將資料從內部部署機器和 Azure V
 
 當您使用 MARS 代理程式來備份資料時，代理程式會取得資料的快照集，並將它儲存在本機快取資料夾中，然後再將資料傳送至 Azure。 快取（臨時）資料夾有數個需求：
 
-**快取** | **詳細資料**
+**Cache** | **詳細資料**
 --- | ---
-Size |  快取資料夾中的可用空間至少應為備份資料整體大小的5% 到10%。
+大小 |  快取資料夾中的可用空間至少應為備份資料整體大小的5% 到10%。
 位置 | 快取資料夾必須存放在要備份的電腦上，而且必須在線上。 快取資料夾不可以在網路共用、卸載式媒體或離線磁片區上。
 資料夾 | 快取資料夾不應在已重復資料刪除的磁片區上，或在已壓縮、稀疏或具有重新分析點的資料夾中進行加密。
-位置變更 | 您可以藉由停止備份引擎（`net stop bengine`）並將快取資料夾複製到新的磁片磁碟機，來變更快取位置。 （請確認新的磁片磁碟機具有足夠的空間。）然後將**HKLM\SOFTWARE\Microsoft\Windows Azure 備份**（**config/ScratchLocation**和**config/CloudBackupProvider/ScratchLocation**）下的兩個登錄專案更新為新位置，然後重新開機引擎。
+位置變更 | 您可以藉由停止備份引擎（）並將快取 `net stop bengine` 資料夾複製到新的磁片磁碟機，來變更快取位置。 （請確認新的磁片磁碟機具有足夠的空間。）然後將**HKLM\SOFTWARE\Microsoft\Windows Azure 備份**（**config/ScratchLocation**和**config/CloudBackupProvider/ScratchLocation**）下的兩個登錄專案更新為新位置，然後重新開機引擎。
 
 ## <a name="networking-and-access-support"></a>網路功能與存取支援
 
@@ -81,7 +80,7 @@ MARS 伺服器需要存取這些 URL：
 
 透過 Microsoft 對等互連，請選取下列服務/區域和相關的「社區」值：
 
-- Azure Active Directory （12076:5060）
+- Azure Active Directory (12076:5060)
 - Microsoft Azure 區域（根據復原服務保存庫的位置）
 - Azure 儲存體（根據您的復原服務保存庫的位置）
 
@@ -114,11 +113,11 @@ MARS 伺服器需要存取這些 URL：
 Windows 10 (企業版、專業版、家用版) | 是 | 否 |  檢查對應的伺服器版本是否有軟體/模組需求
 Windows 8.1 (企業版、專業版)| 是 |否 | 檢查對應的伺服器版本是否有軟體/模組需求
 Windows 8 (企業版、專業版) | 是 | 否 | 檢查對應的伺服器版本是否有軟體/模組需求
-Windows Server 2016 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
-Windows Server 2012 R2(Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
-Windows Server 2012 (Standard、Datacenter、Essentials) | 是 | 是 |-.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0 <br> -部署映射服務與管理（DISM.EXE）
+Windows Server 2016 (Standard、Datacenter、Essentials) | Yes | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
+Windows Server 2012 R2(Standard、Datacenter、Essentials) | Yes | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
+Windows Server 2012 (Standard、Datacenter、Essentials) | Yes | 是 |-.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0 <br> -部署映射服務與管理（DISM.exe）
 Windows Storage Server 2016/2012 R2/2012 （Standard、Workgroup） | 是 | 否 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
-Windows Server 2019 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
+Windows Server 2019 (Standard、Datacenter、Essentials) | Yes | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
 
 如需詳細資訊，請參閱[支援的 MABS 和 DPM 作業系統](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)。
 
@@ -133,8 +132,8 @@ Windows Server 2019 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4�
 | **作業系統**                                       | **檔案/資料夾** | **系統狀態** | **軟體/模組需求**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
 | Windows 7 （旗艦版、企業版、專業版、家用 Premium/Basic、Starter） | 是               | 否                 | 檢查對應的伺服器版本是否有軟體/模組需求 |
-| Windows Server 2008 R2 （Standard、Enterprise、Datacenter、Foundation） | 是               | 是                | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console （MMC）3。0 <br>  -部署映射服務與管理（DISM.EXE） |
-| Windows Server 2008 SP2 （Standard、Datacenter、Foundation）  | 是               | 否                 | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console （MMC）3。0 <br>  -部署映射服務與管理（DISM.EXE） <br>  -Virtual Server 2005 基底 + KB KB948515 |
+| Windows Server 2008 R2 （Standard、Enterprise、Datacenter、Foundation） | Yes               | 是                | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console （MMC）3。0 <br>  -部署映射服務與管理（DISM.exe） |
+| Windows Server 2008 SP2 （Standard、Datacenter、Foundation）  | 是               | 否                 | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console （MMC）3。0 <br>  -部署映射服務與管理（DISM.exe） <br>  -Virtual Server 2005 基底 + KB KB948515 |
 
 ## <a name="backup-limits"></a>備份限制
 
@@ -145,10 +144,10 @@ Azure 備份限制可以備份的檔案或資料夾資料來源的大小。 您�
 **作業系統** | **大小限制**
 --- | ---
 Windows Server 2012 或更新版本 |54,400 GB
-Windows Server 2008 R2 SP1 |1700 GB
-Windows Server 2008 SP2| 1700 GB
+Windows Server 2008 R2 SP1 |1,700 GB
+Windows Server 2008 SP2| 1,700 GB
 Windows 8 或更新版本| 54,400 GB
-Windows 7| 1700 GB
+Windows 7| 1,700 GB
 
 ### <a name="other-limitations"></a>其他限制
 
@@ -156,17 +155,17 @@ Windows 7| 1700 GB
 
 ## <a name="supported-file-types-for-backup"></a>支援的備份檔案類型
 
-**類型** | **支援**
+**型別** | **支援**
 --- | ---
 加密<sup>*</sup>| 支援。
 Compressed | 支援。
 疏鬆 | 支援。
 已壓縮和疏鬆 |支援。
-永久連結| 不支援。 已略過。
-重新分析點| 不支援。 已略過。
-加密和疏鬆 |不支援。 已略過。
-壓縮資料流| 不支援。 已略過。
-疏鬆資料流| 不支援。 已略過。
+永久連結| 不支援。 略.
+重新分析點| 不支援。 略.
+加密和疏鬆 |不支援。 略.
+壓縮資料流| 不支援。 略.
+疏鬆資料流| 不支援。 略.
 OneDrive （已同步處理的檔案為稀疏資料流程）| 不支援。
 已啟用 DFS 複寫的資料夾 | 不支援。
 

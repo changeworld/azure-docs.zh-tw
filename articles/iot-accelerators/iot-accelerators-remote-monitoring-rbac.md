@@ -9,12 +9,11 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2774fc1374bf7fa3ed171258e8b1b51cfdb4b8b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612940"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920712"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>在遠端監視解決方案加速器中設定角色型存取控制
 
@@ -50,7 +49,7 @@ ms.locfileid: "82612940"
 
 ## <a name="add-or-remove-users"></a>新增或移除使用者
 
-Azure Active Directory 應用程式擁有者可以使用 Azure 入口網站，從遠端監視解決方案新增或移除使用者的角色。 下列步驟會使用當您部署遠端監視解決方案時所建立的 [Azure Active Directory 企業應用程式](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application)。
+Azure Active Directory 應用程式擁有者可以使用 Azure 入口網站，從遠端監視解決方案新增或移除使用者的角色。 下列步驟會使用當您部署遠端監視解決方案時所建立的 [Azure Active Directory 企業應用程式](../active-directory/manage-apps/view-applications-portal.md)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 

@@ -8,17 +8,16 @@ manager: mtillman
 ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 4eef5a9e3f010e19871471d007ff2a0cc24d3834
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 60f1f2d20ec2989f73098a18392b936593b85656
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461373"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764021"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>使用角色型存取控制來共用 Azure 儀表板
 
@@ -37,7 +36,7 @@ ms.locfileid: "81461373"
 
 * 訂用帳戶
 * 資源群組
-* 資源
+* resource
 
 您指派的許可權會從訂用帳戶向下繼承到資源。 發佈的儀表板是一種資源。 您可能已將使用者指派給適用于已發佈儀表板之訂用帳戶的角色。
 

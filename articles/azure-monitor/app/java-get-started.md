@@ -6,10 +6,9 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
 ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537503"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入門：在 JAVA Web 專案中開始使用 Application Insights
@@ -18,7 +17,7 @@ ms.locfileid: "81537503"
 
 Application Insights 是一項 Web 開發人員可延伸的分析服務，可幫助您了解即時應用程式的效能和使用情形。 Application Insights 支援 Linux、Unix 或 Windows 上執行的 Java 應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 * 正常運作的 JAVA 應用程式。
@@ -38,7 +37,7 @@ Application Insights 是一項 Web 開發人員可延伸的分析服務，可幫
 
 # <a name="maven"></a>[Maven](#tab/maven)
 
-如果您的專案已設定為使用 Maven 進行組建，請將下列程式碼合併至您的*pom .xml*檔案。
+如果您的專案已設定為使用 Maven 進行組建，請將下列程式碼合併至您的*pom.xml*檔案。
 
 然後重新整理專案相依性，以下載程式庫。
 
@@ -75,7 +74,7 @@ Application Insights 是一項 Web 開發人員可延伸的分析服務，可幫
 ---
 
 ### <a name="questions"></a>問題
-* *`-web`和`-core`元件之間`-web-auto`的關係為何？*
+* *和元件之間的關係為何 `-web-auto` `-web` `-core` ？*
   * `applicationinsights-web-auto`提供計量來追蹤 HTTP servlet 要求計數和回應時間，方法是在執行時間自動註冊 Application Insights servlet 篩選器。
   * `applicationinsights-web`也會提供計量來追蹤 HTTP servlet 要求計數和回應時間，但需要在您的應用程式中手動註冊 Application Insights servlet 篩選器。
   * `applicationinsights-core`提供您單純的 API，例如，如果您的應用程式不是以 servlet 為基礎。
@@ -86,8 +85,8 @@ Application Insights 是一項 Web 開發人員可延伸的分析服務，可幫
   * 如果您要手動管理相依性 .。。
     * 下載最新的 [Application Insights SDK for Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) 並取代舊的。 [SDK 版本資訊](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)中會說明變更內容。
 
-## <a name="add-an-applicationinsightsxml-file"></a>新增*ApplicationInsights .xml*檔案
-將*ApplicationInsights*新增至專案中的 resources 資料夾，或確定它已新增至專案的部署類別路徑。 將下列 XML 複製到其中。
+## <a name="add-an-applicationinsightsxml-file"></a>新增*ApplicationInsights.xml*檔案
+將*ApplicationInsights.xml*新增至專案中的 [資源] 資料夾，或確定它已新增至專案的部署類別路徑。 將下列 XML 複製到其中。
 
 將檢測金鑰取代為您從 Azure 入口網站所獲得的識別碼。
 
@@ -118,7 +117,7 @@ Application Insights 是一項 Web 開發人員可延伸的分析服務，可幫
 </ApplicationInsights>
 ```
 
-（選擇性）設定檔可以位於您的應用程式可存取的任何位置。  系統屬性`-Dapplicationinsights.configurationDirectory`會指定包含*ApplicationInsights*的目錄。 例如，位於 `E:\myconfigs\appinsights\ApplicationInsights.xml` 的組態檔是使用屬性 `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` 來設定。
+（選擇性）設定檔可以位於您的應用程式可存取的任何位置。  系統屬性 `-Dapplicationinsights.configurationDirectory` 會指定包含*ApplicationInsights.xml*的目錄。 例如，位於 `E:\myconfigs\appinsights\ApplicationInsights.xml` 的組態檔是使用屬性 `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` 來設定。
 
 * 檢測金鑰會隨著遙測的每個項目傳送，並告知 Application Insights 在您的資源中顯示它。
 * HTTP 要求元件是選用的。 它會自動將要求和回應時間的遙測傳送到入口網站。
@@ -129,7 +128,7 @@ Application Insights SDK 會依此順序尋找此金鑰︰
 
 1. 系統屬性：-DAPPINSIGHTS_INSTRUMENTATIONKEY = your_ikey
 2. 環境變數： APPINSIGHTS_INSTRUMENTATIONKEY
-3. 設定檔： *ApplicationInsights .xml*
+3. 設定檔： *ApplicationInsights.xml*
 
 您也可以 [在程式碼中設定](../../azure-monitor/app/api-custom-events-metrics.md#ikey)：
 
@@ -233,7 +232,7 @@ Application Insights Java SDK 現在支援 [W3C 分散式追蹤](https://w3c.git
 ![已選取處理常式私用位元組的 [計量] 窗格螢幕擷取畫面](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>自訂效能計數器集合
-若要停用一組標準效能計數器的收集，請在*ApplicationInsights*的根節點底下新增下列程式碼：
+若要停用一組標準效能計數器的收集，請在*ApplicationInsights.xml*檔案的根節點底下新增下列程式碼：
 
 ```XML
     <PerformanceCounters>
@@ -300,7 +299,7 @@ Application Insights 可讓您定期測試網站，以檢查網站運作中且�
 
 [深入瞭解如何設定可用性 web 測試。][availability]
 
-## <a name="questions-problems"></a>有疑問嗎？ 有問題嗎？
+## <a name="questions-problems"></a>有問題嗎？ 有問題嗎？
 [疑難排解 Java](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>後續步驟

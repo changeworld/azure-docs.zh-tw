@@ -2,22 +2,21 @@
 title: 管理應用程式的同意及評估同意要求-Azure AD
 description: 瞭解如何在使用者同意已停用或受到限制時管理同意要求，以及如何評估對應用程式的租使用者系統管理員同意要求。
 services: active-directory
-author: psignoret
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0451fe18629a572c9b49f14924bfa50293f42a2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5a725eefd678720f2d9b8763277b02452819155b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77367843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763188"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>管理應用程式的同意及評估同意要求
 
@@ -114,8 +113,8 @@ Microsoft[建議](https://docs.microsoft.com/azure/security/fundamentals/steps-s
 
 [設定管理員同意工作流程](configure-admin-consent-workflow.md)
 
-[設定終端使用者同意應用程式的方式](configure-user-consent.md)
+[設定使用者同意應用程式的方式](configure-user-consent.md)
 
-[Microsoft 身分識別平臺中的許可權和同意](../develop/active-directory-v2-scopes.md)
+[Microsoft 身分識別平台中的權限和同意](../develop/active-directory-v2-scopes.md)
 
 [StackOverflow 上的 Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -7,11 +7,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710230"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>針對 Hyper-V VM，使用 PowerShell 和 Azure Resource Manager 設定至 Azure 的災害復原
 
@@ -44,8 +43,8 @@ Azure PowerShell 提供 Cmdlet，讓您使用 Windows PowerShell 管理 Azure。
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>步驟 1：登入您的 Azure 帳戶
 
-1. 開啟 PowerShell 主控台並執行這個命令，登入您的 Azure 帳戶。 此 Cmdlet 會顯示一個網頁，提示您輸入您的帳號憑證`Connect-AzAccount`：。
-   - 或者，您可以使用`Connect-AzAccount` **Credential**參數，將您的帳號憑證納入 Cmdlet 中做為參數。
+1. 開啟 PowerShell 主控台並執行這個命令，登入您的 Azure 帳戶。 此 Cmdlet 會顯示一個網頁，提示您輸入您的帳號憑證： `Connect-AzAccount` 。
+   - 或者，您可以 `Connect-AzAccount` 使用**Credential**參數，將您的帳號憑證納入 Cmdlet 中做為參數。
    - 如果您是代表租使用者工作的 CSP 合作夥伴，請使用其 tenantID 或租使用者的主功能變數名稱稱，將客戶指定為租使用者。 例如：`Connect-AzAccount -Tenant "fabrikam.com"`
 1. 由於一個帳戶可以有多個訂用帳戶，因此您必須將要使用的訂用帳戶與帳戶建立關聯：
 
@@ -79,14 +78,14 @@ Azure PowerShell 提供 Cmdlet，讓您使用 Windows PowerShell 管理 Azure。
    New-AzResourceGroup -Name $ResourceGroupName -Location $Geo
    ```
 
-1. 若要取得訂用帳戶中的資源群組清單，請`Get-AzResourceGroup`執行 Cmdlet。
+1. 若要取得訂用帳戶中的資源群組清單，請執行 `Get-AzResourceGroup` Cmdlet。
 1. 建立新的 Azure 復原服務保存庫，如下所示：
 
    ```azurepowershell
    $vault = New-AzRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
    ```
 
-您可以使用`Get-AzRecoveryServicesVault` Cmdlet 來捕獲現有保存庫的清單。
+您可以使用 Cmdlet 來捕獲現有保存庫的清單 `Get-AzRecoveryServicesVault` 。
 
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>步驟 3：設定復原服務保存庫內容
 
@@ -106,7 +105,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
    ```
 
 1. 這個 Cmdlet 會啟動 Site Recovery 作業來建立網站，並傳回 Site Recovery 作業物件。 等待作業完成，並確認作業已成功完成。
-1. 使用`Get-AzRecoveryServicesAsrJob` Cmdlet 來取出工作物件，並檢查作業的目前狀態。
+1. 使用 `Get-AzRecoveryServicesAsrJob` Cmdlet 來取出工作物件，並檢查作業的目前狀態。
 1. 產生並下載網站的註冊金鑰，如下所示：
 
    ```azurepowershell
@@ -130,7 +129,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 如果您執行的是 Hyper-V 核心伺服器，請下載安裝檔案並執行下列步驟：
 
-1. 執行下列命令，將檔案從_azuresiterecoveryprovider.exe_解壓縮至本機目錄：
+1. 執行下列命令，將檔案從_AzureSiteRecoveryProvider.exe_解壓縮至本機目錄：
 
    ```console
    AzureSiteRecoveryProvider.exe /x:. /q
@@ -216,7 +215,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
    Completed
    ```
 
-1. 更新復原屬性（例如 VM 角色大小）和 Azure 網路，以在容錯移轉之後連接 VM NIC。
+1. 更新復原屬性 (例如 VM 角色大小)，以及在容錯移轉後要連結 VM NIC 的 Azure 網路。
 
    ```console
    PS C:\> $nw1 = Get-AzVirtualNetwork -Name "FailoverNw" -ResourceGroupName "MyRG"
@@ -240,9 +239,9 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 > 如果您想要複寫至 Azure 中已啟用 CMK 的受控磁片，請使用 Az PowerShell 3.3.0 to do 執行下列步驟：
 >
 > 1. 藉由更新 VM 屬性來啟用容錯移轉至受控磁片
-> 1. 使用`Get-AzRecoveryServicesAsrReplicationProtectedItem` Cmdlet 來提取受保護專案之每個磁片的磁片識別碼
-> 1. 使用`New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` Cmdlet 建立字典物件，以包含磁片識別碼與磁片加密集的對應。 這些磁片加密集是由您在目的地區域中預先建立的。
-> 1. 藉由在**DiskIdToDiskEncryptionSetMap**參數`Set-AzRecoveryServicesAsrReplicationProtectedItem`中傳遞 dictionary 物件，使用 Cmdlet 更新 VM 屬性。
+> 1. 使用 `Get-AzRecoveryServicesAsrReplicationProtectedItem` Cmdlet 來提取受保護專案之每個磁片的磁片識別碼
+> 1. 使用 Cmdlet 建立字典物件， `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` 以包含磁片識別碼與磁片加密集的對應。 這些磁片加密集是由您在目的地區域中預先建立的。
+> 1. 藉 `Set-AzRecoveryServicesAsrReplicationProtectedItem` 由在**DiskIdToDiskEncryptionSetMap**參數中傳遞 dictionary 物件，使用 Cmdlet 更新 VM 屬性。
 
 ## <a name="step-8-run-a-test-failover"></a>步驟 8：執行測試容錯移轉
 

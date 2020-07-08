@@ -3,25 +3,24 @@ title: 存取 Teams 中的 Azure AD App Proxy 應用程式 | Microsoft Docs
 description: 使用 Azure AD Application Proxy 透過 Microsoft Teams 存取內部部署應用程式。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/05/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7afcd3bfe16775d5c99100278eda81da739b8d22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67807766"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764480"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>透過 Microsoft Teams 存取內部部署應用程式
 
@@ -33,13 +32,13 @@ Azure Active Directory Application Proxy 可讓您從任何地方單一登入內
 
 如果您尚未這麼做，請[設定租用戶的 Application Proxy 並安裝連接器](application-proxy-add-on-premises-application.md)。 然後，[發佈內部部署應用程式](application-proxy-add-on-premises-application.md)以供遠端存取。 當您要發佈應用程式時，請記下外部 URL，因為這會用於將應用程式新增至 Teams。
 
-如果您已經發佈應用程式，但不記得其外部 URL，請在 [Azure 入口網站](https://portal.azure.com)中查閱。 登入，然後流覽至**Azure Active Directory** > **企業應用** > 程式] [**所有應用**程式] > 選取您 >**應用程式 proxy**的應用程式。
+如果您已經發佈應用程式，但不記得其外部 URL，請在 [Azure 入口網站](https://portal.azure.com)中查閱。 登入，然後流覽至**Azure Active Directory**  >  **企業應用**程式] [  >  **所有應用**程式] > 選取您 >**應用程式 proxy**的應用程式。
 
 ## <a name="add-your-app-to-teams"></a>將應用程式新增至 Teams
 
 一旦透過 Application Proxy 發佈應用程式，請讓使用者知道，他們可以在其 Teams 通道中直接將該應用程式新增為一個索引標籤，小組中的每個人將能夠使用該應用程式。 請他們遵循下列三個步驟：
 
-1. 流覽至您要新增此應用程式的 [小組] 頻道， **+** 然後選取以新增索引標籤。
+1. 流覽至您要新增此應用程式的 [小組] 頻道，然後選取以新增索引標籤 **+** 。
 
    ![選取 [+] 以在小組中加入索引標籤](./media/application-proxy-integrate-with-teams/add-tab.png)
 

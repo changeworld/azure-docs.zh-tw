@@ -3,15 +3,14 @@ title: 使用 BI 分析工具連線到 Azure Cosmos DB
 description: 了解如何使用 Azure Cosmos DB ODBC 驅動程式建立資料表和檢視，使標準化資料可以在 BI 以及資料分析軟體中檢視。
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 8be17f0b624c5c34709fb420adb434b77dbc0d91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 57db2253cbffa8e16313c7613de6d2ddb2f2b0a2
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721076"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027234"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>使用 BI 分析工具搭配 ODBC 驅動程式連線到 Azure Cosmos DB
 
@@ -46,7 +45,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 1. 在您的電腦上開啟 [ODBC 資料來源管理員]**** 應用程式。 您可以透過在 Windows 搜尋方塊中輸入 **ODBC 資料來源**來執行此操作。 
     您可以按一下 [驅動程式]**** 索引標籤來確認驅動程式已安裝，並確定已列出 **Microsoft Azure Cosmos DB ODBC 驅動程式**。
 
-    ![Azure Cosmos DB ODBC 資料來源管理員](./media/odbc-driver/odbc-driver.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver.png" alt-text="Azure Cosmos DB ODBC 資料來源管理員":::
 
 ## <a name="step-2-connect-to-your-azure-cosmos-database"></a><a id="connect"></a>步驟2：連接到您的 Azure Cosmos 資料庫
 
@@ -56,27 +55,27 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
 1. 在 [Azure Cosmos DB ODBC 驅動程式 SDN 設定]**** 視窗中，填寫下列資訊︰ 
 
-    ![Azure Cosmos DB ODBC 驅動程式 DSN 設定視窗](./media/odbc-driver/odbc-driver-dsn-setup.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="Azure Cosmos DB ODBC 驅動程式 DSN 設定視窗":::
     - **資料來源名稱**：您的 ODBC DSN 易記名稱。 此名稱專屬於您的 Azure Cosmos DB 帳戶，因此如果您有多個帳戶，請適當命名。
     - **描述**：資料來源的簡短描述。
     - **主機**：Azure Cosmos DB 帳戶的 URI。 您可以從 Azure 入口網站中的 [Azure Cosmos DB 金鑰] 頁面擷取此資訊，如下列螢幕擷取畫面所示。 
     - **存取金鑰**︰來自 Azure 入口網站中 [Azure Cosmos DB 金鑰] 頁面的金鑰，分為主要或次要、讀寫或唯讀金鑰，如下列螢幕擷取畫面所示。 如果 DSN 是針對唯讀資料處理和報告使用，建議您使用唯讀金鑰。
-    ![Azure Cosmos DB 金鑰頁面](./media/odbc-driver/odbc-cosmos-account-keys.png)
+    :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="Azure Cosmos DB 金鑰頁面":::
     - **加密存取金鑰**：根據此電腦的使用者選取最佳選項。 
     
 1. 按一下 [測試]**** 按鈕，確定您可以連線到您的 Azure Cosmos DB 帳戶。 
 
 1.  按一下 [進階選項]**** 並設定下列值︰
-    *  **REST API 版本**：選取作業的[REST API 版本](https://docs.microsoft.com/rest/api/cosmos-db/)。 預設值2015-12-16。 如果您有具有[大型分割](large-partition-keys.md)區索引鍵的容器，而且需要 REST API 版本2018-12-31：
+    *  **REST API 版本**：選取作業的[REST API 版本](/rest/api/cosmos-db/)。 預設值2015-12-16。 如果您有具有[大型分割](large-partition-keys.md)區索引鍵的容器，而且需要 REST API 版本2018-12-31：
         - 針對 REST API 版本輸入**2018-12-31**
         - 在 [**開始**] 功能表中，輸入 "regedit" 以尋找並開啟 [**登錄編輯程式**] 應用程式。
-        - 在 [登錄編輯程式] 中，流覽至路徑： **Computer \ HKEY_LOCAL_MACHINE \software\odbc\odbc。INI**
+        - 在 [登錄編輯程式] 中，流覽至路徑： **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
         - 使用與您的 DSN 相同的名稱建立新的子機碼，例如「Contoso 帳戶 ODBC DSN」。
         - 流覽至「Contoso 帳戶 ODBC DSN」子機碼。
         - 以滑鼠右鍵按一下以加入新的**字串**值：
             - 值名稱： **IgnoreSessionToken**
-            - 數值資料： **1**
-            ![個登錄編輯程式設定](./media/odbc-driver/cosmos-odbc-edit-registry.png)
+            - 數值資料： **1**個 
+             :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="登錄編輯程式設定":::
     - **查詢一致性**︰選取適用於您的作業的[一致性層級](consistency-levels.md)。 預設為 [工作階段]。
     - **重試次數**：輸入初始要求因為服務速率限制而未完成時，重試作業的次數。
     - **結構描述檔案**：您在這裡有一些選項。
@@ -86,7 +85,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
 1. 一旦您完成 [Azure Cosmos DB ODBC 驅動程式 DSN 設定]**** 視窗並關閉，新的使用者 DSN 會加入到 [使用者 DSN] 索引標籤。
 
-    ![[使用者 DSN] 索引標籤上的新 Azure Cosmos DB ODBC DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-user-dsn.png" alt-text="[使用者 DSN] 索引標籤上的新 Azure Cosmos DB ODBC DSN":::
 
 ## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a><a id="#container-mapping"></a>步驟3：使用容器對應方法建立架構定義
 
@@ -94,7 +93,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
 1. 完成連線[到您的 Azure Cosmos 資料庫](#connect)中的步驟1-4 之後，請按一下 [ **Azure Cosmos DB ODBC 驅動程式 DSN 設定**] 視窗中的 [**架構編輯器**]。
 
-    ![[Azure Cosmos DB ODBC 驅動程式 DSN 設定] 視窗中的 [結構描述編輯器] 按鈕](./media/odbc-driver/odbc-driver-schema-editor.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-schema-editor.png" alt-text="[Azure Cosmos DB ODBC 驅動程式 DSN 設定] 視窗中的 [結構描述編輯器] 按鈕":::
 1. 在 [結構描述編輯器]**** 視窗中，按一下 [新建]****。
     [**產生架構**] 視窗會顯示 Azure Cosmos DB 帳戶中的所有容器。 
 
@@ -105,7 +104,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
     - 如果您想要將該資料行從查詢結果中排除，您可以將 [隱藏資料行]**** 設為 **true**。 雖然 [隱藏資料行] 標註為 true 的資料行仍屬於結構描述的一部份，它並不會針對選取和投影傳回。 例如，您可以隱藏開頭為 "_" 的所有 Azure Cosmos DB 系統必要屬性。
     - [識別碼]**** 資料行是唯一無法隱藏的欄位，因為它會在標準化結構描述中作為主索引鍵使用。 
 
-1. 定義好架構之後，**請按一下** | [檔案] [**儲存**]，流覽至要儲存架構的目錄，然後按一下 [**儲存**]。
+1. 定義好架構之後，**請按一下 [** 檔案] [  |  **儲存**]，流覽至要儲存架構的目錄，然後按一下 [**儲存**]。
 
 1. 若要使用此架構搭配 DSN，請開啟 [ **AZURE COSMOS DB Odbc 驅動程式 DSN 設定] 視窗**（透過 [Odbc 資料來源管理員]），按一下 [ **Advanced Options**]，然後在 [**架構**檔案] 方塊中，流覽至已儲存的架構。 將結構描述檔案儲存至現有的 DSN，會修改 DSN 連線，將範圍設定為由結構描述定義的資料和結構。
 
@@ -128,14 +127,14 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
     例如，如果您包含「City」的**屬性**值，而您想要限制資料表只包含含有「New York」和「Dubai」之城市值的資料列，可在 [屬性] 方塊中輸入「City」，而在 [值]**** 方塊中輸入「New York」和「Dubai」。
 
-1. 按一下 [確定]  。 
+1. 按一下 [確定]。 
 
 1. 完成您想要取樣之容器的對應定義之後，請在 [**架構編輯器**] 視窗中，按一下 [**範例**]。
      針對每個資料行，您可以修改資料行「SQL 名稱」、「SQL 類型」、「SQL 長度」(如果適用的話)、「小數位數」(如果適用的話)、「精確度」(如果適用的話)，以及「可為 Null」。
     - 如果您想要將該資料行從查詢結果中排除，您可以將 [隱藏資料行]**** 設為 **true**。 雖然 [隱藏資料行] 標註為 true 的資料行仍屬於結構描述的一部份，它並不會針對選取和投影傳回。 例如，您可以隱藏開頭為 `_` 的所有 Azure Cosmos DB 系統必要屬性。
     - [識別碼]**** 資料行是唯一無法隱藏的欄位，因為它會在標準化結構描述中作為主索引鍵使用。 
 
-1. 定義好架構之後，**請按一下** | [檔案] [**儲存**]，流覽至要儲存架構的目錄，然後按一下 [**儲存**]。
+1. 定義好架構之後，**請按一下 [** 檔案] [  |  **儲存**]，流覽至要儲存架構的目錄，然後按一下 [**儲存**]。
 
 1. 返回 [Azure Cosmos DB ODBC 驅動程式 DSN 設定]**** 視窗，按一下 [進階選項]****。 然後，在 [結構描述檔案]**** 方塊中，瀏覽至已儲存的結構描述檔案並按一下 [確定]****。 再按一下 [確定]**** 以儲存 DSN。 這會將您建立的結構描述儲存到 DSN。 
 
@@ -162,11 +161,11 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
     
 若要查看新的已連結伺服器名稱，請重新整理 [連結的伺服器] 清單。
 
-![SSMS 中連結的伺服器](./media/odbc-driver/odbc-driver-linked-server-ssms.png)
+:::image type="content" source="./media/odbc-driver/odbc-driver-linked-server-ssms.png" alt-text="SSMS 中連結的伺服器":::
 
 ### <a name="query-linked-database"></a>查詢連結的資料庫
 
-若要查詢連結的資料庫，請輸入 SSMS 查詢。 在此範例中，查詢會從名為`customers`的容器中的資料表中選取：
+若要查詢連結的資料庫，請輸入 SSMS 查詢。 在此範例中，查詢會從名為的容器中的資料表中選取 `customers` ：
 
 ```sql
 SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT *  FROM [customers].[customers]')
@@ -195,7 +194,8 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 您可以將檢視定義並建立為取樣程序的一部分。 這些檢視相當於 SQL 檢視。 它們都是唯讀，且以定義的 Azure Cosmos DB SQL 查詢的選取項目與投影為範圍。 
 
 若要建立資料的視圖，請在 [**架構編輯器**] 視窗的 [**查看定義**] 資料行中，按一下容器的資料列上的 [**加入**] 來取樣。 
-    ![建立檢視模型](./media/odbc-driver/odbc-driver-create-view.png)
+
+:::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="建立檢視模型":::
 
 
 接著在 [檢視定義]**** 視窗中，執行下列動作︰
@@ -204,7 +204,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 1. 在 [編輯檢視]**** 視窗中，輸入 Azure Cosmos DB 查詢。 這必須是 [Azure Cosmos DB SQL 查詢](how-to-sql-query.md) (例如 `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"`)，然後按一下 [確定]****。
 
-    ![建立檢視時，請加入查詢](./media/odbc-driver/odbc-driver-create-view-2.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="建立檢視時，請加入查詢":::
 
 
 您可以依需求建立多個檢視。 在您完成定義檢視後，您可以接著取樣資料。 
@@ -217,21 +217,21 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 1. 按一下 [取得資料]****。
 
-    ![在 Power BI Desktop 中取得資料](./media/odbc-driver/odbc-driver-power-bi-get-data.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data.png" alt-text="在 Power BI Desktop 中取得資料":::
 
 1. 在 [取得資料]**** 視窗中，按一下 [其他]**** |  [ODBC]**** |  [連線]****。
 
-    ![在 Power BI Get Data 中選擇 ODBC 資料來源](./media/odbc-driver/odbc-driver-power-bi-get-data-2.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-2.png" alt-text="在 Power BI Get Data 中選擇 ODBC 資料來源":::
 
 1. 在 [從 ODBC]**** 視窗中，選取您建立的資料來源名稱，然後按一下 [確定]****。 您可以將 [進階選項]**** 項目保留空白。
 
-    ![在 Power BI Get Data 中選擇資料來源名稱 (DSN)](./media/odbc-driver/odbc-driver-power-bi-get-data-3.png)
+   :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="在 Power BI Get Data 中選擇資料來源名稱 (DSN)":::
 
 1. 在 [使用 ODBC 驅動程式存取資料來源]**** 視窗中，選取 [預設或自訂]****，然後按一下 [連線]****。 您不需要包含「認證連接字串屬性」****。
 
 1. 在 [導覽器]**** 視窗的左窗格中，展開資料庫，展開結構描述，然後選取資料表。 結果窗格會包含使用您所建立之結構描述的資料。
 
-    ![在 Power BI Get Data 中選取資料表](./media/odbc-driver/odbc-driver-power-bi-get-data-4.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-4.png" alt-text="在 Power BI Get Data 中選取資料表":::
 
 1. 若要視覺化 Power BI Desktop 中的資料，請選取資料表名稱前的方塊，然後按一下 [載入]****。
 
@@ -243,7 +243,10 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 如果您收到下列錯誤，請確定您在[步驟 2](#connect) 於 Azure 入口網站複製的「主機」**** 與「存取金鑰」**** 值正確，然後再試一次。 使用 Azure 入口網站中「主機」**** 與「存取金鑰」**** 值右側的 [複製] 按鈕來複製正確的值。
 
-    [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
+```output
+[HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}
+```
+
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81271976"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的緩慢查詢記錄
@@ -19,7 +18,7 @@ ms.locfileid: "81271976"
 如需 MySQL 慢速查詢記錄的詳細資訊，請參閱 MySQL 參考手冊的[慢速查詢記錄章節](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)。
 
 ## <a name="configure-slow-query-logging"></a>設定慢速查詢記錄 
-預設會停用慢速查詢記錄。 若要啟用它， `slow_query_log`請將設定為 ON。 您可以使用 Azure 入口網站或 Azure CLI 來啟用此功能。 
+預設會停用慢速查詢記錄。 若要啟用它，請將設定 `slow_query_log` 為 ON。 您可以使用 Azure 入口網站或 Azure CLI 來啟用此功能。 
 
 您可以調整的其他參數包含：
 
@@ -27,16 +26,16 @@ ms.locfileid: "81271976"
 - **log_slow_admin_statements**：如果 ON 在寫入至 slow_query_log 的陳述式中包含 ALTER_TABLE 和 ANALYZE_TABLE 這類管理陳述式。
 - **log_queries_not_using_indexes**：決定是否將未使用索引的查詢記錄至 slow_query_log
 - **log_throttle_queries_not_using_indexes**：這個參數會限制可寫入至慢速查詢記錄的非索引查詢次數。 log_queries_not_using_indexes 設為 ON 時，這個參數會生效。
-- **log_output**：如果為 "File"，則允許將緩慢查詢記錄寫入本機伺服器儲存區，並 Azure 監視器診斷記錄。 如果為 "None"，則慢速查詢記錄檔只會寫入 Azure 監視器診斷記錄。 
+- **log_output**：如果為 "File"，則允許將緩慢查詢記錄寫入本機伺服器儲存區，並 Azure 監視器診斷記錄。 如果為「無」，則慢速查詢記錄只會寫入 Azure 監視器診斷記錄。 
 
 > [!IMPORTANT]
-> 如果您的資料表未編制索引，將`log_queries_not_using_indexes`和`log_throttle_queries_not_using_indexes`參數設定為 ON 可能會影響 MySQL 效能，因為針對這些非索引資料表執行的所有查詢都會寫入緩慢查詢記錄檔。<br><br>
-> 如果您計畫記錄緩慢的查詢長時間，建議您將設定`log_output`為「無」。 如果設定為「檔案」，這些記錄會寫入本機伺服器儲存區，而且可能會影響 MySQL 效能。 
+> 如果您的資料表未編制索引，將 `log_queries_not_using_indexes` 和 `log_throttle_queries_not_using_indexes` 參數設定為 ON 可能會影響 MySQL 效能，因為針對這些非索引資料表執行的所有查詢都會寫入緩慢查詢記錄檔。<br><br>
+> 如果您計畫記錄緩慢的查詢長時間，建議您將設定 `log_output` 為「無」。 如果設定為「檔案」，這些記錄會寫入本機伺服器儲存區，而且可能會影響 MySQL 效能。 
 
 如需慢速查詢記錄參數的完整描述，請參閱 MySQL [慢速查詢記錄文件](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)。
 
 ## <a name="access-slow-query-logs"></a>存取緩慢查詢記錄
-有兩個選項可用於存取適用於 MySQL 的 Azure 資料庫中的緩慢查詢記錄：本機伺服器儲存體或 Azure 監視器診斷記錄。 這是使用參數所`log_output`設定。
+有兩個選項可用於存取適用於 MySQL 的 Azure 資料庫中的緩慢查詢記錄：本機伺服器儲存體或 Azure 監視器診斷記錄。 這是使用參數所設定 `log_output` 。
 
 針對本機伺服器儲存空間，您可以使用 Azure 入口網站或 Azure CLI 來列出及下載緩慢的查詢記錄。 在 [Azure 入口網站中，流覽至您在 Azure 入口網站中的伺服器。 在 [監視]**** 標題下方，選取 [伺服器記錄]**** 頁面。 如需 Azure CLI 的詳細資訊，請參閱[使用 Azure CLI 設定和存取緩慢查詢記錄](howto-configure-server-logs-in-cli.md)。 
 
@@ -84,7 +83,7 @@ Azure 監視器診斷記錄可讓您將緩慢查詢記錄輸送至 Azure 監視�
 | `\_ResourceId` | 資源 URI |
 
 > [!Note]
-> 如果`sql_text`是，記錄會在超過2048個字元時截斷。
+> `sql_text`如果是，記錄會在超過2048個字元時截斷。
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>分析 Azure 監視器記錄中的記錄
 

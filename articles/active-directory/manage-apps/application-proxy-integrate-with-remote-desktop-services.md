@@ -3,25 +3,24 @@ title: 使用 Azure AD App Proxy 發佈遠端桌面 | Microsoft Docs
 description: 涵蓋 Azure AD 應用程式 Proxy 連接器的基本概念。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 34f3dcd607a7417932912528167a1120dbfd9b4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67108472"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764514"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 發佈遠端桌面
 
@@ -44,7 +43,7 @@ ms.locfileid: "67108472"
 >[!TIP]
 >如果您之前從未部署過 RDS，或在您開始前需要更多資訊，請了解如何[使用 Azure Resource Manager 和 Azure Marketplace 順暢地部署 RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 - 因為 Web 用戶端不支援應用程式 Proxy，所以使用遠端桌面 Web 用戶端以外的用戶端。
 
@@ -75,7 +74,7 @@ ms.locfileid: "67108472"
 3. 保留應用程式的單一登入方法，因為 **Azure AD 單一登入已停用**。 系統會要求您的使用者分別驗證一次 Azure AD 及 RD Web，但可單一登入 RD 閘道。
 4. 依序選取 [ **Azure Active Directory**] 和 [**應用程式註冊**]。 從清單中選擇您的應用程式。
 5. 在 [**管理**] 底下，選取 [**商標**]。
-6. 更新 [**首頁 URL** ] 欄位，以指向您的 RD Web 端點（ `https://\<rdhost\>.com/RDWeb`例如）。
+6. 更新 [**首頁 URL** ] 欄位，以指向您的 RD Web 端點（例如 `https://\<rdhost\>.com/RDWeb` ）。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>將 RDS 資料流導向應用程式 Proxy
 
@@ -84,14 +83,14 @@ ms.locfileid: "67108472"
 1. 連線到執行 RD 連線代理人角色的 RDS 伺服器。
 2. 啟動**伺服器管理員**。
 3. 選取左窗格中的 [遠端桌面服務]****。
-4. 選取 [概觀]  。
+4. 選取 [概觀]。
 5. 在 [部署概觀] 區段中，選取下拉式選單，然後選擇 [編輯部署內容]****。
 6. 在 [RD 閘道] 索引標籤中，將 [伺服器名稱]**** 變更為您在應用程式 Proxy 中所設定之 RD 主機端點的外部 URL。
 7. 將 [登入方法]**** 欄位變更為 [密碼驗證]****。
 
    ![在 RDS 上部署內容畫面](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. 對於每個集合執行此命令。 以您自己的資訊取代* \<yourcollectionname\> *和* \<proxyfrontendurl\> * 。 此命令會啟用 RD Web 和 RD 閘道之間的單一登入，並將效能最佳化︰
+8. 對於每個集合執行此命令。 *\<yourcollectionname\>* 將和取代 *\<proxyfrontendurl\>* 為您自己的資訊。 此命令會啟用 RD Web 和 RD 閘道之間的單一登入，並將效能最佳化︰
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"

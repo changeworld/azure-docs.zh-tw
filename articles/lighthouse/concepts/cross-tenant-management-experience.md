@@ -3,12 +3,11 @@ title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ad8fc7452a704a4a030e7a6eb45a5ba397912ef1
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
-ms.translationtype: HT
+ms.openlocfilehash: ef2fe2ecd72234312a750e206b8920f4ea7eaa02
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920590"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -33,9 +32,9 @@ Azure 委派的資源管理能為管理多個客戶的資源提供更具彈性�
 
 您可以直接在入口網站中，或是使用 API 與管理工具 (例如 Azure CLI 和 Azure PowerShell)，對委派的資源執行管理工作。 所有現有的 API 都可以在使用委派的資源時使用，但前提是，此功能支援跨租用戶管理，且使用者擁有適當的權限。
 
-Azure PowerShell [Get-AzSubscription cmdlet](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) 會顯示每個訂用帳戶的 **tenantID**，可供識別傳回的訂用帳戶屬於您的服務提供者租用戶，還是屬於受控的客戶租用戶。
+Azure PowerShell [Get-AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) 會顯示每個訂用帳戶的 **tenantID**，可供識別傳回的訂用帳戶屬於您的服務提供者租用戶，還是屬於受控的客戶租用戶。
 
-同樣地，[az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) 之類的 Azure CLI 命令會顯示 **homeTenantId** 和 **managedByTenants** 屬性。
+同樣地，[az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) 之類的 Azure CLI 命令會顯示 **homeTenantId** 和 **managedByTenants** 屬性。
 
 > [!TIP]
 > 在使用 Azure CLI 時，如果並未看到這些值，請嘗試執行 `az account clear` 並接著執行 `az login --identity` 清除快取。
@@ -60,6 +59,10 @@ Azure PowerShell [Get-AzSubscription cmdlet](https://docs.microsoft.com/powershe
 - 備份及還原客戶租用戶中的客戶資料
 - 使用[備份總管](../../backup/monitor-azure-backup-with-backup-explorer.md)可協助您查看備份專案的作業資訊 (包括尚未設定備份的 Azure 資源)，以及委派訂閱的監視資訊 (作業和警示)。 備份總管目前僅適用於 Azure VM 資料。
 - 對多個委派訂用帳戶使用[備份報告](../../backup/configure-reports.md)可追蹤歷程記錄趨勢、分析備份儲存體耗用量，並且稽核備份和還原。
+
+[Azure 成本管理 + 帳單](../../cost-management-billing/index.yml)：
+
+- 從管理租使用者，CSP 合作夥伴可以針對 Azure 方案下的客戶，查看、管理及分析預先稅耗用量成本（不包含購買）。 成本將以零售費率和合作夥伴為客戶訂用帳戶所提供的 Azure RBAC 存取為基礎。
 
 [Azure Kubernetes Service (AKS)](../../aks/index.yml)：
 
@@ -143,7 +146,6 @@ Azure PowerShell [Get-AzSubscription cmdlet](https://docs.microsoft.com/powershe
 - 角色指派必須使用角色型存取控制 (RBAC) [內建角色](../../role-based-access-control/built-in-roles.md) \(部分機器翻譯\)。 除了「擁有者」或具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) \(部分機器翻譯\) 權限的任何內建角色以外，Azure 委派的資源管理目前支援所有內建角色。 只有在[將角色指派給受控識別](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)時，才支援「使用者存取系統管理員」角色的有限用途。  此外，不支援自訂角色與[傳統訂用帳戶管理員角色](../../role-based-access-control/classic-administrators.md) \(部分機器翻譯\)。
 - 雖然您可以讓使用 Azure Databricks 的訂用帳戶上線，但管理租用戶中的使用者目前無法在委派的訂閱上啟動 Azure Databricks 的工作區。
 - 雖然您可以將訂用帳戶和資源群組上線，以進行 Azure 委派的資源管理來鎖定資源，但這些鎖定無法防止管理租用戶中的使用者執行動作。 [拒絕指派](../../role-based-access-control/deny-assignments.md)可保護系統管理的資源，例如由 Azure 管理的應用程式或 Azure 藍圖所建立的資源 (系統指派的拒絕指派)，因此可防止管理租用戶中的使用者在這些資源上執行動作；不過，目前客戶租用戶中的使用者無法建立自己的拒絕指派 (使用者指派的拒絕指派)。
-- 管理租用戶中的使用者會無法存取所委派的客戶訂用帳戶本身的帳單資訊，即使這些使用者擁有通常允許存取的內建角色，也無法存取。 這是因為帳單資訊的存取權還需要其他步驟，這類步驟目前僅支援相同租用戶內的使用者。
 
 ## <a name="next-steps"></a>後續步驟
 

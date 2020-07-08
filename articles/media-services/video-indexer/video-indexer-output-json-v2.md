@@ -10,12 +10,11 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5e3501ea8bc327f0dd906a42702194abce18c5fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84656574"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>檢查 API 所產生的影片索引子輸出
 
@@ -28,7 +27,7 @@ ms.locfileid: "79245924"
 
 您也可以透過視覺化方式檢查影片的摘要深入解析，只要在[影片索引子](https://www.videoindexer.ai/)網站上按影片的 [播放]**** 按鈕即可。 如需詳細資訊，請參閱[檢視和編輯影片的深入解析](video-indexer-view-edit.md)。
 
-![深入資訊](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![深入解析](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 本文將審視**取得影片索引** API 所傳回的 JSON 內容。 
 
@@ -38,16 +37,16 @@ ms.locfileid: "79245924"
 
 ## <a name="root-elements"></a>根元素
 
-|Name|描述|
+|Name|Description|
 |---|---|
 |accountId|播放清單的 VI 帳戶識別碼。|
 |id|播放清單的識別碼。|
-|名稱|播放清單的名稱。|
+|NAME|播放清單的名稱。|
 |description|播放清單的描述。|
 |userName|建立播放清單的使用者名稱。|
 |created|播放清單的建立時間。|
 |privacyMode|播放清單的隱私模式 (私人/公用)。|
-|State|播放清單 (已上傳、處理中、已處理、失敗、已隔離)。|
+|state|播放清單 (已上傳、處理中、已處理、失敗、已隔離)。|
 |isOwned|指出播放清單是否由目前的使用者所建立。|
 |isEditable|指出目前的使用者是否有權編輯播放清單。|
 |isBase|指出播放清單是基礎播放清單 (影片) 還是以其他影片組成的播放清單 (衍生)。|
@@ -89,7 +88,7 @@ ms.locfileid: "79245924"
 |臉部|可包含零個或多個臉部。 如需詳細資訊，請參閱[臉部](#faces)。|
 |關鍵字|可包含零個或多個關鍵字。 如需詳細資訊，請參閱[關鍵字](#keywords)。|
 |人氣|可包含零個或多個情緒。 如需詳細資訊，請參閱[情緒](#sentiments)。|
-|audioEffects| 可包含零個或多個 audioEffects。 如需詳細資訊，請參閱 [audioEffects](#audioEffects)。|
+|audioEffects| 可包含零個或多個 audioEffects。 如需詳細資訊，請參閱 [audioEffects](#audioeffects)。|
 |標籤| 可包含零個或多個標籤。 如需詳細資訊，請參閱[標籤](#labels)。|
 |brands| 可包含零個或多個品牌。 如需詳細資訊，請參閱[品牌](#brands)。|
 |統計資料 | 如需詳細資訊，請參閱[統計資料](#statistics)。|
@@ -98,12 +97,12 @@ ms.locfileid: "79245924"
 
 ## <a name="videos"></a>videos
 
-|Name|描述|
+|Name|Description|
 |---|---|
 |accountId|影片的 VI 帳戶識別碼。|
 |id|影片的識別碼。|
-|名稱|影片的名稱。
-|State|影片的狀態 (已上傳、處理中、已處理、失敗、已隔離)。|
+|NAME|影片的名稱。
+|state|影片的狀態 (已上傳、處理中、已處理、失敗、已隔離)。|
 |processingProgress|處理期間的處理進度 (例如 20%)。|
 |failureCode|無法處理時顯示的失敗碼 (例如 'UnsupportedFileType')。|
 |failureMessage|無法處理時顯示的失敗訊息。|
@@ -166,7 +165,7 @@ ms.locfileid: "79245924"
 |標籤|[標籤](#labels)深入解析。|
 |擷取畫面|[照片](#shots)深入解析。|
 |brands|[品牌](#brands)見解。|
-|audioEffects|[AudioEffects](#audioEffects)深入解析。|
+|audioEffects|[AudioEffects](#audioeffects)深入解析。|
 |人氣|[情緒](#sentiments)深入解析。|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation)深入解析。|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation)深入解析。|
@@ -310,7 +309,7 @@ id|區塊的識別碼。|
 |Name|描述|
 |---|---|
 |id|臉部識別碼。|
-|名稱|臉部的名稱。 這可以是 'Unknown #0、已識別的名人或客戶培訓人員。|
+|NAME|臉部的名稱。 這可以是 'Unknown #0、已識別的名人或客戶培訓人員。|
 |信賴度|臉部識別信賴。|
 |description|名人的描述。 |
 |thumbnailId|該臉部的縮圖識別碼。|
@@ -355,7 +354,7 @@ id|區塊的識別碼。|
 |Name|描述|
 |---|---|
 |id|標籤識別碼。|
-|名稱|標籤名稱 (例如，電腦、電視)。|
+|NAME|標籤名稱 (例如，電腦、電視)。|
 |語言|標籤名稱語言 (轉譯時)。 BCP-47|
 |執行個體|此標籤曾出現的時間範圍清單 (同一個標籤可以出現多次)。 每個執行個體都有一個信賴度欄位。 |
 
@@ -497,8 +496,8 @@ id|區塊的識別碼。|
 |Name|描述|
 |---|---|
 |id|品牌識別碼。|
-|名稱|品牌名稱。|
-|referenceId | 品牌 Wikipedia URL 的尾碼。 例如，"Target_Corporation" 是的尾碼[https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)。
+|NAME|品牌名稱。|
+|referenceId | 品牌 Wikipedia URL 的尾碼。 例如，"Target_Corporation" 是的尾碼 [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 。
 |referenceUrl | 品牌的 Wikipedia URL (如果存在)。 例如： [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 。
 |description|品牌描述。|
 |tags|與此品牌相關聯的預先定義標記清單。|
@@ -553,7 +552,7 @@ id|區塊的識別碼。|
 
 #### <a name="statistics"></a>統計資料
 
-|Name|描述|
+|Name|說明|
 |---|---|
 |CorrespondenceCount|影片中的對應數目。|
 |SpeakerWordCount|每個說話者的字數。|
@@ -561,12 +560,12 @@ id|區塊的識別碼。|
 |SpeakerLongestMonolog|說話者最長的獨白。 若說話在獨白中有無聲的部分，也會包含在其中。 獨白開頭和結尾的無聲部分則會被移除。| 
 |SpeakerTalkToListenRatio|將說話者獨白的時間 (不含無聲的部分) 除以影片的總時間長度。 時間會四捨五入至小數點第三位。|
 
-#### <a name="audioeffects"></a><a id="audioEffects"/>audioEffects
+#### <a name="audioeffects"></a>audioEffects
 
 |Name|描述|
 |---|---|
 |id|音訊效果識別碼。|
-|type|音訊效果類型 (例如，拍手聲、說話、無聲)。|
+|類型|音訊效果類型 (例如，拍手聲、說話、無聲)。|
 |執行個體|此音訊效果曾出現的時間範圍清單。|
 
 ```json
@@ -680,7 +679,7 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 |Name|描述|
 |---|---|
 |id|表情識別碼。|
-|type|根據語音和音訊提示所識別的表情時間。表情可能是：樂趣、悲傷、生氣或恐懼。|
+|類型|根據語音和音訊提示所識別的表情時間。表情可能是：樂趣、悲傷、生氣或恐懼。|
 |執行個體|這一個表情出現的時間範圍清單。|
 
 ```json
@@ -770,7 +769,7 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 |Name|描述|
 |---|---|
 |id|主題識別碼。|
-|名稱|主題名稱，例如："Pharmaceuticals"。|
+|NAME|主題名稱，例如："Pharmaceuticals"。|
 |referenceId|反映主題階層的階層連結。 例如：「健康與福利 / 醫藥與醫療保健 / 藥品」。|
 |信賴度|範圍內 [0,1] 的信賴分數。 值越高，信賴程度就越高。|
 |語言|主題中使用的語言。|

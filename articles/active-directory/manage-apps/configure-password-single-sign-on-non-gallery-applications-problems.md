@@ -3,24 +3,23 @@ title: 設定非資源庫應用程式的密碼 SSO 時發生問題
 description: 當您針對不在 Azure AD 應用程式庫中的自訂應用程式設定密碼單一登入（SSO）時，所發生的常見問題。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 9620a6ad584f20a0956e6a29c89609d79832f4d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274140"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763443"
 ---
 # <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>為不在資源庫中的應用程式設定密碼單一登入時所發生的問題
 
@@ -63,7 +62,7 @@ ms.locfileid: "74274140"
 
 9. 輸入 [登入**url**]，這是使用者輸入其使用者名稱和密碼以進行登入的頁面 url。 *請確定在您提供的 URL 頁面上可以看到登入欄位*。
 
-10. 選取 [儲存]  。
+10. 選取 [儲存]。
 
     系統會自動剪輯 [使用者名稱] 和 [密碼] 輸入方塊的頁面。 您現在可以使用 Azure AD，使用存取面板瀏覽器擴充功能將密碼安全地傳輸到該應用程式。
 
@@ -96,17 +95,17 @@ ms.locfileid: "74274140"
 
 9. 輸入 [登入**URL**]，這是使用者輸入其使用者名稱和密碼以進行登入的頁面。 *請確定在您提供的 URL 頁面上可以看到登入欄位*。
 
-10. 選取 **[ * &lt;設定&gt; appname*密碼單一登入設定**]。
+10. 選取 [**設定* &lt; &gt; Appname*密碼單一登入設定**]。
 
 11. 選取 [手動偵測登**入欄位**]。
 
-14. 選取 **[確定]**。
+14. 選取 [確定]。
 
-15. 選取 [儲存]  。
+15. 選取 [儲存]。
 
 16. 依照指示使用存取面板。
 
-## <a name="troubleshoot-problems"></a>疑難排解問題
+## <a name="troubleshoot-problems"></a>問題疑難排解
 
 ### <a name="i-get-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>我收到「在該 URL 找不到任何登入欄位」錯誤
 
@@ -140,9 +139,9 @@ ms.locfileid: "74274140"
 
 - 再次嘗試手動抓取程式。 請確定紅色標記不在正確的欄位上。
 
-- 如果手動捕捉程式似乎停止回應，或登入頁面沒有回應，請再次嘗試手動捕捉程式。 但這次在完成此程式之後，請按 F12 鍵以開啟瀏覽器的開發人員主控台。 選取 [**主控台**] 索引標籤。輸入**window. location = "*&lt;您在設定應用程式&gt;時所指定的登入 URL*"**，然後按 enter。 這會強制執行頁面重新導向，以結束捕捉進程並儲存已捕捉的欄位。
+- 如果手動捕捉程式似乎停止回應，或登入頁面沒有回應，請再次嘗試手動捕捉程式。 但這次在完成此程式之後，請按 F12 鍵以開啟瀏覽器的開發人員主控台。 選取 [**主控台**] 索引標籤。輸入**window. location = "您在設定* &lt; 應用程式 &gt; 時所指定的登入 URL*"**，然後按 enter。 這會強制執行頁面重新導向，以結束捕捉進程並儲存已捕捉的欄位。
 
-### <a name="contact-support"></a>請連絡支援人員
+### <a name="contact-support"></a>請連絡支援部門
 
 如果您仍有問題，請使用 Microsoft 支援服務開啟案例。 描述您所嘗試的內容。 請在「[觀看入口網站通知詳細資料](#view-portal-notification-details)」中包含詳細資料，並將[通知詳細資料傳送給支援工程師，以取得](#send-notification-details-to-a-support-engineer-to-get-help)本文的說明章節（如果適用）。
 
@@ -219,7 +218,7 @@ ms.locfileid: "74274140"
 
 - **UPN**：執行作業的使用者。
 
-    範例： *tperkins\@f128.info*
+    範例： *tperkins \@ f128.info*
 
 - **租使用者識別碼**：執行作業的使用者所屬之租使用者的唯一識別碼。
 
@@ -245,7 +244,7 @@ ms.locfileid: "74274140"
 
 - **詳細資料**：作業結果所發生的詳細描述。
 
-    範例：*內部 url '<https://bing.com/>' 無效，因為它已在使用中。*
+    範例：*內部 url ' <https://bing.com/> ' 無效，因為它已在使用中。*
 
 - **複製錯誤**：可讓您選取 [**複製錯誤**] 文字方塊右邊的**複製圖示**，以複製通知詳細資料以協助支援。
 

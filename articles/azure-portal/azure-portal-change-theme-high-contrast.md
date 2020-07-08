@@ -6,16 +6,15 @@ keywords: ''
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/20/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
-ms.openlocfilehash: ae135e0d7ac613d78b1c1f76e233503a60570f0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7d17a956faf4080f419bc859c8259018b98626a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764055"
 ---
 # <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>在 Azure 入口網站中開啟高對比或變更佈景主題
 
@@ -31,7 +30,7 @@ ms.locfileid: "76310759"
 1. 選擇 [白色]**** 或 [黑色]****。
 
     ![螢幕擷取畫面，它顯示 Azure 入口網站設定的高對比選項](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
-1. 選取 [套用]  。
+1. 選取 [套用]。
 
 > [!NOTE]
 > 如果您選取高對比主題，它會覆寫所有其他主題選取專案。
@@ -44,11 +43,11 @@ ms.locfileid: "76310759"
 
     ![螢幕擷取畫面，它顯示 Azure 入口網站的入口網站設定齒輪圖示](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 
-1. 選擇佈景主題。
+1. 選擇一個主題。
 
     ![螢幕擷取畫面，它顯示 Azure 入口網站設定的佈景主題選項](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
 
-1. 選取 [套用]  。
+1. 選取 [套用]。
 
 ## <a name="next-steps"></a>後續步驟
 

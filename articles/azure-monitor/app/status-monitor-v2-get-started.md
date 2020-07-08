@@ -6,17 +6,16 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 4cfa136585611e81a4060c5544d5dc464b32f12c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537435"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>開始使用適用于內部部署伺服器 Azure 監視器 Application Insights 代理程式
 
 本文包含預期適用于大部分環境的快速入門命令。
 這些指示取決於散發更新的 PowerShell 資源庫。
-這些命令支援 PowerShell `-Proxy`參數。
+這些命令支援 PowerShell `-Proxy` 參數。
 
 如需這些命令的說明、自訂指示和疑難排解的相關資訊，請參閱[詳細指示](status-monitor-v2-detailed-instructions.md)。
 

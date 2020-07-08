@@ -9,14 +9,13 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/28/2020
+ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: e072bcb0edc741b7843f470f14c3c37153338efb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 6abb44012035f31f970a347687964afb0c715d29
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647648"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983376"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -32,9 +31,17 @@ ms.locfileid: "83647648"
 ## <a name="known-issues"></a>已知問題
 
 > [!NOTE]
-> 您可以使用 [Azure 入口網站](https://portal.azure.com/) 來管理 v3 [即時活動](live-events-outputs-concept.md)、查看 v3 [資產](assets-concept.md)、取得存取 API的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
+> 您可以使用[Azure 入口網站](https://portal.azure.com/)來管理 v3[即時事件](live-events-outputs-concept.md)、查看 v3[資產](assets-concept.md)和作業、取得存取 api、加密內容的相關資訊。 針對所有其他管理工作（例如，管理轉換和作業），請使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的[sdk](media-services-apis-overview.md#sdks)。
+>
+> 如需詳細資訊，請參閱：[媒體服務 v3 的 Azure 入口網站限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
 
-如需詳細資訊，請參閱[從媒體服務 v2 移至 v3 的移轉指導](migrate-from-v2-to-v3.md#known-issues)。
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="live-video-analytics-on-iot-edge-preview-release"></a>IoT Edge preview 版本上的即時影片分析
+
+即時影片分析的預覽已公開 IoT Edge。 如需詳細資訊，請參閱[版本](../live-video-analytics-edge/release-notes.md)資訊。
+
+IoT Edge 上的即時影片分析是媒體服務系列的擴充。 它可讓您在自己的邊緣裝置上使用您選擇的 AI 模型來分析即時影片，並選擇性地捕捉並錄製該影片。 您現在可以在邊緣使用即時影片分析來建立應用程式，而不必擔心建立和操作即時影片管線的複雜性。
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -117,7 +124,7 @@ Azure 媒體播放器文件已遷移至 [Azure 文件](../azure-media-player/azu
 
 ###  <a name="media-services-v2"></a>媒體服務 v2  
 
-#### <a name="deprecation-of-media-processors"></a>取代媒體處理器
+#### <a name="deprecation-of-media-processors"></a>淘汰媒體處理器
 
 我們宣布取代「Azure 媒體索引器」和「Azure 媒體索引器 2 預覽版」。 關於淘汰日期，請參閱[舊版元件](../previous/legacy-components.md)主題。 [Azure 媒體服務影片索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)取代這些舊版媒體處理器。
 
@@ -199,7 +206,7 @@ Azure 媒體播放器文件已遷移至 [Azure 文件](../azure-media-player/azu
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-動態封裝現在支援 Dolby Atmos。 如需詳細資訊，請參閱[動態封裝支援的音訊轉碼器](dynamic-packaging-overview.md#audio-codecs)。
+動態封裝現在支援 Dolby Atmos。 如需詳細資訊，請參閱[動態封裝支援的音訊轉碼器](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)。
 
 您現在可以指定適用於串流定位器的資產或帳戶篩選器清單。 如需詳細資訊，請參閱[將篩選準則與串流定位器建立關聯](filters-concept.md#associating-filters-with-streaming-locator)。
 
@@ -362,11 +369,15 @@ Azure CLI 2.0 模組即將推出，內含所有功能的操作 (包括即時、�
 
 ### <a name="known-issues"></a>已知問題
 
-* 提交工作時，您可以使用 HTTPS URL、SAS URL 或位於 Azure Blob 儲存體中檔案的路徑來指定內嵌您的來源影片。 目前，AMS v3 不支援透過 HTTPS URL 的區塊傳送編碼。
+* 提交工作時，您可以使用 HTTPS URL、SAS URL 或位於 Azure Blob 儲存體中檔案的路徑來指定內嵌您的來源影片。 目前，媒體服務 v3 不支援透過 HTTPS Url 的區塊傳輸編碼。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出問題、提供意見反應、取得更新
 
 請參閱 [Azure 媒體服務社群](media-services-community.md)文章，以了解詢問問題、提供意見反應及取得媒體服務相關更新的不同方式。
+
+## <a name="see-also"></a>另請參閱
+
+[從媒體服務 v2 移至 v3 的遷移指引](migrate-from-v2-to-v3.md#known-issues)。
 
 ## <a name="next-steps"></a>後續步驟
 

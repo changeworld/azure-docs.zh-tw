@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: c572c03936a809ce2f5ccb0071352d6c84c2ee90
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85561568"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921018"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>語音轉換文字常見問題集
 
@@ -71,7 +70,7 @@ ms.locfileid: "85561568"
 
 **問：我的要求會被記錄嗎？**
 
-**答**：您可以在建立部署時選擇關閉追蹤。 此時，沒有任何音訊或轉譯會被記錄。 否則，這些要求通常會記錄在 Azure 的安全儲存體中。
+**答**：根據預設，不會記錄要求（不包括音訊，也不會轉譯）。 如有需要，您可以在[建立自訂端點](how-to-custom-speech-deploy-model.md)以啟用追蹤時，選取 [*從這個端點的記錄內容*] 選項。 然後，系統會將要求記錄在 Azure 的安全儲存體中。
 
 **問：我的要求會被節流嗎？**
 
@@ -118,6 +117,10 @@ ms.locfileid: "85561568"
   - 從顯示的服務挑選您想要增加並行的語音服務，
   - 顯示 `Properties` 此服務的。
   - 複製 [完成] `Resource ID` 。
+  
+**問：增加我的平行存取限制會增加我的成本嗎？**
+
+**答**：不會，成本是以使用量為基礎。 增加平行存取並不會產生較高的成本。 如需成本的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。 
   
 >[!NOTE]
 >[容器](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto)不需要增加並行限制，因為容器僅受到其裝載所在硬體的 cpu 所限制。

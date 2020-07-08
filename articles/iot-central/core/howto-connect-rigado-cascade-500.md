@@ -11,10 +11,9 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758256"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>將 Rigado Cascade 500 閘道裝置連線到您的 Azure IoT Central 應用程式
@@ -29,7 +28,7 @@ Cascade 500 IoT 閘道是 Rigado 的硬體供應專案，隨附于其串聯式�
 
 Cascade 500 是預先認證的 Azure IoT 隨插即用（預覽），可讓我們的解決方案產生器輕鬆地將裝置上線至其端對端解決方案。 Cascade 閘道可讓您以無線方式連線到與閘道裝置鄰近的各種條件監視感應器。 這些感應器可以透過閘道裝置上架到 IoT Central。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 若要逐步執行本作法指南，您需要下列資源：
 
 * Rigado Cascade 500 裝置。 如需詳細資訊，請造訪[Rigado](https://www.rigado.com/)。
@@ -41,9 +40,9 @@ Cascade 500 是預先認證的 Azure IoT 隨插即用（預覽），可讓我們
 
 若要新增 Cascade 500 裝置範本： 
 
-1. 流覽至左窗格中的 [***裝置範本***] 索引標籤，選取![[ **+ 新增**]： [建立新的裝置範本]](./media/howto-connect-rigado-cascade-500/device-template-new.png)
+1. 流覽至左窗格中的 [***裝置範本***] 索引標籤，選取 [ **+ 新增**]： [ ![ 建立新的裝置範本]](./media/howto-connect-rigado-cascade-500/device-template-new.png)
 1. 此頁面可讓您選擇***建立自訂範本***，或***使用預先設定的裝置範本***
-1. 從預先設定的裝置範本清單中選取 [C500 裝置] 範本，如下![所示：選取 [C500] [裝置範本]](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
+1. 從預先設定的裝置範本清單中選取 [C500 裝置] 範本，如下所示：選取 [C500] [ ![ 裝置範本]](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
 1. 選取 ***[下一步]： [自訂***] 繼續進行下一個步驟。 
 1. 在下一個畫面上，選取 [***建立***]，將 C500 裝置範本上架到 IoT Central 應用程式中。
 
@@ -54,8 +53,8 @@ Cascade 500 是預先認證的 Azure IoT 隨插即用（預覽），可讓我們
 1. 流覽至左窗格中的 [系統**管理**]，然後按一下 [**裝置**連線]。 
 2. 記下 IoT Central 應用程式的**範圍識別碼**。
 ![應用程式範圍識別碼](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
-3. 現在，按一下 [ **View Keys** ]，並記下**主要金鑰**
-![主要金鑰](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
+3. 現在，按一下 [ **View Keys** ]，並記下**主要金鑰** 
+ ![ 主要金鑰](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
 
 ## <a name="contact-rigado-to-connect-the-gateway"></a>聯絡 Rigado 以連接閘道 
 
@@ -71,7 +70,7 @@ Cascade 500 是預先認證的 Azure IoT 隨插即用（預覽），可讓我們
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您是裝置開發人員，建議的後續步驟如下：
+如果您是裝置開發人員，則建議的後續步驟如下：
 
-- 閱讀[Azure IoT Central 中的裝置連線能力](./concepts-get-connected.md)
-- 瞭解如何[使用 Azure CLI 監視裝置連線能力](./howto-monitor-devices-azure-cli.md)
+- 閱讀 [Azure IoT Central 中的裝置連線能力](./concepts-get-connected.md)
+- 了解如何[使用 Azure CLI 監視裝置連線能力](./howto-monitor-devices-azure-cli.md)

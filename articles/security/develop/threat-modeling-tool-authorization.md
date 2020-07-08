@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 75bbce0f1e9787e55880ccac80dacb5457e1f2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 56afed264facb6a02040cef01cd5d5d41526ec49
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68728376"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322668"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架︰授權 | 緩和措施 
 | 產品/服務 | 發行項 |
@@ -44,7 +43,7 @@ ms.locfileid: "68728376"
 
 ## <a name="ensure-that-proper-acls-are-configured-to-restrict-unauthorized-access-to-data-on-the-device"></a><a id="acl-restricted-access"></a>確保設定正確的 ACL 以將未經授權的存取限制於裝置上的資料
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 電腦信任邊界 | 
 | **SDL 階段**               | 部署 |  
@@ -55,7 +54,7 @@ ms.locfileid: "68728376"
 
 ## <a name="ensure-that-sensitive-user-specific-application-content-is-stored-in-user-profile-directory"></a><a id="sensitive-directory"></a>確保敏感性使用者特有應用程式內容會儲存在使用者設定檔目錄中
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 電腦信任邊界 | 
 | **SDL 階段**               | 部署 |  
@@ -66,7 +65,7 @@ ms.locfileid: "68728376"
 
 ## <a name="ensure-that-the-deployed-applications-are-run-with-least-privileges"></a><a id="deployed-privileges"></a>確保已部署的應用程式是以最低權限執行
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 電腦信任邊界 | 
 | **SDL 階段**               | 部署 |  
@@ -77,7 +76,7 @@ ms.locfileid: "68728376"
 
 ## <a name="enforce-sequential-step-order-when-processing-business-logic-flows"></a><a id="sequential-logic"></a>在處理商務邏輯流程時強制執行循序步驟順序
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -88,7 +87,7 @@ ms.locfileid: "68728376"
 
 ## <a name="implement-rate-limiting-mechanism-to-prevent-enumeration"></a><a id="rate-enumeration"></a>實作速率限制機制以防止列舉
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -99,7 +98,7 @@ ms.locfileid: "68728376"
 
 ## <a name="ensure-that-proper-authorization-is-in-place-and-principle-of-least-privileges-is-followed"></a><a id="principle-least-privilege"></a>確保施行適當的授權並遵循最低權限的原則
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -110,7 +109,7 @@ ms.locfileid: "68728376"
 
 ## <a name="business-logic-and-resource-access-authorization-decisions-should-not-be-based-on-incoming-request-parameters"></a><a id="logic-request-parameters"></a>商務邏輯和資源存取授權決策不應以傳入的要求參數為基礎
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -129,7 +128,7 @@ WHERE userID=:id < - session var
 
 ## <a name="ensure-that-content-and-resources-are-not-enumerable-or-accessible-via-forceful-browsing"></a><a id="enumerable-browsing"></a>確保無法透過強迫瀏覽來列舉或存取內容和資源
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -140,18 +139,18 @@ WHERE userID=:id < - session var
 
 ## <a name="ensure-that-least-privileged-accounts-are-used-to-connect-to-database-server"></a><a id="privileged-server"></a>確保使用最低權限的帳戶連線到資料庫伺服器
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 資料庫 | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [SQL Database 權限階層](https://msdn.microsoft.com/library/ms191465)、[SQL Database 安全性實體](https://msdn.microsoft.com/library/ms190401) |
+| **參考**              | [Sql 許可權](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine)階層， [sql 安全性實體](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **步驟** | 應該使用最低權限的帳戶連線到資料庫。 應用程式登入應受限於資料庫，應該只能執行所選的程序。 應用程式的登入應該沒有直接的資料表存取權。 |
 
 ## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>執行資料列層級安全性 RLS，以防止租使用者存取彼此的資料
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 資料庫 | 
 | **SDL 階段**               | Build |  
@@ -160,22 +159,22 @@ WHERE userID=:id < - session var
 | **參考**              | [SQL Server 資料列層級安全性 (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
 | **步驟** | <p>資料列層級安全性讓客戶能夠根據執行查詢之使用者的特性 (例如，群組成員資格或執行內容) 來控制資料庫資料表中的資料列存取。</p><p>資料列層級安全性 (RLS) 簡化您的應用程式中安全性的設計和編碼。 RLS 可讓您實作資料的資料列存取限制。 例如，確保背景工作角色只能存取其部門相關資料列，或將客戶的資料存取權限制為其公司的相關資料。</p><p>存取限制邏輯是位於資料庫層，而不是離開這些資料，到另一個應用程式層。 資料庫系統會在每次於任何層嘗試存取該資料時套用存取限制。 這可藉由縮小安全性系統的接觸區，讓安全性系統更加可靠和健全。</p><p>|
 
-請注意，最新的資料庫功能 RLS 只適用於 2016 以後的 SQL Server 和 Azure SQL 資料庫。 如果未實作最新的 RLS 功能，則應確保資料存取是受限的。使用檢視和程序
+請注意，做為現成可用的資料庫功能的 RLS 僅適用于從2016、Azure SQL Database 和 SQL 受控執行個體開始 SQL Server。 如果未實作最新的 RLS 功能，則應確保資料存取是受限的。使用檢視和程序
 
 ## <a name="sysadmin-role-should-only-have-valid-necessary-users"></a><a id="sysadmin-users"></a>系統管理員角色只能具備有效的必要使用者
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 資料庫 | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [SQL Database 權限階層](https://msdn.microsoft.com/library/ms191465)、[SQL Database 安全性實體](https://msdn.microsoft.com/library/ms190401) |
+| **參考**              | [Sql 許可權](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine)階層， [sql 安全性實體](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **步驟** | SysAdmin 固定伺服器角色的成員應該非常有限，而且永遠不會包含應用程式所用的帳戶。  請檢閱角色的使用者清單，並移除任何不必要的帳戶|
 
 ## <a name="connect-to-cloud-gateway-using-least-privileged-tokens"></a><a id="cloud-least-privileged"></a>使用最低權限的權杖連線到雲端閘道
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 雲端閘道 | 
 | **SDL 階段**               | 部署 |  
@@ -186,7 +185,7 @@ WHERE userID=:id < - session var
 
 ## <a name="use-a-send-only-permissions-sas-key-for-generating-device-tokens"></a><a id="sendonly-sas"></a>使用僅限傳送權限 SAS 金鑰來產生裝置權杖
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure 事件中樞 | 
 | **SDL 階段**               | Build |  
@@ -197,7 +196,7 @@ WHERE userID=:id < - session var
 
 ## <a name="do-not-use-access-tokens-that-provide-direct-access-to-the-event-hub"></a><a id="access-tokens-hub"></a>請勿使用可供直接存取事件中樞的存取權杖
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure 事件中樞 | 
 | **SDL 階段**               | Build |  
@@ -208,7 +207,7 @@ WHERE userID=:id < - session var
 
 ## <a name="connect-to-event-hub-using-sas-keys-that-have-the-minimum-permissions-required"></a><a id="sas-minimum-permissions"></a>使用具有所需最低權限的 SAS 金鑰來連線到事件中樞
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure 事件中樞 | 
 | **SDL 階段**               | Build |  
@@ -219,7 +218,7 @@ WHERE userID=:id < - session var
 
 ## <a name="use-resource-tokens-to-connect-to-cosmos-db-whenever-possible"></a><a id="resource-docdb"></a>盡可能使用資源權杖來連線到 Cosmos DB
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure Document DB | 
 | **SDL 階段**               | Build |  
@@ -230,7 +229,7 @@ WHERE userID=:id < - session var
 
 ## <a name="enable-fine-grained-access-management-to-azure-subscription-using-rbac"></a><a id="grained-rbac"></a>使用 RBAC 啟用 Azure 訂用帳戶的精細存取管理
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure 信任邊界 | 
 | **SDL 階段**               | Build |  
@@ -241,7 +240,7 @@ WHERE userID=:id < - session var
 
 ## <a name="restrict-clients-access-to-cluster-operations-using-rbac"></a><a id="cluster-rbac"></a>使用 RBAC 限制用戶端對於叢集作業的存取
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Service Fabric 信任邊界 | 
 | **SDL 階段**               | 部署 |  
@@ -252,7 +251,7 @@ WHERE userID=:id < - session var
 
 ## <a name="perform-security-modeling-and-use-field-level-security-where-required"></a><a id="modeling-field"></a>執行安全性模型化並視需要使用欄位層級安全性
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Dynamics CRM | 
 | **SDL 階段**               | Build |  
@@ -263,7 +262,7 @@ WHERE userID=:id < - session var
 
 ## <a name="perform-security-modeling-of-portal-accounts-keeping-in-mind-that-the-security-model-for-the-portal-differs-from-the-rest-of-crm"></a><a id="portal-security"></a>執行入口網站帳戶的安全性模型化，並記住，入口網站的安全性模型與 CRM 的其餘部分不同
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Dynamics CRM 入口網站 | 
 | **SDL 階段**               | Build |  
@@ -274,7 +273,7 @@ WHERE userID=:id < - session var
 
 ## <a name="grant-fine-grained-permission-on-a-range-of-entities-in-azure-table-storage"></a><a id="permission-entities"></a>在 Azure 表格儲存體中授與某個實體範圍的精細權限
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure 儲存體 | 
 | **SDL 階段**               | Build |  
@@ -285,7 +284,7 @@ WHERE userID=:id < - session var
 
 ## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>使用 Azure Resource Manager 啟用 Azure 儲存體帳戶的角色型存取控制 (RBAC)
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure 儲存體 | 
 | **SDL 階段**               | Build |  
@@ -296,7 +295,7 @@ WHERE userID=:id < - session var
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>實作隱含的越獄或 Root 權限入侵偵測
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 行動用戶端 | 
 | **SDL 階段**               | Build |  
@@ -307,7 +306,7 @@ WHERE userID=:id < - session var
 
 ## <a name="weak-class-reference-in-wcf"></a><a id="weak-class-wcf"></a>WCF 中的弱式類別參考
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | WCF | 
 | **SDL 階段**               | Build |  
@@ -344,7 +343,7 @@ WHERE userID=:id < - session var
 
 ## <a name="wcf-implement-authorization-control"></a><a id="wcf-authz"></a>WCF 實作授權控制
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | WCF | 
 | **SDL 階段**               | Build |  
@@ -392,7 +391,7 @@ return result;
 
 ## <a name="implement-proper-authorization-mechanism-in-aspnet-web-api"></a><a id="authz-aspnet"></a>在 ASP.NET Web API 中實作適當的授權機制
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web API | 
 | **SDL 階段**               | Build |  
@@ -443,7 +442,7 @@ public class CustomController : ApiController
 
 ## <a name="perform-authorization-checks-in-the-device-if-it-supports-various-actions-that-require-different-permission-levels"></a><a id="device-permission"></a>如果支援各種需要不同權限層級的動作，則在裝置中執行授權檢查
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 裝置 | 
 | **SDL 階段**               | Build |  
@@ -454,7 +453,7 @@ public class CustomController : ApiController
 
 ## <a name="perform-authorization-checks-in-the-field-gateway-if-it-supports-various-actions-that-require-different-permission-levels"></a><a id="field-permission"></a>如果支援各種需要不同權限層級的動作，則在現場閘道中執行授權檢查
 
-| 標題                   | 詳細資料      |
+| Title                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 現場閘道 | 
 | **SDL 階段**               | Build |  

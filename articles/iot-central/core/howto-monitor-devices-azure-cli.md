@@ -9,10 +9,9 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81756661"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>使用 Azure CLI 監視裝置連線能力
@@ -23,9 +22,9 @@ ms.locfileid: "81756661"
 
 [如需詳細資訊，請造訪 Azure CLI 延伸模組參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-+ Azure CLI 已安裝，且為2.0.7 或更高版本。 執行來檢查您的 Azure CLI 版本`az --version`。 瞭解如何從[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)檔安裝和更新
++ Azure CLI 已安裝，且為2.0.7 或更高版本。 執行來檢查您的 Azure CLI 版本 `az --version` 。 瞭解如何從[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)檔安裝和更新
 + Azure 中的工作或學校帳戶，在 IoT Central 應用程式中新增為使用者。
 
 ## <a name="install-the-iot-central-extension"></a>安裝 IoT Central 擴充功能
@@ -50,7 +49,7 @@ az extension update --name azure-iot
 
 ## <a name="using-the-extension"></a>使用延伸模組
 
-下列各節說明您可以在執行`az iot central`時使用的常見命令和選項。 若要查看完整的命令和選項組，請`--help`傳遞`az iot central`至或其任何子命令。
+下列各節說明您可以在執行時使用的常見命令和選項 `az iot central` 。 若要查看完整的命令和選項組，請傳遞 `--help` 至 `az iot central` 或其任何子命令。
 
 ### <a name="login"></a>登入
 

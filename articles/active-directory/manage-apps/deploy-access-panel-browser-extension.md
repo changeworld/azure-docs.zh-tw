@@ -3,8 +3,8 @@ title: 使用 GPO 部署適用於 IE 的 Azure 存取面板延伸模組 | Micros
 description: 如何使用群組原則針對我的 app 入口網站部署 Internet Explorer 附加元件。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,15 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67807689"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763426"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>如何：使用群組原則部署 Internet Explorer 的存取面板延伸模組
 
@@ -30,7 +29,7 @@ ms.locfileid: "67807689"
 
 存取面板延伸模組也可供 [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) 和 [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998) 使用，兩者都不需要系統管理員權限即可安裝。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 您已設定了 [Active Directory 網域服務](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)，並且已將使用者的電腦加入網域。
 * 您必須擁有「編輯設定」權限，才能編輯群組原則物件 (GPO)。 根據預設，下列安全性群組的成員擁有此權限：網域系統管理員、企業系統管理員及群組原則建立者擁有者。 [深入了解。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
@@ -44,7 +43,7 @@ ms.locfileid: "67807689"
 
     ![開啟檔案和存放服務](./media/deploy-access-panel-browser-extension/files-services.png)
 
-1. 移至 [**共用**] 索引標籤。然後按一下**Tasks** > [工作] [**新增共用 ...** ]
+1. 移至 [**共用**] 索引標籤。然後按一下 **[** 工作] [  >  **新增共用 ...** ]
 
     ![螢幕擷取畫面顯示從 [工作] 畫面尋找新共用的位置](./media/deploy-access-panel-browser-extension/shares.png)
 
@@ -59,14 +58,14 @@ ms.locfileid: "67807689"
 ## <a name="step-2-create-the-group-policy-object"></a>步驟2：建立群組原則物件
 
 1. 登入裝載您的 Active Directory Domain Services （AD DS）安裝的伺服器。
-1. 在伺服器管理員中，移至 [**工具** > ] [**群組原則管理**]。
+1. 在伺服器管理員中，移至 [**工具**] [  >  **群組原則管理**]。
 
     ![移至工具 > 群組原則管理](./media/deploy-access-panel-browser-extension/tools-gpm.png)
 
 1. 在 [群組原則管理] **** 視窗的左窗格中，檢視您的組織單位 (OU) 階層並決定您想要套用群組原則的範圍。 例如，您可能決定針對測試挑選小型 OU 以部署到少數使用者，或者您可能會挑選最上層 OU 以部署到整個組織。
 
    > [!NOTE]
-   > 如果您想要建立或編輯您的組織單位（ou），請切換回伺服器管理員並移至 [**工具** > ] [**Active Directory 使用者和電腦**]。
+   > 如果您想要建立或編輯您的組織單位（ou），請切換回伺服器管理員並移至 [**工具**] [  >  **Active Directory 使用者和電腦**]。
 
 1. 一旦您選取 OU，以滑鼠右鍵按一下它然後選取 [在這個網域中建立 GPO 並連結到...]****
 
@@ -91,7 +90,7 @@ ms.locfileid: "67807689"
 
     ![從共用資料夾選取安裝套件](./media/deploy-access-panel-browser-extension/select-package.png)
 
-1. 在 [部署軟體]**** 提示中，針對您的部署方法選取 [已指派]****。 然後按一下 [ **確定**]。
+1. 在 [部署軟體]**** 提示中，針對您的部署方法選取 [已指派]****。 然後按一下 [確定] 。
 
 延伸模組現在已部署至您所選取的 OU。 [深入了解群組原則軟體安裝。](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 

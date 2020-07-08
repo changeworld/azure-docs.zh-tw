@@ -4,15 +4,14 @@ description: 增加點 Vm 的配額限制，以提供 Azure 使用量模型，�
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 3e6dddfc458f390f5648e23a8a2af8d714de4bf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 513bde930f9c7c8892164c50c3866ff6e948ed4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763868"
 ---
 # <a name="spot-quota-increase-limits-for-all-vm-series"></a>點配額：增加所有 VM 系列的限制
 
@@ -40,15 +39,15 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 > [!NOTE]
 > 您也可以透過單一支援案例，要求增加多個區域的配額限制。 如需詳細資訊，請參閱步驟8。
 
-1. 從 [ [Azure 入口網站](https://portal.azure.com)] 功能表中，選取 [說明 **+ 支援**]。
+1. 從 [Azure 入口網站](https://portal.azure.com)功能表中，選取 [説明 + 支援]。
 
-   ![[說明 + 支援] 連結](./media/resource-manager-core-quotas-request/help-plus-support.png)
+   ![[説明 + 支援] 連結](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-1. 在 [說明 **+ 支援**] 中，選取 [**新增支援要求**]。
+1. 在 [說明 + 支援] 中，選取 [新增支援要求]。
 
     ![建立新的支援要求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. 針對 [問題類型]****，選取 [服務與訂用帳戶限制 (配額)]****。
+1. 針對 [**問題類型**]，選取 **[服務和訂用帳戶限制（配額）**]。
 
    ![選取問題類型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
@@ -62,7 +61,7 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
 1. 選取 **[下一步]：** 用來開啟**問題詳細資料**的解決方案。 選取 [**提供詳細資料**] 以輸入其他資訊。
 
-   ![[提供詳細資料] 連結](./media/resource-manager-core-quotas-request/provide-details-link.png)
+   ![「提供詳細資料」連結](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
 1. 在 [**配額詳細資料**] 中，執行下列步驟：
 

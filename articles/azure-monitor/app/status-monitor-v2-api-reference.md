@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733670"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure 監視器 Application Insights 代理程式 API 參考
@@ -47,7 +46,7 @@ PS C:\> Enable-InstrumentationEngine
 ### <a name="parameters"></a>參數
 
 #### <a name="-acceptlicense"></a>-AcceptLicense
-**選擇性。** 使用此參數可接受無周邊安裝中的授權和隱私權聲明。
+**選擇性.** 使用此參數可接受無周邊安裝中的授權和隱私權聲明。
 
 #### <a name="-verbose"></a>-Verbose
 **一般參數。** 使用此參數來輸出詳細記錄。
@@ -66,8 +65,8 @@ Configuring registry for instrumentation engine...
 
 在目的電腦上啟用 IIS 應用程式的無程式碼附加監視。
 
-此 Cmdlet 會修改 IIS Applicationhost.config 並設定一些登錄機碼。
-它也會建立 applicationinsights ikey .config 檔案，以定義每個應用程式所使用的檢測金鑰。
+此 Cmdlet 會修改 IIS applicationHost.config 並設定一些登錄機碼。
+它也會建立一個 applicationinsights.ikey.config 檔案，此檔案會定義每個應用程式所使用的檢測金鑰。
 IIS 會在啟動時載入 RedfieldModule，這會在應用程式啟動時將 Application Insights SDK 插入應用程式中。
 重新開機 IIS，讓您的變更生效。
 
@@ -84,11 +83,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 #### <a name="example-with-an-instrumentation-key-map"></a>含檢測金鑰組應的範例
 在此範例中：
-- `MachineFilter`使用`'.*'`萬用字元來符合目前的電腦。
-- `AppFilter='WebAppExclude'`提供`null`檢測金鑰。 將不會檢測指定的應用程式。
+- `MachineFilter`使用萬用字元來符合目前的電腦 `'.*'` 。
+- `AppFilter='WebAppExclude'`提供 `null` 檢測金鑰。 將不會檢測指定的應用程式。
 - `AppFilter='WebAppOne'`為指定的應用程式指派唯一的檢測金鑰。
 - `AppFilter='WebAppTwo'`為指定的應用程式指派唯一的檢測金鑰。
-- 最後， `AppFilter`也會使用`'.*'`萬用字元來比對先前規則不符合的所有 web 應用程式，並指派預設的檢測金鑰。
+- 最後， `AppFilter` 也會使用 `'.*'` 萬用字元來比對先前規則不符合的所有 web 應用程式，並指派預設的檢測金鑰。
 - 為了方便閱讀，會加入空格。
 
 ```powershell
@@ -104,11 +103,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ### <a name="parameters"></a>參數
 
 #### <a name="-instrumentationkey"></a>-InstrumentationKey
-**必填。** 使用此參數來提供單一檢測金鑰，供目的電腦上的所有應用程式使用。
+**必要。** 使用此參數來提供單一檢測金鑰，供目的電腦上的所有應用程式使用。
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**必填。** 使用此參數可提供多個檢測金鑰，以及每個應用程式所使用之檢測金鑰的對應。
-您可以藉由設定`MachineFilter`，針對數部電腦建立單一安裝腳本。
+**必要。** 使用此參數可提供多個檢測金鑰，以及每個應用程式所使用之檢測金鑰的對應。
+您可以藉由設定，針對數部電腦建立單一安裝腳本 `MachineFilter` 。
 
 > [!IMPORTANT]
 > 應用程式會依照規則的提供順序來比對規則。 因此，您應該先指定最特定的規則，最後是最常見的規則。
@@ -127,12 +126,12 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 
 #### <a name="-enableinstrumentationengine"></a>-EnableInstrumentationEngine
-**選擇性。** 使用此參數可讓檢測引擎收集有關執行 managed 進程期間所發生之事件和訊息的資訊。 這些事件和訊息包括相依性結果碼、HTTP 指令動詞和 SQL 命令文字。
+**選擇性.** 使用此參數可讓檢測引擎收集有關執行 managed 進程期間所發生之事件和訊息的資訊。 這些事件和訊息包括相依性結果碼、HTTP 指令動詞和 SQL 命令文字。
 
 檢測引擎會增加額外負荷，並預設為關閉。
 
 #### <a name="-acceptlicense"></a>-AcceptLicense
-**選擇性。** 使用此參數可接受無周邊安裝中的授權和隱私權聲明。
+**選擇性.** 使用此參數可接受無周邊安裝中的授權和隱私權聲明。
 
 #### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
 當您有一部 web 伺服器的叢集時，您可能會使用[共用](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)設定。
@@ -213,7 +212,7 @@ Configuring registry for instrumentation engine...
 ## <a name="disable-applicationinsightsmonitoring"></a>停用-ApplicationInsightsMonitoring
 
 停用目的電腦上的監視。
-此 Cmdlet 會移除對 IIS Applicationhost.config 的編輯，並移除登錄機碼。
+此 Cmdlet 會移除對 IIS applicationHost.config 的編輯，並移除登錄機碼。
 
 ### <a name="examples"></a>範例
 
@@ -290,7 +289,7 @@ Filters:
 
 #### <a name="example-application-status"></a>範例：應用程式狀態
 
-執行命令`Get-ApplicationInsightsMonitoringStatus`以顯示 [網站] 的監視狀態。
+執行命令 `Get-ApplicationInsightsMonitoringStatus` 以顯示 [網站] 的監視狀態。
 
 ```powershell
 
@@ -335,7 +334,7 @@ AppAlreadyInstrumented : true
 
 #### <a name="example-powershell-module-information"></a>範例： PowerShell 模組資訊
 
-執行命令`Get-ApplicationInsightsMonitoringStatus -PowerShellModule`以顯示目前模組的相關資訊：
+執行命令 `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` 以顯示目前模組的相關資訊：
 
 ```powershell
 
@@ -392,7 +391,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime
 
 您可以檢查檢測電腦上的處理常式，以查看是否已載入所有 Dll。 如果監視運作正常，則至少應載入12個 Dll。
 
-執行命令`Get-ApplicationInsightsMonitoringStatus -InspectProcess`：
+執行命令 `Get-ApplicationInsightsMonitoringStatus -InspectProcess` ：
 
 
 ```
@@ -446,9 +445,9 @@ listdlls64.exe -accepteula w3wp
 
 
 如果此程式因任何原因而失敗，您可以手動執行下列命令：
-- iisreset/status
-- [handle64 .exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp.exe |findstr/I "InstrumentationEngine AI。 ApplicationInsights
-- [listdlls64 .exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp.exe |findstr/I "InstrumentationEngine AI ApplicationInsights"
+- iisreset.exe/status
+- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp.exe |findstr/I "InstrumentationEngine AI。 ApplicationInsights
+- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp.exe |findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
@@ -476,11 +475,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 #### <a name="example-with-an-instrumentation-key-map"></a>含檢測金鑰組應的範例
 在此範例中：
-- `MachineFilter`使用`'.*'`萬用字元來符合目前的電腦。
-- `AppFilter='WebAppExclude'`提供`null`檢測金鑰。 將不會檢測指定的應用程式。
+- `MachineFilter`使用萬用字元來符合目前的電腦 `'.*'` 。
+- `AppFilter='WebAppExclude'`提供 `null` 檢測金鑰。 將不會檢測指定的應用程式。
 - `AppFilter='WebAppOne'`為指定的應用程式指派唯一的檢測金鑰。
 - `AppFilter='WebAppTwo'`為指定的應用程式指派唯一的檢測金鑰。
-- 最後， `AppFilter`也會使用`'.*'`萬用字元來比對先前規則不符合的所有 web 應用程式，並指派預設的檢測金鑰。
+- 最後， `AppFilter` 也會使用 `'.*'` 萬用字元來比對先前規則不符合的所有 web 應用程式，並指派預設的檢測金鑰。
 - 為了方便閱讀，會加入空格。
 
 ```powershell
@@ -494,11 +493,11 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 ### <a name="parameters"></a>參數
 
 #### <a name="-instrumentationkey"></a>-InstrumentationKey
-**必填。** 使用此參數來提供單一檢測金鑰，供目的電腦上的所有應用程式使用。
+**必要。** 使用此參數來提供單一檢測金鑰，供目的電腦上的所有應用程式使用。
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**必填。** 使用此參數可提供多個檢測金鑰，以及每個應用程式所使用之檢測金鑰的對應。
-您可以藉由設定`MachineFilter`，針對數部電腦建立單一安裝腳本。
+**必要。** 使用此參數可提供多個檢測金鑰，以及每個應用程式所使用之檢測金鑰的對應。
+您可以藉由設定，針對數部電腦建立單一安裝腳本 `MachineFilter` 。
 
 > [!IMPORTANT]
 > 應用程式會依照規則的提供順序來比對規則。 因此，您應該先指定最特定的規則，最後是最常見的規則。
@@ -556,7 +555,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 
 收集的事件會即時列印到主控台，並儲存至 ETL 檔案。 [PerfView](https://github.com/microsoft/perfview)可以開啟輸出 ETL 檔案以供進一步調查。
 
-此 Cmdlet 將會執行，直到達到超時持續時間（預設為5分鐘），或以`Ctrl + C`手動方式停止（）。
+此 Cmdlet 將會執行，直到達到超時持續時間（預設為5分鐘），或以手動方式停止（ `Ctrl + C` ）。
 
 ### <a name="examples"></a>範例
 
@@ -567,17 +566,17 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 無程式碼附加執行時間會在 IIS 啟動時以及應用程式啟動時發出 ETW 事件。
 
 若要收集這些事件：
-1. 在具有系統管理員許可權的 cmd 主控台中`iisreset /stop` ，執行以關閉 IIS 和所有 web 應用程式。
+1. 在具有系統管理員許可權的 cmd 主控台中，執行 `iisreset /stop` 以關閉 IIS 和所有 web 應用程式。
 2. 執行此 Cmdlet
-3. 在具有系統管理員許可權的 cmd 主控台中`iisreset /start` ，執行以啟動 IIS。
+3. 在具有系統管理員許可權的 cmd 主控台中，執行 `iisreset /start` 以啟動 IIS。
 4. 嘗試流覽至您的應用程式。
-5. 在您的應用程式完成載入之後，您可以手動`Ctrl + C`停止它（），或等候超時。
+5. 在您的應用程式完成載入之後，您可以手動停止它（ `Ctrl + C` ），或等候超時。
 
 #### <a name="what-events-to-collect"></a>要收集的事件
 
 收集事件時，您有三個選項：
-1. 使用參數`-CollectSdkEvents`來收集從 Application Insights SDK 發出的事件。
-2. 使用參數`-CollectRedfieldEvents`來收集狀態監視器和 Redfield 執行時間發出的事件。 當診斷 IIS 和應用程式啟動時，這些記錄會很有説明。
+1. 使用參數 `-CollectSdkEvents` 來收集從 APPLICATION INSIGHTS SDK 發出的事件。
+2. 使用參數 `-CollectRedfieldEvents` 來收集狀態監視器和 Redfield 執行時間發出的事件。 當診斷 IIS 和應用程式啟動時，這些記錄會很有説明。
 3. 同時使用這兩個參數來收集這兩個事件種類。
 4. 根據預設，如果未指定任何參數，則會收集這兩個事件種類。
 
@@ -585,17 +584,17 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 ### <a name="parameters"></a>參數
 
 #### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**選擇性。** 使用此參數來設定此腳本應該收集事件的時間長度。 預設值為 5 分鐘。
+**選擇性.** 使用此參數來設定此腳本應該收集事件的時間長度。 預設值為 5 分鐘。
 
 #### <a name="-logdirectory"></a>-LogDirectory
-**選擇性。** 使用此參數來設定 ETL 檔案的輸出目錄。 根據預設，會在 PowerShell 模組目錄中建立此檔案。 腳本執行期間會顯示完整路徑。
+**選擇性.** 使用此參數來設定 ETL 檔案的輸出目錄。 根據預設，會在 PowerShell 模組目錄中建立此檔案。 腳本執行期間會顯示完整路徑。
 
 
 #### <a name="-collectsdkevents"></a>-CollectSdkEvents
-**選擇性。** 使用此參數來收集 Application Insights SDK 事件。
+**選擇性.** 使用此參數來收集 Application Insights SDK 事件。
 
 #### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
-**選擇性。** 使用此參數來收集來自狀態監視器和 Redfield 執行時間的事件。
+**選擇性.** 使用此參數來收集來自狀態監視器和 Redfield 執行時間的事件。
 
 #### <a name="-verbose"></a>-Verbose
 **一般參數。** 使用此參數來輸出詳細記錄。

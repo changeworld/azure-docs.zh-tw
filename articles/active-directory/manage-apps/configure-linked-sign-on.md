@@ -2,22 +2,21 @@
 title: Azure AD 應用程式的連結登入-Microsoft 身分識別平臺
 description: 在 Microsoft 身分識別平臺（Azure AD）中，為您的 Azure AD 企業應用程式設定已連結的單一登入（SSO）
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfe4aeb17f482cc9d4126efc6d65d3f7d173536b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5cfcece43ae1b7d7bcf0c38feba14f1e82b29f18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063538"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763477"
 ---
 # <a name="configure-linked-sign-on"></a>設定連結的登入
 
@@ -31,13 +30,13 @@ ms.locfileid: "77063538"
 
 1. 以雲端應用程式系統管理員或 Azure AD 租用戶的應用程式系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 流覽至**Azure Active Directory** > **企業應用程式**。 Azure AD 租用戶中應用程式的隨機樣本隨即出現。 
+1. 流覽至**Azure Active Directory**  >  **企業應用程式**。 Azure AD 租用戶中應用程式的隨機樣本隨即出現。 
 
 1. 在 [應用程式類型]**** 功能表中，選取 [所有應用程式]****，然後選取 [套用]****。
 
 1. 在搜尋方塊中輸入應用程式的名稱，然後從結果中選取應用程式。
 
-1. 在 [管理]**** 區段中，選取 [單一登入]****。 
+1. 在 [管理] 區段中，選取 [單一登入]。 
 
 1. 選取 [**連結**]。
 
@@ -45,9 +44,9 @@ ms.locfileid: "77063538"
  
 1. 您可以將使用者和群組指派給應用程式，這會導致應用程式出現在[Office 365 應用程式啟動器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或適用于這些使用者的[Azure AD 存取面板](end-user-experiences.md)中。
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 
 - [將使用者或群組指派給應用程式](methods-for-assigning-users-and-groups.md)
-- [設定自動使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+- [設定使用者帳戶自動佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)

@@ -12,11 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283273"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708938"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 網路監看員中連線疑難排解的簡介
 
@@ -29,7 +28,7 @@ ms.locfileid: "79283273"
 
 下表顯示當連線疑難排解完成執行時所傳回的屬性。
 
-|屬性  |描述  |
+|屬性  |說明  |
 |---------|---------|
 |ConnectionStatus     | 連線檢查的狀態。 可能的結果是 **Reachable** 和 **Unreachable**。        |
 |AvgLatencyInMs     | 連線檢查期間的平均延遲，以毫秒為單位。 (只有在檢查狀態為可連線時顯示)        |
@@ -46,7 +45,7 @@ ms.locfileid: "79283273"
 |Hops[].Issues | 在該躍點檢查期間遇到之問題的集合。 如果沒有任何問題，則值會是空白。|
 |Hops[].Issues[].Origin | 在目前躍點，發生問題之處。 可能的值包括：<br/> **Inbound** - 問題是在從上一個躍點到目前躍點的連結上<br/>**Outbound** - 問題是在從目前躍點到下一個躍點的連結上<br/>**Local** - 問題位於目前的躍點。|
 |Hops[].Issues[].Severity | 偵測到之問題的嚴重性。 可能的值為 **Error** 和 **Warning**。 |
-|Hops[].Issues[].Type |找到的問題類型。 可能的值包括： <br/>**使用率**<br/>**記憶體**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops[].Issues[].Type |找到的問題類型。 可能的值包括： <br/>**CPU**<br/>**記憶體**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Hops[].Issues[].Context |找到之問題的相關詳細資料。|
 |Hops[].Issues[].Context[].key |傳回之索引鍵值組的索引鍵。|
 |Hops[].Issues[].Context[].value |傳回之索引鍵值組的值。|
@@ -72,10 +71,10 @@ ms.locfileid: "79283273"
 
 連線疑難排解傳回連線的相關錯誤類型。 下表提供一份目前傳回錯誤類型的清單。
 
-|類型  |描述  |
+|類型  |Description  |
 |---------|---------|
 |CPU     | 高 CPU 使用率。       |
-|記憶體     | 高記憶體使用率。       |
+|Memory     | 高記憶體使用率。       |
 |GuestFirewall     | 由於虛擬機器防火牆設定，因此封鎖流量。        |
 |DNSResolution     | 目的地位址的 DNS 解析失敗。        |
 |NetworkSecurityRule    | NSG 規則封鎖流量 (傳回規則)        |

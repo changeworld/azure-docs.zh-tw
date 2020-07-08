@@ -6,17 +6,16 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 247691326e3aa2c8027dd0318b23a2cbfcba1efe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0c6fc0cdba4607bba55383f2662257322ef23aa2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745238"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212236"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>開始使用透明資料加密 (TDE)
 
@@ -37,10 +36,10 @@ ms.locfileid: "80745238"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)
 2. 在資料庫刀鋒視窗中，按一下 [設定] **** 按鈕
-3. 選取 [**透明資料加密**] ![選項入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
-4. 在 [**設定** ![入口網站設定] 上選取 [開啟]](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-on.png)
-5. 選取 [**儲存**
-   ![入口網站設定] [儲存]](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save.png)  
+3. 選取 [**透明資料加密**] 選項 ![ 入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
+4. 在 [**設定** ![ 入口網站設定] 上選取 [開啟]](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-on.png)
+5. 選取 [**儲存** 
+    ![ 入口網站設定] [儲存]](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save.png)  
 
 ## <a name="disabling-encryption"></a>停用加密
 
@@ -48,10 +47,10 @@ ms.locfileid: "80745238"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)
 2. 在資料庫刀鋒視窗中，按一下 [設定] **** 按鈕
-3. 選取 [**透明資料加密**] ![選項入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
-4. 選取 [**關閉**] ![設定入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-off.png)
-5. 選取 [**儲存**
-   ![] 入口網站設定 [儲存 2]](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save2.png)  
+3. 選取 [**透明資料加密**] 選項 ![ 入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
+4. 選取 [**關閉**] 設定 ![ 入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-off.png)
+5. 選取 [**儲存**] 
+    ![ 入口網站設定 [儲存 2]](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save2.png)  
 
 ## <a name="encryption-dmvs"></a>加密 DMV
 

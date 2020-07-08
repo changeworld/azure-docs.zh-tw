@@ -6,11 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271768"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84709057"
 ---
 # <a name="generate-maps"></a>產生地圖
 
@@ -51,7 +50,7 @@ FarmBeats 感應器放置圖可協助您放置泥土濕度感應器。 對應輸
 > [!NOTE]
 > 您可以從 [**對應**] 頁面或從 [**伺服器陣列詳細資料**] 頁面上的 [**產生精確度對應**] 下拉式功能表，起始感應器放置圖。
 
-依照下列步驟進行。
+請遵循下列步驟。
 
 1. 在 [首頁] 頁面上，移至左側導覽功能表中的 [**對應**]。
 2. 選取 [**建立對應**]，然後從下拉式功能表中選取 [**感應器放置**]。
@@ -75,7 +74,7 @@ FarmBeats 感應器放置圖可協助您放置泥土濕度感應器。 對應輸
 
 ### <a name="view-and-download-a-sensor-placement-map"></a>查看和下載感應器放置圖
 
-依照下列步驟進行。
+請遵循下列步驟。
 
 1. 在 [首頁] 頁面上，移至左側導覽功能表中的 [**對應**]。
 
@@ -110,7 +109,7 @@ FarmBeats 可讓您為伺服器陣列產生 NDVI、增強的 Vegetation 索引�
 
 ## <a name="create-a-satellite-indices-map"></a>建立衛星索引對應
 
-依照下列步驟進行。
+請遵循下列步驟。
 
 1. 在 [首頁] 頁面上，移至左側導覽功能表中的 [**對應**]。
 2. 選取 [**建立對應**]，然後從下拉式功能表中選取 [**附屬索引**]。
@@ -136,7 +135,7 @@ FarmBeats 可讓您為伺服器陣列產生 NDVI、增強的 Vegetation 索引�
 
 ### <a name="view-and-download-a-map"></a>查看和下載地圖
 
-依照下列步驟進行。
+請遵循下列步驟。
 
 1. 在 [首頁] 頁面上，移至左側導覽功能表中的 [**對應**]。
 
@@ -175,7 +174,7 @@ FarmBeats 可讓您為伺服器陣列產生 NDVI、增強的 Vegetation 索引�
 
 ## <a name="create-a-soil-moisture-heatmap"></a>建立土料濕度熱度圖
 
-依照下列步驟進行。
+請遵循下列步驟。
 
 1. 在 [首頁] 頁面上，移至左側導覽功能表中的 [**對應**]，以查看 [**對應**] 頁面。
 2. 選取 [**建立對應**]，然後從下拉式功能表中選取 [**土裡濕度**]。
@@ -203,7 +202,7 @@ FarmBeats 可讓您為伺服器陣列產生 NDVI、增強的 Vegetation 索引�
 
 ### <a name="view-and-download-a-map"></a>查看和下載地圖
 
-依照下列步驟進行。
+請遵循下列步驟。
 
 1. 在 [首頁] 頁面上，移至左側導覽功能表中的 [**對應**]。
 

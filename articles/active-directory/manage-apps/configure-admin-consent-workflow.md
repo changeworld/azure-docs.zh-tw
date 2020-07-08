@@ -2,22 +2,21 @@
 title: 設定管理員同意工作流程-Azure Active Directory |Microsoft Docs
 description: 瞭解如何設定一種方法，讓終端使用者要求存取需要系統管理員同意的應用程式。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83b3f0d97daf0b4ac17f74981119b380d1776d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e4871af354d68a8d6dcaf3170271959146f57cba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763613"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>設定系統管理員同意工作流程（預覽）
 
@@ -42,14 +41,14 @@ ms.locfileid: "75430207"
 
    ![設定系統管理員同意工作流程設定](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
-6. 設定下列設定：
+6. 進行以下設定：
 
    * **選取 [使用者] 以審查管理員同意要求**。 從具有全域管理員、雲端應用程式系統管理員和應用程式系統管理員角色的一組使用者，選取此工作流程的 [審核者]。
    * **選取的使用者將會收到要求的電子郵件通知**。 當提出要求時，啟用或停用電子郵件通知給審核者。  
    * **選取的使用者將會收到要求到期提醒**。 當要求即將到期時，啟用或停用提醒電子郵件通知給審核者。  
    * **同意要求會在（天）後到期**。 指定要求保持有效的時間長度。
 
-7. 選取 [儲存]  。 此功能最多可能需要一小時的時間才會啟用。
+7. 選取 [儲存]。 此功能最多可能需要一小時的時間才會啟用。
 
 > [!NOTE]
 > 您可以藉由修改 [**選取管理員同意要求審核者**] 清單來新增或移除此工作流程的審核者。 請注意，這項功能目前的限制是，審核者可以保留在被指定為審核者時，檢查要求的功能。
@@ -131,7 +130,7 @@ ms.locfileid: "75430207"
 
 **我已開啟此工作流程，但在測試功能時，為什麼我無法看到新的「需要核准」提示，讓我要求存取權？**
 
-開啟功能之後，最多可能需要60分鐘的時間，使用者才會看到更新。 您可以在`https://graph.microsoft.com/beta/settings` API 中查看**EnableAdminConsentRequests**值，確認設定已正確地生效。
+開啟功能之後，最多可能需要60分鐘的時間，使用者才會看到更新。 您可以在 API 中查看**EnableAdminConsentRequests**值，確認設定已正確地生效 `https://graph.microsoft.com/beta/settings` 。
 
 **身為審核者，為什麼看不到所有擱置中的要求？**
 
@@ -153,10 +152,10 @@ ms.locfileid: "75430207"
 
 如需同意應用程式的詳細資訊，請參閱 [Azure Active Directory 同意架構](../develop/consent-framework.md)。
 
-[設定終端使用者同意應用程式的方式](configure-user-consent.md)
+[設定使用者同意應用程式的方式](configure-user-consent.md)
 
-[對應用程式授與全租使用者系統管理員同意](grant-admin-consent.md)
+[對應用程式授與全租用戶的管理員同意](grant-admin-consent.md)
 
-[Microsoft 身分識別平臺中的許可權和同意](../develop/active-directory-v2-scopes.md)
+[Microsoft 身分識別平台中的權限和同意](../develop/active-directory-v2-scopes.md)
 
 [StackOverflow 上的 Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

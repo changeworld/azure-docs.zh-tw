@@ -9,10 +9,9 @@ ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
 ms.openlocfilehash: 2d546e9154352ec90aa1b1a457eb5320979239d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758358"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>使用 Resource Manager 範本部署點 Vm
@@ -21,12 +20,12 @@ ms.locfileid: "81758358"
 
 點 Vm 的定價是以區域和 SKU 為依據的變數。 如需詳細資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定價。
 
-您可以選擇為 VM 設定您願意支付的最大價格（每小時）。 您可以使用最多5個小數位數，以美元（USD）來設定點 VM 的最大價格。 例如，此值`0.98765`是每小時 $0.98765 美元的最大價格。 如果您將最大價格設為`-1`，則不會根據價格來收回 VM。 VM 的價格將會是標準 VM 的目前價格或價格（這是較少的），只要有可用的容量和配額。 如需設定最大價格的詳細資訊，請參閱[找出 vm-定價](spot-vms.md#pricing)。
+您可以選擇為 VM 設定您願意支付的最大價格（每小時）。 您可以使用最多5個小數位數，以美元（USD）來設定點 VM 的最大價格。 例如，此值 `0.98765` 是每小時 $0.98765 美元的最大價格。 如果您將最大價格設為 `-1` ，則不會根據價格來收回 VM。 VM 的價格將會是標準 VM 的目前價格或價格（這是較少的），只要有可用的容量和配額。 如需設定最大價格的詳細資訊，請參閱[找出 vm-定價](spot-vms.md#pricing)。
 
 
 ## <a name="use-a-template"></a>使用範本
 
-針對點範本部署，請`"apiVersion": "2019-03-01"`使用或更新版本。 在您`priority`的`evictionPolicy`範本`billingProfile`中，將、和屬性新增至：
+針對點範本部署，請使用 `"apiVersion": "2019-03-01"` 或更新版本。 `priority` `evictionPolicy` 在您的範本中，將、和 `billingProfile` 屬性新增至：
 
 ```json
 "priority": "Spot",
@@ -36,7 +35,7 @@ ms.locfileid: "81758358"
 }
 ```
 
-以下是一個範例範本，其中包含適用于點 VM 的已新增屬性。 將資源名稱取代為您自己的`<password>` ，並以 VM 上本機系統管理員帳戶的密碼取代。
+以下是一個範例範本，其中包含適用于點 VM 的已新增屬性。 將資源名稱取代為您自己的，並 `<password>` 以 VM 上本機系統管理員帳戶的密碼取代。
 
 ```json
 {

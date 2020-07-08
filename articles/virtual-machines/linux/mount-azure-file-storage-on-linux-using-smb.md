@@ -3,16 +3,15 @@ title: 使用 SMB 在 Linux VM 上掛接 Azure 檔案儲存體
 description: 如何透過 Azure CLI 使用 SMB 在 Linux VM 上掛接 Azure 檔案儲存體
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 0314095a053087a7d490926c41c6ae386c304919
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066637"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658150"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上掛接 Azure 檔案儲存體
 
@@ -35,7 +34,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-使用 [az storage account create](/cli/azure/storage/account)，在您所建立的資源群組中建立新的儲存體帳戶。 這個範例會建立名為*mySTORAGEACCT\<random number>* 的儲存體帳戶，並將該儲存體帳戶的名稱放在變數**STORAGEACCT**中。 儲存體帳戶名稱必須是唯一的，請使用 `$RANDOM` 在結尾附加一個數字，使其成為唯一名稱。
+使用 [az storage account create](/cli/azure/storage/account)，在您所建立的資源群組中建立新的儲存體帳戶。 此範例會建立名為 *mySTORAGEACCT\<random number>* 的儲存體帳戶，並且在變數 **STORAGEACCT** 中放入該儲存體帳戶的名稱。 儲存體帳戶名稱必須是唯一的，請使用 `$RANDOM` 在結尾附加一個數字，使其成為唯一名稱。
 
 ```azurecli
 STORAGEACCT=$(az storage account create \
@@ -110,5 +109,5 @@ sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFile
 
 - [在建立期間使用 cloud-init 自訂 Linux VM](using-cloud-init.md)
 - [在 Linux VM 中新增磁碟](add-disk.md)
-- [適用于 Linux Vm 的 Azure 磁碟加密](disk-encryption-overview.md)
+- [適用於 Linux VM 的 Azure 磁碟加密](disk-encryption-overview.md)
 

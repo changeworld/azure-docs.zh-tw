@@ -9,11 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
 ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272301"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84709244"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>管理 HDInsight 叢集的記錄
 
@@ -91,7 +90,7 @@ HDInsight [指令碼動作](hdinsight-hadoop-customize-cluster-linux.md)會以�
 
 ### <a name="view-ambari-alerts-status-logs"></a>查看 Ambari 警示狀態記錄
 
-Apache Ambari 會將警示狀態變更`ambari-alerts.log`寫入至。 完整路徑為`/var/log/ambari-server/ambari-alerts.log`。 若要啟用記錄檔的偵錯工具，請變更`/etc/ambari-server/conf/log4j.properties.` [變更中的`# Log alert state changes`屬性]，然後在 [從下列專案] 底下
+Apache Ambari 會將警示狀態變更寫入至 `ambari-alerts.log` 。 完整路徑為 `/var/log/ambari-server/ambari-alerts.log` 。 若要啟用記錄檔的偵錯工具，請變更 [變更中的屬性]，然後在 [ `/etc/ambari-server/conf/log4j.properties.` 從下列專案] 底下 `# Log alert state changes`
 
 ```
 log4j.logger.alerts=INFO,alerts

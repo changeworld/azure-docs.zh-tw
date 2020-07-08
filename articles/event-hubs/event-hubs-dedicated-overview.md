@@ -1,26 +1,13 @@
 ---
 title: 專用事件中樞概觀 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供專用 Azure 事件中樞的總覽，其中提供事件中樞的單一租使用者部署。
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: f67be1d31125b21048deca4d9cafcc76f4ffc3b1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 70061b5dc4fe72c9fd2fd60dd8c67da31b1d1e6c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72516755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322447"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>事件中樞專用的概觀
 
@@ -48,20 +35,20 @@ ms.locfileid: "72516755"
 
 ## <a name="event-hubs-dedicated-quotas-and-limits"></a>事件中樞專用配額和限制
 
-事件中樞專用供應專案以固定的每月價格計費，最低使用量為4小時。 專用層提供標準方案的所有功能，但具備企業級的容量和限制，可滿足具有工作負載需求的客戶。 
+事件中樞專用供應項目以每月固定價格計費，最低為 4 小時的使用量。 專用層提供標準方案的所有功能，但可對工作負載需求高的客戶提供企業規模容量和限制。 
 
-| 功能 | Standard | 專用 |
+| 功能 | 標準 | 專用 |
 | --- |:---:|:---:|
-| 頻寬 | 20 Tu （最多 40 Tu） | 20 Cu |
-| 命名空間 |  1 | 50/CU |
-| 事件中樞 |  每個命名空間10個 | 1000每個命名空間 |
-| 輸入事件 | 按百萬個事件付費 | 內含 |
+| 頻寬 | 20 Tu （最多 40 Tu） | 20 個 CU |
+| 命名空間 |  1 | 每個 CU 50 個 |
+| 事件中樞 |  每個命名空間10個 | 每一命名空間 1000 個 |
+| 輸入事件 | 按百萬個事件付費 | 已包括 |
 | 訊息大小 | 1000000個位元組 | 1000000個位元組 |
 | 資料分割 | 每個事件中樞32 | 每個事件中樞1024 |
-| 用戶群組 | 每個事件中樞20個 | 每個事件中樞不會有每個 CU 的限制（1000） |
+| 用戶群組 | 每個事件中樞20個 | 沒有每個 CU 的限制，每個事件中樞 1000 個 |
 | 代理連線 | 1000包含，5000最大值 | 100 K 包含和最大值 |
-| 訊息保留期 | 7天，每個 TU 包含 84 GB | 90天，每個 CU 包含 10 TB |
-| 擷取 | 按小時付費 | 內含 |
+| 訊息保留期 | 7天，每個 TU 包含 84 GB | 90 天，每個 CU 包含 10 TB |
+| 擷取 | 按小時付費 | 已包括 |
 
 ## <a name="how-to-onboard"></a>如何加入
 
@@ -77,9 +64,9 @@ ms.locfileid: "72516755"
 
 | 承載圖形 | 接收者 | 輸入頻寬| 輸入訊息 | 輸出頻寬 | 輸出訊息 | TU 總計 | 每個 CU 的 TU |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB 的批次 | 2 | 400 MB/秒 | 400k 訊息數/秒 | 800 MB/秒 | 800k 訊息數/秒 | 400 個 TU | 100 個 TU | 
-| 10x10KB 的批次 | 2 | 666 MB/秒 | 66.6 k 訊息數/秒 | 1.33 GB/秒 | 133k 訊息數/秒 | 666 個 TU | 166 個 TU |
-| 6x32KB 的批次 | 1 | 1.05 GB/秒 | 34k 則訊息數/秒 | 1.05 GB/秒 | 34k 則訊息數/秒 | 1000 個 TU | 250 個 TU |
+| 100x1KB 的批次 | 2 | 400 MB/秒 | 400000 則訊息/秒 | 800 MB/秒 | 800000 則訊息/秒 | 400 個 TU | 100 個 TU | 
+| 10x10KB 的批次 | 2 | 666 MB/秒 | 66600 則訊息/秒 | 1.33 GB/秒 | 133000 則訊息/秒 | 666 個 TU | 166 個 TU |
+| 6x32KB 的批次 | 1 | 1.05 GB/秒 | 34000 則訊息/秒 | 1.05 GB/秒 | 34000 則訊息/秒 | 1000 個 TU | 250 個 TU |
 
 測試期間使用了下列準則：
 

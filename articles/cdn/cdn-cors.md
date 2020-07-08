@@ -11,15 +11,14 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74278116"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921159"
 ---
 # <a name="using-azure-cdn-with-cors"></a>搭配 CORS 使用 Azure CDN
 ## <a name="what-is-cors"></a>CORS 是什麼？
@@ -30,7 +29,7 @@ CORS 要求有兩種類型，*簡單要求*和*複雜要求*。
 
 ### <a name="for-simple-requests"></a>對於簡單要求︰
 
-1. 瀏覽器會傳送有額外**來源** HTTP 要求標頭的 CORS 要求。 此標頭的值是提供父頁面的來源，是以*通訊協定、* *網域*和*連接埠*的組合來定義的。  當 HTTPs\://www.contoso.com 的頁面嘗試存取 fabrikam.com 來源中的使用者資料時，會將下列要求標頭傳送到 fabrikam.com：
+1. 瀏覽器會傳送有額外**來源** HTTP 要求標頭的 CORS 要求。 此標頭的值是提供父頁面的來源，是以*通訊協定、* *網域*和*連接埠*的組合來定義的。  當 HTTPs \: //www.contoso.com 的頁面嘗試存取 fabrikam.com 來源中的使用者資料時，會將下列要求標頭傳送到 fabrikam.com：
 
    `Origin: https://www.contoso.com`
 
@@ -82,7 +81,9 @@ CORS 要求有兩種類型，*簡單要求*和*複雜要求*。
 #### <a name="one-regular-expression-with-all-valid-origins"></a>包含所有有效來源的規則運算式
 在此情況下，您會建立包含您要允許使用之所有來源的規則運算式。 
 
-    https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```http
+https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```
 
 > [!TIP]
 > **來自 Verizon 的進階 Azure CDN** 會使用 [Perl 相容的規則運算式](https://pcre.org/)作為其規則運算式的引擎。  您可以使用像 [Regular Expressions 101](https://regex101.com/) 這樣的工具來驗證您的規則運算式。  請注意，規則運算式中的「/」字元是有效的，不需要逸出，不過將該字元逸出被視為是最佳做法，且某些規則運算式驗證程式也預期將它逸出。

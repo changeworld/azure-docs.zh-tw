@@ -2,21 +2,20 @@
 title: 如何為 Azure AD 應用程式設定密碼單一登入 |Microsoft Docs
 description: 如何在 Microsoft 身分識別平臺（Azure AD）中，為您的 Azure AD 企業應用程式設定密碼單一登入（SSO）
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 043adc309c3480865eb9aa7a7bff8d35e85bc78a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063521"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763494"
 ---
 # <a name="configure-password-single-sign-on"></a>設定密碼單一登入
 
@@ -44,13 +43,13 @@ ms.locfileid: "77063521"
 
 1. 以雲端應用程式系統管理員或 Azure AD 租用戶的應用程式系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 流覽至**Azure Active Directory** > **企業應用程式**。 Azure AD 租用戶中應用程式的隨機樣本隨即出現。 
+2. 流覽至**Azure Active Directory**  >  **企業應用程式**。 Azure AD 租用戶中應用程式的隨機樣本隨即出現。 
 
 3. 在 [應用程式類型]**** 功能表中，選取 [所有應用程式]****，然後選取 [套用]****。
 
 4. 在搜尋方塊中輸入應用程式的名稱，然後從結果中選取應用程式。
 
-5. 在 [管理]**** 區段中，選取 [單一登入]****。 
+5. 在 [管理] 區段中，選取 [單一登入]。 
 
 6. 選取 [**密碼型**]。
 
@@ -58,7 +57,7 @@ ms.locfileid: "77063521"
 
    ![密碼單一登入](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
-8. 選取 [儲存]  。 Azure AD 嘗試剖析登入頁面的使用者名稱輸入和密碼輸入。 如果嘗試成功，就大功告成了。 
+8. 選取 [儲存]。 Azure AD 嘗試剖析登入頁面的使用者名稱輸入和密碼輸入。 如果嘗試成功，就大功告成了。 
  
 > [!NOTE]
 > 下一個步驟是[將使用者或群組指派給應用程式](methods-for-assigning-users-and-groups.md)。 指派使用者和群組之後，您可以提供認證，以在使用者登入應用程式時代表使用者使用。 選取 [**使用者和群組**]，選取使用者或群組的資料列核取方塊，然後按一下 [**更新認證**]。 然後，輸入要代表使用者或群組使用的使用者名稱和密碼。 否則，系統會在啟動時提示使用者輸入認證。
@@ -68,7 +67,7 @@ ms.locfileid: "77063521"
 
 如果 Azure AD 的剖析嘗試失敗，您可以手動設定登入。
 
-1. 在** \<[應用程式名稱]>** 設定] 底下，選取 [ ** \<設定應用程式名稱]> [密碼] [單一登入設定**]，以顯示 [**設定登入**] 頁面。 
+1. 在** \<application name> [設定] 下，** 選取 [**設定密碼] [ \<application name> 單一登入設定**] 以顯示 [**設定登入**] 頁面。 
 
 2. 選取 [手動偵測登**入欄位**]。 說明如何手動偵測登入欄位的其他指示隨即出現。
 
@@ -81,11 +80,11 @@ ms.locfileid: "77063521"
 5. 在具有所輸入 URL 的索引標籤中，完成登入程式。 填入 [使用者名稱] 和 [密碼] 欄位，然後嘗試登入。 （您不需要提供正確的密碼）。
 
    會出現提示，要求您儲存已捕捉的登入欄位。
-6. 選取 [確定]  。 瀏覽器延伸模組會以**應用程式已更新的訊息中繼資料來**更新 [捕捉狀態] 頁面。 [瀏覽器] 索引標籤隨即關閉。
+6. 選取 [確定]。 瀏覽器延伸模組會以**應用程式已更新的訊息中繼資料來**更新 [捕捉狀態] 頁面。 [瀏覽器] 索引標籤隨即關閉。
 
 7. 在 [Azure AD**設定**登入] 頁面中，選取 **[確定]，我可以成功登入應用程式**。
 
-8. 選取 [確定]  。
+8. 選取 [確定]。
 
 在登入頁面的 capture 之後，您可以指派使用者和群組，而且您可以設定認證原則，就像一般的[密碼 SSO 應用程式](what-is-single-sign-on.md)一樣。
 
@@ -95,4 +94,4 @@ ms.locfileid: "77063521"
 ## <a name="next-steps"></a>後續步驟
 
 - [將使用者或群組指派給應用程式](methods-for-assigning-users-and-groups.md)
-- [設定自動使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+- [設定使用者帳戶自動佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)

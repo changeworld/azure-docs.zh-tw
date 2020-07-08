@@ -2,22 +2,21 @@
 title: 建立多租使用者應用程式的 Azure 租使用者
 description: 獨立軟體廠商與 Azure Active Directory 整合的指引
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 637adba89445e6974e83486f0641576225ccd268
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 1a0b63c130d7d1e72bd3320e40213ae3cb1069a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70812622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763239"
 ---
 # <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>建立多租使用者應用程式的 Azure 租使用者  
 

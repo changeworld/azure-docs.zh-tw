@@ -3,31 +3,30 @@ title: 啟用對 SharePoint Azure AD 應用程式 Proxy 的遠端存取
 description: 涵蓋如何整合內部部署 SharePoint 伺服器與 Azure AD 應用程式 Proxy 的基本概念。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/02/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 983470994c103cb25d0d2aff96ae8544080e6288
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 42dd979f6e069addc1067d0018390c358e79a7b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481291"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764531"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 啟用 SharePoint 的遠端存取
 
 此逐步指南會說明如何將內部部署 SharePoint 伺服器陣列與 Azure Active Directory （Azure AD）應用程式 Proxy 進行整合。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要執行設定，您需要下列資源：
 - SharePoint 2013 伺服器陣列或更新版本。
@@ -56,7 +55,7 @@ ms.locfileid: "79481291"
 在此步驟中，您會在使用應用程式 Proxy 的 Azure Active Directory 租使用者中建立應用程式。 您可以設定外部 URL 並指定內部 URL，這兩者都是在 SharePoint 稍後使用。
 
 1. 依照下列設定所述，建立應用程式。 如需逐步指示，請參閱[使用 Azure AD 應用程式 Proxy 發佈應用程式](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)。
-   * **內部 url**：稍後將在 sharepoint 中設定的 SHAREPOINT 內部 url，例如`https://sharepoint`。
+   * **內部 url**：稍後將在 sharepoint 中設定的 SHAREPOINT 內部 url，例如 `https://sharepoint` 。
    * **預先驗證**： Azure Active Directory
    * **轉譯標頭中的 url**：否
    * **轉譯應用程式主體中的 url**：否
@@ -65,14 +64,14 @@ ms.locfileid: "79481291"
 
 1. 在您的應用程式發佈之後，請遵循下列步驟來設定單一登入設定：
 
-   1. 在入口網站的應用程式頁面上，選取 [單一登入]****。
-   1. 針對 [**單一登入模式]**，選取 [**整合式 Windows 驗證**]。
-   1. 將 [**內部應用程式 SPN** ] 設定為您稍早設定的值。 在此範例中，值為`HTTP/sharepoint`。
+   1. 在入口網站的應用程式頁面上，選取 [單一登入]。
+   1. 針對 [單一登入模式]，選取 [整合式 Windows 驗證]。
+   1. 將 [**內部應用程式 SPN** ] 設定為您稍早設定的值。 在此範例中，值為 `HTTP/sharepoint` 。
    1. 在 [**委派的登**入身分識別] 底下，為您的 Active Directory 樹系設定選取最適合的選項。 例如，如果您的樹系中有單一 Active Directory 網域，請選取 [**內部部署 SAM 帳戶名稱**] （如下列螢幕擷取畫面所示）。 但是，如果您的使用者與 SharePoint 和應用程式 Proxy 連接器伺服器不在相同的網域中，請選取 [**內部部署使用者主體名稱**] （未顯示在螢幕擷取畫面中）。
 
    ![設定 SSO 的整合式 Windows 驗證](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 
-1. 若要完成您的應用程式設定，請移至 [使用者和群組]**** 區段，並指派使用者存取此應用程式。 
+1. 若要完成您的應用程式設定，請移至 [使用者和群組]區段，並指派使用者存取此應用程式。 
 
 ## <a name="step-2-configure-the-sharepoint-web-application"></a>步驟2：設定 SharePoint web 應用程式
 
@@ -145,7 +144,7 @@ SharePoint web 應用程式必須使用 Kerberos 進行設定，適當的替代�
 
 ### <a name="make-sure-that-an-https-certificate-is-configured-for-the-iis-site-of-the-extranet-zone"></a>請確定已針對外部網路區域的 IIS 網站設定 HTTPS 憑證
 
-因為內部 URL 使用 HTTPS 通訊協定（`https://SharePoint/`），所以必須在 INTERNET INFORMATION SERVICES （IIS）網站上設定憑證。
+因為內部 URL 使用 HTTPS 通訊協定（ `https://SharePoint/` ），所以必須在 Internet Information Services （IIS）網站上設定憑證。
 
 1. 開啟 Windows PowerShell 主控台。
 1. 執行下列腳本來產生自我簽署憑證，並將它新增至電腦的 MY 存放區：
@@ -171,12 +170,12 @@ SharePoint web 應用程式必須使用 Kerberos 進行設定，適當的替代�
 
 ### <a name="set-the-spn-for-the-sharepoint-service-account"></a>設定 SharePoint 服務帳戶的 SPN
 
-在本文中，內部 URL 是`https://sharepoint`，因此服務主體名稱（SPN）為。 `HTTP/sharepoint` 您必須以對應于您環境的值來取代這些值。
-若要註冊`HTTP/sharepoint` SharePoint 應用程式集區帳戶`Contoso\spapppool`的 SPN，請在命令提示字元中，以網域的系統管理員身分執行下列命令：
+在本文中，內部 URL 是 `https://sharepoint` ，因此服務主體名稱（SPN）為 `HTTP/sharepoint` 。 您必須以對應于您環境的值來取代這些值。
+若要註冊 `HTTP/sharepoint` SharePoint 應用程式集區帳戶的 SPN `Contoso\spapppool` ，請在命令提示字元中，以網域的系統管理員身分執行下列命令：
 
 `setspn -S HTTP/sharepoint Contoso\spapppool`
 
-`Setspn`命令會先搜尋 SPN，然後再將它新增。 如果 SPN 已經存在，您會看到**重複的 Spn 值**錯誤。 在此情況下，如果未在正確的應用程式集區帳戶下設定現有的 SPN，請考慮將它移除。 您可以執行`Setspn`命令並搭配-L 選項，來確認已成功新增 SPN。 若要深入了解此命令，請參閱 [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11))。
+`Setspn`命令會先搜尋 SPN，然後再將它新增。 如果 SPN 已經存在，您會看到**重複的 Spn 值**錯誤。 在此情況下，如果未在正確的應用程式集區帳戶下設定現有的 SPN，請考慮將它移除。 您可以執行 `Setspn` 命令並搭配-L 選項，來確認已成功新增 SPN。 若要深入了解此命令，請參閱 [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11))。
 
 ### <a name="make-sure-the-connector-is-trusted-for-delegation-to-the-spn-that-was-added-to-the-sharepoint-application-pool-account"></a>請確定連接器已受信任，可委派給已新增至 SharePoint 應用程式集區帳戶的 SPN
 
@@ -186,8 +185,8 @@ SharePoint web 應用程式必須使用 Kerberos 進行設定，適當的替代�
 
 1. 以網域系統管理員身分登入網域控制站，然後開啟 Active Directory 使用者和電腦]。
 1. 尋找執行 Azure AD Proxy 連接器的電腦。 在此範例中，它是 SharePoint 伺服器本身。
-1. 按兩下該電腦，然後選取 [**委派**] 索引標籤。
-1. 請確定委派選項設定為 [**信任這台電腦，但只委派指定的服務**]。 然後，選取 [使用任何驗證通訊協定]****。
+1. 按兩下該電腦，然後選取 [委派] 索引標籤。
+1. 請確定委派選項設定為 [**信任這台電腦，但只委派指定的服務**]。 然後，選取 [**使用任何驗證通訊協定**]。
 1. 選取 [**新增**] 按鈕，選取 [**使用者或電腦**]，然後找出 [SharePoint 應用程式集區帳戶]。 例如： `Contoso\spapppool` 。
 1. 在 SPN 的清單中，選取您稍早針對服務帳戶建立的 SPN。
 1. 選取 **[確定]** ，然後再次選取 **[確定]** 以儲存變更。
@@ -198,9 +197,9 @@ SharePoint web 應用程式必須使用 Kerberos 進行設定，適當的替代�
 
 ## <a name="troubleshoot-sign-in-errors"></a>對登入錯誤進行疑難排解
 
-如果登入網站無法運作，您可以在連接器記錄檔中取得問題的詳細資訊：從執行連接器的電腦上，開啟 [事件檢視器]，移至 [**應用程式及服務** > ] [記錄] [**Microsoft** > **AadApplicationProxy** > **Connector**]，然後檢查系統**管理員**記錄檔。
+如果登入網站無法運作，您可以在連接器記錄檔中取得問題的詳細資訊：從執行連接器的電腦上，開啟 [事件檢視器]，移至 [**應用程式及服務**] [記錄]  >  [**Microsoft**  >  **AadApplicationProxy**  >  **Connector**]，然後檢查系統**管理員**記錄檔。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure AD 應用程式 Proxy 中的自訂網域](application-proxy-configure-custom-domain.md)
-* [瞭解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)
+* [了解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)

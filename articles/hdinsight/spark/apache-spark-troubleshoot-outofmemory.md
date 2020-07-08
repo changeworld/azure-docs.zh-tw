@@ -8,15 +8,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84709040"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 的 OutOfMemoryError 例外狀況
 
-本文說明在 Azure HDInsight 叢集中使用 Apache Spark 元件時，疑難排解步驟和問題的可能解決方法。
+本文說明在 Azure HDInsight 叢集中使用 Apache Spark 元件時，疑難排解步驟和可能的解決方案。
 
 ## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>案例： Apache Spark 的 OutOfMemoryError 例外狀況
 
@@ -116,13 +115,13 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 ### <a name="resolution"></a>解決方案
 
-您可以藉由編輯 Spark 設定中的`SPARK_DAEMON_MEMORY`屬性並重新啟動所有服務，來增加 Spark 歷程記錄伺服器記憶體。
+您可以藉由編輯 `SPARK_DAEMON_MEMORY` spark 設定中的屬性並重新啟動所有服務，來增加 spark 歷程記錄伺服器記憶體。
 
 您可以在 Ambari 瀏覽器 UI 中選取 Spark2/Config/Advanced Spark2-env 區段來執行此動作。
 
 ![Advanced spark2-env 區段](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
-新增下列屬性，以將 Spark 歷程記錄伺服器記憶體從1g 變更為 4g `SPARK_DAEMON_MEMORY=4g`：。
+新增下列屬性，以將 Spark 歷程記錄伺服器記憶體從1g 變更為4g： `SPARK_DAEMON_MEMORY=4g` 。
 
 ![Spark 屬性](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 
@@ -239,7 +238,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 1. 等候上述命令完成，並傳回游標以傳回提示，然後從 Ambari 重新開機 Livy 服務，這應該會成功。
 
 > [!NOTE]
-> `DELETE`完成執行時，livy 會話。 Spark 應用程式完成後，就不會自動刪除 Livy 批次會話，這是設計的。 Livy 會話是針對 Livy Rest 伺服器的 POST 要求所建立的實體。 需要`DELETE`呼叫才能刪除該實體。 或者，我們應該等待 GC 開始。
+> `DELETE`完成執行時，livy 會話。 Spark 應用程式完成後，就不會自動刪除 Livy 批次會話，這是設計的。 Livy 會話是針對 Livy Rest 伺服器的 POST 要求所建立的實體。 `DELETE`需要呼叫才能刪除該實體。 或者，我們應該等待 GC 開始。
 
 ---
 
@@ -251,8 +250,8 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 * [在 HDInsight 叢集上進行 Spark 應用程式的偵錯工具](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)。
 
-* 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
-* 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，以改善客戶體驗。 將 Azure 社區連接到正確的資源：解答、支援和專家。
+* 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

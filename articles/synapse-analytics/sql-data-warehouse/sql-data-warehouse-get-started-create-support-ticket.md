@@ -4,18 +4,17 @@ description: 如何在適用於 Azure Synapse Analytics 的 Azure 入口網站�
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/10/2020
 author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e0788f978fd25356b230a7923def6cbbea3dc305
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: de45e338b0b863dc2364af399a6991f56658b0e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835456"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212270"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>要求增加配額及取得 Azure Synapse Analytics 的支援
 
@@ -53,59 +52,89 @@ ms.locfileid: "83835456"
 
    ![選取配額類型](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
 
-1. 在 [詳細資料] 視窗中，選取 [提供詳細資料] 以輸入其他資訊。
+1. 在**詳細資料**視窗中，選取 [**輸入詳細資料**] 以輸入其他資訊。
 
    ![「提供詳細資料」連結](./media/sql-data-warehouse-get-started-create-support-ticket/provide-details-link.png)
 
 ## <a name="quota-request-types"></a>配額要求類型
 
-按一下 [提供詳細資料] 會顯示 [配額詳細資料] 視窗，讓您新增其他資訊。 下列各節說明適用於 Azure Synapse Analytics 的不同配額要求。
+選取 [**輸入詳細資料**] 會顯示 [**配額詳細資料**] 視窗，可讓您新增額外的資訊。 下列各節說明適用於 Azure Synapse Analytics 的不同配額要求。
 
-### <a name="data-warehouse-units-dwus-per-server"></a>每個伺服器的資料倉儲單位 (DWU)
+### <a name="synapse-sql-pool-data-warehouse-units-dwus-per-server"></a>每個伺服器的 Synapse SQL 集區資料倉儲單位（Dwu）
 
 使用下列步驟來要求每個伺服器增加 DWU。
 
-1. 選取**每個伺服器的資料倉儲單位 (DTU)** 配額類型。
+1. 選取每個伺服器配額類型的 [ **SYNAPSE SQL 集區 dwu** ]。
 
-1. 在 [資源] 清單中，選取要設為目標的資源。
+1. 使用下拉式清單，選取您想要套用配額增加的**資源**。
 
-1. 在 [要求配額] 欄位中，輸入您所要求的新 DWU 限制。
+1. 在 [**要求配額**] 區段中輸入新的配額。
+
+1. 選取 [儲存並繼續]  。
 
    ![DWU 配額詳細資料](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-dwus.png)
 
+
 ### <a name="servers-per-subscription"></a>每個訂用帳戶的伺服器
 
-使用下列步驟來要求每個訂用帳戶增加伺服器數目。
+若要要求每個訂用帳戶的伺服器數目增加，您必須完成下列步驟：
 
-1. 選取**每個訂用帳戶的伺服器**配額類型。
+1. 選取 [**每個訂**用帳戶的 SQL server] 作為配額類型。
 
 1. 在 [位置] 清單中，選取要使用的 Azure 區域。 配額是各個區域中的每個訂用帳戶。
 
-1. 在 [新配額] 欄位中，輸入您對於該區域中伺服器數目上限的要求。
+1. 在 [**要求配額**] 欄位中，輸入您的要求，以取得該區域中的伺服器數目上限。
 
    ![伺服器配額詳細資料](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-servers.png)
 
+
+
+1. 選取 [儲存並繼續]  。
+
+某些供應專案類型無法在每個區域中使用。 您可能會看到下列錯誤：
+
+![區域存取錯誤](./media/sql-data-warehouse-get-started-create-support-ticket/region-access-error.png)
+
 ### <a name="enable-subscription-access-to-a-region"></a>啟用區域的訂用帳戶存取
 
-某些供應項目類型無法在每個區域中使用。 您可能會看到如下的錯誤：
+若要啟用訂用帳戶的區域存取，您必須完成下列步驟：  
 
-`This location is not available for subscription`
+1. 選取 [ **SYNAPSE SQL 集區（資料倉儲）] 區域存取**配額類型。
 
-如果您的訂用帳戶需要特定區域的存取權，請使用 [其他配額要求] 選項來要求存取權。 在您的要求中，指定您想要為區域啟用的供應項目和 SKU 詳細資料。 若要探索供應項目和 SKU 選項，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/synapse-analytics/)。
+1. 從下拉式清單中選擇 [**位置**]，以選取 [區域]。
+
+1. 在 [**需要 DWU** ] 區段中指出您的 DWU 效能需求。
+
+1. 輸入您**的商務需求描述**。 
+
+1. 選取 [儲存並繼續]  。
+
+![區域存取](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-region.png)
+
+
+### <a name="for-other-quota-requests"></a>針對其他配額要求
+
+從其他配額要求類型的 [配額類型] 下拉式功能表中，選取 [**其他配額要求**]：
 
 ![其他配額詳細資料](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
 
 ## <a name="submit-your-request"></a>提交您的要求
 
-最後一個步驟是填入 SQL Database 支援要求的剩餘詳細資料。 然後，選取 **[下一步：** 檢閱+建立>>]，然後查看要求詳細資料後，按一下 [建立] 以提交要求。
+最後一個步驟是填入 SQL Database 支援要求的剩餘詳細資料。 然後選取 **[下一步：審查 + 建立>>] **。
+
+![審查建立詳細資料](./media/sql-data-warehouse-get-started-create-support-ticket/review-create-details.png)
+
+查看要求詳細資料之後，請選取 [**建立**] 以提交要求。
+
+![建立票證](./media/sql-data-warehouse-get-started-create-support-ticket/create-ticket.png)
 
 ## <a name="monitor-a-support-ticket"></a>監視支援票證
 
-在您提交支援要求之後，Azure 支援小組會與您連絡。 若要檢查您的要求狀態和詳細資料，請按一下儀表板上的 [所有支援要求]。
+在您提交支援要求之後，Azure 支援小組會與您連絡。 若要檢查您的要求狀態和詳細資料，請選取儀表板上的 [**所有支援要求**]。
 
 ![檢查狀態](./media/sql-data-warehouse-get-started-create-support-ticket/monitor-ticket.png)
 
 ## <a name="other-resources"></a>其他資源
 
-您也可以在 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) 上，或透過 [Azure SQL 資料倉儲的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)，與 Azure Synapse Analytics 社群聯繫。
+您也可以在[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse)上，或透過[azure Synapse Analytics 的 Microsoft Q&問題頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)，連接到 azure Synapse 分析的論壇。
 

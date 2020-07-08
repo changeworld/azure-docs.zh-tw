@@ -2,22 +2,21 @@
 title: 為多租使用者應用程式選擇正確的同盟通訊協定
 description: 獨立軟體廠商與 Azure Active Directory 整合的指引
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b3edbbe037c3874d639476e516b3732b7573d9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5e7dc40d0e4736b4fef8012b08737cbd07bc36bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443384"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763290"
 ---
 # <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>為您的多租使用者應用程式選擇正確的同盟通訊協定
 

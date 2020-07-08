@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 6deb5714a43d61f5ceb793757d49bd099f09f2b7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: e6f788689b4e817aae6dc84f66703f4f88b8d44a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977633"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027557"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>標準 Load Balancer 和可用性區域
 
@@ -50,7 +49,9 @@ Azure Standard Load Balancer 支援可用性區域案例。 您可以使用標�
 
 前端的 IP 位址會由多個可用性區域中的多個獨立基礎結構部署同時提供服務。 在其他區域中，任何重試或重新建立作業都會成功，而不受區域失敗影響。 
 
-:::image type="content" source="./media/az-zonal/zone-redundant-lb-1.svg" alt-text="區域備援" border="true":::
+<p align="center">
+  <img src="./media/az-zonal/zone-redundant-lb-1.svg" width="512" title="虛擬網路 NAT">
+</p>
 
 *圖：區域多餘的負載平衡器*
 
@@ -60,7 +61,12 @@ Azure Standard Load Balancer 支援可用性區域案例。 您可以使用標�
 
 此外，支援將區域性前端直接用於每個區域內的負載平衡端點。 您可以使用此設定來公開每個區域的負載平衡端點，以個別監視每個區域。 針對公用端點，您可以將其與 DNS 負載平衡產品（例如[流量管理員](../traffic-manager/traffic-manager-overview.md)）整合，並使用單一 DNS 名稱。
 
-:::image type="content" source="./media/az-zonal/zonal-lb-1.svg" alt-text="區域備援" border="true":::
+
+<p align="center">
+  <img src="./media/az-zonal/zonal-lb-1.svg" width="512" title="虛擬網路 NAT">
+</p>
+
+*圖：區域性多餘的負載平衡器*
 
 如果您想要綜合這些概念 (相同後端的區域備援和區域性)，請檢閱 [Azure Load Balancer 的多個前端](load-balancer-multivip-overview.md)。
 
@@ -98,7 +104,7 @@ SNAT 埠預先配置演算法與或不含可用性區域相同。
 
 負載平衡器在可用性區域的內容中具有彈性。 您可以選擇對齊區域，或針對每個規則進列區域冗余。 增加可用性可能會增加複雜度的代價。 設計可用性以獲得最佳效能。
 
-### <a name="automatic-zone-redundancy"></a>自動區域備援
+### <a name="zone-redundancy"></a>區域-冗余
 
 Load Balancer 可簡化以單一 IP 作為區域備援前端的作業。 區域多餘的 IP 位址可以服務任何區域中的區域性資源。  只要一個區域在區域內保持良好狀態，IP 就可以在一或多個區域失敗後存活。  相反地，區域性前端是將服務縮減為單一區域，並與各自的區域共用 fate。
 
