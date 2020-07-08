@@ -7,18 +7,18 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 07/01/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cdea30e7b630b2fa62b004f98cb67fd1994f915
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253269"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024149"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中指派 Azure AD 角色
 
@@ -53,15 +53,13 @@ Azure AD Privileged Identity Management （PIM）服務也允許特殊許可權�
 
     ![Azure AD 角色](./media/pim-how-to-add-role-to-user/roles-list.png)
 
-1. 選取 [**加入成員**] 以開啟 [**新增指派**] 頁面。
+1. 選取 [**新增指派**] 以開啟 [**新增指派**] 頁面。
 
-1. 選取 [**選取角色**] 以開啟 [選取角色] 頁面。
+1. 選取 [**選取角色**] 以開啟 [**選取角色**] 頁面。
 
     ![新增指派窗格](./media/pim-how-to-add-role-to-user/select-role.png)
 
-1. 選取要指派的角色，然後按一下 [選取]****。
-
-1. 選取您要指派給角色的成員，然後選取 [**選取**]。
+1. 選取您想要指派的角色，選取您要指派給角色的成員，然後選取 **[下一步]**。
 
 1. 在 [**成員資格設定**] 窗格的 [**指派類型**] 清單中，選取 [**合格** **] 或 [作用中]**。
 
@@ -69,15 +67,11 @@ Azure AD Privileged Identity Management （PIM）服務也允許特殊許可權�
 
     - 作用中**的指派不**需要成員執行任何動作來使用角色。 指派為有效的成員隨時具有指派給角色的權限。
 
-1. 如果指派應為永久性（永久合格或永久指派），請選取 [**永久**] 核取方塊。
-
-    根據不同角色設定，核取方塊可能不會出現或可能設為不可修改。
-
-1. 若要指定特定指派的持續時間，請清除核取方塊，並修改開始和/或結束日期和時間方塊。 完成時，選取 [**完成**]。
+1. 若要指定特定的指派持續時間，請新增 [開始] 和 [結束日期] 和 [時間] 方塊。 完成時，選取 [**指派**] 以建立新的角色指派。
 
     ![成員資格設定 - 日期和時間](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
-1. 若要建立新的角色指派，**請選取 [新增]**。 狀態通知會隨即顯示。
+1. 指派角色之後，就會顯示指派狀態通知。
 
     ![新增指派 - 通知](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
@@ -129,7 +123,7 @@ Azure AD Privileged Identity Management （PIM）服務也允許特殊許可權�
 
 1. 既然使用者已經符合該角色的資格，請讓他們知道他們可以根據在[Privileged Identity Management 中啟用我的 Azure AD 角色](pim-how-to-activate-role.md)中的指示來啟用它。
 
-    啟用期間，系統會要求合格的系統管理員註冊 Azure Multi-factor Authentication (MFA)。 如果使用者無法註冊 MFA，或使用 Microsoft 帳戶（例如@outlook.com），您必須在其所有角色中將其設為永久。
+    合格系統管理員會在啟用期間要求註冊 Azure 多重要素驗證。 如果使用者無法註冊 MFA，或使用 Microsoft 帳戶（例如 @outlook.com ），您必須在其所有角色中將其設為永久。
 
 ## <a name="make-a-role-assignment-permanent"></a>設定永久角色指派
 
@@ -139,7 +133,7 @@ Azure AD Privileged Identity Management （PIM）服務也允許特殊許可權�
 
 1. 選取 [ **Azure AD 角色**]。
 
-1. 選取 [成員]****。
+1. 選取 [成員]。
 
     ![成員的清單](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
@@ -163,7 +157,7 @@ Azure AD Privileged Identity Management （PIM）服務也允許特殊許可權�
 
 1. 選取 [ **Azure AD 角色**]。
 
-1. 選取 [成員]****。
+1. 選取 [成員]。
 
     ![成員的清單](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 

@@ -6,25 +6,27 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 1a027eb4cb3351934738319f342afac8d8407e6f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/17/2020
+ms.openlocfilehash: c3cd5ed952ddb40157ee16246d4d1669d47ed6b9
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848799"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984498"
 ---
-# <a name="create-an-azure-container-offer"></a>建立 Azure 容器供應項目
+# <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立 Azure 容器供應專案
 
-本文說明如何建立及發佈 Azure Marketplace 的容器供應項目。 開始之前，請先[在合作夥伴中心建立商業市集帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) (如果您尚未有帳戶)。 請確定您已在商業市集方案中註冊帳戶。
+本文說明如何建立及發佈 Azure Marketplace 的容器供應項目。 開始之前，請先[在合作夥伴中心建立商業市集帳戶](create-account.md) (如果您尚未有帳戶)。 請確定您已在商業市集方案中註冊帳戶。
 
 ## <a name="create-a-new-offer"></a>建立新的供應項目
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
+
 2. 在左側導覽功能表中，選取 [商業市集] > [概觀]。
+
 3. 在概觀頁面上，選取 [+新增供應項目] > [Azure 容器]。
 
-    ![說明左側導覽功能表。](./media/new-offer-azure-container.png)
+   ![說明左側導覽功能表。](./media/new-offer-azure-container.png)
 
 > [!TIP]
 > 發佈供應項目之後，在合作夥伴中心對其進行的編輯，只會在重新發佈供應項目之後出現在店面中。 請務必在進行變更之後，一律重新發佈。
@@ -50,10 +52,10 @@ ms.locfileid: "83848799"
 
 此頁面會根據供應專案的目前狀態顯示不同的連結。 例如：
 
-- 如果供應項目為草稿 - [刪除草稿供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- 如果供應項目已上線 - [停止銷售供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- 如果供應專案處於預覽階段 - [上線](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- 如果您尚未完成發行者登出 - [取消發行](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- 如果供應項目為草稿 - [刪除草稿供應項目](update-existing-offer.md#delete-a-draft-offer)
+- 如果供應項目已上線 - [停止銷售供應項目](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- 如果供應專案處於預覽階段 - [上線](publishing-status.md#publisher-approval)
+- 如果您尚未完成發行者登出 - [取消發行](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>供應項目設定
 
@@ -65,12 +67,12 @@ ms.locfileid: "83848799"
 
 1. **選取您要我們傳送潛在客戶至其中的潛在客戶目的地**。 合作夥伴中心支援下列 CRM 系統：
 
-   - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-   - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-   - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+   - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+   - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+   - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
    > [!NOTE]
-   > 如果以上未列出您的 CRM 系統，請使用 [Azure 資料表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或 [Https 端點](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)來儲存客戶潛在客戶資料，然後將資料匯出至您的 CRM 系統。
+   > 如果以上未列出您的 CRM 系統，請使用 [Azure 資料表](commercial-marketplace-lead-management-instructions-azure-table.md)或 [Https 端點](commercial-marketplace-lead-management-instructions-https.md)來儲存客戶潛在客戶資料，然後將資料匯出至您的 CRM 系統。
 
 2. 在合作夥伴中心內發佈時，將供應項目連線到潛在客戶目的地。
 3. 確認已正確設定與潛在客戶目的地的連線。 在合作夥伴中心發佈之後，我們會驗證連線並將測試潛在客戶傳送給您。 在上架前預覽供應項目時，您也可以嘗試在預覽環境中自行購買供應項目，藉此測試您的潛在客戶連線。
@@ -78,9 +80,9 @@ ms.locfileid: "83848799"
 
 以下是一些額外的潛在客戶管理資源：
 
-- [潛在客戶管理概觀](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [潛在客戶管理常見問題集](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常見潛在客戶設定錯誤](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [潛在客戶管理概觀](commercial-marketplace-get-customer-leads.md)
+- [潛在客戶管理常見問題集](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [常見潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (請確定您已關閉快顯封鎖程式)
 
 選取 [儲存草稿] 後再繼續。
@@ -91,7 +93,12 @@ ms.locfileid: "83848799"
 
 #### <a name="category"></a>類別
 
-選取最少一個，最多五個類別。 這些類別是用來將您的供應項目放入適當的市集搜尋區域，並顯示在您的供應項目詳細資料頁面上。 在供應項目描述中，說明您的供應項目如何支援這些類別。 容器會顯示在 [容器] 下的 [容器映像] 類別目錄。
+選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
+
+- 至少一個和最多兩個類別，包括主要和次要類別（選擇性）。
+- 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
+
+請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。 容器一律會出現在 [**容器**] 和 [**容器映射**] 類別之下。
 
 #### <a name="legal"></a>法律
 
@@ -100,13 +107,13 @@ ms.locfileid: "83848799"
 - 使用 Microsoft 商業市集的標準合約。
 - 提供您自己的條款及條件。
 
-##### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業市集的標準合約
+#### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業市集的標準合約
 
 我們提供標準合約範本，協助促進商業市集中的交易。 您可以選擇在標準合約下提供您的解決方案，而客戶只需要檢查並接受一次。 如果您不想建立自訂的條款及條件，這是個不錯的選項。
 
-若要深入了解標準合約，請參閱 [Microsoft 商業市集的標準合約](https://docs.microsoft.com/azure/marketplace/standard-contract)。 您也可以下載[標準合約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF (請確定您的快顯封鎖程式已關閉)。
+若要深入了解標準合約，請參閱 [Microsoft 商業市集的標準合約](../standard-contract.md)。 您也可以下載[標準合約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF (請確定您的快顯封鎖程式已關閉)。
 
-若要使用標準合約，請選取 [使用 Microsoft 商業市集的標準合約] 核取方塊，然後按一下 [接受]。
+若要使用標準合約，請選取 [使用 Microsoft 商用 marketplace 的標準合約] （.。/standard-contract.md）
 
 > [!NOTE]
 > 當您使用 Microsoft 商業市集的標準合約發佈供應項目之後，就無法使用自己的自訂條款及條件。 請根據標準合約或您自己的條款及條件來提供您的解決方案。
@@ -117,7 +124,7 @@ ms.locfileid: "83848799"
 
 若要提供您自己的自訂條款及條件，請在 [條款及條件] 方塊中加以輸入。 您可以在此方塊中輸入不限數量的文字字元。 客戶必須先接受這些條款，才能試用您的供應項目。
 
-選取 [儲存草稿]，再繼續進行下一節的供應項目清單。
+選取 [儲存草稿]，再繼續進行下一節，＜供應項目清單＞。
 
 ## <a name="offer-listing"></a>供應項目清單
 
@@ -177,14 +184,14 @@ ms.locfileid: "83848799"
 
 #### <a name="additional-marketplace-listing-resources"></a>其他市集清單資源
 
-若要深入了解如何建立供應項目清單，請參閱[供應項目清單最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+若要深入了解如何建立供應項目清單，請參閱[供應項目清單最佳做法](../gtm-offer-listing-best-practices.md)
 
 ### <a name="marketplace-images"></a>Marketplace 映像
 
 提供要與您供應項目搭配使用的標誌和映像。 所有影像都必須採用 PNG 格式。 模糊映像將會遭到拒絕。
 
 >[!Note]
->如果您在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
+>如果您在上傳檔案時遇到問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
 
 #### <a name="store-logos"></a>儲存標誌
 
@@ -201,7 +208,7 @@ ms.locfileid: "83848799"
 
 新增最多五個螢幕擷取畫面，以顯示供應項目的運作方式。 每個的大小都必須為 1280 x 720 像素且為 PNG 格式。
 
-#### <a name="videos-optional"></a>影片 (選用)
+#### <a name="videos-optional"></a>影片 (選擇性)
 
 新增最多五個示範您供應項目的影片。 輸入影片的名稱、其網址，以及影片的縮圖 PNG 映像 (大小為 1280 x 720 像素)。
 
@@ -239,9 +246,6 @@ ms.locfileid: "83848799"
 
 藉由分別 (最多 10 個) 或上傳 CSV 檔案 (最多 100 個)，新增至少一個 Azure 訂用帳戶識別碼。 您可以藉由新增這些訂用帳戶識別碼，決定哪些人員可以在即時發佈之前預覽您的供應項目。 如果您的供應項目已上線，您可以選擇預覽對象，以測試您供應項目的變更或更新。
 
-> [!NOTE]
-> 預覽對象與私人對象不同。 [預覽] 對象可以在所有供應項目方案於市集上線之前進行查看及確認，包括只會發佈至 [私人] 對象 (在 [可用性] 索引標籤上設定) 的部分。
-
 選取 [儲存草稿] 後再繼續。
 
 ### <a name="plan-overview"></a>方案概觀
@@ -276,22 +280,20 @@ ms.locfileid: "83848799"
 
 此索引標籤可讓您選擇可使用方案的雲端。 您在此索引標籤上的答案會影響哪些要顯示在其他索引標籤上的欄位。
 
-#### <a name="cloud-availability"></a>雲端可用性
+#### <a name="azure-regions"></a>Azure 區域
 
-您的方案必須至少可用於一個雲端。
+Azure 容器供應專案的所有方案都會自動在**Azure 全域**提供。  您的方案可供使用商用 marketplace 的所有全球 Azure 區域中的客戶使用。 如需詳細資料，請參閱[地理可用性和貨幣支援](../marketplace-geo-availability-currencies.md) \(部分機器翻譯\)。
 
-選取 [Azure 全域] 選項，以便客戶在所有使用商業市集的全域 Azure 區域中都能使用您的方案。 如需詳細資料，請參閱[地理可用性和貨幣支援](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
+選取 [ [**Azure Government**](../../azure-government/documentation-government-welcome.md) ] 選項，讓您的解決方案顯示在這裡。 這是政府社區雲端，具有美國聯邦、S] （. 的客戶控制存取）。/marketplace-geo-availability-currencies.md） em。 身為發行者，您必須負責此雲端社區的任何合規性控制、安全性措施和最佳做法。 Azure Government 會使用實際隔離的資料中心和網路 (僅限位於美國地區)。
 
-選取 [**Azure Government 雲端**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)選項，讓您的解決方案顯示在這裡。 這是政府社群雲端，U.S. 聯邦政府、州和地方或部落政府機關的客戶，以及符合資格可提供服務的合作夥伴，擁有此雲端的控管權限。 身為發行者，您必須負責此雲端社區的任何合規性控制、安全性措施和最佳做法。 Azure Government 會使用實際隔離的資料中心和網路 (僅限位於美國地區)。
-
-在[發佈](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)至 Azure Government 之前，請先在該區域內測試並確認您的解決方案，因為結果可能不同。 若要建立並測試您的解決方案，請從 [Microsoft Azure Government 試用版](https://azure.microsoft.com/global-infrastructure/government/request/)要求試用帳戶。
+在[發佈](../../azure-government/documentation-government-manage-marketplace-partners.md)至 Azure Government 之前，請先在該區域內測試並確認您的解決方案，因為結果可能不同。 若要建立並測試您的解決方案，請從 [Microsoft Azure Government 試用版](https://azure.microsoft.com/global-infrastructure/government/request/)要求試用帳戶。
 
 > [!NOTE]
-> 在方案發佈且可在特定雲端中使用後，您就無法移除該雲端。
+> 當您的方案發佈並可在特定區域中使用之後，您就無法移除該區域。
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Government 雲端認證
+#### <a name="azure-government-certifications"></a>Azure Government 認證
 
-只有在 [雲端可用性] 底下選取 [Azure Government 雲端] 時，您才會看到此選項。
+只有在 [**雲端可用性**] 下選取 [ **Azure Government** ] 時，才會看到此選項。
 
 Azure Government 服務會處理受限於特定政府法規和需求的資料。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。
 
@@ -333,7 +335,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 此欄位是在下列情況下使用：
 
-- 在另一個應用程式參考時，可間接使用此供應項目。
+- 供應專案的目的是要在透過其他應用程式參考時，間接使用。
 - 供應項目不應個別購買。
 - 此方案用於初始測試，且不再相關。
 - 此方案用於暫時或季節性的供應項目，因此不應再提供。
@@ -342,7 +344,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 容器映像必須裝載於私人的 [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) 中。 在 [技術設定] 索引標籤上，您將會在 Azure Container Registry 內提供容器映像存放庫的參考資訊。
 
-發佈供應項目之後，您的容器映像會複製到 Azure Marketplace 的特定公用容器登錄中。 使用您容器映像的所有要求，都是從 Azure Marketplace 公用容器登錄 (而不是您的私人容器登錄) 提供。 如需詳細資訊，請參閱[準備您的 Azure Container 技術資產](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)。
+發佈供應項目之後，您的容器映像會複製到 Azure Marketplace 的特定公用容器登錄中。 使用您容器映像的所有要求，都是從 Azure Marketplace 公用容器登錄 (而不是您的私人容器登錄) 提供。 如需詳細資訊，請參閱[準備您的 Azure Container 技術資產](create-azure-container-technical-assets.md)。
 
 ### <a name="image-repository-details"></a>映像存放庫詳細資料
 
@@ -350,11 +352,11 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **Azure 訂用帳戶識別碼** - 提供回報使用量、以及針對包含您容器映像的 Azure Container Registry 計費服務的訂用帳戶識別碼。 您可以在 Azure 入口網站的[訂用帳戶頁面](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)上找到此識別碼。
 
-**Azure 資源群組名稱** - 提供[資源群組](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)名稱，其中包含具有您容器映像的 Azure Container Registry。 資源群組必須可在訂用帳戶識別碼中存取 (如上)。 您可以在 Azure 入口網站中的[資源群組](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups)頁面上找到名稱。
+**Azure 資源群組名稱** - 提供[資源群組](../../azure-resource-manager/management/manage-resource-groups-portal.md)名稱，其中包含具有您容器映像的 Azure Container Registry。 資源群組必須可在訂用帳戶識別碼中存取 (如上)。 您可以在 Azure 入口網站中的[資源群組](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups)頁面上找到名稱。
 
-**Azure Container Registry 名稱** - 提供具有您容器映像的 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) 名稱。 容器登錄必須位於您稍早提供的 Azure 資源群組中。 僅包括登錄名稱，而非完整登入伺服器名稱。 請務必從名稱中省略 **azurecr.io**。 您可以在 Azure 入口網站的[容器登錄頁面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到登錄名稱。
+**Azure Container Registry 名稱** - 提供具有您容器映像的 [Azure Container Registry](../../container-registry/container-registry-intro.md) 名稱。 容器登錄必須位於您稍早提供的 Azure 資源群組中。 僅包括登錄名稱，而非完整登入伺服器名稱。 請務必從名稱中省略 **azurecr.io**。 您可以在 Azure 入口網站的[容器登錄頁面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到登錄名稱。
 
-**Azure Container Registry 的管理使用者** - 提供與具有容器映像之 Azure Container Registry 連結的[管理使用者名稱](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得管理使用者名稱和密碼，請使用 Azure 命令列介面 (CLI)，將 **admin-enabled** 屬性設定為 **True**。 您可以選擇性地將 Azure 入口網站中的 [管理使用者] 設定為 [啟用]。
+**Azure Container Registry**的系統管理員使用者名稱–提供系統[管理員使用者名稱](../../container-registry/container-registry-authentication.md#admin-account)），並連結至具有您容器映射的 Azure Container Registry。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得管理使用者名稱和密碼，請使用 Azure 命令列介面 (CLI)，將 **admin-enabled** 屬性設定為 **True**。 您可以選擇性地將 Azure 入口網站中的 [管理使用者] 設定為 [啟用]。
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="說明 [更新容器登錄] 對話方塊。":::
 
@@ -362,7 +364,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="說明 [存取金鑰] 功能表。":::
 
-**Azure Container Registry 內的存放庫名稱**。 提供具有您映像的 Azure Container Registry 存放庫名稱。 當您將映像推送至登錄時，包含存放庫的名稱。 您可以前往[容器登錄](https://azure.microsoft.com/services/container-registry/) > [存放庫] 頁面來尋找儲存機制的名稱。 如需詳細資訊，請參閱[檢視 Azure 入口網站中的容器登錄存放庫](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)。
+**Azure Container Registry 內的存放庫名稱**。 提供具有您映像的 Azure Container Registry 存放庫名稱。 當您將映像推送至登錄時，包含存放庫的名稱。 您可以前往[容器登錄](https://azure.microsoft.com/services/container-registry/) > [存放庫] 頁面來尋找儲存機制的名稱。 如需詳細資訊，請參閱[檢視 Azure 入口網站中的容器登錄存放庫](../../container-registry/container-registry-repositories.md)。
 
 > [!NOTE]
 > 設定名稱之後，即無法變更。 請為您帳戶中的每個供應項目使用唯一的名稱。
@@ -375,7 +377,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 此欄位必須包含**最新的**標籤，以指向所有支援平台上的最新版映像。 其也必須包含版本標籤 (例如，以 xx.xx.xx 開頭，其中 xx 是數字)。 客戶應使用[資訊清單標籤](https://github.com/estesp/manifest-tool)，以將多個平台設為目標。 也請務必新增資訊清單標籤參考的所有標籤，以便上傳。
 
-所有資訊清單標籤 (除了最新標籤以外) 必須以 X.Y **-** 或 X.Y.Z- 開頭，其中 X、Y 和 Z 是整數。 例如，如果**最新**標籤指向 1.0.1-linux-x64、1.0.1-linux-arm32 和 1.0.1-windows-arm32，則必須將這六個標籤新增到此欄位中。 如需詳細資訊，請參閱[準備您的 Azure Container 技術資產](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)。
+所有資訊清單標籤 (除了最新標籤以外) 必須以 X.Y **-** 或 X.Y.Z- 開頭，其中 X、Y 和 Z 是整數。 例如，如果**最新**標籤指向 1.0.1-linux-x64、1.0.1-linux-arm32 和 1.0.1-windows-arm32，則必須將這六個標籤新增到此欄位中。 如需詳細資訊，請參閱[準備您的 Azure Container 技術資產](create-azure-container-technical-assets.md)。
 
 > [!NOTE]
 > 請記得將測試標籤新增到您的映像，以便您在測試期間識別該映像。
@@ -394,12 +396,12 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
   - **完成** –包含所有必要的資料，且並未發生錯誤。 您必須完成供應項目的所有區段，才能提交供應項目。
 - 將測試指示提供給認證小組，以確保您的供應項目已正確測試。 此外，請提供有助於了解您供應項目的任何補充附註。
 
-若要提交供應項目進行發佈，請選取 [發佈您的供應項目]。
+若要提交供應項目進行發佈，請選取 [發佈]。
 
-我們會傳送一封電子郵件，讓您知道供應項目的預覽版本何時可供檢閱及核准。
+我們會傳送一封電子郵件給您，讓您知道供應項目的預覽版本何時可供檢閱及核准。
 
-若要將您的供應項目發佈到公開 (或如果為私人供應項目則發佈到私人對象)，請移至合作夥伴中心，然後選取 [上線]。
+若要將您的供應專案發佈至公用，請移至合作夥伴中心，然後選取 [**上線**]。
 
 ## <a name="next-step"></a>後續步驟
 
-- [更新商業市集中的現有供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [更新商業市集中的現有供應項目](update-existing-offer.md)

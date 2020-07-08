@@ -3,16 +3,16 @@ title: 使用者驗證-使用 Data Lake Storage Gen1 的 Python-Azure
 description: 了解如何使用 Python 透過 Azure Active Directory 向 Azure Data Lake Storage Gen1 完成使用者驗證
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.custom: has-adal-ref
-ms.openlocfilehash: 6d95e8bae428741c82de270507e41b49d23a3793
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 848ee67fd0a8c75308265cd39f5c5040cbac51fe
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691802"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984975"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>使用 Python 向 Azure Data Lake Storage Gen1 進行使用者驗證
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.locfileid: "82691802"
 
 本文中討論這兩個選項。 如需使用 Python 向 Data Lake Storage Gen1 進行服務對服務驗證，請參閱[使用 Python 向 Data Lake Storage Gen1 進行服務對服務驗證](data-lake-store-service-to-service-authenticate-python.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * **Python**。 您可以從[這裡](https://www.python.org/downloads/)下載 Python。 本文使用 Python 3.6.2。
 
-* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **建立 Active Directory 「原生」應用程式**。 您必須先完成[使用 Azure Active Directory 向 Data Lake Storage Gen1 進行使用者驗證](data-lake-store-end-user-authenticate-using-active-directory.md)中的步驟。
 
@@ -48,7 +48,7 @@ ms.locfileid: "82691802"
 
 使用下列命令來安裝新模組。
 
-```
+```console
 pip install azure-mgmt-resource
 pip install azure-mgmt-datalake-store
 pip install azure-datalake-store
@@ -88,24 +88,28 @@ pip install azure-datalake-store
 
 使用下列程式碼片段向 Azure AD 驗證，以便對 Data Lake Storage Gen1 帳戶進行帳戶管理作業。 下列程式碼片段可供使用 Multi-Factor Authentication 來驗證您的應用程式。 對現有的 Azure AD **原生**應用程式提供下列值。
 
-    authority_host_url = "https://login.microsoftonline.com"
-    tenant = "FILL-IN-HERE"
-    authority_url = authority_host_url + '/' + tenant
-    client_id = 'FILL-IN-HERE'
-    redirect = 'urn:ietf:wg:oauth:2.0:oob'
-    RESOURCE = 'https://management.core.windows.net/'
+```python
+authority_host_url = "https://login.microsoftonline.com"
+tenant = "FILL-IN-HERE"
+authority_url = authority_host_url + '/' + tenant
+client_id = 'FILL-IN-HERE'
+redirect = 'urn:ietf:wg:oauth:2.0:oob'
+RESOURCE = 'https://management.core.windows.net/'
 
-    context = adal.AuthenticationContext(authority_url)
-    code = context.acquire_user_code(RESOURCE, client_id)
-    print(code['message'])
-    mgmt_token = context.acquire_token_with_device_code(RESOURCE, code, client_id)
-    armCreds = AADTokenCredentials(mgmt_token, client_id, resource = RESOURCE)
+context = adal.AuthenticationContext(authority_url)
+code = context.acquire_user_code(RESOURCE, client_id)
+print(code['message'])
+mgmt_token = context.acquire_token_with_device_code(RESOURCE, code, client_id)
+armCreds = AADTokenCredentials(mgmt_token, client_id, resource = RESOURCE)
+```
 
 ### <a name="for-filesystem-operations"></a>對於檔案系統作業
 
 使用這個指令向 Azure AD 驗證，以便對 Data Lake Storage Gen1 帳戶進行檔案系統作業。 下列程式碼片段可供使用 Multi-Factor Authentication 來驗證您的應用程式。 對現有的 Azure AD **原生**應用程式提供下列值。
 
-    adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
+```console
+adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
+```
 
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>沒有多重要素驗證的使用者驗證
 

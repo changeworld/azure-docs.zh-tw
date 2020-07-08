@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: a64908eb639a44c6bc9d742e84ebb4d01082d49d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/17/2020
+ms.openlocfilehash: 499c7e9e4ca4ab5db02c566830738f0ceb07e40d
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847917"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984644"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 
 此文章描述如何建立 Azure 虛擬機器供應項目，並將其發佈至 [Azure Marketplace](https://azuremarketplace.microsoft.com/)。 其將同時處理 Windows 型和 Linux 型虛擬機器，其中包含作業系統、虛擬硬碟 (VHD)，以及多達 16 個資料磁碟。 
 
-在開始之前，請[在合作夥伴中心建立商業 Marketplace 帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) \(部分機器翻譯\)。 請確定您的帳戶已在商業 Marketplace 計畫中註冊。
+在開始之前，請[在合作夥伴中心建立商業 Marketplace 帳戶](create-account.md) \(部分機器翻譯\)。 請確定您的帳戶已在商業 Marketplace 計畫中註冊。
 
 ## <a name="introduction"></a>簡介
 
@@ -33,19 +33,19 @@ ms.locfileid: "83847917"
 
 ### <a name="before-you-begin"></a>開始之前
 
-如果您還未這麼做，請檢閱[虛擬機器供應項目發佈指南](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) \(部分機器翻譯\) 和此 Azure 虛擬機器資料：
+如果您還未這麼做，請檢閱[虛擬機器供應項目發佈指南](../marketplace-virtual-machines.md) \(部分機器翻譯\) 和此 Azure 虛擬機器資料：
 
 - 快速入門指南
   - [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)
   - [GitHub Azure 快速入門範本](https://github.com/azure/azure-quickstart-templates) \(英文\)
 - 教學課程
-  - [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-  - [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+  - [Linux VM](../../virtual-machines/linux/tutorial-manage-vm.md)
+  - [Windows VM](../../virtual-machines/windows/tutorial-manage-vm.md)
 - 範例
-  - [適用於 Linux 虛擬機器的 Azure CLI 範例](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples) \(部分機器翻譯\)
-  - [適用於 Linux 虛擬機器的 Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples) \(部分機器翻譯\)
-  - [適用於 Windows 虛擬機器的 Azure CLI 範例](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples) \(部分機器翻譯\)
-  - [適用於 Windows 虛擬機器的 Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
+  - [適用於 Linux 虛擬機器的 Azure CLI 範例](../../virtual-machines/linux/cli-samples.md) \(部分機器翻譯\)
+  - [適用於 Linux 虛擬機器的 Azure PowerShell](../../virtual-machines/linux/powershell-samples.md) \(部分機器翻譯\)
+  - [適用於 Windows 虛擬機器的 Azure CLI 範例](../../virtual-machines/windows/cli-samples.md) \(部分機器翻譯\)
+  - [適用於 Windows 虛擬機器的 Azure PowerShell](../../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>技術知識的基本概念
 
@@ -63,7 +63,7 @@ ms.locfileid: "83847917"
 2. 在左窗格上，選取 [商業 Marketplace] > [概觀]。
 3. 在 [概觀] 頁面上，選取 [新增供應項目] > [Azure 虛擬機器]。
 
-    ![顯示左窗格功能表選項和 [新增供應項目] 按鈕的螢幕擷取畫面。](./media/new-offer-azure-vm.png)
+    ![顯示左窗格功能表選項和 [新增供應項目] 按鈕的螢幕擷取畫面。](./media/new-offer-azure-virtual-machine.png)
 
 > [!NOTE]
 > 供應項目發佈之後，您在合作夥伴中心對其進行的任何編輯，只有在您重新發佈供應項目之後，才會出現在 Azure Marketplace 上。 變更供應項目之後，請務必一律重新發佈該供應項目。
@@ -86,14 +86,14 @@ ms.locfileid: "83847917"
 
 ### <a name="test-drive"></a>試用產品
 
-*試用產品*是向潛在客戶展示供應項目的絕佳方式。 其可讓潛在客戶選擇「購買前先試用」，這有助於增加轉換並產生最適合的潛在客戶。 如需詳細資訊，請參閱[什麼是試用產品？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)\(部分機器翻譯\)。
+*試用產品*是向潛在客戶展示供應項目的絕佳方式。 其可讓潛在客戶選擇「購買前先試用」，這有助於增加轉換並產生最適合的潛在客戶。 如需詳細資訊，請參閱[什麼是試用產品？](../what-is-test-drive.md)\(部分機器翻譯\)。
 
 若要在固定時間啟用試用產品，請選取 [啟用試用產品] 核取方塊。 若要從您的供應項目中移除試用產品，請清除此核取方塊。
 
 其他試用產品資源：
 
 - [技術最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [行銷最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [行銷最佳做法](../what-is-test-drive.md)
 - [下載試用產品概觀](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF 檔案 (請確定您的快顯封鎖程式已關閉)。
 
 ### <a name="customer-leads"></a>潛在客戶
@@ -101,12 +101,12 @@ ms.locfileid: "83847917"
 當您使用合作夥伴中心將供應項目發佈到商業 Marketplace 時，將其連線到客戶關係管理 (CRM) 系統。 這可讓您在有人對您的產品感興趣或使用您的產品時，立即收到客戶連絡人資訊。 如果您想要啟用試用產品 (請參閱上一節)，則需要連線到 CRM。 否則，可以選擇連線到 CRM。
 
 1. 選取您要我們傳送潛在客戶至其中的潛在客戶目的地。 合作夥伴中心支援下列 CRM 系統：
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > 如果此處未列出您的 CRM 系統，請使用 [Azure 資料表儲存體](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或 [HTTPS 端點](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)儲存您的潛在客戶資料。 接著，將資料匯出至您的 CRM 系統。
+    > 如果此處未列出您的 CRM 系統，請使用 [Azure 資料表儲存體](commercial-marketplace-lead-management-instructions-azure-table.md)或 [HTTPS 端點](commercial-marketplace-lead-management-instructions-https.md)儲存您的潛在客戶資料。 接著，將資料匯出至您的 CRM 系統。
 
 1. 在合作夥伴中心內發佈時，將供應項目連線到潛在客戶目的地。
 1. 確認已正確設定與潛在客戶目的地的連線。 在合作夥伴中心發佈之後，Microsoft 會驗證連線並將測試潛在客戶傳送給您。 在上架前預覽供應項目時，您也可以嘗試在預覽環境中自行部署供應項目，藉此測試您的潛在客戶連線。
@@ -116,11 +116,16 @@ ms.locfileid: "83847917"
 
 ## <a name="properties"></a>屬性
 
-在 [屬性] 頁面上，您要定義用來在 Azure Marketplace 上將供應項目分組的類別和產業、應用程式版本以及支援供應項目的法律合約。
+在 [**屬性**] 頁面上，您可以定義用來將供應專案分組的類別，Azure Marketplace、應用程式版本，以及支援供應專案的法律合約。
 
-### <a name="categories"></a>類別
+### <a name="category"></a>類別
 
-選取最少一個，最多五個類別。 您要使用這些類別，將您的供應項目放入適當的 Azure Marketplace 搜尋區域。 在供應項目描述中，說明您的供應項目如何支援這些類別。 虛擬機器供應項目會出現在 Azure Marketplace 上的 [計算] 類別之下。
+選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
+
+- 至少一個和最多兩個類別，包括主要和次要類別（選擇性）。
+- 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
+
+請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。 虛擬機器供應專案一律會出現在 Azure Marketplace 上的 [**計算**] 類別之下。
 
 ### <a name="legal"></a>法律
 
@@ -143,7 +148,7 @@ ms.locfileid: "83847917"
   > [!NOTE]
   > 當您使用商業 Marketplace 的標準合約發佈供應項目之後，就無法使用自己的自訂條款及條件。 您可以根據標準合約或您自己的條款及條件來提供解決方案。
 
-  如需詳細資訊，請參閱 [Microsoft 商業 Marketplace 的標準合約](https://docs.microsoft.com/azure/marketplace/standard-contract) \(部分機器翻譯\)。 下載[標準合約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF 檔案 (請確定您的快顯封鎖程式已關閉)。
+  如需詳細資訊，請參閱 [Microsoft 商業 Marketplace 的標準合約](../standard-contract.md) \(部分機器翻譯\)。 下載[標準合約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF 檔案 (請確定您的快顯封鎖程式已關閉)。
 
   **標準合約增修條款**
 
@@ -171,11 +176,11 @@ ms.locfileid: "83847917"
 在 [供應項目清單] 頁面上，您可以定義供應項目詳細資料，例如供應項目名稱、描述、連結和連絡人。
 
 > [!NOTE]
-> 您的供應項目清單內容 (例如描述、文件、螢幕擷取畫面和使用規定) 不一定要使用英文，只要供應項目描述用以下句子開頭即可：「此應用程式僅適用於 \<非英文語言>」。 您也可以針對以不同於供應項目清單內容中所使用的語言提供內容的網站，提供連結 URL。
+> 您的供應專案清單內容（例如描述、檔、螢幕擷取畫面和使用規定）不需要英文，只要供應專案的描述開頭為「此應用程式僅適用于」片語 \<non-English language> 。 您也可以針對以不同於供應項目清單內容中所使用的語言提供內容的網站，提供連結 URL。
 
 ### <a name="marketplace-details"></a>Marketplace 詳細資料
 
-#### <a name="name"></a>名稱
+#### <a name="name"></a>Name
 
 您在此處輸入的名稱會當作供應項目清單標題向客戶顯示。 當您建立供應項目時，此欄位會自動填入您在 [供應項目別名] 方塊中輸入的名稱。 您稍後可以變更此名稱。 名稱：
 
@@ -237,8 +242,8 @@ ms.locfileid: "83847917"
 
 提供要搭配您供應項目使用的標誌和影像。 所有影像都必須採用 PNG 格式。 模糊影像將會導致您的提交遭到拒絕。
 
->[!Note]
->如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 *https://upload.xboxlive.com* 服務。
+>[!NOTE]
+>如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
 
 #### <a name="azure-marketplace-logos"></a>Azure Marketplace 標誌
 
@@ -259,7 +264,7 @@ ms.locfileid: "83847917"
 
 新增最多五個示範您供應項目的影片。 影片應該在外部影片服務上託管。 輸入影片的名稱、網址，以及影片的縮圖 PNG 影像 (大小為 1280 &times; 720 像素)。
 
-如需其他 Marketplace 清單資源，請參閱 [Marketplace 供應項目清單的最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices) \(部分機器翻譯\)。
+如需其他 Marketplace 清單資源，請參閱 [Marketplace 供應項目清單的最佳做法](../gtm-offer-listing-best-practices.md) \(部分機器翻譯\)。
 
 選取 [儲存草稿]，然後再繼續。
 
@@ -324,11 +329,11 @@ ms.locfileid: "83847917"
 
 您的方案必須至少在一個 Azure 區域中提供。
 
-選取 [Azure Global] 選項，讓您的方案可供所有 Azure 全球區域中具有商業 Marketplace 整合的客戶使用。 如需詳細資訊，請參閱[地理可用性和貨幣支援](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies) \(部分機器翻譯\)。
+選取 [Azure Global] 選項，讓您的方案可供所有 Azure 全球區域中具有商業 Marketplace 整合的客戶使用。 如需詳細資訊，請參閱[地理可用性和貨幣支援](../marketplace-geo-availability-currencies.md) \(部分機器翻譯\)。
 
-選取 [Azure Government] 選項，讓您的方案可用於 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) \(英文\) 區域。 此區域為美國聯邦、州、地方或部落實體的客戶，以及符合資格可以為這些實體提供服務的合作夥伴，提供控管權限。 身為發行者的您必須負責任何合規性控制、安全性措施和最佳做法。 Azure Government 會使用實際隔離的資料中心和網路 (僅限位於美國地區)。
+選取 [Azure Government] 選項，讓您的方案可用於 [Azure Government](../../azure-government/documentation-government-welcome.md) \(英文\) 區域。 此區域為美國聯邦、州、地方或部落實體的客戶，以及符合資格可以為這些實體提供服務的合作夥伴，提供控管權限。 身為發行者的您必須負責任何合規性控制、安全性措施和最佳做法。 Azure Government 會使用實際隔離的資料中心和網路 (僅限位於美國地區)。
 
-在您發佈至 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) 之前，請先在環境中測試並驗證您的方案，因為部分某些可能會有所不同。 若要設定並測試您的方案，請從 [Microsoft Azure 政府機構試用版](https://azure.microsoft.com/global-infrastructure/government/request/)網頁要求試用帳戶。
+在您發佈至 [Azure Government](../../azure-government/documentation-government-manage-marketplace-partners.md) 之前，請先在環境中測試並驗證您的方案，因為部分某些可能會有所不同。 若要設定並測試您的方案，請從 [Microsoft Azure 政府機構試用版](https://azure.microsoft.com/global-infrastructure/government/request/)網頁要求試用帳戶。
 
 > [!NOTE]
 > 在您的方案發佈並可在特定 Azure 區域中使用之後，您就無法移除該區域。
@@ -400,10 +405,14 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **私人對象**：讓您的方案變成只有預先選取的對象看得到。 將其發佈為私人方案之後，您可以更新對象或將其變更為公用。 在您將方案設定為公用之後，就必須保持公用。 無法將其變更回私人方案。
 
-**有限對象 (Azure 訂用帳戶識別碼)** ：使用 Azure 訂用帳戶識別碼指派可存取此私人方案的對象。 選擇性地加上您已指派的每個 Azure 訂用帳戶識別碼的描述。 如果您要匯入 CSV 試算表，請手動新增最多 10 個訂用帳戶識別碼，或最多 20,000 個識別碼。 Azure 訂用帳戶識別碼會以 GUID 表示，而且所有字母都必須是小寫。
-
 > [!NOTE]
 > 私人對象或有限對象不同於您在 [預覽] 窗格上定義的預覽對象。 預覽對象可以在供應項目即時發佈到 Azure Marketplace 上_之前_先存取。 雖然私人對象選擇僅適用於特定方案，但預覽對象可以基於驗證目的，檢視所有私人和公用方案。
+
+**有限對象 (Azure 訂用帳戶識別碼)** ：使用 Azure 訂用帳戶識別碼指派可存取此私人方案的對象。 選擇性地加上您已指派的每個 Azure 訂用帳戶識別碼的描述。 如果您要匯入 CSV 試算表，請手動新增最多 10 個訂用帳戶識別碼，或最多 20,000 個識別碼。 Azure 訂用帳戶識別碼會以 GUID 表示，而且所有字母都必須是小寫。
+
+>[!Note]
+>透過雲端解決方案提供者方案（CSP）的轉銷商所建立的 Azure 訂用帳戶，不支援私用供應專案。
+
 
 #### <a name="hide-a-plan"></a>隱藏方案
 
@@ -416,7 +425,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 ### <a name="technical-configuration"></a>技術設定
 
-提供與此方案相關聯的影像和其他技術屬性。 如需詳細資訊，請參閱[建立 Azure VM 技術資產](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets) \(部分機器翻譯\)。
+提供與此方案相關聯的影像和其他技術屬性。 如需詳細資訊，請參閱[建立 Azure VM 技術資產](create-azure-container-technical-assets.md) \(部分機器翻譯\)。
 
 > [!NOTE]
 > 如果您已將此方案設定為重複使用 [方案設定] 索引標籤上另一個方案的套件，則不會顯示 [技術設定] 索引標籤。
@@ -450,7 +459,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 提供虛擬機器映像的磁碟版本和共用存取簽章 (SAS) URI。 為每個 VM 映像新增最多 16 個資料磁碟。 在指定的提交項目中，每個方案只提供一個新的映像版本。 映像發佈之後，您就無法進行編輯，但可以將其刪除。 刪除版本可防止新的和現有的使用者部署已刪除版本的新執行個體。
 
 - **光碟版本**：您所提供之映像的版本。
-- **SAS URI**：您的 Azure 儲存體帳戶中儲存作業系統 VHD 的位置。
+- **SAS URI**：您的 Azure 儲存體帳戶中儲存作業系統 VHD 的位置。 若要瞭解如何取得 SAS URI，請參閱[取得 VM 映射的共用存取](get-sas-uri.md)簽章 URI。
 - 資料磁碟映像也是儲存在其 Azure 儲存體帳戶中的 VHD 共用存取簽章 URI。
 - 在一個方案中每次提交時僅加入一個映像。
 
@@ -466,13 +475,13 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 ## <a name="test-drive"></a>試用產品
 
-設定示範或*試用產品*，讓客戶在購買之前，先試用您的供應項目一段固定的時間。 若要為您的客戶建立示範環境，請參閱[商用 Marketplace 中的試用產品供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive) \(部分機器翻譯\)。
+設定示範或*試用產品*，讓客戶在購買之前，先試用您的供應項目一段固定的時間。 若要為您的客戶建立示範環境，請參閱[商用 Marketplace 中的試用產品供應項目](test-drive.md) \(部分機器翻譯\)。
 
 若要啟用試用產品，請在 [供應項目設定] 窗格上，選取 [啟用試用產品] 核取方塊。 若要從您的供應項目中移除試用產品，請清除此核取方塊。
 
 其他試用產品資源：
 
-- [行銷最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [行銷最佳做法](../what-is-test-drive.md)
 - [技術最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [試用產品概觀](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF 檔案 (請確定您的快顯封鎖程式已關閉)
 
@@ -507,39 +516,80 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 此頁面也包含可協助您處理供應項目的連結，端視其狀態而定：
 
-- 如果供應項目為草稿：[刪除草稿供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer) \(部分機器翻譯\)
-- 如果供應項目已上線：[停止銷售供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) \(部分機器翻譯\)
-- 如果供應項目處於預覽階段：[上線](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval) \(部分機器翻譯\)
-- 如果您尚未完成發行者登出：[取消發佈](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing) \(部分機器翻譯\)
+- 如果供應專案為草稿：[刪除草稿供應](update-existing-offer.md#delete-a-draft-offer)專案）
+- 如果供應專案已上線：[停止銷售供應](update-existing-offer.md#stop-selling-an-offer-or-plan)專案）
+- 如果供應專案處於預覽[狀態：上線](publishing-status.md#publisher-approval)）
+- 如果您尚未完成發行者登出：[取消](update-existing-offer.md#cancel-publishing)發行）
 
 ## <a name="marketplace-examples"></a>Marketplace 範例
 
-下列範例說明供應項目如何出現在 Azure Marketplace 上。
+以下是如何在 Azure Marketplace 中顯示供應專案資訊的範例：
 
-### <a name="azure-marketplace-offer-details"></a>Azure Marketplace 供應項目詳細資料
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-offer.png" alt-text="說明此供應專案在 Azure Marketplace 中的顯示方式。":::
 
-![Azure Marketplace 供應項目詳細資料頁面範例](media/avm-create1.png)
+#### <a name="call-out-descriptions"></a>向外撥說明
 
-### <a name="azure-marketplace-search-results"></a>Azure Marketplace 搜尋結果
+1. 大型標誌
+2. Price
+3. 類別
+4. 條款及條件
+5. 隱私權原則位址（連結）
+6. 供應項目名稱
+7. Description
+8. 實用的連結
+9. 螢幕擷取畫面/影片
 
-![Azure Marketplace 搜尋詳細資料頁面範例](media/avm-create2.png)
+<br>以下是如何在 Azure Marketplace 搜尋結果中顯示供應專案資訊的範例：
 
-### <a name="azure-marketplace-plan-details"></a>Azure Marketplace 方案詳細資料
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="說明這項供應專案在 Azure Marketplace 搜尋結果中的顯示方式。":::
 
-![Azure Marketplace 方案詳細資料頁面範例](media/avm-create3.png)
+#### <a name="call-out-descriptions"></a>向外撥說明
 
-### <a name="azure-portal-offer-details"></a>Azure 入口網站供應項目詳細資料
+1. 小型標誌
+2. 供應項目名稱
+3. 搜尋結果摘要
+4. 試用版
 
-![Azure 入口網站供應項目詳細資料頁面範例](media/avm-create4.png)
+<br>以下是 Azure Marketplace 計畫詳細資料的範例：
 
-### <a name="azure-portal-search-results"></a>Azure 入口網站搜尋結果
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="說明 Azure Marketplace 方案詳細資料。":::
 
-![Azure 入口網站搜尋結果頁面範例](media/avm-create5.png)
+#### <a name="call-out-descriptions"></a>向外撥說明
 
-### <a name="azure-portal-plan-details"></a>Azure 入口網站方案詳細資料
+1. 計畫名稱和摘要
+2. 建議 VM 大小
+3. 規劃定價
 
-![Azure 入口網站方案詳細資料頁面範例](media/avm-create6.png)
+<br>以下是如何在 Azure 入口網站中顯示供應專案資訊的範例：
 
-## <a name="next-steps"></a>後續步驟
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="說明此供應專案在 Azure 入口網站中的顯示方式。":::
 
-- [更新商業 Marketplace 中的現有供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) \(部分機器翻譯\)
+#### <a name="call-out-descriptions"></a>向外撥說明
+
+1. Name
+2. 說明
+3. 實用的連結
+4. 螢幕擷取畫面/影片
+
+<br>以下是如何在 Azure 入口網站搜尋結果中顯示供應專案資訊的範例：
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="說明此供應專案在 Azure 入口網站搜尋結果中的顯示方式。":::
+
+#### <a name="call-out-descriptions"></a>向外撥說明
+
+1. 小型標誌
+2. 供應項目名稱
+3. 搜尋結果摘要
+
+<br>以下是 Azure 入口網站方案詳細資料的範例：
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="說明 Azure 入口網站計畫的詳細資料。":::
+
+#### <a name="call-out-descriptions"></a>向外撥說明
+
+1. 方案名稱
+2. 方案描述
+
+## <a name="next-step"></a>後續步驟
+
+- [更新商業市集中的現有供應項目](update-existing-offer.md)

@@ -9,12 +9,13 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: a8c70254c7ba7a9525b843240230ac158e29a338
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683006"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985730"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -29,7 +30,7 @@ Azure Machine Learning 提供數種方式供您將模型定型，從使用 SDK �
     | [估算器](#estimators) | 估算器類別**可讓您輕鬆地根據熱門機器學習架構來將模型定型**。 **Scikit-learn**、**PyTorch**、**TensorFlow**、**Chainer** 和 **Ray RLlib** 均有估算器類別。 另外還有一種泛型估算器，這種估算器可與尚未擁有專用估算器類別的架構搭配運作。 使用估算器時，您不必擔心要如何定義回合組態。 |
     | [機器學習管線](#machine-learning-pipeline) | 管線並非不同的定型方法，而是**使用模組化、可重複使用的步驟來定義工作流程的一種方法**，其可將定型作業納入作為工作流程的一部分。 機器學習管線可支援使用自動化機器學習、估算器和回合組態來將模型定型。 由於管線並非特別聚焦在定型上，因此會使用管線的理由比其他定型方法更為多樣。 一般而言，您可能會在下列情況使用管線：<br>* 您想要**排程自動程序**，例如長時間執行的定型作業或資料準備。<br>* 使用**多個步驟**，這些步驟會跨異質計算資源和儲存位置彼此協調。<br>* 針對重新定型或批次評分等特定案例，使用管線作為**可重複使用的範本**。<br>針對工作流程來* **追蹤資料來源、輸入和輸出並設定其版本**。<br>* 您的工作流程是**由不同小組實作的，而這些小組會獨立處理特定步驟**。 然後，這些步驟可在管線中聯結在一起以實作工作流程。 |
 
-+ [適用於 Python 的 Azure Machine Learning SDK](#r-sdk)：SDK 會使用網狀套件來繫結至 Azure Machine Learning 的 Python SDK。 這可讓您從任何 R 環境存取在 Python SDK 中實作的核心物件和方法。
++ [適用于 r 的 AZURE MACHINE LEARNING sdk](#r-sdk)：適用于 r 的 sdk 會使用 reticulate 套件來系結至 Azure Machine Learning 的 Python SDK。 這可讓您從任何 R 環境存取在 Python SDK 中實作的核心物件和方法。
 
 + **設計工具**：Azure Machine Learning 設計工具 (預覽) 可讓您輕鬆地進入機器學習領域來建置概念證明，或讓幾乎沒有程式碼撰寫經驗的使用者進入機器學習領域。 其可讓您使用拖放式的 Web 型 UI 來將模型定型。 您可以將 Python 程式碼作為設計的一部分，或在不撰寫任何程式碼的情況下將模型定型。
 

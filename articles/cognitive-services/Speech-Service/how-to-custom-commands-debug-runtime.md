@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 2032ba11c307adda7035d64828d5089da49bedba
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85308028"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023018"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>執行自訂命令應用程式時的 Debug 錯誤
 
@@ -27,9 +27,8 @@ ms.locfileid: "85308028"
 
 | 錯誤碼 | 詳細資料 |
 | ------- | -------- |
-| 401 | AuthenticationFailure： WebSocket 升級失敗，發生驗證錯誤 |
-| 1000 | 已超過最大 websocket 連接閒置持續時間（> 300000 毫秒） |
-| 1002 | 當預期狀態碼 ' 101 ' 時，伺服器傳回狀態碼 ' 404 '。 |
+| [401](#error-401) | AuthenticationFailure： WebSocket 升級失敗，發生驗證錯誤 |
+| [1002](#error-1002)] | 當預期狀態碼 ' 101 ' 時，伺服器傳回狀態碼 ' 404 '。 |
 
 ### <a name="error-401"></a>錯誤 401
 - 用戶端應用程式中指定的區域不符合自訂命令應用程式的區域
@@ -37,9 +36,6 @@ ms.locfileid: "85308028"
 - 語音資源金鑰無效
     
     請確定您的語音資源金鑰正確。
-
-### <a name="error-1000"></a>錯誤 1000 
-伺服器會在5分鐘後終止閒置連接。 嘗試重新連線。
 
 ### <a name="error-1002"></a>錯誤1002 
 - 您的自訂命令應用程式未發佈
@@ -49,10 +45,12 @@ ms.locfileid: "85308028"
 - 您的自訂命令 applicationId 無效
 
     請確定您的自訂命令應用程式識別碼正確。
-
-- 您嘗試存取語音資源外部的自訂命令應用程式
+ 語音資源外的自訂命令應用程式
 
     請確定已在您的語音資源下建立自訂命令應用程式。
+
+如需疑難排解連線問題的詳細資訊，請參閱[Windows 語音助理用戶端疑難排解](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/clients/csharp-wpf#troubleshooting)
+
 
 ## <a name="dialog-is-canceled"></a>對話方塊已取消
 
@@ -70,14 +68,14 @@ CancelledDialog 事件是由取消程式碼和描述所組成，如下所示：
 
 | 取消程式碼 | 取消描述 |
 | ------- | --------------- | ----------- |
-| MaxTurnThresholdReached | 允許的回合數上限之後未進行任何進度 |
-| RecognizerQuotaExceeded | 已超過辨識器使用量配額 |
-| RecognizerConnectionFailed | 與辨識器的連接失敗 |
-| RecognizerUnauthorized | 無法使用目前的訂用帳戶存取此應用程式 |
-| RecognizerInputExceededAllowedLength | 輸入超過辨識器支援的最大長度 |
-| RecognizerNotFound | 找不到辨識器 |
-| RecognizerInvalidQuery | 辨識器的查詢無效 |
-| RecognizerError | 辨識器傳回錯誤 |
+| [MaxTurnThresholdReached](#no-progress-was-made-after-the-max-number-of-turns-allowed) | 允許的回合數上限之後未進行任何進度 |
+| [RecognizerQuotaExceeded](#recognizer-usage-quota-exceeded) | 已超過辨識器使用量配額 |
+| [RecognizerConnectionFailed](#connection-to-the-recognizer-failed) | 與辨識器的連接失敗 |
+| [RecognizerUnauthorized](#this-application-cannot-be-accessed-with-the-current-subscription) | 無法使用目前的訂用帳戶存取此應用程式 |
+| [RecognizerInputExceededAllowedLength](#input-exceeds-the-maximum-supported-length) | 輸入超過辨識器支援的最大長度 |
+| [RecognizerNotFound](#recognizer-not-found) | 找不到辨識器 |
+| [RecognizerInvalidQuery](#invalid-query-for-the-recognizer) | 辨識器的查詢無效 |
+| [RecognizerError](#recognizer-return-an-error) | 辨識器傳回錯誤 |
 
 ### <a name="no-progress-was-made-after-the-max-number-of-turns-allowed"></a>允許的回合數上限之後未進行任何進度
 當必要的位置在特定數目的回合之後未成功更新時，就會取消此對話方塊。 內建的最大數目為3。

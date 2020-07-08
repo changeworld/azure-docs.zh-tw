@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7fc0fbf3362d18284ad6a80afa6396b6be1270a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71058007"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985801"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>在 Azure VM 中對 RDP 一般錯誤進行疑難排解
 
@@ -58,9 +58,9 @@ ms.locfileid: "71058007"
 
 RDP 接聽程式的設定不正確。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
-若要解決這個問題，請[備份作業系統磁碟](../windows/snapshot-copy-managed-disk.md)，並[將作業系統磁碟連結至救援 VM](troubleshoot-recovery-disks-portal-windows.md)，然後遵循步驟。
+在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 若要解決此問題，請使用序列控制或離線修復 VM。
 
 ### <a name="serial-console"></a>序列主控台
 
@@ -78,29 +78,37 @@ RDP 接聽程式的設定不正確。
 
 #### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>步驟 2：檢查 RDP 登錄機碼的值：
 
-1. 檢查 RDP 是否已被原則停用。
+1. 檢查是否已由群組原則停用 RDP。
 
-      ```
-      REM Get the local policy 
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
+    ```
+    REM Get the group policy 
+    reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
+    ```
+    如果群組原則指出 RDP 已停用（fDenyTSConnections 值為0x1），請執行下列命令以啟用 TermService 服務。 如果找不到登錄機碼，則沒有設定為停用 RDP 的群組原則。 您可以移至下一個步驟。
 
-      REM Get the domain policy if any
-      reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
-      ```
+    ```
+    REM update the fDenyTSConnections value to enable TermService service
+    reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+    ```
+    > [!NOTE]
+    > 此步驟會暫時啟用 TermService 服務。 重新整理群組原則設定時，將會重設變更。 若要解決此問題，您必須檢查本機群組原則或網域群組原則是否已停用 TermService 服務，然後相對地更新原則設定。
+    
+2. 檢查目前的遠端連線設定。
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections
+    ```
+    如果命令傳回0x1，則 VM 不允許遠端連線。 然後，使用下列命令來允許遠端連線：
+     ```
+     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+     ```
+    
+1. 檢查終端伺服器的目前組態。
 
-      - 如果網域原則存在，則會覆寫本機原則上的設定。
-      - 如果網域原則指出 RDP 已停用 (1)，請從網域控制站更新 AD 原則。
-      - 如果網域原則指出 RDP 已啟用 (0)，則不需要更新。
-      - 如果網域原則不存在，而本機原則指出 RDP 已停用 (1)，請使用下列命令來啟用 RDP： 
-      
-            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-                  
-
-2. 檢查終端伺服器的目前組態。
-
-      ```
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
-      ```
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
+    ```
 
       如果命令傳回 0，表示終端伺服器已停用。 那麼請啟用終端伺服器，如下所示：
 

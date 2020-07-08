@@ -9,23 +9,23 @@ editor: cgronlun
 ms.assetid: f6e75eb1-d0ae-47cf-bdb8-06684b7c0a94
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: e50091750e01435912a2a5163cc786e79dc09f5c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60878685"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985059"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>存取 Azure Data Lake Storage Gen1 的診斷記錄
 了解如何啟用 Azure Data Lake Storage Gen1 帳戶的診斷記錄，以及如何檢視針對您帳戶收集的記錄。
 
 組織可以啟用其 Azure Data Lake Storage Gen1 帳戶的診斷記錄，以收集資料存取 audit 線索，其中提供的資訊包括存取資料的使用者清單、存取資料的頻率、帳戶中儲存的資料量等等。啟用時，會盡力記錄診斷和/或要求。 只有在對服務端點提出要求時，才會建立要求和診斷記錄項目。
 
-## <a name="prerequisites"></a>Prerequisites
-* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+## <a name="prerequisites"></a>必要條件
+* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帳戶**。 請遵循[使用 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)中的指示。
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>啟用 Data Lake Storage Gen1 帳戶的診斷記錄
@@ -50,7 +50,7 @@ ms.locfileid: "60878685"
      
    * 指定要取得稽核記錄、要求記錄或兩者。
    * 指定的資料的保留天數。 只有在您使用 Azure 儲存體帳戶來封存記錄資料時，才適用保留期。
-   * 按一下 [檔案]  。
+   * 按一下 [檔案] 。
 
 一旦您啟用了診斷設定，即可在 [診斷記錄] **** 索引標籤中查看記錄。
 
@@ -91,29 +91,31 @@ ms.locfileid: "60878685"
 ### <a name="request-logs"></a>要求記錄
 以下是採用 JSON 格式之要求記錄中的範例項目。 每個 Blob 會一個名為 **記錄** 的根物件，其中包含記錄檔物件的陣列。
 
+```json
+{
+"records": 
+  [        
+    . . . .
+    ,
     {
-    "records": 
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
-             "category": "Requests",
-             "operationName": "GETCustomerIngressEgress",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
-        }
-        ,
-        . . . .
-      ]
+        "time": "2016-07-07T21:02:53.456Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
+        "category": "Requests",
+        "operationName": "GETCustomerIngressEgress",
+        "resultType": "200",
+        "callerIpAddress": "::ffff:1.1.1.1",
+        "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+        "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="request-log-schema"></a>要求記錄的結構描述
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | Description |
 | --- | --- | --- |
 | time |String |記錄的時間戳記 (UTC 時間) |
 | resourceId |String |作業發生之資源的識別碼 |
@@ -126,10 +128,10 @@ ms.locfileid: "60878685"
 | properties |JSON |如需詳細資料，請參閱下文 |
 
 #### <a name="request-log-properties-schema"></a>要求記錄屬性結構描述
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | Description |
 | --- | --- | --- |
 | HttpMethod |String |作業使用的 HTTP 方法。 例如，GET。 |
-| Path |String |執行作業的所在路徑 |
+| 路徑 |String |執行作業的所在路徑 |
 | RequestContentLength |int |HTTP 要求的內容長度 |
 | ClientRequestId |String |可唯一識別此要求的識別碼 |
 | StartTime |String |伺服器接收到要求的時間 |
@@ -138,29 +140,31 @@ ms.locfileid: "60878685"
 ### <a name="audit-logs"></a>稽核記錄
 以下是採用 JSON 格式之稽核記錄中的範例項目。 每個 blob 都有一個名為**記錄**的根物件，其中包含記錄檔物件的陣列
 
+```json
+{
+"records": 
+  [        
+    . . . .
+    ,
     {
-    "records": 
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-08T19:08:59.359Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
-             "category": "Audit",
-             "operationName": "SeOpenStream",
-             "resultType": "0",
-             "resultSignature": "0",
-             "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
-             "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
-             "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
-        }
-        ,
-        . . . .
-      ]
+        "time": "2016-07-08T19:08:59.359Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
+        "category": "Audit",
+        "operationName": "SeOpenStream",
+        "resultType": "0",
+        "resultSignature": "0",
+        "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
+        "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
+        "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="audit-log-schema"></a>稽核記錄的結構描述
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | Description |
 | --- | --- | --- |
 | time |String |記錄的時間戳記 (UTC 時間) |
 | resourceId |String |作業發生之資源的識別碼 |
@@ -173,7 +177,7 @@ ms.locfileid: "60878685"
 | properties |JSON |如需詳細資料，請參閱下文 |
 
 #### <a name="audit-log-properties-schema"></a>稽核記錄屬性結構描述
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | Description |
 | --- | --- | --- |
 | StreamName |String |執行作業的所在路徑 |
 
@@ -187,7 +191,7 @@ search *
 ```
 
 
-Azure Data Lake Storage Gen1 會提供有關如何處理和分析記錄資料的範例。 您可以在[https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)找到此範例。 
+Azure Data Lake Storage Gen1 會提供有關如何處理和分析記錄資料的範例。 您可以在找到此範例 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) 。 
 
 ## <a name="see-also"></a>另請參閱
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)

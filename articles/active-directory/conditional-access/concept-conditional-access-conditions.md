@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622950c394d59d8ba504901f5bb0eea6bc04707f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160710"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024436"
 ---
 # <a name="conditional-access-conditions"></a>條件式存取：條件
 
@@ -32,6 +32,10 @@ ms.locfileid: "82160710"
 
 對於具有身分[識別保護](../identity-protection/overview-identity-protection.md)存取權的客戶，可以將登入風險評估為條件式存取原則的一部分。 登入風險表示指定的驗證要求未被身分識別擁有者授權的機率。 如需登入風險的詳細資訊，請參閱文章、[風險](../identity-protection/concept-identity-protection-risks.md#sign-in-risk)和[如何：設定及啟用風險原則](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
 
+## <a name="user-risk"></a>使用者風險 
+
+對於具有身分[識別保護](../identity-protection/overview-identity-protection.md)存取權的客戶，可以將使用者風險評估為條件式存取原則的一部分。 使用者風險代表指定的身分識別或帳戶遭到入侵的機率。 如需使用者風險的詳細資訊，請參閱文章、[風險](../identity-protection/concept-identity-protection-risks.md#user-risk)和[如何：設定及啟用風險原則](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
+
 ## <a name="device-platforms"></a>裝置平台
 
 裝置平臺是以裝置上執行的作業系統為特徵。 Azure AD 使用裝置提供的資訊（例如使用者代理程式字串）來識別平臺。 因為可以修改使用者代理字串，所以這是未經驗證的資訊。 裝置平臺應與 Microsoft Intune 裝置合規性原則搭配使用，或作為 block 語句的一部分。 預設為套用至所有裝置平臺。
@@ -43,9 +47,6 @@ Azure AD 條件式存取支援下列裝置平臺：
 - Windows Phone
 - Windows
 - macOS
-
-> [!WARNING]
-> Microsoft 瞭解條件式存取原則和 macOS 10.15.4 型裝置的問題。 如需詳細資訊，請參閱 blog 文章的[已知問題：條件式存取意外封鎖 macOS 10.15.4 native mail 用戶端/其他應用程式](https://techcommunity.microsoft.com/t5/intune-customer-success/known-issue-conditional-access-unexpectedly-blocking-macos-10-15/ba-p/1322283)。
 
 如果您使用 [**其他用戶端**] 條件封鎖舊版驗證，則也可以設定裝置平臺條件。
 
@@ -59,7 +60,7 @@ Azure AD 條件式存取支援下列裝置平臺：
 
 如需位置的詳細資訊，請參閱[Azure Active Directory 條件式存取中的位置條件](location-condition.md)。
 
-## <a name="client-apps-preview"></a>用戶端應用程式（預覽）
+## <a name="client-apps-preview"></a>用戶端應用程式 (預覽)
 
 條件式存取原則預設適用于使用新式驗證通訊協定的瀏覽器型應用程式和應用程式。 除了這些應用程式之外，系統管理員還可以選擇包含 Exchange ActiveSync 用戶端，以及其他使用舊版通訊協定的用戶端。
 
@@ -73,17 +74,17 @@ Azure AD 條件式存取支援下列裝置平臺：
       - 當原則封鎖 Exchange ActiveSync 的使用時，受影響的使用者將會收到單一的隔離電子郵件。 這封電子郵件會提供封鎖原因的相關資訊，並包含修復指示（如果可以的話）。
    - 其他用戶端
       - 此選項包括使用不支援新式驗證之基本/舊版驗證通訊協定的用戶端。
-         - 已驗證的 SMTP-POP 和 IMAP 用戶端用來傳送電子郵件訊息。
-         - 自動探索-供 Outlook 和 EAS 用戶端用來尋找並聯機到 Exchange Online 中的信箱。
-         - Exchange Online PowerShell-用來透過遠端 PowerShell 連線到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，您需要使用 Exchange Online PowerShell 模組來連接。 如需指示，請參閱[使用多重要素驗證連接到 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
-         - Exchange Web 服務（EWS）-Outlook、Outlook for Mac 及協力廠商應用程式所使用的程式設計介面。
-         - IMAP4-供 IMAP 電子郵件客戶程式使用。
-         - MAPI over HTTP （MAPI/HTTP）-由 Outlook 2010 和更新版本使用。
-         - 離線通訊錄（OAB）-Outlook 下載並使用的地址清單集合複本。
-         - Outlook Anywhere （RPC over HTTP）-由 Outlook 2016 和更早版本使用。
-         - Outlook 服務-適用于 Windows 10 的電子郵件和行事曆應用程式。
-         - POP3-由 POP 電子郵件客戶程式使用。
-         - 報表 Web 服務-用來在 Exchange Online 中取出報表資料。
+         - 經過驗證的 SMTP - 由 POP 與 IMAP 用戶端用於傳送電子郵件。
+         - 自動探索 - 由 Outlook 與 EAS 用戶端用於尋找及連線至 Exchange Online 中的信箱。
+         - Exchange Online PowerShell - 用於透過 PowerShell 連線至 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，則需使用 Exchange Online PowerShell 模組來連線。 如需相關說明，請參閱[使用多重要素驗證連線至 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
+         - Exchange Web 服務 (EWS) - Outlook、Mac 版 Outlook 及協力廠商應用程式使用的程式設計介面。
+         - IMAP4 - IMAP 電子郵件用戶端所使用。
+         - MAPI over HTTP (MAPI/HTTP) - Outlook 2010 與以後版本所使用。
+         - 離線通訊錄 (OAB) - Outlook 所下載與使用的一份地址清單集合。
+         - Outlook Anywhere (RPC over HTTP) - Outlook 2016 及之前版本所使用。
+         - Outlook Service - Windows 10 版郵件與行事曆應用程式所使用。
+         - POP3 - POP 電子郵件用戶端所使用。
+         - Reporting Web Services - 用於擷取 Exchange Online 中的報告資料。
 
 這些條件通常會在需要受控裝置、封鎖舊版驗證，以及封鎖 web 應用程式，但允許行動或桌面應用程式時使用。
 
@@ -115,21 +116,17 @@ Azure AD 條件式存取支援下列裝置平臺：
 
 若要自動將此擴充功能部署到 Chrome 瀏覽器，請建立下列登錄機碼：
 
-|    |    |
-| --- | --- |
-| Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| 名稱 | 1 |
-| 類型 | REG_SZ (字串) |
-| 資料 | ppnbnpeolgkicgegkbkbjmhlideopiji; HTTPs\://clients2.google.com/service/update2/crx |
+- 路徑 HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- 名稱1
+- 類型 REG_SZ （字串）
+- 資料 ppnbnpeolgkicgegkbkbjmhlideopiji; HTTPs \: //clients2.google.com/service/update2/crx
 
 如需 **Windows 8.1 和 7** 中的 Chrome 支援，請建立下列登錄機碼：
 
-|    |    |
-| --- | --- |
-| Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| 名稱 | 1 |
-| 類型 | REG_SZ (字串) |
-| 資料 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+- 路徑 HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- 名稱1
+- 類型 REG_SZ （字串）
+- Data {"pattern"： " https://device.login.microsoftonline.com "，"filter"： {"ISSUER"： {"CN"： "MS-組織存取"}}}
 
 這些瀏覽器支援裝置驗證，因此可以根據原則來識別和驗證裝置。 如果瀏覽器在私用模式中執行，裝置檢查將會失敗。
 
@@ -176,7 +173,7 @@ Azure AD 條件式存取支援下列裝置平臺：
 
 藉由選取 [其他用戶端]****，您可以指定會影響搭配使用基本驗證和郵件通訊協定 (如 IMAP、MAPI、POP、SMTP) 之應用程式的條件，這些條件也會影響不是使用新式驗證的舊版 Office 應用程式。
 
-## <a name="device-state-preview"></a>裝置狀態（預覽）
+## <a name="device-state-preview"></a>裝置狀態 (預覽)
 
 [裝置狀態] 條件可以用來排除已加入混合式 Azure AD 的裝置，以及（或）從組織的條件式存取原則中標示為符合 Microsoft Intune 合規性政策的裝置。
 
@@ -187,4 +184,4 @@ Azure AD 條件式存取支援下列裝置平臺：
 
 - [條件式存取：授與](concept-conditional-access-grant.md)
 
-- [條件式存取的一般原則](concept-conditional-access-policy-common.md)
+- [條件式存取一般原則](concept-conditional-access-policy-common.md)

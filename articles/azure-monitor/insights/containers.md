@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/22/2019
-ms.openlocfilehash: 171f897f6e110e8f759281c139addab477ecede3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77664689"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984619"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure 監視器中的容器監視解決方案
 
@@ -45,12 +45,12 @@ ms.locfileid: "77664689"
 
 下表概述具有 Azure 監視器之容器清查、效能和記錄的 Docker 協調流程和作業系統監視支援。   
 
-| | ACS | Linux | Windows | 容器<br>清查 | Image<br>清查 | 節點<br>清查 | 容器<br>效能 | 容器<br>事件 | 事件<br>Log | 容器<br>Log |
+| | ACS | Linux | Windows | 容器<br>清查 | Image<br>清查 | 節點<br>清查 | 容器<br>效能 | 容器<br>事件 | 事件<br>記錄檔 | 容器<br>記錄檔 |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
-| Service<br>網狀架構 | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| 服務<br>網狀架構 | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Red Hat 開啟<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
 | Windows Server<br>(獨立) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Linux 伺服器<br>(獨立) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
@@ -116,7 +116,7 @@ ms.locfileid: "77664689"
 
 ### <a name="install-and-configure-linux-container-hosts"></a>安裝和設定 Linux 容器主機
 
-在您安裝 Docker 之後，使用容器主機的下列設定來設定可搭配 Docker 使用的代理程式。 首先您需要 Log Analytics 工作區識別碼和金鑰，這些可以在 Azure 入口網站中找到。 在您的工作區中，按一下 [**快速啟動** > **電腦**] 以查看您的**工作區識別碼**和**主要金鑰**。  將兩者複製並貼到您最愛的編輯器。
+在您安裝 Docker 之後，使用容器主機的下列設定來設定可搭配 Docker 使用的代理程式。 首先您需要 Log Analytics 工作區識別碼和金鑰，這些可以在 Azure 入口網站中找到。 在您的工作區中，按一下 [**快速啟動**  >  **電腦**] 以查看您的**工作區識別碼**和**主要金鑰**。  將兩者複製並貼到您最愛的編輯器。
 
 **適用於 CoreOS 以外的所有 Linux 容器主機：**
 
@@ -618,7 +618,6 @@ Start-Service docker
 - **KubeEvents_CL**  使用此類型可查看 Kubernetes 事件。
 - **KubePodInventory_CL**  當您需要了解叢集階層資訊時，請使用此類型。
 
-
 ### <a name="to-query-logs-for-container-data"></a>查詢容器資料的記錄
 
 * 選擇您知道最近失敗的映像並尋找其錯誤記錄。 首先，透過 **ContainerInventory** 搜尋來尋找正在執行該映像的容器名稱。 例如，搜尋 `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
@@ -628,7 +627,7 @@ Start-Service docker
 
 ## <a name="example-log-queries"></a>範例記錄查詢
 
-從一或兩個範例開始建置查詢，然後加以修改以符合您的環境，通常很實用。 首先，您可以實驗 [查詢範例]**** 區域，協助您建置更進階的查詢。
+從一或兩個範例開始建置查詢，然後加以修改以符合您的環境，通常很實用。 做為起點，您可以試驗 [方案] 頁面最右邊的 [**範例查詢**] 區域，以協助您建立更先進的查詢。
 
 ![容器查詢](./media/containers/containers-queries.png)
 

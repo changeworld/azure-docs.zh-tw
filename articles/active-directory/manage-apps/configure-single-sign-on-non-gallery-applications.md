@@ -2,22 +2,22 @@
 title: SAML 單一登入 - 非資源庫應用程式 - Microsoft 身分識別平台 | Microsoft Docs
 description: 在 Microsoft 身分識別平台 (Azure AD) 中將單一登入 (SSO) 設為非資源庫應用程式
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
-ms.date: 07/19/2019
-ms.author: celested
+ms.date: 06/08/2020
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d97cef332b24700920693bab55dcbd396015dc7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: 3cee2b9a0ea32a3b331849263c8a97f55930542d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758362"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024226"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>將 SAML 型單一登入設為非資源庫應用程式
 
@@ -42,6 +42,8 @@ ms.locfileid: "83758362"
 
 3. 在 [管理] 區段中，選取 [單一登入]。 
 
+   - 請注意，在某些情況下，將不會出現 [**單一登入**] 選項。 例如，如果應用程式是使用**應用程式註冊**註冊，則單一登入功能會設定為預設使用 OIDC OAuth。 在此情況下，[**企業應用程式**] 下的流覽中不會顯示 [**單一登入**] 選項。 當您使用**應用程式註冊**新增自訂應用程式時，您可以在資訊清單檔中設定選項。 若要深入瞭解資訊清單檔，請參閱（ https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) 。 若要深入瞭解 SSO 標準，請參閱（ https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform) 。 當應用程式裝載于另一個租使用者時，或您的帳戶沒有必要許可權（全域管理員、雲端應用程式系統管理員、應用程式系統管理員或服務主體的擁有者）時，流覽中將遺失**單一登入**的其他案例。 許可權也可能會導致您可以開啟**單一登入**但無法儲存的案例。 若要深入瞭解 Azure AD 系統管理角色，請參閱（ https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 。
+
 4. 選取 [SAML]。 [設定使用 SAML 的單一登入 - 預覽] 頁面隨即出現。
 
    ![步驟 1 編輯基本 SAML 組態](media/configure-single-sign-on-non-gallery-applications/step-one-basic-saml-config.png)
@@ -55,7 +57,7 @@ ms.locfileid: "83758362"
     | **識別碼 (實體識別碼)** | 某些應用程式需要 | 某些應用程式需要 | 可唯一識別應用程式。 Azure AD 會將識別碼傳送給應用程式作為 SAML 權杖的 Audience 參數。 應用程式應該會對其進行驗證。 在應用程式中提供的任何 SAML 中繼資料中，此值也會顯示為實體識別碼。 輸入使用下列模式的 URL：'https://<subdomain>.contoso.com' *您可在應用程式傳送的  (SAML 要求) 中找到作為 **Issuer** 元素的這個值*。 |
     | **回覆 URL** | 必要 | 必要 | 指定應用程式預期要接收 SAML 權杖的位置。 此回覆 URL 也稱為判斷提示取用者服務 (ACS) URL。 您可以使用其他回覆 URL 欄位來指定多個回覆 URL。 例如，您可能需要多個子網域的其他回覆 URL。 或者，基於測試目的，您可以一次指定多個回覆 URL (本機主機和公用 URL)。 |
     | **登入 URL** | 必要 | 請勿指定 | 當使用者開啟此 URL 時，服務提供者會重新導向至 Azure AD 以進行驗證，並將使用者登入。 Azure AD 會使用此 URL 從 Office 365 和 Azure AD「存取面板」中啟動應用程式。 如果空白，則在使用者從 Office 365、Azure AD 存取面板或 Azure AD SSO URL 啟動應用程式時，Azure AD 會執行 IdP 起始的登入。|
-    | **轉送狀態** | 選用 | 選用 | 對應用程式指定在驗證完成後應將使用者重新導向到的位置。 此值通常是對應用程式而言有效的 URL。 不過，有些應用程式會以不同的方式使用此欄位。 如需詳細資訊，請詢問應用程式廠商。
+    | **轉送狀態** | 選擇性 | 選擇性 | 對應用程式指定在驗證完成後應將使用者重新導向到的位置。 此值通常是對應用程式而言有效的 URL。 不過，有些應用程式會以不同的方式使用此欄位。 如需詳細資訊，請詢問應用程式廠商。
     | **登出 URL** | 選用 | 選用 | 用於將 SAML 登出回應傳回應用程式。
 
 如需詳細資訊，請參閱[單一登入 SAML 通訊協定](../develop/single-sign-on-saml-protocol.md)。
@@ -122,9 +124,9 @@ Azure AD 會使用憑證來簽署它傳送至應用程式的 SAML 權杖。 您�
 
 ## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>步驟 4： 將應用程式設定為使用 Azure AD
 
-[設定 \<applicationName>] 區段會列出必須在應用程式中設定而使其以 Azure AD 作為 SAML 識別提供者的值。 必要的值會根據應用程式而有所不同。 如需詳細資訊，請參閱應用程式的 SAML 文件。 若要尋找文件，請移至 [設定 \<應用程式名稱>] 標題，然後選取 [檢視逐步指示]。 文件會出現在 [設定登入] 頁面中。 該頁面會引導您在 [設定 \<應用程式名稱>] 標題中填寫 [登入 URL]、[Azure AD 識別碼] 和 [登出 URL] 的值。
+[**設定 \<applicationName> ** ] 區段會列出需要在應用程式中設定的值，因此它會使用 AZURE AD 做為 SAML 識別提供者。 必要的值會根據應用程式而有所不同。 如需詳細資訊，請參閱應用程式的 SAML 文件。 若要尋找檔，請移至 [**設定 \<application name> ** ] 標題，然後選取 [**流覽逐步指示**]。 文件會出現在 [設定登入] 頁面中。 該頁面會引導您填寫 [ ** \<application name> 設定**] 標題中的 [登入**url**]、[ **AZURE AD 識別碼**] 和 [**登出 URL** ] 值。
 
-1. 向下捲動至 [設定 \<applicationName>] 區段。 
+1. 向下捲動至 [設定 \<applicationName>]**** 區段。 
    
    ![步驟 4 設定應用程式](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 

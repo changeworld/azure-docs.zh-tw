@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773129"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985421"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 虛擬機器上的解決方案
 
@@ -69,6 +69,9 @@ az vm list-skus
     --size dc 
     --query "[?family=='standardDCSv2Family']"
 ```
+### <a name="dedicated-host-requirements"></a>專用主機需求
+在 DCSv2 系列的 VM 系列中部署**Standard_DC8_v2**虛擬機器大小將會佔用完整的主機，且不會與其他租使用者或訂用帳戶共用。 此 VM SKU 系列會提供您所需的隔離，以符合通常藉由擁有專用主機服務的合規性和安全性法規需求。 當您選擇**Standard_DC8_v2** SKU 時，實體主機伺服器會將所有可用的硬體資源（包括僅限 EPC 記憶體）配置給您的虛擬機器。 請注意，這項功能是由基礎結構設計所存在，而且會支援**Standard_DC8_v2**的所有功能。 此部署與其他 Azure VM 系列所提供的[Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)服務不同。
+
 
 ## <a name="deployment-considerations"></a>部署考量因素
 

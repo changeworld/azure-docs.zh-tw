@@ -4,15 +4,15 @@ description: 瞭解如何在 SQL API 中處理一對一關聯性的複雜資料�
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 467e9627a2623779bd808ca5aebdf76d8a5eda42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 860b78df8df0d3c6946785a94e40141689278cd0
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75896632"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023137"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>將一對一關聯性型資料移轉至 Azure Cosmos DB SQL API 帳戶
 
@@ -25,7 +25,7 @@ ms.locfileid: "75896632"
 假設我們的 SQL database 中有下列兩個數據表： Orders 和 OrderDetails。
 
 
-![Order Details](./media/migrate-relational-to-cosmos-sql-api/orders.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/orders.png" alt-text="訂單詳細資料" border="false" :::
 
 我們想要在遷移期間，將此一對一關聯性結合成一份 JSON 檔。 若要這樣做，我們可以使用 "FOR JSON" 建立 T-SQL 查詢，如下所示：
 
@@ -48,8 +48,7 @@ FROM Orders o;
 
 此查詢的結果會如下所示： 
 
-![Order Details](./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png#lightbox)
-
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png" alt-text="訂單詳細資料" lightbox="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png":::
 
 在理想的情況下，您會想要使用單一 Azure Data Factory （ADF）複製活動來查詢 SQL 資料做為來源，並直接將輸出寫入 Azure Cosmos DB 接收當做適當的 JSON 物件。 目前，不可能在一個複製活動中執行所需的 JSON 轉換。 如果我們嘗試將上述查詢的結果複製到 Azure Cosmos DB SQL API 容器中，我們會將 OrderDetails 欄位顯示為檔的字串屬性，而不是預期的 JSON 陣列。
 
@@ -91,31 +90,31 @@ SELECT [value] FROM OPENJSON(
 )
 ```
 
-![ADF 複製](./media/migrate-relational-to-cosmos-sql-api/adf1.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="ADF 複製":::
 
 
-針對 SqlJsonToBlobText 複製活動的接收，我們選擇 [分隔的文字]，並將它指向 Azure Blob 儲存體中具有動態產生之唯一檔案名的特定資料夾（例如 '@concat（管線（）。RunId，'. json '）。
+針對 SqlJsonToBlobText 複製活動的接收，我們選擇 [分隔的文字]，並將它指向 Azure Blob 儲存體中具有動態產生之唯一檔案名的特定資料夾（例如 ' @concat （管線（）。RunId，'. json '）。
 由於我們的文字檔並不是「分隔」，而且我們不想要使用逗號將它剖析成個別的資料行，而且想要保留雙引號（"），我們將「資料行分隔符號」設定為索引標籤（" \t "），或將不在資料中的另一個字元和「引號字元」轉換成「沒有引號字元」。
 
-![ADF 複製](./media/migrate-relational-to-cosmos-sql-api/adf2.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="ADF 複製":::
 
 ### <a name="copy-activity-2-blobjsontocosmos"></a>複製活動 #2： BlobJsonToCosmos
 
 接下來，我們會藉由新增第二個複製活動來修改 ADF 管線，這會在第一個活動所建立的文字檔 Azure Blob 儲存體中尋找。 它會將它當做 "JSON" 來源處理，以便在文字檔中找到每個 JSON 資料列的 Cosmos DB 接收。
 
-![ADF 複製](./media/migrate-relational-to-cosmos-sql-api/adf3.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="ADF 複製":::
 
 此外，我們也會將「刪除」活動新增至管線，以便在每次執行之前，先刪除/Orders/資料夾中剩餘的所有先前檔案。 我們的 ADF 管線現在看起來像這樣：
 
-![ADF 複製](./media/migrate-relational-to-cosmos-sql-api/adf4.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="ADF 複製":::
 
 在我們觸發上述管線之後，我們會看到在我們的仲介 Azure Blob 儲存體位置中建立的檔案，每個資料列包含一個 JSON 物件：
 
-![ADF 複製](./media/migrate-relational-to-cosmos-sql-api/adf5.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="ADF 複製":::
 
 我們也會看到在 Cosmos DB 集合中插入適當內嵌 OrderDetails 的訂單檔：
 
-![ADF 複製](./media/migrate-relational-to-cosmos-sql-api/adf6.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="ADF 複製":::
 
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -128,7 +127,7 @@ SELECT [value] FROM OPENJSON(
 
 首先，我們會建立必要的[SQL 連接器](https://docs.databricks.com/data/data-sources/sql-databases-azure.html)，並將[Azure Cosmos DB 連接器](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html)程式庫連結至我們的 Azure Databricks 叢集。 請重新開機叢集，以確定已載入程式庫。
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks1.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Databricks":::
 
 接下來，我們會針對 Scala 和 Python 呈現兩個範例。 
 
@@ -151,7 +150,7 @@ val orders = sqlContext.read.sqlDB(configSql)
 display(orders)
 ```
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks2.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Databricks":::
 
 接下來，我們會連接到我們的 Cosmos DB 資料庫和集合：
 
@@ -208,7 +207,7 @@ display(ordersWithSchema)
 CosmosDBSpark.save(ordersWithSchema, configCosmos)
 ```
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks3.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Databricks":::
 
 
 ### <a name="python"></a>Python
@@ -338,7 +337,7 @@ pool.map(writeOrder, orderids)
 ```
 在這兩種方法中，我們都應該在 Cosmos DB 集合的每份訂單檔中，適當儲存內嵌的 OrderDetails：
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks4.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Databricks":::
 
 ## <a name="next-steps"></a>後續步驟
 * 深入瞭解[Azure Cosmos DB 中的資料模型](https://docs.microsoft.com/azure/cosmos-db/modeling-data)

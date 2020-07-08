@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74382190"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024072"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - 安全性概觀
 
@@ -39,7 +39,7 @@ Azure 入口網站中的[安全性總覽](https://aka.ms/IdentityProtectionRefre
 
 此圖表顯示在所選的時段內偵測到具風險的登入數目。 您可以依登入風險類型 (即時或彙總) 和登入風險層級 (低、中、高) 來篩選此圖表的的檢視。 未受保護的登入是指未受到 MFA 挑戰的成功即時風險登入。 （注意：因離線偵測而有風險的登入，無法透過登入風險原則即時保護）。 將游標暫留在 UTC 日期遞增數字上方，可檢視當天偵測到有風險的登入數目。 按一下此圖表，您就會進入 [具風險的登入] 報告中。
 
-## <a name="tiles"></a>圖格
+## <a name="tiles"></a>Tiles
  
 ### <a name="high-risk-users"></a>高度風險使用者
 
@@ -56,7 +56,7 @@ Azure 入口網站中的[安全性總覽](https://aka.ms/IdentityProtectionRefre
 
 ### <a name="legacy-authentication"></a>舊版驗證
 
-[舊版驗證] 圖格會顯示您的組織過去一週進行舊版驗證的計數。 舊版驗證通訊協定不支援 MFA 之類的新式安全性方法。 若要防止舊版驗證，您可以套用條件式存取原則。 按一下 [舊版驗證] 圖格，將會重新導向至 [身分識別安全分數]。
+[舊版驗證] 圖格會顯示您組織中有風險的過去一周的舊版驗證計數。 舊版驗證通訊協定不支援 MFA 之類的新式安全性方法。 若要防止舊版驗證，您可以套用條件式存取原則。 按一下 [舊版驗證] 圖格，將會重新導向至 [身分識別安全分數]。
 
 ### <a name="identity-secure-score"></a>身分識別安全分數
 

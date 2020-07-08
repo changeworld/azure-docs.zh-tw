@@ -6,17 +6,17 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 5798e3c9c2a345c5cf9d8fd254130b4252a696d8
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/17/2020
+ms.openlocfilehash: 8accb29907bde53baf7f175dd1d36a9a2e1fe66b
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847968"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984682"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立、設定及發佈 IoT Edge 模組供應項目
 
-本文說明如何建立及發佈 Azure Marketplace 的物聯網 (IoT) Edge 模組供應項目。 開始之前，請先[在合作夥伴中心建立商業市集](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) (如果您尚未這麼做)。 請確定您已在商業市集方案中註冊帳戶。
+本文說明如何建立及發佈 Azure Marketplace 的物聯網 (IoT) Edge 模組供應項目。 開始之前，請先[在合作夥伴中心建立商業市集](create-account.md) (如果您尚未這麼做)。 請確定您已在商業市集方案中註冊帳戶。
 
 ## <a name="create-a-new-offer"></a>建立新的供應項目
 
@@ -50,10 +50,10 @@ ms.locfileid: "83847968"
 
 此頁面包含根據您所做的選擇，在此供應項目上執行作業的連結。 例如：
 
-- 如果供應項目為草稿 - [刪除草稿供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- 如果供應項目已上線 - [停止銷售供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- 如果供應專案處於預覽階段 - [上線](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- 如果您尚未完成發行者登出 - [取消發行。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- 如果供應專案為草稿-[刪除草稿供應](update-existing-offer.md#delete-a-draft-offer)專案）
+- 如果供應專案上線，則會[停止銷售供應](update-existing-offer.md#stop-selling-an-offer-or-plan)專案）
+- 如果供應專案處於預覽狀態，即[上線](publishing-status.md#publisher-approval)）
+- 如果您尚未完成發行者登出，請取消發行[。](update-existing-offer.md#cancel-publishing)）
 
 ## <a name="offer-setup"></a>供應項目設定
 
@@ -65,12 +65,12 @@ ms.locfileid: "83847968"
 
 1. 選取您要我們傳送潛在客戶至其中的潛在客戶目的地。 合作夥伴中心支援下列 CRM 系統：
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > 如果以上未列出您的 CRM 系統，請使用 [Azure 資料表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或 [Https 端點](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)來儲存客戶潛在客戶資料，然後將資料匯出至您的 CRM 系統。
+    > 如果以上未列出您的 CRM 系統，請使用 [Azure 資料表](commercial-marketplace-lead-management-instructions-azure-table.md)或 [Https 端點](commercial-marketplace-lead-management-instructions-https.md)來儲存客戶潛在客戶資料，然後將資料匯出至您的 CRM 系統。
 
 2. 在合作夥伴中心內發佈時，將供應項目連線到潛在客戶目的地。
 3. 確認已正確設定與潛在客戶目的地的連線。 在合作夥伴中心發佈之後，我們會驗證連線並將測試潛在客戶傳送給您。 在上架前預覽供應項目時，您也可以嘗試在預覽環境中自行購買供應項目，藉此測試您的潛在客戶連線。
@@ -78,9 +78,9 @@ ms.locfileid: "83847968"
 
 以下是一些額外的潛在客戶管理資源：
 
-- [潛在客戶管理概觀](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [潛在客戶管理常見問題集](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常見潛在客戶設定錯誤](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [潛在客戶管理概觀](commercial-marketplace-get-customer-leads.md)
+- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
+- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
 - [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (請確定您已關閉快顯封鎖程式)。
 
 選取 [儲存草稿] 後再繼續。
@@ -91,7 +91,12 @@ ms.locfileid: "83847968"
 
 #### <a name="category"></a>類別
 
-選取最少一個，最多五個類別。 這些類別是用來將您的供應項目放入適當的市集搜尋區域，並顯示在您的供應項目詳細資料頁面上。 在供應項目描述中，說明您的供應項目如何支援這些類別。 在瀏覽頁面中，所有 IoT Edge 模組都會顯示在[物聯網 > IoT Edge 模組] ****   類別下。
+選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
+
+- 至少一個和最多兩個類別，包括主要和次要類別（選擇性）。
+- 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
+
+請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。 在 marketplace 中，IoT Edge 模組一律會顯示在 [ **物聯網**  >  **IoT Edge 模組**]   類別之下。
 
 #### <a name="legal"></a>法律
 
@@ -104,20 +109,20 @@ ms.locfileid: "83847968"
 
 我們提供標準合約範本，協助促進商業市集中的交易。 您可以選擇在標準合約下提供您的解決方案，而客戶只需要檢查並接受一次。 如果您不想要製作自訂的條款及條件，這是個不錯的選項。
 
-若要深入了解標準合約，請參閱 [Microsoft 商業市集的標準合約](https://docs.microsoft.com/azure/marketplace/standard-contract)。 您也可以下載[標準合約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF (請確定您的快顯封鎖程式已關閉)。
+若要深入了解標準合約，請參閱 [Microsoft 商業市集的標準合約](../standard-contract.md)。 您也可以下載[標準合約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF (請確定您的快顯封鎖程式已關閉)。
 
 若要使用標準合約，請選取 [使用 Microsoft 商業市集的標準合約] 核取方塊，然後按一下 [接受]。
 
 > [!NOTE]
 > 當您使用 Microsoft 商業市集的標準合約發佈供應項目之後，就無法使用自己的自訂條款及條件。 請根據標準合約或您自己的條款及條件來提供您的解決方案。
 
-![說明如何使用 Microsoft 商業市集的標準合約核取方塊。](./media/iot-edge-module-creation/iot-edge-module-standard-contract-checkbox.png)
+![說明如何使用 Microsoft 商業市集的標準合約核取方塊。](media//iot-edge-module-standard-contract-checkbox.png)
 
 ##### <a name="your-own-terms-and-conditions"></a>您自己的條款及條件
 
 若要提供您自己的自訂條款及條件，請在 [條款及條件] 方塊中加以輸入。 您可以在此方塊中輸入不限數量的文字字元。 客戶必須先接受這些條款，才能試用您的供應項目。
 
-選取 [儲存草稿]，再繼續進行下一節的供應項目清單。
+選取 [儲存草稿]，再繼續進行下一節，＜供應項目清單＞。
 
 ## <a name="offer-listing"></a>供應項目清單
 
@@ -138,7 +143,7 @@ ms.locfileid: "83847968"
 
 ### <a name="search-results-summary"></a>搜尋結果摘要
 
-提供供應項目的簡短描述。 這長度最多可有 100 個字元，並用於市集搜尋結果。
+提供供應項目的簡短描述。 長度最多可有 100 個字元，並用於市集搜尋結果。
 
 ### <a name="long-summary"></a>完整摘要
 
@@ -165,13 +170,13 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 提供有關您供應項目的補充線上文件。 您最多可以新增 25 個連結。 若要新增連結，請選取 [+ 新增連結] 然後完成下欄欄位：
 
 - **標題** - 客戶會在供應項目的詳細資料頁面上看到標題。
-- **連結 (URL)** - 輸入客戶的連結，以檢視您的線上文件。 連結的開頭必須是 http:// 或 https://。
+- **連結 (URL)** - 輸入客戶的連結，以檢視您的線上文件。 此連結的開頭必須是 `http://` 或 `https://` 。
 
 請務必從  [Azure IoT 裝置目錄](https://catalog.azureiotsolutions.com/)新增至少一個說明文件的連結和一個相容 IoT Edge 裝置的連結。
 
 ### <a name="contact-information"></a>連絡人資訊
 
-您必須提供 [支援連絡人] 與 [工程連絡人] 的姓名、電子郵件和電話號碼。 客戶不會看到這則資訊。 可供 Microsoft 使用，並可提供給雲端解決方案提供者 (CSP) 合作夥伴。
+您必須提供 [支援連絡人] 與 [工程連絡人] 的姓名、電子郵件和電話號碼。 客戶不會看到這則資訊。 其可供 Microsoft 使用，並可能會提供給雲端解決方案提供者 (CSP) 合作夥伴。
 
 - 支援連絡人 (必要)：針對一般支援問題。
 - 工程連絡人 (必要)：針對技術問題和認證問題。
@@ -183,18 +188,18 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 #### <a name="additional-marketplace-listing-resources"></a>其他市集清單資源
 
-若要深入了解如何建立供應項目清單，請參閱[供應項目清單最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
+若要深入了解如何建立供應項目清單，請參閱[供應項目清單最佳做法](../gtm-offer-listing-best-practices.md)。
 
 ### <a name="marketplace-images"></a>Marketplace 映像
 
-提供要與您供應項目搭配使用的標誌和映像。 所有映像都必須是 .png 格式。 模糊映像將會遭到拒絕。
+提供要與您供應項目搭配使用的標誌和映像。 所有影像都必須採用 PNG 格式。 模糊映像將會遭到拒絕。
 
 >[!Note]
->如果您在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
+>如果您在上傳檔案時遇到問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
 
 #### <a name="store-logos"></a>儲存標誌
 
-請以下列四個像素的個別大小提供供應項目標誌的 .png 檔案：
+請以下列四個像素的個別大小提供供應項目標誌的 PNG 檔案：
 
 - **小型 (48 x 48)**
 - **中型 (90 x 90)**
@@ -205,33 +210,63 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 #### <a name="screenshots-optional"></a>螢幕擷取畫面 (選擇性)
 
-新增最多五個螢幕擷取畫面，以顯示供應項目的運作方式。 每個的大小都必須為 1280 x 720 像素且為 .png 格式。
+新增最多五個螢幕擷取畫面，以顯示供應項目的運作方式。 每個的大小都必須為 1280 x 720 像素且為 PNG 格式。
 
 #### <a name="videos-optional"></a>影片 (選擇性)
 
-新增最多五個示範您供應項目的影片。 輸入影片的名稱、其網址，以及影片的縮圖 .png 映像 (大小為 1280 x 720 像素)。
+新增最多五個示範您供應項目的影片。 輸入影片的名稱、其網址，以及影片的縮圖 PNG 映像 (大小為 1280 x 720 像素)。
 
-#### <a name="offer-examples"></a>供應項目範例
+#### <a name="marketplace--examples"></a>Marketplace 範例
 
-下列範例示範供應項目清單欄位如何出現在供應項目的不同位置。
+以下是如何在 Azure Marketplace 中顯示供應專案資訊的範例：
 
-此螢幕擷取畫面會顯示 Azure Marketplace 中的 [供應項目清單] 頁面。
+:::image type="content" source="media/example-iot-azure-marketplace-offer.png" alt-text="說明此供應專案在 Azure Marketplace 中的顯示方式。":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-offer-listing-page.png" alt-text="說明 Azure Marketplace 中的供應項目清單頁面。":::
+#### <a name="call-out-descriptions"></a>向外撥說明
 
-此螢幕擷取畫面會顯示 Azure Marketplace 中的搜尋結果：
+1. 大型標誌
+2. 類別
+3. 支援位址（連結）
+4. 條款及條件
+5. 隱私權原則位址（連結）
+6. Name
+7. 摘要
+8. Description
+9. 實用的連結
+10. 螢幕擷取畫面/影片
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-marketplace-search-results.png" alt-text="說明 Azure Marketplace 中的搜尋結果。":::
+<br>以下是如何在 Azure Marketplace 搜尋結果中顯示供應專案資訊的範例：
 
-此螢幕擷取畫面會顯示 Azure 入口網站中的 [供應項目清單] 頁面。
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="說明這項供應專案在 Azure Marketplace 搜尋結果中的顯示方式。":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-listing-page-azure-portal.png" alt-text="說明 Azure 入口網站中的供應項目清單頁面。":::
+#### <a name="call-out-descriptions"></a>向外撥說明
 
-此螢幕擷取畫面會顯示 Azure 入口網站中的搜尋結果。
+1. 小型標誌
+2. 供應項目名稱
+3. 搜尋結果摘要
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-azure-portal-search-results.png" alt-text="說明 Azure 入口網站中的供應項目清單頁面。":::
+<br>以下是如何在 Azure 入口網站中顯示供應專案資訊的範例：
 
-選取 [儲存草稿]，再繼續進行下一節的「預覽」。
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="說明此供應專案在 Azure 入口網站中的顯示方式。":::
+
+#### <a name="call-out-descriptions"></a>向外撥說明
+
+1. Name
+2. 說明
+3. 實用的連結
+4. 螢幕擷取畫面
+
+<br>以下是如何在 Azure 入口網站搜尋結果中顯示供應專案資訊的範例：
+
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="說明此供應專案在 Azure 入口網站搜尋結果中的顯示方式。":::
+
+#### <a name="call-out-descriptions"></a>向外撥說明
+
+1. 小型標誌
+2. 供應項目名稱
+3. 搜尋結果摘要
+
+<br>選取 [儲存草稿]，再繼續進行下一節的「預覽」。
 
 ## <a name="preview"></a>預覽
 
@@ -246,9 +281,6 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 > 您可以在 Azure 入口網站的 [訂用帳戶] 頁面上找到 Azure 訂用帳戶識別碼。
 
 藉由分別 (最多 10 個) 或上傳 CSV 檔案 (最多 100 個)，新增至少一個 Azure 訂用帳戶識別碼。 您可以藉由新增這些訂用帳戶識別碼，定義哪些人員可以在即時發佈之前預覽您的供應項目。 如果您的供應項目已上線，您可以定義預覽對象，以測試您供應項目的變更或更新。
-
-> [!NOTE]
-> 預覽對象與私人對象不同。 [預覽] 對象可以在所有供應項目方案於市集上線之前進行查看及確認，包括只會發佈至 [私人] 對象 (在 [可用性] 索引標籤上設定) 的部分。
 
 選取 [儲存草稿]，再繼續進行下一節的「方案概觀」。
 
@@ -286,20 +318,18 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 此索引標籤可讓您設定可使用方案的雲端。 您在此索引標籤上的答案會影響哪些要顯示在其他索引標籤上的欄位。
 
-#### <a name="cloud-availability"></a>雲端可用性
+#### <a name="azure-regions"></a>Azure 區域
 
-您的方案必須可在至少一個使用 Azure IoT 中樞的雲端中使用。
+所有適用于 IoT Edge 模組供應專案的方案都會自動在**Azure Global**中提供。  您的方案可供使用 marketplace 的所有全球 Azure 區域中的客戶使用。 如需詳細資料，請參閱[地理可用性和貨幣支援](../marketplace-geo-availability-currencies.md) \(部分機器翻譯\)。
 
-選取 [Azure 全域] 選項，以便客戶在所有使用市集的全域 Azure 區域中都能使用您的方案。 如需詳細資料，請參閱[地理可用性和貨幣支援](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
-
-選取 [Azure Government 雲端](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)選項，讓您的解決方案顯示在這裡。 這是政府社群雲端，U.S. 聯邦政府、州和地方或部落政府機關的客戶，以及符合資格可提供服務的合作夥伴，擁有此雲端的控管權限。 身為發行者，您必須負責此雲端社區的任何合規性控制、安全性措施和最佳做法。 Azure Government 會使用實際隔離的資料中心和網路 (僅限位於美國地區)。 在[發佈](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)至 Azure Government 之前，請先在該區域內測試並確認您的解決方案，因為結果可能不同。 若要暫存並測試您的解決方案，請從 [Microsoft Azure Government 試用版](https://azure.microsoft.com/global-infrastructure/government/request/)要求試用帳戶。
+選取 [ [Azure Government](../../azure-government/documentation-government-welcome.md) ] 選項，讓您的解決方案顯示在這裡。 這是政府社群雲端，U.S. 聯邦政府、州和地方或部落政府機關的客戶，以及符合資格可提供服務的合作夥伴，擁有此雲端的控管權限。 身為發行者，您必須負責此雲端社區的任何合規性控制、安全性措施和最佳做法。 Azure Government 會使用實際隔離的資料中心和網路 (僅限位於美國地區)。 在[發佈](../../azure-government/documentation-government-manage-marketplace-partners.md)至 Azure Government 之前，請先在該區域內測試並確認您的解決方案，因為結果可能不同。 若要暫存並測試您的解決方案，請從 [Microsoft Azure Government 試用版](https://azure.microsoft.com/global-infrastructure/government/request/)要求試用帳戶。
 
 > [!NOTE]
-> 在您的方案發佈且可在特定雲端中使用之後，您就無法移除該雲端。
+> 當您的方案發佈並可在特定區域中使用之後，您就無法移除該區域。
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Government 雲端認證
+#### <a name="azure-government-certifications"></a>Azure Government 認證
 
-只有在 [雲端可用性] 底下選取 [Azure Government 雲端] 時，才會顯示此選項。
+只有在 [**雲端可用性**] 下選取 [ **Azure Government**時，才會顯示此選項。
 
 Azure Government 服務會處理受限於特定政府法規和需求的資料。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。 若要告知這些程式的認證，您可以提供最多 100 個連結來描述您的認證。 這些可以直接連結到您在程式上的清單或連結到您自己的網站。 只有 Azure Government 客戶可以看到這些連結。
 
@@ -309,7 +339,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 ### <a name="plan-name"></a>方案名稱
 
-這會預先填入您在建立方案時提供給您方案的名稱。 您可以視需要變更此名稱。 該名稱長度最多可達 50 個字元。 這個名稱在 Azure Marketplace 和 Azure 入口網站中會顯示為此方案的標題。 在準備好使用方案之後，其會用來做為預設的模組名稱。
+這會預先填入您在建立方案時提供給您方案的名稱。 您可以視需要變更此名稱。 該名稱長度最多可達 50 個字元。 這個名稱在 Azure Marketplace 和 Azure 入口網站中會顯示為此計畫的標題。 在準備好使用方案之後，其會用來做為預設的模組名稱。
 
 ### <a name="plan-summary"></a>方案摘要
 
@@ -323,15 +353,25 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 #### <a name="plan-examples"></a>計劃範例
 
-下列範例示範方案清單欄位如何出現在不同的檢視畫面中。
+以下是 Azure Marketplace 計畫詳細資料的範例（任何列出的價格僅供範例之用，而不是為了反映實際成本）：
 
-以下是在檢視方案詳細資料時，Azure Marketplace 中的欄位：
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="說明 Azure Marketplace 方案詳細資料。":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-marketplace-plan-details.png" alt-text="說明在 Azure Marketplace 中檢視方案詳細資料時所看到的欄位。":::
+#### <a name="call-out-descriptions"></a>向外撥說明
 
-這些是 Azure 入口網站的方案詳細資料：
+1. 供應項目名稱
+2. 方案名稱
+3. 方案描述
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-azure-portal-plan-details.png" alt-text="說明 Azure 入口網站的方案詳細資料。":::
+<br>以下是 Azure 入口網站計畫詳細資料的範例（任何列出的價格僅供範例之用，而不是為了反映實際成本）：
+
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="說明 Azure 入口網站計畫的詳細資料。":::
+
+#### <a name="call-out-descriptions"></a>向外撥說明
+
+1. 供應項目名稱
+2. 方案名稱
+3. 方案描述
 
 ## <a name="availability"></a>可用性
 
@@ -350,7 +390,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 發佈供應項目之後，您的 IoT Edge 容器映射會複製到 Azure Marketplace 的特定公用容器登錄中。 來自 Azure 使用者的所有使用模組要求，都是從 Azure Marketplace 公用容器登錄 (而不是您的私人容器登錄) 提供。
 
-您可以設定多個平台為目標，並使用標籤提供多個版本的模組容器映像。 若要深入了解標籤和版本設定，請參閱[準備 IoT Edge 模組的技術資產](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset)。
+您可以設定多個平台為目標，並使用標籤提供多個版本的模組容器映像。 若要深入了解標籤和版本設定，請參閱[準備 IoT Edge 模組的技術資產](create-iot-edge-module-asset.md)。
 
 ### <a name="image-repository-details"></a>映像存放庫詳細資料
 
@@ -360,25 +400,35 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **Azure 訂用帳戶識別碼**：提供回報資源使用量、以及針對包含您容器映像的 Azure Container Registry 計費服務的訂用帳戶識別碼。 您可以在 Azure 入口網站的[訂用帳戶頁面](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)上找到此識別碼。
 
-**Aure 資源群組名稱**：提供[資源群組](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)名稱，其中包含具有您容器映像的 Azure Container Registry。 資源群組必須可在訂用帳戶識別碼中存取 (如上)。 您可以在 Azure 入口網站中的[資源群組](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups)頁面上找到名稱。
+**Aure 資源群組名稱**：提供[資源群組](../../azure-resource-manager/management/manage-resource-groups-portal.md)名稱，其中包含具有您容器映像的 Azure Container Registry。 資源群組必須可在訂用帳戶識別碼中存取 (如上)。 您可以在 Azure 入口網站中的[資源群組](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups)頁面上找到名稱。
 
-**Azure Container Registry 名稱**：提供具有您容器映像的 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) 名稱。 容器登錄必須存在於您稍早提供的 Azure 資源群組中。 僅提供登錄名稱，而非完整登入伺服器名稱。 請務必從名稱中省略 **azurecr.io**。 您可以在 Azure 入口網站的[容器登錄頁面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到登錄名稱。
+**Azure Container Registry 名稱**：提供具有您容器映像的 [Azure Container Registry](../../container-registry/container-registry-intro.md) 名稱。 容器登錄必須存在於您稍早提供的 Azure 資源群組中。 僅提供登錄名稱，而非完整登入伺服器名稱。 請務必從名稱中省略 **azurecr.io**。 您可以在 Azure 入口網站的[容器登錄頁面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到登錄名稱。
 
-**Azure Container Registry 的管理使用者名稱**：提供與具有容器映像之 Azure Container Registry 相關聯的[管理使用者名稱](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得管理使用者名稱和密碼，請使用 Azure 命令列介面 (CLI)，將 **admin-enabled** 屬性設定為 **True**。 您可以選擇性地將 Azure 入口網站中的 [管理使用者] 設定為 [啟用]。
+**Azure Container Registry**的系統管理員使用者名稱：提供系統[管理員使用者名稱](../../container-registry/container-registry-authentication.md#admin-account)）與具有容器映射的 Azure Container Registry 相關聯。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得管理使用者名稱和密碼，請使用 Azure 命令列介面 (CLI)，將 **admin-enabled** 屬性設定為 **True**。 您可以選擇性地將 Azure 入口網站中的 [管理使用者] 設定為 [啟用]。
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="說明 [更新容器登錄] 對話方塊。":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="說明 [更新容器登錄] 對話方塊。":::
 
-**Azure Container Registry 的密碼**：提供與 Azure Container Registry 相關聯且擁有您容器映像之管理使用者名稱的密碼。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得 Azure 入口網站的密碼，請前往 [容器登錄] > [存取金鑰]，或是使用 Azure CLI 的 [show 命令](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)。
+#### <a name="call-out-description"></a>向外呼叫描述
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="說明 Azure 入口網站中的 [存取金鑰] 畫面。":::
+1. 管理員使用者
 
-**Azure Container Registry 內的存放庫名稱**。 提供具有您映像的 Azure Container Registry 存放庫名稱。 當您將映像推送至登錄時，可以指定存放庫的名稱。 您可以前往[容器登錄](https://azure.microsoft.com/services/container-registry/) > [存放庫] 頁面來尋找儲存機制的名稱。 如需詳細資訊，請參閱[檢視 Azure 入口網站中的容器登錄存放庫](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)。 請注意，設定名稱之後，即無法變更。 請為您帳戶中的每個供應項目使用唯一的名稱。
+<br>**Azure Container Registry 的密碼**：提供與 Azure Container Registry 相關聯且擁有您容器映像之管理使用者名稱的密碼。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得 Azure 入口網站的密碼，請前往 [容器登錄] > [存取金鑰]，或是使用 Azure CLI 的 [show 命令](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)。
+
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="說明 Azure 入口網站中的 [存取金鑰] 畫面。":::
+
+#### <a name="call-out-descriptions"></a>向外撥說明
+
+1. 存取金鑰
+2. 使用者名稱
+3. 密碼
+
+**Azure Container Registry 內的存放庫名稱**。 提供具有您映像的 Azure Container Registry 存放庫名稱。 當您將映像推送至登錄時，可以指定存放庫的名稱。 您可以前往[容器登錄](https://azure.microsoft.com/services/container-registry/) > [存放庫] 頁面來尋找儲存機制的名稱。 如需詳細資訊，請參閱[檢視 Azure 入口網站中的容器登錄存放庫](../../container-registry/container-registry-repositories.md)。 請注意，設定名稱之後，即無法變更。 請為您帳戶中的每個供應項目使用唯一的名稱。
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>供應項目新版本的映像標籤
 
-當您發佈更新時，客戶必須能夠從 Azure Marketplace 自動取得更新。 如果他們不想要更新，則必須能夠停留在特定版本的映像上。 您可以在每次對映像進行更新時新增映像標籤來執行此動作。
+當您發佈更新時，客戶必須能夠從 Azure Marketplace 自動取得更新。 如果不想更新，則必須能夠停留在特定版本的映像上。 您可以在每次對映像進行更新時新增映像標籤來執行此動作。
 
-**映像標籤**。 此欄位必須包含**最新的**標籤，以指向所有支援平台上的最新版映像。 其也必須包含版本標籤 (例如，以 xx.xx.xx 開頭，其中 xx 是數字)。 客戶應使用[資訊清單標籤](https://github.com/estesp/manifest-tool)，以將多個平台設為目標。 也請務必新增資訊清單標籤參考的所有標籤，以便上傳。 所有資訊清單標籤 (除了最新標籤以外) 必須以 X.Y- 或 X.Y.Z- 開頭，其中 X、Y 和 Z 是整數。 例如，如果最新標籤指向 1.0.1-linux-x64、1.0.1-linux-arm32 和 1.0.1-windows-arm32，則必須將這六個標籤新增到此欄位中。 如需標籤和版本設定的詳細資料，請參閱[準備 IoT Edge 模組的技術資產。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)
+**映像標籤**。 此欄位必須包含**最新的**標籤，以指向所有支援平台上的最新版映像。 其也必須包含版本標籤 (例如，以 xx.xx.xx 開頭，其中 xx 是數字)。 客戶應使用[資訊清單標籤](https://github.com/estesp/manifest-tool)，以將多個平台設為目標。 也請務必新增資訊清單標籤參考的所有標籤，以便上傳。 所有資訊清單標籤 (除了最新標籤以外) 必須以 X.Y- 或 X.Y.Z- 開頭，其中 X、Y 和 Z 是整數。 例如，如果最新標籤指向 1.0.1-linux-x64、1.0.1-linux-arm32 和 1.0.1-windows-arm32，則必須將這六個標籤新增到此欄位中。 如需標籤和版本設定的詳細資料，請參閱[準備 IoT Edge 模組的技術資產。](create-iot-edge-module-asset.md)
 
 ### <a name="default-deployment-settings-optional"></a>預設部署設定 (選擇性)
 
@@ -386,7 +436,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **預設路由**。 IoT Edge 中樞會管理模組、IoT 中樞和裝置之間的通訊。 您可以在模組與 IoT 中樞之間設定資料輸入和輸出的路由，讓訊息在傳送時，無須由其他服務處理訊息，也無須撰寫其他程式碼，從而提升訊息傳送的靈活性。 路由會使用名稱/值組構成。 您最多可以定義五個預設路由名稱，每個長度最多 512 個字元。
 
-請務必在您的路由值中使用正確的[路由語法](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) (通常定義為 FROM/message/* INTO $upstream)。 這表示由任何模組傳送的任何訊息都會移至您的 IoT 中樞。 若要參考您的模組，請使用其預設模組名稱，該名稱將是您的**供應項目名稱**，不含空格和特殊字元。 若要參考尚為未知的其他模組，請使用 <FROM_MODULE_NAME> 慣例，讓客戶知道他們需要更新此資訊。 如需 IoT Edge 路由的詳細資料，請參閱[宣告路由](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)。
+請務必使用正確的[路由語法](../../iot-edge/module-composition.md#declare-routes)），在您的路由值中（通常定義為 FROM/message/* 到 $upstream）。 這表示由任何模組傳送的任何訊息都會移至您的 IoT 中樞。 若要參考您的模組，請使用其預設模組名稱，該名稱將是您的**供應項目名稱**，不含空格和特殊字元。 若要參考尚為未知的其他模組，請使用 <FROM_MODULE_NAME> 慣例，讓客戶知道他們需要更新此資訊。 如需 IoT Edge 路由的詳細資訊，請參閱宣告[路由](../../iot-edge/module-composition.md#declare-routes)）。
 
 例如，如果模組 ContosoModule 接聽 ContosoInput 上的輸入和 ContosoOutput 的輸出資料，則應該定義以下兩個預設路由：
 
@@ -395,7 +445,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 - 第 2 個名稱：FromContosoModuleToCloud
 - 第 2 個值：FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-**預設的模組對應項所需屬性**。 模組對應項是 IoT 中樞內的 JSON 文件，可儲存模組執行個體的狀態資訊，包括所需的屬性。 所需的屬性會搭配報告屬性使用，以便同步處理模組的設定或條件。 解決方案後端可以設定所需屬性，而模組則可加以讀取。 模組也可以接收所需屬性中的變更通知。 所需的屬性會使用最多五個名稱/值組來建立，且每個預設值都必須小於 512 個字元。 最多可以定義五個名稱/值對應項的所需屬性。 對應項所需屬性的值必須是有效的 JSON、非逸出、無陣列，且包含最多四個層級的巢狀階層。 在此案例中，預設值所需的參數無任何意義 (例如，客戶伺服器的 IP 位址)，您可新增參數做為預設值。 若要深入了解對應項所需屬性的詳細資訊，請參閱[定義或更新所需屬性](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)。
+**預設的模組對應項所需屬性**。 模組對應項是 IoT 中樞內的 JSON 文件，可儲存模組執行個體的狀態資訊，包括所需的屬性。 所需的屬性會搭配報告屬性使用，以便同步處理模組的設定或條件。 解決方案後端可以設定所需屬性，而模組則可加以讀取。 模組也可以接收所需屬性中的變更通知。 所需的屬性會使用最多五個名稱/值組來建立，且每個預設值都必須小於 512 個字元。 最多可以定義五個名稱/值對應項的所需屬性。 對應項所需屬性的值必須是有效的 JSON、非逸出、無陣列，且包含最多四個層級的巢狀階層。 在此案例中，預設值所需的參數無任何意義 (例如，客戶伺服器的 IP 位址)，您可新增參數做為預設值。 若要深入瞭解對應項所需屬性的詳細資訊，請參閱[定義或更新所需屬性](../../iot-edge/module-composition.md#define-or-update-desired-properties)。
 
 例如，如果模組使用對應項的所需屬性支援可動態設定的重新整理頻率，請定義以下預設的對應項所需屬性：
 
@@ -424,15 +474,15 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 在 [檢閱] 頁面上，您可以看到發佈狀態：
 
 - 請參閱供應項目每個區段的完成狀態。 在供應項目的所有區段都標示為完成之前，您將無法發佈。
-    - **未啟動** - 區段尚未啟動且必須完成。
-    - **不完整** - 區段中有需要修正的錯誤，或是需要您提供詳細資訊。 如需指引，請參閱本文件稍早的章節。
+    - **未開始** - 區段尚未開始且必須完成。
+    - **不完整** - 區段中有需要修正的錯誤，或是需要您提供詳細資訊。 如需指引，請參閱此文件稍早的小節。
     - **完成** - 區段包含所有必要的資料且沒有任何錯誤。 您必須完成供應項目的所有區段，才能提交供應項目。
 - 將測試指示提供給認證小組，以確保您的供應項目已正確測試。 此外，請提供有助於了解您供應項目的任何補充附註。
 
-若要提交供應項目進行發佈，請選取 [發佈您的供應項目]。
+若要提交供應項目進行發佈，請選取 [發佈]。
 
-我們會傳送一封電子郵件給您，讓您知道供應項目的預覽版本何時可供檢閱及核准。 若要將您的供應項目發佈到公開 (或如果為私人供應項目則發佈到私人對象)，請移至 [合作夥伴中心]，然後選取 [上線]。
+我們會傳送一封電子郵件給您，讓您知道供應項目的預覽版本何時可供檢閱及核准。 若要將您的供應專案發佈至公用，請移至合作夥伴中心，然後選取 [**上線**]。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [更新商業市集中的現有供應項目](https://docs.microsoft.com//azure/marketplace/partner-center-portal/update-existing-offer)
+- [更新商業 Marketplace 中的現有供應項目](https://docs.microsoft.com//azure/marketplace/partner-center-portal/update-existing-offer) \(部分機器翻譯\)

@@ -3,15 +3,16 @@ title: 受控身分識別
 description: 了解受控識別如何在 Azure App Service 和 Azure Functions 中運作、如何設定受控識別，以及如何產生後端資源的權杖。
 author: mattchenderson
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 0bb17ab98dc17bbe7623467451acc65a126bcaf1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: 87e4d67086ea9f260becb2d63765e807e2b73546
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779978"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985747"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用 App Service 和 Azure Functions 的受控身分識別
 
@@ -42,7 +43,7 @@ ms.locfileid: "83779978"
 
 
 > [!NOTE] 
-> 若要在 Azure 入口網站中尋找 Web 或插槽應用程式的受控識別，請移至企業應用程式下的 [使用者設定] 區段。
+> 若要在 Azure 入口網站中尋找 web 應用程式或位置應用程式的受控識別，請在 [**企業應用程式**] 下，查看 [**使用者設定**] 區段。 通常，位置名稱類似 `<app name>/slots/<slot name>` 。
 
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
@@ -79,7 +80,9 @@ ms.locfileid: "83779978"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-下列步驟將逐步引導您建立 Web 應用程式，並使用 Azure PowerShell 指派身分識別給它：
+下列步驟將逐步引導您建立應用程式，並使用 Azure PowerShell 為其指派身分識別。 建立 web 應用程式和函數應用程式的指示不同。
+
+#### <a name="using-azure-powershell-for-a-web-app"></a>使用 web 應用程式的 Azure PowerShell
 
 1. 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview)中的指示來安裝 Azure PowerShell，然後執行 `Login-AzAccount` 來建立與 Azure 的連線。
 
@@ -87,20 +90,39 @@ ms.locfileid: "83779978"
 
     ```azurepowershell-interactive
     # Create a resource group.
-    New-AzResourceGroup -Name myResourceGroup -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create an App Service plan in Free tier.
-    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName $resourceGroupName -Tier Free
 
     # Create a web app.
-    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName $resourceGroupName
     ```
 
 3. 執行 `Set-AzWebApp -AssignIdentity` 命令來建立此應用程式的身分識別：
 
     ```azurepowershell-interactive
-    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName $resourceGroupName 
     ```
+
+#### <a name="using-azure-powershell-for-a-function-app"></a>使用函數應用程式的 Azure PowerShell
+
+1. 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview)中的指示來安裝 Azure PowerShell，然後執行 `Login-AzAccount` 來建立與 Azure 的連線。
+
+2. 使用 Azure PowerShell 建立函數應用程式。 如需如何搭配 Azure Functions 使用 Azure PowerShell 的更多範例，請參閱[Az. 函數參考](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)：
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a function app with a system-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType SystemAssigned
+    ```
+
+您也可以改為使用來更新現有的函式應用程式 `Update-AzFunctionApp` 。
 
 ### <a name="using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本
 
@@ -176,6 +198,35 @@ tenantId 屬性能辨識身分識別所隸屬的 Azure AD 租用戶。 principal
 6. 搜尋您之前建立的身分識別，並加以選取。 按一下 [新增] 。
 
     ![App Service 中的受控身分識別](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
+
+### <a name="using-azure-powershell"></a>使用 Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+下列步驟將逐步引導您建立應用程式，並使用 Azure PowerShell 為其指派身分識別。
+
+> [!NOTE]
+> Azure App Service 的 Azure PowerShell commandlet 的目前版本不支援使用者指派的身分識別。 下列指示適用于 Azure Functions。
+
+1. 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview)中的指示來安裝 Azure PowerShell，然後執行 `Login-AzAccount` 來建立與 Azure 的連線。
+
+2. 使用 Azure PowerShell 建立函數應用程式。 如需如何搭配 Azure Functions 使用 Azure PowerShell 的更多範例，請參閱[Az. 函數參考](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)。 下列腳本也會使用，您 `New-AzUserAssignedIdentity` 必須依據[Create、list 或 delete 使用者指派的受控識別，使用 Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)來個別安裝。
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Create a function app with a user-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType UserAssigned -IdentityId $userAssignedIdentity.Id
+    ```
+
+您也可以改為使用來更新現有的函式應用程式 `Update-AzFunctionApp` 。
 
 ### <a name="using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本
 
@@ -428,7 +479,11 @@ $accessToken = $tokenResponse.access_token
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>移除身分識別
 
-您可用建立身分識別的相同方式，使用入口網站、PowerShell 或 CLI 停用功能，來將系統指派的身分識別移除。 使用者指派的身分識別可以個別移除。 若要移除所有身分識別，請將 [ARM 範本](#using-an-azure-resource-manager-template)中的類型 設定為 [無]：
+您可用建立身分識別的相同方式，使用入口網站、PowerShell 或 CLI 停用功能，來將系統指派的身分識別移除。 使用者指派的身分識別可以個別移除。 若要移除所有身分識別，請將 identity 類型設定為 "None"。
+
+以這種方式移除系統指派的身分識別，也會從 AAD 將其刪除。 當您刪除應用程式資源時，系統指派的身分識別會自動從 Azure AD 移除。
+
+若要移除[ARM 範本](#using-an-azure-resource-manager-template)中的所有身分識別：
 
 ```json
 "identity": {
@@ -436,7 +491,12 @@ $accessToken = $tokenResponse.access_token
 }
 ```
 
-以這種方式移除系統指派的身分識別，也會從 AAD 將其刪除。 當您刪除應用程式資源時，系統指派的身分識別會自動從 Azure AD 移除。
+若要移除 Azure PowerShell 中的所有身分識別（僅 Azure Functions）：
+
+```azurepowershell-interactive
+# Update an existing function app to have IdentityType "None".
+Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -IdentityType None
+```
 
 > [!NOTE]
 > 還可以設定另一個應用程式設定：WEBSITE_DISABLE_MSI，這只會停用本機權杖服務。 不過，系統會將身分識別留在原地，且工具仍會將受控身分識別顯示為「開啟」或「已啟用」。 因此，不建議使用這個設定。

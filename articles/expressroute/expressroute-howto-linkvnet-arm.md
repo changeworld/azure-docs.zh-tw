@@ -4,16 +4,16 @@ description: 本文提供以下內容的概觀：如何使用 Resource Manager �
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/20/2018
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 755b1898ee4cbc32de3a65a6bbc368ecf3eb3acf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8fd3bc4a2efd90857d0696491102790b069d5e1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80616374"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984144"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>將虛擬網路連線到 ExpressRoute 電路
 > [!div class="op_single_selector"]
@@ -97,12 +97,14 @@ $auth1 = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -N
 
 對此動作的回應將包含授權金鑰和狀態：
 
-    Name                   : MyAuthorization1
-    Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
-    Etag                   : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 
-    AuthorizationKey       : ####################################
-    AuthorizationUseStatus : Available
-    ProvisioningState      : Succeeded
+```azurepowershell
+Name                   : MyAuthorization1
+Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
+Etag                   : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 
+AuthorizationKey       : ####################################
+AuthorizationUseStatus : Available
+ProvisioningState      : Succeeded
+```
 
 
 

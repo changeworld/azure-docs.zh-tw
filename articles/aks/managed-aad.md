@@ -3,25 +3,27 @@ title: 在 Azure Kubernetes Service 中使用 Azure AD
 description: 瞭解如何使用 Azure Kubernetes Service 中的 Azure AD （AKS）
 services: container-service
 manager: gwallace
+author: mlearned
 ms.topic: article
-ms.date: 05/11/2020
-ms.openlocfilehash: 67f5f707ad2971551e3c9623dd5c07ad880afcf2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/25/2020
+ms.author: mlearned
+ms.openlocfilehash: bf635d37559d09e887a67be27c412bff7899127b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211141"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023392"
 ---
-# <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>整合 Azure Kubernetes Service 中的 Azure AD （預覽）
+# <a name="integrate-aks-managed-azure-ad-preview"></a>整合 AKS 管理的 Azure AD （預覽）
 
 > [!Note]
-> 具有 AAD （Azure Active Directory）整合的現有 AKS 叢集不會受到新的 AKS 管理 AAD 體驗的影響。
+> 具有 Azure Active Directory （Azure AD）整合的現有 AKS （Azure Kubernetes Service）叢集不會受到新的 AKS 管理 Azure AD 體驗的影響。
 
-Azure AD 與 AKS 受控 AAD 整合的設計，是為了簡化 Azure AD 整合體驗，其中使用者先前必須建立用戶端應用程式、伺服器應用程式，並要求 Azure AD 租使用者授與目錄讀取權限。 在新版本中，AKS 資源提供者會為您管理用戶端和伺服器應用程式。
+Azure AD 與 AKS 管理的 Azure AD 整合的設計，是為了簡化 Azure AD 整合體驗，其中使用者先前必須建立用戶端應用程式、伺服器應用程式，並要求 Azure AD 租使用者授與目錄讀取權限。 在新版本中，AKS 資源提供者會為您管理用戶端和伺服器應用程式。
 
 ## <a name="limitations"></a>限制
 
-* 您目前無法將現有 AKS AAD 整合的叢集升級至新的 AKS 管理 AAD 體驗。
+* 您目前無法將現有的 AKS Azure AD 整合式叢集升級至新的 AKS 管理 Azure AD 體驗。
 
 > [!IMPORTANT]
 > AKS preview 功能可在自助服務上自行選擇。 預覽會以「原樣」和「可用」的方式提供，並從服務等級協定中排除，並享有有限擔保。 AKS 預覽的部分是由客戶支援，以最大的方式來涵蓋。 因此，這些功能並不適用于生產環境使用。 如需詳細資訊，請參閱下列支援文章：
@@ -31,10 +33,12 @@ Azure AD 與 AKS 受控 AAD 整合的設計，是為了簡化 Azure AD 整合體
 
 ## <a name="before-you-begin"></a>開始之前
 
+* 流覽至 Azure 入口網站並選取 [Azure Active Directory > 內容] > [目錄識別碼]，找出您的 Azure 帳戶租使用者識別碼。
+
 > [!Important]
 > 您必須使用最低版本為1.18 的 Kubectl
 
-您必須安裝下列資源：
+您必須先安裝下列資源：
 
 - Azure CLI 2.5.1 版或更新版本
 - Aks-preview 0.4.38 延伸模組
@@ -52,7 +56,7 @@ az extension update --name aks-preview
 az extension list
 ```
 
-若要安裝 kubectl，請使用下列各項：
+若要安裝 kubectl，請使用下列命令：
 
 ```azurecli
 sudo az aks install-cli
@@ -61,55 +65,79 @@ kubectl version --client
 
 請使用[這些指示](https://kubernetes.io/docs/tasks/tools/install-kubectl/)來進行其他作業系統。
 
-> [!CAUTION]
-> 在訂用帳戶上註冊功能之後，您目前無法取消註冊該功能。 當您啟用某些預覽功能時，預設值可能會用於在訂用帳戶中建立的所有 AKS 叢集。 請勿在生產訂用帳戶上啟用預覽功能。 相反地，請使用個別的訂用帳戶來測試預覽功能，並收集意見反應。
-
 ```azurecli-interactive
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
 ```
 
-可能需要幾分鐘的時間，狀態才會顯示為**已註冊**。 您可以使用[az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list)命令來檢查註冊狀態：
+可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
-當 [狀態] 顯示為 [已註冊] 時，請 `Microsoft.ContainerService` 使用[az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register)命令重新整理資源提供者的註冊：
+當狀態顯示為已註冊時，請使用 [az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
+## <a name="azure-ad-authentication-overview"></a>Azure AD 驗證總覽
+
+叢集系統管理員可以根據使用者的身分識別或目錄群組成員資格，設定 Kubernetes 角色型存取控制（RBAC）。 透過 OpenID Connect 對 AKS 叢集提供 Azure AD 驗證。 OpenID Connect 是以 OAuth 2.0 通訊協定為建置基礎的身分識別層。 如需 OpenID Connect 的詳細資訊，請參閱[OPEN ID connect 檔][open-id-connect]。
+
+從 Kubernetes 叢集內部，Webhook 權杖驗證用來確認驗證權杖。 Webhook 權杖驗證已設定並當作 AKS 叢集的一部分管理。
+
+## <a name="webhook-and-api-server"></a>Webhook 和 API 伺服器
+
+:::image type="content" source="media/aad-integration/auth-flow.png" alt-text="Webhook 和 API 伺服器驗證流程":::
+
+如上圖所示，API 伺服器會呼叫 AKS webhook 伺服器，並執行下列步驟：
+
+1. Kubectl 會使用 Azure AD 用戶端應用程式，以[OAuth 2.0 裝置授權授與流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)登入使用者。
+2. Azure AD 提供 access_token、id_token 和 refresh_token。
+3. 使用者使用來自 kubeconfig 的 access_token 提出 kubectl 的要求。
+4. Kubectl 會將 access_token 傳送至 Kube-apiserver。
+5. API 伺服器是使用 Auth WebHook 伺服器進行設定，以執行驗證。
+6. 驗證 webhook 伺服器會藉由檢查 Azure AD 公開簽署金鑰來確認 JSON Web 權杖簽章是否有效。
+7. 伺服器應用程式會使用使用者提供的認證，從 MS 圖形 API 查詢已登入使用者的群組成員資格。
+8. 回應會以使用者資訊（例如存取權杖的使用者主體名稱（UPN）宣告）和使用者的群組成員資格（根據物件識別碼）傳送至 Kube-apiserver。
+9. API 會根據 Kubernetes 角色/接著執行授權決策。
+10. 授權之後，API 伺服器會將回應傳回給 kubectl。
+11. Kubectl 會提供意見反應給使用者。
+
 
 ## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>建立已啟用 Azure AD 的 AKS 叢集
 
-您現在可以使用下列 CLI 命令來建立 AKS 叢集。
+使用下列 CLI 命令來建立 AKS 叢集。
 
-首先，建立 Azure 資源群組：
+建立 Azure 資源群組：
 
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location centralus
 ```
 
-然後，建立 AKS 叢集：
+您可以使用現有的 Azure AD 群組，或建立一個新的群組。 您需要 Azure AD 群組的物件識別碼。
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad
+# List existing groups in the directory
+az ad group list
 ```
-上述命令會建立三個節點的 AKS 叢集，但建立叢集的使用者預設不是具有此叢集存取權之群組的成員。 此使用者必須建立 Azure AD 群組、將其本身新增為群組的成員，然後更新叢集，如下所示。 請遵循[這裡](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)的指示
 
-建立群組並將自己（和其他）新增為成員之後，您可以使用下列命令，以 Azure AD 群組來更新叢集
+若要為您的叢集系統管理員建立 r) 新的 Azure AD 群組，請使用下列命令：
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
+# Create an Azure AD group
+az ad group create --display-name MyDisplay --mail-nickname MyDisplay
 ```
-或者，如果您第一次建立群組並新增成員，您可以在建立時使用下列命令來啟用 Azure AD 群組：
+
+建立 AKS 叢集，並啟用 Azure AD 群組的系統管理存取權
 
 ```azurecli-interactive
+# Create an AKS-managed Azure AD cluster
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
-成功建立 AKS 管理的 AAD 叢集在回應本文中會有下列區段
+成功建立 AKS 管理的 Azure AD 叢集在回應本文中會有下列區段
 ```
 "Azure ADProfile": {
     "adminGroupObjectIds": null,
@@ -124,12 +152,17 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-g
 叢集會在幾分鐘內建立。
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>存取已啟用 Azure AD 的叢集
-若要取得系統管理員認證以存取叢集：
 
+您將需要[Azure Kubernetes Service 叢集使用者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role)內建角色，才能執行下列步驟。
+
+取得用來存取叢集的使用者認證：
+ 
 ```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
+ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
-現在，請使用 kubectl get 節點命令來查看叢集中的節點：
+依照指示進行登入。
+
+使用 kubectl get 節點命令來查看叢集中的節點：
 
 ```azurecli-interactive
 kubectl get nodes
@@ -139,22 +172,45 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
+設定以[角色為基礎的存取控制（RBAC）](https://docs.microsoft.com/azure/aks/azure-ad-rbac) ，為您的叢集設定額外的安全性群組。
 
-若要取得用來存取叢集的使用者認證：
- 
+## <a name="troubleshooting-access-issues-with-azure-ad"></a>針對 Azure AD 的存取問題進行疑難排解
+
+> [!Important]
+> 下面所述的步驟會略過一般 Azure AD 群組驗證。 請只在緊急情況下使用它們。
+
+如果您因為無法存取具有叢集存取權的有效 Azure AD 群組而永久封鎖，您仍然可以取得系統管理員認證來直接存取叢集。
+
+若要執行這些步驟，您必須具備 Azure Kubernetes Service 叢集系統[管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role)內建角色的存取權。
+
 ```azurecli-interactive
- az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
+az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
 ```
-依照指示進行登入。
 
-您會收到：**您必須登入伺服器（未經授權）**
+## <a name="non-interactive-login-with-kubelogin"></a>使用 kubelogin 的非互動式登入
 
-上述使用者會收到錯誤，因為使用者不屬於可存取叢集的群組。
+有些非互動式案例（例如持續整合管線）目前無法在 kubectl 中使用。 您可以使用[kubelogin](https://github.com/Azure/kubelogin)來存取具有非互動式服務主體登入的叢集。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 瞭解[Azure AD 以角色為基礎的存取控制][azure-ad-rbac]。
 * 使用[kubelogin](https://github.com/Azure/kubelogin)來存取 kubectl 中未提供的 Azure 驗證功能。
+* 使用[Azure Resource Manager （ARM）範本][aks-arm-template]來建立 AKS 管理的 Azure AD 啟用的叢集。
+
+<!-- LINKS - external -->
+[kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
 [azure-ad-rbac]: azure-ad-rbac.md
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-group-create]: /cli/azure/group#az-group-create
+[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
+[az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
+[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[operator-best-practices-identity]: operator-best-practices-identity.md
+[azure-ad-rbac]: azure-ad-rbac.md
+[azure-ad-cli]: azure-ad-integration-cli.md
+

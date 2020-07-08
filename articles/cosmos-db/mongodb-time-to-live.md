@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: how-to
 ms.date: 12/26/2018
-ms.openlocfilehash: 0fe0c9e41a5787a963920d300cd99ecaf8803019
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: HT
+ms.openlocfilehash: 74c140f2fa08fb49235c0503ea5812e047185f8b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262764"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023494"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 讓資料過期
 
@@ -74,7 +74,7 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 使用 Azure Cosmos DB 適用於 MongoDB 的 API 可以啟用個別文件的 TTL 功能。
 
-![在入口網站中啟動個別文件 TTL 功能的螢幕擷取畫面](./media/mongodb-ttl/mongodb_portal_ttl.png) 
+:::image type="content" source="./media/mongodb-ttl/mongodb_portal_ttl.png" alt-text="在入口網站中啟動個別文件 TTL 功能的螢幕擷取畫面":::
 
 ## <a name="next-steps"></a>後續步驟
 * [利用存留時間讓 Azure Cosmos DB 中的資料自動過期](../cosmos-db/time-to-live.md)

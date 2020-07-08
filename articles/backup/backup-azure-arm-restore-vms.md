@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 6a170755673c05448d1bb86af993cad929664949
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 00b0f7313ba77037d90dcdb8ed04e5f61e335c55
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597768"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023324"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -21,10 +21,10 @@ Azure 備份提供數種方法來還原 VM。
 
 **還原選項** | **詳細資料**
 --- | ---
-**建立新的 VM** | 從還原點快速建立及啟動基本 VM 並加以執行。<br/><br/> 您可以指定 VM 的名稱，並選取將在其中放置資源群組和虛擬網路（VNet），並為還原的 VM 指定儲存體帳戶。 必須在與來源 VM 相同的區域中建立新的 VM。
-**還原磁碟** | 還原 VM 磁片，然後可以用來建立新的 VM。<br/><br/> Azure 備份提供一個範本，協助您自訂和建立 VM。 <br/><br> 還原作業會產生範本，您可以下載並使用該範本來指定自訂 VM 設定，並建立 VM。<br/><br/> 磁片會複製到您指定的資源群組。<br/><br/> 或者，您可以將磁碟連結至現有 VM，或使用 PowerShell 建立新的 VM。<br/><br/> 此選項十分適用於自訂 VM、新增備份時沒有的組態設定，或新增必須使用範本或 PowerShell 來配置的設定。
-**取代現有的** | 您可以還原磁碟，然後使用該磁碟來取代現有 VM 上的磁碟。<br/><br/> 目前的 VM 必須存在。 如果已刪除，則無法使用此選項。<br/><br/> Azure 備份會在更換磁片之前取得現有 VM 的快照，並將其儲存在您指定的暫存位置。 已連線至 VM 的現有磁片會取代為選取的還原點。<br/><br/> 快照集會複製到保存庫，並根據保留原則加以保留。 <br/><br/> 取代磁片操作之後，原始磁片會保留在資源群組中。 如果不需要，您可以選擇手動刪除原始磁片。 <br/><br/>不加密的受控 Vm 支援 Replace existing，包括[使用自訂映射建立](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)的 vm。 傳統 Vm 不支援。<br/><br/> 如果還原點中的磁碟數目多於或少於目前的 VM，則還原點中的磁碟數目只會反映該 VM 組態。<br><br> 已連結資源（例如[使用者指派的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)或[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)）的 vm 不支援取代現有的，因為備份用戶端應用程式在執行還原時，沒有這些資源的許可權。
-**跨區域（次要地區）** | 跨區域還原可以用來還原次要區域中的 Azure Vm，也就是[azure 配對的區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions)。<br><br> 如果備份是在次要區域中完成，您可以為選取的復原點還原所有的 Azure Vm。<br><br> 這項功能適用于下列選項：<br> <li> [建立 VM](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm) <br> <li> [復原磁碟](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) <br><br> 我們目前不支援 [[取代現有磁片](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#replace-existing-disks)] 選項。<br><br> 權限<br> 次要地區的還原作業可以由備份管理員和應用程式管理員執行。
+**建立新的 VM** | 從還原點快速建立及啟動基本 VM 並加以執行。<br/><br/> 您可指定 VM 的名稱，選取要放置 VM 的資源群組和虛擬網路 (VNet)，以及為已還原的 VM 指定儲存體帳戶。 建立新 VM 的區域必須與來源 VM 相同。
+**還原磁碟** | 還原 VM 磁碟，以便後續用於建立新 VM。<br/><br/> Azure 備份提供一個範本，協助您自訂和建立 VM。 <br/><br> 還原作業會產生範本，您可以下載並使用該範本來指定自訂 VM 設定，並建立 VM。<br/><br/> 磁碟會複製到所指定的資源群組。<br/><br/> 或者，您可以將磁碟連結至現有 VM，或使用 PowerShell 建立新的 VM。<br/><br/> 此選項十分適用於自訂 VM、新增備份時沒有的組態設定，或新增必須使用範本或 PowerShell 來配置的設定。
+**取代現有的** | 您可以還原磁碟，然後使用該磁碟來取代現有 VM 上的磁碟。<br/><br/> 目前的 VM 必須存在。 如果已刪除，則無法使用此選項。<br/><br/> Azure 備份會在取代磁碟前，取得現有 VM 的快照集，並儲存於所指定的暫存位置， 然後使用所選還原點來取代連線到 VM 的現有磁碟。<br/><br/> 快照集會複製到保存庫，並根據保留原則加以保留。 <br/><br/> 完成取代磁碟作業之後，原始磁碟會保留在資源群組中。 如果不需要，您可以選擇手動刪除原始磁片。 <br/><br/>不加密的受控 Vm 支援 Replace existing，包括[使用自訂映射建立](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)的 vm。 傳統 Vm 不支援。<br/><br/> 如果還原點中的磁碟數目多於或少於目前的 VM，則還原點中的磁碟數目只會反映該 VM 組態。<br><br> 與資源連結的 VM (例如[使用者指派的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 或 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)) 不支援取代現有的項目，因為備份用戶端應用程式在執行還原時，無權使用這些資源。
+**跨區域 (次要區域)** | 跨區域還原可用來還原次要區域 (即 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions) (機器翻譯)) 中的 Azure VM。<br><br> 如果備份是在次要區域中完成，即可將所有 Azure VM 還原至選取的復原點。<br><br> 這項功能適用於下列選項：<br> <li> [建立 VM](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm) <br> <li> [還原磁碟](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) (機器翻譯) <br><br> 目前不支援[取代現有磁碟](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#replace-existing-disks) (機器翻譯) 選項。<br><br> 權限<br> 次要地區的還原作業可由備份管理員和應用程式管理員執行。
 
 > [!NOTE]
 > 您也可以復原 Azure VM 上的特定檔案和資料夾。 [深入了解](backup-azure-restore-files-from-vm.md)。
@@ -43,7 +43,7 @@ Azure 備份提供數種方法來還原 VM。
   - 還原非 premium Vm 時，不支援 premium 儲存體帳戶。
   - 還原受控 Vm 時，不支援使用網路規則設定的 premium 儲存體帳戶。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 若要還原 VM （建立新的 VM），請確定您具有還原 VM 作業的正確角色型存取控制（RBAC）[許可權](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)。
 
@@ -51,7 +51,7 @@ Azure 備份提供數種方法來還原 VM。
 
 ## <a name="select-a-restore-point"></a>選取還原點
 
-1. 在與您想要還原的 VM 相關聯的保存庫中，按一下 [**備份專案** > ] [**Azure 虛擬機器**]。
+1. 在與您想要還原的 VM 相關聯的保存庫中，按一下 [**備份專案**] [  >  **Azure 虛擬機器**]。
 2. 建立 VM。 根據預設，VM 儀表板上會顯示過去 30 天內的復原點。 您可以根據日期、時間範圍和不同類型的快照集一致性來顯示或篩選出超過 30 天的復原點。
 3. 若要還原 VM，請按一下 [還原 VM]****。
 
@@ -73,7 +73,7 @@ Azure 備份提供數種方法來還原 VM。
 
 其中一個[還原選項](#restore-options)可讓您從還原點快速建立具有基本設定的 VM。
 
-1. 在 [**還原** > 設定] [**建立新** > 的**還原類型**] 中，選取 [**建立虛擬機器**]。
+1. 在 [**還原**設定] [  >  **建立新**  >  的**還原類型**] 中，選取 [**建立虛擬機器**]。
 2. 在 [**虛擬機器名稱**] 中，指定訂用帳戶中不存在的 VM。
 3. 在 [資源群組]**** 中，選取新 VM 的現有資源群組，或使用全域的唯一名稱來建立新的資源群組。 如果您指派已經存在的名稱，Azure 就會為群組指派與 VM 相同的名稱。
 4. 在 [虛擬網路]**** 中，選取將放置 VM 的 VNet。 與訂用帳戶相關聯的所有 VNet 均會顯示。 選取子網路。 預設會選取第一個子網路。
@@ -91,7 +91,7 @@ Azure 備份提供數種方法來還原 VM。
 - [將還原的磁碟](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)連結至現有 VM。
 - 使用 PowerShell 從還原的磁片[建立新的 VM](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) 。
 
-1. 在 [**還原** > 設定] [**建立新** > 的**還原類型**] 中，選取 [**復原磁碟**]。
+1. 在 [**還原**設定] [  >  **建立新**  >  的**還原類型**] 中，選取 [**復原磁碟**]。
 2. 在 [資源群組]**** 中，選取已還原磁碟的現有資源群組，或使用全域的唯一名稱來建立新的資源群組。
 3. 在 [儲存體帳戶]**** 中，指定要將 VHD 複製到其中的帳戶。 [深入了解](#storage-accounts)。
 
@@ -144,7 +144,7 @@ Azure 備份提供數種方法來還原 VM。
 
 如果已啟用 [CRR]，您可以在次要區域中查看備份專案。
 
-1. 在入口網站中，移至 [復原**服務保存庫** > ] [**備份專案**]
+1. 在入口網站中，移至 [復原**服務保存庫**] [  >  **備份專案**]
 2. 按一下 [**次要地區**] 以查看次要地區中的專案。
 
 ![次要區域中的虛擬機器](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
@@ -161,6 +161,9 @@ Azure 備份提供數種方法來還原 VM。
 
 ![還原設定](./media/backup-azure-arm-restore-vms/rest-config.png)
 
+>[!NOTE]
+>次要區域中的虛擬網路必須以唯一的方式指派，而且無法用於該資源群組中的任何其他 Vm。
+
 ![觸發程式還原進行中通知](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
 - 若要還原和建立 VM，請參閱[建立 vm](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm)。
@@ -171,7 +174,7 @@ Azure 備份提供數種方法來還原 VM。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>監視次要區域還原作業
 
-1. 在入口網站中，移至 [復原**服務保存庫** > ] [**備份作業**]
+1. 在入口網站中，移至 [復原**服務保存庫**] [  >  **備份作業**]
 2. 按一下 [**次要地區**] 以查看次要地區中的專案。
 
 ![已篩選的備份作業](./media/backup-azure-arm-restore-vms/secbackupjobs.png)
@@ -183,14 +186,16 @@ Azure 備份提供數種方法來還原 VM。
 **案例** | **指引**
 --- | ---
 **使用 Hybrid Use Benefit 還原 VM** | 如果 Windows VM 使用 [Hybrid Use Benefit (HUB) 授權](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，請使用提供的範本 (將**授權類型**設定為 **Windows_Server**) 或 PowerShell 來還原磁碟並建立新 VM。  此設定也可以在建立 VM 之後套用。
-**在 Azure 資料中心發生災害時還原 VM** | 如果保存庫使用 GRS 和主要資料中心來因應 VM 的停機狀況，則 Azure 備份可支援將備份的 VM 還原至配對的資料中心。 您可以在配對的資料中心內選取儲存體帳戶，然後依正常程序進行還原。 Azure 備份會使用配對區域中的計算服務來建立還原的 VM。 [深入了解](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)資料中心復原。
+**在 Azure 資料中心發生災害時還原 VM** | 如果保存庫使用 GRS 和主要資料中心來因應 VM 的停機狀況，則 Azure 備份可支援將備份的 VM 還原至配對的資料中心。 您可以在配對的資料中心內選取儲存體帳戶，然後依正常程序進行還原。 Azure 備份會使用配對區域中的計算服務來建立還原的 VM。 [深入了解](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)資料中心復原。<br><br> 如果保存庫使用 GRS，您可以選擇 [[跨區域還原](#cross-region-restore)] 這項新功能。 這可讓您在完整或部分中斷的情況下還原到第二個區域，甚至完全沒有中斷的情況。
 **還原單一網域中的單一網域控制站 VM** | 像任何其他 VM 一樣地還原 VM。 請注意：<br/><br/> 從 Active Directory 的觀點來看，Azure VM 就像任何其他 VM 一樣。<br/><br/> 我們也提供了目錄服務還原模式 (DSRM)，因此，您可以進行所有的 Active Directory 復原案例。 [深入了解](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)虛擬化網域控制站的備份與還原考量。
 **還原單一網域中的多個網域控制站 VM** | 如果可以透過網路連線到相同網域中的其他網域控制站，則可以像任何 VM 一樣還原網域控制站。 如果該網域控制站是網域內剩餘的最後一個網域控制站，或者您是在隔離的網路中進行復原，請使用[樹系復原](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **還原單一樹系中的多個網域** | 我們建議使用[樹系復原](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **裸機還原** | Azure VM 與內部部署 Hypervisor 的主要差異是，Azure 沒有提供 VM 主控台。 在某些情況下，您必須使用主控台，例如使用裸機復原 (BMR) 類型的備份進行復原。 不過，從保存庫來還原 VM 可完整取代 BMR。
 **還原具有特殊網路組態的 VM** | 特殊網路組態包含使用內部或外部負載平衡、使用多個 NIC 或多個保留 IP 位址的 VM。 您可以使用[還原磁碟選項](#restore-disks)來還原這些 VM。 此選項會將 Vhd 複製到指定的儲存體帳戶，然後您可以根據您的設定，建立具有[內部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)或[外部](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell)負載平衡器、[多個 NIC](../virtual-machines/windows/multiple-nics.md)或[多個保留 IP 位址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)的 VM。
 **NIC/子網上的網路安全性群組（NSG）** | Azure VM 備份支援在 vnet、子網和 NIC 層級備份和還原 NSG 資訊。
-**區域釘選的 Vm** | 如果您備份的 Azure VM 已釘選到區域（使用 Azure 備份），則您可以在固定所在的相同區域中進行還原。 [深入了解](https://docs.microsoft.com/azure/availability-zones/az-overview)
+**區域釘選的 Vm** | 如果您備份的 Azure VM 已釘選到區域（使用 Azure 備份），則您可以在其釘選所在的相同區域中進行還原。 [深入了解](https://docs.microsoft.com/azure/availability-zones/az-overview)
+**還原任何可用性設定組中的 VM** | 從入口網站還原 VM 時，沒有選擇可用性設定組的選項。 還原的 VM 不會有可用性設定值組。 如果您使用 [復原磁碟] 選項，則當您使用提供的範本或 PowerShell 從磁片建立 VM 時，可以[指定可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md)。
+**還原特殊的 Vm，例如 SQL Vm** | 如果您使用 Azure VM 備份來備份 SQL VM，然後在復原磁碟後使用 [還原 VM] 選項或建立 VM，則必須向 SQL 提供者註冊新建立的 VM，如[這裡](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-vm-resource-provider-register?tabs=azure-cli%2Cbash)所述。 這會將已還原的 VM 轉換成 SQL VM。
 
 ## <a name="track-the-restore-operation"></a>追蹤還原作業
 

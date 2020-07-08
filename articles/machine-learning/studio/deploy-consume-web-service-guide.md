@@ -5,21 +5,19 @@ description: 您可以使用 Azure Machine Learning Studio （傳統）將機器
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 29852eb0920f7bb32464d91e0be65c7dcb03325c
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 5077e71eda42aa3b48cda2b39b60efc19bddd8a5
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627954"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985528"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio （傳統） Web 服務：部署和耗用量
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 您可以使用 Azure Machine Learning Studio （傳統）將機器學習工作流程和模型部署為 web 服務。 然後便可以透過網際網路利用這些 Web 服務從應用程式呼叫機器學習服務模型，進行即時預測或批次模式的預測。 由於 Web 服務為 RESTful，您可以從各種程式設計語言與平台 (如 .NET 與 Java) 和應用程式 (如 Excel) 呼叫它們。
 
@@ -55,7 +53,9 @@ Web 服務的 Azure Machine Learning Studio （傳統）資源提供者可讓您
 
 若要匯出預測實驗，請使用這個 [範例程式碼](https://github.com/ritwik20/AzureML-WebServices)。 由程式碼建立 .exe 檔案之後，您可以輸入︰
 
-    C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
+```azurepowershell
+C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
+```
 
 執行應用程式會建立 Web 服務的 JSON 範本。 若要使用此範本部署 Web 服務，必須新增下列資訊︰
 
@@ -70,13 +70,15 @@ Web 服務的 Azure Machine Learning Studio （傳統）資源提供者可讓您
 
 以下是範例：
 
-    "StorageAccount": {
-            "name": "YourStorageAccountName",
-            "key": "YourStorageAccountKey"
-    },
-    "CommitmentPlan": {
-        "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
-    }
+```json
+"StorageAccount": {
+        "name": "YourStorageAccountName",
+        "key": "YourStorageAccountKey"
+},
+"CommitmentPlan": {
+    "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
+}
+```
 
 如需更詳細的資訊，請參閱下列文章和範例程式碼：
 
@@ -88,7 +90,7 @@ Web 服務的 Azure Machine Learning Studio （傳統）資源提供者可讓您
 
 您可以從 Azure Machine Learning Web Services 入口網站測試您的 Web 服務。 這包括測試要求-回應服務 (RRS) 和批次執行服務 (BES) 介面。
 
-* [部署新的 Web 服務](deploy-a-machine-learning-web-service.md)
+* [部署新的 web 服務](deploy-a-machine-learning-web-service.md)
 * [部署 Azure Machine Learning Web 服務](deploy-a-machine-learning-web-service.md)
 * [教學課程3：部署信用風險模型](tutorial-part3-credit-risk-deploy.md)
 

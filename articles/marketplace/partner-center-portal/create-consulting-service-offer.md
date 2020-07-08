@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.date: 06/17/2020
+ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700939"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984265"
 ---
 # <a name="create-a-consulting-service-offer"></a>建立諮詢服務供應項目
 
-本文說明如何將諮詢服務供應項目發佈至 [Microsoft AppSource](https://appsource.microsoft.com/) 或 [Azure Marketplace](https://azuremarketplace.microsoft.com/)。 根據 Microsoft [Dynamics 365](https://dynamics.microsoft.com/) 和 AppSource 上的Power Platform，列出諮詢服務供應項目。 根據 Azure Marketplace 上的 Microsoft Azure 列出諮詢服務供應項目。 開始之前，請先[在合作夥伴中心建立商業市集](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) (如果您尚未這麼做)。 請確定您已在商業市集方案中註冊帳戶。
+本文說明如何將諮詢服務供應項目發佈至 [Microsoft AppSource](https://appsource.microsoft.com/) 或 [Azure Marketplace](https://azuremarketplace.microsoft.com/)。 根據 Microsoft [Dynamics 365](https://dynamics.microsoft.com/) 和 AppSource 上的Power Platform，列出諮詢服務供應項目。 根據 Azure Marketplace 上的 Microsoft Azure 列出諮詢服務供應項目。 開始之前，請先[在合作夥伴中心建立商業市集](create-account.md) (如果您尚未這麼做)。 請確定您已在商業市集方案中註冊帳戶。
 
-建立供應項目之前，請先檢閱[諮詢服務必要條件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)中的必要條件。
+建立供應項目之前，請先檢閱[諮詢服務必要條件](consulting-service-prerequisites.md)中的必要條件。
 
 ## <a name="publishing-benefits"></a>發佈的優點
 
@@ -63,12 +63,12 @@ ms.locfileid: "83700939"
 
 1. 選取 [連線] 以指定您希望我們傳送客戶潛在客戶的位置。 合作夥伴中心支援下列系統：
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > 如果以上未列出您的 CRM 系統，請使用 [Azure 資料表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或 [Https 端點](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)來儲存客戶潛在客戶資料，然後將資料匯出至您的 CRM 系統。
+    > 如果以上未列出您的 CRM 系統，請使用 [Azure 資料表](commercial-marketplace-lead-management-instructions-azure-table.md)或 [Https 端點](commercial-marketplace-lead-management-instructions-https.md)來儲存客戶潛在客戶資料，然後將資料匯出至您的 CRM 系統。
 
 2. 在合作夥伴中心內發佈時，將供應項目連線到潛在客戶目的地。
 3. 確認已正確設定與潛在客戶目的地的連線。 在合作夥伴中心發佈之後，我們會驗證連線並將測試潛在客戶傳送給您。 在上架前預覽供應項目時，您也可以嘗試在預覽環境中自行購買供應項目，藉此測試您的潛在客戶連線。
@@ -76,9 +76,9 @@ ms.locfileid: "83700939"
 
 以下是一些額外的潛在客戶管理資源：
 
-- [潛在客戶管理概觀](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [潛在客戶管理常見問題集](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常見潛在客戶設定錯誤](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [潛在客戶管理概觀](commercial-marketplace-get-customer-leads.md)
+- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
+- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
 - [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (請確定您已關閉快顯封鎖程式)
 
 選取 [儲存草稿] 後再繼續。
@@ -96,10 +96,19 @@ ms.locfileid: "83700939"
     - **概念證明**：可以判斷解決方案是否符合客戶需求的有限範圍實作。
     - **研討會**：在客戶場地進行的互動式交流。 其可以包含以客戶資料或環境為基礎的訓練、簡報、評量或示範。
 
-3. 如果您選取了 **Azure** 的主要產品，請選取最多三個**解決方案區域**。 這些可讓 Azure Marketplace 的客戶更輕鬆地找到您的供應項目。 如果您未選擇 Azure，請略過此步驟。
-4. 如果您選取了 Azure「以外」的主要產品，請選取最多三個**適用的產品**。 這些可讓 AppSource 的客戶更輕鬆地找到您的供應項目。 如需詳細資訊，請參閱 [Microsoft AppSource 諮詢服務清單指導方針](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF)。
-5. 選取您供應項目適用的最多六個 [產業]。 這可讓客戶更輕鬆地找到您的供應項目。
-6. 新增最多三個貴公司已取得的 [專長認證]，以顯示在您的諮詢服務供應項目清單中。 除了 Azure Expert MSP 和 Azure 網路 MSP 以外，至少需要一個專長認證。
+3. 如果您已選取 [ **Azure**做為主要產品]，請選取最多三個**解決方案區域**。 這些可讓 Azure Marketplace 的客戶更輕鬆地找到您的供應項目。 如果您未選擇 Azure，請略過此步驟。
+
+    | 解決方案領域 | | | |
+    | --- | --- | --- | --- |
+    | 分析 | 備份 | DevOps | 移轉 |
+    | 應用程式現代化 | 巨量資料 | 災害復原 | 網路功能 |
+    | 封存 | 資料平台 | 身分識別 | 安全性 |
+    | AI + 機器學習 | 資料中心管理 | 物聯網 | 儲存體 |
+
+1. 如果您選取**Azure**做為主要產品，您可以選擇最多六個**產業**。 這些可讓 Azure Marketplace 的客戶更輕鬆地找到您的供應項目。 請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的產業完整清單。 如果您未選擇 [Azure]，請略過此步驟。
+1. 如果您選取了 Azure「以外」的主要產品，請選取最多三個**適用的產品**。 這些可讓 AppSource 的客戶更輕鬆地找到您的供應項目。 如需詳細資訊，請參閱 [Microsoft AppSource 諮詢服務清單指導方針](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF)。
+1. 如果您選取了 Azure*以外*的主要產品，則可以選擇為每個產業選取最多兩個**產業**和兩個**縱向**。 這些可讓 AppSource 的客戶更輕鬆地找到您的供應項目。 請參閱[供應專案清單最佳做法](../gtm-offer-listing-best-practices.md)中的產業和縱向完整清單。
+1. 新增最多三個貴公司已取得的 [專長認證]，以顯示在您的諮詢服務供應項目清單中。 除了 Azure Expert MSP 和 Azure 網路 MSP 以外，至少需要一個專長認證。
 
 選取 [儲存草稿] 後再繼續。
 
@@ -109,6 +118,37 @@ ms.locfileid: "83700939"
 
 > [!NOTE]
 > 如果供應項目描述開頭為以下詞句：&quot;此應用程式僅適用於 [非英文語言]。&quot;，則供應項目詳細資料不需要為英文。也可利用不同於供應項目清單詳細資料中所使用的語言，來提供供應項目內容的有用連結。
+
+以下範例說明如何在 Azure Marketplace 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
+
+:::image type="content" source="media/example-consulting-service-offer.png" alt-text="說明此供應專案在 Azure Marketplace 中的顯示方式。":::
+
+#### <a name="call-out-descriptions"></a>向外撥說明
+
+1. 標誌
+2. Price
+3. 解決方案區域
+4. 產業
+5. 供應項目名稱
+6. 摘要
+7. Description
+8. 螢幕擷取畫面/影片
+
+<br>以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
+
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="說明此供應專案在 Microsoft AppSource 中的顯示方式。":::
+
+#### <a name="call-out-descriptions"></a>向外撥說明
+
+1. 標誌
+2. Price
+3. 產品
+4. 產業
+5. 供應項目名稱
+6. 摘要
+7. Description
+8. 螢幕擷取畫面/影片
+9. 文件
 
 ### <a name="name"></a>名稱
 
@@ -122,7 +162,7 @@ ms.locfileid: "83700939"
 
 ### <a name="search-results-summary"></a>搜尋結果摘要
 
-提供供應項目的簡短描述。 這長度最多可有 100 個字元，並用於市集搜尋結果。
+提供供應項目的簡短描述。 長度最多可有 100 個字元，並用於市集搜尋結果。
 
 ### <a name="description"></a>描述
 
@@ -150,10 +190,10 @@ ms.locfileid: "83700939"
 
 ### <a name="marketplace-images"></a>Marketplace 映像
 
-提供要與您供應項目搭配使用的標誌和映像。 所有映像都必須是 .png 格式。 模糊映像將會遭到拒絕。
+提供要與您的供應項目搭配使用的標誌和影像。 所有影像都必須是 .png 格式。 模糊影像會被拒絕。
 
 >[!Note]
->如果您在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
+>如果您在上傳檔案時遇到問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
 
 #### <a name="store-logos"></a>儲存標誌
 
@@ -199,8 +239,8 @@ ms.locfileid: "83700939"
 4. 當您準備好時，請選取 [提交]。
 5. [供應項目概觀] 頁面會顯示您供應項目所在的發佈階段。
 
-如需您可預期供應項目會在每個發佈階段中存在多久的詳細資訊，請參閱[檢查您商業市集供應項目的發佈狀態](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status)。
+如需您可預期供應項目會在每個發佈階段中存在多久的詳細資訊，請參閱[檢查您商業市集供應項目的發佈狀態](publishing-status.md)。
 
 ## <a name="update-your-existing-consulting-service-offers"></a>更新您現有的諮詢服務供應項目
 
-- [更新商業市集中的現有供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [更新商業市集中的現有供應項目](update-existing-offer.md)
