@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271716"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847490"
 ---
 # <a name="manage-farms"></a>管理農場
 
@@ -18,7 +18,7 @@ ms.locfileid: "79271716"
 
 ## <a name="create-farms"></a>建立伺服器陣列
 
-使用下列步驟：
+請使用下列步驟：
 
 1. 登入伺服器陣列加速器時，會顯示 [**伺服器**陣列] 頁面。
     [**伺服器**陣列] 頁面會顯示已在訂用帳戶中建立的伺服器陣列清單。
@@ -33,7 +33,7 @@ ms.locfileid: "79271716"
 
 以下是定義伺服器陣列界限的兩種方式：
 
-1. **地圖上的標記**：使用地圖控制項工具來繪製和標示伺服器陣列的界限。 為了標記界限， ![Project 伺服器陣列會](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png)勝過並標示確切的界限。
+1. **地圖上的標記**：使用地圖控制項工具來繪製和標示伺服器陣列的界限。 為了標記界限， ![ Project 伺服器陣列會勝過 ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) 並標示確切的界限。
 
     ![專案 FarmBeats](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 

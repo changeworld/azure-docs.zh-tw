@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248914"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846936"
 ---
 # <a name="best-practices-for-autoscale"></a>自動調整規模的最佳做法
 Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[雲端服務](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) 與 [API 管理服務](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
@@ -48,8 +48,8 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 我們*不建議*使用下列範例中的自動調整設定，例如適用于 out 和 in 條件的相同或類似臨界值：
 
-* 當執行緒計數 >= 600 時，將實例增加1個計數
-* 當執行緒計數 <= 600 時，將實例減少1個計數
+* 當執行緒計數 >= 600 時，即增加 1 個執行個體
+* 當執行緒計數 <= 600 時，即減少 1 個執行個體
 
 下列範例顯示可能會導致行為混淆的設定。 考量以下發生順序。
 

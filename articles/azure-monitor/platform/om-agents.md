@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847398"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>將 Operations Manager 連接到 Azure 監視器
 
@@ -33,7 +33,7 @@ ms.locfileid: "79274342"
 
 如果 IT 安全性原則不允許您網路上的電腦連線到網際網路，則可以將管理伺服器設定為連線到 Log Analytics 閘道，以根據已啟用的解決方案來接收組態資訊和傳送收集到的資料。 如需有關如何設定 Operations Manager 管理群組以透過 Log Analytics 閘道與 Azure 監視器通訊的詳細資訊和步驟，請參閱[使用 Log analytics 閘道將電腦連線至 Azure 監視器](../../azure-monitor/platform/gateway.md)。  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請檢閱下列需求。
 
@@ -110,7 +110,7 @@ ms.locfileid: "79274342"
 
     `netsh winhttp set proxy <proxy>:<port>`
 
-完成下列步驟以與 Azure 監視器整合之後，您可以藉由`netsh winhttp reset proxy`執行來移除設定，然後使用 Operations 主控台中的 [**設定 proxy 伺服器**] 選項來指定 proxy 或 Log Analytics 閘道伺服器。
+完成下列步驟以與 Azure 監視器整合之後，您可以藉由執行來移除設定， `netsh winhttp reset proxy` 然後使用 Operations 主控台中的 [**設定 proxy 伺服器**] 選項來指定 Proxy 或 Log Analytics 閘道伺服器。
 
 1. 在 Operations Manager 主控台中，選取 [管理] **** 工作區。
 1. 展開 Operations Management Suite 節點，然後按一下 [連接] ****。
@@ -163,14 +163,14 @@ ms.locfileid: "79274342"
 建立連線並設定哪些代理程式將收集和報告記錄資料至 Azure 監視器之後，管理群組中就會套用下列設定，而不一定要依照順序：
 
 * 建立執行身分帳戶 **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** 。 它是與執行身分設定檔 **Microsoft System Center Advisor Run As Profile Blob** 相關聯，而且將目標設為兩個類別：[收集伺服器]**** 和 [Operations Manager 管理群組]****。
-* 會建立兩個連接器。  第一個名為**SystemCenter DataConnector** ，而且會自動設定訂用帳戶，以將管理群組中所有類別的實例所產生的所有警示轉寄給 Azure 監視器。 第二個連接器是**Advisor 連接器**，負責與 Azure 監視器和共用資料進行通訊。
+* 會建立兩個連接器。  第一個名為**Microsoft.SysTemCenter DataConnector** ，而且會自動設定訂用帳戶，以將管理群組中所有類別的實例所產生的所有警示轉寄給 Azure 監視器。 第二個連接器是**Advisor 連接器**，負責與 Azure 監視器和共用資料進行通訊。
 * 您在管理群組中已選擇來收集資料的代理程式和群組，將會新增至 [Microsoft System Center Advisor 監控伺服器群組]****。
 
 ## <a name="management-pack-updates"></a>管理組件更新
 
 完成設定之後，Operations Manager 管理群組就會建立與 Azure 監視器的連線。 針對您已啟用且與 Operations Manager 整合的解決方案，管理伺服器會與 Web 服務同步處理，並以管理組件的形式接收更新的組態資訊。 Operations Manager 會檢查這些管理組件的更新，如果有更新，就會自動下載並匯入。 有兩個規則特別可控制這個行為︰
 
-* **SystemCenter. MPUpdate** -更新基底 Azure 監視器管理元件。 預設會每 12 小時執行一次。
+* **Microsoft.SysTemCenter MPUpdate** -更新基底 Azure 監視器管理元件。 預設會每 12 小時執行一次。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - 更新工作區中所啟用的解決方案管理組件。 預設會每五 (5) 分鐘執行一次。
 
 您可以覆寫這兩個規則以防止自動下載，方法是停用它們，或修改管理伺服器與 Azure 監視器進行同步處理的頻率，以判斷是否有新的管理元件可用且應該下載。 遵循[如何覆寫規則或監視器](https://technet.microsoft.com/library/hh212869.aspx)步驟，使用值 (秒) 修改 [頻率]**** 參數來變更同步處理排程，或修改 [已啟用]**** 參數來停用規則。 將目標設為覆寫 [Operations Manager 管理群組] 類別的所有物件。
@@ -180,7 +180,7 @@ ms.locfileid: "79274342"
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>將 Operations Manager 群組切換到新的 Log Analytics 工作區
 
 1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
-1. 在 Azure 入口網站中，按一下左下角的 [更多服務]****。 在資源清單中，輸入**Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics]****，然後建立工作區。  
+1. 在 Azure 入口網站中，按一下左下角的 [更多服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics]****，然後建立工作區。  
 1. 使用身為 Operations Manager 系統管理員角色成員的帳戶開啟 Operations Manager 主控台，然後選取 [管理] **** 工作區。
 1. 展開 Log Analytics，然後選取 [連線]****。
 1. 選取窗格中間的 [重新設定 Operation Management Suite] **** 連結。
@@ -197,7 +197,7 @@ ms.locfileid: "79274342"
 
 ### <a name="to-confirm-integration-from-the-azure-portal"></a>從 Azure 入口網站確認整合
 
-1. 在 Azure 入口網站中，按一下左下角的 [更多服務]****。 在資源清單中，輸入**Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。
+1. 在 Azure 入口網站中，按一下左下角的 [更多服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。
 1. 在 Log Analytics 工作區清單中，選取適用的工作區。  
 1. 選取 [進階設定]****，選取 [連接的來源]**** 然後選取 [系統中心]****。
 1. 在 [System Center Operations Manager] 區段下方的表格中，您應該會看到管理群組名稱，還會列出上次收到資料時的代理程式數目和狀態。
@@ -350,7 +350,7 @@ ms.locfileid: "79274342"
 未來，如果您打算將管理群組重新連接至 Log Analytics 工作區，您必須重新匯入 `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` 管理組件檔案。 視部署在您環境中的 System Center Operations Manager 版本而定，您可以在下列位置中找到此檔案：
 
 * 在 System Center 2016 - Operations Manager 或更新版本的 `\ManagementPacks` 資料夾下方的來源媒體上。
-* 從套用到您管理群組的最新更新彙總。 針對 Operations Manager 2012，源資料夾是`%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` ，而若是 2012 R2，則位於。 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`
+* 從套用到您管理群組的最新更新彙總。 針對 Operations Manager 2012，源資料夾是 `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` ，而若是 2012 R2，則位於 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` 。
 
 ## <a name="next-steps"></a>後續步驟
 

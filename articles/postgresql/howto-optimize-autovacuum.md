@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 1917bd6744e100db54fe959292e29486f8a1784b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dcc6f9ece407bee20ed344d91ee95e34f8f4c0a
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74770181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848200"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>優化適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的自動資料清理
 本文描述如何有效地將適用於 PostgreSQL 的 Azure 資料庫伺服器上的自動資料清理最佳化。
@@ -47,7 +47,7 @@ PostgreSQL 使用多版本並行控制 (MVCC)，來達到更好的資料庫並�
 參數|描述|預設值
 ---|---|---
 autovacuum_vacuum_threshold|指定在任一資料表中，觸發資料清理作業所需的已更新或已刪除 Tuple 的最小數量。 預設值為 50 個 Tuple。 只在 postgresql.conf 檔案中或在伺服器命令列上設定此參數。 若要覆寫個別資料表的設定，請變更資料表儲存體參數。|50
-autovacuum_vacuum_scale_factor|指定當決定是否要觸發資料清理作業時，要加入至 autovacuum_vacuum_threshold 之資料表大小的比例。 預設值為 0.2，即資料表大小的百分之 20。 只在 postgresql.conf 檔案中或在伺服器命令列上設定此參數。 若要覆寫個別資料表的設定，請變更資料表儲存體參數。|5%
+autovacuum_vacuum_scale_factor|指定當決定是否要觸發資料清理作業時，要加入至 autovacuum_vacuum_threshold 之資料表大小的比例。 預設值為 0.2，即資料表大小的百分之 20。 只在 postgresql.conf 檔案中或在伺服器命令列上設定此參數。 若要覆寫個別資料表的設定，請變更資料表儲存體參數。|0.2
 autovacuum_vacuum_cost_limit|指定用於自動資料清理作業中的成本限制值。 如果指定 -1 (這是預設值)，系統會使用一般 vacuum_cost_limit 值。 如果有超過一個的背景工作角色，該值會在執行中的自動資料清理背景工作角色之間按比例分散。 每個背景工作角色的上限之總和不會超過此變數的值。 只在 postgresql.conf 檔案中或在伺服器命令列上設定此參數。 若要覆寫個別資料表的設定，請變更資料表儲存體參數。|-1
 autovacuum_vacuum_cost_delay|指定用於自動資料清理作業中的成本延遲值。 如果指定 -1，系統會使用一般 vacuum_cost_delay 值。 預設值是 20 毫秒。 只在 postgresql.conf 檔案中或在伺服器命令列上設定此參數。 若要覆寫個別資料表的設定，請變更資料表儲存體參數。|20 毫秒
 autovacuum_nap_time|指定在任何給定的資料庫上，每回合自動資料清理之間的最小延遲。 精靈會在每回合中檢查資料庫，並針對該資料庫中的資料表視需要發出 VACUUM 和 ANALYZE 命令。 延遲是以秒為單位，預設值為一分鐘 (1 min)。 只在 postgresql.conf 檔案中或在伺服器命令列上設定此參數。|15 秒

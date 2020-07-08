@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265905"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847560"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>使用 Azure Data Factory 從 OData 來源移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -62,13 +62,13 @@ ms.locfileid: "79265905"
 
 | 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| type |類型屬性必須設定為： **OData** |是 |
+| type |類型屬性必須設定為： **OData** |Yes |
 | url |OData 服務的 URL。 |是 |
-| authenticationType |用來連線到 OData 來源的驗證類型。 <br/><br/> 若為雲端 OData，可能的值為 Anonymous、Basic 和 OAuth (請注意，Azure Data Factory 目前僅支援 Azure Active Directory 架構的 OAuth)。 <br/><br/> 若為內部部署 OData，可能的值為 Anonymous、Basic 和 Windows。 |是 |
+| authenticationType |用來連線到 OData 來源的驗證類型。 <br/><br/> 若為雲端 OData，可能的值為 Anonymous、Basic 和 OAuth (請注意，Azure Data Factory 目前僅支援 Azure Active Directory 架構的 OAuth)。 <br/><br/> 若為內部部署 OData，可能的值為 Anonymous、Basic 和 Windows。 |Yes |
 | username |如果您要使用 Basic 驗證，請指定使用者名稱。 |是 (只在您使用基本驗證時) |
-| password |指定您為使用者名稱所指定之使用者帳戶的密碼。 |是 (只在您使用基本驗證時) |
+| 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 |是 (只在您使用基本驗證時) |
 | authorizedCredential |如果您使用 OAuth，按一下 Data Factory 複製精靈或編輯器中的 [授權]**** 按鈕，然後輸入您的認證，接著將會自動產生這個屬性的值。 |是 (只有在您使用 OAuth 驗證時) |
-| gatewayName |Data Factory 服務應該用來連接到內部部署 OData 服務的閘道器名稱。 只有當您要從內部部署 OData 來源複製資料時，才指定。 |否 |
+| gatewayName |Data Factory 服務應該用來連接到內部部署 OData 服務的閘道器名稱。 只有當您要從內部部署 OData 來源複製資料時，才指定。 |No |
 
 ### <a name="using-basic-authentication"></a>使用基本驗證
 ```json
@@ -147,7 +147,7 @@ ms.locfileid: "79265905"
 
 | 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| 路徑 |OData 資源的路徑 |否 |
+| 路徑 |OData 資源的路徑 |No |
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 如需定義活動的區段和屬性完整清單，請參閱[建立管線](data-factory-create-pipelines.md)一文。 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) 適用於所有類型的活動。
@@ -158,7 +158,7 @@ ms.locfileid: "79265905"
 
 | 屬性 | 說明 | 範例 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 |使用自訂查詢來讀取資料。 |「?$select=Name, Description&$top=5」 |否 |
+| 查詢 |使用自訂查詢來讀取資料。 |「?$select=Name, Description&$top=5」 |No |
 
 ## <a name="type-mapping-for-odata"></a>OData 的類型對應
 如 [資料移動活動](data-factory-data-movement-activities.md) 一文所述，複製活動會藉由下列含有兩個步驟的方法，執行從來源類型轉換成接收類型的自動類型轉換。

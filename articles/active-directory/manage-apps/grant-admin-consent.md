@@ -2,30 +2,30 @@
 title: 將全租使用者系統管理員同意授與應用程式-Azure AD
 description: 瞭解如何將整個租使用者同意授與應用程式，以便在登入應用程式時不會提示使用者同意。
 services: active-directory
-author: psignoret
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c515fef4997720435c64bd5f3ae7b18f8921fc5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c24023bdd3540785dec58ebeaa14d99ab659ab1
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75480914"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848361"
 ---
-# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>對應用程式授與全租使用者系統管理員同意
+# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>對應用程式授與全租用戶的管理員同意
 
 瞭解如何將租使用者系統管理員同意授與應用程式，以簡化使用者體驗。 本文提供不同的方式來達成此目的。 這些方法適用於 Azure Active Directory (Azure AD) 租用戶中的所有使用者。
 
 如需同意應用程式的詳細資訊，請參閱 [Azure Active Directory 同意架構](../develop/consent-framework.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 授與整個租使用者的系統管理員同意，需要您以[全域管理員](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[應用程式系統](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)管理員或[雲端應用程式系統管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)的身分登入。
 
@@ -69,7 +69,9 @@ ms.locfileid: "75480914"
 
 整個租使用者的系統管理員同意 URL 會遵循下列格式：
 
-    https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
+```http
+https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
+```
 
 其中：
 
@@ -80,10 +82,10 @@ ms.locfileid: "75480914"
 
 ## <a name="next-steps"></a>後續步驟
 
-[設定終端使用者同意應用程式的方式](configure-user-consent.md)
+[設定使用者同意應用程式的方式](configure-user-consent.md)
 
 [設定管理員同意工作流程](configure-admin-consent-workflow.md)
 
-[Microsoft 身分識別平臺中的許可權和同意](../develop/active-directory-v2-scopes.md)
+[Microsoft 身分識別平台中的權限和同意](../develop/active-directory-v2-scopes.md)
 
 [StackOverflow 上的 Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

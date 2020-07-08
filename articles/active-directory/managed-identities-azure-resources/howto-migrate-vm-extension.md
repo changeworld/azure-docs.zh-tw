@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 01b8e1dbc290bed86ccfc3c7016e8bd9168e427a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049073"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848380"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>如何停止使用虛擬機器受控識別延伸模組，並開始使用 Azure Instance Metadata Service
 
@@ -27,7 +27,7 @@ ms.locfileid: "80049073"
 
 受控識別的虛擬機器擴充功能是用來要求虛擬機器內受控身分識別的權杖。 工作流程是由下列步驟所組成：
 
-1. 首先，資源內的工作負載會呼叫本機端點`http://localhost/oauth2/token`來要求存取權杖。
+1. 首先，資源內的工作負載會呼叫本機端點 `http://localhost/oauth2/token` 來要求存取權杖。
 2. 虛擬機器擴充功能接著會使用受控識別的認證，向 Azure AD 要求存取權杖。 
 3. 存取權杖會傳回給呼叫者，而且可用來向支援 Azure AD 驗證的服務進行驗證，例如 Azure Key Vault 或 Azure 儲存體。
 
@@ -35,68 +35,68 @@ ms.locfileid: "80049073"
 
 ### <a name="provision-the-extension"></a>布建延伸模組 
 
-當您將虛擬機器或虛擬機器擴展集設定為具有受控識別時，您可以選擇使用 Sset-azvmextension 指令程式上的`-Type`參數來布建 Azure 資源的受控識別 VM 擴充[功能](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)。 視虛擬機器的`ManagedIdentityExtensionForWindows`類型`ManagedIdentityExtensionForLinux`而定，您可以傳遞或，並使用參數將`-Name`其命名為。 `-Settings` 參數會指定 OAuth 權杖端點所使用的連接埠，以用來取得權杖：
+當您將虛擬機器或虛擬機器擴展集設定為具有受控識別時，您可以選擇使用 Sset-azvmextension 指令程式上的參數來布建 Azure 資源的受控識別 VM 擴充 `-Type` [功能](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)。 `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` 視虛擬機器的類型而定，您可以傳遞或，並使用參數將其命名為 `-Name` 。 `-Settings` 參數會指定 OAuth 權杖端點所使用的連接埠，以用來取得權杖：
 
 ```powershell
    $settings = @{ "port" = 50342 }
    Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
 ```
 
-您也可以使用 Azure Resource Manager 部署範本來布建 VM 擴充功能，方法是將下列 JSON 新增至`resources`範本的區段（ `ManagedIdentityExtensionForLinux`用於 Linux 版本的名稱和類型元素）。
+您也可以使用 Azure Resource Manager 部署範本來布建 VM 擴充功能，方法是將下列 JSON 新增至 `resources` 範本的區段（用於 `ManagedIdentityExtensionForLinux` Linux 版本的名稱和類型元素）。
 
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-        "apiVersion": "2018-06-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
+```json
+{
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
+    "apiVersion": "2018-06-01",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+    ],
+    "properties": {
+        "publisher": "Microsoft.ManagedIdentity",
+        "type": "ManagedIdentityExtensionForWindows",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+            "port": 50342
         }
     }
-    ```
+}
+```
     
     
-如果您使用的是虛擬機器擴展集，您也可以使用 Add-azvmssextension Cmdlet 來布建 Azure 資源的受控識別虛擬機器擴展集擴充[功能](/powershell/module/az.compute/add-azvmssextension)。 您可以傳遞`ManagedIdentityExtensionForWindows`或`ManagedIdentityExtensionForLinux`，視虛擬機器擴展集的類型而定，並使用`-Name`參數將其命名為。 `-Settings` 參數會指定 OAuth 權杖端點所使用的連接埠，以用來取得權杖：
+如果您使用的是虛擬機器擴展集，您也可以使用 Add-azvmssextension Cmdlet 來布建 Azure 資源的受控識別虛擬機器擴展集擴充[功能](/powershell/module/az.compute/add-azvmssextension)。 您可以傳遞 `ManagedIdentityExtensionForWindows` 或 `ManagedIdentityExtensionForLinux` ，視虛擬機器擴展集的類型而定，並使用參數將其命名為 `-Name` 。 `-Settings` 參數會指定 OAuth 權杖端點所使用的連接埠，以用來取得權杖：
 
    ```powershell
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
    Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
-若要使用 Azure Resource Manager 部署範本來布建虛擬機器擴展集擴充功能，請將下列 JSON `extensionpProfile`新增至範本的區段（ `ManagedIdentityExtensionForLinux`用於 Linux 版本的名稱和類型元素）。
+若要使用 Azure Resource Manager 部署範本來布建虛擬機器擴展集擴充功能，請將下列 JSON 新增至 `extensionpProfile` 範本的區段（用於 `ManagedIdentityExtensionForLinux` Linux 版本的名稱和類型元素）。
 
-    ```json
-    "extensionProfile": {
-        "extensions": [
-            {
-                "name": "ManagedIdentityWindowsExtension",
-                "properties": {
-                    "publisher": "Microsoft.ManagedIdentity",
-                    "type": "ManagedIdentityExtensionForWindows",
-                    "typeHandlerVersion": "1.0",
-                    "autoUpgradeMinorVersion": true,
-                    "settings": {
-                        "port": 50342
-                    },
-                    "protectedSettings": {}
-                }
+```json
+"extensionProfile": {
+    "extensions": [
+        {
+            "name": "ManagedIdentityWindowsExtension",
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+                },
+                "protectedSettings": {}
             }
-    ```
+        }
+```
 
 虛擬機器擴充功能的布建可能會因為 DNS 查閱失敗而失敗。 如果發生這種情況，請重新開機虛擬機器，然後再試一次。 
 
 ### <a name="remove-the-extension"></a>移除擴充功能 
-若要移除擴充功能， `-n ManagedIdentityExtensionForWindows`請`-n ManagedIdentityExtensionForLinux`使用或參數（視虛擬機器的類型而定）搭配[az vm extension delete](https://docs.microsoft.com/cli/azure/vm/)，或使用 Azure CLI 或`Remove-AzVMExtension`適用于 Powershell 的[az vmss extension delete](https://docs.microsoft.com/cli/azure/vmss) for 虛擬機器擴展集：
+若要移除擴充功能，請使用 `-n ManagedIdentityExtensionForWindows` 或 `-n ManagedIdentityExtensionForLinux` 參數（視虛擬機器的類型而定）搭配[az vm extension delete](https://docs.microsoft.com/cli/azure/vm/)，或使用 Azure CLI 或適用于 Powershell 的[az vmss extension delete](https://docs.microsoft.com/cli/azure/vmss) for 虛擬機器擴展集 `Remove-AzVMExtension` ：
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -147,7 +147,7 @@ Content-Type: application/json
 
 | 元素 | 描述 |
 | ------- | ----------- |
-| `access_token` | 要求的存取權杖。 呼叫受保護的 REST API 時，權杖會內嵌在 `Authorization` 要求標頭欄位中成為「持有人」權杖，以允許 API 驗證呼叫端。 | 
+| `access_token` | 所要求的存取權杖。 呼叫受保護的 REST API 時，權杖會內嵌在 `Authorization` 要求標頭欄位中成為「持有人」權杖，以允許 API 驗證呼叫端。 | 
 | `refresh_token` | 並未由 Azure 資源受控識別使用。 |
 | `expires_in` | 存取權杖從發行到過期之前持續有效的秒數。 在權杖的 `iat` 宣告中可找到發行時間。 |
 | `expires_on` | 存取權杖到期的時間範圍。 日期以 "1970-01-01T0:0:0Z UTC" 起算的秒數表示 (對應至權杖的 `exp` 宣告)。 |
@@ -196,7 +196,7 @@ Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <loc
 
 ## <a name="azure-instance-metadata-service"></a>Azure 執行個體中繼資料服務
 
-[Azure Instance Metadata Service （IMDS）](/azure/virtual-machines/windows/instance-metadata-service)是 REST 端點，可提供執行中虛擬機器實例的相關資訊，以用來管理和設定您的虛擬機器。 端點可在已知的非可路由 IP 位址（`169.254.169.254`）中取得，而該位址只能從虛擬機器存取。
+[Azure Instance Metadata Service （IMDS）](/azure/virtual-machines/windows/instance-metadata-service)是 REST 端點，可提供執行中虛擬機器實例的相關資訊，以用來管理和設定您的虛擬機器。 端點可在已知的非可路由 IP 位址（ `169.254.169.254` ）中取得，而該位址只能從虛擬機器存取。
 
 使用 Azure IMDS 來要求權杖有幾個優點。 
 
@@ -212,4 +212,4 @@ Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <loc
 ## <a name="next-steps"></a>後續步驟
 
 * [如何在 Azure 虛擬機器上使用 Azure 資源的受控識別來取得存取權杖](how-to-use-vm-token.md)
-* [Azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+* [Azure 執行個體中繼資料服務](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)

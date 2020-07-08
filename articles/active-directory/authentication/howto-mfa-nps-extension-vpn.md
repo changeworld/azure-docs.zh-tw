@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28467dbaabb0b84bf7da9f2ae28d6405699b2c6b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845741"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848731"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 的網路原則伺服器擴充功能來整合您的 VPN 基礎結構與 Azure MFA
 
@@ -228,9 +228,9 @@ NPS 擴充功能需要 Windows Server 2008 R2 SP1 或更新版本，並安裝網
 
 2. 在 [伺服器管理員] 中選取 [工具]，然後選取 [路由及遠端存取]。
 
-3. 在 [路由及遠端存取] 視窗中，以滑鼠右鍵按一下 [\<伺服器名稱> (本機)]，然後選取 [屬性]。
+3. 在 [**路由及遠端存取**] 視窗中，以滑鼠右鍵按一下** \<server name> [（本機）**]，然後選取 [**屬性**]。
 
-4. 在 [\<伺服器名稱> (本機) 屬性] 對話方塊中，按一下 [安全性] 索引標籤。
+4. 在 [ ** \<server name> （本機）屬性**] 視窗中，選取 [**安全性**] 索引標籤。
 
 5. 在 [安全性] 索引標籤的 [驗證提供者] 底下選取 [RADIUS 驗證]，然後按選取 [設定]。
 
@@ -320,19 +320,15 @@ NPS 擴充功能需要 Windows Server 2008 R2 SP1 或更新版本，並安裝網
 
 如果值設為 *TRUE* 或空白，則所有驗證要求都由 MFA 挑戰來決定。 如果值設為 *FALSE*，則只有已在 Azure Multi-Factor Authentication 中註冊的使用者會收到 MFA 挑戰。 在測試或生產環境中，請只在上架期間使用 *FALSE* 設定。
 
-### <a name="obtain-the-azure-active-directory-guid-id"></a>取得 Azure Active Directory GUID 識別碼
+### <a name="obtain-the-azure-active-directory-tenant-id"></a>取得 Azure Active Directory 的租使用者識別碼
 
-在設定 NPS 擴充功能期間，您必須為 Azure AD 租用戶提供系統管理員認證和識別碼。 執行下列動作來取得識別碼：
+在設定 NPS 擴充功能期間，您必須為 Azure AD 租用戶提供系統管理員認證和識別碼。 若要取得租使用者識別碼，請完成下列步驟：
 
 1. 以 Azure 租用戶的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
+1. 在 Azure 入口網站功能表中，選取 [Azure Active Directory]，或從任何頁面搜尋並選取 [Azure Active Directory]。
+1. 在 [**總覽**] 頁面上，會顯示*租使用者資訊*。 在 [*租使用者識別碼*] 旁，選取**複製**圖示，如下列範例螢幕擷取畫面所示：
 
-2. 在 Azure 入口網站功能表中，選取 [Azure Active Directory]，或從任何頁面搜尋並選取 [Azure Active Directory]。
-
-3. 選取 [屬性] 。
-
-4. 若要複製您的 Azure AD 識別碼，請選取 [複製] 按鈕。
-
-    ![Azure 入口網站中的 Azure AD 目錄識別碼](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
+   ![從 Azure 入口網站取得租使用者識別碼](./media/howto-mfa-nps-extension-vpn/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>安裝 NPS 擴充功能
 
@@ -386,7 +382,7 @@ NPS 擴充功能必須安裝於已安裝「網路原則與存取服務」角色�
 
 5. 在命令提示字元中，貼上您先前複製的租用戶識別碼，然後選取 Enter。
 
-    ![輸入先前複製的 Azure AD 目錄識別碼](./media/howto-mfa-nps-extension-vpn/image40.png)
+    ![輸入之前複製的 Azure AD 租使用者識別碼](./media/howto-mfa-nps-extension-vpn/image40.png)
 
     此指令碼會建立自我簽署憑證，並進行其他的設定變更。 輸出與下圖中的內容類似：
 
@@ -412,7 +408,9 @@ NPS 擴充功能必須安裝於已安裝「網路原則與存取服務」角色�
 
 若要檢視 Windows 事件檢視器記錄中的成功登入事件，請輸入下列 PowerShell 命令來查詢 NPS 伺服器上的 Windows 安全性記錄：
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![PowerShell 安全性事件檢視器](./media/howto-mfa-nps-extension-vpn/image44.png)
 
@@ -422,7 +420,9 @@ NPS 擴充功能必須安裝於已安裝「網路原則與存取服務」角色�
 
 在安裝了 Azure Multi-Factor Authentication NPS 擴充功能的伺服器上，您可以在 *Application and Services Logs\Microsoft\AzureMfa* 找到擴充功能專屬的事件檢視器應用程式記錄。
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![範例事件檢視器 [AuthZ] 記錄窗格](./media/howto-mfa-nps-extension-vpn/image46.png)
 

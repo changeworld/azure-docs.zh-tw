@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252554"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847339"
 ---
 # <a name="get-help-with-your-system"></a>取得有關系統的協助
 
@@ -27,7 +27,7 @@ ms.locfileid: "79252554"
 
 請遵循下列步驟，確定您的支援票證已使用您叢集中的資源標記。 標記票證可協助我們將其發送至正確的技術資源。
 
-1. 在[https://portal.azure.com](https://portal.azure.com)中，選取 [**資源群組**]。 流覽至包含發生問題之 vFXT 叢集的資源群組，然後按一下其中一個 Avere 叢集虛擬機器。
+1. 在中 [https://portal.azure.com](https://portal.azure.com) ，選取 [**資源群組**]。 流覽至包含發生問題之 vFXT 叢集的資源群組，然後按一下其中一個 Avere 叢集虛擬機器。
 
     ![Azure 入口網站資源群組「概觀」面板的螢幕擷取畫面，其中圈出特定的 VM](media/avere-vfxt-ticket-vm.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "79252554"
 
     ![Azure 入口網站中新的支援要求畫面的螢幕擷取畫面。 [基本] 索引標籤已選取。 螢幕專案包括 [問題類型]、[訂閱]、[服務]、[摘要] 和 [問題類型]。](media/ticket-basics.png)
 
-   按一下 [下一步]  以繼續。
+   按一下 [下一步] 以繼續。
 
 1. 支援表單的第二個頁面包含根據摘要描述來修正問題的建議。 如果您仍然需要建立支援票證，請按一下底部的 [**下一步]** 按鈕。
 

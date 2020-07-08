@@ -3,25 +3,25 @@ title: 針對應用程式 Proxy 進行疑難排解 | Microsoft Docs
 description: 說明如何疑難排解 Azure AD 應用程式 Proxy 中的錯誤。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017; it-pro
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848445"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>針對應用程式 Proxy 問題和錯誤訊息進行疑難排解
 
@@ -31,7 +31,7 @@ ms.locfileid: "79244221"
 
 * 開啟 Windows 服務主控台。 確認**MICROSOFT AAD 應用程式 Proxy 連接器**服務已啟用且正在執行。 您也可以查看應用程式 Proxy 服務屬性頁面，如下圖所示：  
   ![[Microsoft AAD 應用程式 Proxy 連接器屬性] 視窗螢幕擷取畫面](./media/application-proxy-troubleshoot/connectorproperties.png)
-* 開啟事件檢視器，然後在 [**應用程式和服務記錄** > 檔] [**Microsoft** > **AadApplicationProxy** > **連接器** > **管理員**] 中尋找應用程式 Proxy 連接器事件。
+* 開啟事件檢視器，然後在 [**應用程式和服務記錄**檔] [  >  **Microsoft**  >  **AadApplicationProxy**  >  **連接器**  >  **管理員**] 中尋找應用程式 Proxy 連接器事件。
 * 如有需要，請透過[開啟應用程式 Proxy 連接器工作階段記錄](application-proxy-connectors.md#under-the-hood)，來取得更詳細的記錄。
 
 ## <a name="the-page-is-not-rendered-correctly"></a>無法正確轉譯頁面
@@ -39,13 +39,13 @@ ms.locfileid: "79244221"
 
 例如，如果您發佈的路徑是 `https://yourapp/app`，但應用程式呼叫的是 `https://yourapp/media` 中的影像，系統便不會轉譯那些影像。 請確定您是使用包含所有相關內容所需的最高層級路徑來發佈應用程式。 在此範例中會是 `http://yourapp/`。
 
-如果您變更路徑以包含參考的內容，但仍需要使用者登入該路徑中更深層的連結，請參閱部落格文章 [在 Azure AD 存取面板和 Office 365 應用程式啟動程式中為應用程式 Proxy 應用程式設定正確的連結](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)。
-
 ## <a name="connector-errors"></a>連接器錯誤
 
 如果在連接器精靈安裝期間註冊失敗，有兩種方式可以檢視失敗的原因。 在事件記錄中的 **Applications and Services Logs\Microsoft\AadApplicationProxy\Connector\Admin** 底下尋找，或執行下列 Windows PowerShell 命令：
 
-    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```powershell
+Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```
 
 若您在事件記錄檔中找到連接器錯誤，則使用這份常見錯誤表格來解決問題︰
 
@@ -54,7 +54,7 @@ ms.locfileid: "79244221"
 | 連接器註冊失敗︰確定您已在 Azure 管理入口網站中啟用應用程式 Proxy，並已正確地輸入您的 Active Directory 使用者名稱和密碼。 錯誤︰「發生一或多個錯誤。」 | 如果您在未登入 Azure AD 的情況下關閉註冊視窗，請再次執行連接器精靈，並註冊連接器。 <br><br> 如果註冊視窗開啟後立即關閉，而不允許您登入，您可能會收到此錯誤。 您的系統有網路錯誤時，就會發生此錯誤。 請確定可以從瀏覽器連線至公用網站，而且埠已開啟，如[應用程式 Proxy 必要條件](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)中所指定。 |
 | 清除錯誤會顯示在註冊視窗中。 無法繼續 | 如果您看到這個錯誤且視窗隨後關閉，表示您輸入錯誤的使用者名稱或密碼。 請再試一次。 |
 | 連接器註冊失敗︰確定您已在 Azure 管理入口網站中啟用應用程式 Proxy，並已正確地輸入您的 Active Directory 使用者名稱和密碼。 錯誤︰「AADSTS50059: 在要求中找不到租用戶識別資訊，或任何提供的認證均未隱含租用戶識別資訊，而且依服務主體 URI 的搜尋已失敗。 | 您嘗試使用 Microsoft 帳戶登入，而不是您嘗試存取之目錄的組織識別碼所屬的網域。 確定系統管理員屬於與租用戶網域相同的網域名稱，例如，若 Azure AD 網域是 contoso.com，則系統管理員應該是 admin@contoso.com。 |
-| 無法擷取目前的執行原則以供執行 PowerShell 指令碼。 | 如果連接器安裝失敗，請檢查以確定未停用 PowerShell 執行原則。 <br><br>1. 開啟 [群組原則編輯器]。<br>2. 移至 **[電腦** > 設定]**系統管理範本** > **windows 元件** > ] [**windows PowerShell** ]，然後按兩下 [**開啟腳本執行**]。<br>3. 執行原則可以設定為 [**未設定**] 或 [**已啟用**]。 如果是設定為 [已啟用]****，請確定 [選項] 底下的 [執行原則] 是設定為 [允許本機指令碼和遠端已簽署的指令碼]**** 或 [允許所有指令碼]****。 |
+| 無法擷取目前的執行原則以供執行 PowerShell 指令碼。 | 如果連接器安裝失敗，請檢查以確定未停用 PowerShell 執行原則。 <br><br>1. 開啟 [群組原則編輯器]。<br>2. 移至 [**電腦**設定]  >  **系統管理範本**  >  **windows 元件**] [  >  **windows PowerShell** ]，然後按兩下 [**開啟腳本執行**]。<br>3. 執行原則可以設定為 [**未設定**] 或 [**已啟用**]。 如果是設定為 [已啟用]****，請確定 [選項] 底下的 [執行原則] 是設定為 [允許本機指令碼和遠端已簽署的指令碼]**** 或 [允許所有指令碼]****。 |
 | 連接器無法下載組態。 | 連接器用於驗證的用戶端憑證已過期。 如果您將連接器安裝在 Proxy 後面，也可能發生這種情形。 在此情況下，連接器無法存取網際網路，且無法將應用程式提供給遠端使用者。 在 Windows PowerShell 中使用 `Register-AppProxyConnector` Cmdlet，手動更新信任。 如果您的連接器位於 Proxy 後面，則必須將網際網路存取權授與「網絡服務」和「本機系統」連接器帳戶。 授與 Proxy 的存取權或將其設為略過 Proxy，即可完成此作業。 |
 | 連接器註冊失敗：請確定您是 Active Directory 的應用程式系統管理員，才能註冊連接器。 錯誤︰「註冊要求被拒絕。」 | 您嘗試用以登入的別名不是此網域的系統管理員。 您的連接器永遠都會針對擁有使用者網域的目錄進行安裝。 請確定您嘗試用來登入的管理帳戶，至少具有 Azure AD 租使用者的應用程式系統管理員許可權。 |
 | 由於網路問題，連接器無法連線到服務。 連接器嘗試存取下列 URL。 | 連接器無法連線到應用程式 Proxy 雲端服務。 如果您有封鎖連線的防火牆規則，就可能會發生這種情況。 請確定您已允許存取[應用程式 Proxy 必要條件](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)中列出的正確埠和 url。 |
@@ -65,7 +65,7 @@ ms.locfileid: "79244221"
 
 | 錯誤 | 建議的步驟 |
 | ----- | ----------------- |
-| 無法擷取目前的執行原則以供執行 PowerShell 指令碼。 | 如果連接器安裝失敗，請檢查以確定未停用 PowerShell 執行原則。<br><br>1. 開啟 [群組原則編輯器]。<br>2. 移至 **[電腦** > 設定]**系統管理範本** > **windows 元件** > ] [**windows PowerShell** ]，然後按兩下 [**開啟腳本執行**]。<br>3. 執行原則可以設定為 [**未設定**] 或 [**已啟用**]。 如果是設定為 [已啟用]****，請確定 [選項] 底下的 [執行原則] 是設定為 [允許本機指令碼和遠端已簽署的指令碼]**** 或 [允許所有指令碼]****。 |
+| 無法擷取目前的執行原則以供執行 PowerShell 指令碼。 | 如果連接器安裝失敗，請檢查以確定未停用 PowerShell 執行原則。<br><br>1. 開啟 [群組原則編輯器]。<br>2. 移至 [**電腦**設定]  >  **系統管理範本**  >  **windows 元件**] [  >  **windows PowerShell** ]，然後按兩下 [**開啟腳本執行**]。<br>3. 執行原則可以設定為 [**未設定**] 或 [**已啟用**]。 如果是設定為 [已啟用]****，請確定 [選項] 底下的 [執行原則] 是設定為 [允許本機指令碼和遠端已簽署的指令碼]**** 或 [允許所有指令碼]****。 |
 | 12008 - Azure AD 已超出後端伺服器允許的 Kerberos 驗證嘗試次數上限。 | 此錯誤可能表示 Azure AD 與後端應用程式伺服器之間的設定不正確，或兩台電腦上的日期和時間設定有問題。 後端伺服器拒絕了 Azure AD 所建立的 Kerberos 票證。 確認 Azure AD 和後端應用程式伺服器的設定正確無誤。 確定 Azure AD 與後端應用程式伺服器的日期和時間設定已同步。 |
 | 13016 - 因為邊緣權杖或存取 cookie 中沒有 UPN，Azure AD 無法代表使用者擷取 Kerberos 票證。 | STS 組態有問題。 在 STS 中修正 UPN 宣告設定。 |
 | 13019 - 因為下列一般 API 錯誤，Azure AD 無法代表使用者擷取 Kerberos 票證。 | 此事件可能表示 Azure AD 與網域控制站伺服器之間的設定不正確，或兩台電腦上的日期和時間設定有問題。 網域控制站拒絕了 Azure AD 所建立的 Kerberos 票證。 確認 Azure AD 和後端應用程式伺服器的設定正確無誤，尤其是 SPN 組態。 確定 Azure AD 的網域已加入至與網域控制站相同的網域，確保網域控制站建立 Azure AD 的信任。 確定 Azure AD 與網域控制站的日期和時間設定已同步。 |
@@ -89,7 +89,7 @@ ms.locfileid: "79244221"
 
 如果您遇到的 Azure AD 應用程式 Proxy 錯誤或問題沒有列在這份疑難排解指南中，我們想要知道更多。 請用電子郵件將該錯誤的詳細資料傳送給我們的[意見反應小組](mailto:aadapfeedback@microsoft.com)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [啟用 Azure Active Directory 的應用程式 Proxy](application-proxy-add-on-premises-application.md)
 * [使用應用程式 Proxy 發行應用程式](application-proxy-add-on-premises-application.md)
 * [啟用單一登入](application-proxy-configure-single-sign-on-with-kcd.md)

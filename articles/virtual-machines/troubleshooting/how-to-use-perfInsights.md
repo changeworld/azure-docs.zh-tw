@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250123"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847453"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
@@ -34,7 +34,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
 此案例會收集磁碟設定和其他重要資訊，包括：
 
--   事件記錄
+-   事件記錄檔
 
 -   所有傳入和傳出連線的網路狀態
 
@@ -71,7 +71,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
 此案例會同時執行特殊的效能計數器擷取與網路追蹤。 擷取包含所有伺服器訊息區塊 (SMB) 用戶端共用計數器。 以下是屬於擷取的一些重要 SMB 用戶端共用效能計數器：
 
-| **類型**     | **SMB 用戶端共用計數器** |
+| **型別**     | **SMB 用戶端共用計數器** |
 |--------------|-------------------------------|
 | IOPS         | 資料要求/秒             |
 |              | 讀取要求/秒             |
@@ -115,16 +115,16 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 | 篩選器驅動程式資訊                | 是                        | 是                                | 是                      | 是                  | 是                  |
 | Netstat 輸出                    | 是                        | 是                                | 是                      | 是                  | 是                  |
 | 網路組態             | 是                        | 是                                | 是                      | 是                  | 是                  |
-| 防火牆組態            | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 防火牆設定            | 是                        | 是                                | 是                      | 是                  | 是                  |
 | SQL Server 設定          | 是                        | 是                                | 是                      | 是                  | 是                  |
 | 效能診斷追蹤 *  | 是                        | 是                                | 是                      | 是                  | 是                  |
 | 效能計數器追蹤 **      |                            |                                    | 是                      |                      | 是                  |
-| SMB 計數器追蹤 **              |                            |                                    |                          | 是                  |                      |
+| SMB 計數器追蹤 **              |                            |                                    |                          | Yes                  |                      |
 | SQL Server 計數器追蹤 **       |                            |                                    | 是                      |                      | 是                  |
-| XPerf 追蹤                       |                            |                                    |                          |                      | 是                  |
-| StorPort 追蹤                    |                            |                                    |                          |                      | 是                  |
+| XPerf 追蹤                       |                            |                                    |                          |                      | Yes                  |
+| StorPort 追蹤                    |                            |                                    |                          |                      | Yes                  |
 | 網路追蹤                     |                            |                                    |                          | 是                  | 是                  |
-| Diskspd 基準追蹤 ***       |                            | 是                                |                          |                      |                      |
+| Diskspd 基準追蹤 ***       |                            | Yes                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>效能診斷追蹤 (*)

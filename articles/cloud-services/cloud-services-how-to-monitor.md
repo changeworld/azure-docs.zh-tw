@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273094"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847252"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>雲端服務監視簡介
 
@@ -54,7 +54,7 @@ ms.locfileid: "79273094"
 
 首先，如果您沒有**傳統**儲存體帳戶，則請[建立傳統儲存體帳戶](../storage/common/storage-account-create.md)。 請確定建立已指定**傳統部署模型**的儲存體帳戶。
 
-接下來，巡覽至 [儲存體帳戶 (傳統)]**** 資源。 選取 [**設定** > ] [**存取金鑰**]，然後複製 [**主要連接字串**] 值。 雲端服務需要有此值。 
+接下來，巡覽至 [儲存體帳戶 (傳統)]**** 資源。 選取 [**設定**]  >  [**存取金鑰**]，然後複製 [**主要連接字串**] 值。 雲端服務需要有此值。 
 
 您必須變更兩個設定檔才能啟用進階診斷：**ServiceDefinition.csdef** 和 **ServiceConfiguration.cscfg**。
 

@@ -8,14 +8,14 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 84b5cd8a59103f60249da861238acb45f8aa2fd5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 18b1b4cb959603f5898e7c725102f35d7abc90cf
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849010"
 ---
-# <a name="suppressing-alerts-from-azure-security-centers-threat-protection"></a>隱藏來自 Azure 資訊安全中心威脅防護的警示
+# <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>隱藏來自 Azure 資訊安全中心威脅防護的警示
 
 此頁面說明如何使用警示歸併規則，在 Azure 資訊安全中心內隱藏誤判為真或其他不必要的安全性警示。
 
@@ -28,7 +28,7 @@ ms.locfileid: "83871705"
     - ✔ 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)
 
 
-## <a name="introduction-to-suppression-rules"></a>歸併規則簡介
+## <a name="what-are-suppression-rules"></a>什麼是隱藏的規則？
 
 Azure 資訊安全中心的威脅防護元件會偵測環境中任何區域的威脅，並產生安全性警示。
 
@@ -43,9 +43,9 @@ Azure 資訊安全中心的威脅防護元件會偵測環境中任何區域的�
 > [!CAUTION]
 > 隱藏安全性警示可減少資訊安全中心的威脅防護。 您應該仔細檢查任何歸併規則的潛在影響，並在一段時間內加以監視。
 
-[![Azure 資訊安全中心具有警示歸併選項的安全性警示頁面](media/alerts-suppression-rules/alerts-screen-with-options.png)](media/alerts-suppression-rules/alerts-screen-with-options.png#lightbox)
+![建立警示隱藏規則](media\alerts-suppression-rules\create-suppression-rule.gif)
 
-## <a name="creating-a-suppression-rule"></a>建立歸併規則
+## <a name="create-a-suppression-rule"></a>建立隱藏專案規則
 
 您可以使用幾種方式來建立規則以隱藏不必要的安全性警示：
 
@@ -89,13 +89,13 @@ Azure 資訊安全中心的威脅防護元件會偵測環境中任何區域的�
 
 1. 儲存規則。 
 
-## <a name="editing-suppression-rules"></a>編輯歸併規則
+## <a name="edit-a-suppression-rules"></a>編輯隱藏專案規則
 
-若要編輯您已建立的規則，請使用 [歸併規則] 頁面。
+若要編輯您已建立的規則，請使用 [隱藏規則] 頁面。
 
 1. 從資訊安全中心的 [安全性警示] 頁面中，選取頁面頂端的 [歸併規則] 連結。
 
-1. [歸併規則] 頁面隨即開啟，並根據目前選取的訂用帳戶列出所有可用的規則。 
+1. [隱藏專案規則] 頁面隨即開啟，其中包含所選訂閱的所有規則。
 
     [![歸併規則清單](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
@@ -103,13 +103,13 @@ Azure 資訊安全中心的威脅防護元件會偵測環境中任何區域的�
 
 1. 進行必要的變更，然後選取 [套用]。 
 
-## <a name="deleting-suppression-rules"></a>刪除歸併規則
+## <a name="delete-a-suppression-rule"></a>刪除隱藏專案規則
 
 若要刪除您已建立的一或多個規則，請使用 [歸併規則] 頁面。
 
 1. 從資訊安全中心的 [安全性警示] 頁面中，選取頁面頂端的 [歸併規則] 連結。
 
-1. [歸併規則] 頁面隨即開啟，並根據目前選取的訂用帳戶列出所有可用的規則。 
+1. [隱藏專案規則] 頁面隨即開啟，其中包含所選訂閱的所有規則。
 
 1. 若要刪除單一規則，請開啟規則的省略號功能表 (...)，然後選取 [刪除]。
 
@@ -117,7 +117,7 @@ Azure 資訊安全中心的威脅防護元件會偵測環境中任何區域的�
 
     ![刪除一個或多個歸併規則](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
-## <a name="viewing-alerts-that-have-been-suppressed"></a>檢視已隱藏的警示
+## <a name="view-suppressed-alerts"></a>查看隱藏的警示
 
 仍會產生符合已啟用歸併規則的警示，但其狀態會設定為 [關閉]。 您可以在 Azure 入口網站中看到狀態，或您如何存取資訊安全中心的安全性警示。 
 
@@ -131,7 +131,7 @@ Azure 資訊安全中心的威脅防護元件會偵測環境中任何區域的�
    [![檢視已關閉的警示](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
 
 
-## <a name="using-the-api-to-create-and-manage-suppression-rules"></a>使用 API 來建立及管理歸併規則
+## <a name="create-and-manage-suppression-rules-with-the-api"></a>使用 API 建立和管理隱藏專案規則
 
 您可以透過資訊安全中心的 REST API 來建立、檢視或刪除警示歸併規則。 
 

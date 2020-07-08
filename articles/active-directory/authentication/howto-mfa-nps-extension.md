@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f07efc8fd77f1c34ef96d31f55089726942d05df
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: ca244136178c9c05f2b88a917219035451d5e391
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871230"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848486"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合
 
@@ -65,13 +65,21 @@ Windows Server 2008 R2 SP1 或更新版本。
 
 如果您還沒有適用於 Windows PowerShell 的 Microsoft Azure Active Directory 模組，系統會透過您在安裝過程中執行的設定指令碼來加以安裝。 因此，如果您尚未安裝此模組，就不必事先安裝。
 
+您需要手動安裝下列程式庫：
+
+- [適用於 Visual Studio 2015 的 Visual C++ 可轉散發套件](https://www.microsoft.com/download/details.aspx?id=48145)
+
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
 使用 NPS 擴充功能的每位使用者都必須使用 Azure AD Connect 同步到 Azure Active Directory ，且必須註冊 MFA。
 
-當您安裝擴充功能時，您的 Azure AD 租用戶需要目錄識別碼和系統管理員認證。 您可以在 [Azure 入口網站](https://portal.azure.com)中找到您的目錄識別碼。 以系統管理員身分登入。 搜尋並選取 [Azure Active Directory]，然後選取 [屬性]。 複製 [目錄識別碼] 方塊中的 GUID，然後儲存。 當您安裝 NPS 擴充功能時，將使用此 GUID 作為租用戶識別碼。
+當您安裝擴充功能時，您需要 Azure AD 租使用者的*租使用者識別碼*和系統管理員認證。 若要取得租使用者識別碼，請完成下列步驟：
 
-![在 Azure Active Directory 屬性下尋找您的目錄識別碼](./media/howto-mfa-nps-extension/properties-directory-id.png)
+1. 以 Azure 租用戶的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
+1. 搜尋並選取 [ **Azure Active Directory**]。
+1. 在 [**總覽**] 頁面上，會顯示*租使用者資訊*。 在 [*租使用者識別碼*] 旁，選取**複製**圖示，如下列範例螢幕擷取畫面所示：
+
+   ![從 Azure 入口網站取得租使用者識別碼](./media/howto-mfa-nps-extension/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="network-requirements"></a>網路需求
 
@@ -186,14 +194,23 @@ NPS 伺服器會連線到 Azure Active Directory，並驗證 MFA 要求。 為�
 1. 以系統管理理員身分執行 Windows PowerShell。
 2. 變更目錄。
 
-   `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
+   ```powershell
+   cd "C:\Program Files\Microsoft\AzureMfa\Config"
+   ```
 
 3. 執行安裝程式建立的 PowerShell 指令碼。
 
-   `.\AzureMfaNpsExtnConfigSetup.ps1`
+   > [!IMPORTANT]
+   > 針對使用 Azure Government 或 Azure 中國世紀雲端的客戶，請先編輯 `Connect-MsolService` *AzureMfaNpsExtnConfigSetup.ps1*腳本中的 Cmdlet，以包含所需雲端的*AzureEnvironment*參數。 例如，指定 *-AzureEnvironment USGovernment*或 *-AzureEnvironment AzureChinaCloud*。
+   >
+   > 如需詳細資訊，請參閱[connect-msolservice 參數參考](/powershell/module/msonline/connect-msolservice#parameters)。
+
+   ```powershell
+   .\AzureMfaNpsExtnConfigSetup.ps1
+   ```
 
 4. 以系統管理員身分登入 Azure AD。
-5. PowerShell 會提示您輸入您的租用戶識別碼。 使用您在必要條件一節中從 Azure 入口網站複製的目錄識別碼 GUID。
+5. PowerShell 會提示您輸入您的租用戶識別碼。 使用您從 [必要條件] 區段中的 Azure 入口網站複製的 [*租使用者識別碼*] GUID。
 6. PowerShell 會在指令碼完成時顯示成功訊息。  
 
 在您想要進行設定以取得負載平衡的任何其他 NPS 伺服器上，重複上述步驟。
@@ -201,22 +218,30 @@ NPS 伺服器會連線到 Azure Active Directory，並驗證 MFA 要求。 為�
 如果您先前的電腦憑證已過期，且已產生新的憑證，則應刪除任何過期的憑證。 擁有過期的憑證可能會導致 NPS 擴充功能啟動方面的問題。
 
 > [!NOTE]
-> 如果您使用自己的憑證，而不是透過 PowerShell 指令碼產生憑證，請確定這些憑證遵守 NPS 命名慣例。 主體名稱必須是 **CN=\<租用戶識別碼\>,OU=Microsoft NPS Extension**。 
+> 如果您使用自己的憑證，而不是透過 PowerShell 指令碼產生憑證，請確定這些憑證遵守 NPS 命名慣例。 主體名稱必須是**CN = \<TenantID\> ，OU = Microsoft NPS Extension**。
 
-### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Government 的其他步驟
+### <a name="microsoft-azure-government-or-azure-china-21vianet-additional-steps"></a>Microsoft Azure Government 或 Azure 中國世紀地區的其他步驟
 
-針對使用 Azure Government cloud 的客戶，每個 NPS 伺服器上都需要下列額外的設定步驟。
+針對使用 Azure Government 或 Azure 中國世紀雲端的客戶，每個 NPS 伺服器上都需要下列額外的設定步驟。
 
 > [!IMPORTANT]
-> 只有您是 Azure Government 客戶時，才需要設定這些登錄設定。
+> 只有在您是 Azure Government 或 Azure 中國世紀客戶時，才設定這些登錄設定。
 
-1. 如果您是 Azure Government 客戶，請在 NPS 伺服器上開啟**登錄編輯程式**。
-1. 瀏覽至 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`。 設定下列機碼值：
+1. 如果您是 Azure Government 或 Azure 中國的世紀客戶，請在 NPS 伺服器上開啟**登錄編輯程式**。
+1. 瀏覽至 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`。
+1. 若為 Azure Government 客戶，請設定下列金鑰值：
 
     | 登錄機碼       | 值 |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
+
+1. 若為 Azure 中國世紀的客戶，請設定下列索引鍵值：
+
+    | 登錄機碼       | 值 |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.cn   |
+    | STS_URL            | https://login.chinacloudapi.cn/   |
 
 1. 重複前兩個步驟，以設定每個 NPS 伺服器的登錄機碼值。
 1. 重新啟動每個 NPS 伺服器的 NPS 服務。
@@ -271,7 +296,7 @@ NPS 伺服器會連線到 Azure Active Directory，並驗證 MFA 要求。 為�
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>如何確認已如預期安裝用戶端憑證？
 
-在憑證存放區中尋找安裝程式所建立的自我簽署憑證，並確認私密金鑰已將權限授與給使用者 **NETWORK SERVICE**。 憑證的主體名稱為 **CN \<tenantid\>, OU = Microsoft NPS Extension**
+在憑證存放區中尋找安裝程式所建立的自我簽署憑證，並確認私密金鑰已將權限授與給使用者 **NETWORK SERVICE**。 憑證的主體名稱為**CN \<tenantid\> ，OU = Microsoft NPS Extension**
 
 *AzureMfaNpsExtnConfigSetup.ps1* 指令碼所產生的自我簽署憑證也有兩年的有效存留期。 在確認憑證是否已安裝時，您也應確認憑證尚未過期。
 
@@ -281,7 +306,7 @@ NPS 伺服器會連線到 Azure Active Directory，並驗證 MFA 要求。 為�
 
 開啟 PowerShell 命令提示字元並執行下列命令：
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
@@ -291,7 +316,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 下列命令會在您的 "C:" 磁碟機上建立名為 "npscertificate" 且格式為 .cer 的檔案。
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertificate.cer

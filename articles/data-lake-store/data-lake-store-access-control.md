@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260328"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847821"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的存取控制
 
@@ -71,7 +71,7 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 
 以下是一些常見的案例，可協助您了解在 Data Lake Storage Gen1 帳戶上執行某些作業所需的權限。
 
-| 作業 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
+| 操作 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | 讀取      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | 附加至 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
@@ -297,6 +297,6 @@ ACL 中的項目會儲存為對應於 Azure AD 中使用者的 GUID。 API 會�
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Linux 上使用存取控制清單的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)

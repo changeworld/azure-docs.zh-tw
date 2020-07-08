@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253230"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846970"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的稽核活動報告 
 
@@ -77,7 +77,7 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 
 
 您可以在下列欄位上篩選稽核資料：
 
-- Service
+- 服務
 - 類別
 - 活動
 - 狀態
@@ -107,7 +107,7 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 
 - PIM
 - 自助式群組管理
 - 自助式密碼管理
-- 使用條款
+- 使用規定
 
 [**類別目錄**] 篩選器可讓您選取下列其中一個篩選準則：
 
@@ -116,7 +116,7 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 
 - ApplicationManagement
 - 驗證
 - 授權
-- 連絡人
+- Contact
 - 裝置
 - DeviceConfiguration
 - DirectoryManagement
@@ -139,7 +139,7 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 
 **狀態**篩選準則可讓您根據 audit 作業的狀態進行篩選。 狀態可以是下列其中一項：
 
 - 全部
-- 成功
+- Success
 - 失敗
 
 **目標**篩選準則可讓您依名稱或使用者主體名稱（UPN）的開頭，搜尋特定的目標。 目標名稱和 UPN 會區分大小寫。 
