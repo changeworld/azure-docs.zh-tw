@@ -1,30 +1,30 @@
 ---
-title: 在驗證要求中傳遞自訂狀態（MSAL .js） |Azure
+title: 在驗證要求中傳遞自訂狀態（MSAL.js） |Azure
 titleSuffix: Microsoft identity platform
-description: 瞭解如何使用適用于 JavaScript 的 Microsoft 驗證程式庫（MSAL），在驗證要求中傳遞自訂狀態參數值。
+description: 瞭解如何使用適用于 JavaScript 的 Microsoft 驗證程式庫（MSAL.js），在驗證要求中傳遞自訂狀態參數值。
 services: active-directory
 author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 01/16/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1c05956f83ad3a6491627be8916fac2c8be2b7ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 840c371e63aacf8ef410cbf84cc9f68137dd77df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477578"
 ---
-# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>使用 MSAL 在驗證要求中傳遞自訂狀態
+# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>使用 MSAL.js 在驗證要求中傳遞自訂狀態
 
-*狀態*參數（如 OAuth 2.0 所定義）包含在驗證要求中，也會在權杖回應中傳回，以防止跨網站偽造要求攻擊。 根據預設，適用于 JavaScript 的 Microsoft 驗證程式庫（MSAL）會在驗證要求中傳遞隨機產生的唯一*狀態*參數值。
+*狀態*參數（如 OAuth 2.0 所定義）包含在驗證要求中，也會在權杖回應中傳回，以防止跨網站偽造要求攻擊。 根據預設，適用于 JavaScript 的 Microsoft 驗證程式庫（MSAL.js）會在驗證要求中傳遞隨機產生的唯一*狀態*參數值。
 
-State 參數也可以在重新導向之前用來編碼應用程式狀態的資訊。 您可以在應用程式中傳遞使用者的狀態，例如其所在的頁面或視圖，做為此參數的輸入。 MSAL 程式庫可讓您在`Request`物件中傳遞自訂狀態作為狀態參數：
+State 參數也可以在重新導向之前用來編碼應用程式狀態的資訊。 您可以在應用程式中傳遞使用者的狀態，例如其所在的頁面或視圖，做為此參數的輸入。 MSAL.js 程式庫可讓您在物件中傳遞自訂狀態作為狀態參數 `Request` ：
 
 ```javascript
 // Request type
@@ -45,7 +45,7 @@ export type AuthenticationParameters = {
 ```
 
 > [!Note]
-> 如果您想要略過快取的權杖並移至伺服器，請將布林值`forceRefresh`傳入用來提出登入/token 要求的 AuthenticationParameters 物件。
+> 如果您想要略過快取的權杖並移至伺服器，請將布林值傳入 `forceRefresh` 用來提出登入/token 要求的 AuthenticationParameters 物件。
 > `forceRefresh`預設不應使用，因為對應用程式效能的影響。
 > 依賴快取可讓您的使用者獲得更好的體驗。
 > 略過快取僅適用于您知道目前快取的資料沒有最新資訊的情況。
@@ -62,7 +62,7 @@ let loginRequest = {
 myMSALObj.loginPopup(loginRequest);
 ```
 
-傳送要求時，傳入的狀態會附加至 MSAL 所設定的唯一 GUID。 傳迴響應時，MSAL 會檢查狀態是否相符，然後將`Response`物件中的自訂傳入狀態傳回為。 `accountState`
+傳入的狀態會附加至在傳送要求時 MSAL.js 所設定的唯一 GUID。 傳迴響應時，MSAL.js 會檢查狀態是否相符，然後將物件中的自訂傳入狀態傳回 `Response` 為 `accountState` 。
 
 ```javascript
 export type AuthResponse = {
@@ -78,4 +78,4 @@ export type AuthResponse = {
 };
 ```
 
-若要深入瞭解，請參閱使用 MSAL[建立單一頁面應用程式（SPA）](scenario-spa-overview.md) 。
+若要深入瞭解，請參閱使用 MSAL.js[建立單一頁面應用程式（SPA）](scenario-spa-overview.md) 。

@@ -6,16 +6,16 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79318ab67ec58ed10520365a366785ea0de41666
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85476269"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 SQL 隨選最佳做法 (預覽)
 
@@ -52,7 +52,7 @@ SQL 隨選可讓您查詢 Azure 儲存體帳戶中的檔案。 其沒有本機�
 
 ## <a name="push-wildcards-to-lower-levels-in-the-path"></a>將萬用字元推送至較低的路徑層級
 
-您可以在路徑中使用萬用字元，以[查詢多個檔案和資料夾](develop-storage-files-overview.md#query-multiple-files-or-folders)。 SQL 隨選會列出儲存體帳戶中的檔案，使用儲存體 API 從第一個 * 開始。 其會排除不符合指定路徑的檔案。 如果最多符合指定路徑中第一個萬用字元的檔案有很多個，則減少檔案的初始清單可改善效能。
+您可以在路徑中使用萬用字元，以[查詢多個檔案和資料夾](query-data-storage.md#query-multiple-files-or-folders)。 SQL 隨選會列出儲存體帳戶中的檔案，使用儲存體 API 從第一個 * 開始。 其會排除不符合指定路徑的檔案。 如果最多符合指定路徑中第一個萬用字元的檔案有很多個，則減少檔案的初始清單可改善效能。
 
 ## <a name="use-appropriate-data-types"></a>使用適當的資料類型
 
@@ -113,7 +113,7 @@ FROM
 
 資料通常會組織成分割區。 您可以指示 SQL 隨選查詢特定的資料夾和檔案。 這麼做會減少查詢需要讀取和處理的檔案數目和資料量。 還有一個額外的好處，就是您可以獲得更好的效能。
 
-如需詳細資訊，請閱讀 [filename](develop-storage-files-overview.md#filename-function) 和 [filepath](develop-storage-files-overview.md#filepath-function) 函式，並參閱[查詢特定檔案](query-specific-files.md)的範例。
+如需詳細資訊，請閱讀 [filename](query-data-storage.md#filename-function) 和 [filepath](query-data-storage.md#filepath-function) 函式，並參閱[查詢特定檔案](query-specific-files.md)的範例。
 
 > [!TIP]
 > 請一律將 filepath 和 filename 函式的結果轉換成適當的資料類型。 如果您使用字元資料類型，請務必使用適當的長度。

@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 4180f62e589ef79227d8e60ca19661e1c65f0097
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: ec6fcfbc171b7227c79741c00adbc16be4c7ce87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773316"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85445520"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>如何在 Azure 中使用 Packer 來建立 Windows 虛擬機器映像
 Azure 中的每個虛擬機器 (VM) 都是透過映像所建立，而映像則會定義 Windows 散發套件和作業系統版本。 映像中可包含預先安裝的應用程式與組態。 Azure Marketplace 提供了許多第一方和第三方映像，這些映像適用於最常見的作業系統和應用程式環境，而您也可以建立自己自訂的映像，以符合您的需求。 本文詳述如何使用開放原始碼工具 [Packer](https://www.packer.io/) \(英文\)，在 Azure 中定義和建置自訂映像。
 
-本文最後一次測試是在 2019 年 2 月 21 日，使用 [Az PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps) 1.3.0 版和 [Packer](https://www.packer.io/docs/install/index.html) 1.3.4 版進行的。
+本文最後一次測試是在 2019 年 2 月 21 日，使用 [Az PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps) 1.3.0 版和 [Packer](https://www.packer.io/docs/install) 1.3.4 版進行的。
 
 > [!NOTE]
 > Azure 現在有一個服務，也就是 Azure Image Builder (預覽)，用來定義和建立您自己的自訂映像。 Azure Image Builder 建置在 Packer 上，因此您甚至可以搭配使用現有的 Packer 殼層佈建指令碼。 若要開始使用 Azure Image Builder，請參閱[使用 Azure Image Builder 建立 Windows VM](image-builder.md)。
@@ -122,7 +122,7 @@ Get-AzSubscription
 
 
 ## <a name="build-packer-image"></a>建置 Packer 映像
-如果您尚未在本機電腦上安裝 Packer，請[遵循 Packer 安裝指示](https://www.packer.io/docs/install/index.html)。
+如果您尚未在本機電腦上安裝 Packer，請[遵循 Packer 安裝指示](https://learn.hashicorp.com/packer/getting-started/install)。
 
 透過開啟命令提示字元並指定 Packer 範本檔案以建置映像，如下所示：
 

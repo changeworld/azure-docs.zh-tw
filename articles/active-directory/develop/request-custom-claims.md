@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 4974fe3b387683f662d7a7b4f3ccb4935153f07e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a570dccad5f14cf9adf5ca2825d8a3b31ae60d3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477187"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>如何：使用適用于 iOS 和 macOS 的 MSAL 要求自訂宣告
 
 OpenID Connect 可讓您選擇性地要求從使用者資訊端點和/或在識別碼權杖中傳回個別宣告。 宣告要求會以 JSON 物件表示，其中包含要求的宣告清單。 如需詳細資訊，請參閱[OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) 。
 
-適用于 iOS 和 macOS 的 Microsoft 驗證程式庫（MSAL）可在互動式和無訊息的權杖取得案例中，要求特定的宣告。 它會透過`claimsRequest`參數執行此動作。
+適用于 iOS 和 macOS 的 Microsoft 驗證程式庫（MSAL）可在互動式和無訊息的權杖取得案例中，要求特定的宣告。 它會透過參數執行此動作 `claimsRequest` 。
 
 有多個案例需要這麼做。 例如：
 
@@ -31,9 +31,9 @@ OpenID Connect 可讓您選擇性地要求從使用者資訊端點和/或在識�
 - 要求不能使用應用程式的範圍指定的標準宣告的特定組合。 例如，如果因為遺漏宣告而拒絕存取權杖，應用程式可以使用 MSAL 來要求遺漏的宣告。
 
 > [!NOTE]
-> 每當指定了宣告要求時，MSAL 就會略過存取權杖快取。 請務必在需要額外的`claimsRequest`宣告時才提供參數（而不是一律在每個`claimsRequest` MSAL API 呼叫中提供相同的參數）。
+> 每當指定了宣告要求時，MSAL 就會略過存取權杖快取。 請務必 `claimsRequest` 在需要額外的宣告時才提供參數（而不是一律 `claimsRequest` 在每個 MSAL API 呼叫中提供相同的參數）。
 
-`claimsRequest`可以在和`MSALInteractiveTokenParameters`中`MSALSilentTokenParameters`指定：
+`claimsRequest`可以在和中 `MSALSilentTokenParameters` 指定 `MSALInteractiveTokenParameters` ：
 
 ```objc
 /*!

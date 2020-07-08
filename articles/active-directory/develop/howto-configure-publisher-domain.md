@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/05/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: 68040c8ee22454c300296493b6c840eabbca98aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 408d8856130947e9be9c6d2714310332d9935cdd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76697127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477986"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>如何：設定應用程式的發行者網域
 
@@ -71,7 +71,7 @@ ms.locfileid: "76697127"
 
 ### <a name="to-verify-a-new-domain-for-your-app"></a>驗證應用程式的新網域
 
-1. 建立名為`microsoft-identity-association.json`的檔案，並貼上下列 JSON 程式碼片段。
+1. 建立名為的檔案 `microsoft-identity-association.json` ，並貼上下列 JSON 程式碼片段。
 
    ```json
    {
@@ -85,7 +85,7 @@ ms.locfileid: "76697127"
 
 1. 將預留位置 *{您的應用程式識別碼-此處}* 取代為對應至您應用程式的應用程式（用戶端）識別碼。
 
-1. 將檔案裝載于： `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`。 取代預留位置 *{您的網域-此處}* ，以符合已驗證的網域。
+1. 將檔案裝載于： `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json` 。 取代預留位置 *{您的網域-此處}* ，以符合已驗證的網域。
 
 1. 按一下 [**驗證並儲存網域**] 按鈕。
 
@@ -94,7 +94,7 @@ ms.locfileid: "76697127"
 - 如果您的租使用者已驗證網域，請從 [**選取已驗證的網域**] 下拉式清單中選取其中一個網域。
 
 >[!Note]
-> 應傳回的預期 ' Content-type ' 標頭為`application/json`。 如果您使用任何其他專案，則可能會收到錯誤，如下所述`application/json; charset=utf-8` 
+> 應傳回的預期 ' Content-type ' 標頭為 `application/json` 。 如果您使用任何其他專案，則可能會收到錯誤，如下所述`application/json; charset=utf-8` 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >

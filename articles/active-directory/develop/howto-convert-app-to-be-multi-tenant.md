@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f22ecb13284eaf6fb2a833791b5563351ca19147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4b76bd91a47f14104a9f7f23a4a545ee3d40e59
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884081"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477850"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>操作說明：讓任何 Azure Active Directory (AD) 使用者以多租用戶應用程式的模式登入
 
@@ -145,7 +145,7 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 
 如果在不同的租用戶中註冊不同的應用程式層，將會發生類似的情況。 例如，想像建置一個會呼叫 Office 365 Exchange Online API 的原生用戶端應用程式的情況。 若要開發此原生應用程式，然後讓此原生應用程式在客戶的租用戶中執行，就必須要有 Exchange Online 服務主體。 在此情況下，開發人員和客戶必須購買 Exchange Online，如此才能在其租用戶中建立服務主體。
 
-如果它是由 Microsoft 以外的組織所建立的 API，則 API 的開發人員必須提供一種方法，讓其客戶同意應用程式進入其客戶的租使用者。 建議的設計是讓協力廠商開發人員建立 API，使其也可以做為 web 用戶端來執行註冊。 若要這樣做：
+如果它是由 Microsoft 以外的組織所建立的 API，則 API 的開發人員必須提供一種方法，讓其客戶同意應用程式進入其客戶的租使用者。 建議的設計是讓協力廠商開發人員建立 API，使其也可以做為 web 用戶端來執行註冊。 作法：
 
 1. 遵循先前的章節，確保 API 實作多租用戶應用程式註冊/程式碼的需求。
 2. 除了公開 API 的範圍/角色，請確定註冊包含「登入和讀取使用者設定檔」許可權（預設為提供）。

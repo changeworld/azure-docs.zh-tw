@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: marsma
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
-ms.openlocfilehash: a437d54dac50be7ddaad899a1cf0a3e93aade8f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f72e16afd61d364a2dad634f3502c801f1b99380
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478139"
 ---
 # <a name="new-azure-portal-app-registration-training-guide"></a>新版 Azure 入口網站應用程式註冊訓練指南
 
@@ -64,7 +64,7 @@ ms.locfileid: "80154571"
 - **服務條款 URL**
 - **隱私權聲明 URL**
 - **應用程式類型**
-- **多租使用者**
+- **多租用戶**
 
 新的體驗沒有該頁面。 您可以在這裡找到對等的功能：
 
@@ -73,13 +73,13 @@ ms.locfileid: "80154571"
 - 舊版體驗中的**多租**使用者切換所控制的功能，已由 [**驗證**] 頁面上**受支援的帳戶類型**所取代。 如需詳細資訊，請參閱[快速入門：修改應用程式所支援的帳戶](quickstart-modify-supported-accounts.md)。
 - [**登出 URL** ] 現在位於 [**驗證**] 頁面上。
 - **應用程式類型**不再是有效的欄位。 相反地，您可以在 [**驗證**] 頁面上找到的重新導向 uri，判斷支援哪些應用程式類型。
-- **APP ID uri**現在稱為**應用程式識別碼 uri** ，您可以在**公開 API**中找到它。 在舊版體驗中，此屬性是使用下列格式 autoregistered 的： `https://{tenantdomain}/{appID}`，例如`https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b`。 在新的體驗中，它會自動`api://{appID}`產生為，但必須加以明確儲存。 在 Azure AD B2C 租使用者中`https://{tenantdomain}/{appID}` ，仍然會使用格式。
+- **APP ID uri**現在稱為**應用程式識別碼 uri** ，您可以在**公開 API**中找到它。 在舊版體驗中，此屬性是使用下列格式 autoregistered 的： `https://{tenantdomain}/{appID}` ，例如 `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b` 。 在新的體驗中，它會自動產生為 `api://{appID}` ，但必須加以明確儲存。 在 Azure AD B2C 租使用者中， `https://{tenantdomain}/{appID}` 仍然會使用格式。
 
 ### <a name="reply-urlsredirect-urls"></a>回復 Url/重新導向 Url
 
 在舊版體驗中，應用程式有 [**回復 url** ] 頁面。 在新體驗中，回復 Url 可以在應用程式的**驗證**頁面上找到。 它們現在稱為「重新**導向 uri**」。
 
-重新導向 Uri 的格式已變更。 它們必須與應用程式類型（web 或公用）相關聯。 基於安全性理由，除了以外`http://` ，不支援萬用字元和配置*http://localhost*。
+重新導向 Uri 的格式已變更。 它們必須與應用程式類型（web 或公用）相關聯。 基於安全性理由， `http://` 除了以外，不支援萬用字元和配置 *http://localhost* 。
 
 ### <a name="keyscertificates--secrets"></a>金鑰/憑證 & 秘密
 
@@ -118,8 +118,8 @@ ms.locfileid: "80154571"
 
 新體驗會加入下列屬性的 UI 控制項：
 
-- [**驗證**] 頁面具有隱含的授`oauth2AllowImplicitFlow`與**流程**（）。 與舊版體驗不同的是，您可以啟用**存取權杖**或**識別碼權杖**，或兩者。
-- [**公開 API** ] 頁面包含**此 api** （`oauth2Permissions`）所定義的範圍，以及已授權`preAuthorizedApplications`的**用戶端應用程式**（）。 如需有關如何將應用程式設定為 Web API 並公開許可權/範圍的詳細資訊，請參閱[快速入門：設定應用程式以公開 Web api](quickstart-configure-app-expose-web-apis.md)。
+- [**驗證**] 頁面具有**隱含的授與流程**（ `oauth2AllowImplicitFlow` ）。 與舊版體驗不同的是，您可以啟用**存取權杖**或**識別碼權杖**，或兩者。
+- [**公開 API** ] 頁面包含**此 api** （）所定義的範圍 `oauth2Permissions` ，以及已**授權的用戶端應用程式**（ `preAuthorizedApplications` ）。 如需有關如何將應用程式設定為 Web API 並公開許可權/範圍的詳細資訊，請參閱[快速入門：設定應用程式以公開 Web api](quickstart-configure-app-expose-web-apis.md)。
 - [**商標**] 頁面包含**發行者網域**。 發行者網域會在[應用程式的同意提示](application-consent-experience.md)中向使用者顯示。 如需詳細資訊，請參閱[如何：設定應用程式的發行者網域](howto-configure-publisher-domain.md)。
 
 ## <a name="limitations"></a>限制

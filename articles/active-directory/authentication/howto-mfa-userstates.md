@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639614"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85476830"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>啟用個別使用者的 Azure Multi-Factor Authentication 以保護登入事件
 
 有兩種方式可在 Azure AD 中要求使用多重要素驗證來保護使用者登入事件。 同時為偏好的第一個選項是設定條件式存取原則，以在特定情況下要求使用多重要素驗證。 第二個選項是為每個使用者啟用 Azure Multi-Factor Authentication。 當個別為使用者啟用時，這些使用者就會在每次登入時執行多重要素驗證 (但有一些例外，例如當其從信任的 IP 位址登入時，或開啟了「已記住裝置」功能時)。
 
 > [!NOTE]
-> 建議使用條件式存取原則來啟用 Azure Multi-Factor Authentication。 除非授權不包含條件式存取，否則不再建議變更使用者狀態，因為這會要求使用者在每次登入時執行 MFA。
+> 建議使用條件式存取原則來啟用 Azure Multi-Factor Authentication。 除非授權不包含條件式存取，否則不再建議變更使用者狀態，因為這會要求使用者在每次登入時執行 MFA。 若要開始使用條件式存取，請參閱[教學課程：使用 Azure Multi-Factor Authentication 來保護使用者登入事件](tutorial-enable-azure-mfa.md)。
 >
-> 若要開始使用條件式存取，請參閱[教學課程：使用 Azure Multi-Factor Authentication 來保護使用者登入事件](tutorial-enable-azure-mfa.md)。
+> 針對 Azure AD 沒有條件式存取的免費租使用者，您可以[使用安全性預設值來保護使用者](../fundamentals/concept-fundamentals-security-defaults.md)。
 
 ## <a name="azure-multi-factor-authentication-user-states"></a>Azure Multi-Factor Authentication 使用者狀態
 
@@ -39,7 +39,7 @@ Azure Multi-Factor Authentication 中的使用者帳戶具有下列三種不同�
 | 狀態 | 描述 | 受影響的非瀏覽器應用程式 | 受影響的瀏覽器應用程式 | 受影響的新式驗證 |
 |:---:| --- |:---:|:--:|:--:|
 | 已停用 | 未在 Azure Multi-Factor Authentication 中註冊的新使用者預設狀態。 | 否 | 否 | 否 |
-| 啟用 | 使用者已在 Multi-Factor Authentication 中註冊，但尚未登錄。 系統將在他們下一次登入時提示他們註冊。 | 否。  它們會繼續運作，直到註冊程序完成為止。 | 是。 工作階段到期之後，必須進行 Azure Multi-Factor Authentication 註冊。| 是。 存取權杖到期之後，必須進行 Azure Multi-Factor Authentication 註冊。 |
+| 啟用 | 使用者已在 Azure 多因素驗證中註冊，但尚未註冊驗證方法。 系統將在他們下一次登入時提示他們註冊。 | 否。  它們會繼續運作，直到註冊程序完成為止。 | 是。 工作階段到期之後，必須進行 Azure Multi-Factor Authentication 註冊。| 是。 存取權杖到期之後，必須進行 Azure Multi-Factor Authentication 註冊。 |
 | 已強制 | 使用者已註冊，且已完成 Azure Multi-Factor Authentication 的註冊程序。 | 是。 應用程式需要應用程式密碼。 | 是。 登入時必須進行 Azure Multi-Factor Authentication。 | 是。 登入時必須進行 Azure Multi-Factor Authentication。 |
 
 使用者的狀態會反映系統管理員是否已在 Azure Multi-Factor Authentication 中加以註冊，以及其是否已完成註冊程序。
@@ -84,7 +84,7 @@ Azure Multi-Factor Authentication 中的使用者帳戶具有下列三種不同�
 * 已強制
 * *Disabled*  
 
-請勿直接將使用者移至「已強制」狀態。 若您這樣做，則非瀏覽器型的應用程式會停止運作，因為使用者未通過 Azure Multi-Factor Authentication 註冊且未取得[應用程式密碼](howto-mfa-mfasettings.md#app-passwords)。
+請勿直接將使用者移至「已強制」狀態。 若您這樣做，則非瀏覽器型的應用程式會停止運作，因為使用者未通過 Azure Multi-Factor Authentication 註冊且未取得[應用程式密碼](howto-mfa-app-passwords.md)。
 
 若要開始進行，請使用 [Install-Module](/powershell/module/powershellget/install-module) 安裝 *MSOnline* 模組，如下所示：
 

@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 3b4362e4c5e69efddfbc99ef0f98ad3c5966165c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8486ec87b5198231a33b1dab382ba457c8c8066
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478122"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>How to：自訂 iOS/macOS 的瀏覽器和網站
 
@@ -36,13 +36,13 @@ ms.locfileid: "81450866"
 - [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc)。
 
-MSAL for macOS 僅支援`WKWebView`舊版的 OS 版本。 `ASWebAuthenticationSession`只有在 macOS 10.15 和更新版本上才支援。 
+MSAL for macOS 僅支援 `WKWebView` 舊版的 OS 版本。 `ASWebAuthenticationSession`只有在 macOS 10.15 和更新版本上才支援。 
 
 ## <a name="system-browsers"></a>系統瀏覽器
 
-若是 iOS， `ASWebAuthenticationSession`、 `SFAuthenticationSession`和`SFSafariViewController`會被視為系統瀏覽器。 僅`ASWebAuthenticationSession`適用于 macOS。 一般而言，系統瀏覽器會與 Safari 瀏覽器應用程式共用 cookie 和其他網站資料。
+若是 iOS， `ASWebAuthenticationSession` 、 `SFAuthenticationSession` 和 `SFSafariViewController` 會被視為系統瀏覽器。 僅適用于 macOS `ASWebAuthenticationSession` 。 一般而言，系統瀏覽器會與 Safari 瀏覽器應用程式共用 cookie 和其他網站資料。
 
-根據預設，MSAL 會動態偵測 iOS 版本，並選取該版本上所提供的建議系統瀏覽器。 在 iOS 12 上，它會`ASWebAuthenticationSession`是。 
+根據預設，MSAL 會動態偵測 iOS 版本，並選取該版本上所提供的建議系統瀏覽器。 在 iOS 12 上，它會是 `ASWebAuthenticationSession` 。 
 
 ### <a name="default-configuration-for-ios"></a>IOS 的預設設定
 
@@ -61,7 +61,7 @@ MSAL for macOS 僅支援`WKWebView`舊版的 OS 版本。 `ASWebAuthenticationSe
 
 開發人員也可以針對 MSAL 應用程式選取不同的系統瀏覽器：
 
-- `SFAuthenticationSession`是的 iOS 11 版本`ASWebAuthenticationSession`。
+- `SFAuthenticationSession`是的 iOS 11 版本 `ASWebAuthenticationSession` 。
 - `SFSafariViewController`較一般用途，並提供用於流覽 web 的介面，也可用於登入目的。 在 iOS 9 和10中，cookie 和其他網站資料會與 Safari 共用，但不會在 iOS 11 和更新版本中。
 
 ## <a name="in-app-browser"></a>應用程式內瀏覽器
@@ -74,17 +74,17 @@ MSAL for macOS 僅支援`WKWebView`舊版的 OS 版本。 `ASWebAuthenticationSe
 
 | 技術    | 瀏覽器類型  | iOS 可用性 | macOS 可用性 | 共用 cookie 和其他資料  | MSAL 可用性 | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | 系統 | iOS12 和 up | macOS 10.15 及更新的 | 是 | iOS 和 macOS 10.15 + | w/Safari 實例
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | 系統 | iOS12 和 up | macOS 10.15 及更新的 | Yes | iOS 和 macOS 10.15 + | w/Safari 實例
 | [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | 系統 | iOS11 和 up | N/A | 是 | 僅限 iOS |  w/Safari 實例
 | [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | 系統 | iOS11 和 up | N/A | 否 | 僅限 iOS | 否**
 | **SFSafariViewController** | 系統 | iOS10 | N/A | 是 | 僅限 iOS |  w/Safari 實例
-| **WKWebView**  | 應用程式內 | iOS8 和 up | macOS 10.10 及更新的 | 否 | iOS 和 macOS | 否**
+| **WKWebView**  | 應用程式內 | iOS8 和 up | macOS 10.10 及更新的 | No | iOS 和 macOS | 否**
 
 * * 若要讓 SSO 正常執行，必須在應用程式之間共用權杖。 這需要權杖快取或 broker 應用程式，例如適用于 iOS 的 Microsoft Authenticator。
 
 ## <a name="change-the-default-browser-for-the-request"></a>變更要求的預設瀏覽器
 
-您可以藉由變更中`MSALWebviewParameters`的下列屬性，使用應用程式內的瀏覽器或特定的系統瀏覽器，視您的 UX 需求而定：
+您可以藉由變更中的下列屬性，使用應用程式內的瀏覽器或特定的系統瀏覽器，視您的 UX 需求而定 `MSALWebviewParameters` ：
 
 ```objc
 @property (nonatomic) MSALWebviewType webviewType;
@@ -92,9 +92,9 @@ MSAL for macOS 僅支援`WKWebView`舊版的 OS 版本。 `ASWebAuthenticationSe
 
 ## <a name="change-per-interactive-request"></a>變更每個互動式要求
 
-您可以設定每個要求來覆寫預設瀏覽器， `MSALInteractiveTokenParameters.webviewParameters.webviewType`方法是先變更屬性， `acquireTokenWithParameters:completionBlock:`再將它傳遞給 API。
+您可以設定每個要求來覆寫預設瀏覽器，方法是 `MSALInteractiveTokenParameters.webviewParameters.webviewType` 先變更屬性，再將它傳遞給 `acquireTokenWithParameters:completionBlock:` API。
 
-此外，MSAL 支援藉由設定`WKWebView` `MSALInteractiveTokenParameters.webviewParameters.customWebView`屬性來傳入自訂的。
+此外，MSAL 支援藉 `WKWebView` 由設定屬性來傳入自訂的 `MSALInteractiveTokenParameters.webviewParameters.customWebView` 。
 
 例如：
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/11/2020
+ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5f14a269478541eaa5852697a917afb3d771841a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: aa9327bd0ba6763aa4e89630611aabb3c5195655
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85448704"
 ---
 目前，ultra 磁片有額外的限制，如下所示：
 
@@ -26,10 +26,10 @@ ms.locfileid: "83196961"
 
 |區域  |支援 ultra 磁片的可用性區域數目  |
 |---------|---------|
-|US Gov 維吉尼亞州     |無         |
-|美國中南部     |無         |
+|US Gov 維吉尼亞州     |None         |
+|美國中南部     |None         |
 |美國中部     |三個區域         |
-|美國西部     |無         |
+|美國西部     |None         |
 |美國西部 2    |三個區域         |
 |美國東部     |三個區域         |
 |美國東部 2     |兩個區域         |
@@ -38,7 +38,7 @@ ms.locfileid: "83196961"
 |西歐     |三個區域          |
 |英國南部     |三個區域          |
 |日本東部     |兩個區域         |
-
+|法國中部    |兩個區域        |
 
 
 - 僅支援下列 VM 系列：
@@ -53,6 +53,7 @@ ms.locfileid: "83196961"
 - 只能建立為空磁碟  
 - 目前不支援磁片快照集、VM 映射、可用性設定組、Azure 專用主機或 Azure 磁片加密
 - 目前不支援與 Azure 備份或 Azure Site Recovery 的整合
+- 僅支援非快取的讀取和非快取寫入
 - GA Vm 上目前的 IOPS 上限為80000。
 
 根據預設，每個訂用帳戶每個區域最多可提供16個 TiB，但 ultra 磁片會依要求支援更高的容量。 若要要求增加容量，請聯絡 Azure 支援。

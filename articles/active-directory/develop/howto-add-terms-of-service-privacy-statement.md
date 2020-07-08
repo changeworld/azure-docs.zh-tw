@@ -6,18 +6,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 40e7a05505bc501c1c622e627a6d97cc57db1cfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884234"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478003"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：設定應用程式的服務條款和隱私權聲明
 
@@ -41,7 +41,7 @@ ms.locfileid: "80884234"
 
 | 指導方針     | 描述                           |
 |---------------|---------------------------------------|
-| [格式]        | 有效的 URL                             |
+| 格式        | 有效的 URL                             |
 | 有效的結構描述 | HTTP 和 HTTPS<br/>建議使用 HTTPS |
 | 最大長度    | 2048 個字元                       |
 

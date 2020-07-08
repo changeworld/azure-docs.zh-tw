@@ -7,15 +7,15 @@ ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.custom: aaddev, vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: d5b6452684757aead684356fd9bb032b90c58c4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b77241b1413fea09e5a16e8bd5cbcda8db5b2327
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535820"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477119"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>在 Visual Studio 中使用已連線的服務來新增 Azure Active Directory
 
@@ -25,7 +25,7 @@ ms.locfileid: "81535820"
 
 目前，Active Directory 連線服務不支援 ASP.NET Core 應用程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - Azure 帳戶：如果您沒有 Azure 帳戶，您可以[申請免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或是[啟用您的 Visual Studio 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 - **Visual Studio 2015**或更新版本。 [立即下載 Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
@@ -44,7 +44,7 @@ ms.locfileid: "81535820"
 
     ![[簡介] 頁面](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. 在 [單一登入]**** 頁面上，從 [網域]**** 下拉式清單中選取網域。 此清單包含 Visual Studio 的 [帳戶設定] 對話方塊中列出的帳戶所存取的所有網域（[檔案 **> 帳戶設定 ...**]）。或者，如果您找不到所要尋找的功能變數名稱（例如），則可以輸入該名稱`mydomain.onmicrosoft.com`。 您可以選擇可建立 Azure Active Directory 應用程式的選項，或是使用來自現有 Azure Active Directory 應用程式的設定。 完成時，選取 [下一步]****。
+1. 在 [單一登入]**** 頁面上，從 [網域]**** 下拉式清單中選取網域。 此清單包含 Visual Studio 的 [帳戶設定] 對話方塊中列出的帳戶所存取的所有網域（[檔案 **> 帳戶設定 ...**]）。或者，如果您找不到所要尋找的功能變數名稱（例如），則可以輸入該名稱 `mydomain.onmicrosoft.com` 。 您可以選擇可建立 Azure Active Directory 應用程式的選項，或是使用來自現有 Azure Active Directory 應用程式的設定。 完成時，選取 [下一步]****。
 
     ![[單一登入] 頁面](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 
