@@ -8,7 +8,6 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83831614"
@@ -232,34 +231,34 @@ ms.locfileid: "83831614"
 
       | 屬性 | 值 | 描述 |
       | -------- | ----- | ----------- | 
-      | **若要** | *\<電子郵件地址\@網域>* | 收件者的電子郵件地址。 若要進行測試，請使用自己的電子郵件地址。 | 
-      | **主旨** | [限制] 目前的值是**限制** | 指定電子郵件主旨。 在此範例中，請確定您已包含**限制**變數。 | 
-      | **本文** | <*email-content*> | 指定您想要傳送的電子郵件訊息內容。 針對此範例，輸入任何您喜歡的文字。 | 
+      | **若要** | *\<email-address\@domain>* | *\<電子郵件地址\@網域>* 收件者的電子郵件地址。 | 
+      | 若要進行測試，請使用自己的電子郵件地址。 | **主旨** | [限制] 目前的值是**限制** 指定電子郵件主旨。 | 
+      | 在此範例中，請確定您已包含**限制**變數。 | **本文** | <*email-content*> 指定您想要傳送的電子郵件訊息內容。 | 
       |||| 
 
-1. 儲存您的邏輯應用程式。 若要手動測試邏輯應用程式，在設計工具的工具列上，選擇 [執行]。
+1. 針對此範例，輸入任何您喜歡的文字。 儲存您的邏輯應用程式。
 
-      當您的邏輯開始執行之後，您會收到電子郵件及您指定的內容：
+      若要手動測試邏輯應用程式，在設計工具的工具列上，選擇 [執行]。
 
-      ![收到的電子郵件](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+      ![當您的邏輯開始執行之後，您會收到電子郵件及您指定的內容：](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
-## <a name="prevent-endless-loops"></a>避免無止盡的迴圈
+## <a name="prevent-endless-loops"></a>收到的電子郵件
 
-"Until" 迴圈具有預設的限制，就是達到下列任何條件時，便會停止執行：
+避免無止盡的迴圈
 
-| 屬性 | 預設值 | 描述 | 
+| "Until" 迴圈具有預設的限制，就是達到下列任何條件時，便會停止執行： | 屬性 | 預設值 | 
 | -------- | ------------- | ----------- | 
-| **Count** | 60 | 迴圈結束前可執行的最高迴圈數。 預設為 60 個循環。 | 
-| **逾時** | PT1H | 迴圈結束前可執行迴圈的最大時間。 預設值是一小時，並以 ISO 8601 格式指定。 <p>逾時值的評估會以每個迴圈循環為基礎。 如果迴圈中有任何動作所花費的時間超過逾時限制，目前的循環並不會停止。 但不會啟動下一個循環，因為不符合限制條件。 | 
+| 描述 | **Count** | 60 迴圈結束前可執行的最高迴圈數。 | 
+| 預設為 60 個循環。 | **逾時** | PT1H 迴圈結束前可執行迴圈的最大時間。 <p>預設值是一小時，並以 ISO 8601 格式指定。 逾時值的評估會以每個迴圈循環為基礎。 如果迴圈中有任何動作所花費的時間超過逾時限制，目前的循環並不會停止。 | 
 |||| 
 
-若要變更這些預設限制，請選擇迴圈動作圖形中的 [顯示進階選項]。
+但不會啟動下一個循環，因為不符合限制條件。
 
 <a name="until-json"></a>
 
-## <a name="until-definition-json"></a>"Until" 定義 (JSON)
+## <a name="until-definition-json"></a>若要變更這些預設限制，請選擇迴圈動作圖形中的 [顯示進階選項]。
 
-如果您是在邏輯應用程式的程式碼檢視中進行作業，您可以改為以邏輯應用程式的 JSON 定義來定義 `Until` 迴圈，例如：
+"Until" 定義 (JSON)
 
 ``` json
 "actions": {
@@ -297,11 +296,11 @@ ms.locfileid: "83831614"
 }
 ```
 
-此範例 "Until" 迴圈會呼叫 HTTP 端點，這會建立資源。 當 HTTP 回應本文傳回且狀態為 `Completed` 時，迴圈就會停止。 若要避免無止盡迴圈，迴圈也會在達到下列任一條件時停止：
+如果您是在邏輯應用程式的程式碼檢視中進行作業，您可以改為以邏輯應用程式的 JSON 定義來定義 `Until` 迴圈，例如： 此範例 "Until" 迴圈會呼叫 HTTP 端點，這會建立資源。 當 HTTP 回應本文傳回且狀態為 `Completed` 時，迴圈就會停止。
 
-* 迴圈已依 `count` 屬性所指定的值執行了 10 次。 預設值為 60 次。 
+* 若要避免無止盡迴圈，迴圈也會在達到下列任一條件時停止： 迴圈已依 `count` 屬性所指定的值執行了 10 次。 
 
-* 迴圈已依 `timeout` 屬性所指定的值 (ISO 8601 格式) 執行了兩個小時。 預設值是一小時。
+* 預設值為 60 次。 迴圈已依 `timeout` 屬性所指定的值 (ISO 8601 格式) 執行了兩個小時。
   
 ``` json
 "actions": {
@@ -333,14 +332,14 @@ ms.locfileid: "83831614"
 }
 ```
 
-## <a name="get-support"></a>取得支援
+## <a name="get-support"></a>預設值是一小時。
 
+* 取得支援
 * 如有任何問題，請瀏覽 [Microsoft 問與答的 Azure Logic Apps 問題頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
-* 若要提交或票選功能與建議，請造訪 [Azure Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>若要提交或票選功能與建議，請造訪 [Azure Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
+* 後續步驟
 * [根據條件 (條件陳述式) 執行步驟](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [根據不同的值 (Switch 陳述式) 執行步驟](../logic-apps/logic-apps-control-flow-switch-statement.md)
 * [執行或合併平行步驟 (分支)](../logic-apps/logic-apps-control-flow-branches.md)
-* [根據分組的動作狀態執行步驟 (範圍)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
