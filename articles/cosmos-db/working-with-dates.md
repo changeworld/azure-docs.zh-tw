@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f31ee7f7d60a3bf0ab56b9ed8aa7fd25774e06c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666996"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85412544"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的日期
 
@@ -21,9 +21,9 @@ Azure Cosmos DB 透過原生 [JSON](https://www.json.org) 資料模型，提供�
 
 ## <a name="storing-datetimes"></a>儲存 DateTimes
 
-Azure Cosmos DB 支援 JSON 類型，例如-string、number、boolean、null、array、object。 它不會直接支援 DateTime 類型。 目前，Azure Cosmos DB 不支援日期的當地語系化。 因此，您必須將日期時間儲存為字串。 Azure Cosmos DB `YYYY-MM-DDThh:mm:ss.fffffffZ`中的日期時間字串建議格式，遵循 ISO 8601 UTC 標準。 建議將所有日期以 UTC 格式儲存在 Azure Cosmos DB 中。 將日期字串轉換成此格式將允許排序日期詞典編纂。 如果儲存非 UTC 日期，則邏輯必須在用戶端處理。 若要將本機日期時間轉換成 UTC，必須將位移視為 JSON 中的屬性，而且用戶端可以使用位移來計算 UTC 日期時間值。
+Azure Cosmos DB 支援 JSON 類型，例如-string、number、boolean、null、array、object。 它不會直接支援 DateTime 類型。 目前，Azure Cosmos DB 不支援日期的當地語系化。 因此，您必須將日期時間儲存為字串。 Azure Cosmos DB 中的日期時間字串建議格式， `yyyy-MM-ddTHH:mm:ss.fffffffZ` 遵循 ISO 8601 UTC 標準。 建議將所有日期以 UTC 格式儲存在 Azure Cosmos DB 中。 將日期字串轉換成此格式將允許排序日期詞典編纂。 如果儲存非 UTC 日期，則邏輯必須在用戶端處理。 若要將本機日期時間轉換成 UTC，必須將位移視為 JSON 中的屬性，而且用戶端可以使用位移來計算 UTC 日期時間值。
 
-只有當日期時間字串全都以 UTC 和相同的長度為時，才支援以 DateTime 字串做為篩選準則的範圍查詢。 在 Azure Cosmos DB 中， [GetCurrentDateTime](sql-query-getcurrentdatetime.md)系統函數會以下列格式傳回目前的 UTC 日期和時間 ISO 8601 字串值： `YYYY-MM-DDThh:mm:ss.fffffffZ`。
+只有當日期時間字串全都以 UTC 和相同的長度為時，才支援以 DateTime 字串做為篩選準則的範圍查詢。 在 Azure Cosmos DB 中， [GetCurrentDateTime](sql-query-getcurrentdatetime.md)系統函數會以下列格式傳回目前的 UTC 日期和時間 ISO 8601 字串值： `yyyy-MM-ddTHH:mm:ss.fffffffZ` 。
 
 大部分應用程式可以使用 DateTime 的預設字串表示法，原因如下︰
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 9014d446b29b9a81a807c002cd7f83a2c3bdaa51
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231334"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413156"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的區域和可用性區域
 
@@ -43,7 +43,7 @@ Microsoft Azure 服務可全域使用，以最佳層級來驅動您的雲端作�
 
 可用性區域是高可用性供應專案，可保護您的應用程式和資料不受資料中心失敗的影響。 「可用性區域」是 Azure 地區內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原，所有已啟用的地區中至少要有三個不同的區域。 地區內「可用性區域」的實體區隔可保護應用程式和資料不受資料中心故障影響。 區域備援服務會將應用程式和資料複寫至所有「可用性區域」，以防出現單一失敗點。 使用「可用性區域」時，Azure 可提供業界最佳的 99.99% VM 執行時間 SLA。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 說明保證的 Azure 整體可用性。
 
-Azure 區域中的可用性區域是由容錯網域和更新網域組成。 例如，如果您在 Azure 區域中建立橫跨三個區域的三個 (或更多) VM，您的 VM 會有效地分散到三個容錯網域和三個更新網域。 Azure 平台會從更新網域中辨識此分佈，以確定不會同時更新不同區域中的 VM。
+Azure 區域中的可用性區域是由容錯網域和更新網域組成。 例如，如果您在 Azure 區域中建立橫跨三個區域的三個 (或更多) VM，您的 VM 會有效地分散到三個容錯網域和三個更新網域。 Azure 平臺會在更新網域中辨識此發佈，以確保不同區域中的 Vm 不會被排程同時更新。
 
 藉由將運算、儲存體、網路及資料資源共置於某個區域內並複寫至其他區域，即可讓您的應用程式架構內建高可用性。 支援「可用性區域」的 Azure 服務分成兩個類別：
 
@@ -92,11 +92,11 @@ Azure 服務分成三種類別：基本、主流和特製化服務。 Azure 將�
 > | 基礎 | 主流 | 特製化 |
 > | --- | --- | --- |
 > | 帳戶儲存體 | API 管理 | 適用於 FHIR 的 Azure API |
-> | 應用程式閘道 | 應用程式組態 | Azure 區塊鏈服務 |
-> | Azure 備份 | App Service 方案 | Azure 藍圖 |
+> | 應用程式閘道 | 應用程式設定 | Azure 區塊鏈服務 |
+> | Azure 備份 | App Service | Azure 藍圖 |
 > | Azure Cosmos DB | 自動化 | 適用於 MariaDB 的 Azure 資料庫 |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | Azure 專用 HSM |
-> | Azure ExpressRoute | Azure Analysis Services | Azure 開發人員空間 |
+> | Azure ExpressRoute | Azure Analysis Services | Azure Dev Spaces |
 > | Azure SQL Database | Azure Bastion | Azure Digital Twins |
 > | 雲端服務 | Azure Cache for Redis | Azure 實驗室服務 |
 > | 雲端服務： Av2 系列 | Azue 認知搜尋 | Azure NetApp Files |
@@ -112,13 +112,13 @@ Azure 服務分成三種類別：基本、主流和特製化服務。 Azure 將�
 > | 服務匯流排 | Azure 防火牆 | Data Box Heavy |
 > | Service Fabric | Azure Functions | 資料目錄 |
 > | 虛擬機器擴展集 | Azure HPC Cache | Data Factory： Data Factory V1 |
-> | 虛擬機器 | Azure IoT 中樞 | 資料湖分析 |
+> | 虛擬機器 | Azure IoT 中樞 | Data Lake Analytics |
 > | 虛擬機器： Av2 系列 | Azure Kubernetes Service (AKS) | Machine Learning Studio |
 > | 虛擬機器： Bs 系列 | Azure Machine Learning | Microsoft Genomics |
 > | 虛擬機器： DSv2 系列 | Azure Private Link | 遠端轉譯 |
 > | 虛擬機器： DSv3 系列 | Azure Red Hat OpenShift | Spatial Anchors |
 > | 虛擬機器： Dv2 系列 | Azure Site Recovery | StorSimple |
-> | 虛擬機器： Dv3 系列 | Azure 春季雲端服務 | 影片索引子 |
+> | 虛擬機器： Dv3 系列 | Azure 春季雲端服務 | 影片索引器 |
 > | 虛擬機器： ESv3 系列 | Azure Stack Hub | 虛擬機器： A8-A11 （需要大量計算） |
 > | 虛擬機器： Ev3 系列 | Azure 串流分析 | 虛擬機器： DASv4 系列 |
 > | 虛擬機器： F 系列 | Azure Synapse Analytics | 虛擬機器： DAv4 系列 |
@@ -132,10 +132,10 @@ Azure 服務分成三種類別：基本、主流和特製化服務。 Azure 將�
 > |  | 認知服務： Language Understanding | 虛擬機器： HCv1 系列 |
 > |  | 認知服務：語音服務 | 虛擬機器： H 系列 |
 > |  | 認知服務：QnA Maker | 虛擬機器： LS 系列 |
-> |  | Container Instances | 虛擬機器： LSv2 系列 |
+> |  | 容器執行個體 | 虛擬機器： LSv2 系列 |
 > |  | Container Registry | 虛擬機器： Mv2 系列 |
 > |  | Data Factory | 虛擬機器： NC 系列 |
-> |  | Event Grid | 虛擬機器： NCv2 系列 |
+> |  | 事件方格 | 虛擬機器： NCv2 系列 |
 > |  | HDInsight | 虛擬機器： NCv3 系列 |
 > |  | Logic Apps | 虛擬機器： NDs 系列 |
 > |  | 媒體服務 | 虛擬機器： NDv2 系列 |
@@ -148,7 +148,7 @@ Azure 服務分成三種類別：基本、主流和特製化服務。 Azure 將�
 > |  | Ultra 磁碟儲存體 |  |
 > |  | 虛擬機器： Fsv2 系列 |  |
 > |  | 虛擬機器： M 系列 |  |
-> |  | 虛擬 WAN |  |
+> |  | Virtual WAN |  |
 
 ###  <a name="services-resiliency"></a>服務復原
 
@@ -166,7 +166,7 @@ Azure 服務分成三種類別：基本、主流和特製化服務。 Azure 將�
 - [使用具有區域備援前端的標準 Load Balancer 來進行跨區域的 VM 負載平衡](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 - [使用具有區域前端的標準 Load Balancer 來進行區域內的 VM 負載平衡](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [區域備援儲存體](../storage/common/storage-redundancy-zrs.md)
-- [SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
+- [SQL Database](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
 - [事件中樞異地災害復原](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [服務匯流排異地災害復原](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [建立區域備援虛擬網路閘道](../vpn-gateway/create-zone-redundant-vnet-gateway.md)

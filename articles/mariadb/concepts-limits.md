@@ -5,158 +5,25 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: d4450689f6865c19436e437e09a3aa9f286c6e21
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 6/25/2020
+ms.openlocfilehash: fc5557c1b20d87d2f96559e1d41efa4576045f09
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653130"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392772"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫相關限制
 下列各節說明資料庫服務中的容量、儲存引擎支援、權限支援、資料操作陳述式支援，以及功能限制。
 
 ## <a name="server-parameters"></a>伺服器參數
 
-數個熱門伺服器參數的最小和最大值取決於定價層和虛擬核心。 請參閱下表中的限制。
+> [!NOTE]
+> 如果您要尋找伺服器參數（如和）的最小/最大值 `max_connections` `innodb_buffer_pool_size` ，這項資訊已移至**[伺服器參數](./concepts-server-parameters.md)** 文章。
 
-### <a name="max_connections"></a>max_connections
+適用於 MariaDB 的 Azure 資料庫支援微調伺服器參數的值。 某些參數的最小和最大值（例如 `max_connections`、 `join_buffer_size` 、 `query_cache_size` ）是由伺服器的定價層和虛擬核心所決定。 如需這些限制的詳細資訊，請參閱[伺服器參數](./concepts-server-parameters.md)。
 
-|定價層|**vCore(s)**|**預設值**|**最小值**|**最大值**|
-|---|---|---|---|---|
-|基本|1|50|10|50|
-|基本|2|100|10|100|
-|一般用途|2|300|10|600|
-|一般用途|4|625|10|1250|
-|一般用途|8|1250|10|2500|
-|一般用途|16|2500|10|5000|
-|一般用途|32|5000|10|10000|
-|一般用途|64|10000|10|20000|
-|記憶體最佳化|2|600|10|800|
-|記憶體最佳化|4|1250|10|2500|
-|記憶體最佳化|8|2500|10|5000|
-|記憶體最佳化|16|5000|10|10000|
-|記憶體最佳化|32|10000|10|20000|
-
-當連線超過限制時，則可能會收到下列錯誤：
-> 錯誤 1040 (08004)：太多連線
-
-> [!IMPORTANT]
-> 為了獲得最佳體驗，建議使用連接共用器 (例如 ProxySQL)，有效率地管理連線。
-
-建立 MariaDB 的新用戶端連線需要一段時間，且在建立之後，這些連線會佔用資料庫資源，即使閒置時也一樣。 大部分應用程式會要求許多短期連線，這會加重這種情況。 結果會減少實際工作負載的可用資源，因而導致效能降低。 減少閒置連線並重複使用現有連線的連接共用器，有助於避免這種情況。 若要了解如何設定 ProxySQL，請前往[部落格文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
-
-### <a name="query_cache_size"></a>query_cache_size
-
-查詢快取預設為關閉。 若要啟用查詢快取，請設定 `query_cache_type` 參數。 
-
-請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#query_cache_size)，進一步了解此參數。
-
-|定價層|**vCore(s)**|**預設值**|**最小值**|**最大值**|
-|---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|N/A|
-|基本|2|無法在基本層中設定|N/A|N/A|
-|一般用途|2|0|0|16777216|
-|一般用途|4|0|0|33554432|
-|一般用途|8|0|0|67108864|
-|一般用途|16|0|0|134217728|
-|一般用途|32|0|0|134217728|
-|一般用途|64|0|0|134217728|
-|記憶體最佳化|2|0|0|33554432|
-|記憶體最佳化|4|0|0|67108864|
-|記憶體最佳化|8|0|0|134217728|
-|記憶體最佳化|16|0|0|134217728|
-|記憶體最佳化|32|0|0|134217728|
-
-### <a name="sort_buffer_size"></a>sort_buffer_size
-
-請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size)，進一步了解此參數。
-
-|定價層|**vCore(s)**|**預設值**|**最小值**|**最大值**|
-|---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|N/A|
-|基本|2|無法在基本層中設定|N/A|N/A|
-|一般用途|2|524288|32768|4194304|
-|一般用途|4|524288|32768|8388608|
-|一般用途|8|524288|32768|16777216|
-|一般用途|16|524288|32768|33554432|
-|一般用途|32|524288|32768|33554432|
-|一般用途|64|524288|32768|33554432|
-|記憶體最佳化|2|524288|32768|8388608|
-|記憶體最佳化|4|524288|32768|16777216|
-|記憶體最佳化|8|524288|32768|33554432|
-|記憶體最佳化|16|524288|32768|33554432|
-|記憶體最佳化|32|524288|32768|33554432|
-
-### <a name="join_buffer_size"></a>join_buffer_size
-
-請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size)，進一步了解此參數。
-
-|定價層|**vCore(s)**|**預設值**|**最小值**|**最大值**|
-|---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|N/A|
-|基本|2|無法在基本層中設定|N/A|N/A|
-|一般用途|2|262144|128|268435455|
-|一般用途|4|262144|128|536870912|
-|一般用途|8|262144|128|1073741824|
-|一般用途|16|262144|128|2147483648|
-|一般用途|32|262144|128|4294967295|
-|一般用途|64|262144|128|4294967295|
-|記憶體最佳化|2|262144|128|536870912|
-|記憶體最佳化|4|262144|128|1073741824|
-|記憶體最佳化|8|262144|128|2147483648|
-|記憶體最佳化|16|262144|128|4294967295|
-|記憶體最佳化|32|262144|128|4294967295|
-
-### <a name="max_heap_table_size"></a>max_heap_table_size
-
-請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size)，進一步了解此參數。
-
-|定價層|**vCore(s)**|**預設值**|**最小值**|**最大值**|
-|---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|N/A|
-|基本|2|無法在基本層中設定|N/A|N/A|
-|一般用途|2|16777216|16384|268435455|
-|一般用途|4|16777216|16384|536870912|
-|一般用途|8|16777216|16384|1073741824|
-|一般用途|16|16777216|16384|2147483648|
-|一般用途|32|16777216|16384|4294967295|
-|一般用途|64|16777216|16384|4294967295|
-|記憶體最佳化|2|16777216|16384|536870912|
-|記憶體最佳化|4|16777216|16384|1073741824|
-|記憶體最佳化|8|16777216|16384|2147483648|
-|記憶體最佳化|16|16777216|16384|4294967295|
-|記憶體最佳化|32|16777216|16384|4294967295|
-
-### <a name="tmp_table_size"></a>tmp_table_size
-
-請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size)，進一步了解此參數。
-
-|定價層|**vCore(s)**|**預設值**|**最小值**|**最大值**|
-|---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|N/A|
-|基本|2|無法在基本層中設定|N/A|N/A|
-|一般用途|2|16777216|1024|67108864|
-|一般用途|4|16777216|1024|134217728|
-|一般用途|8|16777216|1024|268435456|
-|一般用途|16|16777216|1024|536870912|
-|一般用途|32|16777216|1024|1073741824|
-|一般用途|64|16777216|1024|1073741824|
-|記憶體最佳化|2|16777216|1024|134217728|
-|記憶體最佳化|4|16777216|1024|268435456|
-|記憶體最佳化|8|16777216|1024|536870912|
-|記憶體最佳化|16|16777216|1024|1073741824|
-|記憶體最佳化|32|16777216|1024|1073741824|
-
-### <a name="time_zone"></a>time_zone
-
-時區資料表可藉由從 MySQL 命令列或 MySQL Workbench 等工具呼叫 `mysql.az_load_timezone` 預存程序來填入。 請參閱 [Azure 入口網站](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 文章，以了解如何呼叫預存程序，以及設定全域或工作階段層級的時區。
-
-### <a name="innodb_file_per_table"></a>innodb_file_per_table
-
-MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表儲存在不同的資料表空間中。 [系統資料表空間](https://mariadb.com/kb/en/innodb-system-tablespaces/)是 InnoDB 資料字典的儲存區域。 [file-per-table 資料表空間](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/)包含單一 InnoDB 資料表的資料和索引，且會獨自儲存在檔案系統的資料檔中。 這個行為是由 `innodb_file_per_table` 伺服器參數所控制。 將 `innodb_file_per_table` 設定為 `OFF` 會導致 InnoDB 在系統資料表空間中建立資料表。 否則，InnoDB 會在 file-per-table 資料表空間中建立資料表。
-
-適用於 MariaDB 的 Azure 資料庫在單一資料檔中支援最大達到 **1 TB**。 如果資料庫大小大於 1 TB，則應該在 [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) 資料表空間中建立資料表。 如果單一資料表大小大於 1 TB，則應該使用分割區資料表。
+在初始部署時，Azure for 適用于 mariadb 伺服器會包含時區資訊的系統資料表，但不會填入這些資料表。 時區資料表可藉由從 MySQL 命令列或 MySQL Workbench 等工具呼叫 `mysql.az_load_timezone` 預存程序來填入。 請參閱 [Azure 入口網站](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 文章，以了解如何呼叫預存程序，以及設定全域或工作階段層級的時區。
 
 ## <a name="storage-engine-support"></a>儲存引擎支援
 

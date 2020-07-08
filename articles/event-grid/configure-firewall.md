@@ -7,15 +7,15 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 0db6c2c346a6eb6ef016340fcfc2974c85958e6c
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c64d947c13cf067d4ffc2b32ed655960143ad1c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858105"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391769"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>為 Azure 事件方格主題或網域設定 IP 防火牆（預覽）
-根據預設，只要要求隨附有效的驗證和授權，就可以從網際網路存取主題和網域。 使用 IP 防火牆，您可以將它進一步限制為[CIDR （無類別網域間路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)標記法中的一組 ipv4 位址或 ipv4 位址範圍。 源自任何其他 IP 位址的發行者將會遭到拒絕，並會收到403（禁止）回應。 如需事件方格所支援之網路安全性功能的詳細資訊，請參閱[事件方格的網路安全性](network-security.md)。
+根據預設，只要要求隨附有效的驗證和授權，就可以從網際網路存取主題和網域。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。 源自任何其他 IP 位址的發行者將會遭到拒絕，並會收到403（禁止）回應。 如需事件方格所支援之網路安全性功能的詳細資訊，請參閱[事件方格的網路安全性](network-security.md)。
 
 本文說明如何設定 Azure 事件方格主題或網域的 IP 防火牆設定。
 
@@ -31,7 +31,7 @@ ms.locfileid: "82858105"
 3. 選取 [**僅限私人端點**] 僅允許私人端點連線存取此資源。 使用此頁面上的 [**私人端點連接**] 索引標籤來管理連接。 
 
     ![[公用網路] 頁面](./media/configure-firewall/private-endpoints-page.png)
-4. 在工具列上選取 [儲存]  。 
+4. 在工具列上選取 [儲存]。 
 
 
 
@@ -280,3 +280,4 @@ Invoke-RestMethod -Method 'Get'
 * 如需關於監視事件傳遞的資訊，請參閱[監視 Event Grid 訊息傳遞](monitor-event-delivery.md)。
 * 如需驗證金鑰的詳細資訊，請參閱 [Event Grid 安全性和驗證](security-authentication.md)。
 * 若要了解 Event Grid 訂用帳戶的建立，請參閱 [Event Grid 訂用帳戶結構描述](subscription-creation-schema.md)。
+* 若要疑難排解網路連線問題，請參閱針對網路連線問題[進行疑難排解](troubleshoot-network-connectivity.md)

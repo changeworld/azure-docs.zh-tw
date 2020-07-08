@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 36012801a2d36b75a0683db6f029a4560150ac2b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683066"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392228"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -146,7 +146,7 @@ Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中�
 
 若要使用客戶管理金鑰在您的訂用帳戶中佈建 Cosmos DB 執行個體，請執行下列動作：
 
-* 在您的訂用帳戶中註冊 Azure Machine Learning 和 Azure Cosmos DB 資源提供者 (如果尚未這麼做)。
+* 在您的訂用帳戶中註冊 MachineLearning 和 Microsoft.DocumentDB 資源提供者（如果尚未這麼做）。
 
 * 使用訂用帳戶的參與者權限，對 Machine Learning 應用程式 (在 [身分識別與存取管理] 中) 進行授權。
 
@@ -176,6 +176,11 @@ Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中�
 您登錄 (Azure Container Registry) 中的所有容器映像在待用時都已加密。 Azure 會在儲存映像之前自動將其加密，並在 Azure Machine Learning 提取映像時將其解密。
 
 若要使用您自己 (客戶管理) 金鑰來加密您的 Azure Container Registry，您必須建立自己的 ACR，並在佈建工作區時加以連結，或加密在佈建工作區時所建立的預設執行個體。
+
+> [!IMPORTANT]
+> Azure Machine Learning 需要在您的 Azure Container Registry 上啟用系統管理員帳戶。 根據預設，當您建立容器登錄時，會停用此設定。 如需啟用系統管理員帳戶的相關資訊，請參閱系統[管理員帳戶](/azure/container-registry/container-registry-authentication#admin-account)。
+>
+> 為工作區建立 Azure Container Registry 之後，請勿將其刪除。 這樣做將會造成您的 Azure Machine Learning 工作區中斷。
 
 如需使用現有 Azure Container Registry 建立工作區的範例，請參閱下列文章：
 

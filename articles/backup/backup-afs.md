@@ -3,14 +3,14 @@ title: 在 Azure 入口網站中備份 Azure 檔案共用
 description: 瞭解如何使用 Azure 入口網站來備份復原服務保存庫中的 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: a77f7fd0ec21eae60a7313a9ffa889fbef4372c6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 76bf8e00dede5f227cb862f9c9474844e349e298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977959"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391143"
 ---
-# <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>備份復原服務保存庫中的 Azure 檔案共用
+# <a name="back-up-azure-file-shares"></a>備份 Azure 檔案共用
 
 本文說明如何使用 Azure 入口網站來備份[Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)。
 
@@ -20,33 +20,12 @@ ms.locfileid: "82977959"
 * 探索檔案共用並設定備份。
 * 執行隨選備份作業以建立還原點。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 在與裝載檔案共用的儲存體帳戶相同的區域中，識別或建立復原[服務保存庫](#create-a-recovery-services-vault)。
 * 請確定檔案共用存在於其中一種支援的[儲存體帳戶類型](azure-file-share-support-matrix.md)中。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
-
-## <a name="modify-storage-replication"></a>修改儲存體複寫
-
-根據預設，保存庫會使用[異地多餘儲存體（GRS）](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
-
-* 如果保存庫是您的主要備份機制，我們建議您使用 GRS。
-* 您可以使用[本機多餘的儲存空間（LRS）](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)做為低成本的選項。
-
-若要修改儲存體複寫類型：
-
-1. 在新的保存庫中，選取 [**設定**] 區段下的 [**屬性**]。
-
-1. 在 [**屬性**] 頁面的 [**備份**設定] 底下，選取 [**更新**]。
-
-1. 選取儲存體複寫類型，然後選取 [**儲存]。**
-
-    ![更新備份設定](./media/backup-afs/backup-configuration.png)
-
-> [!NOTE]
-> 設定保存庫並包含備份專案之後，即無法修改儲存體複寫類型。 如果您想要這樣做，您必須重新建立保存庫。
->
 
 ## <a name="discover-file-shares-and-configure-backup"></a>探索檔案共用並設定備份
 
@@ -84,7 +63,7 @@ ms.locfileid: "82977959"
 
 1. [**選取檔案共用**] 內容窗格會在右側開啟。 Azure 會在儲存體帳戶中搜尋可備份的檔案共用。 如果您最近新增了檔案共用，但在清單中看不到它們，請等待一些時間讓檔案共用出現。
 
-1. 從 [**選取檔案共用**] 清單中，選取一或多個您想要備份的檔案共用。 選取 [確定]  。
+1. 從 [**選取檔案共用**] 清單中，選取一或多個您想要備份的檔案共用。 選取 [確定]。
 
    ![選取檔案共用](./media/backup-afs/select-file-shares.png)
 
@@ -148,7 +127,7 @@ ms.locfileid: "82977959"
 
 1. 選取 **[確定]** 以確認執行的隨選備份作業。
 
-1. 監視入口網站通知以追蹤備份作業執行完成。 您可以在保存庫儀表板中監視作業進度。 選取 [**備份作業** > **進行中**]。
+1. 監視入口網站通知以追蹤備份作業執行完成。 您可以在保存庫儀表板中監視作業進度。 選取 [**備份作業**  >  **進行中**]。
 
 >[!NOTE]
 >當您針對對應帳戶中的任何檔案共用設定保護時，Azure 備份鎖定儲存體帳戶。 這可防止意外刪除已備份檔案共用的儲存體帳戶。

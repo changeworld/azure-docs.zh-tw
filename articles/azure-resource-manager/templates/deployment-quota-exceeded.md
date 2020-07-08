@@ -2,23 +2,26 @@
 title: 已超過部署配額
 description: 描述如何解決資源群組歷程記錄中有超過800個部署的錯誤。
 ms.topic: troubleshooting
-ms.date: 10/04/2019
-ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 1b0c3de6007964b487a13e71cd43bd984cd970f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80245084"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391174"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>解決部署計數超過800的錯誤
 
 在其部署歷程記錄中，每個資源群組都限制為800個部署。 本文說明當部署失敗時所收到的錯誤，因為它會超過允許的800部署。 若要解決此錯誤，請從資源群組歷程記錄中刪除部署。 從歷程記錄中刪除部署，並不會影響任何已部署的資源。
 
+> [!NOTE]
+> Azure Resource Manager 很快就會在您接近限制時，自動從歷程記錄中刪除部署。 如果您選擇不自動刪除，可能還是會看到此錯誤。 如需詳細資訊，請參閱[從部署歷程記錄自動刪除](deployment-history-deletions.md)。
+
 ## <a name="symptom"></a>徵狀
 
 在部署期間，您會收到錯誤，指出目前的部署將會超過800部署的配額。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 ### <a name="azure-cli"></a>Azure CLI
 

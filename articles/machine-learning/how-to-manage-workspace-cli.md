@@ -5,16 +5,16 @@ description: 了解如何使用 Azure CLI 建立新的 Azure Machine Learning �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
-ms.openlocfilehash: 9a7d0b75140c50df61ff63f350e5b312a6a684c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 06/25/2020
+ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617788"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392704"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ az extension add -n azure-cli-ml
 Azure Machine Learning 工作區依賴下列 Azure 服務或實體：
 
 > [!IMPORTANT]
-> 如果未指定現有的 Azure 服務，則會在工作區建立期間自動建立一個。 請務必指定資源群組。
+> 如果未指定現有的 Azure 服務，則會在工作區建立期間自動建立一個。 請務必指定資源群組。 附加您自己的儲存體帳戶時，請確定它已啟用 Azure Blob 和 Azure 檔案功能，而且已停用階層命名空間（ADLS Gen 2）。 您稍後可以在工作區建立為數據存放區之後，隨時附加您自己的儲存體帳戶。
 
 | 服務 | 用來指定現有執行個體的參數 |
 | ---- | ---- |
@@ -317,7 +317,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 ## <a name="sync-keys-for-dependent-resources"></a>同步相依資源的金鑰
 
-如果變更工作區所使用其中一個資源的存取金鑰，請使用下列命令將新的金鑰與工作區同步：
+如果您變更工作區所使用的其中一個資源的存取金鑰，工作區需要大約一小時的時間才能同步處理至新的金鑰。 若要強制工作區立即同步處理新的金鑰，請使用下列命令：
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
