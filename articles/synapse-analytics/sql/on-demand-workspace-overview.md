@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3f020abd4d207a49068ccffb9bb7f57b88bc87df
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206388"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480434"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 SQL 隨選 (預覽) 
 
@@ -89,21 +89,21 @@ SQL 隨選不具有本機儲存體，只有中繼資料物件會儲存在資料�
 
 為了讓您能夠順暢地查詢位於資料湖檔案中的資料，SQL 隨選藉由新增下列功能來擴充現有的 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 函式：
 
-[查詢多個檔案或資料夾](develop-storage-files-overview.md#query-multiple-files-or-folders)
+[查詢多個檔案或資料夾](query-data-storage.md#query-multiple-files-or-folders)
 
-[PARQUET 檔案格式](develop-storage-files-overview.md#parquet-file-format)
+[PARQUET 檔案格式](query-data-storage.md#query-parquet-files)
 
-[使用分隔文字的其他選項 (欄位結束字元、資料列結束字元、逸出字元)](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
+[使用分隔文字的其他選項 (欄位結束字元、資料列結束字元、逸出字元)](query-data-storage.md#query-csv-files)
 
-[讀取選擇的資料行子集](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
+[讀取選擇的資料行子集](query-data-storage.md#read-a-chosen-subset-of-columns)
 
-[結構描述推斷](develop-storage-files-overview.md#schema-inference)
+[結構描述推斷](query-data-storage.md#schema-inference)
 
-[filename 函式](develop-storage-files-overview.md#filename-function)
+[filename 函式](query-data-storage.md#filename-function)
 
-[filepath 函式](develop-storage-files-overview.md#filepath-function)
+[filepath 函式](query-data-storage.md#filepath-function)
 
-[使用複雜類型和巢狀或重複的資料結構](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
+[使用複雜類型和巢狀或重複的資料結構](query-data-storage.md#work-with-complex-types-and-nested-or-repeated-data-structures)
 
 ## <a name="security"></a>安全性
 

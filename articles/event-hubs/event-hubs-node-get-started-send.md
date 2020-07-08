@@ -1,19 +1,14 @@
 ---
 title: 使用 JavaScript 從 Azure 事件中樞傳送或接收事件 (舊版)
 description: 本文將逐步解說如何建立 JavaScript 應用程式，以使用舊有的 azure/event-hubs 第 2 版套件對 Azure 事件中樞傳送事件或接收事件。
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 01/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 0a4b76bd1febca864cab6060fbdbd96dd0061cff
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.openlocfilehash: 548276b4bcbdd514c37a19375154923ad9f3f9a4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77162611"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314518"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-javascript-azureevent-hubs-version-2"></a>快速入門：使用 JavaScript 將事件傳送至 Azure 事件中樞或從中接收事件 (@azure/event-hubs 第 2 版)
 本快速入門說明如何使用 azure/event-hubs 第 2 版 JavaScript 套件，來建立 JavaScript 應用程式以傳送事件至事件中樞和從事件中樞接收事件。 

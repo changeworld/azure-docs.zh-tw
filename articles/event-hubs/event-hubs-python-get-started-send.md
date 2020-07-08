@@ -1,21 +1,14 @@
 ---
 title: 使用 Python 從 Azure 事件中樞傳送或接收事件 (舊版)
 description: 此逐步解說將說明如何建立及執行 Python 指令碼，以使用舊有的 azure-eventhub 第 1 版套件將事件傳送至 Azure 事件中樞或從中接收事件。
-services: event-hubs
-author: spelluru
-manager: femila
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 01/15/2020
-ms.author: spelluru
-ms.custom: tracking-python
-ms.openlocfilehash: 96c95efdc8f2154e0586fec59d1af66496acb101
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/23/2020
+ms.openlocfilehash: 4ce53d2d82a00f98dbbd538bd7a61da9ba44e832
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558959"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314468"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>快速入門：使用 Python 以事件中樞傳送和接收事件 (azure-eventhub 第 1 版)
 本快速入門說明如何使用 **azure-eventhub 第 1 版** Python 套件，來傳送事件至事件中樞和從事件中樞接收事件。 

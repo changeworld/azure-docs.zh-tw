@@ -1,26 +1,14 @@
 ---
 title: 快速入門：使用 C 傳送事件 - Azure 事件中樞
 description: 快速入門：本文會逐步解說如何建立 C 應用程式，以將事件傳送至 Azure 事件中樞。
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: c
-ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: seodec18
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 6bb4e6d754c091b57399a6154d491e93becad57e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299308"
+ms.locfileid: "85315658"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>快速入門：使用 C 將事件傳送至 Azure 事件中樞
 
