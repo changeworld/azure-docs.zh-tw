@@ -5,14 +5,14 @@ author: ancav
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506968"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure 監視器中的自訂計量（預覽）
 
@@ -28,11 +28,11 @@ Azure 監視器自訂計量目前處於公開預覽狀態。
 - 使用 Application Insights SDK 檢測您的應用程式，並將自訂遙測傳送至 Azure 監視器。 
 - 將 Windows Azure 診斷 (WAD) 擴充功能安裝在 [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[虛擬機器擴展集](collect-custom-metrics-guestos-resource-manager-vmss.md)、[傳統 VM](collect-custom-metrics-guestos-vm-classic.md) 或[傳統雲端服務](collect-custom-metrics-guestos-vm-cloud-service-classic.md)，並將效能計數器傳送至 Azure 監視器。 
 - 將 [InfluxData Telegraf 代理程式](collect-custom-metrics-linux-telegraf.md)安裝在 Azure Linux VM，並使用 Azure 監視器輸出外掛程式傳送計量。
-- 將自訂計量[直接傳送至 Azure 監視器 REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)， `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
+- 將自訂計量[直接傳送至 Azure 監視器 REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)， `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` 。
 
-## <a name="pricing-model-and-rentention"></a>計價模式和保留
+## <a name="pricing-model-and-retention"></a>計價模式與保留期
 
-如需針對自訂計量和計量查詢啟用計費的詳細資訊，請參閱[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。 此頁面提供所有計量的特定價格詳細資料，包括自訂計量和度量查詢。 總而言之，將標準計量（平臺計量）內嵌至 Azure 監視器計量存放區不會產生任何成本，但自訂計量會在進入正式運作時 incurr 成本。 計量 API 查詢會 incurr 成本。
+如需針對自訂計量和計量查詢啟用計費的詳細資訊，請參閱[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。 此頁面提供所有計量的特定價格詳細資料，包括自訂計量和度量查詢。 總而言之，將標準計量（平臺計量）內嵌到 Azure 監視器計量存放區並不會產生成本，但自訂計量進入正式運作時，將會產生成本。 計量 API 查詢會產生成本。
 
 自訂計量會保留為與[平臺計量相同的時間量](data-platform-metrics.md#retention-of-metrics)。 
 
@@ -78,7 +78,7 @@ Azure 監視器自訂計量目前處於公開預覽狀態。
 **名稱**是要報告的計量名稱。 通常名稱的描述就足以協助識別所測量的項目。 舉例來說，可測量指定 VM 上所用記憶體位元組數目的計量。 其計量名稱可能為「使用中的記憶體位元組」****。
 
 ### <a name="dimension-keys"></a>維度索引鍵
-維度是索引鍵或值組，可協助描述所收集計量的其他相關特性。 您可以使用其他特性，收集更多關於計量的資訊，以取得更深入的見解。 例如，「使用中的記憶體位元組」**** 計量的維度索引鍵可能稱為「處理序」****，可擷取 VM 上每個處理序使用的記憶體位元組數目。 您可以使用此索引鍵來篩選計量，以查看使用多少個記憶體特定處理序，或識別記憶體使用量的前 5 名處理序。
+維度是索引鍵或值組，可協助描述所收集計量的其他相關特性。 您可以使用其他特性，收集更多關於計量的資訊，以取得更深入的見解。 例如，「使用中的記憶體位元組」**** 計量的維度索引鍵可能稱為「處理序」****，可擷取 VM 上每個處理序使用的記憶體位元組數目。 藉由使用此索引鍵，您可以篩選計量以查看記憶體特定進程所使用的數量，或用來識別記憶體使用量的前五個處理常式。
 維度是選擇性的，並非所有計量都可能具有維度。 自訂計量最多可以有10個維度。
 
 ### <a name="dimension-values"></a>維度值
@@ -189,31 +189,32 @@ Azure 監視器會儲存一分鐘資料粒度間隔內的所有計量。 我們�
 |Azure 區域 |區域端點前置詞|
 |---|---|
 | **美國和加拿大** | |
-|美國中西部 | HTTPs：\//westcentralus.monitoring.azure.com/ |
-|美國西部 2       | HTTPs：\//westus2.monitoring.azure.com/ |
-|美國中北部 | HTTPs：\//northcentralus.monitoring.azure.com
-|美國中南部| HTTPs：\//southcentralus.monitoring.azure.com/ |
-|美國中部      | HTTPs：\//centralus.monitoring.azure.com |
-|加拿大中部 | HTTPs：\//canadacentral.monitoring.azure.comc
-|美國東部| HTTPs：\//eastus.monitoring.azure.com/ |
+|美國中西部 | HTTPs： \/ /westcentralus.monitoring.azure.com |
+|美國西部 2       | HTTPs： \/ /westus2.monitoring.azure.com |
+|美國中北部 | HTTPs： \/ /northcentralus.monitoring.azure.com
+|美國中南部| HTTPs： \/ /southcentralus.monitoring.azure.com |
+|美國中部      | HTTPs： \/ /centralus.monitoring.azure.com |
+|加拿大中部 | HTTPs： \/ /canadacentral.monitoring.azure.com |
+|美國東部| HTTPs： \/ /eastus.monitoring.azure.com |
+|美國東部 2 | HTTPs： \/ /eastus2.monitoring.azure.com |
 | **歐洲** | |
-|北歐    | HTTPs：\//northeurope.monitoring.azure.com/ |
-|西歐     | HTTPs：\//westeurope.monitoring.azure.com/ |
-|英國南部 | HTTPs：\//uksouth.monitoring.azure.com
-|法國中部 | HTTPs：\//francecentral.monitoring.azure.com |
+|北歐    | HTTPs： \/ /northeurope.monitoring.azure.com |
+|西歐     | HTTPs： \/ /westeurope.monitoring.azure.com |
+|英國南部 | HTTPs： \/ /uksouth.monitoring.azure.com
+|法國中部 | HTTPs： \/ /francecentral.monitoring.azure.com |
 | **非洲** | |
-|南非北部 | HTTPs：\//southafricanorth.monitoring.azure.com
+|南非北部 | HTTPs： \/ /southafricanorth.monitoring.azure.com |
 | **亞洲** | |
-|印度中部 | HTTPs：\//centralindia.monitoring.azure.com
-|澳大利亞東部 | HTTPs：\//australiaeast.monitoring.azure.com
-|日本東部 | HTTPs：\//japaneast.monitoring.azure.com
-|東南亞  | HTTPs：\//southeastasia.monitoring.azure.com |
-|東亞 | HTTPs：\//eastasia.monitoring.azure.com
-|南韓中部   | HTTPs：\//koreacentral.monitoring.azure.com
+|印度中部 | HTTPs： \/ /centralindia.monitoring.azure.com |
+|澳大利亞東部 | HTTPs： \/ /australiaeast.monitoring.azure.com |
+|日本東部 | HTTPs： \/ /japaneast.monitoring.azure.com |
+|東南亞  | HTTPs： \/ /southeastasia.monitoring.azure.com |
+|東亞 | HTTPs： \/ /eastasia.monitoring.azure.com |
+|南韓中部   | HTTPs： \/ /koreacentral.monitoring.azure.com |
 
 ## <a name="latency-and-storage-retention"></a>延遲和儲存體保留期
 
-新增全新計量或新增至度量的新維度可能需要2到3分鐘的時間才會出現。 一旦在系統中，資料應該會在99% 的時間內顯示30秒以內。 
+新增全新計量或新增至度量的新維度可能需要2到3分鐘的時間才會出現。 一旦在系統中，資料應該會在99% 的時間內出現30秒以內。 
 
 如果您刪除計量或移除維度，變更可能需要一周到一個月的時間才能從系統中刪除。
 

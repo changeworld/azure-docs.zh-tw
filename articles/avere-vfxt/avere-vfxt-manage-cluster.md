@@ -3,15 +3,15 @@ title: 管理 Avere vFXT 叢集 - Azure
 description: 如何管理 Avere 叢集 - 新增或移除節點、重新啟動、停止或終結 vFXT 叢集
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 94db4a93025b6e3d633368d924e3e0c518d108ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153474"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505489"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>管理 Avere vFXT 叢集
 
@@ -25,14 +25,14 @@ ms.locfileid: "76153474"
 
 | 動作 | Avere 控制台 | vfxt.py  | Azure 入口網站 |
 | --- | --- | --- | --- |
-| 新增叢集節點 | 否 | 是 | 否 |
-| 移除叢集節點 | 是 | 否 | 否 |
-| 停止叢集節點 | 是 (也可以重新啟動服務或重新啟動) | 否 | 從入口網站關閉節點 VM 會解譯為節點失敗 |
-| 啟動已停止的節點 | 否 | 否 | 是 |
-| 終結單一叢集節點 | 否 | 否 | 是 |
+| 新增叢集節點 | 不可以 | 是 | 不可以 |
+| 移除叢集節點 | 是 | 不可以 | 否 |
+| 停止叢集節點 | 是 (也可以重新啟動服務或重新啟動) | 不可以 | 從入口網站關閉節點 VM 會解譯為節點失敗 |
+| 啟動已停止的節點 | 不可以 | 否 | 是 |
+| 終結單一叢集節點 | 不可以 | 否 | 是 |
 | 重新啟動叢集 |  |  |  |
-| 安全地關閉或停止叢集 | 是 | 是 | 否 |
-| 終結叢集  | 否 | 是 | 是，但不保證資料完整性 |
+| 安全地關閉或停止叢集 | 可以 | 是 | 不可以 |
+| 終結叢集  | 不可以 | 是 | 是，但不保證資料完整性 |
 
 各項工具的詳細指示都包含在下方。
 
@@ -141,7 +141,7 @@ vfxt.py --cloud-type azure --from-environment --start --resource-group GROUPNAME
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-如果您``--quick-destroy``不想要從叢集快取儲存已變更的資料，可以使用選項。
+``--quick-destroy``如果您不想要從叢集快取儲存已變更的資料，可以使用選項。
 
 如需其他資訊，請閱讀 [vfxt.py 使用指南](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>)。
 

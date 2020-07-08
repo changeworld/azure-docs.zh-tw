@@ -3,15 +3,15 @@ title: 存取 Avere vFXT 控制台 - Azure
 description: 如何連線到 vFXT 叢集和瀏覽器型 Avere 控制台以設定 Avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: fe2fc062f690498f3d1f588887279aa33d2434b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75416153"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505608"
 ---
 # <a name="access-the-vfxt-cluster"></a>存取 vFXT 叢集
 

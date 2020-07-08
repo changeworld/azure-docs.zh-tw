@@ -5,17 +5,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/11/2020
-ms.openlocfilehash: 6f65ba96f768a4b88aa13c073cc66920b8c5e049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: f058ce1ae5b7328c6864684994a74f2fd118ca6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506985"
 ---
 # <a name="what-is-azure-monitor-for-vms"></a>適用於 VM 的 Azure 監視器是什麼？
 
-適用於 VM 的 Azure 監視器會大規模監視您的 Azure 虛擬機器 (VM) 和虛擬機器擴展集。 此服務會分析您 Windows 和 Linux VM 的效能與健康情況，並且在其他資源和外部處理序上監視其處理序及相依性。 它包含監視內部部署或其他雲端提供者中裝載之 Vm 的效能和應用程式相依性的支援。 下列主要功能提供深入的深入解析：
+適用於 VM 的 Azure 監視器會大規模監視您的虛擬機器、虛擬機器擴展集和 Azure Arc 機器。 此服務會分析您 Windows 和 Linux VM 的效能與健康情況，並且在其他資源和外部處理序上監視其處理序及相依性。 包含針對在內部部署環境或其他雲端提供者上裝載的 VM，監視效能和應用程式相依性的支援。 下列主要功能提供深入的深入解析：
 
 - **預先定義的趨勢效能圖表**：顯示來自來賓 VM 作業系統的核心效能計量。
 

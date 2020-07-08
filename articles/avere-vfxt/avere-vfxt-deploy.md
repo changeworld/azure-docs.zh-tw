@@ -3,15 +3,15 @@ title: 部署適用於 Azure 的 Avere vFXT
 description: 在 Azure 中部署 Avere vFXT 叢集的步驟
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c42abdbfaf5c867a9d8d4cbc6b4519a86adaac0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252593"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505642"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 叢集
 
@@ -87,7 +87,7 @@ ms.locfileid: "79252593"
 
 * **Avere vFXT 叢集節點計數**-選擇叢集中的節點數目。 最小值是三個節點，而最大值是十二個。
 
-* **叢集管理密碼** - 建立用於管理叢集的密碼。 此密碼會與使用者名稱```admin```搭配使用，以登入叢集控制台，您可以在其中監視叢集並設定叢集設定。
+* **叢集管理密碼** - 建立用於管理叢集的密碼。 此密碼會與使用者名稱搭配使用 ```admin``` ，以登入叢集控制台，您可以在其中監視叢集並設定叢集設定。
 
 * **Avere vFXT 叢集名稱** - 為叢集提供唯一名稱。
 

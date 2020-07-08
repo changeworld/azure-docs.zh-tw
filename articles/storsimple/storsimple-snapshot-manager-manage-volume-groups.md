@@ -9,20 +9,20 @@ editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
-ms.openlocfilehash: 5198729cf96fb48c5dcd05096c04ea4d77c26de5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97bb232f726dada5241242e4a1d90e120c07e38c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75931484"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506254"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>使用 StorSimple Snapshot Manager 來建立和管理磁碟區群組
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 您可以在 [領域]**** 窗格上使用 [磁碟區群組] **** 節點來將磁碟區指派給磁碟區群組、檢視磁碟區群組相關資訊、排程備份與編輯磁碟區群組。
 
 磁碟區群組是用來確保應用程式具有一致備份之相關磁碟區的集區。 如需詳細資訊，請參閱[磁碟區和磁碟區群組](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups)，以及[與 Windows 磁碟區陰影複製服務整合](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)。
@@ -48,9 +48,9 @@ ms.locfileid: "75931484"
 ## <a name="view-volume-groups"></a>檢視磁碟區群組
 如果您按一下 [磁碟區群組]**** 節點，[結果]**** 窗格會顯示每個磁碟區群組的下列相關資訊，視您選擇的資料行而定。 您可以設定 [結果]**** 窗格中的資料行。 (以滑鼠右鍵按一下 [磁碟區]**** 節點，選取 [檢視]****，然後選取 [新增/移除資料行]****。)
 
-| 結果資料行 | 描述 |
+| 結果資料行 | 說明 |
 |:--- |:--- |
-| 名稱 |[名稱] **** 欄包含磁碟區群組的名稱。 |
+| Name |[名稱] **** 欄包含磁碟區群組的名稱。 |
 | Application |[應用程式] **** 欄會顯示 Windows 主機上目前安裝與執行中的 VSS 寫入器數目。 |
 | 已選取 |[已選取]**** 欄會顯示磁碟區群組中包含的磁碟區數目。 零 (0) 表示沒有任何應用程式與磁碟區群組中的磁碟區相關聯。 |
 | 已匯入 |[已匯入]**** 欄會顯示已匯入的磁碟區數目。 當設定為 **True** 時，此資料行會指出已從 Azure 入口網站匯入磁碟區群組，而不是在 StorSimple Snapshot Manager 中建立它。 |
@@ -72,7 +72,7 @@ ms.locfileid: "75931484"
     [建立磁碟區群組]**** 對話方塊隨即出現。
    
     ![建立磁碟區群組對話方塊](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png)
-3. 輸入下列資訊：
+3. 輸入以下資訊：
    
    1. 在 [名稱]**** 方塊中，輸入新磁碟區群組的唯一名稱。
    2. 在 [應用程式] **** 方塊中，選取與您將新增至磁碟區群組之磁碟區相關聯的應用程式。
@@ -108,7 +108,7 @@ ms.locfileid: "75931484"
 1. 按一下桌面圖示，以啟動 StorSimple Snapshot Manager。
 2. 在 [領域]**** 窗格中，展開 [磁碟區群組]**** 節點、在磁碟區群組名稱上按一下滑鼠右鍵，然後按一下 [編輯]****。
 3. [建立磁碟區群組] 對話方塊隨即出現。 您可以變更 [名稱]****、[應用程式]**** 及 [磁碟區]**** 項目。
-4. 按一下 [確定]**** 以儲存您的變更。
+4. 按一下 [確定]  以儲存變更。
 
 ## <a name="delete-a-volume-group"></a>刪除磁碟區群組
 請使用下列程序來刪除磁碟區群組。 

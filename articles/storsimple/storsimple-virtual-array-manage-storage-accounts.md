@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 234bf8bb-d5fe-40be-9d25-721d7482bc3b
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 5cedde1e7daa49aaa7a2786c9ad8a65fb8e452f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8267a678f35d01119ae3e7d89a07c789dc969614
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507495"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員來管理 StorSimple Virtual Array 的儲存體帳戶認證
 
@@ -69,13 +69,13 @@ ms.locfileid: "80297583"
 
 1. 瀏覽至您的裝置管理員服務，選取它並按兩下。 這會開啟 [概觀]**** 刀鋒視窗。
 2. 在 [設定]**** 區段內選取 [儲存體帳戶認證]****。
-3. 按一下 [加入]  。
+3. 按一下 **[新增]** 。
 4. 在 [加入儲存體帳戶]**** 刀鋒視窗中，執行下列動作︰
    
     1. 在 [訂用帳戶]**** 中，選取 [目前]****。
     2. 提供您 Azure 儲存體帳戶的名稱。
     3. 選取 [啟用]****，為 StorSimple 裝置與雲端之間的網路通訊建立安全通道。 只有當您在私人雲端內操作時，才選取 [停用]****。
-    4. 按一下 [加入]  。 成功建立儲存體帳戶之後會通知您。<br></br>
+    4. 按一下 **[新增]** 。 成功建立儲存體帳戶之後會通知您。<br></br>
    
         ![新增現有儲存體帳戶認證](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "80297583"
 
 1. 瀏覽至您的裝置管理員服務，選取它並按兩下。 這會開啟 [概觀]**** 刀鋒視窗。
 2. 在 [設定]**** 區段內選取 [儲存體帳戶認證]****。 這樣會列出與 StorSimple 裝置管理員服務相關聯的任何現有儲存體帳戶認證。
-3. 按一下 [加入]  。
+3. 按一下 **[新增]** 。
 4. 在 [加入儲存體帳戶]**** 刀鋒視窗中，執行下列動作︰
    
     1. 在 [訂用帳戶]**** 中，選取 [其他]****。
@@ -94,7 +94,7 @@ ms.locfileid: "80297583"
    
     4. 若要啟用 TLS，請按一下 [**啟用**] 按鈕，為您的 StorSimple Device Manager 服務與雲端之間的網路通訊建立安全通道。 只有當您在私人雲端內操作時，才按一下 [停用]**** 按鈕。
    
-    5. 按一下 [加入]  。 成功建立儲存體帳戶認證之後會通知您。
+    5. 按一下 **[新增]** 。 成功建立儲存體帳戶認證之後會通知您。
 
 5. 新建立的儲存體帳戶認證會顯示在 [StorSimple 設定裝置管理員服務] 刀鋒視窗的 [儲存體帳戶認證]**** 下方。
    

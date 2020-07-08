@@ -3,15 +3,15 @@ title: 設定 Avere vFXT 儲存體 - Azure
 description: 如何將後端儲存體系統新增至「適用於 Azure 的 Avere vFXT」
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e011b349c9296fd0ca15d119b35c1e6ec6af268a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505744"
 ---
 # <a name="configure-storage"></a>設定儲存體
 
@@ -47,9 +47,9 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，或
 
 1. 從「Avere 控制台」中，按一下頂端的 [Settings] \(設定\)**** 索引標籤。
 
-1. 按一下左側的 [**核心** > 檔案管理工具] [**管理核心檔案管理**工具]。
+1. 按一下左側的 [**核心**檔案管理工具]  >  [**管理核心檔案管理**工具]。
 
-1. 按一下 [建立]  。
+1. 按一下 [建立]。
 
    ![新增核心檔案管理工具頁面的螢幕擷取畫面，其中游標置於 [建立] 按鈕上](media/avere-vfxt-add-core-filer-start.png)
 
@@ -133,11 +133,11 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，或
    | 訂用帳戶 | 訂用帳戶識別碼 |
    | Storage Access Key (儲存體存取金鑰) | Azure 儲存體帳戶金鑰 (在上一個步驟中所複製) |
 
-   按一下 [提交]  。
+   按一下 [提交] 。
 
    ![「Avere 控制台」中已完成的雲端認證表單](media/avere-vfxt-new-credential-submit.png)
 
-1. 接著，建立核心檔案管理工具。 在 [Avere] 控制台的左側，按一下 [**核心** >  檔案管理工具] [**管理核心檔案管理**工具]。
+1. 接著，建立核心檔案管理工具。 在 [Avere] 控制台的左側，按一下 [**核心**檔案管理工具] [  >   **管理核心檔案管理**工具]。
 
 1. 按一下 [Manage Core Filers] \(管理核心檔案管理工具\)**** 設定頁面上的 [Create] \(建立\)****。
 
@@ -151,7 +151,7 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，或
    * 將 [Bucket contents] \(貯體內容\)**** 設定為 [Empty] \(空白\)****
    * 將 [Certificate verification] \(憑證驗證\)**** 變更為 [Disabled] \(已停用\)****
    * 將 [Compression mode] \(壓縮模式\)**** 變更為 [None] \(無\)****
-   * 按 [下一步]  。
+   * 按 [下一步] 。
    * 在第四頁上，於 [Bucket name] \(貯體名稱\)**** 中將容器名稱輸入為 *storage_account_name*/*container_name*。
    * 視需要將 [Encryption type] \(加密類型\)**** 設定為 [None] \(無\)****。  「Azure 儲存體」預設會經過加密。
    * 按一下 [Add Filer] \(新增檔案管理工具\)****。
@@ -172,11 +172,11 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，或
 
 請遵循 Avere 控制台介面中的下列步驟：
 
-* 按一下左上方的 [ **VServer** > **命名空間**]。
+* 按一下**VServer**  >  左上方的 [VServer**命名空間**]。
 * 提供以 / (斜線) 開頭的命名空間路徑，例如 ``/vfxt/data``。
 * 選擇您的核心檔案管理工具。
 * 選擇核心檔案管理工具匯出項。
-* 按 [下一步]  。
+* 按 [下一步] 。
 
   ![已完成連接點、核心檔案管理工具及匯出項欄位的 [Add new junction] \(新增連接點\) 頁面螢幕擷取畫面](media/avere-vfxt-add-junction.png)
 
