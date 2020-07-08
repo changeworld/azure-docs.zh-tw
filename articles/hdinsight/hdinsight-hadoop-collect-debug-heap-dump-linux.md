@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75658792"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962198"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在以 Linux 為基礎的 HDInsight 上啟用 Apache Hadoop 服務的堆積傾印
 
@@ -37,7 +37,7 @@ ms.locfileid: "75658792"
 
 堆積傾印的啟用方式，是在服務啟動時將選項 (有時稱為參數) 傳遞至 JVM。 就大部分的 [Apache Hadoop](https://hadoop.apache.org/) 服務而言，您可以修改用於啟動服務的殼層指令碼以略過這些選項。
 
-在每個腳本中，會有 [選擇** \* \_] 的匯出，其中**包含傳遞至 JVM 的選項。 例如，在 **hadoop-env.sh** 指令碼中，以 `export HADOOP_NAMENODE_OPTS=` 為開頭的那一行即含有 NameNode 服務的選項。
+在每個腳本中，會有 [選擇** \* \_ ] 的匯出，其中**包含傳遞至 JVM 的選項。 例如，在 **hadoop-env.sh** 指令碼中，以 `export HADOOP_NAMENODE_OPTS=` 為開頭的那一行即含有 NameNode 服務的選項。
 
 map 和 reduce 處理序會稍有不同，因為這些作業是 MapReduce 服務的子處理序。 每個 map 或 reduce 處理序都會在一個子容器中執行，且有兩個含有 JVM 選項的項目。 兩者均包含在 **mapred-site.xml** 中：
 
@@ -51,7 +51,7 @@ map 和 reduce 處理序會稍有不同，因為這些作業是 MapReduce 服務
 
 以下選項可在發生 OutOfMemoryError 時啟用堆積傾印：
 
-    -XX:+HeapDumpOnOutOfMemoryError
+`-XX:+HeapDumpOnOutOfMemoryError`
 
 **+** 表示已啟用此選項。 預設值為停用。
 
@@ -62,7 +62,7 @@ map 和 reduce 處理序會稍有不同，因為這些作業是 MapReduce 服務
 
 傾印檔案的預設位置是目前的工作目錄。 您可以使用以下選項，控制檔案的儲存位置：
 
-    -XX:HeapDumpPath=/path
+`-XX:HeapDumpPath=/path`
 
 例如，使用 `-XX:HeapDumpPath=/tmp` 會使傾印儲存在 /tmp 目錄中。
 
@@ -70,7 +70,7 @@ map 和 reduce 處理序會稍有不同，因為這些作業是 MapReduce 服務
 
 您也可以在發生 **OutOfMemoryError** 時觸發指令碼。 例如觸發通知，讓您知道發生了錯誤。 使用下列選項可在發生 __OutOfMemoryError__ 時觸發指令碼：
 
-    -XX:OnOutOfMemoryError=/path/to/script
+`-XX:OnOutOfMemoryError=/path/to/script`
 
 > [!NOTE]  
 > 由於 Apache Hadoop 是分散式系統，因此所有使用的指令碼都必須放置在服務執行所在叢集中的所有節點上。
@@ -91,7 +91,7 @@ map 和 reduce 處理序會稍有不同，因為這些作業是 MapReduce 服務
 
     ![Apache Ambari 設定篩選清單](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. 針對您想要啟用堆積傾印的服務尋找選擇專案，並新增您想要啟用的選項。 ** \* \_ ** 在下圖中，我將 `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` 新增至 **HADOOP\_NAMENODE\_OPTS** 項目：
+4. 針對您想要啟用堆積傾** \* \_ 印的服務尋找選擇專案，** 並新增您想要啟用的選項。 在下圖中，我將 `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` 新增至 **HADOOP\_NAMENODE\_OPTS** 項目：
 
     ![Apache Ambari hadoop-namenode-選擇](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 

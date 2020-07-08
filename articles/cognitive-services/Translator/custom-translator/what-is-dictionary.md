@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 510c75b6e1a06ab800128534a72c5e1f6e510600
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 826da5c3754ad03ac1fb62288f0b03ee2353d1f3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997038"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962257"
 ---
 # <a name="what-is-a-dictionary"></a>什麼是字典？
 
-字典是已對齊的一組文件，用來指定片語或句子及其對應之翻譯的清單。 在定型中使用字典，當您想要 Microsoft Translator 一律翻譯原始片語或句子的任何實例時，就會使用您在字典中提供的翻譯。 字典有時稱為字彙或詞彙。 您可以將字典視為您所列出之所有詞彙的「複製並取代」的暴力密碼破解。 此外，Microsoft 自訂翻譯服務會建立並使用自己的一般用途字典，以改善其翻譯的品質。 不過，客戶提供的字典會採用前面的，並且會先搜尋以查閱單字或句子。
+字典是已對齊的一組文件，用來指定片語或句子及其對應之翻譯的清單。 當您想要 Translator 一律使用您在字典中提供的翻譯來轉譯來源片語或句子的任何實例時，請在定型中使用字典。 字典有時稱為字彙或詞彙。 您可以將字典視為您所列出之所有詞彙的「複製並取代」的暴力密碼破解。 此外，自訂翻譯功能會建立並使用自己的一般用途字典，以改善其翻譯的品質。 不過，客戶提供的字典會採用前面的，並且會先搜尋以查閱單字或句子。
 
 字典僅適用于語言組中具有完全支援之 Microsoft 一般類神經網路模型的專案。 請[參閱完整的語言清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。
 

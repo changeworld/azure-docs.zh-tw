@@ -3,12 +3,12 @@ title: Azure Batch 集區建立事件
 description: Batch 集區建立事件 (在建立集區之後發出) 的參考。 記錄檔內容將公開集區的一 般資訊。
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: fe327b7c369405cb3160c67d79e5dbdf55463f77
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: d8e4537e0074b7af1e65ea5f13a9668483abc45e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724032"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962487"
 ---
 # <a name="pool-create-event"></a>集區建立事件
 
@@ -53,7 +53,7 @@ ms.locfileid: "83724032"
 |-------------|----------|-----------|
 |`id`|String|集區識別碼。|
 |`displayName`|String|集區顯示名稱。|
-|`vmSize`|String|集區中虛擬機器的大小。 集區中所有虛擬機器的大小相同。 <br/><br/> 如需雲端服務集區 (使用 cloudServiceConfiguration 建立的集區) 的虛擬機器可用大小相關資訊，請參閱[雲端服務的大小](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/)。 Batch 支援 `ExtraSmall` 以外的所有雲端服務 VM 大小。<br/><br/> 如需使用 Virtual Machines Marketplace 中映像的集區 (使用 virtualMachineConfiguration 建立的集區) 其可用 VM 大小的相關資訊，請參閱[虛擬機器大小](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (英文) (Linux) 或 [Azure 中 Windows 虛擬機器的大小](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows)。 除了 `STANDARD_A0` 和進階儲存體的大小 (`STANDARD_GS`、`STANDARD_DS` 和 `STANDARD_DSV2` 系列) 以外，Batch 支援所有的 Azure VM 大小。|
+|`vmSize`|String|集區中虛擬機器的大小。 集區中所有虛擬機器的大小相同。 <br/><br/> 如需雲端服務集區 (使用 cloudServiceConfiguration 建立的集區) 的虛擬機器可用大小相關資訊，請參閱[雲端服務的大小](../cloud-services/cloud-services-sizes-specs.md)。 Batch 支援 `ExtraSmall` 以外的所有雲端服務 VM 大小。<br/><br/> 如需使用 Virtual Machines Marketplace 中映像的集區 (使用 virtualMachineConfiguration 建立的集區) 其可用 VM 大小的相關資訊，請參閱[虛擬機器大小](/azure/virtual-machines/linux/sizes?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) (英文) (Linux) 或 [Azure 中 Windows 虛擬機器的大小](/azure/virtual-machines/windows/sizes?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) (Windows)。 除了 `STANDARD_A0` 和進階儲存體的大小 (`STANDARD_GS`、`STANDARD_DS` 和 `STANDARD_DSV2` 系列) 以外，Batch 支援所有的 Azure VM 大小。|
 |`imageType`|String|映像的部署方法。 支援的值為 `virtualMachineConfiguration` 或 `cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|複雜類型|集區的雲端服務組態。|
 |[`virtualMachineConfiguration`](#bk_vmconf)|複雜類型|集區的虛擬機器組態。|
@@ -71,8 +71,8 @@ ms.locfileid: "83724032"
 
 |元素名稱|類型|注意|
 |------------------|----------|-----------|
-|`osFamily`|String|安裝在集區中虛擬機器上的 Azure 客體 OS 系列。<br /><br /> 可能的值包括：<br /><br /> **2** – OS 系列 2，相當於 Windows Server 2008 R2 SP1。<br /><br /> **3** – OS 系列 3，相當於 Windows Server 2012。<br /><br /> **4** – OS 系列 4，相當於Windows Server 2012 R2。<br /><br /> 如需詳細資訊，請參閱[客體 ​OS 發佈新聞](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
-|`targetOSVersion`|String|安裝在集區中虛擬機器上的 Azure 客體 OS 版本。<br /><br /> 預設值為 **\*** 用於指定所指定系列的最新作業系統版本。<br /><br /> 如需其他允許的值，請參閱[客體 OS 發佈新聞](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
+|`osFamily`|String|安裝在集區中虛擬機器上的 Azure 客體 OS 系列。<br /><br /> 可能的值包括：<br /><br /> **2** – OS 系列 2，相當於 Windows Server 2008 R2 SP1。<br /><br /> **3** – OS 系列 3，相當於 Windows Server 2012。<br /><br /> **4** – OS 系列 4，相當於Windows Server 2012 R2。<br /><br /> 如需詳細資訊，請參閱[客體 ​OS 發佈新聞](../cloud-services/cloud-services-guestos-update-matrix.md#releases)。|
+|`targetOSVersion`|String|安裝在集區中虛擬機器上的 Azure 客體 OS 版本。<br /><br /> 預設值為 **\*** 用於指定所指定系列的最新作業系統版本。<br /><br /> 如需其他允許的值，請參閱[客體 OS 發佈新聞](../cloud-services/cloud-services-guestos-update-matrix.md#releases)。|
 
 ###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a> virtualMachineConfiguration
 

@@ -3,12 +3,12 @@ title: 範本函式-字串
 description: 描述 Azure Resource Manager 範本中用來使用字串的函式。
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: c0517375b273384f263e8ba421995d4afb6c193b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982409"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962062"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM 範本的字串函式
 
@@ -18,30 +18,30 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
 * [concat](#concat)
-* [包含](#contains)
+* [contains](#contains)
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
 * [empty](#empty)
 * [endsWith](#endswith)
-* [頭](#first)
+* [first](#first)
 * [format](#format)
 * [guid](#guid)
 * [indexOf](#indexof)
-* [次](#last)
+* [last](#last)
 * [lastIndexOf](#lastindexof)
 * [length](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
 * [replace](#replace)
-* [過](#skip)
-* [平分](#split)
+* [skip](#skip)
+* [分割](#split)
 * [startsWith](#startswith)
 * [string](#string)
-* [子字串](#substring)
-* [採取](#take)
+* [substring](#substring)
+* [take](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
-* [物](#trim)
+* [修剪](#trim)
 * [uniqueString](#uniquestring)
 * [uri](#uri)
 * [uriComponent](#uricomponent)
@@ -55,7 +55,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | inputString |是 |字串 |要以 base64 表示法傳回的值。 |
 
@@ -69,7 +69,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringData": {
@@ -108,8 +108,8 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| base64Output | 字串 | b25lLCB0d28sIHRocmVl |
-| toStringOutput | 字串 | one, two, three |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
@@ -134,7 +134,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringData": {
@@ -173,8 +173,8 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| base64Output | 字串 | b25lLCB0d28sIHRocmVl |
-| toStringOutput | 字串 | one, two, three |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
@@ -187,7 +187,7 @@ JSON 物件。
 
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| base64Value |是 |字串 |要轉換為字串的 base64 表示法。 |
+| base64Value |Yes |字串 |要轉換為字串的 base64 表示法。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -199,7 +199,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringData": {
@@ -238,8 +238,8 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| base64Output | 字串 | b25lLCB0d28sIHRocmVl |
-| toStringOutput | 字串 | one, two, three |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="concat"></a>concat
@@ -250,7 +250,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字串或陣列 |要串連的第一個字串或陣列。 |
 | 其他引數 |否 |字串或陣列 |以串連順序排列的其他字串或陣列。 |
@@ -267,7 +267,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "prefix": {
@@ -289,30 +289,30 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| concatOutput | 字串 | prefix-5yj4yjf5mbg72 |
+| concatOutput | String | prefix-5yj4yjf5mbg72 |
 
 下一個[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json)顯示如何結合兩個陣列。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": { 
-        "firstArray": { 
-            "type": "array", 
-            "defaultValue": [ 
-                "1-1", 
-                "1-2", 
-                "1-3" 
-            ] 
+    "parameters": {
+        "firstArray": {
+            "type": "array",
+            "defaultValue": [
+                "1-1",
+                "1-2",
+                "1-3"
+            ]
         },
         "secondArray": {
-            "type": "array", 
-            "defaultValue": [ 
-                "2-1", 
+            "type": "array",
+            "defaultValue": [
+                "2-1",
                 "2-2",
-                "2-3" 
-            ] 
+                "2-3"
+            ]
         }
     },
     "resources": [
@@ -332,7 +332,7 @@ JSON 物件。
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>contains
+## <a name="contains"></a>包含
 
 `contains (container, itemToFind)`
 
@@ -340,10 +340,10 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| 容器 |是 |陣列、物件或字串 |其中包含要尋找之值的值。 |
-| itemToFind |是 |字串或整數 |要尋找的值。 |
+| 容器 |Yes |陣列、物件或字串 |其中包含要尋找之值的值。 |
+| itemToFind |Yes |字串或整數 |要尋找的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -355,7 +355,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -421,7 +421,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToConvert |是 |字串 |要轉換為資料 URI 的值。 |
 
@@ -435,7 +435,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -465,8 +465,8 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| dataUriOutput | 字串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | 字串 | Hello, World! |
+| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | String | Hello, World! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -476,7 +476,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |是 |字串 |要轉換的資料 URI 值。 |
 
@@ -490,7 +490,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -520,8 +520,8 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| dataUriOutput | 字串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | 字串 | Hello, World! |
+| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | String | Hello, World! |
 
 ## <a name="empty"></a>empty
 
@@ -531,9 +531,9 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |是 |陣列、物件或字串 |要檢查其是否為空白的值。 |
+| itemToTest |Yes |陣列、物件或字串 |要檢查其是否為空白的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -545,7 +545,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -596,7 +596,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
 | stringToFind |是 |字串 |要尋找的值。 |
@@ -611,7 +611,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -662,9 +662,9 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |陣列或字串 |要擷取其第一個元素或字元的值。 |
+| arg1 |Yes |陣列或字串 |要擷取其第一個元素或字元的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -676,7 +676,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -703,8 +703,8 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | 字串 | one |
-| stringOutput | 字串 | O |
+| arrayOutput | String | one |
+| stringOutput | String | O |
 
 ## <a name="format"></a>format
 
@@ -714,10 +714,10 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | formatString | 是 | 字串 | 複合格式字串。 |
-| arg1 | 是 | 字串、整數或布林值 | 要包含在格式化字串中的值。 |
+| arg1 | Yes | 字串、整數或布林值 | 要包含在格式化字串中的值。 |
 | 其他引數 | 否 | 字串、整數或布林值 | 要包含在格式化字串中的其他值。 |
 
 ### <a name="remarks"></a>備註
@@ -730,7 +730,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "greeting": {
@@ -761,7 +761,7 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| formatTest | 字串 | Hello，User。 格式化的數位：8175133 |
+| formatTest | String | Hello，User。 格式化的數位：8175133 |
 
 ## <a name="guid"></a>guid
 
@@ -771,7 +771,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |字串 |雜湊函式中用來建立 GUID 的值。 |
 | 視需要，也會使用其他參數 |否 |字串 |您可以視需要新增多個字串，來建立指定唯一性層級的值。 |
@@ -812,7 +812,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {},
     "variables": {},
@@ -842,7 +842,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
 | stringToFind |是 |字串 |要尋找的值。 |
@@ -857,7 +857,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -903,9 +903,9 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |陣列或字串 |要擷取其最後一個元素或字元的值。 |
+| arg1 |Yes |陣列或字串 |要擷取其最後一個元素或字元的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -917,7 +917,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -944,8 +944,8 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | 字串 | three |
-| stringOutput | 字串 | e |
+| arrayOutput | String | three |
+| stringOutput | String | e |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
@@ -955,7 +955,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
 | stringToFind |是 |字串 |要尋找的值。 |
@@ -970,7 +970,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -1016,13 +1016,13 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |陣列、字串或物件 |要用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
+| arg1 |Yes |陣列、字串或物件 |要用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
 
 ### <a name="return-value"></a>傳回值
 
-整數。 
+整數。
 
 ### <a name="examples"></a>範例
 
@@ -1030,7 +1030,7 @@ JSON 物件。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -1114,7 +1114,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "guidValue": {
@@ -1143,7 +1143,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "guidValue": {
@@ -1191,11 +1191,11 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| valueToPad |是 |字串或整數 |要靠右對齊的值。 |
-| totalLength |是 |int |傳回字串中的字元總數。 |
-| paddingCharacter |否 |單一字元 |要用於左側填補直到達到總長度的字元。 預設值是空格。 |
+| valueToPad |Yes |字串或整數 |要靠右對齊的值。 |
+| totalLength |Yes |int |傳回字串中的字元總數。 |
+| paddingCharacter |No |單一字元 |要用於左側填補直到達到總長度的字元。 預設值是空格。 |
 
 如果原始字串長度超過要填補的字元數，則不會新增任何字元。
 
@@ -1205,11 +1205,11 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="examples"></a>範例
 
-下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json)顯示如何藉由新增「零」字元直到符合字元總數，以填補使用者提供的參數值。 
+下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json)顯示如何藉由新增「零」字元直到符合字元總數，以填補使用者提供的參數值。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testString": {
@@ -1231,7 +1231,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| stringOutput | 字串 | 0000000123 |
+| stringOutput | String | 0000000123 |
 
 ## <a name="replace"></a>取代
 
@@ -1241,7 +1241,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | originalString |是 |字串 |具備由另一個字串取代的一個字串之所有執行個體的值。 |
 | oldString |是 |字串 |要從原始字串中移除的字串。 |
@@ -1257,7 +1257,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testString": {
@@ -1283,8 +1283,8 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| firstOutput | 字串 | 1231231234 |
-| secondOutput | 字串 | 123-123-xxxx |
+| firstOutput | String | 1231231234 |
+| secondOutput | String | 123-123-xxxx |
 
 ## <a name="skip"></a>skip
 
@@ -1294,10 +1294,10 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| originalValue |是 |陣列或字串 |要用於略過的陣列或字串。 |
-| numberToSkip |是 |int |要略過的元素或字元數。 如果此值為 0 或更小的值，則會傳回值內的所有元素或字元。 如果大於陣列或字串的長度，則會傳回空陣列或字串。 |
+| originalValue |Yes |陣列或字串 |要用於略過的陣列或字串。 |
+| numberToSkip |Yes |int |要略過的元素或字元數。 如果此值為 0 或更小的值，則會傳回值內的所有元素或字元。 如果大於陣列或字串的長度，則會傳回空陣列或字串。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1309,7 +1309,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -1352,7 +1352,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | 字串 | two three |
+| stringOutput | String | two three |
 
 ## <a name="split"></a>split
 
@@ -1362,10 +1362,10 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | inputString |是 |字串 |要分割的字串。 |
-| 分隔符號 |是 |字串或字串陣列 |用於分割字串的分隔符號。 |
+| 分隔符號 |Yes |字串或字串陣列 |用於分割字串的分隔符號。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1377,7 +1377,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstString": {
@@ -1421,10 +1421,10 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
-| stringToFind |是 |字串 |要尋找的值。 |
+| stringToSearch |Yes |字串 |其中包含要尋找之項目的值。 |
+| stringToFind |Yes |字串 |要尋找的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1436,7 +1436,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -1487,7 +1487,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 | 任意 |要轉換成字串的值。 任何類型的值均可轉換，包括物件和陣列。 |
 
@@ -1501,7 +1501,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testObject": {
@@ -1546,9 +1546,9 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| objectOutput | 字串 | {"valueA":10,"valueB":"Example Text"} |
-| arrayOutput | 字串 | ["a","b","c"] |
-| intOutput | 字串 | 5 |
+| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | String | ["a","b","c"] |
+| intOutput | String | 5 |
 
 ## <a name="substring"></a>substring
 
@@ -1558,11 +1558,11 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| stringToParse |是 |字串 |要用來擷取子字串的原始字串。 |
-| startIndex |否 |int |起始字元位置為零的子字串。 |
-| 長度 |否 |int |子字串的字元數。 必須參考字串內的位置。 必須是零或更大的值。 |
+| stringToParse |Yes |字串 |要用來擷取子字串的原始字串。 |
+| startIndex |No |int |起始字元位置為零的子字串。 |
+| 長度 |No |int |子字串的字元數。 必須參考字串內的位置。 必須是零或更大的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1576,7 +1576,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 "parameters": {
     "inputString": { "type": "string", "value": "1234567890" }
 },
-"variables": { 
+"variables": {
     "prefix": "[substring(parameters('inputString'), 0, 11)]"
 }
 ```
@@ -1587,7 +1587,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testString": {
@@ -1609,7 +1609,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| substringOutput | 字串 | two |
+| substringOutput | String | two |
 
 ## <a name="take"></a>take
 
@@ -1619,10 +1619,10 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| originalValue |是 |陣列或字串 |要從其中擷取元素的陣列或字串。 |
-| numberToTake |是 |int |要擷取的元素或字元數。 如果此值為 0 或更小的值，則會傳回空白陣列或字串。 如果大於給定陣列或字串的長度，則會傳回陣列或字串中的所有元素。 |
+| originalValue |Yes |陣列或字串 |要從其中擷取元素的陣列或字串。 |
+| numberToTake |Yes |int |要擷取的元素或字元數。 如果此值為 0 或更小的值，則會傳回空白陣列或字串。 如果大於給定陣列或字串的長度，則會傳回陣列或字串中的所有元素。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1634,7 +1634,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -1677,7 +1677,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | 字串 | on |
+| stringOutput | String | on |
 
 ## <a name="tolower"></a>toLower
 
@@ -1687,7 +1687,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |字串 |要轉換成小寫字母的值。 |
 
@@ -1701,7 +1701,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testString": {
@@ -1727,8 +1727,8 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| toLowerOutput | 字串 | one two three |
-| toUpperOutput | 字串 | ONE TWO THREE |
+| toLowerOutput | String | one two three |
+| toUpperOutput | String | ONE TWO THREE |
 
 ## <a name="toupper"></a>toUpper
 
@@ -1738,7 +1738,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |字串 |要轉換成大寫字母的值。 |
 
@@ -1752,7 +1752,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testString": {
@@ -1778,8 +1778,8 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| toLowerOutput | 字串 | one two three |
-| toUpperOutput | 字串 | ONE TWO THREE |
+| toLowerOutput | String | one two three |
+| toUpperOutput | String | ONE TWO THREE |
 
 ## <a name="trim"></a>修剪
 
@@ -1789,7 +1789,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |是 |字串 |要修剪的值。 |
 
@@ -1803,7 +1803,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testString": {
@@ -1825,28 +1825,28 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| return | 字串 | one two three |
+| return | String | one two three |
 
 ## <a name="uniquestring"></a>uniqueString
 
 `uniqueString (baseString, ...)`
 
-根據當作參數提供的值，建立具決定性的雜湊字串。 
+根據當作參數提供的值，建立具決定性的雜湊字串。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |字串 |雜湊函式中用來建立唯一字串的值。 |
 | 視需要，也會使用其他參數 |否 |字串 |您可以視需要新增多個字串，來建立指定唯一性層級的值。 |
 
 ### <a name="remarks"></a>備註
 
-當您需要建立資源的唯一名稱時，這個函式很有幫助。 您提供限制結果唯一性範圍的參數值。 您可以指定名稱對於訂用帳戶、資源群組或部署是否唯一。 
+當您需要建立資源的唯一名稱時，這個函式很有幫助。 您提供限制結果唯一性範圍的參數值。 您可以指定名稱對於訂用帳戶、資源群組或部署是否唯一。
 
 傳回的值不是隨機字串，而是雜湊函數的結果。 傳回的值為 13 個字元長。 這不是全域唯一的。 建議您將值與來自命名慣例的前置詞結合，建立有意義的名稱。 下列範例顯示傳回值的格式。 依提供的參數而改變的實際值。
 
-    tcvhiyu5h2o5o
+`tcvhiyu5h2o5o`
 
 下列範例顯示如何使用 uniqueString 來建立常用層級的唯一值。
 
@@ -1871,9 +1871,9 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 下列範例顯示如何根據您的資源群組建立儲存體帳戶的唯一名稱。 在資源群組內，如果以相同的方式來建立，則名稱不是唯一的。
 
 ```json
-"resources": [{ 
-    "name": "[concat('storage', uniqueString(resourceGroup().id))]", 
-    "type": "Microsoft.Storage/storageAccounts", 
+"resources": [{
+    "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+    "type": "Microsoft.Storage/storageAccounts",
     ...
 ```
 
@@ -1889,7 +1889,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -1913,19 +1913,19 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | baseUri |是 |字串 |基底 uri 的字串。 請小心觀察有關處理尾端斜線（'/'）的行為，如下表所述。  |
 | relativeUri |是 |字串 |要加入至基底 uri 字串的相對 uri 字串。 |
 
 * 如果**baseuri**以尾端斜線結束，則結果只是**baseUri** ，後面接著**relativeUri**。
 
-* 如果**baseUri**結尾不是兩個專案的尾端斜線，則會發生這種情況。  
+* 如果**baseUri**結尾不是兩個專案的尾端斜線，則會發生這種情況。
 
    * 如果**baseUri**完全沒有任何斜線（除了前面的 "//" 之外），結果只是**baseUri** ，後面接著**relativeUri**。
 
    * 如果**baseUri**有一些斜線，但結尾不是斜線，則會從**baseuri**移除最後一個斜線的所有內容，而結果會是**baseuri** ，後面接著**relativeUri**。
-     
+
 以下是一些範例：
 
 ```
@@ -1952,11 +1952,11 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "variables": {
         "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-        "uriEncoded": "[uriComponent(variables('uriFormat'))]" 
+        "uriEncoded": "[uriComponent(variables('uriFormat'))]"
     },
     "resources": [
     ],
@@ -1981,9 +1981,9 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| uriOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | 字串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponent"></a>uriComponent
 
@@ -1993,7 +1993,7 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |是 |字串 |要編碼的值。 |
 
@@ -2007,11 +2007,11 @@ URI 編碼值的字串。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "variables": {
         "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-        "uriEncoded": "[uriComponent(variables('uriFormat'))]" 
+        "uriEncoded": "[uriComponent(variables('uriFormat'))]"
     },
     "resources": [
     ],
@@ -2036,9 +2036,9 @@ URI 編碼值的字串。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| uriOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | 字串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
@@ -2048,7 +2048,7 @@ URI 編碼值的字串。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |是 |字串 |要轉換為字串的 URI 編碼值。 |
 
@@ -2062,11 +2062,11 @@ URI 編碼值的解碼字串。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "variables": {
         "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-        "uriEncoded": "[uriComponent(variables('uriFormat'))]" 
+        "uriEncoded": "[uriComponent(variables('uriFormat'))]"
     },
     "resources": [
     ],
@@ -2091,13 +2091,13 @@ URI 編碼值的解碼字串。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| uriOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | 字串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="next-steps"></a>後續步驟
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
-* 若要合併多個範本，請參閱搭配[使用連結的範本與 Azure Resource Manager](linked-templates.md)。
-* 若要在建立資源類型時反復執行指定的次數，請參閱[在 Azure Resource Manager 中建立資源的多個實例](copy-resources.md)。
+* 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
+* 若要合併多個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
+* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
 * 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
 

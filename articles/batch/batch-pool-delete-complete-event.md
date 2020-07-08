@@ -3,12 +3,12 @@ title: Azure Batch 集區刪除完成事件
 description: Batch 集區刪除完成事件的參考。 集區刪除作業完成時，就會發出此事件。
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: 6e009b55869b7ba8c81190837086557743d53219
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: f00d32fd5e4eb49fddf4975a9b64ce792d0226dd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724049"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962453"
 ---
 # <a name="pool-delete-complete-event"></a>集區刪除完成事件
 
@@ -31,4 +31,4 @@ ms.locfileid: "83724049"
 |`endTime`|Datetime|集區刪除完成時間。|
 
 ## <a name="remarks"></a>備註
-如需集區調整大小作業狀態與錯誤碼的詳細資訊，請參閱[將集區自帳戶中刪除](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account) (英文)
+如需集區調整大小作業狀態與錯誤碼的詳細資訊，請參閱[將集區自帳戶中刪除](/rest/api/batchservice/delete-a-pool-from-an-account) (英文)
