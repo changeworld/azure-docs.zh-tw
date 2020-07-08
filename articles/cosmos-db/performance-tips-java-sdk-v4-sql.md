@@ -4,15 +4,15 @@ description: 了解用以改善 Java SDK v4 Azure Cosmos 資料庫效能的用�
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: dca9babff198fc780e54df6e89149f2c4c8157bf
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: c6ff105a03181b588a9074675c97930696ac5e87
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677712"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850196"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 的效能秘訣
 
@@ -20,7 +20,8 @@ ms.locfileid: "83677712"
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
 > * [非同步 Java SDK v2](performance-tips-async-java.md)
 > * [同步 Java SDK v2](performance-tips-java.md)
-> * [.NET](performance-tips.md)
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
 > 
 
 > [!IMPORTANT]  
@@ -90,7 +91,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     可能的話，請將任何呼叫 Azure Cosmos DB 的應用程式放在與 Azure Cosmos DB 資料庫相同的區域中。 以約略的比較來說，在相同區域內對 Azure Cosmos DB 進行的呼叫會在 1-2 毫秒內完成，但美國西岸和美國東岸之間的延遲則會大於 50 毫秒。 視要求所採用的路由而定，各項要求從用戶端傳遞至 Azure 資料中心界限時的這類延遲可能有所不同。 確保呼叫端應用程式與佈建的 Azure Cosmos DB 端點位於相同的 Azure 區域中，將可能達到最低的延遲。 如需可用區域的清單，請參閱 [Azure 區域](https://azure.microsoft.com/regions/#services)。
 
-    ![Azure Cosmos DB 連接原則的圖例](./media/performance-tips/same-region.png)
+    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="Azure Cosmos DB 連接原則的圖例" border="false":::
 
     與多重區域 Azure Cosmos DB 帳戶互動的應用程式必須設定[慣用位置](tutorial-global-distribution-sql-api.md#preferred-locations)，以確保要求會進入共置區域。
 
@@ -137,33 +138,21 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     下列程式碼片段示範了如何分別針對非同步 API 或同步 API 作業初始化 Azure Cosmos DB 用戶端：
 
-    #### <a name="async"></a>[非同步](#tab/api-async)
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-async-client"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
+    # <a name="async"></a>[非同步](#tab/api-async)
 
-    ```java
-    CosmosAsyncClient client = new CosmosClientBuilder()
-        .setEndpoint(HOSTNAME)
-        .setKey(MASTERKEY)
-        .setConnectionPolicy(CONNECTIONPOLICY)
-        .setConsistencyLevel(CONSISTENCY)
-        .buildAsyncClient();
-    ```
+    Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
 
-    #### <a name="sync"></a>[同步處理](#tab/api-sync)
- 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-sync-client"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientAsync)]
 
-    ```java
-    CosmosClient client = new CosmosClientBuilder()
-        .setEndpoint(HOSTNAME)
-        .setKey(MASTERKEY)
-        .setConnectionPolicy(CONNECTIONPOLICY)
-        .setConsistencyLevel(CONSISTENCY)
-        .buildClient();
-    ```    
+    # <a name="sync"></a>[同步](#tab/api-sync)
 
-    ---
+    Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceClientSync)]
+
+    --- 
 
 * **調整 ConnectionPolicy**
 
@@ -173,9 +162,9 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     * 直接模式概覽
 
-        ![直接模式架構圖例](./media/performance-tips-async-java/rntbdtransportclient.png)
+        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="直接模式架構圖例" border="false":::
 
-        採用直接模式的用戶端架構，能讓網路使用率得以預測，並實現對 Azure Cosmos DB 複本的多工存取。 上圖顯示了直接模式如何將用戶端要求路由至 Cosmos DB 後端複本。 直接模式架構會在用戶端上為每個 DB 複本配置最多 10 個**通道**。 通道是前面加上要求緩衝區的 TCP 連線，深度為 30 個要求。 屬於複本的通道會視複本**服務端點**的需求動態配置。 使用者在直接模式下發出要求時，**TransportClient** 會根據資料分割區索引鍵，將要求路由至適當的服務端點。 **要求佇列**會在服務端點之前對要求進行緩衝處理。
+        直接模式中採用的用戶端架構，能讓網路使用率得以預測，並實現對 Azure Cosmos DB 複本的多工存取。 上圖顯示直接模式如何將用戶端要求路由傳送到 Cosmos DB 後端複本。 直接模式架構會在用戶端上為每個 DB 複本配置最多 10 個**通道**。 通道是前面加上要求緩衝區的 TCP 連線，深度為 30 個要求。 屬於複本的通道會視複本**服務端點**的需求動態配置。 當使用者在直接模式下發出要求時，**TransportClient** 會根據分割區索引鍵，將要求路由傳送到適當的服務端點。 **要求佇列**會在服務端點之前對要求進行緩衝處理。
 
     * 直接模式的 ConnectionPolicy 設定選項
 
@@ -183,7 +172,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
         
         首先請使用以下建議設定。 這些 ConnectionPolicy 選項屬於進階設定，可能會以非預期的方式影響 SDK 效能；建議使用者避免修改這類選項，除非確實瞭解修改的優缺點，而且真的必須修改。 如果遇到關於此特定主題的問題，請洽詢 [Azure Cosmos DB 小組](mailto:CosmosDBPerformanceSupport@service.microsoft.com)。
 
-        如果您使用 Azure Cosmos DB 做為參考資料庫 (亦即，資料庫用於多點讀取作業和少量寫入作業)，或許可將 idleEndpointTimeout 設為 0 (也就是無逾時)。
+        如果您使用 Azure Cosmos DB 作為參考資料庫 (亦即，資料庫用於多點讀取作業與少量寫入作業)，將 idleEndpointTimeout 設定為 0 (也就是無逾時) 是可接受的。
 
 
         | 組態選項       | 預設    |
@@ -206,13 +195,13 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     Azure Cosmos DB Java SDK v4 支援平行查詢，可讓您平行查詢分割的集合。 如需詳細資訊，請參閱使用 Azure Cosmos DB Java SDK v4 的相關[程式碼範例](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)。 平行查詢的設計目的是要改善其連續對應項目的查詢延遲和輸送量。
 
-    * 微調 setMaxDegreeOfParallelism***\:***
+    * 調整 setMaxDegreeOfParallelism***\:***
     
         平行查詢的運作方式是以平行方式查詢多個分割。 不過，對於查詢會以循序方式擷取來自個別分割集合的資料。 因此，使用 setMaxDegreeOfParallelism 設定分割數目會最有機會達到最高效能的查詢，但前提是其他所有系統條件皆維持不變。 如果您不知道分割數目，您可以使用 setMaxDegreeOfParallelism 設定為較高的數字，然後系統會選擇最小值 (分割數目、使用者提供的輸入) 作為平行處理原則的最大刻度。
 
         請務必注意，若對於查詢是以平均方式將資料分佈於所有分割，平行查詢便會產生最佳效益。 如果分割之集合的分割方式是查詢所傳回的所有或大多數資料集中在少數幾個分割中 (最差的情況是集中在一個分割)，則這些分割會成為查詢效能的瓶頸。
 
-    * 微調 setMaxBufferedItemCount***\:***
+    * 調整 setMaxBufferedItemCount***\:***
     
         平行查詢的設計是可在用戶端處理目前的結果批次時，先預先擷取結果。 預先擷取有助於改善查詢的整體延遲。 setMaxBufferedItemCount 可限制預先擷取的結果數目。 將 setMaxBufferedItemCount 設定為預期傳回的結果數目 (或更高的數目)，可讓查詢透過預先擷取獲得最大效益。
 
@@ -247,36 +236,13 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
     例如，下列程式碼會在事件迴圈 IO netty 執行緒上執行 CPU 密集工作：
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-noscheduler"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
 
-    ```java
-    Mono<CosmosAsyncItemResponse<CustomPOJO>> createItemPub = asyncContainer.createItem(item);
-    createItemPub.subscribe(
-        itemResponse -> {
-            //this is executed on eventloop IO netty thread.
-            //the eventloop thread is shared and is meant to return back quickly.
-            //
-            // DON'T do this on eventloop IO netty thread.
-            veryCpuIntensiveWork();                
-        });
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceNeedsSchedulerAsync)]
 
-    在收到結果之後，如果您需要對結果進行 CPU 密集工作，請避免在事件迴圈 IO netty 執行緒上進行。 您可以改為提供您自己的排程器，以提供自己的執行緒來執行工作，如下所示。
+    在收到結果之後，如果您需要對結果進行 CPU 密集工作，請避免在事件迴圈 IO netty 執行緒上進行。 您可以改為提供自己的排程器，以提供您自己的執行緒來執行您的工作，如下所示（需要 `import reactor.core.scheduler.Schedulers` ）。
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-scheduler"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
 
-    ```java
-    import reactor.core.scheduler.Schedulers;
-    Mono<CosmosAsyncItemResponse<CustomPOJO>> createItemPub = asyncContainer.createItem(item);
-    createItemPub
-        .subscribeOn(Schedulers.elastic())
-        .subscribe(
-        itemResponse -> {
-            //this is executed on eventloop IO netty thread.
-            //the eventloop thread is shared and is meant to return back quickly.
-            //
-            // DON'T do this on eventloop IO netty thread.
-            veryCpuIntensiveWork();                
-        });
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceAddSchedulerAsync)]
 
     根據您的工作類型，您應該將適當的現有 Reactor 排程器用於您的工作。 閱讀這裡 [``Schedulers``](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Schedulers.html)。
 
@@ -300,7 +266,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
  * **OS 開啟檔案資源限制**
  
-    某些 Linux 系統 (例如 Red Hat) 有開啟檔案數目的上限，以及連線總數的上限。 執行下列命令來檢視目前的限制：
+    某些 Linux 系統 (例如 Red Hat) 有開啟檔案數目的上限，因此有連線總數的上限。 執行下列命令來檢視目前的限制：
 
     ```bash
     ulimit -a
@@ -324,43 +290,35 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     若要改善點寫入的效能，請在點寫入 API 呼叫中指定項目分割區索引鍵，如下所示：
 
-    #### <a name="async"></a>[非同步](#tab/api-async)
+    # <a name="async"></a>[非同步](#tab/api-async)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-createitem-good-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
+    Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
 
-    ```java
-    asyncContainer.createItem(item,new PartitionKey(pk),new CosmosItemRequestOptions()).block();
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceNoPKAsync)]
 
-    #### <a name="sync"></a>[同步處理](#tab/api-sync)
+    # <a name="sync"></a>[同步](#tab/api-sync)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-createitem-good-sync"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+    Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
 
-    ```java
-    syncContainer.createItem(item,new PartitionKey(pk),new CosmosItemRequestOptions());
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceNoPKSync)]
 
-    ---
+    --- 
 
     而不只是提供項目執行個體，如下所示：
 
-    #### <a name="async"></a>[非同步](#tab/api-async)
+    # <a name="async"></a>[非同步](#tab/api-async)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-createitem-bad-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
+    Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
 
-    ```java
-    asyncContainer.createItem(item).block();
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceAddPKAsync)]
 
-    #### <a name="sync"></a>[同步處理](#tab/api-sync)
+    # <a name="sync"></a>[同步](#tab/api-sync)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-createitem-bad-sync"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+    Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
 
-    ```java
-    syncContainer.createItem(item);
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceAddPKSync)]
 
-    ---
+    --- 
 
     後者受到支援，但會導致應用程式增加延遲；SDK 必須剖析項目，並將分割區索引鍵解壓縮。
 
@@ -395,27 +353,19 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     若要測量任何作業 (建立、更新或刪除) 的額外負荷，請檢查 [x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 標頭，來測量這些作業所耗用的要求單位數量。 您也可以查看 ResourceResponse\<T> 或 FeedResponse\<T> 中的對等 RequestCharge 屬性。
 
-    #### <a name="async"></a>[非同步](#tab/api-async)
+    # <a name="async"></a>[非同步](#tab/api-async)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-request-charge-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
+    Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
 
-    ```java
-    CosmosAsyncItemResponse<CustomPOJO> response = asyncContainer.createItem(item).block();
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceRequestChargeAsync)]
 
-    response.getRequestCharge();
-    ```     
+    # <a name="sync"></a>[同步](#tab/api-sync)
 
-    #### <a name="sync"></a>[同步處理](#tab/api-sync)
+    Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-request-charge-sync"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API    
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceRequestChargeSync)]
 
-    ```java
-    CosmosItemResponse<CustomPOJO> response = syncContainer.createItem(item);
-
-    response.getRequestCharge();
-    ```     
-
-    ---
+    --- 
 
     在此標頭中傳回的要求費用是佈建輸送量的一小部分。 例如，如果您佈建了 2000 RU/秒，且前述查詢傳回 1000 份 1 KB 文件，則作業成本會是 1000。 因此在一秒內，伺服器在對後續要求進行速率限制前，只會接受兩個這類要求。 如需詳細資訊，請參閱[要求單位](request-units.md)和[要求單位計算機](https://www.documentdb.com/capacityplanner)。
 
@@ -424,9 +374,11 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     當用戶端嘗試超過帳戶保留的輸送量時，伺服器的效能不會降低，而且不會使用超過保留層級的輸送量容量。 伺服器將預先使用 RequestRateTooLarge (HTTP 狀態碼 429) 來結束要求，並傳回 [x-ms-retry-after-ms](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 標頭，以指出使用者重試要求之前必須等候的時間量 (毫秒)。
 
+    ```xml
         HTTP Status 429,
         Status Line: RequestRateTooLarge
         x-ms-retry-after-ms :100
+    ```
 
     SDK 全都隱含地攔截這個回應，採用伺服器指定的 retry-after 標頭，並重試此要求。 除非有多個用戶端同時存取您的帳戶，否則下次重試將會成功。
 

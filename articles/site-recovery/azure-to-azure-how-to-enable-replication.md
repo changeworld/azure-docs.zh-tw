@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58ddb7363ece5ebdb06df29c27ff76b27da627a4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75973696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851169"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>將 Azure Vm 複寫到另一個 Azure 區域
 
@@ -38,7 +38,7 @@ ms.locfileid: "75973696"
 
      ![啟用複寫](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
-3. 在 [虛擬機器] > [選取虛擬機器]**** 中，按一下並選取您要複寫的每部 VM。 您只能選取可以啟用複寫的機器。 然後按一下 [ **確定**]。
+3. 在 [虛擬機器] > [選取虛擬機器]**** 中，按一下並選取您要複寫的每部 VM。 您只能選取可以啟用複寫的機器。 然後按一下 [確定] 。
     ![啟用複寫](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 4. 在 [設定]**** 中，您可以選擇性地設定目標網站設定：
@@ -113,12 +113,13 @@ ms.locfileid: "75973696"
     - 如果您想要讓 Linux Vm 成為複寫群組的一部分，請確定已根據特定 Linux 版本的指引手動開啟埠20004上的輸出流量。
 ![啟用複寫](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
-5. 按一下 [**建立目標資源** > ] [**啟用**複寫]。
+5. 按一下 [**建立目標資源**] [  >  **啟用**複寫]。
 6. 啟用 VM 以進行複寫之後，您就可以在 [複寫的項目]**** 下方檢查 VM 健康情況的狀態。
 
 >[!NOTE]
->在初始複寫期間，狀態可能需要一些時間才會重新整理，期間不會有任何進展。 按一下 [重新整理]**** 按鈕來取得最新狀態。
 >
+> - 在初始複寫期間，狀態可能需要一些時間才會重新整理，期間不會有任何進展。 按一下 [重新整理]**** 按鈕來取得最新狀態。
+> - 如果尚未在過去60分鐘內產生復原點，虛擬機器的複寫健全狀況就會變得很重要。
 
 ## <a name="next-steps"></a>後續步驟
 

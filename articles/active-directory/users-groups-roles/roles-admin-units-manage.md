@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a4a0dfaeda18b3f68ddc3c7cc7333b8c994d174
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 977a90419c142e576fcf484562875d12c8dad451
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684905"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851763"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>管理 Azure Active Directory 中的管理單位
 
@@ -57,20 +57,24 @@ ms.locfileid: "81684905"
 
 請先安裝 Azure AD PowerShell （預覽），然後再嘗試執行下列命令：
 
-    Connect-AzureAD
-    New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
+```powershell
+Connect-AzureAD
+New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
+```
 
 您可以視需要修改括在引號中的值。
 
 ### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
 
-    Http Request
-    POST /administrativeUnits
-    Request body
-    {
-        "displayName": "North America Operations",
-        "description": "North America Operations administration"
-    }
+```http
+Http Request
+POST /administrativeUnits
+Request body
+{
+  "displayName": "North America Operations",
+  "description": "North America Operations administration"
+}
+```
 
 ## <a name="remove-an-administrative-unit"></a>移除管理單位
 
@@ -78,7 +82,7 @@ ms.locfileid: "81684905"
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 在 [Azure 入口網站中，移至**Azure AD** > **管理單位**]。 
+1. 在 [Azure 入口網站中，移至**Azure AD**  >  **管理單位**]。 
 1. 選取要刪除的管理單位，然後選取 [**刪除**]。 
 1. 若要確認您想要刪除管理單位，請選取 **[是]**。 系統管理單位已刪除。
 
@@ -86,19 +90,23 @@ ms.locfileid: "81684905"
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-    $delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
-    Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
+```powershell
+$delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
+Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
+```
 
 您可以依據特定環境的需求，修改括在引號中的值。
 
 ### <a name="use-the-graph-api"></a>使用圖形 API
 
-    HTTP request
-    DELETE /administrativeUnits/{Admin id}
-    Request body
-    {}
+```http
+HTTP request
+DELETE /administrativeUnits/{Admin id}
+Request body
+{}
+```
 
 ## <a name="next-steps"></a>後續步驟
 
-* [管理單位中的使用者](roles-admin-units-add-manage-users.md)
+* [管理管理單位中的使用者](roles-admin-units-add-manage-users.md)
 * [管理單位中的群組](roles-admin-units-add-manage-groups.md)

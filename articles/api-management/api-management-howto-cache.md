@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4113205b47b4c6cab8b133d89c35520aa8505c1
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75708350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851206"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>新增快取以改善 Azure API 管理的效能
 
@@ -39,7 +39,7 @@ ms.locfileid: "75708350"
 > [!NOTE]
 > 內部快取不適用於 Azure API 管理的 [耗用量]**** 層。 您可以[改用外部 Azure Redis 快取](api-management-howto-cache-external.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程：
 
@@ -53,24 +53,28 @@ ms.locfileid: "75708350"
 1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 2. 瀏覽至您的 APIM 執行個體。
 3. 選取 [ **API** ] 索引標籤。
-4. 按一下 API 清單中的 [示範會議 API]  。
+4. 按一下 API 清單中的 [示範會議 API]。
 5. 選取 **GetSpeakers**。
-6. 選取畫面頂端的 [設計]  索引標籤。
-7. 在 [輸入處理]  區段中，按一下 **</>** 圖示。
+6. 選取畫面頂端的 [設計] 索引標籤。
+7. 在 [輸入處理] 區段中，按一下 **</>** 圖示。
 
     ![程式碼編輯器](media/api-management-howto-cache/code-editor.png)
 
 8. 在 **inbound** 元素中，新增下列原則：
 
-        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
-            <vary-by-header>Accept</vary-by-header>
-            <vary-by-header>Accept-Charset</vary-by-header>
-            <vary-by-header>Authorization</vary-by-header>
-        </cache-lookup>
+   ```
+   <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
+       <vary-by-header>Accept</vary-by-header>
+       <vary-by-header>Accept-Charset</vary-by-header>
+       <vary-by-header>Authorization</vary-by-header>
+   </cache-lookup>
+   ```
 
 9. 在 **outbound** 元素中，新增下列原則：
 
-        <cache-store duration="20" />
+   ```
+   <cache-store duration="20" />
+   ```
 
     [持續期間]**** 指定快取回應的到期間隔。 在本範例中，間隔為 **20** 秒。
 
@@ -85,7 +89,7 @@ ms.locfileid: "75708350"
 3. 選取您已新增快取原則的 API。
 4. 選取 **GetSpeakers** 作業。
 5. 按一下右上方功能表中的 [測試]**** 索引標籤。
-6. 按 [傳送]  。
+6. 按 [傳送]。
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>後續步驟
 * 如需快取原則的詳細資訊，請參閱 [API 管理原則參考文件][API Management policy reference]中的[快取原則][Caching policies]。

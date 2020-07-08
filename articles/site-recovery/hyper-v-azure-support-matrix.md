@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: fd10468e823201bfa67aaf7c570071bd075ec4ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da2cc3dade843b1ea207eb4ec5bf33a41a289d7e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851478"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>內部部署 Hyper-V VM 至 Azure 的災害復原支援矩陣
 
@@ -30,11 +30,15 @@ Hyper-V (不含 Virtual Machine Manager) | 您可以針對在不是由 Virtual M
 
 ## <a name="on-premises-servers"></a>內部部署伺服器
 
-**伺服器** | **Requirements** | **詳細資料**
+**Server** | **需求** | **詳細資料**
 --- | --- | ---
-Hyper-V (執行時不含 Virtual Machine Manager) |  Windows Server 2019、Windows Server 2016 （包括 Server core 安裝）、Windows Server 2012 R2 （含最新的更新） | 如果您已使用 Azure Site Recovery 設定 Windows Server 2012 R2 和/或 SCVMM 2012 R2，並且打算升級作業系統，請依照此[文件](upgrade-2012R2-to-2016.md)的說明進行。 
-Hyper-V (執行時含 Virtual Machine Manager) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，則應該在 Virtual Machine Manager 2019 中管理 Windows Server 2019 主機。 同樣地，Windows Server 2016 主機也應該在 Virtual Machine Manager 2016 中進行管理。<br/><br/> 注意： Windows Server 2019 主機不支援容錯回復至替代位置。
+Hyper-V (執行時不含 Virtual Machine Manager) |  Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 （含最新的更新）（包括這些作業系統的 Server core 安裝，但 Windows Server 2019 除外） | 如果您已使用 Azure Site Recovery 設定 Windows Server 2012 R2 和/或 SCVMM 2012 R2，並且打算升級作業系統，請依照此[文件](upgrade-2012R2-to-2016.md)的說明進行。
+Hyper-V (執行時含 Virtual Machine Manager) | Virtual Machine Manager 2019、Virtual Machine Manager 2016 Virtual Machine Manager 2012 R2 （包括這些作業系統的 server core 安裝，Virtual Machine Manager 2019 除外） | 如果使用 Virtual Machine Manager，則應該在 Virtual Machine Manager 2019 中管理 Windows Server 2019 主機。 同樣地，Windows Server 2016 主機也應該在 Virtual Machine Manager 2016 中進行管理。
 
+> [!NOTE]
+>
+> - 請確定內部部署伺服器上有 .NET Framework 4.6.2 或更高版本。
+> - Windows Server 2019 Server core 版本不支援容錯移轉和容錯回復至替代位置，或不含 Virtual Machine Manager 的原始位置。
 
 ## <a name="replicated-vms"></a>複寫 VM
 
@@ -58,16 +62,16 @@ VM 設定 | 複寫到 Azure 的 VM 必須符合 [Azure 需求](#azure-vm-require
 
 **元件** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
-主機網路：NIC 小組 | 是 | 是
-主機網路：VLAN | 是 | 是
-主機網路：IPv4 | 是 | 是
+主機網路：NIC 小組 | 是 | Yes
+主機網路：VLAN | 是 | Yes
+主機網路：IPv4 | 是 | Yes
 主機網路：IPv6 | 否 | 否
 客體 VM 網路：NIC 小組 | 否 | 否
-客體 VM 網路：IPv4 | 是 | 是
+客體 VM 網路：IPv4 | 是 | Yes
 客體 VM 網路：IPv6 | 否 | 是
-客體 VM 網路：靜態 IP (Windows) | 是 | 是
+客體 VM 網路：靜態 IP (Windows) | 是 | Yes
 客體 VM 網路：靜態 IP (Linux) | 否 | 否
-客體 VM 網路：多重 NIC | 是 | 是
+客體 VM 網路：多重 NIC | 是 | Yes
 Https Proxy | 否 | 否
 
 
@@ -76,35 +80,35 @@ Https Proxy | 否 | 否
 
 **元件** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
-Azure ExpressRoute | 是 | 是
-ILB | 是 | 是
-ELB | 是 | 是
-Azure 流量管理員 | 是 | 是
-多個 NIC | 是 | 是
-保留的 IP | 是 | 是
-IPv4 | 是 | 是
-保留來源 IP 位址 | 是 | 是
-Azure 虛擬網路服務端點<br/> (不含 Azure 儲存體防火牆) | 是 | 是
+Azure ExpressRoute | 是 | Yes
+ILB | 是 | Yes
+ELB | 是 | Yes
+Azure 流量管理員 | 是 | Yes
+多個 NIC | 是 | Yes
+保留的 IP | 是 | Yes
+IPv4 | 是 | Yes
+保留來源 IP 位址 | 是 | Yes
+Azure 虛擬網路服務端點<br/> (不含 Azure 儲存體防火牆) | 是 | Yes
 加速網路 | 否 | 否
 
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V 主機儲存體
 
-**儲存體** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
+**Storage** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
 --- | --- | --- 
 NFS | NA | NA
-SMB 3.0 | 是 | 是
-SAN (ISCSI) | 是 | 是
-多重路徑 (MPIO)。 測試工具：<br></br> Microsoft DSM，EMC PowerPath 5.7 SP4，EMC PowerPath DSM for CLARiiON | 是 | 是
+SMB 3.0 | 是 | Yes
+SAN (ISCSI) | 是 | Yes
+多重路徑 (MPIO)。 測試工具：<br></br> Microsoft DSM，EMC PowerPath 5.7 SP4，EMC PowerPath DSM for CLARiiON | 是 | Yes
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM 客體儲存體
 
-**儲存體** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
+**Storage** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
 VMDK | NA | NA
-VHD/VHDX | 是 | 是
-第 2 代 VM | 是 | 是
-EFI/UEFI<br></br>Azure 中已遷移的 VM 會自動轉換為 BIOS 開機 VM。 VM 應僅執行 Windows Server 2012 和更新版本。 OS 磁片最多隻能有五個磁碟分割或更少，且 OS 磁片的大小應小於 300 GB。| 是 | 是
+VHD/VHDX | 是 | Yes
+第 2 代 VM | 是 | Yes
+EFI/UEFI<br></br>Azure 中已遷移的 VM 會自動轉換為 BIOS 開機 VM。 VM 應僅執行 Windows Server 2012 和更新版本。 OS 磁片最多隻能有五個磁碟分割或更少，且 OS 磁片的大小應小於 300 GB。| 是 | Yes
 共用叢集磁碟 | 否 | 否
 已加密磁碟 | 否 | 否
 NFS | NA | NA
@@ -112,13 +116,13 @@ SMB 3.0 | 否 | 否
 RDM | NA | NA
 磁碟 > 1 TB | 是，最多 4,095 GB | 是，最多 4,095 GB
 磁碟：4k 邏輯與實體磁區 | 不支援：第 1 代/第 2 代 | 不支援：第 1 代/第 2 代
-磁片：4K 邏輯與 512-位元組實體磁區 | 是 |  是
-邏輯磁碟區管理 (LVM)。 資料磁碟上才支援 LVM。 Azure 只提供單一 OS 磁碟。 | 是 | 是
-使用等量磁碟的磁碟區 > 1 TB | 是 | 是
+磁片：4K 邏輯與 512-位元組實體磁區 | 是 |  Yes
+邏輯磁碟區管理 (LVM)。 資料磁碟上才支援 LVM。 Azure 只提供單一 OS 磁碟。 | 是 | Yes
+使用等量磁碟的磁碟區 > 1 TB | 是 | Yes
 儲存空間 | 否 | 否
 熱新增/移除磁碟 | 否 | 否
-排除磁碟 | 是 | 是
-多重路徑 (MPIO) | 是 | 是
+排除磁碟 | 是 | Yes
+多重路徑 (MPIO) | 是 | Yes
 
 ## <a name="azure-storage"></a>Azure 儲存體
 
@@ -131,11 +135,12 @@ RDM | NA | NA
 經常性存取儲存體| 否 | 否
 區塊 Blob | 否 | 否
 待用加密 (SSE)| 是 | 是
-待用加密（CMK） <br></br> （僅適用于容錯移轉至受控磁片）| 是（透過 PowerShell Az 3.3.0 module 開始） | 是（透過 PowerShell Az 3.3.0 module 開始）
+待用加密 (CMK) <br></br> （僅適用于容錯移轉至受控磁片）| 是（透過 PowerShell Az 3.3.0 module 開始） | 是（透過 PowerShell Az 3.3.0 module 開始）
 進階儲存體 | 是 | 是
+標準儲存體 | 是 | 是
 匯入/匯出服務 | 否 | 否
 已啟用防火牆的 Azure 儲存體帳戶 | 是。 適用于目標儲存體和快取。 | 是。 適用于目標儲存體和快取。
-修改儲存體帳戶 | 否。 啟用複寫之後，即無法修改目標 Azure 儲存體帳戶。 修改、停用再重新啟用嚴重損壞修復。 | 否
+修改儲存體帳戶 | 否。 啟用複寫之後，即無法修改目標 Azure 儲存體帳戶。 修改、停用再重新啟用嚴重損壞修復。 | No
 
 
 ## <a name="azure-compute-features"></a>Azure 計算功能
@@ -150,7 +155,7 @@ RDM | NA | NA
 
 您複寫到 Azure 的內部部署 VM 必須符合此表中摘要說明的 VM 需求。
 
-**元件** | **Requirements** | **詳細資料**
+**元件** | **需求** | **詳細資料**
 --- | --- | ---
 客體作業系統 | Site Recovery 支援[Azure 支援](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)的所有作業系統。  | 若不支援，則必要條件檢查會失敗。
 客體作業系統架構 | 32位（Windows Server 2008）/64-bit | 若不支援，則必要條件檢查會失敗。

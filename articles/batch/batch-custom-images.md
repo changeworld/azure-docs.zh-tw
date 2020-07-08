@@ -1,21 +1,23 @@
 ---
-title: 從受控映像佈建自訂集區
-description: 從受控映像資源建立 Batch 集區，以佈建計算節點來為應用程式提供軟體和資料。
+title: 使用受控映射來建立自訂映射集區
+description: 從受控映射建立 Batch 自訂映射集區，以使用應用程式的軟體和資料來布建計算節點。
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: fbb336ff9d3d53cc53004c577e291afdba7702f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 07/01/2020
+ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847985"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851289"
 ---
-# <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>使用受控映像來建立虛擬機器的集區
+# <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>使用受控映射來建立自訂映射集區
 
-若要為 Batch 集區的虛擬機器 (VM) 建立自訂映像，您可以使用受控映像來建立[共用映像庫](batch-sig-images.md)。 也支援只使用受控映像，但僅適用於截至 2019-08-01 (含) 為止的 API 版本。
+若要為 Batch 集區的虛擬機器（Vm）建立自訂映射集區，您可以使用受控映射來建立[共用映射庫映射](batch-sig-images.md)。 也支援只使用受控映像，但僅適用於截至 2019-08-01 (含) 為止的 API 版本。 
 
 > [!IMPORTANT]
 > 在大部分情況下，您應該使用共用映像庫來建立自訂映像。 共用映像庫可讓您更快速佈建集區、調整更多 VM，以及更可靠地佈建 VM。 若要深入了解，請參閱[使用共用映像庫來建立自訂集區](batch-sig-images.md)。
+
+本主題說明如何使用僅限受控映射來建立自訂映射集區。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -26,7 +28,7 @@ ms.locfileid: "83847985"
 
 - **Azure Active Directory (Azure AD) 驗證**。 Batch 用戶端 API 必須使用 Azure AD 驗證。 Azure Batch 對於 Azure AD 的支援記載於[使用 Active Directory 驗證 Batch 服務解決方案](batch-aad-auth.md)中。
 
-## <a name="prepare-a-custom-image"></a>準備自訂映像
+## <a name="prepare-a-managed-image"></a>準備受控映射
 
 在 Azure 中，您可以從下列來源準備受控映像：
 
@@ -57,7 +59,7 @@ ms.locfileid: "83847985"
 
 若要從快照集建立受控映像，請使用 Azure 命令列工具，例如 [az image create](/cli/azure/image) 命令。 您可以指定 OS 磁碟快照集，以及視需要指定一或多個資料磁碟快照集，來建立映像。
 
-## <a name="create-a-pool-from-a-custom-image"></a>從自訂映像建立集區
+## <a name="create-a-pool-from-a-managed-image"></a>從受控映射建立集區
 
 找到受控映像的資源識別碼之後，請從該映像建立自訂映像集區。 下列步驟示範如何使用 Batch 服務或 Batch 管理來建立自訂映像集區。
 

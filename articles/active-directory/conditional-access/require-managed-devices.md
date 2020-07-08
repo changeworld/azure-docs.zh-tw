@@ -4,19 +4,19 @@ description: 瞭解如何設定 Azure Active Directory （Azure AD）裝置型�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 11/22/2019
+ms.topic: how-to
+ms.date: 06/08/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a3c71534febc3cdb6429d3092225ebc73f6cbe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf3fd50b907e69311c475af844c7969f081a3094
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481478"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849930"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>作法：透過條件式存取要求受管理的裝置存取雲端應用程式
 
@@ -24,7 +24,7 @@ ms.locfileid: "79481478"
 
 本文說明如何設定條件式存取原則，以要求受管理的裝置存取您環境中的特定雲端應用程式。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 需要受管理的裝置進行雲端應用程式存取系結**Azure AD 條件式存取**和**Azure AD 裝置管理**。 如果您還不熟悉上述其中一種領域，您應該先閱讀下列主題：
 
@@ -46,7 +46,7 @@ ms.locfileid: "79481478"
 - 將存取權授與所選使用者和群組
 - 必須使用受控裝置
 
-## <a name="managed-devices"></a>受控裝置  
+## <a name="managed-devices"></a>受管理的裝置  
 
 簡單來說，受控裝置是受到*某種*組織性控制的裝置。 在 Azure AD 中，受控裝置的必要條件是已向 Azure AD 註冊。 註冊裝置時，系統會以裝置物件的形式為裝置建立身分識別。 Azure 使用此物件來追蹤裝置的狀態資訊。 身為 Azure AD 管理員的您已經可以使用此物件來切換 (啟用/停用) 裝置的狀態。
   
@@ -96,7 +96,31 @@ ms.locfileid: "79481478"
 - 協助控制您的員工存取及共用公司資訊的方式，進而保護公司資訊
 - 裝置與其應用程式都符合公司安全性需求的規範
 
+### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>案例：需要適用于 iOS 和 Android 裝置的裝置註冊
+
+在此案例中，Contoso 已決定 Office 365 資源的所有行動存取都必須使用已註冊的裝置。 他們的所有使用者都已使用 Azure AD 認證登入，並指派授權給他們，其中包括 Azure AD Premium P1 或 P2 及 Microsoft Intune。
+
+組織必須完成下列步驟，才能要求使用已註冊的行動裝置。
+
+1. 以全域管理員、安全性系統管理員或條件式存取管理員的身分，登入 **Azure 入口網站**。
+1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
+1. 選取 [新增原則]。
+1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。
+1. 在 [指派] 底下，選取 [使用者和群組]
+   1. 在 [包括] 底下，選取 [所有使用者] 或您想要套用此原則的特定**使用者和群組**。 
+   1. 選取 [完成] 。
+1. 在 [雲端應用程式或動作] > [包含] 底下，選取 [Office 365 (預覽)]。
+1. 在 [條件] 下，選取 [裝置平台]。
+   1. 將 [設定] 設定為 [是]。
+   1. 包含 **Android** 和 **iOS**。
+1. 在 [存取控制] > [授與] 底下，選取下列選項：
+   - **裝置需要標記為符合規範**
+1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
+1. 選取 [建立] 以建立以啟用您的原則。
+
 ### <a name="known-behavior"></a>已知的行為
+
+使用[裝置程式碼 OAuth 流程](../develop/v2-oauth2-device-code.md)時，不支援 [需要受控裝置授與控制] 或 [裝置狀態] 條件。 這是因為執行驗證的裝置無法將其裝置狀態提供給提供程式碼的裝置，而且權杖中的裝置狀態會鎖定給執行驗證的裝置。 請改用 [需要多重要素驗證] 授與控制。
 
 在 Windows 7、iOS、Android、macOS 和一些協力廠商網頁瀏覽器上，Azure AD 使用向 Azure AD 註冊裝置時所布建的用戶端憑證來識別裝置。 當使用者第一次透過瀏覽器登入時，系統會提示使用者選取憑證。 終端使用者必須選取此憑證，才能繼續使用瀏覽器。
 

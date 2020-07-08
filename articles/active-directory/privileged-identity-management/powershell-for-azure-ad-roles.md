@@ -9,19 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.subservice: pim
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c42c0dd3848ec913f991e4b07612669c5a25c9f1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8e3791da8f8a990f62de0052e1662fd6037e936b
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197275"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849293"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的 PowerShell
 
@@ -32,18 +32,22 @@ ms.locfileid: "83197275"
 > [![檢查您擁有的 Privileged Identity Management 版本](media/pim-how-to-add-role-to-user/pim-new-version.png "選取 Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)如果您沒有此橫幅，請稍候，我們目前正在推出此更新的體驗，在接下來的幾周內。
 > Privileged Identity Management 的 PowerShell Cmdlet 可透過 Azure AD Preview 模組來支援。 如果您已使用不同的模組，而且該模組現在傳回錯誤訊息，請開始使用這個新模組。 如果您有任何以不同模組為基礎的生產系統，請前往pim_preview@microsoft.com
 
-## <a name="installation-and-setup"></a>安裝與設定
+## <a name="installation-and-setup"></a>安裝和設定
 
 1. 安裝 Azure AD 預覽模組
 
-        Install-module AzureADPreview
+    ```powershell
+    Install-module AzureADPreview
+    ```
 
 1. 在繼續之前，請確定您擁有必要的角色許可權。 如果您嘗試執行如提供角色指派或更新角色設定之類的管理工作，請確定您擁有全域管理員或特殊權限角色管理員角色。 如果您只是想要啟用自己的指派，則不需要預設使用者權力以外的許可權。
 
 1. 連線到 Azure AD。
 
-        $AzureAdCred = Get-Credential  
-        Connect-AzureAD -Credential $AzureAdCred
+    ```powershell
+    $AzureAdCred = Get-Credential  
+    Connect-AzureAD -Credential $AzureAdCred
+    ```
 
 1. 前往**Azure Active Directory**內容  >  **Properties**  >  **目錄識別碼**]，尋找 Azure AD 組織的租使用者識別碼。 當您需要提供 resourceId 時，請在 [Cmdlet] 區段中使用此識別碼。
 
@@ -58,7 +62,9 @@ ms.locfileid: "83197275"
 
 RoleDefinitionId 是 Azure AD 組織特有的，不同于角色管理 API 所傳回的 roleDefinitionId。
 
-    Get-AzureADMSPrivilegedRoleDefinition -ProviderId aadRoles -ResourceId 926d99e7-117c-4a6a-8031-0cc481e9da26
+```powershell
+Get-AzureADMSPrivilegedRoleDefinition -ProviderId aadRoles -ResourceId 926d99e7-117c-4a6a-8031-0cc481e9da26
+```
 
 結果：
 
@@ -68,15 +74,21 @@ RoleDefinitionId 是 Azure AD 組織特有的，不同于角色管理 API 所傳
 
 使用下列 Cmdlet 來取出 Azure AD 組織中的所有角色指派。
 
-    Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26"
+```powershell
+Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26"
+```
 
 使用下列 Cmdlet 來抓取特定使用者的所有角色指派。 在 Azure AD 入口網站中，這份清單也稱為「我的角色」。 唯一的差異在於您已新增主體識別碼的篩選準則。 此內容中的主體識別碼是使用者識別碼或群組識別碼。
 
-    Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "subjectId eq 'f7d1887c-7777-4ba3-ba3d-974488524a9d'" 
+```powershell
+Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "subjectId eq 'f7d1887c-7777-4ba3-ba3d-974488524a9d'" 
+```
 
 使用下列 Cmdlet 來取得特定角色的所有角色指派。 此處的 roleDefinitionId 是上一個 Cmdlet 所傳回的識別碼。
 
-    Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "roleDefinitionId eq '0bb54a22-a3df-4592-9dc7-9e1418f0f61c'"
+```powershell
+Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "roleDefinitionId eq '0bb54a22-a3df-4592-9dc7-9e1418f0f61c'"
+```
 
 Cmdlet 會產生如下所示的角色指派物件清單。 主體識別碼是指派角色之使用者的使用者識別碼。 指派狀態可能是 [作用中] 或 [符合資格]。 如果使用者在使用中，且 [LinkedEligibleRoleAssignmentId] 欄位中有一個識別碼，表示角色目前已啟用。
 
@@ -88,14 +100,18 @@ Cmdlet 會產生如下所示的角色指派物件清單。 主體識別碼是指
 
 使用下列 Cmdlet 來建立合格的指派。
 
-    Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'ff690580-d1c6-42b1-8272-c029ded94dec' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'adminAdd' -AssignmentState 'Eligible' -schedule $schedule -reason "dsasdsas" 
+```powershell
+Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'ff690580-d1c6-42b1-8272-c029ded94dec' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'adminAdd' -AssignmentState 'Eligible' -schedule $schedule -reason "dsasdsas" 
+```
 
 排程（定義指派的開始和結束時間）是可以建立的物件，如下列範例所示：
 
-    $schedule = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedSchedule
-    $schedule.Type = "Once"
-    $schedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-    $schedule.endDateTime = "2020-07-25T20:49:11.770Z"
+```powershell
+$schedule = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedSchedule
+$schedule.Type = "Once"
+$schedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+$schedule.endDateTime = "2020-07-25T20:49:11.770Z"
+```
 > [!Note]
 > 如果 endDateTime 的值設為 null，則表示永久指派。
 
@@ -103,7 +119,9 @@ Cmdlet 會產生如下所示的角色指派物件清單。 主體識別碼是指
 
 使用下列 Cmdlet 來啟動合格的指派。
 
-    Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -schedule $schedule -reason "dsasdsas" 
+```powershell
+Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -schedule $schedule -reason "dsasdsas"
+``` 
 
 此 Cmdlet 與建立角色指派的 Cmdlet 幾乎完全相同。 Cmdlet 的主要差異在於– Type 參數的啟用是 "userAdd"，而不是 "adminAdd"。 另一個差異是– AssignmentState 參數是 "Active"，而不是「合格」。
 
@@ -116,7 +134,9 @@ Cmdlet 會產生如下所示的角色指派物件清單。 主體識別碼是指
 
 使用下列 Cmdlet 來取得 Azure AD 組織中的所有角色設定。
 
-    Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
+```powershell
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
+```
 
 設定中有四個主要物件。 PIM 目前只會使用其中三個物件。 UserMemberSettings 是啟用設定，AdminEligibleSettings 是合格指派的指派設定，而 AdminmemberSettings 是作用中指派的指派設定。
 
@@ -124,12 +144,16 @@ Cmdlet 會產生如下所示的角色指派物件清單。 主體識別碼是指
 
 若要更新角色設定，您必須取得特定角色的現有設定物件，並對其進行變更：
 
-    $setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
-    $setting.UserMemberSetting.justificationRule = '{"required":false}'
+```powershell
+$setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
+$setting.UserMemberSetting.justificationRule = '{"required":false}'
+```
 
 接著，您可以將設定套用至特定角色的其中一個物件，如下所示。 此處的識別碼是角色設定識別碼，可從清單角色設定 Cmdlet 的結果中抓取。
 
-    Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
+```powershell
+Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
+```
 
 ## <a name="next-steps"></a>後續步驟
 

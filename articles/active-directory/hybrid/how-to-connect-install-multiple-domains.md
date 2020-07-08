@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0775e717c0610e122bb31f752beecd2c97599053
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 7a49abdea9d5b80687c53fbaa3d41480825ed504
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201035"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849957"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>與 Azure AD 同盟的多網域支援
 下列文件提供與 Office 365 或 Azure AD 網域同盟時，如何使用多個頂層網域和子網域的指引。
@@ -73,7 +73,9 @@ ms.locfileid: "82201035"
 
 以下是實作此邏輯的自訂宣告規則：
 
-    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
+```
+c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
+```
 
 
 > [!IMPORTANT]
@@ -137,14 +139,16 @@ ms.locfileid: "82201035"
 ## <a name="support-for-subdomains"></a>對於子網域的支援
 在加入子網域時，因為 Azure AD 處理網域的方式，子網域將會繼承父項的設定。  所以，IssuerUri 需要與父項相符。
 
-因此，假設我有 bmcontoso.com，並接著加入 corp.bmcontoso.com。  Corp.bmcontoso.com 使用者的 IssuerUri 必須是**`http://bmcontoso.com/adfs/services/trust`**。  不過，上述針對 Azure AD 所執行的標準規則會產生具有簽發者的權杖**`http://corp.bmcontoso.com/adfs/services/trust`** 做為。  的權杖，這與網域所需的值不符，因此驗證將會失敗。
+因此，假設我有 bmcontoso.com，並接著加入 corp.bmcontoso.com。  Corp.bmcontoso.com 使用者的 IssuerUri 必須是 **`http://bmcontoso.com/adfs/services/trust`** 。  不過，上述針對 Azure AD 所執行的標準規則會產生具有簽發者的權杖做為 **`http://corp.bmcontoso.com/adfs/services/trust`** 。  的權杖，這與網域所需的值不符，因此驗證將會失敗。
 
 ### <a name="how-to-enable-support-for-subdomains"></a>如何啟用對於子網域的支援
 為了解決此行為，需要更新 Microsoft Online 的 AD FS 信賴憑證者信任。  若要這樣做，您必須設定自訂宣告規則，以使其在建構自訂簽發者值時能夠從使用者的 UPN 尾碼移除任何子網域。
 
 下列宣告將會執行這項操作︰
 
-    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+```    
+c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+```
 
 [!NOTE]
 規則運算式中的最後一個數字會設定您根網域中的父網域數目。 由於此處使用的是 bmcontoso.com，因此必須有兩個父網域。 如果要保留 3 個父網域 (亦即 corp.bmcontoso.com)，則數字就會是 3。 最後可以指出一個範圍，系統一律會進行比對來符合網域數目上限。 "{2,3}" 將比對兩到三個網域 (亦即 bmfabrikam.com 和 corp.bmcontoso.com)。
@@ -156,11 +160,14 @@ ms.locfileid: "82201035"
 3. 選取第三個宣告規則並取代![編輯宣告](./media/how-to-connect-install-multiple-domains/sub1.png)
 4. 取代目前的宣告︰
 
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+   ```
+    取代為
 
-       with
-
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+   ```
 
     ![取代宣告](./media/how-to-connect-install-multiple-domains/sub2.png)
 

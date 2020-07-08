@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: e5966f142ece32f148c56edb5b0ef5dfd88603aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ba3fc70a2ccfbe342e222dbb475658629ec60a4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380070"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851705"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性層級
 
@@ -21,7 +21,7 @@ Azure Cosmos DB 可提供資料一致性的選擇頻譜，而不是兩個極端�
 
 有了 Azure Cosmos DB，開發人員可以在一致性頻譜上選擇五個定義完善的一致性層級。 這些層級包括*強*式、*限定過期*、*會話*、*一致前置*詞和*最終*一致性。 這些層級是妥善定義且直覺化的，可用於特定的真實案例。 每個層級都提供[可用性和效能取捨](consistency-levels-tradeoffs.md)，並受到 sla 的支援。 下圖顯示不同的一致性層級做為頻譜。
 
-![以頻譜形式顯示的一致性](./media/consistency-levels/five-consistency-levels.png)
+:::image type="content" source="./media/consistency-levels/five-consistency-levels.png" alt-text="以頻譜形式顯示的一致性" border="false" :::
 
 一致性層級與區域無關，不論是從何種區域提供讀取和寫入、與您的 Azure Cosmos 帳戶相關聯的區域數目，或是您的帳戶設定為單一或多個寫入區域，皆可保證所有作業。
 
@@ -31,7 +31,7 @@ Azure Cosmos DB 可提供資料一致性的選擇頻譜，而不是兩個極端�
 
 ## <a name="configure-the-default-consistency-level"></a>設定預設一致性層級
 
-您隨時可以在 Azure Cosmos 帳戶上設定預設一致性層級。 您帳戶上設定的預設一致性層級會套用到該帳戶下的所有 Azure Cosmos 資料庫和容器。 對容器或資料庫發出的所有讀取和查詢，預設都將使用指定的一致性層級。 若要深入了解，請參閱如何[設定預設一致性層級](how-to-manage-consistency.md#configure-the-default-consistency-level)。
+您隨時可以在 Azure Cosmos 帳戶上設定預設一致性層級。 您帳戶上設定的預設一致性層級會套用到該帳戶下的所有 Azure Cosmos 資料庫和容器。 對容器或資料庫發出的所有讀取和查詢，預設都將使用指定的一致性層級。 若要深入了解，請參閱如何[設定預設一致性層級](how-to-manage-consistency.md#configure-the-default-consistency-level)。 您也可以覆寫特定要求的預設一致性層級，若要深入瞭解，請參閱如何覆[寫預設一致性層級](how-to-manage-consistency.md?#override-the-default-consistency-level)一文。
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>與一致性層級相關的保證
 
@@ -43,9 +43,9 @@ Azure Cosmos DB 會提供全方位 SLA，保證 100% 的讀取要求都將符合
 
   下圖說明具有「音樂筆記」的強式一致性。 將資料寫入「美國西部2」區域之後，當您從其他區域讀取資料時，您會取得最新的值：
 
-  ![video](media/consistency-levels/strong-consistency.gif)
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="影片":::
 
-- **限定過期**：保證讀取會接受一致前置詞保證。 讀取可能會落後寫入最多「 *K* 」個專案版本（也就是「更新」）或「 *T* 」的時間間隔。 換句話說，當您選擇限定過期時，可以透過兩種方式來設定「過期」：
+- **限定過期**：保證讀取會接受一致前置詞保證。 讀取可能會落後寫入最多「 *K* 」個專案版本（也就是「更新」）或「 *T* 」時間間隔（以先達到者為准）。 換句話說，當您選擇限定過期時，可以透過兩種方式來設定「過期」：
 
 - 專案的版本數（*K*）
 - 讀取可能落後寫入的時間間隔（*T*）
@@ -61,7 +61,7 @@ Azure Cosmos DB 會提供全方位 SLA，保證 100% 的讀取要求都將符合
 
   限定過期通常是由全域散發的應用程式選擇，其預期會有低寫入延遲，但需要整體全域順序保證。 限定過期適用于具有群組共同作業和共用、股票行情指示器、發佈-訂閱/佇列等的應用程式。下圖說明具有音樂便箋的限定過期一致性。 將資料寫入「美國西部2」區域之後，「美國東部2」和「澳大利亞東部」區域會根據設定的最大延隔時間或最大作業數，讀取寫入的值：
 
-  ![video](media/consistency-levels/bounded-staleness-consistency.gif)
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="影片":::
 
 - **會話**：在單一用戶端會話讀取中，保證會接受一致前置詞、單純讀取、單純寫入、讀取您的寫入，以及寫入後接讀取保證。 這會假設單一「寫入器」會話，或共用多個寫入器的會話權杖。
 
@@ -72,13 +72,13 @@ Azure Cosmos DB 會提供全方位 SLA，保證 100% 的讀取要求都將符合
 - 針對多宿主帳戶的單一區域寫入用戶端的一致性 = 一致的前置詞
 - 針對多宿主帳戶寫入多個區域的用戶端一致性 = 最終
 
-  會話一致性是適用于單一區域和全域散發應用程式的廣泛使用一致性層級。 它提供相當於最終一致性的寫入延遲、可用性及讀取輸送量，但也提供一致性保證，以符合撰寫要在使用者內容中操作之應用程式的需求。 下圖說明與「音樂筆記」的會話一致性。 「美國西部2寫入器」和「美國西部2讀取器」使用相同的會話（會話 A），因此兩者都會同時讀取相同的資料。 「澳大利亞東部」區域會使用「會話 B」，因此，它會在稍後接收資料，但與寫入的順序相同。
+  會話一致性是單一區域和全域散發應用程式最普遍使用的一致性層級。 它提供相當於最終一致性的寫入延遲、可用性及讀取輸送量，但也提供一致性保證，以符合撰寫要在使用者內容中操作之應用程式的需求。 下圖說明與「音樂筆記」的會話一致性。 「美國西部2寫入器」和「美國西部2讀取器」使用相同的會話（會話 A），因此兩者都會同時讀取相同的資料。 「澳大利亞東部」區域會使用「會話 B」，因此，它會在稍後接收資料，但與寫入的順序相同。
 
-  ![video](media/consistency-levels/session-consistency.gif)
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="影片":::
 
 - **一致前置**詞：傳回的更新包含所有更新的部分前置詞，沒有間距。 一致前置詞一致性層級可確保讀取永遠不會看到不按照順序的寫入。
 
-如果寫入以 `A, B, C` 順序執行，則用戶端會看到 `A`、`A,B` 或 `A,B,C`，但是永遠不會看到沒有順序的情形，像是 `A,C` 或 `B,A,C`。 一致前置詞提供寫入延遲、可用性及讀取輸送量，相當於最終一致性，但也提供符合訂單重要性之案例需求的順序保證。 
+如果寫入是按照循序執行 `A, B, C` ，則用戶端 `A` 會看到、 `A,B` 或 `A,B,C` ，但是永遠不會依序排列（例如或） `A,C` `B,A,C` 。 一致前置詞提供寫入延遲、可用性及讀取輸送量，相當於最終一致性，但也提供符合訂單重要性之案例需求的順序保證。 
 
 以下是一致前置詞的一致性保證：
 
@@ -89,12 +89,12 @@ Azure Cosmos DB 會提供全方位 SLA，保證 100% 的讀取要求都將符合
 
 下圖說明與音樂便箋一致的前置詞一致性。 在所有區域中，讀取永遠不會看到不按照順序的寫入：
 
-  ![video](media/consistency-levels/consistent-prefix.gif)
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="影片":::
 
 - **最終**：讀取沒有排序保證。 如果不再有任何寫入，複本最終將會聚合。  
 最終一致性是最弱的一致性形式，因為用戶端可能會讀取早于之前讀取的值。 最終一致性是應用程式不需要任何排序保證的理想選擇。 範例包括轉、贊或非執行緒批註的計數。 下圖說明與音樂便箋的最終一致性。
 
-  ![video](media/consistency-levels/eventual-consistency.gif)
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="影片":::
 
 ## <a name="additional-reading"></a>其他閱讀資料
 

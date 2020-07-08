@@ -4,16 +4,16 @@ description: 了解如何使用 .NET 用戶端程式庫來列出 Azure 儲存體
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 03/30/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 76142838d1ec138b75fb6c594414b2ff5d8cd939
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: HT
+ms.openlocfilehash: ff7eac9e004a06925fbfa657278e6ec848a7d600
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851274"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 Blob
 
@@ -24,6 +24,15 @@ ms.locfileid: "82883289"
 ## <a name="understand-blob-listing-options"></a>了解 Blob 清單選項
 
 若要列出儲存體帳戶中的 Blob，請呼叫下列其中一種方法：
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 - [CloudBlobClient.ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
 - [CloudBlobClient.ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
@@ -37,11 +46,13 @@ ms.locfileid: "82883289"
 
 這些方法的多載會提供其他選項來管理清單作業如何傳回 Blob。 下列各節描述這些選項。
 
+---
+
 ### <a name="manage-how-many-results-are-returned"></a>管理傳回的結果數目
 
-根據預設，清單作業一次最多會傳回 5000 個結果。 若要傳回較小的結果集，請在呼叫其中一個 **ListBlobs** 方法時，針對 `maxresults` 參數提供非零值。
+根據預設，清單作業一次最多會傳回5000個結果，但您可以指定想要讓每個清單作業傳回的結果數目。 本文中顯示的範例將示範如何執行這項操作。
 
-如果清單作業傳回超過 5000 個 Blob，或如果已指定 `maxresults` 的值，如此清單作業即會傳回儲存體帳戶中的容器子集，而 Azure 儲存體會傳回「接續權杖」與 Blob 清單。 接續權杖是不透明的值，其可用來從 Azure 儲存體中擷取下一組結果。
+如果清單作業傳回5000個以上的 blob，或可用的 blob 數目超過您指定的數目，則 Azure 儲存體會傳回包含 blob 清單的*接續 token* 。 接續權杖是不透明的值，其可用來從 Azure 儲存體中擷取下一組結果。
 
 在程式碼中檢查接續權杖的值，以判斷該值是否為 null。 當接續權杖為 null 時，結果集就會完成。 如果接續權杖不是 null，則會再次呼叫清單作業、傳遞接續權杖來擷取下一組結果，直到接續權杖是 null 為止。
 
@@ -51,7 +62,11 @@ ms.locfileid: "82883289"
 
 ### <a name="return-metadata"></a>傳回中繼資料
 
-若要與結果一起傳回 Blob 中繼資料，請為 [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 列舉指定**Metadata** 值。 Azure 儲存體會在每個傳回的 Blob 中包含中繼資料，因此不需要在此內容中呼叫其中一個 **FetchAttributes** 方法，即可擷取 Blob 中繼資料。
+您可以傳回包含結果的 blob 中繼資料。 
+
+- 如果您使用的是 .NET v12 SDK，請指定[BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet)列舉的**中繼資料**值。
+
+- 如果您使用的是 .NET v11 SDK，請指定[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails)列舉的**中繼資料**值。 Azure 儲存體會在每個傳回的 Blob 中包含中繼資料，因此不需要在此內容中呼叫其中一個 **FetchAttributes** 方法，即可擷取 Blob 中繼資料。
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>簡單列表與階層式清單
 
@@ -66,6 +81,14 @@ Azure 儲存體中的 Blob 是以簡單架構進行組織，而不是階層式�
 根據預設，清單作業會以簡單列表傳回 Blob。 在簡單列表中，Blob 不會透過虛擬目錄進行組織。
 
 下列範例會使用簡單列表，在指定了選擇性區段大小情況下列出指定容器中的 Blob，並將 Blob 名稱寫入主控台視窗。
+
+如果您已在您的帳戶上啟用階層命名空間功能，目錄就不是虛擬的。 相反地，它們是實體獨立的物件。 因此，目錄會在清單中顯示為長度為零的 blob。
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -85,7 +108,6 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 
             foreach (var blobItem in resultSegment.Results)
             {
-                // A flat listing operation returns only blobs, not virtual directories.
                 blob = (CloudBlob)blobItem;
 
                 // Write out some blob properties.
@@ -108,6 +130,8 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
+---
+
 範例輸出類似於：
 
 ```
@@ -125,6 +149,16 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 ## <a name="use-a-hierarchical-listing"></a>使用階層式清單
 
 當以階層方式呼叫清單作業時，Azure 儲存體會在階層的第一個層級傳回虛擬目錄和 Blob。 系統會設定每個虛擬目錄的 [Prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) 屬性，如此即可在遞迴呼叫中傳遞前置詞，以擷取下一個目錄。
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+若要以階層方式列出 blob，請呼叫[BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)或[BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)方法。
+
+下列範例會使用階層式清單來列出指定容器中的 blob，並指定選擇性區段大小，並將 blob 名稱寫入主控台視窗。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 若要以階層方式列出 Blob，請將清單方法的 `useFlatBlobListing` 參數設定為 **false**。
 
@@ -182,6 +216,8 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
     }
 }
 ```
+
+---
 
 範例輸出類似於：
 

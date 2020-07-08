@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
-ms.topic: article
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 791f2e9bf825bb0a1d1ce555c9fbd879106213df
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: dc4e71f4283d78c2b241441810a8c1313f002152
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995833"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850898"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>使用我的員工管理您的使用者（預覽）
 
@@ -26,7 +26,7 @@ ms.locfileid: "82995833"
 
 在為您的組織設定「我的員工」之前，建議您先參閱這份檔以及[使用者檔](../user-help/my-staff-team-manager.md)，以確保您瞭解這項功能對使用者的功能和影響。 您可以利用使用者檔來訓練並準備您的使用者，以取得新的體驗，並協助確保成功的推出。
 
-[以 SMS 為基礎的使用者驗證] 是 Azure Active Directory 的公開預覽功能。 如需有關預覽的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定
+適用於使用者的 SMS 型驗證是 Azure Active Directory 的一項公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 ## <a name="how-my-staff-works"></a>我的員工如何運作
 
@@ -34,27 +34,27 @@ ms.locfileid: "82995833"
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要完成本文，您需要下列資源和許可權：
+若要完成本文章，您需要下列資源和權限：
 
 * 有效的 Azure 訂用帳戶。
 
   * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 與您的訂用帳戶相關聯的 Azure Active Directory 租使用者。
+* 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶。
 
   * 如果需要，請[建立 Azure Active Directory 租用戶](../fundamentals/sign-up-organization.md)或[將 Azure 訂用帳戶與您的帳戶建立關聯](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 * 您需要 Azure AD 租使用者中的*全域管理員*許可權，才能啟用以 SMS 為基礎的驗證。
-* 在文字訊息驗證方法原則中啟用的每個使用者都必須獲得授權，即使它們未使用。 每個啟用的使用者都必須具有下列其中一項 Azure AD 或 Microsoft 365 授權：
+* 在文字簡訊驗證方法原則中啟用的每個使用者都必須獲得授權，即使使用者未使用該驗證。 每個啟用的使用者都必須具有下列其中一項 Azure AD 或 Microsoft 365 授權：
 
   * [Azure AD Premium P1 或 P2](https://azure.microsoft.com/pricing/details/active-directory/)
-  * [Microsoft 365 （M365） F1 或 F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
-  * [Enterprise Mobility + Security （EMS） e3 或 e5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing)或[Microsoft 365 （M365） e3 或 e5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
+  * [Microsoft 365 (M365) F1 或 F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
+  * [Enterprise Mobility + Security (EMS) E3 或 E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) 或 [Microsoft 365 (M365) E3 或 E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
 ## <a name="how-to-enable-my-staff"></a>如何啟用我的員工
 
 設定 au 之後，您可以將此範圍套用到存取我的員工的使用者。 只有獲指派系統管理角色的使用者才能存取「我的員工」。 若要啟用 [我的員工]，請完成下列步驟：
 
 1. 以使用者系統管理員身分登入 Azure 入口網站。
-2. 流覽至**Azure Active Directory** > **使用者設定** > ] [**使用者功能預覽** > ] [**管理使用者功能預覽設定**]。
+2. 流覽至**Azure Active Directory**  >  **使用者設定**] [  >  **使用者功能預覽**] [  >  **管理使用者功能預覽設定**]。
 3. 在 [系統**管理員可以存取我的員工**] 底下，您可以選擇針對所有使用者、選取的使用者或無使用者存取啟用。
 
 > [!Note]
@@ -71,29 +71,30 @@ ms.locfileid: "82995833"
 1. 安裝 Microsoft Graph 搶鮮[版（Beta） PowerShell Cmdlet](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1)。
 1. 執行下列命令：
 
-        Connect-Graph -Scopes "Directory.AccessAsUser.All"
-        New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
-
+   ```powershell
+   Connect-Graph -Scopes "Directory.AccessAsUser.All"
+   New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
+   ```
 1. 建立適用于「我的員工」雲端應用程式的條件式存取原則。
 
     ![為「我的員工」應用程式建立條件式存取原則](media/my-staff-configure/conditional-access.png)
 
 ## <a name="using-my-staff"></a>使用我的員工
 
-當使用者前往 [我的員工] 時，會顯示其具有系統管理許可權的系統[管理單位](directory-administrative-units.md)名稱。 在 [[我的員工] 使用者檔](../user-help/my-staff-team-manager.md)中，我們使用「位置」一詞來參照管理單位。 如果系統管理員的許可權沒有 AU 範圍，這些許可權會套用到整個組織。 啟用 [我的員工] 之後，已啟用並獲派系統管理角色的使用者可以透過[https://mystaff.microsoft.com](https://mystaff.microsoft.com)來存取。 他們可以選取 AU 來查看該 AU 中的使用者，並選取要開啟其設定檔的使用者。
+當使用者前往 [我的員工] 時，會顯示其具有系統管理許可權的系統[管理單位](directory-administrative-units.md)名稱。 在 [[我的員工] 使用者檔](../user-help/my-staff-team-manager.md)中，我們使用「位置」一詞來參照管理單位。 如果系統管理員的許可權沒有 AU 範圍，這些許可權會套用到整個組織。 啟用 [我的員工] 之後，已啟用並獲派系統管理角色的使用者可以透過來存取 [https://mystaff.microsoft.com](https://mystaff.microsoft.com) 。 他們可以選取 AU 來查看該 AU 中的使用者，並選取要開啟其設定檔的使用者。
 
 ## <a name="reset-a-users-password"></a>重設使用者的密碼
 
 下列角色具有重設使用者密碼的許可權：
 
-- [驗證管理員](directory-assign-admin-roles.md#authentication-administrator)
-- [特殊許可權驗證管理員](directory-assign-admin-roles.md#privileged-authentication-administrator)
+- [驗證系統管理員](directory-assign-admin-roles.md#authentication-administrator)
+- [特殊權限驗證管理員](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [全域管理員](directory-assign-admin-roles.md#global-administrator--company-administrator)
 - [服務台管理員](directory-assign-admin-roles.md#helpdesk-administrator)
-- [使用者系統管理員](directory-assign-admin-roles.md#user-administrator)
+- [使用者管理員](directory-assign-admin-roles.md#user-administrator)
 - [密碼管理員](directory-assign-admin-roles.md#password-administrator)
 
-在 [**我的員工**] 中，開啟使用者的設定檔。 選取 [重設密碼]****。
+在 [**我的員工**] 中，開啟使用者的設定檔。 選取 [重設密碼]。
 
 - 如果使用者是僅限雲端，您會看到可提供給使用者的暫時密碼。
 - 如果使用者是從內部部署 Active Directory 同步處理，您可以輸入符合內部部署 AD 原則的密碼。 然後，您可以將該密碼提供給使用者。
@@ -114,8 +115,8 @@ ms.locfileid: "82995833"
 
 若要管理使用者的電話號碼，您必須獲指派下列其中一個角色：
 
-- [驗證管理員](directory-assign-admin-roles.md#authentication-administrator)
-- [特殊許可權驗證管理員](directory-assign-admin-roles.md#privileged-authentication-administrator)
+- [驗證系統管理員](directory-assign-admin-roles.md#authentication-administrator)
+- [特殊權限驗證管理員](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [全域管理員](directory-assign-admin-roles.md#global-administrator--company-administrator)
 
 ## <a name="search"></a>搜尋
@@ -130,5 +131,5 @@ ms.locfileid: "82995833"
 
 ## <a name="next-steps"></a>後續步驟
 
-[我的員工使用者檔](../user-help/my-staff-team-manager.md)
+[我的員工使用者檔](../user-help/my-staff-team-manager.md) 
 [管理單位檔](directory-administrative-units.md)

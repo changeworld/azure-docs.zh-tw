@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8159ef45dee8a2f9ace69c2a5b66a29e4948d82c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850975"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 參考
 以下文件提供 Azure AD Connect 所隨附 ADSyncConfig.psm1 PowerShell 模組的參考資訊。
@@ -1080,28 +1080,19 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ### <a name="description"></a>DESCRIPTION
 Set-ADSyncRestrictedPermissions 函式會對提供的帳戶限定權限。
 要限定權限必須執行下列步驟：
-1.
-停用指定物件上的繼承
-2.
-將特定物件上所有的 ACE 移除，除了 SELF 特有的 ACE 之外。
+1. 停用指定物件上的繼承
+2. 將特定物件上所有的 ACE 移除，除了 SELF 特有的 ACE 之外。
 關於 SELF，我們需要將預設權限維持不變。
-3.
-指派這些特定權限：
+3. 指派這些特定權限：
 
-        Type    Name                                        Access              Applies To
-        =============================================================================================
-        Allow   SYSTEM                                      Full Control        This object
-        Allow   Enterprise Admins                           Full Control        This object
-        Allow   Domain Admins                               Full Control        This object
-        Allow   Administrators                              Full Control        This object
-
-        Allow   Enterprise Domain Controllers               List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
-
-        Allow   Authenticated Users                         List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
+   | 類型 | 名稱 | 存取 | 套用至 |
+   |------|------|--------|------------|
+   | 允許 | 系統 | 完全控制 | 此物件 |
+   | Allow | 企業系統管理員 | 完全控制 | 此物件 |
+   | Allow | 網域管理員 | 完全控制 | 此物件 | 
+   | Allow | 系統管理員 | 完全控制 | 此物件 |
+   | Allow | 企業網域控制站 | 清單內容 <br> 讀取所有屬性 <br> 讀取權限 | 此物件 |
+   | Allow | 驗證的使用者 | 清單內容 <br> 讀取所有屬性 <br> 讀取權限 | 此物件 |
 
 ### <a name="examples"></a>範例
 

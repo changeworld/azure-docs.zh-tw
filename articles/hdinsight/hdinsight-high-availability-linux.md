@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381401"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849663"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中 Apache Hadoop 叢集的可用性和可靠性
 
@@ -85,7 +85,7 @@ export clusterName="CLUSTERNAME"
 curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 ```
 
-此命令會傳回類似下列的值，其中包含要搭配`oozie`命令使用的內部 URL：
+此命令會傳回類似下列的值，其中包含要搭配命令使用的內部 URL `oozie` ：
 
 ```output
 "oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
@@ -97,7 +97,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 
 您可以使用下列方法，連接到無法直接透過網際網路存取的節點：
 
-|方法 |描述 |
+|方法 |Description |
 |---|---|
 |SSH|使用 SSH 連線到前端節點之後，您便可以接著從前端節點使用 SSH 來連線到叢集中的其他節點。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 文件。|
 |SSH 通道|如果您需要存取裝載在其中一個節點上的 web 服務，但未公開到網際網路，您必須使用 SSH 通道。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH 通道](hdinsight-linux-ambari-ssh-tunnel.md)文件。|
@@ -119,7 +119,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 
 下列警示可協助監視叢集的可用性：
 
-| 警示名稱                               | 描述                                                                                                                                                                                  |
+| 警示名稱                               | Description                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 度量監視狀態                    | 此警示會指出計量監視器進程的狀態，由監視狀態腳本決定。                                                                                   |
 | Ambari 代理程式的心跳                   | 如果伺服器已失去與代理程式的連線，就會觸發此警示。                                                                                                                        |
@@ -129,7 +129,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 | Spark2 Thrift 伺服器                     | 如果無法判斷 Spark2 Thrift 伺服器是否已啟動，則會觸發此主機層級警示。                                                                                                |
 | 歷程記錄伺服器進程                   | 如果無法建立記錄伺服器進程以在網路上啟動及接聽，就會觸發此主機層級警示。                                                                |
 | 歷程記錄伺服器 Web UI                    | 如果無法連線到歷程記錄伺服器 Web UI，就會觸發此主機層級警示。                                                                                                              |
-| `ResourceManager`Web UI                   | 如果無法連線到`ResourceManager` Web UI，就會觸發此主機層級警示。                                                                                                             |
+| `ResourceManager`Web UI                   | 如果無法連線到 Web UI，就會觸發此主機層級警示 `ResourceManager` 。                                                                                                             |
 | NodeManager 健全狀況摘要               | 如果有狀況不良的 NodeManagers，就會觸發此服務層級警示                                                                                                                    |
 | 應用程式時間軸 Web UI                      | 如果無法連線到應用程式時間軸伺服器 Web UI，就會觸發此主機層級警示。                                                                                                         |
 | DataNode 健全狀況摘要                  | 如果有狀況不良的 Datanode，就會觸發此服務層級警示                                                                                                                       |
@@ -139,7 +139,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 | Oozie 伺服器狀態                      | 如果無法判斷 Oozie 伺服器是否已啟動並回應用戶端要求，就會觸發此主機層級警示。                                                                      |
 | Hive 中繼存放區進程                   | 如果無法判斷 Hive 中繼存放區進程在網路上啟動和接聽，就會觸發此主機層級警示。                                                                 |
 | HiveServer2 流程                      | 如果無法判斷 HiveServer 是否已啟動並回應用戶端要求，就會觸發此主機層級警示。                                                                        |
-| WebHCat 伺服器狀態                    | 如果`templeton`伺服器狀態狀況不良，則會觸發此主機層級警示。                                                                                                            |
+| WebHCat 伺服器狀態                    | 如果伺服器狀態狀況不良，則會觸發此主機層級警示 `templeton` 。                                                                                                            |
 | 可用的 ZooKeeper 伺服器百分比      | 如果叢集中的下層 ZooKeeper 伺服器數目大於設定的重大閾值，就會觸發此警示。 它會匯總 ZooKeeper 流程檢查的結果。     |
 | Spark2 Livy 伺服器                       | 如果無法判斷 Livy2 伺服器是否已啟動，則會觸發此主機層級警示。                                                                                                        |
 | Spark2 歷程記錄伺服器                    | 如果無法判斷 Spark2 歷程記錄伺服器是否已啟動，就會觸發此主機層級警示。                                                                                               |
@@ -243,10 +243,12 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 類似於使用 SSH 用戶端，當連接到叢集時，您必須提供 SSH 的使用者帳戶名稱和叢集的 SSH 位址。 例如： `sftp username@mycluster-ssh.azurehdinsight.net` 。 出現提示時，請提供帳戶密碼或使用 `-i` 參數提供公開金鑰。
 
-連接之後，您會看到`sftp>`提示字元。 您可以從該提示變更目錄、上傳和下載檔案。 例如：下列命令會將目錄變更至 **/var/log/hadoop/hdfs** 目錄，然後在目錄中下載所有檔案。
+連接之後，您會看到提示字元 `sftp>` 。 您可以從該提示變更目錄、上傳和下載檔案。 例如：下列命令會將目錄變更至 **/var/log/hadoop/hdfs** 目錄，然後在目錄中下載所有檔案。
 
-    cd /var/log/hadoop/hdfs
-    get *
+```bash
+cd /var/log/hadoop/hdfs
+get *
+```
 
 如需可用命令清單，請在 `sftp>` 提示中輸入 `help`。
 
@@ -272,9 +274,9 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
     ![可選取節點大小的 [叢集映像建立精靈]](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
-* **Azure CLI**：使用[`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)命令時，您可以使用`--headnode-size`、 `--workernode-size`和`--zookeepernode-size`參數來設定 head、worker 和 ZooKeeper 節點的大小。
+* **Azure CLI**：使用命令時 [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) ，您可以使用 `--headnode-size` 、和參數來設定 Head、worker 和 ZooKeeper 節點的大小 `--workernode-size` `--zookeepernode-size` 。
 
-* **Azure PowerShell**：使用 new-azhdinsightcluster 指令[程式](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)時，您可以使用`-HeadNodeSize`、 `-WorkerNodeSize`和`-ZookeeperNodeSize`參數來設定 head、worker 和 ZooKeeper 節點的大小。
+* **Azure PowerShell**：使用 new-azhdinsightcluster 指令[程式](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)時，您可以使用 `-HeadNodeSize` 、和參數來設定 head、worker 和 ZooKeeper 節點的大小 `-WorkerNodeSize` `-ZookeeperNodeSize` 。
 
 ## <a name="next-steps"></a>後續步驟
 

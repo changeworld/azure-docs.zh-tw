@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c2c5c083115440e1e4da203f39f2b32734458c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9b76ac103b873026dce3d3f8f92e54dc3afc14c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850931"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理單位中新增及管理使用者
 
 在 Azure Active Directory （Azure AD）中，您可以將使用者新增至管理單位（AU），以取得更細微的控制管理範圍。
 
-如需準備將 PowerShell 和 Microsoft Graph 用於管理單位管理的步驟，請參閱[開始](roles-admin-units-manage.md#get-started)使用。
+如需準備使用 PowerShell 和 Microsoft Graph 進行管理單位管理的步驟，請參閱[快速入門](roles-admin-units-manage.md#get-started)。
 
 ## <a name="add-users-to-an-au"></a>將使用者新增至 AU
 
@@ -41,7 +41,7 @@ ms.locfileid: "81684963"
 
     1. 您可以移至入口網站中的 Azure AD，然後在左窗格中選取 [管理單位]，然後選取要指派使用者的系統管理單位。 選取左窗格上的 [所有使用者]，然後選取 [新增成員]。 接著，您可以從右窗格中，選取要指派給管理單位的一或多個使用者。
 
-        ![選取管理單位，然後選取 [新增成員]](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
+        ![選取管理單位，然後選取新增成員](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
 1. 大量指派
 
@@ -51,26 +51,32 @@ ms.locfileid: "81684963"
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-    Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+```powershell
+$administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
+Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+```
 
 在上述範例中，會使用 Cmdlet AzureADAdministrativeUnitMember 將使用者新增至管理單位。 要在其中新增使用者之管理單位的物件識別碼，以及要加入之使用者的物件識別碼會做為引數。 反白顯示的區段可能會視特定環境的需要而變更。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    POST /administrativeUnits/{Admin Unit id}/members/$ref
-    Request body
-    {
-      "@odata.id":"https://graph.microsoft.com/beta/users/{id}"
-    }
+```http
+Http request
+POST /administrativeUnits/{Admin Unit id}/members/$ref
+Request body
+{
+  "@odata.id":"https://graph.microsoft.com/beta/users/{id}"
+}
+```
 
 範例：
 
-    {
-      "@odata.id":"https://graph.microsoft.com/beta/users/johndoe@fabidentity.com"
-    }
+```http
+{
+  "@odata.id":"https://graph.microsoft.com/beta/users/johndoe@fabidentity.com"
+}
+```
 
 ## <a name="list-administrative-units-for-a-user"></a>列出使用者的系統管理單位
 
@@ -86,27 +92,33 @@ ms.locfileid: "81684963"
 
 ### <a name="powershell"></a>PowerShell
 
-    Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $userObjId} }
+```powershell
+Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $userObjId} }
+```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.AdministrativeUnit
+```http
+https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.AdministrativeUnit
+```
 
 ## <a name="remove-a-single-user-from-an-au"></a>從 AU 移除單一使用者
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-有兩種方式可將使用者從管理單位移除。 在 [Azure 入口網站您可以前往 [ **Azure AD** > **使用者**] 來開啟使用者的設定檔。 選取使用者以開啟使用者的設定檔。 選取您想要移除使用者的系統管理單位，然後選取 [**從管理單位移除**]。
+有兩種方式可將使用者從管理單位移除。 在 [Azure 入口網站您可以前往 [ **Azure AD**使用者] 來開啟使用者的設定檔  >  ** **。 選取使用者以開啟使用者的設定檔。 選取您想要移除使用者的系統管理單位，然後選取 [**從管理單位移除**]。
 
 ![從使用者設定檔將使用者從管理單位移除](./media/roles-admin-units-add-manage-users/user-remove-admin-units.png)
 
-您也可以選取您想要移除使用者的系統管理單位，以**Azure AD** > **管理單位**移除使用者。 選取使用者，然後選取 [**移除成員**]。
+您也可以選取您想要移除使用者的系統管理單位，以**Azure AD**  >  **管理單位**移除使用者。 選取使用者，然後選取 [**移除成員**]。
   
 ![移除管理單位層級的使用者](./media/roles-admin-units-add-manage-users/admin-units-remove-user.png)
 
 ### <a name="powershell"></a>PowerShell
 
-    Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberUserObjId
+```powershell
+Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberUserObjId
+```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -126,5 +138,5 @@ ms.locfileid: "81684963"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [將角色指派給管理單位](roles-admin-units-assign-roles.md)
+- [將角色指派至管理單位](roles-admin-units-assign-roles.md)
 - [將群組新增至管理單位](roles-admin-units-add-manage-groups.md)

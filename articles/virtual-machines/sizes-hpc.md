@@ -1,26 +1,20 @@
 ---
 title: Azure VM 大小-HPC |Microsoft Docs
 description: 列出 Azure 中適用于高效能運算虛擬機器的不同大小。 列出 vCPU 數目、資料磁碟和 NIC 的相關資訊，以及此服務中各種大小之儲存體輸送量和網路頻寬的相關資訊。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
-ms.reviewer: jonbeck
-ms.openlocfilehash: 409fe69d111e2c5aebe0ad0bd38ced10604b5f1b
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.reviewer: jushiman
+ms.openlocfilehash: 2d52287d1c343ada58ed4f7e5e1d3e85a4e7162e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839057"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850445"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高效能計算 VM 大小
 
@@ -35,7 +29,7 @@ Azure H 系列虛擬機器（Vm）的設計目的是針對各種實際的 HPC �
 [H 系列](h-series.md)Vm 已針對高 CPU 頻率驅動的應用程式，或每個核心需求的大型記憶體優化。 H 系列 Vm 的功能為8或 16 Intel （r） E5 2667 v3 處理器核心、每個 CPU 核心7或 14 GB RAM，且無超執行緒。 H 系列功能 56 Gb/秒 Mellanox FDR 會在非封鎖的 fat 樹狀結構設定中，使 RDMA 效能一致。 H 系列 Vm 支援 Intel MPI 5.x 和 MS-MPI。
 
 > [!NOTE]
-> A8 – A11 Vm 已規劃于3/2021 淘汰。 如需詳細資訊，請參閱[HPC 遷移指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
+> A8 – A11 VM 計劃於 2021 年 3 月淘汰。 如需詳細資訊，請參閱 [HPC 移轉指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
 
 ## <a name="rdma-capable-instances"></a>支援 RDMA 的執行個體
 
@@ -44,13 +38,13 @@ Azure H 系列虛擬機器（Vm）的設計目的是針對各種實際的 HPC �
 此介面可讓支援 RDMA 的實例透過「未使用」（IB）網路進行通訊，以 HBv2 的 HDR 速率操作、HB 的 EDR 費率、HC、H16r、H16mr 和具備 RDMA 功能的 N 系列虛擬機器，以及適用于 A8 和 A9 Vm 的 QDR 速率。 這些 RDMA 功能可以提高特定訊息傳遞介面 (MPI) 應用程式的延展性和效能。 如需速度的詳細資訊，請參閱此頁面上的表格中的詳細資料。
 
 > [!NOTE]
-> 在 Azure HPC 中，會有兩個類別的 Vm，取決於它們是否已啟用可進行不限的 sr-iov。 目前，已啟用「未受支援的」 Vm 的 SR-IOV 為： HBv2、HB、HC 和 NCv3。 已啟用不支援的 Vm 的其餘部分不會啟用 SR-IOV。
+> 在 Azure HPC 中，會有兩個類別的 Vm，取決於它們是否已啟用可進行不限的 sr-iov。 目前，已啟用不支援的 Vm 的 SR-IOV 為： HBv2、HB、HC、NCv3 和 NDv2。 已啟用不支援的 Vm 的其餘部分不會啟用 SR-IOV。
 > 所有具備 RDMA 功能的 Vm 皆支援透過 IB 的 RDMA。
 > 只有在已啟用 SR-IOV 的 Vm 上，才支援透過 IB 的 IP。
 
-- **作業系統**-Linux 非常適合 HPC vm，散發版本（例如 CENTOS、RHEL、UBUNTU、SUSE）是常見的。 關於 Windows 支援，所有 HPC 系列 Vm 都支援 Windows Server 2016。 Windows server 2012 R2、Windows Server 2012 也支援非 SR-IOV 啟用的 Vm。
+- **作業系統**-LINUX 對 HPC vm 的支援非常妥善;通常會使用散發版本（例如 CentOS、RHEL、Ubuntu、SUSE）。 關於 Windows 支援，所有 HPC 系列 Vm 都支援 Windows Server 2016 和更新版本。 Windows server 2012 R2、Windows Server 2012 也支援非 SR-IOV 啟用的 Vm （H16r、H16mr、A8 和 A9）。 請注意， [HBv2 和其他具有超過64（虛擬或實體）核心的 vm 不支援 Windows Server 2012 R2](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)。
 
-- **Mpi** -在 Azure 上啟用 SR-IOV 的 VM 大小（HBV2、HB、HC、NCv3）幾乎可讓 MPI 的任何一種類別與 Mellanox OFED 搭配使用。
+- **Mpi** -在 Azure 上啟用 SR-IOV 的 VM 大小（HBV2、HB、HC、NCv3、NDv2）幾乎可讓 MPI 的任何一種類別與 Mellanox OFED 搭配使用。
 在非 SR-IOV 啟用的 Vm 上，支援的 MPI 執行會使用 Microsoft Network Direct （ND）介面在 Vm 之間進行通訊。 因此，只支援 Microsoft MPI （MS-MPI） 2012 R2 或更新版本和 Intel MPI 5.x 版本。 Intel MPI 執行時間程式庫的較新版本（2017、2018）可能會與 Azure RDMA 驅動程式不相容。
 
 - **InfiniBandDriver<Linux |Windows> VM 擴充**功能-在支援 RDMA 的 vm 上，新增 InfiniBandDriver<Linux |Windows> 擴充功能，以啟用未使用。 在 Linux 上，InfiniBandDriverLinux VM 擴充功能會安裝適用于 RDMA 連線的 Mellanox OFED 驅動程式（在 SR-IOV Vm 上）。 在 Windows 上，InfiniBandDriverWindows VM 擴充功能會安裝 Windows 網路直接驅動程式（在非 SR-IOV Vm 上）或 Mellanox OFED 驅動程式（在 SR-IOV Vm 上）以進行 RDMA 連線。
@@ -92,7 +86,7 @@ Azure 提供數個選項來建立 Windows HPC VM 的叢集，而這些 VM 可以
 
 - **虛擬機器**-在相同的擴展集或可用性設定組中部署支援 RDMA 的 HPC vm （當您使用 Azure Resource Manager 部署模型時）。 如果您使用傳統部署模型，請將 VM 部署在相同的雲端服務中。
 
-- **虛擬機器擴展集**-在虛擬機器擴展集（VMSS）中，請確定您將部署限制為單一放置群組，以便在 VMSS 內進行不確定的通訊。 例如，在 Resource Manager 範本中，將 `singlePlacementGroup` 屬性設定為 `true`。 請注意，根據預設，可由`singlePlacementGroup`屬性啟動的最大 VMSS `true`大小上限為 100 vm。 如果您的 HPC 作業級別需求高於單一 VMSS 租使用者中的 100 Vm，您可以要求增加、免費[開啟線上客戶支援要求](../azure-supportability/how-to-create-azure-support-request.md)。 單一 VMSS 中的 Vm 數目限制可以增加至300。 請注意，使用可用性設定組部署 Vm 時，最大限制是每個可用性設定組200個 Vm。
+- **虛擬機器擴展集**-在虛擬機器擴展集（VMSS）中，請確定您將部署限制為單一放置群組，以便在 VMSS 內進行不確定的通訊。 例如，在 Resource Manager 範本中，將 `singlePlacementGroup` 屬性設定為 `true`。 請注意，根據預設，可由屬性啟動的最大 VMSS 大小上限 `singlePlacementGroup` `true` 為 100 vm。 如果您的 HPC 作業級別需求高於單一 VMSS 租使用者中的 100 Vm，您可以要求增加、免費[開啟線上客戶支援要求](../azure-supportability/how-to-create-azure-support-request.md)。 單一 VMSS 中的 Vm 數目限制可以增加至300。 請注意，使用可用性設定組部署 Vm 時，最大限制是每個可用性設定組200個 Vm。
 
 - 虛擬機器之間的**MPI** -如果虛擬機器（vm）之間需要 RDMA （例如使用 MPI 通訊），請確定 vm 位於相同的虛擬機器擴展集或可用性設定組中。
 
@@ -100,7 +94,7 @@ Azure 提供數個選項來建立 Windows HPC VM 的叢集，而這些 VM 可以
 
 - **Azure Batch** -建立[Azure Batch](/azure/batch/)集區以執行 MPI 工作負載。 若要在以 Azure Batch 執行 MPI 應用程式時使用計算密集型執行個體，請參閱[在 Azure Batch 中使用多重執行個體工作來執行訊息傳遞介面 (MPI) 應用程式](../batch/batch-mpi.md)。
 
-- **Microsoft HPC pack** - [HPC pack](https://docs.microsoft.com/powershell/high-performance-computing/overview)包含 MS-MPI 的執行時間環境，它會在部署于支援 RDMA 的 Linux vm 上時使用 Azure RDMA 網路。 如需部署的範例，請參閱[使用 HPC Pack 設定 LINUX RDMA 叢集以執行 MPI 應用程式](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam)。
+- **MICROSOFT HPC Pack**  - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview)包含適用于 ms-chap 的執行時間環境，它會在部署于支援 RDMA 的 Linux vm 上時使用 Azure RDMA 網路。 如需部署的範例，請參閱[使用 HPC Pack 設定 LINUX RDMA 叢集以執行 MPI 應用程式](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam)。
 
 ## <a name="deployment-considerations"></a>部署考量因素
 
@@ -125,7 +119,7 @@ Azure 提供數個選項來建立 Windows HPC VM 的叢集，而這些 VM 可以
 - [記憶體最佳化](sizes-memory.md)
 - [儲存體最佳化](sizes-storage.md)
 - [GPU 最佳化](sizes-gpu.md)
-- [上一代](sizes-previous-gen.md)
+- [前幾代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>後續步驟
 
