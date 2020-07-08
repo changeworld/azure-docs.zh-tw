@@ -2,22 +2,22 @@
 title: 使用 Azure CLI 管理 Azure 區塊鏈 Service
 description: 如何使用 Azure CLI 管理 Azure 區塊鏈 Service
 ms.date: 11/22/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: ac75be644877905c1517395c1c789b1ea16fd49c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74455591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208156"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>使用 Azure CLI 管理 Azure 區塊鏈 Service
 
 除了 Azure 入口網站以外，您還可以使用 Azure CLI 來管理 Azure 區塊鏈服務的區塊鏈成員和交易節點。
 
-請確定您已安裝最新的[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ，並使用`az login`登入 Azure 帳戶。
+請確定您已安裝最新的[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ，並使用登入 Azure 帳戶 `az login` 。
 
-在下列範例中，將 example `<parameter names>`取代成您自己的值。
+在下列範例中，將 example 取代 `<parameter names>` 成您自己的值。
 
 ## <a name="create-blockchain-member"></a>建立區塊鏈成員
 
@@ -37,7 +37,7 @@ az resource create \
 | **resource-group** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 |
 | **name** | 可識別 Azure 區塊鏈服務區塊鏈成員的唯一名稱。 用於公開端點位址的名稱。 例如： `myblockchainmember.blockchain.azure.com` 。 |
 | **location** | 區塊鏈成員建立所在的 Azure 區域。 例如： `eastus` 。 選擇最靠近您的使用者或其他 Azure 應用程式的位置。 |
-| **password** | 成員帳戶密碼。 成員帳戶密碼會用來對使用基本驗證的區塊鏈成員公用端點進行驗證。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#）、百分比（%）、逗號（，）、星號（*）、後\`引號（）、雙引號（-）、單引號（'）、虛線（-）和 semicolumn （;)|
+| **password** | 成員帳戶密碼。 成員帳戶密碼會用來對使用基本驗證的區塊鏈成員公用端點進行驗證。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#）、百分比（%）、逗號（，）、星號（*）、後引號（ \` ）、雙引號（-）、單引號（'）、虛線（-）和 semicolumn （;)|
 | **protocol** | 公開預覽支援仲裁。 |
 | **consortium** | 要加入或建立的聯盟名稱。 |
 | **consortiumManagementAccountPassword** | 聯盟管理密碼。 密碼會用於加入聯盟。 |
@@ -63,7 +63,7 @@ az resource update \
 |---------|-------------|
 | **resource-group** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 |
 | **name** | 識別您的 Azure 區塊鏈服務成員的名稱。 |
-| **password** | 成員帳戶密碼。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#））、百分比（%）、逗號（，）、星號（*）、\`後引號（）、虛線（-）和分號（;)。 |
+| **password** | 成員帳戶密碼。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#））、百分比（%）、逗號（，）、星號（*）、後引號（ \` ）、虛線（-）和分號（;)。 |
 
 ## <a name="create-transaction-node"></a>建立交易節點
 
@@ -83,7 +83,7 @@ az resource create \
 | **resource-group** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 |
 | **name** | Azure 區塊鏈 Service 區塊鏈成員的名稱，其中也包含新的交易節點名稱。 |
 | **location** | 區塊鏈成員建立所在的 Azure 區域。 例如： `eastus` 。 選擇最靠近您的使用者或其他 Azure 應用程式的位置。 |
-| **password** | 交易節點密碼。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#））、百分比（%）、逗號（，）、星號（*）、\`後引號（）、虛線（-）和分號（;)。 |
+| **password** | 交易節點密碼。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#））、百分比（%）、逗號（，）、星號（*）、後引號（ \` ）、虛線（-）和分號（;)。 |
 | **ruleName** | 用來允許清單 IP 位址範圍的規則名稱。 防火牆規則的選擇性參數。 |
 | **startIpAddress** | 允許清單的 IP 位址範圍的開頭。 防火牆規則的選擇性參數。 |
 | **Endipaddress 設** | 允許清單的 IP 位址範圍結尾。 防火牆規則的選擇性參數。|
@@ -104,7 +104,7 @@ az resource update \
 |---------|-------------|
 | **resource-group** | 資源組名，其中有 Azure 區塊鏈服務資源存在。 |
 | **name** | Azure 區塊鏈 Service 區塊鏈成員的名稱，其中也包含新的交易節點名稱。 |
-| **password** | 交易節點密碼。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#））、百分比（%）、逗號（，）、星號（*）、\`後引號（）、虛線（-）和分號（;)。 |
+| **password** | 交易節點密碼。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#））、百分比（%）、逗號（，）、星號（*）、後引號（ \` ）、虛線（-）和分號（;)。 |
 
 ## <a name="change-consortium-management-account-password"></a>變更聯盟管理帳戶密碼
 
@@ -123,7 +123,7 @@ az resource update \
 |---------|-------------|
 | **resource-group** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 |
 | **name** | 識別您的 Azure 區塊鏈服務成員的名稱。 |
-| **consortiumManagementAccountPassword** | 聯盟管理帳戶密碼。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#））、百分比（%）、逗號（，）、星號（*）、\`後引號（）、虛線（-）和分號（;)。 |
+| **consortiumManagementAccountPassword** | 聯盟管理帳戶密碼。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#））、百分比（%）、逗號（，）、星號（*）、後引號（ \` ）、虛線（-）和分號（;)。 |
   
 ## <a name="update-firewall-rules"></a>更新防火牆規則
 
@@ -178,7 +178,7 @@ az resource invoke-action \
 |---------|-------------|
 | **resource-group** | 資源組名，其中有 Azure 區塊鏈服務資源存在。 |
 | **name** | Azure 區塊鏈 Service 區塊鏈成員的名稱，其中也包含新的交易節點名稱。 |
-| **名** | 將\<keyValue\>取代為 key1 或 key2。 |
+| **名** | 取代 \<keyValue\> 為 key1 或 key2。 |
 
 ## <a name="delete-a-transaction-node"></a>刪除交易節點
 
@@ -223,13 +223,13 @@ az role assignment create \
                             --scope /subscriptions/<subId>/resourceGroups/<groupName>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>
 ```
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |---------|-------------|
 | **role** | Azure AD 角色的名稱。 |
 | **受託人** | Azure AD 使用者識別碼。 例如， `user@contoso.com` |
-| **範圍** | 角色指派的範圍。 可以是區塊鏈成員或交易節點。 |
+| **範圍 (scope)** | 角色指派的範圍。 可以是區塊鏈成員或交易節點。 |
 
-**範例：**
+**範例︰**
 
 將 Azure AD 使用者的節點存取權授與區塊鏈**成員**：
 
@@ -240,7 +240,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-**範例：**
+**範例︰**
 
 將 Azure AD 使用者的節點存取權授與區塊鏈**交易節點**：
 
@@ -259,13 +259,13 @@ az role assignment create \
                             --assignee-object-id <assignee_object_id>
 ```
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |---------|-------------|
 | **role** | Azure AD 角色的名稱。 |
 | **受託人-物件識別碼** | Azure AD 群組識別碼或應用程式識別碼。 |
-| **範圍** | 角色指派的範圍。 可以是區塊鏈成員或交易節點。 |
+| **範圍 (scope)** | 角色指派的範圍。 可以是區塊鏈成員或交易節點。 |
 
-**範例：**
+**範例︰**
 
 授與**應用程式角色**的節點存取權
 
@@ -285,11 +285,11 @@ az role assignment delete \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/<myResourceGroup>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>/transactionNodes/<myTransactionNode>
 ```
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |---------|-------------|
 | **role** | Azure AD 角色的名稱。 |
 | **受託人** | Azure AD 使用者識別碼。 例如， `user@contoso.com` |
-| **範圍** | 角色指派的範圍。 可以是區塊鏈成員或交易節點。 |
+| **範圍 (scope)** | 角色指派的範圍。 可以是區塊鏈成員或交易節點。 |
 
 ## <a name="next-steps"></a>後續步驟
 

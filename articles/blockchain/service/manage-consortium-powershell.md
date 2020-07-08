@@ -2,20 +2,20 @@
 title: 管理 Azure 區塊鏈 Service 聯盟成員-PowerShell
 description: 瞭解如何使用 Azure PowerShell 來管理 Azure 區塊鏈 Service 聯盟成員。
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: zeyadr
-ms.openlocfilehash: e819dd39481b58d446384a5e2253c548ce0c267c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d40e55f177bda9edb40383b6e2c61c32633cd005
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77505974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211335"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>使用 PowerShell 管理 Azure 區塊鏈 Service 中的聯盟成員
 
 您可以使用 PowerShell 來管理 Azure 區塊鏈服務的區塊鏈聯盟成員。 具有系統管理員許可權的成員可以邀請、新增、移除及變更區塊鏈聯盟中所有參與者的角色。 具有使用者權限的成員可以查看區塊鏈聯盟中的所有參與者，並變更其成員的顯示名稱。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 使用[Azure 入口網站](create-member.md)建立區塊鏈成員。
 * 如需有關聯盟、成員和節點的詳細資訊，請參閱[Azure 區塊鏈 Service 聯盟](consortium.md)。
@@ -55,7 +55,7 @@ $MemberAccount = Import-Web3Account -ManagedAccountAddress '<Member account addr
 $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address>' -Web3Client $Connection
 ```
 
-將 [ * \<成員帳戶\>密碼*] 取代為您在建立成員時使用的成員帳戶密碼。
+將取代為您在 *\<Member account password\>* 建立成員時使用的成員帳戶密碼。
 
 在 [Azure 入口網站中尋找其他值：
 
@@ -64,14 +64,14 @@ $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress 
 
     ![成員總覽](./media/manage-consortium-powershell/member-overview.png)
 
-    以入口網站中的值取代* \<[成員\>帳戶*] 和* \<[RootContract\>位址*]。
+    將 *\<Member account\>* 和取代為 *\<RootContract address\>* 入口網站中的值。
 
 1. 針對 [端點位址]，選取 [**交易節點**]，然後選取 [**預設交易] 節點**。 預設節點的名稱與區塊鏈成員相同。
-1. 選取 [**連接字串**]。
+1. 選取 [連接字串]。
 
     ![連接字串](./media/manage-consortium-powershell/connection-strings.png)
 
-    以**HTTPs （存取金鑰1）** 或**HTTPs （存取金鑰2）** 的值取代* \<端點位址\> * 。
+    取代 *\<Endpoint address\>* 為**Https （存取金鑰1）** 或**HTTPs （存取金鑰2）** 的值。
 
 ## <a name="manage-the-network-and-smart-contracts"></a>管理網路和智慧合約
 
@@ -85,7 +85,7 @@ $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress 
 
 | 參數 | 說明 | 必要 |
 |-----------|-------------|:--------:|
-| RootContractAddress | 聯盟管理智慧合約的根合約位址 | 是 |
+| RootContractAddress | 聯盟管理智慧合約的根合約位址 | Yes |
 | Web3Client | 從 Web3Connection 取得的 Web3Client 物件 | 是 |
 
 #### <a name="example"></a>範例
@@ -102,7 +102,7 @@ Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address
 
 | 參數 | 說明 | 必要 |
 |-----------|-------------|:--------:|
-| ManagedAccountAddress | 區塊鏈成員帳戶位址 | 是 |
+| ManagedAccountAddress | 區塊鏈成員帳戶位址 | Yes |
 | ManagedAccountPassword | 帳戶位址密碼 | 是 |
 
 #### <a name="example"></a>範例
@@ -139,8 +139,8 @@ New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
 
 | 參數 | 說明 | 必要 |
 |-----------|-------------|:--------:|
-| Name | 您想要取得詳細資料的區塊鏈服務成員名稱。 輸入名稱時，會傳回成員的詳細資料。 當省略名稱時，它會傳回所有聯盟成員的清單。 | 否 |
-| 成員 | 從匯入-ConsortiumManagementContracts 取得的成員物件 | 是 |
+| Name | 您想要取得詳細資料的區塊鏈服務成員名稱。 輸入名稱時，會傳回成員的詳細資料。 當省略名稱時，它會傳回所有聯盟成員的清單。 | No |
+| 成員 | 從匯入-ConsortiumManagementContracts 取得的成員物件 | Yes |
 | Web3Client | 從 Web3Connection 取得的 Web3Client 物件 | 是 |
 
 #### <a name="example"></a>範例
@@ -170,9 +170,9 @@ Role           : ADMIN
 
 | 參數 | 說明 | 必要 |
 |-----------|-------------|:--------:|
-| Name | 要移除的成員名稱 | 是 |
-| 成員 | 從匯入-ConsortiumManagementContracts 取得的成員物件 | 是 |
-| Web3Account | 從匯入取得的 Web3Account 物件-Web3Account | 是 |
+| Name | 要移除的成員名稱 | Yes |
+| 成員 | 從匯入-ConsortiumManagementContracts 取得的成員物件 | Yes |
+| Web3Account | 從匯入取得的 Web3Account 物件-Web3Account | Yes |
 | Web3Client | 從 Web3Connection 取得的 Web3Client 物件 | 是 |
 
 #### <a name="example"></a>範例
@@ -196,11 +196,11 @@ Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <St
 
 | 參數 | 說明 | 必要 |
 |-----------|-------------|:--------:|
-| Name | 區塊鏈成員的名稱 | 是 |
-| DisplayName | 新的顯示名稱 | 否 |
-| AccountAddress | 帳戶位址 | 否 |
-| 成員 | 從匯入-ConsortiumManagementContracts 取得的成員物件 | 是 |
-| Web3Account | 從匯入取得的 Web3Account 物件-Web3Account | 是 |
+| Name | 區塊鏈成員的名稱 | Yes |
+| DisplayName | 新的顯示名稱 | No |
+| AccountAddress | 帳戶位址 | No |
+| 成員 | 從匯入-ConsortiumManagementContracts 取得的成員物件 | Yes |
+| Web3Account | 從匯入取得的 Web3Account 物件-Web3Account | Yes |
 | Web3Client |  從 Web3Connection 取得的 Web3Client 物件| 是 |
 
 #### <a name="example"></a>範例
@@ -226,10 +226,10 @@ New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 | 參數 | 說明 | 必要 |
 |-----------|-------------|:--------:|
-| SubscriptionId | 要邀請之成員的 Azure 訂用帳戶識別碼 | 是 |
-| [角色] | 聯盟角色。 值可以是 [系統管理員] 或 [使用者]。 ADMIN 是聯盟系統管理員角色。 使用者是聯盟成員角色。 | 是 |
-| 成員 | 從匯入-ConsortiumManagementContracts 取得的成員物件 | 是 |
-| Web3Account | 從匯入取得的 Web3Account 物件-Web3Account | 是 |
+| SubscriptionId | 要邀請之成員的 Azure 訂用帳戶識別碼 | Yes |
+| 角色 | 聯盟角色。 值可以是 [系統管理員] 或 [使用者]。 ADMIN 是聯盟系統管理員角色。 使用者是聯盟成員角色。 | Yes |
+| 成員 | 從匯入-ConsortiumManagementContracts 取得的成員物件 | Yes |
+| Web3Account | 從匯入取得的 Web3Account 物件-Web3Account | Yes |
 | Web3Client | 從 Web3Connection 取得的 Web3Client 物件 | 是 |
 
 #### <a name="example"></a>範例
@@ -248,8 +248,8 @@ $ContractConnection | New-BlockchainMemberInvitation -SubscriptionId <Azure Subs
 
 | 參數 | 說明 | 必要 |
 |-----------|-------------|:--------:|
-| SubscriptionId | 要邀請之成員的 Azure 訂用帳戶識別碼。 如果提供訂用帳戶識別碼，它會傳回訂用帳戶識別碼的邀請詳細資料。 如果省略了訂用帳戶識別碼，它會傳回所有成員邀請的清單。 | 否 |
-| 成員 | 從匯入-ConsortiumManagementContracts 取得的成員物件 | 是 |
+| SubscriptionId | 要邀請之成員的 Azure 訂用帳戶識別碼。 如果提供訂用帳戶識別碼，它會傳回訂用帳戶識別碼的邀請詳細資料。 如果省略了訂用帳戶識別碼，它會傳回所有成員邀請的清單。 | No |
+| 成員 | 從匯入-ConsortiumManagementContracts 取得的成員物件 | Yes |
 | Web3Client | 從 Web3Connection 取得的 Web3Client 物件 | 是 |
 
 #### <a name="example"></a>範例
@@ -279,9 +279,9 @@ Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> 
 
 | 參數 | 說明 | 必要 |
 |-----------|-------------|:--------:|
-| SubscriptionId | 要撤銷之成員的 Azure 訂用帳戶識別碼 | 是 |
-| 成員 | 從匯入-ConsortiumManagementContracts 取得的成員物件 | 是 |
-| Web3Account | 從匯入取得的 Web3Account 物件-Web3Account | 是 |
+| SubscriptionId | 要撤銷之成員的 Azure 訂用帳戶識別碼 | Yes |
+| 成員 | 從匯入-ConsortiumManagementContracts 取得的成員物件 | Yes |
+| Web3Account | 從匯入取得的 Web3Account 物件-Web3Account | Yes |
 | Web3Client | 從 Web3Connection 取得的 Web3Client 物件 | 是 |
 
 #### <a name="example"></a>範例
@@ -303,10 +303,10 @@ Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 | 參數 | 說明 | 必要 |
 |-----------|-------------|:--------:|
-| SubscriptionId | 要邀請之成員的 Azure 訂用帳戶識別碼 | 是 |
-| [角色] | 邀請的新聯盟角色。 值可以是 [**使用者**] 或 [系統**管理員**]。 | 是 |
-| 成員 |  從匯入-ConsortiumManagementContracts 取得的成員物件 | 是 |
-| Web3Account | 從匯入取得的 Web3Account 物件-Web3Account | 是 |
+| SubscriptionId | 要邀請之成員的 Azure 訂用帳戶識別碼 | Yes |
+| 角色 | 邀請的新聯盟角色。 值可以是 [**使用者**] 或 [系統**管理員**]。 | Yes |
+| 成員 |  從匯入-ConsortiumManagementContracts 取得的成員物件 | Yes |
+| Web3Account | 從匯入取得的 Web3Account 物件-Web3Account | Yes |
 | Web3Client | 從 Web3Connection 取得的 Web3Client 物件 | 是 |
 
 #### <a name="example"></a>範例

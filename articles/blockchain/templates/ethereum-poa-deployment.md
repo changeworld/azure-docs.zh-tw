@@ -1,15 +1,15 @@
 ---
 title: 在 Azure 上部署乙太坊證明聯盟解決方案範本
 description: 使用乙太坊證明聯盟解決方案，在 Azure 上部署和設定多成員的聯盟乙太坊網路
-ms.date: 12/18/2019
-ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 7e9af5c501b58f6828360ee280440ea85698bf16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.topic: how-to
+ms.reviewer: ravastra
+ms.openlocfilehash: 127aa860fe0c80f4d12a373c00ad2f53447c3497
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75387452"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210111"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署乙太坊證明聯盟解決方案範本
 
@@ -76,7 +76,7 @@ Docker 容器可用於可靠性和模組化。 Azure Container Registry 是用�
 
 在 [ [Azure 入口網站](https://portal.azure.com)中，選取左上角的 [**建立資源**]。
 
-選取 [**區塊鏈** > **乙太坊證明協會（預覽）**]。
+選取**Blockchain**  >  **[區塊鏈乙太坊證明協會（預覽）**]。
 
 ### <a name="basics"></a>基本概念
 
@@ -95,7 +95,7 @@ VM 使用者名稱 | 每個所部署 VM 的管理員使用者名稱 | 1-64 英�
 資源群組| 要對其部署聯盟網路的資源群組。 | myResourceGroup
 Location | 資源群組的 Azure 區域。 | 美國西部 2
 
-選取 [確定]  。
+選取 [確定]。
 
 ### <a name="deployment-regions"></a>部署區域
 
@@ -109,7 +109,7 @@ Location | 資源群組的 Azure 區域。 | 美國西部 2
 第一個區域 | 要部署聯盟網路的第一個區域 | 美國西部 2
 第二個區域 | 要部署聯盟網路的第二個區域。 當區域數目為二或更大時，就會顯示其他區域。 | 美國東部 2
 
-選取 [確定]  。
+選取 [確定]。
 
 ### <a name="network-size-and-performance"></a>網路大小和效能
 
@@ -131,7 +131,7 @@ F1|標準 SSD|low|low|high
 D2_v3|標準 SSD|中|中|中
 F16s|進階 SSD|high|high|low
 
-選取 [確定]  。
+選取 [確定]。
 
 ### <a name="ethereum-settings"></a>以太坊設定
 
@@ -150,7 +150,7 @@ F16s|進階 SSD|high|high|low
 區塊重新封印期 (秒) | 當網路上沒有任何交易時，將建立空白區塊的頻率。 頻率越高，越快有定局，但會增加儲存成本。 | 15
 交易許可權合約 | 交易授權合約的位元組程式碼。 將智慧型合約部署和執行限制為允許的乙太坊帳戶清單。 |
 
-選取 [確定]  。
+選取 [確定]。
 
 ### <a name="monitoring"></a>監視
 
@@ -162,11 +162,11 @@ F16s|進階 SSD|high|high|low
 ----------|-------------|--------------
 監視 | 啟用監視的選項 | 啟用
 連接到現有的 Azure 監視器記錄 | 建立新 Azure 監視器記錄實例或加入現有實例的選項 | 新建
-Location | 部署新實例的區域 | 美國東部
+位置 | 部署新實例的區域 | 美國東部
 現有的 log analytics 工作區識別碼（連接到現有的 Azure 監視器記錄 = 加入現有的）|現有 Azure 監視器記錄實例的工作區識別碼||NA
 現有的 log analytics 主要金鑰（連接到現有的 Azure 監視器記錄 = 加入現有的）|用來連接到現有 Azure 監視器記錄實例的主要金鑰||NA
 
-選取 [確定]  。
+選取 [確定]。
 
 ### <a name="summary"></a>摘要
 
@@ -325,7 +325,7 @@ ParityLog_CL
 
     ![SSH 啟用允許](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-1. 選取 [儲存]  。 可能需要幾分鐘的時間才能套用變更。
+1. 選取 [儲存]。 可能需要幾分鐘的時間才能套用變更。
 
 您可以使用所提供的系統管理員使用者名稱和密碼/SSH 金鑰，透過 SSH 從遠端連線到驗證器節點的虛擬機器。 用來存取第一個驗證程式節點的 SSH 命令會列在範本部署輸出中。 例如：
 
@@ -335,7 +335,7 @@ ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
 
 若要取得其他交易節點，請將埠號碼遞增一。
 
-如果您部署到一個以上的區域，請將命令變更為該區域中負載平衡器的 DNS 名稱或 IP 位址。 若要尋找其他區域的 DNS 名稱或 IP 位址，請尋找具有命名慣例** \* \* \* \* \*-lbpip-reg\# **的資源，並查看其 dns 名稱和 IP 位址屬性。
+如果您部署到一個以上的區域，請將命令變更為該區域中負載平衡器的 DNS 名稱或 IP 位址。 若要尋找其他區域的 DNS 名稱或 IP 位址，請尋找具有命名慣例** \* \* \* \* \* -lbpip-reg \# **的資源，並查看其 dns 名稱和 IP 位址屬性。
 
 ## <a name="azure-traffic-manager-load-balancing"></a>Azure 流量管理員負載平衡
 
@@ -555,10 +555,10 @@ Azure 流量管理員可跨不同區域的多個部署路由傳入的流量，�
 
 在下列範例中，您會建立簡單的智慧合約。 您可以使用 Truffle 來編譯智慧合約，並將其部署到您的區塊鏈網路。 一旦部署之後，您就可以透過交易呼叫智慧合約函數。
 
-#### <a name="prerequisites"></a>先決條件
+#### <a name="prerequisites"></a>必要條件
 
 * 安裝 [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。 Truffle 和 Web3 需要 Python。 選取 [安裝] 選項，以在您的路徑中包含 Python。
-* 安裝 Truffle v 5.0.5 `npm install -g truffle@v5.0.5`。 Truffle 需要安裝數個工具，包括 [Node.js](https://nodejs.org) 和 [Git](https://git-scm.com/)。 如需詳細資訊，請參閱[Truffle 檔](https://github.com/trufflesuite/truffle)。
+* 安裝 Truffle v 5.0.5 `npm install -g truffle@v5.0.5` 。 Truffle 需要安裝數個工具，包括 [Node.js](https://nodejs.org) 和 [Git](https://git-scm.com/)。 如需詳細資訊，請參閱[Truffle 檔](https://github.com/trufflesuite/truffle)。
 
 ### <a name="create-truffle-project"></a>建立 Truffle 專案
 
@@ -566,8 +566,8 @@ Azure 流量管理員可跨不同區域的多個部署路由傳入的流量，�
 
 1. 開啟命令提示字元或殼層。
 1. 建立名為 `HelloWorld` 的資料夾。
-1. 將目錄變更為新`HelloWorld`的資料夾。
-1. 使用命令`truffle init`初始化新的 Truffle 專案。
+1. 將目錄變更為新的 `HelloWorld` 資料夾。
+1. 使用命令初始化新的 Truffle 專案 `truffle init` 。
 
     ![建立新的 Truffle 專案](./media/ethereum-poa-deployment/create-truffle-project.png)
 
@@ -575,7 +575,7 @@ Azure 流量管理員可跨不同區域的多個部署路由傳入的流量，�
 
 在 Truffle 專案的 [**合約**] 子目錄中建立智慧合約。
 
-1. 在 Truffle 專案的**合約**子目錄`postBox.sol`中，建立名為的檔案。
+1. 在 `postBox.sol` Truffle 專案的**合約**子目錄中，建立名為的檔案。
 1. 將下列密度程式碼新增至**postBox**。
 
     ```javascript
@@ -600,7 +600,7 @@ Truffle projects 包含區塊鏈網路連接詳細資料的設定檔。 修改�
 > 永遠不要透過網路傳送您的乙太坊私用金鑰。 請確定每個交易都已先在本機簽署，再透過網路傳送已簽署的交易。
 
 1. 您需要在[部署區塊鏈網路時使用的乙太坊管理帳戶](#ethereum-settings)的助憶鍵片語。 如果您使用 MetaMask 來建立帳戶，您可以從 MetaMask 取出助憶鍵。 選取 MetaMask 擴充功能右上方的 [系統管理員帳戶] 圖示，然後選取 [**設定] > [安全性 & 隱私權] > [顯示種子字**]。
-1. 將 Truffle 專案`truffle-config.js`中的內容取代為下列內容。 取代預留位置端點和助憶鍵的值。
+1. 將 Truffle 專案中的內容取代為 `truffle-config.js` 下列內容。 取代預留位置端點和助憶鍵的值。
 
     ```javascript
     const HDWalletProvider = require("truffle-hdwallet-provider");
@@ -623,11 +623,11 @@ Truffle projects 包含區塊鏈網路連接詳細資料的設定檔。 修改�
     };
     ```
 
-1. 由於我們使用的是 Truffle HD 錢包提供者，請使用命令`npm install truffle-hdwallet-provider --save`將模組安裝在您的專案中。
+1. 由於我們使用的是 Truffle HD 錢包提供者，請使用命令將模組安裝在您的專案中 `npm install truffle-hdwallet-provider --save` 。
 
 Truffle 會使用遷移腳本，將智慧型合約部署到區塊鏈網路。 您需要有遷移腳本來部署新的智慧合約。
 
-1. 新增新的遷移來部署新的合約。 在 Truffle 專案的 [遷移] 子目錄中建立檔案。 **migrations** `2_deploy_contracts.js`
+1. 新增新的遷移來部署新的合約。 `2_deploy_contracts.js`在 Truffle 專案的 [**遷移**] 子目錄中建立檔案。
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -647,8 +647,8 @@ Truffle 會使用遷移腳本，將智慧型合約部署到區塊鏈網路。 �
 
 現在您已部署智慧合約，您可以傳送交易來呼叫函式。
 
-1. 在 Truffle 專案目錄中，建立名為`sendtransaction.js`的新檔案。
-1. 將下列內容新增至**sendtransaction**。
+1. 在 Truffle 專案目錄中，建立名為的新檔案 `sendtransaction.js` 。
+1. 將下列內容新增至**sendtransaction.js**。
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -709,7 +709,7 @@ Truffle 會使用遷移腳本，將智慧型合約部署到區塊鏈網路。 �
 
 ### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>公用 IP 部署與私人網路部署是否相容？
 
-不可以。 對等互連需要雙向通訊，因此整個網路必須是公用或私用。
+否。 對等互連需要雙向通訊，因此整個網路必須是公用或私用。
 
 ### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>什麼是權威證明的預期交易輸送量？
 
@@ -718,6 +718,20 @@ Truffle 會使用遷移腳本，將智慧型合約部署到區塊鏈網路。 �
 ### <a name="how-do-i-subscribe-to-smart-contract-events"></a>如何訂閱智慧合約事件？
 
 「以太坊權威證明」現在支援 Web 通訊端。  檢查您的部署輸出，找出 web 通訊端 URL 和埠。
+
+## <a name="support-and-feedback"></a>支援與意見反應
+
+如需 Azure 區塊鏈服務消息，請瀏覽 [Azure 區塊鏈服務部落格](https://azure.microsoft.com/blog/topics/blockchain/)，即時掌握 Azure 區塊鏈服務工程小組提供的區塊鏈服務供應項目和最新資訊。
+
+若要提供產品意見反應或要求新功能，請透過 [Azure 區塊鏈服務的意見反應論壇](https://aka.ms/blockchainuservoice) \(英文\) 張貼或票選想法。
+
+### <a name="community-support"></a>社群支援
+
+洽詢 Microsoft 工程師和 Azure 區塊鏈服務社群專家。
+
+* [Microsoft Q&Azure 區塊鏈 Service 的問題頁面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 區塊鏈範本的工程支援僅限於部署問題。
+* [Microsoft 技術社群](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>後續步驟
 

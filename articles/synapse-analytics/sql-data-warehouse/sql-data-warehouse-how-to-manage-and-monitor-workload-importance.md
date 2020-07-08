@@ -5,18 +5,18 @@ services: synapse-analytics
 author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.topic: conceptual
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 3efd8a776542616a9ceefba331b06406540905a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43006456142728287ddf4adba1fbb9b45f5ccc89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211964"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>管理和監視 Azure Synapse 分析中的工作負載重要性
 
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-目錄檢視[workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，其中包含建立分類器時所使用之參數的資訊。  下列查詢顯示已使用 ExecutiveReports 在值的```membername```參數上建立 ExecReportsClassifier：
+目錄檢視[workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，其中包含建立分類器時所使用之參數的資訊。  下列查詢顯示已使用 ExecutiveReports 在值的參數上建立 ExecReportsClassifier ```membername``` ：
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -59,7 +59,7 @@ SELECT c.name,cd.classifier_type, classifier_value
 
 ![查詢結果](./media/sql-data-warehouse-how-to-manage-and-monitor-workload-importance/wlm-query-results.png)
 
-若要簡化分類誤判的疑難排解，建議您在建立工作負載分類器時，移除資源類別角色對應。 下列程式碼會傳回現有的資源類別角色成員資格。 針對每個```membername```從對應的資源類別傳回的執行 sp_droprolemember。
+若要簡化分類誤判的疑難排解，建議您在建立工作負載分類器時，移除資源類別角色對應。 下列程式碼會傳回現有的資源類別角色成員資格。 針對每個 ```membername``` 從對應的資源類別傳回的執行 sp_droprolemember。
 以下是在卸載工作負載分類器之前，檢查是否存在的範例：
 
 ```sql

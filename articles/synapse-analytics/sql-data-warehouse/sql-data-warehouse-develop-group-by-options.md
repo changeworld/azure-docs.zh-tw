@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d8d4c6d47e33ca365415542c2da9779b4d7d1dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 260bd7cc6402a7cb4ed17d004d0f61b7462c51d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416204"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213443"
 ---
 # <a name="group-by-options-in-synapse-sql-pool"></a>Synapse SQL 集區中的群組依據選項
 
@@ -52,7 +52,7 @@ GROUP BY ROLLUP (
 藉由使用 ROLLUP，上述範例會要求下列彙總：
 
 * 國家及區域
-* Country
+* 國家/地區
 * 總計
 
 若要取代 ROLLUP，並傳回相同的結果，您可以使用 UNION ALL，並明確指定所需的彙總：

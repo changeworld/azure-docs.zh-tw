@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d2cbe9b94c4698a93b93c032ee4dcb421a78e59b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743081"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211654"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化資料行存放區的資料列群組品質
 
@@ -90,8 +90,8 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 要壓縮一個資料列群組所需的最大記憶體大約是
 
 - 72 MB +
-- \#資料\* \#列\*資料行8個位元組 +
-- \#資料\* \#列\*簡短字串-資料行32個位元組 +
+- \#資料列資料行 \* \# \* 8 個位元組 +
+- \#資料 \* \# 列簡短字串-資料行 \* 32 個位元組 +
 - \#長字串資料行 \* 壓縮字典 16 MB
 
 > [!NOTE]

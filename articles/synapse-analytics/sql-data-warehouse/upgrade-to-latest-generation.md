@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 13b1f33ffe653627bcf45f6c995e82e741de32ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1177551b698bb2e295a71f6cd4a132411d1c5bea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210689"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>藉由升級 Azure Synapse Analytics SQL 集區，將效能優化
 
@@ -110,7 +110,7 @@ ms.locfileid: "80742746"
 ## <a name="start-the-upgrade"></a>開始升級
 
 1. 在 Azure 入口網站中，移至您的計算優化 Gen1 SQL 集區。 如果要升級的計算優化 Gen1 層 SQL 集區已暫停，請[繼續 sql 集](pause-and-resume-compute-portal.md)區。
-2. 選取 [工作] 索引標籤底下的 [ ![**升級至 Gen2**卡]： Upgrade_1](./media/upgrade-to-latest-generation/upgrade-to-gen2-1.png)
+2. 選取 [工作] 索引標籤底下的 [**升級至 Gen2**卡]： ![ Upgrade_1](./media/upgrade-to-latest-generation/upgrade-to-gen2-1.png)
 
    > [!NOTE]
    > 如果您未在 [工作] 索引標籤下看見 [升級至 Gen2]**** 卡片，您的訂用帳戶類型受限於目前的區域。
@@ -238,7 +238,7 @@ $GeoRestoredDatabase.status
 ```
 
 > [!NOTE]
-> 若要在還原完成之後設定資料庫，請參閱 [在復原之後設定資料庫](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)。
+> 若要在還原完成之後設定資料庫，請參閱 [在復原之後設定資料庫](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)。
 
 如果來源資料庫是啟用 TDE，則復原的資料庫將是啟用 TDE。
 

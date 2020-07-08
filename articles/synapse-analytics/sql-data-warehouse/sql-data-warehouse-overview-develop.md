@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 12f91633834ee98582eaad886b48eb8619378265
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3c0d7924fb550761d050c9c404b1065c7d3cf72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411658"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211488"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中 Synapse SQL 集區的設計決策和程式碼撰寫技術 
  在本文中，您會找到其他資源，以協助您進一步瞭解 Azure Synapse 中 SQL 集區的重要設計決策、建議和程式碼撰寫技術。
@@ -29,7 +29,7 @@ ms.locfileid: "81411658"
 * [使用者定義的架構](sql-data-warehouse-develop-user-defined-schemas.md)
 * [資料表散發](sql-data-warehouse-tables-distribute.md)
 * [資料表索引](sql-data-warehouse-tables-index.md)
-* [資料表分割](sql-data-warehouse-tables-partition.md)
+* [資料表資料分割](sql-data-warehouse-tables-partition.md)
 * [CTAS](sql-data-warehouse-develop-ctas.md)
 * [數位](sql-data-warehouse-tables-statistics.md)
 
@@ -41,7 +41,7 @@ ms.locfileid: "81411658"
 * [檢視](sql-data-warehouse-develop-views.md)
 * [臨時表](sql-data-warehouse-tables-temporary.md)
 * [動態 SQL](sql-data-warehouse-develop-dynamic-sql.md)
-* [迴圈](sql-data-warehouse-develop-loops.md)
+* [遍歷](sql-data-warehouse-develop-loops.md)
 * [依選項分組](sql-data-warehouse-develop-group-by-options.md)
 * [變數指派](sql-data-warehouse-develop-variable-assignment.md)
 

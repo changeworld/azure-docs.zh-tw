@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/15/2020
 ms.author: apimpm
-ms.openlocfilehash: fefa5ff5d112b479110d484ee0ea4c358b5c88a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ecbd4d97bb092ccbdb286e4865bf04e770ca9473
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335901"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207884"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理開發人員入口網站概觀
 
@@ -34,7 +34,7 @@ ms.locfileid: "80335901"
 
 您可以透過兩種方式來建立開發人員入口網站：
 
-- **受控版本**-藉由編輯和自訂入口網站（內建于您的 API 管理實例中），並`<your-api-management-instance-name>.developer.azure-api.net`可透過 URL 存取。 請參閱[此檔文章](api-management-howto-developer-portal-customize.md)，以瞭解如何存取和自訂受管理的入口網站。
+- **受控版本**-藉由編輯和自訂入口網站（內建于您的 API 管理實例中），並可透過 URL 存取 `<your-api-management-instance-name>.developer.azure-api.net` 。 請參閱[此檔文章](api-management-howto-developer-portal-customize.md)，以瞭解如何存取和自訂受管理的入口網站。
 - **自我裝載版本**-藉由在 API 管理實例外部部署和自我裝載您的入口網站。 這種方法可讓您編輯入口網站的程式碼基底，並擴充提供的核心功能，例如，為與協力廠商系統整合而執行自訂 widget。 在此案例中，您是入口網站的維護程式，而且您負責將入口網站升級至最新版本。 如需詳細資訊和指示，請參閱[GitHub 存放庫，其中包含入口網站的原始程式碼][1]和[執行 widget 的教學][3]課程。 [受控版本的教學](api-management-howto-developer-portal-customize.md)課程會逐步解說入口網站的系統管理面板，這是受控和自我裝載版本的常見程式。
 
 ## <a name="portal-architectural-concepts"></a>入口網站架構概念
@@ -64,11 +64,11 @@ ms.locfileid: "80335901"
 
 入口網站是以[Paperbits 架構](https://paperbits.io/)的調整分支為基礎。 原始的 Paperbits 功能已擴充，可提供 API 管理特定的 widget （例如 Api 清單、產品清單），以及用於儲存和抓取內容的 API 管理服務連接器。
 
-## <a name="frequently-asked-questions"></a><a name="faq"></a>常見問題
+## <a name="frequently-asked-questions"></a><a name="faq"></a> 常見問題集
 
 在本節中，我們會回答關於開發人員入口網站的常見問題，這些是一般性質的問題。 如需自我裝載版本的特定問題，請參閱[GitHub 存放庫的 wiki 一節](https://github.com/Azure/api-management-developer-portal/wiki)。
 
-### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/>如何從入口網站的預覽版本進行遷移？
+### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a>如何從入口網站的預覽版本進行遷移？
 
 藉由使用開發人員入口網站的預覽版本，您可以在 API 管理服務中布建預覽內容。 在正式推出版本中，已大幅修改預設內容以獲得更佳的使用者體驗。 它也包含新的小工具。
 
@@ -76,7 +76,7 @@ ms.locfileid: "80335901"
 
 ![重設入口網站內容](media/api-management-howto-developer-portal/reset-content.png)
 
-如果您使用的是自我裝載版本，請使用 GitHub `scripts/cleanup.bat`存放`scripts/generate.bat`庫中的和來移除現有內容，並布建新的內容。 請務必事先從 GitHub 存放庫將入口網站的程式碼升級至最新版本。
+如果您使用的是自我裝載版本，請使用 `scripts/cleanup.bat` GitHub 存放 `scripts/generate.bat` 庫中的和來移除現有內容，並布建新的內容。 請務必事先從 GitHub 存放庫將入口網站的程式碼升級至最新版本。
 
 如果您不想重設入口網站的內容，可以考慮在整個頁面中使用新的小工具。 現有 widget 已自動更新為最新版本。
 
@@ -116,7 +116,7 @@ ms.locfileid: "80335901"
 
 在大部分情況下-[否]。
 
-如果您的 API 管理服務位於內部 VNet 中，您的開發人員入口網站只能從網路記憶體取。 管理端點的主機名稱必須從您用來存取入口網站系統管理介面的電腦解析為服務的內部 VIP。 請確定管理端點已在 DNS 中註冊。 在設定錯誤的情況下，您會看到錯誤`Unable to start the portal. See if settings are specified correctly in the configuration (...)`：。
+如果您的 API 管理服務位於內部 VNet 中，您的開發人員入口網站只能從網路記憶體取。 管理端點的主機名稱必須從您用來存取入口網站系統管理介面的電腦解析為服務的內部 VIP。 請確定管理端點已在 DNS 中註冊。 在設定錯誤的情況下，您會看到錯誤： `Unable to start the portal. See if settings are specified correctly in the configuration (...)` 。
 
 如果您的 API 管理服務位於內部 VNet 中，而您是透過來自網際網路的應用程式閘道來存取它，請務必啟用與開發人員入口網站的連線，以及 API 管理的管理端點。
 
@@ -150,8 +150,8 @@ ms.locfileid: "80335901"
 
 1. 按一下 [以**手動方式將它套用到全域層級**] 連結，以查看產生的原則程式碼。
 2. 在 Azure 入口網站的 API 管理服務的 [ **api** ] 區段中，流覽至 [**所有 api** ]。
-3. 在 [ **</>** **輸入處理**] 區段中，按一下圖示。
-4. 將原則插入 XML 檔案**<inbound>** 的區段中。 請確定**<origin>** 值符合開發人員入口網站的網域。
+3. 在 **</>** [**輸入處理**] 區段中，按一下圖示。
+4. 將原則插入 XML 檔案的 **<inbound>** 區段中。 請確定 **<origin>** 值符合開發人員入口網站的網域。
 
 > [!NOTE]
 > 
@@ -163,13 +163,13 @@ ms.locfileid: "80335901"
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>編輯開發人員入口網站需要哪些許可權？
 
-如果您在系統管理`Oops. Something went wrong. Please try again later.`模式中開啟入口網站時看到錯誤，您可能缺少必要的許可權（RBAC）。
+如果您 `Oops. Something went wrong. Please try again later.` 在系統管理模式中開啟入口網站時看到錯誤，您可能缺少必要的許可權（RBAC）。
 
-舊版入口網站需要服務範圍`Microsoft.ApiManagement/service/getssotoken/action` （`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`）的許可權，以允許使用者系統管理員存取入口網站。 新的入口網站需要範圍`Microsoft.ApiManagement/service/users/token/action` `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1`的許可權。
+舊版入口網站需要 `Microsoft.ApiManagement/service/getssotoken/action` 服務範圍（）的許可權 `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>` ，以允許使用者系統管理員存取入口網站。 新的入口網站需要範圍的許可權 `Microsoft.ApiManagement/service/users/token/action` `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` 。
 
-您可以使用下列 PowerShell 腳本來建立具有必要許可權的角色。 請記得變更`<subscription-id>`參數。 
+您可以使用下列 PowerShell 腳本來建立具有必要許可權的角色。 請記得變更 `<subscription-id>` 參數。 
 
-```PowerShell
+```powershell
 #New Portals Admin Role 
 Import-Module Az 
 Connect-AzAccount 
@@ -185,17 +185,17 @@ $customRole.AssignableScopes.Add('/subscriptions/<subscription-id>')
 New-AzRoleDefinition -Role $customRole 
 ```
  
-角色建立之後，就可以從 Azure 入口網站的 [**存取控制（IAM）** ] 區段中，授與給任何使用者。 將此角色指派給使用者，將會在服務範圍指派許可權。 使用者將能夠代表服務中的*任何*使用者產生 SAS 權杖。 此角色至少須指派給服務的系統管理員。 下列 PowerShell 命令示範如何將角色指派給位於最低範圍的`user1`使用者，以避免將不必要的許可權授與使用者： 
+角色建立之後，就可以從 Azure 入口網站的 [**存取控制（IAM）** ] 區段中，授與給任何使用者。 將此角色指派給使用者，將會在服務範圍指派許可權。 使用者將能夠代表服務中的*任何*使用者產生 SAS 權杖。 此角色至少須指派給服務的系統管理員。 下列 PowerShell 命令示範如何將角色指派給 `user1` 位於最低範圍的使用者，以避免將不必要的許可權授與使用者： 
 
-```PowerShell
+```powershell
 New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 
 ```
 
 授與使用者許可權之後，使用者必須登出再重新登入 Azure 入口網站，新的許可權才會生效。
 
-### <a name="im-seeing-the-unable-to-start-the-portal-see-if-settings-are-specified-correctly--error"></a>我看到`Unable to start the portal. See if settings are specified correctly (...)`錯誤
+### <a name="im-seeing-the-unable-to-start-the-portal-see-if-settings-are-specified-correctly--error"></a>我看到 `Unable to start the portal. See if settings are specified correctly (...)` 錯誤
 
-當`GET`呼叫`https://<management-endpoint-hostname>/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.ApiManagement/service/xxx/contentTypes/document/contentItems/configuration?api-version=2018-06-01-preview`失敗時，就會顯示此錯誤。 呼叫是由入口網站的系統管理介面從瀏覽器發出。
+當呼叫失敗時，就會顯示此錯誤 `GET` `https://<management-endpoint-hostname>/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.ApiManagement/service/xxx/contentTypes/document/contentItems/configuration?api-version=2018-06-01-preview` 。 呼叫是由入口網站的系統管理介面從瀏覽器發出。
 
 如果您的 API 管理服務位於 VNet 中，請參閱上述的 VNet 連線問題。
 
@@ -208,7 +208,7 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 | Apple Safari                | 是<sup>1</sup> |
 | Google Chrome               | 是<sup>1</sup> |
 | Microsoft Edge              | 是<sup>1</sup> |
-| Microsoft Internet Explorer | 否              |
+| Microsoft Internet Explorer | No              |
 | Mozilla Firefox             | 是<sup>1</sup> |
 
  <small><sup>1</sup>在兩個最新的生產版本中都有支援。</small>

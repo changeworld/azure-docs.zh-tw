@@ -5,21 +5,20 @@ description: 如何在 Excel 中直接使用 Azure Machine Learning Web 服務�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: e30103589c1baf9a165839cd041ff511a119c5ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8565e3c62ea1b74879f2e127abed772576563886
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211318"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>適用于 Azure Machine Learning Studio （傳統） web 服務的 Excel 增益集
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 Excel 可以讓您直接輕鬆呼叫 Web 服務，而不需要撰寫任何程式碼。
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>使用活頁簿中現有 Web 服務的步驟
@@ -76,7 +75,7 @@ Excel 可以讓您直接輕鬆呼叫 Web 服務，而不需要撰寫任何程式
 5. 按一下 [新增 Web 服務] ****。
 6. 將 URL 貼到標示為 [URL] **** 的 Excel 增益集文字方塊中。
 7. 將 API/主要金鑰貼到標示為 [API 金鑰] **** 的文字方塊中。
-8. 按一下 [加入]  。
+8. 按一下 **[新增]** 。
    
     ![傳統 Web 服務的 URL 和 API 金鑰。](./media/excel-add-in-for-web-services/image6.png)
 9. 若要使用 Web 服務，請遵循前述「使用現有 Web 服務的步驟」的指示。
@@ -84,4 +83,4 @@ Excel 可以讓您直接輕鬆呼叫 Web 服務，而不需要撰寫任何程式
 ## <a name="sharing-your-workbook"></a>共用活頁簿
 如果您儲存您的活頁簿，則您為 Web 服務加入的 API/主要金鑰也會一併儲存。 這表示您應該只與您信任的人共用活頁簿。
 
-如果有任何問題，請在下方的註解區或在我們 [論壇](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409)中提出。
+如果有任何問題，請在下方的註解區或在我們 [論壇](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)中提出。

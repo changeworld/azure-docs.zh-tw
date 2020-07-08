@@ -9,14 +9,15 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: synapse-analytics
 ms.topic: article
+ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6f2af826473bfd13f8100796a540d41cbedbb037
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71219abaf6493d6dce03f05ad0e61fb71bff1745
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631573"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207714"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>將您的 SQL 集區升級至 Gen2
 
@@ -33,7 +34,7 @@ Microsoft 正在協助降低執行 SQL 集區的進入層級成本。  較低的
 
 | **區域** | **可用的較低 Gen2** | **自動升級開始** |
 |:--- |:--- |:--- |
-| 加拿大東部 |2020年6月1日 |2020年7月1日 |
+| 加拿大東部 |2020 年 6 月 1 日 |2020年7月1日 |
 | 中國東部 |\* |\* |
 | 中國北部 |\* |\* |
 | 德國中部 |\* |\* |
@@ -78,7 +79,7 @@ Microsoft 正在協助降低執行 SQL 集區的進入層級成本。  較低的
 
 **問： Gen2 成本與 Gen1 相同嗎？**
 
-- 答： 會。
+- A：是。
 
 **問：升級會如何影響我的自動化腳本？**
 
@@ -117,7 +118,7 @@ Microsoft 正在協助降低執行 SQL 集區的進入層級成本。  較低的
 
 **問： Gen2 是否支援維護時段？**
 
-- 答： 會。
+- A：是。
 
 **問：我的區域升級後是否能夠建立新的 Gen1 實例？**
 

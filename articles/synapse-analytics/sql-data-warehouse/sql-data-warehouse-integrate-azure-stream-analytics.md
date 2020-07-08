@@ -6,25 +6,25 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 2/5/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e281f8a1fb3959256d836134b4c59f5399deb9bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90e339ba8454dfdfc3f724ea12932a3e8e5912c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633288"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213341"
 ---
-# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>使用 Azure 串流分析搭配 Azure Synapse 分析
+# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>搭配使用 Azure 串流分析與 Azure Synapse Analytics
 
 Azure 串流分析是完全受控的服務，可用來對雲端中的串流資料進行低延遲、高可用性、可延展的複雜事件處理。 如需基本概念，請參閱 [Azure 串流分析簡介](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 您可以接著依照 [開始使用 Azure 資料流分析](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 教學課程，了解如何使用資料流分析建立端對端解決方案。
 
 在本文中，您將瞭解如何使用資料倉儲做為 Azure 串流分析作業的輸出接收。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Azure 串流分析作業-若要建立 Azure 串流分析作業，請遵循[開始使用 azure 串流分析](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)教學課程中的步驟來：  
 
@@ -102,7 +102,7 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 在串流分析作業的 [Azure 入口網站上，按一下您的作業名稱。  按一下 [***輸出詳細資料***] 窗格中的 [***測試***] 按鈕。
 
-![[測試] 按鈕輸出](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png)詳細資料當資料庫連線成功時，您會在入口網站中看到通知。
+![[測試] 按鈕輸出詳細資料 ](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) 當資料庫連線成功時，您會在入口網站中看到通知。
 
 ### <a name="step-6"></a>步驟 6
 

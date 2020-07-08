@@ -5,18 +5,18 @@ author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: include
 ms.date: 05/19/2020
-ms.openlocfilehash: 60358c60ed28b63d97f11ce2ba26474103bcdb54
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 5023e7e215fd96357ee7cdc2105b57af0989d1eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698457"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211354"
 ---
-提供較詳細的供應項目描述，最多 3,000 個字元。 客戶會在 Marketplace 清單概觀中看到此描述。
+提供較詳細的供應項目描述，最多 3,000 個字元。 客戶會在 Marketplace 清單總覽中看到這項功能。
 
-您的描述須包含以下一或多種元素：
+在您的描述中包含下列一個或多個專案：
 
 - 供應項目的價值與關鍵權益
 - 類別及/或產業關聯

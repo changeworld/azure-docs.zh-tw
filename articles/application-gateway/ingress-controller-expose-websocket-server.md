@@ -4,15 +4,15 @@ description: 本文提供有關如何使用 AKS 叢集的輸入控制器，向�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68d4ff7e4617136e4c58ce672f34de56e46f0229
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79297827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207782"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>公開 WebSocket 伺服器以應用程式閘道
 
@@ -75,10 +75,10 @@ spec:
               servicePort: 80
 ```
 
-假設所有必要條件都已完成，且您的 AKS 中有 Kubernetes 輸入所控制的應用程式閘道，上述部署會導致 Websocket 伺服器公開在應用程式閘道公用 IP 和`ws.contoso.com`網域的埠80上。
+假設所有必要條件都已完成，且您的 AKS 中有 Kubernetes 輸入所控制的應用程式閘道，上述部署會導致 Websocket 伺服器公開在應用程式閘道公用 IP 和網域的埠80上 `ws.contoso.com` 。
 
 下列捲曲的命令會測試 WebSocket 伺服器部署：
-```sh
+```shell
 curl -i -N -H "Connection: Upgrade" \
         -H "Upgrade: websocket" \
         -H "Origin: http://localhost" \
@@ -91,7 +91,7 @@ curl -i -N -H "Connection: Upgrade" \
 ## <a name="websocket-health-probes"></a>WebSocket 健全狀況探查
 
 如果您的部署並未明確定義健康情況探查，應用程式閘道會嘗試在您的 WebSocket 伺服器端點上進行 HTTP GET。
-視伺服器的執行而定（[這裡是一個我們愛](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)用的），可能需要 WebSocket`Sec-Websocket-Version`特定的標頭（例如）。
-因為應用程式閘道不會新增 WebSocket 標頭，所以來自 WebSocket 伺服器的應用程式閘道健康情況探查回應很可能是`400 Bad Request`。
-因此應用程式閘道會將您的 pod 標示為狀況不良，最後會導致`502 Bad Gateway` WebSocket 伺服器取用者的。
-若要避免這種情況，您可能需要將健康狀態檢查的 HTTP GET 處理常式新增`/health`至您的伺服器（ `200 OK`例如，這會傳回）。
+視伺服器的執行而定（[這裡是一個我們愛](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)用的），可能需要 WebSocket 特定的標頭（ `Sec-Websocket-Version` 例如）。
+因為應用程式閘道不會新增 WebSocket 標頭，所以來自 WebSocket 伺服器的應用程式閘道健康情況探查回應很可能是 `400 Bad Request` 。
+因此應用程式閘道會將您的 pod 標示為狀況不良，最後會導致 `502 Bad Gateway` WebSocket 伺服器取用者的。
+若要避免這種情況，您可能需要將健康狀態檢查的 HTTP GET 處理常式新增至您的伺服器（ `/health` 例如，這會傳回 `200 OK` ）。

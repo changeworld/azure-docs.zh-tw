@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ffdf7a66c2562b43fc2ed02bb088ab1095118fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87c7eaa57f9da87bd83f89953afc09632d42b1f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416166"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213392"
 ---
 # <a name="using-stored-procedures-in-synapse-sql-pool"></a>在 Synapse SQL 集區中使用預存程式
 
@@ -72,7 +72,7 @@ GO
 EXEC prc_nesting
 ```
 
-SQL 集區目前不[支援@NESTLEVEL@](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 因此，您必須追蹤「嵌套」層級。 您不太可能會超過八個嵌套層級的限制。 但是，如果您這樣做，您必須重新修改程式碼，以符合此限制內的嵌套層級。
+SQL 集區目前不[支援 @NESTLEVEL @](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 因此，您必須追蹤「嵌套」層級。 您不太可能會超過八個嵌套層級的限制。 但是，如果您這樣做，您必須重新修改程式碼，以符合此限制內的嵌套層級。
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 

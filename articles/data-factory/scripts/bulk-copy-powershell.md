@@ -10,16 +10,16 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: efc79f82a2181099f832da0d4a17fc370bf4f7f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0fedd2a304c73347b7ec72818b5289c1df2e561
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74929857"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248594"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell 指令碼 - 使用 Azure Data Factory 來大量複製多個資料表
 
-這個範例 PowerShell 指令碼會將資料從 Azure SQL 資料庫中的多個資料表複製到 Azure SQL 資料倉儲。
+此範例 PowerShell 腳本會將資料從 Azure SQL Database 中的多個資料表複製到 Azure SQL 資料倉儲。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

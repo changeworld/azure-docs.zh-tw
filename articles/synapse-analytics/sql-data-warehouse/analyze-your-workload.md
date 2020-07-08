@@ -6,21 +6,21 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c547263be8c61d75491d1517b58c03b6365ef929
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631245"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208394"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中分析您的工作負載
 
-在 Azure Synapse Analytics 中分析 Synapse SQL 工作負載的技術。
+在 Azure Synapse Analytics 中分析 Synapse SQL 工作負載的技術。 
 
 ## <a name="resource-classes"></a>資源課程
 
@@ -107,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-`sys.dm_pdw_resource_waits` DMV 會顯示給定查詢的等候資訊。 資源等候時間會測量等待提供資源的時間。 「等候時間」是基礎 SQL 伺服器將查詢排程到 CPU 所花費的時間。
+`sys.dm_pdw_resource_waits`DMV 會顯示給定查詢的等候資訊。 資源等候時間會測量等待提供資源的時間。 「等候時間」是基礎 SQL 伺服器將查詢排程到 CPU 所花費的時間。
 
 ```sql
 SELECT  [session_id]
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>後續步驟
 
-如需管理資料庫使用者和安全性的詳細資訊，請參閱[在 SYNAPSE SQL 中保護資料庫](sql-data-warehouse-overview-manage-security.md)。 如需較大資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱 [重建索引以提升區段品質](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
+如需管理資料庫使用者和安全性的詳細資訊，請參閱[保護 Synapse SQL 中的資料庫](sql-data-warehouse-overview-manage-security.md)。 如需更大資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱[重建索引以改善區段品質](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。

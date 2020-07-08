@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 1675d63fd3a65beda46042f4a78535bb4e066e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c23e659463364c5e1a497ead138abb4c696627a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190239"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207493"
 ---
 # <a name="create-a-data-source"></a>建立資料來源
 
@@ -22,11 +22,52 @@ Azure 地圖服務 Web SDK 會將資料儲存在資料來源中。 使用資料�
 
 **GeoJSON 資料來源**
 
-以 GeoJSON 為基礎的資料來源會載入，並使用`DataSource`類別在本機儲存資料。 您可以使用 GeoJSON 資料，以[資料](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)命名空間中的 helper 類別手動建立或建立。 類別`DataSource`會提供用來匯入本機或遠端 GeoJSON 檔案的函式。 遠端 GeoJSON 檔必須裝載在啟用 CORs 的端點上。 `DataSource`類別會提供群集點資料的功能。 而且，您可以使用`DataSource`類別輕鬆地新增、移除和更新資料。
+以 GeoJSON 為基礎的資料來源會載入，並使用類別在本機儲存資料 `DataSource` 。 您可以使用 GeoJSON 資料，以[資料](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)命名空間中的 helper 類別手動建立或建立。 `DataSource`類別會提供用來匯入本機或遠端 GeoJSON 檔案的函式。 遠端 GeoJSON 檔必須裝載在啟用 CORs 的端點上。 `DataSource`類別會提供群集點資料的功能。 而且，您可以使用類別輕鬆地新增、移除和更新資料 `DataSource` 。 下列程式碼會示範如何在 Azure 地圖服務中建立 GeoJSON 資料。
 
+```Javascript
+//Create raw GeoJSON object.
+var rawGeoJson = {
+     "type": "Feature",
+     "geometry": {
+         "type": "Point",
+         "coordinates": [-100, 45]
+     },
+     "properties": {
+         "custom-property": "value"
+     }
+};
+
+//Create GeoJSON using helper classes (less error prone).
+var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
+    "custom-property": "value"
+}); 
+```
+
+建立之後，您可以透過 `map.sources` 屬性（ [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager)）將資料來源加入至對應。 下列程式碼示範如何建立 `DataSource` ，並將它加入至對應。
+
+```javascript
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
+```
+
+下列程式碼顯示 GeoJSON 資料可以加入至的不同方式 `DataSource` 。
+
+```Javascript
+//GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
+
+//Add geoJSON object to data source. 
+dataSource.add(geoJsonData);
+
+//Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
+dataSource.importDataFromUrl(geoJsonUrl);
+
+//Overwrite all data in data source.
+dataSource.setShapes(geoJsonData);
+```
 
 > [!TIP]
-> 讓我們假設您想要覆寫中的`DataSource`所有資料。 如果您對`clear` then `add`函式進行呼叫，對應可能會重新轉譯兩次，這可能會造成一些延遲。 `setShapes`請改用函式，此函式會移除並取代資料來源中的所有資料，而且只會觸發地圖的單一重新呈現。
+> 讓我們假設您想要覆寫中的所有資料 `DataSource` 。 如果您對 then 函式進行呼叫 `clear` `add` ，對應可能會重新轉譯兩次，這可能會造成一些延遲。 請改用函式，此函式 `setShapes` 會移除並取代資料來源中的所有資料，而且只會觸發地圖的單一重新呈現。
 
 **向量圖格來源**
 
@@ -37,15 +78,7 @@ Azure 地圖服務 Web SDK 會將資料儲存在資料來源中。 使用資料�
  - 變更向量對應中的資料樣式不需要再次下載資料，因為新的樣式可以套用至用戶端。 相反地，變更點陣磚圖層的樣式通常需要從伺服器載入磚，然後套用新的樣式。
  - 因為資料是以向量形式傳遞，所以準備資料需要較少的伺服器端處理。 因此，較新的資料可以更快速地提供。
 
-所有使用向量來源的圖層都必須指定`sourceLayer`一個值。
-
-建立之後，您可以透過`map.sources`屬性（ [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager)）將資料來源加入至對應。 下列程式碼示範如何建立`DataSource` ，並將它加入至對應。
-
-```javascript
-//Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
-```
+所有使用向量來源的圖層都必須指定一個 `sourceLayer` 值。
 
 Azure 地圖服務遵守[Mapbox Vector 磚規格](https://github.com/mapbox/vector-tile-spec)，這是一種開放標準。
 
@@ -124,7 +157,7 @@ map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-maps-typescript-latest)
+> [源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-maps-typescript-latest)
@@ -147,7 +180,7 @@ map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 > [新增符號圖層](map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [新增氣泡圖層](map-add-bubble-layer.md)
+> [新增泡泡圖層](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
 > [新增線條圖層](map-add-line-layer.md)

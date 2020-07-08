@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e96fc9af0aa4f362256a5f0fee9465441a1c3928
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408057"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210604"
 ---
 # <a name="data-warehouse-units-dwus"></a>資料倉儲單位（Dwu）
 
@@ -72,7 +72,7 @@ CREATE DATABASE mySQLDW
 
 DWU 和 cDWU 均支援將計算相應增加或減少，並且在您不需使用資料倉儲時暫停計算。 這些作業全都依需求指定。 Gen2 會使用計算節點上的本機磁碟型快取來改善效能。 當您調整或暫停系統時，快取就會失效，因此，需要一段快取準備時間，才能達到最佳效能。  
 
-每部 SQL 伺服器 (例如 myserver.database.windows.net) 都有[資料庫交易單位 (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 配額，允許有特定數目的資料倉儲單位。 如需詳細資訊，請參閱[工作負載管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
+每部 SQL 伺服器 (例如 myserver.database.windows.net) 都有[資料庫交易單位 (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 配額，允許有特定數目的資料倉儲單位。 如需詳細資訊，請參閱[工作負載管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
 
 ## <a name="capacity-limits"></a>容量限制
 
@@ -107,7 +107,7 @@ SQL DB 參與者和 SQL Server 參與者等 Azure 資源內建角色可以變更
 檢視目前的 DWU 設定：
 
 1. 在 Visual Studio 中開啟 [SQL Server 物件總管]。
-2. 連接到與邏輯 SQL Database 伺服器相關聯的 master 資料庫。
+2. 連接到與邏輯 SQL 伺服器相關聯的 master 資料庫。
 3. 從 sys.database_service_objectives 動態管理檢視中選取。 範例如下：
 
 ```sql
@@ -125,11 +125,11 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 若要變更 DWU：
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com)、開啟您的資料庫，然後按一下 [調整]  。
+1. 開啟 [Azure 入口網站](https://portal.azure.com)、開啟您的資料庫，然後按一下 [調整]。
 
-2. 在 [調整]  下方，將滑桿向左或右移動來變更 DWU 設定。
+2. 在 [調整] 下方，將滑桿向左或右移動來變更 DWU 設定。
 
-3. 按一下 [檔案]  。 確認訊息隨即出現。 按一下 [是]  以確認或 [否]  以取消。
+3. 按一下 [檔案] 。 確認訊息隨即出現。 按一下 [是] 以確認或 [否] 以取消。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -149,7 +149,7 @@ Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServi
 
 若要變更 DWU︰
 
-1. 連接到與您的邏輯 SQL Database 伺服器相關聯的 master 資料庫。
+1. 連接到與您的伺服器相關聯的 master 資料庫。
 2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL 陳述式。 下例範例會將資料庫 MySQLDW 的服務等級目標設定為 DW1000c。
 
 ```Sql
@@ -185,7 +185,7 @@ DWU 變更可能需要幾分鐘的時間才能完成。 如果正在進行自動
 
 檢查 DWU 變更的狀態：
 
-1. 連接到與您的邏輯 SQL Database 伺服器相關聯的 master 資料庫。
+1. 連接到與您的伺服器相關聯的 master 資料庫。
 2. 提交下列查詢以檢查資料庫狀態。
 
 ```sql

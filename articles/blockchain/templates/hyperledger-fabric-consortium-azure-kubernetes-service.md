@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes Service （AKS）上的 Hyperledger 網狀架構聯盟
 description: 如何在 Azure Kubernetes Service 上部署和設定 Hyperledger Fabric 聯盟網路
-ms.date: 01/08/2020
-ms.topic: article
-ms.reviewer: v-umha
-ms.openlocfilehash: da4ec99f1b9d73ab67a2312094feaa1a89aee394
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 06/04/2020
+ms.topic: how-to
+ms.reviewer: ravastra
+ms.openlocfilehash: e85d8c196afa5535d4d36ffdc03078e2046e4ca1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980215"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85209703"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service （AKS）上的 Hyperledger 網狀架構聯盟
 
@@ -190,7 +190,7 @@ CHANNEL_NAME=<channelName>
 > [!NOTE]
 > 根據聯盟中的對等組織數目，您可能需要重複執行對等命令，並據以設定環境變數。
 
-**設定下列環境變數來設定 azure 儲存體帳戶**
+**設定下列環境變數，以設定 Azure 儲存體帳戶**
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -200,7 +200,7 @@ STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
 ```
 
-請遵循下列步驟來建立 Azure 儲存體帳戶。 如果您已建立 azure 儲存體帳戶，請略過下列步驟
+請遵循下列步驟來建立 Azure 儲存體帳戶。 如果您已經建立 Azure 儲存體帳戶，請略過下列步驟
 
 ```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
@@ -208,7 +208,7 @@ az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
 ```
 
-請遵循下列步驟，以在 azure 儲存體帳戶中建立檔案共用。 如果您已經建立檔案共用，請略過下列步驟
+請遵循下列步驟，在 Azure 儲存體帳戶中建立檔案共用。 如果您已經建立檔案共用，請略過下列步驟
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
@@ -275,8 +275,8 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 
 `<anchorPeersList>`這是要設定為錨點對等節點的空格分隔清單。 例如，
 
-  - 如果`<anchorPeersList>`您只想要將 peer1 節點設定為錨點對等，請設定為 "peer1"。
-  - 如果`<anchorPeersList>`您想要將 peer1 和 peer3 節點設定為錨點對等，請設定為 "peer1" "peer3"。
+  - `<anchorPeersList>`如果您只想要將 peer1 節點設定為錨點對等，請設定為 "peer1"。
+  - `<anchorPeersList>`如果您想要將 peer1 和 peer3 節點設定為錨點對等，請設定為 "peer1" "peer3"。
 
 ### <a name="consortium-management-commands"></a>聯盟管理命令
 
@@ -284,12 +284,12 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 > 開始進行任何聯盟作業之前，請確定已完成用戶端應用程式的初始設定。  
 
 在指定的順序中執行下列命令，以在通道和聯盟中新增對等組織
-1.  從對等組織用戶端上傳 azure 儲存體上的對等組織 MSP
+1.  從對等組織用戶端上傳 Azure 儲存體上的對等組織 MSP
 
       ```bash
       ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
       ```
-2.  從排序者組織用戶端，從 azure 儲存體下載對等組織的 MSP，然後發出命令以在通道/聯盟中新增對等組織。
+2.  從排序者組織用戶端，從 Azure 儲存體下載對等組織的 MSP，然後發出命令，以在通道/聯盟中新增對等組織。
 
       ```bash
       ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
@@ -297,13 +297,13 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
       ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
       ```
 
-3.  從排序者組織用戶端上傳 azure 儲存體上的排序者連線設定檔，讓對等組織可以使用此連線設定檔連線到排序者節點
+3.  從排序者組織用戶端上傳 Azure 儲存體上的排序者連線設定檔，讓對等組織可以使用此連線設定檔連線到排序者節點
 
       ```bash
       ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
       ```
 
-4.  從對等組織用戶端，從 azure 儲存體下載排序者連線設定檔，然後發出命令以在通道中新增對等節點
+4.  從對等組織用戶端，從 Azure 儲存體下載排序者連線設定檔，然後發出命令以在通道中新增對等節點
 
       ```bash
       ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
@@ -358,8 +358,8 @@ CHANNEL_NAME=<channelName>
 
 請遵循下列步驟：  
 
-1.  將`ORGNAME`和`USER_IDENTITY`設定為每個 peerOrg1 `./azhlf chaincode install`和 issue 命令。  
-2.  將`ORGNAME`和`USER_IDENTITY`設定為每個 peerOrg2 `./azhlf chaincode install`和 issue 命令。  
+1.  將 `ORGNAME` 和設定 `USER_IDENTITY` 為每個 peerOrg1 和 issue `./azhlf chaincode install` 命令。  
+2.  將 `ORGNAME` 和設定 `USER_IDENTITY` 為每個 peerOrg2 和 issue `./azhlf chaincode install` 命令。  
 
 ### <a name="instantiate-chaincode"></a>具現化鏈碼  
 
@@ -368,7 +368,7 @@ CHANNEL_NAME=<channelName>
 ```bash
 ./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
 ```
-將具現化函數名稱和以`<instantiateFunc>`空格分隔的自`<instantiateFuncArgs>`變數清單分別傳入和。 例如，在 chaincode_example02. go 鏈碼中，將鏈碼設定`<instantiateFunc>`為`init`，並`<instantiateFuncArgs>`將其具現化為 "a" "2000" "b" "1000"。
+將具現化函數名稱和以空格分隔的引數清單 `<instantiateFunc>` 分別傳入和 `<instantiateFuncArgs>` 。 例如，在 chaincode_example02. go 鏈碼中，將鏈碼設定為，並將其具現化為 " `<instantiateFunc>` `init` `<instantiateFuncArgs>` a" "2000" "b" "1000"。
 
 > [!NOTE]
 > 從通道中的任何一個對等組織執行一次命令。 交易成功提交至排序者後，排序者會將此交易散發給通道中的所有對等組織。 因此，鏈碼會在通道中的所有對等組織的所有對等節點上具現化。  
@@ -382,7 +382,7 @@ CHANNEL_NAME=<channelName>
 ./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-分別傳遞 invoke 函式名稱和以 `<invokeFunction>`  `<invokeFuncArgs>`空格分隔的引數清單。  繼續進行 chaincode_example02。 go 鏈碼範例，以執行將設定為 `<invokeFunction>`  `invoke` 的叫用 `<invokeFuncArgs>` 作業，並將其設為 "a" "b" "10"。  
+分別傳遞 invoke 函式名稱和以空格分隔的引數清單  `<invokeFunction>`    `<invokeFuncArgs>`   。 繼續進行 chaincode_example02。 go 鏈碼範例，以執行將設定為的叫用作業，並將其設為 "  `<invokeFunction>`    `invoke`    `<invokeFuncArgs>`   a" "b" "10"。  
 
 >[!NOTE]
 > 從通道中的任何一個對等組織執行一次命令。 交易成功提交至排序者後，排序者會將此交易散發給通道中的所有對等組織。 因此，在通道中所有對等組織的所有對等節點上都會更新世界狀態。  
@@ -395,7 +395,7 @@ CHANNEL_NAME=<channelName>
 ```bash
 ./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
 ```
-分別 `<queryFunction>` 在和 `<queryFuncArgs>` 中傳遞查詢函式名稱和以空格分隔的引數清單。 同樣地，將 chaincode_example02 做為參考，以查詢全球狀態中 "a" 的值，並 `<queryFunction>`    `<queryArgs>`設定為 `query` "a"。  
+分別在和中傳遞查詢函式名稱和以空格分隔的引數清單  `<queryFunction>`    `<queryFuncArgs>`   。 同樣地，將 chaincode_example02 做為參考，以查詢全球狀態中 "a" 的值，並設定  `<queryFunction>`   為  `query`  `<queryArgs>` "a"。  
 
 ## <a name="troubleshoot"></a>疑難排解
 
@@ -418,3 +418,17 @@ SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```
+
+## <a name="support-and-feedback"></a>支援與意見反應
+
+如需 Azure 區塊鏈服務消息，請瀏覽 [Azure 區塊鏈服務部落格](https://azure.microsoft.com/blog/topics/blockchain/)，即時掌握 Azure 區塊鏈服務工程小組提供的區塊鏈服務供應項目和最新資訊。
+
+若要提供產品意見反應或要求新功能，請透過 [Azure 區塊鏈服務的意見反應論壇](https://aka.ms/blockchainuservoice) \(英文\) 張貼或票選想法。
+
+### <a name="community-support"></a>社群支援
+
+洽詢 Microsoft 工程師和 Azure 區塊鏈服務社群專家。
+
+- [Microsoft Q&Azure 區塊鏈 Service 的問題頁面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 區塊鏈範本的工程支援僅限於部署問題。
+- [Microsoft 技術社群](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

@@ -4,23 +4,23 @@ description: 如何使用 PowerShell Cmdlet 自訂 Windows 虛擬桌面的 RDP �
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 04/30/2020
+ms.topic: how-to
+ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 66b76fcdd9729b2a92ea2d561c740dbe148e0bbe
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9bc2116120f05db9cad63cc945df0ea4367fc3a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207204"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>自訂主機集區的遠端桌面通訊協定屬性
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。 如果您使用的是 Windows 虛擬桌面不含 Azure Resource Manager 物件的2019版，請參閱[這篇文章](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
 >
-> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 自訂主機集區的遠端桌面通訊協定（RDP）內容，例如多監視器體驗和音訊重新導向，可讓您根據自己的需求為使用者提供最佳的體驗。 您可以使用 Azure 入口網站或在**AzWvdHostPool** Cmdlet 中使用 *-CustomRdpProperty*參數，在 WINDOWS 虛擬桌面中自訂 RDP 屬性。
@@ -29,7 +29,7 @@ ms.locfileid: "82611546"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-開始之前，請依照[設定 Windows 虛擬桌面 powershell 模組](powershell-module.md)中的指示來設定您的 powershell 模組，並登入 Azure。
+開始之前，請依照[設定 Windows 虛擬桌面 PowerShell 模組](powershell-module.md)中的指示來設定您的 PowerShell 模組，並登入 Azure。
 
 ## <a name="default-rdp-properties"></a>預設 RDP 屬性
 
@@ -37,7 +37,7 @@ ms.locfileid: "82611546"
 
 |RDP 屬性 | 桌上型電腦 | RemoteApps |
 |---|---| --- |
-| 多監視器模式 | 啟用 | N/A |
+| 多監視器模式 | 已啟用 | N/A |
 | 磁片磁碟機重新導向已啟用 | 磁片磁碟機、剪貼簿、印表機、COM 埠、USB 裝置和智慧卡| 磁片磁碟機、剪貼簿和印表機 |
 | 遠端音訊模式 | 在本機播放 | 在本機播放 |
 
@@ -53,10 +53,10 @@ ms.locfileid: "82611546"
 4. 在 [Windows 虛擬桌面] 頁面上，選取畫面左側功能表中的 [**主機**集區]。
 5. 選取您想要更新的**主機集區名稱**。
 6. 選取畫面左側功能表中的 [**屬性**]。
-7. 選取 [ **rdp 設定**] 以開始編輯 rdp 屬性。
+7. **在 [內容**] 索引標籤上，移至 [ **rdp 設定**] 以開始編輯 rdp 屬性。 屬性應使用逗號分隔格式，例如 PowerShell 範例。
 8. 當您完成時，請選取 [**儲存**] 以儲存變更。
 
-如果您想要編輯的設定不會出現在 [RDP 設定] 功能表中，您必須在 PowerShell 中執行 Cmdlet 來手動編輯它。 下一節將告訴您如何在 PowerShell 中手動編輯自訂 RDP 屬性。
+下一節將告訴您如何在 PowerShell 中手動編輯自訂 RDP 屬性。
 
 ## <a name="add-or-edit-a-single-custom-rdp-property"></a>新增或編輯單一自訂 RDP 屬性
 
@@ -89,14 +89,14 @@ CustomRdpProperty : audiocapturemode:i:1;
 若要新增或編輯多個自訂 RDP 屬性，請將自訂 RDP 屬性提供為以分號分隔的字串，以執行下列 PowerShell Cmdlet：
 
 ```powershell
-$properties="<property1>;<property2>;<property3>" 
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -CustomRdpProperty $properties 
+$properties="<property1>;<property2>;<property3>"
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -CustomRdpProperty $properties
 ```
 
 您可以藉由執行下列 Cmdlet，檢查並確定已新增 RDP 屬性：
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty
 
 Name              : <hostpoolname>
 CustomRdpProperty : <customRDPpropertystring>
@@ -105,9 +105,9 @@ CustomRdpProperty : <customRDPpropertystring>
 根據先前的 Cmdlet 範例，如果您在0301HP 主機集區上設定多個 RDP 屬性，您的 Cmdlet 會如下所示：
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName 0301rg -Name 0301hp | format-list Name, CustomRdpProperty 
+Get-AzWvdHostPool -ResourceGroupName 0301rg -Name 0301hp | format-list Name, CustomRdpProperty
 
-Name              : 0301HP 
+Name              : 0301HP
 CustomRdpProperty : audiocapturemode:i:1;audiomode:i:0;
 ```
 
@@ -122,9 +122,9 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 若要確定您已成功移除設定，請輸入下列 Cmdlet：
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty
 
-Name              : <hostpoolname> 
+Name              : <hostpoolname>
 CustomRdpProperty : <CustomRDPpropertystring>
 ```
 

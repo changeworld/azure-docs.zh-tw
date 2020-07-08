@@ -4,23 +4,23 @@ description: 如何安裝及設定適用於 Windows 虛擬桌面的 PowerShell �
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fd854691203361847ae9a6c873121c9b66820a90
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 67276f7dedccc20fb768e717c237d04aa4b4a1cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212746"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>設定適用於 Windows 虛擬桌面的 PowerShell 模組
 
 >[!IMPORTANT]
 >此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。
 >
-> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
+> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Windows 虛擬桌面 PowerShell 模組已整合至 Azure PowerShell 模組。 此文章將會說明如何設定 PowerShell 模組，使您可以針對 Windows 虛擬桌面執行 Cmdlet。
@@ -66,7 +66,8 @@ Youradminupn subscriptionname AzureADTenantID AzureCloud
 Select-AzSubscription -Subscription <preferredsubscriptionname>
 ```
 
-您也可以使用 Out-GridView Cmdlet 來從清單中選取一個：
+您也可以使用 Out-GridView Cmdlet 從清單中選取一個：
+
 ```powershell
 Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription
 ```

@@ -6,17 +6,17 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d680283250cc323c833f388f6b20d7fe6fa132d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211046"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 來管理 Azure Synapse Analytics SQL 集區中的計算資源
 
@@ -29,7 +29,7 @@ ms.locfileid: "80631954"
 部署此範本，您需要下列資訊：
 
 - 您的 SQL 集區實例所在的資源組名
-- 您的 SQL 集區實例所在的邏輯伺服器名稱
+- 您的 SQL 集區實例所在的伺服器名稱
 - SQL 集區實例的名稱
 - Azure Active Directory 的租用戶識別碼 (目錄識別碼)
 - 訂用帳戶識別碼
@@ -101,7 +101,7 @@ ms.locfileid: "80631954"
 
    ![建立新的函式](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. 從 [語言] 中選取 Javascript**，然後選取 TimerTrigger**。
+2. 從 [語言] 選取 [ *JavaScript*]，然後選取 [ *TimerTrigger*]。
 
    ![建立新的函式](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "80631954"
 
 5. 將作業變數設定為所要的行為，如下所示：
 
-   ```javascript
+   ```JavaScript
    // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
@@ -141,7 +141,7 @@ ms.locfileid: "80631954"
 
 每天上午 8 點相應增加至 DW600，在下午 8 點相應減少至 DW200。
 
-| 函式  | 排程     | 作業                                |
+| 函式  | 排程     | 操作                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
@@ -150,7 +150,7 @@ ms.locfileid: "80631954"
 
 每天上午 8 點相應增加至 DW1000、在下午 4 點一度相應減少至 DW600，並在下午 10 點相應減少至 DW200。
 
-| 函式  | 排程     | 作業                                |
+| 函式  | 排程     | 操作                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
@@ -160,7 +160,7 @@ ms.locfileid: "80631954"
 
 在工作日的上午 8 點相應增加至 DW1000，在下午 4 點一度相應減少至 DW600。 在星期五晚上 11 點暫停，在星期一上午 7 點繼續。
 
-| 函式  | 排程       | 作業                                |
+| 函式  | 排程       | 操作                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |

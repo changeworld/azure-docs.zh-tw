@@ -5,18 +5,18 @@ services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: bb5560164af2b573e6aaffd4e4c62bbe0dc24a51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d66a1174b1b4adc94b24c6aecd55b2b8679f2f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80350415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211879"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>如何監視 Gen2 快取
 
@@ -44,7 +44,7 @@ ms.locfileid: "80350415"
 
 |                                | **高快取命中百分比** | **低快取命中百分比** |
 | :----------------------------: | :---------------------------: | :--------------------------: |
-| **高已用快取百分比** |          實例 1           |          案例 2          |
+| **高已用快取百分比** |          案例 1           |          案例 2          |
 | **低已用快取百分比**  |          案例 3           |          案例 4          |
 
 **案例 1：** 您充分使用快取。 針對可能會減緩查詢速度的其他區域[進行疑難排解](sql-data-warehouse-manage-monitor.md)。

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 05/20/2020
+ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7bf05fe039de2ab9e25495f9e2652fde8fac34e1
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 56a31caeefb3589527fdbbac118fa3a544a0d1a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747707"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208888"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虛擬桌面服務連線
 
@@ -33,15 +33,17 @@ ms.locfileid: "83747707"
 
 使用者可以啟動遠端桌面用戶端，而且能夠進行驗證，不過使用者在 Web 探索摘要中看不到任何圖示。
 
-使用下列命令列，確認已將回報問題的使用者指派給應用程式群組：
+1. 使用下列命令列，確認已將回報問題的使用者指派給應用程式群組：
 
-```PowerShell
-Get-AzRoleAssignment -SignInName <userupn>
-```
+     ```powershell
+     Get-AzRoleAssignment -SignInName <userupn>
+     ```
 
-確認使用者是以正確的認證進行登入。
+2. 確認使用者是以正確的認證進行登入。
 
-如果正在使用 Web 用戶端，請確認沒有任何快取的認證問題。
+3. 如果正在使用 Web 用戶端，請確認沒有任何快取的認證問題。
+
+4. 如果使用者是 Azure Active Directory （AD）使用者群組的一部分，請確定使用者群組是安全性群組，而不是通訊群組。 Windows 虛擬桌面不支援 Azure AD 通訊群組。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -49,4 +51,4 @@ Get-AzRoleAssignment -SignInName <userupn>
 - 若要針對在 Windows 虛擬桌面環境中建立 Windows 虛擬桌面環境和主機集區時的問題進行疑難排解，請參閱[環境和主機集區建立](troubleshoot-set-up-issues.md)。
 - 若要針對在 Windows 虛擬桌面中設定虛擬機器 (VM) 時的問題進行疑難排解，請參閱[工作階段主機虛擬機器設定](troubleshoot-vm-configuration.md)。
 - 若要針對使用 PowerShell 搭配 Windows 虛擬桌面時的問題進行疑難排解，請參閱 [Windows 虛擬桌面 PowerShell](troubleshoot-powershell.md)。
-- 若要進行疑難排解教學課程，請參閱[教學課程：對 Resource Manager 範本部署進行疑難排解](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
+- 若要進行疑難排解教學課程，請參閱[教學課程：針對 Resource Manager 範本部署進行疑難排解](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。

@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0139c581e6660622f1ab6db9f407725816377a6d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7fa9336a7a90ab73d3dc60c6c865ebadfb2af1e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213494"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>優化 Synapse SQL 中的交易
 
@@ -45,7 +45,7 @@ ms.locfileid: "80633571"
 
 下列作業也能以最低限度記錄︰
 
-* CREATE TABLE AS SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
+* CREATE TABLE AS SELECT （[CTAS](sql-data-warehouse-develop-ctas.md)）
 * INSERT..SELECT
 * CREATE INDEX
 * ALTER INDEX REBUILD
@@ -69,11 +69,11 @@ CTAS 和 INSERT...SELECT 都是大量載入作業。 不過，兩者都會受到
 
 | 主要索引 | 載入案例 | 記錄模式 |
 | --- | --- | --- |
-| 堆積 |任意 |**最小** |
-| 叢集索引 |空的目標資料表 |**最小** |
-| 叢集索引 |載入的資料列不會與目標中的現有頁面重疊 |**最小** |
+| 堆積 |任意 |**最低限度** |
+| 叢集索引 |空的目標資料表 |**最低限度** |
+| 叢集索引 |載入的資料列不會與目標中的現有頁面重疊 |**最低限度** |
 | 叢集索引 |載入的資料列會與目標中的現有頁面重疊 |完整 |
-| 叢集資料行存放區索引 |每個與分割對齊的散發套件之批次大小 >= 102,400 |**最小** |
+| 叢集資料行存放區索引 |每個與分割對齊的散發套件之批次大小 >= 102,400 |**最低限度** |
 | 叢集資料行存放區索引 |批次大小 < 每個與分割對齊的散發套件 102,400 |完整 |
 
 值得注意的是任何更新次要或非叢集索引的寫入一定是完整記錄作業。
@@ -85,7 +85,7 @@ CTAS 和 INSERT...SELECT 都是大量載入作業。 不過，兩者都會受到
 
 ## <a name="optimizing-deletes"></a>最佳化刪除
 
-DELETE 作業會有完整的記錄。  如果您需要刪除資料表或分割中的大量資料，比較理想的做法通常是 `SELECT` 您想要保留的資料，這可以最低限度記錄作業來執行。  若要選取資料，請使用 [CTAS](sql-data-warehouse-develop-ctas.md) 建立新的資料表。  建立之後，請使用 [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 來交換您的舊資料表與新建立的資料表。
+DELETE 作業會有完整的記錄。  如果您需要刪除資料表或分割中的大量資料，比較理想的做法通常是 `SELECT` 您想要保留的資料，這可以最低限度記錄作業來執行。  若要選取資料，請使用 [CTAS](sql-data-warehouse-develop-ctas.md) 建立新的資料表。  建立之後，請使用 [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以新建立的資料表置換舊資料表。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -117,7 +117,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 
 ## <a name="optimizing-updates"></a>最佳化更新
 
-UPDATE 作業會有完整的記錄。  如果您需要更新資料表或資料分割中的大量資料列，使用最低限度記錄作業（例如[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ）來執行這項操作，通常會更有效率。
+UPDATE 作業會有完整的記錄。  如果您需要更新資料表或分割區中的大量資料列，通常使用只有最少記錄的作業 (例如 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)) 會有效率得多。
 
 在下方的範例中，完整的資料表更新已轉換成 CTAS，以便進行最低限度的記錄。
 
@@ -407,14 +407,14 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>暫停和調整指引
 
-Synapse SQL 可讓您視需要[暫停、繼續及調整](sql-data-warehouse-manage-compute-overview.md)您的 SQL 集區。 當您暫停或調整您的 SQL 集區時，請務必瞭解任何進行中的交易都會立即終止;導致任何開啟的交易回復。 如果您的工作負載在暫停或調整作業之前發出長時間執行且不完整的資料修改，則這項工作必須復原。 這種復原可能會影響暫停或調整 SQL 集區所需的時間。
+Synapse SQL 可讓您視需要[暫停、繼續及調整](sql-data-warehouse-manage-compute-overview.md)您的 SQL 集區。 當您暫停或調整您的 SQL 集區時，請務必了解任何進行中的交易都會立即終止；導致所有開放的交易都會復原。 如果您的工作負載在暫停或調整作業之前發出長時間執行且不完整的資料修改，則這項工作必須復原。 此復原作業可能會影響暫停或調整 SQL 集區的時間。
 
 > [!IMPORTANT]
 > `UPDATE` 和 `DELETE` 都是完整記錄作業，因此這些復原/重做作業花費的時間可能會比對等的最低限度記錄作業長很多。
 
-最佳案例是讓進行中的資料修改交易在暫停或調整 SQL 集區之前完成。 但是，此案例不一定都可行。 若要降低長時間回復的風險，請考慮下列其中一個選項：
+最佳案例是在暫停或調整 SQL 集區之前，讓進行中的資料修改交易完成。 但是，此案例不一定都可行。 若要降低長時間回復的風險，請考慮下列其中一個選項：
 
-* 使用[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)重寫長時間執行的作業
+* 請使用 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 重新撰寫長期執行的作業
 * 將作業分成多個區塊；在資料列子集上運作
 
 ## <a name="next-steps"></a>後續步驟

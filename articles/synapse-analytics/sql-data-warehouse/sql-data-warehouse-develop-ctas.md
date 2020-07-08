@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 8e1b75dfc6a979956ff4a2868027bb769bf7c4ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6550ff9bc3a7cec3d9c50b6c60a02ef1af851f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633540"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213477"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS)
 
@@ -38,7 +38,7 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-選取 .。。INTO 不允許您變更散發方法或索引類型做為作業的一部分。 您可以`[dbo].[FactInternetSales_new]`使用 ROUND_ROBIN 的預設散發類型，以及叢集資料行存放區索引的預設資料表結構來建立。
+選取 .。。INTO 不允許您變更散發方法或索引類型做為作業的一部分。 您可以 `[dbo].[FactInternetSales_new]` 使用 ROUND_ROBIN 的預設散發類型，以及叢集資料行存放區索引的預設資料表結構來建立。
 
 另一方面，使用 CTAS，您可以同時指定資料表資料的分佈，以及資料表結構類型。 若要將上一個範例轉換為 CTAS：
 
@@ -59,9 +59,9 @@ FROM    [dbo].[FactInternetSales];
 
 ## <a name="use-ctas-to-copy-a-table"></a>使用 CTAS 複製資料表
 
-最常見的 CTAS 使用方式之一，就是建立資料表的複本，以便變更 DDL。 假設您最初已將資料表建立為`ROUND_ROBIN`，而現在想要將它變更為在資料行上散發的資料表。 CTAS 是變更散發資料行的方式。 您也可以使用 CTAS 來變更資料分割、索引或資料行類型。
+最常見的 CTAS 使用方式之一，就是建立資料表的複本，以便變更 DDL。 假設您最初已將資料表建立為 `ROUND_ROBIN` ，而現在想要將它變更為在資料行上散發的資料表。 CTAS 是變更散發資料行的方式。 您也可以使用 CTAS 來變更資料分割、索引或資料行類型。
 
-假設您是使用的預設散發類型建立此資料表`ROUND_ROBIN`，而不是在中指定散發資料行。 `CREATE TABLE`
+假設您是使用的預設散發類型建立此資料表 `ROUND_ROBIN` ，而不是在中指定散發資料行 `CREATE TABLE` 。
 
 ```sql
 CREATE TABLE FactInternetSales
@@ -91,7 +91,7 @@ CREATE TABLE FactInternetSales
     CustomerPONumber nvarchar(25));
 ```
 
-現在您想要使用`Clustered Columnstore Index`建立這個資料表的新複本，讓您可以利用叢集資料行存放區資料表的效能。 您也想要在上`ProductKey`散發此資料表，因為您預期會在此資料行上進行聯結，而且想要避免`ProductKey`在聯結期間的資料移動。 最後，您也想要在上`OrderDateKey`新增資料分割，因此您可以藉由卸載舊的磁碟分割來快速刪除舊的資料。 以下是 CTAS 語句，它會將您的舊資料表複製到新的資料表中。
+現在您想要使用建立這個資料表的新複本，讓您可以利用叢集資料行存放區 `Clustered Columnstore Index` 資料表的效能。 您也想要在上散發此資料表 `ProductKey` ，因為您預期會在此資料行上進行聯結，而且想要避免在聯結期間的資料移動 `ProductKey` 。 最後，您也想要在上新增 `OrderDateKey` 資料分割，因此您可以藉由卸載舊的磁碟分割來快速刪除舊的資料。 以下是 CTAS 語句，它會將您的舊資料表複製到新的資料表中。
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-Synapse SQL 在`FROM` `UPDATE`語句的子句中不支援 ANSI 聯結，因此您無法在不修改的情況下使用先前的範例。
+Synapse SQL 在語句的子句中不支援 ANSI 聯結 `FROM` `UPDATE` ，因此您無法在不修改的情況下使用先前的範例。
 
 您可以使用 CTAS 和隱含聯結的組合來取代先前的範例：
 
@@ -208,9 +208,9 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>delete 陳述式的 ANSI 聯結取代
 
-有時候刪除資料的最佳方法是使用 CTAS，特別是使用 ANSI `DELETE`聯結語法的語句。 這是因為 Synapse SQL 在`FROM` `DELETE`語句的子句中不支援 ANSI 聯結。 請選取您想要保留的資料，而不是刪除資料。
+有時候刪除資料的最佳方法是使用 CTAS，特別是 `DELETE` 使用 ANSI 聯結語法的語句。 這是因為 Synapse SQL 在語句的子句中不支援 ANSI 聯結 `FROM` `DELETE` 。 請選取您想要保留的資料，而不是刪除資料。
 
-以下是已轉換`DELETE`的語句範例：
+以下是已轉換的 `DELETE` 語句範例：
 
 ```sql
 CREATE TABLE dbo.DimProduct_upsert
@@ -232,9 +232,9 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 
 ## <a name="replace-merge-statements"></a>取代 merge 陳述式
 
-您可以使用 CTAS 來取代 merge 語句（至少在部分中）。 您可以將`INSERT`和合併`UPDATE`成單一語句。 所有已刪除的記錄都應該限制`SELECT`在語句中，以便從結果中省略。
+您可以使用 CTAS 來取代 merge 語句（至少在部分中）。 您可以將 `INSERT` 和合併 `UPDATE` 成單一語句。 所有已刪除的記錄都應該限制在語句中， `SELECT` 以便從結果中省略。
 
-下列範例適用于`UPSERT`：
+下列範例適用于 `UPSERT` ：
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -387,7 +387,7 @@ FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
-查詢可以順利執行。 當您嘗試執行資料分割切換時，就會發生此問題。 資料表定義不相符。 若要讓資料表定義相符，請修改 CTAS 來加入`ISNULL`函數，以保留資料行的可為 null 屬性。
+查詢可以順利執行。 當您嘗試執行資料分割切換時，就會發生此問題。 資料表定義不相符。 若要讓資料表定義相符，請修改 CTAS 來加入 `ISNULL` 函數，以保留資料行的可為 null 屬性。
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]

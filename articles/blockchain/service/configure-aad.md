@@ -2,14 +2,14 @@
 title: 設定 Azure Active Directory 存取-Azure 區塊鏈 Service
 description: 如何使用 Azure Active Directory 存取來設定 Azure 區塊鏈 Service
 ms.date: 11/22/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 682ab282036fcd592e66942d08a84cdce46d8915
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74455864"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208768"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>如何設定 Azure 區塊鏈 Service 的 Azure Active Directory 存取
 
@@ -17,7 +17,7 @@ ms.locfileid: "74455864"
 
 Azure AD 提供以雲端為基礎的身分識別管理，並可讓您在整個企業中使用單一身分識別，並存取 Azure 中的應用程式。 Azure 區塊鏈 Service 已與 Azure AD 整合，並提供識別碼同盟、單一登入和多重要素驗證等優點。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [使用 Azure 入口網站建立區塊鏈成員](create-member.md)
 
@@ -41,7 +41,7 @@ Azure AD 提供以雲端為基礎的身分識別管理，並可讓您在整個�
 
     ![新增角色指派](./media/configure-aad/add-role-assignment.png)
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ### <a name="grant-node-level-access"></a>授與節點層級存取權
 
@@ -63,7 +63,7 @@ git clone https://github.com/Microsoft/azure-blockchain-connector.git
 
 ### <a name="connect-using-an-azure-ad-user-account"></a>使用 Azure AD 使用者帳戶連接
 
-1. 執行下列命令，以使用 Azure AD 使用者帳戶進行驗證。 將\<myAADDirectory\>取代為 Azure AD 網域。 例如： `yourdomain.onmicrosoft.com` 。
+1. 執行下列命令，以使用 Azure AD 使用者帳戶進行驗證。 取代 \<myAADDirectory\> 為 Azure AD 網域。 例如： `yourdomain.onmicrosoft.com` 。
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
@@ -87,7 +87,7 @@ git clone https://github.com/Microsoft/azure-blockchain-connector.git
 connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myClientID> -client-secret "<myClientSecret>" -tenant-id <myAADDirectory>
 ```
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |-----------|-------------|
 | 租使用者識別碼 | Azure AD 網域，例如`yourdomain.onmicrosoft.com`
 | client-id | 中已註冊應用程式的用戶端識別碼 Azure AD
@@ -99,7 +99,7 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 若為行動裝置或以文字為基礎的瀏覽器，其中不可能 Azure AD 驗證快顯顯示，Azure AD 會產生一次性密碼。 您可以複製密碼，然後在另一個環境中 Azure AD 驗證繼續進行。
 
-若要產生密碼，請將**aadauthcode**取代為**aaddevice**。 將\<myAADDirectory\>取代為 Azure AD 網域。 例如： `yourdomain.onmicrosoft.com` 。
+若要產生密碼，請將**aadauthcode**取代為**aaddevice**。 取代 \<myAADDirectory\> 為 Azure AD 網域。 例如 `yourdomain.onmicrosoft.com`。
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>

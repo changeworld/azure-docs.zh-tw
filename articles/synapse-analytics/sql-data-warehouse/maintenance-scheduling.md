@@ -6,16 +6,16 @@ author: antvgski
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43fc32e910c51e8b70e15aa49584a18e5b703fca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c5bc4400e99fb1c24e321e623aaee523b9c7383
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631597"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210978"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用維護排程管理服務更新和維護
 
@@ -88,7 +88,7 @@ ms.locfileid: "80631597"
 
    刀鋒視窗底部的 [排程摘要]**** 區域會根據所選取的值來更新。
   
-5. 選取 [儲存]  。 隨即出現一則訊息，確認您的新排程目前為作用中。
+5. 選取 [儲存]。 隨即出現一則訊息，確認您的新排程目前為作用中。
 
    如果您將排程儲存於不支援維護排程的區域中，即會出現下列訊息。 您的設定已儲存，並在功能於您選取的區域中成為可用時變成作用中。
 

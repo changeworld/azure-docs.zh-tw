@@ -2,14 +2,14 @@
 title: 使用 Azure Blockchain Workbench REST Api
 description: 如何使用 Azure Blockchain Workbench 預覽 REST API 的案例
 ms.date: 03/05/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 3084fcf343bc42fe01bf352b6791916d62f63540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c96e45c8bcc9834df7ef2a0b2a59f53fd8315cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672740"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210057"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>使用 Azure Blockchain Workbench 預覽 REST API
 

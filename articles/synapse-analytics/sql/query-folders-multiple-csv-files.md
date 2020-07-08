@@ -1,51 +1,32 @@
 ---
-title: 使用 SQL 隨選查詢資料夾和多個 CSV 檔案（預覽）
+title: 使用 SQL 隨選查詢資料夾和多個檔案（預覽）
 description: SQL 隨選（預覽）支援使用萬用字元讀取多個檔案/資料夾，這類似于 Windows 作業系統中使用的萬用字元。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8f8af7fab7113e38b91c3f5f1bcc41b4e4fba2c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457360"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207626"
 ---
-# <a name="query-folders-and-multiple-csv-files"></a>查詢資料夾和多個 CSV 檔案  
+# <a name="query-folders-and-multiple-files"></a>查詢資料夾和多個檔案  
 
-在本文中，您將瞭解如何使用 Azure Synapse 分析中的 SQL 隨選（預覽）來撰寫查詢。
+本文會說明如何在 Azure Synapse Analytics 中使用 SQL 隨選 (預覽) 來寫入查詢。
 
 SQL 隨選支援使用萬用字元讀取多個檔案/資料夾，這類似于 Windows 作業系統中使用的萬用字元。 不過，因為允許多個萬用字元，所以有更大的彈性。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-閱讀本文的其餘部分之前，請務必先參閱下列文章：
+您的第一個步驟是**建立資料庫**，您將在其中執行查詢。 然後在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
 
-- [第一次設定](query-data-storage.md#first-time-setup)
-- [先決條件](query-data-storage.md#prerequisites)
-
-## <a name="read-multiple-files-in-folder"></a>讀取資料夾中的多個檔案
-
-您將使用*csv/計程車*資料夾來遵循範例查詢。 其中包含 NYC 計程車-黃色計程車旅程記錄資料，從2016年7月到6月2018。
-
-*Csv/計程車*中的檔案會以年和月命名：
-
-- yellow_tripdata_2016-07 .csv
-- yellow_tripdata_2016 2018 .csv
-- yellow_tripdata_2016-09 .csv
-- ...
-- yellow_tripdata_2018-04 .csv
-- yellow_tripdata_2018-05 .csv
-- yellow_tripdata_2018 06-01.5.1 .csv
-
-每個檔案都有下列結構：
-        
-    [First 10 rows of the CSV file](./media/querying-folders-and-multiple-csv-files/nyc-taxi.png)
+您將使用*csv/計程車*資料夾來遵循範例查詢。 其中包含 NYC 計程車-黃色計程車旅程記錄資料，從2016年7月到6月2018。 *Csv/計程車*中的檔案會使用下列模式，以年和月命名： yellow_tripdata_ <year> - <month> .csv
 
 ## <a name="read-all-files-in-folder"></a>讀取資料夾中的所有檔案
     
@@ -57,28 +38,14 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/*.*',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
-        pickup_datetime DATETIME2, 
-        dropoff_datetime DATETIME2,
-        passenger_count INT,
-           trip_distance FLOAT,
-        rate_code INT,
-        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-           payment_type INT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        pickup_datetime DATETIME2 2, 
+        passenger_count INT 4
     ) AS nyc
 GROUP BY
     YEAR(pickup_datetime)
@@ -98,28 +65,14 @@ SELECT
     payment_type,  
     SUM(fare_amount) AS fare_total
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/yellow_tripdata_2017-*.csv',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
-        pickup_datetime DATETIME2, 
-        dropoff_datetime DATETIME2,
-        passenger_count INT,
-        trip_distance FLOAT,
-        rate_code INT,
-        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-        payment_type INT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        payment_type INT 10,
+        fare_amount FLOAT 11
     ) AS nyc
 GROUP BY payment_type
 ORDER BY payment_type;
@@ -147,8 +100,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
@@ -184,7 +138,7 @@ ORDER BY
 您可以使用萬用字元，從多個資料夾讀取檔案。 下列查詢會從*csv*資料夾中名稱開頭為*t*並以*i*結尾的所有資料夾讀取所有檔案。
 
 > [!NOTE]
-> 請注意下列查詢中，路徑結尾是否有/。 它代表一個資料夾。 如果省略/，查詢將會以名為*t&ast;i*的檔案作為目標。
+> 請注意下列查詢中，路徑結尾是否有/。 它代表一個資料夾。 如果省略/，查詢將會以名為*t &ast; i*的檔案作為目標。
 
 ```sql
 SELECT
@@ -192,8 +146,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/t*i/', 
-        FORMAT = 'CSV', 
+        BULK 'csv/t*i/', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
@@ -231,7 +186,7 @@ ORDER BY
 您可以在不同的路徑層級上使用多個萬用字元。 例如，您可以擴充先前的查詢，以讀取只有2017資料的檔案，從所有名稱開頭為*t*並以*i*結尾的資料夾。
 
 > [!NOTE]
-> 請注意下列查詢中，路徑結尾是否有/。 它代表一個資料夾。 如果省略/，查詢將會以名為*t&ast;i*的檔案作為目標。
+> 請注意下列查詢中，路徑結尾是否有/。 它代表一個資料夾。 如果省略/，查詢將會以名為*t &ast; i*的檔案作為目標。
 > 每個查詢的最大限制為10個萬用字元。
 
 ```sql
@@ -240,8 +195,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/t*i/yellow_tripdata_2017-*.csv',
-        FORMAT = 'CSV', 
+        BULK 'csv/t*i/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (

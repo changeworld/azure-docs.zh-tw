@@ -6,17 +6,17 @@ author: anumjs
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b4fbfb65a609742105056fa7fb849f84579245cb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 33cc0c33f90d68ac3396f1366d4ff8437563eda1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650496"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213885"
 ---
 # <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Synapse SQL 集區連線問題疑難排解
 
@@ -50,11 +50,11 @@ ms.locfileid: "83650496"
 
 ## <a name="check-your-firewall-settings"></a>檢查防火牆設定
 
-SQL 集區資料庫會透過連接埠 1433 通訊。  如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 在此情況下，除非 IT 部門開啟連接埠 1433，否則您無法連線至 Azure SQL Database 伺服器。 您可以在[這裡](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)找到防火牆組態的其他資訊。
+SQL 集區資料庫會透過連接埠 1433 通訊。  如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 在此情況下，除非您的 IT 部門開啟埠1433，否則您無法連線到[邏輯伺服器](../../azure-sql/database/logical-servers.md)。 您可以在[這裡](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)找到防火牆組態的其他資訊。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>檢查 VNet/服務端點設定
 
-如果您收到錯誤 40914 和 40615，請參閱[此處的錯誤描述和解決方法](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)。
+如果您收到錯誤 40914 和 40615，請參閱[此處的錯誤描述和解決方法](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)。
 
 ## <a name="check-for-the-latest-drivers"></a>檢查最新的驅動程式
 
@@ -109,7 +109,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="common-error-messages"></a>常見的錯誤訊息
 
-錯誤 40914 和 40615，請參閱[此處的錯誤描述和解決方法](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)。
+錯誤 40914 和 40615，請參閱[此處的錯誤描述和解決方法](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)。
 
 ## <a name="still-having-connectivity-issues"></a>仍然有連線問題嗎？
 

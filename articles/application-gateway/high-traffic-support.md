@@ -4,15 +4,15 @@ description: 此文章提供的指導方針可讓您設定 Azure 應用程式閘
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 56622ee2c014bd8dbca7c61ec00b927c56f63a40
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: b96720ead2c7b7bc942efca32a8510f57c2dbcad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740394"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85250243"
 ---
 # <a name="application-gateway-high-traffic-support"></a>應用程式閘道高流量支援
 

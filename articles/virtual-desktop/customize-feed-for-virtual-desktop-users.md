@@ -4,28 +4,28 @@ description: 如何使用 PowerShell Cmdlet 為 Windows 虛擬桌面使用者自
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 961fadfff0147d8c5258fa5acf31d8b0649ea12a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 99c63fd04a40b1a4e591f5ad42d8f776e8e5b67c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208496"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>適用於 Windows 虛擬桌面使用者的自訂摘要
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。 如果您使用的是 Windows 虛擬桌面不含 Azure Resource Manager 物件的2019版，請參閱[這篇文章](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)。
 >
-> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 您可以自訂摘要，讓 RemoteApp 和遠端桌面資源以可辨識的方式顯示給使用者。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已下載並安裝 Windows 虛擬桌面 PowerShell 模組。 如果您尚未這麼做，請依照[設定 PowerShell 模組](powershell-module.md)中的指示進行。
 
@@ -54,30 +54,30 @@ Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | f
 輸出看起來會像這樣：
 
 ```powershell
-CommandLineArgument : 
-CommandLineSetting  : DoNotAllow 
-Description         : 
-FilePath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
-FriendlyName        : Microsoft Word 
-IconContent         : {0, 0, 1, 0…} 
-IconHash            : --iom0PS6XLu-EMMlHWVW3F7LLsNt63Zz2K10RE0_64 
-IconIndex           : 0 
-IconPath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
-Id                  : /subscriptions/<subid>/resourcegroups/0301RG/providers/Microsoft.DesktopVirtualization/applicationgroups/0301RAG/applications/Microsoft Word 
-Name                : 0301RAG/Microsoft Word 
-ShowInPortal        : False 
-Type                : Microsoft.DesktopVirtualization/applicationgroups/applications 
+CommandLineArgument :
+CommandLineSetting  : DoNotAllow
+Description         :
+FilePath            : C:\Program Files\Windows NT\Accessories\wordpad.exe
+FriendlyName        : Microsoft Word
+IconContent         : {0, 0, 1, 0…}
+IconHash            : --iom0PS6XLu-EMMlHWVW3F7LLsNt63Zz2K10RE0_64
+IconIndex           : 0
+IconPath            : C:\Program Files\Windows NT\Accessories\wordpad.exe
+Id                  : /subscriptions/<subid>/resourcegroups/0301RG/providers/Microsoft.DesktopVirtualization/applicationgroups/0301RAG/applications/Microsoft Word
+Name                : 0301RAG/Microsoft Word
+ShowInPortal        : False
+Type                : Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 若要更新易記名稱，請執行此 Cmdlet：
 
 ```powershell
-Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe" 
+Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe"
 ```
 
 若要確認您已成功更新好記名稱，請執行此 Cmdlet：
 
 ```powershell
-Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName 
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName
 ```
 
 Cmdlet 應該會提供下列輸出：
@@ -104,28 +104,28 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 ## <a name="customize-a-display-name-in-azure-portal"></a>在 Azure 入口網站中自訂顯示名稱
 
-您可以使用 Azure 入口網站設定易記名稱，以變更已發佈之遠端桌面的顯示名稱。 
+您可以使用 Azure 入口網站設定易記名稱，以變更已發佈之遠端桌面的顯示名稱。
 
-1. 在 <https://portal.azure.com> 登入 Azure 入口網站。 
+1. 在 <https://portal.azure.com> 登入 Azure 入口網站。
 
 2. 搜尋**Windows 虛擬桌面**。
 
-3. 在 [服務] 下，選取 [ **Windows 虛擬桌面**]。 
+3. 在 [服務] 下，選取 [ **Windows 虛擬桌面**]。
 
-4. 在 [Windows 虛擬桌面] 頁面上，選取畫面左側的 [**應用程式群組**]，然後選取您要編輯之應用程式群組的名稱。 
+4. 在 [Windows 虛擬桌面] 頁面上，選取畫面左側的 [**應用程式群組**]，然後選取您要編輯之應用程式群組的名稱。
 
 5. 選取畫面左側功能表中的 [**應用程式**]。
 
-6. 選取您要更新的應用程式，然後輸入新的**顯示名稱**。 
+6. 選取您要更新的應用程式，然後輸入新的**顯示名稱**。
 
-7. 選取 [儲存]  。 您編輯的應用程式現在應該會顯示已更新的名稱。
+7. 選取 [儲存]。 您編輯的應用程式現在應該會顯示已更新的名稱。
 
 ## <a name="next-steps"></a>後續步驟
 
 既然您已自訂使用者的摘要，您可以登入 Windows 虛擬桌面的用戶端來進行測試。若要這麼做，請繼續進行連線至 Windows 虛擬桌面的作法：
-    
+
  * [與 Windows 10 或 Windows 7 連接](connect-windows-7-and-10.md)
- * [與 Web 用戶端連線](connect-web.md) 
+ * [與 Web 用戶端連線](connect-web.md)
  * [與 Android 用戶端連線](connect-android.md)
  * [與 iOS 用戶端連線](connect-ios.md)
  * [與 macOS 用戶端連線](connect-macos.md)

@@ -2,13 +2,13 @@
 title: 範本概觀
 description: 說明使用 Azure Resource Manager 範本來部署資源的優點。
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/22/2020
+ms.openlocfilehash: 4cdd0751feea6a3ade7183311831c7ed2b0f1b70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210213"
 ---
 # <a name="what-are-arm-templates"></a>什麼是 ARM 範本？
 
@@ -126,6 +126,7 @@ REQUEST BODY
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需逐步教學課程，引導您完成建立範本的程式，請參閱[教學課程：建立及部署您的第一個 ARM 範本](template-tutorial-create-first-template.md)。
+* 如需可引導您完成建立範本程序的逐步教學課程，請參閱[教學課程：建立及部署您的第一個 ARM 範本](template-tutorial-create-first-template.md)。
 * 如需範本檔案中屬性的相關資訊，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
 * 若要瞭解如何匯出範本，請參閱[快速入門：使用 Azure 入口網站建立及部署 ARM 範本](quickstart-create-templates-use-the-portal.md)。
+* 如需常見問題解答，請參閱[ARM 範本的相關常見問題](frequently-asked-questions.md)。

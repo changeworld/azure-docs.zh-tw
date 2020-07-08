@@ -5,22 +5,22 @@ author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 05/02/2020
-ms.openlocfilehash: 7f671e2a77a0a00fd1cc4338e29c14f7b8fca4f2
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 06/16/2020
+ms.openlocfilehash: 9c5d6359ce0e79fce2e80911ff78d19cc88162b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734717"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208700"
 ---
-# <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>預付以保留容量適用於 PostgreSQL 的 Azure 資料庫計算資源
+# <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>預付適用於 PostgreSQL 的 Azure 資料庫-具有保留容量的單一伺服器計算資源
 
 適用於 PostgreSQL 的 Azure 資料庫現在可協助您節省與隨用隨付價格相比的計算資源還要划算成本。 有了適用於 PostgreSQL 的 Azure 資料庫保留容量，您可以在於 postgresql 伺服器上預先承諾一年或三年的時間，以取得計算成本的大量折扣。 若要購買適用於 PostgreSQL 的 Azure 資料庫保留容量，您必須指定 Azure 區域、部署類型、效能層級和期限。 </br>
 
-您不需要將保留指派給特定的適用於 PostgreSQL 的 Azure 資料庫伺服器。 已執行適用於 PostgreSQL 的 Azure 資料庫或新部署的，將會自動獲得保留定價的權益。 透過購買保留，您會預付為期一或三年的計算費用。 一旦您購買保留，符合保留屬性的 Azure database for 于 postgresql 計算費用將不再以隨用隨付費率計費。 保留專案並不涵蓋與于 postgresql 資料庫伺服器相關聯的軟體、網路或儲存體費用。 在保留期限結束時，計費權益會到期，而適用於 PostgreSQL 的 Azure 資料庫會以隨用隨付價格計費。 保留不會自動更新。 如需定價資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫保留容量](https://azure.microsoft.com/pricing/details/postgresql/)供應專案。 </br>
+您不需要將保留指派給特定的適用於 PostgreSQL 的 Azure 資料庫伺服器。 已執行的適用於 PostgreSQL 的 Azure 資料庫（或新部署的）將會自動獲得保留定價的權益。 藉由購買保留，您就可以預先支付一或三年期的計算成本。 一旦您購買保留，符合保留屬性的 Azure database for 于 postgresql 計算費用將不再以隨用隨付費率計費。 保留專案並不涵蓋與于 postgresql 資料庫伺服器相關聯的軟體、網路或儲存體費用。 在保留期限結束時，計費權益會到期，而適用於 PostgreSQL 的 Azure 資料庫會以隨用隨付價格計費。 保留不會自動更新。 如需定價資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫保留容量](https://azure.microsoft.com/pricing/details/postgresql/)供應專案。 </br>
 
 > [!IMPORTANT]
-> 保留容量定價僅適用于適用於 PostgreSQL 的 Azure 資料庫[單一伺服器](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)部署，不適用於[超大規模資料庫 Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus)部署。
+> 保留容量定價適用于 [[單一伺服器](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)] 和 [超大規模資料庫] [Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus)部署選項中的適用於 PostgreSQL 的 Azure 資料庫。 如需超大規模資料庫（Citus）上 RI 定價的相關資訊，請參閱[此頁面](concepts-hyperscale-reserved-pricing.md)。
 
 您可以在[Azure 入口網站](https://portal.azure.com/)中購買適用於 PostgreSQL 的 Azure 資料庫保留容量。 保留的付款方式可為[預先付款或每月付款](../cost-management-billing/reservations/monthly-payments-reservations.md)。 若要購買保留容量：
 
@@ -35,13 +35,13 @@ ms.locfileid: "82734717"
 
 保留大小應根據特定區域內現有或即將部署的伺服器所使用的總計算量，並使用相同的效能層級和硬體世代。</br>
 
-例如，假設您執行一個一般用途第5代– 32 vCore 于 postgresql 資料庫，以及兩個記憶體優化，第5代– 16 vCore 于 postgresql 資料庫。 此外，假設您計畫在下個月部署其他一般用途第5代– 32 vCore 資料庫伺服器，以及一個記憶體優化、第5代– 16 vCore 資料庫伺服器。 假設您知道您至少需要一年的這些資源。 在此情況下，您應該購買64（2x32）虛擬核心，單一資料庫一般目的-第5代和48（2x16 + 16） vCore 1 年保留，適用于單一資料庫記憶體優化-第5代
+例如，假設您正在執行一個一般用途第5代– 32 vCore 于 postgresql 資料庫，以及兩個記憶體優化第5代– 16 vCore 于 postgresql 資料庫。 此外，假設您計畫在下個月部署其他一般用途第5代– 32 vCore 資料庫伺服器，以及一個記憶體優化第5代– 16 vCore 資料庫伺服器。 假設您知道您至少會需要一年的這些資源。 在此情況下，您應該購買64（2x32）虛擬核心、單一資料庫一般用途的一年保留-第5代和48（2x16 + 16） vCore 單一資料庫記憶體優化的一年保留-第5代
 
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>購買適用於 PostgreSQL 的 Azure 資料庫保留容量
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取 [**所有服務** > ] [**保留**]。
+2. 選取 [所有服務] > [保留]。
 3. 選取 [**新增**]，然後在 [購買保留] 窗格中選取 [**適用於 PostgreSQL 的 Azure 資料庫**]，為您的于 postgresql 資料庫購買新的保留。
 4. 填寫必要欄位。 符合您所選屬性的現有或新資料庫，可以取得保留容量折扣。 取得折扣的適用於 PostgreSQL 的 Azure 資料庫伺服器實際數目，取決於選取的範圍和數量。
 
@@ -63,7 +63,7 @@ ms.locfileid: "82734717"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 
-您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱[Azure 保留的自助交換和退款](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
+您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
 
 ## <a name="vcore-size-flexibility"></a>vCore 大小彈性
 
@@ -75,8 +75,7 @@ vCore 大小彈性可協助您在效能層級和區域內相應增加或相應�
 
 ## <a name="next-steps"></a>後續步驟
 
-VCore 保留折扣會自動套用到符合適用於 PostgreSQL 的 Azure 資料庫保留容量保留範圍和屬性的適用於 PostgreSQL 的 Azure 資料庫伺服器數目。 您可以透過 Azure 入口網站、PowerShell、CLI 或 API 來更新 Azure 資料庫的範圍，以進行于 postgresql 保留容量保留。 </br></br>
-若要瞭解如何管理適用於 PostgreSQL 的 Azure 資料庫保留容量，請參閱管理適用於 PostgreSQL 的 Azure 資料庫保留容量。
+VCore 保留折扣會自動套用到符合適用於 PostgreSQL 的 Azure 資料庫保留容量保留範圍和屬性的適用於 PostgreSQL 的 Azure 資料庫伺服器數目。 您可以透過 Azure 入口網站、PowerShell、CLI 或 API 來更新 Azure 資料庫的範圍，以進行于 postgresql 保留容量保留。
 
 若要深入了解 Azure 保留項目，請參閱下列文章：
 

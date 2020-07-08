@@ -1,5 +1,5 @@
 ---
-title: Azure 虛擬機器擴展集實例的終止通知
+title: Azure 虛擬機器擴展集執行個體的終止通知
 description: 瞭解如何啟用 Azure 虛擬機器擴展集實例的終止通知
 author: avirishuv
 ms.author: avverma
@@ -9,14 +9,14 @@ ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 695fd03d7c1856ad39b7672d826f85bc4c68a99c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 65fc822250ae8284c9f87af262356730ff1d54c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125174"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207510"
 ---
-# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 虛擬機器擴展集實例的終止通知
+# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 虛擬機器擴展集執行個體的終止通知
 擴展集實例可以選擇接收實例終止通知，並將預先定義的延遲時間設定為終止作業。 終止通知會透過 Azure Metadata Service- [Scheduled Events](../virtual-machines/windows/scheduled-events.md)傳送，這會提供影響力作業的通知和延遲，例如重新開機和重新部署。 解決方案會將另一個事件–終止–新增至 Scheduled Events 清單，而終止事件的相關延遲將取決於使用者在其擴展集模型設定中所指定的延遲限制。
 
 註冊至功能之後，擴展集實例不需要等到指定的超時時間過期，就會刪除實例。 收到終止通知之後，實例可以選擇在終止超時時間到期之前隨時刪除。
@@ -178,9 +178,9 @@ az vmss update \
 
 請確定擴展集中的每個 VM 只會核准與該 VM 相關的 EventID。 VM 可以[透過實例中繼資料](virtual-machine-scale-sets-instance-ids.md#instance-metadata-vm-name)取得自己的 vm 名稱。 這個名稱的格式為 "{scale-set-name} _ {instance-id}"，並會顯示在上述查詢回應的 [資源] 區段中。
 
-您也可以參考使用[PowerShell](../virtual-machines/windows/scheduled-events.md#powershell-sample)和[Python](../virtual-machines/linux/scheduled-events.md#python-sample)查詢和回應事件的範例腳本。
+您也可以參考用來查詢和回應事件[Python](../virtual-machines/linux/scheduled-events.md#python-sample)的範例腳本。
 
-## <a name="tips-and-best-practices"></a>祕訣和最佳作法
+## <a name="tips-and-best-practices"></a>訣竅和最佳做法
 -   僅在「刪除」作業上終止通知–如果您的擴展集已啟用*scheduledEventsProfile* ，則所有刪除作業（手動刪除或自動調整起始的相應縮小）都會產生終止事件。 其他作業（如重新開機、重新安裝映射、重新部署和停止/解除配置）不會產生終止事件。 無法啟用低優先順序 Vm 的終止通知。
 -   不需要等待超時時間–您可以在收到事件之後以及事件的*NotBefore*時間到期之前，隨時啟動終止作業。
 -   在超時時強制刪除–在事件產生之後，沒有擴充超時值的功能。 當超時時間過期時，將會處理暫止的終止事件，而且 VM 將會被刪除。
