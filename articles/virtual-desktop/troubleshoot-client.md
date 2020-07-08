@@ -1,6 +1,6 @@
 ---
 title: 針對遠端桌面用戶端 Windows 虛擬桌面進行疑難排解-Azure
-description: 如何解決在 Windows 虛擬桌面租使用者環境中設定用戶端連線時的問題。
+description: 如何解決在 Windows 虛擬桌面租用戶環境中設定用戶端連線時的問題。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,10 +9,9 @@ ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 76348a0aee48cc6d768e8233e376f266eca31917
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005994"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>針對遠端桌面用戶端進行疑難排解
@@ -86,8 +85,8 @@ nslookup rdweb.wvd.microsoft.com
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需疑難排解 Windows 虛擬桌面和擴大追蹤的總覽，請參閱[疑難排解總覽、意見反應和支援](troubleshoot-set-up-overview.md)。
-- 若要針對在 Windows 虛擬桌面環境中建立 Windows 虛擬桌面環境和主機集區的問題進行疑難排解，請參閱[環境和主機集區建立](troubleshoot-set-up-issues.md)。
-- 若要在 Windows 虛擬桌面中設定虛擬機器（VM）時針對問題進行疑難排解，請參閱[工作階段主機虛擬機器](troubleshoot-vm-configuration.md)設定。
-- 若要針對搭配 Windows 虛擬桌面使用 PowerShell 時的問題進行疑難排解，請參閱[Windows 虛擬桌面 PowerShell](troubleshoot-powershell.md)。
+- 如需 Windows 虛擬桌面疑難排解和擴大追蹤的概觀，請參閱[疑難排解概觀、意見反應和支援](troubleshoot-set-up-overview.md)。
+- 若要針對在 Windows 虛擬桌面環境中建立 Windows 虛擬桌面環境和主機集區時的問題進行疑難排解，請參閱[環境和主機集區建立](troubleshoot-set-up-issues.md)。
+- 若要針對在 Windows 虛擬桌面中設定虛擬機器 (VM) 時的問題進行疑難排解，請參閱[工作階段主機虛擬機器設定](troubleshoot-vm-configuration.md)。
+- 若要針對使用 PowerShell 搭配 Windows 虛擬桌面時的問題進行疑難排解，請參閱 [Windows 虛擬桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要進行疑難排解教學課程，請參閱[教學課程：針對 Resource Manager 範本部署進行疑難排解](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。

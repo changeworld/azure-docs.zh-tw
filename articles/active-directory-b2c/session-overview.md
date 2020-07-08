@@ -11,10 +11,9 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927032"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C 會話
@@ -37,7 +36,7 @@ ms.locfileid: "82927032"
 
 ### <a name="azure-ad-b2c-sso"></a>Azure AD B2C SSO 
 
-當使用者使用本機或社交帳戶成功進行驗證時，Azure AD B2C 會在使用者的瀏覽器上儲存以 cookie 為基礎的會話。 Cookie 會儲存在 Azure AD B2C 的租使用者功能變數名稱底下，例如`https://contoso.b2clogin.com`。
+當使用者使用本機或社交帳戶成功進行驗證時，Azure AD B2C 會在使用者的瀏覽器上儲存以 cookie 為基礎的會話。 Cookie 會儲存在 Azure AD B2C 的租使用者功能變數名稱底下，例如 `https://contoso.b2clogin.com` 。
 
 如果使用者一開始以同盟帳戶登入，然後在會話時間範圍（存留時間或 TTL）登入相同的應用程式或不同的應用程式，Azure AD B2C 會嘗試從同盟識別提供者取得新的存取權杖。 如果同盟身分識別提供者會話已過期或無效，同盟身分識別提供者會提示使用者提供其認證。 如果會話仍在作用中（或使用者已使用本機帳戶登入，而不是同盟帳戶），Azure AD B2C 會授權使用者並排除進一步的提示。
 
@@ -45,7 +44,7 @@ ms.locfileid: "82927032"
 
 ### <a name="federated-identity-provider-sso"></a>同盟身分識別提供者 SSO
 
-社交或企業身分識別提供者會管理自己的會話。 Cookie 會儲存在識別提供者的功能變數名稱底下，例如`https://login.salesforce.com`。 Azure AD B2C 不會控制同盟身分識別提供者會話。 相反地，會話行為是由同盟身分識別提供者所決定。 
+社交或企業身分識別提供者會管理自己的會話。 Cookie 會儲存在識別提供者的功能變數名稱底下，例如 `https://login.salesforce.com` 。 Azure AD B2C 不會控制同盟身分識別提供者會話。 相反地，會話行為是由同盟身分識別提供者所決定。 
 
 請考慮下列案例：
 
@@ -57,7 +56,7 @@ ms.locfileid: "82927032"
 
 Web、行動或單一頁面應用程式可以透過 OAuth 存取、識別碼權杖或 SAML 權杖來保護。 當使用者嘗試存取應用程式上受保護的資源時，應用程式會檢查應用程式端是否有使用中的會話。 如果沒有應用程式會話，或會話已過期，應用程式將會讓使用者 Azure AD B2C 登入頁面。
 
-應用程式會話可以是儲存在應用程式功能變數名稱下的以 cookie 為基礎的會話， `https://contoso.com`例如。 行動應用程式可能會以不同的方式儲存會話，但使用類似的方法。
+應用程式會話可以是儲存在應用程式功能變數名稱下的以 cookie 為基礎的會話，例如 `https://contoso.com` 。 行動應用程式可能會以不同的方式儲存會話，但使用類似的方法。
 
 ## <a name="azure-ad-b2c-session-configuration"></a>Azure AD B2C 會話設定
 
@@ -95,8 +94,8 @@ Web、行動或單一頁面應用程式可以透過 OAuth 存取、識別碼權�
 
 1. 使 Azure AD B2C 以 cookie 為基礎的會話失效。
 1. 嘗試登出同盟身分識別提供者：
-   - OpenId Connect-如果識別提供者的知名設定端點指定了`end_session_endpoint`位置。
-   - SAML-如果身分識別提供者中繼資料`SingleLogoutService`包含位置。
+   - OpenId Connect-如果識別提供者的知名設定端點指定了 `end_session_endpoint` 位置。
+   - SAML-如果身分識別提供者中繼資料包含 `SingleLogoutService` 位置。
 1. （選擇性）從其他應用程式登出。 如需詳細資訊，請參閱[單一登出](#single-sign-out)一節。
 
 登出會使用 Azure AD B2C 來清除使用者的單一登入狀態，但它可能不會將使用者登出其社交身分識別提供者會話。 如果使用者在後續登入時選取相同的身分識別提供者，他們可能會重新驗證，而不需要輸入其認證。 如果使用者想要登出應用程式，則不一定表示他們想要登出其 Facebook 帳戶。 不過，如果使用本機帳戶，使用者的會話就會正確結束。
@@ -107,10 +106,10 @@ Web、行動或單一頁面應用程式可以透過 OAuth 存取、識別碼權�
 > [!NOTE]
 > 這項功能僅限於[自訂原則](custom-policy-overview.md)。
 
-當您將使用者重新導向至 Azure AD B2C 登出端點（適用于 OAuth2 和 SAML 通訊協定）時，Azure AD B2C 會從瀏覽器清除使用者的會話。 不過，使用者可能仍然登入其他使用 Azure AD B2C 進行驗證的應用程式。 若要讓這些應用程式同時登出使用者，Azure AD B2C 將 HTTP GET 要求傳送至使用者目前登`LogoutUrl`入之所有應用程式的註冊。
+當您將使用者重新導向至 Azure AD B2C 登出端點（適用于 OAuth2 和 SAML 通訊協定）時，Azure AD B2C 會從瀏覽器清除使用者的會話。 不過，使用者可能仍然登入其他使用 Azure AD B2C 進行驗證的應用程式。 若要讓這些應用程式同時登出使用者，Azure AD B2C 將 HTTP GET 要求傳送至 `LogoutUrl` 使用者目前登入之所有應用程式的註冊。
 
 
-應用程式必須藉由清除任何可識別使用者的工作階段並傳回 `200` 回應，以回應此要求。 如果您想要在應用程式中支援單一登出，您必須`LogoutUrl`在應用程式的程式碼中執行。 
+應用程式必須藉由清除任何可識別使用者的工作階段並傳回 `200` 回應，以回應此要求。 如果您想要在應用程式中支援單一登出，您必須 `LogoutUrl` 在應用程式的程式碼中執行。 
 
 ## <a name="next-steps"></a>後續步驟
 

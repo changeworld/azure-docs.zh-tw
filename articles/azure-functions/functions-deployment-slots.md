@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.openlocfilehash: 7cfbd533921ba4d1757e7415a3bb8f70aeb71251
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122422"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions 部署位置
@@ -135,7 +134,7 @@ Azure Functions 部署位置可讓您的函數應用程式執行稱為「位置�
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="尋找 Azure 入口網站中的插槽。" border="true":::
 
-1. 選取 [刪除]  。
+1. 選取 [刪除] 。
 
     :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="刪除 Azure 入口網站中的部署位置。" border="true":::
 
@@ -151,9 +150,9 @@ Azure Functions 部署位置可讓您的函數應用程式執行稱為「位置�
 
 使用[Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)，您可以自動執行下列動作：
 
-- [建立](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
+- [create](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
 - [delete](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- list
+- [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
 - [調換](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [自動交換](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
@@ -176,7 +175,7 @@ Azure Functions 部署位置可讓您的函數應用程式執行稱為「位置�
 
     :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="變更 Azure 入口網站中的 App Service 計畫。" border="true":::
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
 ## <a name="limitations"></a>限制
 

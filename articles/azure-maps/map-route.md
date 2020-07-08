@@ -10,10 +10,9 @@ services: azure-maps
 manager: timlt
 ms.custom: codepen
 ms.openlocfilehash: 1cde1aaa7c9dba3e28407439a46b0e0a3326e4fc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123967"
 ---
 # <a name="show-directions-from-a-to-b"></a>顯示從甲地到乙地的指示
@@ -29,7 +28,7 @@ ms.locfileid: "83123967"
 
 在上述程式碼中，第一個區塊會建立地圖物件，並將驗證機制設定為使用存取權杖。 如需相關指示，您可以查看[建立對應](./map-create.md)。
 
-第二個程式碼區塊會建立 `TokenCredential` ，以使用存取權杖來驗證 Azure 地圖服務的 HTTP 要求。 然後，它會將傳遞 `TokenCredential` 至 `atlas.service.MapsURL.newPipeline()` ，並建立[管線](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)實例。 `routeURL` 代表 Azure 地圖服務[路線規劃](https://docs.microsoft.com/rest/api/maps/route)作業的 URL。
+第二個程式碼區塊會建立 `TokenCredential`，以使用存取權杖來驗證對 Azure 地圖服務的 HTTP 要求。 然後會將 `TokenCredential` 傳遞至 `atlas.service.MapsURL.newPipeline()`，並建立[管線](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)執行個體。 `routeURL` 代表 Azure 地圖服務[路線規劃](https://docs.microsoft.com/rest/api/maps/route)作業的 URL。
 
 第三個程式碼區塊會建立[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)物件，並將其新增至對應。
 
@@ -50,7 +49,7 @@ ms.locfileid: "83123967"
 <iframe height='500' scrolling='no' title='在地圖上顯示從甲地到乙地的指示' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>在地圖上顯示從甲地到乙地的指示</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-在上述程式碼中，程式碼的第一個區塊會建立地圖物件，並將驗證機制設定為使用存取權杖。 如需相關指示，您可以查看[建立對應](./map-create.md)。
+在上述程式碼中，第一個程式碼區塊會建構地圖物件，並將驗證機制設為使用存取權杖。 如需相關指示，您可以查看[建立對應](./map-create.md)。
 
 第二個程式碼區塊會建立 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 物件並將其新增至地圖。
 
@@ -74,7 +73,7 @@ ms.locfileid: "83123967"
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [對應](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [地圖](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 請參閱下列文章中的完整程式碼範例：
 

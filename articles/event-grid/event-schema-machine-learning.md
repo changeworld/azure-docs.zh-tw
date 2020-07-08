@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82928868"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>做為事件方格來源 Azure Machine Learning
@@ -36,7 +35,7 @@ Azure Machine Learning 會發出下列事件種類：
 
 觸發事件時，事件方格服務會將該事件的相關資料傳送至訂閱端點。
 
-此章節包含每個事件的資料外觀範例。
+本節包含每個事件的資料外觀範例。
 
 ### <a name="microsoftmachinelearningservicesmodelregistered-event"></a>Microsoft.machinelearningservices. ModelRegistered 事件
 
@@ -190,7 +189,7 @@ Azure Machine Learning 會發出下列事件種類：
 
 事件具有下列的最高層級資料：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
 | subject | 字串 | 發行者定義事件主體的路徑。 |
@@ -205,7 +204,7 @@ Azure Machine Learning 會發出下列事件種類：
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft.machinelearningservices. ModelRegistered
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | ModelName | 字串 | 已註冊的模型名稱。 |
 | ModelVersion | 字串 | 已註冊的模型版本。 |
@@ -214,7 +213,7 @@ Azure Machine Learning 會發出下列事件種類：
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.machinelearningservices. ModelDeployed
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | ServiceName | 字串 | 已部署之服務的名稱。 |
 | ServiceComputeType | 字串 | 已部署之服務的計算類型（例如 ACI、AKS）。 |
@@ -224,7 +223,7 @@ Azure Machine Learning 會發出下列事件種類：
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft.machinelearningservices. RunCompleted
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | ExperimentId | 字串 | 執行所屬之實驗的識別碼。 |
 | ExperimentName | 字串 | 執行所屬的實驗名稱。 |
@@ -235,7 +234,7 @@ Azure Machine Learning 會發出下列事件種類：
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.machinelearningservices. DatasetDriftDetected
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | DataDriftId | 字串 | 觸發事件的資料漂移監視器識別碼。 |
 | DataDriftName | 字串 | 觸發事件的資料漂移監視名稱。 |
@@ -248,7 +247,7 @@ Azure Machine Learning 會發出下列事件種類：
 
 ### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft.machinelearningservices. RunStatusChanged
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | ExperimentId | 字串 | 執行所屬之實驗的識別碼。 |
 | ExperimentName | 字串 | 執行所屬的實驗名稱。 |

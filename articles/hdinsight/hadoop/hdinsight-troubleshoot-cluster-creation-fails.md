@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
 ms.openlocfilehash: 14b449590f6ffc5e735faa26baadfcc4e526450c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996403"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>使用 Azure HDInsight 疑難排解叢集建立失敗
@@ -29,7 +28,7 @@ ms.locfileid: "82996403"
 
 ## <a name="permissions-issues"></a>權限問題
 
-如果您使用 Azure Data Lake Storage Gen2，並`AmbariClusterCreationFailedErrorCode`收到錯誤： ":::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::"，請開啟 Azure 入口網站，移至您的儲存體帳戶，然後在 [存取控制（IAM）] 底下，確認**儲存體 blob 資料參與者**或**儲存體 blob 資料擁有**者角色已指派訂用帳戶之**使用者指派受控識別**的存取權。 如需詳細指示，請參閱[在 Data Lake Storage Gen2 帳戶上設定受控識別的權限](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account)。
+如果您使用 Azure Data Lake Storage Gen2，並收到錯誤 `AmbariClusterCreationFailedErrorCode` ： " :::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support."::: "，請開啟 Azure 入口網站，移至您的儲存體帳戶，然後在 [存取控制（IAM）] 底下，確認**儲存體 blob 資料參與者**或**儲存體 blob 資料擁有**者角色已指派訂用帳戶之**使用者指派受控識別**的存取權。 如需詳細指示，請參閱[在 Data Lake Storage Gen2 帳戶上設定受控識別的權限](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account)。
 
 如果您使用 Azure Data Lake Storage Gen1，請參閱[這裡](../hdinsight-hadoop-use-data-lake-store.md)的安裝和設定指示。 HBase 叢集不支援 Data Lake Storage Gen1，且在 HDInsight 4.0 版中不支援。
 
@@ -51,7 +50,7 @@ ms.locfileid: "82996403"
 
 允許來自下表中 IP 位址的流量。
 
-| 來源 IP 位址 | Destination | 方向 |
+| 來源 IP 位址 | Destination | Direction |
 |---|---|---|
 | 168.61.49.99 | *:443 | 輸入 |
 | 23.99.5.239 | *:443 | 輸入 |
@@ -82,7 +81,7 @@ ms.locfileid: "82996403"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 Azure 虛擬網路擴充 Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md)
+* [使用 Azure 虛擬網路延伸 Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md)
 * [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 * [搭配使用 Azure 儲存體與 Azure HDInsight 叢集](../hdinsight-hadoop-use-blob-storage.md)
 * [使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他工具在 HDInsight 中設定叢集](../hdinsight-hadoop-provision-linux-clusters.md)

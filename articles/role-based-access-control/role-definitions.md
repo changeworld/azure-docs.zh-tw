@@ -16,10 +16,9 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996605"
 ---
 # <a name="understand-azure-role-definitions"></a>瞭解 Azure 角色定義
@@ -28,7 +27,7 @@ ms.locfileid: "82996605"
 
 ## <a name="role-definition"></a>角色定義
 
-「角色定義」  是權限集合。 有時簡稱為「角色」**。 角色定義會列出可執行的作業，例如讀取、寫入和刪除。 它也可以列出從允許的作業或與基礎資料相關的作業中排除的作業。
+「角色定義」是權限集合。 有時簡稱為「角色」**。 角色定義會列出可執行的作業，例如讀取、寫入和刪除。 它也可以列出從允許的作業或與基礎資料相關的作業中排除的作業。
 
 以下顯示使用 Azure PowerShell 顯示時，角色定義中的屬性範例：
 
@@ -60,11 +59,11 @@ assignableScopes []
 
 下表描述角色屬性的意義。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | --- | --- |
 | `Name`</br>`roleName` | 角色的顯示名稱。 |
 | `Id`</br>`name` | 角色的唯一識別碼。 |
-| `IsCustom`</br>`roleType` | 表示這是否為自訂角色。 針對自`true`定義`CustomRole`角色，將設為或。 針對內`false`建`BuiltInRole`角色，將設為或。 |
+| `IsCustom`</br>`roleType` | 表示這是否為自訂角色。 `true`針對自訂角色，將設為或 `CustomRole` 。 `false`針對內建角色，將設為或 `BuiltInRole` 。 |
 | `Description`</br>`description` | 角色的描述。 |
 | `Actions`</br>`actions` | 字串陣列，指定角色允許執行的管理作業。 |
 | `NotActions`</br>`notActions` | 字串陣列，指定從所允許 `Actions` 中排除的管理作業。 |
@@ -80,7 +79,7 @@ assignableScopes []
 
 作業字串的 `{action}` 部分指定您可以對資源類型執行的作業類型。 例如，您將會在 `{action}` 中看到下列子字串：
 
-| 動作子字串    | 描述         |
+| 動作子字串    | Description         |
 | ------------------- | ------------------- |
 | `*` | 此萬用字元會授與所有符合字串之作業的存取權。 |
 | `read` | 啟用讀取作業 (GET)。 |
@@ -168,7 +167,7 @@ Azure CLI 中顯示的參與者角色：
 - 將儲存體 Blob 寫入容器中
 - 刪除佇列中的訊息
 
-以下是[儲存體 Blob 資料讀取器](built-in-roles.md#storage-blob-data-reader)角色定義，其中包含`Actions`和`DataActions`屬性中的作業。 此角色可讓您讀取 Blob 容器和基礎 Blob 資料。
+以下是[儲存體 Blob 資料讀取器](built-in-roles.md#storage-blob-data-reader)角色定義，其中包含和屬性中的 `Actions` 作業 `DataActions` 。 此角色可讓您讀取 Blob 容器和基礎 Blob 資料。
 
 如 Azure PowerShell 所示的儲存體 Blob 資料讀取器角色：
 
@@ -252,9 +251,9 @@ Alice 的「[擁有](built-in-roles.md#owner)者」角色和 Bob 的「[儲存�
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-由於 Alice 在訂用帳戶`*`範圍有萬用字元（）動作，因此其許可權會向下繼承，讓他們能夠執行所有管理動作。 Alice 可以讀取、寫入和刪除容器。 不過，Alice 無法在未採取額外步驟的情況下執行資料作業。 例如，根據預設，Alice 無法讀取容器內的 Blob。 若要讀取 Blob，Alice 必須擷取儲存體存取金鑰，並使用它們來存取 Blob。
+由於 Alice `*` 在訂用帳戶範圍有萬用字元（）動作，因此其許可權會向下繼承，讓他們能夠執行所有管理動作。 Alice 可以讀取、寫入和刪除容器。 不過，Alice 無法在未採取額外步驟的情況下執行資料作業。 例如，根據預設，Alice 無法讀取容器內的 Blob。 若要讀取 Blob，Alice 必須擷取儲存體存取金鑰，並使用它們來存取 Blob。
 
-Bob 的許可權僅限於`Actions` [儲存體 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色中所指定的和`DataActions` 。 以此角色為基礎，Bob 可以執行管理和資料作業。 例如，Bob 可以在指定的儲存體帳戶中讀取、寫入和刪除容器，也可以讀取、寫入和刪除 blob。
+Bob 的許可權僅限於 `Actions` `DataActions` [儲存體 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色中所指定的和。 以此角色為基礎，Bob 可以執行管理和資料作業。 例如，Bob 可以在指定的儲存體帳戶中讀取、寫入和刪除容器，也可以讀取、寫入和刪除 blob。
 
 如需適用於儲存體之管理及資料平面安全性的詳細資訊，請參閱 [Azure 儲存體安全性指南](../storage/blobs/security-recommendations.md)。
 
@@ -281,7 +280,7 @@ Bob 的許可權僅限於`Actions` [儲存體 Blob 資料參與者](built-in-rol
 `Actions` 權限會指定角色所允許執行的管理作業。 它是識別 Azure 資源提供者的安全性實體作業的作業字串集合。 以下是可用於 `Actions` 中的一些管理作業範例。
 
 > [!div class="mx-tableFixed"]
-> | 作業字串    | 描述         |
+> | 作業字串    | Description         |
 > | ------------------- | ------------------- |
 > | `*/read` | 授與所有 Azure 資源提供者的所有資源類型之讀取作業的存取權。|
 > | `Microsoft.Compute/*` | 授與對 Microsoft.Compute 資源提供者中所有資源類型之所有作業的存取權。|
@@ -302,7 +301,7 @@ Bob 的許可權僅限於`Actions` [儲存體 Blob 資料參與者](built-in-rol
 `DataActions` 權限會指定角色允許對物件內資料執行的管理作業。 例如，如果使用者有儲存體帳戶的讀取 Blob 資料存取權，則他們可讀取該儲存體帳戶中的 Blob。 以下是可用於 `DataActions` 中的一些資料作業範例。
 
 > [!div class="mx-tableFixed"]
-> | 作業字串    | 描述         |
+> | 作業字串    | Description         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | 傳回 Blob 或 Blob 清單。 |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | 傳回寫入 Blob 的結果。 |
@@ -333,7 +332,7 @@ Bob 的許可權僅限於`Actions` [儲存體 Blob 資料參與者](built-in-rol
 > | 管理群組和訂用帳戶 | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
 > | 所有範圍（僅適用于內建角色） | `"/"` |
 
-如需有關`AssignableScopes`自訂角色的詳細資訊，請參閱[Azure 自訂角色](custom-roles.md)。
+如需有關 `AssignableScopes` 自訂角色的詳細資訊，請參閱[Azure 自訂角色](custom-roles.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

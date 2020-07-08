@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 8407aafdb9b9dadcbc8e220ac42e5d7856116959
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996790"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 基礎結構最佳做法
@@ -152,7 +151,7 @@ New—AzHDInsightCluster `
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>使用叢集的相應增加和相應減少功能
 
-HDInsight 具有彈性，可讓您選擇相應增加和相應減少叢集中的背景工作節點數。 此功能可讓您在下班時間或是週末縮小叢集，並於業務需求達到高峰的期間擴大叢集。 如需詳細資訊，請參閱
+HDInsight 具有彈性，可讓您選擇相應增加和相應減少叢集中的背景工作節點數。 此功能可讓您在下班時間或是週末縮小叢集，並於業務需求達到高峰的期間擴大叢集。 如需詳細資訊，請參閱：
 
 * [調整 HDInsight](../hdinsight-scaling-best-practices.md)叢集。
 * [調整叢集規模](../hdinsight-administer-use-portal-linux.md#scale-clusters)。
@@ -175,7 +174,7 @@ HDInsight 可以新增到新的或現有的 Azure 虛擬網路。 如果 HDInsig
 如需詳細資訊，請參閱下列文章：
 
 - [Azure 虛擬網路概觀](../../virtual-network/virtual-networks-overview.md)
-- [使用 Azure 虛擬網路擴充 Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md)
+- [使用 Azure 虛擬網路延伸 Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md)
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>使用 Azure 虛擬網路服務端點安全地連線到 Azure 服務
 

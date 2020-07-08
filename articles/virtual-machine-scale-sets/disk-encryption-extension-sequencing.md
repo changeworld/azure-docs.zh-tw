@@ -10,10 +10,9 @@ ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117252"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>使用搭配虛擬機器擴展集擴充功能排序的 Azure 磁碟加密
@@ -155,7 +154,7 @@ Azure 磁片加密等擴充功能可以依照指定的順序新增至 Azure 虛�
 ```
 
 如需更深入的範本，請參閱：
-* 將 Azure 磁碟加密擴充功能套用至格式化磁片（Linux）的自訂 shell 腳本之後： [extseq-Linux-ADE-customscript. json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
+* 在格式化磁片（Linux）的自訂 shell 腳本之後套用 Azure 磁碟加密延伸模組： [deploy-extseq-linux-ADE-after-customscript.js于](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 
 
 ## <a name="next-steps"></a>後續步驟

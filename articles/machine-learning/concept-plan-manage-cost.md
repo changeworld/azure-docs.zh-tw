@@ -11,10 +11,9 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996330"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
@@ -33,7 +32,7 @@ ms.locfileid: "82996330"
 * 使用低優先順序的虛擬機器（VM）
 * 使用 Azure 保留的 VM 實例
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 成本分析支援不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../cost-management-billing/costs/understand-cost-mgt-data.md)。 若要檢視成本資料，您至少需要 Azure 帳戶的讀取存取。 
 
@@ -103,9 +102,9 @@ AmlCompute 隨附[配額（或限制）](how-to-manage-quotas.md#azure-machine-l
 在某些情況下，您應該將訓練回合設定為限制其持續時間，或提早終止。 例如，當您使用 Azure Machine Learning 的內建超參數微調或自動化機器學習服務時。
 
 以下是一些您可以使用的選項：
-* 在您的 RunConfiguration `max_run_duration_seconds`中定義名為的參數，以控制可在您選擇的計算（本機或遠端雲端計算）上擴充執行的最長持續時間。
-* 針對[超參數微調](how-to-tune-hyperparameters.md#early-termination)，請從 Bandit 原則、中間值停止原則或截斷選取原則定義提早終止原則。 若要進一步控制超參數掃描，請使用`max_total_runs`或`max_duration_minutes`之類的參數。
-* 針對[自動化機器學習](how-to-configure-auto-train.md#exit)，請使用`enable_early_stopping`旗標來設定類似的終止原則。 也可以使用`iteration_timeout_minutes`和`experiment_timeout_minutes`等屬性來控制執行或整個實驗的最長持續時間。
+* `max_run_duration_seconds`在您的 RunConfiguration 中定義名為的參數，以控制可在您選擇的計算（本機或遠端雲端計算）上擴充執行的最長持續時間。
+* 針對[超參數微調](how-to-tune-hyperparameters.md#early-termination)，請從 Bandit 原則、中間值停止原則或截斷選取原則定義提早終止原則。 若要進一步控制超參數掃描，請使用或之類的參數 `max_total_runs` `max_duration_minutes` 。
+* 針對[自動化機器學習](how-to-configure-auto-train.md#exit)，請使用旗標來設定類似的終止原則 `enable_early_stopping` 。 也可以使用和等 `iteration_timeout_minutes` 屬性 `experiment_timeout_minutes` 來控制執行或整個實驗的最長持續時間。
 
 ## <a name="use-low-priority-vms"></a>使用低優先順序 VM
 
@@ -117,7 +116,7 @@ Azure 可讓您使用超額的未運用容量作為虛擬機器擴展集、批�
 
 * 在 studio 中，當您建立 VM 時，請選擇 [**低優先順序**]。
 
-* 使用 Python SDK，在您的`vm_priority`布建配置中設定屬性。  
+* 使用 Python SDK，在您的布建 `vm_priority` 配置中設定屬性。  
 
     ```python
     compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
@@ -125,7 +124,7 @@ Azure 可讓您使用超額的未運用容量作為虛擬機器擴展集、批�
                                                                max_nodes=4)
     ```
 
-* 使用 CLI，設定`vm-priority`：
+* 使用 CLI，設定 `vm-priority` ：
 
     ```azurecli-interactive
     az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority

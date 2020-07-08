@@ -8,21 +8,20 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
 ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927899"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET 和 .NET Core 中的自訂計量集合
 
-.NET 和 .NET Core Sdk Application Insights 的 Azure 監視器有兩種不同的方法來收集自`TrackMetric()`定義計量`GetMetric()`：和。 這兩種方法之間的主要差異在於本機匯總。 `TrackMetric()`在預先匯總時`GetMetric()`缺少預先匯總。 建議的方法是使用匯總，因此不再`TrackMetric()`是收集自訂計量的慣用方法。 本文將逐步引導您使用 GetMetric （）方法，以及其運作方式的一些基本概念。
+.NET 和 .NET Core Sdk Application Insights 的 Azure 監視器有兩種不同的方法來收集自訂計量： `TrackMetric()` 和 `GetMetric()` 。 這兩種方法之間的主要差異在於本機匯總。 `TrackMetric()`在預先匯總時缺少預先匯總 `GetMetric()` 。 建議的方法是使用匯總，因此不再 `TrackMetric()` 是收集自訂計量的慣用方法。 本文將逐步引導您使用 GetMetric （）方法，以及其運作方式的一些基本概念。
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric 與 GetMetric
 
-`TrackMetric()`傳送代表度量的原始遙測。 傳送每個值的單一遙測專案是沒有效率的。 `TrackMetric()`在效能方面也沒有效率，因為每`TrackMetric(item)`個都經過遙測初始化運算式和處理器的完整 SDK 管線。 不同`TrackMetric()`于`GetMetric()` ，會為您處理本機預先匯總，然後只以一分鐘的固定間隔提交匯總的摘要度量。 因此，如果您需要在第二個或甚至毫秒層級密切監視某個自訂計量，您可以這麼做，同時只會產生每分鐘監視的儲存體和網路流量成本。 這也能大幅降低發生節流的風險，因為需要為匯總計量傳送的遙測專案總數大幅降低。
+`TrackMetric()`傳送代表度量的原始遙測。 傳送每個值的單一遙測專案是沒有效率的。 `TrackMetric()`在效能方面也沒有效率，因為每個都經過 `TrackMetric(item)` 遙測初始化運算式和處理器的完整 SDK 管線。 不同 `TrackMetric()` `GetMetric()` 于，會為您處理本機預先匯總，然後只以一分鐘的固定間隔提交匯總的摘要度量。 因此，如果您需要在第二個或甚至毫秒層級密切監視某個自訂計量，您可以這麼做，同時只會產生每分鐘監視的儲存體和網路流量成本。 這也能大幅降低發生節流的風險，因為需要為匯總計量傳送的遙測專案總數大幅降低。
 
-在 Application Insights 中，透過`TrackMetric()`和`GetMetric()`收集的自訂計量不受[取樣](https://docs.microsoft.com/azure/azure-monitor/app/sampling)的規範。 取樣重要計量可能會導致可能以這些計量為基礎建立警示的案例可能會變得不可靠。 藉由永不取樣您的自訂計量，您通常可以確信當違反警示閾值時，將會引發警示。  但是因為自訂計量並未取樣，所以有一些潛在的顧慮。
+在 Application Insights 中，透過和收集的自訂計量 `TrackMetric()` `GetMetric()` 不受[取樣](https://docs.microsoft.com/azure/azure-monitor/app/sampling)的規範。 取樣重要計量可能會導致可能以這些計量為基礎建立警示的案例可能會變得不可靠。 藉由永不取樣您的自訂計量，您通常可以確信當違反警示閾值時，將會引發警示。  但是因為自訂計量並未取樣，所以有一些潛在的顧慮。
 
 如果您需要每秒追蹤計量中的趨勢，或更細微的間隔時間，這可能會導致：
 
@@ -30,12 +29,12 @@ ms.locfileid: "82927899"
 - 增加網路流量/效能額外負荷。 （在某些情況下，這可能會有貨幣和應用程式的效能成本）。
 - 內嵌節流的風險。 （當您的應用程式在短時間內傳送非常高的遙測率時，Azure 監視器服務會卸載（「節流」）資料點）。
 
-節流是特別考慮，如同取樣，節流可能會導致遺漏警示，因為觸發警示的條件可能會在本機發生，然後在內嵌端點上進行，因為傳送的資料太多。 這就是為什麼不建議使用`TrackMetric()` .NET 和 .net Core，除非您已經實作為自己的本機匯總邏輯。 如果您想要追蹤每個實例在指定的時間週期內發生事件，您可能會發現[`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent)這是較佳的調整。 但請記住，與自訂計量不同的是，自訂事件會受到取樣。 即使沒有撰寫自己的本機`TrackMetric()`預先匯總，您仍然可以使用，但如果您這樣做，請注意這些陷阱。
+節流是特別考慮，如同取樣，節流可能會導致遺漏警示，因為觸發警示的條件可能會在本機發生，然後在內嵌端點上進行，因為傳送的資料太多。 這就是為什麼不建議使用 .NET 和 .NET Core， `TrackMetric()` 除非您已經實作為自己的本機匯總邏輯。 如果您想要追蹤每個實例在指定的時間週期內發生事件，您可能會發現這 [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) 是較佳的調整。 但請記住，與自訂計量不同的是，自訂事件會受到取樣。 `TrackMetric()`即使沒有撰寫自己的本機預先匯總，您仍然可以使用，但如果您這樣做，請注意這些陷阱。
 
-在 [ `GetMetric()`摘要] 中是建議的方法，因為它會進行預先匯總，它會從所有追蹤（）呼叫累積值，並每隔一分鐘傳送一次摘要/匯總。 藉由傳送較少的資料點，同時仍然收集所有相關資訊，這可以大幅降低成本和效能負擔。
+在 [摘要] 中 `GetMetric()` 是建議的方法，因為它會進行預先匯總，它會從所有追蹤（）呼叫累積值，並每隔一分鐘傳送一次摘要/匯總。 藉由傳送較少的資料點，同時仍然收集所有相關資訊，這可以大幅降低成本和效能負擔。
 
 > [!NOTE]
-> 只有 .NET 和 .NET Core Sdk 具有 GetMetric （）方法。 如果您使用 JAVA，您可以使用[Micrometer 計量](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java)或`TrackMetric()`。 針對 Python，您可以使用[OpenCensus](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics)來傳送自訂計量。 針對 JavaScript 和 node.js，您仍然可以使用`TrackMetric()`，但請記住上一節中所述的注意事項。
+> 只有 .NET 和 .NET Core Sdk 具有 GetMetric （）方法。 如果您使用 JAVA，您可以使用[Micrometer 計量](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java)或 `TrackMetric()` 。 針對 Python，您可以使用[OpenCensus](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics)來傳送自訂計量。 針對 JavaScript 和 Node.js 您仍然可以使用 `TrackMetric()` ，但請記住上一節中所述的注意事項。
 
 ## <a name="getting-started-with-getmetric"></a>開始使用 GetMetric
 
@@ -43,7 +42,7 @@ ms.locfileid: "82927899"
 
 ### <a name="sending-metrics"></a>傳送計量
 
-將檔案的內容取代`worker.cs`為下列內容：
+將檔案的內容取代為 `worker.cs` 下列內容：
 
 ```csharp
 using System;
@@ -109,7 +108,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 ![Log Analytics 查詢檢視](./media/get-metric/log-analytics.png)
 
 > [!NOTE]
-> 雖然原始遙測專案在內嵌之後不會包含明確的 sum 屬性/欄位，但我們會為您建立一個。 在此情況下`value` ，和`valueSum`屬性都代表相同的東西。
+> 雖然原始遙測專案在內嵌之後不會包含明確的 sum 屬性/欄位，但我們會為您建立一個。 在此情況下 `value` ，和 `valueSum` 屬性都代表相同的東西。
 
 您也可以在入口網站的 [[_計量_](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)] 區段中，存取您的自訂度量遙測。 同時做為[記錄式和自訂度量](pre-aggregated-metrics-log-metrics.md)。 （下列螢幕擷取畫面是以記錄為基礎的範例）。![計量瀏覽器視圖](./media/get-metric/metrics-explorer.png)
 
@@ -140,7 +139,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 
 ```
 
-除了快取計量控制碼，上述範例也會減少`Task.Delay`到50毫秒，讓迴圈的執行頻率較高，而導致 772 `TrackValue()`調用。
+除了快取計量控制碼，上述範例也 `Task.Delay` 會減少到50毫秒，讓迴圈的執行頻率較高，而導致 772 `TrackValue()` 調用。
 
 ## <a name="multi-dimensional-metrics"></a>多維度計量
 
@@ -190,7 +189,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 
 ### <a name="enable-multi-dimensional-metrics"></a>啟用多維度計量
 
-若要啟用 Application Insights 資源的多維度計量，請選取 [**使用量和估計成本** > ] [**自訂計量** > **] [****在自訂度量維度** > 上啟用警示]。 您可以在[這裡](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)找到更多有關此資訊的詳細資料。
+若要啟用 Application Insights 資源的多維度計量，請選取 [**使用量和估計成本**  >  ] [**自訂計量**  >  ] [**在自訂度量維度上啟用警示**  >  **]**。 您可以在[這裡](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)找到更多有關此資訊的詳細資料。
 
 當您變更並傳送新的多維度遙測之後，您就能夠套用**分割**。
 
@@ -205,7 +204,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 
 ### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>當有三個以上的維度時，如何使用 MetricIdentifier
 
-目前支援10個維度，但大於三個維度需要使用`MetricIdentifier`：
+目前支援10個維度，但大於三個維度需要使用 `MetricIdentifier` ：
 
 ```csharp
 // Add "using Microsoft.ApplicationInsights.Metrics;" to use MetricIdentifier
@@ -221,9 +220,9 @@ computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
 
 ### <a name="special-dimension-names"></a>特殊維度名稱
 
-計量不會使用`TelemetryClient`用來存取它們的遙測內容，在類別中可作為常數的特殊維度`MetricDimensionNames`名稱是這項限制的最佳解決方法。
+計量不會使用 `TelemetryClient` 用來存取它們的遙測內容，在類別中可作為常數的特殊維度名稱 `MetricDimensionNames` 是這項限制的最佳解決方法。
 
-下列「特殊作業要求大小」所傳送的計量匯總-計量**不**會將其`Context.Operation.Name`設定為「特殊作業」。 而`TrackMetric()`或任何其他 TrackXXX （）會正確`OperationName`地設定為「特殊作業」。
+下列「特殊作業要求大小」所傳送的計量匯總-計量**不**會將其 `Context.Operation.Name` 設定為「特殊作業」。 而 `TrackMetric()` 或任何其他 TrackXXX （）會 `OperationName` 正確地設定為「特殊作業」。
 
 ``` csharp
         //...
@@ -248,15 +247,15 @@ computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
         }
 ```
 
-在此情況下，請使用`MetricDimensionNames`類別中所列的特殊維度名稱來指定`TelemetryContext`值。
+在此情況下，請使用類別中所列的特殊維度名稱 `MetricDimensionNames` 來指定 `TelemetryContext` 值。
 
-例如，當下一個語句所產生的計量匯總傳送至 Application Insights 雲端端點時，其`Context.Operation.Name`資料欄位將會設定為「特殊作業」：
+例如，當下一個語句所產生的計量匯總傳送至 Application Insights 雲端端點時，其 `Context.Operation.Name` 資料欄位將會設定為「特殊作業」：
 
 ```csharp
 _telemetryClient.GetMetric("Request Size", MetricDimensionNames.TelemetryContext.Operation.Name).TrackValue(requestSize, "Special Operation");
 ```
 
-這個特殊維度的值會複製到中`TelemetryContext` ，而且不會當做「一般」維度使用。 如果您也想要保留作業維度來進行一般計量探索，您必須針對該目的建立個別的維度：
+這個特殊維度的值會複製到中 `TelemetryContext` ，而且不會當做「一般」維度使用。 如果您也想要保留作業維度來進行一般計量探索，您必須針對該目的建立個別的維度：
 
 ```csharp
 _telemetryClient.GetMetric("Request Size", "Operation Name", MetricDimensionNames.TelemetryContext.Operation.Name).TrackValue(requestSize, "Special Operation", "Special Operation");
@@ -266,9 +265,9 @@ _telemetryClient.GetMetric("Request Size", "Operation Name", MetricDimensionName
 
  若要防止遙測子系統不小心使用您的資源，您可以控制每個計量的資料數列數目上限。 預設限制為每個度量的資料數列總計不超過1000，且每個維度不超過100個不同的值。
 
- 在維度和時間序列上限的內容中，我們`Metric.TrackValue(..)`使用來確保觀察到的限制。 如果已達到限制， `Metric.TrackValue(..)`將會傳回 "False"，且不會追蹤值。 否則會傳回 "True"。 如果計量的資料來源自使用者輸入，這就很有用。
+ 在維度和時間序列上限的內容中，我們使用 `Metric.TrackValue(..)` 來確保觀察到的限制。 如果已達到限制， `Metric.TrackValue(..)` 將會傳回 "False"，且不會追蹤值。 否則會傳回 "True"。 如果計量的資料來源自使用者輸入，這就很有用。
 
-此`MetricConfiguration`函式會使用一些選項，以瞭解如何管理個別計量內的不同數列，以及可指定`IMetricSeriesConfiguration`每個個別度量數列之合計列為的類別的物件：
+此函式 `MetricConfiguration` 會使用一些選項，以瞭解如何管理個別計量內的不同數列，以及可 `IMetricSeriesConfiguration` 指定每個個別度量數列之合計列為的類別的物件：
 
 ``` csharp
 var metConfig = new MetricConfiguration(seriesCountLimit: 100, valuesPerDimensionLimit:2,
@@ -285,7 +284,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit`這是計量可以包含的最大資料時間序列數目。 一旦達到此限制，會呼叫`TrackValue()`。
+* `seriesCountLimit`這是計量可以包含的最大資料時間序列數目。 一旦達到此限制，會呼叫 `TrackValue()` 。
 * `valuesPerDimensionLimit`以類似的方式限制每個維度的相異值數目。
 * `restrictToUInt32Values`判斷是否應該只追蹤非負整數值。
 

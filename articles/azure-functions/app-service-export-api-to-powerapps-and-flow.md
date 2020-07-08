@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
 ms.openlocfilehash: 8ded1c5fba902adeaeb883894452c00c4ae1d617
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83115810"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>將 Azure 裝載 API 匯出至 PowerApps 和 Microsoft Flow
@@ -66,7 +65,7 @@ ms.locfileid: "83115810"
  
     ![快速匯出至 PowerApps 和 Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. 按一下 [確定]  。 自訂連接現已建置並新增至您指定的環境。
+3. 按一下 [確定]。 自訂連接現已建置並新增至您指定的環境。
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>使用手動匯出
@@ -103,7 +102,7 @@ ms.locfileid: "83115810"
 
 4. 在 [General] \(一般\)**** 索引標籤上，檢閱來自 OpenAPI 定義的資訊。
 
-5. 在 [安全性]**** 索引標籤上，如果系統提示您提供驗證詳細資訊，請輸入適當的驗證類型值。 按一下 [繼續]  。
+5. 在 [安全性]**** 索引標籤上，如果系統提示您提供驗證詳細資訊，請輸入適當的驗證類型值。 按一下 [繼續] 。
 
     ![[安全性] 索引標籤](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 

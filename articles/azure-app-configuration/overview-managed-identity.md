@@ -8,10 +8,9 @@ ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
 ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82981216"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>如何使用 Azure 應用程式組態的受控識別
@@ -32,7 +31,7 @@ ms.locfileid: "82981216"
 若要使用 Azure CLI 來設定受控識別，請針對現有的設定存放區使用[az appconfig identity assign]命令。 有三個選項可供您執行本節中的範例︰
 
 - 從 Azure 入口網站使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
-- 透過位於下方每個程式碼區塊右上角的 [試試看] 按鈕，使用內嵌的 Azure Cloud Shell。
+- 請透過下方每個程式碼區塊右上角的 [立即試用] 按鈕，使用內嵌的 Azure Cloud Shell。
 - 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) （2.1 或更新版本）。
 
 下列步驟將逐步引導您建立應用程式組態存放區，並使用 CLI 為其指派身分識別：
@@ -65,7 +64,7 @@ ms.locfileid: "82981216"
 若要使用 Azure CLI 來設定受控識別，請針對現有的設定存放區使用[az appconfig identity assign]命令。 有三個選項可供您執行本節中的範例︰
 
 - 從 Azure 入口網站使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
-- 透過位於下方每個程式碼區塊右上角的 [試試看] 按鈕，使用內嵌的 Azure Cloud Shell。
+- 請透過下方每個程式碼區塊右上角的 [立即試用] 按鈕，使用內嵌的 Azure Cloud Shell。
 - 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 或更新版本)。
 
 下列步驟將逐步引導您建立使用者指派的身分識別和應用程式組態存放區，然後使用 CLI 將身分識別指派給存放區：
@@ -83,15 +82,15 @@ ms.locfileid: "82981216"
     az appconfig create --name myTestAppConfigStore --location eastus --resource-group myResourceGroup --sku Free
     ```
 
-1. 使用 CLI 建立名`myUserAssignedIdentity`為的使用者指派身分識別。
+1. 使用 CLI 建立名為的使用者指派身分識別 `myUserAssignedIdentity` 。
 
     ```azurecli-interactive
     az identity create -resource-group myResourceGroup --name myUserAssignedIdentity
     ```
 
-    在此命令的輸出中，請記下`id`屬性的值。
+    在此命令的輸出中，請記下屬性的值 `id` 。
 
-1. 執行[az appconfig identity assign]命令，將新使用者指派的身分識別指派給這個設定存放區。 使用您在上一個`id`步驟中記下的屬性值。
+1. 執行[az appconfig identity assign]命令，將新使用者指派的身分識別指派給這個設定存放區。 使用 `id` 您在上一個步驟中記下的屬性值。
 
     ```azurecli-interactive
     az appconfig identity assign --name myTestAppConfigStore --resource-group myResourceGroup --identities /subscriptions/[subscription id]/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity

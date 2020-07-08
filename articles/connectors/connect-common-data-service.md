@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
 ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82997096"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 建立和管理 Common Data Service 中的記錄
@@ -20,7 +19,7 @@ ms.locfileid: "82997096"
 
 本文說明如何建立邏輯應用程式，以在每次建立新的潛在客戶記錄時建立工作記錄。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -49,11 +48,11 @@ ms.locfileid: "82997096"
 
    ![要監視之環境的觸發資訊](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | 屬性 | 必要 | 描述 |
+   | 屬性 | 必要 | 說明 |
    |----------|----------|-------------|
-   | **環境** | 是 | 要監視的環境，例如「Fabrikam 銷售生產」。 如需詳細資訊，請參閱[Power Platform-環境總覽](https://docs.microsoft.com/power-platform/admin/environments-overview)。 |
-   | **實體名稱** | 是 | 要監視的實體，例如「潛在客戶」 |
-   | **範圍** | 是 | 建立新記錄的來源，例如您業務單位中的使用者或組織中的任何使用者。 這個範例會使用「業務單位」。 |
+   | **環境** | Yes | 要監視的環境，例如「Fabrikam 銷售生產」。 如需詳細資訊，請參閱[Power Platform-環境總覽](https://docs.microsoft.com/power-platform/admin/environments-overview)。 |
+   | **實體名稱** | Yes | 要監視的實體，例如「潛在客戶」 |
+   | **範圍** | Yes | 建立新記錄的來源，例如您業務單位中的使用者或組織中的任何使用者。 這個範例會使用「業務單位」。 |
    ||||
 
 ## <a name="add-common-data-service-action"></a>新增 Common Data Service 動作
@@ -70,10 +69,10 @@ ms.locfileid: "82997096"
 
    ![要在其中建立記錄之環境的動作資訊](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | 屬性 | 必要 | 描述 |
+   | 屬性 | 必要 | 說明 |
    |----------|----------|-------------|
-   | **組織名稱** | 是 | 您想要建立記錄的環境，在您的觸發程式中不一定要是相同的環境，但在此範例中為「Fabrikam 銷售生產」 |
-   | **實體名稱** | 是 | 要在其中建立記錄的實體，例如「Tasks」 |
+   | **組織名稱** | Yes | 您想要建立記錄的環境，在您的觸發程式中不一定要是相同的環境，但在此範例中為「Fabrikam 銷售生產」 |
+   | **實體名稱** | Yes | 要在其中建立記錄的實體，例如「Tasks」 |
    | **主旨** | 是，根據此範例中選取的實體而定 | 這項工作的目標簡短描述 |
    ||||
 
@@ -87,11 +86,11 @@ ms.locfileid: "82997096"
 
       ![選取要在工作記錄中使用的觸發程式輸出](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | 觸發程式輸出 | 描述 |
+      | 觸發程式輸出 | Description |
       |----------------|-------------|
-      | **名字** | 潛在客戶記錄中用來做為工作記錄中主要連絡人的名字 |
+      | **First Name** | 潛在客戶記錄中用來做為工作記錄中主要連絡人的名字 |
       | **姓氏** | 要做為工作記錄中主要連絡人之潛在客戶記錄的姓氏 |
-      | **說明** | 要包含在工作記錄中的其他輸出，例如電子郵件地址和公司電話號碼 |
+      | **描述** | 要包含在工作記錄中的其他輸出，例如電子郵件地址和公司電話號碼 |
       |||
 
    當您完成時，動作可能會如下列範例所示：
@@ -126,7 +125,7 @@ ms.locfileid: "82997096"
 
    ![輸入用於篩選記錄的 ODATA 篩選查詢](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-如需`$filter`系統查詢選項的詳細資訊，請參閱[Common Data Service 篩選結果](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)。
+如需 `$filter` 系統查詢選項的詳細資訊，請參閱[Common Data Service 篩選結果](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)。
 
 ## <a name="list-records-based-on-an-order"></a>依據訂單列出記錄
 
@@ -140,7 +139,7 @@ ms.locfileid: "82997096"
 
    ![輸入用於排序記錄的 ODATA 篩選查詢](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-如需`$orderby`系統查詢選項的詳細資訊，請參閱[Common Data Service 順序結果](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)。
+如需 `$orderby` 系統查詢選項的詳細資訊，請參閱[Common Data Service 順序結果](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)。
 
 ## <a name="field-data-types"></a>欄位資料類型
 
@@ -152,15 +151,15 @@ ms.locfileid: "82997096"
 |-------|-----------|-------------|
 | 文字欄位 | 單行文字 | 需要一行文字或具有 text 資料類型的動態內容，例如下列屬性： <p><p>- **描述** <br>- **Category** |
 | 整數位段 | 整數 | 需要整數或具有整數資料類型的動態內容，例如下列屬性： <p><p>- **完成百分比** <br>- **期限** |
-| 日期欄位 | 日期和時間 | 需要以 MM/DD/YYY 格式的日期或具有 date 資料類型的動態內容，例如下列屬性： <p><p>- **建立于** <br>- **開始日期** <br>- **實際開始** <br>- **實際結束** <br>- **到期日** |
-| 參考另一個實體記錄的欄位 | 主索引鍵 | 同時需要記錄識別碼（例如 GUID）和查閱類型，這表示動態內容清單中的值將無法使用，例如下列屬性： <p><p>- **擁有**者：必須是有效的使用者識別碼或小組記錄識別碼。 <br>- **擁有者類型**：必須分別是查閱類型， `systemusers`例如`teams`或。 <p><p>- **關於**：必須是有效的記錄識別碼，例如帳戶識別碼或連絡人記錄識別碼。 <br>- **關於類型**：必須分別是查閱類型，例如`accounts`或`contacts`。 <p><p>- **Customer**：必須是有效的記錄識別碼，例如帳戶識別碼或連絡人記錄識別碼。 <br>- **客戶類型**：必須是查閱類型，例如`accounts`或。 `contacts` |
+| 日期欄位 | 日期及時間 | 需要以 MM/DD/YYY 格式的日期或具有 date 資料類型的動態內容，例如下列屬性： <p><p>- **建立于** <br>- **開始日期** <br>- **實際開始** <br>- **實際結束** <br>- **到期日** |
+| 參考另一個實體記錄的欄位 | 主索引鍵 | 同時需要記錄識別碼（例如 GUID）和查閱類型，這表示動態內容清單中的值將無法使用，例如下列屬性： <p><p>- **擁有**者：必須是有效的使用者識別碼或小組記錄識別碼。 <br>- **擁有者類型**：必須分別是查閱類型 `systemusers` ，例如或 `teams` 。 <p><p>- **關於**：必須是有效的記錄識別碼，例如帳戶識別碼或連絡人記錄識別碼。 <br>- **關於類型**：必須分別是查閱類型，例如 `accounts` 或 `contacts` 。 <p><p>- **Customer**：必須是有效的記錄識別碼，例如帳戶識別碼或連絡人記錄識別碼。 <br>- **客戶類型**：必須是查閱類型，例如 `accounts` 或 `contacts` 。 |
 ||||
 
 此範例顯示 [**建立新記錄**] 動作如何建立與其他實體記錄相關聯的新「工作」記錄，特別是使用者記錄和客戶紀錄。 動作會使用符合相關屬性之預期資料類型的值，來指定這些實體記錄的識別碼和查閱類型。
 
-* 根據**擁有**者屬性（指定使用者識別碼）和**擁有者類型**屬性（指定`systemusers`查閱類型），此動作會將新的 "Tasks" 記錄與特定使用者產生關聯。
+* 根據**擁有**者屬性（指定使用者識別碼）和**擁有者類型**屬性（指定查閱類型），此動作會將 `systemusers` 新的 "Tasks" 記錄與特定使用者產生關聯。
 
-* 根據 [**關於**] 屬性（指定記錄識別碼）和 [**關於類型**] 屬性（指定`accounts`查閱類型），此動作會將新的 "Tasks" 記錄與特定帳戶產生關聯。
+* 根據 [**關於**] 屬性（指定記錄識別碼）和 [**關於類型**] 屬性（指定 `accounts` 查閱類型），此動作會將新的 "Tasks" 記錄與特定帳戶產生關聯。
 
 ![建立與 Id 和查閱類型相關聯的「工作」記錄](./media/connect-common-data-service/create-new-record-task-properties.png)
 
@@ -170,4 +169,4 @@ ms.locfileid: "82997096"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[Azure Logic Apps 的其他連接器](../connectors/apis-list.md)
+* 了解 [Azure Logic Apps 的其他連接器](../connectors/apis-list.md)

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
 ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83121724"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>手動執行非 HTTP 觸發的函式
@@ -69,7 +68,7 @@ ms.locfileid: "83121724"
 
     :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Postman 主體設定。" border="true":::
 
-1. 選取 [**傳送**]。
+1. 選取 [傳送]。
         
     :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="使用 Postman 傳送要求。" border="true":::
 

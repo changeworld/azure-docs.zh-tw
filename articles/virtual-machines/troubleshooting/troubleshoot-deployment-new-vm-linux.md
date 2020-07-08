@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
 ms.openlocfilehash: f85389d8fc2269b346df22854bb7ddce08844a88
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83118221"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>針對在 Azure 中建立新 Linux 虛擬機器的 Resource Manager 部署問題進行疑難排解
@@ -69,7 +68,7 @@ ms.locfileid: "83118221"
 
 **原因 1：** 叢集無法支援要求的 VM 大小。
 
-**解決方法 1：**
+**解決方式1：**
 
 * 以較小的 VM 大小重試要求。
 * 如果無法變更要求的 VM 的大小︰
@@ -80,7 +79,7 @@ ms.locfileid: "83118221"
 
 **原因 2：** 叢集沒有可用的資源。
 
-**解決方法 2：**
+**解決方式2：**
 
 * 稍後再重試要求。
 * 如果新的 VM 可以屬於不同的可用性設定組

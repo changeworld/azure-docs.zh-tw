@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 07210350826001bd3e0be6e04be211c9de43695a
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82997252"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Azure HDInsight 的企業安全性套件
@@ -22,7 +21,7 @@ ms.locfileid: "82997252"
 
     在過去，您已建立具有本機系統管理使用者和本機 SSH 使用者的 HDInsight 叢集。 本機系統管理員使用者可以存取所有的檔案、資料夾、資料表和資料行。  使用企業安全性套件，您可以將 HDInsight 與您的 Active Directory 整合，以啟用角色型存取控制。 其中包括內部部署 Active Directory Azure Active Directory Domain Services。 或 Active Directory 在 IaaS 虛擬機器上。 叢集上的網域系統管理員可以授與使用者使用自己的公司（網域）使用者名稱和密碼。
 
-    如需詳細資訊，請參閱
+    如需詳細資訊，請參閱：
 
     * [已加入網域之 HDInsight 叢集的 Apache Hadoop 安全性簡介](./domain-joined/hdinsight-security-overview.md)
 
@@ -63,5 +62,5 @@ ms.locfileid: "82997252"
 
 * [使用 Hadoop、Spark 及 Kafka 等在 HDInsight 中設定叢集](hdinsight-hadoop-provision-linux-clusters.md)
 * [從 Windows PC 在 HDInsight 上的 Hadoop 生態系統中作業](hdinsight-hadoop-windows-tools.md)
-* [Hortonworks 與 Azure HDInsight 版本相關聯的版本資訊](./hortonworks-release-notes.md)
+* [與 Azure HDInsight 版本相關聯的 Hortonworks 版本資訊](./hortonworks-release-notes.md)
 * [HDInsight 上的 Apache 元件](./hdinsight-component-versioning.md)

@@ -7,17 +7,16 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 5607a737fa4616d4eda3d174144c1717125f4181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122763"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自訂 HTTP 端點
 
-在本文中，您將瞭解 Azure Functions 如何讓您建立可高度擴充的 Api。 Azure Functions 隨附內建的 HTTP 觸發程式和系結的集合，可讓您輕鬆地以各種語言撰寫端點，包括 node.js、c # 等。 在本文中，您將自訂 HTTP 觸發程式來處理 API 設計中的特定動作。 您也會將它與 Azure Functions Proxy 和設定模擬 Api 的整合，來準備增加您的 API。 這些工作是在無伺服器計算環境的最上層完成，因此您不必擔心調整資源，只需專注于您的 API 邏輯即可。
+在本文中，您將瞭解 Azure Functions 如何讓您建立可高度擴充的 Api。 Azure Functions 隨附內建 HTTP 觸發程式和系結的集合，可讓您輕鬆地以各種語言（包括 Node.js、c # 等）撰寫端點。 在本文中，您將自訂 HTTP 觸發程式來處理 API 設計中的特定動作。 您也會將它與 Azure Functions Proxy 和設定模擬 Api 的整合，來準備增加您的 API。 這些工作是在無伺服器計算環境的最上層完成，因此您不必擔心調整資源，只需專注于您的 API 邏輯即可。
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -37,7 +36,7 @@ ms.locfileid: "83122763"
 
 1. 使用下表中所指定的 HTTP 觸發程式設定。
 
-    | 欄位 | 範例值 | 說明 |
+    | 欄位 | 範例值 | 描述 |
     |---|---|---|
     | 路由範本 | /hello | 決定使用什麼路由來叫用此函式 |
     | 授權層級 | 匿名 | 選擇性：讓您的函式不需要 API 金鑰即可存取 |
@@ -45,7 +44,7 @@ ms.locfileid: "83122763"
 
     您未 `/api` 在路由範本中包含基底路徑前置詞，因為它是由全域設定所處理。
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 如需自訂 HTTP 函數的詳細資訊，請參閱[AZURE FUNCTIONS HTTP](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)系結。
 
@@ -62,7 +61,7 @@ ms.locfileid: "83122763"
  
 1. 將參數新增至 URL 中的查詢字串。 
 
-   例如 `/api/hello/?name=John`。
+   例如： `/api/hello/?name=John` 。
  
 1. 按 Enter 鍵以確認其運作正常。 您應該會看到回應 "*Hello John*"。
 
@@ -95,7 +94,7 @@ Proxy 可以指向任何 HTTP 資源，例如︰
     > [!NOTE] 
     > 建議使用應用程式設定作為主機設定，以避免 Proxy 依賴硬式編碼的環境。 使用應用程式設定表示您可以在不同環境之間移動 Proxy 設定，將會套用環境特定的應用程式設定。
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>在前端建立 Proxy
 
@@ -107,7 +106,7 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 
     | 欄位 | 範例值 | 描述 |
     |---|---|---|
-    | 名稱 | HelloProxy | 僅用於管理的易記名稱 |
+    | Name | HelloProxy | 僅用於管理的易記名稱 |
     | 路由範本 | /api/remotehello | 決定使用什麼路由來叫用此 Proxy |
     | 後端 URL | https://%HELLO_HOST%/api/hello | 指定端點，而其要求應該透過代理 |
 
@@ -128,7 +127,7 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 
 在左側導覽中，選取 `proxies.json`。 這個檔案會儲存所有 proxy 的設定。 如果您使用其中一個函式[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)，您可以在原始檔控制中維護這個檔案。 若要深入了解此檔案，請參閱 [Proxy 進階組態](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration)。
 
-如果您已遵循到目前為止，您的 proxy 會如下所示：
+如果您到目前為止已遵循，則您的 proxies.js應該如下所示：
 
 ```json
 {
@@ -144,7 +143,7 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 }
 ```
 
-接下來，您將新增 mock API。 以下列程式碼取代您的 proxy. json 檔案：
+接下來，您將新增 mock API。 使用下列程式碼取代檔案上的 proxies.js：
 
 ```json
 {

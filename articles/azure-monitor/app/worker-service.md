@@ -4,10 +4,9 @@ description: 使用 Azure 監視器 Application Insights 監視 .NET Core/NET Fr
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 1f9b35022e63c4c3fe671237149602f8db465466
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117872"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>背景工作服務應用程式的 Application Insights （非 HTTP 應用程式）
@@ -20,7 +19,7 @@ Application Insights 發行新的 SDK，稱為 `Microsoft.ApplicationInsights.Wo
 
 適用于背景[工作角色服務的 APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)最適合非 HTTP 應用程式，不論其執行位置或方式為何。 如果您的應用程式正在執行，且具有與 Azure 的網路連線，則可以收集遙測。 支援 .NET Core 的任何位置都支援 Application Insights 監視。 此套件可用於新引進的[.Net Core 3.0 背景工作角色服務](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、 [Asp.Net Core 2.1/2.2 的背景](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2)工作、主控台應用程式（.net Core/.NET Framework）等。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 有效的 Application Insights 檢測金鑰。 必須要有此金鑰，才能將任何遙測資料傳送至 Application Insights。 如果您需要建立新的 Application Insights 資源來取得檢測金鑰，請參閱[建立 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
 
@@ -123,7 +122,7 @@ Application Insights 發行新的 SDK，稱為 `Microsoft.ApplicationInsights.Wo
 或者，在下列其中一個環境變數中指定檢測金鑰。
 `APPINSIGHTS_INSTRUMENTATIONKEY` 或 `ApplicationInsights:InstrumentationKey`
 
-例如： `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
+例如：`SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 或`SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 通常會 `APPINSIGHTS_INSTRUMENTATIONKEY` 針對部署至 Web Apps 做為 Web 作業的應用程式指定檢測金鑰。
@@ -298,7 +297,7 @@ Application Insights 發行新的 SDK，稱為 `Microsoft.ApplicationInsights.Wo
 
 下列列出 Application Insights 自動收集的完整遙測。
 
-### <a name="live-metrics"></a>即時計量
+### <a name="live-metrics"></a>即時計量    
 
 [即時計量](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)可以用來快速驗證是否已正確設定 Application Insights 監視。 雖然可能需要幾分鐘的時間，遙測才會開始出現在入口網站和分析中，但即時計量會以近乎即時的方式顯示執行中進程的 CPU 使用量。 它也可以顯示其他遙測，例如要求、相依性、追蹤等等。
 

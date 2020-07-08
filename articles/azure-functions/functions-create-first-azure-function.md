@@ -6,10 +6,9 @@ ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
 ms.openlocfilehash: 030af8a289daaf03d17f8402e8d603e893657853
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123599"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 入口網站中建立您的第一個函式
@@ -32,31 +31,31 @@ Azure Functions 可讓您在無伺服器環境中執行程式碼，而不需要�
 
 接下來，您要在新的函式應用程式中建立函式。
 
-## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>建立 HTTP 觸發程式函數
+## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>建立 HTTP 觸發程序函式
 
-1. 從 [**函數**] 視窗的左側功能表中，選取 [**函數**]，然後從頂端功能表中選取 [**新增**]。 
+1. 從 [函式] 視窗的左側功能表選取 [函式]，然後從頂端功能表選取 [新增]。 
  
-1. 從 [**新增函數**] 視窗中，選取 [ **Http 觸發**程式]。
+1. 從 [新增函式] 視窗選取 [Http 觸發程式]。
 
-    ![選擇 HTTP 觸發程式函數](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
+    ![選擇 HTTP 觸發程序函式](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-1. 在 [**新增函數**] 視窗中，接受 [**新**函式] 的預設名稱，或輸入新的名稱。 
+1. 在 [新增函式] 視窗中，接受 [新函式] 的預設名稱，或輸入新名稱。 
 
-1. 從 [**授權層級**] 下拉式清單中選擇 [**匿名**]，然後選取 [**建立函數**]。
+1. 從 [授權層級] 下拉式清單中選擇 [匿名]，然後選取 [建立函式]。
 
-    Azure 會建立 HTTP 觸發程式函數。 現在，您可以藉由傳送 HTTP 要求來執行新的函式。
+    Azure 會建立 HTTP 觸發程序函式。 現在，您可以藉由傳送 HTTP 要求來執行新的函式。
 
 ## <a name="test-the-function"></a>測試函式
 
-1. 在新的 HTTP 觸發程式函式中，從左側功能表中選取 [程式**代碼 + 測試**]，然後從頂端功能表中選取 [取得函式**URL** ]。
+1. 在新的 HTTP 觸發程式函式中，從左側功能表選取 [程式碼 + 測試]，然後從頂端功能表選取 [取得函式 URL]。
 
-    ![選取 [取得函數 URL]](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
+    ![選取取得函式 URL](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
 
-1. 在 [**取得函數 URL** ] 對話方塊中，從下拉式清單選取 [**預設值**]，然後選取 [**複製到剪貼**簿] 圖示。 
+1. 在 [取得函式 URL] 對話方塊中，從下拉式清單中選取**預設值**，然後選取 [複製到剪貼簿] 圖示。 
 
     ![從 Azure 入口網站複製函式 URL](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. 將函式 URL 貼入瀏覽器的網址列中。 將查詢字串值新增 `?name=<your_name>` 至此 URL 的結尾，然後按 enter 鍵以執行要求。 
+1. 將函式 URL 貼入瀏覽器的網址列中。 將查詢字串值 `?name=<your_name>` 新增至此 URL 的結尾，然後按 Enter 鍵以執行要求。 
 
     下列範例會顯示瀏覽器中的回應：
 
@@ -64,7 +63,7 @@ Azure Functions 可讓您在無伺服器環境中執行程式碼，而不需要�
 
     要求 URL 預設會包含所需金鑰，以便透過 HTTP 存取您的函式。
 
-1. 當函式執行時，系統會將追蹤資訊寫入到記錄中。 若要查看追蹤輸出，請回到入口網站中的 [程式**代碼 + 測試**] 頁面，然後展開頁面底部的 [**記錄**] 箭號。
+1. 當函式執行時，系統會將追蹤資訊寫入到記錄中。 若要查看追蹤輸出，請回到入口網站中的 [程式碼 + 測試] 頁面，然後展開頁面底部的 [記錄] 箭號。
 
    ![Azure 入口網站中的函式記錄檢視器。](./media/functions-create-first-azure-function/function-view-logs.png)
 

@@ -7,17 +7,16 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 5/7/2020
 ms.openlocfilehash: 9c5f4b1602182b3f9dca45c11d572e1fec2ff07c
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82925961"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MariaDB 的 Azure 資料庫
 適用於 MariaDB 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將適用於 MariaDB 的 Azure 資料庫伺服器連線至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。
 
 ## <a name="obtain-ssl-certificate"></a>取得 SSL 憑證
-下載透過 SSL 與您的適用於 MariaDB 的 Azure 資料庫伺服器進行通訊所需的[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)憑證，並將憑證檔案儲存到本機磁片磁碟機（例如，本教學課程使用 c:\ssl）。
+下載透過 SSL 與您的適用於 MariaDB 的 Azure 資料庫伺服器進行通訊所需的憑證 [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) ，並將憑證檔案儲存到本機磁片磁碟機（例如，本教學課程使用 c:\ssl）。
 **針對 Microsoft Internet Explorer 和 Microsoft Edge：** 在下載完成後，請將憑證重新命名為 BaltimoreCyberTrustRoot.crt.pem。
 
 ## <a name="bind-ssl"></a>繫結 SSL

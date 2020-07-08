@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927389"
 ---
 # <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>使用更新資源活動更新 ML Studio （傳統） v 模型
@@ -24,7 +23,7 @@ ms.locfileid: "82927389"
 
 本文補充主要的 Azure Data Factory ML Studio （傳統）整合文章：[使用 Azure Machine Learning 和 Azure Data Factory 建立預測管線](transform-data-using-machine-learning.md)。 如果您尚未檢閱主要文件，請在閱讀這篇文章之前先這麼做。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 在運用 ML Studio （傳統）模型的過程中，您的模型已定型並儲存。 接著，使用它來建立預測性 Web 服務。 接著才能在網站、儀表板及行動應用程式取用 Web 服務。
 
 您使用 Machine Learning 建立的模型通常不是靜態。 因為當有新資料或 API 取用者有自己的資料時，模型就必須重新定型。 
@@ -59,15 +58,15 @@ ms.locfileid: "82927389"
 }
 ```
 
-| 屬性                      | 描述                              | 必要 |
+| 屬性                      | 說明                              | 必要 |
 | :---------------------------- | :--------------------------------------- | :------- |
-| name                          | 管線中的活動名稱     | 是      |
+| NAME                          | 管線中的活動名稱     | 是      |
 | description                   | 說明活動用途的文字。  | 否       |
 | type                          | 對於 Azure Machine Learning 更新資源活動，活動類型為 **AzureMLUpdateResource**。 | 是      |
-| linkedServiceName             | 包含 updateResourceEndpoint 屬性的 Azure Machine Learning 連結服務。 | 是      |
-| trainedModelName              | 要更新之 Web 服務實驗中的「定型模型」模組名稱 | 是      |
-| trainedModelLinkedServiceName | 具備由更新作業上傳之 ilearner 檔案的 Azure 儲存體連結服務名稱 | 是      |
-| trainedModelFilePath          | trainedModelLinkedService 中的相對檔案路徑，表示由更新作業上傳的 ilearner 檔案 | 是      |
+| linkedServiceName             | 包含 updateResourceEndpoint 屬性的 Azure Machine Learning 連結服務。 | Yes      |
+| trainedModelName              | 要更新之 Web 服務實驗中的「定型模型」模組名稱 | Yes      |
+| trainedModelLinkedServiceName | 具備由更新作業上傳之 ilearner 檔案的 Azure 儲存體連結服務名稱 | Yes      |
+| trainedModelFilePath          | trainedModelLinkedService 中的相對檔案路徑，表示由更新作業上傳的 ilearner 檔案 | Yes      |
 
 ## <a name="end-to-end-workflow"></a>端對端工作流程
 
@@ -279,4 +278,4 @@ Azure 儲存體會保留下列資料：
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
 * [Spark 活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
-* [預存程式活動](transform-data-using-stored-procedure.md)
+* [預存程序活動](transform-data-using-stored-procedure.md)

@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123899"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>縮放層級和圖格格線
@@ -967,4 +966,4 @@ module AzureMaps {
 深入瞭解地理空間概念：
 
 > [!div class="nextstepaction"]
-> [Azure 地圖服務詞彙](glossary.md)
+> [Azure 地圖服務字彙](glossary.md)

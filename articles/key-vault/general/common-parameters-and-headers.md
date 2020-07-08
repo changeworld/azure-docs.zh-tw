@@ -11,17 +11,16 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d1d93bcd84fd9460e658b221089a4b24d46b0429
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005806"
 ---
 # <a name="common-parameters-and-headers"></a>通用參數和標頭
 
 下列資訊通用於針對相關 Key Vault 資源執行的所有作業：
 
-- HTTP `Host`標頭必須一律存在，而且必須指定保存庫主機名稱。 範例： `Host: contoso.vault.azure.net`. 請注意，大部分的用戶端`Host`技術會填入 URI 中的標頭。 例如， `GET https://contoso.vault.azure.net/secrets/mysecret{...}`會將設定`Host`為。 `contoso.vault.azure.net` 這表示如果您使用像`GET https://10.0.0.23/secrets/mysecret{...}`是的原始 IP 位址來存取 Key Vault，則`Host`標頭的自動值會是錯誤的，而且您必須手動`Host`確保標頭包含保存庫主機名稱。
+- HTTP `Host` 標頭必須一律存在，而且必須指定保存庫主機名稱。 範例： `Host: contoso.vault.azure.net`. 請注意，大部分的用戶端技術會填入 `Host` URI 中的標頭。 例如， `GET https://contoso.vault.azure.net/secrets/mysecret{...}` 會將設定 `Host` 為 `contoso.vault.azure.net` 。 這表示如果您使用像是的原始 IP 位址來存取 Key Vault `GET https://10.0.0.23/secrets/mysecret{...}` ，則標頭的自動值 `Host` 會是錯誤的，而且您必須手動確保 `Host` 標頭包含保存庫主機名稱。
 - 將 `{api-version}` 取代為 URI 中的 api-version。
 - 將 `{subscription-id}` 取代為 URI 中的訂用帳戶識別碼
 - 將 `{resource-group-name}` 取代為資源群組。 如需詳細資訊，請參閱＜使用資源群組管理 Azure 資源＞。
@@ -44,7 +43,7 @@ ms.locfileid: "83005806"
 |元素名稱 | 類型 | 說明 |
 |---|---|---|
 | code | 字串 | 所發生錯誤的類型。|
-| 訊息 | 字串 | 造成錯誤之原因的描述。 |
+| message | 字串 | 造成錯誤之原因的描述。 |
 
 
 

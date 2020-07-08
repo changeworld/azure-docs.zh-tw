@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
 ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83006322"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>將成品傳輸至另一個登錄
@@ -25,12 +24,12 @@ ms.locfileid: "83006322"
 
 在本文中，您會使用 Azure Resource Manager 範本部署來建立和執行傳輸管線。 Azure CLI 可用來布建相關聯的資源，例如儲存體秘密。 建議使用 Azure CLI 版2.2.0 或更新版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI][azure-cli]。
 
-這項功能適用于**Premium** container registry 服務層級。 如需登錄服務層和限制的相關資訊，請參閱[Azure Container Registry 層](container-registry-skus.md)。
+**進階**容器登錄服務層級中提供這項功能。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure Container Registry 層級](container-registry-skus.md)。
 
 > [!IMPORTANT]
 > 此功能目前為預覽狀態。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * **容器**登錄-您需要具有要傳送之成品的現有來源登錄，以及目標登錄。 ACR 轉移適用于實體中斷連線的雲端之間的移動。 若要進行測試，來源和目標登錄可以位於相同或不同的 Azure 訂用帳戶、Active Directory 租使用者或雲端。 如果您需要建立登錄，請參閱[快速入門：使用 Azure CLI 建立私人容器](container-registry-get-started-azure-cli.md)登錄。 
 * **儲存體帳戶**-在訂用帳戶和您選擇的位置中建立來源和目標儲存體帳戶。 基於測試目的，您可以使用與來源和目標登錄相同的訂用帳戶或訂閱。 針對跨雲端案例，通常您會在每個雲端中建立個別的儲存體帳戶。 如有需要，請使用[Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli)或其他工具來建立儲存體帳戶。 
@@ -74,7 +73,7 @@ ms.locfileid: "83006322"
 
 *建議的權杖許可權*：讀取、寫入、列出、新增。 
 
-在下列範例中，命令輸出會指派給 EXPORT_SAS 環境變數，並在前面加上 '？ ' 字元。 更新您`--expiry`環境的值：
+在下列範例中，命令輸出會指派給 EXPORT_SAS 環境變數，並在前面加上 '？ ' 字元。 更新 `--expiry` 您環境的值：
 
 ```azurecli
 EXPORT_SAS=?$(az storage container generate-sas \
@@ -103,7 +102,7 @@ az keyvault secret set \
 
 *建議的權杖許可權*： [讀取]、[刪除]、[清單]
 
-在下列範例中，命令輸出會指派給 IMPORT_SAS 環境變數，並在前面加上 '？ ' 字元。 更新您`--expiry`環境的值：
+在下列範例中，命令輸出會指派給 IMPORT_SAS 環境變數，並在前面加上 '？ ' 字元。 更新 `--expiry` 您環境的值：
 
 ```azurecli
 IMPORT_SAS=?$(az storage container generate-sas \
@@ -132,7 +131,7 @@ az keyvault secret set \
 
 將 ExportPipeline Resource Manager[範本](https://github.com/Azure/acr/tree/master/docs/image-transfer/ExportPipelines)檔案複製到本機資料夾。
 
-在檔案中輸入下列參數值`azuredeploy.parameters.json`：
+在檔案中輸入下列參數值 `azuredeploy.parameters.json` ：
 
 |參數  |值  |
 |---------|---------|
@@ -144,7 +143,7 @@ az keyvault secret set \
 
 ### <a name="export-options"></a>匯出選項
 
-匯出`options`管線的屬性支援選擇性的布林值。 建議使用下列值：
+`options`匯出管線的屬性支援選擇性的布林值。 建議使用下列值：
 
 |參數  |值  |
 |---------|---------|
@@ -162,7 +161,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-在命令輸出中，記下管線的資源識別碼（`id`）。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如：
+在命令輸出中，記下管線的資源識別碼（ `id` ）。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如：
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -178,7 +177,7 @@ EXPORT_RES_ID=$(az group deployment show \
 
 將 ImportPipeline Resource Manager[範本](https://github.com/Azure/acr/tree/master/docs/image-transfer/ImportPipelines)檔案複製到本機資料夾。
 
-在檔案中輸入下列參數值`azuredeploy.parameters.json`：
+在檔案中輸入下列參數值 `azuredeploy.parameters.json` ：
 
 參數  |值  |
 |---------|---------|
@@ -190,7 +189,7 @@ EXPORT_RES_ID=$(az group deployment show \
 
 ### <a name="import-options"></a>匯入選項
 
-匯`options`入管線的屬性支援選擇性的布林值。 建議使用下列值：
+匯 `options` 入管線的屬性支援選擇性的布林值。 建議使用下列值：
 
 |參數  |值  |
 |---------|---------|
@@ -208,7 +207,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-如果您打算手動執行匯入，請記下管線的資源識別碼（`id`）。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如：
+如果您打算手動執行匯入，請記下管線的資源識別碼（ `id` ）。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如：
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -224,7 +223,7 @@ IMPORT_RES_ID=$(az group deployment show \
 
 將來擷取 Resource Manager[範本](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Export)檔案複製到本機資料夾。
 
-在檔案中輸入下列參數值`azuredeploy.parameters.json`：
+在檔案中輸入下列參數值 `azuredeploy.parameters.json` ：
 
 |參數  |值  |
 |---------|---------|
@@ -232,7 +231,7 @@ IMPORT_RES_ID=$(az group deployment show \
 |pipelineRunName     |  您為執行選擇的名稱       |
 |pipelineResourceId     |  匯出管線的資源識別碼。<br/>範例：`/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/exportPipelines/myExportPipeline`|
 |targetName     |  您為匯出至來源儲存體帳戶的成品 blob 選擇的名稱，例如*myblob*
-|構件 | 要傳送的來源成品陣列，做為標記或資訊清單摘要<br/>範例：`[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
+|artifacts | 要傳送的來源成品陣列，做為標記或資訊清單摘要<br/>範例：`[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
 
 執行[az deployment group create][az-deployment-group-create]來建立來擷取資源。 下列範例會將部署*exportPipelineRun*命名為。
 
@@ -257,7 +256,7 @@ az storage blob list \
 
 使用 AzCopy 工具或其他方法，將[blob 資料](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts)從來源儲存體帳戶傳送到目標儲存體帳戶。
 
-例如，下列[`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy)命令會將 myblob 從來源帳戶中的*傳輸*容器複製到目標帳戶中的*傳輸*容器。 如果 blob 存在於目標帳戶中，則會予以覆寫。 驗證會針對來源和目標容器使用具有適當許可權的 SAS 權杖。 （不會顯示建立權杖的步驟）。
+例如，下列命令會 [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) 將 myblob 從來源帳戶中的*傳輸*容器複製到目標帳戶中的*傳輸*容器。 如果 blob 存在於目標帳戶中，則會予以覆寫。 驗證會針對來源和目標容器使用具有適當許可權的 SAS 權杖。 （不會顯示建立權杖的步驟）。
 
 ```console
 azcopy copy \
@@ -268,13 +267,13 @@ azcopy copy \
 
 ## <a name="trigger-importpipeline-resource"></a>觸發 ImportPipeline 資源
 
-如果您已啟用`sourceTriggerStatus` ImportPipeline 的參數（預設值），則會在將 blob 複製到目標儲存體帳戶之後觸發管線。 匯入成品可能需要幾分鐘的時間。 當匯入成功完成時，請列出目標容器登錄中的存放庫，以確認成品匯入。 例如，執行[az acr repository list][az-acr-repository-list]：
+如果您已啟用 `sourceTriggerStatus` ImportPipeline 的參數（預設值），則會在將 blob 複製到目標儲存體帳戶之後觸發管線。 匯入成品可能需要幾分鐘的時間。 當匯入成功完成時，請列出目標容器登錄中的存放庫，以確認成品匯入。 例如，執行[az acr repository list][az-acr-repository-list]：
 
 ```azurecli
 az acr repository list --name <target-registry-name>
 ```
 
-如果您未啟用匯`sourceTriggerStatus`入管線的參數，請手動執行 ImportPipeline 資源，如下一節所示。 
+如果您未啟用匯 `sourceTriggerStatus` 入管線的參數，請手動執行 ImportPipeline 資源，如下一節所示。 
 
 ## <a name="create-pipelinerun-for-import-with-resource-manager-optional"></a>使用 Resource Manager 建立匯入的來擷取（選擇性） 
  
@@ -282,7 +281,7 @@ az acr repository list --name <target-registry-name>
 
 將來擷取 Resource Manager[範本](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Import)檔案複製到本機資料夾。
 
-在檔案中輸入下列參數值`azuredeploy.parameters.json`：
+在檔案中輸入下列參數值 `azuredeploy.parameters.json` ：
 
 |參數  |值  |
 |---------|---------|
@@ -327,7 +326,7 @@ az deployment group delete \
 ## <a name="troubleshooting"></a>疑難排解
 
 * **範本部署失敗或錯誤**
-  * 如果管線執行失敗，請查看執行資源`pipelineRunErrorMessage`的屬性。
+  * 如果管線執行失敗，請查看 `pipelineRunErrorMessage` 執行資源的屬性。
   * 如需常見的範本部署錯誤，請參閱針對[ARM 範本部署進行疑難排解](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)
 * **匯出或匯入儲存體 blob 的問題**
   * SAS 權杖可能已過期，或其許可權不足，無法進行指定的匯出或匯入執行

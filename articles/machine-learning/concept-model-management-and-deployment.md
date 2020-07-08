@@ -12,10 +12,9 @@ ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82929752"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure Machine Learning 進行模型管理、部署和監視
@@ -61,7 +60,7 @@ Azure Machine Learning 的環境可讓您追蹤和重現專案的軟體相依性
 模型註冊可讓您在 Azure 雲端自己的工作區中儲存模型和控制模型版本。 模型註冊可讓您更輕鬆地組織和追蹤已定型模型。
 
 > [!TIP]
-> 已註冊的模型是組成模型的一或多個檔案的邏輯容器。 例如，如果您的模型儲存在多個檔案中，您可以將它們註冊為 Azure Machine Learning 工作區中的單一模型。 註冊之後，您就可以下載或部署已註冊的模型，並接收所有已註冊的檔案。
+> 已註冊的模型是組成模型的一或多個檔案所在的邏輯容器。 例如，如果您的模型儲存在多個檔案中，您可以將其註冊為 Azure Machine Learning 工作區中的單一模型。 註冊之後，您就可以下載或部署已註冊的模型，並接收所有已註冊的檔案。
 
 已註冊的模型是透過名稱和版本來識別。 每次註冊與現有模型名稱相同的模型時，登錄都會遞加版本。 註冊期間可以提供額外的元資料標記。 然後在搜尋模型時使用這些標記。 Azure Machine Learning 支援可使用 Python 3.5.2 或更高版本載入的任何模型。
 

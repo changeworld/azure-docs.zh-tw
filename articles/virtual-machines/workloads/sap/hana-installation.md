@@ -14,10 +14,9 @@ ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117116"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安裝和設定 SAP HANA (大型執行個體)
@@ -35,7 +34,7 @@ ms.locfileid: "83117116"
 - [HLI 單位](#validate-the-hana-large-instance-units)
 - [作業系統設定](#operating-system)
 - [網路組態](#networking)
-- [存放裝置設定](#storage)
+- [儲存體組態](#storage)
 
 
 ## <a name="validate-the-hana-large-instance-units"></a>驗證 HANA 大型執行個體單位
@@ -115,7 +114,7 @@ HANA 大型執行個體單位可以連接到這個 SMT 執行個體。 (如需�
 - [SAP 支援附註 #2397039 - 常見問題集：SAP on RHEL](https://launchpad.support.sap.com/#/notes/2397039)
 - [SAP 支援附注 #2002167-Red Hat Enterprise Linux 7.x：安裝和升級](https://launchpad.support.sap.com/#/notes/2002167)
 
-### <a name="time-synchronization"></a>時間同步處理
+### <a name="time-synchronization"></a>時間同步
 
 建立在 SAP NetWeaver 架構上的 SAP 應用程式，對構成 SAP 系統的各種元件時間差異很敏感。 具有錯誤標題 ZDATE\_LARGE\_TIME\_DIFF 的 SAP ABAP 簡短傾印可能很眼熟。 這是因為這些簡短傾印會在不同伺服器或 VM 的系統時間離開太遠時顯示。
 
@@ -144,8 +143,8 @@ SAP Hana on Azure （大型實例）的儲存體配置是 `service management` �
 
 | 儲存體使用量 | 掛接名稱 | 磁碟區名稱 | 
 | --- | --- | ---|
-| HANA 資料 | /hana/data/SID/mnt0000 \< m> | 儲存體 IP：/hana_data_SID_mnt00001_tenant_vol |
-| HANA 記錄檔 | /hana/log/SID/mnt0000 \< m> | 儲存體 IP：/hana_log_SID_mnt00001_tenant_vol |
+| HANA 資料 | /hana/data/SID/mnt0000\<m> | 儲存體 IP：/hana_data_SID_mnt00001_tenant_vol |
+| HANA 記錄檔 | /hana/log/SID/mnt0000\<m> | 儲存體 IP：/hana_log_SID_mnt00001_tenant_vol |
 | HANA 記錄備份 | /hana/log/backups | 儲存體 IP：/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA 共用 | /hana/shared/SID | 儲存體 IP：/hana_shared_SID_mnt00001_tenant_vol/shared |
 | usr/sap | /usr/sap/SID | 儲存體 IP：/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -198,7 +197,7 @@ S72m HANA 大型執行個體單元的 df -h 命令輸出應該像這樣：
 在 HANA 大型實例中使用的儲存體具有檔案大小限制。 [大小限制為](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)每個檔案 16 TB。 不同于 EXT3 檔案系統中的檔案大小限制，HANA 不會隱含地感知 HANA 大型實例儲存體所強制執行的儲存體限制。 因此，當達到16TB 的檔案大小限制時，HANA 將不會自動建立新的資料檔案。 當 HANA 嘗試擴大檔案超過 16 TB 時，HANA 會回報錯誤，而且索引伺服器會在結束時損毀。
 
 > [!IMPORTANT]
-> 為了防止 HANA 嘗試將資料檔案成長到超過 HANA 大型實例儲存體的 16 TB 檔案大小限制，您必須在 SAP Hana 的 global .ini 設定檔案中設定下列參數
+> 為了防止 HANA 嘗試將資料檔案成長到超過 HANA 大型實例儲存體的 16 TB 檔案大小限制，您必須在 SAP Hana global.ini 設定檔案中設定下列參數
 > 
 > - datavolume_striping = true
 > - datavolume_striping_size_gb = 15000

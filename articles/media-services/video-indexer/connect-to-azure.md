@@ -11,21 +11,20 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
 ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005938"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>建立連線到 Azure 的影片索引器帳戶
 
-建立影片索引子帳戶時，您可以選擇免費試用帳戶（您可取得特定的免費編制索引分鐘數）或付費選項（您不會受限於配額）。 使用免費試用版，影片索引子最多可為網站使用者提供600分鐘的免費編制索引，以及最多2400分鐘的 API 使用者免費編制索引。 使用付費選項時，您會建立連接到您的 Azure 訂用帳戶的影片索引子帳戶，以及 Azure 媒體服務帳戶。 您需支付已編制索引的分鐘數，以及媒體帳戶相關費用。
+建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您會建立連接到您的 Azure 訂用帳戶的影片索引子帳戶，以及 Azure 媒體服務帳戶。 您需支付已編制索引的分鐘數，以及媒體帳戶相關費用。
 
 本文將說明如何建立連結到您 Azure 訂用帳戶和 Azure 媒體服務帳戶的影片索引器帳戶。 本主題提供使用自動 (預設) 流程連線到 Azure 的步驟。 也會示範如何手動連線到 Azure (進階)。
 
 如果您要從*試用版*移至*付費*影片索引子帳戶，您可以選擇將所有影片和模型自訂複製到新的帳戶，如[從試用帳戶匯入您的內容](#import-your-content-from-the-trial-account)一節中所述。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。
 
@@ -131,7 +130,7 @@ ms.locfileid: "83005938"
     2. 選取[服務主體驗證方法](../previous/media-services-portal-get-started-with-aad.md)。
     3. 取得用戶端識別碼和用戶端祕密
 
-        在您選取 [**設定**->] [**金鑰**] 之後，請新增 [**描述**]，然後按 [**儲存**] 並填入金鑰值。
+        在您選取 [**設定**] [ -> **金鑰**] 之後，請新增 [**描述**]，然後按 [**儲存**] 並填入金鑰值。
 
         如果金鑰過期，帳戶擁有者就必須聯絡影片索引子支援以更新金鑰。
 
@@ -144,7 +143,7 @@ ms.locfileid: "83005938"
 
 在對話方塊中，提供下列資訊︰
 
-|設定|描述|
+|設定|說明|
 |---|---|
 |影片索引器帳戶區域|影片索引器帳戶區域的名稱。 為了獲得更好的效能和較低的成本，強烈建議您指定 Azure 媒體服務資源和 Azure 儲存體帳戶所在區域的名稱。 |
 |Azure AD 租用戶|Azure AD 租用戶的名稱，例如 "contoso.onmicrosoft.com"。 租用戶資訊可從 Azure 入口網站擷取。 將游標放在右上角登入的使用者名稱上方。 尋找**網域**右邊的名稱。|

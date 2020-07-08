@@ -10,10 +10,9 @@ ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
 ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982236"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 準備觸發程式
@@ -43,7 +42,7 @@ ms.locfileid: "82982236"
 下列範例顯示[c #](functions-dotnet-class-library.md)函式，該函式會在新增至您的應用程式時，在每個新的實例上執行。 不需要傳回值屬性。
 
 
-* 您的函式必須```warmup```命名為（不區分大小寫），而且每個應用程式只能有一個準備函數。
+* 您的函式必須命名為（不區分 ```warmup``` 大小寫），而且每個應用程式只能有一個準備函數。
 * 若要使用準備做為 .NET 類別庫函式，請確定您有3.0.5 的套件參考 **>。**
     * ```<PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.5" />```
 
@@ -73,12 +72,12 @@ namespace WarmupSample
     }
 }
 ```
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 
-下列範例顯示在函式 json 檔案中的準備觸發程式，以及在每個新實例上新增至您的應用程式時，將會在其中執行的[c # 腳本](functions-reference-csharp.md)函式 *。*
+下列範例顯示在檔案的*function.js*中的準備觸發程式，以及將在每個新實例上執行的[c # 腳本](functions-reference-csharp.md)函式（當它新增至您的應用程式時）。
 
-您的函式必須```warmup```命名為（不區分大小寫），而且每個應用程式只能有一個準備函數。
+您的函式必須命名為（不區分 ```warmup``` 大小寫），而且每個應用程式只能有一個準備函數。
 
 以下是 *function.json* 檔案：
 
@@ -107,9 +106,9 @@ public static void Run(ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例顯示函式 *. json*檔案中的準備觸發程式，以及在每個新實例上新增至您的應用程式時，將會在其中執行的[JavaScript 函數](functions-reference-node.md)。
+下列範例示範檔案中*function.js*的準備觸發程式，以及將在每個新實例上執行的[JavaScript](functions-reference-node.md)函式（當它新增至您的應用程式時）。
 
-您的函式必須```warmup```命名為（不區分大小寫），而且每個應用程式只能有一個準備函數。
+您的函式必須命名為（不區分 ```warmup``` 大小寫），而且每個應用程式只能有一個準備函數。
 
 以下是 *function.json* 檔案：
 
@@ -137,9 +136,9 @@ module.exports = async function (context, warmupContext) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例顯示在函式 json 檔案中的準備觸發程式，以及在每個新實例上新增至您的應用程式時，將會在其中執行的[Python](functions-reference-python.md)函式 *。*
+下列範例顯示在檔案的*function.js*中的準備觸發程式，以及將在每個新實例上執行的[Python](functions-reference-python.md)函式（當它新增至您的應用程式時）。
 
-您的函式必須```warmup```命名為（不區分大小寫），而且每個應用程式只能有一個準備函數。
+您的函式必須命名為（不區分 ```warmup``` 大小寫），而且每個應用程式只能有一個準備函數。
 
 以下是 *function.json* 檔案：
 
@@ -172,7 +171,7 @@ def main(warmupContext: func.Context) -> None:
 
 下列範例顯示在每個新的實例新增至您的應用程式時，所執行的準備觸發程式。
 
-您的函式必須`warmup`命名為（不區分大小寫），而且每個應用程式只能有一個準備函數。
+您的函式必須命名為（不區分 `warmup` 大小寫），而且每個應用程式只能有一個準備函數。
 
 ```java
 @FunctionName("Warmup")
@@ -185,13 +184,13 @@ public void run( ExecutionContext context) {
 
 ## <a name="trigger---attributes"></a>觸發程序 - 屬性
 
-在[c # 類別庫](functions-dotnet-class-library.md)中`WarmupTrigger` ，可以使用屬性來設定函式。
+在[c # 類別庫](functions-dotnet-class-library.md)中， `WarmupTrigger` 可以使用屬性來設定函式。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 這個範例示範如何使用「準備[」屬性。](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs)
 
-請注意，您必須呼叫```Warmup```您的函式，而且每個應用程式只能有一個準備函式。
+請注意，您必須呼叫您的函式 ```Warmup``` ，而且每個應用程式只能有一個準備函式。
 
 ```csharp
  [FunctionName("Warmup")]
@@ -202,11 +201,11 @@ public void run( ExecutionContext context) {
         }
 ```
 
-如需完整範例，請參閱[觸發程式範例](#trigger---example)。
+如需完整範例，請參閱[觸發程序範例](#trigger---example)。
 
-# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-C # 腳本不支援屬性。
+C# 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -214,7 +213,7 @@ JavaScript 不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支援屬性。
+Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -224,12 +223,12 @@ JAVA 中不支援準備觸發程式做為屬性。
 
 ## <a name="trigger---configuration"></a>觸發程式 - 設定
 
-下表說明您在*函數 json*檔案和`WarmupTrigger`屬性中設定的系結設定屬性。
+下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `WarmupTrigger` 屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
 | **type** | n/a| 必要項目 - 必須設定為 `warmupTrigger`。 |
-| **方向** | n/a| 必要項目 - 必須設定為 `in`。 |
+| **direction** | n/a| 必要項目 - 必須設定為 `in`。 |
 | **name** | n/a| 必要-函式程式碼中使用的變數名稱。|
 
 ## <a name="trigger---usage"></a>觸發程序 - 使用方式

@@ -4,10 +4,9 @@ description: 說明如何建立 Azure Migrate 專案，以及新增評量/遷移
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82901206"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>第一次使用請新增評量/移轉工具
@@ -19,8 +18,8 @@ Azure Migrate 提供中央中樞，以追蹤內部部署應用程式和工作負
 
 如果您尚未建立 Azure Migrate 專案，請檢查您是否擁有正確的許可權。
 
-1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]  。
-2. 在 [檢查存取權]  中，尋找相關的帳戶，然後按一下以查看權限。 您應該會具有「參與者」  或「擁有者」  權限。
+1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]。
+2. 在 [檢查存取權] 中，尋找相關的帳戶，然後按一下以查看權限。 您應該會具有「參與者」或「擁有者」權限。
     - 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。
     - 如果您不是訂用帳戶擁有者，請與擁有者合作以指派角色。
 
@@ -31,18 +30,18 @@ Azure Migrate 提供中央中樞，以追蹤內部部署應用程式和工作負
 - Azure Migrate 專案用來儲存從您要評估或遷移的環境中收集到的探索、評估和遷移中繼資料。 
 - 在專案中，您可以追蹤探索到的資產，以及協調評估和遷移。
 
-1. 在 Azure 入口網站 > [所有服務]  中，搜尋 **Azure Migrate**。
-2. 在 [服務]  下，選取 [Azure Migrate]  。
+1. 在 Azure 入口網站 > [所有服務] 中，搜尋 **Azure Migrate**。
+2. 在 [服務] 下，選取 [Azure Migrate]。
 
     ![設定 Azure Migrate](./media/how-to-add-tool-first-time/azure-migrate-search.png)
 
-3. 在 [概觀]  中，按一下 [評估和遷移伺服器]  。
-4. 在 [探索、評估和遷移伺服器]  下方，按一下 [評估和遷移伺服器]  。
+3. 在 [概觀] 中，按一下 [評估和遷移伺服器]。
+4. 在 [探索、評估和遷移伺服器] 下方，按一下 [評估和遷移伺服器]。
 
     ![探索和評估伺服器](./media/how-to-add-tool-first-time/assess-migrate.png)
 
-1. 在 [探索、評估和遷移伺服器]  中，按一下 [新增工具]  。
-2. 在 [Migrate 專案]  中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。
+1. 在 [探索、評估和遷移伺服器] 中，按一下 [新增工具]。
+2. 在 [Migrate 專案] 中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。
 3. 在 [**專案詳細資料**] 中，指定您要在其中建立專案的 [專案名稱] 和 [地理位置]。  請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
     ![建立 Azure Migrate 專案](./media/how-to-add-tool-first-time/migrate-project.png)
@@ -58,9 +57,9 @@ Azure Migrate 提供中央中樞，以追蹤內部部署應用程式和工作負
     > [!NOTE]
     > 當您建立專案時，您必須新增至少一個評估或遷移工具。
 
-5. 在 [**選取評估工具**] 中，新增評定工具。 如果您不需要評估工具，請選取 [ > **立即略過新增評估工具****]**。 
-2. 在 [**選取遷移工具**] 中，視需要新增遷移工具。 如果您目前不需要遷移工具，請選取 > [**立即略過新增遷移工具****]**。
-3. 在 [檢閱 + 新增工具]  中檢閱設定，然後按一下 [新增工具]  。
+5. 在 [**選取評估工具**] 中，新增評定工具。 如果您不需要評估工具，請選取 [**立即略過新增評估工具**  >  **]**。 
+2. 在 [**選取遷移工具**] 中，視需要新增遷移工具。 如果您目前不需要遷移工具，請選取 [**立即略過新增遷移工具**  >  **]**。
+3. 在 [檢閱 + 新增工具] 中檢閱設定，然後按一下 [新增工具]。
 
 建立專案之後，您可以選取其他工具來評估和遷移伺服器和工作負載、資料庫和 web 應用程式。
 

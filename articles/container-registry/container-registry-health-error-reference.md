@@ -4,10 +4,9 @@ description: 在 Azure Container Registry 中執行 az acr check-health 診斷�
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82978309"
 ---
 # <a name="health-check-error-reference"></a>健全狀況檢查錯誤參考
@@ -22,13 +21,13 @@ ms.locfileid: "82978309"
 
 ## <a name="docker_daemon_error"></a>DOCKER_DAEMON_ERROR
 
-此錯誤表示 Docker daemon 狀態為 [無法使用]，或無法使用 CLI 來達到。 因此，透過 CLI 無法使用 Docker 作業（ `docker login`例如`docker pull`和）。
+此錯誤表示 Docker daemon 狀態為 [無法使用]，或無法使用 CLI 來達到。 因此， `docker login` 透過 CLI 無法使用 Docker 作業（例如和 `docker pull` ）。
 
 *可能的解決方案*：重新開機 Docker daemon，或驗證是否已正確安裝。
 
 ## <a name="docker_version_error"></a>DOCKER_VERSION_ERROR
 
-此錯誤表示 CLI 無法執行命令`docker --version`。
+此錯誤表示 CLI 無法執行命令 `docker --version` 。
 
 *可能的解決方案*：請嘗試手動執行命令，確定您有最新的 CLI 版本，並調查錯誤訊息。
 
@@ -58,7 +57,7 @@ ms.locfileid: "82978309"
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-此錯誤表示指定登錄的挑戰端點回應了403禁止的 HTTP 狀態。 此錯誤表示使用者無法存取登錄，很可能是因為虛擬網路設定，或因為不允許存取登錄的公用端點。 若要查看目前設定的防火牆規則， `az acr show --query networkRuleSet --name <registry>`請執行。
+此錯誤表示指定登錄的挑戰端點回應了403禁止的 HTTP 狀態。 此錯誤表示使用者無法存取登錄，很可能是因為虛擬網路設定，或因為不允許存取登錄的公用端點。 若要查看目前設定的防火牆規則，請執行 `az acr show --query networkRuleSet --name <registry>` 。
 
 *可能的解決方案*：移除虛擬網路規則，或將目前的用戶端 IP 位址新增至允許清單。
 
@@ -66,25 +65,25 @@ ms.locfileid: "82978309"
 
 此錯誤表示目標登錄的挑戰端點不會發出挑戰。
 
-*可能的解決方案*：稍後再試一次。 如果錯誤持續發生，請在https://aka.ms/acr/issues中開啟問題。
+*可能的解決方案*：稍後再試一次。 如果錯誤持續發生，請在中開啟問題 https://aka.ms/acr/issues 。
 
 ## <a name="connectivity_aad_login_error"></a>CONNECTIVITY_AAD_LOGIN_ERROR
 
 此錯誤表示目標登錄的挑戰端點發出挑戰，但登錄不支援 Azure Active Directory 驗證。
 
-*可能的解決方案*：嘗試以不同的方式驗證，例如使用系統管理員認證。 如果使用者需要使用 Azure Active Directory 進行驗證，請在https://aka.ms/acr/issues中開啟問題。
+*可能的解決方案*：嘗試以不同的方式驗證，例如使用系統管理員認證。 如果使用者需要使用 Azure Active Directory 進行驗證，請在中開啟問題 https://aka.ms/acr/issues 。
 
 ## <a name="connectivity_refresh_token_error"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
 
 此錯誤表示登錄登入伺服器沒有回應重新整理權杖，因此拒絕存取目標登錄。 如果使用者沒有登錄的正確許可權，或 Azure CLI 的使用者認證已過時，就會發生此錯誤。
 
-*可能的解決方案*：確認使用者是否擁有登錄的正確許可權;執行`az login`以重新整理許可權、權杖和認證。
+*可能的解決方案*：確認使用者是否擁有登錄的正確許可權;執行 `az login` 以重新整理許可權、權杖和認證。
 
 ## <a name="connectivity_access_token_error"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
 
 此錯誤表示登錄登入伺服器未以存取權杖回應，因此已拒絕對目標登錄的存取。 如果使用者沒有登錄的正確許可權，或 Azure CLI 的使用者認證已過時，就會發生此錯誤。
 
-*可能的解決方案*：確認使用者是否擁有登錄的正確許可權;執行`az login`以重新整理許可權、權杖和認證。
+*可能的解決方案*：確認使用者是否擁有登錄的正確許可權;執行 `az login` 以重新整理許可權、權杖和認證。
 
 ## <a name="connectivity_ssl_error"></a>CONNECTIVITY_SSL_ERROR
 
@@ -100,7 +99,7 @@ ms.locfileid: "82978309"
 
 ## <a name="notary_version_error"></a>NOTARY_VERSION_ERROR
 
-此錯誤表示 CLI 與目前安裝的 Docker/Notary 版本不相容。 請嘗試以手動方式取代 Docker 安裝的 Notary 用戶端來解決此問題，以將您的 notary 版本降級至0.6.0 之前的版本。
+此錯誤表示 CLI 與目前安裝的 Docker/Notary 版本不相容。 請嘗試以手動方式取代 Docker 安裝的 Notary 用戶端來解決此問題，以將您的 notary.exe 版本降級至0.6.0 之前的版本。
 
 ## <a name="next-steps"></a>後續步驟
 

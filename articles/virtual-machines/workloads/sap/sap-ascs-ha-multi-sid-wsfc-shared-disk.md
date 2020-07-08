@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e8c235cd204b86573746be4bce615939f3b072fa
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82977901"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>在 Azure 上搭配 Windows Server 容錯移轉叢集和共用磁碟的 SAP ASCS/SCS 執行個體多重 SID 高可用性
@@ -28,7 +27,7 @@ ms.locfileid: "82977901"
 > ![Windows][Logo_Windows] Windows
 >
 
-Microsoft 于2016年9月發行了一項功能，可讓您使用[Azure 內部負載平衡器][load-balancer-multivip-overview]管理多個虛擬 IP 位址。 這項功能已存在 Azure 外部負載平衡器。 
+Microsoft 在 2016 年 9 月發行的功能，可讓您使用 [Azure 內部負載平衡器][load-balancer-multivip-overview]管理多個虛擬 IP 位址。 這項功能已存在 Azure 外部負載平衡器。 
 
 如果您有 SAP 部署，則必須使用內部負載平衡器，建立 SAP Central Services 執行個體的 Windows 叢集組態。
 
@@ -46,7 +45,7 @@ Microsoft 于2016年9月發行了一項功能，可讓您使用[Azure 內部負�
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您已經使用**檔案共用**來設定要用於一個 SAP ASCS/SCS 執行個體的 WSFC 叢集，如下圖所示。
 
@@ -228,7 +227,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 1. [使用高可用性 ASCS/SCS 實例安裝 SAP][sap-high-availability-installation-wsfc-shared-disk-install-ascs]。  
  在此步驟中，您要在現有 WSFC 叢集節點 1 上使用高可用性 ASCS/SCS 執行個體安裝 SAP。
 
-2. [修改 ASCS/SCS 實例的 SAP 設定檔][sap-high-availability-installation-wsfc-shared-disk-modify-ascs-profile]。
+2. [修改 ASCS/SCS 執行個體的 SAP 設定檔][sap-high-availability-installation-wsfc-shared-disk-modify-ascs-profile]。
 
 3. [設定探查連接埠][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]。  
  在此步驟中，您要使用 PowerShell 設定 SAP 叢集資源 SAP SID2 IP 探查連接埠。 在其中一個 SAP ASCS/SCS 叢集節點上執行此組態。
@@ -252,7 +251,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 9. 在新的專用 VM 上安裝 SAP 其他應用程式伺服器，如 SAP 安裝指南所述。
 
-10. [測試 SAP ASCS/SCS 實例容錯移轉和 SIOS][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl]複寫。
+10. [測試 SAP ASCS/SCS 執行個體容錯移轉和 SIOS 複寫][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl]。
 
 ## <a name="next-steps"></a>後續步驟
 

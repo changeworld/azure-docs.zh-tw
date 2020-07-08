@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982950"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>在 Azure 中使用叢集共用磁碟於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理
@@ -32,7 +31,7 @@ Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝
 
 容錯移轉叢集是由 1+n 個獨立伺服器 (節點) 所組成的群組，這些伺服器會共同運作以提升應用程式和服務的可用性。 如果發生節點失敗，Windows Server 容錯移轉叢集會計算發生的失敗次數，以及仍然維持狀況良好的叢集，以提供應用程式和服務。 您可以從不同的仲裁模式選擇以達成容錯移轉叢集。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 開始本文中的工作之前，請檢閱下列文章：
 
 * [SAP NetWeaver 的 Azure 虛擬機器高可用性架構和案例][sap-high-availability-architecture-scenarios]
@@ -60,15 +59,15 @@ _**圖 1**：Azure 中不含共用磁碟的 Windows Server 容錯移轉叢集設
 SAP ASCS/SCS 執行個體包含下列元件：
 
 * SAP 中央服務：
-    * 兩個處理常式\<、訊息和排入佇列伺服器，以及 ASCS/SCS 虛擬主機名稱>，用來存取這兩個進程。
-    * 檔案結構：S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<執行個體號碼\>
+    * 兩個處理常式、訊息和排入佇列伺服器，以及 \<ASCS/SCS virtual host name> 用來存取這兩個處理常式的。
+    * 檔案結構： S:\usr\sap \\ &lt; SID &gt; \ ASCS/SCS\<instance number\>
 
 
 * SAP 全域主機檔案：
   * 檔案結構：S:\usr\sap\\&lt;SID&gt;\SYS\..
   * sapmnt 檔案共用，可利用下列 UNC 路徑，供存取這些全域 S:\usr\sap\\&lt;SID&gt;\SYS\... 檔案：
 
-    \\\\<\>ASCS/SCS 虛擬主機名稱 \sapmnt\\&lt;SID&gt;\SYS\..。
+    \\\\<ASCS/SCS 虛擬主機名稱 \> \Sapmnt \\ &lt; SID &gt; \SYS \. .。
 
 
 ![圖 2：SAP ASCS/SCS 執行個體的處理序、檔案結構和全域主機 sapmnt 檔案共用][sap-ha-guide-figure-8001]
@@ -83,7 +82,7 @@ _**圖3：** 具有共用磁片的 SAP ASCS/SCS HA 架構_
 
 > [!IMPORTANT]
 > 這兩個元件會在相同的 SAP ASCS/SCS 執行個體底下執行：
->* 相同\<的 ASCS/SCS 虛擬主機名稱> 是用來存取 sap 訊息和排入佇列伺服器進程，以及透過 sapmnt 檔案共用的 sap 全域主機檔案。
+>* 這 \<ASCS/SCS virtual host name> 是用來存取 sap 訊息和排入佇列伺服器進程，以及透過 sapmnt 檔案共用的 sap 全域主機檔案。
 >* 會在兩者間共用相同的叢集共用磁碟 S 磁碟機。
 >
 

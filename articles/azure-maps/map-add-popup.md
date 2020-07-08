@@ -10,10 +10,9 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: d7ca2f07e4568257baf72f2f298631b86f776c2a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83119263"
 ---
 # <a name="add-a-popup-to-the-map"></a>在地圖上新增快顯
@@ -279,7 +278,7 @@ var popup = new atlas.Popup({
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [快顯](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
+> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
 
 > [!div class="nextstepaction"]
 > [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)

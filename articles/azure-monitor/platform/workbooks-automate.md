@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
 ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982134"
 ---
 # <a name="programmatically-manage-workbooks"></a>以程式設計方式管理活頁簿
@@ -34,12 +33,12 @@ ms.locfileid: "82982134"
 
 1. 開啟您想要以程式設計方式部署的活頁簿。
 2. 按一下 [_編輯_] 工具列專案，將活頁簿切換至編輯模式。
-3. 使用工具列_Advanced Editor_上的_</>_ 按鈕開啟 [進階編輯器]。
+3. 使用工具列上的按鈕開啟 [_進階編輯器_] _</>_ 。
 4. 請確定您位於 [_圖庫範本_] 索引標籤上。
 
     ![圖庫範本索引標籤](./media/workbooks-automate/gallery-template.png)
 1. 將資源庫範本中的 JSON 複製到剪貼簿。
-2. 以下是將活頁簿範本部署至 Azure 監視器活頁簿圖庫的範例 Azure Resource Manager 範本。 貼上您所複製的 JSON 來`<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`取代。 您可以在[這裡](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)找到建立活頁簿範本的參考 Azure Resource Manager 範本。
+2. 以下是將活頁簿範本部署至 Azure 監視器活頁簿圖庫的範例 Azure Resource Manager 範本。 貼上您所複製的 JSON 來取代 `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>` 。 您可以在[這裡](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)找到建立活頁簿範本的參考 Azure Resource Manager 範本。
 
     ```json
     {
@@ -77,12 +76,12 @@ ms.locfileid: "82982134"
         ]
     }
     ```
-1. 在`galleries`物件中填入`name`和索引鍵`category` ，並加上您的值。 深入瞭解下一節中的[參數](#parameters)。
+1. 在 `galleries` 物件中填入和索引 `name` 鍵，並 `category` 加上您的值。 深入瞭解下一節中的[參數](#parameters)。
 2. 使用[Azure 入口網站](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)、[命令列介面](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)、 [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)等部署此 Azure Resource Manager 範本。
 3. 開啟 Azure 入口網站，然後流覽至 [Azure Resource Manager] 範本中所選擇的活頁簿圖庫。 在範例範本中，流覽至 Azure 監視器活頁簿圖庫：
     1. 開啟 Azure 入口網站，然後流覽至 Azure 監視器
-    2. 從`Workbooks`目錄中開啟
-    3. 在 [類別`Deployed Templates` ] 下的資源庫中尋找您的範本（會是其中一個紫色專案）。
+    2. `Workbooks`從目錄中開啟
+    3. 在 [類別] 下的資源庫中尋找您的範本 `Deployed Templates` （會是其中一個紫色專案）。
 
 ### <a name="parameters"></a>參數
 
@@ -98,7 +97,7 @@ ms.locfileid: "82982134"
 | `gallery.category`       | 要放置範本之資源庫中的群組。                                                     |
 | `gallery.order`          | 決定要在資源庫中的類別內顯示範本之順序的數位。 較低的順序表示較高的優先順序。 |
 | `gallery.resourceType`   | 對應至圖庫的資源類型。 這通常是對應至資源的資源類型字串（例如，microsoft.operationalinsights/工作區）。 |
-|`gallery.type`            | 稱為活頁簿類型，這是在資源類型中區分圖庫的唯一索引鍵。 例如，Application Insights 具有類型`workbook` ，並`tsg`對應至不同的活頁簿資源庫。 |
+|`gallery.type`            | 稱為活頁簿類型，這是在資源類型中區分圖庫的唯一索引鍵。 例如，Application Insights 具有類型 `workbook` ，並 `tsg` 對應至不同的活頁簿資源庫。 |
 
 ### <a name="galleries"></a>資源庫
 
@@ -120,7 +119,7 @@ ms.locfileid: "82982134"
 
 1. 開啟您想要以程式設計方式部署的活頁簿。
 2. 按一下 [_編輯_] 工具列專案，將活頁簿切換至編輯模式。
-3. 使用工具列_Advanced Editor_上的_</>_ 按鈕開啟 [進階編輯器]。
+3. 使用工具列上的按鈕開啟 [_進階編輯器_] _</>_ 。
 4. 在編輯器中，將_範本類型_切換為_Resource Manager 範本_。
 5. 用於建立的 Resource Manager 範本會顯示在編輯器中。 複製內容並依其情況使用，或將它與也會部署目標資源的較大範本合併。
 
@@ -193,7 +192,7 @@ ms.locfileid: "82982134"
 | 參數 | 說明 |
 | :------------- |:-------------|
 | `workbookDisplayName` | 圖庫或已儲存清單中所使用之活頁簿的易記名稱。 在資源群組和來源的範圍中必須是唯一的 |
-| `workbookType` | 活頁簿將顯示在其底下的資源庫。 支援的值包括活頁`tsg`簿、、Azure 監視器等。 |
+| `workbookType` | 活頁簿將顯示在其底下的資源庫。 支援的值包括活頁簿、 `tsg` 、Azure 監視器等。 |
 | `workbookSourceId` | 活頁簿將與之關聯的資源實例識別碼。 新的活頁簿會顯示此資源實例的相關內容，例如，在活頁_簿_底下的資源表格中。 如果您想要將活頁簿顯示在 Azure 監視器的活頁簿圖庫中，請使用字串_Azure 監視器_，而不是資源識別碼。 |
 | `workbookId` | 這個活頁簿實例的唯一 guid。 使用 _[newGuid （）]_ 自動建立新的 guid。 |
 | `kind` | 用來指定所建立的活頁簿為共用或私用。 針對共用的活頁簿和_使用者_使用私人的值_共用_。 |
@@ -210,7 +209,7 @@ ms.locfileid: "82982134"
 | `usage` | [ _More_ _使用量_] 下的資源庫 Application Insights |
 
 ### <a name="limitations"></a>限制
-基於技術原因，此機制無法用來在 Application Insights 的活頁_簿_資源庫中建立活頁簿實例。 我們正致力於解決這項限制。 在此同時，我們建議您使用疑難排解指南資源庫（workbookType： `tsg`）來部署 Application Insights 相關的活頁簿。
+基於技術原因，此機制無法用來在 Application Insights 的活頁_簿_資源庫中建立活頁簿實例。 我們正致力於解決這項限制。 在此同時，我們建議您使用疑難排解指南資源庫（workbookType： `tsg` ）來部署 Application Insights 相關的活頁簿。
 
 ## <a name="next-steps"></a>後續步驟
 

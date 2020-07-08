@@ -4,10 +4,9 @@ description: 將 ACR 工作執行排入佇列，以使用 Azure Resource Manager
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927763"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>使用 Resource Manager 範本執行 ACR 工作
@@ -16,7 +15,7 @@ ms.locfileid: "82927763"
 
 本文說明將快速工作執行排入佇列的 Azure Resource Manager 範本範例，類似于您可以使用[az acr build][az-acr-build]命令來手動建立。
 
-將工作執行排入佇列的 Resource Manager 範本在自動化案例中非常有用，而且會`az acr build`擴充的功能。 例如：
+將工作執行排入佇列的 Resource Manager 範本在自動化案例中非常有用，而且會擴充的功能 `az acr build` 。 例如：
 
 * 使用範本來建立容器登錄，並立即將工作執行排入佇列，以建立及推送容器映射
 * 建立或啟用可在快速工作執行中使用的其他資源，例如適用于 Azure 資源的受控識別
@@ -26,10 +25,10 @@ ms.locfileid: "82927763"
 * 您必須指定遠端內容（例如 GitHub 存放庫）做為工作執行的[來源位置](container-registry-tasks-overview.md#context-locations)。 您不能使用本機來源內容。
 * 針對使用受控識別執行的工作，只允許*使用者指派*的受控識別。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* **GitHub 帳戶**-如果您還沒有https://github.com帳戶，請在上建立帳戶。 
-* **派生範例存放庫**-針對此處顯示的工作範例，請使用 github UI 將下列範例存放庫分支至您的 GitHub https://github.com/Azure-Samples/acr-build-helloworld-node帳戶：。 此存放庫包含用來建立小型容器映射的範例 Dockerfile 和原始程式碼。
+* **GitHub 帳戶**-如果您還沒有帳戶，請在上建立帳戶 https://github.com 。 
+* **派生範例存放庫**-針對此處顯示的工作範例，請使用 github UI 將下列範例存放庫分支至您的 GitHub 帳戶： https://github.com/Azure-Samples/acr-build-helloworld-node 。 此存放庫包含用來建立小型容器映射的範例 Dockerfile 和原始程式碼。
 
 ## <a name="example-create-registry-and-queue-task-run"></a>範例：建立登錄和佇列工作執行
 
@@ -44,7 +43,7 @@ ms.locfileid: "82927763"
 |于： registryname     |所建立登錄的唯一名稱         |
 |repository     |組建工作的目標存放庫        |
 |taskRunName     |指定影像標記的工作執行名稱 |
-|sourceLocation     |組建工作的遠端內容，例如https://github.com/Azure-Samples/acr-build-helloworld-node。 存放庫根目錄中的 Dockerfile 會建立小型 Node.js web 應用程式的容器映射。 如有需要，請使用您的存放庫分支做為組建內容。         |
+|sourceLocation     |組建工作的遠端內容，例如 https://github.com/Azure-Samples/acr-build-helloworld-node 。 存放庫根目錄中的 Dockerfile 會建立小型 Node.js web 應用程式的容器映射。 如有需要，請使用您的存放庫分支做為組建內容。         |
 
 ### <a name="deploy-the-template"></a>部署範本
 
@@ -112,7 +111,7 @@ az acr task logs \
 您也可以在 Azure 入口網站中查看工作執行記錄。 
 
 1. 流覽至您的 container registry
-2. 在 [**服務**] 下 **，選取** > [工作] [**執行**]。
+2. 在 [**服務**] 下 **，選取 [** 工作] [  >  **執行**]。
 3. 選取 [執行識別碼]，在此案例中為*ca1*。 
 
 入口網站會顯示 [工作] [執行記錄]。
@@ -123,12 +122,12 @@ az acr task logs \
 
 此案例類似于[使用 Azure 管理的身分識別，在 ACR 工作中進行跨登錄驗證](container-registry-tasks-cross-registry-authentication.md)。 例如，組織可能會使用多個開發小組所存取的基底映射來維護集中式登錄。
 
-### <a name="prepare-base-registry"></a>準備基底登錄
+### <a name="prepare-base-registry"></a>準備基礎登錄
 
-基於示範目的，請建立另一個容器登錄作為基底登錄，並推送從 Docker Hub 提取的 node.js 基底映射。
+基於示範目的，請建立另一個容器登錄作為基底登錄，然後推送從 Docker Hub 提取的 Node.js 基底映射。
 
 1. 建立第二個容器登錄，例如*mybaseregistry*，以儲存基底映射。
-1. 從 Docker `node:9-alpine` Hub 提取映射，將它標記為基底登錄，然後將它推送至基底登錄：
+1. `node:9-alpine`從 Docker Hub 提取映射，將它標記為基底登錄，然後將它推送至基底登錄：
 
   ```azurecli
   docker pull node:9-alpine
@@ -139,7 +138,7 @@ az acr task logs \
 
 ### <a name="create-new-dockerfile"></a>建立新的 Dockerfile
 
-建立從基底登錄提取基底映射的 Dockerfile。 在 GitHub 存放庫的本機分支中執行下列步驟，例如`https://github.com/myGitHubID/acr-build-helloworld-node.git`。
+建立從基底登錄提取基底映射的 Dockerfile。 在 GitHub 存放庫的本機分支中執行下列步驟，例如 `https://github.com/myGitHubID/acr-build-helloworld-node.git` 。
 
 1. 在 GitHub UI 中，選取 [**建立新**檔案]。
 1. 將您的檔案命名*為 Dockerfile-test* ，並貼上下列內容。 以您的登錄名稱取代*mybaseregistry*。
@@ -154,11 +153,11 @@ az acr task logs \
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
-### <a name="give-identity-pull-permissions-to-the-base-registry"></a>將身分識別提取許可權授與基底登錄
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>將身分識別提取權限授與基礎登錄
 
 授與受控識別許可權以從基底登錄（ *mybaseregistry*）提取。
 
-使用[az acr show][az-acr-show]命令來取得基底登錄的資源識別碼，並將它儲存在變數中：
+使用 [az acr show][az-acr-show] 命令來取得基礎登錄的資源識別碼，並將其儲存在變數中：
 
 ```azurecli
 baseregID=$(az acr show \
@@ -166,7 +165,7 @@ baseregID=$(az acr show \
   --query id --output tsv)
 ```
 
-使用[az role 指派 create][az-role-assignment-create]命令，將 Acrpull 角色的身分識別指派給基底登錄。 此角色只有從登錄提取映射的許可權。
+使用[az role 指派 create][az-role-assignment-create]命令，將 Acrpull 角色的身分識別指派給基底登錄。 此角色只有從登錄提取映像的權限。
 
 ```azurecli
 az role assignment create \
@@ -187,7 +186,7 @@ az role assignment create \
 |userAssignedIdentity |在工作中啟用之使用者指派身分識別的資源識別碼|
 |customRegistryIdentity | 在工作中啟用之使用者指派身分識別的用戶端識別碼，用來向自訂登錄進行驗證 |
 |customRegistry |在工作中存取之自訂登錄的登入伺服器名稱，例如*mybaseregistry.azurecr.io*|
-|sourceLocation     |組建工作的遠端內容，例如* https://github.com/\<your-GitHub-ID\>/acr-build-helloworld-node。* |
+|sourceLocation     |組建工作的遠端內容，例如* https://github.com/ \<your-GitHub-ID\> /acr-build-helloworld-node.* |
 |dockerFilePath | Dockerfile 在遠端內容的路徑，用來建立映射。 |
 
 ### <a name="deploy-the-template"></a>部署範本

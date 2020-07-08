@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122287"
 ---
 # <a name="manage-your-function-app"></a>管理您的函數應用程式 
@@ -67,7 +66,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-當您在本機開發函式應用程式時，您必須在本機的設定 json 專案檔中維護這些值的本機複本。 若要深入瞭解，請參閱[本機設定檔](functions-run-local.md#local-settings-file)。
+當您在本機開發函式應用程式時，您必須在專案檔案的 local.settings.js中維護這些值的本機複本。 若要深入瞭解，請參閱[本機設定檔](functions-run-local.md#local-settings-file)。
 
 ## <a name="platform-features"></a>平台功能
 

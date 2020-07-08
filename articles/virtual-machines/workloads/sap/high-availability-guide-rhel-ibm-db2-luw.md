@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.openlocfilehash: 1a00a3c1e0d34a8c7abbcd5bfc7a6771d9e2a4c3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82983035"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上 Azure VM 的 IBM Db2 LUW 高可用性
@@ -33,14 +32,14 @@ ms.locfileid: "82983035"
 
 在開始安裝之前，請參閱下列 SAP 附注和檔：
 
-| SAP 附注 | 描述 |
+| SAP 附注 | Description |
 | --- | --- |
 | [1928533] | Azure 上的 SAP 應用程式：支援的產品和 Azure VM 類型 |
 | [2015553] | Azure 上的 SAP：支援必要條件 |
 | [2178632] | Azure 上的 SAP 的重要監視計量 |
-| [2191498] | Linux 上使用 Azure 的 SAP：增強型監視 |
+| [2191498] | Linux 上搭配 Azure 的 SAP：增強型監視 |
 | [2243692] | Linux on Azure （IaaS） VM： SAP 授權問題 |
-| [2002167] | Red Hat Enterprise Linux 7.x：安裝和升級 |
+| [2002167] | Red Hat Enterprise Linux 7.x：安裝與升級 |
 | [2694118] | 在 Azure 上 Red Hat Enterprise Linux HA 附加元件 |
 | [1999351] | 對適用於 SAP 的增強型 Azure 監視功能進行疑難排解 |
 | [2233094] | DB6： Azure 上使用 IBM Db2 for Linux、UNIX 和 Windows 的 SAP 應用程式-其他資訊 |
@@ -59,14 +58,14 @@ ms.locfileid: "82983035"
 | [高可用性附加元件參考][rhel-ha-ref] |
 | [RHEL 高可用性叢集的支援原則：以 Microsoft Azure 虛擬機器作為叢集成員][rhel-azr-supp]
 | [在 Microsoft Azure 上安裝和設定 Red Hat Enterprise Linux 7.4 (和更新版本) 高可用性叢集][rhel-azr-inst]
-| [適用于 SAP 工作負載的 IBM Db2 Azure 虛擬機器 DBMS 部署][dbms-db2] |
+| [適用於 SAP 工作負載的 IBM DB2 Azure 虛擬機器 DBMS 部署][dbms-db2] |
 | [IBM Db2 HADR 11。1][db2-hadr-11.1] |
 | [IBM Db2 HADR 10。5][db2-hadr-10.5] |
 | [RHEL 高可用性叢集的支援原則-在叢集中管理 IBM Db2 for Linux、Unix 和 Windows][rhel-db2-supp]
 
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 為了達到高可用性，IBM Db2 LUW with HADR 會安裝在至少兩個 Azure 虛擬機器上，它們會部署在[azure 可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)或跨[Azure 可用性區域](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)。 
 
 下列圖形顯示兩個資料庫伺服器 Azure Vm 的設定。 這兩個資料庫伺服器 Azure Vm 都有自己的儲存體，且已啟動並執行。 在 HADR 中，其中一個 Azure Vm 中的一個資料庫實例具有主要實例的角色。 所有用戶端都會連接到主要實例。 資料庫交易中的所有變更都會保存在 Db2 交易記錄檔的本機。 當交易記錄檔記錄在本機保存時，記錄會透過 TCP/IP 傳輸到第二個資料庫伺服器、待命伺服器或待命實例上的資料庫實例。 待命實例會藉由向前復原已傳送的交易記錄檔記錄來更新本機資料庫。 如此一來，待命伺服器就會與主伺服器保持同步。
@@ -86,7 +85,7 @@ HADR 只是一種複寫功能。 它沒有任何失敗偵測，也沒有自動�
 若要部署 IBM Db2 設定，您需要遵循下列步驟：
 
   + 規劃您的環境。
-  + 部署 Vm。
+  + 部署 VM。
   + 更新 RHEL Linux 並設定檔案系統。
   + 安裝和設定 Pacemaker。
   + 設定[glusterfs][glusterfs]叢集或[Azure NetApp Files][anf-rhel]
@@ -205,7 +204,7 @@ sudo firewall-cmd --add-port=4237/tcp</code></pre>
 
 若要使用 SAP 同質系統複製程式來設定待命資料庫伺服器，請執行下列步驟：
 
-1. 選取 [**系統複製**選項] > [**目標系統** > ] [**分散式** > **資料庫實例**]。
+1. 選取 [**系統複製**選項] > [**目標系統**] [  >  **分散式**  >  **資料庫實例**]。
 1. 在 [複製方法] 中，選取 [**同質系統**]，讓您可以使用 [備份] 來還原待命伺服器實例上的備份。
 1. 當您到達針對同質系統複製還原資料庫的結束步驟時，請結束安裝程式。 從主要主機的備份還原資料庫。 所有後續的安裝階段都已經在主資料庫伺服器上執行。
 
@@ -336,8 +335,8 @@ SOCK_RECV_BUF_REQUESTED,ACTUAL(bytes) = 0, 367360
 - **[2]**：僅適用于節點2
 
 **[A] Pacemaker 設定**的必要條件：
-1. 以 db2stop 的使用者 db2\<sid> 關閉這兩個資料庫伺服器。
-1. 將 db2\<sid> 使用者的 shell 環境變更為 */bin/ksh*：
+1. 使用 db2stop 來關閉這兩個資料庫伺服器與使用者 db2 \<sid> 。
+1. 將 db2 使用者的 shell 環境變更 \<sid> 為 */bin/ksh*：
 <pre><code># Install korn shell:
 sudo yum install ksh
 # Change users shell:
@@ -413,7 +412,7 @@ Daemon 狀態： corosync：作用中/已停用的 pacemaker： active/disabled 
 
    c. 將 [**指派**] 設定為 [**靜態**]，然後輸入在一開始定義的 ip 位址**虛擬 ip** 。
 
-   d. 選取 [確定]  。
+   d. 選取 [確定]。
 
    e. 建立新的前端 IP 集區之後，請記下集區 IP 位址。
 
@@ -423,7 +422,7 @@ Daemon 狀態： corosync：作用中/已停用的 pacemaker： active/disabled 
 
    b. 輸入新後端集區的名稱（例如， **Db2-後**端）。
 
-   c. 選取 [新增虛擬機器]****。
+   c. 選取 [新增虛擬機器]。
 
    d. 選取在上一個步驟中建立的 [可用性設定組] 或 [裝載 IBM Db2 資料庫的虛擬機器]。
 
@@ -439,7 +438,7 @@ Daemon 狀態： corosync：作用中/已停用的 pacemaker： active/disabled 
 
    c. 選取 [ **TCP** ] 作為通訊協定和埠**62500**。 將 [**間隔**] 值保持設定為 [ **5**]，並將 [**狀況不良臨界**值] 設定為**2**。
 
-   d. 選取 [確定]  。
+   d. 選取 [確定]。
 
 1. 建立負載平衡規則：
 
@@ -451,11 +450,11 @@ Daemon 狀態： corosync：作用中/已停用的 pacemaker： active/disabled 
 
    d. 將 [通訊**協定**] 保持設定為 [ **TCP**]，然後輸入 [埠*資料庫通訊連接埠*]。
 
-   e. 將 [閒置逾時]**** 增加為 30 分鐘。
+   e. 將 [閒置逾時] 增加為 30 分鐘。
 
-   f. 請務必**啟用浮動 IP**。
+   f. 務必**啟用浮動 IP**。
 
-   g. 選取 [確定]  。
+   g. 選取 [確定]。
 
 **[A]** 新增探查埠的防火牆規則：
 <pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent
@@ -464,12 +463,12 @@ sudo firewall-cmd --reload</code></pre>
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>對 SAP 設定檔進行變更，以使用虛擬 IP 進行連線
 若要連接到 HADR 設定的主要實例，SAP 應用層必須使用您為 Azure Load Balancer 所定義和設定的虛擬 IP 位址。 需要進行下列變更：
 
-/sapmnt/\<SID>/profile/default。DEFAULT.PFL
+/sapmnt/ \<SID> /profile/DEFAULT。DEFAULT.PFL
 <pre><code>SAPDBHOST = db-virt-hostname
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<SID>/global/db6/db2cli.ini
+/sapmnt/ \<SID> /global/db6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -490,12 +489,12 @@ j2ee/dbhost = db-virt-hostname
     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
     
 1. 在左側畫面中，選擇 [**安全性存放區**]。
-1. 在右邊的畫面中，選擇 [ `jdbc/pool/\<SAPSID>/url`金鑰]。
+1. 在右邊的畫面中，選擇 [金鑰] `jdbc/pool/\<SAPSID>/url` 。
 1. 將 JDBC URL 中的主機名稱變更為虛擬主機名稱。
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
     
-1. 選取 [新增]  。
+1. 選取 [新增]。
 1. 若要儲存您的變更，請選取左上方的 [磁片] 圖示。
 1. 關閉設定工具。
 1. 重新開機 JAVA 實例。
@@ -507,9 +506,9 @@ j2ee/dbhost = db-virt-hostname
 
 我們建議您設定通用 NFS 共用或 GlusterFS，其中記錄是從兩個節點寫入。 NFS 共用或 GlusterFS 必須具有高度可用性。 
 
-您可以使用現有的高可用性 NFS 共用或 GlusterFS 來進行傳輸或設定檔目錄。 如需詳細資訊，請參閱
+您可以使用現有的高可用性 NFS 共用或 GlusterFS 來進行傳輸或設定檔目錄。 如需詳細資訊，請參閱：
 
-- [Red Hat Enterprise Linux for SAP NetWeaver 上的 GlusterFS on Azure VM][glusterfs] 
+- [Red Hat Enterprise Linux for SAP NetWeaver 上適用於 Azure VM 的 GlusterFS][glusterfs] 
 - [Red Hat Enterprise Linux 上的 Azure Vm 上的 SAP NetWeaver 高可用性與適用于 SAP 應用程式的 Azure NetApp Files][anf-rhel]
 - [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction) （用來建立 NFS 共用）
 
@@ -557,7 +556,7 @@ SAP 系統中的原始狀態記載于 Transaction DBACOCKPIT > Configuration > �
 > 開始測試之前，請先確定：
 > * Pacemaker 沒有任何失敗的動作（電腦狀態）。
 > * 沒有位置條件約束（leftovers 的遷移測試）
-> * IBM Db2 HADR 同步處理運作正常。 檢查使用者 db2\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * IBM Db2 HADR 同步處理運作正常。 與使用者 db2 檢查\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 藉由執行下列命令，遷移正在執行主要 Db2 資料庫的節點：
@@ -613,9 +612,9 @@ Full list of resources:
 sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 </code></pre>
 
-- **電腦資源移動\<res_name> <host>：** 建立位置條件約束，並可能造成接管問題
-- **電腦資源清除\<res_name>**：清除位置條件約束
-- **電腦資源清理\<res_name>**：清除資源的所有錯誤
+- **電腦資源移動 \<res_name> <host> ：** 建立位置條件約束，並可能造成接管問題
+- **電腦資源清除 \<res_name> **：清除位置條件約束
+- **電腦資源清除 \<res_name> **：清除資源的所有錯誤
 
 ### <a name="test-a-manual-takeover"></a>測試手動接管
 
@@ -710,7 +709,7 @@ Db2 實例會以先前指派的次要角色重新開機。
 
 ### <a name="stop-db-via-db2stop-force-on-the-node-that-runs-the-hadr-primary-database-instance"></a>在執行 HADR 主資料庫實例的節點上，透過 db2stop force 停止 DB
 
-As user db2\<sid> 執行命令 db2stop force：
+當使用者 db2 \<sid> 執行命令 db2stop force：
 <pre><code>az-idb01:db2ptr> db2stop force</code></pre>
 
 偵測到失敗：

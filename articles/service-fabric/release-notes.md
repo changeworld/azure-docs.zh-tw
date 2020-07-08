@@ -6,18 +6,17 @@ ms.topic: conceptual
 hide_comments: true
 hideEdit: true
 ms.openlocfilehash: 28870a197af07e964a50a06ffeef08f3b71451f4
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891717"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric 版本
 
-| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">疑難排解指南</a> 
-| <a href="https://github.com/Azure/service-fabric-issues" target="blank">問題追蹤</a> 
-| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">支援選項</a> 
-| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">支援的版本</a> 
+| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">疑難排解指南</a>  
+| <a href="https://github.com/Azure/service-fabric-issues" target="blank">問題追蹤</a>  
+| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">支援選項</a>  
+| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">支援的版本</a>  
 | 程式<a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">代碼範例</a>
 
 本文提供 Service Fabric 執行時間和 Sdk 最新版本和更新的詳細資訊。

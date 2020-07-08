@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005942"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 SELECT 子句
 
-每個查詢都包含`SELECT`一個子句和選擇性的[from](sql-query-from.md)和[WHERE](sql-query-where.md)子句（根據 ANSI SQL 標準）。 通常會列舉`FROM`子句中的來源，而`WHERE`子句會在來源上套用篩選，以抓取 JSON 專案的子集。 然後`SELECT` ，子句會在選取清單中投射要求的 JSON 值。
+每個查詢都包含一個 `SELECT` 子句和選擇性的[From](sql-query-from.md)和[WHERE](sql-query-where.md)子句（根據 ANSI SQL 標準）。 通常 `FROM` 會列舉子句中的來源，而 `WHERE` 子句會在來源上套用篩選，以抓取 JSON 專案的子集。 `SELECT`然後，子句會在選取清單中投射要求的 JSON 值。
 
 ## <a name="syntax"></a>語法
 
@@ -77,7 +76,7 @@ SELECT <select_specification>
   
 ## <a name="examples"></a>範例
 
-下列 SELECT 查詢範例`address`會從`Families`符合`id` `AndersenFamily`的傳回：
+下列 SELECT 查詢範例會 `address` 從 `Families` 符合的 `id` 傳回 `AndersenFamily` ：
 
 ```sql
     SELECT f.address
@@ -99,6 +98,6 @@ SELECT <select_specification>
 
 ## <a name="next-steps"></a>後續步驟
 
-- [開始使用](sql-query-getting-started.md)
+- [快速入門](sql-query-getting-started.md)
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [WHERE 子句](sql-query-where.md)

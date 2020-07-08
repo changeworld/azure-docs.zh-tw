@@ -8,10 +8,9 @@ ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 785c430347bc62a00eee80c977f2d6ce440c08db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982270"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 JavaScript 查詢 API
@@ -20,7 +19,7 @@ ms.locfileid: "82982270"
 
 ## <a name="supported-javascript-functions"></a>支援的 JavaScript 函式
 
-| **函數** | **說明** |
+| **Function** | **描述** |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|啟動鏈結的呼叫，此呼叫必須以 value() 終止。|
 |`filter(predicateFunction [, options] [, callback])`|使用述詞函式來篩選輸入，此函式會傳回 true/false 以在結果集內篩出/篩除輸入文件。 此函式的行為類似於 SQL 中的 WHERE 子句。|
@@ -33,7 +32,7 @@ ms.locfileid: "82982270"
 
 當裡面包含述詞和/或選取器函式時，下列 JavaScript 建構會自動取得最佳化，以便直接在 Azure Cosmos DB 索引上執行：
 
-- 簡單運算子`=` `+` `-` `*` ： `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
+- 簡單運算子 `=` `+` `-` `*` ： `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
 - 常值，包含物件常值：{}
 - var、return
 
@@ -51,7 +50,7 @@ ms.locfileid: "82982270"
 > [!NOTE]
 > 使用 JavaScript 查詢 API 時，`__` (雙底線) 是 `getContext().getCollection()` 的別名。
 
-|**SQL**|**JavaScript 查詢 API**|**說明**|
+|**SQL**|**JavaScript 查詢 API**|**描述**|
 |---|---|---|
 |SELECT *<br>FROM docs| __.map(function(doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;return doc;<br>});|所有文件中的結果 (使用連續權杖分頁)。|
 |SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs.message AS msg,<br>&nbsp;&nbsp;&nbsp;docs.actions <br>FROM docs|__.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actions:doc.actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|投射識別碼、訊息 (別名為 msg)，和所有文件中的動作。|

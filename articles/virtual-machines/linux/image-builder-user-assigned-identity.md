@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.openlocfilehash: 0c0e688c628d553c8b732081f1a8b8debff8846e
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82930653"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>建立映射，並使用使用者指派的受控識別來存取 Azure 儲存體中的檔案 
@@ -24,11 +23,11 @@ Azure 映射產生器支援使用腳本，或從多個位置複製檔案，例�
 
 
 > [!IMPORTANT]
-> Azure 映射產生器目前為公開預覽版。
+> Azure Image Builder 目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="register-the-features"></a>註冊功能
-若要在預覽期間使用 Azure 映射產生器，您必須註冊新功能。
+## <a name="register-the-features"></a>註冊各項功能
+若要在預覽期間使用 Azure Image Builder，您必須註冊新功能。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -40,7 +39,7 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-檢查您的註冊。
+檢查註冊。
 
 
 ```azurecli-interactive
@@ -50,7 +49,7 @@ az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-如果沒有顯示 [已註冊]，請執行下列動作：
+如果沒有顯示已註冊，請執行下列動作：
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -62,7 +61,7 @@ az provider register -n Microsoft.Storage
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-我們會重複使用一些資訊，因此我們將建立一些變數來儲存該資訊。
+由於我們會重複使用某些資訊，因此我們將建立一些變數來儲存這些資訊。
 
 
 ```console
@@ -78,7 +77,7 @@ imageName=aibCustLinuxImgMsi01
 runOutputName=u1804ManImgMsiro
 ```
 
-建立訂用帳戶識別碼的變數。 您可以使用`az account show | grep id`來取得。
+為訂用帳戶識別碼建立變數。 您可以使用 `az account show | grep id` 取得此項目。
 
 ```console
 subscriptionID=<Your subscription ID>
@@ -95,7 +94,7 @@ az group create -n $strResourceGroup -l $location
 
 建立使用者指派的身分識別，並設定資源群組的許可權。
 
-影像產生器將會使用提供的[使用者身分識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)，將影像插入資源群組中。 在此範例中，您將建立 Azure 角色定義，其中具有要執行發佈映射的細微動作。 角色定義接著會指派給使用者身分識別。
+影像產生器將會使用提供的[使用者身分識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)，將影像插入資源群組中。 在此範例中，您將建立 Azure 角色定義，其中具有要執行發佈映射的細微動作。 然後此將角色定義指派給使用者身分識別。
 
 ```console
 # create user assigned identity for image builder to access the storage account where the script is located
@@ -150,7 +149,7 @@ az storage blob copy start \
     --source-uri https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh
 ```
 
-授與映射產生器許可權，以在映射資源群組中建立資源。 此`--assignee`值是使用者身分識別識別碼。
+授與映射產生器許可權，以在映射資源群組中建立資源。 此 `--assignee` 值是使用者身分識別識別碼。
 
 ```azurecli-interactive
 az role assignment create \
@@ -179,7 +178,7 @@ sed -i -e "s%<runOutputName>%$runOutputName%g" helloImageTemplateMsi.json
 
 ## <a name="create-the-image"></a>建立映像
 
-將映射設定提交至 Azure 映射產生器服務。
+將映像設定提交至 Azure Image Builder 服務。
 
 ```azurecli-interactive
 az resource create \
@@ -190,7 +189,7 @@ az resource create \
     -n helloImageTemplateMsi01
 ```
 
-啟動映射組建。
+啟動映像建置。
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -222,7 +221,7 @@ az vm create \
 ssh aibuser@<publicIp>
 ```
 
-您應該會在建立 SSH 連線後，看到該映射已自訂一天的訊息！
+當您建立 SSH 連線時，您應該會看到映像是以當天的訊息進行自訂！
 
 ```output
 

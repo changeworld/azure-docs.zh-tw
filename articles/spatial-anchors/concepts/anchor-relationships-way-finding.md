@@ -9,10 +9,9 @@ ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83006025"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>錨點關聯性和方式-在 Azure 空間錨點中尋找
@@ -73,7 +72,7 @@ ms.locfileid: "83006025"
 
 ### <a name="verify-anchor-connections"></a>驗證錨點連接
 
-應用程式可以發出附近錨點的查詢，以確認兩個錨點是否已連線，您可以`NearAnchorCriteria`在上設定`CloudSpatialAnchorWatcher`。 當查詢的結果包含目標錨點時，就會驗證錨點連接。 如果錨點未連線，應用程式可以嘗試再次連接。
+應用程式可以發出附近錨點的查詢，以確認兩個錨點是否已連線，您可以 `NearAnchorCriteria` 在上設定 `CloudSpatialAnchorWatcher` 。 當查詢的結果包含目標錨點時，就會驗證錨點連接。 如果錨點未連線，應用程式可以嘗試再次連接。
 
 以下是錨點可能無法連接的一些原因：
 

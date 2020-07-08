@@ -17,10 +17,9 @@ ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2df092d49f2dfe9153b52be677e8ee6314dd9b60
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982967"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>在 Azure 中使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理
@@ -32,7 +31,7 @@ Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝
 
 容錯移轉叢集是由 1+n 個獨立伺服器 (節點) 所組成的群組，這些伺服器會共同運作以提升應用程式和服務的可用性。 如果發生節點失敗，Windows Server 容錯移轉叢集會計算發生的失敗次數，以及仍然維持狀況良好的叢集，以提供應用程式和服務。 您可以從不同的仲裁模式選擇以達成容錯移轉叢集。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 在開始本文所述的工作之前，請檢閱此文章：
 
 * [SAP NetWeaver 的 Azure 虛擬機器高可用性架構和案例][sap-high-availability-architecture-scenarios]
@@ -70,10 +69,10 @@ SAP 已針對在 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體�
 
 * SAP 中央服務 (包含自己的檔案結構、訊息及加入佇列處理序) 與 SAP 全域主機檔案是分開的。
 * SAP 中央服務會在 SAP ASCS/SCS 執行個體之下執行。
-* SAP ASCS/SCS 執行個體已叢集處理，並且可使用 \<ASCS/SCS 虛擬主機名稱\> 虛擬主機名稱來存取。
-* SAP 全域檔案會置於 SMB 檔案共用，並可使用 \<SAP 全域主機\> 主機名稱: \\\\&lt;SAP 全域主機&gt;\sapmnt\\&lt;SID&gt;\SYS\... 加以存取。
+* SAP ASCS/SCS 實例已叢集化，且可使用 \<ASCS/SCS virtual host name\> 虛擬主機名稱來存取。
+* Sap 全域檔案會放在 SMB 檔案共用上，並使用 \<SAP global host\> 主機名稱來存取： \\ \\ &lt; sap global host &gt; \sapmnt \\ &lt; SID &gt; \SYS \. .。
 * SAP ASCS/SCS 執行個體是安裝於這兩個叢集節點上的本機磁碟。
-* \<ASCS/SCS 虛擬主機名稱\> 網路名稱與 &lt;SAP 全域主機&gt; 不同。
+* \<ASCS/SCS virtual host name\>網路名稱與 &lt; SAP global 主機不同 &gt; 。
 
 ![圖 2：含 SMB 檔案共用的 SAP ASCS/SCS HA 架構][sap-ha-guide-figure-8004]
 
@@ -87,7 +86,7 @@ SMB 檔案共用的必要條件：
     * 用來儲存檔案的磁碟不可是單一失敗點。
     * 伺服器或 VM 的停機時間不會在檔案共用上造成停機時間。
 
-SAP \<SID\> 叢集角色不包含叢集共用磁碟或一般檔案共用叢集資源。
+SAP 叢集 \<SID\> 角色不包含叢集共用磁片或一般檔案共用叢集資源。
 
 
 ![圖 3：可用於檔案共用的 SAP \<SID\> 叢集角色資源][sap-ha-guide-figure-8005]
@@ -137,17 +136,17 @@ _**圖 4：** 用來保護 SAP 全域主機檔案的向外延展檔案共用_
 * 若要讓 VM 之間具備良好的網路效能，供儲存空間直接存取磁碟同步之用，請使用至少具有「高」網路頻寬的 VM 類型。
     如需詳細資訊，請參閱 [DSv2 系列][dv2-series]和 [DS 系列][ds-series]規格。
 * 建議您在儲存體集區中保留一些未配置的容量。 在儲存體集區中保留一些未配置的容量，可在磁碟機故障時，讓磁碟區空間「就地」修復。 這可改善資料安全性和效能。  如需詳細資訊，請參閱[選擇磁碟區大小][choosing-the-size-of-volumes-s2d]。
-* 您不需要為向外延展檔案共用網路名稱 (例如 \<SAP 全域主機\>) 設定 Azure 內部負載平衡器。 這是針對 SAP ASCS/SCS 執行個體的 \<ASCS/SCS 虛擬主機名稱\> 或針對 DBMS 進行。 向外延展檔案共用會在所有叢集節點之間向外延展負載。 \<SAP 全域主機\> 會對所有叢集節點使用本機 IP 位址。
+* 您不需要為向外延展檔案共用網路名稱（例如）設定 Azure 內部負載平衡器 \<SAP global host\> 。 這是針對 \<ASCS/SCS virtual host name\> SAP ASCS/SCS 實例的，或針對 DBMS 而完成。 向外延展檔案共用會在所有叢集節點之間向外延展負載。 \<SAP global host\>會使用所有叢集節點的本機 IP 位址。
 
 
 > [!IMPORTANT]
-> 您無法為指向 \<SAP 全域主機\> 的 SAPMNT 檔案共用重新命名。 SAP 僅支援共用名稱 "sapmnt"。
+> 您不能將指向的 SAPMNT 檔案共用重新命名 \<SAP global host\> 。 SAP 僅支援共用名稱 "sapmnt"。
 >
 > 如需詳細資訊，請參閱 [SAP 附註 2492395 - 是否可變更共用名稱 sapmnt？][2492395]
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>在兩個叢集中設定 SAP ASCS/SCS 執行個體和向外延展檔案共用
 
-您可以使用 SAP ASCS/SCS 本身的 SAP \<SID\> 叢集角色，在一個叢集中部署其執行個體。 在此情況下，您要使用其他叢集角色，在另一個叢集上設定向外延展檔案共用。
+您可以使用自己的 SAP 叢集角色，在一個叢集中部署 SAP ASCS/SCS 實例 \<SID\> 。 在此情況下，您要使用其他叢集角色，在另一個叢集上設定向外延展檔案共用。
 
 > [!IMPORTANT]
 >在此案例中，SAP ASCS/SCS 執行個體是設定為使用 UNC 路徑 \\\\&lt;SAP 全域主機&gt;\sapmnt\\&lt;SID&gt;\SYS\. 存取 SAP 全域主機

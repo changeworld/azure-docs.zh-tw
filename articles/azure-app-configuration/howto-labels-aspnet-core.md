@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
 ms.openlocfilehash: 465ae86c5732c9dd54ade1b7096fa8415dfca513
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83118554"
 ---
 # <a name="use-labels-to-enable-configurations-for-different-environments"></a>使用標籤來啟用不同環境的設定
@@ -29,7 +28,7 @@ ms.locfileid: "83118554"
 > [!div class="mx-imgBorder"]
 > ![[加入值] 功能表項目](media/labels-add-value.png)
 
-在 [**加入值**] 畫面上，輸入**紅色**的**值**和 [**開發**]**標籤**。 將 [**內容類型**] 保留空白。 選取 [套用]  。
+在 [**加入值**] 畫面上，輸入**紅色**的**值**和 [**開發**]**標籤**。 將 [**內容類型**] 保留空白。 選取 [套用]。
 
 ## <a name="load-configuration-values-with-a-specified-label"></a>使用指定的標籤載入設定值
 

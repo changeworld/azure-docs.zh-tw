@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: a93f4ff2ddc0737692de9e5619cf7a7521936224
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82980808"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函式
@@ -123,7 +122,7 @@ ms.locfileid: "82980808"
 ## <a name="collection-functions"></a>集合函式
 這些函式可以搭配集合使用，例如 JSON 字串、陣列和物件。
 
-### <a name="contains"></a>contains
+### <a name="contains"></a>包含
 如果字串包含指定的子字串、陣列包含指定的值，或是物件包含指定的索引鍵，則傳回 `true`。
 
 #### <a name="example-1-string"></a>範例 1︰字串
@@ -431,7 +430,7 @@ ms.locfileid: "82980808"
 "[greaterOrEquals(2, 2)]"
 ```
 
-### <a name="and"></a>和
+### <a name="and"></a>及
 如果所有參數都評估為 `true`，則傳回 `true`。 此函式只支援布林值類型的兩個或多個參數。
 
 下列範例會傳回 `true`：
@@ -461,7 +460,7 @@ ms.locfileid: "82980808"
 "[or(equals(0, 0), greater(1, 2))]"
 ```
 
-### <a name="not"></a>not
+### <a name="not"></a>否
 如果參數評估為 `false`，則傳回 `true`。 此函式只支援布林值類型的參數。
 
 下列範例會傳回 `true`：
@@ -485,9 +484,9 @@ ms.locfileid: "82980808"
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
 
-此函式在頁面載入後因使用者動作而發生的選擇性調用內容中特別有用。 例如，如果條件約束放在 UI 中的一個欄位上，則取決於另一個**初始非可見**欄位的目前選取值。 在此情況下`coalesce()` ，可以用來在頁面載入時讓函式在語法上有效，同時在使用者與欄位互動時產生所要的效果。
+此函式在頁面載入後因使用者動作而發生的選擇性調用內容中特別有用。 例如，如果條件約束放在 UI 中的一個欄位上，則取決於另一個**初始非可見**欄位的目前選取值。 在此情況下， `coalesce()` 可以用來在頁面載入時讓函式在語法上有效，同時在使用者與欄位互動時產生所要的效果。
 
-請考慮`DropDown`這一點，這可讓使用者從數種不同的資料庫類型中進行選擇：
+請考慮這一點，這可 `DropDown` 讓使用者從數種不同的資料庫類型中進行選擇：
 
 ```
 {
@@ -516,13 +515,13 @@ ms.locfileid: "82980808"
     },
 ```
 
-若要在此欄位的目前選擇值上條件下另一個欄位的動作`coalesce()`，請使用，如下所示：
+若要在此欄位的目前選擇值上條件下另一個欄位的動作，請使用 `coalesce()` ，如下所示：
 
 ```
 "regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
 ```
 
-這是必要的`databaseType` ，因為最初不會顯示，因此不會有值。 這會導致整個運算式無法正確評估。
+這是必要的，因為 `databaseType` 最初不會顯示，因此不會有值。 這會導致整個運算式無法正確評估。
 
 ## <a name="conversion-functions"></a>轉換函數
 這些函式可用來轉換 JSON 資料類型與編碼之間的值。
@@ -726,7 +725,7 @@ ms.locfileid: "82980808"
 "[mod(6, 4)]"
 ```
 
-### <a name="min"></a>Min
+### <a name="min"></a>分鐘
 傳回兩個數字中較小的數字。
 
 下列範例會傳回 `1`：

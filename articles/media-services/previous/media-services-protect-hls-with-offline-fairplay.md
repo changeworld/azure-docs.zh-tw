@@ -16,10 +16,9 @@ ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 618803e8e94f96a63e0c39c27b40a933acac7cb4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995518"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>適用於 iOS 的離線 FairPlay 串流 
@@ -29,7 +28,7 @@ ms.locfileid: "82995518"
 > * [第 2 版](media-services-protect-hls-with-offline-fairplay.md)
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒體服務提供一組設計良好的[內容保護服務](https://azure.microsoft.com/services/media-services/content-protection/)，其中涵蓋：
 
@@ -249,7 +248,7 @@ func requestApplicationCertificate() throws -> Data {
 
 * Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 本文件包含下列步驟和資訊，以供您實作 FPS 離線模式：
 
 * 透過媒體服務 .NET API 所進行的媒體服務內容保護設定，會在媒體服務中設定動態 FairPlay 加密和 FairPlay 授權傳遞。

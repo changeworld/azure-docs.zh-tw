@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: jingwang
 ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891759"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>在 Azure Data Factory 中使用複製活動來保留中繼資料和 Acl
@@ -31,15 +30,15 @@ ms.locfileid: "82891759"
 複製活動支援在資料複製期間保留下列屬性：
 
 - **所有客戶指定的中繼資料** 
-- 和下列**五個數據存放區內建系統屬性**： `contentType`、 `contentLanguage` （Amazon S3 除外）、 `contentEncoding`、 `contentDisposition`、。 `cacheControl`
+- 和下列**五個數據存放區內建系統屬性**： `contentType` 、 `contentLanguage` （Amazon S3 除外）、、 `contentEncoding` `contentDisposition` 、 `cacheControl` 。
 
 **處理中繼資料的差異：** Amazon S3 和 Azure 儲存體允許客戶所指定中繼資料的索引鍵中有不同的字元集。 當您選擇使用複製活動來保留中繼資料時，ADF 會自動以 ' _ ' 取代不正確字元。
 
-當您從 Amazon S3/Azure Data Lake Storage Gen2/Azure blob 依來源將檔案複製到具有二進位格式的 Azure Data Lake Storage Gen2/azure blob 時，您可以在 [活動撰寫] 的 [**複製活動** > **設定**] 索引標籤或資料複製工具中的 [**設定**] 頁面上找到 [**保留**] 選項。
+當您從 Amazon S3/Azure Data Lake Storage Gen2/Azure blob 依來源將檔案複製到具有二進位格式的 Azure Data Lake Storage Gen2/azure blob 時，您可以**Preserve**在 [活動撰寫] 的 [**複製活動**  >  **設定**] 索引標籤或資料複製工具中的 [**設定**] 頁面上找到 [保留] 選項。
 
 ![複製活動保留中繼資料](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 
-以下是複製活動 JSON 設定的範例（請參閱`preserve`）： 
+以下是複製活動 JSON 設定的範例（請參閱 `preserve` ）： 
 
 ```json
 "activities":[
@@ -90,7 +89,7 @@ ms.locfileid: "82891759"
 - **擁有**者：複製並保留檔案和目錄的擁有使用者。 需要超級使用者存取接收器 Data Lake Storage Gen2。
 - **群組**：複製並保留檔案和目錄的擁有群組。 對於接收 Data Lake Storage Gen2 或擁有使用者的超級使用者存取（如果擁有使用者也是目標群組的成員）是必要的。
 
-如果您指定從資料夾複製，當`recursive`設定為 true 時，Data Factory 會複寫指定資料夾和其下的檔案和目錄的 acl。 如果您指定從單一檔案複製，則會複製該檔案的 Acl。
+如果您指定從資料夾複製，當設定為 true 時，Data Factory 會複寫指定資料夾和其下的檔案和目錄的 Acl `recursive` 。 如果您指定從單一檔案複製，則會複製該檔案的 Acl。
 
 >[!NOTE]
 >當您使用 ADF 將 Acl 從 Data Lake Storage Gen1/Gen2 保留至 Gen2 時，將會覆寫接收 Gen2 對應資料夾/檔案的現有 Acl。
@@ -98,11 +97,11 @@ ms.locfileid: "82891759"
 >[!IMPORTANT]
 >當您選擇保留 Acl 時，請確定您已授與足夠的許可權，可讓 Data Factory 對您的接收 Data Lake Storage Gen2 帳戶進行操作。 例如，使用帳戶金鑰驗證，或將儲存體 Blob 資料擁有者角色指派給服務主體或受控識別。
 
-當您使用二進位格式或二進位複製選項來將 source 設定為 Data Lake Storage Gen1/Gen2，並以二進位格式或二進位複製選項來進行 Data Lake Storage Gen2 接收時，您可以在 [資料複製工具] 或 [**複製活動** > **設定**] 索引標籤上的 [**設定**] 頁面上找到 [**保留**] 選項，以進行活動撰寫。
+當您使用二進位格式或二進位複製選項來將 source 設定為 Data Lake Storage Gen1/Gen2，並以二進位格式或二進位複製選項來進行 Data Lake Storage Gen2 接收時，您可以在 [資料複製工具] 或 [**複製活動**設定] 索引標籤上的 [**設定**] 頁面上找到 [**保留**] 選項，  >  **Settings**以進行活動撰寫。
 
 ![Data Lake Storage Gen1/Gen2 至 Gen2 保留 ACL](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
 
-以下是複製活動 JSON 設定的範例（請參閱`preserve`）： 
+以下是複製活動 JSON 設定的範例（請參閱 `preserve` ）： 
 
 ```json
 "activities":[
@@ -149,5 +148,5 @@ ms.locfileid: "82891759"
 
 請參閱其他複製活動文章：
 
-- [複製活動總覽](copy-activity-overview.md)
+- [複製活動概觀](copy-activity-overview.md)
 - [複製活動效能](copy-activity-performance.md)

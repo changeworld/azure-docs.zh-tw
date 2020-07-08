@@ -4,10 +4,9 @@ description: 在您的裝置或桌面應用程式、網頁或服務中插入幾�
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: ae96609446818802b70cab9c31f6527264046eb9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83115654"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>自訂事件和度量的 Application Insights API
@@ -951,7 +950,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-若要*停用選取的標準收集*器（例如效能計數器、HTTP 要求或相依性），請刪除或批註掉[ApplicationInsights](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中的相關行。例如，如果您想要傳送自己的 TrackRequest 資料，可以這麼做。
+若要*停用選取的標準收集*器（例如效能計數器、HTTP 要求或相依性），請刪除或批註掉[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中的相關行。例如，如果您想要傳送自己的 TrackRequest 資料，可以這麼做。
 
 *Node.js*
 
@@ -991,7 +990,7 @@ TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 *Node.js*
 
-針對 node.js，您可以透過啟用內部記錄， `setInternalLogging` 並將設定為0，以啟用開發人員模式， `maxBatchSize` 這會在收集遙測資料時立即傳送。
+針對 Node.js，您可以透過啟用內部記錄 `setInternalLogging` ，並將設定為0，以啟用「開發人員模式」 `maxBatchSize` ，這會在收集遙測資料時立即傳送。
 
 ```js
 applicationInsights.setup("ikey")

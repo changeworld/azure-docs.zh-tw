@@ -12,10 +12,9 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 777f3de8f2872e378fe30cc50ee0a5eb3823a625
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82900318"
 ---
 # <a name="single-page-application-move-to-production"></a>單一頁面應用程式：移至生產環境
@@ -32,17 +31,17 @@ ms.locfileid: "82900318"
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解快速入門範例，其中說明如何使用 MSAL 來登入使用者，以及取得存取權杖以呼叫 Microsoft Graph API 的程式碼：
+深入瞭解快速入門範例，其中說明如何使用 MSAL.js 登入使用者並取得存取權杖來呼叫 Microsoft Graph API 的程式碼：
 
 > [!div class="nextstepaction"]
 > [JavaScript SPA 教學課程](./tutorial-v2-javascript-spa.md)
 
-示範如何使用 MSAL 取得您自己後端 Web API 權杖的範例：
+示範如何使用 MSAL.js 取得您自己後端 Web API 權杖的範例：
 
 > [!div class="nextstepaction"]
 > [具有 ASP.NET 後端的 SPA](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)
 
-範例示範如何使用 MSAL，在向 Azure Active Directory B2C （Azure AD B2C）註冊的應用程式中登入使用者：
+示範如何使用 MSAL.js 在向 Azure Active Directory B2C （Azure AD B2C）註冊的應用程式中登入使用者的範例：
 
 > [!div class="nextstepaction"]
 > [具有 Azure AD B2C 的 SPA](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)

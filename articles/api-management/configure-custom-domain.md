@@ -13,15 +13,14 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83004736"
 ---
 # <a name="configure-a-custom-domain-name"></a>設定自訂網域名稱
 
-當您建立 Azure API 管理服務實例時，Azure 會為其指派子域`azure-api.net` （例如`apim-service-name.azure-api.net`）。 不過，您可以使用自己的自訂功能變數名稱（例如**contoso.com**）公開您的 API 管理端點。 本教學課程說明如何將現有的自訂 DNS 名稱對應至 API 管理實例所公開的端點。
+當您建立 Azure API 管理服務實例時，Azure 會為其指派子域 `azure-api.net` （例如 `apim-service-name.azure-api.net` ）。 不過，您可以使用自己的自訂功能變數名稱（例如**contoso.com**）公開您的 API 管理端點。 本教學課程說明如何將現有的自訂 DNS 名稱對應至 API 管理實例所公開的端點。
 
 > [!IMPORTANT]
 > API 管理只會接受[主機標頭](https://tools.ietf.org/html/rfc2616#section-14.23)值符合預設功能變數名稱或任何已設定自訂功能變數名稱的要求。
@@ -29,7 +28,7 @@ ms.locfileid: "83004736"
 > [!WARNING]
 > 若客戶想要使用憑證釘選來改善其應用程式的安全性，則必須使用其所管理的自訂功能變數名稱和憑證，而不是預設憑證。 改為釘選預設憑證的客戶會對其無法控制的憑證屬性進行硬相關性，這不是建議的作法。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要執行本文所述的步驟，您必須具有：
 
@@ -49,11 +48,11 @@ ms.locfileid: "83004736"
 
     有幾個端點可供您指派自訂功能變數名稱。 目前有下列端點可用：
 
-    - **閘道**（預設值`<apim-service-name>.azure-api.net`為：）、
+    - **閘道**（預設值為： `<apim-service-name>.azure-api.net` ）、
     - **入口網站** (預設值為：`<apim-service-name>.portal.azure-api.net`)、
     - **管理** (預設值為：`<apim-service-name>.management.azure-api.net`)、
-    - **SCM** （預設值為`<apim-service-name>.scm.azure-api.net`：）、
-    - **NewPortal** （預設值為`<apim-service-name>.developer.azure-api.net`：）。
+    - **SCM** （預設值為： `<apim-service-name>.scm.azure-api.net` ）、
+    - **NewPortal** （預設值為： `<apim-service-name>.developer.azure-api.net` ）。
 
     > [!NOTE]
     > 只有**閘道**端點可用於取用層中的設定。
@@ -68,7 +67,7 @@ ms.locfileid: "83004736"
     - 在 [**憑證**] 中，選取 Key Vault 的憑證。 您也可以上傳有效的。PFX 檔案，並提供**密碼**（如果使用密碼保護憑證）。
 
     > [!NOTE]
-    > 除了取用層以外，所有`*.contoso.com`層都支援萬用字元功能變數名稱，例如。
+    > `*.contoso.com`除了取用層以外，所有層都支援萬用字元功能變數名稱，例如。
 
     > [!TIP]
     > 我們建議使用[Azure Key Vault 來管理憑證](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)，並將其設定為 autorenew。
