@@ -3,16 +3,16 @@ title: 新增/移除 Azure 檔案同步伺服器端點 | Microsoft Docs
 description: 了解規劃 Azure 檔案服務部署時的考量事項。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70cdf01cb327d1be6b2ac4b9cae414f87e27964f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509467"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>新增/移除 Azure 檔案同步伺服器端點
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 它會將您的 Windows Server 轉換成 Azure 檔案共用的快速快取來達到這個目的。 您可以使用 Windows Server 上可用的任何通訊協定來存取本機資料 (包括 SMB、NFS 和 FTPS)，並且可以在世界各地擁有任何所需數量的快取。
@@ -21,7 +21,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 
 如需如何從頭到尾部署 Azure 檔案同步的資訊，請參閱[如何部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 若要建立伺服器端點，您必須先確定已符合下列準則： 
 - 伺服器已安裝 Azure 檔案同步代理程式且已註冊。 如需安裝 Azure 檔案同步代理程式的指示，請參閱[向 Azure 檔案同步註冊/取消註冊伺服器](storage-sync-files-server-registration.md)文章。 
 - 確定已部署儲存體同步服務。 如需如何部署儲存體同步服務的詳細資訊，請參閱[如何部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)。 
@@ -54,7 +54,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
-指定`-Order CloudTieringPolicy`將會先重新叫用最近修改過的檔案。
+指定 `-Order CloudTieringPolicy` 將會先重新叫用最近修改過的檔案。
 其他選擇性但要考慮的實用參數包括：
 * `-ThreadCount`決定可平行重新叫用的檔案數目。
 * `-PerFileRetryCount`決定嘗試重新叫用目前已封鎖之檔案的頻率。

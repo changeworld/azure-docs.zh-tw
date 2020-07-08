@@ -3,15 +3,15 @@ title: 管理 Data Lake Storage Gen1 資源-Azure 儲存體總管
 description: 了解如何在 Azure 儲存體總管中存取和管理 Azure Data Lake Storage Gen1 資料與資源
 author: jejiang
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a5117f72f933e1e48dc471a75624a8d3921f55af
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: a99196cfad7abad38408c847a8a0b64ffe95fff5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73832268"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508787"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>使用儲存體總管管理 Azure Data Lake Storage Gen1 資源
 
@@ -19,7 +19,7 @@ ms.locfileid: "73832268"
 
 另一個優點是，您不需擁有訂用帳戶權限即可管理 Data Lake Storage Gen1 資料。 在儲存體總管中，只要他人授與權限，您即可將 Data Lake Storage Gen1 路徑連結至 [本機與已連結的資源]**** 節點。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文中的步驟，您必須符合下列先決條件︰
 
@@ -142,7 +142,7 @@ Data Lake Storage Gen1 帳戶的資源包含資料夾和檔案。
 1. 選取您要下載的資料夾或檔案。
 2. 在主窗格工具列上選取 [下載] ****。
 3. 在 [選取要在其中儲存所下載檔案的資料夾]**** 對話方塊中，指定位置和名稱。
-4. 選取 [儲存]  。
+4. 選取 [儲存]。
 
 ### <a name="open-a-folder-or-file-from-your-local-computer"></a>從本機電腦開啟資料夾或檔案
 

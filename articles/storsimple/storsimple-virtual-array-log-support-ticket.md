@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: a0c394df-957b-49b3-a283-38824f8847fd
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 9ac87bbf5089dd20b8c6eeec0b970a7767b3dcda
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 0ed8533b093c5af0d8aefdcd5175bed63f37a76c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "64723940"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507665"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務來登錄 StorSimple Virtual Array 的支援要求
 
@@ -39,7 +39,7 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
 
 2. 在 [基本]**** 刀鋒視窗上，執行下列動作：
 
-    1. 從 [問題類型]**** 下拉式清單中，選取 [技術]****。 
+    1. 從 [問題類型] 下拉式清單中，選取 [技術]。 
     
     2. 自動會選擇目前的 [訂用帳戶]****、[服務]**** 類型和 [資源]**** \(StorSimple 裝置管理員服務)。 
 
@@ -61,7 +61,7 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
 
 #### <a name="to-manage-your-support-requests"></a>若要管理支援要求
 
-若要移至說明和支援頁面，請瀏覽至 [瀏覽] > [說明 + 支援]****。
+若要移至說明和支援頁面，請瀏覽至 [瀏覽] > [說明 + 支援]。
 
 ![管理支援要求](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 

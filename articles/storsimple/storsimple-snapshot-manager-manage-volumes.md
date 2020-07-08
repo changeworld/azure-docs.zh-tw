@@ -9,20 +9,20 @@ editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
-ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b27cf605c978e15d81a43db3371a71b0ccc48c8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508915"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>使用 StorSimple Snapshot Manager 來檢視和管理磁碟區
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 您可以使用 StorSimple Snapshot Manager 的 [磁碟區]**** 節點 (在 [範圍]**** 窗格上)，選取磁碟區並檢視其相關資訊。 磁碟區會呈現為對應至主機所掛接磁碟區的磁碟機。 [磁碟區] **** 節點會顯示 StorSimple 所支援的本機磁碟區和磁碟區類型，包括透過使用 iSCSI 及裝置探索到的磁碟區。 
 
 如需支援之磁碟區的詳細資訊，請移至《 [支援多個磁碟區類型](storsimple-what-is-snapshot-manager.md#support-for-multiple-volume-types)》。
@@ -91,9 +91,9 @@ ms.locfileid: "79254647"
    
     ![設定資料行](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | 結果資料行 | 描述 |
+   | 結果資料行 | 說明 |
    |:--- |:--- |
-   |  名稱 |[名稱]**** 欄位包含指派給每一個已探索到之磁碟區的磁碟機代號。 |
+   |  Name |[名稱]**** 欄位包含指派給每一個已探索到之磁碟區的磁碟機代號。 |
    |  裝置 |[裝置] **** 資料行包含已連接到主機電腦之裝置的 IP 位址。 |
    |  裝置磁碟區名稱 |[裝置磁碟區名稱]**** 欄位包含所選取磁碟區所屬之裝置磁碟區的名稱。 這是 Azure 入口網站中針對該特定磁碟區定義的磁碟區名稱。 |
    |  存取路徑 |[存取路徑]**** 欄位顯示磁碟區的存取路徑。 這是可在主機電腦上存取磁碟區的磁碟機代號或掛接點。 |
@@ -130,7 +130,7 @@ ms.locfileid: "79254647"
 ## <a name="configure-and-back-up-a-basic-volume"></a>設定和備份基本磁碟區
 請使用下列程序，來設定基本磁碟區的備份，然後立即啟動備份，或建立一個原則進行排程的備份。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 開始之前：
 
 * 確定已正確設定 StorSimple 裝置和主機電腦。 如需詳細資訊，請移至 [部署內部部署 StorSimple 裝置](storsimple-deployment-walkthrough-u2.md)。
@@ -158,7 +158,7 @@ ms.locfileid: "79254647"
 * 步驟 1：使用 [磁碟管理] 來建立動態鏡像磁碟區。 
 * 步驟 2：使用 StorSimple Snapshot Manager 來設定備份。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 開始之前：
 
 * 確定已正確設定 StorSimple 裝置和主機電腦。 如需詳細資訊，請移至 [部署內部部署 StorSimple 裝置](storsimple-8000-deployment-walkthrough-u2.md)。
@@ -183,7 +183,7 @@ ms.locfileid: "79254647"
 6. 在 [指派磁碟機代號或路徑]**** 頁面上，接受預設值，然後按一下 [下一步]****。 
 7. 在 [格式化磁碟區]**** 頁面的 [配置單位大小]**** 方塊中，選取 [64K]****。 選取 [執行快速格式化]**** 核取方塊，然後按 [下一步]****。 
 8. 在 [完成新增鏡像磁碟區]**** 頁面上，檢閱您的設定，然後按一下 [完成]****。 
-9. 訊息會出現，以指出基本磁碟將會轉換成動態磁碟。 按一下 [是]  。
+9. 訊息會出現，以指出基本磁碟將會轉換成動態磁碟。 按一下 [是] 。
    
     ![動態磁碟轉換訊息](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
 10. 在磁碟管理中，確認磁碟區 1 與磁碟區 2 顯示為動態鏡像磁碟區。 (狀態欄中應該會顯示 [動態]****，容量條顏色應變為紅色表示鏡像磁碟區。) 

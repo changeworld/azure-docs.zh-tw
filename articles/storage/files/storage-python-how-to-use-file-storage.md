@@ -3,16 +3,17 @@ title: 使用 Python 開發 Azure 檔案服務 | Microsoft Docs
 description: 了解如何開發使用 Azure 檔案服務的 Python 應用程式和服務來儲存檔案資料。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 139e3009722761172b7bbd57805a7f5b07e55fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: c612ddc324144a818dd738b440660d473ec3a1bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68699386"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509637"
 ---
 # <a name="develop-for-azure-files-with-python"></a>使用 Python 開發 Azure 檔案服務
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -47,7 +48,7 @@ pip install azure-storage-file
 如需替代安裝方法，請瀏覽 [GitHub 上的 Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python/) \(英文\)。
 
 ## <a name="view-the-sample-application"></a>檢視範例應用程式
-f 若要查看並執行範例應用程式，以瞭解如何搭配 Azure 檔案儲存體使用 Python，請參閱[Azure 儲存體：在 python 中使用 Azure 檔案儲存體的消費者入門](https://github.com/Azure-Samples/storage-file-python-getting-started)。 
+若要查看並執行範例應用程式，以瞭解如何搭配 Azure 檔案儲存體使用 Python，請參閱[Azure 儲存體：在 python 中使用 Azure 檔案儲存體的消費者入門](https://github.com/Azure-Samples/storage-file-python-getting-started)。 
 
 若要執行範例應用程式，請確定您已安裝 `azure-storage-file` 和 `azure-storage-common` 封裝。
 

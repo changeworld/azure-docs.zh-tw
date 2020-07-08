@@ -3,16 +3,16 @@ title: 使用 Azure AD Domain Services 來授權透過 SMB 存取檔案資料
 description: 瞭解如何透過伺服器訊息區（SMB）啟用以身分識別為基礎的驗證，以 Azure 檔案儲存體通過 Azure Active Directory Domain Services。 接著，已加入網域的 Windows 虛擬機器（Vm）就可以使用 Azure AD 認證來存取 Azure 檔案共用。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 02/21/2020
+ms.topic: how-to
+ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d9f7eccae6b87923b52119ded90ced5e4206d7b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666842"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510395"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>啟用 Azure 檔案儲存體上的 Azure Active Directory Domain Services 驗證
 
@@ -22,8 +22,9 @@ ms.locfileid: "80666842"
 
 > [!NOTE]
 > Azure 檔案儲存體支援使用具有 RC4-HMAC 加密的 Azure AD DS 來進行 Kerberos 驗證。 尚不支援 AES Kerberos 加密。
+> Azure 檔案儲存體支援與 Azure AD 進行完整同步處理 Azure AD DS 的驗證。 如果您已在 Azure AD DS 中啟用範圍同步處理，而這只會從 Azure AD 同步處理有限的身分識別集，則不支援驗證和授權。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 啟用 Azure 檔案共用的 SMB Azure AD 之前，請確定您已完成下列必要條件：
 
@@ -55,6 +56,10 @@ ms.locfileid: "80666842"
 
     若要驗證是否已正確設定虛擬機器和檔案共用，請嘗試使用儲存體帳戶金鑰裝載檔案共用。 如需詳細資料，請參閱[裝載 Azure 檔案共用並在 Windows 中存取共用](storage-how-to-use-files-windows.md)。
 
+## <a name="regional-availability"></a>區域可用性
+
+[所有 Azure 公用區域](https://azure.microsoft.com/global-infrastructure/locations/)皆可使用 Azure AD DS 的 Azure 檔案儲存體驗證。
+
 ## <a name="overview-of-the-workflow"></a>工作流程概觀
 
 針對 Azure 檔案共用啟用透過 SMB 進行 Azure AD DS 驗證之前，請確認您的 Azure AD 和 Azure 儲存體環境已正確設定。 我們建議您逐步完成[必要條件](#prerequisites)，以確定您已完成所有必要的步驟。
@@ -83,7 +88,7 @@ ms.locfileid: "80666842"
 1. 在 Azure 入口網站中，移至您現有的儲存體帳戶，或[建立儲存體帳戶](../common/storage-account-create.md)。
 1. 在 [設定]**** 區段中，選取 [組態]****。
 1. 在 [檔案**共用的識別式存取**] 下，將**Azure Active Directory 網域服務（AAD DS）** 的切換切換為 [**已啟用**]。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 下圖顯示如何針對您的儲存體帳戶啟用透過 SMB 的 Azure AD DS 驗證。
 
@@ -119,7 +124,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 若要使用 Azure CLI 啟用透過 SMB 的 Azure AD 驗證，請安裝最新的 CLI 版本（2.0.70 或更新版本）。 如需有關安裝 Azure CLI 的詳細資訊，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-若要建立新的儲存體帳戶，請呼叫[az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，並`--enable-files-aadds`將屬性設定為**true**。 在下列範例中，請記得以您自己的值取代預留位置值。 （如果您使用先前的預覽模組，功能啟用的參數會是檔案**aad**）。
+若要建立新的儲存體帳戶，請呼叫[az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，並將 `--enable-files-aadds` 屬性設定為**true**。 在下列範例中，請記得以您自己的值取代預留位置值。 （如果您使用先前的預覽模組，功能啟用的參數會是檔案**aad**）。
 
 ```azurecli-interactive
 # Create a new storage account

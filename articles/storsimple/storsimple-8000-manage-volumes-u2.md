@@ -3,19 +3,19 @@ title: 管理 StorSimple 磁片區（Update 3）
 description: 說明如何加入、修改及監視 StorSimple 磁碟區，以及如何在必要時使其離線。
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d8ab6da9327048469c8b781657bb03b6a4b9669
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254764"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508243"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 裝置管理員服務來管理磁碟區 (Update 3 或更新版本)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程說明如何使用 StorSimple 裝置管理員服務來建立和管理執行 Update 3 和更新版本之 StorSimple 8000 系列裝置上的磁碟區。
 
@@ -112,7 +112,7 @@ StorSimple 磁碟區可以是：
       
        如果您在 8100 裝置上佈建 8.5 TB (允許的大小上限) 且固定在本機的磁碟區，則您會用盡裝置上所有可用的本機空間。 從那時起，您就無法建立任何分層磁碟區，因為裝置上已沒有任何本機空間，可用來裝載分層磁碟區的工作集。 現有的分層磁碟區也會影響可用的空間。 例如，如果您的 8100 裝置已經有大約 106 TB 的分層磁碟區，則固定在本機的磁碟區僅只有 4 TB 的可用空間。
 
-    6. 在 [已連線的主機]**** 欄位中，按一下箭號。 在 [已連線的主機]**** 刀鋒視窗中，選擇現有的 ACR 或新的 ACR。 如果您選擇新的 ACR，請提供 ACR 的 [名稱]****，並提供 Windows 主機的 [iSCSI 限定名稱]**** \(IQN)。 如果沒有 IQN，請移至「取得 Windows Server 主機的 IQN」。 按一下 [建立]  。 使用指定的設定來建立磁碟區。
+    6. 在 [已連線的主機]**** 欄位中，按一下箭號。 在 [已連線的主機]**** 刀鋒視窗中，選擇現有的 ACR 或新的 ACR。 如果您選擇新的 ACR，請提供 ACR 的 [名稱]****，並提供 Windows 主機的 [iSCSI 限定名稱]**** \(IQN)。 如果沒有 IQN，請移至「取得 Windows Server 主機的 IQN」。 按一下 [建立]。 使用指定的設定來建立磁碟區。
 
         ![按一下 [建立專案]。](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
@@ -157,15 +157,15 @@ StorSimple 磁碟區可以是：
 
        ![檢閱讓磁碟區離線的影響](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. 按一下 [儲存]**** 以儲存您的變更。 當提示確認時，請按一下 [是]****。 Azure 入口網站將會顯示更新磁碟區訊息。 如果磁碟區已成功更新，即會顯示成功訊息。
+5. 按一下 [確定] 儲存變更。 當提示確認時，請按一下 [是]****。 Azure 入口網站將會顯示更新磁碟區訊息。 如果磁碟區已成功更新，即會顯示成功訊息。
 
     ![檢閱讓磁碟區離線的影響](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
 7. 如果您要延伸磁碟區，請在 Windows 主機電腦上完成下列步驟：
    
-   1. 移至 [**電腦管理** ->] [**磁片管理**]。
+   1. 移至 [**電腦管理**] [  -> **磁片管理**]。
    2. 以滑鼠右鍵按一下 [磁碟管理]****，並選取 [重新掃描磁碟]****。
-   3. 在磁碟清單中，選取您已更新的磁碟區，按一下滑鼠右鍵，然後選取 [延伸磁碟區] ****。 [延伸磁碟區精靈] 隨即啟動。 按 [下一步]  。
+   3. 在磁碟清單中，選取您已更新的磁碟區，按一下滑鼠右鍵，然後選取 [延伸磁碟區] ****。 [延伸磁碟區精靈] 隨即啟動。 按 [下一步] 。
    4. 接受預設值，完成精靈。 完成精靈後，磁碟區應該會顯示增加的大小。
       
       > [!NOTE]
@@ -217,7 +217,7 @@ StorSimple 磁碟區可以是：
 
     ![移至 [磁碟區] 刀鋒視窗](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. 從磁碟區的表格式清單中，選取磁碟區，然後按一下滑鼠右鍵以叫用操作功能表。 選取 [修改]****。
+3. 從磁碟區的表格式清單中，選取磁碟區，然後按一下滑鼠右鍵以叫用操作功能表。 選取 [修改]。
 
     ![從操作功能表選取 [修改]](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
 
@@ -229,7 +229,7 @@ StorSimple 磁碟區可以是：
    
      ![變更磁碟區類型訊息](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
-7. 按一下 **[儲存]**，儲存變更。 當系統提示您確認時，按一下 [是]**** 以開始轉換程序。 
+7. 按一下 [儲存]  儲存變更。 當系統提示您確認時，按一下 [是]**** 以開始轉換程序。 
 
     ![儲存並確認](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
@@ -310,7 +310,7 @@ StorSimple 磁碟區可以是：
 #### <a name="to-enable-or-disable-volume-monitoring"></a>若要啟用或停用監視磁碟區
 
 1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]****。 從裝置的表格式清單中，選取您想要修改磁碟區的裝置。 按一下 [設定] > [磁碟區]****。
-2. 從磁碟區的表格式清單中，選取磁碟區，然後按一下滑鼠右鍵以叫用操作功能表。 選取 [修改]****。
+2. 從磁碟區的表格式清單中，選取磁碟區，然後按一下滑鼠右鍵以叫用操作功能表。 選取 [修改]。
 3. 在 [修改磁碟區]**** 刀鋒視窗中，將 [監視]**** 選取 [啟用]**** 或 [停用]****，以啟用或停用監視。
 
     ![停用監視](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 

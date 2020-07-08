@@ -3,16 +3,16 @@ title: StorSimple 1200 遷移至 Azure 檔案同步
 description: 瞭解如何將 StorSimple 1200 系列虛擬裝置遷移至 Azure 檔案同步。
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 69225da1506ced879363b10b098d939df93cbfba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9cf7b3cf996e41f90e3a40a6ee08d0fd51c8457
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79502360"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510338"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 遷移至 Azure 檔案同步
 
@@ -23,7 +23,7 @@ StorSimple 1200 系列將于12月 2022[日結束](https://support.microsoft.com/
 ## <a name="azure-file-sync"></a>Azure 檔案同步
 
 > [!IMPORTANT]
-> Microsoft 致力於協助客戶進行遷移。 適用AzureFilesMigration@microsoft于自訂遷移計畫的電子郵件 .com，以及在遷移期間的協助。
+> Microsoft 致力於協助客戶進行遷移。 AzureFilesMigration@microsoft適用于自訂遷移計畫的電子郵件 .com，以及在遷移期間的協助。
 
 Azure 檔案同步是以兩個主要元件為基礎的 Microsoft 雲端服務：
 

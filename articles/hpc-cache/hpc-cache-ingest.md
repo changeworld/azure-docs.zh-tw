@@ -3,15 +3,15 @@ title: 將資料移至 Azure HPC Cache 雲端容器
 description: 如何填入 Azure Blob 儲存體以搭配 Azure HPC 快取使用
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fd21a78d0271f91d334bba5aba748f3770ad38cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac963fd01016506193aae0fab5582224b3957de8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537928"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508957"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>將資料移至 Azure Blob 儲存體
 
@@ -58,7 +58,7 @@ Avere CLFSLoad 公用程式需要下列資訊：
 
 ![顯示多用戶端、多執行緒資料移動的圖表：左上方有一個內部部署硬體儲存體的圖示，其中有多個來自它的箭頭。 這些箭頭指向四部用戶端機器。 從每部用戶端電腦的三個箭號指向 Azure HPC 快取。 從 Azure HPC 快取中，多個箭號指向 Blob 儲存體。](media/hpc-cache-parallel-ingest.png)
 
-您``cp``通常``copy``用來將資料從某個儲存系統傳輸到另一個儲存體系統的或命令，是一次只複製一個檔案的單一執行緒進程。 這表示檔案伺服器一次只會內嵌一個檔案，也就是浪費快取的資源。
+``cp`` ``copy`` 您通常用來將資料從某個儲存系統傳輸到另一個儲存體系統的或命令，是一次只複製一個檔案的單一執行緒進程。 這表示檔案伺服器一次只會內嵌一個檔案，也就是浪費快取的資源。
 
 本節說明使用 Azure HPC 快取來建立多用戶端、多執行緒檔案複製系統以將資料移至 Blob 儲存體的策略。 它說明檔案傳輸概念和決策點，這些可用來以多個用戶端和簡單的複製命令進行有效率的資料複製。
 
@@ -77,9 +77,9 @@ Avere CLFSLoad 公用程式需要下列資訊：
 
 * 手動複製-您可以在背景上針對預先定義的一組檔案或路徑，同時執行一個以上的複製命令，以手動方式在用戶端上建立多執行緒複本。 如需詳細資訊，請參閱[AZURE HPC 快取資料內嵌-手動複製方法](hpc-cache-ingest-manual.md)。
 
-* 部分``msrsync``  -  ``msrsync``自動化複製的是執行多個平行``rsync``進程的包裝函式公用程式。 如需詳細資訊，請參閱[AZURE HPC Cache 資料內嵌-msrsync 方法](hpc-cache-ingest-msrsync.md)。
+* 部分自動化複製的 ``msrsync``  -  ``msrsync`` 是執行多個平行進程的包裝函式公用程式 ``rsync`` 。 如需詳細資訊，請參閱[AZURE HPC Cache 資料內嵌-msrsync 方法](hpc-cache-ingest-msrsync.md)。
 
-* 使用``parallelcp``腳本式複製-瞭解如何在[Azure HPC 快取資料內嵌-平行複製腳本方法](hpc-cache-ingest-parallelcp.md)中建立及執行平行複製腳本。
+* 使用腳本式複製 ``parallelcp`` -瞭解如何在[Azure HPC 快取資料內嵌-平行複製腳本方法](hpc-cache-ingest-parallelcp.md)中建立及執行平行複製腳本。
 
 ## <a name="next-steps"></a>後續步驟
 

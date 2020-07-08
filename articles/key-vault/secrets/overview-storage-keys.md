@@ -9,16 +9,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 1125bafa43ce1752c58d1cce0bba66a6bbd32c32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58f41742519effc3959a3868345ed77c64db6341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685425"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508498"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理儲存體帳戶金鑰
 
-Azure 儲存體帳戶使用由帳戶名稱和金鑰組成的認證。 金鑰會自動產生並作為密碼，而不是做為加密金鑰。 Key Vault 會將儲存體帳戶金鑰儲存為 Key Vault 秘密來加以管理。 
+Azure 儲存體帳戶使用由帳戶名稱和金鑰組成的認證。 金鑰會自動產生並作為密碼，而不是做為加密金鑰。 Key Vault 會在儲存體帳戶中定期重新產生儲存體帳戶金鑰，並提供共用存取簽章權杖，以供委派存取您儲存體帳戶中的資源。
 
 您可以使用 Key Vault 受控儲存體帳戶金鑰功能來列出（同步）金鑰與 Azure 儲存體帳戶，並定期重新產生（輪替）金鑰。 您可以管理儲存體帳戶和傳統儲存體帳戶的金鑰。
 
@@ -42,13 +42,13 @@ Azure AD 租使用者會提供每個已註冊的應用程式與[服務主體](/a
 
 Key Vault 是在所有 Azure AD 租使用者中預先註冊的 Microsoft 應用程式。 Key Vault 會在每個 Azure 雲端中的相同應用程式識別碼下註冊。
 
-| 租用戶 | 雲端 | 應用程式識別碼 |
+| 租用戶 | Cloud | 應用程式識別碼 |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure 公用 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本指南，您必須先執行下列動作：
 
@@ -71,8 +71,8 @@ az login
 使用 Azure CLI [az role 指派 create](/cli/azure/role/assignment?view=azure-cli-latest)命令，讓 Key Vault 存取您的儲存體帳戶。 提供命令下列參數值：
 
 - `--role`：傳遞「儲存體帳戶金鑰操作員服務角色」 RBAC 角色。 此角色會將存取範圍限制為您的儲存體帳戶。 若為傳統儲存體帳戶，請改為傳遞「傳統儲存體帳戶金鑰操作員服務角色」。
-- `--assignee`：傳遞值 "https://vault.azure.net"，這是 Azure 公用雲端中 Key Vault 的 url。 （針對 Azure Goverment 雲端，請改用 [--asingee-物件識別碼]，請參閱[服務主體應用程式識別碼](#service-principal-application-id)）。
-- `--scope`：傳遞您的儲存體帳戶資源識別碼，其格式`/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`為。 若要尋找您的訂用帳戶識別碼，請使用 Azure CLI [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list)命令;若要尋找您的儲存體帳戶名稱和儲存體帳戶資源群組，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list)命令。
+- `--assignee`：傳遞值 " https://vault.azure.net "，這是 Azure 公用雲端中 Key Vault 的 url。 （針對 Azure Goverment 雲端，請改用 [--asingee-物件識別碼]，請參閱[服務主體應用程式識別碼](#service-principal-application-id)）。
+- `--scope`：傳遞您的儲存體帳戶資源識別碼，其格式為 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` 。 若要尋找您的訂用帳戶識別碼，請使用 Azure CLI [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list)命令;若要尋找您的儲存體帳戶名稱和儲存體帳戶資源群組，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list)命令。
 
 ```azurecli-interactive
 az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -90,11 +90,11 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage
 請注意，適用於儲存體帳戶的使用權限並不會在該儲存體於 Azure 入口網站中的 [存取原則] 頁面上提供。
 ### <a name="create-a-key-vault-managed-storage-account"></a>建立 Key Vault 受控儲存體帳戶
 
- 使用 Azure CLI [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add)命令來建立 Key Vault 受控儲存體帳戶。 設定90天的重新產生期間。 90天后，Key Vault 重新`key1`產生，並將作用中`key2`的`key1`金鑰從交換到。 `key1`接著會標示為使用中的索引鍵。 提供命令下列參數值：
+ 使用 Azure CLI [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add)命令來建立 Key Vault 受控儲存體帳戶。 設定90天的重新產生期間。 90天后，Key Vault 重新產生， `key1` 並將作用中的金鑰從交換 `key2` 到 `key1` 。 `key1`接著會標示為使用中的索引鍵。 提供命令下列參數值：
 
 - `--vault-name`：傳遞金鑰保存庫的名稱。 若要尋找金鑰保存庫的名稱，請使用 Azure CLI [az keyvault list](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list)命令。
 - `-n`：傳遞您的儲存體帳戶名稱。 若要尋找儲存體帳戶的名稱，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list)命令。
-- `--resource-id`：傳遞您的儲存體帳戶資源識別碼，其格式`/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`為。 若要尋找您的訂用帳戶識別碼，請使用 Azure CLI [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list)命令;若要尋找您的儲存體帳戶名稱和儲存體帳戶資源群組，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list)命令。
+- `--resource-id`：傳遞您的儲存體帳戶資源識別碼，其格式為 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` 。 若要尋找您的訂用帳戶識別碼，請使用 Azure CLI [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list)命令;若要尋找您的儲存體帳戶名稱和儲存體帳戶資源群組，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list)命令。
    
  ```azurecli-interactive
 az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -106,14 +106,14 @@ az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountNa
 
 本節中的命令會完成下列動作：
 
-- 設定帳戶共用存取簽章定義`<YourSASDefinitionName>`。 定義會在金鑰保存庫`<YourStorageAccountName>` `<YourKeyVaultName>`中的 Key Vault 受控儲存體帳戶上設定。
+- 設定帳戶共用存取簽章定義 `<YourSASDefinitionName>` 。 定義會在金鑰保存庫中的 Key Vault 受控儲存體帳戶上設定 `<YourStorageAccountName>` `<YourKeyVaultName>` 。
 - 為 Blob、檔案、資料表和佇列服務建立帳戶共用存取簽章權杖。 權杖是針對資源類型服務、容器和物件所建立。 權杖是以擁有權限（透過 HTTPs）和指定的開始和結束日期來建立。
-- 在保存庫中設定 Key Vault 管理的儲存體共用存取簽章定義。 定義具有已建立的共用存取簽章權杖的範本 URI。 定義具有共用存取簽章類型`account` ，且有效期為 N 天。
+- 在保存庫中設定 Key Vault 管理的儲存體共用存取簽章定義。 定義具有已建立的共用存取簽章權杖的範本 URI。 定義具有共用存取簽章類型 `account` ，且有效期為 N 天。
 - 確認已將共用存取簽章儲存在金鑰保存庫中做為密碼。
 
 ### <a name="create-a-shared-access-signature-token"></a>建立共用存取簽章權杖
 
-使用 Azure CLI [az storage account 產生-sas](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas)命令來建立共用存取簽章定義。 這種作業需要`storage`和`setsas`許可權。
+使用 Azure CLI [az storage account 產生-sas](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas)命令來建立共用存取簽章定義。 這種作業需要 `storage` 和 `setsas` 許可權。
 
 
 ```azurecli-interactive
@@ -125,11 +125,11 @@ az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-
 "se=2020-01-01&sp=***"
 ```
 
-在下一個步驟中，此輸出`--template-id`將會是傳遞給參數的。
+在下一個步驟中，此輸出將會是傳遞給 `--template-uri` 參數的。
 
 ### <a name="generate-a-shared-access-signature-definition"></a>產生共用存取簽章定義
 
-使用 Azure CLI [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create)命令，將上一個步驟的輸出傳遞至`--template-id`參數，以建立共用存取簽章定義。  您可以將您選擇的名稱提供給`-n`參數。
+使用 Azure CLI [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create)命令，將上一個步驟的輸出傳遞至 `--template-uri` 參數，以建立共用存取簽章定義。  您可以將您選擇的名稱提供給 `-n` 參數。
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>
@@ -152,13 +152,13 @@ az keyvault secret list --vault-name <YourKeyVaultName>
     "id": "https://<YourKeyVaultName>.vault.azure.net/secrets/<YourStorageAccountName>-<YourSASDefinitionName>",
 ```
 
-您現在可以使用[az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show)命令和`id`屬性來查看該密碼的內容。
+您現在可以使用[az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show)命令和 `id` 屬性來查看該密碼的內容。
 
 ```azurecli-interactive
 az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
 ```
 
-此命令的輸出會將您的 SAS 定義字串顯示`value`為。
+此命令的輸出會將您的 SAS 定義字串顯示為 `value` 。
 
 
 ## <a name="next-steps"></a>後續步驟

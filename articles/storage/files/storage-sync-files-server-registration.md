@@ -3,16 +3,16 @@ title: 使用 Azure 檔案同步管理已註冊的伺服器 | Microsoft Docs
 description: 了解如何向 Azure 檔案同步儲存體同步服務註冊及取消註冊 Windows Server。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255089"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509501"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>使用 Azure 檔案同步管理已註冊的伺服器
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 它會將您的 Windows Server 轉換成 Azure 檔案共用的快速快取來達到這個目的。 您可以使用 Windows Server 上可用的任何通訊協定來存取本機資料 (包括 SMB、NFS 和 FTPS)，並且可以在世界各地擁有任何所需數量的快取。
@@ -22,7 +22,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>使用儲存體同步服務來註冊/取消註冊伺服器
 使用 Azure 檔案同步來註冊伺服器可在 Windows Server 與 Azure 之間建立信任關係。 此關係可用來在伺服器上建立伺服器端點**，其代表應與 Azure 檔案共用 (也稱為雲端端點**) 同步的特定資料夾。 
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 若要使用儲存體同步服務來註冊伺服器，您必須先準備好符合下列必要條件的伺服器：
 
 * 伺服器必須執行支援的 Windows 版本。 如需詳細資訊，請參閱 [Azure 檔案同步系統需求和互通性](storage-sync-files-planning.md#windows-file-server-considerations)。
@@ -76,9 +76,6 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 > 如果伺服器是容錯移轉叢集的成員，則必須在叢集中的每個節點上安裝 Azure 檔案同步代理程式。
 
 #### <a name="register-the-server-using-the-server-registration-ui"></a>使用伺服器註冊 UI 註冊伺服器
-> [!Important]  
-> 雲端解決方案提供者 (CSP) 訂用帳戶無法使用伺服器註冊 UI。 請改用 PowerShell (本節下方)。
-
 1. 如果完成 Azure 檔案同步代理程式的安裝之後未立即啟動伺服器註冊 UI，您可以執行 `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` 手動將它啟動。
 2. 按一下 [登入]** 以存取您的 Azure 訂用帳戶。 
 
@@ -96,7 +93,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 > 如果伺服器是容錯移轉叢集的成員，每部伺服器都必須執行伺服器註冊。 當您在 Azure 入口網站中檢視已註冊的伺服器時，Azure 檔案同步會自動將每個節點識別為相同容錯移轉叢集的成員，並將它們適當地分組在一起。
 
 #### <a name="register-the-server-with-powershell"></a>使用 PowerShell 註冊伺服器
-您也可以透過 PowerShell 執行伺服器註冊。 這是雲端解決方案提供者 (CSP) 訂用帳戶唯一支援的伺服器註冊方法：
+您也可以透過 PowerShell 執行伺服器註冊。 
 
 ```powershell
 Register-AzStorageSyncServer -ResourceGroupName "<your-resource-group-name>" -StorageSyncServiceName "<your-storage-sync-service-name>"
@@ -161,7 +158,7 @@ Get-AzStorageSyncGroup -ResourceGroupName $resourceGroup -StorageSyncServiceName
 您可以使用 `StorageSyncNetworkLimit` Cmdlet，節流 Azure 檔案同步的網路使用量。
 
 > [!Note]  
-> 存取階層式檔案或使用 Invoke-StorageSyncFileRecall Cmdlet 時，網路限制不適用。
+> 存取階層式檔案時，不適用網路限制。
 
 例如，您可以建立新的節流限制，以確保 Azure 檔案同步在工作日早上 9 點至下午 5 點 (17:00h) 之間不會使用超過 10 Mbps： 
 
@@ -185,7 +182,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ### <a name="use-windows-server-storage-qos"></a>使用 Windows Server 儲存體服務品質 (QoS) 
 當 Azure 檔案同步裝載於 Windows Server 虛擬主機上執行的虛擬機器時，您可以使用儲存體 QoS (儲存體服務品質) 來規範儲存體 IO 耗用量。 儲存體 QoS 原則可以設定為最大值 (或限制，如上述強制執行 StorageSyncNetwork 限制的方式) 或最小值 (或保留)。 設定最小值而不是最大值時，可讓 Azure 檔案同步在其他工作負載不使用時，盡可能使用可用的儲存體頻寬。 如需詳細資訊，請參閱[儲存體服務品質](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 - [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)
 - [部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)
 - [監視 Azure 檔案同步](storage-sync-files-monitoring.md)

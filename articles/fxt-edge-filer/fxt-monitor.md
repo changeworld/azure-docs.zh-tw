@@ -3,15 +3,15 @@ title: 監視 Azure FXT Edge Filer
 description: 如何監視 Azure FXT Edge 檔案管理工具混合式儲存體快取的硬體狀態
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 3f422339af2040ad81c585c0e193e6cb3667b135
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7027fe9988c0c559db72c3c388c7a579d533c57e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72254880"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509433"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>監視 Azure FXT Edge 檔案管理工具硬體狀態
 
@@ -60,7 +60,7 @@ Azure FXT Edge 檔案管理工具混合式儲存體快取系統會在底座內�
 
 如果您在嘗試這些解決方案之後仍有錯誤，請[聯絡支援](fxt-support-ticket.md)人員以取得協助。 
 
-| 圖示 | 描述 | 錯誤狀況 | 可能的解決方案 |
+| 圖示 | Description | 錯誤狀況 | 可能的解決方案 |
 |----------------|---------------|--------------------|----------------------|
 | ![磁片磁碟機圖示](media/fxt-monitor/fxt-hd-icon.jpg) | 磁碟機狀態 | 磁片磁碟機錯誤 | 檢查 [系統] 事件記錄檔，判斷磁片磁碟機是否發生錯誤，或 <br>執行適當的線上診斷測試;重新開機系統並執行內嵌診斷（ePSA），或 <br>如果磁片磁碟機是在 RAID 陣列中設定的，請重新開機系統並輸入主機介面卡設定公用程式 |
 |![溫度圖示](media/fxt-monitor/fxt-temp-icon.jpg) | 溫度狀態 | 熱錯誤-例如，風扇已故障或環境溫度超出範圍 | 檢查是否有下列可定址條件： <br>冷卻風扇遺失或已失敗 <br>已移除系統的封面、金屬導片、記憶體模組空白或後端填充括弧 <br>環境溫度過高 <br>外部氣流受到阻礙 |
@@ -75,7 +75,7 @@ Azure FXT Edge 檔案管理工具混合式儲存體快取系統會在底座內�
 
 按 [系統健全狀況和識別碼] 按鈕，以在系統識別碼模式與系統健康狀態模式之間切換。
 
-|系統健全狀況狀態 | 狀況 |
+|系統健全狀況狀態 | 條件 |
 |-------------------------------------------|-----------------------------------------------|
 | 實心藍色 | 正常操作：系統已開啟、正常運作，且系統識別碼模式不在使用中。 <br/>如果您想要切換至 [系統識別碼] 模式，請按 [系統健全狀況和識別碼] 按鈕。 |
 | 閃爍藍色 | 系統識別碼模式為使用中。 如果您想要切換到系統健康狀態模式，請按 [系統健全狀況和系統識別碼] 按鈕。 |

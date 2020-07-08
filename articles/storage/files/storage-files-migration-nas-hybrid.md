@@ -3,16 +3,16 @@ title: 內部部署 NAS 遷移至 Azure 檔案同步
 description: 瞭解如何使用 Azure 檔案同步和 Azure 檔案共用，將檔案從內部部署網路連接存放裝置（NAS）位置遷移至混合式雲端部署。
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7b0c7a30580d3863a78e85b8b45287a598bbf394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd8e845734169bcd73fa0e087c30c0f2fd6ef4f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80247345"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510300"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 檔案同步從網路連接儲存裝置（NAS）遷移至混合式雲端部署
 
@@ -124,7 +124,7 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /UNILOG：\<檔案名\>
+      /UNILOG:\<file name\>
    :::column-end:::
    :::column span="1":::
       將狀態輸出到記錄檔做為 UNICODE （覆寫現有的記錄）。

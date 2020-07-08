@@ -5,23 +5,23 @@ description: 使用 Azure 儲存體 REST API，向使用共用金鑰授權的 Bl
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/01/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 237ad3215ef0330fed8662d987b1b72eca4aec81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77916059"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509178"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>使用共用金鑰授權呼叫 REST API 作業
 
 本文說明如何呼叫 Azure 儲存體 REST Api，包括如何形成授權標頭。 它是以開發人員的觀點來撰寫，他不知道什麼是 REST，而且也不知道如何進行 REST 呼叫。 在您瞭解如何呼叫 REST 作業之後，您可以利用此知識來使用任何其他 Azure 儲存體 REST 作業。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 範例應用程式會列出儲存體帳戶的 blob 容器。 若要試用本文中的程式碼，您需要下列項目︰
 
@@ -63,9 +63,9 @@ REST API 的呼叫包含由用戶端提出的要求，以及由服務傳回的�
 
 檢查[ListContainers](/rest/api/storageservices/List-Containers2)作業的參考。 這項資訊可協助您瞭解要求和回應中的某些欄位來自何處。
 
-**要求方法**：GET。 此動詞命令是您指定作為要求物件屬性的 HTTP 方法。 視您呼叫的 API 而定，此動詞命令的其他值包括 HEAD、PUT 和 DELETE。
+**Request 方法**： GET。 此動詞命令是您指定作為要求物件屬性的 HTTP 方法。 視您呼叫的 API 而定，此動詞命令的其他值包括 HEAD、PUT 和 DELETE。
 
-**要求 URI**： `https://myaccount.blob.core.windows.net/?comp=list`。要求 URI 是從 blob 儲存體帳戶端點`http://myaccount.blob.core.windows.net`和資源字串`/?comp=list`建立而來。
+**要求 URI**： `https://myaccount.blob.core.windows.net/?comp=list` 。要求 URI 是從 blob 儲存體帳戶端點 `http://myaccount.blob.core.windows.net` 和資源字串建立而來 `/?comp=list` 。
 
 [URI 參數](/rest/api/storageservices/List-Containers2#uri-parameters)：呼叫 ListContainers 時，您有其他查詢參數可以使用。 其中有幾個參數是呼叫的 timeout** (以秒為單位) 以及用於篩選的 prefix**。
 
@@ -130,7 +130,7 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 {
 ```
 
-加入`x-ms-date`和`x-ms-version`的要求標頭。 程式碼中的這個位置也就是您新增呼叫所需之任何其他要求標頭的位置。 在此範例中，沒有任何額外的標頭。 傳入額外標頭的 API 範例是設定容器 ACL 作業。 此 API 呼叫會新增名為 "x-ms-public-access" 的標頭，以及存取層級的值。
+加入和的要求標 `x-ms-date` 頭 `x-ms-version` 。 程式碼中的這個位置也就是您新增呼叫所需之任何其他要求標頭的位置。 在此範例中，沒有任何額外的標頭。 傳入額外標頭的 API 範例是設定容器 ACL 作業。 此 API 呼叫會新增名為 "x-ms-public-access" 的標頭，以及存取層級的值。
 
 ```csharp
 // Add the request headers for x-ms-date and x-ms-version.
@@ -177,7 +177,7 @@ httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetA
 
 如果您在呼叫 SendAsync 時執行網路 sniffer (例如 [Fiddler](https://www.telerik.com/fiddler))，您可以看到要求和回應資訊。 讓我看看。 儲存體帳戶的名稱為 contosorest**。
 
-**邀請**
+**要求：**
 
 ```
 GET /?comp=list HTTP/1.1
@@ -488,7 +488,7 @@ SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 
 下列值來自 [Fiddler](https://www.telerik.com/fiddler)：
 
-**邀請**
+**要求：**
 
 ```
 GET http://contosorest.blob.core.windows.net/container-1?restype=container&comp=list HTTP/1.1
@@ -563,7 +563,7 @@ Content-Length: 1135
 </EnumerationResults>
 ```
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 在本文中，您已瞭解如何對 blob 儲存體 REST API 提出要求。 在要求中，您可以在容器中抓取容器清單或 blob 清單。 您已瞭解如何建立 REST API 呼叫的授權簽章，以及如何在 REST 要求中使用它。 最後，您已瞭解如何檢查回應。
 

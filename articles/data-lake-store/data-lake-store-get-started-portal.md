@@ -3,15 +3,15 @@ title: 開始使用 Azure Data Lake Storage Gen1-入口網站
 description: 使用 Azure 入口網站建立 Data Lake Storage Gen1 帳戶，並在帳戶中執行基本作業。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dac5976904263de40c7bc240bdb7deac1ec3df6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265580"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509195"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>使用 Azure 入口網站開始使用 Azure Data Lake Storage Gen1
 
@@ -26,11 +26,11 @@ ms.locfileid: "79265580"
 
 瞭解如何使用 Azure 入口網站建立 Data Lake Storage Gen1 帳戶，並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需詳細資訊，請參閱[Azure Data Lake Storage Gen1 的總覽](data-lake-store-overview.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始進行本教學課程之前，您必須具備下列項目：
 
-* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>建立 Data Lake Storage Gen1 帳戶
 
@@ -40,7 +40,7 @@ ms.locfileid: "79265580"
 
     ![建立新的 Data Lake Storage Gen1 帳戶](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "建立新的 Data Lake Storage Gen1 帳戶")
 
-   * **名稱**。 輸入 Data Lake Storage Gen1 帳戶的唯一名稱。
+   * [名稱]。 輸入 Data Lake Storage Gen1 帳戶的唯一名稱。
    * **訂**用帳戶。 選取您想要建立新 Data Lake Storage Gen1 帳戶所在的訂用帳戶。
    * **資源群組**。 選取現有的資源群組，或選取 [建立新的]**** 選項來建立一個。 資源群組是保留應用程式相關資源的容器。 如需詳細資訊，請參閱 [Azure 中的資源群組](../azure-resource-manager/management/overview.md#resource-groups)。
    * **位置**：選取您要建立 Data Lake Storage Gen1 帳戶的位置。
@@ -56,7 +56,7 @@ ms.locfileid: "79265580"
 
         如需詳細資訊，請參閱[在 Data Lake Storage Gen1 中加密資料](./data-lake-store-encryption.md)。
 
-4. 按一下 [建立]  。 如果您選擇將帳戶釘選到儀表板，您會回到儀表板，並且可以看到 Data Lake Storage Gen1 帳戶的佈建進度。 一旦佈建 Data Lake Storage Gen1 帳戶，帳戶刀鋒視窗就會出現。
+4. 按一下 [建立]。 如果您選擇將帳戶釘選到儀表板，您會回到儀表板，並且可以看到 Data Lake Storage Gen1 帳戶的佈建進度。 一旦佈建 Data Lake Storage Gen1 帳戶，帳戶刀鋒視窗就會出現。
 
 ## <a name="assign-permissions-to-azure-key-vault"></a><a name="assign-permissions-to-azure-key-vault"></a>指派 Azure Key Vault 的權限
 

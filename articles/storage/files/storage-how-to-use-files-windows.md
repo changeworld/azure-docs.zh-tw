@@ -3,16 +3,16 @@ title: 搭配 Windows 使用 Azure 檔案共用 | Microsoft Docs
 description: 了解如何搭配 Windows 和 Windows Server 使用 Azure 檔案共用。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 06/07/2018
+ms.topic: how-to
+ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4fef6102ac2ee69926c1c56af338b6e92670dd71
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: bb9e7582317851d1968e104cd351a2b5e02b1e19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509773"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>搭配 Windows 使用 Azure 檔案共用
 [Azure 檔案服務](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 Azure 檔案共用可在 Windows 和 Windows Server 中順暢地使用。 本文討論搭配 Windows 和 Windows Server 使用 Azure 檔案共用的考量。
@@ -41,41 +41,8 @@ ms.locfileid: "83773095"
 > 我們一律建議針對您的 Windows 版本採取最新的 KB。
 
 ## <a name="prerequisites"></a>Prerequisites 
-* **儲存體帳戶名稱**：若要掛接 Azure 檔案共用，您將需要儲存體帳戶的名稱。
 
-* **儲存體帳戶金鑰**：若要掛接 Azure 檔案共用，您將需要主要 (或次要) 儲存體金鑰。 掛接目前不支援 SAS 金鑰。
-
-* **請確定已開啟連接埠 445**：使用 SMB 通訊協定時必須開啟 TCP 連接埠 445；如果連接埠 445 遭到封鎖，連線將會失敗。 您可以使用 `Test-NetConnection` Cmdlet，查看您的防火牆是否封鎖連接埠 445。 您可以在[這裡了解各種因應措施來解決封鎖的連接埠 445](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)。
-
-    以下 PowerShell 程式碼預設您已安裝 Azure PowerShell 模組，如需更多資訊，請參閱[安裝 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。 請記得以儲存體帳戶的相關名稱取代 `<your-storage-account-name>` 和 `<your-resource-group-name>`。
-
-    ```powershell
-    $resourceGroupName = "<your-resource-group-name>"
-    $storageAccountName = "<your-storage-account-name>"
-
-    # This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
-    # already logged in.
-    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-
-    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
-    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
-    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
-    ```
-
-    如果連線成功，您應會看見下列輸出：
-
-    ```
-    ComputerName     : <storage-account-host-name>
-    RemoteAddress    : <storage-account-ip-address>
-    RemotePort       : 445
-    InterfaceAlias   : <your-network-interface>
-    SourceAddress    : <your-ip-address>
-    TcpTestSucceeded : True
-    ```
-
-    > [!Note]  
-    > 上述命令會傳回儲存體帳戶的目前 IP 位址。 此 IP 位址不保證會維持不變，而且可能隨時變更。 請勿將此 IP 位址硬式編碼到任何指令碼，或防火牆組態中。 
+請確定已開啟連接埠 445：使用 SMB 通訊協定時必須開啟 TCP 連接埠 445；如果連接埠 445 遭到封鎖，連線將會失敗。 您可以使用 Cmdlet 來檢查您的防火牆是否封鎖埠 445 `Test-NetConnection` 。 若要瞭解解決已封鎖445埠的方法，請參閱我們的 Windows 疑難排解指南的[原因1：埠445遭到封鎖](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)一節。
 
 ## <a name="using-an-azure-file-share-with-windows"></a>搭配 Windows 使用 Azure 檔案共用
 若要搭配 Windows 使用 Azure 檔案共用，您必須掛接它 (這表示將磁碟機代號或掛接點路徑指派給它)，或透過 [UNC 路徑](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx)存取它。 
@@ -84,97 +51,31 @@ ms.locfileid: "83773095"
 
 將應有 SMB 檔案共用的企業營運 (LOB) 應用程式隨即移轉至 Azure 的常見模式，就是使用 Azure 檔案共用作為在 Azure VM 中執行專用 Windows 檔案伺服器的替代方式。 成功移轉企業營運應用程式以使用 Azure 檔案共用的一項重要考量，就是許多企業營運應用程式使用有限的系統權限 (而不是 VM 的系統管理帳戶)，在專屬服務帳戶的內容之下執行。 因此，您必須確定從服務帳戶的內容 (而不是系統管理帳戶) 掛接/儲存 Azure 檔案共用的認證。
 
-### <a name="persisting-azure-file-share-credentials-in-windows"></a>在 Windows 中保存 Azure 檔案共用認證  
-[Cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) 公用程式可讓您在 Windows 內儲存您的儲存體帳戶認證。 這表示當您嘗試透過 UNC 路徑存取 Azure 檔案共用或掛接 Azure 檔案共用時，您不需要指定認證。 若要儲存儲存體帳戶的認證，請執行下列 PowerShell 命令，並視情況取代 `<your-storage-account-name>` 和 `<your-resource-group-name>`。
+### <a name="mount-the-azure-file-share"></a>掛接 Azure 檔案共用
 
-```powershell
-$resourceGroupName = "<your-resource-group-name>"
-$storageAccountName = "<your-storage-account-name>"
+Azure 入口網站提供您可以用來直接將檔案共用掛接至主機的腳本。 我們建議使用此提供的腳本。
 
-# These commands require you to be logged into your Azure account, run Login-AzAccount if you haven't
-# already logged in.
-$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
+若要取得此腳本：
 
-# The cmdkey utility is a command-line (rather than PowerShell) tool. We use Invoke-Expression to allow us to 
-# consume the appropriate values from the storage account variables. The value given to the add parameter of the
-# cmdkey utility is the host address for the storage account, <storage-account>.file.core.windows.net for Azure 
-# Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign 
-# clouds or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
-    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)")
-```
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 流覽至包含您想要掛接之檔案共用的儲存體帳戶。
+1. 選取 [檔案**共用**]。
+1. 選取您想要掛接的檔案共用。
 
-您可以使用 list 參數，確認 cmdkey 公用程式已儲存儲存體帳戶的認證：
+    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="實例":::
 
-```powershell
-cmdkey /list
-```
+1. 選取 [連接]。
 
-如果已成功儲存 Azure 檔案共用的認證，預期的輸出會如下所示 (清單中可能會儲存額外的金鑰)：
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="檔案共用之 [連線] 圖示的螢幕擷取畫面。":::
 
-```
-Currently stored credentials:
+1. 選取要用來掛接共用的磁碟機號。
+1. 複製提供的腳本。
 
-Target: Domain:target=<storage-account-host-name>
-Type: Domain Password
-User: AZURE\<your-storage-account-name>
-```
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="範例文字":::
 
-您現在應該能夠掛接或存取共用，而不需提供額外的認證。
+1. 將腳本貼到您想要掛接檔案共用的主機 shell 中，並加以執行。
 
-#### <a name="advanced-cmdkey-scenarios"></a>進階 cmdkey 案例
-請考慮 cmdkey 的額外兩個案例：在電腦上儲存另一位使用者的認證 (如服務帳戶)，以及使用 PowerShell 遠端處理在遠端電腦上儲存認證。
-
-在電腦上儲存另一位使用者的認證相當簡單：登入您的帳戶後，只要執行下列 PowerShell 命令即可：
-
-```powershell
-$password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "<service-account-username>", $password
-Start-Process -FilePath PowerShell.exe -Credential $credential -LoadUserProfile
-```
-
-這會在服務帳戶 (或使用者帳戶) 的使用者內容之下，開啟新的 PowerShell 視窗。 您可以接著使用[上述](#persisting-azure-file-share-credentials-in-windows)的 cmdkey 公用程式。
-
-但是，不可能使用 PowerShell 遠端處理在遠端電腦上儲存認證，因為使用者若透過 PowerShell 遠端處理登入，cmdkey 並不允許存取 (即使是新增項目) 其認證存放區。 我們建議透過[遠端桌面](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windows)登入電腦。
-
-### <a name="mount-the-azure-file-share-with-powershell"></a>使用 PowerShell 掛接 Azure 檔案共用
-從一般 (未提升權限) 的 PowerShell 工作階段執行下列命令，以掛接 Azure 檔案共用。 請記得使用正確的資訊取代 `<your-resource-group-name>`、`<your-storage-account-name>`、`<your-file-share-name>` 和 `<desired-drive-letter>`。
-
-```powershell
-$resourceGroupName = "<your-resource-group-name>"
-$storageAccountName = "<your-storage-account-name>"
-$fileShareName = "<your-file-share-name>"
-
-# These commands require you to be logged into your Azure account, run Login-AzAccount if you haven't
-# already logged in.
-$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object { 
-    $_.Name -eq $fileShareName -and $_.IsSnapshot -eq $false
-}
-
-if ($fileShare -eq $null) {
-    throw [System.Exception]::new("Azure file share not found")
-}
-
-# The value given to the root parameter of the New-PSDrive cmdlet is the host address for the storage account, 
-# <storage-account>.file.core.windows.net for Azure Public Regions. $fileShare.StorageUri.PrimaryUri.Host is 
-# used because non-Public Azure regions, such as sovereign clouds or Azure Stack deployments, will have different 
-# hosts for Azure file shares (and other storage resources).
-$password = ConvertTo-SecureString -String $storageAccountKeys[0].Value -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "AZURE\$($storageAccount.StorageAccountName)", $password
-New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($fileShare.StorageUri.PrimaryUri.Host)\$($fileShare.Name)" -Credential $credential -Persist
-```
-
-> [!Note]  
-> 如果已儲存認證，在 `New-PSDrive` cmdlet 上使用 `-Persist` 選項，只會允許在開機時重新掛接檔案共用。 您可以使用[先前所述](#persisting-azure-file-share-credentials-in-windows)的 cmdkey 來儲存認證。 
-
-如有需要，您可使用下列 PowerShell cmdlet 來卸載 Azure 檔案共用。
-
-```powershell
-Remove-PSDrive -Name <desired-drive-letter>
-```
+您現在已掛接 Azure 檔案共用。
 
 ### <a name="mount-the-azure-file-share-with-file-explorer"></a>使用檔案總管掛接 Azure 檔案共用
 > [!Note]  
@@ -182,7 +83,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. 開啟檔案總管。 做法是從 [開始] 功能表中開啟，或按 Win + E 捷徑。
 
-1. 瀏覽至視窗左側的 [本機] 項目。 這會變更功能區中所提供的功能表。 在 [電腦] 功能表之下，選取 [連線網路磁碟機]。
+1. 流覽至視窗左側的 [這部**電腦**]。 這會變更功能區中所提供的功能表。 在 [電腦] 功能表之下，選取 [連線網路磁碟機]。
     
     ![「連線網路磁碟機」下拉式功能表的螢幕擷取畫面](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
@@ -201,7 +102,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 1. 當您準備好要卸載 Azure 檔案共用時，您可以滑鼠右鍵按一下 [檔案總管] 中 [網路位置] 下的共用項目，然後選取 [中斷連線]。
 
 ### <a name="accessing-share-snapshots-from-windows"></a>從 Windows 存取共用快照集
-如果您已建立共用快照集 (透過指令碼或 Azure 備份之類的服務手動或自動建立)，您即可從 Windows 上的檔案共用檢視舊版的共用、目錄或特定檔案。 您可以從 [Azure 入口網站](storage-how-to-use-files-portal.md)、[Azure PowerShell](storage-how-to-use-files-powershell.md) 和 [Azure CLI](storage-how-to-use-files-cli.md) 建立共用快照集。
+如果您已建立共用快照集 (透過指令碼或 Azure 備份之類的服務手動或自動建立)，您即可從 Windows 上的檔案共用檢視舊版的共用、目錄或特定檔案。 您可以使用[Azure PowerShell](storage-how-to-use-files-powershell.md)、 [Azure CLI](storage-how-to-use-files-cli.md)或[Azure 入口網站](storage-how-to-use-files-portal.md)來建立共用快照集。
 
 #### <a name="list-previous-versions"></a>列出舊版
 瀏覽至需要還原的項目或父項目。 按兩下以移至所需的目錄。 按一下滑鼠右鍵，然後從功能表中選取 [屬性]。
@@ -231,10 +132,10 @@ Remove-PSDrive -Name <desired-drive-letter>
 | Windows Server 2019                       | 已停用             | 利用 Windows 功能移除 |
 | Windows Server 版本 1709+            | 已停用             | 利用 Windows 功能移除 |
 | Windows 10 版本 1709+                | 已停用             | 利用 Windows 功能移除 |
-| Windows Server 2016                       | 啟用              | 利用 Windows 功能移除 |
-| Windows 10 版本 1507、1607 和 1703 | 啟用              | 利用 Windows 功能移除 |
-| Windows Server 2012 R2                    | 啟用              | 利用 Windows 功能移除 | 
-| Windows 8.1                               | 啟用              | 利用 Windows 功能移除 | 
+| Windows Server 2016                       | 已啟用              | 利用 Windows 功能移除 |
+| Windows 10 版本 1507、1607 和 1703 | 已啟用              | 利用 Windows 功能移除 |
+| Windows Server 2012 R2                    | 已啟用              | 利用 Windows 功能移除 | 
+| Windows 8.1                               | 已啟用              | 利用 Windows 功能移除 | 
 | Windows Server 2012                       | 啟用              | 利用登錄停用       | 
 | Windows Server 2008 R2                    | 啟用              | 利用登錄停用       |
 | Windows 7                                 | 啟用              | 利用登錄停用       | 

@@ -3,16 +3,16 @@ title: 搭配 Linux 使用 Azure 檔案 | Microsoft Docs
 description: 了解如何透過 Linux 上的 SMB 掛接 Azure 檔案共用。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fcc9876caf0c002650ab30b7eaed7dc44e2f135e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f668844951a2416b25d1649721fc005a0d70b75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509841"
 ---
 # <a name="use-azure-files-with-linux"></a>搭配 Linux 使用 Azure 檔案
 [Azure 檔案服務](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 可以使用 [SMB 核心用戶端](https://wiki.samba.org/index.php/LinuxCIFS)將 Azure 檔案共用裝載在 Linux 發行版本中。 本文將說明掛接 Azure 檔案共用的兩種方式：使用 `mount` 命令的隨選掛接，以及建立項目 `/etc/fstab` 的開機掛接。
@@ -28,13 +28,13 @@ ms.locfileid: "82137734"
 | openSUSE | 13.2+ | 42.3+ |
 | SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
 
-如果您使用上表中未列出的 Linux 散發套件，您可以檢查 Linux 核心版本，以查看您的 Linux 散發套件是否支援使用加密的 SMB 3.0。 使用加密的 SMB 3.0 已新增至 Linux 核心版本4.11。 此`uname`命令會傳回使用中的 Linux 核心版本：
+如果您使用上表中未列出的 Linux 散發套件，您可以檢查 Linux 核心版本，以查看您的 Linux 散發套件是否支援使用加密的 SMB 3.0。 使用加密的 SMB 3.0 已新增至 Linux 核心版本4.11。 此 `uname` 命令會傳回使用中的 Linux 核心版本：
 
 ```bash
 uname -r
 ```
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**確定已安裝 cifs utils 套件。**  
@@ -47,13 +47,13 @@ uname -r
     sudo apt install cifs-utils
     ```
 
-    在**Fedora**、 **Red Hat Enterprise Linux 8 +** 和**CentOS 8 +** 上，使用`dnf`套件管理員：
+    在**Fedora**、 **Red Hat Enterprise Linux 8 +** 和**CentOS 8 +** 上，使用 `dnf` 套件管理員：
 
     ```bash
     sudo dnf install cifs-utils
     ```
 
-    在較舊版本的**Red Hat Enterprise Linux**和**CentOS**上， `yum`使用套件管理員：
+    在較舊版本的**Red Hat Enterprise Linux**和**CentOS**上，使用 `yum` 套件管理員：
 
     ```bash
     sudo yum install cifs-utils 
@@ -94,12 +94,12 @@ uname -r
     如果您無法在公司網路上開啟通訊埠445，或被 ISP 封鎖而無法執行此操作，您可以使用 VPN 連線或 ExpressRoute 來解決埠445。 如需詳細資訊，請參閱[直接 Azure 檔案共用存取的網路功能考慮](storage-files-networking-overview.md)。
 
 ## <a name="mounting-azure-file-share"></a>裝載 Azure 檔案共用
-若要將 Azure 檔案共用與您的 Linux 散發套件搭配使用，您必須建立一個目錄，做為 Azure 檔案共用的掛接點。 掛接點可以在您的 Linux 系統上的任何位置建立，但在/mnt。底下建立此帳戶是常見的慣例。 掛接點之後，您可以使用`mount`命令來存取 Azure 檔案共用。
+若要將 Azure 檔案共用與您的 Linux 散發套件搭配使用，您必須建立一個目錄，做為 Azure 檔案共用的掛接點。 掛接點可以在您的 Linux 系統上的任何位置建立，但在/mnt。底下建立此帳戶是常見的慣例。 掛接點之後，您可以使用 `mount` 命令來存取 Azure 檔案共用。
 
 如有需要，您可以將相同的 Azure 檔案共用掛接到多個掛接點。
 
 ### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>使用 `mount` 隨需掛接 Azure 檔案共用
-1. **建立掛接點的資料夾**：將、 `<your-resource-group>` `<your-storage-account>`和`<your-file-share>`取代為您環境的適當資訊：
+1. **建立掛接點的資料夾**：將 `<your-resource-group>` 、和取代為 `<your-storage-account>` `<your-file-share>` 您環境的適當資訊：
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -111,7 +111,7 @@ uname -r
     sudo mkdir -p $mntPath
     ```
 
-1. **使用 mount 命令來掛接 Azure 檔案共用**。 在下列範例中，本機 Linux 檔案和資料夾許可權預設為0755，這表示擁有者（根據檔案/目錄 Linux 擁有者）的讀取、寫入和執行、對擁有者群組中的使用者進行讀取和執行，以及為系統上的其他人讀取和執行。 您可以使用`uid`和`gid`掛接選項來設定掛接的使用者識別碼和群組識別碼。 您也可以使用`dir_mode`和`file_mode`來設定所需的自訂許可權。 如需如何設定許可權的詳細資訊，請參閱維琪百科上的[UNIX 數值標記法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。 
+1. **使用 mount 命令來掛接 Azure 檔案共用**。 在下列範例中，本機 Linux 檔案和資料夾許可權預設為0755，這表示擁有者（根據檔案/目錄 Linux 擁有者）的讀取、寫入和執行、對擁有者群組中的使用者進行讀取和執行，以及為系統上的其他人讀取和執行。 您可以使用 `uid` 和 `gid` 掛接選項來設定掛接的使用者識別碼和群組識別碼。 您也可以使用 `dir_mode` 和 `file_mode` 來設定所需的自訂許可權。 如需如何設定許可權的詳細資訊，請參閱維琪百科上的[UNIX 數值標記法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。 
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -134,7 +134,7 @@ uname -r
 使用 Azure 檔案共用後，即可使用 `sudo umount $mntPath` 取消掛接共用。
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>使用 `/etc/fstab` 建立 Azure 檔案共用的持續掛接點
-1. **建立掛接點的資料夾**：掛接點的資料夾可以在檔案系統上的任何位置建立，但在/mnt。底下建立此檔案是常見的慣例。 例如，下列命令會建立新的目錄，並將`<your-resource-group>`、 `<your-storage-account>`和`<your-file-share>`取代為您環境的適當資訊：
+1. **建立掛接點的資料夾**：掛接點的資料夾可以在檔案系統上的任何位置建立，但在/mnt。底下建立此檔案是常見的慣例。 例如，下列命令會建立新的目錄， `<your-resource-group>` `<your-storage-account>` 並將、和取代為 `<your-file-share>` 您環境的適當資訊：
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -173,7 +173,7 @@ uname -r
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. **使用下列命令將下面這一行附加至`/etc/fstab` **：在下列範例中，本機 Linux 檔案和資料夾許可權預設為0755，這表示擁有者（根據檔案/目錄 Linux 擁有者）的讀取、寫入和執行、對擁有者群組中的使用者進行讀取和執行，以及對系統上的其他人進行讀取和執行。 您可以使用`uid`和`gid`掛接選項來設定掛接的使用者識別碼和群組識別碼。 您也可以使用`dir_mode`和`file_mode`來設定所需的自訂許可權。 如需如何設定許可權的詳細資訊，請參閱維琪百科上的[UNIX 數值標記法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。
+1. **使用下列命令將下面這一行附加至 `/etc/fstab` **：在下列範例中，本機 Linux 檔案和資料夾許可權預設為0755，這表示擁有者（根據檔案/目錄 Linux 擁有者）的讀取、寫入和執行、對擁有者群組中的使用者進行讀取和執行，以及對系統上的其他人進行讀取和執行。 您可以使用 `uid` 和 `gid` 掛接選項來設定掛接的使用者識別碼和群組識別碼。 您也可以使用 `dir_mode` 和 `file_mode` 來設定所需的自訂許可權。 如需如何設定許可權的詳細資訊，請參閱維琪百科上的[UNIX 數值標記法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -205,11 +205,11 @@ uname -r
     sudo apt update
     sudo apt install autofs
     ```
-    在**Fedora**、 **Red Hat Enterprise Linux 8 +** 和**CentOS 8 +** 上，使用`dnf`套件管理員：
+    在**Fedora**、 **Red Hat Enterprise Linux 8 +** 和**CentOS 8 +** 上，使用 `dnf` 套件管理員：
     ```bash
     sudo dnf install autofs
     ```
-    在較舊版本的**Red Hat Enterprise Linux**和**CentOS**上， `yum`使用套件管理員：
+    在較舊版本的**Red Hat Enterprise Linux**和**CentOS**上，使用 `yum` 套件管理員：
     ```bash
     sudo yum install autofs 
     ```
@@ -244,28 +244,28 @@ uname -r
 ## <a name="securing-linux"></a>保護 Linux
 若要在 Linux 上掛接 Azure 檔案共用，必須能夠存取埠445。 許多組織會封鎖連接埠 445，因為 SMB 1 固有的安全性風險。 SMB 1 （也稱為 CIFS （通用網際網路檔案系統））是許多 Linux 發行版本隨附的舊版檔案系統協定。 SMB 1 已過期、沒有效率，而且最重要的是不安全的通訊協定。 好消息是，Azure 檔案儲存體不支援 SMB 1，從 Linux 核心版本4.18 開始，Linux 讓您可以停用 SMB 1。 我們一律[強烈建議](https://aka.ms/stopusingsmb1)您先停用 Linux 用戶端上的 smb 1，再于生產環境中使用 smb 檔案共用。
 
-從 Linux 核心4.18 開始，SMB 核心模組（稱為`cifs`舊版原因）會公開新的模組參數（通常稱為由各種外部檔所*parm* ），稱為。 `disable_legacy_dialects` 雖然是在 Linux 核心4.18 中引進，但部分廠商已將這項變更 backport 到其支援的舊版核心。 為了方便起見，下表詳細說明通用 Linux 散發套件上此模組參數的可用性。
+從 Linux 核心4.18 開始，SMB 核心模組（稱為 `cifs` 舊版原因）會公開新的模組參數（通常稱為由各種外部檔所*parm* ），稱為 `disable_legacy_dialects` 。 雖然是在 Linux 核心4.18 中引進，但部分廠商已將這項變更 backport 到其支援的舊版核心。 為了方便起見，下表詳細說明通用 Linux 散發套件上此模組參數的可用性。
 
 | 散發 | 可以停用 SMB 1 |
 |--------------|-------------------|
-| Ubuntu 14.04-16.04 | 否 |
-| Ubuntu 18.04 | 是 |
-| Ubuntu 19.04 + | 是 |
-| Debian 8-9 | 否 |
-| Debian 10 + | 是 |
-| Fedora 29 + | 是 |
-| CentOS 7 | 否 | 
-| CentOS 8 + | 是 |
-| Red Hat Enterprise Linux 6.x-7. x | 否 |
-| Red Hat Enterprise Linux 8 + | 是 |
-| openSUSE Leap 15。0 | 否 |
-| openSUSE Leap 15.1 + | 是 |
-| openSUSE Tumbleweed | 是 |
-| SUSE Linux Enterprise 11. x-12. x | 否 |
-| SUSE Linux Enterprise 15 | 否 |
-| SUSE Linux Enterprise 15。1 | 否 |
+| Ubuntu 14.04-16.04 | No |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
+| Debian 8-9 | No |
+| Debian 10 + | Yes |
+| Fedora 29 + | Yes |
+| CentOS 7 | No | 
+| CentOS 8 + | Yes |
+| Red Hat Enterprise Linux 6.x-7. x | No |
+| Red Hat Enterprise Linux 8 + | Yes |
+| openSUSE Leap 15。0 | No |
+| openSUSE Leap 15.1 + | Yes |
+| openSUSE Tumbleweed | Yes |
+| SUSE Linux Enterprise 11. x-12. x | No |
+| SUSE Linux Enterprise 15 | No |
+| SUSE Linux Enterprise 15。1 | No |
 
-您可以透過下列命令，查看您的`disable_legacy_dialects` Linux 散發套件是否支援模組參數。
+您可以透過下列命令，查看您的 Linux 散發套件是否支援 `disable_legacy_dialects` 模組參數。
 
 ```bash
 sudo modinfo -p cifs | grep disable_legacy_dialects
@@ -283,7 +283,7 @@ disable_legacy_dialects: To improve security it may be helpful to restrict the a
 lsmod | grep cifs
 ```
 
-若要卸載模組，請先取消掛接所有 SMB 共用（ `umount`如上所述使用命令）。 您可以使用下列命令來識別系統上所有裝載的 SMB 共用：
+若要卸載模組，請先取消掛接所有 SMB 共用（ `umount` 如上所述使用命令）。 您可以使用下列命令來識別系統上所有裝載的 SMB 共用：
 
 ```bash
 mount | grep cifs
@@ -295,19 +295,19 @@ mount | grep cifs
 sudo modprobe -r cifs
 ```
 
-您可以使用`modprobe`命令，以手動方式載入已卸載之 SMB 1 的模組：
+您可以使用命令，以手動方式載入已卸載之 SMB 1 的模組 `modprobe` ：
 
 ```bash
 sudo modprobe cifs disable_legacy_dialects=Y
 ```
 
-最後，您可以藉由查看中`/sys/module/cifs/parameters`已載入的參數，檢查是否已載入具有參數的 SMB 模組：
+最後，您可以藉由查看中已載入的參數，檢查是否已載入具有參數的 SMB 模組 `/sys/module/cifs/parameters` ：
 
 ```bash
 cat /sys/module/cifs/parameters/disable_legacy_dialects
 ```
 
-若要在 Ubuntu 和 Debian 為基礎的散發套件上持續停用 SMB 1，您必須建立以設定呼叫`/etc/modprobe.d/local.conf`的新檔案（如果您還沒有其他模組的自訂選項）。 您可以使用下列命令來執行這項操作：
+若要在 Ubuntu 和 Debian 為基礎的散發套件上持續停用 SMB 1，您必須建立以設定呼叫的新檔案（如果您還沒有其他模組的自訂選項） `/etc/modprobe.d/local.conf` 。 您可以使用下列命令來執行這項操作：
 
 ```bash
 echo "options cifs disable_legacy_dialects=Y" | sudo tee -a /etc/modprobe.d/local.conf > /dev/null
@@ -323,6 +323,6 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="next-steps"></a>後續步驟
 請參閱這些連結，以取得 Azure 檔案服務的詳細資訊：
 
-* [規劃 Azure 檔案服務部署](storage-files-planning.md)
+* [規劃 Azure 檔案部署](storage-files-planning.md)
 * [常見問題集](../storage-files-faq.md)
 * [疑難排解](storage-troubleshoot-linux-file-connection-problems.md)

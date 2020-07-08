@@ -3,19 +3,19 @@ title: 更換 Microsoft Azure StorSimple 8000 系列裝置上的電池
 description: 描述如何取下、更換和維護 StorSimple 裝置上的備份電池模組。
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 17a6a07d117557cdee23634bd211a14cf90d49e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255011"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508974"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>更換 StorSimple 裝置上的備份電池模組
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Microsoft Azure StorSimple 裝置上的主要機箱電源和冷卻模組 (PCM) 具有額外的電池組。 這個電池組會提供電源，以便如果主要機箱失去 AC 電源，StorSimple 裝置可以儲存資料。 這個電池組稱為 [備用電池模組]**。 備份電池模組僅針對 StorSimple 裝置中的主要機箱而存在 (EBOD 機箱未包含備份電池模組) 。
 
 本教學課程說明如何：
@@ -32,7 +32,7 @@ Microsoft Azure StorSimple 裝置上的主要機箱電源和冷卻模組 (PCM) �
 StorSimple 裝置的備份電池模組是現場可置換裝置。 在 PCM 中安裝它之前，電池模組應該儲存在其原始包裝中。 執行下列步驟以取下備份電池。
 
 #### <a name="to-remove-the-backup-battery-module"></a>若要取下備份電池模組
-1. 在 Azure 入口網站中，移至您的 StorSimple 裝置管理員服務刀鋒視窗。 移至 [裝置]****，然後從裝置清單選取您的裝置。 流覽至 [**監視** > ] [**硬體健康**情況]。 在 [共用元件]**** 底下，查看電池的狀態。
+1. 在 Azure 入口網站中，移至您的 StorSimple 裝置管理員服務刀鋒視窗。 移至 [裝置]****，然後從裝置清單選取您的裝置。 流覽至 [**監視**] [  >  **硬體健康**情況]。 在 [共用元件]**** 底下，查看電池的狀態。
 2. 識別電池故障的 PCM。 圖 1 顯示 StorSimple 裝置的背面。
    
     ![裝置主要機箱模組的後擋板](./media/storsimple-battery-replacement/IC740994.png)
@@ -76,7 +76,7 @@ StorSimple 裝置的備份電池模組是現場可置換裝置。 在 PCM 中安
 1. 以適當的方向將備份電池模組放入 PCM 中。
 2. 全力按壓電池模組把手以固定連接器。
 3. 依照 [更換 StorSimple 裝置上的電源和冷卻模組](storsimple-8000-power-cooling-module-replacement.md)中的指導方針，更換主要機箱的 PCM。
-4. 更換完成後，請移至您的裝置，然後移至 [**監視** > ] Azure 入口網站中的 [**硬體健康**情況]。 確認電池的狀態，以確定安裝成功。 綠色狀態表示電池狀況良好。
+4. 更換完成後，請移至您的裝置，然後移至 [**監視**]  >  Azure 入口網站中的 [**硬體健康**情況]。 確認電池的狀態，以確定安裝成功。 綠色狀態表示電池狀況良好。
 
 ## <a name="maintain-the-backup-battery-module"></a>維護備份電池模組
 在 StorSimple 裝置中，備份電池模組會在停電期間提供電源給控制器。 它可讓 StorSimple 裝置在以控制方式關閉之前儲存重要資料。 由於 PCM 中有兩個完全充電的電池，系統可以處理兩個連續停電事件。

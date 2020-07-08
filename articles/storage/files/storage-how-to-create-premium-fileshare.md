@@ -3,23 +3,23 @@ title: 建立 premium Azure 檔案共用
 description: 在本文中，您將瞭解如何建立 premium Azure 檔案共用。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7680a28b165dc252159cf95311439508d3c867e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae40f94ca6c8c0b92c85a49e634aa02c81a98eff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79529102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509977"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>如何建立 premium Azure 檔案共用
 高階檔案共用是在固態硬碟（SSD）儲存媒體上提供，適用于需要大量 IO 的工作負載，包括裝載資料庫和高效能運算（HPC）。 高階檔案共用裝載在特殊用途的儲存體帳戶類型中，稱為 FileStorage 帳戶。 Premium 檔案共用是針對高效能和企業級應用程式所設計，可提供一致的低延遲、高 IOPS 和高輸送量的共用。
 
 本文說明如何使用[Azure 入口網站](https://portal.azure.com/)、Azure PowerShell 和 Azure CLI 來建立這個新帳戶類型。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要存取 Azure 資源（包括 premium Azure 檔案共用），您將需要 Azure 訂用帳戶。 如果您還沒有訂用帳戶，則先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 
@@ -46,13 +46,16 @@ ms.locfileid: "79529102"
 1. 接下來，輸入儲存體帳戶的名稱。 您所選擇的名稱在整個 Azure 中必須是唯一的。 名稱的長度必須介於 3 到 24 個字元之間，且只能包含數字和小寫字母。
 1. 選取儲存體帳戶的位置，或使用預設位置。
 1. 針對 [**效能**]，請選取 [ **Premium**]。
+
+    您必須在 [**帳戶種類**] 下拉式清單中選取 [ **Premium** for **FileStorage** ] 做為可用的選項。
+
 1. 選取 [**帳戶種類**]，然後選擇 [ **FileStorage**]。
 1. 將 **[複寫] 保留為**預設值 **[本機-多餘儲存體（LRS）**]。
 
     ![如何建立 premium 檔案共用的儲存體帳戶](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
 1. 選取 [檢閱 + 建立]  ，以檢閱您的儲存體帳戶設定並建立帳戶。
-1. 選取 [建立]  。
+1. 選取 [建立]。
 
 建立儲存體帳戶資源之後，請流覽至它。
 
