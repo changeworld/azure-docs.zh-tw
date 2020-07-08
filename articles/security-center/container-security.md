@@ -10,24 +10,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/11/2020
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: d46e2a9820ec0c45d197f135428f1ace712b2fb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c01ed6dbbd6e1f7febfb99df11d2ee67cb1e5465
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80125133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800593"
 ---
 # <a name="container-security-in-security-center"></a>資訊安全中心中的容器安全性
 
-Azure 資訊安全中心是適用于容器安全性的 Azure 原生解決方案。 資訊安全中心也是您的雲端工作負載、Vm、伺服器和容器安全性的最佳單一視窗體驗。
+Azure 資訊安全中心是用來保護您的容器的 Azure 原生解決方案。 資訊安全中心可以保護下列容器資源類型：
 
-本文說明資訊安全中心如何協助您改善、監視和維護容器及其應用程式的安全性。 您將瞭解資訊安全中心如何協助下列容器安全性的核心層面：
 
-* 弱點管理
-* 強化容器的環境
-* 執行時間保護
+
+|資源 |Name  |詳細資料  |
+|:---------:|---------|---------|
+|![容器主機](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)|容器主機（執行 Docker 的虛擬機器）|資訊安全中心會掃描您的 Docker 組態，並透過提供一份所有經評估為失敗規則的清單，讓您能夠看見錯誤的組態。 資訊安全中心提供指導方針協助您快速解決這些問題，並節省時間。 資訊安全中心會持續評估 Docker 設定，並提供給您其最新狀態。|
+|![Kubernetes 服務](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)|Azure Kubernetes Service （AKS）叢集|針對標準層使用者，利用[資訊安全中心的選擇性 AKS](azure-kubernetes-service-integration.md)配套，取得 AKS 節點、雲端流量和安全性控制的更深入可見度。|
+|![容器登錄](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)|Azure Container Registry （ACR）登錄|針對標準層使用者，使用[資訊安全中心的選擇性 acr](azure-kubernetes-service-integration.md)配套，深入瞭解以 ARM 為基礎的 acr 登錄中的映射弱點。|
+||||
+
+
+本文說明如何使用這些配套來改善、監視和維護容器及其應用程式的安全性。 您將瞭解資訊安全中心如何協助下列容器安全性的核心層面：
+
+- [弱點管理-掃描容器映射](#vulnerability-management---scanning-container-images)
+- [強化環境-持續監視 Docker 設定和 Kubernetes 叢集](#environment-hardening)
+- [執行時間保護-即時威脅偵測](#run-time-protection---real-time-threat-detection)
 
 [![Azure 資訊安全中心的 [容器安全性] 索引標籤](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
@@ -65,36 +74,13 @@ AKS 提供安全性控制和叢集安全性狀態的可見度。 資訊安全中
 
 ## <a name="run-time-protection---real-time-threat-detection"></a>執行時間保護-即時威脅偵測
 
-資訊安全中心為您的容器化環境提供即時威脅偵測，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
-
-我們偵測到主機和 AKS 叢集層級的威脅。 如需完整詳細資料，請參閱[Azure 容器的威脅偵測](threat-protection.md#azure-containers)。
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
-## <a name="container-security-faq"></a>容器安全性常見問題
 
-### <a name="what-types-of-images-can-azure-security-center-scan"></a>哪些映射類型可以 Azure 資訊安全中心掃描？
-資訊安全中心會掃描以 Linux OS 為基礎的映射，以提供 shell 存取。 
-
-Qualys 掃描器不支援極簡映射（例如[Docker 待用](https://hub.docker.com/_/scratch/)映射），或只包含您應用程式及其執行時間相依性（不含套件管理員、SHELL 或 OS）的 "Distroless" 映射。
-
-### <a name="how-does-azure-security-center-scan-an-image"></a>Azure 資訊安全中心掃描影像的方式為何？
-映射會從登錄提取。 然後，它會在隔離的沙箱中執行，並在其中解壓縮已知弱點清單的 Qualys 掃描器。
-
-資訊安全中心篩選並分類掃描器的發現結果。 當影像狀況良好時，資訊安全中心將其標示為。 資訊安全中心只會針對具有要解決之問題的映射產生安全性建議。 藉由只在發生問題時發出通知，資訊安全中心降低不必要資訊警示的可能性。
-
-### <a name="how-often-does-azure-security-center-scan-my-images"></a>Azure 資訊安全中心掃描影像的頻率為何？
-系統會在每次推送時觸發影像掃描。
-
-### <a name="can-i-get-the-scan-results-via-rest-api"></a>我可以透過 REST API 取得掃描結果嗎？
-是。 結果會在[子評量 REST API](/rest/api/securitycenter/subassessments/list/)之下。 此外，您可以使用 Azure Resource Graph （ARG），這是適用于所有資源的類似 Kusto API：查詢可以提取特定的掃描。
- 
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解 Azure 資訊安全中心中的容器安全性，請參閱下列相關文章：
-
-* 若要查看容器相關資源的安全性狀態，請參閱[保護您的機器和應用程式](security-center-virtual-machine-protection.md#containers)的容器一節。
-
-* [與 Azure Kubernetes Service 整合](azure-kubernetes-service-integration.md)的詳細資料
-
-* [與 Azure Container Registry 整合](azure-container-registry-integration.md)的詳細資料
+在此總覽中，您已瞭解 Azure 資訊安全中心中容器安全性的核心元素。 繼續[瞭解如何監視容器的安全性](monitor-container-security.md)。
+> [!div class="nextstepaction"]
+> [監視容器的安全性](monitor-container-security.md)

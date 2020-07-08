@@ -2,14 +2,13 @@
 title: 概念 - Azure Kubernetes Service (AKS) 中的網路功能
 description: 了解 Azure Kubernetes Service (AKS) 中的網路功能，包括 kubenet 和 Azure CNI 網路功能、輸入控制器、負載平衡器和靜態 IP 位址。
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 51773a46b77cb1e9a89b9c85a5f62c4a6b7af3be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ae1c2b95a948f2344119af234539b6fab4edaaac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146065"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84789492"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的網路概念
 
@@ -129,6 +128,8 @@ Kubenet 與 Azure CNI 之間存在下列行為差異：
 
 在 AKS 中，您可以使用 NGINX 之類的功能建立輸入資源，或是使用 AKS HTTP 應用程式路由功能。 當您為 AKS 叢集啟用 HTTP 應用程式路由時，Azure 平台會建立輸入控制器和 *External-DNS* 控制器。 在 Kubernetes 中建立新的輸入資源時，會在叢集特定的 DNS 區域中建立所需的 DNS A 記錄。 如需詳細資訊，請參閱[部署 HTTP 應用程式路由][aks-http-routing]。
 
+應用程式閘道輸入控制器（AGIC）附加元件可讓 AKS 客戶利用 Azure 的原生應用程式閘道層級7負載平衡器，將雲端軟體公開到網際網路。 AGIC 會監視其裝載所在的 Kubernetes 叢集，並持續更新應用程式閘道，讓選取的服務向網際網路公開。 若要深入瞭解適用于 AKS 的 AGIC 附加元件，請參閱[什麼是應用程式閘道輸入控制器？][agic-overview]
+
 輸入的另一個常見功能是終止 SSL/TLS。 在透過 HTTPS 存取的大型 Web 應用程式上，可由輸入資源來處理 TLS 終止，而無須由應用程式本身處理。 若要提供自動 TLS 憑證產生和設定的功能，您可以將輸入資源設定為使用 Let's Encrypt 之類的資源提供者。 如需為 NGINX 輸入控制器設定 Let's Encrypt 的詳細資訊，請參閱[輸入和 TLS][aks-ingress-tls]。
 
 您也可以設定輸入控制器，在 AKS 叢集中的容器要求上保留用戶端來源 IP。 當用戶端的要求透過輸入控制器路由至 AKS 叢集中的容器時，該要求的原始來源 IP 將無法供目標容器使用。 當您啟用*用戶端來源 ip 保留*時，用戶端的來源 ip 會在要求標頭中的 [ *X-轉送-針對*] 下提供。 如果您要在輸入控制器上使用用戶端來源 IP 保留，則無法使用 TLS 傳遞。 用戶端來源 IP 保留和 TLS 傳遞可以與其他服務搭配使用，例如*LoadBalancer*類型。
@@ -180,6 +181,7 @@ Kubenet 與 Azure CNI 之間存在下列行為差異：
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
+[agic-overview]: ../application-gateway/ingress-controller-overview.md
 [use-network-policies]: use-network-policies.md
 [operator-best-practices-network]: operator-best-practices-network.md
 [support-policies]: support-policies.md

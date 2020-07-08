@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: 450a97b0be1b11980d65477d396431170180d00f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 0271bd08e01cdbd442e64db0c04184995f7d8d09
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746648"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958441"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>如何在 Microsoft AppSource 上購買軟體
 
@@ -65,4 +64,4 @@ AppSource 提供精選的應用程式供您選擇，包括免費版、試用版�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[商業市集文件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)以取得詳細資訊。
+- 請參閱[商業市集文件](partner-center-portal/commercial-marketplace-overview.md)以取得詳細資訊。

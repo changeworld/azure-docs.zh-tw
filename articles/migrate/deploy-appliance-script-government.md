@@ -3,12 +3,11 @@ title: 在 Azure Government 中設定 Azure Migrate 設備
 description: 瞭解如何在 Azure Government 中設定 Azure Migrate 設備
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: fd97161ffa075a6165ea963ef80bfabf8904576e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c8bcecd7cca78a24d9dbf18e185c9362ed712b43
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726731"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052482"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>在 Azure Government 中設定設備 
 
@@ -19,7 +18,7 @@ ms.locfileid: "81726731"
 > Azure Government 不支援使用範本（適用于 VMware Vm 和 Hyper-v Vm）部署設備的選項。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 腳本會在現有的實體機器或 VM 上設定 Azure Migrate 設備。
 
@@ -33,8 +32,8 @@ ms.locfileid: "81726731"
 
 ### <a name="download-the-script"></a>下載腳本
 
-1.  在 [移轉目標]   > [伺服器]   >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]  。
-2.  在 [探索機器]   > [機器是否已虛擬化?]  中，選取 [是，使用 VMWare vSphere Hypervisor]  。
+1.  在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]。
+2.  在 [探索機器] > [機器是否已虛擬化?] 中，選取 [是，使用 VMWare vSphere Hypervisor]。
 3.  按一下 [**下載**] 以下載壓縮檔案。 
 
 
@@ -45,14 +44,14 @@ ms.locfileid: "81726731"
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip MD5```
+    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
 
-3. 請確認產生的雜湊值。 針對最新的設備版本：
+3. 確認最新的設備版本和雜湊值：
 
-    **演算法** | **雜湊值**
-    --- | ---
-    MD5 | 6316bcc8bc932204295bfe33f4be3949
-          
+    **演算法** | **下載** | **SHA256**
+    --- | --- | ---
+    VMware (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+
 
 ### <a name="run-the-script"></a>執行指令碼
 
@@ -71,7 +70,7 @@ ms.locfileid: "81726731"
 1. 將壓縮檔案解壓縮至將裝載設備的電腦上的資料夾。 請確定您未在現有 Azure Migrate 設備的電腦上執行指令碼。
 2. 在電腦上啟動 PowerShell，並使用系統管理員（更高許可權）的許可權。
 3. 將 PowerShell 目錄變更為包含從下載的壓縮檔案解壓縮之內容的資料夾。
-4. 執行腳本**AzureMigrateInstaller**，如下所示：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
+4. 執行腳本**AzureMigrateInstaller.ps1**，如下所示：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
 5. 腳本執行成功之後，它會啟動設備 web 應用程式，讓您可以設定設備。 如果您遇到任何問題，請參閱 C:\ProgramData\Microsoft Azure\Logs\ 的腳本記錄檔 AzureMigrateScenarioInstaller_<em>Timestamp</em>.log。
 
 ### <a name="verify-access"></a>驗證存取
@@ -85,8 +84,8 @@ ms.locfileid: "81726731"
 
 ### <a name="download-the-script"></a>下載腳本
 
-1.  在 [移轉目標]   > [伺服器]   >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]  。
-2.  在 [探索機器]   > [機器是否已虛擬化?]  中，選取 [是，使用 Hyper-V]  。
+1.  在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]。
+2.  在 [探索機器]**** > [機器是否已虛擬化?]**** 中，選取 [是，使用 Hyper-V]****。
 3.  按一下 [**下載**] 以下載壓縮檔案。 
 
 
@@ -97,13 +96,14 @@ ms.locfileid: "81726731"
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip MD5```
+    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
 
-3. 請確認產生的雜湊值。 針對最新的設備版本：
+3. 確認最新的設備版本和雜湊值：
 
-    **演算法** | **雜湊值**
-    --- | ---
-    MD5 | 717f8b9185f565006b5aff0215ecadac
+    **案例** | **下載** | **SHA256**
+    --- | --- | ---
+    Hyper-V (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
           
 
 ### <a name="run-the-script"></a>執行指令碼
@@ -123,7 +123,7 @@ ms.locfileid: "81726731"
 1. 將壓縮檔案解壓縮至將裝載設備的電腦上的資料夾。 請確定您未在現有 Azure Migrate 設備的電腦上執行指令碼。
 2. 在電腦上啟動 PowerShell，並使用系統管理員（更高許可權）的許可權。
 3. 將 PowerShell 目錄變更為包含從下載的壓縮檔案解壓縮之內容的資料夾。
-4. 執行腳本**AzureMigrateInstaller**，如下所示：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ``` 
+4. 執行腳本**AzureMigrateInstaller.ps1**，如下所示：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ``` 
 5. 腳本執行成功之後，它會啟動設備 web 應用程式，讓您可以設定設備。 如果您遇到任何問題，請參閱 C:\ProgramData\Microsoft Azure\Logs\ 的腳本記錄檔 AzureMigrateScenarioInstaller_<em>Timestamp</em>.log。
 
 ### <a name="verify-access"></a>驗證存取
@@ -137,8 +137,8 @@ ms.locfileid: "81726731"
 
 ### <a name="download-the-script"></a>下載腳本
 
-1.  在 [移轉目標]   > [伺服器]   >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]  。
-2.  在 [**探索機器** > **是否已虛擬化？**] 中，選取 [**未虛擬化/其他**]。
+1.  在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]。
+2.  在 [**探索機器**  >  **是否已虛擬化？**] 中，選取 [**未虛擬化/其他**]。
 3.  按一下 [**下載**] 以下載壓縮檔案。 
 
 
@@ -149,13 +149,13 @@ ms.locfileid: "81726731"
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5```
+    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
 
-3. 請確認產生的雜湊值。 針對最新的設備版本：
+3. 確認最新的設備版本和雜湊值：
 
-    **演算法** | **雜湊值**
-    --- | ---
-    MD5 | f81c155fc4a1409901caea948713913f
+    **案例** | **下載*** | **雜湊值**
+    --- | --- | ---
+    實體 (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
           
 
 ### <a name="run-the-script"></a>執行指令碼
@@ -175,7 +175,7 @@ ms.locfileid: "81726731"
 1. 將壓縮檔案解壓縮至將裝載設備的電腦上的資料夾。 請確定您未在現有 Azure Migrate 設備的電腦上執行指令碼。
 2. 在電腦上啟動 PowerShell，並使用系統管理員（更高許可權）的許可權。
 3. 將 PowerShell 目錄變更為包含從下載的壓縮檔案解壓縮之內容的資料夾。
-4. 執行腳本**AzureMigrateInstaller**，如下所示：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
+4. 執行腳本**AzureMigrateInstaller.ps1**，如下所示：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 5. 腳本執行成功之後，它會啟動設備 web 應用程式，讓您可以設定設備。 如果您遇到任何問題，請參閱 C:\ProgramData\Microsoft Azure\Logs\ 的腳本記錄檔 AzureMigrateScenarioInstaller_<em>Timestamp</em>.log。
 
 ### <a name="verify-access"></a>驗證存取

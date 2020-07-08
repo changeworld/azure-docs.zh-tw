@@ -2,13 +2,12 @@
 title: 使用 PowerShell 和範本部署資源
 description: 使用 Azure Resource Manager 和 Azure PowerShell，將資源部署至 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: e595aa8f86a24e59c8e00d24ea8e9dcb0875a8f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/04/2020
+ms.openlocfilehash: af255e0248c029f42c9c2999ae7c0389d60c58fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153262"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84431831"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 範本和 Azure PowerShell 部署資源
 
@@ -20,39 +19,39 @@ ms.locfileid: "80153262"
 
 視部署的範圍而定，您可以使用不同的命令。
 
-若要部署至**資源群組**，請使用[new-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)：
+* 若要部署至**資源群組**，請使用[new-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)：
 
-```azurepowershell
-New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
-```
+  ```azurepowershell
+  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+  ```
 
-若要部署至**訂**用帳戶，請使用 AzSubscriptionDeployment：
+* 若要部署至**訂**用帳戶，請使用 AzSubscriptionDeployment：
 
-```azurepowershell
-New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
-```
+  ```azurepowershell
+  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
+  ```
 
-如需訂用帳戶層級部署的詳細資訊，請參閱在訂用帳戶[層級建立資源群組和資源](deploy-to-subscription.md)。
+  如需訂用帳戶層級部署的詳細資訊，請參閱[在訂用帳戶層級建立資源群組和資源](deploy-to-subscription.md)。
 
-若要部署至**管理群組**，請使用[AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)。
+* 若要部署至**管理群組**，請使用[AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)。
 
-```azurepowershell
-New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
-```
+  ```azurepowershell
+  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
+  ```
 
-如需管理群組層級部署的詳細資訊，請參閱在[管理群組層級建立資源](deploy-to-management-group.md)。
+  如需管理群組層級部署的詳細資訊，請參閱[在管理群組層級建立資源](deploy-to-management-group.md)。
 
-若要部署至**租**使用者，請使用[AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)。
+* 若要部署至**租**使用者，請使用[AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)。
 
-```azurepowershell
-New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
-```
+  ```azurepowershell
+  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
+  ```
 
-如需租使用者層級部署的詳細資訊，請參閱在[租使用者層級建立資源](deploy-to-tenant.md)。
+  如需租用戶層級部署的詳細資訊，請參閱[在租用戶層級建立資源](deploy-to-tenant.md)。
 
 本文中的範例會使用資源群組部署。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您需要一個要部署的範本。 如果您還沒有帳戶，請從 Azure 快速入門範本存放庫下載並儲存[範例範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)。 本文所使用的本機檔案名稱是 **c:\MyTemplates\azuredeploy.json**。
 
@@ -93,11 +92,15 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 上述範例針對範本需要可公開存取 URI，這適用於大部分的案例，因為您的範本不應該包含機密資料。 如果您需要指定機密資料 (例如系統管理員密碼)，請將該值以安全參數傳遞。 不過，如果不希望將範本公開存取，您可以將它儲存在私人儲存體容器中加以保護。 如需部署需要共用存取簽章 (SAS) 權杖之範本的相關資訊，請參閱[使用 SAS 權杖部署私人範本](secure-template-with-sas-token.md)。 若要進行教學課程，請參閱[教學課程：在 ARM 範本部署中整合 Azure Key Vault](template-tutorial-use-key-vault.md)。
 
+## <a name="preview-changes"></a>預覽變更
+
+在部署您的範本之前，您可以預覽範本對環境所做的變更。 使用「[假設](template-deploy-what-if.md)」作業來確認範本會進行您預期的變更。 假設也會驗證範本是否有錯誤。
+
 ## <a name="deploy-from-azure-cloud-shell"></a>從 Azure Cloud Shell 部署
 
 您可以使用 [Azure Cloud Shell](https://shell.azure.com) 來部署範本。 若要部署外部範本，請提供範本的 URI。 若要部署本機範本，您必須先將範本載入 Cloud Shell 的儲存體帳戶。 若要將檔案上傳到殼層，請從殼層視窗選取 [上傳/下載檔案]**** 功能表圖示。
 
-若要開啟 Cloud shell，請流覽[https://shell.azure.com](https://shell.azure.com)至，或從下列程式碼區段中選取 [**試試看**]：
+若要開啟 Cloud Shell，請流覽至 [https://shell.azure.com](https://shell.azure.com) ，或從下列程式碼區段選取 [**試試看**]：
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -153,7 +156,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 
 相對於在您的指令碼中將參數做為內嵌值傳遞，使用包含該參數值的 JSON 檔案可能較為容易。 參數檔案可以是本機檔案或具有可存取 URI 的外部檔案。
 
-如需參數檔案的詳細資訊，請參閱[建立 Resource Manager 參數](parameter-files.md)檔案。
+如需參數檔案的詳細資訊，請參閱[建立 Resource Manager 參數檔案](parameter-files.md)。
 
 若要傳遞本機參數檔案，請使用 **TemplateParameterFile** 參數︰
 
@@ -171,38 +174,9 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
 ```
 
-## <a name="test-template-deployments"></a>測試範本部署
-
-若要測試您的範本和參數值而不實際部署任何資源，請使用[測試 new-azresourcegroupdeployment](/powershell/module/az.resources/test-azresourcegroupdeployment)。 
-
-```powershell
-Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json -storageAccountType Standard_GRS
-```
-
-如果未偵測到錯誤，命令即完成，不會有回應。 如果偵測到錯誤，命令會傳回錯誤訊息。 例如，針對儲存體帳戶 SKU 傳遞不正確的值，則會傳回下列錯誤：
-
-```powershell
-Test-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json -storageAccountType badSku
-
-Code    : InvalidTemplate
-Message : Deployment template validation failed: 'The provided value 'badSku' for the template parameter 'storageAccountType'
-          at line '15' and column '24' is not valid. The parameter value is not part of the allowed value(s):
-          'Standard_LRS,Standard_ZRS,Standard_GRS,Standard_RAGRS,Premium_LRS'.'.
-Details :
-```
-
-如果您的範本有語法錯誤，命令會傳回錯誤，指出無法剖析範本。 訊息會指出剖析錯誤的行號和位置。
-
-```powershell
-Test-AzResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
-  ". Path 'variables', line 31, position 3.
-```
-
 ## <a name="next-steps"></a>後續步驟
 
-- 當您收到錯誤時，若要回復為成功的部署，請參閱[發生錯誤時回復至部署成功](rollback-on-error.md)。
+- 在您收到錯誤時，若要回復為成功的部署，請參閱[錯誤回復至成功部署](rollback-on-error.md)。
 - 若要指定如何處理存在於資源群組中、但尚未定義於範本中的資源，請參閱 [Azure Resource Manager 部署模式](deployment-modes.md)。
 - 若要瞭解如何在您的範本中定義參數，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
 - 如需部署需要 SAS 權杖之範本的詳細資訊，請參閱[使用 SAS 權杖部署私人範本](secure-template-with-sas-token.md)。

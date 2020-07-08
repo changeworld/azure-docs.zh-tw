@@ -3,12 +3,11 @@ title: 範本函式-物件
 description: 描述要在 Azure Resource Manager 範本中用來處理物件的函數。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 2f77cd85802a2ecb3670cfc6d6b36e5e852fb2a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676789"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM 範本的物件函式
 
@@ -16,12 +15,12 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 * [contains](#contains)
 * [empty](#empty)
-* [處](#intersection)
+* [intersection](#intersection)
 * [json](#json)
 * [length](#length)
-* [並](#union)
+* [union](#union)
 
-## <a name="contains"></a>contains
+## <a name="contains"></a>包含
 
 `contains(container, itemToFind)`
 
@@ -29,10 +28,10 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| 容器 |是 |陣列、物件或字串 |其中包含要尋找之值的值。 |
-| itemToFind |是 |字串或整數 |要尋找的值。 |
+| 容器 |Yes |陣列、物件或字串 |其中包含要尋找之值的值。 |
+| itemToFind |Yes |字串或整數 |要尋找的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -44,7 +43,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -110,9 +109,9 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |是 |陣列、物件或字串 |要檢查其是否為空白的值。 |
+| itemToTest |Yes |陣列、物件或字串 |要檢查其是否為空白的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -124,7 +123,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -175,7 +174,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或物件 |要用來尋找共同元素的第一個值。 |
 | arg2 |是 |陣列或物件 |要用來尋找共同元素的第二個值。 |
@@ -191,7 +190,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {
@@ -241,9 +240,9 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |字串 |要轉換成 JSON 的值。 |
+| arg1 |Yes |字串 |要轉換成 JSON 的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -259,7 +258,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "jsonObject1": {
@@ -310,9 +309,9 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |陣列、字串或物件 |要用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
+| arg1 |Yes |陣列、字串或物件 |要用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -324,7 +323,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -386,7 +385,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或物件 |用來聯結元素的第一個值。 |
 | arg2 |是 |陣列或物件 |用來聯結元素的第二個值。 |
@@ -402,7 +401,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {

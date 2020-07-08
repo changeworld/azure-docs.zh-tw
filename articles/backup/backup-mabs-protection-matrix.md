@@ -1,84 +1,59 @@
 ---
-title: Azure 備份伺服器可以備份哪些內容
+title: MABS （Azure 備份伺服器） V3 UR1 保護矩陣
 description: 本文提供支援矩陣，其中列出 Azure 備份伺服器保護的所有工作負載、資料類型和安裝。
-ms.date: 11/13/2018
+ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: c7aa8823ca2bf638c6b726c504cddf8c5217fa19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f950c7be28a4ff0dd0caa12d1327c2a0e2ac4fc5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77444038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677316"
 ---
-# <a name="azure-backup-server-protection-matrix"></a>Azure 備份伺服器保護矩陣
+# <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS （Azure 備份伺服器） V3 UR1 保護矩陣
 
 本文列出您可以使用 Azure 備份伺服器保護的各種伺服器和工作負載。 下列矩陣列出可使用 Azure 備份伺服器保護的項目。
 
+使用下列適用于 MABS v3 UR1 的矩陣：
+
+* 工作負載 – 技術的工作負載類型。
+
+* 版本–工作負載支援的 MABS 版本。
+
+* MABS 安裝–您想要安裝 MABS 的電腦/位置。
+
+* 保護和還原 – 列出關於工作負載的詳細資訊，例如，支援的儲存體容器或支援的部署
+
 ## <a name="protection-support-matrix"></a>保護支援矩陣
 
-|工作負載|版本|Azure 備份伺服器</br> installation|支援的 Azure 備份伺服器|保護和復原|
-|------------|-----------|---------------|--------------|--------------|
-|用戶端電腦 (64 位元和 32 位元)|Windows 10|實體伺服器<br /><br />Hyper-V 虛擬機器<br /><br />VMware 虛擬機器|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
-|用戶端電腦 (64 位元和 32 位元)|Windows 8.1|實體伺服器<br /><br />Hyper-V 虛擬機器|V3、V2|檔案<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
-|用戶端電腦 (64 位元和 32 位元)|Windows 8.1|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
-|用戶端電腦 (64 位元和 32 位元)|Windows 8|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
-|用戶端電腦 (64 位元和 32 位元)|Windows 8|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
-|用戶端電腦 (64 位元和 32 位元)|Windows 7|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
-|用戶端電腦 (64 位元和 32 位元)|Windows 7|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
-|伺服器 (64 位元)|Windows Server 2019|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /><br />VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /><br />實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3 <br />不包括 Nano 伺服器|磁碟區、共用、資料夾、檔案、系統狀態/裸機、已啟用重複資料刪除功能的磁碟區|
-|伺服器 (32 位元和 64 位元)|Windows Server 2016|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /><br />VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /><br />實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2<br />不包括 Nano 伺服器|磁碟區、共用、資料夾、檔案、系統狀態/裸機、已啟用重複資料刪除功能的磁碟區|
-|伺服器 (32 位元和 64 位元)|Windows Server 2012 R2 - Datacenter 和 Standard|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /> <br /> Azure Stack|V3、V2|磁碟區、共用、資料夾、檔案<br /><br />Azure 備份伺服器必須至少在 Windows Server 2012 R2 上執行，才能保護 Windows Server 2012 重復資料刪除磁片區。|
-|伺服器 (32 位元和 64 位元)|Windows Server 2012 R2 - Datacenter 和 Standard|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|磁碟區、共用、資料夾、檔案、系統狀態/裸機<br /><br />Azure 備份伺服器必須在 Windows Server 2012 或 2012 R2 上執行，才能保護 Windows Server 2012 重復資料刪除磁片區。|
-|伺服器 (32 位元和 64 位元)|Windows Server 2012/2012 SP1 - Datacenter 和 Standard|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2|磁碟區、共用、資料夾、檔案、系統狀態/裸機<br /><br />Azure 備份伺服器必須至少在 Windows Server 2012 R2 上執行，才能保護 Windows Server 2012 重復資料刪除磁片區。|
-|伺服器 (32 位元和 64 位元)|Windows Server 2012/2012 SP1 - Datacenter 和 Standard|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /> <br /> Azure Stack|V3、V2|磁碟區、共用、資料夾、檔案<br /><br />Azure 備份伺服器必須至少在 Windows Server 2012 R2 上執行，才能保護 Windows Server 2012 重復資料刪除磁片區。|
-|伺服器 (32 位元和 64 位元)|Windows Server 2012/2012 SP1 - Datacenter 和 Standard|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|磁碟區、共用、資料夾、檔案、系統狀態/裸機<br /><br />Azure 備份伺服器必須至少在 Windows Server 2012 R2 上執行，才能保護 Windows Server 2012 重復資料刪除磁片區。|
-|伺服器 (32 位元和 64 位元)|Windows Server 2008 R2 SP1 - Standard 和 Enterprise|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2<br />您必須執行 SP1 並安裝 [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)|磁碟區、共用、資料夾、檔案、系統狀態/裸機|
-|伺服器 (32 位元和 64 位元)|Windows Server 2008 R2 SP1 - Standard 和 Enterprise|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /> <br /> Azure Stack|V3、V2<br />您必須執行 SP1 並安裝 [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)|磁碟區、共用、資料夾、檔案|
-|伺服器 (32 位元和 64 位元)|Windows Server 2008 R2 SP1 - Standard 和 Enterprise|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2<br />您必須執行 SP1 並安裝 [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)|磁碟區、共用、資料夾、檔案、系統狀態/裸機|
-|伺服器 (32 位元和 64 位元)|Windows Server 2008 SP2|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|不支援|磁碟區、共用、資料夾、檔案、系統狀態/裸機|
-|伺服器 (32 位元和 64 位元)|Windows Server 2008 SP2|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|磁碟區、共用、資料夾、檔案、系統狀態/裸機|
-|伺服器 (32 位元和 64 位元)|Windows Storage Server 2008|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2|磁碟區、共用、資料夾、檔案、系統狀態/裸機|
-|SQL Server|SQL Server 2019|實體伺服器 <br /><br /> 內部部署 Hyper-V 虛擬機器 <br /> <br /> Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時) <br /><br /> VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3|所有部署案例：資料庫|
-|SQL Server|SQL Server 2017|實體伺服器 <br /><br /> 內部部署 Hyper-V 虛擬機器 <br /> <br /> Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時) <br /><br /> VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3|所有部署案例：資料庫|
-|SQL Server|SQL Server 2016 SP2|實體伺服器 <br /><br /> 內部部署 Hyper-V 虛擬機器 <br /> <br /> Azure 虛擬機器 <br /><br /> VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2016 SP1|實體伺服器 <br /><br /> 內部部署 Hyper-V 虛擬機器 <br /> <br /> Azure 虛擬機器 <br /><br /> VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2016|實體伺服器 <br /><br /> 內部部署 Hyper-V 虛擬機器 <br /> <br /> Azure 虛擬機器 <br /><br /> VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2014|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2014|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2012 SP2|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2012 SP2|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2012 SP2|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2012、SQL Server 2012 SP1|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2012、SQL Server 2012 SP1|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2012、SQL Server 2012 SP1|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2008 R2|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2008 R2|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2008 R2|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2008|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2008|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|SQL Server|SQL Server 2008|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|所有部署案例：資料庫|
-|Exchange|Exchange 2016|實體伺服器<br/><br/> 內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack<br /> <br />Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)|V3、V2|保護 (所有部署案例)：獨立 Exchange 伺服器、資料庫可用性群組 (DAG) 下的資料庫<br /><br />復原 (所有部署案例)：信箱、DAG 下的信箱資料庫<br/><br/> 不支援透過 ReFS 備份 Exchange |
-|Exchange|Exchange 2016|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|保護 (所有部署案例)：獨立 Exchange 伺服器、資料庫可用性群組 (DAG) 下的資料庫<br /><br />復原 (所有部署案例)：信箱、DAG 下的信箱資料庫<br/><br/> 不支援透過 ReFS 備份 Exchange |
-|Exchange|Exchange 2013|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2|保護 (所有部署案例)：獨立 Exchange 伺服器、資料庫可用性群組 (DAG) 下的資料庫<br /><br />復原 (所有部署案例)：信箱、DAG 下的信箱資料庫<br/><br/> 不支援透過 ReFS 備份 Exchange |
-|Exchange|Exchange 2013|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|保護 (所有部署案例)：獨立 Exchange 伺服器、資料庫可用性群組 (DAG) 下的資料庫<br /><br />復原 (所有部署案例)：信箱、DAG 下的信箱資料庫<br/><br/> 不支援透過 ReFS 備份 Exchange |
-|Exchange|Exchange 2010|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2|保護 (所有部署案例)：獨立 Exchange 伺服器、資料庫可用性群組 (DAG) 下的資料庫<br /><br />復原 (所有部署案例)：信箱、DAG 下的信箱資料庫<br/><br/> 不支援透過 ReFS 備份 Exchange |
-|Exchange|Exchange 2010|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|保護 (所有部署案例)：獨立 Exchange 伺服器、資料庫可用性群組 (DAG) 下的資料庫<br /><br />復原 (所有部署案例)：信箱、DAG 下的信箱資料庫<br/><br/> 不支援透過 ReFS 備份 Exchange |
-|SharePoint|SharePoint 2016|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /><br />Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /><br />VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|保護 (所有部署案例)：伺服器陣列、前端網頁伺服器內容<br /><br />復原 (所有部署案例)：伺服器陣列、資料庫、Web 應用程式、檔案或清單項目、SharePoint 搜尋、前端網頁伺服器<br /><br />請注意，不支援保護針對內容資料庫使用 SQL Server 2012 AlwaysOn 功能的 SharePoint 伺服器陣列。|
-|SharePoint|SharePoint 2013|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2|保護 (所有部署案例)：伺服器陣列、前端網頁伺服器內容<br /><br />復原 (所有部署案例)：伺服器陣列、資料庫、Web 應用程式、檔案或清單項目、SharePoint 搜尋、前端網頁伺服器<br /><br />請注意，不支援保護針對內容資料庫使用 SQL Server 2012 AlwaysOn 功能的 SharePoint 伺服器陣列。|
-|SharePoint|SharePoint 2013|Azure 虛擬機器（當工作負載當做 Azure 虛擬機器執行時）- <br /> <br /> Azure Stack|V3、V2|保護 (所有部署案例)：伺服器陣列、SharePoint 搜尋、前端網頁伺服器內容<br /><br />復原 (所有部署案例)：伺服器陣列、資料庫、Web 應用程式、檔案或清單項目、SharePoint 搜尋、前端網頁伺服器<br /><br />請注意，不支援保護針對內容資料庫使用 SQL Server 2012 AlwaysOn 功能的 SharePoint 伺服器陣列。|
-|SharePoint|SharePoint 2013|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|保護 (所有部署案例)：伺服器陣列、SharePoint 搜尋、前端網頁伺服器內容<br /><br />復原 (所有部署案例)：伺服器陣列、資料庫、Web 應用程式、檔案或清單項目、SharePoint 搜尋、前端網頁伺服器<br /><br />請注意，不支援保護針對內容資料庫使用 SQL Server 2012 AlwaysOn 功能的 SharePoint 伺服器陣列。|
-|SharePoint|SharePoint 2010|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器<br /> <br /> Azure Stack|V3、V2|保護 (所有部署案例)：伺服器陣列、SharePoint 搜尋、前端網頁伺服器內容<br /><br />復原 (所有部署案例)：伺服器陣列、資料庫、Web 應用程式、檔案或清單項目、SharePoint 搜尋、前端網頁伺服器|
-|SharePoint|SharePoint 2010|Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)<br /> <br /> Azure Stack|V3、V2|保護 (所有部署案例)：伺服器陣列、SharePoint 搜尋、前端網頁伺服器內容<br /><br />復原 (所有部署案例)：伺服器陣列、資料庫、Web 應用程式、檔案或清單項目、SharePoint 搜尋、前端網頁伺服器|
-|SharePoint|SharePoint 2010|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)<br /> <br /> Azure Stack|V3、V2|保護 (所有部署案例)：伺服器陣列、SharePoint 搜尋、前端網頁伺服器內容<br /><br />復原 (所有部署案例)：伺服器陣列、資料庫、Web 應用程式、檔案或清單項目、SharePoint 搜尋、前端網頁伺服器|
-|Hyper-v 主機伺服器、叢集或 VM 上的 hyper-v 主機-MABS 保護代理程式|Windows Server 2019|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器|V3|保護：Hyper-V 電腦、叢集共用磁碟區 (CSV)<br /><br />復原：虛擬機器、檔案和資料夾的項目層級復原、磁碟區、虛擬硬碟|
-|Hyper-v 主機伺服器、叢集或 VM 上的 hyper-v 主機-MABS 保護代理程式|Windows Server 2016|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器|V3、V2|保護：Hyper-V 電腦、叢集共用磁碟區 (CSV)<br /><br />復原：虛擬機器、檔案和資料夾的項目層級復原、磁碟區、虛擬硬碟|
-|Hyper-v 主機伺服器、叢集或 VM 上的 hyper-v 主機-MABS 保護代理程式|Windows Server 2012 R2 - Datacenter 和 Standard|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器|V3、V2|保護：Hyper-V 電腦、叢集共用磁碟區 (CSV)<br /><br />復原：虛擬機器、檔案和資料夾的項目層級復原、磁碟區、虛擬硬碟|
-|Hyper-v 主機伺服器、叢集或 VM 上的 hyper-v 主機-MABS 保護代理程式|Windows Server 2012 - Datacenter 和 Standard|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器|V3、V2|保護：Hyper-V 電腦、叢集共用磁碟區 (CSV)<br /><br />復原：虛擬機器、檔案和資料夾的項目層級復原、磁碟區、虛擬硬碟|
-|Hyper-v 主機伺服器、叢集或 VM 上的 hyper-v 主機-MABS 保護代理程式|Windows Server 2008 R2 SP1 - Enterprise 和 Standard|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器|V3、V2|保護：Hyper-V 電腦、叢集共用磁碟區 (CSV)<br /><br />復原：虛擬機器、檔案和資料夾的項目層級復原、磁碟區、虛擬硬碟|
-|Hyper-v 主機伺服器、叢集或 VM 上的 hyper-v 主機-MABS 保護代理程式|Windows Server 2008 SP2|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器|不支援|保護：Hyper-V 電腦、叢集共用磁碟區 (CSV)<br /><br />復原：虛擬機器、檔案和資料夾的項目層級復原、磁碟區、虛擬硬碟|
-|VMware VM|VMware vCenter/vSphere ESX/ESXi 授權版本 5.5/6.0/6。5 |實體伺服器、 <br/>內部部署 Hyper-V VM、 <br/> VMWare 中的 Windows VM|V3、V2|叢集共用磁碟區 (CSV)、NFS 和 SAN 儲存體上的 VMware VM<br /> 檔案和資料夾的項目層級復原僅適用於 Windows VM，不支援 VMware vApps。|
-|VMware VM|[VMware vSphere 授權版本6。7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |實體伺服器、 <br/>內部部署 Hyper-V VM、 <br/> VMWare 中的 Windows VM|V3|叢集共用磁碟區 (CSV)、NFS 和 SAN 儲存體上的 VMware VM<br /> 檔案和資料夾的項目層級復原僅適用於 Windows VM，不支援 VMware vApps。|
-|Linux|當做 Hyper-V 或 VMware 客體執行的 Linux|實體伺服器、 <br/>內部部署 Hyper-V VM、 <br/> VMWare 中的 Windows VM|V3、V2|Hyper-V 必須在 Windows Server 2012 R2 或 Windows Server 2016 上執行。 保護：整部虛擬機器<br /><br />復原：整部虛擬機器 <br/><br/> 僅支援檔案一致的快照集。 <br/><br/> 如需支援的 Linux 發行版本和版本完整清單，請參閱[經 Azure 背書的 Linux 發佈](../virtual-machines/linux/endorsed-distros.md)一文。|
+下列各節將詳細說明 MABS 的保護支援矩陣：
+
+* [應用程式備份](#applications-backup)
+* [VM 備份](#vm-backup)
+* [Linux](#linux)
+
+## <a name="applications-backup"></a>應用程式備份
+
+| **工作負載**               | **版本**                                                  | **Azure 備份伺服器安裝**                       | **支援的 Azure 備份伺服器** | **保護和復原**                                  |
+| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------ |
+| 用戶端電腦（64位） | Windows 10                                                  | 實體伺服器  <br><br>    Hyper-V 虛擬機器   <br><br>   VMware 虛擬機器 | V3 UR1                            | 磁片區、共用、資料夾、檔案、重復資料刪除磁片區   <br><br>   受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。  <br><br>    磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。 |
+| 伺服器（64位）          | Windows Server 2019、2016、2012 R2、2012                    | Azure 虛擬機器（當工作負載當做 Azure 虛擬機器執行時）  <br><br>    實體伺服器  <br><br>    Hyper-V 虛擬機器 <br><br>     VMware 虛擬機器  <br><br>    Azure Stack | V3 UR1                            | 磁片區、共用、資料夾、檔案、重復資料刪除磁片區（NTFS 和 ReFS）  <br><br>   系統狀態和裸機（當工作負載當做 Azure 虛擬機器執行時不支援） |
+| 伺服器（64位）          | Windows Server 2008 R2 SP1、Windows Server 2008 SP2 （您必須安裝[Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)） | 實體伺服器  <br><br>    Hyper-V 虛擬機器  <br><br>      VMware 虛擬機器  <br><br>   Azure Stack | V3 UR1                            | 磁片區、共用、資料夾、檔案、系統狀態/裸機        |
+| SQL Server                | SQL Server 2019、2017、2016和[支援的 sps](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202016)、2014和支援的[sps](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202014) | 實體伺服器  <br><br>     Hyper-V 虛擬機器   <br><br>     VMware 虛擬機器  <br><br>   Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)  <br><br>     Azure Stack | V3 UR1                            | 所有部署案例：資料庫       <br><br>  MABS v3 UR1 支援透過 ReFS 磁片區備份 SQL 資料庫                  |
+| Exchange                   | Exchange 2019、2016                                         | 實體伺服器   <br><br>   Hyper-V 虛擬機器  <br><br>      VMware 虛擬機器  <br><br>   Azure Stack  <br><br>    Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時) | V3 UR1                            | 保護（所有部署案例）：獨立 Exchange 伺服器、資料庫可用性群組（DAG）下的資料庫  <br><br>    復原 (所有部署案例)：信箱、DAG 下的信箱資料庫    <br><br>  MABS v3 UR1 支援透過 ReFS 備份 Exchange |
+| SharePoint                 | 具有最新 SPs 的 SharePoint 2019、2016                       | 實體伺服器  <br><br>    Hyper-V 虛擬機器 <br><br>    VMware 虛擬機器  <br><br>   Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)   <br><br>   Azure Stack | V3 UR1                            | 保護（所有部署案例）：伺服器陣列、前端網頁伺服器內容  <br><br>    復原（所有部署案例）：伺服器陣列、資料庫、web 應用程式、檔案或清單專案、SharePoint 搜尋、前端網頁伺服器  <br><br>    不支援保護針對內容資料庫使用 SQL Server 2012 AlwaysOn 功能的 SharePoint 伺服器陣列。 |
+
+## <a name="vm-backup"></a>VM 備份
+
+| **工作負載**                                                 | **版本**                                             | **Azure 備份伺服器安裝**                      | **支援的 Azure 備份伺服器** | **保護與修復**                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
+| Hyper-v 主機伺服器、叢集或 VM 上的 hyper-v 主機-MABS 保護代理程式 | Windows Server 2019、2016、2012 R2、2012               | 實體伺服器  <br><br>    Hyper-V 虛擬機器 <br><br>    VMware 虛擬機器 | V3 UR1                             | 保護： Hyper-v 電腦、叢集共用磁片區（Csv）  <br><br>    復原：虛擬機器、檔案和資料夾的專案層級復原僅適用于 Windows、磁片區、虛擬硬碟 |
+| VMware Vm                                                  | VMware 伺服器5.5、6.0 或6.5、6.7 （授權版本） | Hyper-v 虛擬機器  <br><br>   VMware 虛擬機器         | V3 UR1                             | 保護：叢集共用磁片區（Csv）、NFS 和 SAN 儲存體上的 VMware Vm   <br><br>     復原：虛擬機器、檔案和資料夾的專案層級復原僅適用于 Windows、磁片區、虛擬硬碟 <br><br>    不支援 VMware vApps。 |
+
+## <a name="linux"></a>Linux
+
+| **工作負載** | **版本**                               | **Azure 備份伺服器安裝**                      | **支援的 Azure 備份伺服器** | **保護與修復**                                 |
+| ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
+| Linux        | 以 Hyper-v 或 VMware 來賓身分執行的 Linux | 實體伺服器、內部部署 Hyper-v VM、VMWare 中的 Windows VM | V3 UR1                             | Hyper-v 必須在 Windows Server 2012 R2 或 Windows Server 2016 上執行。 保護：整部虛擬機器   <br><br>   復原：整部虛擬機器   <br><br>    僅支援檔案一致的快照集。    <br><br>   如需支援的 Linux 散發套件和版本的完整清單，請參閱[Azure 背書的 linux 發行](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)版一文。 |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute 支援
 
@@ -92,9 +67,9 @@ ms.locfileid: "77444038"
 * `.microsoftonline.com`
 * `.windows.net`
 
-透過 Microsoft 對等互連，請選取下列服務/區域和相關的「社區」值：
+使用 Microsoft 對等互連，選取下列服務/區域和相關的 [社區] 值：
 
-* Azure Active Directory （12076:5060）
+* Azure Active Directory (12076:5060)
 * Microsoft Azure 區域（根據復原服務保存庫的位置）
 * Azure 儲存體（根據您的復原服務保存庫的位置）
 
@@ -112,9 +87,6 @@ Azure 備份伺服器可以保護下列叢集應用程式中的資料：
 * SQL Server
 
 * Hyper-v-如果您使用向外延展的 MABS 保護代理程式來保護 Hyper-v 叢集，就無法為受保護的 Hyper-v 工作負載新增次要保護。
-
-    如果您在 Windows Server 2008 R2 上執行 Hyper-V，請務必安裝 KB [975354](https://support.microsoft.com/kb/975354) 中所述的更新。
-    如果您在叢集設定的 Windows Server 2008 R2 上執行 Hyper-V，請務必安裝 SP2 和 KB [971394](https://support.microsoft.com/kb/971394)。
 
 * Exchange Server - Azure 備份伺服器可以保護支援之 Exchange Server 版本的非共用磁碟叢集 (叢集連續複寫)，也可以保護設定用於本機連續複寫的 Exchange Server。
 

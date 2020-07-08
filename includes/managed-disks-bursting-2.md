@@ -8,12 +8,11 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 850ace7af15ab37ab9a4a124d20ed4588771f4d4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 0b278841fc3693d79821d25caf7c9a208341dea1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594383"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85242148"
 ---
 ## <a name="common-scenarios"></a>常見案例
 下列案例可大幅受益于負載平衡：
@@ -24,9 +23,11 @@ ms.locfileid: "82594383"
 ## <a name="bursting-flow"></a>負載平衡流程
 在虛擬機器層級和磁片層級上，高載點數系統的套用方式相同。 您的資源（VM 或磁片）將會以完全貯存的點數開始。 這些點數可讓您以最大的高載速率，以30分鐘為單位。 當您的資源在其效能磁片儲存體限制之下執行時，會累積高載點數。 對於您的資源使用低於效能限制的所有 IOPS 和 MB/s，您會開始累積點數。 如果您的資源有用於高載的已累積點數，而您的工作負載需要額外的效能，則您的資源可以使用這些信用額度來高於您的效能限制，讓它達到滿足需求所需的磁片 IO 效能。
 
+
+
 ![高載 bucket 圖表](media/managed-disks-bursting/bucket-diagram.jpg)
 
-有關高載累積的一件事，就是每個資源都不同，因為它是以未使用的 IOPS 和低於其效能量的 MB/s 為基礎。 這表示較高的基準效能產品可以比執行較低基準的產品更快地累積其負載平衡。 例如，沒有活動的 P1 磁片閒置下來會每秒累積 120 IOPS，而 P20 磁片則會在閒置下來時每秒產生 2300 IOPS，而不會有任何活動。
+最多可讓您瞭解如何使用30分鐘的高載。 您可以在一天內連續30分鐘或偶爾使用它。 當產品部署完成時，就會備妥完整的點數，而當它 depletes 信用額度時，將會花費不到一天的時間，再次取得完整的點數。 您可以依自己的需求累積和支出其高載點數，而30分鐘的值區不需要再次填滿。 有關高載累積的一件事，就是每個資源都不同，因為它是以未使用的 IOPS 和低於其效能量的 MB/s 為基礎。 這表示較高的基準效能產品可以比執行較低基準的產品更快地累積其負載平衡。 例如，沒有活動的 P1 磁片閒置下來會每秒累積 120 IOPS，而 P20 磁片則會在閒置下來時每秒產生 2300 IOPS，而不會有任何活動。
 
 ## <a name="bursting-states"></a>高載狀態
 有三種狀態：您的資源可以在啟用高載功能時使用。。
@@ -70,7 +71,7 @@ ms.locfileid: "82594383"
 - 2 P10 資料磁片 
     - 布建的 MB/s：250
 
- 在初始開機之後，應用程式會在 VM 上執行，並具有非關鍵性的工作負載。 此工作負載需要 30 MB/s，可平均分散到所有磁片： ![負載平衡 vm 非負載平衡磁片閒置](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
+ 在初始開機之後，應用程式會在 VM 上執行，並具有非關鍵性的工作負載。 此工作負載需要 30 MB/s，可平均分散到所有磁片：負載平衡 ![ vm 非負載平衡磁片閒置](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
 
 然後，應用程式需要處理需要 600 MB/s 的批次作業。 Standard_L8s_v2 高載以符合此需求，然後對磁片的要求會平均分散到 P50 磁片：
 

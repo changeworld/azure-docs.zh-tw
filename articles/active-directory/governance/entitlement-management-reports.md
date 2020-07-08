@@ -10,18 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 514f8e86d6bd28cc5212e0f0058f00e270f43e35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128424"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078132"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中查看報告和記錄
 
@@ -79,17 +78,17 @@ Azure AD 權利管理報告和 Azure AD audit 記錄檔會提供使用者可存�
 
 ## <a name="determine-the-status-of-a-users-request"></a>判斷使用者要求的狀態
 
-若要取得使用者如何要求和存取存取套件的其他詳細資料，您可以使用 Azure AD audit 記錄檔。 特別是，您可以使用`EntitlementManagement`和`UserManagement`類別中的記錄檔記錄，取得每個要求之處理步驟的其他詳細資料。  
+若要取得使用者如何要求和存取存取套件的其他詳細資料，您可以使用 Azure AD audit 記錄檔。 特別是，您可以使用和類別中的記錄檔記錄， `EntitlementManagement` `UserManagement` 取得每個要求之處理步驟的其他詳細資料。  
 
 1. 按一下 [ **Azure Active Directory** ，然後按一下 [ **Audit logs**]。
 
-1. 在頂端，根據您要尋找的 audit `EntitlementManagement`記錄`UserManagement`，將**類別**變更為或。  
+1. 在頂端，根據您要尋找的 audit 記錄，將**類別**變更為 `EntitlementManagement` 或 `UserManagement` 。  
 
-1. 按一下 [套用]  。
+1. 按一下 [套用] 。
 
 1. 若要下載記錄檔，請按一下 [**下載**]。
 
-當 Azure AD 收到新的要求時，它會寫入一個 audit 記錄，其中**Category**的分類`EntitlementManagement`為，而**活動**通常`User requests access package assignment`為。  在 Azure 入口網站中建立直接指派的情況下，audit 記錄的 [**活動**] 欄位是`Administrator directly assigns user to access package`，而執行指派的使用者則是由**ActorUserPrincipalName**所識別。
+當 Azure AD 收到新的要求時，它會寫入一個 audit 記錄，其中的**分類**為 `EntitlementManagement` ，而**活動**通常為 `User requests access package assignment` 。  在 Azure 入口網站中建立直接指派的情況下，audit 記錄的 [**活動**] 欄位是 `Administrator directly assigns user to access package` ，而執行指派的使用者則是由**ActorUserPrincipalName**所識別。
 
 Azure AD 會在要求進行時寫入其他的審核記錄，包括：
 
@@ -101,11 +100,11 @@ Azure AD 會在要求進行時寫入其他的審核記錄，包括：
 | `EntitlementManagement` | `Approve access package assignment request` | 要求已核准 |
 | `EntitlementManagement` | `Ready to fulfill access package assignment request` |要求已核准，或不需要核准 |
 
-將存取權指派給使用者時，Azure AD 會寫入具有**活動** `Fulfill access package assignment`之`EntitlementManagement`類別目錄的 audit 記錄。  收到存取權的使用者是以**ActorUserPrincipalName**欄位識別。
+將存取權指派給使用者時，Azure AD 會寫入 `EntitlementManagement` 具有**活動**之類別目錄的 audit 記錄 `Fulfill access package assignment` 。  收到存取權的使用者是以**ActorUserPrincipalName**欄位識別。
 
-如果未指派存取權，則 Azure AD 會在核准者拒絕要求`EntitlementManagement`時， **Activity**以活動`Deny access package assignment request`寫入類別目錄的審核記錄，或者`Access package assignment request timed out (no approver action taken)`，如果要求在核准者核准之前就超時。
+如果未指派存取權，則 Azure AD 會在核准者 `EntitlementManagement` 拒絕要求時，以**活動**寫入類別目錄的審核記錄， `Deny access package assignment request` 或者 `Access package assignment request timed out (no approver action taken)` ，如果要求在核准者核准之前就超時。
 
-當使用者的存取套件指派過期時，使用者會取消，或由系統管理員移除，然後 Azure AD 寫入具有`EntitlementManagement` **活動**之`Remove access package assignment`類別目錄的 audit 記錄。
+當使用者的存取套件指派過期時，使用者會取消，或由系統管理員移除，然後 Azure AD 寫入 `EntitlementManagement` 具有**活動**之類別目錄的 audit 記錄 `Remove access package assignment` 。
 
 ## <a name="next-steps"></a>後續步驟
 

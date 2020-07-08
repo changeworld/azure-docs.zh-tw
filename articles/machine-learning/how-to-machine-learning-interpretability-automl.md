@@ -5,16 +5,15 @@ description: 瞭解如何取得自動化 ML 模型判斷功能重要性的說明
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: e0ec6cbc4cea926dfc50cdae247aea5d765c20ca
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 6fcebb34f82565fcf83a9535e8c036231c5b3cf7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691213"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84430523"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretability：自動化機器學習中的模型說明
 
@@ -22,7 +21,7 @@ ms.locfileid: "82691213"
 
 在本文中，您將瞭解如何在 Azure Machine Learning 中取得自動化機器學習（ML）的說明。 自動化 ML 可協助您瞭解工程特性的重要性。 
 
-預設會設定`model_explainability=True` 1.0.85 之後的所有 SDK 版本。 在 SDK 版本1.0.85 和較舊版本中，使用者`model_explainability=True`必須在`AutoMLConfig`物件中設定，才能使用模型 interpretability。 
+預設會設定1.0.85 之後的所有 SDK 版本 `model_explainability=True` 。 在 SDK 版本1.0.85 和較舊版本中，使用者必須在物件中設定，才能 `model_explainability=True` `AutoMLConfig` 使用模型 interpretability。 
 
 在本文中，您將學會如何：
 
@@ -30,18 +29,18 @@ ms.locfileid: "82691213"
 - 啟用視覺效果，協助您查看資料和說明中的模式。
 - 在推斷或評分期間，執行 interpretability。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-- Interpretability 功能。 執行`pip install azureml-interpret azureml-contrib-interpret`以取得必要的套件。
+- Interpretability 功能。 執行 `pip install azureml-interpret azureml-contrib-interpret` 以取得必要的套件。
 - 建立自動化 ML 實驗的知識。 如需如何使用 Azure Machine Learning SDK 的詳細資訊，請完成此[回歸模型教學](tutorial-auto-train-models.md)課程，或查看如何[設定自動化 ML 實驗](how-to-configure-auto-train.md)。
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>在訓練期間 Interpretability 最佳模型
 
-從取得說明`best_run`，其中包含工程化功能的說明。
+從取得說明 `best_run` ，其中包含工程化功能的說明。
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>從成品存放區下載設計的功能重要性
 
-您可以使用`ExplanationClient`從的成品存放區下載設計的功能說明`best_run`。 
+您可以使用 `ExplanationClient` 從的成品存放區下載設計的功能說明 `best_run` 。 
 
 ```python
 from azureml.explain.model._internal.explanation_client import ExplanationClient
@@ -63,7 +62,7 @@ automl_run, fitted_model = local_run.get_output(metric='accuracy')
 
 ### <a name="set-up-the-model-explanations"></a>設定模型說明
 
-使用`automl_setup_model_explanations`來取得工程化的說明。 `fitted_model`可以產生下列專案：
+使用 `automl_setup_model_explanations` 來取得工程化的說明。 `fitted_model`可以產生下列專案：
 
 - 來自定型或測試範例的精選資料
 - 工程功能名稱清單
@@ -81,13 +80,13 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 
 ### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>初始化功能重要性的模擬說明
 
-若要產生 AutoML 模型的說明，請使用`MimicWrapper`類別。 您可以使用下列參數來初始化 MimicWrapper：
+若要產生 AutoML 模型的說明，請使用 `MimicWrapper` 類別。 您可以使用下列參數來初始化 MimicWrapper：
 
 - 說明安裝物件
 - 您的工作區
-- 用來說明`fitted_model`自動化 ML 模型的代理模型
+- 用來說明 `fitted_model` 自動化 ML 模型的代理模型
 
-MimicWrapper 也會使用`automl_run`物件，將會在其中上傳工程用的說明。
+MimicWrapper 也會使用物件，將會在 `automl_run` 其中上傳工程用的說明。
 
 ```python
 from azureml.explain.model.mimic_wrapper import MimicWrapper
@@ -104,7 +103,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>使用 MimicExplainer 進行運算，並以視覺化方式設計功能重要性
 
-您可以使用已`explain()`轉換的測試範例，在 MimicWrapper 中呼叫方法，以取得所產生之工程化功能的功能重要性。 您也可以使用`ExplanationDashboard` ，透過自動化 ML 有來查看所產生之工程功能的功能重要性值的儀表板視覺效果。
+您可以使用已 `explain()` 轉換的測試範例，在 MimicWrapper 中呼叫方法，以取得所產生之工程化功能的功能重要性。 您也可以使用 `ExplanationDashboard` ，透過自動化 ML 有來查看所產生之工程功能的功能重要性值的儀表板視覺效果。
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
@@ -117,7 +116,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>註冊模型和評分說明
 
-使用`TreeScoringExplainer`來建立評分說明，以便在推斷階段計算工程化的功能重要性值。 您可以使用先前所計算的`feature_map`來初始化評分說明。 
+使用 `TreeScoringExplainer` 來建立評分說明，以便在推斷階段計算工程化的功能重要性值。 您可以使用先前所計算的來初始化評分說明 `feature_map` 。 
 
 儲存評分說明，然後向模型管理服務註冊模型和評分說明。 執行下列程式碼：
 

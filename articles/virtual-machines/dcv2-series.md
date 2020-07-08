@@ -1,18 +1,17 @@
 ---
 title: DC 系列 - Azure 虛擬機器
 description: DC 系列 VM 的規格。
-services: virtual-machines
 author: susaxen
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/20/2020
-ms.author: lahugh
-ms.openlocfilehash: 955b3d967d2e62e1158f329a58f040121ca8b416
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: HT
+ms.author: jushiman
+ms.openlocfilehash: e5a4c9d1afcc4caa0f9ac0db8b59274006ab3097
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676551"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 

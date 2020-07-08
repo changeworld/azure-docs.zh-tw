@@ -2,31 +2,30 @@
 title: 略過刪除超出範圍的使用者
 description: 瞭解如何覆寫解除布建超出範圍使用者的預設行為。
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5f17886736efb87cf44bc54c82ccca794482a093
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593262"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84789900"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>略過刪除超出範圍的使用者帳戶
 
-根據預設，Azure AD 布建引擎會虛刪除或停用超出範圍的使用者。 不過，在某些情況下（例如 Workday 到 AD 使用者輸入布建），這種行為可能不是預期的，而且您可能會想要覆寫此預設行為。  
+根據預設，Azure AD 布建引擎會虛刪除或停用超出範圍的使用者。 不過，在某些情況下（例如 Workday 到 AD 使用者輸入布建），這種行為可能不是預期的行為，您可能會想要覆寫此預設行為。  
 
-本指南說明如何使用 Microsoft Graph API 和 Microsoft Graph API explorer 來設定旗標***SkipOutOfScopeDeletions*** ，以控制超出範圍的帳戶處理。 
-* 如果***SkipOutOfScopeDeletions***設定為0（false），則會在目標中停用超出範圍的帳戶
-* 如果***SkipOutOfScopeDeletions***設為1（true），則不會在目標中停用超出範圍的帳戶，此旗標是在布建*應用*層級設定，而且可以使用圖形 API 進行設定。 
+本文說明如何使用 Microsoft Graph API 和 Microsoft Graph API explorer 來設定旗標***SkipOutOfScopeDeletions*** ，以控制超出範圍的帳戶處理。 
+* 如果***SkipOutOfScopeDeletions***設定為0（false），則會在目標中停用超出範圍的帳戶。
+* 如果***SkipOutOfScopeDeletions***設為1（true），則不會在目標中停用超出範圍的帳戶。 此旗標會在布建*應用*層級設定，而且可以使用圖形 API 進行設定。 
 
-因為此設定廣泛用於*workday 以 Active Directory 使用者*布建應用程式，下列步驟包含 Workday 應用程式的螢幕擷取畫面。 不過，這也可以與**所有其他應用程式**（例如 ServiceNow、Salesforce、Dropbox 等）搭配使用。
+因為此設定廣泛用於*workday 以 Active Directory 使用者*布建應用程式，所以下列步驟包含 workday 應用程式的螢幕擷取畫面。 不過，此設定也可以與*所有其他應用程式*（例如 ServiceNow、Salesforce 和 Dropbox）搭配使用。
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步驟1：取出您的布建 App Service 主體識別碼（物件識別碼）
 

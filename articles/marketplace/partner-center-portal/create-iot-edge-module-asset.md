@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: fc35602b55e79f3351da0def800d2a2b2698e250
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 36b56cdf5a2aaa57cc452db9054380528fa8c68b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856723"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958577"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>準備 IoT Edge 模組的技術資產
 
@@ -22,8 +21,8 @@ ms.locfileid: "82856723"
 
 IoT Edge 模組是在 IoT Edge 裝置上執行的 Docker 相容容器。
 
-- 若要深入了解 IoT Edge 模組，請參閱[了解 Azure IoT Edge 模組](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)。
-- 若要開始使用您的 IoT Edge 模組開發，請參閱[開發您自己的 IoT Edge 模組](https://docs.microsoft.com/azure/iot-edge/module-development)。
+- 若要深入了解 IoT Edge 模組，請參閱[了解 Azure IoT Edge 模組](../../iot-edge/iot-edge-modules.md)。
+- 若要開始使用您的 IoT Edge 模組開發，請參閱[開發您自己的 IoT Edge 模組](../../iot-edge/module-development.md)。
 
 ## <a name="technical-requirements"></a>技術需求
 
@@ -35,7 +34,7 @@ IoT Edge 模組是在 IoT Edge 裝置上執行的 Docker 相容容器。
 
 #### <a name="tier-1-platforms-supported-by-iot-edge"></a>IoT Edge 支援的層級 1 平台
 
-您的模組必須支援 IoT Edge 支援的所有第1層平臺（如[Azure IoT Edge 支援](https://docs.microsoft.com/azure/iot-edge/support)中所記錄）。 由於這個選項能提供更好的客戶體驗，建議採用。 符合此準則的模組將會展示。 使用此平台選項的模組必須：
+您的模組必須支援 IoT Edge 支援的所有第1層平臺（如[Azure IoT Edge 支援](../../iot-edge/support.md)中所記錄）。 由於這個選項能提供更好的客戶體驗，建議採用。 符合此準則的模組將會展示。 使用此平台選項的模組必須：
 
 - 提供最新的標記和版本標籤（例如，1.0.1），其為使用[GitHub 資訊清單工具](https://github.com/estesp/manifest-tool)建立的資訊清單標記。
 
@@ -43,7 +42,7 @@ IoT Edge 模組是在 IoT Edge 裝置上執行的 Docker 相容容器。
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge 支援的層級 1 平台子集
 
-您的模組必須支援 IoT Edge 支援的一或多個第1層平臺子集（如[Azure IoT Edge 支援](https://docs.microsoft.com/azure/iot-edge/support)中所記錄）。 使用此平台選項的模組必須：
+您的模組必須支援 IoT Edge 支援的一或多個第1層平臺子集（如[Azure IoT Edge 支援](../../iot-edge/support.md)中所記錄）。 使用此平台選項的模組必須：
 
 - 提供最新的標記和版本標籤（例如，1.0.1），這是在支援多個平臺時，使用 GitHub[資訊清單工具](https://github.com/estesp/manifest-tool)建立的資訊清單標記。 僅在支援一個平台時方可選用資訊清單標籤。
 - 使用[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)的供應專案清單索引標籤，將 [**實用連結**] 區段下的連結新增至 [ [Azure IoT Edge 認證的裝置目錄](https://catalog.azureiotsolutions.com/)] 中的至少一個 IoT Edge 裝置。
@@ -139,8 +138,8 @@ IoT Edge 模組必須避免特殊[許可權模組](https://docs.docker.com/engin
 
 ## <a name="host-module-in-azure-container-registry"></a>Azure Container Registry 中的主機模組
 
-若要將您的 IoT Edge 模組上傳至 Azure Marketplace，您必須先將它裝載在[Azure Container Registry](https://azure.microsoft.com/services/container-registry/) （ACR）中。 模組必須包含您想要發佈的所有標記，包括資訊清單標記所參考的影像標記。 如需詳細資訊，請參閱[建立 Azure container registry 和推送容器映射](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr)教學課程。
+若要將您的 IoT Edge 模組上傳至 Azure Marketplace，您必須先將它裝載在[Azure Container Registry](https://azure.microsoft.com/services/container-registry/) （ACR）中。 模組必須包含您想要發佈的所有標記，包括資訊清單標記所參考的影像標記。 如需詳細資訊，請參閱[建立 Azure container registry 和推送容器映射](../../container-instances/container-instances-tutorial-prepare-acr.md)教學課程。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [建立 IoT Edge 模組供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
+- [建立 IoT Edge 模組供應項目](azure-iot-edge-module-creation.md)

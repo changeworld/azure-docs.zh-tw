@@ -4,15 +4,14 @@ description: 針對在 Azure 中執行的虛擬機器進行維護和更新的概
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 97605b0cdc7ac6368b21e9427f64e4bca7e35d4a
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: HT
+ms.openlocfilehash: 3caf8b63cbd86338bbef653e9be9916907578627
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83815939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675874"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure 中虛擬機器進行的維修
 

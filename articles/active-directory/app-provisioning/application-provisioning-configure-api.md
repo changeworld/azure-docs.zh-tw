@@ -2,21 +2,20 @@
 title: 使用 Microsoft Graph Api 來設定布建 Azure Active Directory |Microsoft Docs
 description: 需要為應用程式的多個實例設定布建嗎？ 瞭解如何使用 Microsoft Graph Api 來自動化自動布建的設定，以節省時間。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/15/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 585cafc548b3458c6e9cc0ef91c44f163fb7fa2f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 01d4475e73fd436fd0cd2a8aca1e7a946cdd7562
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782053"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>使用 Microsoft Graph Api 設定布建
 
@@ -34,21 +33,21 @@ Azure 入口網站是一次為個別應用程式設定布建的便利方式。 �
 |[步驟5。監視布建](#step-5-monitor-provisioning)     |檢查布建作業的狀態 <br> 取出布建記錄         |
 
 > [!NOTE]
-> 為了方便閱讀，本文中顯示的回應物件可能會縮短。 所有屬性都會從實際的呼叫傳回。
+> 為了方便閱讀，此文章中顯示的回應物件可能會縮短。 所有屬性都會從實際的呼叫傳回。
 
-## <a name="step-1-create-the-gallery-application"></a>步驟1：建立資源庫應用程式
+## <a name="step-1-create-the-gallery-application"></a>步驟 1:建立資源庫應用程式
 
-### <a name="sign-in-to-microsoft-graph-explorer-recommended-postman-or-any-other-api-client-you-use"></a>登入 Microsoft Graph Explorer （建議）、Postman，或您使用的任何其他 API 用戶端
+### <a name="sign-in-to-microsoft-graph-explorer-recommended-postman-or-any-other-api-client-you-use"></a>登入 Microsoft Graph 總管 (建議)、Postman，或您使用的任何其他 API 用戶端
 
-1. 啟動[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)
+1. 啟動 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer) \(英文\)
 1. 選取 [使用 Microsoft 登入] 按鈕，然後使用 Azure AD 全域管理員或應用程式管理員認證登入。
 
     ![Graph 登入](./media/application-provisioning-configure-api/wd_export_02.png)
 
-1. 成功登入時，您會在左側窗格中看到使用者帳戶的詳細資料。
+1. 成功登入時，您會在左側窗格中看到使用者帳戶詳細資料。
 
-### <a name="retrieve-the-gallery-application-template-identifier"></a>取得資源庫應用程式範本識別碼
-Azure AD 應用程式資源庫中的應用程式都有一個[應用程式範本](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http)，可描述該應用程式的中繼資料。 使用此範本，您可以在租使用者中建立應用程式和服務主體的實例以進行管理。
+### <a name="retrieve-the-gallery-application-template-identifier"></a>擷取資源庫應用程式範本識別碼
+Azure AD 應用程式資源庫中的應用程式都有一個[應用程式範本](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http) \(英文\)，可描述該應用程式的中繼資料。 使用此範本，您可以在租用戶中建立應用程式和服務主體的執行個體以進行管理。
 
 #### <a name="request"></a>*要求*
 

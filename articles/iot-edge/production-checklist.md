@@ -11,12 +11,11 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: MT
+ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780737"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84431921"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>準備在生產環境中部署 IoT Edge 解決方案
 
@@ -28,7 +27,7 @@ ms.locfileid: "82780737"
 
 IoT Edge 裝置可以是任何項目，包括 Raspberry Pi、膝上型電腦或伺服器上執行的虛擬機器。 您可以實際或透過虛擬連線存取裝置，或者裝置可能長時間受到隔離。 無論如何，您都想要確定它已設定為適當運作。
 
-* **重要**
+* **重要事項**
   * 安裝生產憑證
   * 研擬裝置管理計畫
   * 使用 Moby 作為容器引擎
@@ -129,11 +128,11 @@ timeToLiveSecs 參數的預設值是 7200 秒，也就是兩小時。
 
 ### <a name="do-not-use-debug-versions-of-module-images"></a>請勿使用模組映像的偵錯版本
 
-從測試情節轉移至生產環境情節時，請務必移除部署資訊清單中的偵錯設定。 檢查部署資訊清單中沒有任何模組映射具有** \.debug**尾碼。 如果您已新增建立選項，以公開模組中的連接埠進行偵錯時，也請移除這些建立選項。
+從測試情節轉移至生產環境情節時，請務必移除部署資訊清單中的偵錯設定。 檢查部署資訊清單中沒有任何模組映射具有** \. debug**尾碼。 如果您已新增建立選項，以公開模組中的連接埠進行偵錯時，也請移除這些建立選項。
 
 ## <a name="container-management"></a>容器管理
 
-* **重要**
+* **重要事項**
   * 管理您的容器登錄存取權
   * 使用標籤來管理版本
 * **實用**
@@ -151,7 +150,7 @@ timeToLiveSecs 參數的預設值是 7200 秒，也就是兩小時。
 
 * 第一個腳本會建立服務主體。 它會輸出服務主體識別碼和服務主體密碼。 將這些值安全地儲存在記錄中。
 
-* 第二個腳本會建立要授與服務主體的角色指派，以便後續視需要執行。 我們建議您為**acrPull** `role`參數套用 acrPull 使用者角色。 如需角色清單，請參閱[Azure Container Registry 角色和許可權](../container-registry/container-registry-roles.md)。
+* 第二個腳本會建立要授與服務主體的角色指派，以便後續視需要執行。 我們建議您為參數套用**acrPull**使用者角色 `role` 。 如需角色清單，請參閱[Azure Container Registry 角色和許可權](../container-registry/container-registry-roles.md)。
 
 若要使用服務主體進行驗證，請提供您從第一個腳本取得的服務主體識別碼和密碼。 在部署資訊清單中指定這些認證。
 
@@ -181,7 +180,7 @@ timeToLiveSecs 參數的預設值是 7200 秒，也就是兩小時。
 | [Azure IoT Edge 代理程式](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge 中樞](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
-接下來，請務必更新 edgeAgent 和 edgeHub 系統模組的 deployment. template. json 檔案中的映射參考。 以`mcr.microsoft.com`您的登錄名稱取代這兩個模組的伺服器。
+接下來，請務必更新 edgeAgent 和 edgeHub 系統模組之檔案 deployment.template.js中的影像參考。 `mcr.microsoft.com`以您的登錄名稱取代這兩個模組的伺服器。
 
 * EdgeAgent
 
@@ -216,7 +215,7 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 
 此檢查清單是防火牆規則的起始點：
 
-   | URL (\* = 萬用字元) | 輸出 TCP 連接埠 | 使用狀況 |
+   | URL (\* = 萬用字元) | 輸出 TCP 連接埠 | 使用方式 |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft 容器登錄 |
    | global.azure-devices-provisioning.net  | 443 | DPS 存取 (選用) |
@@ -226,6 +225,10 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
    | \*.docker.io  | 443 | Docker Hub 存取（選擇性） |
 
 其中一些防火牆規則會繼承自 Azure Container Registry。 如需詳細資訊，請參閱[設定規則以存取防火牆後方的 Azure container registry](../container-registry/container-registry-firewall-access-rules.md)。
+
+> [!NOTE]
+> 若要在 REST 和資料端點之間提供一致的 FQDN，從**2020 年6月15日**開始，Microsoft Container Registry 資料端點將從變更 `*.cdn.mscr.io` 為`*.data.mcr.microsoft.com`  
+> 如需詳細資訊，請參閱[Microsoft Container Registry 用戶端防火牆規則](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)設定
 
 如果您不想要將防火牆設定為允許存取公用容器登錄，您可以將映射儲存在私人容器登錄中，如在[私人登錄中儲存執行時間容器](#store-runtime-containers-in-your-private-registry)中所述。
 
@@ -255,7 +258,7 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 
 #### <a name="option-set-global-limits-that-apply-to-all-container-modules"></a>選項：設定適用于所有容器模組的全域限制
 
-您可以限制容器引擎記錄檔選項中所有容器日誌的大小。 下列範例會將記錄驅動程式設定`json-file`為（建議），並限制檔案大小和數目：
+您可以限制容器引擎記錄檔選項中所有容器日誌的大小。 下列範例會將記錄驅動程式設定為 `json-file` （建議），並限制檔案大小和數目：
 
 ```JSON
 {
@@ -267,9 +270,9 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 }
 ```
 
-將此資訊新增（或附加）至名`daemon.json`為的檔案，並將它放在您裝置平臺的正確位置。
+將此資訊新增（或附加）至名為的檔案 `daemon.json` ，並將它放在您裝置平臺的正確位置。
 
-| 平台 | Location |
+| 平台 | 位置 |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
@@ -296,7 +299,7 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 
 #### <a name="additional-options-on-linux-systems"></a>Linux 系統上的其他選項
 
-* 將設定為預設記錄驅動程式， `systemd`將容器引擎`journald`設定為將記錄傳送到[日誌](https://docs.docker.com/config/containers/logging/journald/)。
+* 將 `systemd` [journal](https://docs.docker.com/config/containers/logging/journald/)設定 `journald` 為預設記錄驅動程式，將容器引擎設定為將記錄傳送到日誌。
 
 * 藉由安裝 logrotate 工具，定期從您的裝置移除舊的記錄檔。 使用下列檔案規格：
 

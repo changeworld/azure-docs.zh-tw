@@ -5,12 +5,11 @@ author: jakrams
 ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8c471687579dfe30b913197c6f080a450f5f3449
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 082148ecfd4332abb42f96afcd94032d428069ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82107442"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782512"
 ---
 # <a name="azure-remote-rendering-support-options"></a>Azure 遠端呈現支援選項
 
@@ -24,7 +23,7 @@ ms.locfileid: "82107442"
 
     ![Azure 入口網站說明及支援](media/portal-help.png)
 
-1. 選取 [新增支援要求]****。
+1. 選取 [新增支援要求]。
 
     ![Azure 入口網站新的支援要求](media/portal-new-request.png)
 
@@ -52,6 +51,11 @@ ms.locfileid: "82107442"
 ## <a name="provide-product-feedback"></a>提供產品意見反應
 
 若要提供意見反應、分享 Azure 遠端轉譯的想法或建議，或對其他人已提交的想法進行投票，請造訪[Azure 遠端轉譯意見反應論壇](https://feedback.azure.com/forums/928696-azure-remote-rendering)。
+
+
+## <a name="microsoft-qa"></a>Microsoft Q&A
+
+若要讓 Microsoft 工程師、Azure 最有價值專家 (MVP) 或我們的專家社群為您的技術產品問題提供快速可靠的解答，請透過 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-remote-rendering.html)與我們聯繫，這是最廣為使用的 Azure 社群支援點。
 
 ## <a name="next-steps"></a>後續步驟
 

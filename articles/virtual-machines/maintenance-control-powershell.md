@@ -3,16 +3,15 @@ title: 使用 PowerShell 進行 Azure 虛擬機器的維護控制
 description: 瞭解如何使用維護控制和 PowerShell，控制何時將維護套用至您的 Azure Vm。
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 834ff39b0ffd8ee38156e468008c332971b742d0
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.openlocfilehash: e0bb3586d637c9399db057b7cd3225bf8cd36e2f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996484"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675837"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>控制維護控制和 Azure PowerShell 的更新
 
@@ -20,13 +19,13 @@ ms.locfileid: "82996484"
  
 ## <a name="enable-the-powershell-module"></a>啟用 PowerShell 模組
 
-請確定`PowerShellGet`是最新的。    
+請確定 `PowerShellGet` 是最新的。    
 
 ```azurepowershell-interactive  
 Install-Module -Name PowerShellGet -Repository PSGallery -Force 
 ``` 
 
-安裝`Az.Maintenance` PowerShell 模組。     
+安裝 `Az.Maintenance` PowerShell 模組。     
 
 ```azurepowershell-interactive  
 Install-Module -Name Az.Maintenance
@@ -34,7 +33,7 @@ Install-Module -Name Az.Maintenance
 
 如果您要在本機安裝，請務必以系統管理員身分開啟 PowerShell 提示字元。
 
-系統可能也會要求您確認是否要從*不受信任*的存放庫進行安裝。 輸入`Y`或選取 **[全部皆是]** 以安裝模組。
+系統可能也會要求您確認是否要從*不受信任*的存放庫進行安裝。 輸入 `Y` 或選取 **[全部皆是]** 以安裝模組。
 
 
 ## <a name="create-a-maintenance-configuration"></a>建立維護設定
@@ -57,7 +56,7 @@ $config = New-AzMaintenanceConfiguration `
    -Location  eastus
 ```
 
-使用`-MaintenanceScope host`可確保維護設定用於控制主機的更新。
+使用 `-MaintenanceScope host` 可確保維護設定用於控制主機的更新。
 
 如果您嘗試使用相同的名稱建立設定，但在不同的位置，您會收到錯誤。 設定名稱在您的訂用帳戶中必須是唯一的。
 
@@ -73,7 +72,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 
 ### <a name="isolated-vm"></a>隔離的 VM
 
-使用設定的識別碼，將設定套用至 VM。 指定`-ResourceType VirtualMachines`並提供 vm 的名稱`-ResourceName`，以及 vm 的資源群組。 `-ResourceGroupName` 
+使用設定的識別碼，將設定套用至 VM。 指定 `-ResourceType VirtualMachines` 並提供 vm 的名稱 `-ResourceName` ，以及 vm 的資源群組 `-ResourceGroupName` 。 
 
 ```azurepowershell-interactive
 New-AzConfigurationAssignment `
@@ -88,7 +87,7 @@ New-AzConfigurationAssignment `
 
 ### <a name="dedicated-host"></a>專用主機
 
-若要將設定套用至專用主機，您也必須包含`-ResourceType hosts`、 `-ResourceParentName`和主機群組的名稱，以及。 `-ResourceParentType hostGroups` 
+若要將設定套用至專用主機，您也必須包含 `-ResourceType hosts` 、 `-ResourceParentName` 和主機群組的名稱，以及 `-ResourceParentType hostGroups` 。 
 
 
 ```azurepowershell-interactive
@@ -106,7 +105,7 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>檢查暫止的更新
 
-使用[AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate)查看是否有擱置中的更新。 如果`-subscription` VM 的 Azure 訂用帳戶與您登入的帳戶不同，請使用來指定它。
+使用[AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate)查看是否有擱置中的更新。 `-subscription`如果 VM 的 Azure 訂用帳戶與您登入的帳戶不同，請使用來指定它。
 
 如果沒有要顯示的更新，此命令將不會傳回任何內容。 否則，它會傳回 PSApplyUpdate 物件：
 
@@ -166,7 +165,7 @@ New-AzApplyUpdate `
    -ProviderName Microsoft.Compute
 ```
 
-成功時，此命令會傳回`PSApplyUpdate`物件。 您可以在`Get-AzApplyUpdate`命令中使用 Name 屬性來檢查更新狀態。 請參閱[檢查更新狀態](#check-update-status)。
+成功時，此命令會傳回 `PSApplyUpdate` 物件。 您可以在命令中使用 Name 屬性 `Get-AzApplyUpdate` 來檢查更新狀態。 請參閱[檢查更新狀態](#check-update-status)。
 
 ### <a name="dedicated-host"></a>專用主機
 
@@ -183,7 +182,7 @@ New-AzApplyUpdate `
 ```
 
 ## <a name="check-update-status"></a>檢查更新狀態
-使用[AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate)來檢查更新的狀態。 下面顯示的命令會使用`default`的`-ApplyUpdateName`參數來顯示最新更新的狀態。 您可以替代更新的名稱（由[AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate)命令傳回）來取得特定更新的狀態。
+使用[AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate)來檢查更新的狀態。 下面顯示的命令會使用的參數來顯示最新更新的狀態 `default` `-ApplyUpdateName` 。 您可以替代更新的名稱（由[AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate)命令傳回）來取得特定更新的狀態。
 
 ```text
 Status         : Completed

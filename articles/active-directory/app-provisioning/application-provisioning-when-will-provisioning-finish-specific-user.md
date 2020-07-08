@@ -2,21 +2,20 @@
 title: 找出特定使用者將能夠存取應用程式的時間
 description: 如何查明非常重要的使用者何時能夠存取您已設定的應用程式，以透過 Azure AD 進行使用者佈建
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9d976785340e1a032aa4484dd2e8fd6cb2915129
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 03af572c94500e046265a5e9affa4f1742fae544
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782019"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>檢查使用者布建的狀態
 
@@ -35,7 +34,7 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 
 布建週期完成之後，[**統計資料]** 區段會顯示已布建到 [日期] 的使用者和群組累計數目，以及最後一個週期的完成日期和持續時間。 **活動識別碼**會唯一識別最新的布建週期。 **工作**識別碼是布建工作的唯一識別碼，而且是您租使用者中的應用程式專用。
 
-布建進度可以在 Azure 入口網站的 [ **Azure Active Directory &gt; Enterprise Apps &gt; \[ \] &gt;應用程式名稱**] [布建] 索引標籤中查看。
+布建進度可以在 Azure 入口網站的 [ **Azure Active Directory &gt; Enterprise Apps &gt; \[ 應用程式名稱 \] &gt; ** ] [布建] 索引標籤中查看。
 
 ![布建頁面進度列](./media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
@@ -43,7 +42,7 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 
 若要查看所選使用者的布建狀態，請參閱 Azure AD 中的布建[記錄（預覽）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 。 使用者布建服務所執行的所有作業都會記錄在 Azure AD 布建記錄中。 這包括對來源和目標系統進行的所有讀取和寫入作業，以及在每個操作期間讀取或寫入的使用者資料。
 
-您可以在 [**活動**] 區段中選取 [ **Azure Active Directory** &gt; **企業應用程式** &gt;布建**記錄（預覽）** ]，以存取 Azure 入口網站中的布建記錄。 您可以根據使用者名稱或來源系統或目標系統中的識別碼來搜尋布建資料。 如需詳細資訊，請參閱布建[記錄（預覽）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
+您可以在**Azure Active Directory** &gt; [活動] 區段中選取 [Azure Active Directory**企業應用程式**布建 &gt; **記錄（預覽）** ] **Activity** ，以存取 Azure 入口網站中的布建記錄。 您可以根據使用者名稱或來源系統或目標系統中的識別碼來搜尋布建資料。 如需詳細資訊，請參閱布建[記錄（預覽）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
 
 布建記錄會記錄布建服務所執行的所有作業，包括：
 
@@ -100,4 +99,4 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 - 如果效能變成問題，而您嘗試在租使用者中布建大部分的使用者和群組，請使用範圍篩選器。 範圍設定篩選條件可讓您根據特定的屬性值篩選出使用者，以微調佈建服務從 Azure AD 擷取的資料。 如需範圍設定篩選條件的詳細資訊，請參閱[含範圍篩選器的屬性型應用程式佈建](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
 
 ## <a name="next-steps"></a>後續步驟
-[使用 Azure Active Directory 自動進行 SaaS 應用程式的使用者佈建和解除佈建](user-provisioning.md)
+[使用 Azure Active Directory 自動化 SaaS 應用程式的使用者布建和解除布建](user-provisioning.md)

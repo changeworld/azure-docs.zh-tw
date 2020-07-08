@@ -6,19 +6,18 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/16/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3faca8d1a2538ed03a917d6db8d54323fe626369
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 65a6a622a0d3fac7b28cc699d860068f12b780fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81533665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728600"
 ---
 # <a name="bulk-download-members-of-a-group-in-azure-active-directory"></a>在 Azure Active Directory 中大量下載群組的成員
 
@@ -26,8 +25,8 @@ ms.locfileid: "81533665"
 
 ## <a name="to-bulk-download-group-membership"></a>大量下載群組成員資格
 
-1. 使用組織中的使用者系統管理員帳戶登入[Azure 入口網站](https://portal.azure.com)。 群組擁有者也可以大量下載他們所擁有的群組成員。
-1. 在 Azure AD 中，選取 [**群組** > ] [**所有群組**]。
+1. 使用組織中的使用者系統管理員帳戶來登入 [Azure 入口網站](https://portal.azure.com)。 群組擁有者也可以大量下載他們所擁有的群組成員。
+1. 在 Azure AD 中，選取 [群組] > [所有群組]。
 1. 開啟您想要下載其成員資格的群組，然後選取 [**成員**]。
 1. 在 [**成員**] 頁面上，選取 [**下載成員**] 以下載列出群組成員的 CSV 檔案。
 
@@ -35,7 +34,7 @@ ms.locfileid: "81533665"
 
 ## <a name="check-download-status"></a>檢查下載狀態
 
-您可以在 [**大量作業結果**] 頁面中查看所有擱置大量要求的狀態。
+您可以在 [大量作業結果] 頁面中，查看所有待決之大量要求的狀態。
 
 [![](media/groups-bulk-download-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-download-members/bulk-center.png#lightbox)
 
@@ -46,4 +45,4 @@ ms.locfileid: "81533665"
 ## <a name="next-steps"></a>後續步驟
 
 - [大量匯入群組成員](groups-bulk-import-members.md)
-- [大容量移除群組成員](groups-bulk-download-members.md)
+- [大量移除群組成員](groups-bulk-download-members.md)

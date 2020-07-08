@@ -3,12 +3,11 @@ title: 範本資源位置
 description: 說明如何設定 Azure Resource Manager 範本中的資源位置。
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e0bf0ac79c7e304a61561808dc2290ceb4a379e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156424"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84672675"
 ---
 # <a name="set-resource-location-in-arm-template"></a>在 ARM 範本中設定資源位置
 
@@ -38,13 +37,13 @@ az provider show \
 
 ## <a name="use-location-parameter"></a>使用 location 參數
 
-若要在部署範本時允許彈性，請使用參數來指定資源的位置。 將參數的預設值設定為`resourceGroup().location`。
+若要在部署範本時允許彈性，請使用參數來指定資源的位置。 將參數的預設值設定為 `resourceGroup().location` 。
 
 下列範例顯示部署至某個 (已指定為參數) 位置的儲存體帳戶：
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storageAccountType": {

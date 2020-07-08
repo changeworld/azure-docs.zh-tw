@@ -2,20 +2,19 @@
 title: 將屬性同步處理至 Azure AD 以進行對應
 description: 瞭解如何將內部部署 Active Directory 的屬性同步處理至 Azure AD。 設定 SaaS 應用程式的使用者布建時，請使用目錄擴充功能來新增預設未同步處理的來源屬性。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/13/2019
-ms.author: mimart
-ms.openlocfilehash: 4b51d74d188f8f1c99f2075000e8fd91e70a81a4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.author: kenwith
+ms.openlocfilehash: 00c4dec329456409bc8d5b77dca72f25daf9f5c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593143"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781068"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>將內部部署 Active Directory 的屬性同步處理至 Azure AD 以布建至應用程式
 
@@ -45,7 +44,7 @@ ms.locfileid: "82593143"
 
 5. 完成 Azure AD Connect wizard，並允許執行完整的同步處理迴圈。 當迴圈完成時，會擴充架構，並在您的內部部署 AD 與 Azure AD 之間同步處理新的值。
  
-6. 在 Azure 入口網站中，當您要[編輯使用者屬性](customize-application-attributes.md)對應時，[**來源屬性**] 清單現在會包含以格式`<attributename> (extension_<appID>_<attributename>)`加入的屬性。 選取屬性，並將其對應至目標應用程式以進行布建。
+6. 在 Azure 入口網站中，當您要[編輯使用者屬性](customize-application-attributes.md)對應時，[**來源屬性**] 清單現在會包含以格式加入的屬性 `<attributename> (extension_<appID>_<attributename>)` 。 選取屬性，並將其對應至目標應用程式以進行布建。
 
    ![Azure Active Directory Connect wizard 目錄延伸選取頁面](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
 

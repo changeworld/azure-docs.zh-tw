@@ -1,21 +1,20 @@
 ---
-title: 如何將模型部署到計算實例
+title: HDeploy 模型以計算實例
 titleSuffix: Azure Machine Learning
 description: 瞭解如何使用計算實例，將您的 Azure Machine Learning 模型部署為 web 服務。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 09164580b8bdb249fc12d14e827ad799d51cab34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 07afeba8ab481da6a23862dee187c8c72df19f3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756587"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84429575"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>將模型部署到 Azure Machine Learning 計算實例
 
@@ -29,7 +28,7 @@ ms.locfileid: "80756587"
 > [!TIP]
 > 將模型從計算實例上的 Jupyter Notebook 部署到相同 VM 上的 web 服務是_本機部署_。 在此情況下，「本機」電腦就是計算實例。 如需部署的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 執行的計算實例 Azure Machine Learning 工作區。 如需詳細資訊，請參閱[設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
 
@@ -39,17 +38,17 @@ ms.locfileid: "80756587"
 
 1. 從[Azure Machine Learning studio](https://ml.azure.com)中，選取您的 Azure Machine Learning 計算實例。
 
-1. 開啟`samples-*`子目錄，然後開啟`how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`。 一旦開啟，請執行筆記本。
+1. 開啟 `samples-*` 子目錄，然後開啟 `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb` 。 一旦開啟，請執行筆記本。
 
     ![筆記本上執行中本機服務的螢幕擷取畫面](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
-1. 筆記本會顯示服務執行所在的 URL 和埠。 例如： `https://localhost:6789` 。 您也可以執行包含`print('Local service port: {}'.format(local_service.port))`的儲存格來顯示埠。
+1. 筆記本會顯示服務執行所在的 URL 和埠。 例如： `https://localhost:6789` 。 您也可以執行包含的儲存格 `print('Local service port: {}'.format(local_service.port))` 來顯示埠。
 
     ![執行中本機服務埠的螢幕擷取畫面](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
 
-1. 若要從計算實例測試服務，請使用`https://localhost:<local_service.port>` URL。 若要從遠端用戶端進行測試，請取得在計算實例上執行之服務的公用 URL。 您可以使用下列公式來判斷公用 URL： 
-    * 筆記本 VM： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`。 
-    * 計算實例： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`。 
+1. 若要從計算實例測試服務，請使用 `https://localhost:<local_service.port>` URL。 若要從遠端用戶端進行測試，請取得在計算實例上執行之服務的公用 URL。 您可以使用下列公式來判斷公用 URL： 
+    * 筆記本 VM： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score` 。 
+    * 計算實例： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score` 。 
 
     例如， 
     * 筆記本 VM：`https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
@@ -57,10 +56,10 @@ ms.locfileid: "80756587"
 
 ## <a name="test-the-service"></a>測試服務
 
-若要將範例資料提交至執行中的服務，請使用下列程式碼。 將的值`service_url`取代為上一個步驟中的 URL：
+若要將範例資料提交至執行中的服務，請使用下列程式碼。 將的值取代為 `service_url` 上一個步驟中的 URL：
 
 > [!NOTE]
-> 在對計算實例上的部署進行驗證時，會使用 Azure Active Directory 來進行驗證。 範例程式碼`interactive_auth.get_authentication_header()`中的呼叫會使用 AAD 來驗證您，並傳回可接著用來向計算實例上的服務進行驗證的標頭。 如需詳細資訊，請參閱[設定 Azure Machine Learning 資源和工作流程的驗證](how-to-setup-authentication.md#interactive-authentication)。
+> 在對計算實例上的部署進行驗證時，會使用 Azure Active Directory 來進行驗證。 `interactive_auth.get_authentication_header()`範例程式碼中的呼叫會使用 AAD 來驗證您，並傳回可接著用來向計算實例上的服務進行驗證的標頭。 如需詳細資訊，請參閱[設定 Azure Machine Learning 資源和工作流程的驗證](how-to-setup-authentication.md#interactive-authentication)。
 >
 > 向 Azure Kubernetes Service 或 Azure 容器實例上的部署進行驗證時，會使用不同的驗證方法。 如需的詳細資訊，請參閱[設定 Azure Machine Learning 資源和工作流程的驗證](how-to-setup-authentication.md#web-service-authentication)。
 
@@ -96,7 +95,7 @@ print("prediction:", resp.text)
 
 * [如何使用自訂 Docker 映射部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑難排解](how-to-troubleshoot-deployment.md)
-* [透過 Azure Machine Learning 使用 TLS 來保護 web 服務](how-to-secure-web-service.md)
+* [使用 TLS 來透過 Azure Machine Learning 保護 Web 服務](how-to-secure-web-service.md)
 * [取用部署為 Web 服務的 ML 模型](how-to-consume-web-service.md)
 * [使用 Application Insights 監視您的 Azure Machine Learning 模型](how-to-enable-app-insights.md)
 * [在生產環境中收集模型資料](how-to-enable-data-collection.md)

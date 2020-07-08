@@ -7,18 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 9b39cbab71808aaf09f7dc38b3be77f6f35ab598
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 6e889fef16d8ad80d52810207f0328a765ca9cfe
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982678"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958492"
 ---
 # <a name="publishing-guide-by-offer-type"></a>依供應項目類型的發行指南
 
 本文說明商用 marketplace 中可用的供應專案類型。 「供應項目類型」** 會定義供應項目結構 (包括用來在市集中展示供應項目的中繼資料、成品和其他內容)。
 
-在您可以建立供應專案之前，以及[決定發佈選項](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)之後，您必須選擇將用來呈現供應專案的供應專案類型。 供應項目類型會對應至您想要發佈的解決方案、應用程式服務供應項目類型，以及對等的 Microsoft 產品和服務。
+在您可以建立供應專案之前，以及[決定發佈選項](determine-your-listing-type.md)之後，您必須選擇將用來呈現供應專案的供應專案類型。 供應項目類型會對應至您想要發佈的解決方案、應用程式服務供應項目類型，以及對等的 Microsoft 產品和服務。
 
 您可以使用不同的方式來設定單一供應專案類型，以啟用不同的發佈選項、呼叫動作、布建或定價。 發佈選項和供應項目類型的組態，也會符合供應項目資格和技術需求。
 
@@ -28,7 +27,7 @@ ms.locfileid: "82982678"
 
 下表列出 Azure Marketplace 的供應項目類型。
 
-| **供應專案類型**    | **說明**  |
+| **供應項目類型**    | **描述**  |
 | :------------------- | :-------------------|
 | [**虛擬機器**](./marketplace-virtual-machines.md) | 當您要將虛擬設備部署到與客戶相關的訂用帳戶時，請使用「虛擬機器」供應項目類型。 |
 | [**解決方案範本**](./marketplace-solution-templates.md) | 當您的解決方案需要超過單一 VM 的額外部署和設定自動化時，請使用解決方案範本（也稱為 Azure 應用程式）供應專案類型。 解決方案範本可以採用許多不同類型的 Azure 資源，包括但不限於 Vm。  |

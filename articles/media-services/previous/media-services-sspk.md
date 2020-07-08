@@ -1,6 +1,6 @@
 ---
-title: 授權 Microsoft&reg; Smooth Streaming 用戶端移植套件
-description: 瞭解如何授權 Microsoft&reg; Smooth Streaming 用戶端移植套件。
+title: 授權 Microsoft &reg; Smooth Streaming 用戶端移植套件
+description: 瞭解如何授權 Microsoft &reg; Smooth Streaming 用戶端移植套件。
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: bd77c53a195a9549f6aaad9ee2928206f5324b0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7fce1fc529f3af71cac17d8011fe065c6381a419
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686904"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677147"
 ---
-# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授權 Microsoft&reg; Smooth Streaming 用戶端移植套件 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授權 Microsoft &reg; Smooth Streaming 用戶端移植套件 
 ## <a name="overview"></a>總覽
 Microsoft Smooth Streaming Client Porting Kit (簡稱**SSPK** ) 是最佳化的 Smooth Streaming 用戶端實作，可協助內嵌裝置製造商、有線電視和行動業者、內容服務提供者、手持式裝置製造商、獨立軟體廠商 (ISV) 和解決方案提供者打造產品和服務，以供串流 Smooth Streaming 格式的彈性內容。 SSPK 是 Smooth Streaming 用戶端的裝置和平台獨立實作，可由被授權者移植到任何裝置和平台。 
 
@@ -29,7 +28,7 @@ Microsoft Smooth Streaming Client Porting Kit (簡稱**SSPK** ) 是最佳化的 
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>描述
+## <a name="description"></a>Description
 SSPK 是根據可提供絕佳商業價值的條款授權。 SSPK 授權提供給業界：
 
 * Smooth Streaming Porting Kit 的 C++ 原始碼 
@@ -71,11 +70,11 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 * 每年前 10,000 個裝置實作不需權利金 
 
 ## <a name="licensing-procedure-and-sspk-access"></a>授權程序和 SSPK 存取
-所有[sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)授權查詢的電子郵件。
+[sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)所有授權查詢的電子郵件。
 
 已註冊的中期被授權者可以存取 SSPK 發佈入口網站 。
 
-已授權的過渡和最終 SSPK 可以將技術[smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)問題提交至。
+已授權的過渡和最終 SSPK 可以將技術問題提交至 [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com) 。
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming 用戶端中期產品合約被授權者
 
@@ -113,51 +112,41 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Smooth Streaming 用戶端最終產品合約被授權者
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
-* Albis Technologies Ltd.
-* Amazon Digital Services, Inc.
-* AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
-* Arion Technology, Inc.
-* ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
-* British Sky Broadcasting Limited
-* CastPal Technology Inc., Shenzhen
+* Arcelik A. S
 * Compal Electronics, Inc.
-* Dongguan Digital AV Technology Corp., Ltd.
-* EchoStar Purchasing Corporation
-* Enseo, Inc.
-* FilmFlex 電影有限
+* EXPRESS 好運技術有限
 * Fluendo S.A.
 * FUNAI 電動 CO，公司
-* Gibson Innovations Limited
-* Haier Information Applicantion S.R.L
-* HANDAN BroadInfoCom Co., Ltd.
 * Hisense International Co., Ltd. 
-* Homecast Co., Ltd
-* Hon Hai Precision Industry Co., Ltd.
-* Infomir GMBH
+* HKC Corporation 有限
+* 香港特別行政區 Konka 有限公司
+* Innolux Corporation
+* Innopia 技術，Inc。
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
+* Co 成名的電氣
+* MIRC 的電子產品有限
 * Nintendo Co., Ltd.
-* Orange SA
-* Saffron Digital Limited
-* Sagemcom Broadband SAS
+* ONEPLUS 電子（SHENZHEN）有限公司。
+* Panasonic Corporation
+* Qingdao Haier Optronics 有限公司。
+* Shenzhen ATEKO 相片電力 Co，公司。
 * Shenzhen Chuangwei-RGB 電子產品 Co。
-* Shenzhen Coship Electronics CO., LTD
 * Shenzhen Jiuzhou Electric Co., Ltd
+* Shenzhen KTC 技術 Co。 
+* Shenzhen Maxmade 技術 Co
+* Shenzhen MTC Co.，公司
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
 * 致振企業股份有限公司
 * Sky Deutschland Fernsehen GmbH & Co. KG
-* SmarDTV S.A.
+* SMARDTV GLOBAL SAS
 * SoftAtHome
 * 索尼公司
 * Technicolor Delivery Technologies, SAS
-* Tongfang Global Ltd.
 * Top Victory Investments, Ltd.
-* Toshiba Lifestyle Products & Services Corporation
-* Universal Media Corporation /Slovakia/ s.r.o.
-* VIZIO, Inc.
-* Wistron Corporation
+* UMC 波蘭 sp。 z. o.o。
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑

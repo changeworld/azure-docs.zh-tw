@@ -1,21 +1,13 @@
 ---
 title: 使用 Azure 服務匯流排改善效能的最佳做法
 description: 描述如何使用服務匯流排來在交換代理訊息時將效能最佳化。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 03/12/2020
-ms.author: aschhab
-ms.openlocfilehash: 267965ee41280a677050d1676285dda8734bc044
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: e0a6e54c1e941d7b7ff244ac40066a564e2ebbc4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606066"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341096"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服務匯流排傳訊的效能改進最佳作法
 
@@ -53,11 +45,11 @@ AMQP 是最有效率的，因為它會維護服務匯流排的連接。 它也�
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft Azure 的匯流排 SDK](#tab/net-standard-sdk)
 
-服務匯流排用戶端物件（例如[`IQueueClient`][QueueClient]或[`IMessageSender`][MessageSender]的執行）應該註冊為單次個體（或具現化一次和共用）的相依性插入。 當您傳送一個訊息，並在傳送下一個訊息時重新建立傳訊處理站或佇列、主題及訂用帳戶用戶端之後，建議您不要將其關閉。 關閉傳訊處理站會刪除服務匯流排服務的連接，並在重新建立處理站時建立新的連接。 建立連接是成本高昂的作業，您可以藉由重新使用多項作業的相同處理站和用戶端物件來避免此作業。 您可以安全地使用這些用戶端物件，從多個執行緒進行並行的非同步作業。
+服務匯流排用戶端物件（例如或的 [`IQueueClient`][QueueClient] [`IMessageSender`][MessageSender] 執行）應該註冊為單次個體（或具現化一次和共用）的相依性插入。 當您傳送一個訊息，並在傳送下一個訊息時重新建立傳訊處理站或佇列、主題及訂用帳戶用戶端之後，建議您不要將其關閉。 關閉傳訊處理站會刪除服務匯流排服務的連接，並在重新建立處理站時建立新的連接。 建立連接是成本高昂的作業，您可以藉由重新使用多項作業的相同處理站和用戶端物件來避免此作業。 您可以安全地使用這些用戶端物件，從多個執行緒進行並行的非同步作業。
 
 # <a name="windowsazureservicebus-sdk"></a>[Windowsazure.storage. 匯流排 SDK](#tab/net-framework-sdk)
 
-服務匯流排用戶端物件（例如`QueueClient`或`MessageSender`）是透過[MessagingFactory][MessagingFactory]物件所建立，它也會提供內部連接管理。 當您傳送一個訊息，並在傳送下一個訊息時重新建立傳訊處理站或佇列、主題及訂用帳戶用戶端之後，建議您不要將其關閉。 關閉傳訊處理站會刪除服務匯流排服務的連接，並在重新建立處理站時建立新的連接。 建立連接是成本高昂的作業，您可以藉由重新使用多項作業的相同處理站和用戶端物件來避免此作業。 您可以安全地使用這些用戶端物件，從多個執行緒進行並行的非同步作業。
+服務匯流排用戶端物件（例如 `QueueClient` 或 `MessageSender` ）是透過[MessagingFactory][MessagingFactory]物件所建立，它也會提供內部連接管理。 當您傳送一個訊息，並在傳送下一個訊息時重新建立傳訊處理站或佇列、主題及訂用帳戶用戶端之後，建議您不要將其關閉。 關閉傳訊處理站會刪除服務匯流排服務的連接，並在重新建立處理站時建立新的連接。 建立連接是成本高昂的作業，您可以藉由重新使用多項作業的相同處理站和用戶端物件來避免此作業。 您可以安全地使用這些用戶端物件，從多個執行緒進行並行的非同步作業。
 
 ---
 
@@ -115,7 +107,7 @@ Console.WriteLine("All messages sent");
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft Azure 的匯流排 SDK](#tab/net-standard-sdk)
 
-如需完整的<a href="https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues" target="_blank">原始程式碼範例<span class="docon docon-navigate-external x-hidden-focus"></span> </a>，請參閱 GitHub 存放庫：
+如需完整的<a href="https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues" target="_blank">原始程式碼範例 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>，請參閱 GitHub 存放庫：
 
 ```csharp
 var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
@@ -139,11 +131,11 @@ receiver.RegisterMessageHandler(
     });
 ```
 
-`MessageReceiver`物件會以連接字串、佇列名稱和「查看」接收模式具現化。 接下來， `receiver`使用實例來註冊訊息處理常式。
+`MessageReceiver`物件會以連接字串、佇列名稱和「查看」接收模式具現化。 接下來， `receiver` 使用實例來註冊訊息處理常式。
 
 # <a name="windowsazureservicebus-sdk"></a>[Windowsazure.storage. 匯流排 SDK](#tab/net-framework-sdk)
 
-如需完整的<a href="https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/SendersReceiversWithQueues" target="_blank">原始程式碼範例<span class="docon docon-navigate-external x-hidden-focus"></span> </a>，請參閱 GitHub 存放庫：
+如需完整的<a href="https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/SendersReceiversWithQueues" target="_blank">原始程式碼範例 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>，請參閱 GitHub 存放庫：
 
 ```csharp
 var factory = MessagingFactory.CreateFromConnectionString(connectionString);
@@ -163,7 +155,7 @@ receiver.OnMessageAsync(
     });
 ```
 
-會`MessagingFactory`從連接`factory`字串建立物件。 使用`factory`實例`MessageReceiver`時，會具現化。 接下來， `receiver`使用實例來註冊訊息處理常式。
+會 `MessagingFactory` `factory` 從連接字串建立物件。 使用 `factory` 實例 `MessageReceiver` 時，會具現化。 接下來， `receiver` 使用實例來註冊訊息處理常式。
 
 ---
 
@@ -203,7 +195,7 @@ var factory = MessagingFactory.Create(namespaceUri, settings);
 批次處理並不會影響可計費的傳訊作業數目，而且僅適用於使用 [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 程式庫的服務匯流排用戶端通訊協定。 HTTP 通訊協定不支援批次處理。
 
 > [!NOTE]
-> 設定`BatchFlushInterval`可確保批次處理從應用程式的觀點來看。 亦即：應用程式會`SendAsync`進行`CompleteAsync`和呼叫，而且不會進行特定的批次呼叫。
+> 設定 `BatchFlushInterval` 可確保批次處理從應用程式的觀點來看。 亦即：應用程式會進行 `SendAsync` 和 `CompleteAsync` 呼叫，而且不會進行特定的批次呼叫。
 >
 > 明確的用戶端批次處理可以藉由使用下列方法呼叫來執行：
 > ```csharp
@@ -226,7 +218,7 @@ var factory = MessagingFactory.Create(namespaceUri, settings);
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft Azure 的匯流排 SDK](#tab/net-standard-sdk)
 
-若要停用批次處理的存放區存取，您將需要`ManagementClient`一個的實例。 從將`EnableBatchedOperations`屬性設定為`false`的佇列描述建立佇列。
+若要停用批次處理的存放區存取，您將需要一個的實例 `ManagementClient` 。 從將屬性設定為的佇列描述建立佇列 `EnableBatchedOperations` `false` 。
 
 ```csharp
 var queueDescription = new QueueDescription(path)
@@ -243,7 +235,7 @@ var queue = await managementClient.CreateQueueAsync(queueDescription);
 
 # <a name="windowsazureservicebus-sdk"></a>[Windowsazure.storage. 匯流排 SDK](#tab/net-framework-sdk)
 
-若要停用批次處理的存放區存取，您將需要`NamespaceManager`一個的實例。 從將`EnableBatchedOperations`屬性設定為`false`的佇列描述建立佇列。
+若要停用批次處理的存放區存取，您將需要一個的實例 `NamespaceManager` 。 從將屬性設定為的佇列描述建立佇列 `EnableBatchedOperations` `false` 。
 
 ```csharp
 var queueDescription = new QueueDescription(path)
@@ -264,11 +256,11 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 
 ## <a name="prefetching"></a>預先擷取
 
-預先[提取](service-bus-prefetch.md)可讓佇列或訂用帳戶用戶端在執行接收作業時，從服務載入額外的訊息。 用戶端會將這些訊息儲存在本機快取中。 快取的大小取決於`QueueClient.PrefetchCount`或`SubscriptionClient.PrefetchCount`屬性。 啟用預先擷取的每個用戶端會維護自己的快取。 快取不會跨用戶端共用。 如果用戶端起始接收作業且其快取是空的，則服務會傳輸一批次的訊息。 批次的大小等於快取的大小或 256 KB，以較小者為準。 如果用戶端起始接收作業且快取包含一則訊息，訊息會從快取中擷取。
+預先[提取](service-bus-prefetch.md)可讓佇列或訂用帳戶用戶端在執行接收作業時，從服務載入額外的訊息。 用戶端會將這些訊息儲存在本機快取中。 快取的大小取決於 `QueueClient.PrefetchCount` 或 `SubscriptionClient.PrefetchCount` 屬性。 啟用預先擷取的每個用戶端會維護自己的快取。 快取不會跨用戶端共用。 如果用戶端起始接收作業且其快取是空的，則服務會傳輸一批次的訊息。 批次的大小等於快取的大小或 256 KB，以較小者為準。 如果用戶端起始接收作業且快取包含一則訊息，訊息會從快取中擷取。
 
 預先擷取訊息時，服務會鎖定預先擷取的訊息。 藉由鎖定，其他接收者就無法接收預先擷取的訊息。 如果接收者無法在鎖定到期之前完成訊息，訊息就會變成可供其他接收者接收。 訊息的預先擷取副本會保留在快取中。 當取用過其快取複本的接收者嘗試完成該訊息時，他會收到例外狀況。 根據預設，訊息鎖定會在 60 秒之後到期。 此值可延長為 5 分鐘。 若要避免過期訊息遭到取用，快取大小應該一律小於用戶端在鎖定逾時間隔內可取用的訊息數目。
 
-使用 60 秒的預設鎖定到期時，`PrefetchCount` 的理想值是中心所有接收者處理速率上限的 20 倍。 例如，處理站建立三個接收者，而每個接收者每秒可以處理最多 10 則訊息。 預先擷取計數不應該超過 20 X 3 X 10 = 600。 根據預設， `PrefetchCount`會設定為0，這表示不會從服務提取任何額外的訊息。
+使用 60 秒的預設鎖定到期時，`PrefetchCount` 的理想值是中心所有接收者處理速率上限的 20 倍。 例如，處理站建立三個接收者，而每個接收者每秒可以處理最多 10 則訊息。 預先擷取計數不應該超過 20 X 3 X 10 = 600。 根據預設， `PrefetchCount` 會設定為0，這表示不會從服務提取任何額外的訊息。
 
 預先擷取訊息會增加佇列或訂用帳戶的整體輸送量，因為此舉可減少訊息作業的整體數目或來回次數。 然而，擷取第一個訊息需要較長的時間 (因為訊息大小增加)。 接收預先擷取的訊息比較快速，因為用戶端已經下載這些訊息。
 
@@ -278,14 +270,14 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft Azure 的匯流排 SDK](#tab/net-standard-sdk)
 
-如需詳細資訊，請參閱`PrefetchCount`下列屬性：
+如需詳細資訊，請參閱下列 `PrefetchCount` 屬性：
 
 * <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.QueueClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 * <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.servicebus.subscriptionclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.SubscriptionClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 # <a name="windowsazureservicebus-sdk"></a>[Windowsazure.storage. 匯流排 SDK](#tab/net-framework-sdk)
 
-如需詳細資訊，請參閱`PrefetchCount`下列屬性：
+如需詳細資訊，請參閱下列 `PrefetchCount` 屬性：
 
 * <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.queueclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.QueueClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 * <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
@@ -297,13 +289,13 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 > [!NOTE]
 > 本節僅適用于 Windowsazure.storage，因為 Microsoft 不會公開批次函式。
 
-雖然預先提取多個訊息的概念有類似的語義可以處理批次中的`ReceiveBatch`訊息（），但同時使用它們時，還有一些小差異必須牢記在心。
+雖然預先提取多個訊息的概念有類似的語義可以處理批次中的訊息（），但同時使用 `ReceiveBatch` 它們時，還有一些小差異必須牢記在心。
 
-預先提取是用戶端（`QueueClient`和`SubscriptionClient`）上的設定（或模式） `ReceiveBatch` ，而且是一種作業（具有要求-回應的語義）。
+預先提取是用戶端（和）上的設定（或模式） `QueueClient` `SubscriptionClient` ，而且 `ReceiveBatch` 是一種作業（具有要求-回應的語義）。
 
 同時使用這些案例時，請考慮下列情況：
 
-* 預先提取應大於或等於您預期接收的訊息數目`ReceiveBatch`。
+* 預先提取應大於或等於您預期接收的訊息數目 `ReceiveBatch` 。
 * 預先提取最多可以是每秒處理的訊息數目的 n/3 倍，其中 n 是預設的鎖定持續時間。
 
 有一些因具有貪婪方法（也就是讓預先提取計數非常高）的挑戰，因為這表示訊息已鎖定至特定的接收者。 建議您在上面所述的閾值之間嘗試預先取值，並廣為人知且實證識別適合的值。
@@ -317,9 +309,9 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 > [!NOTE]
 > 這一節僅適用于 Windowsazure.storage，因為 Microsoft 不會公開此功能。
 
-服務匯流排有一個專門用於開發的功能，但**絕不能用在生產環境設定中**： [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering]。
+服務匯流排有一個專門用於開發的功能，但**絕不能用在生產環境設定中**： [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] 。
 
-將新的規則或篩選新增至主題時，您可以使用[`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering]來驗證新的篩選條件運算式是否如預期般運作。
+將新的規則或篩選新增至主題時，您可以使用 [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] 來驗證新的篩選條件運算式是否如預期般運作。
 
 ## <a name="scenarios"></a>案例
 
@@ -355,7 +347,7 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 
 目標：最大化具有大量傳送者之佇列或主題的輸送量。 每個傳送者都會以中等速率傳送訊息。 接收者的數目很少。
 
-服務匯流排可啟用多達 1000 個並行連線至訊息實體 (或使用 AMQP 可達 5000 個)。 在命名空間層級強制執行這項限制，且佇列/主題/訂用帳戶的上限為每個命名空間的並行連線限制。 對佇列而言，這個數目是在傳送者和接收者之間共用的。 如果 1000 個連線全都為傳送者所需，請以主題和單一訂用帳戶取代此佇列。 主題會接受多達 1000 個來自傳送者的並行連線，而訂用帳戶可接受來自接收者的額外 1000 個並行連線。 如果需要超過 1000 個並行傳送者，傳送者必須透過 HTTP 將訊息傳送至服務匯流排通訊協定。
+服務匯流排最多可為訊息實體提供1000的並行連接。 在命名空間層級強制執行這項限制，且佇列/主題/訂用帳戶的上限為每個命名空間的並行連線限制。 對佇列而言，這個數目是在傳送者和接收者之間共用的。 如果 1000 個連線全都為傳送者所需，請以主題和單一訂用帳戶取代此佇列。 主題會接受多達 1000 個來自傳送者的並行連線，而訂用帳戶可接受來自接收者的額外 1000 個並行連線。 如果需要超過 1000 個並行傳送者，傳送者必須透過 HTTP 將訊息傳送至服務匯流排通訊協定。
 
 若要最大化輸送量，請執行下列步驟：
 

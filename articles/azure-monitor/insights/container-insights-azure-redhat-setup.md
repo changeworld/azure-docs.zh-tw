@@ -2,13 +2,12 @@
 title: 使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift v3. x |Microsoft Docs
 description: 本文說明如何使用裝載于 Azure Red Hat OpenShift 第3版和更高版本上的 Azure 監視器來設定監視 Kubernetes 叢集。
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: c39eda03fc5fb7521bcf08c52eaabc28d4cb1256
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: e04ef42971756cffe0906e1ddfb8406e876588bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204129"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800506"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift v3
 
@@ -30,11 +29,49 @@ ms.locfileid: "82204129"
 - 即時資料（預覽）
 - 從叢集節點和 pod[收集計量](container-insights-update-metrics.md)，並將其儲存在 Azure 監視器計量資料庫中
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
+
+- [Log Analytics 工作區](../platform/design-logs-deployment.md)。
+
+    容器的 Azure 監視器支援[依區域](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)在 Azure 產品中列出的區域中的 Log Analytics 工作區。 若要建立您自己的工作區，可以透過[Azure Resource Manager](../platform/template-workspace-configuration.md)、透過[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)或在[Azure 入口網站](../learn/quick-create-workspace.md)中建立。
 
 - 若要啟用及存取容器 Azure 監視器中的功能，您至少必須是 Azure 訂用帳戶中 Azure*參與者*角色的成員，以及 log analytics 工作區的[*log analytics 參與者*](../platform/manage-access.md#manage-access-using-azure-permissions)角色的成員，其已設定為使用 Azure 監視器的容器。
 
 - 若要查看監視資料，您是[*log analytics 讀取*](../platform/manage-access.md#manage-access-using-azure-permissions)者角色許可權的成員，其已設定適用于容器的 Azure 監視器的 log analytics 工作區。
+
+## <a name="identify-your-log-analytics-workspace-id"></a>識別您的 Log Analytics 工作區識別碼
+
+ 若要與現有的 Log Analytics 工作區整合，請從識別 Log Analytics 工作區的完整資源識別碼開始。 `workspaceResourceId`當您使用 Azure Resource Manager 範本方法啟用監視時，參數需要工作區的資源識別碼。
+
+1. 藉由執行下列命令，列出您有權存取的所有訂用帳戶：
+
+    ```azurecli
+    az account list --all -o table
+    ```
+
+    輸出顯示如下：
+
+    ```azurecli
+    Name                                  CloudName    SubscriptionId                        State    IsDefault
+    ------------------------------------  -----------  ------------------------------------  -------  -----------
+    Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
+    ```
+
+1. 複製**SubscriptionId**的值。
+
+1. 執行下列命令，以切換至裝載 Log Analytics 工作區的訂用帳戶：
+
+    ```azurecli
+    az account set -s <subscriptionId of the workspace>
+    ```
+
+1. 執行下列命令，以預設的 JSON 格式顯示訂用帳戶中的工作區清單：
+
+    ```
+    az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
+    ```
+
+1. 在輸出中，尋找工作區名稱，然後將該 Log Analytics 工作區的完整資源識別碼複製到欄位**識別碼**之下。
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本為新叢集啟用
 
@@ -54,7 +91,7 @@ ms.locfileid: "82204129"
 
 - 在執行步驟來建立一個或已建立的安全性群組之後，會記下該[Azure AD 的安全性群組](../../openshift/howto-aad-app-configuration.md#create-an-azure-ad-security-group)。
 
-- 現有 Log Analytics 工作區的資源識別碼。
+- 現有 Log Analytics 工作區的資源識別碼。 若要瞭解如何取得此資訊，請參閱[識別您的 Log Analytics 工作區識別碼](#identify-your-log-analytics-workspace-id)。
 
 - 要在叢集中建立的主要節點數目。
 
@@ -70,18 +107,16 @@ ms.locfileid: "82204129"
 
 如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.65 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-您必須先建立 Log Analytics 工作區，才能使用 Azure PowerShell 或 CLI 啟用監視。 若要建立工作區，您可以透過 [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)、透過 [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)，或是在 [Azure 入口網站](../../azure-monitor/learn/quick-create-workspace.md)中設定它。
-
 1. 下載並儲存到本機資料夾（Azure Resource Manager 範本和參數檔案），以使用下列命令來建立具有監視附加元件的叢集：
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoring.json`
+    `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoring.json`
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json`
+    `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json`
 
 2. 登入 Azure
 
     ```azurecli
-    az login    
+    az login
     ```
 
     如果您可存取多個訂用帳戶，請執行 `az account set -s {subscription ID}` 並以您要使用的訂用帳戶取代 `{subscription ID}`。
@@ -92,7 +127,7 @@ ms.locfileid: "82204129"
     az group create -g <clusterResourceGroup> -l <location>
     ```
 
-4. 編輯 JSON 參數檔案**newClusterWithMonitoringParam** ，並更新下列值：
+4. 編輯 JSON 參數檔案**newClusterWithMonitoringParam.js在上**，並更新下列值：
 
     - *location*
     - *clusterName*
@@ -125,7 +160,7 @@ ms.locfileid: "82204129"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 在 [Azure 入口網站] 功能表上或從首頁選取 [ **Azure 監視器**]。 在 [Insights]**** 區段下方，選取 [容器]****。
+2. 在 [Azure 入口網站] 功能表上或從首頁選取 [ **Azure 監視器**]。 在 [Insights] 區段下方，選取 [容器]。
 
 3. 在 [監視器 - 容器]**** 頁面上，選取 [不受監視的叢集]****。
 
@@ -149,7 +184,7 @@ ms.locfileid: "82204129"
 
 - 部署叢集的資源群組。
 
-- Log Analytics 工作區。
+- Log Analytics 工作區。 若要瞭解如何取得此資訊，請參閱[識別您的 Log Analytics 工作區識別碼](#identify-your-log-analytics-workspace-id)。
 
 若您不熟悉使用範本來部署資源的概念，請參閱：
 
@@ -159,18 +194,16 @@ ms.locfileid: "82204129"
 
 如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.65 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-您必須先建立 Log Analytics 工作區，才能使用 Azure PowerShell 或 CLI 啟用監視。 若要建立工作區，您可以透過 [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)、透過 [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)，或是在 [Azure 入口網站](../../azure-monitor/learn/quick-create-workspace.md)中設定它。
-
 1. 使用下列命令，下載範本和參數檔案，以使用監視附加元件更新您的叢集：
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterOnboarding.json`
+    `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_existing_cluster/existingClusterOnboarding.json`
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json`
+    `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json`
 
 2. 登入 Azure
 
     ```azurecli
-    az login    
+    az login
     ```
 
     如果您可存取多個訂用帳戶，請執行 `az account set -s {subscription ID}` 並以您要使用的訂用帳戶取代 `{subscription ID}`。
@@ -187,7 +220,7 @@ ms.locfileid: "82204129"
     az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. 編輯 JSON 參數檔案**existingClusterParam** ，並更新*araResourceId*和*araResoruceLocation*值。 **workspaceResourceId** 值是您 Log Analytics 工作區的完整資源識別碼，其中包含工作區名稱。
+5. 編輯 JSON 參數檔案**existingClusterParam.js在上**，並更新*aroResourceId*和*aroResourceLocation*的值。 **workspaceResourceId** 值是您 Log Analytics 工作區的完整資源識別碼，其中包含工作區名稱。
 
 6. 若要使用 Azure CLI 進行部署，請執行下列命令：
 

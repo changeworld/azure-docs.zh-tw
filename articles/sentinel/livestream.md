@@ -9,25 +9,19 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2019
+ms.date: 06/14/2020
 ms.author: yelevin
-ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77582121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783158"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>在 Azure Sentinel 中使用搜尋 livestream 來偵測威脅
-
-> [!IMPORTANT]
-> Azure Sentinel 中的搜尋 livestream 目前為公開預覽狀態，並逐漸推出給租使用者。
-> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 
 使用 [搜尋 livestream] 來建立互動式會話，讓您在發生事件時測試新建立的查詢、在找到相符的情況時從會話取得通知，並視需要啟動調查。 您可以使用任何 Log Analytics 查詢來快速建立 livestream 會話。
 
@@ -48,42 +42,42 @@ ms.locfileid: "77582121"
 
 您可以從現有的搜尋查詢建立 livestream 會話，或從頭開始建立您的會話。
 
-1. 在 [Azure 入口網站中，流覽至 [ **Sentinel** > **威脅管理** > **搜尋**]。
+1. 在 [Azure 入口網站中，流覽至 [ **Sentinel**  >  **威脅管理**  >  **搜尋**]。
 
-2. 若要從搜尋查詢建立 livestream 會話：
+1. 若要從搜尋查詢建立 livestream 會話：
     
     1. 從 [**查詢**] 索引標籤中，找出要使用的搜尋查詢。
-    2. 以滑鼠右鍵按一下查詢，然後選取 [**新增至 livestream**]。 例如：
+    1. 以滑鼠右鍵按一下查詢，然後選取 [**新增至 livestream**]。 例如：
     
     > [!div class="mx-imgBorder"]
     > ![從 Azure Sentinel 搜尋查詢建立 Livestream 會話](./media/livestream/livestream-from-query.png)
 
-3. 若要從頭開始建立 livestream 會話： 
+1. 若要從頭開始建立 livestream 會話： 
     
     1. 選取 [ **Livestream** ] 索引標籤
-    2. 選取 [**移至 livestream**]。
+    1. 按一下 [ **+ 新增 livestream**]。
     
-4. 在 [ **Livestream** ] 窗格上：
+1. 在 [ **Livestream** ] 窗格上：
     
     - 如果您從查詢開始 livestream，請檢查查詢，並進行您想要進行的任何變更。
     - 如果您從頭開始 livestream，請建立您的查詢。 
 
-5. 從命令列選取 [**播放**]。
+1. 從命令列選取 [**播放**]。
     
     命令列底下的狀態列會指出您的 livestream 會話是否正在執行或已暫停。 在下列範例中，會話正在執行：
     
     > [!div class="mx-imgBorder"]
     > ![從 Azure Sentinel 搜尋建立 livestream 會話](./media/livestream/livestream-session.png)
 
-6. 從命令列中選取 [**儲存**]。
+1. 從命令列中選取 [**儲存**]。
     
     除非您選取 [**暫停**]，否則會話會繼續執行，直到您從 Azure 入口網站登出為止。
 
 ## <a name="view-your-livestream-sessions"></a>查看您的 livestream 會話
 
-1. 在 [Azure 入口網站中，流覽至 [ **Sentinel** > **威脅管理** > **搜尋** > **Livestream** ] 索引標籤。
+1. 在 [Azure 入口網站中，流覽至 [ **Sentinel**  >  **威脅管理**  >  **搜尋**  >  **Livestream** ] 索引標籤。
 
-2. 選取您想要查看或編輯的 livestream 會話。 例如：
+1. 選取您想要查看或編輯的 livestream 會話。 例如：
     
     > [!div class="mx-imgBorder"]
     > ![從 Azure Sentinel 搜尋查詢建立 livestream 會話](./media/livestream/livestream-tab.png)
@@ -111,5 +105,5 @@ ms.locfileid: "77582121"
 
 在本文中，您已瞭解如何在 Azure Sentinel 中使用搜尋 livestream。 若要深入了解 Azure Sentinel，請參閱下列文章：
 
-- [主動尋找威脅](hunting.md)
+- [主動搜捕威脅](hunting.md)
 - [使用筆記本來執行自動化的搜尋活動](notebooks.md)

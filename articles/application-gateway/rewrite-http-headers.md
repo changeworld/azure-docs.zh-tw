@@ -4,15 +4,14 @@ description: 本文提供在 Azure 應用程式閘道中重寫 HTTP 標頭的總
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: 421c1f4d1abe9be5f5081235e78ebe77b1813e6e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562231"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248665"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>使用應用程式閘道重寫 HTTP 標頭
 
@@ -62,28 +61,28 @@ HTTP 標頭可讓用戶端和伺服器透過要求或回應傳遞其他資訊。
 
 | 變數名稱 | 描述                                                  |
 | -------------------------- | :----------------------------------------------------------- |
-| add_x_forwarded_for_proxy  | 以 IP1、IP2、I P 3 等格式附加`client_ip`變數的 [X-轉送-適用于用戶端要求標頭] 欄位（請參閱本表格稍後的說明）。 如果 X 轉送的欄位不在用戶端要求標頭中，則`add_x_forwarded_for_proxy`變數會等於`$client_ip`變數。 當您想要重寫由應用程式閘道所設定之 X 轉送的標頭時，這個變數特別有用，因為標頭只包含不含埠資訊的 IP 位址。 |
+| add_x_forwarded_for_proxy  | 以 IP1、IP2、I P 3 等格式附加變數的 [X-轉送-適用于用戶端要求標頭] 欄位 `client_ip` （請參閱本表格稍後的說明）。 如果 X 轉送的欄位不在用戶端要求標頭中，則 `add_x_forwarded_for_proxy` 變數會等於 `$client_ip` 變數。 當您想要重寫由應用程式閘道所設定之 X 轉送的標頭時，這個變數特別有用，因為標頭只包含不含埠資訊的 IP 位址。 |
 | ciphers_supported          | 用戶端支援的密碼清單。          |
 | ciphers_used               | 用於已建立之 TLS 連線的加密字串。 |
 | client_ip                  | 應用程式閘道從中接收要求之用戶端的 IP 位址。 如果應用程式閘道和原始用戶端之前有反向 proxy， *client_ip*會傳回反向 PROXY 的 ip 位址。 |
 | client_port                | 用戶端埠。                                                  |
 | client_tcp_rtt             | 用戶端 TCP 連線的相關資訊。 可在支援 TCP_INFO 通訊端選項的系統上使用。 |
 | client_user                | 使用 HTTP 驗證時，提供用於驗證的使用者名稱。 |
-| 主機                       | 依照下列優先順序：要求行中的主機名稱、主機要求標頭欄位中的主機名稱，或符合要求的伺服器名稱。 範例：在要求*http://contoso.com:8080/article.aspx?id=123&title=fabrikam*中，主機值會是*contoso.com* |
+| 主機                       | 依照下列優先順序：要求行中的主機名稱、主機要求標頭欄位中的主機名稱，或符合要求的伺服器名稱。 範例：在要求中 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ，主機值會是*contoso.com* |
 | cookie_*名稱*              | *名稱*cookie。                                            |
 | http_method                | 用來提出 URL 要求的方法。 例如，GET 或 POST。 |
 | http_status                | 會話狀態。 例如，200、400或403。                       |
 | http_version               | 要求通訊協定。 通常是 HTTP/1.0、HTTP/1.1 或 HTTP/2.0。 |
-| query_string               | 在要求的 URL 中，後面接著 "？" 的變數/值配對清單。 範例：在要求*http://contoso.com:8080/article.aspx?id=123&title=fabrikam*中，query_string 值會是*識別碼 = 123&title = fabrikam* |
+| query_string               | 在要求的 URL 中，後面接著 "？" 的變數/值配對清單。 範例：在要求中 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ，query_string 值會是*識別碼 = 123&title = fabrikam* |
 | received_bytes             | 要求的長度（包括要求行、標頭和要求本文）。 |
 | request_query              | 要求行中的引數。                                |
 | request_scheme             | 要求配置： HTTP 或 HTTPs。                            |
-| request_uri                | 完整的原始要求 URI （含引數）。 範例：在要求*http://contoso.com:8080/article.aspx?id=123&title=fabrikam*中，request_uri 值會是 */article.aspx？ id = 123&title = fabrikam*   |
+| request_uri                | 完整的原始要求 URI （含引數）。 範例：在要求中 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ，request_uri 值會是 */article.aspx？ id = 123&title = fabrikam*   |
 | sent_bytes                 | 傳送至用戶端的位元組數目。                             |
 | server_port                | 接受要求之伺服器的埠。                 |
 | ssl_connection_protocol    | 已建立 TLS 連接的通訊協定。        |
 | ssl_enabled                | 如果連接是以 TLS 模式運作，則為 "On"。 否則為空字串。 |
-| uri_path                   | 識別 web 用戶端想要存取之主機中的特定資源。 這是要求 URI 中沒有引數的部分。 範例：在要求*http://contoso.com:8080/article.aspx?id=123&title=fabrikam*中，uri_path 值會是 */article.aspx*  |
+| uri_path                   | 識別 web 用戶端想要存取之主機中的特定資源。 這是要求 URI 中沒有引數的部分。 範例：在要求中 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ，uri_path 值會是 */article.aspx*  |
 
 ## <a name="rewrite-configuration"></a>重寫設定
 
@@ -131,8 +130,8 @@ HTTP 標頭可讓用戶端和伺服器透過要求或回應傳遞其他資訊。
 
 以下是取代主機名稱的步驟：
 
-1. 建立具有條件的重寫規則，以評估回應中的位置標頭是否包含 azurewebsites.net。 輸入模式`(https?):\/\/.*azurewebsites\.net(.*)$`。
-1. 執行動作來重寫 location 標頭，使其具有應用程式閘道的主機名稱。 請輸入`{http_resp_Location_1}://contoso.com{http_resp_Location_2}`做為標頭值來執行這項操作。
+1. 建立具有條件的重寫規則，以評估回應中的位置標頭是否包含 azurewebsites.net。 輸入模式 `(https?):\/\/.*azurewebsites\.net(.*)$` 。
+1. 執行動作來重寫 location 標頭，使其具有應用程式閘道的主機名稱。 請輸入做 `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` 為標頭值來執行這項操作。
 
 ![修改位置標頭](media/rewrite-http-headers/app-service-redirection.png)
 
@@ -156,13 +155,13 @@ HTTP 標頭可讓用戶端和伺服器透過要求或回應傳遞其他資訊。
 
 ## <a name="limitations"></a>限制
 
-- 如果回應有多個相同名稱的標頭，則重寫其中一個標頭的值會導致在回應中卸載其他標頭。 這通常會發生在設定 Cookie 標頭中，因為在回應中可以有一個以上的設定 Cookie 標頭。 其中一種情況是，當您使用 app service 搭配應用程式閘道，並已在應用程式閘道上設定以 cookie 為基礎的會話親和性。 在此情況下，回應會包含兩個設定 Cookie 標頭：一個供 app service 使用，例如： `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`另一個用於應用程式閘道親和性`Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`，例如。 重寫此案例中的其中一個設定 Cookie 標頭，可能會導致從回應中移除另一個設定 Cookie 標頭。
+- 如果回應有多個相同名稱的標頭，則重寫其中一個標頭的值會導致在回應中卸載其他標頭。 這通常會發生在設定 Cookie 標頭中，因為在回應中可以有一個以上的設定 Cookie 標頭。 其中一種情況是，當您使用 app service 搭配應用程式閘道，並已在應用程式閘道上設定以 cookie 為基礎的會話親和性。 在此情況下，回應會包含兩個設定 Cookie 標頭：一個供 app service 使用，例如： `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` 另一個用於應用程式閘道親和性，例如 `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` 。 重寫此案例中的其中一個設定 Cookie 標頭，可能會導致從回應中移除另一個設定 Cookie 標頭。
 
 - 當應用程式閘道設定為重新導向要求或顯示自訂錯誤頁面時，不支援重寫。
 
 - 目前不支援重寫連接、升級和主機標頭。
 
-- 標頭名稱可以包含任何英數位元和[RFC 7230](https://tools.ietf.org/html/rfc7230#page-27)中所定義的特定符號。 我們目前不支援標頭名稱\_中的底線（）特殊字元。
+- 標頭名稱可以包含任何英數位元和[RFC 7230](https://tools.ietf.org/html/rfc7230#page-27)中所定義的特定符號。 我們目前不支援 \_ 標頭名稱中的底線（）特殊字元。
 
 ## <a name="next-steps"></a>後續步驟
 

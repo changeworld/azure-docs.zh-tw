@@ -7,12 +7,11 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 921a05c4dc6c1d5cfa663ac71b469573b8f1925b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249409"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL 分析來監視 Azure SQL Database (預覽)
 
@@ -31,38 +30,38 @@ Azure SQL 分析是一種先進的雲端監視解決方案，可讓您在單一�
 
 Azure SQL 分析是僅限雲端的監視解決方案，可支援所有 Azure SQL 資料庫的診斷遙測串流。 因為 Azure SQL 分析不會使用代理程式連線到 Azure 監視器，所以不支援監視內部部署或虛擬機器中裝載的 SQL Server。
 
-| 連接的來源 | 支援 | 說明 |
+| 連接的來源 | 支援 | 描述 |
 | --- | --- | --- |
 | [診斷設定](../platform/diagnostic-settings.md) | **是** | Azure 計量和記錄資料會直接傳送至 Azure 監視器的記錄。 |
-| [Azure 儲存體帳戶](../platform/collect-azure-metrics-logs.md) | 否 | Azure 監視器不會從儲存體帳戶讀取資料。 |
-| [Windows 代理程式](../platform/agent-windows.md) | 否 | Azure SQL 分析不使用直接 Windows 代理程式。 |
-| [Linux 代理程式](../learn/quick-collect-linux-computer.md) | 否 | Azure SQL 分析不使用直接 Linux 代理程式。 |
-| [System Center Operations Manager 管理群組](../platform/om-agents.md) | 否 | Azure SQL 分析不會使用從 Operations Manager 代理程式到 Azure 監視器的直接連接。 |
+| [Azure 儲存體帳戶](../platform/collect-azure-metrics-logs.md) | No | Azure 監視器不會從儲存體帳戶讀取資料。 |
+| [Windows 代理程式](../platform/agent-windows.md) | No | Azure SQL 分析不使用直接 Windows 代理程式。 |
+| [Linux 代理程式](../learn/quick-collect-linux-computer.md) | No | Azure SQL 分析不使用直接 Linux 代理程式。 |
+| [System Center Operations Manager 管理群組](../platform/om-agents.md) | No | Azure SQL 分析不會使用從 Operations Manager 代理程式到 Azure 監視器的直接連接。 |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL 分析選項
 
-下表概述兩個 Azure SQL 分析儀表板版本的支援選項，一個用於單一和集區資料庫和彈性集區，另一個用於受控實例和實例資料庫。
+下表概述兩個 Azure SQL 分析儀表板版本的支援選項，一個用於 Azure SQL Database，另一個用於 Azure SQL 受控執行個體資料庫。
 
-| Azure SQL 分析選項 | 說明 | 單一和集區資料庫和彈性集區支援 | 受控實例和實例資料庫支援 |
+| Azure SQL 分析選項 | Description | SQL Database 支援 | SQL 受控執行個體支援 |
 | --- | ------- | ----- | ----- |
-| 資源 (依類型) | 可計算所有受監視資源的檢視方塊。 | 是 | 是 |
-| 深入資訊 | 可透過階層的方式，向下鑽研至 Intelligent Insights 乃至效能。 | 是 | 是 |
-| Errors | 可透過階層的方式，向下鑽研至資料庫上發生的 SQL 錯誤。 | 是 | 是 |
+| 資源 (依類型) | 可計算所有受監視資源的檢視方塊。 | Yes | 是 |
+| 深入解析 | 可透過階層的方式，向下鑽研至 Intelligent Insights 乃至效能。 | Yes | 是 |
+| 錯誤 | 可透過階層的方式，向下鑽研至資料庫上發生的 SQL 錯誤。 | Yes | 是 |
 | 逾時 | 可透過階層的方式，向下鑽研至資料庫上發生的 SQL 逾時。 | 是 | 否 |
 | 封鎖 | 可透過階層的方式，向下鑽研至資料庫上發生的 SQL 封鎖。 | 是 | 否 |
 | 資料庫等候 | 可透過階層的方式，向下鑽研至資料庫層級的 SQL 等候統計資料。 包含總等候時間及每種等候類型等候時間的摘要。 |是 | 否 |
-| 查詢持續時間 | 可透過階層的方式，向下鑽研至查詢執行統計資料，例如查詢持續時間、CPU 使用量、資料 IO 使用量、記錄 IO 使用量。 | 是 | 是 |
-| 查詢等候 | 可透過階層的方式，依等候類別，向下鑽研至查詢等候統計資料。 | 是 | 是 |
+| 查詢持續時間 | 可透過階層的方式，向下鑽研至查詢執行統計資料，例如查詢持續時間、CPU 使用量、資料 IO 使用量、記錄 IO 使用量。 | Yes | 是 |
+| 查詢等候 | 可透過階層的方式，依等候類別，向下鑽研至查詢等候統計資料。 | Yes | 是 |
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 使用[從方案庫新增 Azure 監視器解決方案](../../azure-monitor/insights/solutions.md)中所述的程式，將 Azure SQL 分析（預覽）新增至您的 Log Analytics 工作區。
 
-### <a name="configure-azure-sql-databases-to-stream-diagnostics-telemetry"></a>設定 Azure SQL 資料庫以串流診斷遙測
+### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>設定 Azure SQL Database 以串流診斷遙測
 
 在您的工作區中建立 Azure SQL 分析解決方案之後，您需要設定您想要監視的**每個**資源，以將其診斷遙測串流至 Azure SQL 分析。 遵循此頁面上的詳細指示：
 
-- 為 Azure SQL 資料庫啟用 Azure 診斷，以[將診斷遙測串流至 Azure SQL 分析](../../sql-database/sql-database-metrics-diag-logging.md)。
+- 為您的資料庫啟用 Azure 診斷，以將[診斷遙測串流至 Azure SQL 分析](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)。
 
 上述頁面同時提供啟用支援將單一 Azure SQL 分析工作區作為單一窗口來監視多個 Azure 訂用帳戶的操作指示。
 
@@ -72,13 +71,13 @@ Azure SQL 分析是僅限雲端的監視解決方案，可支援所有 Azure SQL
 
 ![Azure SQL 分析摘要磚](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-載入之後，磚會顯示單一和集區資料庫、彈性集區、受控實例和受控實例資料庫的數目，Azure SQL 分析接收診斷遙測。
+載入之後，磚會顯示 SQL Database 中的資料庫和彈性集區數目，以及 Azure SQL 分析接收診斷遙測之 SQL 受控執行個體中的實例資料庫。
 
 ![Azure SQL 分析圖格](./media/azure-sql/azure-sql-sol-tile-02.png)
 
-Azure SQL 分析提供兩個不同的視圖，一個用於監視單一資料庫和集區資料庫和彈性集區，另一個則用於監視受管理的實例和實例資料庫。
+Azure SQL 分析提供兩個不同的視圖，一個用於監視 SQL Database，另一個則用於監視 SQL 受控執行個體。
 
-若要查看單一和集區資料庫和彈性集區的 Azure SQL 分析監視儀表板，請按一下磚的上半部。 若要查看受控實例和實例資料庫的 Azure SQL 分析監視] 儀表板，請按一下磚的下半部。
+若要查看 SQL Database 的 Azure SQL 分析監視儀表板，請按一下磚的上半部。 若要查看 SQL 受控執行個體 Azure SQL 分析監視] 儀表板，請按一下磚的下半部。
 
 ### <a name="viewing-azure-sql-analytics-data"></a>檢視 Azure SQL 分析資料
 
@@ -86,7 +85,7 @@ Azure SQL 分析提供兩個不同的視圖，一個用於監視單一資料庫�
 
 如果某些計量或記錄未串流到 Azure 監視器，Azure SQL 分析中的磚不會填入監視資訊。
 
-### <a name="single-and-pooled-databases-and-elastic-pools-view"></a>單一和集區資料庫和彈性集區視圖
+### <a name="sql-database-view"></a>SQL Database 視圖
 
 選取適用於資料庫的 [Azure SQL 分析] 圖格後，便會顯示監視儀表板。
 
@@ -98,7 +97,7 @@ Azure SQL 分析提供兩個不同的視圖，一個用於監視單一資料庫�
 
 此視圖中的每個觀點都會提供訂用帳戶、伺服器、彈性集區和資料庫層級的摘要。 此外，每個檢視方塊都會在右側顯示檢視方塊專屬的報表。 從清單中選取訂用帳戶、伺服器、集區或資料庫可繼續往下鑽研。
 
-### <a name="managed-instance-and-instances-databases-view"></a>受控實例和實例資料庫檢視
+### <a name="sql-managed-instance-view"></a>SQL 受控執行個體 view
 
 選取適用於資料庫的 [Azure SQL 分析] 圖格後，便會顯示監視儀表板。
 
@@ -106,13 +105,13 @@ Azure SQL 分析提供兩個不同的視圖，一個用於監視單一資料庫�
 
 選取任何磚，以便在特定的檢視方塊中開啟向下鑽研報表。 一旦選取檢視方塊，向下鑽研報表隨即開啟。
 
-選取 [受控實例] 視圖，會顯示受控實例使用率的詳細資料、其包含的資料庫，以及在實例上執行之查詢的遙測。
+選取 [SQL 受控執行個體] 視圖，會顯示受控實例使用率的詳細資料、其包含的資料庫，以及在實例上執行之查詢的遙測。
 
 ![Azure SQL 分析逾時](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights 報表
 
-Azure SQL Database [Intelligent Insights](../../sql-database/sql-database-intelligent-insights.md) 可讓您了解所有 Azure SQL 資料庫的效能情況。 收集的所有 Intelligent Insights 都可以透過 Insights 檢視方塊視覺化及存取。
+Azure SQL Database [Intelligent Insights](../../azure-sql/database/intelligent-insights-overview.md) 可讓您了解所有 Azure SQL 資料庫的效能情況。 收集的所有 Intelligent Insights 都可以透過 Insights 檢視方塊視覺化及存取。
 
 ![Azure SQL 分析見解](./media/azure-sql/azure-sql-sol-insights.png)
 
@@ -170,7 +169,7 @@ Azure SQL Database [Intelligent Insights](../../sql-database/sql-database-intell
 
 ## <a name="analyze-data-and-create-alerts"></a>分析資料並建立警示
 
-Azure SQL 分析中的資料分析以 [Log Analytics 語言](../log-query/get-started-queries.md)為基礎，提供您自訂查詢和報告功能。 請參閱[可用的計量和記錄](../../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available)，內有針對收集自資料庫資源可自訂查詢的資料的說明。
+Azure SQL 分析中的資料分析以 [Log Analytics 語言](../log-query/get-started-queries.md)為基礎，提供您自訂查詢和報告功能。 請參閱[可用的計量和記錄](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available)，內有針對收集自資料庫資源可自訂查詢的資料的說明。
 
 Azure SQL 分析中的自動化警示是以撰寫 Log Analytics 查詢為基礎，它會在符合條件時觸發警示。 請在下列幾個有關 Log Analytics 查詢的範例中尋找可在 Azure SQL 分析中設定警示的範例。
 
@@ -178,7 +177,7 @@ Azure SQL 分析中的自動化警示是以撰寫 Log Analytics 查詢為基礎�
 
 您可以使用來自 Azure SQL Database 資源的資料，輕鬆[建立警示](../platform/alerts-metric.md)。 以下是您可以搭配記錄警示使用的一些實用[記錄查詢](../log-query/log-query-overview.md)：
 
-#### <a name="high-cpu-on-azure-sql-database"></a>Azure SQL Database 上的高 CPU
+#### <a name="high-cpu"></a>高 CPU
 
 ```
 AzureMetrics
@@ -194,7 +193,7 @@ AzureMetrics
 > - 設定此警示的必要條件是受監視的資料庫會將基本計量串流至 Azure SQL 分析。
 > - 請將 MetricName 值 cpu_percent 更換為 dtu_consumption_percent，即可改為取得高 DTU 結果。
 
-#### <a name="high-cpu-on-azure-sql-database-elastic-pools"></a>Azure SQL Database 彈性集區上的高 CPU
+#### <a name="high-cpu-on-elastic-pools"></a>彈性集區上的高 CPU
 
 ```
 AzureMetrics
@@ -210,7 +209,7 @@ AzureMetrics
 > - 設定此警示的必要條件是受監視的資料庫會將基本計量串流至 Azure SQL 分析。
 > - 請將 MetricName 值 cpu_percent 更換為 dtu_consumption_percent，即可改為取得高 DTU 結果。
 
-#### <a name="azure-sql-database-storage-in-average-above-95-in-the-last-1-hr"></a>過去 1 小時的平均 Azure SQL Database 儲存體高於 95%
+#### <a name="storage-in-average-above-95-in-the-last-1-hr"></a>過去1小時內平均超過95% 的儲存體
 
 ```
 let time_range = 1h;
@@ -254,9 +253,9 @@ AzureDiagnostics
 | distinct rootCauseAnalysis_s
 ```
 
-### <a name="creating-alerts-for-managed-instances"></a>建立受控實例的警示
+### <a name="creating-alerts-for-sql-managed-instance"></a>建立 SQL 受控執行個體的警示
 
-#### <a name="managed-instance-storage-is-above-90"></a>受控實例儲存體高於90%
+#### <a name="storage-is-above-90"></a>儲存體高於90%
 
 ```
 let storage_percentage_threshold = 90;
@@ -272,7 +271,7 @@ AzureDiagnostics
 > - 設定此警示的必要條件是，監視受控實例已啟用 ResourceUsageStats 記錄的串流以 Azure SQL 分析。
 > - 此查詢需要設定警示規則，以便在從查詢存在結果（> 0 結果）時引發警示，表示該條件存在於受控實例上。 輸出是受控實例上的儲存體耗用量百分比。
 
-#### <a name="managed-instance-cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>過去1小時內的受控實例 CPU 平均耗用量高於95%
+#### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>過去1小時內 CPU 平均耗用量高於95%
 
 ```
 let cpu_percentage_threshold = 95;

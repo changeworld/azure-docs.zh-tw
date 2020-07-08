@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77603277"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783226"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 資訊安全中心建議增強安全性
 您可以設定安全性原則，然後實作 Azure 資訊安全中心提供的建議，以降低發生重大安全性事件的機會。 本文說明如何使用資訊安全中心的安全性原則和建議，以協助減少安全性攻擊。 
@@ -28,7 +27,7 @@ ms.locfileid: "77603277"
 - 作業系統安全性設定建議會在48小時內更新
 - Endpoint Protection 問題建議會在8小時內更新
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 此案例示範如何使用資訊安全中心，透過監控資訊安全中心建議並採取動作，以協助降低發生安全性事件的機會。 此案例使用虛構公司 Contoso，以及資訊安全中心[規劃與操作指南](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)中出現的角色。 在此案例中，我們著重於下列人物的角色：
 
 ![案例角色](./media/security-center-using-recommendations/scenario-roles.png)
@@ -57,7 +56,7 @@ Jeff 會執行下列工作：
 
 2. Jeff 會檢查**安全分數**，以取得訂用帳戶如何保護的整體圖片，並查看分數為548。
 
-3. Jeff 必須決定要先處理哪些建議。 所以 Jeff 按一下安全分數，開始處理建議的方式，取決於提升其[安全分數影響](security-center-secure-score.md)的程度。
+3. Jeff 必須決定要先處理哪些建議。 因此 Jeff 按一下安全分數，並根據其[安全分數](secure-score-security-controls.md)的改善，開始處理建議。
 
 4. Jeff 有大量已連線的 VM 和伺服器，因此決定著重於 [計算和應用程式]****。
 

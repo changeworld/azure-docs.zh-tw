@@ -1,19 +1,17 @@
 ---
 title: 將維護設定移至另一個 Azure 區域
 description: 瞭解如何將 VM 維護設定移至另一個 Azure 區域
-services: virtual-machines
 author: shants123
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: fe03bead238d3fb7bda3ee685bd5587c3e0dbc58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 86343e10f10b51f65764e16bbc1e485136bca162
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78304455"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676807"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>將維護控制設定移至另一個區域
 
@@ -25,7 +23,7 @@ ms.locfileid: "78304455"
 - 若要移動與維護設定相關聯的資源，而不是設定本身，請遵循[這些指示](move-region-maintenance-configuration-resources.md)。
 - 若要移動維護設定和其相關聯的資源，請先依照這篇文章中的指示進行。 然後，遵循[這些指示](move-region-maintenance-configuration-resources.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始移動維護控制設定之前：
 
@@ -37,16 +35,16 @@ ms.locfileid: "78304455"
     - 與您要移動的維護設定相關聯的資源。
     - 檢查新區域中的資源是否與目前維護設定相關聯。 這些設定在新區域中的名稱可能會與舊的不同，但這不是必要的。
 
-## <a name="prepare-and-move"></a>準備和移動 
+## <a name="prepare-and-move"></a>準備及移動 
 
 1. 取得每個訂用帳戶中的所有維護設定。 執行 CLI [az 維護 configuration list](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list)命令以進行這種動作，將 $subId 取代為您的訂用帳戶識別碼。
 
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table
     ```
-2. 檢查訂用帳戶內的設定記錄傳回的資料表清單。 範例如下。 您的清單會包含您的特定環境值。
+2. 檢查訂用帳戶內的設定記錄傳回的資料表清單。 以下是範例。 您的清單會包含您的特定環境值。
 
-    **Name** | **位置** | **資源群組**
+    **名稱** | **位置** | **資源群組**
     --- | --- | ---
     略過維護 | eastus2 | 設定-資源-群組
     IgniteDemoConfig | eastus2 | 設定-資源-群組
@@ -59,7 +57,7 @@ ms.locfileid: "78304455"
 6. 使用[PowerShell](../virtual-machines/maintenance-control-powershell.md#assign-the-configuration)或[CLI](../virtual-machines/maintenance-control-cli.md#assign-the-configuration)，將設定與新區域中的資源建立關聯。
 
 
-## <a name="verify-the-move"></a>驗證移動
+## <a name="verify-the-move"></a>確認移動
 
 移動設定之後，請將新區域中的設定和資源與您準備的資料表清單進行比較。
 

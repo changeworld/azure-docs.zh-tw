@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919476"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782807"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>資訊安全中心中的跨租使用者管理
 
@@ -46,7 +45,7 @@ ms.locfileid: "77919476"
 Views 和動作基本上相同。 以下是一些範例：
 
 - **管理安全性原則**：從一個觀點來看，使用[原則](tutorial-security-policy.md)來管理許多資源的安全性狀態、對安全性建議採取動作，以及收集和管理安全性相關資料。
-- **改善安全分數和合規性**狀態：跨租使用者可見度可讓您查看所有租使用者的整體安全性狀態，以及在何處和如何最佳地改善每個租使用者的[安全分數](security-center-secure-score.md)和[合規性](security-center-compliance-dashboard.md)狀態。
+- **改善安全分數和合規性**狀態：跨租使用者可見度可讓您查看所有租使用者的整體安全性狀態，以及在何處和如何最佳地改善每個租使用者的[安全分數](secure-score-security-controls.md)和[合規性](security-center-compliance-dashboard.md)狀態。
 - **補救建議**：一次從各種租使用者監視和修復許多資源的[建議](security-center-recommendations.md)。 接著，您可以立即解決所有租使用者都有最高風險的弱點。
 - **管理警示**：在不同的租使用者中偵測到[警示](security-center-alerts-overview.md)。 針對不符合可採取動作之[補救步驟](security-center-managing-and-responding-alerts.md)的資源採取行動。
 
@@ -56,5 +55,5 @@ Views 和動作基本上相同。 以下是一些範例：
 本文說明跨租使用者管理在資訊安全中心中的運作方式。 如要深入了解資訊安全中心，請參閱下列主題：
 
 * [使用 Azure 資訊安全中心強化您的安全性](security-center-monitoring.md)狀態-瞭解如何監視 Azure 資源的健康情況。
-* [Azure 資訊安全中心常見問題集](faq-general.md) - 尋找有關使用服務的常見問題。
+* [AZURE 資訊安全中心常見問題](faq-general.md)-尋找使用服務的常見問題。
 * [瞭解企業案例中的 Azure 燈塔](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise)-探索 azure 燈塔可以如何在使用多個 Azure AD 租使用者的企業內簡化跨租使用者管理。

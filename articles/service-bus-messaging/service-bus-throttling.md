@@ -1,19 +1,13 @@
 ---
 title: Azure 服務匯流排節流的總覽 |Microsoft Docs
 description: 服務匯流排節流的總覽-標準層和進階層。
-services: service-bus-messaging
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 10/01/2019
-ms.author: aschhab
-ms.openlocfilehash: f852ad70b2eb97e2b8b3e40d086e98b3836c3592
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 436f9a40269f7eea4e31b55b9657d38849876eb4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598284"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340948"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure 服務匯流排上的節流作業
 
@@ -51,7 +45,7 @@ Azure 服務匯流排標準層會以隨用隨付定價模型的多租使用者�
 
 並非所有作業都是以相等的建立。 以下是每項作業的信用成本- 
 
-| 作業 | 信用成本|
+| 操作 | 信用成本|
 |-----------|-----------|
 | 資料作業（Send、SendAsync、Receive、ReceiveAsync、Peek） |每個訊息1個信用額度 |
 | 管理作業（建立、讀取、更新、刪除佇列、主題、訂用帳戶、篩選） | 10信用額度 |

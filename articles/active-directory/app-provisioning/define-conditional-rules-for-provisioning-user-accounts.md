@@ -2,20 +2,19 @@
 title: 使用範圍篩選條件佈建應用程式 | Microsoft Docs
 description: 在支援使用者佈建自動化的應用程式中，了解如何使用範圍篩選條件來防止佈建不符合商務需求的物件。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/11/2018
-ms.author: mimart
-ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.topic: how-to
+ms.date: 06/08/2020
+ms.author: kenwith
+ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593739"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781951"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>含範圍篩選器的屬性型應用程式佈建
 本文的目標在於說明如何使用範圍篩選條件來定義以屬性為基礎的規則，以決定將哪些使用者佈建到應用程式。
@@ -29,7 +28,7 @@ ms.locfileid: "82593739"
 * **從 Azure AD 向外佈建到 SaaS 應用程式**。 當 Azure AD 為來源系統時，[使用者和群組指派](../manage-apps/assign-user-or-group-access-portal.md)是決定哪些使用者要納入佈建範圍內的最常用方法。 這些指派也用於啟用單一登入，並提供單一方法來管理存取與佈建。 根據屬性值，除了指派或取代之外，範圍篩選器可以選擇性地用於篩選使用者。
 
     >[!TIP]
-    > 您可以根據企業應用程式的指派，將 [範圍](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) 功能表中的佈建設定底下的設定，變更為 **同步所有使用者與群組**，以停用佈建。 使用此選項再加上屬性型範圍篩選器時，可提供比使用群組型指派更快的效能。  
+    > 您可以根據企業應用程式的指派，將 [範圍](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) 功能表中的佈建設定底下的設定，變更為 **同步所有使用者與群組**，以停用佈建。 
 
 * **從 HCM 應用程式向內佈建到 Azure AD 和 Active Directory**。 當 [HCM 應用程式 (例如 Workday)](../saas-apps/workday-tutorial.md) 為來源系統時，範圍篩選條件是決定應該將哪些使用者從 HCM 應用程式佈建到 Active Directory 或 Azure AD 的主要方法。
 
@@ -64,7 +63,7 @@ Azure AD 佈建服務所處理的每個使用者或群組，一律會根據每�
 
 2. 選取您已設定自動佈建的應用程式：例如，"ServiceNow"。
 
-3. 選取 [**布**建] 索引標籤。
+3. 選取 [佈建] 索引標籤。
 
 4. 在 [對應]**** 區段中，選取您想要設定範圍篩選條件的對應：例如，[將 Azure Active Directory 使用者同步至 ServiceNow]。
 
@@ -86,7 +85,7 @@ Azure AD 佈建服務所處理的每個使用者或群組，一律會根據每�
 
    f. **IS NOT NULL**。 如果評估的屬性不是空的，子句會傳回 "true"。
 
-   g. **REGEX MATCH**。 如果評估的屬性符合規則運算式模式，子句會傳回 "true"。 例如：\([1-9][0-9]\) 符合介於 10 到 99 之間的任何數字。
+   如 **REGEX MATCH**。 如果評估的屬性符合規則運算式模式，子句會傳回 "true"。 例如：\([1-9][0-9]\) 符合介於 10 到 99 之間的任何數字。
 
    h. **NOT REGEX MATCH**。 如果評估的屬性不符合規則運算式模式，子句會傳回 "true"。
    
@@ -105,7 +104,7 @@ Azure AD 佈建服務所處理的每個使用者或群組，一律會根據每�
 
 10. 在 [範圍篩選器標題]**** 中，新增您範圍篩選器的名稱。
 
-11. 選取 [確定]  。
+11. 選取 [確定]。
 
 12. 在 [範圍篩選條件]**** 畫面上，再次選取 [確定]****。 (選擇性) 重複步驟 6-11，新增另一個範圍篩選條件。
 
@@ -116,10 +115,10 @@ Azure AD 佈建服務所處理的每個使用者或群組，一律會根據每�
 
 
 ## <a name="common-scoping-filters"></a>通用範圍篩選器
-| 目標屬性| 運算子 | 值 | 描述|
+| 目標屬性| 運算子 | 值 | 說明|
 |----|----|----|----|
-|userPrincipalName|REGEX MATCH|.\*@domain.com |具有網域@domain.com之 userPrincipal 的所有使用者將會在布建範圍內|
-|userPrincipalName|不符合 REGEX|.\*@domain.com|具有網域@domain.com之 userPrincipal 的所有使用者都將不在布建範圍內|
+|userPrincipalName|REGEX MATCH|.\*@domain.com |具有網域之 userPrincipal 的所有使用者將會在布建 @domain.com 範圍內|
+|userPrincipalName|不符合 REGEX|.\*@domain.com|具有網域之 userPrincipal 的所有使用者 @domain.com 都將不在布建範圍內|
 |department|EQUALS|sales|銷售部門的所有使用者都在布建範圍內|
 |workerID|REGEX MATCH|(1[0-9][0-9][0-9][0-9][0-9][0-9])| WorkerIDs 介於1000000和2000000之間的所有員工都在布建範圍內。|
 
