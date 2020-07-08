@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: f8e93cf34ac56344ff7e3d145ce8c7c3529767b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81678651"
 ---
 下列範例顯示如何在西雅圖的 Equinix 網際網路 Exchange 上建立 Exchange 連線。 如果您使用不同的提供者和不同的設定，請在您提出要求時替換成該資訊。
@@ -73,7 +73,7 @@ Tags              : {}
 ```
 
 > [!IMPORTANT]
-> Microsoft 會開始布建要求的對`ConnectionState`等互連，並反映進度。
+> Microsoft 會開始布建要求的對等互連，並 `ConnectionState` 反映進度。
 > 如需有關布建相關步驟的詳細資訊，請參閱[Exchange 對等互連](../walkthrough-exchange-all.md)逐步解說。
 
 您可以檢查連接狀態，如下所示。

@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 3/18/2020
 ms.author: derekol
 ms.openlocfilehash: e5804aa1b005e670d8b430b1c0a3bd62efd0bb06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687066"
 ---
-1. 選取您想要為 Azure 對等服務啟用的對等互連連線。 然後選取 [ **...** ] > **編輯連接**。
+1. 選取您想要為 Azure 對等服務啟用的對等互連連線。 然後選取 [ **...**  >  ]**編輯連接**。
     > [!div class="mx-imgBorder"]
     > ![對等互連連線編輯連接](../media/setup-direct-modify-editconnection.png)
 1. 在 [**用於對等互連服務**] 底下選取 [**已啟用**]，然後選取 [**儲存**]。

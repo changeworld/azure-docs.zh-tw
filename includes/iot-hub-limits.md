@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 007c19a10db5e000770c8c80189453d4a80edec2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204540"
 ---
 下表列出與不同服務層級 S1、S2、S3 和 F1 相關聯的限制。 如需每一層中每個*單位*成本的相關資訊，請參閱[Azure IoT 中樞定價](https://azure.microsoft.com/pricing/details/iot-hub/)。

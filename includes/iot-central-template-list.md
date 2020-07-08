@@ -9,15 +9,15 @@ ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 2eda1fc8595962849b6a24cc272f6604d0be9175
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744554"
 ---
 **應用程式範本**
 
-| [範本]                 | 名稱        | 描述 |
+| [範本]                 | Name        | 說明 |
 | ------------------------ | ----------- | ----------- |
 | iotc-explorer-pnp-預覽         | 自訂應用程式 | 為您建立空的應用程式，以填入您自己的裝置範本和裝置。 |
 | iotc-explorer-預設值             | 自訂應用程式（舊版） | 建立空白的繼承應用程式，以供您填入自己的裝置範本和裝置。

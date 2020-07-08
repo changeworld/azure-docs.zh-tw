@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: dbaa0b5fc87cb5393b323b8a9b7a38b72efe9518
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680803"
 ---
-PowerShell Cmdlet **AzPeeringLocation**會傳回具有必要參數`Kind`的對等互連位置清單，在稍後的步驟中將會用到。
+PowerShell Cmdlet **AzPeeringLocation**會傳回具有必要參數的對等互連位置清單，在 `Kind` 稍後的步驟中將會用到。
 
 ```powershell
 Get-AzPeeringLocation -Kind Direct
@@ -23,7 +23,7 @@ Get-AzPeeringLocation -Kind Direct
 
 直接的對等互連位置包含下欄欄位：
 * PeeringLocation 
-* Country
+* 國家/地區
 * PeeringDBFacilityId
 * PeeringDBFacilityLink
 * BandwidthOffers

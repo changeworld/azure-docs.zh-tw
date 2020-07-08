@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: fda22346a44388248e37473bc7891b8a130569c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81681039"
 ---
 1. 在 [**建立對等互連** **] 頁面**的 [設定] 索引標籤上，填寫方塊，如下所示。
@@ -33,7 +33,7 @@ ms.locfileid: "81681039"
         > [!div class="mx-imgBorder"]
         > ![[編輯] 按鈕](../media/setup-direct-conf-tab-edit.png)
     
-    * 若要刪除一行，請選取 [ **...** ] > **刪除**。
+    * 若要刪除一行，請選取 [ **...**  >  ]**刪除**。
 
         > [!div class="mx-imgBorder"]
         > ![刪除按鈕](../media/setup-direct-conf-tab-delete.png)
@@ -67,7 +67,7 @@ ms.locfileid: "81681039"
     > [!div class="mx-imgBorder"]
     > ![對等互連提交](../media/setup-direct-review-tab-submit.png)
 
-1. 提交要求之後，等待部署完成。 如果部署失敗，請聯絡[Microsoft 對等互連](mailto:peering@microsoft.com)。 如這裡所示，成功的部署隨即出現。
+1. 提交要求之後，等待部署完成。 如果部署失敗，請連絡 [Microsoft 對等互連](mailto:peering@microsoft.com)。 如這裡所示，成功的部署隨即出現。
 
     > [!div class="mx-imgBorder"]
     > ![對等互連成功](../media/setup-direct-success.png)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
 ms.openlocfilehash: 35f506235f698fbcf42308e6f0b0f400e925df29
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68361540"
 ---
 ### <a name="bastion-tier"></a>防禦層
@@ -23,4 +23,4 @@ ms.locfileid: "68361540"
 ssh -A -t user@BASTION_SERVER_IP ssh -A root@TARGET_SERVER_IP`
 ```
 
-此命令會連接到防禦，然後立即再次`ssh`執行，因此您會在目標實例上取得終端機。 如果您的叢集設定方式不同，您可能需要在目標實例上指定 root 以外的使用者。 `-A`引數會轉送代理程式連接，因此會自動使用您本機電腦上的私密金鑰。 請注意，代理程式轉送是一種鏈， `ssh`因此第二`-A`個命令也會包含，讓從目標實例起始的任何後續 SSH 連線也會使用您的本機私密金鑰。
+此命令會連接到防禦，然後立即 `ssh` 再次執行，因此您會在目標實例上取得終端機。 如果您的叢集設定方式不同，您可能需要在目標實例上指定 root 以外的使用者。 `-A`引數會轉送代理程式連接，因此會自動使用您本機電腦上的私密金鑰。 請注意，代理程式轉送是一種鏈，因此第二個 `ssh` 命令也會包含， `-A` 讓從目標實例起始的任何後續 SSH 連線也會使用您的本機私密金鑰。

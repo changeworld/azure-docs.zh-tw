@@ -5,34 +5,34 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: c71f35a06d904b45cb014d5199197220b57cf230
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79485947"
 ---
-檔中的專案會對應至 AksWebservice 的參數。 [deploy_configuration。](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py) `deploymentconfig.json` 下表描述 JSON 檔中的實體與方法的參數之間的對應：
+檔中的專案會 `deploymentconfig.json` 對應至[AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)的參數。 deploy_configuration。 下表描述 JSON 檔中的實體與方法的參數之間的對應：
 
-| JSON 實體 | 方法參數 | 說明 |
+| JSON 實體 | 方法參數 | Description |
 | ----- | ----- | ----- |
-| `computeType` | NA | 計算目標。 若為 AKS，此值必須`aks`是。 |
+| `computeType` | NA | 計算目標。 若為 AKS，此值必須是 `aks` 。 |
 | `autoScaler` | NA | 包含自動調整的設定元素。 請參閱自動調整程式資料表。 |
-| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | 是否要啟用 web 服務的自動調整。 `numReplicas`  = 如果`0`為`True`，則為，否則為`False`。 |
-| &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | 自動調整此 web 服務時所要使用的容器數目下限。 預設值`1`：。 |
-| &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | 自動調整此 web 服務時所要使用的容器數目上限。 預設值`10`：。 |
-| &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | 自動調整程式嘗試調整此 web 服務的頻率。 預設值`1`：。 |
-| &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | 自動調整程式應該嘗試為此 web 服務維護的目標使用率（以百分比100為單位）。 預設值`70`：。 |
+| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | 是否要啟用 web 服務的自動調整。 如果 `numReplicas`  =  `0` `True` 為，則為，否則為 `False` 。 |
+| &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | 自動調整此 web 服務時所要使用的容器數目下限。 預設值： `1` 。 |
+| &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | 自動調整此 web 服務時所要使用的容器數目上限。 預設值： `10` 。 |
+| &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | 自動調整程式嘗試調整此 web 服務的頻率。 預設值： `1` 。 |
+| &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | 自動調整程式應該嘗試為此 web 服務維護的目標使用率（以百分比100為單位）。 預設值： `70` 。 |
 | `dataCollection` | NA | 包含資料收集的設定元素。 |
-| &emsp;&emsp;`storageEnabled` | `collect_model_data` | 是否要啟用 web 服務的模型資料收集。 預設值`False`：。 |
-| `authEnabled` | `auth_enabled` | 是否要啟用 web 服務的金鑰驗證。 和`tokenAuthEnabled` `authEnabled`都不能`True`是。 預設值`True`：。 |
-| `tokenAuthEnabled` | `token_auth_enabled` | 是否要啟用 web 服務的權杖驗證。 和`tokenAuthEnabled` `authEnabled`都不能`True`是。 預設值`False`：。 |
+| &emsp;&emsp;`storageEnabled` | `collect_model_data` | 是否要啟用 web 服務的模型資料收集。 預設值： `False` 。 |
+| `authEnabled` | `auth_enabled` | 是否要啟用 web 服務的金鑰驗證。 `tokenAuthEnabled`和都 `authEnabled` 不能是 `True` 。 預設值： `True` 。 |
+| `tokenAuthEnabled` | `token_auth_enabled` | 是否要啟用 web 服務的權杖驗證。 `tokenAuthEnabled`和都 `authEnabled` 不能是 `True` 。 預設值： `False` 。 |
 | `containerResourceRequirements` | NA | CPU 和記憶體實體的容器。 |
 | &emsp;&emsp;`cpu` | `cpu_cores` | 要為此 web 服務配置的 CPU 核心數目。 設置`0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | 要為此 web 服務配置的記憶體數量（以 GB 為單位）。 預設`0.5` |
-| `appInsightsEnabled` | `enable_app_insights` | 是否要啟用 web 服務的 Application Insights 記錄。 預設值`False`：。 |
-| `scoringTimeoutMs` | `scoring_timeout_ms` | 對 web 服務評分呼叫強制執行的時間。 預設值`60000`：。 |
-| `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | 此 web 服務每個節點的並行要求數目上限。 預設值`1`：。 |
-| `maxQueueWaitMs` | `max_request_wait_time` | 在傳回503錯誤之前，要求會停留在三個佇列中的時間上限（以毫秒為單位）。 預設值`500`：。 |
+| `appInsightsEnabled` | `enable_app_insights` | 是否要啟用 web 服務的 Application Insights 記錄。 預設值： `False` 。 |
+| `scoringTimeoutMs` | `scoring_timeout_ms` | 對 web 服務評分呼叫強制執行的時間。 預設值： `60000` 。 |
+| `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | 此 web 服務每個節點的並行要求數目上限。 預設值： `1` 。 |
+| `maxQueueWaitMs` | `max_request_wait_time` | 在傳回503錯誤之前，要求會停留在三個佇列中的時間上限（以毫秒為單位）。 預設值： `500` 。 |
 | `numReplicas` | `num_replicas` | 要為此 web 服務配置的容器數目。 無預設值。 如果未設定此參數，則預設會啟用自動調整程式。 |
 | `keys` | NA | 包含索引鍵的設定元素。 |
 | &emsp;&emsp;`primaryKey` | `primary_key` | 要用於此 Webservice 的主要驗證金鑰 |

@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79371712"
 ---
 必須符合下列需求，才能成功建立裝置通道：
@@ -28,7 +28,7 @@ ms.locfileid: "79371712"
 
 設定虛擬網路閘道並在 Windows 10 用戶端的本機電腦存放區中安裝用戶端憑證之後，請使用下列範例來設定用戶端裝置通道：
 
-1. 複製下列文字，並將它儲存為***devicecert***。
+1. 複製下列文字，並將它儲存為***devicecert.ps1***。
 
    ```
    Param(
@@ -80,7 +80,7 @@ ms.locfileid: "79371712"
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 複製下列文字，並將它儲存為***VPNProfile***與**devicecert**相同的資料夾。 編輯下列文字以符合您的環境。
+1. 複製下列文字，並將其儲存為與**devicecert.ps1**相同資料夾中的***VPNProfile.xml*** 。 編輯下列文字以符合您的環境。
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -124,7 +124,7 @@ ms.locfileid: "79371712"
    ```
 
    ![powershell](./media/vpn-gateway-vwan-always-on-device/powershell.png)
-1. 在 PowerShell 中，切換至**devicecert**和**VPNProfile**所在的資料夾，然後執行下列命令：
+1. 在 PowerShell 中，切換至**devicecert.ps1**和**VPNProfile.xml**所在的資料夾，然後執行下列命令：
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest

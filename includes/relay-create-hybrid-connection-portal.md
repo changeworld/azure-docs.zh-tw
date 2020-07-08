@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: ceb2626a43ed44338bb0faad475ae2333af2de9e
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174211"
 ---
 確定您已[建立轉送命名空間][namespace-how-to]。
@@ -26,6 +26,6 @@ ms.locfileid: "67174211"
 6. 在 [建立混合式連線]**** 下，輸入混合式連線名稱的值。 保留其他預設值。
    
     ![選取新增](./media/relay-create-hybrid-connection-portal/create-hc-3.png)
-7. 選取 [建立]  。
+7. 選取 [建立]。
 
 [namespace-how-to]: ../articles/service-bus-relay/relay-create-namespace-portal.md 

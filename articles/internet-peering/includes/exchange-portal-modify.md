@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e06b5261ca6923e158c818d236a30cf6ebff189b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680954"
 ---
 本節說明如何針對直接對等互連執行下列修改作業。
@@ -28,7 +28,7 @@ ms.locfileid: "81680954"
 
 ### <a name="remove-exchange-peering-connections"></a>移除 Exchange 對等互連連線
 
-1. 選取您想要刪除的對等互連連接，然後選取 [ **...** ] > **刪除連接**。
+1. 選取您想要刪除的對等互連連接，然後選取 [ **...**  >  ]**刪除連接**。
     > [!div class="mx-imgBorder"]
     > ![刪除連接按鈕](../media/setup-exchange-modify-deleteconnection.png)
 1. 在 [**確認刪除**] 方塊中輸入 [資源識別碼]，然後選取 [**刪除**]。
@@ -37,7 +37,7 @@ ms.locfileid: "81680954"
 
 ### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>在使用中連接上新增 IPv4 或 IPv6 會話
 
-1. 選取您想要修改的對等互連連接，然後選取 [ **...** ] > **編輯連接**。
+1. 選取您想要修改的對等互連連接，然後選取 [ **...**  >  ]**編輯連接**。
     > [!div class="mx-imgBorder"]
     > ![[編輯連接] 按鈕](../media/setup-exchange-modify-editconnection.png)
 1. 新增**IPv4 位址**或**IPv6 位址**資訊，然後選取 [**儲存**]。

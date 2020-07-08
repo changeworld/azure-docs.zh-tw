@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 94c132421f1e113b667341b094acad8047e5f465
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561770"
 ---
 1. [連接到 PowerShell 介面](#connect-to-the-powershell-interface)。
-2. 使用`Get-HcsApplianceInfo`來取得裝置的資訊。
+2. 使用 `Get-HcsApplianceInfo` 來取得裝置的資訊。
 
     下列範例顯示此 Cmdlet 的使用方式：
 
@@ -45,7 +45,7 @@ ms.locfileid: "82561770"
 
     以下資料表摘要說明一些重要的裝置資訊：
     
-    | 參數                             | 描述                                                                                                                                                  |   |
+    | 參數                             | 說明                                                                                                                                                  |   |
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
     | FriendlyName                   | 裝置的易記名稱，如裝置部署期間透過本機 web UI 所設定。 預設的易記名稱是裝置序號。  |   |
     | SerialNumber                   | 裝置序號是在工廠指派的唯一編號。                                                                             |   |

@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 427117fe47294a1db1fa8d3fa1e46ee1efb91b4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79129385"
 ---
 ## <a name="limitations"></a>限制
@@ -26,9 +26,9 @@ ms.locfileid: "79129385"
 - 跨越多個可用性區域。 在此情況下，您必須在想要使用的每個區域中都有一個主機群組。
 - 跨越多個對應至實體機架的容錯網域。 
  
-不論是哪一種情況，您都必須提供主機群組的容錯網域計數。 如果您不想要跨越群組中的容錯網域，請使用容錯網域計數1。 
+不論是哪一種情況，您都必須為主機群組提供容錯網域計數。 如果您不想在您的群組中跨越容錯網域，請使用容錯網域計數 1。 
 
-您也可以決定使用可用性區域和容錯網域。 
+您也可以決定同時使用可用性區域和容錯網域。 
 
 在此範例中，我們將使用1個可用性區域和2個容錯網域來建立主機群組。 
 
@@ -50,9 +50,9 @@ ms.locfileid: "79129385"
 
 ## <a name="create-a-dedicated-host"></a>建立專用主機
 
-現在，在主機群組中建立專用主機。 除了主機的名稱之外，您還必須提供主機的 SKU。 主機 SKU 會捕捉支援的 VM 系列，以及專用主機的硬體世代。
+現在，在主機群組中建立專用主機。 除了主機的名稱之外，您還必須提供主機的 SKU。 主機 SKU 會擷取支援的 VM 系列，以及專用主機的硬體世代。
 
-如需主機 Sku 和定價的詳細資訊，請參閱[Azure 專用主機定價](https://aka.ms/ADHPricing)。
+如需主機 SKU 和定價的詳細資訊，請參閱 [Azure 專用主機定價](https://aka.ms/ADHPricing)。
 
 如果您為主機群組設定容錯網域計數，系統會要求您指定主機的容錯網域。  
 
