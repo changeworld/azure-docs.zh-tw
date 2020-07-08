@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
 ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480737"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>針對混合式環境啟用適用於 VM 的 Azure 監視器
@@ -48,12 +47,12 @@ ms.locfileid: "79480737"
 
 下表將強調說明命令列中適用於代理程式的安裝程式所支援的參數。
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |:--|:--|
 | /? | 傳回命令列選項的清單。 |
 | /S | 執行無訊息安裝，而不需要與使用者互動。 |
 
-例如，若要使用`/?`參數來執行安裝程式，請輸入**可以 installdependencyagent-windows.exe/？**。
+例如，若要使用參數來執行安裝程式 `/?` ，請輸入**InstallDependencyAgent-Windows.exe/？**。
 
 Windows Dependency Agent 的檔案預設安裝在 *C:\Program Files\Microsoft Dependency Agent* 中。 如果在安裝程式完成之後，Dependency agent 無法啟動，請檢查記錄以取得詳細的錯誤資訊。 記錄目錄是 *%Programfiles%\Microsoft Dependency Agent\logs*。
 
@@ -65,21 +64,21 @@ Windows Dependency Agent 的檔案預設安裝在 *C:\Program Files\Microsoft De
 > 必須有 root 權限，以便安裝或設定代理程式。
 >
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |:--|:--|
 | -help | 取得命令列選項的清單。 |
 | -S | 執行無訊息安裝，不會出現任何使用者提示。 |
 | --check | 檢查權限和作業系統，但不會安裝代理程式。 |
 
-例如，若要使用`-help`參數來執行安裝程式，請輸入**installdependencyagent-linux64.bin (**。
+例如，若要使用參數來執行安裝程式 `-help` ，請輸入**installdependencyagent-linux64.bin (**。
 
-執行命令`sh InstallDependencyAgent-Linux64.bin`，以 root 身分安裝 Linux Dependency agent。
+執行命令，以 root 身分安裝 Linux Dependency agent `sh InstallDependencyAgent-Linux64.bin` 。
 
 如果 Dependency Agent 無法啟動，請檢查記錄以取得詳細的錯誤資訊。 在 Linux 代理程式上，記錄檔目錄是 */var/opt/microsoft/dependency-agent/log*。
 
 Dependency Agent 的檔案位於下列目錄：
 
-| 檔案 | 位置 |
+| 檔案儲存體 | 位置 |
 |:--|:--|
 | 核心檔案 | /opt/microsoft/dependency-agent |
 | 記錄檔 | /var/opt/microsoft/dependency-agent/log |
@@ -231,7 +230,7 @@ configuration VMInsights {
 
 1. Dependency Agent 是否安裝成功？ 您可以查看是否已安裝服務並且執行，以便驗證。
 
-    **Windows**︰尋找名稱為「Microsoft Dependency Agent」的服務。
+    **Windows**：尋找名為「Microsoft Dependency agent」的服務。
 
     **Linux**：尋找執行中的進程「microsoft dependency 代理程式」。
 

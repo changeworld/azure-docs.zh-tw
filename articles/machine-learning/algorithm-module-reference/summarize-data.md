@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
 ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477437"
 ---
 # <a name="summarize-data"></a>資料總結
@@ -57,10 +56,10 @@ ms.locfileid: "79477437"
 |**表明**|所有資料行值的平均值|
 |**平均偏差**|資料行值的平均偏差|
 |**第 1 四分位數**|第一個分位的值|
-|**Median**|中位數資料行值|
+|**中位數**|中位數資料行值|
 |**第 3 四分位數**|第三個分位的值|
 |**Mode**|資料行值的模式|
-|**格或**|代表最大值與最小值之間值數目的整數|
+|**Range**|代表最大值與最小值之間值數目的整數|
 |**樣本變異數**|資料行的變異數;請參閱附注|
 |**範例標準差**|資料行的標準差;請參閱附注|
 |**樣本偏斜**|資料行的偏斜請參閱附注|
@@ -87,4 +86,4 @@ ms.locfileid: "79477437"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。  
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。  

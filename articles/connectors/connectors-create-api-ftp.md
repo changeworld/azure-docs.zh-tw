@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
 ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656338"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>藉由使用 Azure Logic Apps 來建立、監視及管理 FTP 檔案
@@ -23,7 +22,7 @@ ms.locfileid: "80656338"
 * 取得檔案內容與中繼資料。
 * 將封存檔案解壓縮到資料夾。
 
-您可以使用觸發程序，從 FTP 伺服器收到回應，並且讓輸出可供其他動作使用。 您可以在邏輯應用程式中使用執行動作來管理 FTP 伺服器上的檔案。 您也可以讓其他動作使用 FTP 動作的輸出。 例如，如果您定期從 FTP 伺服器取得檔案，可以藉由使用 Office 365 Outlook 連接器或 Outlook.com 連接器，傳送關於這些檔案及其內容的電子郵件。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md)。
+您可以使用觸發程序，從 FTP 伺服器收到回應，並且讓輸出可供其他動作使用。 您可以在邏輯應用程式中使用執行動作來管理 FTP 伺服器上的檔案。 您也可以讓其他動作使用 FTP 動作的輸出。 例如，如果您定期從 FTP 伺服器取得檔案，可以藉由使用 Office 365 Outlook 連接器或 Outlook.com 連接器，傳送關於這些檔案及其內容的電子郵件。 如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md)。
 
 ## <a name="limitations"></a>限制
 
@@ -45,13 +44,13 @@ FTP 觸發程式的操作方式是輪詢 FTP 檔案系統，並尋找自上次�
 
 | SFTP 用戶端 | 動作 |
 |-------------|--------|
-| Winscp | 移至**選項** > **喜好** > 設定**傳輸** > **編輯** > **保留時間戳** > **停**用 |
-| FileZilla | 移至 [**傳輸** > ] [**保留傳輸** > 的檔案的時間戳記]**停**用 |
+| Winscp | 移至**選項**  >  **喜好**設定  >  **傳輸**  >  **編輯**  >  **保留時間戳**  >  **停**用 |
+| FileZilla | 移至 [**傳輸**] [  >  **保留傳輸的檔案的時間戳記**]  >  **停**用 |
 |||
 
 當觸發程序找到新檔案時，觸發程序會確認該新檔案是完整檔案，而不是部分寫入的檔案。 例如，當觸發程序檢查檔案伺服器時，檔案可能正在進行變更。 為避免傳回部分寫入的檔案，觸發程序會備註最近發生變更之檔案的時間戳記，但不會立即傳回該檔案。 觸發程序只有在再次輪詢伺服器時，才會傳回該檔案。 有時，此行為可能會導致最長可達觸發程序輪詢間隔兩倍的延遲。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -59,7 +58,7 @@ FTP 觸發程式的操作方式是輪詢 FTP 檔案系統，並尋找自上次�
 
   要使用 FTP 連接器，FTP 伺服器必須可從網際網路來存取，並設定為以「被動」** 模式運作。 認證允許邏輯應用程式建立連線並存取 FTP 帳戶。
 
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 您要在其中存取 FTP 帳戶的邏輯應用程式。 若要開始使用 FTP 觸發程序，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 FTP 動作，請使用其他觸發程序來啟動邏輯應用程式，例如**週期**觸發程序。
 
@@ -69,13 +68,13 @@ FTP 觸發程式的操作方式是輪詢 FTP 檔案系統，並尋找自上次�
 
 1. 登入[Azure 入口網站](https://portal.azure.com)，然後在邏輯應用程式設計工具中開啟邏輯應用程式。
 
-1. 針對空白邏輯應用程式，請在搜尋方塊中`ftp`輸入做為您的篩選準則。 從 [**觸發**程式] 清單中，選取您想要的觸發程式。
+1. 針對空白邏輯應用程式，請在搜尋方塊中輸入 `ftp` 做為您的篩選準則。 從 [**觸發**程式] 清單中，選取您想要的觸發程式。
 
    -或-
 
    針對現有的邏輯應用程式，在您想要新增動作的最後一個步驟底下，選取 [**新增步驟**]，然後選取 [**加入動作**]。 在搜尋方塊中，輸入 `ftp` 作為篩選條件。 從 [**動作**] 清單中，選取您想要的動作。
 
-   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選取顯示的加號（**+**），然後選取 [**新增動作**]。
+   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選擇所顯示的加號 ( **+** )，然後選取 [新增動作]。
 
 1. 提供您的連接資訊，然後選取 [**建立**]。
 
@@ -95,7 +94,7 @@ FTP 觸發程式的操作方式是輪詢 FTP 檔案系統，並尋找自上次�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，如果邏輯應用程式尚未開啟，請在邏輯應用程式設計工具中開啟邏輯應用程式。
 
-1. 針對空白邏輯應用程式，請在搜尋方塊中`ftp`輸入做為您的篩選準則。 在觸發程式清單底下，選取此觸發**程式：新增或修改內容時（僅限屬性）**
+1. 針對空白邏輯應用程式，請在搜尋方塊中輸入 `ftp` 做為您的篩選準則。 在觸發程式清單底下，選取此觸發**程式：新增或修改內容時（僅限屬性）**
 
    ![尋找並選取 FTP 觸發程式](./media/connectors-create-api-ftp/select-ftp-trigger-logic-app.png)
 
@@ -105,7 +104,7 @@ FTP 觸發程式的操作方式是輪詢 FTP 檔案系統，並尋找自上次�
 
    ![建立 FTP 伺服器的連接](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)
 
-1. 在 [**資料夾**] 方塊中，選取資料夾圖示，讓清單出現。 若要尋找您要監視的新檔案或已編輯的檔案資料夾，請選取向右**>** 角度箭號（），流覽至該資料夾，然後選取資料夾。
+1. 在 [**資料夾**] 方塊中，選取資料夾圖示，讓清單出現。 若要尋找您要監視的新檔案或已編輯的檔案資料夾，請選取向右角度箭號（ **>** ），流覽至該資料夾，然後選取資料夾。
 
    ![尋找並選取要監視的資料夾](./media/connectors-create-api-ftp/select-folder-ftp-trigger.png)
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
 ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79479581"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for Go （預覽）
@@ -25,9 +24,9 @@ HDInsight SDK for Go 提供可讓您管理 HDInsight 叢集的類別和功能。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* [ `go get`工具](https://github.com/golang/go/wiki/GoGetTools)。
+* [ `go get` 工具](https://github.com/golang/go/wiki/GoGetTools)。
 * [Go](https://golang.org/dl/)。
 
 ## <a name="sdk-installation"></a>SDK 安裝
@@ -36,7 +35,7 @@ HDInsight SDK for Go 提供可讓您管理 HDInsight 叢集的類別和功能。
 
 ## <a name="authentication"></a>驗證
 
-SDK 必須先使用您的 Azure 訂用帳戶進行驗證。  請依照下列範例建立服務主體，並使用它來驗證。 完成這項作業之後，您將會有一個`ClustersClient`的實例，其中包含許多可用於執行管理作業的函式（如下節所述）。
+SDK 必須先使用您的 Azure 訂用帳戶進行驗證。  請依照下列範例建立服務主體，並使用它來驗證。 完成這項作業之後，您將會有一個的實例 `ClustersClient` ，其中包含許多可用於執行管理作業的函式（如下節所述）。
 
 > [!NOTE]  
 > 除了下列範例以外，還有其他方式可進行驗證，可能更符合您的需求。 此處概述所有函式：[Azure SDK for Go 中的驗證函式](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
@@ -263,7 +262,7 @@ client.Get(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 
 #### <a name="example"></a>範例
 
-您可以使用`get`來確認您已成功建立叢集。
+您可以使用 `get` 來確認您已成功建立叢集。
 
 ```golang
 cluster, err := client.Get(context.Background(), resourceGroupName, clusterName)
@@ -352,7 +351,7 @@ client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 
 HDInsight 管理 SDK 也可用來透過 Operations Management Suite (OMS) 管理您對叢集的監視。
 
-與您建立 `ClusterClient` 以用於管理作業的方式相似，針對監視作業您需要建立 `ExtensionClient`。 當您完成上述驗證一節之後，您可以建立`ExtensionClient`如下所示的：
+與您建立 `ClusterClient` 以用於管理作業的方式相似，針對監視作業您需要建立 `ExtensionClient`。 當您完成上述驗證一節之後，您可以建立 `ExtensionClient` 如下所示的：
 
 ```golang
 extClient := hdi.NewExtensionsClient(SUBSCRIPTION_ID)
@@ -405,7 +404,7 @@ var scriptAction1 = hdi.RuntimeScriptAction{Name: to.StringPtr("<Script Name>"),
 client.ExecuteScriptActions(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ExecuteScriptActionParameters{PersistOnSuccess: to.BoolPtr(true), ScriptActions: &[]hdi.RuntimeScriptAction{scriptAction1}}) //add more RuntimeScriptActions to the list to execute multiple scripts
 ```
 
-針對「刪除指令碼動作」和「列出保存的指令碼動作」作業，您需要建立 `ScriptActionsClient`，其方式與您建立 `ClusterClient` 以用於管理作業的方式相似。 當您完成上述驗證一節之後，您可以建立如下`ScriptActionsClient`所示的：
+針對「刪除指令碼動作」和「列出保存的指令碼動作」作業，您需要建立 `ScriptActionsClient`，其方式與您建立 `ClusterClient` 以用於管理作業的方式相似。 當您完成上述驗證一節之後，您可以建立 `ScriptActionsClient` 如下所示的：
 
 ```golang
 scriptActionsClient := hdi.NewScriptActionsClient(SUBSCRIPTION_ID)
@@ -453,7 +452,7 @@ for (page.NotDone()) {
 
 ### <a name="list-all-scripts-execution-history"></a>列出所有指令碼的執行記錄
 
-針對此作業，您需要建立 `ScriptExecutionHistoryClient`，與您建立用於管理作業的 `ClusterClient` 方式相似。 當您完成上述驗證一節之後，您可以建立如下`ScriptActionsClient`所示的：
+針對此作業，您需要建立 `ScriptExecutionHistoryClient`，與您建立用於管理作業的 `ClusterClient` 方式相似。 當您完成上述驗證一節之後，您可以建立 `ScriptActionsClient` 如下所示的：
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)

@@ -10,15 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477505"
 ---
 # <a name="partition-and-sample-module"></a>資料分割和範例模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 使用資料分割和範例模組，對 dataset 執行取樣，或從您的資料集建立磁碟分割。
 
@@ -75,7 +74,7 @@ ms.locfileid: "79477505"
 
 1. **取樣率**：輸入介於0到1之間的值。 這個值會指定源資料集內應該包含在輸出資料集中的資料列百分比。
 
-   例如，如果您只想要一半的原始資料集，請`0.5`輸入以指出取樣率應為50%。
+   例如，如果您只想要一半的原始資料集，請輸入 `0.5` 以指出取樣率應為50%。
 
    系統會根據指定的比例，隨機放置輸入資料集的資料列，並選擇性地將其放入輸出資料集。
 
@@ -167,4 +166,4 @@ ms.locfileid: "79477505"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

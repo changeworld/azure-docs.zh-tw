@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477658"
 ---
 # <a name="convert-to-indicator-values"></a>轉換為指標值
@@ -63,7 +62,7 @@ ms.locfileid: "79477658"
 
 -   在描述風險的 [**失敗分數**] 資料行中，只有三個可能的值（[高]、[中] 和 [低]），而且沒有遺漏值。 因此，只會建立三個新的資料行。  
 
--   新的指標資料行是根據來源資料行的欄位標題和值來命名，並使用此模式： * \<source column> \<-data value>*。  
+-   新的指標資料行是根據來來源資料行的欄位標題和值來命名，並使用此模式： *\<source column>- \<data value>* 。  
 
 -   只有一個指標資料行中應該有一個1，而所有其他指標資料行中應該有0個，因為每一部伺服器都只能有一個風險評等。  
 
@@ -98,13 +97,13 @@ ms.locfileid: "79477658"
 
 -   只有標示為類別的資料行才能轉換成指標資料行。 如果您看到下列錯誤，可能是您選取的其中一個資料行不是類別：  
 
-     錯誤0056：名稱\<資料行名稱> 的資料行不在允許的類別目錄中。  
+     錯誤0056：名稱為的資料行 \<column name> 不在允許的類別目錄中。  
 
      根據預設，大部分的字串資料行都是以字串特徵的形式處理，因此您必須使用 [[編輯中繼資料](edit-metadata.md)] 將它們明確標示為類別。  
 
 -   您可以轉換成指標資料行的資料行數目沒有限制。 不過，由於值的每個資料行都可以產生多個指標資料行，因此您可能會想要一次只轉換和查看幾個資料行。  
 
--   如果資料行包含遺漏值，則會為遺漏的分類建立個別的指標資料行，其名稱為： * \<來源資料行>-遺失*  
+-   如果資料行包含遺漏值，則會為遺漏的分類建立個別的指標資料行，其名稱為： * \<source column> -遺漏*  
 
 -   如果您轉換成指標值的資料行包含數位，則必須將它們標示為類別，就像其他任何特徵資料行一樣。 當您完成此動作之後，會將數位視為離散值。 例如，如果您的數值資料行的 MPG 值範圍從25到30，則會為每個離散值建立新的指標資料行：  
 
@@ -117,4 +116,4 @@ ms.locfileid: "79477658"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

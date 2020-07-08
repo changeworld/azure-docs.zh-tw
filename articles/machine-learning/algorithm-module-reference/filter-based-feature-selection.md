@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: c009a98931240e92527035e51fdce3f1c92f5212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477590"
 ---
 # <a name="filter-based-feature-selection"></a>以篩選為基礎的特徵選取
@@ -40,7 +39,7 @@ ms.locfileid: "79477590"
 
 -   **皮耳森相互關聯**  
 
-    皮耳森的相互關聯統計資料（或皮耳森的相互關聯係數）在統計模型中也`r`稱為值。 對於任何兩個變數，它會傳一個指出相關強度的值。
+    皮耳森的相互關聯統計資料（或皮耳森的相互關聯係數）在統計模型中也稱為 `r` 值。 對於任何兩個變數，它會傳一個指出相關強度的值。
 
     皮耳森相關係數的計算公式是先取兩個變數的共變異數，再除以其標準差的乘積。 這兩個變數中的 scale 變更不會影響係數。  
 
@@ -68,7 +67,7 @@ ms.locfileid: "79477590"
     > 如果您知道有些資料行會造成不良的功能，您可以從資料行選取專案中移除它們。 您也可以使用 [[編輯中繼資料](edit-metadata.md)] 模組，將它們標示為**類別**。 
 3.  針對 [**功能評分方法**]，選擇下列其中一個已建立的統計方法，以用於計算分數。  
 
-    | 方法              | 需求                             |
+    | 方法              | 規格需求                             |
     | ------------------- | ---------------------------------------- |
     | 皮耳森相互關聯 | 標籤可以是文字或數位。 功能必須是數值。 |
     卡方平方| 標籤和功能可以是文字或數位。 使用此方法來計算兩個類別資料行的特徵重要性。|
@@ -114,13 +113,13 @@ ms.locfileid: "79477590"
 
 2.  將條件式資料行與數值資料行相互關聯。  
 
-### <a name="requirements"></a>需求  
+### <a name="requirements"></a>規格需求  
 
 -   針對指定為**標籤**或**分數**資料行的任何資料行，無法產生特徵選取分數。  
 
 -   如果您嘗試將計分方法與方法不支援之資料類型的資料行搭配使用，此模組將會引發錯誤。 或者，系統會將零分數指派給資料行。  
 
--   如果資料行包含邏輯（true/false）值，則會將它們`True = 1`當做`False = 0`和處理。  
+-   如果資料行包含邏輯（true/false）值，則會將它們當做 `True = 1` 和處理 `False = 0` 。  
 
 -   如果資料行被指定為**標籤**或**分數**，則不能是功能。  
 
@@ -135,5 +134,5 @@ ms.locfileid: "79477590"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 
 

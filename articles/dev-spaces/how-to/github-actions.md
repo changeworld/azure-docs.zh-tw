@@ -7,10 +7,9 @@ description: 使用 GitHub 動作和 Azure Dev Spaces，直接在 Azure Kubernet
 keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，GitHub 動作，Helm，服務網格，服務網格路由，kubectl，k8s
 manager: gwallace
 ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637936"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub 動作 & Azure Kubernetes Service （預覽）
@@ -27,7 +26,7 @@ Azure Dev Spaces 提供使用 GitHub 動作的工作流程，可讓您在提取�
 > [!IMPORTANT]
 > 此功能目前為預覽狀態。 若您同意[補充的使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
 * [已安裝 Azure CLI][azure-cli-installed]。
@@ -109,14 +108,14 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 
 ## <a name="create-a-new-branch-for-code-changes"></a>建立程式碼變更的新分支
 
-流覽至`BikeSharingApp/` ，並建立稱為*自行車-images*的新分支。
+流覽至 `BikeSharingApp/` ，並建立稱為*自行車-images*的新分支。
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
 git checkout -b bike-images
 ```
 
-編輯[自行車/server .js][bikes-server-js]以移除232和233行：
+編輯[自行車/server.js][bikes-server-js]以移除232和233行：
 
 ```javascript
     // Hard code image url *FIX ME*
@@ -131,7 +130,7 @@ git checkout -b bike-images
     delete theBike._id;
 ```
 
-儲存檔案，然後`git add`使用`git commit`和來暫存您的變更。
+儲存檔案，然後使用 `git add` 和 `git commit` 來暫存您的變更。
 
 ```cmd
 git add Bikes/server.js 
@@ -140,7 +139,7 @@ git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 
 ## <a name="push-your-changes"></a>推送您的變更
 
-使用`git push`將您的新分支推送至分叉存放庫：
+使用 `git push` 將您的新分支推送至分叉存放庫：
 
 ```cmd
 git push origin bike-images

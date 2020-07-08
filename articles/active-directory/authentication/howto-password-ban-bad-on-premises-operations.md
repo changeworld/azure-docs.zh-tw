@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652626"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>啟用內部部署 Azure Active Directory 密碼保護
@@ -32,13 +31,13 @@ ms.locfileid: "80652626"
 
 ## <a name="enable-on-premises-password-protection"></a>啟用內部部署密碼保護
 
-1. 登入[Azure 入口網站](https://portal.azure.com)，然後流覽至**Azure Active Directory** > **安全性** > **驗證方法** > **密碼保護**。
+1. 登入[Azure 入口網站](https://portal.azure.com)，然後流覽至**Azure Active Directory**  >  **安全性**  >  **驗證方法**  >  **密碼保護**。
 1. 將 [**啟用 Windows Server 上的密碼保護 Active Directory** ] 的選項設定為 *[是]*。
 
     當此設定設為 [*否*] 時，所有已部署的 Azure AD 密碼保護 DC 代理程式都會進入靜止模式，其中所有的密碼都已接受。 不會執行任何驗證活動，也不會產生 audit 事件。
 
 1. 建議您一開始先將**模式**設定為*Audit*。 在您熟悉此功能以及對組織中的使用者所造成的影響之後，您可以將**模式**切換為 [*強制*]。 如需詳細資訊，請參閱下一節的[操作模式](#modes-of-operation)。
-1. 在準備就緒時，選取 [儲存]  。
+1. 在準備就緒時，選取 [儲存]。
 
     [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 

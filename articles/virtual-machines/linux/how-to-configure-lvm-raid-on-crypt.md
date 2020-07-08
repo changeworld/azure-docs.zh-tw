@@ -8,10 +8,9 @@ ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4e342ff44af38b8e79dc8695c1270b1f5c68e0a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657434"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>在加密的裝置上設定 LVM 和 RAID
@@ -58,7 +57,7 @@ Azure 磁碟加密的雙通路版本是在取代路徑上，不應再用於新�
 當您使用「內部 crypt」設定時，請使用下列程式中所述的進程。
 
 >[!NOTE] 
->我們會在本文中使用變數。 據以取代值。
+>我們會在本文中使用到變數。 請視需要將值取代。
 
 ### <a name="deploy-a-vm"></a>部署 VM 
 下列命令是選擇性的，但我們建議您將其套用至新部署的虛擬機器（VM）。
@@ -88,7 +87,7 @@ az vm create \
 -o table
 ```
 ### <a name="attach-disks-to-the-vm"></a>將磁片連接至 VM
-針對`$N`您想要附加至 VM 的新磁片數目，重複下列命令。
+針對 `$N` 您想要附加至 VM 的新磁片數目，重複下列命令。
 
 PowerShell：
 

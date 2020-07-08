@@ -10,15 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 9eba6f2c47629b708dde4a5a2888b76dbd24b4e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79455888"
 ---
 # <a name="split-data-module"></a>分割資料模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 使用分割資料模組，將資料集分成兩個不同的集合。
 
@@ -87,7 +86,7 @@ ms.locfileid: "79455888"
 
 ### <a name="single-whole-word"></a>單一全字 
 
-這個範例會將包含資料行中之文字`Gryphon`的所有資料列`Text`放入第一個資料集。 其會將其他資料列放入**分割資料**的第二個輸出中。
+這個範例會將包含資料行中之文字的所有資料列放入第一個資料集 `Gryphon` `Text` 。 其會將其他資料列放入**分割資料**的第二個輸出中。
 
 ```text
     \"Text" Gryphon  
@@ -101,7 +100,7 @@ ms.locfileid: "79455888"
 (\1) ^[a-f]
 ```
 
-第一個結果資料集包含索引資料行以下列其中一個字元開頭的所有資料`a`列`b`： `c`、 `d`、 `e`、 `f`、、。 所有其他資料列都會導向至第二個輸出。
+第一個結果資料集包含索引資料行以下列其中一個字元開頭的所有資料列： `a` 、 `b` 、 `c` 、 `d` 、 `e` 、 `f` 。 所有其他資料列都會導向至第二個輸出。
 
 ## <a name="select-a-relative-expression"></a>選取相對運算式
 
@@ -114,12 +113,12 @@ ms.locfileid: "79455888"
    **數值資料行**：
    - 資料行包含任何數值資料類型的數位，包括日期和時間資料類型。
    - 運算式最多隻能參考一個資料行名稱。
-   - 針對和運算， `&`請使用 & 符號字元。 針對或作業使用管線`|`字元。
-   - 支援下列運算子`<`：、 `>`、 `<=`、 `>=`、 `==`、。 `!=`
-   - 您無法使用`(`和`)`來分組作業。
+   - 針對和運算，請使用 & 符號字元 `&` 。 針對或作業使用管線字元 `|` 。
+   - 支援下列運算子： `<` 、 `>` 、 `<=` 、 `>=` 、 `==` 、 `!=` 。
+   - 您無法使用和來分組 `(` 作業 `)` 。
    
    若為**字串資料行**：
-   - 支援下列運算子： `==`、。 `!=`
+   - 支援下列運算子： `==` 、 `!=` 。
 
 1. 提交管線。
 
@@ -129,7 +128,7 @@ ms.locfileid: "79455888"
 
 ### <a name="calendar-year"></a>日曆年度
 
-常見的案例是依年份分割資料集。 下列運算式會選取資料行中的值大於的所有`Year`資料列`2010`。
+常見的案例是依年份分割資料集。 下列運算式會選取資料行中的值大於的所有資料列 `Year` `2010` 。
 
 ```text
 \"Year" > 2010
@@ -137,7 +136,7 @@ ms.locfileid: "79455888"
 
 日期運算式必須將資料行中包含的所有日期部分納入考慮。 資料行中的日期格式必須一致。 
 
-例如，在使用格式`mmddyyyy`的日期資料行中，運算式應該類似如下：
+例如，在使用格式的日期資料行中 `mmddyyyy` ，運算式應該類似如下：
 
 ```text
 \"Date" > 1/1/2010
@@ -154,4 +153,4 @@ ms.locfileid: "79455888"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

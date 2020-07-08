@@ -10,15 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: fc2a043e8f1565cf5fe45ba0b072ad015076635e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477675"
 ---
 # <a name="convert-to-csv-module"></a>轉換成 CSV 模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 您可以使用此模組，將資料集轉換成 CSV 格式，以供使用 R 或 Python 腳本模組下載、匯出或共用。
 
@@ -50,8 +49,8 @@ CSV 格式（代表「逗號分隔值」）是許多外部機器學習工具所�
 
 + **註冊資料集**：選取圖示，然後將 CSV 檔案儲存回 Azure ML 工作區作為個別的資料集。 您可以在 [**我的資料集**] 區段底下的模組樹狀結構中，找到資料集作為模組。
 
- + **視圖輸出**：選取眼睛圖示，然後依照指示流覽**Results_dataset**資料夾，並下載資料 .csv 檔案。
+ + **視圖輸出**：選取眼睛圖示，然後依照指示流覽**Results_dataset**資料夾，並下載 data.csv 檔案。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

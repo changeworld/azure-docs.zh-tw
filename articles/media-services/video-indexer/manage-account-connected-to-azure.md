@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 12/16/2019
 ms.author: juliako
 ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499662"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>管理連線到 Azure 的影片索引器帳戶
@@ -24,7 +23,7 @@ ms.locfileid: "79499662"
 > [!NOTE]
 > 您必須是影片索引器帳戶的擁有者，才能進行本主題中討論的帳戶設定調整。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 將您的影片索引器帳戶連線到 Azure，如[連線到 Azure](connect-to-azure.md) 中所述。
 
@@ -54,12 +53,12 @@ ms.locfileid: "79499662"
 
 在[影片索引子](https://www.videoindexer.ai/)頁面的 [**更新連線至 Azure 媒體服務**] 對話方塊中，系統會要求您提供下列設定的值：
 
-|設定|描述|
+|設定|說明|
 |---|---|
 |Azure 訂用帳戶識別碼|訂用帳戶識別碼可從 Azure 入口網站擷取。 按一下左面板中的 [**所有服務**]，然後搜尋「訂用帳戶」。 選取 [訂用帳戶]****，並從訂用帳戶清單中選擇需要的識別碼。|
 |Azure 媒體服務資源群組名稱|您在其中建立媒體服務帳戶的資源群組名稱。|
-|應用程式識別碼|您為此影片索引子帳戶建立的 Azure AD 應用程式識別碼（具有指定媒體服務帳戶的許可權）。 <br/><br/>若要取得應用程式識別碼，請流覽至 Azure 入口網站。 在媒體服務帳戶底下，選擇您的帳戶並移至 [ **API 存取**]。 選取 **[使用服務主體** -> **Azure AD App**連線到媒體服務 API]。 複製相關的參數。|
-|應用程式金鑰|與您在上面指定的媒體服務帳戶相關聯的 Azure AD 應用程式金鑰。 <br/><br/>若要取得應用程式金鑰，請流覽至 Azure 入口網站。 在媒體服務帳戶底下，選擇您的帳戶並移至 [ **API 存取**]。  -> 選取 **[使用服務主體連線到媒體服務 API] [****管理應用程式** -> **憑證 & 秘密**]。 複製相關的參數。|
+|應用程式識別碼|您為此影片索引子帳戶建立的 Azure AD 應用程式識別碼（具有指定媒體服務帳戶的許可權）。 <br/><br/>若要取得應用程式識別碼，請流覽至 Azure 入口網站。 在媒體服務帳戶底下，選擇您的帳戶並移至 [ **API 存取**]。 選取 **[使用服務主體 Azure AD App 連線到媒體服務 API]**  ->  ** **。 複製相關的參數。|
+|應用程式金鑰|與您在上面指定的媒體服務帳戶相關聯的 Azure AD 應用程式金鑰。 <br/><br/>若要取得應用程式金鑰，請流覽至 Azure 入口網站。 在媒體服務帳戶底下，選擇您的帳戶並移至 [ **API 存取**]。 選取 **[使用服務主體連線到媒體服務 API] [**  ->  **管理應用程式**  ->  **憑證 & 秘密**]。 複製相關的參數。|
 
 ## <a name="autoscale-reserved-units"></a>自動調整保留單元
 

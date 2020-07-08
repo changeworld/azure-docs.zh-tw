@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79479554"
 ---
 # <a name="install-azure-farmbeats"></a>安裝 Azure FarmBeats
@@ -31,7 +30,7 @@ Azure FarmBeats 是可在 Azure Marketplace 中取得的企業對企業供應項
 | 已安裝 Azure 資源  | Azure FarmBeats 元件  |
 |---------|---------|
 | Application Insights   |      Datahub & 加速器      |
-| App Service 方案     |     Datahub & 加速器     |
+| App Service     |     Datahub & 加速器     |
 | App Service 方案   | Datahub & 加速器  |
 | API 連線    |  Datahub       |
 | Azure Cache for Redis       | Datahub      |
@@ -71,7 +70,7 @@ Azure FarmBeats 的成本是基礎 Azure 服務成本的匯總。 您可以使�
 
 Azure FarmBeats 的整個設定（包括準備和安裝）將會花費不到一小時的時間。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您必須先完成下列步驟，才能開始實際安裝 Azure FarmBeats：
 
@@ -124,9 +123,9 @@ Azure FarmBeats 需要 Azure Active Directory 的應用程式建立和註冊。 
 
 4. 腳本會要求下列三個輸入：
 
-    - **FarmBeats 網站名稱**：這是 FarmBeats web 應用程式的唯一 URL 前置詞。 如果前置詞已被採用，腳本會發生錯誤。安裝之後，您的 FarmBeats 部署將可從 HTTPs://\<FarmBeats 存取-網站名稱>。 azurewebsites.net 和 swagger api 將位於 HTTPs://\<FarmBeats-網站名稱>-api.azurewebsites.net
+    - **FarmBeats 網站名稱**：這是 FarmBeats web 應用程式的唯一 URL 前置詞。 如果前置詞已被採用，腳本會發生錯誤。安裝之後，您的 FarmBeats 部署將可從 HTTPs://存取 \<FarmBeats-website-name> 。 azurewebsites.net 和 Swagger api 將會在 HTTPs:// \<FarmBeats-website-name> -api.azurewebsites.net
 
-    - **Azure 登入識別碼**：針對您想要新增為 FarmBeats 系統管理員的使用者，提供 azure 登入識別碼。 然後，此使用者可以將 access FarmBeats web 應用程式的存取權授與其他使用者。 登入識別碼的格式john.doe@domain.com通常是。 也支援 Azure UPN。
+    - **Azure 登入識別碼**：針對您想要新增為 FarmBeats 系統管理員的使用者，提供 azure 登入識別碼。 然後，此使用者可以將 access FarmBeats web 應用程式的存取權授與其他使用者。 登入識別碼的格式通常是 john.doe@domain.com 。 也支援 Azure UPN。
 
     - **訂**用帳戶識別碼：這是您要在其中安裝 Azure FarmBeats 的訂用帳戶識別碼
 
@@ -152,7 +151,7 @@ Azure FarmBeats 需要 Azure Active Directory 的應用程式建立和註冊。 
 
 2. 移至入口網站中的 Azure Marketplace，並在 Marketplace 中搜尋**Azure FarmBeats** 。
 
-3. 隨即會出現一個新視窗，其中顯示 Azure FarmBeats 的總覽。 選取 [建立]  。
+3. 隨即會出現一個新視窗，其中顯示 Azure FarmBeats 的總覽。 選取 [建立]。
 
 4. 新視窗隨即出現。 選擇正確的訂用帳戶、資源群組，以及您想要安裝 Azure FarmBeats 的位置，以完成註冊程式。
 
@@ -168,9 +167,9 @@ Azure FarmBeats 需要 Azure Active Directory 的應用程式建立和註冊。 
 
 8. 一旦輸入的詳細資料通過驗證，請選取 **[確定]**。 [使用規定] 頁面隨即出現。 檢查條款，然後選取 [**建立**] 以開始安裝。 系統會將您重新導向至可以遵循安裝進度的頁面。
 
-安裝完成之後，您可以藉由流覽至您在安裝期間提供的網站名稱，來驗證安裝並開始使用 FarmBeats portal：\<HTTPs://FarmBeats-網站名稱>. azurewebsites.net。 您應該會看到 FarmBeats 使用者介面，並提供建立伺服器陣列的選項。
+安裝完成後，您可以流覽至您在安裝期間提供的網站名稱，以確認安裝並開始使用 FarmBeats 入口網站： HTTPs:// \<FarmBeats-website-name> . azurewebsites.net。 您應該會看到 FarmBeats 使用者介面，並提供建立伺服器陣列的選項。
 
-**Datahub**可在 HTTPs://\<FarmBeats-網站名稱>-api.azurewebsites.net/swagger 中找到。 在這裡，您會看到不同的 FarmBeats API 物件，並在 Api 上執行 REST 作業。
+**Datahub**可在 HTTPs:// \<FarmBeats-website-name> -api.azurewebsites.net/swagger 找到。 在這裡，您會看到不同的 FarmBeats API 物件，並在 Api 上執行 REST 作業。
 
 ## <a name="upgrade"></a>升級
 
@@ -196,7 +195,7 @@ Azure FarmBeats 需要 Azure Active Directory 的應用程式建立和註冊。 
         ./upgrade-farmbeats.ps1 -InputFilePath [Path to input.json file]
     ```
 
-輸入 json 檔案的路徑是選擇性的。 如果未指定，腳本會要求所有必要的輸入。 升級應該會在大約30分鐘後完成。
+檔案上 input.js的路徑是選擇性的。 如果未指定，腳本會要求所有必要的輸入。 升級應該會在大約30分鐘後完成。
 
 ## <a name="uninstall"></a>解除安裝
 

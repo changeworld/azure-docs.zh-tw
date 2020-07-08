@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 80473aa494b8fbcea5e43870b7717cd3472dd7d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480516"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms"></a>在適用於 VM 的 Azure 監視器中停用 Vm 的監視
@@ -24,7 +23,7 @@ ms.locfileid: "79480516"
 * Log Analytics 工作區，它會儲存來自 Vm 和其他來源的監視資料。
 * 在工作區中設定的效能計數器集合。 集合會更新連線至工作區之所有 Vm 上的監視設定。
 * `VMInsights`，這是在工作區中設定的監視解決方案。 此解決方案會更新連線至工作區之所有 Vm 上的監視設定。
-* `MicrosoftMonitoringAgent`和`DependencyAgent`，也就是 Azure VM 擴充功能。 這些延伸模組會收集資料，並將其傳送至工作區。
+* `MicrosoftMonitoringAgent`和 `DependencyAgent` ，也就是 AZURE VM 擴充功能。 這些延伸模組會收集資料，並將其傳送至工作區。
 
 當您準備停用 Vm 的監視功能時，請記住下列考慮：
 
@@ -36,10 +35,10 @@ ms.locfileid: "79480516"
 
 ## <a name="remove-azure-monitor-for-vms-completely"></a>完全移除適用於 VM 的 Azure 監視器
 
-如果您仍然需要 Log Analytics 工作區，請遵循下列步驟來完全移除適用於 VM 的 Azure 監視器。 您將從工作`VMInsights`區中移除解決方案。  
+如果您仍然需要 Log Analytics 工作區，請遵循下列步驟來完全移除適用於 VM 的 Azure 監視器。 您將 `VMInsights` 從工作區中移除解決方案。  
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在 [Azure 入口網站中，選取 [**所有服務**]。 在資源清單中，輸入**Log Analytics**。 當您開始輸入時，清單會根據您的輸入來篩選建議。 選取 [ **Log Analytics**]。
+2. 在 Azure 入口網站中，選取 [所有服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您的輸入來篩選建議。 選取 [Log Analytics]。
 3. 在您的 Log Analytics 工作區清單中，選取當您啟用適用於 VM 的 Azure 監視器時所選擇的工作區。
 4. 在左側選取 [**方案**]。  
 5. 在解決方案清單中，選取 [ **VMInsights （工作區名稱）**]。 在解決方案的 [**總覽**] 頁面上，選取 [**刪除**]。 當系統提示您確認時，請選取 **[是]**。
@@ -57,7 +56,7 @@ ms.locfileid: "79480516"
 > 如果您移除 Log Analytics 代理程式，您將會防止這些服務和解決方案主動管理您的 VM。 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
-2. 在 Azure 入口網站中，選取 [虛擬機器]****。 
+2. 在 Azure 入口網站中，選取 [虛擬機器]。 
 3. 從清單中選取 VM。 
 4. 在左側選取 [**擴充**功能]。 在 [**延伸**模組] 頁面上，選取 [ **DependencyAgent**]。
 5. 在 [擴充功能屬性] 頁面上，選取 [**卸載**]。

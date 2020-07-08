@@ -15,16 +15,15 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 88e0e1c18722fd86e79fc1fa7722b59b3cb8966a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460954"
 ---
 # <a name="content-protection-overview"></a>內容保護概觀 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 您可以使用 Azure 媒體服務來保護媒體從離開電腦到進行儲存、處理和傳遞時的安全。 使用媒體服務，您就能傳遞利用進階加密標準 (AES-128) 或下列三個主要數位版權管理 (DRM) 系統中任一個所動態加密的即時與隨選內容：Microsoft PlayReady、Google Widevine 和 Apple FairPlay。 媒體服務也提供服務，可傳遞 AES 金鑰和 DRM (PlayReady、Widevine 和 FairPlay) 授權給授權用戶端。 
 
@@ -82,14 +81,14 @@ Playready 和 Widevine 會利用一般加密 (AES CTR 模式)。 FairPlay 會利
 
 ### <a name="token-replay-prevention"></a>權杖重新執行防止
 
-「*權杖*重新執行防護」功能可讓媒體服務客戶設定相同權杖可用來要求金鑰或授權的次數限制。 客戶可以在權杖中新增類型`urn:microsoft:azure:mediaservices:maxuses`的宣告，其中的值是權杖可用於取得授權或金鑰的次數。 對金鑰傳遞具有相同權杖的所有後續要求將會傳回未經授權的回應。 請參閱如何在[DRM 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中新增宣告。
+「權杖重送防護」功能可讓媒體服務客戶限制以相同權杖來要求金鑰或授權的次數。 客戶可以在權杖中新增類型的宣告 `urn:microsoft:azure:mediaservices:maxuses` ，其中的值是權杖可用於取得授權或金鑰的次數。 對金鑰傳遞具有相同權杖的所有後續要求將會傳回未經授權的回應。 請參閱如何在[DRM 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中新增宣告。
  
 #### <a name="considerations"></a>考量
 
 * 客戶必須擁有權杖產生的控制權。 宣告必須放在權杖本身。
 * 使用這項功能時，會拒絕權杖的到期時間超過一小時的要求，而不會收到未經授權的回應。
 * 權杖是由其簽章唯一識別。 對裝載所做的任何變更（例如，更新到期時間或宣告）都會變更權杖的簽章，而且會計算為新的權杖，表示金鑰傳遞不會在之前。
-* 如果權杖已超過客戶所設定的`maxuses`值，播放就會失敗。
+* 如果權杖已超過客戶所設定的值，播放就會失敗 `maxuses` 。
 * 這項功能可用於所有現有的受保護內容（只需要變更發行的權杖）。
 * 這項功能適用于 JWT 和 SWT。
 

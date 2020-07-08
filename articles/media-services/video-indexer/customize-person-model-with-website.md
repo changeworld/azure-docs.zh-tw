@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: f29e651f5c8542722f0dc2c9878184ac0d2a6a1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499968"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>使用影片索引器網站自訂人員模型
@@ -93,7 +92,7 @@ ms.locfileid: "79499968"
 
 您可以刪除您在帳戶中建立的任何人員模型。 不過，您無法刪除預設人員模型。
 
-1. 從功能表中選取 [刪除]****。
+1. 從功能表中選取 [刪除]。
 
     ![刪除人員模型](./media/customize-face-model/delete-person.png)
 

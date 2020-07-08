@@ -4,10 +4,9 @@ description: 在本文中，您將瞭解如何備份在 Azure 虛擬機器上執
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 52c235c95cea73a0c51c62fcb55f7f711d2eff21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79476452"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>關於 Azure Vm 中的 SAP Hana 資料庫備份
@@ -39,11 +38,11 @@ Azure 備份是由 SAP[認證的 Backint](https://www.sap.com/dmc/exp/2013_09_ad
 * 若要在探索到的資料庫上[設定備份](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#configure-backup)，請選擇所需的備份原則，並啟用備份。
 
 * 一旦設定備份，Azure 備份服務就會在受保護 SAP Hana 伺服器上的資料庫層級設定下列 Backint 參數：
-  * [catalog_backup_using_backint： true]
-  * [enable_accumulated_catalog_backup： false]
-  * [parallel_data_backup_backint_channels： 1]
-  * [log_backup_timeout_s：900）]
-  * [backint_response_timeout： 7200]
+  *  [catalog_backup_using_backint:true]
+  *  [enable_accumulated_catalog_backup:false]
+  *  [parallel_data_backup_backint_channels:1]
+  *  [log_backup_timeout_s:900)]
+  *  [backint_response_timeout:7200]
 
 >[!NOTE]
 >請確定這些參數*不*存在於主機層級。 主機層級的參數將會覆寫這些參數，而且可能會導致非預期的行為。

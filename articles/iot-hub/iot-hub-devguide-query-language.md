@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80632937"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>裝置與模組對應項、作業和訊息路由的 IoT 中樞查詢語言
@@ -443,11 +442,11 @@ GROUP BY <group_by_element>
 | hexadecimal_literal |以字串 ' 0x ' 表示後面接著十六進位數位字串的數位。 |
 | string_literal |字串常值是由零個或多個 Unicode 字元序列或逸出序列所表示的 Unicode 字串。 字串常值會以單引號或雙引號括起來。 允許的逸出︰`\'`、`\"`、`\\`、`\uXXXX` (適用於由 4 個十六進位數字所定義的 Unicode 字元)。 |
 
-### <a name="operators"></a>運算子
+### <a name="operators"></a>操作員
 
 支援下列運算子：
 
-| 系列 | 運算子 |
+| 系列 | 操作員 |
 | --- | --- |
 | 算術 |+, -, *, /, % |
 | 邏輯 |AND、OR、NOT |
@@ -457,13 +456,13 @@ GROUP BY <group_by_element>
 
 查詢對應項和作業時唯一支援的函式為：
 
-| 函式 | 描述 |
+| 函式 | 說明 |
 | -------- | ----------- |
 | IS_DEFINED(property) | 傳回布林值，表示屬性是否已經指派值 (包含 `null`)。 |
 
 在路由條件中，支援下列比對函式：
 
-| 函式 | 描述 |
+| 函式 | 說明 |
 | -------- | ----------- |
 | ABS(x) | 傳回指定之數值運算式的絕對 (正) 值。 |
 | EXP(x) | 傳回指定之數值運算式 (e^x) 的指數值。 |
@@ -476,12 +475,12 @@ GROUP BY <group_by_element>
 
 在路由條件中，支援下列類型檢查和轉換函式：
 
-| 函式 | 描述 |
+| 函式 | 說明 |
 | -------- | ----------- |
 | AS_NUMBER | 將輸入字串轉換為數字。 如果輸入是一個數字則為 `noop`；如果字串不是數字則為 `Undefined`。|
 | IS_ARRAY | 傳回布林值，表示指定之運算式的類型為陣列。 |
 | IS_BOOL | 傳回布林值，表示指定之運算式的類型為布林值。 |
-| IS_DEFINED | 傳回布林值，表示屬性是否已經指派值。 只有當值是基本型別時，才支援這種情況。 基本類型包括字串、布林值、數值或`null`。 不支援 DateTime、物件類型和陣列。 |
+| IS_DEFINED | 傳回布林值，表示屬性是否已經指派值。 只有當值是基本型別時，才支援這種情況。 基本類型包括字串、布林值、數值或 `null` 。 不支援 DateTime、物件類型和陣列。 |
 | IS_NULL | 傳回布林值，表示指定之運算式的類型為 null。 |
 | IS_NUMBER | 傳回布林值，表示指定之運算式的類型為數字。 |
 | IS_OBJECT | 傳回布林值，表示指定之運算式的類型為 JSON 物件。 |
@@ -490,7 +489,7 @@ GROUP BY <group_by_element>
 
 在路由條件中，支援下列字串函式：
 
-| 函式 | 描述 |
+| 函式 | 說明 |
 | -------- | ----------- |
 | CONCAT(x, y, …) | 傳回字串，該字串是串連兩個或多個字串值的結果。 |
 | LENGTH(x) | 傳回指定字串運算式的字元數目。|

@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79456245"
 ---
 # <a name="feature-hashing-module-reference"></a>特徵雜湊模組參考
@@ -59,7 +58,7 @@ ms.locfileid: "79456245"
 
 例如，在雜湊之後，功能資料行看起來可能像這樣：
 
-|評等|雜湊特徵 1|雜湊功能2|雜湊功能3|
+|分級|雜湊特徵 1|雜湊功能2|雜湊功能3|
 |-----|-----|-----|-----|
 |4|1|1|0|
 |5|0|0|0|

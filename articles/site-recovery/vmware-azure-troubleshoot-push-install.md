@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
 ms.openlocfilehash: 1afd931249d4dbeda2b4b25f822837e2a564f959
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656314"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>針對行動服務推入安裝進行疑難排解
@@ -41,7 +40,7 @@ ms.locfileid: "80656314"
 * 若要手動新增停用遠端使用者存取控制的登錄機碼：
 
   * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
-  * 加入新`DWORD`的：`LocalAccountTokenFilterPolicy`
+  * 加入新的 `DWORD` ：`LocalAccountTokenFilterPolicy`
   * 將值設定為`1`
 
 * 若要新增登錄機碼，請在命令提示字元中執行下列命令：
@@ -51,9 +50,9 @@ ms.locfileid: "80656314"
 若為 Linux （**錯誤 95108**），您必須選擇**根**帳戶，才能成功安裝行動服務代理程式。 此外，SSH 檔案傳輸通訊協定（SFTP）服務應該正在執行。 若要在_sshd_config_檔案中啟用 SFTP 子系統和密碼驗證：
 
 1. 以**root**身分登入。
-1. 移至_到/etc/ssh/sshd_config_檔案，尋找以開頭的那一行`PasswordAuthentication`。
-1. 取消該行的批註，並將值變更`yes`為。
-1. 尋找開頭為`Subsystem`的一行，並取消批註這一行。
+1. 移至_到/etc/ssh/sshd_config_檔案，尋找以開頭的那一行 `PasswordAuthentication` 。
+1. 取消該行的批註，並將值變更為 `yes` 。
+1. 尋找開頭為的一行 `Subsystem` ，並取消批註這一行。
 1. 重新啟動 `sshd` 服務。
 
 如果您想要修改所選使用者帳戶的認證，請遵循[這些指示](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)。
@@ -95,10 +94,10 @@ ms.locfileid: "80656314"
 
 ### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>登入服務未在來源電腦上執行（錯誤識別碼：95522）
 
-登入服務未在來源電腦上執行，導致登入要求失敗。 無法安裝行動代理程式。 若要解決此錯誤，請使用下列其中一種方法來`Netlogon`啟動來源電腦上的服務：
+登入服務未在來源電腦上執行，導致登入要求失敗。 無法安裝行動代理程式。 若要解決此錯誤，請使用下列其中一種方法來啟動 `Netlogon` 來源電腦上的服務：
 
-* 若要從`Netlogon`命令提示字元啟動服務，請執行命令`net start Netlogon`。
-* 從 [ `Netlogon`工作管理員] 啟動服務。
+* 若要 `Netlogon` 從命令提示字元啟動服務，請執行命令 `net start Netlogon` 。
+* 從 [工作管理員] 啟動 `Netlogon` 服務。
 
 ## <a name="connectivity-failure-errorid-95117--97118"></a>連線失敗（錯誤識別碼： 95117 & 97118）
 
@@ -108,7 +107,7 @@ ms.locfileid: "80656314"
 
 * 請確定您可以從設定伺服器 ping 來源機器。 如果您在啟用複寫期間選擇相應放大進程伺服器，請確定您可以從進程伺服器 ping 來源機器。
 
-* 從來源伺服器電腦命令列，使用`Telnet` ping HTTPS 埠135上的設定伺服器或相應放大進程伺服器，如下列命令所示。 此命令會檢查是否有任何網路連線問題或防火牆埠封鎖問題。
+* 從來源伺服器電腦命令列，使用 `Telnet` PING HTTPS 埠135上的設定伺服器或相應放大進程伺服器，如下列命令所示。 此命令會檢查是否有任何網路連線問題或防火牆埠封鎖問題。
 
   `telnet <CS/ scale-out PS IP address> <135>`
 
@@ -118,9 +117,9 @@ ms.locfileid: "80656314"
   * SFTP 服務應執行。 若要在_sshd_config_檔案中啟用 SFTP 子系統和密碼驗證：
 
     1. 以**root**身分登入。
-    1. 移至_到/etc/ssh/sshd_config_檔案，尋找以開頭的那一行`PasswordAuthentication`。
-    1. 取消該行的批註，並將值變更`yes`為。
-    1. 尋找開頭為`Subsystem`的行，並將該行取消批註
+    1. 移至_到/etc/ssh/sshd_config_檔案，尋找以開頭的那一行 `PasswordAuthentication` 。
+    1. 取消該行的批註，並將值變更為 `yes` 。
+    1. 尋找開頭為的行 `Subsystem` ，並將該行取消批註
     1. 重新啟動 `sshd` 服務。
 
 * 如果在一段時間後沒有適當的回應，或已建立的連接因為連線的主機無法回應而失敗，則連接嘗試可能會失敗。
@@ -137,13 +136,13 @@ ms.locfileid: "80656314"
 若為**Windows 2008 R2 和先前版本**：
 
 * 若要透過 Windows 防火牆啟用檔案與列印共用，
-  1. 開啟 [**控制台** > ] [**系統及安全性** > ] [**Windows 防火牆**]。 在左窗格中，選取主控台樹中的 [**高級設定** > ] [**輸入規則**]。
+  1. 開啟 [**控制台**] [  >  **系統及安全性**] [  >  **Windows 防火牆**]。 在左窗格中，選取主控台樹中的 [**高級設定**] [  >  **輸入規則**]。
   1. 找出 [檔案及印表機共用] (NB-Session-In) 和 [檔案及印表機共用] (Smb-in) 的規則。
   1. 針對每個規則，以滑鼠右鍵按一下該規則，然後按一下 [啟用規則]****。
 
 * 若要使用群組原則啟用檔案共用：
-  1. 移至 [**開始**] `gpmc.msc` ，輸入並搜尋。
-  1. 在流覽窗格中，開啟下列資料夾： [**本機電腦原則** > ] [**使用者** > 設定]**系統管理範本** > [**Windows 元件** > ] [**網路共用**]。
+  1. 移至 [**開始**]，輸入 `gpmc.msc` 並搜尋。
+  1. 在流覽窗格中，開啟下列資料夾： [**本機電腦原則**] [使用者設定]  >  **User Configuration**  >  **系統管理範本**[  >  **Windows 元件**] [  >  **網路共用**]。
   1. 在 [詳細資料] 窗格中，按兩下 [防止使用者共用其設定檔內的檔案]****。
 
      若要停用群組原則設定，並啟用使用者共用檔案的能力，請選取 [**停用**]。
@@ -160,7 +159,7 @@ ms.locfileid: "80656314"
 
 若要啟用 WMI：
 
-1. 移至 [**控制台** > ] [**安全性**]，然後選取 [ **Windows 防火牆**]。
+1. 移至 [**控制台**] [  >  **安全性**]，然後選取 [ **Windows 防火牆**]。
 1. 選取 [**變更設定**]，然後選取 [**例外**] 索引標籤。
 1. 在 [**例外**狀況] 視窗中，選取 WINDOWS MANAGEMENT INSTRUMENTATION （WMI）的核取方塊，以啟用透過防火牆的 WMI 流量。
 
@@ -221,7 +220,7 @@ ms.locfileid: "80656314"
 
 裝置名稱應該取代為對應的 UUID。
 
-1. 執行命令`blkid \<device name>`來尋找裝置的 UUID。
+1. 執行命令來尋找裝置的 UUID `blkid \<device name>` 。
 
    例如：
 
@@ -232,7 +231,7 @@ ms.locfileid: "80656314"
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. 現在將裝置名稱取代為其 UUID，格式如`root=UUID=\<UUID>`。 例如，如果我們使用 _/boot/grub2/grub.cfg_、 _/boot/grub2/grub.cfg_或 _/etc/default/grub_檔案中所述之 root 和 resume 參數的 UUID 來取代裝置名稱，則檔案中的程式程式碼看起來會像下面這一行：
+1. 現在將裝置名稱取代為其 UUID，格式如 `root=UUID=\<UUID>` 。 例如，如果我們使用 _/boot/grub2/grub.cfg_、 _/boot/grub2/grub.cfg_或 _/etc/default/grub_檔案中所述之 root 和 resume 參數的 UUID 來取代裝置名稱，則檔案中的程式程式碼看起來會像下面這一行：
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -291,7 +290,7 @@ Site Recovery 行動服務有許多元件，其中一個稱為「篩選驅動程
 
 ### <a name="vss-exit-code-806"></a>VSS 結束代碼 806
 
-當用於安裝的使用者帳戶沒有執行`CSScript`命令的許可權時，就會發生此錯誤。 請為該使用者帳戶提供必要權限以執行指令碼，並重試該作業。
+當用於安裝的使用者帳戶沒有執行命令的許可權時，就會發生此錯誤 `CSScript` 。 請為該使用者帳戶提供必要權限以執行指令碼，並重試該作業。
 
 ### <a name="other-vss-errors"></a>其他 VSS 錯誤
 
@@ -301,7 +300,7 @@ Site Recovery 行動服務有許多元件，其中一個稱為「篩選驅動程
 
 ## <a name="vss-error---0x8004e00f"></a>VSS 錯誤-0x8004E00F
 
-此錯誤通常會在行動代理程式安裝期間發生`DCOM` ，因為和`DCOM`中的問題處於重大狀態。
+此錯誤通常會在行動代理程式安裝期間發生，因為和中的問題處於 `DCOM` `DCOM` 重大狀態。
 
 請使用下列程式來判斷錯誤的原因。
 
@@ -358,11 +357,11 @@ Site Recovery 行動服務有許多元件，其中一個稱為「篩選驅動程
 
 ## <a name="vss-provider-installation-fails-because-the-cluster-service-being-enabled-on-non-cluster-machine"></a>VSS 提供者安裝失敗，因為在非叢集電腦上啟用叢集服務
 
-此問題導致 Azure Site Recovery 行動代理程式安裝在 Azure Site Recovery VSS 提供者安裝期間失敗。 失敗是因為發生`COM+`的問題導致 VSS 提供者無法安裝。
+此問題導致 Azure Site Recovery 行動代理程式安裝在 Azure Site Recovery VSS 提供者安裝期間失敗。 失敗是因為發生 `COM+` 的問題導致 VSS 提供者無法安裝。
 
 ### <a name="to-identify-the-issue"></a>若要識別問題
 
-在位於_\<C:\ProgramData\ASRSetupLogs\UploadedLogs 日期時間_之設定伺服器的記錄檔中>UA_InstallLogFile .log，您會發現下列例外狀況：
+在位於_C:\ProgramData\ASRSetupLogs\UploadedLogs \<date-time> UA_InstallLogFile_ .log 的設定伺服器記錄檔中，您會發現下列例外狀況：
 
 ```plaintext
 COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Exception from HRESULT: 0x8004E00F)
@@ -379,9 +378,9 @@ COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Ex
 
 若要解決此問題：
 
-1. 使用之類`regedit.msc`的登錄編輯程式開啟登錄。
-1. 開啟`HKEY_LOCAL_MACHINE\SYSTEM`節點。
-1. 在`SYSTEM`節點中，找出控制項集。
+1. 使用之類的登錄編輯程式 `regedit.msc` 開啟登錄。
+1. 開啟 `HKEY_LOCAL_MACHINE\SYSTEM` 節點。
+1. 在 `SYSTEM` 節點中，找出控制項集。
 1. 開啟每個控制項集，並確認下列 Windows 驅動程式是否存在：
 
    * Atapi

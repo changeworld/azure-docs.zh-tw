@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: 瞭解如何使用 Azure Dev Spaces 與小組中的其他人共用 Azure Kubernetes Service 中的開發人員空間
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
 ms.openlocfilehash: 0fcb8be5107c7769af7e51dece9f190c8e7e22df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79474402"
 ---
 # <a name="share-azure-dev-spaces"></a>分享 Azure 開發人員空間

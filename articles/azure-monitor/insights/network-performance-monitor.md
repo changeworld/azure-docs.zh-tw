@@ -7,10 +7,9 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
 ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480873"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的網路效能監控解決方案
@@ -92,7 +91,7 @@ ExpressRoute 監視器的支援區域清單提供於[文件](https://docs.micros
     > 指令碼只會在本機設定 Windows 防火牆。 如果您有網路防火牆，請確定它允許傳至網路效能監視器所用 TCP 連接埠的流量。
 
     >[!NOTE]
-    > 您不需要針對服務連線能力監視執行[EnableRules](https://aka.ms/npmpowershellscript ) PowerShell 腳本。
+    > 您不需要執行適用于服務連線能力監視的[EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell 腳本。
 
     
 
@@ -108,7 +107,7 @@ ExpressRoute 監視器的支援區域清單提供於[文件](https://docs.micros
    ```
  
 
-### <a name="configure-the-solution"></a>設定方案 
+### <a name="configure-the-solution"></a>設定解決方案 
 
 1. 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) 將網路效能監視器解決方案新增至您的 OMS 工作區。 您也可以使用[從方案庫新增 Azure 監視器解決方案](../../azure-monitor/insights/solutions.md)中所述的程式。 
 2. 開啟 Log Analytics 工作區，然後選取 [概觀]**** 圖格。 
@@ -134,7 +133,7 @@ ExpressRoute 監視器的支援區域清單提供於[文件](https://docs.micros
 
    ![網路效能監視器組態頁面](media/network-performance-monitor/npm-private-peerings.png)
     
-這些線路和對等互連的監視一開始會處於停用狀態。 選取您想要監視的每個資源，並從右邊的詳細資料檢視中設定其監視。 選取 [儲存]**** 以儲存組態。 若要深入了解，請參閱「設定 ExpressRoute 監視」一文。 
+這些線路和對等互連的監視一開始會處於停用狀態。 選取您想要監視的每個資源，並從右邊的詳細資料檢視中設定其監視。 選取 [**儲存**] 以儲存設定。 若要深入了解，請參閱「設定 ExpressRoute 監視」一文。 
 
 設定完成之後，需要 30 分鐘到一小時的時間來填入資料。 當解決方案從您的網路中彙總資料時，您會在網路效能監視器的 [概觀]** 圖格上看到「解決方案需要其他設定」**** 訊息。 在收集資料並編製索引之後，[概觀]**** 圖格會變更，並對您通知網路的健康情況摘要。 接著，您可以編輯 Log Analytics 代理程式安裝所在節點的監視，以及從環境中探索到的子網路監視。
 
@@ -147,7 +146,7 @@ ExpressRoute 監視器的支援區域清單提供於[文件](https://docs.micros
 
 1. 選取或清除 **[子網路識別碼]** 旁的核取方塊。 然後，確定已視情況選取或清除 [用於監視]****。 您可以選取或清除多個子網路。 停用後，子網路就不受監視，因為代理程式將會更新為停止 ping 其他代理程式。 
 2. 選擇您要在特定子網路中監視的節點。 請從清單中選取特定子網路，並且在包含非受控與受控節點的清單之間移動所需的節點。 您可以將自訂描述新增至子網路。
-3. 選取 [儲存]**** 以儲存組態。 
+3. 選取 [**儲存**] 以儲存設定。 
 
 #### <a name="choose-nodes-to-monitor"></a>選擇要監視的節點
 
@@ -155,7 +154,7 @@ ExpressRoute 監視器的支援區域清單提供於[文件](https://docs.micros
 
 1. 選取或清除您要監視或停止監視的節點。 
 2. 視需要選取 [用於監視]****，或加以清除。 
-3. 選取 [儲存]  。 
+3. 選取 [儲存]。 
 
 
 設定您想要的功能：

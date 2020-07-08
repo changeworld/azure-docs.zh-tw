@@ -13,13 +13,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97dc46a34e1bb5bb85dcb771a9720a19d356e6f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79481206"
 ---
-# <a name="get-all-azure-ad-proxy-application-apps-published-with-no-certificate-uploaded"></a>取得發佈的所有 Azure AD Proxy 應用程式，但未上傳任何憑證
+# <a name="get-all-azure-ad-proxy-application-apps-published-with-no-certificate-uploaded"></a>取得在發佈時未上傳憑證的所有 Azure AD Proxy 應用程式
 
 此 PowerShell 腳本範例會列出使用自訂網域但未上傳有效的 TLS/SSL 憑證的所有 Azure Active Directory （Azure AD）應用程式 Proxy 應用程式。
 

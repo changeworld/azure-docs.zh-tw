@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471739"
 ---
 # <a name="caching-with-azure-front-door"></a>使用 Azure Front 快取
@@ -92,17 +91,17 @@ Front Door 將會快取資產，直到資產的存留時間 (TTL) 到期。 資�
 </br>若要確定使用者一律會取得最新的資產複本，最佳作法是為每個更新設定資產版本，然後將它們發佈為新的 URL。 Front Door 將立即為下一個用戶端要求擷取新的資產。 有時您可能想要清除所有邊緣節點的快取內容，並強制它們全部擷取新的更新的資產。 可能是因為您的 Web 應用程式更新，或快速更新包含不正確資訊的資產。
 
 </br>選取您希望從邊緣節點清除的資產。 如果您希望清除所有資產，請按一下 [全部清除] 核取方塊。 或者，在 [路徑] 文字方塊中輸入每個您想要清除之資產的路徑。 路徑支援下列格式。
-1. **單一路徑清除**：藉由指定資產的完整路徑（不含通訊協定和網域）來清除個別資產，副檔名為，例如/pictures/strasbourg.png;
-2. **萬用字元清除**︰星號 (\*) 可作為萬用字元。 在路徑中，清除具有/\*的所有資料夾、子資料夾和檔案，或指定資料夾並在特定資料夾下清除所有子資料夾和檔案\*，例如，/pictures/。\*
+1. **單一路徑清除**：藉由指定資產的完整路徑（不含通訊協定和網域）來清除個別資產，副檔名為，例如，/pictures/strasbourg.png;
+2. **萬用字元清除**︰星號 (\*) 可作為萬用字元。 在路徑中，清除具有/的所有資料夾、子資料夾和檔案， \* 或指定資料夾並在特定資料夾下清除所有子資料夾和檔案 \* ，例如，/pictures/ \* 。
 3. **根網域清除**︰清除路徑中有 "/" 之端點的根目錄。
 
 Front Door 上的快取清除是不區分大小寫的。 此外，它們是無從驗證查詢字串的，這表示清除 URL 將會清除它的所有查詢字串變數。 
 
 ## <a name="cache-expiration"></a>快取到期
 下列標頭的順序可用來判斷項目將在我們的快取中儲存的時間：</br>
-1. Cache-控制項： s-maxage =\<秒>
-2. 快取控制：最大-age\<= 秒>
-3. 到期： \<HTTP-日期>
+1. Cache-Control: s-maxage=\<seconds>
+2. 快取控制：最大壽命 =\<seconds>
+3. 失效\<http-date>
 
 快取控制回應標頭指出不會快取回應，例如快取控制：私用、快取控制：無快取和快取控制：不接受任何存放區。 不過，如果 POP 中有多個針對相同 URL 的要求，它們可能共用回應。 如果沒有快取控制項存在，預設行為是 AFD 會快取資源一段時間，其中 X 會隨機挑選1到3天。
 

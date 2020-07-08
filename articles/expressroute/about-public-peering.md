@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: 8c1afac834fb9abb2cbf82f16f046a1624b251f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79481128"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>建立和管理 ExpressRoute 公用對等互連
@@ -42,7 +41,7 @@ ms.locfileid: "79481128"
 
 本節說明可透過公用對等互連使用的服務。 因為公用對等互連已被取代，所以沒有計劃將新的或額外的服務新增至公用對等互連。 如果您使用公用對等互連，而且只有 Microsoft 對等互連才支援您想要使用的服務，您必須切換至 Microsoft 對等互連。 如需支援的服務清單，請參閱[Microsoft 對等互連](expressroute-faqs.md#microsoft-peering)。
 
-**支援**
+**支援：**
 
 * Power BI
 * 支援大部分 Azure 服務。 直接檢查您要用來驗證支援的服務。
@@ -50,10 +49,10 @@ ms.locfileid: "79481128"
 **不支援：**
   * CDN
   * Azure Front Door
-  * 多重要素驗證服務器（舊版）
+  * Multi-factor Authentication Server (舊版)
   * 流量管理員
 
-若要驗證特定服務的可用性，您可以查看該服務的檔，以查看是否有針對該服務發行的保留範圍。 然後，您可以查閱目標服務的 IP 範圍，並與[AZURE IP 範圍和服務標籤-公用雲端 XML](https://www.microsoft.com/download/details.aspx?id=56519)檔案中列出的範圍進行比較。 或者，您也可以開啟服務的支援票證以瞭解相關說明。
+若要驗證特定服務的可用性，您可以參閱該服務的文件，以查看是否有針對該服務發佈的保留範圍。 然後，您可以查閱目標服務的 IP 範圍，並與[AZURE IP 範圍和服務標籤-公用雲端 XML](https://www.microsoft.com/download/details.aspx?id=56519)檔案中列出的範圍進行比較。 或者，您也可以針對有問題的服務開啟支援票證，以釐清狀況。
 
 ## <a name="peering-comparison"></a><a name="compare"></a>對等互連比較
 

@@ -14,10 +14,9 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2019
 ms.openlocfilehash: 855a050afa14144f8963f24398c6b7b3939ef562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656475"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>變更 Azure 通知中樞命名空間的定價層
@@ -42,7 +41,7 @@ ms.locfileid: "80656475"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取左側功能表上的 [**所有服務**]。
-3. 選取 [物聯網]**** 區段中的 [通知中樞命名空間]****。 如果您選取文字旁的`*`星號（），它會加入至 [我的最愛 **]** 下方的左側導覽列。 它可協助您更快速地存取命名空間頁面。 將它新增至 [我的最愛] 之後，選取 [**通知中樞命名空間**]。
+3. 選取 [物聯網]**** 區段中的 [通知中樞命名空間]****。 如果您選取文字旁的星號（ `*` ），它會加入至 [我的最愛 **]** 下方的左側導覽列。 它可協助您更快速地存取命名空間頁面。 將它新增至 [我的最愛] 之後，選取 [**通知中樞命名空間**]。
 
     ![所有服務 -> 通知中樞命名空間](./media/change-pricing-tier/all-services-nhub.png)
 
@@ -58,7 +57,7 @@ ms.locfileid: "80656475"
 7. 變更 [定價層]，然後按一下 [**選取**] 按鈕。
 8. 您可以在 [**警示**] 中查看 [階層變更] 動作的狀態。
 9. 切換至 [概觀]**** 頁面。 確認 [基本資訊]**** 區段中的 [定價層]**** 欄位顯示新的層級。
-10. 這是選擇性步驟。 選取命名空間中的任何中樞。 確認您看到與 [基本資訊]**** 區段中相同的定價層。 針對命名空間中的所有中樞，您應該會看到相同的定價層。
+10. 此為選用步驟。 選取命名空間中的任何中樞。 確認您看到與 [基本資訊]**** 區段中相同的定價層。 針對命名空間中的所有中樞，您應該會看到相同的定價層。
 
 ### <a name="change-tier-on-the-hub-page"></a>在中樞頁面上變更層級
 

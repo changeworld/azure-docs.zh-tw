@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: bb1de5d51afd01cf0aa519f12aa3665bee804efd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471671"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure Front 中 HTTP 標頭的通訊協定支援
@@ -33,7 +32,7 @@ Front 門板會接受來自傳入要求的大部分標頭，而不需要修改�
 
 Front 門包含來自傳入要求的標頭，除非因為限制而移除。 Front 門也會新增下列標頭：
 
-| 頁首  | 範例和描述 |
+| Header  | 範例和描述 |
 | ------------- | ------------- |
 | Via |  Via： 1.1 Azure </br> Front 門板會將用戶端的 HTTP 版本加上*Azure*做為 Via 標頭的值。 此標頭會指出用戶端的 HTTP 版本，而該 Front 門是用戶端與後端之間要求的中繼收件者。  |
 | X-Azure-ClientIP | X-Azure-ClientIP：127.0.0。1 </br> 表示與所處理之要求相關聯的用戶端 IP 位址。 例如，來自 proxy 的要求可能會加入 X 轉送的標頭，以指出原始呼叫者的 IP 位址。 |
@@ -49,13 +48,13 @@ Front 門包含來自傳入要求的標頭，除非因為限制而移除。 Fron
 
 從後端傳送至 Front 的任何標頭也會傳遞至用戶端。 以下是從前門傳送至用戶端的標頭。
 
-| 頁首  | 範例 |
+| Header  | 範例 |
 | ------------- | ------------- |
 | X-Azure-Ref |  *X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 這是唯一的參考字串，可識別由 Front Door 提供服務的要求。 這對疑難排解很重要，因為它是用來搜尋存取記錄。|
 
 ## <a name="next-steps"></a>後續步驟
 
-- [建立前門](quickstart-create-front-door.md)
+- [建立前端服務](quickstart-create-front-door.md)
 - [Front 門板的運作方式](front-door-routing-architecture.md)
 
 <!--Image references-->

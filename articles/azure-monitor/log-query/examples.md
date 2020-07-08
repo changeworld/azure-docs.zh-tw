@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480278"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure 監視器記錄查詢範例
@@ -229,7 +228,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>使用活動識別碼計算安全性事件的數目
 
 
-這個範例依賴**活動**資料行的固定結構： \<識別碼\>-\<名稱\>。
+這個範例依賴**活動**資料行的固定結構： \<ID\> - \<Name\> 。
 它會將**活動**的值剖析為兩個新的資料行，並計算每個**活動識別碼**的發生次數。
 
 ```Kusto
@@ -270,7 +269,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>剖析活動名稱和識別碼
-下列兩個範例依賴**活動**資料行的固定結構： \<識別碼\>-\<名稱\>。 第一個範例使用**剖析**運算子來將值指派給兩個新的資料行：**activityID** 和 **activityDesc**。
+下列兩個範例依賴**活動**資料行的固定結構： \<ID\> - \<Name\> 。 第一個範例使用**剖析**運算子來將值指派給兩個新的資料行：**activityID** 和 **activityDesc**。
 
 ```Kusto
 SecurityEvent
@@ -379,7 +378,7 @@ suspicious_users_that_later_logged_in
 
 #### <a name="data-volume-by-solution"></a>依方案分類的資料量
 
-過去一個月（不包括最後一天），用來依解決方案來查看計費資料量的查詢如下：
+若要檢視上個月 (不含未滿一天的最後一天) 依解決方案分類的可計費資料量，所用的查詢為：
 
 ```kusto
 Usage 
@@ -389,9 +388,9 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-請注意，子句`where IsBillable = true`會從沒有任何內嵌費用的特定解決方案中篩選出資料類型。  和`TimeGenerated`的子句，只是為了確保 Azure 入口網站中的查詢體驗會看起來超過預設的24小時。 使用 Usage 資料類型時， `StartTime`和`EndTime`代表顯示結果的時間值區。 
+請注意，子句 `where IsBillable = true` 會篩選掉來自無擷取成本之特定解決方案的資料類型。  和的子句 `TimeGenerated` ，只是為了確保 Azure 入口網站中的查詢體驗會看起來超過預設的24小時。 在使用 Usage 資料類型時，`StartTime` 和 `EndTime` 代表所顯示結果所屬的時段。 
 
-#### <a name="data-volume-by-type"></a>資料量（依類型）
+#### <a name="data-volume-by-type"></a>資料量 (依類型)
 
 您可以進一步向下切入，以查看依資料類型的資料趨勢：
 
@@ -403,7 +402,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
 ```
 
-或者，若要依解決方案查看資料表，並輸入上個月的類型，
+或者，若要查看上個月的資料表 (依解決方案和類型)，
 
 ```kusto
 Usage 
@@ -415,7 +414,7 @@ Usage
 ```
 
 > [!NOTE]
-> [使用量] 資料類型的部分欄位雖然仍位於結構描述中，但皆已過時，且系統將不再填入其值。 這包括 [Computer]****，以及其他與擷取相關的欄位 ([TotalBatches]****、[BatchesWithinSla]****、[BatchesOutsideSla]****、[BatchesCapped]****，以及 [AverageProcessingTimeMs]****)。
+> [使用量] 資料類型的部分欄位雖然仍位於結構描述中，但皆已過時，且系統將不再填入其值。 這包括 [Computer]，以及其他與擷取相關的欄位 ([TotalBatches]、[BatchesWithinSla]、[BatchesOutsideSla]、[BatchesCapped]，以及 [AverageProcessingTimeMs])。
 
 ## <a name="updates"></a>更新
 

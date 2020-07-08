@@ -4,10 +4,9 @@ description: 了解如何掛接秘密磁碟區，以儲存供您的容器執行�
 ms.topic: article
 ms.date: 04/03/2020
 ms.openlocfilehash: 756828e71174246450245938595c8872afc62961
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657158"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>在 Azure 容器執行個體中掛接秘密磁碟區
@@ -22,7 +21,7 @@ ms.locfileid: "80657158"
 
 ## <a name="mount-secret-volume---azure-cli"></a>掛接秘密磁碟區 - Azure CLI
 
-若要使用 Azure CLI 部署具有一或多個祕密的容器，請在 [az container create][az-container-create] 命令中包和 `--secrets` 和 `--secrets-mount-path` 參數。 這個範例會掛接由兩個檔案所組成的*秘密*磁片區，其中包含秘密 "mysecret1" 和`/mnt/secrets`"mysecret2"，網址為：
+若要使用 Azure CLI 部署具有一或多個祕密的容器，請在 [az container create][az-container-create] 命令中包和 `--secrets` 和 `--secrets-mount-path` 參數。 這個範例會掛接由兩個檔案所組成的*秘密*磁片區，其中包含秘密 "mysecret1" 和 "mysecret2"，網址為 `/mnt/secrets` ：
 
 ```azurecli-interactive
 az container create \
@@ -112,7 +111,7 @@ az container create \
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-若要使用 Resource Manager 範本進行部署，請將上述 JSON 儲存到名`deploy-aci.json`為的檔案，然後使用`--template-file`參數執行[az deployment group create][az-deployment-group-create]命令：
+若要使用 Resource Manager 範本進行部署，請將上述 JSON 儲存到名為的檔案 `deploy-aci.json` ，然後使用參數執行[az deployment group create][az-deployment-group-create]命令 `--template-file` ：
 
 ```azurecli-interactive
 # Deploy with Resource Manager template

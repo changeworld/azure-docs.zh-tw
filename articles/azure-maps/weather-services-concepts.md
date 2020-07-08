@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 03a16ac065b585c499efa268500e0a8c81c07738
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333807"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure 地圖服務中的氣象服務
@@ -23,7 +22,7 @@ ms.locfileid: "80333807"
 
 某些氣象服務 Api 可讓使用者指定以度量或英制單位傳回資料。 針對這些 Api 傳回的回應包含 Unittype.pixel 表示，以及可用於單元轉譯的數值。 請參閱下表來解讀這些值。
 
-|Unittype.pixel 表示|描述         |
+|Unittype.pixel 表示|說明         |
 |--------|--------------------|
 |0       |英呎                |
 |1       |英吋              |
@@ -52,9 +51,9 @@ ms.locfileid: "80333807"
 
 ## <a name="weather-icons"></a>氣象圖示
 
-某些天氣服務 Api 會`iconCode`在回應中傳回。 `iconCode`是用來定義圖示的數位值。 請勿直接從您的應用程式連結到這些映射，Url 可以和將會變更。
+某些天氣服務 Api 會 `iconCode` 在回應中傳回。 `iconCode`是用來定義圖示的數位值。 請勿直接從您的應用程式連結到這些映射，Url 可以和將會變更。
 
-| 圖示編號 |圖示| Day | 日 | Text |
+| 圖示編號 |圖示| 天 | 日 | Text |
 |-------------|:----:|-----|-------|------|
 | 1           |![](./media/weather-services-concepts/sunny-i.png)                      | 是 |  否    | 晴朗|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | 是 |  否    | 主要 Sunny|
@@ -62,33 +61,33 @@ ms.locfileid: "80333807"
 | 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | 是 |  否    | 間歇雲端|
 | 5           |![](./media/weather-services-concepts/hazy-sunshine.png)               | 是 |  否    | 模糊陽光 |
 | 6           |![](./media/weather-services-concepts/mostly-cloudy.png)               | 是 |  否    | 大部分的雲|
-| 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | 是 |  是   | 雲 |
-| 8           |![](./media/weather-services-concepts/dreary-overcast.png)             | 是 |  是   | 單調（Overcast）|
-| 11           |![](./media/weather-services-concepts/fog-i.png)                       | 是 |  是   | 雲|
-| 12           |![](./media/weather-services-concepts/showers-i.png)                   | 是 |  是   | 大氣|
+| 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | Yes |  Yes   | 雲 |
+| 8           |![](./media/weather-services-concepts/dreary-overcast.png)             | Yes |  Yes   | 單調（Overcast）|
+| 11           |![](./media/weather-services-concepts/fog-i.png)                       | Yes |  Yes   | 雲|
+| 12           |![](./media/weather-services-concepts/showers-i.png)                   | Yes |  Yes   | 大氣|
 | 13           |![](./media/weather-services-concepts/mostly-cloudy-showers.png)       | 是 |  否    | 大部分使用大氣的模糊|
 | 14           |![](./media/weather-services-concepts/partly-sunny-showers.png)        | 是 |  否    | 部分 Sunny 與大氣|
-| 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | 是 |  是   | Thunderstorms|
+| 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | Yes |  Yes   | Thunderstorms|
 | 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | 是 |  否    | 大部分使用 Thunderstorms 的模糊|
 | 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | 是 |  否    | 部分 Sunny 與 Thunderstorms|
-| 18           |![](./media/weather-services-concepts/rain-i.png)                      | 是 |  是   | Rain|
-| 19           |![](./media/weather-services-concepts/flurries-i.png)                  | 是 |  是   | Flurries|
+| 18           |![](./media/weather-services-concepts/rain-i.png)                      | 是 |  Yes   | Rain|
+| 19           |![](./media/weather-services-concepts/flurries-i.png)                  | Yes |  Yes   | Flurries|
 | 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | 是 |  否    | 大部分使用 Flurries 的模糊|
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | 是 |  否    | 部分 Sunny 與 Flurries|
-| 22           |![](./media/weather-services-concepts/snow-i.png)                      | 是 |  是   | Snow|
+| 22           |![](./media/weather-services-concepts/snow-i.png)                      | Yes |  Yes   | Snow|
 | 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | 是 |  否    | 大多是具有雪的一種雲|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | 是 |  是   | Ice |
-| 25           |![](./media/weather-services-concepts/sleet-i.png)                     | 是 |  是   | Sleet|
-| 26           |![](./media/weather-services-concepts/freezing-rain.png)              | 是 |  是   | 凍結 Rain|
-| 29           |![](./media/weather-services-concepts/rain-snow.png)                  | 是 |  是   | 雨和雪|
-| 30           |![](./media/weather-services-concepts/hot-i.png)                       | 是 |  是   | 經常性存取|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | 是 |  是   | 冷|
-| 32           |![](./media/weather-services-concepts/windy-i.png)                     | 是 |  是   | 風大|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | 否  |  是   | Clear|
-| 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | 否  |  是   | 大多清除|
-| 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | 否  |  是   | 部分雲|
-| 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | 否  |  是   | 間歇雲端|
-| 37           |![](./media/weather-services-concepts/hazymoon-light.png)             | 否  |  是   | 模糊 Moonlight|
+| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Yes |  Yes   | Ice |
+| 25           |![](./media/weather-services-concepts/sleet-i.png)                     | Yes |  Yes   | Sleet|
+| 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Yes |  Yes   | 凍結 Rain|
+| 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Yes |  Yes   | 雨和雪|
+| 30           |![](./media/weather-services-concepts/hot-i.png)                       | Yes |  Yes   | 經常性存取|
+| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Yes |  Yes   | 冷|
+| 32           |![](./media/weather-services-concepts/windy-i.png)                     | Yes |  Yes   | 風大|
+| 33           |![](./media/weather-services-concepts/clear-night.png)                | 否  |  Yes   | 清除|
+| 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | 否  |  Yes   | 大多清除|
+| 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | 否  |  Yes   | 部分雲|
+| 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | 否  |  Yes   | 間歇雲端|
+| 37           |![](./media/weather-services-concepts/hazymoon-light.png)             | 否  |  Yes   | 模糊 Moonlight|
 | 38           |![](./media/weather-services-concepts/mostly-cloudy-night.png)         | 否  |  是   | 大部分的雲|
 | 39           |![](./media/weather-services-concepts/partly-cloudy-showers-night.png)  | 否  |  是   | 具有大氣的部分模糊|
 | 40           |![](./media/weather-services-concepts/mostly-cloudy-showers-night.png)  | 否  |  是   | 大部分使用大氣的模糊|

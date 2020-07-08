@@ -4,10 +4,9 @@ description: 了解如何透過將 Application Insights Connector 新增到您�
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79473161"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用 Logic Apps 自動執行 Application Insights 程序
@@ -118,7 +117,7 @@ ms.locfileid: "79473161"
       ![Office 365 電子郵件設定畫面](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>步驟 7：儲存並測試邏輯應用程式
-* 按一下 [儲存]**** 以儲存您的變更。
+* 按一下 [確定] 儲存變更。
 
 您可以等待觸發程式執行邏輯應用程式，也可以選取 [執行]**** 來立即執行邏輯應用程式。
 

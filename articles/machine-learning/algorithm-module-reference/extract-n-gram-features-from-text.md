@@ -10,15 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
 ms.openlocfilehash: efe09c1d516b37c23b024e07ae387772fa7e5992
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477607"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>從文字模塊參考中解壓縮 N 語法功能
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。 使用 [從文字中解壓縮 N 語法特徵] 模組來為非結構化文字資料提供*特徵*。 
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。 使用 [從文字中解壓縮 N 語法特徵] 模組來為非結構化文字資料提供*特徵*。 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>設定從文字模塊解壓縮 N 語法功能
 
@@ -137,4 +136,4 @@ ms.locfileid: "79477607"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。

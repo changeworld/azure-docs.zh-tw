@@ -10,15 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
 ms.openlocfilehash: 6e4d4c8f798418e090caeba091dec33c71f0458f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477488"
 ---
 # <a name="preprocess-text"></a>前置處理文字
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
 使用前置處理**文字**模組來清除和簡化文字。 它支援下列常見的文字處理作業：
 
@@ -51,7 +50,7 @@ ms.locfileid: "79477488"
 
 1. 偵測**句子**：如果您希望模組在執行分析時插入句子界限標記，請選取此選項。
 
-    此模組使用一連串的三個管線字元`|||`來表示句子結束字元。
+    此模組使用一連串的三個管線字元 `|||` 來表示句子結束字元。
 
 1. 使用正則運算式執行選擇性的尋找和取代作業。
 
@@ -70,21 +69,21 @@ ms.locfileid: "79477488"
     
     * **移除重複的字元**：選取這個選項可移除任何重複超過兩次以上的序列中的額外字元。 例如，"aaaaa" 這類序列會縮減為 "aa"。
     
-    * **移除電子郵件地址**：選取此選項可移除任何格式`<string>@<string>`的順序。  
-    * **移除 url**：選取此選項可移除任何包含下列 URL 前置詞的序列： `http`、 `https`、 `ftp`、`www`
+    * **移除電子郵件地址**：選取此選項可移除任何格式的順序 `<string>@<string>` 。  
+    * **移除 url**：選取此選項可移除任何包含下列 URL 前置詞的序列： `http` 、 `https` 、 `ftp` 、`www`
     
 1. **展開動詞縮寫**：此選項只適用于使用動詞縮寫的語言;目前僅限英文。 
 
     例如，藉由選取此選項，您可以將「不會*保留在該處*」片語取代為「*不會保留在該處*」。
 
-1. **將反斜線與斜線**正規化：選取此選項可將的`\\`所有`/`實例對應至。
+1. **將反斜線與斜線**正規化：選取此選項可將的所有實例對應 `\\` 至 `/` 。
 
-1. 以**特殊字元分割標記**：如果您想要在`&`、 `-`等字元上中斷文字，請選取此選項。 此選項也可以在重複字元超過兩次時，減少特殊字元。 
+1. 以**特殊字元分割標記**：如果您想要在、等字元上中斷文字，請選取此選項 `&` `-` 。 此選項也可以在重複字元超過兩次時，減少特殊字元。 
 
-    例如， `MS---WORD`字串會分成三個標記`MS`： `-`、和。 `WORD`
+    例如，字串會分成 `MS---WORD` 三個標記：、 `MS` `-` 和 `WORD` 。
 
 1. 提交管線。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

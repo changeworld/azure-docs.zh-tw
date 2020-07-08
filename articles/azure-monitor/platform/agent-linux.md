@@ -7,10 +7,9 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
 ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637512"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>將 Linux 電腦連線至 Azure 監視器
@@ -29,9 +28,9 @@ ms.locfileid: "80637512"
 
 ## <a name="agent-install-package"></a>代理程式安裝套件
 
-適用于 Linux 的 Log Analytics 代理套裝程式含多個套件。 發行檔案包含下列套件，可以藉由使用`--extract`參數執行 shell 組合來取得：
+適用于 Linux 的 Log Analytics 代理套裝程式含多個套件。 發行檔案包含下列套件，可以藉由使用參數執行 shell 組合來取得 `--extract` ：
 
-**套件** | **版本** | **說明**
+**套件** \(英文\) | **版本** | **描述**
 ----------- | ----------- | --------------
 omsagent | 1.12.15 | 適用于 Linux 的 Log Analytics 代理程式
 omsconfig | 1.1.1 | Log Analytics 代理程式的設定代理程式
@@ -46,10 +45,10 @@ docker-cimprov | 1.0.0 | OMI 的 Docker 提供者。 僅在偵測到 Docker 時�
 安裝適用于 Linux 的 Log Analytics 代理程式套件之後，會套用下列額外的全系統設定變更。 解除安裝 omsagent 封裝時，會移除這些構件。
 
 * 會建立名為 `omsagent` 的非特殊權限使用者。 此守護程式會在此認證下執行。 
-* Sudoers *include*檔案會建立在中`/etc/sudoers.d/omsagent`。 這會`omsagent`授與重新開機 syslog 和 omsagent 守護程式的授權。 如果安裝的 sudo 版本不支援 sudo *include*指示詞，這些專案將會寫入至`/etc/sudoers`。
+* Sudoers *include*檔案會建立在中 `/etc/sudoers.d/omsagent` 。 這會授 `omsagent` 與重新開機 syslog 和 omsagent 守護程式的授權。 如果安裝的 sudo 版本不支援 sudo *include*指示詞，這些專案將會寫入至 `/etc/sudoers` 。
 * syslog 組態修改成將事件子集轉送給代理程式。 如需詳細資訊，請參閱[設定 Syslog 資料收集](data-sources-syslog.md)。
 
-在受監視的 Linux 電腦上，代理程式會`omsagent`列為。 `omsconfig`是適用于 Linux 的 Log Analytics 代理程式設定代理程式，會每隔5分鐘尋找新的入口網站端設定。 新的和更新的設定會套用至位於的代理程式配置`/etc/opt/microsoft/omsagent/conf/omsagent.conf`檔。
+在受監視的 Linux 電腦上，代理程式會列為 `omsagent` 。 `omsconfig`是適用于 Linux 的 Log Analytics 代理程式設定代理程式，會每隔5分鐘尋找新的入口網站端設定。 新的和更新的設定會套用至位於的代理程式設定檔 `/etc/opt/microsoft/omsagent/conf/omsagent.conf` 。
 
 ## <a name="obtain-workspace-id-and-key"></a>取得工作區識別碼和金鑰
 
@@ -57,17 +56,17 @@ docker-cimprov | 1.0.0 | OMI 的 Docker 提供者。 僅在偵測到 Docker 時�
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
-1. 在 Azure 入口網站的左上角，選取 [所有服務]****。 在搜尋方塊中，輸入 **Log Analytics**。 當您輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]****。
+1. 在 Azure 入口網站的左上角，選取 [所有服務]。 在搜尋方塊中，輸入 **Log Analytics**。 當您輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics 工作區]。
 
-2. 在 Log Analytics 工作區清單中，選取您稍早建立的工作區  (您可能已經將它命名為 **DefaultLAWorkspace**)。
+2. 在 Log Analytics 工作區清單中，選取您稍早建立的工作區 (您可能已經將它命名為 **DefaultLAWorkspace**)。
 
-3. 選取 [ **Advanced settings**]：
+3. 選取 [進階設定]：
 
     ![Azure 入口網站中的 Log Analytics 進階設定功能表](../learn/media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
  
-4. 選取 [連接的來源]****，然後選取 [Linux 伺服器]****。
+4. 選取 [連接的來源]，然後選取 [Linux 伺服器]。
 
-5. [工作區識別碼]**** 和 [主要金鑰]**** 右邊的值。 將兩者複製並貼到您最愛的編輯器。
+5. [工作區識別碼] 和 [主要金鑰] 右邊的值。 將兩者複製並貼到您最愛的編輯器。
 
 ## <a name="install-the-agent-manually"></a>手動安裝代理程式
 
@@ -78,16 +77,16 @@ docker-cimprov | 1.0.0 | OMI 的 Docker 提供者。 僅在偵測到 Docker 時�
 
 1. 使用 scp/sftp，將適當的套件組合（x64 或 x86）[下載](https://github.com/microsoft/OMS-Agent-for-Linux#azure-install-guide)並傳輸至您的 Linux VM 或實體電腦。
 
-2. 使用`--install`引數安裝配套。 若要在安裝期間上架至 Log Analytics 工作區`-w <WorkspaceID>` ， `-s <workspaceKey>`請提供稍早複製的和參數。
+2. 使用 `--install` 引數安裝配套。 若要在安裝期間上架至 Log Analytics 工作區，請提供稍 `-w <WorkspaceID>` `-s <workspaceKey>` 早複製的和參數。
 
     >[!NOTE]
-    >如果已安裝任何相依`--upgrade`的封裝（例如 omi、scx、omsconfig 或其舊版），您就必須使用引數，如果已安裝適用于 Linux 的 system Center Operations Manager 代理程式，就會發生這種情況。 
+    >`--upgrade`如果已安裝任何相依的封裝（例如 omi、scx、omsconfig 或其舊版），您就必須使用引數，如果已安裝適用于 Linux 的 System Center Operations Manager 代理程式，就會發生這種情況。 
 
     ```
     sudo sh ./omsagent-*.universal.x64.sh --install -w <workspace id> -s <shared key>
     ```
 
-3. 若要將 Linux 代理程式設定為透過 Log Analytics 閘道安裝並聯機到 Log Analytics 工作區，請執行下列命令以提供 proxy、工作區識別碼和工作區金鑰參數。 您可以藉由包含`-p [protocol://][user:password@]proxyhost[:port]`，在命令列上指定此設定。 *Proxyhost*屬性會接受 Log Analytics 閘道伺服器的完整功能變數名稱或 IP 位址。  
+3. 若要將 Linux 代理程式設定為透過 Log Analytics 閘道安裝並聯機到 Log Analytics 工作區，請執行下列命令以提供 proxy、工作區識別碼和工作區金鑰參數。 您可以藉由包含，在命令列上指定此設定 `-p [protocol://][user:password@]proxyhost[:port]` 。 *Proxyhost*屬性會接受 Log Analytics 閘道伺服器的完整功能變數名稱或 IP 位址。  
 
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
@@ -121,7 +120,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 
 下列步驟會使用適用于 Linux 電腦的包裝函式腳本（可直接通訊或透過 proxy 伺服器來下載裝載于 GitHub 上的代理程式，並安裝代理程式），在 Azure 和 Azure Government 雲端中設定 Log Analytics 的代理程式。  
 
-如果您的 Linux 電腦需要透過 proxy 伺服器與 Log Analytics 通訊，可以藉由包含`-p [protocol://][user:password@]proxyhost[:port]`在命令列上指定此設定。 *Protocol*屬性會接受`http`或`https`，而*proxyhost*屬性會接受 proxy 伺服器的完整功能變數名稱或 IP 位址。 
+如果您的 Linux 電腦需要透過 proxy 伺服器與 Log Analytics 通訊，可以藉由包含在命令列上指定此設定 `-p [protocol://][user:password@]proxyhost[:port]` 。 *Protocol*屬性會接受 `http` 或 `https` ，而*proxyhost*屬性會接受 PROXY 伺服器的完整功能變數名稱或 IP 位址。 
 
 例如：`https://proxy01.contoso.com:30443`
 
@@ -158,10 +157,10 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 
 ## <a name="upgrade-from-a-previous-release"></a>從舊版升級
 
-在每個版本中，都支援從版本 1.0.0-47 開始的舊版升級。 使用`--upgrade`參數執行安裝，將代理程式的所有元件升級為最新版本。
+在每個版本中，都支援從版本 1.0.0-47 開始的舊版升級。 使用參數執行安裝 `--upgrade` ，將代理程式的所有元件升級為最新版本。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[管理和維護適用于 Windows 和 Linux 的 Log Analytics 代理程式](agent-manage.md)，以瞭解如何從虛擬機器重新設定、升級或移除代理程式。
+- 檢閱[管理及維護適用於 Windows 和 Linux 的 Log Analytics 代理程式](agent-manage.md)，以了解如何重新設定、升級或移除虛擬機器中的代理程式。
 
 - 如果您安裝或管理代理程式時遇到的問題，請參閱[針對 Linux 代理程式進行疑難排解](agent-linux-troubleshoot.md)。

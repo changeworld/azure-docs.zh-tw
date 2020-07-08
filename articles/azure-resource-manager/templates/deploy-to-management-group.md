@@ -4,10 +4,9 @@ description: 說明如何在 Azure Resource Manager 範本的管理群組範圍�
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: 863d1330412fa238b820eb0f1f05351fc723de6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460308"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理群組層級建立資源
@@ -35,7 +34,7 @@ ms.locfileid: "79460308"
 https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
 ```
 
-所有部署範圍的參數檔案架構都相同。 針對參數檔案，請使用：
+所有部署範圍的參數檔案結構描述都相同。 針對參數檔案，請使用：
 
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
@@ -73,18 +72,18 @@ New-AzManagementGroupDeployment `
 
 您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
 
-針對每個部署名稱，此位置是不可變的。 當不同位置有相同名稱的現有部署時，您無法在一個位置建立部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
+對於每個部署名稱而言，此位置是不可變的。 當某個位置已經有名稱相同的現有部署時，您無法在其他位置建立部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
 
 ## <a name="use-template-functions"></a>使用範本函式
 
 針對管理群組部署，使用範本函式時有一些重要的考慮：
 
 * **不**支援 [resourceGroup()](template-functions-resource.md#resourcegroup) 函式。
-* **不**支援[訂閱（）](template-functions-resource.md#subscription)函數。
+* **不**支援 [subscription()](template-functions-resource.md#subscription) 函式。
 * 支援 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函式。
 * 支援 [resourceId()](template-functions-resource.md#resourceid) 函式。 使用它來取得用於管理群組層級部署之資源的資源識別碼。 請勿提供資源群組參數的值。
 
-  例如，若要取得原則定義的資源識別碼，請使用：
+  例如，若要取得原則定義的資源識別碼，使用：
   
   ```json
   resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
@@ -172,6 +171,6 @@ New-AzManagementGroupDeployment `
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要瞭解如何指派角色，請參閱[使用 RBAC 和 Azure Resource Manager 範本來管理 Azure 資源的存取權](../../role-based-access-control/role-assignments-template.md)。
+* 若要了解如何指派角色，請參閱[使用 RBAC 和 Azure Resource Manager 範本管理對 Azure 資源的存取](../../role-based-access-control/role-assignments-template.md)。
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
 * 您也可以部署訂用帳戶[層](deploy-to-subscription.md)級和[租使用者層級](deploy-to-tenant.md)的範本。

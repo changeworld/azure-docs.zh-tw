@@ -16,15 +16,14 @@ ms.date: 03/17/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c1c9440f7ec70cea98f270f04c3030c800dd0fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79461107"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒體服務動態加密來保護您的內容
 
-使用 Azure 媒體服務協助保護您的媒體，使其不受電腦的儲存、處理和傳遞時的影響。 使用媒體服務，您就能傳遞利用進階加密標準 (AES-128) 或下列三個主要數位版權管理 (DRM) 系統中任一個所動態加密的即時與隨選內容：Microsoft PlayReady、Google Widevine 和 Apple FairPlay。 媒體服務也提供服務，可傳遞 AES 金鑰和 DRM (PlayReady、Widevine 和 FairPlay) 授權給授權用戶端。 如果內容是使用 AES clear 金鑰進行加密，並透過 HTTPS 傳送，則在到達用戶端之前，都不會很清楚。 
+使用 Azure 媒體服務來協助保護媒體從離開電腦到進行儲存、處理和傳遞時的安全。 使用媒體服務，您就能傳遞利用進階加密標準 (AES-128) 或下列三個主要數位版權管理 (DRM) 系統中任一個所動態加密的即時與隨選內容：Microsoft PlayReady、Google Widevine 和 Apple FairPlay。 媒體服務也提供服務，可傳遞 AES 金鑰和 DRM (PlayReady、Widevine 和 FairPlay) 授權給授權用戶端。 如果內容是使用 AES clear 金鑰進行加密，並透過 HTTPS 傳送，則在到達用戶端之前，都不會很清楚。 
 
 在媒體服務 v3 中，內容金鑰會與串流定位器相關聯（請參閱[此範例](protect-with-aes128.md)）。 如果使用媒體服務金鑰傳遞服務，您可以讓 Azure 媒體服務為您產生內容金鑰。 如果您要使用自己的金鑰傳遞服務，或如果您需要處理高可用性案例，且在兩個資料中心內必須擁有相同的內容金鑰，則應該自行產生內容金鑰。
 
@@ -70,7 +69,7 @@ ms.locfileid: "79461107"
 
 2. 建立[串流定位器](streaming-locators-concept.md)，其設定為串流加密的資產。
   
-   串流定位器必須與[串流原則](streaming-policy-concept.md)相關聯。 在範例中，我們將`StreamingLocator.StreamingPolicyName`設定為「Predefined_MultiDrmCencStreaming」原則。
+   串流定位器必須與[串流原則](streaming-policy-concept.md)相關聯。 在範例中，我們將設定 `StreamingLocator.StreamingPolicyName` 為「Predefined_MultiDrmCencStreaming」原則。
 
    會套用 PlayReady 和 Widevine 加密，並根據所設定的 DRM 授權將金鑰傳遞至播放用戶端。 如果您也想要使用 CBCS （FairPlay）來加密您的串流，請使用「Predefined_MultiDrmStreaming」原則。
 
@@ -184,14 +183,14 @@ Smooth Streaming 通訊協定支援下列容器格式和加密配置。
 
 ### <a name="token-replay-prevention"></a>權杖重新執行防止
 
-「*權杖*重新執行防護」功能可讓媒體服務客戶設定相同權杖可用來要求金鑰或授權的次數限制。 客戶可以在權杖中新增類型`urn:microsoft:azure:mediaservices:maxuses`的宣告，其中的值是權杖可用於取得授權或金鑰的次數。 對金鑰傳遞具有相同權杖的所有後續要求將會傳回未經授權的回應。 請參閱如何在[DRM 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中新增宣告。
+「權杖重送防護」功能可讓媒體服務客戶限制以相同權杖來要求金鑰或授權的次數。 客戶可以在權杖中新增類型的宣告 `urn:microsoft:azure:mediaservices:maxuses` ，其中的值是權杖可用於取得授權或金鑰的次數。 對金鑰傳遞具有相同權杖的所有後續要求將會傳回未經授權的回應。 請參閱如何在[DRM 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中新增宣告。
  
 #### <a name="considerations"></a>考量
 
 * 客戶必須擁有權杖產生的控制權。 宣告必須放在權杖本身。
 * 使用這項功能時，會拒絕權杖的到期時間超過一小時的要求，而不會收到未經授權的回應。
 * 權杖是由其簽章唯一識別。 對裝載所做的任何變更（例如，更新到期時間或宣告）都會變更權杖的簽章，而且會計算為新的權杖，表示金鑰傳遞不會在之前。
-* 如果權杖已超過客戶所設定的`maxuses`值，播放就會失敗。
+* 如果權杖已超過客戶所設定的值，播放就會失敗 `maxuses` 。
 * 這項功能可用於所有現有的受保護內容（只需要變更發行的權杖）。
 * 這項功能適用于 JWT 和 SWT。
 
@@ -242,7 +241,7 @@ Smooth Streaming 通訊協定支援下列容器格式和加密配置。
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`具有所要求金鑰的值。 如果您想`AlternativeMediaId`要將要求對應至您端的實體，可以使用。 例如， `AlternativeMediaId`可以用來協助您查閱許可權。
+`ContentKeyId`具有所要求金鑰的值。 `AlternativeMediaId`如果您想要將要求對應至您端的實體，可以使用。 例如， `AlternativeMediaId` 可以用來協助您查閱許可權。
 
 如需使用自訂授權/金鑰取得 Url 的 REST 範例，請參閱[串流原則-建立](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)。
 
@@ -251,9 +250,9 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 ## <a name="troubleshoot"></a>疑難排解
 
-如果您收到`MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY`錯誤，請確定您指定的是適當的串流原則。
+如果您收到 `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` 錯誤，請確定您指定的是適當的串流原則。
 
-如果您收到以`_NOT_SPECIFIED_IN_URL`結尾的錯誤，請確定您在 URL 中指定加密格式。 例如 `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`。 請參閱[串流通訊協定和加密類型](#streaming-protocols-and-encryption-types)。
+如果您收到以結尾的錯誤 `_NOT_SPECIFIED_IN_URL` ，請確定您在 URL 中指定加密格式。 例如 `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`。 請參閱[串流通訊協定和加密類型](#streaming-protocols-and-encryption-types)。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出問題、提供意見反應、取得更新
 

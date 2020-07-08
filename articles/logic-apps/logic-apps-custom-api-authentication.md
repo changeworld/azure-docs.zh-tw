@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656227"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>從 Azure Logic Apps 增加自訂 Api 呼叫的安全性
@@ -51,7 +50,7 @@ ms.locfileid: "80656227"
 2. 請確認您與 web 應用程式或 API 應用程式位於相同的目錄中。
 
    > [!TIP]
-   > 若要切換目錄，請選擇您的設定檔，然後選取另一個目錄。 或者，選擇 [**總覽** > ] [**切換目錄**]。
+   > 若要切換目錄，請選擇您的設定檔，然後選取另一個目錄。 或者，選擇 [**總覽**] [  >  **切換目錄**]。
 
 3. 在 [目錄] 功能表的 [管理]**** 下，選擇 [應用程式註冊]**** > [新增應用程式註冊]****。
 
@@ -197,13 +196,13 @@ ms.locfileid: "80656227"
 }
 ```
 
-| 屬性 | 必要 | 描述 | 
+| 屬性 | 必要 | 說明 | 
 | -------- | -------- | ----------- | 
-| tenant | 是 | Azure AD 租用戶的 GUID | 
-| audience | 是 | 您想要存取之目標資源的 GUID - 這是來自您 Web 應用程式或 API 應用程式之應用程式識別碼的用戶端識別碼 | 
-| clientId | 是 | 要求存取權之用戶端的 GUID - 這是來自您邏輯應用程式之應用程式識別碼的用戶端識別碼 | 
-| secret | 是 | 來自要求存取權杖的用戶端之應用程式識別碼的金鑰或密碼 | 
-| type | 是 | 驗證類型。 若為 ActiveDirectoryOAuth 驗證，值為 `ActiveDirectoryOAuth`。 | 
+| tenant | Yes | Azure AD 租用戶的 GUID | 
+| audience | Yes | 您想要存取之目標資源的 GUID - 這是來自您 Web 應用程式或 API 應用程式之應用程式識別碼的用戶端識別碼 | 
+| clientId | Yes | 要求存取權之用戶端的 GUID - 這是來自您邏輯應用程式之應用程式識別碼的用戶端識別碼 | 
+| secret | Yes | 來自要求存取權杖的用戶端之應用程式識別碼的金鑰或密碼 | 
+| 類型 | Yes | 驗證類型。 若為 ActiveDirectoryOAuth 驗證，值為 `ActiveDirectoryOAuth`。 | 
 |||| 
 
 例如：
@@ -248,11 +247,11 @@ ms.locfileid: "80656227"
 } 
 ```
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | -------- | -------- | ----------- |
-| `type` | 是 | 驗證類型。 針對 TLS/SSL 用戶端憑證，值必須是`ClientCertificate`。 |
-| `password` | 否 | 用以存取用戶端憑證的密碼 (PFX 檔案) |
-| `pfx` | 是 | 用戶端憑證的 Base64 編碼內容 (PFX 檔案) |
+| `type` | Yes | 驗證類型。 針對 TLS/SSL 用戶端憑證，值必須是 `ClientCertificate` 。 |
+| `password` | No | 用以存取用戶端憑證的密碼 (PFX 檔案) |
+| `pfx` | Yes | 用戶端憑證的 Base64 編碼內容 (PFX 檔案) |
 ||||
 
 <a name="basic"></a>
@@ -273,9 +272,9 @@ ms.locfileid: "80656227"
 
 | 屬性 | 必要 | 描述 | 
 | -------- | -------- | ----------- | 
-| type | 是 | 您想要使用的驗證類型。 若為基本驗證，值必須是 `Basic`。 | 
-| username | 是 | 您想要用來進行驗證的使用者名稱 | 
-| password | 是 | 您想要用來進行驗證的密碼 | 
+| type | Yes | 您想要使用的驗證類型。 若為基本驗證，值必須是 `Basic`。 | 
+| username | Yes | 您想要用來進行驗證的使用者名稱 | 
+| 密碼 | Yes | 您想要用來進行驗證的密碼 | 
 |||| 
 
 <a name="azure-ad-code"></a>

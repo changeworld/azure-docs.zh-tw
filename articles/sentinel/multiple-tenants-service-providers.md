@@ -15,19 +15,18 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: fdb58686fcdd18a8e2861aab533717dbc91e8893
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79476010"
 ---
 # <a name="work-with-multiple-tenants-in-azure-sentinel"></a>在 Azure Sentinel 中使用多個租使用者 
 
 如果您是受控安全性服務提供者（MSSP），而且您使用[Azure 燈塔](../lighthouse/overview.md)來管理客戶的安全性作業中心（SOC），您將能夠管理客戶的 Azure Sentinel 資源，而不需要直接從自己的 Azure 租使用者連線至客戶的租使用者。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 - [將 Azure 燈塔上架](../lighthouse/how-to/onboard-customer.md)
-- 若要讓此作業正常運作，您的租使用者必須至少在一個訂用帳戶上註冊到 Azure Sentinel 資源提供者。 如果您的租使用者中有已註冊的 Azure Sentinel，您就可以開始著手。 如果不是，**請從 Azure 入口網站**中選取 [訂用帳戶]，後面接著**資源提供者**。  然後，在 [ **SOC-資源提供者**] 畫面中，搜尋`Microsoft.OperationalInsights`並`Microsoft.SecurityInsights`選取 [和]，然後選取 [**註冊**]。
+- 若要讓此作業正常運作，您的租使用者必須至少在一個訂用帳戶上註冊到 Azure Sentinel 資源提供者。 如果您的租使用者中有已註冊的 Azure Sentinel，您就可以開始著手。 如果不是，**請從 Azure 入口網站**中選取 [訂用帳戶]，後面接著**資源提供者**。  然後，在 [ **SOC-資源提供者**] 畫面中，搜尋並選取 [ `Microsoft.OperationalInsights` 和] `Microsoft.SecurityInsights` ，然後選取 [**註冊**]。
    ![檢查資源提供者](media/multiple-tenants-service-providers/check-resource-provider.png)
 ## <a name="how-to-access-azure-sentinel-from-other-tenants"></a>如何從其他租使用者存取 Azure Sentinel
 1. 在 [**目錄 + 訂**用帳戶] 下，選取委派的目錄，以及客戶的 Azure Sentinel 的工作區所在的訂閱。

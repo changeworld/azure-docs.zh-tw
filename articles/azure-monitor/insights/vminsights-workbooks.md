@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480448"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>使用活頁簿建立適用於 VM 的 Azure 監視器互動式報表
@@ -26,7 +25,7 @@ ms.locfileid: "79480448"
 
 下表摘要說明適用於 VM 的 Azure 監視器包含的活頁簿，以協助您開始著手。
 
-| 活頁簿 | 描述 | 影響範圍 |
+| 活頁簿 | Description | 影響範圍 |
 |----------|-------------|-------|
 | 效能 | 在單一活頁簿中，提供一個可自訂的版本，其中包含您已啟用的所有 Log Analytics 效能計數器。| 大規模 |
 | 效能計數器 | 橫跨一組廣泛效能計數器的前 N 個圖表視圖。 | 大規模 |
@@ -46,7 +45,7 @@ ms.locfileid: "79480448"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 選取 [虛擬機器]****。
+2. 選取 [**虛擬機器**]。
 
 3. 從清單中選取 VM。
 
@@ -100,7 +99,7 @@ ms.locfileid: "79480448"
 
 ### <a name="advanced-analytic-query-settings"></a>進階分析查詢設定
 
-每個區段都有自己的 advanced 設定，可透過位於 [ ![**新增參數**] 按鈕](media/vminsights-workbooks/006-settings.png)右邊的 [設定] [活頁簿] 區段編輯控制項圖示來存取。
+每個區段都有自己的 advanced 設定，可透過 ![ ](media/vminsights-workbooks/006-settings.png) 位於 [**新增參數**] 按鈕右邊的 [設定] [活頁簿] 區段編輯控制項圖示來存取。
 
 ![適用於 VM 的 Azure 監視器活頁簿區段編輯控制項](media/vminsights-workbooks/007-settings-expanded.png)
 
@@ -155,7 +154,7 @@ VMConnection
 
 |                  |      |
 | ---------------- |:-----|
-| **Text**    | 允許使用者編輯文字方塊，您可以選擇性地提供查詢來填入預設值。 |
+| **文字**    | 允許使用者編輯文字方塊，您可以選擇性地提供查詢來填入預設值。 |
 | **下拉式清單** | 可讓使用者從一組值中進行選擇。 |
 | **時間範圍選擇器**| 可讓使用者從一組預先定義的時間範圍值中進行選擇，或從自訂的時間範圍中挑選。|
 | **資源選擇器** | 可讓使用者從為活頁簿選取的資源中進行選擇。|
@@ -244,4 +243,4 @@ Perf
 
 - 若要找出限制和整體 VM 效能，請參閱[查看 AZURE VM 效能](vminsights-performance.md)。
 
-- 若要瞭解探索到的應用程式相依性，請參閱[View 適用於 VM 的 Azure 監視器 Map](vminsights-maps.md)。
+- 若要了解探索到的應用程式相依性，請參閱[檢視適用於 VM 的 Azure 監視器對應](vminsights-maps.md)。

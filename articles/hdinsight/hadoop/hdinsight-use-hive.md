@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: f7dc7b520cba2bbf2351d93795a1a26b3b5124be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471348"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 上的 Apache Hive 和 HiveQL 是什麼？
@@ -23,7 +22,7 @@ Hive 可讓您將結構投影在大量非結構化資料上。 定義結構後�
 
 HDInsight 提供數種已針對特定工作負載進行微調的叢集類型。 下列叢集類型最常用於 Hive 查詢︰
 
-|叢集類型 |描述|
+|叢集類型 |Description|
 |---|---|
 |互動式查詢|提供[低延遲分析處理 (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) 功能的 Hadoop 叢集，可改善互動式查詢的回應時間。 如需詳細資訊，請參閱[開始使用 HDInsight 中的互動式查詢](../interactive-query/apache-interactive-query-get-started.md)文件。|
 |Hadoop|已針對批次處理工作負載進行微調的 Hadoop 叢集。 如需詳細資訊，請參閱[開始使用 HDInsight 中的 Apache Hadoop](../hadoop/apache-hadoop-linux-tutorial-get-started.md) 文件。|
@@ -131,12 +130,12 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 在上一個範例中，HiveQL 陳述式會執行下列動作：
 
-|引數 |描述 |
+|引數 |Description |
 |---|---|
 |DROP TABLE|如果資料表已存在，請刪除資料表。|
 |CREATE EXTERNAL TABLE|在 Hive 中建立新的**外部**資料表。 外部資料表只會將資料表定義儲存在 Hive 中。 資料會留在原來的位置，並保持原始格式。|
 |資料列格式|告訴 Hive 如何設定資料格式。 在此情況下，每個記錄中的欄位會以空格隔開。|
-|儲存為 TEXTFILE 位置|告訴 Hive 儲存資料的位置（ `example/data`目錄），並將它儲存為文字。 資料可以在目錄的一個檔案中，也可以分散在多個檔案中。|
+|儲存為 TEXTFILE 位置|告訴 Hive 儲存資料的位置（ `example/data` 目錄），並將它儲存為文字。 資料可以在目錄的一個檔案中，也可以分散在多個檔案中。|
 |SELECT|選取資料行 **t4** 包含 **[ERROR]** 值的所有資料列計數。 這個陳述式會傳回值 **3**，因為有三個資料列包含此值。|
 |INPUT__FILE__NAME LIKE '% .log '|Hive 會嘗試將架構套用至目錄中的所有檔案。 在此情況下，目錄包含不符合架構的檔案。 若要防止結果中出現亂碼資料，此陳述式會告訴 Hive 我們只應該從檔名以 log 結尾的檔案傳回資料。|
 
@@ -164,7 +163,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 這些陳述式會執行下列動作：
 
-|引數 |描述 |
+|引數 |Description |
 |---|---|
 |CREATE TABLE （如果不存在）|如果資料表不存在，請加以建立。 因為未使用**EXTERNAL**關鍵字，所以這個語句會建立內部資料表。 資料表會儲存在 Hive 資料倉儲中，並完全受到 Hive 所管理。|
 |儲存為 ORC|以最佳化資料列單欄式 (Optimized Row Columnar, ORC) 格式儲存資料。 ORC 是高度最佳化且有效率的 Hive 資料儲存格式。|
@@ -213,4 +212,4 @@ Apache Oozie 是可管理 Hadoop 作業的工作流程和協調系統。 如需�
 
 * [將資料上傳至 HDInsight](../hdinsight-upload-data.md)
 * [在 HDInsight 上搭配 Apache Hive 和 Apache Pig 使用 Python 使用者定義函數 (UDF)](./python-udf-hdinsight.md)
-* [搭配 HDInsight 使用 MapReduce 作業](hdinsight-use-mapreduce.md)
+* [搭配 HDInsight 使用 MapReduce 工作](hdinsight-use-mapreduce.md)

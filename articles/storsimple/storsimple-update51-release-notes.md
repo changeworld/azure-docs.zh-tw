@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: v-grpr
 ms.openlocfilehash: 27778ea232353dcaa6a38fa19abbd64b11c809e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657919"
 ---
 # <a name="storsimple-8000-series-update-51-release-notes"></a>StorSimple 8000 系列更新5.1 版本資訊
@@ -44,6 +43,6 @@ ms.locfileid: "80657919"
 
 這項更新無法套用至 StorSimple Cloud Appliance (也稱為虛擬裝置)。 需要使用更新5.1 映射來建立新的雲端設備。 如需如何建立 StorSimple 雲端設備的資訊，請移至[部署和管理 StorSimple 雲端設備](storsimple-8000-cloud-appliance-u2.md)。
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 
 瞭解如何在 StorSimple 裝置上[安裝更新 5.1](storsimple-8000-install-update-51.md) 。

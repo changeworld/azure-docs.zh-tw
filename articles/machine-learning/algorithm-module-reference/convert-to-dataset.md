@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79456585"
 ---
 # <a name="convert-to-dataset"></a>轉換為資料集
@@ -46,9 +45,9 @@ ms.locfileid: "79456585"
     - **ReplaceValues**：使用此選項來指定要取代為任何其他確切值的單一確切值。 您可以藉由設定**replace**方法來取代遺漏值或自訂值：
 
       - **遺漏**：選擇此選項以取代輸入資料集中遺漏的值。 針對 [**新值**]，輸入要用來取代遺漏值的值。
-      - **自訂**：選擇此選項以取代輸入資料集中的自訂值。 針對 [**自訂值**]，輸入您想要尋找的值。 例如，如果您的資料包含用`obs`來做為遺漏值預留位置的字串，您`obs`就可以輸入。 針對 [**新值**]，輸入要用來取代原始字串的新值。
+      - **自訂**：選擇此選項以取代輸入資料集中的自訂值。 針對 [**自訂值**]，輸入您想要尋找的值。 例如，如果您的資料包含 `obs` 用來做為遺漏值預留位置的字串，您就可以輸入 `obs` 。 針對 [**新值**]，輸入要用來取代原始字串的新值。
   
-    請注意， **ReplaceValues**作業只適用于完全相符的專案。 例如，這些字串不會受到影響： `obs.`、。 `obsolete`  
+    請注意， **ReplaceValues**作業只適用于完全相符的專案。 例如，這些字串不會受到影響： `obs.` 、 `obsolete` 。  
  
   
 5.  提交管線。  
@@ -70,4 +69,4 @@ ms.locfileid: "79456585"
   
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

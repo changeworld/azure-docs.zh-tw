@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c32867313a0adf1967cb55cb78c42cc1b4e5758
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653114"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>開始使用 Azure Multi-Factor Authentication Server
@@ -27,7 +26,7 @@ ms.locfileid: "80653114"
 本頁面探討新伺服器安裝，以及透過內部部署 Active Directory 予以設定。 如果您已經安裝 MFA 伺服器，且想要升級，請參閱[升級至最新的 Azure Multi-factor Authentication Server](howto-mfaserver-deploy-upgrade.md)。 如果您想要尋找僅是安裝 Web 服務的資訊，請參閱[部署 Azure Multi-Factor Authentication Server 行動應用程式 Web 服務](howto-mfaserver-deploy-mobileapp.md)。
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 將不再為新的部署提供 MFA 伺服器。 新客戶若想要從他們的使用者要求多重要素驗證，應該使用雲端式 Azure 多重要素驗證。 在7月1日前啟動 MFA Server 的現有客戶將能夠下載最新版本、未來的更新，並如往常般產生啟用認證。
+> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 希望要求使用者使用多重要素驗證的新客戶應該使用雲端式 Azure Multi-Factor Authentication。 在 7 月 1 日前啟用 MFA 伺服器的現有客戶，將能夠下載最新版本及未來的更新，並如常產生啟用認證。
 
 ## <a name="plan-your-deployment"></a>規劃您的部署
 
@@ -51,7 +50,7 @@ ms.locfileid: "80653114"
 
 請確定您用於 Azure Multi-Factor Authentication Server 的伺服器符合下列需求：
 
-| Azure Multi-Factor Authentication Server 需求 | 描述 |
+| Azure Multi-Factor Authentication Server 需求 | Description |
 |:--- |:--- |
 | 硬體 |<li>200 MB 的硬碟空間</li><li>具有 x32 或 x64 功能的處理器</li><li>1 GB 或更高的 RAM</li> |
 | 軟體 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008，SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003，SP1、SP2</li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本</li><li>Windows Vista，所有版本，SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>如果安裝使用者入口網站或 Web 服務 SDK，則為 IIS 7.0 或更高版本</li> |
@@ -95,8 +94,8 @@ ms.locfileid: "80653114"
 
 請遵循下列步驟，以從 Azure 入口網站下載 Azure Multi-Factor Authentication Server：
 
-1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
-2. 搜尋並選取 [Azure Active Directory]  。 選取 [**安全性** > **MFA**]。
+1. 以系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
+2. 搜尋並選取 [Azure Active Directory]。 選取 [**安全性**  >  **MFA**]。
 3. 在 [**管理員 MFA Server**] 底下，選取 [**伺服器設定**]。
 4. 選取 [下載]**** 並遵循下載頁面上的指示，以儲存安裝程式。 
 
@@ -177,7 +176,7 @@ ms.locfileid: "80653114"
 除了上述欄位，驗證結果 (成功/拒絕) 和任何拒絕的原因也與驗證資料一起儲存，可透過驗證/使用情況報告取得。
 
 > [!IMPORTANT]
-> 從2019年3月開始，免費/試用版 Azure AD 租使用者中的 MFA Server 使用者將無法使用通話選項。 這項變更不會影響 SMS 訊息。 付費 Azure AD 租使用者中的使用者將可繼續使用通話。 這種變更只會影響 Azure AD 租使用者的免費/試用版。
+> 自 2019 年 3 月起，免費/試用版 Azure AD 租用戶中的 MFA 伺服器使用者將無法使用通話選項。 手機簡訊不會受到這項變更的影響。 付費 Azure AD 租用戶中的使用者將可繼續使用通話功能。 這項變更只會影響免費/試用版 Azure AD 租用戶。
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>備份和還原 Azure MFA Server
 
@@ -204,5 +203,5 @@ ms.locfileid: "80653114"
 - 針對使用者自助安裝及設定[使用者入口網站](howto-mfaserver-deploy-userportal.md)。
 - 搭配 [Active Directory Federation Service](multi-factor-authentication-get-started-adfs.md)、[RADIUS 驗證](howto-mfaserver-dir-radius.md)或 [LDAP 驗證](howto-mfaserver-dir-ldap.md)來安裝和設定 Azure MFA Server。
 - 安裝和設定[使用 RADIUS 的遠端桌面閘道和 Azure Multi-Factor Authentication Server](howto-mfaserver-nps-rdg.md)。
-- [部署 Azure Multi-Factor Authentication Server 行動裝置應用程式 Web 服務](howto-mfaserver-deploy-mobileapp.md)。
+- [部署 Azure 多因素驗證服務器行動裝置應用程式 Web 服務](howto-mfaserver-deploy-mobileapp.md)。
 - [使用 Azure Multi-Factor Authentication 與協力廠商 VPN 的進階案例](howto-mfaserver-nps-vpn.md)。

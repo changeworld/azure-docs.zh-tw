@@ -15,10 +15,9 @@ ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
 ms.openlocfilehash: 17c21900448fcb6d0a40fe5407f3b8bd62f9e3e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499614"
 ---
 # <a name="video-indexer-failover-and-disaster-recovery"></a>影片索引子容錯移轉和嚴重損壞修復
@@ -27,7 +26,7 @@ ms.locfileid: "79499614"
 
 我們建議您設定跨區域配對的商務持續性嚴重損壞修復（BCDR），以受益于 Azure 的隔離和可用性原則。 如需詳細資訊，請參閱 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，請註冊[azure 免費試用](https://azure.microsoft.com/free/)。
 

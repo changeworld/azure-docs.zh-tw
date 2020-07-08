@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 348082ad96a5efa4d8f866c3675044edf7b6f8a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652146"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD 密碼管理的報告選項
@@ -44,7 +43,7 @@ ms.locfileid: "80652146"
 在 Azure 入口網站體驗中，我們找到更好的方式來檢視密碼重設和密碼重設註冊活動。 使用下列步驟，尋找密碼重設和密碼重設註冊事件：
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-2. 在左側窗格中選取 [所有服務]  。
+2. 在左側窗格中選取 [所有服務]。
 3. 在服務清單中搜尋並選取 **Azure Active Directory**。
 4. 從 [管理] 區段中選取 [**使用者**]。
 5. 從 [**使用者**] 分頁選取 [ **Audit Logs** ]。 這會顯示目錄中所有使用者發生的稽核事件。 您可以篩選此檢視，查看密碼相關的所有事件。
@@ -53,7 +52,7 @@ ms.locfileid: "80652146"
 
 ### <a name="converged-registration-preview"></a>聚合式註冊 (預覽)
 
-如果您參與聚合式註冊的公開預覽，則會在 [**安全性** > **驗證方法**] 底下找到有關 audit 記錄中使用者活動的資訊。
+如果您參與聚合式註冊的公開預覽，則會在 [**安全性**  >  **驗證方法**] 底下找到有關 audit 記錄中使用者活動的資訊。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 入口網站中報告資料行的說明
 
@@ -181,7 +180,7 @@ ms.locfileid: "80652146"
 * [使用 SSPR 的原則選項有哪些？](concept-sspr-policy.md)
 * [什麼是密碼回寫，且為什麼我需要了解它？](howto-sspr-writeback.md)
 * [SSPR 中的所有選項有哪些，以及它們有何意義？](concept-sspr-howitworks.md)
-* [我認為有些東西已中斷。如何? SSPR 疑難排解？](active-directory-passwords-troubleshoot.md)
+* [我認為有中斷。如何針對 SSPR 進行疑難排解？](active-directory-passwords-troubleshoot.md)
 * [在其他某處並未涵蓋我的問題](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Azure AD 中 SSPR 活動稽核記錄的範例"

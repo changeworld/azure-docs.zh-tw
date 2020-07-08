@@ -7,17 +7,16 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.openlocfilehash: 2e29f6a75b303518ac34ecf9b570bd7638cf0c3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471025"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>在 Azure 春季雲端中設定預備環境
 
 本文討論如何使用 Azure 春季雲端中的藍綠部署模式來設定預備環境部署。 藍/綠部署是 Azure DevOps 的持續傳遞模式，此模式仰賴在部署新版本 (綠色) 時，仍讓現有版本 (藍色) 持續運作的方式。 本文說明如何將該預備環境部署放到生產環境中，而不需要直接變更生產部署。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已從我們的教學課程中部署 PiggyMetrics 應用程式，以[瞭解如何啟動 Azure 春季雲端應用程式](spring-cloud-quickstart-launch-app-portal.md)。 PiggyMetrics 包含三個應用程式：「閘道」、「帳戶服務」和「驗證服務」。  
 
@@ -67,10 +66,10 @@ az extension add --name spring-cloud
 
 >[!TIP]
 > * 確認您的測試端點結尾為斜線（/），以確保正確載入 CSS 檔案。  
-> * 如果您的瀏覽器需要您輸入登入認證來查看頁面，請使用 [URL decode](https://www.urldecoder.org/) \(英文\) 來將您的測試端點解碼。 URL decode 會以 "https://\<使用者名稱>:\<密碼>@\<叢集名稱>.test.azureapps.io/gateway/green" 的格式傳回 URL。  使用此表單來存取您的端點。
+> * 如果您的瀏覽器需要您輸入登入認證來查看頁面，請使用 [URL decode](https://www.urldecoder.org/) \(英文\) 來將您的測試端點解碼。 Url 解碼會傳回格式為 "HTTPs:// \<username> ： \<password> @ \<cluster-name> . test.azureapps.io/gateway/green" 的 url。  使用此表單來存取您的端點。
 
 >[!NOTE]    
-> Config 伺服器設定適用于您的預備環境和生產環境。 例如，如果您在 config server 中將應用`server.servlet.context-path`程式閘道的內容路徑（）設定為*somepath*，則綠色部署的路徑會變更為「\<HTTPs://username>\<： password>\<@ cluster-name>. test.azureapps.io/gateway/green/somepath/...」。
+> Config 伺服器設定適用于您的預備環境和生產環境。 例如，如果您在 `server.servlet.context-path` config server 中將應用程式閘道的內容路徑（）設定*為 somepath*，則綠色部署的路徑會變更為 "HTTPs:// \<username> ： \<password> @ \<cluster-name> . test.azureapps.io/gateway/green/somepath/..."。
  
  如果您在此時造訪公開的應用程式閘道，您應該會看到舊的頁面，而不會有新的變更。
     

@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
 ms.openlocfilehash: 72aa0762d001c28b21d5e27ed8f6f9d099f62bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499831"
 ---
 # <a name="azure-storage-accounts"></a>Azure 儲存體帳戶
@@ -32,7 +31,7 @@ ms.locfileid: "79499831"
 > [!NOTE]
 > 只有經常性存取層支援與 Azure 媒體服務搭配使用，雖然其他存取層可用來降低未主動使用之內容的儲存成本。
 
-您可以為儲存體帳戶選擇不同的 Sku。 如需詳細資訊，請參閱[儲存體帳戶](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)。 如果您想要以儲存體帳戶進行試驗，請使用 `--sku Standard_LRS`。 不過，在挑選生產環境的 SKU 時，您應該`--sku Standard_RAGRS`考慮為商務持續性提供地理複寫。
+您可以為儲存體帳戶選擇不同的 Sku。 如需詳細資訊，請參閱[儲存體帳戶](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)。 如果您想要以儲存體帳戶進行試驗，請使用 `--sku Standard_LRS`。 不過，在挑選生產環境的 SKU 時，您應該考慮 `--sku Standard_RAGRS` 為商務持續性提供地理複寫。
 
 ## <a name="assets-in-a-storage-account"></a>儲存體帳戶中的資產
 
@@ -45,7 +44,7 @@ ms.locfileid: "79499831"
 
 為了保護您的待用資產，資產應該透過儲存端加密進行加密。 下表顯示儲存端加密在媒體服務 v3 中的運作方式：
 
-|加密選項|描述|媒體服務 v3|
+|加密選項|Description|媒體服務 v3|
 |---|---|---|
 |媒體服務儲存體加密| AES-256 加密，媒體服務管理的金鑰。 |不支援。<sup>（1）</sup>|
 |[待用資料的儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 儲存體提供的伺服器端加密、由 Azure 或客戶管理的金鑰。|支援。|
@@ -59,7 +58,7 @@ ms.locfileid: "79499831"
 
 以下是可能會導致媒體服務帳戶無法存取附加儲存體帳戶的主要情況。
 
-|問題|解決方法|
+|問題|解決方案|
 |---|---|
 |媒體服務帳戶或附加儲存體帳戶已移轉至個別的訂用帳戶中。 |遷移儲存體帳戶或媒體服務帳戶，使其全都位於相同的訂用帳戶中。 |
 |媒體服務帳戶使用的是不同訂用帳戶中的附加儲存體帳戶，因為其是受到支援的早期媒體服務帳戶。 所有早期媒體服務帳戶都會轉換成現代化的 Azure 資源管理員型帳戶，而且會有中斷連線的狀態。 |遷移儲存體帳戶或媒體服務帳戶，使其全都位於相同的訂用帳戶中。|
