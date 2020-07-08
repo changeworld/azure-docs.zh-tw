@@ -4,15 +4,15 @@ description: 增加網路限制
 author: anavinahar
 ms.author: anavin
 ms.date: 01/23/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9b5c7043b06172c2d4931ca1c3fd3ac5d0e80883
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acb05da0255445de31e08f2724dcb484a3e05b17
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76547714"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764260"
 ---
 # <a name="networking-limit-increase"></a>增加網路限制
 
@@ -37,7 +37,7 @@ ms.locfileid: "76547714"
 
     ![說明 + 支援](./media/networking-quota-request/help-plus-support.png)
 
-1. 選取 [新增支援要求]****。
+1. 選取 [新增支援要求]。
 
     ![新增支援要求](./media/networking-quota-request/new-support-request.png)
 
@@ -69,9 +69,9 @@ ms.locfileid: "76547714"
 
 遵循這些指示，在 Azure 入口網站中使用 [**使用量 + 配額**] 來建立支援要求。
 
-1. 從https://portal.azure.com中，搜尋並選取 [**訂閱**]。
+1. 從中 https://portal.azure.com ，搜尋並選取 [**訂閱**]。
 
-    ![訂閱](./media/networking-quota-request/search-for-suscriptions.png)
+    ![訂用帳戶](./media/networking-quota-request/search-for-suscriptions.png)
 
 1. 選取需要增加配額的訂用帳戶。
 

@@ -4,15 +4,15 @@ description: 此頁面說明如何利用 Azure 虛擬 WAN，讓您能夠從遠�
 services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: ce212b5da90906966025674b58884d0e2f5bb064
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc048f3da3156f5e17cfa32479b834b7320a60a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753774"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure 虛擬 WAN 和支援遠端工作
 
@@ -27,7 +27,7 @@ ms.locfileid: "80337134"
 您是否需要使用者存取雲端資源，而不需要設定區域之間的連線能力？
 由於此全域流感會為我們建立前所未有的變更，因此 Azure 虛擬 WAN 小組在此提供您滿足連線需求的能力。
 
-Azure 虛擬 WAN 是一種網路服務，可將許多網路、安全性和路由功能結合在一起，以提供單一操作介面。 這些功能包括分支連線能力（透過來自虛擬 WAN 合作夥伴裝置的連線自動化，例如 SD-WAN 或 VPN CPE）、站對站 VPN 連線能力、遠端使用者 VPN （點對站）連線、私人（ExpressRoute）連線、雲端連線能力、VPN ExpressRoute 互連能力、路由、Azure 防火牆、私人連線加密等等。您不需要擁有所有這些使用案例，就能開始使用虛擬 WAN。 只有一個使用案例可以開始使用，並在您的網路演變時加以調整。
+Azure 虛擬 WAN 是一種網路服務，可將許多網路功能、安全性和路由功能結合在一起，以提供單一操作介面。 這些功能包括分支連線能力（透過來自虛擬 WAN 合作夥伴裝置的連線自動化，例如 SD-WAN 或 VPN CPE）、站對站 VPN 連線能力、遠端使用者 VPN （點對站）連線、私人（ExpressRoute）連線、雲端連線能力、VPN ExpressRoute 互連能力、路由、Azure 防火牆、私人連線加密等等。您不需要擁有所有這些使用案例，就能開始使用虛擬 WAN。 只有一個使用案例可以開始使用，並在您的網路演變時加以調整。
 
 ![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwan1.png)
 
@@ -51,7 +51,7 @@ Azure 虛擬 WAN 是一種網路服務，可將許多網路、安全性和路由
 
 ## <a name="additional-information"></a><a name="other considerations"></a>其他資訊
 
-虛擬 WAN 支援每個區域/位置有一個中樞。 如需位置資訊，請參閱[虛擬 WAN 夥伴與位置](virtual-wan-locations-partners.md)一文。 每個中樞最多支援10000個遠端使用者連線、1000分支連線、四個 ExpressRoute 線路，以及最多500虛擬網路連線。 當您相應增加遠端使用者時，如果您有任何問題，請不要將電子郵件傳送至azurevirtualwan@microsoft.com來尋求協助。 如果您需要技術支援，請務必從 Azure 入口網站開啟支援票證，並將會提供說明。
+虛擬 WAN 支援每個區域/位置有一個中樞。 如需位置資訊，請參閱[虛擬 WAN 夥伴與位置](virtual-wan-locations-partners.md)一文。 每個中樞最多支援10000個遠端使用者連線、1000分支連線、四個 ExpressRoute 線路，以及最多500虛擬網路連線。 當您相應增加遠端使用者時，如果您有任何問題，請不要將電子郵件傳送至來尋求協助 azurevirtualwan@microsoft.com 。 如果您需要技術支援，請務必從 Azure 入口網站開啟支援票證，並將會提供說明。
 
 ## <a name="faq"></a><a name="faq"></a>常見問題集
 

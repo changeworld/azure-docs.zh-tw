@@ -2,18 +2,18 @@
 title: 包含檔案
 description: 包含檔案
 services: virtual-machines
-author: jonbeck7
+author: mimckitt
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/09/2018
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: mimckitt
 ms.custom: include file
-ms.openlocfilehash: 24fbab2bb637edf6c7e31215cdc7ac82bdb0ebab
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 5c898721102177a0d796db3b8b0f194c4ec3efae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67173974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84793630"
 ---
 部分資料庫工作負載 (例如 SQL Server 或 Oracle) 需要大量記憶體、儲存體和 I/O 頻寬，而不需要大量核心計數。 許多資料庫工作負載不需要大量 CPU。 Azure 提供特定的 VM 大小，您可以在其中限制 VM vCPU 計數以降低軟體授權的成本，同時維持相同的記憶體、儲存體和 I/O 頻寬。
 
@@ -45,6 +45,24 @@ vCPU 計數可以限制為原始 VM 大小的一半或四分之一。 這些新�
 | Standard_E32-8s_v3  | 8    | 與 E32s_v3 相同 |
 | Standard_E64-32s_v3 | 32   | 與 E64s_v3 相同 |
 | Standard_E64-16s_v3 | 16   | 與 E64s_v3 相同 |
+| Standard_E4-2s_v4   | 2    | 與 E4s_v4 相同  |
+| Standard_E8-4s_v4   | 4    | 與 E8s_v4 相同  |
+| Standard_E8-2s_v4   | 2    | 與 E8s_v4 相同  |
+| Standard_E16-8s_v4  | 8    | 與 E16s_v4 相同 |
+| Standard_E16-4s_v4  | 4    | 與 E16s_v4 相同 |
+| Standard_E32-16s_v4 | 16   | 與 E32s_v4 相同 |
+| Standard_E32-8s_v4  | 8    | 與 E32s_v4 相同 |
+| Standard_E64-32s_v4 | 32   | 與 E64s_v4 相同 |
+| Standard_E64-16s_v4 | 16   | 與 E64s_v4 相同 |
+| Standard_E4-2ds_v4  | 2    | 與 E4ds_v4 相同 |
+| Standard_E8-4ds_v4  | 4    | 與 E8ds_v4 相同 |
+| Standard_E8-2ds_v4  | 2    | 與 E8ds_v4 相同 |
+| Standard_E16-8ds_v4 | 8    | 與 E16ds_v4 相同|
+| Standard_E16-4ds_v4 | 4    | 與 E16ds_v4 相同|
+| Standard_E32-16ds_v4| 16   | 與 E32ds_v4 相同|
+| Standard_E32-8ds_v4 | 8    | 與 E32ds_v4 相同|
+| Standard_E64-32ds_v4| 32   | 與 E64ds_v4 相同|
+| Standard_E64-16ds_v4| 16   | 與 E64ds_v4 相同|
 | Standard_GS4-8      | 8    | 與 GS4 相同     |
 | Standard_GS4-4      | 4    | 與 GS4 相同     |
 | Standard_GS5-16     | 16   | 與 GS5 相同     |

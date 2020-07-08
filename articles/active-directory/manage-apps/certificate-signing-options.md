@@ -3,8 +3,8 @@ title: 適用于 Azure AD 應用程式的 Advanced SAML token 憑證簽署選項
 description: 瞭解如何在 Azure Active Directory 中，針對預先整合之應用程式使用 SAML 權杖中的進階憑證簽署選項
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc911ff06208b1fd0af7651c8274a45c958bf0cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2625698ae1d76dbae3ed8a8855b88dd6ac7bb17
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77159194"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763681"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>在 Azure Active Directory 中，針對資源庫應用程式使用 SAML 權杖中的進階憑證簽署選項
 
@@ -69,8 +69,8 @@ Azure AD 支援兩種簽署演算法，或用來簽署 SAML 回應的安全雜�
 
    ![範例： SAML 簽署憑證頁面](./media/certificate-signing-options/saml-signing-page.png)
 
-1. 在 [簽署選項]**** 下拉式清單中，選擇 [簽署 SAML回應]****、[簽署 SAML 判斷提示]**** 或 [簽署 SAML 回應和判斷提示]****。 這些選項的說明會在本文稍早的[憑證簽署選項](#certificate-signing-options)中出現。
-1. 在 [簽署演算法]**** 下拉式清單中，選擇 [SHA-1]**** 或 [SHA-256]****。 這些選項的說明會在本文稍早的[憑證簽署演算法](#certificate-signing-algorithms)一節中顯示。
+1. 在 [簽署選項] 下拉式清單中，選擇 [簽署 SAML回應]、[簽署 SAML 判斷提示] 或 [簽署 SAML 回應和判斷提示]。 這些選項的說明會在本文稍早的[憑證簽署選項](#certificate-signing-options)中出現。
+1. 在 [簽署演算法] 下拉式清單中，選擇 [SHA-1] 或 [SHA-256]。 這些選項的說明會在本文稍早的[憑證簽署演算法](#certificate-signing-algorithms)一節中顯示。
 1. 如果您對選擇感到滿意，請選取 [**儲存**] 以套用新的 SAML 簽署憑證設定。 否則，請選取**X**以捨棄變更。
 
 ## <a name="next-steps"></a>後續步驟

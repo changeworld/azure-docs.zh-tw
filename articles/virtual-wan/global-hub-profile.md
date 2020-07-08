@@ -4,15 +4,15 @@ description: 了解虛擬 WAN 自動化可調整的分支對分支連線、可�
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/20/2020
 ms.author: alzam
-ms.openlocfilehash: b63bb861f4df087f852bb1bf599d32100d063f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be2ea92ddbcce7c1e0ab5ba7d172cda0e05984fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753387"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>為使用者 VPN 用戶端下載以全域或中樞為基礎的設定檔
 

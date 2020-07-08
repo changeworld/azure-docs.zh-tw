@@ -6,21 +6,24 @@ ms.author: mhopkins
 ms.date: 09/17/2019
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.custom: seo-javascript-october2019
-ms.openlocfilehash: ca0831fd7554058d21e315b67d6965579af1d38b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.custom: seo-javascript-october2019, tracking-python
+ms.openlocfilehash: 46d144a95708ac834478871ca27763f0ebd3b201
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805249"
 ---
-# <a name="how-to-use-azure-queue-storage-v21-from-python"></a>如何從 Python 使用 Azure 佇列儲存體 v 2。1
+# <a name="how-to-use-azure-queue-storage-v21-from-python"></a>如何從 Python 使用 Azure 佇列儲存體 v2.1
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 本文示範使用 Azure 佇列儲存體服務的常見案例。 涵蓋的案例包括插入、查看、取得和刪除佇列訊息，以及建立和刪除佇列。
+
+> [!IMPORTANT]
+> 本文指的是適用于 Python 的 Azure 儲存體用戶端程式庫舊版版本。 若要開始使用最新版本，請參閱[快速入門：適用于 Python 的 Azure 佇列儲存體用戶端程式庫](storage-quickstart-queues-python.md)
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
@@ -57,7 +60,7 @@ pip install azure-storage-queue==2.1.0
 
 ## <a name="create-a-queue"></a>建立佇列
 
-[QueueService](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice) 物件可讓您操作佇列。 下列程式碼會建立`QueueService`物件。 將下列內容新增至您想要在其中以程式設計方式存取 Azure 儲存體之任何 Python 檔案內的頂端附近：
+[QueueService](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice) 物件可讓您操作佇列。 下列程式碼會建立 `QueueService` 物件。 將下列內容新增至您想要在其中以程式設計方式存取 Azure 儲存體之任何 Python 檔案內的頂端附近：
 
 ```python
 from azure.storage.queue import QueueService
@@ -89,7 +92,7 @@ queue_service.decode_function = QueueMessageFormat.binary_base64decode
 
 ## <a name="peek-at-the-next-message"></a>查看下一個訊息
 
-藉由呼叫[peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-)方法，您可以在佇列前面查看訊息，而無需將它從佇列中移除。 根據預設， `peek_messages`會查看單一訊息。
+藉由呼叫[peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-)方法，您可以在佇列前面查看訊息，而無需將它從佇列中移除。 根據預設，會 `peek_messages` 查看單一訊息。
 
 ```python
 messages = queue_service.peek_messages('taskqueue')
@@ -99,7 +102,7 @@ for message in messages:
 
 ## <a name="dequeue-messages"></a>清除佇列中的訊息
 
-您的程式碼可以使用兩個步驟來將訊息從佇列中移除。 當您呼叫[get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)時，您預設會取得佇列中的下一個訊息。 從 `get_messages` 傳回的訊息，對於從此佇列讀取訊息的任何其他程式碼而言，將會是不可見的。 依預設，此訊息會維持 30 秒的不可見狀態。 若要完成從佇列中移除訊息的作業，您也必須呼叫[delete_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-)。 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 您的程式`delete_message`代碼會在處理完訊息之後立即呼叫。
+您的程式碼可以使用兩個步驟來將訊息從佇列中移除。 當您呼叫[get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)時，您預設會取得佇列中的下一個訊息。 從 `get_messages` 傳回的訊息，對於從此佇列讀取訊息的任何其他程式碼而言，將會是不可見的。 依預設，此訊息會維持 30 秒的不可見狀態。 若要完成從佇列中移除訊息的作業，您也必須呼叫[delete_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-)。 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 您的程式碼會在 `delete_message` 處理完訊息之後立即呼叫。
 
 ```python
 messages = queue_service.get_messages('taskqueue')
@@ -108,7 +111,7 @@ for message in messages:
     queue_service.delete_message('taskqueue', message.id, message.pop_receipt)
 ```
 
-自訂從佇列中擷取訊息的方法有兩種。 首先，您可以取得一批訊息 (最多 32 個)。 其次，您可以設定較長或較短的可見度逾時，讓您的程式碼有較長或較短的時間可以完全處理每個訊息。 下列程式碼範例會使用`get_messages`方法，在一次呼叫中取得16個訊息。 接著它會使用 for 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘。
+自訂從佇列中擷取訊息的方法有兩種。 首先，您可以取得一批訊息 (最多 32 個)。 其次，您可以設定較長或較短的可見度逾時，讓您的程式碼有較長或較短的時間可以完全處理每個訊息。 下列程式碼範例會使用 `get_messages` 方法，在一次呼叫中取得16個訊息。 接著它會使用 for 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘。
 
 ```python
 messages = queue_service.get_messages(
@@ -131,7 +134,7 @@ for message in messages:
 
 ## <a name="get-the-queue-length"></a>取得佇列長度
 
-您可以取得佇列中的估計訊息數目。 [Get_queue_metadata](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-queue-metadata-queue-name--timeout-none-)方法會要求佇列服務傳回佇列的相關中繼資料，以及`approximate_message_count`。 由於佇列服務在回應您的要求之後可以新增或移除訊息，此結果僅為近似值。
+您可以取得佇列中的估計訊息數目。 [Get_queue_metadata](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-queue-metadata-queue-name--timeout-none-)方法會要求佇列服務傳回佇列的相關中繼資料，以及 `approximate_message_count` 。 由於佇列服務在回應您的要求之後可以新增或移除訊息，此結果僅為近似值。
 
 ```python
 metadata = queue_service.get_queue_metadata('taskqueue')

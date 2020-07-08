@@ -6,15 +6,15 @@ keywords: 設定，超時
 author: mgblythe
 ms.author: mblythe
 ms.date: 02/10/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2efee29ba709607e1e7935215ca7689a39966de1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096603"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764157"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>設定目錄層級的非啟用時間
 
@@ -32,7 +32,7 @@ ms.locfileid: "79096603"
 
 4. 新的頁面隨即開啟。 在 [**設定目錄層級的非使用時間超時**] 頁面上，選取 **[啟用 Azure 入口網站的目錄層級閒置時間**] 以開啟設定。
 5. 接下來，輸入使用者在其會話自動登出之前，可以閒置的時間和**分鐘****數**。
-6. 選取 [套用]  。
+6. 選取 [套用]。
 
     ![顯示頁面以設定目錄層級非啟用時間的螢幕擷取畫面](./media/admin-timeout/configure.png)
 

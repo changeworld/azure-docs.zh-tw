@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: da62efff5db5c71b087657b0eec93f8dd4702665
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780519"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751491"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教學課程：設定 ServiceNow 來自動佈建使用者
 
@@ -54,12 +54,19 @@ ms.locfileid: "83780519"
 
 1. 識別您的 ServiceNow 執行個體名稱。 您可在用來存取 ServiceNow 的 URL 中找到執行個體名稱。 在下面的範例中，執行個體名稱是 dev35214。
 
-![ServiceNow 執行個體](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow 執行個體](media/servicenow-provisioning-tutorial/servicenow_instance.png)
 
-    
 2. 取得 ServiceNow 中管理員的認證。 瀏覽至 ServiceNow 中的使用者設定檔，並確認使用者具有管理員角色。 
 
-![ServiceNow 管理員角色](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+   ![ServiceNow 管理員角色](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+
+3. 請檢查並確定已在 ServiceNow 中**停用**下列設定：
+
+   1. 針對傳入架構要求，選取 [**系統安全性**] [  >  **高安全性設定**] [  >  **需要基本驗證**]。
+   2. 選取 [**系統屬性**] [  >  **Web 服務**  >  **需要對傳入 SOAP 要求進行基本授權**]。
+     
+   > [!IMPORTANT]
+   > 如果*已啟用*這些設定，布建引擎將無法與 ServiceNow 通訊。
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 ServiceNow
 
@@ -67,9 +74,9 @@ ms.locfileid: "83780519"
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員 
 
-Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選條件。 
+Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選條件。 
 
-* 將使用者和群組指派給 ServiceNow 時，您必須選取 [預設存取] 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是預設存取角色，您可[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以新增其他角色。 
+* 將使用者和群組指派給 ServiceNow 時，您必須選取 [預設存取] 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
@@ -128,13 +135,13 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此作業會對在 [設定] 區段的 [範圍] 中定義的所有使用者和群組，啟動首次同步處理週期。 初始週期會比後續週期花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 
+此作業會對在 [設定] 區段的 [範圍] 中所定義所有使用者和群組啟動首次同步處理週期。 初始週期會比後續週期花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 
 
 ## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
 設定佈建後，請使用下列資源來監視您的部署：
 
-1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)來判斷哪些使用者已佈建成功或失敗
-2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)來查看佈建週期的狀態，以及其接近完成的程度
+1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
+2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
 3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。  
 
 ## <a name="troubleshooting-tips"></a>疑難排解秘訣
@@ -142,6 +149,14 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
 * **EntryJoiningPropertyValueIsMissing：** 檢閱[屬性對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)以找出相符的屬性。 這個值必須存在於您嘗試佈建的使用者或群組上。 
 * 請參閱 [ServiceNow SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) 以了解任何需求或限制 (例如，用以為使用者指定國家/地區代碼的格式)
 * 佈建要求預設會傳送至 https://{your-instance-name}.service-now.com/{table-name}。 如果您需要自訂租用戶 URL，則可在執行個體名稱欄位中提供整個 URL。
+* **ServiceNowInstanceInvalid** 
+  
+  `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
+
+   此錯誤表示與 ServiceNow 實例通訊時發生問題。 再次檢查以確保 ServiceNow 中的下列設定已*停用*：
+   
+   1. 針對傳入架構要求，選取 [**系統安全性**] [  >  **高安全性設定**] [  >  **需要基本驗證**]。
+   2. 選取 [**系統屬性**] [  >  **Web 服務**  >  **需要對傳入 SOAP 要求進行基本授權**]。
 
 ## <a name="additional-resources"></a>其他資源
 

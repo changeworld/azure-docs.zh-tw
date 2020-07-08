@@ -3,24 +3,24 @@ title: 如何設定自助式應用程式指派 | Microsoft Docs
 description: 啟用自助應用程式存取以允許使用者尋找自己的應用程式
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/20/2020
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89e09fd63ee6121ac9bf7f3c2be00f0ac22f752f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2a59343d4eafaa0e11f56636daa7471e748abf2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731698"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763137"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>如何設定自助應用程式指派
 
@@ -53,9 +53,9 @@ ms.locfileid: "81731698"
 
 1. 以全域管理員身分登入[Azure 入口網站](https://portal.azure.com)。
 
-2. 選取 **Azure Active Directory**。 在左側導覽功能表中，選取 [**企業應用程式**]。
+2. 選取 **Azure Active Directory**。 在左側導覽功能表中，選取 [企業應用程式]。
 
-3. 從清單中選取應用程式。 如果您看不到應用程式，請在 [搜尋] 方塊中開始輸入其名稱。 或使用篩選控制項來選取應用程式類型、狀態或可見度，然後選取 [套用 **]。**
+3. 從清單中選取應用程式。 如果您看不到此應用程式，請在搜尋方塊中開始輸入其名稱。 或使用篩選控制項來選取應用程式類型、狀態或可見度，然後選取 [套用]。
 
 4. 在左側導覽功能表中，選取 [**自助**]。
 
@@ -70,12 +70,12 @@ ms.locfileid: "81731698"
 
 8. **選擇性：對於僅使用密碼單一登入的應用程式，** 若要讓商務核准者指定針對核准的使用者傳送給此應用程式的密碼，請設定 [**允許核准者為此應用程式設定使用者的密碼嗎？** ] 切換為 **[是]**。
 
-9. **選擇性：** 若要指定允許核准此應用程式存取權的商務核准者，請在 [**獲准核准存取此應用程式的人員**] 旁按一下 [**選取核准者**]，然後選取最多10個個別商務核准者。 然後按一下 [選取] ****。
+9. **選擇性：** 若要指定允許核准此應用程式存取權的商務核准者，請在 [**獲准核准存取此應用程式的人員**] 旁按一下 [**選取核准者**]，然後選取最多10個個別商務核准者。 然後按一下 [選取] 。
 
     >[!NOTE]
     >不支援群組。 您最多可以選取10個個別商務核准者。 如果您指定多個核准者，任何單一核准者都可以核准存取要求。
 
-10. **選擇性：** **對於公開角色的應用程式**，若要將自助核准的使用者指派給角色，請**在 [此應用程式中應指派使用者的角色**] 旁按一下 [**選取角色**]，然後選擇要指派給這些使用者的角色。 然後按一下 [選取] ****。
+10. **選擇性：** **對於公開角色的應用程式**，若要將自助核准的使用者指派給角色，請**在 [此應用程式中應指派使用者的角色**] 旁按一下 [**選取角色**]，然後選擇要指派給這些使用者的角色。 然後按一下 [選取] 。
 
 11. 按一下窗格頂端的 [儲存]**** 按鈕以完成此動作。
 

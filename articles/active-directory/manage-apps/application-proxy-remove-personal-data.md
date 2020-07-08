@@ -2,25 +2,25 @@
 title: 移除個人資料-Azure Active Directory 應用程式 Proxy
 description: 從安裝在裝置上的連接器移除 Azure Active Directory 應用程式 Proxy 的個人資料。
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe97956d99bd5c677e499b532ef85a1bb4d324ef
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: e78efd71943332e8a40e5b44b6b78f88e516649a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74275418"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759958"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>移除 Azure Active Directory 應用程式 Proxy 的個人資料
 
@@ -31,7 +31,7 @@ Azure Active Directory 應用程式 Proxy 需要您在裝置上安裝連接器�
 應用程式 Proxy 可能將個人資料寫入下列記錄類型：
 
 - 連接器事件記錄
-- Windows 事件記錄
+- Windows 事件記錄檔
 
 ## <a name="remove-personal-data-from-windows-event-logs"></a>從 Windows 事件記錄移除個人資料
 

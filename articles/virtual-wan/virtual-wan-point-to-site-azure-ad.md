@@ -4,15 +4,15 @@ description: 瞭解如何設定使用者 VPN 的 Azure Active Directory 驗證�
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: 703b832d58f2374eac131cfd380ba27f2c890618
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd80724d62c71fdec81965fb4aa6a07a6233a288
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059491"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753953"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>設定使用者 VPN 的 Azure Active Directory 驗證
 
@@ -78,7 +78,7 @@ ms.locfileid: "80059491"
    **中樞私人位址空間** - 採用 CIDR 標記法的中樞位址範圍。
 
    ![新網站](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
-3. 按一下 [檢閱 + 建立]  。
+3. 按一下 [檢閱 + 建立]。
 4. 在 [**通過驗證**] 頁面上，按一下 [**建立**]。
 
 ## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>建立新的 P2S 設定
@@ -108,7 +108,7 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
    ![新網站](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
 5. 輸入要從中將 IP 位址指派給 VPN 用戶端的 [位址集區]  。
-6. 按一下 [**確認**]。
+6. 按一下 [確認]。
 7. 此作業最多可能需要 30 分鐘的時間才能完成。
 
 ## <a name="download-vpn-profile"></a><a name="device"></a>下載 VPN 設定檔
@@ -125,7 +125,7 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 若要連線，您必須下載 Azure VPN Client，並匯入在先前的步驟中在要連線至 VNet 的每一部電腦上下載的 VPN 用戶端設定檔。
 
 > [!NOTE]
-> 只有 OpenVPN&reg;通訊協定連線支援 Azure AD 驗證。
+> 只有 OpenVPN 通訊協定連線支援 Azure AD 驗證 &reg; 。
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>下載 Azure VPN Client
@@ -136,33 +136,33 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
 1. 在頁面上，選取 [匯入]****。
 
-    ![入口](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
+    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
 
 2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]****。
 
-    ![入口](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
+    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
 
 3. 指定設定檔的名稱，然後選取 [儲存]****。
 
-    ![入口](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
+    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
 
 4. 選取 [連線]**** 以連線至 VPN。
 
-    ![入口](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
+    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
 
 5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]****。
 
-    ![入口](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
+    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
 
 #### <a name="to-delete-a-client-profile"></a><a name="delete"></a>刪除用戶端設定檔
 
 1. 選取要刪除的用戶端設定檔旁的省略符號 (...)。 然後，選取 [移除]****。
 
-    ![[刪除]](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
+    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
 2. 選取 [移除]**** 以刪除。
 
-    ![[刪除]](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
+    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
 #### <a name="diagnose-connection-issues"></a><a name="diagnose"></a>診斷連線問題
 

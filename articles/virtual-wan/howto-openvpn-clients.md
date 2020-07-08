@@ -4,19 +4,19 @@ description: 為 Azure 虛擬 WAN 設定 OpenVPN 用戶端的步驟
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: cherylmc
-ms.openlocfilehash: 133ce2f735344bb636015ec5bc261e661045afc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f955b5347bc5a2c0fe1fd8a93e14badab1f354c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80108883"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753282"
 ---
 # <a name="configure-an-openvpn-client-for-azure-virtual-wan"></a>設定適用于 Azure 虛擬 WAN 的 OpenVPN 用戶端
 
-本文可協助您設定**OpenVPN &reg;通訊協定**用戶端。
+本文可協助您設定**OpenVPN &reg; 通訊協定**用戶端。
 
 ## <a name="before-you-begin"></a>開始之前
 

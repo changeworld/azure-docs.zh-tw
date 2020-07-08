@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77526785"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84752481"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 應用程式防火牆要求大小限制與排除清單
 
@@ -31,7 +31,6 @@ WAF 排除清單可讓您略過 WAF 評估的特定要求屬性。 常見範例�
 * 您可以將要求屬性名稱（args）新增為排除元素，例如：
 
    * 表單欄位名稱
-   * XML 實體
    * JSON 實體
    * URL 查詢字串引數
 
@@ -82,7 +81,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-因此，如果 URL `http://www.contoso.com/?user%281%29=fdafdasfda`傳遞至 WAF，它就不會評估字串**fdafdasfda**，但它仍會評估參數名稱**使用者 %281 %29**。 
+因此，如果 URL `http://www.contoso.com/?user%281%29=fdafdasfda` 傳遞至 WAF，它就不會評估字串**fdafdasfda**，但它仍會評估參數名稱**使用者 %281 %29**。 
 
 ## <a name="waf-request-size-limits"></a>WAF 要求大小限制
 

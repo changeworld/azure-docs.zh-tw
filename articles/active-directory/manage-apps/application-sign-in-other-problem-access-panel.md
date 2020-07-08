@@ -3,25 +3,25 @@ title: 從存取面板登入應用程式的問題 | Microsoft Docs
 description: 如何為從 Microsoft Azure AD 存取面板 (myapps.microsoft.com) 存取應用程式時發生的問題疑難排解
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b93ee38666b93253c7cda6c756d4f58daaea236
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 9c8d2c1ba156ba4e3c937ced6b81950859e1c095
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74082150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759584"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>從存取面板登入應用程式的問題
 
@@ -123,11 +123,11 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
 1.  開啟[Azure 入口網站](https://portal.azure.com)，並以**全域管理員**或**共同**管理員身分登入
 
-2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2.  按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4.  在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4.  在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
 5.  按一下 [企業應用程式]**** 窗格右上角的 [新增]**** 按鈕。
 
@@ -147,15 +147,15 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
 1. <span id="_Hlk477187909" class="anchor"><span id="_Hlk477001983" class="anchor"></span></span>開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
-2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
-   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
+   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 選取您要設定單一登入的應用程式。
 
@@ -179,11 +179,11 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
     1. 按一下 [新增屬性]****。 輸入 [名稱]****，然後從下拉式清單中選取 [值]****。
 
-    2. 按一下 [**儲存]。** 您會在資料表中看到新屬性。
+    2. 按一下 [儲存]。 您會在資料表中看到新屬性。
 
 13. 按一下 [設定 &lt;應用程式名稱&gt;]****，以存取如何在應用程式中設定單一登入的文件。 此外，您會有透過該應用程式設定 SSO 所需的中繼資料 URL 與憑證。
 
-14. 按一下 [**儲存**] 以儲存設定。
+14. 按一下 **[儲存]** 儲存組態。
 
 15. 將使用者指派給應用程式。
 
@@ -193,13 +193,13 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
 1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
-2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
    * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]****************。
 
@@ -220,7 +220,7 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
    1. 按一下 [新增屬性]****。 輸入 [名稱]****，然後從下拉式清單中選取 [值]****。
 
-   2. 按一下 [**儲存]。** 您會在資料表中看到新屬性。
+   2. 按一下 [儲存]。 您會在資料表中看到新屬性。
 
 ### <a name="download-the-azure-ad-metadata-or-certificate"></a>下載 Azure AD 中繼資料或憑證
 
@@ -228,15 +228,15 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
 1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
-2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
-   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
+   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 選取您已設定單一登入的應用程式。
 
@@ -264,11 +264,11 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
 1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
-2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
 5. 按一下 [企業應用程式]**** 窗格右上角的 [新增]**** 按鈕。
 
@@ -296,7 +296,7 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
     1. 按一下 [新增屬性]****。 輸入 [名稱]****，然後從下拉式清單中選取 [值]****。
 
-    2. 按一下 [**儲存]。** 您會在資料表中看到新屬性。
+    2. 按一下 [儲存]。 您會在資料表中看到新屬性。
 
 14. 按一下 [設定 &lt;應用程式名稱&gt;]****，以存取如何在應用程式中設定單一登入的文件。 此外，您有應用程式所需的 Azure AD URL 與憑證。
 
@@ -306,15 +306,15 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
 1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
-2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
-   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
+   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 選取您已設定單一登入的應用程式。
 
@@ -341,15 +341,15 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
 1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
-2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
-   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
+   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 選取您已設定單一登入的應用程式。
 
@@ -373,11 +373,11 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
 1.  開啟[Azure 入口網站](https://portal.azure.com)，並以**全域管理員**或**共同**管理員身分登入
 
-2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2.  按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4.  在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4.  在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
 5.  按一下 [企業應用程式]**** 窗格右上角的 [新增]**** 按鈕。
 
@@ -397,15 +397,15 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
 1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
-2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
-   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
+   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 選取您要設定單一登入的應用程式
 
@@ -431,11 +431,11 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
 1.  開啟[Azure 入口網站](https://portal.azure.com)，並以**全域管理員**或**共同**管理員身分登入
 
-2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2.  按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4.  在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4.  在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
 5.  按一下 [企業應用程式]**** 窗格右上角的 [新增]**** 按鈕。
 
@@ -451,15 +451,15 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
 1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
-2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
-   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
+   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 選取您要設定單一登入的應用程式。
 
@@ -477,37 +477,37 @@ Azure AD 資源庫中所有透過企業單一登入功能啟用的應用程式�
 
 若要直接將一或多個使用者指派至應用程式，請依照下列步驟執行︰
 
-1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
+1. 開啟 [Azure 入口網站](https://portal.azure.com/)，以**全域管理員**身分登入。
 
-2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]****。
+4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
+5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
 
-   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
+   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 從清單中選取您想要指派使用者的應用程式。
 
-7. 應用程式載入之後，按一下應用程式左側導覽功能表中的 [使用者和群組]****。
+7. 應用程式載入之後，按一下應用程式左側導覽功能表中的 [使用者和群組]。
 
 8. 按一下 [使用者和群組]**** 清單頂端的 [新增]**** 按鈕，以開啟 [新增指派]**** 窗格。
 
-9. 按一下 [新增指派]**** 窗格中的 [使用者和群組]**** 選取器。
+9. 按一下 [新增指派] 窗格中的 [使用者和群組] 選取器。
 
-10. 在 [依姓名或電子郵件地址搜尋]**** 搜尋方塊中，輸入您有興趣指派之使用者的**全名**或**電子郵件地址**。
+10. 在 [依姓名或電子郵件地址搜尋] 搜尋方塊中，輸入您有興趣指派之使用者的**全名**或**電子郵件地址**。
 
-11. 將滑鼠停留在清單中的**使用者**上方，以顯示**核取方塊**。 按一下使用者設定檔照片或標誌旁邊的核取方塊，將使用者新增至 [已選取]**** 清單。
+11. 將滑鼠停留在清單中的**使用者**上方，以顯示**核取方塊**。 按一下使用者設定檔照片或標誌旁邊的核取方塊，將使用者新增至 [已選取] 清單。
 
-12. **選擇性︰** 如果您想要**新增多位使用者**，請在 [依姓名或電子郵件地址搜尋]**** 搜尋方塊中，輸入另一個**全名**或**電子郵件地址**，然後按一下核取方塊，將此使用者新增至 [已選取]**** 清單。
+12. **選擇性：** 如果您想要**新增多位使用者**，請在 [依姓名或電子郵件地址搜尋] 搜尋方塊中，輸入另一個**全名**或**電子郵件地址**，然後按一下核取方塊，將此使用者新增至 [已選取] 清單。
 
-13. 當您完成選取使用者時，按一下 [選取]**** 按鈕，將他們新增到要指派至應用程式的使用者和群組清單。
+13. 當您完成選取使用者時，按一下 [選取] 按鈕，將他們新增到要指派至應用程式的使用者和群組清單。
 
-14. **選擇性︰** 按一下 [新增指派]**** 窗格中的 [選取角色]**** 選取器，以選取要指派給您已選取之使用者的角色。
+14. **選擇性︰** 按一下 [新增指派] 窗格中的 [選取角色] 選取器，以選取要指派給您已選取之使用者的角色。
 
-15. 按一下 [**指派**] 按鈕，將應用程式指派給選取的使用者。
+15. 按一下 [指派] 按鈕，將應用程式指派給選取的使用者。
 
 稍待片刻，您已選取的使用者便能在存取面板中啟動這些應用程式。
 

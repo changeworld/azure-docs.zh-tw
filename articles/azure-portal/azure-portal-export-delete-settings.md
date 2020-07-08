@@ -5,17 +5,17 @@ services: azure-portal
 keywords: ''
 author: santhoshsomayajula
 ms.date: 01/29/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.author: mblythe
-ms.openlocfilehash: accdfbd939fad73ca7d008450c358d366e7f8b70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248c643c5f1865451abbe201e7033efedb8a7e39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76900780"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763936"
 ---
 # <a name="export-or-delete-user-settings"></a>匯出或刪除使用者設定
 
@@ -33,7 +33,7 @@ ms.locfileid: "76900780"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在入口網站的標頭中， ![選取 [](media/azure-portal-export-delete-settings/settings-icon.png)設定] 圖示 [**設定**]。
+1. 在入口網站的標頭中，選取 [ ![ 設定] 圖示 [ ](media/azure-portal-export-delete-settings/settings-icon.png) **設定**]。
 
 1. 選取 [匯出所有設定]**** 或 [刪除所有設定和私人儀表板]****。
 

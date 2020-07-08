@@ -4,15 +4,15 @@ description: 瞭解如何使用入口網站設定 Azure 虛擬 WAN 的自訂 IPs
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: f37d7f3bfac37253339aab3493fb2c444900e099
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ea4523d1558f6887e1aef344198026591dac617
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73515742"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84752622"
 ---
 # <a name="configure-a-custom-ipsec-policy-for-virtual-wan-using-the-portal"></a>使用入口網站設定虛擬 WAN 的自訂 IPsec 原則
 
@@ -31,7 +31,7 @@ ms.locfileid: "73515742"
 3. **編輯 VPN**連線。 從**內容功能表****中，選取**[**編輯 VPN**連線]。
 
    ![編輯](./media/virtual-wan-custom-ipsec-portal/contextmenu.png)
-4. 進行**設定**。 在 [**編輯 VPN**連線] 頁面上，設定設定值。 選取 [**儲存**] 以儲存您的設定。
+4. 進行**設定**。 在 [**編輯 VPN**連線] 頁面上，設定設定值。 選取 [儲存] 以儲存您的設定。
 
    ![設定並儲存](./media/virtual-wan-custom-ipsec-portal/edit.png)
 

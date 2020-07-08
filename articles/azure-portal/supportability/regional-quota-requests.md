@@ -4,15 +4,15 @@ description: 如何要求增加 Azure 入口網站中某個區域的 vCPU 配額
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9236989f7bbb4695db24f86a2a049f5bb58f302a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd4a770aee43709c46ab4c1baf965941d8d2c3ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763851"
 ---
 # <a name="standard-quota-increase-limits-by-region"></a>標準配額：依區域增加限制
 
@@ -42,15 +42,15 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
 若要在 [說明 **+ 支援**] 中依區域要求增加 vCPU 配額：
 
-1. 從 [ [Azure 入口網站](https://portal.azure.com)] 功能表中，選取 [說明 **+ 支援**]。
+1. 從 [Azure 入口網站](https://portal.azure.com)功能表中，選取 [説明 + 支援]。
 
    ![[說明 + 支援] 連結](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-1. 在 [說明 **+ 支援**] 中，選取 [**新增支援要求**]。
+1. 在 [說明 + 支援] 中，選取 [新增支援要求]。
 
     ![新增支援要求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. 針對 [問題類型]****，選取 [服務與訂用帳戶限制 (配額)]****。
+1. 針對 [**問題類型**]，選取 **[服務和訂用帳戶限制（配額）**]。
 
    ![選取問題類型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 

@@ -5,14 +5,14 @@ author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: include
 ms.date: 05/19/2020
-ms.openlocfilehash: d11589e34ac24cafe57d38d0eef25a1b44576b7c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 744d7f49ee12e5f74eb2ae599d640ed658680c6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698339"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84752561"
 ---
 若要讓您的供應專案描述更明確，請使用 rtf 編輯器套用格式設定。
 

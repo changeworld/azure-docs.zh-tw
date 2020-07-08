@@ -7,26 +7,26 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: cd7e7df5c789743cf6bd84c6150fd901490bdedd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792066"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751642"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>適用于 Azure 儲存體的 Azure 安全性基準
 
 適用于 Azure 儲存體的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
 
-此服務的基準取自[Azure 安全性基準測試版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供有關如何在 Azure 上使用最佳作法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
-如需詳細資訊，請參閱[Azure 安全性基準總覽](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+如需詳細資訊，請參閱 [Azure 安全性基準概觀](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) (機器翻譯)。
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
+如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security) (機器翻譯)。
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在您的虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
 
 **指導**方針：藉由限制從特定公用 IP 位址範圍存取用戶端、在 Azure 上選取虛擬網路（vnet）或特定 Azure 資源，來設定儲存體帳戶的防火牆。 您也可以設定私人端點，讓來自您企業之儲存體服務的流量以獨佔方式透過私人網路傳輸。
 
@@ -42,7 +42,7 @@ ms.locfileid: "82792066"
 
 ### <a name="12-monitor-and-log-vnet-subnet-and-nic-configuration-and-traffic"></a>1.2：監視和記錄 Vnet、子網和 NIC 設定和流量
 
-**指導**方針： Azure 儲存體提供多層式安全性模型。 您可以限制從指定的 IP 位址、IP 範圍或 Azure 虛擬網路（VNet）中的子網清單，存取您儲存體帳戶的要求。 您可以使用 Azure 資訊安全中心並遵循網路保護建議，協助保護 Azure 中的網路資源。 此外，請透過儲存體帳戶防火牆為儲存體帳戶設定的虛擬網路/子網啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶以進行流量審核。 
+**指導**方針： Azure 儲存體提供多層式安全性模型。 您可以限制只有源自所指定 IP 位址、IP 範圍或來自 Azure 虛擬網路 (VNet) 中子網路清單的要求，才能存取您的儲存體帳戶。 您可以使用 Azure 資訊安全中心並遵循網路保護建議，協助保護 Azure 中的網路資源。 此外，請透過儲存體帳戶防火牆為儲存體帳戶設定的虛擬網路/子網啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶以進行流量審核。 
 
 請注意，如果您的儲存體帳戶已附加私人端點，您就無法為子網設定網路安全性群組（NSG）規則。 
 
@@ -68,11 +68,11 @@ ms.locfileid: "82792066"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
-**指引**：為您的 Azure 儲存體帳戶啟用 [先進的威脅防護]。 Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可偵測不尋常且可能有害的存取或惡意探索儲存體帳戶的嘗試。 Azure 資訊安全中心整合式警示是根據與已成功解析的 IP 位址相關聯之網路通訊的活動，不論 IP 位址是已知的具風險 IP 位址（例如已知的 cryptominer），或是先前無法辨識為有風險的 IP 位址。 當活動發生異常時，就會觸發安全性警示。 
+**指引**：為您的 Azure 儲存體帳戶啟用 [先進的威脅防護]。 Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可偵測不尋常且可能有害的存取或惡意探索儲存體帳戶的嘗試。 Azure 資訊安全中心整合式警示是根據與已成功解析的 IP 位址相關聯之網路通訊的活動，不論 IP 位址是已知的具風險 IP 位址（例如已知的 cryptominer），或是先前無法辨識為有風險的 IP 位址。 出現異常活動時，就會觸發安全性警示。 
 
 - [如何啟用先進的威脅防護](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
-- [瞭解 Azure 資訊安全中心整合式威脅情報](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [了解 Azure 資訊安全中心的整合式威脅情報](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
 
 **Azure 資訊安全中心監視**：是
 
@@ -90,7 +90,7 @@ ms.locfileid: "82792066"
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems"></a>1.6：部署以網路為基礎的入侵偵測/入侵預防系統
 
-**指導**方針： Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可偵測到不尋常且可能有害的存取或惡意探索儲存體帳戶的嘗試。 當活動發生異常時，就會觸發安全性警示。 這些安全性警示會與 Azure 資訊安全中心整合，並透過電子郵件傳送給訂用帳戶系統管理員，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 
+**指導**方針： Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可偵測到不尋常且可能有害的存取或惡意探索儲存體帳戶的嘗試。 出現異常活動時，就會觸發安全性警示。 這些安全性警示會與 Azure 資訊安全中心整合，並透過電子郵件傳送給訂用帳戶系統管理員，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 
 
 - [設定 Azure 儲存體的先進威脅防護](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 
@@ -106,9 +106,9 @@ ms.locfileid: "82792066"
 
 **責任**：客戶
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負擔降至最低
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負荷降至最低
 
-**指引**：對於需要存取儲存體帳戶之虛擬網路中的資源，請使用設定的虛擬網路虛擬網路服務標籤，以定義網路安全性群組或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標記名稱（例如儲存體），您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤所包含的位址前置詞，並隨著位址變更自動更新服務標記。 
+**指引**：對於需要存取儲存體帳戶之虛擬網路中的資源，請使用設定的虛擬網路虛擬網路服務標籤，以定義網路安全性群組或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標記名稱（例如儲存體），您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。 
 
 當網路存取需要限定于特定儲存體帳戶時，請使用虛擬網路服務端點原則。
 
@@ -140,9 +140,9 @@ ms.locfileid: "82792066"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：檔流量設定規則
 
-**指導**方針：使用網路安全性群組（NSG）的標記，以及與網路安全性和流量相關的其他資源。 針對個別的 NSG 規則，請使用 [描述] 欄位來指定允許進出網路流量的任何規則的商務需求和（或）持續時間（等）。 使用與標記相關的任何內建 Azure 原則定義（例如「需要標記和其值」），以確保所有資源都是以標籤建立，並通知您現有的未標記資源。 您可以使用 Azure PowerShell 或 Azure CLI，根據其標記來查閱或執行資源的動作。 
+**指導**方針：使用網路安全性群組（NSG）的標記，以及與網路安全性和流量相關的其他資源。 對於個別的 NSG 規則，使用 [描述] 欄位，針對允許進出網路流量的任何規則指定商務需求和/或持續時間 (等等)。 使用與標記相關的任何內建 Azure 原則定義（例如「需要標記和其值」），以確保所有資源都是以標籤建立，並通知您現有的未標記資源。 您可使用 Azure PowerShell 或 Azure CLI，根以據資源的標籤對資源進行查詢或執行動作。 
 
-- [如何建立和使用標記](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 - [如何建立虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
@@ -154,7 +154,7 @@ ms.locfileid: "82792066"
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
-**指導**方針：使用 Azure 原則來記錄網路資源的設定變更。 在 Azure 監視器中建立警示，以在重大網路資源的變更發生時觸發。 
+**指導**方針：使用 Azure 原則來記錄網路資源的設定變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。 
 
 - [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -166,7 +166,7 @@ ms.locfileid: "82792066"
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱[安全性控制：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+如需詳細資訊，請參閱[安全性控制：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring) (機器翻譯)。
 
 ### <a name="21-use-approved-time-synchronization-resource"></a>2.1：使用已核准的時間同步處理資源
 
@@ -174,7 +174,7 @@ ms.locfileid: "82792066"
 
 **Azure 資訊安全中心監視**：不適用
 
-**責任**： Microsoft
+**責任**：Microsoft
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
@@ -198,7 +198,7 @@ ms.locfileid: "82792066"
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：從作業系統收集安全性記錄
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -218,9 +218,9 @@ ms.locfileid: "82792066"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和審核記錄
 
-**指導**方針：若要查看 Azure 儲存體記錄，有一般的選項，例如透過 Log Analytics 供應專案查詢，以及直接查看記錄檔的唯一選項。 在 Azure 儲存體中，記錄檔會儲存在必須直接從http://accountname.blob.core.windows.net/$logs 存取的 blob 中（預設會隱藏記錄資料夾，因此您必須直接流覽。 它不會顯示在清單命令中） 
+**指導**方針：若要查看 Azure 儲存體記錄，有一般的選項，例如透過 Log Analytics 供應專案查詢，以及直接查看記錄檔的唯一選項。 在 Azure 儲存體中，記錄檔會儲存在必須直接從 $logs 存取的 blob 中 http://accountname.blob.core.windows.net/ （預設會隱藏記錄資料夾，因此您必須直接流覽。 它不會顯示在清單命令中） 
 
-此外，為您的 Azure 儲存體帳戶啟用 [先進的威脅防護]。 Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可偵測不尋常且可能有害的存取或惡意探索儲存體帳戶的嘗試。 當活動發生異常時，就會觸發安全性警示。 這些安全性警示會與 Azure 資訊安全中心整合，並透過電子郵件傳送給訂用帳戶系統管理員，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 
+此外，為您的 Azure 儲存體帳戶啟用 [先進的威脅防護]。 Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可偵測不尋常且可能有害的存取或惡意探索儲存體帳戶的嘗試。 出現異常活動時，就會觸發安全性警示。 這些安全性警示會與 Azure 資訊安全中心整合，並透過電子郵件傳送給訂用帳戶系統管理員，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 
 
 - [記錄和審核資料](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#how-logs-are-stored)
 
@@ -232,9 +232,9 @@ ms.locfileid: "82792066"
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：啟用異常活動的警示
 
-**指導**方針：在 Azure 資訊安全中心中，為儲存體帳戶啟用 [先進的威脅防護]。 啟用儲存體帳戶的診斷設定，並將記錄傳送到 Log Analytics 工作區。 將您的 Log Analytics 工作區上架到 Azure Sentinel，因為它提供安全性協調流程自動化回應（攀升情況）解決方案。 這可讓您建立和使用腳本來修復安全性問題。 
+**指導**方針：在 Azure 資訊安全中心中，為儲存體帳戶啟用 [先進的威脅防護]。 啟用儲存體帳戶的診斷設定，並將記錄傳送到 Log Analytics 工作區。 請將 Log Analytics 工作區在 Azure Sentinel 上線，因為其可提供安全性協調流程自動化回應 (SOAR) 解決方案。 如此可建立劇本 (自動化解決方案)，並用於修復安全性問題。 
 
-- [如何上架 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
 - [如何管理 Azure 資訊安全中心中的警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
 
@@ -276,7 +276,7 @@ ms.locfileid: "82792066"
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱[安全性控制：身分識別和存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
+如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control) (機器翻譯)。
 
 ### <a name="31-maintain-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
@@ -304,7 +304,7 @@ ms.locfileid: "82792066"
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
-**指引**：使用可存取您儲存體帳戶的專用系統管理帳戶，建立相關的標準操作程式。 使用 Azure 資訊安全中心的身分識別與存取管理來監視系統管理帳戶的數目。 
+**指引**：使用可存取您儲存體帳戶的專用系統管理帳戶，建立相關的標準操作程式。 使用 Azure 資訊安全中心身分識別與存取管理來監視系統管理帳戶的數目。 
 
 您也可以使用適用于 Microsoft 服務的 Azure AD Privileged Identity Management 特殊許可權角色和 Azure ARM，啟用僅限時間/僅限存取權。 
 
@@ -336,7 +336,7 @@ ms.locfileid: "82792066"
 
 - [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
-- [如何監視 Azure 資訊安全中心內的身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [如何在 Azure 資訊安全中心監視身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
 **Azure 資訊安全中心監視**：是
 
@@ -346,7 +346,7 @@ ms.locfileid: "82792066"
 
 **指導**方針：使用 paw （特殊許可權存取工作站），並設定 MFA 來登入及設定儲存體帳戶資源。 
 
-- [瞭解特殊許可權存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [瞭解特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
 - [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
@@ -360,7 +360,7 @@ ms.locfileid: "82792066"
 
 - [如何設定 Azure 儲存體帳戶的 Advanced 威脅防護](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 
-- [瞭解 Azure AD 風險偵測](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure AD 風險偵測](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
 
 - [如何設定自訂警示和通知的動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 
@@ -430,7 +430,7 @@ ms.locfileid: "82792066"
 
 - [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging) (部分機器翻譯)
 
-- [如何將 Azure 活動記錄整合到 Azure 監視器](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何將 Azure 活動記錄整合到 Azure 監視器中](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 - [如何設定 Azure 儲存體帳戶的計量警示](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
 
@@ -442,17 +442,17 @@ ms.locfileid: "82792066"
 
 **指導**方針：使用 Azure Active Directory 的風險和身分識別保護功能，為偵測到與您儲存體帳戶資源相關的可疑動作設定自動回應。 您應該透過 Azure Sentinel 啟用自動回應，以執行貴組織的安全性回應。 
 
-- [如何觀看 Azure AD 有風險的登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
 - [如何設定和啟用身分識別保護風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
 
-- [如何上架 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
 **責任**：客戶
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：提供 Microsoft 在支援案例期間存取相關的客戶資料
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支援案例期間為 Microsoft 提供相關客戶資料的存取權
 
 **指引**：在 Microsoft 需要存取客戶資料的支援案例中，客戶加密箱（儲存體帳戶的預覽）提供一個介面，供客戶審查及核准或拒絕客戶資料存取要求。 Microsoft 不需要，也不會要求存取儲存在儲存體帳戶內的組織密碼。
 
@@ -464,27 +464,27 @@ ms.locfileid: "82792066"
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱[安全性控制：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。*
+如需詳細資訊，請參閱[安全性控制：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection) (機器翻譯)。
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護機密資訊的清查
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的清查
 
 **指引**：使用標記來協助追蹤儲存或處理敏感資訊的儲存體帳戶資源。 
 
-- [如何建立和使用標記](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
 **責任**：客戶
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感資訊的系統
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指導**方針：使用個別的訂用帳戶、管理群組，以及適用于環境、資料敏感度等個別安全性網域的儲存體帳戶來執行隔離。  您可以根據所使用的網路類型和子集，限制您的儲存體帳戶，以控制您的應用程式和企業環境所需的儲存體帳戶存取權層級。 設定網路規則時，只有透過一組指定網路要求資料的應用程式可以存取儲存體帳戶。 您可以透過 Azure AD RBAC 來控制對 Azure 儲存體的存取。 您也可以設定私用端點，以在您的虛擬網路與服務之間通過 Microsoft 骨幹網路的流量，來改善安全性，以避免公開網際網路的暴露。 
+**指導**方針：使用個別的訂用帳戶、管理群組，以及適用于環境、資料敏感度等個別安全性網域的儲存體帳戶來執行隔離。  您可以根據所使用的網路類型和子集，限制您的儲存體帳戶，以控制您的應用程式和企業環境所需的儲存體帳戶存取權層級。 設定網路規則時，只有透過一組指定網路要求資料的應用程式才能存取儲存體帳戶。 您可以透過 Azure AD RBAC 來控制對 Azure 儲存體的存取。 您也可以設定私用端點，以在您的虛擬網路與服務之間通過 Microsoft 骨幹網路的流量，來改善安全性，以避免公開網際網路的暴露。 
 
-- [如何建立額外的 Azure 訂用帳戶](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
 - [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
 
-- [如何建立和使用標記](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 - [設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security)
 
@@ -494,7 +494,7 @@ ms.locfileid: "82792066"
 
 **責任**：客戶
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的機密資訊傳輸。
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸。
 
 **指引**：對於儲存或處理敏感資訊的儲存體帳戶資源，請使用標記將資源標示為機密。 若要透過外泄降低資料遺失的風險，請使用 Azure 防火牆來限制 Azure 儲存體帳戶的輸出網路流量。 
 
@@ -510,7 +510,7 @@ ms.locfileid: "82792066"
 
 **責任**：客戶
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有機密資訊
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
 **指引**：您可以藉由啟用儲存體帳戶所需的安全傳輸，強制使用 HTTPS。 啟用此選項後，使用 HTTP 的連線將被拒絕。 此外，請使用 Azure 資訊安全中心和 Azure 原則，為您的儲存體帳戶強制執行安全傳輸。
 
@@ -522,9 +522,9 @@ ms.locfileid: "82792066"
 
 **責任**：共用
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用 active discovery 工具來識別敏感性資料
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用作用中探索工具來識別敏感性資料
 
-**指導**方針： Azure 儲存體帳戶和相關資源尚無法使用資料識別功能。 視需要執行協力廠商解決方案，以符合合規性目的。 
+**指導**方針： Azure 儲存體帳戶和相關資源尚無法使用資料識別功能。 若需要達到合規性目標，請實作協力廠商解決方案。 
 
 - [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -542,7 +542,7 @@ ms.locfileid: "82792066"
 
 - [如何使用 Azure 入口網站中的 RBAC 來設定 Azure Blob 和佇列資料的存取權](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
-- [如何建立和設定 AAD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [如何建立和設定 AAD 執行個體](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
 - [授權存取 Azure 儲存體中的資料](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
@@ -550,9 +550,9 @@ ms.locfileid: "82792066"
 
 **責任**：客戶
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用以主機為基礎的資料遺失防護來強制存取控制
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用主機型資料外洩防護來強制執行存取控制
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -568,7 +568,7 @@ ms.locfileid: "82792066"
 
 **責任**：客戶
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：對重要 Azure 資源的變更進行記錄和警示
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
 **指導**方針：使用 Azure 監視器搭配 Azure 活動記錄，以針對儲存體帳戶資源發生變更時，建立警示。 您也可以啟用 Azure 儲存體記錄，以追蹤每個對 Azure 儲存體所提出的要求是否已獲得授權。 這些記錄會指出是否以匿名方式進行要求、使用 OAuth 2.0 權杖、使用共用金鑰，或使用共用存取簽章（SAS）。 此外，請使用 Azure 監視器，以使用匿名驗證條件來對儲存體帳戶的匿名存取發出警示。
 
@@ -584,13 +584,13 @@ ms.locfileid: "82792066"
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*如需詳細資訊，請參閱[安全性控制：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。*
+如需詳細資訊，請參閱[安全性控制：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management) (機器翻譯)。
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
 **指導**方針：遵循 Azure 資訊安全中心的建議，持續地審查並監視儲存體帳戶的設定。 
 
-- [安全性建議-參考指南](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [安全性建議 - 參考指南](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -598,7 +598,7 @@ ms.locfileid: "82792066"
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自動化的作業系統修補程式管理解決方案
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -606,7 +606,7 @@ ms.locfileid: "82792066"
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署自動化的協力廠商軟體修補程式管理解決方案
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -620,7 +620,7 @@ ms.locfileid: "82792066"
 
 **責任**：客戶
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程式來優先處理探索到的弱點。
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序。
 
 **指導**方針：使用 Azure 資訊安全中心所提供的預設風險評等（安全分數）。 
 
@@ -632,17 +632,17 @@ ms.locfileid: "82792066"
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱[安全性控制：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
+如需詳細資訊，請參閱[安全性控制：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management) (機器翻譯)。
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 資產探索
 
-**指引**：使用 Azure Resource Graph 來查詢和探索訂用帳戶內的所有資源（包括儲存體帳戶）。 請確定您的租使用者中有適當的（讀取）許可權，而且能夠列舉所有的 Azure 訂用帳戶以及您訂用帳戶內的資源。 
+**指引**：使用 Azure Resource Graph 來查詢和探索訂用帳戶內的所有資源（包括儲存體帳戶）。 確保租用戶中有適當的 (讀取) 權限，且能列舉所有 Azure 訂用帳戶以及訂用帳戶中的資源。 
 
 - [如何使用 Azure Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
-- [如何查看您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [瞭解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -652,7 +652,7 @@ ms.locfileid: "82792066"
 
 **指引**：將標籤套用至儲存體帳戶資源，以邏輯方式將它們組織成分類法。 
 
-- [如何建立和使用標記](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -660,15 +660,15 @@ ms.locfileid: "82792066"
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
-**指引**.. 適當地使用標記、管理群組和個別的訂用帳戶來組織和追蹤儲存體帳戶和相關資源。 定期協調清查，並確保未經授權的資源會及時從訂用帳戶中刪除。 
+**指引**.. 適當地使用標記、管理群組和個別的訂用帳戶來組織和追蹤儲存體帳戶和相關資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。 
 
 此外，請使用 Advanced 威脅防護來進行 Azure 儲存體，以偵測未經授權的 Azure 資源。 
 
-- [如何建立額外的 Azure 訂用帳戶](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
 - [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
 
-- [如何建立和使用標記](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 - [設定 Azure 儲存體的先進威脅防護](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
@@ -676,7 +676,7 @@ ms.locfileid: "82792066"
 
 **責任**：客戶
 
-### <a name="64-maintain-inventory-of-approved-azure-resources-and-software-titles"></a>6.4：維護已核准的 Azure 資源和軟體標題的清查。
+### <a name="64-maintain-inventory-of-approved-azure-resources-and-software-titles"></a>6.4：維護已核准 Azure 資源和軟體標題的清查。
 
 **指引**：根據您的組織需求，您必須建立已核准 Azure 資源的清查。 
 
@@ -687,12 +687,12 @@ ms.locfileid: "82792066"
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：未核准的 Azure 資源的監視
 
-**指引**：使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型進行限制： 
+**指引**：使用下列內建原則定義，以利用 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制： 
 
  - 不允許的資源類型 
  - 允許的資源類型 
 
-此外，請使用 Azure Resource Graph 來查詢/探索訂用帳戶內的資源。 這有助於以高安全性為基礎的環境，例如具有儲存體帳戶的環境。 
+此外，使用 Azure Resource Graph 來查詢/探索其訂用帳戶內的資源。 這有助於以高安全性為基礎的環境，例如具有儲存體帳戶的環境。 
 
 - [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -704,7 +704,7 @@ ms.locfileid: "82792066"
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：監視計算資源內未經核准的軟體應用程式
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -722,7 +722,7 @@ ms.locfileid: "82792066"
 
 ### <a name="68-use-only-approved-applications"></a>6.8：僅使用已核准的應用程式
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -730,7 +730,7 @@ ms.locfileid: "82792066"
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
-**指引**：使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型進行限制： 
+**指引**：使用下列內建原則定義，以利用 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制： 
 
 - 不允許的資源類型 
 - 允許的資源類型 
@@ -743,9 +743,9 @@ ms.locfileid: "82792066"
 
 **責任**：客戶
 
-### <a name="610-implement-approved-application-list"></a>6.10：執行核准的應用程式清單
+### <a name="610-implement-approved-application-list"></a>6.10：實作已核准的應用程式清單
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -753,7 +753,7 @@ ms.locfileid: "82792066"
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6.11：限制使用者透過腳本與 Azure Resource Manager 互動的能力
 
-**指引**：使用 Azure 條件式存取來限制使用者與 Azure Resource Manager 的互動能力，方法是設定「Microsoft Azure 管理」應用程式的「封鎖存取」。 這可能會防止在高安全性環境（例如具有儲存體帳戶的資源）中建立和變更資源。 
+**指引**：使用 Azure 條件式存取，藉由設定「Microsoft Azure 管理」應用程式的「封鎖存取」，限制使用者與 Azure Resource Manager 互動的能力。 這可能會防止在高安全性環境（例如具有儲存體帳戶的資源）中建立和變更資源。 
 
 - [如何設定條件式存取以封鎖對 ARM 的存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
 
@@ -763,7 +763,7 @@ ms.locfileid: "82792066"
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制使用者在計算資源內執行腳本的能力
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -771,7 +771,7 @@ ms.locfileid: "82792066"
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：實際或邏輯上隔離高風險應用程式
 
-**指導**方針：不適用;這項建議適用于在 Azure App Service 或計算資源上執行的 web 應用程式。
+**指引**：不適用；這項建議適用於在 Azure App Service 或計算資源上執行的 Web 應用程式。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -779,17 +779,20 @@ ms.locfileid: "82792066"
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱[安全性控制：安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)設定。*
+如需詳細資訊，請參閱[安全性控制：安全設定](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration) (機器翻譯)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
 **指引**：在 "Microsoft. Storage" 命名空間中使用 Azure 原則別名來建立自訂原則，以審核或強制執行儲存體帳戶實例的設定。 您也可以將內建的 Azure 原則定義用於 Azure 儲存體帳戶，例如： 
 
-對儲存體帳戶進行不受限制的網路存取在儲存體帳戶上部署先進的威脅防護儲存體帳戶應遷移到新的 Azure Resource Manager 資源安全傳輸至儲存體帳戶應啟用 
+稽核不受限制的儲存體帳戶網路存取  
+在儲存體帳戶部署進階威脅防護  
+儲存體帳戶應移轉至新的 Azure Resource Manager 資源  
+應啟用儲存體帳戶的安全傳輸  
 
 使用來自 Azure 資訊安全中心的建議做為儲存體帳戶的安全設定基準。 
 
-- [如何查看可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -799,7 +802,7 @@ ms.locfileid: "82792066"
 
 ### <a name="72-establish-secure-configurations-for-your-operating-system"></a>7.2：為您的作業系統建立安全設定
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -819,7 +822,7 @@ ms.locfileid: "82792066"
 
 ### <a name="74-maintain-secure-configurations-for-operating-systems"></a>7.4：維護作業系統的安全設定
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -829,7 +832,7 @@ ms.locfileid: "82792066"
 
 **指引**：使用 Azure Repos 安全地儲存和管理您的程式碼，例如自訂的 Azure 原則、Azure Resource Manager 範本、Desired State Configuration 腳本等。若要存取您在 Azure DevOps 中管理的資源，您可以將許可權授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory （Azure AD）中定義的群組（如果與 Azure DevOps 整合），或 Active Directory （如果與 TFS 整合）。
 
-- [如何將程式碼儲存在 Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 - [關於 Azure DevOps 中的許可權和群組](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
 
@@ -839,7 +842,7 @@ ms.locfileid: "82792066"
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全地儲存自訂的作業系統映射
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -847,7 +850,7 @@ ms.locfileid: "82792066"
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7.7：部署系統設定管理工具
 
-**指引**：利用 Azure 原則來警示、審查及強制執行儲存體帳戶的系統組態。 此外，開發處理常式和管線來管理原則例外狀況。 
+**指引**：利用 Azure 原則來警示、審查及強制執行儲存體帳戶的系統組態。 此外，開發流程和管線以管理原則例外狀況。 
 
 - [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -857,7 +860,7 @@ ms.locfileid: "82792066"
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的系統建構管理工具
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -875,7 +878,7 @@ ms.locfileid: "82792066"
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：為作業系統執行自動化設定監視
 
-**指導**方針：不適用;這項建議適用于計算資源。
+**指引**：不適用，這項建議主要用於計算資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -905,9 +908,9 @@ ms.locfileid: "82792066"
 
 **責任**：客戶
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證暴露
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證公開
 
-**指導**方針：執行認證掃描器來識別程式碼中的認證。 認證掃描器也鼓勵將探索到的認證移至更安全的位置，例如 Azure Key Vault。 
+**指引**：實作認證掃描器來識別程式碼中的認證。 認證掃描器也有助於將探索到的認證移至更安全的位置，例如 Azure Key Vault。 
 
 - [如何設定認證掃描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -917,11 +920,11 @@ ms.locfileid: "82792066"
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*如需詳細資訊，請參閱[安全性控制：惡意程式碼防護](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
+如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense) (機器翻譯)。
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
-**指導**方針：不適用;這項建議適用于計算資源。 Microsoft 會處理基礎平臺的反惡意程式碼。
+**指引**：不適用，這項建議主要用於計算資源。 Microsoft 會處理基礎平臺的反惡意程式碼。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -941,7 +944,7 @@ ms.locfileid: "82792066"
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3：確認反惡意程式碼軟體和簽章已更新
 
-**指導**方針：不適用;這項建議適用于計算資源。 Microsoft 會處理基礎平臺的反惡意程式碼。
+**指引**：不適用，這項建議主要用於計算資源。 Microsoft 會處理基礎平臺的反惡意程式碼。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -949,7 +952,7 @@ ms.locfileid: "82792066"
 
 ## <a name="data-recovery"></a>資料復原
 
-*如需詳細資訊，請參閱[安全性控制：資料](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)復原。*
+如需詳細資訊，請參閱[安全性控制：資料復原](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery) (機器翻譯)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保週期性自動備份
 
@@ -969,11 +972,11 @@ ms.locfileid: "82792066"
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份，並備份任何客戶管理的金鑰
 
-**指導**方針：若要從儲存體帳戶支援的服務備份資料，有多個可用的方法，包括使用 azcopy 或協力廠商工具。 Azure Blob 儲存體的固定儲存體可讓使用者以 WORM （一次寫入，多次讀取）狀態儲存業務關鍵資料物件。 此狀態讓資料在使用者指定的間隔內不可清除，也不可修改。
+**指導**方針：若要從儲存體帳戶支援的服務備份資料，有多個可用的方法，包括使用 azcopy 或協力廠商工具。 Azure Blob 儲存體的固定儲存體可讓使用者以 WORM (一次寫入，多次讀取) 狀態儲存業務關鍵資料。 此狀態讓資料在使用者指定的間隔內不可清除，也不可修改。
 
 - [開始使用 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
 
-- [設定和管理 Blob 儲存體的不可變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage?tabs=azure-portal)
+- [設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage?tabs=azure-portal)
 
 客戶管理/提供的金鑰可以在 Azure Key Vault 中使用 Azure CLI 或 PowerShell 來進行備份。 
 
@@ -1014,7 +1017,7 @@ ms.locfileid: "82792066"
 
 - [Azure 儲存體 Blob 的虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
-- [使用不可變的儲存體儲存業務關鍵的 blob 資料](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)
+- [使用不可變儲存體儲存業務關鍵 Blob 資料](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1022,13 +1025,13 @@ ms.locfileid: "82792066"
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱[安全性控制：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
+如需詳細資訊，請參閱[安全性控制：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response) (機器翻譯)。
 
 ### <a name="101-create-incident-response-guide"></a>10.1：建立事件回應指南
 
-**指引**：為您的組織建立事件回應指南。 請確定有寫入的事件回應計畫，可定義人員的所有角色，以及從偵測到事件處理/管理的階段，以進行後續事件審查。
+**指引**：為組織製作事件回應指南。 請確定有書面的事件回應計畫，其中定義人員的所有角色，以及從偵測到事件後檢討的事件處理/管理階段。
 
-- [建立您自己的安全性事件回應程式的指引](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
+- [建立自有安全性事件回應程序的指引](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
 - [Microsoft 安全性回應中心的事件剖析](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
 
@@ -1040,9 +1043,9 @@ ms.locfileid: "82792066"
 
 ### <a name="102-create-incident-scoring-and-prioritization-procedure"></a>10.2：建立事件評分和優先順序程式
 
-**指導**方針：資訊安全中心指派每個警示的嚴重性，以協助您排定應先調查哪些警示。 嚴重性是根據資訊安全中心在尋找中的信心，或用於發出警示的分析，以及導致警示的活動背後有惡意意圖的信賴等級。 
+**指引**：資訊安全中心會指派每個警示的嚴重性，以協助設定應優先調查哪些警示。 嚴重性會依據資訊安全中心對用於發出警示的發現或分析其信心程度，以及信賴等級具有活動背後會導致警示的惡意意圖。 
 
-此外，請清楚地標示訂閱（例如， 生產、非生產）：使用標記並建立命名系統，以清楚地識別和分類 Azure 資源，特別是處理敏感性資料的人員。 您必須負責根據發生事件的 Azure 資源和環境的重要性排定警示補救的優先順序。
+此外，使用標記清楚地標示訂用帳戶 (例如， 生產、非生產) 並建立命名系統，以清楚地識別及分類 Azure 資源，尤其是處理敏感性資料的資源。 您需負責根據發生事件的 Azure 資源和環境的重要性，設定警示的補救優先順序。
 
 - [Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
 
@@ -1054,9 +1057,9 @@ ms.locfileid: "82792066"
 
 ### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程式
 
-**指導**方針：執行練習以定期測試系統的事件回應功能，以協助保護您的 Azure 資源。 識別弱式點和間距，並視需要修訂計畫。
+**指引**：進行練習以定期測試系統的事件回應功能，進而協助保護您的 Azure 資源。 找出弱點和落差，並視需要修訂計畫。
 
-- [NIST 的發行指南，適用于 IT 計畫和功能的測試、訓練和練習計畫](https://csrc.nist.gov/publications/detail/sp/800-84/final)
+- [NIST 的出版品 - Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1064,17 +1067,17 @@ ms.locfileid: "82792066"
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全性事件連絡人詳細資料，並設定安全性事件的警示通知
 
-**指導**方針：如果 Microsoft 安全性回應中心（MSRC）發現您的資料已由非法或未經授權的合作物件存取，microsoft 將會使用安全性事件連絡人資訊來與您聯繫。 檢查事實後的事件，以確保解決問題。
+**指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。 事後檢討事件，確保問題已解決。
 
-- [如何設定 Azure 資訊安全中心安全性連絡人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [如何設定 Azure 資訊安全中心的安全性連絡人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
 
 **Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：將安全性警示納入事件回應系統中
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：將安全性警示併入事件回應系統
 
-**指引**：使用「連續匯出」功能來匯出您的 Azure 資訊安全中心警示和建議，以協助找出 Azure 資源的風險。 「連續匯出」可讓您以手動或持續的方式來匯出警示和建議。 您可以使用 Azure 資訊安全中心資料連線器，將警示串流至 Azure Sentinel。
+**指引**：使用「連續匯出」功能來匯出 Azure 資訊安全中心警示和建議，協助找出 Azure 資源的風險。 「連續匯出」可讓您以手動或持續不斷的方式來匯出警示和建議。 您可使用 Azure 資訊安全中心的資料連接器，將警示串流至 Azure Sentinel。
 
 - [如何設定連續匯出](https://docs.microsoft.com/azure/security-center/continuous-export)
 
@@ -1096,7 +1099,7 @@ ms.locfileid: "82792066"
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises) (機器翻譯)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources"></a>11.1：進行 Azure 資源的定期滲透測試
 
@@ -1112,5 +1115,5 @@ ms.locfileid: "82792066"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[Azure 安全性基準測試](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- 深入瞭解[Azure 安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](https://docs.microsoft.com/azure/security/benchmarks/overview) (機器翻譯)
+- 深入了解 [Azure 安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) (機器翻譯)

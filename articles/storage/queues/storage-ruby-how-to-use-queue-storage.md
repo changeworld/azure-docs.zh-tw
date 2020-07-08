@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.openlocfilehash: c7211bc805f4ed1d026faedbfdc9d53d3c1dfd93
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.openlocfilehash: 518a1b01f52edcf5fa365e2275d4b995ffd719c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68721297"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805177"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>如何使用 Ruby 的佇列儲存體
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -46,7 +46,7 @@ require "azure"
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>設定 Azure 儲存體連接
-Azure 模組會讀取環境變數**\_azure 儲存體\_帳戶**和**Azure\_儲存體\_ACCESS_KEY** ，以取得連接 azure 儲存體帳戶所需的資訊。 若未設定這些環境變數，您必須使用下列程式碼，在使用 **Azure::QueueService** 之前指定帳戶資訊：
+Azure 模組會讀取環境變數**azure \_ 儲存體 \_ 帳戶**和**azure \_ 儲存體 \_ ACCESS_KEY** ，以取得連接 azure 儲存體帳戶所需的資訊。 若未設定這些環境變數，您必須使用下列程式碼，在使用 **Azure::QueueService** 之前指定帳戶資訊：
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
@@ -86,7 +86,7 @@ azure_queue_service.create_message("test-queue", "test message")
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>作法：預覽下一個訊息
-您可以藉由呼叫**peek\_messages （）** 方法，在佇列前面查看訊息，而無需將它從佇列中移除。 根據預設，**查看\_訊息（）** 會查看單一訊息。 您也可以指定所要查看的訊息數。
+您可以藉由呼叫**peek \_ messages （）** 方法，在佇列前面查看訊息，而無需將它從佇列中移除。 根據預設，**查看 \_ 訊息（）** 會查看單一訊息。 您也可以指定所要查看的訊息數。
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
@@ -99,7 +99,7 @@ result = azure_queue_service.peek_messages("test-queue",
 1. 呼叫 **list\_messages()** 時，您預設會取得佇列中的下一個訊息。 您也可以指定您要取得的訊息數。 從 **list\_messages()** 傳回的訊息，對於從此佇列讀取訊息的任何其他程式碼而言將會是不可見的。 您可以傳入以秒為單位的可見性逾時，作為參數。
 2. 若要完成從佇列中移除訊息的作業，您也必須呼叫**delete_message （）**。
 
-這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 在處理訊息之後，您的程式碼會立即呼叫**delete\_message （）** 。
+這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 在處理訊息之後，您的程式碼會立即呼叫**delete \_ message （）** 。
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -142,7 +142,7 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
 ```
 
 ## <a name="how-to-delete-a-queue"></a>作法：刪除佇列
-若要刪除佇列及其內含的所有訊息，請在佇列物件上呼叫**delete\_queue （）** 方法。
+若要刪除佇列及其內含的所有訊息，請在佇列物件上呼叫**delete \_ queue （）** 方法。
 
 ```ruby
 azure_queue_service.delete_queue("test-queue")

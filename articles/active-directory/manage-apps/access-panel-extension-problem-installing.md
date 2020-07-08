@@ -3,25 +3,25 @@ title: 安裝應用程式存取面板瀏覽器延伸模組-Azure AD
 description: 修正在安裝存取面板的瀏覽器擴充功能時所遇到的常見錯誤。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 05/04/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 771ba79f067cbff1ab8bbfece64f4028b4ca50b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2046c24220079a604792d07f3ebc3f6ef11e9c8a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275865"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84761080"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>安裝存取面板的瀏覽器擴充功能
 
@@ -52,7 +52,7 @@ ms.locfileid: "74275865"
 3.  當系統提示您時，選取 [立即安裝]****。  
     系統會將您導向至所選取瀏覽器的下載連結。 
     
-4.  選取 [新增]  。
+4.  選取 [新增]。
 
 5.  如果您看到系統提示，請 [啟用]**** 或 [允許]**** 擴充功能。
 

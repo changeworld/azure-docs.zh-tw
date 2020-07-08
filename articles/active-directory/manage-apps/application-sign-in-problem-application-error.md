@@ -3,25 +3,25 @@ title: 當您登入之後，應用程式頁面上會出現錯誤訊息 |Microsof
 description: 如何解決當應用程式傳回錯誤訊息時，Azure AD 登入的問題。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b8d20b31e96973a492355f0515d0532deea0ac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c826a679c1c64e113beb6b2cc5ffd29f82b55a3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185485"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759533"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>應用程式頁面會在使用者登入之後顯示錯誤訊息
 
@@ -62,7 +62,7 @@ ms.locfileid: "77185485"
 
    1. 選取 [**新增屬性**]。 輸入 [**名稱**]，然後從下拉式清單中選取**值**。
 
-   1.  選取 [儲存]  。 您會在資料表中看到新的屬性。
+   1.  選取 [儲存]。 您會在資料表中看到新的屬性。
 
 9. 儲存組態。
 

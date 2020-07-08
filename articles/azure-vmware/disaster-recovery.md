@@ -3,18 +3,18 @@ title: 完成虛擬機器的嚴重損壞修復
 description: 本文說明如何使用 AVS 完成虛擬機器的嚴重損壞修復
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 86f823444d4fff3edf8651f4d949c71d2c981ec7
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84749943"
 ---
-# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>使用 Azure VMWare 解決方案完成虛擬機器的嚴重損壞修復
+# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>使用 Azure VMware 解決方案完成虛擬機器的嚴重損壞修復
 
-本文包含使用 VMWare 混合式雲端擴充功能（HCX）解決方案完成虛擬機器嚴重損壞修復的程式，並將 Azure VMWare 解決方案私用雲端作為復原或目標網站。
+本文包含使用 VMware 混合式雲端擴充功能（HCX）解決方案完成虛擬機器嚴重損壞修復的程式，並將 Azure VMware 解決方案私用雲端作為復原或目標網站。
 
-VMWare HCX 提供各種作業，可在複寫原則中提供精確的控制和細微性。 可用的作業包括：
+VMware HCX 提供各種作業，可在複寫原則中提供精確的控制和細微性。 可用的作業包括：
 
 - 反向–發生災難之後。 [反轉] 有助於讓網站 B 成為受保護 VM 現在所在的來源網站和網站 A。
 
@@ -56,7 +56,7 @@ VMWare HCX 提供各種作業，可在複寫原則中提供精確的控制和細
 
 - **啟用靜止：** 暫停 VM，以確保一致的複本會同步處理至遠端網站。
 
-- **目的地儲存體：** 選取受保護 VM 的遠端資料存放區。 在 AVS 私人雲端中，此選項應為 VSAN 資料存放區。
+- **目的地儲存體：** 選取受保護 VM 的遠端資料存放區。 在 AVS 私人雲端中，此選項應為 vSAN 資料存放區。
 
 - **計算容器：** 遠端 vSphere 叢集或資源集區。
 
@@ -144,7 +144,7 @@ VMWare HCX 提供各種作業，可在複寫原則中提供精確的控制和細
 
 ## <a name="disaster-recovery-plan-automation"></a>嚴重損壞修復計畫自動化
 
-VMWare HCX 目前沒有內建的機制可建立和自動化嚴重損壞修復計畫。 此功能不存在於 HCX 中。 不過，它會提供一組 REST Api，包括用於嚴重損壞修復作業的 Api。
+VMware HCX 目前沒有內建的機制可建立和自動化嚴重損壞修復計畫。 此功能不存在於 HCX 中。 不過，它會提供一組 REST Api，包括用於嚴重損壞修復作業的 Api。
 
 在 URL 中，您可以在 HCX 管理員記憶體取 API 規格。
 

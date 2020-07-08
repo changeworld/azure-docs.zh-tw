@@ -3,24 +3,24 @@ title: 如何移除使用者的應用程式存取 | Microsoft Docs
 description: 了解如何移除使用者的應用程式存取
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/17/2018
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b69502995eff88df53af3671a8e611809f83e59
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 6f9626c256755e2fce81b593d95b8680f4bb55ee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "65826107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763154"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>如何移除使用者的應用程式存取
 
@@ -40,15 +40,15 @@ ms.locfileid: "65826107"
 
 1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
-2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
+2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
+3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
 4. 按一下 Azure Active Directory 左側導覽功能表中的 [**企業應用程式**]。
 
 5. 按一下 [**所有應用程式**] 以查看所有應用程式的清單。
 
-   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
+   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 選取您要刪除的應用程式。
 
@@ -60,7 +60,7 @@ ms.locfileid: "65826107"
 
 若要**停用整個目錄中的所有未來使用者同意作業**，請遵循下列指示：
 
-1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
+1.  開啟 [Azure 入口網站](https://portal.azure.com/)，以**全域管理員**身分登入。
 
 2.  開啟 [Azure Active Directory 擴充功能]**** 
 
@@ -73,4 +73,4 @@ ms.locfileid: "65826107"
 
 ## <a name="next-steps"></a>後續步驟
 
-[管理應用程式的存取權](what-is-access-management.md)
+[管理應用程式的存取](what-is-access-management.md)

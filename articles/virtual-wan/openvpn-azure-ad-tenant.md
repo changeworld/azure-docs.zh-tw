@@ -5,57 +5,57 @@ titleSuffix: Azure Virtual WAN
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: 74347ce969b6a5ffd57f5ca8396517e78590f3f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76c65d194d03dd1b7ff4cc2f3b45d84ff7909968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059449"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753366"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>建立使用者 VPN OpenVPN 通訊協定連線的 Azure Active Directory 租使用者
 
 連線到您的 VNet 時，您可以使用以憑證為基礎的驗證或 RADIUS 驗證。 不過，當您使用 Open VPN 通訊協定時，您也可以使用 Azure Active Directory 驗證。 本文可協助您設定虛擬 WAN 使用者 VPN （點對站） Open VPN 驗證的 Azure AD 租使用者。
 
 > [!NOTE]
-> 只有 OpenVPN&reg;通訊協定連線支援 Azure AD 驗證。
+> 只有 OpenVPN 通訊協定連線支援 Azure AD 驗證 &reg; 。
 >
 
-## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. 建立 Azure AD 租使用者
+## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.建立 Azure AD 租用戶
 
-使用[建立新的租](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)使用者文章中的步驟，建立 Azure AD 租使用者：
+使用[建立新的租用戶](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)一文中的步驟，建立 Azure AD 租用戶：
 
 * 組織名稱
 * 初始網域名稱
 
 範例：
 
-   ![新增 Azure AD 租使用者](./media/openvpn-create-azure-ad-tenant/newtenant.png)
+   ![新增 Azure AD 租用戶](./media/openvpn-create-azure-ad-tenant/newtenant.png)
 
 ## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2. 建立 Azure AD 租使用者使用者
 
-接下來，建立兩個使用者帳戶。 建立一個全域系統管理員帳戶和一個主要使用者帳戶。 主要使用者帳戶會當做您的主要內嵌帳戶（服務帳戶）使用。 當您建立 Azure AD 租使用者使用者帳戶時，您會針對您想要建立的使用者類型調整目錄角色。
+接下來，建立兩個使用者帳戶。 建立一個全域系統管理員帳戶和一個主要使用者帳戶。 主要使用者帳戶會當做您的主要內嵌帳戶 (服務帳戶) 使用。 當您建立 Azure AD 租用戶使用者帳戶時，您會針對您想要建立的使用者類型調整目錄角色。
 
-使用[本文](../active-directory/fundamentals/add-users-azure-active-directory.md)中的步驟，為您的 Azure AD 租使用者建立至少兩個使用者。 請務必變更**目錄角色**以建立帳戶類型：
+使用[本文](../active-directory/fundamentals/add-users-azure-active-directory.md)中的步驟，為您的 Azure AD 租用戶建立至少兩個使用者。 請務必變更**目錄角色**以建立帳戶類型：
 
 * 全域管理員
 * User
 
 ## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3. 在 VPN 閘道上啟用 Azure AD 驗證
 
-1. 找出您要用於驗證之目錄的目錄識別碼。 它會列在 [Active Directory] 頁面的 [屬性] 區段中。
+1. 找出目錄 (您要用於驗證) 的目錄識別碼。 會列在 Active Directory 頁面的屬性區段中。
 
     ![目錄識別碼](./media/openvpn-create-azure-ad-tenant/directory-id.png)
 
-2. 複製 [目錄識別碼]。
+2. 複製目錄識別碼。
 
-3. 以指派**全域管理員**角色的使用者身分登入 Azure 入口網站。
+3. 以獲指派**全域管理員**角色的使用者身分登入 Azure 入口網站。
 
-4. 接下來，請授與系統管理員同意。 在瀏覽器的網址列中，複製並貼上您部署位置的相關 URL：
+4. 接下來，給予管理員同意。 在瀏覽器的網址列中，複製並貼上您部署位置的相關 URL：
 
-    公用
+    公開
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
@@ -83,7 +83,7 @@ ms.locfileid: "80059449"
 
     ![目錄識別碼](./media/openvpn-create-azure-ad-tenant/pick.png)
 
-6. 出現提示時，選取 [**接受**]。
+6. 出現提示時選取 [接受]。
 
     ![Accept](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 

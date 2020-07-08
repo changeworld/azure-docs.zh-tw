@@ -3,8 +3,8 @@ title: 使用租用戶限制來管理對 SaaS 應用程式的存取 - Azure AD
 description: 如何使用租用戶限制以根據使用者的 Azure AD 租用戶來管理可存取應用程式的使用者。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: cd302791aa783f1a95d48f666366aa845fcaadbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763018"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租用戶限制來管理對 SaaS 雲端應用程式的存取
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為�
 
 這些標頭應該包含下列元素︰
 
-- 就 *Restrict-Access-To-Tenants* 而言，請使用 \<permitted tenant list\> 的值，這是您想要允許使用者存取的租用戶清單 (以逗號分隔)。 與租用戶一起註冊的任何網域都可用來在此清單中識別該租用戶。 例如，若要允許存取 Contoso 和 Fabrikam 租用戶，名稱/值組會顯示如下： `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- 對於 [*限制存取至*租使用者]，請使用值 \<permitted tenant list\> ，這是您想要允許使用者存取的租使用者清單（以逗號分隔）。 與租用戶一起註冊的任何網域都可用來在此清單中識別該租用戶。 例如，若要允許存取 Contoso 和 Fabrikam 租用戶，名稱/值組會顯示如下： `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - 就 *Restrict-Access-Context* 而言，請使用單一目錄識別碼的值，用來宣告設定租用戶限制的是哪一個租用戶。 例如，若要宣告 Contoso 是設定租用戶限制原則的租用戶，名稱/值組會顯示如下： `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
@@ -155,7 +155,7 @@ Fiddler 是一個免費的 Web 偵錯 Proxy，可用來擷取和修改 HTTP/HTTP
 
    1. 在「Fiddler Web 偵錯工具」中，選取 [Rules] \(規則) 功能表，然後選取 [Customize Rules] \(自訂規則) 以開啟 CustomRules 檔案。
 
-   2. 將下列行新增至 `OnBeforeRequest` 函式的開頭。 將 \<tenant domain\> 取代為使用您租用戶註冊的網域 (例如 `contoso.onmicrosoft.com`)。 使用您租用戶的 Azure AD GUID 識別碼來取代 \<directory ID\>。
+   2. 將下列行新增至 `OnBeforeRequest` 函式的開頭。 將取代為向 \<tenant domain\> 租使用者註冊的網域（例如 `contoso.onmicrosoft.com` ）。 \<directory ID\>將取代為您租使用者的 AZURE AD GUID 識別碼。
 
       ```JScript.NET
       if (

@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 680c1b036b9b41edb1115f478fd5dc8f63ea1d02
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b853817b670f59bbfeef9ecd81c70dc63cbd367b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688033"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804624"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權
 
@@ -43,7 +43,7 @@ Azure 儲存體支援三種類型的共用存取簽章：
 共用存取簽章可以接受以下兩種格式其中之一：
 
 - 臨機**操作 SAS：** 當您建立臨機操作 SAS 時，SAS 的開始時間、到期時間和許可權都會在 SAS URI 中指定（如果省略開始時間，則會隱含）。 任何類型的 SAS 都可以是臨機操作 SAS。
-- **具有預存存取原則的服務 SAS：** 預存存取原則是在資源容器上定義，可以是 blob 容器、資料表、佇列或檔案共用。 預存的存取原則可用來管理一或多個服務共用存取簽章的條件約束。 當您將服務 SAS 與預存存取原則建立關聯時，SAS 會繼承&mdash;針對儲存的存取原則所定義之開始&mdash;時間、到期時間和許可權的條件約束。
+- **具有預存存取原則的服務 SAS：** 預存存取原則是在資源容器上定義，可以是 blob 容器、資料表、佇列或檔案共用。 預存的存取原則可用來管理一或多個服務共用存取簽章的條件約束。 當您將服務 SAS 與預存存取原則建立關聯時，SAS 會繼承 &mdash; &mdash; 針對儲存的存取原則所定義之開始時間、到期時間和許可權的條件約束。
 
 > [!NOTE]
 > 使用者委派 SAS 或帳戶 SAS 必須是臨機操作 SAS。 使用者委派 SAS 或帳戶 SAS 不支援儲存的存取原則。

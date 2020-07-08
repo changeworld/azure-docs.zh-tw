@@ -8,14 +8,14 @@ ms.service: storage
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c8a5555c5c33255fdc5902a115e7e9103a4e936f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e5a85bcc4ded3b4bf3fcbcaf095d7c8ef01c458
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79410060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805308"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>在 Blob 儲存體的要求上提供加密金鑰（預覽）
 
@@ -25,7 +25,7 @@ ms.locfileid: "79410060"
 
 當用戶端應用程式在要求上提供加密金鑰時，Azure 儲存體會在讀取和寫入 blob 資料時，以透明的方式執行加密和解密。 Azure 儲存體會將加密金鑰的 SHA-256 雜湊連同 blob 的內容一起寫入。 雜湊是用來確認所有對 blob 的後續作業都使用相同的加密金鑰。
 
-Azure 儲存體不會儲存或管理用戶端與要求一起傳送的加密金鑰。 加密或解密程式完成後，就會安全地捨棄金鑰。
+Azure 儲存體不會儲存或管理用戶端與要求一起傳送的加密金鑰。 加密或解密程序完成後，就會安全地捨棄金鑰。
 
 當用戶端在要求上使用客戶提供的金鑰來建立或更新 blob 時，該 blob 的後續讀取和寫入要求也必須提供金鑰。 如果未在已使用客戶提供的金鑰加密之 blob 的要求上提供金鑰，則要求會失敗，錯誤碼為409（衝突）。
 
@@ -39,7 +39,7 @@ Azure 儲存體不會儲存或管理用戶端與要求一起傳送的加密金�
 
 針對 REST 呼叫，用戶端可以使用下列標頭，安全地將要求的加密金鑰資訊傳遞至 Blob 儲存體：
 
-|要求標頭 | 描述 |
+|要求標頭 | Description |
 |---------------|-------------|
 |`x-ms-encryption-key` |寫入和讀取要求都需要。 Base64 編碼的 AES-256 加密金鑰值。 |
 |`x-ms-encryption-key-sha256`| 寫入和讀取要求都需要。 加密金鑰的 Base64 編碼 SHA256。 |
@@ -51,14 +51,14 @@ Azure 儲存體不會儲存或管理用戶端與要求一起傳送的加密金�
 
 下列 Blob 儲存體作業支援在要求上傳送客戶提供的加密金鑰：
 
-- [Put Blob](/rest/api/storageservices/put-blob) \(英文\)
-- [Put Block List](/rest/api/storageservices/put-block-list) \(英文\)
+- [放置 Blob](/rest/api/storageservices/put-blob)
+- [放置區塊清單](/rest/api/storageservices/put-block-list)
 - [放置區塊](/rest/api/storageservices/put-block)
 - [將區塊從 URL 放入](/rest/api/storageservices/put-block-from-url)
 - [放置頁面](/rest/api/storageservices/put-page)
-- [從 URL 放置頁面](/rest/api/storageservices/put-page-from-url)
+- [從 URL 放置頁面](/rest/api/storageservices/put-page-from-url) (機器翻譯)
 - [附加區塊](/rest/api/storageservices/append-block)
-- [Set Blob Properties](/rest/api/storageservices/set-blob-properties) \(英文\)
+- [設定 Blob 屬性](/rest/api/storageservices/set-blob-properties)
 - [設定 Blob 中繼資料](/rest/api/storageservices/set-blob-metadata)
 - [取得 Blob](/rest/api/storageservices/get-blob)
 - [取得 Blob 屬性](/rest/api/storageservices/get-blob-properties)

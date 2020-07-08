@@ -4,15 +4,15 @@ description: 本文可協助您將 Azure 虛擬網路閘道連線至 Azure 虛�
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 688183bc07aa14d5e5df182d7de0897cec93f0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca5880f76ffd3a85d4b3cec8e01f58ae5c024a58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84749703"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>將 VPN 閘道（虛擬網路閘道）連線到虛擬 WAN
 
@@ -81,7 +81,7 @@ BGP ASN 不能是65515。 Azure 虛擬 WAN 將使用66515。
 
 1. 在 [虛擬 WAN **vpn 網站**] 頁面的頂端，選取**網站**，然後選取 [**下載站對站 VPN**設定]。 Azure 會建立具有設定的設定檔。
 
-   ![下載設定檔](./media/connect-virtual-network-gateway-vwan/download.png "下載這篇文章")
+   ![下載設定檔](./media/connect-virtual-network-gateway-vwan/download.png "下載")
 2. 下載並開啟設定檔。
 3. 針對第二個網站重複這些步驟。 當您開啟兩個設定檔時，您可以繼續進行下一節。
 
@@ -118,7 +118,7 @@ BGP ASN 不能是65515。 Azure 虛擬 WAN 將使用66515。
 3. 按一下 [確定] **** 來建立連線。
 4. 您可以在虛擬網路閘道**的 [連線**] 頁面中，查看連接。
 
-   ![建立](./media/connect-virtual-network-gateway-vwan/connect.png "connection")
+   ![[連接]](./media/connect-virtual-network-gateway-vwan/connect.png "連接")
 5. 重複上述步驟以建立第二個連接。 針對第二個連接，請選取您所建立的其他局域網路閘道。
 
 ## <a name="6-test-connections"></a><a name="test"></a>6. 測試連接
@@ -127,7 +127,7 @@ BGP ASN 不能是65515。 Azure 虛擬 WAN 將使用66515。
 
 1. 在 Azure VPN 閘道（Test1-VNG）的虛擬網路（Test1-VNet）中建立虛擬機器。 請勿在 GatewaySubnet 中建立虛擬機器。
 2. 建立另一個虛擬網路以連線至虛擬 WAN。 在此虛擬網路的子網中建立虛擬機器。 此虛擬網路不能包含任何虛擬網路閘道。 您可以使用[站對站](virtual-wan-site-to-site-portal.md#vnet)連線一文中的 PowerShell 步驟，快速建立虛擬網路。 執行 Cmdlet 之前，請務必變更這些值。
-3. 將 VNet 連線至虛擬 WAN 中樞。 在您的虛擬 WAN 頁面上，依序選取 [**虛擬網路**連線] 和 [ **+ 新增**連線]。 在 [新增連線]**** 頁面上，填寫下列欄位︰
+3. 將 VNet 連線至虛擬 WAN 中樞。 在您的虛擬 WAN 頁面上，依序選取 [**虛擬網路**連線] 和 [ **+ 新增**連線]。 在 [新增連線] 頁面上，填寫下列欄位︰
 
     * **名稱** - 為您的連線命名。
     * **中樞** - 選取要與此連線產生關聯的中樞。

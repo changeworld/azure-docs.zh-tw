@@ -4,15 +4,15 @@ description: 在本教學課程中，您將瞭解如何使用 Azure 虛擬 WAN�
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: b1e6305d142530ab19849f61f12a122d0c6434aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3a2c85540a4efa2f934605c4c056b458e2879ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84749589"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute 加密：透過 ExpressRoute 進行虛擬 WAN 的 IPsec
 
@@ -110,7 +110,7 @@ ms.locfileid: "80059293"
 
    ![針對 VPN 連線使用私人 IP 位址的設定](./media/vpn-over-expressroute/vpn-link-configuration.png)
    
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 儲存變更之後，中樞 VPN 閘道會使用 VPN 閘道上的私人 IP 位址，透過 ExpressRoute 建立與內部部署 VPN 裝置的 IPsec/IKE 連線。
 
@@ -140,7 +140,7 @@ ms.locfileid: "80059293"
            ```
            "ConnectedSubnets":["10.51.231.0/24"]
             ```
-    * 虛擬中樞 VPN 閘道的 IP 位址。 因為 VPN 閘道的每個連線都是由主動-主動設定中的兩個通道所組成，所以您會看到這兩個 IP 位址都列在此檔案中。 在此範例中，您`Instance0`會`Instance1`看到每個網站的和，而且它們是私人 ip 位址，而不是公用 ip 位址。<br>範例：
+    * 虛擬中樞 VPN 閘道的 IP 位址。 因為 VPN 閘道的每個連線都是由主動-主動設定中的兩個通道所組成，所以您會看到這兩個 IP 位址都列在此檔案中。 在此範例中，您會看到 `Instance0` `Instance1` 每個網站的和，而且它們是私人 ip 位址，而不是公用 ip 位址。<br>範例：
            ``` 
            "Instance0":"10.51.230.4"
            "Instance1":"10.51.230.5"
@@ -231,7 +231,7 @@ ms.locfileid: "80059293"
 
 ## <a name="8-clean-up-resources"></a><a name="cleanup"></a>8. 清除資源
 
-當您不再需要這些資源時，可以使用[remove-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup)來移除資源群組及其包含的所有資源。 執行下列 PowerShell 命令，並將取代`myResourceGroup`為您的資源組名：
+當您不再需要這些資源時，可以使用[remove-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup)來移除資源群組及其包含的所有資源。 執行下列 PowerShell 命令，並將取代 `myResourceGroup` 為您的資源組名：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

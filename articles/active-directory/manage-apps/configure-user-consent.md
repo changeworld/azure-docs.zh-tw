@@ -2,21 +2,21 @@
 title: 設定使用者使用 Azure AD 同意應用程式的方式
 description: 了解如何管理使用者如何及何時同意可存取貴組織資料的應用程式。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0a508e52189938447ea6fc1928d441d81deab392
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713985"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763460"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>設定使用者同意應用程式的方式
 
@@ -49,7 +49,7 @@ ms.locfileid: "83713985"
 1. 在 [應用程式的使用者同意] 底下，選取您要為所有使用者設定的同意設定。
 1. 選取 [儲存] 以儲存您的設定。
 
-![使用者同意設定](./media/configure-user-consent/setting-for-all-users.png)
+:::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="使用者同意設定":::
 
 > [!TIP]
 > 請考量[啟用管理員同意工作流程](configure-admin-consent-workflow.md)，讓使用者要求系統管理員檢閱和核准不允許使用者同意的應用程式，例如，當使用者同意已停用，或應用程式要求使用者不被允許授與的權限時。
@@ -102,7 +102,7 @@ ms.locfileid: "83713985"
 
 在此範例中，我們已將單一登入所需的最小權限集合分類：
 
-![權限分類](./media/configure-user-consent/permission-classifications.png)
+:::image type="content" source="media/configure-user-consent/permission-classifications.png" alt-text="權限分類":::
 
 > [!TIP]
 > 針對 Microsoft Graph API，執行基本單一登入所需的最小權限是 `openid`、`profile`、`User.Read` 和 `offline_access`。 使用這些權限，即使使用者不再使用應用程式，應用程式可以讀取已登入使用者的設定檔詳細資料，並且可以維護此存取權。
@@ -192,7 +192,7 @@ ms.locfileid: "83713985"
 
 在此範例中，所有群組擁有者都可以同意應用程式存取其群組的資料：
 
-![權限分類](./media/configure-user-consent/group-owner-consent.png)
+:::image type="content" source="media/configure-user-consent/group-owner-consent.png" alt-text="群組擁有者同意設定":::
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>使用 PowerShell 設定群組擁有者同意
 

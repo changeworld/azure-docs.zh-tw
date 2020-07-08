@@ -11,22 +11,22 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f9a8b35b07a4149fa2d6b9f8e6698e41f3e6870c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: d66b4c8e9f41f661cfc399f72a9ad97405a860fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891301"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790841"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>使用 REST API 新增或移除 Azure 角色指派
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]本文說明如何使用 REST API 指派角色。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要新增或移除角色指派，您必須具有：
 
@@ -169,6 +169,6 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId1}/providers/mi
 ## <a name="next-steps"></a>後續步驟
 
 - [使用 REST API 列出 Azure 角色指派](role-assignments-list-rest.md)
-- [使用 Resource Manager 範本和 Resource Manager REST API 部署資源](../azure-resource-manager/templates/deploy-rest.md)
+- [使用 Resource Manager 範本和 Resource Manager 部署資源 REST API](../azure-resource-manager/templates/deploy-rest.md)
 - [Azure REST API 參考](/rest/api/azure/)
 - [使用 REST API 建立或更新 Azure 自訂角色](custom-roles-rest.md)

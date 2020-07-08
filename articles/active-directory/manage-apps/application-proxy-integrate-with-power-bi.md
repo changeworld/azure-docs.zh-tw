@@ -3,31 +3,31 @@ title: 使用 Azure AD 應用程式 Proxy 啟用 Power BI 的遠端存取
 description: 涵蓋如何將內部部署 Power BI 與 Azure AD 應用程式 Proxy 進行整合的基本概念。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/25/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6fab618280f1383e3840c67d85136edc095b9a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 68993a460ba3d6a672a27eb8da5ced85b29d3d12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610083"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764548"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 啟用 Power BI 行動版的遠端存取
 
 本文討論如何使用 Azure AD 應用程式 Proxy，讓 Power BI 行動應用程式連接到 Power BI 報表伺服器（PBIRS）和 SQL Server Reporting Services （SSRS）2016和更新版本。 透過這項整合，離開公司網路的使用者可以從 Power BI 的行動應用程式存取其 Power BI 報告，並受到 Azure AD 驗證的保護。 這種保護包括條件式存取和多重要素驗證等[安全性優點](application-proxy-security.md#security-benefits)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已部署報表服務並[啟用應用程式 Proxy](application-proxy-add-on-premises-application.md)。
 
@@ -50,7 +50,7 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確定您�
 
 ### <a name="enable-negotiate-authentication"></a>啟用 Negotiate 驗證
 
-若要讓報表伺服器使用 Kerberos 驗證，請將報表伺服器的驗證類型設定為 RSWindowsNegotiate。 使用 rsreportserver.config 設定檔案。
+若要讓報表伺服器使用 Kerberos 驗證，請將報表伺服器的驗證類型設定為 RSWindowsNegotiate。 使用 rsreportserver.config 檔案來進行此設定。
 
 ```xml
 <AuthenticationTypes>
@@ -69,37 +69,37 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確定您�
 
 1. 以網域系統管理員身分登入網域控制站，然後開啟**Active Directory 使用者和電腦**]。
 2. 尋找連接器執行所在的電腦。
-3. 按兩下該電腦，然後選取 [**委派**] 索引標籤。
-4. 將 [委派設定] 設定為 [**信任這台電腦，但只委派指定的服務**]。 然後，選取 [使用任何驗證通訊協定]****。
-5. 選取 [**新增**]，然後選取 [**使用者或電腦**]。
+3. 按兩下該電腦，然後選取 [委派] 索引標籤。
+4. 將委派設定為 [信任這台電腦，但只委派指定的服務]。 然後，選取 [**使用任何驗證通訊協定**]。
+5. 選取 [新增]，然後選取 [使用者或電腦]。
 6. 輸入您要用來 Reporting Services 的服務帳戶。 這是您在 Reporting Services 設定內新增 SPN 的帳戶。
-7. 按一下 [確定]  。 若要儲存變更，請再按一次 **[確定]** 。
+7. 按一下 [確定]。 若要儲存變更，請按一下 [確定]。
 
 如需詳細資訊，請參閱[使用應用程式 Proxy 單一登入應用程式的 Kerberos 限制委派](application-proxy-configure-single-sign-on-with-kcd.md)。
 
 ## <a name="step-2-publish-report-services-through-azure-ad-application-proxy"></a>步驟2：透過 Azure AD 應用程式 Proxy 發行報表服務
 
-現在您已經準備好設定 Azure AD 應用程式 Proxy。
+現在您已準備好要設定 Azure AD 應用程式 Proxy。
 
-1. 使用下列設定，透過應用程式 Proxy 發行報表服務。 如需有關如何透過應用程式 Proxy 發佈應用程式的逐步指示，請參閱[使用 Azure AD 應用程式 Proxy 發佈應用](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)程式。
-   - **內部 URL**：輸入連接器可以在公司網路中連接之報表伺服器的 URL。 請確定可從安裝連接器的伺服器連線到此 URL。 最佳做法是使用最上層網域（例如） `https://servername/` ，以避免透過應用程式 Proxy 發佈之子路徑的問題。 例如，請使用`https://servername/` ，而`https://servername/reports/`不`https://servername/reportserver/`是或。
+1. 使用下列設定，透過應用程式 Proxy 發行報表服務。 如需如何透過應用程式 Proxy 發佈應用程式逐步指示，請參閱[使用 Azure AD 應用程式 Proxy 發佈應用程式](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad) \(部分機器翻譯\)。
+   - **內部 URL**：輸入連接器可以在公司網路中連接之報表伺服器的 URL。 請確定可從安裝連接器的伺服器連線到此 URL。 最佳做法是使用頂層網域 (例如 `https://servername/`)，以避免透過應用程式 Proxy 發佈之子路徑的問題。 例如，使用 `https://servername/`，而不是 `https://servername/reports/` 或 `https://servername/reportserver/`。
      > [!NOTE]
-     > 我們建議您對報表伺服器使用安全的 HTTPS 連接。 如需的詳細資訊，請參閱[在原生模式報表伺服器上設定 SSL 連線](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017)。
-   - **外部 url**：輸入 Power BI 行動應用程式將連接的公用 URL。 例如，如果使用自訂網域`https://reports.contoso.com` ，它可能看起來像。 若要使用自訂網域，請上傳網域的憑證，並將 DNS 記錄指向您應用程式的預設 msappproxy.net 網域。 如需詳細步驟，請參閱[在 Azure AD 應用程式 Proxy 中使用自訂網域](application-proxy-configure-custom-domain.md)。
+     > 我們建議您對報表伺服器使用安全的 HTTPS 連接。 如需作法資訊，請參閱[在原生模式報表伺服器上設定 SSL 連線](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017)。
+   - **外部 url**：輸入 Power BI 行動應用程式將連接的公用 URL。 例如，如果使用自訂網域，其看起來可能像 `https://reports.contoso.com`。 若要使用自訂網域，請上傳網域的憑證，並將 DNS 記錄指向您應用程式的預設 msappproxy.net 網域。 如需詳細步驟，請參閱[在 Azure AD 應用程式 Proxy 中使用自訂網域](application-proxy-configure-custom-domain.md) \(部分機器翻譯\)。
 
    - **預先驗證方法**： Azure Active Directory
 
 2. 發佈您的應用程式之後，請按照下列步驟設定單一登入設定：
 
-   a. 在入口網站的應用程式頁面上，選取 [單一登入]****。
+   a. 在入口網站的應用程式頁面上，選取 [單一登入]。
 
-   b. 針對 [**單一登入模式]**，選取 [**整合式 Windows 驗證**]。
+   b. 針對 [單一登入模式]，選取 [整合式 Windows 驗證]。
 
-   c. 將 [**內部應用程式 SPN** ] 設定為您稍早設定的值。
+   c. 將**內部應用程式 SPN** 設定為您先前設定的值。
 
-   d. 針對要代表使用者使用的連接器選擇 [委派的登入身分識別]****。 如需詳細資訊，請參閱[使用不同的內部部署和雲端](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)身分識別。
+   d. 針對要代表使用者使用的連接器選擇 [委派的登入身分識別]。 如需詳細資訊，請參閱[使用不同的內部部署和雲端身分識別](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities) \(部分機器翻譯\)。
 
-   e. 按一下 [儲存]**** 以儲存您的變更。
+   e. 按一下 [確定] 儲存變更。
 
 若要完成應用程式的設定，請移至 **[使用者和群組**] 區段，並指派使用者以存取此應用程式。
 
@@ -107,10 +107,10 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確定您�
 
 在 Power BI 的行動應用程式可以連接和存取報表服務之前，您必須先設定在步驟2中為您自動建立的應用程式註冊。
 
-1. 在 [Azure Active Directory**總覽**] 頁面上，選取 [**應用程式註冊**]。
+1. 在 Azure Active Directory [概觀] 頁面上，選取 [應用程式註冊]。
 2. 在 [**所有應用程式**] 索引標籤底下，搜尋您在步驟2中建立的應用程式。
-3. 選取應用程式，然後選取 [**驗證**]。
-4. 根據您所使用的平臺，新增下列重新導向 Uri。
+3. 選取應用程式，然後選取 [驗證]。
+4. 根據您所使用的平台，新增下列重新導向 URI。
 
    為 Power BI 行動版**iOS**設定應用程式時，請新增下列類型的重新導向 Uri：公用用戶端（行動 & 桌面）：
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
@@ -125,7 +125,7 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確定您�
    - `msauth://com.microsoft.powerbim/izba1HXNWrSmQ7ZvMXgqeZPtNEU%3D`
 
    > [!IMPORTANT]
-   > 必須加入重新導向 Uri，應用程式才能正常運作。 如果您要為 Power BI 行動版 iOS 和 Android 設定應用程式，請將以下類型的 [公用用戶端（行動 & 桌面）] 重新導向 URI 新增至針對 iOS 所設定的`urn:ietf:wg:oauth:2.0:oob`重新導向 uri 清單：。
+   > 必須新增重新導向 URI，應用程式才能正常運作。 如果您要為 Power BI 行動版 iOS 和 Android 設定應用程式，請將以下類型的 [公用用戶端（行動 & 桌面）] 重新導向 URI 新增至針對 iOS 所設定的重新導向 Uri 清單： `urn:ietf:wg:oauth:2.0:oob` 。
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>步驟4：從 Power BI 行動版應用程式連接
 
@@ -133,9 +133,9 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確定您�
 
    ![Power BI 具有外部 URL 的行動應用程式](media/application-proxy-integrate-with-power-bi/app-proxy-power-bi-mobile-app.png)
 
-2. 選取 [連接]  。 系統會將您導向至 Azure Active Directory 登入] 頁面。
+2. 選取 [連接]。 系統會將您導向至 Azure Active Directory 登入] 頁面。
 
-3. 為您的使用者輸入有效的認證，然後選取 [登**入**]。 您會看到 Reporting Services 伺服器中的元素。
+3. 輸入使用者的有效認證，然後選取 [登入]。 您會看到 Reporting Services 伺服器中的元素。
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>步驟5：設定受管理裝置的 Intune 原則（選擇性）
 

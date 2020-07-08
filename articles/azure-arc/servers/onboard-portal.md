@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 0b43bb92a58af58ae5924610f0667e9796a426e6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: HT
+ms.openlocfilehash: c1801c1b26742661987ea822a3cb1479f40ec059
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751284"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>從 Azure 入口網站將混合式機器連線至 Azure
 
@@ -40,9 +40,10 @@ ms.locfileid: "84193748"
 
     >[!NOTE]
     >適用於伺服器的 Azure Arc (預覽) 僅支援下欄區域：
+    >- EastUS
     >- WestUS2
     >- WestEurope
-    >- WestAsia
+    >- SoutheastAsia
     >
     >在[這裡](overview.md#supported-regions)選取區域時，請檢閱「概觀」文章中的其他考量。
 

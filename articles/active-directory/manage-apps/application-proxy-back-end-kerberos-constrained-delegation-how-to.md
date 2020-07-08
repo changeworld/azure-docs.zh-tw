@@ -3,25 +3,25 @@ title: 針對 Kerberos 限制委派進行疑難排解-應用程式 Proxy
 description: 針對應用程式 Proxy 的 Kerberos 限制委派設定進行疑難排解
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275687"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760434"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>針對應用程式 Proxy 的 Kerberos 限制委派設定進行疑難排解
 
@@ -38,7 +38,7 @@ ms.locfileid: "74275687"
 - 伺服器和應用程式主機位於單一 Azure Active Directory 網域中。 如需有關跨網域和樹系案例的詳細資訊，請參閱 [KCD 白皮書](https://aka.ms/KCDPaper) \(英文\)。
 - 對象應用程式會在已啟用預先驗證功能的 Azure 租用戶中發佈。 使用者應該透過表單型驗證向 Azure 進行驗證。 本文未涵蓋豐富型用戶端驗證案例。 未來可能會新增這些案例。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 Azure AD 應用程式 Proxy 可以部署到許多類型的基礎結構或環境。 架構會隨組織而有所不同。 KCD 相關問題的最常見原因不是環境。 大多數問題都是簡單的設定錯誤或一般錯誤所造成。
 

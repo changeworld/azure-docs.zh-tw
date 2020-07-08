@@ -3,17 +3,17 @@ title: 使用 Azure 地圖服務繪製錯誤視覺化檢視
 description: 在本文中，您將了解如何將建立工具轉換 API 所傳回的警告和錯誤視覺化。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681947"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791109"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>使用 Azure 地圖服務繪製錯誤視覺化檢視
 
@@ -78,15 +78,15 @@ ms.locfileid: "83681947"
 
 啟動繪製錯誤視覺化檢視工具後，您將會看到 [上傳] 頁面。 [上傳] 頁面包含一個拖放方塊。 拖放方塊也可作為啟動 [檔案總管] 對話方塊的按鈕。
 
-![繪製錯誤視覺化檢視應用程式 - 起始頁面](./media/drawing-errors-visualizer/start-page.png)
+:::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="繪製錯誤視覺化檢視應用程式 - 起始頁面":::
 
 _ConversionWarningsAndErrors.json_ 檔案已放在下載目錄的根目錄中。 若要載入 _ConversionWarningsAndErrors.json_，您可以將檔案放拖到方塊上，或按一下方塊，在 [檔案總管] 對話方塊中尋找檔案，然後上傳檔案。
 
-![繪製錯誤視覺化檢視應用程式 - 藉由拖放載入資料](./media/drawing-errors-visualizer/loading-data.gif)
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="繪製錯誤視覺化檢視應用程式 - 藉由拖放載入資料":::
 
-_ConversionWarningsAndErrors.json_ 檔案載入後，您會看到繪圖套件錯誤和警告清單。 每個錯誤或警告皆由圖層、層級和詳細訊息所指定。 此時您可以瀏覽至每個錯誤，以深入了解如何解決錯誤。  
+_ConversionWarningsAndErrors.json_ 檔案載入後，您會看到繪圖套件錯誤和警告清單。 每個錯誤或警告皆由圖層、層級和詳細訊息所指定。 若要查看有關錯誤或警告的詳細資訊，請按一下 [**詳細資料**] 連結。 棘手區段就會出現在清單下方。 此時您可以瀏覽至每個錯誤，以深入了解如何解決錯誤。
 
-![繪製錯誤視覺化檢視應用程式 - 錯誤和警告](./media/drawing-errors-visualizer/errors.png)
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="繪製錯誤視覺化檢視應用程式 - 錯誤和警告":::
 
 ## <a name="next-steps"></a>後續步驟
 

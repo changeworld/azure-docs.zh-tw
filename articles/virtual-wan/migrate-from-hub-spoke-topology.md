@@ -4,15 +4,15 @@ description: 瞭解如何遷移至 Azure 虛擬 WAN。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8aa4fe143c78d2053ce8c48e4866a5522057aa0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8dfcdd8195824cb732df2c0c70c338e69630c5cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753129"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>移轉移至 Azure 虛擬 WAN
 
@@ -20,21 +20,21 @@ Azure 虛擬 WAN 可讓公司簡化其全球連線，以便從 Microsoft 全球�
 
 如需 Azure 虛擬 WAN 為採用以雲端為中心的新式企業通用網路之企業所提供之優點的相關資訊，請參閱[全球傳輸網路架構和虛擬 WAN](virtual-wan-global-transit-network-architecture.md)。
 
-![中樞和輪輻](./media/migrate-from-hub-spoke-topology/hub-spoke.png)
-**圖： Azure 虛擬 WAN**
+![中樞和輪輻 ](./media/migrate-from-hub-spoke-topology/hub-spoke.png)
+ **圖： AZURE 虛擬 WAN**
 
-數以千計的客戶已採用 Azure 虛擬資料中心（VDC）中樞和輪輻連線模型，來利用 Azure 網路的預設可轉移路由行為，以建立簡單且可擴充的雲端網路。 Azure 虛擬 WAN 是以這些概念為基礎，而且引進了新功能，可允許全域連線拓撲，不僅在內部部署位置和 Azure 之間，還可讓客戶利用 Microsoft 網路的規模來加強其現有的全球網路。
+數以千計的客戶已採用 Azure 中樞和輪輻連線模型，來利用 Azure 網路的預設可轉移路由行為，以建立簡單且可擴充的雲端網路。 Azure 虛擬 WAN 是以這些概念為基礎，而且引進了新功能，可允許全域連線拓撲，不僅在內部部署位置和 Azure 之間，還可讓客戶利用 Microsoft 網路的規模來加強其現有的全球網路。
 
 本文說明如何將現有的混合式環境遷移至虛擬 WAN。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
-Contoso 是全球金融組織，在歐洲和亞洲都有辦公室。 他們打算將現有的應用程式從內部部署資料中心移至 Azure，並根據 VDC 架構建置基礎設計，包括區域客戶管理的中樞虛擬網路，以提供混合式連線能力。 在移至雲端式技術的過程中，網路小組已負責確保其連線能力已針對企業發展而優化。
+Contoso 是全球金融組織，在歐洲和亞洲都有辦公室。 他們打算將其現有的應用程式從內部部署資料中心移至 Azure，並根據手動中樞和輪輻架構建立基礎設計，包括適用于混合式連線的區域客戶管理中樞虛擬網路。 在移至雲端式技術的過程中，網路小組已負責確保其連線能力已針對企業發展而優化。
 
 下圖顯示現有全域網路的高階觀點，包括多個 Azure 區域的連線能力。
 
-![Contoso 現有的網路](./media/migrate-from-hub-spoke-topology/contoso-pre-migration.png)
-拓撲**圖： contoso 現有的網路拓撲**
+![Contoso 現有的網路拓撲 ](./media/migrate-from-hub-spoke-topology/contoso-pre-migration.png)
+ **圖： contoso 現有的網路拓撲**
 
 您可以從現有的網路拓撲了解下列幾點：
 
@@ -42,7 +42,7 @@ Contoso 是全球金融組織，在歐洲和亞洲都有辦公室。 他們打�
 
 - 這其中一些網站也具有直接通往 Azure 的 VPN 通道，以觸達裝載於 Microsoft 雲端的應用程式。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 分派給網路小組的任務是提供可支援 Contoso 移轉至雲端的全球網路模型，而且必須在成本、規模和效能方面進行最佳化。 總而言之，必須符合下列需求：
 
@@ -61,8 +61,8 @@ Contoso 是全球金融組織，在歐洲和亞洲都有辦公室。 他們打�
 
 下圖顯示使用 Azure 虛擬 WAN 來符合上一節中所述需求之已更新目標拓撲的高階觀點。
 
-![Contoso 虛擬 wan 架構](./media/migrate-from-hub-spoke-topology/vwan-architecture.png)
-**圖： Azure 虛擬 wan 架構**
+![Contoso 虛擬 WAN 架構 ](./media/migrate-from-hub-spoke-topology/vwan-architecture.png)
+ **圖： AZURE 虛擬 wan 架構**
 
 摘要：
 
@@ -78,14 +78,14 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 
 本節說明遷移至 Azure 虛擬 WAN 的各種步驟。
 
-### <a name="step-1-vdc-hub-and-spoke-single-region"></a>步驟1： VDC 中樞和輪輻單一區域
+### <a name="step-1-single-region-customer-managed-hub-and-spoke"></a>步驟1：單一區域客戶管理的中樞和輪輻
 
-檢查架構。 下圖顯示在推出 Azure 虛擬 WAN 之前，Contoso 的單一區域拓朴：
+下圖顯示在推出 Azure 虛擬 WAN 之前，Contoso 的單一區域拓朴：
 
-![單一區域拓撲](./media/migrate-from-hub-spoke-topology/figure1.png)
-**圖1： VDC 中樞和輪輻單一區域**
+![單一區域拓撲 ](./media/migrate-from-hub-spoke-topology/figure1.png)
+ **圖1：單一區域手動中樞和輪輻**
 
-為了維持虛擬資料中心（VDC）的方法，客戶管理的中樞虛擬網路包含數個函式區塊：
+為了維持中樞和輪輻的方法，客戶管理的中樞虛擬網路包含數個函式區塊：
 
 - 共用服務（多個輪輻所需的任何一般函數）。 範例： Contoso 會在基礎結構即服務（IaaS）虛擬機器上使用 Windows Server 網域控制站。
 - IP/路由防火牆服務會透過協力廠商網路虛擬設備提供，可啟用輪輻對輪輻第 3 層 IP 路由。
@@ -102,8 +102,8 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 > [!NOTE]
 > Azure 虛擬 WAN 必須使用標準 SKU 來啟用本文中顯示的部分流量路徑。
 
-![部署虛擬 wan 中樞](./media/migrate-from-hub-spoke-topology/figure2.png)
-**圖2： VDC 中樞和輪輻至虛擬 WAN 遷移**
+![部署虛擬 WAN 中樞 ](./media/migrate-from-hub-spoke-topology/figure2.png)
+ **圖2：客戶管理的中樞和輪輻到虛擬 WAN 遷移**
 
 ### <a name="step-3-connect-remote-sites-expressroute-and-vpn-to-virtual-wan"></a>步驟3：將遠端網站（ExpressRoute 和 VPN）連接到虛擬 WAN
 
@@ -112,39 +112,39 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 > [!NOTE]
 > ExpressRoute 線路必須升級為進階 SKU 類型，才能連線到虛擬 WAN 中樞。
 
-![將遠端網站連線至虛擬](./media/migrate-from-hub-spoke-topology/figure3.png)
-wan**圖3： VDC 中樞和輪輻至虛擬 wan 遷移**
+![將遠端網站連線到虛擬 WAN ](./media/migrate-from-hub-spoke-topology/figure3.png)
+ **圖3：客戶管理的中樞和輪輻到虛擬 wan 遷移**
 
-此時，內部部署網路設備會開始接收路由，反映指派給虛擬 WAN 管理的中樞 VNet 的 IP 位址空間。 在此階段中，遠端 VPN 連線的分支將會看到兩個連至輪輻虛擬網路中任何現有應用程式的路徑。 這些裝置應設定為繼續使用通往 VDC 中樞的通道，以確保會在轉換階段進行對稱式路由傳送。
+此時，內部部署網路設備會開始接收路由，反映指派給虛擬 WAN 管理的中樞 VNet 的 IP 位址空間。 在此階段中，遠端 VPN 連線的分支將會看到兩個連至輪輻虛擬網路中任何現有應用程式的路徑。 這些裝置應設定為繼續使用通道給客戶管理的中樞，以確保在轉換階段期間進行對稱式路由。
 
 ### <a name="step-4-test-hybrid-connectivity-via-virtual-wan"></a>步驟4：透過虛擬 WAN 測試混合式連線能力
 
 在使用受控虛擬 WAN 中樞進行生產環境連線之前，建議您先設定測試輪輻虛擬網路和虛擬 WAN VNet 連線。 驗證此測試環境的連線會透過 ExpressRoute 和站對站 VPN 來運作，然後繼續進行後續步驟。
 
-![透過虛擬 wan](./media/migrate-from-hub-spoke-topology/figure4.png)
-測試混合式連線**圖4： VDC 中樞和輪輻至虛擬 wan 遷移**
+![透過虛擬 WAN 測試混合式連線 ](./media/migrate-from-hub-spoke-topology/figure4.png)
+ **圖4：客戶管理的中樞和輪輻至虛擬 wan 遷移**
 
 ### <a name="step-5-transition-connectivity-to-virtual-wan-hub"></a>步驟5：轉換虛擬 WAN 中樞的連線能力
 
-![將連線轉換至虛擬 wan](./media/migrate-from-hub-spoke-topology/figure5.png)
-中樞**圖5： VDC 中樞和輪輻至虛擬 wan 遷移**
+![將連線轉換至虛擬 WAN 中樞 ](./media/migrate-from-hub-spoke-topology/figure5.png)
+ **圖5：客戶管理的中樞和輪輻到虛擬 wan 遷移**
 
-**答**： 刪除從輪輻虛擬網路到舊 VDC 中樞的現有對等互連連線。 完成步驟 a-c 之前，無法存取輪輻虛擬網路中的應用程式。
+**答**： 將來自輪輻虛擬網路的現有對等互連連線，刪除到舊的客戶管理中樞。 完成步驟 a-c 之前，無法存取輪輻虛擬網路中的應用程式。
 
 **b.** 透過 VNet 連線將輪輻虛擬網路連線到虛擬 WAN 中樞。
 
 **c**。 移除任何先前在輪輻虛擬網路內用來進行輪輻對輪輻通訊的使用者定義路由 (UDR)。 這個路徑現在會透過虛擬 WAN 中樞內可用的動態路由來啟用。
 
-**d.** 為進行下一步 (e)，VDC 中樞目前的 ExpressRoute 和 VPN 閘道現已解除委任。
+**d.** 客戶管理的中樞中現有的 ExpressRoute 和 VPN 閘道現在已解除委任，以允許下一步（e）。
 
-**e**。 透過新的 VNet 連線，將舊有 VDC 中樞 (中樞虛擬網路) 連線到虛擬 WAN 中樞。
+**e**。 透過新的 VNet 連線，將舊版客戶管理的中樞（中樞虛擬網路）連接到虛擬 WAN 中樞。
 
 ### <a name="step-6-old-hub-becomes-shared-services-spoke"></a>步驟6：舊中樞變成共用服務輪輻
 
 我們現在已重新設計 Azure 網路，讓虛擬 WAN 中樞成為新拓撲的中心點。
 
-![舊的中樞變成共用服務](./media/migrate-from-hub-spoke-topology/figure6.png)
-輪輻**圖6： VDC 中樞和輪輻至虛擬 WAN 遷移**
+![舊的中樞變成共用服務輪輻 ](./media/migrate-from-hub-spoke-topology/figure6.png)
+ **圖6：客戶管理的中樞和輪輻到虛擬 WAN 遷移**
 
 由於虛擬 WAN 中樞是受管理的實體，而且不允許部署自訂資源（例如虛擬機器），因此共用服務區塊現在會以輪輻虛擬網路的形式存在，並透過 Azure 應用程式閘道或網路虛擬裝置，來裝載網際網路輸入之類的功能。 共用服務環境與後端虛擬機器之間的流量現在會通過虛擬 WAN 管理的中樞。
 
@@ -152,8 +152,8 @@ wan**圖3： VDC 中樞和輪輻至虛擬 wan 遷移**
 
 在此階段中，Contoso 幾乎已完成將商務應用程式移轉至 Microsoft Cloud 的過程，而內部部署 DC 中只剩下一些舊版應用程式。
 
-![將內部部署連線優化，以充分利用虛擬](./media/migrate-from-hub-spoke-topology/figure7.png)
-wan**圖7： VDC 中樞和輪輻至虛擬 wan 遷移**
+![將內部部署連線優化，以充分利用虛擬 WAN ](./media/migrate-from-hub-spoke-topology/figure7.png)
+ **圖7：客戶管理的中樞和輪輻到虛擬 wan 遷移**
 
 為了利用 Azure 虛擬 WAN 的完整功能，Contoso 決定解除委任其舊版內部部署 VPN 連線。 任何繼續存取 HQ 或 DC 網路的分支，均能使用 Azure 虛擬 WAN 內建的傳輸路由來傳輸 Microsoft 全球網路。
 
@@ -162,8 +162,8 @@ wan**圖7： VDC 中樞和輪輻至虛擬 wan 遷移**
 
 ## <a name="end-state-architecture-and-traffic-paths"></a>結束狀態架構和流量路徑
 
-![結束狀態架構和流量路徑](./media/migrate-from-hub-spoke-topology/figure8.png)
-**圖：雙重區域虛擬 WAN**
+![結束狀態架構和流量路徑 ](./media/migrate-from-hub-spoke-topology/figure8.png)
+ **圖：雙重區域虛擬 WAN**
 
 此節透過查看一些範例流量流程，來提供此拓撲如何符合原始需求的摘要。
 
@@ -231,8 +231,8 @@ wan**圖7： VDC 中樞和輪輻至虛擬 wan 遷移**
 
 Contoso 現在已驗證所有分支和 Vnet 之間的連線是否符合本文稍早所述的需求。 為了符合其安全性控制和網路隔離的需求，他們需要繼續透過中樞網路來分隔和記錄流量。 此功能先前是由網路虛擬裝置（NVA）執行。 Contoso 也想要解除委任其現有的 proxy 服務，並利用原生的 Azure 服務進行輸出網際網路篩選。
 
-![透過 Azure 防火牆](./media/migrate-from-hub-spoke-topology/security-policy.png)
-的安全性與原則控制**圖：虛擬 WAN 中的 Azure 防火牆（安全的虛擬中樞）**
+![透過 Azure 防火牆的安全性與原則控制 ](./media/migrate-from-hub-spoke-topology/security-policy.png)
+ **圖：虛擬 WAN 中的 Azure 防火牆（安全的虛擬中樞）**
 
 以下是將 Azure 防火牆引進虛擬 WAN 中樞，以啟用統一的原則控制點所需的高層級步驟。 如需此程式的詳細資訊和安全虛擬中樞的概念，請參閱[Azure 防火牆管理員](../firewall-manager/index.yml)。
 

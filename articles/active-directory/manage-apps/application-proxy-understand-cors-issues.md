@@ -2,25 +2,25 @@
 title: 瞭解和解決 Azure AD 應用程式 Proxy CORS 問題
 description: 提供 Azure AD 應用程式 Proxy 中的 CORS 的瞭解，以及如何識別和解決 CORS 問題。
 services: active-directory
-author: jeevanbisht
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/23/2019
-ms.author: celested
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c49535ad11139ac5145d4f283374bf9cc6d71f52
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72025780"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759924"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>瞭解和解決 Azure Active Directory 應用程式 Proxy CORS 問題
 
-[跨原始來源資源分享（CORS）](https://www.w3.org/TR/cors/) 有時可能會對您透過 Azure Active Directory 應用程式 Proxy 發佈的應用程式和 api 帶來挑戰。 本文討論 Azure AD 應用程式 Proxy CORS 的問題和解決方案。
+[跨原始來源資源分享（CORS）](https://www.w3.org/TR/cors/)  有時可能會對您透過 Azure Active Directory 應用程式 Proxy 發佈的應用程式和 Api 帶來挑戰。 本文討論 Azure AD 應用程式 Proxy CORS 的問題和解決方案。
 
 瀏覽器安全性通常會防止網頁對另一個網域發出 AJAX 要求。 這種限制稱為「*相同來源原則*」，可防止惡意網站從另一個網站讀取敏感性資料。 不過，有時候您可能會想要讓其他網站呼叫您的 Web API。 CORS 是一種 W3C 標準，可讓伺服器放寬相同的來源原則，並允許某些跨原始來源要求，同時拒絕其他要求。
 
@@ -28,15 +28,15 @@ ms.locfileid: "72025780"
 
 如果兩個 Url 具有相同的配置、主機和埠（[RFC 6454](https://tools.ietf.org/html/rfc6454)），就會有相同的來源，例如：
 
--   HTTP：\//contoso.com/foo.html
--   HTTP：\//contoso.com/bar.html
+-   HTTP： \/ /contoso.com/foo.html
+-   HTTP： \/ /contoso.com/bar.html
 
 下列 Url 的來源與前兩個不同：
 
--   HTTP：\//Contoso.net-不同的網域
--   HTTP：\//Contoso.com:9000/foo.html-不同的埠
--   HTTPs：\//Contoso.com/foo.html-不同的配置
--   HTTP：\//Www.contoso.com/foo.html-不同的子域
+-   HTTP： \/ /contoso.net-不同的網域
+-   HTTP： \/ /contoso.com:9000/foo.html-不同的埠
+-   HTTPs： \/ /contoso.com/foo.html-不同的配置
+-   HTTP： \/ /www.contoso.com/foo.html-不同的子域
 
 相同來源原則會防止應用程式存取來自其他來源的資源，除非它們使用正確的存取控制標頭。 如果 CORS 標頭不存在或不正確，跨原始來源要求將會失敗。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "72025780"
 1. 按**F12**鍵以顯示 [調試] 主控台。
 1. 請嘗試重現交易，並查看主控台訊息。 CORS 違規會產生關於來源的主控台錯誤。
 
-在下列螢幕擷取畫面中，選取 [**試試看**] 按鈕會造成 CORS 錯誤訊息，\/表示在存取控制-允許來源標頭中找不到 HTTPs：/corswebclient-contoso.msappproxy.net。
+在下列螢幕擷取畫面中，選取 [**試試看**] 按鈕會造成 CORS 錯誤訊息，表示 \/ 在存取控制-允許來源標頭中找不到 HTTPs：/corswebclient-contoso.msappproxy.net。
 
 ![CORS 問題](./media/application-proxy-understand-cors-issues/image3.png)
 
@@ -82,8 +82,8 @@ CORSWebClient 應用程式會在您裝載于內部部署環境時運作，但無
 
 產生的應用程式 Url 會有效地解決 CORS 問題：
 
-- HTTPs：\//corswebclient-contoso.msappproxy.net/CORSWebService
-- HTTPs：\//corswebclient-contoso.msappproxy.net/CORSWebClient
+- HTTPs： \/ /corswebclient-contoso.msappproxy.net/CORSWebService
+- HTTPs： \/ /corswebclient-contoso.msappproxy.net/CORSWebClient
 
 ### <a name="option-3-update-http-headers"></a>選項3：更新 HTTP 標頭
 
@@ -101,7 +101,7 @@ Pragma：無快取 \
 過期時間：-1 \
 Vary：接受-編碼 \
 伺服器： Microsoft-IIS/8.5 Microsoft-HTTPAPI.DLL/2.0 \
-**存取控制-允許-來源： HTTPs\://corswebclient-contoso.msappproxy.net**\
+**存取控制-允許-來源： HTTPs \: //corswebclient-contoso.msappproxy.net**\
 X-AspNet-版本： 4.0.30319 \
 X-支援： ASP.NET \
 內容長度：17
@@ -115,6 +115,6 @@ X-支援： ASP.NET \
 無法解析某些 CORS 問題，例如當您的應用程式重新導向至*login.microsoftonline.com*進行驗證時，存取權杖會過期。 然後，CORS 呼叫會失敗。 此案例的因應措施是延長存取權杖的存留期，以避免在使用者的會話期間過期。 如需如何執行這項操作的詳細資訊，請參閱[Azure AD 中可設定的權杖存留期](../develop/active-directory-configurable-token-lifetimes.md)。
 
 ## <a name="see-also"></a>另請參閱
-- [教學課程：在 Azure Active Directory 中新增內部部署應用程式，以透過應用程式 Proxy 進行遠端存取](application-proxy-add-on-premises-application.md) 
+- [教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取](application-proxy-add-on-premises-application.md) 
 - [規劃 Azure AD 應用程式 Proxy 部署](application-proxy-deployment-plan.md) 
 - [透過 Azure Active Directory 應用程式 Proxy 從遠端存取內部部署應用程式](application-proxy.md) 

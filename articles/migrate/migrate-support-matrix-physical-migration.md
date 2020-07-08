@@ -3,20 +3,19 @@ title: Azure Migrate 中的實體伺服器遷移支援
 description: 瞭解 Azure Migrate 中的實體伺服器遷移支援。
 ms.topic: conceptual
 ms.custom: fasttrack-edit
-ms.date: 01/07/2020
-ms.openlocfilehash: 8f8b94ab77a1eef8e771384f5d69da98a1d7ae6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/14/2020
+ms.openlocfilehash: fe23989845d3c0b229a194c9a2a58f879b757811
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80520289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770334"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>實體伺服器遷移的支援矩陣
 
 本文摘要說明使用[Azure Migrate：伺服器遷移](migrate-services-overview.md#azure-migrate-server-migration-tool)來遷移實體伺服器的支援設定和限制。 如果您要尋找評估實體伺服器以遷移至 Azure 的相關資訊，請參閱[評估支援對照表](migrate-support-matrix-physical.md)。
 
-
-## <a name="overview"></a>總覽
+## <a name="migrating-machines-as-physical"></a>將機器遷移為實體
 
 您可以使用以代理程式為基礎的複寫，將內部部署機器遷移為實體伺服器。 利用此工具，您可將各種不同的機器遷移至 Azure：
 
@@ -66,14 +65,14 @@ ms.locfileid: "80520289"
 如果您在實體伺服器上手動設定複寫設備，請確定它符合資料表中摘要說明的需求。 當您使用 Azure Migrate 中樞提供的 OVA 範本，將 Azure Migrate 複寫設備設定為 VMware VM 時，會使用 Windows Server 2016 設定設備，並符合支援需求。 
 
 - 瞭解複寫[設備需求](migrate-replication-appliance.md#appliance-requirements)。
-- MySQL 必須安裝在設備上。 瞭解[安裝選項](migrate-replication-appliance.md#mysql-installation)。
+- MySQL 必須安裝在此設備上。 瞭解[安裝選項](migrate-replication-appliance.md#mysql-installation)。
 - 瞭解複寫設備需要存取的[url](migrate-replication-appliance.md#url-access) 。
 
 ## <a name="azure-vm-requirements"></a>Azure VM 需求
 
 複寫至 Azure 的所有內部部署 Vm 都必須符合此表中摘要說明的 Azure VM 需求。 當 Site Recovery 執行複寫的必要條件檢查時，如果不符合某些需求，此檢查將會失敗。
 
-**元件** | **Requirements** | **詳細資料**
+**元件** | **需求** | **詳細資料**
 --- | --- | ---
 客體作業系統 | 驗證支援的作業系統。<br/> 您可以遷移在支援的作業系統上執行的任何工作負載。 | 若不支援，則檢查會失敗。
 客體作業系統架構 | 64 位元。 | 若不支援，則檢查會失敗。
@@ -86,7 +85,7 @@ ms.locfileid: "80520289"
 FC 磁碟 | 不支援。 | 若不支援，則檢查會失敗。
 BitLocker | 不支援。 | 為電腦啟用複寫之前必須先停用 BitLocker。
 VM 名稱 | 從 1 到 63 個字元。<br/> 只能使用字母、數字和連字號。<br/><br/> 電腦名稱必須以字母或數字為開頭或結尾。 |  更新 Site Recovery 中電腦屬性的值。
-在遷移後連接-Windows | 若要在遷移後連線至執行 Windows 的 Azure Vm：<br/> -在遷移之前，在內部部署 VM 上啟用 RDP。 確定已針對 [公用]**** 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆]**** > [允許的應用程式]**** 中已針對所有設定檔允許 RDP。<br/> 針對站對站 VPN 存取，請啟用 rdp，並允許**Windows 防火牆** -> 中的 rdp**允許的應用程式和功能**用於**網域和專用**網。 此外，請檢查作業系統的 SAN 原則是否設定為**OnlineAll**。 [深入了解](prepare-for-migration.md)。 |
+在遷移後連接-Windows | 若要在遷移後連線至執行 Windows 的 Azure Vm：<br/> -在遷移之前，在內部部署 VM 上啟用 RDP。 確定已針對 [公用]**** 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆]**** > [允許的應用程式]**** 中已針對所有設定檔允許 RDP。<br/> 針對站對站 VPN 存取，請啟用 rdp，並允許**Windows 防火牆**中的 rdp  ->  **允許的應用程式和功能**用於**網域和專用**網。 此外，請檢查作業系統的 SAN 原則是否設定為**OnlineAll**。 [深入了解](prepare-for-migration.md)。 |
 在遷移後連接-Linux | 若要在使用 SSH 進行遷移之後連線到 Azure Vm：<br/> 在進行遷移之前，請在內部部署機器上，確認安全殼層服務已設定為 [啟動]，且防火牆規則允許 SSH 連線。<br/> 容錯移轉之後，在 Azure VM 上，允許已容錯移轉的 VM 上的網路安全性群組規則之 SSH 埠的連入連線，以及它所連接的 Azure 子網。 此外，請新增 VM 的公用 IP 位址。 |  
 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84803976"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>如何從適用於 VM 的 Azure 監視器查詢記錄
 
@@ -26,7 +26,7 @@ ms.locfileid: "80396916"
 - 電腦：使用 *ResourceId* 或 *ResourceName_s* 來唯一識別 Log Analytics 工作區中的電腦。
 - 處理序：使用 *ResourceId* 來唯一識別 Log Analytics 工作區中的處理序。 *ResourceName_s* 在執行處理序的機器 (MachineResourceName_s) 環境中是唯一的 
 
-因為在指定時間範圍內可以有多筆指定處理序和電腦的記錄，針對相同電腦或處理序的查詢可能會傳回多筆記錄。 若只要包含最新的記錄，請`| summarize arg_max(TimeGenerated, *) by ResourceId`將加入至查詢。
+因為在指定時間範圍內可以有多筆指定處理序和電腦的記錄，針對相同電腦或處理序的查詢可能會傳回多筆記錄。 若只要包含最新的記錄，請將加入 `| summarize arg_max(TimeGenerated, *) by ResourceId` 至查詢。
 
 ### <a name="connections-and-ports"></a>連接和埠
 
@@ -47,11 +47,11 @@ ms.locfileid: "80396916"
 
 為了管理成本和複雜度，連線記錄不代表個別的實體網路連線。 將多個實體網路連線群組為一個邏輯連線，其接著會反映於各自的資料表中。  這表示，*VMConnection* 資料表中的記錄代表一個邏輯群組，而非觀測到的個別實體連線。 在指定的一分鐘時間間隔內，共用下列屬性相同值的實體網路連線會彙總為 *VMConnection* 中的單一邏輯記錄。 
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
-|方向 |連線的方向，值為 *inbound* 或 *outbound* |
+|Direction |連線的方向，值為 *inbound* 或 *outbound* |
 |電腦 |電腦 FQDN |
-|Process |處理序或處理序群組的身分識別，會起始/接受連線 |
+|程序 |處理序或處理序群組的身分識別，會起始/接受連線 |
 |SourceIp |來源的 IP 位址 |
 |DestinationIp |目的地的 IP 位址 |
 |DestinationPort |目的地的連接埠號碼 |
@@ -59,7 +59,7 @@ ms.locfileid: "80396916"
 
 為了說明群組的影響，會在記錄的下列屬性中提供群組實體連線數目的相關資訊：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 |LinksEstablished |已在報告時間範圍內建立的實體網路連線數目 |
 |LinksTerminated |已在報告時間範圍內終止的實體網路連線數目 |
@@ -70,7 +70,7 @@ ms.locfileid: "80396916"
 
 除了連線計數計量，在指定邏輯連線或網路連接埠上傳送與接收的資料量相關資訊也會包含於記錄的下列屬性中：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 |BytesSent |已在報告時間範圍內傳送的位元組總數 |
 |BytesReceived |已在報告時間範圍內接收的位元組總數 |
@@ -98,7 +98,7 @@ ms.locfileid: "80396916"
 
 *VMConnection* 也會在記錄的下列屬性中，包含每個連線記錄遠端的地理位置資訊： 
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 |RemoteCountry |主控 RemoteIp 的國家/地區名稱。  例如，*美國* |
 |RemoteLatitude |地理位置緯度。 例如，*47.68* |
@@ -108,14 +108,14 @@ ms.locfileid: "80396916"
 
 *VMConnection* 資料表中的每個 RemoteIp 屬性均會根據一組具有已知惡意活動的 IP 進行檢查。 如果 RemoteIp 被識別為惡意的，將在記錄的下列屬性中填入下列屬性 (如果 IP 被視為不是惡意的，則它們是空的)：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 |MaliciousIP |RemoteIp 位址 |
 |IndicatorThreadType |偵測到的威脅指標是下列值之一：*殭屍網路*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*惡意程式碼*、*網路釣魚*、*Proxy*、*PUA*、*關注清單*。   |
-|描述 |觀察到的威脅的說明。 |
+|Description |觀察到的威脅的說明。 |
 |TLPLevel |號誌燈通訊協定 (TLP) 層級是已定義的值 (*白色*、*綠色*、*琥珀色*、*紅色*) 之一。 |
 |信賴度 |值為 *0 – 100*。 |
-|Severity |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為 *3*。  |
+|Severity |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為*3*。  |
 |FirstReportedDateTime |提供者第一次回報指標。 |
 |LastReportedDateTime |Interflow 最後一次看到指標。 |
 |IsActive |使用 *True* 或 *False* 值表示指標停用。 |
@@ -128,11 +128,11 @@ ms.locfileid: "80396916"
 
 VMBoundPort 中的每筆記錄都是由下欄欄位所識別： 
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
-|Process | 與埠相關聯的進程（或進程群組）的身分識別。|
+|程序 | 與埠相關聯的進程（或進程群組）的身分識別。|
 |Ip | 埠 IP 位址（可以是萬用字元 IP， *0.0.0.0*） |
-|連接埠 |埠號碼 |
+|Port |埠號碼 |
 |通訊協定 | 通訊協定。  範例： *tcp*或*udp* （目前僅支援*tcp* ）。|
  
 識別埠衍生自上述五個欄位，並儲存在 PortId 屬性中。 這個屬性可用來快速尋找特定埠在一段時間內的記錄。 
@@ -156,10 +156,10 @@ VMBoundPort 中的每筆記錄都是由下欄欄位所識別：
 
 類型為*VMComputer*的記錄具有具有 Dependency 代理程式之伺服器的清查資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 |TenantId | 工作區的唯一識別碼 |
-|SourceSystem | *深入資訊* | 
+|SourceSystem | *深入解析* | 
 |TimeGenerated | 記錄的時間戳記（UTC） |
 |電腦 | 電腦 FQDN | 
 |AgentId | Log Analytics 代理程式的唯一識別碼 |
@@ -218,23 +218,23 @@ VMBoundPort 中的每筆記錄都是由下欄欄位所識別：
 
 類型為*VMProcess*的記錄具有相依性代理程式之伺服器上 TCP 連線處理的清查資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 |TenantId | 工作區的唯一識別碼 |
-|SourceSystem | *深入資訊* | 
+|SourceSystem | *深入解析* | 
 |TimeGenerated | 記錄的時間戳記（UTC） |
 |電腦 | 電腦 FQDN | 
 |AgentId | Log Analytics 代理程式的唯一識別碼 |
 |電腦 | ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為*m-{guid}*，其中*guid*與 AgentId 的 guid 相同。 | 
-|Process | 服務對應進程的唯一識別碼。 其格式為*p-{GUID}*。 
+|程序 | 服務對應進程的唯一識別碼。 其格式為*p-{GUID}*。 
 |ExecutableName | 處理序可執行檔的名稱 | 
 |DisplayName | 進程顯示名稱 |
-|[角色] | 進程角色： *web*伺服器、 *appServer*、 *databaseServer*、 *ldapServer*、 *smbServer* |
+|角色 | 進程角色： *web*伺服器、 *appServer*、 *databaseServer*、 *ldapServer*、 *smbServer* |
 |群組 | 進程組名。 相同群組中的進程會以邏輯方式相互關聯，例如，屬於相同產品或系統元件的一部分。 |
 |StartTime | 處理序集區的開始時間 |
 |FirstPid | 處理序集區中的第一個 PID |
-|描述 | 處理序的描述 |
-|CompanyName | 公司的名稱 |
+|Description | 處理序的描述 |
+|公司名稱 | 公司的名稱 |
 |InternalName | 內部名稱 |
 |ProductName | 產品的名稱 |
 |ProductVersion | 產品的版本 |
@@ -434,10 +434,10 @@ let remoteMachines = remote | summarize by RemoteMachine;
 類型為*InsightsMetrics*的記錄具有虛擬機器之客體作業系統的效能資料。 這些記錄具有下表中的屬性：
 
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 |TenantId | 工作區的唯一識別碼 |
-|SourceSystem | *深入資訊* | 
+|SourceSystem | *深入解析* | 
 |TimeGenerated | 收集值的時間（UTC） |
 |電腦 | 電腦 FQDN | 
 |來源 | *vm.azm.ms* |
@@ -451,10 +451,10 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 下表列出目前收集到*InsightsMetrics*資料表中的效能計數器：
 
-| 命名空間 | Name | 描述 | 單位 | Tags |
+| 命名空間 | Name | 說明 | 單位 | Tags |
 |:---|:---|:---|:---|:---|
 | 電腦    | Heartbeat             | 電腦的心跳                        | | |
-| 記憶體      | AvailableMB           | 記憶體可用位元組數                    | 位元組          | memorySizeMB-總記憶體大小|
+| Memory      | AvailableMB           | 記憶體可用位元組數                    | MB      | memorySizeMB-總記憶體大小|
 | 網路     | WriteBytesPerSecond   | 每秒的網路寫入位元組數            | 每秒位元組 | NetworkDeviceId-裝置的識別碼<br>位元組-傳送的位元組總數 |
 | 網路     | ReadBytesPerSecond    | 網路讀取位元組/秒             | 每秒位元組 | networkDeviceId-裝置的識別碼<br>位元組-接收的位元組總數 |
 | 處理器   | UtilizationPercentage | 處理器使用率百分比          | 百分比        | totalCpus-Cpu 總計 |
@@ -467,7 +467,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 | LogicalDisk | ReadLatencyMs         | 邏輯磁片讀取延遲毫秒     | 毫秒   | mountId-裝置的掛接識別碼 |
 | LogicalDisk | ReadBytesPerSecond    | 每秒邏輯磁片讀取位元組數        | 每秒位元組 | mountId-裝置的掛接識別碼 |
 | LogicalDisk | FreeSpacePercentage   | 邏輯磁片可用空間百分比        | 百分比        | mountId-裝置的掛接識別碼 |
-| LogicalDisk | FreeSpaceMB           | 邏輯磁片可用空間位元組             | 位元組          | mountId-裝置的掛接識別碼<br>diskSizeMB-磁片大小總計 |
+| LogicalDisk | FreeSpaceMB           | 邏輯磁片可用空間位元組             | MB      | mountId-裝置的掛接識別碼<br>diskSizeMB-磁片大小總計 |
 | LogicalDisk | 每秒位元組        | 邏輯磁片每秒位元組數             | 每秒位元組 | mountId-裝置的掛接識別碼 |
 
 

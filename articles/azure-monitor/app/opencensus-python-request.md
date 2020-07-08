@@ -5,24 +5,25 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 0396bd8d150c6145a39f36e7be9e6e2dcacef2c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: c9d69c0f39d9cad52dc86c3ab33d202c88131ab0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77669942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753216"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 追蹤連入要求
 
-使用 OpenCensus Python 和其各種整合來收集傳入的要求資料。 追蹤傳送至 web 應用程式的傳入要求資料`django`， `flask`建置於熱門的 web 架構和`pyramid`上。 然後，資料會傳送至 Azure 監視器的 Application Insights， `requests`作為遙測。
+使用 OpenCensus Python 和其各種整合來收集傳入的要求資料。 追蹤傳送至 web 應用程式的傳入要求資料，建置於熱門的 web 架構 `django` `flask` 和上 `pyramid` 。 然後，資料會傳送至 Azure 監視器的 Application Insights，作為 `requests` 遙測。
 
 首先，使用最新的[OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)檢測您的 python 應用程式。
 
 ## <a name="tracking-django-applications"></a>追蹤 Django 應用程式
 
-1. 從 PyPI 下載`opencensus-ext-django`並[PyPI](https://pypi.org/project/opencensus-ext-django/)安裝，並使用`django`中介軟體檢測您的應用程式。 將會追蹤傳送至`django`您應用程式的傳入要求。
+1. 從 PyPI 下載並安裝， `opencensus-ext-django` 並使用中介軟體檢測您的應用程式[PyPI](https://pypi.org/project/opencensus-ext-django/) `django` 。 將會追蹤傳送至您應用程式的傳入要求 `django` 。
 
-2. 在`opencensus.ext.django.middleware.OpencensusMiddleware`您`settings.py`的檔案中`MIDDLEWARE`包含。
+2. 在 `opencensus.ext.django.middleware.OpencensusMiddleware` 您的檔案中包含 `settings.py` `MIDDLEWARE` 。
 
     ```python
     MIDDLEWARE = (
@@ -32,7 +33,7 @@ ms.locfileid: "77669942"
     )
     ```
 
-3. 請確定中`settings.py`的已正確設定 AzureExporter `OPENCENSUS`。
+3. 請確定中的已正確設定 AzureExporter `settings.py` `OPENCENSUS` 。 對於來自您不想要追蹤之 url 的要求，請將它們新增至 `BLACKLIST_PATHS` 。
 
     ```python
     OPENCENSUS = {
@@ -41,27 +42,14 @@ ms.locfileid: "77669942"
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
-        }
-    }
-    ```
-
-4. 您也可以將中`settings.py` `BLACKLIST_PATHS`的 url 新增至，以取得您不想要追蹤的要求。
-
-    ```python
-    OPENCENSUS = {
-        'TRACE': {
-            'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=0.5)',
-            'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                connection_string="InstrumentationKey=<your-ikey-here>",
-            )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent from it.
+            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
 
 ## <a name="tracking-flask-applications"></a>追蹤 Flask 應用程式
 
-1. 從 PyPI 下載`opencensus-ext-flask`並[PyPI](https://pypi.org/project/opencensus-ext-flask/)安裝，並使用`flask`中介軟體檢測您的應用程式。 將會追蹤傳送至`flask`您應用程式的傳入要求。
+1. 從 PyPI 下載並安裝， `opencensus-ext-flask` 並使用中介軟體檢測您的應用程式[PyPI](https://pypi.org/project/opencensus-ext-flask/) `flask` 。 將會追蹤傳送至您應用程式的傳入要求 `flask` 。
 
     ```python
     
@@ -86,7 +74,7 @@ ms.locfileid: "77669942"
     
     ```
 
-2. 您可以直接在`flask`程式碼中設定中介軟體。 對於來自您不想要追蹤之 url 的要求，請將它們`BLACKLIST_PATHS`新增至。
+2. 您也可以透過設定 `flask` 應用程式 `app.config` 。 對於來自您不想要追蹤之 url 的要求，請將它們新增至 `BLACKLIST_PATHS` 。
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -102,7 +90,7 @@ ms.locfileid: "77669942"
 
 ## <a name="tracking-pyramid-applications"></a>追蹤金字塔應用程式
 
-1. 從 PyPI 下載`opencensus-ext-django`並[PyPI](https://pypi.org/project/opencensus-ext-pyramid/)安裝，並使用`pyramid`補間檢測您的應用程式。 將會追蹤傳送至`pyramid`您應用程式的傳入要求。
+1. 從 PyPI 下載並安裝， `opencensus-ext-django` 並使用補間檢測您的應用[PyPI](https://pypi.org/project/opencensus-ext-pyramid/)程式 `pyramid` 。 將會追蹤傳送至您應用程式的傳入要求 `pyramid` 。
 
     ```python
     def main(global_config, **settings):
@@ -112,7 +100,7 @@ ms.locfileid: "77669942"
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. 您可以直接在`pyramid`程式碼中設定您的補間。 對於來自您不想要追蹤之 url 的要求，請將它們`BLACKLIST_PATHS`新增至。
+2. 您可以 `pyramid` 直接在程式碼中設定您的補間。 對於來自您不想要追蹤之 url 的要求，請將它們新增至 `BLACKLIST_PATHS` 。
 
     ```python
     settings = {

@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 入口網站，以建立可將流量從 HT
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: cd33d23a506bd86b9651af3d4c3bbca01673a7a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbf4770bf5ac1747d596e6907dbc903ce8c16de9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312087"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804341"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 入口網站來建立具有 HTTP 到 HTTPS 重新導向功能的應用程式閘道
 
@@ -126,7 +126,7 @@ Export-PfxCertificate `
 6. 針對 [重新導向目標]****，選取 [接聽程式]****。
 7. 確定 [目標接聽程式]**** 設定為 **appGatewayHttpListener**。
 8. 針對 [**包含查詢字串**] 和 [**包含路徑**]，選取 *[是]*。
-9. 選取 [新增]  。
+9. 選取 [新增]。
 
 ## <a name="create-a-virtual-machine-scale-set"></a>建立虛擬機器擴展集
 
@@ -146,7 +146,7 @@ Export-PfxCertificate `
 12. 在 [網路]**** 下方，確定 [選擇負載平衡選項]**** 設定為 [應用程式閘道]****。
 13. 確定 [應用程式閘道]**** 設定為 **myAppGateway**。
 14. 確定 [子網路]**** 設定為 **myBackendSubnet**。
-15. 選取 [建立]  。
+15. 選取 [建立]。
 
 ### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>建立擴展集與適當後端集區的關聯
 
@@ -157,13 +157,13 @@ Export-PfxCertificate `
 3. 選取 [後端集區]****。
 4. 選取 **myAppGatewaymyvmss**。
 5. 選取 [移除後端集區中的所有目標]****。
-6. 選取 [儲存]  。
+6. 選取 [儲存]。
 7. 此流程完成後，選取 **myAppGatewaymyvmss** 後端集區，選取 [刪除]****，然後選取 [確定]**** 加以確認。
 8. 選取 [ **appGatewayBackendPool**]。
 9. 在 [目標]**** 下方，選取 **VMSS**。
 10. 在 **VMSS** 下方，選取 **myvmss**。
 11. 在 [網路介面組態]**** 下方，選取 **myvmssNic**。
-12. 選取 [儲存]  。
+12. 選取 [儲存]。
 
 ### <a name="upgrade-the-scale-set"></a>升級擴展集
 
@@ -172,10 +172,10 @@ Export-PfxCertificate `
 1. 選取 **myvmss** 擴展集。
 2. 在 [設定]**** 底下，選取 [執行個體]****。
 3. 兩個執行個體都選取，然後選取 [升級]****。
-4. 選取 [是]  確認。
+4. 選取 [是] **** 加以確認。
 5. 如此完成之後，返回 **myAppGateway**，然後選取 [後端集區]****。 您現在應會看到 **appGatewayBackendPool** 有兩個目標，而 **myAppGatewaymyvmss** 有零個目標。
 6. 選取 **myAppGatewaymyvmss**，然後選取 [刪除]****。
-7. 選取 [確定]  來確認。
+7. 選取 [確定] 來確認。
 
 ### <a name="install-iis"></a>安裝 IIS
 
@@ -206,7 +206,7 @@ Update-AzVmss `
 1. 選取 **myvmss** 擴展集。
 2. 在 [設定]**** 底下，選取 [執行個體]****。
 3. 兩個執行個體都選取，然後選取 [升級]****。
-4. 選取 [是]  確認。
+4. 選取 [是] **** 加以確認。
 
 ## <a name="test-the-application-gateway"></a>測試應用程式閘道
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f8df703030220f2c5a79bdb34e3ffbac8ee84a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277904"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84762117"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的效能和級別
 
@@ -28,7 +28,7 @@ ms.locfileid: "79277904"
 
 **實例**資料表是另一個 Azure 儲存體資料表，其中包含工作中樞內所有協調流程和實體實例的狀態。 隨著執行個體的建立，此資料表中會新增資料列。 此資料表的資料分割索引鍵是協調流程實例識別碼或實體索引鍵，而資料列索引鍵是固定的常數。 每個協調流程或實體實例都有一個資料列。
 
-此資料表是用來滿足來自`GetStatusAsync` （.net）和`getStatus` （JavaScript） api 的實例查詢要求，以及[狀態查詢 HTTP API](durable-functions-http-api.md#get-instance-status)。 它終於與先前所述的 [歷程記錄]**** 資料表內容保持一致。 以這種方式使用不同的 Azure 儲存體資料表有效地滿足執行個體查詢作業，會受到[命令和查詢責任隔離 (CQRS) 模式](https://docs.microsoft.com/azure/architecture/patterns/cqrs)所影響。
+此資料表是用來滿足來自 `GetStatusAsync` （.net）和（JavaScript） api 的實例查詢要求，以及 `getStatus` [狀態查詢 HTTP API](durable-functions-http-api.md#get-instance-status)。 它終於與先前所述的 [歷程記錄]**** 資料表內容保持一致。 以這種方式使用不同的 Azure 儲存體資料表有效地滿足執行個體查詢作業，會受到[命令和查詢責任隔離 (CQRS) 模式](https://docs.microsoft.com/azure/architecture/patterns/cqrs)所影響。
 
 ## <a name="internal-queue-triggers"></a>內部佇列觸發程序
 
@@ -48,16 +48,23 @@ ms.locfileid: "79277904"
 
 長期工作延伸模組會執行隨機的指數退避演算法，以降低閒置佇列輪詢對儲存體交易成本的影響。 當找到訊息時，執行時間會立即檢查另一個訊息;當找不到任何訊息時，它會等候一段時間，然後再試一次。 在後續失敗的嘗試取得佇列訊息之後，等待時間會持續增加，直到達到最長等候時間為止（預設為30秒）。
 
-最大輪詢延遲可透過`maxQueuePollingInterval` [主機. json](../functions-host-json.md#durabletask)檔案中的屬性來設定。 將此屬性設定為較高的值可能會導致訊息處理延遲較高。 只有在閒置一段時間後，才會預期較高的延遲。 將此屬性設定為較低的值，可能會因為儲存體交易增加而導致儲存成本較高。
+您可以透過 `maxQueuePollingInterval` [host.json](../functions-host-json.md#durabletask)檔案中的屬性來設定輪詢延遲上限。 將此屬性設定為較高的值可能會導致訊息處理延遲較高。 只有在閒置一段時間後，才會預期較高的延遲。 將此屬性設定為較低的值，可能會因為儲存體交易增加而導致儲存成本較高。
 
 > [!NOTE]
 > 在 Azure Functions 耗用量和 Premium 方案中執行時， [Azure Functions 調整控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)會每隔10秒輪詢每個控制項和工作專案佇列一次。 需要進行此額外的輪詢，以判斷何時要啟動函式應用程式實例，並做出調整決策。 在撰寫本文時，這個10秒的間隔是固定的，而且無法設定。
 
+### <a name="orchestration-start-delays"></a>協調流程啟動延遲
+協調流程實例的啟動方式是將 `ExecutionStarted` 訊息放在其中一個工作中樞的控制佇列中。 在某些情況下，您可能會觀察到協調流程執行的時間與實際開始執行時之間的多秒延遲。 在此時間間隔期間，協調流程實例會維持在 `Pending` 狀態中。 此延遲的可能原因有兩個：
+
+1. 待處理的**控制佇列**：如果此實例的控制項佇列包含大量訊息，則可能需要一些時間，執行時間才會 `ExecutionStarted` 接收和處理訊息。 當協調流程同時處理許多事件時，就會發生訊息待處理專案。 進入控制佇列的事件包括協調流程啟動事件、活動完成、持久計時器、終止和外來事件。 如果這項延遲在正常情況下發生，請考慮建立具有大量分割區的新工作中樞。 設定更多的分割區會導致執行時間建立更多的控制佇列以進行負載分佈。
+
+2. **反向輪詢延遲**：[先前針對控制佇列所述的輪詢行為](#queue-polling)，是協調流程延遲的另一個常見原因。 不過，只有當應用程式相應放大至兩個或多個實例時，才會發生這種延遲。 如果只有一個應用程式實例，或啟動協調流程的應用程式實例也是輪詢目標控制佇列的相同實例，則不會有佇列輪詢延遲。 如先前所述，您可以藉由更新設定**上的host.js**來減少輪詢延遲。
+
 ## <a name="storage-account-selection"></a>儲存體帳戶選取
 
-Durable Functions 所使用的佇列、資料表和 blob 會在設定的 Azure 儲存體帳戶中建立。 您可以使用**主機. json**檔案中的`durableTask/storageProvider/connectionStringName`設定（或`durableTask/azureStorageConnectionStringName` Durable Functions 1.x 中的設定）來指定要使用的帳戶。
+Durable Functions 所使用的佇列、資料表和 blob 會在設定的 Azure 儲存體帳戶中建立。 您可以使用 `durableTask/storageProvider/connectionStringName`host.json 檔案中的設定（或 `durableTask/azureStorageConnectionStringName` Durable Functions 1.x 中的設定） **host.json**來指定要使用的帳戶。
 
-### <a name="durable-functions-2x"></a>Durable Functions 2。x
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
 ```json
 {
@@ -71,7 +78,7 @@ Durable Functions 所使用的佇列、資料表和 blob 會在設定的 Azure �
 }
 ```
 
-### <a name="durable-functions-1x"></a>Durable Functions 1。x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -87,9 +94,9 @@ Durable Functions 所使用的佇列、資料表和 blob 會在設定的 Azure �
 
 ## <a name="orchestrator-scale-out"></a>協調器向外延展
 
-活動函式是無狀態，且經由新增虛擬機器而自動相應放大。 另一方面，協調器函式和實體會*分割*成一或多個控制佇列。 控制佇列數目會定義於 **host.json** 檔案中。 下列範例 host。 json 程式碼片段會將`durableTask/storageProvider/partitionCount`屬性（或`durableTask/partitionCount`在 Durable Functions 1.x 中）設定為`3`。
+活動函式是無狀態，且經由新增虛擬機器而自動相應放大。 另一方面，協調器函式和實體會*分割*成一或多個控制佇列。 控制佇列數目會定義於 **host.json** 檔案中。 下列範例 host.js程式碼片段會將 `durableTask/storageProvider/partitionCount` 屬性（或 `durableTask/partitionCount` Durable Functions 1.x 中的）設定為 `3` 。
 
-### <a name="durable-functions-2x"></a>Durable Functions 2。x
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
 ```json
 {
@@ -103,7 +110,7 @@ Durable Functions 所使用的佇列、資料表和 blob 會在設定的 Azure �
 }
 ```
 
-### <a name="durable-functions-1x"></a>Durable Functions 1。x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -150,7 +157,7 @@ Durable Functions 所使用的佇列、資料表和 blob 會在設定的 Azure �
 
 Azure Functions 支援在單一應用程式執行個體中同時執行多個函式。 此並行執行作業有助於提升平行處理原則，且盡可能減少典型應用程式在一段時間內會遇到的「冷啟動」數目。 不過，高平行存取可能會耗盡每個 VM 的系統資源，例如網路連接或可用的記憶體。 視函式應用程式的需求而定，每個執行個體並行處理可能必須進行節流，以避免在高負載情況下記憶體不足的可能性。
 
-活動、orchestrator 和實體函式的平行存取限制可以在**主機. json**檔案中設定。 相關設定`durableTask/maxConcurrentActivityFunctions`適用于活動函式和`durableTask/maxConcurrentOrchestratorFunctions`協調器和實體函式。
+活動、orchestrator 和實體函式的並行限制可以在檔案的**host.js**中設定。 相關設定 `durableTask/maxConcurrentActivityFunctions` 適用于活動函式和 `durableTask/maxConcurrentOrchestratorFunctions` 協調器和實體函式。
 
 ### <a name="functions-20"></a>函數2。0
 
@@ -185,7 +192,7 @@ Azure Functions 支援在單一應用程式執行個體中同時執行多個函�
 
 「擴充會話」是一項設定，可在處理完訊息之後，將協調流程和實體保留在記憶體中。 啟用擴充工作階段的典型效果，就是減少對 Azure 儲存體帳戶的 I/O 及提升整體輸送量。
 
-您可以在**host. json**檔案`durableTask/extendedSessionsEnabled`中`true`將設定為，以啟用擴充會話。 `durableTask/extendedSessionIdleTimeoutInSeconds`設定可以用來控制閒置會話會保留在記憶體中的時間長度：
+您可以 `durableTask/extendedSessionsEnabled` `true` 在檔案的**host.js**中，將設定為，藉以啟用擴充會話。 `durableTask/extendedSessionIdleTimeoutInSeconds`設定可以用來控制閒置會話會保留在記憶體中的時間長度：
 
 **函數2。0**
 ```json
@@ -214,13 +221,13 @@ Azure Functions 支援在單一應用程式執行個體中同時執行多個函�
 1. 函數應用程式記憶體使用量整體增加了。
 2. 如果有許多並行、短期的協調器或實體函式執行，輸送量會有整體的降低。
 
-例如，如果`durableTask/extendedSessionIdleTimeoutInSeconds`設為30秒，則在小於1秒內執行的短期協調器或實體函數集，仍會佔用記憶體30秒。 它也會根據先前`durableTask/maxConcurrentOrchestratorFunctions`所述的配額計算，可能會導致其他協調器或實體功能無法執行。
+例如，如果 `durableTask/extendedSessionIdleTimeoutInSeconds` 設為30秒，則在小於1秒內執行的短期協調器或實體函數集，仍會佔用記憶體30秒。 它也會根據 `durableTask/maxConcurrentOrchestratorFunctions` 先前所述的配額計算，可能會導致其他協調器或實體功能無法執行。
 
 Orchestrator 和實體函式的擴充會話的特定效果將在下一節中說明。
 
 ### <a name="orchestrator-function-replay"></a>協調器函式重新執行
 
-如先前所述，使用 [歷程記錄]**** 資料表的內容可重新執行協調器函式。 根據預設，每次從控制佇列中清除一批訊息時，就會重新執行協調器函式程式碼。 即使您使用展開傳送、收合傳送模式，以及等待所有工作完成（例如，在 .NET 或`Task.WhenAll` `context.df.Task.all` JavaScript 中使用），在一段時間內處理工作回應批次時，將會發生重新執行。 啟用擴充會話時，協調器函式實例會保留在記憶體中，而不需要完整的歷程記錄重新執行即可處理新訊息。
+如先前所述，使用 [歷程記錄]**** 資料表的內容可重新執行協調器函式。 根據預設，每次從控制佇列中清除一批訊息時，就會重新執行協調器函式程式碼。 即使您使用展開傳送、收合傳送模式，以及等待所有工作完成（例如， `Task.WhenAll` 在 .net 或 `context.df.Task.all` JavaScript 中使用），在一段時間內處理工作回應批次時，將會發生重新執行。 啟用擴充會話時，協調器函式實例會保留在記憶體中，而不需要完整的歷程記錄重新執行即可處理新訊息。
 
 擴充會話的效能改進通常會在下列情況中觀察到：
 
@@ -253,7 +260,7 @@ Orchestrator 和實體函式的擴充會話的特定效果將在下一節中說�
 
 下表顯示先前所述案例的預期「最大」** 輸送量數字。 「執行個體」是指在 Azure App Service 中單一小型 ([A1](../../virtual-machines/sizes-previous-gen.md)) VM 上執行之協調器函式的單一執行個體。 在所有情況下，假設已啟用[擴充工作階段](#orchestrator-function-replay)。 實際結果可能會因函式程式碼所執行的 CPU 或 I/O 工作而有所不同。
 
-| 案例 | 最大輸送量 |
+| 狀況 | 最大輸送量 |
 |-|-|
 | 循序活動執行 | 每個執行個體每秒 5 個活動 |
 | 平行活動執行 (展開傳送) | 每個執行個體每秒 100 個活動 |

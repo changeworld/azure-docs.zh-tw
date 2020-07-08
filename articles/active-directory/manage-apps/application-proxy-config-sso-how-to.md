@@ -3,32 +3,32 @@ title: 如何設定應用程式 Proxy 應用程式的單一登入
 description: 如何快速針對應用程式 Proxy 應用程式設定單一登入
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 03/12/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589b3e51f27147f0a0432b61c22a024c202e388b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb3d1d921be858531372130264e777f8c04a9328
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76712027"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764939"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>如何針對應用程式 Proxy 應用程式設定單一登入
 
 單一登入 (SSO) 可讓您的使用者在不需要多次驗證的情況下存取應用程式。 它允許單一驗證在雲端中針對 Azure Active Directory 發生，並允許服務或連接器模擬使用者，以完成來自應用程式的任何其他驗證挑戰。
 
 ## <a name="how-to-configure-single-sign-on"></a>如何設定單一登入
-若要設定 SSO，請先確定您的應用程式已透過 Azure Active Directory 針對預先驗證進行設定。 若要進行此設定，請移至**Azure Active Directory**  - &gt; **企業應用** - &gt;程式-應用** - &gt;程式應用程式 Proxy**的**所有應用** - &gt;程式。 在這個頁面上，您會看到 [預先驗證] 欄位，請確定它已設定為 [Azure Active Directory]。 
+若要設定 SSO，請先確定您的應用程式已透過 Azure Active Directory 針對預先驗證進行設定。 若要進行此設定，請移至**Azure Active Directory**  - &gt; **企業應用**程式-應用程式  - &gt; **All Applications**  - &gt; ** - &gt; 應用程式 Proxy**的所有應用程式。 在這個頁面上，您會看到 [預先驗證] 欄位，請確定它已設定為 [Azure Active Directory]。 
 
 如需預先驗證方法的詳細資訊，請參閱[應用程式發佈文件](application-proxy-add-on-premises-application.md)的步驟 4。
 

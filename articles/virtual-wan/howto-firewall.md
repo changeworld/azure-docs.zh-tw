@@ -5,15 +5,15 @@ description: 在虛擬 WAN 中樞中設定 Azure 防火牆的步驟
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 01e703b0e1062e38095358565260addbd07351f1
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: f20ed76a72eecce59a7b8795a42b033230a2f7e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753678"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>在虛擬 WAN 中樞中設定 Azure 防火牆
 

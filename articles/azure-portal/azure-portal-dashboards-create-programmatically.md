@@ -7,17 +7,17 @@ author: adamabmsft
 manager: mtillman
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 9ec9a4daad139a4930174ba9e3445e1cda1f8c54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461305"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764038"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以程式設計方式建立 Azure Dashboards
 
@@ -124,7 +124,7 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 ```
 設定範本之後，請使用下列任何一種方法來部署它：
 
-* [REST API](/rest/api/resources/deployments)
+* [REST APIs](/rest/api/resources/deployments)
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Azure 入口網站範本部署頁面](https://portal.azure.com/#create/Microsoft.Template)
@@ -387,7 +387,7 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 
 ### <a name="template-representation-of-our-example-dashboard"></a>範例儀表板的範本表示法
 
-儀表板的範本版本已定義三個參數， `virtualMachineName`稱為`virtualMachineResourceGroup`、和`dashboardName`。  這些參數可讓您在每次部署時，將此儀表板指向不同的 Azure 虛擬機器。 此儀表板可透過程式設計方式設定及部署，以指向任何 Azure 虛擬機器。 若要測試這項功能，請複製下列範本，並將它貼入[Azure 入口網站範本部署頁面](https://portal.azure.com/#create/Microsoft.Template)中。
+儀表板的範本版本已定義三個參數 `virtualMachineName` ，稱為、 `virtualMachineResourceGroup` 和 `dashboardName` 。  這些參數可讓您在每次部署時，將此儀表板指向不同的 Azure 虛擬機器。 此儀表板可透過程式設計方式設定及部署，以指向任何 Azure 虛擬機器。 若要測試這項功能，請複製下列範本，並將它貼入[Azure 入口網站範本部署頁面](https://portal.azure.com/#create/Microsoft.Template)中。
 
 此範例是自行部署儀表板，但是範本語言可讓您部署多個資源，並組合一個或多個儀表板。
 
