@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: de2a74ad2d61de18d2150b72be3251e5b5583f2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551789"
 ---
 # <a name="networking"></a>網路功能
@@ -51,7 +50,7 @@ Azure 虛擬機器系列 Sku 支援加速網路： D/DSv2、D/DSv3、E/ESv3、F/
 
 * Service Fabric 叢集可依照 [Service Fabric 網路功能模式](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)中說明的步驟部署到現有的虛擬網路中。
 
-* 對於限制叢集的輸入和輸出流量的節點類型，建議使用網路安全性群組 (NSG)。 請確實在 NSG 中開啟必要的連接埠。 例如： ![Service Fabric NSG 規則][NSGSetup]
+* 對於限制叢集的輸入和輸出流量的節點類型，建議使用網路安全性群組 (NSG)。 請確實在 NSG 中開啟必要的連接埠。 例如： ![ SERVICE FABRIC NSG 規則][NSGSetup]
 
 * 主要節點類型包含 Service Fabric 系統服務，因此不需要透過外部負載平衡器來公開，而可由[內部負載平衡器](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer)來公開
 

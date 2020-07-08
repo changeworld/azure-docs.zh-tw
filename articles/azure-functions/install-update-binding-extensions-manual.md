@@ -4,10 +4,9 @@ description: 了解如何為已部署的函數應用程式安裝或更新 Azure 
 ms.topic: reference
 ms.date: 09/26/2018
 ms.openlocfilehash: e8716f691a5d19ddac7fece47c423e1f7787b9db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75768855"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>從入口網站手動安裝或更新 Azure Functions 繫結延伸模組
@@ -22,9 +21,9 @@ ms.locfileid: "75768855"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，找出您的函數應用程式並選取它。 選擇 [概觀]**** 索引標籤，然後選取 [停止]****。  停止函數應用程式會將檔案解除鎖定，以便進行變更。
 
-1. 選擇 [平台功能]**** 索引標籤，然後在 [開發工具]**** 底下，選取 [進階工具 (Kudu)]****。 Kudu 端點（`https://<APP_NAME>.scm.azurewebsites.net/`）會在新視窗中開啟。
+1. 選擇 [平台功能]**** 索引標籤，然後在 [開發工具]**** 底下，選取 [進階工具 (Kudu)]****。 Kudu 端點（ `https://<APP_NAME>.scm.azurewebsites.net/` ）會在新視窗中開啟。
 
-1. 在 [Kudu] 視窗中，選取 [ **Debug console** > **CMD**]。  
+1. 在 [Kudu] 視窗中，選取 [ **Debug console**  >  **CMD**]。  
 
 1. 在命令視窗中，瀏覽至 `D:\home\site\wwwroot`，然後選擇 `bin` 旁邊的刪除圖示以刪除此資料夾。 選取 **[確定]** 以確認刪除。
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
 ms.openlocfilehash: 1d3be958a0649ed3e80df2d63adbdf0b91831dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639593"
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services 生命週期
@@ -115,7 +114,7 @@ Service Fabric 基於多種原因變更具狀態服務的主要。 最常見的�
 
 因為這些服務是具有狀態的，所以服務會使用[可靠集合](service-fabric-reliable-services-reliable-collections.md)。 在 Service Fabric 中，當主要降級時，首先發生的事情是撤銷基礎狀態的寫入存取權。 這會導致可能影響服務生命週期的第二組問題。 集合會根據時間和複本是否正在移動或關機而傳回例外狀況。 務必正確處理這些例外狀況。 
 
-Service Fabric 擲回的例外狀況為[永久`FabricException`（）](https://docs.microsoft.com/java/api/system.fabric.exception)或[暫時性`FabricTransientException`（）](https://docs.microsoft.com/java/api/system.fabric.exception.fabrictransientexception)。 應該記錄並擲回永久例外狀況。 可以根據重試邏輯重試暫時性例外狀況。
+Service Fabric 擲回的例外狀況為永久[（ `FabricException` ）](https://docs.microsoft.com/java/api/system.fabric.exception)或暫時性[（ `FabricTransientException` ）](https://docs.microsoft.com/java/api/system.fabric.exception.fabrictransientexception)。 應該記錄並擲回永久例外狀況。 可以根據重試邏輯重試暫時性例外狀況。
 
 測試和驗證 Reliable Services 時，請記得處理因將 `ReliableCollections` 而與服務生命週期事件搭配使用所導致的例外狀況，這是相當重要的一環。 建議您一律在負載下執行您的服務。 也應該先執行升級和[混亂測試](service-fabric-controlled-chaos.md)，再部署至生產環境。 下列基本步驟協助確保您的服務正確地實作，並正確地處理生命週期事件。
 

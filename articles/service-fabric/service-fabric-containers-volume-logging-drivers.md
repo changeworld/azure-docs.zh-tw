@@ -4,10 +4,9 @@ description: Service Fabric 支援使用 Azure 檔案服務以備份來自您容
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75750052"
 ---
 # <a name="azure-files-volume-driver-for-service-fabric"></a>Service Fabric 的 Azure 檔案儲存體磁片區驅動程式
@@ -18,7 +17,7 @@ Azure 檔案儲存體磁片區驅動程式是[docker 磁片區外掛程式](http
 > 已發行 Azure 檔案儲存體磁片區外掛程式的版本6.5.661.9590，以供正式運作。
 >
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 * Azure 檔案服務磁碟區外掛程式的 Windows 版本只能在 [Windows Server 1709 版](/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 1709 版](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709)或更新版本的作業系統上運作。
 
 * Azure 檔案服務磁碟區外掛程式的 Linux 版本可在 Service Fabric 所支援的所有作業系統版本上運作。
@@ -29,7 +28,7 @@ Azure 檔案儲存體磁片區驅動程式是[docker 磁片區外掛程式](http
 
 * 您將會需要安裝[包含 Service Fabric 模組的 Powershell](/azure/service-fabric/service-fabric-get-started) 或 [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)。
 
-* 如果您使用 Hyper-v 容器，則必須在 Azure Resource Manager 範本（Azure 叢集）或 Clusterconfig.x509.multimachine.json （獨立叢集）的 ClusterManifest （本機叢集）或 fabricSettings 區段中新增下列程式碼片段。
+* 如果您使用 Hyper-v 容器，則必須在 Azure Resource Manager 範本（Azure 叢集）或 ClusterConfig.js（獨立叢集）中的 ClusterManifest （本機叢集）或 fabricSettings 區段中新增下列程式碼片段。
 
 在 ClusterManifest 中，必須在 Hosting 區段中新增下列內容。 在此範例中，磁片區名稱是**sfazurefile** ，而它在叢集上接聽的埠是**19100**。 請以您叢集的正確值來取代它們。
 
@@ -39,7 +38,7 @@ Azure 檔案儲存體磁片區驅動程式是[docker 磁片區外掛程式](http
 </Section>
 ```
 
-在 Azure Resource Manager 範本（適用于 Azure 部署）或 Clusterconfig.x509.multimachine.json （適用于獨立部署）的 fabricSettings 區段中，必須新增下列程式碼片段。 同樣地，使用您自己的名稱和埠值來取代。
+在 Azure Resource Manager 範本中的 [fabricSettings] 區段（適用于 Azure 部署）或 ClusterConfig.json （適用于獨立部署），必須新增下列程式碼片段。 同樣地，使用您自己的名稱和埠值來取代。
 
 ```json
 "fabricSettings": [

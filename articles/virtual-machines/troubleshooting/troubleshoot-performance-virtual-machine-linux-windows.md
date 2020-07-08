@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
 ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75772613"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>針對 Linux 或 Windows 上的 Azure 虛擬機器效能進行疑難排解
@@ -139,7 +138,7 @@ Artificial spiking – Artificial spiking 可能與已排程的工作/已知事�
 
 穩定增加的耗用量–可能是應用程式的「準備」，這種耗用量在資料庫引擎啟動時很常見。 不過，它也可能是應用程式中記憶體流失的跡象。 識別應用程式，並瞭解是否預期行為。
 
-頁面或交換檔案使用方式-檢查您是否正在使用 Windows 分頁檔案（位於 D\) ：或 Linux 交換檔案（ `/dev/sdb`位於）上。 如果您沒有這些檔案的任何內容，請檢查這些磁片上的高讀取/寫入。 這個問題表示記憶體不足的情況。
+頁面或交換檔案使用方式-檢查您是否正在使用 Windows 分頁檔案（位於 D： \) 或 Linux 交換檔案（位於 `/dev/sdb` ）上。 如果您沒有這些檔案的任何內容，請檢查這些磁片上的高讀取/寫入。 這個問題表示記憶體不足的情況。
 
 ### <a name="high-memory-utilization-remediation"></a>高記憶體使用量補救
 
@@ -210,7 +209,7 @@ AverageE2ELatency 代表用戶端延遲。 確認應用程式正在執行 IOPS �
 
 * [Windows 上 VM 磁片的擴充性和效能目標](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets)。
 
-#### <a name="references"></a>參考
+#### <a name="references"></a>參考資料
 
 * [Premium 分頁 blob 儲存體帳戶的擴充性和效能目標](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
@@ -252,4 +251,4 @@ AverageE2ELatency 代表用戶端延遲。 確認應用程式正在執行 IOPS �
 
 如果您在本文中有任何需要協助的地方，請洽詢[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家。
 
-或者，將 Azure 支援事件提出。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。
+或者，將 Azure 支援事件提出。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。

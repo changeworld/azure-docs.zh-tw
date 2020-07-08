@@ -8,15 +8,14 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75707181"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 管理 Outlook.com 中的電子郵件、行事曆和連絡人
 
-透過[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和[Outlook.com 連接器](/connectors/outlook/)，您可以建立邏輯應用程式來建立自動化的工作@outlook.com和@hotmail.com工作流程，以管理您的或帳戶。 例如，您可以將這些工作自動化：
+透過[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和[Outlook.com 連接器](/connectors/outlook/)，您可以 @outlook.com @hotmail.com 建立邏輯應用程式來建立自動化的工作和工作流程，以管理您的或帳戶。 例如，您可以將這些工作自動化：
 
 * 取得、傳送和回復電子郵件。
 * 在行事曆上排程會議。
@@ -25,9 +24,9 @@ ms.locfileid: "75707181"
 您可以使用任何觸發程式來啟動您的工作流程，例如，當新的電子郵件送達時、行事曆專案更新時，或差異服務中發生事件時。 您可以使用回應觸發程式事件的動作，例如傳送電子郵件或建立新的行事曆事件。
 
 > [!NOTE]
-> 若要將 Microsoft 公司帳戶的工作自動化（ @fabrikam.onmicrosoft.com例如），請使用[Office 365 Outlook 連接器](../connectors/connectors-create-api-office365-outlook.md)。
+> 若要將 Microsoft 公司帳戶的工作自動化（例如 @fabrikam.onmicrosoft.com ），請使用[Office 365 Outlook 連接器](../connectors/connectors-create-api-office365-outlook.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [Outlook.com 帳戶](https://outlook.live.com/owa/)
 
@@ -57,11 +56,11 @@ ms.locfileid: "75707181"
 
 [動作](../logic-apps/logic-apps-overview.md#logic-app-concepts)是由邏輯應用程式中的工作流程所執行的作業。 這個範例邏輯應用程式會從您的 Outlook.com 帳戶傳送電子郵件。 您可以使用另一個觸發程式的輸出來填入動作。 例如，假設您的邏輯應用程式**會在建立物件**觸發程式時使用 SalesForce。 您可以新增 Outlook.com**傳送電子郵件**動作，並使用電子郵件中 SalesForce 觸發程式的輸出。
 
-1. 在[Azure 入口網站](https://portal.azure.com)中，于邏輯應用程式設計工具中開啟邏輯應用程式。
+1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
 
 1. 若要新增動作做為工作流程中的最後一個步驟，請選取 [**新增步驟**]。 
 
-   若要在步驟之間新增動作，請將指標移到這些步驟之間的箭號上。 選取顯示的加號（**+**），然後選取 [**新增動作**]。
+   若要在步驟之間新增動作，請將指標移至這些步驟之間的箭頭上。 選擇出現的加號 ( **+** )，然後選取 [新增動作]。
 
 1. 在搜尋方塊中，輸入 "outlook.com" 作為篩選準則。 在此範例中，選取 [**傳送電子郵件**]。 
 

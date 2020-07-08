@@ -4,17 +4,16 @@ description: 使用 Azure Service Fabric 叢集來裝載現有的 Node.js 應用
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614837"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>在 Azure Service Fabric 上裝載 Node.js 應用程式
 
 本快速入門可協助您將現有的應用程式 (在此範例中為 Node.js) 部署到在 Azure 上執行的 Service Fabric 叢集。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您已 [設定開發環境](service-fabric-get-started.md)。 其中包括安裝 Service Fabric SDK 和 Visual Studio 2019 或2015。
 
@@ -28,7 +27,7 @@ ms.locfileid: "75614837"
 
 使用 `CTRL`+`SHIFT`+`N` 建立專案
 
-在 [新增專案] **** 對話方塊中，選擇 [雲端] > [Service Fabric 應用程式]****。
+在 [新增專案]  對話方塊中，選擇 [雲端] > [Service Fabric 應用程式]。
 
 將應用程式命名為 **MyGuestApp**，然後按 [確定]****。
 
@@ -43,7 +42,7 @@ ms.locfileid: "75614837"
 
 | 設定                   | 值 |
 | ------------------------- | ------ |
-| 程式碼封裝資料夾       | _&lt;使用 node.js 應用程式的資料夾&gt;_ |
+| 程式碼封裝資料夾       | _&lt;具有 Node.js 應用程式的資料夾&gt;_ |
 | 程式碼封裝行為     | 將資料夾內容複製到專案 |
 | 程式                   | node.exe |
 | 引數                 | server.js |
@@ -72,7 +71,7 @@ Visual Studio 會建立應用程式專案和動作項目服務專案，並在 [�
 
 我們所部署的範例 Node.js 應用程式會使用連接埠 **80**，而我們需要告知 Service Fabric 我們必須公開該連接埠。
 
-開啟專案中的 **ServiceManifest.xml** 檔案。 在資訊清單底部，有一個`<Resources> \ <Endpoints>`已定義專案的。 修改該項目以新增 `Port`、`Protocol` 和 `Type`。 
+開啟專案中的 **ServiceManifest.xml** 檔案。 在資訊清單底部，有一個 `<Resources> \ <Endpoints>` 已定義專案的。 修改該項目以新增 `Port`、`Protocol` 和 `Type`。 
 
 ```xml
   <Resources>
@@ -97,13 +96,13 @@ Visual Studio 會建立應用程式專案和動作項目服務專案，並在 [�
 
 如果您先前尚未這樣做，請選擇要部署至的 Azure 帳戶。 如果您沒有 Azure 帳戶，請[註冊一個][create-account]。
 
-在 [連線端點]**** 之下，選取要部署 Service Fabric 叢集的位置。 如果您沒有帳戶，請選取** &lt;[建立新叢集 ...]。&gt; **這會開啟網頁瀏覽器視窗至 Azure 入口網站。 如需詳細資訊，請參閱[在入口網站中建立叢集](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)。 
+在 [連線端點]**** 之下，選取要部署 Service Fabric 叢集的位置。 如果您沒有，請選取 [ ** &lt; 建立新叢集 ... &gt; ** ]，以開啟 [Azure 入口網站的網頁瀏覽器視窗。 如需詳細資訊，請參閱[在入口網站中建立叢集](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)。 
 
 當您建立 Service Fabric 叢集時，請務必將 [自訂端點]**** 設定設為 **80**。
 
 ![自訂端點的 Service fabric 節點類型組態][custom-endpoint]
 
-建立新的 Service Fabric 叢集需要一些時間才能完成。 建立之後，請回到 [發佈] 對話方塊， ** &lt;然後選取&gt;[** 重新整理]。 新的叢集會列在下拉式方塊中，請加以選取。
+建立新的 Service Fabric 叢集需要一些時間才能完成。 建立之後，請回到 [發佈] 對話方塊，然後** &lt; &gt; 選取 [** 重新整理]。 新的叢集會列在下拉式方塊中，請加以選取。
 
 按 [發佈]**** 並等待部署完成。
 
@@ -119,7 +118,7 @@ Visual Studio 會建立應用程式專案和動作項目服務專案，並在 [�
 
 ![Azure 入口網站上的 Service Fabric 概觀刀鋒視窗][overview]
 
-流覽至此位址，您將會看到`HELLO WORLD`回應。
+流覽至此位址，您將會看到 `HELLO WORLD` 回應。
 
 ## <a name="delete-the-cluster"></a>選取叢集
 

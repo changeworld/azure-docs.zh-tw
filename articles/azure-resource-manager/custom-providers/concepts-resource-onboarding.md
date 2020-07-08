@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650405"
 ---
 # <a name="azure-custom-providers-resource-onboarding-overview"></a>Azure 自訂提供者資源上線總覽
@@ -57,8 +56,8 @@ Azure 自訂提供者資源上架是適用于 Azure 資源類型的擴充性模�
 屬性 | 必要項？ | 描述
 ---|---|---
 NAME | 是 | 端點定義的名稱。 針對資源上線，名稱必須是「關聯」。
-routingType | 是 | 判斷具有端點的合約類型。 針對資源上線，有效的**routingTypes**為「Proxy、快取、延伸模組」和「Webhook，快取，延伸模組」。
-端點 | 是 | 要作為要求路由傳送目的地的端點。 這會處理回應和要求的任何副作用。
+routingType | Yes | 判斷具有端點的合約類型。 針對資源上線，有效的**routingTypes**為「Proxy、快取、延伸模組」和「Webhook，快取，延伸模組」。
+端點 | Yes | 要作為要求路由傳送目的地的端點。 這會處理回應和要求的任何副作用。
 
 建立具有關聯資源類型的自訂提供者之後，您可以使用 CustomProviders/association 作為目標。 CustomProviders/association 是擴充功能資源，可以擴充任何其他 Azure 資源。 建立 CustomProviders/關聯的實例時，它會接受屬性**targetResourceId**，這應該是有效的 CustomProviders/ResourceProviders 或 microsoft 解決方案/應用程式資源識別碼。 在這些情況下，會將要求轉送至您所建立之 CustomProviders/resourceProviders 實例上的關聯資源類型。
 
@@ -76,9 +75,9 @@ routingType | 是 | 判斷具有端點的合約類型。 針對資源上線，�
 }
 ```
 
-屬性 | 必要項？ | 說明
+屬性 | 必要項？ | Description
 ---|---|---
-targetResourceId | 是 | CustomProviders/resourceProviders 或 Microsoft 解決方案/應用程式的資源識別碼。
+targetResourceId | Yes | CustomProviders/resourceProviders 或 Microsoft 解決方案/應用程式的資源識別碼。
 
 ## <a name="how-to-use-resource-onboarding"></a>如何使用資源上線
 
@@ -146,7 +145,7 @@ X-MS-CustomProviders-ExtendedResource: /subscriptions/{subscriptionId}/resourceG
 }
 ```
 
-端點應該會回應應用程式/json `Content-Type`和有效的 json 回應主體。 在 JSON 的**properties**物件底下傳回的欄位將會加入至關聯傳迴響應。
+端點應該會回應應用程式/json `Content-Type` 和有效的 json 回應主體。 在 JSON 的**properties**物件底下傳回的欄位將會加入至關聯傳迴響應。
 
 ## <a name="getting-help"></a>取得說明
 

@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 ms.date: 5/20/2019
 ms.author: pepogors
 ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614344"
 ---
 # <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>使用 Visual Studio 來建立和發佈以遠端 Linux Service Fabric 叢集為目標 .Net Core 應用程式
@@ -26,7 +25,7 @@ ms.locfileid: "75614344"
 ![建立-應用程式]
 4. 為應用程式命名，然後按一下 **[確定]**。
 5. 在 [**新增 Service Fabric 服務**] 頁面上，選取您想要在 [ **.Net Core] 區段**底下建立的服務類型。
-![建立-服務]
+![create-service]
 
 ## <a name="deploy-to-a-remote-linux-cluster"></a>部署到遠端 Linux 叢集
 1. 在 [方案瀏覽器] 中，以滑鼠右鍵按一下應用程式，然後選取 [**組建**]。
@@ -38,7 +37,7 @@ ms.locfileid: "75614344"
     <UpdateServiceFabricManifestEnabled>False</UpdateServiceFabricManifestEnabled>
 ```
 > [!Note]
-> 將 UpdateServiceFabricManifestEnabled 設定為 false，將會在組建期間停用 ServiceManifest 的更新。 任何變更（例如 [新增]、[移除] 或 [重新命名]）都不會反映在 ServiceManifest 中。 如果進行任何變更，您必須手動更新 ServiceManifest，或暫時將 UpdateServiceFabricManifestEnabled 設定為 true，並建立將更新 ServiceManifest 的服務，然後將它還原回 false。
+> 將 UpdateServiceFabricManifestEnabled 設定為 false，將會在組建期間停用 ServiceManifest.xml 的更新。 任何變更（例如 [新增]、[移除] 或 [重新命名]）都不會反映在 ServiceManifest.xml 中。 如果進行任何變更，您必須手動更新 ServiceManifest，或暫時將 UpdateServiceFabricManifestEnabled 設定為 true，並建立將更新 ServiceManifest.xml 的服務，然後將它還原回 false。
 >
 
 4. 將 RuntimeIndetifier 從 win7-x64 更新為服務專案中的目標平臺。
@@ -59,7 +58,7 @@ ms.locfileid: "75614344"
 
 <!--Image references-->
 [建立-應用程式]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-application-remote-linux.png
-[建立-服務]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-service-remote-linux.png
+[create-service]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-service-remote-linux.png
 [組建-應用程式]:./media/service-fabric-how-to-vs-remote-linux-cluster/build-application-remote-linux.png
 [編輯-.csproj]:./media/service-fabric-how-to-vs-remote-linux-cluster/edit-csproj-remote-linux.png
 [發行-應用程式]:./media/service-fabric-how-to-vs-remote-linux-cluster/publish-remote-linux.png

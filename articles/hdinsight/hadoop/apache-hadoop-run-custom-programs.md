@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
 ms.openlocfilehash: 78623f738285e781cb561a3844db8fbf37226929
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645016"
 ---
 # <a name="run-custom-mapreduce-programs"></a>執行自訂 MapReduce 程式
@@ -48,7 +47,7 @@ Map/Reduce 程式碼是由以 **map** 和 **reduce** 元件來實作的兩個個
 
 最常見的 MapReduce 程式是以 Java 撰寫並編譯成 Jar 檔案的程式。
 
-1. 在您開發、編譯和測試 MapReduce 程式之後，請使用`scp`命令將 jar 檔案上傳到前端節點。
+1. 在您開發、編譯和測試 MapReduce 程式之後，請使用命令將 `scp` jar 檔案上傳到前端節點。
 
     ```cmd
     scp mycustomprogram.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -56,7 +55,7 @@ Map/Reduce 程式碼是由以 **map** 和 **reduce** 元件來實作的兩個個
 
     將 CLUSTERNAME 取代為叢集名稱。 如果您使用密碼來保護 SSH 帳戶，系統會提示您輸入密碼。 如果您使用憑證，可能需要使用 `-i` 參數來指定私密金鑰檔案。
 
-1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的叢集。 以您叢集的名稱取代 CLUSTERNAME，然後輸入命令，以編輯下面的命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 CLUSTERNAME 取代為您叢集的名稱，然後輸入命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net

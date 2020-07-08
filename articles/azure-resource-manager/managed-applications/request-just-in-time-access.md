@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651380"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>啟用並要求及時存取 Azure 受控應用程式
 
 受控應用程式的取用者可能不願意授與您對受控資源群組的永久存取權。 身為「管理員」應用程式的「發行者」，您可能會想要讓取用者確實知道何時需要存取受控資源。 為了讓取用者更進一步控制授與受管理資源的存取權，Azure 受控應用程式提供稱為即時（JIT）存取的功能，目前為預覽狀態。
 
-JIT 存取可讓您要求更高的受控應用程式資源存取權，以進行疑難排解或維護。 您一律會擁有資源的唯讀存取權，但在特定期間內，您可以有更高的存取權。
+JIT 存取可讓您對受控應用程式的資源要求更高的存取權，以進行疑難排解或維護。 您一律會擁有資源的唯讀存取權，但在特定期間內，您可以擁有更高的存取權。
 
 授與存取權的工作流程為：
 
@@ -34,9 +33,9 @@ JIT 存取可讓您要求更高的受控應用程式資源存取權，以進行�
 
 ## <a name="add-jit-access-step-to-ui"></a>將 JIT 存取步驟加入至 UI
 
-您的 CreateUiDefinition 與您為永久存取所建立的 UI 檔案完全相同，但您必須包含可讓取用者啟用 JIT 存取的步驟。 若要深入瞭解如何在 Azure Marketplace 中發佈您的第一個受控應用程式供應專案，請參閱[Marketplace 中的 Azure 受控應用程式](publish-marketplace-app.md)。
+您的 CreateUiDefinition.json 檔案與您為永久存取建立的 UI 檔案完全相同，不同之處在于您必須包含可讓取用者啟用 JIT 存取的步驟。 若要深入瞭解如何在 Azure Marketplace 中發佈您的第一個受控應用程式供應專案，請參閱[Marketplace 中的 Azure 受控應用程式](publish-marketplace-app.md)。
 
-若要為您的供應專案支援 JIT 功能，請將下列內容新增至您的 CreateUiDefinition json 檔案：
+若要為您的供應專案支援 JIT 功能，請將下列內容新增至您的 CreateUiDefinition.js檔案：
 
 在 [步驟] 中：
 

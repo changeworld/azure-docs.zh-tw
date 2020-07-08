@@ -1,24 +1,23 @@
 ---
 title: 視圖定義成品參考
-description: 提供 Azure 受控應用程式視圖定義成品的範例。 檔案名為 viewDefinition. json。
+description: 提供 Azure 受控應用程式視圖定義成品的範例。 檔案名為 viewDefinition.json。
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 5173db54abef132a4a4d5d117881352ca37d6b23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651198"
 ---
 # <a name="reference-view-definition-artifact"></a>參考：視圖定義成品
 
-本文是 Azure 受控應用程式中*viewDefinition*的參考。 如需撰寫 views 設定的詳細資訊，請參閱[View definition](concepts-view-definition.md)成品。
+本文是 Azure 受控應用程式中成品*viewDefinition.js*的參考。 如需撰寫 views 設定的詳細資訊，請參閱[View definition](concepts-view-definition.md)成品。
 
 ## <a name="view-definition"></a>檢視定義
 
-下列 JSON 顯示 Azure 受控應用程式的*viewDefinition json*檔案範例：
+下列 JSON 顯示 Azure 受控應用程式的檔案*viewDefinition.js*範例：
 
 ```json
 {

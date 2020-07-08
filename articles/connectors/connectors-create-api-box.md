@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
 ms.openlocfilehash: c7f97ff33742eb545cbfbd7521ba135584851e5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666766"
 ---
 # <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 在 Box 中建立和管理檔案
@@ -27,7 +26,7 @@ ms.locfileid: "75666766"
   當這些動作取得回應時，就能讓輸出可供其他動作使用。 
   舉例來說，當 Box 中的某個檔案變更時，您可以使用 Office 365 在電子郵件中傳送該檔案。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [Box 帳戶](https://www.box.com/home)
 
@@ -36,7 +35,7 @@ ms.locfileid: "75666766"
 * 您要在其中存取 Box 帳戶的邏輯應用程式。 若要使用 Box 觸發程序啟動邏輯應用程式，您需要[空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 * [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識。
-如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md)。
+如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md)。
 
 ## <a name="connector-reference"></a>連接器參考
 

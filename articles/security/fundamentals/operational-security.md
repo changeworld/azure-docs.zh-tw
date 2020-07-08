@@ -16,16 +16,15 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75749966"
 ---
 # <a name="azure-operational-security"></a>Azure 作業安全性
 ## <a name="introduction"></a>簡介
 
-### <a name="overview"></a>概觀
+### <a name="overview"></a>總覽
 我們知道安全性是雲端中的首要工作和其重要性，因為您可在其中找到精確且及時的 Azure 安全性資訊。 針對您的應用程式和服務使用 Azure 的其中一個最佳原因是可以利用各種可用的安全性工具和功能。 這些工具和功能可協助您在安全的 Azure 平台上建立安全的解決方案。 Microsoft Azure 必須提供客戶資料的機密性、完整性和可用性，同時也能釐清責任。
 
 為了協助客戶從客戶和 Microsoft 作業的觀點深入了解如何在 Microsoft Azure 內實作一系列安全性控制，因而編寫了本技術白皮書＜Azure 作業安全性＞來提供可透過 Windows Azure 取得之作業安全性的完整介紹。
@@ -70,7 +69,7 @@ Azure 監視器記錄的核心功能是由在 Azure 中執行的一組服務所�
 | :------------- | :-------------|
 | Azure 監視器記錄 | 監視及分析不同資源 (包括實體和虛擬機器) 的可用性和效能。 |
 |自動化 | 讓手動程序自動化，並強制設定實體和虛擬機器。 |
-| Backup | 備份及還原重要資料。 |
+| 備份 | 備份及還原重要資料。 |
 | Site Recovery | 為重要應用程式提供高可用性。 |
 
 ### <a name="azure-monitor-logs"></a>Azure 監視器記錄
@@ -136,9 +135,9 @@ Azure 資訊安全中心可協助保護您的 Azure 資源。 它提供您 Azure
 
 - Azure 資訊安全中心會分析來自下列來源的資料，以掌握您的安全性狀態、識別弱點並提供建議防護功能，並偵測作用中的威脅︰
 
--   Azure 服務︰與 Azure 服務的資源提供者通訊，以使用您所部署之 Azure 服務的組態相關資訊。
+-   Azure 服務：與 Azure 服務的資源提供者通訊，以使用您所部署之 Azure 服務的組態相關資訊。
 
-- 網路流量︰使用從 Microsoft 的基礎結構取樣的網路流量中繼資料，例如來源/目的地 IP/連接埠、封包大小和網路通訊協定。
+- 網路流量：使用從 Microsoft 的基礎結構取樣的網路流量中繼資料，例如來源/目的地 IP/連接埠、封包大小和網路通訊協定。
 
 -   合作夥伴解決方案：使用整合式合作夥伴解決方案 (例如防火牆和反惡意程式碼解決方案) 的安全性警示。
 
@@ -199,7 +198,7 @@ Azure 監視器提供特定資源類型詳細資訊的指標。 它會針對來�
 
 ### <a name="metrics"></a>計量
 
-Azure 監視器可讓您取用遙測來查看您 Azure 工作負載的效能與健全狀況。 Azure 遙測資料最重要的類型是由大多數 Azure 資源所發出的度量 (也稱為效能計數器)。 Azure 監視器提供數種方式，來設定及取用這些[計量](../../monitoring/monitoring-data-collection.md)以進行監視與疑難排解。 度量是遙測的寶貴來源，可讓您執行下列工作：
+Azure 監視器可讓您取用遙測來查看您 Azure 工作負載的效能與健全狀況。 Azure 遙測資料最重要的類型是由大多數 Azure 資源所發出的度量 (也稱為效能計數器)。 Azure 監視器提供數種方式來設定和使用這些[計量](../../monitoring/monitoring-data-collection.md)來進行監視和疑難排解。 度量是遙測的寶貴來源，可讓您執行下列工作：
 
 -   **追蹤資源** (例如 VM、網站或邏輯應用程式) 的效能，方法是在入口網站圖表上繪製其度量，並將該圖表釘選到儀表板。
 

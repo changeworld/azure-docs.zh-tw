@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 4a3604a3256fb2d3f4253891bbc28c7685748cd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651016"
 ---
 # <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>設定和核准 Azure 受控應用程式的及時存取
@@ -37,7 +36,7 @@ ms.locfileid: "75651016"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 尋找已啟用 JIT 之受控應用程式的 marketplace 專案。 選取 [建立]  。
+1. 尋找已啟用 JIT 之受控應用程式的 marketplace 專案。 選取 [建立]。
 
 1. 針對新的 managed 應用程式提供值時， **JIT**設定步驟可讓您啟用或停用受控應用程式的 jit 存取。 針對 [**啟用 JIT 存取** **] 選取 [是]** 。 針對在 marketplace 中啟用 JIT 定義的 managed 應用程式，預設會選取此選項。
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
 ms.openlocfilehash: 6fc6ea9ca0ce3bf82f027b964db94df50f07f2bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75646518"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探討 - 進階分析
@@ -42,12 +41,12 @@ HDInsight 提供可從大量結構化、非結構化及快速移動之資料取�
 * 不受監督-演算法不需要定型資料
 * 增強式 - 演算法使用軟體代理程式來判斷特定內容內的理想行為 (通常用於 Robotics)
 
-| 演算法類別| 使用 | 學習類型 | 演算法 |
+| 演算法類別| 用途 | 學習類型 | 演算法 |
 | --- | --- | --- | -- |
-| 分類 | 將人員或事項分類成群組 | 監督式 | 決策樹、羅吉斯迴歸、類神經網路 |
+| 分類 | 將人員或事項分類成群組 | 受監督 | 決策樹、羅吉斯迴歸、類神經網路 |
 | 叢集 | 將一組範例分割成同質群組 | 未監督式 | K-Means 叢集模型 |
 | 模式偵測 | 識別資料中常見的關聯 | 未監督式 | 關聯規則 |
-| 迴歸 | 預測數值結果 | 監督式 | 線性迴歸、類神經網路 |
+| 迴歸 | 預測數值結果 | 受監督 | 線性迴歸、類神經網路 |
 | 增強式 | 判斷機器人的最佳行為 | 增強式 | 蒙特卡羅 (Monte Carlo) 模擬、DeepMind |
 
 ## <a name="machine-learning-on-hdinsight"></a>HDInsight 上的機器學習服務

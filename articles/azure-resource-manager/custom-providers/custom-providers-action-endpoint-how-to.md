@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650392"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>將自訂動作新增至 Azure REST API
@@ -18,7 +17,7 @@ ms.locfileid: "75650392"
 
 ## <a name="how-to-define-an-action-endpoint"></a>如何定義動作端點
 
-「**端點**」（endpoint）是指向服務的 URL，它會在它與 Azure 之間執行基礎合約。 端點會定義在自訂資源提供者中，而且可以是任何可公開存取的 URL。 下列範例有一個稱為**action** `myCustomAction` 「實作用」 `endpointURL`的動作。
+「**端點**」（endpoint）是指向服務的 URL，它會在它與 Azure 之間執行基礎合約。 端點會定義在自訂資源提供者中，而且可以是任何可公開存取的 URL。 下列範例有一個稱為「實作用」的**動作** `myCustomAction` `endpointURL` 。
 
 範例**ResourceProvider**：
 
@@ -42,7 +41,7 @@ ms.locfileid: "75650392"
 
 ## <a name="building-an-action-endpoint"></a>建立動作端點
 
-執行**動作**的**端點**必須處理 Azure 中新 API 的要求和回應。 建立具有**動作**的自訂資源提供者時，它會在 Azure 中產生一組新的 api。 在此情況下，此動作會產生新的 Azure 動作 API `POST`來進行呼叫：
+執行**動作**的**端點**必須處理 Azure 中新 API 的要求和回應。 建立具有**動作**的自訂資源提供者時，它會在 Azure 中產生一組新的 api。 在此情況下，此動作會產生新的 Azure 動作 API 來進行 `POST` 呼叫：
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction
@@ -139,7 +138,7 @@ request-body | *不* | 將傳送至**端點**的要求主體。
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
 
 > [!NOTE]
-> 動作在 Azure Resource Manager 範本中具有有限的支援。 為了在範本內呼叫動作，它必須在其名稱中包含[`list`](../templates/template-functions-resource.md#list)前置詞。
+> 動作在 Azure Resource Manager 範本中具有有限的支援。 為了在範本內呼叫動作，它必須 [`list`](../templates/template-functions-resource.md#list) 在其名稱中包含前置詞。
 
 具有清單動作的範例**ResourceProvider** ：
 

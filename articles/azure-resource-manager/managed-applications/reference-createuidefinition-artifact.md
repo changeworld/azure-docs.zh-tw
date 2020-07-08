@@ -1,24 +1,23 @@
 ---
 title: CreateUiDefinition 成品
-description: 說明如何建立 Azure 受控應用程式的 createUiDefinition 成品。 此檔案名為 createUiDefinition. json。
+description: 說明如何建立 Azure 受控應用程式的 createUiDefinition 成品。 檔案的名稱為 createUiDefinition.js開啟。
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 9be1cb02c419314a33b9487bf183ef3659b2b549
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651484"
 ---
 # <a name="reference-user-interface-elements-artifact"></a>參考：使用者介面專案成品
 
-本文是 Azure 受控應用程式中*createUiDefinition*的參考。 如需撰寫使用者介面元素的詳細資訊，請參閱[建立使用者介面元素](create-uidefinition-elements.md)。
+本文是 Azure 受控應用程式中成品*createUiDefinition.js*的參考。 如需撰寫使用者介面元素的詳細資訊，請參閱[建立使用者介面元素](create-uidefinition-elements.md)。
 
 ## <a name="user-interface-elements"></a>使用者介面元素
 
-下列 JSON 顯示 Azure 受控應用程式的*createUiDefinition json*檔案範例：
+下列 JSON 顯示 Azure 受控應用程式的檔案*createUiDefinition.js*範例：
 
 ```json
 {

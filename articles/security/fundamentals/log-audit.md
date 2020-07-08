@@ -16,13 +16,12 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
 ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75750800"
 ---
-# <a name="azure-security-logging-and-auditing"></a>Azure 安全性記錄和審核
+# <a name="azure-security-logging-and-auditing"></a>Azure 安全性記錄和稽核 (部分機器翻譯)
 
 Azure 提供各種可設定的安全性稽核和記錄選項，協助您識別安全性原則和機制間的差距。 本文討論如何從 Azure 上所裝載的服務產生、收集及分析安全性記錄。
 
@@ -40,13 +39,13 @@ Azure 提供各種可設定的安全性稽核和記錄選項，協助您識別�
 Azure 記錄可歸類為下列類型：
 * **控制/管理記錄**提供 Azure Resource Manager CREATE、UPDATE 和 DELETE 作業的相關資訊。 如需詳細資訊，請參閱[Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)。
 
-* **資料平面記錄**會提供在 Azure 資源使用量中引發之事件的相關資訊。 這個記錄類型的範例是虛擬機器 (VM) 中的 Windows 事件系統、安全性和應用程式記錄，以及透過 Azure 監視器設定的[診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)。
+* **資料平面記錄**提供使用 Azure 資源時所引發事件的相關資訊。 這個記錄類型的範例是虛擬機器 (VM) 中的 Windows 事件系統、安全性和應用程式記錄，以及透過 Azure 監視器設定的[診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)。
 
 * **已處理的事件**提供分析已代替您處理之事件/警示的相關資訊。 這個類型的範例是 [Azure 資訊安全中心警示](../../security-center/security-center-managing-and-responding-alerts.md)，[Azure 資訊安全中心](../../security-center/security-center-intro.md)已在其中處理和分析您的訂用帳戶，並提供簡要的安全性警示。
 
 下表列出 Azure 中可用的最重要記錄類型：
 
-| 記錄分類 | 記錄類型 | 使用量 | 整合 |
+| 記錄分類 | 記錄類型 | 使用方式 | 整合 |
 | ------------ | -------- | ------ | ----------- |
 |[活動記錄](../../azure-monitor/platform/platform-logs-overview.md)|Azure Resource Manager 資源上控制層面的事件|  讓您了解訂用帳戶中的資源所執行之作業。|    REST API、[Azure 監視器](../../azure-monitor/platform/platform-logs-overview.md)|
 |[Azure 資源記錄](../../azure-monitor/platform/platform-logs-overview.md)|關於訂用帳戶中 Azure Resource Manager 作業的經常性資料|   讓您了解資源自行執行的作業。| Azure 監視器|

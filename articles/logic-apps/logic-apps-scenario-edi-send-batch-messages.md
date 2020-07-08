@@ -8,10 +8,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666664"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>在 Azure Logic Apps 的交易夥伴之間，以批次或群組交換 EDI 訊息
@@ -30,13 +29,13 @@ ms.locfileid: "75666664"
 
 請務必讓批次接收者和批次傳送者共用相同的 Azure 訂用帳戶和** Azure 區域。 如果未共用，您就無法在建立批次傳送者時選取批次接收者，原因是兩者並無法看到彼此。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要遵循此範例，您需要這些項目：
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，您可以[開始使用免費 Azure 帳戶](https://azure.microsoft.com/free/)。 或者，請[註冊隨用隨付訂用帳戶](https://azure.microsoft.com/pricing/purchase-options/)。
 
-* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 現有[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，已與 Azure 訂用帳戶相關聯，並連結到邏輯應用程式
 
@@ -70,7 +69,7 @@ ms.locfileid: "75666664"
    | **批次名稱** | TestBatch | 僅適用於**內嵌**批次模式 | 
    | **發行準則** | 依據訊息計數、依據排程 | 僅適用於**內嵌**批次模式 | 
    | **訊息計數** | 10 | 僅適用於**依據訊息計數**釋出準則 | 
-   | **期間** | 10 | 僅適用於**依據排程**釋出準則 | 
+   | **間隔** | 10 | 僅適用於**依據排程**釋出準則 | 
    | **頻率** | minute | 僅適用於**依據排程**釋出準則 | 
    ||| 
 
@@ -123,11 +122,11 @@ ms.locfileid: "75666664"
 
 3. 設定 HTTP 動作的屬性：
 
-   | 屬性 | 說明 | 
+   | 屬性 | 描述 | 
    |----------|-------------|
    | **方法** | 從這個清單中選取 [POST]****。 | 
    | **Uri** | 為要求 Bin 產生 URI，然後在這個方塊中輸入該 URI。 | 
-   | **人體** | 按一下此方塊內部，然後在動態內容清單開啟後，選取 [主體]**** 權杖，其會出現在 [依合約名稱的批次編碼]**** 區段中。 <p>如果您沒有看到 [主體]**** 權杖，請選取 [依合約名稱的批次編碼]**** 旁邊的 [查看更多]****。 | 
+   | **本文** | 按一下此方塊內部，然後在動態內容清單開啟後，選取 [主體]**** 權杖，其會出現在 [依合約名稱的批次編碼]**** 區段中。 <p>如果您沒有看到 [主體]**** 權杖，請選取 [依合約名稱的批次編碼]**** 旁邊的 [查看更多]****。 | 
    ||| 
 
    ![提供 HTTP 動作詳細資料](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action-details.png)

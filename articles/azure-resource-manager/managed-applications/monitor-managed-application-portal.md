@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651744"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>監視受控應用程式的已部署執行個體
@@ -22,7 +21,7 @@ ms.locfileid: "75651744"
 
    ![選取受控應用程式](./media/monitor-managed-application-portal/select-managed-application.png)
 
-1. 選取 [資源健康狀態]****。
+1. 選取 [**資源健康狀態**]。
 
    ![選取資源健康狀態](./media/monitor-managed-application-portal/select-resource-health.png)
 
@@ -32,7 +31,7 @@ ms.locfileid: "75651744"
 
 ## <a name="view-alerts"></a>檢視警示
 
-1. 選取 [警示] ****。
+1. 選取 [警示] 。
 
    ![選取警示](./media/monitor-managed-application-portal/select-alerts.png)
 

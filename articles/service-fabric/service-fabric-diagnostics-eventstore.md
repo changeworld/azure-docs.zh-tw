@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
 ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645730"
 ---
 # <a name="eventstore-overview"></a>EventStore 總覽
@@ -17,7 +16,7 @@ ms.locfileid: "75645730"
 >[!NOTE]
 >截至 Service Fabric 6.4 版為止， EventStore API 僅適用於在 Azure 上執行的 Windows 叢集。 我們正在將這個功能和我們的獨立叢集移植到 Linux。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 6.2 版中引進，EventStore 服務是 Service Fabric 中的監視選項。 EventStore 可讓您了解您的叢集或工作負載在指定時間點的狀態。
 EventStore 是具狀態的 Service Fabric 服務，可維護叢集中的事件。 此事件會透過 Service Fabric Explorer、REST 和 API 公開。 EventStore 可直接查詢叢集，取得叢集中任何實體的診斷資料，應可用來協助您：
@@ -65,7 +64,7 @@ EventStore 服務還能將叢集中的事件相互關聯。 透過同時間寫�
 ### <a name="azure-cluster-version-65"></a>Azure 叢集6.5 版 +
 如果您的 Azure 叢集已升級為6.5 或更高版本，則會在您的叢集上自動啟用 EventStore。 若要退出，您必須使用下列程式更新您的叢集範本：
 
-* 使用或更新版本的`2019-03-01` API 
+* 使用或更新版本的 API `2019-03-01` 
 * 將下列程式碼新增至叢集中的屬性區段
   ```json  
     "fabricSettings": [

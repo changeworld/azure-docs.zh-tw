@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
 ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75750885"
 ---
 # <a name="diagnostic-logs-schemas"></a>診斷記錄結構描述
@@ -38,7 +37,7 @@ ms.locfileid: "75750885"
 
 這些是金鑰傳遞記錄架構特有的屬性。
 
-|名稱|描述|
+|Name|說明|
 |---|---|
 |keyId|所要求之金鑰的識別碼。|
 |keyType|可能是下列其中一個值： "Clear" （無加密）、"FairPlay"、"PlayReady" 或 "Widevine"。|

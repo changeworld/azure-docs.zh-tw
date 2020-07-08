@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
 ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666868"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>在 Azure 邏輯應用程式中處理內容類型
@@ -57,7 +56,7 @@ Logic Apps 可讓您產生方便使用的權杖來表示 JSON 內容中的屬性
   
   如果您沒有結構描述，您可以產生結構描述。 
   
-  1. 在要求觸發程序中，選取 [使用範例承載來產生結構描述]****。  
+  1. 在要求觸發程序中，選取 [使用範例承載來產生結構描述]。  
   
   2. 在 [輸入或貼上範例 JSON 承載]**** 之下，提供範例承載，然後選擇 [完成]****。 例如： 
 

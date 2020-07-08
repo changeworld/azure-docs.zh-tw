@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: c6bf26d8f3a73db6ee69b2aa0de73872911893bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552707"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>使用自訂 Python 程式庫搭配 HDInsight 上的 Apache Spark 叢集來分析網站記錄
@@ -46,7 +45,7 @@ HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
     from pyspark.sql.types import *
     ```
 
-1. 使用叢集上已有的範例記錄資料來建立 RDD。 您可以在`\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log`與叢集相關聯的預設儲存體帳戶中存取資料。 執行以下程式碼：
+1. 使用叢集上已有的範例記錄資料來建立 RDD。 您可以在與叢集相關聯的預設儲存體帳戶中存取資料 `\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log` 。 執行以下程式碼：
 
     ```pyspark
     logs = sc.textFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
@@ -70,9 +69,9 @@ HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
 
 ## <a name="analyze-log-data-using-a-custom-python-library"></a>使用自訂 Python 程式庫來分析記錄資料
 
-1. 在上述輸出中，前幾行包含標頭資訊，其餘各行則符合該標頭中所說明的結構描述。 剖析這類記錄可能是複雜的作業。 因此，我們使用自訂 Python 程式庫 (**iislogparser.py**)，它可大幅簡化這類記錄的剖析。 根據預設，此程式庫會隨附于 HDInsight 上的 Spark 叢集`/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py`，網址為。
+1. 在上述輸出中，前幾行包含標頭資訊，其餘各行則符合該標頭中所說明的結構描述。 剖析這類記錄可能是複雜的作業。 因此，我們使用自訂 Python 程式庫 (**iislogparser.py**)，它可大幅簡化這類記錄的剖析。 根據預設，此程式庫會隨附于 HDInsight 上的 Spark 叢集，網址為 `/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py` 。
 
-    不過，此程式庫不在`PYTHONPATH`中，因此無法使用匯入語句（例如`import iislogparser`）。 若要使用此程式庫，我們必須將它散發到所有的背景工作角色節點。 執行下列程式碼片段。
+    不過，此程式庫不在中， `PYTHONPATH` 因此無法使用匯入語句（例如） `import iislogparser` 。 若要使用此程式庫，我們必須將它散發到所有的背景工作角色節點。 執行下列程式碼片段。
 
     ```pyspark
     sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
@@ -110,7 +109,7 @@ HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
     errors.map(lambda p: str(p)).saveAsTextFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b-2.log')
     ```
 
-    輸出應該會是`There are 30 errors and 646 log entries`狀態。
+    輸出應該會是狀態 `There are 30 errors and 646 log entries` 。
 
 1. 您也可以使用 **Matplotlib** 來建構資料的視覺效果。 例如，如果您想要找出要求長時間執行的原因，您可以尋找平均佔用最多服務資源的檔案。 下列程式碼片段會擷取耗費最多時間為要求提供服務的前 25 個資源。
 

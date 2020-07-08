@@ -9,10 +9,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.openlocfilehash: 1903c2faab865152d1f3666f3c9dadd745058b56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75612286"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用 Data Lake Tools for Visual Studio 開發 Apache Storm 的 C# 拓撲
@@ -21,7 +20,7 @@ ms.locfileid: "75612286"
 
 您也會學習如何建立使用 C# 和 Java 元件的混合式拓撲。
 
-C # 拓撲使用 .NET 4.5，並使用 Mono 在 HDInsight 叢集上執行。 如需潛在不相容的資訊，請參閱[Mono 相容性](https://www.mono-project.com/docs/about-mono/compatibility/)。 若要使用 c # 拓撲，您必須將`Microsoft.SCP.Net.SDK`專案所使用的 NuGet 套件更新為為0.10.0.6 版或更新版本。 套件版本也必須符合 HDInsight 上安裝的 Storm 主要版本。
+C # 拓撲使用 .NET 4.5，並使用 Mono 在 HDInsight 叢集上執行。 如需潛在不相容的資訊，請參閱[Mono 相容性](https://www.mono-project.com/docs/about-mono/compatibility/)。 若要使用 c # 拓撲，您必須將 `Microsoft.SCP.Net.SDK` 專案所使用的 NuGet 套件更新為為0.10.0.6 版或更新版本。 套件版本也必須符合 HDInsight 上安裝的 Storm 主要版本。
 
 | HDInsight 版本 | Apache Storm 版本 | SCP.NET 版本 | 預設 Mono 版本 |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
@@ -47,9 +46,9 @@ HDInsight 上的 Apache Storm 叢集。 請參閱[使用 Azure 入口網站建�
 
 1. 在您的開發環境上安裝 Java Developer Kit (JDK) 7 或更新版本。 您可以從 [Oracle](https://openjdk.java.net/) \(英文\) 取得 Oracle JDK。 您也可以使用[其他 Java 發佈](/java/azure/jdk/) \(英文\)。
 
-2. 將`JAVA_HOME`環境變數設定為包含 JAVA 的目錄。
+2. 將 `JAVA_HOME` 環境變數設定為包含 JAVA 的目錄。
 
-3. 設定`PATH`環境變數以包含`%JAVA_HOME%\bin`目錄。
+3. 設定 `PATH` 環境變數以包含 `%JAVA_HOME%\bin` 目錄。
 
 您可以建立並執行下列 c # 主控台應用程式，以確認已正確安裝 JAVA 和 JDK：
 
@@ -124,7 +123,7 @@ HBase 讀取器和寫入器範本會使用 HBase REST API (而不是 HBase Java 
 
 1. 開啟 Visual Studio。
 
-1. 在 [開始]**** 視窗中，選取 [建立新專案]****。
+1. 在 [開始] 視窗中，選取 [建立新專案]。
 
 1. 在 [**建立新專案**] 視窗中，依序流覽並挑選 [**風暴應用程式**]，然後選取 **[下一步]**。
 
@@ -152,9 +151,9 @@ HBase 讀取器和寫入器範本會使用 HBase REST API (而不是 HBase Java 
 
    * `Ack`（僅限交易式拓撲）：針對從 spout 傳送的元組，處理拓撲中其他元件所啟動的通知。 認可 Tuple 可讓 Spout 知道下游元件已順利處理 Tuple。
 
-   * `Fail`（僅限交易式拓撲）：處理無法處理拓撲中其他元件的元組。 執行`Fail`方法可讓您重新發出元組，以便再次處理。
+   * `Fail`（僅限交易式拓撲）：處理無法處理拓撲中其他元件的元組。 執行 `Fail` 方法可讓您重新發出元組，以便再次處理。
 
-2. 將`Spout`類別的內容取代為下列文字：
+2. 將類別的內容取代為 `Spout` 下列文字：
 
     ```csharp
     private Context ctx;
@@ -220,7 +219,7 @@ HBase 讀取器和寫入器範本會使用 HBase REST API (而不是 HBase Java 
 
 1. 刪除專案中的現有 *Bolt.cs* 檔。
 
-2. 在**方案總管**中，以滑鼠右鍵按一下專案，然後選取 [**加入** > **新專案**]。 從清單中，選取 [Storm Bolt]****，並輸入 *Splitter.cs* 做為名稱。 在新檔案的程式碼中，將命名空間名稱`WordCount`變更為。 然後重複此程式，以建立名為*Counter.cs*的第二個螺栓。
+2. 在**方案總管**中，以滑鼠右鍵按一下專案，然後選取 [**加入**  >  **新專案**]。 從清單中，選取 [Storm Bolt]****，並輸入 *Splitter.cs* 做為名稱。 在新檔案的程式碼中，將命名空間名稱變更為 `WordCount` 。 然後重複此程式，以建立名為*Counter.cs*的第二個螺栓。
 
    * *Splitter.cs*：執行將句子分割成個別單字，併發出新的單字資料流程的螺栓。
 
@@ -229,7 +228,7 @@ HBase 讀取器和寫入器範本會使用 HBase REST API (而不是 HBase Java 
      > [!NOTE]  
      > 這些 Bolt 會讀取和寫入資料流，但是您也可以使用 Bolt 與資料庫或服務等來源進行通訊。
 
-3. 開啟 *Splitter.cs*。 根據預設，它只有一個方法： `Execute`。 當`Execute`螺栓收到要處理的元組時，會呼叫方法。 此時，您可以讀取和處理內送 Tuple，以及發出輸出 Tuple。
+3. 開啟 *Splitter.cs*。 根據預設，它只有一個方法： `Execute` 。 `Execute`當螺栓收到要處理的元組時，會呼叫方法。 此時，您可以讀取和處理內送 Tuple，以及發出輸出 Tuple。
 
 4. 以下列程式碼取代 `Splitter` 類別的內容：
 
@@ -341,7 +340,7 @@ Spout 會發出散發給分隔器螺栓實例的句子。 Splitter Bolt 會將�
 
 因為計數器實例會在本機保留字數統計，所以您想要確保特定單字流向相同的計數器螺栓實例。 每個執行個體會保持追蹤特定文字。 分割器 Bolt 會維持無狀態，因為分割器的哪個執行個體收到哪個句子並不重要。
 
-開啟*Program.cs*。 重要的方法是`GetTopologyBuilder`，用來定義提交至風暴的拓撲。 將的內容`GetTopologyBuilder`取代為下列程式碼，以執行先前所述的拓撲：
+開啟*Program.cs*。 重要的方法是 `GetTopologyBuilder` ，用來定義提交至風暴的拓撲。 將的內容取代為 `GetTopologyBuilder` 下列程式碼，以執行先前所述的拓撲：
 
 ```csharp
 // Create a new topology named 'WordCount'
@@ -405,7 +404,7 @@ return topologyBuilder;
 
 您現在已準備好將拓撲提交至您的 HDInsight 叢集。
 
-1. 流覽至**View** > **伺服器總管**。
+1. 流覽至**View**  >  **伺服器總管**。
 
 1. 以滑鼠右鍵按一下 [ **Azure**]，選取 **[連線至 Microsoft Azure 訂用帳戶 ...]**，然後完成登入程式。
 
@@ -418,7 +417,7 @@ return topologyBuilder;
     ![風暴拓朴視圖視窗，HDInsight 叢集，Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
 
     > [!NOTE]  
-    > 您也可以從 [伺服器總管]**** 檢視 [Storm 拓撲]****。 展開 [ **Azure** > **HDInsight**]，以滑鼠右鍵按一下 HDInsight 叢集上的 [風暴]，然後選擇 [ **View 暴拓朴**]。
+    > 您也可以從 [伺服器總管]**** 檢視 [Storm 拓撲]****。 展開 [ **Azure**  >  **HDInsight**]，以滑鼠右鍵按一下 HDInsight 叢集上的 [風暴]，然後選擇 [ **View 暴拓朴**]。
 
     若要查看拓撲中元件的相關資訊，請選取圖表中的元件。
 
@@ -435,15 +434,15 @@ return topologyBuilder;
 
 * **中繼資料**快取： spout 必須儲存所發出資料的中繼資料，以便在發生失敗時，能夠抓取和發出資料。 此範例所發出的資料太少，因此為了重新執行，每個 Tuple 的原始資料都會儲存在字典中。
 
-* **Ack**：拓撲中的每個 Bolt 都可以呼叫 `this.ctx.Ack(tuple)` 來認可它已順利處理 Tuple。 當所有螺栓都已認可元組時`Ack` ，就會叫用 spout 的方法。 `Ack` 方法可讓 Spout 移除快取以重新執行的資料。
+* **Ack**：拓撲中的每個 Bolt 都可以呼叫 `this.ctx.Ack(tuple)` 來認可它已順利處理 Tuple。 當所有螺栓都已認可元組時， `Ack` 就會叫用 spout 的方法。 `Ack` 方法可讓 Spout 移除快取以重新執行的資料。
 
 * **Fail**：每個 Bolt 都可以呼叫 `this.ctx.Fail(tuple)`，以指出 Tuple 的處理失敗。 這項失敗會傳播至 Spout 的 `Fail` 方法，在其中，可以使用快取的中繼資料來重新執行 Tuple。
 
-* **序列識別碼**：發出 Tuple 時，可以指定唯一的序列識別碼。 這個值會識別重新執行（`Ack`和`Fail`）處理的元組。 例如，當發出資料時，[**風暴範例**] 專案中的 spout 會使用下列方法呼叫：
+* **序列識別碼**：發出 Tuple 時，可以指定唯一的序列識別碼。 這個值會識別重新執行（ `Ack` 和）處理的元組 `Fail` 。 例如，當發出資料時，[**風暴範例**] 專案中的 spout 會使用下列方法呼叫：
 
   `this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);`
 
-  此程式碼會將包含句子的元組，發出至預設資料流程，並在中`lastSeqId`包含順序識別碼值。 在此範例中`lastSeqId` ，會針對每個發出的元組遞增。
+  此程式碼會將包含句子的元組，發出至預設資料流程，並在中包含順序識別碼值 `lastSeqId` 。 在此範例中， `lastSeqId` 會針對每個發出的元組遞增。
 
 如 [Storm 範例]**** 專案中所示，在執行階段可以根據組態來設定元件是否為交易式。
 
@@ -453,13 +452,13 @@ return topologyBuilder;
 
 針對混合式拓撲範例，請建立專案，然後選取 [Storm 混合式範例]****。 此範例類型將示範下列概念︰
 
-* **JAVA spout**和**c # 閃電**：在`HybridTopology_javaSpout_csharpBolt`類別中定義。
+* **JAVA spout**和**c # 閃電**：在類別中定義 `HybridTopology_javaSpout_csharpBolt` 。
 
-  交易式版本定義于`HybridTopologyTx_javaSpout_csharpBolt`類別中。
+  交易式版本定義于類別中 `HybridTopologyTx_javaSpout_csharpBolt` 。
 
-* **C # spout**和**JAVA 螺栓**：在`HybridTopology_csharpSpout_javaBolt`類別中定義。
+* **C # spout**和**JAVA 螺栓**：在類別中定義 `HybridTopology_csharpSpout_javaBolt` 。
 
-  交易式版本定義于`HybridTopologyTx_csharpSpout_javaBolt`類別中。
+  交易式版本定義于類別中 `HybridTopologyTx_csharpSpout_javaBolt` 。
 
   > [!NOTE]  
   > 這個版本也會示範如何使用文字檔中的 Clojure 程式碼做為 Java 元件。
@@ -471,9 +470,9 @@ return topologyBuilder;
 
 當您建立和提交混合式拓撲時，請考慮下列事項：
 
-* 使用`JavaComponentConstructor`來為 spout 或螺栓建立 JAVA 類別的實例。
+* 使用 `JavaComponentConstructor` 來為 spout 或螺栓建立 JAVA 類別的實例。
 
-* 用`microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer`來將 java 元件的資料傳入或傳出至 JSON。
+* 用 `microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer` 來將 java 元件的資料傳入或傳出至 JSON。
 
 * 提交拓撲至伺服器時，您必須使用 [其他組態]**** 選項指定 [Java 檔案路徑]****。 指定的路徑應該是具有 JAR 檔案的目錄，其中包含您的 JAVA 類別。
 
@@ -486,7 +485,7 @@ SCP.NET 0.9.4.203 版引進了專用於事件中樞 Spout (從事件中樞讀取
 * `TopologyBuilder.SetEventHubSpout`方法：將事件中樞 spout 元件新增至拓撲。
 
 > [!NOTE]  
-> 您仍然必須使用`CustomizedInteropJSONSerializer`來序列化 spout 所產生的資料。
+> 您仍然必須使用 `CustomizedInteropJSONSerializer` 來序列化 spout 所產生的資料。
 
 ## <a name="use-configurationmanager"></a>使用 ConfigurationManager
 
@@ -538,7 +537,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 > 如果您的專案是利用未使用 NuGet 的舊版 SCP.NET 建立，您必須執行下列步驟更新為新的版本：
 >
 > 1. 在 [方案總管]**** 中，以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]****。
-> 2. 使用 [**搜尋**] 欄位，搜尋，然後將加入`Microsoft.SCP.Net.SDK`至專案。
+> 2. 使用 [**搜尋**] 欄位，搜尋，然後將加入 `Microsoft.SCP.Net.SDK` 至專案。
 
 ## <a name="troubleshoot-common-issues-with-topologies"></a>針對拓撲常見問題進行疑難排解
 
@@ -576,13 +575,13 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 1. 在 [方案總管]**** 中，以滑鼠右鍵按一下專案，然後選取 [新增]**** > [新項目]****。 選取 [**類別**]，然後輸入*LocalTest.cs*做為類別名稱。 最後，選取 [**新增**]。
 
-1. 開啟*LocalTest.cs*，並在頂端新增`using`下列語句：
+1. 開啟*LocalTest.cs*，並 `using` 在頂端新增下列語句：
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-1. 使用下列程式碼做為`LocalTest`類別的內容：
+1. 使用下列程式碼做為類別的內容 `LocalTest` ：
 
     ```csharp
     // Drives the topology components
@@ -661,9 +660,9 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
     }
     ```
 
-    請用一些時間閱讀程式碼註解。 這段程式`LocalContext`代碼會使用在開發環境中執行元件。 它會將元件之間的資料流程保存至本機磁片磁碟機上的文字檔。
+    請用一些時間閱讀程式碼註解。 這段程式碼會使用在 `LocalContext` 開發環境中執行元件。 它會將元件之間的資料流程保存至本機磁片磁碟機上的文字檔。
 
-1. 開啟*Program.cs*，並將下列程式碼新增至`Main`方法：
+1. 開啟*Program.cs*，並將下列程式碼新增至 `Main` 方法：
 
     ```csharp
     Console.WriteLine("Starting tests");
@@ -684,12 +683,12 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
     Console.ReadKey();
     ```
 
-1. 儲存變更，然後選取**F5**或選擇 [ **Debug** > ] [**開始調試**] 來啟動專案。 應該會出現主控台視窗，並記錄測試進行的狀態。 出現`Tests finished`時，選取 [任何] 鍵以關閉視窗。
+1. 儲存變更，然後選取**F5**或選擇 [ **Debug**] [  >  **開始調試**] 來啟動專案。 應該會出現主控台視窗，並記錄測試進行的狀態。 `Tests finished`出現時，選取 [任何] 鍵以關閉視窗。
 
-1. 使用 [Windows 檔案總管]**** 找出包含您專案的目錄。 （例如： * \\C： Users\\\<your_user_name \\>source\\存放庫\\WordCount\\WordCount*）。然後在此目錄中，開啟 [ *Bin*]，然後選取 [ *Debug*]。 您應該會看到測試執行時所產生的文字檔： [*句子 .txt*]、[ *.txt*] 和 [*分隔器 .txt*]。 開啟每個文字檔，並檢查資料。
+1. 使用 [Windows 檔案總管]**** 找出包含您專案的目錄。 （例如： *C： \\ Users \\ \<your_user_name> \\ source \\ 存放庫 \\ WordCount \\ WordCount*）。然後在此目錄中，開啟 [ *Bin*]，然後選取 [ *Debug*]。 您應該會看到測試執行時所產生的文字檔： *sentences.txt*、 *counter.txt*和*splitter.txt*。 開啟每個文字檔，並檢查資料。
 
    > [!NOTE]  
-   > 字串資料會在這些檔案中保存為十進位值的陣列。 例如， `[[97,103,111]]`在**分隔器 .txt**檔案中代表單字*前*。
+   > 字串資料會在這些檔案中保存為十進位值的陣列。 例如， `[[97,103,111]]` 在**splitter.txt**檔案中代表一詞*前*。
 
 > [!NOTE]  
 > 請務必先將**專案類型**設定回專案屬性中的**類別庫**，然後再部署到 HDInsight 叢集上的「風暴」。
@@ -734,7 +733,7 @@ scp sshuser@clustername-ssh.azurehdinsight.net:/var/log/hdinsight-scpwebapi/hdin
 * 相依性不相容。
 * 拓撲名稱重複。
 
-如果*hdinsight-scpwebapi*記錄檔包含`FileNotFoundException`，例外狀況可能是由下列情況所造成：
+如果*hdinsight-scpwebapi*記錄檔包含 `FileNotFoundException` ，例外狀況可能是由下列情況所造成：
 
 * JDK 不在開發環境的路徑中。 確認已在開發環境中安裝 JDK，且 `%JAVA_HOME%/bin` 在路徑中。
 * 您缺少 JAVA 相依性。 請確定您在提交過程中包含任何必要的 .jar 檔案。

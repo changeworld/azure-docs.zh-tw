@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 845c4a62aee04a8acdc645ba4c41f1f5496537c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552605"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>使用 psql 將資料大量載入至 Apache Phoenix
@@ -27,13 +26,13 @@ ms.locfileid: "75552605"
 
 使用 MapReduce 進行的大量載入會用於規模大許多的資料磁碟區，通常是在生產環境案例中使用，因為 MapReduce 會使用多個執行緒。
 
-在您開始載入資料之前，請先確認已啟用 Phoenix 且查詢逾時設定與預期的一樣。  存取您的 HDInsight 叢集[Apache Ambari](https://ambari.apache.org/)儀表板，然後依序選取 [HBase] 和 [設定] 索引標籤。 向下滾動以確認 Apache Phoenix 已設定為`enabled` ，如下所示：
+在您開始載入資料之前，請先確認已啟用 Phoenix 且查詢逾時設定與預期的一樣。  存取您的 HDInsight 叢集[Apache Ambari](https://ambari.apache.org/)儀表板，然後依序選取 [HBase] 和 [設定] 索引標籤。 向下滾動以確認 Apache Phoenix 已設定為， `enabled` 如下所示：
 
 ![Apache Phoenix HDInsight 叢集設定](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
 ### <a name="use-psql-to-bulk-load-tables"></a>使用 `psql` 來大量載入資料表
 
-1. 建立名`createCustomersTable.sql`為的檔案，並將下列程式碼複製到檔案中。 然後儲存並關閉檔案。
+1. 建立名為的檔案 `createCustomersTable.sql` ，並將下列程式碼複製到檔案中。 然後儲存並關閉檔案。
 
     ```sql
     CREATE TABLE Customers (
@@ -44,13 +43,13 @@ ms.locfileid: "75552605"
         Country varchar);
     ```
 
-1. 建立名`listCustomers.sql`為的檔案，並將下列程式碼複製到檔案中。 然後儲存並關閉檔案。
+1. 建立名為的檔案 `listCustomers.sql` ，並將下列程式碼複製到檔案中。 然後儲存並關閉檔案。
 
     ```sql
     SELECT * from Customers;
     ```
 
-1. 建立名`customers.csv`為的檔案，並將下列程式碼複製到檔案中。 然後儲存並關閉檔案。
+1. 建立名為的檔案 `customers.csv` ，並將下列程式碼複製到檔案中。 然後儲存並關閉檔案。
 
     ```txt
     1,Samantha,260000.0,18,US
@@ -58,7 +57,7 @@ ms.locfileid: "75552605"
     3,Anton,550150.0,42,Norway
     ```
 
-1. 建立名`customers2.csv`為的檔案，並將下列程式碼複製到檔案中。 然後儲存並關閉檔案。
+1. 建立名為的檔案 `customers2.csv` ，並將下列程式碼複製到檔案中。 然後儲存並關閉檔案。
 
     ```txt
     4,Nicolle,180000.0,22,US
@@ -72,7 +71,7 @@ ms.locfileid: "75552605"
     scp customers.csv customers2.csv createCustomersTable.sql listCustomers.sql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/tmp
     ```
 
-1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的叢集。 以您叢集的名稱取代 CLUSTERNAME，然後輸入命令，以編輯下面的命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 CLUSTERNAME 取代為您叢集的名稱，然後輸入命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -90,7 +89,7 @@ ms.locfileid: "75552605"
     python psql.py /tmp/createCustomersTable.sql /tmp/customers.csv
     ```
 
-    `psql`作業完成後，您應該會看到類似如下的訊息：
+    作業 `psql` 完成後，您應該會看到類似如下的訊息：
 
     ```output
     csv columns from database.
@@ -98,7 +97,7 @@ ms.locfileid: "75552605"
     Time: 0.081 sec(s)
     ```
 
-1. 您可以繼續使用`psql`來查看 Customers 資料表的內容。 執行下列程式碼：
+1. 您可以繼續使用 `psql` 來查看 Customers 資料表的內容。 執行下列程式碼：
 
     ```bash
     python psql.py /tmp/listCustomers.sql
@@ -116,7 +115,7 @@ ms.locfileid: "75552605"
 
 若要進行遍佈整個叢集的更高輸送量載入，請使用 MapReduce 載入工具。 此載入器會先將所有資料轉換成 HFile，然後將所建立的 HFile 提供給 HBase。
 
-1. 這一節會繼續進行 ssh 會話，以及稍早建立的物件。 使用上述步驟，視需要建立**customers**資料表和**customers .csv**檔案。 如有必要，請重新建立 ssh 連線。
+1. 這一節會繼續進行 ssh 會話，以及稍早建立的物件。 使用上述步驟，視需要建立 [ **Customers** ] 資料表並**customers.csv**檔案。 如有必要，請重新建立 ssh 連線。
 
 1. 截斷**Customers**資料表的內容。 從開啟的 ssh 會話，執行下列命令：
 
@@ -126,7 +125,7 @@ ms.locfileid: "75552605"
     exit
     ```
 
-1. `customers.csv`將檔案從您的前端節點複製到 Azure 儲存體。
+1. 將檔案 `customers.csv` 從您的前端節點複製到 Azure 儲存體。
 
     ```bash
     hdfs dfs -put /tmp/customers.csv wasbs:///tmp/customers.csv

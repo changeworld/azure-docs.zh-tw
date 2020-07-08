@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650379"
 ---
 # <a name="custom-resource-cache-reference"></a>自訂資源快取參考
@@ -42,11 +41,11 @@ ms.locfileid: "75650379"
 
 ## <a name="building-proxy-resource-endpoint"></a>建立 proxy 資源端點
 
-執行「Proxy，快取」資源**端點**的**端點**必須處理 Azure 中新 API 的要求和回應。 在此情況下， **resourceType**會針對`PUT`、 `GET`和`DELETE`產生新的 Azure 資源 API，以在單一資源上執行 CRUD， `GET`以及取得所有現有的資源：
+執行「Proxy，快取」資源**端點**的**端點**必須處理 Azure 中新 API 的要求和回應。 在此情況下， **resourceType**會針對、和產生新的 AZURE 資源 API， `PUT` `GET` `DELETE` 以在單一資源上執行 CRUD，以及 `GET` 取得所有現有的資源：
 
 > [!NOTE]
-> Azure `PUT`API 將會產生要求方法、 `GET`和`DELETE`，但快取**端點**只需要處理`PUT`和。 `DELETE`
-> 我們建議您也**endpoint**要執行端點`GET`。
+> Azure API 將會產生要求方法 `PUT` 、 `GET` 和，但快取 `DELETE` **端點**只需要處理 `PUT` 和 `DELETE` 。
+> 我們建議您也**endpoint**要執行端點 `GET` 。
 
 ### <a name="create-a-custom-resource"></a>建立自訂資源
 
@@ -88,8 +87,8 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 
 - 有效的 JSON 目的檔。 所有陣列和字串都應該在最上層物件下加以嵌套。
 - `Content-Type`標頭應設定為 "application/json;字元集 = utf-8」。
-- 自訂資源提供者將會`name`覆`type`寫要求`id`的、和欄位。
-- 自訂資源提供者只會傳回快取`properties`端點物件下的欄位。
+- 自訂資源提供者將會覆寫 `name` 要求的、 `type` 和 `id` 欄位。
+- 自訂資源提供者只會傳回快取 `properties` 端點物件下的欄位。
 
 **端點**回應
 
@@ -107,7 +106,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-自`name`定義`id`資源提供`type`者會自動產生自訂資源的、和欄位。
+自訂資源 `name` `id` `type` 提供者會自動產生自訂資源的、和欄位。
 
 Azure 自訂資源提供者回應：
 

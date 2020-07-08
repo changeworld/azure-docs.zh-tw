@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75780329"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>使用媒體服務 REST API 建立篩選器
@@ -31,7 +30,7 @@ ms.locfileid: "75780329"
 > [!NOTE]
 > 請務必參閱[presentationTimeRange](filters-concept.md#presentationtimerange)。
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>必要條件 
 
 若要完成此主題中所述的步驟，您必須：
 
@@ -83,7 +82,7 @@ ms.locfileid: "75780329"
 
 ## <a name="create-account-filters"></a>建立帳戶篩選器
 
-在您下載的 Postman 集合中，選取 [**帳戶篩選器**->] [**建立或更新帳戶篩選器**]。
+在您下載的 Postman 集合中，選取 [**帳戶篩選器**] [ -> **建立或更新帳戶篩選器**]。
 
 **PUT** HTTP 要求方法類似：
 
@@ -93,7 +92,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 選取 [本文]**** 索引標籤，並貼上您[稍早定義的 json 程式碼](#define-a-filter)。
 
-選取 [**傳送**]。 
+選取 [傳送]。 
 
 篩選器已建立。
 
@@ -101,7 +100,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-asset-filters"></a>建立資產篩選器  
 
-在您下載的 "媒體服務 v3" Postman 集合中，選取 [**資產**->] [**建立或更新資產篩選器**]。
+在您下載的 "媒體服務 v3" Postman 集合中，選取 [**資產**] [ -> **建立或更新資產篩選器**]。
 
 **PUT** HTTP 要求方法類似：
 
@@ -111,7 +110,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 選取 [本文]**** 索引標籤，並貼上您[稍早定義的 json 程式碼](#define-a-filter)。
 
-選取 [**傳送**]。 
+選取 [傳送]。 
 
 資產篩選器已建立。
 
@@ -121,7 +120,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 您可以指定資產或帳戶篩選器的清單，其適用于您的串流定位器。 動態封裝程式[（串流端點）](dynamic-packaging-overview.md)會將這份篩選器清單與您的用戶端在 URL 中指定的篩選準則一起套用。 這個組合會產生[動態資訊清單](filters-dynamic-manifest-overview.md)，這是根據 URL 中的篩選器，以及您在串流定位器上指定的篩選準則。 如果您想要套用篩選，但不想要在 URL 中公開篩選名稱，建議您使用這項功能。
 
-若要使用 REST 建立篩選器，並將其與串流定位器建立關聯，請使用[串流定位器-建立](https://docs.microsoft.com/rest/api/media/streaminglocators/create)API，並在`properties.filters` [要求主體](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)中指定。
+若要使用 REST 建立篩選器，並將其與串流定位器建立關聯，請使用[串流定位器-建立](https://docs.microsoft.com/rest/api/media/streaminglocators/create)API，並 `properties.filters` 在[要求主體](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)中指定。
                                 
 ## <a name="stream-using-filters"></a>使用篩選器串流
 

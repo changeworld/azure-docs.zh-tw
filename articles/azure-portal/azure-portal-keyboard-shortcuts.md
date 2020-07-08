@@ -16,10 +16,9 @@ ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
 ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75641328"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure 入口網站的鍵盤快速鍵
@@ -37,7 +36,7 @@ ms.locfileid: "75641328"
 |上移選取的左邊欄專案 |ALT+Shift+向上鍵|
 |將選取的左提要欄位向下移動 |ALT+Shift+向下鍵|
 
-## <a name="navigation"></a>導覽
+## <a name="navigation"></a>瀏覽
 
 |若要進行此導覽 |按鍵 |
 | --- | --- |

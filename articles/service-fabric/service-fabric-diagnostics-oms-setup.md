@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
 ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609922"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>設定叢集的 Azure 監視器記錄
@@ -32,7 +31,7 @@ ms.locfileid: "75609922"
 
 2. 搜尋 **Service Fabric 分析**。 請選取顯示的資源。
 
-3. 選取 [建立]  。
+3. 選取 [建立]。
 
     ![Marketplace 中的 Service Fabric 分析](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
@@ -47,13 +46,13 @@ ms.locfileid: "75609922"
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>將 Log Analytics 工作區連線至叢集 
 
-1. 工作區需要連線到來自叢集的診斷資料。 移至您建立 Service Fabric 分析解決方案所在的資源群組。 選取 **ServiceFabric\<nameOfWorkspace\>**，並移至其概觀頁面。 您可以從那裡變更解決方案設定、工作區設定，並存取 Log Analytics 工作區。
+1. 工作區需要連線到來自叢集的診斷資料。 移至您建立 Service Fabric 分析解決方案所在的資源群組。 選取 **[ \<nameOfWorkspace\> ServiceFabric** ]，並移至其 [總覽] 頁面。 您可以從那裡變更解決方案設定、工作區設定，並存取 Log Analytics 工作區。
 
 2. 在左側導覽功能表，選取 [工作區資料來源]**** 底下的 [儲存體帳戶記錄]****。
 
 3. 在 [儲存體帳戶記錄]**** 分頁上，選取頂端的 [新增]**** 以將您的叢集記錄新增至工作區。
 
-4. 選取 [儲存體帳戶]**** 以新增叢集中建立的適當帳戶。 如果您使用了預設名稱，則儲存體帳戶為 **sfdg\<resourceGroupName\>**。 藉由檢查用於 **applicationDiagnosticsStorageAccountName** 的值，也可以透過用來部署叢集的 Azure Resource Manager 範本來確認這點。 如果未顯示此名稱，請向下捲動並選取 [載入更多]****。 選取儲存體帳戶名稱。
+4. 選取 [儲存體帳戶]**** 以新增叢集中建立的適當帳戶。 如果您使用預設名稱，則儲存體帳戶會是**sfdg \<resourceGroupName\> **。 藉由檢查用於 **applicationDiagnosticsStorageAccountName** 的值，也可以透過用來部署叢集的 Azure Resource Manager 範本來確認這點。 如果未顯示此名稱，請向下捲動並選取 [載入更多]****。 選取儲存體帳戶名稱。
 
 5. 指定 [資料類型]。 將它設定為 [Service Fabric 事件]****。
 
@@ -81,7 +80,7 @@ ms.locfileid: "75609922"
 * 設定 Log Analytics 工作區以從這些資料表讀取事件
 
 
-您可以使用 Azure PowerShell 模組中的`New-AzResourceGroupDeployment` API，將範本部署為 Resource Manager 升級至您的叢集。 範例命令可能像這樣：
+您可以使用 Azure PowerShell 模組中的 API，將範本部署為 Resource Manager 升級至您的叢集 `New-AzResourceGroupDeployment` 。 範例命令可能像這樣：
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
@@ -91,7 +90,7 @@ Azure Resource Manager 會偵測到此命令是現有資源的更新。 它只�
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>使用 Azure PowerShell 部署 Azure 監視器記錄
 
-您也可以使用`New-AzOperationalInsightsWorkspace`命令，透過 PowerShell 部署您的 log analytics 資源。 若要使用此方法，請確定您已安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 請使用此指令碼建立新的 Log Analytics 工作區，並將 Service Fabric 解決方案新增至該工作區： 
+您也可以使用命令，透過 PowerShell 部署您的 log analytics 資源 `New-AzOperationalInsightsWorkspace` 。 若要使用此方法，請確定您已安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 請使用此指令碼建立新的 Log Analytics 工作區，並將 Service Fabric 解決方案新增至該工作區： 
 
 ```powershell
 
@@ -123,5 +122,5 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 ## <a name="next-steps"></a>後續步驟
 * [部署 Log Analytics 代理程式](service-fabric-diagnostics-oms-agent.md)至您的節點，以收集效能計數器，並收集您容器的 Docker 統計資料和記錄
-* 使用 Azure 監視器記錄中提供的[記錄搜尋和查詢](../log-analytics/log-analytics-log-searches.md)功能取得熟悉
+* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../log-analytics/log-analytics-log-searches.md)功能
 * [使用 View Designer 在 Azure 監視器記錄中建立自訂視圖](../azure-monitor/platform/view-designer.md)

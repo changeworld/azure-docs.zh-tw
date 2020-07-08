@@ -4,10 +4,9 @@ description: 本文說明如何根據 Azure 監視器容器的記憶體和 CPU �
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75730920"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>如何在容器的 Azure 監視器中設定效能問題的警示
@@ -100,7 +99,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->下列查詢會使用> 的預留位置\<值，以及\<您的-控制器名稱> 來代表您的叢集和控制器。 當您設定警示時，請以您環境特定的值取代它們。
+>下列查詢會使用預留位置值 \<your-cluster-name> 和 \<your-controller-name> 來代表您的叢集和控制器。 當您設定警示時，請以您環境特定的值取代它們。
 
 下列查詢會計算控制器中所有容器的平均 CPU 使用率，做為控制器中每個容器實例的平均 CPU 使用率（每分鐘）。 量測是為容器設定的限制百分比。
 
@@ -248,7 +247,7 @@ let endDateTime = now();
 >[!NOTE]
 >若要針對特定 pod 階段（例如 [*擱置*]、[*失敗*] 或 [*未知*]）發出警示，請修改查詢的最後一行。 例如，若要在*failedcount 個*時發出警示，請使用： <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
-下列查詢傳回的叢集節點磁片超過90% 的可用空間。 若要取得叢集識別碼，請先執行下列查詢，並從`ClusterId`屬性複製值：
+下列查詢傳回的叢集節點磁片超過90% 的可用空間。 若要取得叢集識別碼，請先執行下列查詢，並從屬性複製值 `ClusterId` ：
 
 ```kusto
 InsightsMetrics
@@ -284,16 +283,16 @@ InsightsMetrics
 >
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在 [Azure 入口網站中，搜尋並選取 [ **Log Analytics 工作區**]。
+2. 在 Azure 入口網站中，搜尋並選取 **Log Analytics 工作區**。
 3. 在您的 Log Analytics 工作區清單中，選取支援容器 Azure 監視器的工作區。 
 4. 在左側窗格中，選取 [**記錄**] 以開啟 [Azure 監視器記錄] 頁面。 您可以使用此頁面來撰寫及執行 Azure Log Analytics 查詢。
 5. 在 [**記錄**] 頁面上，將先前提供的其中一個[查詢](#resource-utilization-log-search-queries)貼入 [**搜尋查詢**] 欄位，然後選取 [**執行**] 來驗證結果。 如果您未執行此步驟，則無法選取 [ **+ 新增警示**] 選項。
 6. 選取 [ **+ 新增警示**] 來建立記錄警示。
-7. 在 [**條件**] 區段中，選取 [**每當自訂記錄\<搜尋是未定義的邏輯>** 預先定義的自訂記錄條件]。 系統會自動選取**自訂記錄搜尋**信號類型，因為我們會直接從 [Azure 監視器記錄] 頁面建立警示規則。  
+7. 在 [**條件**] 區段中，選取 [**每當自訂記錄 \<logic undefined> 搜尋為**預先定義的自訂記錄條件]。 系統會自動選取**自訂記錄搜尋**信號類型，因為我們會直接從 [Azure 監視器記錄] 頁面建立警示規則。  
 8. 將稍早提供的其中一個[查詢](#resource-utilization-log-search-queries)貼入 [**搜尋查詢**] 欄位中。
 9. 設定警示，如下所示：
 
-    1. 從 [**根據**] 下拉式清單中，選取 [**度量度量**]。 計量測量會針對查詢中的每個物件建立警示，其值高於指定的閾值。
+    1. 從 [依據] 下拉式清單中，選取 [計量測量]。 計量測量會針對查詢中的每個物件建立警示，其值高於指定的閾值。
     1. 針對 [**條件**]，選取 [**大於**]，然後輸入**75**做為 CPU 和記憶體使用量警示的初始基準**閾值**。 針對 [磁碟空間不足] 警示，輸入**90**。 或者輸入不同的值，以符合您的準則。
     1. 在 [**觸發警示依據**] 區段中，選取 [**連續違規**]。 從下拉式清單選取 [**大於**]，然後輸入**2**。
     1. 若要設定容器 CPU 或記憶體使用率的警示，請在 [**匯總開啟**] 底下選取 [**容器**]。 若要設定叢集節點的低磁片警示，請選取 [ **ClusterId**]。

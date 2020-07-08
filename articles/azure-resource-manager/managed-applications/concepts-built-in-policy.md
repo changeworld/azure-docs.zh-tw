@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: ec0fe8f66ef2ad2458b4ffad0e848591793e5b05
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650938"
 ---
 # <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>使用 Azure 原則部署受控應用程式的關聯
@@ -29,7 +28,7 @@ Azure 原則可以用來部署關聯，以將資源與受控應用程式產生�
 
 ## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>如何使用部署關聯內建原則 
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 如果受控應用程式需要訂用帳戶的許可權才能執行動作，則在未授與許可權的情況下，關聯資源的原則部署不會運作。
 
 ### <a name="policy-assignment"></a>原則指派

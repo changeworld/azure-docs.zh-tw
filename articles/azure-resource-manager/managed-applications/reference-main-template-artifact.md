@@ -6,19 +6,18 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651458"
 ---
 # <a name="reference-deployment-template-artifact"></a>參考：部署範本成品
 
-本文是 Azure 受控應用程式中*mainTemplate*的參考。 如需有關撰寫部署範本的詳細資訊，請參閱[Azure Resource Manager 範本](../templates/template-syntax.md)。
+本文是 Azure 受控應用程式中成品*mainTemplate.js*的參考。 如需有關撰寫部署範本的詳細資訊，請參閱[Azure Resource Manager 範本](../templates/template-syntax.md)。
 
 ## <a name="deployment-template"></a>部署範本
 
-下列 JSON 顯示 Azure 受控應用程式的*mainTemplate json*檔案範例：
+下列 JSON 顯示 Azure 受控應用程式的檔案*mainTemplate.js*範例：
 
 ```json
 {

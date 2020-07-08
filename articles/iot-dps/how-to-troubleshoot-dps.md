@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
 ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75646467"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中樞裝置布建服務進行疑難排解
@@ -32,7 +31,7 @@ IoT 裝置的連線問題可能會很難進行疑難排解，因為有許多可�
 4. 選取所需的度量。 
    <br />目前有三個 DPS 的計量：
 
-    | 標準名稱 | 描述 |
+    | 標準名稱 | Description |
     |-------|------------|
     | 證明嘗試數 | 嘗試使用裝置布建服務進行驗證的裝置數目|
     | 註冊嘗試數 | 成功驗證後嘗試註冊 IoT 中樞的裝置數目|
@@ -52,13 +51,13 @@ IoT 裝置的連線問題可能會很難進行疑難排解，因為有許多可�
 
 2. 瀏覽至您的 IoT 中樞。
 
-3. 選取 [診斷設定]****。
+3. 選取 [診斷設定]。
 
-4. 選取 [開啟診斷]****。
+4. 選取 [開啟診斷]。
 
 5. 啟用所需的記錄檔收集。
 
-    | 記錄檔名稱 | 描述 |
+    | 記錄檔名稱 | 說明 |
     |-------|------------|
     | DeviceOperations | 與裝置連接事件相關的記錄 |
     | ServiceOperations | 與使用服務 SDK 相關的事件記錄（例如建立或更新註冊群組）|
@@ -69,7 +68,7 @@ IoT 裝置的連線問題可能會很難進行疑難排解，因為有許多可�
 
 8. 按一下 [**執行**] 以查看最新的事件。
 
-9. 如果有結果，請`OperationName`尋找、 `ResultType`、 `ResultSignature`和`ResultDescription` （錯誤訊息），以取得有關錯誤的詳細資料。
+9. 如果有結果，請尋找 `OperationName` 、 `ResultType` 、 `ResultSignature` 和 `ResultDescription` （錯誤訊息），以取得有關錯誤的詳細資料。
 
 
 ## <a name="common-error-codes"></a>常見的錯誤碼

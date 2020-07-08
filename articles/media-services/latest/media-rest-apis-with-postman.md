@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
 ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75779632"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>設定媒體服務 v3 REST API 呼叫的 Postman
@@ -49,7 +48,7 @@ ms.locfileid: "75779632"
 
 ### <a name="configure-the-environment"></a>建立環境 
 
-1. 開啟 **Postman** 應用程式。
+1. 開啟**Postman**應用程式。
 2. 選取畫面右側的 [管理環境]**** 選項。
 
     ![管理 env](./media/develop-with-postman/postman-import-env.png)
@@ -80,7 +79,7 @@ ms.locfileid: "75779632"
 
 1. 在 Postman 應用程式的左側視窗中，選取 [步驟1：取得 AAD 驗證權杖]。
 2. 然後，選取 [取得服務主體驗證的 Azure AD 權杖]。
-3. 按 [傳送]  。
+3. 按 [傳送]。
 
     此時會傳送下列 **POST** 作業。
 

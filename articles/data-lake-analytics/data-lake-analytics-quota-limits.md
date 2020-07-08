@@ -10,10 +10,9 @@ ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: c1d7c8cc4b50682a74ac88b2113f0d44ebc55199
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75644710"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>調整 Azure Data Lake Analytics 中的配額和限制
@@ -51,9 +50,9 @@ ms.locfileid: "75644710"
 
 ## <a name="adjust-adla-account-limits"></a>調整 ADLA 帳戶限制
 
-1. 登入[Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選擇現有的 ADLA 帳戶。
-3. 按一下 **[屬性]**。
+3. 按一下 **[屬性]** 。
 4. 調整 [AU 上限]****、[執行中工作上限]**** 和 [作業提交限制]**** 的值，以符合您的需求。
 
 ## <a name="increase-maximum-quota-limits"></a>增加配額限制上限

@@ -4,10 +4,9 @@ description: 本文說明如何將受管理身分識別功能的 Service Fabric 
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614788"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>將 Service Fabric 應用程式的受控識別存取權授與 Azure 資源（預覽）
@@ -24,18 +23,18 @@ ms.locfileid: "75614788"
 3. 選擇性檢查現有的存取權：在 [尋找] 控制項中選取系統或使用者指派的受控識別;從後續結果清單中選取適當的身分識別
 4. 按一下頁面頂端的 [+ 新增角色指派]，為應用程式的身分識別新增新的角色指派。
 在 [角色] 下，從下拉式清單中，選取 [儲存體 Blob 資料讀取器]。
-5. 在下一個下拉式清單中的 [指派存取權`User assigned managed identity`] 底下，選擇 []。
+5. 在下一個下拉式清單中的 [指派存取權] 底下，選擇 [] `User assigned managed identity` 。
 6. 接下來，請確保 [訂用帳戶] 下拉式清單中已列出適當的訂用帳戶，然後將 [資源群組] 設定為 [所有資源群組]。
 7. 在 [選取] 底下，選擇對應至 Service Fabric 應用程式的 UAI，然後按一下 [儲存]。
 
-支援系統指派的 Service Fabric 受控識別不包含 Azure 入口網站中的整合;如果您的應用程式使用系統指派的身分識別，您就必須先尋找應用程式身分識別的用戶端識別碼，然後重複上述步驟，但選取 [ `Azure AD user, group, or service principal`尋找] 控制項中的選項。
+支援系統指派的 Service Fabric 受控識別不包含 Azure 入口網站中的整合;如果您的應用程式使用系統指派的身分識別，您就必須先尋找應用程式身分識別的用戶端識別碼，然後重複上述步驟，但選取 `Azure AD user, group, or service principal` [尋找] 控制項中的選項。
 
 ## <a name="granting-access-to-azure-key-vault"></a>授與 Azure Key Vault 的存取權
 類似于存取儲存體，您可以利用 Service Fabric 應用程式的受控識別來存取 Azure 金鑰保存庫。 在 Azure 入口網站中授與存取權的步驟類似于上述所列，而且不會在此重複。 請參閱下圖中的差異。
 
 ![Key Vault 存取原則](../key-vault/media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-下列範例說明如何透過範本部署授與保存庫的存取權;將下列程式碼片段新增至範本`resources`元素下的另一個專案。 此範例示範授與使用者指派和系統指派的身分識別類型的存取權，分別選擇適用的身分。
+下列範例說明如何透過範本部署授與保存庫的存取權;將下列程式碼片段新增至範本元素下的另一個專案 `resources` 。 此範例示範授與使用者指派和系統指派的身分識別類型的存取權，分別選擇適用的身分。
 
 ```json
     # under 'variables':

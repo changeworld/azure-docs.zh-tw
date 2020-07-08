@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 46b38686b39836f3d4bfb80686d514f932a79bf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650457"
 ---
 # <a name="custom-resource-proxy-reference"></a>自訂資源 Proxy 參考
@@ -42,10 +41,10 @@ ms.locfileid: "75650457"
 
 ## <a name="building-proxy-resource-endpoint"></a>建立 proxy 資源端點
 
-執行「Proxy」資源**端點**的**端點**必須處理 Azure 中新 API 的要求和回應。 在此情況下， **resourceType**會針對`PUT`、 `GET`和`DELETE`產生新的 Azure 資源 API，以在單一資源上執行 CRUD， `GET`以及取得所有現有的資源。
+執行「Proxy」資源**端點**的**端點**必須處理 Azure 中新 API 的要求和回應。 在此情況下， **resourceType**會針對、和產生新的 AZURE 資源 API， `PUT` `GET` `DELETE` 以在單一資源上執行 CRUD，以及 `GET` 取得所有現有的資源。
 
 > [!NOTE]
-> 、 `id` `name`和`type`欄位不是必要的，但需要將自訂資源與現有的 Azure 生態系統整合。
+> `id`、 `name` 和 `type` 欄位不是必要的，但需要將自訂資源與現有的 Azure 生態系統整合。
 
 範例資源：
 
@@ -68,7 +67,7 @@ ms.locfileid: "75650457"
 屬性 | 範例 | 描述
 ---|---|---
 NAME | '{myCustomResourceName}' | 自訂資源的名稱。
-type | 'Microsoft.CustomProviders/resourceProviders/{resourceTypeName}' | 資源類型命名空間。
+類型 | 'Microsoft.CustomProviders/resourceProviders/{resourceTypeName}' | 資源類型命名空間。
 id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName}' | 資源識別碼。
 
 ### <a name="create-a-custom-resource"></a>建立自訂資源
@@ -270,7 +269,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 
 - 有效的 JSON 目的檔。 所有陣列和字串都應該在最上層物件下加以嵌套。
 - `Content-Type`標頭應設定為 "application/json;字元集 = utf-8」。
-- 資源的清單應該放在最上層`value`屬性底下。
+- 資源的清單應該放在最上層 `value` 屬性底下。
 
 **端點**回應
 

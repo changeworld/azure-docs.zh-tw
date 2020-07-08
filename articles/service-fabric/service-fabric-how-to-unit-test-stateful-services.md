@@ -4,10 +4,9 @@ description: 瞭解 Service Fabric Azure 中適用于具狀態服務的單元測
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639831"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>建立具狀態服務的單元測試
@@ -22,7 +21,7 @@ ms.locfileid: "75639831"
 ## <a name="the-servicefabricmocks-library"></a>ServiceFabric.Mocks 程式庫
 從 3.3.0 版開始，[ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) 將提供可模擬複本和狀態管理協調流程的 API。 我們將在範例中使用此 API。
 
-[Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
+[Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/) 
 [GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
 *ServiceFabric。模擬不是由 Microsoft 所擁有或維護。不過，這是目前 Microsoft 建議的程式庫，可供進行具狀態服務的單元測試。*

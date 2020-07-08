@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: 299d242c38152db6a471159d1f3d2803598c1832
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75744854"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>將 Azure Active Directory 使用者同步至 HDInsight 叢集
 
 [有企業安全性套件 (ESP) 的 HDInsight 叢集](hdinsight-domain-joined-introduction.md)會搭配 Azure Active Directory (Azure AD) 使用者使用增強式驗證，也會使用*角色型存取控制* (RBAC) 原則。 當您將使用者和群組新增至 Azure AD 時，您可以同步處理需要存取叢集的使用者。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您尚未這樣做，請[建立有企業安全性套件的 HDInsight 叢集](hdinsight-domain-joined-configure.md)。
 
@@ -37,7 +36,7 @@ ms.locfileid: "75744854"
 
     ![Azure 入口網站使用者窗格選取群組](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
-4. 選取 [建立]  。
+4. 選取 [建立]。
 
 ## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>使用 Apache Ambari REST API 來同步使用者
 
@@ -45,7 +44,7 @@ ms.locfileid: "75744854"
 
 下列方法會搭配 Ambari REST API 使用 POST。 如需詳細資訊，請參閱[使用 Apache Ambari REST API 來管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari-rest-api.md)。
 
-1. 使用[ssh 命令](hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的叢集。 編輯以下命令並將 `CLUSTERNAME` 取代為您叢集的名稱，然後輸入命令：
+1. 使用 [ssh 命令](hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 `CLUSTERNAME` 取代為您叢集的名稱，然後輸入命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -127,7 +126,7 @@ ms.locfileid: "75744854"
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>確認新增的 Azure AD 使用者
 
-開啟 [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) 以確認已新增新的 Azure AD 使用者。 藉由流覽至來**`https://CLUSTERNAME.azurehdinsight.net`** 存取 AMBARI Web UI。 輸入叢集系統管理員使用者名稱和密碼。
+開啟 [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) 以確認已新增新的 Azure AD 使用者。 藉由流覽至來存取 Ambari Web UI **`https://CLUSTERNAME.azurehdinsight.net`** 。 輸入叢集系統管理員使用者名稱和密碼。
 
 1. 從 Ambari 儀表板中，選取 [管理員]**** 功能表底下的 [管理 Ambari]****。
 

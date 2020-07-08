@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: tomfitz
 ms.openlocfilehash: 23a7c54a84ec083b8fa470f26582913fcc3d2ee6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652199"
 ---
 # <a name="microsoftcommontagsbyresource-ui-element"></a>TagsByResource UI 元素
@@ -49,8 +48,8 @@ ms.locfileid: "75652199"
 
 ## <a name="remarks"></a>備註
 
-- 必須至少指定陣列中的`resources`一個專案。
-- 中的`resources`每個元素都必須是完整的資源類型。 這些元素會出現在 [**資源**] 下拉式清單中，並由使用者 taggable。
+- 必須至少指定陣列中的一個專案 `resources` 。
+- 中的每個元素都 `resources` 必須是完整的資源類型。 這些元素會出現在 [**資源**] 下拉式清單中，並由使用者 taggable。
 - 控制項的輸出會格式化以方便指派 Azure Resource Manager 範本中的標記值。 若要在範本中接收控制項的輸出，請在您的範本中包含參數，如下列範例所示：
 
   ```json

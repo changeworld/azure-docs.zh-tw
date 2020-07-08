@@ -9,10 +9,9 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666545"
 ---
 # <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure 無伺服器：使用 Azure Logic Apps 和 Azure Functions 建立雲端式應用程式和解決方案的總覽
@@ -45,4 +44,4 @@ Azure 提供豐富的工具來開發、部署和管理無伺服器應用程式�
 
 * [在 Visual Studio 中建立無伺服器應用程式](logic-apps-serverless-get-started-vs.md)
 * [建立具有無伺服器的 customer insights 儀表板](logic-apps-scenario-social-serverless.md)
-* [將邏輯應用程式部署自動化](logic-apps-azure-resource-manager-templates-overview.md)
+* [自動部署邏輯應用程式](logic-apps-azure-resource-manager-templates-overview.md)

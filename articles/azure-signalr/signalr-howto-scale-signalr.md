@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: zhshang
 ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75659282"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>如何調整 Azure SignalR Service 實例？
@@ -29,7 +28,7 @@ ms.locfileid: "75659282"
 
 ## <a name="scale-on-azure-portal"></a>相應縮小 Azure 入口網站
 
-1. 在您的瀏覽器中，開啟 [ [Azure 入口網站](https://portal.azure.com)]。
+1. 在瀏覽器中，開啟 [Azure 入口網站](https://portal.azure.com)。
 
 2. 在 [SignalR Service] 頁面上，從左側功能表中選取 [**調整**]。
    
@@ -37,7 +36,7 @@ ms.locfileid: "75659282"
    
     ![在入口網站上調整](./media/signalr-howto-scale/signalr-howto-scale.png)
 
-4. 按一下 [檔案]  。
+4. 按一下 [檔案] 。
 
 ## <a name="scale-using-azure-cli"></a>使用 Azure CLI 進行調整
 

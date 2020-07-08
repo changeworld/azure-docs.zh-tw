@@ -8,10 +8,9 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552112"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威脅模型化工具功能概觀
@@ -29,7 +28,7 @@ ms.locfileid: "75552112"
 
 ![基本威脅模型](./media/threat-modeling-tool-feature-overview/basictmt.png)
 
-## <a name="navigation"></a>導覽
+## <a name="navigation"></a>瀏覽
 
 在探討內建功能之前，我們先來看一下工具的主要元件。
 
@@ -44,8 +43,8 @@ ms.locfileid: "75552112"
 | **檔案** | <ul><li>開啟、儲存及關閉檔案</li><li>登入及登出 OneDrive 帳戶。</li><li>共用連結 (檢視和編輯)。</li><li>檢視檔案資訊。</li><li>將新的範本套用至現有的模型。</li></ul> |
 | **編輯** | 復原和重做動作，以及複製、貼上和刪除。 |
 | **檢視** | <ul><li>在**分析**和**設計**檢視之間切換。</li><li>開啟已關閉的視窗 (例如，樣板、元素屬性和訊息)。</li><li>將版面配置重設為預設設定。</li></ul> |
-| **空間** | 新增和刪除圖表，以及切換圖表的索引標籤。 |
-| **報告** | 建立要與其他人共用的 HTML 報告。 |
+| **圖表** | 新增和刪除圖表，以及切換圖表的索引標籤。 |
+| **報表** | 建立要與其他人共用的 HTML 報告。 |
 | **說明** | 尋找協助您使用工具的指南。 |
 
 符號是最上層功能表的捷徑：
@@ -63,7 +62,7 @@ ms.locfileid: "75552112"
 | **放大/縮小** | 放大和縮小圖表以獲得更清楚的檢視。 |
 | **意見反應** | 開啟 MSDN 論壇。 |
 
-### <a name="canvas"></a>Canvas
+### <a name="canvas"></a>畫布
 
 畫布是供您拖放元素的空間。 拖放是建立模型最快且最有效率的方式。 您也能按一下滑鼠右鍵並從功能表選取項目，以新增泛型版本的元素，如下圖所示：
 
@@ -92,7 +91,7 @@ ms.locfileid: "75552112"
 | 元件                               | 詳細資料      |
 | --------------------------------------- | ------------ |
 | **訊息** | 每當發生錯誤時 (例如元素之間沒有資料流程) 警示使用者的內部工具邏輯。 |
-| **注意事項** | 由工程小組在整個設計和檢閱流程中新增至檔案的手動附註。 |
+| **備註** | 由工程小組在整個設計和檢閱流程中新增至檔案的手動附註。 |
 
 ### <a name="element-properties"></a>元素屬性
 
@@ -150,9 +149,9 @@ ms.locfileid: "75552112"
 
 ![之前](./media/threat-modeling-tool-feature-overview/properties1.png)
 
-#### <a name="after"></a>After
+#### <a name="after"></a>在
 
-![After](./media/threat-modeling-tool-feature-overview/properties2.png)
+![在](./media/threat-modeling-tool-feature-overview/properties2.png)
 
 ### <a name="messages"></a>訊息
 
@@ -160,7 +159,7 @@ ms.locfileid: "75552112"
 
 ![訊息](./media/threat-modeling-tool-feature-overview/messages.png)
 
-### <a name="notes"></a>注意
+### <a name="notes"></a>備註
 
 若要在圖表中加入附註，請從 [訊息]**** 索引標籤切換到 [附註]****。
 
@@ -194,9 +193,9 @@ ms.locfileid: "75552112"
 
 ## <a name="reports"></a>報表
 
-完成優先順序的變更及更新每個產生之威脅的狀態後，您可以儲存檔案和/或列印報告。 移至 [**報表** > ] [**建立完整報表**]。 為報告命名，接著您應該會看到類似下圖的內容：
+完成優先順序的變更及更新每個產生之威脅的狀態後，您可以儲存檔案和/或列印報告。 移至 [**報表**] [  >  **建立完整報表**]。 為報告命名，接著您應該會看到類似下圖的內容：
 
-![Report](./media/threat-modeling-tool-feature-overview/report.png)
+![報表](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>後續步驟
 
