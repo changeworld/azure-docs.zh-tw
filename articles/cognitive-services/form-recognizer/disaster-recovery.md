@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 9fb2f3374d635d8086bac5fe02ecf3b7f819ea65
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: ebc6ff2c7c0d72dff318c7582d9ae5339682bc95
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100873"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028219"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>備份和復原您的表單辨識器模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "85100873"
 
 如果您的應用程式或業務取決於使用表單辨識器自訂模型，我們建議您將模型複製到另一個區域中的另一個表單辨識器帳戶。 如果發生區域性中斷，您可以接著在其複製所在的區域中存取您的模型。
 
-##  <a name="prerequisites"></a>Prerequisites
+##  <a name="prerequisites"></a>必要條件
 
 1. 不同 Azure 區域中的兩個表單辨識器 Azure 資源。 如果您沒有這些專案，請移至 Azure 入口網站，並 <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" 建立新的表單辨識器資源 " target="_blank"> 建立新的表單辨識器資源 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> 。
 1. 您的表單辨識器資源的訂用帳戶金鑰、端點 URL 和訂用帳戶識別碼。 您可以在 [Azure 入口網站上資源的 **[總覽**] 索引標籤中找到這些值。
@@ -162,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>後續步驟
 
 在本指南中，您已瞭解如何使用複製 API，將您的自訂模型備份至次要表單辨識器資源。 接下來，探索 API 參考檔，以瞭解您可以使用表單辨識器執行的其他工作。
-* [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+* [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)

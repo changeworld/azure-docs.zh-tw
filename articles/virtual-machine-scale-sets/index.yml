@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: 虛擬機器擴展集文件
-summary: Azure 虛擬機器擴展集可讓您建立和管理一組負載平衡且可自動調整的相同 VM。
+summary: Azure 虛擬機器擴展集可讓您建立和管理一組負載平衡且可自動調整的 VM。
 metadata:
   title: 虛擬機器擴展集文件
   description: 了解如何使用快速入門、教學課程和範例來建立、設定、管理和自動調整虛擬機器擴展集。
@@ -10,12 +10,12 @@ metadata:
   ms.author: jushiman
   ms.reviewer: mimckitt
   ms.date: 03/16/2020
-  ms.openlocfilehash: 8eff3979088aecf5ea8ed0383a1af8ad0d71c21d
-  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+  ms.openlocfilehash: 96719159e3dd360554c795c5cd1f6436d05fbeeb
+  ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83701333"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86027251"
 landingContent:
 - title: 關於虛擬機器擴展集
   linkLists:

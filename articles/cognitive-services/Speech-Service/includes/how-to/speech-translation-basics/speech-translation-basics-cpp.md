@@ -4,24 +4,24 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 09f08e314a634de13a683440ad9fead97ad8a260
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9b5d1421c36fa5d0568985b7792715533d2540ee
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399649"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035584"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您具有 Azure 帳戶和語音服務訂用帳戶。 如果您沒有該帳戶和訂用帳戶，請[免費試用語音服務](../../../get-started.md)。
 
 ## <a name="install-the-speech-sdk"></a>安裝語音 SDK
 
-您必須先安裝語音 SDK，才能執行動作。 視您的平臺而定，請依照語音 sdk 文章的<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">取得<span class="docon docon-navigate-external x-hidden-focus"></span>語音 sdk</a>一節中的指示進行。
+您必須先安裝語音 SDK，才能執行動作。 根據您的平臺，遵循_關於語音 sdk_一文的<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">取得語音 <span class="docon docon-navigate-external x-hidden-focus"></span> sdk</a>一節中的指示。
 
 ## <a name="import-dependencies"></a>匯入相依性
 
-若要執行本文中的範例，請在 c `#include` + `using` + 程式碼檔案的頂端包含下列和語句。
+若要執行本文中的範例，請 `#include` `using` 在 c + + 程式碼檔案的頂端包含下列和語句。
 
 ```cpp
 #include <iostream> // cin, cout
@@ -39,7 +39,7 @@ using namespace Microsoft::CognitiveServices::Speech::Translation;
 
 ## <a name="sensitive-data-and-environment-variables"></a>敏感性資料和環境變數
 
-本文中的範例原始程式碼取決於用來儲存敏感性資料的環境變數，例如語音資源訂用帳戶金鑰和區域。 C + + 程式碼檔案包含兩個從主機電腦環境變數指派的字串值， `SPEECH__SUBSCRIPTION__KEY`亦`SPEECH__SERVICE__REGION`即和。 這兩個欄位都在類別範圍內，讓它們可在類別的方法主體中存取。 如需環境變數的詳細資訊，請參閱[環境變數和應用程式](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)設定。
+本文中的範例原始程式碼取決於用來儲存敏感性資料的環境變數，例如語音資源訂用帳戶金鑰和區域。 C + + 程式碼檔案包含兩個從主機電腦環境變數指派的字串值，亦即 `SPEECH__SUBSCRIPTION__KEY` 和 `SPEECH__SERVICE__REGION` 。 這兩個欄位都在類別範圍內，讓它們可在類別的方法主體中存取。 如需環境變數的詳細資訊，請參閱[環境變數和應用程式](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)設定。
 
 ```cpp
 auto SPEECH__SUBSCRIPTION__KEY = getenv("SPEECH__SUBSCRIPTION__KEY");
@@ -80,7 +80,7 @@ int main(int argc, char** argv) {
 
 ## <a name="change-source-language"></a>變更來源語言
 
-語音翻譯的一個常見工作是指定輸入（或來源）語言。 我們來看看如何將輸入語言變更為義大利文。 在您的程式碼中， [`SpeechTranslationConfig`][config]與實例進行互動`SetSpeechRecognitionLanguage` ，並呼叫方法。
+語音翻譯的一個常見工作是指定輸入（或來源）語言。 我們來看看如何將輸入語言變更為義大利文。 在您的程式碼中，與實例進行互動 [`SpeechTranslationConfig`][config] ，並呼叫 `SetSpeechRecognitionLanguage` 方法。
 
 ```cpp
 void translateSpeech() {
@@ -96,7 +96,7 @@ void translateSpeech() {
 
 ## <a name="add-translation-language"></a>新增翻譯語言
 
-語音翻譯的另一個常見工作是指定目標轉譯語言，至少需要一個，但支援多個。 在下列程式碼片段中，以法文和德文做為翻譯語言目標。
+語音翻譯的另一個常見工作是指定目標轉譯語言，至少需要一個，但支援多個。 下列程式碼片段會將法文和德文設定為翻譯語言目標。
 
 ```cpp
 void translateSpeech() {
@@ -111,7 +111,7 @@ void translateSpeech() {
 }
 ```
 
-每次呼叫時[`AddTargetLanguage`][addlang]，會指定新的目標轉譯語言。 換句話說，從來源語言辨識出語音時，每個目標轉譯都可做為所產生轉譯作業的一部分。
+每次呼叫時 [`AddTargetLanguage`][addlang] ，會指定新的目標轉譯語言。 換句話說，從來源語言辨識出語音時，每個目標轉譯都可做為所產生轉譯作業的一部分。
 
 ## <a name="initialize-a-translation-recognizer"></a>初始化翻譯辨識器
 
@@ -140,7 +140,7 @@ void translateSpeech() {
 > [!TIP]
 > [了解如何取得音訊輸入裝置的裝置識別碼](../../../how-to-select-audio-input-devices.md)。
 
-首先，您將參考`AudioConfig`物件，如下所示：
+首先，您將參考物件，如下所示 `AudioConfig` ：
 
 ```cpp
 void translateSpeech() {
@@ -219,10 +219,10 @@ void translateSpeech() {
 
 ### <a name="event-based-synthesis"></a>以事件為基礎的合成
 
-`TranslationRecognizer`物件會公開`Synthesizing`事件。 事件會引發數次，並提供從轉譯辨識結果抓取合成音訊的機制。 如果您要翻譯成多種語言，請參閱[手動合成](#manual-synthesis)。 藉由指派[`SetVoiceName`][voicename]並提供`Synthesizing`事件的事件處理常式來指定合成語音，以取得音訊。 下列範例會將轉譯的音訊儲存為 *.wav*檔案。
+`TranslationRecognizer`物件會公開 `Synthesizing` 事件。 事件會引發數次，並提供從轉譯辨識結果抓取合成音訊的機制。 如果您要翻譯成多種語言，請參閱[手動合成](#manual-synthesis)。 藉由指派 [`SetVoiceName`][voicename] 並提供事件的事件處理常式來指定合成語音 `Synthesizing` ，以取得音訊。 下列範例會將轉譯的音訊儲存為 *.wav*檔案。
 
 > [!IMPORTANT]
-> 以事件為基礎的合成僅適用于單一轉譯，**請勿**新增多個目標轉譯語言。 此外， [`SetVoiceName`][voicename]應該與目標轉譯語言的語言相同，例如：`"de"`可以對應至`"de-DE-Hedda"`。
+> 以事件為基礎的合成僅適用于單一轉譯，**請勿**新增多個目標轉譯語言。 此外， [`SetVoiceName`][voicename] 應該是與目標轉譯語言相同的語言，例如， `"de"` 可以對應至 `"de-DE-Hedda"` 。
 
 ```cpp
 void translateSpeech() {
@@ -270,7 +270,7 @@ void translateSpeech() {
 
 ### <a name="manual-synthesis"></a>手動合成
 
-[`Translations`][translations]字典可以用來從翻譯文字合成音訊。 逐一查看每個翻譯，併合成翻譯。 建立`SpeechSynthesizer`實例時， `SpeechConfig`物件必須將其[`SetSpeechSynthesisVoiceName`][speechsynthesisvoicename]屬性設定為所需的聲音。 下列範例會轉譯成五種語言，然後每個翻譯都會合成對應的類神經語言中的音訊檔案。
+[`Translations`][translations]字典可以用來從翻譯文字合成音訊。 逐一查看每個翻譯，併合成翻譯。 建立實例時 `SpeechSynthesizer` ，物件必須 `SpeechConfig` [`SetSpeechSynthesisVoiceName`][speechsynthesisvoicename] 將其屬性設定為所需的聲音。 下列範例會轉譯成五種語言，然後每個翻譯都會合成對應的類神經語言中的音訊檔案。
 
 ```cpp
 void translateSpeech() {

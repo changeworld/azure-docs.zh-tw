@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: eb2a7d4f83b3d8bda0d06e14b4dab9bb4872885e
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414278"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027676"
 ---
 # <a name="set-up-web-endpoints"></a>設定 Web 端點
 
@@ -43,17 +43,18 @@ ms.locfileid: "85414278"
 
    | 設定 | 建議的值 | 描述 |
    | ------- | --------------- | ----------- |
-   | 名稱 | UpdateDeviceState | Web 端點的名稱。 |
+   | Name | UpdateDeviceState | Web 端點的名稱。 |
    | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | 您想要自訂命令應用程式進行通訊之端點的 URL。 |
    | 方法 | POST | 允許的互動（例如 GET、POST）與您的端點。|
-   | headers | 金鑰：應用程式、值：應用程式的唯一名稱 | 要包含在要求標頭中的標頭參數。|
+   | headers | 金鑰：應用程式，值：接受 applicationId 的前8個數字 | 要包含在要求標頭中的標頭參數。|
 
     > [!NOTE]
     > - 使用[Azure Function](https://docs.microsoft.com/azure/azure-functions/)建立的範例 web 端點，會與儲存電視和風扇裝置狀態的資料庫連結
     > - 只有範例端點才需要建議的標頭
+    > - 為確保標頭的值在我們的範例端點中是唯一的，請接受您的 applicationId 的前8個數字
     > - 在真實世界中，web 端點可以是管理您裝置之[IOT 中樞](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)的端點
 
-1. 按一下 [檔案] ****。
+1. 按一下 [檔案] 。
 
 ## <a name="call-web-endpoints"></a>呼叫 web 端點
 
@@ -74,6 +75,8 @@ ms.locfileid: "85414278"
     > - 只有範例端點才需要建議的查詢參數
 
 1. 在 [**成功時]-[要執行的動作**] 中，選取 [**傳送語音回應**]。
+    
+    在**簡單編輯器**中，輸入 `{SubjectDevice} is {OnOff}` 。
    
    > [!div class="mx-imgBorder"]
    > ![成功時呼叫 web 端點動作](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
@@ -86,6 +89,9 @@ ms.locfileid: "85414278"
    > - 您也可以使用，直接存取 HTTP 回應中的欄位 `{YourWebEndpointName.FieldName}` 。 例如：`{UpdateDeviceState.TV}`
 
 1. 在 [**失敗時]-要執行的動作**，選取 [**傳送語音回應**]
+
+    在**簡單編輯器**中，輸入 `Sorry, {WebEndpointErrorMessage}` 。
+
    > [!div class="mx-imgBorder"]
    > ![失敗時呼叫 web 端點動作](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
 

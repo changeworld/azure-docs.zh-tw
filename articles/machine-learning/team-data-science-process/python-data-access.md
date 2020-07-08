@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 486b89e5c93de7444758638ad36743ff2f0bcb37
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720974"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026333"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>使用 Azure Machine Learning Python 用戶端程式庫利用 Python 存取資料集
 Microsoft Azure Machine Learning Python 用戶端程式庫的預覽能夠從本機 Python 環境安全存取您的 Azure Machine Learning 資料集，並且可在工作區中建立和管理資料集。
@@ -40,21 +40,26 @@ Python 用戶端程式庫已在下列環境下經過測試：
 * python-dateutil
 * pandas
 
-建議您使用 Python、IPython 隨附的 [Anaconda](http://continuum.io/downloads#all) 或 [Canopy](https://store.enthought.com/downloads/) 等 Python 發佈，並安裝上面列出的三個套件。 雖然不一定需要 IPython，但它是以互動方式操作和虛擬化資料的絕佳環境。
+建議您使用 Python、IPython 隨附的 [Anaconda](https://www.anaconda.com/) 或 [Canopy](https://store.enthought.com/downloads/) 等 Python 發佈，並安裝上面列出的三個套件。 雖然不一定需要 IPython，但它是以互動方式操作和虛擬化資料的絕佳環境。
 
 ### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>如何安裝 Azure Machine Learning Python 用戶端程式庫
 安裝 Azure Machine Learning Python 用戶端程式庫，以完成本主題中所述的工作。 此程式庫可從[Python 套件索引](https://pypi.python.org/pypi/azureml)取得。 若要在 Python 環境中安裝它，請從本機 Python 環境執行下列命令：
 
-    pip install azureml
+```console
+pip install azureml
+```
 
 或者，您可以從[GitHub](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python)上的來源下載並安裝。
 
-    python setup.py install
+```console
+python setup.py install
+```
 
 如果必須在您的電腦上安裝 git，您可以使用 PIP 從 git 儲存機制直接安裝：
 
-    pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
-
+```console
+pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
+```
 
 ## <a name="use-code-snippets-to-access-datasets"></a><a name="datasetAccess"></a>使用程式碼片段存取資料集
 Python 用戶端程式庫讓您以程式設計方式存取執行實驗所得的現有資料集。
@@ -100,7 +105,7 @@ Azure Machine Learning Studio （傳統）提供搭配 Python 用戶端程式庫
 
 只要其資料格式能與 Python 用戶端程式庫相容，就能夠存取中繼資料集。
 
-支援下列格式（這些格式的常數位于`azureml.DataTypeIds`類別中）：
+支援下列格式（這些格式的常數位于 `azureml.DataTypeIds` 類別中）：
 
 * PlainText
 * GenericCSV
@@ -141,100 +146,121 @@ Azure Machine Learning Studio （傳統）提供搭配 Python 用戶端程式庫
 
 ## <a name="use-the-machine-learning-python-client-library-to-access-read-create-and-manage-datasets"></a><a name="clientApis"></a>使用 Machine Learning Python 用戶端程式碼來存取、讀取、建立及管理資料集
 ### <a name="workspace"></a>工作區
-工作區是 Python 用戶端程式碼的進入點。 提供具有`Workspace`您的工作區識別碼和授權權杖的類別，以建立實例：
+工作區是 Python 用戶端程式碼的進入點。 提供 `Workspace` 具有您的工作區識別碼和授權權杖的類別，以建立實例：
 
-    ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
-                   authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
-
+```python
+ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
+               authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
+```
 
 ### <a name="enumerate-datasets"></a>列舉資料集
 若要列舉指定工作區中的所有資料集：
 
-    for ds in ws.datasets:
-        print(ds.name)
+```python
+for ds in ws.datasets:
+    print(ds.name)
+```
 
 若只要列舉使用者建立的資料集：
 
-    for ds in ws.user_datasets:
-        print(ds.name)
+```python
+for ds in ws.user_datasets:
+    print(ds.name)
+```
 
 若只要列舉範例資料集：
 
-    for ds in ws.example_datasets:
-        print(ds.name)
+```python
+for ds in ws.example_datasets:
+    print(ds.name)
+```
 
 您可以依名稱 (區分大小寫) 存取資料集：
 
-    ds = ws.datasets['my dataset name']
+```python
+ds = ws.datasets['my dataset name']
+```
 
 或您可以依索引來存取：
 
-    ds = ws.datasets[0]
-
+```python
+ds = ws.datasets[0]
+```
 
 ### <a name="metadata"></a>中繼資料
 除了內容，資料集還有中繼資料。 (中繼資料集是這個規則的例外，而且沒有任何中繼資料)。
 
 有些中繼資料值是由使用者在建立時指派：
 
-    print(ds.name)
-    print(ds.description)
-    print(ds.family_id)
-    print(ds.data_type_id)
+* `print(ds.name)`
+* `print(ds.description)`
+* `print(ds.family_id)`
+* `print(ds.data_type_id)`
 
 其他則是由 Azure ML 指派的值：
 
-    print(ds.id)
-    print(ds.created_date)
-    print(ds.size)
+* `print(ds.id)`
+* `print(ds.created_date)`
+* `print(ds.size)`
 
 如需可用中繼資料的詳細資訊，請參閱 `SourceDataset` 類別。
 
 ### <a name="read-contents"></a>讀取內容
 Machine Learning Studio （傳統）提供的程式碼片段會自動下載資料集，並將其還原序列化為 pandas 資料框架物件。 此動作可用 `to_dataframe` 方法來完成：
 
-    frame = ds.to_dataframe()
+```python
+frame = ds.to_dataframe()
+```
 
 您也可以選擇下載原始資料，並自己執行還原序列化。 對於 Python 用戶端程式庫無法還原序列化的格式 (例如 'ARFF')，目前這是唯一選擇。
 
 若要以文字格式讀取內容：
 
-    text_data = ds.read_as_text()
+```python
+text_data = ds.read_as_text()
+```
 
 若要以二進位格式讀取內容：
 
-    binary_data = ds.read_as_binary()
+```python
+binary_data = ds.read_as_binary()
+```
 
 您也可以開啟內容的資料流：
 
-    with ds.open() as file:
-        binary_data_chunk = file.read(1000)
-
+```python
+with ds.open() as file:
+    binary_data_chunk = file.read(1000)
+```
 
 ### <a name="create-a-new-dataset"></a>建立新的資料集
 Python 用戶端程式碼可讓您上傳 Python 程式中的資料集。 這些資料集接著可在您的工作區中使用。
 
 如果您有資料在 pandas DataFrame 中，可以使用下列程式碼：
 
-    from azureml import DataTypeIds
+```python
+from azureml import DataTypeIds
 
-    dataset = ws.datasets.add_from_dataframe(
-        dataframe=frame,
-        data_type_id=DataTypeIds.GenericCSV,
-        name='my new dataset',
-        description='my description'
-    )
+dataset = ws.datasets.add_from_dataframe(
+    dataframe=frame,
+    data_type_id=DataTypeIds.GenericCSV,
+    name='my new dataset',
+    description='my description'
+)
+```
 
 如果您的資料已經序列化，則可以使用：
 
-    from azureml import DataTypeIds
+```python
+from azureml import DataTypeIds
 
-    dataset = ws.datasets.add_from_raw_data(
-        raw_data=raw_data,
-        data_type_id=DataTypeIds.GenericCSV,
-        name='my new dataset',
-        description='my description'
-    )
+dataset = ws.datasets.add_from_raw_data(
+    raw_data=raw_data,
+    data_type_id=DataTypeIds.GenericCSV,
+    name='my new dataset',
+    description='my description'
+)
+```
 
 Python 用戶端程式庫能夠將 pandas DataFrame 序列化為下列格式 (這些都是 `azureml.DataTypeIds` 類別的常數)：
 
@@ -249,66 +275,76 @@ Python 用戶端程式庫能夠將 pandas DataFrame 序列化為下列格式 (�
 
 若要更新現有資料集，您必須先取得現有資料集的參照：
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    print(dataset.data_type_id) # 'GenericCSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to jan 2015'
+print(dataset.data_type_id) # 'GenericCSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to jan 2015'
+```
 
 然後使用 `update_from_dataframe` 以序列化並取代 Azure 上資料集的內容：
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(frame2)
+dataset.update_from_dataframe(frame2)
 
-    print(dataset.data_type_id) # 'GenericCSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to jan 2015'
+print(dataset.data_type_id) # 'GenericCSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to jan 2015'
+```
 
 如果您想要將資料序列化為不同的格式，可為選擇性 `data_type_id` 參數指定一個值。
 
-    from azureml import DataTypeIds
+```python
+from azureml import DataTypeIds
 
-    dataset = ws.datasets['existing dataset']
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(
-        dataframe=frame2,
-        data_type_id=DataTypeIds.GenericTSV,
-    )
+dataset.update_from_dataframe(
+    dataframe=frame2,
+    data_type_id=DataTypeIds.GenericTSV,
+)
 
-    print(dataset.data_type_id) # 'GenericTSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to jan 2015'
+print(dataset.data_type_id) # 'GenericTSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to jan 2015'
+```
 
 您可以選擇性地為 `description` 參數指定一個值，以設定新的描述。
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(
-        dataframe=frame2,
-        description='data up to feb 2015',
-    )
+dataset.update_from_dataframe(
+    dataframe=frame2,
+    description='data up to feb 2015',
+)
 
-    print(dataset.data_type_id) # 'GenericCSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to feb 2015'
+print(dataset.data_type_id) # 'GenericCSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to feb 2015'
+```
 
 您可以選擇性地為 `name` 參數指定一個值，以設定新的名稱。 從現在起，您只會擷取使用新名稱的資料集。 下列程式碼會更新資料、名稱和描述。
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(
-        dataframe=frame2,
-        name='existing dataset v2',
-        description='data up to feb 2015',
-    )
+dataset.update_from_dataframe(
+    dataframe=frame2,
+    name='existing dataset v2',
+    description='data up to feb 2015',
+)
 
-    print(dataset.data_type_id)                    # 'GenericCSV'
-    print(dataset.name)                            # 'existing dataset v2'
-    print(dataset.description)                     # 'data up to feb 2015'
+print(dataset.data_type_id)                    # 'GenericCSV'
+print(dataset.name)                            # 'existing dataset v2'
+print(dataset.description)                     # 'data up to feb 2015'
 
-    print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
-    print(ws.datasets['existing dataset'].name)    # IndexError
+print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
+print(ws.datasets['existing dataset'].name)    # IndexError
+```
 
 `data_type_id`、`name` 及 `description` 都是選擇性參數，並以先前的值為預設值。 `dataframe` 一向是必要參數。
 

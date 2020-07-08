@@ -5,16 +5,16 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 76b2b465354df5b06ecd93986aec71530d175fe6
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 0644dad9e8e6f2999acfa24ea1088207f6d5e692
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562906"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028038"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>分析索引鍵/值組和資料表的表單
 
-接下來，您會使用新定型的模型來分析文件，並從中擷取索引鍵/值組和資料表。 在新的 Python 指令碼中執行下列程式碼，以呼叫 **[分析表單](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API。 執行指令碼之前，請進行下列變更：
+接下來，您會使用新定型的模型來分析文件，並從中擷取索引鍵/值組和資料表。 在新的 Python 指令碼中執行下列程式碼，以呼叫 **[分析表單](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** API。 執行指令碼之前，請進行下列變更：
 
 1. 將 `<file path>` 取代為表單的檔案路徑 (例如，C:\temp\file.pdf)。 這也可以是遠端檔案的 URL。 在本快速入門中，您可以使用[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)中 **Test** 資料夾底下的檔案。
 1. 將 `<model_id>` 取代為您在上一節中取得的模型識別碼。

@@ -1,18 +1,18 @@
 ---
 title: 供應項目清單最佳做法 - Microsoft 商業市集
 description: 了解 Microsoft AppSource 和 Azure Marketplace 供應項目的進入市場清單最佳做法。
-author: qianw211
+author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 07/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 33effe0bbc566880b147c377b3bb130cd81999c8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 60f9630b58250bdae4c382e61697f7abd53e036d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740768"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027064"
 ---
 # <a name="offer-listing-best-practices"></a>陳列供應項目的最佳做法
 
@@ -22,47 +22,173 @@ ms.locfileid: "83740768"
 
 | 店面設定 | 最佳做法 |
 |:--- |:--- |  
-| 供應項目名稱 | 提供有力標題：<br> <ul> <li> 您的應用程式名稱應向客戶傳達核心價值。 </li> <li> 在您的應用程式標題中包含搜尋關鍵字，才能在搜尋引擎結果中得到高排名。 </li> </ul> 針對諮詢服務清單依照已設定的標題格式：<br>[供應項目名稱] : [期間] [供應項目類型] (例如 *Contoso:2-Week Implementation*) <br><br> 遵守品牌指導方針：<br>提及 Microsoft 商標與 Microsoft 軟體、產品和服務的名稱時，請遵循 [Microsoft 商標和品牌指導方針](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)以及其他相關的特定產品指導方針。 |
-| 供應項目描述 | 提供清楚的供應項目描述：<br> <ul> <li> 在您的描述中的前幾個句子清楚描述您供應項目的價值主張。 </li> <li> 請記住，前幾個句子可能會顯示在搜尋引擎結果中。 </li> <li> 請勿依賴特色與功能來銷售您的產品。 反之，要鎖定在您所提供的價值。 </li> <li> 請盡可能使用業界特定詞彙或凸顯優點的字眼。</li> <li> 此外，諮詢服務清單必須清楚表明您提供的專業服務。 </li></ul> 您的價值主張核心部分應該包含下列資訊：<ul><li>產品的描述。</li><li>可從產品獲益的使用者類型。</li><li>產品可解決的客戶需求或問題。</li></ul> |
+| 供應項目名稱 | 針對應用程式，請提供清楚的標題，其中包含搜尋關鍵字，以協助客戶探索您的供應專案。 <br> <br> 針對諮詢服務，請遵循此格式： [供應專案名稱： [持續時間] [供應專案類型] （例如 Contoso：2周的執行） <br> <br> 遵守品牌指導方針：在參照 Microsoft 商標和 Microsoft 軟體、產品和服務的名稱時，請遵循[Microsoft 商標和品牌指導方針](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)，以及其他相關的產品特定指導方針。 |
+| 供應項目描述 | 請在前幾個句子中提供清楚描述您供應專案價值主張的說明。  請記住，這些句子可能會用於搜尋引擎結果中。 價值主張的核心元件應包括： <ul> <li>產品或解決方案的描述。 </li> <li> 從產品或解決方案獲益的使用者角色。 </li> <li> 客戶需要或解決產品或解決方案的問題。 </li> </ul> <br> 盡可能使用業界標準詞彙或以權益為基礎的用語。  請勿依賴特色與功能來銷售您的產品。  反之，要鎖定在您所提供的價值。 <br> <br> 針對諮詢服務清單，請清楚陳述您提供的專業服務。 |
 
 本節中的表格會提供建立和設定 Marketplace 供應項目的建議。 若要撰寫和設定您的行銷資料，請移至[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/)。 
 
 ## <a name="storefront-listing-details"></a>店面清單詳細資料
 
-| 店面設定 | 最佳做法 |
-|:--- |:--- |  
-| 產業：僅 Microsoft AppSource 應用程式與諮詢服務 | 如果您的供應項目可解決特定產業需求，請選取產業： <ul><li> 在您的供應項目描述中凸顯這些特定產業需求。</li> </ul> **注意**：選項數目上限會隨供應項目類型而有所不同，並於[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/)指出。 |
-| 類別 | 選取最符合您供應項目的類別：<br> <ul> <li> 請謹慎選擇這些類別，因為客戶會以類別搜尋相關應用程式。 </li> <li> 務必在供應項目描述中凸顯您的供應項目如何支援特定類別需求。 </li> </ul> **注意**：選項數目上限會隨供應項目類型而有所不同，並於[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/)指出。 |
-| 可搭配您應用程式的產品 (最多 3 個)：僅 AppSource 應用程式 | 列出您解決方案使用或延伸的其他產品和技術。 例如，Azure IoT 中樞或 Azure Machine Learning。 |
-| 搜尋關鍵字 (最多 3 個) | 搜尋關鍵字可協助商務使用者在下列位置中進行搜尋時，可找到您的供應項目 <ul>  <li>在 Microsoft AppSource 上</li> <li>在 Azure Marketplace 中</li><li>使用搜尋引擎</li> </ul> 為了讓您的清單出現在這些搜尋結果中，您需要： <ul> <li> 找出您供應項目的前三名搜尋關鍵字； </li> <li> 將搜尋關鍵字併入您的供應項目摘要和描述； </li> <li> 在此列出搜尋關鍵字。 </li> </ul> |
+不同店面的類別和產業將適用于不同的供應專案類型。
 
-### <a name="category"></a>類別
+|  | **<br>依店面分類的類別** |  | **<br>適用于 AppSource 的產業** |
+| :------------------- |:----------------:|:------:|:-------------:|
+| **供應專案類型**   |  **Azure Marketplace**  | **AppSource**  |
+| Azure 應用程式 | X | |
+| 容器 | X | |
+| 諮詢服務 | | | X |
+| Dynamics 365 Customer Engagement & Power 平臺 | | X | X |
+| Dynamics 365 財務 & 供應鏈管理 | | X | X | 
+| Dynamics 365 Business Central | | X | X |
+| IoT Edge 模組 | X | |
+| Power BI | | X | X |
+| SaaS | X | X | X |
+| Azure 虛擬機器 |  X |    |
 
-Microsoft AppSource 和 Azure Marketplace 是可滿足不同和獨特客戶需求的店面。 為每個供應項目選擇適當的店面和類別，依照角色以您的客戶為目標。 
+### <a name="categories"></a>類別
 
-您可以為供應項目最多選取兩個類別和兩個子類別。 以下所列的類別和子類別可用於這兩個店面。  確定您的類別選擇與您供應項目的目標受眾、供應項目描述和價值主張一致。
+Microsoft AppSource 和 Azure Marketplace 是兩個不同的店面，可滿足獨特的客戶需求。 Azure Marketplace 的目標是在 Azure 上建立解決方案的 IT 專業人員和開發人員。  Microsoft AppSource 是以商務使用者為目標，尋找商務和/或產業 SaaS 應用程式、Dynamics 365 增益集、Microsoft 365 增益集和電源平臺應用程式。
 
-| **產業**    | **次產業**  | 
-| :------------------- | :-------------------|
-| *汽車     | *汽車 |
-| 農業     | *其他 - 不分區段 |
-| 經銷    | *量販 <br> *包裹和包裝運送 |
-| 教育訓練     | *高等教育 <br> *初等和中等教育 / K-12 <br> *圖書館與博物館 |
-| 金融服務     | *銀行與資本市場 <br> *保險 |
-| 政府    | *防禦與情報 (用來稱為「國家與公共安全性」) <br> *公共安全與正義 <br> *文官政府 |
-| 醫療保健 (用來稱為「醫療」)   | *醫療支付者 <br> *醫療提供者 <br> *製藥 |
-| 製造與資源 (用來稱為「製造」)   | *化學與農業化學 <br> *離散製造 <br> *能源 |
-| 零售與消費性商品 (用來稱為「零售」)  | *消費性商品 <br> *零售商 |
-| *媒體與通訊 (用來稱為「媒體與娛樂」)  | *媒體與娛樂 <br> *電信服務 |
-| 專業服務  | *法律 <br> *合作夥伴專業服務 |
-| *建築與營造 (用來稱為「建築工程」)  | *其他 - 不分區段 |
-| *觀光旅遊  | *飯店與休閒 <br> *旅遊與運輸 <br> *餐廳與食物服務 |
-| *其他公共事業  | *林業與漁業 <br> *非營利組織 |
-| *房地產  | *其他 - 不分區段 |
+類別和子類別會根據目標物件對應至每個店面。 您的供應專案將會發佈到 Microsoft AppSource 或 Azure Marketplace，這取決於供應專案類型的交易功能和類別目錄/子類別。 
+
+選取最符合您供應專案和預期物件的分類和子類別。 您可以選取：
+
+* 最多兩個（2）類別，包括主要和次要類別（選擇性）。
+* 每個主要和（或）次要類別最多兩個（2）子類別。 如果未選取任何子類別，您仍然可以在選取的類別上找到您的供應專案。
+
+| [**Azure Marketplace**](https://azuremarketplace.microsoft.com/marketplace/apps) （IT 專業人員和開發人員）  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) （商務使用者）|
+| :------------------- |:----------------|
+|**分析** | **分析** |
+| &nbsp;&nbsp;資料見解 | &nbsp;&nbsp;先進分析  |
+| &nbsp;&nbsp;資料分析 |  &nbsp;&nbsp;視覺效果 & 報告 |
+| &nbsp;&nbsp;海量資料 | **AI + Machine Learning**  |
+| &nbsp;&nbsp;預測性分析 | &nbsp;&nbsp;商務用 AI |
+| &nbsp;&nbsp;即時/串流分析 | &nbsp;&nbsp;Bot 應用程式 |
+| **AI + Machine Learning** | **共同作業** |
+| &nbsp;&nbsp;Bot 服務 | &nbsp;&nbsp;連絡人 & 人員 |
+| &nbsp;&nbsp;認知服務 | &nbsp;&nbsp;會議管理 |
+| &nbsp;&nbsp;ML 服務 | &nbsp;&nbsp;網站設計 & 管理 |
+| &nbsp;&nbsp;自動化 ML | &nbsp;&nbsp;工作 & 專案管理 |
+| &nbsp;&nbsp;商務/機器人流程自動化 | &nbsp;&nbsp;語音 & 視訊會議 |
+| &nbsp;&nbsp;資料標籤 | **合規性 & 法律** |
+| &nbsp;&nbsp;資料準備 | &nbsp;&nbsp;稅務 & Audit |
+| &nbsp;&nbsp;知識挖掘 | &nbsp;&nbsp;法律 |
+| &nbsp;&nbsp;ML 作業 | &nbsp;&nbsp;資料，治理 & 隱私權 |
+| **區塊鏈**  | &nbsp;&nbsp;健全狀況 & 安全 |
+| &nbsp;&nbsp;應用程式加速器 | **Customer Service**  |
+| &nbsp;&nbsp;單一節點的總帳 | &nbsp;&nbsp;連絡人中心 |
+| &nbsp;&nbsp;多節點總帳 | &nbsp;&nbsp;臉部服務 |
+| &nbsp;&nbsp;工具 | &nbsp;&nbsp;後端 Office & 員工服務 |
+| **計算**  | &nbsp;&nbsp;知識 & 案例管理 |
+| &nbsp;&nbsp;應用程式基礎結構 | &nbsp;&nbsp;社交媒體 & Omnichannel Engagement |
+| &nbsp;&nbsp;作業系統 | **財務** |
+| &nbsp;&nbsp;高速 | &nbsp;&nbsp;計數 |
+| **容器**  | &nbsp;&nbsp;資產管理 |
+| &nbsp;&nbsp;開始使用容器 | &nbsp;&nbsp;分析、匯總 & 報告 |
+| &nbsp;&nbsp;容器應用程式 | &nbsp;&nbsp;點數 & 的集合 |
+| &nbsp;&nbsp;容器映射 | &nbsp;&nbsp;合規性 & 風險管理 |
+| **資料庫**  | **地理位置** |
+| &nbsp;&nbsp;NoSQL 資料庫 | &nbsp;&nbsp;繪 |
+| &nbsp;&nbsp;關係資料庫 | &nbsp;&nbsp;新聞 & 氣象 |
+| &nbsp;&nbsp;總帳/區塊鏈資料庫 | **Human Resources** |
+| &nbsp;&nbsp;資料 Lake | &nbsp;&nbsp;人才獲取 |
+| &nbsp;&nbsp;資料倉儲 | &nbsp;&nbsp;人才管理 |
+| **開發人員工具**  | &nbsp;&nbsp;HR 作業 |
+| &nbsp;&nbsp;工具 | &nbsp;&nbsp;員工規劃 & 分析 |
+| &nbsp;&nbsp;文字 | **IT & 管理工具** |
+| &nbsp;&nbsp;開發人員服務 | &nbsp;&nbsp;管理解決方案 |
+| **DevOps**  | &nbsp;&nbsp;Business Applications |
+| **整合**  | **物聯網** |
+| &nbsp;&nbsp;關鍵 | &nbsp;&nbsp;資產管理 & 作業 |
+| **IT & 管理工具**  | &nbsp;&nbsp;連線的產品 |
+| &nbsp;&nbsp;管理解決方案 | &nbsp;&nbsp;智慧供應鏈 |
+| &nbsp;&nbsp;Business Applications | &nbsp;&nbsp;預測性維護 |
+| **身分識別**  | &nbsp;&nbsp;遠端監視 |
+| &nbsp;&nbsp;存取管理 | &nbsp;&nbsp;安全 & 安全性 |
+| **物聯網**  | &nbsp;&nbsp;智慧型基礎結構 & 資源 |
+| &nbsp;&nbsp;IoT 連線能力 | &nbsp;&nbsp;車輛 & 行動性 |
+| &nbsp;&nbsp;IoT 核心版服務 | **行銷** |
+| &nbsp;&nbsp;IoT Edge 模組 | &nbsp;&nbsp;公告 |
+| &nbsp;&nbsp;IoT 解決方案 | &nbsp;&nbsp;分析 |
+| &nbsp;&nbsp;資料分析 & 視覺效果 | &nbsp;&nbsp;行銷活動管理 & 自動化 |
+| **媒體**  | &nbsp;&nbsp;電子郵件行銷 |
+| &nbsp;&nbsp;媒體服務 | &nbsp;&nbsp;& 資源管理的事件 |
+| &nbsp;&nbsp;內容保護 | &nbsp;&nbsp;研究 & 分析 |
+| &nbsp;&nbsp;即時 & 隨選串流 | &nbsp;&nbsp;社交媒體 |
+| **監視 & 診斷**  | **作業 & 供應鏈** |
+| **移轉**  | &nbsp;&nbsp;資產 & 生產管理 |
+| &nbsp;&nbsp;資料移轉 | &nbsp;&nbsp;需求預測 |
+| **混合實境**  | &nbsp;&nbsp;資訊管理 & 連線能力 |
+| **網路功能**  | &nbsp;&nbsp;規劃、購買 & 報告 |
+| &nbsp;&nbsp;裝置管理員 | &nbsp;&nbsp;品質 & 服務管理 |
+| &nbsp;&nbsp;連線能力 | &nbsp;&nbsp;銷售 & 訂單管理 |
+| &nbsp;&nbsp;道 | &nbsp;&nbsp;運輸 & 倉儲管理 |
+| &nbsp;&nbsp;負載平衡器 | **生產力** |
+| **安全性**  | &nbsp;&nbsp;內容建立 & 管理 |
+| &nbsp;&nbsp;身分識別與存取管理 | &nbsp;&nbsp;檔管理 |
+| &nbsp;&nbsp;威脅防護 | &nbsp;&nbsp;電子郵件管理 |
+| &nbsp;&nbsp;資訊保護 | &nbsp;&nbsp;語言 & 翻譯 |
+| **Storage**  | &nbsp;&nbsp;搜尋 & 參考 |
+| &nbsp;&nbsp;備份 & 復原 | &nbsp;&nbsp;遊戲化 |
+| &nbsp;&nbsp;企業混合式儲存體 | **Sales** |
+| &nbsp;&nbsp;檔案共用 | &nbsp;&nbsp;銷售 |
+| &nbsp;&nbsp;資料生命週期管理 | &nbsp;&nbsp;設定、價格、報價（CPQ） |
+| **Web**  | &nbsp;&nbsp;合約管理 |
+| &nbsp;&nbsp;& Cms 的 blog | &nbsp;&nbsp;CRM |
+| &nbsp;&nbsp;入門 Web Apps | &nbsp;&nbsp;電子商務 |
+| &nbsp;&nbsp;電子商務 | &nbsp;&nbsp;商務資料擴充  |
+| &nbsp;&nbsp;Web 應用程式架構 | &nbsp;&nbsp;銷售支援  |
+| &nbsp;&nbsp;Web Apps |  |
+
+**重要事項： SaaS 提供和 Microsoft 365 增益集**
+
+如需有關交易功能如何影響您的供應專案可由 marketplace 客戶查看和購買的特定詳細資料，請參閱「[供應專案類型指南](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)」。 若為 SaaS 供應專案，提供者的交易功能以及類別選擇，將會決定將發佈您供應專案的店面：
+
+| SaaS 供應專案    |     |          |           |    |    |     | 適用的店面 |              |
+|:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
+| 計量付費計費 | Microsoft 365 增益集 | 與我連絡 | 交易（至少1個方案） | 僅私用方案 | 僅限公用方案 | 公用 & 私用方案 | AppSource | Azure Marketplace |
+|  | X |  |  |  |  |  | X |  |
+| X |  |  | X | X |  |  |  | X |
+| X |  |  | X |  | X |  |  | X |
+| X |  |  | X |  |  | X |  | X<sup>2</sup> |
+|  |  |  | X | X |  |  |  | X |
+|  |  |  | X |  | X |  | X<sup>1</sup> | X<sup>1</sup> |
+|  |  |  | X |  |  | X | X<sup>1</sup> | X<sup>1、2</sup> |
+|  |  | X |  |  |  |  | x<sup>1</sup> | X<sup>1</sup> | 
+
+1. 視分類/子類別和產業選擇而定
+2. 具有私人方案的供應專案將會發佈到 Azure 入口網站
+
 
 ### <a name="industries"></a>產業
 
-產業選擇僅適用於發佈至 Azure Marketplace 中所發佈 AppSource 和諮詢服務的供應項目。 如果您的供應項目滿足業界特定需求，請選取產業及/或垂直產業，並在供應項目描述中喚起業界特定功能。 您最多可選取兩個 (2) 個產業，而每個所選產業可有兩個 (2) 垂直產業。
+產業選擇僅適用於發佈至 Azure Marketplace 中所發佈 AppSource 和諮詢服務的供應項目。  如果您的供應項目滿足業界特定需求，請選取產業及/或垂直產業，並在供應項目描述中喚起業界特定功能。 您最多可選取兩個 (2) 個產業，而每個所選產業可有兩個 (2) 垂直產業。
+
+>[!Note]
+>在 Azure Marketplace 的諮詢服務供應專案中，沒有產業的縱向。
+
+| **產業** |  **垂直市場** |
+| :------------------- | :----------------|
+| **農業** | |
+| **架構 & 結構** | |
+| **汽車** | |
+| **散發** | 簽署 <br> & 套件運送的包裹 |  
+| **教育訓練** | 高等教育 <br> 主要 & 次要 Edu/K-12 <br> & 博物館的程式庫 |
+| **金融服務** | 銀行業 & 資本市場 <br> Insurance | 
+| **政府** |  防禦 & 情報 <br> 文職政府 <br> 公用安全 & 司法 |
+| **醫療保健** | 健全狀況醫療給付 <br> 健全狀況提供者 <br> Pharmaceuticals | 
+| **旅行 & 旅遊** | 旅遊和運輸 <br> 飯店 & 休閒 <br> 餐廳 & 食物服務 | 
+| **製造 & 資源** | 化學 & Agrochemical <br> 離散製造 <br> 能源 | 
+| **媒體 & 通訊** | 媒體 & 娛樂 <br> 電信業 | 
+| **其他公用部門產業** | 林業 & 釣魚 <br> 非營利 | 
+| **專業服務** | 合作夥伴專業服務 <br> 法律 | 
+| **房地產** | |
+
+僅適用于 Microsoft AppSource 的產業：
+
+| **產業** |  **垂直市場** |
+| :------------------- | :----------------|
+| **零售 & 消費性商品** | 零售商 <br> 消費性商品 |
 
 ### <a name="applicable-products"></a>適用的產品
 

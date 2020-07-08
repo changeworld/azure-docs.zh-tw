@@ -5,19 +5,19 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
-ms.topic: conceptual
-ms.openlocfilehash: 34ce91a1385f951847abeedd3a6b526d3a07af35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 1b2268426b66ddb9ffdd48d6901ab991e76cb95c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75660846"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037438"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>使用 Visual Studio Code 在本機針對即時串流輸入測試串流分析查詢
 
 您可以使用適用于 Visual Studio Code 的 Azure 串流分析工具，在本機針對即時串流輸入測試您的串流分析作業。 輸入可以來自 Azure 事件中樞或 Azure IoT 中樞等來源。 輸出結果會以 JSON 檔案形式傳送至您專案中名為**LocalRunOutputs**的資料夾。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 安裝[.NET Core SDK](https://dotnet.microsoft.com/download)並重新啟動 Visual Studio Code。
 

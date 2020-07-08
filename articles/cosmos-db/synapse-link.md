@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 709b442fde94d88adc7fe4cce16ee1a50bf06c6b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: ff64f3f4891aac27a32b642b50ebd51dea9bd34a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674352"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025772"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>什麼是適用於 Azure Cosmos DB 的 Azure Synapse Analytics (預覽)？
 
@@ -25,7 +25,7 @@ ms.locfileid: "83674352"
 
 下圖顯示 Azure Synapse Link 與 Azure Cosmos DB 和 Azure Synapse Analytics 的整合： 
 
-![Azure Synapse Analytics 與 Azure Cosmos DB 的整合架構圖](./media/synapse-link/synapse-analytics-cosmos-db-architecture.png)
+:::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Azure Synapse Analytics 與 Azure Cosmos DB 的整合架構圖" border="false":::
 
 ## <a name="benefits"></a><a id="synapse-link-benefits"></a> 優點
 
@@ -121,6 +121,8 @@ Azure Cosmos DB 分析存放區是 Azure Cosmos DB 中操作資料的資料行�
 * 在公開預覽期間中，只有 Azure Cosmos DB SQL (核心) API 支援 Synapse Link。 適用於 MongoDB 的 Azure Cosmos DB API 以及 Cassandra API 的支援目前處於有限預覽階段。 若要要求存取有限預覽，請寄電子郵件至 [Azure Cosmos DB 小組](mailto:cosmosdbsynapselink@microsoft.com)。
 
 * 目前，只能為 (新的和現有的 Azure Cosmos DB 帳戶中) 新的容器啟用分析存放區。
+
+* 在預覽中，不支援針對已啟用 Synapse 連結的資料庫帳戶進行容器的備份和還原。 如果您有需要備份和還原功能的生產工作負載，我們建議您不要在這些資料庫帳戶上啟用 Synapse 連結。 
 
 * 使用 Synapse SQL 無伺服器存取 Azure Cosmos DB 分析存放區目前處於有限預覽階段。 若要要求存取，請寄電子郵件至 [Azure Cosmos DB 小組](mailto:cosmosdbsynapselink@microsoft.com)。
 

@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5e2ba749b64a6d44c9aa6b03352910ab24771084
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 3bfc03dd7a04bea7e69aa1b62cef267a81b650f1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835643"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037608"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>開始使用 Azure 串流分析：即時詐欺偵測
 
@@ -47,7 +47,7 @@ ms.locfileid: "83835643"
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>建立 Azure 事件中樞來內嵌事件
 
-若要分析資料流，您需要將資料流「內嵌」到 Azure。 內嵌資料的一般做法是使用 [Azure 事件中樞](../event-hubs/event-hubs-what-is-event-hubs.md)，這可讓您每秒內嵌數百萬個事件，然後處理並儲存事件資訊。 在本教學課程中，您將建立事件中樞，然後由通話事件產生器應用程式將通話資料傳送至該事件中樞。 如需深入了解事件中樞，請參閱 [Azure 服務匯流排文件](https://docs.microsoft.com/azure/service-bus/)。
+若要分析資料流，您需要將資料流「內嵌」到 Azure。 內嵌資料的一般做法是使用 [Azure 事件中樞](../event-hubs/event-hubs-what-is-event-hubs.md)，這可讓您每秒內嵌數百萬個事件，然後處理並儲存事件資訊。 在本教學課程中，您將建立事件中樞，然後由通話事件產生器應用程式將通話資料傳送至該事件中樞。
 
 >[!NOTE]
 >如需此程序的詳細資訊，請參閱[使用 Azure 入口網站建立事件中樞命名空間和事件中樞](../event-hubs/event-hubs-create.md)。 
@@ -81,7 +81,7 @@ ms.locfileid: "83835643"
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
-9. 按一下頁面底部的 [新增] 。
+9. 按一下 [建立]。
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>授權存取事件中樞並取得連接字串
 
@@ -98,7 +98,7 @@ ms.locfileid: "83835643"
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4. 按一下頁面底部的 [新增] 。
+4. 按一下 [建立]。
 
 5. 部署原則之後，在共用存取原則清單中按一下此原則。
 
@@ -202,7 +202,7 @@ ms.locfileid: "83835643"
    |**設定**  |**建議的值**  |**說明**  |
    |---------|---------|---------|
    |輸入別名  |  CallStream   |  輸入名稱以識別作業的輸入。   |
-   |訂用帳戶   |  \<您的訂用帳戶\> |  根據您建立的事件中樞，選取事件中樞所在的 Azure 訂用帳戶。   |
+   |訂用帳戶   |  \<Your subscription\> |  根據您建立的事件中樞，選取事件中樞所在的 Azure 訂用帳戶。   |
    |事件中樞命名空間  |  asa-eh-ns-demo |  輸入事件中樞命名空間的名稱。   |
    |事件中樞名稱  | asa-eh-frauddetection-demo | 選取事件中樞的名稱。   |
    |事件中樞原則名稱  | asa-policy-manage-demo | 選取您稍早建立的存取原則。   |
@@ -372,7 +372,7 @@ TelcoGenerator 應用程式正在將通話記錄傳送到事件中樞，而串�
    |**設定**  |**建議的值**  |**說明**  |
    |---------|---------|---------|
    |輸出別名  |  CallStream-FraudulentCalls   |  輸入名稱以識別作業的輸出。   |
-   |訂用帳戶   |  \<您的訂用帳戶\> |  選取您在其中建立儲存體帳戶的 Azure 訂用帳戶。 儲存體帳戶可以位在相同或不同的訂用帳戶中。 此範例假設您已在相同的訂用帳戶中建立儲存體帳戶。 |
+   |訂用帳戶   |  \<Your subscription\> |  選取您在其中建立儲存體帳戶的 Azure 訂用帳戶。 儲存體帳戶可以位在相同或不同的訂用帳戶中。 此範例假設您已在相同的訂用帳戶中建立儲存體帳戶。 |
    |儲存體帳戶  |  asaehstorage |  輸入建立之儲存體帳戶的名稱。 |
    |容器  | asa-fraudulentcalls-demo | 選擇 [建立新項目]，然後輸入容器名稱。 |
 

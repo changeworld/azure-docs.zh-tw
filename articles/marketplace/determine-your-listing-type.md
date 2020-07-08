@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: dsindona
-ms.openlocfilehash: 92a24a59038eb74a6a2f6a738005ff8aadf35ff0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 457ff90c21fee2b569fa24d90fffc6ce80cdf969
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658054"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027098"
 ---
 # <a name="determine-your-publishing-option"></a>決定您的發佈選項
 
@@ -56,7 +56,7 @@ ms.locfileid: "83658054"
 **Azure Marketplace** 應用程式是 Azure 內建或針對 Azure 建置的技術「建置組塊」，適用於 IT 或開發人員受眾。 Azure Marketplace 諮詢服務是專業服務供應項目，協助客戶開始使用或加速使用 Azure。
 
 >[!Note]
->跨清單 (僅適用於 SaaS App)：當清單型或試用型供應項目符合技術和商務使用者對象的準則時，您的供應項目就會同時列在兩者的店面中。 在下方深入了解發佈選項。
+>「交叉清單」（僅適用于 SaaS 應用程式）：如果您的 SaaS 供應專案適用于技術物件（Azure Marketplace）和企業物件（AppSource），您可以選取適用于任一店面的類別及/或子類別。 請注意，「交叉清單」您的供應專案應該以擴充到這兩個目標物件的價值主張為基礎。 按一下[這裡](./gtm-offer-listing-best-practices.md#categories)可查看適用于每個店面的類別。
 
 ## <a name="choose-a-publishing-option"></a>選擇發佈選項
 

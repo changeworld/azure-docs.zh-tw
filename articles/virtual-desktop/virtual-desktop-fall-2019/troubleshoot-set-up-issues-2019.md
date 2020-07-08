@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5825466c099a8c57477f2d9d0420da74ccb2e96d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615392"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026690"
 ---
 # <a name="tenant-and-host-pool-creation"></a>建立租用戶和主機集區
 
 >[!IMPORTANT]
->此內容適用于不支援 Azure Resource Manager Windows 虛擬桌面物件的秋季2019版。 如果您嘗試管理春季2020更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-set-up-issues.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-set-up-issues.md)。
 
 本文涵蓋 Windows 虛擬桌面租使用者和相關工作階段主機集區基礎結構的初始設定期間的問題。
 
@@ -28,17 +28,35 @@ ms.locfileid: "82615392"
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>取得 Windows 10 企業版多會話映射
 
-若要使用 Windows 10 企業版的多會話映射，請移至 Azure Marketplace，選取 [**開始** > 使用] [**Microsoft Windows 10** > 和[Windows 10 企業版虛擬桌面版本 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)]。
+若要使用 Windows 10 企業版的多會話映射，請移至 Azure Marketplace，選取 [**開始**使用] [  >  **Microsoft Windows 10** > 和[Windows 10 企業版虛擬桌面版本 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)]。
 
-![選取 Windows 10 企業版虛擬桌面（版本1809）的螢幕擷取畫面。](../media/AzureMarketPlace.png)
+> [!div class="mx-imgBorder"]
+> ![選取 Windows 10 企業版虛擬桌面（版本1809）的螢幕擷取畫面。](../media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>正在建立 Windows 虛擬桌面租使用者
 
 本節涵蓋建立 Windows 虛擬桌面租使用者時可能發生的問題。
 
+### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>錯誤： AADSTS650052 應用程式需要服務的存取權。
+
+原始錯誤的範例：
+
+```Error
+AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+configuration of your service subscriptions.650052 Message The app needs access to a service
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+Contact your IT Admin to review the configuration of your service subscriptions.
+```
+
+**原因：** 未授與 Azure Active directory 實例中 Windows 虛擬桌面的同意。
+
+**修正：** [遵循本指南](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop)以授與同意。
+
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>錯誤：使用者未獲授權查詢管理服務
 
-![PowerShell 視窗的螢幕擷取畫面，其中的使用者未獲授權查詢管理服務。](../media/UserNotAuthorizedNewTenant.png)
+> [!div class="mx-imgBorder"]
+> ![PowerShell 視窗的螢幕擷取畫面，其中的使用者未獲授權查詢管理服務。](../media/UserNotAuthorizedNewTenant.png)
 
 原始錯誤的範例：
 
@@ -59,7 +77,8 @@ ms.locfileid: "82615392"
 
 **修正：** 依照[將 TenantCreator 應用程式角色指派給 Azure Active Directory 租使用者中的使用者](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)中的指示進行。 依照指示進行之後，您將會有已指派給 TenantCreator 角色的使用者。
 
-![已指派 TenantCreator 角色的螢幕擷取畫面。](../media/TenantCreatorRoleAssigned.png)
+> [!div class="mx-imgBorder"]
+> ![已指派 TenantCreator 角色的螢幕擷取畫面。](../media/TenantCreatorRoleAssigned.png)
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>建立 Windows 虛擬桌面工作階段主機 Vm
 
@@ -71,7 +90,8 @@ ms.locfileid: "82615392"
 
 ### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>錯誤：使用 GitHub 的連結時，出現「建立免費帳戶」的訊息
 
-![建立免費帳戶的螢幕擷取畫面。](../media/be615904ace9832754f0669de28abd94.png)
+> [!div class="mx-imgBorder"]
+> ![建立免費帳戶的螢幕擷取畫面。](../media/be615904ace9832754f0669de28abd94.png)
 
 **原因1：** 用來登入 Azure 的帳戶中沒有使用中的訂閱，或使用的帳戶沒有許可權可查看訂閱。
 
@@ -94,7 +114,8 @@ ms.locfileid: "82615392"
 
 ### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>錯誤：您收到「範本部署無效」錯誤
 
-![[範本部署 ...] 的螢幕擷取畫面無效」錯誤](../media/troubleshooting-marketplace-validation-error-generic.png)
+> [!div class="mx-imgBorder"]
+> ![[範本部署 ...] 的螢幕擷取畫面無效」錯誤](../media/troubleshooting-marketplace-validation-error-generic.png)
 
 採取特定動作之前，您必須先檢查活動記錄檔，以查看失敗的部署驗證的詳細錯誤。
 
@@ -103,10 +124,14 @@ ms.locfileid: "82615392"
 1. 結束目前的 Azure Marketplace 部署供應專案。
 2. 在頂端的搜尋列中，搜尋並選取 [**活動記錄**]。
 3. 尋找名為 [**驗證部署**] 且狀態為 [**失敗**] 的活動，然後選取該活動。
-   ![個別「驗證部署」活動的螢幕擷取畫面 * * 失敗 * * 狀態](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
+   
+   > [!div class="mx-imgBorder"]
+   > ![個別「驗證部署」活動的螢幕擷取畫面 * * 失敗 * * 狀態](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. 選取 [JSON]，然後向下滾動到畫面底部，直到您看到 [statusMessage] 欄位為止。
-   ![失敗活動的螢幕擷取畫面，其中包含 JSON 文字之 statusMessage 屬性周圍的紅色方塊。](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
+   
+   > [!div class="mx-imgBorder"]
+   > ![失敗活動的螢幕擷取畫面，其中包含 JSON 文字之 statusMessage 屬性周圍的紅色方塊。](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
 如果您的工作範本超過配額限制，您可以執行下列其中一項動作來修正此問題：
 
@@ -122,9 +147,10 @@ ms.locfileid: "82615392"
 3. 一旦識別出錯誤，請使用錯誤訊息和針對[常見 Azure 部署 Azure Resource Manager 錯誤進行疑難排解](../../azure-resource-manager/resource-manager-common-deployment-errors.md)中的資源，以解決問題。
 4. 刪除先前部署期間所建立的任何資源，然後再次嘗試部署範本。
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>錯誤：您的部署失敗 ....\<主機名稱>/joindomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>錯誤：您的部署失敗 .... \<hostname> /joindomain
 
-![您的部署失敗螢幕擷取畫面。](../media/e72df4d5c05d390620e07f0d7328d50f.png)
+> [!div class="mx-imgBorder"]
+> ![您的部署失敗螢幕擷取畫面。](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 
 原始錯誤的範例：
 
@@ -165,7 +191,8 @@ ms.locfileid: "82615392"
 
 ### <a name="error-vmextensionprovisioningerror"></a>錯誤： VMExtensionProvisioningError
 
-![因為終端機布建狀態失敗，所以部署的螢幕擷取畫面失敗。](../media/7aaf15615309c18a984673be73ac969a.png)
+> [!div class="mx-imgBorder"]
+> ![因為終端機布建狀態失敗，所以部署的螢幕擷取畫面失敗。](../media/7aaf15615309c18a984673be73ac969a.png)
 
 **原因1：** Windows 虛擬桌面環境發生暫時性錯誤。
 
@@ -175,7 +202,8 @@ ms.locfileid: "82615392"
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>錯誤：不允許指定的系統管理員使用者名稱
 
-![部署的螢幕擷取畫面失敗，其中不允許系統管理員指定。](../media/f2b3d3700e9517463ef88fa41875bac9.png)
+> [!div class="mx-imgBorder"]
+> ![部署的螢幕擷取畫面失敗，其中不允許系統管理員指定。](../media/f2b3d3700e9517463ef88fa41875bac9.png)
 
 原始錯誤的範例：
 
@@ -194,7 +222,8 @@ ms.locfileid: "82615392"
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>錯誤： VM 在處理延伸模組時回報失敗
 
-![在您的部署中，以終端機布建狀態完成的資源作業的螢幕擷取畫面失敗。](../media/49c4a1836a55d91cd65125cf227f411f.png)
+> [!div class="mx-imgBorder"]
+> ![在您的部署中，以終端機布建狀態完成的資源作業的螢幕擷取畫面失敗。](../media/49c4a1836a55d91cd65125cf227f411f.png)
 
 原始錯誤的範例：
 
@@ -220,7 +249,8 @@ ms.locfileid: "82615392"
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>錯誤： DeploymentFailed-PowerShell DSC 設定 ' FirstSessionHost ' 已完成，但發生錯誤
 
-![因為 PowerShell DSC 設定 ' FirstSessionHost ' 已完成但發生錯誤，所以部署的螢幕擷取畫面失敗。](../media/64870370bcbe1286906f34cf0a8646ab.png)
+> [!div class="mx-imgBorder"]
+> ![因為 PowerShell DSC 設定 ' FirstSessionHost ' 已完成但發生錯誤，所以部署的螢幕擷取畫面失敗。](../media/64870370bcbe1286906f34cf0a8646ab.png)
 
 原始錯誤的範例：
 
@@ -349,7 +379,8 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 ### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>錯誤：使用者需要 Azure 多重要素驗證（MFA）
 
-![因缺少多重要素驗證（MFA）而導致部署失敗的螢幕擷取畫面](../media/MFARequiredError.png)
+> [!div class="mx-imgBorder"]
+> ![因缺少多重要素驗證（MFA）而導致部署失敗的螢幕擷取畫面](../media/MFARequiredError.png)
 
 原始錯誤的範例：
 
@@ -375,13 +406,19 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 - IsServicePrincipal： **true**
 - AadTenantId：您所建立之服務主體的 Azure AD 租使用者識別碼
 
+### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>錯誤：設定虛擬網路時，無法使用 vmSubnet
+
+**原因：** 在 WVD Marketplace 範本中，UI 只會顯示至少有多個 IP 位址可用來做為範本中指定之 Vm 總數的子網。 子網中的可用 IP 位址實際數目，只需要等於部署的新 Vm 數，但目前的 UI 無法計算此數目。
+
+**修正：** 您可以指定子網，其中至少要有多個 IP 位址可用來作為新增的 Vm 數目，而不使用 Marketplace UI，這可以藉由在您重新[部署現有部署](expand-existing-host-pool-2019.md#redeploy-from-azure)或[使用 GITHUB 的基礎 ARM 範本來部署](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool)時，在 "**existingSubnetName**" 參數中指定子網名稱來完成。
+
 ## <a name="next-steps"></a>後續步驟
 
-- 如需疑難排解 Windows 虛擬桌面和擴大追蹤的總覽，請參閱[疑難排解總覽、意見反應和支援](troubleshoot-set-up-overview-2019.md)。
-- 若要在 Windows 虛擬桌面中設定虛擬機器（VM）時針對問題進行疑難排解，請參閱[工作階段主機虛擬機器](troubleshoot-vm-configuration-2019.md)設定。
+- 如需 Windows 虛擬桌面疑難排解和擴大追蹤的概觀，請參閱[疑難排解概觀、意見反應和支援](troubleshoot-set-up-overview-2019.md)。
+- 若要針對在 Windows 虛擬桌面中設定虛擬機器 (VM) 時的問題進行疑難排解，請參閱[工作階段主機虛擬機器設定](troubleshoot-vm-configuration-2019.md)。
 - 若要針對 Windows 虛擬桌面用戶端連接的問題進行疑難排解，請參閱[Windows 虛擬桌面服務連接](troubleshoot-service-connection-2019.md)。
 - 若要疑難排解遠端桌面用戶端的問題，請參閱針對[遠端桌面用戶端進行疑難排解](../troubleshoot-client.md)
-- 若要針對搭配 Windows 虛擬桌面使用 PowerShell 時的問題進行疑難排解，請參閱[Windows 虛擬桌面 PowerShell](troubleshoot-powershell-2019.md)。
+- 若要針對使用 PowerShell 搭配 Windows 虛擬桌面時的問題進行疑難排解，請參閱 [Windows 虛擬桌面 PowerShell](troubleshoot-powershell-2019.md)。
 - 若要深入瞭解此服務，請參閱[Windows 虛擬桌面環境](environment-setup-2019.md)。
 - 若要進行疑難排解教學課程，請參閱[教學課程：針對 Resource Manager 範本部署進行疑難排解](../../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
 - 若要了解稽核動作，請參閱 [使用 Resource Manager 來稽核作業](../../azure-resource-manager/management/view-activity-logs.md)。

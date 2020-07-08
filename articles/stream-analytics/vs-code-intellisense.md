@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
-ms.topic: conceptual
-ms.openlocfilehash: 25ece3174cd65df9c665888d913cf6b9029904b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: how-to
+ms.openlocfilehash: df6e7435d072cc88e82f3dc9a323a5b21145c432
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81394393"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037251"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>適用于 Visual Studio Code 的 Azure 串流分析工具中的 IntelliSense
 
@@ -34,13 +34,12 @@ IntelliSense 適用于適用于[VS Code 的 Azure 串流分析工具](https://ma
 
 適用于 VS Code IntelliSense 的串流分析工具提供不同類型的完成，包括語言伺服器建議、程式碼片段，以及簡單的單字文字完成。
 
-|       |         |       |
-| ----- | ------- | ----- |
+|Completion     |  類型       |
+| ----- | ------- |
 | 關鍵字 | `keyword`
-| 函數 | `build-in function`, `user defined function`  |
+| 函式 | `build-in function`, `user defined function`  |
 | 資料集名稱| `input`, `output`, `intermediate result set`|
 | 資料集資料行名稱|`input`, `intermediate result set`|
-|
 
 #### <a name="name-completion"></a>名稱完成
 

@@ -5,14 +5,14 @@ author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/18/2019
-ms.openlocfilehash: b65bc6097d4841c79a68d4313ac7a3f89f6d1dbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5428de23eb0e1b8c31f4576881526ec08ccc9698
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065924"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027825"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的計量進行監視及偵錯
 
@@ -26,7 +26,7 @@ Azure Cosmos DB 為輸送量、儲存體、一致性、可用性和延遲提供�
 
 1. 開啟 [**計量**] 窗格。 根據預設，[計量] 窗格會顯示 Azure Cosmos 帳戶中所有資料庫的儲存體、索引、要求單位計量。 您可以針對每個資料庫、容器或區域篩選這些計量。 您也可以在特定時間細微性篩選計量。 如需輸送量、儲存體、可用性、延遲和一致性計量的詳細資訊，請在個別的索引標籤上提供。 
 
-   ![Azure 入口網站中的 Cosmos DB 效能計量](./media/use-metrics/performance-metrics.png)
+   :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Azure 入口網站中的 Cosmos DB 效能計量":::
 
 下列計量可從 [**計量**] 窗格取得： 
 
@@ -46,17 +46,17 @@ Azure Cosmos DB 為輸送量、儲存體、一致性、可用性和延遲提供�
 
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>了解有多少要求成功或導致錯誤
 
-若要開始，請前往 [Azure 入口網站](https://portal.azure.com)，並瀏覽至 [計量]**** 刀鋒視窗。 在分頁中，尋找 [每1分鐘的要求數目超過容量] 圖表。 此圖表依狀態碼分段顯示每分鐘的要求總數。 如需 HTTP 狀態碼的詳細資訊，請參閱[Azure Cosmos DB 的 HTTP 狀態碼](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)。
+若要開始，請前往 [Azure 入口網站](https://portal.azure.com)，並瀏覽至 [計量]**** 刀鋒視窗。 在分頁中，尋找 [每1分鐘的要求數目超過容量] 圖表。 此圖表依狀態碼分段顯示每分鐘的要求總數。 如需 HTTP 狀態碼的詳細資訊，請參閱[Azure Cosmos DB 的 HTTP 狀態碼](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)。
 
 最常見的錯誤狀態碼是 429 (速率限制/節流)。 此錯誤表示對 Azure Cosmos DB 的要求數目多於佈建的輸送量。 此問題最常見的解決方案是為指定的集合[相應增加 RU](./set-throughput.md)。
 
-![每分鐘的要求數目](media/use-metrics/metrics-12.png)
+:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="每分鐘的要求數目":::
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>判斷所有磁碟分割中的輸送量分佈
 
 良好的磁碟分割索引鍵基數對於任何種類的可調整應用程式都很重要。 若要判斷任何分割容器的輸送量分佈且能細分至分割區，請瀏覽至 [Azure 入口網站](https://portal.azure.com)中的 [計量]**** 刀鋒視窗。 在 [輸送量]**** 索引標籤上，儲存體細目顯示在**每個實體磁碟分割每秒使用的最多 RU** 圖表中。 下圖說明資料分佈不佳的範例，如最左側有誤差的磁碟分割所示。
 
-![在下午 3:05 使用量飆升的單一磁碟分割](media/use-metrics/metrics-17.png)
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="單一資料分割看到大量使用量":::
 
 輸送量分佈不平均可能會造成磁碟分割過度使用**，這可能會導致節流要求，而且可能需要重新分割磁碟。 如需有關在 Azure Cosmos DB 中進行磁碟分割的詳細資訊，請參閱[在 Azure Cosmos DB 中進行磁碟分割和調整](./partition-data.md)。
 
@@ -64,11 +64,11 @@ Azure Cosmos DB 為輸送量、儲存體、一致性、可用性和延遲提供�
 
 良好的磁碟分割基數對於任何種類的可調整應用程式都很重要。 若要判斷任何分割容器的儲存體分佈且能細分至分割區，請前往 [Azure 入口網站](https://portal.azure.com)中的 [計量] 刀鋒視窗。 在 [儲存體] 索引標籤中，儲存體分佈顯示在前幾大分割區索引鍵圖表使用的「資料 + 索引」儲存體。 下圖說明資料儲存體分佈不佳的情況，如最左側有誤差的磁碟分割所示。
 
-![資料分佈不佳的範例](media/use-metrics/metrics-07.png)
+:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="資料分佈不佳的範例":::
 
 按一下圖表上的磁碟分割，可以找出導致資料分佈扭曲的磁碟分割索引鍵。
 
-![磁碟分割索引鍵會讓資料分佈扭曲](media/use-metrics/metrics-05.png)
+:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="磁碟分割索引鍵會讓資料分佈扭曲":::
 
 找出導致資料分佈扭曲的分割區索引鍵之後，便可能必須用更分散的分割區索引鍵來重新分割容器。 如需有關在 Azure Cosmos DB 中進行磁碟分割的詳細資訊，請參閱[在 Azure Cosmos DB 中進行磁碟分割和調整](./partition-data.md)。
 

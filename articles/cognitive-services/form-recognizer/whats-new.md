@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: ad87c7e3517aad8a611c711773c5e1cc99b24f88
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bbf098feccaf760718b97b1afb2d24bc55eef9ad
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562876"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027030"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -22,6 +22,19 @@ ms.locfileid: "85562876"
 
 > [!NOTE]
 > 表單辨識器的快速入門和指南一律會使用 API 的最新版本，除非有指定。
+
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="new-features"></a>新功能
+* v2.0**參考可供使用**請參閱 v2.0 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)和[.net](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)、 [Python](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)、 [JAVA](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)和[JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)的更新版 sdk。
+* **資料表增強功能和提取增強功能**包括精確度改進和資料表提取增強功能，特別是在不含標籤的自訂定型中學習資料表標頭和結構的功能。 
+* **貨幣支援**偵測和解壓縮全域貨幣符號。
+* **Azure Gov**表單辨識器現在也可在 Azure Gov 中取得。
+*   **增強的安全性功能**： 
+    *   **攜帶您自己的金鑰** 表單辨識器會在保存到雲端時，自動將您的資料加密，以保護它，並協助您符合組織的安全性和合規性承諾。 根據預設，您的訂用帳戶會使用 Microsoft 管理的加密金鑰。 您現在也可以使用自己的加密金鑰來管理您的訂用帳戶。 [客戶管理的金鑰（CMK）也稱為「自備金鑰」（BYOK）](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest
+)，可提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可以審核用來保護資料的加密金鑰。  
+    *   **私人端點**–可讓您在虛擬網路（VNet）上透過[私人連結安全地存取資料。](https://docs.microsoft.com/azure/private-link/private-link-overview)
+
 
 ## <a name="june-2020"></a>2020 年 6 月
 
@@ -46,8 +59,8 @@ ms.locfileid: "85562876"
   新的 SDK 支援適用于表單辨識器的 v2.0 REST API 的所有功能。 例如，您可以將具有或不含標籤的模型定型，並從表單中解壓縮文字、索引鍵值組和資料表、使用預先建立的回條服務從回條解壓縮資料，以及使用您的檔中的版面佈建服務來解壓縮文字和資料表。 您可以透過[Sdk 意見反應表單](https://aka.ms/FR_SDK_v1_feedback)，在 sdk 上分享您的意見反應。
  
 * **複製自訂模型**您現在可以使用新的「複製自訂模型」功能，在區域與訂用帳戶之間複製模型。 叫用複製自訂模型 API 之前，您必須先針對目標資源端點呼叫複製授權作業，以取得要複製到目標資源的授權。
-   * [產生複製授權](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModelAuthorization)REST API
-   * [複製自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModel)REST API 
+   * [產生複製授權](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization)REST API
+   * [複製自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel)REST API 
 
 ### <a name="security-improvements"></a>安全性改善
 
@@ -137,4 +150,4 @@ ms.locfileid: "85562876"
 
 ## <a name="next-steps"></a>後續步驟
 
-請完成[快速入門](quickstarts/curl-train-extract.md)來開始使用[表單辨識器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)。
+請完成[快速入門](quickstarts/curl-train-extract.md)來開始使用[表單辨識器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)。

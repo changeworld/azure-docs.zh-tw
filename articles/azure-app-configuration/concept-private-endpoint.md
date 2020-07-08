@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: f18672b9e3a368a833fc8cba279d748dfe3c2a9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbf2039ad695f332b69bd5429ff527a4a2534e26
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366763"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026979"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>使用 Azure 應用程式組態的私用端點
 
@@ -24,7 +24,7 @@ ms.locfileid: "79366763"
 - 使用[VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)或[ExpressRoutes](../expressroute/expressroute-locations.md)搭配私用對等互連，從連線到 VNet 的內部部署網路安全地連線到應用程式組態存放區。
 
 > [!NOTE]
-> Azure 應用程式組態提供私用端點作為公開預覽的使用方式。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。
+> 私用端點功能現已在所有區域（印度中部*除外*）中正式推出。 在**印度中部**地區，Azure 應用程式組態提供私人端點的使用作為公開預覽。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。
 
 ## <a name="conceptual-overview"></a>概念概觀
 
@@ -36,7 +36,7 @@ VNet 中的應用程式可以**使用相同的連接字串和授權機制，** �
 
 當您在 VNet 中建立服務的私人端點時，會將同意要求傳送給服務帳戶擁有者。 如果要求建立私人端點的使用者也是該帳戶的擁有者，則會自動核准此同意要求。
 
-服務帳戶擁有者可以透過`Private Endpoints` [Azure 入口網站](https://portal.azure.com)中設定存放區的索引標籤，來管理同意要求和私人端點。
+服務帳戶擁有者可以透過 `Private Endpoints` [Azure 入口網站](https://portal.azure.com)中設定存放區的索引標籤，來管理同意要求和私人端點。
 
 ### <a name="private-endpoints-for-app-configuration"></a>應用程式組態的私用端點 
 
@@ -44,25 +44,21 @@ VNet 中的應用程式可以**使用相同的連接字串和授權機制，** �
 
 ### <a name="connecting-to-private-endpoints"></a>連接到私人端點
 
-Azure 依賴 DNS 解析，透過私人連結將 VNet 的連線路由至設定存放區。 選取您的應用程式組態存放區，然後選取 [**設定** > ] [**存取金鑰**]，即可在 Azure 入口網站中快速找到連接字串。  
+Azure 依賴 DNS 解析，透過私人連結將 VNet 的連線路由至設定存放區。 選取您的應用程式組態存放區，然後選取 [**設定**] [  >  **存取金鑰**]，即可在 Azure 入口網站中快速找到連接字串。  
 
 > [!IMPORTANT]
-> 使用相同的連接字串連接到使用私人端點的應用程式組態存放區，就像使用公用端點一樣。 請勿使用其`privatelink`子域 URL 連接到儲存體帳戶。
+> 使用相同的連接字串連接到使用私人端點的應用程式組態存放區，就像使用公用端點一樣。 請勿使用其子域 URL 連接到存放區 `privatelink` 。
 
 ## <a name="dns-changes-for-private-endpoints"></a>私人端點的 DNS 變更
 
-當您建立私人端點時，設定存放區的 DNS CNAME 資源記錄會更新為具有前置`privatelink`詞之子域中的別名。 Azure 也會建立對應至`privatelink`子域的[私人 dns 區域](../dns/private-dns-overview.md)，並以 DNS 做為私人端點的資源記錄。
+當您建立私人端點時，設定存放區的 DNS CNAME 資源記錄會更新為具有前置詞之子域中的別名 `privatelink` 。 Azure 也會建立對應至子域的[私人 dns 區域](../dns/private-dns-overview.md) `privatelink` ，並以 DNS 做為私人端點的資源記錄。
 
-當您從 VNet 外部解析端點 URL 時，它會解析為存放區的公用端點。 從裝載私用端點的 VNet 內解析時，端點 URL 會解析為私用端點。
+當您從裝載私用端點的 VNet 內解析端點 URL 時，它會解析為存放區的私用端點。 從 VNet 外部解析時，端點 URL 會解析為公用端點。 當您建立私用端點時，會停用公用端點。
 
-您可以透過使用 Azure 防火牆服務的公用端點，在 VNet 外部控制用戶端的存取權。
-
-這種方法可讓您**使用相同的連接字串**來存取存放區，以用於裝載私人端點的 VNet 和 vnet 外部的用戶端。
-
-如果您在網路上使用自訂 DNS 伺服器，用戶端必須能夠將服務端點的完整功能變數名稱（FQDN）解析為私人端點 IP 位址。 將您的 DNS 伺服器設定為將私人連結子域委派給 VNet 的私人 DNS 區域，或設定`AppConfigInstanceA.privatelink.azconfig.io`具有私人端點 IP 位址的 A 記錄。
+如果您在網路上使用自訂 DNS 伺服器，用戶端必須能夠將服務端點的完整功能變數名稱（FQDN）解析為私人端點 IP 位址。 將您的 DNS 伺服器設定為將私人連結子域委派給 VNet 的私人 DNS 區域，或設定 `AppConfigInstanceA.privatelink.azconfig.io` 具有私人端點 IP 位址的 A 記錄。
 
 > [!TIP]
-> 使用自訂或內部部署 DNS 伺服器時，您應該將 DNS 伺服器設定為將`privatelink`子域中的存放區名稱解析為私人端點 IP 位址。 若要這麼做，您可以`privatelink`將子域委派給 VNet 的私人 DNS 區域，或在 dns 伺服器上設定 dns 區域，並新增 dns A 記錄。
+> 使用自訂或內部部署 DNS 伺服器時，您應該將 DNS 伺服器設定為將子域中的存放區名稱解析 `privatelink` 為私人端點 IP 位址。 若要這麼做，您可以將 `privatelink` 子域委派給 VNet 的私人 DNS 區域，或在 dns 伺服器上設定 dns 區域，並新增 Dns A 記錄。
 
 ## <a name="pricing"></a>定價
 

@@ -3,12 +3,12 @@ title: 如何建立 Linux 的客體設定原則
 description: 了解如何建立 Linux 的 Azure 原則客體設定原則。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a636b63c80799f8bfe3dfd3a0eb37d1367cdcf0d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654872"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026707"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何建立 Linux 的客體設定原則
 
@@ -81,7 +81,7 @@ ms.locfileid: "83654872"
 
 #### <a name="configuration-requirements"></a>組態需求
 
-自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔案名稱、MOF 檔案中的設定名稱，以及 Resource Manager 範本中的客體指派名稱，都必須相同。
+自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔案名稱、MOF 檔案中的設定名稱，以及 Azure Resource Manager 範本（ARM 範本）中的來賓指派名稱必須相同。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux 上的自訂客體設定組態
 
@@ -347,7 +347,7 @@ describe file(attr_path) do
 end
 ```
 
-Cmdlet `New-GuestConfigurationPolicy` 與 `Test-GuestConfigurationPolicyPackage` 包含名為 **Parameters** 的參數。 此參數會使用雜湊表定義，包括每個參數的所有詳細資料，並為用來建立每個 Azure 原則定義的檔案建立所有必要區段。
+Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名為**參數**的參數。 此參數會使用雜湊表定義，包括每個參數的所有詳細資料，並為用來建立每個 Azure 原則定義的檔案建立所有必要區段。
 
 下列範例會建立原則定義來稽核檔案路徑，使用者可在原則指派時提供路徑。
 
@@ -371,7 +371,7 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Linux file path.' `
     -Description 'Audit that a file path exists on a Linux machine.' `
     -Path './policies' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 

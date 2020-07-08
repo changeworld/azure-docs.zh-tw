@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c419c2127b1c5fe3aaa60c6e828ff0c5a6676c07
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77598539"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340823"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立及管理 Azure 檔案共用 
 本指南會逐步說明透過 PowerShell 來使用 [Azure 檔案共用](storage-files-introduction.md)的基本概念。 Azure 檔案共用與其他檔案共用類似，但它儲存在雲端中，並且由 Azure 平台支援。 Azure 檔案共用支援業界標準 SMB 通訊協定，並可在多個機器、應用程式及執行個體上啟用檔案共用。 
@@ -26,7 +26,7 @@ ms.locfileid: "77598539"
 ## <a name="create-a-resource-group"></a>建立資源群組
 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 如果您尚未擁有 Azure 資源群組，則可以使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Cmdlet 來建立一個新資源群組。 
 
-下列範例會在「美國西部 2」區域建立名為 myResourceGroup  的資源群組：
+下列範例會在「美國西部 2」區域建立名為 myResourceGroup 的資源群組：
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -40,7 +40,7 @@ New-AzResourceGroup `
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 儲存體帳戶是可供您用來部署 Azure 檔案共用的共用儲存體集區。 儲存體帳戶可包含無限制數目的共用，而共用可儲存無限制數目的檔案，最多可達儲存體帳戶的容量限制。 本範例會建立一般用途第 2 版 (GPv2 儲存體帳戶)，其可以在硬碟 (HDD) 轉動式媒體上儲存標準 Azure 檔案共用或其他儲存體資源 (例如 Blob 或佇列)。 Azure 檔案儲存體也支援進階固態硬碟 (SSD)；FileStorage 儲存體帳戶中可建立進階 Azure 檔案共用。
 
-此範例會使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) Cmdlet 來建立儲存體帳戶。 儲存體帳戶的名稱為 *mystorageaccount\<隨機數字>* ，而且該儲存體帳戶的參考會儲存在 **$storageAcct** 變數中。 儲存體帳戶名稱必須是唯一的，因此，請使用 `Get-Random` 為名稱附加一個數字，使其成為唯一名稱。 
+此範例會使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) Cmdlet 來建立儲存體帳戶。 儲存體帳戶的名稱為 mystorageaccount\<random number>，而且該儲存體帳戶的參考會儲存在 **$storageAcct** 變數中。 儲存體帳戶名稱必須是唯一的，因此，請使用 `Get-Random` 為名稱附加一個數字，使其成為唯一名稱。 
 
 ```azurepowershell-interactive 
 $storageAccountName = "mystorageacct$(Get-Random)"
@@ -199,7 +199,7 @@ Get-AzStorageFile `
 
 ```azurepowershell-interactive
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name $shareName
-$snapshot = $share.Snapshot()
+$snapshot = $share.CloudFileShare.Snapshot()
 ```
 
 ### <a name="browse-share-snapshots"></a>瀏覽共用快照集

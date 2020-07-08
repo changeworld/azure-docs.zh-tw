@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 77cf98cae943b8652e20ed48fd41ed717d1e4fc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba90bb89d731c343dfcb3778433d444f2d9a617a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262118"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025857"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>使用 Azure Cosmos DB 模擬器建置工作在 Azure DevOps 中設定 CI/CD 管線
 
@@ -24,28 +24,28 @@ Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機�
 
 ## <a name="install-the-emulator-build-task"></a>安裝模擬器建置工作
 
-若要使用建置工作，首先我們需要將它安裝到 Azure DevOps 組織。 在 [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) (英文) 中尋找 **Azure Cosmos DB 模擬器**擴充功能，然後按一下 [免費取得]  。
+若要使用建置工作，首先我們需要將它安裝到 Azure DevOps 組織。 在 [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) (英文) 中尋找 **Azure Cosmos DB 模擬器**擴充功能，然後按一下 [免費取得]。
 
-![在 Azure DevOps Marketplace 中尋找 Azure Cosmos DB 模擬器建置工作並安裝](./media/tutorial-setup-ci-cd/addExtension_1.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_1.png" alt-text="在 Azure DevOps Marketplace 中尋找 Azure Cosmos DB 模擬器建置工作並進行安裝":::
 
 接下來，選擇要在其中安裝擴充功能的組織。 
 
 > [!NOTE]
 > 若要將擴充功能安裝到 Azure DevOps 組織，您必須是帳戶擁有者或專案集合管理員。 如果您沒有權限，但是您是帳戶成員，可以改為要求擴充功能。 [深入了解。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
-![選擇要安裝擴充功能的 Azure DevOps 組織](./media/tutorial-setup-ci-cd/addExtension_2.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="選擇要安裝擴充功能的 Azure DevOps 組織":::
 
 ## <a name="create-a-build-definition"></a>建立組建定義
 
 在安裝擴充功能後，現在請登入您 Azure DevOps 的帳戶，並從專案儀表板中尋找您的專案。 您可以將[組建管線](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)新增至您的專案，或修改現有的組建管線。 如果您已有組建定義，可以直接跳到[將模擬器建置工作新增至組建定義](#addEmulatorBuildTaskToBuildDefinition)。
 
-1. 若要建立新的組建定義，請瀏覽至 Azure DevOps 中的 [**組建**] 索引標籤。 選取 [ **+新建**]。 \> [新增組建管線] 
+1. 若要建立新的組建定義，請瀏覽至 Azure DevOps 中的 [**組建**] 索引標籤。 選取 [ **+新建**]。 \> [新增組建管線]
 
-   ![建立新的組建管線](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="建立新的建置管線":::
 
-2. 依序選取所需的**來源**、[Team 專案]  、[存放庫]  、[手動和排程組建的預設分支]  。 選擇所需的選項後，請選取 [繼續] 
+2. 依序選取所需的**來源**、[Team 專案]、[存放庫]、[手動和排程組建的預設分支]。 選擇所需的選項後，請選取 [繼續]
 
-   ![選取組建管線的 Team 專案、存放庫和分支](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="選取組建管線的 Team 專案、存放庫和分支":::
 
 3. 最後，選取所需的組建管線範本。 我們會在本教學課程中選取 **ASP.NET** 範本。 現在，您已有可設定成使用 Azure Cosmos DB 模擬器建置工作的組建管線。 
 
@@ -61,11 +61,11 @@ Start-CosmosDbEmulator
 
 ## <a name="add-the-task-to-a-build-pipeline"></a><a name="addEmulatorBuildTaskToBuildDefinition"></a>將工作新增至組建管線
 
-1. 將工作新增至組建管線之前，您應先新增代理程式作業。 請瀏覽至您的組建管線並選取 **...** ，然後選擇 [新增代理程式作業]  。
+1. 將工作新增至組建管線之前，您應先新增代理程式作業。 請瀏覽至您的組建管線並選取 **...** ，然後選擇 [新增代理程式作業]。
 
-1. 接著，選取代理程式作業旁的 **+** 符號，以新增模擬器組建工作。 在搜尋方塊中搜尋 **cosmos**，選取 [Azure Cosmos DB 模擬器]  ，並將其新增至代理程式作業。 建置工作會啟動已有 Cosmos DB 模擬器執行個體執行於其上的容器。 Azure Cosmos DB 模擬器工作應安排在預期模擬器處於執行中狀態的任何其他工作之前。
+1. 接著，選取代理程式作業旁的 **+** 符號，以新增模擬器組建工作。 在搜尋方塊中搜尋 **cosmos**，選取 [Azure Cosmos DB 模擬器]，並將其新增至代理程式作業。 建置工作會啟動已有 Cosmos DB 模擬器執行個體執行於其上的容器。 Azure Cosmos DB 模擬器工作應安排在預期模擬器處於執行中狀態的任何其他工作之前。
 
-   ![將模擬器建置工作新增至組建定義](./media/tutorial-setup-ci-cd/addExtension_3.png)
+   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="將模擬器建置工作新增至組建定義":::
 
 在本教學課程中，您會先新增工作，以在執行測試之前確定有可用的模擬器。
 
@@ -138,23 +138,23 @@ namespace todo.Tests
 }
 ```
 
-巡覽至 Visual Studio 測試工作中的執行選項。 在 [設定檔]  選項中，請指定測試將使用 **.runsettings** 檔案進行設定。 在 [覆寫測試回合參數]  選項中，於 `-endpoint $(CosmosDbEmulator.Endpoint)` 中新增。 如此一來，就會設定測試工作參考模擬器建置工作的端點，而不是在 **.runsettings** 檔案中定義的端點。  
+巡覽至 Visual Studio 測試工作中的執行選項。 在 [設定檔] 選項中，請指定測試將使用 **.runsettings** 檔案進行設定。 在 [覆寫測試回合參數] 選項中，於 `-endpoint $(CosmosDbEmulator.Endpoint)` 中新增。 如此一來，就會設定測試工作參考模擬器建置工作的端點，而不是在 **.runsettings** 檔案中定義的端點。  
 
-![使用模擬器建置工作端點來覆寫端點變數](./media/tutorial-setup-ci-cd/addExtension_5.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="使用模擬器建置工作端點來覆寫端點變數":::
 
 ## <a name="run-the-build"></a>執行組建
 
 現在，請將組建**儲存並排入佇列中**。 
 
-![儲存並執行組建](./media/tutorial-setup-ci-cd/runBuild_1.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="儲存並執行組建":::
 
 一旦開始建置，請觀察 Cosmos DB 模擬器工作是否開始使用安裝的模擬器下拉 Docker 映像。 
 
-![儲存並執行組建](./media/tutorial-setup-ci-cd/runBuild_4.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="儲存並執行組建":::
 
 在建置完成之後，請觀察您的測試是否通過，所有測試都是針對來自建置工作的 Cosmos DB 模擬器而執行！
 
-![儲存並執行組建](./media/tutorial-setup-ci-cd/buildComplete_1.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="儲存並執行組建":::
 
 ## <a name="set-up-using-yaml"></a>使用 YAML 進行設定
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 88e9cdfa8ea4554a44ddfc25cde2b0eb2aed7a57
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682695"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028129"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>資料科學專案的平台和工具
 
@@ -110,16 +110,18 @@ Microsoft 的 TDSP 小組已發佈兩個端對端逐步解說，示範如何在 
 
 如果您遵照 **Windows** 上的 TDSP，您需要安裝 **Git 認證管理員 (GCM)** ，以與 Git 存放庫通訊。 若要安裝 GCM，您必須先安裝 **Chocolaty**。 若要安裝 Chocolaty 和 GCM，以**系統管理員**身分在 Windows PowerShell 中執行下列命令：  
 
-    iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
-    choco install git-credential-manager-for-windows -y
-    
+```powershell
+iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+choco install git-credential-manager-for-windows -y
+```  
 
 ### <a name="install-git-on-linux-centos-machines"></a>在 Linux (CentOS) 機器上安裝 Git
 
 執行下列 bash 命令以在 Linux (CentOS) 機器上安裝 Git：
 
-    sudo yum install git
-
+```powershell
+sudo yum install git
+```
 
 ### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>產生 Linux (CentOS) 機器的公開 SSH 金鑰
 

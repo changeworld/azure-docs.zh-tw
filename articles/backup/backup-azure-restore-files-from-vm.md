@@ -3,12 +3,13 @@ title: 從 Azure VM 備份復原檔案和資料夾
 description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點復原檔案和資料夾。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: c72794999abbbf5d29b376615015fb5778b7d9fe
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.custom: references_regions
+ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757971"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027159"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -228,7 +229,7 @@ mount [RAID Disk Path] [/mountpath]
 
 - `download.microsoft.com`
 - 復原服務 URL (geo-name 是指復原服務保存庫所在的區域)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (適用於 Azure 公用地區)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com`（適用于 Azure 公用區域）
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (適用於 Azure China 21Vianet)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us` (適用於 Azure US Government)
   - `https://pod01-rec2.geo-name.backup.windowsazure.de` (適用於 Azure 德國)
@@ -236,7 +237,7 @@ mount [RAID Disk Path] [/mountpath]
 
 > [!NOTE]
 >
-> - 下載的指令碼檔案名稱將會在 URL 中填入 **geo-name**。 例如：下載的指令碼名稱開頭為 \'VMname\'\_\'geoname\'_\'GUID\'，例如 *ContosoVM_wcus_12345678*
+> - 下載的指令碼檔案名稱將會在 URL 中填入 **geo-name**。 例如：下載的腳本名稱以 \' VMname \' \_ \' geoname \' _ GUID 開頭 \' \' ，例如*ContosoVM_wcus_12345678*
 > - URL 會是 <https://pod01-rec2.wcus.backup.windowsazure.com>」
 >
 
@@ -246,9 +247,9 @@ mount [RAID Disk Path] [/mountpath]
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>從具有大型磁碟的虛擬機器備份進行檔案復原
 
-本節說明如何從包含超過 16 個磁碟，且每個磁碟大小大於 32 TB 的 Azure 虛擬機器備份執行檔案復原。
+本節說明如何從具有超過16個磁片的 Azure 虛擬機器備份執行檔案復原，或每個磁片大小大於 4 TB。
 
-檔案復原程序會從備份連結所有磁碟，因此在使用大量磁碟 (>16) 或大型磁碟 (每個磁碟 > 32 TB) 時，建議採用下列動作點：
+因為檔案復原程式會從備份附加所有磁片，所以當使用大量磁片（>16）或大型磁片（每個 > 4 TB）時，建議採用下列動作點：
 
 - 保留一部還原伺服器 (Azure VM D2v3 VM) 以進行檔案復原。 您僅能針對檔案復原使用該伺服器，然後在不需要時將其關機。 不建議在原始電腦上還原，因為這對 VM 本身會有顯著的影響。
 - 接著，執行指令碼一次，以檢查檔案復原作業是否成功。
