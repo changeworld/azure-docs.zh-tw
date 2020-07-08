@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bc691299f38d562aee5c08a89e10372331663f8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c344d7bd7007dfbea366ea597ec622e35bf1e2eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561774"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用 "full" Lucene 搜尋語法（Azure 認知搜尋中的 advanced 查詢）
 
@@ -53,7 +53,7 @@ URL 組合具有下列元素：
 + **`https://azs-playground.search.windows.net/`** 是由 Azure 認知搜尋開發小組維護的沙箱搜尋服務。 
 + **`indexes/nycjobs/`** 這是該服務的索引集合中的 NYC 作業索引。 要求上必須同時有服務名稱和索引。
 + **`docs`** 是包含所有可搜尋內容的檔集合。 要求標頭中提供的查詢 API 金鑰僅適用於以文件集合為目標的讀取作業。
-+ **`api-version=2019-05-06`** 設定 api 版本，這是每個要求的必要參數。
++ **`api-version=2020-06-30`** 設定 api 版本，這是每個要求的必要參數。
 + **`search=*`** 這是查詢字串，在初始查詢中為 null，傳回前50個結果（預設值）。
 
 ## <a name="send-your-first-query"></a>傳送第一個查詢
@@ -63,19 +63,19 @@ URL 組合具有下列元素：
 將此 URL 貼入 REST 用戶端做為驗證步驟，並查看檔結構。
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=*
   ```
 
-查詢字串**`search=*`** 是未指定的搜尋，相當於 null 或空的搜尋。 這是您可以執行的最簡單搜尋。
+查詢字串是未 **`search=*`** 指定的搜尋，相當於 null 或空的搜尋。 這是您可以執行的最簡單搜尋。
 
-（選擇性）您可以**`$count=true`** 新增至 URL，以傳回符合搜尋條件的檔計數。 在空的搜尋字串上，這會是索引中的所有文件 (在 NYC 作業的案例中大約有 2800 份)。
+（選擇性）您可以新增 **`$count=true`** 至 URL，以傳回符合搜尋條件的檔計數。 在空的搜尋字串上，這會是索引中的所有文件 (在 NYC 作業的案例中大約有 2800 份)。
 
 ## <a name="how-to-invoke-full-lucene-parsing"></a>如何叫用完整 Lucene 剖析
 
 新增 **queryType=full** 以叫用完整查詢語法，覆寫預設的簡單查詢語法。 
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&search=*
 ```
 
 本文中的所有範例會指定 **queryType=full** 搜尋參數，表示 Lucene 查詢剖析器處理的完整語法。 
@@ -101,12 +101,12 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 逗號後面的空格是選擇性的。
 
 > [!Tip]
-> 當您從應用程式程式碼使用 REST API 時，別忘了 URL 編碼的`$select`參數`searchFields`，例如和。
+> 當您從應用程式程式碼使用 REST API 時，別忘了 URL 編碼的參數，例如 `$select` 和 `searchFields` 。
 
 ### <a name="full-url"></a>完整 URL
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
 ```
 
 此查詢的回應會如下列螢幕擷取畫面所示。
@@ -134,7 +134,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 ### <a name="full-url"></a>完整 URL
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
   ![Postman 範例回應](media/search-query-lucene-examples/intrafieldfilter.png)
@@ -145,12 +145,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 - `state:("New York" OR "New Jersey")`
 - `business_title:(senior NOT junior) AND posting_type:external`
 
-如果您想要將兩個字串都評估為單一實體，請務必將多個字串放在引號中，例如在此案例中，搜尋`state`欄位中的兩個不同位置。 此外，請確定運算子是大寫，如同您看到的 NOT 和 AND。
+如果您想要將兩個字串都評估為單一實體，請務必將多個字串放在引號中，例如在此案例中，搜尋欄位中的兩個不同位置 `state` 。 此外，請確定運算子是大寫，如同您看到的 NOT 和 AND。
 
 **FieldName： searchExpression**中指定的欄位必須是可搜尋的欄位。 如需有關如何在欄位定義中使用索引屬性的詳細資訊，請參閱[建立索引（Azure 認知搜尋 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index) 。
 
 > [!NOTE]
-> 在上述範例中，我們不需要使用`searchFields`參數，因為查詢的每個部分都有明確指定的功能變數名稱。 不過，如果您想要執行`searchFields`查詢，其中某些部分的範圍設定為特定欄位，則您仍然可以使用參數，其餘的可能會套用至數個欄位。 例如， `search=business_title:(senior NOT junior) AND external&searchFields=posting_type`查詢只會`senior NOT junior`符合`business_title`欄位，而它會比對 "external" 與`posting_type`欄位。 **FieldName： searchExpression**中提供的功能變數名稱一律優先于`searchFields`參數，因此在此範例中，我們不需要在`business_title` `searchFields`參數中包含。
+> 在上述範例中，我們不需要使用 `searchFields` 參數，因為查詢的每個部分都有明確指定的功能變數名稱。 不過， `searchFields` 如果您想要執行查詢，其中某些部分的範圍設定為特定欄位，則您仍然可以使用參數，其餘的可能會套用至數個欄位。 例如，查詢 `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` 只會符合 `senior NOT junior` `business_title` 欄位，而它會比對 "external" 與 `posting_type` 欄位。 **FieldName： searchExpression**中提供的功能變數名稱一律優先于 `searchFields` 參數，因此在此範例中，我們不需要 `business_title` 在參數中包含 `searchFields` 。
 
 ## <a name="example-3-fuzzy-search"></a>範例 3：模糊搜尋
 
@@ -174,7 +174,7 @@ searchFields=business_title&$select=business_title&search=business_title:asosiat
 此查詢會搜尋含有 "associate" 一詞 (刻意拼錯) 的工作︰
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
 ```
   ![模糊搜尋回應](media/search-query-lucene-examples/fuzzysearch.png)
 
@@ -197,14 +197,14 @@ searchFields=business_title&$select=business_title&search=business_title:%22seni
 在此查詢中，會搜尋含有 "senior analyst" 一詞，且將其分隔的字數不超過一個字的工作︰
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
   ![鄰近查詢](media/search-query-lucene-examples/proximity-before.png)
 
 移除 "senior analyst" 一詞之間的單字，然後再試一次。 請注意，相較於上一個查詢傳回 10 份文件，此查詢僅傳回 8 份文件。
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
 ```
 
 ## <a name="example-5-term-boosting"></a>範例 5：詞彙提升
@@ -215,14 +215,14 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 在此 "before" 查詢中，搜尋含有 *computer analyst* 的工作時，我們會發現沒有同時包含 *computer* 和 *analyst* 兩個單字的結果，但是 *computer* 工作顯示於結果頂端。
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
   ![before 的詞彙提升](media/search-query-lucene-examples/termboostingbefore.png)
 
 在 "after" 查詢中再次執行此搜尋，但這次在兩個單字未同時存在的情況下，提升含有 *analyst* 一詞的結果，使其高於 *computer* 一詞。 
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
 ```
 上述查詢較易讀的版本為 `search=business_title:computer analyst^2`。 在可行的查詢中，`^2` 會編碼為 `%5E2`，因此難以檢視。
 
@@ -247,10 +247,10 @@ searchFields=business_title&$select=business_title&search=business_title:/(Sen|J
 
 ### <a name="full-url"></a>完整 URL
 
-在此查詢中，搜尋具有「資深」或「初級」一`search=business_title:/(Sen|Jun)ior/`詞的作業：。
+在此查詢中，搜尋具有「資深」或「初級」一詞的作業： `search=business_title:/(Sen|Jun)ior/` 。
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
   ![RegEx 查詢](media/search-query-lucene-examples/regex.png)
@@ -273,7 +273,7 @@ searchFields=business_title&$select=business_title&search=business_title:prog*
 在此查詢中，搜尋包含前置詞 'prog' 的工作，其中包括內含 programming 與 programmer 的職稱。 您無法使用 * 或 ? 符號做為搜尋的第一個字元。
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
   ![萬用字元查詢](media/search-query-lucene-examples/wildcard.png)
 

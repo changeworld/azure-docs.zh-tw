@@ -9,31 +9,31 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fe61cf2a53b8e128a6cb58465cbb4785faa89d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283052"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562050"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立複雜資料類型的模型
 
 用來填入 Azure 認知搜尋索引的外部資料集可能會有許多圖形。 有時候它們會包含階層式或嵌套子結構。 範例可能包括單一客戶的多個位址、單一 SKU 的多種色彩和大小、單一書籍的多位作者等等。 在模型化詞彙中，您可能會看到這些結構稱為「*複雜*」、「*複合*」、「*複合*」或「*匯總*」資料類型。 Azure 認知搜尋用於此概念的一詞是**複雜類型**。 在 Azure 認知搜尋中，複雜類型會使用**複雜欄位**進行模型化。 「複雜欄位」是一個欄位，其中包含可以是任何資料類型（包括其他複雜類型）的子系（子欄位）。 其運作方式類似于程式設計語言中的結構化資料類型。
 
-複雜欄位代表檔中的單一物件，或物件的陣列，視資料類型而定。 類型`Edm.ComplexType`的欄位代表單一物件，而類型`Collection(Edm.ComplexType)`的欄位代表物件的陣列。
+複雜欄位代表檔中的單一物件，或物件的陣列，視資料類型而定。 類型的欄位 `Edm.ComplexType` 代表單一物件，而類型的欄位 `Collection(Edm.ComplexType)` 代表物件的陣列。
 
 Azure 認知搜尋原本就支援複雜的類型和集合。 這些類型可讓您在 Azure 認知搜尋索引中建立幾乎任何 JSON 結構的模型。 在舊版的 Azure 認知搜尋 Api 中，只能匯入簡維資料列集。 在最新版本中，您的索引現在可以更緊密地對應至來源資料。 換句話說，如果您的來源資料有複雜的類型，您的索引也可以有複雜類型。
 
 若要開始，我們建議使用[飯店資料集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)，您可以在 Azure 入口網站的 [匯**入資料**] 中載入。 Wizard 會偵測來源中的複雜類型，並根據偵測到的結構建議索引架構。
 
 > [!Note]
-> 複雜類型的支援已在中`api-version=2019-05-06`正式推出。 
+> 從開始，複雜類型的支援已正式推出 `api-version=2019-05-06` 。 
 >
 > 如果您的搜尋解決方案是根據集合中壓平合併資料集的先前因應措施而建立，您應該將索引變更為包含最新 API 版本中支援的複雜類型。 如需有關升級 API 版本的詳細資訊，請參閱[升級至最新的 REST API 版本](search-api-migration.md)或[升級至最新的 .net SDK 版本](search-dotnet-sdk-migration-version-9.md)。
 
 ## <a name="example-of-a-complex-structure"></a>複雜結構的範例
 
-下列 JSON 檔是由簡單欄位和複雜欄位所組成。 複雜欄位（例如`Address`和`Rooms`）有子欄位。 `Address`針對這些子欄位具有一組值，因為它是檔中的單一物件。 相反地， `Rooms`有多組值用於其子欄位，集合中的每個物件各一個。
+下列 JSON 檔是由簡單欄位和複雜欄位所組成。 複雜欄位（例如 `Address` 和 `Rooms` ）有子欄位。 `Address`針對這些子欄位具有一組值，因為它是檔中的單一物件。 相反地， `Rooms` 有多組值用於其子欄位，集合中的每個物件各一個。
 
 ```json
 {
@@ -97,13 +97,13 @@ Azure 認知搜尋原本就支援複雜的類型和集合。 這些類型可讓�
 
 ### <a name="structural-updates-to-the-definition"></a>定義的結構更新
 
-您可以隨時在複雜欄位中加入新的子欄位，而不需要重建索引。 例如，您可以將 "ZipCode" `Address`新增至或「可`Rooms`設施」，就像將最上層欄位加入至索引一樣。 針對新欄位，現有的檔會有 null 值，直到您藉由更新資料明確填入這些欄位為止。
+您可以隨時在複雜欄位中加入新的子欄位，而不需要重建索引。 例如，您可以將 "ZipCode" 新增至或「可設施」 `Address` `Rooms` ，就像將最上層欄位加入至索引一樣。 針對新欄位，現有的檔會有 null 值，直到您藉由更新資料明確填入這些欄位為止。
 
 請注意，在複雜型別中，每個子欄位都有一個型別，而且可能有屬性，就像最上層的欄位一樣
 
 ### <a name="data-updates"></a>資料更新
 
-使用`upload`動作來更新索引中的現有檔，在複雜且簡單的欄位上的運作方式相同--所有欄位都會被取代。 不過， `merge` （或`mergeOrUpload`套用至現有檔時）在所有欄位中都不會有相同的作用。 具體而言`merge` ，不支援合併集合中的元素。 這項限制存在於基本類型和複雜集合的集合中。 若要更新集合，您必須取出完整的集合值、進行變更，然後在索引 API 要求中包含新的集合。
+使用動作來更新索引中的現有檔，在 `upload` 複雜且簡單的欄位上的運作方式相同--所有欄位都會被取代。 不過， `merge` （或套用 `mergeOrUpload` 至現有檔時）在所有欄位中都不會有相同的作用。 具體而言， `merge` 不支援合併集合中的元素。 這項限制存在於基本類型和複雜集合的集合中。 若要更新集合，您必須取出完整的集合值、進行變更，然後在索引 API 要求中包含新的集合。
 
 ## <a name="searching-complex-fields"></a>搜尋複雜欄位
 
@@ -113,15 +113,15 @@ Azure 認知搜尋原本就支援複雜的類型和集合。 這些類型可讓�
 
     search=Address/City:Portland AND Address/State:OR
 
-這類查詢與篩選不同，這對全文檢索搜尋*而言是不相關的。* 在 [篩選準則] 中，使用[ `any`或`all`](search-query-odata-collection-operators.md)中的範圍變數，將複雜集合的子欄位查詢相互關聯。 上述的 Lucene 查詢會傳回包含 "Maine" 和 "上海，俄勒岡" 的檔，以及其他俄勒岡中的城市。 之所以會發生這種情況，是因為每個子句都會套用到整個檔中其欄位的所有值，因此沒有「目前的子檔」的概念。 如需這項功能的詳細資訊，請參閱[瞭解 Azure 認知搜尋中的 OData 集合篩選](search-query-understand-collection-filters.md)。
+這類查詢與篩選不同，這對全文檢索搜尋*而言是不相關的。* 在 [篩選準則] 中，使用[ `any` 或 `all` ](search-query-odata-collection-operators.md)中的範圍變數，將複雜集合的子欄位查詢相互關聯。 上述的 Lucene 查詢會傳回包含 "Maine" 和 "上海，俄勒岡" 的檔，以及其他俄勒岡中的城市。 之所以會發生這種情況，是因為每個子句都會套用到整個檔中其欄位的所有值，因此沒有「目前的子檔」的概念。 如需這項功能的詳細資訊，請參閱[瞭解 Azure 認知搜尋中的 OData 集合篩選](search-query-understand-collection-filters.md)。
 
 ## <a name="selecting-complex-fields"></a>選取複雜欄位
 
-`$select`參數是用來選擇要在搜尋結果中傳回的欄位。 若要使用這個參數來選取複雜欄位的特定子欄位，請包含以斜線（`/`）分隔的父欄位和子欄位。
+`$select`參數是用來選擇要在搜尋結果中傳回的欄位。 若要使用這個參數來選取複雜欄位的特定子欄位，請包含以斜線（）分隔的父欄位和子欄位 `/` 。
 
     $select=HotelName, Address/City, Rooms/BaseRate
 
-如果您想要在搜尋結果中，欄位必須在索引中標記為可抓取。 只有標示為可抓取的`$select`欄位可以在語句中使用。
+如果您想要在搜尋結果中，欄位必須在索引中標記為可抓取。 只有標示為可抓取的欄位可以在語句中使用 `$select` 。
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>篩選、facet 和排序複雜欄位
 
@@ -129,15 +129,15 @@ Azure 認知搜尋原本就支援複雜的類型和集合。 這些類型可讓�
 
 ### <a name="faceting-sub-fields"></a>Facet 子欄位
 
-任何子欄位都可以標記為 facetable，除非它是或`Edm.GeographyPoint` `Collection(Edm.GeographyPoint)`類型。
+任何子欄位都可以標記為 facetable，除非它是或類型 `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)` 。
 
-面向結果中傳回的檔計數是針對父檔（飯店）計算，而不是針對複雜集合（聊天室）中的子檔。 例如，假設飯店有20個 "suite" 類型的聊天室。 指定此 facet 參數`facet=Rooms/Type`時，facet 計數會是旅館的一個，而不是房間的20個。
+面向結果中傳回的檔計數是針對父檔（飯店）計算，而不是針對複雜集合（聊天室）中的子檔。 例如，假設飯店有20個 "suite" 類型的聊天室。 指定此 facet 參數 `facet=Rooms/Type` 時，facet 計數會是旅館的一個，而不是房間的20個。
 
 ### <a name="sorting-complex-fields"></a>排序複雜欄位
 
 排序作業適用于檔（飯店），而不是子檔（聊天室）。 當您有複雜的類型集合（例如房間）時，請務必瞭解您無法在會議室上進行排序。 事實上，您無法對任何集合進行排序。
 
-當欄位的每份檔都有單一值、欄位是簡單欄位或複雜型別中的子欄位時，排序作業就會運作。 例如，允許`Address/City`可排序，因為每個飯店只有一個位址，因此`$orderby=Address/City`會依城市排序旅館。
+當欄位的每份檔都有單一值、欄位是簡單欄位或複雜型別中的子欄位時，排序作業就會運作。 例如， `Address/City` 允許可排序，因為每個飯店只有一個位址，因此 `$orderby=Address/City` 會依城市排序旅館。
 
 ### <a name="filtering-on-complex-fields"></a>篩選複雜欄位
 
@@ -145,11 +145,11 @@ Azure 認知搜尋原本就支援複雜的類型和集合。 這些類型可讓�
 
     $filter=Address/Country eq 'Canada'
 
-若要篩選複雜集合欄位，您可以使用**lambda 運算式**搭配[ `any`和`all`運算子](search-query-odata-collection-operators.md)。 在此情況下，lambda 運算式的**範圍變數**是具有子欄位的物件。 您可以使用標準的 OData 路徑語法來參考這些子欄位。 例如，下列篩選會傳回所有具有至少一個 deluxe 室和所有非吸煙室的飯店：
+若要篩選複雜集合欄位，您可以使用**lambda 運算式**搭配[ `any` 和 `all` 運算子](search-query-odata-collection-operators.md)。 在此情況下，lambda 運算式的**範圍變數**是具有子欄位的物件。 您可以使用標準的 OData 路徑語法來參考這些子欄位。 例如，下列篩選會傳回所有具有至少一個 deluxe 室和所有非吸煙室的飯店：
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-和最上層的簡單欄位一樣，只有在索引定義中有可**篩選**的屬性設為`true`時，複雜欄位的簡單子欄位才會包含在篩選中。 如需詳細資訊，請參閱[建立索引 API 參考](/rest/api/searchservice/create-index)。
+和最上層的簡單欄位一樣，只有在索引定義中有可**篩選**的屬性設為時，複雜欄位的簡單子欄位才會包含在篩選中 `true` 。 如需詳細資訊，請參閱[建立索引 API 參考](/rest/api/searchservice/create-index)。
 
 ## <a name="next-steps"></a>後續步驟
 
