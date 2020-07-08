@@ -8,17 +8,16 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2020
 ms.author: kumud
-ms.openlocfilehash: d6b61e27324220fc78ace3e964aed98f9ba114d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a13a2a081815f2a3b668caf9b4e78c2208601cb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420940"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702975"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell"></a>在 Azure 中部署 IPv6 雙重堆疊應用程式-PowerShell
 
@@ -26,7 +25,7 @@ ms.locfileid: "80420940"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 PowerShell，本文會要求 Azure PowerShell 模組版本6.9.0 或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
+如果您選擇在本機安裝和使用 PowerShell，本文會要求使用 Azure PowerShell 模組 6.9.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -39,7 +38,7 @@ ms.locfileid: "80420940"
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses"></a>建立 IPv4 和 IPv6 公用 IP 位址
-若要從網際網路存取您的虛擬機器，您需要有適用于負載平衡器的 IPv4 和 IPv6 公用 IP 位址。 使用[get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress)建立公用 IP 位址。 下列範例會建立名為*dsPublicIP_v4*的 IPv4 和 IPV6 公用 IP 位址，並在*dsRG1*資源群組中*dsPublicIP_v6* ：
+若要從網際網路存取您的虛擬機器，您需要有適用于負載平衡器的 IPv4 和 IPv6 公用 IP 位址。 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 建立公用 IP 位址。 下列範例會建立名為*dsPublicIP_v4*的 IPv4 和 IPV6 公用 IP 位址，並在*dsRG1*資源群組中*dsPublicIP_v6* ：
 
 ```azurepowershell-interactive
 $PublicIP_v4 = New-AzPublicIpAddress `
@@ -307,7 +306,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 
 ## <a name="determine-ip-addresses-of-the-ipv4-and-ipv6-endpoints"></a>判斷 IPv4 和 IPv6 端點的 IP 位址
-取得資源群組中的所有網路介面物件，以摘要說明此部署中使用的 IP `get-AzNetworkInterface`。 此外，使用`get-AzpublicIpAddress`取得 Load Balancer 的 IPv4 和 IPv6 端點的前端位址。
+取得資源群組中的所有網路介面物件，以摘要說明此部署中使用的 IP `get-AzNetworkInterface` 。 此外，使用取得 Load Balancer 的 IPv4 和 IPv6 端點的前端位址 `get-AzpublicIpAddress` 。
 
 ```azurepowershell-interactive
 $rgName= "dsRG1"

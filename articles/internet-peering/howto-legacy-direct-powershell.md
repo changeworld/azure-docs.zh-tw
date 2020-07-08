@@ -5,15 +5,14 @@ description: 使用 PowerShell 將舊版直接對等互連轉換成 Azure 資源
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 5d2a8c910c9e384e137785bc1cd491bc85c7e7a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 803d2a09fb4114dae36dcb6147139c7b657501f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678466"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700122"
 ---
 # <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-powershell"></a>使用 PowerShell 將舊版直接對等互連轉換成 Azure 資源
 
@@ -22,12 +21,12 @@ ms.locfileid: "81678466"
 如果您想要的話，可以使用 Azure[入口網站](howto-legacy-direct-portal.md)來完成本指南。
 
 ## <a name="before-you-begin"></a>開始之前
-* 開始設定之前，請先參閱[必要條件](prerequisites.md)和[直接對等的逐步](walkthrough-direct-all.md)解說。
+* 開始設定之前，請閱讀[必要條件](prerequisites.md)和[直接對等互連逐步解說](walkthrough-direct-all.md)。
 
 ### <a name="work-with-azure-powershell"></a>使用 Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-a-legacy-direct-peering-to-an-azure-resource"></a>將舊版直接對等互連轉換成 Azure 資源
+## <a name="convert-a-legacy-direct-peering-to-an-azure-resource"></a>將舊版直接對等互連轉換為 Azure 資源
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>登入您的 Azure 帳戶並且選取您的訂用帳戶
 [!INCLUDE [Account](./includes/account-powershell.md)]
@@ -118,7 +117,7 @@ Tags                 : {}
 Get-Help Get-AzPeering -detailed
 ```
 
-如需詳細資訊，請參閱[網際網路對等常見問題](faqs.md)。
+如需詳細資訊，請參閱[網際網路對等互連常見問題集](faqs.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

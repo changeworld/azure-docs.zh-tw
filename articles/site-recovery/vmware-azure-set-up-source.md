@@ -9,17 +9,16 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257052"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699544"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>設定從 VMware 複寫到 Azure 的來源環境
 
 本文說明如何設定您的來源內部部署環境，將 VMware 虛擬機器複寫到 Azure。 本文包含選取複寫案例、將內部部署機器設定為 Site Recovery 設定伺服器，以及自動探索內部部署 Vm 的步驟。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已經：
 
@@ -29,11 +28,11 @@ ms.locfileid: "79257052"
 
 ## <a name="choose-your-protection-goals"></a>選擇您的保護目標
 
-1. 在 [復原服務保存庫]**** 中，選取保存庫名稱。 在此案例中，我們會使用 **ContosoVMVault**。
-2. 在 [使用者入門]**** 中，選取 Site Recovery。 然後選取 [準備基礎結構]****。
-3. 在 [**您的電腦位於何處**] 的 [**保護目標** > ] 中，選取 [**內部部署**]。
-4. 在 [您要將電腦複寫到何處]**** 中，選取 [複製到 Azure]****。
-5. 在 [您的電腦虛擬化了嗎]**** 中，選取 [是，使用 VMware vSphere Hyperviso]****。 然後選取 [確定]  。
+1. 在 [復原服務保存庫]  中，選取保存庫名稱。 在此案例中，我們會使用 **ContosoVMVault**。
+2. 在 [使用者入門]  中，選取 Site Recovery。 然後選取 [準備基礎結構]  。
+3. 在 [保護目標]   > [您的電腦位於何處]  中，選取 [內部部署]  。
+4. 在 [您要將電腦複寫到何處]  中，選取 [複製到 Azure]  。
+5. 在 [您的電腦虛擬化了嗎]  中，選取 [是，使用 VMware vSphere Hyperviso]  。 然後選取 [確定]  。
 
 ## <a name="set-up-the-configuration-server"></a>設定組態伺服器
 

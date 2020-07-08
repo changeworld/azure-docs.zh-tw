@@ -5,17 +5,16 @@ author: rohinkoul
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
-ms.openlocfilehash: 4e017dc940e1d32888ff279904e44d34db1fd5c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4bf3ee75c9445856fb8a2ce789a3f2f345e720fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76936893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701659"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure DNS 中的 DNS 記錄和記錄集
 
@@ -38,7 +37,7 @@ ms.locfileid: "76936893"
 
 ## <a name="create-a-dns-record"></a>建立 DNS 記錄
 
-若要建立 DNS 記錄，請使用 `az network dns record-set <record-type> add-record` 命令 (其中 `<record-type>` 是記錄的類型，亦即 a、srv、txt 等）如需說明， `az network dns record-set --help`請參閱。
+若要建立 DNS 記錄，請使用 `az network dns record-set <record-type> add-record` 命令 (其中 `<record-type>` 是記錄的類型，亦即 a、srv、txt 等）如需說明，請參閱 `az network dns record-set --help` 。
 
 建立記錄時，您必須指定資源群組名稱、區域名稱、記錄集名稱、記錄類型，以及所建立記錄的詳細資料。 提供的記錄集名稱必須是「相對」** 名稱，表示它不能包含區域名稱。
 

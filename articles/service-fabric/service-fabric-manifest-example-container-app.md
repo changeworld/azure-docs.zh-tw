@@ -6,18 +6,17 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701161"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>多容器應用程式和服務資訊清單範例
 以下舉例說明多容器 Service Fabric 應用程式的應用程式和服務資訊清單。 這些範例的目的是要說明有哪些設定可供使用以及要如何使用。 這些應用程式和服務資訊清單是以 [Windows Server 2016 容器範例](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows)的資訊清單作為基礎。
 
 下面是會顯示的功能：
 
-|file:///|功能|
+|資訊清單|特性|
 |---|---|
 |[應用程式資訊清單](#application-manifest)| [覆寫環境變數](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[設定容器連接埠對主機的對應](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[設定容器登錄驗證](service-fabric-get-started-containers.md#configure-container-repository-authentication)、[資源管理](service-fabric-resource-governance.md)、[設定隔離模式](service-fabric-get-started-containers.md#configure-isolation-mode)、[指定 OS 組建專屬的容器映像](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
 |[FrontEndService 服務資訊清單](#frontendservice-service-manifest)| [設定環境變數](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[設定端點](service-fabric-get-started-containers.md#configure-communication)、將命令傳遞至容器、[將憑證匯入容器中](service-fabric-securing-containers.md)| 
@@ -342,7 +341,7 @@ EntryPoint 指定的可執行檔通常是長時間執行的服務主機。 有�
  如需詳細資訊，請參閱 [ContainerHost 元素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName 元素
-或 Azure Container Registry 上[https://hub.docker.com](https://hub.docker.com)的存放庫和影像。 如需詳細資訊，請參閱 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+或 Azure Container Registry 上的存放庫和影像 [https://hub.docker.com](https://hub.docker.com) 。 如需詳細資訊，請參閱 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables 元素
 將環境變數傳遞到您的容器或 exe。  如需詳細資訊，請參閱 [EnvironmentVariables 元素](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -386,7 +385,7 @@ EntryPoint 指定的可執行檔通常是長時間執行的服務主機。 有�
 如需詳細資訊，請參閱 [ContainerHost 元素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName 元素
-或 Azure Container Registry 上[https://hub.docker.com](https://hub.docker.com)的存放庫和影像。 如需詳細資訊，請參閱 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+或 Azure Container Registry 上的存放庫和影像 [https://hub.docker.com](https://hub.docker.com) 。 如需詳細資訊，請參閱 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Commands 元素
 將逗號分隔命令清單傳遞到容器。 如需詳細資訊，請參閱 [Commands 元素](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)

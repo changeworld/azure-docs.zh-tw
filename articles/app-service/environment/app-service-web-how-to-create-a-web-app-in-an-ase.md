@@ -1,6 +1,6 @@
 ---
 title: 在 ASE v1 中建立 web 應用程式
-description: 瞭解如何在 App Service 環境 v1 中建立 web 應用程式。 本檔僅為使用舊版 v1 ASE 的客戶提供。
+description: 瞭解如何在 App Service 環境 v1 中建立 web 應用程式。 本文件僅提供給使用舊版 v1 ASE 的客戶。
 author: ccompy
 ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.topic: article
@@ -8,11 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701825"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在 App Service 環境 v1 中建立 Web 應用程式
 
@@ -20,7 +19,7 @@ ms.locfileid: "79266191"
 > 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入瞭解新版本，請從[App Service 環境簡介](intro.md)開始。
 > 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程說明如何在 [App Service 環境 v1](app-service-app-service-environment-intro.md) (ASE) 中建立 Web 應用程式和 App Service 方案。 
 
 > [!NOTE]
@@ -28,7 +27,7 @@ ms.locfileid: "79266191"
 > 
 > 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 本教學課程假設您已建立 App Service 環境。 如果尚未建立，請參閱 [建立 App Service 環境](app-service-web-how-to-create-an-app-service-environment.md)。 
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
@@ -40,7 +39,7 @@ ms.locfileid: "79266191"
     如果您有多個訂用帳戶，請注意，若要在您的 App Service 環境中建立應用程式，必須使用您在建立環境時所使用訂用帳戶來建立。 
 3. 選取或建立資源群組。
    
-    *資源群組*可讓您以一個單位來管理相關的 Azure 資源，並在為您的應用程式建立*角色型存取控制*（RBAC）規則時非常有用。 如需詳細資訊，請參閱[Azure Resource Manager 總覽][ResourceGroups]。 
+    *資源群組*可讓您以一個單位來管理相關的 Azure 資源，並在為您的應用程式建立*角色型存取控制*（RBAC）規則時非常有用。 如需詳細資訊，請參閱 [Azure Resource Manager 概觀][ResourceGroups]。 
 4. 選取或建立 App Service 方案。
    
     *App Service 規劃*是一組受控的 Web 應用程式。  當您選取價格時，支付的價格通常會套用到 App Service 方案，而非個別的應用程式。 在 ASE 中，您需對配置給 ASE 的計算執行個體付費，而不需對與您的 ASP 一起列出的項目付費。  若要相應增加 Web 應用程式的執行個體數目，您可相應增加 App Service 方案的執行個體，這會影響該方案中的所有 Web 應用程式。  方案中的某些功能 (例如網站位置或 VNET 整合) 也有數量限制。  如需詳細資訊，請參閱[Azure App Service 計畫總覽](../overview-hosting-plans.md)

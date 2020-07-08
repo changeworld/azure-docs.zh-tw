@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271898"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700492"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>部署和管理 HDInsight 上的 Apache Storm 拓撲
 
 在本文件中，您可以了解管理和監視在 Storm on HDInsight 叢集上所執行 [Apache Storm](https://storm.apache.org/) 拓撲的基本概念。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * HDInsight 上的 Apache Storm 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [Storm]**** 作為 [叢集類型]****。
 
@@ -40,11 +39,11 @@ ms.locfileid: "79271898"
 
 1. 啟動 Visual Studio。
 
-1. 在 [開始]**** 視窗中，選取 [建立新專案]****。
+1. 在 [開始] 視窗中，選取 [建立新專案]。
 
-1. 在 [**建立新專案**] 視窗中，選取 [搜尋] 方塊， `Storm`然後輸入。 然後從結果清單中選擇 [**風暴 Sample** ]，然後選取 **[下一步]**。
+1. 在 [**建立新專案**] 視窗中，選取 [搜尋] 方塊，然後輸入 `Storm` 。 然後從結果清單中選擇 [**風暴 Sample** ]，然後選取 **[下一步]**。
 
-1. 在 [**設定您的新專案**] 視窗中輸入**專案名稱**，然後移至或建立要儲存新專案的**位置**。 然後選取 [建立]  。
+1. 在 [**設定您的新專案**] 視窗中輸入**專案名稱**，然後移至或建立要儲存新專案的**位置**。 然後選取 [建立]。
 
     ![設定您的 [新增專案] 視窗，Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
@@ -59,7 +58,7 @@ ms.locfileid: "79271898"
 
 ## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>使用 SSH 和風暴命令提交拓撲
 
-1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的叢集。 以您叢集的名稱取代 CLUSTERNAME，然後輸入命令，以編輯下面的命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 CLUSTERNAME 取代為您叢集的名稱，然後輸入命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -74,9 +73,9 @@ ms.locfileid: "79271898"
     這個命令會在叢集上啟動範例 WordCount 拓撲。 這個拓撲會隨機產生句子，並計算句子中每個字詞的出現次數。
 
     > [!NOTE]  
-    > 將拓撲提交至叢集時，您必須先複製包含叢集的 .jar 檔案，然後再使用`storm`命令。 若要將檔案複製到叢集，您可以使用 `scp` 命令。 例如，輸入 `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`。
+    > 將拓撲提交至叢集時，您必須先複製包含叢集的 .jar 檔案，然後再使用 `storm` 命令。 若要將檔案複製到叢集，您可以使用 `scp` 命令。 例如，輸入 `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`。
     >
-    > *WordCount*範例和其他風暴入門範例都已包含在您的叢集中，網址`/usr/hdp/current/storm-client/contrib/storm-starter/`為。
+    > *WordCount*範例和其他風暴入門範例都已包含在您的叢集中，網址為 `/usr/hdp/current/storm-client/contrib/storm-starter/` 。
 
 ## <a name="submit-a-topology-programmatically"></a>以程式設計方式提交拓撲
 
@@ -89,7 +88,7 @@ ms.locfileid: "79271898"
 ![監視拓撲，風暴拓撲視圖視窗，Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> 您也可以從 [伺服器總管]**** 檢視 [Storm 拓撲]****。 展開 [ **Azure** > **HDInsight**]，以滑鼠右鍵按一下 HDInsight 叢集上的 [風暴]，然後選取 [ **View 暴拓朴**]。
+> 您也可以從 [伺服器總管]**** 檢視 [Storm 拓撲]****。 展開 [ **Azure**  >  **HDInsight**]，以滑鼠右鍵按一下 HDInsight 叢集上的 [風暴]，然後選取 [ **View 暴拓朴**]。
 
 選取 Spout 或 Bolt 的圖形以檢視這些元件的資訊。 具有元件資訊的工具提示會針對選取的專案顯示。
 
@@ -205,7 +204,7 @@ Storm UI 的主頁面會提供下列資訊：
 
 在 [**拓撲動作**] 區段中，您可以選取下列按鈕來執行動作：
 
-| 按鈕 | 描述 |
+| 按鈕 | Description |
 | --- | --- |
 | 啟動 | 繼續處理已停用的拓撲。 |
 | 停用 | 暫停執行中拓撲。 |
@@ -228,7 +227,7 @@ Storm UI 的主頁面會提供下列資訊：
 | 輸出統計資料 *（時間範圍）* | Spout 或 Bolt 所發出資料流的資訊。 |
 | 程式碼剖析和偵錯工具 | 此頁面上的元件分析和偵錯工具的控制項。 您可以設定 [**狀態/超時（分鐘）** ] 值，也可以選取 [ **JStack**]、[**重新開機背景工作**] 和 [**堆積**] 的按鈕。 |
 | 執行執行 *（時間範圍）* | Spout 或 Bolt 執行個體的相關資訊。 若要查看針對此實例所產生之診斷資訊的記錄，請選取特定執行程式的 [**埠**] 專案。 您也可以在 [**主機**] 資料行中選取其連結，以查看與特定執行程式相關聯的背景工作資源。 |
-| Errors | Spout 或 Bolt 的任何錯誤資訊。 |
+| 錯誤 | Spout 或 Bolt 的任何錯誤資訊。 |
 
 [風暴螺栓摘要] 頁面看起來類似此網頁：
 
@@ -245,14 +244,14 @@ Storm UI 的主頁面會提供下列資訊：
 
 ### <a name="base-uri"></a>基底 URI
 
-在以 Linux 為基礎的 HDInsight 叢集上，REST API 的基底 URI 位於 URL `https://HEADNODEFQDN:8744/api/v1/`位址，您可以在此使用前端節點來取代*HEADNODEFQDN* 。 前端節點的功能變數名稱是在叢集建立期間產生的，而且不是靜態的。
+在以 Linux 為基礎的 HDInsight 叢集上，REST API 的基底 URI 位於 URL 位址 `https://HEADNODEFQDN:8744/api/v1/` ，您可以在此使用前端節點來取代*HEADNODEFQDN* 。 前端節點的功能變數名稱是在叢集建立期間產生的，而且不是靜態的。
 
 您可以透過數種方式來尋找叢集前端節點的完整功能變數名稱（FQDN）：
 
-| FQDN 探索方法 | 描述 |
+| FQDN 探索方法 | Description |
 | --- | --- |
 | SSH 會話 | 使用命令 `headnode -f` (從 SSH 工作階段到叢集)。 |
-| Ambari Web | 在 [Ambari 叢集] 網頁（`https://CLUSTERNAME.azurehdinsight.net`）上，從頁面頂端選取 [**服務**]，然後選取 [**風暴**]。 從 [摘要]**** 索引標籤，選取 [Storm UI 伺服器]****。 託管 Storm UI 和 REST API 的節點 FQDN 位於頁面頂端。 |
+| Ambari Web | 在 [Ambari 叢集] 網頁（ `https://CLUSTERNAME.azurehdinsight.net` ）上，從頁面頂端選取 [**服務**]，然後選取 [**風暴**]。 從 [摘要]**** 索引標籤，選取 [Storm UI 伺服器]****。 託管 Storm UI 和 REST API 的節點 FQDN 位於頁面頂端。 |
 | Ambari REST API | 使用命令 `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 來擷取 Storm UI 和 REST API 執行所在節點的相關資訊。 以叢集名稱取代*CLUSTERNAME*的兩個實例。 當系統提示您時，請輸入使用者（admin）帳戶的密碼。 在回應中，JSON 輸出的 "host_name" 專案會包含節點的 FQDN。 |
 
 ### <a name="authentication"></a>驗證

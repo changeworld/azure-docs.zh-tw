@@ -4,11 +4,10 @@ description: 瞭解如何在 Azure Service Fabric 中移除和部署應用程式
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282506"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699833"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>使用 PowerShell 部署與移除應用程式
 
@@ -64,7 +63,7 @@ Connect-ServiceFabricCluster
 
 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令會將應用程式封裝上傳至叢集映像存放區。
 
-假設您在 Visual Studio 2015 中建置並封裝名為 *MyApplication* 的應用程式。 根據預設，ApplicationManifest.xml 中列出的應用程式類型名稱會是 "MyApplicationType"。  應用程式封裝 (其中包含必要的應用程式資訊清單、服務資訊清單和程式碼/組態/資料封裝) 位於 *C:\Users\<username\>\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug*。 
+假設您在 Visual Studio 2015 中建置並封裝名為 *MyApplication* 的應用程式。 根據預設，ApplicationManifest.xml 中列出的應用程式類型名稱會是 "MyApplicationType"。  應用程式封裝（其中包含必要的應用程式資訊清單、服務資訊清單和程式碼/設定/資料封裝）位於*C:\Users \<username\> \Documents\Visual Studio 2015 \ Projects\MyApplication\MyApplication\pkg\Debug*。 
 
 下列命令會列出應用程式封裝的內容︰
 
@@ -191,7 +190,7 @@ Register application type succeeded
 
 ### <a name="register-the-application-package-copied-to-an-external-store"></a>註冊複製到外部存放區的應用程式封裝
 
-從 Service Fabric 6.1 版開始，佈建支援從外部存放區下載封裝。 下載 URI 代表[ `sfpkg`應用程式封裝](service-fabric-package-apps.md#create-an-sfpkg)的路徑，您可以從該處使用 HTTP 或 HTTPS 通訊協定下載應用程式封裝。 封裝必須先已上傳到這個外部位置。 URI 必須允許「讀取」權限，讓 Service Fabric 可以下載檔案。 `sfpkg` 檔案必須有 ".sfpkg" 副檔名。 佈建作業應該包含應用程式資訊清單中找到的應用程式類型資訊。
+從 Service Fabric 6.1 版開始，佈建支援從外部存放區下載封裝。 下載 URI 代表[ `sfpkg` 應用程式封裝](service-fabric-package-apps.md#create-an-sfpkg)的路徑，您可以從該處使用 HTTP 或 HTTPS 通訊協定下載應用程式封裝。 封裝必須先已上傳到這個外部位置。 URI 必須允許「讀取」權限，讓 Service Fabric 可以下載檔案。 `sfpkg` 檔案必須有 ".sfpkg" 副檔名。 佈建作業應該包含應用程式資訊清單中找到的應用程式類型資訊。
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPackageDownloadUri "https://sftestresources.blob.core.windows.net:443/sfpkgholder/MyAppPackage.sfpkg" -ApplicationTypeName MyApp -ApplicationTypeVersion V1 -Async

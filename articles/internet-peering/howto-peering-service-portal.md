@@ -5,21 +5,20 @@ description: 使用 Azure 入口網站在直接對等互連上啟用 Azure 對�
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 3/18/2020
 ms.author: derekol
-ms.openlocfilehash: 625a17e5acff00f78c5a19725653eec629936f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a52e6038b622c004dc0d133394cd4f53600b2935
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687062"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700037"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-the-azure-portal"></a>使用 Azure 入口網站在直接對等互連上啟用 Azure 對等服務
 
 本文說明如何使用 Azure 入口網站在直接對等互連上啟用 Azure 對[等服務](overview-peering-service.md)。
 
-如果您想要的話，可以使用[PowerShell](howto-peering-service-powershell.md)來完成本指南。
+如果您想要的話，可以使用 [PowerShell](howto-peering-service-powershell.md) 完成本指南。
 
 ## <a name="before-you-begin"></a>開始之前
 * 開始設定之前，請先參閱[必要條件](prerequisites.md)。
@@ -43,8 +42,8 @@ ms.locfileid: "81687062"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用入口網站建立或修改 Exchange 對等互連](howto-exchange-portal.md)
-* [使用入口網站將舊版 Exchange 對等互連轉換成 Azure 資源](howto-legacy-exchange-portal.md)
+* [使用入口網站建立或修改交換服務對等互連](howto-exchange-portal.md)
+* [使用入口網站將舊版交換服務對等互連轉換成 Azure 資源](howto-legacy-exchange-portal.md)
 
 ## <a name="additional-resources"></a>其他資源
 

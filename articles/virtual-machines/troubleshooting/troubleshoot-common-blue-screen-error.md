@@ -13,11 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
 ms.openlocfilehash: beb1562738699bbcede58d8214e69342abbb7c93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701893"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>當 Azure VM 開機時 Windows 顯示藍色畫面錯誤
 本文描述當您在 Microsoft Azure 中將 Windows 虛擬機器 (VM) 開機時可能碰到的藍色畫面錯誤。 它提供步驟，以協助您收集支援票證的資料。 

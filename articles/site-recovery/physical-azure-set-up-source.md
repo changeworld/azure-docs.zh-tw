@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 902c14211e91a1500c6b50cd790b347e337c4f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699918"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>為組態伺服器設定從實體伺服器至 Azure 的災害復原
 
 這篇文章說明如何設定內部部署環境，開始將執行 Windows 或 Linux 的實體伺服器複寫至 Azure。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已經有：
 - [Azure 入口網站](https://portal.azure.com "Azure 入口網站")中的復原服務保存庫。
@@ -36,7 +35,7 @@ ms.locfileid: "79257871"
 ## <a name="choose-your-protection-goals"></a>選擇您的保護目標
 
 1. 在 Azure 入口網站中，移至 [復原服務]**** 保存庫刀鋒視窗，然後選取您的保存庫。
-2. 在保存庫的 [**資源**] 功能表中，按一下 [**消費者入門** > **] Site Recovery** > **步驟1：準備基礎結構** > **保護目標**。
+2. 在保存庫的 [**資源**] 功能表中，按一下 [**消費者入門**]  >  **Site Recovery**  >  **步驟1：準備基礎結構**  >  **保護目標**。
 
     ![選擇目標](./media/physical-azure-set-up-source/choose-goals.png)
 3. 在 [保護目標]**** 中選取 [至 Azure]**** 和 [未虛擬化/其他]****，然後按一下 [確定]****。

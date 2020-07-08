@@ -10,11 +10,10 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700360"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 為 Apache Storm 進行疑難排解
 
@@ -46,9 +45,9 @@ ms.locfileid: "79271924"
 
 事件中樞 Spout 會將位移的檢查點資料儲存在 ZooKeeper 的兩個根路徑中：
 
-- 非交易式 spout 檢查點`/eventhubspout`會儲存在中。
+- 非交易式 spout 檢查點會儲存在中 `/eventhubspout` 。
 
-- 交易式 spout 檢查點資料會`/transactional`儲存在中。
+- 交易式 spout 檢查點資料會儲存在中 `/transactional` 。
 
 ### <a name="how-to-restore"></a>還原方式
 
@@ -65,7 +64,7 @@ lib 資料夾的 .jar 檔案包含匯出/匯入作業的實作。 bash 資料夾
 #### <a name="export-offset-metadata"></a>匯出位移中繼資料
 
 1. 使用 SSH 移至叢集的 ZooKeeper 叢集，該舊叢集需要匯出檢查點位移。
-2. 執行下列命令（在您更新 HDP 版本字串之後），以將 ZooKeeper 位移資料匯出至`/stormmetadta/zkdata` HDFS 路徑：
+2. 執行下列命令（在您更新 HDP 版本字串之後），以將 ZooKeeper 位移資料匯出至 `/stormmetadta/zkdata` HDFS 路徑：
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter export /eventhubspout /stormmetadata/zkdata
@@ -74,7 +73,7 @@ lib 資料夾的 .jar 檔案包含匯出/匯入作業的實作。 bash 資料夾
 #### <a name="import-offset-metadata"></a>匯入位移中繼資料
 
 1. 使用 SSH 移至叢集的 ZooKeeper 叢集，該舊叢集需要匯入檢查點位移。
-2. 執行下列命令（在您更新 HDP 版本字串之後），以將 ZooKeeper 位移資料從 HDFS 路徑`/stormmetadata/zkdata`匯入到目標叢集上的 ZooKeeper 伺服器：
+2. 執行下列命令（在您更新 HDP 版本字串之後），以將 ZooKeeper 位移資料從 HDFS 路徑匯入 `/stormmetadata/zkdata` 到目標叢集上的 ZooKeeper 伺服器：
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter import /eventhubspout /home/sshadmin/zkdata
@@ -91,9 +90,9 @@ lib 資料夾的 .jar 檔案包含匯出/匯入作業的實作。 bash 資料夾
 
 ## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>如何找出叢集上的 Storm 二進位檔？
 
-目前 HDP 堆疊的風暴二進位檔位於`/usr/hdp/current/storm-client`。 前端節點和背景工作節點使用相同的位置。
+目前 HDP 堆疊的風暴二進位檔位於 `/usr/hdp/current/storm-client` 。 前端節點和背景工作節點使用相同的位置。
 
-/Usr/hdp 中的特定 HDP 版本可能會有多個二進位檔（例如`/usr/hdp/2.5.0.1233/storm`）。 此`/usr/hdp/current/storm-client`資料夾會了符號連結至叢集中執行的最新版本。
+/Usr/hdp 中的特定 HDP 版本可能會有多個二進位檔（例如 `/usr/hdp/2.5.0.1233/storm` ）。 此 `/usr/hdp/current/storm-client` 資料夾會了符號連結至叢集中執行的最新版本。
 
 如需詳細資訊，請參閱[使用 SSH 連線到 HDInsight 叢集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)和 [Apache Storm](https://storm.apache.org/) \(英文\)。
 
@@ -157,13 +156,13 @@ Storm 背景工作節點執行下列服務：
 
 ### <a name="on-head-nodes"></a>在前端節點上
 
-Nimbus Log4J 設定是從`/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`讀取。
+Nimbus Log4J 設定是從讀取 `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` 。
 
 ### <a name="on-worker-nodes"></a>在背景工作節點上
 
-監督員 Log4J 設定是從`/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`讀取。
+監督員 Log4J 設定是從讀取 `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` 。
 
-背景工作 Log4J 設定檔是從`/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`讀取。
+背景工作 Log4J 設定檔是從讀取 `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml` 。
 
 典型`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
@@ -172,9 +171,9 @@ Nimbus Log4J 設定是從`/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`讀�
 
 ## <a name="not-a-leader-exception"></a>不是領導者例外狀況
 
-提交拓撲時，使用者可能會收到類似下列的錯誤訊息： `Topology submission exception, cause not a leader, the current leader is NimbusInfo`。
+提交拓撲時，使用者可能會收到類似下列的錯誤訊息： `Topology submission exception, cause not a leader, the current leader is NimbusInfo` 。
 
-若要解決此問題，使用者可能需要提出票證，才能讓節點重新開機/重新開機。 如需詳細資訊， [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)請參閱。
+若要解決此問題，使用者可能需要提出票證，才能讓節點重新開機/重新開機。 如需詳細資訊，請參閱 [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)。
 
 ---
 
@@ -182,8 +181,8 @@ Nimbus Log4J 設定是從`/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`讀�
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-- 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+- 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
-- 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，以改善客戶體驗。 將 Azure 社區連接到正確的資源：解答、支援和專家。
+- 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-- 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+- 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

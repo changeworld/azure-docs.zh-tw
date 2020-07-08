@@ -16,21 +16,20 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266867"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701876"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>針對 Azure 中 Windows VM 的特定 RDP 錯誤訊息進行疑難排解
 您在 Azure 中針對 Windows 虛擬機器 (VM) 使用遠端桌面連線時，可能會接收到特定錯誤訊息。 本文將詳述一些較常發生的錯誤訊息，並提供解決它們的疑難排解步驟。 如果您無法使用 RDP 連線到 VM，但沒有遇到特定錯誤訊息，請參閱[遠端桌面的疑難排解指南](troubleshoot-rdp-connection.md)。
 
 如需特定錯誤訊息的資訊，請參閱下列內容：
 
-* [遠端會話已中斷連線，因為沒有可用的遠端桌面授權伺服器提供授權](#rdplicense)。
+* [遠端工作階段中斷，因為沒有提供授權的遠端桌面授權伺服器可以使用](#rdplicense)。
 * [遠端桌面找不到電腦「名稱」](#rdpname)。
 * [發生驗證錯誤。無法連絡本機安全性授權](#rdpauth)。
-* [Windows 安全性錯誤：您的認證無法使用](#wincred)。
+* [Windows 安全性錯誤：您的認證無法運作](#wincred)。
 * [這部電腦無法連線到遠端電腦](#rdpconnect)。
 
 <a id="rdplicense"></a>
@@ -69,7 +68,7 @@ ms.locfileid: "79266867"
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>發生驗證錯誤。 無法連絡本機安全性授權。
 原因：目標 VM 在認證的使用者名稱部分找不到安全性授權。
 
-當您的使用者名稱格式為*SecurityAuthority*\\*UserName* （範例： CORP\User1）時， *SecurityAuthority*部分會是 VM 的電腦名稱稱（代表本地安全機構）或 Active Directory 功能變數名稱。
+當您的使用者名稱格式為*SecurityAuthority* \\ *UserName* （範例： CORP\User1）時， *SecurityAuthority*部分會是 VM 的電腦名稱稱（代表本地安全機構）或 Active Directory 功能變數名稱。
 
 可能的解決方案：
 
@@ -84,8 +83,8 @@ ms.locfileid: "79266867"
 
 以 Windows 為基礎的電腦可以驗證本機帳戶或網域帳戶之認證。
 
-* 若為本機帳戶，請使用*ComputerName*\\*UserName*語法（範例： SQL1\Admin4798）。
-* 若為網域帳戶，請使用*DomainName*\\*UserName*語法（範例： CONTOSO\peterodman）。
+* 若為本機帳戶，請使用*ComputerName* \\ *UserName*語法（範例： SQL1\Admin4798）。
+* 若為網域帳戶，請使用*DomainName* \\ *UserName*語法（範例： CONTOSO\peterodman）。
 
 如果您在新的 Active Directory 樹系將 VM 提升為網域控制站，您用來登入的本機系統管理員帳戶會轉換為對等的帳戶，在新樹系和網域中使用相同的密碼。 本機帳戶隨即刪除。
 

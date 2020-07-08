@@ -13,11 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260510"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702289"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure Data Factory 從 Azure Cosmos DB 來回移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -59,7 +58,7 @@ ms.locfileid: "79260510"
 | **屬性** | **說明** | **必要** |
 | --- | --- | --- |
 | type |類型屬性必須設為： **DocumentDb** |是 |
-| connectionString |指定連接到 Azure Cosmos DB 資料庫所需的資訊。 |是 |
+| connectionString |指定連接到 Azure Cosmos DB 資料庫所需的資訊。 |Yes |
 
 範例：
 
@@ -82,7 +81,7 @@ ms.locfileid: "79260510"
 
 | **屬性** | **說明** | **必要** |
 | --- | --- | --- |
-| collectionName |Cosmos DB 文件集合的名稱。 |是 |
+| collectionName |Cosmos DB 文件集合的名稱。 |Yes |
 
 範例：
 
@@ -123,8 +122,8 @@ ms.locfileid: "79260510"
 
 | **屬性** | **說明** | **允許的值** | **必要** |
 | --- | --- | --- | --- |
-| 查詢 |指定查詢來讀取資料。 |Azure Cosmos DB 所支援的查詢字串。 <br/><br/>範例： `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，執行的 SQL 陳述式：`select <columns defined in structure> from mycollection` |
-| nestingSeparator |用來表示文件為巢狀文件的特殊字元 |任何字元。 <br/><br/>Azure Cosmos DB 是 JSON 文件的 NoSQL 存放區 (允許巢狀結構)。 Azure Data Factory 可讓使用者透過 nestingSeparator (也就是上述範例中的 “.”) 表示階層 。 使用分隔符號，複製活動將會根據資料表定義中的 “Name.First”、“Name.Middle” 和 “Name.Last”，產生含有三個子元素 (First、Middle 和 Last) 的 "Name" 物件。 |否 |
+| 查詢 |指定查詢來讀取資料。 |Azure Cosmos DB 所支援的查詢字串。 <br/><br/>範例：`SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |No <br/><br/>如果未指定，執行的 SQL 陳述式：`select <columns defined in structure> from mycollection` |
+| nestingSeparator |用來表示文件為巢狀文件的特殊字元 |任何字元。 <br/><br/>Azure Cosmos DB 是 JSON 文件的 NoSQL 存放區 (允許巢狀結構)。 Azure Data Factory 可讓使用者透過 nestingSeparator (也就是上述範例中的 “.”) 表示階層 。 使用分隔符號，複製活動將會根據資料表定義中的 “Name.First”、“Name.Middle” 和 “Name.Last”，產生含有三個子元素 (First、Middle 和 Last) 的 "Name" 物件。 |No |
 
 **DocumentDbCollectionSink** 支援下列屬性：
 
@@ -132,7 +131,7 @@ ms.locfileid: "79260510"
 | --- | --- | --- | --- |
 | nestingSeparator |來源資料行名稱中用來表示需要巢狀文件的特殊字元。 <br/><br/>就上述範例而言：輸出資料表中的 `Name.First` 會在 Cosmos DB 文件中產生下列 JSON 結構：<br/><br/>"Name": {<br/>    "First": "John"<br/>}, |用來分隔巢狀層級的字元。<br/><br/>預設值為 `.` (點)。 |用來分隔巢狀層級的字元。 <br/><br/>預設值為 `.` (點)。 |
 | writeBatchSize |為了建立文件而傳送到 Azure Cosmos DB 服務的平行要求數目。<br/><br/>使用這個屬性從 Cosmos DB 來回複製資料時，可以微調效能。 增加 writeBatchSize 時，您可預期有更好的效能，因為對 Cosmos DB 傳送了更多的平行要求。 不過，您必須避免可能擲回錯誤訊息的節流：「要求速率很高」。<br/><br/>節流是由許多因素決定，包括檔案大小、檔中的詞彙數目、目標集合的編制索引原則等等。對於複製作業，您可以使用更好的集合（例如 S3）來取得最多可用的輸送量（每秒2500個要求單位）。 |整數 |否 (預設值：5) |
-| writeBatchTimeout |在逾時前等待作業完成的時間。 |時間範圍<br/><br/> 範例：“00:30:00” (30 分鐘)。 |否 |
+| writeBatchTimeout |在逾時前等待作業完成的時間。 |時間範圍<br/><br/> 範例：“00:30:00” (30 分鐘)。 |No |
 
 ## <a name="importexport-json-documents"></a>匯入/匯出 JSON 文件
 使用此 Cosmos DB 連接器，您可以輕鬆地
@@ -483,16 +482,16 @@ Azure Cosmos DB 是 JSON 文件的 NoSQL 存放區 (允許巢狀結構)。 Azure
 ## <a name="appendix"></a>附錄
 1. **問：** 複製活動支援現有記錄的更新嗎？
 
-    **答：** 不。
+    **答：** 不會。
 2. **問：** 重試複製 Azure Cosmos DB 時，會如何處理已經複製的記錄？
 
     **回：** 如果記錄有 [識別碼] 欄位，而複製作業嘗試插入具有相同識別碼的記錄，則複製作業會擲回錯誤。
 3. **問：** 資料處理站支援[範圍或雜湊式資料分割](../../cosmos-db/sql-api-partition-data.md)嗎？
 
-    **答：** 不。
+    **答：** 不會。
 4. **問：** 我可以為資料表指定多個 Azure Cosmos DB 集合嗎？
 
-    **答：** 不。 目前只能指定一個集合。
+    **答：** 不會。 目前只能指定一個集合。
 
 ## <a name="performance-and-tuning"></a>效能和微調
 請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)一文，以了解在 Azure Data Factory 中會影響資料移動 (複製活動) 效能的重要因素，以及各種最佳化的方法。

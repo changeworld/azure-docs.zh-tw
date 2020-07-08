@@ -9,11 +9,10 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700880"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute 搭配 Azure Site Recovery
 
@@ -33,7 +32,7 @@ Azure Site Recovery 能夠針對內部部署的 [Hyper-V 虛擬機器](hyper-v-a
 
 Site Recovery 會透過公用端點，將資料複製到目標 Azure 區域上的 Azure 儲存體帳戶或複本受控磁片。 若要使用 ExpressRoute 來 Site Recovery 複寫流量，您可以利用[Microsoft 對等互連](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)或現有的[公用對等互連](../expressroute/about-public-peering.md)（已取代為新的建立）。 Microsoft 對等互連是建議用於複寫的路由網域。 請注意，不支援透過私用對等互連進行複寫。
 
-請確定也符合設定伺服器的[網路需求](vmware-azure-configuration-server-requirements.md#network-requirements)。 設定伺服器需要連線到特定的 Url，才能進行 Site Recovery 複寫的協調流程。 ExpressRoute 無法用於此連線。 
+請確定也符合設定伺服器的[網路需求](vmware-azure-configuration-server-requirements.md#network-requirements)。 組態伺服器需要連線到特定 URL，才能進行 Site Recovery 複寫的協調流程。 ExpressRoute 無法用於此連線。 
 
 如果您在內部部署使用 proxy，而且想要針對複寫流量使用 ExpressRoute，您必須在設定伺服器和進程伺服器上設定 Proxy 略過清單。 遵循下列步驟：
 

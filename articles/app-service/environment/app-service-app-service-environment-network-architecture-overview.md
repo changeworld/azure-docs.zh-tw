@@ -1,6 +1,6 @@
 ---
 title: 網路架構 v1
-description: App Service 環境網路拓撲的架構總覽。 本檔僅為使用舊版 v1 ASE 的客戶提供。
+description: App Service 環境網路拓撲的架構總覽。 本文件僅提供給使用舊版 v1 ASE 的客戶。
 author: stefsch
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.topic: article
@@ -8,11 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243844"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701808"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>App Service 環境的網路架構概觀
 App Service 環境一律建立於[虛擬網路][virtualnetwork] - 的子網路內，而在 App Service 環境中執行的應用程式可以與相同虛擬網路拓撲內的私用端點通訊。  因為客戶可能會鎖定其虛擬網路基礎結構的組件，所以請務必了解與 App Service 環境發生的網路通訊流程類型。
