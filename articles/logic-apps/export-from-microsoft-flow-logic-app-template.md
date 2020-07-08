@@ -3,38 +3,39 @@ title: 從電源自動化到 Azure Logic Apps 的匯出流程
 description: 藉由匯出為 Azure Resource Manager 範本，將流量從電源自動化遷移至 Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/03/2020
+ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75428872"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324801"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>從 Power Automate 匯出流程，並部署至 Azure Logic Apps
 
 若要擴充和擴充您的流程功能，您可以將該流程從[電源自動化](https://flow.microsoft.com)遷移到[Azure Logic Apps](../logic-apps/logic-apps-overview.md)。 您可以將流程匯出為邏輯應用程式的 Azure Resource Manager 範本、將該邏輯應用程式範本部署至 Azure 資源群組，然後在邏輯應用程式設計工具中開啟該邏輯應用程式。
 
 > [!NOTE]
-> 並非所有電源自動連接器都可在 Azure Logic Apps 中使用。 您可以在 Azure Logic Apps 中匯入具有對[等連接器](../connectors/apis-list.md)的流程。 例如，[按鈕觸發程式]、[核准連接器] 和 [通知連接器] 專用於電源自動化。
+> 並非所有電源自動連接器都可在 Azure Logic Apps 中使用。 在 Azure Logic Apps 中，您只能遷移具有對等連接器的電源自動化流程。 例如，[按鈕觸發程式]、[核准連接器] 和 [通知連接器] 專用於電源自動化。 目前，電源自動化中以 OpenAPI 為基礎的流程不支援以邏輯應用程式範本的形式匯出和部署。
 >
-> 以 OpenAPI 為基礎的流程從電源自動化匯出目前不支援部署為邏輯應用程式範本。 
+> * 若要找出哪些電源自動連接器沒有 Logic Apps 對等專案，請參閱[電源自動化連接器](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)。
+>
+> * 若要找出哪些 Logic Apps 連接器沒有電源自動化對等專案，請參閱[Logic Apps 連接器](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * 您想要從電源自動匯出的流程
 
-## <a name="export-a-flow"></a>匯出流程
+## <a name="export-your-flow"></a>匯出您的流程
 
-1. 登入[電源自動化](https://flow.microsoft.com)，然後選取 [**我的流程**]。 尋找並選取您的流程。 在工具列上，選取省略號（**...**）按鈕。 選取 [**匯出** > **Logic Apps 範本（. json）**]。
+1. 登入[電源自動化](https://flow.microsoft.com)，然後選取 [**我的流程**]。 尋找並選取您的流程。 在工具列上，選取省略號（**...**）按鈕，>**匯出**  >  **Logic Apps 範本（. json）**]。
 
-   ![匯出流程](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
+   ![從電源自動化匯出流程](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
-1. 將您的範本儲存到您想要的位置。
+1. 將範本的 json 檔案儲存到您想要的位置。
 
 如需詳細資訊，請參閱[成長到 Azure Logic Apps](https://flow.microsoft.com/blog/grow-up-to-logic-apps/)。
 
@@ -42,42 +43,51 @@ ms.locfileid: "75428872"
 
 1. 使用您的 Azure 帳戶登入[Azure 入口網站](https://portal.azure.com)。
 
-1. 在 Azure 主功能表上，選取 [建立資源]****。 在搜尋方塊中，輸入「範本部署」。 選取 **[範本部署（使用自訂範本部署）**]，然後選取 [**建立**]。
+1. 在 Azure 首頁的 [搜尋] 方塊中，輸入 `custom template` 。 從結果中，選取 [**部署自訂範本**] [  >  **建立**]。
 
-   ![選取 [範本部署]](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
+   ![尋找並選取 [範本部署]](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
 
 1. 在 [**自訂部署**] 底下，選取 **[在編輯器中建立您自己的範本**]。
 
    ![選取 [在編輯器中建立您自己的範本]](./media/export-from-microsoft-flow-logic-app-template/build-template-in-editor.png)
 
-1. 從 [**編輯範本**] 工具列中，選取 [**載入**檔案]。 尋找並選取您從電源自動化匯出的 JSON 範本，然後選取 [**開啟**]。
+1. 在 [**編輯範本**] 工具列上，選取 [**載入**檔案]。
 
    ![選取 [載入檔案]](./media/export-from-microsoft-flow-logic-app-template/load-file.png)
 
+1. 流覽至您儲存從電源自動化匯出之 JSON 範本檔案的位置。 選取 >**開啟**的範本檔案。
+
 1. 在編輯器顯示您範本中的 JSON、參數和資源之後，請選取 [**儲存**]。
-  
+
    ![儲存範本](./media/export-from-microsoft-flow-logic-app-template/save-template.png)
 
-1. 現在，請為範本指定這些輸入參數：
+1. 現在，請提供您的邏輯應用程式詳細資訊。
 
-   * 要用於計費的 Azure 訂用帳戶
-   * Azure 資源群組
-   * Azure 資源群組的位置
-   * 邏輯應用程式資源的名稱
-   * 邏輯應用程式資源的位置（如果與 Azure 資源群組不同）
-   * 邏輯應用程式可以重複使用之任何先前建立的連線名稱
+   1. 選取或指定範本的輸入參數值。
 
-      如果您要建立第一個邏輯應用程式，所有連線都會建立為新的，因此您可以接受預設名稱。 否則，您可以為先前建立的連線指定名稱，以便在多個邏輯應用程式中使用。
+      | 屬性 | 描述 |
+      |----------|-------------|
+      | **訂用帳戶** | 要用於計費的 Azure 訂用帳戶 |
+      | **資源群組** | 要用於邏輯應用程式的 Azure 資源群組。 您可以使用現有的群組，或建立新的群組。 |
+      | **位置** | 當您建立新的資源群組時，所要使用的 Azure 區域 |
+      | **邏輯應用程式名稱** | 要用於邏輯應用程式資源的名稱 |
+      | **邏輯應用程式位置** | 您想要在其中建立邏輯應用程式資源的 Azure 區域（如果與 Azure 資源群組不同） |
+      | <*連接名稱*> | 邏輯應用程式可以重複使用的任何先前建立之連線的一或多個名稱 <p><p>**注意**：如果此邏輯應用程式是您的第一個，則所有連線都會建立為新的，因此您可以接受預設名稱。 否則，您可以為先前建立的連線指定名稱，以便在多個邏輯應用程式中使用。 |
+      |||
 
-   在您為範本提供此資訊之後，請檢查並同意建立必要 Azure 資源的 Azure Marketplace 條款及條件，並據以計費您的 Azure 訂用帳戶，然後選取 [**購買**]。
-  
-   ![指定範本的輸入參數](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
+      例如：
 
-   Azure 會將您的範本作為邏輯應用程式部署到您指定的資源群組。 您從電源自動化遷移的所有邏輯應用程式都會部署為停用狀態。
+      ![指定範本的輸入參數](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
-1. 在您啟動邏輯應用程式之前，請遵循下列步驟來授權任何新的連接：
+   1. 當您完成時，請檢查有關建立必要 Azure 資源的**條款及條件**，並據此向您的 azure 訂用帳戶計費。
 
-   1. 開啟您所建立的邏輯應用程式。 在邏輯應用程式的功能表上，選取 [**邏輯應用程式設計**工具]。
+   1. 當您準備好時，請選取 **[我同意上方所述的條款及條件**]  >  ** **。
+
+      Azure 會將您的範本作為邏輯應用程式部署到您指定的資源群組。
+
+1. 您從電源自動化遷移的所有邏輯應用程式都會部署為停用狀態。 啟用您的邏輯應用程式之前，請遵循下列步驟來授權任何新的連接：
+
+   1. 在 [Azure 入口網站中，開啟您所建立的邏輯應用程式。 在邏輯應用程式的功能表上，選取 [**邏輯應用程式設計**工具]。
 
       需要授權的每個連接都會顯示警告圖示：
 
@@ -89,7 +99,9 @@ ms.locfileid: "75428872"
 
    1. 登入每個服務，或提供必要的認證來授權連線。
 
-1. 儲存您的邏輯應用程式。 當您準備好要啟動邏輯應用程式時，請在邏輯應用程式的功能表上，選取 **[總覽**]，然後選取 [**啟用**]。
+   1. 更新連接之後，請在設計工具工具列上選取 [**儲存**]。
+
+1. 當您準備好要啟動邏輯應用程式時，請在邏輯應用程式的功能表上，選取 **[總覽**]，然後選取 [**啟用**]。
 
    ![啟用邏輯應用程式](./media/export-from-microsoft-flow-logic-app-template/enable-logic-app.png)
 
@@ -97,21 +109,23 @@ ms.locfileid: "75428872"
 
 ## <a name="deploy-template-by-using-visual-studio"></a>使用 Visual Studio 部署範本
 
-如果您已使用建立邏輯應用程式的[必要條件](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites)來設定 Visual Studio，您可以將匯出的範本從 Visual Studio 部署到 Azure Logic Apps。
+如果您已設定 Visual Studio 與建立邏輯應用程式的[必要條件](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites)，您可以使用 Visual Studio，將匯出的範本部署至 Azure Logic Apps。
 
-1. 在 Visual Studio 中，開啟您從電源自動化匯出的範本檔案。
+1. 在 Visual Studio 中，流覽至您從電源自動化匯出的邏輯應用程式範本的 json 檔案，並加以開啟。
 
-1. 在 Visual Studio 中，建立 Azure 資源群組專案，並遵循[快速入門：使用 Azure Logic Apps Visual Studio 建立自動化工作、進程和工作流程](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)中的步驟來選取**邏輯應用程式**範本，例如：
+1. 在 Visual Studio 中，遵循[快速入門：使用 Azure Logic Apps Visual Studio 建立自動化工作、進程和工作流程](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)中的步驟，建立使用**邏輯應用程式**範本的**Azure 資源群組**專案。
+
+   這個範例會建立名為 "ImportedLogicApp" 的 Visual Studio 解決方案。
 
    ![建立 Azure 資源群組專案](./media/export-from-microsoft-flow-logic-app-template/create-azure-resource-group-project.png)
 
-1. 從方案總管，如果檔案尚未開啟，請開啟**LogicApp**檔案。
+1. 建立解決方案之後，在方案總管中，開啟檔案的**LogicApp.js** （如果檔案尚未開啟）。
 
-1. 從匯出的範本複製內容，並覆寫**LogicApp**檔案中的內容。
+1. 從匯出的範本複製內容，並覆寫檔案中**LogicApp.js**的內容。
 
 1. 在您部署邏輯應用程式之前，請遵循下列步驟來授權任何新的連接：
 
-   1. 開啟 [ **LogicApp** ] 快捷方式功能表，然後選取 [**使用邏輯應用程式設計工具開啟**]。
+   1. 開啟快捷方式功能表上的 [ **LogicApp.js** ]，然後選取 [**使用邏輯應用程式設計工具開啟**]。
 
       ![使用邏輯應用程式設計工具開啟範本](./media/export-from-microsoft-flow-logic-app-template/open-logic-app-designer.png)
 
@@ -131,7 +145,7 @@ ms.locfileid: "75428872"
 
    1. 部署邏輯應用程式之前，請先儲存您的解決方案。
 
-1. 在方案總管中，開啟 [專案] 快捷方式功能表，然後選取 [**部署** > **新**的]。 如果出現提示，登入您的 Azure 帳戶。
+1. 在方案總管中，開啟 [專案] 快捷方式功能表，然後選取 [**部署**  >  **新**的]。 如果出現提示，登入您的 Azure 帳戶。
 
 1. 出現提示時，請確認 Azure 訂用帳戶、Azure 資源群組，以及您想要用於部署的任何其他設定，例如用來傳遞範本參數值的[參數](../azure-resource-manager/templates/parameter-files.md)檔案，然後選取 [**部署**]。
 

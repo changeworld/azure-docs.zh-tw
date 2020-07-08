@@ -10,18 +10,17 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 06f235b7f1c20681beee1f5be4c18de60d53a690
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75861756"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037302"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Azure 時間序列深入解析預覽 explorer
 
 本文說明 Azure 時間序列深入解析 Preview[示範 web 應用程式](https://insights.timeseries.azure.com/preview/demo)中可用的各種功能和選項。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用 Azure 時間序列深入解析 Preview explorer，您必須：
 
@@ -75,11 +74,11 @@ Azure 時間序列深入解析 Preview 支援在您的時間序列模型上進�
 * **時間序列模型**階層：階層是您的資料的系統化組織。 階層會描述時間序列深入解析資料中不同實體之間的關係。
 * **時間序列模型實例**：實例是時間序列本身。 在大部分情況下，它們是**DeviceID**或**AssetID**，也就是環境中資產的唯一識別碼。
 
-若要深入瞭解時間序列模型，請參閱[時間序列](./time-series-insights-update-tsm.md)模型。
+若要深入瞭解時間序列模型，請參閱[時間序列](./concepts-model-overview.md)模型。
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. 階層樹狀結構和搜尋面板
 
-階層樹狀結構和 [搜尋] 面板可讓您輕鬆地搜尋及流覽[時間序列模型](./time-series-insights-update-tsm.md)階層，以尋找您想要在圖表上顯示的特定時間序列實例。 當您選取實例時，它們不僅會加入目前的圖表中，還會加入至資料中。 
+階層樹狀結構和 [搜尋] 面板可讓您輕鬆地搜尋及流覽[時間序列模型](./concepts-model-overview.md)階層，以尋找您想要在圖表上顯示的特定時間序列實例。 當您選取實例時，它們不僅會加入目前的圖表中，還會加入至資料中。 
 
 [![階層樹狀結構和搜尋面板](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
@@ -215,7 +214,7 @@ Azure 時間序列深入解析預覽支援兩種佈景主題：
 
 **Where**：使用 where 子句，藉由使用下表所列的運算元集合來快速篩選事件。 如果透過選取運算元進行搜尋，述詞會依據該搜尋自動更新。 支援的運算元類型包括下列各項：
 
-| 作業 | 支援的類型   | 注意 |
+| 操作 | 支援的類型   | 備註 |
 | --- | --- | --- |
 | `<`, `>`, `<=`, `>=` | Double、DateTime、TimeSpan | |
 | `=`, `!=`, `<>` | String、Bool、Double、DateTime、TimeSpan、NULL |
@@ -240,8 +239,10 @@ Azure 時間序列深入解析預覽支援兩種佈景主題：
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解 Azure 時間序列深入解析 Preview 中的[儲存體和](./time-series-insights-update-storage-ingress.md)輸入。
+- 瞭解如何將[資料內嵌](./concepts-ingestion-overview.md)至您的環境。
 
-- 閱讀有關[資料模型](./time-series-insights-update-tsm.md)化的時間序列深入解析預覽檔。
+- 查看[儲存體](concepts-storage.md)上的文章
+
+- 閱讀有關[資料模型](./concepts-model-overview.md)化的時間序列深入解析預覽檔。
 
 - 瞭解[如何診斷和疑難排解](./time-series-insights-update-how-to-troubleshoot.md)您的時間序列深入解析實例。

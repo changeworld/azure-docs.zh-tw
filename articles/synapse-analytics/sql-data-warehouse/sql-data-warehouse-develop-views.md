@@ -6,31 +6,30 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 76442368fe4b3e498f622a8a3cd5b5b973f16bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 26eb3a495fd1c896416265687d92da66dfc3599b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633401"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212287"
 ---
 # <a name="views-in-synapse-sql-pool"></a>Synapse SQL 集區中的 Views
 
 檢視能以許多不同的方式使用，提升您的方案品質。
 
-SQL 集區同時支援標準和具體化的視圖。 兩者都是使用 SELECT 運算式建立的虛擬資料表，並以邏輯資料表形式呈現給查詢。
+SQL 集區支援標準檢視和具體化檢視。 兩者都是使用 SELECT 運算式建立的虛擬資料表，並以邏輯資料表形式呈現至查詢。
 
-Views 會封裝一般資料計算的複雜性，並將抽象層新增至計算變更，因此不需要重寫查詢。
+檢視會封裝一般資料計算的複雜性，並將抽象層新增至計算變更，因此不需要重新撰寫查詢。
 
 ## <a name="standard-view"></a>標準視圖
 
-每次使用 view 時，標準視圖都會計算其資料。 磁片上不會儲存任何資料。 人們通常會使用標準視圖作為工具，以協助組織資料庫中的邏輯物件和查詢。
+標準檢視會在每次使用檢視時計算其資料。 磁碟上沒有儲存任何資料。 人們通常會使用標準檢視作為協助整理資料庫中邏輯物件和查詢的工具。
 
-若要使用標準視圖，查詢必須直接參考它。 如需詳細資訊，請參閱 [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 文件。
+若要使用標準檢視，查詢必須與其建立直接參考。 如需詳細資訊，請參閱 [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 文件。
 
 SQL 集區中的 Views 只會儲存為中繼資料。 因此，無法使用下列選項：
 
@@ -46,13 +45,13 @@ SQL 集區中的 Views 只會儲存為中繼資料。 因此，無法使用下�
 
 ## <a name="materialized-view"></a>具體化檢視
 
-具體化視圖會在 SQL 集區中預先計算、儲存和維護其資料，就像資料表一樣。 每次使用具體化視圖時，都不需要重新計算。
+具體化檢視會在 SQL 集區中預先計算、儲存和維護其資料，就像資料表一樣。 每次使用具體化檢視時，都不需要重新計算。
 
 當資料載入基表時，SQL 集區會同步重新整理具體化的視圖。  查詢最佳化工具會自動使用已部署的具體化視圖來改善查詢效能，即使查詢中未參考這些 views 也一樣。  
 
 查詢最能受益于具體化 views 的查詢（通常是具有聯結和匯總的查詢）會在產生小型結果集的大型資料表上進行。  
 
-如需具體化視圖語法和其他需求的詳細資訊，請參閱[CREATE 具體化 view AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  
+如需具體化檢視語法和其他需求的詳細資料，請參閱 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  
 
 如需查詢微調指導方針，請參閱[使用具體化視圖進行效能微調](performance-tuning-materialized-views.md)。
 

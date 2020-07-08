@@ -1,25 +1,13 @@
 ---
 title: Azure 服務匯流排 premium 和標準層
 description: 本文說明 Azure 服務匯流排的標準層和進階層。 比較這些層級，並提供技術上的差異。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: e211774d-821c-4d79-8563-57472d746c58
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: ef3cc8d4c7354b43389244e72c2dbc5899b8db25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774556"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337422"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服務匯流排進階和標準傳訊層級
 
@@ -29,7 +17,7 @@ ms.locfileid: "76774556"
 
 下表強調大致的一些差異。
 
-| Premium | Standard |
+| Premium | 標準 |
 | --- | --- |
 | 高輸送量 |變動輸送量 |
 | 可預測的效能 |變動延遲 |

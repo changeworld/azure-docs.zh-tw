@@ -4,11 +4,10 @@ description: 瞭解如何使用 REST API 來備份復原服務保存庫中的 Az
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710604"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>使用 Azure 備份透過 Rest API 備份 Azure 檔案共用
 
@@ -38,7 +37,7 @@ ms.locfileid: "79248095"
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
 ```
 
-`{subscriptionId}`POST URI 有`{vaultName}`、 `{vaultresourceGroupName}`、和`{fabricName}`參數。 在我們的範例中，不同參數的值如下所示：
+POST URI 有 `{subscriptionId}` 、、 `{vaultName}` `{vaultresourceGroupName}` 和 `{fabricName}` 參數。 在我們的範例中，不同參數的值如下所示：
 
 - `{fabricName}`為*Azure*
 
@@ -467,7 +466,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 若要觸發隨選備份，以下是要求本文的元件。
 
-| 名稱       | 類型                       | 描述                       |
+| 名稱       | 類型                       | Description                       |
 | ---------- | -------------------------- | --------------------------------- |
 | 屬性 | AzurefilesharebackupReques | BackupRequestResource 屬性 |
 

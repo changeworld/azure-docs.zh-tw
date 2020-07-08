@@ -10,18 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 11/01/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6f8037ef1324cb10777511c4c363a62a2edab438
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78967764"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078417"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD 權利管理中的存取套件的自我審查
 
@@ -37,7 +36,7 @@ Azure AD 權利管理可簡化企業管理群組、應用程式和 SharePoint �
 
 1. 按一下 [**審查存取**] 連結。
 
-1. 如果您未收到電子郵件https://myaccess.microsoft.com ，您也可以直接前往來尋找您的暫止存取審查。  （針對美國政府，請`https://myaccess.microsoft.us`改用）。
+1. https://myaccess.microsoft.com如果您未收到電子郵件，您也可以直接前往來尋找您的暫止存取審查。  （針對美國政府，請改用 `https://myaccess.microsoft.us` ）。
 
 1. 按一下左側導覽列上的 [**存取評論**]，以查看指派給您的暫止存取評論清單。
 
@@ -56,7 +55,7 @@ Azure AD 權利管理可簡化企業管理群組、應用程式和 SharePoint �
 
 1.  如果您按一下 [**是]**，可能需要在 [**原因**] 方塊中包含理由語句。
 
-1.  按一下 [提交]  。
+1.  按一下 [提交] 。
 
 如果您改變想法，並決定在評論結束前變更回應，則可以返回評論。
 

@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/30/2020
+ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de10534cb00c66ad914b2c64ac2547b0e3fe03b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85077927"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>在 Azure AD 存取評論中，對群組或應用程式的存取權進行審核
 
@@ -33,7 +32,7 @@ Azure Active Directory （Azure AD）藉由稱為 Azure AD 存取評論的功能
 執行存取權審查的第一個步驟是尋找並開啟存取權審查。
 
 >[!IMPORTANT]
-> 接收電子郵件時可能會有延遲，而在某些情況下，可能需要最多24小時的時間。 加入azure-noreply@microsoft.com白名單，確保您收到所有電子郵件。
+> 接收電子郵件時可能會有延遲，而在某些情況下，可能需要最多24小時的時間。 加入白名單，確保 azure-noreply@microsoft.com 您收到所有電子郵件。
 
 1. 尋找 Microsoft 的電子郵件，要求您審查存取權。 以下是用來審查群組存取權的電子郵件範例。
 
@@ -43,7 +42,7 @@ Azure Active Directory （Azure AD）藉由稱為 Azure AD 存取評論的功能
 
 如果您沒有電子郵件，您可以遵循下列步驟來尋找您的暫止存取審查。
 
-1. 登入我的應用程式入口網站，網址[https://myapps.microsoft.com](https://myapps.microsoft.com)為。
+1. 登入我的應用程式入口網站，網址為 [https://myapps.microsoft.com](https://myapps.microsoft.com) 。
 
     ![我的應用程式入口網站列出您有許可權的應用程式](./media/review-your-access/myapps-access-panel.png)
 
@@ -73,7 +72,7 @@ Azure Active Directory （Azure AD）藉由稱為 Azure AD 存取評論的功能
 
     ![完整的存取權審查，詢問您是否仍需要群組的存取權](./media/review-your-access/perform-access-review-submit.png)
 
-1. 按一下 [提交]  。
+1. 按一下 [提交] 。
 
     您的選擇隨即提交，並返回我的應用程式入口網站。
 
@@ -88,7 +87,7 @@ Azure Active Directory （Azure AD）藉由稱為 Azure AD 存取評論的功能
 
 ### <a name="my-apps-portal"></a>我的應用程式入口網站
 
-1. 登入我的應用程式入口網站，網址[https://myapps.microsoft.com](https://myapps.microsoft.com)為。
+1. 登入我的應用程式入口網站，網址為 [https://myapps.microsoft.com](https://myapps.microsoft.com) 。
 
     ![我的應用程式入口網站列出您有許可權的應用程式](./media/review-your-access/myapps-access-panel.png)
 
@@ -106,7 +105,7 @@ Azure Active Directory （Azure AD）藉由稱為 Azure AD 存取評論的功能
 ### <a name="email"></a>電子郵件
 
 >[!IMPORTANT]
-> 接收電子郵件時可能會有延遲，而在某些情況下，可能需要最多24小時的時間。 加入azure-noreply@microsoft.com白名單，確保您收到所有電子郵件。
+> 接收電子郵件時可能會有延遲，而在某些情況下，可能需要最多24小時的時間。 加入白名單，確保 azure-noreply@microsoft.com 您收到所有電子郵件。
 
 1. 尋找來自 Microsoft 的電子郵件，要求您審查存取權。 您可以看到以下的範例電子郵件訊息：
 
@@ -154,7 +153,7 @@ Azure Active Directory （Azure AD）藉由稱為 Azure AD 存取評論的功能
 
     ![完整的存取權審查，詢問您是否仍需要群組的存取權](./media/review-your-access/review-access-yes-preview.png)
 
-1. 按一下 [提交]  。
+1. 按一下 [提交] 。
 
     您的選擇隨即提交，並返回 [我的存取權] 頁面。
 
@@ -165,4 +164,4 @@ Azure Active Directory （Azure AD）藉由稱為 Azure AD 存取評論的功能
 
 ## <a name="next-steps"></a>後續步驟
 
-- [完成群組或應用程式的存取權審查](complete-access-review.md)
+- [完成群組或應用程式的存取權檢閱](complete-access-review.md)

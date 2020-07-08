@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81866261"
 ---
 # <a name="certificate-creation-methods"></a>憑證建立方式
@@ -32,7 +31,7 @@ ms.locfileid: "81866261"
 1. 在上圖中，您的應用程式即將建立憑證，內部程序首先會在金鑰保存庫中建立金鑰。
 2. Key Vault 將憑證簽署要求 (CSR) 傳回應用程式
 3. 您的應用程式將 CSR 傳遞給您選擇的 CA。
-4. 您選擇的 CA 使用 X509 憑證進行回應。
+4. 您選擇的 CA 會以 X509 憑證回應。
 5. 您的應用程式合併 CA 回覆的 X509 憑證，完成新憑證的建立。
 
 -   **利用已知簽發者提供者建立憑證：** 若要使用這個方法，您必須完成一次性的簽發者物件建立工作。 在您的金鑰保存庫中建立簽發者物件後，您就可以在 KV 憑證的原則中參考其名稱。 建立這類 KV 憑證的要求會在保存庫中建立金鑰組，並使用所參考簽發者物件中的資訊與簽發者提供者服務通訊，以取得 x509 憑證。 x509 憑證是從簽發者服務所擷取，並與金鑰組合併以完成 KV 憑證建立工作。  
@@ -42,10 +41,10 @@ ms.locfileid: "81866261"
 以下說明與可對應至上圖中綠字的步驟。
 
 1. 在上圖中，您的應用程式即將建立憑證，內部程序首先會在金鑰保存庫中建立金鑰。
-2. 金鑰保管庫向 CA 發送 TLS/SSL 證書請求。
+2. Key Vault 將 TLS/SSL 憑證要求傳送給 CA。
 3. 您的應用程式會以迴圈和等待流程來輪詢 Key Vault，直到憑證完成。 Key Vault 收到含 x509 憑證的 CA 回應時，憑證建立工作即完成。
-4. CA 使用 TLS/SSL X.509 憑證回應金鑰保管庫的 TLS/SSL 證書請求。
-5. 您的新證書創建隨著 CA 的 TLS/SSL X.509 憑證的合併而完成。
+4. CA 會使用 TLS/SSL x.509 憑證來回應 Key Vault 的 TLS/SSL 憑證要求。
+5. 您的新憑證建立會隨著 CA 的 TLS/SSL x.509 憑證合併而完成。
 
 ## <a name="asynchronous-process"></a>非同步流程
 KV 憑證的建立是非同步流程。 此作業會建立 KV 憑證要求，並傳回 http 狀態碼 202 (已接受)。 透過輪詢該作業所建立的擱置中物件，即可追蹤要求的狀態。 擱置中物件的完整 URI 會在 LOCATION 標頭中傳回。  
@@ -80,10 +79,10 @@ KV 憑證的建立是非同步流程。 此作業會建立 KV 憑證要求，並
 ## <a name="partnered-ca-providers"></a>合作 CA 提供者
 您可以手動完成憑證建立工作，也可以使用「自我」簽發者。 Key Vault 也與特定簽發者提供者合作，藉此簡化憑證的建立工作。 您可以向這些合作夥伴簽發者提供者訂購以下類型的憑證。  
 
-|提供者|憑證類型|設定設定  
+|提供者|憑證類型|設定  
 |--------------|----------------------|------------------|  
-|DigiCert|Key Vault 透過 DigiCert 提供 OV 或 EV SSL 憑證| [集成指南](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
-|GlobalSign|Key Vault 透過 GlobalSign 提供 OV 或 EV SSL 憑證| [集成指南](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
+|DigiCert|Key Vault 透過 DigiCert 提供 OV 或 EV SSL 憑證| [整合指南](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|GlobalSign|Key Vault 透過 GlobalSign 提供 OV 或 EV SSL 憑證| [整合指南](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  憑證簽發者是 Azure Key Vault (KV) 中以 CertificateIssuer 資源表示的實體。 它用來提供 KV 憑證來源相關資訊；簽發者名稱、提供者、認證和其他系統管理詳細資訊。
 

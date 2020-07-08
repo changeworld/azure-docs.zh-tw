@@ -8,27 +8,27 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: b222a94ee754b24192261451d8ddc429886e705c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: aa5e741d8578253b8b3e8e5c692873c39cec8f79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85412629"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API：版本資訊與資源
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET 變更摘要](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET 變更摘要 SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST 資源提供者](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](/rest/api/cosmos-db/)
+> * [REST 資源提供者](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [大量執行程式 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [大量執行程式-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [大量執行程式 - Java](sql-api-sdk-bulk-executor-java.md)
 
 Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結合成一個 Maven 成品。 V4 SDK 會根據 Project Reactor 和 [Netty 程式庫](https://netty.io/)，提供增強的效能、新的 API 功能和非同步支援。 使用者可以預期 Azure Cosmos DB Java SDK v4 與 [Azure Cosmos DB Async Java SDK v2](sql-api-sdk-async-java.md) 和 [Azure Cosmos DB Sync Java SDK v2](sql-api-sdk-java.md) 的改善效能。
@@ -47,7 +47,7 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 | |  |
 |---|---|
 | **SDK 下載** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API 文件** | [Java API 參考文件](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1-beta.3/index.html) |
+|**API 文件** | [Java API 參考文件](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
 |**參與 SDK** | [GitHub 上的 Azure SDK for Java 中央存放庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
 |**開始使用** | [快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB SQL API 資料](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [使用快速入門程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**基本程式碼範例** | [Azure Cosmos DB：SQL API 的 JAVA 範例](sql-api-java-sdk-samples.md)  ·[使用範例程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
@@ -59,3 +59,83 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 | **最低支援執行階段**|[JDK 8](/java/azure/jdk/?view=azure-java-stable) | 
 | **Azure Cosmos DB 研討會與實驗室** |[Cosmos DB 研討會首頁](https://aka.ms/cosmosworkshop)
 
+## <a name="release-history"></a>版本歷程記錄
+
+### <a name="410-2020-06-25"></a>4.1.0 （2020-06-25）
+#### <a name="new-features"></a>新功能
+* 已新增查詢的支援 `GROUP BY` 。
+* 在 DirectConnectionConfig 中，將 maxConnectionsPerEndpoint 的預設值增加為130。
+* 在 DirectConnectionConfig 中，將 maxRequestsPerConnection 的預設值增加為30。
+#### <a name="key-bug-fixes"></a>金鑰錯誤修正
+* 已修正使用接續 token 繼續時，order by 查詢傳回重複結果的問題。 
+* 已修正值查詢針對嵌套物件傳回 null 值的問題。
+* 已修正 RntbdClientChannelPool 中要求管理員的 null 指標例外狀況。
+
+### <a name="401-2020-06-10"></a>4.0.1 （2020-06-10）
+#### <a name="new-features"></a>新功能
+* 已將 `QueryRequestOptions` 重新命名為 `CosmosQueryRequestOptions`。
+* 已更新 `ChangeFeedProcessorBuilder` 為 builder 模式。
+* 已更新 `CosmosPermissionProperties` 新的容器名稱和子資源 api。
+* 已將更多範例 & 擴充的檔新增至 `CosmosClientBuilder` 。 
+* 已 `CosmosDatabase`  &  `CosmosContainer` 使用 throughputProperties 更新 api 以進行自動調整/autopilot 支援。 
+* 已將 `CosmosClientException` 重新命名為 `CosmosException`。 
+* 已 `AccessCondition`  &  `AccessConditionType` 由 `ifMatchETag()`  &  `ifNoneMatchETag()` api 取代。 
+* 將所有 `Cosmos*AsyncResponse`  &  `CosmosResponse` 類型合併成單一 `CosmosResponse` 類型。
+* 已將 `CosmosResponseDiagnostics` 重新命名為 `CosmosDiagnostics`。  
+* 包裝 `FeedResponseDiagnostics` 在中 `CosmosDiagnostics` 。 
+* 已 `jackson` 從 azure cosmos & 依賴 azure 核心來移除相依性。 
+* 已取代 `CosmosKeyCredential` 為 `AzureKeyCredential` 類型。 
+* 已 `ProxyOptions` 將 api 新增至 `GatewayConnectionConfig` 。 
+* 已更新 SDK 以使用 `Instant` 類型，而不是 `OffsetDateTime` 。 
+* 已加入新的列舉類型 `OperationKind` 。 
+* 已將 `FeedOptions` 重新命名為 `QueryRequestOptions`。 
+* 已 `getETag()`  &  `getTimestamp()` 將 api 新增至 `Cosmos*Properties` 類型。 
+* 已 `userAgent` 在中新增資訊 `CosmosException`  &  `CosmosDiagnostics` 。 
+* 已將中的新行字元更新 `Diagnostics` 為系統換行字元。 
+* 已移除 `readAll*` api，請改用查詢選取所有 api。
+* 已新增 `ChangeFeedProcessor` 估計延遲 API。   
+* 已將自動調整/autopilot 輸送量布建支援新增至 SDK。  
+* 已取代 `ConnectionPolicy` 為新的連線建立。 `DirectConnectionConfig`  &  `GatewayConnectionConfig` `CosmosClientBuilder` 針對直接 & 閘道模式連線設定，透過公開的 api。
+* 已移 `JsonSerializable`  &  `Resource` 至執行封裝。 
+* 已 `contentResponseOnWriteEnabled` 將 API 新增至 CosmosClientBuilder，這會停用寫入作業的完整回應內容。
+* 已公開 `getETag()` 回應類型的 api。
+* 已移 `CosmosAuthorizationTokenResolver` 至 [執行中]。 
+* API 已重新命名 `preferredLocations`  &  `multipleWriteLocations` 為 `preferredRegions`  &  `multipleWriteRegions` 。 
+* 已更新 `reactor-core` 為3.3.5， `reactor-netty` 0.9.7 版發行 & `netty` 至4.1.49。最終版本。 
+* 已 `analyticalStoreTimeToLive` 在 SDK 中新增的支援。     
+* `CosmosClientException`擴充 `AzureException` 。 
+* 已 `maxItemCount`  &  `requestContinuationToken` 從移除 api `FeedOptions` ，改為使用 `byPage()` 來自的 api `CosmosPagedFlux`  &  `CosmosPagedIterable` 。
+* `CosmosPermissionProperties`在 api 的公用介面上引進 `Permission` 。
+* 移除 `SqlParameterList` 的類型 & 取代為`List`
+* 已修正直接 TCP 用戶端中的多個記憶體流失。 
+* 已新增查詢的支援 `DISTINCT` 。 
+* 已移除的外部相依性 `fasterxml.uuid, guava, commons-io, commons-collection4, commons-text` 。  
+* 已移 `CosmosPagedFlux`  &  `CosmosPagedIterable` 至 `utils` 套件。 
+* 已將 netty 更新為4.1.45。最終 & 專案 reactor 至3.3.3 版本。
+* 已將公用 rest 合約更新為 `Final` 類別。
+* 已新增對點作業的先進診斷支援。
+* 已將套件更新為`com.azure.cosmos`
+* 已新增 `models` 模型/rest 合約的封裝
+* 已新增 `utils` 類型的封裝 `CosmosPagedFlux`  &  `CosmosPagedIterable` 。 
+* 已更新公用 Api 以在 `Duration` SDK 中使用。
+* 已將所有 rest 合約新增至 `models` 封裝。
+* `RetryOptions` 已重新命名為 `ThrottlingRetryOptions`。
+* 已加入 `CosmosPagedFlux`  &  `CosmosPagedIterable` 查詢 api 的分頁類型。 
+* 已新增在中使用新的 API，在多個 CosmosClients 實例間共用 TransportClient 的支援`CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
+* 藉由移除雙重序列化/還原序列化來查詢優化。 
+* 回應標頭會藉由移除不必要的來回複製來進行優化。 
+* 藉 `ByteBuffer` 由移除中繼字串具現化來優化序列化/還原序列化。
+#### <a name="key-bug-fixes"></a>金鑰錯誤修正
+* 已修正 ConnectionPolicy `toString()` Null 指標例外狀況。
+* 已修正在值排序依據查詢的情況下，剖析查詢結果的問題。 
+* 已修正直接 TCP 用戶端的通訊端流失問題。
+* 已修正 `orderByQuery` 接續 token bug。
+* `ChangeFeedProcessor`修正在找不到分割區時 & 處理分割區分割的 bug。
+* `ChangeFeedProcessor`跨不同執行緒同步處理租用更新時的錯誤修正。
+* 已修正競爭條件導致 `ArrayIndexOutOfBound` StoreReader 中發生例外狀況
+
+## <a name="faq"></a>常見問題集
+[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
+
+## <a name="see-also"></a>另請參閱
+若要深入了解 Cosmos DB，請參閱 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服務頁面。

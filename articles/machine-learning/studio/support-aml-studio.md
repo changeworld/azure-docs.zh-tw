@@ -5,16 +5,15 @@ description: 取得 Azure Machine Learning Studio 的支援和訓練並提供意
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: cd48e97f642402d1c7ff2ff71e7cee67be17f91d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 708f337ebc627f863f632a677a2186a9d7fe99f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213171"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>取得 Azure Machine Learning Studio 的支援和訓練（傳統）
 
@@ -38,7 +37,7 @@ ms.locfileid: "82209429"
 
 + **Azure 客戶的技術支援**：透過 Azure 入口網站[提交及管理支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
 
-+ **使用者論壇**：在[MSDN 上的 Azure Machine Learning Studio （傳統）支援論壇](https://aka.ms/aml-forum-studio)中提出問題、回答問題，以及與其他使用者聯繫。
++ **使用者論壇**：在[Azure Machine Learning Studio （傳統）支援論壇](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)中提出問題、回答問題，以及與其他使用者聯繫。
 
 + **Stack Overflow**：造訪 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上標籤為 "Azure-Machine-Learning" 的 Azure Machine Learning 社群。
 

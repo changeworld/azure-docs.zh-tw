@@ -4,15 +4,14 @@ description: 使用 VPN 閘道和入口網站將傳統 VNet 連線到 Resource M
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5e64cb2db2bd16a881334779a1c6f1ef19296da2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 231fbe3a30cc9507ebb9b401bd2fe07a451c59a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152018"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987675"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>使用入口網站從不同的部署模型連接虛擬網路
 
@@ -84,7 +83,7 @@ SKU = VpnGw1 <br>
 
 在本節中，您會建立傳統 VNet、區域網路 (本機網站) 及虛擬網路閘道。 已提供螢幕擷取畫面做為範例。 請務必將值取代為您自己的值，或使用[範例](#values)值。
 
-### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"></a>建立傳統 VNet
+### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"></a> 建立傳統 VNet
 
 如果您沒有傳統 VNet，而且正在執行這些步驟作為練習，您可以使用[這篇文章](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)和上述的[範例](#values)設定值來建立 VNet。
 
@@ -96,7 +95,7 @@ SKU = VpnGw1 <br>
 4. 在傳回的清單中找出 [虛擬網路]，然後按一下以開啟 [虛擬網路] 頁面。 
 5. 在 [虛擬網路] 頁面上，選取 [傳統] 以建立傳統的 VNet。 如果您在這裡採用預設值，就會改為得到 Resource Manager VNet。
 
-### <a name="2-configure-the-local-site"></a>2. <a name="local"></a>設定本機網站
+### <a name="2-configure-the-local-site"></a>2. <a name="local"></a> 設定本機網站
 
 1. 瀏覽至 [所有資源]****，並且在清單中找出 **ClassicVNet**。
 2. 在功能表的 [**設定**] 區段中，按一下 [**閘道**]，然後按一下橫幅以建立閘道。
@@ -212,7 +211,7 @@ SKU = VpnGw1 <br>
 7. 已在此頁面上選取 [站對站]****。
 8. 選取您想要與此網站產生關聯的虛擬網路閘道。
 9. 建立**共用金鑰**。 這個金鑰也會用於您建立之傳統 VNet 到 Resource Manager VNet 的連線。 您可以產生金鑰或自行建立金鑰。 在我們的範例中，我們使用的是 'abc123'，但是您可以(且應該) 使用更為複雜的值。
-10. 按一下 [確定]**** 來建立連線。
+10. 按一下 [確定] 來建立連線。
 
 ## <a name="section-5---create-classic-to-resource-manager-connection"></a><a name="classictoRM"></a>第 5 節 - 建立傳統到 Resource Manager 的連線
 

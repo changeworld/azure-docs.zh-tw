@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 89cb63630e3dbe953ed3f4fd8796d01ba0d36067
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8d87052ecfe85fa35c41c8b306bb48551fd06be9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77651486"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322844"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務的必要條件概觀
 
@@ -113,21 +112,21 @@ Azure 資料庫移轉服務必要條件在所有支援的移轉案例中都是�
 
 當您使用 Azure 資料庫移轉服務來執行將 SQL Server 移轉到 Azure SQL Database 時，除了所有移轉案例中都通用的必要條件之外，請務必提出下列其他先決條件：
 
-* 依照在[Azure 入口網站中建立 AZURE SQL 資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)一文中的詳細資料，建立 Azure SQL Database 實例的實例。
+* 建立 Azure SQL Database 實例的實例，您可以遵循在[Azure 入口網站的 Azure SQL Database 中建立資料庫一](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)文中的詳細資料來執行。
 * 下載及安裝[資料移轉小幫手](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 或更新版本。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 SQL Server，其預設會通過 TCP 連接埠 1433。
 * 如果您使用動態連接埠執行多個具名 SQL Server 執行個體，也許會想要啟用 SQL Browser 服務並允許通過防火牆存取 UDP 連接埠 1434，讓 Azure 資料庫移轉服務連線來源伺服器上的具名執行個體。
-* 針對 Azure SQL Database 伺服器建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網範圍。
+* 建立 SQL Database 的伺服器層級[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網範圍。
 * 確定用來連線至來源 SQL Server 執行個體的認證具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 權限。
-* 確定用來連線至目標 Azure SQL DB 執行個體的認證，在目標 Azure SQL 資料庫上具有 CONTROL DATABASE 權限。
+* 確定用來連接到目標資料庫的認證具有目標資料庫的 CONTROL DATABASE 許可權。
 
    > [!NOTE]
    > 如需使用 Azure 資料庫移轉服務執行從 SQL Server 移轉到 Azure SQL Database 所需的必要條件完整清單，請參閱本教學課程[將 SQL Server 移轉到 Azure SQL Database](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql)。
    >
 
-## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>將 SQL Server 遷移至 Azure SQL Database 受控實例的必要條件
+## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance"></a>將 SQL Server 遷移至 Azure SQL 受控執行個體的必要條件
 
-* 遵循在[Azure 入口網站中建立 Azure SQL Database 受控執行個體一](https://aka.ms/sqldbmi)文中的詳細資料，建立 Azure SQL Database 的受控實例。
+* 遵循在[Azure 入口網站中建立 AZURE SQL 受控執行個體](https://aka.ms/sqldbmi)一文中的詳細資料，建立 SQL 受控執行個體。
 * 開啟您的防火牆，以針對 Azure 資料庫移轉服務 IP 位址或子網路範圍，允許連接埠 445 上的 SMB 流量。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 SQL Server，其預設會通過 TCP 連接埠 1433。
 * 如果您使用動態連接埠執行多個具名 SQL Server 執行個體，也許會想要啟用 SQL Browser 服務並允許通過防火牆存取 UDP 連接埠 1434，讓 Azure 資料庫移轉服務連線來源伺服器上的具名執行個體。
@@ -138,7 +137,7 @@ Azure 資料庫移轉服務必要條件在所有支援的移轉案例中都是�
 * 利用[使用儲存體總管來管理 Azure Blob 儲存體資源](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)一文中的步驟，來建立 Blob 容器並擷取其 SAS URI。 建立 SAS URI 時，請務必選取原則視窗上的所有權限 (讀取、寫入、刪除、列示)。
 
    > [!NOTE]
-   > 如需使用 Azure 資料庫移轉服務執行從 SQL Server 移轉到 Azure SQL Database 受控執行個體所需的先決條件完整清單，請參閱[將 SQL Server 移轉到 Azure SQL Database 受控執行個體](https://aka.ms/migratetomiusingdms) \(英文\) 教學課程。
+   > 如需使用 Azure 資料庫移轉服務來執行從 SQL Server 到 SQL 受控執行個體遷移的必要條件的完整清單，請參閱將[SQL Server 遷移至 sql 受控執行個體](https://aka.ms/migratetomiusingdms)教學課程。
 
 ## <a name="next-steps"></a>後續步驟
 

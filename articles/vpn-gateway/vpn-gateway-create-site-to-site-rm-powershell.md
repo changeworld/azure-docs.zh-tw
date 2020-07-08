@@ -5,15 +5,14 @@ titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: d1693a6165aa31b221b6901e2e1c8b2955a3dfb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dd246e4e6a59637c720cbaddf1258b6e01f709b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045688"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84986110"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>使用 PowerShell 建立具有站對站 VPN 連接的 VNet
 
@@ -129,7 +128,7 @@ New-AzResourceGroup -Name TestRG1 -Location 'East US'
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
 
-## <a name="2-create-the-local-network-gateway"></a>2. <a name="localnet"></a>建立局域網路閘道
+## <a name="2-create-the-local-network-gateway"></a>2. <a name="localnet"></a> 建立局域網路閘道
 
 區域網路閘道 (LNG) 通常是指您的內部部署位置。 它與虛擬網路閘道不同。 請賦予網站可供 Azure 參考的名稱，然後指定您想要與其建立連線之內部部署 VPN 裝置的 IP 位址。 也請指定 IP 位址首碼，以供系統透過 VPN 閘道路由至 VPN 裝置。 您指定的位址首碼是位於內部部署網路上的首碼。 如果您的內部部署網路有所變更，您可以輕鬆地更新首碼。
 

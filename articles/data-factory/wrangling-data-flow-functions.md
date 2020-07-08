@@ -7,18 +7,20 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 0a0947a5e2b57f728023b0f923428814b3e439ec
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: e63c3f329cb9c1fd5ca91274540f5145c3ad098a
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921552"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>整頓資料流程中的轉換函數
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory 中的整頓資料流程可讓您以雲端規模進行無程式碼的敏捷式資料準備和整頓。 整頓資料流程會與[Power Query Online](https://docs.microsoft.com/powerquery-m/power-query-m-reference)整合，並透過 spark 執行讓 Power Query M 函數可供資料整頓。 
+
+> [!NOTE]
+> 整頓資料流程目前已供于公開預覽
 
 目前不支援所有 Power Query M 函數來進行資料整頓，但仍可在撰寫期間使用。 建立整頓的資料流程時，如果不支援函式，系統會提示您輸入下列錯誤訊息：
 
@@ -39,7 +41,7 @@ Azure Data Factory 中的整頓資料流程可讓您以雲端規模進行無程�
 
 * 相等和不相等
 * 數值、文字和日期的比較（但不是 DateTime）
-* 數值資訊，例如[Number. IsEven](https://docs.microsoft.com/powerquery-m/number-iseven)/[奇數](https://docs.microsoft.com/powerquery-m/number-iseven)
+* 數值資訊，例如[Number. IsEven](https://docs.microsoft.com/powerquery-m/number-iseven) / [奇數](https://docs.microsoft.com/powerquery-m/number-iseven)
 * 使用 Text 的文字[內含專案。 Contains](https://docs.microsoft.com/powerquery-m/text-contains)、 [Text. StartsWith](https://docs.microsoft.com/powerquery-m/text-startswith)或[text. EndsWith](https://docs.microsoft.com/powerquery-m/text-endswith)
 * 包含所有 ' IsIn' [Date 函數](https://docs.microsoft.com/powerquery-m/date-functions)的日期範圍 
 * 使用 and、or 或 not 條件的組合
@@ -55,7 +57,7 @@ Azure Data Factory 中的整頓資料流程可讓您以雲端規模進行無程�
 * 最標準、科學和三角數值函式（除數位以外的所有函[式、](https://docs.microsoft.com/powerquery-m/number-functions#operations)[進位](https://docs.microsoft.com/powerquery-m/number-functions#rounding)和[三角函數](https://docs.microsoft.com/powerquery-m/number-functions#trigonometry)*除外*）。
 * 取代（[取代子. ReplaceText](https://docs.microsoft.com/powerquery-m/replacer-replacetext)，[取代子.. u](https://docs.microsoft.com/powerquery-m/replacer-replacevalue)， [text. Replace](https://docs.microsoft.com/powerquery-m/text-replace)， [text. Remove](https://docs.microsoft.com/powerquery-m/text-remove)）
 * 位置文字解壓縮（[PositionOf](https://docs.microsoft.com/powerquery-m/text-positionof)、 [text. Length](https://docs.microsoft.com/powerquery-m/text-length)、text、 [Start](https://docs.microsoft.com/powerquery-m/text-start)、 [text. End](https://docs.microsoft.com/powerquery-m/text-end)、 [text](https://docs.microsoft.com/powerquery-m/text-middle). [ReplaceRange](https://docs.microsoft.com/powerquery-m/text-replacerange)、 [text. RemoveRange](https://docs.microsoft.com/powerquery-m/text-removerange)）
-* 基本文字格式（[文字. Lower](https://docs.microsoft.com/powerquery-m/text-lower)、[文字. 大寫](https://docs.microsoft.com/powerquery-m/text-upper)、[文字. 修剪](https://docs.microsoft.com/powerquery-m/text-trim)/[開始](https://docs.microsoft.com/powerquery-m/text-trimstart)/[結束](https://docs.microsoft.com/powerquery-m/text-trimend)、 [PadStart](https://docs.microsoft.com/powerquery-m/text-padstart)/[結束](https://docs.microsoft.com/powerquery-m/text-padend)、文字） [。](https://docs.microsoft.com/powerquery-m/text-reverse)
+* 基本文字格式（[文字. Lower](https://docs.microsoft.com/powerquery-m/text-lower)、[文字. 大寫](https://docs.microsoft.com/powerquery-m/text-upper)、[文字. 修剪](https://docs.microsoft.com/powerquery-m/text-trim) / [開始](https://docs.microsoft.com/powerquery-m/text-trimstart) / [結束](https://docs.microsoft.com/powerquery-m/text-trimend)、 [PadStart](https://docs.microsoft.com/powerquery-m/text-padstart) / [結束](https://docs.microsoft.com/powerquery-m/text-padend)、文字） [。](https://docs.microsoft.com/powerquery-m/text-reverse)
 * 日期/時間函數（[date、Day](https://docs.microsoft.com/powerquery-m/date-day)、 [date、Month](https://docs.microsoft.com/powerquery-m/date-month)、 [Date、Year](https://docs.microsoft.com/powerquery-m/date-year) [time、Hour](https://docs.microsoft.com/powerquery-m/time-hour)、 [Minute](https://docs.microsoft.com/powerquery-m/time-minute)、Time. [Second](https://docs.microsoft.com/powerquery-m/time-second)、 [date. DayOfWeek](https://docs.microsoft.com/powerquery-m/date-dayofweek)、 [date. DayOfYear](https://docs.microsoft.com/powerquery-m/date-dayofyear)、 [date. DaysInMonth](https://docs.microsoft.com/powerquery-m/date-daysinmonth)）
 * If 運算式（但分支必須有相符的類型）
 * 當做邏輯資料行的資料列篩選

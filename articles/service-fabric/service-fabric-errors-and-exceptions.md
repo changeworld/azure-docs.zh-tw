@@ -1,16 +1,15 @@
 ---
 title: 擲回的常見 FabricClient 例外狀況
 description: 描述 FabricClient API 可在執行應用程式和叢集管理作業時擲回的常見例外狀況和錯誤。
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 06/20/2018
-ms.author: oanapl
-ms.openlocfilehash: 9ad3097a490d4728e05ea90652c17c24b79cac2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: gwallace
+ms.openlocfilehash: d22184d6d275adb95932fb29338768210547c199
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75457930"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392619"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>使用 FabricClient API 時常見的例外狀況和錯誤
 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API 可讓叢集和應用程式系統管理員對 Service Fabric 應用程式、服務或叢集執行系統管理工作。 例如，應用程式部署、升級和移除、檢查叢集的健康狀態，或測試服務。 應用程式開發人員和叢集系統管理員可以使用 FabricClient API，來開發用於管理 Service Fabric 叢集和應用程式的工具。
@@ -27,7 +26,7 @@ ms.locfileid: "75457930"
 
 [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) 中傳回的一些常見 [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) 錯誤：
 
-| 錯誤 | 狀況 |
+| 錯誤 | 條件 |
 | --- |:--- |
 | CommunicationError |通訊錯誤導致作業失敗，請重試作業。 |
 | InvalidCredentialType |認證類型無效。 |

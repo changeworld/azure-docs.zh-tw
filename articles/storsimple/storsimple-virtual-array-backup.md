@@ -9,18 +9,17 @@ editor: ''
 ms.assetid: e3cdcd9e-33b1-424d-82aa-b369d934067e
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 26bf018d8823495c00b09af3a40b39315dadb31c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60581232"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513664"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>備份 StorSimple Virtual Array 上的共用或磁碟區
 
@@ -58,7 +57,7 @@ StorSimple Virtual Array 有預設的備份原則會在每日特定時間 (22:30
    
     ![瀏覽至備份原則](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
-4. 按一下 **[儲存]** 。
+4. 按一下 [檔案] 。
 
 ### <a name="take-a-manual-backup"></a>進行手動備份
 
@@ -108,7 +107,7 @@ StorSimple Virtual Array 有預設的備份原則會在每日特定時間 (22:30
    
      ![篩選備份](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. 按一下 [套用]  。 已篩選的備份清單會顯示在 [備份目錄]**** 刀鋒視窗中。 請注意，永遠只會顯示 100 個備份項目。
+3. 按一下 [套用] 。 已篩選的備份清單會顯示在 [備份目錄]**** 刀鋒視窗中。 請注意，永遠只會顯示 100 個備份項目。
    
     ![更新備份目錄](./media/storsimple-virtual-array-backup/viewbackups3.png)
 

@@ -4,13 +4,12 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何安裝及設定 NGINX 輸入控制器，而該控制器在 Azure Kubernetes Service (AKS) 叢集中使用您自有的憑證。
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: dce3cf4e7db45b00b29469524d7576f6065ebaf4
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.date: 07/02/2020
+ms.openlocfilehash: 4e87a4005a2f6428123b852c2ff505a30c7e36fd
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561925"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920333"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上建立 HTTPS 輸入控制器及使用自有的 TLS 憑證
 
@@ -38,14 +37,17 @@ ms.locfileid: "82561925"
 輸入控制器也需要在 Linux 節點上排程。 Windows Server 節點不應執行輸入控制器。 您可以使用 `--set nodeSelector` 參數來指定節點選取器，以告知 Kubernetes 排程器在 Linux 式節點上執行 NGINX 輸入控制器。
 
 > [!TIP]
-> 下列範例會建立名為「輸入 *-基本*」的輸入資源的 Kubernetes 命名空間。 視需要指定您自己環境的命名空間。 如果您的 AKS 叢集未啟用 RBAC，請`--set rbac.create=false`將新增至 Helm 命令。
+> 下列範例會建立名為「輸入 *-基本*」的輸入資源的 Kubernetes 命名空間。 視需要指定您自己環境的命名空間。 如果您的 AKS 叢集未啟用 RBAC，請將新增 `--set rbac.create=false` 至 Helm 命令。
 
 > [!TIP]
-> 如果您想要為叢集中的容器要求啟用[用戶端來源 IP 保留][client-source-ip]，請將`--set controller.service.externalTrafficPolicy=Local`新增至 Helm install 命令。 用戶端來源 IP 會儲存在要求標頭的 [ *X-轉送-*] 下。 當使用已啟用用戶端來源 IP 保留的輸入控制器時，TLS 傳遞將無法正常執行。
+> 如果您想要為叢集中的容器要求啟用[用戶端來源 IP 保留][client-source-ip]，請將新增 `--set controller.service.externalTrafficPolicy=Local` 至 Helm install 命令。 用戶端來源 IP 會儲存在要求標頭的 [ *X-轉送-*] 下。 當使用已啟用用戶端來源 IP 保留的輸入控制器時，TLS 傳遞將無法正常執行。
 
 ```console
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
+
+# Add the official stable repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 # Use Helm to deploy an NGINX ingress controller
 helm install nginx-ingress stable/nginx-ingress \
@@ -57,7 +59,13 @@ helm install nginx-ingress stable/nginx-ingress \
 
 在安裝期間，會為輸入控制器建立 Azure 公用 IP 位址。 在輸入控制器的生命週期內，此公用 IP 位址都是靜態的。 如果您刪除輸入控制器，公用 IP 位址指派將會遺失。 如果您後續又建立其他輸入控制器，將會指派新的公用 IP 位址。 如果您想要持續使用公用 IP 位址，您可以改為[使用靜態公用 IP 位址建立輸入控制器][aks-ingress-static-tls]。
 
-若要取得公用 IP 位址，請使用 `kubectl get service` 命令。 將 IP 位址指派給服務需要幾分鐘的時間。
+若要取得公用 IP 位址，請使用 `kubectl get service` 命令。
+
+```console
+kubectl get service -l app=nginx-ingress --namespace ingress-basic
+```
+
+將 IP 位址指派給服務需要幾分鐘的時間。
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -103,7 +111,7 @@ kubectl create secret tls aks-ingress-tls \
 
 輸入控制器和您憑證的祕密皆已設定。 現在讓我們在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，會使用 Helm 來部署簡單 'Hello world' 應用程式的兩個執行個體。
 
-若要查看作用中的輸入控制器，請在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，您`kubectl apply`會使用來部署簡單*Hello world*應用程式的兩個實例。
+若要查看作用中的輸入控制器，請在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，您會使用 `kubectl apply` 來部署簡單*Hello world*應用程式的兩個實例。
 
 建立*aks-helloworld yaml*檔案，並複製下列範例 yaml：
 
@@ -181,7 +189,7 @@ spec:
     app: ingress-demo
 ```
 
-使用`kubectl apply`執行兩個示範應用程式：
+使用執行兩個示範應用程式 `kubectl apply` ：
 
 ```console
 kubectl apply -f aks-helloworld.yaml --namespace ingress-basic
@@ -231,6 +239,12 @@ spec:
 
 使用 `kubectl apply -f hello-world-ingress.yaml` 命令建立輸入資源。
 
+```console
+kubectl apply -f hello-world-ingress.yaml
+```
+
+範例輸出會顯示已建立輸入資源。
+
 ```
 $ kubectl apply -f hello-world-ingress.yaml
 
@@ -245,7 +259,7 @@ ingress.extensions/hello-world-ingress created
 curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 ```
 
-位址未提供任何其他路徑，因此輸入控制器會預設為*/* 路由。 此時會傳回第一個示範應用程式，如下列簡要範例輸出所示：
+位址未提供任何其他路徑，因此輸入控制器會預設為 */* 路由。 此時會傳回第一個示範應用程式，如下列簡要範例輸出所示：
 
 ```
 $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
@@ -292,7 +306,7 @@ $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/h
 
 ### <a name="delete-the-sample-namespace-and-all-resources"></a>刪除範例命名空間和所有資源
 
-若要刪除整個範例命名空間，請`kubectl delete`使用命令並指定您的命名空間名稱。 命名空間中的所有資源都會被刪除。
+若要刪除整個範例命名空間，請使用 `kubectl delete` 命令並指定您的命名空間名稱。 命名空間中的所有資源都會被刪除。
 
 ```console
 kubectl delete namespace ingress-basic
@@ -300,7 +314,13 @@ kubectl delete namespace ingress-basic
 
 ### <a name="delete-resources-individually"></a>個別刪除資源
 
-或者，更細微的方法是刪除所建立的個別資源。 使用`helm list`命令來列出 Helm 版本。 尋找名為*nginx 的圖表-* 輸入，如下列範例輸出所示：
+或者，更細微的方法是刪除所建立的個別資源。 使用命令來列出 Helm 版本 `helm list` 。 
+
+```console
+helm list --namespace ingress-basic
+```
+
+尋找名為*nginx 的圖表-* 輸入，如下列範例輸出所示：
 
 ```
 $ helm list --namespace ingress-basic
@@ -309,7 +329,13 @@ NAME                    NAMESPACE       REVISION        UPDATED                 
 nginx-ingress           ingress-basic   1               2020-01-06 19:55:46.358275 -0600 CST    deployed        nginx-ingress-1.27.1    0.26.1 
 ```
 
-使用`helm uninstall`命令卸載發行。 下列範例會卸載 NGINX 輸入部署。
+使用命令卸載發行 `helm uninstall` 。 
+
+```console
+helm uninstall nginx-ingress --namespace ingress-basic
+```
+
+下列範例會卸載 NGINX 輸入部署。
 
 ```
 $ helm uninstall nginx-ingress --namespace ingress-basic
@@ -336,7 +362,7 @@ kubectl delete -f hello-world-ingress.yaml
 kubectl delete secret aks-ingress-tls
 ```
 
-最後，您可以刪除本身的命名空間。 使用`kubectl delete`命令，並指定您的命名空間名稱：
+最後，您可以刪除本身的命名空間。 使用 `kubectl delete` 命令，並指定您的命名空間名稱：
 
 ```console
 kubectl delete namespace ingress-basic

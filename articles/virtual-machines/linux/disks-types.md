@@ -3,16 +3,15 @@ title: 選取適用于 Azure IaaS Linux Vm 的磁片類型-受控磁片
 description: 深入瞭解適用于 Linux 虛擬機器的 Azure 磁片類型，包括 ultra 磁片、premium Ssd、standard Ssd 和標準 Hdd。
 author: roygara
 ms.author: rogarana
-ms.date: 11/04/2019
+ms.date: 06/03/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 7990c178f18ac5219fde0882c24d5854001ba63e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dc8bd3877297db1677c4b838132b954fb033fe0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84337373"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>在 Azure 中可使用哪些磁碟類型？
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]

@@ -4,12 +4,11 @@ description: 了解在 Azure 中開發函式所需的 Azure Functions 概念與�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: b6af3d7ab1fdd35391c9a189162c57dfb259f2d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9a3c0643f4fc965ff64106758320aeb445aaf9ae
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405346"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921731"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開發人員指南
 在 Azure Functions 中，不論您使用何種語言或繫結，特定函式都會共用一些核心技術概念和元件。 閱讀指定語言或繫結特有的詳細資料之前，請務必詳閱這份適用於所有語言或繫結的概觀。
@@ -40,7 +39,7 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 
 `bindings` 屬性可讓您設定觸發程序和繫結。 每個繫結都共用一些共用設定，以及特定類別的繫結特有的一些設定。 每個繫結都需要下列設定︰
 
-| 屬性 | 值/類型 | 評價 |
+| 屬性 | 值/類型 | 註解 |
 | --- | --- | --- |
 | `type` |字串 |繫結類型。 例如： `queueTrigger` 。 |
 | `direction` |'in'、'out' |表示繫結用於將資料接收到函數，還是從函數傳送資料。 |
@@ -102,4 +101,4 @@ Azure Functions 的程式碼是開放原始碼，儲存於 GitHub 儲存機制�
 * [撰寫 Azure Functions 並在本機進行測試](./functions-develop-local.md)
 * [Azure Functions 的最佳做法](functions-best-practices.md)
 * [Azure Functions C# 開發人員參考](functions-dotnet-class-library.md)
-* [Azure Functions node.js 開發人員參考](functions-reference-node.md)
+* [Azure Functions Node.js 開發人員參考](functions-reference-node.md)

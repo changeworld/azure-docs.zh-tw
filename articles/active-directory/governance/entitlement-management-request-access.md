@@ -10,18 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/26/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b1ccde2f1f92237978ab4e68acaa26393bbb9d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e744adeae55252ec70c8f766db1e29a3898886c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261745"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078107"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>要求存取 Azure AD 權利管理中的存取套件
 
@@ -35,7 +34,7 @@ ms.locfileid: "79261745"
 
 **先決條件角色：** 申請者
 
-1. 從您正在使用的專案或商務經理尋找電子郵件或訊息。 電子郵件應該包含您需要存取的存取套件連結。 此連結會以`myaccess`開頭，包括目錄提示，並以存取套件識別碼結尾。  （對於美國政府而言，網域可能改`https://myaccess.microsoft.us`為）。
+1. 從您正在使用的專案或商務經理尋找電子郵件或訊息。 電子郵件應該包含您需要存取的存取套件連結。 此連結會以開頭 `myaccess` ，包括目錄提示，並以存取套件識別碼結尾。  （對於美國政府而言，網域可能 `https://myaccess.microsoft.us` 改為）。
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

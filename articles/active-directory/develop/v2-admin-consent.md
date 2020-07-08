@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868673"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft 身分識別平臺上的系統管理員同意
@@ -45,18 +44,18 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| 參數     | 狀況     | 說明                                                                               |
+| 參數     | 條件     | 說明                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
 | `tenant` | 必要 | 您想要要求權限的目錄租用戶。 可以提供 GUID 或易記的名稱格式，或是一般會參考使用 `organizations` (如範例所示)。 請勿使用「通用」，因為個人帳戶無法提供系統管理員同意，除非在租使用者的內容中。 若要確保與管理租使用者的個人帳戶具有最佳相容性，請盡可能使用租使用者識別碼。 |
-| `client_id` | 必要 | **應用程式（用戶端）識別碼**， [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2083908)指派給您應用程式的應用程式註冊體驗。 |
+| `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
 | `redirect_uri` | 必要 |您想要傳送回應以供應用程式處理的重新導向 URI。 它必須與您在應用程式註冊入口網站中註冊的其中一個重新導向 URI 完全相符。 |
-| `state` | 建議 | 包含在要求中的值，也會在權杖回應中傳回。 它可以是您想要的任何內容的字串。 請在驗證要求出現之前，先使用此狀態在應用程式中將使用者狀態的相關資訊 (例如他們之前所在的網頁或檢視) 編碼。 |
-|`scope`        | 必要      | 定義應用程式所要求的許可權集合。 這可以是靜態（使用/.default）或動態範圍。  這可能包括 OIDC 範圍（`openid`、 `profile`、 `email`）。 |
+| `state` | 建議 | 同樣會隨權杖回應傳回之要求中所包含的值。 它可以是您想要的任何內容的字串。 請在驗證要求出現之前，先使用此狀態在應用程式中將使用者狀態的相關資訊 (例如他們之前所在的網頁或檢視) 編碼。 |
+|`scope`        | 必要      | 定義應用程式所要求的許可權集合。 這可以是靜態（使用/.default）或動態範圍。  這可能包括 OIDC 範圍（ `openid` 、 `profile` 、 `email` ）。 |
 
 
-此時，Azure AD 會要求租用戶系統管理員登入來完成要求。 系統會要求系統管理員核准您在`scope`參數中要求的擁有權限。  如果您已使用靜態（`/.default`）值，它的運作方式就像是 v1.0 系統管理員同意端點，並要求同意所有在應用程式的必要許可權中找到的範圍。
+此時，Azure AD 會要求租用戶系統管理員登入來完成要求。 系統會要求系統管理員核准您在參數中要求的擁有權限 `scope` 。  如果您已使用靜態（ `/.default` ）值，它的運作方式就像是 v1.0 系統管理員同意端點，並要求同意所有在應用程式的必要許可權中找到的範圍。
 
-### <a name="successful-response"></a>成功的回應
+### <a name="successful-response"></a>成功回應
 
 如果系統管理員為您的應用程式核准權限，則成功的回應看起來會像這樣︰
 
@@ -64,7 +63,7 @@ https://graph.microsoft.com/mail.send
 http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
 ```
 
-| 參數         | 描述                                                                                       |
+| 參數         | Description                                                                                       |
 |------------------:|:-------------------------------------------------------------------------------------------------:|
 | `tenant`| 將應用程式所要求的權限授與應用程式的目錄租用戶 (採用 GUID 格式)。|
 | `state`           | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 此狀態用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。|
@@ -83,7 +82,7 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 | `error_description`| 可協助開發人員識別錯誤根本原因的特定錯誤訊息。|
 | `tenant`| 將應用程式所要求的權限授與應用程式的目錄租用戶 (採用 GUID 格式)。|
 | `state`           | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 此狀態用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。|
-| `admin_consent`   | 將設定為`True` ，表示此回應發生在系統管理員同意流程上。|
+| `admin_consent`   | 將設定為 `True` ，表示此回應發生在系統管理員同意流程上。|
 
 ## <a name="next-steps"></a>後續步驟
 - 請參閱[如何將應用程式轉換成多租用戶](howto-convert-app-to-be-multi-tenant.md)

@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 2e843216bf973033868e75c027b11d27ddfe2e93
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: 3207ffca6fd0fbc943f4a2873b8b6c9029d565af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757461"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84022789"
 ---
 # <a name="server-side-performance-queries"></a>伺服器端效能查詢
 
@@ -18,7 +17,7 @@ ms.locfileid: "83757461"
 
 轉譯效能的最大影響是模型輸入資料。 如[設定模型轉換](../../how-tos/conversion/configure-model-conversion.md)中所述，您可以調整輸入資料。
 
-用戶端應用程式效能也可能是瓶頸。 如需用戶端效能的深入分析，建議您執行[效能追蹤](../../how-tos/performance-tracing.md)。
+用戶端應用程式效能也可能是瓶頸。 若要深入分析用戶端效能，建議採用 [:::no-loc text="performance trace":::](../../how-tos/performance-tracing.md) 。
 
 ## <a name="clientserver-timeline"></a>用戶端/伺服器時間軸
 

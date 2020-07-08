@@ -7,12 +7,11 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 1d393055b0ac62198bd5a7239b2b92b7aeff62e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a9b2e8148586ec58ea6a7a033099e726920857b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145359"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987940"
 ---
 # <a name="url-path-based-routing-overview"></a>URL 路徑型路由概觀
 
@@ -74,9 +73,9 @@ PathPattern 是要比對的路徑模式清單。 每個字串都必須以 / 開�
 
 |v1 路徑模式  |是否支援？  |
 |---------|---------|
-|`/images/*`     |是|
-|`/images*`     |否|
-|`/images/*.jpg`     |否|
+|`/images/*`     |可以|
+|`/images*`     |是|
+|`/images/*.jpg`     |不可以|
 |`/*.jpg`     |否|
 |`/Repos/*/Comments/*`     |否|
 |`/CurrentUser/Comments/*`     |是|
@@ -87,9 +86,9 @@ PathPattern 是要比對的路徑模式清單。 每個字串都必須以 / 開�
 
 |v2 路徑模式  |是否支援？  |
 |---------|---------|
-|`/images/*`     |是|
+|`/images/*`     |可以|
 |`/images*`     |是|
-|`/images/*.jpg`     |否|
+|`/images/*.jpg`     |不可以|
 |`/*.jpg`     |否|
 |`/Repos/*/Comments/*`     |否|
 |`/CurrentUser/Comments/*`     |是|

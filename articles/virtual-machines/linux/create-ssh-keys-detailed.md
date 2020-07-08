@@ -6,19 +6,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 5add789809f274ef5634f3c33dfedd3cd96b36d0
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: HT
+ms.openlocfilehash: 44923a124b864083b1badfc617ce0303be66a10e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142464"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84985341"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>詳細步驟：在 Azure 中建立和管理對 Linux VM 進行驗證所需的 SSH 金鑰 
 您可以利用安全殼層 (SSH) 金鑰組，在 Azure 上建立依預設使用 SSH 金鑰進行驗證的 Linux 虛擬機器，而免除登入密碼的需求。 使用 Azure 入口網站、Azure CLI、Resource Manager 範本或其他工具建立的 VM，可以將 SSH 公開金鑰納入部署中，以設定 SSH 連線的 SSH 金鑰驗證。 
 
 本文將詳細說明為 SSH 用戶端連線建立及管理 SSH RSA 公開/私密金鑰檔案組的背景和步驟。 如果您需要快速命令，請參閱[如何在 Azure 中建立 Linux VM 的 SSH 公開/私密金鑰組](mac-create-ssh-keys.md)。
 
-如需在 Windows 電腦上產生及使用 SSH 金鑰的其他方式，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](ssh-from-windows.md)。
+若要產生 SSH 金鑰，並使用它們從**windows**電腦連接到，請參閱[如何在 Azure 上搭配 windows 使用 ssh 金鑰](ssh-from-windows.md)。
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 

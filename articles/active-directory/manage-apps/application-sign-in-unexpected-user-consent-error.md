@@ -3,25 +3,24 @@ title: 對應用程式執行同意時發生非預期的錯誤 | Microsoft Docs
 description: 討論對應用程式執行同意的程序期間會發生的錯誤，以及可對錯誤採取的動作
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e2a7709cf0522727257025b2dddc495b20fe8448
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763749"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>對應用程式執行同意時出現非預期的錯誤
 
@@ -33,7 +32,7 @@ ms.locfileid: "80519696"
 
 ## <a name="requesting-not-authorized-permissions-error"></a>要求未經授權權限的錯誤
 * **AADSTS90093：** &lt;clientAppDisplayName&gt; 正在要求一或多個您未授權授與的權限。 請連絡系統管理員，其可代表您同意此應用程式。
-* **AADSTS90094：** &lt;clientAppDisplayName&gt;需要許可權才能存取您組織中只有系統管理員可以授與的資源。 請先要求管理員授與此應用程式的權限，您才能使用它。
+* **AADSTS90094：** &lt;clientAppDisplayName&gt; 需要只有系統管理員才能授與的權限來存取貴組織中的資源。 請先要求系統管理員授與此應用程式的權限，然後您才能使用。
 
 當非公司系統管理員的使用者嘗試使用的應用程式正在要求只有系統管理員能夠授與的權限時，會發生此錯誤。 可代表其組織授與應用程式存取權的系統管理員能夠解決此錯誤。
 

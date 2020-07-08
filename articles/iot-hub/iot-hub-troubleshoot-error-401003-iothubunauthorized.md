@@ -12,17 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f46d41c8287d03cbe9582ed560244cbd85cdeeaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759589"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
 本文說明**401003 IoTHubUnauthorized**錯誤的原因和解決方案。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 ### <a name="symptom-1"></a>徵兆1
 
@@ -33,10 +32,10 @@ ms.locfileid: "81759589"
 IoT 中樞的要求失敗，並出現下列其中一個錯誤訊息：
 
 * 遺漏授權標頭
-* IotHub '\*' 不包含指定的裝置 '\*'
-* 授權規則 '\*' 不允許存取 '\*'
+* IotHub ' \* ' 不包含指定的裝置 ' \* '
+* 授權規則 ' \* ' 不允許存取 ' \* '
 * 此裝置的驗證失敗，請更新權杖或憑證，然後重新連線
-* 指紋不符合設定：指紋： SHA1Hash =\*，SHA2Hash =;\*設定： PrimaryThumbprint =\*、SecondaryThumbprint =\*
+* 指紋不符合設定：指紋： SHA1Hash = \* ，SHA2Hash = \* ;設定： PrimaryThumbprint = \* 、SecondaryThumbprint =\*
 
 ## <a name="cause"></a>原因
 
@@ -54,7 +53,7 @@ IoT 中樞的要求失敗，並出現下列其中一個錯誤訊息：
 
 IoT 中樞無法驗證驗證標頭、規則或金鑰。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 ### <a name="solution-1"></a>解決方案 1
 

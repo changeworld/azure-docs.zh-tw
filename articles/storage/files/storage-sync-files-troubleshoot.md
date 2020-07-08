@@ -3,16 +3,15 @@ title: 對 Azure 檔案同步進行疑難排解 | Microsoft Docs
 description: 針對 Azure 檔案同步常見問題進行疑難排解。
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
-ms.date: 1/22/2019
+ms.topic: troubleshooting
+ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 39106f863352061cdaa583bde96f50d3f91a07e9
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: ec7469210bcfae53407a157a325c749aee2c2b08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836510"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512053"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -315,6 +314,7 @@ PerItemErrorCount: 1006.
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | 無法存取伺服器上的階層式檔案。 如果未在刪除伺服器端點之前重新叫用分層檔案，就會發生此問題。 | 若要解決此問題，請參閱[刪除伺服器端點之後，無法存取伺服器上的階層式檔案](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) (機器翻譯)。 |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 尚無法同步檔案或目錄的變更，因為尚未同步相依的資料夾。 將在同步相依的變更之後同步此項目。 | 不需要任何動作。 如果錯誤持續數天，請使用 FileSyncErrorsReport.ps1 PowerShell 指令碼來判斷相依資料夾尚未同步的原因。 |
+| 0x80C8028A | -2134375798 | ECS_E_SYNC_CONSTRAINT_CONFLICT_ON_FAILED_DEPENDEE | 尚無法同步檔案或目錄的變更，因為尚未同步相依的資料夾。 將在同步相依的變更之後同步此項目。 | 不需要任何動作。 如果錯誤持續數天，請使用 FileSyncErrorsReport.ps1 PowerShell 指令碼來判斷相依資料夾尚未同步的原因。 |
 | 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | 尚無法同步檔案或目錄的變更，因為尚未同步相依的資料夾，且同步工作階段失敗。 將在同步相依的變更之後同步此項目。 | 不需要任何動作。 如果錯誤持續發生，請檢查同步工作階段失敗的原因。 |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | 檔案或目錄名稱無效。 | 請重新命名有問題的檔案或目錄。 如需詳細資訊，請參閱[處理不支援的字元](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | 檔案或目錄名稱無效。 | 請重新命名有問題的檔案或目錄。 如需詳細資訊，請參閱[處理不支援的字元](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
@@ -552,13 +552,13 @@ PerItemErrorCount: 1006.
 
 當 Azure 訂用帳戶暫止時，就會發生此錯誤。 同步將在 Azure 訂用帳戶恢復時重新啟用。 如需詳細資訊，請參閱[我的 Azure 訂用帳戶為何停用，以及如何重新啟動它？](../../cost-management-billing/manage/subscription-disabled.md)。
 
-<a id="-2134364052"></a>**儲存體帳戶已設定了防火牆或虛擬網路。**  
+<a id="-2134375618"></a>**儲存體帳戶已設定了防火牆或虛擬網路。**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8306c |
-| **HRESULT (十進位)** | -2134364052 |
-| **錯誤字串** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
+| **HRESULT** | 0x80c8033e |
+| **HRESULT (十進位)** | -2134375618 |
+| **錯誤字串** | ECS_E_SERVER_BLOCKED_BY_NETWORK_ACL |
 | **需要補救** | 是 |
 
 因為儲存體帳戶有防火牆，或因為儲存體帳戶屬於虛擬網路，而無法存取 Azure 檔案共用時，就會發生此錯誤。 請確認是否已在儲存體帳戶上正確設定防火牆和虛擬網路設定。 如需詳細資訊，請參閱[設定防火牆和虛擬網路設定](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) (機器翻譯)。 
@@ -1087,6 +1087,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 | HRESULT | HRESULT (十進位) | 錯誤字串 | 問題 | 補救 |
 |---------|-------------------|--------------|-------|-------------|
+| 0x80c86045 | -2134351803 | ECS_E_INITIAL_UPLOAD_PENDING | 因為正在進行初始上傳，所以檔案無法進行層級處理。 | 不需要任何動作。 初始上傳完成之後，檔案會進行分層。 |
 | 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | 因為檔案正在使用中，所以無法對檔案進行分層處理。 | 不需要任何動作。 檔案不再處於使用中狀態時即會進行分層處理。 |
 | 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | 因為同步作業已排除檔案，所以無法對檔案進行分層處理。 | 不需要任何動作。 同步排除清單中的檔案無法分層。 |
 | 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | 因為在伺服器上找不到檔案，所以無法對檔案進行分層處理。 | 不需要任何動作。 如果錯誤持續發生，請檢查伺服器中是否有該檔案。 |
@@ -1108,6 +1109,8 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | 因為發生網路問題，所以無法對檔案進行分層處理。 | 不需要任何動作。 如果錯誤持續發生，請檢查 Azure 檔案共用的網路連線。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 因為檔案已修改，所以無法對檔案進行分層處理。 | 不需要任何動作。 當已修改的檔案同步至 Azure 檔案共用後，就會進行分層處理。 |
 | 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 因為系統資源不足，所以無法對檔案進行分層處理。 | 如果錯誤持續發生，請調查哪一個應用程式或核心模式驅動程式耗用系統資源。 |
+| 0x8e5e03fe | -1906441218 | JET_errDiskIO | 因為寫入雲端分層資料庫時發生 i/o 錯誤，所以檔案無法進行層級處理。 | 如果錯誤持續發生，請在磁片區上執行 chkdsk，並檢查存放裝置硬體。 |
+| 0x8e5e0442 | -1906441150 | JET_errInstanceUnavailable | 因為雲端分層資料庫未執行，所以檔案無法進行層級。 | 若要解決此問題，請重新開機 FileSyncSvc 服務或伺服器。 如果錯誤持續發生，請在磁片區上執行 chkdsk，並檢查存放裝置硬體。 |
 
 
 
@@ -1155,7 +1158,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 如果不符合上述條件，您就無法還原存取，因為伺服器上的這些分層檔案現在是孤立狀態。 請依照下列指示來移除孤立的階層式檔案。
 
-**注意事項**
+**備註**
 - 當伺服器上的階層式檔案無法存取時，如果直接存取 Azure 檔案共用，則完整檔案應該仍然可以存取。
 - 若要在未來避免孤立的階層式檔案，請遵循[移除伺服器端點](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint) (機器翻譯) 中所述的步驟來刪除伺服器端點。
 

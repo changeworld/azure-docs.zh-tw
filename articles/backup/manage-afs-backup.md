@@ -4,11 +4,10 @@ description: 本文說明管理和監視 Azure 備份所備份之 Azure 檔案�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247653"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712083"
 ---
 # <a name="manage-azure-file-share-backups"></a>管理 Azure 檔案共用備份
 

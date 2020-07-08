@@ -11,27 +11,26 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 04/15/2020
-ms.openlocfilehash: d2a5928d8326c4a0628ebc1bfb7eec3cd20f9254
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.date: 06/03/2020
+ms.openlocfilehash: 576861265771977f7e13140dd595f47bf556e585
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84331894"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自訂 Azure-SSIS Integration Runtime 的安裝
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自訂安裝所提供的介面，可讓您自行新增在安裝或重新設定 Azure-SSIS IR 期間的步驟。 
+Azure Data Factory （ADF）中的 Azure SQL Server Integration Services （SSIS） Integration Runtime （IR）的自訂設定會提供介面，以在布建或重新設定 Azure SSIS IR 期間新增您自己的步驟。 
 
-您可以使用自訂安裝，變更預設作業組態或環境 (例如，用以啟動其他 Windows 服務)、保存檔案共用的存取認證，或使用強式密碼編譯/更安全的網路通訊協定 (TLS 1.2)。 或者，您可以在 Azure-SSIS IR 的每個節點上安裝其他元件，例如組件、驅動程式或延伸模組。
+您可以使用自訂安裝，變更預設作業組態或環境 (例如，用以啟動其他 Windows 服務)、保存檔案共用的存取認證，或使用強式密碼編譯/更安全的網路通訊協定 (TLS 1.2)。 或者，您可以在 Azure SSIS IR 的每個節點上安裝其他自訂/協力廠商元件，例如元件、驅動程式或擴充功能。 如需內建/預先安裝元件的詳細資訊，請參閱 [Azure-SSIS IR 上的內建/預先安裝元件](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime) \(英文\)。
 
 您可以透過下列兩種方式之一，在 Azure-SSIS IR 上執行自訂安裝程式： 
-* **不使用指令碼的快速自訂安裝**：執行一些常見的系統組態和 Windows 命令，或安裝一些熱門或建議的其他元件，而不使用任何指令碼。
 * **使用指令碼的標準自訂安裝**：準備指令碼及其相關聯的檔案，並將其一起上傳至您 Azure 儲存體帳戶中的 Blob 容器。 接著，當您安裝或重新設定 Azure-SSIS IR 時，您可以提供容器的共用存取簽章 (SAS) 統一資源識別項 (URI)。 之後，Azure-SSIS IR 的每個節點都會從您的容器下載指令碼及其相關聯的檔案，並使用提高的權限執行您的自訂安裝。 自訂安裝完成後，每個節點都會將執行的標準輸出和其他記錄上傳到您的容器中。
+* **不使用指令碼的快速自訂安裝**：執行一些常見的系統組態和 Windows 命令，或安裝一些熱門或建議的其他元件，而不使用任何指令碼。
 
-您可以使用快速和標準的自訂安裝，同時安裝免費、未授權的元件和付費的授權元件。 如果您是獨立軟體廠商 (ISV)，請參閱[開發 Azure-SSIS IR 的付費或授權元件](how-to-develop-azure-ssis-ir-licensed-components.md)。
+您可以使用標準和快速的自訂安裝，同時安裝免費、未授權的元件和付費的授權元件。 如果您是獨立軟體廠商（ISV），請參閱[開發 AZURE SSIS IR 的付費或授權元件](how-to-develop-azure-ssis-ir-licensed-components.md)。
 
 > [!IMPORTANT]
 > 若要從之後的增強功能中獲益，建議您使用適用於 Azure-SSIS IR 的 v3 或更新的節點系列搭配自訂安裝。
@@ -62,7 +61,11 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
 
 ## <a name="instructions"></a>Instructions
 
-1. 如果您想要使用 PowerShell 安裝或重新設定 Azure-SSIS IR，請下載並安裝 [Azure PowerShell](/powershell/azure/install-az-ps)。 針對快速自訂安裝，則略過步驟 4。
+您可以使用 ADF UI 上的自訂設定來布建或重新設定 Azure SSIS IR。 如果您想要使用 PowerShell 執行相同的動作，請下載並安裝[Azure PowerShell](/powershell/azure/install-az-ps)。
+
+### <a name="standard-custom-setup"></a>標準的自訂設定
+
+若要使用標準的自訂設定來布建或重新設定您的 Azure SSIS IR，請完成下列步驟。
 
 1. 準備您的自訂安裝指令碼和及相關聯的檔案 (例如 .bat、.cmd、.exe、.dll、.msi 或 .ps1 檔案)。
 
@@ -70,7 +73,7 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
    * 為確保指令碼可以無訊息的方式執行，建議您先在本機電腦上進行測試。  
    * 如果您想要將其他工具 (例如 *msiexec.exe*) 所產生的其他記錄上傳到您的容器中，請將預先定義的環境變數 `CUSTOM_SETUP_SCRIPT_LOG_DIR` 指定為指令碼中的記錄資料夾 (例如 *msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log*)。
 
-1. 下載、安裝並開啟 [Azure 儲存體總管](https://storageexplorer.com/)。 若要這樣做：
+1. 下載、安裝並開啟 [Azure 儲存體總管](https://storageexplorer.com/)。
 
    a. 在 [(本機與已連結)] 下方，以滑鼠右鍵按一下 [儲存體帳戶]，然後選取 [連線到 Azure 儲存體]。
 
@@ -107,11 +110,17 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
 
       ![複製並儲存共用存取簽章](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-1. 當您使用資料處理站 UI 安裝或重新設定 Azure-SSIS IR 時，可以在 [Integration runtime 安裝] 窗格的 [進階設定] 區段中，選取 [使用額外的系統設定/元件安裝來自訂您的 Azure-SSIS Integration Runtime] 核取方塊，以新增或移除自訂安裝。 
+1. 當您在 ADF UI 上布建或重新設定 Azure SSIS IR 時，請選取 [ **Integration Runtime 設定**] 窗格的 [**設定**] 頁面上的 [**自訂您的 azure ssis Integration Runtime** ]，然後在 [**自訂安裝程式容器 sas URI** ] 方塊中輸入容器的 SAS uri。
 
-   如果您想要新增標準自訂安裝，請在 [自訂安裝容器的 SAS URI] 方塊中，輸入容器的 SAS URI。 
-   
-   如果您想要新增快速自訂安裝，請選取 [新增] 以開啟 [新增快速自訂安裝] 窗格，然後在 [快速自訂安裝類型] 下拉式清單中選取類型：
+   ![自訂安裝的進階設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
+
+### <a name="express-custom-setup"></a>快速自訂安裝
+
+若要使用快速自訂設定來布建或重新設定 Azure SSIS IR，請完成下列步驟。
+
+1. 當您在 ADF UI 上布建或重新設定 Azure SSIS IR 時，請在 [ **Integration Runtime 設定**] 窗格的 [**設定**] 頁面上，選取 [**使用額外的系統組態/元件安裝自訂您的 azure ssis Integration Runtime** ] 核取方塊。 
+
+1. 選取 [**新增**] 以開啟 [新增**快速自訂安裝**] 窗格，然後在 [**快速自訂安裝類型**] 下拉式清單中選取類型：
 
    * 如果您選取 [執行 cmdkey 命令] 類型，可以在 [/新增]、[/使用者] 和 [/通過] 方塊中，輸入您的目標電腦名稱或網域名稱、帳戶名稱或使用者名稱，以及帳戶金鑰或密碼，以便在 Azure-SSIS IR 上保存檔案共用或 Azure 檔案共用的存取認證。 這類似於在本機電腦上執行 Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) 命令。
    
@@ -131,12 +140,16 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
 
      * 如果您選取 [Theobald Software 的 Xtract IS] 元件，可以將您向 Theobald Software 購買的產品授權檔案拖放/上傳到 [授權檔案] 方塊中，以便從 Azure-SSIS IR 上的 Theobald Software 安裝 SAP 系統 (ERP、S/4HANA、BW) 連接器的 [Xtract IS](https://theobald-software.com/en/xtract-is/) 套件。 目前的整合版本是 **6.1.1.3**。
 
-   您新增的快速自訂安裝將會出現在 [進階設定] 區段中。 若要加以移除，請選取其核取方塊，然後選取 [刪除]。
+您新增的快速自訂設定將會出現在 [ **Advanced settings** ] 頁面上。 若要將其移除，請選取其核取方塊，然後選取 [刪除]。
 
-   ![自訂安裝的進階設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
+### <a name="azure-powershell"></a>Azure PowerShell
 
-1. 當您使用 PowerShell 安裝或重新設定 Azure-SSIS IR 時，可以在啟動 Azure-SSIS IR 之前，先執行 `Set-AzDataFactoryV2IntegrationRuntime` Cmdlet 來新增或移除自訂安裝。
-   
+若要使用 Azure PowerShell 來布建或重新設定具有自訂設定的 Azure SSIS IR，請完成下列步驟。
+
+1. 如果您的 Azure SSIS IR 已啟動/執行，請先將它停止。
+
+1. 接著，您可以執行 Cmdlet 來新增或移除自訂的執行，然後 `Set-AzDataFactoryV2IntegrationRuntime` 再啟動您的 AZURE SSIS IR。
+
    ```powershell
    $ResourceGroupName = "[your Azure resource group name]"
    $DataFactoryName = "[your data factory name]"
@@ -214,10 +227,14 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
        -Name $AzureSSISName `
        -Force
    ```
-   
-   在標準自訂安裝完成且 Azure-SSIS IR 啟動後，您可以在儲存體容器的 *main.cmd.log* 資料夾中找到 *main.cmd* 的標準輸出和其他執行記錄。
 
-1. 若要檢視標準自訂安裝的一些範例，請使用 Azure 儲存體總管連線到我們的公開預覽容器。
+1. 當您的標準自訂安裝程式完成且您的 Azure SSIS IR 啟動之後，您可以在容器的*主要 .log*資料夾中，找到*主要 .cmd*和其他執行記錄的標準輸出。
+
+### <a name="standard-custom-setup-samples"></a>標準自訂安裝範例
+
+若要查看並重複使用標準自訂設置的一些範例，請完成下列步驟。
+
+1. 使用 Azure 儲存體總管連接到我們的公用預覽容器。
 
    a. 在 [(本機與已連結)] 下方，以滑鼠右鍵按一下 [儲存體帳戶]，然後依序選取 [連線到 Azure 儲存體]、[使用連接字串或共用存取簽章 URI] 和 [下一步]。
 
@@ -295,13 +312,15 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
 
         ![使用者案例資料夾中的資料夾](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 
-   f. 若要嘗試使用這些自訂安裝範例，請將所選資料夾中的內容複製到您的容器中。
+   f. 若要重複使用這些標準自訂安裝範例，請將所選資料夾的內容複寫到您的容器。
+
+1. 當您在 ADF UI 上布建或重新設定 Azure SSIS IR 時，請選取 [ **Integration Runtime 設定**] 窗格的 [**設定**] 頁面上的 [**自訂您的 azure ssis Integration Runtime** ]，然後在 [**自訂安裝程式容器 sas URI** ] 方塊中輸入容器的 SAS uri。
    
-      當您使用資料處理站 UI 安裝或重新設定 Azure-SSIS IR 時，選取 [進階設定] 區段中上的 [使用額外的系統設定/元件安裝來自訂您的 Azure-SSIS Integration Runtime] 核取方塊，然後在 [自訂安裝容器的 SAS URI] 方塊中，輸入容器的 SAS URI。
-   
-      當您使用 PowerShell 安裝或重新設定 Azure-SSIS IR 時，請執行 `Set-AzDataFactoryV2IntegrationRuntime` Cmdlet，並以容器的 SAS URI 作為 `SetupScriptContainerSasUri` 參數的值。
+1. 當您使用 Azure PowerShell 布建或重新設定 Azure SSIS IR 時，如果它已啟動/執行，請將它停止， `Set-AzDataFactoryV2IntegrationRuntime` 並以容器的 SAS URI 作為參數的值 `SetupScriptContainerSasUri` ，然後啟動您的 AZURE ssis ir。
+
+1. 當您的標準自訂安裝程式完成且您的 Azure SSIS IR 啟動之後，您可以在容器的*主要 .log*資料夾中，找到*主要 .cmd*和其他執行記錄的標準輸出。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [安裝 Azure-SSIS Integration Runtime 的企業版](how-to-configure-azure-ssis-ir-enterprise-edition.md)
-- [開發 Azure-SSIS Integration Runtime 的付費或授權自訂元件](how-to-develop-azure-ssis-ir-licensed-components.md)
+- [設定 Azure SSIS IR 的企業版](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+- [開發 Azure SSIS IR 的付費或授權元件](how-to-develop-azure-ssis-ir-licensed-components.md)

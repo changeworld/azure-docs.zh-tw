@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: ea68fa8d9326e6d9ebb4f475d16ac83959cae6e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dda761e12abe7ec866ad9426982563b6f629f6b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416880"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513304"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>使用 Azure Data Factory 將資料從 Office 365 複製到 Azure
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,15 +34,15 @@ ADF Office 365 連接器和 Microsoft Graph 資料連線可從 Exchange 電子�
 >- 請確定用於複製活動的 Azure Integration Runtime 地區以及目的地與 Office 365 租用戶使用者的信箱所在區域相同。 若要了解如何判斷 Azure IR 位置，請參閱[這裡](concepts-integration-runtime.md#integration-runtime-location)。 如需支援的 Office 區域和對應的 Azure 區域清單，請參閱[以下資料表](https://docs.microsoft.com/graph/data-connect-datasets#regions)。
 >- 服務主體驗證是唯一支援 Azure Blob 儲存體、Azure Data Lake Storage Gen1 和 Azure Data Lake Storage Gen2 作為目的地存放區的驗證機制。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要將資料從 Office 365 複製到 Azure，您必須完成下列必要步驟：
 
 - 您的 Office 365 租用戶系統管理員必須完成上架動作，如[此處](https://docs.microsoft.com/graph/data-connect-get-started)所述。
-- 在 Azure Active Directory 中建立和設定 Azure AD Web 應用程式。  如需指示，請參閱[建立 Azure AD 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。
+- 在 Azure Active Directory 中建立和設定 Azure AD Web 應用程式。  如需指示，請參閱[建立 Azure AD 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。
 - 請記下以下的值，您可以使用這些值來定義 Office 365 的連結服務：
-    - 租用戶識別碼。 如需相關指示，請參閱[取得租用戶識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。
-    - 應用程式識別碼和驗證金鑰。  如需相關指示，請參閱[取得應用程式識別碼和驗證金鑰](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。
+    - 租用戶識別碼。 如需相關指示，請參閱[取得租用戶識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
+    - 應用程式識別碼和驗證金鑰。  如需相關指示，請參閱[取得應用程式識別碼和驗證金鑰](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 - 新增使用者身分識別，該使用者會以 Azure AD Web 應用程式擁有者身分進行資料存取要求 (從 [Azure AD Web 應用程式] > [設定] > [擁有者] > [新增擁有者])。 
     - 使用者身分識別必須位於要從中取得資料的 Office 365 組織中，而且不可以是來賓使用者。
 
@@ -77,13 +76,13 @@ ADF Office 365 連接器和 Microsoft Graph 資料連線可從 Exchange 電子�
 
 以下是 Office 365 連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 類型屬性必須設為：**Office365** | 是 |
-| office365TenantId | Office 365 帳戶所屬的 Azure 租用戶識別碼。 | 是 |
-| servicePrincipalTenantId | 指定您 Azure AD Web 應用程式所在的租用戶資訊。 | 是 |
+| type | 類型屬性必須設為：**Office365** | Yes |
+| office365TenantId | Office 365 帳戶所屬的 Azure 租用戶識別碼。 | Yes |
+| servicePrincipalTenantId | 指定您 Azure AD Web 應用程式所在的租用戶資訊。 | Yes |
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 | 是 |
-| servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中。 | 是 |
+| servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中。 | Yes |
 | connectVia | 用來連線到資料存放區的整合執行階段。  如果未指定，就會使用預設的 Azure Integration Runtime。 | 否 |
 
 >[!NOTE]
@@ -91,7 +90,7 @@ ADF Office 365 連接器和 Microsoft Graph 資料連線可從 Exchange 電子�
 >- 如果您是企業開發人員，負責針對自己組織使用的 Office 365 資料開發應用程式，則您應該對這兩個屬性提供相同的租用戶識別碼，也就是貴組織的 AAD 租用戶識別碼。
 >- 如果您是為客戶開發應用程式的 ISV 開發人員，則 office365TenantId 將會是您客戶的 (應用程式安裝程式) AAD 租用戶識別碼，而 servicePrincipalTenantId 將為貴公司的 AAD 租用戶識別碼。
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -117,12 +116,12 @@ ADF Office 365 連接器和 Microsoft Graph 資料連線可從 Exchange 電子�
 
 若要從 Office 365 複製資料，以下是支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 type 屬性必須設定為：**Office365Table** | 是 |
-| tableName | 擷取自 Office 365 的資料集名稱。 如需可供擷取的 Office 365 資料集清單，請參閱[這裡](https://docs.microsoft.com/graph/data-connect-datasets#datasets)。 | 是 |
+| tableName | 擷取自 Office 365 的資料集名稱。 如需可供擷取的 Office 365 資料集清單，請參閱[這裡](https://docs.microsoft.com/graph/data-connect-datasets#datasets)。 | Yes |
 
-如果您在資料`dateFilterColumn`集中`startTime`設定`endTime`了、 `userScopeFilterUri` 、和，則仍會依其支援，但建議您在 [活動來源] 中使用新模型。
+如果您 `dateFilterColumn` 在資料集中設定了、、和，則仍會依 `startTime` `endTime` `userScopeFilterUri` 其支援，但建議您在 [活動來源] 中使用新模型。
 
 **範例**
 
@@ -151,17 +150,17 @@ ADF Office 365 連接器和 Microsoft Graph 資料連線可從 Exchange 電子�
 
 若要從 Office 365 複製資料，複製活動的 [**來源**] 區段中支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設定為： **Office365Source** | 是 |
-| allowedGroups | 群組選取述詞。  使用此屬性可選取最多10個使用者群組，資料將會抓取到其中。  如果未指定任何群組，則會傳回整個組織的資料。 | 否 |
-| userScopeFilterUri | 未`allowedGroups`指定屬性時，您可以使用套用在整個租使用者上的述詞運算式，篩選要從 Office 365 解壓縮的特定資料列。 述詞格式應符合 Microsoft Graph Api 的查詢格式，例如`https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`。 | 否 |
+| type | 複製活動來源的類型屬性必須設定為： **Office365Source** | Yes |
+| allowedGroups | 群組選取述詞。  使用此屬性可選取最多10個使用者群組，資料將會抓取到其中。  如果未指定任何群組，則會傳回整個組織的資料。 | No |
+| userScopeFilterUri | `allowedGroups`未指定屬性時，您可以使用套用在整個租使用者上的述詞運算式，篩選要從 Office 365 解壓縮的特定資料列。 述詞格式應符合 Microsoft Graph Api 的查詢格式，例如 `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'` 。 | No |
 | dateFilterColumn | 日期時間篩選資料行的名稱。 使用此屬性來限制用來解壓縮 Office 365 資料的時間範圍。 | 如果資料集有一或多個日期時間資料行，則為 Yes。 如需需要此日期時間篩選的資料集清單，請參閱[這裡](https://docs.microsoft.com/graph/data-connect-filtering#filtering)。 |
-| startTime | 要做為篩選依據的開始日期時間值。 | 如果`dateFilterColumn`已指定，則為是 |
-| EndTime | 要做為篩選依據的結束日期時間值。 | 如果`dateFilterColumn`已指定，則為是 |
+| startTime | 要做為篩選依據的開始日期時間值。 | 如果 `dateFilterColumn` 已指定，則為是 |
+| EndTime | 要做為篩選依據的結束日期時間值。 | 如果 `dateFilterColumn` 已指定，則為是 |
 | outputColumns | 要複製到接收的資料行陣列。 | 否 |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities": [

@@ -4,12 +4,11 @@ description: 了解 Kubernetes 的基本叢集和工作負載元件，及其與 
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 13169628aff2fe4bff64fed36db54d18d4f830b8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208154"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85336636"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 的 Kubernetes 核心概念
 
@@ -47,7 +46,7 @@ Kubernetes 叢集分成兩個元件：
 - *kube-scheduler* - 當您建立或調整應用程式時，排程器會判斷哪些節點可執行工作負載，並加以啟動。
 - *kube-controller-manager* - 控制器管理員會監看較小型的，這些控制器負責執行複寫 Pod 和處理節點作業之類的動作。
 
-AKS 提供單一租使用者控制平面，其中包含專用的 API 伺服器、排程器等。您可以定義節點的數目和大小，而 Azure 平臺會設定控制平面與節點之間的安全通訊。 與控制平面的互動會透過 Kubernetes Api （例如`kubectl`或 Kubernetes 儀表板）進行。
+AKS 提供單一租使用者控制平面，其中包含專用的 API 伺服器、排程器等。您可以定義節點的數目和大小，而 Azure 平臺會設定控制平面與節點之間的安全通訊。 與控制平面的互動會透過 Kubernetes Api （例如 `kubectl` 或 Kubernetes 儀表板）進行。
 
 這個受控控制平面表示您不需要設定高可用性*etcd*存放區之類的元件，但這也表示您無法直接存取控制平面。 升級至 Kubernetes 會透過 Azure CLI 或 Azure 入口網站進行協調，這會升級控制平面和節點。 若要對可能的問題進行疑難排解，您可以透過 Azure 監視器記錄來檢查控制平面記錄。
 
@@ -69,7 +68,7 @@ AKS 提供單一租使用者控制平面，其中包含專用的 API 伺服器�
 
 在 AKS 中，叢集中節點的 VM 映射目前是以 Ubuntu Linux 或 Windows Server 2019 為基礎。 當您建立 AKS 叢集或相應放大節點數目時，Azure 平臺會建立所要求的 Vm 數目並加以設定。 您不需要執行任何手動設定。 代理程式節點會以標準虛擬機器計費，因此會自動套用您在使用的 VM 大小（包括[Azure 保留][reservation-discounts]專案）上的任何折扣。
 
-如果您需要使用不同的主機 OS、容器執行階段或要納入自訂套件，您可以使用 [aks-engine][aks-engine] 自行部署 Kubernetes 叢集。 上游 `aks-engine` 會在功能於 AKS 叢集中正式受到支援之前發行這些功能，並提供設定選項。 例如，如果您想要使用 Moby 以外的容器執行時間，您可以使用`aks-engine`來設定和部署符合您目前需求的 Kubernetes 叢集。
+如果您需要使用不同的主機 OS、容器執行階段或要納入自訂套件，您可以使用 [aks-engine][aks-engine] 自行部署 Kubernetes 叢集。 上游 `aks-engine` 會在功能於 AKS 叢集中正式受到支援之前發行這些功能，並提供設定選項。 例如，如果您想要使用 Moby 以外的容器執行時間，您可以使用 `aks-engine` 來設定和部署符合您目前需求的 Kubernetes 叢集。
 
 ### <a name="resource-reservations"></a>資源保留
 
@@ -105,9 +104,9 @@ kubectl describe node [NODE_NAME]
 
 上述的記憶體和 CPU 配置規則是用來讓代理程式節點保持良好狀態，包括一些對叢集健康狀態很重要的裝載系統 pod。 這些配置規則也會導致節點回報較不 allocatable 的記憶體和 CPU，而不是 Kubernetes 叢集的一部分。 無法變更上述資源保留。
 
-例如，如果節點提供 7 GB，則會回報34% 的記憶體未 allocatable 在750Mi 硬性收回閾值的上方。
+例如，如果節點提供 7 GB，將會報告34% 的記憶體未 allocatable，包括750Mi 的硬收回閾值。
 
-`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
+`0.75 + (0.25*4) + (0.20*3) = 0.75GB + 1GB + 0.6GB = 2.35GB / 7GB = 33.57% reserved`
 
 除了 Kubernetes 本身的保留，基礎節點 OS 也會保留大量 CPU 和記憶體資源，以維護 OS 功能。
 
@@ -118,7 +117,7 @@ kubectl describe node [NODE_NAME]
 相同設定的節點會一起分組到*節點集區*中。 Kubernetes 叢集包含一或多個節點集區。 您在建立 AKS 叢集時會定義初始的節點數目和大小，而建立*預設節點集區*。 AKS 中的這個預設節點集區包含用來執行代理程式節點的基礎 VM。
 
 > [!NOTE]
-> 若要確保您的叢集能夠可靠地運作，您應該在預設節點集區中至少執行2（兩個）節點。
+> 若要確保叢集能夠可靠地運作，您應該在預設節點集區中執行至少 2 個 (兩個) 節點。
 
 當您調整或升級 AKS 叢集時，相關動作會對預設節點集區執行。 您也可以選擇調整或升級特定的節點集區。 進行升級作業時，執行中的容器會排程於節點集區中的其他節點上，直到所有節點皆成功升級。
 
@@ -204,11 +203,7 @@ spec:
 
 [Helm][helm] 是在 Kubernetes 中管理應用程式的常見方法。 您可以建置和使用現有的公用 Helm *圖表*，其中包含封裝版的應用程式程式碼，和用來部署資源的 Kubernetes YAML 資訊清單。 這些 Helm 圖表可儲存於本機，或通常儲存在遠端存放庫中，例如 [Azure Container Registry Helm 圖表存放庫][acr-helm]。
 
-若要使用 Helm，請在您的 Kubernetes 叢集中安裝名為 *Tiller* 的伺服器元件。 Tiller 會管理安裝在叢集內的圖表。 Helm 用戶端本身會安裝在您的本機電腦上，或可在 [Azure Cloud Shell][azure-cloud-shell] 內使用。 您可以使用用戶端搜尋或建立 Helm 圖表，然後將其安裝至 Kubernetes 叢集。
-
-![Helm 包含可在 Kubernetes 叢集內建立資源的用戶端元件和伺服器端 Tiller 元件](media/concepts-clusters-workloads/use-helm.png)
-
-如需詳細資訊，請參閱[在 Azure Kubernetes Service (AKS) 中使用 Helm 安裝應用程式][aks-helm]。
+若要使用 Helm，請在您的電腦上安裝 Helm 用戶端，或在[Azure Cloud Shell][azure-cloud-shell]中使用 Helm 用戶端。 您可以使用用戶端搜尋或建立 Helm 圖表，然後將其安裝至 Kubernetes 叢集。 如需詳細資訊，請參閱[使用 Helm 在 AKS 中安裝現有的應用程式][aks-helm]。
 
 ## <a name="statefulsets-and-daemonsets"></a>StatefulSet 和 Daemonset
 

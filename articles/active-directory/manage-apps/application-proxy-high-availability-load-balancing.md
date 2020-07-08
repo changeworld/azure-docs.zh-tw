@@ -3,8 +3,8 @@ title: 高可用性和負載平衡-Azure AD 應用程式 Proxy
 description: 流量散發如何與您的應用程式 Proxy 部署搭配運作。 包含如何將連接器效能優化，並針對後端伺服器使用負載平衡的秘訣。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 992075378737552e890bd2d6fed3c519e6c62aa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5ab3b340654fd6d824edef0a33d1ea363a913654
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312940"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764582"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>應用程式 Proxy 連接器和應用程式的高可用性和負載平衡
 

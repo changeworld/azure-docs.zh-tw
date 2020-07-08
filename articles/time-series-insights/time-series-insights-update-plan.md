@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4b61df52df45cb2ee01407390ce3e34d86350ef7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b57a7c04db0e601b90bc19059df70e63795784bf
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189244"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036945"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>規劃您的 Azure 時間序列深入解析預覽版環境
 
@@ -41,7 +40,7 @@ Azure 時間序列深入解析採用隨用隨付商務模型。 如需有關費�
 當您佈建時間序列深入解析預覽版環境時，您會建立兩個 Azure 資源：
 
 * Azure 時間序列深入解析預覽版環境
-* Azure 儲存體一般用途 V1 帳戶
+* Azure 儲存體帳戶
 
 在布建過程中，您可以指定是否要啟用暖存放區。 暖存放區提供您階層式查詢體驗。 啟用時，您必須指定介於7到30天的保留期間。 在暖存放區保留期間內執行的查詢，通常會提供更快速的回應時間。 當查詢超出暖存放區保留期限時，就會從冷存放區提供服務。
 
@@ -52,7 +51,7 @@ Azure 時間序列深入解析採用隨用隨付商務模型。 如需有關費�
 
 若要開始使用，您需要三個額外項目：
 
-* [時間序列模型](./time-series-insights-update-tsm.md)
+* [時間序列模型](./concepts-model-overview.md)
 * [連線到時間序列深入解析的事件來源](./time-series-insights-how-to-add-an-event-source-iothub.md)
 * [流入事件來源的事件](./time-series-insights-send-events.md)，這些事件必須已經對應至該模型，且為有效的 JSON 格式
 
@@ -67,7 +66,7 @@ Azure 時間序列深入解析採用隨用隨付商務模型。 如需有關費�
 > [!IMPORTANT]
 > 時間序列識別碼*之後無法變更*。 在最終選取前及第一次使用前，請確認每個識別碼。
 
-您最多可以選取三個金鑰，以唯一區分您的資源。 如需詳細資訊，請參閱[選擇時間序列識別碼的最佳做法](./time-series-insights-update-how-to-id.md)和[儲存體與輸入](./time-series-insights-update-storage-ingress.md)。
+您最多可以選取三個金鑰，以唯一區分您的資源。 如需詳細資訊，請參閱[選擇時間序列識別碼](./time-series-insights-update-how-to-id.md)和內嵌[規則](concepts-json-flattening-escaping-rules.md)的最佳做法。
 
 **時間戳記**屬性也很重要。 您可以在新增事件來源時指定此屬性。 每個事件來源都有選擇性的時間戳記屬性，可用來依時間追蹤事件來源。 時間戳記值會區分大小寫，而且格式必須設定為每個事件來源的個別規格。
 
@@ -78,7 +77,7 @@ Azure 時間序列深入解析採用隨用隨付商務模型。 如需有關費�
 
 ## <a name="understand-the-time-series-model"></a>了解時間序列模型
 
-您現在可以設定您時間序列深入解析環境的時間序列模型。 使用新模型很容易就能尋找及分析 IoT 資料。 它能用來鑑藏、維護及擴充時間序列資料，並協助準備取用者可用的資料集。 該模型使用時間序列識別碼，它對應到的執行個體與唯一資源相關聯，且該資源有變數 (稱為類型) 和階層。 了解新的[時間序列模型](./time-series-insights-update-tsm.md)。
+您現在可以設定您時間序列深入解析環境的時間序列模型。 使用新模型很容易就能尋找及分析 IoT 資料。 它能用來鑑藏、維護及擴充時間序列資料，並協助準備取用者可用的資料集。 該模型使用時間序列識別碼，它對應到的執行個體與唯一資源相關聯，且該資源有變數 (稱為類型) 和階層。 了解新的[時間序列模型](./concepts-model-overview.md)。
 
 模型是動態的，所以隨時可以建置。 若要快速開始使用，請先建置並上傳模型，再將資料推送至時間序列深入解析中。 若要建立您的模型，請參閱[使用時間序列模型](./time-series-insights-update-how-to-tsm.md)。
 
@@ -100,5 +99,6 @@ Azure 時間序列深入解析採用隨用隨付商務模型。 如需有關費�
 ## <a name="next-steps"></a>後續步驟
 
 - 請參閱[Azure Advisor](../advisor/advisor-overview.md) ，以規劃您的商務復原設定選項。
-- 若要深入瞭解[儲存體和](./time-series-insights-update-storage-ingress.md)輸入，請參閱時間序列深入解析預覽。
-- 深入瞭解時間序列深入解析預覽中的[資料模型](./time-series-insights-update-tsm.md)。
+- 深入瞭解[資料](./concepts-ingestion-overview.md)內嵌。
+- 查看有關[資料儲存體](./concepts-storage.md)的文章
+- 深入瞭解時間序列深入解析預覽中的[資料模型](./concepts-model-overview.md)。

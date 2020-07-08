@@ -7,17 +7,16 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 643f326952f72f952aa946079e56f1fb56373c9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3f0060944a2733c31c3bef67aa005e5476778ce2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710026"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>建立、變更或刪除虛擬網路
 
@@ -37,7 +36,7 @@ ms.locfileid: "82182866"
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
-1. 選取 [ **+ 建立資源** > ] [**網路** > ] [**虛擬網路**]。
+1. 選取 [ **+ 建立資源**] [網路] [  >  **Networking**  >  **虛擬網路**]。
 2. 輸入或選取下列設定的值，然後選取 [**建立**]：
    - **名稱**：您選取用來建立虛擬網路的[資源群組](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)名稱必須是唯一的。 虛擬網路建立後，就不能再變更其名稱。 您可以隨著時間建立多個虛擬網路。 如需命名建議，請參閱[命名慣例](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)。 下列命名慣例有協助於輕鬆管理多個虛擬網路。
    - **位址空間**：虛擬網路的位址空間由一或多個以 CIDR 標記法指定的非重疊位址範圍所組成。 您可以定義公用或私人的位址範圍 (RFC 1918)。 不論您定義的是公用或私人的位址範圍，您都只能從虛擬網路、互連的虛擬網路，以及任何已連線到虛擬網路的內部部署網路來連線到位址空間。 您無法新增下列位址範圍︰
@@ -90,7 +89,7 @@ ms.locfileid: "82182866"
    - **一般 Azure 設定**：若要深入了解 Azure 的一般設定，請參閱下列資訊：
      - [活動記錄檔](../azure-monitor/platform/platform-logs-overview.md)
      - [存取控制（IAM）](../role-based-access-control/overview.md)
-     - [標記](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Tags](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (標籤)
      - [鎖定](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [自動化指令碼](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
@@ -123,7 +122,7 @@ ms.locfileid: "82182866"
 4. 完成下列其中一個選項：
     - **新增位址範圍**︰輸入新的位址範圍。 此位址範圍不能與虛擬網路已定義的現有位址範圍重疊。
     - **移除位址範圍**：在您想要移除的位址範圍的右側，選取 [...]****，然後選取 [移除]****。 如果位址範圍有現存的子網路，您就無法移除該位址範圍。 若要移除位址範圍，您必須先刪除位址範圍中存在的任何子網路 (以及子網路中的任何資源)。
-5. 選取 [儲存]  。
+5. 選取 [儲存]。
 
 **命令**
 
@@ -139,12 +138,12 @@ ms.locfileid: "82182866"
 3. 選取 [**設定**] 底下的 [ **DNS 伺服器**]。
 4. 選取下列其中一個選項：
    - **預設值（由 Azure 提供）**：所有資源名稱和私人 IP 位址都會自動向 Azure DNS 伺服器註冊。 您可以在連線到相同虛擬網路的任何資源之間解析名稱。 您無法使用此選項來跨虛擬網路解析名稱。 若要跨虛擬網路解析名稱，您必須使用自訂 DNS 伺服器。
-   - **自訂**︰您可以為虛擬網路新增一或多部伺服器，數量可達 Azure 的限制。 若要深入了解 DNS 伺服器限制，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic)。 您有下列選擇：
+   - **自訂**︰您可以為虛擬網路新增一或多部伺服器，數量可達 Azure 的限制。 若要深入了解 DNS 伺服器限制，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic)。 您有下列選項：
    - **新增地址**︰將伺服器新增至虛擬網路 DNS 伺服器清單。 此選項也會向 Azure 註冊 DNS 伺服器。 如果您已向 Azure 註冊 DNS 伺服器，即可在清單中選取該 DNS 伺服器。
    - **移除位址**︰在您想要移除的伺服器旁，選取 [...]****，然後選取 [移除]****。 刪除伺服器只會從此虛擬網路清單中移除伺服器。 DNS 伺服器會在 Azure 中保持登錄狀態，以便您其他的虛擬網路使用。
    - **將 DNS 伺服器位址重新排序**︰請務必要確認，您為環境所列出的 DNS 伺服器順序是正確的。 DNS 伺服器清單會依其指定的順序來使用。 它們不會當作循環配置資源設定運作。 如果清單上的第一部 DNS 伺服器是可以連線的，用戶端就會使用該 DNS 伺服器，而不管該 DNS 伺服器是否有正常運作。 請移除所有列出的 DNS 伺服器，再以您想要的順序重新新增。
    - **變更位址**：將清單中的 DNS 伺服器醒目提示，然後輸入新位址。
-5. 選取 [儲存]  。
+5. 選取 [儲存]。
 6. 將連線到虛擬網路的 VM 重新啟動，讓這些 VM 獲得新的 DNS 伺服器設定。 這些 VM 會繼續使用其目前的 DNS 設定，直到您將其重新啟動。
 
 **命令**
@@ -159,7 +158,7 @@ ms.locfileid: "82182866"
 1. 在入口網站頂端的搜尋方塊中輸入「虛擬網路」**。 當搜尋結果中出現**虛擬網路**時加以選取。
 2. 從虛擬網路清單中，選取您要刪除的虛擬網路。
 3. 請在 [設定]**** 底下，選取 [連接的裝置]****，確認沒有任何裝置連線到虛擬網路。 如果有已連線的裝置，您必須先將其刪除，才能刪除虛擬網路。 如果沒有連接的裝置，請選取 [概觀]****。
-4. 選取 [刪除]  。
+4. 選取 [刪除] 。
 5. 若要確認刪除虛擬網路，請選取 [是]****。
 
 **命令**
@@ -171,7 +170,7 @@ ms.locfileid: "82182866"
 
 若要針對虛擬網路執行工作，您的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派下表中所列適當動作的[自訂](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 動作                                  |   名稱                                |
+| 動作                                  |   Name                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft.Network/virtualNetworks/read   |   讀取虛擬網路              |
 |Microsoft.Network/virtualNetworks/write  |   建立或更新虛擬網路  |

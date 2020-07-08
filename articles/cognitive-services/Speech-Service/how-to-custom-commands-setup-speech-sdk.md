@@ -1,7 +1,7 @@
 ---
 title: 使用語音 SDK 與用戶端應用程式整合
 titleSuffix: Azure Cognitive Services
-description: 在本文中，您將瞭解如何從在 UWP 應用程式中執行的語音 SDK 對已發佈的自訂命令應用程式提出要求。
+description: 如何從在 UWP 應用程式中執行的語音 SDK 對已發佈的自訂命令應用程式提出要求。
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -10,16 +10,15 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6aa63c49328848ca707e938dada6ce3af9f75694
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414349"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027625"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用語音 SDK 與用戶端應用程式整合
 
-在本文中，您將瞭解如何從在 UWP 應用程式中執行的語音 SDK 對已發佈的自訂命令應用程式提出要求。 為了建立自訂命令應用程式的連線，您會執行下列工作：
+在本文中，您將瞭解如何從在 UWP 應用程式中執行的語音 SDK 對已發佈的自訂命令應用程式提出要求。 若要建立自訂命令應用程式的連接，您需要：
 
 - 發行自訂命令應用程式，並取得應用程式識別碼（App ID）
 - 使用語音 SDK 建立通用 Windows 平臺（UWP）用戶端應用程式，以讓您與您的自訂命令應用程式交談
@@ -32,13 +31,19 @@ ms.locfileid: "85414349"
 
 您也需要：
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)或更高版本。 本指南是以 Visual Studio 2019 為基礎。
 > * 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個](get-started.md)或在[Azure 入口網站](https://portal.azure.com)上建立
 > * [啟用您的裝置以進行開發](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>步驟1：發行自訂命令應用程式
 
-1. 開啟您先前建立的自訂命令應用程式，然後選取 [**發佈**]
+1. 開啟您先前建立的自訂命令應用程式
+1. 移至 [**設定**]，選取 [ **LUIS 資源**]
+1. 如果未指派**預測資源**，請選取查詢預測金鑰，或建立一個新的
+
+    在發行應用程式之前，一律需要查詢預測金鑰。 如需 LUIS 資源的詳細資訊，請參閱[建立 LUIS 資源](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription)
+
+1. 返回 [編輯] 命令，選取 [**發佈**]
 
    > [!div class="mx-imgBorder"]
    > ![發佈應用程式](media/custom-commands/setup-speech-sdk-publish-application.png)
@@ -131,11 +136,8 @@ ms.locfileid: "85414349"
    using Microsoft.CognitiveServices.Speech.Audio;
    using Microsoft.CognitiveServices.Speech.Dialog;
    using System;
-   using System.Diagnostics;
    using System.IO;
    using System.Text;
-   using Windows.Foundation;
-   using Windows.Storage.Streams;
    using Windows.UI.Xaml;
    using Windows.UI.Xaml.Controls;
    using Windows.UI.Xaml.Media;
@@ -324,7 +326,7 @@ ms.locfileid: "85414349"
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
-   connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
+   connector.ActivityReceived += (sender, activityReceivedEventArgs) =>
    {
        NotifyUser(
            $"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");

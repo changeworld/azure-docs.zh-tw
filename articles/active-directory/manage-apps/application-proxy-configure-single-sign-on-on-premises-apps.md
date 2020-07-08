@@ -3,25 +3,24 @@ title: 使用 Azure AD App Proxy 進行內部部署應用程式的 SAML 單一�
 description: 瞭解如何為使用 SAML 驗證保護的內部部署應用程式提供單一登入。 使用應用程式 Proxy 提供內部部署應用程式的遠端存取。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764820"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>使用應用程式 Proxy 進行內部部署應用程式的 SAML 單一登入
 
@@ -74,7 +73,7 @@ SAML SSO 與應用程式 Proxy 也適用于 SAML 權杖加密功能。 如需詳
 
 2. 在 [以**SAML 設定單一登入**] 頁面中，移至 [**基本 SAML**設定] 標題，然後選取其 [**編輯**] 圖示（鉛筆）。 請確定您在 [應用程式 Proxy] 中設定的**外部 URL**已填入 [**識別碼**]、[**回復 URL**] 和 [**登出 url** ] 欄位中。 應用程式 Proxy 必須要有這些 Url，才能正確運作。 
 
-3. 編輯稍早設定的**回復 URL** ，使其網域可在網際網路上透過應用程式 Proxy 連線。 例如，如果您的**外部 URL**是`https://contosotravel-f128.msappproxy.net` `https://contosotravel.com/acs`，而原始的**回復 url**為，則您必須將原始的**回復 url**更新`https://contosotravel-f128.msappproxy.net/acs`為。
+3. 編輯稍早設定的**回復 URL** ，使其網域可在網際網路上透過應用程式 Proxy 連線。 例如，如果您的**外部 URL**是 `https://contosotravel-f128.msappproxy.net` ，而原始的**回復 url**為 `https://contosotravel.com/acs` ，則您必須將原始的**回復 url**更新為 `https://contosotravel-f128.msappproxy.net/acs` 。
 
     ![輸入基本 SAML 設定資料](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 

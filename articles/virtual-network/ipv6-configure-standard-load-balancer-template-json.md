@@ -5,19 +5,18 @@ description: 本文說明如何使用 Azure Resource Manager VM 範本，在 Azu
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 1f9531b5d1decfd462a82b9d389c5af519591c83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5b1a91dd8779b8e79e221c620881d4848bae9e1f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420654"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711522"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>在 Azure 虛擬網路中部署 IPv6 雙重堆疊應用程式-範本
 
@@ -183,4 +182,4 @@ ms.locfileid: "80420654"
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以在 [[公用 IP 位址](https://azure.microsoft.com/pricing/details/ip-addresses/)]、[[網路頻寬](https://azure.microsoft.com/pricing/details/bandwidth/)] 或 [ [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/)] 中找到定價的詳細資料。
+您可以找到[公用 IP 位址](https://azure.microsoft.com/pricing/details/ip-addresses/)、[網路頻寬](https://azure.microsoft.com/pricing/details/bandwidth/)或 [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/) 的定價詳細資料。

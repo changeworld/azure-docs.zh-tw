@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 623ee15c5071fdc7a36677481e98872b8c2bd562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f9e6c8dc7438e05f960504b2cacee7fc987adf70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410421"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84022365"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory 連接器總覽
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory 透過複製、資料流程、查閱、取得中繼資料和刪除活動來支援下列資料存放區和格式。 按一下每個資料存放區，以深入瞭解支援的功能和對應的設定。

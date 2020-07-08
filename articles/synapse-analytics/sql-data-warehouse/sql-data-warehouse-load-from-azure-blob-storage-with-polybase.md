@@ -6,17 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 118653efc8829ac5ef6287bb36fb5595cff1147b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 90da35b76bbe6ec933b3a1fd200f0f5bad643759
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416135"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213307"
 ---
 # <a name="load-contoso-retail-data-to-synapse-sql"></a>將 Contoso 零售資料載入至 Synapse SQL 
 
@@ -292,7 +291,7 @@ ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 
 最好是在載入之後立即建立單一資料行統計資料。 如果您知道特定資料行不會在查詢述詞中，您可以略過建立這些資料行的統計資料。 如果您在每個資料行上建立單一資料行統計資料，可能需要很長的時間才能重建所有的統計資料。
 
-如果您決定要在每個資料表的每個資料行上建立單一資料行統計資料，您可以使用[統計資料](sql-data-warehouse-tables-statistics.md)一文中的預存程序程式碼範例 `prc_sqldw_create_stats`。
+如果您決定要在每個資料表的每個資料行上建立單一資料行統計資料，便可以使用[統計資料](sql-data-warehouse-tables-statistics.md)一文中的預存程序程式碼範例 `prc_sqldw_create_stats`。
 
 下列範例為建立統計資料的好起點。 它會在維度資料表中的每個資料行上，以及在事實資料表中的每個聯結資料行上建立單一資料行統計資料。 您之後隨時可以將單一或多個資料行統計資料新增到其他事實資料表資料行上。
 
