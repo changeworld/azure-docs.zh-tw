@@ -3,12 +3,12 @@ title: 以程式設計方式建立原則
 description: 此文章會逐步引導您使用 Azure CLI、Azure PowerShell 及 REST API，以程式設計方式建立及管理 Azure 原則的原則。
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 8ee87ecd9e7c636b5bb63c8e94be0e353acc3e13
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682132"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969884"
 ---
 # <a name="programmatically-create-policies"></a>以程式設計方式建立原則
 
@@ -95,7 +95,7 @@ ms.locfileid: "83682132"
    - 訂用帳戶 - `/subscriptions/{subId}/`
    - 管理群組 - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-如需使用 Azure Resource Manager PowerShell 模組來管理資源原則的詳細資訊，請參閱 [Az.Resources](/powershell/module/az.resources/#policies)。
+如需使用 Resource Manager PowerShell 模組來管理資源原則的詳細資訊，請參閱[Az. Resources](/powershell/module/az.resources/#policies)。
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>使用 ARMClient 來建立及指派原則定義
 

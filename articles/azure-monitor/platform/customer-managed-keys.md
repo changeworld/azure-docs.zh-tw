@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 05/20/2020
-ms.openlocfilehash: 037edb8af6e04a2ff65977a92a66482c9f4f880f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 07/05/2020
+ms.openlocfilehash: 607f622bc484883ecbeae0552eecc9561cf4c3ef
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845093"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969597"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -29,7 +29,7 @@ Azure 監視器使用加密的方式與  [Azure 儲存體加密](https://docs.m
 
 CMK 可供控制資料的存取權，並可隨時予以撤銷。 Azure 監視器儲存體的金鑰權限變更一律會在一小時內生效。 過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 不論 CMK 設定為何，此資料都會持續以 Microsoft 金鑰加密，但您對 SSD 資料的控制則會遵守 [金鑰撤銷](#cmk-kek-revocation)。 我們正致力於在 2020 年下半年以 CMK 加密 SSD 資料。
 
-CMK 功能會在專用的 Log Analytics 叢集上提供。 為了確認區域中有所需的容量，我們會要求事先將訂用帳戶列入白名單。 請透過 Microsoft 連絡人將訂用帳戶列入白名單，再開始設定 CMK。
+CMK 功能會在專用的 Log Analytics 叢集上提供。 若要確認您的區域中有所需的容量，我們需要事先允許您的訂用帳戶。 開始設定 CMK 之前，請先使用您的 Microsoft 連絡人來取得您的訂用帳戶。
 
  [Log Analytics 叢集定價模式](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)使用從「1000 GB/天」層級起的容量保留。 
 
@@ -40,7 +40,7 @@ Azure 監視器利用系統所指派受控識別來授與 Azure Key Vault 的存
 設定 CMK 之後，任何擷取到與「叢集」資源建立關聯工作區的資料，都會以 Key Vault 中的金鑰加密。 您可隨時解除工作區與「叢集」資源的關聯。 新的資料會擷取到 Log Analytics 儲存體並以 Microsoft 金鑰加密，同時可順暢地查詢新舊資料。
 
 
-![CMK 概觀](media/customer-managed-keys/cmk-overview-8bit.png)
+![CMK 概觀](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
 2. 具有受控識別及 Key Vault 權限的 Log Analytics「叢集」資源 -- 此身分識別會傳播至專用的基礎 Log Analytics 叢集儲存體
@@ -69,16 +69,16 @@ Azure 監視器利用系統所指派受控識別來授與 Azure Key Vault 的存
 
 ## <a name="cmk-provisioning-procedure"></a>CMK 佈建程序
 
-1. 訂用帳戶白名單 -- CMK 功能會在專用的 Log Analytics 叢集上提供。 為了確認區域中有所需的容量，我們會要求事先將訂用帳戶列入白名單。 請透過 Microsoft 連絡人將訂用帳戶列入白名單
+1. 允許訂用帳戶--CMK 功能會在專用的 Log Analytics 叢集上傳遞。 若要確認您的區域中有所需的容量，我們需要事先允許您的訂用帳戶。 使用您的 Microsoft 連絡人來允許您的訂用帳戶。
 2. 建立 Azure Key Vault 並儲存金鑰
 3. 建立「叢集」資源
 4. 授與 Key Vault 的權限
 5. 建立與 Log Analytics 工作區的關聯
 
-UI 目前不支援此程序，且佈建程序會透過 REST API 來執行。
+Azure 入口網站不支援此程式，而且布建是透過 PowerShell 或 REST 要求來執行。
 
 > [!IMPORTANT]
-> 任何 API 要求都必須在要求標頭中包含持有人授權權杖。
+> 任何 REST 要求都必須在要求標頭中包含持有人授權權杖。
 
 例如：
 
@@ -100,12 +100,12 @@ Authorization: Bearer eyJ0eXAiO....
 
 ### <a name="asynchronous-operations-and-status-check"></a>非同步作業和狀態檢查
 
-此設定程序中的某些作業因為無法快速完成而以非同步方式執行。 若接受非同步作業，其回應最初會傳回 HTTP 狀態碼 200 (確定)，以及具有 *Azure-AsyncOperation* 屬性的標頭：
+此設定程序中的某些作業因為無法快速完成而以非同步方式執行。 在設定中使用 REST 要求時，回應一開始會傳回 HTTP 狀態碼200（OK）和標頭，並在接受時使用*Azure AsyncOperation*屬性：
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
 
-您可將 GET 要求傳送至 *Azure-AsyncOperation* 標頭值來檢查非同步作業的狀態：
+然後，您可以藉由將 GET 要求傳送至*AsyncOperation*標頭值來檢查非同步作業的狀態：
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
 Authorization: Bearer <token>
@@ -172,9 +172,9 @@ Authorization: Bearer <token>
 }
 ```
 
-### <a name="subscription-whitelisting"></a>訂用帳戶白名單
+### <a name="allowing-subscription-for-cmk-deployment"></a>允許 CMK 部署的訂用帳戶
 
-CMK 功能會在專用的 Log Analytics 叢集上提供。 為確認區域中有所需的容量，我們會要求事先將訂用帳戶列入白名單。 請透過 Microsoft 連絡人提供訂用帳戶識別碼。
+CMK 功能會在專用的 Log Analytics 叢集上提供。若要確認您的區域中有所需的容量，我們需要事先允許您的訂用帳戶。 請透過 Microsoft 連絡人提供訂用帳戶識別碼。
 
 > [!IMPORTANT]
 > CMK 功能有區域性。 Azure Key Vault、「叢集」資源和相關聯的 Log Analytics 工作區必須位於相同區域中，但可位於不同訂用帳戶中。
@@ -191,20 +191,27 @@ CMK 功能會在專用的 Log Analytics 叢集上提供。 為確認區域中�
 
 ### <a name="create-cluster-resource"></a>建立「叢集」資源
 
-此資源可作為 Key Vault 與 Log Analytics 工作區之間的中繼身分識別連線。 在收到訂用帳戶已列入白名單的確認之後，請在工作區所在的區域中建立 Log Analytics「叢集」資源。
+此資源可作為 Key Vault 與 Log Analytics 工作區之間的中繼身分識別連線。 在您收到允許的訂用帳戶確認之後，請在您的工作區所在的區域建立*Log Analytics 叢集*資源。
 
 建立「叢集」資源時，您必須指定「容量保留」層級 (SKU)。 「容量保留」層級的範圍可介於每天 1,000 到 2,000 GB 之間，且可在稍後將其更新為 100 的間隔。 如果需要高於每天 2,000 GB 的容量保留層級，請透過 LAIngestionRate@microsoft.com 與我們連絡。 [深入了解](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
 
 *billingType* 屬性可判斷「叢集」資源及其資料的計費屬性：
-- 叢集 (預設) -- 計費會歸類到裝載「叢集」資源的訂用帳戶
-- 工作區 -- 計費會按比例歸類到裝載工作區的訂用帳戶
+- 叢集（預設值）--*叢集的容量*保留成本會針對叢集資源*進行分類。*
+- *工作區*--叢集的容量保留成本會根據叢集中的工作區按比例進行屬性化，而如果當天的總內嵌資料低於容量保留 *，則會使用叢集資源來*計費。 若要深入瞭解叢集定價模式，請參閱[Log Analytics 專用](manage-cost-storage.md#log-analytics-dedicated-clusters)叢集。 
 
 > [!NOTE]
-> 建立「叢集」資源之後，即可使用 PATCH REST 要求來更新其 *sku*、*keyVaultProperties* 或 *billingType*。
+> * 建立「叢集」資源之後，即可使用 PATCH REST 要求來更新其 *sku*、*keyVaultProperties* 或 *billingType*。
+> * 您目前可以使用 REST 要求更新*billingType* ，PowerShell 中不支援這項功能
 
-**建立**
+這是非同步作業，而且可能需要一段時間才能完成。
 
-此 Resource Manager 要求是非同步作業。
+> [!IMPORTANT]
+> 複製並儲存回應，因為接下來的步驟將需要詳細資料。
+> 
+
+```powershell
+New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity "daily-ingestion-gigabyte" 
+```
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -242,9 +249,6 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 Authorization: Bearer <token>
 ```
 
-> [!IMPORTANT]
-> 複製並儲存回應，因為接下來的步驟將需要詳細資料。
-
 **回應**
 
 ```json
@@ -261,7 +265,6 @@ Authorization: Bearer <token>
     },
   "properties": {
     "provisioningState": "ProvisioningAccount",
-    "clusterType": "LogAnalytics",
     "billingType": "cluster",
     "clusterId": "cluster-id"
     },
@@ -276,10 +279,10 @@ Authorization: Bearer <token>
 
 ### <a name="grant-key-vault-permissions"></a>授與 Key Vault 權限
 
-使用授與「叢集」資源權限的新存取原則來更新 Key Vault。 基礎 Azure 監視器儲存體會使用這些權限來進行資料加密。 在 Azure 入口網站中開啟 Key Vault 並按一下 [存取原則]，然後按一下 [+ 新增存取原則] 以使用下列設定來建立原則：
+使用新的存取原則更新您的 Key Vault，以*授與叢集資源的*許可權。 基礎 Azure 監視器儲存體會使用這些權限來進行資料加密。 在 Azure 入口網站中開啟 Key Vault 並按一下 [存取原則]，然後按一下 [+ 新增存取原則] 以使用下列設定來建立原則：
 
 - 金鑰權限：選取 [取得]、[包裝金鑰] 和 [將金鑰解除包裝] 權限。
-- 選取主體：輸入在前一個步驟回應中所傳回的 principal-id 值。
+- 選取 [主體]：輸入在上一個步驟的回應中傳回*的 [叢集*資源名稱] 或 [主體-識別碼] 值。
 
 ![授與 Key Vault 權限](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
@@ -295,12 +298,14 @@ Authorization: Bearer <token>
 
 使用金鑰識別碼詳細資料更新「叢集」資源的 KeyVaultProperties。
 
-**更新**
+這項作業在更新金鑰識別碼詳細資料時是非同步，而且可能需要一段時間才能完成。 更新容量值時，它是同步的。
 
-更新金鑰識別碼詳細資料時，此 Resource Manager 要求是非同步作業；更新容量值時，則是同步的。
+```powershell
+Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
+```
 
 > [!NOTE]
-> 您可提供「叢集」資源中的部分主體來更新 *sku*、*keyVaultProperties* 或 *billingType*。
+> 您可以使用 PATCH 來更新*叢集資源* *sku*、 *keyVaultProperties*或*billingType* 。
 
 ```rst
 PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -357,7 +362,6 @@ Content-type: application/json
       "keyVersion": "current-version"
       },
     "provisioningState": "Succeeded",
-    "clusterType": "LogAnalytics", 
     "billingType": "cluster",
     "clusterId": "cluster-id"
   },
@@ -378,9 +382,12 @@ Content-type: application/json
 > [!IMPORTANT]
 > 只有在完成 Log Analytics 叢集佈建之後，才能執行此步驟。 如果在佈建之前建立工作區的關聯並擷取資料，則擷取的資料將會遭到捨棄且無法復原。
 
-**建立工作區的關聯**
+這是非同步作業，而且可能需要一段時間才能完成。
 
-此 Resource Manager 要求是非同步作業。
+```powershell
+$clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name").id
+Set-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId
+```
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
@@ -454,9 +461,84 @@ CMK 的輪替需要使用 Azure Key Vault 中新金鑰版本來明確更新「�
 
 您所有的資料在金鑰輪替作業之後仍可供存取，因為資料一律會以帳戶加密金鑰 (AEK) 加密，而 AEK 現在會以 Key Vault 中的新金鑰加密金鑰 (KEK) 版本來加密。
 
-## <a name="cmk-manage"></a>CMK 管理
+## <a name="saving-queries-protected-with-cmk"></a>儲存以 CMK 保護的查詢
+
+Log Analytics 中使用的查詢語言是可表達的，而且可以包含您新增至查詢或查詢語法中的批註中的機密資訊。 有些組織要求這類資訊在 CMK 原則中會受到保護，而且您需要儲存以金鑰加密的查詢。 Azure 監視器可讓您將*已*儲存的搜尋和*記錄警示*查詢儲存在您自己的儲存體帳戶中，以連接到您的工作區。 
+
+> 請注意，尚未支援活頁簿和 Azure 儀表板中使用的查詢 CMK。 這些查詢會使用 Microsoft 金鑰保持加密。  
+
+透過「攜帶您自己的儲存體」（BYOS），服務會將查詢上傳到您所控制的儲存體帳戶。 這表示您可以使用您用來加密 Log Analytics 叢集中資料的相同金鑰或不同的金鑰，來控制待用[加密原則](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys)。 不過，您會負責與該儲存體帳戶相關聯的成本。 
+
+**設定查詢的 CMK 之前的考慮**
+* 您必須對您的工作區和儲存體帳戶具有「寫入」許可權
+* 請務必在您的 Log Analytics 工作區所在的相同區域中建立您的儲存體帳戶
+* 儲存體中的儲存*搜尋*會視為服務成品，其格式可能會變更
+* 現有的儲存*搜尋*會從您的工作區中移除。 複製和設定之前所需的任何儲存*搜尋*。 您可以使用此[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch?view=azps-4.2.0)來查看*已儲存的搜尋*
+* 不支援查詢歷程記錄，而且您將無法看到您執行的查詢
+* 您可以針對儲存查詢的目的，將單一儲存體帳戶與工作區產生關聯，但可用於儲存的*搜尋*和*記錄警示*查詢
+* 不支援釘選到儀表板
+
+**BYOS for 查詢的設定**
+
+將具有*查詢*dataSourceType 的儲存體帳戶與您的工作區建立關聯。 
+
+```powershell
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
+```
+
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-03-01-preview
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "dataSourceType": "Query", 
+    "storageAccountIds": 
+    [
+      "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"
+    ]
+  }
+}
+```
+
+設定之後，任何新*儲存的搜尋*查詢都會儲存在儲存體中。
+
+**記錄警示的 BYOS 設定**
+
+將具有*警示*dataSourceType 的儲存體帳戶與您的工作區建立關聯。 
+
+```powershell
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
+```
+
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-03-01-preview
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "dataSourceType": "Alerts", 
+    "storageAccountIds": 
+    [
+      "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"
+    ]
+  }
+}
+```
+
+設定之後，任何新的警示查詢都會儲存在您的儲存體中。
+
+## <a name="cmk-management"></a>CMK 管理
 
 - **取得資源群組的所有「叢集」資源**
+  
+  ```powershell
+  Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
+  ```
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -486,7 +568,6 @@ CMK 的輪替需要使用 Azure Key Vault 中新金鑰版本來明確更新「�
               "keyVersion": "current-version"
               },
           "provisioningState": "Succeeded",
-          "clusterType": "LogAnalytics", 
           "billingType": "cluster",
           "clusterId": "cluster-id"
         },
@@ -500,6 +581,10 @@ CMK 的輪替需要使用 Azure Key Vault 中新金鑰版本來明確更新「�
   ```
 
 - **取得訂用帳戶的所有「叢集」資源**
+  
+  ```powershell
+  Get-AzOperationalInsightsCluster
+  ```
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -514,8 +599,15 @@ CMK 的輪替需要使用 Azure Key Vault 中新金鑰版本來明確更新「�
 
   在相關聯的工作區資料量隨著時間變更，且想要適當地更新容量保留層級時發生。 請遵循[更新「叢集」資源](#update-cluster-resource-with-key-identifier-details)，並提供新的容量值。 其範圍可介於每天 1,000 到 2,000 GB 之間，且間隔為 100。 如需高於每天 2,000 GB 的層級，請連絡 Microsoft 連絡人將其啟用。 請注意，您不需要提供完整的 REST 要求本文，但應該包含 SKU：
 
-  **body**
-  ```json
+  ```powershell
+  Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity "daily-ingestion-gigabyte"
+  ```
+
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  Authorization: Bearer <token>
+  Content-type: application/json
+
   {
     "sku": {
       "name": "capacityReservation",
@@ -532,8 +624,11 @@ CMK 的輪替需要使用 Azure Key Vault 中新金鑰版本來明確更新「�
   
   請遵循[更新「叢集」資源](#update-cluster-resource-with-key-identifier-details)，並提供新的 billingType 值。 請注意，您不需要提供完整的 REST 要求本文，但應該包含 *billingType*：
 
-  **body**
-  ```json
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  Authorization: Bearer <token>
+  Content-type: application/json
+
   {
     "properties": {
       "billingType": "cluster",
@@ -545,7 +640,11 @@ CMK 的輪替需要使用 Azure Key Vault 中新金鑰版本來明確更新「�
 
   您需要工作區和「叢集」資源的「寫入」權限才能執行此作業。 您可隨時解除工作區與「叢集」資源的關聯。 解除關聯作業之後新擷取的資料會儲存在 Log Analytics 儲存體中，並以 Microsoft 金鑰加密。 只要使用有效的 Key Vault 金鑰佈建並設定「叢集」資源，即可順暢地查詢在解除關聯前後擷取到工作區的資料。
 
-  此 Resource Manager 要求是非同步作業。
+  這是非同步作業，而且可能需要一段時間才能完成。
+
+  ```powershell
+  Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
+  ```
 
   ```rest
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview
@@ -561,9 +660,23 @@ CMK 的輪替需要使用 Azure Key Vault 中新金鑰版本來明確更新「�
   1. 從回應複製 Azure-AsyncOperation URL 值，並遵循[非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
   2. 傳送[工作區 - 取得](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get)要求並觀察回應，解除關聯的工作區在 *features* 下不會有 *clusterResourceId*。
 
+- **檢查工作區關聯狀態**
+  
+  在工作區上執行取得作業，並觀察*clusterResourceId*屬性是否存在於 [*功能*] 下的回應中。 相關聯的工作區會有*clusterResourceId*屬性。
+
+  ```powershell
+  Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
+  ```
+
 - **刪除「叢集」資源**
 
-  您需要「叢集」資源的「寫入」權限才能執行此作業。 執行虛刪除作業可在 14 天內復原「叢集」資源，包括其資料 (無論刪除是意外還是刻意進行的)。 「叢集」資源名稱仍會在虛刪除期間保留，且無法使用該名稱建立新的叢集。 虛刪除期間之後會釋出「叢集」資源名稱，「叢集」資源和資料會永久刪除且無法復原。 執行刪除作業時，任何相關聯的工作區都會與「叢集」資源解除關聯。 新擷取的資料會儲存在 Log Analytics 儲存體中，並以 Microsoft 金鑰加密。 工作區解除關聯作業是非同步的，且最多可能需要 90 分鐘的時間才能完成。
+  您需要「叢集」資源的「寫入」權限才能執行此作業。 執行虛刪除作業可在 14 天內復原「叢集」資源，包括其資料 (無論刪除是意外還是刻意進行的)。 「叢集」資源名稱仍會在虛刪除期間保留，且無法使用該名稱建立新的叢集。 虛刪除期間之後會釋出「叢集」資源名稱，「叢集」資源和資料會永久刪除且無法復原。 執行刪除作業時，任何相關聯的工作區都會與「叢集」資源解除關聯。 新擷取的資料會儲存在 Log Analytics 儲存體中，並以 Microsoft 金鑰加密。 
+  
+  工作區解除關聯作業是非同步的，且最多可能需要 90 分鐘的時間才能完成。
+
+  ```powershell
+  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
+  ```
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -590,8 +703,10 @@ CMK 的輪替需要使用 Azure Key Vault 中新金鑰版本來明確更新「�
 
 \- CMK 加密會套用至 CMK 設定之後新擷取的    資料。 在 CMK 設定之前擷取的    資料會持續以 Microsoft 金鑰加密。 您可順暢地    查詢在 CMK 設定前後擷取的資料。
 
-\- 必須將 Azure Key Vault 設定為可復原。 這些屬性預設不會啟用，且應該使用 CLI 或 PowerShell 來設定：  -必須開啟 [虛刪除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-       -應該開啟 [清除保護](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)，以防止強制刪除祕密/保存庫，即使在虛刪除之後也一樣。 
+\- 必須將 Azure Key Vault 設定為可復原。這些屬性預設不會啟用，而且應該使用 CLI 或 PowerShell 來設定：
+
+  -虛 [刪除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) 
+     必須開啟 [    -  [清除保護](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)]   ，以防止強制刪除秘密/保存庫，即使在虛刪除之後也一樣。
 
 -目前不支援將「叢集」資源移至另一個資源群組或訂用帳戶。 **      
 
@@ -614,8 +729,6 @@ CMK 的輪替需要使用 Azure Key Vault 中新金鑰版本來明確更新「�
 
 - 如果使用 KeyVaultProperties 來更新現有的「叢集」資源，且 Key Vault 中遺漏 [取得] 金鑰存取原則，則作業將會失敗。
 
-- 如果嘗試刪除與工作區建立關聯的「叢集」資源，則刪除作業將會失敗。
-
 - 如果在建立「叢集」資源時收到衝突錯誤，可能是已在虛刪除期間的過去 14 天內刪除了「叢集」資源。 「叢集」資源名稱仍會在虛刪除期間保留，且無法使用該名稱建立新的叢集。 若永久刪除「叢集」資源，則會在虛刪除期間之後釋出名稱。
 
 - 如果在其他作業仍在進行時更新「叢集」資源，則更新作業將會失敗。
@@ -623,5 +736,9 @@ CMK 的輪替需要使用 Azure Key Vault 中新金鑰版本來明確更新「�
 - 如果無法部署「叢集」資源，請確認 Azure Key Vault「叢集」 ** 資源和相關聯的 Log Analytics 工作區位於相同區域中。 但其可位於不同的訂用帳戶中。
 
 - 如果在 Key Vault 中更新金鑰版本，但未在「叢集」資源中更新新的金鑰識別碼詳細資料，則 Log Analytics 叢集會繼續使用先前的金鑰，且資料會變成無法存取。 請在「叢集」資源中更新新的金鑰識別碼詳細資料，以繼續進行資料擷取並能夠查詢資料。
+
+- 某些作業很長，而且可能需要一段時間才能完成--這些是*叢集建立、* *叢集金鑰更新**和叢集*刪除。 您可以透過兩種方式來檢查作業狀態：
+  1. 使用 REST 時，請從回應複製 AsyncOperation URL 值，並遵循[非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
+  2. 將 GET 要求傳送至*叢集或工作*區，並觀察回應。 例如，解除關聯的工作區在 [*功能*] 底下不會有*clusterResourceId* 。
 
 - 如需客戶管理的金鑰相關支援和說明，請連絡 Microsoft 連絡人。

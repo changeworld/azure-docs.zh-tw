@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2020
+ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 6909bcbc67680f9205af8a79782907d4671d668b
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
+ms.openlocfilehash: 997b7b1442d29c4daa4e47c89a7f53d46c3b8c81
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860710"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969580"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -29,8 +29,148 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 此頁面會定期更新，因此請時常瀏覽。 如果想要尋找超過 6 個月的項目，請前往[Azure 資訊安全中心內新功能的封存](release-notes-archive.md)。
 
+## <a name="july-2020"></a>2020 年 7 月
+
+7月份的更新包括：
+- [Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 （預覽）](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+
+### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 （預覽）
+
+Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的活動。 資訊安全中心會在偵測到嘗試存取或惡意探索您的儲存體帳戶時顯示警示。 
+
+您的資料可以受到保護，不論其儲存為 blob 容器、檔案共用或資料 lake。 
+
+深入瞭解[Azure 儲存體的威脅防護](threat-protection.md#threat-protection-for-azure-storage-)。
+
+
+## <a name="june-2020"></a>2020 年 6 月
+
+六月的更新包括：
+- [安全分數 API （預覽）](#secure-score-api-preview)
+- [SQL 電腦的先進資料安全性（Azure、其他雲端及內部內部部署）（預覽）](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview)
+- [將 Log Analytics 代理程式部署至 Azure Arc 機器的兩個新建議（預覽）](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
+- [可大規模建立連續匯出和工作流程自動化設定的新原則](#new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale)
+- [使用 Nsg 來保護非網際網路面向虛擬機器的新建議](#new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines)
+- [啟用威脅防護和先進資料安全性的新原則](#new-policies-for-enabling-threat-protection-and-advanced-data-security)
+
+
+
+### <a name="secure-score-api-preview"></a>安全分數 API （預覽）
+
+您現在可以透過[安全分數 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) （目前處於預覽狀態）來存取您的分數。 API 方法提供彈性來查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用**安全分數**API 來取得特定訂用帳戶的分數。 此外，您可以使用**安全分數控制項**API 來列出安全性控制項和您的訂用帳戶目前分數。
+
+如需使用安全分數 API 進行外部工具的範例，請參閱[GitHub 社區的安全分數區域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
+
+深入瞭解[Azure 資訊安全中心中的安全分數和安全性控制](secure-score-security-controls.md)。
+
+
+
+### <a name="advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview"></a>SQL 電腦的先進資料安全性（Azure、其他雲端及內部內部部署）（預覽）
+
+Azure 資訊安全中心的 SQL 機器先進資料安全性現在會保護裝載于 Azure、其他雲端環境，甚至是內部部署機器上的 SQL Server。 這會為您的 Azure 原生 SQL 伺服器擴充保護，以完整支援混合式環境。
+
+Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅防護。
+
+安裝套裝程式含兩個步驟：
+
+1. 將 Log Analytics 代理程式部署到您 SQL Server 的主機電腦，以提供 Azure 帳戶的連線。
+
+1. 在資訊安全中心的 [定價和設定] 頁面中啟用選用套件組合。
+
+深入瞭解[SQL 電腦的先進資料安全性](security-center-iaas-advanced-data.md)。
+
+
+
+### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a>將 Log Analytics 代理程式部署至 Azure Arc 機器的兩個新建議（預覽）
+
+已新增兩個新的建議，以協助將[Log Analytics 代理程式](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)部署至您的 Azure Arc 機器，並確保其受到 Azure 資訊安全中心的保護：
+
+- **Log Analytics 代理程式應該安裝在您的以 Windows 為基礎的 Azure Arc 機器上（預覽）**
+- **Log Analytics 代理程式應該安裝在您的以 Linux 為基礎的 Azure Arc 機器上（預覽）**
+
+這些新的建議會出現在與現有（相關）建議相同的四個安全性控制項中，**監視代理程式應該安裝在您的電腦上**：補救安全性設定、套用自動調整應用程式控制、套用系統更新，以及啟用 endpoint protection。
+
+這些建議也包含快速修正功能，可協助加速部署程式。 
+
+在[計算和應用程式建議](recommendations-reference.md#recs-computeapp)資料表中深入瞭解這兩個新的建議。
+
+深入瞭解 Azure 資訊安全中心如何在[Log Analytics 代理程式](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent)中使用代理程式？。
+
+深入瞭解[Azure Arc 機器的延伸](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)模組。
+
+
+
+### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>可大規模建立連續匯出和工作流程自動化設定的新原則
+
+自動化組織的監視和事件回應程式，可以大幅改善調查和緩和安全性事件所需的時間。
+
+若要在整個組織中部署您的自動化設定，請使用這些內建的「DeployIfdNotExist」 Azure 原則來建立及設定[連續匯出](continuous-export.md)和[工作流程自動化](workflow-automation.md)程式：
+
+您可以在 Azure 原則中找到這些原則：
+
+
+|目標  |原則  |原則識別碼  |
+|---------|---------|---------|
+|連續匯出至事件中樞|[為 Azure 資訊安全中心警示與建議部署「匯出至事件中樞」](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
+|連續匯出至 Log Analytics 工作區|[為 Azure 資訊安全中心警示與建議部署「匯出至 Log Analytics 工作區」](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+|安全性警示的工作流程自動化|[為 Azure 資訊安全中心警示部署工作流程自動化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
+|安全性建議的工作流程自動化|[為 Azure 資訊安全中心建議部署工作流程自動化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
+||||
+
+開始使用[工作流程自動化範本](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)。
+
+若要深入瞭解如何使用這兩個匯出原則，請透過[原則持續匯出 Azure 資訊安全中心警示和建議](https://techcommunity.microsoft.com/t5/azure-security-center/continuously-export-azure-security-center-alerts-and/ba-p/1440745)。
+
+
+### <a name="new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines"></a>使用 Nsg 來保護非網際網路面向虛擬機器的新建議
+
+「實施安全性最佳作法」安全性控制現在包含下列新的建議：
+
+- **應使用網路安全性群組保護非網際網路對應的虛擬機器**
+
+現有的建議、**網際網路對向虛擬機器應該使用網路安全性群組來保護**，而無法區分網際網路對向和非網際網路對應的 vm。 對於這兩種情況，如果未將 VM 指派給網路安全性群組，就會產生高嚴重性建議。 這項新的建議會將非網際網路對向的電腦分開，以減少誤報，並避免不必要的高嚴重性警示。
+
+在[網路建議](recommendations-reference.md#recs-network)表格中深入瞭解。
+
+
+
+
+### <a name="new-policies-for-enabling-threat-protection-and-advanced-data-security"></a>啟用威脅防護和先進資料安全性的新原則
+
+以下的新原則已新增至 ASC 預設計畫，其設計目的是為了協助針對相關的資源類型啟用威脅防護或先進的資料安全性。
+
+您可以在 Azure 原則中找到這些原則：
+
+
+| 原則                                                                                                                                                                                                                                                                | 原則識別碼                            |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+| [應該在 Azure SQL Database 伺服器上啟用 Advanced data security](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
+| [應該在電腦上的 SQL server 上啟用 Advanced data security](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
+| [應該在儲存體帳戶上啟用先進的威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
+| [應該在 Azure Key Vault 保存庫上啟用先進的威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)           | 0e6763cc-5078-4e64-889d-ff4d9a839047 |
+| [應該在 App Service 方案上啟用先進的威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
+| [應在 Azure Container Registry 登錄上啟用 Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)   | c25d9a16-bc35-4e15-a7e5-9db606bf9ed4 |
+| [應該在 Azure Kubernetes Service 叢集上啟用先進的威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)   | 523b5cd1-3e23-492f-a539-13118b6d1e3a |
+| [應該在虛擬機器上啟用先進的威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
+|                                                                                                                                                                                                                                                                       |                                      |
+
+深入瞭解[Azure 資訊安全中心中的威脅防護](https://docs.microsoft.com/azure/security-center/threat-protection)。
+
+
+
+
 
 ## <a name="may-2020"></a>2020 年 5 月
+
+中的更新可能包括：
+- [重複警示歸併規則 (預覽)](#alert-suppression-rules-preview)
+- [虛擬機器弱點評估現已正式推出](#virtual-machine-vulnerability-assessment-is-now-generally-available)
+- [Just-In-Time (JIT) 虛擬機器 (VM) 存取的變更](#changes-to-just-in-time-jit-virtual-machine-vm-access)
+- [自訂建議已移至個別的安全性控制](#custom-recommendations-have-been-moved-to-a-separate-security-control)
+- [在控制項中或以一般清單的方式，加入查看建議的切換](#toggle-added-to-view-recommendations-in-controls-or-as-a-flat-list)
+- [擴充的安全性控制「實作安全性最佳做法」](#expanded-security-control-implement-security-best-practices)
+- [具有自訂中繼資料的自訂原則現已正式推出](#custom-policies-with-custom-metadata-are-now-generally-available)
+- [損毀傾印分析功能移轉至無檔案攻擊偵測](#crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection)
 
 
 ### <a name="alert-suppression-rules-preview"></a>重複警示歸併規則 (預覽)
@@ -96,6 +236,7 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 深入瞭解[在 Azure 資訊安全中心之內的增強型安全分數 (預覽)](secure-score-security-controls.md) 中出現的安全性控制項。
 
+![建議的 [群組依據控制項] 切換](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>擴充的安全性控制「實作安全性最佳做法」 
 
@@ -113,13 +254,14 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 新增至控制項的兩個新建議如下：
 
-- **[預覽] 應該安裝來賓設定代理程式** - 使用 [Azure 原則來賓設定](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)在虛擬機器中提供伺服器和應用程式設定的可見度 (僅限 Windows)。
+- **來賓設定延伸模組應安裝在 Windows 虛擬機器（預覽）上**-使用[Azure 原則來賓](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)設定會在虛擬機器中提供對伺服器和應用程式設定的可見度（僅限 Windows）。
 
-- **[預覽] 應該啟用 Windows 惡意探索防護** - Windows Defender 惡意探索防護會運用 Azure 原則來賓設定代理程式。 「惡意探索防護」有四個元件，設計用來鎖定裝置，使其免於遭受惡意程式碼攻擊的各種攻擊和封鎖行為，同時讓企業能夠平衡本身的安全性風險和生產力需求 (僅限 Windows)。
+- **Windows Defender 惡意探索防護應在您的電腦上啟用（預覽）** -Windows Defender 惡意探索防護會利用 Azure 原則來賓設定代理程式。 「惡意探索防護」有四個元件，設計用來鎖定裝置，使其免於遭受惡意程式碼攻擊的各種攻擊和封鎖行為，同時讓企業能夠平衡本身的安全性風險和生產力需求 (僅限 Windows)。
 
 若要深入瞭解 Windows Defender 惡意探索防護，請參閱[建立及部署惡意探索防護原則](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)。
 
-深入瞭解[在 Azure 資訊安全中心之內的增強型安全分數 (預覽)](secure-score-security-controls.md) 中出現的安全性控制項。
+深入瞭解[增強式安全分數（預覽）](secure-score-security-controls.md)中的安全性控制項。
+
 
 
 ### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>具有自訂中繼資料的自訂原則現已正式推出
@@ -133,13 +275,14 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 深入瞭解[使用詳細資料來增強您的自訂建議](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information)。
 
 
+
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>損毀傾印分析功能移轉至無檔案攻擊偵測 
 
 我們會將 Windows 損毀傾印分析 (CDA) 偵測功能整合到[無檔案攻擊偵測](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless)。 無檔案攻擊偵測分析會針對 Windows 機器引進下列安全性警示的改良版本：探索到程式碼插入、偵測到偽裝的 Windows 模組、發現的程式碼，以及偵測到可疑的程式碼片段。
 
 此轉換的一些優點：
 
-- **主動式和及時的惡意程式碼偵測** - 涉及等待損毀然後執行分析以尋找作用中的惡意程式碼所用的的 CDA 方法。 使用無檔案攻擊偵測可在執行中時，為記憶體內部威脅提供主動式識別。 
+- **主動式和即時惡意程式碼偵測**-這是 CDA 的方法，其中涉及等待損毀發生，然後執行分析以尋找惡意的成品。 使用無檔案攻擊偵測可在執行中時，為記憶體內部威脅提供主動式識別。 
 
 - **擴充的警示** - 來自無檔案攻擊偵測的安全性警示包含無法從 CDA 取得的擴充，例如使用中的網路連線資訊。 
 
@@ -150,6 +293,11 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 
 ## <a name="april-2020"></a>2020 年 4 月
+
+4月的更新包括：
+- [動態合規性套件現已正式推出](#dynamic-compliance-packages-are-now-generally-available)
+- [Azure 資訊安全中心免費層中現在已包含身分識別建議](#identity-recommendations-now-included-in-azure-security-center-free-tier)
+
 
 ### <a name="dynamic-compliance-packages-are-now-generally-available"></a>動態合規性套件現已正式推出
 
@@ -188,6 +336,14 @@ Azure 資訊安全中心免費層的身分識別和存取安全性建議現已�
 
 
 ## <a name="march-2020"></a>2020 年 3 月
+
+3月的更新包括：
+- [工作流程自動化現已正式推出](#workflow-automation-is-now-generally-available)
+- [Azure 資訊安全中心與 Windows 管理中心整合](#integration-of-azure-security-center-with-windows-admin-center)
+- [Azure Kubernetes Service 的防護](#protection-for-azure-kubernetes-service)
+- [改良的 Just-In-Time 體驗](#improved-just-in-time-experience)
+- [Web 應用程式的兩個安全性建議已被取代](#two-security-recommendations-for-web-applications-deprecated)
+
 
 ### <a name="workflow-automation-is-now-generally-available"></a>工作流程自動化現已正式推出
 
@@ -266,13 +422,3 @@ Azure 資訊安全中心正在擴充其容器安全性功能，以保護 Azure K
 
 若要對付這項威脅，Azure 資訊安全中心在 2018 年 10 月發行 Windows 的無檔案攻擊偵測，而且現在也已在 Linux 上擴充無檔案攻擊偵測。 
 
-
-## <a name="january-2020"></a>2020 年 1 月
-
-### <a name="enhanced-secure-score-preview"></a>增強的安全分數 (預覽)
-
-Azure 資訊安全中心的安全分數功能增強版本現已提供預覽。 在此版本中，會將多個建議分組為安全性控制措施，以便更清楚地反映易受攻擊面 (例如，限制對管理連接埠的存取)。
-
-請熟悉預覽階段中的安全分數變更，並決定有助於您進一步保護環境的其他補救。
-
-深入瞭解[在 Azure 資訊安全中心之內的增強型安全分數 (預覽)](secure-score-security-controls.md)。

@@ -3,12 +3,12 @@ title: 從入口網站更新現有的指派
 description: 瞭解在 Azure 藍圖中，從入口網站更新現有藍圖指派的機制。
 ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381797"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969459"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新現有的藍圖指派
 
@@ -20,7 +20,7 @@ ms.locfileid: "81381797"
 
 ## <a name="updating-assignments"></a>更新指派
 
-1. 在左側窗格中選取 [所有服務]  。 搜尋並選取 [藍圖]  。
+1. 在左側窗格中選取 [所有服務]。 搜尋並選取 [藍圖]。
 
 1. 選取頁面左側的 [指派的藍圖]  。
 
@@ -50,18 +50,18 @@ ms.locfileid: "81381797"
   - 如果原則指派定義有所變更，則會建立新的原則指派。
     先前部署的原則指派會留在原處。
   - 如果從藍圖中移除原則指派成品，則部署的原則指派會留在原處。
-- Azure 資源管理員範本
+- Azure Resource Manager 範本（ARM 範本）
   - 範本會透過 Resource Manager 處理為 **PUT**。 因為每個資源類型對此動作的處理方式不同，請檢閱每個所含資源的文件，以判斷藍圖在執行此動作時會有什麼影響。
 
 ## <a name="possible-errors-on-updating-assignments"></a>更新指派時的可能錯誤
 
-在更新指派時，所進行的變更可能會在執行時中斷。 例如，在資源群組部署好之後，變更其位置。 只要是 [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) 所支援的變更均可進行，但會透過 Azure Resource Manager 導致錯誤發生的變更，也會導致指派失敗。
+在更新指派時，所進行的變更可能會在執行時中斷。 例如，在資源群組部署好之後，變更其位置。 [Resource Manager](../../../azure-resource-manager/management/overview.md)可以進行任何變更，但會透過 Resource Manager 造成錯誤的任何變更，也會導致指派失敗。
 
 指派的更新次數沒有限制。 如果發生錯誤，請判斷錯誤並對指派進行其他更新。  範例錯誤案例：
 
 - 參數不正確
 - 已經存在的物件
-- Azure Resource Manager 不支援變更
+- Resource Manager 不支援的變更
 
 ## <a name="next-steps"></a>後續步驟
 
