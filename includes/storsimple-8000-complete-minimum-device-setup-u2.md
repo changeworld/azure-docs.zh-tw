@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: c44effe0bde3c7e880e53706fcb59d91a8605e7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174030"
 ---
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>完成最小的 StorSimple 裝置安裝
@@ -36,7 +36,7 @@ ms.locfileid: "67174030"
 
             ![Test-HcsmConnection 顯示可路由傳送 IP](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. 按一下 [確定]  。 裝置設定隨即啟動。 完成裝置設定時，您會收到通知。 [裝置]**** 刀鋒視窗中的裝置狀態會變更為 [上線]****。
+1. 按一下 [確定]。 裝置設定隨即啟動。 完成裝置設定時，您會收到通知。 [裝置]**** 刀鋒視窗中的裝置狀態會變更為 [上線]****。
 
     ![StorSimple 最小裝置設定網路介面](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 

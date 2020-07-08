@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: b7881d38e04f9b5793f61110e0e3e4c76baeddf2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70886358"
 ---
 安全性控制是 Azure 服務的品質或功能，可提供服務預防、偵測及回應安全性弱點的能力。

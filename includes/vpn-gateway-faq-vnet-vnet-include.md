@@ -9,10 +9,10 @@ ms.date: 12/03/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 72ddd0b6cd6c3e12417d3698c403f89312b531f4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173800"
 ---
 VNet 對 VNet 常見問題集適用於 VPN 閘道連線。 如需 VNet 對等互連的資訊，請參閱[虛擬網路對等互連](../articles/virtual-network/virtual-network-peering-overview.md)。
@@ -23,7 +23,7 @@ VNet 對 VNet 常見問題集適用於 VPN 閘道連線。 如需 VNet 對等互
 
 ### <a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>VNet 對 VNet 流量是否會透過網際網路傳輸？
 
-不可以。 VNet 對 VNet 流量會透過 Microsoft Azure 骨幹傳輸，而非透過網際網路。
+否。 VNet 對 VNet 流量會透過 Microsoft Azure 骨幹傳輸，而非透過網際網路。
 
 ### <a name="can-i-establish-a-vnet-to-vnet-connection-across-azure-active-directory-aad-tenants"></a>是否可建立跨 Azure Active Directory (AAD) 租用戶的 VNet 對 VNet 連線？
 
@@ -35,19 +35,19 @@ VNet 對 VNet 常見問題集適用於 VPN 閘道連線。 如需 VNet 對等互
 
 ### <a name="do-i-need-a-vpn-device-to-connect-vnets-together"></a>我需要將 VNet 連接在一起的 VPN 裝置嗎？
 
-不可以。 將多個 Azure 虛擬網路連接在一起並不需要 VPN 裝置，除非需要跨單位連線能力。
+否。 將多個 Azure 虛擬網路連接在一起並不需要 VPN 裝置，除非需要跨單位連線能力。
 
 ### <a name="do-my-vnets-need-to-be-in-the-same-region"></a>我的 VNet 需要位於相同區域嗎？
 
-不可以。 虛擬網路可位於相同或不同的 Azure 區域 (位置)。
+否。 虛擬網路可位於相同或不同的 Azure 區域 (位置)。
 
 ### <a name="if-the-vnets-arent-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-active-directory-tenant"></a>如果 VNet 不在相同的訂用帳戶中，訂用帳戶是否需要與相同的 Active Directory 租用戶相關聯？
 
-不可以。
+否。
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-virtual-networks-in-separate-azure-instances"></a>可以使用 VNet 對 VNet 連線不同 Azure 執行個體中的虛擬網路嗎？ 
 
-不可以。 VNet 對 VNet 支援連線相同 Azure 執行個體中的虛擬網路。 例如，您無法建立全域 Azure 與中文版/德文版/US Gov版 Azure 執行個體間的連線。 這些案例中，請考慮使用站對站 VPN 連線。
+否。 VNet 對 VNet 支援連線相同 Azure 執行個體中的虛擬網路。 例如，您無法建立全域 Azure 與中文版/德文版/US Gov版 Azure 執行個體間的連線。 這些案例中，請考慮使用站對站 VPN 連線。
 
 ### <a name="can-i-use-vnet-to-vnet-along-with-multi-site-connections"></a>可以使用 VNet 對 VNet 以及多站台連線嗎？
 
@@ -59,15 +59,15 @@ VNet 對 VNet 常見問題集適用於 VPN 閘道連線。 如需 VNet 對等互
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-vms-or-cloud-services-outside-of-a-vnet"></a>是否可以使用 VNet 對 VNet 連線來連接 VNet 外部的 VM 或雲端服務？
 
-不可以。 VNet 對 VNet 支援連接虛擬網路。 但是不支援連接不在虛擬網路中的虛擬機器或雲端服務。
+否。 VNet 對 VNet 支援連接虛擬網路。 但是不支援連接不在虛擬網路中的虛擬機器或雲端服務。
 
 ### <a name="can-a-cloud-service-or-a-load-balancing-endpoint-span-vnets"></a>雲端服務或負載平衡端點是否可以跨越 VNet？
 
-不可以。 即使虛擬網路連接在一起，雲端服務或負載平衡端點也無法跨虛擬網路。
+否。 即使虛擬網路連接在一起，雲端服務或負載平衡端點也無法跨虛擬網路。
 
 ### <a name="can-i-use-a-policybased-vpn-type-for-vnet-to-vnet-or-multi-site-connections"></a>是否可以使用 PolicyBased VPN 類型進行 VNet 對 VNet 或多站台連線？
 
-不可以。 VNet 對 VNet 和多站台連線需要 VPN 類型為 RouteBased (前稱為動態路由) 的 Azure VPN 閘道。
+否。 VNet 對 VNet 和多站台連線需要 VPN 類型為 RouteBased (前稱為動態路由) 的 Azure VPN 閘道。
 
 ### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-to-another-vnet-with-a-policybased-vpn-type"></a>是否可以將 RouteBased VPN 類型的 VNet 連線到另一個 PolicyBased VPN 類型的 VNet？
 
@@ -83,11 +83,11 @@ VNet 對 VNet 常見問題集適用於 VPN 閘道連線。 如需 VNet 對等互
 
 ### <a name="can-i-have-overlapping-address-spaces-for-vnet-to-vnet-configurations"></a>VNet 對 VNet 組態的位址空間是否可以重疊？
 
-不可以。 您的 IP 位址範圍不能重疊。
+否。 您的 IP 位址範圍不能重疊。
 
 ### <a name="can-there-be-overlapping-address-spaces-among-connected-virtual-networks-and-on-premises-local-sites"></a>在連接的虛擬網路和內部部署本機網站之間是否可以有重疊的位址空間？
 
-不可以。 您的 IP 位址範圍不能重疊。
+否。 您的 IP 位址範圍不能重疊。
 
 
 

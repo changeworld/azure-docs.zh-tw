@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174032"
 ---
 #### <a name="to-create-a-volume"></a>建立磁碟區
@@ -45,7 +45,7 @@ ms.locfileid: "67174032"
          1. 提供 ACR 的 [名稱]****。
          2. 在 [iSCSI 啟動器名稱]**** 下，提供 Windows 主機的 iSCSI 完整名稱 (IQN)。 如果您沒有 IQN，請移至[取得 Windows Server 主機的 iqn](#get-the-iqn-of-a-windows-server-host)。
 
-      1. 按一下頁面底部的 [新增]  。 使用指定的設定來建立磁碟區。
+      1. 按一下 [建立]。 使用指定的設定來建立磁碟區。
 
          ![按一下 [建立專案]。](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 

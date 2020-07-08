@@ -4,15 +4,15 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d679767f1a4be3ecdcf1811662c72dbbe2df33a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67173920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84014756"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>在 Windows 防火牆中為 Database Engine 的預設執行個體開啟 TCP 連接埠
-1. 使用遠端桌面連線到虛擬機器。 如需連線到 VM 的詳細指示，請參閱[使用遠端桌面開啟 SQL VM](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop)。
+1. 使用遠端桌面連線到虛擬機器。 如需連線到 VM 的詳細指示，請參閱[使用遠端桌面開啟 SQL VM](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md#remotedesktop)。
 2. 登入後，在 [開始] 畫面中輸入 **WF.msc**，然後按 ENTER 鍵。
    
     ![啟動防火牆程式](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
@@ -23,13 +23,13 @@ ms.locfileid: "67173920"
 5. 在 [通訊協定及連接埠]**** 對話方塊中，使用預設的 [TCP]****。 接著在 [特定本機連接埠]**** 方塊中，輸入 Database Engine 執行個體的連接埠號碼 (預設執行個體的連接埠號碼 **1433**，或您在端點步驟中選擇的私人連接埠號碼)。
    
     ![TCP 連接埠 1433](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)
-6. 按 [下一步]  。
+6. 按 [下一步] 。
 7. 在 **[動作]** 對話方塊中，選取 **[允許連線]**，然後按 **[下一步]**。
    
     **安全性注意事項：** 選取 [僅允許安全連線]**** 可提供額外的安全性。 如果您想要在環境中設定額外的安全性選項，請選取此選項。
    
     ![允許連線](./media/virtual-machines-sql-server-connection-steps/15Allow-Connection.png)
-8. 在 [設定檔]**** 對話方塊中，依序選取 [公用]****、[私人]****，然後 [網域]****。 然後按一下 [下一步]  。
+8. 在 [設定檔]**** 對話方塊中，依序選取 [公用]****、[私人]****，然後 [網域]****。 然後按一下 [下一步] 。
    
     **安全性注意事項：** 選取 [公用]**** 可允許透過網際網路存取。 請盡可能選取較具有限制性的設定檔。
    

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 135232e3e9894bcef1ef657e41f5ad3a5e307289
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69014690"
 ---
 ### <a name="media-services-v3-latest"></a>媒體服務 v3 (最新版)
@@ -17,7 +17,7 @@ ms.locfileid: "69014690"
 
 * [概觀](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
 * [概念](https://docs.microsoft.com/azure/media-services/latest/concepts-overview)
-* [開始開發](https://docs.microsoft.com/azure/media-services/latest/developers-guide)
+* [開始進行開發](https://docs.microsoft.com/azure/media-services/latest/developers-guide)
 * [將移轉指引從 v2 變更為 v3](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3)
 
 ### <a name="media-services-v2-legacy"></a>媒體服務 v2 (舊版)
