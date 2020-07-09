@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 4c7eb5e4f22cb432a9d17e6eafa653e62e1f9129
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3b65558a12fb6b20f449f5386c0ce7e598433b6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79529895"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110295"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>在 Azure 中選擇正確的適用于 mariadb 伺服器選項
 
@@ -31,7 +31,7 @@ ms.locfileid: "79529895"
 
 下表列出這些選項之間的主要差異：
 
-|            | 適用於 MariaDB 的 Azure 資料庫 | Azure Vm 上的適用于 mariadb    |
+| 屬性          | 適用於 MariaDB 的 Azure 資料庫 | Azure Vm 上的適用于 mariadb    |
 |:-------------------|:-----------------------------|:--------------------|
 | 服務等級協定（SLA）                | 提供99.99% 可用性的 SLA| 同一個可用性設定組中有兩個或多個實例，最高可達99.95% 的可用性。<br/><br/>使用 premium 儲存體的單一實例 VM，99.9% 的可用性。<br/><br/>99.99% 搭配多個可用性設定組中的多個實例使用可用性區域。<br/><br/>請參閱[虛擬機器 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。 |
 | 作業系統修補        | 自動  | 由客戶管理 |

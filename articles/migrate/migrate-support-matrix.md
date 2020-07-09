@@ -4,15 +4,16 @@ description: 摘要說明 Azure Migrate 服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: 51f797ad80886669a8734af6898164737d16971a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8350f557efd9224d92388835f55871cb861eda25
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770181"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108748"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支援矩陣
 
-您可以使用 [Azure Migrate 服務](migrate-overview.md)來評估機器，並將其遷移至 Microsoft Azure 雲端。 本文將摘要說明 Azure Migrate 案例和部署的一般支援設定和限制。
+您可以使用 [Azure Migrate 服務](./migrate-services-overview.md)來評估機器，並將其遷移至 Microsoft Azure 雲端。 本文將摘要說明 Azure Migrate 案例和部署的一般支援設定和限制。
 
 ## <a name="supported-assessmentmigration-scenarios"></a>支援的評估/移轉案例
 
@@ -39,8 +40,8 @@ Azure Migrate 伺服器移轉 | NA | 遷移 [VMware VM](tutorial-migrate-vmware.
 [Cloudamize](https://www.cloudamize.com/platform#tab-0)| 評估 VMware VM、Hyper-V VM、實體伺服器、公用雲端工作負載。 | NA
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) \(英文\) | 評估和遷移 VMware VM、Hyper-V VM、實體伺服器、公用雲端工作負載。 |  遷移 VMware VM、Hyper-V VM、實體伺服器、公用雲端工作負載。
 [Device 42](https://go.microsoft.com/fwlink/?linkid=2097158) \(英文\) | 評估 VMware VM、Hyper-V VM、實體伺服器、公用雲端工作負載。| NA
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | 評估 SQL Server 資料庫。 | NA
-[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | 遷移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
+[DMA](/sql/dma/dma-overview?view=sql-server-2017) | 評估 SQL Server 資料庫。 | NA
+[DMS](../dms/dms-overview.md) | NA | 遷移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 評估虛擬桌面基礎結構 (VDI) | NA
 [Movere](https://www.movere.io/) | 評估 VMWare VM、Hyper-V VM、Xen VM、實體機器、工作站 (包括 VDI)、公用雲端工作負載 | NA
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | 遷移 VMWare VM、Hyper-V VM、Xen Vm、KVM VM、實體機器、公用雲端工作負載 
@@ -119,4 +120,3 @@ Azure Migrate 服務有兩個版本：
 
 - [存取 VMware VM](tutorial-assess-vmware.md) 以進行移轉。
 - [存取 Hyper-V VM](tutorial-assess-hyper-v.md) 以進行移轉。
-

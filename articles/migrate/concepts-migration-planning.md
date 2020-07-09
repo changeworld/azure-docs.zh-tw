@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: a7d22a6a2f7100826c865beec0d1cff09fc39660
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043235"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107694"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>使用 Azure Migrate 建立移轉計劃
 
@@ -24,7 +24,7 @@ ms.locfileid: "86043235"
 
 ## <a name="define-the-goals-of-cloud-migration"></a>定義雲端遷移的目標
 
-建立遷移計畫之前，請務必瞭解並評估要移至雲端的[動機](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/motivations)，以協助產生更成功的商務成果。 當[Azure 的雲端採用架構](https://docs.microsoft.com/azure/cloud-adoption-framework)說明時，可能會有不同的觸發程式和遷移方法適用于您的企業：  
+建立遷移計畫之前，請務必瞭解並評估要移至雲端的[動機](/azure/cloud-adoption-framework/strategy/motivations)，以協助產生更成功的商務成果。 當[Azure 的雲端採用架構](/azure/cloud-adoption-framework)說明時，可能會有不同的觸發程式和遷移方法適用于您的企業：  
 
 **重大商業事件** | **遷移結果**
 --- | ---
@@ -147,7 +147,7 @@ ms.locfileid: "86043235"
 
 - 請參閱建議的 Azure 許可權，以及您的伺服器/資料庫存取角色和遷移所需的許可權模型。
 
-- 準備您的組織，並確保員工與數位轉型一致。 穩固的訓練基礎對於成功的組織變更非常重要。 查看 [Microsoft Learn](https://docs.microsoft.com/learn/azure/?ocid=CM_Discovery_Checklist_PDF)提供的免費訓練，包括 Azure 基本概念、解決方案架構和安全性課程。 鼓勵您的團隊同時探索 [Azure 認證](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)   。  
+- 準備您的組織，並確保員工與數位轉型一致。 穩固的訓練基礎對於成功的組織變更非常重要。 查看 [Microsoft Learn](/learn/azure/?ocid=CM_Discovery_Checklist_PDF)提供的免費訓練，包括 Azure 基本概念、解決方案架構和安全性課程。 鼓勵您的團隊同時探索 [Azure 認證](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)   。  
 
 - 如有需要，請取得您的執行支援。 許多組織都選擇可支援其雲端遷移的外部協助。 若要透過個人化協助快速且自信地移至 Azure，請考慮 [Azure 專家管理的服務提供者](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   或 [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF)。  
 
@@ -164,6 +164,6 @@ ms.locfileid: "86043235"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 調查 Azure 雲端採用架構中的 [雲端遷移旅程](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)   。
+- 調查 Azure 雲端採用架構中的 [雲端遷移旅程](/azure/architecture/cloud-adoption/getting-started/migrate)   。
 - [開始](https://youtu.be/wFfq3YPxYHE)使用 Azure Migrate。
 - 建立[VMware vm](tutorial-assess-vmware.md)或[hyper-v vm](tutorial-assess-hyper-v.md)的評量。

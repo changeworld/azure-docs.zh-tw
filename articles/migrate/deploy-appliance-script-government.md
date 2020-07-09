@@ -3,15 +3,16 @@ title: 在 Azure Government 中設定 Azure Migrate 設備
 description: 瞭解如何在 Azure Government 中設定 Azure Migrate 設備
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: c8bcecd7cca78a24d9dbf18e185c9362ed712b43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ebc882646b5ff3f62ddddf91cffc85cb5e0da6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052482"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109972"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>在 Azure Government 中設定設備 
 
-請遵循這篇文章，在 Azure Government 雲端中部署 VMware Vm、Hyper-v Vm 和實體伺服器的[Azure Migrate 設備](deploy-appliance.md)。 您會執行腳本來建立設備，並確認它可以連線到 Azure。 如果您想要在公用雲端中設定設備，請遵循[這篇文章](deploy-appliance-script.md)。
+請遵循這篇文章，在 Azure Government 雲端中部署 VMware Vm、Hyper-v Vm 和實體伺服器的[Azure Migrate 設備](./migrate-appliance-architecture.md)。 您會執行腳本來建立設備，並確認它可以連線到 Azure。 如果您想要在公用雲端中設定設備，請遵循[這篇文章](deploy-appliance-script.md)。
 
 
 > [!NOTE]
@@ -44,7 +45,7 @@ ms.locfileid: "85052482"
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
+    - 範例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
 
 3. 確認最新的設備版本和雜湊值：
 
@@ -96,7 +97,7 @@ ms.locfileid: "85052482"
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
+    - 範例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
 
 3. 確認最新的設備版本和雜湊值：
 
@@ -149,7 +150,7 @@ ms.locfileid: "85052482"
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
+    - 範例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
 
 3. 確認最新的設備版本和雜湊值：
 

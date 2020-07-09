@@ -3,14 +3,13 @@ title: 設定支付帳戶和稅務表單 - Microsoft 商業市集
 Description: 為了接收商業市集供應項目銷售量的收入金額，請瞭解如何設定支付帳戶及填寫必要的稅務表單。
 ms.date: 12/10/2019
 ms.topic: conceptual
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 0256e5c60a417cec47f90cd6ec30fe9208f47f7f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 493043c43cf8dbac94bd33a907c91291fc51bf6c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738280"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109122"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>設定支出帳戶和稅賦形式
 

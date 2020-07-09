@@ -3,15 +3,16 @@ title: 在 Azure Migrate 中新增遷移工具
 description: 瞭解如何在 Azure Migrate 中新增遷移工具。
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6ac8ed64d3f12783cc16f0428874a19d027adf9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195814"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109802"
 ---
 # <a name="add-migration-tools"></a>新增移轉工具
 
-本文說明如何在[Azure Migrate](migrate-overview.md)中新增遷移工具。
+本文說明如何在[Azure Migrate](./migrate-services-overview.md)中新增遷移工具。
 
 - 如果您想要新增遷移工具，但尚未設定 Azure Migrate 專案，請遵循這[篇文章](how-to-add-tool-first-time.md)。
 - 如果您已新增 ISV 工具來進行遷移，請[遵循下列步驟](prepare-isv-movere.md)來準備使用此工具。

@@ -9,14 +9,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 7c7344b7cc9253ef761061b769644a363492d4bd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5929a34ea8fbcbb89f3738ac2a10b14353324b6c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588365"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108898"
 ---
-若要執行*關鍵片語擷取*容器，請執行下列 `docker run` 命令。
+若要執行*關鍵片語擷取*容器，請執行下列 `docker run` 命令。 以您自己的值取代下列預留位置：
+
+| 預留位置 | 值 | 格式或範例 |
+|-------------|-------|---|
+| **{API_KEY}** | 文字分析資源的索引鍵。 您可以在資源的 [**金鑰和端點**] 頁面上，于 [Azure 入口網站上找到它。 |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | 用來存取文字分析 API 的端點。 您可以在資源的 [**金鑰和端點**] 頁面上，于 [Azure 入口網站上找到它。 | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
+
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

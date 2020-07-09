@@ -1,18 +1,16 @@
 ---
 title: 註冊 SaaS 應用程式-Azure Marketplace
 description: 瞭解如何使用 Azure 入口網站來註冊 SaaS 應用程式，並接收 Azure Active Directory 的安全性權杖。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.author: dsindona
-ms.openlocfilehash: 630dceedcac36cf6d37d54612d73fabe676d74f6
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 85bd6f4192f5c1f47856851ab53521a101340007
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963711"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109258"
 ---
 # <a name="register-a-saas-application"></a>註冊 SaaS 應用程式
 

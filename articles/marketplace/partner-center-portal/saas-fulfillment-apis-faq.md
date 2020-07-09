@@ -1,18 +1,16 @@
 ---
 title: SaaS 履行 API 常見問題-Microsoft 商業 marketplace
 description: 深入瞭解 Microsoft 商業 marketplace 的幾項整合需求，以讓 Azure 客戶訂閱 SaaS 供應專案。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ba746710227cba95dc4c73a910c22bb6cdaae0ed
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 97359083698e92f39ca854972c864ef769bda730
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963745"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109241"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>有關 SaaS 履行 Api 的常見問題
 

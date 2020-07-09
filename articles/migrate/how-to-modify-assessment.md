@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: de526da255d0ffb2d4c8f13d87d9b9e230c8bbd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcc6f41d7cc08764266ffb6705d1b8937d355199
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561823"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109717"
 ---
 # <a name="customize-an-assessment"></a>自訂評量
 
@@ -28,7 +28,7 @@ ms.locfileid: "85561823"
 **評量類型** | **詳細資料**
 --- | --- 
 **Azure VM** | 將內部部署伺服器遷移至 Azure 虛擬機器的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[實體伺服器](how-to-set-up-appliance-physical.md)，以遷移至 Azure。（concepts-assessment-calculation.md）
-**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](https://docs.microsoft.com/azure/azure-vmware/introduction)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。[深入瞭解](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](../azure-vmware/introduction.md)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。[深入瞭解](concepts-azure-vmware-solution-assessment-calculation.md)
 
 伺服器評估中的 Azure VM 評估提供兩個調整準則選項：
 
@@ -40,7 +40,7 @@ ms.locfileid: "85561823"
 
 ## <a name="how-is-an-assessment-done"></a>評估如何完成？
 
-在 Azure Migrate Server 評估中完成的評量有三個階段。 評量會從適用性分析開始，然後是調整大小，最後是每月成本估計。 機器必須先通過前一個評量，才可前往下一階段。 舉例而言，如果機器未通過 Azure 適用性檢查，就會標示為不適合 Azure，而不會再去計算大小和成本。 [深入了解。](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation)
+在 Azure Migrate Server 評估中完成的評量有三個階段。 評量會從適用性分析開始，然後是調整大小，最後是每月成本估計。 機器必須先通過前一個評量，才可前往下一階段。 舉例而言，如果機器未通過 Azure 適用性檢查，就會標示為不適合 Azure，而不會再去計算大小和成本。 [深入了解。](./concepts-assessment-calculation.md)
 
 ## <a name="whats-in-an-azure-vm-assessment"></a>Azure VM 評估有哪些？
 
@@ -70,7 +70,7 @@ ms.locfileid: "85561823"
 | **目標位置** | 指定您要遷移到的 AVS 私人雲端位置。<br/><br/> 伺服器評估中的 AVS 評估目前支援下列目的地區域：美國東部、西歐、美國西部。 |
 | **儲存類型** | 指定要用於 AVS 的儲存引擎。<br/><br/> 請注意，AVS 評量僅支援 vSAN 做為預設儲存體類型。 |
 **保留實例（RIs）** | 此屬性可協助您指定 AVS 中的保留實例。 目前不支援 AVS 節點的 RIs。 |
-**節點類型** | 指定用來對應內部部署 Vm 的[AVS 節點類型](https://docs.microsoft.com/azure/azure-vmware/concepts-private-clouds-clusters)。 請注意，預設節點類型為 AV36。 <br/><br/> Azure Migrate 會建議將 Vm 遷移至 AVS 所需的節點數目。 |
+**節點類型** | 指定用來對應內部部署 Vm 的[AVS 節點類型](../azure-vmware/concepts-private-clouds-clusters.md)。 請注意，預設節點類型為 AV36。 <br/><br/> Azure Migrate 會建議將 Vm 遷移至 AVS 所需的節點數目。 |
 **FTT 設定，RAID 層級** | 指定可容忍和 Raid 組合的適當失敗。 選取的 FTT 選項結合了內部部署 VM 磁片需求，將會決定 AVS 所需的 vSAN 儲存空間總計。 |
 **調整大小準則** | 設定要用來針對 AVS_適當調整 vm 大小_的準則。 您可以選擇以_效能為基礎_的調整大小，或_在內部部署環境中_，而不考慮效能歷程記錄。 |
 **效能歷程記錄** | 設定評估電腦效能資料時所要考慮的持續時間。 只有在調整大小準則是以效能為_基礎_時，此屬性才適用。 |

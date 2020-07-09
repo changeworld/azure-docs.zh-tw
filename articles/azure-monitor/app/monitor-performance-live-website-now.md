@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 監視即時 ASP.NET Web 應用程式 |
 description: 監視網站的效能而不重新部署網站。 使用裝載於內部部署或 VM 中的 ASP.NET Web 應用程式。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 2892cb40f0b00b468ef0b8a4ffe60c1158ad068a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30700deaa0121fbe473580d868a79d75a899a1d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807259"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107473"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在執行時間使用 Application Insights 無程式碼 Attach 檢測 web 應用程式
 
@@ -39,10 +39,10 @@ ms.locfileid: "85807259"
 
 |  | 建置階段 | 執行階段 |
 | --- | --- | --- |
-| 要求和例外狀況 |Yes |是 |
-| [更詳細的例外狀況](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
+| 要求和例外狀況 |是 |是 |
+| [更詳細的例外狀況](../../azure-monitor/app/asp-net-exceptions.md) | |是 |
 | [相依性診斷](../../azure-monitor/app/asp-net-dependencies.md) |在 .Net 4.6 + 上，但較少細節 |是，完整詳細資料︰結果碼、SQL 命令文字、HTTP 指令動詞|
-| [系統效能計數器](../../azure-monitor/app/performance-counters.md) |Yes |是 |
+| [系統效能計數器](../../azure-monitor/app/performance-counters.md) |是 |是 |
 | [自訂遙測的 API][api] |是 |否 |
 | [追蹤記錄檔整合](../../azure-monitor/app/asp-net-trace-logs.md) |是 |否 |
 | [頁面檢視和使用者資料](../../azure-monitor/app/javascript.md) |是 |否 |
@@ -98,7 +98,8 @@ ms.locfileid: "85807259"
   ```
 
 - 如果您需要確認已成功附加 Application Insights，您可以在命令視窗中執行[Sysinternals 控制碼](https://docs.microsoft.com/sysinternals/downloads/handle)，以確認 IIS 已載入 applicationinsights.dll。
-  ```cmd
+
+  ```console
   handle.exe /p w3wp.exe
   ```
 
@@ -109,7 +110,7 @@ ms.locfileid: "85807259"
 
 ### <a name="unable-to-login"></a>無法登入
 
-* 如果無法登入狀態監視器，請改用命令列進行安裝。 狀態監視器嘗試登入以收集您的 ikey，但您可以使用下列命令以手動方式提供：
+如果無法登入狀態監視器，請改用命令列進行安裝。 狀態監視器嘗試登入以收集您的 ikey，但您可以使用下列命令以手動方式提供：
 
 ```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
@@ -192,7 +193,9 @@ IIS 支援：IIS 7、7.5、8、8.5 (需要有 IIS)
 
 先匯入 Application Insights 模組︰
 
-`Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'`
+```powershell
+Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
+```
 
 找出受監視的應用程式︰
 
@@ -221,12 +224,14 @@ IIS 支援：IIS 7、7.5、8、8.5 (需要有 IIS)
     若要下載最新版本，請使用 Update-ApplicationInsightsVersion。
 * 成功時會傳回 `ApplicationInsightsApplication` 。 如果失敗，則會在 stderr 記錄追蹤。
 
-          Name                      : Default Web Site/WebApp1
-          InstrumentationKey        : 00000000-0000-0000-0000-000000000000
-          ProfilerState             : ApplicationInsights
-          SdkState                  : EnabledAfterDeployment
-          SdkVersion                : 1.2.1
-          LatestAvailableSdkVersion : 1.2.3
+   ```output
+   Name                      : Default Web Site/WebApp1
+   InstrumentationKey        : 00000000-0000-0000-0000-000000000000
+   ProfilerState             : ApplicationInsights
+   SdkState                  : EnabledAfterDeployment
+   SdkVersion                : 1.2.1
+   LatestAvailableSdkVersion : 1.2.3
+   ```
 
 `Stop-ApplicationInsightsMonitoring [-Name appName | -All]`
 

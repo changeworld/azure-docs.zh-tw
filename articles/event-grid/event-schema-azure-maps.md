@@ -1,17 +1,14 @@
 ---
 title: 做為事件方格來源 Azure 地圖服務
 description: 描述使用 Azure 事件方格提供給 Azure 地圖服務事件的屬性和結構描述
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: femila
-ms.openlocfilehash: f015bf682d7ce3475aba5baa73ab72b1426691fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 8aa29d003483536ef33a32616af1553e1bbe8204
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560680"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106683"
 ---
 # <a name="azure-maps-as-an-event-grid-source"></a>做為事件方格來源 Azure 地圖服務
 
@@ -103,7 +100,7 @@ Azure 地圖服務帳戶會發出下列事件類型：
 
 事件具有下列的最高層級資料：
 
-| 屬性 | 類型 | Description |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
 | subject | 字串 | 發行者定義事件主體的路徑。 |

@@ -6,17 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c354c1c9dfacfcb6bf84f1140b58deca60c1874e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74196354"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109836"
 ---
 # <a name="scale-migration-of-vms"></a>Vm 的規模遷移 
 
 本文可協助您瞭解如何使用腳本來遷移大量的虛擬機器（Vm）。 若要調整遷移，請使用[Azure Site Recovery](../site-recovery/site-recovery-overview.md)。 
 
-您可以在 GitHub 上的[Azure PowerShell 範例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery)存放庫下載 Site Recovery 腳本。 這些腳本可以用來將 VMware、AWS、GCP Vm 和實體伺服器遷移至 Azure 中的受控磁片。 如果您以實體伺服器的形式來遷移 VM，您也可以使用這些程式碼來遷移 Hyper-V VM。 利用 Azure Site Recovery PowerShell 的腳本記載于[此處](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)。
+您可以在 GitHub 上的[Azure PowerShell 範例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery)存放庫下載 Site Recovery 腳本。 這些腳本可以用來將 VMware、AWS、GCP Vm 和實體伺服器遷移至 Azure 中的受控磁片。 如果您以實體伺服器的形式來遷移 VM，您也可以使用這些程式碼來遷移 Hyper-V VM。 利用 Azure Site Recovery PowerShell 的腳本記載于[此處](../site-recovery/vmware-azure-disaster-recovery-powershell.md)。
 
 ## <a name="current-limitations"></a>目前的限制
 - 支援指定靜態 IP 位址僅適用於目標 VM 的主要 NIC
@@ -68,4 +69,4 @@ CSV 準備就緒之後，您可以執行下列步驟來執行內部部署 VM 的
 
 ## <a name="next-steps"></a>後續步驟
 
-[深入了解](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure)使用 Azure Site Recovery 將伺服器遷移至 Azure
+[深入了解](../site-recovery/migrate-tutorial-on-premises-azure.md)使用 Azure Site Recovery 將伺服器遷移至 Azure

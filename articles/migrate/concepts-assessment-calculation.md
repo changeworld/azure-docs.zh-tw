@@ -3,12 +3,12 @@ title: Azure Migrate Server 評估中的 Azure VM 評量
 description: 瞭解 Azure Migrate Server 評估的評量
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 33051fbcfb792d3fa9734a818d293775486de647
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52cdd6bb9cb062b5c36e10c67524fa4d266ca6e0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549960"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107996"
 ---
 # <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure Migrate 中的 Azure VM 評量：伺服器評定
 
@@ -28,7 +28,7 @@ ms.locfileid: "85549960"
 **評量類型** | **詳細資料**
 --- | --- 
 **Azure VM** | 將內部部署伺服器遷移至 Azure 虛擬機器的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[實體伺服器](how-to-set-up-appliance-physical.md)，以遷移至 Azure。
-**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](https://docs.microsoft.com/azure/azure-vmware/introduction)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。[深入瞭解](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](../azure-vmware/introduction.md)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。[深入瞭解](concepts-azure-vmware-solution-assessment-calculation.md)
 
 使用伺服器評估所建立的評量是資料的時間點快照集。 伺服器評估中的 Azure VM 評估提供兩個調整準則選項：
 
@@ -152,7 +152,7 @@ ms.locfileid: "85549960"
 --- | --- | ---
 **開機類型** | Azure 支援開機類型為 BIOS 而不是 UEFI 的 Vm。 | 有條件地準備開機類型為 UEFI
 **核心** | 每部電腦都必須有128個以上的核心，也就是 Azure VM 支援的最大數目。<br/><br/> 如果有提供效能記錄，則 Azure Migrate 會將已使用的核心納入考量，進行比較。 如果評估設定指定緩和因數，則已使用的核心數目會乘以緩和因數。<br/><br/> 如果沒有效能歷程記錄，Azure Migrate 會使用已配置的核心，而不套用緩和因數。 | 如果核心數目在限制內，則為就緒
-**RAM** | 每部電腦都必須有 3892 GB 的 RAM，這是 Azure M 系列 Standard_M128m &nbsp; <sup>2</sup> VM 支援的大小上限。 [深入了解](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> 如果有可用的效能歷程記錄，Azure Migrate 會考慮使用的 RAM 進行比較。 如果指定了緩和因數，則會將使用的 RAM 乘以緩和因數。<br/><br/> 如果沒有歷程記錄，則會使用所配置的 RAM，而不會有緩和因素的應用。<br/><br/> | 如果 RAM 容量在限制內，則為就緒
+**RAM** | 每部電腦都必須有 3892 GB 的 RAM，這是 Azure M 系列 Standard_M128m &nbsp; <sup>2</sup> VM 支援的大小上限。 [深入了解](../virtual-machines/windows/sizes.md)。<br/><br/> 如果有可用的效能歷程記錄，Azure Migrate 會考慮使用的 RAM 進行比較。 如果指定了緩和因數，則會將使用的 RAM 乘以緩和因數。<br/><br/> 如果沒有歷程記錄，則會使用所配置的 RAM，而不會有緩和因素的應用。<br/><br/> | 如果 RAM 容量在限制內，則為就緒
 **存放磁碟** | 配置的磁片大小不得超過 32 TB。 雖然 Azure 支援具有 Azure Ultra SSD 磁片的 64-TB 磁片，Azure Migrate：伺服器評量目前會檢查 32 TB 是否為磁片大小限制，因為它尚不支援 Ultra SSD。 <br/><br/> 連接至機器的磁片數目（包括 OS 磁片）必須是65或更少。 | 如果磁片大小和數目在限制內，則為就緒
 **網路功能** | 電腦上必須連接的網路介面（Nic）不超過32。 | 如果 Nic 數目在限制內，則為就緒
 
@@ -161,7 +161,7 @@ ms.locfileid: "85549960"
 針對 Azure VM 評估以及查看 VM 內容，伺服器評估會查看機器的客體作業系統，以判斷它是否可以在 Azure 上執行。
 
 > [!NOTE]
-> 為了處理 VMware Vm 的來賓分析，伺服器評估會在 vCenter Server 中使用為 VM 指定的作業系統。 不過，vCenter Server 不會提供 Linux VM 作業系統的核心版本。 若要探索版本，您必須設定[應用程式探索](https://docs.microsoft.com/azure/migrate/how-to-discover-applications)。 然後，設備會使用您在設定應用程式探索時所指定的來賓認證來探索版本資訊。
+> 為了處理 VMware Vm 的來賓分析，伺服器評估會在 vCenter Server 中使用為 VM 指定的作業系統。 不過，vCenter Server 不會提供 Linux VM 作業系統的核心版本。 若要探索版本，您必須設定[應用程式探索](./how-to-discover-applications.md)。 然後，設備會使用您在設定應用程式探索時所指定的來賓認證來探索版本資訊。
 
 
 伺服器評估會使用下列邏輯來識別以作業系統為基礎的 Azure 就緒程度：
@@ -175,8 +175,8 @@ Windows Server 2008 R2，含所有 SP | Azure 提供完整支援。| 已準備�
 Windows Server 2008 (32 位元和 64 位元) | Azure 提供完整支援。 | 已準備好可供 Azure。
 Windows Server 2003 和 Windows Server 2003 R2 | 這些作業系統已通過支援的結束日期，而且需要[自訂支援合約（CSA）](https://aka.ms/WSosstatement)以在 Azure 中支援。 | 有條件地準備好 Azure。 在遷移至 Azure 之前，請考慮升級 OS。
 Windows 2000、Windows 98、Windows 95、Windows NT、Windows 3.1 和 MS-DOS | 這些作業系統已通過其結束支援日期。 電腦可能會在 Azure 中啟動，但 Azure 不會提供作業系統支援。 | 有條件地準備好 Azure。 我們建議您先升級 OS，再遷移至 Azure。
-Windows 7、Windows 8 和 Windows 10 | Azure[僅提供 Visual Studio 訂](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)用帳戶的支援。 | 有條件地準備好 Azure。
-Windows 10 Pro | Azure 對[多租用戶主機權限](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)提供支援。 | 有條件地準備好 Azure。
+Windows 7、Windows 8 和 Windows 10 | Azure[僅提供 Visual Studio 訂](../virtual-machines/windows/client-images.md)用帳戶的支援。 | 有條件地準備好 Azure。
+Windows 10 Pro | Azure 對[多租用戶主機權限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)提供支援。 | 有條件地準備好 Azure。
 Windows Vista 和 Windows XP Professional | 這些作業系統已通過其結束支援日期。 電腦可能會在 Azure 中啟動，但 Azure 不會提供作業系統支援。 | 有條件地準備好 Azure。 我們建議您先升級 OS，再遷移至 Azure。
 Linux | 請參閱 Azure 背書的[Linux 作業系統](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 作業系統可能會在 Azure 中啟動。 但我們建議您在遷移至 Azure 之前，先將作業系統升級為背書版本。 | 如果版本受到認同，則可供 Azure 使用。<br/><br/>有條件地備妥版本未背書。
 其他作業系統，例如 Oracle Solaris、Apple macOS 和 FreeBSD | Azure 並未認可這些作業系統。 電腦可能會在 Azure 中啟動，但 Azure 不會提供作業系統支援。 | 有條件地準備好 Azure。 我們建議您在遷移至 Azure 之前，先安裝支援的作業系統。  
@@ -282,7 +282,7 @@ Azure Migrate 中每個以效能為基礎的 Azure VM 評量與信賴評等相�
     - 軟體保證
     - 保留執行個體
     - VM 運作時間
-    - 位置
+    - Location
     - 貨幣設定
 
     伺服器評估會匯總所有機器的成本，以計算每月總計算成本。

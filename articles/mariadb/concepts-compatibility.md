@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a0cee198f028fd90e04dac15e98d7cd33aee9201
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79c91fff837e3869eda0f45ce892e63b6611a1d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532343"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107201"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>與適用於 MariaDB 的 Azure 資料庫相容的適用于 mariadb 驅動程式與管理工具
 
@@ -37,7 +37,7 @@ Java | https://downloads.mariadb.org/connector-java/ | 2.1、2.0、1.6 | 1.5.5 �
 
 相容性的優點也會延伸到資料庫管理工具。 只要資料庫操作在使用者權限的範圍內運作，您現有的工具就應該繼續使用適用於 MariaDB 的 Azure 資料庫。 下表列出已經過測試且發現與適用於 MariaDB 的 Azure 資料庫10.2 相容的三種常見資料庫管理工具：
 
-| | **MySQL Workbench 6.x 與更新版本** | **Navicat 12** | **PHPMyAdmin 4.x 與更新版本**
+| 動作 | **MySQL Workbench 6.x 與更新版本** | **Navicat 12** | **PHPMyAdmin 4.x 與更新版本**
 ---|---|---|---
 建立、更新、讀取、寫入、刪除 | X | X | X
 SSL 連線 | X | X | X

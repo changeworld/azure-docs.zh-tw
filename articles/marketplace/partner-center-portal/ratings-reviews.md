@@ -1,17 +1,16 @@
 ---
 title: 合作夥伴中心內的評等 & 審查分析儀表板
 description: 瞭解如何在 Microsoft AppSource 和 Azure Marketplace 上，針對您的供應專案存取客戶意見反應的匯總視圖。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a7ed477ea095defa27878e8f4a84162043829273
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 142e03ab8ae66e210bf572a7c640e19d17c38901
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792916"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109224"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>合作夥伴中心內的評等 & 審查分析儀表板
 

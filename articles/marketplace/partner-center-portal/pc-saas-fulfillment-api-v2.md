@@ -1,18 +1,16 @@
 ---
 title: Microsoft 商業 marketplace 中的 SaaS 履行 Api v2
 description: 瞭解如何使用履行 Api 第2版來建立和管理 Microsoft AppSource 和 Azure Marketplace 上的 SaaS 供應專案。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 06/10/2020
-ms.author: dsindona
-ms.openlocfilehash: 1a833f86a0d8de3f5b8c83e899a58fa83f3153c4
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f501e84e988d340ba710e49d30caddbe56006c8a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963762"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109411"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 中的 SaaS 履行 Api 第2版
 
@@ -151,7 +149,7 @@ Microsoft 會在自動取消訂用帳戶之前，為客戶提供30天的寬限�
 
 SaaS 訂用帳戶可以在其生命週期中的任何時間點取消。 一旦取消，就無法重新開機訂用帳戶。
 
-## <a name="api-reference"></a>API 參考資料
+## <a name="api-reference"></a>應用程式開發介面參考
 
 本節記載 SaaS 訂用帳戶和作業 Api。
 

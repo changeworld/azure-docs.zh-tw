@@ -3,11 +3,12 @@ title: Azure Application Insights 資料模型 | Microsoft Docs
 description: 描述從 JSON 中的連續匯出匯出的屬性，並做為篩選器。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 9891bea1d52c61197fa32fa5c0764df5450b563c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1577e56960edcb1941c5d7b73ef44c514706d4e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536840"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110244"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 匯出資料模型
 此表列出從 [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDK 傳送至入口網站的遙測屬性。
@@ -20,86 +21,88 @@ ms.locfileid: "81536840"
 * 持續時間的長度單位是微秒，因此 10000000 == 1 秒。
 * 日期和時間是 UTC，並以 ISO 格式 `yyyy-MM-DDThh:mm:ss.sssZ`
 
-
 ## <a name="example"></a>範例
-    // A server report about an HTTP request
+
+```json
+// A server report about an HTTP request
+{
+  "request": [
     {
-    "request": [
-      {
-        "urlData": { // derived from 'url'
-          "host": "contoso.org",
-          "base": "/",
-          "hashTag": ""
-        },
-        "responseCode": 200, // Sent to client
-        "success": true, // Default == responseCode<400
-        // Request id becomes the operation id of child events
-        "id": "fCOhCdCnZ9I=",  
-        "name": "GET Home/Index",
-        "count": 1, // 100% / sampling rate
-        "durationMetric": {
-          "value": 1046804.0, // 10000000 == 1 second
-          // Currently the following fields are redundant:
-          "count": 1.0,
-          "min": 1046804.0,
-          "max": 1046804.0,
-          "stdDev": 0.0,
-          "sampledValue": 1046804.0
-        },
-        "url": "/"
-      }
-    ],
-    "internal": {
-      "data": {
-        "id": "7f156650-ef4c-11e5-8453-3f984b167d05",
-        "documentVersion": "1.61"
-      }
+      "urlData": { // derived from 'url'
+        "host": "contoso.org",
+        "base": "/",
+        "hashTag": ""
+      },
+      "responseCode": 200, // Sent to client
+      "success": true, // Default == responseCode<400
+      // Request id becomes the operation id of child events
+      "id": "fCOhCdCnZ9I=",  
+      "name": "GET Home/Index",
+      "count": 1, // 100% / sampling rate
+      "durationMetric": {
+        "value": 1046804.0, // 10000000 == 1 second
+        // Currently the following fields are redundant:
+        "count": 1.0,
+        "min": 1046804.0,
+        "max": 1046804.0,
+        "stdDev": 0.0,
+        "sampledValue": 1046804.0
+      },
+      "url": "/"
+    }
+  ],
+  "internal": {
+    "data": {
+      "id": "7f156650-ef4c-11e5-8453-3f984b167d05",
+      "documentVersion": "1.61"
+    }
+  },
+  "context": {
+    "device": { // client browser
+      "type": "PC",
+      "screenResolution": { },
+      "roleInstance": "WFWEB14B.fabrikam.net"
     },
-    "context": {
-      "device": { // client browser
-        "type": "PC",
-        "screenResolution": { },
-        "roleInstance": "WFWEB14B.fabrikam.net"
-      },
-      "application": { },
-      "location": { // derived from client ip
-        "continent": "North America",
-        "country": "United States",
-        // last octagon is anonymized to 0 at portal:
-        "clientip": "168.62.177.0",
-        "province": "",
-        "city": ""
-      },
-      "data": {
-        "isSynthetic": true, // we identified source as a bot
-        // percentage of generated data sent to portal:
-        "samplingRate": 100.0,
-        "eventTime": "2016-03-21T10:05:45.7334717Z" // UTC
-      },
-      "user": {
-        "isAuthenticated": false,
-        "anonId": "us-tx-sn1-azr", // bot agent id
-        "anonAcquisitionDate": "0001-01-01T00:00:00Z",
-        "authAcquisitionDate": "0001-01-01T00:00:00Z",
-        "accountAcquisitionDate": "0001-01-01T00:00:00Z"
-      },
-      "operation": {
-        "id": "fCOhCdCnZ9I=",
-        "parentId": "fCOhCdCnZ9I=",
-        "name": "GET Home/Index"
-      },
-      "cloud": { },
-      "serverDevice": { },
-      "custom": { // set by custom fields of track calls
-        "dimensions": [ ],
-        "metrics": [ ]
-      },
-      "session": {
-        "id": "65504c10-44a6-489e-b9dc-94184eb00d86",
-        "isFirst": true
-      }
+    "application": { },
+    "location": { // derived from client ip
+      "continent": "North America",
+      "country": "United States",
+      // last octagon is anonymized to 0 at portal:
+      "clientip": "168.62.177.0",
+      "province": "",
+      "city": ""
+    },
+    "data": {
+      "isSynthetic": true, // we identified source as a bot
+      // percentage of generated data sent to portal:
+      "samplingRate": 100.0,
+      "eventTime": "2016-03-21T10:05:45.7334717Z" // UTC
+    },
+    "user": {
+      "isAuthenticated": false,
+      "anonId": "us-tx-sn1-azr", // bot agent id
+      "anonAcquisitionDate": "0001-01-01T00:00:00Z",
+      "authAcquisitionDate": "0001-01-01T00:00:00Z",
+      "accountAcquisitionDate": "0001-01-01T00:00:00Z"
+    },
+    "operation": {
+      "id": "fCOhCdCnZ9I=",
+      "parentId": "fCOhCdCnZ9I=",
+      "name": "GET Home/Index"
+    },
+    "cloud": { },
+    "serverDevice": { },
+    "custom": { // set by custom fields of track calls
+      "dimensions": [ ],
+      "metrics": [ ]
+    },
+    "session": {
+      "id": "65504c10-44a6-489e-b9dc-94184eb00d86",
+      "isFirst": true
     }
   }
+}
+```
 
 ## <a name="context"></a>Context
 所有類型的遙測都會伴隨內容區段。 並非所有的欄位都會連同每個資料點傳輸。
@@ -293,48 +296,54 @@ ms.locfileid: "81536840"
 
 例如：
 
-    {
-     "metric": [ ],
-     "context": {
-     ...
-     "custom": {
-        "dimensions": [
-          { "ProcessId": "4068" }
-        ],
-        "metrics": [
-          {
-            "dispatchRate": {
-              "value": 0.001295,
-              "count": 1.0,
-              "min": 0.001295,
-              "max": 0.001295,
-              "stdDev": 0.0,
-              "sampledValue": 0.001295,
-              "sum": 0.001295
-            }
+```json
+{
+  "metric": [ ],
+  "context": {
+  ...
+    "custom": {
+      "dimensions": [
+        { "ProcessId": "4068" }
+      ],
+      "metrics": [
+        {
+          "dispatchRate": {
+            "value": 0.001295,
+            "count": 1.0,
+            "min": 0.001295,
+            "max": 0.001295,
+            "stdDev": 0.0,
+            "sampledValue": 0.001295,
+            "sum": 0.001295
           }
-         } ] }
+        }
+      ]  
     }
+  }
+}
+```
 
 ## <a name="about-metric-values"></a>關於度量值
 在度量報告和其他位置中的度量值，會利用標準物件結構回報。 例如：
 
-      "durationMetric": {
-        "name": "contoso.org",
-        "type": "Aggregation",
-        "value": 468.71603053650279,
-        "count": 1.0,
-        "min": 468.71603053650279,
-        "max": 468.71603053650279,
-        "stdDev": 0.0,
-        "sampledValue": 468.71603053650279
-      }
+```json
+"durationMetric": {
+  "name": "contoso.org",
+  "type": "Aggregation",
+  "value": 468.71603053650279,
+  "count": 1.0,
+  "min": 468.71603053650279,
+  "max": 468.71603053650279,
+  "stdDev": 0.0,
+  "sampledValue": 468.71603053650279
+}
+```
 
 目前 - 不過未來可能會變更 - 在所有從標準 SDK 模組回報的值中，`count==1` 以及只有 `name` 和 `value` 欄位是有用的。 它們會有差異的唯一案例是，如果您撰寫自己的 TrackMetric 呼叫，而且您在其中設定其他參數。
 
 其他欄位的目的是允許度量在 SDK 中彙總，以減少入口網站的流量。 例如，您可以在傳送每個度量報告之前平均數個連續的讀數。 然後您會計算 min、max、標準差和彙總值 (sum 或 average)，並將計數設為報告所代表的讀數數目。
 
-在上述資料表中，我們省略了很少使用的欄位計數、min、max、stdDev 和 sampledValue。
+在上述表格中，我們省略了很少使用的欄位 count、min、max、stdDev 和 sampledValue。
 
 除了使用預先彙總的度量，如果您需要減少遙測量，您可以改為使用 [取樣](../../azure-monitor/app/sampling.md) 。
 

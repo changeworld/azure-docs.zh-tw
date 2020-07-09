@@ -3,11 +3,12 @@ title: 在 Azure Migrate Server 評估中設定以代理程式為基礎的相依
 description: 本文說明如何在 Azure Migrate Server 評估中設定以代理程式為基礎的相依性分析。
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 1271a45843a3775d4e1444321faad194edad2f23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a656ec734ff098dd5835f653010c7f298c13b38
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770572"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109989"
 ---
 # <a name="set-up-dependency-visualization"></a>設定相依性視覺效果
 
@@ -56,7 +57,7 @@ ms.locfileid: "84770572"
 在您要分析的每部電腦上安裝代理程式。
 
 > [!NOTE]
-> 針對 System Center Operations Manager 2012 R2 或更新版本監視的機器，您不需要安裝 MMA 代理程式。 服務對應與 Operations Manager 整合。 [遵循](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)整合指引。
+> 針對 System Center Operations Manager 2012 R2 或更新版本監視的機器，您不需要安裝 MMA 代理程式。 服務對應與 Operations Manager 整合。 [遵循](../azure-monitor/insights/service-map-scom.md#prerequisites)整合指引。
 
 1. 在 [ **Azure Migrate：伺服器評定**] 中，按一下 [探索到的**伺服器**]。
 2. 針對您想要使用相依性視覺效果分析的每部機器，按一下 [相依性] 欄中的 [**需要代理程式安裝** **]** 。
@@ -83,7 +84,7 @@ ms.locfileid: "84770572"
 您可以從命令列或使用自動化方法（例如 Configuration Manager 或[Intigua](https://www.intigua.com/intigua-for-azure-migration)）來安裝代理程式。
 - [了解更多](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)有關如何使用這些方法來安裝 MMA 代理程式。
 - MMA 代理程式也可以使用此[指令碼](https://go.microsoft.com/fwlink/?linkid=2104394)來安裝。
-- [深入瞭解](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems)MMA 所支援的 Windows 作業系統。
+- [深入瞭解](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)MMA 所支援的 Windows 作業系統。
 
 ### <a name="install-mma-on-a-linux-machine"></a>在 Linux 電腦上安裝 MMA
 
@@ -94,7 +95,7 @@ ms.locfileid: "84770572"
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[了解更多](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-linux-operating-systems) MMA 支援的 Linux 作業系統清單。 
+[了解更多](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) MMA 支援的 Linux 作業系統清單。 
 
 ## <a name="install-the-dependency-agent"></a>安裝相依性代理程式
 
@@ -103,8 +104,8 @@ ms.locfileid: "84770572"
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- [深入了解](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-hybrid-cloud#installation-script-examples)如何使用指令碼安裝 Dependency 代理程式。
-- [深入瞭解](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#supported-operating-systems)Dependency agent 所支援的作業系統。
+- [深入了解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)如何使用指令碼安裝 Dependency 代理程式。
+- [深入瞭解](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)Dependency agent 所支援的作業系統。
 
 
 ## <a name="create-a-group-using-dependency-visualization"></a>使用相依性視覺效果建立群組
@@ -161,8 +162,8 @@ ms.locfileid: "84770572"
 以下是一些您可以用來解壓縮相依性資料的範例查詢。
 
 - 您可以修改查詢以擷取慣用的資料點。
-- [查看](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)相依性資料記錄的完整清單。
-- [查看](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)其他範例查詢。
+- [查看](../azure-monitor/insights/service-map.md#log-analytics-records)相依性資料記錄的完整清單。
+- [查看](../azure-monitor/insights/service-map.md#sample-log-searches)其他範例查詢。
 
 #### <a name="sample-review-inbound-connections"></a>範例：審查輸入連接
 
@@ -170,7 +171,7 @@ ms.locfileid: "84770572"
 
 - 連接計量（VMConnection）資料表中的記錄不代表個別的實體網路連線。
 - 將多個實體網路連線分組為一個邏輯連線。
-- [深入瞭解](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections)如何在 VMConnection 中匯總實體網路連接資料。
+- [深入瞭解](../azure-monitor/insights/service-map.md#connections)如何在 VMConnection 中匯總實體網路連接資料。
 
 ```
 // the machines of interest

@@ -3,11 +3,12 @@ title: 我如何在 Azure Application Insights 中... | Microsoft Docs
 description: Application Insights 中的常見問題集。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701952"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110227"
 ---
 # <a name="how-do-i--in-application-insights"></a>我如何在 Application Insights 中...？
 ## <a name="get-an-email-when-"></a>... 時收到電子郵件
@@ -32,17 +33,23 @@ ms.locfileid: "83701952"
 
 您可以針對 [自訂計量](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)設定警示，而不是自訂事件。 撰寫一些程式碼以在事件發生時增加計量：
 
-    telemetry.TrackMetric("Alarm", 10);
+```csharp
+telemetry.TrackMetric("Alarm", 10);
+```
 
 或者：
 
-    var measurements = new Dictionary<string,double>();
-    measurements ["Alarm"] = 10;
-    telemetry.TrackEvent("status", null, measurements);
+```csharp
+var measurements = new Dictionary<string,double>();
+measurements ["Alarm"] = 10;
+telemetry.TrackEvent("status", null, measurements);
+```
 
 因為警示有兩個狀態，所以當您考慮讓警示結束時必須傳送較低的值：
 
-    telemetry.TrackMetric("Alarm", 0.5);
+```csharp
+telemetry.TrackMetric("Alarm", 0.5);
+```
 
 在 [計量總管](../../azure-monitor/platform/metrics-charts.md) 中建立圖表來查看您的警示：
 
@@ -130,9 +137,9 @@ Or
 ### <a name="aspnet-classic-applications"></a>ASP.NET 傳統應用程式
 
 ```csharp
-    using  Microsoft.ApplicationInsights.Extensibility;
+using  Microsoft.ApplicationInsights.Extensibility;
 
-    TelemetryConfiguration.Active.DisableTelemetry = true;
+TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
 ### <a name="other-applications"></a>其他應用程式

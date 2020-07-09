@@ -9,20 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: efe76323b4159af01f1eaf470d9c1833edd0a186
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 8d08a0ab8f817d70343686f907ac444af392ea06
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702143"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108902"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安裝並執行文字分析容器
 
 > [!NOTE]
 > * 適用于情感分析 v3 的容器現已正式運作。 關鍵字組的解壓縮和語言偵測容器是以 ungated 公開預覽的形式提供。
 > * 實體連結和 NER 目前無法當做容器使用。
+> * 目前，您不需要支付健康情況容器使用量的文字分析費用。
 
 容器可讓您在自己的環境中執行文字分析 Api，而且非常適合您的特定安全性和資料控管需求。 文字分析容器提供原始文字的先進自然語言處理，並包含三個主要功能：情感分析、關鍵字組解壓縮和語言偵測。 
 
@@ -31,7 +32,7 @@ ms.locfileid: "83702143"
 > [!IMPORTANT]
 > 免費帳戶限制為每月5000筆交易，只有**免費**和**標準**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定價層 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>適用于容器。 如需交易要求率的詳細資訊，請參閱[資料限制](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要執行任何文字分析的容器，您必須擁有主機電腦和容器環境。
 
@@ -59,6 +60,8 @@ ms.locfileid: "83702143"
 |---|---------|-------------|--|--|
 | **語言偵測，關鍵字組解壓縮**   | 1核心，2 GB 記憶體 | 1核心，4 GB 記憶體 |15 | 30|
 | **情感分析 v3**   | 1核心，2 GB 記憶體 | 4核心，8GB 記憶體 |15 | 30|
+| **健全狀況-1 檔/要求的文字分析**   |  4核心，10GB 記憶體 | 6核心，12GB 記憶體 |15 | 30|
+| **適用于健康情況10檔/要求的文字分析**   |  6核心，16 GB 記憶體 | 8核心，20 gb 記憶體 |15 | 30|
 
 CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，做為命令的一部分使用 `docker run` 。
 
@@ -80,6 +83,10 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，做為命令
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
+# <a name="text-analytics-for-health-preview"></a>[健全狀況的文字分析（預覽）](#tab/healthcare)
+
+[!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
+
 ***
 
 ## <a name="how-to-use-the-container"></a>如何使用容器
@@ -92,13 +99,6 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，做為命令
 ## <a name="run-the-container-with-docker-run"></a>透過 `docker run` 執行容器
 
 使用[docker run](https://docs.docker.com/engine/reference/commandline/run/)命令來執行容器。 容器會繼續執行，直到您將它停止為止。
-
-以您自己的值取代下列預留位置：
-
-| 預留位置 | 值 | 格式或範例 |
-|-------------|-------|---|
-| **{API_KEY}** | 文字分析資源的索引鍵。 您可以在資源的 [**金鑰和端點**] 頁面上，于 [Azure 入口網站上找到它。 |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-| **{ENDPOINT_URI}** | 用來存取文字分析 API 的端點。 您可以在資源的 [**金鑰和端點**] 頁面上，于 [Azure 入口網站上找到它。 | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 
 > [!IMPORTANT]
 > * 以下幾節的 Docker 命令會使用反斜線 `\` 作為行接續字元。 請根據您主機作業系統的需求加以替換或移除。 
@@ -116,6 +116,10 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，做為命令
 # <a name="language-detection-preview"></a>[語言偵測（預覽）](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
+
+# <a name="text-analytics-for-health-preview"></a>[健全狀況的文字分析（預覽）](#tab/healthcare)
+
+[!INCLUDE [docker-run-health-container](../includes/docker-run-health-container.md)]
 
 ***
 
@@ -153,7 +157,7 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，做為命令
 
 [!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 在本文中，您已了解下載、安裝及執行文字分析容器的概念和工作流程。 摘要說明：
 
@@ -161,8 +165,8 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，做為命令
    * *情感分析*
    * *關鍵片語擷取（預覽）* 
    * *語言偵測（預覽）*
-   
-* 容器映像可從 Azure 中的 Microsoft Container Registry (MCR) 下載取得。
+   * *健全狀況的文字分析（預覽）*
+* 容器映射會從 Microsoft Container Registry （MCR）或預覽容器存放庫下載。
 * 容器映像是在 Docker 中執行。
 * 您可以指定容器的主機 URI，來使用 REST API 或 SDK 呼叫文字分析容器中的作業。
 * 將容器具現化時，您必須指定帳單資訊。

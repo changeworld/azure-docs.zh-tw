@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 9dd6dba9b517c26277cc7f7e3c87df81b1c95648
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c06365531a4977b6b792e136e515b5b56c2c930
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567199"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110023"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>建立 Azure VMware 解決方案（AVS）評估
 
@@ -34,7 +34,7 @@ ms.locfileid: "85567199"
 **評量類型** | **詳細資料**
 --- | --- 
 **Azure VM** | 將內部部署伺服器遷移至 Azure 虛擬機器的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[實體伺服器](how-to-set-up-appliance-physical.md)，以遷移至 Azure。[深入瞭解](concepts-assessment-calculation.md)
-**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](https://docs.microsoft.com/azure/azure-vmware/introduction)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。[深入瞭解](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](../azure-vmware/introduction.md)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。[深入瞭解](concepts-azure-vmware-solution-assessment-calculation.md)
 
 > [!NOTE]
 > Azure VMware 解決方案（AVS）評估目前為預覽狀態，而且只能針對 VMware Vm 建立。
@@ -110,8 +110,8 @@ Azure VMware 解決方案（AVS）評估描述：
     - 已**就緒不明**：因為從內部部署環境收集的中繼資料不足，所以 Azure Migrate 無法判斷機器是否已就緒。
 
 3. 請參閱建議的工具：
-    - **VMWARE HCX 或 Enterprise**：針對 vmware 機器，vmware 混合式雲端擴充功能（HCX）解決方案是建議的遷移工具，可將內部部署工作負載遷移至 Azure VMware 解決方案（AVS）私人雲端。 [深入了解](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)。
-    - **未知**：對於透過 CSV 檔案匯入的機器，預設的遷移工具是未知的。 但對於 VMware 機器，建議您使用 VMWare 混合式雲端擴充功能（HCX）解決方案。 
+    - **VMware HCX 或 Enterprise**：針對 VMware 機器，VMWare 混合式雲端擴充功能 (HCX) 解決方案是建議的遷移工具，可將您的內部部署工作負載遷移至 Azure VMWare 解決方案 (AVS) 私人雲端。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
+    - **未知**：針對透過 CSV 檔案匯入的電腦，預設的移轉工具是未知的。 但對於 VMware 機器，建議您使用 VMWare 混合式雲端擴充功能（HCX）解決方案。 
 
 4. 按一下 [ **AVS 準備就緒**] 狀態。 您可以檢視 VM 的整備程度詳細資料，並向下切入以查看 VM 詳細資料，包括計算、儲存體和網路設定。
 

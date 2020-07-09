@@ -1,17 +1,16 @@
 ---
 title: 商業 Marketplace 中合作夥伴中心分析的摘要儀表板
 description: 從合作夥伴中心的摘要儀表板，了解如何存取會摘要說明市集活動的彙總資料圖表、趨勢和值。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: c7f1700cb386a197b33427e2ea615de019284d96
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 39b963fe40d26d498e69b8fc9bbb62ce514bef39
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738314"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109139"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的摘要儀表板
 

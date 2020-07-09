@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: 775992d090b951c8de6fce36377dc91d6e017399
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85558079"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106980"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service 支援原則
 
@@ -52,7 +52,7 @@ AKS 不是完全受控的叢集解決方案。 某些元件 (例如背景工作�
 Microsoft 可針對下列問題提供技術支援：
 
 > [!NOTE]
-> Microsoft 支援服務所採取的任何叢集動作，都是在名稱的內建 Kubernetes 「[編輯](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)」角色下，以使用者同意來進行 `aks-support-rolebinding` 。 使用此角色時，會啟用 AKS 支援來編輯叢集設定和資源，以疑難排解及診斷叢集問題，但角色無法修改許可權，也無法建立角色或角色系結。 只有在具有即時（JIT）存取權的主動式支援票證底下，才會啟用角色存取。
+> Microsoft/AKS 所採取的任何叢集動作，都是在內建的 Kubernetes 角色 `aks-service` 和內建角色系結之下，以使用者同意來進行 `aks-service-rolebinding` 。 此角色可讓 AKS 對叢集問題進行疑難排解和診斷，但無法修改許可權，也無法建立角色或角色系結，或其他高許可權動作。 只有在具有即時（JIT）存取權的主動式支援票證底下，才會啟用角色存取。
 
 * 連線至 Kubernetes 服務提供和支援的所有 Kubernetes 元件，例如 API 伺服器。
 * Kubernetes 控制平面服務的管理、運作時間、QoS 和作業 (例如 Kubernetes 主要節點、API 伺服器、etcd 和 kube-dns)。

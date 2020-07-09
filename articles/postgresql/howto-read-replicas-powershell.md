@@ -4,14 +4,14 @@ description: 瞭解如何使用 PowerShell 來設定和管理適用於 PostgreSQ
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 082a4e863760d4b327e00de2e6721e306ebb9d78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45876c8e176a4f81abfd927b0e2a8df8fc26ac25
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84739839"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106795"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>如何使用 PowerShell 建立和管理適用於 PostgreSQL 的 Azure 資料庫中的讀取複本
 
@@ -53,7 +53,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resourceGroupName |  myresourcegroup |  建立複本伺服器所在的資源群組。  |
-| Name | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
+| 名稱 | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
 
 若要建立跨區域讀取複本，請使用**Location**參數。 下列範例會在**美國西部**區域建立複本。
 

@@ -1,17 +1,14 @@
 ---
 title: 作為事件方格來源的 Azure SignalR
 description: 說明使用 Azure 事件方格為 Azure SignalR 事件提供的屬性
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.author: femila
-ms.openlocfilehash: 8fbae3fad4aeb85022c804e1ac648060360c6531
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 2ac391f366c4b9a82741a1b6b3135f5d7b5fe331
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560621"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106646"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>適用于 SignalR Service 的 Azure 事件方格事件架構
 
@@ -75,7 +72,7 @@ SignalR Service 會發出下列事件種類：
 
 事件具有下列的最高層級資料：
 
-| 屬性 | 類型 | Description |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
 | subject | 字串 | 發行者定義事件主體的路徑。 |
@@ -97,7 +94,7 @@ SignalR Service 會發出下列事件種類：
 | errorMessage | 字串 | 導致連線中斷連接的錯誤。 |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
-|Title | Description |
+|Title | 描述 |
 |---------|---------|
 | [使用事件方格來回應 Azure SignalR Service 事件](../azure-signalr/signalr-concept-event-grid-integration.md) | 整合 Azure SignalR Service 與事件方格的總覽。 |
 | [如何將 Azure SignalR Service 事件傳送至事件方格](../azure-signalr/signalr-howto-event-grid-integration.md) | 說明如何透過事件方格將 Azure SignalR Service 事件傳送至應用程式。 |

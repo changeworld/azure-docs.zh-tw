@@ -3,11 +3,12 @@ title: 從 Application Insights 連續匯出遙測 | Microsoft Docs
 description: 匯出診斷和使用量資料至 Microsoft Azure 中的儲存體，並從那裡下載。
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 91bce217b1b8d7c86c7d75ecd4ce6b698019e169
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84147965"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110210"
 ---
 # <a name="export-telemetry-from-application-insights"></a>從 Application Insights 匯出遙測
 想要讓遙測保留比標準保留期限還久的時間？ 或以某些特殊方式處理它？ 連續匯出很適合此用途。 在 Application Insights 入口網站中看見的事件，可以使用 JSON 格式匯出到 Microsoft Azure 中的儲存體。 從那裡，您可以下載資料並編寫處理所需的任何程式碼。  
@@ -107,7 +108,9 @@ ms.locfileid: "84147965"
 
 以下是路徑的格式︰
 
-    $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+```console
+$"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+```
 
 Where
 
@@ -117,37 +120,41 @@ Where
 ## <a name="data-format"></a><a name="format"></a> 資料格式
 * 每個 Blob 是包含多個以 '\n' 分隔的列的文字檔案。 它包含大約半分鐘的時間內所處理的遙測。
 * 每個資料列都代表遙測資料點，例如要求或頁面檢視。
-* 每列是未格式化的 JSON 文件。 如果您想要靜靜地仔細觀看，請在 Visual Studio 中開啟，並依序選擇 [編輯]、[進階]、[格式檔案]：
+* 每列是未格式化的 JSON 文件。 如果您想要查看資料列，請在 Visual Studio 中開啟 blob，然後選擇 [**編輯**] [高級] [  >  **Advanced**  >  **格式**檔案]：
 
-![使用合適的工具檢視遙測](./media/export-telemetry/06-json.png)
+   ![使用合適的工具檢視遙測](./media/export-telemetry/06-json.png)
 
 時間期間依刻度為單位，10000 刻度 = 1 毫秒。 例如，這些值顯示從瀏覽器傳送要求用了 1 毫秒的時間，接收它用了 3 毫秒，以及在瀏覽器中處理頁面用了 1.8 秒：
 
-    "sendRequest": {"value": 10000.0},
-    "receiveRequest": {"value": 30000.0},
-    "clientProcess": {"value": 17970000.0}
+```json
+"sendRequest": {"value": 10000.0},
+"receiveRequest": {"value": 30000.0},
+"clientProcess": {"value": 17970000.0}
+```
 
 [屬性類型和值的詳細資料模型參考。](export-data-model.md)
 
 ## <a name="processing-the-data"></a>處理資料
 就小型規模而言，您可以編寫一些程式碼來取出您的資料，將它讀取為試算表等等。 例如：
 
-    private IEnumerable<T> DeserializeMany<T>(string folderName)
-    {
-      var files = Directory.EnumerateFiles(folderName, "*.blob", SearchOption.AllDirectories);
-      foreach (var file in files)
+```csharp
+private IEnumerable<T> DeserializeMany<T>(string folderName)
+{
+   var files = Directory.EnumerateFiles(folderName, "*.blob", SearchOption.AllDirectories);
+   foreach (var file in files)
+   {
+      using (var fileReader = File.OpenText(file))
       {
-         using (var fileReader = File.OpenText(file))
+         string fileContent = fileReader.ReadToEnd();
+         IEnumerable<string> entities = fileContent.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s));
+         foreach (var entity in entities)
          {
-            string fileContent = fileReader.ReadToEnd();
-            IEnumerable<string> entities = fileContent.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s));
-            foreach (var entity in entities)
-            {
-                yield return JsonConvert.DeserializeObject<T>(entity);
-            }
+            yield return JsonConvert.DeserializeObject<T>(entity);
          }
       }
-    }
+   }
+}
+```
 
 如需較大型的程式碼範例，請參閱[使用背景工作角色][exportasa]。
 
