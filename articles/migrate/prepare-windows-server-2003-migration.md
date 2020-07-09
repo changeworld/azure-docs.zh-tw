@@ -3,11 +3,12 @@ title: 準備要使用 Azure Migrate 進行遷移的 Windows Server 2003 伺服�
 description: 瞭解如何準備 Windows Server 2003 伺服器以 Azure Migrate 進行遷移。
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 33519764b138c7711e6c03a85aa33ec6f936a748
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e33742d59972d491c1efb8d0f1453c1226d4625
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84172123"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103937"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>準備 Windows Server 2003 電腦以進行遷移
 
@@ -24,7 +25,7 @@ ms.locfileid: "84172123"
 
 在遷移之前，請先檢查是否已安裝 Hyper-v Integration Services，然後視需要安裝。
 
-1. 請遵循[這些指示](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager)來檢查是否已安裝。
+1. 請遵循[這些指示](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager)來檢查是否已安裝。
 2. 如果未安裝，請使用 Hyper-v 角色登入執行 Windows Server 2012 R2/Windows Server 2012 的電腦。
 3. 流覽至位於**C:\Windows\System32\vmguest.iso**的安裝檔案，然後掛接檔案。
 2. 將安裝資料夾複製到 Windows Server 2003 電腦，並安裝 Integration Services。

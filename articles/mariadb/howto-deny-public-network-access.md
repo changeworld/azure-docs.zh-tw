@@ -4,13 +4,14 @@ description: 瞭解如何使用適用於 MariaDB 的 Azure 資料庫的 Azure �
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 87b6033e486e9009573436628d0183c8a022aced
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f33dbfa0b96d7f6d85443005ff7e8b1a780c75a0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79375235"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104379"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>使用 Azure 入口網站拒絕適用於 MariaDB 的 Azure 資料庫中的公用網路存取
 

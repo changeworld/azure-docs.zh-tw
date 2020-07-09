@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Marketplace 中建置登陸頁面 | Azure
 description: 了解如何為應用程式與服務發行者，在 Azure Marketplace 和 Microsoft AppSource 中建立登陸頁面。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 06/04/2018
-ms.author: dsindona
-ms.openlocfilehash: 0952c1d4b6955ff20f06afc6eaded18fbd105708
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7f80910e19348dfa3540f141424205a7531f5e7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80387796"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102815"
 ---
 # <a name="build-your-landing-page"></a>建置登陸頁面
 

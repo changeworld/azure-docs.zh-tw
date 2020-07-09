@@ -3,16 +3,16 @@ title: 大規模管理 Azure Sentinel 的工作區
 description: 瞭解如何有效率地管理委派客戶資源上的 Azure Sentinel。
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: bca5b6fdc84fa5a7a5553fe64c0218c5f0b44aa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268678"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105263"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大規模管理 Azure Sentinel 的工作區
 
-身為服務提供者，您可能已將多個客戶租用戶上架以進行 Azure 委派資源管理。 Azure 燈塔可讓服務提供者一次對數個 Azure Active Directory （Azure AD）租使用者執行大規模作業，讓管理工作更有效率。
+身為服務提供者，您可能已將多個客戶租使用者上架至[Azure 燈塔](../overview.md)。 Azure 燈塔可讓服務提供者一次對數個 Azure Active Directory （Azure AD）租使用者執行大規模作業，讓管理工作更有效率。
 
 Azure Sentinel 提供安全性分析和威脅情報，提供警示偵測、威脅可見度、主動式搜尋和威脅回應的單一解決方案。 透過 Azure 燈塔，您可以大規模管理跨租使用者的多個 Azure Sentinel 工作區。 這可讓您在多個工作區執行查詢，或建立活頁簿以視覺化和監視連接資料來源中的資料，以取得深入資訊。 例如查詢和腳本的 IP 會保留在您的管理租使用者中，但可用於在客戶租使用者中執行安全性管理。
 
@@ -35,7 +35,7 @@ Azure Sentinel 提供安全性分析和威脅情報，提供警示偵測、威�
 
 ## <a name="granular-role-based-access-control-rbac"></a>細微的角色型存取控制（RBAC）
 
-MSSP 將管理的每個客戶訂用帳戶，都必須[針對 Azure 委派的資源管理進行上架](onboard-customer.md)。 這可讓管理租使用者中的指定使用者存取和執行部署在客戶租使用者中 Azure Sentinel 工作區上的管理作業。
+MSSP 將管理的每個客戶訂用帳戶都必須[上架至 Azure 燈塔](onboard-customer.md)。 這可讓管理租使用者中的指定使用者存取和執行部署在客戶租使用者中 Azure Sentinel 工作區上的管理作業。
 
 建立授權時，您可以將 Azure Sentinel 內建角色指派給您管理的租使用者中的使用者、群組或服務主體：
 

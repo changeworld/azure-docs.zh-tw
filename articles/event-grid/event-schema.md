@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid 事件結構描述
 description: 描述所有事件都有的屬性和架構。事件包含一組五個必要字串屬性和一個必要資料物件。
-services: event-grid
-author: femila
-manager: timlt
-ms.service: event-grid
 ms.topic: reference
-ms.date: 01/21/2020
-ms.author: femila
-ms.openlocfilehash: 3104d29b84b08add89e7c19772dffaaa782755a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 7ddc7c78c5a9e5ba2a57b21c45fb9fab65056ee9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559422"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105875"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid 事件結構描述
 
@@ -82,10 +78,10 @@ ms.locfileid: "84559422"
 | 屬性 | 類型 | 必要 | 描述 |
 | -------- | ---- | -------- | ----------- |
 | 主題 | 字串 | 否，但如果包含的話，必須完全符合事件方格主題 Azure Resource Manager 識別碼。 如果未包含，事件方格會戳記至事件。 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
-| subject | 字串 | Yes | 發行者定義事件主體的路徑。 |
-| eventType | 字串 | Yes | 此事件來源已註冊的事件類型之一。 |
-| eventTime | 字串 | Yes | 事件產生的時間，以提供者之 UTC 時間為準。 |
-| id | 字串 | Yes | 事件的唯一識別碼。 |
+| subject | 字串 | 是 | 發行者定義事件主體的路徑。 |
+| eventType | 字串 | 是 | 此事件來源已註冊的事件類型之一。 |
+| eventTime | 字串 | 是 | 事件產生的時間，以提供者之 UTC 時間為準。 |
+| id | 字串 | 是 | 事件的唯一識別碼。 |
 | data | 物件 (object) | No | 資源提供者特有的事件資料。 |
 | dataVersion | 字串 | 否，但會以空值加以戳記。 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 不需要，但如果包含的話，必須完全符合事件方格架構 `metadataVersion` （目前僅限 `1` ）。 如果未包含，事件方格會戳記至事件。 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |

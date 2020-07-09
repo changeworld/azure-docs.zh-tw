@@ -3,15 +3,16 @@ title: 在 Azure Migrate 中新增評量/遷移工具
 description: 說明如何建立 Azure Migrate 專案，以及新增評量/遷移工具。
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a94e3cc18f46c457d6ed54ef88c62adefb07c5b9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82901206"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102526"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>第一次使用請新增評量/移轉工具
 
-本文說明如何在第一次將評估或遷移工具加入至[Azure Migrate](migrate-overview.md)專案。  
+本文說明如何在第一次將評估或遷移工具加入至[Azure Migrate](./migrate-services-overview.md)專案。  
 Azure Migrate 提供中央中樞，以追蹤內部部署應用程式和工作負載的探索、評估和遷移，以及私人/公用雲端 Vm 至 Azure。 中樞提供評估和遷移的 Azure Migrate 工具，以及其他工具和獨立軟體廠商（ISV）[產品](migrate-services-overview.md#isv-integration)。 
 
 ## <a name="check-permissions-to-create-project"></a>檢查許可權以建立專案

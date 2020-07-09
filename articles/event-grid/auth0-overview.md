@@ -1,17 +1,14 @@
 ---
 title: 使用 Azure 事件方格的 Auth0 合作夥伴主題
 description: 使用 Azure 事件方格結束從 Auth0 到 Azure 服務的事件。
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.author: femila
-ms.openlocfilehash: 80226822e89344705c24094b073868d8ac0e1e42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 411d8f8eb53e4bc3fa8c8dda04bdcf12c74db768
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560739"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103342"
 ---
 # <a name="auth0-partner-topics"></a>Auth0 合作夥伴主題
 ![Auth0 標誌](./media/auth0-overview/auth0-logo.png)

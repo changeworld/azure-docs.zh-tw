@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f6cf551b95de8fc7fae83941e5109dfa823213af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf22ce87ed3d535a7c1bd03a8d7f747bee3ab13a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465978"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106385"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>優化效能 Azure Data Lake Storage Gen2
 
@@ -64,13 +65,13 @@ Data Lake Storage Gen2 可以調整以提供所有分析情節的必要輸送量
 
 擷取時間序列資料的這些管線，通常會以檔案和資料夾結構命名非常嚴謹的方式來處理檔案。 以下是很常見的範例，依日期結構化資料：
 
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+*\DataSet\YYYY\MM\DD\ datafile_YYYY_MM_DD tsv*
 
 請注意，日期時間資訊會同時在資料夾和檔案名稱中顯示。
 
 對於日期和時間，以下是常見的模式
 
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+*\DataSet\YYYY\MM\DD\HH\mm\ datafile_YYYY_MM_DD_HH_mm tsv*
 
 同樣地，您對於資料夾和檔案組織的選擇，應該針對較大的檔案大小以及每個資料夾中合理的檔案數目進行最佳化。
 

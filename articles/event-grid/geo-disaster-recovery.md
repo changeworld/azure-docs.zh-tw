@@ -1,18 +1,14 @@
 ---
 title: Azure 事件方格中的異地嚴重損壞修復 |Microsoft Docs
 description: 說明 Azure 事件方格如何自動支援異地嚴重損壞修復（GeoDR）。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/24/2019
-ms.author: spelluru
-ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: ccb16971020a65932daa8f9adf4b7cd9008a9253
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66307313"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105841"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure 事件方格中的伺服器端地理故障復原
 事件方格現在具有自動異地嚴重損壞修復（GeoDR）的中繼資料，不僅適用于新的，而是所有現有的網域、主題和事件訂閱。 如果整個 Azure 區域停止運作，事件方格就會將所有事件相關的基礎結構中繼資料，同步處理到配對的區域。 您的新事件將會開始再次流動，而您不需要介入。 

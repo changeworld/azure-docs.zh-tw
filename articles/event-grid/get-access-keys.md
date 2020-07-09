@@ -1,17 +1,14 @@
 ---
 title: 取得事件方格資源的存取金鑰
 description: 本文說明如何取得事件方格主題或網域的存取金鑰
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 06/25/2020
-ms.author: spelluru
-ms.openlocfilehash: 75ab09de40a4305ebd215985f2f9f181bfd69a24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: e5694fe0b5f22f7f76285c344627005ea727ae3c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414832"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105858"
 ---
 # <a name="get-access-keys-for-event-grid-resources-topics-or-domains"></a>取得事件方格資源的存取金鑰（主題或網域）
 存取金鑰是用來向 Azure 事件方格資源（主題和網域）驗證應用程式發佈事件。 我們建議您定期重新產生金鑰，並將其安全地儲存。 系統會提供兩個存取金鑰，讓您可以使用一個金鑰來維護連線，同時重新產生另一個金鑰。

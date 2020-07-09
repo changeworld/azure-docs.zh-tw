@@ -1,17 +1,18 @@
 ---
 title: Azure 容器供應項目的技術概念 - Microsoft 商業市集
 description: 協助您在 Azure Marketplace 上設定容器供應項目的技術資源和指導方針。
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/09/2020
-ms.openlocfilehash: 8f32313529da965573a6c9884daee678e3bc64cc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: da0fa53567e5c58db8e8394ef5562255d8a7142d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958594"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104260"
 ---
 # <a name="create-an-azure-container-offer"></a>建立 Azure 容器供應項目
 

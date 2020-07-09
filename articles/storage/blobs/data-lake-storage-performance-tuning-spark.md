@@ -9,11 +9,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b28765c9ac4fa664b84c456c31ee10e0e9e19003
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06fe2670e5ee0d95df8985c9777d3ad9741336b3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465925"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106113"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>微調效能： Spark、HDInsight & Azure Data Lake Storage Gen2
 
@@ -57,25 +58,30 @@ ms.locfileid: "84465925"
 
 **步驟 3︰設定 executor-cores** – 對於沒有複雜作業的 I/O 密集工作負載，最好是先設定較高的 executor-cores 數值，以增加每個執行程式的平行工作數目。  將 executor-cores 設定為 4 是不錯的開始。   
 
-    executor-cores = 4
+執行程式-核心 = 4
+
 增加 executor-cores 的數字可讓您更符合平行處理原則，因此請試試不同的 executor-cores。  對於具有較複雜作業的工作，您應該減少每個執行程式的核心數目。  如果 executor-cores 設定為高於 4，則記憶體回收可能會變得沒有效率而降低效能。
 
 **步驟 4︰決定叢集中的 YARN 記憶體數量** – 這項資訊可在 Ambari 中取得。  流覽至 YARN，並查看 [[]] 索引標籤。 YARN 記憶體會顯示在此視窗中。  
 請注意，當您位於此視窗時，您也可以查看預設的 YARN 容器大小。  YARN 容器大小和每個執行程式參數的記憶體相同。
 
-    Total YARN memory = nodes * YARN memory per node
+總 YARN 記憶體 = 節點 * 每個節點的 YARN 記憶體
+
 **步驟 5︰計算 num-executors**
 
 **計算記憶體限制** - num-executors 參數會受到記憶體或 CPU 所限制。  記憶體限制取決於應用程式的可用 YARN 記憶體數量。  您應該取得 YARN 記憶體總數，然後除以 executor-memory。  應用程式數目的限制必須取消調整，因此我們除以應用程式數目。
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps   
+記憶體限制 = （總 YARN 記憶體/執行程式記憶體）/應用程式數目
+
 **計算 CPU 限制**-CPU 限制的計算方式為虛擬核心總數除以每個執行程式的核心數目。  每個實體核心有 2 個虛擬核心。  和記憶體限制類似，我們必須除以應用程式數目。
 
-    virtual cores = (nodes in cluster * # of physical cores in node * 2)
-    CPU constraint = (total virtual cores / # of cores per executor) / # of apps
+- 虛擬核心 = （叢集中的節點 * 節點中的實體核心數 * 2）
+- CPU 條件約束 = （虛擬核心總數/每個執行程式的核心數目）/應用程式數目
+
 **設定 num-executors**– num-executors 參數是由記憶體限制和 CPU 限制較小者來決定。 
 
-    num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)   
+num-執行程式 = Min （每個執行程式的總虛擬核心數/核心數目、可用的 YARN 記憶體/執行程式-記憶體）
+
 設定較高的 num-executors 數值未必能提升效能。  您應該考慮到，新增更多執行程式會對每個額外的執行程式新增額外的負擔，而可能降低效能。  Num-executors 受到叢集資源的限制。    
 
 ## <a name="example-calculation"></a>計算範例
@@ -86,31 +92,36 @@ ms.locfileid: "84465925"
 
 **步驟 2︰設定 executor-memory** – 在此範例中，我們判斷 6 GB 的 executor-memory 就足夠 I/O 密集作業使用。  
 
-    executor-memory = 6GB
+執行程式-記憶體 = 6GB
+
 **步驟 3︰設定 executor-cores** – 這是 I/O 密集作業，因此我們可以將每個執行程式的核心數目設為 4。  將每個執行程式的核心設為大於 4，可能會造成記憶體回收問題。  
 
-    executor-cores = 4
+執行程式-核心 = 4
+
 **步驟 4︰決定叢集中的 YARN 記憶體數量** – 我們瀏覽至 Ambari，發現每個 D4v2 有 25 GB 的 YARN 記憶體。  由於有 8 個節點，可用的 YARN 記憶體會乘以 8。
 
-    Total YARN memory = nodes * YARN memory* per node
-    Total YARN memory = 8 nodes * 25GB = 200GB
+- 總 YARN 記憶體 = 節點 * 每個節點的 YARN 記憶體 *
+- 總 YARN 記憶體 = 8 個節點 * 25GB = 200GB
+
 **步驟 5︰計算 num-executors** – num-executors 參數是由記憶體限制和 CPU 限制較小者除以 Spark 上執行的應用程式數目來決定。    
 
 **計算記憶體限制** – 記憶體限制的計算方式為 YARN 記憶體總數除以每個執行程式的記憶體。
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps   
-    Memory constraint = (200GB / 6GB) / 2   
-    Memory constraint = 16 (rounded)
+- 記憶體限制 = （總 YARN 記憶體/執行程式記憶體）/應用程式數目
+- 記憶體限制 = （200GB/6GB）/2
+- 記憶體限制 = 16 （進位）
+
 **計算 CPU 限制**-CPU 限制的計算方式為 YARN 核心總數除以每個執行程式的核心數目。
-    
-    YARN cores = nodes in cluster * # of cores per node * 2   
-    YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
-    CPU constraint = (total YARN cores / # of cores per executor) / # of apps
-    CPU constraint = (128 / 4) / 2
-    CPU constraint = 16
+
+- YARN 核心 = 叢集中的節點 * 每個節點的核心數 * 2
+- YARN 核心 = 8 個節點 * 每個 D14 8 個核心 * 2 = 128
+- CPU 條件約束 = （每個執行程式的總 YARN 核心數/核心數）/應用程式數目
+- CPU 條件約束 = （128/4）/2
+- CPU 條件約束 = 16
+
 **設定 num-executors**
 
-    num-executors = Min (memory constraint, CPU constraint)
-    num-executors = Min (16, 16)
-    num-executors = 16    
+- num-執行次數 = Min （記憶體條件約束，CPU 條件約束）
+- num-執行次數 = Min （16，16）
+- num-執行次數 = 16
 

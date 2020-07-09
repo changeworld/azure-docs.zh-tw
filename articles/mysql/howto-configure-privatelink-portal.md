@@ -4,14 +4,14 @@ description: 瞭解如何從 Azure 入口網站設定適用於 MySQL 的 Azure �
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: b4ac25d6fca78962e9da4f7dd79476b8e8b9c2d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5547c78007d38788d71e84f8fbf3ca8b60dc1576
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738255"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101744"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>使用入口網站建立和管理適用於 MySQL 的 Azure 資料庫的私用連結
 
@@ -41,7 +41,7 @@ ms.locfileid: "84738255"
     | 位址空間 | 輸入 *10.1.0.0/16*。 |
     | 訂用帳戶 | 選取您的訂用帳戶。|
     | 資源群組 | 選取 [新建]，輸入 *myResourceGroup*，然後選取 [確定]。 |
-    | 位置 | 選取 [西歐]****。|
+    | Location | 選取 [西歐]。|
     | 子網路 - 名稱 | 輸入 mySubnet**。 |
     | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24*。 |
     |||
@@ -60,7 +60,7 @@ ms.locfileid: "84738255"
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。  |
     | **執行個體詳細資料** |  |
     | 虛擬機器名稱 | 輸入 myVm。 |
-    | 區域 | 選取 [西歐]****。 |
+    | 區域 | 選取 [西歐]。 |
     | 可用性選項 | 保留預設值 [不需要基礎結構備援]。 |
     | 映像 | 選取 [Windows Server 2019 Datacenter]。 |
     | 大小 | 保留預設值 [標準 DS1 v2]。 |
@@ -145,7 +145,7 @@ ms.locfileid: "84738255"
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
     | **實例詳細資料** |  |
     | 名稱 | 輸入 myPrivateEndpoint。 如果此名稱已被使用，請建立唯一名稱。 |
-    |區域|選取 [西歐]****。|
+    |區域|選取 [西歐]。|
     |||
 
 5. 完成時，選取 [下一步:資源]。

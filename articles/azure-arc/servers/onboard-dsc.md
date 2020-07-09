@@ -8,15 +8,16 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fb64463b0372202adb04c2deb304c389c7773b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3dee468764f27d930081b5a3cd415c48bb79c0d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79164679"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104005"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>如何使用 Windows PowerShell DSC 安裝連線的電腦代理程式
 
-使用[Windows PowerShell Desired State Configuration](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) （DSC），您可以將 windows 電腦的軟體安裝和設定自動化。 本文說明如何使用 DSC，為混合式 Windows 電腦上已連線的電腦代理程式安裝 Azure Arc。
+使用[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) （DSC），您可以將 windows 電腦的軟體安裝和設定自動化。 本文說明如何使用 DSC，為混合式 Windows 電腦上已連線的電腦代理程式安裝 Azure Arc。
 
 ## <a name="requirements"></a>規格需求
 
@@ -72,7 +73,7 @@ ms.locfileid: "79164679"
 
 1. 在 PowerShell 主控台中，流覽至您儲存檔案的資料夾 `.ps1` 。
 
-2. 執行下列 PowerShell 命令編譯 MOF 文件 (如需如何編譯 DSC 組態的資訊，請參閱 [DSC 組態](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations?view=powershell-7)：
+2. 執行下列 PowerShell 命令編譯 MOF 文件 (如需如何編譯 DSC 組態的資訊，請參閱 [DSC 組態](/powershell/scripting/dsc/configurations/configurations?view=powershell-7)：
 
     ```powershell
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
@@ -86,7 +87,7 @@ ms.locfileid: "79164679"
 
 此資源可以新增至現有的 DSC 設定，以代表機器的端對端設定。 例如，您可能想要將此資源新增至設定安全作業系統設定的設定。
 
-PowerShell 資源庫中的[CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0)模組可以用來建立範例設定的[複合資源](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7)，以進一步簡化組合設定。
+PowerShell 資源庫中的[CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0)模組可以用來建立範例設定的[複合資源](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7)，以進一步簡化組合設定。
 
 ## <a name="next-steps"></a>後續步驟
 

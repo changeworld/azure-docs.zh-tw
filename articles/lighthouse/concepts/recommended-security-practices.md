@@ -1,18 +1,18 @@
 ---
 title: 建議的安全性作法
-description: 使用 Azure 委派的資源管理時，請務必考慮安全性和存取控制。
-ms.date: 03/24/2020
+description: 使用 Azure 燈塔時，請務必考慮安全性和存取控制。
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9b806aaf988fedfde6ce468f3eff948aa8ce344
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c620feabf5bcedc35a36104c3ba305ac9337ff0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246903"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105416"
 ---
 # <a name="recommended-security-practices"></a>建議的安全性作法
 
-使用[Azure 委派的資源管理](azure-delegated-resource-management.md)時，請務必考慮安全性和存取控制。 您租使用者中的使用者將可直接存取客戶訂用帳戶和資源群組，因此您會想要採取步驟來維護租使用者的安全性。 您也會想要確保只允許有效管理客戶資源所需的存取權。 此主題會提供可協助您這樣做的建議。
+使用[Azure 燈塔](../overview.md)時，請務必考慮安全性和存取控制。 您租使用者中的使用者將可直接存取客戶訂用帳戶和資源群組，因此您會想要採取步驟來維護租使用者的安全性。 您也會想要確保只允許有效管理客戶資源所需的存取權。 此主題會提供可協助您這樣做的建議。
 
 ## <a name="require-azure-multi-factor-authentication"></a>要求使用 Azure Multi-Factor Authentication
 

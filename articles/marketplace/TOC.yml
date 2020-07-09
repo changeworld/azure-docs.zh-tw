@@ -216,8 +216,8 @@
               href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
             - name: 狀態碼
               href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: 發佈狀態
-      href: ./partner-center-portal/publishing-status.md
+    - name: 檢閱並發佈
+      href: review-publish-offer.md
     - name: 更新現有供應項目
       href: ./partner-center-portal/update-existing-offer.md
     - name: 啟動權益

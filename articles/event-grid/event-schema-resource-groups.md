@@ -1,18 +1,14 @@
 ---
 title: 作為事件方格來源的 Azure 資源群組
 description: 描述 Azure Event Grid 中資源群組事件的屬性
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: ed01bfdb67d9b8a3dd5875ec3fd8c6edf8922520
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393255"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105909"
 ---
 # <a name="azure-resource-group-as-an-event-grid-source"></a>作為事件方格來源的 Azure 資源群組
 
@@ -248,7 +244,7 @@ Azure 訂用帳戶和資源群組會發出相同的事件類型。 事件類型�
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | 授權 | 物件 (object) | 作業的所要求授權。 |
 | claims | 物件 (object) | 宣告的屬性。 如需詳細資訊，請參閱 [JWT 規格](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |

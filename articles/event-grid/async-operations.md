@@ -1,19 +1,16 @@
 ---
-title: 非同步作業的狀態
-description: 描述如何在 Azure 中追蹤非同步作業。 其會顯示您用來取得長時間執行作業狀態的值。
-services: event-grid
-author: spelluru
-ms.service: event-grid
+title: 事件方格非同步作業的狀態
+description: 說明如何在 Azure 中追蹤事件方格非同步作業。 其會顯示您用來取得長時間執行作業狀態的值。
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.author: spelluru
-ms.openlocfilehash: fb3479271733ee218da8a842956f3a8996e07f61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82892013"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103325"
 ---
-# <a name="track-asynchronous-azure-operations"></a>追蹤非同步 Azure 作業
+# <a name="track-event-grid-asynchronous-azure-operations"></a>追蹤事件方格非同步 Azure 作業
 某些 Azure REST 作業因為無法快速完成，而以非同步方式執行。 本文說明如何透過回應中傳回的值，以追蹤非同步作業的狀態。  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>非同步作業的狀態碼

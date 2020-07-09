@@ -1,18 +1,18 @@
 ---
 title: 共同銷售國家/地區和地區代碼 |Azure Marketplace
 description: 在供應專案的共同銷售頁面上提供連絡人資訊時，請使用這兩個字母的國家/地區代碼。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: palanis-MSFT
+ms.author: palanis
 ms.date: 08/27/2019
-ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8d952c76fa71cb57d2edd7c9aa361c7249e0622
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80277051"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105127"
 ---
 # <a name="co-sell-country-and-region-codes"></a>共同銷售國家/地區和地區代碼
 

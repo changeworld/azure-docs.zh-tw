@@ -4,13 +4,14 @@ description: 使用 Azure 入口網站建立和管理適用於 PostgreSQL 的 Az
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: aeef22bf96221061a444f40e16e33343fafe511c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 887b450c88e8d9d06e86cd7dc7725c7538522aa5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74770300"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102118"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>使用 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的防火牆規則
 伺服器層級防火牆規則可用來從指定的 ip 位址或 IP 位址範圍，管理適用於 PostgreSQL 的 Azure 資料庫伺服器的存取權。

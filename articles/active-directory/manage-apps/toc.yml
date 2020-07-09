@@ -105,12 +105,8 @@
       items:
         - name: 新增雲端應用程式
           items:
-            - name: 新增資源庫應用程式
-              href: add-gallery-app.md
             - name: 新增非資源庫應用程式
               href: add-non-gallery-app.md
-            - name: 變更應用程式名稱或標誌
-              href: change-name-or-logo-portal.md
         - name: 設定單一登入
           items:
             - name: 設定 SAML 型單一登入

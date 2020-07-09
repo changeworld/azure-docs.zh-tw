@@ -4,13 +4,14 @@ description: 瞭解如何使用適用於 PostgreSQL 的 Azure 資料庫單一伺
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 4dff2321414721dbd415b468e59aea0ab4b3acee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b51a79027ce834190a4fae5d893e47f2be16abf7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79375118"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102186"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>使用 Azure 入口網站拒絕適用於 PostgreSQL 的 Azure 資料庫單一伺服器中的公用網路存取
 

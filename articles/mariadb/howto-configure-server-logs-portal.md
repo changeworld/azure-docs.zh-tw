@@ -4,15 +4,16 @@ description: 本文說明如何在 Azure 入口網站的適用於 MariaDB 的 Az
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: 1e67637d36eaba55e4c6baaf6f775fc7b79fcd14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2642ebbad7c8d7a2e092a6e00929e32b72b52d8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81270585"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104974"
 ---
-# <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>從 Azure 入口網站設定和存取緩慢查詢記錄
+# <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-from-the-azure-portal"></a>從 Azure 入口網站設定和存取適用于 Maria DB 緩慢查詢記錄的 Azure 資料庫
 
 您可以從 Azure 入口網站設定、列出和下載[適用於 MariaDB 的 Azure 資料庫慢速查詢記錄](concepts-server-logs.md)。
 

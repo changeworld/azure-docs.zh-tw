@@ -8,18 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 7ab886b65e665bdd38e2461e49fa051213602f0e
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462784"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103393"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
 文字分析 API 會持續更新。 為了讓您隨時掌握最新的開發，這篇文章為您提供新版本和功能的相關資訊。
+
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="text-analytics-for-health-container-public-gated-preview"></a>健康情況容器公開閘道預覽的文字分析
+
+健康情況容器的文字分析現在位於公開閘道預覽中，可讓您從非結構化的英文文字（例如：患者進氣窗體、醫生的記事、研究論文和放電摘要）中解壓縮資訊。 目前，您不需要支付健康情況容器使用量的文字分析費用。 
+
+容器提供下列功能：
+
+* 具名實體辨識
+* 關聯性解壓縮
+* 實體連結
+* 否定
+
+
+> [!div class="nextstepaction"]
+> [深入瞭解健全狀況容器的文字分析](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -61,9 +78,6 @@ JSON 回應中下列屬性的名稱已變更（如果適用）：
 ### <a name="text-analytics-api-v31-public-preview"></a>文字分析 API 3.1 版公開預覽
    * 新的情感分析功能-[意見挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
    * 適用于受保護健全狀況資訊的新[個人（ `PII` ）網域篩選](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)（ `PHI` ）。
-   * 新的 Personal （ `PII` ）類別：
-      * 疾病的國際分類（ICD-9-CM）
-      * 疾病的國際分類（ICD-10-CM）
 
 > [!div class="nextstepaction"]
 > [深入瞭解文字分析 API 3.1 版預覽](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -137,7 +151,7 @@ JSON 回應中下列屬性的名稱已變更（如果適用）：
 
 ## <a name="next-steps"></a>後續步驟
 
-* [文字分析 API 是什麼？](overview.md)  
+* [什麼是文字分析 API？](overview.md)  
 * [使用者案例範例](text-analytics-user-scenarios.md)
 * [情感分析](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [語言偵測](how-tos/text-analytics-how-to-language-detection.md)

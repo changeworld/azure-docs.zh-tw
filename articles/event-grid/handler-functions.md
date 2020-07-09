@@ -1,17 +1,14 @@
 ---
 title: 以 Azure 函式作為 Azure 事件方格事件的事件處理常式
 description: 說明如何使用 Azure 函式作為「事件方格」事件的事件處理常式。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 0152a9fc11562744f83ab9d20466a3dcc8e2e6e0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.date: 07/07/2020
+ms.openlocfilehash: 8e48949bb5fecdf370fdf23146209ad757ffa062
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800420"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105756"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>以 Azure 函式作為事件方格事件的事件處理常式
 

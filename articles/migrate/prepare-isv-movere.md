@@ -3,11 +3,12 @@ title: 準備 Azure Migrate 以便搭配 ISV 工具/Movere
 description: 此文章描述如何準備 Azure Migrate 以搭配 ISV 工具或 Movere，然後描述如何開始使用此工具。
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770368"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103920"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>準備使用 ISV 工具或 Movere
 
@@ -35,7 +36,7 @@ ms.locfileid: "84770368"
 1. 在 Azure 入口網站中，開啟**訂用帳戶**。
 2. 選取相關的訂用帳戶。 如果您沒有看到該訂用帳戶，請選取 [全域訂閱篩選]。 
 3. 選取 [我的權限]。 然後，選取 [按一下這裡以詳細檢視此訂用帳戶的完整存取權]。
-4. 在 [角色指派] > [檢視] 中，檢查權限。 如果您的帳戶沒有權限，請要求訂用帳戶管理員將您新增至[使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) \(部分機器翻譯\) 角色或[擁有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) \(部分機器翻譯\) 角色。
+4. 在 [角色指派] > [檢視] 中，檢查權限。 如果您的帳戶沒有權限，請要求訂用帳戶管理員將您新增至[使用者存取系統管理員](../role-based-access-control/built-in-roles.md#user-access-administrator) \(部分機器翻譯\) 角色或[擁有者](../role-based-access-control/built-in-roles.md#owner) \(部分機器翻譯\) 角色。
 
 ## <a name="allow-access-to-urls"></a>允許存取 URL
 

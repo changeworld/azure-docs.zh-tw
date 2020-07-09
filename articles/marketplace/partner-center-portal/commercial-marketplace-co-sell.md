@@ -1,17 +1,18 @@
 ---
 title: 合作夥伴中心內的共同銷售選項 |Azure Marketplace
 description: Microsoft 銷售小組會使用您在供應專案的 [共同銷售] 索引標籤上提供的資訊，在評估其是否符合客戶需求時，深入瞭解您的解決方案。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: palanis-MSFT
+ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 529988ce456b9017d700880d55b349fa93e15f96
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201439"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104226"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作夥伴中心內的共同銷售選項
 

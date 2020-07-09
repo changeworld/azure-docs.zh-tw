@@ -1,17 +1,18 @@
 ---
 title: 上市服務-如何在 marketplace 中取得精選 |Azure Marketplace
 description: Go To Market 服務 - 本節說明如何加入 Azure Marketplace 中的精選清單
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: aac3f87c642559b0dfa13c38da448e425df3ffa2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 09f5d61984d5802184d70867f94815fac8fe2b7d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957795"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103563"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>如何成為 AppSource 和 Azure Marketplace 中的精選項目
 

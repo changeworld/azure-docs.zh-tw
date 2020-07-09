@@ -16,19 +16,19 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5cf9487f6f10ce661009e5e504be51a098b7e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1aca245592bef98bc5d0cff3268d5b6496d2220
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357387"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103546"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步處理：排程器
 本主題描述 Azure AD Connect 同步（同步處理引擎）中的內建排程器。
 
 此功能是隨組建 1.1.105.0 (於 2016 年 2 月發行) 一起導入。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目錄中發生的變更。 有兩個排程器程序，一個用於密碼同步處理，另一個用於物件/屬性同步處理以及維護工作。 本主題包含後者。
 
 在舊版中，物件和屬性的排程器是在同步處理引擎的外部。 它使用 Windows 工作排程器或個別的 Windows 服務來觸發同步處理程序。 排程器已隨 1.1 版內建於同步處理引擎中，並且允許進行一些自訂。 新的預設同步處理頻率為 30 分鐘。
@@ -39,6 +39,10 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 * **維護**工作。 為密碼重設和「裝置註冊服務」(DRS) 更新金鑰和憑證。 清除作業記錄檔中的舊項目。
 
 排程器本身永遠處於執行狀態，但是您可以將它設定為只執行這些工作其中之一或完全不執行這些工作。 例如，如果您需要使用自己的同步處理循環程序，您可以將此工作在排程器中停用，但仍執行維護工作。
+
+>[!IMPORTANT]
+>您必須確定每7天至少會執行一次同步處理迴圈。 若未這麼做，可能會導致同步處理問題，而需要您執行完整的同步處理來解決。
+
 
 ## <a name="scheduler-configuration"></a>排程器組態
 若要查看目前的組態設定，請移至 PowerShell 並執行 `Get-ADSyncScheduler`。 它會向您顯示類似以下圖片︰
@@ -74,10 +78,10 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 語法： `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
  d - 天、HH - 小時、mm - 分鐘、ss - 秒
 
-範例：`Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
+範例： `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
 將排程器變更為每隔 3 小時執行一次。
 
-範例：`Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
+範例： `Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
 將排程器變更為每天執行。
 
 ### <a name="disable-the-scheduler"></a>停用排程器  

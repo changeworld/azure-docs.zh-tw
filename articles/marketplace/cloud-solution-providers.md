@@ -1,18 +1,18 @@
 ---
 title: 雲端解決方案提供者 - Microsoft 商業市集
 description: 了解如何透過商業市集中的 Microsoft 雲端解決方案提供者 (CSP) 計畫合作夥伴通道來銷售您的供應項目。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: 633656af72790c7dfebeee567713875ce0d609b4
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d6c3af312717627a1719c5f1029ae638e7d4f827
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964204"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104430"
 ---
 # <a name="cloud-solution-provider-program"></a>雲端解決方案提供者計畫
 

@@ -8,11 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 45a61b5bc6f1082b84bf94db7e8ad5ce49ec068f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648066"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103784"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>大規模將混合式機器連線至 Azure
 
@@ -85,7 +86,7 @@ ms.locfileid: "83648066"
 * `location`：請參閱[支援的 Azure 區域](overview.md#supported-regions)。 此位置可與資源群組的位置相同或不同。
 * `resource-name`：(*選擇性*) 用於內部部署機器的 Azure 資源表示法。 如果您未指定此值，將會使用電腦主機名稱。
 
-您可以藉由檢閱 [Azcmagent 參考](azcmagent-reference.md)，深入了解 `azcmagent` 命令列工具。
+您可以藉由檢閱 [Azcmagent 參考](./manage-agent.md)，深入了解 `azcmagent` 命令列工具。
 
 ### <a name="windows-installation-script"></a>Windows 安裝指令碼
 

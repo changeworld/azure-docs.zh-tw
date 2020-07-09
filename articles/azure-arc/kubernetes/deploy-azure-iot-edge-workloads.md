@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 部署 Azure IoT Edge 工作負載
 keywords: Kubernetes、Arc、Azure、K8s、容器
-ms.openlocfilehash: 2a688a221b2f4865d51bca2ebf4aaa0b1f714290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193782"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103971"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>部署 Azure IoT Edge 工作負載 (預覽)
 
@@ -25,7 +25,7 @@ Azure Arc 和 Azure IoT Edge 之間的互補性很好。 Azure Arc 為叢集操�
 
 ## <a name="pre-requisites"></a>必要條件
 
-* [註冊 IoT Edge 裝置](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#register-an-iot-edge-device)和[部署模擬的溫度感應器模組](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#deploy-a-module)。 請務必記下裝置的連接字串。
+* [註冊 IoT Edge 裝置](../../iot-edge/quickstart-linux.md#register-an-iot-edge-device)和[部署模擬的溫度感應器模組](../../iot-edge/quickstart-linux.md#deploy-a-module)。 請務必記下裝置的連接字串。
 
 * 使用 [[適用於 Kubernetes 的 IoT Edge 支援]](https://aka.ms/edgek8sdoc)，透過 Azure Arc 的 Flux 運算子以進行部署。
 

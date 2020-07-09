@@ -1,18 +1,16 @@
 ---
 title: 試用產品的類型，Microsoft 商業 marketplace
 description: 商用 marketplace 中的試用產品類型
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.author: dsindona
-ms.openlocfilehash: a2d12a372f773a4a389ea7e7f2b3d2811ba889d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 401ffaaa0fa8c8e298a3a1891d93f2c9039d7820
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801218"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102934"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager 試用產品
 
@@ -70,7 +68,7 @@ ms.locfileid: "85801218"
 
 ### <a name="accepted-parameter-metadata-types"></a>接受的參數中繼資料類型
 
-| 中繼資料類型   | 參數類型  | Description     | 範例值    |
+| 中繼資料類型   | 參數類型  | 描述     | 範例值    |
 |---|---|---|---|
 | **baseuri**     | 字串          | 您部署套件的基底 URI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
 | **username**    | 字串          | 新的隨機使用者名稱。| admin68876      |

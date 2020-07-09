@@ -1,18 +1,18 @@
 ---
 title: 決定您的發佈選項 - Microsoft 商業市集
 description: 本文說明將供應項目發佈至 Microsoft AppSource 和 Azure Marketplace 的資格條件和需求。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 06/22/2020
-ms.author: dsindona
-ms.openlocfilehash: 457ff90c21fee2b569fa24d90fffc6ce80cdf969
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 3d8692d3180e4164bff544f71a1216097a390773
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027098"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103648"
 ---
 # <a name="determine-your-publishing-option"></a>決定您的發佈選項
 

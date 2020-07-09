@@ -1,18 +1,14 @@
 ---
 title: 作為事件方格來源的 Azure 訂用帳戶
 description: 描述 Azure 事件格線針對訂用帳戶事件所提供的屬性
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: reference
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 72b1a73bf418b417cd29f88063781e7b45979998
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393216"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105892"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>作為事件方格來源的 Azure 訂用帳戶
 
@@ -248,7 +244,7 @@ Azure 訂用帳戶會從 Azure Resource Manager 發出管理事件，像是建�
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | 授權 | 物件 (object) | 作業的所要求授權。 |
 | claims | 物件 (object) | 宣告的屬性。 如需詳細資訊，請參閱 [JWT 規格](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |

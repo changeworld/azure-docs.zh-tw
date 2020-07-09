@@ -3,15 +3,16 @@ title: 使用腳本設定 Azure Migrate 設備
 description: 瞭解如何使用腳本設定 Azure Migrate 設備
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: d5603aaef0a1c3e784f455777302c23e6724fbe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47b6b35e62d484b4d7a33f6a53796c59e01817fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052463"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102441"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>使用腳本設定設備
 
-請遵循這篇文章來建立[Azure Migrate 應用裝置](deploy-appliance.md)，以進行 VMware Vm 和 hyper-v vm 的評量/遷移。 您可以執行腳本來建立應用裝置，並確認它可以連線到 Azure。 
+請遵循這篇文章來建立[Azure Migrate 應用裝置](./migrate-appliance-architecture.md)，以進行 VMware Vm 和 hyper-v vm 的評量/遷移。 您可以執行腳本來建立應用裝置，並確認它可以連線到 Azure。 
 
 您可以使用腳本，或使用從 Azure 入口網站下載的範本，為 VMware 和 Hyper-v Vm 部署應用裝置。 如果您無法使用已下載的範本來建立 VM，則使用腳本會很有用。
 
@@ -45,7 +46,7 @@ Hyper-V | Windows Server 2016，具有 16 GB 的記憶體，八個 vcpu，大約
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - 範例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
 3. 確認適用于 Azure 公用雲端的最新設備版本和腳本：
 
     **演算法** | **下載** | **SHA256**
@@ -93,7 +94,7 @@ Hyper-V | Windows Server 2016，具有 16 GB 的記憶體，八個 vcpu，大約
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - 範例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
 
 3. 確認適用于 Azure 公用雲端的最新設備版本和腳本：
 
