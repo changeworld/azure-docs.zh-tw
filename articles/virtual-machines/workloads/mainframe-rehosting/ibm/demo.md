@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83f7f16d8406744a10451e8d488b7719845c525d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68841383"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135951"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>在 IBM zD&T v1 中設定由應用程式開發人員控制的散發（ADCD）
 
@@ -75,7 +76,7 @@ ms.locfileid: "68841383"
 
 4. 登入時，建立目錄來上傳 IBM 套件。 請記住，Linux 會區分大小寫。 例如，此示範會假設封裝已上傳至：
 
-        /home/MyUserID/ZDT/adcd/nov2017/volumes
+    `/home/MyUserID/ZDT/adcd/nov2017/volumes`
 
 5. 使用 SSH 用戶端（例如[WinSCP](https://winscp.net/eng/index.php)）上傳檔案。 由於 SCP 是 SSH 的一部分，因此會使用 SSH 使用的埠22。 如果您的本機電腦不是 Windows，您可以在 SSH 會話中輸入[scp 命令](http://man7.org/linux/man-pages/man1/scp.1.html)。
 
@@ -88,8 +89,8 @@ ms.locfileid: "68841383"
 
 8. 當上傳完成時，流覽至 [磁片區] 目錄，並將所有**gz**的磁片區解壓縮：
 
-    ```
-        gunzip \*.gz
+    ```console
+    gunzip \*.gz
     ```
     
 ![檔案瀏覽器顯示解壓縮的 gz 磁片區](media/01-gunzip.png)
@@ -99,9 +100,9 @@ ms.locfileid: "68841383"
 下一個步驟是將 zD&T 設定為使用上傳的套件。 ZD&T 內的映射儲存進程可讓您掛接和使用映射。 它可以使用 SSH 或 FTP。
 
 1. 啟動**zDTServer**。 若要這樣做，您必須在根層級。 依序輸入下列兩個命令：
-    ```
-        sudo su -
-        /opt/ibm/zDT/bin/startServer
+    ```console
+    sudo su -
+    /opt/ibm/zDT/bin/startServer
     ```
 2. 請記下命令所輸出的 URL，並使用此 URL 來存取 web 伺服器。 看起來像這樣：
      > HTTPs：//（您的 VM 名稱或 IP 位址）： 9443/ZDTMC/index.html
