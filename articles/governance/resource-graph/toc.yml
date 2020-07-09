@@ -65,6 +65,10 @@
     - name: 節流要求指引
       displayName: 'pagination, batching, throttling, parallel'
       href: ./concepts/guidance-for-throttled-requests.md
+    - name: 安全性
+      items:
+        - name: Azure 安全性效能評定的安全性基準
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: 操作指南
   items:
     - name: 取得資源變更

@@ -8,11 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711879"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135146"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>從 VMware VM 和實體伺服器至次要網站之災害復原的支援矩陣
 
@@ -67,14 +68,14 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 **Configuration** | **支援**  
 --- | --- 
-主機 - NIC 小組 | Yes 
-主機 - VLAN | Yes 
-主機 - IPv4 | Yes 
+主機 - NIC 小組 | 是 
+主機 - VLAN | 是 
+主機 - IPv4 | 是 
 主機 - IPv6 | No 
 客體 VM - NIC 小組 | No
-客體 VM - IPv4 | Yes
+客體 VM - IPv4 | 是
 客體 VM - IPv6 | No
-客體 VM - Windows/Linux - 靜態 IP 位址 | Yes
+客體 VM - Windows/Linux - 靜態 IP 位址 | 是
 客體 VM - 多重 NIC | 是
 
 
@@ -84,29 +85,29 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 **儲存體 (主機)** | **支援** 
 --- | --- 
-NFS | Yes 
+NFS | 是 
 SMB 3.0 | N/A 
-SAN (ISCSI) | Yes 
-多重路徑 (MPIO) | Yes 
+SAN (ISCSI) | 是 
+多重路徑 (MPIO) | 是 
 
 ### <a name="guest-or-physical-server-storage"></a>客體或實體伺服器儲存體
 
 **Configuration** | **支援** 
 --- | --- 
-VMDK | Yes 
+VMDK | 是 
 VHD/VHDX | N/A 
 第 2 代 VM | N/A 
-共用叢集磁碟 | Yes 
+共用叢集磁碟 | 是 
 已加密磁碟 | No 
-UEFI| Yes 
+UEFI| 是 
 NFS | No 
 SMB 3.0 | No 
-RDM | Yes 
-磁碟 > 1 TB | Yes 
-使用等量磁碟的磁碟區 > 1 TB<br/><br/> LVM | Yes 
+RDM | 是 
+磁碟 > 1 TB | 是 
+使用等量磁碟的磁碟區 > 1 TB<br/><br/> LVM | 是 
 儲存空間 | No 
-熱新增/移除磁碟 | Yes 
-排除磁碟 | Yes 
+熱新增/移除磁碟 | 是 
+排除磁碟 | 是 
 多重路徑 (MPIO) | N/A 
 
 ## <a name="vaults"></a>保存庫
@@ -130,5 +131,5 @@ RDM | Yes
 
 下載 [InMage Scout 使用者指南](https://aka.ms/asr-scout-user-guide)
 
-- [將 VMM 雲端中的 Hyper-V VM 複寫至次要網站](tutorial-vmm-to-vmm.md)
-- [將 VMWare VM 和實體伺服器複寫至次要網站](tutorial-vmware-to-vmware.md)
+- [將 VMM 雲端中的 Hyper-V VM 複寫至次要網站](./hyper-v-vmm-disaster-recovery.md)
+- [將 VMWare VM 和實體伺服器複寫至次要網站](./vmware-physical-secondary-disaster-recovery.md)

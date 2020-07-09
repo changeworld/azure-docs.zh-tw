@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 607f622bc484883ecbeae0552eecc9561cf4c3ef
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969597"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134610"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -461,26 +461,27 @@ CMK 的輪替需要使用 Azure Key Vault 中新金鑰版本來明確更新「�
 
 您所有的資料在金鑰輪替作業之後仍可供存取，因為資料一律會以帳戶加密金鑰 (AEK) 加密，而 AEK 現在會以 Key Vault 中的新金鑰加密金鑰 (KEK) 版本來加密。
 
-## <a name="saving-queries-protected-with-cmk"></a>儲存以 CMK 保護的查詢
+## <a name="cmk-for-queries"></a>查詢的 CMK
 
-Log Analytics 中使用的查詢語言是可表達的，而且可以包含您新增至查詢或查詢語法中的批註中的機密資訊。 有些組織要求這類資訊在 CMK 原則中會受到保護，而且您需要儲存以金鑰加密的查詢。 Azure 監視器可讓您將*已*儲存的搜尋和*記錄警示*查詢儲存在您自己的儲存體帳戶中，以連接到您的工作區。 
+Log Analytics 中使用的查詢語言是可表達的，而且可以包含您新增至查詢或查詢語法中的批註中的機密資訊。 有些組織要求這類資訊在 CMK 原則中會受到保護，而且您需要儲存以金鑰加密的查詢。 當連接到您的工作區時，Azure 監視器可讓您將*已儲存的搜尋*和*記錄警示*查詢，儲存在您自己的儲存體帳戶中，並以您的金鑰加密。 
 
-> 請注意，尚未支援活頁簿和 Azure 儀表板中使用的查詢 CMK。 這些查詢會使用 Microsoft 金鑰保持加密。  
+> [!NOTE]
+> 尚不支援用於活頁簿和 Azure 儀表板中的查詢 CMK。 這些查詢會使用 Microsoft 金鑰保持加密。  
 
-透過「攜帶您自己的儲存體」（BYOS），服務會將查詢上傳到您所控制的儲存體帳戶。 這表示您可以使用您用來加密 Log Analytics 叢集中資料的相同金鑰或不同的金鑰，來控制待用[加密原則](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys)。 不過，您會負責與該儲存體帳戶相關聯的成本。 
+當您[攜帶自己的儲存體](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage)（BYOS）並將它與您的工作區產生關聯時，服務會將*已儲存的搜尋*和*記錄警示*查詢上傳至您的儲存體帳戶。 這表示您可以使用您用來加密 Log Analytics 叢集中資料的相同金鑰或不同的金鑰，來控制儲存體帳戶和待用[加密原則](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys)。 不過，您會負責與該儲存體帳戶相關聯的成本。 
 
 **設定查詢的 CMK 之前的考慮**
 * 您必須對您的工作區和儲存體帳戶具有「寫入」許可權
 * 請務必在您的 Log Analytics 工作區所在的相同區域中建立您的儲存體帳戶
 * 儲存體中的儲存*搜尋*會視為服務成品，其格式可能會變更
-* 現有的儲存*搜尋*會從您的工作區中移除。 複製和設定之前所需的任何儲存*搜尋*。 您可以使用此[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch?view=azps-4.2.0)來查看*已儲存的搜尋*
+* 現有的儲存*搜尋*會從您的工作區中移除。 複製和設定之前所需的任何儲存*搜尋*。 您可以使用[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch)來查看*已儲存的搜尋*
 * 不支援查詢歷程記錄，而且您將無法看到您執行的查詢
-* 您可以針對儲存查詢的目的，將單一儲存體帳戶與工作區產生關聯，但可用於儲存的*搜尋*和*記錄警示*查詢
+* 您可以針對儲存查詢的目的，將單一儲存體帳戶與工作區產生關聯，但可用於儲存*的搜尋*和*記錄警示*查詢
 * 不支援釘選到儀表板
 
-**BYOS for 查詢的設定**
+**為儲存的搜尋查詢設定 BYOS**
 
-將具有*查詢*dataSourceType 的儲存體帳戶與您的工作區建立關聯。 
+將*查詢*的儲存體帳戶關聯至您的工作區--*已儲存-搜尋*查詢會儲存在您的儲存體帳戶中。 
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
@@ -505,9 +506,9 @@ Content-type: application/json
 
 設定之後，任何新*儲存的搜尋*查詢都會儲存在儲存體中。
 
-**記錄警示的 BYOS 設定**
+**設定記錄-警示查詢的 BYOS**
 
-將具有*警示*dataSourceType 的儲存體帳戶與您的工作區建立關聯。 
+將*警示*的儲存體帳戶與您的工作區產生關聯--*記錄警示*查詢會儲存在您的儲存體帳戶中。 
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"

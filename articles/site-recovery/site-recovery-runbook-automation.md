@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: 123ef7de338bfe872948db60c68c0c5743f5cda1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345133"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134812"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>將 Azure 自動化 Runbook 新增至復原方案
 
@@ -128,7 +129,7 @@ $vmMap = $RecoveryPlanContext.VmMap
 
 您可以在多個復原方案中使用單一 runbook 腳本，方法是使用外部變數。 
 
-- 您可以使用[Azure 自動化變數](../automation/automation-variables.md)來儲存用於執行復原計畫的參數。
+- 您可以使用[Azure 自動化變數](../automation/shared-resources/variables.md)來儲存用於執行復原計畫的參數。
 - 您可以在變數前面加上復原方案名稱，為每個復原方案建立個別變數。 然後，使用這些變數作為參數。
 - 您可以變更參數而不需要變更指令碼，但仍變更指令碼的運作方式。
 
@@ -198,7 +199,7 @@ $vmMap = $RecoveryPlanContext.VmMap
 - 例如，SharePoint 復原有兩個前端。 基本企業營運 (LOB) 應用程式只有一個前端。
 - 在此案例中，您無法為每個復原方案建立個別變數。
 
-在下列範例中，我們會在 Azure 自動化帳戶中建立[複雜變數](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable)。
+在下列範例中，我們會在 Azure 自動化帳戶中建立[複雜變數](/powershell/module/servicemanagement/azure/set-azureautomationvariable)。
 
 我們會使用 Azure PowerShell 來指定多個值來執行此動作。
 
@@ -263,9 +264,6 @@ $vmMap = $RecoveryPlanContext.VmMap
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[Azure 自動化執行身分帳戶](../automation/automation-create-runas-account.md)
+- 瞭解[Azure 自動化執行身分帳戶](../automation/manage-runas-account.md)
 - 請參閱[Azure 自動化範例腳本](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team)。
 - [深入瞭解](site-recovery-failover.md)如何執行容錯移轉。
-
-
-

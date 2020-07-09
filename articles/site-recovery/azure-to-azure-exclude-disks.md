@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
-ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a21460279420c46b11c43615ae5ecc7bfa81de4d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75973684"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135804"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>從 Azure Vm 的 PowerShell 複寫排除磁片
 
@@ -24,14 +25,14 @@ ms.locfileid: "75973684"
 
 - 請確定您瞭解嚴重損壞[修復架構和元件](azure-to-azure-architecture.md)。
 - 請參閱所有元件的[支援需求](azure-to-azure-support-matrix.md)。
-- 請確定您已 AzureRm PowerShell "Az" 模組。 若要安裝或更新 PowerShell，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+- 請確定您已 AzureRm PowerShell "Az" 模組。 若要安裝或更新 PowerShell，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
 - 請確定您已建立復原服務保存庫和受保護的虛擬機器至少一次。 如果您尚未完成這些動作，請遵循[使用 Azure PowerShell 設定 Azure 虛擬機器的](azure-to-azure-powershell.md)嚴重損壞修復中的程式。
 - 如果您想要瞭解如何將磁片新增至啟用複寫的 Azure VM，請[參閱這篇文章](azure-to-azure-enable-replication-added-disk.md)。
 
 ## <a name="why-exclude-disks-from-replication"></a>為何排除磁片不進行複寫
 您可能需要從複寫中排除磁片，因為：
 
-- 您的虛擬機器已達到[Azure Site Recovery 的限制，因此無法複寫資料變更率](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)。
+- 您的虛擬機器已達到[Azure Site Recovery 的限制，因此無法複寫資料變更率](./azure-to-azure-support-matrix.md)。
 
 - 在排除的磁片上變換的資料不重要或不需要複寫。
 

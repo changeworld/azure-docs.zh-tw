@@ -138,7 +138,7 @@
       items:
         - name: 整合 Key Vault 與 Azure 原則
           displayName: 'key vault, certificate, key'
-          href: ../../key-vault/azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../key-vault/general/azure-policy.md?bc=/azure/governance/policy/breadcrumb/toc.json&toc=/azure/governance/policy/toc.json
     - name: Azure Lighthouse 整合
       items:
         - name: 大規模部署原則

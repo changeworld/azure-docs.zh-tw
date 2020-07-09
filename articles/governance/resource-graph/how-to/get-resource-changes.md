@@ -3,12 +3,12 @@ title: 取得資源變更
 description: 了解如何找出變更資源的時間、取得已變更屬性的清單，以及評估差異。
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: ace911361ccb96cab3d5c7557ba0e524dbf801d2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 3d65b5d7e968fda17f80d790ae3171398e2cb73b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044986"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135542"
 ---
 # <a name="get-resource-changes"></a>取得資源變更
 
@@ -25,7 +25,7 @@ ms.locfileid: "86044986"
 - 將組態管理資料庫 (稱為 CMDB) 保持在最新狀態。 並非以排程的頻率重新整理所有資源及其完整的屬性集，而是只取得變更的內容。
 - 了解當資源變更合規性狀態時，其他哪些屬性可能已變更。 評估這些額外的屬性可提供其他可能需要透過 Azure 原則定義來管理之屬性的深入解析。
 
-本文說明如何透過 Resource Graph 的 SDK 收集這項資訊。 若要在 Azure 入口網站中查看這項資訊，請參閱 Azure 原則的[變更歷程記錄](../../policy/how-to/determine-non-compliance.md#change-history)或 Azure 活動記錄[變更歷程記錄](../../../azure-monitor/platform/activity-log-view.md#azure-portal)。 如需將應用程式從基礎結構層變更為應用程式部署的詳細資訊，請參閱 Azure 監視器中的[使用應用程式變更分析 (預覽)](../../../azure-monitor/app/change-analysis.md)。
+本文說明如何透過 Resource Graph 的 SDK 收集這項資訊。 若要在 Azure 入口網站中查看這項資訊，請參閱 Azure 原則的[變更歷程記錄](../../policy/how-to/determine-non-compliance.md#change-history)或 Azure 活動記錄[變更歷程記錄](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)。 如需將應用程式從基礎結構層變更為應用程式部署的詳細資訊，請參閱 Azure 監視器中的[使用應用程式變更分析 (預覽)](../../../azure-monitor/app/change-analysis.md)。
 
 > [!NOTE]
 > Resource Graph 中的變更詳細資料適用於 Resource Manager 屬性。 如需追蹤虛擬機器內部的變更，請參閱 Azure 自動化的[變更追蹤](../../../automation/change-tracking.md)或 Azure 原則的 [VM 來賓組態](../../policy/concepts/guest-configuration.md)。

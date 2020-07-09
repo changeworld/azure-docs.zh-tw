@@ -131,7 +131,7 @@
     - name: 建立 AVS 評量
       href: how-to-create-azure-vmware-solution-assessment.md
     - name: 評估 SQL Server 資料庫
-      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
+      href: /sql/dma/dma-assess-sql-data-estate-to-sqldb
     - name: 自訂評量
       href: how-to-modify-assessment.md
     - name: 新增移轉工具
@@ -171,9 +171,9 @@
 - name: 資源
   items:
     - name: 雲端採用架構中的移轉
-      href: 'https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/index'
+      href: /azure/cloud-adoption-framework/migrate/
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/migrate/'
+      href: /rest/api/migrate/
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.migrate/allversions
     - name: 定價
@@ -181,7 +181,7 @@
     - name: UserVoice
       href: 'https://aka.ms/AzureMigrateUservoice'
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-migrate.html'
+      href: /answers/topics/azure-migrate.html
     - name: 部落格
       href: 'https://azure.microsoft.com/blog/tag/azure-migrate/'
     - name: Azure Migrate

@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75973656"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135749"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>將執行儲存空間直接存取的 Azure Vm 複寫至另一個區域
 
@@ -19,7 +20,7 @@ ms.locfileid: "75973656"
 >對於儲存空間直接存取叢集僅支援損毀一致復原點。
 >
 
-[儲存空間直接存取（S2D）](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct)是軟體定義的儲存體，可提供在 Azure 上建立[來賓](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure)叢集的方式。  Microsoft Azure 中的來賓叢集是由 IaaS Vm 組成的容錯移轉叢集。 它可讓裝載的 VM 工作負載跨來賓叢集進行故障處理，達到應用程式的更高可用性 SLA，而不是單一 Azure VM 可以提供的。 在 VM 裝載 SQL 或向外延展檔案伺服器這類重要應用程式的案例中很有用。
+[儲存空間直接存取（S2D）](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct)是軟體定義的儲存體，可提供在 Azure 上建立[來賓](https://techcommunity.microsoft.com/t5/failover-clustering/bg-p/FailoverClustering)叢集的方式。  Microsoft Azure 中的來賓叢集是由 IaaS Vm 組成的容錯移轉叢集。 它可讓裝載的 VM 工作負載跨來賓叢集進行故障處理，達到應用程式的更高可用性 SLA，而不是單一 Azure VM 可以提供的。 在 VM 裝載 SQL 或向外延展檔案伺服器這類重要應用程式的案例中很有用。
 
 ## <a name="disaster-recovery-with-storage-spaces-direct"></a>具有儲存空間直接存取的嚴重損壞修復
 
@@ -37,14 +38,14 @@ ms.locfileid: "75973656"
 
 **嚴重損壞修復考慮**
 
-1. 您設定叢集的[雲端見證](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)時，在災害復原區域中保留見證。
-2. 如果您要將虛擬機器容錯移轉到與來源區域不同的 DR 區域上的子網路，則叢集 IP 位址必須在容錯移轉後變更。  若要變更叢集的 IP，您必須使用 Site Recovery 復原[計畫腳本。](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)</br>
+1. 您設定叢集的[雲端見證](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)時，在災害復原區域中保留見證。
+2. 如果您要將虛擬機器容錯移轉到與來源區域不同的 DR 區域上的子網路，則叢集 IP 位址必須在容錯移轉後變更。  若要變更叢集的 IP，您必須使用 Site Recovery 復原[計畫腳本。](./site-recovery-runbook-automation.md)</br>
 使用自訂指令碼擴充功能在 VM 內執行命令的[範例指令碼](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) 
 
 ### <a name="enabling-site-recovery-for-s2d-cluster"></a>啟用 S2D 叢集的站台復原：
 
 1. 在復原服務保存庫中，按一下 [+複寫]
-1. 選取叢集中的所有節點，並將這些節點設定為[多 VM 一致性群組](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency)的一部分
+1. 選取叢集中的所有節點，並將這些節點設定為[多 VM 一致性群組](./azure-to-azure-common-questions.md#multi-vm-consistency)的一部分
 1. 選取應用程式一致性關閉的複寫原則* (僅提供損毀一致性支援)
 1. 啟用複寫
 
@@ -69,7 +70,7 @@ ms.locfileid: "75973656"
 
 
 ### <a name="failover-of-the-virtual-machines"></a>虛擬機器的容錯移轉 
-Vm 的這兩個節點都必須使用 Site Recovery 復原[方案](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans)進行故障切換 
+Vm 的這兩個節點都必須使用 Site Recovery 復原[方案](./site-recovery-create-recovery-plans.md)進行故障切換 
 
 ![storagespacesdirect 保護](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 
@@ -93,4 +94,4 @@ Vm 的這兩個節點都必須使用 Site Recovery 復原[方案](https://docs.m
 如需詳細資訊，請參閱[在 Site Recovery 中容錯移轉](site-recovery-failover.md)。
 ## <a name="next-steps"></a>後續步驟
 
-[深入了解](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)如何執行容錯回復。
+[深入了解](./azure-to-azure-tutorial-failover-failback.md)如何執行容錯回復。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6a284d13d0d737eca65b2593813b3d1b999cfdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361382"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133164"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>適用於 SAP NetWeaver 的 Azure 虛擬機器部署
 
@@ -211,6 +211,7 @@ ms.locfileid: "85361382"
 [planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (在 Azure 儲存體帳戶之間複製磁碟)
 [planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (SAP 部署的 VM/VHD 結構)
 [planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (為連接的磁碟設定自動掛接)
+[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (適用於 SAP 的 Azure 監視解決方案)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -913,7 +914,7 @@ az --version
 > 一般支援聲明：若您需要 Azure Extension for SAP 的支援，請一律在元件 BC-OP-NT-MS-AZR-0017P for Windows 或 BC-OP-LNX-MS-AZR-0017P 上開啟 SAP 的事件。
 > 有專屬的 Microsoft 支援工程師在 SAP 支援系統中工作，以協助我們的聯合客戶。
 
-在您如 [Azure 上 SAP 的 VM 軟體部署案例][deployment-guide-3]所述準備好 VM 之後，Azure VM 代理程式就會安裝於虛擬機器上。 下一個步驟是部署 Azure Extension for SAP (位於全球 Azure 資料中心的 Azure 擴充功能存放庫)。 如需詳細資訊，請參閱 [適用于 SAP NetWeaver 的 Azure 虛擬機器規劃和執行] [規劃-9.1]。
+在您如 [Azure 上 SAP 的 VM 軟體部署案例][deployment-guide-3]所述準備好 VM 之後，Azure VM 代理程式就會安裝於虛擬機器上。 下一個步驟是部署 Azure Extension for SAP (位於全球 Azure 資料中心的 Azure 擴充功能存放庫)。 如需詳細資訊，請參閱[適用於 SAP NetWeaver 的 Azure 虛擬機器規劃和實作指南][planning-guide-9.1]。
 
 我們正在發行新版本的 Azure 擴充功能（適用于 SAP）。 新的擴充功能會使用虛擬機器的系統指派身分識別，來取得連接的磁片、網路介面和虛擬機器本身的相關資訊。 若要能夠存取這些資源，虛擬機器的系統識別需要虛擬機器、作業系統磁片、資料磁片和網路介面的 [讀者] 許可權。 我們目前建議您只在下列案例中安裝新的擴充功能：
 

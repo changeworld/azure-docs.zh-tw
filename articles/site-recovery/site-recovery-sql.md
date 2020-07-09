@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4bdca30c82b31bda2e843b3712cfbe772952f3e8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 34cfafadabd9a6328cbe85a5444211828df9db6d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077298"
+ms.locfileid: "86133715"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>設定 SQL Server 的災害復原
 
@@ -34,9 +34,9 @@ ms.locfileid: "86077298"
 
 部署類型 | BCDR 技術 | SQL Server 的預期 RTO | SQL Server 的預期 RPO |
 --- | --- | --- | ---
-在 Azure 基礎結構即服務（IaaS）虛擬機器（VM）或內部部署環境中 SQL Server。| [Always On 可用性群組](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | 將次要複本設為主要複本所花費的時間。 | 因為複寫到次要複本是非同步，所以會發生資料遺失的情況。
-在 Azure IaaS VM 或內部部署環境中 SQL Server。| [容錯移轉叢集 (Always On FCI)](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | 在節點之間進行故障切換所花費的時間。 | 由於 Always On FCI 會使用共用存放裝置，因此在容錯移轉時，會有相同的儲存體實例視圖。
-在 Azure IaaS VM 或內部部署環境中 SQL Server。| [資料庫鏡像（高效能模式）](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | 強制服務所花費的時間，使用鏡像伺服器做為暖待命伺服器。 | 複寫不是同步進行。 鏡像資料庫可能會稍微落後主體資料庫。 延遲通常很小。 但如果主體或鏡像伺服器的系統負載過重，可能會變得很大。<br/><br/>記錄傳送可以是資料庫鏡像的補充。 這是非同步資料庫鏡像的理想替代方法。
+在 Azure 基礎結構即服務（IaaS）虛擬機器（VM）或內部部署環境中 SQL Server。| [Always On 可用性群組](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | 將次要複本設為主要複本所花費的時間。 | 因為複寫到次要複本是非同步，所以會發生資料遺失的情況。
+在 Azure IaaS VM 或內部部署環境中 SQL Server。| [容錯移轉叢集 (Always On FCI)](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | 在節點之間進行故障切換所花費的時間。 | 由於 Always On FCI 會使用共用存放裝置，因此在容錯移轉時，會有相同的儲存體實例視圖。
+在 Azure IaaS VM 或內部部署環境中 SQL Server。| [資料庫鏡像（高效能模式）](/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | 強制服務所花費的時間，使用鏡像伺服器做為暖待命伺服器。 | 複寫不是同步進行。 鏡像資料庫可能會稍微落後主體資料庫。 延遲通常很小。 但如果主體或鏡像伺服器的系統負載過重，可能會變得很大。<br/><br/>記錄傳送可以是資料庫鏡像的補充。 這是非同步資料庫鏡像的理想替代方法。
 SQL 做為 Azure 上的平臺即服務（PaaS）。<br/><br/>此部署類型包含單一資料庫和彈性集區。 | 使用中的地理複寫 | 觸發容錯移轉後的30秒。<br/><br/>針對其中一個次要資料庫啟用容錯移轉時，所有其他的次要複本都會自動連結至新的主要複本。 | 五秒的 RPO。<br/><br/>主動式異地複寫使用 SQL Server 的 Always On 技術。 它會使用快照集隔離，以非同步方式將主資料庫上認可的交易複寫到次要資料庫。<br/><br/>次要資料保證永遠不會有部分交易。
 使用 Azure 上的主動式異地複寫設定的 SQL 做為 PaaS。<br/><br/>此部署類型包含受控實例、彈性集區和單一資料庫。 | 自動容錯移轉群組 | 一小時的 RTO。 | 五秒的 RPO。<br/><br/>自動容錯移轉群組在主動式異地複寫之上提供群組語義。 但使用相同的非同步複寫機制。
 在 Azure IaaS VM 或內部部署環境中 SQL Server。| 使用 Azure Site Recovery 進行複寫 | RTO 通常少於15分鐘。 若要深入瞭解，請參閱[Site Recovery 所提供的 RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 | 應用程式一致性的一小時，以及5分鐘的損毀一致性。 如果您要尋找較低的 RPO，請使用其他 BCDR 技術。
@@ -95,13 +95,13 @@ BCDR 技術 Always On、主動式異地複寫和自動容錯移轉群組具有�
 
 某些 BCDR 技術（例如 SQL Always On）原本就不支援測試容錯移轉。 *只有在使用這類技術時，才*建議您使用下列方法。
 
-1. 在 Azure 中裝載可用性群組複本的 VM 上設定[Azure 備份](../backup/backup-azure-arm-vms.md)。
+1. 在 Azure 中裝載可用性群組複本的 VM 上設定[Azure 備份](../backup/backup-azure-vms-first-look-arm.md)。
 
 1. 觸發復原方案的測試容錯移轉之前，請先從上一個步驟中所建立的備份來復原 VM。
 
     ![顯示從 Azure 備份還原設定之視窗的螢幕擷取畫面](./media/site-recovery-sql/restore-from-backup.png)
 
-1. 在 VM 中[強制執行](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure)從備份還原的仲裁。
+1. 在 VM 中[強制執行](/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure)從備份還原的仲裁。
 
 1. 將接聽程式的 IP 位址更新為測試容錯移轉網路中可用的位址。
 
@@ -139,7 +139,7 @@ Site Recovery 不會在複寫至 Azure 區域時提供來賓叢集支援。 SQL 
 
 1. 將實例設定為要協助保護之資料庫的鏡像。 在高安全性模式下設定鏡像。
 
-1. 在[Azure](azure-to-azure-tutorial-enable-replication.md)、 [Hyper-v](site-recovery-hyper-v-site-to-azure.md)或[VMware vm 和實體伺服器](site-recovery-vmware-to-azure-classic.md)的主要網站上設定 Site Recovery。
+1. 在[Azure](azure-to-azure-tutorial-enable-replication.md)、 [Hyper-v](./hyper-v-azure-tutorial.md)或[VMware vm 和實體伺服器](./vmware-azure-tutorial.md)的主要網站上設定 Site Recovery。
 
 1. 使用 Site Recovery 複寫，將新的 SQL Server 實例複寫至次要網站。 因為它是高安全性鏡像複本，所以它會與主要叢集同步處理，但是會使用 Site Recovery 複寫進行複寫。
 
@@ -161,7 +161,7 @@ Site Recovery 與應用程式無關。 Site Recovery 可以協助保護部署在
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[Site Recovery 架構](site-recovery-components.md)。
+* 深入瞭解[Site Recovery 架構](./azure-to-azure-architecture.md)。
 * 如需 Azure 中的 SQL Server，請深入瞭解在次要 Azure 區域中復原的[高可用性解決方案](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions)。
 * 如 SQL Database，請深入瞭解在次要 Azure 區域中復原的[商務持續性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)和[高可用性](../azure-sql/database/high-availability-sla.md)選項。
 * 如需在內部部署 SQL Server 機，請深入瞭解 Azure 虛擬機器中復原的[高可用性選項](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#hybrid-it-disaster-recovery-solutions)。

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 58ddb7363ece5ebdb06df29c27ff76b27da627a4
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 3a1ac6dd940ea5d31adae45a435c5425497362b1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851169"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135776"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>將 Azure Vm 複寫到另一個 Azure 區域
 
@@ -50,7 +50,7 @@ ms.locfileid: "85851169"
        - 如果 Site Recovery 所建立的資源群組已經存在，就會重複使用它。
        - 您可以自訂資源群組設定。
        - 目標資源群組的位置可以是任何 Azure 區域，但來源 Vm 裝載所在的區域除外。
-   - **目標虛擬網路**：根據預設，Site Recovery 會在目的地區域中建立新的虛擬網路，並在名稱中加上 "asr" 尾碼。 這會對應至您的來源網路，並用來進行任何未來的保護。 [深入了解](site-recovery-network-mapping-azure-to-azure.md)網路對應。
+   - **目標虛擬網路**：根據預設，Site Recovery 會在目的地區域中建立新的虛擬網路，並在名稱中加上 "asr" 尾碼。 這會對應至您的來源網路，並用來進行任何未來的保護。 [深入了解](./azure-to-azure-network-mapping.md)網路對應。
    - **目標儲存體帳戶（來源 vm 不使用受控磁片）**：根據預設，Site Recovery 會建立新的目標儲存體帳戶，以模擬您的來源 VM 儲存體設定。 如果儲存體帳戶已經存在，就會重複使用。
    - **複本受控磁片（來源 VM 使用受控磁片）**： Site Recovery 會在目的地區域中建立新的複本受控磁片，以使用與來源 vm 的受控磁片相同的儲存體類型（標準或高階）來反映來源 vm 的受控磁片。
    - **快取儲存體帳戶**：Site Recovery 需要在來源區域中有額外的儲存體帳戶 (稱為快取儲存體)。 在來源 VM 上發生的所有變更都會受到追蹤，並傳送到快取儲存體帳戶，然後複寫到目標位置。 此儲存體帳戶應該是標準的。

@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: d941f3e13e99accadc59c5836d88a824182329b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629723"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135866"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 至 Azure 災害復原架構
 
@@ -166,11 +167,11 @@ Site Recovery 會依照下列方式建立快照集：
 
 #### <a name="control-access-with-nsg-rules"></a>使用 NSG 規則控制存取
 
-如果您使用 [NSG 規則](https://docs.microsoft.com/azure/virtual-network/security-overview)來篩選進出於 Azure 網路/子網路的網路流量，藉以控制 VM 連線，請注意下列需求：
+如果您使用 [NSG 規則](../virtual-network/security-overview.md)來篩選進出於 Azure 網路/子網路的網路流量，藉以控制 VM 連線，請注意下列需求：
 
 - 來源 Azure 區域的 NSG 規則應允許複寫流量的輸出存取。
 - 建議您先在測試環境中建立規則，再將其設置於生產環境。
-- 使用[服務標記](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)，而不要允許個別 IP 位址。
+- 使用[服務標記](../virtual-network/security-overview.md#service-tags)，而不要允許個別 IP 位址。
     - 服務標記代表一組聚集在一起的 IP 位址前置詞，用以盡可能降低建立安全性規則時的複雜性。
     - Microsoft 會不定期自動更新服務標記。 
  

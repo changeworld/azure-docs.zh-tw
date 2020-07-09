@@ -1,17 +1,18 @@
 ---
 title: 大規模監視委派的資源
 description: 瞭解如何在您所管理的客戶租使用者中，以可調整的方式有效率地使用 Azure 監視器記錄。
-ms.date: 02/03/2020
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: bdd91cec650d6810d1d62230219f840a172141d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be7494f929fc91e2b01bde0b4f26f7c2e4b907b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634110"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133466"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大規模監視委派的資源
 
-身為服務提供者，您可能已將多個客戶租用戶上架以進行 Azure 委派資源管理。 [Azure Lighthouse](../overview.md) 可讓服務提供者一次在多個租用戶之間執行大規模作業，讓管理工作更有效率。
+身為服務提供者，您可能已將多個客戶租使用者上架至[Azure 燈塔](../overview.md)。 Azure Lighthouse 可讓服務提供者一次在多個租用戶之間執行大規模作業，讓管理工作更有效率。
 
 本主題說明如何在您所管理的客戶租使用者中，以可調整的方式使用[Azure 監視器記錄](../../azure-monitor/platform/data-platform-logs.md)。
 
@@ -21,7 +22,7 @@ ms.locfileid: "84634110"
 
 我們建議您直接在客戶租使用者中建立這些工作區。 如此一來，其資料會保留在其租使用者中，而不會匯出至您的租使用者 這也可集中監視 Log Analytics 支援的任何資源或服務，讓您在監視的資料類型上有更大的彈性。
 
-您可以使用[Azure 入口網站](../../azure-monitor/learn/quick-create-workspace.md)、使用[Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)，或使用[Azure PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)來建立 Log Analytics 工作區。
+您可以使用[Azure 入口網站](../../azure-monitor/learn/quick-create-workspace.md)、使用[Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)，或使用[Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md)來建立 Log Analytics 工作區。
 
 ## <a name="deploy-policies-that-log-data"></a>部署記錄資料的原則
 

@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0fd3a6bc62feeb3728fa88b4aad56c8713bce11
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74082656"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134916"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 至 Azure 的災害復原架構
 
@@ -52,7 +53,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 **Hyper-V 至 Azure 架構 (包含 VMM)**
 
-![單元](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![元件](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
 
 
@@ -66,14 +67,14 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 ### <a name="enable-protection"></a>啟用保護。
 
 1. 您在 Azure 入口網站或內部部署針對 Hyper-V VM 啟用保護之後，**啟用保護**隨即啟動。
-2. 作業會檢查符合必要條件的機器，然後叫用 [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) 方法，以使用您進行的設定來設定複寫。
-3. 作業會啟動初始複寫，方法是叫用 [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) 方法，以初始化完整的 VM 複寫，並且將 VM 的虛擬磁碟傳送至 Azure。
+2. 作業會檢查符合必要條件的機器，然後叫用 [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) 方法，以使用您進行的設定來設定複寫。
+3. 作業會啟動初始複寫，方法是叫用 [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) 方法，以初始化完整的 VM 複寫，並且將 VM 的虛擬磁碟傳送至 Azure。
 4. 您可以在 [**工作**] 索引標籤中監視作業。     ![作業清單 ](media/hyper-v-azure-architecture/image1.png) ![啟用保護向下切入](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>初始資料複寫
 
-1. 觸發初始複寫時，會建立[HYPER-V VM 快照](https://technet.microsoft.com/library/dd560637.aspx)集快照集。
+1. 觸發初始複寫時，會建立[HYPER-V VM 快照](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10))集快照集。
 2. VM 上的虛擬硬碟會逐一複寫，直到它們全部複製到 Azure 為止。 視 VM 大小和網路頻寬而定，這可能需要一些時間。 [了解如何](https://support.microsoft.com/kb/3056159)增加網路頻寬。
 3. 如果在初始複寫進行時發生磁碟變更，Hyper-V 複本複寫追蹤器會以 Hyper-V 複寫記錄 (.hrl) 的形式追蹤變更。 這些記錄檔位於與磁碟相同的資料夾中。 每個磁碟都有一個相關聯的.hrl 檔案會傳送至次要儲存體。 當初始複寫正在進行時，快照和記錄檔會取用磁碟資源。
 4. 初始複寫完成時，就會刪除 VM 快照集。

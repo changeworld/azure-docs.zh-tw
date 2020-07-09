@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 296254db83a065623b692d7947c130dfd71cd413
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835048"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134730"
 ---
 # <a name="monitor-the-process-server"></a>監視處理序伺服器
 
@@ -95,7 +96,7 @@ ms.locfileid: "83835048"
 ## <a name="next-steps"></a>後續步驟
 
 - 如果您有任何處理序伺服器問題，請遵循我們的[疑難排解指引](vmware-physical-azure-troubleshoot-process-server.md)
-- 如果您需要更多協助，請將您的問題貼到 [Azure Site Recovery 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)。 
+- 如果您需要更多協助，請將您的問題貼到 [Azure Site Recovery 的 Microsoft 問與答頁面](/answers/topics/azure-site-recovery.html)。 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

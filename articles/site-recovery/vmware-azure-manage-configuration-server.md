@@ -6,11 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672746"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134825"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理 VMware VM/實體伺服器嚴重損壞修復的設定伺服器
 
@@ -21,7 +22,7 @@ ms.locfileid: "80672746"
 
 ## <a name="update-windows-license"></a>更新 Windows 授權
 
-使用 OVF 範本所提供的授權是有效期 180 天的評估授權。 如需不中斷的使用權限，您必須使用購買的授權來啟用 Windows。 您可以透過獨立金鑰或 KMS 標準金鑰來進行授權更新。 在[執行 OS 的 DISM Windows 命令列](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)提供指引。 若要取得金鑰，請參閱[KMS 用戶端設定](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)。
+使用 OVF 範本所提供的授權是有效期 180 天的評估授權。 如需不中斷的使用權限，您必須使用購買的授權來啟用 Windows。 您可以透過獨立金鑰或 KMS 標準金鑰來進行授權更新。 在[執行 OS 的 DISM Windows 命令列](/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)提供指引。 若要取得金鑰，請參閱[KMS 用戶端設定](/windows-server/get-started/kmsclientkeys)。
 
 ## <a name="access-configuration-server"></a>存取設定伺服器
 
@@ -265,7 +266,7 @@ ProxyPassword="Password"
 
 您可以選擇使用 PowerShell 來刪除設定伺服器。
 
-1. [安裝](https://docs.microsoft.com/powershell/azure/install-Az-ps)Azure PowerShell 模組。
+1. [安裝](/powershell/azure/install-Az-ps)Azure PowerShell 模組。
 2. 使用以下命令登入您的 Azure 帳戶：
 
     `Connect-AzAccount`

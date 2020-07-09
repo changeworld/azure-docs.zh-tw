@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 501cf161a22aaa1ec37abda2b750106b6eaf3dc4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77661665"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135217"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>使用 Azure Site Recovery 在客戶管理的網站（與 VMM）之間淘汰嚴重損壞修復
 
@@ -38,7 +39,7 @@ ms.locfileid: "77661665"
 - 選項1（建議）：選擇[開始使用 Azure 做為 DR 目標](hyper-v-vmm-azure-tutorial.md)。
 
 
-- 選項2：選擇使用基礎[Hyper-v 複本解決方案](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)繼續進行站對站複寫，但是您將無法使用 Azure 入口網站中的 Azure Site Recovery 來管理 DR 設定。 
+- 選項2：選擇使用基礎[Hyper-v 複本解決方案](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)繼續進行站對站複寫，但是您將無法使用 Azure 入口網站中的 Azure Site Recovery 來管理 DR 設定。 
 
 
 ## <a name="remediation-steps"></a>補救步驟

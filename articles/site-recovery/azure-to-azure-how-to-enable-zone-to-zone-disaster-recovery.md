@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 543be2b408d9442c61ae2c052776e63c33206188
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488931"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135721"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>針對 Azure 虛擬機器啟用區域的損毀修復
 
@@ -97,7 +98,7 @@ Site Recovery 服務會在規劃和非計畫的中斷期間，讓您的商務應
 
 5. 如果您想要對複寫設定進行變更，請按一下 [下一步： Advanced settings]。
 
-6. 適當時，將設定從 [預設] 變更為 [開]。 針對 Azure 到 Azure 嚴重損壞修復的使用者，此頁面可能會很熟悉。 您可以在[這裡](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)找到有關此分頁上所提供選項的詳細資料。
+6. 適當時，將設定從 [預設] 變更為 [開]。 針對 Azure 到 Azure 嚴重損壞修復的使用者，此頁面可能會很熟悉。 您可以在[這裡](./azure-to-azure-tutorial-enable-replication.md)找到有關此分頁上所提供選項的詳細資料。
 
     ![[高級設定] 頁面](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
 
@@ -115,7 +116,7 @@ RTO SLA 等同于整體 Site Recovery。 我們承諾最多2小時的 RTO。 沒
 Site Recovery 小組和 Azure 容量管理小組會規劃足夠的基礎結構容量。 當您開始進行容錯移轉時，小組也有助於確保受 Site Recovery 保護的 VM 實例會部署到目的地區域。
 
 **4. 支援哪些作業系統？**
-區域的嚴重損壞修復支援與 Azure 相同的作業系統與 azure 的嚴重損壞修復。 請參閱[這裡](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)的支援矩陣。
+區域的嚴重損壞修復支援與 Azure 相同的作業系統與 azure 的嚴重損壞修復。 請參閱[這裡](./azure-to-azure-support-matrix.md)的支援矩陣。
 
 **5. 來源和目標資源群組可以是相同的嗎？**
 否，您必須容錯移轉至不同的資源群組。
@@ -124,8 +125,8 @@ Site Recovery 小組和 Azure 容量管理小組會規劃足夠的基礎結構�
 
 執行嚴重損壞修復演練、容錯移轉、重新保護和容錯回復所需遵循的步驟，與 Azure 到 Azure 嚴重損壞修復案例中的步驟相同。
 
-若要執行嚴重損壞修復演練，請遵循[這裡](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-dr-drill)所述的步驟。
+若要執行嚴重損壞修復演練，請遵循[這裡](./azure-to-azure-tutorial-dr-drill.md)所述的步驟。
 
-若要執行損毀修復並重新保護次要區域中的 Vm，請遵循[這裡](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)所述的步驟。
+若要執行損毀修復並重新保護次要區域中的 Vm，請遵循[這裡](./azure-to-azure-tutorial-failover-failback.md)所述的步驟。
 
-若要容錯回復到主要區域，請遵循[這裡](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failback)所述的步驟。
+若要容錯回復到主要區域，請遵循[這裡](./azure-to-azure-tutorial-failback.md)所述的步驟。

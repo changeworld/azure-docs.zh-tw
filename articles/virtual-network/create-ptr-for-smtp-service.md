@@ -13,11 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0264ad93eb53e27d1dc76f2b20ad175a6ee2f8de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8ffadb8d54db0c2a99dc12e45b5990155a0505e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688682"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135060"
 ---
 # <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>設定反向對應區域用於 SMTP Banner 檢查
 
@@ -37,10 +38,12 @@ ms.locfileid: "84688682"
 
 當您設定 PTR 記錄時，請確定訂用帳戶擁有 IP 位址和反向 FQDN。 如果您嘗試設定不屬於訂用帳戶的反向 FQDN，您會收到下列錯誤訊息：
 
-    Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
-                        
-    1) ReverseFqdn 符合訂用帳戶下之任何公用 IP 資源的 FQDN;
-    2) ReverseFqdn 可解析成訂用帳戶下任一公用 IP 資源的 FQDN (透過 CName 記錄鏈)；
-    3) ReverseFqdn 可解析成訂用帳戶下之靜態公用 IP 資源的 IP 位址 (透過 CName 及 A 記錄鏈)。
+```output
+Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
+                    
+1) ReverseFqdn matches fqdn of any public ip resource under the subscription;
+2) ReverseFqdn resolves to the fqdn (through CName records chain) of any public ip resource under the subscription;
+3) It resolves to the ip address (through CName and A records chain) of a static public ip resource under the subscription.
+```
 
 如果您手動變更 SMTP Banner 以符合預設的反向 FQDN，遠端郵件伺服器仍然可能失敗，因為它期望 SMTP Banner 主機符合網域的 MX 記錄。

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: rajanaki
-ms.openlocfilehash: b2f5faea3df695500ea245d1dc71cb96a84c3643
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b57ce89979225015dc87bbfb17f9603897ef6d6b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985596"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135849"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 複寫中的行動服務自動更新
 
@@ -90,7 +90,7 @@ Site Recovery 可以管理延伸模組更新的方法有好幾種：
 
 - **錯誤**：您沒有權限，無法建立 Azure 執行身分帳戶 (服務主體) 以及將參與者角色授與服務主體。
 
-  **建議動作**：請確定已將登入的帳戶指派為參與者，然後再試一次。 如需指派許可權的詳細資訊，請參閱[如何：使用入口網站建立可存取資源的 Azure AD 應用程式和服務主體](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)的必要許可權一節。
+  **建議動作**：請確定已將登入的帳戶指派為參與者，然後再試一次。 如需指派許可權的詳細資訊，請參閱[如何：使用入口網站建立可存取資源的 Azure AD 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)的必要許可權一節。
 
   若要在啟用自動更新後修正大部分的問題，請選取 [**修復**]。 如果 [修復] 按鈕無法使用，請參閱 [擴充功能更新設定] 窗格中顯示的錯誤訊息。
 
@@ -98,11 +98,11 @@ Site Recovery 可以管理延伸模組更新的方法有好幾種：
 
 - **錯誤**：執行身分帳戶沒有存取復原服務資源的權限。
 
-  **建議的動作**：刪除然後[重新建立執行身分帳戶](/azure/automation/automation-create-runas-account)。 或者，請確定自動化執行身分帳戶的 Azure Active Directory 應用程式可以存取復原服務資源。
+  **建議的動作**：刪除然後[重新建立執行身分帳戶](../automation/manage-runas-account.md)。 或者，請確定自動化執行身分帳戶的 Azure Active Directory 應用程式可以存取復原服務資源。
 
 - **錯誤**：找不到執行身分帳戶。 下列其中一個項目已刪除或未建立：Azure Active Directory 應用程式、服務主體、角色、自動化憑證資產、自動化連線資產，或憑證與連線之間的指紋不相同。
 
-  **建議的動作**：刪除然後[重新建立執行身分帳戶](/azure/automation/automation-create-runas-account)。
+  **建議的動作**：刪除然後[重新建立執行身分帳戶](../automation/manage-runas-account.md)。
 
 - **錯誤**：自動化帳戶所使用的 Azure 執行身分憑證即將到期。
 

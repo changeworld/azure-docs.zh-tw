@@ -3,11 +3,12 @@ title: Azure Migrate 中的 VMware 遷移支援
 description: 深入瞭解 Azure Migrate 中的 VMware VM 遷移支援。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: c4184628739b6c47b35263fe99285b05b9e0a190
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b026d07c6ac1630048d8aee6778215f3a99dddb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769722"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134990"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 遷移的支援矩陣
 
@@ -50,7 +51,7 @@ ms.locfileid: "84769722"
 
 **支援** | **詳細資料**
 --- | ---
-**支援的作業系統** | 您可以遷移 Azure 支援的[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)作業系統。
+**支援的作業系統** | 您可以遷移 Azure 支援的[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](../virtual-machines/linux/endorsed-distros.md)作業系統。
 **Azure 中的 Windows Vm** | 在進行遷移之前，您可能需要在 Vm 上[進行一些變更](prepare-for-migration.md#verify-required-changes-before-migrating)。 
 **Azure 中的 Linux Vm** | 有些 VM 可能需要變更，才能在 Azure 中執行。<br/><br/> 針對 Linux，Azure Migrate 會自動為這些作業系統進行變更：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8。 對於其他作業系統，您必須手動進行[必要的變更](prepare-for-migration.md#verify-required-changes-before-migrating)。
 **Linux 開機** | 如果/boot 是在專用磁碟分割上，它應該位於 OS 磁片上，而不會散佈到多個磁片上。<br/> 如果/boot 是根（/）分割區的一部分，則 '/' 磁碟分割應該位於 OS 磁片上，而不是跨越其他磁片。
@@ -85,7 +86,7 @@ ms.locfileid: "84769722"
 --- | ---
 設備 | 埠443上的輸出連線可將複寫的資料上傳至 Azure，以及與 Azure Migrate 服務進行通訊，以協調複寫與遷移。
 vCenter 伺服器 | 埠443上的輸入連線可讓設備協調複寫-建立快照集、複製資料、發行快照集
-vSphere/EXSI 主機 | TCP 埠902上用於設備的輸入，以從快照集複寫資料。
+vSphere/ESXI 主機 | TCP 埠902上用於設備的輸入，以從快照集複寫資料。
 
 ## <a name="agent-based-migration"></a>以代理程式為基礎的遷移 
 

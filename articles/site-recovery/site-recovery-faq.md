@@ -4,12 +4,12 @@ description: 本文討論有關 Azure Site Recovery 的一般熱門問題。
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 9eceb9643a5e8f8eab6b68bb04b322a099b715f3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057427"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133667"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>關於 Azure Site Recovery 的一般問題
 
@@ -56,7 +56,7 @@ Site Recovery 採取各種不同的措施，以確保資料的完整性。 使�
 是。
 
 ### <a name="what-platforms-do-you-currently-support"></a>目前支援哪些平台？
-我們支援「Azure 套件」、「雲端平台系統」及 System Center 架構 (2012 及更新版本) 的部署。 [深入了解](https://technet.microsoft.com/library/dn850370.aspx) 「Azure 套件」和 Site Recovery 整合
+我們支援「Azure 套件」、「雲端平台系統」及 System Center 架構 (2012 及更新版本) 的部署。 [深入了解](/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10)) 「Azure 套件」和 Site Recovery 整合
 
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>您支援單一 Azure 套件與單一 VMM 伺服器部署嗎？
 是，您可以將 Hyper-V 虛擬機器複寫至 Azure，或是在服務提供者網站之間進行複寫。  請注意，如果您是在服務提供者站台之間進行複寫，將無法使用 Azure Runbook 整合。
@@ -105,7 +105,7 @@ Site Recovery 已通過 ISO 27001:2013、27018、HIPAA、DPA 認證，並且正�
 是。 當您在某個區域中建立 Site Recovery 保存庫時，我們會確保我們啟用及協調複寫與容錯移轉時所需的一切中繼資料都會保留在該區域地理界限內。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery 會將複寫加密嗎？
-就虛擬機器和實體伺服器而言，在內部部署站台之間進行複寫時，支援傳輸中加密。 在將虛擬機器和實體伺服器複寫至 Azure 時，則同時支援傳輸中加密和[靜態加密 (在 Azure 中)](https://docs.microsoft.com/azure/storage/storage-service-encryption)。
+就虛擬機器和實體伺服器而言，在內部部署站台之間進行複寫時，支援傳輸中加密。 在將虛擬機器和實體伺服器複寫至 Azure 時，則同時支援傳輸中加密和[靜態加密 (在 Azure 中)](../storage/common/storage-service-encryption.md)。
 
 ### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Azure 到 Azure Site Recovery 是否將 TLS 1.2 用於跨 Azure 微服務的所有通訊？
 是，預設會針對 Azure 到 Azure Site Recovery 案例強制執行 TLS 1.2 通訊協定。 
@@ -198,7 +198,7 @@ Azure Site Recovery 會透過公用端點，將資料複製到 Azure 儲存體�
 是。 您可以在下列文章中深入了解如何將頻寬節流：
 
 * [適用於複寫 VMware VM 和實體伺服器的容量規劃](site-recovery-plan-capacity-vmware.md)
-* [適用於將 Hyper-V VM 複寫至 Azure 的容量規劃](site-recovery-capacity-planning-for-hyper-v-replication.md)
+* [適用於將 Hyper-V VM 複寫至 Azure 的容量規劃](./hyper-v-deployment-planner-overview.md)
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>我可以在 Linux 伺服器中使用應用程式一致性來啟用複寫嗎？ 
 是。 適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式的自訂腳本，以進行應用程式一致性。 具有前置和後置選項的自訂腳本，會在應用程式一致性期間由 Azure Site Recovery 行動代理程式使用。 以下是啟用它的步驟。
@@ -254,7 +254,7 @@ Azure 是針對復原能力而設計的。 Site Recovery 已設計成可根據 A
 
 * [閱讀更多](site-recovery-create-recovery-plans.md) 復原方案的相關資訊。
 * [深入了解](site-recovery-failover.md) 容錯移轉。
-* [深入了解](site-recovery-failback-azure-to-vmware.md) 如何容錯回復 VMware VM 和實體伺服器
+* [深入了解](./vmware-azure-failback.md) 如何容錯回復 VMware VM 和實體伺服器
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>如果我的內部部署主機沒有回應或當機，我是否能針對不同的主機進行容錯回復？
 是，您可以使用替代位置復原從 Azure 針對不同的主機進行容錯回復。
@@ -279,4 +279,3 @@ Azure 是針對復原能力而設計的。 Site Recovery 已設計成可根據 A
 
 ## <a name="next-steps"></a>後續步驟
 * 參閱 [Site Recovery 概觀](site-recovery-overview.md)
-

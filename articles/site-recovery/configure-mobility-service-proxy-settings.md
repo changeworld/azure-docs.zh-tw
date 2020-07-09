@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
-ms.openlocfilehash: 3d33b5a89a718a41e5c547551f6e7eb4f7033a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 429ffcab147142ae2e96de13b7c9e1e5ee1ac7ba
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79503123"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133228"
 ---
 # <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>設定 Azure 到 Azure 嚴重損壞修復的行動服務 Proxy 設定
 
@@ -54,5 +54,5 @@ Proxy 是允許/禁止端點之網路連線的網路閘道。 Proxy 通常是用
 Proxyinfo.conf 包含下列範本 [proxy] Address = http://1.2.3.4 Port = 5678 BypassList = hypervrecoverymanager. windowsazure.storage .com，login.，net.tcp. core.。 BypassList 不支援萬用字元，例如 ' *. windows.net '，但讓 windows.net 的效果足以略過。 
 
 ## <a name="next-steps"></a>後續步驟：
-- 閱讀複寫 Azure VM 的[網路指引](site-recovery-azure-to-azure-networking-guidance.md)。
-- 透過[複寫 Azure VM](site-recovery-azure-to-azure.md) 來部署災害復原。
+- 閱讀複寫 Azure VM 的[網路指引](./azure-to-azure-about-networking.md)。
+- 透過[複寫 Azure VM](./azure-to-azure-quickstart.md) 來部署災害復原。

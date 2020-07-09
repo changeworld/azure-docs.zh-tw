@@ -1,18 +1,18 @@
 ---
 title: 進入市場服務-您的商業 marketplace 權益，Azure Marketplace
 description: Go-To-Market 服務 - 本節描述了發行者可以使用的 Microsoft 資源。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/06/2020
-ms.author: dsindona
-ms.openlocfilehash: 7de2e36edbcd0b55facae89be477ac0d334dae49
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+author: keferna
+ms.author: keferna
+ms.openlocfilehash: c954e3c685a795942f78bdb19b59ca817252d26b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085679"
+ms.locfileid: "86135518"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>您的商業市集權益
 
@@ -34,15 +34,15 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 
 在店面中發佈的最低需求是 MPNID，因此無論 MPN 專長認證狀態或合作夥伴類型為何，所有合作夥伴都可使用這些權益。 每位合作夥伴都能以平台的形式，透過市集拓展業務。
 
-我們會協助您了解可供使用的資源及如何執行最佳做法，您也可以[自我檢查](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
+您將取得了解可供您使用的資源，以及執行最佳做法的支援，您也可以[自行進行檢查](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
 
-所有方案權益的詳細說明，皆可在 [Marketplace Rewards 方案簡報](https://aka.ms/marketplacerewards)中找得到。
+所有方案權益的詳細說明可在此[Marketplace 獎勵方案簡報](https://aka.ms/marketplacerewards)中找到。
 
-開始使用的步驟很簡單：
+開始使用很簡單：
 
 1. 在 Microsoft AppSource 或 Azure Marketplace 中發佈供應項目。
-2. 移至合作夥伴中心[儀表板](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)，在左側導覽功能表中開啟 [**商業 Marketplace** ]，選取 [ **Marketplace**報酬]，然後選取 [**銷售與行銷權益**] 索引標籤，以查看您的權益清單。
-3. 若要啟用銷售和行銷權益，您必須先指派公司行銷連絡人。 此連絡人會收到您作用中 Marketplace Rewards 的後續相關通知。
+2. 前往合作夥伴中心的[Marketplace](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace)報酬，然後選取 [**註冊 marketplace 獎勵方案**]。
+3. 若要啟用銷售和行銷權益，請指派公司行銷連絡人。 此連絡人會收到您作用中 Marketplace Rewards 的後續相關通知。
 4. 若要新增或更新您的行銷連絡人資訊，請移至 Marketplace Rewards 頁面上 [銷售和行銷權益] 索引標籤的頂端，然後選取 [新增]、[更新] 或 [變更]。  接下來，執行下列作業：
 
     1. 從清單中選取使用者。 若想要指派的使用者不在清單中，您可以在 [帳戶設定] 中新增使用者。
@@ -56,7 +56,7 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 2. 當您解鎖這些權益時，我們會透過電子郵件分享如何利用 Azure 贊助權益。
 
 >[!NOTE]
->如果您的供應項目已上線超過四周，而您未收到訊息，請查看合作夥伴中心，檢查誰是所述供應項目的擁有者。 對方應已收到通知和後續步驟。 <br> <br> 如果您無法判斷擁有者，或擁有者已離開貴公司，您可以在[說明及支援](https://aka.ms/marketplacepublishersupport)提出支援票證。
+>如果您的供應項目已上線超過四周，而您未收到訊息，請查看合作夥伴中心，檢查誰是所述供應項目的擁有者。 對方應已收到通知和後續步驟。<br><br>如果您無法判斷擁有者，或擁有者已離開貴公司，您可以在[說明及支援](https://aka.ms/marketplacepublishersupport)提出支援票證。
 
 隨著您在市集中增加供應項目，您可以使用的活動範圍也會擴展。 所有上市項目都會收到基本等級的最佳化建議和推廣，屬於資源和最佳做法自助電子郵件的一環。
 
@@ -75,7 +75,7 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 將 Azure Marketplace 或 Microsoft AppSource 中可供交易的供應項目上市時，隨著您的開單銷售交易或售出的基座透過商業市集逐漸成長，您可以取得額外的權益。 
 
 >[!NOTE]
->基座銷售閾值僅適用於 Microsoft 365 應用程式 (具有 Microsoft Teams、Office、Outlook 或 SharePoint 整合功能的 SaaS 應用程式)，而且必須在 2020 年 6 月 30 日將權益使用完畢。
+>基座銷售閾值僅適用于 Microsoft 365 應用程式（與 Microsoft 小組、Office、Outlook 或 SharePoint 整合的 SaaS 應用程式），且權益必須已于2020年6月30日完成。
 
 這些權益是專為支援行銷、銷售和技術活動而設計，可協助您獲得更多訪客、接收更多潛在客戶，並且轉換更多業務。
 

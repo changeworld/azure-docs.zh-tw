@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 967df2022166936df71b30fbe9d49798663ce962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccb6bbcddaa5ce76e9dbb04d737830fbaf5c2d9f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783527"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134327"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 和 Esv4 系列
 
@@ -30,7 +30,7 @@ Ev4 系列大小是在 Intel 最強 &reg; 白金8272CL （Cascade Lake）上執�
 遠端資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium 儲存體磁片，請使用 Esv4 大小。 Esv4 大小的定價和計費方式與 Ev4 系列相同。
 
 > [!IMPORTANT]
-> 這些新的大小目前僅限公開預覽。 您可以在[這裡](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)註冊這些 Dv4 和 Dsv4 系列。 
+> 這些新的大小目前僅限公開預覽。 您可以在[這裡](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)註冊這些 Ev4 和 Esv4 系列。 
 
 ACU：195 - 210
 
@@ -59,7 +59,7 @@ ACU：195 - 210
 Esv4 系列大小是在 Intel 最 &reg; 強 &reg; 白金8272CL （Cascade Lake）上執行。 Esv4 系列實例很適合記憶體密集型的企業應用程式。 Evs4 系列 Vm 功能 Intel &reg; 超執行緒技術。 遠端資料磁碟儲存體與虛擬機器分開計費。
 
 > [!IMPORTANT]
-> 這些新的大小目前僅限公開預覽。 您可以在[這裡](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)註冊這些 Dv4 和 Dsv4 系列。 
+> 這些新的大小目前僅限公開預覽。 您可以在[這裡](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)註冊這些 Ev4 和 Esv4 系列。 
 
 ACU：195-210
 

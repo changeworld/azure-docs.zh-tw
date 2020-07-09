@@ -4,12 +4,12 @@ description: 瞭解 MARS 代理程式如何支援備份案例
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 5656c113a6823a1708854a547b199bd16c521b04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f43f42fc23b1ca9591b6a49c3acce6c52c09d6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611478"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134975"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>關於 Microsoft Azure 復原服務（MARS）代理程式
 
@@ -53,7 +53,7 @@ MARS 代理程式支援下列還原案例：
 
 - **增量備份**（後續備份）會根據您指定的排程執行。 在增量備份期間，系統會識別已變更的檔案，並建立新的 VHD。 VHD 會經過壓縮和加密，然後傳送到保存庫。 增量備份完成之後，新的 VHD 會與初始複寫後建立的 VHD 合併。 這個合併的 VHD 會提供最新的狀態，以用於進行中的備份比較。
 
-- MARS 代理程式**可以使用 USN** （更新序號）變更日誌，或在未**優化模式下**執行備份作業，方法是透過掃描整個磁片區來檢查目錄或檔案中的變更。 未優化的模式速度較慢，因為代理程式必須掃描磁片區上的每個檔案，並將它與中繼資料進行比較，以判斷變更的檔案。  **初始備份**一律會以未優化的模式執行。 如果先前的備份失敗，則下一個排定的備份工作將會以未優化的模式執行。
+- MARS 代理程式**可以使用 USN** （更新序號）變更日誌，或在未**優化模式下**執行備份作業，方法是透過掃描整個磁片區來檢查目錄或檔案中的變更。 未優化的模式速度較慢，因為代理程式必須掃描磁片區上的每個檔案，並將它與中繼資料進行比較，以判斷變更的檔案。  **初始備份**一律會以未優化的模式執行。 如果先前的備份失敗，則下一個排定的備份工作將會以未優化的模式執行。 若要深入瞭解這些模式以及如何加以驗證，請參閱[這篇文章](backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-job-running-in-unoptimized-mode)。
 
 ### <a name="additional-scenarios"></a>其他案例
 

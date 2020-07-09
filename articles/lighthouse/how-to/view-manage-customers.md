@@ -3,22 +3,22 @@ title: 檢視及管理客戶與委派的資源
 description: 身為使用 Azure 燈塔的服務提供者，您可以在 Azure 入口網站中前往 [我的客戶]，以查看所有委派的客戶資源和訂用帳戶。
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a850dc8cfe7667a75ced64ef0bd0afc352b20daa
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f509a91d71caa3ab1ec8282f4151556f7c10d52c
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026265"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133276"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>檢視及管理客戶與委派的資源
 
-使用 Azure 燈塔的服務提供者可以使用[Azure 入口網站](https://portal.azure.com)中的 [**我的客戶**] 頁面，來查看委派的客戶資源和訂用帳戶。 雖然我們在此所述的是服務提供者與其客戶，但管理多個租用戶的企業也可以使用相同的程序來合併其管理體驗。
+使用[Azure 燈塔](../overview.md)的服務提供者可以使用[Azure 入口網站](https://portal.azure.com)中的 [**我的客戶**] 頁面，來查看委派的客戶資源和訂用帳戶。 雖然我們在此所述的是服務提供者與其客戶，但管理多個租用戶的企業也可以使用相同的程序來合併其管理體驗。
 
 若要存取 Azure 入口網站中的 [我的客戶]**** 頁面，請選取 [所有服務]****，然後搜尋**我的客戶**並選取它。 您也可以在靠近 Azure 入口網站頂端的搜尋方塊中輸入「我的客戶」來找到它。
 
-請記住，[**我的客戶**] 頁面的 [最上層**客戶**] 區段只會顯示有委派的訂用帳戶或資源群組之客戶的相關資訊。 如果您使用其他客戶（例如透過[雲端解決方案提供者方案](/partner-center/csp-overview)），除非您已上架其資源以進行[Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)，否則您不會在 [**客戶**] 區段中看到這些客戶的相關資訊。
+請記住，[**我的客戶**] 頁面的 [最上層**客戶**] 區段只會顯示有委派的訂用帳戶或資源群組之客戶的相關資訊。 如果您使用其他客戶（例如透過[雲端解決方案提供者方案](/partner-center/csp-overview)），除非您已將[資源上架至 Azure 燈塔](onboard-customer.md)，否則您不會在 [**客戶**] 區段中看到這些客戶的相關資訊。
 
-在頁面上降低，稱為「**雲端解決方案提供者（預覽）** 」的個別區段會顯示已[簽署 Microsoft 客戶合約（MCA）](/partner-center/confirm-customer-agreement)且位於[Azure 方案](/partner-center/azure-plan-get-started)底下之 CSP 客戶的帳單資訊和資源。 如需詳細資訊，請參閱[開始使用您的 Microsoft 合作夥伴合約計費帳戶](../../billing/mpa-overview.md)。 請注意，這一節會顯示這類 CSP 客戶，無論您是否也已上架它們以進行 Azure 委派的資源管理。 同樣地，CSP 客戶不需要出現在 [**我的客戶**] 的 [**雲端解決方案提供者（預覽）** ] 區段中，讓您將其上線以進行 Azure 委派的資源管理。
+在頁面上降低，稱為「**雲端解決方案提供者（預覽）** 」的個別區段會顯示已[簽署 Microsoft 客戶合約（MCA）](/partner-center/confirm-customer-agreement)且位於[Azure 方案](/partner-center/azure-plan-get-started)底下之 CSP 客戶的帳單資訊和資源。 如需詳細資訊，請參閱[開始使用您的 Microsoft 合作夥伴合約計費帳戶](../../cost-management-billing/understand/mpa-overview.md)。 請注意，這一節會顯示這類 CSP 客戶，無論您是否也已將其上架至 Azure 燈塔。 同樣地，CSP 客戶不需要出現在 [**我的客戶**] 的 [**雲端解決方案提供者（預覽）** ] 區段中，即可讓您將其上線至 Azure 燈塔。
 
 > [!NOTE]
 > 您的客戶可以在 Azure 入口網站中瀏覽至 [服務提供者]****，來檢視服務提供者的相關資訊。 如需詳細資訊，請參閱[檢視和管理服務提供者](view-manage-service-providers.md)。
@@ -52,7 +52,7 @@ ms.locfileid: "86026265"
 
 ### <a name="remove-delegations"></a>移除委派
 
-如果您在將客戶上線以進行 Azure 委派的資源管理時，包含具有[受控服務註冊指派刪除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的使用者，則這些使用者可以藉由選取出現在該委派資料列中的垃圾桶圖示來移除委派。 當他們這麼做時，服務提供者租使用者中的任何使用者都無法存取先前已委派的資源。
+如果您將客戶上線至 Azure 燈塔時，包含具有「[受控服務註冊指派刪除」角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的使用者，則這些使用者可以藉由選取出現在該委派的資料列中的垃圾桶圖示來移除委派。 當他們這麼做時，服務提供者租使用者中的任何使用者都無法存取先前已委派的資源。
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>在委派之訂用帳戶的內容中工作
 

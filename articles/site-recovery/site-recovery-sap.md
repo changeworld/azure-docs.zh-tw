@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190785"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133692"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>設定多層式 SAP NetWeaver 應用程式部署的災害復原
 
@@ -27,9 +28,9 @@ ms.locfileid: "77190785"
 
 在開始之前，請確定您了解如何執行下列工作：
 
-* [將虛擬機器複寫至 Azure](azure-to-azure-walkthrough-enable-replication.md)
-* [設計復原網路](site-recovery-azure-to-azure-networking-guidance.md)
-* [執行測試容錯移轉至 Azure](azure-to-azure-walkthrough-test-failover.md)
+* [將虛擬機器複寫至 Azure](./azure-to-azure-tutorial-enable-replication.md)
+* [設計復原網路](./azure-to-azure-about-networking.md)
+* [執行測試容錯移轉至 Azure](./azure-to-azure-tutorial-dr-drill.md)
 * [執行容錯移轉到 Azure](site-recovery-failover.md)
 * [複寫網域控制站](site-recovery-active-directory.md)
 * [複寫 SQL Server 實例](site-recovery-sql.md)
@@ -110,7 +111,7 @@ SMLG 交易會管理 ABAP 應用程式伺服器的登入群組。 它會使用�
 
 ## <a name="replicate-virtual-machines"></a>複寫虛擬機器
 
-若要開始將所有 SAP 應用程式虛擬機器都複寫至 Azure 災害復原資料中心，請遵循[將虛擬機器複寫至 Azure](azure-to-azure-walkthrough-enable-replication.md) 中的指引。
+若要開始將所有 SAP 應用程式虛擬機器都複寫至 Azure 災害復原資料中心，請遵循[將虛擬機器複寫至 Azure](./azure-to-azure-tutorial-enable-replication.md) 中的指引。
 
 * 如需保護 Active Directory 和 DNS 的指引，請瞭解[如何保護 Active Directory 和 dns](site-recovery-active-directory.md)。
 

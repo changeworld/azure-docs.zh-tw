@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 7b43105d23de516b994521ad46bb45737798717c
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971074"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133768"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>針對將 VMware VM 或實體機器容錯移轉至 Azure 時的錯誤進行疑難排解
 
@@ -90,7 +90,7 @@ Site Recovery 無法在 Azure 中建立已容錯移轉的虛擬機器。 這可�
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>無法連線/RDP/SSH - [VM 連線] 按鈕可供使用
 
-如果 Azure 中容錯移轉虛擬機器上的 [連線] 按鈕可供使用 (未呈現灰色)，請檢查虛擬機器上的 [開機診斷]，並檢查[本文](../virtual-machines/windows/boot-diagnostics.md)中列出的錯誤。
+如果 Azure 中容錯移轉虛擬機器上的 [連線] 按鈕可供使用 (未呈現灰色)，請檢查虛擬機器上的 [開機診斷]，並檢查[本文](../virtual-machines/troubleshooting/boot-diagnostics.md)中列出的錯誤。
 
 1. 如果虛擬機器尚未啟動，請嘗試容錯移轉至較舊的復原點。
 2. 如果虛擬機器內的應用程式未啟動，請嘗試容錯移轉至與應用程式一致的復原點。
@@ -174,7 +174,7 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 
 ## <a name="next-steps"></a>後續步驟
-- 對 [Windows VM 的 RDP 連線](../virtual-machines/windows/troubleshoot-rdp-connection.md)進行移難排解
-- 對 [Linux VM 的 SSH 連線](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)進行疑難排解
+- 對 [Windows VM 的 RDP 連線](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)進行移難排解
+- 對 [Linux VM 的 SSH 連線](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md)進行疑難排解
 
-如果需要更多說明，請將查詢張貼在 [Microsoft 問與答的 Site Recovery 問題頁面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)上或在本文件結尾留言。 我們有一個能夠協助您的使用中社群。
+如果需要更多說明，請將查詢張貼在 [Microsoft 問與答的 Site Recovery 問題頁面](/answers/topics/azure-site-recovery.html)上或在本文件結尾留言。 我們有一個能夠協助您的使用中社群。

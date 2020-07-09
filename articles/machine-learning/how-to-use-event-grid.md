@@ -1,5 +1,5 @@
 ---
-title: 在 ML 工作流程中觸發事件
+title: 在 ML 工作流程中觸發事件（預覽）
 titleSuffix: Azure Machine Learning
 description: 在 Azure Machine Learning 中設定事件驅動的應用程式、程序或 CI/CD 機器學習工作流程。
 services: machine-learning
@@ -10,13 +10,14 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5aeec1c2dae1d8a8cc11b5e8b3181d9b22069a43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338315"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135959"
 ---
-# <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>根據 Azure Machine Learning 事件來觸發應用程式、程序或 CI/CD 工作流程 (預覽)
+# <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>根據 Azure Machine Learning 事件來觸發應用程式、進程或 CI/CD 工作流程（預覽）
 
 在本文中，您將瞭解如何在 [Azure 事件方格](https://docs.microsoft.com/azure/event-grid/)偵測到特定條件時，根據 Azure Machine Learning 事件 (例如失敗通知電子郵件、ML 管線執行) 來設定事件驅動的應用程式、程序或 CI/CD 工作流程。 
 

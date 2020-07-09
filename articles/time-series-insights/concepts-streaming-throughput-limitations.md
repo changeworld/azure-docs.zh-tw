@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: d5a82aa3aca55622308cae5816c95df9766048da
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: baa132589f5242ab480c9caa55ca793e0652ad6e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049823"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135009"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>串流處理內嵌輸送量限制
 
 Azure 時間序列深入解析串流資料輸入限制如下所述。
 
 > [!TIP]
-> 如需所有預覽限制的完整清單，請參閱[規劃您的預覽環境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits)。 **TODO** ：在發行項標題已更新之後，請在這裡移除 "Preview" 這個字。
+> 如需所有預覽限制的完整清單，請參閱[規劃您的預覽環境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits)。
 
 ## <a name="per-environment-limitations"></a>每個環境限制
 

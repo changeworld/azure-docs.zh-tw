@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 9295c6e1daaad6346581b959a9b94a7ab74da44c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88f92117dc07fc241ca714851956e386cd10d617
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708853"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135023"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 受控執行個體常見問題（FAQ）
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -119,35 +119,104 @@ ms.locfileid: "84708853"
 
 SQL 受控執行個體的儲存體大小取決於選取的服務層級（一般用途或業務關鍵）。 如需這些服務層級的儲存體限制，請參閱[服務層特性](../database/service-tiers-general-purpose-business-critical.md)。
 
-## <a name="backup-storage-cost"></a>備份儲存體成本 
-
-**備份儲存體是否從我的 SQL 受控執行個體儲存體中扣除？**
-
-否，備份儲存體不會從您的 SQL 受控執行個體儲存空間中扣除。 備份儲存體與實例儲存空間無關，而且大小不受限制。 備份儲存體受限於保留實例資料庫備份的時間週期，可設定為7到35天。 如需詳細資訊，請參閱[自動備份](../database/automated-backups-overview.md)。
-
-## <a name="track-billing"></a>追蹤帳單
-
-**是否有追蹤 SQL 受控執行個體計費成本的方法？**
-
-您可以使用[Azure 成本管理方案](/azure/cost-management/)來執行此動作。 流覽至[Azure 入口網站](https://portal.azure.com)**中的 [** 訂用帳戶]，然後選取 [**成本分析**]。 
-
-使用 [**累積的成本**] 選項，然後依**資源類型**篩選為 `microsoft.sql/managedinstances` 。 
   
-## <a name="inbound-nsg-rules"></a>輸入 NSG 規則
+## <a name="networking-requirements"></a>網路需求 
+
+**受控執行個體子網上的目前輸入/輸出 NSG 條件約束為何？**
+
+必要的 NSG 和 UDR 規則記載于[此](connectivity-architecture-overview.md#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)，並由服務自動設定。
+請記住，這些規則只是維護服務所需的規則。 若要連線到受控實例並使用不同的功能，您必須設定其他需要維護的功能特定規則。
 
 **如何設定管理埠上的輸入 NSG 規則？**
 
-SQL 受控執行個體控制平面會維護可保護管理埠的 NSG 規則。
+SQL 受控執行個體負責設定管理埠上的規則。 這是透過名為[服務輔助子網](connectivity-architecture-overview.md#service-aided-subnet-configuration)設定的功能來達成。
+這是為了確保不中斷管理流量的流程，以履行 SLA。
 
-以下是所使用的管理埠：
+**我可以取得用於輸入管理流量的來源 IP 範圍嗎？**
 
-Azure Service Fabric 基礎結構會使用埠9000和9003。 Service Fabric 主要角色是讓虛擬叢集保持狀況良好，並將目標狀態保留在元件複本的數目方面。
+是。 您可以藉由設定[網路監看員流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)，來分析透過網路安全性群組傳入的流量。
 
-節點代理程式會使用埠1438、1440和1452。 節點代理程式是在叢集內執行，並由控制平面用來執行管理命令的應用程式。
+**我可以設定 NSG 來控制對資料端點的存取（埠1433）嗎？**
 
-除了 NSG 規則以外，內建防火牆也會保護網路層上的實例。 在應用層上，通訊會受到憑證的保護。
+是。 布建受控執行個體之後，您可以設定 NSG 來控制埠1433的輸入存取。 建議盡可能縮小其 IP 範圍。
 
-如需詳細資訊及瞭解如何驗證內建防火牆，請參閱[AZURE SQL 受控執行個體內建防火牆](management-endpoint-verify-built-in-firewall.md)。
+**我可以設定 NVA 或內部部署防火牆，以根據 Fqdn 篩選輸出管理流量嗎？**
+
+否。 這種情況不受支援，原因如下：
+-   代表回應輸入管理要求的路由流量會是非對稱的，而且無法正常執行。
+-   路由傳送至儲存體的流量會受到輸送量限制和延遲的影響，因此我們無法提供預期的服務品質和可用性。
+-   根據經驗，這些設定容易發生錯誤且無法支援。
+
+**我可以針對輸出非管理流量設定 NVA 或防火牆嗎？**
+
+是。 達成此目標最簡單的方式，就是將0/0 規則新增至與受控實例子網相關聯的 UDR，以透過 NVA 路由傳送流量。
+ 
+**受控執行個體需要多少個 IP 位址？**
+
+子網必須有足夠的可用[IP 位址](connectivity-architecture-overview.md#network-requirements)數目。 若要判斷 SQL 受控執行個體的 VNet 子網大小，請參閱[決定所需的子網大小和受控執行個體的範圍](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-determine-size-vnet-subnet)。 
+
+**如果沒有足夠的 IP 位址可執行實例更新作業，會發生什麼事？**
+
+如果您的受控實例布建所在的子網中沒有足夠的[IP 位址](connectivity-architecture-overview.md#network-requirements)，您就必須在其中建立新的子網和新的受控實例。 我們也建議您建立新的子網，並將更多 IP 位址配置給它，讓未來的更新作業可以避免類似的情況。 布建新的實例之後，您可以在舊的和新的實例之間手動備份和還原資料，或執行跨實例的[時間點還原](point-in-time-restore.md?tabs=azure-powershell)。
+
+**我是否需要空的子網來建立受控執行個體？**
+
+否。 您可以使用空的子網或已包含受控執行個體的子網。 
+
+**我可以變更子網位址範圍嗎？**
+
+如果內有受管理的實例，則不是。 這是 Azure 網路基礎結構的限制。 您只允許[將其他位址空間新增至空白子網](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet#change-subnet-settings)。 
+
+**我可以將受控實例移至另一個子網嗎？**
+
+否。 這是目前的受控執行個體設計限制。 不過，您可以在另一個子網中布建新的實例，並在舊的和新的實例之間手動備份和還原資料，或執行跨實例的[時間點還原](point-in-time-restore.md?tabs=azure-powershell)。
+
+**我是否需要空的虛擬網路來建立受控執行個體？**
+
+這不是必要項。 您可以[為 AZURE sql 受控執行個體建立虛擬網路](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-vnet-subnet)，或[為 Azure sql 受控執行個體設定現有的虛擬網路](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vnet-subnet)。
+
+**我是否可以將受控執行個體與子網中的其他服務搭配使用？**
+
+否。 目前，我們不支援將受控執行個體放在已包含其他資源類型的子網中。
+
+## <a name="connectivity"></a>連線能力 
+
+**我可以使用 IP 位址連接到我的受控實例嗎？**
+
+不行，不支援此方式。 受控執行個體的主機名稱會對應至受控執行個體虛擬叢集前方的負載平衡器。 當一個虛擬叢集可以裝載多個受控實例時，連接無法路由傳送至適當的受控執行個體，而不需要指定其名稱。
+如需 SQL 受控執行個體虛擬叢集架構的詳細資訊，請參閱[虛擬叢集連線架構](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)。
+
+**受控實例可以有靜態 IP 位址嗎？**
+
+目前不支援。
+
+在罕見但必要的情況下，我們可能需要在線上將受控實例遷移至新的虛擬叢集。 如有需要，這項遷移是因為我們的技術堆疊有所變更，目的在於改善服務的安全性和可靠性。 遷移至新的虛擬叢集會導致變更對應至受控實例主機名稱的 IP 位址。 受控實例服務不會宣告靜態 IP 位址支援，並保留變更的權利，而不會在一般維護週期中另行通知。
+
+基於這個理由，我們強烈建議您不要依賴不必要的 IP 位址，因為這可能會造成不必要的停機時間。
+
+**受控執行個體有公用端點嗎？**
+
+是。 受控執行個體具有僅供服務管理使用的公用端點，但客戶也可將其啟用資料存取。 如需詳細資訊，請參閱[使用具有公用端點的 SQL 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)。 若要設定公用端點，請移至[在 SQL 受控執行個體中設定公用端點](public-endpoint-configure.md)。
+
+**受控執行個體如何控制公用端點的存取權？**
+
+受控執行個體可控制對網路和應用層級的公用端點的存取。
+
+管理和部署服務會使用對應到外部負載平衡器的[管理端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint)，連接到受控實例。 只有在只有受控實例的管理元件使用的一組預先定義的埠上接收到時，才會將流量路由傳送至節點。 節點上的內建防火牆設定為只允許來自 Microsoft IP 範圍的流量。 憑證會相互驗證管理元件與管理平面之間的所有通訊。 如需詳細資訊，請參閱[SQL 受控執行個體的連接架構](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#virtual-cluster-connectivity-architecture)。
+
+**我可以使用公用端點來存取受控執行個體資料庫中的資料嗎？**
+
+是。 客戶必須從[Azure 入口網站](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM 啟用公用端點資料存取，並將 NSG 設定為鎖定對資料埠的存取（埠號碼3342）。 如需詳細資訊，請參閱[在 AZURE sql 受控執行個體中設定公用端點](public-endpoint-configure.md)和[使用 azure sql 受控執行個體安全地搭配公用端點](public-endpoint-overview.md)。 
+
+**我可以為 SQL 資料端點指定自訂埠嗎？**
+
+否，無法使用此選項。  對於私用資料端點，受控執行個體會使用預設埠號碼1433，而對於公用資料端點，受控執行個體會使用預設埠號碼3342。
+
+**連接位於不同區域之受控實例的建議方式為何？**
+
+Express Route 線路對等互連是執行此動作的最佳方式。 這不會與跨區域虛擬網路對等互連混合，因為內部負載平衡器相關的[條件約束](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)不支援。
+
+如果不可能有 Express Route 線路對等互連，唯一的另一個選項是建立站對站 VPN 連線（[Azure 入口網站](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)、 [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)、 [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)）。
 
 
 ## <a name="mitigate-data-exfiltration-risks"></a>降低資料外泄風險  
@@ -179,7 +248,11 @@ SQL 受控執行個體案例研究：
 若要進一步瞭解與部署 Azure SQL 受控執行個體相關的優點、成本和風險，還有一項 Forrester 研究： [Microsoft Azure SQL Database 受控執行個體的整體經濟影響](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)。
 
 
-## <a name="dns-refresh"></a>DNS 重新整理 
+## <a name="dns"></a>DNS
+
+**我可以設定 SQL 受控執行個體的自訂 DNS 嗎？**
+
+是。 請參閱[如何設定 AZURE SQL 受控執行個體的自訂 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
 
 **我可以進行 DNS 重新整理嗎？**
 
@@ -192,20 +265,6 @@ DNS 設定最後會重新整理：
 
 因應措施是將 SQL 受控執行個體降級為4虛擬核心，之後再升級。 這會產生重新整理 DNS 設定的副作用。
 
-
-## <a name="ip-address"></a>IP 位址
-
-**我可以使用 IP 位址連接到 SQL 受控執行個體嗎？**
-
-不支援使用 IP 位址連接到 SQL 受控執行個體。 SQL 受控執行個體主機名稱會對應至 SQL 受控執行個體虛擬叢集前方的負載平衡器。 因為一個虛擬叢集可以裝載多個受控實例，所以連線無法路由傳送至適當的受控實例，而不需要明確指定名稱。
-
-如需 SQL 受控執行個體虛擬叢集架構的詳細資訊，請參閱[虛擬叢集連線架構](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)。
-
-**SQL 受控執行個體是否可以有靜態 IP 位址？**
-
-在罕見但必要的情況下，我們可能需要線上將 SQL 受控執行個體遷移至新的虛擬叢集。 如有需要，這項遷移是因為我們的技術堆疊有所變更，目的在於改善服務的安全性和可靠性。 遷移至新的虛擬叢集會導致變更對應至 SQL 受控執行個體主機名稱的 IP 位址。 SQL 受控執行個體服務不會宣告靜態 IP 位址支援，而且會保留變更的權利，而不會在一般維護週期中另行通知。
-
-基於這個理由，我們強烈建議您不要依賴不必要的 IP 位址，因為這可能會造成不必要的停機時間。
 
 ## <a name="change-time-zone"></a>變更時區
 
@@ -236,11 +295,50 @@ DNS 設定最後會重新整理：
 
 一旦將加密保護裝置提供給 SQL 受控執行個體之後，您就可以繼續進行標準資料庫還原程式。
 
-## <a name="migrate-from-sql-database"></a>從 SQL Database 遷移 
+## <a name="purchasing-models-and-benefits"></a>購買模型和優點
 
-**如何從 Azure SQL Database 遷移至 SQL 受控執行個體？**
+**適用于 SQL 受控執行個體的購買模型有哪些？**
 
-SQL 受控執行個體提供每個計算的相同效能層級和 Azure SQL Database 的儲存體大小。 如果您想要在單一實例上合併資料，或只需要 SQL 受控執行個體中僅支援的功能，您可以使用匯出/匯入（BACPAC）功能來遷移資料。
+SQL 受控執行個體提供[vCore 為基礎的購買模型](sql-managed-instance-paas-overview.md#vcore-based-purchasing-model)。
+
+**SQL 受控執行個體有哪些成本效益？**
+
+您可以利用下列方式，以 Azure SQL 權益節省成本：
+-   最大化內部部署授權的現有投資，並使用[Azure Hybrid Benefit](https://docs.microsoft.com/azure/azure-sql/azure-hybrid-benefit?tabs=azure-powershell)省下高達55% 的成本。 
+-   認可計算資源的保留，並使用[保留實例權益](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity)省下高達33% 的費用。 結合此項與 Azure 混合式權益，省下高達82% 的費用。 
+-   使用[Azure 開發/測試定價權益](https://azure.microsoft.com/pricing/dev-test/)，為您進行中的開發和測試工作負載提供折扣費率，最高可省下55% 的費用與標價。
+
+**誰符合保留實例權益的資格？**
+
+若要符合保留實例權益的資格，您的訂用帳戶類型必須是 enterprise 合約（供應專案號碼： MS-AZR-0017P-Ms-azr-0017p 或 MS-MS-AZR-0017P-Ms-azr-0148p）或具有隨用隨付定價的個別合約（供應專案號碼： MS-MS-AZR-0017P-Ms-azr-0003p 或 MS-MS-AZR-0017P-Ms-azr-0023p）。 如需保留的詳細資訊，請參閱[保留實例權益](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity)。 
+
+**可以取消、交換或退款保留嗎？**
+
+您可以取消、交換或退款保留，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)。
+
+## <a name="billing-for-managed-instance-and-backup-storage"></a>受控執行個體和備份儲存體的計費
+
+**SQL 受控執行個體定價選項有哪些？**
+
+若要探索受控執行個體定價選項，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
+
+**我要如何追蹤受控實例的帳單費用？**
+
+您可以使用[Azure 成本管理方案](https://docs.microsoft.com/azure/cost-management-billing/)來執行此動作。 流覽至[Azure 入口網站](https://portal.azure.com)**中的 [** 訂用帳戶]，然後選取 [**成本分析**]。 
+
+使用 [**累積的成本**] 選項，然後依**資源類型**篩選為 `microsoft.sql/managedinstances` 。
+
+**多少自動備份費用？**
+
+不論已設定備份保留期限，您都可以取得與購買的保留資料儲存空間相同的可用備份儲存空間數量。 如果您的備份儲存體耗用量是在配置的可用備份儲存空間內，則受控實例上的自動備份將不會有額外費用，因此將免費提供給您。 超過可用空間以上的備份儲存體使用量，會導致美國地區每 GB/每月大約 $0.20-$0.24 的成本，或參閱定價頁面以取得您的區域詳細資料。 如需詳細資訊，請參閱[說明的備份儲存體耗用量](https://techcommunity.microsoft.com/t5/azure-sql-database/backup-storage-consumption-on-managed-instance-explained/ba-p/1390923)。
+
+**如何監視備份儲存體耗用量的計費成本？**
+
+您可以透過 Azure 入口網站監視備份儲存體的成本。 如需指示，請參閱[監視自動備份的成本](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=managed-instance#monitor-costs)。 
+
+**如何將受控實例上的備份儲存體成本優化？**
+
+若要優化您的備份儲存體成本，請參閱[SQL 受控執行個體的微調備份](https://techcommunity.microsoft.com/t5/azure-sql-database/fine-tuning-backup-storage-costs-on-managed-instance/ba-p/1390935)微調。
 
 ## <a name="password-policy"></a>密碼原則 
 
@@ -279,3 +377,14 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 ```
 
 （以所需的登入名稱取代 ' test '，並調整原則和到期值）
+
+## <a name="azure-feedback-and-support"></a>Azure 意見反應與支援
+
+**我可以在哪裡留下 SQL 受控執行個體改進的想法？**
+
+您可以針對新的受控執行個體功能進行投票，或為[SQL 受控執行個體意見反應論壇提出](https://feedback.azure.com/forums/915676-sql-managed-instance)新的改進想法。 如此一來，您就可以參與產品開發，並協助我們設定潛在改進的優先順序。
+
+**如何建立 Azure 支援要求？**
+
+若要瞭解如何建立 Azure 支援要求，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
+

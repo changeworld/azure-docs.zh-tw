@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75941581"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133816"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>設定多層式 Dynamics AX 應用程式的災害復原   
 
@@ -68,7 +69,7 @@ Dynamics AX 目前並未提供任何現成的災害復原功能。 Dynamics AX �
 如需有關保護 SQL 層的建議選項技術指引，請參閱[以 SQL Server 及 Azure Site Recovery 複寫應用程式](site-recovery-sql.md)。
 
 ### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. 為 Dynamics AX 用戶端和應用程式物件伺服器 Vm 啟用保護
-根據 VM 是部署於 [Hyper-V](site-recovery-hyper-v-site-to-azure.md) 還是 [VMware](site-recovery-vmware-to-azure.md)，執行相關的 Site Recovery 設定。
+根據 VM 是部署於 [Hyper-V](./hyper-v-azure-tutorial.md) 還是 [VMware](./vmware-azure-tutorial.md)，執行相關的 Site Recovery 設定。
 
 > [!TIP]
 > 建議您將損毀一致頻率設定為 15 分鐘。
@@ -175,7 +176,7 @@ Dynamics AX 目前並未提供任何現成的災害復原功能。 Dynamics AX �
 6. 選取 [✓]**** 開始容錯回復程序。
 
 
-如需執行容錯回復的詳細資訊，請參閱[將 VMware VM 從 Azure 容錯回復到內部部署](site-recovery-failback-azure-to-vmware.md)。
+如需執行容錯回復的詳細資訊，請參閱[將 VMware VM 從 Azure 容錯回復到內部部署](./vmware-azure-failback.md)。
 
 ## <a name="summary"></a>摘要
 使用 Site Recovery，可以為 Dynamics AX 應用程式建立一個完整的自動化災害復原方案。 當發生中斷時，可以在幾秒鐘內從任何地方起始容錯移轉，並且在數分鐘內啟動並執行應用程式。

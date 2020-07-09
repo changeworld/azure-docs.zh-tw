@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9bc2116120f05db9cad63cc945df0ea4367fc3a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cbfe03c48c6d971c140dc332c38a47bc9234173
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207204"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135118"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>自訂主機集區的遠端桌面通訊協定屬性
 
@@ -53,7 +53,7 @@ ms.locfileid: "85207204"
 4. 在 [Windows 虛擬桌面] 頁面上，選取畫面左側功能表中的 [**主機**集區]。
 5. 選取您想要更新的**主機集區名稱**。
 6. 選取畫面左側功能表中的 [**屬性**]。
-7. **在 [內容**] 索引標籤上，移至 [ **rdp 設定**] 以開始編輯 rdp 屬性。 屬性應使用逗號分隔格式，例如 PowerShell 範例。
+7. **在 [內容**] 索引標籤上，移至 [ **rdp 設定**] 以開始編輯 rdp 屬性。 屬性應以分號分隔的格式，例如 PowerShell 範例。
 8. 當您完成時，請選取 [**儲存**] 以儲存變更。
 
 下一節將告訴您如何在 PowerShell 中手動編輯自訂 RDP 屬性。

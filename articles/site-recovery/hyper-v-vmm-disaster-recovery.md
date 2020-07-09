@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437496"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134000"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>設定從 Hyper-V VM 到次要內部部署網站的災害復原
 
@@ -48,10 +48,10 @@ ms.locfileid: "80437496"
 
 準備 VMM，如下所示：
 
-1. 確定您在來源和目標 VMM 伺服器上有 [VMM 邏輯網路](https://docs.microsoft.com/system-center/vmm/network-logical)。
+1. 確定您在來源和目標 VMM 伺服器上有 [VMM 邏輯網路](/system-center/vmm/network-logical)。
     - 來源伺服器上的邏輯網路應該與 Hyper-V 主機所在的來源雲端相關聯。
     - 目標伺服器上的邏輯網路應該與目標雲端相關聯。
-1. 確定您在來源和目標 VMM 伺服器上有 [VMM 網路](https://docs.microsoft.com/system-center/vmm/network-virtual)。 VM 網路應連結至每個位置的邏輯網路。
+1. 確定您在來源和目標 VMM 伺服器上有 [VMM 網路](/system-center/vmm/network-virtual)。 VM 網路應連結至每個位置的邏輯網路。
 2. 將來源 Hyper-V 主機上的 VM 連線至來源 VM 網路。 
 
 

@@ -7,18 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74706372"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135396"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 設定多層式 SharePoint 應用程式的災害復原，以便進行災害復原
 
 本文詳細說明如何使用[Azure Site Recovery](site-recovery-overview.md)保護 SharePoint 應用程式。
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門組織、共同作業及共用資訊。 SharePoint 可提供內部網路入口網站、文件和檔案管理、共同作業、社交網路、外部網路、網站、企業搜尋與商業智慧。 它也具有系統整合、程序整合和工作流程自動化功能。 一般而言，組織會將其視為對停機時間和資料遺失很敏感的第 1 層應用程式。
 
@@ -37,8 +38,8 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 
 開始之前，請確定您瞭解下列項目︰
 
-1. [將虛擬機器複寫至 Azure](site-recovery-vmware-to-azure.md)
-2. 如何[設計修復網路](site-recovery-network-design.md)
+1. [將虛擬機器複寫至 Azure](./vmware-azure-tutorial.md)
+2. 如何[設計修復網路](./concepts-on-premises-to-azure-networking.md)
 3. [執行測試容錯移轉至 Azure](site-recovery-test-failover-to-azure.md)
 4. [執行容錯移轉至 Azure](site-recovery-failover.md)
 5. 如何[複寫網域控制站](site-recovery-active-directory.md)
@@ -46,7 +47,7 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 
 ## <a name="sharepoint-architecture"></a>SharePoint 架構
 
-可以使用分層式拓撲和伺服器角色在一或多部伺服器上部署 SharePoint，以實作符合特定目標的伺服器陣列設計。 支援大量並行使用者和大量內容項目的典型大型、高需求 SharePoint 伺服器陣列，會使用服務群組作為其延展性策略的一部分。 這種方法涉及在專用伺服器上執行服務、將這些服務群組在一起，然後將伺服器相應放大為群組。 下列拓撲說明三層式 SharePoint 伺服器陣列的服務與伺服器群組。 如需不同 SharePoint 拓撲的詳細指引，請參閱 SharePoint 文件集和產品線架構。 您可以在[這份文件](https://technet.microsoft.com/library/cc303422.aspx)中找到有關 SharePoint 2013 部署的詳細資訊。
+可以使用分層式拓撲和伺服器角色在一或多部伺服器上部署 SharePoint，以實作符合特定目標的伺服器陣列設計。 支援大量並行使用者和大量內容項目的典型大型、高需求 SharePoint 伺服器陣列，會使用服務群組作為其延展性策略的一部分。 這種方法涉及在專用伺服器上執行服務、將這些服務群組在一起，然後將伺服器相應放大為群組。 下列拓撲說明三層式 SharePoint 伺服器陣列的服務與伺服器群組。 如需不同 SharePoint 拓撲的詳細指引，請參閱 SharePoint 文件集和產品線架構。 您可以在[這份文件](/SharePoint/sharepoint-server)中找到有關 SharePoint 2013 部署的詳細資訊。
 
 
 
@@ -61,9 +62,9 @@ Site Recovery 與應用程式無關，而且應該與在支援的電腦上執行
 
 **案例** | **至次要網站** | **至 Azure**
 --- | --- | ---
-**Hyper-V** | 是 | Yes
-**VMware** | 是 | Yes
-**實體伺服器** | 是 | Yes
+**Hyper-V** | 是 | 是
+**VMware** | 是 | 是
+**實體伺服器** | 是 | 是
 **Azure** | NA | 是
 
 
@@ -73,7 +74,7 @@ Site Recovery 與應用程式無關，而且應該與在支援的電腦上執行
 
 ## <a name="replicating-virtual-machines"></a>複寫虛擬機器
 
-請依照[本指引](site-recovery-vmware-to-azure.md)開始將虛擬機器複寫至 Azure。
+請依照[本指引](./vmware-azure-tutorial.md)開始將虛擬機器複寫至 Azure。
 
 * 複寫完成後，請務必移至每層的每部虛擬機器，然後在 [複寫項目 > 設定 > 屬性 > 計算和網路] 中選取相同的可用性設定組。 例如，如果您的 Web 層有 3 部 VM，請確定這 3 部 VM 全會設定為 Azure 中相同可用性設定組的一部分。
 
@@ -98,7 +99,7 @@ Site Recovery 與應用程式無關，而且應該與在支援的電腦上執行
 
 ### <a name="dns-and-traffic-routing"></a>DNS 和流量路由
 
-針對網際網路面向網站，在 Azure 訂用帳戶中[建立「優先順序」類型的流量管理員設定檔](../traffic-manager/traffic-manager-create-profile.md)。 然後以下列方式設定您的 DNS 和流量管理員設定檔。
+針對網際網路面向網站，在 Azure 訂用帳戶中[建立「優先順序」類型的流量管理員設定檔](../traffic-manager/quickstart-create-traffic-manager-profile.md)。 然後以下列方式設定您的 DNS 和流量管理員設定檔。
 
 
 | **希望** | **來源** | **目標**|
@@ -162,7 +163,7 @@ Site Recovery 與應用程式無關，而且應該與在支援的電腦上執行
     * 此方法假設搜尋服務應用程式的備份已在災難性事件之前執行，而且可在 DR 網站上取得該備份。
     * 排定備份 (例如，每天一次) 並使用複製程序將備份置於 DR 網站上，即可輕鬆達成。 複製程序可能包含指令碼程式，例如 AzCopy (Azure 複製) 或設定 DFSR (分散式檔案服務複寫)。
     * 既然 SharePoint 伺服器陣列正在執行中，請瀏覽 [管理中心]、[備份及還原]，然後選取 [還原]。 還原會質詢所指定的備份位置 (您可能需要更新此值)。 選取您想要還原的搜尋服務應用程式備份。
-    * 已還原搜尋。 請記住，還原應會發現相同的拓撲 (相同的伺服器數目) 以及指派給這些伺服器的相同硬碟磁碟機代號。 如需詳細資訊，請參閱[在 SharePoint 2013 中還原搜尋服務應用程式](https://technet.microsoft.com/library/ee748654.aspx)文件。
+    * 已還原搜尋。 請記住，還原應會發現相同的拓撲 (相同的伺服器數目) 以及指派給這些伺服器的相同硬碟磁碟機代號。 如需詳細資訊，請參閱[在 SharePoint 2013 中還原搜尋服務應用程式](/SharePoint/administration/restore-a-search-service-application)文件。
 
 
 6. 如需從新的搜尋服務應用程式著手，請遵循下列步驟。

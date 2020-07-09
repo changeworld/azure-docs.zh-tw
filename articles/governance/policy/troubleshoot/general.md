@@ -3,12 +3,12 @@ title: 常見問題疑難排解
 description: 瞭解如何針對建立原則定義、各種 SDK 和 Kubernetes 附加元件的問題進行疑難排解。
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 868b8c53a120ebdb6a35806538e02af39e25c338
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 6d23a148521506adf0c0fc16913a32aab5eb7a30
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970836"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135562"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>使用 Azure 原則疑難排解錯誤
 
@@ -95,7 +95,7 @@ Azure 原則會使用[別名](../concepts/definition-structure.md#aliases)來對
 
 #### <a name="resolution"></a>解決方案
 
-拒絕原則指派中的錯誤訊息包含原則定義和原則指派識別碼。 如果遺漏訊息中的錯誤資訊，它也會出現在[活動記錄](../../../azure-monitor/platform/activity-log-view.md)中。 使用此資訊可取得更多詳細資料，以瞭解資源限制，並在您的要求中調整資源屬性，以符合允許的值。
+拒絕原則指派中的錯誤訊息包含原則定義和原則指派識別碼。 如果遺漏訊息中的錯誤資訊，它也會出現在[活動記錄](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)中。 使用此資訊可取得更多詳細資料，以瞭解資源限制，並在您的要求中調整資源屬性，以符合允許的值。
 
 ## <a name="template-errors"></a>範本錯誤
 

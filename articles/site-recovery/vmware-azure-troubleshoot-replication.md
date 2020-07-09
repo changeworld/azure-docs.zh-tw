@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84197050"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135366"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>針對 VMware VM 和實體伺服器的複寫問題進行疑難排解
 
@@ -94,16 +95,16 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
    - InMage Scout 應用程式服務
 4. 在來源機器上，檢查此位置上的記錄，以取得錯誤詳細資料：
 
-       C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+    *C:\Program Files （X86） \Microsoft Azure Site Recovery\agent\svagents \* .log*
 
 ### <a name="process-server-with-no-heartbeat-error-806"></a>處理伺服器沒有任何活動訊號 [錯誤 806]
 如果沒有任何活動訊號來自處理伺服器 (PS)，請檢查：
 1. PS VM 已啟動且正在執行
 2. 檢查 PS 上的下列記錄，以取得錯誤詳細資料：
 
-       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
-       and
-       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    *C:\ProgramData\ASR\home\svsystems\eventmanager \* .log*\
+    和
+    *C:\ProgramData\ASR\home\svsystems\ monitor_protection \* .log*
 
 ### <a name="master-target-server-with-no-heartbeat-error-78022"></a>主要目標伺服器沒有任何活動訊號 [錯誤 78022]
 
@@ -116,7 +117,7 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
     - 確認 svagents 服務正在執行。 如果正在執行，請重新啟動該服務
     - 檢查此位置上的記錄，以取得錯誤詳細資料：
 
-          C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+        *C:\Program Files （X86） \Microsoft Azure Site Recovery\agent\svagents \* .log*
 3. 若要向設定伺服器註冊主要目標伺服器，請巡覽至 **%PROGRAMDATA%\ASR\Agent** 資料夾，然後在命令提示字元上執行下列命令：
    ```
    cmd
@@ -146,25 +147,25 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
 **修正方式**：請參閱知識庫[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
 #### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因4： Linux 伺服器上未啟用應用程式一致性
-**如何修正**：適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式的自訂腳本，以進行應用程式一致性。 具有前置和後置選項的自訂腳本，會由 Azure Site Recovery 行動代理程式用於應用程式一致性。 [以下](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication)是啟用它的步驟。
+**如何修正**：適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式的自訂腳本，以進行應用程式一致性。 具有前置和後置選項的自訂腳本，會由 Azure Site Recovery 行動代理程式用於應用程式一致性。 [以下](./site-recovery-faq.md#replication)是啟用它的步驟。
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>造成 VSS 相關問題的其他原因：
 
 若要進一步進行疑難排解，請檢查來源機器上的檔案，以取得失敗的確切錯誤碼：
 
-    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+*C:\Program Files （x86） \Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log*
 
 如何找出檔案中的錯誤？
 透過在編輯器中開啟 vacp.log 檔案來搜尋字串 "vacpError"
 
-    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+`Ex: `**`vacpError`**`:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|`
 
 在上述範例中，**2147754994** 為錯誤碼，其用於告知如下所示的失敗相關資訊：
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>未安裝 VSS 寫入器 - 錯誤 2147221164
 
 修正方式：為了產生應用程式一致性標籤，Azure Site Recovery 會使用 Microsoft 磁碟區陰影複製服務 (VSS)。 這會為其作業安裝 VSS 提供者，以取得應用程式一致性快照集。 此 VSS 提供者會安裝為服務。 如果未安裝 VSS 提供者服務，應用程式一致性快照集建立會失敗，並出現錯誤識別碼0x80040154 「類別未註冊」。 </br>
-請參閱 [VSS 寫入器安裝疑難排解的文章](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures)
+請參閱 [VSS 寫入器安裝疑難排解的文章](./vmware-azure-troubleshoot-push-install.md#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>已停用 VSS 寫入器 - 錯誤　2147943458
 
@@ -194,4 +195,4 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
 
 ## <a name="next-steps"></a>後續步驟
 
-如果需要更多協助，請將問題貼到 [Azure Site Recovery 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)。 我們有一個使用中的社群，我們的其中一位工程師將可協助您。
+如果需要更多協助，請將問題貼到 [Azure Site Recovery 的 Microsoft 問與答頁面](/answers/topics/azure-site-recovery.html)。 我們有一個使用中的社群，我們的其中一位工程師將可協助您。

@@ -3,11 +3,12 @@ title: 使用 Azure Site Recovery 進行 VMware 嚴重損壞修復的常見問�
 description: 使用 Azure Site Recovery，取得內部部署 VMware Vm 到 Azure 的嚴重損壞修復常見問題的解答。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259505"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135167"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware 到 Azure 的複寫常見問題
 
@@ -121,7 +122,7 @@ Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中
 
 ### <a name="can-i-change-the-managed-disk-type-after-a-machine-is-protected"></a>我可以在電腦受到保護之後，變更受控磁片類型嗎？
 
-是，您可以輕鬆地[變更受控磁片的類型](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)，以進行進行中的複寫。 變更類型之前，請確定在受控磁片上不會產生共用存取簽章 URL：
+是，您可以輕鬆地[變更受控磁片的類型](../virtual-machines/windows/convert-disk-storage.md)，以進行進行中的複寫。 變更類型之前，請確定在受控磁片上不會產生共用存取簽章 URL：
 
 1. 移至 Azure 入口網站上的**受控磁片**資源，並檢查 [**總覽**] 分頁上是否有 [共用存取簽章 URL] 橫幅。
 1. 如果出現橫幅，請選取它以取消進行中的匯出。

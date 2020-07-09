@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 1afd931249d4dbeda2b4b25f822837e2a564f959
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b4feb1219f6a51a1f0a7ac0d19fc3fd70029c6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656314"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133522"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>針對行動服務推入安裝進行疑難排解
 
@@ -147,7 +148,7 @@ ms.locfileid: "80656314"
 
      若要停用群組原則設定，並啟用使用者共用檔案的能力，請選取 [**停用**]。
 
-  1. 選取 [ **確定** ] 以儲存變更。
+  1. 按一下 [確定] 以儲存您的變更。
 
   若要深入瞭解，請參閱[啟用或停用群組原則的檔案共用](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))。
 
@@ -169,7 +170,7 @@ ms.locfileid: "80656314"
 
 您可以在下列文件中找到其他 WMI 疑難排解文件。
 
-* [基本 WMI 測試](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
+* [基本 WMI 測試](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)
 * [WMI 疑難排解](/windows/win32/wmisdk/wmi-troubleshooting)
 * [疑難排解 WMI 腳本和 WMI 服務的問題](/previous-versions/tn-archive/ff406382(v=msdn.10))
 

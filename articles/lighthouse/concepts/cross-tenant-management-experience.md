@@ -3,15 +3,16 @@ title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ef2fe2ecd72234312a750e206b8920f4ea7eaa02
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 5e8a678530d9cf334d89091e7f23191ae8613737
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920590"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135491"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
-身為服務提供者的您可以使用 [Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)，從您位於 [Azure 入口網站](https://portal.azure.com)的租用戶內管理多個客戶的 Azure 資源。 大部分的工作和服務都可以對受控租用戶中委派的 Azure 資源執行。 此文章說明一些可讓 Azure 委派的資源管理生效的增強案例。
+身為服務提供者，您可以使用[Azure 燈塔](../overview.md)，在[Azure 入口網站](https://portal.azure.com)中，從您自己的租使用者中管理多個客戶的資源。 透過使用[Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)，可以在受管理的租使用者之間對委派的 Azure 資源執行許多工和服務。
 
 > [!NOTE]
 > Azure 委派的資源管理也可以用於[擁有多個 Azure AD 租用戶的企業內](enterprise.md)，以簡化跨租用戶管理。
@@ -22,9 +23,9 @@ Azure Active Directory (Azure AD) 租用戶是組織的代表。 它是組織會
 
 通常，服務提供者若要為客戶管理 Azure 資源，便必須使用與該客戶的租用戶相關聯的帳戶登入 Azure 入口網站，這要求客戶租用戶中的系統管理員必須為服務提供者建立並管理使用者帳戶。
 
-透過使用 Azure 委派的資源管理，上線程序會在服務提供者的租用戶中指定能存取並管理客戶租用戶中的訂用帳戶、資源群組與資源的使用者。 這些使用者接著便可以使用自己的認證登入 Azure 入口網站。 在 Azure 入口網站內，他們可以管理屬於所有客戶，且其具有存取權的資源。 若要這樣做，請瀏覽 Azure 入口網站中的[我的客戶](../how-to/view-manage-customers.md)頁面，或是在 Azure 入口網站中或透過 API 直接在該客戶的訂用帳戶內容中工作。
+使用 Azure 燈塔時，上執行緒序會指定服務提供者的租使用者中，可以存取及管理客戶租使用者中的訂用帳戶、資源群組和資源的使用者。 這些使用者接著便可以使用自己的認證登入 Azure 入口網站。 在 Azure 入口網站內，他們可以管理屬於所有客戶，且其具有存取權的資源。 若要這樣做，請瀏覽 Azure 入口網站中的[我的客戶](../how-to/view-manage-customers.md)頁面，或是在 Azure 入口網站中或透過 API 直接在該客戶的訂用帳戶內容中工作。
 
-Azure 委派的資源管理能為管理多個客戶的資源提供更具彈性的方式，使您不需要在不同的租用戶中登入不同的帳戶。 例如，某個服務提供者可能有兩個客戶，並針對他們都具有不同的責任和存取層級。 透過使用 Azure 委派的資源管理，已授權的使用者便可以登入服務提供者的租用戶以存取這些資源。
+Azure 燈塔可讓您更有彈性地管理多個客戶的資源，而不需要登入不同租使用者中的不同帳戶。 例如，某個服務提供者可能有兩個客戶，並針對他們都具有不同的責任和存取層級。 使用 Azure 燈塔，已授權的使用者可以登入服務提供者的租使用者來存取這些資源。
 
 ![透過其中一個服務提供者租用戶進行管理的客戶資源](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
@@ -39,15 +40,15 @@ Azure PowerShell [Get-AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-
 > [!TIP]
 > 在使用 Azure CLI 時，如果並未看到這些值，請嘗試執行 `az account clear` 並接著執行 `az login --identity` 清除快取。
 
-此外，我們也提供專門執行 Azure 委派的資源管理工作所用的 API。 如需詳細資訊，請參閱**參考**一節。
+我們也會提供執行 Azure 燈塔工作特有的 Api。 如需詳細資訊，請參閱**參考**一節。
 
 ## <a name="enhanced-services-and-scenarios"></a>增強的服務與案例
 
-大部分的工作和服務都可以對受控租用戶中委派的資源執行。 以下是跨租用戶管理適用的一些主要案例。
+大部分的工作和服務都可以對受控租用戶中委派的資源執行。 以下是跨租使用者管理可能特別有效的一些主要案例。
 
 [適用於伺服器的 Azure Arc (預覽)](../../azure-arc/servers/overview.md)：
 
-- [將 Azure 外部的 Windows Server 或 Linux 電腦連線](../../azure-arc/servers/quickstart-onboard-portal.md)到 Azure 中委派的訂用帳戶和/或資源群組
+- [將 Azure 外部的 Windows Server 或 Linux 電腦連線](../../azure-arc/servers/onboard-portal.md)到 Azure 中委派的訂用帳戶和/或資源群組
 - 使用 Azure 結構管理已連線的電腦，例如 Azure 原則和標記
 
 [Azure 自動化](../../automation/index.yml)：

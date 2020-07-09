@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408628"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135791"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>將已啟用 Azure 磁碟加密的虛擬機器複寫至另一個 Azure 區域
 
@@ -93,7 +93,7 @@ Site Recovery 要求使用者必須擁有在目的地區域中建立金鑰保存
     - **目標位置**：將複寫來源虛擬機器資料的位置。 Site Recovery 會根據選取的電腦位置，提供適當的目的地區域清單。 我們建議您使用與復原服務保存庫位置相同的位置。
     - **目標訂**用帳戶：用於嚴重損壞修復的目標訂用帳戶。 根據預設，目標訂用帳戶會與來源訂用帳戶相同。
     - **目標資源群組**：所有已複寫虛擬機器所屬的資源群組。 根據預設，Site Recovery 會在目的地區域中建立新的資源群組。 名稱會取得 "asr" 尾碼。 如果 Azure Site Recovery 所建立的資源群組已經存在，就會重複使用它。 您也可以選擇進行自訂，如下一節所示。 目標資源群組的位置可以是任何 Azure 區域，但裝載來源虛擬機器所在的區域除外。
-    - **目標虛擬網路**：根據預設，Site Recovery 會在目的地區域中建立新的虛擬網路。 名稱會取得 "asr" 尾碼。 它會對應至您的來源網路，並用於任何未來的保護。 [深入了解](site-recovery-network-mapping-azure-to-azure.md)網路對應。
+    - **目標虛擬網路**：根據預設，Site Recovery 會在目的地區域中建立新的虛擬網路。 名稱會取得 "asr" 尾碼。 它會對應至您的來源網路，並用於任何未來的保護。 [深入了解](./azure-to-azure-network-mapping.md)網路對應。
     - **目標儲存體帳戶（如果您的來源 vm 不使用受控磁片）**：根據預設，Site Recovery 會藉由模擬您的來源 vm 儲存體設定來建立新的目標儲存體帳戶。 如果儲存體帳戶已經存在，就會重複使用它。
     - **複本受控磁片（如果您的來源 VM 使用受控磁片）**： Site Recovery 會在目的地區域中建立新的複本受控磁片，以反映來源 vm 的受控磁片與來源 vm 的受控磁片相同的儲存體類型（標準或高階）。
     - 快取**儲存體帳戶**： Site Recovery 需要在來源區域中有額外的儲存體帳戶（稱為快取*儲存體*）。 系統會追蹤來源 Vm 上的所有變更，並將其傳送至快取儲存體帳戶。 然後，它們會複寫到目標位置。

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 6c77cd43231d4596535c11564313a0fe90633cdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60947713"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134954"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure 流量管理員搭配 Azure Site Recovery
 
@@ -30,7 +30,7 @@ Azure 流量管理員可讓您控制流量分散到應用程式端點的方式�
 **公司 A** 以公用端點執行應用程式，而希望獲得在災害事件發生時順暢地將流量重新導向至 Azure 的能力。 Azure 流量管理員中的[優先順序](../traffic-manager/traffic-manager-configure-priority-routing-method.md)流量路由方法，可讓公司 A 輕鬆實作此容錯移轉模式。
 
 設定方式如下︰
-- **公司 A** 建立[流量管理員設定檔](../traffic-manager/traffic-manager-create-profile.md)。
+- **公司 A** 建立[流量管理員設定檔](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
 - **公司 A** 利用**優先順序**路由方法建立兩個端點 – **主要**用於內部部署，**容錯移轉**用於 Azure。 **主要**會被指派優先順序 1，**容錯移轉**會被指派優先順序 2。
 - 由於**主要**端點裝載於 Azure 以外，因此這個端點會建立為[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)端點。
 - 在使用 Azure Site Recovery 的情況下，Azure 網站並沒有任何在容錯移轉前執行的虛擬機器或應用程式。 因此，**容錯移轉**端點也會建立為**外部**端點。
@@ -65,7 +65,7 @@ Azure 流量管理員的[加權](../traffic-manager/traffic-manager-configure-we
 **公司 C** 以公用端點執行應用程式，而希望獲得在災害事件發生時順暢地將流量重新導向至不同 Azure 區域的能力。 [優先順序](../traffic-manager/traffic-manager-configure-priority-routing-method.md)流量路由方法可讓**公司 C** 輕鬆實作此容錯移轉模式。
 
 設定方式如下︰
-- **公司 C** 建立[流量管理員設定檔](../traffic-manager/traffic-manager-create-profile.md)。
+- **公司 C** 建立[流量管理員設定檔](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
 - **公司 C** 利用**優先順序**路由方法建立兩個端點 – **主要**用於來源區域 (Azure 東亞)，**容錯移轉**用於復原區域 (Azure 東南亞)。 **主要**會被指派優先順序 1，**容錯移轉**會被指派優先順序 2。
 - 由於**主要**端點裝載於 Azure 中，因此這個端點可作為 [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) 端點。
 - 在使用 Azure Site Recovery 的情況下，復原 Azure 網站並沒有任何在容錯移轉前執行的虛擬機器或應用程式。 因此，**容錯移轉**端點可建立為[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)端點。

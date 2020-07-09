@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74084545"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134841"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>設定多層式 Citrix XenApp 和 XenDesktop 部署的災害復原
 
@@ -29,8 +30,8 @@ Citrix XenDesktop 是桌面虛擬化解決方案，能夠為任何地方的任�
 
 開始之前，請確定您瞭解下列項目︰
 
-1. [將虛擬機器複寫至 Azure](site-recovery-vmware-to-azure.md)
-1. 如何[設計修復網路](site-recovery-network-design.md)
+1. [將虛擬機器複寫至 Azure](./vmware-azure-tutorial.md)
+1. 如何[設計修復網路](./concepts-on-premises-to-azure-networking.md)
 1. [執行測試容錯移轉至 Azure](site-recovery-test-failover-to-azure.md)
 1. [執行容錯移轉至 Azure](site-recovery-failover.md)
 1. 如何[複寫網域控制站](site-recovery-active-directory.md)
@@ -55,9 +56,9 @@ AD DNS 伺服器、SQL 資料庫伺服器、Citrix 傳遞控制站、StoreFront 
 
 **案例** | **至次要網站** | **至 Azure**
 --- | --- | ---
-**Hyper-V** | 不在範圍中 | Yes
-**VMware** | 不在範圍中 | Yes
-**實體伺服器** | 不在範圍中 | Yes
+**Hyper-V** | 不在範圍中 | 是
+**VMware** | 不在範圍中 | 是
+**實體伺服器** | 不在範圍中 | 是
 
 ### <a name="versions"></a>版本
 客戶可以部署 XenApp 元件成為 Hyper-V 或 VMware 上執行的虛擬機器，或成為實體伺服器。 Azure Site Recovery 可以保護 Azure 的實體與虛擬部署。
@@ -95,7 +96,7 @@ AD DNS 伺服器、SQL 資料庫伺服器、Citrix 傳遞控制站、StoreFront 
 
 如需保護 SQL Server 的建議選項有關的詳細技術指引，請參閱[使用 SQL Server 災害復原與 Azure Site Recovery 保護 SQL Server](site-recovery-sql.md)。
 
-請依照[本指引](site-recovery-vmware-to-azure.md)開始將其他元件虛擬機器複寫至 Azure。
+請依照[本指引](./vmware-azure-tutorial.md)開始將其他元件虛擬機器複寫至 Azure。
 
 ![XenApp 元件的保護](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 

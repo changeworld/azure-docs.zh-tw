@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 3e81e353d2912f56a932ce118a0424e45e758df7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbd11c279708cd828693baab3f9f6df91515bc48
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74133006"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133896"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>架構 - Hyper-V 複寫至次要網站
 
@@ -35,7 +36,7 @@ a
 
 ## <a name="replication-process"></a>複寫程序
 
-1. 觸發初始複寫時，會建立[HYPER-V VM 快照](https://technet.microsoft.com/library/dd560637.aspx)集快照集。
+1. 觸發初始複寫時，會建立[HYPER-V VM 快照](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10))集快照集。
 2. VM 上的虛擬硬碟會逐一複寫至次要位置。
 3. 如果在初始複寫進行時發生磁碟變更，Hyper-V 複本複寫追蹤器會以 Hyper-V 複寫記錄 (.hrl) 的形式追蹤變更。 這些記錄檔位於與磁碟相同的資料夾中。 每個磁碟都有一個相關聯的 .hrl 檔案會傳送至次要位置。 當初始複寫正在進行時，快照和記錄檔會取用磁碟資源。
 4. 初始複寫完成時，就會刪除 VM 快照集，並開始差異複寫。

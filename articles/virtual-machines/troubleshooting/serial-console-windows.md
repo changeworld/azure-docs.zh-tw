@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c555b058e6d0b8c110a3273525b5a8c58baaff61
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309776"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135253"
 ---
 # <a name="azure-serial-console-for-windows"></a>適用於 Windows 的 Azure 序列主控台
 
@@ -101,15 +102,15 @@ Azure 上的新版 Windows Server 映像預設會啟用[特別系統管理主控
 
     ![連線到 SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.    輸入 `cmd` 來建立具有 CMD 執行個體的通道。
+1. 輸入 `cmd` 來建立具有 CMD 執行個體的通道。
 
-1.    輸入 `ch -si 1` 或按 `<esc>+<tab>` 快速鍵，以切換至執行 CMD 執行個體的通道。
+1. 輸入 `ch -si 1` 或按 `<esc>+<tab>` 快速鍵，以切換至執行 CMD 執行個體的通道。
 
-1.    按 **Enter** 鍵，然後輸入具有系統管理權限的登入認證。
+1. 按 **Enter** 鍵，然後輸入具有系統管理權限的登入認證。
 
-1.    當您輸入有效的認證之後，即會開啟 CMD 執行個體。
+1. 當您輸入有效的認證之後，即會開啟 CMD 執行個體。
 
-1.    若要啟動 PowerShell 執行個體，在 CMD 執行個體中輸入 `PowerShell`，然後按 **Enter** 鍵。
+1. 若要啟動 PowerShell 執行個體，在 CMD 執行個體中輸入 `PowerShell`，然後按 **Enter** 鍵。
 
     ![開啟 PowerShell 執行個體](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

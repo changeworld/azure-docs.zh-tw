@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f42942d0e112aad147f78d62b5f5b43587eca9b3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80388894"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135599"
 ---
 # <a name="about-migration"></a>關於移轉
 
@@ -30,7 +30,7 @@ ms.locfileid: "80388894"
 - **移轉 AWS**：將 AWS Windows 執行個體移轉至 Azure IaaS VM。 
 
 > [!NOTE]
-> 您現在可以使用 Azure Migrate 服務，從內部部署遷移至 Azure。 [深入了解](../migrate/migrate-overview.md)。
+> 您現在可以使用 Azure Migrate 服務，從內部部署遷移至 Azure。 [深入了解](../migrate/migrate-services-overview.md)。
 
 ## <a name="what-do-we-mean-by-migration"></a>移轉的意思為何？
 

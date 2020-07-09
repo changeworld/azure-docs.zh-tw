@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 07/08/2020
 ms.author: jgao
-ms.openlocfilehash: b3de286bbf4513d252b42304cdc667877c72f6da
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 8906ac7a00a349e2312eb80f5e25e32292a089ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057410"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134567"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在範本中使用部署指令碼 (預覽)
 
@@ -161,7 +161,7 @@ ms.locfileid: "86057410"
 - **supportingScriptUris**：為 `ScriptContent` 或 `PrimaryScriptUri` 中呼叫的支援檔案指定可公開存取 URL 的陣列。
 - **timeout**：指定以 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)指定的指令碼執行時間允許上限。 預設值為 **P1D**。
 - **cleanupPreference**。 指定當指令碼執行進入終端狀態時，清除部署資源的喜好設定。 預設設定為 [一律]，這表示不論終端狀態 (成功、失敗、已取消) 皆刪除資源。 若要深入了解，請參閱[清除部署指令碼資源](#clean-up-deployment-script-resources)。
-- **retentionInterval**：指定在部署指令碼執行到達終端狀態後，服務保留部署指令碼資源的間隔。 此持續時間到期後，即會刪除部署指令碼資源。 持續時間以 [ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)為基礎。 預設值為 **P1D**，這表示七天。 當 cleanupPreference 設定為 OnExpiration 時，就會使用此屬性。 目前並未啟用 OnExpiration 屬性。 若要深入了解，請參閱[清除部署指令碼資源](#clean-up-deployment-script-resources)。
+- **retentionInterval**：指定在部署指令碼執行到達終端狀態後，服務保留部署指令碼資源的間隔。 此持續時間到期後，即會刪除部署指令碼資源。 持續時間以 [ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)為基礎。 預設值為**P1D**，這表示一天。 當 cleanupPreference 設定為 OnExpiration 時，就會使用此屬性。 目前並未啟用 OnExpiration 屬性。 若要深入了解，請參閱[清除部署指令碼資源](#clean-up-deployment-script-resources)。
 
 ### <a name="additional-samples"></a>其他範例
 

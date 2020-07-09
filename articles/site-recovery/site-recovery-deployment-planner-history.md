@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: site-recovery
 ms.date: 6/4/2020
 ms.author: dapatil
-ms.openlocfilehash: 74b02da51603366f5ec18aa4733117bc2c59faf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feb4f6a24653aca8da825af90341c8016255e8b6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417849"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133795"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery 部署規劃工具版本歷程記錄
 
@@ -168,7 +169,7 @@ ms.locfileid: "84417849"
 
 **已知的限制：**
 
-- 僅支援 VMware 到 Azure 的嚴重損壞修復案例。 針對 Hyper-v 到 Azure 的嚴重損壞修復案例，請使用[hyper-v 容量規劃工具](./site-recovery-capacity-planning-for-hyper-v-replication.md)。
+- 僅支援 VMware 到 Azure 的嚴重損壞修復案例。 針對 Hyper-v 到 Azure 的嚴重損壞修復案例，請使用[hyper-v 容量規劃工具](./hyper-v-deployment-planner-overview.md)。
 - 不支援美國政府和中國 Microsoft Azure 地區的 GetThroughput 作業。
 - 如果 vCenter server 在不同的 ESXi 主機上有兩個或多個 Vm 具有相同的名稱或 IP 位址，此工具會 cann't 分析 Vm。
 在此版本中，此工具會略過 VMListFile 中重複 VM 名稱或 IP 位址的分析。 因應措施是使用 ESXi 主機 (而非 vCenter Server) 剖析 VM。 請確定為每個 ESXi 主控制項執行一個實例。

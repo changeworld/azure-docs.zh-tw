@@ -5,17 +5,18 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 9fabf6cf4c8a3afc2d119fca2c8cdc2526ddbebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c125f11400a75d221a62aa62020001104e05d167
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84415860"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134889"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>將在鄰近放置群組中執行的 Azure 虛擬機器複寫至另一個區域
 
 本文說明如何將在鄰近放置群組中執行的虛擬機器複寫、容錯移轉及容錯回復至次要區域。
 
-[鄰近放置群組](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups-portal)是一項 Azure 虛擬機器邏輯群組功能，可用來減少與應用程式相關聯的 VM 間網路延遲。 VM 部署在相同的鄰近放置群組內時，其實際位置會盡可能地彼此接近。 對於易受延遲影響的工作負載，鄰近放置群組特別能因應其需求。
+[鄰近放置群組](../virtual-machines/windows/proximity-placement-groups-portal.md)是一項 Azure 虛擬機器邏輯群組功能，可用來減少與應用程式相關聯的 VM 間網路延遲。 VM 部署在相同的鄰近放置群組內時，其實際位置會盡可能地彼此接近。 對於易受延遲影響的工作負載，鄰近放置群組特別能因應其需求。
 
 ## <a name="disaster-recovery-with-proximity-placement-groups"></a>鄰近放置群組的災害復原
 
@@ -32,21 +33,21 @@ ms.locfileid: "84415860"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-1. 確定您具有 Azure PowerShell Az 模組。 如果您需要安裝或升級 Azure PowerShell，請按照此[安裝和設定 Azure PowerShell 指南](https://docs.microsoft.com/powershell/azure/install-az-ps)的說明。
+1. 確定您具有 Azure PowerShell Az 模組。 如果您需要安裝或升級 Azure PowerShell，請按照此[安裝和設定 Azure PowerShell 指南](/powershell/azure/install-az-ps)的說明。
 
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>為鄰近放置群組中的虛擬機器設定 Site Recovery
 
 ### <a name="azure-to-azure"></a>Azure 至 Azure
 
-1. [登入](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#sign-in-to-your-microsoft-azure-subscription)您的帳戶，並設定您的訂用帳戶。
-2. 取得您要複寫之虛擬機器的詳細資料，如[這裡](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#get-details-of-the-virtual-machine-to-be-replicated)所說明。
-3. [建立](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-recovery-services-vault)您的復原服務保存庫，並[設定](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#set-the-vault-context)保存庫內容。
-4. 為保存庫做好開始複寫 Azure 虛擬機器的準備。 其作業包括為主要區域和復原區域建立 [Service Fabric](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-site-recovery-fabric-object-to-represent-the-primary-source-region) 物件。
-5. 為主要網狀架構和復原網狀架構[建立](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-site-recovery-protection-container-in-the-primary-fabric) Site Recovery 保護容器。
-6. [建立](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-replication-policy)複寫原則。
-7. 使用[這些](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container)步驟和容錯回復的保護容器對應 (如[這裡](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)所述)，在主要和復原保護容器之間建立保護容器對應。
-8. 依照[這些](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-cache-storage-account-and-target-storage-account)步驟建立快取儲存體帳戶。
-9. 依照[這裡](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-network-mappings)的說明建立必要的網路對應。
+1. [登入](./azure-to-azure-powershell.md#sign-in-to-your-microsoft-azure-subscription)您的帳戶，並設定您的訂用帳戶。
+2. 取得您要複寫之虛擬機器的詳細資料，如[這裡](./azure-to-azure-powershell.md#get-details-of-the-virtual-machine-to-be-replicated)所說明。
+3. [建立](./azure-to-azure-powershell.md#create-a-recovery-services-vault)您的復原服務保存庫，並[設定](./azure-to-azure-powershell.md#set-the-vault-context)保存庫內容。
+4. 為保存庫做好開始複寫 Azure 虛擬機器的準備。 其作業包括為主要區域和復原區域建立 [Service Fabric](./azure-to-azure-powershell.md#create-a-site-recovery-fabric-object-to-represent-the-primary-source-region) 物件。
+5. 為主要網狀架構和復原網狀架構[建立](./azure-to-azure-powershell.md#create-a-site-recovery-protection-container-in-the-primary-fabric) Site Recovery 保護容器。
+6. [建立](./azure-to-azure-powershell.md#create-a-replication-policy)複寫原則。
+7. 使用[這些](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container)步驟和容錯回復的保護容器對應 (如[這裡](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)所述)，在主要和復原保護容器之間建立保護容器對應。
+8. 依照[這些](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account)步驟建立快取儲存體帳戶。
+9. 依照[這裡](./azure-to-azure-powershell.md#create-network-mappings)的說明建立必要的網路對應。
 10. 若要以受控磁碟複寫 Azure 虛擬機器，請使用下列 PowerShell Cmdlet – 
 
 ```azurepowershell
@@ -90,8 +91,8 @@ $TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -A
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
 
-11. 若要執行測試容錯移轉、驗證和清除測試容錯移轉，請依照[這些](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#do-a-test-failover-validate-and-cleanup-test-failover)步驟操作。
-12. 若要進行容錯移轉，請依照[這裡](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#fail-over-to-azure)所說明的步驟操作。
+11. 若要執行測試容錯移轉、驗證和清除測試容錯移轉，請依照[這些](./azure-to-azure-powershell.md#do-a-test-failover-validate-and-cleanup-test-failover)步驟操作。
+12. 若要進行容錯移轉，請依照[這裡](./azure-to-azure-powershell.md#fail-over-to-azure)所說明的步驟操作。
 13. 若要重新保護並容錯回復到來源區域，請使用下列 PowerShell Cmdlet –
 
 ```azurepowershell
@@ -102,16 +103,16 @@ $WestUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragewestus" 
 #Use the recovery protection container, new cache storage account in West US and the source region VM resource group 
 Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure -ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId -RecoveryProximityPlacementGroupId $vm.ProximityPlacementGroup.Id
 ```
-14. 若要停用複寫，請依照[這裡](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#disable-replication)的步驟操作。
+14. 若要停用複寫，請依照[這裡](./azure-to-azure-powershell.md#disable-replication)的步驟操作。
 
 ### <a name="vmware-to-azure"></a>VMware 至 Azure
 
-1. 確定您已針對 Azure 的災害復原[準備好內部部署 VMware 伺服器](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises)。
-2. 登入您的帳戶，並依照[這裡](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#log-into-azure)的指定設定您的訂用帳戶。
-3. [設定](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#set-up-a-recovery-services-vault)復原服務保存庫，並[設定保存庫內容](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#set-the-vault-context)。
-4. [驗證](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#validate-vault-registration)您的保存庫註冊。
-5. [建立](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#create-a-replication-policy)複寫原則。
-6. [新增](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#add-a-vcenter-server-and-discover-vms) vCenter Server、探索虛擬機器，並[建立](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#create-storage-accounts-for-replication)用於複寫的儲存體帳戶。
+1. 確定您已針對 Azure 的災害復原[準備好內部部署 VMware 伺服器](./vmware-azure-tutorial-prepare-on-premises.md)。
+2. 登入您的帳戶，並依照[這裡](./vmware-azure-disaster-recovery-powershell.md#log-into-azure)的指定設定您的訂用帳戶。
+3. [設定](./vmware-azure-disaster-recovery-powershell.md#set-up-a-recovery-services-vault)復原服務保存庫，並[設定保存庫內容](./vmware-azure-disaster-recovery-powershell.md#set-the-vault-context)。
+4. [驗證](./vmware-azure-disaster-recovery-powershell.md#validate-vault-registration)您的保存庫註冊。
+5. [建立](./vmware-azure-disaster-recovery-powershell.md#create-a-replication-policy)複寫原則。
+6. [新增](./vmware-azure-disaster-recovery-powershell.md#add-a-vcenter-server-and-discover-vms) vCenter Server、探索虛擬機器，並[建立](./vmware-azure-disaster-recovery-powershell.md#create-storage-accounts-for-replication)用於複寫的儲存體帳戶。
 7. 若要複寫 VMware 虛擬機器，請查看這裡的詳細資料，並執行下列 PowerShell Cmdlet –
 
 ```azurepowershell
@@ -136,18 +137,18 @@ $Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMw
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
-9. 依照[這裡](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#configure-failover-settings)的步驟設定容錯移轉設定。
-10. [執行](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#run-a-test-failover)測試容錯移轉。 
-11. 使用[這些](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#fail-over-to-azure)步驟容錯移轉至 Azure。
+9. 依照[這裡](./vmware-azure-disaster-recovery-powershell.md#configure-failover-settings)的步驟設定容錯移轉設定。
+10. [執行](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover)測試容錯移轉。 
+11. 使用[這些](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure)步驟容錯移轉至 Azure。
 
 ### <a name="hyper-v-to-azure"></a>Hyper-V 至 Azure
 
-1. 確定您已針對 Azure 的災害復原[準備好內部部署 Hyper-V 伺服器](https://docs.microsoft.com/azure/site-recovery/hyper-v-prepare-on-premises-tutorial)。
-2. [登入](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-1-sign-in-to-your-azure-account) Azure。
-3. [設定](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-2-set-up-the-vault)您的保存庫，並[設定](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-3-set-the-recovery-services-vault-context)復原服務保存庫內容。
-4. [建立](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-4-create-a-hyper-v-site) Hyper-V 網站。
-5. [安裝](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-5-install-the-provider-and-agent)提供者和代理程式。
-6. [建立](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-6-create-a-replication-policy)複寫原則。
+1. 確定您已針對 Azure 的災害復原[準備好內部部署 Hyper-V 伺服器](./hyper-v-prepare-on-premises-tutorial.md)。
+2. [登入](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account) Azure。
+3. [設定](./hyper-v-azure-powershell-resource-manager.md#step-2-set-up-the-vault)您的保存庫，並[設定](./hyper-v-azure-powershell-resource-manager.md#step-3-set-the-recovery-services-vault-context)復原服務保存庫內容。
+4. [建立](./hyper-v-azure-powershell-resource-manager.md#step-4-create-a-hyper-v-site) Hyper-V 網站。
+5. [安裝](./hyper-v-azure-powershell-resource-manager.md#step-5-install-the-provider-and-agent)提供者和代理程式。
+6. [建立](./hyper-v-azure-powershell-resource-manager.md#step-6-create-a-replication-policy)複寫原則。
 7. 使用下列步驟啟用複寫 – 
     
     a. 擷取對應至您想要保護之 VM 的可保護項目，如下所示：
@@ -187,13 +188,13 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 
     Get-AzRecoveryServicesAsrJob -Job $job | Select-Object -ExpandProperty state
     ```
-8. 執行測試[容錯移轉](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-8-run-a-test-failover)。
+8. 執行測試[容錯移轉](./hyper-v-azure-powershell-resource-manager.md#step-8-run-a-test-failover)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-若要執行重新保護和 VMware 至 Azure 的容錯回復，請依照[這裡](https://docs.microsoft.com/azure/site-recovery/vmware-azure-prepare-failback)所述的步驟操作。
+若要執行重新保護和 VMware 至 Azure 的容錯回復，請依照[這裡](./vmware-azure-prepare-failback.md)所述的步驟操作。
 
-若要執行 Hyper-V 至 Azure 的容錯移轉，請依照[這裡](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover)所述的步驟操作，若要執行容錯回復，請依照[這裡](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-failback)所述的步驟操作。
+若要執行 Hyper-V 至 Azure 的容錯移轉，請依照[這裡](./site-recovery-failover.md)所述的步驟操作，若要執行容錯回復，請依照[這裡](./hyper-v-azure-failback.md)所述的步驟操作。
 
 如需詳細資訊，請參閱[在 Site Recovery 中容錯移轉](site-recovery-failover.md)。

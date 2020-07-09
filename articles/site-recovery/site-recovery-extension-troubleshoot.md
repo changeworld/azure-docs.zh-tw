@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190732"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133746"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>針對 Azure VM 擴充功能問題進行疑難排解
 
@@ -68,14 +69,14 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 1. 確認 Windows Azure 來賓代理程式服務出現在 [服務] 中。
 1. 重新啟動保護作業。
 
-此外，確認 VM 中[已安裝 Microsoft .NET 4.5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)。 您需要 .NET 4.5，VM 代理程式才能與服務進行通訊。
+此外，確認 VM 中[已安裝 Microsoft .NET 4.5](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)。 您需要 .NET 4.5，VM 代理程式才能與服務進行通訊。
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 中安裝的代理程式已過時 (適用於 Linux VM)
 
 #### <a name="solution"></a>解決方案
 針對 Linux VM，與代理程式或擴充功能相關的多數失敗是由於會影響過時 VM 代理程式的問題所造成。 若要對此問題進行疑難排解，請遵循下列一般方針：
 
-1. 請遵循[更新 Linux VM 代理程式](../virtual-machines/linux/update-agent.md)的指示。
+1. 請遵循[更新 Linux VM 代理程式](../virtual-machines/extensions/update-linux-agent.md)的指示。
 
    > [!NOTE]
    > 我們強烈建議** 您只透過散發套件存放庫更新代理程式。 我們不建議直接從 GitHub 下載代理程式程式碼，並加以更新。 如果您的散發套件的最新代理程式無法使用，請聯絡散發支援以取得如何安裝的指示。 若要檢查最新的代理程式，請移至 GitHub 儲存機制中的 [Microsoft Azure Linux 代理程式 (英文)](https://github.com/Azure/WALinuxAgent/releases) 頁面。
@@ -106,6 +107,6 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 1. 選取 [Site Recovery 延伸模組]****。
 1. 選取 [解除安裝]。
 
-針對 Linux VM，如果 VMSnapshot 延伸模組未顯示在 Azure 入口網站中，請[更新 Azure Linux 代理程式](../virtual-machines/linux/update-agent.md)。 然後執行保護。
+針對 Linux VM，如果 VMSnapshot 延伸模組未顯示在 Azure 入口網站中，請[更新 Azure Linux 代理程式](../virtual-machines/extensions/update-linux-agent.md)。 然後執行保護。
 
 當您完成這些步驟時，會導致在保護期間重新安裝延伸模組。

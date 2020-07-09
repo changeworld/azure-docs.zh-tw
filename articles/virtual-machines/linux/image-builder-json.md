@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 44cafd4ce7e36c34082ff3c5498c5bbc35282221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263308"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135070"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure Image Builder 範本 
 
@@ -391,7 +391,8 @@ OS 支援：Linux 和 Windows
 
 ### <a name="windows-update-customizer"></a>Windows Update 自訂工具
 此自訂工具是以適用於 Packer 的[社群 Windows Update 佈建工具](https://packer.io/docs/provisioners/community-supported.html)為建置基礎，這是由 Packer 社群所維護的開放原始碼專案。 Microsoft 會使用 Image Builder 服務來測試及驗證佈建工具，並支援用以調查其問題並解決問題，但 Microsoft 並未正式支援開放原始碼專案。 如需 Windows Update 佈建工具的詳細文件和說明，請參閱專案存放庫。
- 
+
+```json
      "customize": [
             {
                 "type": "WindowsUpdate",
@@ -403,7 +404,8 @@ OS 支援：Linux 和 Windows
                 "updateLimit": 20
             }
                ], 
-OS 支援：Windows
+OS support: Windows
+```
 
 Customize 屬性：
 - **type**  – WindowsUpdate。

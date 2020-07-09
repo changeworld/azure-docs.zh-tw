@@ -8,16 +8,17 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a71e476a214c44514c7d57c54a09a38218ad6d2a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74159106"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135672"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>移轉至 Azure 之後，設定 Azure VM 的災害復原 
 
 
-如果您已使用[Site Recovery](site-recovery-overview.md)服務將內部[部署機器遷移至 Azure vm](tutorial-migrate-on-premises-to-azure.md) ，而且您現在想要將 vm 設定為進行嚴重損壞修復到次要 Azure 區域，請遵循這篇文章。 本文說明如何確保 Azure VM 代理程式已安裝在已遷移的 Vm 上，以及如何移除在遷移後不再需要的 Site Recovery 行動服務。
+如果您已使用[Site Recovery](site-recovery-overview.md)服務將內部[部署機器遷移至 Azure vm](./migrate-tutorial-on-premises-azure.md) ，而且您現在想要將 vm 設定為進行嚴重損壞修復到次要 Azure 區域，請遵循這篇文章。 本文說明如何確保 Azure VM 代理程式已安裝在已遷移的 Vm 上，以及如何移除在遷移後不再需要的 Site Recovery 行動服務。
 
 
 
@@ -48,14 +49,14 @@ ms.locfileid: "74159106"
 2. 在該檔案上按一下滑鼠右鍵，並在 [屬性]**** 中選取 [詳細資料]**** 索引標籤。
 3. 確認 [產品版本]**** 欄位顯示 2.6.1198.718 或更高版本。
 
-[深入瞭解](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)適用于 Windows 的代理程式安裝。
+[深入瞭解](../virtual-machines/extensions/agent-windows.md)適用于 Windows 的代理程式安裝。
 
 ### <a name="install-the-agent-on-linux-vms"></a>在 Linux Vm 上安裝代理程式
 
 手動安裝[Azure LINUX VM](../virtual-machines/extensions/agent-linux.md)代理程式，如下所示：
 
 1. 請確定您在電腦上具有系統管理員許可權。
-2. 強烈建議您從散發套件存放庫使用 RPM 或 DEB 套件來安裝 Linux VM 代理程式。 所有[認可的散發套件提供者](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)都會將 Azure Linux 代理程式套件整合於本身的映像和儲存機制中。
+2. 強烈建議您從散發套件存放庫使用 RPM 或 DEB 套件來安裝 Linux VM 代理程式。 所有[認可的散發套件提供者](../virtual-machines/linux/endorsed-distros.md)都會將 Azure Linux 代理程式套件整合於本身的映像和儲存機制中。
     - 我們強烈建議您只透過散發套件存放庫更新代理程式。
     - 我們不建議您直接從 GitHub 安裝 Linux VM 代理程式並加以更新。
     -  如果最新的代理程式不適用於您的散發套件，請連絡散發套件支援以取得如何進行安裝的指示。 

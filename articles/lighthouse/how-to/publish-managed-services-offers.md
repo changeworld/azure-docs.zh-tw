@@ -1,17 +1,18 @@
 ---
 title: 將受控服務供應專案發佈至 Azure Marketplace
-description: 瞭解如何將將上線客戶的受控服務供應專案發佈至 Azure 委派的資源管理。
+description: 瞭解如何將將上線客戶的受控服務供應專案發佈至 Azure 燈塔。
 ms.date: 05/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 214a71faca59072660f1e1f413cb107d8e8f6fc9
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 19364164617a32a561140e985c8723f8deafe1a7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920903"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133309"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>將受控服務供應專案發佈至 Azure Marketplace
 
-在本文中，您將瞭解如何使用合作夥伴中心的[商業 Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md)方案，將公開或私人受控服務供應專案發佈至[Azure Marketplace](https://azuremarketplace.microsoft.com) 。 購買供應專案的客戶接著可以將訂用帳戶和資源群組上架，以進行[Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)。
+在本文中，您將瞭解如何使用合作夥伴中心的[商業 Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md)方案，將公開或私人受控服務供應專案發佈至[Azure Marketplace](https://azuremarketplace.microsoft.com) 。 購買供應專案的客戶會接著委派訂用帳戶或資源群組，讓您可以透過[Azure 燈塔](../overview.md)來管理這些訂用帳戶。
 
 ## <a name="publishing-requirements"></a>發佈需求
 
@@ -19,10 +20,10 @@ ms.locfileid: "85920903"
 
 根據[受控服務提供認證需求](/legal/marketplace/certification-policies#7004-business-requirements)，您必須擁有[銀級或金級雲端平臺專長認證等級](/partner-center/learn-about-competencies)，或為[Azure 專家的 MSP](https://partner.microsoft.com/membership/azure-expert-msp) ，才能發佈受控服務供應專案。
 
-您的 Microsoft 合作夥伴網路 (MPN) 識別碼將會與您發佈的供應項目[自動關聯](../../billing/billing-partner-admin-link-started.md) \(部分機器翻譯\)，以追蹤您對客戶參與整體的影響。
+您的 Microsoft 合作夥伴網路 (MPN) 識別碼將會與您發佈的供應項目[自動關聯](../../cost-management-billing/manage/link-partner-id.md) \(部分機器翻譯\)，以追蹤您對客戶參與整體的影響。
 
 > [!NOTE]
-> 如果您不想將供應項目發佈至 Azure Marketplace，您可以使用 Azure Resource Manager 範本手動讓客戶上線。 如需詳細資訊，請參閱[讓客戶在 Azure 委派的資源管理中上線](onboard-customer.md)。
+> 如果您不想將供應項目發佈至 Azure Marketplace，您可以使用 Azure Resource Manager 範本手動讓客戶上線。 如需詳細資訊，請參閱[將客戶上架至 Azure 燈塔](onboard-customer.md)。
 
 ## <a name="create-your-offer"></a>建立您的供應項目
 
@@ -30,7 +31,7 @@ ms.locfileid: "85920903"
 
 若要瞭解一般發佈程式，請參閱[Azure Marketplace 和 AppSource 發佈指南](../../marketplace/marketplace-publishers-guide.md)。 您也應檢閱[商業市集認證原則](/legal/marketplace/certification-policies)，尤其是[受控服務](/legal/marketplace/certification-policies#700-managed-services)一節。
 
-一旦客戶加入您的供應專案，他們就能夠委派一或多個訂用帳戶或資源群組，然後將其[上架以進行 Azure 委派的資源管理](#the-customer-onboarding-process)。
+一旦客戶加入您的供應專案，他們就能夠委派一或多個訂用帳戶或資源群組，然後再將其[上架至 Azure 燈塔](#the-customer-onboarding-process)。
 
 > [!IMPORTANT]
 > 受控服務供應專案中的每個方案都包含 [**資訊清單詳細資料**] 區段，您可以在其中定義租使用者中的 Azure Active Directory （Azure AD）實體，以存取購買該方案之客戶的委派資源群組和/或訂用帳戶。 請務必注意，您所包含的任何群組（或使用者或服務主體）對於每個購買方案的客戶都有相同的許可權。 若要指派不同的群組來與每個客戶一起使用，您必須發行每個客戶專屬的個別[私人方案](../../marketplace/private-offers.md)。
@@ -43,7 +44,7 @@ ms.locfileid: "85920903"
 
 ## <a name="the-customer-onboarding-process"></a>客戶上線程序
 
-客戶新增您的供應項目之後，他們將能夠[委派一個或多個特定訂用帳戶或資源群組](view-manage-service-providers.md#delegate-resources)，然後讓這些項目上線，以進行 Azure 委派的資源管理。 如果客戶已接受供應項目，但未委派任何資源，則他們會在 Azure 入口網站中[**服務提供者**](view-manage-service-providers.md)頁面上的 [提供者供應項目]**** 區段頂端看到一個備註。
+客戶新增您的供應專案之後，他們將能夠[委派一或多個特定](view-manage-service-providers.md#delegate-resources)的訂用帳戶或資源群組，然後再將其上架至 Azure 燈塔。 如果客戶已接受供應項目，但未委派任何資源，則他們會在 Azure 入口網站中[**服務提供者**](view-manage-service-providers.md)頁面上的 [提供者供應項目]**** 區段頂端看到一個備註。
 
 > [!IMPORTANT]
 > 委派必須由客戶租使用者中的非來賓帳戶完成，其中具有所要上架之訂用帳戶的[擁有者內建角色](../../role-based-access-control/built-in-roles.md#owner)（或包含正在上架的資源群組）。 若要查看可委派訂用帳戶的所有使用者，客戶租用戶中的使用者可以在 Azure 入口網站中選取訂用帳戶並開啟 [存取控制 (IAM)]，然後[查看所有具有「擁有者」角色的使用者](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
