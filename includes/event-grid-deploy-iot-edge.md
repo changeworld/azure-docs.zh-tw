@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0fc6a62a94f31617209bcc60bfaa95bc8927551a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76844578"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050429"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>IoT Edge 模組部署事件方格
 
@@ -49,23 +49,23 @@ ms.locfileid: "76844578"
    * **映射 URI**：`mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **容器建立選項**：
 
-    ```json
-        {
-          "Env": [
-            "inbound__clientAuth:clientCert__enabled=false",
-            "outbound__webhook__httpsOnly=false"
-          ],
-          "HostConfig": {
-            "PortBindings": {
-              "4438/tcp": [
-                {
-                  "HostPort": "4438"
-                }
-              ]
+```json
+    {
+      "Env": [
+        "inbound__clientAuth:clientCert__enabled=false",
+        "outbound__webhook__httpsOnly=false"
+      ],
+      "HostConfig": {
+        "PortBindings": {
+          "4438/tcp": [
+            {
+              "HostPort": "4438"
             }
-          }
+          ]
         }
-    ```
+      }
+    }
+```
 
  1. 按一下 [儲存] 
  1. 按 **[下一步]** 繼續前往 [路由] 區段

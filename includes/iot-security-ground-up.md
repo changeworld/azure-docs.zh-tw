@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 128a2e8b200f1323b88aad635f27c1b686ecbed2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72789738"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050297"
 ---
 物聯網 (IoT) 使得全球企業面臨獨特的安全性、隱私權及相容性挑戰。 不同於傳統網路技術 (這類問題是以軟體及其實作方式為中心)，IoT 在意的是當網路與實體世界交會時會發生什麼事。 保護 IoT 解決方案要求確保安全佈建裝置，保護這些裝置與雲端之間的連接，以及在處理和儲存期間保護雲端中資料保護的安全。 但是，會針對這類功能運作的是資源受限的裝置、根據地理位置分佈的部署，以及解決方案中的大量裝置。
 
@@ -89,7 +89,7 @@ Microsoft 的系統能提供持續的入侵偵測與防護、阻斷服務攻擊�
 
 一旦資料位於雲端之後，它就能進行處理並儲存於任何使用者定義的工作流程中。 存取資料的每個部分是根據所用的儲存體服務，透過 Azure Active Directory 來控制。
 
-IoT 基礎結構所使用的所有金鑰都會儲存於雲端的安全儲存體中，並具備變換能力，以因應金鑰需要重新佈建的情況。 資料可以儲存在 [Azure Cosmos DB](../articles/cosmos-db/introduction.md) 或 [SQL Database](../articles/sql-database/sql-database-faq.md) 中，讓您能夠定義所需的安全性層級。 此外，Azure 提供一種方式來監視和稽核資料的所有存取，以提醒您有任何入侵或未經授權的存取。
+IoT 基礎結構所使用的所有金鑰都會儲存於雲端的安全儲存體中，並具備變換能力，以因應金鑰需要重新佈建的情況。 資料可以儲存在[Azure Cosmos DB](../articles/cosmos-db/introduction.md)或[SQL Database](../articles/sql-database/sql-database-faq.md)中，以啟用所需安全性層級的定義。 此外，Azure 提供一種方式來監視和稽核資料的所有存取，以提醒您有任何入侵或未經授權的存取。
 
 ## <a name="conclusion"></a>結論
 
