@@ -1,17 +1,14 @@
 ---
 title: 做為事件方格來源 Azure 應用程式組態
 description: 本文說明如何使用 Azure 應用程式組態做為事件方格事件來源。 其會提供教學課程與操作說明文章的結構描述和連結。
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: femila
-ms.openlocfilehash: e233b5d27df3e25c2d7c1464aea9a1e80dfbffb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: bdd077c291bd1e1c441217740daf39c8bcaad732
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84553159"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116993"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>做為事件方格來源 Azure 應用程式組態
 本文提供 Azure 應用程式組態事件的屬性和架構。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 它也會提供快速入門和教學課程的清單，供您使用 Azure 應用程式組態作為事件來源。
@@ -71,7 +68,7 @@ Azure 應用程式組態會發出下列事件種類：
 
 事件具有下列的最高層級資料：
 
-| 屬性 | 類型 | Description |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
 | subject | 字串 | 發行者定義事件主體的路徑。 |
@@ -92,7 +89,7 @@ Azure 應用程式組態會發出下列事件種類：
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
 
-|Title | Description |
+|Title | 描述 |
 |---------|---------|
 | [使用事件方格來回應 Azure 應用程式組態事件](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 整合 Azure 應用程式組態與事件方格的總覽。 |
 | [快速入門：使用 Azure CLI 將 Azure 應用程式組態事件路由至自訂 web 端點](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 示範如何使用 Azure CLI 將 Azure 應用程式組態事件傳送至 WebHook。 |

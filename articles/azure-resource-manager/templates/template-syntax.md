@@ -3,12 +3,12 @@ title: 範本結構和語法
 description: 使用宣告式 JSON 語法描述 Azure Resource Manager 範本的結構和屬性。
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 4fdf386aa3b17f46589183706b2a91637acacdb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae2c5a5fe1440c3adbae475cd4c7652a3b01c285
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208819"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116534"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>瞭解 ARM 範本的結構和語法
 
@@ -33,15 +33,15 @@ ms.locfileid: "85208819"
 }
 ```
 
-| 元素名稱 | 必要 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
-| $schema |Yes |JSON 結構描述檔案的位置，說明範本語言的版本。 您所使用的版本號碼取決於部署的範圍和您的 JSON 編輯器。<br><br>如果您使用[VS Code 搭配 Azure Resource Manager tools 延伸](use-vs-code-to-create-template.md)模組，請使用資源群組部署的最新版本：<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>其他編輯器（包括 Visual Studio）可能無法處理此架構。 針對這些編輯器，請使用：<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>針對訂用帳戶部署，使用：<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>針對管理群組部署，請使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>針對租使用者部署，請使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
-| contentVersion |Yes |範本版本 (例如 1.0.0.0)。 您可以為此元素提供任何值。 使用此值在範本中記載重大變更。 使用範本部署資源時，這個值可用來確定使用的是正確的範本。 |
+| $schema |是 |JSON 結構描述檔案的位置，說明範本語言的版本。 您所使用的版本號碼取決於部署的範圍和您的 JSON 編輯器。<br><br>如果您使用[VS Code 搭配 Azure Resource Manager tools 延伸](quickstart-create-templates-use-visual-studio-code.md)模組，請使用資源群組部署的最新版本：<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>其他編輯器（包括 Visual Studio）可能無法處理此架構。 針對這些編輯器，請使用：<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>針對訂用帳戶部署，使用：<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>針對管理群組部署，請使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>針對租使用者部署，請使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
+| contentVersion |是 |範本版本 (例如 1.0.0.0)。 您可以為此元素提供任何值。 使用此值在範本中記載重大變更。 使用範本部署資源時，這個值可用來確定使用的是正確的範本。 |
 | apiProfile |No | API 版本，可作為資源類型的 API 版本集合。 使用此值可避免必須為範本中的每個資源指定 API 版本。 當您指定 API 設定檔版本，但未指定資源類型的 API 版本時，Resource Manager 會使用設定檔中所定義之該資源類型的 API 版本。<br><br>將範本部署到不同的環境（例如 Azure Stack 和全域 Azure）時，API 配置檔案屬性特別有用。 使用 API 設定檔版本，以確保您的範本會自動使用兩個環境中支援的版本。 如需目前的 API 設定檔版本清單和設定檔中定義的資源 API 版本，請參閱[API 設定檔](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)。<br><br>如需詳細資訊，請參閱[使用 API 設定檔來追蹤版本](templates-cloud-consistency.md#track-versions-using-api-profiles)。 |
 | [parameters](#parameters) |No |執行部署以自訂資源部署時所提供的值。 |
 | [變數](#variables) |No |範本中做為 JSON 片段以簡化範本語言運算式的值。 |
 | [函式](#functions) |No |範本中可用的使用者定義函式。 |
-| [人員](#resources) |Yes |在資源群組或訂用帳戶中部署或更新的資源類型。 |
+| [人員](#resources) |是 |在資源群組或訂用帳戶中部署或更新的資源類型。 |
 | [outputs](#outputs) |No |部署後傳回的值。 |
 
 每個元素都有可以設定的屬性。 本文將詳細說明範本的各個區段。
@@ -69,10 +69,10 @@ ms.locfileid: "85208819"
 }
 ```
 
-| 元素名稱 | 必要 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
-| 參數-名稱 |Yes |參數的名稱。 必須是有效的 JavaScript 識別碼。 |
-| 類型 |Yes |參數值類型。 允許的類型和值為 **string**、**securestring**、**int**、**bool**、**object**、**secureObject**，以及 **array**。 請參閱[資料類型](#data-types)。 |
+| 參數-名稱 |是 |參數的名稱。 必須是有效的 JavaScript 識別碼。 |
+| 類型 |是 |參數值類型。 允許的類型和值為 **string**、**securestring**、**int**、**bool**、**object**、**secureObject**，以及 **array**。 請參閱[資料類型](#data-types)。 |
 | defaultValue |No |如果未提供參數值，則會使用參數的預設值。 |
 | allowedValues |No |參數的允許值陣列，確保提供正確的值。 |
 | minValue |No |int 類型參數的最小值，含此值。 |
@@ -130,7 +130,7 @@ ms.locfileid: "85208819"
 
 如需如何使用變數的範例，請參閱[Azure Resource Manager 範本中的變數](template-variables.md)。
 
-## <a name="functions"></a>函式
+## <a name="functions"></a>函數
 
 在您的範本內，您可以建立自己的函式。 這些函式可供您在範本中使用。 通常，您會定義不想要在整個範本中重複的複雜運算式。 您會從範本中支援的運算式和[函式](template-functions.md)建立使用者定義的函式。
 
@@ -164,14 +164,14 @@ ms.locfileid: "85208819"
 ],
 ```
 
-| 元素名稱 | 必要 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
-| 命名空間 |Yes |自訂函式的命名空間。 使用來避免與範本函式的命名衝突。 |
-| 函數名稱 |Yes |自訂函式的名稱。 呼叫函式時，請將函式名稱與命名空間結合。 例如，若要在 contoso 命名空間中呼叫名為 uniqueName 的函式，請使用 `"[contoso.uniqueName()]"` 。 |
+| 命名空間 |是 |自訂函式的命名空間。 使用來避免與範本函式的命名衝突。 |
+| 函數名稱 |是 |自訂函式的名稱。 呼叫函式時，請將函式名稱與命名空間結合。 例如，若要在 contoso 命名空間中呼叫名為 uniqueName 的函式，請使用 `"[contoso.uniqueName()]"` 。 |
 | 參數-名稱 |No |要在自訂函數內使用的參數名稱。 |
 | parameter-value |No |參數值類型。 允許的類型和值為 **string**、**securestring**、**int**、**bool**、**object**、**secureObject**，以及 **array**。 |
-| 輸出類型 |Yes |輸出值的類型。 輸出值支援與函數輸入參數相同的類型。 |
-| 輸出值 |Yes |評估並從函式傳回的範本語言運算式。 |
+| 輸出類型 |是 |輸出值的類型。 輸出值支援與函數輸入參數相同的類型。 |
+| 輸出值 |是 |評估並從函式傳回的範本語言運算式。 |
 
 如需如何使用自訂函式的範例，請參閱[Azure Resource Manager 範本中的使用者定義函數](template-user-defined-functions.md)。
 
@@ -235,12 +235,12 @@ ms.locfileid: "85208819"
 ]
 ```
 
-| 元素名稱 | 必要 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | condition (條件) | No | 布林值，指出是否會在此部署期間佈建資源。 若為 `true`，就會在部署期間建立資源。 若為 `false`，則會略過此部署的資源。 請參閱[條件](conditional-resource-deployment.md)。 |
-| 類型 |Yes |資源類型。 這個值是資源提供者的命名空間和資源類型（例如**Microsoft. Storage/storageAccounts**）的組合。 若要判斷可用的值，請參閱[範本參考](/azure/templates/)。 對於子資源，類型的格式取決於它是內嵌在父資源內，還是在父資源外部定義。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。 |
+| 類型 |是 |資源類型。 這個值是資源提供者的命名空間和資源類型（例如**Microsoft. Storage/storageAccounts**）的組合。 若要判斷可用的值，請參閱[範本參考](/azure/templates/)。 對於子資源，類型的格式取決於它是內嵌在父資源內，還是在父資源外部定義。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。 |
 | apiVersion |是 |要用來建立資源的 REST API 版本。 若要判斷可用的值，請參閱[範本參考](/azure/templates/)。 |
-| NAME |Yes |資源名稱。 此名稱必須遵循在 RFC3986 中定義的 URI 元件限制。 將資源名稱公開給外部合作物件的 Azure 服務會驗證該名稱，以確保不會嘗試偽造另一個身分識別。 對於子資源，名稱的格式取決於它是內嵌在父資源內，還是在父資源外部定義。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。 |
+| NAME |是 |資源名稱。 此名稱必須遵循在 RFC3986 中定義的 URI 元件限制。 將資源名稱公開給外部合作物件的 Azure 服務會驗證該名稱，以確保不會嘗試偽造另一個身分識別。 對於子資源，名稱的格式取決於它是內嵌在父資源內，還是在父資源外部定義。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。 |
 | comments |No |您在範本中記錄資源的註解。 如需詳細資訊，請參閱[範本中的註解](template-syntax.md#comments)。 |
 | location |不定 |所提供資源的支援地理位置。 您可以選取任何可用的位置，但通常選擇接近您的使用者的位置很合理。 通常，將彼此互動的資源放在相同區域也合乎常理。 大部分的資源類型都需要有位置，但某些類型 (例如角色指派) 不需要位置。 請參閱[設定資源位置](resource-location.md)。 |
 | dependsOn |No |在部署這項資源之前必須部署的資源。 Resource Manager 會評估資源之間的相依性，並依正確的順序進行部署。 資源若不互相依賴，則會平行部署資源。 值可以是以逗號分隔的資源名稱或資源唯一識別碼清單。 只會列出此範本中已部署的資源。 此範本中未定義的資源必須已經存在。 避免加入不必要的相依性，因為可能會降低部署速度並產生循環相依性。 如需設定相依性的指引，請參閱[定義 Azure Resource Manager 範本中的相依性](define-resource-dependency.md)。 |
@@ -272,11 +272,11 @@ ms.locfileid: "85208819"
 }
 ```
 
-| 元素名稱 | 必要 | 說明 |
+| 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
-| 輸出-名稱 |Yes |輸出值的名稱。 必須是有效的 JavaScript 識別碼。 |
+| 輸出-名稱 |是 |輸出值的名稱。 必須是有效的 JavaScript 識別碼。 |
 | condition (條件) |No | 布林值，指出是否傳回此輸出值。 當為 `true` 時，該值會包含在部署的輸出中。 若為 `false`，則會略過此部署的輸出值。 未指定時，預設值為 `true`。 |
-| 類型 |Yes |輸出值的類型。 輸出值支援與範本輸入參數相同的類型。 如果您針對輸出類型指定**securestring** ，此值不會顯示在部署歷程記錄中，而且無法從另一個範本抓取。 若要在多個範本中使用秘密值，請將密碼儲存在 Key Vault 中，並在參數檔案中參考密碼。 如需詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](key-vault-parameter.md)。 |
+| 類型 |是 |輸出值的類型。 輸出值支援與範本輸入參數相同的類型。 如果您針對輸出類型指定**securestring** ，此值不會顯示在部署歷程記錄中，而且無法從另一個範本抓取。 若要在多個範本中使用秘密值，請將密碼儲存在 Key Vault 中，並在參數檔案中參考密碼。 如需詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](key-vault-parameter.md)。 |
 | value |No |評估並傳回做為輸出值的範本語言運算式。 請指定 [**值**] 或 [**複製**]。 |
 | copy |No | 用來針對輸出傳回一個以上的值。 指定 [**值**] 或 [**複製**]。 如需詳細資訊，請參閱[Azure Resource Manager 範本中的輸出反復](copy-outputs.md)專案。 |
 
@@ -307,7 +307,7 @@ ms.locfileid: "85208819"
   ],
 ```
 
-在 Visual Studio Code 中， [Azure Resource Manager Tools 延伸](use-vs-code-to-create-template.md#install-resource-manager-tools-extension)模組可以自動偵測 Resource Manager 範本，並據此變更語言模式。 如果您在 VS Code 右下角看到**Azure Resource Manager 範本**，您可以使用內嵌批註。 內嵌註解不再被標示為無效。
+在 Visual Studio Code 中， [Azure Resource Manager Tools 延伸](quickstart-create-templates-use-visual-studio-code.md)模組可以自動偵測 Resource Manager 範本，並據此變更語言模式。 如果您在 VS Code 右下角看到**Azure Resource Manager 範本**，您可以使用內嵌批註。 內嵌註解不再被標示為無效。
 
 ![Visual Studio Code Azure Resource Manager 範本模式](./media/template-syntax/resource-manager-template-editor-mode.png)
 

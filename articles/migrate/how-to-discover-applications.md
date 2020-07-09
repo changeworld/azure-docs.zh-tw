@@ -3,11 +3,12 @@ title: 使用 Azure Migrate 探索內部部署伺服器上的應用程式、角�
 description: 瞭解如何在具有 Azure Migrate Server 評估的內部部署伺服器上探索應用程式、角色和功能。
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: ae00e390bb49f3a54f7f7ce7d6491cf7ee882491
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770504"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118642"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>探索機器應用程式、角色和功能
 
@@ -79,4 +80,4 @@ ms.locfileid: "84770504"
 ## <a name="next-steps"></a>後續步驟
 
 - 為探索到的伺服器[建立評](how-to-create-assessment.md)量。
-- 使用 Azure Migrate 評估 SQL Server 資料庫[：資料庫評估](https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017)。
+- 使用 Azure Migrate 評估 SQL Server 資料庫[：資料庫評估](/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017)。

@@ -1,18 +1,16 @@
 ---
 title: 取得特定供應專案 API-Azure Marketplace
 description: 要在發行者命名空間內抓取指定供應專案的 API。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 06/19/2020
-ms.author: dsindona
-ms.openlocfilehash: 771c103b535c09f8481c2b01328078504b8633aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4bbe133d8b223bf717597467336eb486f432380
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515885"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115531"
 ---
 <a name="retrieve-a-specific-offer"></a>擷取特定供應項目
 =========================

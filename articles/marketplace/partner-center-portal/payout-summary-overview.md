@@ -1,17 +1,18 @@
 ---
 title: 支付摘要概觀 - Azure Marketplace
 description: '[支付摘要] 會顯示透過供應項目所賺取金額的詳細資料。 此外，其還會告知何時會收到付款，以及將收到多少款項。'
-author: mingshen
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: mingshen
+ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: a872331238946de0d57e6d42164f1ce7fb1c7357
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 29a8eb72814d865cb02bd632e084cec0cc06a1ff
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746196"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118472"
 ---
 # <a name="payout-summary-overview"></a>支付摘要概觀
 

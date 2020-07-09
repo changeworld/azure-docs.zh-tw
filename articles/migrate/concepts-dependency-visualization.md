@@ -3,11 +3,12 @@ title: Azure Migrate Server 評估中的相依性分析
 description: 說明如何使用相依性分析進行評估，使用 Azure Migrate Server 評估。
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: ff563668666207f35fa2ea796d6c909a59df245f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 386a8cefce722c4bff09e2a7fe6d25957630ff61
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771337"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118795"
 ---
 # <a name="dependency-analysis"></a>相依性分析
 
@@ -74,7 +75,7 @@ ms.locfileid: "84771337"
 --- | --- | ---
 **支援** | 僅適用于 VMware Vm 的預覽版本。 [檢查](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支援的作業系統。 | 正式運作（GA）。
 **代理程式** | 您想要分析的電腦上不需要代理程式。 | 您想要分析的每個內部部署機器上都需要代理程式。
-**Log Analytics** | 不需要。 | Azure Migrate 使用[Azure 監視器記錄](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中的[服務對應](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解決方案進行相依性分析。 
+**Log Analytics** | 不需要。 | Azure Migrate 使用[Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)中的[服務對應](../azure-monitor/insights/service-map.md)解決方案進行相依性分析。 
 **處理程序** | 捕獲 TCP 連接資料。 探索之後，它會以五分鐘的間隔收集資料。 | 安裝在電腦上的服務對應代理程式會收集 TCP 進程的相關資料，以及每個進程的輸入/輸出連接。
 **Data** | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。<br/><br/> 系統會收集連線、延遲和資料傳輸資訊的數目，並可供 Log Analytics 查詢使用。 
 **視覺效果** | 單一伺服器的相依性對應可以在一小時到30天的期間內查看。 | 單一伺服器的相依性對應。<br/><br/> 伺服器群組的相依性對應。<br/><br/>  只能在一小時內查看對應。<br/><br/> 從地圖視圖新增和移除群組中的伺服器。
@@ -87,5 +88,3 @@ ms.locfileid: "84771337"
 - [設定](how-to-create-group-machine-dependencies.md)以代理程式為基礎的相依性視覺效果。
 - [試用](how-to-create-group-machine-dependencies-agentless.md)VMware vm 的無代理程式相依性視覺效果。
 - 查看關於相依性視覺效果的[常見問題](common-questions-discovery-assessment.md#what-is-dependency-visualization)。
-
-

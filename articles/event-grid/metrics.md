@@ -1,25 +1,21 @@
 ---
 title: Azure 事件方格支援的計量
 description: 本文提供 Azure 事件方格服務所支援的 Azure 監視器計量。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: spelluru
-ms.openlocfilehash: 643df2f4cc6347e0fd56f9124b68f1888ab85e26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 3b22beafc9f88d2d95b25fd7ad2f2308a4df9097
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82630131"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116415"
 ---
 # <a name="metrics-supported-by-azure-event-grid"></a>Azure 事件方格支援的計量
 本文提供以命名空間分類的事件方格計量清單。 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
 
-|Metric|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|
 |PublishSuccessCount|已發佈的事件|Count|總計|發佈至本主題的事件總數|主題|
 |PublishFailCount|發行失敗的事件|Count|總計|發佈至本主題失敗的事件總數|主題、ErrorType、錯誤|
@@ -33,7 +29,7 @@ ms.locfileid: "82630131"
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 
-|Metric|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|
 |PublishSuccessCount|已發佈的事件|Count|總計|發佈至本主題的事件總數|None|
 |PublishFailCount|發行失敗的事件|Count|總計|發佈至本主題失敗的事件總數|ErrorType，錯誤|
@@ -48,7 +44,7 @@ ms.locfileid: "82630131"
 
 ## <a name="microsofteventgridsystemtopics"></a>EventGrid/systemTopics
 
-|Metric|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|
 |PublishSuccessCount|已發佈的事件|Count|總計|發佈至本主題的事件總數|None|
 |PublishFailCount|發行失敗的事件|Count|總計|發佈至本主題失敗的事件總數|ErrorType、Error|
@@ -63,7 +59,7 @@ ms.locfileid: "82630131"
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft.EventGrid/eventSubscriptions
 
-|Metric|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|
 |MatchedEventCount|相符的事件|Count|總計|與此事件訂閱相符的事件總數|None|
 |DeliveryAttemptFailCount|傳遞失敗的事件|Count|總計|傳遞到此事件訂閱失敗的事件總數|Error、ErrorType|
@@ -74,7 +70,7 @@ ms.locfileid: "82630131"
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft.EventGrid/extensionTopics
 
-|Metric|計量顯示名稱|單位|彙總類型|描述|維度|
+|計量|計量顯示名稱|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|
 |PublishSuccessCount|已發佈的事件|Count|總計|發佈至本主題的事件總數|None|
 |PublishFailCount|發行失敗的事件|Count|總計|發佈至本主題失敗的事件總數|ErrorType、Error|

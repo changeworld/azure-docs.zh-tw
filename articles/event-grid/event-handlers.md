@@ -1,17 +1,14 @@
 ---
 title: Azure 事件方格事件處理常式
 description: 描述支援的 Azure 事件方格事件處理常式。 Azure 自動化、Functions、事件中樞、混合式連線、Logic Apps、服務匯流排、佇列儲存體、Webhook。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: c29526bdee5ad70b3acb23117ee003877f52a55e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/07/2020
+ms.openlocfilehash: 76f7fff3e0a3e1c0c554e452987bf944503358b8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592452"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117010"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure 事件方格中的事件處理常式
 事件處理常式是傳送事件的位置。 處理常式會採取一些進一步的動作來處理事件。 許多 Azure 服務都已自動設定為可處理事件。 您也可以使用任何 Webhook 來處理事件。 Webhook 不需要裝載於 Azure 也能處理處理事件。 Event Grid 僅支援 HTTPS Webhook 端點。

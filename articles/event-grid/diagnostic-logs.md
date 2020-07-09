@@ -1,18 +1,14 @@
 ---
 title: Azure 事件方格-主題或網域的診斷記錄
 description: 本文提供有關 Azure 事件方格主題或網域之診斷記錄的概念資訊。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: spelluru
-ms.openlocfilehash: 93e7e47cbcc1ab9542ba333b89f7dd655a412489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: c8f6734d9d43887d0eb0bb90bb08f727732feac3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82630248"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116738"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Azure 事件方格主題/網域的診斷記錄
 診斷設定可讓「事件方格」使用者在儲存體帳戶、事件中樞或 Log Analytics 工作區中，捕獲及查看**發佈和傳遞失敗**記錄。 本文提供記錄的架構和範例記錄專案。

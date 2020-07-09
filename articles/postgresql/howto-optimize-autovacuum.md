@@ -4,14 +4,14 @@ description: 本文說明如何將適用於 PostgreSQL 的 Azure 資料庫單一
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 7dcc6f9ece407bee20ed344d91ee95e34f8f4c0a
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848200"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116347"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>優化適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的自動資料清理
 本文描述如何有效地將適用於 PostgreSQL 的 Azure 資料庫伺服器上的自動資料清理最佳化。
@@ -22,20 +22,25 @@ PostgreSQL 使用多版本並行控制 (MVCC)，來達到更好的資料庫並�
 資料清理作業可以由手動或自動的方式觸發。 當資料庫經歷大量更新或刪除作業時，會有更多無效 Tuple。 當資料庫閒置時，會有較少無效 Tuple。 當資料庫的負載較大時，您需要更頻繁地執行資料清理，因此「手動」** 執行資料清理作業會變得不方便。
 
 您可以設定自動資料清理，並進行調整從中獲益。 PostgreSQL 隨附的預設值可確保產品能在各種裝置上運作。 這些裝置包括 Raspberry Pi。 理想的設定值取決於：
+
 - 可用的總資源，如 SKU 和儲存體大小。
 - 資源使用狀況。
 - 個別物件特性。
 
 ## <a name="autovacuum-benefits"></a>自動資料清理的優點
+
 如果您沒有定時執行資料清理，累積無效 Tuple 可能導致：
+
 - 資料膨脹，如較大的資料庫和資料表。
 - 較大且非最佳化的索引。
 - I/O 增加。
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>使用自動資料清理查詢監視膨脹
 下列範例查詢是設計來識別名為 XYZ 的資料表中，無效和有效 Tuple 的數目：
- 
-    'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
+
+```sql
+SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;
+```
 
 ## <a name="autovacuum-configurations"></a>自動資料清理設定
 根據兩個重要問題的解答，來決定控制自動資料清理的設定參數：
@@ -56,6 +61,7 @@ autovacuum_max_workers|指定在任何時間可執行的自動資料清理處理
 若要覆寫個別資料表的設定，請變更資料表儲存體參數。 
 
 ## <a name="autovacuum-cost"></a>自動資料清理成本
+
 以下是執行資料清理作業的「成本」:
 
 - 在資料分頁上執行資料清理時，該分頁會被鎖定。
@@ -64,6 +70,7 @@ autovacuum_max_workers|指定在任何時間可執行的自動資料清理處理
 因此，不應太頻繁或太不頻繁地執行記憶體清理作業。 資料清理作業需要與工作負載配合。 請測試所有自動資料清理參數變更，因為每個都有所取捨。
 
 ## <a name="autovacuum-start-trigger"></a>自動資料清理啟動觸發程序
+
 當無效 Tuple 的數量超過 autovacuum_vacuum_threshold + autovacuum_vacuum_scale_factor * reltuples 時會觸發自動資料清理。 這裡的 reltuples 是常數。
 
 自動資料清理的清除必須跟上資料庫負載。 否則您的儲存體可能會不足，且查詢會整體變慢。 經過一段時間的攤還之後，資料清理作業清除無效 Tuple 的速率應該會等於無效 Tuple 的產生速率。
@@ -91,7 +98,9 @@ autovacuum_max_workers 參數決定可同時執行的自動資料清理處理序
 使用 PostgreSQL 時，您可以在資料表層級或執行個體層級設定這些參數。 您目前只能在適用於 PostgreSQL 的 Azure 資料庫中，於資料表層級設定這些參數。
 
 ## <a name="optimize-autovacuum-per-table"></a>針對每個資料表最佳化自動資料清理
+
 您可以針對每個資料表設定所有上述設定參數。 以下是範例：
+
 ```sql
 ALTER TABLE t SET (autovacuum_vacuum_threshold = 1000);
 ALTER TABLE t SET (autovacuum_vacuum_scale_factor = 0.1);
@@ -102,7 +111,8 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 自動資料清理是個別資料表同步處理序。 資料表的無效 Tuple 百分比越大，自動資料清理的「成本」就越高。 您可以將更新和刪除比例高的資料表分割成多個資料表。 分割資料表有助於平行化自動資料清理，並減少在一個資料表上完成自動資料清理的「成本」。 您也可以增加平行自動資料清理背景工作角色的數目，以確保背景工作角色充分地排程。
 
 ## <a name="next-steps"></a>後續步驟
+
 若要深入了解如何使用和微調自動資料清理，請參閱下列 PostgreSQL 文件：
 
- - [第 18 章：伺服器設定](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html) \(英文\)
- - [第 24 章：例行資料庫維護工作](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html) \(英文\)
+- [第 18 章：伺服器設定](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html) \(英文\)
+- [第 24 章：例行資料庫維護工作](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html) \(英文\)

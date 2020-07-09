@@ -1,17 +1,14 @@
 ---
 title: Azure 事件方格合作夥伴主題
 description: 使用 Azure 事件方格，將來自協力廠商事件方格 SaaS 和 PaaS 合作夥伴的事件直接傳送至 Azure 服務。
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.author: femila
-ms.openlocfilehash: 5327efea8af734c723ba76d1a00b72c08f5c88b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 97829f262a00e2353624b2a3fa9df210518ad3a0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560279"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115990"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Azure 事件方格中的合作夥伴主題（預覽）
 藉由使用合作夥伴主題，您可以將協力廠商事件來源直接連線到 Azure 事件方格。 這項整合可讓您使用從 Azure 服務訂閱事件的相同方式，訂閱來自合作夥伴的事件。 

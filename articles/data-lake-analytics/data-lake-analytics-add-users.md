@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 16c503fe2d584d5f8256c65bfc49825b300f6a36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16ec54bb2a41927a92d953586af59ae3653a29c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71672719"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117452"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>在 Azure 入口網站中新增使用者
 
@@ -34,7 +34,7 @@ ms.locfileid: "71672719"
 ## <a name="optionally-add-the-user-to-the-azure-data-lake-storage-gen1-role-reader-role"></a>您可以選擇將使用者新增至 Azure Data Lake Storage Gen1 的**讀者**角色。
 1.  尋找您的 Azure Data Lake Storage Gen1 帳戶。
 2.  按一下 [使用者]****。
-3. 按一下 **[新增]** 。
+3. 按一下 [新增] 。
 4.  選取一個「Azure RBAC 角色」來指派給此群組。
 5.  指派給 [讀者] 角色。 這個角色有一組最低權限，可以瀏覽/管理儲存在 ADLSGen1 中的資料。 如果不打算讓群組管理 Azure 服務，請將其指派給此角色。
 6.  輸入群組的名稱。

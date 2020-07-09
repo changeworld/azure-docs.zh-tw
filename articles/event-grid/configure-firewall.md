@@ -1,18 +1,14 @@
 ---
 title: 為 Azure 事件方格主題或網域設定 IP 防火牆（預覽）
 description: 本文說明如何設定事件方格主題或網域的防火牆設定。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.author: spelluru
-ms.openlocfilehash: c64d947c13cf067d4ffc2b32ed655960143ad1c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 1cb285af6a463b2e0f413b1f876df96f82bb7f93
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391769"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116466"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>為 Azure 事件方格主題或網域設定 IP 防火牆（預覽）
 根據預設，只要要求隨附有效的驗證和授權，就可以從網際網路存取主題和網域。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。 源自任何其他 IP 位址的發行者將會遭到拒絕，並會收到403（禁止）回應。 如需事件方格所支援之網路安全性功能的詳細資訊，請參閱[事件方格的網路安全性](network-security.md)。

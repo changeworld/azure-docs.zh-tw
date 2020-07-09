@@ -7,14 +7,14 @@ author: guyhay
 ms.author: guyhay
 ms.reviewer: jasonwhowell
 ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2018
-ms.openlocfilehash: 4689714073047e383a53a04bd0069a8a27afdf9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c36b298593bf8834824f81672d754f9864a253f2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72966433"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117588"
 ---
 # <a name="manage-azure-data-lake-analytics-using-account-policies"></a>使用帳戶原則管理 Azure Data Lake Analytics
 
@@ -32,7 +32,7 @@ ms.locfileid: "72966433"
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
 2. 按一下 [**限制和原則**]。
 3. 在 [AU 上限]**** 之下，移動滑桿以選取值，或在文字方塊中輸入值。 
-4. 按一下 **[儲存]** 。
+4. 按一下 [檔案] 。
 
 > [!NOTE]
 > 如果您需要的 AU 超過預設值 (250)，請在入口網站中按一下 [說明 + 支援]**** 以提交支援要求。 您可以增加 Data Lake Analytics 帳戶中可用的 AU 數目。
@@ -46,7 +46,7 @@ ms.locfileid: "72966433"
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
 2. 按一下 [**限制和原則**]。
 3. 在 [執行中作業數目上限]**** 之下，移動滑桿以選取值，或在文字方塊中輸入值。 
-4. 按一下 **[儲存]** 。
+4. 按一下 [檔案] 。
 
 > [!NOTE]
 > 如果您需要執行的作業數目超過預設值 (20)，請在入口網站中按一下 [說明 + 支援]**** 以提交支援要求。 您可以增加 Data Lake Analytics 帳戶中可以同時執行的作業數目。
@@ -60,7 +60,7 @@ ms.locfileid: "72966433"
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
 2. 按一下 [**限制和原則**]。
 3. 在 [保留作業查詢的天數]**** 之下，移動滑桿以選取值，或在文字方塊中輸入值。  
-4. 按一下 **[儲存]** 。
+4. 按一下 [檔案] 。
 
 ## <a name="job-level-policies"></a>作業層級原則
 

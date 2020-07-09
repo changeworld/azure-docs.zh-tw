@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 07/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: f69301bdbc0af9334858940fbfd3d7d0a0a63153
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3069ee020d5f127eb0bdb8cbaf251cd3f3cef8d9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807635"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118406"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>設定 Azure 儲存體的先進威脅防護
 
@@ -23,28 +23,19 @@ Azure 儲存體的先進威脅防護提供一層額外的安全性情報，可�
 
 出現異常活動時，就會觸發安全性警示。 這些安全性警示會與[Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)整合，並透過電子郵件傳送給訂用帳戶系統管理員，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。
 
-服務會內嵌讀取、寫入及刪除要求 Blob 儲存體的資源記錄，以進行威脅偵測。 若要調查 [advanced 威脅防護] 中的警示，您可以使用儲存體分析記錄來查看相關的儲存體活動。 如需詳細資訊，請參閱在[Azure 入口網站中設定監視儲存體帳戶中](storage-monitor-storage-account.md#configure-logging)的**記錄**。
+服務會內嵌對 Blob 儲存體之讀取、寫入和刪除要求的資源記錄，以及 Azure 檔案儲存體（預覽）以進行威脅偵測。 若要調查 [advanced 威脅防護] 中的警示，您可以使用儲存體分析記錄來查看相關的儲存體活動。 如需詳細資訊，請參閱在[Azure 入口網站中設定監視儲存體帳戶中](storage-monitor-storage-account.md#configure-logging)的**記錄**。
 
 ## <a name="availability"></a>可用性
 
-Azure 儲存體的進階威脅防護目前僅適用於 [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)。 支援「先進的威脅防護」的帳戶類型包括一般用途 v2、區塊 blob 和 Blob 儲存體帳戶。 先進的威脅防護功能適用于所有公用雲端和美國政府雲端，但不適用於其他主權或 Azure 政府機構地區。
+Azure 儲存體的先進威脅防護目前適用于 Blob 儲存體、Azure 檔案儲存體（預覽）和 Azure Data Lake Storage Gen2 （預覽）。 支援「先進的威脅防護」的帳戶類型包括一般用途 v2、區塊 blob 和 Blob 儲存體帳戶。 先進的威脅防護適用于所有公用雲端和美國政府雲端，但不適用於其他主權或 Azure Government 雲端區域。
+
+已針對 Data Lake Storage 啟用階層命名空間的帳戶，可支援使用 Azure Blob 儲存體 Api 和 Data Lake Storage Api 的交易。 Azure 檔案共用支援透過 SMB 的交易。
 
 如需定價詳細資料，包括免費的30天試用版，請參閱[Azure 資訊安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
-
 
 ## <a name="set-up-advanced-threat-protection"></a>設定先進的威脅防護
 
 您可以透過下列各節所述的任一種方式設定進階威脅防護。
-
-### <a name="portal"></a>[入口網站](#tab/azure-portal)
-
-1. 啟動[Azure 入口網站](https://portal.azure.com/)。
-1. 流覽至您的 Azure 儲存體帳戶。 在 [**設定**] 底下，選取 [ **Advanced security**]。
-1. 選取 [advanced security 設定] 頁面上的 [**設定**] 連結。
-1. 將 [**高級安全性**] 設定為 [**開啟**]。
-1. 按一下 [**儲存**] 以儲存新的或更新的原則。
-
-    ![開啟 Azure 儲存體進階威脅防護](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="azure-security-center"></a>[Azure 資訊安全中心](#tab/azure-security-center)
 
@@ -61,6 +52,16 @@ Azure 儲存體的進階威脅防護目前僅適用於 [Blob 儲存體](https://
 
     ![在資訊安全中心中啟用 ATP](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. 按一下 [檔案] 。
+
+### <a name="portal"></a>[入口網站](#tab/azure-portal)
+
+1. 啟動[Azure 入口網站](https://portal.azure.com/)。
+1. 流覽至您的 Azure 儲存體帳戶。 在 [**設定**] 底下，選取 [ **Advanced security**]。
+1. 選取 [advanced security 設定] 頁面上的 [**設定**] 連結。
+1. 將 [**高級安全性**] 設定為 [**開啟**]。
+1. 按一下 [**儲存**] 以儲存新的或更新的原則。
+
+    ![開啟 Azure 儲存體進階威脅防護](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="template"></a>[範本](#tab/template)
 

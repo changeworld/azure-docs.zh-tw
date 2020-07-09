@@ -1,18 +1,18 @@
 ---
 title: 供應項目清單最佳做法 - Microsoft 商業市集
 description: 了解 Microsoft AppSource 和 Azure Marketplace 供應項目的進入市場清單最佳做法。
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 07/06/2020
-ms.author: dsindona
-ms.openlocfilehash: 60f9630b58250bdae4c382e61697f7abd53e036d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8adffcc6c7ae4af2e33587f75c83430473180203
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027064"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118387"
 ---
 # <a name="offer-listing-best-practices"></a>陳列供應項目的最佳做法
 
@@ -31,7 +31,7 @@ ms.locfileid: "86027064"
 
 不同店面的類別和產業將適用于不同的供應專案類型。
 
-|  | **<br>依店面分類的類別** |  | **<br>適用于 AppSource 的產業** |
+| 店面 | 類別 <br>依店面 | 類別 <br>依店面 | 產業 <br> 針對 AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **供應專案類型**   |  **Azure Marketplace**  | **AppSource**  |
 | Azure 應用程式 | X | |
@@ -144,7 +144,7 @@ Microsoft AppSource 和 Azure Marketplace 是兩個不同的店面，可滿足�
 
 如需有關交易功能如何影響您的供應專案可由 marketplace 客戶查看和購買的特定詳細資料，請參閱「[供應專案類型指南](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)」。 若為 SaaS 供應專案，提供者的交易功能以及類別選擇，將會決定將發佈您供應專案的店面：
 
-| SaaS 供應專案    |     |          |           |    |    |     | 適用的店面 |              |
+| SaaS 供應專案    | SaaS 供應專案   | SaaS 供應專案  | SaaS 供應專案   | SaaS 供應專案   | SaaS 供應專案   | SaaS 供應專案    | 適用的店面 | 適用的店面 |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | 計量付費計費 | Microsoft 365 增益集 | 與我連絡 | 交易（至少1個方案） | 僅私用方案 | 僅限公用方案 | 公用 & 私用方案 | AppSource | Azure Marketplace |
 |  | X |  |  |  |  |  | X |  |
@@ -175,7 +175,7 @@ Microsoft AppSource 和 Azure Marketplace 是兩個不同的店面，可滿足�
 | **散發** | 簽署 <br> & 套件運送的包裹 |  
 | **教育訓練** | 高等教育 <br> 主要 & 次要 Edu/K-12 <br> & 博物館的程式庫 |
 | **金融服務** | 銀行業 & 資本市場 <br> Insurance | 
-| **政府** |  防禦 & 情報 <br> 文職政府 <br> 公用安全 & 司法 |
+| **政府機關** |  防禦 & 情報 <br> 文職政府 <br> 公用安全 & 司法 |
 | **醫療保健** | 健全狀況醫療給付 <br> 健全狀況提供者 <br> Pharmaceuticals | 
 | **旅行 & 旅遊** | 旅遊和運輸 <br> 飯店 & 休閒 <br> 餐廳 & 食物服務 | 
 | **製造 & 資源** | 化學 & Agrochemical <br> 離散製造 <br> 能源 | 

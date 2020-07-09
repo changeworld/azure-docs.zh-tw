@@ -1,18 +1,16 @@
 ---
 title: 上線 API-Azure Marketplace
 description: Go Live API 會起始供應項目即時上市程序。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 04/08/2020
-ms.author: dsindona
-ms.openlocfilehash: 5d550f576108447a88660321899f2f55ffeb3c77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f356291662851172a3c6917b44891ce901546dfa
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515920"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115701"
 ---
 # <a name="go-live"></a>Go Live
 
@@ -58,7 +56,7 @@ ms.locfileid: "85515920"
 
 |  **名稱**             |      **ReplTest1**                                                            |
 |  --------             |      ----------                                                           |
-| 位置    |  要取出此作業狀態的相對路徑            |
+| Location    |  要取出此作業狀態的相對路徑            |
 |  |  |
 
 ### <a name="response-status-codes"></a>回應狀態碼

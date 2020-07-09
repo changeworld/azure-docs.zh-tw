@@ -4,13 +4,14 @@ description: 本文說明如何在適用於 PostgreSQL 的 Azure 資料庫單一
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d10f06577738364e3f4a0ea40221d37ebfb31c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74770130"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116279"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>優化適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的大量插入和使用暫時性資料 
 本文說明如何在適用於 PostgreSQL 的 Azure 資料庫伺服器上最佳化大量插入作業及使用暫時性資料。

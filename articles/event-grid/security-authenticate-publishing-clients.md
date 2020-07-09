@@ -1,17 +1,14 @@
 ---
 title: 驗證用戶端將事件發佈到事件方格自訂主題或網域
 description: 本文說明驗證用戶端將事件發佈到事件方格自訂主題的不同方式。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.author: spelluru
-ms.openlocfilehash: 7805c9b9096cb52fcef3dad8eb0bdd9509cbce47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 1e147830a4b37a8603df8e4ce29953acab2345bd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414828"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115871"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>驗證發佈用戶端（Azure 事件方格）
 本文提供的資訊說明如何使用**存取金鑰**或**共用存取簽章（SAS）** 權杖來驗證將事件發佈至 Azure 事件方格主題或網域的用戶端。 我們建議使用 SAS 權杖，但金鑰驗證提供簡單的程式設計，並與許多現有的 webhook 發行者相容。  

@@ -3,12 +3,12 @@ title: Azure 備份中的加密
 description: 瞭解 Azure 備份中的加密功能如何協助您保護您的備份資料，並符合您企業的安全性需求。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 0a3f4db4d248d2534cfebd617be0f3ccc9647f15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca570cfdc6e78e712715ba075168f4b06c55e4af
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807724"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116551"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure 備份中的加密
 
@@ -32,6 +32,13 @@ ms.locfileid: "84807724"
 ## <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密的受控磁片 Vm 備份
 
 Azure 備份也可讓您備份使用金鑰進行[儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)的 Azure vm。 用來加密磁片的金鑰會儲存在 Azure Key Vault 中，並由您管理。 使用客戶管理金鑰的儲存體服務加密（SSE）與 Azure 磁碟加密不同，因為 ADE 會利用 BitLocker （適用于 Windows）和 DM Crypt （適用于 Linux）來執行來賓加密，而 SSE 會加密儲存體服務中的資料，讓您可以對 Vm 使用任何 OS 或映射。 如需詳細資訊，請參閱[使用客戶管理的金鑰加密受控磁片](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)。
+
+## <a name="infrastructure-level-encryption-for-backup-data"></a>備份資料的基礎結構層級加密
+
+除了使用客戶管理的金鑰來加密復原服務保存庫中的資料，您也可以選擇在儲存體基礎結構上設定額外的加密層級。 此基礎結構加密是由平臺管理，並使用客戶管理的金鑰搭配待用加密，它允許兩層式的備份資料加密。 請注意，只有當您第一次選擇使用自己的金鑰進行待用加密時，才可以設定基礎結構加密。 基礎結構加密會使用平臺管理的金鑰來加密資料。
+
+>[!NOTE]
+>基礎結構加密目前處於有限預覽狀態，僅適用于美國東部、美國西部2和美國中南部區域。 如果您想要在這些區域中使用此功能，請在此填寫[表單](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u)，並以電子郵件傳送給我們 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
 
 ## <a name="backup-of-vms-encrypted-using-ade"></a>使用 ADE 加密的 Vm 備份
 

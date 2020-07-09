@@ -4,12 +4,12 @@ description: 如何在 Azure 虛擬網路中建立 Batch 集區，以便計算�
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3ff8995217521199436e0924acc691dab7c4baef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22344b5466b0388921a481b1adf41495d66dbfe0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506583"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115406"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虛擬網路中建立 Azure Batch 集區
 
@@ -62,7 +62,7 @@ ms.locfileid: "85506583"
 ![使用者定義路由](./media/batch-virtual-network/user-defined-route.png)
 
 > [!WARNING]
-> Batch 服務 IP 位址可能會隨著時間變更。 為避免因 IP 位址變更而發生中斷，請建立自動重新整理 Batch 服務 IP 位址的程式，並將它們保持在路由表中的最新狀態。 或者，您可以[使用您所控制的指定 IP 位址來建立集](create-pool-public-ip.md)區。
+> Batch 服務 IP 位址可能會隨著時間變更。 為避免因 IP 位址變更而發生中斷，請建立自動重新整理 Batch 服務 IP 位址的程式，並將它們保持在路由表中的最新狀態。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,17 +1,14 @@
 ---
 title: 作為 Azure 事件方格合作夥伴上線
 description: 以 Azure 事件方格合作夥伴主題類型上架。 瞭解合作夥伴主題的資源模型和發佈流程。
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.author: femila
-ms.openlocfilehash: 47576feb7f3e4f2794aa06d52b4f5504c633ce96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 8003e3e6a28b0e6a05d553be01c171029e244d74
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560319"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116109"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>作為 Azure 事件方格合作夥伴上線
 

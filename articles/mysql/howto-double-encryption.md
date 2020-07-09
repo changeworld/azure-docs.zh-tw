@@ -4,14 +4,14 @@ description: 瞭解如何為您的適用於 MySQL 的 Azure 資料庫設定和�
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 4623791e19ec83446b2978105286b71e6ff1eb1c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d3076f2591718931bdab4dba9510d25fe07b2d02
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034797"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118755"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫的基礎結構雙重加密
 

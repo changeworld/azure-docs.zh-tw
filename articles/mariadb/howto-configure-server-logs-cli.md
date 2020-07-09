@@ -5,15 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: 75efdd8ed855fe78651fce5828aacb2384052ae5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc4a2e8c3de05a9df136e74a1e0d32956891a175
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81270531"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118489"
 ---
-# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>使用 Azure CLI 設定和存取緩慢查詢記錄
+# <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-by-using-azure-cli"></a>使用 Azure CLI 設定及存取適用于 Maria DB 慢速查詢記錄的 Azure 資料庫
+
 您可以使用 Azure 命令列公用程式 Azure CLI 來下載適用於 MariaDB 的 Azure 資料庫慢速查詢記錄。
 
 ## <a name="prerequisites"></a>必要條件
