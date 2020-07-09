@@ -4,15 +4,16 @@ description: 了解如何設定 Azure Active Directory (Azure AD)，以向「適
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/22/2019
-ms.openlocfilehash: db7bfbef7435c47aa011c5f19e8c52d013c88dc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff5d2e5546c8b29ed486c587a555f47fa2c7e31b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636677"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101421"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>使用 Azure Active Directory 向 MySQL 進行驗證
+# <a name="use-azure-active-directory-for-authentication-with-mysql"></a>使用 Azure Active Directory 進行 MySQL 驗證
 
 本文將逐步引導您完成如何使用「適用於 MySQL 的 Azure 資料庫」來設定 Azure Active Directory 存取的步驟，以及如何使用 Azure AD 權杖來連線的步驟。
 

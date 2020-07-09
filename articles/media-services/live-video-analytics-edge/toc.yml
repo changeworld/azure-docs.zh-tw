@@ -1,7 +1,5 @@
 - name: IoT Edge 上的 Live Video Analytics (預覽) 文件
   href: index.yml
-- name: 切換至 Azure 媒體服務 v3 文件
-  href: ../latest/index.yml
 - name: 概觀
   items:
     - name: 關於 IoT Edge 上的 Live Video Analytics
@@ -34,7 +32,7 @@
       href: playback-multi-day-recordings-tutorial.md
 - name: 範例
   items:
-    - name: 'IoT Edge C# 範例上的 Live Video Analytics'
+    - name: IoT Edge C# 範例上的 Live Video Analytics
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
 - name: 概念
   items:
