@@ -116,6 +116,12 @@
           href: how-to-virtual-hub-routing.md
         - name: 如何檢視虛擬中樞的有效路由
           href: effective-routes-virtual-hub.md
+        - name: 將流量從虛擬中樞路由傳送至 NVA (舊版)
+          items:
+            - name: Azure 入口網站
+              href: virtual-wan-route-table-nva-portal.md
+            - name: Azure PowerShell
+              href: virtual-wan-route-table-nva.md
     - name: 安全性
       items:
         - name: 在中樞安裝 Azure 防火牆

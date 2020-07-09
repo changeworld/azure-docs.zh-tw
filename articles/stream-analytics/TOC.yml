@@ -88,7 +88,7 @@
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: 機器學習 UDF
           href: machine-learning-udf.md
-        - name: 偵錯 UDF 和更新
+        - name: 偵錯 UDF
           href: debug-user-defined-functions.md
     - name: 最佳化您的串流分析作業
       items:

@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure 串流分析文件
-summary: Azure 串流分析是完全受控的即時分析服務，設計訴求為協助您分析和處理快速移動的資料串流，這些資料串流可用來觸警示和動作。 了解如何透過我們的快速入門、教學課程和範例使用 Azure 串流分析。
+summary: Azure 串流分析是一種完全受控的即時分析服務，其設計旨在協助您分析和處理快速移動的資料串流，這些資料串流可用來獲得見解、建置報告或觸發警示和動作。 了解如何透過我們的快速入門、教學課程和範例使用 Azure 串流分析。
 metadata:
   title: Azure 串流分析文件
-  description: Azure 串流分析是完全受控的即時分析服務，設計訴求為協助您分析和處理快速移動的資料串流，這些資料串流可用來觸警示和動作。 了解如何透過我們的快速入門、教學課程和範例使用 Azure 串流分析。
+  description: Azure 串流分析是一種完全受控的即時分析服務，其設計旨在協助您分析和處理快速移動的資料串流，這些資料串流可用來獲得見解、建置報告或觸發警示和動作。 了解如何透過我們的快速入門、教學課程和範例使用 Azure 串流分析。
   services: service
   ms.service: stream-analytics
   ms.topic: landing-page
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/16/2019
-  ms.openlocfilehash: 757c60487e4c4c7fedca4824cd40e86cbd9ca465
-  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+  ms.openlocfilehash: 2ef6663ce3ebf21227635fff763d45391281c955
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82130957"
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86119645"
 landingContent:
 - title: 關於 Azure 串流分析
   linkLists:

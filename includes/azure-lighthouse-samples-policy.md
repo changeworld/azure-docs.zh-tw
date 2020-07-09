@@ -5,17 +5,17 @@ services: lighthouse
 author: JnHs
 ms.service: lighthouse
 ms.topic: include
-ms.date: 12/19/2019
+ms.date: 07/07/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 1c0be8ed8c176fe32b8fe7fd420d65727c5288d2
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 837e82131b17fa02fca87da067eac6d77903b31d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986668"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111643"
 ---
-這些範例示範如何針對已為 Azure 委派的資源管理上線的訂用帳戶，使用 Azure 原則。
+這些範例說明如何使用 Azure 原則搭配已在 Azure Lighthouse 上線的訂用帳戶。
 
 | **範本** | **說明** |
 |---------|---------|

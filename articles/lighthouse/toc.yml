@@ -41,7 +41,7 @@
       href: ./concepts/managed-applications.md
 - name: 操作指南
   items:
-    - name: 讓客戶在 Azure 委派的資源管理中上線
+    - name: 讓客戶在 Azure Lighthouse 上線
       displayName: resource management
       href: ./how-to/onboard-customer.md
     - name: 將受控服務供應項目發佈到 Azure Marketplace
