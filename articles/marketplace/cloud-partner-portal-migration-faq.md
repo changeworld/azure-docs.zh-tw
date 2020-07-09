@@ -1,18 +1,18 @@
 ---
 title: 從 Cloud Partner 入口網站轉換到合作夥伴中心的常見問題-Microsoft 商業 marketplace
 description: 從 Cloud Partner 入口網站轉換供應專案到合作夥伴中心的常見問題解答。
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 06/29/2020
+author: anbene
 ms.author: mingshen
-ms.openlocfilehash: 349306a8bcdffda8511436540acde92129ff8662
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 06/29/2020
+ms.openlocfilehash: 2192b3757281bf6796fbf93f83cab6e71deb29f6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964935"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120549"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>從 Cloud Partner 入口網站轉換到合作夥伴中心的常見問題
 
@@ -64,17 +64,17 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 
 | 供應項目類型 <img src="" width=150px>| 已移至合作夥伴中心嗎？ <img src="" width=100px>| 後續步驟 |
 | --- | --- | --- |
-| SaaS | Yes | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請在[商業 marketplace 中建立新的 SaaS 供應](partner-center-portal/create-new-saas-offer.md)專案。 |
-| 虛擬機器 | Yes | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請在[Azure Marketplace 上建立 Azure 虛擬機器供應](partner-center-portal/azure-vm-create-offer.md)專案。 |
-| Azure 應用程式 | Yes | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請查看[建立 Azure 應用程式供應](partner-center-portal/create-new-azure-apps-offer.md)專案。 |
+| SaaS | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請在[商業 marketplace 中建立新的 SaaS 供應](partner-center-portal/create-new-saas-offer.md)專案。 |
+| 虛擬機器 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請在[Azure Marketplace 上建立 Azure 虛擬機器供應](partner-center-portal/azure-vm-create-offer.md)專案。 |
+| Azure 應用程式 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請查看[建立 Azure 應用程式供應](partner-center-portal/create-new-azure-apps-offer.md)專案。 |
 | Dynamics 365 Business Central | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請到[建立 Dynamics 365 Business Central 供應](partner-center-portal/create-new-business-central-offer.md)專案。 |
-| Dynamics 365 for Customer Engagement & PowerApps | Yes | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請[& PowerApps 供應專案建立 Dynamics 365 For Customer Engagement](partner-center-portal/create-new-customer-engagement-offer.md)。 |
-| Dynamics 365 for Operations | Yes | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請到[建立 Dynamics 365 For Operations 供應](partner-center-portal/create-new-operations-offer.md)專案。 |
-| Power BI 應用程式 | Yes | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請[Power BI 建立適用于 AppSource 的應用程式](partner-center-portal/create-power-bi-app-offer.md)。 |
-| IoT Edge 模組 | Yes | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解[，請在 Azure Marketplace 中建立、設定及發佈 IoT Edge 模組供應](partner-center-portal/azure-iot-edge-module-creation.md)專案。 |
-| 容器 | Yes | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請查看[建立 Azure 容器供應](partner-center-portal/create-azure-container-offer.md)專案。 |
-| 諮詢服務 | Yes | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請到[建立諮詢服務供應](partner-center-portal/create-consulting-service-offer.md)專案。 |
-| 受控服務 | Yes | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請到[建立受控服務供應](partner-center-portal/create-new-managed-service-offer.md)專案。 |
+| Dynamics 365 for Customer Engagement & PowerApps | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請[& PowerApps 供應專案建立 Dynamics 365 For Customer Engagement](partner-center-portal/create-new-customer-engagement-offer.md)。 |
+| Dynamics 365 for Operations | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請到[建立 Dynamics 365 For Operations 供應](partner-center-portal/create-new-operations-offer.md)專案。 |
+| Power BI 應用程式 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請[Power BI 建立適用于 AppSource 的應用程式](partner-center-portal/create-power-bi-app-offer.md)。 |
+| IoT Edge 模組 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解[，請在 Azure Marketplace 中建立、設定及發佈 IoT Edge 模組供應](partner-center-portal/azure-iot-edge-module-creation.md)專案。 |
+| 容器 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請查看[建立 Azure 容器供應](partner-center-portal/create-azure-container-offer.md)專案。 |
+| 諮詢服務 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請到[建立諮詢服務供應](partner-center-portal/create-consulting-service-offer.md)專案。 |
+| 受控服務 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請到[建立受控服務供應](partner-center-portal/create-new-managed-service-offer.md)專案。 |
 | Dynamics Nav 受控服務 | No | Microsoft 已將 Dynamics NAV 受控服務演變為[dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/)，因此我們已從 AppSource 中取消列出 Dynamics Nav 受控服務的即時供應專案。 這些供應專案已不再由客戶探索，而且尚未移至合作夥伴中心。 若要在 AppSource 中提供您的供應專案，請將其調整為 Dynamics 365 Business Central 供應專案，並在[合作夥伴中心](https://partner.microsoft.com/)提交。 若要深入瞭解，請到[建立 Dynamics 365 Business Central 供應](partner-center-portal/create-new-business-central-offer.md)專案。 |
 | Cortana Intelligence | No | Microsoft 已發展 Cortana 情報的產品藍圖，因此我們已從 AppSource 中取消列出 Cortana 情報的現場優惠。 這些供應專案已不再由客戶探索，而且尚未移至合作夥伴中心。 若要在商業 marketplace 中提供您的供應專案，請將您的供應專案調整為軟體即服務（SaaS）供應專案，並在[合作夥伴中心](hhttps://partner.microsoft.com/)提交。 若要深入瞭解，請到[合作夥伴中心的 SaaS 供應專案建立檢查清單](partner-center-portal/offer-creation-checklist.md)。 |
 

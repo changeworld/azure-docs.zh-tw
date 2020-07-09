@@ -1,17 +1,14 @@
 ---
 title: 做為事件方格來源 Azure 服務匯流排
 description: 描述 Azure Event Grid 中服務匯流排事件的屬性
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: femila
-ms.openlocfilehash: 5152c1579d46bfbff6c85b2cd19425aee0dd3290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 81293321b3a8fb989023a231c905996b4059bd81
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559487"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121129"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>做為事件方格來源 Azure 服務匯流排
 
@@ -78,7 +75,7 @@ ms.locfileid: "84559487"
 
 事件具有下列的最高層級資料：
 
-| 屬性 | 類型 | Description |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
 | subject | 字串 | 發行者定義事件主體的路徑。 |
@@ -101,7 +98,7 @@ ms.locfileid: "84559487"
 | subscriptionName | 字串 | 具有作用中訊息的服務匯流排訂用帳戶。 如果使用佇列則為 null 值。 |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
-|Title  |Description  |
+|Title  |描述  |
 |---------|---------|
 | [教學課程：Azure 服務匯流排與 Azure 事件方格的整合範例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 事件方格會從服務匯流排主題傳送訊息至函式應用程式和邏輯應用程式。 |
 | [Azure 服務匯流排至事件格線整合](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | 整合服務匯流排與事件方格的概觀。 |

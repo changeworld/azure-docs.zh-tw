@@ -6,17 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 3a813a9b8c2a81a85d1c4a96d5a4da2256832d3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa5c0178cda563650928be40d02716868255fb1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84487979"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121617"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫定價層 - 單一伺服器
 
 您可以在下列三個不同定價層其中之一建立「適用於 PostgreSQL 的 Azure 資料庫」伺服器：「基本」、「一般用途」及「記憶體最佳化」。 定價層的差別在於虛擬核心中可佈建的計算數量、每個虛擬核心的記憶體，以及用來儲存資料的儲存體技術。 所有資源都會佈建在 PostgreSQL 伺服器層級。 一個伺服器可以有一個或多個資料庫。
 
-|    | **基本** | **一般用途** | **記憶體優化** |
+| 資源/層 | **基本** | **一般用途** | **記憶體優化** |
 |:---|:----------|:--------------------|:---------------------|
 | 計算世代 | Gen 4、Gen 5 | Gen 4、Gen 5 | Gen 5 |
 | 虛擬核心 | 1, 2 | 2、4、8、16、32、64 |2、4、8、16、32 |
@@ -42,7 +43,7 @@ ms.locfileid: "84487979"
 
 您佈建的儲存體是「適用於 PostgreSQL 伺服器的 Azure 資料庫」可用的儲存體容量。 儲存體會用於資料庫檔案、暫存檔案、交易記錄和 PostgreSQL 伺服器記錄。 您佈建的儲存體總數也會定義您伺服器可用的 I/O 容量。
 
-|    | **基本** | **一般用途** | **記憶體優化** |
+| 儲存體屬性 | **基本** | **一般用途** | **記憶體優化** |
 |:---|:----------|:--------------------|:---------------------|
 | 儲存體類型 | 基本儲存體 | 一般用途儲存體 | 一般用途儲存體 |
 | 儲存體大小 | 5 GB 至 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
@@ -55,7 +56,7 @@ ms.locfileid: "84487979"
 > 所有其他區域最多支援4TB 的儲存體和 6000 IOPS。
 >
 
-您可以在建立伺服器期間和之後新增額外的儲存體容量，並允許系統根據您工作負載的儲存體耗用量自動成長儲存體。 
+您可以在建立伺服器期間和之後新增額外的儲存體容量，並允許系統根據您工作負載的儲存體耗用量自動成長儲存體。
 
 >[!NOTE]
 > 儲存體只能相應增加，而不能相應縮小。
@@ -92,7 +93,7 @@ ms.locfileid: "84487979"
 
 建立伺服器之後，您可以單獨變更虛擬核心、硬體世代、定價層 (基本層的來回除外)、儲存體數量及備份保留期限。 但您無法在建立伺服器之後，變更備份儲存體類型。 虛擬核心數目可相應增加或減少。 備份保留期可在 7 到 35 天的範圍內相應增加或減少。 儲存體大小只能增加。 您可以透過入口網站或 Azure CLI 來調整資源。 如需使用 Azure CLI 進行調整的範例，請參閱[使用 Azure CLI 來監視和調整適用於 PostgreSQL 的 Azure 資料庫伺服器](scripts/sample-scale-server-up-or-down.md)。
 
-> [!NOTE] 
+> [!NOTE]
 > 儲存體大小只能增加。 增加之後，您就無法再回到較小的儲存體大小。
 
 當您變更虛擬核心數目、硬體世代或定價層時，系統會以新的計算配置建立一個原始伺服器複本。 當新伺服器已啟動並執行之後，連線就會切換到新的伺服器。 在系統切換到新伺服器的期間，您無法建立任何新的連線，且所有未認可的交易皆會復原。 此期間長短可能有所不同，但大部分情況下是少於一分鐘。
@@ -106,5 +107,5 @@ ms.locfileid: "84487979"
 ## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何[在入口網站中建立于 postgresql 伺服器](tutorial-design-database-using-azure-portal.md)。
-- 了解[服務限制](concepts-limits.md)。 
+- 了解[服務限制](concepts-limits.md)。
 - 了解如何[使用讀取複本來擴充 (服務)](howto-read-replicas-portal.md)。

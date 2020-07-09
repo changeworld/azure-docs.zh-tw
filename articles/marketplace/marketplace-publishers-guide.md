@@ -1,17 +1,18 @@
 ---
 title: Microsoft 商業市集發行指南
 description: 概述 Microsoft 合作夥伴的商業市集，他們想要將供應項目發行到 Microsoft AppSource 和 Azure Marketplace。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/12/2020
-ms.author: dsindona
-ms.openlocfilehash: 7ddea556ea4a9c7c0306ebdf1eca1f60769c5318
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2ce8767092fb1b93f743e8a5b81a9fbfb01468bf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958169"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120818"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>商業市集發行指南
 

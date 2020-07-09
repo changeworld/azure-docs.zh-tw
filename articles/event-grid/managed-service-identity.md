@@ -1,17 +1,14 @@
 ---
 title: 使用受管理的服務識別進行事件傳遞
 description: 本文說明如何為 Azure 事件方格主題啟用受管理的服務識別。 使用它來將事件轉送到支援的目的地。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 06/18/2020
-ms.author: spelluru
-ms.openlocfilehash: 4d81845ab61d8a84b9bad47ede4a027cd772c499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 5138a89101a7e6c1770952028de9c3d478bc3852
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412921"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119186"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>使用受控識別傳遞事件
 本文說明如何啟用 Azure 事件方格主題或網域的[受控服務識別](../active-directory/managed-identities-azure-resources/overview.md)。 使用此功能將事件轉送到支援的目的地，例如，服務匯流排佇列和主題、事件中樞，以及儲存體帳戶。

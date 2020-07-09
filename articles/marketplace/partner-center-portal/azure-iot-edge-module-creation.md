@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Marketplace 中透過合作夥伴中心建立 Azure IoT Edge 模組供應項目
 description: 了解如何使用合作夥伴中心在 Azure Marketplace 中建立、設定及發佈 IoT Edge 模組供應項目
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: 8accb29907bde53baf7f175dd1d36a9a2e1fe66b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984682"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119288"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立、設定及發佈 IoT Edge 模組供應項目
 
@@ -229,9 +229,9 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 3. 支援位址（連結）
 4. 條款及條件
 5. 隱私權原則位址（連結）
-6. Name
+6. 名稱
 7. 摘要
-8. Description
+8. 描述
 9. 實用的連結
 10. 螢幕擷取畫面/影片
 
@@ -251,8 +251,8 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
-1. Name
-2. 說明
+1. 名稱
+2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面
 

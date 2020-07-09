@@ -6,17 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 3af5a716bc5e211a7fd3263f57f5b5e62af628ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9cf070e1431c04a7e899a3b8875c8db796608d3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488353"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119883"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>適用於 MySQL 的 Azure 資料庫定價層
 
 適用於 MySQL 的 Azure 資料庫伺服器可建立於三個不同定價層之一 (基本、一般用途和記憶體最佳化)。 定價層的差別在於虛擬核心中可佈建的計算數量、每個虛擬核心的記憶體，以及用來儲存資料的儲存體技術。 所有資源都會佈建在 MySQL 伺服器層級。 一個伺服器可以有一個或多個資料庫。
 
-|    | **基本** | **一般用途** | **記憶體優化** |
+| 屬性   | **基本** | **一般用途** | **記憶體優化** |
 |:---|:----------|:--------------------|:---------------------|
 | 計算世代 | Gen 4、Gen 5 | Gen 4、Gen 5 | Gen 5 |
 | 虛擬核心 | 1, 2 | 2、4、8、16、32、64 |2、4、8、16、32 |
@@ -42,7 +43,7 @@ ms.locfileid: "84488353"
 
 您佈建的儲存體是「適用於 MySQL 伺服器的 Azure 資料庫」可用的儲存體容量。 儲存體會用於資料庫檔案、暫存檔案、交易記錄和 MySQL 伺服器記錄。 您佈建的儲存體總數也會定義您伺服器可用的 I/O 容量。
 
-|    | **基本** | **一般用途** | **記憶體優化** |
+| 儲存體屬性   | 基本 | 一般用途 | 記憶體最佳化 |
 |:---|:----------|:--------------------|:---------------------|
 | 儲存體類型 | 基本儲存體 | 一般用途儲存體 | 一般用途儲存體 |
 | 儲存體大小 | 5 GB 至 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |

@@ -6,20 +6,19 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/06/2019
-ms.openlocfilehash: c2593c4c03f48624b8b9e3b9d72a3558f5f581be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd7604e33a9f98d9104eecabb20369fe2fcee8a7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73499290"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119628"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>適用于 Azure 資料共用的 Azure PowerShell 範例
 
 下表包含適用于 Azure 資料共用的範例 Azure PowerShell 腳本連結。
 
-| |  |
+|Powershell 範例|描述|
 |---|---|
-|**Powershell 範例**||
 |[建立新的資料共用帳戶](scripts/powershell/create-new-share-account-powershell.md)| 此 PowerShell 腳本會建立新的資料共用帳戶。 |
 |[建立新的資料共用](scripts/powershell/create-new-share-powershell.md)| 此 PowerShell 腳本會建立新的資料共用。 |
 |[將資料集加入至共用](scripts/powershell/add-datasets-powershell.md)| 此 PowerShell 腳本會將 blob 資料集新增至現有的資料共用帳戶。 |

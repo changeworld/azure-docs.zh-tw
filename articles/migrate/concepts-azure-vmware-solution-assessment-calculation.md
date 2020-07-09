@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: 200a6ba333d283b6a82f1eb228a0fc586b5b1fab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d2e810144e7c3d36545cb1e965aec40980c1d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567211"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118812"
 ---
 # <a name="avs-assessments-in-azure-migrate-server-assessment"></a>Azure Migrate 中的 AVS 評估：伺服器評量
 
@@ -29,7 +29,7 @@ ms.locfileid: "85567211"
 **評量類型** | **詳細資料**
 --- | --- 
 **Azure VM** | 將內部部署伺服器遷移至 Azure 虛擬機器的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[實體伺服器](how-to-set-up-appliance-physical.md)，以遷移至 Azure。[深入瞭解](concepts-assessment-calculation.md)
-**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](https://docs.microsoft.com/azure/azure-vmware/introduction)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。[深入瞭解](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](../azure-vmware/introduction.md)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。[深入瞭解](concepts-azure-vmware-solution-assessment-calculation.md)
 
 伺服器評估中的 Azure VMware 解決方案（AVS）評估提供兩個調整準則選項：
 
@@ -121,7 +121,7 @@ ms.locfileid: "85567211"
 | **目標位置** | 指定您要遷移到的 AVS 私人雲端位置。<br/><br/> 伺服器評估中的 AVS 評估目前支援下列目的地區域：美國東部、西歐、美國西部。 
 | **儲存類型** | 指定要用於 AVS 的儲存引擎。<br/><br/> AVS 評量僅支援 vSAN 做為預設儲存體類型。 
 **保留實例（RIs）** | 此屬性可協助您指定 AVS 中的保留實例。 目前不支援 AVS 節點的 RIs。 
-**節點類型** | 指定用來對應內部部署 Vm 的[AVS 節點類型](https://docs.microsoft.com/azure/azure-vmware/concepts-private-clouds-clusters)。 預設節點類型為 AV36。 <br/><br/> Azure Migrate 會建議將 Vm 遷移至 AVS 所需的節點數目。 
+**節點類型** | 指定用來對應內部部署 Vm 的[AVS 節點類型](../azure-vmware/concepts-private-clouds-clusters.md)。 預設節點類型為 AV36。 <br/><br/> Azure Migrate 會建議將 Vm 遷移至 AVS 所需的節點數目。 
 **FTT 設定，RAID 層級** | 指定可容忍和 Raid 組合的適當失敗。 選取的 FTT 選項結合了內部部署 VM 磁片需求，將會決定 AVS 所需的 vSAN 儲存空間總計。 
 **調整大小準則** | 設定要用來針對 AVS*適當調整 vm 大小*的準則。 您可以選擇以*效能為基礎*的調整大小，或*在內部部署環境中*，而不考慮效能歷程記錄。 
 **效能歷程記錄** | 設定評估電腦效能資料時所要考慮的持續時間。 只有在調整大小準則是以效能為*基礎*時，此屬性才適用。 
@@ -152,7 +152,7 @@ ms.locfileid: "85567211"
 
 | **屬性** | **詳細資料** | **AVS 就緒狀態** 
 | - | - | - 
-| **網際網路通訊協定** | AVS 目前不支援 IPv6 網際網路位址。<br/><br/> 如需使用 IPv6 偵測到您的電腦，請洽詢您當地的 MSFT AVS GBB 小組以取得補救指引。| 有條件地準備好的網際網路通訊協定
+| **網際網路通訊協定** | AVS 目前不支援 IPv6 網際網路定址。<br/><br/> 若系統偵測到您的電腦使用 IPv6，請連絡您當地的 MSFT AVS GBB 小組以取得補救指引。| 有條件地準備好的網際網路通訊協定
 
 
 ### <a name="guest-operating-system"></a>客體作業系統
@@ -172,15 +172,15 @@ ms.locfileid: "85567211"
 
 ### <a name="ftt-sizing-parameters"></a>FTT 調整大小參數
 
-AVS 中使用的儲存引擎是 vSAN。 vSAN 儲存原則會定義虛擬機器的存放裝置需求。 這些原則可確保 Vm 所需的服務層級，因為它們會決定儲存體如何配置給 VM。 可用的 FTT-Raid 組合如下： 
+AVS 中使用的儲存引擎是 vSAN。 vSAN 儲存原則會定義虛擬機器的存放裝置需求。 這些原則可確保 VM 所需的服務層級，因為原則會決定如何將儲存體配置給 VM。 可用的 FTT-Raid 組合如下： 
 
-**可容忍的失敗（FTT）** | **RAID 設定** | **最低主機需求** | **大小考慮**
+**可容許的失敗 (FTT)** | **RAID 組態** | **最低主機需求** | **大小考量**
 --- | --- | --- | --- 
-1 | RAID-1 （鏡像） | 3 | 100GB 的 VM 會使用200GB。
-1 | RAID-5 （抹除編碼） | 4 | 100GB 的 VM 會耗用 133.33 GB
-2 | RAID-1 （鏡像） | 5 | 100GB 的 VM 會使用 300 GB。
-2 | RAID-6 （抹除編碼） | 6 | 100GB 的 VM 會使用150GB。
-3 | RAID-1 （鏡像） | 7 | 100GB 的 VM 會使用 400 GB。
+1 | RAID-1 (鏡像) | 3 | 100GB 的 VM 會耗用 200GB。
+1 | RAID-5 (抹除編碼) | 4 | 100GB 的 VM 會耗用 133.33GB
+2 | RAID-1 (鏡像) | 5 | 100GB 的 VM 會耗用 300GB。
+2 | RAID-6 (抹除編碼) | 6 | 100GB 的 VM 會耗用 150GB。
+3 | RAID-1 (鏡像) | 7 | 100GB 的 VM 會耗用 400GB。
 
 ### <a name="performance-based-sizing"></a>以效能為基礎調整大小
 
@@ -197,11 +197,11 @@ AVS 中使用的儲存引擎是 vSAN。 vSAN 儲存原則會定義虛擬機器�
 
 **儲存體大小**： Azure Migrate 使用總內部部署 VM 磁碟空間作為計算參數，以判斷除了客戶選取的 FTT 設定以外的 AVS vSAN 儲存需求。 FTT-可容忍的失敗，以及每個 FTT 選項只需要最少節點，會決定所需的總 vSAN 儲存體與 VM 磁片需求結合。
 
-**網路大小**：伺服器評估目前不會針對 AVS 評量考慮任何網路設定。
+**調整網路大小**：伺服器評量目前不會考慮將任何網路設定納入 AVS 評量。
 
 **計算大小**：計算儲存體需求之後，伺服器評估會考慮 CPU 和記憶體需求，以根據節點類型判斷 AVS 所需的節點數目。
 
-- 根據調整大小準則，伺服器評估會查看以效能為基礎的 VM 資料或內部部署 VM 設定。 緩和因數設定允許指定叢集的成長因數。 目前預設會啟用超執行緒，因此36核心節點將會有72虛擬核心。 4虛擬核心每個實體用來判斷每個叢集的 CPU 閾值，使用不超過80% 使用率的 VMware 標準，以允許處理維護或失敗，而不會危及叢集可用性。 目前沒有覆寫可用來變更超額訂閱值，我們在未來的版本中可能會有此情況。
+- 根據調整大小準則，伺服器評估會查看以效能為基礎的 VM 資料或內部部署 VM 設定。 緩和因數設定允許指定叢集的成長因數。 目前預設會啟用超執行緒，因此 36 個核心節點將會有 72 個虛擬核心。 每個實體會以不超過 80% 使用率的 VMware 標準，使用 4 個虛擬核心來判斷每個叢集的 CPU 閾值，以便在不會危及叢集可用性的情況下，允許處理維護或失敗。 目前沒有覆寫可用來變更超額訂閱值，我們在未來的版本中可能會有此情況。
 
 ### <a name="as-on-premises-sizing"></a>作為內部部署調整大小
 
@@ -249,15 +249,15 @@ Azure Migrate 中的每個以效能為基礎的評量，都與信賴評等相關
 - 它會匯總所有節點的成本，以計算每月總成本。
 - 成本會以評量設定中指定的貨幣顯示。
 
-因為 Azure VMware 解決方案（AVS）的定價是每個節點，所以總成本沒有計算成本和儲存體成本分佈。 [深入了解](https://docs.microsoft.com/azure/azure-vmware/introduction)
+因為 Azure VMware 解決方案（AVS）的定價是每個節點，所以總成本沒有計算成本和儲存體成本分佈。 [深入了解](../azure-vmware/introduction.md)
 
 請注意，當 Azure VMware 解決方案（AVS）處於預覽狀態時，評量中的節點價格是預覽價格。 如需指引，請洽詢您當地的 MSFT AVS GBB 小組。
 
 ## <a name="migration-tool-guidance"></a>遷移工具指引
 
-在 Azure VMware 解決方案（AVS）評估的 Azure 就緒狀態報表中，您可以看到下列建議的工具： 
-- **VMWARE HCX 或 Enterprise**：針對 vmware 機器，vmware 混合式雲端擴充功能（HCX）解決方案是建議的遷移工具，可將內部部署工作負載遷移至 Azure VMware 解決方案（AVS）私人雲端。 [深入了解](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)。
-- **未知**：對於透過 CSV 檔案匯入的機器，預設的遷移工具是未知的。 但對於 VMware 機器，建議使用 VMWare 混合式雲端擴充功能（HCX）解決方案。
+在 Azure VMware 解決方案 (AVS) 評量的 Azure 移轉整備程度報表中，您可以看到下列建議的工具： 
+- **VMware HCX 或 Enterprise**：針對 VMware 機器，VMWare 混合式雲端擴充功能 (HCX) 解決方案是建議的遷移工具，可將您的內部部署工作負載遷移至 Azure VMWare 解決方案 (AVS) 私人雲端。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
+- **未知**：針對透過 CSV 檔案匯入的電腦，預設的移轉工具是未知的。 但對於 VMware 機器，建議使用 VMWare 混合式雲端擴充功能 (HCX) 解決方案。
 
 ## <a name="next-steps"></a>後續步驟
 

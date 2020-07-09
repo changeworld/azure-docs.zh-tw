@@ -2,18 +2,16 @@
 title: SaaS 應用程式發行指南 - Microsoft 商業市集
 description: 向 Microsoft AppSource 和 Azure Marketplace 發佈 SaaS 應用程式供應項目的需求和資源。
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.author: dsindona
-ms.openlocfilehash: 46f8da8b2b688900e50548bbece01117a7a47e24
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c19799265679eeead96bf95943f274aa32c75ff2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963830"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121566"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 應用程式供應項目發佈指南
 

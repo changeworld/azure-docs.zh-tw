@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc77f3267813bd049274f44e43c4d64b0eb3801e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68297775"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120274"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>適用于 Azure Vm 的 TCP/IP 效能微調
 
@@ -136,7 +136,7 @@ PMTUD 程式沒有效率，而且會影響網路效能。 傳送封包超過網�
 
 `minimum RTT = 2 * (Distance in kilometers / Speed of propagation)`
 
-您可以使用200來取得傳播速度。 這是光線在1毫秒的距離。
+您可以使用200來取得傳播速度。 這是光線在1毫秒的距離（以公里為單位）。
 
 讓我們以紐約到三藩市的例子做為範例。 直線距離為4148公里。 將該值插入方程式中，我們會取得下列內容：
 

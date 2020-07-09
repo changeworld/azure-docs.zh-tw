@@ -1,18 +1,16 @@
 ---
 title: 合作夥伴中心的 Microsoft 商業市集分析客戶儀表板
 description: 了解如何使用商業市集分析中的客戶儀表板，存取包括成長趨勢在內的客戶資訊。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: 77541cc9f8a90335aedae0806981cbd8cca1f84d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f71a668b3473521e9d8d7c9318ab2e557380845
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807771"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121753"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的客戶儀表板
 

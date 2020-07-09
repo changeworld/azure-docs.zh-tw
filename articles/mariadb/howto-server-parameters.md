@@ -4,14 +4,14 @@ description: 此文章說明如何使用 Azure 入口網站，在適用於 Maria
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: ae9878ba17f05b2d843e18c921c87c44b9396827
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53ba3c71679ebda1e8e2bf0a59a6ef69d051df4f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738306"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120410"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>使用 Azure 入口網站在適用於 MariaDB 的 Azure 資料庫中設定伺服器參數
 

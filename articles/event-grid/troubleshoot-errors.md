@@ -1,18 +1,14 @@
 ---
 title: Azure 事件方格-疑難排解指南
 description: 本文提供錯誤碼、錯誤訊息、描述和建議動作的清單。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.author: spelluru
-ms.openlocfilehash: 2358cf57348b82975250d489ac95d6e0b35eed0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: ab52cea6ab43763cf2d9dc2b57b7f369072a399e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254815"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119033"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>針對 Azure 事件方格錯誤進行疑難排解
 本疑難排解指南提供您在收到這些錯誤時，應採取的 Azure 事件方格錯誤碼、錯誤訊息、描述和建議動作的清單。 
@@ -25,7 +21,7 @@ ms.locfileid: "85254815"
 | HttpStatusCode. BadRequest<br/>400 | 不正確到期時間。 | 事件訂閱的到期時間會決定何時會淘汰事件訂閱。 此值未來應為有效的日期時間值。| 請確定事件訂閱的到期時間是有效的日期時間格式，而且設定為未來的。 |
 
 ## <a name="error-code-409"></a>錯誤碼：409
-| 錯誤碼 | 錯誤訊息 | Description | 建議的動作 |
+| 錯誤碼 | 錯誤訊息 | 描述 | 建議的動作 |
 | ---------- | ------------- | ----------- | -------------- | 
 | HttpStatusCode。衝突 <br/>409 | 已存在具有指定名稱的主題。 選擇不同的主題名稱。   | 自訂主題名稱在單一 Azure 區域中必須是唯一的，才能確保正確的發佈作業。 相同的名稱可以在不同的 Azure 區域中使用。 | 為主題選擇不同的名稱。 |
 | HttpStatusCode。衝突 <br/> 409 | 具有指定的網域已經存在。 請選擇不同的功能變數名稱。 | 功能變數名稱在單一 Azure 區域中必須是唯一的，才能確保正確的發佈作業。 相同的名稱可以在不同的 Azure 區域中使用。 | 請為網域選擇不同的名稱。 |
@@ -33,7 +29,7 @@ ms.locfileid: "85254815"
 
 ## <a name="error-code-403"></a>錯誤碼：403
 
-| 錯誤碼 | 錯誤訊息 | Description | 建議的動作 |
+| 錯誤碼 | 錯誤訊息 | 描述 | 建議的動作 |
 | ---------- | ------------- | ----------- | ------------------ |
 | HttpStatusCode。禁止 <br/>403 | 因為 IpAddress 篩選規則，導致用戶端 {IpAddress} 發行至 {主題/網域} 遭到拒絕。 | 主題或網域已設定 IP 防火牆規則，且僅限已設定的 IP 位址存取。 | 將 IP 位址新增至 IP 防火牆規則，請參閱[設定 ip 防火牆](configure-firewall.md) |
 | HttpStatusCode。禁止 <br/> 403 | 因為要求來自私用端點，而且找不到任何符合資源的私用端點連線，所以由用戶端發行至 {主題/網域} 遭到拒絕。 | 主題或網域已設定私人端點，而發佈要求來自未設定/核准的私用端點。 | 設定主題/網域的私用端點。 [設定私人端點](configure-private-endpoints.md) |

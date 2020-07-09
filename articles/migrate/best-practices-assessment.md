@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 1a3735180d72496d58cdd22d0aa34c8a6f88a6a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 648ec2d9fea3e4e112e65cec44a0518b653ddbea
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559858"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119968"
 ---
 # <a name="best-practices-for-creating-assessments"></a>建立評量的最佳做法
 
-[Azure Migrate](migrate-overview.md) 會提供工具中樞，協助您探索和評估應用程式、基礎結構和工作負載，並且將這些項目遷移至 Microsoft Azure。 此中樞包含 Azure Migrate 工具和第三方獨立軟體廠商 (ISV) 供應項目。
+[Azure Migrate](./migrate-services-overview.md) 會提供工具中樞，協助您探索和評估應用程式、基礎結構和工作負載，並且將這些項目遷移至 Microsoft Azure。 此中樞包含 Azure Migrate 工具和第三方獨立軟體廠商 (ISV) 供應項目。
 
 本文摘要說明使用 Azure Migrate Server 評估工具建立評量時的最佳作法。
 
@@ -26,7 +26,7 @@ ms.locfileid: "85559858"
 **評量類型** | **詳細資料**
 --- | --- 
 **Azure VM** | 將內部部署伺服器遷移至 Azure 虛擬機器的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[實體伺服器](how-to-set-up-appliance-physical.md)，以遷移至 Azure。 [深入了解](concepts-assessment-calculation.md)
-**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](https://docs.microsoft.com/azure/azure-vmware/introduction)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。 [深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](../azure-vmware/introduction.md)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。 [深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
 
 
 ### <a name="sizing-criteria"></a>調整大小準則
@@ -67,15 +67,15 @@ Azure Migrate 設備會持續分析您的內部部署環境，並將中繼資料
  
 ### <a name="ftt-sizing-parameters-for-avs-assessments"></a>適用于 AVS 評量的 FTT 調整大小參數
 
-AVS 中使用的儲存引擎是 vSAN。 vSAN 儲存原則會定義虛擬機器的存放裝置需求。 這些原則可確保 Vm 所需的服務層級，因為它們會決定儲存體如何配置給 VM。 以下是可用的 FTT-Raid 組合： 
+AVS 中使用的儲存引擎是 vSAN。 vSAN 儲存原則會定義虛擬機器的儲存體需求。 這些原則可確保 VM 所需的服務層級，因為原則會決定如何將儲存體配置給 VM。 以下是可用的 FTT-Raid 組合： 
 
-**可容忍的失敗（FTT）** | **RAID 設定** | **最低主機需求** | **大小考慮**
+**可容許的失敗 (FTT)** | **RAID 組態** | **最低主機需求** | **大小考量**
 --- | --- | --- | --- 
-1 | RAID-1 （鏡像） | 3 | 100GB 的 VM 會使用200GB。
-1 | RAID-5 （抹除編碼） | 4 | 100GB 的 VM 會耗用 133.33 GB
-2 | RAID-1 （鏡像） | 5 | 100GB 的 VM 會使用 300 GB。
-2 | RAID-6 （抹除編碼） | 6 | 100GB 的 VM 會使用150GB。
-3 | RAID-1 （鏡像） | 7 | 100GB 的 VM 會使用 400 GB。
+1 | RAID-1 (鏡像) | 3 | 100GB 的 VM 會耗用 200GB。
+1 | RAID-5 (抹除編碼) | 4 | 100GB 的 VM 會耗用 133.33GB
+2 | RAID-1 (鏡像) | 5 | 100GB 的 VM 會耗用 300GB。
+2 | RAID-6 (抹除編碼) | 6 | 100GB 的 VM 會耗用 150GB。
+3 | RAID-1 (鏡像) | 7 | 100GB 的 VM 會耗用 400GB。
 
 
 ## <a name="best-practices-for-confidence-ratings"></a>信賴評等的最佳作法
@@ -131,9 +131,9 @@ AVS 中使用的儲存引擎是 vSAN。 vSAN 儲存原則會定義虛擬機器�
 
 ### <a name="migration-tool-guidance-for-avs-assessments"></a>適用于 AVS 評量的遷移工具指引
 
-在 Azure VMware 解決方案（AVS）評估的 Azure 就緒狀態報表中，您可以看到下列建議的工具： 
-- **VMWARE HCX 或 Enterprise**：針對 vmware 機器，vmware 混合式雲端擴充功能（HCX）解決方案是建議的遷移工具，可將內部部署工作負載遷移至 Azure VMware 解決方案（AVS）私人雲端。 [深入了解](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)。
-- **未知**：對於透過 CSV 檔案匯入的機器，預設的遷移工具是未知的。 不過，對於 VMware 機器，建議使用 VMWare 混合式雲端擴充功能（HCX）解決方案。
+在 Azure VMware 解決方案 (AVS) 評量的 Azure 移轉整備程度報表中，您可以看到下列建議的工具： 
+- **VMware HCX 或 Enterprise**：針對 VMware 機器，VMWare 混合式雲端擴充功能 (HCX) 解決方案是建議的遷移工具，可將您的內部部署工作負載遷移至 Azure VMWare 解決方案 (AVS) 私人雲端。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
+- **未知**：針對透過 CSV 檔案匯入的電腦，預設的移轉工具是未知的。 不過，對於 VMware 機器，建議使用 VMWare 混合式雲端擴充功能（HCX）解決方案。
 
 
 ## <a name="next-steps"></a>後續步驟

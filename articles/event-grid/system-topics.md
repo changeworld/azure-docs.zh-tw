@@ -1,18 +1,14 @@
 ---
 title: Azure 事件方格中的系統主題
 description: 說明 Azure 事件方格中的系統主題。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 190c6ccb13a0853913c96ac5d2d3f5faf4594433
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 655ec5f0ad23b3902c1c99ba75eef2ef428911eb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887919"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119917"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure 事件方格中的系統主題
 事件方格中的系統主題代表 Azure 服務（例如 Azure 儲存體和 Azure 事件中樞）所發佈的一個或多個事件。 例如，系統主題可能代表**所有 blob 事件**，或是只為**特定儲存體帳戶**發佈**的 blob 和** **blob 刪除**事件。 在此範例中，將 blob 上傳至儲存體帳戶時，Azure 儲存體服務會將**blob 建立**的事件發佈至事件方格中的系統主題，然後將事件轉寄給接收和處理事件的主題[訂閱者](event-handlers.md)。 

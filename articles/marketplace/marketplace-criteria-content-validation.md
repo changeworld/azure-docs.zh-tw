@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace 供應項目和服務的列出需求
 description: 本文說明在 Azure Marketplace 上列出新供應項目和服務的需求與指導方針。
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 06/22/2020
-ms.author: dsindona
-ms.openlocfilehash: 6c95f510ce83f924a58b0844285f4142131db3eb
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 2b0954941ba6b6b7ce3697889305dc5bbd299590
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027132"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119373"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketplace 列名指導方針
 
@@ -28,7 +28,7 @@ ms.locfileid: "86027132"
 
 ## <a name="listing-requirements-for-all-offers"></a>所有供應項目的列出需求
 
-|  | 列出元素 | 基本需求 | 最佳需求 |
+| Number | 列出元素 | 基本需求 | 最佳需求 |
 |:--- |:--- |:--- |:--- |
 | 1 | 潛在客戶目的地 | 已設定潛在客戶目的地。| One Commercial Partner (OCP) 目錄具有潛在客戶目的地 CRM 資訊，此資訊也列在 [合作夥伴解決方案] 索引標籤中。 | 
 | 2 | 供應項目標題 | 簡短描述解決方案供應項目。 符合合作夥伴網站上解決方案的線上促銷。 | 包含搜尋關鍵字。 |
@@ -47,15 +47,15 @@ ms.locfileid: "86027132"
 
 ## <a name="trial-offer-requirements"></a>試用版供應項目需求
 
-|  | 列出元素 | 基本需求 | 最佳需求 | 
+| Number | 列出元素 | 基本需求 | 最佳需求 | 
 |:--- |:--- |:--- |:--- |
-|  | 列出狀態 (行動呼籲) | 連結必須會導向至以客戶為導向的*試用版*體驗。 | 也有其他行動呼籲 (例如，*立即購買*)。 | 
+| 1 | 列出狀態 (行動呼籲) | 連結必須會導向至以客戶為導向的*試用版*體驗。 | 也有其他行動呼籲 (例如，*立即購買*)。 | 
 
 ---
 
 ## <a name="saas-application-requirements"></a>SaaS 應用程式需求
 
-|  | 列出元素 | 基本需求 | 最佳需求 | 
+| Number | 列出元素 | 基本需求 | 最佳需求 | 
 |:--- |:--- |:--- |:--- |
 | 1 | 供應項目標題 |<ul><li>只能包含小寫字母、英數字元、連字號或底線。 發佈後就不能修改標題。</li><li>描述解決方案供應項目。</li><li>符合合作夥伴網站上解決方案的線上促銷。 | 包含搜尋關鍵字。 |
 | 2 | 技術資訊：組態 |<ul><li>針對軟體即服務 (SaaS) 應用程式，選擇您只想要列出您的應用程式，還是要讓客戶可以透過 Azure 購買您的應用程式。</li><li>選取要在供應項目的 [取得] 按鈕上顯示的文字：*免費*、*免費試用*或*與我連絡*。</li><li>在快顯視窗中只選取一個適用的產品 (如果您的應用程式利用該技術的話)：Cortana Intelligence、Power BI 解決方案範本或 Power Apps。 |  |
@@ -73,7 +73,7 @@ ms.locfileid: "86027132"
 
 ## <a name="container-offer-requirements"></a>容器供應項目需求
 
-|  | 列出元素 | 基本需求 | 最佳需求 | 
+| Number | 列出元素 | 基本需求 | 最佳需求 | 
 |:--- |:--- |:--- |:--- |
 |1 |供應項目 | <ul><li>供應項目識別碼：最大 50 個字元。</li><li>發行者識別碼：從下拉式清單中選取。</li><li>名稱：最大 50 個字元。 | 鏡像反映描述中已提供的標題樣式。 請避免使用長標題。 | 
 | 2 | SKU | 合作夥伴選取新的 SKU。| 標題會鏡像反映描述中已提供的標題樣式。 請避免使用長標題。  |
@@ -84,7 +84,7 @@ ms.locfileid: "86027132"
 
 ## <a name="consulting-offer-requirements"></a>諮詢供應項目需求
 
-|  | 列出元素 | 基本需求 | 最佳需求 |
+| Number | 列出元素 | 基本需求 | 最佳需求 |
 |:--- |:--- |:--- |:--- |
 | 1 | 供應項目標題  |  必須以「名稱：持續時間類型」的格式清楚列出服務類型和持續時間 (例如「供應項目業務開發：1 週概念證明」)。  | <ul><li>不要重複發行者名稱。</li><li>標題會鏡像反映描述中已提供的標題樣式。 請避免使用長標題。 | 
 | 2 | 供應項目描述  |<ul><li>確定有正確使用 [Microsoft 產品名稱](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx)。</li><li>標示為「價格：估計」的供應項目必須在頂端或底部註記以說明各種變化 (到用戶端出差、要遷移的伺服器數量等等)。</li><li>每個供應項目都有描述需求，如下所示： <ul><li>簡報需要至少四個或五個項目符號，並提供所涵蓋主題的相關資訊。</li><li>所有研討會都需要有議程。</li><li>所有議程都必須以日或週為單位來細分，視研討會的持續時間而定。</li><li>評估、POC、非訓練型研討會和實作供應項目需要有可交付成果。</li><li>訓練研討會不需要可交付成果，但需要要更詳細的議程與所會涵蓋的主題。</li></ul></ul> | <ul><li>任何供應項目都有議程和可交付成果。</li><li>供應項目頂端區段包含一個段落，含有提供服務的公司相關內容。</li><li>供應項目在頂端區段納入服務本身價值的相關段落。 |

@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: e5e55e3bfa5d30c74041b834483bc78875e7ce05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611368"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121668"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評量/相依性視覺效果疑難排解
 
@@ -36,10 +36,10 @@ ms.locfileid: "85611368"
 找不到所需儲存體效能的 VM | 機器所需的儲存體效能（每秒輸入/輸出作業數 [IOPS] 和輸送量）超過 Azure VM 支援。 在移轉之前，降低機器的儲存體需求。
 找不到所需網路效能的 VM | 機器需要的網路效能 (傳入/傳出) 超出 Azure VM 支援。 減少機器的網路需求。
 在指定的位置中找不到 VM | 在移轉之前，使用不同的目標位置。
-一或多個不適合的磁片 | 連接至 VM 的一或多個磁片不符合 Azure 需求。為<br/><br/> Azure Migrate：伺服器評定目前不支援 Ultra SSD 磁片，並會根據 premium 受控磁片的磁片限制（32 TB）來評估磁片。<br/><br/> 針對連接至 VM 的每個磁片，請確定磁片的大小為 < 64 TB （Ultra SSD 磁片支援）。<br/><br/> 如果不是，請在遷移至 Azure 之前先減少磁片大小，或在 Azure 中使用多個磁片，並將它們等量放在[一起](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping)，以取得更高的儲存空間限制。 請確定 Azure[受管理的虛擬機器磁片](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits)支援每個磁片所需的效能（IOPS 和輸送量）。
+一或多個不適合的磁片 | 連接至 VM 的一或多個磁片不符合 Azure 需求。為<br/><br/> Azure Migrate：伺服器評定目前不支援 Ultra SSD 磁片，並會根據 premium 受控磁片的磁片限制（32 TB）來評估磁片。<br/><br/> 針對連接至 VM 的每個磁片，請確定磁片的大小為 < 64 TB （Ultra SSD 磁片支援）。<br/><br/> 如果不是，請在遷移至 Azure 之前先減少磁片大小，或在 Azure 中使用多個磁片，並將它們等量放在[一起](../virtual-machines/windows/premium-storage-performance.md#disk-striping)，以取得更高的儲存空間限制。 請確定 Azure[受管理的虛擬機器磁片](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)支援每個磁片所需的效能（IOPS 和輸送量）。
 一個或多個不適用的網路介面卡。 | 在移轉之前，從機器移除未使用的網路介面卡。
 磁碟計數超過限制 | 移轉之前從機器移除未使用的磁碟。
-磁碟大小超過限制 | Azure Migrate：伺服器評定目前不支援 Ultra SSD 磁片，並會根據 premium 磁片限制（32 TB）來評估磁片。<br/><br/> 不過，Azure 支援高達 64 TB 大小的磁片（Ultra SSD 磁片支援）。 在遷移之前，將磁片壓縮成小於 64 TB，或在 Azure 中使用多個磁片，並將它們等量放在[一起](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping)，以取得更高的儲存體限制
+磁碟大小超過限制 | Azure Migrate：伺服器評定目前不支援 Ultra SSD 磁片，並會根據 premium 磁片限制（32 TB）來評估磁片。<br/><br/> 不過，Azure 支援高達 64 TB 大小的磁片（Ultra SSD 磁片支援）。 在遷移之前，將磁片壓縮成小於 64 TB，或在 Azure 中使用多個磁片，並將它們等量放在[一起](../virtual-machines/windows/premium-storage-performance.md#disk-striping)，以取得更高的儲存體限制
 指定的位置沒有磁碟可用 | 在移轉之前，請確定磁碟已在目標位置。
 沒有磁碟可當作指定的備援 | 磁碟應該使用評估設定 (預設為 LRS) 中定義的備援儲存體類型。
 因為發生內部錯誤，所以無法判斷磁片適用性 | 嘗試建立群組的新評估。
@@ -52,7 +52,7 @@ ms.locfileid: "85611368"
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>以匯入為基礎的 AVS 評估中的建議遷移工具標示為不明
 
-針對透過 CSV 檔案匯入的電腦，和 AVS 評估中的預設遷移工具是未知的。 不過，對於 VMware 機器，建議使用 VMWare 混合式雲端擴充功能（HCX）解決方案。 [深入了解](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)。
+針對透過 CSV 檔案匯入的電腦，和 AVS 評估中的預設遷移工具是未知的。 不過，對於 VMware 機器，建議使用 VMWare 混合式雲端擴充功能（HCX）解決方案。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>在 Azure VM 評估中，Linux Vm 已「有條件地準備就緒」
 
@@ -64,7 +64,7 @@ ms.locfileid: "85611368"
 - 您可以藉由查看[Azure Linux 支援](https://aka.ms/migrate/selfhost/azureendorseddistros)，判斷在內部部署 VM 上執行的 Linux 作業系統是否已背書 azure。
 -  確認背書的散發套件之後，您可以忽略此警告。
 
-在 VMware Vm 上啟用[應用程式探索](https://docs.microsoft.com/azure/migrate/how-to-discover-applications)，即可解決此間隙。 伺服器評估會使用所提供的來賓認證，從 VM 偵測到的作業系統。 在 Windows 和 Linux Vm 的情況下，此作業系統資料會識別正確的作業系統資訊。
+在 VMware Vm 上啟用[應用程式探索](./how-to-discover-applications.md)，即可解決此間隙。 伺服器評估會使用所提供的來賓認證，從 VM 偵測到的作業系統。 在 Windows 和 Linux Vm 的情況下，此作業系統資料會識別正確的作業系統資訊。
 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>在 Azure VM 評估中大於內部部署的 azure Sku
@@ -101,7 +101,7 @@ Azure Migrate Server 評估可能會根據評量的類型，建議較大的磁�
 - 如果在評估期間關閉 Vm，就會發生這種情況。 應用裝置關閉時，無法收集 VM 的效能資料。
 - 如果只有記憶體計數器遺失，而且您正嘗試評估 Hyper-v Vm，請檢查您是否已在這些 Vm 上啟用動態記憶體。 只有 Hyper-v Vm 的已知問題，在此情況下，Azure Migrate 設備無法收集未啟用動態記憶體之 Vm 的記憶體使用量資料。
 - 如果遺失任何效能計數器，Azure Migrate Server 評估會降回已配置的核心和記憶體，並建議對應的 VM 大小。
-- 如果遺失所有效能計數器，請確定已符合評估的埠存取需求。 深入瞭解[VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access)、 [hyper-v](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access)和[實體](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access)伺服器評量的埠存取需求。
+- 如果遺失所有效能計數器，請確定已符合評估的埠存取需求。 深入瞭解[VMware](./migrate-support-matrix-vmware.md#port-access-requirements)、 [hyper-v](./migrate-support-matrix-hyper-v.md#port-access)和[實體](./migrate-support-matrix-physical.md#port-access)伺服器評量的埠存取需求。
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>是否包含在 Azure VM 評估中的作業系統授權？
 
@@ -120,11 +120,11 @@ Azure Migrate Server 評估目前只考慮 Windows 機器的作業系統授權�
 
 ## <a name="recommended-azure-vm-sku-for-my-physical-server-is-oversized"></a>適用于我的實體伺服器的建議 Azure VM SKU 已過大
 
-如果實體伺服器已啟用 Hyper-v 虛擬化，就會發生這種情況。 在這些伺服器上，Azure Migrate 目前會探索實體和虛擬網路介面卡。 因此，也就是「否」。 探索到的網路介面卡高於實際數目。 當伺服器評估挑選的 Azure VM 可支援所需的網路介面卡數目時，這可能會導致 VM 過大。 [深入瞭解](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing)「否」的影響。 調整大小時的網路介面卡。 這是即將解決的產品缺口。
+如果實體伺服器已啟用 Hyper-v 虛擬化，就會發生這種情況。 在這些伺服器上，Azure Migrate 目前會探索實體和虛擬網路介面卡。 因此，也就是「否」。 探索到的網路介面卡高於實際數目。 當伺服器評估挑選的 Azure VM 可支援所需的網路介面卡數目時，這可能會導致 VM 過大。 [深入瞭解](./concepts-assessment-calculation.md#calculating-sizing)「否」的影響。 調整大小時的網路介面卡。 這是即將解決的產品缺口。
 
 ## <a name="readiness-category-not-ready-for-my-physical-server"></a>我的實體伺服器的就緒類別「未就緒」
 
-如果實體伺服器已啟用 Hyper-v 虛擬化，則 [就緒] 類別可能會錯誤地標示為「未就緒」。 在這些伺服器上，由於產品的差距，Azure Migrate 目前會探索實體和虛擬介面卡。 因此，也就是「否」。 探索到的網路介面卡高於實際數目。 在內部部署和以效能為基礎的評量中，伺服器評估會挑選可支援所需的網路介面卡數目的 Azure VM。 如果探索到的網路介面卡數目高於32，則上限為 [否]。 在 Azure Vm 上支援的 Nic 數目，電腦會標示為「未就緒」。  [深入瞭解](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing)「否」的影響。 調整大小的 Nic。
+如果實體伺服器已啟用 Hyper-v 虛擬化，則 [就緒] 類別可能會錯誤地標示為「未就緒」。 在這些伺服器上，由於產品的差距，Azure Migrate 目前會探索實體和虛擬介面卡。 因此，也就是「否」。 探索到的網路介面卡高於實際數目。 在內部部署和以效能為基礎的評量中，伺服器評估會挑選可支援所需的網路介面卡數目的 Azure VM。 如果探索到的網路介面卡數目高於32，則上限為 [否]。 在 Azure Vm 上支援的 Nic 數目，電腦會標示為「未就緒」。  [深入瞭解](./concepts-assessment-calculation.md#calculating-sizing)「否」的影響。 調整大小的 Nic。
 
 
 ## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>已探索到的 Nic 數高於實體伺服器的實際數目
@@ -154,18 +154,18 @@ Azure Migrate 取決於相依性視覺效果功能的服務對應。 因為服�
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
-- **MMS 代理程式**：審查支援的[Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)和[Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)作業系統。
+- **MMS 代理程式**：審查支援的[Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)和[Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)作業系統。
 - **Dependency agent**：支援的[Windows 和 Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)作業系統。
 
 ## <a name="visualize-dependencies-for--hour"></a>將 > 小時的相依性視覺化
 
 透過無代理程式相依性分析，您可以將相依性視覺化，或在對應中將其匯出，持續時間最長為30天。
 
-使用代理程式相依性分析時，雖然 Azure Migrate 允許您回到上個月的特定日期，但您可將相依性視覺化的最大持續時間為一小時。 例如，您可以使用相依性對應中的 [持續時間] 功能來查看昨天的相依性，但只能在一小時的期間內進行查看。 不過，您可以使用 Azure 監視器記錄，在較長的持續期間內查詢相依性[資料](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
+使用代理程式相依性分析時，雖然 Azure Migrate 允許您回到上個月的特定日期，但您可將相依性視覺化的最大持續時間為一小時。 例如，您可以使用相依性對應中的 [持續時間] 功能來查看昨天的相依性，但只能在一小時的期間內進行查看。 不過，您可以使用 Azure 監視器記錄，在較長的持續期間內查詢相依性[資料](./how-to-create-group-machine-dependencies.md)。
 
 ## <a name="visualized-dependencies-for--10-machines"></a>視覺化 > 10 部電腦的相依性
 
-在 Azure Migrate Server 評估中，使用代理程式相依性分析時，您可以將最多10個 Vm 的群組相依性[視覺化](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 針對較大的群組，建議您將 Vm 分割成較小的群組，以將相依性視覺化。
+在 Azure Migrate Server 評估中，使用代理程式相依性分析時，您可以將最多10個 Vm 的群組相依性[視覺化](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping)。 針對較大的群組，建議您將 Vm 分割成較小的群組，以將相依性視覺化。
 
 
 ## <a name="machines-show-install-agent"></a>機器顯示「安裝代理程式」

@@ -1,18 +1,16 @@
 ---
 title: 在合作夥伴中心的 Microsoft 商業 marketplace 分析下載儀表板
 description: 瞭解如何存取您 marketplace 供應專案的下載要求。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 136a65e47327007d7a28c2777051be61f475323e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fde95e3b6d1b4d1cdfb060c11e1e67241d3329f8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82732713"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121702"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的下載儀表板
 

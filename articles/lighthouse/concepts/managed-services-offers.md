@@ -3,21 +3,22 @@ title: Azure Marketplace 中的受控服務供應項目
 description: 受管理的服務提供允許服務提供者在 Azure Marketplace 中銷售資源管理供應專案給客戶。
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 975c9ab98229626a513404b2092b266a9e284279
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 119ecc8d15ef93a265cb5419404840496aaa1572
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792287"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121583"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Marketplace 中的受控服務供應項目
 
-本文說明[Azure Marketplace](https://azuremarketplace.microsoft.com)中的**受控服務**供應專案類型。 受控服務供應專案可讓您透過[Azure 委派的資源管理](azure-delegated-resource-management.md)，為客戶提供資源管理服務。 您可以將這些供應專案提供給所有潛在客戶，或僅供一或多個特定客戶使用。 由於您會直接向客戶收取與這些受控服務相關的費用，因此 Microsoft 不會向您收取任何費用。
+本文說明[Azure Marketplace](https://azuremarketplace.microsoft.com)中的**受控服務**供應專案類型。 受控服務提供可讓您透過[Azure 燈塔](../overview.md)為客戶提供資源管理服務。 您可以將這些供應專案提供給所有潛在客戶，或僅供一或多個特定客戶使用。 由於您會直接向客戶收取與這些受控服務相關的費用，因此 Microsoft 不會向您收取任何費用。
 
 ## <a name="understand-managed-service-offers"></a>瞭解受控服務供應專案
 
-受控服務可簡化將客戶上架至 Azure 委派資源管理的程式。 當客戶在 Azure Marketplace 中購買供應項目時，他們將能夠指定應上架的訂用帳戶和 (或) 資源群組。
+受控服務可簡化將客戶上架至 Azure 燈塔的程式。 當客戶在 Azure Marketplace 中購買供應項目時，他們將能夠指定應上架的訂用帳戶和 (或) 資源群組。
 
-之後，您組織中的使用者將能夠根據您在建立供應專案時所定義的存取權，從組織的租使用者內處理這些資源。 這會透過指定可存取客戶資源的 Azure Active Directory （Azure AD）使用者、群組和服務主體，以及定義其存取層級的角色來完成。 透過將權限指派給 Azure AD 群組，而非一系列個別使用者或應用程式帳戶，您便可以在需要變更存取權時個別地加入或移除使用者。
+之後，您組織中的使用者將能夠根據您在建立供應專案時所定義的存取權，透過[Azure 委派的資源管理](azure-delegated-resource-management.md)，在您組織的租使用者內處理這些資源。 這會透過指定可存取客戶資源的 Azure Active Directory （Azure AD）使用者、群組和服務主體，以及定義其存取層級的角色來完成。 透過將權限指派給 Azure AD 群組，而非一系列個別使用者或應用程式帳戶，您便可以在需要變更存取權時個別地加入或移除使用者。
 
 ## <a name="public-and-private-offers"></a>公用和私人供應項目
 

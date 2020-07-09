@@ -1,18 +1,14 @@
 ---
 title: 驗證事件傳遞至事件處理常式（Azure 事件方格）
 description: 本文說明在 Azure 事件方格中驗證傳遞至事件處理常式的不同方式。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.author: spelluru
-ms.openlocfilehash: 46b1aa500f00046dd4d6e318b270982e8b747a79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: d48930ac9cfdd1ecd3e7d6c64067d5389323f8bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412816"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119934"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>驗證事件傳遞至事件處理常式（Azure 事件方格）
 本文提供有關驗證事件傳遞至事件處理常式的資訊。 它也會示範如何使用 Azure Active Directory （Azure AD）或共用密碼，來保護用來從事件方格接收事件的 webhook 端點。

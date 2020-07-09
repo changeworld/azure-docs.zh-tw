@@ -1,18 +1,16 @@
 ---
 title: 適用于 Azure 事件方格資源的網路安全性
 description: 本文說明如何設定來自私人端點的存取權
-services: event-grid
 author: VidyaKukke
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: f3b3877ae3278e12eec43843dbed6ac686227860
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1887b6b5919a8b0f6e8f570b2471d74d9541df31
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414244"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119237"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>適用于 Azure 事件方格資源的網路安全性
 本文說明如何搭配 Azure 事件方格使用下列安全性功能： 
@@ -85,7 +83,7 @@ Azure 事件方格支援以 IP 為基礎的存取控制，以發佈至主題和�
 
 | 連接狀態   |  已成功發佈（是/否） |
 | ------------------ | -------------------------------|
-| 已核准           | Yes                            |
+| 已核准           | 是                            |
 | 已拒絕           | No                             |
 | Pending            | No                             |
 | 已中斷連接       | No                             |

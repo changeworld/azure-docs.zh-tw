@@ -1,17 +1,18 @@
 ---
 title: Azure 委派的資源管理
-description: 受控服務供應項目能允許服務提供者在 Azure Marketplace 中向客戶銷售資源管理供應項目。
+description: Azure 委派的資源管理是 Azure 燈塔的重要部分，可讓服務提供者以彈性和精確度大規模管理委派的資源。
 ms.date: 05/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: e6f741ccbf0d52e0859722aa304aa6c273fb5acf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbe3c28cdcd252755b8350eaa5d2e72044981174
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219079"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120886"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure 委派的資源管理
 
-Azure 委派的資源管理是 Azure Lighthouse 的重要元件之一。 透過 Azure 委派的資源管理，服務提供者可以簡化客戶業務開發及上線體驗，同時以彈性且精確的方式大規模地管理委派的資源。
+Azure 委派的資源管理是[Azure 燈塔](../overview.md)的其中一個重要元件。 透過 Azure 委派的資源管理，服務提供者可以簡化客戶業務開發及上線體驗，同時以彈性且精確的方式大規模地管理委派的資源。
 
 ## <a name="what-is-azure-delegated-resource-management"></a>什麼是 Azure 委派的資源管理？
 
@@ -24,7 +25,7 @@ Azure 委派的資源管理可讓使用者以邏輯方式將資源從某個租�
 
 [跨租用戶管理體驗](cross-tenant-management-experience.md)可協助您更有效率地搭配 Azure 管理服務 (例如 Azure 原則、Azure 資訊安全中心等) 處理工作。 所有服務提供者活動都會在活動記錄檔中追蹤，此記錄會儲存在客戶的租使用者中（並可由管理租使用者中的使用者查看）。 這表示客戶和服務提供者都可以輕鬆地識別與任何變更相關聯的使用者。
 
-當您將客戶上線至 Azure 委派的資源管理時，他們將可存取 Azure 入口網站中的 [新增**服務提供者**] 頁面，他們可以在其中[確認和管理其供應專案、服務提供者和委派的資源](../how-to/view-manage-service-providers.md)。 如果客戶想要撤銷某個服務提供者的存取權，便可以隨時在這裡那麼做。
+當您將客戶上線至 Azure 委派的資源管理時，他們將可存取 Azure 入口網站中的 [**服務提供者**] 頁面，他們可以在其中[確認和管理其供應專案、服務提供者和委派的資源](../how-to/view-manage-service-providers.md)。 如果客戶想要撤銷某個服務提供者的存取權，便可以隨時在這裡那麼做。
 
 您可以將[新的受控服務供應專案類型發佈到 Azure Marketplace](../how-to/publish-managed-services-offers.md) ，輕鬆地將客戶上架到 Azure 委派的資源管理。 或者，您也可以[部署 Azure Resource Manager 範本來完成上線程序](../how-to/onboard-customer.md)。
 

@@ -1,17 +1,16 @@
 ---
 title: Azure 應用程式供應項目的檢閱意見反應 - Microsoft 商業市集
 description: 如何從 Microsoft Azure Marketplace 檢閱小組處理 Azure 應用程式供應項目的意見反應。 您可以使用合作夥伴中心認證來存取 Azure DevOps 中的意見反應。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: c9e441512177d731c5ad47b66b454e5722483507
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e8d90f5238ea312602d2142d25b9ae226aa34c84
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659838"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119016"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>處理 Azure 應用程式供應項目的檢閱意見反應
 

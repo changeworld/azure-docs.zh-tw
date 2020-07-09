@@ -1,18 +1,16 @@
 ---
 title: 使用 marketplace 計量服務進行受控應用程式的計量付費 |Azure Marketplace
 description: 本檔是 Isv 使用彈性計費模式來發佈 Azure 應用程式的指南。
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 5a867243e57790bf72cef6991d6d8ac06639be49
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d1ed294412e44c79fc1eb8cbc01bf134f08a953f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963915"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118931"
 ---
 # <a name="managed-application-metered-billing"></a>受控應用程式計量付費計費 
 
@@ -67,7 +65,7 @@ ms.locfileid: "85963915"
 定義維度本身的屬性會在供應專案的所有計劃之間共用。 發行供應專案之前，從任何計畫內容對這些屬性所做的變更，將會影響所有計劃的維度定義。 發行供應專案之後，這些屬性將無法再編輯。 屬性包括：
 
 * 識別碼
-* Name
+* 名稱
 * 測量單位
 
 維度的其他屬性是每個方案特有的，而且可以有不同的值從計畫到計畫。  發行方案之前，您可以編輯這些值，而且只會影響此計畫。 一旦您發行計畫之後，這些屬性將無法再編輯。 屬性包括：
@@ -93,7 +91,7 @@ ms.locfileid: "85963915"
 一旦供應專案與維度一併發行，就無法再變更該維度的供應專案層級詳細資料：
 
 * 識別碼
-* Name
+* 名稱
 * 測量單位
 
 方案發佈之後，就無法再變更計畫層級的詳細資料：

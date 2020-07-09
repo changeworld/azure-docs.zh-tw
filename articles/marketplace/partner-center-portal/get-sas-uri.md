@@ -1,18 +1,18 @@
 ---
 title: VM 映像的共用存取簽章 URI - Azure Marketplace
 description: 在 Azure Marketplace 中，為您的虛擬硬碟 (VHD) 產生共用存取簽章 (SAS) URI。
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/09/2020
+author: anbene
 ms.author: mingshen
-ms.openlocfilehash: 24ba593a56d4d12211d10f143261caaf6d901bfc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 04/09/2020
+ms.openlocfilehash: 0fbd7aa42bf65ee0e553282b9961f1a9302b7903
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964663"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121719"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>取得 VM 映像的共用存取簽章 URI
 

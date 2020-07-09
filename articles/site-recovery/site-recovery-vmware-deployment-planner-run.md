@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 308958f00a3658196f124ac911d4d0195ebeb228
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73953290"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119832"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>執行 VMware 嚴重損壞修復的部署規劃工具
 本文是 VMware 到 Azure 生產部署的 Azure Site Recovery Deployment Planner 使用者指南。
@@ -39,18 +40,24 @@ ms.locfileid: "73953290"
 2. 開啟 VMware vSphere PowerCLI 主控台。
 3. 確保已啟用指令碼的執行原則。 如果已停用，請在系統管理員模式中啟動 VMware vSphere PowerCLI 主控台，然後執行下列命令來啟用它︰
 
-            Set-ExecutionPolicy –ExecutionPolicy AllSigned
+    ```powershell
+    Set-ExecutionPolicy –ExecutionPolicy AllSigned
+    ```
 
 4. 如果 Connect-VIServer 無法辨識為 Cmdlet 名稱，您可能需要執行下列命令。
 
-            Add-PSSnapin VMware.VimAutomation.Core
+    ```powershell
+    Add-PSSnapin VMware.VimAutomation.Core
+    ```
 
 5. 若要取得 vCenter Server/vSphere ESXi 主機的所有 VM 名稱並將此清單儲存在 .txt 檔案中，請執行此處所列的兩個命令。
 以您的輸入取代 &lsaquo;server name&rsaquo;、&lsaquo;user name&rsaquo;、&lsaquo;password&rsaquo;、&lsaquo;outputfile.txt&rsaquo;。
 
-            Connect-VIServer -Server <server name> -User <user name> -Password <password>
+    ```powershell
+    Connect-VIServer -Server <server name> -User <user name> -Password <password>
 
-            Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
+    Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
+    ```
 
 6. 在「記事本」中開啟輸出檔案，然後將您要剖析的所有 VM 名稱複製到另一個檔案 (例如 ProfileVMList.txt)，每一行一個 VM 名稱。 此檔案可做為命令列工具之 -VMListFile** 參數的輸入。
 

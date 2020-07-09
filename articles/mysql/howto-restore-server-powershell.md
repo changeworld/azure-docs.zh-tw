@@ -5,14 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurepowershel
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/28/2020
-ms.openlocfilehash: 871b1ba81f672459378b23705ad5b96213667a73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85c04c875e543a5c41e9ad5e736a7de77ac1dad0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82609039"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119866"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>如何使用 PowerShell 備份和還原適用於 MySQL 的 Azure 資料庫伺服器
 
@@ -120,7 +120,7 @@ Cmdlet 的**dr**參數集 `Restore-AzMySqlServer` 需要下列參數：
 | --- | --- | --- |
 |resourceGroupName | myresourcegroup | 新伺服器所屬的資源組名。|
 |名稱 | mydemoserver-georestored | 新伺服器的名稱。 |
-|位置 | eastus | 新伺服器的位置。 |
+|Location | eastus | 新伺服器的位置。 |
 |UseGeoRestore | `<SwitchParameter>` | 使用異地模式來進行還原。 |
 
 使用異地還原建立新的伺服器時，除非指定了**Sku**參數，否則它會繼承與來源伺服器相同的儲存體大小和定價層。

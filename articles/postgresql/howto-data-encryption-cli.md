@@ -4,13 +4,14 @@ description: 瞭解如何使用 Azure CLI 設定和管理適用於 PostgreSQL �
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: f7621867aad6baf517462983e35afb0b28223756
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 731827fb63f8b23d21ea2eddaef3fa9b796d14bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341312"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119577"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>使用 Azure CLI 適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
 
@@ -21,28 +22,28 @@ ms.locfileid: "85341312"
 * 您必須具有 Azure 訂用帳戶，並且是該訂用帳戶的系統管理員。
 * 建立金鑰保存庫和金鑰，以用於客戶管理的金鑰。 此外，也請在金鑰保存庫上啟用清除保護和虛刪除。
 
-    ```azurecli-interactive
-    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
-    ```
+   ```azurecli-interactive
+   az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
+   ```
 
 * 在建立的 Azure Key Vault 中，建立將用於適用於 PostgreSQL 的 Azure 資料庫單一伺服器之資料加密的金鑰。
 
-    ```azurecli-interactive
-    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
-    ```
+   ```azurecli-interactive
+   az keyvault key create --name <key_name> -p software --vault-name <vault_name>
+   ```
 
 * 若要使用現有的金鑰保存庫，它必須具有下列屬性，才能用來作為客戶管理的金鑰：
   * [虛刪除](../key-vault/general/overview-soft-delete.md)
 
-    ```azurecli-interactive
-    az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
-    ```
+      ```azurecli-interactive
+      az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
+      ```
 
   * [清除受保護](../key-vault/general/overview-soft-delete.md#purge-protection)
 
-    ```azurecli-interactive
-    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
-    ```
+      ```azurecli-interactive
+      az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
+      ```
 
 * 金鑰必須具有下列屬性，才能當做客戶管理的金鑰使用：
   * 沒有到期日
@@ -87,36 +88,37 @@ ms.locfileid: "85341312"
 
 ### <a name="creating-a-restoredreplica-server"></a>建立還原/複本伺服器
 
-  *  [建立還原伺服器](howto-restore-server-cli.md) 
-  *  [建立讀取複本伺服器](howto-read-replicas-cli.md) 
+* [建立還原伺服器](howto-restore-server-cli.md)
+* [建立讀取複本伺服器](howto-read-replicas-cli.md)
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>伺服器一旦還原，就會將還原的伺服器重新驗證資料加密
 
-    ```azurecli-interactive
-    az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
+```
 
 ## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-postgresql-single-server"></a>用於適用於 PostgreSQL 的 Azure 資料庫單一伺服器的金鑰額外功能
 
 ### <a name="get-the-key-used"></a>取得使用的金鑰
 
-    ```azurecli-interactive
-    az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
+```
 
-    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+金鑰 url：`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>列出使用的金鑰
 
-    ```azurecli-interactive
-    az postgres server key list --name  <server name>  -g <resource_group>
-    ```
+```azurecli-interactive
+az postgres server key list --name  <server name>  -g <resource_group>
+```
 
 ### <a name="drop-the-key-being-used"></a>捨棄正在使用的金鑰
 
-    ```azurecli-interactive
-    az postgres server key delete -g <resource_group> --kid <key url> 
-    ```
+```azurecli-interactive
+az postgres server key delete -g <resource_group> --kid <key url> 
+```
+
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>使用 Azure Resource Manager 範本來啟用資料加密
 
 除了 Azure 入口網站以外，您也可以針對新的和現有的伺服器使用 Azure Resource Manager 範本，在您的適用於 PostgreSQL 的 Azure 資料庫單一伺服器上啟用資料加密。

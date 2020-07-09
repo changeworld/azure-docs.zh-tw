@@ -1,17 +1,18 @@
 ---
 title: 商業市集的潛在客戶管理 | Azure Marketplace 和 AppSource
 description: 向 Azure Marketplace 和 AppSource 發佈供應項目和技術成品的各種相關主題概觀
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 0d16a2fa91b498888ae5dafd1b254b51eca94ebc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2abbef88ed7bac41b84eb06c8c0ec9c8a906b2f6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801405"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119441"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>商業市集的潛在客戶管理
 

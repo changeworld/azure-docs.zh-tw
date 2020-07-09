@@ -1,17 +1,14 @@
 ---
 title: 查詢 Azure Event Grid 訂用帳戶
 description: 本文說明如何在您的 Azure 訂用帳戶中列出事件方格訂閱。 您可以根據訂用帳戶的類型提供不同的參數。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 2da4ba5946f16092c1d0918aec8dc3109b5fd4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 3d700f543bc5e3c7add2a346c10acf975e1c2462
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721535"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120444"
 ---
 # <a name="query-event-grid-subscriptions"></a>查詢 Event Grid 訂用帳戶 
 

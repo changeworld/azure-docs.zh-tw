@@ -1,17 +1,18 @@
 ---
 title: 共同銷售合作夥伴參與 - Microsoft 商業市集
 description: 使用於合作夥伴的 Microsoft 合作夥伴中心共同銷售方案可協助您觸及廣大的客戶群並產生新的銷售。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: palanis-MSFT
+ms.author: palanis
 ms.date: 05/19/2020
-ms.openlocfilehash: 86ff08ed01ea09497c14e91b4c891988569e2df1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: abd5308d965ba35f63fcef1e286a6989be4a0453
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657950"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119457"
 ---
 # <a name="co-sell-partner-engagement"></a>共同銷售合作夥伴參與
 

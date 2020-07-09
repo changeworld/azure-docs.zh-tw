@@ -5,14 +5,14 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: ba0311da88f1fe0cbc0bf885197785db10b1bac2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d389c433cb8a049671668cb58b3d80691ff0d16
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564849"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121430"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>存取 Azure Data Lake Analytics 的診斷記錄
 
@@ -128,7 +128,7 @@ ms.locfileid: "85564849"
 
 #### <a name="request-log-schema"></a>要求記錄的結構描述
 
-| 名稱 | 類型 | Description |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | time |String |記錄的時間戳記 (UTC 時間) |
 | resourceId |String |執行作業所在資源的識別碼 |
@@ -142,7 +142,7 @@ ms.locfileid: "85564849"
 
 #### <a name="request-log-properties-schema"></a>要求記錄屬性結構描述
 
-| 名稱 | 類型 | Description |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | HttpMethod |String |作業使用的 HTTP 方法。 例如，GET。 |
 | 路徑 |String |執行作業的所在路徑 |
@@ -178,7 +178,7 @@ ms.locfileid: "85564849"
 
 #### <a name="audit-log-schema"></a>稽核記錄的結構描述
 
-| 名稱 | 類型 | Description |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | time |String |記錄的時間戳記 (UTC 時間) |
 | resourceId |String |執行作業所在資源的識別碼 |
@@ -196,7 +196,7 @@ ms.locfileid: "85564849"
 
 #### <a name="audit-log-properties-schema"></a>稽核記錄屬性結構描述
 
-| 名稱 | 類型 | Description |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | JobId |String |指派給作業的識別碼 |
 | JobName |String |為作業提供的名稱 |

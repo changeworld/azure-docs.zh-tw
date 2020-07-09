@@ -1,18 +1,14 @@
 ---
 title: 透過入口網站的 Azure 事件方格訂閱
 description: 本文說明如何使用 Azure 入口網站，為支援的來源建立 Event Grid 訂用帳戶，例如 Azure Blob 儲存體。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 599f48ed241010d8551bd110c7f778c9ef508eac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 2890f57e50e508f85579a2b1198de536fa9a9013
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393167"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119985"
 ---
 # <a name="subscribe-to-events-through-portal"></a>透過入口網站訂閱事件
 

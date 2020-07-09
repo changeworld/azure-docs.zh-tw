@@ -1,17 +1,18 @@
 ---
 title: Microsoft 商業市集的地理可用性和貨幣支援
 description: 商業市集交易的地理可用性和貨幣支援
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 01/29/2020
-ms.author: dsindona
-ms.openlocfilehash: 16d41879321c7cbaa4f38bcba83d83d39f30ee13
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 57d1564c155a553571499a47a5c1d83c80c074b3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657881"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120002"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商業市集的地理可用性和貨幣支援
 

@@ -1,17 +1,18 @@
 ---
 title: 更新現有的商業 Marketplace 供應專案
 description: 如何對現有的商用 Marketplace 供應專案進行更新，包括編輯、刪除草稿、取消發佈要求、停止銷售供應專案或方案，以及同步私人物件。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: eca054d2db5eca1948d1085e105e91af19fc132e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 62170df567f552699304710902a1f83b84728af2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057954"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120699"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>更新商業市集中的現有供應項目
 

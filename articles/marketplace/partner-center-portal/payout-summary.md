@@ -1,17 +1,18 @@
 ---
 title: 支出報告 - Microsoft 商業市集
 description: 支出報告會顯示您透過供應項目所獲得的款項詳細資料，包括付款金額以及付款的時間。
-author: mingshen
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: mingshen
+ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: 6639026d071b496027996036a81f6bc66e0185e3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f524ef13af17054e52a94ac043546431b656203c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744801"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120716"
 ---
 # <a name="payout-summaries"></a>支出摘要
 

@@ -1,18 +1,18 @@
 ---
 title: 虛擬機器認證 - 問題與解決方案
 description: 本文說明 VM 映射的常見錯誤訊息。 它也會討論相關的解決方案
-author: v-miegge
-ms.author: v-krmall
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
+author: v-miegge
+ms.author: v-krmall
 ms.date: 06/16/2020
-ms.openlocfilehash: 71577a52ed1b528bc330d4c8e1f4c34ab6e1d81f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e73ff612aa07016f69c717a74678d5d1923e87b8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087039"
+ms.locfileid: "86120648"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>虛擬機器認證期間的問題和解決方案 
 
@@ -94,7 +94,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將會執行的 Linux 測試案例。 [描述] 中會指出測試驗證。
 
-|狀況|測試案例|說明|
+|狀況|測試案例|描述|
 |---|---|---|
 |1|Bash 歷程記錄|在您建立 VM 映射之前，應該先清除 Bash 歷程記錄檔案。|
 |2|Linux 代理程式版本|應該安裝 Azure Linux 代理程式2.2.41 或更新版本。|
@@ -122,7 +122,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將會執行的 Windows 測試案例，以及測試驗證的描述：
 
-|狀況 |測試案例|說明|
+|狀況 |測試案例|描述|
 |---|---|---|---|
 |1|OS 架構|Azure 僅支援64位的作業系統。|
 |2|使用者帳戶相關性|應用程式執行不應與系統管理員帳戶相依。|
@@ -315,6 +315,6 @@ Azure 上的所有 Vhd 都必須將虛擬大小調整為 1 mb 的倍數。 如�
 
 提交 Windows 映像之前，請先啟用 RDP 存取。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如果您有改善的問題或意見反應，請聯絡[合作夥伴中心支援](https://partner.microsoft.com/support/v2/?stage=1)。

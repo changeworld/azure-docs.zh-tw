@@ -1,18 +1,18 @@
 ---
 title: 什麼是試用產品？ Microsoft 商業 marketplace
 description: Marketplace 試用產品功能的說明
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
+author: keferna
+ms.author: keferna
 ms.date: 06/19/2020
-ms.author: dsindona
-ms.openlocfilehash: ea04556c13d6e56178519dbcbe805447d0dbfc0f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 95ca527d8f7912e2c455f94036fe61828b220257
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964901"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121464"
 ---
 # <a name="what-is-a-test-drive"></a>什麼是試用產品？
 

@@ -1,18 +1,16 @@
 ---
 title: 計量服務 API - Microsoft 商業市集
 description: 使用方式事件 API 可讓您針對 Microsoft AppSource 和 Azure Marketplace 中的 SaaS 供應項目發出使用方式事件。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 7bc5dc0e21bc9218c0e67b4e8e96299d73628e97
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8a6636b0fc6c3e67ec171d738efb3fd8a93de30c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963167"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120767"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Marketplace 計量付費計費 Api
 
@@ -247,7 +245,7 @@ Batch 使用量事件 API 可讓您一次發出一個以上已購買資源的使
 
 在 `BatchUsageEvent` API 回應中所參考之狀態碼的描述：
 
-| 狀態碼  | Description |
+| 狀態碼  | 描述 |
 | ---------- | -------------------- |
 | `Accepted` | 已接受。 |
 | `Expired` | 過期的使用方式。 |

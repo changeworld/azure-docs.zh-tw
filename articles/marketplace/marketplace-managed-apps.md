@@ -1,18 +1,18 @@
 ---
 title: Azure 應用程式受控應用程式供應專案發佈指南-Azure Marketplace
 description: 本文說明在 Azure Marketplace 中發行受控應用程式的需求。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: msjogarrig
+ms.author: jogarrig
 ms.date: 04/22/2020
-ms.author: dsindona
-ms.openlocfilehash: a4b788749e6178c49010b153fb5caae35b79abf9
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 70922b80139015226445ca62026ec6f5a59b751c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963575"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119815"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Azure 受控應用程式的發佈指南
 

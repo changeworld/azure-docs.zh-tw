@@ -1,17 +1,18 @@
 ---
 title: Microsoft 商業市集支援 - Azure Marketplace
 description: 合作夥伴中心內 Azure Marketplace 和 AppSource 的支援資訊和連結
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 8615a853ea218c0598f33d87d39c9ead15709cc0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1e4539dcec1f3f57f7fcc0ca0b8d8c266dc1bc99
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955449"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121498"
 ---
 # <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft 商業市集的支援
 

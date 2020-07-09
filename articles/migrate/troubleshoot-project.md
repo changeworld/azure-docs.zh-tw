@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b56244fccce623827367d504831ca8db517c108d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535395"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121634"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Migrate 專案疑難排解
 
@@ -52,7 +52,7 @@ ms.locfileid: "81535395"
 - 如果您收到錯誤「要求必須包含使用者識別標頭」，這可能表示您無法存取組織的 Azure Active Directory （Azure AD）租使用者。 在此案例中：
     - 當您第一次新增至 Azure AD 租使用者時，您會收到加入租使用者的電子郵件邀請。
     - 接受要新增至租使用者的邀請。
-    - 如果您看不到電子郵件，請洽詢具有租使用者存取權的使用者，並要求他們[重新傳送邀請](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users)給您。
+    - 如果您看不到電子郵件，請洽詢具有租使用者存取權的使用者，並要求他們[重新傳送邀請](../active-directory/b2b/add-users-administrator.md#resend-invitations-to-guest-users)給您。
     - 收到邀請電子郵件之後，請開啟它，然後選取要接受邀請的連結。 然後，登出 Azure 入口網站並重新登入。 （重新整理瀏覽器將無法正常執行）。然後，您就可以開始建立遷移專案。
 
 ## <a name="how-do-i-delete-a-project"></a>如何? 刪除專案

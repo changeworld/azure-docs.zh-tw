@@ -3,11 +3,12 @@ title: 無效範本錯誤
 description: 描述如何解決在部署 Azure Resource Manager 範本時出現的無效範本錯誤。
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: 2902a6d82c32192bb241697825a31d759d5c7b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324057"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118880"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>解決無效範本的錯誤
 
@@ -47,7 +48,7 @@ Message=Deployment template validation failed
 
 如果您未提供相符的語法，範本會產生與您所要的值截然不同的值。
 
-當您收到此類錯誤時，請仔細檢閱運算式語法。 請考慮使用 [Visual Studio](create-visual-studio-deployment-project.md) 或 [Visual Studio Code](use-vs-code-to-create-template.md) 等 JSON 編輯器，它們可以警告您有語法錯誤。
+當您收到此類錯誤時，請仔細檢閱運算式語法。 請考慮使用 [Visual Studio](create-visual-studio-deployment-project.md) 或 [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) 等 JSON 編輯器，它們可以警告您有語法錯誤。
 
 <a id="incorrect-segment-lengths"></a>
 

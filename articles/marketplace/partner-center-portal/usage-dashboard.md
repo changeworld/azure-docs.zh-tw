@@ -1,17 +1,16 @@
 ---
 title: Microsoft 商業市集分析中的使用量儀表板
 description: 了解如何存取所有的 VM 供應項目使用量和計量付費度量。 移至 [商業市集] 下方 [合作夥伴中心] 中的 [使用量] 儀表板。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b60475c56b18e81b082e7552fec789b06adeff27
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8747ff98cd2b53773d9e0a95436d90fef74fda55
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746654"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120665"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft 商業市集分析中的使用量儀表板
 

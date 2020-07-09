@@ -1,17 +1,16 @@
 ---
 title: 商業市集分析常見問題與術語 - 合作夥伴中心
 description: 取得合作夥伴中心的商業市集分析常見問題的解答。 本文包含適用於分析術語的資料字典。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: eb91e498fa757c5cec7bd466c60aaf7e8758304c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ece7fa64c64d4c2f771be61984485cf9b1c4abaf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744572"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121736"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>商業市集分析的術語和常見問題
 

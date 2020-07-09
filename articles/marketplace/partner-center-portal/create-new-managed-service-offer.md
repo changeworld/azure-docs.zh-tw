@@ -1,18 +1,18 @@
 ---
 title: 在 Microsoft 商業市集中建立受控服務供應項目
 description: 如何使用合作夥伴中心的商業市集入口網站，為 Azure Marketplace 中的清單建立新的受控服務供應項目。
-author: JnHs
-ms.author: jenhayes
-manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 3099c73849a63ebf490d026db95cedfd1278d735
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+author: JnHs
+ms.author: jenhayes
+ms.date: 07/07/2020
+ms.openlocfilehash: 70f0dbff2530b11e92bd0b0cc55ad92a8679ebe9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957574"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121787"
 ---
 # <a name="create-a-managed-service-offer"></a>建立受控服務供應項目
 
@@ -86,7 +86,7 @@ ms.locfileid: "85957574"
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. Title
-2. Description
+2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面
 
@@ -230,7 +230,7 @@ ms.locfileid: "85957574"
 
 - **Azure AD 物件識別碼**：使用者、使用者群組或應用程式的 Azure AD 識別碼，系統將會授與其您客戶資源的特定權限 (按角色定義所定義)。
 - **Azure AD 物件顯示名稱**：協助客戶了解此授權用途的易記名稱。 客戶會在委派資源時看到此名稱。
-- **角色定義**：從清單中選取其中一個可用的 Azure AD 內建角色。 此角色將會決定 [Azure AD 物件識別碼] 欄位中的使用者，對於您的客戶資源會有那些權限。 如需這些角色的描述，請參閱[內建角色](../../role-based-access-control/built-in-roles.md)和[適用於 Azure 委派資源管理的角色支援](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)。
+- **角色定義**：從清單中選取其中一個可用的 Azure AD 內建角色。 此角色將會決定 [Azure AD 物件識別碼] 欄位中的使用者，對於您的客戶資源會有那些權限。 如需這些角色的說明，請參閱 Azure 燈塔的[內建角色](../../role-based-access-control/built-in-roles.md)和[角色支援](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)。
   > [!NOTE]
   > 當適用的新內建角色新增至 Azure 時，將會在這裡加以提供，雖然其出現之前可能會有所延遲。
 - **可指派的角色**：如果您為此授權在 [角色定義] 中選取 [使用者存取系統管理員]，才會顯示此選項。 若是如此，您必須在此新增一或多個可指派的角色。 [Azure AD 物件識別碼] 欄位中的使用者將能夠將這些角色指派給[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，[部署可補救的原則](../../lighthouse/how-to/deploy-policy-remediation.md)時需要這些角色。 請注意，不會有其他一般與「使用者存取系統管理員」角色相關聯的權限套用至此使用者。

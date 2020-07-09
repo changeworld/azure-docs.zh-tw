@@ -1,17 +1,14 @@
 ---
 title: Azure 事件方格 - 針對訂閱驗證進行疑難排解
 description: 本文說明如何針對訂閱驗證進行疑難排解。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.author: spelluru
-ms.openlocfilehash: f292d70eaaca29e714ea35b4f61a141b2d5cd2b6
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 07/07/2020
+ms.openlocfilehash: 48844859013507ab684ef8879b7b85dd6b6fe8cd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778705"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118982"
 ---
 # <a name="troubleshoot-azure-event-grid-subscription-validations"></a>針對 Azure 事件方格的訂閱驗證進行疑難排解
 本文提供針對事件訂閱驗證進行疑難排解的相關資訊。 

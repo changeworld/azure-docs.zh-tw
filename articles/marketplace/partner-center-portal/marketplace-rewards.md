@@ -2,18 +2,16 @@
 title: Marketplace 獎勵-您的商業 marketplace 權益 |Azure
 description: Marketplace 報酬的設計是為了在您的特定成長階段支援您。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
-author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 01/18/2019
-ms.author: evansma
-ms.openlocfilehash: 2cbd1cc5e9eb85cb9814eb135234315ec29ea668
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e393b6a499ad2b84f25ca1a1c062ca4ef2eec21c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963048"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120733"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 

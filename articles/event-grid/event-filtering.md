@@ -1,17 +1,14 @@
 ---
 title: 適用於 Azure 事件格線的事件篩選
 description: 描述如何在建立 Azure 事件格線訂用帳戶期間篩選事件。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.author: spelluru
-ms.openlocfilehash: afe97fd1736fbaa6858adb2fc658b4ab34546f84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456841"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120087"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解適用於事件格線訂用帳戶的事件篩選
 
@@ -96,7 +93,7 @@ ms.locfileid: "84456841"
 ]
 ```
 
-### <a name="operators"></a>操作員
+### <a name="operators"></a>運算子
 
 適用于**數位**的運算子如下：
 

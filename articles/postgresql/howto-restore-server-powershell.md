@@ -5,14 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurepowershell
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: ef12a7168619b10448e70e0358ba8c173fda3c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 879dec5ec34482c677730ad4e675916da0200553
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84739829"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120546"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>如何使用 PowerShell 備份和還原適用於 PostgreSQL 的 Azure 資料庫伺服器
 
@@ -77,7 +77,7 @@ Cmdlet 的**PointInTimeRestore**參數集 `Restore-AzPostgreSqlServer` 需要下
 | 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 | resourceGroupName |  myresourcegroup |  來源伺服器所在的資源群組。  |
-| Name | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
+| 名稱 | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
 | RestorePointInTime | 2020-03-13T13：59：00Z | 選取要還原的時間點。 這個日期和時間必須在來源伺服器的備份保留期限內。 請使用 ISO8601 日期和時間格式。 例如，您可以使用自己的當地時區，例如**2020-03-13T05：59： 00-08： 00**。 您也可以使用 UTC 祖魯文格式，例如**2018-03-13T13：59： 00Z**。 |
 | UsePointInTimeRestore | `<SwitchParameter>` | 使用還原時間點模式。 |
 
@@ -119,8 +119,8 @@ Cmdlet 的**dr**參數集 `Restore-AzPostgreSqlServer` 需要下列參數：
 | 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 |resourceGroupName | myresourcegroup | 新伺服器所屬的資源組名。|
-|Name | mydemoserver-georestored | 新伺服器的名稱。 |
-|位置 | eastus | 新伺服器的位置。 |
+|名稱 | mydemoserver-georestored | 新伺服器的名稱。 |
+|Location | eastus | 新伺服器的位置。 |
 |UseGeoRestore | `<SwitchParameter>` | 使用異地模式來進行還原。 |
 
 使用異地還原建立新的伺服器時，除非指定了**Sku**參數，否則它會繼承與來源伺服器相同的儲存體大小和定價層。

@@ -3,12 +3,12 @@ title: Azure Migrate 中的探索、評估和相依性分析的相關問題
 description: 取得 Azure Migrate 中探索、評估和相依性分析的常見問題解答。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 7d42de52d35d5a3c5e9a54673d8cd933fbee04aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b26d4442f9a84375205e7778ae037b565f53438
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610297"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118829"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>探索、評估和相依性分析-常見問題
 
@@ -29,30 +29,30 @@ ms.locfileid: "85610297"
 
 您可以使用單一設備，探索最多10000個 VMware Vm、最多5000部 Hyper-v Vm，以及最多1000個實體伺服器。 如果您有更多電腦，請參閱[調整 hyper-v 評估](scale-hyper-v-assessment.md)、[調整 VMware 評估](scale-vmware-assessment.md)，或[調整實體伺服器評](scale-physical-assessment.md)量。
 
-## <a name="how-do-i-choose-the-assessment-type"></a>如何? 選擇評量類型嗎？
+## <a name="how-do-i-choose-the-assessment-type"></a>如何選擇評量類型？
 
 - 當您想要評估您的內部部署[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[實體伺服器](how-to-set-up-appliance-physical.md)以遷移至 Azure VM 時，請使用**Azure VM 評**量。 [深入了解](concepts-assessment-calculation.md)
 
-- 當您想要使用此評量類型來評估內部部署[Vmware vm](how-to-set-up-appliance-vmware.md)以遷移至[Azure VMWARE 解決方案（avs）](https://docs.microsoft.com/azure/azure-vmware/introduction)時，請使用**Azure VMware 解決方案（avs）** 評量。 [深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
+- 當您想要使用此評量類型來評估內部部署[Vmware vm](how-to-set-up-appliance-vmware.md)以遷移至[Azure VMWARE 解決方案（avs）](../azure-vmware/introduction.md)時，請使用**Azure VMware 解決方案（avs）** 評量。 [深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
 
-- 您可以使用與 VMware 機器相同的通用群組來執行這兩種類型的評量。 請注意，如果您是第一次在 Azure Migrate 中執行 AVS 評量，建議您建立新的 VMware 機器群組。
+- 您只能使用與 VMware 機器相同的通用群組來執行這兩種類型的評量。 請注意，如果您是第一次在 Azure Migrate 中執行 AVS 評量，建議您建立新的 VMware 機器群組。
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>當我在建立 Azure VMware 解決方案（AVS）評估時，看不到某些群組
 
-- 您可以在只有 VMware 電腦的群組上進行 AVS 評估。 如果您想要執行 AVS 評估，請從群組中移除所有非 VMware 機器。
+- 您可以在只有 VMware 電腦的群組上進行 AVS 評估。 如果要執行 AVS 評估，請從群組中移除所有非 VMware 機器。
 - 如果您是第一次在 Azure Migrate 中執行 AVS 評量，建議您建立新的 VMware 機器群組。
 
 ## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>如何? 在 AVS 評估中選取 [FTT-RAID 層級]？
 
-AVS 中使用的儲存引擎是 vSAN。 vSAN 儲存原則會定義虛擬機器的存放裝置需求。 這些原則可確保 Vm 所需的服務層級，因為它們會決定儲存體如何配置給 VM。 以下是可用的 FTT-Raid 組合： 
+AVS 中使用的儲存引擎是 vSAN。 vSAN 儲存原則會定義虛擬機器的儲存體需求。 這些原則可確保 VM 所需的服務層級，因為原則會決定如何將儲存體配置給 VM。 以下是可用的 FTT-Raid 組合： 
 
-**可容忍的失敗（FTT）** | **RAID 設定** | **最低主機需求** | **大小考慮**
+**可容許的失敗 (FTT)** | **RAID 組態** | **最低主機需求** | **大小考量**
 --- | --- | --- | --- 
-1 | RAID-1 （鏡像） | 3 | 100GB 的 VM 會使用200GB。
-1 | RAID-5 （抹除編碼） | 4 | 100GB 的 VM 會耗用 133.33 GB
-2 | RAID-1 （鏡像） | 5 | 100GB 的 VM 會使用 300 GB。
-2 | RAID-6 （抹除編碼） | 6 | 100GB 的 VM 會使用150GB。
-3 | RAID-1 （鏡像） | 7 | 100GB 的 VM 會使用 400 GB。
+1 | RAID-1 (鏡像) | 3 | 100GB 的 VM 會耗用 200GB。
+1 | RAID-5 (抹除編碼) | 4 | 100GB 的 VM 會耗用 133.33GB
+2 | RAID-1 (鏡像) | 5 | 100GB 的 VM 會耗用 300GB。
+2 | RAID-6 (抹除編碼) | 6 | 100GB 的 VM 會耗用 150GB。
+3 | RAID-1 (鏡像) | 7 | 100GB 的 VM 會耗用 400GB。
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>我在 Azure Government 中看不到某些 VM 類型
 
@@ -113,7 +113,7 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。  評量�
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>為什麼匯入型 AVS 評估中的建議遷移工具標示為未知？
 
-對於透過 CSV 檔案匯入的機器，AVS 評估中的預設遷移工具是未知的。 不過，對於 VMware 機器，建議使用 VMWare 混合式雲端擴充功能（HCX）解決方案。 [深入了解](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)。
+對於透過 CSV 檔案匯入的機器，AVS 評估中的預設遷移工具是未知的。 不過，對於 VMware 機器，建議使用 VMWare 混合式雲端擴充功能（HCX）解決方案。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
 
 
 ## <a name="what-is-dependency-visualization"></a>什麼是相依性視覺效果？
@@ -130,9 +130,9 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。  評量�
 **需求** | **無代理程式** | **以代理程式為基礎**
 --- | --- | ---
 支援 | 此選項目前為預覽狀態，且僅適用于 VMware Vm。 [檢查](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支援的作業系統。 | 正式運作（GA）。
-代理程式 | 不需要在您要交叉檢查的電腦上安裝代理程式。 | 要在每個您想要分析的內部部署機器上安裝的代理[程式： Microsoft Monitoring agent （MMA）](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)和[Dependency agent](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
+代理程式 | 不需要在您要交叉檢查的電腦上安裝代理程式。 | 要在每個您想要分析的內部部署機器上安裝的代理[程式： Microsoft Monitoring agent （MMA）](../azure-monitor/platform/agent-windows.md)和[Dependency agent](../azure-monitor/platform/agents-overview.md#dependency-agent)。 
 必要條件 | 請[參閱](concepts-dependency-visualization.md#agentless-analysis)必要條件和部署需求。 | 請[參閱](concepts-dependency-visualization.md#agent-based-analysis)必要條件和部署需求。
-Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中的[服務對應](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解決方案來實現相依性視覺效果。 [深入了解](concepts-dependency-visualization.md#agent-based-analysis)。
+Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)中的[服務對應](../azure-monitor/insights/service-map.md)解決方案來實現相依性視覺效果。 [深入了解](concepts-dependency-visualization.md#agent-based-analysis)。
 運作方式 | 會在啟用相依性視覺效果的電腦上，捕獲 TCP 連線資料。 探索之後，它會以五分鐘的間隔收集資料。 | 安裝在電腦上的服務對應代理程式會收集有關 TCP 進程的資料，以及每個進程的輸入/輸出連接。
 資料 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。<br/><br/> 系統會收集連線、延遲和資料傳輸資訊的數目，並可供 Log Analytics 查詢使用。 
 視覺效果 | 單一伺服器的相依性對應可以在一小時到30天的期間內查看。 | 單一伺服器的相依性對應。<br/><br/> 只能在一小時內查看對應。<br/><br/> 伺服器群組的相依性對應。<br/><br/> 從地圖視圖新增和移除群組中的伺服器。
@@ -151,7 +151,7 @@ Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](h
 
 若要使用以代理程式為基礎的相依性視覺效果，請在您想要評估的每部內部部署機器上，下載並安裝代理程式：
 
-- [Microsoft Monitoring Agent （MMA）](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)
+- [Microsoft Monitoring Agent （MMA）](../azure-monitor/platform/agent-windows.md)
 - [相依性代理程式](../azure-monitor/platform/agents-overview.md#dependency-agent)
 - 如果您的電腦沒有網際網路連線能力，請下載並安裝 Log Analytics 閘道。
 
@@ -163,7 +163,7 @@ Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](h
 
 ## <a name="can-i-export-the-dependency-visualization-report"></a>是否可以匯出相依性視覺效果報告？
 
-否，無法匯出以代理程式為基礎的視覺效果中的相依性視覺效果報表。 不過，Azure Migrate 會使用服務對應，而且您可以使用[服務對應 REST API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections)來取得 JSON 格式的相依性。
+否，無法匯出以代理程式為基礎的視覺效果中的相依性視覺效果報表。 不過，Azure Migrate 會使用服務對應，而且您可以使用[服務對應 REST API](/rest/api/servicemap/machines/listconnections)來取得 JSON 格式的相依性。
 
 ## <a name="can-i-automate-agent-installation"></a>我可以自動安裝代理程式嗎？
 
@@ -175,18 +175,18 @@ Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](h
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA 支援哪些作業系統？
 
-- 查看[MMA 支援的 Windows 作業系統](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)清單。
-- 查看[MMA 支援的 Linux 作業系統](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)清單。
+- 查看[MMA 支援的 Windows 作業系統](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)清單。
+- 查看[MMA 支援的 Linux 作業系統](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)清單。
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>我可以將相依性視覺化超過一小時嗎？
 
-對於以代理程式為基礎的視覺效果，您最多可以將相依性視覺化一小時。 您可以在歷程記錄中返回一個月的特定日期，但視覺效果的最大持續時間為一小時。 例如，您可以使用相依性對應中的持續時間來查看昨天的相依性，但只能查看一個小時範圍內的相依性。 不過，您可以使用 Azure 監視器記錄來[查詢](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)較長持續時間的相依性資料。
+對於以代理程式為基礎的視覺效果，您最多可以將相依性視覺化一小時。 您可以在歷程記錄中返回一個月的特定日期，但視覺效果的最大持續時間為一小時。 例如，您可以使用相依性對應中的持續時間來查看昨天的相依性，但只能查看一個小時範圍內的相依性。 不過，您可以使用 Azure 監視器記錄來[查詢](./how-to-create-group-machine-dependencies.md)較長持續時間的相依性資料。
 
 對於無代理程式視覺效果，您可以從一小時到30天之間的持續時間，查看單一伺服器的相依性對應。
 
 ## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>我可以將超過10個 Vm 的群組相依性視覺化嗎？
 
-您可以將具有多達10個 Vm 的群組的相依性[視覺化](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 如果您有超過10個 Vm 的群組，建議您將群組分割成較小的群組，然後將相依性視覺化。
+您可以將具有多達10個 Vm 的群組的相依性[視覺化](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping)。 如果您有超過10個 Vm 的群組，建議您將群組分割成較小的群組，然後將相依性視覺化。
 
 ## <a name="next-steps"></a>後續步驟
 

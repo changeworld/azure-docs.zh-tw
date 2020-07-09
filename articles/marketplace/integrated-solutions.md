@@ -1,17 +1,18 @@
 ---
 title: 整合式解決方案 - Microsoft 商業市集
 description: 了解在商業市集中提供整合式解決方案的優點、資源和後續步驟。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: bf20473b407db1804a4275fdc6dd3d528de1f189
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8e029d888b963fd10e7198486a973766755c9812
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657985"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119509"
 ---
 # <a name="integrated-solutions-in-the-commercial-marketplace"></a>商業市集中的整合式解決方案
 整合式解決方案結合了 Microsoft 合作夥伴的最佳技術，以及專業服務合作夥伴所提供的諮詢、部署和支援。

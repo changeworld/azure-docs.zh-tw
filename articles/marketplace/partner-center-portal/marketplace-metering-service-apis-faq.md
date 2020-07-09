@@ -1,18 +1,16 @@
 ---
 title: 計量服務 Api 常見問題-Microsoft 商業 marketplace
 description: Microsoft AppSource 和 Azure Marketplace 中適用于 SaaS 供應專案之計量服務 Api 的常見問題。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 361e35aea90a9817e365d66014faf5f23433c1dc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: bdd540ad6c7ef1954936e4fb74bade2458e50927
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964782"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120784"
 ---
 # <a name="marketplace-metered-billing-apis---faq"></a>Marketplace 計量付費計費 Api-常見問題
 

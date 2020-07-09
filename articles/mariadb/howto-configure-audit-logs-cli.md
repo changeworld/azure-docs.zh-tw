@@ -4,16 +4,16 @@ description: 本文說明如何從 Azure CLI 設定和存取適用於 MariaDB �
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: 1dcad61ed94926aa2aa2237ea735287cd9c9f137
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0f5f71ed636cc67e742198436b48a09d291e798
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362691"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120053"
 ---
-# <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>設定和存取 Azure CLI 中的 audit 記錄
+# <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>在 Azure CLI 中設定及存取適用于 Maria DB audit logs 的 Azure 資料庫
 
 您可以從 Azure CLI 設定[適用於 MariaDB 的 Azure 資料庫的審核記錄](concepts-audit-logs.md)。
 
