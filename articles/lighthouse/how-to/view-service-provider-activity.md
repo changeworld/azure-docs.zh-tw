@@ -1,31 +1,32 @@
 ---
 title: 檢視服務提供者活動
 description: 客戶可以查看已記錄的活動，以查看服務提供者透過 Azure 委派的資源管理所執行的動作。
-ms.date: 01/15/2020
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 42af2aa7fca5031eb50bd421a5207320858b70cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c92fc9b45d17e37fb3721d9cf087c5e7a62f6d7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636439"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131460"
 ---
 # <a name="view-service-provider-activity"></a>檢視服務提供者活動
 
-對於 Azure 委派資源管理具有委派訂用帳戶的客戶，可以[查看 Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)資料，以查看所採取的所有動作。 這可讓客戶完整看到服務提供者透過 Azure 委派的資源管理執行的作業，以及客戶自己的 Azure Active Directory （Azure AD）租使用者內的使用者所執行的作業。
+具有[Azure 燈塔](../overview.md)委派訂用帳戶的客戶可以[查看 azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)資料，以查看所採取的所有動作。 這可讓客戶完整看到服務提供者透過[Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)執行的作業，以及客戶自己的 Azure Active Directory （Azure AD）租使用者內的使用者所執行的作業。
 
 > [!TIP]
 > 我們也會提供 Azure 原則內建原則定義，以將範圍委派審查至管理租使用者。 如需詳細資訊，請參閱[在您的環境中審核委派](view-manage-service-providers.md#audit-delegations-in-your-environment)。
 
 ## <a name="view-activity-log-data"></a>查看活動記錄資料
 
-您可以從 [Azure 入口網站中的 [**監視**] 功能表[查看活動記錄](../../azure-monitor/platform/activity-log-view.md)。 若要將結果限制為特定的訂用帳戶，請使用篩選準則來選取特定的訂用帳戶。 您也可以透過程式設計方式來[查看和取出活動記錄事件](../../azure-monitor/platform/activity-log-view.md)。
+您可以從 [Azure 入口網站中的 [**監視**] 功能表[查看活動記錄](../../azure-monitor/platform/activity-log.md#view-the-activity-log)。 若要將結果限制為特定的訂用帳戶，請使用篩選準則來選取特定的訂用帳戶。 您也可以透過程式設計方式來[查看和取出活動記錄事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)。
 
 > [!NOTE]
-> 如果客戶租使用者中的委派訂用帳戶已被授與[讀取](../../role-based-access-control/built-in-roles.md#reader)者角色（或另一個內建角色，其中包含讀取器存取權），而該訂用帳戶是針對 Azure 委派的資源管理所上架時，則服務提供者租使用者中的使用者可以查看該帳戶的活動記錄結果。
+> 如果客戶租使用者中的委派訂用帳戶在該訂用帳戶上架至 Azure 燈塔時被授與[讀取](../../role-based-access-control/built-in-roles.md#reader)者角色（或其他內建角色，其中包含讀取器存取權），則服務提供者租使用者中的使用者可以查看其活動記錄結果。
 
-在 [活動記錄檔] 中，您會看到作業的名稱和其狀態，以及執行的日期和時間。 [**由**下列時間起始的事件] 會顯示哪些使用者執行了作業，不論是在服務提供者的租使用者中，是透過 Azure 委派的資源管理，還是客戶自己的租使用者中的使用者。 請注意，會顯示使用者的名稱，而不是租使用者或已指派給該訂用帳戶的角色。
+在 [活動記錄檔] 中，您會看到作業的名稱和其狀態，以及執行的日期和時間。 [**由**下列時間起始的事件] 會顯示哪些使用者執行了作業，不論是在服務提供者的租使用者中，是透過 Azure 燈塔或客戶自己的租使用者中的使用者。 請注意，會顯示使用者的名稱，而不是租使用者或已指派給該訂用帳戶的角色。
 
-記錄的活動可在過去90天的 Azure 入口網站中使用。 若要瞭解如何儲存此資料超過90天，請參閱[在 Log Analytics 工作區中收集並分析 Azure 活動記錄](../../azure-monitor/platform/activity-log-collect.md)。
+記錄的活動可在過去90天的 Azure 入口網站中使用。 若要瞭解如何儲存此資料超過90天，請參閱[在 Log Analytics 工作區中收集並分析 Azure 活動記錄](../../azure-monitor/platform/activity-log.md)。
 
 > [!NOTE]
 > 服務提供者的使用者會出現在活動記錄中，但這些使用者及其角色指派不會顯示在**存取控制（IAM）** 中，或透過 api 來抓取角色指派資訊時。

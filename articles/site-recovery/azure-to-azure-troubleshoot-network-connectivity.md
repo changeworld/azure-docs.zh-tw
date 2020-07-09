@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71176c87ee805eb4a634dd6c2f344922fc13c4f3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80884863"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132718"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>針對 Azure 至 Azure VM 網路連線問題進行疑難排解
 
@@ -50,7 +51,7 @@ ms.locfileid: "80884863"
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>問題 2：Site Recovery 設定失敗 (151196)
 
 > [!NOTE]
-> 如果 Vm 位於**標準**內部負載平衡器後方，則根據預設，它無法存取 Office 365 ip，例如 `login.microsoftonline.com` 。 將它變更為 [**基本**內部負載平衡器類型] 或 [建立輸出存取]，如[使用 Azure CLI 在 Standard Load Balancer 中設定負載平衡和輸出規則](/azure/load-balancer/configure-load-balancer-outbound-cli)一文所述。
+> 如果 Vm 位於**標準**內部負載平衡器後方，則根據預設，它無法存取 Office 365 ip，例如 `login.microsoftonline.com` 。 將它變更為 [**基本**內部負載平衡器類型] 或 [建立輸出存取]，如[使用 Azure CLI 在 Standard Load Balancer 中設定負載平衡和輸出規則](../load-balancer/configure-load-balancer-outbound-cli.md)一文所述。
 
 #### <a name="possible-cause"></a>可能的原因
 
@@ -59,7 +60,7 @@ ms.locfileid: "80884863"
 #### <a name="resolution"></a>解決方案
 
 - Azure Site Recovery 需要存取 Office 365 IP 範圍以進行驗證。
-- 如果您使用 Azure 網路安全性群組（NSG）規則/防火牆 proxy 來控制 VM 上的輸出網路連線能力，請確定您允許與 Office 365 IP 範圍的通訊。 建立[Azure Active Directory （Azure AD）以服務標記](/azure/virtual-network/security-overview#service-tags)為基礎的 NSG 規則，以允許存取對應至 Azure AD 的所有 IP 位址。
+- 如果您使用 Azure 網路安全性群組（NSG）規則/防火牆 proxy 來控制 VM 上的輸出網路連線能力，請確定您允許與 Office 365 IP 範圍的通訊。 建立[Azure Active Directory （Azure AD）以服務標記](../virtual-network/security-overview.md#service-tags)為基礎的 NSG 規則，以允許存取對應至 Azure AD 的所有 IP 位址。
 - 如果未來將新的位址新增至 Azure AD，您就必須建立新的 NSG 規則。
 
 ### <a name="example-nsg-configuration"></a>範例 NSG 設定
@@ -81,7 +82,7 @@ ms.locfileid: "80884863"
 
 1. 針對對應至目標位置的 Site Recovery Ip，建立 HTTPS 埠443輸出規則：
 
-   | 位置 | Site Recovery 位址 | Site Recovery 監視 IP 位址 |
+   | Location | Site Recovery 位址 | Site Recovery 監視 IP 位址 |
    | --- | --- | --- |
    | 美國中部 | 40.69.144.231 | 52.165.34.144 |
 
@@ -101,7 +102,7 @@ ms.locfileid: "80884863"
 
 1. 針對對應至來源位置的 Site Recovery Ip，建立 HTTPS 埠443輸出規則：
 
-   | 位置 | Site Recovery 位址 | Site Recovery 監視 IP 位址 |
+   | Location | Site Recovery 位址 | Site Recovery 監視 IP 位址 |
    | --- | --- | --- |
    | 美國東部 | 13.82.88.226 | 104.45.147.24 |
 
@@ -142,7 +143,7 @@ ms.locfileid: "80884863"
 
 ### <a name="fix-the-problem"></a>修正問題
 
-若要允許[所需的 url](azure-to-azure-about-networking.md#outbound-connectivity-for-urls)或[所需的 IP 範圍](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)，請依照[網路指引檔](site-recovery-azure-to-azure-networking-guidance.md)中的步驟進行。
+若要允許[所需的 url](azure-to-azure-about-networking.md#outbound-connectivity-for-urls)或[所需的 IP 範圍](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)，請依照[網路指引檔](./azure-to-azure-about-networking.md)中的步驟進行。
 
 ## <a name="next-steps"></a>後續步驟
 

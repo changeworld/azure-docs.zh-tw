@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d6b912229b1365dd7bd8d466af18d1e81b5aa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704432"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132156"
 ---
 # <a name="deploy-a-configuration-server"></a>部署設定伺服器
 
@@ -39,7 +39,7 @@ ms.locfileid: "84704432"
 1. 使用者必須具有應用程式開發人員角色，才能建立應用程式。
     - 若要確認，請登入 Azure 入口網站。</br>
     - 移至 [ **Azure Active Directory**  >  **角色和系統管理員**]。</br>
-    - 確認應用程式開發人員角色已指派給使用者。 如果不是，請使用具有此許可權的使用者，或洽詢[系統管理員以啟用許可權](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)。
+    - 確認應用程式開發人員角色已指派給使用者。 如果不是，請使用具有此許可權的使用者，或洽詢[系統管理員以啟用許可權](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles)。
     
 2. 如果無法指派應用程式開發人員角色，請確定已將 [**使用者可註冊應用程式**] 旗標設定為 [ **true** ]，讓使用者建立身分識別。 若要啟用這些許可權：
     - 登入 Azure 入口網站。
@@ -49,7 +49,7 @@ ms.locfileid: "84704432"
       ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
-> *不支援*Active Directory 同盟服務。 使用透過[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)管理的帳戶。
+> *不支援*Active Directory 同盟服務。 使用透過[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)管理的帳戶。
 
 ## <a name="download-the-template"></a>下載範本
 

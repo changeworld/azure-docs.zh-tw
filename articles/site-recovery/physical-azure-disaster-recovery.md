@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3d4a2120f86a03508b91d4b2dea52e629dc0f79
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699901"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130173"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>設定內部部署實體伺服器至 Azure 的災害復原
 
@@ -118,7 +119,7 @@ ms.locfileid: "84699901"
 開始之前，請執行下列動作： 
 
 #### <a name="verify-time-accuracy"></a>驗證時間精確度
-在組態伺服器機器上，確定系統時鐘會與[時間伺服器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步。 應該相符。 如果快慢誤差 15 分鐘，安裝可能會失敗。
+在組態伺服器機器上，確定系統時鐘會與[時間伺服器](/windows-server/networking/windows-time-service/windows-time-service-top)同步。 應該相符。 如果快慢誤差 15 分鐘，安裝可能會失敗。
 
 #### <a name="verify-connectivity"></a>驗證連線能力
 請確定主機可以根據您的環境，存取這些 URL： 

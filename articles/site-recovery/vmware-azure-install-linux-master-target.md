@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829778"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130147"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安裝 Linux 主要目標伺服器以便進行容錯回復
 您可以在將虛擬機器容錯移轉至 Azure 之後，將虛擬機器容錯回復至內部部署網站。 若要進行容錯回復，您需要在從 Azure 到內部部署網站的過程中重新保護虛擬機器。 針對此程序，您需要內部部署的主要目標伺服器以接收流量。 
@@ -26,7 +27,7 @@ ms.locfileid: "83829778"
 ## <a name="overview"></a>概觀
 本文提供如何安裝 Linux 主要目標的指示。
 
-請在本文最後或 [Microsoft 的 Azure 復原服務問與答頁面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)中張貼留言或問題。
+請在本文最後或 [Microsoft 的 Azure 復原服務問與答頁面](/answers/topics/azure-site-recovery.html)中張貼留言或問題。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -36,6 +37,9 @@ ms.locfileid: "83829778"
 * 主要目標應位於可與處理序伺服器及組態伺服器通訊的網路上。
 * 主要目標的版本必須等於或早於處理序伺服器和組態伺服器的版本。 例如，若組態伺服器的版本是 9.4，則主要目標的版本可以是 9.4 或 9.3，但不能是 9.5。
 * 主要目標只能是 VMware 虛擬機器，不能是實體伺服器。
+
+> [!NOTE]
+> 請確定您未在任何管理元件 (例如主要目標) 上啟動 Storage vMotion。 如果在成功重新保護之後主要目標有移動，則無法中斷連結虛擬機器磁碟 (VMDK)。 在此情況下，容錯回復會失敗。
 
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>適用於建立主要目標伺服器的調整大小指導方針
 
@@ -243,7 +247,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
     ![多重路徑識別碼](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. 格式化磁碟機，然後在新的磁碟機上建立檔案系統：**mkfs.ext4 /dev/mapper/\<保留磁碟的多重路徑識別碼>** 。
+3. 將磁片磁碟機格式化，然後在新磁片磁碟機上建立檔案系統： **mkfs. ext4/dev/mapper/ \<Retention disk's multipath id> **。
     
     ![檔案系統](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -260,7 +264,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
     
     按 **Insert** 鍵來開始編輯檔案。 建立新的一行，並插入下列文字。 根據前一個命令中醒目提示的多重路徑識別碼，編輯磁碟多重路徑識別碼。
 
-    **/dev/mapper/\<保留磁碟多重路徑識別碼>/mnt/retention ext4 rw 0 0**
+    **/dev/mapper/\<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
 
     按 **Esc** 鍵，然後輸入 **:wq** (寫入和結束)，以關閉編輯器視窗。
 
@@ -273,16 +277,22 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 > [!NOTE]
 > 在安裝主要目標伺服器之前，請確認虛擬機器上的 **/etc/hosts** 檔案包含會將本機主機名稱對應到所有網路介面卡相關 IP 位址的項目。
 
-1. 在組態伺服器上從 **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** 複製複雜密碼。 然後執行下列命令，將其儲存在同個本機目錄中的 **passphrase.txt**：
+1. 執行下列命令來安裝主要目標。
+
+    ```
+    ./install -q -d /usr/local/ASR -r MT -v VmWare
+    ```
+
+2. 在組態伺服器上從 **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** 複製複雜密碼。 然後執行下列命令，將其儲存在同個本機目錄中的 **passphrase.txt**：
 
     `echo <passphrase> >passphrase.txt`
 
     範例： 
 
-       `echo itUx70I47uxDuUVY >passphrase.txt`
+    `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. 記下設定伺服器的 IP 位址。 執行下列命令來安裝主要目標伺服器，並向組態伺服器註冊伺服器。
+3. 記下設定伺服器的 IP 位址。 執行下列命令，向設定伺服器註冊伺服器。
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -313,16 +323,10 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 1. 記下組態伺服器的 IP 位址。 您在下一步需要用到它。
 
-2. 執行下列命令來安裝主要目標伺服器，並向組態伺服器註冊伺服器。
+2. 執行下列命令，向設定伺服器註冊伺服器。
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
-    ```
-    範例： 
-
-    ```
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
+    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh
     ```
 
      等候指令碼完成。 如果主要目標註冊成功，主要目標會列在入口網站的 [Site Recovery 基礎結構] 頁面上。
@@ -347,9 +351,13 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 * 主要目標在虛擬機器上不應該有任何快照集。 如果有快照集，容錯回復會失敗。
 
-* 由於一些自訂 NIC 組態，因而會在啟動期間停用網路介面，並導致主要目標代理程式無法初始化。 請確定已正確設定下列屬性。 在乙太網路卡檔案的 /etc/sysconfig/network-scripts/ifcfg-eth* 中檢查這些屬性。
-    * BOOTPROTO=dhcp
-    * ONBOOT=yes
+* 由於一些自訂 NIC 組態，因而會在啟動期間停用網路介面，並導致主要目標代理程式無法初始化。 請確定已正確設定下列屬性。 在乙太網路卡檔案的/etc/network/interfaces. 中檢查這些屬性
+    * auto eth0
+    * iface eth0 inet dhcp <br>
+
+    使用下列命令重新開機網路服務： <br>
+
+`sudo systemctl restart networking`
 
 
 ## <a name="next-steps"></a>後續步驟

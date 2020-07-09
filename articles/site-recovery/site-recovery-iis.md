@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478281"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131345"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>設定多層式 IIS 型 Web 應用程式的災害復原
 
@@ -31,7 +31,7 @@ ms.locfileid: "80478281"
 在開始之前，請確定您了解如何執行下列工作：
 
 * [將虛擬機器複寫至 Azure](vmware-azure-tutorial.md)
-* [設計復原網路](site-recovery-network-design.md)
+* [設計復原網路](./concepts-on-premises-to-azure-networking.md)
 * [執行測試容錯移轉至 Azure](site-recovery-test-failover-to-azure.md)
 * [執行容錯移轉到 Azure](site-recovery-failover.md)
 * [複寫網域控制站](site-recovery-active-directory.md)
@@ -58,7 +58,7 @@ IIS 型 Web 應用程式通常會遵循下列其中一個部署模式︰
 
 ### <a name="source-and-target"></a>來源與目標
 
-案例 | 至次要網站 | 至 Azure
+狀況 | 至次要網站 | 至 Azure
 --- | --- | ---
 Hyper-V | 是 | 是
 VMware | 是 | 是
@@ -92,7 +92,7 @@ Azure|NA|是
 
 
 ### <a name="add-a-script-to-the-recovery-plan"></a>將指令碼新增至復原方案
-為了讓 IIS Web 伺服陣列可正常運作，您可能需要在容錯移轉後或測試容錯移轉期間，於 Azure 虛擬機器上執行某些作業。 您可以自動化某些容錯移轉後的作業。 例如，將對應的指令碼新增至復原方案，即可更新 DNS 項目、變更網站繫結，或變更連接字串。 [將 VMM 指令碼新增至復原方案](site-recovery-how-to-add-vmmscript.md)說明如何使用指令碼來設定自動化工作。
+為了讓 IIS Web 伺服陣列可正常運作，您可能需要在容錯移轉後或測試容錯移轉期間，於 Azure 虛擬機器上執行某些作業。 您可以自動化某些容錯移轉後的作業。 例如，將對應的指令碼新增至復原方案，即可更新 DNS 項目、變更網站繫結，或變更連接字串。 [將 VMM 指令碼新增至復原方案](./hyper-v-vmm-recovery-script.md)說明如何使用指令碼來設定自動化工作。
 
 #### <a name="dns-update"></a>DNS 更新
 如果是已設定動態 DNS 更新的 DNS，則虛擬機器通常會在啟動之後使用新的 IP 位址更新 DNS。 如果您想要新增一個明確的步驟來以虛擬機器的新 IP 位址更新 DNS，請新增[指令碼來更新 DNS 中的 IP](https://aka.ms/asr-dns-update)，作為復原方案群組上的容錯移轉後置動作。  

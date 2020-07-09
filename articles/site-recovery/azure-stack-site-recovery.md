@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 將 Azure Stack VM 複寫至 Azure | Microsoft
 description: 了解如何使用 Azure Site Recovery 服務設定將 Azure Stack VM 進行災害復原至 Azure。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: ab35463ca8c3b29e6b4ae8abc781a7081091b214
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 873b9c5efc2a89d3cda1bfe14a7518e6786a6870
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478505"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131611"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>將 Azure Stack VM 複寫至 Azure
 
@@ -262,7 +262,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 2. 在 [複寫的項目]**** 窗格中，將會呈現 VM 資訊、健康情況狀態，以及最新可用復原點的摘要。 如需檢視詳細資訊，請按一下 [屬性]****。
 3. 在 [計算與網路]**** 中，視需要修改設定。
 
-    - 您可以修改 Azure VM 名稱、資源群組、目標大小、[可用性設定組](/azure/virtual-machines/windows/tutorial-availability-sets)及受控磁碟設定。
+    - 您可以修改 Azure VM 名稱、資源群組、目標大小、[可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md)及受控磁碟設定。
     - 您也可以檢視和修改網路設定。 這些包括容錯移轉後 Azure VM 加入的網路/子網路，以及要指派給 VM 的 IP 位址。
 1. 在 [磁碟]**** 中，檢視 VM 上作業系統與資料磁碟的相關資訊。
 

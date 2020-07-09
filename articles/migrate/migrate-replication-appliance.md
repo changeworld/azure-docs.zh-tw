@@ -3,12 +3,12 @@ title: Azure Migrate 複寫設備
 description: 瞭解以代理程式為基礎的 VMWare 遷移的 Azure Migrate 複寫設備。
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8149613effc4519638cc9b80f7894874ef3eafe3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535208"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122093"
 ---
 # <a name="replication-appliance"></a>複寫設備
 
@@ -58,8 +58,8 @@ TLS | 應啟用 TLS 1.2。
 MySQL | MySQL 應該安裝在設備上。<br/> 應該安裝 MySQL。 您可以手動安裝，或 Site Recovery 可以在應用裝置部署期間進行安裝。
 其他應用程式 | 不要在複寫設備上執行其他應用程式。
 Windows Server 角色 | 請勿啟用這些角色： <br> - Active Directory Domain Services <br>- 網際網路資訊服務 <br> - Hyper-V
-群組原則 | 請勿啟用這些群組原則： <br> - 防止存取命令提示字元。 <br> - 防止存取登錄編輯工具。 <br> - 檔案附件的信任邏輯。 <br> - 開啟指令碼執行。 <br> [深入了解](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | - 沒有預先存在的預設網站 <br> - 沒有預先存在的網站/應用程式接聽連接埠 443 <br>- 啟用[匿名驗證](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 啟用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定
+群組原則 | 請勿啟用這些群組原則： <br> - 防止存取命令提示字元。 <br> - 防止存取登錄編輯工具。 <br> - 檔案附件的信任邏輯。 <br> - 開啟指令碼執行。 <br> [深入了解](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))
+IIS | - 沒有預先存在的預設網站 <br> - 沒有預先存在的網站/應用程式接聽連接埠 443 <br>- 啟用[匿名驗證](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br> - 啟用 [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) 設定
 **網路設定** |
 IP 位址類型 | 靜態
 連接埠 | 443 (控制通道協調流程)<br>9443 (資料傳輸)

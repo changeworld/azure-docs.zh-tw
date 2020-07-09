@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a3b07dadba17f72f6f4c5765787c7122eebaa89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7947b6c04ade1fd6a5d9032f05cb6ec56e7a1f5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361399"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132086"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虛擬機器規劃和實作指南
 
@@ -544,7 +544,7 @@ Azure VM 會在部署 VM 之後提供非永續性磁碟。 如果 VM 重新開�
 
 在 Azure 中，磁片/VHD 名稱會遵循下列命名連線，此連線需要為 Azure 中的 VHD 提供唯一的名稱：
 
-    http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
+`http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>`
 
 上述字串必須唯一識別儲存在 Azure 儲存體上的磁片/VHD。
 
@@ -999,7 +999,7 @@ SAP 系統或甚至是支援 SAP 應用程式層的專用 DBMS 伺服器很可�
 
 資料磁碟可儲存為 Azure 儲存體帳戶中的 VHD 檔案，而且可以直接連接到虛擬機器或用作映像。 在本例中，VHD 會複製到另一個位置，再連接到虛擬機器。 Azure 中之 VHD 檔案的完整名稱必須在 Azure 中是唯一的。 如前所述，此名稱是由三個部分所組成，如下所示︰
 
-    http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
+`http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>`
 
 資料磁碟也可以是受控磁碟。 在本例中，先使用受控磁碟建立新的受控磁碟，再連接到虛擬機器。 受控磁碟的名稱必須是資源群組內唯一的。
 
@@ -1926,7 +1926,7 @@ Azure 上 Linux 的 SAP HA 架構基本上與上述 Windows 相同。 如需支�
 
 SAP 提供可在啟動 VM 內的 OS 之後立即啟動 SAP 執行個體的功能。 確切步驟記載於 SAP 知識庫文章 [1909114]。 不過，不再建議 SAP 使用此設定，因為無法控制執行個體重新啟動的順序，並假設多個 VM 已受到影響，或每個 VM 已執行多個執行個體。 假設這是一個 VM 中有一個 SAP 應用程式伺服器執行個體的典型 Azure 案例，而且這是最終會重新啟動單一 VM 的案例，因此自動啟動不是很重要，而且可以藉由新增此參數來啟用：
 
-    Autostart = 1
+`Autostart = 1`
 
 執行 SAP ABAP 及 (或) Java 執行個體的啟動設定檔。
 

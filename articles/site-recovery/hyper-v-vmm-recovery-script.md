@@ -7,17 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: fb690dfb90c0f7b8216368cb6b26a9af7d895d18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826276"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130124"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>將 VMM 指令碼新增至復原方案
 
 本文說明如何建立 System Center Virtual Machine Manager (VMM) 指令碼，並將其新增至 [Azure Site Recovery](site-recovery-overview.md) 中的復原方案。
 
-請在本文最後或 [Microsoft 的 Azure 復原服務問與答頁面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)中張貼留言或問題。
+請在本文最後或 [Microsoft 的 Azure 復原服務問與答頁面](/answers/topics/azure-site-recovery.html)中張貼留言或問題。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -37,7 +38,7 @@ ms.locfileid: "83826276"
 
     `Import-Module -Name virtualmachinemanager`
 
-    如需詳細資訊，請參閱[開始使用 Windows PowerShell 和 VMM](https://technet.microsoft.com/library/hh875013.aspx)。
+    如需詳細資訊，請參閱[開始使用 Windows PowerShell 和 VMM](/previous-versions/system-center/system-center-2012-R2/hh875013(v=sc.12))。
 * 確認您的 VMM 部署中至少有一部文件庫伺服器。 根據預設，VMM 伺服器的程式庫共用路徑位於本機的 VMM 伺服器上。 資料夾名稱為 MSCVMMLibrary。
 
   如果您的程式庫共用路徑位於遠端 (或如果是位於本機上，但未與 MSCVMMLibrary 共用)，請依以下所示設為共用，使用 \\libserver2.contoso.com\share\ 為例：
@@ -50,7 +51,7 @@ ms.locfileid: "83826276"
 
      a. 以系統管理員身分開啟 **64 位元 Windows PowerShell** 主控台。
      
-     b. 輸入 **Set-executionpolicy bypass**。 如需詳細資訊，請參閱[使用 Set-ExecutionPolicy Cmdlet](https://technet.microsoft.com/library/ee176961.aspx)。
+     b. 輸入 **Set-executionpolicy bypass**。 如需詳細資訊，請參閱[使用 Set-ExecutionPolicy Cmdlet](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10))。
 
      > [!IMPORTANT]
      > 只能在 64 位元 PowerShell 主控台中設定 **Set-executionpolicy bypass**。 如果您將它設定為 32 位元 PowerShell 主控台，指令碼就不會執行。
@@ -59,9 +60,9 @@ ms.locfileid: "83826276"
 
 如果您有 VMM 來源站台，可在 VMM 伺服器上建立指令碼。 然後，在復原方案中包含指令碼。
 
-1. 在程式庫共用中，建立新的資料夾。 例如，\<VMM 伺服器名稱>\MSSCVMMLibrary\RPScripts。 將資料夾放在來源和目標 VMM 伺服器上。
+1. 在程式庫共用中，建立新的資料夾。 例如， \<VMM server name> \MSSCVMMLibrary\RPScripts。 將資料夾放在來源和目標 VMM 伺服器上。
 1. 建立指令碼。 例如，命名 RPScript 指令碼。 請確認指令碼可以正常運作。
-1. 將指令碼放在來源和目標 VMM 伺服器的 \<VMM 伺服器名稱>\MSSCVMMLibrary 資料夾中。
+1. 將腳本放在 \<VMM server name> 來源和目標 VMM 伺服器上的 \MSSCVMMLibrary 資料夾中。
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>將指令碼新增至復原方案
 

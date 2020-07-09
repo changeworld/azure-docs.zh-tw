@@ -3,11 +3,12 @@ title: 使用 Azure Site Recovery 進行 Hyper-v 嚴重損壞修復的常見問�
 description: 本文摘要說明使用 Azure Site Recovery 網站來設定「內部部署 Hyper-V VM 至Azure 的災害復原」時的常見問題。
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b175e7157364f0471192dd713db8767e074dd483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195249"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132669"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常見問題 - 從 Hyper-V 至 Azure 的災害復原
 
@@ -31,17 +32,17 @@ ms.locfileid: "84195249"
 
 對於 Hyper-V 主機伺服器，您的需求視部署案例而定。 請查看下列主題中的 Hyper-V 先決條件：
 
-* [將 Hyper-V VM (不使用 VMM) 複寫至 Azure](site-recovery-hyper-v-site-to-azure.md)
-* [將 Hyper-V VM (使用 VMM) 複寫至 Azure](site-recovery-vmm-to-azure.md)
-* [將 Hyper-V VM 複寫至次要資料中心](site-recovery-vmm-to-vmm.md)
-* 如果您要複寫至次要資料中心，請參閱 [支援的 Hyper-V VM 客體作業系統](https://technet.microsoft.com/library/mt126277.aspx)。
-* 如果是覆寫至 Azure，則 Site Recovery 支援 [Azure 支援的](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)所有客體作業系統。
+* [將 Hyper-V VM (不使用 VMM) 複寫至 Azure](./hyper-v-azure-tutorial.md)
+* [將 Hyper-V VM (使用 VMM) 複寫至 Azure](./hyper-v-vmm-disaster-recovery.md)
+* [將 Hyper-V VM 複寫至次要資料中心](./hyper-v-vmm-disaster-recovery.md)
+* 如果您要複寫至次要資料中心，請參閱 [支援的 Hyper-V VM 客體作業系統](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/mt126277(v=ws.11))。
+* 如果是覆寫至 Azure，則 Site Recovery 支援 [Azure 支援的](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10))所有客體作業系統。
 
 ### <a name="can-i-protect-vms-when-hyper-v-is-running-on-a-client-operating-system"></a>當 Hyper-V 在用戶端作業系統上執行時，我可以保護 VM 嗎？
-不能，VM 所在的 Hyper-V 主機伺服器必須在支援的 Windows 伺服器機器上執行。 如果您需要保護用戶端電腦，您可以用實體機器的形式將它複寫至 [Azure](site-recovery-vmware-to-azure.md) 或[次要資料中心](site-recovery-vmware-to-vmware.md)。
+不能，VM 所在的 Hyper-V 主機伺服器必須在支援的 Windows 伺服器機器上執行。 如果您需要保護用戶端電腦，您可以用實體機器的形式將它複寫至 [Azure](./vmware-azure-tutorial.md) 或[次要資料中心](./vmware-physical-secondary-disaster-recovery.md)。
 
 ### <a name="do-hyper-v-hosts-need-to-be-in-vmm-clouds"></a>Hyper-V 主機是否必須在 VMM 雲端中？
-如果您想要複寫至次要資料中心，Hyper-V VM 就必須在位於 VMM 雲端中的 Hyper-V 主機伺服器上。 若您想要複寫至 Azure，則不論是否使用 VMM 雲端，皆可複寫 VM。 [閱讀更多](tutorial-hyper-v-to-azure.md) Hyper-V 複寫至 Azure 的相關資訊。
+如果您想要複寫至次要資料中心，Hyper-V VM 就必須在位於 VMM 雲端中的 Hyper-V 主機伺服器上。 若您想要複寫至 Azure，則不論是否使用 VMM 雲端，皆可複寫 VM。 [閱讀更多](./hyper-v-azure-tutorial.md) Hyper-V 複寫至 Azure 的相關資訊。
 
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>我可以將 Hyper-V 第 2 代虛擬機器複寫至 Azure 嗎？
@@ -70,7 +71,7 @@ Site Recovery 已通過 ISO 27001:2013、27018、HIPAA、DPA 認證，並且正�
 是。 當您在某個區域中建立保存庫時，我們會確保 Site Recovery 所使用的所有中繼資料都會保留在該區域的地理界限內。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery 會將複寫加密嗎？
-是，傳輸中加密和 [Azure 中的加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)均受支援。
+是，傳輸中加密和 [Azure 中的加密](../storage/common/storage-service-encryption.md)均受支援。
 
 
 ## <a name="deployment"></a>部署

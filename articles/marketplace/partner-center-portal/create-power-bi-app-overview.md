@@ -1,18 +1,18 @@
 ---
 title: Power BI 應用程式建立總覽-Microsoft AppSource
 description: 本文說明將 Power BI 應用程式發佈至 Microsoft AppSource 的高階步驟。 同時也提供您 Power BI 應用程式必須符合才能發佈到商業 marketplace 的技術和商務需求。
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/02/2020
-ms.openlocfilehash: 82e131b0e6209089b658c622b415e997b40e9e4b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9bf02fe6552b47070d4f79c4c497830ac2bfad84
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964646"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121770"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI 應用程式建立總覽
 
@@ -27,7 +27,7 @@ ms.locfileid: "85964646"
 - 從這些市集獲得高品質潛在客戶。
 - 由 Microsoft 現場和電話銷售團隊推廣您的服務。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 :::image type="content" source="media/power-bi-app-publishing-steps.png" alt-text="發佈 Power BI 應用程式的步驟總覽" border="false":::
 

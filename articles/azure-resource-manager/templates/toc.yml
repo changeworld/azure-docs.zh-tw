@@ -222,12 +222,6 @@
         - name: 在部署管理員中使用健康情況檢查
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-- name: 範例
-  items:
-    - name: Azure 快速入門範本
-      href: 'https://azure.microsoft.com/resources/templates/'
-    - name: 範本範例
-      href: template-samples.md
 - name: 概念
   items:
     - name: 範本最佳做法
@@ -299,16 +293,6 @@
             - name: 輸出
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: 使用撰寫工具
-      items:
-        - name: VS 程式碼
-          href: use-vs-code-to-create-template.md
-        - name: Visual Studio
-          href: create-visual-studio-deployment-project.md
-        - name: 將 VS 部署指令碼更新為 Az 模組
-          href: update-visual-studio-deployment-script.md
-        - name: IntelliJ IDEA
-          href: create-templates-use-intellij.md
     - name: 探索範本內容
       items:
         - name: 匯出範本
@@ -344,6 +328,8 @@
           href: rollback-on-error.md
         - name: 使用 SAS 權杖保護範本
           href: secure-template-with-sas-token.md
+        - name: 檢視部署歷程記錄
+          href: deployment-history.md
     - name: 限域部署
       items:
         - name: 訂用帳戶
@@ -367,8 +353,14 @@
           href: add-template-to-azure-pipelines.md
         - name: 部署 - GitHub 動作
           href: deploy-github-actions.md
-    - name: 檢視部署歷程記錄
-      href: deployment-history.md
+    - name: 使用撰寫工具
+      items:
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: 將 VS 部署指令碼更新為 Az 模組
+          href: update-visual-studio-deployment-script.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: 針對部署進行疑難排解
       items:
         - name: 針對部署錯誤進行疑難排解
@@ -441,6 +433,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: 資源
   items:
+    - name: Azure 快速入門範本
+      href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: 定價計算機

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478975"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132485"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>管理實體伺服器災害復原的組態伺服器
 
@@ -35,8 +35,8 @@ ms.locfileid: "80478975"
 | 作業系統地區設定 | 英文 (美國)|
 | VMware vSphere PowerCLI 版本 | 不需要|
 | Windows Server 角色 | 請勿啟用這些角色： <br> - Active Directory Domain Services <br>- 網際網路資訊服務 <br> - Hyper-V |
-| 群組原則| 請勿啟用這些群組原則： <br> - 防止存取命令提示字元 <br> - 防止存取登錄編輯工具 <br> - 檔案附件的信任邏輯 <br> - 開啟指令碼執行 <br> [深入了解](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-| IIS | - 沒有預先存在的預設網站 <br> -啟用[匿名驗證](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 啟用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定  <br> - 沒有預先存在的網站/應用程式接聽連接埠 443<br>|
+| 群組原則| 請勿啟用這些群組原則： <br> - 防止存取命令提示字元 <br> - 防止存取登錄編輯工具 <br> - 檔案附件的信任邏輯 <br> - 開啟指令碼執行 <br> [深入了解](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+| IIS | - 沒有預先存在的預設網站 <br> -啟用[匿名驗證](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br> - 啟用 [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) 設定  <br> - 沒有預先存在的網站/應用程式接聽連接埠 443<br>|
 | NIC 類型 | VMXNET3 (部署為 VMware VM 時) |
 | IP 位址類型 | 靜態 |
 | 網際網路存取 | 伺服器需要存取這些 URL： <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (相應放大處理序伺服器不需要) <br> - time.nist.gov <br> - time.windows.com |
@@ -158,7 +158,7 @@ ProxyPassword="Password"
    ![註冊組態伺服器](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. 提供新的 Proxy 詳細資料，然後按一下 [註冊]**** 按鈕。
 6. 開啟系統管理 PowerShell 命令視窗。
-7. 執行以下命令：
+7. 執行下列命令：
 
    ```powershell
    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -267,7 +267,7 @@ ProxyPassword="Password"
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>將組態伺服器刪除或取消註冊 (PowerShell)
 
-1. [安裝](https://docs.microsoft.com/powershell/azure/install-Az-ps)Azure PowerShell 模組
+1. [安裝](/powershell/azure/install-Az-ps)Azure PowerShell 模組
 2. 使用命令登入您的 Azure 帳戶
     
     `Connect-AzAccount`
@@ -315,5 +315,4 @@ ProxyPassword="Password"
 
 ## <a name="next-steps"></a>後續步驟
 
-檢閱教學課程，了解如何設定[實體伺服器](tutorial-physical-to-azure.md)至 Azure 的災害復原。
-
+檢閱教學課程，了解如何設定[實體伺服器](./physical-azure-disaster-recovery.md)至 Azure 的災害復原。

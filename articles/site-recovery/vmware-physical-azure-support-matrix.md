@@ -3,12 +3,12 @@ title: Azure Site Recovery 中 VMware/實體嚴重損壞修復的支援矩陣
 description: 摘要說明使用 Azure Site Recovery 對 VMware Vm 和實體伺服器至 Azure 的嚴重損壞修復支援。
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 8e1fd7e839c50458ddcfc9f83d152d7b45cd6672
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ff99fd1dd1710cd96f6257096b97ae1912a61dc6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956248"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131882"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -50,8 +50,8 @@ RAM | 16 GB
 作業系統地區設定 | 英文 (en-us)
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | 不需要設定伺服器[9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)版或更新版本。
 Windows Server 角色 | 不要啟用 Active Directory Domain Services;Internet Information Services （IIS）或 Hyper-v。
-群組原則| - 防止存取命令提示字元。 <br/> - 防止存取登錄編輯工具。 <br/> - 檔案附件的信任邏輯。 <br/> - 開啟指令碼執行。 <br/> - [深入了解](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | 請確定您已執行下列動作：<br/><br/> -沒有預先存在的預設網站 <br/> - 啟用[匿名驗證](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - 啟用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定  <br/> - 沒有預先存在的網站/應用程式接聽連接埠 443<br/>
+群組原則| - 防止存取命令提示字元。 <br/> - 防止存取登錄編輯工具。 <br/> - 檔案附件的信任邏輯。 <br/> - 開啟指令碼執行。 <br/> - [深入了解](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+IIS | 請確定您已執行下列動作：<br/><br/> -沒有預先存在的預設網站 <br/> - 啟用[匿名驗證](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br/> - 啟用 [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) 設定  <br/> - 沒有預先存在的網站/應用程式接聽連接埠 443<br/>
 NIC 類型 | VMXNET3 (部署為 VMware VM 時)
 IP 位址類型 | 靜態
 連接埠 | 443用於控制通道協調流程<br/>9443用於資料傳輸
@@ -67,7 +67,7 @@ Site Recovery 支援複寫任何執行於所支援機器上的工作負載。
 --- | ---
 機器設定 | 複寫到 Azure 的電腦必須符合 [Azure 需求](#azure-vm-requirements)。
 機器工作負載 | Site Recovery 支援複寫任何執行於所支援機器上的工作負載。 [深入了解](https://aka.ms/asr_workload)。
-電腦名稱 | 確定電腦的顯示名稱不屬於[Azure 保留的資源名稱](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name)<br/><br/> 邏輯磁片區名稱不區分大小寫。 請確定裝置上沒有任何兩個磁片區具有相同的名稱。 例如：名稱為 "voLUME1"、"voLUME1" 的磁片區無法透過 Azure Site Recovery 保護。
+電腦名稱 | 確定電腦的顯示名稱不屬於[Azure 保留的資源名稱](../azure-resource-manager/templates/error-reserved-resource-name.md)<br/><br/> 邏輯磁片區名稱不區分大小寫。 請確定裝置上沒有任何兩個磁片區具有相同的名稱。 例如：名稱為 "voLUME1"、"voLUME1" 的磁片區無法透過 Azure Site Recovery 保護。
 
 ### <a name="for-windows"></a>若為 Windows
 
@@ -185,15 +185,15 @@ BTRFS | 從[更新彙總套件 34](https://support.microsoft.com/help/4490016) �
 
 **元件** | **支援**
 --- | ---
-Azure ExpressRoute | Yes
-ILB | Yes
-ELB | Yes
-Azure 流量管理員 | Yes
-多個 NIC | Yes
-保留的 IP 位址 | Yes
-IPv4 | Yes
-保留來源 IP 位址 | Yes
-Azure 虛擬網路服務端點<br/> | Yes
+Azure ExpressRoute | 是
+ILB | 是
+ELB | 是
+Azure 流量管理員 | 是
+多個 NIC | 是
+保留的 IP 位址 | 是
+IPv4 | 是
+保留來源 IP 位址 | 是
+Azure 虛擬網路服務端點<br/> | 是
 加速網路 | 否
 
 ## <a name="storage"></a>儲存體
@@ -202,29 +202,29 @@ Azure 虛擬網路服務端點<br/> | Yes
 動態磁碟 | OS 磁片必須是基本磁碟。 <br/><br/>資料磁碟可以是動態磁碟
 Docker 磁碟設定 | No
 主機 NFS | VMware 為是<br/><br/> 實體伺服器為否
-主機 SAN (iSCSI/FC) | Yes
+主機 SAN (iSCSI/FC) | 是
 主機 vSAN | VMware 為是<br/><br/> 實體伺服器為 N/A
 主機多重路徑 (MPIO) | 是，通過 Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON 測試
 主機虛擬磁碟區 (VVol) | VMware 為是<br/><br/> 實體伺服器為 N/A
-客體/伺服器 VMDK | Yes
+客體/伺服器 VMDK | 是
 客體/伺服器共用叢集磁碟 | No
 客體/伺服器加密磁碟 | No
 客體/伺服器 NFS | No
 來賓/伺服器 iSCSI | 針對遷移-是<br/>針對嚴重損壞修復-否，iSCSI 會容錯回復為 VM 的連接磁片
 客體/伺服器 SMB 3.0 | No
-客體/伺服器 RDM | Yes<br/><br/> 實體伺服器為 N/A
+客體/伺服器 RDM | 是<br/><br/> 實體伺服器為 N/A
 客體/伺服器磁碟 > 1 TB | 是，磁片必須大於 1024 MB<br/><br/>複寫至受控磁片時最多 8192 GB （9.26 版）<br></br> 複寫至儲存體帳戶時最多 4095 GB
 客體/伺服器磁碟使用 4K 邏輯與 4k 實體磁區大小 | No
 具有4K 邏輯與512位元組實體磁區大小的來賓/伺服器磁片 | No
-客體/伺服器磁碟區使用等量磁碟 > 4 TB | Yes
+客體/伺服器磁碟區使用等量磁碟 > 4 TB | 是
 邏輯磁碟區管理 (LVM)| 提供粗布建-是 <br></br> 精簡布建-否
 客體/伺服器 - 儲存體空間 | No
 客體/伺服器 熱新增/移除磁碟 | No
-客體/伺服器 - 排除磁碟 | Yes
+客體/伺服器 - 排除磁碟 | 是
 客體/伺服器多重路徑 (MPIO) | No
 來賓/伺服器 GPT 磁碟分割 | [更新彙總套件 37](https://support.microsoft.com/help/4508614/) （行動服務版本9.25）支援五個磁碟分割。 先前支援四個。
 ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
-來賓/伺服器 EFI/UEFI 開機 | -支援 Windows Server 2012 或更新版本、SLES 12 SP4 和 RHEL 8.0 （搭配行動代理程式版本9.30）<br/> -不支援安全 UEFI 開機類型。 [深入了解。](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
+來賓/伺服器 EFI/UEFI 開機 | -支援 Windows Server 2012 或更新版本、SLES 12 SP4 和 RHEL 8.0 （搭配行動代理程式版本9.30）<br/> -不支援安全 UEFI 開機類型。 [深入了解。](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>複寫通道
 
@@ -238,15 +238,15 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 
 **元件** | **支援**
 --- | ---
-本地備援儲存體 | Yes
-異地備援儲存體 | Yes
-讀取權限異地備援儲存體 | Yes
+本地備援儲存體 | 是
+異地備援儲存體 | 是
+讀取權限異地備援儲存體 | 是
 非經常性儲存體 | No
 經常性存取儲存體| No
 區塊 Blob | No
-待用加密（SSE）| Yes
+待用加密（SSE）| 是
 待用加密（CMK）| 是（透過 PowerShell Az 3.3.0 module 開始）
-進階儲存體 | Yes
+進階儲存體 | 是
 匯入/匯出服務 | No
 適用于 Vnet 的 Azure 儲存體防火牆 | 是。<br/> 設定于目標儲存體/快取儲存體帳戶（用來儲存複寫資料）。
 一般用途 v2 儲存體帳戶（經常性存取和非經常性存取層） | 是（相較于 V1，V2 的交易成本會大幅提高）
@@ -255,10 +255,10 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 
 **功能** | **支援**
 --- | ---
-可用性設定組 | Yes
+可用性設定組 | 是
 可用性區域 | No
-中樞 | Yes
-受控磁碟 | Yes
+中樞 | 是
+受控磁碟 | 是
 
 ## <a name="azure-vm-requirements"></a>Azure VM 需求
 
@@ -280,7 +280,7 @@ VM 名稱 | 從 1 到 63 個字元。<br/><br/> 只能使用字母、數字和�
 
 ## <a name="resource-group-limits"></a>資源群組限制
 
-若要瞭解可在單一資源群組下受到保護的虛擬機器數目，請參閱訂用帳戶[限制和配額](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)一文。
+若要瞭解可在單一資源群組下受到保護的虛擬機器數目，請參閱訂用帳戶[限制和配額](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)一文。
 
 ## <a name="churn-limits"></a>流失限制
 

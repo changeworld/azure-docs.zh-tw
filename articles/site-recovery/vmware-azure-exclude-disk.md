@@ -6,11 +6,12 @@ manager: rochakm
 ms.date: 12/10/2019
 ms.author: mayg
 ms.topic: conceptual
-ms.openlocfilehash: cd54da5ee01206e576157435135065189bfb8035
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4842172ff181b5cdbe7f6fecf69da8755ae43fa
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75495363"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129878"
 ---
 # <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>將磁片從 VMware VM 複寫排除到 Azure
 
@@ -41,7 +42,7 @@ ms.locfileid: "75495363"
 
 ## <a name="exclude-disks-from-replication"></a>從複寫排除磁碟
 
-1. 當您[啟用](site-recovery-hyper-v-site-to-azure.md)VMware VM 的複寫時，在選取您想要複寫的 vm 之後，請在 [**啟用**複寫內容] [  >  **Properties**  >  **設定屬性**] 頁面中，檢查 [**要**複寫的磁片] 資料行。 預設會選取所有磁片進行複寫。
+1. 當您[啟用](./hyper-v-azure-tutorial.md)VMware VM 的複寫時，在選取您想要複寫的 vm 之後，請在 [**啟用**複寫內容] [  >  **Properties**  >  **設定屬性**] 頁面中，檢查 [**要**複寫的磁片] 資料行。 預設會選取所有磁片進行複寫。
 2. 如果您不想要複寫特定的磁片，請在 [要複寫的**磁片**] 中清除您要排除之任何磁片的選項。 
 
     ![從複寫排除磁碟](./media/vmware-azure-exclude-disk/enable-replication-exclude-disk1.png)

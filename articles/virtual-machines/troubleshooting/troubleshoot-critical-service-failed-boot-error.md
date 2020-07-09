@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921448"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129856"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>將 Azure VM 重新開機時，Windows 會在藍色畫面上顯示 "CRITICAL SERVICE FAILED"
 本文說明當您在 Microsoft Azure 中將 Windows 虛擬機器 (VM) 開機時可能發生的 "CRITICAL SERVICE FAILED" 錯誤。 文中會提供疑難排解步驟，以協助解決問題。 
@@ -83,11 +84,15 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](./boot-diagnostics.m
 
 1. 在復原 VM 上，從提升權限的命令提示字元執行下列命令。 此命令會設定受影響的 OS 磁碟在下次開機時啟動至安全模式：
 
-        bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```
 
     例如，若您連結的 OS 磁碟為磁碟機 F，請執行下列命令：
 
-        bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```
 
 2. 卸[離 os 磁片，然後將 os 磁片重新連結至受影響的 VM](troubleshoot-recovery-disks-portal-windows.md)。 VM 會開機進入安全模式。 若錯誤持續發生，請前往選用步驟。
 3. 開啟 [執行]**** 方塊，並執行 [驗證器]**** 以啟動磁碟機驗證器管理工具。
@@ -97,7 +102,10 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](./boot-diagnostics.m
 
 7. 移除安全開機設定：
 
-        bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```console
+    bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```
+
 8.  重新啟動 VM。 
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>選用：分析傾印損毀模式中的傾印記錄

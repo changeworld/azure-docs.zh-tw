@@ -57,7 +57,11 @@
             - name: 動態資料遮罩
               href: database/dynamic-data-masking-overview.md
             - name: SQL 弱點評定
-              href: database/sql-vulnerability-assessment.md
+              items:
+                - name: SQL 弱點評定
+                  href: database/sql-vulnerability-assessment.md
+                - name: 弱點評估規則
+                  href: database/sql-database-vulnerability-assessment-rules.md
             - name: 登入、使用者帳戶、角色和權限
               href: database/logins-create-manage.md
             - name: Azure AD 驗證
@@ -606,6 +610,9 @@
           href: database/powershell-script-content-guide.md?tabs=single-database
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=single-database
+        - name: Azure 原則內建
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: 程式碼範例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL 受控執行個體 (SQL MI)
@@ -833,6 +840,9 @@
           href: database/powershell-script-content-guide.md?tabs=managed-instance
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=managed-instance
+        - name: Azure 原則內建
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: 程式碼範例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Azure VM 上的 SQL Server
@@ -974,8 +984,6 @@
                       items:
                         - name: 建立 FCI 的 DNN
                           href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
-                        - name: 與 DNN 的功能互通性
-                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                         - name: FCI DNN 與 SQL Server 功能
                           href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                 - name: 設定連線能力

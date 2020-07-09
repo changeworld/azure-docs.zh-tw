@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835796"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131975"
 ---
 # <a name="troubleshoot-the-process-server"></a>針對處理序伺服器進行疑難排解
 
@@ -95,7 +96,7 @@ ms.locfileid: "83835796"
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>步驟 4：確認來源機器上的時間同步
 
-請確定複寫電腦的系統日期/時間已同步。[深入了解](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+請確定複寫電腦的系統日期/時間已同步。[深入了解](/windows-server/networking/windows-time-service/accurate-time)
 
 ## <a name="step-5-check-anti-virus-software-on-source-machine"></a>步驟 5：檢查來源電腦上的防毒軟體
 
@@ -104,7 +105,7 @@ ms.locfileid: "83835796"
 ## <a name="step-6-check-connectivity-from-source-machine"></a>步驟 6：檢查來源電腦的連線能力
 
 
-1. 如有需要，請在來源電腦上安裝 [Telnet 用戶端](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx)。 請勿使用 Ping。
+1. 如有需要，請在來源電腦上安裝 [Telnet 用戶端](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771275(v=ws.10))。 請勿使用 Ping。
 2. 從來源電腦，使用 Telnet 來 ping HTTPS 連接埠上的處理序伺服器。 根據預設，9443 是用於複寫流量的 HTTPS 連接埠。
 
     `telnet <process server IP address> <port>`
@@ -245,7 +246,7 @@ ms.locfileid: "83835796"
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您需要更多協助，請將您的問題貼到 [Azure Site Recovery 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)。 
+如果您需要更多協助，請將您的問題貼到 [Azure Site Recovery 的 Microsoft 問與答頁面](/answers/topics/azure-site-recovery.html)。 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

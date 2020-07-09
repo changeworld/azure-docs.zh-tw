@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: da2cc3dade843b1ea207eb4ec5bf33a41a289d7e
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: b48dfba6fa5dc270a4d711864d15e9128f4beb98
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851478"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132412"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>內部部署 Hyper-V VM 至 Azure 的災害復原支援矩陣
 
@@ -48,7 +48,7 @@ Hyper-V (執行時含 Virtual Machine Manager) | Virtual Machine Manager 2019、
  **元件** | **詳細資料**
 --- | ---
 VM 設定 | 複寫到 Azure 的 VM 必須符合 [Azure 需求](#azure-vm-requirements)。
-客體作業系統 | [Azure 支援的](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)任何客體作業系統。<br/><br/> 不支援 Windows Server 2016 Nano Server。
+客體作業系統 | [Azure 支援的](../cloud-services/cloud-services-guestos-update-matrix.md#family-5-releases)任何客體作業系統。<br/><br/> 不支援 Windows Server 2016 Nano Server。
 
 
 ## <a name="vmdisk-management"></a>VM/磁碟管理
@@ -62,16 +62,16 @@ VM 設定 | 複寫到 Azure 的 VM 必須符合 [Azure 需求](#azure-vm-require
 
 **元件** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
-主機網路：NIC 小組 | 是 | Yes
-主機網路：VLAN | 是 | Yes
-主機網路：IPv4 | 是 | Yes
+主機網路：NIC 小組 | 是 | 是
+主機網路：VLAN | 是 | 是
+主機網路：IPv4 | 是 | 是
 主機網路：IPv6 | 否 | 否
 客體 VM 網路：NIC 小組 | 否 | 否
-客體 VM 網路：IPv4 | 是 | Yes
+客體 VM 網路：IPv4 | 是 | 是
 客體 VM 網路：IPv6 | 否 | 是
-客體 VM 網路：靜態 IP (Windows) | 是 | Yes
+客體 VM 網路：靜態 IP (Windows) | 是 | 是
 客體 VM 網路：靜態 IP (Linux) | 否 | 否
-客體 VM 網路：多重 NIC | 是 | Yes
+客體 VM 網路：多重 NIC | 是 | 是
 Https Proxy | 否 | 否
 
 
@@ -80,15 +80,15 @@ Https Proxy | 否 | 否
 
 **元件** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
-Azure ExpressRoute | 是 | Yes
-ILB | 是 | Yes
-ELB | 是 | Yes
-Azure 流量管理員 | 是 | Yes
-多個 NIC | 是 | Yes
-保留的 IP | 是 | Yes
-IPv4 | 是 | Yes
-保留來源 IP 位址 | 是 | Yes
-Azure 虛擬網路服務端點<br/> (不含 Azure 儲存體防火牆) | 是 | Yes
+Azure ExpressRoute | 是 | 是
+ILB | 是 | 是
+ELB | 是 | 是
+Azure 流量管理員 | 是 | 是
+多個 NIC | 是 | 是
+保留的 IP | 是 | 是
+IPv4 | 是 | 是
+保留來源 IP 位址 | 是 | 是
+Azure 虛擬網路服務端點<br/> (不含 Azure 儲存體防火牆) | 是 | 是
 加速網路 | 否 | 否
 
 
@@ -97,18 +97,18 @@ Azure 虛擬網路服務端點<br/> (不含 Azure 儲存體防火牆) | 是 | Ye
 **Storage** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
 --- | --- | --- 
 NFS | NA | NA
-SMB 3.0 | 是 | Yes
-SAN (ISCSI) | 是 | Yes
-多重路徑 (MPIO)。 測試工具：<br></br> Microsoft DSM，EMC PowerPath 5.7 SP4，EMC PowerPath DSM for CLARiiON | 是 | Yes
+SMB 3.0 | 是 | 是
+SAN (ISCSI) | 是 | 是
+多重路徑 (MPIO)。 測試工具：<br></br> Microsoft DSM，EMC PowerPath 5.7 SP4，EMC PowerPath DSM for CLARiiON | 是 | 是
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM 客體儲存體
 
 **Storage** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
 VMDK | NA | NA
-VHD/VHDX | 是 | Yes
-第 2 代 VM | 是 | Yes
-EFI/UEFI<br></br>Azure 中已遷移的 VM 會自動轉換為 BIOS 開機 VM。 VM 應僅執行 Windows Server 2012 和更新版本。 OS 磁片最多隻能有五個磁碟分割或更少，且 OS 磁片的大小應小於 300 GB。| 是 | Yes
+VHD/VHDX | 是 | 是
+第 2 代 VM | 是 | 是
+EFI/UEFI<br></br>Azure 中已遷移的 VM 會自動轉換為 BIOS 開機 VM。 VM 應僅執行 Windows Server 2012 和更新版本。 OS 磁片最多隻能有五個磁碟分割或更少，且 OS 磁片的大小應小於 300 GB。| 是 | 是
 共用叢集磁碟 | 否 | 否
 已加密磁碟 | 否 | 否
 NFS | NA | NA
@@ -116,13 +116,13 @@ SMB 3.0 | 否 | 否
 RDM | NA | NA
 磁碟 > 1 TB | 是，最多 4,095 GB | 是，最多 4,095 GB
 磁碟：4k 邏輯與實體磁區 | 不支援：第 1 代/第 2 代 | 不支援：第 1 代/第 2 代
-磁片：4K 邏輯與 512-位元組實體磁區 | 是 |  Yes
-邏輯磁碟區管理 (LVM)。 資料磁碟上才支援 LVM。 Azure 只提供單一 OS 磁碟。 | 是 | Yes
-使用等量磁碟的磁碟區 > 1 TB | 是 | Yes
+磁片：4K 邏輯與 512-位元組實體磁區 | 是 |  是
+邏輯磁碟區管理 (LVM)。 資料磁碟上才支援 LVM。 Azure 只提供單一 OS 磁碟。 | 是 | 是
+使用等量磁碟的磁碟區 > 1 TB | 是 | 是
 儲存空間 | 否 | 否
 熱新增/移除磁碟 | 否 | 否
-排除磁碟 | 是 | Yes
-多重路徑 (MPIO) | 是 | Yes
+排除磁碟 | 是 | 是
+多重路徑 (MPIO) | 是 | 是
 
 ## <a name="azure-storage"></a>Azure 儲存體
 
@@ -157,7 +157,7 @@ RDM | NA | NA
 
 **元件** | **需求** | **詳細資料**
 --- | --- | ---
-客體作業系統 | Site Recovery 支援[Azure 支援](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)的所有作業系統。  | 若不支援，則必要條件檢查會失敗。
+客體作業系統 | Site Recovery 支援[Azure 支援](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10))的所有作業系統。  | 若不支援，則必要條件檢查會失敗。
 客體作業系統架構 | 32位（Windows Server 2008）/64-bit | 若不支援，則必要條件檢查會失敗。
 作業系統磁碟大小 | 第 1 代 VM 高達 2,048 G。<br/><br/> 第 2 代 VM 高達 300 GB。  | 若不支援，則必要條件檢查會失敗。
 作業系統磁碟計數 | 1 | 若不支援，則必要條件檢查會失敗。

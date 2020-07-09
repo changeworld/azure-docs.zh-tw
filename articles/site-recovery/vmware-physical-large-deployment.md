@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d991b38c3f72b54f4564dd4847c8532b507286cc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81409778"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131785"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>針對 VMware Vm/實體伺服器設定大規模的嚴重損壞修復
 
@@ -85,7 +85,7 @@ ms.locfileid: "81409778"
 
 **Task** | **詳細資料** | **動作**
 --- | --- | ---
-**檢查核心** | 如果可用配額中的核心不等於或超過容錯移轉時的總目標數，容錯移轉將會失敗。 | 若為 VMware Vm，請檢查目標訂用帳戶中有足夠的核心，以符合部署規劃工具核心建議。<br/><br/> 針對實體伺服器，請檢查 Azure 核心是否符合您的手動估計。<br/><br/> 若要檢查配額，請在 [Azure 入口網站 >**訂**用帳戶中，按一下 [**使用量 + 配額**]。<br/><br/> [深入瞭解](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)增加配額。
+**檢查核心** | 如果可用配額中的核心不等於或超過容錯移轉時的總目標數，容錯移轉將會失敗。 | 若為 VMware Vm，請檢查目標訂用帳戶中有足夠的核心，以符合部署規劃工具核心建議。<br/><br/> 針對實體伺服器，請檢查 Azure 核心是否符合您的手動估計。<br/><br/> 若要檢查配額，請在 [Azure 入口網站 >**訂**用帳戶中，按一下 [**使用量 + 配額**]。<br/><br/> [深入瞭解](../azure-portal/supportability/resource-manager-core-quotas-request.md)增加配額。
 **檢查容錯移轉限制** | 容錯移轉不得數目超過 Site Recovery 的容錯移轉限制。 |  如果容錯移轉超過限制，您可以新增訂閱、容錯移轉至多個訂用帳戶，或增加訂用帳戶的配額。 
 
 
@@ -101,7 +101,7 @@ ms.locfileid: "81409778"
 **機器符合 Azure 的規定嗎？** | **Azure VM 限制（受控磁片容錯移轉）**
 --- | --- 
 是 | 2000
-否 | 1000
+No | 1000
 
 - 限制會假設訂用帳戶的目的地區域中有最少的其他作業正在進行中。
 - 某些 Azure 區域較小，而且可能會有稍微較低的限制。
@@ -188,7 +188,7 @@ ms.locfileid: "81409778"
 1. 指派嚴重損壞修復系統管理員，以監視複寫機器的健全狀況狀態。
 2. [監視](site-recovery-monitor-and-troubleshoot.md)已複寫專案和基礎結構的事件。
 3. [監視相應放大進程伺服器的健全狀況](vmware-physical-azure-monitor-process-server.md)。
-4. 註冊以取得事件的[電子郵件通知](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications)，以方便監視。
+4. 註冊以取得事件的[電子郵件通知](./site-recovery-monitor-and-troubleshoot.md#subscribe-to-email-notifications)，以方便監視。
 5. 進行週期性嚴重損壞[修復演練](site-recovery-test-failover-to-azure.md)，以確保一切都如預期般運作。
 
 
@@ -214,7 +214,7 @@ ms.locfileid: "81409778"
     - [深入了解](recovery-plan-overview.md) 復原計劃。
 2. 將 Azure 自動化 runbook 腳本新增至復原方案，以將 Azure 上的任何手動工作自動化。 一般工作包括設定負載平衡器、更新 DNS 等。 [深入了解](site-recovery-runbook-automation.md)
 2. 在容錯移轉之前，請準備 Windows 機器，使其符合 Azure 環境。 符合的電腦會有較高的[容錯移轉限制](#plan-azure-subscriptions-and-quotas)。 [深入瞭解](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)runbook。
-4.  使用[AzRecoveryServicesAsrPlannedFailoverJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) PowerShell Cmdlet 來觸發容錯移轉，以及復原方案。
+4.  使用[AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) PowerShell Cmdlet 來觸發容錯移轉，以及復原方案。
 
 
 

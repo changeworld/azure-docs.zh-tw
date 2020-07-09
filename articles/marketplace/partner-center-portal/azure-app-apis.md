@@ -1,18 +1,16 @@
 ---
 title: 用來在 Microsoft 商業市集中將 Azure 應用程式上架的合作夥伴中心提交 API
 description: 了解在 Microsoft 合作夥伴中心上的商業市集中，針對 Azure 應用程式使用合作夥伴中心提交 API 的先決條件。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 3d86329313c1b6af1e4723dc64c982f9c81ea86b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c8343f0954f02423fc48347911f10cf5b9ddee96
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964969"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121991"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>用來在合作夥伴中心中將 Azure 應用程式上架的合作夥伴中心提交 API
 

@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: raynew
-ms.openlocfilehash: 5f9774dd65587c364c90d346f17ed508a263c954
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c729645eadc192dba4d7bb4f2c346d7b9d36434a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961266"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132672"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -70,7 +70,7 @@ Azure Government    | US Gov 維吉尼亞州、US Gov 愛荷華州、US Gov 亞�
 --- | --- | ---
 一般用途 V2 儲存體帳戶 (經常性存取層和非經常性存取層) | 支援 | 不建議使用 GPv2，因為 V2 的交易成本明顯高於 V1 儲存體帳戶。
 進階儲存體 | 不支援 | 標準儲存體帳戶會用於快取儲存體，以協助最佳化成本。
-適用於虛擬網路的 Azure 儲存體防火牆  | 支援 | 如果您使用啟用防火牆的快取儲存體帳戶或目標儲存體帳戶，請確定您[「允許信任的 Microsoft 服務」](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。<br></br>此外，請確保您允許存取來源 Vnet 的至少一個子網路。
+適用於虛擬網路的 Azure 儲存體防火牆  | 支援 | 如果您使用啟用防火牆的快取儲存體帳戶或目標儲存體帳戶，請確定您[「允許信任的 Microsoft 服務」](../storage/common/storage-network-security.md#exceptions)。<br></br>此外，請確保您允許存取來源 Vnet 的至少一個子網路。
 
 
 ## <a name="replicated-machine-operating-systems"></a>複寫的機器作業系統
@@ -229,7 +229,7 @@ GRS | 支援 |
 RA-GRS | 支援 |
 ZRS | 不支援 |
 非經常性和經常性儲存體 | 不支援 | 非經常性和經常性儲存體不支援虛擬機器磁碟
-適用於虛擬網路的 Azure 儲存體防火牆  | 支援 | 如果限制只有儲存體帳戶可以存取虛擬網路，請啟用[允許受信任的 Microsoft 服務](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
+適用於虛擬網路的 Azure 儲存體防火牆  | 支援 | 如果限制只有儲存體帳戶可以存取虛擬網路，請啟用[允許受信任的 Microsoft 服務](../storage/common/storage-network-security.md#exceptions)。
 一般用途 V2 儲存體帳戶 (經常性存取層和非經常性存取層) | 支援 | 與一般用途 V1 儲存體帳戶相比，交易成本大幅增加
 第2代 (UEFI 開機) | 支援
 NVMe 磁碟 | 不支援
@@ -270,10 +270,10 @@ NIC 上的 NSG | 支援 | 使用復原方案中的 Azure 自動化指令碼，�
 流量管理員     | 支援 | 您可以預先設定流量管理員，定期將流量傳輸到來源區域中的端點，如果發生容錯移轉，則傳輸到目標區域中的端點。
 Azure DNS | 支援 |
 自訂 DNS    | 支援 |
-未經驗證的 Proxy | 支援 | [深入了解](site-recovery-azure-to-azure-networking-guidance.md)
+未經驗證的 Proxy | 支援 | [深入了解](./azure-to-azure-about-networking.md)
 經驗證的 Proxy | 不支援 | 如果 VM 對於輸出連線能力使用經驗證的 Proxy，則無法使用 Azure Site Recovery 加以複寫。
-內部部署的 VPN 站台對站台連線<br/><br/>(含或不含 ExpressRoute)| 支援 | 請確定設定 UDR 和 NSG 時，站台復原流量不是傳送到內部部署的裝置。 [深入了解](site-recovery-azure-to-azure-networking-guidance.md)
-VNET 對 VNET 連線    | 支援 | [深入了解](site-recovery-azure-to-azure-networking-guidance.md)
+內部部署的 VPN 站台對站台連線<br/><br/>(含或不含 ExpressRoute)| 支援 | 請確定設定 UDR 和 NSG 時，站台復原流量不是傳送到內部部署的裝置。 [深入了解](./azure-to-azure-about-networking.md)
+VNET 對 VNET 連線    | 支援 | [深入了解](./azure-to-azure-about-networking.md)
 虛擬網路服務端點 | 支援 | 如果您要限制只有儲存體帳戶可以存取虛擬網路，請確定受信任的 Microsoft 服務可以存取儲存體帳戶。
 加速網路 | 支援 | 必須在來源 VM 上啟用加速網路。 [深入了解](azure-vm-disaster-recovery-with-accelerated-networking.md)。
 Palo Alto 網路設備 | 不支援 | 使用協力廠商應用設備時，虛擬機器內的提供者通常會強加一些限制。 Azure Site Recovery 需要代理程式、擴充功能和輸出連線能力可供使用。 但設備不會讓任何輸出活動在虛擬機器內進行設定。
@@ -282,5 +282,5 @@ IPv6  | 不支援 | 亦不支援同時包含 IPv4 和 IPv6 的混合組態。 �
 
 
 ## <a name="next-steps"></a>後續步驟
-- 閱讀複寫 Azure VM 的[網路指引](site-recovery-azure-to-azure-networking-guidance.md)。
-- 透過[複寫 Azure VM](site-recovery-azure-to-azure.md) 來部署災害復原。
+- 閱讀複寫 Azure VM 的[網路指引](./azure-to-azure-about-networking.md)。
+- 透過[複寫 Azure VM](./azure-to-azure-quickstart.md) 來部署災害復原。

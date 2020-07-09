@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 59541c568c1d5341375236f9f074b7f82e1a6f94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4b6d583c2dd3d54c6201917a40fa6165efac18f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82858745"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131267"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 保護檔案伺服器 
 
@@ -44,7 +45,7 @@ DFSR 使用名為「遠端差異壓縮 (RDC)」的壓縮演算法，可用來在
 
     * 如果您的 VM 所使用的組態不受 Site Recovery 的支援，您可以使用此方法。 範例之一是常用於檔案伺服器環境中的共用叢集磁碟。 DFSR 也適用於具中等變換率的低頻寬環境。 您必須考量讓 Azure VM 隨時啟動並執行的額外成本。 
 
-* **使用 Azure 檔案同步複寫您的**檔案：如果您想要使用雲端，或已經使用 Azure VM，您可以使用 Azure 檔案同步。Azure 檔案同步提供在雲端中完全受控的檔案共用，可透過業界標準的[伺服器訊息區](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)（SMB）通訊協定來進行同步處理。 然後 Windows、Linux 和 macOS 的雲端部署或內部部署就可同時掛接 Azure 檔案共用。 
+* **使用 Azure 檔案同步複寫您的**檔案：如果您想要使用雲端，或已經使用 Azure VM，您可以使用 Azure 檔案同步。Azure 檔案同步提供在雲端中完全受控的檔案共用，可透過業界標準的[伺服器訊息區](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)（SMB）通訊協定來進行同步處理。 然後 Windows、Linux 和 macOS 的雲端部署或內部部署就可同時掛接 Azure 檔案共用。 
 
 下圖可協助您決定檔案伺服器環境所適用的策略。
 
@@ -66,9 +67,9 @@ DFSR 使用名為「遠端差異壓縮 (RDC)」的壓縮演算法，可用來在
 | 來源  |至次要網站  |至 Azure
 |---------|---------|---------|
 |Azure|  -|是|
-|Hyper-V|  是  |Yes
-|VMware  |Yes|  Yes
-|實體伺服器|  Yes  |Yes
+|Hyper-V|  是  |是
+|VMware  |是|  是
+|實體伺服器|  是  |是
  
 
 > [!IMPORTANT]
@@ -76,13 +77,13 @@ DFSR 使用名為「遠端差異壓縮 (RDC)」的壓縮演算法，可用來在
 
 
 
-**站對站連線能力**：必須在內部部署網站與 Azure 網路之間建立直接連線，以允許伺服器之間的通訊。 請使用安全的站對站 VPN 連線，連線到作為災害復原網站的 Azure 虛擬網路。 如需詳細資訊，請參閱[在內部部署網站與 Azure 網路之間建立站對站 VPN 連線](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)。
+**站對站連線能力**：必須在內部部署網站與 Azure 網路之間建立直接連線，以允許伺服器之間的通訊。 請使用安全的站對站 VPN 連線，連線到作為災害復原網站的 Azure 虛擬網路。 如需詳細資訊，請參閱[在內部部署網站與 Azure 網路之間建立站對站 VPN 連線](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
 
-**Active Directory**：DFSR 依存於 Active Directory。 這表示，具有本機網域控制站的 Active Directory 樹系會延伸至 Azure 中的災害復原網站。 即使您未使用 DFSR，如果需要授與預定使用者的存取權或加以驗證，您就必須執行這些步驟。 如需詳細資訊，請參閱[將內部部署 Active Directory 延伸至 Azure](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory)。
+**Active Directory**：DFSR 依存於 Active Directory。 這表示，具有本機網域控制站的 Active Directory 樹系會延伸至 Azure 中的災害復原網站。 即使您未使用 DFSR，如果需要授與預定使用者的存取權或加以驗證，您就必須執行這些步驟。 如需詳細資訊，請參閱[將內部部署 Active Directory 延伸至 Azure](./site-recovery-active-directory.md)。
 
 ## <a name="disaster-recovery-recommendation-for-azure-iaas-virtual-machines"></a>Azure IaaS 虛擬機器的災害復原建議
 
-如果您要設定及管理在 Azure IaaS VM 上裝載之檔案伺服器的災害復原，您可以根據是否要移至 [Azure 檔案](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)，在兩個選項當中作選擇：
+如果您要設定及管理在 Azure IaaS VM 上裝載之檔案伺服器的災害復原，您可以根據是否要移至 [Azure 檔案](../storage/files/storage-files-introduction.md)，在兩個選項當中作選擇：
 
 * [使用檔案同步](#use-file-sync-to-replicate-files-hosted-on-an-iaas-virtual-machine)
 * [使用 Site Recovery](#replicate-an-iaas-file-server-virtual-machine-by-using-site-recovery)
@@ -92,16 +93,16 @@ DFSR 使用名為「遠端差異壓縮 (RDC)」的壓縮演算法，可用來在
 Azure 檔案服務可用來完全取代或補充傳統內部部署檔案伺服器或 NAS 裝置。 Azure 檔案共用也可透過檔案同步複寫至 Windows 伺服器 (在內部部署環境或雲端)，從而在資料的使用位置提高效能和進行分散式快取。 下列步驟說明與傳統檔案伺服器執行相同功能的 Azure VM 的災害復原建議：
 * 使用 Site Recovery 保護機器。 請遵循[將 Azure VM 複寫到另一個 Azure 區域](azure-to-azure-quickstart.md)中的步驟。
 * 使用檔案同步將作為檔案伺服器的 VM 中的檔案複寫到雲端。
-* 使用 Site Recovery 的[復原計畫](site-recovery-create-recovery-plans.md)功能新增指令碼，以[掛接 Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)並存取虛擬機器中的共用。
+* 使用 Site Recovery 的[復原計畫](site-recovery-create-recovery-plans.md)功能新增指令碼，以[掛接 Azure 檔案共用](../storage/files/storage-how-to-use-files-windows.md)並存取虛擬機器中的共用。
 
 下列各節將簡短說明如何使用檔案同步：
 
-1. [在 Azure 中建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果您為儲存體帳戶選擇了讀取權限異地備援儲存體，則會獲得在發生災害時從次要區域讀取資料的權限。 如需詳細資訊，請參閱[災害復原與儲存體帳戶容錯移轉](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
-2. [建立檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
-3. 在 Azure 檔案伺服器上[啟動檔案同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)。
+1. [在 Azure 中建立儲存體帳戶](../storage/common/storage-account-create.md?toc=/azure/storage/files/toc.json)。 如果您為儲存體帳戶選擇了讀取權限異地備援儲存體，則會獲得在發生災害時從次要區域讀取資料的權限。 如需詳細資訊，請參閱[災害復原與儲存體帳戶容錯移轉](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
+2. [建立檔案共用](../storage/files/storage-how-to-create-file-share.md)。
+3. 在 Azure 檔案伺服器上[啟動檔案同步](../storage/files/storage-sync-files-deployment-guide.md)。
 4. 建立同步群組。 同步群組內的端點會與彼此保持同步。 同步群組必須包含至少一個雲端端點，代表 Azure 檔案共用。 同步群組也必須包含一個伺服器端點，代表 Windows 伺服器上的路徑。
 5. 您的檔案此時會在 Azure 檔案共用和內部部署伺服器之間保持同步。
-6. 您的內部部署環境中發生災害時，您可以使用[復原計畫](site-recovery-create-recovery-plans.md)執行容錯移轉。 新增指令碼，以[掛接 Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)並存取虛擬機器中的共用。
+6. 您的內部部署環境中發生災害時，您可以使用[復原計畫](site-recovery-create-recovery-plans.md)執行容錯移轉。 新增指令碼，以[掛接 Azure 檔案共用](../storage/files/storage-how-to-use-files-windows.md)並存取虛擬機器中的共用。
 
 ### <a name="replicate-an-iaas-file-server-virtual-machine-by-using-site-recovery"></a>使用 Site Recovery 複寫 IaaS 檔案伺服器虛擬機器
 
@@ -112,42 +113,42 @@ Azure 檔案服務可用來完全取代或補充傳統內部部署檔案伺服�
 3. 為 IaaS 檔案伺服器機器[設定災害復原](azure-to-azure-tutorial-enable-replication.md)到次要地區。
 
 
-若想進一步了解復原到次要區域的災害復原，請參閱[這篇文章](concepts-azure-to-azure-architecture.md)。
+若想進一步了解復原到次要區域的災害復原，請參閱[這篇文章](./azure-to-azure-architecture.md)。
 
 
 ## <a name="replicate-an-on-premises-file-server-by-using-site-recovery"></a>使用 Site Recovery 複寫內部部署檔案伺服器
 
-下列步驟說明 VMware VM 的複寫。 如需複寫 HYPER-V VM 的步驟，請參閱[本教學課程](tutorial-hyper-v-to-azure.md)。
+下列步驟說明 VMware VM 的複寫。 如需複寫 HYPER-V VM 的步驟，請參閱[本教學課程](./hyper-v-azure-tutorial.md)。
 
 1. [準備 Azure 資源](tutorial-prepare-azure.md)以進行內部部署機器的複寫。
 2. 在內部部署網站與 Azure 網路之間建立站對站 VPN 連線。 
 3. 延伸內部部署 Active Directory。
-4. [準備內部部署 VMware 伺服器](tutorial-prepare-on-premises-vmware.md)。
-5. 為內部部署 VM [設定災害復原](tutorial-vmware-to-azure.md)到 Azure。
+4. [準備內部部署 VMware 伺服器](./vmware-azure-tutorial-prepare-on-premises.md)。
+5. 為內部部署 VM [設定災害復原](./vmware-azure-tutorial.md)到 Azure。
 
 ## <a name="extend-dfsr-to-an-azure-iaas-virtual-machine"></a>將 DFSR 延伸至 Azure IaaS 虛擬機器
 
 1. 在內部部署網站與 Azure 網路之間建立站對站 VPN 連線。 
 2. 延伸內部部署 Active Directory。
-3. 在 Azure 虛擬網路上[建立及佈建檔案伺服器 VM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。
+3. 在 Azure 虛擬網路上[建立及佈建檔案伺服器 VM](../virtual-machines/windows/quick-create-portal.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。
 請確定虛擬機器已新增至相同的 Azure 虛擬網路，其具備與內部部署環境交叉連線的能力。 
 4. 在 Windows Server 上安裝和[設定 DFSR](https://techcommunity.microsoft.com/t5/storage-at-microsoft/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of/ba-p/424877)。
-5. [實作 DFS 命名空間](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/deploying-dfs-namespaces)。
+5. [實作 DFS 命名空間](/windows-server/storage/dfs-namespaces/deploying-dfs-namespaces)。
 6. 若實作 DFS 命名空間，只要更新 DFS 命名空間資料夾目標，就可以將生產網站的共用資料夾容錯移轉至災害復原網站。 透過 Active Directory 複寫這些 DFS 命名空間變更後，使用者就會以透明的方式連線到適當的資料夾目標。
 
 ## <a name="use-file-sync-to-replicate-your-on-premises-files"></a>使用檔案同步複寫內部部署檔案
 您可以使用檔案同步將檔案複寫到雲端。 當發生災害且無法使用您的內部部署檔案伺服器時，您就可以掛接雲端上的適當檔案位置，繼續處理來自用戶端機器的要求。
 若要整合檔案同步與 Site Recovery：
 
-* 使用 Site Recovery 保護檔案伺服器機器。 遵循[本教學課程](tutorial-vmware-to-azure.md)中的步驟。
+* 使用 Site Recovery 保護檔案伺服器機器。 遵循[本教學課程](./vmware-azure-tutorial.md)中的步驟。
 * 使用檔案同步，將作為檔案伺服器的機器中的檔案複寫到雲端。
 * 使用 Site Recovery 中的復原計畫功能新增指令碼，以在 Azure 中已容錯移轉的檔案伺服器 VM 上掛接 Azure 檔案共用。
 
 請依照下列步驟使用檔案同步：
 
-1. [在 Azure 中建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果您為儲存體帳戶選擇了「讀取權限異地備援儲存體」(建議)，在發生災害時，您將可從次要區域讀取資料。 如需詳細資訊，請參閱嚴重損壞[修復和儲存體帳戶容錯移轉](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
-2. [建立檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
-3. 在您在內部部署檔案伺服器中[部署檔案同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)。
+1. [在 Azure 中建立儲存體帳戶](../storage/common/storage-account-create.md?toc=/azure/storage/files/toc.json)。 如果您為儲存體帳戶選擇了「讀取權限異地備援儲存體」(建議)，在發生災害時，您將可從次要區域讀取資料。 如需詳細資訊，請參閱嚴重損壞[修復和儲存體帳戶容錯移轉](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
+2. [建立檔案共用](../storage/files/storage-how-to-create-file-share.md)。
+3. 在您在內部部署檔案伺服器中[部署檔案同步](../storage/files/storage-sync-files-deployment-guide.md)。
 4. 建立同步群組。 同步群組內的端點會與彼此保持同步。 同步群組必須包含至少一個雲端端點，代表 Azure 檔案共用。 同步群組也必須包含一個伺服器端點，代表內部部署 Windows 伺服器上的路徑。
 5. 您的檔案此時會在 Azure 檔案共用和內部部署伺服器之間保持同步。
 6. 您的內部部署環境中發生災害時，您可以使用[復原計畫](site-recovery-create-recovery-plans.md)執行容錯移轉。 新增指令碼，以掛接 Azure 檔案共用並存取虛擬機器中的共用。

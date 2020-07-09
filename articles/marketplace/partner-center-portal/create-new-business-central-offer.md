@@ -1,18 +1,18 @@
 ---
 title: 建立 Dynamics 365 Business Central 供應項目 - Microsoft 商業市集
 description: 了解在合作夥伴中心的商業市集入口網站中建立新 Dynamics 365 Business Central 供應項目的步驟和考量。 您可以在 Azure Marketplace 中或透過雲端解決方案提供者 (CSP) 方案，列出或銷售您的供應項目。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: navits09
+ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 498b5935d1170fdce7da76ca475c816f1fb8d136
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 456764ae2b08b9852e56b2ab3f7cd9238b540b58
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984237"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121940"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>建立 Dynamics 365 Business Central 供應項目
 
@@ -131,7 +131,7 @@ ms.locfileid: "85984237"
 6. 隱私權原則
 7. 供應項目名稱
 8. 摘要
-9. Description
+9. 描述
 10. 螢幕擷取畫面/影片
 
 ### <a name="name"></a>名稱

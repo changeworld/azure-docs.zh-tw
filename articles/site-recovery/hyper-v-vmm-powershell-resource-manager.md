@@ -7,11 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77048608"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130207"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell (Resource Manager) 將 Hyper-V VM 的災害復原設定至次要網站
 
@@ -22,9 +23,9 @@ ms.locfileid: "77048608"
 ## <a name="prerequisites"></a>必要條件
 
 - 檢閱[案例架構和元件](hyper-v-vmm-architecture.md)。
-- 請參閱所有元件的[支援需求](site-recovery-support-matrix-to-sec-site.md)。
-- 請確定 Virtual Machine Manager 伺服器和 Hyper-V 主機符合[支援需求](site-recovery-support-matrix-to-sec-site.md)。
-- 確認您要複寫的 VM 符合[複寫的機器支援](site-recovery-support-matrix-to-sec-site.md)
+- 請參閱所有元件的[支援需求](./vmware-physical-secondary-support-matrix.md)。
+- 請確定 Virtual Machine Manager 伺服器和 Hyper-V 主機符合[支援需求](./vmware-physical-secondary-support-matrix.md)。
+- 確認您要複寫的 VM 符合[複寫的機器支援](./vmware-physical-secondary-support-matrix.md)
 
 ## <a name="prepare-for-network-mapping"></a>準備網路對應
 
@@ -36,10 +37,10 @@ ms.locfileid: "77048608"
 
 根據下列指示準備 Virtual Machine Manager：
 
-- 確定您的來源和目標 Virtual Machine Manager 伺服器上有 [Virtual Machine Manager 邏輯網路](https://docs.microsoft.com/system-center/vmm/network-logical)：
+- 確定您的來源和目標 Virtual Machine Manager 伺服器上有 [Virtual Machine Manager 邏輯網路](/system-center/vmm/network-logical)：
   - 來源伺服器上的邏輯網路應該與 Hyper-V 主機所在的來源雲端相關聯。
   - 目標伺服器上的邏輯網路應該與目標雲端相關聯。
-- 確定您的來源和目標 Virtual Machine Manager 伺服器上有 [ 邏輯網路](https://docs.microsoft.com/system-center/vmm/network-virtual)。 VM 網路應連結至每個位置的邏輯網路。
+- 確定您的來源和目標 Virtual Machine Manager 伺服器上有 [ 邏輯網路](/system-center/vmm/network-virtual)。 VM 網路應連結至每個位置的邏輯網路。
 - 將來源 Hyper-V 主機上的 VM 連線至來源 VM 網路。
 
 ## <a name="prepare-for-powershell"></a>準備 PowerShell

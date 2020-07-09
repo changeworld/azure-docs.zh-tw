@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
-ms.openlocfilehash: 75fa2071f2ad54292e1cff6856de2091b74d3187
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac6fad8995d409c14008b8345e9e576b2403c799
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82101530"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131686"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>在 Azure Resource Manager 中設定虛擬機器的 WinRM 存取
 
@@ -30,14 +30,14 @@ ms.locfileid: "82101530"
 ## <a name="step-1-create-a-key-vault"></a>步驟 1︰建立金鑰保存庫
 您可以使用下列命令來建立金鑰保存庫
 
-```
+```azurepowershell
 New-AzKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
 ## <a name="step-2-create-a-self-signed-certificate"></a>步驟 2：建立自我簽署憑證
 您可以使用下列 PowerShell 指令碼建立自我簽署憑證
 
-```
+```azurepowershell
 $certificateName = "somename"
 
 $thumbprint = (New-SelfSignedCertificate -DnsName $certificateName -CertStoreLocation Cert:\CurrentUser\My -KeySpec KeyExchange).Thumbprint
@@ -52,7 +52,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $
 ## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>步驟 3：將自我簽署憑證上傳至金鑰保存庫
 在將憑證上傳至於步驟 1 中建立的金鑰保存庫之前，必須先將它轉換成 Microsoft.Compute 資源提供者可以了解的格式。 下面的 PowerShell 指令碼可讓您這麼做
 
-```
+```azurepowershell
 $fileName = "<Path to the .pfx file>"
 $fileContentBytes = Get-Content $fileName -Encoding Byte
 $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
@@ -81,66 +81,76 @@ Microsoft.Compute 資源提供者在佈建 VM 時，需要金鑰保存庫內密�
 #### <a name="templates"></a>範本
 您可以使用下列程式碼取得範本中的 URL 連結
 
-    "certificateUrl": "[reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', '<vault-name>', '<secret-name>'), '2015-06-01').secretUriWithVersion]"
+```json
+"certificateUrl": "[reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', '<vault-name>', '<secret-name>'), '2015-06-01').secretUriWithVersion]"
+```
 
 #### <a name="powershell"></a>PowerShell
 您可以使用下列 PowerShell 命令取得此 URL 
 
-    $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+```azurepowershell
+$secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+```
 
 ## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>步驟 5：在建立 VM 時參考您的自我簽署憑證的 URL
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 範本
 透過範本建立 VM 時，憑證會在密碼區段和 winRM 區段中參考，如下所示：
 
-    "osProfile": {
-          ...
-          "secrets": [
+```json
+"osProfile": {
+      ...
+      "secrets": [
+        {
+          "sourceVault": {
+            "id": "<resource id of the Key Vault containing the secret>"
+          },
+          "vaultCertificates": [
             {
-              "sourceVault": {
-                "id": "<resource id of the Key Vault containing the secret>"
-              },
-              "vaultCertificates": [
-                {
-                  "certificateUrl": "<URL for the certificate you got in Step 4>",
-                  "certificateStore": "<Name of the certificate store on the VM>"
-                }
-              ]
+              "certificateUrl": "<URL for the certificate you got in Step 4>",
+              "certificateStore": "<Name of the certificate store on the VM>"
             }
-          ],
-          "windowsConfiguration": {
-            ...
-            "winRM": {
-              "listeners": [
-                {
-                  "protocol": "http"
-                },
-                {
-                  "protocol": "https",
-                  "certificateUrl": "<URL for the certificate you got in Step 4>"
-                }
-              ]
+          ]
+        }
+      ],
+      "windowsConfiguration": {
+        ...
+        "winRM": {
+          "listeners": [
+            {
+              "protocol": "http"
             },
-            ...
-          }
+            {
+              "protocol": "https",
+              "certificateUrl": "<URL for the certificate you got in Step 4>"
+            }
+          ]
         },
+        ...
+      }
+    },
+```
 
 上述的範例範本可以在這裡找到： [201-vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
 
 此範本的原始程式碼位於 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)
 
 #### <a name="powershell"></a>PowerShell
-    $vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
-    $credential = Get-Credential
-    $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
-    $vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -ProvisionVMAgent -WinRMCertificateUrl $secretURL
-    $sourceVaultId = (Get-AzKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
-    $CertificateStore = "My"
-    $vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
+```azurepowershell
+$vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
+$credential = Get-Credential
+$secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+$vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -ProvisionVMAgent -WinRMCertificateUrl $secretURL
+$sourceVaultId = (Get-AzKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
+$CertificateStore = "My"
+$vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
+```
 
 ## <a name="step-6-connecting-to-the-vm"></a>步驟 6︰連接到 VM
 在您可以連接至 VM 之前，您必須確定您的電腦已設定 WinRM 遠端管理。 以系統管理員身分啟動 PowerShell 並執行下列命令來確認您已設定完畢。
 
-    Enable-PSRemoting -Force
+```azurepowershell
+Enable-PSRemoting -Force
+```
 
 > [!NOTE]
 > 如果上述程式碼無法運作，您可能需要確定 WinRM 服務正在執行。 您可以使用 `Get-Service WinRM`
@@ -149,4 +159,6 @@ Microsoft.Compute 資源提供者在佈建 VM 時，需要金鑰保存庫內密�
 
 安裝完成之後，您可以使用下列命令連接到 VM
 
-    Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate
+```azurepowershell
+Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate
+```

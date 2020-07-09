@@ -6,11 +6,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710230"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132510"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>針對 Hyper-V VM，使用 PowerShell 和 Azure Resource Manager 設定至 Azure 的災害復原
 
@@ -24,7 +25,7 @@ ms.locfileid: "84710230"
 
 Azure PowerShell 提供 Cmdlet，讓您使用 Windows PowerShell 管理 Azure。 Azure PowerShell for Azure Resource Manager 提供的 Site Recovery PowerShell Cmdlet 可讓您在 Azure 中保護與復原伺服器。
 
-您不需要是 PowerShell 專家也能使用本文，但您必須了解模組、Cmdlet 和工作階段等基本概念。 如需詳細資訊，請參閱[PowerShell 檔](/powershell)和搭配[Azure Resource Manager 使用 Azure PowerShell](../powershell-azure-resource-manager.md)。
+您不需要是 PowerShell 專家也能使用本文，但您必須了解模組、Cmdlet 和工作階段等基本概念。 如需詳細資訊，請參閱[PowerShell 檔](/powershell)和搭配[Azure Resource Manager 使用 Azure PowerShell](../azure-resource-manager/management/manage-resources-powershell.md)。
 
 > [!NOTE]
 > 雲端方案提供者 (CSP) 計畫的 Microsoft 合作夥伴，可以在其客戶各自的 CSP 訂用帳戶 (租用戶訂用帳戶) 設定和管理客戶的伺服器保護。
@@ -45,7 +46,7 @@ Azure PowerShell 提供 Cmdlet，讓您使用 Windows PowerShell 管理 Azure。
 
 1. 開啟 PowerShell 主控台並執行這個命令，登入您的 Azure 帳戶。 此 Cmdlet 會顯示一個網頁，提示您輸入您的帳號憑證： `Connect-AzAccount` 。
    - 或者，您可以 `Connect-AzAccount` 使用**Credential**參數，將您的帳號憑證納入 Cmdlet 中做為參數。
-   - 如果您是代表租使用者工作的 CSP 合作夥伴，請使用其 tenantID 或租使用者的主功能變數名稱稱，將客戶指定為租使用者。 例如：`Connect-AzAccount -Tenant "fabrikam.com"`
+   - 如果您是代表租使用者工作的 CSP 合作夥伴，請使用其 tenantID 或租使用者的主功能變數名稱稱，將客戶指定為租使用者。 例如： `Connect-AzAccount -Tenant "fabrikam.com"`
 1. 由於一個帳戶可以有多個訂用帳戶，因此您必須將要使用的訂用帳戶與帳戶建立關聯：
 
    ```azurepowershell

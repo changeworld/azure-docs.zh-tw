@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82738111"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130460"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>針對 Azure 至 Azure VM 複寫錯誤進行疑難排解
 
@@ -36,7 +36,7 @@ Replication couldn't be enabled for the virtual machine <VmName>.
 
 ### <a name="fix-the-problem"></a>修正問題
 
-請聯絡[Azure 計費支援](/azure/azure-portal/supportability/resource-manager-core-quotas-request)，讓您的訂用帳戶在目標位置中建立所需大小的 vm。 然後，重試失敗的操作。
+請聯絡[Azure 計費支援](../azure-portal/supportability/resource-manager-core-quotas-request.md)，讓您的訂用帳戶在目標位置中建立所需大小的 vm。 然後，重試失敗的操作。
 
 如果目標位置具有容量條件約束，請停用對該位置的複寫。 然後，啟用複寫至您的訂用帳戶具有足夠配額的不同位置，以建立所需大小的 Vm。
 
@@ -202,7 +202,7 @@ Site Recovery configuration failed.
 #### <a name="fix-the-problem"></a>修正問題
 
 Azure Site Recovery 需要存取 Office 365 IP 範圍以進行驗證。
-如果您使用 Azure 網路安全性群組（NSG）規則/防火牆 proxy 來控制 VM 上的輸出網路連線能力，請確定您使用以[Azure Active Directory （AAD）服務標記](/azure/virtual-network/security-overview#service-tags)為基礎的 NSG 規則，以允許存取 AAD。 我們不再支援以 IP 位址為基礎的 NSG 規則。
+如果您使用 Azure 網路安全性群組（NSG）規則/防火牆 proxy 來控制 VM 上的輸出網路連線能力，請確定您使用以[Azure Active Directory （AAD）服務標記](../virtual-network/security-overview.md#service-tags)為基礎的 NSG 規則，以允許存取 AAD。 我們不再支援以 IP 位址為基礎的 NSG 規則。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>問題 3：	Site Recovery 設定失敗 (151197)
 
@@ -239,7 +239,7 @@ Azure Site Recovery 需要存取 Office 365 IP 範圍以進行驗證。
 > [!NOTE]
 > 行動服務代理程式僅支援未**驗證**的 proxy。
 
-### <a name="more-information"></a>更多資訊
+### <a name="more-information"></a>詳細資訊
 
 若要指定[所需的 url](azure-to-azure-about-networking.md#outbound-connectivity-for-urls)或所[需的 IP 範圍](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)，請遵循[關於 azure 中的網路功能至 azure](azure-to-azure-about-networking.md)複寫中的指導方針。
 
@@ -260,8 +260,8 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 請確定資料磁片已初始化，然後再次嘗試操作。
 
-- **Windows**：[附加並初始化新的磁片](/azure/virtual-machines/windows/attach-managed-disk-portal)。
-- **Linux**：[在 linux 中初始化新的資料磁片](/azure/virtual-machines/linux/add-disk)。
+- **Windows**：[附加並初始化新的磁片](../virtual-machines/windows/attach-managed-disk-portal.md)。
+- **Linux**：[在 linux 中初始化新的資料磁片](../virtual-machines/linux/add-disk.md)。
 
 若問題持續發生，請連絡支援服務。
 

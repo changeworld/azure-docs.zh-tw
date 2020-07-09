@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
-ms.openlocfilehash: 2cf4f22be2a4407d73fcc7bb340fad647c8aa145
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80546508"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132330"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>設定 Active Directory 和 DNS 的災害復原
 
@@ -25,7 +25,7 @@ ms.locfileid: "80546508"
 ## <a name="prerequisites"></a>必要條件
 
 - 如果您要複寫至 Azure，請[準備 Azure 資源](tutorial-prepare-azure.md)，包括訂用帳戶、Azure 虛擬網路、儲存體帳戶和復原服務保存庫。
-- 請參閱所有元件的[支援需求](site-recovery-support-matrix-to-azure.md)。
+- 請參閱所有元件的[支援需求](./vmware-physical-azure-support-matrix.md)。
 
 ## <a name="replicate-the-domain-controller"></a>複寫網域控制站
 

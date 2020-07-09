@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 86938c582745cb0759eda9cd0693f407471a0529
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f80fbd803cbe4ae5c4ac381c8cdb2f72d0ede316
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921482"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132927"
 ---
 # <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Azure 虛擬機器開機時 Windows 顯示「正在檢查檔案系統」
 
@@ -37,9 +38,12 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](boot-diagnostics.md)
 ## <a name="solution"></a>解決方案 
 
 在「檢查磁碟」處理序完成時，Windows 將正常開機。 如果虛擬機器卡在「檢查磁碟」處理序，請嘗試在虛擬機器離線時執行「磁碟檢查」：
-1.  擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
-2.  [將 OS 磁片連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。  
-3.  在復原虛擬機器上，對連結的作業系統磁碟執行「檢查磁碟」。 在下列範例中，所連結作業系統磁碟的磁碟機代號為 E: 
-        
-        chkdsk E: /f
-4.  「檢查磁碟」完成之後，將磁碟與復原虛擬機器中斷連結，然後再將磁碟重新連結至受影響的虛擬機器，作為作業系統磁碟。 如需詳細資訊，請參閱[將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解](troubleshoot-recovery-disks-portal-windows.md)。
+1. 擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
+2. [將 OS 磁片連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。  
+3. 在復原虛擬機器上，對連結的作業系統磁碟執行「檢查磁碟」。 在下列範例中，所連結作業系統磁碟的磁碟機代號為 E: 
+
+    ```console
+    chkdsk E: /f
+    ```
+
+4. 「檢查磁碟」完成之後，將磁碟與復原虛擬機器中斷連結，然後再將磁碟重新連結至受影響的虛擬機器，作為作業系統磁碟。 如需詳細資訊，請參閱[將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解](troubleshoot-recovery-disks-portal-windows.md)。

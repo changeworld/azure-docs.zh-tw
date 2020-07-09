@@ -3,11 +3,12 @@ title: Azure Migrate 中的 Hyper-v 遷移支援
 description: 瞭解 Azure Migrate 的 Hyper-v 遷移支援。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 5dd2ae134e57fc8c719a27c25ddc58e769367065
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ea7d139b3d3cc8c14e43ccfb7c233fcbe4c564c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771221"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122059"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-v 遷移的支援矩陣
 
@@ -32,7 +33,7 @@ ms.locfileid: "84771221"
 
 | **支援**                  | **詳細資料**               
 | :----------------------------- | :------------------- |
-| **作業系統** | Azure 支援的所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)作業系統。 |
+| **作業系統** | Azure 支援的所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](../virtual-machines/linux/endorsed-distros.md)作業系統。 |
 **Windows Server 2003** | 針對執行 Windows Server 2003 的 Vm，您必須先[安裝 hyper-v Integration Services](prepare-windows-server-2003-migration.md) ，才能進行遷移。 | 
 **Azure 中的 Linux Vm** | 有些 VM 可能需要變更，才能在 Azure 中執行。<br/><br/> 針對 Linux，Azure Migrate 會自動為這些作業系統進行變更：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8。 對於其他作業系統，您必須手動進行[必要的變更](prepare-for-migration.md#linux-machines)。
 | **Azure 的必要變更** | 有些 VM 可能需要變更，才能在 Azure 中執行。 請先手動進行調整，再進行遷移。 相關文章包含如何執行這項操作的指示。 |

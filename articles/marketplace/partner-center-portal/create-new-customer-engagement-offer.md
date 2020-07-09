@@ -1,18 +1,18 @@
 ---
 title: 在 Microsoft 商業市集中建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目
 description: 如何在 Azure Marketplace、AppSource 或透過合作夥伴中心內的雲端解決方案提供者 (CSP) 方案，建立新的 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: navits09
+ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 26f61f6ba2f8fb4c394bc1ce8ee96dfd955dfb8b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e90e45a0c96d8bbd2806a0ab6df70ef83e0cc9f6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980651"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121923"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目
 
@@ -137,7 +137,7 @@ ms.locfileid: "85980651"
 4. 支援位址（連結）
 5. 使用規定位址（連結）
 6. 供應項目名稱
-7. Description
+7. 描述
 8. 螢幕擷取畫面/影片
 
 ### <a name="name"></a>名稱

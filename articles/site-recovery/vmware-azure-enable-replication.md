@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80584136"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129918"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>讓 VMware VM 能夠複寫至 Azure
 
@@ -106,9 +106,9 @@ ms.locfileid: "80584136"
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="[計算和網路屬性] 視窗":::
 
    - **AZURE VM 名稱**：視需要修改名稱以符合 Azure 需求。
-   - **目標 vm 大小或 vm 類型**：根據在目標 Azure 區域中包含磁片計數、NIC 計數、CPU 核心計數、記憶體和可用 VM 角色大小的參數，選擇預設 vm 大小。 Azure Site Recovery 挑選符合所有準則的第一個可用 VM 大小。 您可以在容錯移轉之前隨時根據您的需求選取不同的 VM 大小。 VM 磁片大小也是根據來源磁片大小，而且只能在容錯移轉後變更。 深入瞭解[Windows 上 VM 磁片的擴充性和效能目標](/azure/virtual-machines/windows/disk-scalability-targets)中的磁片大小和 IOPS 速率。
-   - **資源群組**：您可以選取一個[資源群組](/azure/azure-resource-manager/management/overview#resource-groups)，其中虛擬機器會成為後置容錯移轉的一部分。 您可以在容錯移轉之前隨時變更此設定。 容錯移轉之後，如果您將虛擬機器遷移至不同的資源群組，該虛擬機器的保護設定就會中斷。
-   - **可用性設定組**：如果您的虛擬機器必須是容錯移轉後的一部分，您可以選取[可用性設定組](/azure/virtual-machines/windows/tutorial-availability-sets)。 當您選取可用性設定組時，請記住下列資訊：
+   - **目標 vm 大小或 vm 類型**：根據在目標 Azure 區域中包含磁片計數、NIC 計數、CPU 核心計數、記憶體和可用 VM 角色大小的參數，選擇預設 vm 大小。 Azure Site Recovery 挑選符合所有準則的第一個可用 VM 大小。 您可以在容錯移轉之前隨時根據您的需求選取不同的 VM 大小。 VM 磁片大小也是根據來源磁片大小，而且只能在容錯移轉後變更。 深入瞭解[Windows 上 VM 磁片的擴充性和效能目標](../virtual-machines/windows/disk-scalability-targets.md)中的磁片大小和 IOPS 速率。
+   - **資源群組**：您可以選取一個[資源群組](../azure-resource-manager/management/overview.md#resource-groups)，其中虛擬機器會成為後置容錯移轉的一部分。 您可以在容錯移轉之前隨時變更此設定。 容錯移轉之後，如果您將虛擬機器遷移至不同的資源群組，該虛擬機器的保護設定就會中斷。
+   - **可用性設定組**：如果您的虛擬機器必須是容錯移轉後的一部分，您可以選取[可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md)。 當您選取可用性設定組時，請記住下列資訊：
      - 只會列出屬於指定之資源群組的可用性設定組。
      - 位於不同虛擬網路上的 Vm 不能屬於相同的可用性設定組。
      - 只有相同大小的虛擬機器可在相同的可用性設定組中。

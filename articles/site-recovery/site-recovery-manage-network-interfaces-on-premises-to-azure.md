@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de55e2d316b6ed7ee51460ce96896ed2ccfe0992
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954594"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129890"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>管理內部部署嚴重損壞修復至 Azure 的 VM 網路介面
 
@@ -25,7 +26,7 @@ Azure 中的虛擬機器 (VM) 必須至少擁有一個連接的網路介面。 �
 
 ## <a name="select-the-target-network"></a>選取目標網路
 
-針對 VMware 和實體機器，以及 Hyper-V (沒有 System Center Virtual Machine Manager) 虛擬機器，您可以為個別的虛擬機器指定目標虛擬網路。 針對以 Virtual Machine Manager 管理的 Hyper-V 虛擬機器，請使用[網路對應](site-recovery-network-mapping.md)來對應來源 Virtual Machine Manager 伺服器上的 VM 網路與目標 Azure 網路。
+針對 VMware 和實體機器，以及 Hyper-V (沒有 System Center Virtual Machine Manager) 虛擬機器，您可以為個別的虛擬機器指定目標虛擬網路。 針對以 Virtual Machine Manager 管理的 Hyper-V 虛擬機器，請使用[網路對應](./hyper-v-vmm-network-mapping.md)來對應來源 Virtual Machine Manager 伺服器上的 VM 網路與目標 Azure 網路。
 
 1. 在復原服務保存庫的 [複寫的項目]**** 下方，選取任何複寫項目以存取該複寫項目的設定。
 

@@ -3,15 +3,16 @@ title: 在 Azure Migrate 中新增評估工具
 description: 瞭解如何在 Azure Migrate 中新增評定工具。
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195623"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122110"
 ---
 # <a name="add-assessment-tools"></a>新增評量工具
 
-本文說明如何在[Azure Migrate](migrate-overview.md)中新增評定工具。 
+本文說明如何在[Azure Migrate](./migrate-services-overview.md)中新增評定工具。 
 
 - 如果您想要新增評估工具，但還沒有 Azure Migrate 專案，請遵循這[篇文章](how-to-add-tool-first-time.md)。-
 - 如果您已新增 ISV 工具或 Movere 以進行評估，請[遵循下列步驟](prepare-isv-movere.md)來準備使用此工具。

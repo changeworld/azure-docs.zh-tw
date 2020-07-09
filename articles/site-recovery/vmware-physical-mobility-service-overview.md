@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: ec4d1cfbe0c76c8245c4beeaa7c044d76d917a7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d73e2776d0d9c86fe0331f9804bfeade3f1de676
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259781"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131797"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>關於適用於 VMware VM 和實體伺服器的行動服務
 
@@ -128,7 +129,7 @@ ms.locfileid: "81259781"
 
 設定 | 詳細資料
 --- | ---
-Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+語法 | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 安裝程式記錄 | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | 必要安裝參數。 指定應該要安裝行動服務 (MS) 還是主要目標 (MT)。
 `/InstallLocation`| 選擇性參數。 指定行動服務安裝位置 (任何資料夾)。
@@ -139,7 +140,7 @@ Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /
 
 設定 | 詳細資料
 --- | ---
-Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+語法 | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 代理程式設定記錄 | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
 `/CSEndPoint` | 必要參數。 `<CSIP>`指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 `/PassphraseFilePath` |  Mandatory。 複雜密碼的位置。 請使用任何有效的 UNC 或本機檔案路徑。
@@ -169,7 +170,7 @@ Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath 
 
 設定 | 詳細資料
 --- | ---
-Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+語法 | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | 必要安裝參數。 指定應該要安裝行動服務 (MS) 還是主要目標 (MT)。
 `-d` | 選擇性參數。 指定行動服務安裝位置： `/usr/local/ASR` 。
 `-v` | Mandatory。 指定安裝行動服務的平臺。 <br/> **Vmware 適用于**vmware vm/實體伺服器。 <br/> 適用于 Azure Vm 的**azure** 。
@@ -179,14 +180,14 @@ Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 
 設定 | 詳細資料
 --- | ---
-Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+語法 | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
 `-i` | 必要參數。 `<CSIP>`指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 `-P` |  Mandatory。 儲存複雜密碼之檔案的完整檔案路徑。 請使用任何有效的資料夾。
 
 ## <a name="azure-virtual-machine-agent"></a>Azure 虛擬機器代理程式
 
-- **Windows VM**：從行動服務 9.7.0.0 版開始，會由行動服務安裝程式安裝 [Azure VM 代理程式](/azure/virtual-machines/extensions/features-windows#azure-vm-agent)。 這可確保當機器故障切換至 Azure 時，Azure VM 會符合使用任何 VM 擴充功能的代理程式安裝必要條件。
-- **Linux VM**：在容錯移轉之後，必須在 Azure VM 上手動安裝 [WALinuxAgent](/azure/virtual-machines/extensions/update-linux-agent)。
+- **Windows VM**：從行動服務 9.7.0.0 版開始，會由行動服務安裝程式安裝 [Azure VM 代理程式](../virtual-machines/extensions/features-windows.md#azure-vm-agent)。 這可確保當機器故障切換至 Azure 時，Azure VM 會符合使用任何 VM 擴充功能的代理程式安裝必要條件。
+- **Linux VM**：在容錯移轉之後，必須在 Azure VM 上手動安裝 [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md)。
 
 ## <a name="locate-installer-files"></a>找出安裝程式檔案
 

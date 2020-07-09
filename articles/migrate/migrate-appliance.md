@@ -3,12 +3,12 @@ title: Azure Migrate 設備
 description: 提供伺服器評估和移轉中所使用 Azure Migrate 設備的概觀。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a57ca67c89078143eba42d94e8d96e004200041a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99b29839028432a6b760265b641d35cdf33ee57f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85106567"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122127"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -48,7 +48,7 @@ ms.locfileid: "85106567"
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
 **探索限制** | 設備可以在 vCenter Server 上探索最多 10,000 個 VMware VM。<br/> 設備可以連線到單一 vCenter Server。
 **OVA 範本** | 從入口網站或從 https://aka.ms/migrate/appliance/vmware 下載。<br/><br/> 下載大小為 10.9 GB。<br/><br/> 下載的設備範本隨附 Windows Server 2016 評估授權，其有效期為 180 天。 如果評估期接近到期日，建議您下載並部署新的設備，或啟用設備 VM 的作業系統授權。
-**PowerShell 指令碼** | 請參閱這[篇文章](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-vmware)。<br/><br/> 
+**PowerShell 指令碼** | 請參閱這[篇文章](./deploy-appliance-script.md#set-up-the-appliance-for-vmware)。<br/><br/> 
 **軟體/硬體** |  設備應該在具有 Windows Server 2016、32 GB RAM、8 個 vCPU、約 80 GB 磁碟儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您在 VMware VM 上執行設備，您需要 vCenter Server 的足夠資源，才能配置符合需求的 VM。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。
 **VMware 需求** | 如果您將設備部署為 VMware VM，則必須將其部署在執行 5.5 版或更新版本的 ESXi 主機上。<br/><br/> 執行 5.5、6.0、6.5 或 6.7 的 vCenter Server。
 **VDDK (無代理程式移轉)** | 如果您將設備部署為 VMware VM，而且您正在執行無代理程式移轉，則必須在設備 VM 上安裝 VMware vSphere VDDK。
@@ -68,7 +68,7 @@ ms.locfileid: "85106567"
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
 **探索限制** | 設備可以探索最多 5000 部 Hyper-V VM。<br/> 設備最多可以連線到 300 部 Hyper-V 主機。
 **VHD 範本** | 包含 VHD 的 ZIP 資料夾。 從入口網站或從 https://aka.ms/migrate/appliance/hyperv 下載。<br/><br/> 下載大小為 10 GB。<br/><br/> 下載的設備範本隨附 Windows Server 2016 評估授權，其有效期為 180 天。 如果評估期接近到期日，建議您下載並部署新的設備，或啟用設備 VM 的作業系統授權。
-**PowerShell 指令碼** | 請參閱這[篇文章](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-hyper-v)。<br/><br/> 
+**PowerShell 指令碼** | 請參閱這[篇文章](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。<br/><br/> 
 **軟體/硬體***   |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您以 Hyper-V VM 的身分執行設備，則在 Hyper-V 主機上需要足夠的資源來配置 16 GB RAM、8 個 vCPU，大約 80 GB 的儲存空間，以及適用於設備 VM 的外部交換器。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。 
 **Hyper-V 需求** | 部署如果您使用 VHD 範本來部署設備，Azure Migrate 提供的設備 VM 就是 Hyper-V VM 5.0 版。<br/><br/> Hyper-V 主機必須執行 Windows Server 2012 R2 或更新版本。 
 **雜湊值 VHD** | [驗證](tutorial-assess-hyper-v.md#verify-security) VHD 範本雜湊值。
@@ -227,7 +227,7 @@ NIC 寫入輸送量 (MB 每秒) | net.transmitted.average  |VM 大小的計算
 
 **Data**  | **PowerShell Cmdlet** | **屬性**
 --- | --- | ---
-Name  | Get-help  | Name
+名稱  | Get-help  | 名稱
 特徵類型 | Get-help  | FeatureType
 父系  | Get-help  | 父系
 
@@ -237,7 +237,7 @@ Name  | Get-help  | Name
 
 **Data**  | **登錄位置**  | **索引鍵**
 --- | --- | ---
-Name  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+名稱  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
 Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
@@ -248,7 +248,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 資料  | WMI 類別  | WMI 類別屬性
 --- | --- | ---
-Name  | Win32_operatingsystem  | Caption
+名稱  | Win32_operatingsystem  | Caption
 版本  | Win32_operatingsystem  | 版本
 架構  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Name  | Win32_operatingsystem  | Caption
 
 資料  | Command
 --- | --- 
-Name | rpm、dpkg-查詢、貼齊
+名稱 | rpm、dpkg-查詢、貼齊
 版本 | rpm、dpkg-查詢、貼齊
 提供者 | rpm、dpkg-查詢、貼齊
 
@@ -268,7 +268,7 @@ Name | rpm、dpkg-查詢、貼齊
 
 **Data**  | **命令** 
 --- | --- | ---
-Name <br/> version | 從下列一個或多個檔案收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+名稱 <br/> version | 從下列一個或多個檔案收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 架構 | uname
 
 

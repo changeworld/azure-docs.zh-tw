@@ -3,11 +3,12 @@ title: Azure Site Recovery 的新功能
 description: 提供新功能的摘要，以及 Azure Site Recovery 服務中的最新更新。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: e0015aa9de51e3cb43473a079d09698fcbeef9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f774dbd3172199e82509301f520eac4e25deb15b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259213"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131082"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 最新功能
 
@@ -21,6 +22,7 @@ ms.locfileid: "84259213"
 
 **更新** |  **統一安裝** | **設定伺服器 ova** | **行動服務代理程式** | **站台復原提供者** | **復原服務代理程式**
 --- | --- | --- | --- | --- | ---
+[匯總套件47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | 2.0.9183.0
 [匯總套件46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [匯總套件45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [匯總套件43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
@@ -31,6 +33,17 @@ ms.locfileid: "84259213"
 
 > [!NOTE]
 > 更新彙總套件44不會顯示在資料表中，因為它不包含 Site Recovery 提供者和代理程式的更新。
+
+## <a name="updates-june-2020"></a>更新（2020年6月）
+
+### <a name="update-rollup-47"></a>更新彙總套件47
+
+[更新彙總套件 47](https://support.microsoft.com/help/4570609/update-rollup-47-for-azure-site-recovery)提供下列更新：
+
+**更新** | **詳細資料**
+--- | ---
+**提供者和代理程式** | Site Recovery 代理程式和提供者的更新，如匯總中所述。
+**問題修正/改進** | 匯總中詳細說明的一些修正和改善。
 
 ## <a name="updates-june-2020"></a>更新（2020年6月）
 
@@ -345,8 +358,8 @@ Site Recovery 現在支援將一般用途 v2 儲存體帳戶用於快取儲存�
 **功能** | **詳細資料**
 --- | ---
 **網路對應** | 針對 Azure VM 嚴重損壞修復，您現在可以在啟用複寫時使用任何可用的目標網路。
-**標準 SSD** | 您現在可以使用[標準 SSD 磁片](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)來設定 Azure vm 的嚴重損壞修復。
-**儲存空間直接存取** | 您可以使用[儲存空間直接存取](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)以取得高可用性，針對在 Azure VM 應用程式上執行的應用程式設定嚴重損壞修復。  搭配使用儲存空間直接存取（S2D）與 Site Recovery 可提供 Azure VM 工作負載的完整保護。 S2D 可讓您在 Azure 中裝載來賓叢集。 當 VM 裝載重要的應用程式（例如 SAP ASCS 層、SQL Server 或向外延展檔案伺服器）時，這特別有用。
+**標準 SSD** | 您現在可以使用[標準 SSD 磁片](../virtual-machines/windows/disks-types.md#standard-ssd)來設定 Azure vm 的嚴重損壞修復。
+**儲存空間直接存取** | 您可以使用[儲存空間直接存取](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)以取得高可用性，針對在 Azure VM 應用程式上執行的應用程式設定嚴重損壞修復。  搭配使用儲存空間直接存取（S2D）與 Site Recovery 可提供 Azure VM 工作負載的完整保護。 S2D 可讓您在 Azure 中裝載來賓叢集。 當 VM 裝載重要的應用程式（例如 SAP ASCS 層、SQL Server 或向外延展檔案伺服器）時，這特別有用。
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/實體伺服器嚴重損壞修復
@@ -364,7 +377,7 @@ Site Recovery 現在支援將一般用途 v2 儲存體帳戶用於快取儲存�
 
 ### <a name="accelerated-networking-azure-vms"></a>加速網路（Azure Vm）
 
-加速網路可以對 VM 啟用單一根目錄 i/o 虛擬化（SR-IOV），以改善網路效能。 當您為 Azure VM 啟用複寫功能時，Site Recovery 會偵測是否已啟用加速網路。 如果是，則在容錯移轉之後，Site Recovery 將會自動對 [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) 和 [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms) 的目標複本 Azure VM 設定加速網路。
+加速網路可以對 VM 啟用單一根目錄 i/o 虛擬化（SR-IOV），以改善網路效能。 當您為 Azure VM 啟用複寫功能時，Site Recovery 會偵測是否已啟用加速網路。 如果是，則在容錯移轉之後，Site Recovery 將會自動對 [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) 和 [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) 的目標複本 Azure VM 設定加速網路。
 
 [深入了解](azure-vm-disaster-recovery-with-accelerated-networking.md)。
 
@@ -426,7 +439,7 @@ Site Recovery 現在支援將一般用途 v2 儲存體帳戶用於快取儲存�
 **Linux 支援** | 已針對 Oracle Linux 6.8、Oracle Linux 6.9 和 Oracle Linux 7.0 與 Red Hat 相容核心以及 Unbreakable Enterprise Kernel （UEK）第5版新增支援。
 **Linux BRTFS 檔案系統** | 支援 Azure Vm。
 **可用性區域中的 Azure Vm** | 您可以針對部署于可用性區域中的 Azure Vm，啟用另一個區域的複寫。 現在，您可以為 Azure VM 啟用複寫功能，並將容錯移轉的目標設為單一 VM 執行個體、可用性設定組中的 VM，或可用性區域中的 VM。 此設定不會影響複寫。 [閱讀](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/)公告。
-**已啟用防火牆的儲存體（入口網站/PowerShell）** | 已針對[啟用防火牆的儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-network-security)新增支援。<br/><br/> 您可以在已啟用防火牆的儲存體帳戶上，將具有非受控磁片的 Azure Vm 複寫到另一個 Azure 區域，以進行嚴重損壞修復。<br/><br/> 您可以使用已啟用防火牆的儲存體帳戶作為非受控磁片的目標儲存體帳戶。<br/><br/> 在入口網站中支援並使用 PowerShell。
+**已啟用防火牆的儲存體（入口網站/PowerShell）** | 已針對[啟用防火牆的儲存體帳戶](../storage/common/storage-network-security.md)新增支援。<br/><br/> 您可以在已啟用防火牆的儲存體帳戶上，將具有非受控磁片的 Azure Vm 複寫到另一個 Azure 區域，以進行嚴重損壞修復。<br/><br/> 您可以使用已啟用防火牆的儲存體帳戶作為非受控磁片的目標儲存體帳戶。<br/><br/> 在入口網站中支援並使用 PowerShell。
 
 ## <a name="updates-december-2018"></a>更新（2018年12月）
 
@@ -467,7 +480,7 @@ Azure Vm 的嚴重損壞修復會產生 VM 授權成本，以及網路和儲存�
 **區域支援** | 已為澳大利亞中部1和澳大利亞中部2新增 Site Recovery 支援。
 **支援磁片加密** | 針對使用 Azure AD 應用程式以 Azure 磁碟加密（ADE）加密的 Azure Vm 的嚴重損壞修復新增支援。 [深入了解](azure-to-azure-how-to-enable-replication-ade-vms.md)。
 **磁片排除** | Azure VM 複寫期間，現在會自動排除未初始化的磁片。
-**已啟用防火牆的儲存體（PowerShell）** | 已針對[啟用防火牆的儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-network-security)新增支援。<br/><br/> 您可以在已啟用防火牆的儲存體帳戶上，將具有非受控磁片的 Azure Vm 複寫到另一個 Azure 區域，以進行嚴重損壞修復。<br/><br/> 您可以使用已啟用防火牆的儲存體帳戶作為非受控磁片的目標儲存體帳戶。<br/><br/> 僅支援使用 PowerShell。
+**已啟用防火牆的儲存體（PowerShell）** | 已針對[啟用防火牆的儲存體帳戶](../storage/common/storage-network-security.md)新增支援。<br/><br/> 您可以在已啟用防火牆的儲存體帳戶上，將具有非受控磁片的 Azure Vm 複寫到另一個 Azure 區域，以進行嚴重損壞修復。<br/><br/> 您可以使用已啟用防火牆的儲存體帳戶作為非受控磁片的目標儲存體帳戶。<br/><br/> 僅支援使用 PowerShell。
 
 
 ### <a name="update-rollup-29"></a>更新彙總套件29
@@ -505,7 +518,7 @@ Azure Vm 的嚴重損壞修復會產生 VM 授權成本，以及網路和儲存�
 
 **功能** | **詳細資料**
 --- | ---
-**Linux 支援** | 已針對 RedHat Enterprise Linux 6.10、CentOS 6.10 新增支援。<br/><br/> 現在支援使用舊版 BIOS 相容性模式中 GUID 磁碟分割表格（GPT）磁碟分割樣式的 Linux 型 Vm。 如需詳細資訊，請參閱[AZURE VM 常見問題](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks)。
+**Linux 支援** | 已針對 RedHat Enterprise Linux 6.10、CentOS 6.10 新增支援。<br/><br/> 現在支援使用舊版 BIOS 相容性模式中 GUID 磁碟分割表格（GPT）磁碟分割樣式的 Linux 型 Vm。 如需詳細資訊，請參閱[AZURE VM 常見問題](../virtual-machines/linux/faq-for-disks.md)。
 **遷移後 Vm 的嚴重損壞修復** | 支援針對遷移至 Azure 的內部部署 VMware VM，對次要區域啟用嚴重損壞修復，而不需要先卸載 VM 上的行動服務，再啟用複寫。
 **Windows Server 2008** | 支援將執行 Windows Server 2008 R2/2008 64 位和32位的電腦進行遷移。<br/><br/> 僅限遷移（複寫和容錯移轉）。 不支援容錯回復。
 

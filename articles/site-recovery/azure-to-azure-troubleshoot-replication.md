@@ -5,16 +5,16 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901344"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130395"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>針對 Azure VM 嚴重損壞修復中的複寫進行疑難排解
 
-本文說明當您從一個區域將 Azure 虛擬機器（VM）複寫及復原到另一個區域時，Azure Site Recovery 的常見問題。 它也會說明如何疑難排解常見的問題。 如需受支援組態的詳細資訊，請參閱[複寫 Azure VM 的支援矩陣](site-recovery-support-matrix-azure-to-azure.md)。
+本文說明當您從一個區域將 Azure 虛擬機器（VM）複寫及復原到另一個區域時，Azure Site Recovery 的常見問題。 它也會說明如何疑難排解常見的問題。 如需受支援組態的詳細資訊，請參閱[複寫 Azure VM 的支援矩陣](./azure-to-azure-support-matrix.md)。
 
 Azure Site Recovery 會一致地將資料從來源區域複寫到嚴重損壞修復區域。 它也會每隔5分鐘建立一個損毀一致復原點。 如果 Site Recovery 長達 60 分鐘無法建立復原點，則以此資訊對您提出警示：
 
@@ -28,7 +28,7 @@ Error ID: 153007
 
 ## <a name="high-data-change-rate-on-the-source-virtual-machine"></a>來源虛擬機器上的高資料變更率
 
-如果來源虛擬機器上的資料變更率高於支援的限制，Azure Site Recovery 會建立事件。 若要查看問題是否因為高變換而造成，請移至 [複寫的**專案** > ] [**VM** > **事件-過去72小時**]。
+如果來源虛擬機器上的資料變更率高於支援的限制，Azure Site Recovery 會建立事件。 若要查看問題是否因為高變換而造成，請移至 [複寫的**專案**] [  >  **VM**  >  **事件-過去72小時**]。
 您應該會看到事件**資料變更率超過支援的限制**：
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png" alt-text="顯示高資料變更率過高的 Azure Site Recovery 頁面。":::
@@ -50,9 +50,9 @@ Error ID: 153007
 進階 P10 或 P15 磁碟 | 16 KB | 4 MB/秒 |    每個磁碟 336 GB
 進階 P10 或 P15 磁碟 | 32 KB 或更大 | 8 MB/秒 | 每個磁碟 672 GB
 進階 P20、P30、P40 或 P50 磁碟 | 8 KB    | 5 MB/秒 | 每個磁碟 421 GB
-進階 P20、P30、P40 或 P50 磁碟 | 16 KB 或更大 |20 MB/秒 | 每個磁片 1684 GB
+進階 P20、P30、P40 或 P50 磁碟 | 16 KB 或更大 |20 MB/秒 | 每個磁碟 1684 GB
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 Azure Site Recovery 對於資料變更率有限制，視磁片類型而定。 若要查看此問題是週期性或暫時性，請尋找受影響虛擬機器的資料變更率。 移至來源虛擬機器，在 [監視]**** 底下尋找計量，並新增如此螢幕擷取畫面所示的計量：
 
@@ -78,7 +78,7 @@ Azure Site Recovery 對於資料變更率有限制，視磁片類型而定。 �
 
 Site Recovery 會將複寫的資料傳送到快取儲存體帳戶。 如果將資料從虛擬機器上傳至快取儲存體帳戶的速度低於 4 MB，您可能會遇到網路延遲。
 
-若要檢查與延遲相關的問題，請使用[AzCopy](/azure/storage/common/storage-use-azcopy)。 您可以使用此命令列公用程式，將資料從虛擬機器上傳至快取儲存體帳戶。 如果延遲很高，請檢查您是否正在使用網路虛擬裝置（NVA）來控制來自 Vm 的輸出網路流量。 如果所有複寫流量都會通過 NVA，系統就可能會對該設備進行節流。
+若要檢查與延遲相關的問題，請使用[AzCopy](../storage/common/storage-use-azcopy-v10.md)。 您可以使用此命令列公用程式，將資料從虛擬機器上傳至快取儲存體帳戶。 如果延遲很高，請檢查您是否正在使用網路虛擬裝置（NVA）來控制來自 Vm 的輸出網路流量。 如果所有複寫流量都會通過 NVA，系統就可能會對該設備進行節流。
 
 建議您在虛擬網路中為「儲存體」建立一個網路服務端點，這樣複寫流量就不會流向 NVA。 如需詳細資訊，請參閱[網路虛擬設定組態](azure-to-azure-about-networking.md#network-virtual-appliance-configuration)。
 
@@ -106,6 +106,10 @@ Site Recovery 會將複寫的資料傳送到快取儲存體帳戶。 如果將�
 
 **如何修正**： Azure Site Recovery 無法建立儲存空間直接存取設定的應用程式一致復原點。 [設定複寫原則](azure-to-azure-how-to-enable-replication-s2d-vms.md)。
 
+### <a name="app-consistency-not-enabled-on-linux-servers"></a>Linux 伺服器上未啟用應用程式一致性
+
+**如何修正**：適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式的自訂腳本，以進行應用程式一致性。 具有前置和後置選項的自訂腳本，會由 Azure Site Recovery 行動代理程式用於應用程式一致性。 [以下](./site-recovery-faq.md#replication)是啟用它的步驟。
+
 ### <a name="more-causes-because-of-vss-related-issues"></a>更多原因是 VSS 相關的問題：
 
 若要進一步進行疑難排解，請檢查來源電腦上的檔案，以取得失敗的確切錯誤碼：
@@ -120,23 +124,23 @@ Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRI
 
 在上述範例中， **2147754994**是指出此句子之後失敗的錯誤碼。
 
-#### <a name="vss-writer-is-not-installed---error-2147221164"></a>未安裝 VSS 寫入器-錯誤2147221164
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>未安裝 VSS 寫入器 - 錯誤 2147221164
 
 **如何修正**：若要產生應用程式一致性標記，Azure Site Recovery 使用磁碟區陰影複製服務（VSS）。 Site Recovery 會安裝 VSS 提供者，以便其作業取得應用程式一致性快照集。 Azure Site Recovery 會將此 VSS 提供者安裝為服務。 如果未安裝 VSS 提供者，應用程式一致性快照集建立將會失敗。 它會顯示**未註冊的錯誤識別碼0X80040154 類別**。 如需[VSS 寫入器安裝的疑難排解](vmware-azure-troubleshoot-push-install.md#vss-installation-failures)，請參閱一文。
 
-#### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS 寫入器已停用-錯誤2147943458
+#### <a name="vss-writer-is-disabled---error-2147943458"></a>已停用 VSS 寫入器 - 錯誤　2147943458
 
 **如何修正**：若要產生應用程式一致性標記，AZURE SITE RECOVERY 使用 VSS。 Site Recovery 會安裝 VSS 提供者，以便其作業取得應用程式一致性快照集。 此 VSS 提供者會安裝為服務。 如果您未啟用 VSS 提供者服務，應用程式一致性快照集建立將會失敗。 它會顯示錯誤：**指定的服務已停用且無法啟動（0x80070422）**。
 
 如果 VSS 已停用：
 
-- 確認 VSS 提供者服務的 [啟動類型] 設定為 [**自動**]。
-- 重新啟動下列服務：
+- 請確認 VSS 提供者服務的啟動類型設定為 [自動]。
+- 請重新啟動下列服務：
   - VSS 服務。
   - Azure Site Recovery VSS 提供者。
   - VDS 服務。
 
-#### <a name="vss-provider-not_registered---error-2147754756"></a>VSS 提供者 NOT_REGISTERED-錯誤2147754756
+#### <a name="vss-provider-not_registered---error-2147754756"></a>VSS 提供者未登錄 - 錯誤 2147754756
 
 **如何修正**：若要產生應用程式一致性標記，AZURE SITE RECOVERY 使用 VSS。 檢查是否已安裝 Azure Site Recovery VSS 提供者服務。
 
@@ -150,9 +154,9 @@ Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRI
 
    `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-確認 VSS 提供者服務的 [啟動類型] 設定為 [**自動**]。
+請確認 VSS 提供者服務的啟動類型設定為 [自動]。
 
-重新啟動下列服務：
+請重新啟動下列服務：
 
 - VSS 服務。
 - Azure Site Recovery VSS 提供者。

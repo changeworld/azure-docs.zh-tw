@@ -6,11 +6,12 @@ manager: rochakm
 ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
-ms.openlocfilehash: 50fb6da2905b2ae27547f25cce3d7a76ca7976b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 373cffe96119af4a2fc0d74e2090e6cc24dcaf8f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75498128"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131257"
 ---
 # <a name="exclude-disks-from-replication"></a>從複寫排除磁碟
 
@@ -40,7 +41,7 @@ ms.locfileid: "75498128"
 
 ## <a name="exclude-disks"></a>排除磁碟
 
-1. 若要在為 hyper-v VM[啟用](site-recovery-hyper-v-site-to-azure.md)複寫時排除磁片，請在選取您想要複寫的 vm 之後，在 [**啟用**複寫內容] [  >  **Properties**  >  **設定屬性**] 頁面中，檢查 [**要**複寫的磁片] 資料行。 預設會選取所有磁片進行複寫。
+1. 若要在為 hyper-v VM[啟用](./hyper-v-azure-tutorial.md)複寫時排除磁片，請在選取您想要複寫的 vm 之後，在 [**啟用**複寫內容] [  >  **Properties**  >  **設定屬性**] 頁面中，檢查 [**要**複寫的磁片] 資料行。 預設會選取所有磁片進行複寫。
 2. 如果您不想要複寫特定的磁片，請在 [要複寫的**磁片**] 中清除您要排除之任何磁片的選項。 
 
     ![從複寫排除磁碟](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)

@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
-ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11cc71a05fb95453553223dcb34839e8a5fc6a3a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691198"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130442"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>為 VNet 設定網路對應和 IP 位址
 
@@ -93,5 +94,5 @@ ms.locfileid: "84691198"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 檢閱 Azure VM 災害復原的[網路指引](site-recovery-azure-to-azure-networking-guidance.md)。
+- 檢閱 Azure VM 災害復原的[網路指引](./azure-to-azure-about-networking.md)。
 - [深入了解](site-recovery-retain-ip-azure-vm-failover.md)有關在容錯移轉之後保留 IP 位址。

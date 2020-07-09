@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/20/2020
-ms.openlocfilehash: 84026a5a9ba63bf008eeb25df3d0c42cbd558fa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/08/2020
+ms.openlocfilehash: 4e6f8a115e996ac6862f2fb04e5050b94f9f823b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85118775"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132748"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 資料庫移轉服務所支援的遷移案例狀態
 
@@ -74,17 +74,20 @@ Azure 資料庫移轉服務所支援的遷移案例狀態會隨著時間而不�
 |   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
-|   | Oracle | ✔ | 個人預覽版 |
+|   | Oracle | X |  |
 | **Azure SQL VM** | SQL Server | X |   |
 |   | Oracle  | X |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
 | **適用於 MySQL 的 Azure DB** | MySQL | ✔ | GA |
 |   | RDS MySQL | ✔ | GA |
 | **適用于于 postgresql 的 Azure DB-單一伺服器** | PostgreSQL | ✔ | GA |
+|   | 適用于于 postgresql 的 Azure DB-單一伺服器 * | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 |   | Oracle | ✔ | 公開預覽 |
 | **適用于于 postgresql 的 Azure DB-超大規模資料庫（Citus）** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
+
+* 支援于 postgresql 第10版和更新版本。
 
 ## <a name="next-steps"></a>後續步驟
 

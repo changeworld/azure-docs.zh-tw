@@ -9,11 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e42096e7ab950e5d8046ec6140c01b24643cb87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa6e3edf2c02cad34cbe9b1f9ac82517823caa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891476"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130551"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Windows JAVA 應用程式
 
@@ -321,7 +322,7 @@ Azure 支援的 Java Development Kit (JDK) 是透過 [Azul Systems](https://www.
 
 ### <a name="security-updates"></a>安全性更新
 
-只要主要資訊安全漏洞的修補程式和修正程式在 Azul Systems 中變成可用，就予以發行。 在 [NIST Common Vulnerability Scoring System 第 2 版](https://nvd.nist.gov/cvss.cfm)上，「主要」弱點是由基本分數 9.0 或更大值定義。
+只要主要資訊安全漏洞的修補程式和修正程式在 Azul Systems 中變成可用，就予以發行。 在 [NIST Common Vulnerability Scoring System 第 2 版](https://nvd.nist.gov/vuln-metrics/cvss)上，「主要」弱點是由基本分數 9.0 或更大值定義。
 
 Tomcat 8.0 已[于2018年9月30日到達生命週期結束（EOL）](https://tomcat.apache.org/tomcat-80-eol.html)。 雖然執行時間仍是在 Azure App Service 上可，但 Azure 不會將安全性更新套用至 Tomcat 8.0。 可能的話，請將您的應用程式遷移至 Tomcat 8.5 或9.0。 Tomcat 8.5 和9.0 都可以在 Azure App Service 上取得。 如需詳細資訊，請參閱[官方 Tomcat 網站](https://tomcat.apache.org/whichversion.html)。 
 

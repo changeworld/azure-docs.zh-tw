@@ -324,7 +324,7 @@
           href: how-to-use-secrets-in-runs.md
         - name: 增強式學習
           href: how-to-use-reinforcement-learning.md
-    - name: 將機器學習自動化
+    - name: 自動化機器學習
       displayName: 'automl, auto ml'
       items:
         - name: 使用自動化 ML (Python)

@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a622179d1e83b41e906a9d276377f5c9474264b9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73936051"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129958"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>規劃 Hyper-V VM 災害復原的容量 
 
@@ -38,7 +39,7 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 ## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 * 收集您的環境的資訊，包括 VM、每個 VM 的磁碟、每個磁碟的儲存體。
-* 識別複寫資料的每日變更 (流失) 率。 請下載 [Hyper-V 容量規劃工具](https://www.microsoft.com/download/details.aspx?id=39057)來取得變更率。 [深入了解](site-recovery-capacity-planning-for-hyper-v-replication.md) 此工具。 我們建議您執行此工具一週以上的時間來擷取平均值。
+* 識別複寫資料的每日變更 (流失) 率。 請下載 [Hyper-V 容量規劃工具](https://www.microsoft.com/download/details.aspx?id=39057)來取得變更率。 [深入了解](./hyper-v-deployment-planner-overview.md) 此工具。 我們建議您執行此工具一週以上的時間來擷取平均值。
 
 
 ## <a name="run-the-quick-planner"></a>執行快速規劃
@@ -52,7 +53,7 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 
    a. 在 [選取您的案例]**** 中，選擇 [Hyper-V 到 Azure]**** 或 [VMware/實體到 Azure]****。
 
-   b. 在 [平均每日資料變更率 (%)]**** 中，輸入使用 [Hyper-V 容量規劃工具](site-recovery-capacity-planning-for-hyper-v-replication.md)或 [Site Recovery 部署規劃工具](./site-recovery-deployment-planner.md)收集的資訊。
+   b. 在 [平均每日資料變更率 (%)]**** 中，輸入使用 [Hyper-V 容量規劃工具](./hyper-v-deployment-planner-overview.md)或 [Site Recovery 部署規劃工具](./site-recovery-deployment-planner.md)收集的資訊。
 
    c. 將 Hyper-V VM 複寫到 Azure 時，不使用 [壓縮]**** 設定。 如需壓縮，請使用第三方設備，例如 Riverbed。
 
@@ -146,4 +147,4 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
    ![容量規劃](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>後續步驟
-[了解如何執行](site-recovery-capacity-planning-for-hyper-v-replication.md)容量規劃工具。
+[了解如何執行](./hyper-v-deployment-planner-overview.md)容量規劃工具。

@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Blob 儲存體進行潛在客戶管理 - Microsoft 商業市集
 description: 了解如何使用 Azure Blob 來針對 Microsoft AppSource 和 Azure Marketplace 設定潛在客戶
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/01/2020
-ms.author: dsindona
-ms.openlocfilehash: 471675de58161fc0c0110e2968089da062c6da87
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960557"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121906"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure Blob 儲存體來管理商業市集潛在客戶
 
