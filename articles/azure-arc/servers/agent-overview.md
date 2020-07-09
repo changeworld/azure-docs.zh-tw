@@ -8,11 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74ac991eb40864aeb4ac42d4774d9ab61fb14c36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3d3521cfb3d3b0c6659013922ab11fe765af882
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807666"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111247"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>適用於伺服器的 Azure Arc 代理程式概觀
 
@@ -59,7 +60,7 @@ Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元�
 
 * 在安裝期間會建立下列安裝資料夾。
 
-    |資料夾 |Description |
+    |資料夾 |描述 |
     |-------|------------|
     |C:\Program Files\AzureConnectedMachineAgent |包含代理程式支援檔案的預設安裝路徑。|
     |%ProgramData%\AzureConnectedMachineAgent |包含代理程式組態檔。|
@@ -71,21 +72,21 @@ Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元�
 
 * 在安裝代理程式期間，會在目標電腦上建立下列 Windows 服務。
 
-    |服務名稱 |顯示名稱 |程序名稱 |Description |
+    |服務名稱 |顯示名稱 |程序名稱 |描述 |
     |-------------|-------------|-------------|------------|
     |himds |Azure 混合式 Instance Metadata Service |himds.exe |此服務會執行 Azure 實例中繼資料服務（IMDS），以管理與 Azure 的連線，以及連接的電腦的 Azure 身分識別。|
     |DscService |來賓設定服務 |dsc_service.exe |這是在 Azure 內部用來實作客體內原則的 Desired State Configuration (DSC v2) 程式碼基底。|
 
 * 下列環境變數是在代理程式安裝期間所建立。
 
-    |名稱 |預設值 |Description |
+    |名稱 |預設值 |描述 |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * 有數個記錄檔可供疑難排解。 如下表中所述。
 
-    |Log |說明 |
+    |Log |描述 |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |記錄代理程式（HIMDS）服務的詳細資料，並與 Azure 互動。|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |使用 verbose (-v) 引數時，包含 azcmagent 工具命令的輸出。|
@@ -122,7 +123,7 @@ Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元�
 
 * 在安裝代理程式期間，會在目標電腦上建立下列精靈。
 
-    |服務名稱 |顯示名稱 |程序名稱 |Description |
+    |服務名稱 |顯示名稱 |程序名稱 |描述 |
     |-------------|-------------|-------------|------------|
     |himdsd.service |Azure 混合式 Instance Metadata Service |/opt/azcmagent/bin/himds |此服務會執行 Azure 實例中繼資料服務（IMDS），以管理與 Azure 的連線，以及連接的電腦的 Azure 身分識別。|
     |dscd.service |來賓設定服務 |/opt/DSC/dsc_linux_service |這是在 Azure 內部用來實作客體內原則的 Desired State Configuration (DSC v2) 程式碼基底。|
@@ -140,7 +141,7 @@ Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元�
 
 * 下列環境變數是在代理程式安裝期間所建立。 這些變數是在 `/lib/systemd/system.conf.d/azcmagent.conf` 中進行設定。
 
-    |名稱 |預設值 |Description |
+    |名稱 |預設值 |描述 |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -184,7 +185,7 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 |平台/語言 | 支援 | 相關資訊 |
 | --- | --- | --- |
 |Linux | Linux 發行版本通常會依賴 [OpenSSL](https://www.openssl.org) 來取得 TLS 1.2 支援。 | 請檢查 [OpenSSL 變更記錄](https://www.openssl.org/news/changelog.html)來確認支援的 OpenSSL 版本。|
-| Windows Server 2012 R2 及更高版本 | 支援，而且已預設為啟用。 | 請確認您仍在使用[預設設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。|
+| Windows Server 2012 R2 及更高版本 | 支援，而且已預設為啟用。 | 請確認您仍在使用[預設設定](/windows-server/security/tls/tls-registry-settings)。|
 
 ### <a name="networking-configuration"></a>網路設定
 
@@ -199,7 +200,7 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 
 URL：
 
-| 代理程式資源 | Description |
+| 代理程式資源 | 描述 |
 |---------|---------|
 |management.azure.com|Azure Resource Manager|
 |login.windows.net|Azure Active Directory|
@@ -208,7 +209,7 @@ URL：
 |*-agentservice-prod-1.azure-automation.net|來賓組態|
 |*.his.arc.azure.com|混合式識別服務|
 
-如需每個服務標籤/區域的 IP 位址清單，請參閱 JSON 檔案 - [Azure IP 範圍和服務標籤 – 公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 會發佈每週更新，其中包含每個 Azure 服務和其使用的 IP 範圍。 如需詳細資訊，請參閱[服務標籤](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
+如需每個服務標籤/區域的 IP 位址清單，請參閱 JSON 檔案 - [Azure IP 範圍和服務標籤 – 公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 會發佈每週更新，其中包含每個 Azure 服務和其使用的 IP 範圍。 如需詳細資訊，請參閱[服務標籤](../../virtual-network/security-overview.md#service-tags)。
 
 除了服務標籤 IP 位址範圍資訊之外，上述表格中的 URL 也是必要的，因為大部分的服務目前都沒有服務標籤註冊。 因此，IP 位址可能會變更。 如果您的防火牆設定需要 IP 位址範圍，則應該使用 **AzureCloud** 服務標籤來允許存取所有 Azure 服務。 請勿停用這些 URL 的安全性監視或檢查，但允許這些 URL，如同其他網際網路流量。
 

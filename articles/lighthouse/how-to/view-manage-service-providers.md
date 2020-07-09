@@ -1,17 +1,18 @@
 ---
 title: 檢視和管理服務提供者
 description: 客戶可以使用 Azure 入口網站中的 [服務提供者] 頁面，檢視服務提供者、服務提供者供應項目與委派的資源的相關資訊。
-ms.date: 04/24/2020
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 8b48fb9c92cf6922cea62fe04943ae76d3d3b590
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56ba5b8c88cd4653c9d41f7f3fcc6219cc376256
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636456"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111621"
 ---
 # <a name="view-and-manage-service-providers"></a>檢視和管理服務提供者
 
-客戶可以使用[Azure 入口網站](https://portal.azure.com)中的 [**服務提供者**] 頁面，以查看服務提供者和服務提供者供應專案的相關資訊、透過[Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)委派特定資源，並購買新的服務提供者供應專案。 雖然我們在此所述的是服務提供者與其客戶，但管理多個租用戶的企業也可以使用相同的程序來合併其管理體驗。
+客戶可以使用[Azure 入口網站](https://portal.azure.com)中的 [**服務提供者**] 頁面，以查看服務提供者和服務提供者供應專案的詳細資料、將特定資源委派給[Azure 燈塔](../overview.md)，並購買新的服務提供者供應專案。 雖然我們在此所述的是服務提供者與其客戶，但管理多個租用戶的企業也可以使用相同的程序來合併其管理體驗。
 
 若要存取 Azure 入口網站中的 [服務提供者]**** 頁面，客戶可選取 [所有服務]****，然後搜尋**服務提供者**並選取它。 他們也可以在靠近 Azure 入口網站頂端的搜尋方塊中輸入「服務提供者」或「Azure 燈塔」來尋找它。
 
@@ -20,14 +21,14 @@ ms.locfileid: "84636456"
 >
 > 若要新增供應專案、委派資源和移除供應專案，使用者必須擁有訂用帳戶的[擁有者內建角色](../../role-based-access-control/built-in-roles.md#owner)。
 
-請記住，[**服務提供者**] 頁面只會顯示可透過 Azure 委派資源管理存取客戶訂用帳戶或資源群組的服務提供者的相關資訊。 如果與客戶合作的其他服務提供者不是使用 Azure 委派的資源管理來存取客戶資源，則那些服務提供者的相關資訊不會在這裡顯示。
+請記住，[**服務提供者**] 頁面只會顯示可透過 Azure 燈塔存取客戶訂用帳戶或資源群組的服務提供者的相關資訊。 如果客戶與其他不使用 Azure 燈塔來存取客戶資源的服務提供者合作，這裡就不會顯示這些服務提供者的相關資訊。
 
 > [!TIP]
-> 服務提供者若要檢視其客戶的相關資訊，可以瀏覽至 Azure 入口網站中的 [我的客戶]****。 如需詳細資訊，請參閱[檢視和管理客戶和委派的資源](view-manage-customers.md)。
+> 服務提供者可以在 Azure 入口網站中流覽至 [**我的客戶**]，以查看其客戶的相關資訊。 如需詳細資訊，請參閱[檢視和管理客戶和委派的資源](view-manage-customers.md)。
 
 ## <a name="view-service-provider-details"></a>檢視服務提供者詳細資料
 
-若要查看服務提供者的相關資訊，客戶可以選取 [**服務**供應商] 頁面左側的 [**服務提供者供應**專案]。
+若要查看服務提供者的詳細資料，客戶可以選取 [**服務**供應商] 頁面左側的 [**服務提供者供應**專案]。
 
 針對每個服務提供者供應項目，客戶都會看到服務提供者的名稱與相關聯的供應項目，以及客戶在上線程序中輸入的名稱。
 
@@ -66,11 +67,11 @@ ms.locfileid: "84636456"
 頁面頂端的篩選器可讓您排序和分組委派資訊。 您也可以依特定客戶、供應專案或關鍵字進行篩選。
 
 > [!NOTE]
-> 在 Azure 入口網站中或透過 Api[查看委派範圍的角色指派資訊](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope)時，客戶將不會看到這些角色指派，或來自已授與這些角色之服務提供者租使用者的任何使用者。
+> 在 Azure 入口網站中或透過 Api[來查看委派範圍的角色指派](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope)時，客戶將不會看到這些角色指派，或來自已授與這些角色之服務提供者租使用者的任何使用者。
 
 ## <a name="audit-delegations-in-your-environment"></a>在您的環境中審核委派
 
-客戶可能會想要瞭解已委派給[Azure 委派資源管理](../concepts/azure-delegated-resource-management.md)之服務提供者的訂用帳戶和/或資源群組。 這對於具有大量訂用帳戶的客戶，或擁有許多執行管理工作的使用者而言特別有用。
+客戶可能會想要瞭解已委派給 Azure 燈塔的訂用帳戶和/或資源群組。 這對於具有大量訂用帳戶的客戶，或擁有許多執行管理工作的使用者而言特別有用。
 
 我們提供[Azure 原則內建原則定義](../../governance/policy/samples/built-in-policies.md#lighthouse)，以將範圍委派審查至管理租使用者。 您可以將此原則指派給包含您要審核之所有訂用帳戶的管理群組。 當您檢查是否符合此原則時，任何委派的訂用帳戶和（或）資源群組（在指派原則的管理群組內）都會顯示為不相容的狀態。 然後您可以檢查結果，並確認沒有任何未預期的委派。
 

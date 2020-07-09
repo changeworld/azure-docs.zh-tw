@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 description: 了解如何使用所需的 SKU，在 Azure Marketplace 上建立虛擬機器供應項目。
-author: emuench
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: emuench
+ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: 499c7e9e4ca4ab5db02c566830738f0ceb07e40d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984644"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110974"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 
@@ -180,7 +180,7 @@ ms.locfileid: "85984644"
 
 ### <a name="marketplace-details"></a>Marketplace 詳細資料
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>名稱
 
 您在此處輸入的名稱會當作供應項目清單標題向客戶顯示。 當您建立供應項目時，此欄位會自動填入您在 [供應項目別名] 方塊中輸入的名稱。 您稍後可以變更此名稱。 名稱：
 
@@ -535,7 +535,7 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 4. 條款及條件
 5. 隱私權原則位址（連結）
 6. 供應項目名稱
-7. Description
+7. 描述
 8. 實用的連結
 9. 螢幕擷取畫面/影片
 
@@ -566,8 +566,8 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
-1. Name
-2. 說明
+1. 名稱
+2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面/影片
 

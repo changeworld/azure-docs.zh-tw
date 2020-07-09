@@ -3,11 +3,12 @@ title: 設定 VMware 的 Azure Migrate 設備
 description: 瞭解如何設定 Azure Migrate 設備，以評估和遷移 VMware Vm。
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81538251"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112811"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>設定適用于 VMware Vm 的應用裝置
 
@@ -46,7 +47,7 @@ ms.locfileid: "81538251"
 2. 執行下列命令，以產生 OVA 的雜湊：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用方式範例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 針對最新的設備版本，產生的雜湊應符合這些[設定](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security)。
+3. 針對最新的設備版本，產生的雜湊應符合這些[設定](./tutorial-assess-vmware.md#verify-security)。
 
 
 
@@ -114,7 +115,7 @@ ms.locfileid: "81538251"
 3. 按一下 [驗證連線]**** 以確定設備可以連線到 vCenter Server。
 
 ### <a name="specify-vm-credentials"></a>指定 VM 認證
-若要探索應用程式、角色和功能，以及視覺化 VM 的相依性，您可以提供可存取 VMware VM 的 VM 認證。 您可以新增一個適用於 Windows VM 的認證，以及一個適用於 Linux VM 的認證。 [深入了解](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)所需的存取權限。
+若要探索應用程式、角色和功能，以及視覺化 VM 的相依性，您可以提供可存取 VMware VM 的 VM 認證。 您可以新增一個適用於 Windows VM 的認證，以及一個適用於 Linux VM 的認證。 [深入了解](./migrate-support-matrix-vmware.md)所需的存取權限。
 
 > [!NOTE]
 > 這是選擇性的輸入，而且是啟用應用程式探索和無代理程式相依性視覺效果的必要項。
@@ -123,7 +124,7 @@ ms.locfileid: "81538251"
 2. 選取 [作業系統]****。
 3. 為認證提供易記名稱。
 4. 在 [使用者名稱]**** 與 [密碼]**** 中，指定至少在 VM 上具有來賓存取權的帳戶。
-5. 按一下 **[新增]** 。
+5. 按一下 [新增] 。
 
 一旦指定 vCenter Server 與 VM 認證 (選擇性)，請按一下 [儲存並開始探索]**** 以開始探索內部部署環境。
 

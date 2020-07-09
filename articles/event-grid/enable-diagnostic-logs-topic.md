@@ -1,17 +1,14 @@
 ---
 title: Azure 事件方格-啟用主題或網域的診斷記錄
 description: 本文提供逐步指示，說明如何啟用 Azure 事件方格主題的診斷記錄。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 06/10/2020
-ms.author: spelluru
-ms.openlocfilehash: 253d1fb933c32735f68cf6a2d471a7687caf5301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 7811c2eef4379b7e3d5ed07dbd0df8e2a52dba85
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84670104"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114698"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>啟用 Azure 事件方格主題或網域的診斷記錄
 診斷設定可讓「事件方格」使用者在儲存體帳戶、事件中樞或 Log Analytics 工作區中，捕獲及查看**發佈和傳遞失敗**記錄。 本文提供在事件方格主題上啟用這些設定的逐步指示。

@@ -1,17 +1,18 @@
 ---
 title: 大規模地將 Azure 原則部署至委派的訂用帳戶
-description: 了解 Azure 委派資源管理如何讓您跨多個租用戶部署原則定義和原則指派。
-ms.date: 11/8/2019
+description: 瞭解 Azure 燈塔如何讓您跨多個租使用者部署原則定義和原則指派。
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 0e3af1728b4927874fa599bad256798f39721e22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d7c6206916f87072f68cc0fe953c8049896cd0b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636524"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111791"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>大規模地將 Azure 原則部署至委派的訂用帳戶
 
-身為服務提供者，您可能已將多個客戶租用戶上架以進行 Azure 委派資源管理。 [Azure Lighthouse](../overview.md) 可讓服務提供者一次在多個租用戶之間執行大規模作業，讓管理工作更有效率。
+身為服務提供者，您可能已將多個客戶租使用者上架至[Azure 燈塔](../overview.md)。 Azure Lighthouse 可讓服務提供者一次在多個租用戶之間執行大規模作業，讓管理工作更有效率。
 
 本主題說明如何使用 [Azure 原則](../../governance/policy/index.yml)，使用 PowerShell 命令在多個租用戶之間部署原則定義和原則指派。 在此範例中，原則定義可確保只允許 HTTPS 流量來保護儲存體帳戶。
 

@@ -1,17 +1,14 @@
 ---
 title: 使用 Azure Resource Manager 範本在 Azure 事件方格中建立系統主題
 description: 本文說明如何使用 Azure Resource Manager 範本，在 Azure 事件方格中建立系統主題。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.author: spelluru
-ms.openlocfilehash: a2fe0ffd5f8ac801d15dc08d027c9442c57ef2b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 1c8881a2d9dfca43084cc537b106e84b050a18d5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457411"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115157"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>使用 Resource Manager 範本在 Azure 事件方格中建立系統主題
 本文說明如何使用 Resource Manager 範本來建立和管理系統主題。 如需系統主題的總覽，請參閱[系統主題](system-topics.md)。

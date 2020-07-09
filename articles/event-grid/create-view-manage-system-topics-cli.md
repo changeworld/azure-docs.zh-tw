@@ -1,18 +1,14 @@
 ---
 title: 使用 CLI 建立、查看和管理 Azure 事件方格系統主題
 description: 本文說明如何使用 Azure CLI 來建立、查看和刪除系統主題。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.author: spelluru
-ms.openlocfilehash: d9ba83d12e73b3ebceaee3167cdcf7f27922b686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 354afb89b145e288f525e40ad700e8f8a67c6dad
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885249"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115038"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>使用 Azure CLI 建立、查看和管理事件方格系統主題
 本文說明如何使用 Azure CLI 建立和管理系統主題。 如需系統主題的總覽，請參閱[系統主題](system-topics.md)。

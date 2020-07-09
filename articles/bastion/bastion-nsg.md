@@ -5,14 +5,14 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 07/07/2020
 ms.author: charwen
-ms.openlocfilehash: e4782213b38ad9e265cc66c3073dc5f357c50561
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fc261c31a1190536f3128ed6472d9ca76dfce7e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321644"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112186"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 存取和 Azure 防禦
 
@@ -41,10 +41,16 @@ Azure 防禦會特別部署至***AzureBastionSubnet***。
    * **來自公用網際網路的輸入流量：** Azure 防禦會建立公用 IP，其必須在公用 IP 上啟用埠443，以供輸入流量使用。 不需要在 AzureBastionSubnet 上開啟埠3389/22。
    * **來自 Azure 防禦控制平面的輸入流量：** 針對 [控制平面連線]，啟用埠443從**GatewayManager**服務標記輸入。 這可讓控制平面（也就是閘道管理員）能夠與 Azure 防禦交談。
 
+
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="輸入":::
+
 * **輸出流量：**
 
    * **目標 vm 的輸出流量：** Azure 防禦會透過私人 IP 到達目標 Vm。 Nsg 需要允許埠3389和22的其他目標 VM 子網的輸出流量。
    * **Azure 中其他公用端點的輸出流量：** Azure 防禦必須能夠連接到 Azure 內的各種公用端點（例如，用於儲存診斷記錄和計量記錄）。 基於這個理由，Azure 防禦需要輸出至443以**AzureCloud**服務標記。
+
+
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="輸出":::
 
 ### <a name="target-vm-subnet"></a>目標 VM 子網
 這是包含您想要 RDP/SSH 的目標虛擬機器的子網。

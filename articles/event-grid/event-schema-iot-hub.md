@@ -1,20 +1,14 @@
 ---
 title: 做為事件方格來源 Azure IoT 中樞
 description: 本文提供 Azure IoT 中樞事件的屬性和結構描述。 它會列出可用的事件種類、範例事件和事件屬性。
-services: iot-hub
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393334"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113644"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>做為事件方格來源 Azure IoT 中樞
 本文提供 Azure IoT 中樞事件的屬性和結構描述。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 
@@ -159,7 +153,7 @@ DeviceCreated 和 DeviceDeleted 事件的結構描述具有相同的結構。 �
 
 對於所有 IoT 中樞事件，資料物件都會包含下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | hubName | 字串 | 已建立或刪除裝置的 IoT 中樞名稱。 |
 | deviceId | 字串 | 裝置的唯一識別碼。 此區分大小寫的字串最長為 128 個字元，並支援 ASCII 7 位元英數字元和下列特殊字元：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
@@ -168,7 +162,7 @@ DeviceCreated 和 DeviceDeleted 事件的結構描述具有相同的結構。 �
 
 對於**裝置連線**和**裝置中斷連線** IoT 中樞事件，資料物件會包含下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | moduleId | 字串 | 模組的唯一識別碼。 針對模組裝置才會輸出此欄位。 此區分大小寫的字串最長為 128 個字元，並支援 ASCII 7 位元英數字元和下列特殊字元：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
 | deviceConnectionStateEventInfo | 物件 (object) | 裝置連線狀態事件資訊
@@ -176,7 +170,7 @@ DeviceCreated 和 DeviceDeleted 事件的結構描述具有相同的結構。 �
 
 針對**裝置遙測**IoT 中樞事件，資料物件會包含[IoT 中樞訊息格式](../iot-hub/iot-hub-devguide-messages-construct.md)的裝置到雲端訊息，而且具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | body | 字串 | 來自裝置的訊息內容。 |
 | properties | 字串 | 應用程式屬性為可新增至訊息的使用者定義字串。 這些欄位為選擇性。 |
@@ -184,7 +178,7 @@ DeviceCreated 和 DeviceDeleted 事件的結構描述具有相同的結構。 �
 
 對於**裝置建立**和**裝置刪除** IoT 中樞事件，資料物件會包含下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | twin | 物件 (object) | 裝置對應項的相關資訊，這是應用程式裝置中繼資料的雲端標記法。 | 
 | deviceID | 字串 | 裝置對應項的唯一識別碼。 | 

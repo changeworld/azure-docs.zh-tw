@@ -1,17 +1,18 @@
 ---
 title: 移除委派的存取權
-description: 瞭解如何對已委派給 Azure 委派資源管理的服務提供者的資源，移除其存取權。
-ms.date: 04/24/2020
+description: 瞭解如何移除已委派給 Azure 燈塔服務提供者之資源的存取權。
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 2a8024a47b3f7ea461e4ea7648db7003889552cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be1547056bc3ec387ba4cba52f6b6d6fbcaad23c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636490"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111723"
 ---
 # <a name="remove-access-to-a-delegation"></a>移除委派的存取權
 
-將客戶的訂用帳戶或資源群組委派給[Azure 委派資源管理](../concepts/azure-delegated-resource-management.md)的服務提供者之後，您可以視需要移除委派。 一旦移除委派，先前授與給服務提供者租使用者中之使用者的存取將不再適用。
+將客戶的訂用帳戶或資源群組委派給[Azure 燈塔](../overview.md)的服務提供者之後，您可以視需要移除委派。 移除委派之後，先前授與給服務提供者租使用者中之使用者的[Azure 委派資源管理](../concepts/azure-delegated-resource-management.md)存取將不再適用。
 
 只要使用者擁有適當的許可權，就可以在客戶租使用者或服務提供者租使用者中移除委派。
 

@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 85b680aafd822b80edf543ca39787848129f1930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 229d4fd6647a8a1b756fedee2a864d00b9c7de62
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322054"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110992"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share 的角色和需求 
 
@@ -30,9 +30,8 @@ Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的�
 
 以下是指派給資料共用資源的受控識別之角色的摘要：
 
-| |  |  |
-|---|---|---|
 |**資料存放區類型**|**Data Provider 來源資料存放區**|**資料取用者目標資料存放區**|
+|---|---|---|
 |Azure Blob 儲存體| 儲存體 Blob 資料讀者 | 儲存體 Blob 資料參與者
 |Azure Data Lake Gen1 | 擁有者 | 不支援
 |Azure Data Lake Gen2 | 儲存體 Blob 資料讀者 | 儲存體 Blob 資料參與者
@@ -42,9 +41,8 @@ Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的�
 
 對於以 SQL 為基礎的共用，必須從 Azure SQL Database 中的外部提供者建立 SQL 使用者，其名稱與 Azure 資料共用資源相同。 以下是 SQL 使用者所需的許可權摘要。
 
-| |  |  |
-|---|---|---|
 |**SQL Database 類型**|**Data Provider SQL 使用者權限**|**資料取用者 SQL 使用者權限**|
+|---|---|---|
 |Azure SQL Database | db_datareader | db_datareader、db_datawriter、db_ddladmin
 |Azure Synapse Analytics (先前為 SQL DW) | db_datareader | db_datareader、db_datawriter、db_ddladmin
 |
@@ -103,4 +101,3 @@ Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的�
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解 Azure 中的角色 - [了解角色定義](../role-based-access-control/role-definitions.md)
-

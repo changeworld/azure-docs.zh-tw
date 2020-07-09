@@ -1,18 +1,14 @@
 ---
 title: 做為事件方格來源 Azure Blob 儲存體
 description: 描述 Azure Event Grid blob 儲存體事件的屬性
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: ec31d8b0b2cc672b65d0c25a4a902befd8693d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: a226a46dcc85e2bb4940364d2802397edb2c2397
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84780999"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113746"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>做為事件方格來源 Azure Blob 儲存體
 
@@ -28,7 +24,7 @@ ms.locfileid: "84780999"
 
 當用戶端藉由呼叫 Blob REST Api 來建立、取代或刪除 blob 時，就會觸發這些事件。
 
- |事件名稱 |Description|
+ |事件名稱 |描述|
  |----------|-----------|
  |**Microsoft.Storage.BlobCreated** |建立或取代 blob 時觸發。 <br>具體而言，當用戶端使用 `PutBlob` `PutBlockList` `CopyBlob` 可在 Blob REST API 中取得的、或作業時，就會觸發此事件。   |
  |**Microsoft.Storage.BlobDeleted** |刪除 blob 時觸發。 <br>具體而言，當用戶端呼叫 `DeleteBlob` Blob REST API 中可用的作業時，就會觸發此事件。 |
@@ -40,7 +36,7 @@ ms.locfileid: "84780999"
 
 如果您在儲存體帳戶上啟用階層式命名空間，而且用戶端呼叫 Azure Data Lake Storage Gen2 REST Api，就會觸發這些事件。 如需 bout about Azure Data Lake Storage Gen2 的詳細資訊，請參閱[Azure Data Lake Storage Gen2 簡介](../storage/blobs/data-lake-storage-introduction.md)。
 
-|事件名稱|Description|
+|事件名稱|描述|
 |----------|-----------|
 |**Microsoft.Storage.BlobCreated** | 建立或取代 blob 時觸發。 <br>具體而言，當用戶端使用 `CreateFile` `FlushWithClose` Azure Data Lake Storage Gen2 REST API 中提供的和作業時，就會觸發此事件。 |
 |**Microsoft.Storage.BlobDeleted** |刪除 blob 時觸發。 <br>具體而言，當用戶端呼叫 `DeleteFile` Azure Data Lake Storage Gen2 REST API 中提供的作業時，也會觸發此事件。 |

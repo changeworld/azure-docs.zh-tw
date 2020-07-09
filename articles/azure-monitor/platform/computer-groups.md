@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689005"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112107"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure 監視器記錄檔查詢中的電腦群組
 Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-query-overview.md)的範圍設定為一組特定的電腦。  使用您所定義的查詢，或從不同來源匯入群組，將電腦填入每個群組中。  當記錄查詢包含群組時，結果就僅限於與群組中的電腦相符的記錄。
@@ -33,7 +34,9 @@ Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-que
 
 您可以對電腦群組使用任何查詢，但它必須使用 `distinct Computer` 傳回一組不同的電腦。  以下是您可以用來作為電腦群組的典型查詢範例。
 
-    Heartbeat | where Computer contains "srv" | distinct Computer
+```kusto
+Heartbeat | where Computer contains "srv" | distinct Computer
+```
 
 使用下列程序在 Azure 入口網站中透過記錄搜尋建立電腦群組。
 
@@ -47,7 +50,7 @@ Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-que
 
 | 屬性 | 說明 |
 |:---|:---|
-| Name   | 要在入口網站中顯示的查詢名稱。 |
+| 名稱   | 要在入口網站中顯示的查詢名稱。 |
 | 函式別名 | 用來識別查詢中電腦群組的唯一別名。 |
 | 類別       | 用來在入口網站中組織查詢的類別。 |
 
@@ -93,26 +96,28 @@ Azure 監視器中的電腦群組可讓您將[記錄查詢](../log-query/log-que
 ## <a name="using-a-computer-group-in-a-log-query"></a>在記錄查詢中使用電腦群組
 您可以將電腦群組的別名當作函式，在查詢中使用從記錄查詢建立的電腦群組，所使用的語法一般如下：
 
-  `Table | where Computer in (ComputerGroup)`
+```kusto
+Table | where Computer in (ComputerGroup)`
+```
 
 例如，您可以使用下列語法，僅傳回 mycomputergroup 電腦群組中之電腦的 UpdateSummary 記錄。
- 
-  `UpdateSummary | where Computer in (mycomputergroup)`
 
+```kusto
+UpdateSummary | where Computer in (mycomputergroup)`
+```
 
 匯入的電腦群組及其包含的電腦會儲存在 **ComputerGroup** 資料表中。  例如，下列查詢會從 Active Directory 傳回一份網域電腦群組中的電腦清單。 
 
-  `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
+```kusto
+ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer
+```
 
 下列查詢只會針對網域電腦中的電腦，傳回 UpdateSummary 記錄。
 
-  ```
-  let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
+```kusto
+let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
   UpdateSummary | where Computer in (ADComputers)
-  ```
-
-
-
+```
 
 ## <a name="computer-group-records"></a>電腦群組記錄
 針對從 Active Directory 或 WSUS 建立每個電腦群組成員資格，Log Analytics 工作區中會建立一筆記錄。  這些記錄的類型為 **ComputerGroup**，且具有下表中的屬性。  如果電腦群組是根據記錄查詢，則不會建立記錄。

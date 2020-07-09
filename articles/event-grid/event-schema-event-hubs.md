@@ -1,18 +1,14 @@
 ---
 title: 做為事件方格來源 Azure 事件中樞
 description: 描述 Azure Event Grid 中事件中樞事件的屬性
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 960aa1fe7184e1d02d28fdc135907119fee8f123
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393346"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113678"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>做為事件方格來源 Azure 事件中樞
 
@@ -70,7 +66,7 @@ ms.locfileid: "81393346"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | fileUrl | 字串 | 擷取檔案的路徑。 |
 | fileType | 字串 | 擷取檔案的檔案類型。 |

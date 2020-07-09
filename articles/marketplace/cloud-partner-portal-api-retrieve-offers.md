@@ -1,18 +1,16 @@
 ---
 title: 取出供應專案 API-Azure Marketplace
 description: API，用來抓取發行者命名空間底下的供應專案摘要清單。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 04/08/2020
-ms.author: dsindona
-ms.openlocfilehash: ee8d0c773a5ec4d362eae66e289838b9646247e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab5f09d0d81d8a6aa526576faea0b11a6536381a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515889"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113474"
 ---
 <a name="retrieve-offers"></a>擷取供應項目
 ===============

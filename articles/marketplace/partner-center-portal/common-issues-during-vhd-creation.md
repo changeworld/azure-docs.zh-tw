@@ -1,17 +1,18 @@
 ---
 title: VHD 建立過程中的常見問題 (常見問題集)
 description: 建立虛擬硬碟 (VHD) 時常見問題的常見問題集。
-author: emuench
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
+author: emuench
+ms.author: mingshen
 ms.date: 04/09/2020
-ms.openlocfilehash: e96118e3c570faaaffb4cc7ef64e6d2d0e075e47
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2b6ab5d36cd5a1f66badc79d1b2d42e464d028f4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954171"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110737"
 ---
 # <a name="common-issues-during-vhd-creation"></a>VHD 建立過程中的常見問題
 

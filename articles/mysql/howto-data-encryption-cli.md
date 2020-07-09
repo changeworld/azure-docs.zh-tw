@@ -4,14 +4,14 @@ description: 瞭解如何使用 Azure CLI 設定和管理適用於 MySQL 的 Azu
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: 3c33fdb114356af7707c1aae2eddefd81bf10b9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6cb3e5db1c7fae3b0542557d2dae8239e0624f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82185824"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114613"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>使用 Azure CLI 適用於 MySQL 的 Azure 資料庫的資料加密
 
@@ -22,17 +22,18 @@ ms.locfileid: "82185824"
 * 您必須具有 Azure 訂用帳戶，並且是該訂用帳戶的系統管理員。
 * 建立金鑰保存庫和金鑰，以用於客戶管理的金鑰。 此外，也請在金鑰保存庫上啟用清除保護和虛刪除。
 
-    ```azurecli-interactive
-    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
-    ```
+  ```azurecli-interactive
+  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
+  ```
 
 * 在建立的 Azure Key Vault 中，建立將用於適用於 MySQL 的 Azure 資料庫資料加密的金鑰。
 
-    ```azurecli-interactive
-    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
-    ```
+  ```azurecli-interactive
+  az keyvault key create --name <key_name> -p software --vault-name <vault_name>
+  ```
 
 * 若要使用現有的金鑰保存庫，它必須具有下列屬性，才能用來作為客戶管理的金鑰：
+
   * [虛刪除](../key-vault/general/overview-soft-delete.md)
 
     ```azurecli-interactive
@@ -54,17 +55,17 @@ ms.locfileid: "82185824"
 
 1. 有兩種方式可取得適用於 MySQL 的 Azure 資料庫的受控識別。
 
-    ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>建立具有受控識別的新適用於 MySQL 的 Azure 資料庫伺服器。
+   ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>建立具有受控識別的新適用於 MySQL 的 Azure 資料庫伺服器。
 
-    ```azurecli-interactive
-    az mysql server create --name -g <resource_group> --location <locations> --storage-size <size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled>  --assign-identity
-    ```
+   ```azurecli-interactive
+   az mysql server create --name -g <resource_group> --location <locations> --storage-size size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> -geo-redundant-backup <Enabled/Disabled>  --assign-identity
+   ```
 
-    ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>更新現有的適用於 MySQL 的 Azure 資料庫伺服器，以取得受控識別。
+   ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>更新現有的適用於 MySQL 的 Azure 資料庫伺服器，以取得受控識別。
 
-    ```azurecli-interactive
-    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
-    ```
+   ```azurecli-interactive
+   az mysql server update --name  <server name>  -g <resource_group> --assign-identity
+   ```
 
 2. 設定**主體**的**金鑰許可權**（**取得**、包裝、解除**包裝** **），** 這是 MySQL 伺服器的名稱。
 
@@ -88,36 +89,36 @@ ms.locfileid: "82185824"
 
 ### <a name="creating-a-restoredreplica-server"></a>建立還原/複本伺服器
 
-  *  [建立還原伺服器](howto-restore-server-cli.md) 
-  *  [建立讀取複本伺服器](howto-read-replicas-cli.md) 
+* [建立還原伺服器](howto-restore-server-cli.md) 
+* [建立讀取複本伺服器](howto-read-replicas-cli.md) 
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>伺服器一旦還原，就會將還原的伺服器重新驗證資料加密
 
-    ```azurecli-interactive
-    az mysql server key create –name  <server name> -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az mysql server key create –name  <server name> -g <resource_group> --kid <key url>
+```
 
 ## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-mysql"></a>用於適用於 MySQL 的 Azure 資料庫之金鑰的額外功能
 
 ### <a name="get-the-key-used"></a>取得使用的金鑰
 
-    ```azurecli-interactive
-    az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
+```
 
-    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+金鑰 url：`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>列出使用的金鑰
 
-    ```azurecli-interactive
-    az mysql server key list --name  <server name>  -g <resource_group>
-    ```
+```azurecli-interactive
+az mysql server key list --name  <server name>  -g <resource_group>
+```
 
 ### <a name="drop-the-key-being-used"></a>捨棄正在使用的金鑰
 
-    ```azurecli-interactive
-    az mysql server key delete -g <resource_group> --kid <key url> 
-    ```
+```azurecli-interactive
+az mysql server key delete -g <resource_group> --kid <key url>
+```
 
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>使用 Azure Resource Manager 範本來啟用資料加密
 
@@ -130,6 +131,7 @@ ms.locfileid: "82185824"
 此 Azure Resource Manager 範本會建立適用於 MySQL 的 Azure 資料庫伺服器，並使用傳遞做為參數的**KeyVault**和**金鑰**來啟用伺服器上的資料加密。
 
 ### <a name="for-an-existing-server"></a>針對現有的伺服器
+
 此外，您可以使用 Azure Resource Manager 範本來啟用現有適用於 MySQL 的 Azure 資料庫伺服器上的資料加密。
 
 * 傳遞您稍早在 properties 物件的屬性下複製之 Azure Key Vault 金鑰的資源識別碼 `Uri` 。

@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 07/06/2020
-ms.openlocfilehash: 1c63568418f21da0556ced0d004e04e7909118fb
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9f420b37bd44a46d4149e89cf5876d8e8b712581
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042623"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114375"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流的效能和調整指南
 
@@ -35,7 +35,7 @@ Azure Data Factory 中的對應資料流提供無程式碼介面，可讓您大�
 
 ![資料流程監視](media/data-flow/mon003.png "資料流程監視 3")
 
- 針對管線偵錯執行，在整體效能計算中，暖叢集 (warm cluster) 大約需要一分鐘的叢集設定時間。 如果您要初始化預設的 Azure Integration Runtime，啟動時間可能需要大約 5 分鐘。
+ 針對管線偵錯執行，在整體效能計算中，暖叢集 (warm cluster) 大約需要一分鐘的叢集設定時間。 如果您要初始化預設 Azure Integration Runtime，加速時間可能需要大約4分鐘。
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>增加 Azure Integration Runtime 中的計算大小
 
@@ -55,7 +55,7 @@ Azure Data Factory 中的對應資料流提供無程式碼介面，可讓您大�
 
 ### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>使用 TTL 減少叢集計算啟動時間
 
-[資料流程屬性] 底下的 Azure IR 中有一個屬性，可讓您為處理站的叢集計算資源建立集區。 透過此集區，您就可以依序提交要執行的資料流程活動。 建立集區之後，每個後續作業將需要 1-2 分鐘的時間來讓隨選 Spark 叢集執行作業。 資源集區的初始設定大約需要 6 分鐘的時間。 在存留時間 (TTL) 設定中，指定您想要維護資源集區的時間。
+[資料流程屬性] 底下的 Azure IR 中有一個屬性，可讓您為處理站的叢集計算資源建立集區。 透過此集區，您就可以依序提交要執行的資料流程活動。 建立集區之後，每個後續作業將需要 1-2 分鐘的時間來讓隨選 Spark 叢集執行作業。 資源集區的初始設定需要大約4分鐘的時間。 在存留時間 (TTL) 設定中，指定您想要維護資源集區的時間。
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>最佳化 Azure SQL Database 和 Azure SQL 資料倉儲 Synapse
 
@@ -145,7 +145,7 @@ Azure Data Factory 中的對應資料流提供無程式碼介面，可讓您大�
 
 針對每個已執行的資料流程活動，平行模式中的 For Each 管線都會藉由啟動作業叢集來繁衍多個叢集。 這可能會導致 Azure 服務因為大量平行執行而產生節流。 不過，如果在 For Each 內部使用「執行資料流程」，而且管線中已設定順序，則可避免節流和資源耗盡。 這會強制 Data Factory 依序對資料流程執行每個檔案。
 
-如果您搭配有順序的資料流程來使用 For Each，建議您利用 Azure Integration Runtime 中的 TTL 設定。 這是因為每個檔案都會在您的迭代器內產生完整的 5 分鐘叢集啟動時間。
+如果您搭配有順序的資料流程來使用 For Each，建議您利用 Azure Integration Runtime 中的 TTL 設定。 這是因為每個檔案會在您的反覆運算器內產生完整的4分鐘叢集啟動時間。
 
 ### <a name="optimizing-for-cosmosdb"></a>針對 CosmosDB 進行最佳化
 

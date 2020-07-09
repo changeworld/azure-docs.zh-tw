@@ -1,19 +1,14 @@
 ---
 title: 查看 Azure 事件方格計量並設定警示
 description: 本文說明如何使用 Azure 入口網站來查看 Azure 事件方格主題和訂用帳戶的計量，並對其建立警示。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 75311675ae24f4836ed8f1adb8a7d9802b4d7f0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390596"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114878"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>監視事件格線訊息傳遞 
 本文說明如何使用入口網站來查看事件方格主題和訂用帳戶的計量，並對其建立警示。 

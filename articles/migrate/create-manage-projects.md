@@ -3,11 +3,12 @@ title: 建立和管理 Azure Migrate 專案
 description: 在 Azure Migrate 中尋找、建立、管理和刪除專案。
 ms.topic: how-to
 ms.date: 04/19/2020
-ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 644ac5ecab9f5384b446c3b1ebe762a5d06aaf12
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676400"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113423"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>建立和管理 Azure Migrate 專案
 
@@ -82,7 +83,7 @@ ms.locfileid: "81676400"
        
     - 如果您已刪除 Azure Migrate 專案，請在 Azure 入口網站的左窗格中選取 [**資源群組**]，然後尋找工作區。
        
-2. [遵循指示](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace)來刪除工作區。
+2. [遵循指示](../azure-monitor/platform/delete-workspace.md)來刪除工作區。
 
 ## <a name="next-steps"></a>後續步驟
 

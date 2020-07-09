@@ -1,13 +1,14 @@
 ---
 title: Azure Lighthouse 在企業案例中的運用
 description: Azure Lighthouse 的功能可在使用多個 Azure AD 租用戶的企業內用來簡化跨租用戶管理。
-ms.date: 09/25/2019
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f9a7aa81772a1edda5fd1915918b547a3066455
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749218"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114137"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse 在企業案例中的運用
 
@@ -17,7 +18,7 @@ ms.locfileid: "75749218"
 
 對於大部分的組織而言，單一 Azure AD 租用戶的管理比較輕鬆。 讓一個租用戶內的所有資源，都可由指定的使用者、使用者群組，或該租用戶內的服務主體集中進行管理工作。 我們建議盡可能讓貴組織使用一個租用戶。
 
-同時，在某些情況下，組織可能需要維護多個 Azure AD 租用戶。 在某些案例中，這可能是暫時性情況，像是在進行收購時，需要一些時間來定義長期租用戶彙總策略。 組織可能也需要持續維護多個租用戶 (因為完全獨立的子公司、地理或法律需求等等)。 在需要多租用戶架構的情況下，可以使用 Azure 委派的資源管理來集中處理及簡化管理作業。 您可將來自多個租用戶的訂用帳戶上架，以進行 [Azure 委派的資源管理](azure-delegated-resource-management.md)，讓管理租用戶中指定的使用者以集中且可調整的方式執行[跨租用戶管理功能](cross-tenant-management-experience.md)。
+同時，在某些情況下，組織可能需要維護多個 Azure AD 租用戶。 在某些案例中，這可能是暫時性情況，像是在進行收購時，需要一些時間來定義長期租用戶彙總策略。 組織可能也需要持續維護多個租用戶 (因為完全獨立的子公司、地理或法律需求等等)。 在需要多租使用者架構的情況下，您可以使用 Azure 燈塔來集中管理作業並進行簡化。 您可將來自多個租用戶的訂用帳戶上架，以進行 [Azure 委派的資源管理](azure-delegated-resource-management.md)，讓管理租用戶中指定的使用者以集中且可調整的方式執行[跨租用戶管理功能](cross-tenant-management-experience.md)。
 
 ## <a name="tenant-management-architecture"></a>租用戶管理架構
 
@@ -31,17 +32,17 @@ ms.locfileid: "75749218"
 
 ## <a name="security-and-access-considerations"></a>安全性和存取考量
 
-在大部分的企業案例中，您會想要針對 Azure 委派的資源管理委派完整訂用帳戶，但您也可以只委派訂用帳戶內的特定資源群組。
+在大部分的企業案例中，您會想要將完整訂用帳戶委派給 Azure 燈塔，不過您也可以只委派訂用帳戶內的特定資源群組。
 
 無論如何，[在定義哪些使用者可存取資源時，請務必遵循最低權限的準則](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege)。 這麼做有助於確保使用者只擁有執行必要工作所需的權限，並可減少意外錯誤的機會。
 
-Azure Lighthouse 和 Azure 委派的資源管理只會提供管理租用戶與受控租用戶之間的邏輯連結，而不會實際移動資料或資源。 此外，存取一律只限單一方向：從管理租用戶到受控租用戶。  管理租用戶中的使用者和群組在對受控租用戶資源執行管理作業時，應繼續使用多重要素驗證。
+Azure 燈塔只提供管理租使用者與受管理租使用者之間的邏輯連結，而不是實際移動資料或資源。 此外，存取一律只限單一方向：從管理租用戶到受控租用戶。  管理租用戶中的使用者和群組在對受控租用戶資源執行管理作業時，應繼續使用多重要素驗證。
 
 具有內部或外部治理和合規性防護的企業可以使用 [Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)來符合其透明度需求。 當企業租用戶已建立管理和受控租用戶關聯性時，每個租用戶中的使用者均可藉由檢視已記錄的活動，監視及看見另一個租用戶中使用者所採取的動作。
 
 ## <a name="onboarding-process-considerations"></a>上架程序考慮
 
-訂用帳戶 (或訂用帳戶內的資源群組) 可藉由部署 Azure Resource Manager 範本，或透過發佈至 Azure Marketplace 的受控服務供應項目 (私下或公開) 上架至 Azure 委派的資源管理。
+訂閱（或訂用帳戶內的資源群組）可以藉由部署 Azure Resource Manager 範本或透過發行至 Azure Marketplace 的受控服務供應專案（私下或公開）來上架至 Azure 燈塔。
 
 由於企業使用者通常能夠直接存取企業的租用戶，因此不需要行銷或推廣管理供應項目，而直接透過 Azure Resource Manager 範本進行部署通常更快速且更直接。 雖然我們在[上架指引](../how-to/onboard-customer.md)中提及服務提供者和客戶，但企業可以使用相同的程序。
 

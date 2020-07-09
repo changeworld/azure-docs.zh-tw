@@ -1,19 +1,14 @@
 ---
 title: 做為事件方格來源 Azure Container Registry
 description: 說明使用 Azure 事件方格為容器登錄事件提供的屬性
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: d216fe88ee6aaad33fbbe3b93b8c4f8a6e952a71
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393353"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113712"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>做為事件方格來源 Azure Container Registry
 
@@ -170,7 +165,7 @@ Azure Container Registry 會發出下列事件種類：
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | id | 字串 | 事件識別碼。 |
 | timestamp | 字串 | 事件發生的時間。 |
@@ -180,7 +175,7 @@ Azure Container Registry 會發出下列事件種類：
 
 target 物件具有下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | mediaType | 字串 | 參考物件的 MIME 類型。 |
 | 大小 | integer | 內容的位元組數目。 與長度欄位相同。 |

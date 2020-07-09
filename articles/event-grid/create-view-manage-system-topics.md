@@ -1,17 +1,14 @@
 ---
 title: 在 Azure 事件方格（入口網站）中建立、查看和管理系統主題
 description: 本文說明如何使用 Azure 入口網站來建立 Azure 事件方格系統主題，以瞭解如何查看現有的系統主題。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.author: spelluru
-ms.openlocfilehash: 23b87812492485fc2336b8d2d35bf0426ede4772
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457230"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115106"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>建立、查看和管理 Azure 入口網站中的事件方格系統主題
 本文說明如何使用 Azure 入口網站來建立和管理系統主題。 如需系統主題的總覽，請參閱[系統主題](system-topics.md)。

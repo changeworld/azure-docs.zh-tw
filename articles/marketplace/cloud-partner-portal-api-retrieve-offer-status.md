@@ -1,18 +1,16 @@
 ---
 title: 取得供應專案狀態-Azure Marketplace
 description: API 以取得供應專案的目前狀態。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 04/08/2020
-ms.author: dsindona
-ms.openlocfilehash: 88b07a3456bd2589d6ebefcc54903564e78f4bf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 897c2517c3836e1c3940db02efae0e5d94667a65
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515892"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114069"
 ---
 # <a name="retrieve-offer-status"></a>擷取供應項目狀態
 
@@ -36,7 +34,7 @@ ms.locfileid: "85515892"
 ## <a name="header"></a>Header
 
 
-|  Name           |  值               |
+|  名稱           |  值               |
 |  -------------  | -------------------  |
 |  Content-Type   |  `application/json`  |
 |  授權  | `Bearer YOUR_TOKEN`  |

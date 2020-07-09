@@ -4,12 +4,12 @@ description: 瞭解 Azure 監視器中的動作規則，以及如何設定和管
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6585890395d7656f239ac3098cd374ecd4757842
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 573567386ba9cbaf8b36440fda5073f899fcdfc7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80618980"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112335"
 ---
 # <a name="action-rules-preview"></a>動作規則（預覽）
 
@@ -196,23 +196,26 @@ Contoso 已[在訂用帳戶層級定義度量警示](https://docs.microsoft.com/
 
 ### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>如果我的資源在兩個不同的動作規則中受到監視，會發生什麼事？ 我收到一或兩個通知嗎？ 例如，下列案例中的**VM2** ：
 
-      action rule AR1 defined for VM1 and VM2 with action group AG1
-      action rule AR2 defined for VM2 and VM3 with action group AG1
+   `action rule AR1 defined for VM1 and VM2 with action group AG1`
+
+   `action rule AR2 defined for VM2 and VM3 with action group AG1`
 
 針對 VM1 和 VM3 上的每個警示，動作群組 AG1 會觸發一次。 針對**VM2**上的每個警示，動作群組 AG1 會觸發兩次，因為動作規則不會刪除重複動作。 
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>如果我的資源是在兩個不同的動作規則中進行監視，而另一項動作是針對抑制而執行，則會發生什麼事？ 例如，下列案例中的**VM2** ：
 
-      action rule AR1 defined for VM1 and VM2 with action group AG1 
-      action rule AR2 defined for VM2 and VM3 with suppression
+   `action rule AR1 defined for VM1 and VM2 with action group AG1`
+
+   `action rule AR2 defined for VM2 and VM3 with suppression`
 
 針對 VM1 上的每個警示，動作群組 AG1 會觸發一次。 VM2 和 VM3 上的每個警示的動作和通知都會隱藏起來。 
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>如果我針對呼叫不同動作群組的相同資源定義了警示規則和動作規則，會發生什麼事？ 例如，下列案例中的**VM1** ：
 
-      alert rule rule1 on VM1 with action group AG2
-      action rule AR1 defined for VM1 with action group AG1 
- 
+   `alert rule rule1 on VM1 with action group AG2`
+
+   `action rule AR1 defined for VM1 with action group AG1`
+
 針對 VM1 上的每個警示，動作群組 AG1 會觸發一次。 每次觸發警示規則 "rule1" 時，它也會另外觸發 AG2。 在動作規則中定義的動作群組和警示規則會獨立運作，而不會進行重復資料刪除。 
 
 ## <a name="next-steps"></a>後續步驟

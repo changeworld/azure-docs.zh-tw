@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 407257dbe9fbfa560153d5044263fc4c947cb05c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662156"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111927"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>在 Azure 監視器中使用 Log Analytics Linux 代理程式收集自訂 JSON 資料來源
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -21,7 +22,7 @@ ms.locfileid: "77662156"
 > [!NOTE]
 > 需要有 Log Analytics Linux 代理程式 v1.1.0-217+ 才能收集自訂 JSON 資料
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="configure-input-plugin"></a>設定輸入外掛程式
 
@@ -29,7 +30,7 @@ ms.locfileid: "77662156"
 
 例如，以下是 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` 中的個別設定檔 `exec-json.conf`。  這會使用 FluentD 外掛程式 `exec` 每隔 30 秒執行一次 curl 命令。  此命令的輸出由 JSON 輸出外掛程式所收集。
 
-```
+```xml
 <source>
   type exec
   command 'curl localhost/json.output'
@@ -51,6 +52,7 @@ ms.locfileid: "77662156"
   retry_wait 30s
 </match>
 ```
+
 對於在 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` 下新增的設定檔，必須使用下列命令變更其擁有權。
 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
@@ -58,7 +60,7 @@ ms.locfileid: "77662156"
 ### <a name="configure-output-plugin"></a>設定輸出外掛程式 
 將下列輸出外掛程式設定新增至 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` 中的主要設定，或新增為個別的設定檔再放入 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` 中
 
-```
+```xml
 <match oms.api.**>
   type out_oms_api
   log_level info
@@ -76,18 +78,22 @@ ms.locfileid: "77662156"
 ### <a name="restart-log-analytics-agent-for-linux"></a>重新啟動 Log Analytics Linux 代理程式
 使用下列命令重新啟動 Log Analytics Linux 代理程式服務。
 
-    sudo /opt/microsoft/omsagent/bin/service_control restart 
+```console
+sudo /opt/microsoft/omsagent/bin/service_control restart 
+```
 
 ## <a name="output"></a>輸出
 資料將收集到 Azure 監視器中，記錄類型為 `<FLUENTD_TAG>_CL`。
 
 例如，Azure 監視器中的自訂標籤 `tag oms.api.tomcat`，記錄類型為 `tomcat_CL`。  您可以使用下列記錄查詢來擷取此類型的所有記錄。
 
-    Type=tomcat_CL
+```console
+Type=tomcat_CL
+```
 
 支援巢狀 JSON 資料來源，但編製索引是以父欄位作為基礎。 例如，下列 JSON 資料從記錄查詢傳回為 `tag_s : "[{ "a":"1", "b":"2" }]`。
 
-```
+```json
 {
     "tag": [{
         "a":"1",

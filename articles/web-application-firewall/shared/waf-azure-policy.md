@@ -5,14 +5,14 @@ author: tremansdoerfer
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 4c1fd53eb6ebf1f1aebdfba99b736e26bd6cff2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12ad18edbb434bdfaec2ae817ea079a843661ef6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85306712"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111334"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web 應用程式防火牆和 Azure 原則
 
@@ -22,9 +22,13 @@ ms.locfileid: "85306712"
 
 有數個內建的 Azure 原則可管理 WAF 資源。 原則及其功能的細目如下所示：
 
-1. **應該啟用 Azure Front 門板或應用程式閘道的 Web 應用程式防火牆**：如果資源建立時有 WAF，則會評估 Azure Front 門板服務和應用程式閘道。 原則有三個效果： Audit、Deny 和 Disable。 Audit 追蹤當 Azure 前端服務或應用程式閘道沒有 WAF，可讓使用者查看目前不符合的 Azure Front 服務或應用程式閘道。 [拒絕] 會防止在未連接 WAF 時建立任何 Azure Front 門板服務或應用程式閘道。 [已停用] 會關閉此原則。
+1. **應該啟用 Azure Front 門板服務的 Web 應用程式防火牆（WAF）**：如果資源建立上有 WAF，就會評估 Azure Front 門服務。 原則有三個效果： Audit、Deny 和 Disable。 Audit 追蹤當 Azure Front 門服務沒有 WAF，並讓使用者看到 Azure Front 服務不符合的情況時。 [拒絕] 會防止在未附加 WAF 時建立任何 Azure Front 門板服務。 [已停用] 會關閉此原則。
 
-2. **Web 應用程式防火牆應該是應用程式閘道和 Azure Front 門板服務的設定模式**： Web 應用程式防火牆會根據其所在的模式進行評估，無論是預防或偵測。 此原則可確保 Web 應用程式防火牆之間的模式一致性。 原則有三個效果： Audit、Deny 和 Disable。 當 WAF 不符合指定的模式時，Audit 會進行追蹤。 [拒絕] 會防止任何 WAF 在不是正確模式的情況下建立。 [已停用] 會關閉此原則。
+2. **應啟用應用程式閘道的 Web 應用程式防火牆（WAF）**：如果資源建立時有 WAF 存在，則會評估應用程式閘道。 原則有三個效果： Audit、Deny 和 Disable。 Audit 會追蹤應用程式閘道沒有 WAF，並讓使用者看到應用程式閘道不符合的情況。 [拒絕] 會防止在未附加 WAF 時建立任何應用程式閘道。 [已停用] 會關閉此原則。
+
+3. **Web 應用程式防火牆（WAF）應使用 Azure Front 門板服務的指定模式**：要求在 Azure front 服務的所有 Web 應用程式防火牆原則上使用「偵測」或「防護」模式。 原則有三個效果： Audit、Deny 和 Disable。 當 WAF 不符合指定的模式時，Audit 會進行追蹤。 [拒絕] 會防止任何 WAF 在不是正確模式的情況下建立。 [已停用] 會關閉此原則。
+
+4. **Web 應用程式防火牆（WAF）應該使用指定的模式進行應用程式閘道**：要求在應用程式閘道的所有 Web 應用程式防火牆原則上使用「偵測」或「防護」模式。 原則有三個效果： Audit、Deny 和 Disable。 當 WAF 不符合指定的模式時，Audit 會進行追蹤。 [拒絕] 會防止任何 WAF 在不是正確模式的情況下建立。 [已停用] 會關閉此原則。
 
 
 ## <a name="launch-an-azure-policy"></a>啟動 Azure 原則
@@ -45,7 +49,7 @@ ms.locfileid: "85306712"
     2.  **排除**：從範圍選取要從原則中排除的任何資源 
     3.  **原則定義**：選取要套用至含有排除範圍之領域的 Azure 原則。 在搜尋列中輸入「Web 應用程式防火牆」，以選擇相關的 Web 應用程式防火牆 Azure 原則。
 
-![Azure Web 應用程式防火牆](../media/waf-azure-policy/policy-listings.png)
+![Azure Web 應用程式防火牆](../media/waf-azure-policy/policy-listing.png)
 
 
 5.  選取 [**參數**] 索引標籤，並更新原則參數。 若要進一步闡明參數的用途，請將滑鼠停留在參數名稱旁的資訊圖示上，以取得進一步的說明。

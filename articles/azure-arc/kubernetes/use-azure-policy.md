@@ -8,11 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 使用 Azure 原則大規模套用叢集設定
 keywords: Kubernetes, Arc, Azure, K8s, 容器
-ms.openlocfilehash: 4c013fe562d89bff4d1ce9c9f3e832e1b51c70f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341381"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111264"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>使用 Azure 原則大規模套用叢集設定 (預覽)
 
@@ -30,11 +31,11 @@ ms.locfileid: "85341381"
 4. 如果您想要從原則範圍中排除任何資源，則設定**排除**。
 5. 為原則指派賦予**名稱**和**描述**，讓您能夠輕鬆識別該原則。
 6. 確定已將 [原則強制執行] 設定為 [已啟用]。
-7. 選取 [下一步]。
+7. 選取 [下一步] 。
 8. 設定將在 `sourceControlConfiguration` 建立期間使用的參數值。
 9. 選取 [下一步] 。
 10. 啟用 [建立補救工作]。
-11. 確保已核取 [建立受控識別]，而且該身分識別將具有**參與者**權限。 如需您所需權限的詳細資訊，請參閱[此文件](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)和[此文件中的註解](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) \(部分機器翻譯\)。
+11. 確保已核取 [建立受控識別]，而且該身分識別將具有**參與者**權限。 如需您所需權限的詳細資訊，請參閱[此文件](../../governance/policy/assign-policy-portal.md)和[此文件中的註解](../../governance/policy/how-to/remediate-resources.md) \(部分機器翻譯\)。
 12. 選取 [檢閱 + 建立]。
 
 建立原則指派之後，針對位於指派範圍內任何新的 `connectedCluster` 資源 (或已安裝 GitOps 代理程式的 `managedCluster` 資源)，將套用 `sourceControlConfiguration`。 針對現有叢集，您將必須手動執行補救工作。 通常需要 10-20 分鐘的時間，原則指派才會生效。
@@ -50,4 +51,4 @@ ms.locfileid: "85341381"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [為已啟用 Arc 之 Kubernetes 叢集的容器設定 Azure 監視器](./deploy-azure-monitor-for-containers.md)
+* [為已啟用 Arc 之 Kubernetes 叢集的容器設定 Azure 監視器](../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md)

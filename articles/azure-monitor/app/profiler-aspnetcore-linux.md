@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91abe282c25b161db72616d7123d7a2bf5dbc9f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640963"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111060"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 來分析 ASP.NET Core Azure Linux Web 應用程式
 
@@ -34,17 +35,17 @@ ms.locfileid: "81640963"
 
 1. 建立 ASP.NET Core MVC Web 應用程式：
 
-    ```
-    dotnet new mvc -n LinuxProfilerTest
-    ```
+   ```console
+   dotnet new mvc -n LinuxProfilerTest
+   ```
 
 1. 將工作目錄變更為專案的根資料夾。
 
 1. 新增 NuGet 套件來收集分析工具追蹤：
 
-    ```shell
-    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
-    ```
+   ```console
+   dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
+   ```
 
 1. 啟用 Program.cs 中的 Application Insights：
 
@@ -54,7 +55,7 @@ ms.locfileid: "81640963"
             .UseApplicationInsights() // Add this line of code to Enable Application Insights
             .UseStartup<Startup>();
     ```
-    
+
 1. 在 Startup.cs 中啟用 Profiler：
 
     ```csharp
@@ -68,24 +69,24 @@ ms.locfileid: "81640963"
 1. 在 **HomeController.cs** 區段中加入一行程式碼，以隨機延遲幾秒鐘的時間：
 
     ```csharp
-        using System.Threading;
-        ...
+    using System.Threading;
+    ...
 
-        public IActionResult About()
-            {
-                Random r = new Random();
-                int delay = r.Next(5000, 10000);
-                Thread.Sleep(delay);
-                return View();
-            }
+    public IActionResult About()
+        {
+            Random r = new Random();
+            int delay = r.Next(5000, 10000);
+            Thread.Sleep(delay);
+            return View();
+        }
     ```
 
 1. 儲存並認可您對本機存放庫的變更：
 
-    ```
-        git init
-        git add .
-        git commit -m "first commit"
+    ```console
+    git init
+    git add .
+    git commit -m "first commit"
     ```
 
 ## <a name="create-the-linux-web-app-to-host-your-project"></a>建立 Linux Web 應用程式來裝載專案
@@ -111,7 +112,7 @@ ms.locfileid: "81640963"
 
 1. 在命令提示字元視窗中，瀏覽至專案的根資料夾。 新增 Git 遠端存放庫以指向 App Service 上的存放庫：
 
-    ```
+    ```console
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
@@ -120,13 +121,13 @@ ms.locfileid: "81640963"
 
 2. 將變更推送至 Azure 來部署專案：
 
-    ```
+    ```console
     git push azure master
     ```
 
-您應該會看到類似下列範例的結果：
+    您應該會看到類似下列範例的結果：
 
-    ```
+    ```output
     Counting objects: 9, done.
     Delta compression using up to 8 threads.
     Compressing objects: 100% (8/8), done.
@@ -143,8 +144,7 @@ ms.locfileid: "81640963"
     remote: .
     remote:   Installing Newtonsoft.Json 10.0.3.
     remote:   Installing Microsoft.ApplicationInsights.Profiler.Core 1.1.0-LKG
-    …
-
+    ...
     ```
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>新增 Application Insights 以監視您的 Web 應用程式
@@ -153,9 +153,7 @@ ms.locfileid: "81640963"
 
 2. 複製 Application Insights 資源的 **iKey** 值，並在您的 Web 應用程式中進行下列設定：
 
-    ```
-    APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ```
+    `APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]`
 
     應用程式的設定變更時，網站會自動重新啟動。 一旦套用新的設定後，分析工具會立即執行 2 分鐘。 之後，分析工具會每小時執行兩分鐘。
 
