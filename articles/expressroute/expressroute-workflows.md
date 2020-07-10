@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: e833e20085d7cfd8f727acb394851e96e7e19368
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58914709838c72246678ce92005de5ac18695a1f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864361"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204173"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 工作流程線路佈建和線路狀態
 這個頁面以高階觀點引導您完成服務佈建和路由設定的工作流程。
@@ -54,33 +55,37 @@ Status 代表 Microsoft 的佈建狀態。 這個屬性會在您建立 Expressro
 
 在建立資源時，ExpressRoute 線路會報告下列狀態。
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 **當連線提供者正在佈建線路時**
 
 當連線提供者正在處理布建線路時，ExpressRoute 線路會報告下列狀態。
 
-    ServiceProviderProvisioningState : Provisioning
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioning
+Status                           : Enabled
+```
 
 **當連線提供者完成佈建程序時**
 
 當連線提供者已成功布建線路之後，ExpressRoute 線路會報告下列狀態。
 
-    ServiceProviderProvisioningState : Provisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioned
+Status                           : Enabled
+```
 
 **當連線提供者正在取消佈建循環時**
 
 如果需要取消布建 ExpressRoute 電路，一旦服務提供者完成取消布建程式，線路就會報告下列狀態。
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 如有需要，您可以選擇重新啟用線路，或執行 PowerShell Cmdlet 刪除線路。  
 

@@ -16,23 +16,21 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bff9873742d5d660f563eebcb58ff9bcca940d24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1dc1b14a917786e124775a4505c53f63238a383
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760165"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203859"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>Application Proxy 應用程式載入時間過長
 
 本文協助您了解為何 Azure AD 應用程式 Proxy 應用程式的載入時間可能很長。 以及說明如何才能解決此問題。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 雖然您的應用程式可以運作，但可能會遭遇長時間延遲。 您可以對網路拓撲進行調整，以提升速度。 若要評估不同的拓樸，請參閱[網路考量文件](application-proxy-network-topology.md)。
 
 除了網路拓撲，目前沒有進一步的效能微調建議。 隨著應用程式 Proxy 服務擴展，可能會來到實體上更接近的資料中心。 更接近的鄰近位置可能對延遲有所幫助。 如需 Azure 資料中心清單，請參閱[延遲測試頁面](http://www.azurespeed.com/Azure/Latency)。 
-
-若要找到含 Application Proxy 服務的資料中心，可使用[連接器連接埠測試工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)。 
 
 ## <a name="feedback-on-application-proxy-data-center-locations"></a>對 Application Proxy 資料中心位置的意見反應 
 可能會有 Azure 資料中心尚未包含 Application Proxy，但能為您顯著改善延遲的問題。 請將資料中心位置傳送至 aadapfeedback@microsoft.com。 Microsoft 會將您的意見反應用於擴展計劃。

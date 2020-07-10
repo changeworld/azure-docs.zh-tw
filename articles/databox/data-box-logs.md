@@ -1,26 +1,27 @@
 ---
-title: 追蹤和記錄 Azure 資料箱，Azure Data Box Heavy 事件 |Microsoft Docs
-description: 描述如何在 Azure 資料箱和 Azure Data Box Heavy 順序的不同階段追蹤和記錄事件。
+title: 追蹤和記錄 Azure 資料箱，Azure Data Box Heavy 匯入順序的事件 |Microsoft Docs
+description: 描述如何追蹤和記錄 Azure 資料箱各個階段的事件，並 Azure Data Box Heavy 匯入順序。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b65d9579686cdf53f1cac35ba47bc5850b45c8e2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676417"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204305"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>追蹤和 Azure 資料箱和 Azure Data Box Heavy 的事件記錄
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>追蹤 Azure 資料箱和 Azure Data Box Heavy 匯入順序的事件記錄
 
-資料箱或 Data Box Heavy 順序會進行下列步驟：訂單、設定、資料複製、傳回、上傳至 Azure 並確認和資料抹除。 對應至順序中的每個步驟，您可以採取多個動作來控制訂單的存取、audit 事件、追蹤訂單，以及解讀所產生的各種記錄。
+資料箱或 Data Box Heavy 匯入順序會進行下列步驟：訂單、設定、資料複製、傳回、上傳至 Azure 並確認和資料抹除。 對應至順序中的每個步驟，您可以採取多個動作來控制訂單的存取、audit 事件、追蹤訂單，以及解讀所產生的各種記錄。
 
-下表顯示資料箱或 Data Box Heavy 順序步驟的摘要，以及在每個步驟期間可用於追蹤和審核訂單的工具。
+下表顯示資料箱或 Data Box Heavy 匯入順序步驟的摘要，以及在每個步驟期間追蹤和審核訂單的可用工具。
 
-| 資料箱訂單階段       | 追蹤和審核的工具                                                                        |
+| 資料箱匯入順序階段       | 追蹤和審核的工具                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | 建立訂單               | [透過 RBAC 設定訂單上的存取控制](#set-up-access-control-on-the-order)                                                    |
 | 已處理的訂單            | [追蹤訂單](#track-the-order) <ul><li> Azure 入口網站 </li><li> 貨運公司網站 </li><li>電子郵件通知</ul> |
@@ -30,15 +31,15 @@ ms.locfileid: "81676417"
 | 資料上傳至 Azure       | 在 Azure datacenter 上的資料上傳期間，請[參閱複製記錄](#review-copy-log-during-upload-to-azure)檔中的錯誤                         |
 | 從裝置抹除資料   | [查看監管鏈](#get-chain-of-custody-logs-after-data-erasure)，包括審核記錄和訂單歷程記錄                |
 
-本文詳細說明可用來追蹤和 audit 資料箱或 Data Box Heavy 順序的各種機制或工具。 本文中的資訊適用于、資料箱和 Data Box Heavy。 在後續章節中，資料箱的任何參考也適用于 Data Box Heavy。
+本文詳細說明可用來追蹤和 audit 資料箱或 Data Box Heavy 匯入訂單的各種機制或工具。 本文中的資訊適用于、資料箱和 Data Box Heavy 匯入訂單。 在後續章節中，資料箱的任何參考也適用于 Data Box Heavy。
 
 ## <a name="set-up-access-control-on-the-order"></a>設定順序的存取控制
 
-您可以在第一次建立訂單時，控制誰可以存取您的訂單。 在各種範圍設定以角色為基礎的存取控制（RBAC）角色，以控制資料箱順序的存取權。 RBAC 角色會決定對作業子集的存取類型（讀寫、唯讀、讀寫）。
+您可以在第一次建立訂單時，控制誰可以存取您的訂單。 在不同範圍設定以角色為基礎的存取控制 (RBAC) 角色，以控制資料箱順序的存取權。 RBAC 角色會決定對作業子集的存取類型（讀寫、唯讀、讀寫）。
 
 可以為 Azure 資料箱服務定義的兩個角色如下：
 
-- **資料箱讀取器**-具有範圍所定義之訂單的唯讀存取權。 他們只能查看訂單的詳細資料。 他們無法存取與儲存體帳戶相關的任何其他詳細資料，或編輯訂單詳細資料（例如位址等等）。
+- **資料箱讀取器**-具有依範圍定義之 order (s) 的唯讀存取權。 他們只能查看訂單的詳細資料。 他們無法存取與儲存體帳戶相關的任何其他詳細資料，或編輯訂單詳細資料（例如位址等等）。
 - **資料箱參與者**-只有在*已有儲存體帳戶的寫入存取權時*，才能建立訂單來將資料傳送至指定的儲存體帳戶。 如果他們沒有儲存體帳戶的存取權，他們甚至無法建立資料箱順序，將資料複製到帳戶。 此角色不會定義任何儲存體帳戶的相關許可權，也不會授與對儲存體帳戶的存取權。  
 
 若要限制訂單的存取權，您可以：
@@ -78,7 +79,7 @@ ms.locfileid: "81676417"
 請確定複製作業已完成，但沒有任何錯誤。 如果複製流程中發生錯誤，請從 [連線並複製]**** 頁面中下載記錄。
 
 - 如果您將不是512位元組的檔案複製到資料箱上的受控磁片資料夾，檔案就不會以分頁 blob 的形式上傳到您的暫存儲存體帳戶。 您將在記錄中看到錯誤。 移除檔案，並複製 512 位元組規格的檔案。
-- 如果您複製了 VHDX 或動態 VHD 或差異 VHD （不支援這些檔案），您會在記錄檔中看到錯誤。
+- 如果您複製了 VHDX 或動態 VHD 或差異 VHD (這些檔案) 不受支援，您會在記錄檔中看到錯誤。
 
 以下是複製到受控磁片時，不同錯誤*error.xml*的範例。
 
@@ -150,7 +151,7 @@ ms.locfileid: "81676417"
 
 ## <a name="inspect-bom-during-prepare-to-ship"></a>在準備寄送期間檢查 BOM
 
-在準備寄送期間，會建立一份稱為「物料清單」（BOM）或資訊清單檔案的檔案清單。
+在準備寄送期間，會建立一份稱為「材料清單」的檔案清單 (BOM) 或資訊清單檔案。
 
 - 使用此檔案來驗證實際名稱和複製到資料箱的檔案數目。
 - 使用此檔案來驗證檔案的實際大小。
@@ -200,7 +201,7 @@ BOM 或資訊清單檔案也會複製到 Azure 儲存體帳戶。 您可以使�
 
 針對每個已處理的訂單，資料箱服務會在相關聯的儲存體帳戶中建立複本記錄。 複製記錄檔包含已上傳的檔案總數，以及從資料箱資料複製到您的 Azure 儲存體帳戶期間所錯誤的檔案數目。
 
-在上傳至 Azure 期間，會執行迴圈冗余檢查（CRC）計算。 資料複製和資料上傳之後的 CRCs 會進行比較。 CRC 不相符表示對應的檔案無法上傳。
+在上傳至 Azure 期間，會執行迴圈冗余檢查 (CRC) 計算。 資料複製和資料上傳之後的 CRCs 會進行比較。 CRC 不相符表示對應的檔案無法上傳。
 
 根據預設，記錄會寫入名為 `copylog` 的容器。 記錄檔會以下列命名慣例儲存：
 
@@ -353,7 +354,7 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>下載訂單記錄
 
-Azure 入口網站提供訂單歷程記錄。 如果訂單已完成，且裝置清除（從磁片抹除資料）已完成，請移至您的裝置訂單，然後流覽至 [**訂單詳細**資料]。 [下載訂單記錄]**** 選項可供使用。 如需詳細資訊，請參閱[下載訂單歷程記錄](data-box-portal-admin.md#download-order-history)。
+Azure 入口網站提供訂單歷程記錄。 如果訂單已完成，且裝置清理 (磁片) 的資料抹除已完成，請移至您的裝置訂單，然後流覽至 [**訂單詳細**資料]。 [下載訂單記錄]**** 選項可供使用。 如需詳細資訊，請參閱[下載訂單歷程記錄](data-box-portal-admin.md#download-order-history)。
 
 如果您流覽訂單歷程記錄，您會看到：
 

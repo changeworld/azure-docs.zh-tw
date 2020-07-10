@@ -11,15 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 06/29/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661339545f2c3f01ffd2e07b0fad08de8ac90278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cf82080a54075353d2ff1d98a2ea19fc6a96dc7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078888"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204039"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 存取評論中建立群組和應用程式的存取權審查
 
@@ -67,7 +68,7 @@ ms.locfileid: "85078888"
     
     ![建立存取權審查-選取群組](./media/create-access-review/select-group.png)
 
-1. 在 [**應用程式**] 區段中（如果您已在步驟8中選取 [**指派給應用程式**]），請選取您要檢查其存取權的應用程式。
+1. 在 [**應用程式**] 區段中 (如果您在步驟 8) 中選取 [**指派給應用程式**]，請選取您要檢查其存取權的應用程式。
 
     > [!NOTE]
     > 選取一個以上的應用程式將會建立多個存取審查。 例如，選取五個應用程式會建立五個不同的存取審查。
@@ -105,7 +106,7 @@ ms.locfileid: "85078888"
 
 1. 若要指定其他設定，請展開 [進階設定] 區段。
 
-    ![建立存取權審查-Advanced 設定](./media/create-access-review/advanced-settings.png)
+    ![建立存取權審查-Advanced 設定](./media/create-access-review/advanced-settings-preview.png)
 
 1. 將 [顯示建議] 設為 [啟用]，會向檢閱者顯示系統根據使用者的存取資訊所做的建議。
 
@@ -113,9 +114,14 @@ ms.locfileid: "85078888"
 
 1. 將 [郵件通知] 設為 [啟用]，會讓 Azure AD 在存取權檢閱開始時傳送電子郵件通知給檢閱者，並在檢閱完成時傳送電子郵件通知給管理員。
 
-1. 將 [提醒] 設為 [啟用]，會讓 Azure AD 對尚未完成其檢閱的檢閱者傳送存取權檢閱正在進行中的提醒。
+1. 將 [提醒] 設為 [啟用]，會讓 Azure AD 對尚未完成其檢閱的檢閱者傳送存取權檢閱正在進行中的提醒。 
 
-    依預設，Azure AD 會在結束日期過半時自動將提醒傳送給尚未回應的檢閱者。
+    >[!NOTE]
+    > 根據預設，Azure AD 會自動將提醒傳送至結束日期，直到尚未回應的審核者為止
+
+1.  (預覽) 根據審查詳細資料（例如，評論名稱、資源名稱、到期日等）自動產生傳送給審核者的電子郵件內容。如果您需要一種方式來傳達其他資訊（例如其他指示或連絡人資訊），您可以在 [評論者電子郵件] 的 [其他內容] 中指定這些詳細資料，這些資訊會包含在傳送給指派審核者的邀請和提醒電子郵件中。 以下反白顯示的區段是將顯示此資訊的位置。
+
+    ![審查使用者對群組的存取權](./media/create-access-review/review-users-access-group.png)
 
 ## <a name="start-the-access-review"></a>開始存取權檢閱
 

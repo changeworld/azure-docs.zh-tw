@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 5b60162800695be67c742554881b296c3d8bb9dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 900221bd27fe4020a927b3155c91aa8e494ca890
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504367"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203849"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>在有中速至高速的網路頻寬之情況下進行大型資料集的資料轉送
  
@@ -64,19 +64,19 @@ ms.locfileid: "85504367"
 
 |                                     |    資料箱磁碟      |    資料箱                                      |    Data Box Heavy            |    匯入/匯出                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
-|    資料大小                        |    最多 35 TB                 |    每個裝置最多 80 TB                       |    每個裝置最多 800 TB               |    變數                            |
-|    資料類型                        |    Azure Blob                  |    Azure Blob<br>Azure 檔案                    |    Azure Blob<br>Azure 檔案            |    Azure Blob<br>Azure 檔案          |
-|    板型規格                      |    每筆訂單 5 個 SSD             |    每筆訂單 1 X 50 磅 桌上型電腦大小裝置    |    每筆訂單 1 X ~500 磅 大型裝置    |    每筆訂單最多 10 個 HDD/SSD        |
-|    初始設定時間               |    低 <br>(15 分鐘)            |    低至中度 <br> (<30 分鐘)               |    中<br>(1-2 小時)               |    中度到困難<br>(變動) |
-|    將資料傳送到 Azure               |    是                          |    是                                           |    是                                   |    Yes                                 |
-|    從 Azure 匯出資料           |    否                           |    否                                            |    否                                    |    是                                 |
-|    加密                       |    AES 128 位元                  |    AES 256 位元                                   |    AES 256 位元                           |    AES 128 位元                         |
-|    硬體                         |     Microsoft 提供          |    Microsoft 提供                            |    Microsoft 提供                    |    客戶提供                   |
-|    Linux                |    USB 3.1/SATA                 |    RJ 45、SFP+                                   |    RJ45、QSFP+                           |    SATA II/SATA III                    |
-|    夥伴整合              |    部分                         |    [高](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [高](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    部分                                |
-|    運送中                         |    Microsoft 管理            |    Microsoft 管理                             |    Microsoft 管理                     |    由客戶管理                    |
-| 當資料移動時的使用         |在商務服務界限內|在商務服務界限內|在商務服務界限內|跨越地理界限，例如美國到歐洲|
-|    定價                          |    [定價](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [定價](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [定價](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定價](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    **資料大小**                    |    最多 35 TB                 |    每個裝置最多 80 TB                       |    每個裝置最多 800 TB               |    變數                            |
+|    **Data type**                    |    Azure Blob                  |    Azure Blob<br>Azure 檔案儲存體                    |    Azure Blob<br>Azure 檔案儲存體            |    Azure Blob<br>Azure 檔案儲存體          |
+|    **板型規格**                  |    每筆訂單 5 個 SSD             |    每筆訂單 1 X 50 磅 桌上型電腦大小裝置    |    每筆訂單 1 X ~500 磅 大型裝置    |    每筆訂單最多 10 個 HDD/SSD        |
+|    **初始設定時間**               |    低度 <br>(15 分鐘)            |    低至中度 <br> (<30 分鐘)               |    中度<br>(1-2 小時)               |    中度到困難<br>(變動) |
+|    **將資料傳送到 Azure**           |    是                          |    是                                           |    是                                   |    是                                 |
+|    **從 Azure 匯出資料**           |    否                           |    否                                            |    否                                    |    是                                 |
+|    **加密**                   |    AES 128 位元                  |    AES 256 位元                                   |    AES 256 位元                           |    AES 128 位元                         |
+|    **硬體**                     |     Microsoft 提供          |    Microsoft 提供                            |    Microsoft 提供                    |    客戶提供                   |
+|    **網路介面**            |    USB 3.1/SATA                 |    RJ 45、SFP+                                   |    RJ45、QSFP+                           |    SATA II/SATA III                    |
+|    **夥伴整合**          |    部分                         |    [高](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [高](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    部分                                |
+|    **運送中**                     |    Microsoft 管理            |    Microsoft 管理                             |    Microsoft 管理                     |    由客戶管理                    |
+| **當資料移動時的使用**     |在商務服務界限內|在商務服務界限內|在商務服務界限內|跨越地理界限，例如美國到歐洲|
+|    **定價**                          |    [定價](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [定價](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [定價](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定價](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 如果使用線上資料轉送，請使用下一節中適用於高速網路頻寬的表格。
@@ -85,13 +85,13 @@ ms.locfileid: "85504367"
 
 |                                     |    工具 AzCopy、 <br>Azure PowerShell、 <br>Azure CLI             |    Azure 儲存體 REST API、SDK                   |    資料箱閘道或 Data Box Edge          |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
-|    資料類型                  |    Azure Blob、Azure 檔案、Azure 資料表    |    Azure Blob、Azure 檔案、Azure 資料表    |    Azure Blob、Azure 檔案                           |   支援 70 種以上的資料存放區和格式化資料連接器    |
-|    板型規格                |    命令列工具                        |    程式設計介面                    |    Microsoft 提供的虛擬 <br>或實體裝置     |    Azure 入口網站中的服務                                            |
-|    初始的單次設定     |    簡單               |    中                       |    簡單 (<30 分鐘) 至中度 (1-2 小時)            |    大規模                                                          |
-|    資料預先處理              |    否                                        |    否                                        |    是 (使用 Edge 計算)                               |    Yes                                                                |
-|    從其他雲端轉送       |    否                                        |    否                                        |    否                                                    |    是                                                                |
-|    使用者類型                        |    IT 專業人員或開發人員                                       |    Dev                                       |    IT 專業人員                                                |    IT 專業人員                                                             |
-|    定價                          |    適用免費資料輸出費用         |    適用免費資料輸出費用         |    [定價](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [定價](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
+|    **Data type**              |    Azure Blob、Azure 檔案、Azure 資料表    |    Azure Blob、Azure 檔案、Azure 資料表    |    Azure Blob、Azure 檔案                           |   支援 70 種以上的資料存放區和格式化資料連接器    |
+|    **板型規格**            |    命令列工具                        |    程式設計介面                    |    Microsoft 提供的虛擬 <br>或實體裝置     |    Azure 入口網站中的服務                                            |
+|    **初始的單次設定** |    簡單               |    中度                       |    簡單 (<30 分鐘) 至中度 (1-2 小時)            |    大規模                                                          |
+|    **資料預先處理**          |    否                                        |    否                                        |    是 (使用 Edge 計算)                               |    是                                                                |
+|    **從其他雲端轉送**   |    否                                        |    否                                        |    否                                                    |    是                                                                |
+|    **使用者類型**                    |    IT 專業人員或開發人員                                       |    Dev                                       |    IT 專業人員                                                |    IT 專業人員                                                             |
+|    **定價**                      |    適用免費資料輸出費用         |    適用免費資料輸出費用         |    [定價](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [定價](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 
 ## <a name="next-steps"></a>後續步驟
 

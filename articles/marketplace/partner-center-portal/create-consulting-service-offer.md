@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984265"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203814"
 ---
 # <a name="create-a-consulting-service-offer"></a>建立諮詢服務供應項目
 
@@ -77,8 +77,8 @@ ms.locfileid: "85984265"
 以下是一些額外的潛在客戶管理資源：
 
 - [潛在客戶管理概觀](commercial-marketplace-get-customer-leads.md)
-- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
-- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
+- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
+- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
 - [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (請確定您已關閉快顯封鎖程式)
 
 選取 [儲存草稿] 後再繼續。
@@ -98,19 +98,29 @@ ms.locfileid: "85984265"
 
 3. 如果您已選取 [ **Azure**做為主要產品]，請選取最多三個**解決方案區域**。 這些可讓 Azure Marketplace 的客戶更輕鬆地找到您的供應項目。 如果您未選擇 Azure，請略過此步驟。
 
-    | 解決方案領域 | | | |
-    | --- | --- | --- | --- |
-    | 分析 | 備份 | DevOps | 移轉 |
-    | 應用程式現代化 | 巨量資料 | 災害復原 | 網路功能 |
-    | 封存 | 資料平台 | 身分識別 | 安全性 |
-    | AI + 機器學習 | 資料中心管理 | 物聯網 | 儲存體 |
+    - 分析
+    - 應用程式現代化
+    - 封存
+    - AI + 機器學習服務
+    - Backup
+    - 巨量資料
+    - 資料平台
+    - 資料中心管理
+    - DevOps
+    - 災害復原
+    - 身分識別
+    - 物聯網
+    - 遷移
+    - 網路
+    - 安全性
+    - 儲存體
 
 1. 如果您選取**Azure**做為主要產品，您可以選擇最多六個**產業**。 這些可讓 Azure Marketplace 的客戶更輕鬆地找到您的供應項目。 請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的產業完整清單。 如果您未選擇 [Azure]，請略過此步驟。
 1. 如果您選取了 Azure「以外」的主要產品，請選取最多三個**適用的產品**。 這些可讓 AppSource 的客戶更輕鬆地找到您的供應項目。 如需詳細資訊，請參閱 [Microsoft AppSource 諮詢服務清單指導方針](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF)。
 1. 如果您選取了 Azure*以外*的主要產品，則可以選擇為每個產業選取最多兩個**產業**和兩個**縱向**。 這些可讓 AppSource 的客戶更輕鬆地找到您的供應項目。 請參閱[供應專案清單最佳做法](../gtm-offer-listing-best-practices.md)中的產業和縱向完整清單。
 1. 新增最多三個貴公司已取得的 [專長認證]，以顯示在您的諮詢服務供應項目清單中。 除了 Azure Expert MSP 和 Azure 網路 MSP 以外，至少需要一個專長認證。
 
-選取 [儲存草稿] 後再繼續。
+選取 **[儲存草稿]** 後再繼續。
 
 ## <a name="offer-listing"></a>供應項目清單
 
@@ -119,34 +129,34 @@ ms.locfileid: "85984265"
 > [!NOTE]
 > 如果供應項目描述開頭為以下詞句：&quot;此應用程式僅適用於 [非英文語言]。&quot;，則供應項目詳細資料不需要為英文。也可利用不同於供應項目清單詳細資料中所使用的語言，來提供供應項目內容的有用連結。
 
-以下範例說明如何在 Azure Marketplace 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
+以下範例說明如何在 Azure Marketplace 中顯示供應專案資訊 (任何列出的價格僅供範例之用，而不是用來反映) 的實際成本：
 
 :::image type="content" source="media/example-consulting-service-offer.png" alt-text="說明此供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 標誌
-2. Price
+2. 價格
 3. 解決方案區域
 4. 產業
 5. 供應項目名稱
-6. 摘要
-7. Description
+6. 總結
+7. 描述
 8. 螢幕擷取畫面/影片
 
-<br>以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
+<br>以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊 (任何列出的價格僅供範例之用，而不是用來反映) 的實際成本：
 
 :::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="說明此供應專案在 Microsoft AppSource 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 標誌
-2. Price
-3. 產品
+2. 價格
+3. Products
 4. 產業
 5. 供應項目名稱
-6. 摘要
-7. Description
+6. 總結
+7. 描述
 8. 螢幕擷取畫面/影片
 9. 文件
 
