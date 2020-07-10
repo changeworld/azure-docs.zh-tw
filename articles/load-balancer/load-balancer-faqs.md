@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 205a4bd119a7324c4e6524a0e29d432aa57bf315
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 2b547dbc8671481275952f4c3eae5683e9e3a06c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848219"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207528"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer 常見問題
 
@@ -49,5 +49,9 @@ NAT 規則是用來指定要路由傳送流量的後端資源。 例如，設定
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>相同區域中的 Azure 儲存體連接如何？
 您不需要連線到與 VM 同區域的儲存體，即可透過上述案例獲得輸出連線。 如果不想此連線，請使用如前文所述的網路安全性群組 (NSG)。 如需其他區域的儲存體連線，則需要有輸出連線能力。 請注意，從同區域的 VM 連線到儲存體時，儲存體診斷記錄中來源 IP 位址會是內部提供者的位址，而不是 VM 的公用 IP 位址。 如果希望要將儲存體帳戶的存取，限制在同區域一或多個虛擬網路子網路中的 VM，請在設定儲存體帳戶防火牆時，使用[虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)，且不要使用公用 IP 位址。 設定好服務端點之後，您就會在儲存體診斷記錄中看到虛擬網路私人 IP 位址，而不是內部提供者的位址。
 
+## <a name="what-are-best-practises-with-respect-to-outbound-connectivity"></a>關於輸出連線能力的最佳 practises 為何？
+Standard Load Balancer 和標準公用 IP 會引進輸出連線能力和不同行為。 這些與基本 SKU 不同。 如果您想要在使用標準 SKU 時輸出連線，您必須使用標準公用 IP 位址或標準公用 Load Balancer 明確定義該連線。 這包括在使用內部 Standard Load Balancer 時建立輸出連線。 建議您一律使用標準公用 Load Balancer 的輸出規則。 這表示當使用內部 Standard Load Balancer 時，如果想要使用輸出連線能力，您需要採取步驟來為後端集區中的 VM 建立輸出連線能力。 在輸出連線的內容中，單一獨立 VM、可用性設定組中的所有 VM，VMSS 中的所有實例都會以群組的方式運作。 這表示，如果可用性設定組中的單一 VM 與標準 SKU 相關聯，則此時可用性設定組內的所有 VM 執行個體行為會遵循相同的規則，就如同與標準 SKU 相關聯一般，雖然個別執行個體並非直接與它相關聯。 當獨立 VM 有多張網路介面卡連接到負載平衡器時，也會出現這樣的行為。 如果單獨新增一張 NIC，就會出現相同的行為。 請仔細檢閱這整份文件了解整體概念，檢閱 [Standard Load Balancer](load-balancer-standard-overview.md) 了解 SKU 之間的差異，並檢閱[輸出規則](load-balancer-outbound-connections.md#outboundrules)。
+使用輸出規則可讓您細部控制輸出連線的所有層面。
+ 
 ## <a name="next-steps"></a>後續步驟
 如果您的問題未列于上方，請使用您的問題傳送關於此頁面的意見反應。 這會為產品小組建立 GitHub 問題，以確保所有的重要客戶問題都能獲得解答。

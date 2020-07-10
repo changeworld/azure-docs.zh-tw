@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: acb7ff5c0862ceff8c73eaca92cc7000220eca41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 675038189fdc9c9626fee409a90e17341cf9b6cd
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738646"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207367"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure 網路監看員中的資源疑難排解簡介
 
@@ -47,42 +47,42 @@ ms.locfileid: "84738646"
 
 ### <a name="gateway"></a>閘道
 
-| 錯誤類型 | 原因 | 記錄檔|
+| 錯誤類型 | 原因 | 記錄|
 |---|---|---|
-| NoFault | 未偵測到任何錯誤時 |Yes|
-| GatewayNotFound | 找不到閘道或閘道尚未佈建 |No|
-| PlannedMaintenance |  閘道執行個體正在進行維護  |No|
-| UserDrivenUpdate | 當正在更新使用者時，會發生此錯誤。 此更新可能是調整大小作業。 | No |
-| VipUnResponsive | 由於健康情況探查失敗而無法連線到閘道的主要執行個體時，會發生此錯誤。 | No |
-| PlatformInActive | 平台發生問題。 | No|
-| ServiceNotRunning | 基礎服務並未執行。 | No|
-| NoConnectionsFoundForGateway | 閘道上沒有任何連線存在。 此錯誤只是警告。| No|
-| ConnectionsNotConnected | 未建立連線。 此錯誤只是警告。| Yes|
-| GatewayCPUUsageExceeded | 目前的閘道 CPU 使用量 > 95%。 | Yes |
+| NoFault | 未偵測到任何錯誤時 |是|
+| GatewayNotFound | 找不到閘道或閘道尚未佈建 |否|
+| PlannedMaintenance |  閘道執行個體正在進行維護  |否|
+| UserDrivenUpdate | 當正在更新使用者時，會發生此錯誤。 此更新可能是調整大小作業。 | 否 |
+| VipUnResponsive | 由於健康情況探查失敗而無法連線到閘道的主要執行個體時，會發生此錯誤。 | 否 |
+| PlatformInActive | 平台發生問題。 | 否|
+| ServiceNotRunning | 基礎服務並未執行。 | 否|
+| NoConnectionsFoundForGateway | 閘道上沒有任何連線存在。 此錯誤只是警告。| 否|
+| ConnectionsNotConnected | 未建立連線。 此錯誤只是警告。| 是|
+| GatewayCPUUsageExceeded | 目前的閘道 CPU 使用量 > 95%。 | 是 |
 
 ### <a name="connection"></a>連線
 
-| 錯誤類型 | 原因 | 記錄檔|
+| 錯誤類型 | 原因 | 記錄|
 |---|---|---|
-| NoFault | 未偵測到任何錯誤時 |Yes|
-| GatewayNotFound | 找不到閘道或閘道尚未佈建 |No|
-| PlannedMaintenance | 閘道執行個體正在進行維護  |No|
-| UserDrivenUpdate | 當正在更新使用者時，會發生此錯誤。 此更新可能是調整大小作業。  | No |
-| VipUnResponsive | 由於健康情況探查失敗而無法連線到閘道的主要執行個體時，會發生此錯誤。 | No |
-| ConnectionEntityNotFound | 缺少連線組態 | No |
-| ConnectionIsMarkedDisconnected | 連線標記為「已中斷連線」 |No|
-| ConnectionNotConfiguredOnGateway | 基礎服務未設定連線。 | Yes |
-| ConnectionMarkedStandby | 基礎服務標記為「待命」。| Yes|
-| 驗證 | 預先共用的金鑰不相符 | Yes|
-| PeerReachability | 無法連線到對等閘道。 | Yes|
-| IkePolicyMismatch | 對等閘道的 IKE 原則不受 Azure 支援。 | Yes|
-| WfpParse Error | 剖析 WFP 記錄時發生錯誤。 |Yes|
+| NoFault | 未偵測到任何錯誤時 |是|
+| GatewayNotFound | 找不到閘道或閘道尚未佈建 |否|
+| PlannedMaintenance | 閘道執行個體正在進行維護  |否|
+| UserDrivenUpdate | 當正在更新使用者時，會發生此錯誤。 此更新可能是調整大小作業。  | 否 |
+| VipUnResponsive | 由於健康情況探查失敗而無法連線到閘道的主要執行個體時，會發生此錯誤。 | 否 |
+| ConnectionEntityNotFound | 缺少連線組態 | 否 |
+| ConnectionIsMarkedDisconnected | 連線標記為「已中斷連線」 |否|
+| ConnectionNotConfiguredOnGateway | 基礎服務未設定連線。 | 是 |
+| ConnectionMarkedStandby | 基礎服務標記為「待命」。| 是|
+| 驗證 | 預先共用的金鑰不相符 | 是|
+| PeerReachability | 無法連線到對等閘道。 | 是|
+| IkePolicyMismatch | 對等閘道的 IKE 原則不受 Azure 支援。 | 是|
+| WfpParse Error | 剖析 WFP 記錄時發生錯誤。 |是|
 
 ## <a name="supported-gateway-types"></a>支援的閘道類型
 
 下表列出網路監看員疑難排解所支援的閘道和連線：
 
-|  |  |
+| 閘道或連接 | 支援  |
 |---------|---------|
 |**閘道類型**   |         |
 |VPN      | 支援        |

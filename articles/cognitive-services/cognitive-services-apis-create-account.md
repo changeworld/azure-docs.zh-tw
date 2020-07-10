@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: 4a73ff517347baa2cf589432be025bd922597ed3
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: f76b444f737c4deb0fc61953c839c8826f379d5e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611385"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207266"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>使用 Azure 入口網站建立認知服務資源
 
@@ -37,11 +37,17 @@ ms.locfileid: "85611385"
 
     此時，多服務資源會啟用下列認知服務的存取權：
 
-    |                  |                                                      |                    |                               |                  |
-    |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
-    | 電腦視覺  | 內容仲裁者                                    | 臉部               | 語言理解 (LUIS) | 文字分析   |
-    | 轉譯程式  | Bing 搜尋 v7 <br>（Web、影像、新聞、影片、視覺效果） | Bing 自訂搜尋 | Bing 實體搜尋            | Bing 自動建議 |
-    | Bing 拼字檢查 |                                                      |                    |                               |                  |
+    - 電腦視覺
+    - 內容仲裁
+    - 臉部
+    - 語言理解 (LUIS)
+    - 文字分析
+    - 轉譯程式
+    - Bing 搜尋 v7 <br> (Web、影像、新聞、影片、Visual) 
+    - Bing 自訂搜尋
+    - Bing 實體搜尋
+    - Bing 自動建議
+    - Bing 拼字檢查
 
     #### <a name="single-service-resource"></a>[單一服務資源](#tab/singleservice)
 

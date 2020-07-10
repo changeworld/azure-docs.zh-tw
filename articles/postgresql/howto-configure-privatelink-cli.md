@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: ec4c40430f2cfe04a86ec5f3304aeebd00e4f658
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c957e2ee1d1e596ca8e3525e0f4a9802c4039107
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118268"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206824"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 建立和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的私人連結
 
@@ -154,7 +154,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 ## <a name="access-the-postgresql-server-privately-from-the-vm"></a>從 VM 私下存取于 postgresql 伺服器
 
-1. 在 myVM ** 的遠端桌面中，開啟 PowerShell。
+1. 在 myVm 的遠端桌面中，開啟 PowerShell。
 
 2. 輸入  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`。 
 
@@ -184,7 +184,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 6. 瀏覽左側功能表中的資料庫。
 
-7. 也從于 postgresql 伺服器建立或查詢資訊。
+7.  (選擇性地) 從于 postgresql 伺服器建立或查詢資訊。
 
 8. 關閉對 myVm 的遠端桌面連線。
 

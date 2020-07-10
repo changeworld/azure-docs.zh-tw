@@ -1,5 +1,5 @@
 ---
-title: 評估和緩和機器學習模型中的公平問題
+title: " (預覽) 評估和緩和機器學習模型中的公平問題"
 titleSuffix: Azure Machine Learning
 description: 了解機器學習模型中的公平性，以及 Fairlearn Python 套件如何協助您建置更公平的模型。
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 06/30/2020
-ms.openlocfilehash: c4e9b8386c8341d076a69e2e81b5e92f296153ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611776"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207290"
 ---
-# <a name="build-fairer-machine-learning-models"></a>組建 fairer 機器學習模型
+# <a name="build-fairer-machine-learning-models-preview"></a> (預覽) 組建 fairer 機器學習模型
 
 瞭解機器學習服務的公平，以及[Fairlearn](https://fairlearn.github.io/)開放原始碼 Python 套件如何協助您建立更公平的模型。 如果您不想花時間瞭解公平問題，並在建立機器學習模型時評估公平，您可以建立產生不公平結果的模型。 
 
@@ -96,7 +96,7 @@ Fairlearn 開放原始碼套件支援下列類型的同位檢查條件約束：
 
 Fairlearn 開放原始碼套件可提供後處理和縮減 unfairness 緩和演算法：
 
-- 減少：這些演算法採用標準的「黑箱機器學習服務估計工具」（例如 LightGBM 模型），並使用一系列的重新加權訓練資料集來產生一組重新訓練模型。 例如，可對特定性別的申請者調升或調降權重以重新定型模型，並減少不同性別群體間的差異。 然後，使用者可以選擇一個在精確度 (或其他效能計量) 與差異之間提供最佳取捨的模型，而這通常需以商務規則和成本計算為基礎。  
+- 減少：這些演算法採用標準的「全黑箱」機器學習服務估計工具 (例如，LightGBM 模型) ，並使用一系列的重新加權訓練資料集來產生一組重新訓練模型。 例如，可對特定性別的申請者調升或調降權重以重新定型模型，並減少不同性別群體間的差異。 然後，使用者可以選擇一個在精確度 (或其他效能計量) 與差異之間提供最佳取捨的模型，而這通常需以商務規則和成本計算為基礎。  
 - 後處理：這些演算法會採用現有的分類器和敏感性特徵作為輸入。 接著將會衍生分類器預測的轉換，以強制執行指定的公平性條件約束。 閾值最佳化最大的優點在於其簡易性和彈性，因為不需要重新定型模型。 
 
 | 演算法 | 描述 | 機器學習工作 | 敏感性特徵 | 支援的同位檢查條件約束 | 演算法類型 |

@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 861e011c4bd368a274998859170e78cf444400a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113063"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206170"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>瞭解 Azure 認知搜尋中的 OData 集合篩選
 
@@ -49,13 +50,17 @@ ms.locfileid: "74113063"
 
 將多個篩選準則套用至複雜物件的集合時，準則會相互**關聯**，因為它們會套用至*集合中的每個物件*。 例如，下列篩選會傳回至少有一個 deluxe 房間的旅館，其費率低於100：
 
+```odata-filter-expr
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
+```
 
 如果無法與篩選相關，則上述篩選可能會傳回一個會議室已*deluxe，而*不同房間的基本費率低於100的飯店。 這沒什麼意義，因為 lambda 運算式的兩個子句都適用于相同的範圍變數，亦即 `room` 。 這就是這類篩選器相互關聯的原因。
 
 不過，如果是全文檢索搜尋，就無法參考特定的範圍變數。 如果您使用回復搜尋來發出如下列的[完整 Lucene 查詢](query-lucene-syntax.md)：
 
+```odata-filter-expr
     Rooms/Type:deluxe AND Rooms/Description:"city view"
+```
 
 您可能會在 deluxe 某個房間時取得飯店，而不同的房間在描述中提及「城市視圖」。 例如，下列與 `Id` 的檔 `1` 會符合查詢：
 
@@ -137,7 +142,7 @@ ms.locfileid: "74113063"
 
 欄位的值 `seasons` 會儲存在稱為**反向索引**的結構中，如下所示：
 
-| 詞彙 | 檔識別碼 |
+| 字詞 | 檔識別碼 |
 | --- | --- |
 | spring | 1, 2 |
 | 夏令時 | 1 |
@@ -148,19 +153,27 @@ ms.locfileid: "74113063"
 
 以相等的方式建立，接下來我們將探討如何將相同範圍變數上的多個相等檢查與結合在一起 `or` 。 這是因為代數和數量詞的分配[屬性](https://en.wikipedia.org/wiki/Existential_quantification#Negation)。 此運算式：
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 相當於：
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
+```
 
 而這兩個子運算式的每一個都 `any` 可以使用反向索引來有效率地執行。 此外，感謝數量詞的[負法則](https://en.wikipedia.org/wiki/Existential_quantification#Negation)，此運算式：
 
+```odata-filter-expr
     seasons/all(s: s ne 'winter' and s ne 'fall')
+```
 
 相當於：
 
+```odata-filter-expr
     not seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 這就是為何可以與和搭配使用的原因 `all` `ne` `and` 。
 
@@ -173,13 +186,13 @@ ms.locfileid: "74113063"
 >
 > 反向規則適用于 `all` 。
 
-在支援 `lt` 、 `gt` 、 `le` 和 `ge` 運算子的資料類型集合上進行篩選時，允許使用更廣泛的運算式，例如 `Collection(Edm.Int32)` 。 具體而言，您可以使用和 `and` `or` 中的 `any` ，只要基礎比較運算式結合成使用的**範圍比較** `and` ，然後使用進一步結合 `or` 。 此布林運算式的結構稱為[Disjunctive 一般格式（DNF）](https://en.wikipedia.org/wiki/Disjunctive_normal_form)，也稱為 "Or of and"。 相反 `all` 地，針對這些資料類型的 lambda 運算式必須是[組成 Normal 格式（my.cnf）](https://en.wikipedia.org/wiki/Conjunctive_normal_form)，亦稱為「and of or」。 Azure 認知搜尋允許這類的範圍比較，因為它可以有效率地使用反向索引來執行它們，就像可以針對字串進行快速的詞彙查閱一樣。
+在支援 `lt` 、 `gt` 、 `le` 和 `ge` 運算子的資料類型集合上進行篩選時，允許使用更廣泛的運算式，例如 `Collection(Edm.Int32)` 。 具體而言，您可以使用和 `and` `or` 中的 `any` ，只要基礎比較運算式結合成使用的**範圍比較** `and` ，然後使用進一步結合 `or` 。 此布林運算式的結構稱為[Disjunctive 一般格式 (DNF) ](https://en.wikipedia.org/wiki/Disjunctive_normal_form)，亦稱為「Or of and」。 相反 `all` 地，針對這些資料類型的 lambda 運算式必須是[組成 Normal 格式， (my.cnf) ](https://en.wikipedia.org/wiki/Conjunctive_normal_form)，亦稱為「and of or」。 Azure 認知搜尋允許這類的範圍比較，因為它可以有效率地使用反向索引來執行它們，就像可以針對字串進行快速的詞彙查閱一樣。
 
 總而言之，以下是 lambda 運算式中允許之功能的經驗法則：
 
-- 在內部 `any` ，一律允許*正面檢查*，例如相等、範圍比較， `geo.intersects` 或與 `geo.distance` 或比較 `lt` `le` （將 "接近程度" 視為類似檢查距離的相等）。
-- 在中 `any` ， `or` 一律允許使用。 只有在 `and` 您使用 or Of and （DNF）時，才可以使用資料類型來表示範圍檢查。
-- 在中 `all` ，規則會反轉--只允許*負的檢查*，您可以使用 `and` always，而且只能 `or` 用於以 Or （my.cnf）的 and 表示的範圍檢查。
+- 在內部 `any` ，一律允許*正面檢查*，例如相等、範圍比較， `geo.intersects` 或與 `geo.distance` `lt` 或 (在 `le` 檢查距離) 時，將 "接近程度" 視為類似的相等。
+- 在中 `any` ， `or` 一律允許使用。 只有在 `and` 您使用 or Of and (DNF) 時，才可以使用資料類型來表示範圍檢查。
+- 在中 `all` ，規則會反轉--只允許*負的檢查*，您可以使用 `and` always，而且只能 `or` 用於以 Or (my.cnf) 的 and 表示的範圍檢查。
 
 實際上，這些是您最可能使用的篩選器類型。 不過，瞭解可能的界限仍然很有説明。
 

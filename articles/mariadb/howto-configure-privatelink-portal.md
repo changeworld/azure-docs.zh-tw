@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: db2fa377cc10759fc57c3e4a27bd7815a5724bd7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 08e146ebde34c6d85e258c93a1ed1780bb97727b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114732"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206444"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>使用入口網站建立和管理適用於 MariaDB 的 Azure 資料庫的私用連結
 
 私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。  在本文中，您將瞭解如何使用 Azure 入口網站來建立 Azure 虛擬網路中的 VM，以及具有 Azure 私用端點的適用於 MariaDB 的 Azure 資料庫伺服器。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立一個[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
 > 這項功能適用于所有 Azure 區域，其中適用於 MariaDB 的 Azure 資料庫支援一般用途和記憶體優化定價層。
@@ -27,7 +27,7 @@ ms.locfileid: "86114732"
 
 ## <a name="create-an-azure-vm"></a>建立 Azure VM
 
-在本節中，您將建立虛擬網路和子網，以裝載用來存取私人連結資源（Azure 中的適用于 mariadb 伺服器）的 VM。
+在本節中，您將建立虛擬網路和子網，以裝載用來存取私人連結資源的 VM， (Azure) 中的適用于 mariadb 伺服器。
 
 ### <a name="create-the-virtual-network"></a>建立虛擬網路
 在本節中，您將建立虛擬網路和子網路，以裝載用來存取 Private Link 資源的 VM。
@@ -41,7 +41,7 @@ ms.locfileid: "86114732"
     | 位址空間 | 輸入 *10.1.0.0/16*。 |
     | 訂用帳戶 | 選取您的訂用帳戶。|
     | 資源群組 | 選取 [新建]，輸入 *myResourceGroup*，然後選取 [確定]。 |
-    | Location | 選取 [西歐]。|
+    | 位置 | 選取 [西歐]。|
     | 子網路 - 名稱 | 輸入 mySubnet**。 |
     | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24*。 |
     |||
@@ -167,7 +167,7 @@ ms.locfileid: "86114732"
     | 子網路 | 選取 [mySubnet] **。 |
     |**私人 DNS 整合**||
     |與私人 DNS 區域整合 |選取 [是]。 |
-    |私人 DNS 區域 |選取 *[（新增）] privatelink. 適用于 mariadb. azure .com* |
+    |私人 DNS 區域 |選取* (新增) privatelink.mariadb.database.azure.com* |
     |||
 
     > [!Note] 
@@ -209,7 +209,7 @@ ms.locfileid: "86114732"
 
 ## <a name="access-the-mariadb-server-privately-from-the-vm"></a>從 VM 私下存取適用于 mariadb 伺服器
 
-1. 在 myVM ** 的遠端桌面中，開啟 PowerShell。
+1. 在 myVm 的遠端桌面中，開啟 PowerShell。
 
 2. 輸入  `nslookup mydemomserver.privatelink.mariadb.database.azure.com`。 
 
@@ -238,7 +238,7 @@ ms.locfileid: "86114732"
 
 5. 選取 [**測試連接** **] 或 [確定]**。
 
-6. 也從左側功能表流覽資料庫，並從適用于 mariadb 資料庫建立或查詢資訊
+6.  (選擇性地) 從左側功能表流覽資料庫，並從適用于 mariadb 資料庫建立或查詢資訊
 
 7. 關閉對 myVm 的遠端桌面連線。
 

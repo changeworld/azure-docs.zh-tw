@@ -3,14 +3,15 @@ title: 驗證和授權
 description: 瞭解 Azure App Service 和 Azure Functions 中內建的驗證和授權支援，以及它如何協助保護您的應用程式免于未經授權的存取。
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9588777305ca42603623075b908eee5d76164c84
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196443"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206750"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service 和 Azure Functions 中的驗證和授權
 
@@ -23,7 +24,7 @@ Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用
 若要有安全的驗證和授權，必須對安全性有深入了解，包括同盟、加密、[JSON Web 權杖 (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[授與類型](https://oauth.net/2/grant-types/)等等。 App Service 會提供這些公用程式，以便您可以將更多的時間和精力花在為客戶提供商務價值上。
 
 > [!IMPORTANT]
-> 您不需要使用這項功能來進行驗證和授權。 您可以在您選擇的 web 架構中使用配套的安全性功能，也可以撰寫自己的公用程式。 不過，請記住， [Chrome 80 正在對 cookie 的 SameSite 進行重大變更](https://www.chromestatus.com/feature/5088147346030592)（在2020年3月的發行日期），而自訂遠端驗證或依賴跨網站 cookie 張貼的其他案例，可能會在用戶端 Chrome 瀏覽器更新時中斷。 因應措施很複雜，因為它需要針對不同的瀏覽器支援不同的 SameSite 行為。 
+> 您不需要使用這項功能來進行驗證和授權。 您可以在您選擇的 web 架構中使用配套的安全性功能，也可以撰寫自己的公用程式。 不過，請記住， [Chrome 80 正在對 cookie 的 SameSite 進行重大變更](https://www.chromestatus.com/feature/5088147346030592)， (發行日期約于2020年3月) ，而自訂遠端驗證或依賴跨網站 cookie 張貼的其他案例可能會在用戶端 Chrome 瀏覽器更新時中斷。 因應措施很複雜，因為它需要針對不同的瀏覽器支援不同的 SameSite 行為。 
 >
 > App Service 所裝載的 ASP.NET Core 2.1 和以上版本已針對這項重大變更進行修補，並適當地處理 Chrome 80 和較舊的瀏覽器。 此外，ASP.NET Framework 4.7.2 的相同修補程式會部署在2020年1月的 App Service 實例上。 如需詳細資訊，包括如何知道您的應用程式是否已收到修補程式，請參閱[Azure App Service SameSite cookie update](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)。
 >
@@ -34,7 +35,7 @@ Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用
 
 驗證和授權模組會在與應用程式程式碼相同的沙箱中執行。 此模組啟用時，每個連入的 HTTP 要求會先通過此模組，再由應用程式程式碼處理。
 
-![](media/app-service-authentication-overview/architecture.png)
+![此架構圖顯示網站沙箱中的進程所攔截到的要求，此程式會在允許流量至已部署的網站之前與識別提供者互動](media/app-service-authentication-overview/architecture.png)
 
 此模組會處理應用程式的幾件事：
 
@@ -47,7 +48,7 @@ Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用
 
 ### <a name="userapplication-claims"></a>使用者/應用程式宣告
 
-針對所有語言架構，App Service 會將傳入權杖中的宣告（不論是來自已驗證的使用者或用戶端應用程式）提供給程式碼，方法是將它們插入要求標頭中。 在 ASP.NET 4.6 應用程式中，App Service 會使用已驗證的使用者宣告填入 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current)，因此您可以遵循標準的 .NET 程式碼模式，包括 `[Authorize]` 屬性。 同樣地，在 PHP 應用程式中，App Service 會填入 `_SERVER['REMOTE_USER']` 變數。 針對 JAVA 應用程式，[可從 Tomcat servlet 存取](containers/configure-language-java.md#authenticate-users-easy-auth)宣告。
+針對所有語言架構，App Service 會將宣告放入權杖中， (無論是來自已驗證的使用者或用戶端應用程式，都可以將其插入要求標頭中，以供您的) 程式碼使用。 在 ASP.NET 4.6 應用程式中，App Service 會使用已驗證的使用者宣告填入 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current)，因此您可以遵循標準的 .NET 程式碼模式，包括 `[Authorize]` 屬性。 同樣地，在 PHP 應用程式中，App Service 會填入 `_SERVER['REMOTE_USER']` 變數。 針對 JAVA 應用程式，[可從 Tomcat servlet 存取](containers/configure-language-java.md#authenticate-users-easy-auth)宣告。
 
 針對[Azure Functions](../azure-functions/functions-overview.md)， `ClaimsPrincipal.Current` 不會針對 .net 程式碼填入，但您仍然可以在要求標頭中找到使用者宣告，或 `ClaimsPrincipal` 從要求內容取得物件，甚至是透過系結參數。 如需詳細資訊，請參閱[使用用戶端](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities)身分識別。
 
@@ -81,8 +82,11 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
+| 任何[OpenID connect](https://openid.net/connect/)提供者 (預覽)  | `/.auth/login/<providerName>` |
 
-當您利用上述其中一個提供者啟用驗證和授權時，其登入端點即可用來驗證使用者，以及用來驗證提供者的驗證權杖。 您可以輕鬆地為使用者提供任何數目的上述登入選項。 您也可以整合其他識別提供者或[您自己的自訂身分識別解決方案][custom-auth]。
+當您利用上述其中一個提供者啟用驗證和授權時，其登入端點即可用來驗證使用者，以及用來驗證提供者的驗證權杖。 您可以輕鬆地為使用者提供任何數目的上述登入選項。
+
+舊版擴充性[路徑][custom-auth]存在於與其他身分識別提供者或自訂驗證解決方案整合，但不建議這麼做。 相反地，請考慮使用 OpenID Connect 支援。
 
 ## <a name="authentication-flow"></a>驗證流程
 
@@ -112,11 +116,11 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 
 在[Azure 入口網站](https://portal.azure.com)中，您可以在未驗證傳入要求時，使用一些行為來設定 App Service 授權。
 
-![](media/app-service-authentication-overview/authorization-flow.png)
+![顯示 [要求未通過驗證時所要採取的動作] 下拉式清單的螢幕擷取畫面](media/app-service-authentication-overview/authorization-flow.png)
 
 下列標題會說明可用選項。
 
-### <a name="allow-anonymous-requests-no-action"></a>允許匿名要求（無動作）
+### <a name="allow-anonymous-requests-no-action"></a>允許匿名要求 (沒有動作) 
 
 此選項會將未驗證流量的授權延遲到您的應用程式程式碼。 對於已驗證的要求，App Service 也會在 HTTP 標頭中一起傳送驗證資訊。 
 
@@ -140,8 +144,8 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 [教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](app-service-web-tutorial-auth-aad.md)  
 [教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](containers/tutorial-auth-aad.md)  
 [在 App Service](app-service-authentication-how-to.md) 
- 中自訂驗證和授權[Azure AppService EasyAuth （協力廠商）](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
- 的 .net Core 整合使用[.Net Core 取得 Azure App Service 驗證（協力廠商）](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+ 中自訂驗證和授權[Azure AppService EasyAuth (協力廠商) ](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
+ 的 .net Core 整合[取得 Azure App Service 驗證使用 .Net Core (協力廠商) ](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 提供者專屬的使用說明指南：
 
@@ -150,13 +154,14 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 * [如何設定 App 以使用 Google 登入][Google]
 * [如何設定 App 使用 Microsoft 帳戶登入][MSA]
 * [如何設定 App 以使用 Twitter 登入][Twitter]
-* [做法：針對應用程式使用自訂驗證][custom-auth]
+* [如何設定您的應用程式以使用 OpenID Connect 提供者進行登入 (預覽) ][OIDC]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
 [Google]: configure-authentication-provider-google.md
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
+[OIDC]: configure-authentication-provider-openid-connect.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 

@@ -5,11 +5,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中，建立�
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80803377"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205782"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用適用於輸出流量的靜態公用 IP 位址
 
@@ -22,6 +23,9 @@ ms.locfileid: "80803377"
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
 您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+
+> [!IMPORTANT]
+> 本文使用*基本*SKU 負載平衡器搭配單一節點集區。 此設定不適用於多個節點集區，因為有多個節點集區不支援*基本*SKU 負載平衡器。 如需使用*標準*SKU 負載平衡器的詳細資訊，請參閱[在 Azure Kubernetes Service (AKS 中使用公用 Standard Load Balancer) ][slb] 。
 
 ## <a name="egress-traffic-overview"></a>輸出流量概觀
 
@@ -92,7 +96,7 @@ spec:
 kubectl apply -f egress-service.yaml
 ```
 
-此服務會在 Azure Load Balancer 上設定新的前端 IP。 如果您未設定任何其他 IP，則**所有**輸出流量現在都應該會使用此位址。 在 Azure Load Balancer 上設定多個位址時，輸出會使用該負載平衡器上的第一個 IP。
+此服務會在 Azure Load Balancer 上設定新的前端 IP。 如果您未設定任何其他 IP，則**所有**輸出流量現在都應該會使用此位址。 在 Azure Load Balancer 上設定多個位址時，這些公用 IP 位址中的任何一個都是輸出流程的候選項，而且會隨機選取一個。
 
 ## <a name="verify-egress-address"></a>確認輸出位址
 
@@ -133,3 +137,4 @@ $ curl -s checkip.dyndns.org
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[slb]: load-balancer-standard.md

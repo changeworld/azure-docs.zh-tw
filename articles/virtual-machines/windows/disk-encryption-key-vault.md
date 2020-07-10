@@ -8,11 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0348461e2a58bd8e71b8dff10667c512125d7b03
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9160ab530037da1f24a2f07903b949b42ecbb34b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656699"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207073"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>建立及設定適用於 Azure 磁碟加密的金鑰保存庫
 
@@ -22,6 +23,9 @@ Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金�
 > - 如果您先前曾使用 Azure 磁碟加密搭配 Azure AD 來加密 VM，則必須繼續使用此選項來加密您的 VM。 如需詳細資料，請參閱[使用 Azure AD (舊版) 建立和設定 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault-aad.md)。
 
 建立及設定與 Azure 磁碟加密搭配使用的金鑰保存庫，包含下列步驟：
+
+> [!Note]
+> 您必須選取 [Azure Key Vault 存取原則設定] 中的選項，才能存取磁片區加密的 Azure 磁碟加密。
 
 1. 建立資源群組 (如有需要)。
 2. 建立金鑰保存庫。 

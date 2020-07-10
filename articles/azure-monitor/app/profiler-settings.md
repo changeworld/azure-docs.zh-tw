@@ -6,19 +6,19 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188921"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205722"
 ---
 # <a name="configure-application-insights-profiler"></a>設定 Application Insights Profiler
 
 ## <a name="updated-profiler-agent"></a>已更新 Profiler 代理程式
 觸發程式功能只適用于2.6 版或更新版本的 profiler 代理程式。 如果您正在執行 Azure App Service，您的代理程式會自動更新。 如果您移至網站的 Kudu URL，並將 \DiagnosticServices 附加至它的結尾，您可以查看正在執行的代理程式版本，如下所示： `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` 。 Application Insights Profiler Webjob 應為2.6 或更新版本。 您可以重新開機 web 應用程式來強制升級。 
 
-如果您是在 VM 或雲端服務上執行分析工具，您必須安裝 Windows Azure 診斷（WAD）延伸模組版本16.0.4 版或更新版本。 您可以藉由登入您的 VM 並查看此目錄，來檢查 WAD 的版本： C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4。 目錄名稱是已安裝的 WAD 版本。 當有新版本可用時，Azure VM 代理程式會自動更新 WAD。
+如果您是在 VM 或雲端服務上執行分析工具，則必須安裝 Windows Azure 診斷 (WAD) 擴充功能版本16.0.4 版或更新版本。 您可以藉由登入您的 VM 並查看此目錄，來檢查 WAD 的版本： C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4。 目錄名稱是已安裝的 WAD 版本。 當有新版本可用時，Azure VM 代理程式會自動更新 WAD。
 
 ## <a name="profiler-settings-page"></a>Profiler 設定頁面
 
@@ -32,7 +32,7 @@ ms.locfileid: "82188921"
 
 [**設定 Application Insights Profiler** ] 頁面具有下列功能：
 
-| | |
+| 功能 | 說明 |
 |-|-|
 立即分析 | 開始為所有連結至此 Application Insights 執行個體的應用程式分析工作階段。
 觸發程序 | 可讓您設定導致 profiler 執行的觸發程式。 
@@ -48,17 +48,17 @@ ms.locfileid: "82188921"
 
 按一下功能表列上的 [觸發程式] 按鈕會開啟 [觸發程式設定] 方塊。 您可以設定觸發程式，以便在 CPU 或記憶體使用量百分比達到您設定的層級時開始進行分析。
 
-| | |
+| 設定 | 描述 |
 |-|-|
 開啟/關閉按鈕 | 在上：此觸發程式可以啟動 profiler;Off：此觸發程式不會啟動 profiler。
 記憶體閾值 | 當此百分比的記憶體使用中時，就會啟動 profiler。
-Duration | 設定觸發時，分析工具將執行的時間長度。
+持續時間 | 設定觸發時，分析工具將執行的時間長度。
 Cooldown | 設定分析工具在觸發後再次檢查記憶體或 CPU 使用量之前，所要等待的時間長度。
 
 ## <a name="recent-profiling-sessions"></a>最近的分析會話
 頁面的這個區段會顯示最近分析會話的相關資訊。 分析會話代表 profiler 代理程式在其中一部裝載您應用程式的電腦上取得設定檔的時間。 您可以按一下其中一個資料列，從會話開啟設定檔。 針對每個會話，我們會示範：
 
-| | |
+| 設定 | 描述 |
 |-|-|
 觸發者 | 會話如何藉由觸發程式、立即分析或預設取樣來啟動。 
 應用程式名稱 | 已分析之應用程式的名稱。

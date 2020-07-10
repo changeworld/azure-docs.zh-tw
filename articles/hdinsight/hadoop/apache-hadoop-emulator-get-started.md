@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: e918740c884f377048febfe2177e2fe956b1d552
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: de2a8e6377ababadc7d42f873a816a01a8f3b77e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085050"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207459"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>開始使用 Apache Hadoop 沙箱，也就是虛擬機器上的模擬器
 
@@ -30,7 +30,7 @@ ms.locfileid: "86085050"
 
 1. 按一下 **[選擇安裝類型**] 底下的 [ **VIRTUALBOX** ]，以在 VM 上下載最新的 Hortonworks 沙箱。 登入或完成產品興趣表單。
 
-1. 按一下 [ **HDP 沙箱（最新）** ] 按鈕開始下載。
+1. 按一下 [ **HDP 沙箱 (最新) ** ] 按鈕開始下載。
 
 如需設定沙箱的指示，請參閱[沙箱部署和安裝指南](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "86085050"
 
     ![virtualbox 管理員正常啟動](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
-1. 開啟網頁瀏覽器，並流覽至顯示的 URL （通常是 `http://127.0.0.1:8888` ）。
+1. 開啟網頁瀏覽器，並流覽至所顯示的 URL， (通常 `http://127.0.0.1:8888`) 。
 
 ## <a name="set-sandbox-passwords"></a>設定沙箱密碼
 
@@ -57,7 +57,9 @@ ms.locfileid: "86085050"
 
 2. 登入之後，輸入下列命令：
 
-        ambari-admin-password-reset
+    ```bash
+    ambari-admin-password-reset
+    ```
 
     出現提示時，提供 Ambari 系統管理員帳戶的密碼。 當您存取 Ambari Web UI 時將會用到。
 
@@ -65,13 +67,21 @@ ms.locfileid: "86085050"
 
 1. 在連往沙箱的 SSH 連線中，使用下列命令啟動 Hive 殼層：
 
-        hive
+    ```bash
+    hive
+    ```
+
 2. 殼層啟動之後，使用下列命令檢視沙箱所提供的資料表︰
 
-        show tables;
+    ```hiveql
+    show tables;
+    ```
+
 3. 使用下列命令從 `sample_07` 資料表擷取 10 個資料列︰
 
-        select * from sample_07 limit 10;
+    ```hiveql
+    select * from sample_07 limit 10;
+    ```
 
 ## <a name="next-steps"></a>後續步驟
 

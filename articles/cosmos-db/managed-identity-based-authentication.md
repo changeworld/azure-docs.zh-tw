@@ -1,18 +1,18 @@
 ---
 title: 如何使用系統指派的受控識別來存取 Azure Cosmos DB 資料
-description: 瞭解如何設定 Azure Active Directory （Azure AD）系統指派的受控識別（受控服務識別），以從 Azure Cosmos DB 存取金鑰。
+description: 瞭解如何設定 Azure Active Directory (Azure AD) 系統指派的受控識別 (受控服務識別) 從 Azure Cosmos DB 存取金鑰。
 author: j-patrick
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 2555719e13b0cba38150d3bce7a18f043158d5b5
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: dfce18674f382cb683fa74a1bed964e9f86d72c2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970955"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206110"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>使用系統指派的受控識別來存取 Azure Cosmos DB 資料
 
@@ -53,7 +53,9 @@ ms.locfileid: "85970955"
 
 在此案例中，函式應用程式會讀取水族箱的溫度，然後將該資料寫回至 Azure Cosmos DB 中的容器。 因為函式應用程式必須寫入資料，所以您需要指派**DocumentDB 帳戶參與者**角色。 
 
-1. 登入 Azure 入口網站並移至您的 Azure Cosmos DB 帳戶。 開啟 [**存取控制（IAM）** ] 窗格，然後按 [**角色指派**] 索引標籤：
+### <a name="assign-the-role-using-azure-portal"></a>使用 Azure 入口網站指派角色
+
+1. 登入 Azure 入口網站並移至您的 Azure Cosmos DB 帳戶。 開啟 [**存取控制 (IAM) ** ] 窗格，然後按 [**角色指派**] 索引標籤：
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="顯示 [存取控制] 窗格和 [角色指派] 索引標籤的螢幕擷取畫面。":::
 
@@ -70,6 +72,18 @@ ms.locfileid: "85970955"
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="螢幕擷取畫面：顯示已填入範例的 [新增角色指派] 窗格。":::
 
 1. 選取函數應用程式之後，選取 [**儲存**]。
+
+### <a name="assign-the-role-using-azure-cli"></a>使用 Azure CLI 指派角色
+
+若要使用 Azure CLI 指派角色，請使用下列命令：
+
+```azurecli-interactive
+$scope = az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id
+
+$principalId = az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId
+
+az role assignment create --assignee $principalId --role "DocumentDB Account Contributor" --scope $scope
+```
 
 ## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>以程式設計方式存取 Azure Cosmos DB 金鑰
 

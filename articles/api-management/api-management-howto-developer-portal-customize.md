@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 345b4950e25f48eb1a48c5e583908d0f771771ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79244091"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206242"
 ---
 # <a name="access-and-customize-developer-portal"></a>存取和自訂開發人員入口網站
 
@@ -57,9 +58,9 @@ ms.locfileid: "79244091"
 
 ### <a name="visual-editor"></a>視覺效果編輯器
 
-您可以使用視覺化編輯器自訂入口網站的內容。 左側的功能表區段可讓您建立或修改頁面、媒體、版面配置、功能表、樣式或網站設定。 底部的功能表項目可讓您在不同的物件之間切換（例如，行動或桌面）、查看已驗證或匿名使用者可以看見的入口網站元素，或儲存或復原動作。
+您可以使用視覺化編輯器自訂入口網站的內容。 左側的功能表區段可讓您建立或修改頁面、媒體、版面配置、功能表、樣式或網站設定。 底部的功能表項目可讓您在不同的 (之間切換，例如，行動或桌面) 、查看已驗證或匿名使用者可以看到的入口網站元素，或儲存或復原動作。
 
-您可以按一下具有加號的藍色圖示，將資料列加入至頁面。 可以藉由按下加號的灰色圖示來新增 widget （例如，文字、影像或 Api 清單）。 您可以使用拖放互動來重新排列頁面中的專案。 
+您可以按一下具有加號的藍色圖示，將資料列加入至頁面。 例如，您可以藉由按下加號的灰色圖示來新增小工具 (例如，文字、影像或 Api 清單) 。 您可以使用拖放互動來重新排列頁面中的專案。 
 
 ### <a name="layouts-and-pages"></a>版面配置和頁面
 
@@ -123,13 +124,14 @@ ms.locfileid: "79244091"
 
 ## <a name="visit-the-published-portal"></a>造訪已發佈的入口網站
 
-發佈入口網站後，您可以在與系統管理面板相同的 URL 上存取它，例如 `https://contoso-api.developer.azure-api.net` 。 以獨立的瀏覽器會話（incognito/私用瀏覽模式）來觀看，做為外部訪客。
+發佈入口網站後，您可以在與系統管理面板相同的 URL 上存取它，例如 `https://contoso-api.developer.azure-api.net` 。 以獨立的瀏覽器會話 (incognito/私用瀏覽模式) 作為外部訪客來觀看。
 
 ## <a name="apply-the-cors-policy-on-apis"></a>對 Api 套用 CORS 原則
 
-您需要在您的 Api 上啟用 CORS （跨原始資源分享），讓您入口網站的訪客透過內建的互動式主控台測試 Api。 如需詳細資訊，請參閱[這篇檔](api-management-howto-developer-portal.md#cors)。
+您需要在您的 Api 上啟用 CORS (跨原始資源分享) ，讓您入口網站的訪客透過內建的互動式主控台測試 Api。 如需詳細資訊，請參閱[這篇檔](api-management-howto-developer-portal.md#cors)。
 
 ## <a name="next-steps"></a>後續步驟
+- [優化並節省您的雲端費用](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 深入瞭解開發人員入口網站：
 

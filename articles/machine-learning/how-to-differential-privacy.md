@@ -1,5 +1,5 @@
 ---
-title: 如何使用 WhiteNoise 套件保留資料隱私權
+title: 如何使用 WhiteNoise 套件 (預覽) 保留資料隱私權
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 WhiteNoise 套件，將差異隱私權最佳做法套用至 Azure Machine Learning 模型。
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 05/17/2020
-ms.openlocfilehash: b43fd25e77e07b7b64416d8784d47c14fed48ea7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 0ef20eee7e73c3a73a2f2e895242d7c1fce307c9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84981841"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206335"
 ---
-# <a name="use-differential-privacy-in-azure-machine-learning"></a>在 Azure Machine Learning 中使用差異隱私權
+# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure Machine Learning (preview 中使用差異隱私權) 
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

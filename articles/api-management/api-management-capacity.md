@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b6d949b50be348e72cedfc3710383308b04de106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4eb90cc0e8867230c7fb1a2a169b5ba0126e46a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80336016"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205889"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API 管理執行個體的容量
 
@@ -26,7 +26,7 @@ ms.locfileid: "80336016"
 本文說明**容量**是什麼及其行為方式。 文中會說明如何在 Azure 入口網站中存取**容量**計量，並建議何時該考慮調整或升級 API 管理執行個體。
 
 > [!IMPORTANT]
-> 本文討論如何根據其容量計量來監視和調整您的 Azure API 管理實例。 不過，瞭解個別 API 管理實例實際上已*達到*其容量時，會發生什麼事，同樣重要。 Azure API 管理不會套用任何服務層級節流，以避免實例的實體多載。 當實例達到其實體容量時，其行為會類似于任何無法處理傳入要求的多載 web 伺服器：延遲將會增加，連線將會遭到捨棄，並會發生逾時錯誤等等。這表示 API 用戶端應該準備好處理這種可能性，與任何其他外部服務（例如，藉由套用重試原則）類似。
+> 本文討論如何根據其容量計量來監視和調整您的 Azure API 管理實例。 不過，瞭解個別 API 管理實例實際上已*達到*其容量時，會發生什麼事，同樣重要。 Azure API 管理不會套用任何服務層級節流，以避免實例的實體多載。 當實例達到其實體容量時，其行為會類似于任何無法處理傳入要求的多載 web 伺服器：延遲將會增加，連線將會遭到捨棄，並會發生逾時錯誤等等。這表示 API 用戶端應該準備好處理這種可能性，就像使用任何其他外部服務 (例如藉由) 套用重試原則。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -106,4 +106,5 @@ ms.locfileid: "80336016"
 
 ## <a name="next-steps"></a>後續步驟
 
-[如何調整或升級 Azure API 管理服務執行個體](upgrade-and-scale.md)
+- [如何調整或升級 Azure API 管理服務執行個體](upgrade-and-scale.md)
+- [優化並節省您的雲端費用](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

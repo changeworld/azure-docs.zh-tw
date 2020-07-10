@@ -8,11 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466165"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206913"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>建立私人端點以進行 Azure 認知搜尋的安全連線
 
@@ -45,7 +46,7 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | ------- | ----- |
     | 訂用帳戶 | 選取您的訂用帳戶|
     | 資源群組 | 選取 [**新建**]，輸入*myResourceGroup*，然後選取 **[確定]** 。 |
-    | Name | 輸入*MyVirtualNetwork* |
+    | 名稱 | 輸入*MyVirtualNetwork* |
     | 區域 | 選取您想要的區域 |
     |||
 
@@ -67,14 +68,14 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | **執行個體詳細資料** |  |
     | URL | 輸入唯一名稱。 |
     | 位置 | 選取您想要的區域。 |
-    | 定價層 | 選取 [**變更定價層**]，然後選擇您想要的服務層級。 （不支援**免費**層。 必須是「**基本**」或更高版本）。 |
+    | 定價層 | 選取 [**變更定價層**]，然後選擇您想要的服務層級。 **免費**層不支援 (。 必須是**基本**或更高的版本。 )  |
     |||
   
 1. 選取 **[下一步：調整]**。
 
 1. 保留 [預設值]，然後選取 **[下一步：網路]**。
 
-1. 在 [**新搜尋服務-網路**] 中，針對 **[端點連線能力（資料）**] 選取 [**私人**]。
+1. 在 [**新搜尋服務-網路**] 中，針對 [**端點連線 (資料) **選取 [**私人**]。
 
 1. 在 [**新增搜尋服務-網路**] 中，選取 [**私人端點**] 底下的 [ **+ 新增**]。 
 
@@ -85,14 +86,14 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | 訂用帳戶 | 選取您的訂用帳戶。 |
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
     | 位置 | 選取 [美國西部]****。|
-    | Name | 輸入 *myPrivateEndpoint*。  |
+    | 名稱 | 輸入 myPrivateEndpoint。  |
     | 目標子資源 | 保留預設值**searchService**。 |
     | **網路** |  |
-    | 虛擬網路  | 從 [資源群組] *myResourceGroup*中選取 [ *MyVirtualNetwork* ]。 |
-    | 子網路 | 選取 [mySubnet] **。 |
+    | 虛擬網路  | 從 [資源群組] *myResourceGroup*中選取 [ *MyVirtualNetwork* ]。 |
+    | 子網路 | 選取 [mySubnet]。 |
     | **私人 DNS 整合** |  |
     | 與私人 DNS 區域整合  | 保留預設值 [**是]**。 |
-    | 私人 DNS 區域  | 保留預設的 * * （New） privatelink.search.windows.net * *。 |
+    | 私人 DNS 區域  | 保留預設的 [ (New) privatelink.search.windows.net] * *。 |
     |||
 
 1. 選取 [確定]。 
@@ -130,7 +131,7 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | 確認密碼 | 再次輸入密碼。 |
     | **輸入連接埠規則** |  |
     | 公用輸入連接埠 | 保留預設 [**允許選取的埠**]。 |
-    | 選取輸入連接埠 | 保留預設的**RDP （3389）**。 |
+    | 選取輸入連接埠 | 保留預設的**RDP (3389) **。 |
     | **節省費用** |  |
     | 已經有 Windows 授權？ | 保留預設值 [否]。 |
     |||
@@ -188,7 +189,7 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
 
 當搜尋服務端點為私人時，部分入口網站功能會停用。 您將能夠查看和管理服務層級設定，但基於安全性考慮，會限制入口網站存取索引資料和服務中的其他元件（例如索引、索引子和技能集定義）。
 
-1. 在 myVM ** 的遠端桌面中，開啟 PowerShell。
+1. 在 myVm 的遠端桌面中，開啟 PowerShell。
 
 1. 輸入 ' nslookup [搜尋服務名稱]. search. windows. net '
 
@@ -202,11 +203,11 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     Aliases:  [search service name].search.windows.net
     ```
 
-1. 從 VM 連接到搜尋服務，並建立索引。 您可以遵循本[快速入門](search-get-started-postman.md)，使用 REST API 在 Postman 的服務中建立新的搜尋索引。 從 Postman 設定要求需要搜尋服務端點（HTTPs：//[搜尋服務名稱]. search. net）和您在上一個步驟中複製的管理 api 金鑰。
+1. 從 VM 連接到搜尋服務，並建立索引。 您可以遵循本[快速入門](search-get-started-postman.md)，使用 REST API 在 Postman 的服務中建立新的搜尋索引。 從 Postman 設定要求需要搜尋服務端點 (HTTPs：//[搜尋服務名稱]. [搜尋]) 和您在上一個步驟中複製的管理 api 金鑰。
 
 1. 從 VM 完成快速入門即表示您確認服務可完整運作。
 
-1. 關閉對 *myVM*的遠端桌面連線。 
+1. 關閉對*myVM*的遠端桌面連線。 
 
 1. 若要確認您的服務無法在公用端點上存取，請在您的本機工作站上開啟 Postman，然後嘗試快速入門中的前幾個工作。 如果您收到遠端伺服器不存在的錯誤，表示您已成功設定搜尋服務的私人端點。
 

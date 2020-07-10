@@ -1,7 +1,7 @@
 ---
 title: 語言支援-電腦視覺
 titleSuffix: Azure Cognitive Services
-description: 本文提供電腦視覺功能所支援的自然語言清單;OCR，辨識文字並讀取。
+description: 本文提供電腦視覺功能所支援的自然語言清單;OCR，影像分析。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 680e3647e7a5847e132a53986e2cf17150bceac3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 81d0183b6dde1a5fe6bd9cd36910fd3dfc1cc5b1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560178"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205283"
 ---
 # <a name="language-support-for-computer-vision"></a>電腦視覺的語言支援
 
 電腦視覺的部分功能支援多種語言;此處未提及的任何功能僅支援英文。
 
-## <a name="text-detection-ocr"></a>文字偵測（OCR）
+## <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
 
-電腦視覺可以偵測許多語言的文字。 讀取和 OCR Api 不會要求您指定語言代碼。 如需這項功能的詳細資訊和每個 API 的優點，請參閱[從影像和檔讀取文字](concept-recognizing-text.md)。
+電腦視覺的 OCR Api 支援數種語言。 您不需要指定語言代碼。 如需詳細資訊，請參閱[光學字元辨識 (OCR) ](concept-recognizing-text.md) 。
 
 |Language| 語言代碼 | OCR API | 讀取 API |
 |:-----|:----:|:-----:|:---:|
@@ -58,7 +58,7 @@ ms.locfileid: "85560178"
 
 [分析影像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的某些動作可以傳回其他語言的結果，並以 `language` 查詢參數指定。 無論指定何種語言，其他動作都會傳回英文的結果，而其他動作則會擲回不支援語言的例外狀況。 動作是使用 `visualFeatures` 和 `details` 查詢參數所指定; 請參閱[總覽](home.md)，以取得您可以使用影像分析執行的所有動作清單。
 
-|Language | 語言代碼 | 類別 | Tags | 描述 | 成人 | 品牌 | Color | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
+|Language | 語言代碼 | 類別 | Tags | 描述 | 成人 | 品牌 | 色彩 | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中文 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英文 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
@@ -70,5 +70,5 @@ ms.locfileid: "85560178"
 
 開始使用本指南中所述的電腦視覺功能。
 
-* [分析本機影像（REST）](./quickstarts/csharp-analyze.md)
-* [解壓縮列印的文字（REST）](./quickstarts/csharp-print-text.md)
+* [ (REST) 分析本機影像](./quickstarts/csharp-analyze.md)
+* [將列印的文字解壓縮 (REST) ](./quickstarts/csharp-print-text.md)

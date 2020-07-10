@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 22ec4058d9485858489162af223bb6d6c381797e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fb136b6c37c8ef14f85455431fea80099088936
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887656"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206694"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>使用 Azure CDN 的大型檔案下載最佳化
 
@@ -104,14 +104,13 @@ CDN 會在收到任何區塊時即予以快取。 不必快取 CDN 快取上的�
 
 CDN 會在收到任何區塊時即予以快取。 不必快取 CDN 快取上的整個檔案。 CDN 快取會提供後續的檔案或位元組範圍要求 。 如果不是在 CDN 快取所有的區塊，就會使用預先擷取向原始伺服器要求區塊。 此最佳化依賴原始伺服器的功能來支援位元組範圍的要求；如果來源伺服器不支援位元組範圍要求，這個最佳化則無效。
 
-### <a name="caching"></a>快取
+### <a name="caching"></a>Caching
 大型檔案最佳化會使用不同的預設從一般 Web 傳遞快取逾期時間。 它會根據 HTTP 回應碼來區分正向快取與負向快取。 如果原始伺服器透過回應中的 Cache-control 或 Expires 標頭指定到期時間，則 CDN 會接受該值。 當原始伺服器未指定，而且檔案符合此最佳化類型的類型和大小條件時，CDN 會使用預設值進行大型檔案最佳化。 否則，CDN 會使用預設值進行一般 Web 傳遞。
 
-
-|    | 一般 Web | 大型檔案最佳化 
+| Caching  | 一般 Web | 大型檔案最佳化 
 --- | --- | --- 
 快取：正向 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |1 日  
-快取：負向 <br> HTTP 204、305、404 <br> 和 405 | None | 1 秒 
+快取：負向 <br> HTTP 204、305、404 <br> 和 405 | 無 | 1 秒 
 
 ### <a name="deal-with-origin-failure"></a>處理原始伺服器失敗
 

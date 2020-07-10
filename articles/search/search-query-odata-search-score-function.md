@@ -19,17 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 2439d4f03184f8dbb85b229b3908dff95013b4bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c31304228d9629b0df7f7511ecca2616b4891ee7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113131"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206950"
 ---
 # <a name="odata-searchscore-function-in-azure-cognitive-search"></a>`search.score`Azure 認知搜尋中的 OData 函式
 
 當您將查詢傳送至不含[ **$orderby**參數](search-query-odata-orderby.md)的 Azure 認知搜尋時，傳回的結果會依相關性分數以遞減順序排序。 即使您使用 **$orderby**，預設也會使用相關性分數來中斷系結。 不過，使用相關性分數做為初始排序準則，以及一些其他準則做為系結工具有時會很有用。 函式可 `search.score` 讓您執行此動作。
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
 `search.score` 在 **$orderby** 中的語法為 `search.score()`。 `search.score` 函式不接受任何參數。 它可以與 `asc` 或 `desc` 排序次序規範搭配使用，就像 **$orderby**參數中的任何其他子句一樣。 它可以出現在排序條件清單中的任何位置。
 
@@ -37,7 +38,9 @@ ms.locfileid: "74113131"
 
 以遞減的順序依和排序飯店 `search.score` `rating` ，然後依照指定座標的遞增順序，讓兩個飯店具有相同的評等，最先列出最接近的旅館：
 
+```odata-filter-expr
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>後續步驟  
 

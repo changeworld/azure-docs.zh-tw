@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: f533b2baa3e1e748edfc723a60734daedf3d0a18
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a4e4a45519526dd0eeb938a3b83e737d82589c1e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086019"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207677"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Mahout 產生推薦
 
@@ -47,11 +47,13 @@ Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID`
 
 `user-ratings.txt` 內包含的資料具有 `userID`、`movieID`、`userRating` 和 `timestamp` 結構，可指出每位使用者對於影片的評價為何。 以下是資料範例：
 
+```output
     196    242    3    881250949
     186    302    3    891717742
     22     377    1    878887116
     244    51     2    880606923
     166    346    1    886397596
+```
 
 ## <a name="run-the-analysis"></a>執行分析
 

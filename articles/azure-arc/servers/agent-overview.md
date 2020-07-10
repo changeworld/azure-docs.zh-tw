@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/01/2020
+ms.date: 07/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: e3d3521cfb3d3b0c6659013922ab11fe765af882
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 38c487928f15e953a1c660c5007398bc5c2b3f7d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111247"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206633"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>適用於伺服器的 Azure Arc 代理程式概觀
 
@@ -23,7 +23,7 @@ ms.locfileid: "86111247"
 
 Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元件。
 
-* 混合式實例中繼資料服務（HIMDS）會管理與 Azure 的連線，以及連接的電腦的 Azure 身分識別。
+* 混合式實例中繼資料服務 (HIMDS) 管理與 Azure 的連線，以及連接的電腦的 Azure 身分識別。
 
 * 「來賓設定代理程式」提供來賓內原則和來賓設定功能，例如評估電腦是否符合必要的原則。
 
@@ -67,14 +67,14 @@ Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元�
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |包含取得的權杖。|
     |%ProgramData%\AzureConnectedMachineAgent\Config |包含代理程式組態檔 `agentconfig.json` 將其註冊資訊記錄到服務中。|
     |%SystemDrive%\Program Files\ArcConnectedMachineAgent\ExtensionService\GC | 包含來賓設定代理程式檔案的安裝路徑。 |
-    |%ProgramData%\GuestConfig |包含來自 Azure 的（已套用）原則。|
+    |%ProgramData%\GuestConfig |包含從 Azure 套用) 原則的 (。|
     |%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads | 延伸模組會從 Azure 下載並複製到此處。|
 
 * 在安裝代理程式期間，會在目標電腦上建立下列 Windows 服務。
 
     |服務名稱 |顯示名稱 |程序名稱 |描述 |
     |-------------|-------------|-------------|------------|
-    |himds |Azure 混合式 Instance Metadata Service |himds.exe |此服務會執行 Azure 實例中繼資料服務（IMDS），以管理與 Azure 的連線，以及連接的電腦的 Azure 身分識別。|
+    |himds |Azure 混合式 Instance Metadata Service |himds.exe |此服務會執行 Azure 實例中繼資料服務 (IMDS) ，以管理與 Azure 的連線，以及連接的電腦的 Azure 身分識別。|
     |DscService |來賓設定服務 |dsc_service.exe |這是在 Azure 內部用來實作客體內原則的 Desired State Configuration (DSC v2) 程式碼基底。|
 
 * 下列環境變數是在代理程式安裝期間所建立。
@@ -88,7 +88,7 @@ Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元�
 
     |Log |描述 |
     |----|------------|
-    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |記錄代理程式（HIMDS）服務的詳細資料，並與 Azure 互動。|
+    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |記錄代理程式 (HIMDS) 服務的詳細資料，以及與 Azure 的互動。|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |使用 verbose (-v) 引數時，包含 azcmagent 工具命令的輸出。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |記錄 DSC 服務活動的詳細資料，<br> 特別是 HIMDS 服務和 Azure 原則之間的連接。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |記錄有關 DSC 服務遙測和詳細資訊記錄的詳細資料。|
@@ -118,21 +118,21 @@ Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元�
     |/opt/GC_Ext | 包含來賓設定代理程式檔案的安裝路徑。|
     |/opt/DSC/ |
     |/var/opt/azcmagent/tokens |包含取得的權杖。|
-    |/var/lib/GuestConfig |包含來自 Azure 的（已套用）原則。|
+    |/var/lib/GuestConfig |包含從 Azure 套用) 原則的 (。|
     |/opt/GC_Ext/downloads|延伸模組會從 Azure 下載並複製到此處。|
 
 * 在安裝代理程式期間，會在目標電腦上建立下列精靈。
 
     |服務名稱 |顯示名稱 |程序名稱 |描述 |
     |-------------|-------------|-------------|------------|
-    |himdsd.service |Azure 混合式 Instance Metadata Service |/opt/azcmagent/bin/himds |此服務會執行 Azure 實例中繼資料服務（IMDS），以管理與 Azure 的連線，以及連接的電腦的 Azure 身分識別。|
+    |himdsd.service |Azure 混合式 Instance Metadata Service |/opt/azcmagent/bin/himds |此服務會執行 Azure 實例中繼資料服務 (IMDS) ，以管理與 Azure 的連線，以及連接的電腦的 Azure 身分識別。|
     |dscd.service |來賓設定服務 |/opt/DSC/dsc_linux_service |這是在 Azure 內部用來實作客體內原則的 Desired State Configuration (DSC v2) 程式碼基底。|
 
 * 有數個記錄檔可供疑難排解。 如下表中所述。
 
     |Log |描述 |
     |----|------------|
-    |/var/opt/azcmagent/log/himds.log |記錄代理程式（HIMDS）服務的詳細資料，並與 Azure 互動。|
+    |/var/opt/azcmagent/log/himds.log |記錄代理程式 (HIMDS) 服務的詳細資料，以及與 Azure 的互動。|
     |/var/opt/azcmagent/log/azcmagent.log |使用 verbose (-v) 引數時，包含 azcmagent 工具命令的輸出。|
     |/opt/logs/dsc.log |記錄 DSC 服務活動的詳細資料，<br> 特別是 himds 服務和 Azure 原則之間的連線能。|
     |/opt/logs/dsc.telemetry.txt |記錄有關 DSC 服務遙測和詳細資訊記錄的詳細資料。|
@@ -158,11 +158,11 @@ Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元�
 Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作業系統版本： 
 
 - Windows Server 2012 R2 和更新版本 (包括 Windows Server Core)
-- Ubuntu 16.04 和18.04 （x64）
-- CentOS Linux 7 （x64）
-- SUSE Linux Enterprise Server （SLES）15（x64）
-- Red Hat Enterprise Linux （RHEL）7（x64）
-- Amazon Linux 2 （x64）
+- Ubuntu 16.04 和 18.04 (x64) 
+- CentOS Linux 7 (x64) 
+- SUSE Linux Enterprise Server (SLES) 15 (x64) 
+- Red Hat Enterprise Linux (RHEL) 7 (x64) 
+- Amazon Linux 2 (x64) 
 
 >[!NOTE]
 >此適用於 Windows 的 Connected Machine 代理程式預覽版本僅支援設定為使用英文語言的 Windows Server。
@@ -202,12 +202,13 @@ URL：
 
 | 代理程式資源 | 描述 |
 |---------|---------|
-|management.azure.com|Azure Resource Manager|
-|login.windows.net|Azure Active Directory|
-|dc.services.visualstudio.com|Application Insights|
-|agentserviceapi.azure-automation.net|來賓組態|
-|*-agentservice-prod-1.azure-automation.net|來賓組態|
-|*.his.arc.azure.com|混合式識別服務|
+|`management.azure.com`|Azure Resource Manager|
+|`login.windows.net`|Azure Active Directory|
+|`dc.services.visualstudio.com`|Application Insights|
+|`agentserviceapi.azure-automation.net`|來賓組態|
+|`*-agentservice-prod-1.azure-automation.net`|來賓組態|
+|`*.guestconfiguration.azure.com` |來賓組態|
+|`*.his.arc.azure.com`|混合式識別服務|
 
 如需每個服務標籤/區域的 IP 位址清單，請參閱 JSON 檔案 - [Azure IP 範圍和服務標籤 – 公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 會發佈每週更新，其中包含每個 Azure 服務和其使用的 IP 範圍。 如需詳細資訊，請參閱[服務標籤](../../virtual-network/security-overview.md#service-tags)。
 

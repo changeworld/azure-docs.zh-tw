@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 3294a7b2112e9527041ef343f4452aedb7a2a272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39803ab88e5b252ef119d22a697e135c83f87780
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073471"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205653"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>如何跨區域遷移 Azure API 管理
 若要將 API 管理實例從一個 Azure 區域遷移至另一個區域，您可以使用[備份和還原](api-management-howto-disaster-recovery-backup-restore.md)功能。 您應該在來源和目的地區域中選擇相同的 API 管理定價層。 
@@ -47,3 +47,4 @@ ms.locfileid: "70073471"
 ## <a name="next-steps"></a><a name="next-steps"> </a>後續步驟
 * 如需有關備份和還原功能的詳細資訊，請參閱[如何執行損毀修復](api-management-howto-disaster-recovery-backup-restore.md)。
 * 如需有關遷移 Azure 資源的詳細資訊，請參閱[azure 跨區域遷移指引](https://github.com/Azure/Azure-Migration-Guidance)。
+* [優化並節省您的雲端費用](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。

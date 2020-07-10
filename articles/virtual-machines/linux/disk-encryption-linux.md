@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fbbeaeafd8de5a38489034a13738ca3a9b934d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601375"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206150"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁碟加密案例
 
@@ -413,6 +413,8 @@ Azure 磁碟加密不適用於下列 Linux 案例、功能和技術：
 - 具有「巢狀掛接點」的 VM；也就是在單一路徑中有多個掛接點 (例如 "/1stmountpoint/data/2stmountpoint")。
 - 將資料磁片磁碟機掛接在 OS 資料夾頂端的 VM。
 - 具有寫入加速器磁片的 M 系列 Vm。
+- 將[具有客戶管理金鑰的伺服器端加密](disk-encryption.md)套用至 ADE 所加密的 vm，反之亦然。
+- 將使用 ADE 加密的 VM 遷移至[使用客戶管理金鑰的伺服器端加密](disk-encryption.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

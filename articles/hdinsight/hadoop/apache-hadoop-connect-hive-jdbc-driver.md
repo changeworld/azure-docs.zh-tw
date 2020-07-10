@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 258dfec20644ee29368de075673dfc7798bee28a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 183bc416dde941f11bd94cfcff3bf738b35f876f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083537"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207375"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>透過 JDBC 驅動程式在 HDInsight 中查詢 Apache Hive
 
@@ -26,14 +26,16 @@ ms.locfileid: "86083537"
 ## <a name="prerequisites"></a>必要條件
 
 * HDInsight Hadoop 叢集。 若要建立，請參閱[開始使用 Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)。 確定服務 HiveServer2 正在執行。
-* [JAVA 開發人員套件（JDK）第11版](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)或更高版本。
+* [JAVA 開發人員套件 (JDK) 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)或更高版本。
 * [SQUIRREL SQL](http://squirrel-sql.sourceforge.net/)。 SQuirreL 是 JDBC 用戶端應用程式。
 
 ## <a name="jdbc-connection-string"></a>JDBC 連接字串
 
 透過埠443，對 Azure 上的 HDInsight 叢集進行 JDBC 連線。 使用 TLS/SSL 保護流量。 背後有叢集的公用閘道器會將流量重新導向至 HiveServer2 實際接聽的連接埠。 下列連接字串會顯示用於 HDInsight 的格式：
 
+```http
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
+```
 
 將 `CLUSTERNAME` 替換為 HDInsight 叢集的名稱。
 
@@ -119,9 +121,9 @@ SQuirreL SQL 是可用來從遠端以 HDInsight 叢集執行 Hive 查詢的 JDBC
 
     ![具有參數的連接對話方塊](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 
-9. 連接之後，請在 [SQL 查詢] 對話方塊中輸入下列查詢，然後選取 [執行] 圖示（**執行**中的人員）。 結果區域應該會顯示查詢的結果。
+9. 連接之後，請在 [SQL 查詢] 對話方塊中輸入下列查詢，然後選取 [**執行**] 圖示 (執行中的人員) 。 結果區域應該會顯示查詢的結果。
 
-    ```hql
+    ```hiveql
     select * from hivesampletable limit 10;
     ```
 
@@ -153,7 +155,7 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 ### <a name="connection-disconnected-by-hdinsight"></a>HDInsight 中斷連接連線
 
-**徵兆**：嘗試透過 JDBC/ODBC 下載大量資料（例如數 gb）時，HDInsight 會在下載時意外中斷連接。
+**徵兆**：嘗試下載大量資料時 (假設有數 gb 的) 透過 JDBC/ODBC，則在下載時，HDInsight 會意外中斷連接。
 
 **原因**：此錯誤是由閘道節點的限制所造成。 從 JDBC/ODBC 取得資料時，所有的資料都需要通過閘道節點。 不過，閘道不是設計來下載大量的資料，因此如果閘道無法處理流量，則可能會關閉連線。
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/6/2020
-ms.openlocfilehash: 130b19f280c69bfbe4ca49abe1bcba5db7f23caa
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 7/9/2020
+ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045955"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206937"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database 無伺服器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,8 +114,8 @@ SQL 快取會隨著資料以相同的方式從磁片提取，而且速度與布�
 
 下列功能不支援 autopausing，但支援自動調整。  也就是說，如果使用下列任何一項功能，資料庫會保持線上狀態，而不論資料庫處於非使用狀態的持續時間：
 
-- 異地複寫（主動式異地複寫和自動容錯移轉群組）。
-- 長期備份保留（LTR）。
+- 異地複寫 (主動式異地複寫和自動容錯移轉群組) 。
+-  (LTR) 的長期備份保留。
 - SQL 資料同步中使用的同步資料庫。 不同于同步資料庫，中樞和成員資料庫支援 autopausing。
 - 用於彈性作業的作業資料庫。
 
@@ -127,7 +127,7 @@ SQL 快取會隨著資料以相同的方式從磁片提取，而且速度與布�
 
 |功能|自動繼續觸發程序|
 |---|---|
-|驗證與授權|登入|
+|驗證和授權|登入|
 |威脅偵測|啟用/停用資料庫或伺服器層級的威脅偵測設定。<br>修改資料庫或伺服器層級的威脅偵測設定。|
 |資料探索與分類|新增、修改、刪除或檢視敏感度標籤|
 |稽核|檢視稽核記錄。<br>更新或查看稽核原則。|
@@ -149,13 +149,13 @@ SQL 快取會隨著資料以相同的方式從磁片提取，而且速度與布�
 
 如果無伺服器資料庫暫停，第一次登入將會繼續資料庫，並傳回錯誤訊息，指出資料庫無法使用，錯誤碼40613。 資料庫一旦繼續，則必須重試登入來建立連線。 具有連線重試邏輯的資料庫用戶端應該不需要修改。
 
-### <a name="latency"></a>Latency
+### <a name="latency"></a>延遲
 
 自動繼續和自動暫停無伺服器資料庫的延遲通常是從1分鐘到自動繼續，以及1-10 分鐘到自動暫停的順序。
 
-### <a name="customer-managed-transparent-data-encryption-byok"></a>客戶管理的透明資料加密（BYOK）
+### <a name="customer-managed-transparent-data-encryption-byok"></a>客戶管理的透明資料加密 (BYOK) 
 
-如果使用[客戶管理的透明資料加密](transparent-data-encryption-byok-overview.md)（BYOK），且無伺服器資料庫會在金鑰刪除或撤銷發生時自動暫停，則資料庫會維持在自動暫停狀態。  在此情況下，下次繼續資料庫之後，資料庫在大約10分鐘內就會變成無法存取。  一旦資料庫變成無法存取，復原程式就會與已布建的計算資料庫相同。  如果在發生金鑰刪除或撤銷時，無伺服器資料庫在線上，則資料庫在大約10分鐘內也會變成無法存取，其方式與布建的計算資料庫相同。
+如果使用[客戶管理的透明資料加密](transparent-data-encryption-byok-overview.md) (BYOK) ，而且無伺服器資料庫會在金鑰刪除或撤銷發生時自動暫停，則資料庫會維持在自動暫停狀態。  在此情況下，下次繼續資料庫之後，資料庫在大約10分鐘內就會變成無法存取。  一旦資料庫變成無法存取，復原程式就會與已布建的計算資料庫相同。  如果在發生金鑰刪除或撤銷時，無伺服器資料庫在線上，則資料庫在大約10分鐘內也會變成無法存取，其方式與布建的計算資料庫相同。
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>上架到無伺服器計算層
 
@@ -169,7 +169,7 @@ SQL 快取會隨著資料以相同的方式從磁片提取，而且速度與布�
    |參數|值選擇|預設值|
    |---|---|---|---|
    |最小虛擬核心|取決於已設定的最大虛擬核心-請參閱[資源限制](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)。|0.5 個虛擬核心|
-   |自動暫停延遲|最小值：60分鐘（1小時）<br>最大值：10080分鐘（7天）<br>增量：10分鐘<br>停用自動暫停：-1|60 Minuten|
+   |自動暫停延遲|最小值：60分鐘 (1 小時) <br>最大值：10080分鐘 (7 天) <br>增量：10分鐘<br>停用自動暫停：-1|60 Minuten|
 
 
 ### <a name="create-a-new-database-in-the-serverless-compute-tier"></a>在無伺服器計算層中建立新的資料庫
@@ -196,7 +196,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 ```
 
 
-#### <a name="use-transact-sql-t-sql"></a>使用 Transact-sql （T-sql）
+#### <a name="use-transact-sql-t-sql"></a>使用 Transact-sql (T-sql) 
 
 使用 T-sql 時，會套用最小虛擬核心和自動暫停延遲的預設值。
 
@@ -228,7 +228,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 ```
 
 
-#### <a name="use-transact-sql-t-sql"></a>使用 Transact-sql （T-sql）
+#### <a name="use-transact-sql-t-sql"></a>使用 Transact-sql (T-sql) 
 
 使用 T-sql 時，會套用最小虛擬核心和自動暫停延遲的預設值。
 
@@ -272,7 +272,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 下表列出監視應用程式套件的資源使用量和無伺服器資料庫使用者集區的計量：
 
-|單位|計量|描述|單位|
+|實體|計量|描述|單位|
 |---|---|---|---|
 |應用程式套件|app_cpu_percent|應用程式所使用的虛擬核心百分比，相對於應用程式所允許的最大虛擬核心數。|百分比|
 |應用程式套件|app_cpu_billed|在報告期間內針對應用程式計費的計算數量。 在這段期間所支付的金額為此計量與虛擬核心單價的乘積。 <br><br>彙總一段時間內每秒使用的最大 CPU 與記憶體，即可判斷此計量的值。 如果使用的數量小於依照最小虛擬核心數與最小記憶體所設定的最小佈建數量，就會收取最小佈建數量的費用。為了比較 CPU 與記憶體以供計費用途，記憶體會依每個虛擬核心 3 GB 重新調整記憶體量，藉此規範成虛擬核心單位。|虛擬核心秒數|
@@ -312,7 +312,7 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 計算數量的計費方式為每秒使用的最大 CPU 與記憶體。 若使用的 CPU 與使用的記憶體數量小於各自的最小佈建數量，就會收取佈建數量的費用。 為了比較 CPU 與記憶體以供計費用途，記憶體會依每個虛擬核心 3 GB 重新調整記憶體量，藉此規範成虛擬核心單位。
 
 - **資源計費**： CPU 和記憶體
-- **計費金額**： vCore 單價 * 最大值（最小虛擬核心，使用的虛擬核心，最小記憶體 gb * 1/3，使用的記憶體 gb * 1/3） 
+- **計費金額**： vCore 單價 * 最大 (最小虛擬核心，使用的虛擬核心，最小記憶體 gb * 1/3，使用的記憶體 gb * 1/3)  
 - **計費頻率**：每秒
 
 VCore 單位價格是每秒 vCore 的費用。 如需指定區域中的特定單位價格，請參閱 [Azure SQL Database 定價頁面](https://azure.microsoft.com/pricing/details/sql-database/single/)。
@@ -324,6 +324,19 @@ VCore 單位價格是每秒 vCore 的費用。 如需指定區域中的特定單
 - **報告頻率**：每分鐘
 
 此數量會每秒計算，並彙總超過 1 分鐘。
+
+### <a name="minimum-compute-bill"></a>計算費用下限
+
+如果無伺服器資料庫已暫停，則計算帳單為零。  如果無伺服器資料庫未暫停，則最小計算費用不會小於以最大 (min 虛擬核心，最小記憶體 GB * 1/3) 為基礎的虛擬核心數量。
+
+範例：
+
+- 假設無伺服器資料庫未暫停，而且設定了 8 max 虛擬核心和1分鐘的 vCore，對應到 3.0 GB 的最小記憶體。  然後，最小計算費用是根據 max (1 vCore，3.0 GB * 1 vCore/3 GB) = 1 vCore。
+- 假設無伺服器資料庫未暫停，並設定了4個最大虛擬核心和0.5 分鐘的虛擬核心，對應到 2.1 GB 的最小記憶體。  然後，最小計算費用是根據 max (0.5 虛擬核心，2.1 GB * 1 vCore/3 GB) = 0.7 虛擬核心。
+
+無伺服器的[Azure SQL Database 定價計算機](https://azure.microsoft.com/pricing/calculator/?service=sql-database)可用來根據已設定的最大值和最小虛擬核心數，來判斷可設定的最小記憶體。  做為規則，如果設定的最小虛擬核心大於0.5 虛擬核心，則最小計算費用與所設定的最低記憶體和根據所設定的最小虛擬核心數目無關。
+
+### <a name="example-scenario"></a>範例案例
 
 請考慮使用1分鐘的 vCore 和4個最大虛擬核心設定的無伺服器資料庫。  這對應到大約 3 GB 的記憶體和 12 GB 記憶體的最大值。  假設 [自動暫停延遲] 設定為6小時，且資料庫工作負載在24小時期間的前2小時內為作用中，否則為非使用中。    
 
@@ -343,11 +356,11 @@ VCore 單位價格是每秒 vCore 的費用。 如需指定區域中的特定單
 
 ### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure Hybrid Benefit 和保留容量
 
-Azure Hybrid Benefit （AHB）和保留容量折扣不適用於無伺服器計算層。
+Azure Hybrid Benefit (AHB) 和保留容量折扣不適用於無伺服器計算層。
 
 ## <a name="available-regions"></a>可用區域
 
-無伺服器計算層級在全球提供，但下欄區域除外：中國東部、中國北部、德國中部、德國東北部和 US Gov 中部（愛荷華州）。
+無伺服器計算層級在全球各地都有提供，但下欄區域除外：中國東部、中國北部、德國中部、德國東北部和 US Gov Central (愛荷華州) 。
 
 ## <a name="next-steps"></a>後續步驟
 

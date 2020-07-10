@@ -6,13 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: d1455bc65f175970bb741dab4a56aa0aac58fc59
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9e54b9add52e484a95cf5a8291dec90a6bb258b8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743004"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206999"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure 資料箱：常見問題集
 
@@ -37,10 +38,10 @@ A.  Azure 資料箱服務是針對離線資料擷取而設計的。 此服務管
 ### <a name="q-what-is-azure-data-box"></a>Q. 什麼是 Azure 資料箱？
 A. Azure 資料箱可讓您快速、實惠且安全地將數 TB 的資料輸入 Azure 中。 您可以透過 Azure 入口網站訂購資料箱裝置。 Microsoft 會透過區域性貨運公司，將有 80 TB 可用容量的存放裝置寄送給您。 
 
-一旦收到裝置之後，您就可以快速地使用本機 Web UI 來設定它。 將您伺服器的資料複製到裝置上，然後將裝置寄回給 Azure。 在 Azure 資料中心內，您的資料會自動從裝置上傳到 Azure。 Azure 入口網站中的資料箱服務會以端對端的方式追蹤這整個程序。
+一旦收到裝置之後，您就可以快速地使用本機 Web UI 來設定它。 將資料從您的伺服器複製到裝置，或從裝置複製到伺服器，然後將裝置寄回 Azure。 針對匯入順序，在 Azure 資料中心內，您的資料會自動從裝置上傳至 Azure。 Azure 入口網站中的資料箱服務會以端對端的方式追蹤這整個程序。
 
 ### <a name="q-when-should-i-use-data-box"></a>Q. 何時應使用資料箱？
-A. 如果您有 40 - 500 TB 的資料要傳輸到 Azure，則使用資料箱將可獲益。 若資料大小 < 40 TB，請使用資料箱磁碟；若資料大小 > 500 TB，請註冊 [Data Box Heavy](data-box-heavy-overview.md)。
+A. 如果您有 40-500 TB 的資料，而您想要在 Azure 中進行傳輸，您可以使用資料箱受益。 若資料大小 < 40 TB，請使用資料箱磁碟；若資料大小 > 500 TB，請註冊 [Data Box Heavy](data-box-heavy-overview.md)。
 
 ### <a name="q-what-is-the-price-of-data-box"></a>Q. 資料箱的價格為何？
 A. 資料箱僅收取少許費用，提供 10 天使用。 當您在 Azure 入口網站中建立訂單時，選取產品型號會顯示該裝置的費用。 此服務不需要運費，但會套用 Azure 儲存體費用。 如需詳細資訊，請移至 [Azure 資料箱定價](https://azure.microsoft.com/pricing/details/storage/databox/)。 
@@ -83,7 +84,7 @@ A. 這表示您選取的國家/地區和區域組合無法提供資料箱服務�
 A. 當您下單時，我們會檢查裝置是否可供您的訂單使用。 如果裝置可用，我們將會在 10 天內寄出。 可以想見的是可能會有需求高峰期間。 在此情況下，您的訂單將會排入佇列，而且您可以在 Azure 入口網站中追蹤狀態變更。 如果您的訂單在 90 天後仍未完成，訂單將會自動取消。
 
 ### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>Q. 我已將資料箱填滿資料，而需要再訂購一個資料箱。 有快速下訂單的方法嗎？
-A. 您可以複製您的上一筆訂單。 複製會建立與之前相同的訂單，因此您只需編輯訂單詳細資料即可，而不需要輸入地址、連絡人和通知詳細資料。
+A. 您可以複製您的上一筆訂單。 複製會建立與之前相同的訂單，因此您只需編輯訂單詳細資料即可，而不需要輸入地址、連絡人和通知詳細資料。 只有匯入訂單才允許複製。
 
 ## <a name="configure-and-connect"></a>設定和連線
 
@@ -180,18 +181,7 @@ A.  是。 資料箱可支援最多 10 個儲存體帳戶、一般用途、傳�
 A. 如果您收到的裝置已損毀，或是有遭到竄改的跡象，請勿使用該裝置。 請[連絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)並儘快送回裝置。 您也可以建立新的資料箱訂單來更換裝置。 在此情況下，將不會對您收取更換裝置的費用。
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Q. 我可以自取我的資料箱訂單嗎？ 我可以透過我選擇的貨運公司寄回資料箱嗎？
-A. 是。 Microsoft 也提供僅 US Gov 區域適用的自助運送。 當您對資料箱下訂單時，您可以選擇自我管理的運送選項。 若要自取資料箱裝置，請執行下列步驟：
-    
-1. 在您下訂單之後，我們就會處理訂單並準備資料箱。 當您的訂單可供取貨時，您會收到電子郵件通知。 
-2. 當訂單可供取貨之後，請您前往 Azure 入口網站中的訂單，並瀏覽至 [概觀] 刀鋒視窗。 
-3. 您會在 Azure 入口網站中看到含有代碼的通知。 請傳送電子郵件至 [Azure資料箱作業小組](mailto:adbops@microsoft.com)，並將代碼提供給他們。 小組會提供位置並安排取貨日期和時間。 收到電子郵件通知之後，您必須在 5 個工作天內連絡小組。
-
-資料複製完成後，請採取下列步驟來寄回您的裝置：
-
-1. 一旦資料複製完成且沒有任何錯誤，請執行 [寄送準備]。 準備完成後，您會在裝置的本機 Web UI 中收到代碼。 複製並儲存代碼。
-2. 關閉裝置並移除連接纜線。
-3. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
-4. 傳送電子郵件至 [Azure資料箱作業小組](mailto:adbops@microsoft.com)，並將您稍早儲存的代碼提供給他們。 他們會提供您交送裝置的位置和時間。
+A. 是。 Microsoft 也提供自我管理的運送。 當您對資料箱下訂單時，您可以選擇自我管理的運送選項。 如需詳細資訊，請參閱[資料箱的自我管理運送](data-box-portal-customer-managed-shipping.md)。
 
 ### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>Q. 我的資料箱服務在運送期間可以跨國家/區域邊界使用嗎？
 A. 所有的資料箱裝置都是在與目的地相同的國家/區域內寄送，並不會跨越任何跨國界。 唯一的例外狀況是位於歐盟 (EU) 的訂單，該地區的裝置可以在任何歐盟國家/區域之間運送。 這適用於資料箱及 Data Box Heavy 裝置。
@@ -212,7 +202,7 @@ A.  在傳輸期間，資料箱上的下列功能可協助保護資料。
  - 裝置已鎖定，且需要解除鎖定密碼才能進入並存取資料。
 如需詳細資訊，請移至[資料箱安全性功能](data-box-security.md)。  
 
-### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>Q. 我已完成「準備寄送」並將裝置關機。 是否還可以將更多資料新增到資料箱中？
+### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>Q. 我已完成針對匯入順序出貨並關閉裝置的準備工作。 是否還可以將更多資料新增到資料箱中？
 A. 是。 您可以將裝置開機，並新增更多資料。 一旦您完成資料複製，將需要再次執行**準備寄送**。
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>Q. 我收到我的裝置，但無法開機？ 如何將裝置送回？
@@ -252,7 +242,7 @@ A.  下列報表類型可用來支援監管鏈：
 
 - UPS 的運輸物流。
 - 開啟電源和使用者共用存取的記錄。
-- 針對成功擷取到資料箱的每個檔案具有 64 位元循環冗餘檢查 (CRC-64) 或總和檢查碼的資訊清單檔。
+- 具有64位迴圈冗余檢查的 BOM 或資訊清單檔案 (CRC-64) 或內嵌成功進入資料箱的每個檔案的 checksum。
 - 無法上傳到 Azure 儲存體帳戶的檔案報表。
 - 在資料複製到 Azure 儲存體帳戶後，對資料箱裝置的清理 (根據 NIST 800 88R1 標準)。
 
@@ -260,7 +250,9 @@ A.  下列報表類型可用來支援監管鏈：
 A.  貨運公司追蹤記錄可從資料箱訂單記錄中擷取。 當您的裝置送回到 Azure 資料中心，並清除裝置上的資料之後，就會將此報表提供給您。 若立即需要，您也可以直接移至貨運公司的網站，使用訂單追蹤號碼來取得追蹤資訊。
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我是否可以親自將資料箱送到 Azure 資料中心？ 
-A.  否。 目前 Azure 資料中心不接受由客戶或是 UPS 以外的貨運公司寄送資料箱。
+A.  否。 如果您已選擇 Microsoft 管理的出貨，就無法傳輸日期。 目前 Azure 資料中心不接受由客戶或是 UPS 以外的貨運公司寄送資料箱。
+
+如果您選擇 [自我管理] [運送]，則可以從 Azure 資料中心收取或捨棄您的資料箱。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -14,15 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
-ms.openlocfilehash: f226e240a59b33c2913919495410b1a4923b4902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e78a18055d85e2105ea604d568c154c889ab0655
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261664"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206026"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>適用於 Windows 的網路監看員代理程式虛擬機器擴充功能
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [Azure 網路監看員](../../network-watcher/network-watcher-monitoring-overview.md)是網路效能的監視、診斷和分析服務，可讓您監視 Azure 網路。 依需求擷取網路流量及 Azure 虛擬機器上的其他進階功能，都需要網路監看員代理程式虛擬機器擴充功能。
 
@@ -33,7 +34,7 @@ ms.locfileid: "81261664"
 
 ### <a name="operating-system"></a>作業系統
 
-適用於 Windows 的網路監看員代理程式擴充功能可以在 Windows Server 2008 R2、2012、2012 R2 和 2016 版本上執行。 目前不支援 Nano Server。
+適用于 Windows 的網路監看員代理程式擴充功能可以針對 Windows Server 2008 R2、2012、2012 R2、2016和2019版本執行。 目前不支援 Nano Server。
 
 ### <a name="internet-connectivity"></a>網際網路連線
 
