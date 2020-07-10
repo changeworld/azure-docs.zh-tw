@@ -4,11 +4,12 @@ description: 如何為 Azure Batch 集區中的計算節點選取可用的 VM �
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: c1621bbbe6676144176636346f3f5c34db169b7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e56632ce66cb25bf023813f2b98be6141f651465
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84693153"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143528"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>為 Azure Batch 集區中的運算節點選擇 VM 大小
 
@@ -59,7 +60,7 @@ ms.locfileid: "84693153"
 | NDv2<sup>1</sup> | 無 - 尚未提供 |
 | NV | 所有大小 |
 | NVv3<sup>1</sup> | 所有大小 |
-| NVv4 | None |
+| NVv4 | 無 |
 | SAP HANA | None |
 
 <sup>1</sup> 這些 VM 大小可在虛擬機器設定的 Batch 集區中配置，但必須建立新的 Batch 帳戶，並要求[增加特定配額](batch-quota-limit.md#increase-a-quota)。 一旦 Batch 帳戶完全支援每個 VM 系列的 vCPU 配額，就會移除這項限制。
@@ -75,7 +76,7 @@ ms.locfileid: "84693153"
 
 ## <a name="size-considerations"></a>大小考量
 
-* **應用程式需求** - 請考量將於節點上執行之應用程式的特性和需求。 應用程式是否為多執行緒以及需要使用多少記憶體之類的層面，有助於決定最適合且具成本效益的節點大小。 針對多重執行個體的 [MPI 工作負載](batch-mpi.md)或 CUDA 應用程式，請考慮分別使用特殊 [HPC](../virtual-machines/linux/sizes-hpc.md) 或[已啟用 GPU](../virtual-machines/linux/sizes-gpu.md) 的 VM 大小。 (請參閱[在 Batch 集區中使用具備 RDMA 功能或已啟用 GPU 功能的執行個體](batch-pool-compute-intensive-sizes.md)。)
+* **應用程式需求** - 請考量將於節點上執行之應用程式的特性和需求。 應用程式是否為多執行緒以及需要使用多少記憶體之類的層面，有助於決定最適合且具成本效益的節點大小。 針對多重執行個體的 [MPI 工作負載](batch-mpi.md)或 CUDA 應用程式，請考慮分別使用特殊 [HPC](../virtual-machines/sizes-hpc.md) 或[已啟用 GPU](../virtual-machines/sizes-gpu.md) 的 VM 大小。 (請參閱[在 Batch 集區中使用具備 RDMA 功能或已啟用 GPU 功能的執行個體](batch-pool-compute-intensive-sizes.md)。)
 
 * **每個節點的工作** - 在選取節點大小時，通常會假設每次在節點上執行一項工作。 不過，在作業執行期間有多項工作 (因而有多個應用程式執行個體) 在計算節點上[以平行方式執行](batch-parallel-node-tasks.md)，也可能有好處。 在此情況下，通常會選擇多核心節點大小，以因應增加的平行工作執行需求。
 

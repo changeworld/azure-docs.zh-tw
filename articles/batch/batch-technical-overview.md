@@ -3,12 +3,12 @@ title: Azure Batch 在雲端中執行大規模平行作業
 description: 了解如何將 Azure Batch 服務用於大規模的平行工作負載和 HPC 工作負載
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 03c958f44f707e7c5b6ac5c4414bdb5fd4963635
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965071"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142794"
 ---
 # <a name="what-is-azure-batch"></a>什麼是 Azure Batch？
 
@@ -34,7 +34,7 @@ Batch 很適合處理本質平行 (也稱為「超簡單平行」) 的工作負�
 * 資料擷取、處理和 ETL 作業
 * 軟體測試執行
 
-您也可以使用 Batch 來[執行緊密結合的工作負載](batch-mpi.md)；這些工作負載需要您執行的應用程式彼此通訊，而非獨立執行。 緊密結合的應用程式通常會使用訊息傳遞介面 (MPI) API。 您可以搭配 [Microsoft MPI](/message-passing-interface/microsoft-mpi) 或 Intel MPI 來使用 Batch，以執行緊密結合的工作負載。 透過特定的 [HPC](../virtual-machines/linux/sizes-hpc.md) 和 [GPU 最佳化](../virtual-machines/linux/sizes-gpu.md)虛擬機器大小來改善應用程式效能。
+您也可以使用 Batch 來[執行緊密結合的工作負載](batch-mpi.md)；這些工作負載需要您執行的應用程式彼此通訊，而非獨立執行。 緊密結合的應用程式通常會使用訊息傳遞介面 (MPI) API。 您可以搭配 [Microsoft MPI](/message-passing-interface/microsoft-mpi) 或 Intel MPI 來使用 Batch，以執行緊密結合的工作負載。 透過特定的 [HPC](../virtual-machines/sizes-hpc.md) 和 [GPU 最佳化](../virtual-machines/sizes-gpu.md)虛擬機器大小來改善應用程式效能。
 
 一些緊密結合的工作負載範例：
 * 有限元素分析
@@ -83,4 +83,3 @@ Batch 的一個常見案例涉及在一組計算節點上相應放大本質平�
 * [使用 Azure 入口網站執行您的第一個 Batch 作業](quick-create-portal.md)
 * [使用 .NET API 執行您的第一個 Batch 作業](quick-run-dotnet.md)
 * [使用 Python API 執行您的第一個 Batch 作業](quick-run-python.md)
-

@@ -1,25 +1,25 @@
 ---
-title: Azure Web 應用程式防火牆（WAF）原則總覽
-description: 本文概述 Web 應用程式防火牆（WAF）全域、每個網站和每個 URI 的原則。
+title: Azure Web 應用程式防火牆 (WAF) 原則總覽
+description: 本文概述 Web 應用程式防火牆 (WAF) 全域、每個網站和每個 URI 的原則。
 services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: fff4fb5707c07098fd7fac261a36909224365cdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060276"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143830"
 ---
-# <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web 應用程式防火牆（WAF）原則總覽
+# <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web 應用程式防火牆 (WAF) 原則總覽
 
-Web 應用程式防火牆原則包含所有 WAF 設定和設定。 這包括排除、自訂規則、受控規則等等。 這些原則接著會與應用程式閘道（全域）、接聽項（每個網站）或以路徑為基礎的規則（每個 URI）相關聯，以使其生效。
+Web 應用程式防火牆原則包含所有 WAF 設定和設定。 這包括排除、自訂規則、受控規則等等。 這些原則接著會與應用程式閘道相關聯 (全域) 、每個網站)  (的接聽項，或以路徑為基礎的規則 (每個 URI) 以使其生效。
 
 > [!NOTE]
-> Azure Web 應用程式防火牆（WAF） [每個網站] 和 [每個 URI] 原則處於公開預覽狀態。
+> Azure Web 應用程式防火牆 (WAF) 每個 URI 的原則處於公開預覽狀態。
 > 
 > 此公開預覽版是在沒有服務等級協定的情況下提供，不得用於生產工作負載。 特定功能可能不受支援、功能可能受限，或者可能無法在所有 Azure 位置提供使用。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -33,7 +33,7 @@ Web 應用程式防火牆原則包含所有 WAF 設定和設定。 這包括排�
 
 ## <a name="per-site-waf-policy"></a>每個網站的 WAF 原則
 
-透過每個網站的 WAF 原則，您可以使用每個網站的原則，在單一 WAF 背後保護多個具有不同安全性需求的網站。 例如，如果您的 WAF 背後有五個網站，您可以有五個不同的 WAF 原則（每個接聽程式各一個），以自訂排除專案、自訂規則、受控規則集，以及每個網站的所有其他 WAF 設定。
+透過每個網站的 WAF 原則，您可以使用每個網站的原則，在單一 WAF 背後保護多個具有不同安全性需求的網站。 例如，如果您的 WAF 背後有五個網站，您可以有五個不同的 WAF 原則 (一個用於每個接聽程式) 來自訂排除專案、自訂規則、受控規則集，以及每個網站的所有其他 WAF 設定。
 
 假設您的應用程式閘道已套用全域原則。 然後，將不同的原則套用至該應用程式閘道上的接聽程式。 接聽程式的原則現在只會對該接聽程式生效。 應用程式閘道的全域原則仍然會套用至所有其他接聽程式，以及未獲指派特定原則的路徑型規則。
 
@@ -53,11 +53,11 @@ Web 應用程式防火牆原則包含所有 WAF 設定和設定。 這包括排�
 
 Adatum.com/payments URI 是您需要小心的地方。 因此，請對該 URI 套用另一個原則，並將所有規則保持啟用狀態，同時移除所有排除專案。
 
-在此範例中，您有一個全域原則會套用至兩個網站。 您的每個網站原則會套用至一個網站，然後是套用至一個特定路徑型規則的每個 URI 原則。 如需此範例的對應 PowerShell，請參閱（如果存在，請在這裡插入連結）如何建立每個網站和每個 URI 的原則。
+在此範例中，您有一個全域原則會套用至兩個網站。 您的每個網站原則會套用至一個網站，然後是套用至一個特定路徑型規則的每個 URI 原則。 如需此範例的對應 PowerShell，請參閱這裡的 (插入連結（如果有的話）) 如何為其建立每個網站和每個 URI 的原則。
 
 ## <a name="existing-waf-configurations"></a>現有的 WAF 設定
 
-所有新的 Web 應用程式防火牆的 WAF 設定（自訂規則、受控規則集設定、排除專案等等）都存在於 WAF 原則中。 如果您有現有的 WAF，這些設定可能仍存在於您的 WAF 設定中。 如需移至新 WAF 原則的詳細資訊，請將[WAF Config 遷移至 WAF 原則](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy)。 
+所有新的 Web 應用程式防火牆的 WAF 設定 (自訂規則、受控規則集設定、排除專案等等。 ) 存在於 WAF 原則中。 如果您有現有的 WAF，這些設定可能仍存在於您的 WAF 設定中。 如需移至新 WAF 原則的詳細資訊，請將[WAF Config 遷移至 WAF 原則](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy)。 
 
 
 ## <a name="next-steps"></a>後續步驟

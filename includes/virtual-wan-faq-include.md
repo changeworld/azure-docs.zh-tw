@@ -8,28 +8,28 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 98b82047c1744fbd63ecd3665e804e9d8f6c5221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565975"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143927"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>使用者是否需要具有 SD-WAN/VPN 裝置的中樞與輪輻才能使用 Azure 虛擬 WAN？
 
-虛擬 WAN 提供內建在單一窗格中的許多功能，例如站對站 VPN 連線能力、使用者/P2S 連線能力、ExpressRoute 連線能力、虛擬網路連線能力、VPN ExpressRoute 互連能力、VNet 對 VNet 可轉移連線、集中式路由、Azure 防火牆和防火牆管理員安全性、監視、ExpressRoute 加密，以及許多其他功能。 您不需要讓所有這些使用案例開始使用虛擬 WAN。 您只需要一個使用案例就可以開始使用。 虛擬 WAN 架構是一種中樞和輪輻架構，具有內建的規模和效能，其中分支（VPN/SD-WAN 裝置）、使用者（Azure VPN 用戶端、openVPN 或 IKEv2 用戶端）、ExpressRoute 線路、虛擬網路作為輪輻至虛擬中樞。 所有中樞都會在標準虛擬 WAN 中以完整網格連線，讓使用者可以輕鬆地使用 Microsoft 骨幹進行任意點對任意點 (任何輪輻) 的連線。 針對具有 SD-WAN/VPN 裝置的中樞與輪輻，使用者可以在 Azure 虛擬 WAN 入口網站中手動設定，或使用虛擬 WAN 合作夥伴 CPE (SD-WAN/VPN) 來設定與 Azure 的連線。 虛擬 WAN 合作夥伴為連線能力提供自動化功能，這是將裝置資訊匯出至 Azure、下載 Azure 設定，並建立與 Azure 虛擬 WAN 中樞的連線。 針對點對站/使用者 VPN 連線能力，我們支援[AZURE VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 或 IKEv2 用戶端。 
+虛擬 WAN 提供內建在單一窗格中的許多功能，例如站對站 VPN 連線能力、使用者/P2S 連線能力、ExpressRoute 連線能力、虛擬網路連線能力、VPN ExpressRoute 互連能力、VNet 對 VNet 可轉移連線、集中式路由、Azure 防火牆和防火牆管理員安全性、監視、ExpressRoute 加密，以及許多其他功能。 您不需要讓所有這些使用案例開始使用虛擬 WAN。 您只需要一個使用案例就可以開始使用。 虛擬 WAN 架構是一種中樞和輪輻架構，具有內建的規模和效能，其中分支 (VPN/SD-WAN 裝置) 、 (Azure VPN 用戶端、openVPN 或 IKEv2 用戶端的使用者) 、ExpressRoute 線路、虛擬網路作為輪輻到虛擬中樞 (s) 。 所有中樞都會在標準虛擬 WAN 中以完整網格連線，讓使用者可以輕鬆地使用 Microsoft 骨幹進行任意點對任意點 (任何輪輻) 的連線。 針對具有 SD-WAN/VPN 裝置的中樞與輪輻，使用者可以在 Azure 虛擬 WAN 入口網站中手動設定，或使用虛擬 WAN 合作夥伴 CPE (SD-WAN/VPN) 來設定與 Azure 的連線。 虛擬 WAN 合作夥伴為連線能力提供自動化功能，這是將裝置資訊匯出至 Azure、下載 Azure 設定，並建立與 Azure 虛擬 WAN 中樞的連線。 針對點對站/使用者 VPN 連線能力，我們支援[AZURE VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 或 IKEv2 用戶端。 
 
 ### <a name="can-you-disable-fully-meshed-hubs-in-a-virtual-wan"></a>您可以停用虛擬 WAN 中的全網狀中樞嗎？
 
-虛擬 WAN 有兩種：基本和標準。 在基本虛擬 WAN 中，中樞不是網狀網格。 在標準的虛擬 WAN 中，集線器會在第一次設定虛擬 WAN 時自動連線。 使用者不需要執行任何特定動作。 使用者也不需要停用或啟用功能來取得網狀中樞。 虛擬 WAN 提供您許多路由選項，以在任何輪輻（VNet、VPN 或 ExpressRoute）之間進行流量。 它提供輕鬆的完整網狀中樞，並彈性地根據您的需求來路由傳送流量。 
+虛擬 WAN 有兩種：基本和標準。 在基本虛擬 WAN 中，中樞不是網狀網格。 在標準的虛擬 WAN 中，集線器會在第一次設定虛擬 WAN 時自動連線。 使用者不需要執行任何特定動作。 使用者也不需要停用或啟用功能來取得網狀中樞。 虛擬 WAN 提供了許多路由選項，可在任何輪輻 (VNet、VPN 或 ExpressRoute) 之間進行流量。 它提供輕鬆的完整網狀中樞，並彈性地根據您的需求來路由傳送流量。 
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>如何在虛擬 WAN 中處理可用性區域和復原？
 
-虛擬 WAN 是中樞內所提供的中樞和服務集合。 使用者可以根據自己的需求來擁有多個虛擬 wan。 在虛擬 WAN 中樞中，有多個服務，例如 VPN、ExpressRoute 等等。如果區域支援可用性區域，這些服務都會部署在可用性區域區域中。 如果區域在中樞的初始部署之後變成可用性區域，使用者可以重新建立閘道，這會觸發可用性區域部署。 所有閘道都會以主動-主動的形式布建在中樞內，也就是說，在中樞內會有內建的復原功能。 如果使用者想要跨區域進行復原，則可以連接到多個中樞。 雖然虛擬 WAN 的概念是全域的，但實際的虛擬 WAN 資源是以 Resource Manager 為基礎，並已部署區域內。 如果虛擬 WAN 區域本身發生問題，該虛擬 WAN 中的所有中樞都會繼續正常運作，但在虛擬 WAN 區域可供使用之前，使用者將無法建立新的中樞。
+虛擬 WAN 是中樞內所提供的中樞和服務集合。 使用者可以根據自己的需求來擁有多個虛擬 WAN。 在虛擬 WAN 中樞中，有多個服務，例如 VPN、ExpressRoute 等等。除了 Azure 防火牆) 以外，每個服務 (都會部署在可用性區域區域中，也就是該區域支援可用性區域。 如果區域在中樞的初始部署之後變成可用性區域，使用者可以重新建立閘道，這會觸發可用性區域部署。 所有閘道都會以主動-主動的形式布建在中樞內，也就是說，在中樞內會有內建的復原功能。 如果使用者想要跨區域進行復原，則可以連接到多個中樞。 雖然虛擬 WAN 的概念是全域的，但實際的虛擬 WAN 資源是以 Resource Manager 為基礎，並已部署區域內。 如果虛擬 WAN 區域本身發生問題，該虛擬 WAN 中的所有中樞都會繼續正常運作，但在虛擬 WAN 區域可供使用之前，使用者將無法建立新的中樞。
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Azure 虛擬 WAN 使用者 VPN (點對站) 支援哪些用戶端？
 
-虛擬 WAN 支援 [Azure VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 用戶端或任何 IKEv2 用戶端。 Azure VPN Client 支援 Azure AD 驗證，但至少需要 Windows 10 用戶端作業系統版本 17763.0 或更高版本。  OpenVPN 用戶端可支援以憑證為基礎的驗證。 一旦在閘道上選取了以憑證為基礎的驗證，您就會看到*vpnconfig.ovpn*檔案下載到您的裝置。 IKEv2 同時支援憑證和 RADIUS 驗證。 
+虛擬 WAN 支援 [Azure VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 用戶端或任何 IKEv2 用戶端。 Azure VPN Client 支援 Azure AD 驗證，但至少需要 Windows 10 用戶端作業系統版本 17763.0 或更高版本。  OpenVPN 用戶端 (s) 可以支援以憑證為基礎的驗證。 一旦在閘道上選取了以憑證為基礎的驗證，您就會看到*vpnconfig.ovpn*檔案下載到您的裝置。 IKEv2 同時支援憑證和 RADIUS 驗證。 
 
 ### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>針對使用者 VPN (點對站)，為什麼 P2S 用戶端集區會分割成兩個路由？
 
@@ -85,7 +85,7 @@ ms.locfileid: "85565975"
 
 每個使用者 VPN P2S 閘道都有兩個執行個體，而每個執行個體都可隨著縮放單位變更來支援特定使用者數目。 縮放單位1-3 支援500連線、縮放單位4-6 支援1000連線、縮放單位7-12 支援5000連線和縮放單位13-20 支援最多10000連線。 
 
-例如，我們假設使用者選擇 1 作為縮放單位。 每個縮放單位都會表示已部署主動-主動閘道，而每個實例（在此案例中為2）會支援最多500個連線。 由於每個閘道可以取得500個連線 * 2，因此不表示您為此縮放單位規劃1000而不是500。 如果您超過建議的連線計數，可能需要服務實例，在這種情況中，額外500的連線可能會中斷。 此外，如果您決定在縮放單位上相應增加或相應減少，或變更 VPN 閘道上的點對站設定，請務必規劃停機時間。
+例如，我們假設使用者選擇 1 作為縮放單位。 每個縮放單位都會表示已部署主動-主動閘道，而在此案例中 (的每個實例 2) 最多支援500個連線。 由於每個閘道可以取得500個連線 * 2，因此不表示您為此縮放單位規劃1000而不是500。 如果您超過建議的連線計數，可能需要服務實例，在這種情況中，額外500的連線可能會中斷。 此外，如果您決定在縮放單位上相應增加或相應減少，或變更 VPN 閘道上的點對站設定，請務必規劃停機時間。
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 虛擬網路閘道 (VPN 閘道) 與 Azure 虛擬 WAN VPN 閘道之間有何差異？
 
@@ -189,7 +189,7 @@ ms.locfileid: "85565975"
 
 網路輸送量是虛擬 WAN 中樞中的每個服務。 雖然您可以擁有任意數量的虛擬 Wan，但每個虛擬 WAN 每個區域允許1個中樞。 在每個中樞中，VPN 匯總輸送量最高可達 20 Gbps，而 ExpressRoute 匯總輸送量最高可達 20 Gbps，而使用者 VPN/點對站 VPN 匯總輸送量最高可達 20 Gbps。 虛擬中樞內的路由器最多可支援 50 Gbps 的 VNet 對 VNet 流量流程，並假設虛擬 WAN 中樞的所有 Vnet 都有 2000 VM 工作負載。
 
-當 VPN 網站連線到中樞時，會使用連線來執行此動作。 虛擬 WAN 支援每個虛擬中樞最多1000個連線或2000個 IPsec 通道。 當遠端使用者連線到虛擬中樞時，他們會連線到 P2S VPN 閘道，它最多可支援10000個使用者，這取決於針對虛擬中樞內的 P2S VPN 閘道所選擇的縮放單位（頻寬）。
+當 VPN 網站連線到中樞時，會使用連線來執行此動作。 虛擬 WAN 支援每個虛擬中樞最多1000個連線或2000個 IPsec 通道。 當遠端使用者連線到虛擬中樞時，他們會連線到 P2S VPN 閘道，它最多可支援10000個使用者，這取決於在虛擬中樞內針對 P2S VPN 閘道所選擇的縮放單位 () 頻寬而定。
 
 ### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>一個 VPN 通道和一個連線的 VPN 輸送量總計是多少？
 
@@ -201,7 +201,7 @@ ms.locfileid: "85565975"
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>虛擬 WAN 是否允許內部部署裝置以平行方式使用多個 ISP，還是一律為單一 VPN 通道？
 
-內部部署裝置解決方案可以套用流量原則，將多個通道的流量引導至 Azure 虛擬 WAN 中樞（虛擬中樞中的 VPN 閘道）。
+內部部署裝置解決方案可套用流量原則，以將多個通道的流量引導至虛擬中樞) 中的 Azure 虛擬 WAN 中樞 (VPN 閘道。
 
 ### <a name="what-is-global-transit-architecture"></a>什麼是全域傳輸架構？
 
@@ -226,7 +226,7 @@ ms.locfileid: "85565975"
 1. 最長前置詞相符。
 2. 透過 interhub 的本機路由。
 3. 透過 BGP 的靜態路由：這是由虛擬中樞路由器所進行的決策所組成的內容。 不過，如果決策者是透過 BGP 通告路由的 VPN 閘道，或提供靜態位址首碼，則靜態路由可能會優先于 BGP 路由。
-4. 透過 VPN 的 ExpressRoute （ER）：當內容為本機中樞時，比起 VPN 優先使用 ER。 ExpressRoute 線路之間的傳輸連線只能透過全球範圍提供。 因此，在 ExpressRoute 線路連線到一個中樞，而且有另一個 ExpressRoute 線路連接到具有 VPN 連線的不同集線器的情況下，VPN 可能會慣用於中樞間的案例。
+4. 透過 VPN 的 ExpressRoute (ER) ：當內容為本機中樞時，比起 VPN 優先使用 ER。 ExpressRoute 線路之間的傳輸連線只能透過全球範圍提供。 因此，在 ExpressRoute 線路連線到一個中樞，而且有另一個 ExpressRoute 線路連接到具有 VPN 連線的不同集線器的情況下，VPN 可能會慣用於中樞間的案例。
 5. 做為路徑長度。
 
 ### <a name="does-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>虛擬 WAN 中樞允許 ExpressRoute 線路之間的連線。
@@ -237,9 +237,9 @@ ER 到 ER 之間的傳輸一律透過全球範圍進行。 虛擬中樞閘道會
 
 當有多個 ExpressRoute 線路連線到虛擬中樞時，連接上的路由權數會提供一個機制，讓虛擬中樞的 ExpressRoute 能夠優先使用一個線路。 沒有任何機制可在 VPN 連線上設定權數。 Azure 一律偏好透過單一中樞內的 VPN 連線使用 ExpressRoute 連線。
 
-### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>當兩個集線器（中樞1和2）連線，而且有連線到兩個中樞的 ExpressRoute 線路時，連接到中樞1的 VNet 路徑會連線到中樞2中連線的 VNet 嗎？
+### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>當兩個中樞 (集線器1和 2) 連線，而且有連線到兩個中樞的 ExpressRoute 線路時，連接到中樞1的 VNet 路徑會連線到中樞2中連線的 VNet 嗎？
 
-目前的行為是偏好透過中樞對中樞的 ExpressRoute 線路路徑來進行 VNet 對 VNet 連線。 不過，在虛擬 WAN 設定中不鼓勵這麼做。 虛擬 WAN 小組正致力於修正，以透過 ExpressRoute 路徑啟用中樞對中樞的喜好設定。 建議適用于多個 ExpressRoute 線路（不同的提供者）來連線到一個中樞，並使用虛擬 WAN 提供的中樞對中樞連線來進列區域間流量流程。
+目前的行為是偏好透過中樞對中樞的 ExpressRoute 線路路徑來進行 VNet 對 VNet 連線。 不過，在虛擬 WAN 設定中不鼓勵這麼做。 虛擬 WAN 小組正致力於修正，以透過 ExpressRoute 路徑啟用中樞對中樞的喜好設定。 建議適用于多個 ExpressRoute 線路 (不同的提供者) 連線到一個中樞，並使用虛擬 WAN 提供的中樞對中樞連線來進列區域間流量流程。
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>虛擬 WAN 中是否支援 IPv6？
 

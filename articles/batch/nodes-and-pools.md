@@ -3,12 +3,12 @@ title: Azure Batch 中的節點和集區
 description: 從開發觀點了解計算節點和集區，以及如何在 Azure Batch 工作流程中使用。
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: f71be75c0358dbc7f76a61680df2c54f44bc4173
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5707d834a7d99e147a81ee2b39952863a63ed695
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964037"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144928"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的節點和集區
 
@@ -28,7 +28,7 @@ Batch 中的所有計算節點也包括︰
 - **防火牆** 設定。
 - [遠端存取](error-handling.md#connect-to-compute-nodes) Windows (遠端桌面通訊協定 (RDP)) 和 Linux (安全殼層 (SSH)) 節點。
 
-根據預設，節點可以彼此通訊，但無法與不屬於相同集區的虛擬機器進行通訊。 若要允許節點與其他虛擬機器或內部部署網路安全地進行通訊，您可以[在 Azure 虛擬網路（VNet）的子網中](batch-virtual-network.md)布建集區。 當您這麼做時，可以透過公用 IP 位址存取您的節點。 這些公用 IP 位址是由 Batch 所建立，而且可能會在集區的存留期間變更。 您也可以使用您控制的[靜態公用 IP 位址來建立集](create-pool-public-ip.md)區，以確保它們不會意外變更。
+根據預設，節點可以彼此通訊，但無法與不屬於相同集區的虛擬機器進行通訊。 若要允許節點與其他虛擬機器或內部部署網路安全地進行通訊，您可以[在 Azure 虛擬網路的子網中](batch-virtual-network.md)布建集區， (VNet) 。 當您這麼做時，可以透過公用 IP 位址存取您的節點。 這些公用 IP 位址是由 Batch 所建立，而且可能會在集區的存留期間變更。 您也可以使用您控制的[靜態公用 IP 位址來建立集](create-pool-public-ip.md)區，以確保它們不會意外變更。
 
 ## <a name="pools"></a>集區
 
@@ -111,7 +111,7 @@ Azure 多餘的容量不足時，可能會佔用低優先順序的節點。 如�
 
 ## <a name="node-size"></a>節點大小
 
-當您建立 Azure Batch 集區時，您可以從幾乎所有的 VM 系列及 Azure 中可用的大小進行選擇。 Azure 針對不同的工作負載提供各種 VM 大小，包括特製化的 [HPC](../virtual-machines/linux/sizes-hpc.md)或[已啟用的 GPU](../virtual-machines/linux/sizes-gpu.md) VM 大小。 
+當您建立 Azure Batch 集區時，您可以從幾乎所有的 VM 系列及 Azure 中可用的大小進行選擇。 Azure 針對不同的工作負載提供各種 VM 大小，包括特製化的 [HPC](../virtual-machines/sizes-hpc.md)或[已啟用的 GPU](../virtual-machines/sizes-gpu.md) VM 大小。 
 
 如需詳細資訊，請參閱[為 Azure Batch 集區中的運算節點選擇 VM 大小](batch-pool-vm-sizes.md)。
 

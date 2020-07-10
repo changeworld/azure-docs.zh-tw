@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 07/08/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e2540bceab17e6f37fd94b28df3814ccffa1c81e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 509568b143c9fbbf236139ca83cb55b0ef39beb0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466848"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145949"
 ---
 下表說明 Azure 一般用途 v1、v2、Blob 儲存體及區塊 Blob 儲存體帳戶的預設限制。 「輸入」限制是指傳送至某個儲存體帳戶的所有資料。 「輸出」限制是指從儲存體帳戶收到的所有資料。
 
@@ -33,11 +33,7 @@ ms.locfileid: "84466848"
 
 <sup>1</sup> Azure 儲存體標準帳戶會依照要求支援較高的容量限制和較高的輸入限制。 若要要求提高帳戶限制，請連絡 [Azure 支援](https://azure.microsoft.com/support/faq/)。
 
-<sup>2</sup> 如果您的儲存體帳戶已搭配異地備援儲存體 (RA-GRS) 或異地區域備援儲存體 (RA-GZRS) 啟用讀取權限，則次要位置的輸出目標會與主要位置的輸出目標相同。 [Azure 儲存體複寫](https://docs.microsoft.com/azure/storage/common/storage-redundancy)選項包括：
-
-[!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
-
-<sup>3</sup> [Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md) 是一組巨量資料分析的專屬功能，內建於 Azure Blob 儲存體。
+<sup>2</sup> 如果您的儲存體帳戶已搭配異地備援儲存體 (RA-GRS) 或異地區域備援儲存體 (RA-GZRS) 啟用讀取權限，則次要位置的輸出目標會與主要位置的輸出目標相同。 如需詳細資訊，請參閱 [Azure 儲存體複寫](../articles/storage/common/storage-redundancy.md)。
 
 > [!NOTE]
 > Microsoft 建議，您應在大部分情況下使用一般用途 v2 儲存體帳戶。 您不需停機，也不必複製資料，即可輕鬆地將一般用途 v1 或 Azure Blob 儲存體帳戶升級至一般用途 v2 帳戶。 如需詳細資訊，請參閱[升級至一般用途 v2 儲存體帳戶](../articles/storage/common/storage-account-upgrade.md)。

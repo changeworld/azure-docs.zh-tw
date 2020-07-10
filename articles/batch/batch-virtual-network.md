@@ -4,12 +4,12 @@ description: 如何在 Azure 虛擬網路中建立 Batch 集區，以便計算�
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 22344b5466b0388921a481b1adf41495d66dbfe0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115406"
+ms.locfileid: "86142765"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虛擬網路中建立 Azure Batch 集區
 
@@ -27,7 +27,7 @@ ms.locfileid: "86115406"
 
 - **Azure VNet**。 請參閱下一節以取得 VNet 的需求和組態。 若要事先準備具有一個或多個子網路的 VNet，您可以使用 Azure 入口網站、Azure PowerShell、Azure 命令列介面 (CLI) 或其他方法。
   - 若要建立以 Azure Resource Manager 為基礎的 VNet，請參閱[建立虛擬網路](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 建議您針對新的部署使用以 Resource Manager 為基礎的 VNet，而且只有在使用虛擬機器設定的集區上才支援。
-  - 若要建立傳統 VNet，請參閱[建立有多個子網路的虛擬網路 (傳統)](../virtual-network/create-virtual-network-classic.md)。 只有使用雲端服務設定的集區才支援傳統 VNet。
+  - 若要建立傳統 VNet，請參閱[建立有多個子網路的虛擬網路 (傳統)](/previous-versions/azure/virtual-network/create-virtual-network-classic)。 只有使用雲端服務設定的集區才支援傳統 VNet。
 
 ## <a name="vnet-requirements"></a>VNet 需求
 
@@ -49,13 +49,13 @@ ms.locfileid: "86115406"
 
 ## <a name="user-defined-routes-for-forced-tunneling"></a>強制通道的使用者定義路由
 
-您的組織可能需要將來自子網的網際網路系結流量重新導向（強制）至內部部署位置，以進行檢查和記錄。 此外，您可能已針對 VNet 中的子網啟用強制通道。
+您的組織可能需要重新導向 (強制) 從子網到內部部署位置的網際網路系結流量，以進行檢查和記錄。 此外，您可能已針對 VNet 中的子網啟用強制通道。
 
-若要確保集區中的節點在已啟用強制通道的 VNet 中工作，您必須為該子網新增下列[使用者定義的路由](../virtual-network/virtual-networks-udr-overview.md)（UDR）：
+若要確保集區中的節點在已啟用強制通道的 VNet 中工作，您必須為該子網的 UDR) 新增下列[使用者定義的路由](../virtual-network/virtual-networks-udr-overview.md) (：
 
 - Batch 服務需要與節點進行通訊，以進行排程工作。 若要啟用此通訊，請在 Batch 帳戶所在的區域中，為 Batch 服務所使用的每個 IP 位址新增 UDR。 若要取得 Batch 服務的 IP 位址清單，請參閱[內部部署服務標記](../virtual-network/service-tags-overview.md)。
 
-- 請確定 `<account>.table.core.windows.net` `<account>.queue.core.windows.net` 您的 `<account>.blob.core.windows.net` 內部部署網路不會封鎖 Azure 儲存體的輸出流量（具體而言，格式為、和的 url）。
+- 請確定 Azure 儲存體的輸出流量 (明確地說，您的 `<account>.table.core.windows.net` `<account>.queue.core.windows.net` `<account>.blob.core.windows.net` 內部部署網路不會封鎖格式為、和) 的 url。
 
 當您新增 UDR 時，請為每個相關的 Batch IP 位址首碼定義路由，然後將 [下一個躍點類型] 設定為 [網際網路]。
 

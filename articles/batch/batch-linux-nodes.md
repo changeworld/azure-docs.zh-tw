@@ -4,11 +4,12 @@ description: 了解如何在 Azure Batch 中處理您的 Linux 虛擬機器集�
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, tracking-python
-ms.openlocfilehash: 1a87b72b16c1d41e5569c4ce9e5e1a6e2c51a2e0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 05e23093a00eab70db683c10eae59ef27152d2f7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960073"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145039"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>在 Batch 集區中佈建 Linux 計算節點
 
@@ -28,7 +29,7 @@ ms.locfileid: "85960073"
 
 ### <a name="virtual-machine-image-reference"></a>虛擬機器映像參考
 
-Batch 服務使用[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)來提供虛擬機器設定中的計算節點。 您可以指定來自 [Azure Marketplace][vm_marketplace] 的映像，或提供您準備好的自訂映像。 如需自訂映像的詳細資料，請參閱[使用共用映像庫建立集區](batch-sig-images.md)。
+Batch 服務使用[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)來提供虛擬機器設定中的計算節點。 您可以指定來自 [Azure Marketplace][vm_marketplace] 的映像，或提供您準備好的自訂映像。 如需自訂映像的詳細資料，請參閱[使用共用映像庫建立集區](batch-sig-images.md)。
 
 設定虛擬機器映像參考時，您會指定虛擬機器映像的屬性。 建立虛擬機器映像參考時，會需要下列屬性︰
 

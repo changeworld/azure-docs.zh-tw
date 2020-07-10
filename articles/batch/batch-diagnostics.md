@@ -4,11 +4,12 @@ description: 記錄並分析 Azure Batch 帳戶資源 (如集區和工作) 的�
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6e10a4fc6cd13854682f094274c975931b056365
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960719"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145091"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用於診斷評估和監視的 Batch 計量、警示和記錄
  
@@ -16,7 +17,7 @@ ms.locfileid: "85960719"
 
 ## <a name="batch-metrics"></a>Batch 計量
 
-計量是 azure 遙測資料（也稱為效能計數器），由您的 Azure 資源發出，並由 Azure 監視器服務取用。 Batch 帳戶中的計量範例包括集區建立事件、低優先順序節點計數和工作完成事件。
+計量是 Azure 遙測資料 (也稱為效能計數器) ，會由您的 Azure 資源發出，並由 Azure 監視器服務所使用。 Batch 帳戶中的計量範例包括集區建立事件、低優先順序節點計數和工作完成事件。
 
 請參閱[支援的 Batch 計量清單](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)。
 
@@ -35,7 +36,7 @@ ms.locfileid: "85960719"
 1. 在 [Azure 入口網站中，選取 [**所有服務**]  >  [**Batch 帳戶**]，然後選取您的 Batch 帳戶名稱。
 2. 在 [**監視**] 底下，選取 [**計量**]。
 3. 選取 [**新增度量**]，然後從下拉式清單中選擇 [度量]。
-4. 選取度量的**匯總**選項。 針對以計數為基礎的計量（例如「專用核心計數」或「低優先順序節點計數」），請使用**平均**匯總。 若為以事件為基礎的計量（例如「集區調整大小完成事件」），請使用「匯總」**計數**。
+4. 選取度量的**匯總**選項。 針對以計數為基礎的計量 (例如「專用核心計數」或「低優先順序節點計數」 ) ，請使用**平均**匯總。 如需以事件為基礎的計量 (像是「集區調整大小完成事件」 ) ，請使用「匯總」**計數**。
 
    > [!WARNING]
    > 請勿使用「總和」匯總，這會加總在圖表期間收到的所有資料點的值。
@@ -86,8 +87,8 @@ ms.locfileid: "85960719"
 
 或者，您可以：
 
-- 將 Batch 診斷記錄事件串流至 [Azure 事件中樞](../event-hubs/event-hubs-what-is-event-hubs.md)。 事件中樞每秒可輸入數百萬個事件，您可以使用任何即時分析提供者來轉換和儲存。 
-- 將診斷記錄傳送至 [Azure 監視器記錄](../log-analytics/log-analytics-overview.md)，您可以在其中分析這些記錄，或將其匯出以便在 Power BI 或 Excel 中進行分析。
+- 將 Batch 診斷記錄事件串流至 [Azure 事件中樞](../event-hubs/event-hubs-about.md)。 事件中樞每秒可輸入數百萬個事件，您可以使用任何即時分析提供者來轉換和儲存。 
+- 將診斷記錄傳送至 [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)，您可以在其中分析這些記錄，或將其匯出以便在 Power BI 或 Excel 中進行分析。
 
 > [!NOTE]
 > 使用 Azure 服務儲存或處理診斷記錄資料可能會產生額外費用。 
@@ -118,7 +119,7 @@ m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-例如：
+例如︰
 
 ```json
 insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/
@@ -134,7 +135,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-如需儲存體帳戶中診斷記錄架構的詳細資訊，請參閱將[Azure 資源記錄封存至儲存體帳戶](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-platform-logs-in-storage-account)。 若要以程式設計方式存取您儲存體帳戶中的記錄，請使用儲存體 API。
+如需儲存體帳戶中診斷記錄架構的詳細資訊，請參閱將[Azure 資源記錄封存至儲存體帳戶](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。 若要以程式設計方式存取您儲存體帳戶中的記錄，請使用儲存體 API。
 
 ### <a name="service-log-events"></a>服務記錄檔事件
 
@@ -177,4 +178,3 @@ Batch 服務所發出的服務記錄事件包括下列各項：
 
 - 了解可用來建置 Batch 解決方案的 [Batch API 和工具](batch-apis-tools.md)。
 - 深入了解[監視 Batch 解決方案](monitoring-overview.md)。
-

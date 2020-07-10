@@ -8,11 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 9c16cd4143bc07bf5f3b1d00b890dc54bd5ea318
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fef582048d1e1093a4a4d69229185e8a3d8dc229
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659873"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144856"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 上第 2 代 VM 的支援
 
@@ -191,6 +192,9 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 * **第 2 代 VM 是否支援加速網路？**  
     是。 如需詳細資訊，請參閱[建立具有加速網路功能的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
 
+* **第2代 Vm 是否支援 Azure 中的安全開機或 vTPM？**
+    Azure 中的第1代和第2代 Vm 不支援安全開機或 vTPM。 
+    
 * **第 2 代 VM 是否支援 VHDX？**  
     否，第 2 代 VM 僅支援 VHD。
 

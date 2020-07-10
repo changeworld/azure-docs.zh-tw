@@ -5,11 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: d147c87e8fb0fa9e01ba2dbaf732adaae082bcd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94a5fd3ae1de0708f0e5550547f7ab2fc9f881cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84167786"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146235"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>使用 PowerShell 還原已刪除的 App Service 應用程式
 
@@ -17,6 +18,10 @@ ms.locfileid: "84167786"
 
 > [!NOTE]
 > 已刪除的應用程式會在初始刪除之後的 30 天內從系統中清除。 應用程式一旦清除之後，就無法復原。
+>
+
+> [!NOTE]
+> 取用量方案不支援取消刪除功能。
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>重新註冊 App Service 資源提供者

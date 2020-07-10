@@ -4,19 +4,19 @@ description: 了解使用者帳戶的類型及其設定方式。
 ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 514a104c879a8d601bb03e2ed1c59b69516bc621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209720"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142672"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在 Batch 中的使用者帳戶執行工作
 
 > [!NOTE]
-> 本文中討論的使用者帳戶與用於遠端桌面通訊協定（RDP）或安全殼層（SSH）的使用者帳戶不同，基於安全考慮。
+> 本文所討論的使用者帳戶與用於遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 的使用者帳戶不同，基於安全考慮。
 >
-> 若要連線到透過 SSH 執行 Linux 虛擬機器設定的節點，請參閱[在 Azure 中使用 Linux VM 的遠端桌面](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)。 若要連線到透過 RDP 執行 Windows 的節點，請參閱[連線到 Windows Server VM](../virtual-machines/windows/connect-logon.md)。<br /><br />
+> 若要連線到透過 SSH 執行 Linux 虛擬機器設定的節點，請參閱[在 Azure 中使用 Linux VM 的遠端桌面](../virtual-machines/linux/use-remote-desktop.md)。 若要連線到透過 RDP 執行 Windows 的節點，請參閱[連線到 Windows Server VM](../virtual-machines/windows/connect-logon.md)。<br /><br />
 > 若要連線到透過 RDP 執行雲端服務設定的節點，請參閱[在 Azure 雲端服務中啟用角色的遠端桌面連線](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)。
 
 Azure Batch 中的工作一律會在使用者帳戶下執行。 根據預設，會在標準使用者帳戶中執行工作，而不需要系統管理員權限。 在某些情況下，您可能會想要設定您想要執行工作的使用者帳戶。 本文討論使用者帳戶的類型，以及如何為您的案例進行設定。

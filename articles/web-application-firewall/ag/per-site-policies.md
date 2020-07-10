@@ -8,11 +8,12 @@ ms.service: web-application-firewall
 ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e40370421214ebe026090007122a641a216c256
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682489"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143938"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>使用 Azure PowerShell 設定個別網站的 WAF 原則
 
@@ -28,7 +29,7 @@ Web 應用程式防火牆 (WAF) 設定包含在 WAF 原則中，若要變更 WAF
 > * 設定網路
 > * 建立 WAF 原則
 > * 建立已啟用 WAF 的應用程式閘道
-> * 全域、依個別網站及依個別 URI 套用 WAF 原則
+> * 將 WAF 原則全域、每個網站和每個 URI (預覽) 
 > * 建立虛擬機器擴展集
 > * 建立儲存體帳戶並設定診斷
 > * 測試應用程式閘道
@@ -249,7 +250,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy"></a>套用個別 URI 原則
+### <a name="apply-a-per-uri-policy-preview"></a>將每個 URI 原則套用 (預覽) 
 
 若要套用個別 URI 原則，只要建立新的原則並將其套用至路徑規則設定即可。 
 

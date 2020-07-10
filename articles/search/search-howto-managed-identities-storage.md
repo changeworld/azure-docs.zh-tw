@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: e6c766008faa6bbe53a4af69f7da9325cb9ff6a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffbc850c580daee5890f9c75021cc518918d098e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559873"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145384"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>使用受控識別來設定與 Azure 儲存體帳戶的連線 (預覽)
 
@@ -103,6 +103,7 @@ Azure 入口網站和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft
 
 以下說明如何使用可搜尋的 `content` 欄位建立索引，以儲存從 blob 擷取的文字︰   
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -114,6 +115,7 @@ Azure 入口網站和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
+```
 
 如需建立索引的詳細資訊，請參閱[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
 
@@ -125,6 +127,7 @@ Azure 入口網站和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft
 
 Blob 索引子的索引子定義範例：
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -135,6 +138,7 @@ Blob 索引子的索引子定義範例：
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 這個索引子每隔兩小時就會執行一次 (已將排程間隔設為 "PT2H")。 若每隔 30 分鐘就要執行索引子，可將間隔設為 "PT30M"。 支援的最短間隔為 5 分鐘。 排程為選擇性 - 如果省略，索引子只會在建立時執行一次。 不過，您隨時都可依需求執行索引子。   
 
