@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017594"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218203"
 ---
 ## <a name="application-performance-indicators"></a>應用程式效能指標
 
@@ -119,10 +119,10 @@ IOPS，亦即 Input/output Operations Per Second (每秒鐘輸入/輸出作業�
 
 如需 VM 大小以及每種 VM 可用的 IOPS、輸送量和延遲的詳細資訊，請參閱 [Linux VM 大小](../articles/virtual-machines/linux/sizes.md)或 [Windows VM 大小](../articles/virtual-machines/windows/sizes.md)。
 
-| &nbsp; | **IOPS** | **輸送量** | **延遲** |
+| | **IOPS** | **輸送量** | **延遲** |
 | --- | --- | --- | --- |
 | **範例案例** |需要極高每秒交易速率的企業 OLTP 應用程式。 |處理大量資料的企業資料倉儲應用程式。 |需要立即回應使用者要求的近乎即時的應用程式，例如線上遊戲。 |
-| 效能因素 | &nbsp; | &nbsp; | &nbsp; |
+| **效能因素** | &nbsp; | &nbsp; | &nbsp; |
 | **IO 大小** |較小 IO 大小會產生較高的 IOPS。 |較大 IO 大小會產生較高的輸送量。 | &nbsp;|
 | **VM 大小** |使用 IOPS 大於應用程式需求的 VM 大小。 |使用輸送量限制大於應用程式需求的 VM 大小。 |使用調整限制大於應用程式需求的 VM 大小。 |
 | **磁碟大小** |使用 IOPS 大於應用程式需求的磁碟大小。 |使用輸送量限制大於應用程式需求的磁碟大小。 |使用調整限制大於應用程式需求的磁碟大小。 |

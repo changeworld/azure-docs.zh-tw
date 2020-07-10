@@ -8,19 +8,17 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ddab6927044ce638e50ff3ad79aa3c35d046c820
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d0e171807985deaebe8faa625d6b767c2a3efd7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69520821"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218200"
 ---
 下列設定是針對下列步驟所使用：
 
-  | | |
-  |---|---|
-  |電腦| Ubuntu Server 18.04|
-  |相依性| strongSwan |
+- 電腦： Ubuntu Server 18.04
+- 相依性： strongSwan
 
 
 使用下列命令來安裝所需的 strongSwan 組態：

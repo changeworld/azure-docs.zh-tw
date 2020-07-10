@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 1ca9d41134bf33a9e007da4b5a56652ccdbd4e22
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84317507"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218369"
 ---
 共用映像庫服務可協助您圍繞受控映像來建置結構和組織。 共用映像資源庫提供：
 
@@ -84,20 +84,7 @@ ms.locfileid: "84317507"
 
 來源區域會列在下表中。 所有公用區域都可以是目標區域，但是若要複寫至澳大利亞中部和澳大利亞中部 2，您需要將您的訂用帳戶列入允許清單。 若欲要求加入允許清單，請移至： https://azure.microsoft.com/global-infrastructure/australia/contact/
 
-
-| 來源區域        |                   |                    |                    |
-| --------------------- | ----------------- | ------------------ | ------------------ |
-| 澳大利亞中部     | 中國東部        | 印度南部        | 西歐        |
-| 澳大利亞中部 2   | 中國東部 2      | 東南亞     | 英國南部           |
-| 澳大利亞東部        | 中國北部       | 日本東部         | 英國西部            |
-| 澳大利亞東南部   | 中國北部 2     | 日本西部         | US DoD 中部     |
-| 巴西南部          | 東亞         | 南韓中部      | US DoD 東部        |
-| 加拿大中部        | 美國東部           | 南韓南部        | US Gov 亞利桑那州     |
-| 加拿大東部           | 美國東部 2         | 美國中北部   | US Gov 德克薩斯州       |
-| 印度中部         | 美國東部 2 EUAP    | 北歐       | US Gov 維吉尼亞州    |
-| 美國中部            | 法國中部    | 美國中南部   | 印度西部         |
-| 美國中部 EUAP       | 法國南部      | 美國中西部    | 美國西部            |
-|                       |                   |                    | 美國西部 2          |
+> 澳大利亞中部、中國東部、印度南部、西歐、澳大利亞中部2、中國東部2、東南亞、英國南部、澳大利亞東部、中國北部、日本東部、英國西部、澳大利亞東南部、中國北部2、日本西部、US DoD 中部、巴西南部、東亞、韓國中部、US DoD 東部、加拿大中部、美國東部、南韓南部、US Gov 亞利桑那州、加拿大東部、美國東部2、美國中北部，US Gov 德克薩斯州，印度中部，美國東部 2 EUAP，北歐，US Gov 維吉尼亞州，美國中部，法國中部，美國中南部，印度西部，美國中部 EUAP，法國南部，美國中西部，美國西部，美國西部 2 |
 
 
 

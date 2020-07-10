@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4e31560126919e4c61b176a6eaa62ee7f9b4a624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8d712e4eecb930b52a519a1aaddf97c744a24ab
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85112066"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218143"
 ---
-暫時 OS 磁片會建立在本機虛擬機器（VM）存放區上，而不會儲存至遠端 Azure 儲存體。 暫時 OS 磁片適用于無狀態工作負載，其中應用程式可容忍個別 VM 失敗，但會受到 VM 部署時間的影響，或重新製作個別 VM 實例的映射。 有了暫時的 OS 磁片，您可以取得 OS 磁片的讀取/寫入延遲較低，並加快 VM 重新安裝映射的速度。 
+暫時 OS 磁片會建立在本機虛擬機器上 (VM) 儲存體，而不會儲存到遠端 Azure 儲存體。 暫時 OS 磁片適用于無狀態工作負載，其中應用程式可容忍個別 VM 失敗，但會受到 VM 部署時間的影響，或重新製作個別 VM 實例的映射。 有了暫時的 OS 磁片，您可以取得 OS 磁片的讀取/寫入延遲較低，並加快 VM 重新安裝映射的速度。 
  
 暫時磁片的主要功能如下： 
 - 適用于無狀態應用程式。
@@ -30,23 +30,23 @@ ms.locfileid: "85112066"
  
 持續性和暫時 OS 磁片之間的主要差異：
 
-|                             | 持續性作業系統磁片                          | 暫時性 OS 磁碟                              |    |
+|                             | 持續性作業系統磁片                          | 暫時性 OS 磁碟                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| OS 磁片的大小限制      | 2 TiB                                                                                        | VM 大小或2TiB 的快取大小，以較小者為准。 如需**GiB 中**的快取大小，請參閱[DS](../articles/virtual-machines/linux/sizes-general.md)、 [ES](../articles/virtual-machines/linux/sizes-memory.md)、 [M](../articles/virtual-machines/linux/sizes-memory.md)、 [FS](../articles/virtual-machines/linux/sizes-compute.md)和[GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
-| 支援的 VM 大小          | 全部                                                                                          | DSv1，DSv2，DSv3，Esv3，Fs，FsV2，GS，M                                               |
-| 磁片類型支援           | 受控和非受控 OS 磁片                                                                | 僅限受控 OS 磁片                                                               |
-| 區域支援              | 所有區域                                                                                  | 所有區域                              |
-| 資料持續性            | 寫入 OS 磁片的 OS 磁片資料會儲存在 Azure 儲存體                                  | 寫入 OS 磁片的資料會儲存至本機 VM 儲存體，而且不會保存到 Azure 儲存體。 |
-| 停止-解除配置狀態      | Vm 和擴展集實例可以停止-解除配置，並從停止解除配置的狀態重新開機 | 無法停止/解除配置 Vm 和擴展集實例                                  |
-| 特殊 OS 磁片支援 | 是                                                                                          | 否                                                                                 |
-| OS 磁片大小調整              | 在建立 VM 期間，以及在停止配置 VM 之後支援                                | 僅在 VM 建立期間支援                                                  |
-| 調整為新 VM 大小   | 保留 OS 磁片資料                                                                    | 作業系統磁片上的資料已刪除，作業系統已重新布建                                      |
+| **OS 磁片的大小限制**      | 2 TiB                                                                                        | VM 大小或2TiB 的快取大小，以較小者為准。 如需**GiB 中**的快取大小，請參閱[DS](../articles/virtual-machines/linux/sizes-general.md)、 [ES](../articles/virtual-machines/linux/sizes-memory.md)、 [M](../articles/virtual-machines/linux/sizes-memory.md)、 [FS](../articles/virtual-machines/linux/sizes-compute.md)和[GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
+| **支援的 VM 大小**          | 全部                                                                                          | DSv1，DSv2，DSv3，Esv3，Fs，FsV2，GS，M                                               |
+| **磁片類型支援**           | 受控和非受控 OS 磁片                                                                | 僅限受控 OS 磁片                                                               |
+| **區域支援**              | 所有區域                                                                                  | 所有區域                              |
+| **資料持續性**            | 寫入 OS 磁片的 OS 磁片資料會儲存在 Azure 儲存體                                  | 寫入 OS 磁片的資料會儲存至本機 VM 儲存體，而且不會保存到 Azure 儲存體。 |
+| **停止-解除配置狀態**      | Vm 和擴展集實例可以停止-解除配置，並從停止解除配置的狀態重新開機 | 無法停止/解除配置 Vm 和擴展集實例                                  |
+| **特殊 OS 磁片支援** | 是                                                                                          | 否                                                                                 |
+| **OS 磁片大小調整**              | 在建立 VM 期間，以及在停止配置 VM 之後支援                                | 僅在 VM 建立期間支援                                                  |
+| **調整為新 VM 大小**   | 保留 OS 磁片資料                                                                    | 作業系統磁片上的資料已刪除，作業系統已重新布建                                      |
 
 ## <a name="size-requirements"></a>大小需求
 
 您可以將 VM 和實例映射部署到 VM 快取的大小。 例如，來自 marketplace 的標準 Windows Server 映射大約是 127 GiB，這表示您需要的 VM 大小必須大於 127 GiB 的快取。 在此情況下， [Standard_DS2_v2](~/articles/virtual-machines/dv2-dsv2-series.md)的快取大小為 86 GiB，這不夠大。 Standard_DS3_v2 的快取大小為 172 GiB，這夠大。 在此情況下，Standard_DS3_v2 是可與此影像搭配使用之 DSv2 系列中的最小大小。 Marketplace 中的基本 Linux 映射和所表示的 Windows Server 映射， `[smallsize]` 通常約為 30 GiB，而且可以使用大部分可用的 VM 大小。
 
-暫時磁片也需要 VM 大小支援 Premium 儲存體。 大小通常（但不一定）會 `s` 在名稱中包含，例如 DSv2 和 EsV3。 如需詳細資訊，請參閱[AZURE VM 大小](../articles/virtual-machines/linux/sizes.md)，以取得支援高階儲存體的大小詳細資料。
+暫時磁片也需要 VM 大小支援 Premium 儲存體。 大小通常 (，但不一定一律) `s` 在名稱中包含，例如 DSv2 和 EsV3。 如需詳細資訊，請參閱[AZURE VM 大小](../articles/virtual-machines/linux/sizes.md)，以取得支援高階儲存體的大小詳細資料。
 
 ## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>預覽-暫時 OS 磁片現在可以儲存在暫存磁片上
 暫時 OS 磁片現在可以儲存在 vm 暫存/資源磁片上，以及 VM 快取。 因此，現在您可以使用暫時 OS 磁片搭配沒有快取或快取不足的 VM，但具有暫存/資源磁片來儲存暫時的 OS 磁片，例如 Dav3、Dav4、Eav4 和 Eav3。 如果 VM 有足夠的快取和暫存空間，您現在也可以使用稱為[DiffDiskPlacement](https://docs.microsoft.com/rest/api/compute/virtualmachines/list#diffdiskplacement)的新屬性，指定您要儲存暫時 OS 磁片的位置。 這項功能目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 若要開始使用，請[要求存取權](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)。
@@ -201,7 +201,7 @@ id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}
 
 **問：是否支援暫時 OS 磁片的所有 VM 大小？**
 
-答：不支援，大部分的進階儲存體的 VM 大小都受到支援（DS、ES、FS、GS、M 等等）。 若要知道特定的 VM 大小是否支援暫時的 OS 磁片，您可以：
+答： (DS、ES、FS、GS、M 等 ) 都支援最進階儲存體的 VM 大小。 若要知道特定的 VM 大小是否支援暫時的 OS 磁片，您可以：
 
 呼叫 `Get-AzComputeResourceSku` PowerShell Cmdlet
 ```azurepowershell-interactive

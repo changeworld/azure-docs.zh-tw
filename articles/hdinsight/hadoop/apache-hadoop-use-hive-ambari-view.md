@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 6490292ef898e00c7677c829be41f3b06c638164
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076601"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207819"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>在 HDInsight 中搭配 Apache Hadoop 使用 Apache Ambari Hive 檢視
 
@@ -75,8 +75,10 @@ HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight]
 
 1. 查詢完成之後，[結果]**** 索引標籤會顯示作業的結果。 下列文字是查詢結果：
 
-        loglevel       count
-        [ERROR]        3
+    ```output
+    loglevel       count
+    [ERROR]        3
+    ```
 
     您可以使用 [**記錄**檔] 索引標籤來查看作業所建立的記錄資訊。
 
@@ -146,7 +148,7 @@ add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-您接著可以在查詢中使用 UDF。 例如： `SELECT myawesomeudf(name) FROM people;` 。
+您接著可以在查詢中使用 UDF。 例如，`SELECT myawesomeudf(name) FROM people;`。
 
 如需在 HDInsight 上搭配 Hive 使用 UDF 的詳細資訊，請參閱下列文章：
 

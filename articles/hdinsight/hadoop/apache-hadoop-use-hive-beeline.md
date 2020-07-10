@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 46d0a21ac1461b2553b8262b913aada3fa2a1b6f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3614fac027dd32ab5f5d70f5835432ac3b9b512d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081296"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207745"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>使用 Apache Beeline 用戶端搭配 Apache Hive
 
@@ -66,25 +66,27 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
 
     此命令會傳回下列資訊：
 
-        +-----------------------+------------+----------+--+
-        |       col_name        | data_type  | comment  |
-        +-----------------------+------------+----------+--+
-        | clientid              | string     |          |
-        | querytime             | string     |          |
-        | market                | string     |          |
-        | deviceplatform        | string     |          |
-        | devicemake            | string     |          |
-        | devicemodel           | string     |          |
-        | state                 | string     |          |
-        | country               | string     |          |
-        | querydwelltime        | double     |          |
-        | sessionid             | bigint     |          |
-        | sessionpagevieworder  | bigint     |          |
-        +-----------------------+------------+----------+--+
+    ```output
+    +-----------------------+------------+----------+--+
+    |       col_name        | data_type  | comment  |
+    +-----------------------+------------+----------+--+
+    | clientid              | string     |          |
+    | querytime             | string     |          |
+    | market                | string     |          |
+    | deviceplatform        | string     |          |
+    | devicemake            | string     |          |
+    | devicemodel           | string     |          |
+    | state                 | string     |          |
+    | country               | string     |          |
+    | querydwelltime        | double     |          |
+    | sessionid             | bigint     |          |
+    | sessionpagevieworder  | bigint     |          |
+    +-----------------------+------------+----------+--+
+    ```
 
     此資訊描述資料表中的資料行。
 
-5. 輸入下列語句，以使用 HDInsight 叢集所提供的範例資料來建立名為**log4jLogs**的資料表：（根據您的 URI 配置，視需要修訂）。
+5. 輸入下列語句，以使用 HDInsight 叢集所提供的範例資料來建立名為**log4jLogs**的資料表： (根據您的 URI 配置，視需要進行修訂。 ) 
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -105,7 +107,7 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
 
     這些語句會執行下列動作：
 
-    |引數 |Description |
+    |引數 |描述 |
     |---|---|
     |DROP TABLE|如果資料表存在，則會予以刪除。|
     |CREATE EXTERNAL TABLE|在 Hive 中建立**外部**資料表。 外部資料表只會將資料表定義儲存在 Hive 中。 資料會留在原來的位置。|
@@ -121,27 +123,29 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
 
     此命令的輸出類似下列文字：
 
-        INFO  : Tez session hasn't been created yet. Opening session
-        INFO  :
+    ```output
+    INFO  : Tez session hasn't been created yet. Opening session
+    INFO  :
 
-        INFO  : Status: Running (Executing on YARN cluster with App id application_1443698635933_0001)
+    INFO  : Status: Running (Executing on YARN cluster with App id application_1443698635933_0001)
 
-        INFO  : Map 1: -/-      Reducer 2: 0/1
-        INFO  : Map 1: 0/1      Reducer 2: 0/1
-        INFO  : Map 1: 0/1      Reducer 2: 0/1
-        INFO  : Map 1: 0/1      Reducer 2: 0/1
-        INFO  : Map 1: 0/1      Reducer 2: 0/1
-        INFO  : Map 1: 0(+1)/1  Reducer 2: 0/1
-        INFO  : Map 1: 0(+1)/1  Reducer 2: 0/1
-        INFO  : Map 1: 1/1      Reducer 2: 0/1
-        INFO  : Map 1: 1/1      Reducer 2: 0(+1)/1
-        INFO  : Map 1: 1/1      Reducer 2: 1/1
-        +----------+--------+--+
-        |   sev    | count  |
-        +----------+--------+--+
-        | [ERROR]  | 3      |
-        +----------+--------+--+
-        1 row selected (47.351 seconds)
+    INFO  : Map 1: -/-      Reducer 2: 0/1
+    INFO  : Map 1: 0/1      Reducer 2: 0/1
+    INFO  : Map 1: 0/1      Reducer 2: 0/1
+    INFO  : Map 1: 0/1      Reducer 2: 0/1
+    INFO  : Map 1: 0/1      Reducer 2: 0/1
+    INFO  : Map 1: 0(+1)/1  Reducer 2: 0/1
+    INFO  : Map 1: 0(+1)/1  Reducer 2: 0/1
+    INFO  : Map 1: 1/1      Reducer 2: 0/1
+    INFO  : Map 1: 1/1      Reducer 2: 0(+1)/1
+    INFO  : Map 1: 1/1      Reducer 2: 1/1
+    +----------+--------+--+
+    |   sev    | count  |
+    +----------+--------+--+
+    | [ERROR]  | 3      |
+    +----------+--------+--+
+    1 row selected (47.351 seconds)
+    ```
 
 6. 結束 Beeline：
 
@@ -168,7 +172,7 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
 
     這些語句會執行下列動作：
 
-    |引數 |Description |
+    |引數 |描述 |
     |---|---|
     |CREATE TABLE （如果不存在）|如果資料表尚不存在，則會建立它。 因為未使用**EXTERNAL**關鍵字，所以這個語句會建立內部資料表。 內部資料表儲存在 Hive 資料倉儲中，並完全由 Hive 管理。|
     |儲存為 ORC|以最佳化資料列單欄式 (Optimized Row Columnar, ORC) 格式儲存資料。 ORC 格式是高度最佳化且有效率的 Hive 資料儲存格式。|
@@ -196,16 +200,18 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
 
     應該傳回三個資料列，且在資料行 t4 中全部包含 **[ERROR]** ：
 
-        +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
-        | errorlogs.t1  | errorlogs.t2  | errorlogs.t3  | errorlogs.t4  | errorlogs.t5  | errorlogs.t6  | errorlogs.t7  |
-        +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
-        | 2012-02-03    | 18:35:34      | SampleClass0  | [ERROR]       | incorrect     | id            |               |
-        | 2012-02-03    | 18:55:54      | SampleClass1  | [ERROR]       | incorrect     | id            |               |
-        | 2012-02-03    | 19:25:27      | SampleClass4  | [ERROR]       | incorrect     | id            |               |
-        +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
-        3 rows selected (0.813 seconds)
+    ```output
+    +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
+    | errorlogs.t1  | errorlogs.t2  | errorlogs.t3  | errorlogs.t4  | errorlogs.t5  | errorlogs.t6  | errorlogs.t7  |
+    +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
+    | 2012-02-03    | 18:35:34      | SampleClass0  | [ERROR]       | incorrect     | id            |               |
+    | 2012-02-03    | 18:55:54      | SampleClass1  | [ERROR]       | incorrect     | id            |               |
+    | 2012-02-03    | 19:25:27      | SampleClass4  | [ERROR]       | incorrect     | id            |               |
+    +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
+    3 rows selected (0.813 seconds)
+    ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如需 HDInsight 中 Hive 的一般資訊，請參閱[在 hdinsight 上搭配使用 Apache Hive 與 Apache Hadoop](hdinsight-use-hive.md)
 

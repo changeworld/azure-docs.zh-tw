@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: a1d411662fd7afe57c714b97ab67b9d490acd40d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076363"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207723"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 搭配 HDInsight 上的 Apache Hadoop 執行 MapReduce 作業
 
@@ -61,7 +61,7 @@ ms.locfileid: "86076363"
 
     您應該會收到類似以下 JSON 的回應：
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -83,9 +83,7 @@ ms.locfileid: "86076363"
      * **class**：包含 MapReduce 邏輯的類別
      * **arg**︰要傳遞到 MapReduce 作業的引數。 在此案例中，是用於輸出的輸入文字檔和目錄
 
-    此命令應該會傳回可用來檢查工作狀態的工作識別碼：
-
-       job_1415651640909_0026
+    此命令應該會傳回可用來檢查作業狀態的作業識別碼： `job_1415651640909_0026` 。
 
 1. 若要檢查工作的狀態，請使用下列命令。 將的值取代為 `JOBID` 上一個步驟中所傳回的**實際**值。 視需要修改**jq**的位置。
 
@@ -116,7 +114,7 @@ ms.locfileid: "86076363"
 
     您應該會收到類似以下 JSON 的回應：
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -146,9 +144,7 @@ ms.locfileid: "86076363"
     * **class**：包含 MapReduce 邏輯的類別
     * **arg**︰要傳遞到 MapReduce 作業的引數。 在此案例中，是用於輸出的輸入文字檔和目錄
 
-   此命令應該會傳回可用來檢查工作狀態的工作識別碼：
-
-       job_1415651640909_0026
+   此命令應該會傳回可用來檢查作業狀態的作業識別碼： `job_1415651640909_0026` 。
 
 1. 若要檢查作業的狀態，請使用下列命令：
 
@@ -173,7 +169,7 @@ ms.locfileid: "86076363"
 
 您可以使用 [Azure CLI](/cli/azure/install-azure-cli) 列出並下載這些檔案。 如需有關使用 Azure CLI 來處理 Azure Blob 儲存體的詳細資訊，請參閱[快速入門：使用 Azure CLI 建立、下載及列出 blob](../../storage/blobs/storage-quickstart-blobs-cli.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需您可以在 HDInsight 上使用 Hadoop 之其他方式的詳細資訊：
 

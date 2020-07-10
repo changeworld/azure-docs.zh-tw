@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488780"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218305"
 ---
 使用區域 VNet 整合可讓您的應用程式存取：
 
@@ -23,25 +23,25 @@ ms.locfileid: "84488780"
 
 當您在相同區域中搭配 Vnet 使用 VNet 整合時，您可以使用下列 Azure 網路功能：
 
-* **網路安全性群組（nsg）**：您可以使用放在整合子網上的 NSG 來封鎖輸出流量。 輸入規則不適用，因為您無法使用 VNet 整合來提供應用程式的輸入存取。
-* **路由表（udr）**：您可以將路由表放在整合子網上，以在您想要的地方傳送輸出流量。
+* ** (nsg) 的網路安全性群組**：您可以使用放在整合子網上的 NSG 來封鎖輸出流量。 輸入規則不適用，因為您無法使用 VNet 整合來提供應用程式的輸入存取。
+* **路由表 (udr) **：您可以將路由表放在整合子網上，以在您想要的地方傳送輸出流量。
 
 根據預設，您的應用程式只會將 RFC1918 流量路由傳送至您的 VNet。 如果您想要將所有輸出流量路由傳送至 VNet，請將應用程式設定 WEBSITE_VNET_ROUTE_ALL 套用至您的應用程式。 若要設定應用程式設定：
 
-1. 在您的應用程式入口網站**中，移至 [設定**] UI。 選取 [**新增應用程式設定**]。
+1. 在您的應用程式入口網站**中，移至 [設定**] UI。 選取 [新增應用程式設定]。
 1. 在 [**名稱**] 方塊中輸入**WEBSITE_VNET_ROUTE_ALL** ，然後在 [**值**] 方塊中輸入**1** 。
 
    ![提供應用程式設定][4]
 
-1. 選取 [確定]  。
-1. 選取 [儲存]  。
+1. 選取 [確定]。
+1. 選取 [儲存]。
 
 如果您將所有輸出流量路由傳送至 VNet，則會受限於套用至您的整合子網的 Nsg 和 Udr。 當您將所有輸出流量路由傳送至 VNet 時，您的輸出位址仍會是應用程式屬性中所列的輸出位址，除非您提供路由以將流量傳送到其他位置。
 
 在相同的區域中使用 VNet 與 Vnet 的整合有一些限制：
 
 * 您無法跨全球對等互連連線連線到資源。
-* 此功能僅適用于支援 PremiumV2 App Service 方案的較新 Azure App Service 縮放單位。
+* 此功能僅適用于支援 PremiumV2 App Service 方案的較新 Azure App Service 縮放單位。 請注意，*這並不表示您的應用程式必須在 PremiumV2 定價層上執行*，而且必須在可使用 PremiumV2 選項的 App Service 方案上執行 (這表示它是較新的縮放單位，其中也會提供此 VNet 整合功能) 。
 * 整合子網只能由一個 App Service 方案使用。
 * App Service 環境中的隔離式方案應用程式無法使用此功能。
 * 此功能需要在 Azure Resource Manager VNet 中有一個/27 具有32位址或更大的未使用子網。
@@ -77,7 +77,7 @@ Windows 和 Linux web 應用程式都完全支援此功能。 所有的行為在
 
 如果您想要路由傳送內部部署的所有輸出流量，您可以使用路由表將所有輸出流量傳送到您的 ExpressRoute 閘道。 如果您將流量路由傳送至閘道，請務必設定外部網路中的路由，以傳送任何回復。
 
-邊界閘道協定（BGP）路由也會影響您的應用程式流量。 如果您有來自類似 ExpressRoute 閘道的 BGP 路由，您的應用程式輸出流量會受到影響。 根據預設，BGP 路由只會影響您的 RFC1918 目的地流量。 如果 WEBSITE_VNET_ROUTE_ALL 設定為1，則您的 BGP 路由可能會影響所有輸出流量。
+邊界閘道協定 (BGP) 路由也會影響您的應用程式流量。 如果您有來自類似 ExpressRoute 閘道的 BGP 路由，您的應用程式輸出流量會受到影響。 根據預設，BGP 路由只會影響您的 RFC1918 目的地流量。 如果 WEBSITE_VNET_ROUTE_ALL 設定為1，則您的 BGP 路由可能會影響所有輸出流量。
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS 私人區域 
 
