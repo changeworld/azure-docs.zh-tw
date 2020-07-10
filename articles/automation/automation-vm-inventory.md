@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: 清查、自動化、變更、追蹤
 ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 73f5105240b8b6475bb9ebed48baadd501aec87d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32d3c17a5f3d152f32b19ffbfd5c9793a7a34b80
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603106"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185716"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>從虛擬機器管理清查集合
 
@@ -131,5 +131,5 @@ Azure 自動化變更追蹤和清查提供瀏覽器型使用者介面，可用�
 ## <a name="next-steps"></a>後續步驟
 
 * 如需使用此功能的詳細資訊，請參閱[管理變更追蹤和清查](change-tracking-file-contents.md)。
-* 若要深入了解追蹤軟體變更，請參閱[使用變更追蹤來追蹤環境中的軟體變更](../log-analytics/log-analytics-change-tracking.md)。
+* 若要深入了解追蹤軟體變更，請參閱[使用變更追蹤來追蹤環境中的軟體變更](./change-tracking.md)。
 * 若要對此功能的一般問題進行疑難排解，請參閱[對變更追蹤和清查問題進行疑難排解](troubleshoot/change-tracking.md)。

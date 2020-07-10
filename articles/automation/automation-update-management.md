@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 06/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 86116e4aa76b376331e25719d128fc733c3257ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 127a83bbe29a5e102a82cf169919a44f52532228
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316395"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185682"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -57,11 +57,11 @@ ms.locfileid: "85316395"
 更新管理會根據您設定要同步處理的來源，回報機器的最新狀態。 如果已將 Windows 機器設定為向 WSUS 回報，則視 WSUS 上次與 Microsoft Update 同步處理的時間而定，結果可能與 Microsoft Update 所顯示的結果不同。 針對設定為向本機存放庫 (而非公用存放庫) 回報的 Linux 機器，此行為也相同。
 
 > [!NOTE]
-> 為了能正確地向服務回報，「更新管理」需要啟用特定 URL 和連接埠。 若要深入了解這些需求，請參閱[網路設定](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker#network-planning) \(部分機器翻譯\)。
+> 為了能正確地向服務回報，「更新管理」需要啟用特定 URL 和連接埠。 若要深入了解這些需求，請參閱[網路設定](./automation-hybrid-runbook-worker.md#network-planning) \(部分機器翻譯\)。
 
 您可以藉由建立排定的部署，在需要更新的機器上部署和安裝軟體更新。 歸類為選擇性的更新不會包含在 Windows 機器的部署範圍內。 部署範圍中僅包含必要更新。
 
-排定的部署會定義哪些目標機器要收到適用的更新。 這會藉由明確指定特定的機器，或根據一組特定機器的記錄搜尋選取[電腦群組](https://docs.microsoft.com/azure/azure-monitor/platform/computer-groups) \(部分機器翻譯\) (或根據依指定準則動態選取 Azure VM 的 [Azure 查詢](automation-update-management-query-logs.md)) 來執行。 這些群組與[範圍設定](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting) \(部分機器翻譯\) 不同，其可用來控制接收設定以啟用更新管理之機器的目標。 這可防止其執行及回報更新合規性，以及安裝已核准的必要更新。
+排定的部署會定義哪些目標機器要收到適用的更新。 這會藉由明確指定特定的機器，或根據一組特定機器的記錄搜尋選取[電腦群組](../azure-monitor/platform/computer-groups.md) \(部分機器翻譯\) (或根據依指定準則動態選取 Azure VM 的 [Azure 查詢](automation-update-management-query-logs.md)) 來執行。 這些群組與[範圍設定](../azure-monitor/insights/solution-targeting.md) \(部分機器翻譯\) 不同，其可用來控制接收設定以啟用更新管理之機器的目標。 這可防止其執行及回報更新合規性，以及安裝已核准的必要更新。
 
 定義部署時，您也可以指定排程，以核准並設定一段可安裝更新的期間。 這段期間稱為維護時間範圍。 假設您需要維護且已選取適當的重新開機選項，則會保留 20 分鐘的維護時間範圍來重新開機。 如果修補所花費的時間超出預期，且維護時間範圍少於 20 分鐘，則不會重新開機。
 
@@ -78,7 +78,7 @@ ms.locfileid: "85316395"
 下表列出更新評估和修補支援的作業系統。 修補需要混合式 Runbook 背景工作角色。 如需混合式 Runbook 背景工作角色需求的相關資訊，請參閱[部署 Windows 混合式 Runbook 背景工作角色](automation-windows-hrw-install.md)和[部署 Linux 混合式 Runbook 背景工作角色](automation-linux-hrw-install.md)。
 
 > [!NOTE]
-> 只有在自動化帳戶和 Log Analytics 工作區[對應表](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings) \(部分機器翻譯\) 中列出的特定區域，才支援 Linux 機器的更新評量。 
+> 只有在自動化帳戶和 Log Analytics 工作區[對應表](./how-to/region-mappings.md#supported-mappings) \(部分機器翻譯\) 中列出的特定區域，才支援 Linux 機器的更新評量。 
 
 |作業系統  |注意  |
 |---------|---------|
@@ -98,7 +98,7 @@ ms.locfileid: "85316395"
 
 |作業系統  |注意  |
 |---------|---------|
-|Windows 用戶端     | 不支援用戶端作業系統 (例如 Windows 7 和 Windows 10)。<br> 針對 Azure Windows 虛擬桌面 (WVD)，建議用來<br> 管理更新的方法是[商務用 Windows Update](https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb) \(部分機器翻譯\)，其適用於進行 Windows 10 用戶端機器修補管理。 |
+|Windows 用戶端     | 不支援用戶端作業系統 (例如 Windows 7 和 Windows 10)。<br> 針對 Azure Windows 虛擬桌面 (WVD)，建議用來<br> 管理更新的方法是[商務用 Windows Update](/windows/deployment/update/waas-manage-updates-wufb) \(部分機器翻譯\)，其適用於進行 Windows 10 用戶端機器修補管理。 |
 |Windows Server 2016 Nano Server     | 不支援。       |
 |Azure Kubernetes Service 節點 | 不支援。 使用[在 Azure Kubernetes Service (AKS) 中將安全性和核心更新套用至 Linux 節點](../aks/node-updates-kured.md)中所述的修補程序。|
 
@@ -108,21 +108,21 @@ ms.locfileid: "85316395"
 
 #### <a name="windows"></a>Windows
 
-Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取 Microsoft Update。 如需有關如何安裝適用於 Windows 之 Log Analytics 代理程式的資訊，請參閱[將 Windows 電腦連線至 Azure 監視器](../log-analytics/log-analytics-windows-agent.md)。
+Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取 Microsoft Update。 如需有關如何安裝適用於 Windows 之 Log Analytics 代理程式的資訊，請參閱[將 Windows 電腦連線至 Azure 監視器](../azure-monitor/platform/agent-windows.md)。
 
 您可以搭配 Microsoft Endpoint Configuration Manager 使用更新管理。 若要深入了解整合案例，請參閱[整合更新管理與 Windows Endpoint Configuration Manager](updatemgmt-mecmintegration.md)。 針對 Configuration Manager 環境中網站所管理的 Windows 伺服器，需要[適用於 Windows 的 Log Analytics 代理程式](../azure-monitor/platform/agent-windows.md)。 
 
 根據預設，從 Azure Marketplace 部署的 Windows VM 會設定為從 Windows Update 服務接收自動更新。 當您將 Windows VM 新增至工作區時，此行為並不會變更。 如果您未使用更新管理主動管理更新，即會套用預設行為 (以自動套用更新)。
 
 > [!NOTE]
-> 您可以修改群組原則，以便只有使用者 (而非系統) 能夠對該機器執行重新開機。 如果更新管理無權在未與使用者手動互動的情況下將機器重新開機，則受控機器可能會停滯。 如需詳細資訊，請參閱[設定自動更新的群組原則設定](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)。
+> 您可以修改群組原則，以便只有使用者 (而非系統) 能夠對該機器執行重新開機。 如果更新管理無權在未與使用者手動互動的情況下將機器重新開機，則受控機器可能會停滯。 如需詳細資訊，請參閱[設定自動更新的群組原則設定](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)。
 
 #### <a name="linux"></a>Linux
 
 針對 Linux，機器必須能夠存取更新存放庫 (私人或公用)。 必須使用 TLS 1.1 或 TLS 1.2，才能與更新管理互動。 更新管理不支援已設定為向多個 Log Analytics 工作區回報之適用於 Linux 的 Log Analytics 代理程式。 該機器也必須安裝 Python 2.x。
 
 > [!NOTE]
-> 只有在特定區域中才支援 Linux 機器的更新評量。 請參閱自動化帳戶和 Log Analytics 工作區[對應表](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings) \(部分機器翻譯\)。 
+> 只有在特定區域中才支援 Linux 機器的更新評量。 請參閱自動化帳戶和 Log Analytics 工作區[對應表](./how-to/region-mappings.md#supported-mappings) \(部分機器翻譯\)。 
 
 如需如何安裝適用於 Linux 的 Log Analytics 代理程式及下載最新版本的相關資訊，請參閱[適用於 Linux 的 Log Analytics 代理程式](../azure-monitor/platform/agent-linux.md)。 
 
@@ -158,7 +158,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 如需如何更新管理組件的詳細資訊，請參閱[將 Operations Manager 連線到 Azure 監視器記錄](../azure-monitor/platform/om-agents.md)。
 
 > [!NOTE]
-> 若要讓更新管理使用 Log Analytics 代理程式完全管理機器，您必須更新為適用於 Windows 的 Log Analytics 代理程式或適用於 Linux 的 Log Analytics 代理程式。 若要深入了解如何更新代理程式，請參閱[如何升級 Operations Manager 代理程式](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)。 在使用 Operations Manager 的環境中，您必須執行 System Center Operations Manager 2012 R2 UR 14 或更新版本。
+> 若要讓更新管理使用 Log Analytics 代理程式完全管理機器，您必須更新為適用於 Windows 的 Log Analytics 代理程式或適用於 Linux 的 Log Analytics 代理程式。 若要深入了解如何更新代理程式，請參閱[如何升級 Operations Manager 代理程式](/system-center/scom/deploy-upgrade-agents)。 在使用 Operations Manager 的環境中，您必須執行 System Center Operations Manager 2012 R2 UR 14 或更新版本。
 
 ## <a name="data-collection"></a>資料收集
 
@@ -166,10 +166,10 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 下表描述更新管理所支援的連線來源：
 
-| 連線的來源 | 支援 | Description |
+| 連線的來源 | 支援 | 描述 |
 | --- | --- | --- |
-| Windows 代理程式 |Yes |更新管理會從 Windows 代理程式收集系統更新的相關資訊，然後開始安裝必要更新。 |
-| Linux 代理程式 |Yes |更新管理會從 Linux 代理程式收集系統更新的相關資訊，然後在支援的發行版本上開始安裝必要更新。 |
+| Windows 代理程式 |是 |更新管理會從 Windows 代理程式收集系統更新的相關資訊，然後開始安裝必要更新。 |
+| Linux 代理程式 |是 |更新管理會從 Linux 代理程式收集系統更新的相關資訊，然後在支援的發行版本上開始安裝必要更新。 |
 | Operations Manager 管理群組 |是 |「更新管理」會從所連線之管理群組中的代理程式收集系統更新的相關資訊。<br/><br/>Operations Manager 代理程式不需要直接連線到 Azure 監視器記錄。 資料會從管理群組轉送至 Log Analytics 工作區。 |
 
 ### <a name="collection-frequency"></a>收集頻率
@@ -230,7 +230,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 >* Azure 美國政府
 >* 中國的世紀
 >
-> Linux 更新沒有任何分類，而且會在 [**其他更新**] 類別之下回報。 更新管理使用支援的發行版本所發佈的資料，特別是其發行的[OVAL](https://oval.mitre.org/) （開放弱點和評估語言）檔案。 因為網際網路存取受到這些國家雲端的限制，所以更新管理無法存取和使用這些檔案。
+> Linux 更新沒有任何分類，而且會在 [**其他更新**] 類別之下回報。 更新管理使用支援的散發套件所發佈的資料，特別是其發行的[OVAL](https://oval.mitre.org/) (開放式弱點和評估語言) 檔。 因為網際網路存取受到這些國家雲端的限制，所以更新管理無法存取和使用這些檔案。
 
 針對 Linux，更新管理可以區分雲端中的重大更新和安全性更新，同時基於雲端中的資料擴充顯示評量資料。 針對修補，「更新管理」仰賴機器上可用的分類資料。 與其他發行版本不同，CentOS 在 RTM 版本中沒有此資訊可供使用。 如果您將 CentOS 機器設定為傳回以下命令的安全性資料，更新管理就能根據分類進行修補。
 
@@ -248,7 +248,7 @@ sudo yum -q --security check-update
 
 ## <a name="third-party-updates-on-windows"></a>Windows 上的協力廠商更新
 
-更新管理依賴本機設定的更新存放庫來更新支援的 Windows 系統 (WSUS 或 Windows Update)。 [System Center Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/updates-publisher) 之類的工具允許您使用 WSUS 來匯入和發佈自訂更新。 此案例允許更新管理，更新透過協力廠商軟體使用 Configuration Manager 作為其更新存放庫的機器。 若要了解如何設定 Updates Publisher，請參閱[安裝Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/install-updates-publisher)。
+更新管理依賴本機設定的更新存放庫來更新支援的 Windows 系統 (WSUS 或 Windows Update)。 [System Center Updates Publisher](/configmgr/sum/tools/updates-publisher) 之類的工具允許您使用 WSUS 來匯入和發佈自訂更新。 此案例允許更新管理，更新透過協力廠商軟體使用 Configuration Manager 作為其更新存放庫的機器。 若要了解如何設定 Updates Publisher，請參閱[安裝Updates Publisher](/configmgr/sum/tools/install-updates-publisher)。
 
 ## <a name="enable-update-management"></a>啟用更新管理
 

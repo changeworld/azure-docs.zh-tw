@@ -2,17 +2,18 @@
 title: 將 Azure 檔案儲存體磁片區掛接至容器群組
 description: 了解如何掛接 Azure 檔案磁碟區來保存 Azure 容器執行個體的狀態
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: f66890c503de8de9160f11fb28795012ae57daeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 593400f67db5018f1533dd37eed88ece7fd596c6
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75561332"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169573"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器執行個體中掛接 Azure 檔案共用
 
-根據預設，Azure 容器執行個體都是無狀態的。 如果容器損毀或停止，其所有狀態都會遺失。 若要在容器超過存留期後保存其狀態，您必須從外部存放區掛接磁碟區。 如本文所示，Azure 容器實例可以掛接以[Azure 檔案儲存體](../storage/files/storage-files-introduction.md)建立的 azure 檔案共用。 Azure 檔案儲存體提供裝載于 Azure 儲存體的完全受控檔案共用，可透過業界標準伺服器訊息區（SMB）通訊協定來存取。 將 Azure 檔案共用與 Azure 容器執行個體搭配使用，可提供類似於將 Azure 檔案共用與 Azure 虛擬機器搭配使用的檔案共用功能。
+根據預設，Azure 容器執行個體都是無狀態的。 如果容器損毀或停止，其所有狀態都會遺失。 若要在容器超過存留期後保存其狀態，您必須從外部存放區掛接磁碟區。 如本文所示，Azure 容器實例可以掛接以[Azure 檔案儲存體](../storage/files/storage-files-introduction.md)建立的 azure 檔案共用。 Azure 檔案儲存體提供了裝載于 Azure 儲存體中的完全受控檔案共用，可透過業界標準伺服器訊息區 (SMB) 通訊協定來存取。 將 Azure 檔案共用與 Azure 容器執行個體搭配使用，可提供類似於將 Azure 檔案共用與 Azure 虛擬機器搭配使用的檔案共用功能。
 
 > [!NOTE]
 > 目前只有 Linux 容器才能掛接 Azure 檔案共用。 在[總覽](container-instances-overview.md#linux-and-windows-containers)中尋找目前的平臺差異。
@@ -54,7 +55,7 @@ az storage share create \
   echo $ACI_PERS_STORAGE_ACCOUNT_NAME
   ```
 
-* **共用名稱**-這個值已經知道（定義 `acishare` 在上述腳本中）
+* **共用名稱**-這個值已經是已知的 (定義為 `acishare` 上述腳本中的) 
 
 * **儲存體帳戶金鑰**-您可以使用下列命令來找到此值：
 
@@ -102,7 +103,7 @@ az container show --resource-group $ACI_PERS_RESOURCE_GROUP \
 如同在 CLI 範例中，此 `dnsNameLabel` 值在您建立容器實例所在的 Azure 區域中必須是唯一的。 如有需要，請更新 YAML 檔中的值。
 
 ```yaml
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: eastus
 name: file-share-demo
 properties:
@@ -167,7 +168,7 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
     {
       "name": "file-share-demo",
       "type": "Microsoft.ContainerInstance/containerGroups",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2019-12-01",
       "location": "[resourceGroup().location]",
       "properties": {
         "containers": [

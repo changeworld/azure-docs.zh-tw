@@ -4,11 +4,12 @@ description: 使用 Azure 儲存體帳戶建立傳輸管線，以將映射或其
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006322"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186923"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>將成品傳輸至另一個登錄
 
@@ -57,7 +58,7 @@ ms.locfileid: "83006322"
 * **[來擷取](#create-pipelinerun-for-export-with-resource-manager)**-用來叫用 ExportPipeline 或 ImportPipeline 資源的資源。  
   * 您可以藉由建立來擷取資源並指定要匯出的成品，手動執行 ExportPipeline。  
   * 如果已啟用匯入觸發程式，ImportPipeline 會自動執行。 也可以使用來擷取來手動執行。 
-  * 目前，每個來擷取最多可以傳輸**10**個成品。
+  * 目前，每個來擷取最多可以傳輸**50**個成品。
 
 ### <a name="things-to-know"></a>須知事項
 * ExportPipeline 和 ImportPipeline 通常會在與來源和目的地雲端相關聯的不同 Active Directory 租使用者中。 此案例需要不同的受控識別和金鑰保存庫，才能匯出和匯入資源。 基於測試目的，這些資源可以放在相同的雲端中，並共用身分識別。
@@ -65,7 +66,7 @@ ms.locfileid: "83006322"
 
 ## <a name="create-and-store-sas-keys"></a>建立和儲存 SAS 金鑰
 
-傳輸會使用共用存取簽章（SAS）權杖來存取來源和目標環境中的儲存體帳戶。 產生並儲存權杖，如下列各節所述。  
+傳輸會使用共用存取簽章 (SAS) 權杖來存取來源和目標環境中的儲存體帳戶。 產生並儲存權杖，如下列各節所述。  
 
 ### <a name="generate-sas-token-for-export"></a>產生用於匯出的 SAS 權杖
 
@@ -137,7 +138,7 @@ az keyvault secret set \
 |---------|---------|
 |于： registryname     | 來源容器登錄的名稱      |
 |exportPipelineName     |  您為匯出管線選擇的名稱       |
-|targetUri     |  來源環境中儲存體容器的 URI （匯出管線的目標）。<br/>範例：`https://sourcestorage.blob.core.windows.net/transfer`       |
+|targetUri     |  來源環境中儲存體容器的 URI (匯出管線) 的目標。<br/>範例： `https://sourcestorage.blob.core.windows.net/transfer`       |
 |keyVaultName     |  來源金鑰保存庫的名稱  |
 |sasTokenSecretName  | 來源金鑰保存庫中的 SAS 權杖秘密名稱 <br/>範例： acrexportsas
 
@@ -161,7 +162,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-在命令輸出中，記下管線的資源識別碼（ `id` ）。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如：
+在命令輸出中，記下管線的資源識別碼 (`id`) 。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如：
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -183,7 +184,7 @@ EXPORT_RES_ID=$(az group deployment show \
 |---------|---------|
 |于： registryname     | 目標容器登錄的名稱      |
 |importPipelineName     |  您為匯入管線選擇的名稱       |
-|sourceUri     |  目標環境中儲存體容器的 URI （匯入管線的來源）。<br/>範例：`https://targetstorage.blob.core.windows.net/transfer/`|
+|sourceUri     |  目標環境中儲存體容器的 URI (匯入管線) 的來源。<br/>範例： `https://targetstorage.blob.core.windows.net/transfer/`|
 |keyVaultName     |  目標金鑰保存庫的名稱 |
 |sasTokenSecretName     |  目標金鑰保存庫中的 SAS 權杖秘密名稱<br/>範例： acr importsas |
 
@@ -207,7 +208,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-如果您打算手動執行匯入，請記下管線的資源識別碼（ `id` ）。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如：
+如果您打算手動執行匯入，請記下管線的資源識別碼 (`id`) 。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如：
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -229,9 +230,9 @@ IMPORT_RES_ID=$(az group deployment show \
 |---------|---------|
 |于： registryname     | 來源容器登錄的名稱      |
 |pipelineRunName     |  您為執行選擇的名稱       |
-|pipelineResourceId     |  匯出管線的資源識別碼。<br/>範例：`/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/exportPipelines/myExportPipeline`|
+|pipelineResourceId     |  匯出管線的資源識別碼。<br/>範例： `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/exportPipelines/myExportPipeline`|
 |targetName     |  您為匯出至來源儲存體帳戶的成品 blob 選擇的名稱，例如*myblob*
-|artifacts | 要傳送的來源成品陣列，做為標記或資訊清單摘要<br/>範例：`[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
+|artifacts | 要傳送的來源成品陣列，做為標記或資訊清單摘要<br/>範例： `[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
 
 執行[az deployment group create][az-deployment-group-create]來建立來擷取資源。 下列範例會將部署*exportPipelineRun*命名為。
 
@@ -252,11 +253,11 @@ az storage blob list \
   --output table
 ```
 
-## <a name="transfer-blob-optional"></a>傳輸 blob （選擇性） 
+## <a name="transfer-blob-optional"></a>傳送 blob (選擇性)  
 
 使用 AzCopy 工具或其他方法，將[blob 資料](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts)從來源儲存體帳戶傳送到目標儲存體帳戶。
 
-例如，下列命令會 [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) 將 myblob 從來源帳戶中的*傳輸*容器複製到目標帳戶中的*傳輸*容器。 如果 blob 存在於目標帳戶中，則會予以覆寫。 驗證會針對來源和目標容器使用具有適當許可權的 SAS 權杖。 （不會顯示建立權杖的步驟）。
+例如，下列命令會 [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) 將 myblob 從來源帳戶中的*傳輸*容器複製到目標帳戶中的*傳輸*容器。 如果 blob 存在於目標帳戶中，則會予以覆寫。 驗證會針對來源和目標容器使用具有適當許可權的 SAS 權杖。 不會顯示建立權杖的 (步驟。 ) 
 
 ```console
 azcopy copy \
@@ -267,7 +268,7 @@ azcopy copy \
 
 ## <a name="trigger-importpipeline-resource"></a>觸發 ImportPipeline 資源
 
-如果您已啟用 `sourceTriggerStatus` ImportPipeline 的參數（預設值），則會在將 blob 複製到目標儲存體帳戶之後觸發管線。 匯入成品可能需要幾分鐘的時間。 當匯入成功完成時，請列出目標容器登錄中的存放庫，以確認成品匯入。 例如，執行[az acr repository list][az-acr-repository-list]：
+如果您已啟用 `sourceTriggerStatus` ImportPipeline 的參數 (預設值) ，則會在將 blob 複製到目標儲存體帳戶之後觸發管線。 匯入成品可能需要幾分鐘的時間。 當匯入成功完成時，請列出目標容器登錄中的存放庫，以確認成品匯入。 例如，執行[az acr repository list][az-acr-repository-list]：
 
 ```azurecli
 az acr repository list --name <target-registry-name>
@@ -275,7 +276,7 @@ az acr repository list --name <target-registry-name>
 
 如果您未啟用匯 `sourceTriggerStatus` 入管線的參數，請手動執行 ImportPipeline 資源，如下一節所示。 
 
-## <a name="create-pipelinerun-for-import-with-resource-manager-optional"></a>使用 Resource Manager 建立匯入的來擷取（選擇性） 
+## <a name="create-pipelinerun-for-import-with-resource-manager-optional"></a>建立來擷取以匯入 Resource Manager (選擇性)  
  
 您也可以使用來擷取資源來觸發 ImportPipeline，以將成品匯入至目標容器登錄。
 
@@ -287,7 +288,7 @@ az acr repository list --name <target-registry-name>
 |---------|---------|
 |于： registryname     | 目標容器登錄的名稱      |
 |pipelineRunName     |  您為執行選擇的名稱       |
-|pipelineResourceId     |  匯入管線的資源識別碼。<br/>範例：`/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/importPipelines/myImportPipeline`       |
+|pipelineResourceId     |  匯入管線的資源識別碼。<br/>範例： `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/importPipelines/myImportPipeline`       |
 |sourceName     |  儲存體帳戶中所匯出成品的現有 blob 名稱，例如*myblob*
 
 執行[az deployment group create][az-deployment-group-create]來執行資源。
@@ -336,7 +337,7 @@ az deployment group delete \
 * **AzCopy 問題**
   * 請參閱針對[AzCopy 問題進行疑難排解](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues)。  
 * **成品傳輸問題**
-  * 並非所有成品（或無）都會傳送。 確認匯出回合中成品的拼寫，以及匯出和匯入執行中的 blob 名稱。 確認您最多會傳輸10個成品。
+  * 並非所有成品（或無）都會傳送。 確認匯出回合中成品的拼寫，以及匯出和匯入執行中的 blob 名稱。 確認您要傳輸最多50個成品。
   * 管線執行可能尚未完成。 匯出或匯入執行可能需要一些時間。 
   * 針對其他管線問題，請提供匯出執行或匯入執行的部署相互[關聯識別碼](../azure-resource-manager/templates/deployment-history.md)給 Azure Container Registry 小組。
 

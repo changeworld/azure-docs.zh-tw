@@ -5,11 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 332ff4f6e63a831c1523c3f959708f9dc48a72a9
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 5ff6e0ffd4040393a040dc67a511aab47887f6e1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171050"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186260"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>Azure VM 的 [啟用變更追蹤和清查]
 
@@ -21,7 +22,7 @@ ms.locfileid: "84171050"
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [自動化帳戶](automation-offering-get-started.md)，以管理電腦。
+* [自動化帳戶](./index.yml)，以管理電腦。
 * [虛擬機器](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4e5dfe26af7e1d92c20cf15e3519563e600b256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385700"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170219"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Arkose Labs 的教學課程
 
@@ -35,7 +35,7 @@ ms.locfileid: "85385700"
 
 ![Arkose Labs 架構圖](media/partner-arkose-labs/arkose-architecture-diagram.png)
 
-|   |   |
+| 步驟  | 描述 |
 |---|---|
 |1     | 使用者以先前建立的帳戶登入。 當使用者選取 [提交] 時，會出現 Arkose Labs 強制執行挑戰。 在使用者完成挑戰之後，狀態會傳送至 Arkose Labs 以產生權杖。        |
 |2     |  Arkose Labs 會將權杖傳回 Azure AD B2C。       |
@@ -80,9 +80,9 @@ ms.locfileid: "85385700"
 
 1. 在儲存體帳戶的 [總覽] 頁面上，選取 [  **blob**]。
 
-2. 選取 [  **容器**]，輸入容器的名稱，選擇 [  **blob** （僅限 blob 的匿名讀取存取）]，然後選取 **[確定]**。
+2. 選取 [  **容器**]，輸入容器的名稱，選擇 [  **blob** (僅限 blob 的匿名讀取存取]) ，然後選取 **[確定]**。
 
-#### <a name="enable-cross-origin-resource-sharing-cors"></a>啟用跨原始來源資源分享（CORS）
+#### <a name="enable-cross-origin-resource-sharing-cors"></a> (CORS) 啟用跨原始來源資源分享
 
 瀏覽器中的 Azure AD B2C 程式碼會使用最新且標準的方法，從使用者流程中的指定 URL 載入自訂內容。 CORS 允許從其他網域要求網頁上受限制的資源。
 
@@ -94,13 +94,13 @@ ms.locfileid: "85385700"
 
 4. 針對 [允許的標頭]****，輸入星號 (*)。
 
-5. 針對 [ **公開的標頭**]，輸入星號（*）。
+5. 針對 [ **公開的標頭**]，輸入星號 ( * ) 。
 
 6. 針對 [最大壽命]****，輸入 200。
 
    ![Arkose Labs 註冊和登入](media/partner-arkose-labs/signup-signin-arkose.png)
 
-7. 選取 [儲存]。
+7. 選取 [Save] \(儲存\)。
 
 ### <a name="part-2--set-up-a-back-end-server"></a>第2部分–設定後端伺服器
 
@@ -128,7 +128,7 @@ ms.locfileid: "85385700"
 
 1. 開啟儲存在[GitHub 存放庫](https://github.com/ArkoseLabs/Azure-AD-B2C)中的 index.html 檔案。
 
-2. 將的所有實例取代 `<tenantname>` 為您的 b2C 租使用者名稱（換句話說， `<tenantname>.b2clogin.com` ）。 應該有四個實例。
+2. 將的所有實例取代 `<tenantname>` 為您的 b2C 租使用者名稱 (換言之， `<tenantname>.b2clogin.com`) 。 應該有四個實例。
 
 3. 將取代為 `<appname>` 您在第2部分（步驟1）中建立的應用程式名稱。
 
@@ -162,7 +162,7 @@ ms.locfileid: "85385700"
 
 3. 選取 [**執行使用者流程**]，然後選取設定：
 
-   a. **應用程式**-選取已註冊的應用程式（範例是 JWT）。
+   a. **應用程式**-選取已註冊的應用程式 (範例是 JWT) 。
 
    b. **回復 url** -選取 [重新導向 url]。
 

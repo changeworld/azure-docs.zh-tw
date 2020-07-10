@@ -9,11 +9,12 @@ services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836918"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186413"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>使用 Azure Desired State Configuration 延伸模組版本歷程記錄
 
@@ -98,7 +99,7 @@ Azure Desired State Configuration (DSC) VM 延伸模組會視需求進行更新�
 - **環境：** Azure
 - **備註：** 這個版本使用 Windows Server 2016 內附的 DSC；若為其他 Windows OS，則會安裝 [Windows Management Framework 5.1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/) (需要重新開機才能安裝 WMF)。 針對 Nano 伺服器，DSC 角色會安裝到 VM 上。
 - **新功能︰**
-  - Bug 修正與改善會簡化透過入口網站 UI 與資源管理員範本使用 DSC Azure 自動化的流程。 如需詳細資訊，請參閱 DSC 延伸模組文件中的[預設設定指令碼](/azure/virtual-machines/extensions/dsc-overview)。
+  - Bug 修正與改善會簡化透過入口網站 UI 與資源管理員範本使用 DSC Azure 自動化的流程。 如需詳細資訊，請參閱 DSC 延伸模組文件中的[預設設定指令碼](../virtual-machines/extensions/dsc-overview.md)。
 
 ### <a name="version-226"></a>2\.26 版
 
@@ -249,6 +250,6 @@ Azure Desired State Configuration (DSC) VM 延伸模組會視需求進行更新�
 ## <a name="next-steps"></a>後續步驟
 
 - 如需有關 PowerShell DSC 的詳細資訊，請參閱 [PowerShell 文件中心](/powershell/scripting/dsc/overview/overview)。
-- 查看[適用於 DSC 延伸模組的 Resource Manager 範本](/azure/virtual-machines/extensions/dsc-template)。
+- 查看[適用於 DSC 延伸模組的 Resource Manager 範本](../virtual-machines/extensions/dsc-template.md)。
 - 如需您可以使用 PowerShell DSC 來管理的更多功能和資源，請瀏覽 [PowerShell 資源庫](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)。
-- 如需有關將敏感性參數傳遞到設定中的詳細資料，請參閱 [使用 DSC 延伸模組處理常式來安全地管理認證](/azure/virtual-machines/extensions/dsc-credentials)。
+- 如需有關將敏感性參數傳遞到設定中的詳細資料，請參閱 [使用 DSC 延伸模組處理常式來安全地管理認證](../virtual-machines/extensions/dsc-credentials.md)。

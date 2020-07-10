@@ -5,11 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555040"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185580"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>變更追蹤和清查概觀
 
@@ -48,11 +49,11 @@ ms.locfileid: "84555040"
 
 - 在 Windows Server 2016 Core RS3 電腦上不會收集修補程式更新。
 
-- 即使未發生任何變更，Linux 精靈程式也可能會顯示已變更的狀態。 發生此問題的原因 `SvcRunLevels` 是 Azure 監視器[ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange)記錄中的資料被捕捉到的方式。
+- 即使未發生任何變更，Linux 精靈程式也可能會顯示已變更的狀態。 發生此問題的原因 `SvcRunLevels` 是 Azure 監視器[ConfigurationChange](/azure/azure-monitor/reference/tables/configurationchange)記錄中的資料被捕捉到的方式。
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
-所有符合 Log Analytics 代理程式需求的作業系統都可支援變更追蹤和清查。 正式的作業系統版本為 Windows Server 2008 SP1 或更新版本，以及 Windows 7 SP1 或更新版本。 許多 Linux 作業系統也支援此功能。 如需支援 Log Analytics 的作業系統，請參閱[Log analytics 代理程式總覽](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。
+所有符合 Log Analytics 代理程式需求的作業系統都可支援變更追蹤和清查。 正式的作業系統版本為 Windows Server 2008 SP1 或更新版本，以及 Windows 7 SP1 或更新版本。 許多 Linux 作業系統也支援此功能。 如需支援 Log Analytics 的作業系統，請參閱[Log analytics 代理程式總覽](../azure-monitor/platform/log-analytics-agent.md)。
 
 若要瞭解 TLS 1.2 的用戶端需求，請參閱[Azure 自動化的 tls 1.2 強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
@@ -90,7 +91,7 @@ ms.locfileid: "84555040"
 
 ## <a name="fim-support-in-azure-security-center"></a>Azure 資訊安全中心中的 FIM 支援
 
-變更追蹤和清查會使用 [Azure 資訊安全中心檔案完整性監視 (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)。 雖然 FIM 只會監視檔案和登錄，但完整的變更追蹤和清查功能也包括追蹤下列項目：
+變更追蹤和清查會使用 [Azure 資訊安全中心檔案完整性監視 (FIM)](../security-center/security-center-file-integrity-monitoring.md)。 雖然 FIM 只會監視檔案和登錄，但完整的變更追蹤和清查功能也包括追蹤下列項目：
 
 - 軟體變更
 - Microsoft 服務
@@ -105,7 +106,7 @@ ms.locfileid: "84555040"
 
 ## <a name="tracking-of-file-content-changes"></a>檔案內容變更的追蹤
 
-變更追蹤和清查可讓您查看 Windows 或 Linux 檔案的內容。 對於檔案的每項變更，變更追蹤和清查都會將檔案的內容儲存在 [Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)中。 當您要追蹤檔案時，可以在變更前後查看其內容。 檔案內容可以內嵌或並排查看。 
+變更追蹤和清查可讓您查看 Windows 或 Linux 檔案的內容。 對於檔案的每項變更，變更追蹤和清查都會將檔案的內容儲存在 [Azure 儲存體帳戶](../storage/common/storage-account-create.md)中。 當您要追蹤檔案時，可以在變更前後查看其內容。 檔案內容可以內嵌或並排查看。 
 
 ![檢視檔案中的變更](./media/change-tracking/view-file-changes.png)
 
@@ -170,7 +171,7 @@ ms.locfileid: "84555040"
 |服務|250|
 |精靈|250|
 
-對於使用變更追蹤和清查的機器，其 Log Analytics 資料使用量平均大約是每月 40 MB (視您的環境而定)。 使用 Log Analytics 工作區的 [使用量和估計成本] 功能，您可以在使用量圖表中變更追蹤和清查來查看資料內嵌。 使用此資料檢視來評估您的資料使用量，並判斷它如何影響您的帳單。 請參閱[了解您的使用量並估算成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)。
+對於使用變更追蹤和清查的機器，其 Log Analytics 資料使用量平均大約是每月 40 MB (視您的環境而定)。 使用 Log Analytics 工作區的 [使用量和估計成本] 功能，您可以在使用量圖表中變更追蹤和清查來查看資料內嵌。 使用此資料檢視來評估您的資料使用量，並判斷它如何影響您的帳單。 請參閱[了解您的使用量並估算成本](../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs)。
 
 ### <a name="microsoft-service-data"></a>Microsoft 服務資料
 

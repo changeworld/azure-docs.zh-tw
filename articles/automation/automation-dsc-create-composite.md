@@ -10,11 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b3a49fac5600e6338d5fb56281a3360f0abaa39a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 8c834caa2285135b7d39c440489b42c366418042
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836969"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186464"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>將設定轉換成複合資源
 
@@ -42,14 +43,14 @@ ms.locfileid: "83836969"
 已建立的 [CompositeResource](https://github.com/microsoft/compositeresource) 社群維護解決方案可解決這項挑戰。
 
 CompositeResource 會將從您設定中建立新模組的程序自動化。
-您一開始會在工作站 (或組建伺服器) 上，對設定指令碼使用[點執行](https://blogs.technet.microsoft.com/heyscriptingguy/2010/08/10/how-to-reuse-windows-powershell-functions-in-scripts/)，使其載入記憶體中。
+您一開始會在工作站 (或組建伺服器) 上，對設定指令碼使用[點執行](https://devblogs.microsoft.com/scripting/how-to-reuse-windows-powershell-functions-in-scripts/)，使其載入記憶體中。
 接下來，您可以使用 CompositeResource 模組所提供的函式來自動化轉換，而不是執行設定來產生 MOF 檔案。
 此 Cmdlet 會載入您的設定內容、取得參數清單，並根據您所有需求產生新的模組。
 
 產生模組之後，您可以在每次進行變更時遞增版本並新增版本資訊，然後將其發佈至您自己的 [PowerShellGet 存放庫](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)。
 
-建立包含設定 (或多個設定) 的複合資源模組之後，您可以在 Azure 中的[可組合撰寫體驗](/azure/automation/compose-configurationwithcompositeresources)中使用這些模組，或將其新增至 [DSC 設定指令碼](/powershell/scripting/dsc/configurations/configurations)來產生 MOF 檔案，然後[將 MOF 檔案上傳到 Azure 自動化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
-然後從[內部部署](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)或[在 Azure 中](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms)註冊您的伺服器，以提取設定。
+建立包含設定 (或多個設定) 的複合資源模組之後，您可以在 Azure 中的[可組合撰寫體驗](./compose-configurationwithcompositeresources.md)中使用這些模組，或將其新增至 [DSC 設定指令碼](/powershell/scripting/dsc/configurations/configurations)來產生 MOF 檔案，然後[將 MOF 檔案上傳到 Azure 自動化](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation)。
+然後從[內部部署](./automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines)或[在 Azure 中](./automation-dsc-onboarding.md#enable-azure-vms)註冊您的伺服器，以提取設定。
 專案的最新更新也已發行 [unbook](https://www.powershellgallery.com/packages?q=DscGallerySamples)，Azure 自動化可將從 PowerShell 資源庫匯入設定的程序自動化。
 
 若要嘗試自動建立 DSC 的複合資源，請造訪 [PowerShell 資源庫](https://www.powershellgallery.com/packages/compositeresource/)並下載解決方案，或按一下 [專案網站] 以檢視[文件](https://github.com/microsoft/compositeresource)。

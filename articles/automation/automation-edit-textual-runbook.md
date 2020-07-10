@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d388162738930030ba311a04a0dce1db15590c79
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836833"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186345"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>在 Azure 自動化中編輯文字式 Runbook
 
@@ -56,7 +57,7 @@ Azure 自動化中的每個 Runbook 有兩個版本，「草稿」和「已發�
 1. 在文字式編輯器的 [畫布] 控制項中，將游標移至您要放置子 Runbook 程式碼的位置。
 2. 在程式庫控制項中，展開 [資產]  節點。
 3. 展開所需資產類型的節點。
-4. 以滑鼠右鍵按一下要插入的資產名稱，然後選取 [新增至畫布]。 針對[變數資產](automation-variables.md)，根據您要取得還是設定變數而定，選取 [將「取得變數」新增至畫布] 或 [將「設定變數」新增至畫布]。
+4. 以滑鼠右鍵按一下要插入的資產名稱，然後選取 [新增至畫布]。 針對[變數資產](./shared-resources/variables.md)，根據您要取得還是設定變數而定，選取 [將「取得變數」新增至畫布] 或 [將「設定變數」新增至畫布]。
 5. 請注意，資產的程式碼會插入 Runbook 中。
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>使用 Windows PowerShell 編輯 Azure 自動化 Runbook
@@ -95,9 +96,9 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [管理 Azure 自動化中的 Runbook](manage-runbooks.md)。
 * [了解 PowerShell 工作流程](automation-powershell-workflow.md)。
 * [Azure 自動化中的圖形化撰寫](automation-graphical-authoring-intro.md)。
-* [憑證](automation-certificates.md)。
+* [憑證](./shared-resources/certificates.md)。
 * [連接](automation-connections.md)。
-* [認證](automation-credentials.md)。
-* [排程](automation-schedules.md)。
-* [變數](automation-variables.md)。
-* [PowerShell Cmdlet 參考](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* [認證](./shared-resources/credentials.md)。
+* [排程](./shared-resources/schedules.md)。
+* [變數](./shared-resources/variables.md)。
+* [PowerShell Cmdlet 參考](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

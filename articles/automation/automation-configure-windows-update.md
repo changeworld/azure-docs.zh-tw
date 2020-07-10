@@ -5,15 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea05e75c0d1db1ef27ae2e8e9364327528a7c8ed
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e30d1606a3928f421d2155e2d1abac0c8a6872aa
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837156"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186634"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>設定 Windows Update 設定以進行 Azure 自動化更新管理
 
-Azure 自動化更新管理會倚賴 [Windows Update 用戶端](https://docs.microsoft.com//windows/deployment/update/windows-update-overview)來下載並安裝 Windows 更新。 連線至 Windows Server Update Services (WSUS) 或 Windows Update 時，Windows Update 用戶端會使用特定設定。 其中有多項設定可透過下列項目來管理：
+Azure 自動化更新管理會倚賴 [Windows Update 用戶端](/windows/deployment/update/windows-update-overview)來下載並安裝 Windows 更新。 連線至 Windows Server Update Services (WSUS) 或 Windows Update 時，Windows Update 用戶端會使用特定設定。 其中有多項設定可透過下列項目來管理：
 
 - 本機群組原則編輯器
 - 群組原則
@@ -22,7 +23,7 @@ Azure 自動化更新管理會倚賴 [Windows Update 用戶端](https://docs.mic
 
 更新管理會依循多項指定用來控制 Windows Update 用戶端的設定。 如果您使用設定來啟用非 Windows 更新，「更新管理」也會管理這些更新。 如果您想要啟用在進行更新部署之前先下載更新的功能，更新部署可能較為快速、較有效率，且較不會超出維護期間。
 
-如需在 Azure 訂用帳戶中設定 WSUS 並安全地將 Windows 虛擬機器保持在最新狀態的其他建議，請參閱[規劃您的部署以便在 Azure 中更新 Windows 虛擬機器](https://docs.microsoft.com/azure/architecture/example-scenario/wsus/)。
+如需在 Azure 訂用帳戶中設定 WSUS 並安全地將 Windows 虛擬機器保持在最新狀態的其他建議，請參閱[規劃您的部署以便在 Azure 中更新 Windows 虛擬機器](/azure/architecture/example-scenario/wsus/)。
 
 ## <a name="pre-download-updates"></a>預先下載更新
 
@@ -57,7 +58,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 「更新管理」支援 WSUS 設定。 您可以使用[指定內部網路 Microsoft Update 服務位置](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location)中的指示，指定掃描和下載更新的來源。 根據預設，Windows Update 用戶端會設定為從 Windows Update 下載更新。 當您將 WSUS 伺服器指定為機器的來源時，如果 WSUS 未核准更新，則更新部署會失敗。 
 
-若要限定機器使用內部更新服務，請設定 [不要連線至任何 Windows Update 網際網路位置](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations)。 
+若要限定機器使用內部更新服務，請設定 [不要連線至任何 Windows Update 網際網路位置](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations)。 
 
 ## <a name="next-steps"></a>後續步驟
 

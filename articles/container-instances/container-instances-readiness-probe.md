@@ -2,12 +2,13 @@
 title: 在容器實例上設定準備就緒探查
 description: 瞭解如何設定探查，以確保 Azure 容器實例中的容器只會在準備好時才接收要求
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: 3e89086d66f284df35e36dc8f1d68bb09264843f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76935687"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169658"
 ---
 # <a name="configure-readiness-probes"></a>設定整備度探查
 
@@ -25,7 +26,7 @@ Azure 容器實例也支援「[活動探查](container-instances-liveness-probe.
 例如， `readiness-probe.yaml` 使用包含準備就緒探查的下列程式碼片段來建立檔案。 此檔案會定義由執行小型 web 應用程式的容器所組成的容器群組。 應用程式會從公用映射進行部署 `mcr.microsoft.com/azuredocs/aci-helloworld` 。 此容器化應用程式也會在使用 Azure CLI 和其他快速入門在[Azure 中部署容器實例](container-instances-quickstart.md)中示範。
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: readinesstest
 properties:

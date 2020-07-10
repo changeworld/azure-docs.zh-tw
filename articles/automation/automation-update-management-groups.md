@@ -5,11 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: c440862f1379983d4644fe99f33207456f747d23
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 25a306b3281079e8476a67ee70c2ca2cfffdd30c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830934"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185733"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>搭配更新管理使用動態群組
 
@@ -20,7 +21,7 @@ ms.locfileid: "83830934"
 
 您可以從 Azure 入口網站中的 [更新管理]，定義 Azure 或非 Azure 機器的動態群組。 請參閱[管理多部 Azure 虛擬機器的更新](manage-update-multi.md)。
 
-動態群組是由 Azure 自動化在部署階段評估的查詢所定義。 即使動態群組查詢擷取大量的機器，Azure 自動化一次最多只能處理 1000 部機器。 請參閱 [Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#update-management)。 
+動態群組是由 Azure 自動化在部署階段評估的查詢所定義。 即使動態群組查詢擷取大量的機器，Azure 自動化一次最多只能處理 1000 部機器。 請參閱 [Azure 訂用帳戶和服務限制、配額與限制](../azure-resource-manager/management/azure-subscription-service-limits.md#update-management)。 
 
 > [!NOTE]
 > 如果您預計更新 1000 部以上的機器，建議您將更新分散在多個更新排程中。 

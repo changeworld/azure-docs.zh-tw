@@ -6,11 +6,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255141"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169965"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中透過快照集還原應用程式
 本文說明如何在 [Azure App Service](../app-service/overview.md) 中透過快照集還原應用程式。 您可以根據您的其中一個應用程式快照集，將應用程式還原為先前的狀態。 您不需要啟用快照集備份，平台會自動儲存所有應用程式的快照集以供進行資料復原。
@@ -36,15 +37,15 @@ ms.locfileid: "78255141"
 
 1. 在[Azure 入口網站](https://portal.azure.com)中應用程式的 [**設定**] 頁面上，按一下 [**備份**] 以顯示 [**備份**] 頁面。 然後按一下 [快照集] \(預覽\)**** 區段底下的 [還原]****。
    
-    ![](./media/app-service-web-restore-snapshots/1.png)
+    ![顯示如何從快照集備份還原應用程式的螢幕擷取畫面。](./media/app-service-web-restore-snapshots/1.png)
 
 2. 在 [還原]**** 頁面中，選取要還原的快照集。
    
-    ![](./media/app-service-web-restore-snapshots/2.png)
+    ![顯示如何選取要還原之快照集的螢幕擷取畫面。 ](./media/app-service-web-restore-snapshots/2.png)
    
 3. 在 [還原目的地]**** 中指定應用程式還原目的地。
    
-    ![](./media/app-service-web-restore-snapshots/3.png)
+    ![顯示如何指定還原目的地的螢幕擷取畫面。](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
    > 如果您選擇 [覆寫]****，則系統會將應用程式目前檔案系統中的所有現有資料予以清除和覆寫。 按一下 [確定]**** 之前，請確定這是您想要執行的動作。
@@ -60,6 +61,6 @@ ms.locfileid: "78255141"
 
 4. 您可以選擇還原站台設定。
    
-    ![](./media/app-service-web-restore-snapshots/4.png)
+    ![顯示如何還原網站設定的螢幕擷取畫面。](./media/app-service-web-restore-snapshots/4.png)
 
 5. 按一下 [確定] 。

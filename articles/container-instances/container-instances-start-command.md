@@ -3,11 +3,12 @@ title: 覆寫容器實例中的進入點
 description: 設定命令列，以在部署 Azure 容器實例時覆寫容器映射中的進入點
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84693051"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169624"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>在容器實例中設定命令列，以覆寫預設的命令列操作
 
@@ -39,11 +40,11 @@ ms.locfileid: "84693051"
 
 命令列語法會根據用來建立實例的 Azure API 或工具而有所不同。 如果您指定 shell 環境，也請觀察 shell 的命令語法慣例。
 
-* [az container create][az-container-create]命令：使用參數傳遞字串 `--command-line` 。 範例： `--command-line "python myscript.py arg1 arg2"` ）。
+* [az container create][az-container-create]命令：使用參數傳遞字串 `--command-line` 。 範例： `--command-line "python myscript.py arg1 arg2"`) 。
 
 * [新增-get-azurermcontainergroup][new-azurermcontainergroup]Azure PowerShell Cmdlet：傳遞具有參數的字串 `-Command` 。 範例： `-Command "echo hello"`.
 
-* Azure 入口網站：在容器設定的 [**命令覆寫**] 屬性中，提供以逗號分隔的字串清單，不含引號。 範例： `python, myscript.py, arg1, arg2` ）。 
+* Azure 入口網站：在容器設定的 [**命令覆寫**] 屬性中，提供以逗號分隔的字串清單，不含引號。 範例： `python, myscript.py, arg1, arg2`) 。 
 
 * Resource Manager 範本或 YAML 檔案，或其中一個 Azure Sdk：指定命令列屬性做為字串陣列。 範例： `["python", "myscript.py", "arg1", "arg2"]` Resource Manager 範本中的 JSON 陣列。 
 
@@ -53,8 +54,8 @@ ms.locfileid: "84693051"
 
 |    |  Azure CLI   | 入口網站 | [範本] | 
 | ---- | ---- | --- | --- |
-| 單一命令 | `--command-line "python myscript.py arg1 arg2"` | **命令覆寫**：`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| 多個命令 | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**命令覆寫**：`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| **單一命令** | `--command-line "python myscript.py arg1 arg2"` | **命令覆寫**：`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| **多個命令** | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**命令覆寫**：`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Azure CLI 的範例
 
@@ -71,7 +72,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-容器的狀態顯示為「已*終止*」（使用[az container show][az-container-show]來檢查狀態）後，請使用[az container logs][az-container-logs]來顯示記錄檔，以查看輸出。
+一旦容器的狀態顯示為 [已*終止*] (使用[az container show][az-container-show]來檢查狀態) ，並顯示具有[az 容器記錄][az-container-logs]的記錄檔，以查看輸出。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1

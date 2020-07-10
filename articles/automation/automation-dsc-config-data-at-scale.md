@@ -10,11 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fbd721bc54ce2de6b7923b0f582c53ffc7da1a73
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: bc55a4c5ab20cac041a00a0f924b207eb256ae8b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837020"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186515"
 ---
 # <a name="configure-data-at-scale-for-azure-automation-state-configuration"></a>大規模設定 Azure 自動化狀態設定的資料
 
@@ -43,8 +44,8 @@ Datum 是以其他設定管理平台的絕佳想法為基礎，並針對 PowerSh
 此資訊會以您偏好的檔案格式 (JSON、Yaml 或 PSD1) 進行組織。
 接著會提供 Cmdlet 來產生設定資料檔案，其做法是將每個檔案中的[資訊合併](https://github.com/gaelcolas/Datum#datum-tree)到伺服器或伺服器角色的單一檢視中。
 
-產生資料檔案後，您就可以將其與 [DSC 設定指令碼](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)搭配使用來產生 MOF 檔案，並[將 MOF 檔案上傳到 Azure 自動化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
-然後從[內部部署](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)或[在 Azure 中](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms)註冊您的伺服器，以提取設定。
+產生資料檔案後，您就可以將其與 [DSC 設定指令碼](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)搭配使用來產生 MOF 檔案，並[將 MOF 檔案上傳到 Azure 自動化](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation)。
+然後從[內部部署](./automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines)或[在 Azure 中](./automation-dsc-onboarding.md#enable-azure-vms)註冊您的伺服器，以提取設定。
 
 若要試用 Datum，請造訪 [PowerShell 資源庫](https://www.powershellgallery.com/packages/datum/)並下載解決方案，或按一下 [專案網站] 以檢視[文件](https://github.com/gaelcolas/Datum#2-getting-started--concepts)。
 

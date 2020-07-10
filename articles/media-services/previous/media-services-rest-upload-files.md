@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa7dca62ed51c52b704c199ca04eadb6306be4df
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73888589"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170780"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 將檔案上傳至媒體服務帳戶  
 > [!div class="op_single_selector"]
@@ -47,12 +48,12 @@ ms.locfileid: "73888589"
 - 此外，如需詳細資訊，[請參閱使用 Azure AD 驗證來存取具有 REST 的媒體服務 API](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad)文章。
 - 如＜[設定 Postman 以進行媒體服務 REST API 呼叫](media-rest-apis-with-postman.md)＞中所述，設定 **Postman**。
 
-## <a name="considerations"></a>考量
+## <a name="considerations"></a>考量事項
 
 使用媒體服務 REST API 時，適用下列考量事項：
  
 * 使用媒體服務 REST API 存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。 <br/>本教學課程中使用的 Postman 集合會負責設定所有必要的標頭。
-* 媒體服務在建立串流內容的 Url 時，會使用 IAssetFile.Name 屬性的值（例如，HTTP：//{AMSAccount}. windowsazure.mediaservices.extensions. net/{GUID}/{IAssetFile. Name}/streamingParameters）。基於這個理由，不允許使用百分比編碼。 **Name** 屬性的值不能有下列任何[百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 而且，副檔名只能有一個 '.'。
+* 媒體服務在建立串流 (內容的 Url 時，會使用 IAssetFile.Name 屬性的值，例如 HTTP：//{AMSAccount}。 windowsazure.mediaservices.extensions. net/{GUID}/{IAssetFile. Name}/streamingParameters ) 。基於這個理由，不允許百分比編碼。 **Name** 屬性的值不能有下列任何[百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 而且，副檔名只能有一個 '.'。
 * 名稱長度不應超過 260 個字元。
 * 對於在媒體服務處理檔案，支援的檔案大小有上限。 請參閱[這篇](media-services-quotas-and-limitations.md)文章，以取得有關檔案大小限制的詳細資料。
 
@@ -88,7 +89,7 @@ ms.locfileid: "73888589"
     ```
 4. 在 [ **Postman** ] 視窗的左側，按一下 [ **1]。取得**  ->  **服務主體的 AAD 驗證權杖取得 Azure AD token**。
 
-    URL 部分會填入**AzureADSTSEndpoint**環境變數（稍早在本教學課程中，您會設定支援集合的環境變數值）。
+    URL 部分會填入**AzureADSTSEndpoint**環境變數 (稍早在本教學課程中，您可以設定支援集合) 的環境變數值。
 
     ![上傳檔案](./media/media-services-rest-upload-files/postment-get-token.png)
 
@@ -100,7 +101,7 @@ ms.locfileid: "73888589"
 
 ## <a name="create-an-access-policy-with-write-permission"></a>建立具有寫入權限的存取原則
 
-### <a name="overview"></a>總覽 
+### <a name="overview"></a>概觀 
 
 >[!NOTE]
 >對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限，例如，要長時間維持就地 (非上載原則) 的定位器原則，您應該使用相同的原則識別碼。 如需詳細資訊，請參閱[本篇文章](media-services-dotnet-manage-entities.md#limit-access-policies)。
@@ -118,7 +119,7 @@ ms.locfileid: "73888589"
 
 ## <a name="create-an-asset"></a>建立資產
 
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 
 [資產](https://docs.microsoft.com/rest/api/media/operations/asset)是媒體服務中多種類型或物件集的容器，包括影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案。 在 REST API 中，建立資產必須傳送 POST 要求給媒體服務，並將關於您資產的任何屬性資訊放在要求主體中。
 
@@ -139,7 +140,7 @@ ms.locfileid: "73888589"
 
 ## <a name="create-a-sas-locator-and-create-the-upload-url"></a>建立 SAS 定位器並建立上傳 URL
 
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 
 一旦設定 AccessPolicy 與 Locator，實際檔案會使用 Azure 儲存體 REST API 上傳至 Azure Blob 儲存容器。 您必須將檔案以區塊 Blob 形式上傳。 「Azure 媒體服務」不支援分頁 Blob。  
 
@@ -149,9 +150,9 @@ ms.locfileid: "73888589"
 
 SAS URL 具有下列格式：
 
-    {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
+`{https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}`
 
-### <a name="considerations"></a>考量
+### <a name="considerations"></a>考量事項
 
 適用一些考量事項：
 
@@ -170,7 +171,7 @@ SAS URL 具有下列格式：
 
 ## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>使用上傳 URL 將檔案上傳至 blob 儲存體
 
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 
 現在您已經有了上傳 URL，您需要直接使用 Azure Blob API 來撰寫一些程式碼，將您的檔案上傳至 SAS 容器。 如需詳細資訊，請參閱下列文章：
 
@@ -212,15 +213,17 @@ SAS URL 具有下列格式：
 
 例如，下列 **GET** 作業會帶出資產檔案的檔案資料 (也就是我們案例中的 BigBuckBunny.mp4 檔案)。 查詢會使用您稍早設定的[環境變數](postman-environment.md)。
 
-    {{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files
+`{{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files`
 
 回應會包含大小、名稱和其他資訊。
 
-    "Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
-    "Name": "BigBuckBunny.mp4",
-    "ContentFileSize": "3186542",
-    "ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
-            
+```console
+"Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
+"Name": "BigBuckBunny.mp4",
+"ContentFileSize": "3186542",
+"ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
+```
+  
 ## <a name="next-steps"></a>後續步驟
 
 您現在可以將上傳的資產編碼。 如需詳細資訊，請參閱 [為資產編碼](media-services-portal-encode.md)。

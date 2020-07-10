@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 892197c79285495f49a870bbe79eb75229af2940
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9cc5e5107784d447640ef0ae77d412885b1e5668
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831019"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185767"
 ---
 # <a name="update-azure-powershell-modules"></a>更新 Azure PowerShell 模組
 
@@ -37,7 +38,7 @@ ms.locfileid: "83831019"
 
 ## <a name="use-update-runbook-code-as-a-regular-powershell-script"></a>將更新 Runbook 程式碼當作一般 PowerShell 指令碼來使用
 
-您可以將 Runbook 程式碼當作一般 PowerShell 指令碼來使用，而不是當作 Runbook。 若要這麼做，請先使用 [onnect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) Cmdlet 登入 Azure，再將 `-Login $false` 傳給指令碼。
+您可以將 Runbook 程式碼當作一般 PowerShell 指令碼來使用，而不是當作 Runbook。 若要這麼做，請先使用 [onnect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) Cmdlet 登入 Azure，再將 `-Login $false` 傳給指令碼。
 
 ## <a name="use-the-update-runbook-on-sovereign-clouds"></a>在主權雲端使用更新 Runbook
 

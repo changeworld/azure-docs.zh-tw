@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 66fb5741a5ed1af9e7edf002485c959f9f2fc82f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84f2ef1fc318e53914b1510870d0399cfbfa87e9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507257"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185274"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>管理 Azure 自動化執行身分帳戶
 
@@ -24,7 +24,7 @@ Azure 自動化使用兩種類型的執行身分帳戶：
 * Azure 傳統執行身分帳戶
 
 >[!NOTE]
->Azure 雲端方案提供者 (CSP) 訂用帳戶僅支援 Azure Resource Manager 模型。 非 Azure Resource Manager 服務不在方案中。 當您使用 CSP 訂用帳戶時，並不會建立 Azure 傳統執行身分帳戶，但會建立 Azure 執行身分帳戶。 若要深入了解 CSP 訂用帳戶，請參閱 [CSP 訂用帳戶中可用的服務](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)。
+>Azure 雲端方案提供者 (CSP) 訂用帳戶僅支援 Azure Resource Manager 模型。 非 Azure Resource Manager 服務不在方案中。 當您使用 CSP 訂用帳戶時，並不會建立 Azure 傳統執行身分帳戶，但會建立 Azure 執行身分帳戶。 若要深入了解 CSP 訂用帳戶，請參閱 [CSP 訂用帳戶中可用的服務](/azure/cloud-solution-provider/overview/azure-csp-available-services)。
 
 執行身分帳戶的服務主體依預設並沒有讀取 Azure AD 的權限。 如果您想要新增讀取或管理 Azure AD 的權限，您必須在 [API 權限] 下授與服務主體的權限。 若要深入了解，請參閱[新增存取 Web API 的權限](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
 
@@ -63,12 +63,12 @@ Azure 傳統執行身分帳戶會執行下列工作。
 
 |Task|Cmdlet  |最低權限  |設定權限的位置|
 |---|---------|---------|---|
-|建立 Azure AD 應用程式|[New-AzADApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | 應用程式開發人員角色<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>首頁 > Azure AD > 應用程式註冊 |
-|將認證新增至應用程式。|[New-AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | 應用程式系統管理員或全域管理員<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>首頁 > Azure AD > 應用程式註冊|
-|建立並取得 Azure AD 服務主體|[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | 應用程式系統管理員或全域管理員<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>首頁 > Azure AD > 應用程式註冊|
-|指派或取得指定主體的 RBAC 角色|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment)      | 使用者存取系統管理員或擁有者具有下列權限：</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [訂用帳戶](../role-based-access-control/role-assignments-portal.md)</br>家用 > 訂閱 > \<subscription name\> -存取控制（IAM）|
-|建立或移除自動化憑證|[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate)     | 資源群組的參與者         |自動化帳戶資源群組|
-|建立或移除自動化連線|[New-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection)</br>[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection)|資源群組的參與者 |自動化帳戶資源群組|
+|建立 Azure AD 應用程式|[New-AzADApplication](/powershell/module/az.resources/new-azadapplication)     | 應用程式開發人員角色<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>首頁 > Azure AD > 應用程式註冊 |
+|將認證新增至應用程式。|[New-AzADAppCredential](/powershell/module/az.resources/new-azadappcredential)     | 應用程式系統管理員或全域管理員<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>首頁 > Azure AD > 應用程式註冊|
+|建立並取得 Azure AD 服務主體|[New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)     | 應用程式系統管理員或全域管理員<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>首頁 > Azure AD > 應用程式註冊|
+|指派或取得指定主體的 RBAC 角色|[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](/powershell/module/Az.Resources/Get-AzRoleAssignment)      | 使用者存取系統管理員或擁有者具有下列權限：</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [訂用帳戶](../role-based-access-control/role-assignments-portal.md)</br>家用 > 訂用帳戶 > \<subscription name\> -存取控制 (IAM) |
+|建立或移除自動化憑證|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Remove-AzAutomationCertificate](/powershell/module/az.automation/remove-azautomationcertificate)     | 資源群組的參與者         |自動化帳戶資源群組|
+|建立或移除自動化連線|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection)</br>[Remove-AzAutomationConnection](/powershell/module/az.automation/remove-azautomationconnection)|資源群組的參與者 |自動化帳戶資源群組|
 
 <sup>1</sup> 如果 Azure AD 租用戶在 [使用者設定] 頁面中的 [使用者可以註冊應用程式] 選項設定為 [是]，Azure AD 租用戶中的非管理使用者就可以[註冊 AD 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。 如果應用程式註冊設定 [否]，則執行此動作的使用者必須如此表中所定義。
 
@@ -155,7 +155,7 @@ Azure 傳統執行身分帳戶會執行下列工作。
 
 ## <a name="limit-run-as-account-permissions"></a>限制執行身分帳戶權限
 
-若要對 Azure 中的資源控制自動化的目標，您可以執行 [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) 指令碼。 此指令碼會變更您現有的執行身分帳戶服務主體，以建立及使用自訂角色定義。 此角色具有所有資源的權限 ([Key Vault](https://docs.microsoft.com/azure/key-vault/) 除外)。
+若要對 Azure 中的資源控制自動化的目標，您可以執行 [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) 指令碼。 此指令碼會變更您現有的執行身分帳戶服務主體，以建立及使用自訂角色定義。 此角色具有所有資源的權限 ([Key Vault](../key-vault/index.yml) 除外)。
 
 >[!IMPORTANT]
 >執行 **Update-AutomationRunAsAccountRoleAssignments.ps1** 指令碼之後，使用執行身分帳戶存取 Key Vault 的 Runbook 即無法再運作。 執行指令碼之前，您應先檢閱帳戶中用來呼叫 Azure Key Vault 的 Runbook。 若要啟用 Azure 自動化 Runbook 對 Key Vault 的存取，您必須[將執行身分帳戶新增至 Key Vault 的權限](#add-permissions-to-key-vault)。

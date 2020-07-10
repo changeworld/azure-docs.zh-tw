@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 38963a8e1bfdbde50439ed871aa33e9aaa830d35
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830577"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185648"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>使用監看員工作追蹤更新的檔案
 
@@ -19,7 +20,7 @@ Azure 自動化會使用監看員工作搭配 PowerShell Runbook 來尋找事件
 > Azure China 21Vianet 中不支援監看員工作。
 
 > [!IMPORTANT]
-> 自 2020 年 5 月起，使用 Azure Logic Apps 是監視事件、排定週期性工作和觸發動作的支援方式。 [使用 Azure Logic Apps 排定和執行週期性自動化工作、程序和工作流程](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows)。
+> 自 2020 年 5 月起，使用 Azure Logic Apps 是監視事件、排定週期性工作和觸發動作的支援方式。 [使用 Azure Logic Apps 排定和執行週期性自動化工作、程序和工作流程](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
 
 本教學課程將逐步引導您建立監看員工作，以監視目錄中何時新增了檔案。 您會了解如何：
 
@@ -36,7 +37,7 @@ Azure 自動化會使用監看員工作搭配 PowerShell Runbook 來尋找事件
 若要完成此教學課程，需要有下列項目：
 
 * Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [自動化帳戶](automation-offering-get-started.md)以保存監看員和動作 Runbook，以及監看員工作。
+* [自動化帳戶](./index.yml)以保存監看員和動作 Runbook，以及監看員工作。
 * 執行監看員工作的[混合式 Runbook 背景工作角色](automation-hybrid-runbook-worker.md)。
 * PowerShell Runbook。 監看員工作不支援 PowerShell 工作流程 Runbook。
 
@@ -60,7 +61,7 @@ Azure 自動化會使用監看員工作搭配 PowerShell Runbook 來尋找事件
 
 ## <a name="create-an-automation-variable"></a>建立自動化變數
 
-[自動化變數](automation-variables.md)可用來儲存先前之 Runbook 從每個檔案所讀取並儲存的時間戳記。
+[自動化變數](./shared-resources/variables.md)可用來儲存先前之 Runbook 從每個檔案所讀取並儲存的時間戳記。
 
 1. 選取 [共用資源] 底下的 [變數]，然後按一下 [+ 新增變數]。
 1. 輸入 Watch-NewFileTimestamp 作為名稱。

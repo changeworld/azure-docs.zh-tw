@@ -3,12 +3,12 @@ title: 連結部署的範本
 description: 描述如何在「Azure 資源管理員」範本中使用連結的範本，以建立模組化範本方案。 示範如何傳遞參數值、指定參數檔案，以及動態建立 URL。
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 1b63ebc62a944b43aef3b777dd7d285369356c29
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6b28268a522dde4fe16ccf9d0d01738c3b6a9b5d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056679"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170644"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 資源時使用連結和巢狀的範本
 
@@ -160,12 +160,12 @@ ms.locfileid: "86056679"
 
 的值會 `exampleVar` 根據中的屬性值而變更 `scope` `expressionEvaluationOptions` 。 下表顯示這兩個範圍的結果。
 
-| `expressionEvaluationOptions` `scope` | 輸出 |
+| `expressionEvaluationOptions`範圍 | 輸出 |
 | ----- | ------ |
 | inner | 從嵌套的範本 |
-| 外部（或預設值） | 從父範本 |
+| 外部 (或預設)  | 從父範本 |
 
-下列範例會部署 SQL server，並抓取金鑰保存庫秘密以用於密碼。 範圍會設定為， `inner` 因為它會動態建立金鑰保存庫識別碼（請參閱 `adminPassword.reference.keyVault` 外部範本中的 `parameters` ），並將它當做參數傳遞給嵌套的範本。
+下列範例會部署 SQL server，並抓取金鑰保存庫秘密以用於密碼。 範圍會設定為， `inner` 因為它會以動態方式建立金鑰保存庫識別碼 (`adminPassword.reference.keyVault` 在外部範本) 中看到 `parameters` ，並將它當做參數傳遞至嵌套範本。
 
 ```json
 {
@@ -785,7 +785,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 下列範例顯示連結範本的一般用途。
 
-|主要的範本  |連結的範本 |Description  |
+|主要的範本  |連結的範本 |描述  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 從連結的範本傳回字串。 |
 |[使用公用 IP 位址的負載平衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |從連結的範本傳回公用 IP 位址，並且在負載平衡器中設定該值。 |

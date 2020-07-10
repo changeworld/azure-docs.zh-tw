@@ -9,11 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: ff785bf3ace7c65f83fe8e505f0544edd24776d8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4430b8cdfe9414ddbfd7aad3c3fe7827adbc8705
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836850"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186362"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>補救不相容的 Azure 自動化狀態設定伺服器
 
@@ -24,7 +25,7 @@ Azure 計算提供名為「執行命令」的功能，可讓客戶在虛擬機�
 
 ## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>使用 PowerShell 更正 Windows 虛擬機器的漂移
 
-您可以使用 `Run` 命令功能來更正 Windows 虛擬機器的漂移。 請參閱[使用執行命令在 Windows VM 中執行 PowerShell 指令碼](/azure/virtual-machines/windows/run-command)。
+您可以使用 `Run` 命令功能來更正 Windows 虛擬機器的漂移。 請參閱[使用執行命令在 Windows VM 中執行 PowerShell 指令碼](../virtual-machines/windows/run-command.md)。
 
 若要強制 Azure 自動化狀態設定節點下載最新的設定並加以套用，請使用 [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) Cmdlet。
 
@@ -42,5 +43,5 @@ Update-DscConfiguration -Wait -Verbose
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
 - 如需在持續部署管線中使用 Azure 自動化狀態設定的範例，請參閱[使用 Chocolatey 設定持續部署](automation-dsc-cd-chocolatey.md)。

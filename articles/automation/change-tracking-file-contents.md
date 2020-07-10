@@ -5,11 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0eebd626013614bb6240fc0e6530a358a2b86d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781186"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185597"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>管理變更追蹤和清查
 
@@ -39,7 +40,7 @@ ms.locfileid: "84781186"
 3. 在 [工作區設定] 頁面上選取 [Windows 檔案]，然後按一下 [+ 新增]，以新增要追蹤的新檔案。
 4. 在 [新增變更追蹤的 Windows 檔案] 窗格中，輸入要追蹤之檔案或資料夾的資訊，然後按一下 [**儲存**]。 下表定義可用於資訊的屬性。
 
-    |屬性  |說明  |
+    |屬性  |描述  |
     |---------|---------|
     |啟用     | 如果已套用設定，則為 True，否則為 False。        |
     |項目名稱     | 要追蹤之檔案的易記名稱。        |
@@ -60,7 +61,7 @@ ms.locfileid: "84781186"
 3. 在 [工作區設定] 頁面上選取 [Linux 檔案]，然後按一下 [+ 新增]，以新增要追蹤的新檔案。
 4. 在 [為變更追蹤新增 Linux 檔案] 窗格上，輸入要追蹤的檔案或目錄資訊，然後按一下 [儲存]。 下表定義可用於資訊的屬性。
 
-    |屬性  |說明  |
+    |屬性  |描述  |
     |---------|---------|
     |啟用     | 如果已套用設定，則為 True，否則為 False。        |
     |項目名稱     | 要追蹤之檔案的易記名稱。        |
@@ -78,10 +79,10 @@ ms.locfileid: "84781186"
 
 ## <a name="track-file-contents"></a>追蹤檔案內容
 
-檔案內容追蹤可讓您在追蹤變更前後，檢視檔案的內容。 功能會在每次變更之後，將檔案內容[儲存至儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。 以下是追蹤檔案內容時需遵循的一些規則：
+檔案內容追蹤可讓您在追蹤變更前後，檢視檔案的內容。 功能會在每次變更之後，將檔案內容[儲存至儲存體帳戶](../storage/common/storage-account-overview.md)。 以下是追蹤檔案內容時需遵循的一些規則：
 
 * 儲存檔案內容需要有使用 Resource Manager 部署模型的標準儲存體帳戶。 
-* 請勿使用進階和傳統的部署模型儲存體帳戶。 請參閱[關於 Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)。
+* 請勿使用進階和傳統的部署模型儲存體帳戶。 請參閱[關於 Azure 儲存體帳戶](../storage/common/storage-account-create.md)。
 * 您只能將儲存體帳戶連線到一個自動化帳戶。
 * 必須在您的自動化帳戶中啟用[變更追蹤和清查](change-tracking.md)。
 
@@ -169,7 +170,7 @@ ms.locfileid: "84781186"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需範圍設定的詳細資訊，請參閱[限制變更追蹤和清查部署範圍](automation-scope-configurations-change-tracking.md)。
-* 如果您需要搜尋儲存在 Log Analytics 工作區中的記錄，請參閱 [Azure 監視器記錄中的記錄搜尋](../log-analytics/log-analytics-log-searches.md)。
+* 如果您需要搜尋儲存在 Log Analytics 工作區中的記錄，請參閱 [Azure 監視器記錄中的記錄搜尋](../azure-monitor/log-query/log-query-overview.md)。
 * 如果已完成部署，請參閱[從自動化帳戶取消連結工作區以進行變更追蹤和清查](automation-unlink-workspace-change-tracking.md)。
 * 若要從變更追蹤和清查中刪除您的 Vm，請參閱[從變更追蹤和清查移除 vm](automation-remove-vms-from-change-tracking.md)。
 * 若要針對功能錯誤進行疑難排解，請參閱[針對變更追蹤和清查問題進行疑難排解](troubleshoot/change-tracking.md)。

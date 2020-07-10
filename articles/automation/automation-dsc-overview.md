@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bdb387739be65b761c773ca13b7a407d7aebf738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206881"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186379"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概觀
 
@@ -53,7 +53,7 @@ Azure Automation State Configuration 為 [PowerShell Desired State Configuration
 
 使用 Azure Automation State Configuration 所管理的節點會將詳細報告狀態資料傳送至內建提取伺服器。 您可以設定 Azure Automation State Configuration，將此資料傳送至 Log Analytics 工作區。 請參閱[將 Azure Automation State Configuration 報告資料轉送至 Azure 監視器記錄](automation-dsc-diagnostics.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 使用 Azure Automation State Configuration 時，請考慮本節中的需求。
 
@@ -77,7 +77,7 @@ Azure Automation State Configuration 為 [PowerShell Desired State Configuration
 
 ### <a name="dsc-requirements"></a>DSC 需求
 
-若為在 Azure 中執行的所有 Windows 節點，當啟用機器時，會安裝 [WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure)。 若為執行 Windows Server 2012 和 Windows 7 的節點，會啟用 [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency)。
+若為在 Azure 中執行的所有 Windows 節點，當啟用機器時，會安裝 [WMF 5.1](/powershell/scripting/wmf/setup/install-configure)。 若為執行 Windows Server 2012 和 Windows 7 的節點，會啟用 [WinRM](/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency)。
 
 若為在 Azure 中執行的所有 Linux 節點，當啟用機器時，會安裝 [PowerShell DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux)。
 
@@ -90,7 +90,7 @@ Azure Automation State Configuration 為 [PowerShell Desired State Configuration
 * US Gov 維吉尼亞州的全域 URL： ***.azure automation.us**
 * Agent 服務： **HTTPs:// \<workspaceId\> . agentsvc.azure-automation.net**
 
-如果您使用在節點之間進行通訊的 DSC 資源 (例如 [WaitFor* 資源](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource))，則也必須允許節點之間的流量。 請參閱每個 DSC 資源的文件，以了解這些網路需求。
+如果您使用在節點之間進行通訊的 DSC 資源 (例如 [WaitFor* 資源](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource))，則也必須允許節點之間的流量。 請參閱每個 DSC 資源的文件，以了解這些網路需求。
 
 若要瞭解 TLS 1.2 的用戶端需求，請參閱[Azure 自動化的 tls 1.2 強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
@@ -114,5 +114,4 @@ DSC 代理程式的 Proxy 支援適用於 Windows 版本 1809 和更新版本。
 - 若要了解如何編譯 DSC 組態，以便可將其指派給目標節點，請參閱[編譯 Azure Automation State Configuration 中的 DSC 組態](automation-dsc-compile.md)。
 - 如需在持續部署管道中使用 Azure Automation State Configuration 的範例，請參閱[使用 Chocolatey 設定持續部署](automation-dsc-cd-chocolatey.md)。
 - 如需定價資訊，請參閱 [Azure Automation State Configuration 定價](https://azure.microsoft.com/pricing/details/automation/)。
-- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

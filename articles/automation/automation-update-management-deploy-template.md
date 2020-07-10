@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 06/10/2020
-ms.openlocfilehash: feb1cc132bf5463550a2e7921f347c8f2f48260e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad9029b44ffb0c98bad58bbf012eb19d084d5446
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667993"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185750"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本啟用更新管理
 
@@ -38,9 +39,9 @@ ms.locfileid: "84667993"
 
 ## <a name="before-using-the-template"></a>使用範本之前
 
-如果您選擇在本機安裝並使用 PowerShell，此文章要求使用 Azure PowerShell Az 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需執行 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) \(英文\) 以建立與 Azure 的連線。 使用 Azure PowerShell，部署會使用 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)。
+如果您選擇在本機安裝並使用 PowerShell，此文章要求使用 Azure PowerShell Az 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需執行 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) \(英文\) 以建立與 Azure 的連線。 使用 Azure PowerShell，部署會使用 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)。
 
-如果選擇本機安裝並使用 CLI，此文章要求您執行 Azure CLI 2.1.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 使用 Azure CLI，此部署會使用 [az group deployment create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) \(英文\)。 
+如果選擇本機安裝並使用 CLI，此文章要求您執行 Azure CLI 2.1.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 使用 Azure CLI，此部署會使用 [az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) \(英文\)。 
 
 JSON 範本已設定為提示您輸入：
 

@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430571"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169973"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 上節點應用程式的最佳作法和疑難排解指南
 
@@ -169,9 +170,9 @@ http.createServer(function (req, res) {
 
 進入 site/wwwroot 目錄。 您會看到如下列範例所示的命令提示字元：
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
+![顯示網站/wwwroot 目錄和命令提示字元的螢幕擷取畫面。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
-執行命令 `npm install v8-profiler`。
+執行 `npm install v8-profiler` 命令。
 
 此命令會在 node\_modules 目錄與其所有的相依項目之下安裝 v8 分析工具。
 現在，編輯 server.js 以剖析您的應用程式。
@@ -202,11 +203,11 @@ http.createServer(function (req, res) {
 
 上述程式碼會剖析 WriteConsoleLog 函式，然後將設定檔輸出寫入至您的網站 wwwroot 下的 'profile.cpuprofile' 檔案。 將要求傳送至您的應用程式。 您會在您的網站 wwwroot 下看到建立的 'profile.cpuprofile' 檔案。
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
+![顯示 profile.cpuprofile 檔案的螢幕擷取畫面。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
 下載此檔案，並使用 Chrome F12 工具開啟檔案。 在 Chrome 上按 F12，然後選擇 [**設定檔**] 索引標籤。選擇 [**載入**] 按鈕。 選取您下載的 profile.cpuprofile 檔案。 按一下您剛下載的設定檔
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
+![螢幕擷取畫面：顯示您載入的 profile.cpuprofile 檔案。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
 您會看到 WriteConsoleLog 函式已耗用 95%的時間。 輸出也會顯示造成此問題的確切行號和來源檔案。
 

@@ -308,7 +308,7 @@
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-automation.html'
+      href: /answers/topics/azure-automation.html
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/automation/'
     - name: 定價計算機

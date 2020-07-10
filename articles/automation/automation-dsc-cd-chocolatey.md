@@ -6,11 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 1bab503004876a2680286204de28631ce26b9069
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 87504625c298c4fb858ff90430d707081e87cd5a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84197113"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186566"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>使用 Chocolatey 設定持續部署
 
@@ -212,6 +213,5 @@ Get-AzAutomationDscCompilationJob `
 - 如需概觀，請參閱 [Azure 自動化狀態設定概觀](automation-dsc-overview.md)。
 - 若要開始使用功能，請參閱[開始使用 Azure 自動化狀態設定](automation-dsc-getting-started.md)。
 - 若要了解如何編譯 DSC 組態，以將其指派給目標節點，請參閱[編譯 Azure 自動化狀態設定中的 DSC 組態](automation-dsc-compile.md)。
-- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
 - 如需定價資訊，請參閱 [Azure 自動化狀態設定的定價](https://azure.microsoft.com/pricing/details/automation/)。

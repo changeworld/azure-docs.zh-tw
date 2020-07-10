@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: e64f437b65964b585311aeae25e5f3a92275754a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361671"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185631"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>從 Webhook 啟動 Runbook
 
-Webhook 可讓外部服務在 Azure 自動化中，透過單一 HTTP 要求啟動特定的 Runbook。 外部服務包括 Azure DevOps Services、GitHub、Azure 監視器記錄，以及自訂應用程式。 此類服務可以使用 Webhook 來啟動 Runbook，而不需要實作完整的 Azure 自動化 API。 您可以透過[在 Azure 自動化中啟動 Runbook](automation-starting-a-runbook.md)，比較 Webhook 與其他啟動 Runbook 的方法。
+Webhook 可讓外部服務在 Azure 自動化中，透過單一 HTTP 要求啟動特定的 Runbook。 外部服務包括 Azure DevOps Services、GitHub、Azure 監視器記錄，以及自訂應用程式。 此類服務可以使用 Webhook 來啟動 Runbook，而不需要實作完整的 Azure 自動化 API。 您可以透過[在 Azure 自動化中啟動 Runbook](./start-runbooks.md)，比較 Webhook 與其他啟動 Runbook 的方法。
 
 > [!NOTE]
 > 不支援使用 Webhook 來啟動 Python Runbook。
@@ -133,7 +133,7 @@ http://<Webhook Server>/token?=<Token Value>
 {"JobIds":["<JobId>"]}
 ```
 
-用戶端無法從 Webhook 判斷 Runbook 的工作何時完成或完成狀態。 其可使用作業識別碼搭配其他機制 (例如 [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) \(英文\) 或 [Azure 自動化 API](/rest/api/automation/job)) 來找出此資訊。
+用戶端無法從 Webhook 判斷 Runbook 的工作何時完成或完成狀態。 其可使用作業識別碼搭配其他機制 (例如 [Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) \(英文\) 或 [Azure 自動化 API](/rest/api/automation/job)) 來找出此資訊。
 
 ## <a name="renew-a-webhook"></a>更新 Webhook
 
@@ -151,7 +151,7 @@ http://<Webhook Server>/token?=<Token Value>
 下列範例 Runbook 會接受 Webhook 資料，並啟動要求本文中指定的虛擬機器。 若要測試此 Runbook，請在您自動化帳戶的 [Runbook] 下，按一下 [建立 Runbook]。 如果您不知道如何建立 Runbook，請參閱[建立 Runbook](automation-quickstart-create-runbook.md)。
 
 > [!NOTE]
-> 針對非圖形化 PowerShell Runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) \(英文\) 的別名。 您可使用這些 Cmdlet，也可以在您的自動化帳戶中[將您的模組更新](automation-update-azure-modules.md)為最新版本。 即使您才剛建立新的自動化帳戶，可能還是需要更新您的模組。
+> 針對非圖形化 PowerShell Runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) \(英文\) 的別名。 您可使用這些 Cmdlet，也可以在您的自動化帳戶中[將您的模組更新](automation-update-azure-modules.md)為最新版本。 即使您才剛建立新的自動化帳戶，可能還是需要更新您的模組。
 
 ```powershell
 param

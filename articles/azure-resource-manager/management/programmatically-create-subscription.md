@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 06/26/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 18c6e9aac220d7e76a82a2abded6840db931f2d1
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: b53c81a52c06780378e45b2141cbef452b4d363a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057716"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170627"
 ---
-# <a name="programmatically-create-azure-subscriptions-preview"></a>以程式設計方式建立 Azure 訂用帳戶（預覽）
+# <a name="programmatically-create-azure-subscriptions-preview"></a>以程式設計方式建立 Azure 訂用帳戶 (預覽) 
 
-具有[Enterprise 合約（EA）](https://azure.microsoft.com/pricing/enterprise-agreement/)、 [microsoft 客戶合約（MCA）](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)或[microsoft 合作夥伴合約（MPA）](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement)帳單帳戶的 Azure 客戶，可以透過程式設計方式建立訂閱。 在本文中，可了解如何使用 Azure Resource Manager 以程式設計方式建立訂用帳戶。
+具有[Enterprise 合約 (EA) ](https://azure.microsoft.com/pricing/enterprise-agreement/)的 Azure 客戶、 [microsoft 客戶合約 (MCA) ](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)或[microsoft 合作夥伴合約 (MPA) ](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement)計費帳戶可以程式設計方式建立訂閱。 在本文中，可了解如何使用 Azure Resource Manager 以程式設計方式建立訂用帳戶。
 
 當您以程式設計方式建立 Azure 訂用帳戶時，該訂用帳戶會受到貴使用者向 Microsoft 或授權轉銷商取得 Azure 服務的合約所規範。 若要深入了解，請參閱 [Microsoft Azure 法律資訊](https://azure.microsoft.com/support/legal/)。
 
@@ -26,11 +26,11 @@ ms.locfileid: "86057716"
 
 使用下列各節中的資訊來建立 EA 訂閱。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 您必須擁有註冊帳戶的「擁有者」角色，才能建立訂閱。 有兩種方式可以取得角色：
 
-* 您註冊的企業系統管理員可以[讓您成為帳戶擁有](https://ea.azure.com/helpdocs/addNewAccount)者（需要登入），這會讓您成為註冊帳戶的擁有者。
+* 註冊的企業系統管理員可以[讓您成為帳戶擁有者，](https://ea.azure.com/helpdocs/addNewAccount) (登入所需的) ，這會讓您成為註冊帳戶的擁有者。
 
 * 註冊帳戶的現有擁有者可以[授與您存取權](grant-access-to-create-subscription.md)。 同樣地，如果您想要使用服務主體來建立 EA 訂用帳戶，您必須[授與該服務主體建立訂閱的能力](grant-access-to-create-subscription.md)。
 
@@ -127,7 +127,7 @@ Azure 會以您可以存取的註冊帳戶清單來回應：
 
 ### <a name="create-subscriptions-under-a-specific-enrollment-account"></a>在特定的註冊帳戶下建立訂用帳戶
 
-下列範例會在上一個步驟中選取的註冊帳戶中，建立名為「*開發小組訂閱*」的訂閱。 訂用帳戶供應專案為*MS ms-azr-0017p-ms-azr-0017p* （一般 Microsoft Enterprise 合約）。 這也會依選擇新增兩個使用者作為該訂用帳戶的「RBAC 擁有者」。
+下列範例會在上一個步驟中選取的註冊帳戶中，建立名為「*開發小組訂閱*」的訂閱。 訂用帳戶供應專案為*MS-ms-azr-0017p-ms-azr-0017p* (一般 Microsoft Enterprise 合約) 。 這也會依選擇新增兩個使用者作為該訂用帳戶的「RBAC 擁有者」。
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -150,25 +150,25 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| 元素名稱  | 必要 | 類型   | 說明                                                                                               |
+| 元素名稱  | 必要 | 類型   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 否      | String | 訂用帳戶的顯示名稱。 如果未指定，會設定為供應項目的名稱，例如「Microsoft Azure 企業版」。                                 |
 | `offerType`   | 是      | String | 訂用帳戶的供應項目方案。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
 | `owners`      | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「RBAC 擁有者」之使用者的「物件識別碼」。  |
 
-在回應中，會傳回一個 `subscriptionOperation` 物件供您監視。 建立完訂用帳戶之後，`subscriptionOperation` 物件會傳回 `subscriptionLink` 物件，其中包含訂用帳戶 ID。
+在回應中，您會取得 `Location` 用於監視的 url。 當訂用帳戶建立完成時，[取得 `Location` url] 將會傳回 `subscriptionLink` 具有訂用帳戶識別碼的物件。 如需詳細資訊，請參閱訂用帳戶[API 檔](https://docs.microsoft.com/rest/api/subscription/)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 首先，執行以安裝此預覽模組 `Install-Module Az.Subscription -AllowPrerelease` 。 若要確認 `-AllowPrerelease` 是否可運作，請從[取得 PowerShellGet 模組](/powershell/scripting/gallery/installing-psget)安裝最新版的 PowerShellGet。
 
-執行下列[get-azsubscription](/powershell/module/az.subscription)命令，並將取代為 `<enrollmentAccountObjectId>` `ObjectId` 第一個步驟（）中所收集的 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` 。 如果您想要指定擁有者，請瞭解[如何取得使用者物件識別碼](grant-access-to-create-subscription.md#userObjectId)。
+執行下列[get-azsubscription](/powershell/module/az.subscription)命令，並將取代 `<enrollmentAccountObjectId>` 為 `ObjectId` 第一個步驟中所收集的 (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) 。 如果您想要指定擁有者，請瞭解[如何取得使用者物件識別碼](grant-access-to-create-subscription.md#userObjectId)。
 
 ```azurepowershell-interactive
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| 元素名稱  | 必要 | 類型   | 說明                                                                                               |
+| 元素名稱  | 必要 | 類型   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | 否      | String | 訂用帳戶的顯示名稱。 如果未指定，會設定為供應項目的名稱，例如「Microsoft Azure 企業版」。                                 |
 | `OfferType`   | 是      | String | 訂用帳戶的供應項目方案。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
@@ -183,7 +183,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 首先，執行以安裝此預覽擴充功能 `az extension add --name subscription` 。
 
-執行下列[az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create)命令，將取代 `<enrollmentAccountObjectId>` 為 `name` 您在第一個步驟中複製的（ ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ）。 如果您想要指定擁有者，請瞭解[如何取得使用者物件識別碼](grant-access-to-create-subscription.md#userObjectId)。
+執行下列[az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create)命令，將取代 `<enrollmentAccountObjectId>` 為 `name` 您在第一個步驟中複製的 (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) 。 如果您想要指定擁有者，請瞭解[如何取得使用者物件識別碼](grant-access-to-create-subscription.md#userObjectId)。
 
 ```azurecli-interactive
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
@@ -212,7 +212,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 ## <a name="create-subscriptions-for-an-mca-account"></a>建立 MCA 帳戶的訂閱
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 您必須在帳單設定檔或帳單帳戶的發票區段或擁有者或參與者角色上擁有「擁有者」、「參與者」或「Azure 訂閱使用者」角色，才能建立訂閱。 如需詳細資訊，請參閱[訂用帳戶計費角色和工作](../../cost-management-billing/manage/understand-mca-roles.md#subscription-billing-roles-and-tasks)。
 
@@ -316,7 +316,7 @@ API 回應會列出所有發票區段，以及您有權建立訂用帳戶的帳�
 
 下列範例會針對「*開發*發票」區段，建立名為「 *Dev 小組訂閱*」的訂用帳戶，屬於*Microsoft Azure 方案*類型。 訂用帳戶將會向*Contoso 財務的*帳單設定檔收取費用，並出現在其發票的 [*開發*] 區段中。
 
-提出下列要求，將取代為 `<invoiceSectionId>` `invoiceSectionId` 第二個步驟所複製的（ ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX``` ）。 您必須傳遞 `billingProfileId` ，並 `skuId` 從 API 的要求參數中的第二個步驟複製。 如果您想要指定擁有者，請瞭解[如何取得使用者物件識別碼](grant-access-to-create-subscription.md#userObjectId)。
+進行下列要求， `<invoiceSectionId>` 以 `invoiceSectionId` 從第二個步驟複製 () 來取代 ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX``` 。 您必須傳遞 `billingProfileId` ，並 `skuId` 從 API 的要求參數中的第二個步驟複製。 如果您想要指定擁有者，請瞭解[如何取得使用者物件識別碼](grant-access-to-create-subscription.md#userObjectId)。
 
 ```json
 POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview
@@ -340,7 +340,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| 元素名稱  | 必要 | 類型   | Description                                                                                               |
+| 元素名稱  | 必要 | 類型   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 是      | String | 訂用帳戶的顯示名稱。|
 | `billingProfileId`   | 是      | String | 計費設定檔的識別碼，將依訂用帳戶的費用計費。  |
@@ -353,7 +353,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ## <a name="create-subscriptions-for-an-mpa-billing-account"></a>建立 MPA 帳單帳戶的訂閱
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 您在組織的雲端解決方案提供者帳戶中必須擁有全域系統管理員或系統管理員代理程式角色，才能建立帳單帳戶的訂用帳戶。 如需詳細資訊，請參閱[合作夥伴中心-指派使用者角色和許可權](/partner-center/permissions-overview)。
 
@@ -407,7 +407,7 @@ API 回應會列出帳單帳戶。
 
 ### <a name="find-customers-that-have-azure-plans"></a>尋找具有 Azure 方案的客戶
 
-進行下列要求，以 `<billingAccountName>` `name` 從第一個步驟複製的（ ```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx``` ）來取代，以列出帳單帳戶中可建立 Azure 訂用帳戶的所有客戶。
+進行下列要求，以 `<billingAccountName>` `name` 從第一個步驟複製的來取代 (```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```) 以列出帳單帳戶中可建立 Azure 訂用帳戶的所有客戶。
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/customers?api-version=2019-10-01-preview
@@ -447,7 +447,7 @@ API 回應會列出帳單帳戶中具有 Azure 方案的客戶。 您可以為�
 
 如果您是 CSP 兩層式模型中的間接提供者，您可以在為客戶建立訂閱時指定轉銷商。
 
-提出下列要求，並將取代為 `<customerId>` `id` 第二個步驟所複製的（ ```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ），以列出適用于客戶的所有轉銷商。
+提出下列要求，將取代為 `<customerId>` `id` 第二個步驟所複製的 (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) ，以列出適用于客戶的所有轉銷商。
 
 ```json
 GET https://management.azure.com<customerId>?$expand=resellers&api-version=2019-10-01-preview
@@ -492,7 +492,7 @@ API 回應會列出客戶的轉售商：
 
 下列範例會建立名為「 *Fabrikam 玩具*的*開發小組訂閱*」的訂用帳戶，並將*Wingtip*轉售商與訂用帳戶建立關聯。 T
 
-提出下列要求，將取代為 `<customerId>` `id` 第二個步驟所複製的（ ```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ）。 在 API 的要求參數中，傳遞從第二個步驟複製的選擇性*resellerId* 。
+進行下列要求， `<customerId>` 以 `id` 從第二個步驟複製 () 來取代 ```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` 。 在 API 的要求參數中，傳遞從第二個步驟複製的選擇性*resellerId* 。
 
 ```json
 POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview
@@ -505,7 +505,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| 元素名稱  | 必要 | 類型   | Description                                                                                               |
+| 元素名稱  | 必要 | 類型   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 是      | String | 訂用帳戶的顯示名稱。|
 | `skuId` | 是      | String | Azure 方案的 sku 識別碼。 為 Microsoft Azure 方案類型的訂閱使用*0001* |
@@ -515,6 +515,6 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需使用 .NET 建立 Enterprise 合約（EA）訂用帳戶的範例，請參閱[GitHub 上的範例程式碼](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core)。
+* 如需使用 .NET (EA) 訂用帳戶建立 Enterprise 合約的範例，請參閱[GitHub 上的範例程式碼](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core)。
 * 由於您已建立訂用帳戶，您可以將這項功能授與其他使用者和服務主體。 如需詳細資訊，請參閱 [ Azure Enterprise 訂用帳戶 (預覽)](grant-access-to-create-subscription.md)。
 * 若要深入瞭解如何使用管理群組來管理大量訂用帳戶，請參閱[使用 Azure 管理群組來組織資源](../../governance/management-groups/overview.md)

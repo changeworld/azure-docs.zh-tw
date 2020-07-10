@@ -12,12 +12,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 4822e6feb29f5a17c653a60937b895ec584e0ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19372b30a5e56738230216777897c08b07a0a86a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69637207"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170695"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>如何在 Ruby 中透過 Twilio 使用語音和簡訊功能
 本指南示範如何在 Azure 上透過 Twilio API 服務執行常見的程式設計工作。 涵蓋的案例包括打電話和傳送簡訊 (SMS)。 如需有關在應用程式中 Twilio 及使用語音和 SMS 的詳細資訊，請參閱[後續步驟](#NextSteps)一節。
@@ -38,10 +38,12 @@ TwiML 是一組以 XML 為基礎的指令，可指示 Twilio 如何處理來電�
 
 例如，下列 TwiML 會將 **Hello World** 文字轉換成語音。
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-       <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+    <Say>Hello World</Say>
+</Response>
+```
 
 所有 TwiML 文件皆會以 `<Response>` 作為其根元素。 您可以由此處使用 Twilio 動詞定義應用程式的行為。
 
@@ -82,28 +84,36 @@ Twilio 動詞是指示 Twilio 應執行哪些 **動作**的 XML 標籤。 例如
 
 在您新的 VM 中加入 SSH，並為新的應用程式建立目錄。 請在該目錄中建立名為 Gemfile 的檔案，並將下列程式碼複製到檔案中：
 
-    source 'https://rubygems.org'
-    gem 'sinatra'
-    gem 'thin'
+```bash
+source 'https://rubygems.org'
+gem 'sinatra'
+gem 'thin'
+```
 
 在命令列上執行 `bundle install`。 這會安裝前述的相依性。 接著，建立名為 `web.rb`的檔案。 Web 應用程式的程式碼會存留於該處。 請將下列程式碼貼到檔案中：
 
-    require 'sinatra'
+```ruby
+require 'sinatra'
 
-    get '/' do
-        "Hello Monkey!"
-    end
+get '/' do
+    "Hello Monkey!"
+end
+```
 
 此時，您應可執行 `ruby web.rb -p 5000`命令。 這會在連接埠 5000 上啟動小型 Web 伺服器。 您應可在瀏覽器中造訪您為 Azure VM 設定的 URL，而瀏覽至此應用程式。 只要您可在瀏覽器中存取您的 Web 應用程式，您即可開始建置 Twilio 應用程式。
 
 ## <a name="configure-your-application-to-use-twilio"></a><a id="configure_app"></a>設定應用程式以使用 Twilio
 您可以更新 `Gemfile` 以加入下一行程式碼，將 Web 應用程式設為使用 Twilio 程式庫：
 
-    gem 'twilio-ruby'
+```bash
+gem 'twilio-ruby'
+```
 
 在命令列上執行 `bundle install`。 接著，開啟 `web.rb` ，並將此行加入至頂端：
 
-    require 'twilio-ruby'
+```ruby
+require 'twilio-ruby'
+```
 
 至此一切皆已就緒，您可以在 Web 應用程式中使用適用於 Ruby 的 Twilio 協助程式程式庫。
 
@@ -112,33 +122,35 @@ Twilio 動詞是指示 Twilio 應執行哪些 **動作**的 XML 標籤。 例如
 
 將此函數新增至 `web.md`：
 
-    # Set your account ID and authentication token.
-    sid = "your_twilio_account_sid";
-    token = "your_twilio_authentication_token";
+```ruby
+# Set your account ID and authentication token.
+sid = "your_twilio_account_sid";
+token = "your_twilio_authentication_token";
 
-    # The number of the phone initiating the call.
-    # This should either be a Twilio number or a number that you've verified
-    from = "NNNNNNNNNNN";
+# The number of the phone initiating the call.
+# This should either be a Twilio number or a number that you've verified
+from = "NNNNNNNNNNN";
 
-    # The number of the phone receiving call.
-    to = "NNNNNNNNNNN";
+# The number of the phone receiving call.
+to = "NNNNNNNNNNN";
 
-    # Use the Twilio-provided site for the TwiML response.
-    url = "http://yourdomain.cloudapp.net/voice_url";
+# Use the Twilio-provided site for the TwiML response.
+url = "http://yourdomain.cloudapp.net/voice_url";
 
-    get '/make_call' do
-      # Create the call client.
-      client = Twilio::REST::Client.new(sid, token);
+get '/make_call' do
+    # Create the call client.
+    client = Twilio::REST::Client.new(sid, token);
 
-      # Make the call
-      client.account.calls.create(to: to, from: from, url: url)
-    end
+    # Make the call
+    client.account.calls.create(to: to, from: from, url: url)
+end
 
-    post '/voice_url' do
-      "<Response>
-         <Say>Hello Monkey!</Say>
-       </Response>"
-    end
+post '/voice_url' do
+    "<Response>
+        <Say>Hello Monkey!</Say>
+    </Response>"
+end
+```
 
 您在瀏覽器中開啟 `http://yourdomain.cloudapp.net/make_call` 時，將觸發對 Twilio API 的呼叫來撥打電話。 `client.account.calls.create` 中的前兩個參數很容易理解：來電 (`from`) 號碼和去電 (`to`) 號碼。 
 
@@ -151,11 +163,13 @@ Twilio 動詞是指示 Twilio 應執行哪些 **動作**的 XML 標籤。 例如
 
 我們想要處理傳入的 SMS 簡訊，因此，要將 URL 更新為 `http://yourdomain.cloudapp.net/sms_url`。 接著，按一下頁面底部的 [儲存變更]。 現在，要在 `web.rb` 中將應用程式程式化，以進行相關處理：
 
-    post '/sms_url' do
-      "<Response>
-         <Message>Hey, thanks for the ping! Twilio and Azure rock!</Message>
-       </Response>"
-    end
+```ruby
+post '/sms_url' do
+    "<Response>
+        <Message>Hey, thanks for the ping! Twilio and Azure rock!</Message>
+    </Response>"
+end
+```
 
 進行變更後，請確實重新啟動 Web 應用程式。 現在，請拿起電話，傳送簡訊至您的 Twilio 號碼。 您應會立即收到簡訊回應，顯示 "Hey, thanks for the ping! Twilio and Azure rock!"。
 

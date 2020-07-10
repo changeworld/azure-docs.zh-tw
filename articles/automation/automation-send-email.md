@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1fa270907c96cb341f6ce2cbaeb91dfa323c4431
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c01e329e4e4ab403c8966f096239abffee1c1fc5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855209"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185852"
 ---
 # <a name="send-an-email-from-a-runbook"></a>從 Runbook 傳送電子郵件
 
@@ -19,16 +19,16 @@ ms.locfileid: "85855209"
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或[註冊免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [SendGrid 帳戶](/azure/sendgrid-dotnet-how-to-send-email#create-a-sendgrid-account)。
-* [自動化帳戶](automation-offering-get-started.md)與 **Az** 模組。
-* [執行身分帳戶](automation-create-runas-account.md)以儲存及執行 Runbook。
+* [SendGrid 帳戶](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)。
+* [自動化帳戶](./index.yml)與 **Az** 模組。
+* [執行身分帳戶](./manage-runas-account.md)以儲存及執行 Runbook。
 
 ## <a name="create-an-azure-key-vault"></a>建立 Azure Key Vault
 
 您可以使用下列 PowerShell 指令碼來建立 Azure Key Vault。 將變數值取代為您的環境特有的值。 請透過程式碼區塊右上角的**立即試用**按鈕，使用內嵌的 Azure Cloud Shell。 如果您已在本機電腦上安裝 [Az 模組](/powershell/azure/install-az-ps)，也可以在本機複製並執行程式碼。
 
 > [!NOTE]
-> 若要擷取您的 API 金鑰，請使用[尋找您的 SendGrid API 金鑰](/azure/sendgrid-dotnet-how-to-send-email#to-find-your-sendgrid-api-key)中所列的步驟。
+> 若要擷取您的 API 金鑰，請使用[尋找您的 SendGrid API 金鑰](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)中所列的步驟。
 
 ```azurepowershell-interactive
 $SubscriptionId  =  "<subscription ID>"
@@ -61,7 +61,7 @@ $appID = $connection.FieldDefinitionValues.ApplicationId
 Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -PermissionsToSecrets Set, Get
 ```
 
-如需建立 Azure Key Vault 和儲存秘密的其他方式，請參閱 [Key Vault 快速入門](/azure/key-vault/)。
+如需建立 Azure Key Vault 和儲存秘密的其他方式，請參閱 [Key Vault 快速入門](../key-vault/index.yml)。
 
 ## <a name="import-required-modules-into-your-automation-account"></a>將必要的模組匯入至您的自動化帳戶
 
@@ -74,7 +74,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 
 ## <a name="create-the-runbook-to-send-an-email"></a>建立 Runbook 以傳送電子郵件
 
-建立 Key Vault 並儲存您的 `SendGrid` API 金鑰之後，即可建立會擷取 API 金鑰並傳送電子郵件的 Runbook。 請以會使用 `AzureRunAsConnection` 作為[執行身分帳戶](automation-create-runas-account.md)的 Runbook 向 Azure 進行驗證，以從 Azure Key Vault 擷取祕密。 我們會呼叫 Runbook **Send-GridMailMessage**。 您可以修改範例中的 PowerShell 指令碼，並將其重複用於不同的案例。
+建立 Key Vault 並儲存您的 `SendGrid` API 金鑰之後，即可建立會擷取 API 金鑰並傳送電子郵件的 Runbook。 請以會使用 `AzureRunAsConnection` 作為[執行身分帳戶](./manage-runas-account.md)的 Runbook 向 Azure 進行驗證，以從 Azure Key Vault 擷取祕密。 我們會呼叫 Runbook **Send-GridMailMessage**。 您可以修改範例中的 PowerShell 指令碼，並將其重複用於不同的案例。
 
 1. 移至您的「Azure 自動化」帳戶。
 2. 在 [程序自動化] 下方，選取 [Runbook]。
@@ -142,7 +142,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 
 1. 當不再需要 Runbook 時，請在 Runbook 清單中加以選取，然後按一下 [刪除]。
 
-2. 使用 [Remove-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) Cmdlet 刪除 Key Vault。
+2. 使用 [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) Cmdlet 刪除 Key Vault。
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"

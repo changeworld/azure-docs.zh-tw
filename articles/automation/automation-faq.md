@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 02/25/2020
-ms.openlocfilehash: 1cd20e28d1b36167154059adf728a9cfdf8102bc
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 76c8d09ef2ef0130ddac856a1f37f8b68d977494
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836612"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186226"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure 自動化常見問題集
 
@@ -37,7 +38,7 @@ RTM 版本的 CentOS 不支援依更新分類部署更新。 為了適當部署 
 
 ### <a name="can-i-deploy-updates-across-azure-tenants"></a>我可以跨 Azure 租用戶部署更新嗎？
 
-如果您在另一個向「更新管理」回報的 Azure 租用戶中有需要修補的電腦，則必須使用下列因應措施進行排程。 您可以使用 [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) Cmdlet 搭配指定的 `ForUpdateConfiguration` 參數來建立排程。 您可以使用 [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) Cmdlet，並將其他租用戶中的電腦傳遞至 `NonAzureComputer` 參數。 下列範例示範如何執行。
+如果您在另一個向「更新管理」回報的 Azure 租用戶中有需要修補的電腦，則必須使用下列因應措施進行排程。 您可以使用 [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) Cmdlet 搭配指定的 `ForUpdateConfiguration` 參數來建立排程。 您可以使用 [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) Cmdlet，並將其他租用戶中的電腦傳遞至 `NonAzureComputer` 參數。 下列範例示範如何執行。
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -53,5 +54,5 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 如果您的問題並未在此獲得解答，您可以參考下列來源，以取得其他問題和答案。
 
-- [Azure 自動化](https://docs.microsoft.com/answers/topics/azure-automation.html)
+- [Azure 自動化](/answers/topics/azure-automation.html)
 - [意見反應論壇](https://feedback.azure.com/forums/905242-update-management)

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: e1262aedda95f3feb7cf5604644d938bf4d00a53
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6913ae8cbd8c73bd2763bd89172280feee9df973
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85854909"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185614"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合式 Runbook 背景工作角色
 
@@ -18,7 +18,7 @@ ms.locfileid: "85854909"
 
 在您成功部署 Runbook 背景工作角色後，請檢閱[在混合式 Runbook 背景工作角色上執行 Runbook](automation-hrw-run-runbooks.md)，以了解如何設定 Runbook 以將內部部署資料中心或其他雲端環境中的程序自動化。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您具有下列各項。
 
@@ -84,7 +84,7 @@ Windows 混合式 Runbook 背景工作角色已正式支援下列版本的 Windo
 如需有關啟用電腦以 Azure 自動化狀態設定進行管理的詳細資訊，請參閱[Azure 自動化狀態設定啟用電腦以進行管理](automation-dsc-onboarding.md)。
 
 > [!NOTE]
-> 若要使用 Desired State Configuration （DSC）來管理支援混合式 Runbook 背景工作角色的電腦設定，您必須將電腦新增為 DSC 節點。
+> 若要使用 Desired State Configuration (DSC) 來管理支援混合式 Runbook 背景工作角色的電腦設定，您必須將電腦新增為 DSC 節點。
 
 ## <a name="windows-hybrid-runbook-worker-installation-options"></a>Windows 混合式 Runbook 背景工作安裝選項
 
@@ -206,9 +206,9 @@ Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
 
 Runbook 可以使用 Azure 自動化環境中安裝的模組中定義的任何活動和 Cmdlet。 因為這些模組不會自動部署至內部部署機器，所以您必須手動安裝它們。 但 Azure 模組例外。 此模組預設為安裝，可讓您存取 Cmdlet 以執行 Azure 自動化的所有 Azure 服務和活動。
 
-因為「混合式 Runbook 背景工作角色」主要是管理本機資源，您很可能需要安裝支援這些資源的模組，特別是 `PowerShellGet` 模組。 如需安裝 Windows PowerShell 模組的相關資訊，請參閱 [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)。
+因為「混合式 Runbook 背景工作角色」主要是管理本機資源，您很可能需要安裝支援這些資源的模組，特別是 `PowerShellGet` 模組。 如需安裝 Windows PowerShell 模組的相關資訊，請參閱 [Windows PowerShell](/powershell/scripting/developer/windows-powershell)。
 
-安裝的模組必須位於 `PSModulePath` 環境變數所參考的位置，才能由混合式背景工作角色自動匯入。 如需詳細資訊，請參閱[在 PSModulePath 中安裝模組](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)。
+安裝的模組必須位於 `PSModulePath` 環境變數所參考的位置，才能由混合式背景工作角色自動匯入。 如需詳細資訊，請參閱[在 PSModulePath 中安裝模組](/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)。
 
 ## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-machine"></a><a name="remove-windows-hybrid-runbook-worker"></a>從內部部署 Windows 機器移除混合式 Runbook 背景工作角色
 

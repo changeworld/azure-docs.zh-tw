@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: f30d15615e4f3c738d969d068bf2864df23e7cdb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae268534a18a921cca012881fa172261c7ba1063
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836901"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186396"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>啟用 Azure 自動化狀態設定
 
@@ -56,7 +57,7 @@ ms.locfileid: "83836901"
 
 ### <a name="register-vms-across-azure-subscriptions"></a>跨 Azure 訂用帳戶來註冊 VM
 
-若要從其他 Azure 訂用帳戶來註冊 VM，最佳方式是在 Azure Resource Manager 部署範本中使用 DSC 擴充。 [Azure Resource Manager 範本中的 Desired State Configuration 擴充](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template)中提供範例。
+若要從其他 Azure 訂用帳戶來註冊 VM，最佳方式是在 Azure Resource Manager 部署範本中使用 DSC 擴充。 [Azure Resource Manager 範本中的 Desired State Configuration 擴充](../virtual-machines/extensions/dsc-template.md)中提供範例。
 
 若要尋找在範本中作為參數的註冊金鑰和註冊 URL，請參閱[使用註冊安全地啟用機器](#enable-machines-securely-using-registration)。
 
@@ -72,7 +73,7 @@ ms.locfileid: "83836901"
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
    ```
 
-1. 如果您無法從遠端套用 PowerShell DSC 中繼設定，請將 **metaconfigurations** 資料夾複製到您要啟用的機器上。 然後新增程式碼，以在機器本機呼叫 [Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1)。
+1. 如果您無法從遠端套用 PowerShell DSC 中繼設定，請將 **metaconfigurations** 資料夾複製到您要啟用的機器上。 然後新增程式碼，以在機器本機呼叫 [Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1)。
 1. 使用 Azure 入口網站或 Cmdlet，驗證機器是否顯示為 Azure 自動化帳戶中註冊的「狀態設定」節點。
 
 ## <a name="enable-physicalvirtual-linux-machines"></a>啟用實體/虛擬 Linux 機器
@@ -122,7 +123,7 @@ ms.locfileid: "83836901"
 > [!NOTE]
 > 若要啟用自動化帳戶中的機器來管理，DSC 中繼設定包含所需的秘密。 請務必適當地保護您所建立的任何 DSC 中繼設定，或在使用後將它們刪除。
 
-中繼設定的 Proxy 支援由 [Local Configuration Manager](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7) (Windows PowerShell DSC 引擎) 所控制。 LCM 在所有目標節點上執行，負責呼叫 DSC 中繼設定指令碼中包含的設定資源。 若要將 Proxy 支援加入中繼設定，您可以視需要在 `ConfigurationRepositoryWeb`、`ResourceRepositoryWeb` 和 `ReportServerWeb` 區塊中加入 `ProxyURL` 和 `ProxyCredential` 屬性的定義。 `ProxyURL = "http://172.16.3.6:3128";` 是 URL 設定的例子。 `ProxyCredential` 屬性設定為 `PSCredential` 物件，如[在 Azure 自動化中管理認證](shared-resources/credentials.md)所述。 
+中繼設定的 Proxy 支援由 [Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7) (Windows PowerShell DSC 引擎) 所控制。 LCM 在所有目標節點上執行，負責呼叫 DSC 中繼設定指令碼中包含的設定資源。 若要將 Proxy 支援加入中繼設定，您可以視需要在 `ConfigurationRepositoryWeb`、`ResourceRepositoryWeb` 和 `ReportServerWeb` 區塊中加入 `ProxyURL` 和 `ProxyCredential` 屬性的定義。 `ProxyURL = "http://172.16.3.6:3128";` 是 URL 設定的例子。 `ProxyCredential` 屬性設定為 `PSCredential` 物件，如[在 Azure 自動化中管理認證](shared-resources/credentials.md)所述。 
 
 ### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>使用 DSC 設定產生 DSC 中繼設定
 
@@ -259,7 +260,7 @@ ms.locfileid: "83836901"
 如果 PowerShell DSC LCM 預設值符合您的使用案例，而且您想要啟用機器從 「Azure 自動化狀態設定」提取並向此服務報告，您可以使用 Azure 自動化 Cmdlet，以更輕鬆產生所需的 DSC 中繼設定。
 
 1. 在本機環境的機器上，以系統管理員身分開啟 PowerShell 主控台或 VSCode。
-2. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) 連線至 Azure Resource Manager。
+2. 使用 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) 連線至 Azure Resource Manager。
 3. 從您要在其中設定節點的自動化帳戶，針對您想要啟用的機器下載 PowerShell DSC 中繼設定。
 
    ```powershell
@@ -324,8 +325,7 @@ ms.locfileid: "83836901"
 
 - 若要開始使用，請參閱[開始使用 Azure 自動化狀態設定](automation-dsc-getting-started.md)。
 - 若要了解如何編譯 DSC 設定以指派給目標節點，請參閱[在 Azure 自動化狀態設定中編譯 DSC 設定](automation-dsc-compile.md)。
-- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
 - 如需價格資訊，請參閱 [Azure 自動化狀態設定的價格](https://azure.microsoft.com/pricing/details/automation/)。
 - 如需在持續部署管線中使用「Azure 自動化狀態設定」的範例，請參閱[使用 Chocolatey 設定持續部署](automation-dsc-cd-chocolatey.md)。
 - 如需疑難排解資訊，請參閱[對 Azure 自動化狀態設定進行疑難排解](./troubleshoot/desired-state-configuration.md)。

@@ -5,17 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: b6778c4eab4dee382ec38d6218aa647e8aedc4cc
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3399138ef7c14dd2db9133334a08b3984bd26448
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836748"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185991"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>從 Orchestrator 移轉到 Azure 自動化 (Beta)
 
-[System Center 2012 - Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) 中的 Runbook 是根據來自專為 Orchestrator 編寫的整合套件的活動，而 Azure 自動化中的 Runbook 則是根據 Windows PowerShell。 Azure 自動化中[圖形化 Runbook](automation-runbook-types.md#graphical-runbooks) 的外觀都類似 Orchestrator Runbook，其活動代表 PowerShell Cmdlet、子 Runbook 和資產。 除了轉換 Runbook 本身，您必須將具有 Runbook 所使用活動的整合套件轉換為具有 Windows PowerShell Cmdlet 的整合模組。 
+[System Center 2012 - Orchestrator](/previous-versions/system-center/system-center-2012-R2/hh237242(v=sc.12)) 中的 Runbook 是根據來自專為 Orchestrator 編寫的整合套件的活動，而 Azure 自動化中的 Runbook 則是根據 Windows PowerShell。 Azure 自動化中[圖形化 Runbook](automation-runbook-types.md#graphical-runbooks) 的外觀都類似 Orchestrator Runbook，其活動代表 PowerShell Cmdlet、子 Runbook 和資產。 除了轉換 Runbook 本身，您必須將具有 Runbook 所使用活動的整合套件轉換為具有 Windows PowerShell Cmdlet 的整合模組。 
 
-[服務管理自動化](https://technet.microsoft.com/library/dn469260.aspx) (SMA) 會在您的本機資料中心 (例如 Orchestrator) 中儲存並執行 Runbook，而它使用與 Azure 自動化相同的整合模組。 Runbook Converter 會將 Orchestrator Runbook 轉換為圖形化 Runbook，不過 SMA 不支援後者。 您仍然可以將標準活動模組和 System Center Orchestrator 整合模組安裝到 SMA，但是您必須手動[重新編寫您的 Runbook](https://technet.microsoft.com/library/dn469262.aspx)。
+[服務管理自動化](/previous-versions/system-center/system-center-2012-R2/dn469260(v=sc.12)) (SMA) 會在您的本機資料中心 (例如 Orchestrator) 中儲存並執行 Runbook，而它使用與 Azure 自動化相同的整合模組。 Runbook Converter 會將 Orchestrator Runbook 轉換為圖形化 Runbook，不過 SMA 不支援後者。 您仍然可以將標準活動模組和 System Center Orchestrator 整合模組安裝到 SMA，但是您必須手動[重新編寫您的 Runbook](/system-center/sma/authoring-automation-runbooks)。
 
 ## <a name="download-the-orchestrator-migration-toolkit"></a>下載 Orchestrator 移轉工具組
 
@@ -23,28 +24,28 @@ ms.locfileid: "83836748"
 
 ## <a name="import-the-standard-activities-module"></a>匯入標準活動模組
 
-將[標準活動模組](https://docs.microsoft.com/system-center/orchestrator/standard-activities?view=sc-orch-2019)匯入 Azure 自動化。 這包括轉換後的圖形化 Runbook 可使用的標準 Orchestrator 活動的轉換後版本。
+將[標準活動模組](/system-center/orchestrator/standard-activities?view=sc-orch-2019)匯入 Azure 自動化。 這包括轉換後的圖形化 Runbook 可使用的標準 Orchestrator 活動的轉換後版本。
 
 ## <a name="import-orchestrator-integration-modules"></a>匯入 Orchestrator 整合模組
 
-Microsoft 提供 [整合套件](https://technet.microsoft.com/library/hh295851.aspx) ，用於建立 Runbook 以自動化 System Center 元件和其他產品。 這些整合套件有一些目前是基於 OIT，但因為已知的問題，目前無法轉換為整合模組。 針對存取 System Center 的 Runbook 所使用的整合套件，將 [System Center Orchestrator 整合模組](https://www.microsoft.com/download/details.aspx?id=49555) 匯入 Azure 自動化。 此套件包含整合套件的已轉換版本，可以匯入 Azure 自動化和 Service Management Automation 中。  
+Microsoft 提供 [整合套件](/previous-versions/system-center/packs/hh295851(v=technet.10)) ，用於建立 Runbook 以自動化 System Center 元件和其他產品。 這些整合套件有一些目前是基於 OIT，但因為已知的問題，目前無法轉換為整合模組。 針對存取 System Center 的 Runbook 所使用的整合套件，將 [System Center Orchestrator 整合模組](https://www.microsoft.com/download/details.aspx?id=49555) 匯入 Azure 自動化。 此套件包含整合套件的已轉換版本，可以匯入 Azure 自動化和 Service Management Automation 中。  
 
 ## <a name="convert-integration-packs"></a>轉換整合套件
 
-使用[整合套件轉換器](https://docs.microsoft.com/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019)將使用 [Orchestrator 整合工具組 (OIT)](https://technet.microsoft.com/library/hh855853.aspx) 所建立的整合套件轉換為 PowerShell 型的整合模組，以便匯入 Azure 自動化或 Service Management Automation。 執行整合套件轉換器時，您會看到一個精靈，可讓您選取整合套件 (.oip) 檔案。 然後精靈會列出該整合套件所包含的活動，並可讓您選取要移轉的活動。 完成精靈時，它會建立整合模組，其中包含針對原始整合套件中的每個活動相對應的 Cmdlet。
+使用[整合套件轉換器](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019)將使用 [Orchestrator 整合工具組 (OIT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) 所建立的整合套件轉換為 PowerShell 型的整合模組，以便匯入 Azure 自動化或 Service Management Automation。 執行整合套件轉換器時，您會看到一個精靈，可讓您選取整合套件 (.oip) 檔案。 然後精靈會列出該整合套件所包含的活動，並可讓您選取要移轉的活動。 完成精靈時，它會建立整合模組，其中包含針對原始整合套件中的每個活動相對應的 Cmdlet。
 
 > [!NOTE]
 > 未使用 OIT 建立的整合套件，無法使用整合套件轉換器來進行轉換。 另外還有一些 Microsoft 提供的整合套件目前無法使用此工具轉換。 這些整合套件的轉換後版本已提供下載，供您可以將它們安裝在 Azure 自動化或 Service Management Automation 中。
 
 ### <a name="parameters"></a>參數
 
-整合套件中的活動的任何屬性都會轉換成整合模組中對應的 Cmdlet 的參數。  Windows PowerShell Cmdlet 有一組 [一般參數](https://technet.microsoft.com/library/hh847884.aspx) ，可以搭配所有 Cmdlet 使用。 例如，-Verbose 參數會導致 Cmdlet 輸出其工作的詳細資訊。  沒有 Cmdlet 可以具有與一般參數同名的參數。 如果活動具有與一般參數同名的屬性，精靈會提示您為參數提供另一個名稱。
+整合套件中的活動的任何屬性都會轉換成整合模組中對應的 Cmdlet 的參數。  Windows PowerShell Cmdlet 有一組 [一般參數](/powershell/module/microsoft.powershell.core/about/about_commonparameters) ，可以搭配所有 Cmdlet 使用。 例如，-Verbose 參數會導致 Cmdlet 輸出其工作的詳細資訊。  沒有 Cmdlet 可以具有與一般參數同名的參數。 如果活動具有與一般參數同名的屬性，精靈會提示您為參數提供另一個名稱。
 
 ### <a name="monitor-activities"></a>監視器活動
 
-在 Runbook Orchestrator 中監視從 [監視活動](https://technet.microsoft.com/library/hh403827.aspx) 開始，並持續執行等候特定事件叫用。 Azure 自動化不支援監視 Runbook，因此，不會轉換整合套件中的任何監視活動。 相反地，會在監視活動的整合模組中建立預留位置 Cmdlet。  此 Cmdlet 不具任何功能，但它可讓您安裝使用它的任何轉換的 Runbook。 此 Runbook 無法在 Azure 自動化中執行，但可以安裝，使您可以修改它。
+在 Runbook Orchestrator 中監視從 [監視活動](/previous-versions/system-center/system-center-2012-R2/hh403827(v=sc.12)) 開始，並持續執行等候特定事件叫用。 Azure 自動化不支援監視 Runbook，因此，不會轉換整合套件中的任何監視活動。 相反地，會在監視活動的整合模組中建立預留位置 Cmdlet。  此 Cmdlet 不具任何功能，但它可讓您安裝使用它的任何轉換的 Runbook。 此 Runbook 無法在 Azure 自動化中執行，但可以安裝，使您可以修改它。
 
-Orchestrator 包含未包含在整合套件中、但會使用許多 Runbook 的一組 [標準活動](https://technet.microsoft.com/library/hh403832.aspx) 。  標準活動模組是包含這些活動的每個對等的 Cmdlet 的整合模組。 您必須在匯入使用標準活動的任何轉換的 Runbook 之前，於 Azure 自動化中安裝此整合模組。
+Orchestrator 包含未包含在整合套件中、但會使用許多 Runbook 的一組 [標準活動](/previous-versions/system-center/system-center-2012-R2/hh403832(v=sc.12)) 。  標準活動模組是包含這些活動的每個對等的 Cmdlet 的整合模組。 您必須在匯入使用標準活動的任何轉換的 Runbook 之前，於 Azure 自動化中安裝此整合模組。
 
 除了支援轉換的 Runbook，標準活動模組中的 Cmdlet 也可由熟悉 Orchestrator 的其他人在 Azure 自動化中建置新的 Runbook。 雖然所有標準活動的功能都可使用 Cmdlet 執行的，它們的運作方式可能不同。 轉換後標準活動模組中的 Cmdlet 的運作與對應的活動相同，並使用相同的參數。 這可協助您產品轉換到 Azure 自動化 Runbook。
 
@@ -99,7 +100,7 @@ Runbook Converter 會將 Orchestrator Runbook 中的每個活動轉換成 Azure 
 
 會轉換標準活動模組中的所有 Orchestrator 活動。 不過，在此模組有一些標準 Orchestrator 活動，並不會被轉換。 例如，`Send Platform Event` 沒有 Azure 自動化對等項目，因為該事件是 Orchestrator 特有。
 
-[監視器活動](https://technet.microsoft.com/library/hh403827.aspx) ，因為它們在 Azure 自動化中沒有對等項目。 例外狀況是在轉換後整合套件中的監視活動，會轉換成預留位置活動。
+[監視器活動](/previous-versions/system-center/system-center-2012-R2/hh403827(v=sc.12)) ，因為它們在 Azure 自動化中沒有對等項目。 例外狀況是在轉換後整合套件中的監視活動，會轉換成預留位置活動。
 
 如果您使用 `modules` 參數提供整合模組路徑，轉換後整合套件中的所有活動都會被轉換。 針對 System Center 整合套件，您可以使用 System Center Orchestrator 整合模組。
 
@@ -117,7 +118,7 @@ Orchestrator 中的 Runbook 會接受具有 `Initialize Data` 活動的輸入參
 
 ### <a name="invoke-runbook-activity"></a>叫用 Runbook 活動
 
-Orchestrator 中的 Runbook 會使用 `Invoke Runbook` 活動來啟動其他 Runbook。 如果要轉換的 Runbook 包含此活動，並且設定了 `Wait for completion` 選項，則會為它在轉換後的 Runbook 中建立 Runbook 活動。  如果未設定 `Wait for completion` 選項，則會建立使用 [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) 來啟動 Runbook 的工作流程指令碼活動。 將轉換的 Runbook 匯入 Azure 自動化之後，您必須以活動中指定的資訊修改此活動。
+Orchestrator 中的 Runbook 會使用 `Invoke Runbook` 活動來啟動其他 Runbook。 如果要轉換的 Runbook 包含此活動，並且設定了 `Wait for completion` 選項，則會為它在轉換後的 Runbook 中建立 Runbook 活動。  如果未設定 `Wait for completion` 選項，則會建立使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) 來啟動 Runbook 的工作流程指令碼活動。 將轉換的 Runbook 匯入 Azure 自動化之後，您必須以活動中指定的資訊修改此活動。
 
 ## <a name="create-orchestrator-assets"></a>建立 Orchestrator 資產
 
@@ -129,8 +130,8 @@ Orchestrator 會將 Runbook 儲存在資料庫伺服器上，並在Runbook 伺�
 
 ## <a name="related-articles"></a>相關文章
 
-* 如需 Orchestrator 的詳細資訊，請參閱 [System Center 2012 - Orchestrator](https://technet.microsoft.com/library/hh237242.aspx)。
-* 深入瞭解如何將 [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx) 中的服務管理自動化。
-* Orchestrator 活動的詳細資料可在 [Orchestrator 標準活動](https://technet.microsoft.com/library/hh403832.aspx)中找到。
+* 如需 Orchestrator 的詳細資訊，請參閱 [System Center 2012 - Orchestrator](/previous-versions/system-center/system-center-2012-R2/hh237242(v=sc.12))。
+* 深入瞭解如何將 [Service Management Automation](/previous-versions/system-center/system-center-2012-R2/dn469260(v=sc.12)) 中的服務管理自動化。
+* Orchestrator 活動的詳細資料可在 [Orchestrator 標準活動](/previous-versions/system-center/system-center-2012-R2/hh403832(v=sc.12))中找到。
 * 若要取得 Orchestrator 移轉工具組，請參閱[下載 System Center Orchestrator 移轉工具組](https://www.microsoft.com/download/details.aspx?id=47323)。
 * 如需 Azure 自動化混合式 Runbook 背景工作角色的概觀，請參閱[混合式 Runbook 背景工作角色概觀](automation-hybrid-runbook-worker.md)。

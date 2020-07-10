@@ -3,12 +3,12 @@ title: Azure 資源-QnA Maker
 description: QnA Maker 使用數個 Azure 來源，各有不同的用途。 瞭解個別使用它們的方式，可讓您規劃並選取正確的定價層，或知道何時要變更定價層。 瞭解它們的組合使用方式，可讓您在發生問題時找出並加以修正。
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 916f5b9b012d233c6a28d5cbb75ea0b4e073d064
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 7d6598510ae75a76e0a4fcaff59297b4c724ba78
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236078"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171069"
 ---
 # <a name="azure-resources-for-qna-maker"></a>適用于 QnA Maker 的 Azure 資源
 
@@ -34,7 +34,7 @@ QnA Maker 使用數個 Azure 來源，各有不同的用途。 瞭解個別使�
     * 根據您的需求為您的應用程式服務選取適當的[應用程式方案](https://azure.microsoft.com/pricing/details/app-service/plans/)。 您可以[相應增加](https://docs.microsoft.com/azure/app-service/manage-scale-up)或相應減少應用程式。
     * 這應該也會影響您的 Azure**認知搜尋**SKU 選擇，請參閱[這裡](https://docs.microsoft.com/azure/search/search-sku-tier)的詳細資料。 此外，您可能需要使用複本來調整認知搜尋[容量](../../../search/search-capacity-planning.md)。
 
-* **知識庫的大小和數量**：針對您的案例選擇適當的 [Azure 搜尋服務 SKU](https://azure.microsoft.com/pricing/details/search/)。 一般來說，您會根據不同的主旨網域數目來決定所需的知識庫數目。 一旦主體網域（適用于單一語言）應在一個知識庫中。
+* **知識庫的大小和數量**：針對您的案例選擇適當的 [Azure 搜尋服務 SKU](https://azure.microsoft.com/pricing/details/search/)。 一般來說，您會根據不同的主旨網域數目來決定所需的知識庫數目。 一旦將主體網域 (用於單一語言) 就應該在一個知識庫中。
 
     您可以在特定層中發佈 N-1 個知識庫，其中，N 是該層中允許的索引數上限。 同時也請檢查每個層允許的大小上限和文件數目。
 
@@ -44,15 +44,15 @@ QnA Maker 使用數個 Azure 來源，各有不同的用途。 瞭解個別使�
 
 下表為您提供某些高階指導方針。
 
-|                        | QnA Maker 管理 | App Service 方案 | Azue 認知搜尋 | 限制                      |
-| ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| 測試        | 免費 SKU             | 免費層   | 免費層    | 最多發佈 2 個 KB，大小為 50 MB  |
-| 開發/測試環境   | 標準 SKU         | Shared      | 基本        | 最多發佈 14 KB，大小為 2 GB    |
-| 生產環境 | 標準 SKU         | 基本       | 標準     | 最多發佈 49 個 KB，大小為 25 GB |
+|                            | QnA Maker 管理 | App Service 方案 | Azure 認知搜尋 | 限制                      |
+| -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
+| **測試**        | 免費 SKU             | 免費層   | 免費層    | 最多發佈 2 個 KB，大小為 50 MB  |
+| **開發/測試環境**   | 標準 SKU         | 共用      | 基本        | 最多發佈 14 KB，大小為 2 GB    |
+| **生產環境** | 標準 SKU         | 基本       | 標準     | 最多發佈 49 個 KB，大小為 25 GB |
 
 ## <a name="recommended-settings"></a>建議的設定
 
-|目標 QPS | App Service 方案 | Azue 認知搜尋 |
+|目標 QPS | App Service 方案 | Azure 認知搜尋 |
 | -------------------- | ----------- | ------------ |
 | 3             | S1，1個實例   | S1，1個實例    |
 | 50         | S3，10個實例       | S1、12個實例         |
@@ -106,7 +106,7 @@ QnA Maker 資源的資源名稱（例如 `qna-westus-f0-b` ）也會用來命名
 [認知搜尋](../../../search/index.yml)資源是用來：
 
 * 儲存 QnA 配對
-* 在執行時間提供 QnA 配對的初始排名（ranker #1）
+* 在執行時間提供 QnA 配對的初始排名 (ranker #1) 
 
 #### <a name="index-usage"></a>索引使用方式
 
@@ -120,7 +120,7 @@ QnA Maker 資源的資源名稱（例如 `qna-westus-f0-b` ）也會用來命名
 
 ### <a name="qna-maker-resource"></a>QnA Maker 資源
 
-QnA Maker 資源可讓您在執行時間存取撰寫和發佈 Api，以及 QnA 配對的自然語言處理（NLP）型第二個排名層（ranker #2）。
+QnA Maker 資源可讓您存取撰寫和發佈 Api，以及自然語言處理 (NLP) 為基礎的第二個排名層 (ranker #2) 在執行時間的 QnA 配對。
 
 第二個排名會套用可包含中繼資料和後續提示的智慧型篩選準則。
 
@@ -154,7 +154,7 @@ QnA Maker 會建立數個 Azure 資源。 若要減少管理和受益于成本�
 
 ### <a name="using-a-single-cognitive-search-service"></a>使用單一認知搜尋服務
 
-如果您透過入口網站建立 QnA 服務及其相依性（例如搜尋），系統就會為您建立搜尋服務，並連結至 QnA Maker 服務。 建立這些資源之後，您可以更新 App Service 設定，以使用先前現有的搜尋服務，並移除您剛建立的搜尋服務。
+如果您透過入口網站建立 QnA 服務及其相依性 (例如 [搜尋) ]，系統就會為您建立搜尋服務，並連結至 QnA Maker 服務。 建立這些資源之後，您可以更新 App Service 設定，以使用先前現有的搜尋服務，並移除您剛建立的搜尋服務。
 
 瞭解[如何設定](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)QnA Maker 使用與在 QnA Maker 資源建立程式中建立的不同認知服務資源。
 
@@ -172,23 +172,23 @@ QnA Maker 的管理服務僅適用于 QnA Maker 入口網站，以及用於初�
 
 ![金鑰管理](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Name|Location|目的|
+|名稱|位置|用途|
 |--|--|--|
 |撰寫金鑰|[Azure 入口網站](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|這些金鑰可用來存取 [QnA Maker 管理服務 API](https://go.microsoft.com/fwlink/?linkid=2092179)。 這些 Api 可讓您編輯知識庫中的問題和答案，併發布您的知識庫。 當您建立新的 QnA Maker 服務時，會建立這些金鑰。<br><br>在 [**金鑰**] 頁面上的**認知服務**資源上尋找這些金鑰。|
 |查詢端點金鑰|[QnA Maker 入口網站](https://www.qnamaker.ai)|這些金鑰可用來查詢已發佈的知識庫端點，以取得使用者問題的回應。 您通常會在聊天機器人或連接到 QnA Maker 服務的用戶端應用程式程式碼中使用此查詢端點。 當您發佈 QnA Maker 知識庫時，會建立這些金鑰。<br><br>在 [**服務設定**] 頁面中尋找這些金鑰。 從下拉式選單上頁面右上方的使用者功能表中，尋找此頁面。|
 
 ### <a name="subscription-keys"></a>訂用帳戶金鑰
 
-撰寫和查詢端點金鑰這兩者都是更正詞彙。 先前的詞彙是**訂**用帳戶金鑰。 如果您看到參考訂用帳戶金鑰的其他檔，這些就相當於撰寫和查詢端點金鑰（在執行時間中使用）。
+撰寫和查詢端點金鑰這兩者都是更正詞彙。 先前的詞彙是**訂**用帳戶金鑰。 如果您看到參考訂用帳戶金鑰的其他檔，這些就相當於撰寫和查詢端點金鑰 (在執行時間) 中使用。
 
 您必須知道金鑰的存取權、知識庫管理或知識庫查詢，以知道您需要尋找的索引鍵。
 
 ## <a name="recommended-settings-for-network-isolation"></a>網路隔離的建議設定
 
 * 藉由設定[虛擬網路](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)，保護認知服務資源免于公用存取。
-* 從公用存取保護 App Service （QnA 執行時間）：
-    * 只允許來自認知服務 Ip 的流量。 這些已包含在服務標記 "CognitiveServicesManagement" 中。 這是撰寫 Api （建立/更新 KB）來叫用 app service 並據以更新 Azure 搜尋服務服務的必要條件。
-    * 請確定您也允許其他進入點，例如 Bot 服務、QnA Maker 入口網站（可能是您的公司網路）等，以進行預測 "GenerateAnswer" API 存取。
+* 保護 App Service (QnA 執行時間) 從公用存取：
+    * 只允許來自認知服務 Ip 的流量。 這些已包含在服務標記 "CognitiveServicesManagement" 中。 撰寫 Api 時， (建立/更新 KB) 來叫用 app service 並據以更新 Azure 搜尋服務服務，這是必要的。
+    * 請確定您也允許其他進入點，例如 Bot 服務、QnA Maker 入口網站 (可能是您的公司網路) 等等，以進行預測 "GenerateAnswer" API 存取。
     * 查看[服務標記的詳細資訊。](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
 ## <a name="next-steps"></a>後續步驟

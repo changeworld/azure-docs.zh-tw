@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 184e65c929d43e7a5d4ca3be8bd93770c55cd2a5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 24d0123eecc56b56573e94d831283d8d360cd16e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836561"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185920"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自動化 Runbook 類型
 
@@ -67,15 +68,15 @@ PowerShell Runbook 以 Windows PowerShell 為基礎。 您可以直接使用 Azu
 * 必須熟悉 PowerShell 指令碼。
 * Runbook 無法使用[平行處理](automation-powershell-workflow.md#use-parallel-processing)來平行執行多個動作。
 * 發生錯誤時，Runbook 無法使用[檢查點](automation-powershell-workflow.md#use-checkpoints-in-a-workflow)來繼續執行 Runbook。
-* 您可以使用 [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) Cmdlet (其會建立新的工作)，只將 PowerShell 工作流程 Runbook 和圖形化 Runbook 包含為子 Runbook。
+* 您可以使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) Cmdlet (其會建立新的工作)，只將 PowerShell 工作流程 Runbook 和圖形化 Runbook 包含為子 Runbook。
 
 ### <a name="known-issues"></a>已知問題
 
 以下是 PowerShell Runbook 目前已知的問題：
 
-* PowerShell Runbook 無法擷取具有 Null 值的未加密[變數資產](automation-variables.md)。
+* PowerShell Runbook 無法擷取具有 Null 值的未加密[變數資產](./shared-resources/variables.md)。
 * PowerShell Runbook 無法擷取名稱中含有 `*~*` 的變數資產。
-* PowerShell Runbook 中落入迴圈的 [Get-Process](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) 作業大約在 80 次反覆運算之後就會損毀。
+* PowerShell Runbook 中落入迴圈的 [Get-Process](/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) 作業大約在 80 次反覆運算之後就會損毀。
 * 如果 PowerShell Runbook 嘗試同時將大量資料寫入輸出資料流，則可能會失敗。 在處理大型物件時，讓 Runbook 只輸出所需的資訊，通常就可以解決這個問題。 例如，不是使用沒有限制的 `Get-Process`，而是讓 Cmdlet 只輸出必要參數，如 `Get-Process | Select ProcessName, CPU` 中所示。
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell 工作流程 Runbook

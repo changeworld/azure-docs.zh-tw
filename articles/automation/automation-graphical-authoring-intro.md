@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849751"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186328"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>在 Azure 自動化中製作圖形化 Runbook
 
@@ -60,7 +61,7 @@ Azure 自動化中的所有 Runbook 都是 Windows PowerShell 工作流程。 �
 
 參數集會定義接受特定 Cmdlet 值的強制參數和選用參數。 所有的 Cmdlet 至少有一個參數集，而某些則有數個參數集。 如果 Cmdlet 有多個參數集，您必須先選取要使用的參數集，才能設定參數。 您可以變更活動使用的參數集，方法是選取 [參數集]，然後選擇其他參數集。 在此情況下，您已設定的任何參數值都會遺失。
 
-在下列範例中，[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) Cmdlet 有三個參數集。 範例中使用**ListVirtualMachineInResourceGroupParamSet** 參數集，搭配單一選用參數，來傳回資源群組中的所有虛擬機器。 範例也會使用 **GetVirtualMachineInResourceGroupParamSet** 參數集來指定要傳回的虛擬機器。 這個參數集有兩個必要參數和一個選用參數。
+在下列範例中，[Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) Cmdlet 有三個參數集。 範例中使用**ListVirtualMachineInResourceGroupParamSet** 參數集，搭配單一選用參數，來傳回資源群組中的所有虛擬機器。 範例也會使用 **GetVirtualMachineInResourceGroupParamSet** 參數集來指定要傳回的虛擬機器。 這個參數集有兩個必要參數和一個選用參數。
 
 ![參數集](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -263,11 +264,11 @@ Runbook 會定義一或多個輸入參數，以接受輸入。 使用者會在�
 
 ## <a name="handle-runbook-output"></a>處理 Runbook 輸出
 
-圖形化製作會儲存沒有 [Runbook 的輸出](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages)傳出連結的任何活動所建立的資料。 輸出會隨著 Runbook 工作儲存，並且在 Runbook 用作子項時提供給父 Runbook 使用。
+圖形化製作會儲存沒有 [Runbook 的輸出](./automation-runbook-output-and-messages.md)傳出連結的任何活動所建立的資料。 輸出會隨著 Runbook 工作儲存，並且在 Runbook 用作子項時提供給父 Runbook 使用。
 
 ## <a name="work-with-powershell-expressions"></a>使用 PowerShell 運算式
 
-圖形化製作的優點之一是可讓您以最少的 PowerShell 知識建立 Runbook。 然後，目前您還是需要稍微了解如何用 PowerShell 填入某些[參數值](#use-activities)和設定[連結條件](#use-links-for-workflow)。 本節快速簡介 PowerShell 運算式。 PowerShell 的完整詳細資料位於 [使用 Windows PowerShell 撰寫指令碼](https://docs.microsoft.com/powershell/scripting/overview)。
+圖形化製作的優點之一是可讓您以最少的 PowerShell 知識建立 Runbook。 然後，目前您還是需要稍微了解如何用 PowerShell 填入某些[參數值](#use-activities)和設定[連結條件](#use-links-for-workflow)。 本節快速簡介 PowerShell 運算式。 PowerShell 的完整詳細資料位於 [使用 Windows PowerShell 撰寫指令碼](/powershell/scripting/overview)。
 
 ### <a name="use-a-powershell-expression-as-a-data-source"></a>使用 PowerShell 運算式做為資料來源
 
@@ -322,7 +323,7 @@ Runbook 可在更複雜的運算式中使用活動的輸出，如下所示。 �
 
 ### <a name="compare-values"></a>比較值
 
-使用 [比較運算子](https://technet.microsoft.com/library/hh847759.aspx) 來比較值或判斷值是否符合指定的模式。 比較會傳回 True 或 False 值。
+使用 [比較運算子](/powershell/module/microsoft.powershell.core/about/about_comparison_operators) 來比較值或判斷值是否符合指定的模式。 比較會傳回 True 或 False 值。
 
 例如，下列條件會判斷來自 `Get-AzureVM` 活動的虛擬機器目前是否已停止。
 
@@ -336,7 +337,7 @@ $ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-您可以使用[邏輯運算子](https://technet.microsoft.com/library/hh847789.aspx) (例如 `-and` 或 `-or`) 加入多個條件。 例如，下列條件會檢查上述範例中虛擬機器的狀態是否為「已停止」或「正在停止」。
+您可以使用[邏輯運算子](/powershell/module/microsoft.powershell.core/about/about_logical_operators) (例如 `-and` 或 `-or`) 加入多個條件。 例如，下列條件會檢查上述範例中虛擬機器的狀態是否為「已停止」或「正在停止」。
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -344,7 +345,7 @@ $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 
 ### <a name="use-hashtables"></a>使用雜湊表
 
-[雜湊表](https://technet.microsoft.com/library/hh847780.aspx)是名稱/值組，很適合用於傳回一組值。 您可能也看過雜湊表被稱為字典。 某些活動的屬性可能是雜湊表而不是簡單值。
+[雜湊表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)是名稱/值組，很適合用於傳回一組值。 您可能也看過雜湊表被稱為字典。 某些活動的屬性可能是雜湊表而不是簡單值。
 
 使用下列語法建立雜湊表。 雜湊表可以包含任意數目的項目，但是每個項目都由名稱和值定義。
 
@@ -372,7 +373,7 @@ $h
 
 ## <a name="authenticate-to-azure-resources"></a>向 Azure 資源驗證
 
-管理 Azure 資源之 Azure 自動化中的 Runbook 需要向 Azure 驗證。 [執行身分帳戶](automation-create-runas-account.md)也稱為服務主體，是自動化 Runbook 用於存取您訂用帳戶中 Azure Resource Manager 資源的預設機制。 您可以將此功能加入圖形化 Runbook，方法是將使用 PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) Cmdlet 的 `AzureRunAsConnection` 連線資產加入畫布。 您也可以加入 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet。 以下範例說明此案例。
+管理 Azure 資源之 Azure 自動化中的 Runbook 需要向 Azure 驗證。 [執行身分帳戶](./manage-runas-account.md)也稱為服務主體，是自動化 Runbook 用於存取您訂用帳戶中 Azure Resource Manager 資源的預設機制。 您可以將此功能加入圖形化 Runbook，方法是將使用 PowerShell [Get-AutomationConnection](/system-center/sma/manage-global-assets) Cmdlet 的 `AzureRunAsConnection` 連線資產加入畫布。 您也可以加入 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet。 以下範例說明此案例。
 
 ![執行身分驗證活動](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
@@ -389,7 +390,7 @@ $h
 
 在 **APPLICATIONID**、**CERTIFICATETHUMBPRINT**、**TENANTID** 參數欄位，請針對欄位路徑指定屬性的名稱，因為活動會輸出具有多個屬性的物件。 否則，當 Runbook 執行時，會在嘗試進行驗證時失敗。 這就是您使用執行身分帳戶驗證 Runbook 時所需的最低限度。
 
-有些訂閱者會使用 [Azure AD 使用者帳戶](automation-create-aduser-account.md)建立自動化帳戶，用於管理 Azure 傳統部署或用於 Azure Resource Manager 資源。 為了維持這些訂閱者的回溯相容性，在 Runbook 中使用的驗證機制是 `Add-AzureAccount` Cmdlet 搭配[認證資產](automation-credentials.md)。 資產代表可存取 Azure 帳戶的 Active Directory 使用者。
+有些訂閱者會使用 [Azure AD 使用者帳戶](./shared-resources/credentials.md)建立自動化帳戶，用於管理 Azure 傳統部署或用於 Azure Resource Manager 資源。 為了維持這些訂閱者的回溯相容性，在 Runbook 中使用的驗證機制是 `Add-AzureAccount` Cmdlet 搭配[認證資產](./shared-resources/credentials.md)。 資產代表可存取 Azure 帳戶的 Active Directory 使用者。
 
 您可以為圖形化 Runbook 啟用這項功能，方法是將認證資產加入畫布，後面接著使用認證資產進行輸入的 `Add-AzureAccount` 活動。 請參閱下列範例。
 
@@ -434,4 +435,4 @@ Azure 自動化中的每個圖形化 Runbook 都有草稿版本和已發行版�
 * 若要開始使用圖形化 Runbook，請參閱[教學課程：建立圖形化 Runbook](learn/automation-tutorial-runbook-graphical.md)。
 * 若要深入了解 Runbook 類型及其優點和限制，請參閱 [Azure 自動化 Runbook 類型](automation-runbook-types.md)。
 * 若要了解如何使用自動化執行身分帳戶進行驗證，請參閱[執行身分帳戶](automation-security-overview.md#run-as-account)。
-* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

@@ -6,11 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: ac05d5b4eb8dd9d7a39f56ec6efae4831f00c623
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e997f80ceee54a1454128c1308032fefa603f5d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100008"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186141"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色權限與安全性
 
@@ -310,7 +311,7 @@ ms.locfileid: "85100008"
 
 您也可以使用下列 [Azure PowerShell Cmdlet](../role-based-access-control/role-assignments-powershell.md)，設定對自動化帳戶的角色型存取：
 
-[Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) 會列出 Azure Active Directory 中可用的所有 RBAC 角色。 您可以使用此 Cmdlet 搭配 `Name` 參數，列出特定角色可以執行的所有動作。
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) 會列出 Azure Active Directory 中可用的所有 RBAC 角色。 您可以使用此 Cmdlet 搭配 `Name` 參數，列出特定角色可以執行的所有動作。
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -329,7 +330,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) 會列出在指定範圍的 Azure AD RBAC 角色指派。 如果沒有任何參數，此 Cmdlet 會傳回在訂閱下所做的所有角色指派。 使用 `ExpandPrincipalGroups` 參數，列出特定使用者以及該使用者所屬群組的存取權指派。
+[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) 會列出在指定範圍的 Azure AD RBAC 角色指派。 如果沒有任何參數，此 Cmdlet 會傳回在訂閱下所做的所有角色指派。 使用 `ExpandPrincipalGroups` 參數，列出特定使用者以及該使用者所屬群組的存取權指派。
 
 **範例︰** 使用下列 Cmdlet 列出自動化帳戶中的所有使用者以及其角色。
 
@@ -351,7 +352,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) 可將特定範圍的存取權指派給使用者、群組及應用程式。
+使用 [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) 可將特定範圍的存取權指派給使用者、群組及應用程式。
     
 **範例︰** 請使用下列命令來為「自動化帳戶」範圍內的使用者指派「自動化運算子」角色。
 
@@ -373,7 +374,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-使用 [Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) 從特定範圍移除所指定使用者、群組或應用程式的存取權。
+使用 [Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) 從特定範圍移除所指定使用者、群組或應用程式的存取權。
 
 **範例︰** 請使用下列命令，從「自動化」帳戶範圍內的「自動化操作員」角色中移除使用者。
 

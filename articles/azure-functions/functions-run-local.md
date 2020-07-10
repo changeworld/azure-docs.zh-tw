@@ -5,16 +5,16 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 35d408c636e20aef9495e72bc8535e0d7a99431e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8a68c793d9aaf94ad28f2e478254e42ede4800de
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955263"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170355"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
-Azure Functions Core Tools 可讓您從命令提示字元或終端機，在本機電腦上開發及測試您的函式。 您的本機函式可以連線到即時 Azure 服務，而且您可以在本機電腦上使用完整的 Functions 執行階段進行您的函式偵錯。 您甚至可以將函式應用程式部署至您的 Azure 訂用帳戶。
+Azure Functions Core Tools 可讓您使用命令提示字元或終端機，在本機電腦上開發及測試函式。 您的本機函式可以連線到即時 Azure 服務，而且您可以在本機電腦上使用完整的 Functions 執行階段進行您的函式偵錯。 您甚至可以將函式應用程式部署至您的 Azure 訂用帳戶。
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
@@ -63,7 +63,7 @@ Azure Functions Core Tools 有三個版本。 您所使用的版本取決於您�
 
 1. 安裝 Core Tools 套件：
 
-    ##### <a name="v3x-recommended"></a>v3. x （建議選項）
+    ##### <a name="v3x-recommended"></a>建議使用 v3. x () 
 
     ```cmd
     npm install -g azure-functions-core-tools@3
@@ -87,7 +87,7 @@ Azure Functions Core Tools 有三個版本。 您所使用的版本取決於您�
 
 1. 安裝 Core Tools 套件：
 
-    ##### <a name="v3x-recommended"></a>v3. x （建議選項）
+    ##### <a name="v3x-recommended"></a>建議使用 v3. x () 
 
     ```bash
     brew tap azure/functions
@@ -116,15 +116,15 @@ Azure Functions Core Tools 有三個版本。 您所使用的版本取決於您�
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-1. 進行 APT 更新之前，請先設定 .NET 開發來源清單。
+1. 進行 APT 更新之前，請先設定 APT 來源清單。
 
-   若要設定 Ubuntu 的 APT 來源清單，請執行此命令：
+    ##### <a name="ubuntu"></a>Ubuntu
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
-   若要設定 Debian 的 APT 來源清單，請執行此命令：
+    ##### <a name="debian"></a>Debian
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs | cut -d'.' -f 1)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -136,6 +136,7 @@ Azure Functions Core Tools 有三個版本。 您所使用的版本取決於您�
     | --------------- | ----------- |
     | Debian 10 | `buster`  |
     | Debian 9  | `stretch` |
+    | Ubuntu 20.04    | `focal`     |
     | Ubuntu 19.04    | `disco`     |
     | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
@@ -150,7 +151,7 @@ Azure Functions Core Tools 有三個版本。 您所使用的版本取決於您�
 
 1. 安裝 Core Tools 套件：
 
-    ##### <a name="v3x-recommended"></a>v3. x （建議選項）
+    ##### <a name="v3x-recommended"></a>建議使用 v3. x () 
     ```bash
     sudo apt-get update
     sudo apt-get install azure-functions-core-tools-3
@@ -206,22 +207,17 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 | 選項     | 描述                            |
 | ------------ | -------------------------------------- |
-| **`--csharp`**<br/> **`--dotnet`** | 初始化[c # 類別庫（.cs）專案](functions-dotnet-class-library.md)。 |
-| **`--csx`** | 初始化[c # 腳本（. .csx）專案](functions-reference-csharp.md)。 您必須在後續的命令中指定 `--csx`。 |
-| **`--docker`** | 使用以選擇的 `--worker-runtime` 為基礎的基底映像，為容器建立 Dockerfile。 如果您要發佈至自訂 Linux 容器，請使用此選項。 |
+| **`--csx`** | 建立 .NET 函數做為 c # 腳本，這是1.x 版的行為。 僅適用于 `--worker-runtime dotnet` 。 |
+| **`--docker`** | 使用以選擇的為基礎的基底映射，建立容器的 Dockerfile `--worker-runtime` 。 如果您要發佈至自訂 Linux 容器，請使用此選項。 |
 | **`--docker-only`** |  將 Dockerfile 加入至現有的專案。 如果未在 local.settings.js中指定或設定，則會提示您輸入背景工作執行時間。 當您打算將現有的專案發行至自訂的 Linux 容器時，請使用此選項。 |
 | **`--force`** | 即使專案中有現有的檔案，仍初始化專案。 此設定會以相同的名稱覆寫現有的檔案。 專案資料夾中的其他檔案不會受到影響。 |
-| **`--java`**  | 初始化[JAVA 專案](functions-reference-java.md)。 |
-| **`--javascript`**<br/>**`--node`**  | 初始化[JavaScript 專案](functions-reference-node.md)。 |
-| **`--no-source-control`**<br/>**`-n`** | 在 1.x 版中防止依預設建立 Git 存放庫。 在 3.x/2.x 版中，預設不會建立 git 儲存機制。 |
-| **`--powershell`**  | 初始化[PowerShell 專案](functions-reference-powershell.md)。 |
-| **`--python`**  | 初始化[Python 專案](functions-reference-python.md)。 |
+| **`--language`** | 初始化語言特定專案。 當 `--worker-runtime` 設定為時，目前支援 `node` 。 選項為 `typescript` 和 `javascript` 。 您也可以使用 `--worker-runtime javascript` 或 `--worker-runtime typescript` 。  |
+| **`--managed-dependencies`**  | 安裝受控相依性。 目前，只有 PowerShell 背景工作執行時間支援這種功能。 |
 | **`--source-control`** | 控制是否要建立 Git 存放庫。 依預設不會建立存放庫。 設為 `true` 時，就會建立存放庫。 |
-| **`--typescript`**  | 初始化[TypeScript 專案](functions-reference-node.md#typescript)。 |
-| **`--worker-runtime`** | 設定專案的語言執行階段。 支援的值為： `csharp` 、 `dotnet` 、 `java` 、 `javascript` 、 `node` （JavaScript）、 `powershell` 、 `python` 和 `typescript` 。 未設定時，系統會提示您在初始化期間選擇您的執行時間。 |
-
+| **`--worker-runtime`** | 設定專案的語言執行階段。 支援的值為： `csharp` 、 `dotnet` 、 `javascript` 、 `node` (JavaScript) 、 `powershell` 、 `python` 和 `typescript` 。 針對 JAVA，請使用[Maven](functions-reference-java.md#create-java-functions)。未設定時，系統會提示您在初始化期間選擇您的執行時間。 |
+|
 > [!IMPORTANT]
-> 根據預設，2.x/2.x 版的 Core 工具會建立 .NET 執行時間的函式應用程式專案，做為[c # 類別專案](functions-dotnet-class-library.md)（.csproj）。 這些 C# 專案可以與 Visual Studio 或 Visual Studio Code 搭配使用，並在測試期間以及發佈至 Azure 時進行編譯。 如果您想要改為建立和使用在 1.x 版中以及在入口網站中建立的相同 C# 指令碼 (.csx) 檔案，當您建立及部署函式時，必須包含 `--csx` 參數。
+> 根據預設，2.x 版和更新版本的 Core 工具會建立 .NET 執行時間的函式應用程式專案，做為[c # 類別專案](functions-dotnet-class-library.md) ( .csproj) 。 這些 C# 專案可以與 Visual Studio 或 Visual Studio Code 搭配使用，並在測試期間以及發佈至 Azure 時進行編譯。 如果您想要改為建立和使用在 1.x 版中以及在入口網站中建立的相同 C# 指令碼 (.csx) 檔案，當您建立及部署函式時，必須包含 `--csx` 參數。
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
@@ -235,6 +231,8 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 * [C# 指令碼 (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
+* [PowerShell](functions-reference-powershell.md#environment-variables)
+* [Python](functions-reference-python.md#environment-variables)
 
 若未針對設定有效的儲存體連接字串 [`AzureWebJobsStorage`] ，且未使用模擬器，則會顯示下列錯誤訊息：
 
@@ -307,10 +305,11 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 | 引數     | 描述                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | （版本 3.x/2.x）產生在1.x 版和入口網站中使用的相同 c # 腳本（. .csx）範本。 |
-| **`--language`**, **`-l`**| 範本程式語言，例如 C#、F# 或 JavaScript。 這是 1.x 版中的必要選項。 在 3.x/2.x 版中，請勿使用此選項，或選擇符合背景工作執行時間的語言。 |
+| **`--csx`** |  (2.x 版和更新版本。 ) 會產生相同的 c # 腳本 (. x 版和入口網站中使用的) 範本。 |
+| **`--language`**, **`-l`**| 範本程式語言，例如 C#、F# 或 JavaScript。 這是 1.x 版中的必要選項。 在2.x 版和更新版本中，請勿使用此選項，或選擇符合背景工作執行時間的語言。 |
 | **`--name`**, **`-n`** | 函數名稱。 |
 | **`--template`**, **`-t`** | 使用 `func templates list` 命令，以針對每個支援的語言查看可用範本的完整清單。   |
+
 
 例如，若要在單一命令中建立 JavaScript HTTP 觸發程序，請執行：
 
@@ -367,11 +366,10 @@ npm start
 | 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 執行前請勿建置目前的專案。 僅適用於 dotnet 專案。 預設會設定為 false。 1.x 版不支援。 |
-| **`--cert`** | 包含私密金鑰的 .pfx 檔案路徑。 僅能與 `--useHttps` 搭配使用。 1.x 版不支援。 |
-| **`--cors-credentials`** | 針對1.x 版，允許不支援跨原始來源驗證的要求（也就是 cookie 和驗證標頭）。 |
+| **`--cors-credentials`** | 允許跨原始來源驗證的要求 (例如，cookie 和驗證標頭) 不支援1.x 版。 |
 | **`--cors`** | 以逗號分隔的 CORS 來源清單，不含空格。 |
 | **`--language-worker`** | 用來設定語言背景工作角色的引數。 例如，您可以藉由提供[debug 埠和其他必要的引數](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)，啟用語言背景工作的偵錯工具。 1.x 版不支援。 |
-| **`--nodeDebugPort`**, **`-n`** | 要使用 Node.js 偵錯工具的埠。 預設值：Launch.json 中的值或 5858。 僅限 1.x 版。 |
+| **`--cert`** | 包含私密金鑰的 .pfx 檔案路徑。 僅能與 `--useHttps` 搭配使用。 1.x 版不支援。 |
 | **`--password`** | 密碼或包含 .pfx 檔案密碼的檔案。 僅能與 `--cert` 搭配使用。 1.x 版不支援。 |
 | **`--port`**, **`-p`** | 要接聽的本機連接埠。 預設值：7071。 |
 | **`--pause-on-error`** | 暫停以在結束處理程序之前取得其他輸入。 這僅適用於從整合式開發環境 (IDE) 啟動 Core Tools 時。|
@@ -405,7 +403,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 
 您要呼叫下列端點，以在本機執行 HTTP 和 Webhook 觸發的函式：
 
-```http
+```
 http://localhost:{port}/api/{function_name}
 ```
 
@@ -441,7 +439,7 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data "{'name':'Azu
 
 您可以呼叫下列系統管理員端點來觸發非 HTTP 函式：
 
-```http
+```
 http://localhost:{port}/admin/functions/{function_name}
 ```
 
@@ -465,7 +463,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 ```
 ---
 
-#### <a name="using-the-func-run-command-version-1x-only"></a>使用 `func run` 命令（僅限1.x 版）
+#### <a name="using-the-func-run-command-version-1x-only"></a>僅使用 `func run` (1.x 版的命令) 
 
 >[!IMPORTANT]
 > `func run`只有1.x 版的工具才支援此命令。 如需詳細資訊，請參閱[如何設定 Azure Functions 執行階段版本目標](set-runtime-version.md)主題。
@@ -488,7 +486,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
-## <a name="publish-to-azure"></a><a name="publish"></a>發佈至 Azure
+## <a name="publish-to-azure"></a><a name="publish"></a>發行至 Azure
 
 此 Azure Functions Core Tools 支援兩種部署類型：透過[Zip 部署](functions-deployment-technologies.md#zip-deploy)和[部署自訂 Docker 容器](functions-deployment-technologies.md#docker-container)，將函式專案檔直接部署至函式應用程式。 您必須已[在 Azure 訂用帳戶中建立函式應用程式](functions-cli-samples.md#create)，您將在其中部署您的程式碼。 應建置需要編譯的專案，以便部署二進位檔。
 
@@ -511,14 +509,14 @@ func azure functionapp publish <FunctionAppName>
 > 當您在 Azure 入口網站中建立函數應用程式時，它預設會使用版本3.x 的函式執行時間。 若要讓函式應用程式使用 1.x 版的執行階段，請依照[在 1.x 版上執行](functions-versions.md#creating-1x-apps)中的指示操作。
 > 若函式應用程式具有現有的函式，您就無法變更其執行階段版本。
 
-下列發行選項適用于3.x、2.x 和1.x 版：
+下列發行選項適用于所有版本：
 
 | 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  將 local.settings.json 中的設定發佈至 Azure，若設定已經存在，則提示進行覆寫。 如果您使用 Microsoft Azure 儲存體模擬器，請先將應用程式設定變更為[實際的儲存體連接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 在使用 `--publish-local-settings -i` 時隱藏覆寫應用程式設定的提示。|
 
-只有3.x 和2.x 版才支援下列發行選項：
+只有2.x 版和更新版本才支援下列發行選項：
 
 | 選項     | 描述                            |
 | ------------ | -------------------------------------- |
@@ -528,10 +526,10 @@ func azure functionapp publish <FunctionAppName>
 | **`--nozip`** | 關閉預設 `Run-From-Package` 模式。 |
 | **`--build-native-deps`** | 發行 Python 函式應用程式時，略過產生車輪資料夾。 |
 | **`--build`**, **`-b`** | 部署至 Linux 函式應用程式時執行組建動作。 接受： `remote` 和 `local` 。 |
-| **`--additional-packages`** | 建置原生相依性時將安裝的套件清單。 例如： `python3-dev libevent-dev` 。 |
+| **`--additional-packages`** | 建置原生相依性時將安裝的套件清單。 例如：`python3-dev libevent-dev`。 |
 | **`--force`** | 在設定情況下忽略發佈前驗證。 |
 | **`--csx`** | 發佈 C# 指令碼 (.csx) 專案。 |
-| **`--no-build`** | 不要建立 .NET 類別庫函式。 |
+| **`--no-build`** | 發行期間不會建立專案。 針對 Python，則 `pip install` 不會執行。 |
 | **`--dotnet-cli-params`** | 發佈已編譯的 C# (.csproj) 函式時，Core Tools 會呼叫 'dotnet build --output bin/publish'。 傳至此處的任何參數都會附加至命令列。 |
 
 ### <a name="deploy-custom-container"></a>部署自訂容器
@@ -583,7 +581,7 @@ func deploy
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure 入口網站]: https://portal.azure.com 
-[Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
+[Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows \(英文\)
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
 [延伸模組配套]: functions-bindings-register.md#extension-bundles

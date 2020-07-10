@@ -511,6 +511,8 @@
                       href: ../vm-specialized-image-version-powershell.md
                 - name: 更新影像資源
                   href: ../update-image-resources-powershell.md
+                - name: 註冊應用程式以共用
+                  href: ../windows/share-images-across-tenants.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 入口網站
               items:
                 - name: 建立資源庫、映像和 VM
@@ -947,8 +949,6 @@
           items:
             - name: 使用 Azure Site Recovery 移轉到進階儲存體
               href: migrate-to-premium-storage-using-azure-site-recovery.md
-            - name: 轉換至伺服器端加密
-              href: disks-ade-sse-conversion-cli.md
             - name: 轉換為受控磁碟
               href: convert-unmanaged-to-managed-disks.md
             - name: 在標準和進階間轉換磁碟

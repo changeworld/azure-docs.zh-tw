@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f7e24e1b4546c76348e61e3c2736fcfe4b66410d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0560d9a5156f06f7ae7473f63359d9d17926b7ab
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836935"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186447"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>與 Azure 監視器記錄整合
 
@@ -35,7 +36,7 @@ Azure 監視器記錄讓您在「自動化狀態設定」資料上有更高的�
 
 - 2016 年 11 月或更新版本的 [Azure PowerShell](/powershell/azure/overview) (v2.3.0)。
 - Azure 自動化帳戶。 如需詳細資訊，請參閱 [Azure 自動化簡介](automation-intro.md)。
-- Log Analytics 工作區搭配 [自動化與控制] 服務供應項目。 如需詳細資訊，請參閱[開始使用 Azure 監視器中的 Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。
+- Log Analytics 工作區搭配 [自動化與控制] 服務供應項目。 如需詳細資訊，請參閱[開始使用 Azure 監視器中的 Log Analytics](../azure-monitor/log-query/get-started-portal.md)。
 - 至少一個 Azure Automation State Configuration 節點。 如需詳細資訊，請參閱[讓機器上線交由「Azure 自動化狀態設定」來管理](automation-dsc-onboarding.md)。
 - [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) 模組，2.7.0.0 版或更新版本。 關於安裝步驟，請參閱[對 Azure 自動化 Desired State Configuration 進行疑難排解](./troubleshoot/desired-state-configuration.md)。
 
@@ -43,7 +44,7 @@ Azure 監視器記錄讓您在「自動化狀態設定」資料上有更高的�
 
 若要開始將資料從「Azure 自動化狀態設定」匯入 Azure 監視器記錄中，請完成下列步驟：
 
-1. 在 PowerShell 中登入您的 Azure 帳戶。 請參閱[使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps) 登入。
+1. 在 PowerShell 中登入您的 Azure 帳戶。 請參閱[使用 Azure PowerShell](/powershell/azure/authenticate-azureps) 登入。
 1. 執行下列 PowerShell Cmdlet，以取得自動化帳戶的資源識別碼。 如果您有一個以上的自動化帳戶，請選擇資源識別碼，代表您想要設定的帳戶。
 
    ```powershell
@@ -90,7 +91,7 @@ Azure 監視器記錄讓您在「自動化狀態設定」資料上有更高的�
 * 依 `DscResourceStatusData` 篩選，針對套用至該資源的節點設定中呼叫的每個 DSC 資源，傳回其作業。 
 * 依 `DscResourceStatusData` 篩選，針對任何失敗的 DSC 資源，傳回錯誤資訊。
 
-若要深入了解如何建構記錄查詢來尋找資料，請參閱 [Azure 監視器中的記錄查詢概觀](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
+若要深入了解如何建構記錄查詢來尋找資料，請參閱 [Azure 監視器中的記錄查詢概觀](../azure-monitor/log-query/log-query-overview.md)。
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>State Configuration 合規性檢查失敗時傳送電子郵件
 
@@ -104,7 +105,7 @@ Azure 監視器記錄讓您在「自動化狀態設定」資料上有更高的�
    如果您已將來自多個自動化帳戶或訂用帳戶的記錄設定到您的工作區，就能依訂用帳戶或自動化帳戶來將警示分組。 在搜尋 `DscNodeStatusData` 記錄時，請從 `Resource` 欄位衍生出自動化帳戶名稱。
 1. 若要開啟 [建立規則] 畫面，按一下頁面頂端的 [新增警示規則]。 
 
-如需警示設定選項的詳細資訊，請參閱[建立警示規則](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。
+如需警示設定選項的詳細資訊，請參閱[建立警示規則](../azure-monitor/platform/alerts-metric.md)。
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>在所有節點間尋找失敗的 DSC 資源
 
@@ -195,9 +196,8 @@ Azure 自動化診斷會在 Azure 監視器記錄中建立兩種類別的記錄�
 - 如需概觀，請參閱 [Azure 自動化狀態設定概觀](automation-dsc-overview.md)。
 - 若要開始使用，請參閱[開始使用 Azure 自動化狀態設定](automation-dsc-getting-started.md)。
 - 若要了解如何編譯 DSC yrhnbe 設定以指派給目標節點，請參閱[在 Azure 自動化狀態設定中編譯 DSC 設定](automation-dsc-compile.md)。
-- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
 - 如需價格資訊，請參閱 [Azure 自動化狀態設定的價格](https://azure.microsoft.com/pricing/details/automation/)。
 - 如需在持續部署管線中使用「Azure 自動化狀態設定」的範例，請參閱[使用 Chocolatey 設定持續部署](automation-dsc-cd-chocolatey.md)。
-- 若要深入了解如何建構不同的搜尋查詢，以及如何使用 Azure 監視器記錄來檢閱「自動化狀態設定」記錄，請參閱 [Azure 監視器記錄中的記錄搜尋](../log-analytics/log-analytics-log-searches.md)。
-- 若要深入了解 Azure 監視器記錄和資料收集來源，請參閱[在 Azure 監視器記錄中收集 Azure 儲存體資料概觀](../azure-monitor/platform/collect-azure-metrics-logs.md)。
+- 若要深入了解如何建構不同的搜尋查詢，以及如何使用 Azure 監視器記錄來檢閱「自動化狀態設定」記錄，請參閱 [Azure 監視器記錄中的記錄搜尋](../azure-monitor/log-query/log-query-overview.md)。
+- 若要深入了解 Azure 監視器記錄和資料收集來源，請參閱[在 Azure 監視器記錄中收集 Azure 儲存體資料概觀](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。

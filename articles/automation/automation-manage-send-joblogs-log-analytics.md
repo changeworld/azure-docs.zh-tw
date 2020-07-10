@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba498fe9f70664a801172a6ff3705ac41a6371ef
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835237"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186192"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>將 Azure 自動化作業資料轉送至 Azure 監視器記錄
 
@@ -27,8 +28,8 @@ Azure 自動化可以將 Runebook 作業狀態和作業資料流傳送到您的 
 
 若要開始將自動化記錄傳送到 Azure 監視器記錄，您需要：
 
-* 最新版的 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)。
-* Log Analytics 工作區。 如需詳細資訊，請參閱[開始使用 Azure 監視器記錄](../log-analytics/log-analytics-get-started.md)。
+* 最新版的 [Azure PowerShell](/powershell/azureps-cmdlets-docs/)。
+* Log Analytics 工作區。 如需詳細資訊，請參閱[開始使用 Azure 監視器記錄](../azure-monitor/overview.md)。
 * 您「Azure 自動化」帳戶的資源識別碼。
 
 使用下列命令尋找您「Azure 自動化」帳戶的資源識別碼：
@@ -185,8 +186,8 @@ Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要瞭解如何建構搜尋查詢，以及使用 Azure 監視器記錄檢閱自動化工作記錄，請參閱 [Azure 監視器記錄中的記錄搜尋](../log-analytics/log-analytics-log-searches.md)。
+* 若要瞭解如何建構搜尋查詢，以及使用 Azure 監視器記錄檢閱自動化工作記錄，請參閱 [Azure 監視器記錄中的記錄搜尋](../azure-monitor/log-query/log-query-overview.md)。
 * 若要瞭解從 Runbook 建立及擷取輸出與錯誤訊息，請參閱[監視器 Runbook 輸出](automation-runbook-output-and-messages.md)。
 * 若要深入瞭解 Runbook 執行方式、如何監視 Runbook 作業，以及其他技術性詳細資料，請參閱 [Azure 自動化中的 Runbook 執行](automation-runbook-execution.md)。
-* 若要深入瞭解 Azure 監視器記錄和資料收集來源，請參閱[在 Azure 監視器記錄中收集 Azure 儲存體資料概觀](../azure-monitor/platform/collect-azure-metrics-logs.md)。
+* 若要深入瞭解 Azure 監視器記錄和資料收集來源，請參閱[在 Azure 監視器記錄中收集 Azure 儲存體資料概觀](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。
 * 如需 Log Analytics 疑難排解的說明，請參閱[針對 Log Analytics 為什麼不再收集資料的問題進行疑難排解](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data)。

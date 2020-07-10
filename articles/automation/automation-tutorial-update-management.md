@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 79cffa7aedd0fc04dd4a747ef28bc67cacf37905
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: a701a5a9fd77bd801bb535fe1f26bfa17c97757b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204883"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185784"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>管理 Azure VM 的更新和修補程式
 
@@ -206,7 +206,7 @@ ms.locfileid: "84204883"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需範圍設定的詳細資訊，請參閱[限制更新管理部署範圍](automation-scope-configurations-update-management.md)。
-* 如果您需要搜尋儲存在 Log Analytics 工作區中的記錄，請參閱 [Azure 監視器記錄中的記錄搜尋](../log-analytics/log-analytics-log-searches.md)。
+* 如果您需要搜尋儲存在 Log Analytics 工作區中的記錄，請參閱 [Azure 監視器記錄中的記錄搜尋](../azure-monitor/log-query/log-query-overview.md)。
 * 如果已完成部署，請參閱[取消工作區與自動化帳戶的連結以進行更新管理部署](automation-unlink-workspace-update-management.md)。
 * 若要從更新管理中刪除您的 VM，請參閱[從更新管理中移除 VM](automation-remove-vms-from-update-management.md)。
 * 若要針對一般更新管理錯誤進行疑難排解，請參閱[針對更新管理問題進行疑難排解](troubleshoot/update-management.md)。

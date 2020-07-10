@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 95370a45b9fce69e5c1d06ac9bb987e1bfcfba4f
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: d55a47e4eb921c71ff3539d34b6db514684da073
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204067"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186124"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>從 Runbook 啟用更新管理
 
@@ -22,7 +22,7 @@ ms.locfileid: "84204067"
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [自動化帳戶](automation-offering-get-started.md)，以管理電腦。
+* [自動化帳戶](./index.yml)，以管理電腦。
 * [虛擬機器](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="enable-update-management"></a>啟用更新管理
@@ -50,7 +50,7 @@ ms.locfileid: "84204067"
 
 ## <a name="install-and-update-modules"></a>安裝和更新模組
 
-需要更新為最新的 Azure 模組並匯入 [Az.OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) 模組，才能成功為 VM 啟用更新管理。
+需要更新為最新的 Azure 模組並匯入 [Az.OperationalInsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0) 模組，才能成功為 VM 啟用更新管理。
 
 1. 在您的自動化帳戶中，選取 [共用資源] 下的 [模組]。 
 2. 選取 [更新 Azure 模組]，可將 Azure 模組更新為最新版本。 

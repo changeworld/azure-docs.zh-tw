@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: d67e2639c2d4b168babeb7c29ef977d39d9e11cb
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 456a7e4f07b2416e1d2037205574f2e7149e70e2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855297"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185937"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>使用 Runbook 來部署 Amazon Web Services VM
 
@@ -101,7 +101,6 @@ VM 佈建 Runbook 使用 AWS PowerShell 模組來執行工作。 使用下列步
  
 * 若要了解支援哪些 Runbook，請參閱[Azure 自動化 Runbook 類型](automation-runbook-types.md)。
 * 若要使用 Runbook，請參閱[在 Azure 自動化中管理 Runbook](manage-runbooks.md)。
-* 如需 PowerShell 的詳細資料，請參閱 [PowerShell 文件](https://docs.microsoft.com/powershell/scripting/overview)。
+* 如需 PowerShell 的詳細資料，請參閱 [PowerShell 文件](/powershell/scripting/overview)。
 * 關於指令碼支援，請參閱 [Azure 自動化中的原生 PowerShell 指令碼支援](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)。
-* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

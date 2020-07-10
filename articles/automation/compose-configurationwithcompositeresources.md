@@ -6,17 +6,18 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: ef8145f0b447f24265ff4576884b0977190b063e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c5524d2847f59dda1f2c24f67e1e18f18d49b1f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84020348"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185563"
 ---
 # <a name="compose-dsc-configurations"></a>撰寫 DSC 設定
 
 當您需要以多個預期狀態設定 (DSC) 來管理資源時，使用[複合資源](/powershell/scripting/dsc/resources/authoringresourcecomposite)將是最佳途徑。 複合資源是巢狀且參數化的設定，用來在另一個設定中當作 DSC 資源。 使用複合資源可讓您建立複雜的設定，同時允許以個別方式管理和建置基礎複合資源。
 
-Azure 自動化能夠[匯入和編譯複合資源](automation-dsc-compile.md)。 將複合資源匯入到您的自動化帳戶之後，您就可以透過 Azure 入口網站中的**狀態設定（DSC）** 功能使用 Azure 自動化狀態設定。
+Azure 自動化能夠[匯入和編譯複合資源](automation-dsc-compile.md)。 將複合資源匯入到您的自動化帳戶之後，您就可以透過) 中的**狀態設定 (DSC Azure 入口網站**功能來使用 Azure 自動化狀態設定。
 
 ## <a name="compose-a-configuration"></a>撰寫設定
 
@@ -45,5 +46,4 @@ Azure 自動化能夠[匯入和編譯複合資源](automation-dsc-compile.md)。
 - 若要了解如何編譯 DSC 組態，以便可將其指派給目標節點，請參閱[編譯 Azure Automation State Configuration 中的 DSC 組態](automation-dsc-compile.md)。
 - 如需在持續部署管道中使用 Azure Automation State Configuration 的範例，請參閱[使用 Chocolatey 設定持續部署](automation-dsc-cd-chocolatey.md)。
 - 如需定價資訊，請參閱 [Azure Automation State Configuration 定價](https://azure.microsoft.com/pricing/details/automation/)。
-- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
+- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

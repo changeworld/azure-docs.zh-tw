@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 741569740713fef72f714f7cbce38a3c6f075684
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836680"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185990"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>了解適用於 Azure 自動化的 PowerShell 工作流程
 
@@ -20,7 +21,7 @@ Azure 自動化中的 Runbook 會實作為 Windows PowerShell 工作流程，這
 > [!NOTE]
 > PowerShell 工作流程指令碼非常類似於 Windows PowerShell 指令碼，但有一些顯著的差異可能會對新使用者造成混淆。 因此，建議您只有在需要使用[檢查點](#use-checkpoints-in-a-workflow)時，才使用 PowerShell 工作流程來撰寫 Runbook。 
 
-如需這篇文章中的主題完整詳細資訊，請參閱[開始使用 Windows PowerShell 工作流程](https://technet.microsoft.com/library/jj134242.aspx)。
+如需這篇文章中的主題完整詳細資訊，請參閱[開始使用 Windows PowerShell 工作流程](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134242(v=ws.11))。
 
 ## <a name="use-workflow-keyword"></a>使用 Workflow 關鍵字
 
@@ -45,9 +46,9 @@ PowerShell 工作流程程式碼看起來幾乎類似於 PowerShell 指令碼，
 
 活動是工作流程中以序列執行的特定工作。 執行工作流程時，Windows PowerShell 工作流程會自動將許多 Windows PowerShell Cmdlet 轉換為活動。 在 Runbook 中指定其中一個 Cmdlet 時，對應的活動是由 Windows Workflow Foundation 執行。 
 
-如果 Cmdlet 沒有對應的活動，Windows PowerShell 工作流程會自動在 [InlineScript](#use-inlinescript) 活動內執行 Cmdlet。 某些 Cmdlet 會受到排除，除非您明確在 InlineScript 區塊中將其納入，否則無法用在工作流程中。 如需詳細資訊，請參閱[使用指令碼工作流程中的活動](https://technet.microsoft.com/library/jj574194.aspx)。
+如果 Cmdlet 沒有對應的活動，Windows PowerShell 工作流程會自動在 [InlineScript](#use-inlinescript) 活動內執行 Cmdlet。 某些 Cmdlet 會受到排除，除非您明確在 InlineScript 區塊中將其納入，否則無法用在工作流程中。 如需詳細資訊，請參閱[使用指令碼工作流程中的活動](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574194(v=ws.11))。
 
-工作流程活動共用一組通用參數來設定其作業。 請參閱 [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx)。
+工作流程活動共用一組通用參數來設定其作業。 請參閱 [about_WorkflowCommonParameters](/powershell/module/psworkflow/about/about_workflowcommonparameters)。
 
 ### <a name="positional-parameters"></a>位置參數
 
@@ -150,7 +151,7 @@ Workflow Stop-MyService
 * 您不能在 InlineScriptBlock 區塊內使用[平行執行](#use-parallel-processing)。
 * InlineScript 會影響工作流程的延展性，因為它會保留 InlineScript 區塊的整個長度的 Windows PowerShell 工作階段。
 
-如需使用 InlineScript 的詳細資訊，請參閱[在工作流程中執行 Windows PowerShell 命令](https://technet.microsoft.com/library/jj574197.aspx)和 [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx)。
+如需使用 InlineScript 的詳細資訊，請參閱[在工作流程中執行 Windows PowerShell 命令](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574197(v=ws.11))和 [about_InlineScript](/powershell/module/psworkflow/about/about_inlinescript)。
 
 ## <a name="use-parallel-processing"></a>使用平行處理
 
@@ -260,7 +261,7 @@ Workflow Copy-Files
 }
 ```
 
-在您呼叫 [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) 活動或最後一個檢查點之後，使用者名稱認證就不會保存下來，因此您必須將認證設定為 Null，然後在呼叫 `Suspend-Workflow` 或檢查點後，再次從資產存放區擷取認證。  否則，您可能會收到下列錯誤訊息︰`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+在您呼叫 [Suspend-Workflow](/powershell/module/psworkflow/about/about_suspend-workflow) 活動或最後一個檢查點之後，使用者名稱認證就不會保存下來，因此您必須將認證設定為 Null，然後在呼叫 `Suspend-Workflow` 或檢查點後，再次從資產存放區擷取認證。  否則，您可能會收到下列錯誤訊息︰`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 下列同一個程式碼會示範如何在 PowerShell 工作流程 Runbook 中處理這種情況。
 
@@ -289,9 +290,9 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> 針對非圖形化 PowerShell Runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) 的別名。 您可使用這些 Cmdlet，也可以在您的自動化帳戶中[將您的模組更新](automation-update-azure-modules.md)為最新版本。 即使您才剛建立新的自動化帳戶，可能還是需要更新您的模組。 如果您使用以服務主體設定的執行身分帳戶進行驗證，則不必使用這些 Cmdlet。
+> 針對非圖形化 PowerShell Runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) 的別名。 您可使用這些 Cmdlet，也可以在您的自動化帳戶中[將您的模組更新](automation-update-azure-modules.md)為最新版本。 即使您才剛建立新的自動化帳戶，可能還是需要更新您的模組。 如果您使用以服務主體設定的執行身分帳戶進行驗證，則不必使用這些 Cmdlet。
 
-如需有關檢查點的詳細資訊，請參閱 [加入檢查點至指令碼工作流程](https://technet.microsoft.com/library/jj574114.aspx)。
+如需有關檢查點的詳細資訊，請參閱 [加入檢查點至指令碼工作流程](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11))。
 
 ## <a name="next-steps"></a>後續步驟
 

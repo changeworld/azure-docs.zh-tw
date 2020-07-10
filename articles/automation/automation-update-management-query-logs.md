@@ -5,11 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 146cf01d99ccc00a972c98128d8e93e1ed5fb690
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830764"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185699"
 ---
 # <a name="query-update-management-logs"></a>查詢更新管理記錄
 
@@ -193,7 +194,7 @@ Heartbeat
 1. 在 [控制台] 中，開啟 [Microsoft Monitoring Agent]。 在 [Azure Log Analytics] 索引標籤上，代理程式會顯示下列訊息：**Microsoft Monitoring Agent 已成功連線到 Log Analytics**。
 2. 開啟 Windows 事件記錄檔。 移至 [應用程式及服務記錄\Operations Manager] 並從來源 [服務連接器] 搜尋事件識別碼 3000 和事件識別碼 5002。 這些事件表示電腦已向 Log Analytics 工作區註冊，並且正在接收設定。
 
-如果代理程式無法與 Azure 監視器記錄通訊，而且代理程式已設定為透過防火牆或 Proxy 伺服器來與網際網路通訊，請確認防火牆或 Proxy 伺服器已正確設定。 若要了解如何確認防火牆或 proxy 伺服器已正確設定，請參閱 [Windows 代理程式的網路設定](../azure-monitor/platform/agent-windows.md)或 [Linux 代理程式的網路設定](../log-analytics/log-analytics-agent-linux.md)。
+如果代理程式無法與 Azure 監視器記錄通訊，而且代理程式已設定為透過防火牆或 Proxy 伺服器來與網際網路通訊，請確認防火牆或 Proxy 伺服器已正確設定。 若要了解如何確認防火牆或 proxy 伺服器已正確設定，請參閱 [Windows 代理程式的網路設定](../azure-monitor/platform/agent-windows.md)或 [Linux 代理程式的網路設定](../azure-monitor/learn/quick-collect-linux-computer.md)。
 
 > [!NOTE]
 > 如果您的 Linux 系統已設定為與 Proxy 或 Log Analytics 閘道進行通訊，而且您要啟用「更新管理」，請使用下列命令來更新 `proxy.conf` 權限，以將檔案讀取權限授予 omiuser 群組：
@@ -408,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Azure 監視器記錄的詳細資訊，請參閱 [Azure 監視器記錄](../log-analytics/log-analytics-log-searches.md)。
+* 如需 Azure 監視器記錄的詳細資訊，請參閱 [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)。
 * 如需警示的說明，請參閱[設定警示](automation-tutorial-update-management.md#configure-alerts)。

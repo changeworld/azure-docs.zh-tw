@@ -1,7 +1,7 @@
 ---
 title: Twilio 使用 Azure Active Directory B2C 驗證應用程式
 titleSuffix: Azure AD B2C
-description: 瞭解如何使用 Twilio Verify API，在 Azure AD B2C 中整合範例線上付款應用程式。 透過動態連結和強式客戶驗證，符合 PSD2 （付款服務指示詞2）交易需求。
+description: 瞭解如何使用 Twilio Verify API，在 Azure AD B2C 中整合範例線上付款應用程式。 符合 PSD2 (付款服務指示 2) 透過動態連結和強式客戶驗證的交易需求。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 57dbec2b91d313c9c93c141c9f3ec839a299d47d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 840d2afa72de290d5534adc766f8634efa6926e8
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385479"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170049"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>整合 Twilio Verify 應用程式與 Azure Active Directory B2C
 
-在本逐步解說中，您將瞭解如何使用 Twilio Verify API，將 Azure Active Directory B2C （Azure AD B2C）中的範例線上付款應用程式整合在一起。 藉由使用 Twilio Verify 應用程式，Azure AD B2C 客戶可以透過動態連結和強式客戶驗證，符合 PSD2 （付款服務指示詞2）交易需求。
+在本逐步解說中，您將瞭解如何使用 Twilio Verify API，將 Azure Active Directory B2C (Azure AD B2C) 中的範例線上付款應用程式整合在一起。 藉由使用 Twilio 驗證應用程式，Azure AD B2C 客戶可以透過動態連結和強式客戶驗證，符合 PSD2 (付款服務指示詞 2) 交易需求。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -42,13 +42,13 @@ ms.locfileid: "85385479"
 
     ![twilio 流程](media/partner-twilio/twilio-flow.png)
 
-|      |      |
+| 步驟 | 描述 |
 |------|------|
 | 1     | 使用者會起始登入或註冊 PSD2 示範應用程式。 使用者會透過 Azure AD B2C 合併登入和註冊原則來進行驗證。 權杖會傳回給應用程式。 在註冊時，會使用 SMS/Phone 驗證使用者的電話號碼，並記錄在其 Azure AD B2C 帳戶上。     |
 | 2     | 使用者會起始高風險的交易，例如 $50.00 的傳輸。 使用者目前的存取權杖會針對 PolicyId 進行評估，以判斷使用者是否已經透過「逐步執行自訂原則」進行驗證。     |
 | 3     | 應用程式會記錄交易值和收款人（$50.00 和 John Doe），並產生已簽署的權杖。 這個 token 稱為 `id_token_hint` ，並包含宣告 `amount:$500, payee:john doe` 。 `id_token_hint`會隨著要求一起傳送至 Azure AD B2C 的自訂原則，該原則會與 Twilio 整合。     |
 | 4     | Azure AD B2C 藉由檢查應用程式 OpenId Connect 端點來驗證 id_token_hint 的簽章 `/.well-known` 。 驗證之後，它會從這個權杖中解壓縮宣告，特別是 `amount` 和 `payee` 。 使用者會看到一個頁面，以透過 SMS 訊息驗證其行動電話號碼。     |
-| 5     | 使用者透過 SMS 訊息要求驗證其電話號碼，並 Azure AD B2C 對 Twilio 的驗證 API 端點提出 REST API 要求。 它也會在 `amount` PSD2 過程中傳送交易和， `payee` 以產生單次密碼（OTP）。 Twilio 會將 SMS 訊息傳送給使用者的已註冊電話號碼。     |
+| 5     | 使用者透過 SMS 訊息要求驗證其電話號碼，並 Azure AD B2C 對 Twilio 的驗證 API 端點提出 REST API 要求。 它也會傳送交易 `amount` 和 `payee` 作為 PSD2 流程的一部分，以產生 (OTP) 的一次性密碼。 Twilio 會將 SMS 訊息傳送給使用者的已註冊電話號碼。     |
 | 6     |  使用者輸入 SMS 訊息中收到的 OTP，然後將它提交給 Azure AD B2C。 Azure AD B2C 使用此 OTP 對 Twilio 的驗證 API 提出 API 要求，以確認 OTP 是否正確。 最後，會向應用程式發出權杖，並以新的 PolicyId 來表示使用者已逐步執行其驗證。    |
 |      |      |
 

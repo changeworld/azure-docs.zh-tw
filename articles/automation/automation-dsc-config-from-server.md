@@ -10,11 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 775fae09c4d618551327669362cd28a0ae2cc801
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 8f376fb383e50a39f0f12d45cf9b5ae47ad6fcbb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837003"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186498"
 ---
 # <a name="create-configurations-from-existing-servers"></a>從現有的伺服器建立設定
 
@@ -37,8 +38,8 @@ ms.locfileid: "83837003"
 
 使用解決方案的結果是產生與 SharePointDSC 設定指令碼搭配使用的[設定資料](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data)。
 
-產生資料檔案後，您就可以將其與 [DSC 設定指令碼](/powershell/scripting/dsc/overview/overview)搭配使用來產生 MOF 檔案，並[將 MOF 檔案上傳到 Azure 自動化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
-然後從[內部部署](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)或[在 Azure 中](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms)註冊您的伺服器，以提取設定。
+產生資料檔案後，您就可以將其與 [DSC 設定指令碼](/powershell/scripting/dsc/overview/overview)搭配使用來產生 MOF 檔案，並[將 MOF 檔案上傳到 Azure 自動化](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation)。
+然後從[內部部署](./automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines)或[在 Azure 中](./automation-dsc-onboarding.md#enable-azure-vms)註冊您的伺服器，以提取設定。
 
 若要試用 ReverseDSC，請造訪 [PowerShell 資源庫](https://www.powershellgallery.com/packages/ReverseDSC/)並下載解決方案，或按一下 [專案網站] 以檢視[文件](https://github.com/Microsoft/sharepointDSC.reverse)。
 

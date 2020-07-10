@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78de242cb6fd1d670dc9564a2725070b7424b5b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc0bcd4a978912dccc9f08802acbf2ec1151b3a1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385547"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170100"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>整合 Trusona 與 Azure Active Directory B2C
 
-Trusona 是獨立軟體廠商（ISV）提供者，可啟用無密碼 authentication、多重要素驗證和數位授權掃描，以協助保護登入的安全。 在本文中，您將瞭解如何在 Azure AD B2C 中將 Trusona 新增為身分識別提供者，以啟用無密碼 authentication。
+Trusona 是獨立軟體廠商， (ISV) 提供者，可啟用無密碼 authentication、多重要素驗證和數位授權掃描，以協助保護登入的安全。 在本文中，您將瞭解如何在 Azure AD B2C 中將 Trusona 新增為身分識別提供者，以啟用無密碼 authentication。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -40,15 +40,14 @@ Trusona 是獨立軟體廠商（ISV）提供者，可啟用無密碼 authenticat
 
 ![Trusona 架構圖](media/partner-trusona/trusona-architecture-diagram.png)
 
-
-|  |  |
+| 步驟 | 描述 |
 |------|------|
 |1     | 使用者嘗試登入或註冊應用程式。 使用者會透過 Azure AD B2C 註冊和登入原則來進行驗證。 在註冊期間，會使用來自 Trusona 應用程式的使用者先前已驗證電子郵件地址。     |
-|2     | Azure B2C 會使用隱含流程，將使用者重新導向至 Trusona OpenID Connect （OIDC）識別提供者。     |
+|2     | Azure B2C 會使用隱含流程，將使用者重新導向至 Trusona OpenID Connect (OIDC) 識別提供者。     |
 |3     | 針對以桌上型電腦為基礎的登入，Trusona 會顯示唯一、無狀態、動畫及動態的 QR 代碼，以使用 Trusona 應用程式進行掃描。 針對以行動為基礎的登入，Trusona 會使用「深層連結」來開啟 Trusona 應用程式。 這兩種方法會用於裝置，最後是使用者探索。     |
 |4     | 使用者會使用 Trusona 應用程式掃描顯示的 QR 代碼。     |
 |5     | 使用者帳戶可在 Trusona 雲端服務中找到，並已備妥驗證。     |
-|6     | Trusona 雲端服務會透過傳送至 Trusona 應用程式的推播通知，向使用者發出驗證挑戰：<br>a. 系統會提示使用者提供驗證挑戰。 <br> b. 使用者選擇接受或拒絕挑戰。 <br> c. 系統會要求使用者使用 OS 安全性（例如，生物識別、密碼、PIN 或模式），透過安全記憶體保護區/受信任的執行環境中的私密金鑰來確認和簽署挑戰。 <br> d. Trusona 應用程式會以即時驗證的參數為基礎，產生動態的反重新執行裝載。 <br> e. 整個回應是由安全記憶體保護區/受信任執行環境中的私密金鑰簽署（一次），並傳回到 Trusona 雲端服務進行驗證。      |
+|6     | Trusona 雲端服務會透過傳送至 Trusona 應用程式的推播通知，向使用者發出驗證挑戰：<br>a. 系統會提示使用者提供驗證挑戰。 <br> b. 使用者選擇接受或拒絕挑戰。 <br> c. 系統會要求使用者使用 OS 安全性 (例如，生物識別、密碼、PIN 或模式) ，以使用安全記憶體保護區/受信任的執行環境中的私密金鑰來確認和簽署挑戰。 <br> d. Trusona 應用程式會以即時驗證的參數為基礎，產生動態的反重新執行裝載。 <br> e. 整個回應是由安全記憶體保護區/受信任執行環境中的私密金鑰) 的第二次登入 (，並傳回至 Trusona 雲端服務進行驗證。      |
 |7     |  Trusona 雲端服務會將使用者重新導向回到起始應用程式，並 id_token。 Azure AD B2C 使用 Trusona 的已發佈 OpenID 設定（如識別提供者安裝期間所設定）來驗證 id_token。    |
 |  |  |
 
@@ -68,12 +67,12 @@ Trusona 是獨立軟體廠商（ISV）提供者，可啟用無密碼 authenticat
 
 7. 選取 **[建立 OpenID Connect 整合]**。
 
-8. 提供您選擇的**名稱**，並使用先前在 [**用戶端重新導向主機] 欄位**中提供的網域資訊（例如 Contoso）。  
+8. 提供您選擇的**名稱**，並使用先前提供的網域資訊 (例如，Contoso) 在 [**用戶端重新導向主機] 欄位**中。  
 
    > [!NOTE]
    > Azure Active Directory 的初始功能變數名稱會用來做為用戶端重新導向主機。
 
-9. 依照[Trusona 整合指南](https://docs.trusona.com/integrations/aad-b2c-integration/)中的指示進行。 出現提示時，請使用上一個步驟中所參考的初始功能變數名稱（例如 Contoso）。  
+9. 依照[Trusona 整合指南](https://docs.trusona.com/integrations/aad-b2c-integration/)中的指示進行。 出現提示時，請使用初始功能變數名稱 (例如，Contoso) 在上一個步驟中提及。  
 
 ## <a name="integrate-with-azure-ad-b2c"></a>與 Azure AD B2C 整合
 
@@ -96,7 +95,7 @@ Trusona 是獨立軟體廠商（ISV）提供者，可啟用無密碼 authenticat
 
 ### <a name="configure-an-identity-provider"></a>設定身分識別提供者  
 
-1. 選取 [**識別提供者類型**  >  **] [OpenID connect （預覽）]**。
+1. 選取**識別提供者類型**  >  **OpenID connect (預覽) **。
 
 2. 填寫表單以設定識別提供者：  
 
@@ -104,7 +103,7 @@ Trusona 是獨立軟體廠商（ISV）提供者，可啟用無密碼 authenticat
    | :--- | :--- |
    | 中繼資料 URL | `https://gateway.trusona.net/oidc/.well-known/openid-configuration`|
    | 用戶端識別碼 | 將透過電子郵件傳送給您，Trusona |
-   | 影響範圍 | OpenID 設定檔電子郵件 |
+   | 範圍 | OpenID 設定檔電子郵件 |
    | 回應類型 | Id_token |
    | 回應模式  | Form_post |
 
@@ -128,7 +127,7 @@ Trusona 是獨立軟體廠商（ISV）提供者，可啟用無密碼 authenticat
 
 1. 您現在應該會看到 Trusona 作為 B2C 身分識別提供者中所列的**新 OpenID Connect 識別提供者**。
 
-2. 從左側導覽面板中選取 [**使用者流程（原則）** ]。
+2. 從左側導覽面板中選取 [**使用者流程] ([原則) ** ]。
 
 3. 選取 **[**  >  **新增使用者流程**] [  >  **註冊並登入**]。
 

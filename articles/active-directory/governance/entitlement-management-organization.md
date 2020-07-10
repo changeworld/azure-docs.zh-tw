@@ -16,15 +16,16 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8928e7293f184e8eb366df6a29e50cbea6a7c93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 272dd95b97c65ecc52dd73909f1ed87d5e5ae3ca
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078193"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170491"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中新增已連線的組織
 
-有了 Azure Active Directory （Azure AD）權利管理，您就可以與組織外部的人員共同作業。 如果您經常與外部 Azure AD 目錄或網域中的使用者共同作業，您可以將他們新增為已連線的組織。 本文說明如何新增已連線的組織，讓您的組織外部使用者可以要求您的目錄中的資源。
+有了 Azure Active Directory (Azure AD) 的權利管理，您就可以與組織外部的人員共同作業。 如果您經常與外部 Azure AD 目錄或網域中的使用者共同作業，您可以將他們新增為已連線的組織。 本文說明如何新增已連線的組織，讓您的組織外部使用者可以要求您的目錄中的資源。
 
 ## <a name="what-is-a-connected-organization"></a>什麼是已連線的組織？
 
@@ -43,7 +44,7 @@ Azure AD 目錄或網域驗證使用者的方式，取決於驗證類型。 已�
 
 - Azure AD
 - [直接同盟](../b2b/direct-federation.md)
-- [一次性密碼](../b2b/one-time-passcode.md)（網域）
+- 網域) [的一次性密碼](../b2b/one-time-passcode.md) (
 
 如需如何新增已連線組織的示範，請觀看下列影片：
 
@@ -53,7 +54,7 @@ Azure AD 目錄或網域驗證使用者的方式，取決於驗證類型。 已�
 
 若要將外部 Azure AD 目錄或網域新增為已連線的組織，請遵循本節中的指示。
 
-必要條件**角色**：*全域管理員*、*使用者系統管理員*或*來賓邀請者*
+必要條件**角色**：*全域管理員*或*使用者系統管理員*
 
 1. 在 [Azure 入口網站中，選取 [ **Azure Active Directory**]，然後選取 [身分**識別管理**]。
 
@@ -78,7 +79,7 @@ Azure AD 目錄或網域驗證使用者的方式，取決於驗證類型。 已�
 1. 選取 [**新增**] 以新增 Azure AD 目錄或網域。 目前，您只能為每個連線的組織新增一個 Azure AD 目錄或網域。
 
     > [!NOTE]
-    > Azure AD 目錄或網域中的所有使用者都可以要求此存取封裝。 這包括從與目錄相關聯的所有子域 Azure AD 的使用者，除非這些網域被 Azure AD 企業對企業（B2B）允許或拒絕清單封鎖。 如需詳細資訊，請參閱[允許或封鎖對特定組織的 B2B 使用者的邀請](../b2b/allow-deny-list.md)。
+    > Azure AD 目錄或網域中的所有使用者都可以要求此存取封裝。 這包括從與目錄相關聯的所有子域 Azure AD 的使用者，除非這些網域被 Azure AD 企業對企業 (B2B) 允許或拒絕清單封鎖。 如需詳細資訊，請參閱[允許或封鎖對特定組織的 B2B 使用者的邀請](../b2b/allow-deny-list.md)。
 
 1. 新增 Azure AD 目錄或網域之後，請選取 [**選取**]。
 

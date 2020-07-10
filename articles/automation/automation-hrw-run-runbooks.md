@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8ea32b2e393a13f1725ff7a83f4b4f2191b59ddb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 22ab982abe9f73aa77cb9bb2c8d3eaa383bc42fb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835303"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186209"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>在混合式 Runbook 背景工作上啟動 Runbook
 
@@ -21,7 +22,7 @@ ms.locfileid: "83835303"
 
 Azure 自動化在混合式 Runbook 背景工作角色上處理工作，與在 Azure 沙箱中執行的作業有點不同。 如果有長時間執行的 Runbook，請確定能夠接受可能重新啟動。 如需作業行為的詳細資訊，請參閱[混合式 Runbook 背景工作角色作業](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs)。
 
-請記住，混合式 Runbook 背景工作角色的作業是在 Windows 上的本機 **System** 帳戶或在 Linux 上的 **nxautomation** 帳戶下執行。 針對 Linux，請確定 **nxautomation** 帳戶可存取 Runbook 模組所儲存的位置。 您使用 [Install 模組](/powershell/module/powershellget/install-module) Cmdlet 時，請務必為 `Scope` 參數指定 AllUsers，以確保 **nxautomation** 帳戶具有存取權。 如需 Linux 上的 PowerShell 有關的詳細資訊，請參閱[非 Windows 平台上的 PowerShell 已知問題](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms)。
+請記住，混合式 Runbook 背景工作角色的作業是在 Windows 上的本機 **System** 帳戶或在 Linux 上的 **nxautomation** 帳戶下執行。 針對 Linux，請確定 **nxautomation** 帳戶可存取 Runbook 模組所儲存的位置。 您使用 [Install 模組](/powershell/module/powershellget/install-module) Cmdlet 時，請務必為 `Scope` 參數指定 AllUsers，以確保 **nxautomation** 帳戶具有存取權。 如需 Linux 上的 PowerShell 有關的詳細資訊，請參閱[非 Windows 平台上的 PowerShell 已知問題](/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms)。
 
 ## <a name="set-up-runbook-permissions"></a>設定 Runbook 權限
 
@@ -33,7 +34,7 @@ Azure 自動化在混合式 Runbook 背景工作角色上處理工作，與在 A
 
 ## <a name="use-runbook-authentication-to-local-resources"></a>對本機資源使用 Runbook 驗證
 
-如果準備可提供自己對資源驗證的 Runbook，請在 Runbook 中使用[認證](automation-credentials.md)和[憑證](automation-certificates.md)資產。 有數個 Cmdlet 可讓您指定認證，讓 Runbook 可以向不同的資源進行驗證。 下列範例顯示會重新啟動電腦的 Runbook 的一部分。 它會從認證資產擷取認證和從變數資產擷取電腦的名稱，然後使用這些值搭配 `Restart-Computer` Cmdlet。
+如果準備可提供自己對資源驗證的 Runbook，請在 Runbook 中使用[認證](./shared-resources/credentials.md)和[憑證](./shared-resources/certificates.md)資產。 有數個 Cmdlet 可讓您指定認證，讓 Runbook 可以向不同的資源進行驗證。 下列範例顯示會重新啟動電腦的 Runbook 的一部分。 它會從認證資產擷取認證和從變數資產擷取電腦的名稱，然後使用這些值搭配 `Restart-Computer` Cmdlet。
 
 ```powershell
 $Cred = Get-AutomationPSCredential -Name "MyCredential"
@@ -58,7 +59,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 2. 在 VM 上設定 Azure 資源的受控識別。 請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)。
 3. 在 Resource Manager 中將您的 VM 存取權授與資源群組。 請參閱[使用 Windows VM 系統指派的受控識別來存取 Resource Manager](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)。
 4. 在 VM 上安裝混合式 Runbook 背景工作角色。 請參閱[部署 Windows 混合式 Runbook 背景工作角色](automation-windows-hrw-install.md)或[部署 Linux 混合式 Runbook 背景工作角色](automation-linux-hrw-install.md)。
-5. 更新 Runbook 以搭配使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) Cmdlet 與 `Identity` 參數，以向 Azure 資源進行驗證。 此組態可減少使用執行身分帳戶及執行相關聯的帳戶管理。
+5. 更新 Runbook 以搭配使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) Cmdlet 與 `Identity` 參數，以向 Azure 資源進行驗證。 此組態可減少使用執行身分帳戶及執行相關聯的帳戶管理。
 
     ```powershell
     # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -73,7 +74,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 ## <a name="use-runbook-authentication-with-run-as-account"></a>搭配執行身分帳戶使用 Runbook 驗證
 
-您不需要讓 Runbook 提供自己的驗證給本機資源，您可以針對混合式 Runbook 背景工作角色群組指定執行身分帳戶。 若要這麼做，您必須定義具有本機資源存取權的[認證資產](automation-credentials.md)。 這些資源包括憑證存放區，以及在群組中以混合式 Runbook 背景工作角色的這些認證執行的所有 Runbook。
+您不需要讓 Runbook 提供自己的驗證給本機資源，您可以針對混合式 Runbook 背景工作角色群組指定執行身分帳戶。 若要這麼做，您必須定義具有本機資源存取權的[認證資產](./shared-resources/credentials.md)。 這些資源包括憑證存放區，以及在群組中以混合式 Runbook 背景工作角色的這些認證執行的所有 Runbook。
 
 認證的使用者名稱必須是下列格式之一：
 
@@ -83,7 +84,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 使用下列程序以針對混合式 Runbook 背景工作角色群組指定執行身分帳戶：
 
-1. 建立具有本機資源存取權的 [認證資產](automation-credentials.md) 。
+1. 建立具有本機資源存取權的 [認證資產](./shared-resources/credentials.md) 。
 2. 在 Azure 入口網站中，開啟自動化帳戶。
 3. 選取 [Hybrid Worker 群組]，然後選取特定群組。
 4. 選取 [所有設定]，然後選取 [Hybrid 背景工作角色群組設定]。
@@ -298,7 +299,7 @@ gpg –-clear-sign <runbook name>
 
 在 Azure 入口網站中啟動 Runbook 時，您會看到 [執行於] 選項，您可以選取 [Azure] 或 [Hybrid Worker]。 如果您選取 [混合式背景工作角色]，您可以從下拉式清單中選擇混合式 Runbook 背景工作角色群組。
 
-使用 PowerShell 啟動 Runbook 時，請使用 `RunOn` 參數搭配 [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) Cmdlet。 下列範例使用 Windows PowerShell 在混合式 Runbook 背景工作角色群組上啟動名為 **Test-Runbook** 的 Runbook。
+使用 PowerShell 啟動 Runbook 時，請使用 `RunOn` 參數搭配 [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) Cmdlet。 下列範例使用 Windows PowerShell 在混合式 Runbook 背景工作角色群組上啟動名為 **Test-Runbook** 的 Runbook。
 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
@@ -307,5 +308,5 @@ Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name
 ## <a name="next-steps"></a>後續步驟
 
 * 如果您的 Runbook 未順利完成，請檢閱 [Runbook 執行失敗](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)中的疑難排解指南。
-* 如需 PowerShell 的詳細資訊 (包括語言參考和學習模組)，請參閱 [PowerShell 文件](https://docs.microsoft.com/powershell/scripting/overview)。
-* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 如需 PowerShell 的詳細資訊 (包括語言參考和學習模組)，請參閱 [PowerShell 文件](/powershell/scripting/overview)。
+* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

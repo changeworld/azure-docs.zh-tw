@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d34bb14dd0f474ff9350fec513c02fbb470d6738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7567302be8d717cda3627af303128bfb704bd014
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385649"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170134"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 IDology 的教學課程 
 
@@ -41,7 +41,7 @@ IDology 整合包含下列元件：
 
 ![IDology 架構圖](media/partner-idology/idology-architecture-diagram.png)
 
-|      |      |
+| 步驟 | 描述 |
 |------|------|
 |1     | 使用者抵達登入頁面。 |
 |2     | 使用者選取註冊選項來建立新帳戶，並在頁面中輸入資訊。 Azure AD B2C 會收集使用者屬性。 |
@@ -75,7 +75,7 @@ IDology 整合包含下列元件：
 
 應用程式設定可以[在 Azure App Service 中設定](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)。 使用此方法時，可以安全地設定設定，而不需要將它們簽入存放庫。 您必須將下列設定提供給 Rest API：
 
-| 應用程式設定 | 來源 | 備註 |
+| 應用程式設定 | 來源 | 附註 |
 | :-------- | :------------| :-----------|
 |IdologySettings:ApiUsername | IDology 帳戶設定 |     |
 |IdologySettings:ApiPassword | IDology 帳戶設定 |     |
@@ -125,7 +125,7 @@ IDology 整合包含下列元件：
 
 3. 選取 [**執行使用者流程**]，然後選取設定：
 
-   1. **應用程式**-選取已註冊的應用程式（範例是 JWT）。
+   1. **應用程式**-選取已註冊的應用程式 (範例是 JWT) 。
 
    1. **回復 url** -選取 [重新**導向 url**]。
 
