@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 40460b58ede0ca0da8fe25475906bdbe41bfffe0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29605fc2a9094f70c26487691e74a4dd72a85813
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80158277"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147276"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>如何流量分析來分析裝置資料
 
@@ -86,9 +86,11 @@ Azure IoT Central 提供豐富的分析功能來分析歷程記錄趨勢，並�
 
   ![放大資料](media/howto-create-analytics/zoom.png)
 
-在省略號底下，有更多的圖表控制項可以與資料互動。
+在省略號底下，有更多的圖表控制項可以與資料互動：
 
 - **顯示格線：** 您的結果會以表格格式提供，可讓您查看每個資料點的特定值。
+
+- **下載為 CSV：** 您的結果可匯出為逗號分隔值 (CSV) 檔案。 CSV 檔案包含每個裝置的資料。 系統會使用指定的間隔和時間範圍來匯出結果。 
 
 - 卸載**標記：**「卸載標記」控制項提供一個方法來錨定圖表上的特定資料點。 當您嘗試在不同的時間週期比較多行的資料時，這會很有用。
 

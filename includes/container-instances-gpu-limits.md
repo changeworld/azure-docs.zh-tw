@@ -13,7 +13,7 @@ ms.locfileid: "77117817"
 ---
 ### <a name="resource-availability"></a>資源可用性
 
-| OS | GPU SKU | GPU 計數 | 最大 CPU | 最大記憶體（GB） | 儲存體 (GB) |
+| OS | GPU SKU | GPU 計數 | 最大 CPU | 最大記憶體 (GB)  | 儲存體 (GB) |
 | --- | --- | --- | --- | --- | --- |
 | Linux | K80 | 1 | 6 | 56 | 50 |
 | Linux | K80 | 2 | 12 | 112 | 50 |

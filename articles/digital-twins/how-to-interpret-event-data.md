@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f6794559c2296b02ef61d0e280d29456904ae607
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e2a3e6c7fd5ecd305d00278668ad0bfb9a66001
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609294"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142442"
 ---
 # <a name="understand-event-data"></a>瞭解事件資料
 
@@ -28,7 +28,7 @@ Azure 數位 Twins 中的不同事件會產生**通知**，讓解決方案後端
 
 ### <a name="event-notification-headers"></a>事件通知標頭
 
-通知訊息標頭會以索引鍵/值組來表示。 根據使用的通訊協定（MQTT、AMQP 或 HTTP），訊息標頭會以不同的方式序列化。 本節討論通知訊息的一般標頭資訊，而不論所選擇的特定通訊協定和序列化為何。
+通知訊息標頭會以索引鍵/值組來表示。 根據 (MQTT、AMQP 或 HTTP) 所使用的通訊協定而定，訊息標頭會以不同的方式序列化。 本節討論通知訊息的一般標頭資訊，而不論所選擇的特定通訊協定和序列化為何。
 
 有些通知符合 CloudEvents 標準。 CloudEvents 一致性如下所示。
 * 從裝置發出的通知會繼續遵循現有的通知規格
@@ -44,7 +44,7 @@ Azure 數位 Twins 中的不同事件會產生**通知**，讓解決方案後端
 
 ### <a name="event-notification-bodies"></a>事件通知主體
 
-通知訊息的主體會在這裡以 JSON 描述。 視訊息本文所需的序列化（例如 JSON、CBOR、Protobuf 等）而定，訊息主體可能會以不同方式序列化。
+通知訊息的主體會在這裡以 JSON 描述。 根據訊息本文所需的序列化 (例如 JSON、CBOR、Protobuf 等等 ) ，訊息本文可能會以不同的方式序列化。
 
 主體所包含的欄位集合會因不同的通知類型而有所不同。 以下是兩個範例訊息內文，以瞭解其一般外觀並可能包含的內容。
 
@@ -89,7 +89,7 @@ Azure 數位 Twins 中的不同事件會產生**通知**，讓解決方案後端
 
 ## <a name="message-format-detail-for-different-event-types"></a>不同事件種類的訊息格式詳細資料
 
-本節將詳細說明 IoT 中樞與 Azure 數位 Twins （或其他 Azure IoT 服務）發出的不同通知類型。 您會閱讀有關觸發每個通知類型的事項，以及每個類型通知主體所包含的欄位集合。
+本節詳細說明 IoT 中樞與 Azure 數位 Twins (或其他 Azure IoT 服務) 發出的不同通知類型。 您會閱讀有關觸發每個通知類型的事項，以及每個類型通知主體所包含的欄位集合。
 
 ### <a name="digital-twin-life-cycle-notifications"></a>數位對應項生命週期通知
 
@@ -99,11 +99,11 @@ Azure 數位 Twins 中的不同事件會產生**通知**，讓解決方案後端
 * 建立數位對應項
 * 數位對應項已刪除
 
-#### <a name="properties"></a>屬性
+#### <a name="properties"></a>Properties
 
 以下是生命週期通知主體中的欄位。
 
-| Name | 值 |
+| 名稱 | 值 |
 | --- | --- |
 | `id` | 通知的識別碼，例如，UUID 或服務維護的計數器。 `source` + `id`對於每個相異事件而言都是唯一的。 |
 | `source` | IoT 中樞或 Azure 數位 Twins 實例的名稱，例如*myhub.azure-devices.net*或*mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -120,11 +120,12 @@ Azure 數位 Twins 中的不同事件會產生**通知**，讓解決方案後端
 
 針對建立事件，承載會在建立資源之後反映對應項的狀態，因此它應該包含所有系統產生的元素，就像呼叫一樣 `GET` 。
 
-以下是[IoT 隨插即用（PnP）](../iot-pnp/overview-iot-plug-and-play.md)裝置的主體範例，其中包含元件和沒有最上層屬性。 應省略對裝置沒有意義的屬性（例如報告屬性）。
+以下是[IoT 隨插即用 (PnP) ](../iot-pnp/overview-iot-plug-and-play.md)裝置的主體範例，其中包含元件和沒有最上層屬性。 對於裝置 (的屬性（例如報告屬性) ）應該予以省略。
 
 ```json
 {
   "$dtId": "device-digitaltwin-01",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "thermostat": {
     "temperature": 80,
     "humidity": 45,
@@ -157,6 +158,7 @@ Azure 數位 Twins 中的不同事件會產生**通知**，讓解決方案後端
 ```json
 {
   "$dtId": "logical-digitaltwin-01",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "avgTemperature": 70,
   "comfortIndex": 85,
   "$metadata": {
@@ -183,11 +185,11 @@ Azure 數位 Twins 中的不同事件會產生**通知**，讓解決方案後端
 
 建立、更新或刪除數位對應項的任何關聯性時，會觸發**關聯性變更通知**。 
 
-#### <a name="properties"></a>屬性
+#### <a name="properties"></a>Properties
 
 以下是邊緣變更通知主體中的欄位。
 
-| Name    | 值 |
+| 名稱    | 值 |
 | --- | --- |
 | `id` | 通知的識別碼，例如，UUID 或服務維護的計數器。 `source` + `id`對於每個不同事件都是唯一的 |
 | `source` | Azure 數位 Twins 實例的名稱，例如*mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -239,11 +241,11 @@ Azure 數位 Twins 中的不同事件會產生**通知**，讓解決方案後端
 * 當屬性值或中繼資料變更時。
 * 數位對應項或元件中繼資料變更時。 此案例的其中一個範例是變更數位對應項的模型。
 
-#### <a name="properties"></a>屬性
+#### <a name="properties"></a>Properties
 
 以下是數位對應項變更通知主體中的欄位。
 
-| Name    | 值 |
+| 名稱    | 值 |
 | --- | --- |
 | `id` | 通知的識別碼，例如，UUID 或服務維護的計數器。 `source` + `id`對於每個不同事件都是唯一的 |
 | `source` | IoT 中樞或 Azure 數位 Twins 實例的名稱，例如*myhub.azure-devices.net*或*mydigitaltwins.westus2.azuredigitaltwins.net*
@@ -275,7 +277,7 @@ Azure 數位 Twins 中的不同事件會產生**通知**，讓解決方案後端
 ]
 ```
 
-對應的通知（如果服務以同步方式執行，例如更新數位對應項的 Azure 數位 Twins）會有如下的主體：
+對應的通知 (（如果服務同步執行），例如更新數位對應項) 的 Azure 數位 Twins 會有如下的主體：
 
 ```json
 {

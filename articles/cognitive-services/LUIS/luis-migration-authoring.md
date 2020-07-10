@@ -1,7 +1,7 @@
 ---
 title: 遷移至 Azure 資源撰寫金鑰
 titleSuffix: Azure Cognitive Services
-description: 本文說明如何將 Language Understanding （LUIS）撰寫驗證從電子郵件帳戶遷移至 Azure 資源。
+description: 本文說明如何將 Language Understanding (LUIS) 撰寫驗證從電子郵件帳戶遷移至 Azure 資源。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: 338868c954df68fbf43bee9581a6afada58f7e97
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: cc14f1cd60f048ba01060b9ebdbca434af6b9751
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055455"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145616"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>遷移至 Azure 資源撰寫金鑰
 
-Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azure 資源。 雖然目前不需要，但在未來將會強制切換至 Azure 資源。
+Language Understanding (LUIS) 撰寫驗證從電子郵件帳戶變更為 Azure 資源。 雖然目前不需要，但在未來將會強制切換至 Azure 資源。
 
 
 ## <a name="what-is-migration"></a>什麼是遷移？
 
-「遷移」是將撰寫驗證從電子郵件帳戶變更為 Azure 資源的程式。 您的帳戶將會在您遷移之後連結至 Azure 訂用帳戶和 Azure 撰寫資源。 *所有 LUIS 使用者（擁有者或共同作業者）最終都必須進行遷移。*
+「遷移」是將撰寫驗證從電子郵件帳戶變更為 Azure 資源的程式。 您的帳戶將會在您遷移之後連結至 Azure 訂用帳戶和 Azure 撰寫資源。 *所有 LUIS 使用者 (擁有者或共同作業者) 最終都必須進行遷移。*
 
 必須從 LUIS 入口網站進行遷移。 例如，如果您使用 LUIS CLI 建立撰寫金鑰，您將需要在 LUIS 入口網站中完成遷移程式。 您仍然可以在遷移之後 greenfield 應用程式，但這些會新增至 Azure 資源層級，而不是應用層級。
 
@@ -57,7 +57,7 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
 * 如果您是應用程式的擁有者，則不需要匯出應用程式，因為它們會自動遷移。 我們建議您儲存每個應用程式的共同作業者清單。 包含此清單的電子郵件範本會在遷移過程中選擇性地提供。
 
 
-|入口網站|目的|
+|入口網站|用途|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)| 建立預測和撰寫資源。<br> 指派資源的參與者。|
 |[LUIS](https://www.luis.ai)| 遷移至新的撰寫資源。<br> 在遷移流程中建立新的撰寫資源。<br> 從 [**管理**  >  **Azure 資源**] 頁面，將預測和撰寫資源指派或取消指派給應用程式。 <br> 將應用程式從一個撰寫資源移到另一個。  |
@@ -175,7 +175,7 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
 
 瞭解如何在您的撰寫資源上[新增參與者](luis-how-to-collaborate.md)。 參與者將可存取該資源下的所有應用程式。
 
-您可以在該資源的 [**存取控制（IAM）** ] 頁面上，從 Azure 入口網站將參與者新增至撰寫資源。 如需詳細資訊，請參閱[新增參與者存取](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
+您可以在該資源的**存取控制 (IAM) **頁面上，將參與者新增至 Azure 入口網站的撰寫資源。 如需詳細資訊，請參閱[新增參與者存取](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
 
 > [!Note]
 > 如果 LUIS 應用程式的擁有者遷移並將共同作業者新增為 Azure 資源的參與者，則共同作業者仍無法存取應用程式，除非他們也進行遷移。
@@ -207,7 +207,7 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
 * 進行遷移程式，如果您手動移除共同作業者，這應該會成功。
 * 將共同作業者指派為新撰寫資源的參與者。 共同作業者會將預測資源遷移並重新指派回應用程式。 請注意，這會暫時導致應用程式中斷，直到重新指派預測資源為止。
 
-這裡有另一個可行的解決方案。 在擁有者遷移之前，共同作業者可以從 Azure 入口網站將應用程式擁有者新增為其 Azure 訂用帳戶的參與者。 此步驟會將「擁有者」存取權授與執行時間預測資源。 如果擁有者使用已新增至的新訂用帳戶（將在新的租使用者中找到）來進行遷移，此步驟不會只是針對共同作業者和應用程式擁有者解除封鎖遷移程式。 它也可以讓應用程式順暢地進行遷移，但仍會指派預測金鑰給它們，而不會中斷應用程式。
+這裡有另一個可行的解決方案。 在擁有者遷移之前，共同作業者可以從 Azure 入口網站將應用程式擁有者新增為其 Azure 訂用帳戶的參與者。 此步驟會將「擁有者」存取權授與執行時間預測資源。 如果擁有者使用新增的訂用帳戶來進行遷移，則會在新的租使用者) 下找到 (，此步驟不會只是將共同作業者和應用程式擁有者的遷移程式解除封鎖。 它也可以讓應用程式順暢地進行遷移，但仍會指派預測金鑰給它們，而不會中斷應用程式。
 
 
 ### <a name="recommended-steps-if-youre-a-collaborator-on-an-app"></a>如果您是應用程式的共同作業者的建議步驟
@@ -226,7 +226,7 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
 ## <a name="troubleshooting-the-migration-process"></a>疑難排解遷移程式
 
 當您嘗試在下拉式清單中遷移但找不到您的 Azure 訂用帳戶時：
-* 請確定您有有效的 Azure 訂用帳戶，且已獲授權可建立認知服務資源。 移至 [ [Azure 入口網站](https://ms.portal.azure.com)並檢查訂用帳戶的狀態。 如果您沒有帳戶，請[建立免費試用](https://azure.microsoft.com/free/)。
+* 請確定您有有效的 Azure 訂用帳戶，且已獲授權可建立認知服務資源。 移至 [ [Azure 入口網站](https://ms.portal.azure.com)並檢查訂用帳戶的狀態。 如果您沒有，請[建立免費的 Azure 帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 * 請確定您是在與有效訂用帳戶相關聯的適當租使用者中。 您可以在這個工具列上，將租使用者從頭像切換到您的縮寫左邊：可以 ![ 切換租使用者的工具列](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
 如果您有現有的撰寫資源，但在選取 [**使用現有的撰寫資源**] 選項時找不到它：

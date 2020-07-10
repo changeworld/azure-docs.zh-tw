@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 02a0de7760c660a7cce1bbd9cd36d4bb2a1180e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91c799972a21d9205577f0a5672e1182831416b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565780"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145406"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何監視 Azure 認知搜尋索引子的狀態和結果
 
@@ -34,7 +34,7 @@ Azure 認知搜尋提供有關每個索引子的目前和歷程記錄執行狀�
 * 使用[REST API](#restapi)
 * 使用[.NET SDK](#dotnetsdk)
 
-可用的索引子監視資訊包括下列所有內容（雖然資料格式會根據所使用的存取方法而有所不同）：
+可用的索引子監視資訊包括下列所有 (，但資料格式會根據) 使用的存取方法而有所不同：
 
 * 索引子本身的狀態資訊
 * 最新執行之索引子的相關資訊，包括其狀態、開始和結束時間，以及詳細的錯誤和警告。
@@ -82,42 +82,46 @@ Azure 認知搜尋提供有關每個索引子的目前和歷程記錄執行狀�
 
 您可以使用[取得索引子狀態命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)來抓取索引子的狀態和執行歷程記錄：
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
-    api-key: [Search service admin key]
+```http
+GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 回應包含整體索引子的狀態、最後 (或進行中) 的索引子叫用，以及最新的索引子叫用歷程記錄。
 
-    {
-        "status":"running",
-        "lastResult": {
-            "status":"success",
-            "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-         },
-        "executionHistory":[ {
-            "status":"success",
-             "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-        }]
-    }
+```output
+{
+    "status":"running",
+    "lastResult": {
+        "status":"success",
+        "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+     },
+    "executionHistory":[ {
+        "status":"success",
+         "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+    }]
+}
+```
 
-執行歷程記錄包含最多50個最近執行，並以反向時間順序排序（最新的第一個）。
+執行歷程記錄包含最多50個最近執行的，這些回合會以反向時間順序排序 (最近的第一個) 。
 
 請注意，有兩個不同的狀態值。 最上層狀態適用于索引子本身。 索引子狀態為 [執行中 **] 表示索引**器已正確設定且可供執行，但不是目前正在執行。
 
-每次執行索引子時，也會有自己的狀態，指出該特定執行是否正在進行**中（執行**中），或已完成且具有**成功**、 **transientFailure**或**persistentFailure**狀態。 
+每次執行索引子時，也會有自己的狀態，指出特定的執行是否**正在進行中 () ** ，或是已完成且具有**成功**、 **transientFailure**或**persistentFailure**狀態。 
 
 重設索引子以重新整理其變更追蹤狀態時，會加入具有**重設**狀態的個別執行歷程記錄專案。
 
@@ -129,7 +133,7 @@ Azure 認知搜尋提供有關每個索引子的目前和歷程記錄執行狀�
 
 您可以使用 Azure 認知搜尋 .NET SDK 來定義索引子的排程。 若要這麼做，請在建立或更新索引子時加入**排程**屬性。
 
-下列 c # 範例會將索引子狀態的相關資訊，以及其最近（或進行中）執行的結果寫入主控台。
+下列 c # 範例會將索引子狀態的相關資訊，以及其最近 (或進行中) 執行的結果寫入主控台。
 
 ```csharp
 static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchService)
@@ -163,18 +167,20 @@ static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchServic
 
 主控台中的輸出看起來會像這樣：
 
-    Indexer has run 18 times.
-    Indexer Status: Running
-    Latest run
-      Run Status: Success
-      Total Documents: 7, Failed: 0
-      StartTime: 10:02:46 PM, EndTime: 10:02:47 PM, Elapsed: 00:00:01.0990000
-      ErrorMessage: none
-      Document Errors: 0, Warnings: 0
+```output
+Indexer has run 18 times.
+Indexer Status: Running
+Latest run
+  Run Status: Success
+  Total Documents: 7, Failed: 0
+  StartTime: 10:02:46 PM, EndTime: 10:02:47 PM, Elapsed: 00:00:01.0990000
+  ErrorMessage: none
+  Document Errors: 0, Warnings: 0
+```
 
 請注意，有兩個不同的狀態值。 最上層狀態是索引子本身的狀態。 [執行中的索引子]**狀態表示索引**器已正確設定且可供執行，但不是目前正在執行。
 
-每次執行索引子時，都有它自己的狀態，以指出該特定執行是否正在進行**中（執行**中），或已完成且具有**成功**或**TransientError**狀態。 
+每次執行索引子時，都有它自己的狀態，以指出該特定的執行**是否正在進行中 () ** ，或是已完成且具有**成功**或**TransientError**狀態。 
 
 重設索引子以重新整理其變更追蹤狀態時，會加入具有**重設**狀態的個別歷程記錄專案。
 

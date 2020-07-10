@@ -1,7 +1,7 @@
 ---
 title: OData 比較運算子參考
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 認知搜尋查詢中使用 OData 比較運算子（eq、ne、gt、lt、ge 和 le）的語法和參考檔。
+description: 使用 OData 比較運算子的語法和參考檔， (Azure 認知搜尋查詢中的 eq、ne、gt、lt、ge 和 le) 。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 572b653a49833ae06ee57b1718000e8555239de7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113216"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146021"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure 認知搜尋中的 OData 比較運算子- `eq` 、、、、 `ne` `gt` `lt` `ge` 和`le`
 
@@ -46,9 +47,9 @@ Azure 認知搜尋的[OData 篩選條件運算式](query-odata-filter-orderby-sy
 > [!NOTE]
 > 如果您想要的話，可以將常數值放在運算子的左邊，並在右邊加上功能變數名稱。 若為範圍運算子，比較的意義會相反。 例如，如果常數值位於左邊， `gt` 會測試常數值是否大於欄位。 您也可以使用比較運算子來比較函式的結果（例如 `geo.distance` ）與值。 針對布耳函數（例如 `search.ismatch` ），比較結果與 `true` 或 `false` 是選擇性的。
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
-下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定義使用比較運算子之 OData 運算式的文法。
+下列 EBNF ([Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義使用比較運算子之 OData 運算式的文法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -135,23 +136,33 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 符合 `Rating` 欄位介於3和5之間的檔（包含：
 
-    Rating ge 3 and Rating le 5
+```text
+Rating ge 3 and Rating le 5
+```
 
 符合 `Location` 指定緯度和經度的欄位小於2公里的檔：
 
-    geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
+```text
+geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
+```
 
 符合 `LastRenovationDate` 欄位大於或等於2015年1月1日午夜 UTC 的檔：
 
-    LastRenovationDate ge 2015-01-01T00:00:00.000Z
+```text
+LastRenovationDate ge 2015-01-01T00:00:00.000Z
+```
 
 符合 `Details/Sku` 欄位不是的檔 `null` ：
 
-    Details/Sku ne null
+```text
+Details/Sku ne null
+```
 
 比對檔，其中至少有一個房間的類型為 "Deluxe 室"，其中欄位的字串 `Rooms/Type` 完全符合篩選準則：
 
-    Rooms/any(room: room/Type eq 'Deluxe Room')
+```text
+Rooms/any(room: room/Type eq 'Deluxe Room')
+```
 
 ## <a name="next-steps"></a>後續步驟  
 

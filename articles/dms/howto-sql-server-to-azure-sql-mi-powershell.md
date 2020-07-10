@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 35e6690726750e6c9e6dfb0cb62a6732603c3610
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eb8ec09646fa3f3c226edbe957e19d079fd2607c
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083656"
+ms.locfileid: "86147422"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>使用 PowerShell & Azure 資料庫移轉服務，將 SQL Server 遷移至 SQL 受控執行個體
 
@@ -35,11 +35,11 @@ ms.locfileid: "86083656"
 
 本文包含如何執行線上和離線遷移的詳細資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成這些步驟，您需要：
 
-* [SQL Server 2016 或](https://www.microsoft.com/sql-server/sql-server-downloads)更新版本（任何版本）。
+*  (任何版本) [SQL Server 2016 或](https://www.microsoft.com/sql-server/sql-server-downloads)更新版本。
 * **AdventureWorks2016**資料庫的本機複本，可以從[這裡](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)下載。
 * 啟用 SQL Server Express 安裝預設已停用的 TCP/IP 通訊協定。 依照[啟用或停用伺服器網路通訊協定](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文的說明，啟用 TCP/IP 通訊協定。
 * 設定[用於 Database Engine 存取的 Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
@@ -48,7 +48,7 @@ ms.locfileid: "86083656"
 * 下載並安裝[Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) 3.3 版或更新版本。
 * 使用 Azure Resource Manager 部署模型建立的 Microsoft Azure 虛擬網路，它會使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)為您的內部部署來源伺服器提供站對站連線能力的 Azure 資料庫移轉服務。
 * 如[執行 SQL Server 遷移評估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文所述，使用 Data Migration Assistant 完成內部部署資料庫和架構遷移的評估。
-* `Az.DataMigration`使用[Install-module PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)從 PowerShell 資源庫下載並安裝模組（0.7.2 版版或更新版本）。
+* 若要下載並安裝 `Az.DataMigration` 模組 (版本0.7.2 版或更新版本，請使用[Install-module PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)從 PowerShell 資源庫) 。
 * 若要確保用來連接至來源 SQL Server 實例的認證具有[CONTROL Server](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql)許可權。
 * 若要確保用來連接到目標 SQL 受控執行個體的認證具有目標 SQL 受控執行個體資料庫的 CONTROL DATABASE 許可權。
 
@@ -121,13 +121,11 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-下一個範例會示範如何使用 SQL 驗證建立名為 ' targetmanagedinstance.database.windows.net ' 的 Azure SQL 受控執行個體的連線資訊：
+下一個範例會示範如何建立名為 ' targetmanagedinstance ' 之 Azure SQL 受控執行個體的連線資訊：
 
 ```powershell
-$targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
-  -DataSource "targetmanagedinstance.database.windows.net" `
-  -AuthType SqlAuthentication `
-  -TrustServerCertificate:$false
+$targetResourceId = (Get-AzSqlInstance -Name "targetmanagedinstance").Id
+$targetConnInfo = New-AzDmsConnInfo -ServerType SQLMI -MiResourceId $targetResourceId
 ```
 
 ### <a name="provide-databases-for-the-migration-project"></a>提供移轉專案所用的資料庫
@@ -393,7 +391,7 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMiSync `
     }
     ```
 
-## <a name="performing-the-cutover-online-migrations-only"></a>執行轉換（僅限線上遷移）
+## <a name="performing-the-cutover-online-migrations-only"></a>執行轉換 (僅限線上遷移) 
 
 透過線上遷移，會執行資料庫的完整備份和還原，然後繼續進行還原儲存在 BackupFileShare 中的交易記錄。
 
@@ -420,7 +418,7 @@ Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 
 ## <a name="additional-resources"></a>其他資源
 
-如需其他遷移案例（來源/目標群組）的相關資訊，請參閱《 Microsoft[資料庫移轉指南》](https://datamigration.microsoft.com/)。
+如需其他遷移案例 (來源/目標群組) 的詳細資訊，請參閱《 Microsoft[資料庫移轉指南》](https://datamigration.microsoft.com/)。
 
 ## <a name="next-steps"></a>後續步驟
 

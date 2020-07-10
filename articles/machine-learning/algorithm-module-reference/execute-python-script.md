@@ -10,18 +10,18 @@ ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
 ms.date: 06/16/2020
-ms.openlocfilehash: f64c79a970ec54c07c2934a92a9ca349ea56ca40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2115a0bae8b26113fc10648db2584210809441de
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907545"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147258"
 ---
 # <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的 [執行 Python 腳本] 模組。
+本文說明 Azure Machine Learning 設計工具 (preview) 中的 [執行 Python 腳本] 模組。
 
-使用此模組來執行 Python 程式碼。 如需有關 Python 架構和設計原則的詳細資訊，請參閱[這篇文章](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)。
+使用此模組來執行 Python 程式碼。 如需有關 Python 架構和設計原則的詳細資訊，請參閱[如何在 Azure Machine Learning 設計工具中執行 Python 程式碼](../how-to-designer-python.md)。
 
 使用 Python，您可以執行現有模組不支援的工作，例如：
 
@@ -145,7 +145,7 @@ Azure Machine Learning 使用 Python 的 Anaconda 散發，其中包含許多常
 -    werkzeug = = 0.16。1
 -    滾輪 = = 0.34。2
 
- 若要安裝不在預先安裝清單中的封裝（例如， *scikit-learn-其他*），請將下列程式碼新增至您的腳本： 
+ 若要安裝不在預先安裝清單中的封裝 (例如*scikit-learn-其他*) ，請將下列程式碼新增至您的腳本： 
 
  ```python
 import os

@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/12/2020
+ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: aa961cb94816b50aa515532e69454fce9b370c54
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083074"
+ms.locfileid: "86146548"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,14 +59,14 @@ ms.locfileid: "86083074"
 
 + **使用 Visual Studio Code**
 
-   當您使用 Visual Studio Code 時，您可以使用圖形化介面來選取工作區。 如需詳細資訊，請參閱 Visual Studio Code 擴充功能檔中的[部署和管理模型](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)。
+   當您使用 Visual Studio Code 時，您可以使用圖形化介面來選取工作區。 如需詳細資訊，請參閱 Visual Studio Code 擴充功能檔中的[部署和管理模型](how-to-manage-resources-vscode.md#endpoints)。
 
 ## <a name="register-your-model"></a><a id="registermodel"></a>註冊您的模型
 
 已註冊的模型是組成模型的一或多個檔案所在的邏輯容器。 例如，如果您有儲存在多個檔案中的模型，您可以在工作區中將其註冊為單一模型。 註冊檔案之後，您就可以下載或部署已註冊的模型，並接收您註冊的所有檔案。
 
 > [!TIP]
-> 當您註冊模型時，您會提供雲端位置（從定型回合）或本機目錄的路徑。 此路徑只是為了在註冊過程中，尋找要上傳的檔案。 它不需要符合輸入腳本中使用的路徑。 如需詳細資訊，請參閱[在您的輸入腳本中尋找模型](#load-model-files-in-your-entry-script)檔案。
+> 當您註冊模型時，您會提供從定型回合) 或本機目錄 (的雲端位置路徑。 此路徑只是為了在註冊過程中，尋找要上傳的檔案。 它不需要符合輸入腳本中使用的路徑。 如需詳細資訊，請參閱[在您的輸入腳本中尋找模型](#load-model-files-in-your-entry-script)檔案。
 
 機器學習模型會在您的 Azure Machine Learning 工作區中註冊。 模型可以來自 Azure Machine Learning 或其他地方。 註冊模型時，您可以選擇性地提供有關模型的中繼資料。 `tags`接著， `properties` 您可以將套用至模型註冊的和字典用於篩選模型。
 
@@ -77,7 +77,7 @@ ms.locfileid: "86083074"
 本節中的程式碼片段會示範如何從定型回合註冊模型：
 
 > [!IMPORTANT]
-> 若要使用這些程式碼片段，您必須先執行定型回合，而且必須能夠存取 `Run` 物件（SDK 範例）或執行識別碼值（CLI 範例）。 如需定型模型的詳細資訊，請參閱[設定模型定型的計算目標](how-to-set-up-training-targets.md)。
+> 若要使用這些程式碼片段，您必須先執行訓練回合，而且必須能夠存取 `Run` 物件 (SDK 範例) 或) 的執行識別碼值 (CLI 範例。 如需定型模型的詳細資訊，請參閱[設定模型定型的計算目標](how-to-set-up-training-targets.md)。
 
 + **使用 SDK**
 
@@ -199,7 +199,7 @@ dependencies:
 ```
 
 > [!IMPORTANT]
-> 如果您的相依性可透過 Conda 和 pip （來自 PyPi）取得，Microsoft 建議使用 Conda 版本，因為 Conda 套件通常會隨附預先建立的二進位檔，讓安裝更可靠。
+> 如果您的相依性可透過 PyPi) 的 Conda 和 pip (取得，Microsoft 建議使用 Conda 版本，因為 Conda 套件通常隨附預先建立的二進位檔，讓安裝更可靠。
 >
 > 如需詳細資訊，請參閱[瞭解 Conda 和 Pip](https://www.anaconda.com/understanding-conda-and-pip/)。
 >
@@ -216,7 +216,7 @@ myenv.register(workspace=ws)
 
 ### <a name="2-define-scoring-code"></a><a id="script"></a>2. 定義評分程式碼
 
-輸入指令碼會接收提交給已部署 Web 服務的資料，並將其傳遞給模型。 然後，它會採用模型傳回的回應，並將該回應傳回至用戶端。 *此腳本專屬於您的模型*。 它必須瞭解模型預期和傳回的資料。
+輸入指令碼會接收提交給已部署 Web 服務的資料，並將其傳遞給模型。 然後，輸入指令碼會採用模型傳回的回應，並將該回應傳回至用戶端。 *此腳本專屬於您的模型*。 它必須瞭解模型預期和傳回的資料。
 
 指令碼包含載入和執行模型的兩個函式：
 
@@ -232,14 +232,14 @@ myenv.register(workspace=ws)
 
 ##### <a name="azureml_model_dir"></a>AZUREML_MODEL_DIR
 
-AZUREML_MODEL_DIR 是在服務部署期間建立的環境變數。 您可以使用這個環境變數來尋找已部署之模型的位置。
+AZUREML_MODEL_DIR 是在服務部署期間建立的環境變數。 您可以使用這個環境變數，尋找已部署之模型的位置 (s) 。
 
 下表描述 AZUREML_MODEL_DIR 的值，視部署的模型數目而定：
 
 | 部署 | 環境變數值 |
 | ----- | ----- |
 | 單一模型 | 包含模型的資料夾路徑。 |
-| 多個模型 | 包含所有模型之資料夾的路徑。 模型是以名稱和版本的形式在此資料夾中找到（ `$MODEL_NAME/$VERSION` ） |
+| 多個模型 | 包含所有模型之資料夾的路徑。 此資料夾中的模型會以名稱和版本來尋找 (`$MODEL_NAME/$VERSION`)  |
 
 在模型註冊和部署期間，模型會放在 AZUREML_MODEL_DIR 路徑中，並保留其原始檔案名。
 
@@ -258,8 +258,8 @@ file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'skl
 
 在此案例中，會向工作區註冊兩個模型：
 
-* `my_first_model`：包含一個檔案（ `my_first_model.pkl` ），而且只有一個版本（ `1` ）。
-* `my_second_model`：包含一個檔案（ `my_second_model.pkl` ），而且有兩個版本， `1` 和 `2` 。
+* `my_first_model`：包含一個檔案 (`my_first_model.pkl`) ，而且只有一個版本 (`1`) 。
+* `my_second_model`：包含一個 (`my_second_model.pkl`) 的檔案，而且有兩個版本， `1` 和 `2` 。
 
 部署服務時，會在部署作業中提供這兩個模型：
 
@@ -287,13 +287,13 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ##### <a name="get_model_path"></a>get_model_path
 
-當您註冊模型時，您會提供用來在登錄中管理模型的模型名稱。 您可以使用此名稱搭配[Model. get_model_path （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-)方法來抓取模型檔案的路徑或本機檔案系統上的檔案。 如果您註冊資料夾或檔案集合，此 API 會傳回包含這些檔案的目錄路徑。
+當您註冊模型時，您會提供用來在登錄中管理模型的模型名稱。 您會將此名稱與[模型搭配使用。 get_model_path ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-)方法來抓取模型檔案的路徑或本機檔案系統上的檔案。 如果您註冊資料夾或檔案集合，此 API 會傳回包含這些檔案的目錄路徑。
 
 當您註冊模型時，會為它命名。 名稱會對應至模型的放置位置，不論是在本機或在服務部署期間。
 
-#### <a name="optional-define-model-web-service-schema"></a>選擇性定義模型 web 服務架構
+#### <a name="optional-define-model-web-service-schema"></a> (選擇性) 定義模型 web 服務架構
 
-若要自動產生 web 服務的架構，請在其中一個已定義的類型物件的函式中提供輸入和/或輸出的範例。 型別和範例用來自動建立架構。 Azure Machine Learning 接著會在部署期間建立 web 服務的[OpenAPI](https://swagger.io/docs/specification/about/) （Swagger）規格。
+若要自動產生 web 服務的架構，請在其中一個已定義的類型物件的函式中提供輸入和/或輸出的範例。 型別和範例用來自動建立架構。 Azure Machine Learning 接著會在部署期間建立 web 服務的[OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 規格。
 
 目前支援下列類型：
 
@@ -349,7 +349,7 @@ def run(data):
 
 ##### <a name="power-bi-compatible-endpoint"></a>Power BI 相容端點 
 
-下列範例示範如何使用資料框架，將輸入資料定義為 `<key: value>` 字典。 此方法支援從 Power BI 使用已部署的 web 服務。 （[深入瞭解如何使用 Power BI 的 web 服務](https://docs.microsoft.com/power-bi/service-machine-learning-integration)）。
+下列範例示範如何使用資料框架，將輸入資料定義為 `<key: value>` 字典。 此方法支援從 Power BI 使用已部署的 web 服務。  ([深入瞭解如何使用 Power BI 的 web 服務](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。 ) 
 
 ```python
 import json
@@ -447,7 +447,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 如需有關使用自訂 Docker 映射搭配推斷設定的詳細資訊，請參閱[如何使用自訂 docker 映射部署模型](how-to-deploy-custom-docker-image.md)。
 
-### <a name="4-optional-profile-your-model-to-determine-resource-utilization"></a><a id="profilemodel"></a>4. （選擇性）分析您的模型，以判斷資源使用率
+### <a name="4-optional-profile-your-model-to-determine-resource-utilization"></a><a id="profilemodel"></a>4. (選擇性) 分析您的模型，以判斷資源使用率
 
 在您註冊模型並備妥其部署所需的其他元件之後，您可以判斷所部署服務所需的 CPU 和記憶體。 分析會測試執行模型的服務，並傳回如 CPU 使用量、記憶體使用量和回應延遲的資訊。 它也會根據資源使用量提供 CPU 和記憶體的建議。
 
@@ -457,7 +457,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 * 單一資料行表格式資料集，其中每個資料列都包含代表範例要求資料的字串。
 
 > [!IMPORTANT]
-> 此時，我們只支援將預期其要求資料為字串的服務進行分析，例如：字串序列化 json、文字、字串序列化影像等。資料集的每個資料列內容（字串）都會放入 HTTP 要求的主體中，並傳送至封裝模型以進行評分的服務。
+> 此時，我們只支援將預期其要求資料為字串的服務進行分析，例如：字串序列化 json、文字、字串序列化影像等。Dataset (字串) 的每個資料列內容都會放入 HTTP 要求的主體中，並傳送至封裝模型以進行評分的服務。
 
 以下範例說明如何建立輸入資料集，以分析預期其傳入要求資料可包含序列化 json 的服務。 在此情況下，我們建立了一個以資料集為基礎的100實例，其具有相同的要求資料內容。 在真實世界的案例中，我們建議您使用包含各種輸入的較大型資料集，特別是當您的模型資源使用方式/行為與輸入相依時更是如此。
 
@@ -553,14 +553,14 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 在部署模型之前，您必須先定義部署設定。 *部署設定適用于將裝載 web 服務的計算目標。* 例如，當您在本機部署模型時，您必須指定服務接受要求的埠。 部署設定不屬於您的輸入腳本。 它是用來定義將裝載模型和專案腳本之計算目標的特性。
 
-您可能也需要建立計算資源（例如，您的工作區尚未有相關聯的 Azure Kubernetes Service （AKS）實例）。
+例如，您可能也需要建立計算資源，如果您還沒有 Azure Kubernetes Service (AKS 與您的工作區相關聯的) 實例。
 
 下表提供建立每個計算目標之部署設定的範例：
 
 | 計算目標 | 部署設定範例 |
 | ----- | ----- |
 | 本機 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
-| Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+| Azure 容器執行個體 | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
 本機、Azure 容器實例和 AKS web 服務的類別可以從下列來源匯入 `azureml.core.webservice` ：
@@ -588,7 +588,7 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-如需詳細資訊，請參閱[LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py)、 [Model. deploy （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)和[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py)的檔。
+如需詳細資訊，請參閱[LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py)的檔、[模型。部署 ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)和[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py)。
 
 #### <a name="using-the-cli"></a>使用 CLI
 
@@ -610,37 +610,37 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 | Webservice 狀態 | 描述 | 最終狀態？
 | ----- | ----- | ----- |
-| 正在 | 服務正在進行部署。 | No |
-| 狀況不良 | 服務已部署，但目前無法連線。  | No |
-| 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | No |
+| 正在 | 服務正在進行部署。 | 否 |
+| 狀況不良 | 服務已部署，但目前無法連線。  | 否 |
+| 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | 否 |
 | 失敗 | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
 | Healthy | 服務狀況良好，且端點可供使用。 | 是 |
 
-### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>計算實例 web 服務（開發/測試）
+### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>計算實例 web 服務 (開發/測試) 
 
 請參閱[將模型部署到 Azure Machine Learning 計算實例](how-to-deploy-local-container-notebook-vm.md)。
 
-### <a name="azure-container-instances-devtest"></a><a id="aci"></a>Azure 容器實例（開發/測試）
+### <a name="azure-container-instances-devtest"></a><a id="aci"></a> (開發/測試) 的 Azure 容器實例
 
 請參閱[部署至 Azure 容器實例](how-to-deploy-azure-container-instance.md)。
 
-### <a name="azure-kubernetes-service-devtest-and-production"></a><a id="aks"></a>Azure Kubernetes Service （開發/測試和生產）
+### <a name="azure-kubernetes-service-devtest-and-production"></a><a id="aks"></a>Azure Kubernetes Service (開發/測試和生產) 
 
 請參閱[部署至 Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)。
 
-### <a name="ab-testing-controlled-rollout"></a>A/B 測試（受控首度發行）
+### <a name="ab-testing-controlled-rollout"></a>A/B 測試 (控制推出) 
 如需詳細資訊，請參閱[ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
 
 ## <a name="consume-web-services"></a>取用 Web 服務
 
 每個已部署的 web 服務都會提供 REST 端點，因此您可以使用任何程式設計語言來建立用戶端應用程式。
 如果您已為服務啟用以金鑰為基礎的驗證，您必須提供服務金鑰做為要求標頭中的權杖。
-如果您已為您的服務啟用權杖型驗證，則需要提供 Azure Machine Learning 的 JSON Web 權杖（JWT）做為要求標頭中的持有人權杖。 
+如果您已為您的服務啟用權杖型驗證，則需要提供 Azure Machine Learning 的 JSON Web 權杖 (JWT) 作為要求標頭中的持有人權杖。 
 
 主要差異在於**金鑰是靜態的，而且可以手動**重新產生，而且**權杖必須在到期時**重新整理。 Azure 容器實例和 Azure Kubernetes Service 部署的 web 服務支援以金鑰為基礎的驗證，而權杖型驗證**僅**適用于 Azure Kubernetes Service 部署。 如需詳細資訊和特定程式碼範例，請參閱操作[說明](how-to-setup-authentication.md#web-service-authentication)驗證。
 
 > [!TIP]
-> 您可以在部署服務之後，取得架構 JSON 檔。 使用已部署 web 服務的 [ [swagger_uri] 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)（例如， `service.swagger_uri` ）來取得本機 Web 服務之 SWAGGER 檔案的 uri。
+> 您可以在部署服務之後，取得架構 JSON 檔。 使用已部署 web 服務的[swagger_uri 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) (例如， `service.swagger_uri`) 取得本機 web 服務 SWAGGER 檔案的 uri。
 
 ### <a name="request-response-consumption"></a>要求-回應耗用量
 
@@ -672,11 +672,11 @@ print(response.json())
 
 如需詳細資訊，請參閱[建立用戶端應用程式以使用 web 服務](how-to-consume-web-service.md)。
 
-### <a name="web-service-schema-openapi-specification"></a>Web 服務架構（OpenAPI 規格）
+### <a name="web-service-schema-openapi-specification"></a>Web 服務架構 (OpenAPI 規格) 
 
-如果您在部署中使用自動產生架構，您可以使用[swagger_uri 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)取得服務的 OpenAPI 規格位址。 （例如， `print(service.swagger_uri)` ）。使用 GET 要求，或在瀏覽器中開啟 URI 以取得規格。
+如果您在部署中使用自動產生架構，您可以使用[swagger_uri 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)取得服務的 OpenAPI 規格位址。 例如， (`print(service.swagger_uri)` 。 ) 使用 GET 要求，或在瀏覽器中開啟 URI 以取得規格。
 
-下列 JSON 檔是針對部署所產生的架構（OpenAPI 規格）範例：
+下列 JSON 檔是針對部署所產生之架構 (OpenAPI 規格) 的範例：
 
 ```json
 {
@@ -831,7 +831,7 @@ Azure Machine Learning 計算目標是由 Azure Machine Learning 建立和管理
 
 您可以使用[Azure DevOps](https://azure.microsoft.com/services/devops/)的 Machine Learning 延伸模組，持續部署模型。 在 Azure Machine Learning 工作區中註冊新的機器學習模型時，您可以使用 Azure DevOps 的 Machine Learning 擴充功能來觸發部署管線。
 
-1. 註冊[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)，讓您的應用程式持續整合並傳遞至任何平臺或雲端。 （請注意，Azure Pipelines 與[Machine Learning 管線](concept-ml-pipelines.md#compare)不同）。
+1. 註冊[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)，讓您的應用程式持續整合並傳遞至任何平臺或雲端。  (請注意，Azure Pipelines 與[Machine Learning 管線](concept-ml-pipelines.md#compare)不同。 ) 
 
 1. [建立 Azure DevOps 專案。](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
 
@@ -849,7 +849,7 @@ Azure Machine Learning 計算目標是由 Azure Machine Learning 建立和管理
 
     [![選取 AzureML 模型](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
 
-1. 在您的模型成品上啟用模型觸發程式。 當您開啟觸發程式時，每次在工作區中註冊該模型的指定版本（也就是最新版本）時，就會觸發 Azure DevOps 發行管線。
+1. 在您的模型成品上啟用模型觸發程式。 當您開啟觸發程式時，每次指定的版本 (時，就會在您的工作區中註冊該模型的最新版本) ，並觸發 Azure DevOps 發行管線。
 
     [![啟用模型觸發程式](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
 
@@ -871,7 +871,7 @@ CLI：
 az ml model download --model-id mymodel:1 --target-dir model_folder
 ```
 
-## <a name="preview-no-code-model-deployment"></a>預覽無程式碼模型部署
+## <a name="preview-no-code-model-deployment"></a> (預覽) 無程式碼模型部署
 
 無程式碼模型部署目前為預覽狀態，並支援下列機器學習架構：
 
@@ -973,7 +973,7 @@ print(output)
 
 ## <a name="package-models"></a>封裝模型
 
-在某些情況下，您可能會想要建立 Docker 映射，而不部署模型（例如，您打算[部署至 Azure App Service](how-to-deploy-app-service.md)）。 或者，您可能會想要下載映射，並在本機 Docker 安裝上加以執行。 您甚至可能會想要下載用來建立映射、加以檢查、修改，以及手動建立映射的檔案。
+在某些情況下，您可能會想要建立 Docker 映射而不部署模型 (如果您打算[部署至 Azure App Service](how-to-deploy-app-service.md)) 。 或者，您可能會想要下載映射，並在本機 Docker 安裝上加以執行。 您甚至可能會想要下載用來建立映射、加以檢查、修改，以及手動建立映射的檔案。
 
 模型封裝可讓您執行這些動作。 它會封裝裝載模型做為 web 服務所需的所有資產，並可讓您下載完全建立的 Docker 映射或建立元件所需的檔案。 有兩種方式可以使用模型封裝：
 
@@ -1015,7 +1015,7 @@ myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd       
 docker run -p 6789:5001 --name mycontainer <imageid>
 ```
 
-此命令會啟動名為的最新映射版本 `myimage` 。 它會將本機埠6789對應至 web 服務所接聽之容器中的埠（5001）。 它也會將名稱指派 `mycontainer` 給容器，讓容器更容易停止。 啟動容器之後，您可以將要求提交至 `http://localhost:6789/score` 。
+此命令會啟動名為的最新映射版本 `myimage` 。 它會將本機埠6789對應至 web 服務接聽的容器中的埠 (5001) 。 它也會將名稱指派 `mycontainer` 給容器，讓容器更容易停止。 啟動容器之後，您可以將要求提交至 `http://localhost:6789/score` 。
 
 ### <a name="generate-a-dockerfile-and-dependencies"></a>產生 Dockerfile 和相依性
 
@@ -1063,7 +1063,7 @@ myimage         latest              739f22498d64        3 minutes ago       1.43
 docker run -p 6789:5001 --name mycontainer myimage:latest
 ```
 
-此命令會啟動名為的最新映射版本 `myimage` 。 它會將本機埠6789對應至 web 服務所接聽之容器中的埠（5001）。 它也會將名稱指派 `mycontainer` 給容器，讓容器更容易停止。 啟動容器之後，您可以將要求提交至 `http://localhost:6789/score` 。
+此命令會啟動名為的最新映射版本 `myimage` 。 它會將本機埠6789對應至 web 服務接聽的容器中的埠 (5001) 。 它也會將名稱指派 `mycontainer` 給容器，讓容器更容易停止。 啟動容器之後，您可以將要求提交至 `http://localhost:6789/score` 。
 
 ### <a name="example-client-to-test-the-local-container"></a>測試本機容器的範例用戶端
 
@@ -1109,7 +1109,7 @@ docker kill mycontainer
 若要刪除已部署的 Web 服務，請使用 `service.delete()`。
 若要刪除已註冊的模型，請使用 `model.delete()`。
 
-如需詳細資訊，請參閱[WebService. delete （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)和[Model. delete （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)的檔。
+如需詳細資訊，請參閱 WebService 的檔[。刪除 ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)和[Model。刪除 ( # B3 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)。
 
 <a id="advanced-entry-script"></a>
 ## <a name="advanced-entry-script-authoring"></a>先進的輸入腳本撰寫
@@ -1171,7 +1171,7 @@ res = requests.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'ap
 
 <a id="cors"></a>
 
-### <a name="cross-origin-resource-sharing-cors"></a>跨原始來源資源分享（CORS）
+### <a name="cross-origin-resource-sharing-cors"></a>跨原始資源分享 (CORS) 
 
 跨原始資源分享是允許從另一個網域要求網頁上資源的一種方式。 CORS 的運作方式是透過與用戶端要求一起傳送的 HTTP 標頭，並傳回服務回應。 如需 CORS 和有效標頭的詳細資訊，請參閱維琪百科中的[跨原始資源分享](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
 

@@ -74,9 +74,9 @@ ms.locfileid: "80159401"
 }
 ```
 
-下列命令示範如何使用先前的推斷設定檔（在中命名為 myInferenceConfig.js）來部署模型。 
+下列命令示範如何使用先前的推斷設定檔，在) 上 (名為 myInferenceConfig.js來部署模型。 
 
-它也會使用現有 Azure Machine Learning[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)的最新版本（名為 AzureML-最小）。
+它也會使用現有 Azure Machine Learning[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)的最新版本， (名稱為 AzureML-最低) 。
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic myInferenceConfig.json -e AzureML-Minimal --dc deploymentconfig.json

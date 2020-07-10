@@ -16,15 +16,15 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1aca245592bef98bc5d0cff3268d5b6496d2220
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eaeaa8625a5bdb5bbf8ce76a68e616a913da5655
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103546"
+ms.locfileid: "86147001"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步處理：排程器
-本主題描述 Azure AD Connect 同步（同步處理引擎）中的內建排程器。
+本主題描述 Azure AD Connect 同步處理 (同步處理引擎) 中的內建排程器。
 
 此功能是隨組建 1.1.105.0 (於 2016 年 2 月發行) 一起導入。
 
@@ -41,8 +41,12 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 排程器本身永遠處於執行狀態，但是您可以將它設定為只執行這些工作其中之一或完全不執行這些工作。 例如，如果您需要使用自己的同步處理循環程序，您可以將此工作在排程器中停用，但仍執行維護工作。
 
 >[!IMPORTANT]
->您必須確定每7天至少會執行一次同步處理迴圈。 若未這麼做，可能會導致同步處理問題，而需要您執行完整的同步處理來解決。
-
+>根據預設，每隔30分鐘會執行一次同步處理迴圈。 如果您已修改同步處理 cycley，您必須確定每7天至少會執行一次同步處理迴圈。 
+>
+>* 差異同步處理必須在最後一個差異同步處理的7天內發生。
+>* 在完成完整同步處理後的差異同步處理 () 必須在上一次完整同步處理的7天內發生。
+>
+>若未這麼做，可能會導致同步處理問題，而需要您執行完整的同步處理來解決。 這也適用于處於預備模式的伺服器。
 
 ## <a name="scheduler-configuration"></a>排程器組態
 若要查看目前的組態設定，請移至 PowerShell 並執行 `Get-ADSyncScheduler`。 它會向您顯示類似以下圖片︰
@@ -122,7 +126,7 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 ### <a name="sync-steps-required-for-different-configuration-changes"></a>不同設定變更所需的同步步驟
 不同的設定變更需要不同的同步處理步驟，以確保變更已正確套用至所有物件。
 
-- 新增更多要從來原始目錄匯入的物件或屬性（藉由新增/修改同步處理規則）
+- 新增/修改同步處理規則，將更多物件或屬性從來原始目錄匯入 () 
     - 在該來原始目錄的連接器上需要完整匯入
 - 對同步處理規則進行變更
     - 連接器上的已變更同步處理規則需要完整同步處理

@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77153871"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165204"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>`$filter` `$orderby` `$select` Azure 認知搜尋中、和的 OData 語言總覽
 
@@ -45,7 +46,7 @@ OData 運算式的範圍從簡單到非常複雜，但全都共用通用元素�
 
 ## <a name="field-paths"></a>欄位路徑
 
-下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定義欄位路徑的文法。
+下列 EBNF ([Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義欄位路徑的文法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -65,11 +66,11 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 欄位路徑是由一個或多個以斜線分隔的**識別碼**所組成。 每一個識別碼都是一串字元，必須以 ASCII 字母或底線開頭，而且只包含 ASCII 字母、數位或底線。 字母可以是大寫或小寫。
 
-識別碼可以參考欄位的名稱，或是篩選中[集合運算式](search-query-odata-collection-operators.md)（或）內容中的**範圍變數** `any` `all` 。 範圍變數就像迴圈變數，代表集合的目前元素。 針對複雜的集合，該變數代表物件，這就是為什麼您可以使用欄位路徑來參考變數的子欄位。 這類似于許多程式設計語言中的點標記法。
+識別碼可以參照欄位的名稱，或參考[集合運算式](search-query-odata-collection-operators.md)內容中的**範圍變數** (`any` 或 `all` 在篩選中) 。 範圍變數就像迴圈變數，代表集合的目前元素。 針對複雜的集合，該變數代表物件，這就是為什麼您可以使用欄位路徑來參考變數的子欄位。 這類似于許多程式設計語言中的點標記法。
 
 下表顯示欄位路徑的範例：
 
-| 欄位路徑 | Description |
+| 欄位路徑 | 描述 |
 | --- | --- |
 | `HotelName` | 參考索引的最上層欄位 |
 | `Address/City` | 參考 `City` 索引中複雜欄位的子欄位， `Address` `Edm.ComplexType` 在此範例中為類型 |
@@ -80,9 +81,11 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 欄位路徑的意義會因內容而有所不同。 在 [篩選] 中，[欄位路徑] 是指目前檔中欄位的*單一實例*值。 在其他內容中（例如 **$orderby**、 **$select**，或在[回復中搜尋完整 Lucene 語法](query-lucene-syntax.md#bkmk_fields)），欄位路徑會參考欄位本身。 這項差異對於您在篩選中使用欄位路徑的方式有一些影響。
 
-請考慮欄位路徑 `Address/City` 。 在篩選中，這指的是目前檔的單一城市，例如「三藩市」。 相反地， `Rooms/Type` 指的是 `Type` 許多房間的子欄位（例如「標準」代表第一個聊天室，"deluxe" 代表第二個房間，依此類推）。 由於 `Rooms/Type` 不會參考子欄位的*單一實例* `Type` ，因此無法直接在篩選中使用。 相反地，若要篩選會議室類型，您可以使用[lambda 運算式](search-query-odata-collection-operators.md)搭配範圍變數，如下所示：
+請考慮欄位路徑 `Address/City` 。 在篩選中，這指的是目前檔的單一城市，例如「三藩市」。 相反地， `Rooms/Type` 指的是 `Type` 許多房間的子欄位 (像是「標準」的第一個聊天室、「deluxe」代表第二個房間，依此類推) 。 由於 `Rooms/Type` 不會參考子欄位的*單一實例* `Type` ，因此無法直接在篩選中使用。 相反地，若要篩選會議室類型，您可以使用[lambda 運算式](search-query-odata-collection-operators.md)搭配範圍變數，如下所示：
 
-    Rooms/any(room: room/Type eq 'deluxe')
+```odata
+Rooms/any(room: room/Type eq 'deluxe')
+```
 
 在此範例中，範圍變數 `room` 會出現在 `room/Type` 欄位路徑中。 如此一來，就 `room/Type` 表示目前檔中的目前聊天室類型。 這是子欄位的單一實例 `Type` ，因此可以直接在篩選中使用。
 
@@ -92,7 +95,7 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 | API | 參數名稱 | 限制 |
 | --- | --- | --- |
-| [建立](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `suggesters/sourceFields` | None |
+| [建立](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `suggesters/sourceFields` | 無 |
 | [建立](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `scoringProfiles/text/weights` | 只能**參考可搜尋的欄位** |
 | [建立](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `scoringProfiles/functions/fieldName` | 只能參考可**篩選**的欄位 |
 | [搜尋](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`當 `queryType` 為時`full` | 只能**參考可搜尋的欄位** |
@@ -106,7 +109,7 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 ## <a name="constants"></a>常數
 
-OData 中的常數是指定[實體資料模型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)（EDM）類型的常值。 如需 Azure 認知搜尋中支援的類型清單，請參閱[支援的資料類型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。 不支援集合類型的常數。
+OData 中的常數是給定[實體資料模型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) 類型的常值。 如需 Azure 認知搜尋中支援的類型清單，請參閱[支援的資料類型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。 不支援集合類型的常數。
 
 下表顯示 Azure 認知搜尋所支援的每個資料類型的常數範例：
 
@@ -132,7 +135,7 @@ OData 中的字串常數是以單引號分隔。 如果您需要使用可能本�
 
 ### <a name="constants-syntax"></a>常數語法
 
-下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定義上表所示大部分常數的文法。 地理空間類型的文法可以在[Azure 認知搜尋的 OData 地理空間函式](search-query-odata-geo-spatial-functions.md)中找到。
+下列 EBNF ([Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)，) 為上表中顯示的大部分常數定義文法。 地理空間類型的文法可以在[Azure 認知搜尋的 OData 地理空間函式](search-query-odata-geo-spatial-functions.md)中找到。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -208,7 +211,7 @@ boolean_literal ::= 'true' | 'false'
 
 不過，大部分的情況下，您需要更複雜的運算式來參考一個以上的欄位和常數。 這些運算式是以不同的方式建立，視參數而定。
 
-下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）會定義 **$filter**、 **$orderby**和 **$select**參數的文法。 這些是從參考欄位路徑和常數的較簡單運算式所建立的：
+下列 EBNF ([Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義 **$filter**、 **$orderby**和 **$select**參數的文法。 這些是從參考欄位路徑和常數的較簡單運算式所建立的：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

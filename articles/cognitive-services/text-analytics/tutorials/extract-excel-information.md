@@ -1,5 +1,5 @@
 ---
-title: 使用文字分析和電源自動化在 Excel 中解壓縮資訊
+title: 使用文字分析和 Power Automate 在 Excel 中擷取資訊
 titleSuffix: Azure Cognitive Services
 description: 瞭解如何在不需要撰寫程式碼的情況下，使用文字分析和電源自動化來解壓縮 Excel 文字。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: fd70fe14d3765fb7c21b92f62b4d73564176baa2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201451"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145698"
 ---
-# <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>使用文字分析和電源自動化在 Excel 中解壓縮資訊 
+# <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>使用文字分析和 Power Automate 在 Excel 中擷取資訊 
 
 在本教學課程中，您將建立一項電源自動化流程，將 Excel 試算表中的文字解壓縮，而不需要撰寫程式碼。 
 
@@ -31,9 +31,9 @@ ms.locfileid: "78201451"
 > * 從 Excel 解壓縮文字，並將它傳送至文字分析 API 
 > * 使用 API 中的資訊來更新 Excel 工作表。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-- Microsoft Azure 帳戶。 [開始免費試用](https://azure.microsoft.com/free/)或[登入](https://portal.azure.com/)。
+- Microsoft Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)或登[入](https://portal.azure.com/)。
 - 文字分析資源。 如果您沒有帳戶，您可以[在 Azure 入口網站中建立一個](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)，並使用免費層來完成本教學課程。
 - 註冊時為您產生的[金鑰和端點](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 - 包含租使用者問題的試算表。 GitHub 上提供範例資料
@@ -78,10 +78,10 @@ ms.locfileid: "78201451"
 
 | 動作 |名稱   | 類型 | 值 |
 |---------|---------|---|---|
-| 將變數初始化 | var_person | 字串 | 個人 |
-| 初始化變數2 | var_phone | 字串 | Phone_Number |
-| 初始化變數3 | var_plumbing | 字串 | 管道 |
-| 初始化變數4 | var_other | 字串 | 其他 | 
+| 將變數初始化 | var_person | String | 個人 |
+| 初始化變數2 | var_phone | String | Phone_Number |
+| 初始化變數3 | var_plumbing | String | 管道 |
+| 初始化變數4 | var_other | String | 其他 | 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/flow-variables.png" alt-text="流程變數中包含的資訊":::
@@ -123,7 +123,7 @@ ms.locfileid: "78201451"
 
 | 欄位           | 值                                                                                                             |
 |-----------------|-------------------------------------------------------------------------------------------------------------------|
-| 連線名稱 | 連接至您的文字分析資源的名稱。 例如： `TAforPowerAutomate` 。 |
+| 連線名稱 | 連接至您的文字分析資源的名稱。 例如，`TAforPowerAutomate`。 |
 | 帳戶金鑰     | 文字分析資源的索引鍵。                                                                                   |
 | 網站 URL        | 文字分析資源的端點。                                                       |
 
@@ -137,7 +137,7 @@ ms.locfileid: "78201451"
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="將文字分析認證新增至您的流程。":::
 
-在**文字**欄位中按一下，然後從顯示的動態內容視窗中選取 [**描述**]。 針對`en` [語言] 輸入。 （如果您沒有看到語言，請按一下 [顯示] [高級選項]）
+在**文字**欄位中按一下，然後從顯示的動態內容視窗中選取 [**描述**]。 針對 [語言] 輸入 `en` 。 如果您看不到 [Language]， (按一下 [顯示高級選項]) 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="將文字分析認證新增至您的流程。":::
@@ -160,7 +160,7 @@ ms.locfileid: "78201451"
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="將文字分析認證新增至您的流程。":::
 
-請確定第二個方塊設定為 [**等於**]。 然後選取第三個方塊，並`var_person`在動態內容視窗中搜尋。 
+請確定第二個方塊設定為 [**等於**]。 然後選取第三個方塊，並 `var_person` 在動態內容視窗中搜尋。 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="將文字分析認證新增至您的流程。":::
@@ -182,7 +182,7 @@ ms.locfileid: "78201451"
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="將文字分析認證新增至您的流程。":::
 
-在 [套用**至每3個**] 中，新增**條件**控制項。 它會命名為**Condition 2**。 在第一個文字方塊中，搜尋並新增 [動態內容] 視窗中的 [**實體類型**]。 請確定 [中央] 方塊已設定為 [**等於**]。 然後，在右邊的文字方塊中輸入`var_phone`。 
+在 [套用**至每3個**] 中，新增**條件**控制項。 它會命名為**Condition 2**。 在第一個文字方塊中，搜尋並新增 [動態內容] 視窗中的 [**實體類型**]。 請確定 [中央] 方塊已設定為 [**等於**]。 然後，在右邊的文字方塊中輸入 `var_phone` 。 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="將文字分析認證新增至您的流程。":::
@@ -203,15 +203,15 @@ ms.locfileid: "78201451"
 
 接下來，流程將會檢查來自 Excel 資料表資料列的問題描述是否包含「配管」一詞。 如果是，它會在 IssueType 資料行中新增「配管」。 如果不是，我們會輸入「其他」。
 
-在 [套用**至每4個**] 動作內，新增 [**條件**] 控制項。 它會命名為**條件 3**。 在第一個文字方塊中，使用動態內容視窗，搜尋並加入 Excel 檔案中的**描述**。 請確定中間方塊指出 [**包含**]。 然後，在右邊的文字方塊中，尋找並選取`var_plumbing`。 
+在 [套用**至每4個**] 動作內，新增 [**條件**] 控制項。 它會命名為**條件 3**。 在第一個文字方塊中，使用動態內容視窗，搜尋並加入 Excel 檔案中的**描述**。 請確定中間方塊指出 [**包含**]。 然後，在右邊的文字方塊中，尋找並選取 `var_plumbing` 。 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="將文字分析認證新增至您的流程。":::
 
 
-在 [**如果是]** 條件中，按一下 [**新增動作**]，然後選取 [**更新資料列**]。 然後輸入如 [之前] 的資訊。 在 [IssueType] 資料行`var_plumbing`中，選取 []。 這會將「配管」標籤套用到資料列。
+在 [**如果是]** 條件中，按一下 [**新增動作**]，然後選取 [**更新資料列**]。 然後輸入如 [之前] 的資訊。 在 [IssueType] 資料行中，選取 [] `var_plumbing` 。 這會將「配管」標籤套用到資料列。
 
-在 [**如果沒有**條件] 中，按一下 [**新增動作**]，然後選取 [**更新資料列**]。 然後輸入如 [之前] 的資訊。 在 [IssueType] 資料行`var_other`中，選取 []。 這會將 [其他] 標籤套用至資料列。
+在 [**如果沒有**條件] 中，按一下 [**新增動作**]，然後選取 [**更新資料列**]。 然後輸入如 [之前] 的資訊。 在 [IssueType] 資料行中，選取 [] `var_other` 。 這會將 [其他] 標籤套用至資料列。
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="將文字分析認證新增至您的流程。":::

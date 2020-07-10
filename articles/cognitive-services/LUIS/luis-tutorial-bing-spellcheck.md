@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 98f35d0b3f37a7bb181f83b83a48ef113e02f1e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: ee0c659cf510eb0a438ae0c78a554c98dccffa89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344130"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144284"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用 Bing 拼字檢查更正拼錯的字組
 
@@ -24,17 +24,9 @@ ms.locfileid: "84344130"
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-
-## <a name="create-first-key-for-bing-spell-check-v7"></a>為 Bing 拼字檢查 V7 建立第一個金鑰
-
-您的[第一個 Bing 拼字檢查 API v7 金鑰](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)是免費的。
-
-![建立免費金鑰](./media/luis-tutorial-bing-spellcheck/free-key.png)
-
-<a name="create-subscription-key"></a>
-
 ## <a name="create-endpoint-key"></a>建立端點金鑰
-如果您的免費金鑰過期，請建立端點金鑰。
+
+若要在 Azure 入口網站中建立 Bing 拼寫檢查資源，請遵循下列指示：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 

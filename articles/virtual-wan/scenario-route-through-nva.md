@@ -8,16 +8,22 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0716ca8f0457ca801098c97dd7a5e68751822d4d
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: ed64b9d281cfbbf8202a99335ea2759b27a6fc42
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848096"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142976"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>案例：透過 NVA 路由傳送流量
 
-使用虛擬 WAN 虛擬中樞路由時，有很多可用的案例。 在此 NVA 案例中，目標是透過 NVA （網路虛擬裝置）將流量路由傳送至 VNet，並將 VNet 分支到分支。 如需虛擬中樞路由的相關資訊，請參閱[關於虛擬中樞路由](about-virtual-hub-routing.md)。
+使用虛擬 WAN 虛擬中樞路由時，有很多可用的案例。 在此 NVA 案例中，目標是透過 NVA (網路虛擬) 設備，將流量路由傳送至 VNet，並將 VNet 分支到分支。 如需虛擬中樞路由的相關資訊，請參閱[關於虛擬中樞路由](about-virtual-hub-routing.md)。
+
+> [!NOTE]
+> 某些路由功能可能仍在推出。如果您的區域尚未進行首度發行，請在此同時使用這些版本文章中的步驟：
+>* [Azure 入口網站篇文章](virtual-wan-route-table-nva-portal.md)
+>* [PowerShell 文章](virtual-wan-route-table-nva.md)
+>
 
 ## <a name="scenario-architecture"></a><a name="architecture"></a>案例架構
 
@@ -39,13 +45,13 @@ ms.locfileid: "85848096"
 
 若要設定透過 NVA 的路由，以下是要考慮的步驟：
 
-1. 識別 NVA 輪輻 VNet 連接。 在 [**圖 1**] 中，它們是**vnet 2 連接（Eastusconn）** 和**vnet 4 連線（weconn）**。
+1. 識別 NVA 輪輻 VNet 連接。 在 [**圖 1**] 中，它們是**vnet 2 連線 (Eastusconn) **和**vnet 4 連線 (weconn) **。
 
    請確定已設定 Udr：
    * 從 VNET 5 和6到 VNET 2 NVA IP
    * 從 VNET 7 和8到 VNET 4 NVA IP 
    
-   您不需要直接將 VNET 5、6、7、8連線到虛擬中樞。 請確定 Vnet 5、6、7、8中的 Nsg 允許分支（VPN/ER/P2S）或 Vnet 連線到 theire 遠端 Vnet 的流量。 例如，VNET 5、6必須確保 Nsg 允許內部部署位址首碼的流量，以及連線到遠端中樞2的 Vnet 7，8。 
+   您不需要直接將 VNET 5、6、7、8連線到虛擬中樞。 請確定 Vnet 5、6、7、8中的 Nsg 允許分支 (VPN/ER/P2S) 或 Vnet 連接到 theire 遠端 Vnet 的流量。 例如，VNET 5、6必須確保 Nsg 允許內部部署位址首碼的流量，以及連線到遠端中樞2的 Vnet 7，8。 
 
 2. 將 Vnet 2、5、6的匯總靜態路由專案新增至中樞1的預設路由表。 
 

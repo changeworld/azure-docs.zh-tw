@@ -1,35 +1,31 @@
 ---
 title: 在 Azure Kubernetes Service 中使用 Azure AD
-description: 瞭解如何使用 Azure Kubernetes Service 中的 Azure AD （AKS）
+description: '瞭解如何在 Azure Kubernetes Service (AKS 中使用 Azure AD) '
 services: container-service
 manager: gwallace
-author: mlearned
+author: TomGeske
 ms.topic: article
-ms.date: 06/25/2020
-ms.author: mlearned
-ms.openlocfilehash: f22b79cb8a730fb9c28dd1a208ab672473218b79
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/08/2020
+ms.author: thomasge
+ms.openlocfilehash: 9cacd2454dc987f7d507bb4b677e742f0be0d391
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105943"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166496"
 ---
-# <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS-受控 Azure Active Directory 整合（預覽）
+# <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS-受控 Azure Active Directory 整合 (預覽) 
 
 > [!NOTE]
-> 具有 Azure Active Directory （Azure AD）整合的現有 AKS （Azure Kubernetes Service）叢集不會受到新的 AKS 管理 Azure AD 體驗的影響。
+> 具有 Azure Active Directory (Azure AD) 整合的現有 AKS (Azure Kubernetes Service) 叢集不會受到新的 AKS 管理 Azure AD 體驗的影響。
 
 AKS 管理的 Azure AD 整合是設計用來簡化 Azure AD 整合體驗，其中使用者先前必須建立用戶端應用程式、伺服器應用程式，並要求 Azure AD 租使用者授與目錄讀取權限。 在新版本中，AKS 資源提供者會為您管理用戶端和伺服器應用程式。
 
 ## <a name="azure-ad-authentication-overview"></a>Azure AD 驗證總覽
 
-叢集系統管理員可以根據使用者的身分識別或目錄群組成員資格，設定 Kubernetes 角色型存取控制（RBAC）。 透過 OpenID Connect 對 AKS 叢集提供 Azure AD 驗證。 OpenID Connect 是以 OAuth 2.0 通訊協定為建置基礎的身分識別層。 如需 OpenID Connect 的詳細資訊，請參閱[OPEN ID connect 檔][open-id-connect]。
+叢集系統管理員可以根據使用者的身分識別或目錄群組成員資格，設定 Kubernetes 以角色為基礎的存取控制 (RBAC) 。 透過 OpenID Connect 對 AKS 叢集提供 Azure AD 驗證。 OpenID Connect 是以 OAuth 2.0 通訊協定為建置基礎的身分識別層。 如需 OpenID Connect 的詳細資訊，請參閱[OPEN ID connect 檔][open-id-connect]。
 
 若要深入瞭解 AAD 整合流程，請[參閱 Azure Active Directory 整合概念檔](concepts-identity.md#azure-active-directory-integration)。
-
-## <a name="limitations"></a>限制
-
-* 您目前無法將現有的 AKS Azure AD 整合式叢集升級至新的 AKS 管理 Azure AD 體驗。
 
 > [!IMPORTANT]
 > AKS preview 功能可在自助服務上自行選擇。 預覽會以「原樣」和「可用」的方式提供，並從服務等級協定中排除，並享有有限擔保。 AKS 預覽的部分是由客戶支援，以最大的方式來涵蓋。 因此，這些功能並不適用于生產環境使用。 如需詳細資訊，請參閱下列支援文章：
@@ -154,7 +150,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-設定以[角色為基礎的存取控制（RBAC）](https://docs.microsoft.com/azure/aks/azure-ad-rbac) ，為您的叢集設定額外的安全性群組。
+[ (RBAC) ](https://docs.microsoft.com/azure/aks/azure-ad-rbac)設定以角色為基礎的存取控制，為您的叢集設定額外的安全性群組。
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>針對 Azure AD 的存取問題進行疑難排解
 
@@ -179,7 +175,7 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 * 深入瞭解[Azure AD 與 KUBERNETES RBAC 整合][azure-ad-rbac]。
 * 使用[kubelogin](https://github.com/Azure/kubelogin)來存取 kubectl 中無法使用的 Azure 驗證功能。
 * 深入瞭解[AKS 和 Kubernetes 身分識別概念][aks-concepts-identity]。
-* 使用[Azure Resource Manager （ARM）範本][aks-arm-template]來建立 AKS 管理的 Azure AD 啟用的叢集。
+* 使用[Azure Resource Manager (ARM) 範本][aks-arm-template]來建立 AKS 管理的 Azure AD 啟用的叢集。
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

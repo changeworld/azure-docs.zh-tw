@@ -7,15 +7,16 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eccd6b33353e071a66225279f1f1c150d4bdaafc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536619"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143846"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>使用 Azure PowerShell 遷移 Web 應用程式防火牆原則
 
-此腳本可讓您輕鬆地從 WAF config 或僅限自訂規則的 WAF 原則轉換為完整的 WAF 原則。 您可能會在入口網站中看到一則警告，指出 [*遷移至 WAF 原則*]，或者您可能想要新的公開預覽 WAF 功能，例如 Geomatch 自訂規則、每個網站和每個 URI WAF 原則，或 bot 緩和規則集。 若要使用這些功能的任何一項，您需要與應用程式閘道相關聯的完整 WAF 原則。 
+此腳本可讓您輕鬆地從 WAF config 或僅限自訂規則的 WAF 原則轉換為完整的 WAF 原則。 您可能會在入口網站中看到一則警告，說明 [*遷移至 WAF 原則*]，或者您可能想要新的 WAF 功能，例如 Geomatch 自訂規則 (預覽) 、每個網站 WAF 原則和每個 URI WAF 原則 (preview) ，或 bot 緩和規則集 (preview) 。 若要使用這些功能的任何一項，您需要與應用程式閘道相關聯的完整 WAF 原則。 
 
 如需建立新 WAF 原則的詳細資訊，請參閱[建立應用程式閘道的 Web 應用程式防火牆原則](create-waf-policy-ag.md)。 如需有關遷移的詳細資訊，請參閱[遷移至 WAF 原則](create-waf-policy-ag.md#migrate-to-waf-policy)。
 
@@ -31,7 +32,7 @@ ms.locfileid: "81536619"
 > [!NOTE]
 > 如果下列條件存在，則腳本不會完成遷移：
 > - 已停用整個規則。 若要完成遷移，請確定未停用整個 rulegroup。
-> - 具有*Equals any*運算子的排除專案。 若要完成遷移，請確定具有*Equals Any*運算子的排除專案不存在。
+> - 使用*等於 any*運算子 (s) 的排除專案。 若要完成遷移，請確定具有*Equals Any*運算子的排除專案不存在。
 >
 > 如需詳細資訊，請參閱腳本中的*ValidateInput*函式。
 

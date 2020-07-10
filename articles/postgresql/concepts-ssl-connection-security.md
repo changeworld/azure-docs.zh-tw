@@ -5,17 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 6660c5d40ffb8ecb338dd9cdf53f24cfe2911713
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/08/2020
+ms.openlocfilehash: 615e8c80d194bb37feac1c09af22d2aa5d4aa3fc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043830"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142721"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中設定 TLS 連線能力
 
-適用於 PostgreSQL 的 Azure 資料庫偏好使用傳輸層安全性（TLS）將用戶端應用程式連接到于 postgresql 服務，先前稱為安全通訊端層（SSL）。 在您的資料庫伺服器和用戶端應用程式之間強制執行 TLS 連線，可將伺服器與應用程式之間的資料流程加密，以協助防止「攔截式」攻擊。
+適用於 PostgreSQL 的 Azure 資料庫偏好將您的用戶端應用程式連接到使用傳輸層安全性 (TLS) ，先前稱為安全通訊端層 (SSL) 。 在您的資料庫伺服器和用戶端應用程式之間強制執行 TLS 連線，可將伺服器與應用程式之間的資料流程加密，以協助防止「攔截式」攻擊。
 
 根據預設，于 postgresql 資料庫服務會設定為需要 TLS 連接。 如果您的用戶端應用程式不支援 TLS 連線，您可以選擇停用需要 TLS。
 
@@ -51,7 +51,9 @@ az postgres server update --resource-group myresourcegroup --name mydemoserver -
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>需要憑證驗證以進行 TLS 連線的應用程式
 
-在某些情況下，應用程式需要從受信任的憑證授權單位單位（CA）憑證檔案產生的本機憑證檔案，才能安全地連接。 用來連接到適用於 PostgreSQL 的 Azure 資料庫伺服器的憑證位於 https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem 。 下載憑證檔案，並將它儲存到您慣用的位置。 （請參閱下列連結，以取得主權雲端中伺服器的憑證： [Azure Government](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)、 [Azure 中國](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)和[azure 德國](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)）。 
+在某些情況下，應用程式需要由受信任的憑證授權單位單位所產生的本機憑證檔案 (CA) 憑證檔案，以安全地連接。 用來連接到適用於 PostgreSQL 的 Azure 資料庫伺服器的憑證位於 https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem 。 下載憑證檔案，並將它儲存到您慣用的位置。 
+
+請參閱下列連結，以取得主權雲端中伺服器的憑證： [Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)、 [Azure 中國](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)和[azure 德國](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)。
 
 ### <a name="connect-using-psql"></a>使用 psql 連接
 
@@ -68,7 +70,7 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 
 ## <a name="tls-enforcement-in-azure-database-for-postgresql-single-server"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器中的 TLS 強制
 
-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器支援使用傳輸層安全性（TLS）連接到您的資料庫伺服器之用戶端的加密。 TLS 是一種業界標準通訊協定，可確保您的資料庫伺服器和用戶端應用程式之間的安全網路連線，讓您遵守合規性需求。
+適用於 PostgreSQL 的 Azure 資料庫-單一伺服器支援使用傳輸層安全性 (TLS) 來連接到資料庫伺服器的用戶端加密。 TLS 是一種業界標準通訊協定，可確保您的資料庫伺服器和用戶端應用程式之間的安全網路連線，讓您遵守合規性需求。
 
 ### <a name="tls-settings"></a>TLS 設定
 
@@ -76,7 +78,7 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 
 |  最小 TLS 設定             | 支援的用戶端 TLS 版本                |
 |:---------------------------------|-------------------------------------:|
-| TLSEnforcementDisabled （預設值） | 不需要 TLS                      |
+| TLSEnforcementDisabled (預設)  | 不需要 TLS                      |
 | TLS1_0                           | TLS 1.0、TLS 1.1、TLS 1.2 和更高版本 |
 | TLS1_1                           | TLS 1.1、TLS 1.2 及更高版本          |
 | TLS1_2                           | TLS 1.2 版和更新版本           |
@@ -85,7 +87,7 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 例如，將此最小的 TLS 設定版本設定為 TLS 1.0，表示您的伺服器將允許使用 TLS 1.0、1.1 和 1.2 + 的用戶端進行連接。 或者，將此值設定為1.2，表示您只允許使用 TLS 1.2 + 的用戶端連線，且 TLS 1.0 和 TLS 1.1 的所有連線都會遭到拒絕。
 
 > [!Note] 
-> 根據預設，適用於 PostgreSQL 的 Azure 資料庫不會強制執行最低的 TLS 版本（設定 `TLSEnforcementDisabled` ）。
+> 根據預設，適用於 PostgreSQL 的 Azure 資料庫不會強制執行最低的 TLS 版本， (設定 `TLSEnforcementDisabled`) 。
 >
 > 一旦您強制執行最低的 TLS 版本，您之後就無法停用最低版本強制。
 

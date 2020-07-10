@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: 2baf2b209cae11f734494c377aebd731f69f514d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b395931d11c7bc7119be0122531908ed680fc3b9
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610858"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145972"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>防止無關聯的 DNS 專案，並避免子域接管
 
@@ -45,7 +45,7 @@ ms.locfileid: "85610858"
 
 1. 在網站刪除之後，威脅動作專案幾乎會立即探索遺失的網站，並在建立自己的網站 `app-contogreat-dev-001.azurewebsites.net` 。
 
-    現在，適用于的流量 `greatapp.contoso.com` 會移至威脅執行者的 Azure 網站，而威脅執行者會控制所顯示的內容。 
+    現在，適用于的流量會 `greatapp.contoso.com` 移至威脅執行者的 Azure 網站，而威脅執行者會控制所顯示的內容。 
 
     惡意的 DNS 遭到入侵，Contoso 的子域「GreatApp」是子域接管的受害者。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "85610858"
 
 - **失去對子域內容的控制**-負面按下您的組織無法保護其內容，以及品牌損毀和失去信任。
 
-- **從不受歡迎的訪客收集的 Cookie** -web 應用程式通常會向子域（*. contoso.com）公開會話 cookie，因此任何子域都可以存取它們。 威脅動作專案可以使用子域接管來建立美觀的頁面，並誘騙不受歡迎的使用者造訪，並收集其 cookie （甚至是安全的 cookie）。 常見的誤解是使用 SSL 憑證來保護您的網站和使用者的 cookie，而不受接管。 不過，威脅執行者可以使用攔截的子域來申請並接收有效的 SSL 憑證。 如此一來，就會授與他們安全 cookie 的存取權，並進一步提高惡意網站的認知合法性。
+- **從不受歡迎的訪客收集 Cookie** -web 應用程式通常會將會話 cookie 公開給子域 ( *. contoso.com) ，因此任何子域都可以存取它們。 威脅動作專案可以使用子域接管來建立美觀的頁面、誘騙不受歡迎的使用者造訪，以及收集 cookie (甚至是安全的 cookie) 。 常見的誤解是使用 SSL 憑證來保護您的網站和使用者的 cookie，而不受接管。 不過，威脅執行者可以使用攔截的子域來申請並接收有效的 SSL 憑證。 有效的 SSL 憑證會授與他們安全 cookie 的存取權，並可進一步提高惡意網站的認知合法性。
 
 - **網路釣魚活動**-可以在網路釣魚活動中使用真實的子域。 這適用于惡意網站，也適用于允許威脅執行者接收已知安全品牌合法子域的電子郵件的 MX 記錄。
 
@@ -78,14 +78,14 @@ ms.locfileid: "85610858"
 
 ### <a name="use-azure-dns-alias-records"></a>使用 Azure DNS 別名記錄
 
-藉由緊密結合 DNS 記錄與 Azure 資源的生命週期，Azure DNS 的[別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scenarios)可以防止無關聯的參考。 例如，限定為別名記錄以指向公用 IP 位址或流量管理員設定檔的 DNS 記錄。 如果您刪除這些基礎資源，DNS 別名記錄就會變成空的記錄集。 它不再參考已刪除的資源。 請務必注意，您可以使用別名記錄來保護它的限制。 今天，清單僅限於：
+Azure DNS 的[別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scenarios)可以藉由結合 DNS 記錄與 Azure 資源的生命週期，來防止無關聯的參考。 例如，限定為別名記錄以指向公用 IP 位址或流量管理員設定檔的 DNS 記錄。 如果您刪除這些基礎資源，DNS 別名記錄就會變成空的記錄集。 它不再參考已刪除的資源。 請務必注意，您可以使用別名記錄來保護它的限制。 今天，清單僅限於：
 
 - Azure Front Door
 - 流量管理員設定檔
-- Azure 內容傳遞網路（CDN）端點
+- Azure 內容傳遞網路 (CDN) 端點
 - 公用 IP
 
-如果您有可以使用別名記錄來保護子域接管的資源，我們建議您不要這麼做，因為目前有有限的服務供應專案。
+雖然現今有限的服務供應專案，但我們建議您盡可能使用別名記錄來防禦子域接管。
 
 [深入瞭解](https://docs.microsoft.com/azure/dns/dns-alias#capabilities)Azure DNS 別名記錄的功能。
 
@@ -117,10 +117,10 @@ ms.locfileid: "85610858"
 
     - 定期檢查您的 DNS 記錄，以確保您的子域都會對應至 Azure 資源，其會：
 
-        - 已**存在**-針對指向 Azure 子域（例如 *. azurewebsites.net 或 *. cloudapp.azure.com）的資源查詢您的 DNS 區域（請參閱[此參考清單](azure-domains.md)）。
+        - 已**存在**-針對指向 Azure 子域（例如 *. azurewebsites.net 或 *. cloudapp.azure.com）的資源查詢您的 DNS 區域 (參閱[此參考清單](azure-domains.md)) 。
         - **您擁有**-確認您擁有 DNS 子域目標的所有資源。
 
-    - 維護 Azure 完整功能變數名稱（FQDN）端點和應用程式擁有者的服務類別目錄。 若要建立您的服務類別目錄，請使用下表中的參數執行下列 Azure Resource Graph 查詢：
+    - 維護 Azure 完整功能變數名稱的服務類別目錄， (FQDN) 端點和應用程式擁有者。 若要建立您的服務類別目錄，請使用下表中的參數來執行下列 Azure Resource Graph (ARG) 查詢：
     
         >[!IMPORTANT]
         > **許可權**-以可存取所有 Azure 訂用帳戶的使用者身分執行查詢。 
@@ -139,9 +139,12 @@ ms.locfileid: "85610858"
         
         您也可以結合多個資源類型。 這個範例查詢會傳回 Azure App Service**和**Azure App Service 位置的資源：
 
-        ```
+        ```azurepowershell
         Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
         ```
+
+
+        ARG 查詢的每個服務參數：
 
         |資源名稱  |[ResourceType]  | [FQDNproperty]  |
         |---------|---------|---------|
@@ -159,7 +162,7 @@ ms.locfileid: "85610858"
 - **建立補救程式：**
     - 找到無關聯的 DNS 專案時，您的小組必須調查是否發生任何洩露。
     - 調查資源解除委任時，位址不會重新路由的原因。
-    - 刪除不再使用的 DNS 記錄，或將它指向貴組織所擁有的正確 Azure 資源（FQDN）。
+    - 刪除不再使用的 DNS 記錄，或將它指向您組織所擁有的正確 Azure 資源 (FQDN) 。
  
 
 ## <a name="next-steps"></a>後續步驟

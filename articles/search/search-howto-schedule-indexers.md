@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72a0812f8064174b539a1ea39fc0017a4e00a341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f85645d8c77d2317807bb02a19a308070acb6007
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565765"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143541"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中排程索引子
 
@@ -31,7 +31,7 @@ ms.locfileid: "85565765"
 
 索引子排程有兩個屬性：
 * **間隔**，定義排程的索引子執行之間的時間量。 允許的最小間隔為5分鐘，最大值為24小時。
-* **開始時間（UTC）**，表示應該執行索引子的第一次。
+* **開始時間 (UTC) **，這表示第一次應執行索引子。
 
 您可以在第一次建立索引子時指定排程，或稍後更新索引子的屬性。 您可以使用[入口網站](#portal)、 [REST API](#restApi)或[.net SDK](#dotNetSdk)來設定索引子排程。
 
@@ -44,7 +44,7 @@ ms.locfileid: "85565765"
 * 第三次執行排定在 UTC 上午10:00 開始，但當時仍在執行上一次。 然後會略過這個已排程的執行。 下次執行索引子時，將不會啟動到 11:00 AM UTC。
 
 > [!NOTE]
-> 如果索引子設定為特定排程，但每次執行時重複地在同一份檔上失敗，則索引子將會以較不頻繁的間隔（最多每24小時至少一次）開始執行，直到它再次成功進行。  如果您相信您已修正導致索引子停滯在某個時間點的任何問題，您可以依需求執行索引子，如果該作業成功，則索引子會再次回到其設定的排程間隔。
+> 如果索引子設定為特定的排程，但每次執行時重複地在同一份檔上失敗，則索引子將會以較不頻繁的間隔開始執行 (最多每 24) 小時一次，直到成功地再次執行進度為止。  如果您相信您已修正導致索引子停滯在某個時間點的任何問題，您可以依需求執行索引子，如果該作業成功，則索引子會再次回到其設定的排程間隔。
 
 <a name="portal"></a>
 
@@ -54,7 +54,7 @@ ms.locfileid: "85565765"
 
 如果您不想要讓索引子自動再次執行，**或每天執行**一次，您可以將排程設定變更為 [**一次**]。 如果您想要指定不同的間隔或特定的未來開始時間，請將它設定為 [**自訂**]。
 
-當您將排程設定為 [**自訂**] 時，會顯示欄位，讓您指定**間隔**和**開始時間（UTC）**。 允許的最短時間間隔為5分鐘，最長為1440分鐘（24小時）。
+當您將排程設定為 [**自訂**] 時，會顯示欄位，讓您指定**間隔**和**開始時間 (UTC) **。 允許的最短時間間隔為5分鐘，而最長為1440分鐘 (24 小時) 。
 
    ![在匯入資料嚮導中設定索引子排程](media/search-howto-schedule-indexers/schedule-import-data.png "在匯入資料嚮導中設定索引子排程")
 
@@ -68,6 +68,7 @@ ms.locfileid: "85565765"
 
 您可以使用 REST API 來定義索引子的排程。 若要這麼做，請在建立或更新索引子時加入**排程**屬性。 下列範例顯示更新現有索引子的 PUT 要求：
 
+```http
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
@@ -77,6 +78,7 @@ ms.locfileid: "85565765"
         "targetIndexName" : "target index name",
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
+```
 
 **間隔** 參數是必需的。 間隔指兩個連續索引子開始執行的時間。 允許的最小間隔為 5 分鐘；最長間隔為一天。 其必須格式化為 XSD "dayTimeDuration" 值 ( [ISO 8601 持續時間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) 值的受限子集)。 間隔的模式為： `P(nD)(T(nH)(nM))`。 範例：`PT15M` 代表每隔 15 分鐘，`PT2H` 代表每隔 2 個小時。
 

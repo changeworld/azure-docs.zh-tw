@@ -16,19 +16,20 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7494f8e65f0b92540fec3ddc1f07e59004227625
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338183"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145758"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>針對 Azure AD 權利管理進行疑難排解
 
-本文說明您應該檢查的一些專案，以協助您進行 Azure Active Directory （Azure AD）權利管理的疑難排解。
+本文說明一些您應該檢查的專案，以協助您針對 Azure Active Directory (Azure AD) 的權利管理進行疑難排解。
 
 ## <a name="administration"></a>系統管理
 
-* 如果您在設定權利管理時收到拒絕存取的訊息，而且您是全域管理員，請確定您的目錄具有[Azure AD Premium P2 （或 EMS E5）授權](entitlement-management-overview.md#license-requirements)。
+* 如果您在設定權利管理時收到拒絕存取的訊息，而且您是全域管理員，請確定您的目錄具有[Azure AD Premium P2 (或 EMS E5) 授權](entitlement-management-overview.md#license-requirements)。
 
 * 如果您在建立或查看存取套件時收到拒絕存取的訊息，而且您是目錄建立者群組的成員，則必須在建立第一個存取套件之前先[建立目錄](entitlement-management-catalog-create.md)。
 
@@ -94,7 +95,9 @@ ms.locfileid: "85338183"
 
 如果在觸發存取封裝重新處理要求之後符合錯誤，您必須等候系統重新處理要求。 系統會多次嘗試重新處理數小時，因此您無法在這段時間內強制重新處理。 
 
-您只能重新處理狀態為 [**傳遞失敗**] 或 [**部分傳遞**] 且完成日期不到一周的要求。
+您只能重新處理狀態為 [**傳遞失敗**] 或 [**部分傳遞**] 且完成日期不到一周的要求。 否則 **，[** 重新處理] 按鈕會呈現灰色。
+
+![重新處理按鈕呈現灰色](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
 - 如果在試用期間修正錯誤，則要求狀態會變更為 [**傳遞**]。 要求會重新處理，而不需要使用者採取其他動作。
 
@@ -116,7 +119,7 @@ ms.locfileid: "85338183"
 
 ### <a name="cancel-a-pending-request"></a>取消擱置要求
 
-您只能取消尚未傳遞或其傳遞失敗的擱置要求。
+您只能取消尚未傳遞或其傳遞失敗的擱置要求。否則，[**取消**] 按鈕會呈現灰色。
 
 **必要角色：** 全域管理員、使用者系統管理員、目錄擁有者或存取套件管理員
 
@@ -138,12 +141,12 @@ ms.locfileid: "85338183"
 
 * 套用多個原則時，自動選取的原則或向要求者顯示的原則會以下列優先權邏輯為基礎：
 
-    | 原則優先順序 | 影響範圍 |
+    | 原則優先順序 | 範圍 |
     | --- | --- |
     | P1 | 您目錄中的特定使用者和群組，或特定的已連線組織 |
-    | P2 | 目錄中的所有成員（不包括來賓） |
-    | P3 | 您目錄中的所有使用者（包括來賓）或特定的已連線組織 |
-    | P4 | 所有已連線的組織或所有使用者（所有已連線的組織 + 任何新的外部使用者） |
+    | P2 | 目錄中的所有成員 (不包括來賓)  |
+    | P3 | 目錄中的所有使用者 (包括來賓) 或特定的已連線組織 |
+    | P4 | 所有已連線的組織或所有使用者 (所有已連線的組織，以及任何新的外部使用者)  |
     
     如果有任何原則的優先順序較高，則會忽略較低優先順序的類別。 如需如何向要求者顯示多個具有相同優先順序的原則的範例，請參閱[選取原則](entitlement-management-request-access.md#select-a-policy)。
 

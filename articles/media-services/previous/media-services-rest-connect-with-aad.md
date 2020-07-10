@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b4980ee8ea252b4ce13601501e4bf1f7af97d1b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295432"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166360"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>使用 Azure AD 驗證搭配 REST 存取媒體服務 API
 
@@ -137,8 +137,10 @@ ms.locfileid: "80295432"
 
     或者，按一下 Postman 視窗右邊的 [大量編輯]**** 連結，並將下列程式碼貼上。
 
-        Content-Type:application/x-www-form-urlencoded
-        Keep-Alive:true
+    ```javascript
+    Content-Type:application/x-www-form-urlencoded
+    Keep-Alive:true
+    ```
 
 6. 按 [主體]**** 索引標籤。
 7. 使用「索引鍵/值」資料格線 (取代用戶端識別碼和祕密值) 輸入主體資訊。 
@@ -147,10 +149,12 @@ ms.locfileid: "80295432"
 
     或者，按一下 Postman 視窗右邊的 [大量編輯]****，並將下列主體貼上 (取代用戶端識別碼和祕密值)：
 
-        grant_type:client_credentials
-        client_id:{Your Client ID that you got from your Azure AD Application}
-        client_secret:{Your client secret that you got from your Azure AD Application's Keys}
-        resource:https://rest.media.azure.net
+    ```javascript
+    grant_type:client_credentials
+    client_id:{Your Client ID that you got from your Azure AD Application}
+    client_secret:{Your client secret that you got from your Azure AD Application's Keys}
+    resource:https://rest.media.azure.net
+    ```
 
 8. 按 [傳送]。
 
@@ -180,11 +184,13 @@ ms.locfileid: "80295432"
 5. 按一下 Postman 視窗右邊的 [大量編輯]**** 連結。
 6. 將下列標頭貼上：
 
-        x-ms-version:2.19
-        Accept:application/json
-        Content-Type:application/json
-        DataServiceVersion:3.0
-        MaxDataServiceVersion:3.0
+    ```javascript
+    x-ms-version:2.19
+    Accept:application/json
+    Content-Type:application/json
+    DataServiceVersion:3.0
+    MaxDataServiceVersion:3.0
+    ```
 
 7. 按 [傳送]。
 

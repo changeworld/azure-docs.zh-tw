@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: 3d6b2b5896242ff85c6fb96071b747083893b03a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 304e76a2bf8bae3e6ee2120b892ef97d89c3decc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343161"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144404"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>在 LUIS 入口網站中建立新的 LUIS 應用程式
 有好幾種方法可建立 LUIS 應用程式。 您可以在 LUIS 入口網站中建立 LUIS 應用程式，或透過 LUIS 撰寫 [API](developer-reference-resource.md)。
@@ -45,7 +45,7 @@ ms.locfileid: "84343161"
 
 ## <a name="create-new-app-in-luis"></a>在 LUIS 中建立新的應用程式
 
-1. 在**我的應用程式**] 頁面上，選取您的**訂**用帳戶並**撰寫資源**，然後按 [ **+ 建立**]。 如果您使用免費試用金鑰，請瞭解如何[建立撰寫資源](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)。
+1. 在**我的應用程式**] 頁面上，選取您的**訂**用帳戶並**撰寫資源**，然後按 [ **+ 建立**]。 
 
 > [!div class="mx-imgBorder"]
 > ![LUIS 應用程式清單](./media/create-app-in-portal.png)
@@ -70,7 +70,7 @@ ms.locfileid: "84343161"
 
 * 將應用程式重新命名
 * 使用或從檔案匯入 `.lu``.json`
-* 將應用程式匯出為 `.lu` （適用于[LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)）、 `.json` 或 `.zip` （適用于[LUIS 容器](luis-container-howto.md)）
+* 將應用程式匯出為適用于 `.lu` LUIS 容器的[LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) 、 `.json` 或 (的 (`.zip`) [LUIS container](luis-container-howto.md)
 * 匯入容器端點記錄以審查端點語句
 * 匯出端點記錄作為 `.csv` 離線分析的
 * 刪除應用程式

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: d459222327ef3535202e82f640f5b513f0426d54
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85609464"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147405"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>將分析新增至 Bing 搜尋 Api
 
@@ -34,7 +34,7 @@ Bing 統計資料可為 Bing 搜尋 Api 提供分析。 這些分析包括呼叫
 
 ## <a name="access-your-analytics"></a>存取您的分析
 
-Bing 會每隔24小時更新一次分析資料，最多可維護13個月的歷程記錄，讓您可以從[分析儀表板](https://bingapistatistics.com)存取。 請確定您已使用用來註冊 Bing 統計資料的相同 Microsoft 帳戶（MSA）登入。
+Bing 會每隔24小時更新一次分析資料，最多可維護13個月的歷程記錄，讓您可以從[分析儀表板](https://bingapistatistics.com)存取。 請確定您已使用與用來註冊 Bing 統計資料的相同 Microsoft 帳戶 (MSA) 登入。
 
 > [!NOTE]  
 > * 計量最多可能需要 24 小時才會呈現在儀表板上。 儀表板會顯示上次更新資料的時間與日期。  
@@ -53,7 +53,7 @@ Bing 會每隔24小時更新一次分析資料，最多可維護13個月的歷�
 - **時間範圍**：報告期間。 您可以指定：
   - **全部**：包含最多13個月的資料  
   - **過去24小時**：包含過去24小時內的分析  
-  - **過去一周**：包含前七天的分析  
+  - **過去一周**：包含前7天的分析  
   - 上**個月**：包括過去30天內的分析  
   - **自訂日期範圍**：包含來自指定日期範圍的分析（如果有的話）  
 
@@ -86,11 +86,11 @@ For example, if you don't include the User-Agent header in your calls, the dashb
   > [!NOTE]  
   > 某些查詢詞彙可能隱藏起來以移除機密資訊，例如電子郵件、電話號碼、SSN 等。
 
-- **地理分佈**：搜尋結果的來源市場。 例如， `en-us` （英文，美國）。 Bing 使用 `mkt` 查詢參數來判斷市場 (如果指定的話)。 否則，Bing 會使用訊號 (例如呼叫端的 IP 位址) 來判斷市場。
+- **地理分佈**：搜尋結果的來源市場。 例如， `en-us` (英文，美國) 。 Bing 使用 `mkt` 查詢參數來判斷市場 (如果指定的話)。 否則，Bing 會使用訊號 (例如呼叫端的 IP 位址) 來判斷市場。
 
 - **回應碼分佈**：在報告期間內所有呼叫的 HTTP 狀態碼。
 
-- **呼叫來源分佈**：使用者使用的瀏覽器類型。 例如，Microsoft Edge、Chrome、Safari 及 FireFox。 從瀏覽器外部（例如 bot、Postman 或從主控台應用程式使用捲曲）所進行的呼叫，會在 [程式庫] 底下分組。 來源是使用要求的使用者代理程式標頭值來判斷的。 如果要求不包含使用者代理程式標頭，Bing 就會嘗試從其他訊號衍生來源。  
+- **呼叫來源分佈**：使用者使用的瀏覽器類型。 例如，Microsoft Edge、Chrome、Safari 及 FireFox。 從瀏覽器外部進行的呼叫 (例如 bot、Postman，或從主控台應用程式使用捲曲) 會在 [程式庫] 底下分組。 來源是使用要求的使用者代理程式標頭值來判斷的。 如果要求不包含使用者代理程式標頭，Bing 就會嘗試從其他訊號衍生來源。  
 
 - **安全搜尋分佈**：安全搜尋值的分佈。 例如，關閉、中等或嚴格。 `safeSearch` 查詢參數會包含值 (如果指定的話)。 否則，Bing 會預設該值為中等。  
 

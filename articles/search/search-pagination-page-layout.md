@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561577"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146189"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用搜尋結果
 
@@ -51,24 +51,30 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 + 傳回第二個集合，略過前15個來取得接下來的15個： `$top=15&$skip=15` 。 針對第三組15執行相同動作：`$top=15&$skip=30`
 
-如果基礎索引正在變更，則分頁查詢的結果不保證穩定。 分頁會 `$skip` 針對每個頁面變更的值，但每個查詢都是獨立的，而且會在查詢時以現有資料的目前觀點來運作（換句話說，沒有結果的快取或快照集，例如在一般用途資料庫中找到的）。
+如果基礎索引正在變更，則分頁查詢的結果不保證穩定。 分頁會變更 `$skip` 每個頁面的值，但每個查詢都是獨立的，而且會在查詢時以現有資料的目前觀點來操作 (換句話說，沒有結果的快取或快照集，例如在一般用途資料庫) 中找到的結果。
  
 以下是您可能會取得重複專案的範例。 假設有四個檔的索引：
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
-    { "id": "4", "rating": 1 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+{ "id": "4", "rating": 1 }
+```
  
 現在假設您想要一次傳回兩個結果，並依評等排序。 您會執行此查詢來取得結果的第一頁： `$top=2&$skip=0&$orderby=rating desc` ，產生下列結果：
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+```
  
 在服務上，假設在查詢呼叫之間，會將第五份檔加入至索引： `{ "id": "5", "rating": 4 }` 。  之後，您可以執行查詢來提取第二頁： `$top=2&$skip=2&$orderby=rating desc` ，並取得下列結果：
 
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
+```text
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+```
  
 請注意，檔2會提取兩次。 這是因為新檔5的評等值較大，因此它會在檔2之前排序，並落在第一頁。 雖然這種行為可能不是預期的，但它通常是搜尋引擎的運作方式。
 
@@ -92,13 +98,13 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ## <a name="hit-highlighting"></a>搜尋結果醒目提示
 
-[搜尋反白顯示] 是指套用至結果中相符詞彙的文字格式設定（例如粗體或黃色反白顯示），讓您更容易找到相符的內容。 [查詢要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上會提供搜尋反白顯示指示。 
+搜尋反白顯示指的是文字格式設定 (例如粗體或黃色反白顯示) 套用至結果中的相符詞彙，讓您更容易找到相符的內容。 [查詢要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上會提供搜尋反白顯示指示。 
 
 若要啟用搜尋醒目提示，請新增 `highlight=[comma-delimited list of string fields]` 來指定哪些欄位將使用反白顯示。 反白顯示適用于較長的內容欄位，例如 [描述] 欄位，其中比對不會立即明顯符合。 只有屬性為可搜尋的欄位**定義符合搜尋**醒目提示的資格。
 
 根據預設，Azure 認知搜尋會針對每個欄位傳回最多五個重點。 您可以在欄位後面加上一個整數來調整這個數位。 例如，在 `highlight=Description-10` [描述] 欄位中，最多會針對相符的內容傳回10個重點。
 
-將格式套用至整個詞彙查詢。 格式的類型取決於標記、 `highlightPreTag` 和 `highlightPostTag` ，而且您的程式碼會處理回應（例如，套用粗體字型或黃色背景）。
+將格式套用至整個詞彙查詢。 格式的類型取決於標記、 `highlightPreTag` 和 `highlightPostTag` ，而且您的程式碼會處理回應 (例如，套用粗體字型或黃色背景) 。
 
 在下列範例中，在 [描述] 欄位中找到的 "sandy"、"海灘"、"海灘"、"浮水" 詞彙會標記為反白顯示。 在引擎中觸發查詢展開的查詢（例如模糊和萬用字元搜尋）對搜尋反白顯示的支援有限。
 
@@ -114,7 +120,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
     }
 ```
 
-### <a name="new-behavior-starting-july-15"></a>新行為（從7月15日起）
+### <a name="new-behavior-starting-july-15"></a>從7月15日開始 (的新行為) 
 
 2020年7月15日之後建立的服務將提供不同的醒目提示體驗。 在該日期之前建立的服務在其反白顯示行為中不會變更。 
 

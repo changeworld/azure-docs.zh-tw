@@ -6,14 +6,15 @@ author: linda33wj
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 07/08/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: f9e6c8dc7438e05f960504b2cacee7fc987adf70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7a872121ca6560b8ede86abc35294ab8c9b0c1b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022365"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141992"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory 連接器總覽
 
@@ -27,7 +28,16 @@ Azure Data Factory 透過複製、資料流程、查閱、取得中繼資料和�
 
 ## <a name="supported-file-formats"></a>支援的檔案格式
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)]
+Azure Data Factory 支援下列檔案格式。 請參閱每一篇文章，以取得以格式為基礎的設定。
+
+- [Avro 格式](format-avro.md)
+- [二進位格式](format-binary.md)
+- [Common Data Model 格式](format-common-data-model.md)
+- [分隔符號文字格式](format-delimited-text.md)
+- [Excel 格式](format-excel.md)
+- [JSON 格式](format-json.md)
+- [ORC 格式](format-orc.md)
+- [Parquet 格式](format-parquet.md)
 
 ## <a name="next-steps"></a>後續步驟
 

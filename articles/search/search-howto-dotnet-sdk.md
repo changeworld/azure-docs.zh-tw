@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4714fbb5d9f08e0b02dbc8f6cb32845642911e51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 929241d7bc5db5476bab84d00fde90d4db55aedc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556303"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146914"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>如何從 .NET 應用程式使用 Azure 認知搜尋
 
@@ -61,7 +61,7 @@ Azure 認知搜尋 .NET SDK 支援以 .NET Framework 4.5.2 和更新版本，以
 
 下列範例程式碼說明每個案例。 歡迎在您的應用程式中使用這些程式碼片段。
 
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 我們將探索的範例應用程式，會建立名為 "hotels" 的新索引，並透過一些文件填入索引，然後執行一些搜尋查詢。 以下是主要程式，該程式顯示了整體流程：
 
 ```csharp
@@ -169,48 +169,51 @@ private static SearchIndexClient CreateSearchIndexClient(string indexName, IConf
 
 這次我們使用查詢金鑰，因為我們不需要索引的寫入存取權。 您可以在[範例應用程式](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)的 `appsettings.json` 檔案中輸入這項資訊。
 
-如果您使用有效的服務名稱和 API 金鑰執行此應用程式，輸出應該會如下列範例所示：（某些主控台輸出已取代為 "..."供說明之用）。
+如果您使用有效的服務名稱和 API 金鑰執行此應用程式，輸出應該會如下列範例所示： (某些主控台輸出已取代為 "..."供說明之用。 ) 
 
-    Deleting index...
+```output
 
-    Creating index...
+Deleting index...
 
-    Uploading documents...
+Creating index...
 
-    Waiting for documents to be indexed...
+Uploading documents...
 
-    Search the entire index for the term 'motel' and return only the HotelName field:
+Waiting for documents to be indexed...
 
-    Name: Secret Point Motel
+Search the entire index for the term 'motel' and return only the HotelName field:
 
-    Name: Twin Dome Motel
+Name: Secret Point Motel
 
-
-    Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
-
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
-
-    HotelId: 2
-    Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
+Name: Twin Dome Motel
 
 
-    Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
+Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
 
-    Name: Triple Landscape Hotel
-    Last renovated on: 9/20/2015 12:00:00 AM +00:00
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
 
-    Name: Twin Dome Motel
-    Last renovated on: 2/18/1979 12:00:00 AM +00:00
+HotelId: 2
+Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
 
 
-    Search the hotel names for the term 'hotel':
+Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
 
-    HotelId: 3
-    Name: Triple Landscape Hotel
-    ...
+Name: Triple Landscape Hotel
+Last renovated on: 9/20/2015 12:00:00 AM +00:00
 
-    Complete.  Press any key to end application... 
+Name: Twin Dome Motel
+Last renovated on: 2/18/1979 12:00:00 AM +00:00
+
+
+Search the hotel names for the term 'hotel':
+
+HotelId: 3
+Name: Triple Landscape Hotel
+...
+
+Complete.  Press any key to end application... 
+```
 
 本文結尾會提供完整的應用程式原始程式碼。
 
@@ -258,10 +261,10 @@ private static void CreateIndex(string indexName, SearchServiceClient serviceCli
 >
 > 
 
-除了欄位之外，您也可以將評分設定檔、建議工具或 CORS 選項新增至索引（為了簡潔起見，範例中會省略這些參數）。 您可以在[SDK 參考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)中找到索引物件及其組成部分的詳細資訊，以及[Azure 認知搜尋 REST API 參考](https://docs.microsoft.com/rest/api/searchservice/)。
+除了欄位之外，您也可以將評分設定檔、建議工具或 CORS 選項新增至索引 (這些參數會在範例中省略，以求簡潔) 。 您可以在[SDK 參考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)中找到索引物件及其組成部分的詳細資訊，以及[Azure 認知搜尋 REST API 參考](https://docs.microsoft.com/rest/api/searchservice/)。
 
 ### <a name="populating-the-index"></a>填入索引
-中的下一步是 `Main` 填入新建立的索引。 此索引擴展是在下列方法中完成：（某些程式碼取代為 "..."供說明之用。  如需完整的資料填入程式碼，請參閱完整的範例解決方案）。
+中的下一步是 `Main` 填入新建立的索引。 此索引擴展是在下列方法中完成： (以 "..." 取代的程式碼供說明之用。  如需完整的資料填入程式碼，請參閱完整的範例解決方案。 ) 
 
 ```csharp
 private static void UploadDocuments(ISearchIndexClient indexClient)
@@ -455,7 +458,7 @@ public partial class Hotel
 }
 ```
 
-首先要注意的是，類別中每個公用屬性的名稱 `Hotel` 會對應至索引定義中具有相同名稱的欄位。 如果您想要每個欄位的開頭都是小寫字母（「camel 大小寫」），您可以指示 SDK 使用類別上的屬性，自動將屬性名稱對應至 camel 大小寫 `[SerializePropertyNamesAsCamelCase]` 。 這種情況在執行資料系結的 .NET 應用程式中很常見，因為目標架構是在應用程式開發人員的控制範圍之外，而不違反 .NET 中的「Pascal 大小寫」命名方針。
+首先要注意的是，類別中每個公用屬性的名稱 `Hotel` 會對應至索引定義中具有相同名稱的欄位。 如果您希望每個欄位的開頭都是小寫字母 ( 「camel 大小寫」 ) ，您可以指示 SDK 使用類別上的屬性，自動將屬性名稱對應至 camel 大小寫 `[SerializePropertyNamesAsCamelCase]` 。 這種情況在執行資料系結的 .NET 應用程式中很常見，因為目標架構是在應用程式開發人員的控制範圍之外，而不違反 .NET 中的「Pascal 大小寫」命名方針。
 
 > [!NOTE]
 > Azure 認知搜尋 .NET SDK 會使用[NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm)程式庫，將您的自訂模型物件序列化和還原序列化為 JSON。 如有需要，您可以自訂這個序列化的過程。 如需詳細資訊，請參閱[使用 JSON.NET 自訂序列化](#JsonDotNet)。
@@ -562,11 +565,13 @@ namespace AzureSearch.SDKHowTo
 
 **為什麼您應該使用 Nullable 資料類型**
 
-在設計您自己的模型類別來對應至 Azure 認知搜尋索引時，建議您將和等實數值型別的屬性宣告為可為 `bool` `int` null （例如， `bool?` 而不是 `bool` ）。 如果您使用不可為 Null 的屬性，則必須保證 **** 索引中沒有任何文件的對應欄位包含 Null 值。 SDK 和 Azure 認知搜尋服務都不會協助您強制執行此工作。
+在設計您自己的模型類別來對應至 Azure 認知搜尋索引時，我們建議您將數值型別的屬性（例如和）宣告為可為 `bool` `int` null (例如， `bool?` 而不是 `bool`) 。 如果您使用不可為 Null 的屬性，則必須保證 **** 索引中沒有任何文件的對應欄位包含 Null 值。 SDK 和 Azure 認知搜尋服務都不會協助您強制執行此工作。
 
-這不只是假設性的問題：如果您在類型為 `Edm.Int32` 的現有索引中新增欄位， 更新索引定義之後，所有檔的新欄位都會有 null 值（因為在 Azure 認知搜尋中，所有類型都是可為 null）。 如果您接著對該欄位使用 `int` 屬性不可為 Null 的模型類別，就會在嘗試擷取文件時得到類似這樣的 `JsonSerializationException`：
+這不只是假設性的問題：如果您在類型為 `Edm.Int32` 的現有索引中新增欄位， 更新索引定義之後，所有檔的新欄位都會有 null 值 (因為在 Azure 認知搜尋) 中，所有類型都是可為 null 的。 如果您接著對該欄位使用 `int` 屬性不可為 Null 的模型類別，就會在嘗試擷取文件時得到類似這樣的 `JsonSerializationException`：
 
-    Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```output
+Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```
 
 因此，我們建議您在模型類別中使用可為 Null 的類型，來做為最佳作法。
 
@@ -680,9 +685,11 @@ WriteDocuments(results);
 
 在此情況下，我們會在任何可搜尋的欄位中，搜尋 "motel" 一字的整個索引，而我們只想要取得由參數所指定的旅館名稱 `Select` 。 以下是結果：
 
-    Name: Secret Point Motel
+```output
+Name: Secret Point Motel
 
-    Name: Twin Dome Motel
+Name: Twin Dome Motel
+```
 
 下一個查詢更有趣。  我們想要找出任何房間的旅館，其每晚的費率低於 $100，而且只會傳回飯店識別碼和描述：
 
@@ -703,11 +710,13 @@ WriteDocuments(results);
 
 查詢的結果如下：
 
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
+```output
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
 
-    HotelId: 2
-    Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+HotelId: 2
+Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+```
 
 接下來，我們要尋找最近重新裝修的前兩間旅館，並顯示旅館名稱和上次重新裝修日期。 程式碼如下： 
 
@@ -729,8 +738,10 @@ WriteDocuments(results);
 
 以下是結果：
 
-    Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
-    Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```output
+Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
+Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```
 
 最後，我們想要尋找符合「飯店」這個字的所有旅館名稱：
 
@@ -746,9 +757,11 @@ WriteDocuments(results);
 
 結果如下，其中包含所有欄位，因為我們並未指定 `Select` 屬性︰
 
+```output
     HotelId: 3
     Name: Triple Landscape Hotel
     ...
+```
 
 此步驟已完成本教學課程，但別就此結束。 * * 後續步驟會提供其他資源，以深入瞭解 Azure 認知搜尋。
 

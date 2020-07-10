@@ -19,19 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47e7e09bae082141efd872d3a90ecc30a3be04e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113245"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146063"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure 認知搜尋中的 OData 集合運算子- `any` 和`all`
 
 撰寫[OData 篩選條件運算式](query-odata-filter-orderby-syntax.md)以搭配使用 Azure 認知搜尋時，篩選集合欄位通常會很有用。 您可以使用和運算子來達到這個目的 `any` `all` 。
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
-下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）會定義使用或之 OData 運算式的文法 `any` `all` 。
+下列 EBNF ([Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義使用或之 OData 運算式的文法 `any` `all` 。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -65,23 +66,33 @@ lambda_expression ::= identifier ':' boolean_expression
 
 比 `tags` 對欄位包含完全符合字串 "wifi" 的檔：
 
-    tags/any(t: t eq 'wifi')
+```text
+tags/any(t: t eq 'wifi')
+```
 
 將欄位的每個元素都 `ratings` 落在3和5（含）之間的相符檔：
 
-    ratings/all(r: r ge 3 and r le 5)
+```text
+ratings/all(r: r ge 3 and r le 5)
+```
 
 比對欄位中任何地理座標的檔在 `locations` 指定的多邊形內：
 
-    locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```text
+locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```
 
 符合 `rooms` 欄位空白的檔：
 
-    not rooms/any()
+```text
+not rooms/any()
+```
 
 符合所有房間的檔， `rooms/amenities` 欄位包含 "tv" 且 `rooms/baseRate` 小於100：
 
-    rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```text
+rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```
 
 ## <a name="limitations"></a>限制
 

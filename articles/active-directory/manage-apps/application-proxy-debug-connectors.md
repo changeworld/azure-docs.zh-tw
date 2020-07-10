@@ -1,6 +1,6 @@
 ---
 title: Debug 應用程式 Proxy 連接器-Azure Active Directory |Microsoft Docs
-description: Azure Active Directory （Azure AD）應用程式 Proxy 連接器的 Debug 問題。
+description: Azure Active Directory (Azure AD) 應用程式 Proxy 連接器的 Debug 問題。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,16 +11,16 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 39a27ce3b3e7946504298451233b6054302c45f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e7a1de24e5032b2dade2f325560fd6964c892d5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555047"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145689"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>針對應用程式 Proxy 連接器問題進行偵錯 
 
-本文可協助您針對 Azure Active Directory （Azure AD）應用程式 Proxy 連接器的問題進行疑難排解。 如果您要使用應用程式 Proxy 服務來遠端存取內部部署 web 應用程式，但無法連線到應用程式，請使用此流程圖來偵測連接器問題。 
+本文可協助您針對 Azure Active Directory (Azure AD) 應用程式 Proxy 連接器的問題進行疑難排解。 如果您要使用應用程式 Proxy 服務來遠端存取內部部署 web 應用程式，但無法連線到應用程式，請使用此流程圖來偵測連接器問題。 
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -44,7 +44,7 @@ ms.locfileid: "85555047"
 |---------|---------|---------|
 |1 | 尋找指派給應用程式的連接器群組 | 您可能會在多部伺服器上安裝連接器，在此情況下，連接器應[指派給連接器群組](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)。 若要深入了解連接器群組，請參閱[使用連接器群組在個別的網路和位置上發佈應用程式](application-proxy-connector-groups.md)。 |
 |2 | 安裝連接器並指派群組 | 如果您未安裝連接器，請參閱[安裝並註冊連接器](application-proxy-add-on-premises-application.md#install-and-register-a-connector)。<br></br> 如果您在安裝連接器時遇到問題，請參閱[安裝連接器時發生問題](application-proxy-connector-installation-problem.md)。<br></br> 如果未將連接器指派給群組，請參閱[將連接器指派給群組](application-proxy-connector-groups.md#create-connector-groups)。<br></br>如果未將應用程式指派給連接器群組，請參閱[將應用程式指派給連接器群組](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)。|
-|3 | 在連接器伺服器上執行埠測試 | 在連接器伺服器上，使用[telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet)或其他埠測試控管執行埠測試，以檢查埠443和80是否已開啟。|
+|3 | 在連接器伺服器上執行埠測試 | 在連接器伺服器上，使用[telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet)或其他埠測試控管執行埠測試，以檢查埠[443 和80是否已開啟](application-proxy-add-on-premises-application.md#open-ports)。|
 |4 | 設定網域和埠 | [請確定已正確設定您的網域和埠](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)為了讓連接器能夠正常運作，有某些必須開啟的埠，以及您的伺服器必須能夠存取的 Url。 |
 |5 | 檢查後端 proxy 是否正在使用中 | 查看連接器是否使用後端 proxy 伺服器或略過它們。 如需詳細資訊，請參閱針對[連接器 proxy 問題和服務連線問題進行疑難排解](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues)。 |
 |6 | 更新連接器和更新程式，以使用後端 proxy | 如果正在使用後端 proxy，您會想要確保連接器使用相同的 proxy。 如需疑難排解和設定連接器以使用 proxy 伺服器的詳細資訊，請參閱使用[現有的內部部署 proxy 伺服器](application-proxy-configure-connectors-with-proxy-servers.md)。 |

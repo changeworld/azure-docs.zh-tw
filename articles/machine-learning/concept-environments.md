@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
-ms.date: 03/18/2020
-ms.openlocfilehash: 50ddbffd00e0cbbd0641089613aaa40d03658c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/08/2020
+ms.openlocfilehash: 437db3e1ad367a75d6c8d3a77b138bce79b5f61e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80064199"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147126"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning 環境是什麼？
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning 環境會針對您的訓練和評分指令碼指定 Python 套件、環境變數和軟體設定。 它們也會指定執行時間（Python、Spark 或 Docker）。 這些環境是在您的 Machine Learning 工作區內管理和設定版本的實體，可讓您在各種計算目標上進行可重現、可審核和便攜的機器學習工作流程。
+Azure Machine Learning 環境會針對您的訓練和評分指令碼指定 Python 套件、環境變數和軟體設定。 它們也會指定執行時間 (Python、Spark 或 Docker) 。 這些環境是在您的 Machine Learning 工作區內管理和設定版本的實體，可讓您在各種計算目標上進行可重現、可審核和便攜的機器學習工作流程。
 
 您可以使用 `Environment` 本機計算上的物件來執行下列動作：
 * 開發您的訓練指令碼。
@@ -48,6 +48,7 @@ Azure Machine Learning 環境會針對您的訓練和評分指令碼指定 Pytho
 * `Environment`從您的工作區使用現有的物件。 這種方法可讓您使用相依性進行一致性和重現性。
 * 從現有的 Anaconda 環境定義匯入。
 * 使用 Azure Machine Learning CLI
+* [使用 VS Code 延伸模組](how-to-manage-resources-vscode.md#create-environment)
 
 如需特定程式碼範例，請參閱[重複使用環境以進行定型和部署](how-to-use-environments.md#create-an-environment)的「建立環境」一節。 環境也可以透過您的工作區輕鬆管理。 其中包括下列功能：
 
@@ -64,7 +65,7 @@ Azure Machine Learning 服務會將環境定義建立到 Docker 映射和 conda 
 
 ### <a name="building-environments-as-docker-images"></a>建立環境作為 Docker 映射
 
-一般而言，當您第一次使用環境提交執行時，Azure Machine Learning 服務會在與工作區相關聯的 Azure Container Registry （ACR）上叫用[ACR 組建](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)工作。 然後，會在工作區 ACR 上快取建立的 Docker 映射。 開始執行時，計算目標會抓取映射。
+一般而言，當您第一次使用環境提交執行時，Azure Machine Learning 服務會在與工作區相關聯的 Azure Container Registry (ACR) 上叫用[Acr 組建](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)工作。 然後，會在工作區 ACR 上快取建立的 Docker 映射。 開始執行時，計算目標會抓取映射。
 
 映射組建是由兩個步驟所組成：
 

@@ -12,11 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 28b687577f01d6e83f012a51bd18ad082f2bd48d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db7a1489b877544cd36627f3962b6b4e1b8c462
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433272"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146433"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>儲存和寫入 Azure Machine Learning 實驗檔案的位置
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +30,9 @@ ms.locfileid: "84433272"
 
 您必須先確定該計算目標可以使用必要的檔案，例如您的程式碼需要執行的相依性檔案和資料檔案，才能在計算目標或本機電腦上起始實驗。
 
-Azure Machine Learning 會藉由將整個腳本資料夾複製到目標計算內容來執行定型腳本，然後再建立快照集。 而實驗快照集的儲存空間限制為 300 MB 及 (或) 2000 個檔案。
+Azure Machine Learning 會藉由複製整個來原始目錄來執行定型腳本。 如果您有不想要上傳的敏感性資料，請使用[. ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)檔案，或不要將它包含在來原始目錄中。 相反地，請[使用資料存放](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)區來存取您的資料。
+
+而實驗快照集的儲存空間限制為 300 MB 及 (或) 2000 個檔案。
 
 基於這個理由，我們建議：
 
@@ -55,7 +58,7 @@ Your total snapshot size exceeds the limit of 300.0 MB
 不到2000的檔案 & 無法使用資料存放區| 覆寫快照集大小限制 <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> 這可能需要幾分鐘的時間，視檔案的數量和大小而定。
 必須使用特定的腳本目錄| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 管線|針對每個步驟使用不同的子目錄
-Jupyter Notebook| 建立檔案 `.amlignore` 或將您的筆記本移至新的空白子目錄，然後再次執行您的程式碼。
+Jupyter 筆記本| 建立檔案 `.amlignore` 或將您的筆記本移至新的空白子目錄，然後再次執行您的程式碼。
 
 ## <a name="where-to-write-files"></a>寫入檔案的位置
 
