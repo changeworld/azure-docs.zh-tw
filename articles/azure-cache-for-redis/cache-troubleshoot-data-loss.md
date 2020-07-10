@@ -6,11 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: ef7824640dcd2b9dbae1d27f385e5334ba9875ff
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ba0430461df5ce1a2d615b819dbe5e8a36ae52b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699233"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184526"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>針對 Azure Cache for Redis 中的資料遺失問題進行疑難排解
 
@@ -22,7 +23,7 @@ ms.locfileid: "83699233"
 
 ## <a name="partial-loss-of-keys"></a>遺失部分金鑰
 
-Azure Cache for Redis 在金鑰儲存於記憶體後，不會隨機刪除金鑰。 不過，它確實會根據到期或收回原則，以及明確的金鑰刪除命令，來移除金鑰。 已寫入進階或標準 Azure Cache for Redis 執行個體的金鑰，也可能無法立即在複本上使用。 資料會以非同步和非封鎖的方式，從主檔複寫到複本。
+Azure Cache for Redis 在金鑰儲存於記憶體後，不會隨機刪除金鑰。 不過，它確實會根據到期或收回原則，以及明確的金鑰刪除命令，來移除金鑰。 已寫入 Premium 或標準 Azure Cache for Redis 實例中主要節點的金鑰，也可能無法立即在複本上使用。 資料會以非同步和非封鎖的方式從主要複本複寫到複本。
 
 如果您發現金鑰已從快取中消失，請檢查下列可能的原因：
 
@@ -79,7 +80,7 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>非同步複寫
 
-標準層或進階層中的任何 Azure Cache for Redis 執行個體都設定了主要節點和至少一個複本。 系統會使用背景流程，以非同步方式，將資料從主檔複製到複本。 [redis.io](https://redis.io/topics/replication) 網站說明 Redis 資料複寫的一般運作方式。 在用戶端經常寫入 Redis 的情況下，可能會發生部分資料遺失，因為這種複寫不一定是瞬間的。 例如，如果主檔在用戶端將金鑰寫入其中*之後*，並在背景流程有機會將該金鑰傳送至複本*之前*就當機了，則當複本接管新主檔時，會遺失金鑰。
+標準層或進階層中的任何 Azure Cache for Redis 實例都設定了主要節點和至少一個複本。 資料會使用背景處理常式，以非同步方式從主要複本複製到複本。 [redis.io](https://redis.io/topics/replication) 網站說明 Redis 資料複寫的一般運作方式。 在用戶端經常寫入 Redis 的情況下，可能會發生部分資料遺失，因為這種複寫不一定是瞬間的。 例如，如果主要複本在用戶端寫入金鑰*後*關閉 *，但在*背景處理常式有機會將該金鑰傳送至複本，則當複本接管為新的主要複本時，金鑰就會遺失。
 
 ## <a name="major-or-complete-loss-of-keys"></a>主要或完全遺失金鑰
 
@@ -111,7 +112,7 @@ Azure Cache for Redis 預設會使用 **db0** 資料庫。 如果您切換至另
 
 Redis 是記憶體內部的資料存放區。 資料保存在託管 Redis 快取的實體或虛擬機器上。 基本層中的 Azure Cache for Redis 執行個體僅在單一虛擬機器 (VM) 上執行。 如果該 VM 已關閉，您儲存在快取中的所有資料都會遺失。 
 
-標準層和進階層中的快取，藉由使用複寫設定中的兩個虛擬機器，提供資料遺失更高的彈性。 當這類快取中的主要節點失敗時，複本節點會接管以自動提供資料。 對於故障和更新，這些 VM 位於不同的網域中，以盡量減少兩者同時無法使用的機會。 不過，如果主要資料中心發生中斷，VM 仍可能會同時停止運作。 在這些罕見的情況下，您的資料將會遺失。
+標準層和進階層中的快取，藉由使用複寫設定中的兩個虛擬機器，提供資料遺失更高的彈性。 當這類快取中的主要節點失敗時，複本節點會接管，以自動提供資料。 對於故障和更新，這些 VM 位於不同的網域中，以盡量減少兩者同時無法使用的機會。 不過，如果主要資料中心發生中斷，VM 仍可能會同時停止運作。 在這些罕見的情況下，您的資料將會遺失。
 
 考慮使用 [Redis 資料永續性](https://redis.io/topics/persistence)和[異地複寫](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication)，以改善資料保護，避免這些基礎結構失敗。
 

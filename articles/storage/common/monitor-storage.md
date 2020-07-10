@@ -9,25 +9,25 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 9810d29750e7c741c84b11b296099a37d67fc595
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2f6320bf4606dc9357ac676b3bc5d7421b24a36c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955160"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182707"
 ---
 # <a name="monitor-azure-storage"></a>監視 Azure 儲存體
 
 當您有依賴 Azure 資源的重要應用程式和商務程序時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure 儲存體所產生的監視資料，以如何使用 Azure 監視器的功能來分析此資料的警示。
 
 > [!NOTE]
-> Azure 監視器中的 Azure 儲存體記錄處於公開預覽狀態，可在所有公用雲端區域中進行預覽測試。 若要註冊預覽，請參閱[本頁](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。 此預覽可啟用 Blob (包括 Azure Data Lake Storage Gen2)、檔案、佇列、資料表、一般用途 v1 高階儲存體帳戶及一般用途 v2 儲存體帳戶的記錄。 不支援傳統儲存體帳戶。
+> Azure 監視器中的 Azure 儲存體記錄處於公開預覽狀態，可在所有公用雲端區域中進行預覽測試。 若要註冊預覽，請參閱[本頁](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。 此預覽會啟用 blob 的記錄， (包括 Azure Data Lake Storage Gen2) 、檔案、佇列和資料表。 這項功能適用于使用 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 請參閱[儲存體帳戶總覽](../common/storage-account-overview.md)。
 
 ## <a name="monitor-overview"></a>監視概觀
 
 在 Azure 入口網站中每個儲存體資源的 [概觀] 頁面包含資源使用量的簡要檢視，例如要求和每小時計費。 此資訊很實用，但只有少量的監視資料可供使用。 其中有些資料會自動進行收集，並可在您建立儲存體資源時立即進行分析。 您可使用一些設定來啟用其他類型的資料收集。
 
-## <a name="what-is-azure-monitor"></a>Azure 監視器是什麼？
+## <a name="what-is-azure-monitor"></a>什麼是 Azure 監視器？
 Azure 儲存體會使用 [Azure 監視器](../../azure-monitor/overview.md) (這是 Azure 中的完整堆疊監視服務) 來建立監視資料。 Azure 監視器提供一組完整的功能，可監視您的 Azure 資源以及其他雲端和內部部署環境中的資源。 
 
 若要深入了解 Azure 監視器，請參閱[使用 Azure 監視器來監視 Azure 資源](../../azure-monitor/insights/monitor-azure-resource.md)。 本文說明下列主題：

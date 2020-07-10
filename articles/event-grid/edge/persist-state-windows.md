@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f38e23a3af1e2c81ee012a4f3c268cbff3fc1bee
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77086620"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171460"
 ---
 # <a name="persist-state-in-windows"></a>在 Windows 中保存狀態
 
@@ -36,7 +35,7 @@ ms.locfileid: "77086620"
     docker -H npipe:////./pipe/iotedge_moby_engine volume create <your-volume-name-here>
     ```
 
-    例如，
+    例如
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
@@ -47,7 +46,7 @@ ms.locfileid: "77086620"
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
     ```
 
-    例如，
+    例如
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
@@ -78,7 +77,7 @@ ms.locfileid: "77086620"
     1. 在 [*使用者的許可權*] 底下，選取 [**修改**]，然後選取 **[確定]**。
 1. 使用 [系結] 來掛接此磁片**區，並**從 Azure 入口網站重新部署事件方格模組
 
-   例如，
+   例如
 
     ```json
         {
@@ -114,7 +113,7 @@ ms.locfileid: "77086620"
    >請勿變更 bind 值的第二個部分。 它會指向模組中的特定位置。 針對 windows 上的事件方格模組，它必須是**C： \\ app \\ metadataDb**。
 
 
-    例如，
+    例如
 
     ```json
     {
@@ -157,7 +156,7 @@ ms.locfileid: "77086620"
    mkdir <your-directory-name-here>
    ```
 
-   例如，
+   例如
 
    ```sh
    mkdir C:\myhostdir
@@ -177,7 +176,7 @@ ms.locfileid: "77086620"
     >[!IMPORTANT]
     >請勿變更 bind 值的第二個部分。 它會指向模組中的特定位置。 針對 windows 上的事件方格模組，它必須是**C： \\ app \\ metadataDb**。
 
-    例如，
+    例如
 
     ```json
     {

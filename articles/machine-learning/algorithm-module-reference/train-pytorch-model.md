@@ -9,15 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ca5c8fdd14f155163dd55d944cafd2e209e7a94b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450002"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170253"
 ---
 # <a name="train-pytorch-model"></a>將 PyTorch 模型定型
 
-本文說明如何使用 Azure Machine Learning 設計工具（預覽）中的 [**定型 Pytorch 模型**] 模組，將 Pytorch 模型定型，例如 DenseNet。 定型會在您定義模型並設定其參數之後進行，而且需要加上標籤的資料。 
+本文說明如何使用 Azure Machine Learning 設計工具中的 [**定型 Pytorch 模型**] 模組 (預覽) 來訓練 DenseNet 之類的 Pytorch 模型。 定型會在您定義模型並設定其參數之後進行，而且需要加上標籤的資料。 
 
 ## <a name="how-to-use-train-pytorch-model"></a>如何使用定型 Pytorch 模型 
 
@@ -26,7 +27,7 @@ ms.locfileid: "84450002"
 2. 將**訓練 Pytorch 模型**模組新增至管線。 您可以在**模型訓練**類別下找到此模組。 展開 [**定型**]，然後將 [**定型 Pytorch 模型**] 模組拖曳至您的管線中。
 
    > [!NOTE]
-   > **定型 Pytorch 模型**模組只能在**GPU**類型計算上執行，否則您的管線將會失敗。 您可以藉由設定 [**使用其他計算目標**]，在模組的右窗格中選取特定模組的 [計算]。
+   > **定型 Pytorch 模型**模組較適合在大型資料集的**GPU**類型計算上執行，否則您的管線將會失敗。 您可以藉由設定 [**使用其他計算目標**]，在模組的右窗格中選取特定模組的 [計算]。
 
 3.  在左側輸入中，附加未定型的模型。 將訓練資料集和驗證資料集附加至**定型 Pytorch 模型**的中間和右側輸入。
 
@@ -57,7 +58,7 @@ ms.locfileid: "84450002"
 ## <a name="technical-notes"></a>技術說明
 ###  <a name="expected-inputs"></a>預期的輸入  
 
-| 名稱               | 類型                    | Description                              |
+| 名稱               | 類型                    | 說明                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | 未定型的模型    | UntrainedModelDirectory | 未定型模型，需要 pytorch         |
 | 定型資料集   | ImageDirectory          | 定型資料集                         |
@@ -65,17 +66,17 @@ ms.locfileid: "84450002"
 
 ###  <a name="module-parameters"></a>模組參數  
 
-| Name          | 範圍            | 類型    | 預設 | 描述                              |
+| 名稱          | 範圍            | 類型    | 預設 | 描述                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Epoch        | >0               | 整數 | 5       | 選取包含標籤或結果資料行的資料行 |
 | 批次大小    | >0               | 整數 | 16      | 要在批次中定型的實例數目   |
 | 學習率 | >=double.Epsilon | Float   | 0.001   | 隨機梯度下降最佳化工具的初始學習速率。 |
-| 隨機種子   | 任意              | 整數 | 1       | 模型使用的亂數產生器的種子。 |
+| 隨機種子   | 任何              | 整數 | 1       | 模型使用的亂數產生器的種子。 |
 | 聽      | >0               | 整數 | 3       | 提前停止訓練的 epoch 數   |
 
 ###  <a name="outputs"></a>輸出  
 
-| 名稱          | 類型           | Description   |
+| 名稱          | 類型           | 說明   |
 | ------------- | -------------- | ------------- |
 | 定型的模型 | ModelDirectory | 定型的模型 |
 

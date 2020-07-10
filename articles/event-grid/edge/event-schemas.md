@@ -5,16 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: ba261aeedf6574f69d3c05f8fd005c912dcc59d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73242458"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171562"
 ---
 # <a name="event-schemas"></a>事件結構描述
 
@@ -57,13 +55,13 @@ EventGrid 架構是由發佈實體必須符合的一組必要屬性所組成。 
 | 屬性 | 類型 | 必要 | 描述 |
 | -------- | ---- | ----------- |-----------
 | 主題 | 字串 | No | 應符合其發行的主題。 如果未指定，事件方格會將其發佈所在的主題名稱填入其中。 |
-| subject | 字串 | 是 | 發行者定義事件主體的路徑。 |
+| subject | 字串 | 是 | 發行者定義事件主旨的路徑。 |
 | eventType | 字串 | 是 | 此事件來源的事件種類，例如 Microsoft.storage.blobcreated。 |
 | eventTime | 字串 | 是 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | 識別碼 | 字串 | No | 事件的唯一識別碼。 |
 | data | 物件 (object) | 否 | 用來捕獲發佈實體特定的事件資料。 |
 | dataVersion | 字串 | 是 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | 字串 | No | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| metadataVersion | 字串 | No | 事件中繼資料的結構描述版本。 「事件方格」會定義最上層屬性的結構描述。 「事件方格」提供此值。 |
 
 ### <a name="example--eventgrid-schema-event"></a>範例-EventGrid 架構事件
 

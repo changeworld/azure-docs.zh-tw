@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 94fef951bf1c5c9d69a9b49cd9465d7d248c74a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9668307047771304c2d3785dc7ff3f760171a43f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099233"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181993"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API 的驗證和授權
 
@@ -76,7 +76,7 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
 ### <a name="client-app-initialization"></a>用戶端應用程式初始化
 
-* 開發人員可以使用 [Microsoft 驗證程式庫（MSAL）來驗證 Azure 時間序列深入解析。
+* 開發人員可以使用 [Microsoft Authentication Library (MSAL) 向 Azure 時間序列深入解析進行驗證。
 
 * 若要使用 ADAL 進行驗證：
 
@@ -89,9 +89,9 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
    1. 當應用程式呼叫 Time Series Insights API 時，此權杖即可傳入 `Authorization` 標頭。
 
 > [!IMPORTANT]
-> 如果您使用[Azure Active Directory Authentication Library （ADAL）](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) ，請參閱[遷移至 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)。
+> 如果您使用[Azure Active Directory Authentication Library (ADAL) ](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries)閱讀[遷移至 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)的相關資訊。
 
-    See our [Manage GA reference data for an Azure Time Series Insights environment using C#](time-series-insights-manage-reference-data-csharp.md) article to learn more.
+   若要深入瞭解，請參閱[使用 c # 管理 Azure 時間序列深入解析環境的 GA 參考資料一](time-series-insights-manage-reference-data-csharp.md)文。
 
 ## <a name="common-headers-and-parameters"></a>一般標頭和參數
 
@@ -111,7 +111,7 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
 必要的要求標頭如下所述。
 
-| 必要的要求標頭 | Description |
+| 必要的要求標頭 | 描述 |
 | --- | --- |
 | 授權 | 若要透過時間序列見解進行驗證，則必須在**授權**標頭中傳遞有效的 OAuth 2.0 持有人權杖。 |
 

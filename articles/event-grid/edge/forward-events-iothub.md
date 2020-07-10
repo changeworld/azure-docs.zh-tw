@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36dc7d098892fb2be7c2ba3d75de7c7adef1a4f1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844695"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171545"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>教學課程：將事件轉寄至 IoTHub
 
@@ -27,7 +26,7 @@ ms.locfileid: "76844695"
 - [事件方格概念](concepts.md)
 - [IoT Edge 中樞](../../iot-edge/module-composition.md) 
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 若要完成這個教學課程，您將需要：
 
 * **Azure 訂**用帳戶-如果您還沒有帳戶，請建立一個[免費帳戶](https://azure.microsoft.com/free)。 
@@ -146,7 +145,7 @@ ms.locfileid: "76844695"
   "fromEventGridToIoTHub":"FROM /messages/modules/eventgridmodule/outputs/sampleSub4 INTO $upstream"
   ```
 
-  例如，
+  例如
 
   ```json
   {
@@ -204,7 +203,7 @@ ms.locfileid: "76844695"
     ```
 * 刪除在雲端中設定 IoTHub 路由時所建立的任何資源。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本教學課程中，您已建立事件方格主題、edge 中樞訂用帳戶和已發佈的事件。 既然您已經知道要轉送至 edge 中樞的基本步驟，請參閱下列文章：
 

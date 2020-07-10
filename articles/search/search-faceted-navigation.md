@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836085"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171936"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中實作多面向導覽
 
@@ -283,10 +284,12 @@ if (businessTitleFacet != "")
 
 面向結果是在符合面向字詞的搜尋結果中找到的文件。 在下列範例中，「雲端運算」的搜尋結果中有 254 個項目也具有做為內容類型的「內部規格」。 項目毋須互斥。 如果項目同時符合兩個篩選條件的條件，則會個別計數。 在 `Collection(Edm.String)` 欄位 (通常用來實作文件標記) 上進行面向化時可能發生此重複情形。
 
-        Search term: "cloud computing"
-        Content type
-           Internal specification (254)
-           Video (10) 
+```output
+Search term: "cloud computing"
+Content type
+   Internal specification (254)
+   Video (10)
+```
 
 一般來說，如果您發現面向結果一直過大，建議您新增更多篩選條件，以便讓使用者有更多選項可縮小搜尋範圍。
 
@@ -344,7 +347,7 @@ Azure 認知搜尋透過提供兩種方法進行範圍運算，來簡化範圍�
 
 若要指定與先前螢幕擷取畫面類似的面向範圍，請使用值清單︰
 
-    facet=listPrice,values:10|25|100|500|1000|2500
+> `facet=listPrice,values:10|25|100|500|1000|2500`
 
 已使用 0 做為起始點，清單中的值做為結束點建置各範圍，並且修剪之前的範圍來建立離散間隔。 Azure 認知搜尋會將這些動作做為多面向導覽的一部分來執行。 您不需要撰寫程式碼來建構各個間隔。
 

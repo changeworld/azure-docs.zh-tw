@@ -5,15 +5,14 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ae2261f8278c4d5e1944b01a9731afd293df20b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841742"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171630"
 ---
 # <a name="output-batching"></a>輸出批次處理
 
@@ -50,7 +49,7 @@ ms.locfileid: "76841742"
 
 * 預設值
 
-  建立事件訂用帳戶時，不需要指定這兩個設定（每個批次的最大事件和大約個位元組的批次大小）。 如果只設定一個設定，事件方格會使用（可設定）的預設值。 請參閱下列各節中的預設值，以及如何覆寫它們。
+  在建立事件訂閱時，並不需要指定 (每個批次的事件數上限，以及大約的批次大小（以 kb 為單位）) 的設定。 如果只設定一個設定，事件方格會使用 (可設定的) 預設值。 請參閱下列各節中的預設值，以及如何覆寫它們。
 
 ## <a name="turn-on-output-batching"></a>開啟輸出批次處理
 

@@ -5,21 +5,20 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 3363db4557dd19e8d72747ccd62bb535abb7b1e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0bba9559c2a0b4ff6c8a4e5f2287692e27f8a1a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841786"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171698"
 ---
 # <a name="configure-client-authentication-of-incoming-calls"></a>設定連入呼叫的用戶端驗證
 
 本指南提供事件方格模組的可能用戶端驗證設定範例。 事件方格模組支援兩種類型的用戶端驗證：
 
-* 共用存取簽章（SAS）金鑰型
+*  (SAS) 以金鑰為基礎的共用存取簽章
 * 以憑證為基礎
 
 如需所有可能的設定，請參閱[安全性和驗證](security-authentication.md)指南。
@@ -51,7 +50,7 @@ ms.locfileid: "76841786"
 ```
 
 >[!NOTE]
->只有在測試環境中，才將屬性**inbound__clientAuth__clientCert__allowUnknownCA**設定為**true** ，因為您通常會使用自我簽署憑證。 對於生產工作負載，建議您將此屬性設定為**false** ，並將憑證從憑證授權單位單位（CA）。
+>只有在測試環境中，才將屬性**inbound__clientAuth__clientCert__allowUnknownCA**設定為**true** ，因為您通常會使用自我簽署憑證。 針對生產工作負載，建議您將此屬性設定為**false** ，並將憑證授權單位單位的憑證 (CA) 。
 
 ## <a name="enable-certificate-based-and-sas-key-based-client-authentication"></a>啟用以憑證為基礎和以 sas 為基礎的用戶端驗證
 

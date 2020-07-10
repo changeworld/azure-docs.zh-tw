@@ -5,23 +5,21 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72992557"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171766"
 ---
 # <a name="advanced-filtering"></a>進階篩選
 事件方格允許在 json 承載中的任何屬性上指定篩選。 這些篩選器會模型化為 `AND` 條件集，每個外部條件都具有選擇性的內部 `OR` 條件。 針對每個 `AND` 條件，您可以指定下列值：
 
 * `OperatorType`-比較的類型。
 * `Key`-要套用篩選之屬性的 json 路徑。
-* `Value`-執行篩選準則時所針對的參考值（或） `Values` -用來執行篩選的一組參考值。
+* `Value`-用來執行篩選的參考值 (或) `Values` -執行篩選準則的一組參考值。
 
 ## <a name="json-syntax"></a>JSON 語法
 
@@ -52,7 +50,7 @@ Advanced filter 的 JSON 語法如下所示：
 
 請注意，在先前指定的 json 範例中， `AdvancedFilters` 是一個陣列。 將每個 `AdvancedFilter` 陣列元素視為 `AND` 條件。
 
-針對支援多個值的運算子（例如 `NumberIn` 、 `NumberNotIn` 、等 `StringIn` ），會將每個值視為 `OR` 條件。 因此， `StringBeginsWith("a", "b", "c")` 會符合以或或開頭的任何字串值 `a` `b` `c` 。
+針對支援多個值 (的運算子（例如 `NumberIn` 、 `NumberNotIn` 、 `StringIn` 等） ) ，會將每個值視為 `OR` 條件。 因此， `StringBeginsWith("a", "b", "c")` 會符合以或或開頭的任何字串值 `a` `b` `c` 。
 
 > [!CAUTION]
 > NOT 運算子- `NumberNotIn` 和 `StringNotIn` 的行為是在欄位中指定的每個值上的和條件 `Values` 。
@@ -79,7 +77,7 @@ Advanced filter 的 JSON 語法如下所示：
 
 * 識別碼
 * 主題
-* 主體
+* 主旨
 * EventType
 * DataVersion
 * Data. Prop1

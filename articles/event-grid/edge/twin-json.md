@@ -5,18 +5,16 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f39d22fe58d4375b3b68bacd237c1b200328c4b1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72992141"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171324"
 ---
-# <a name="module-twin-json-schema"></a>模組對應項 JSON 架構
+# <a name="module-twin-json-schema-azure-event-grid"></a>模組對應項 JSON 架構 (Azure 事件方格) 
 
 IoT Edge 上的事件方格會與 IoT Edge 生態系統整合，並支援透過模組對應項建立主題和訂用帳戶。 它也會將所有主題和事件訂閱的目前狀態報表到模組對應項上的報告屬性。
 
@@ -85,7 +83,7 @@ IoT Edge 上的事件方格會與 IoT Edge 生態系統整合，並支援透過�
 
 * 存在於模組存放區中的主題和訂用帳戶集合
 * 建立所需主題/事件訂閱時所發生的任何錯誤
-* 任何開機錯誤（例如所需的屬性 JSON 剖析失敗）
+* 任何開機錯誤 (例如所需的屬性 JSON 剖析失敗) 
 
 ```json
 {

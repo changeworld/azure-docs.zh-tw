@@ -5,15 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: a2d16bdca18b7fc0afab2a3deb325d1a75be3bb8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834623"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185155"
 ---
 # <a name="manage-updates-for-multiple-vms"></a>管理多個虛擬機器的更新
 
-您可以使用 Azure 自動化更新管理，來管理 Windows 和 Linux VM 的更新和修補程式。 您可以從您的 [Azure 自動化](automation-offering-get-started.md)帳戶：
+您可以使用 Azure 自動化更新管理，來管理 Windows 和 Linux VM 的更新和修補程式。 您可以從您的 [Azure 自動化](./index.yml)帳戶：
 
 - 啟用 VM 進行更新管理。
 - 評估可用更新的狀態。

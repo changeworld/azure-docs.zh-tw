@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff49e9baf83d52ba7c40d0c0a9efbd72cee66cd9
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844579"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171494"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教學課程：發佈、訂閱雲端中的事件
 
@@ -21,7 +20,7 @@ ms.locfileid: "76844579"
 
 請參閱[事件方格概念](concepts.md)，以瞭解事件方格主題和訂用帳戶在繼續之前的功能。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 若要完成這個教學課程，您將需要：
 
 * **Azure 訂**用帳戶-如果您還沒有帳戶，請建立一個[免費帳戶](https://azure.microsoft.com/free)。 
@@ -57,7 +56,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-在您的新函式中，選取右上方的 [取得函式**URL** ]，選取 [預設（**功能鍵**）]，然後選取 [**複製**]。 您稍後會在本教學課程中使用函數 URL 值。
+在您的新函式中，選取右上方的 [取得函式**URL** ]，選取 [預設] ([**函數金鑰**) ]，然後選取 [**複製**]。 您稍後會在本教學課程中使用函數 URL 值。
 
 > [!NOTE]
 > 如需使用 EventGrid 事件觸發程式回應事件的更多範例和教學課程，請參閱[Azure Functions](../../azure-functions/functions-overview.md)檔。
@@ -195,7 +194,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 * 刪除在 Azure 入口網站中建立的 Azure function。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本教學課程中，您已建立事件方格主題、訂用帳戶和已發佈的事件。 現在您已瞭解基本步驟，請參閱下列文章：
 

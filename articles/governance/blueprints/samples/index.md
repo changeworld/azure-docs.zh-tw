@@ -3,11 +3,12 @@ title: 藍圖範例索引
 description: 使用 Azure 藍圖部署環境、原則和雲端採用架構基礎的合規性和標準範例索引。
 ms.date: 07/01/2020
 ms.topic: sample
-ms.openlocfilehash: 7e45cbbbf7cf6c2e267156dbb0087a19d8288aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef85ef0615fa0817a574240e65b7670daeaff33b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832316"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181551"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 藍圖範例
 
@@ -15,7 +16,7 @@ ms.locfileid: "85832316"
 
 ## <a name="standards-based-blueprint-samples"></a>標準型藍圖範例
 
-|  |  |
+| 範例 | 描述 |
 |---------|---------|
 | [澳大利亞政府受保護的 ISM](./ism-protected/control-mapping.md) | 針對澳大利亞政府受保護的 ISM 合規性提供防護措施。 |
 | [Azure 安全性效能評定](./azure-security-benchmark.md) | 提供符合 [Azure 安全性效能評定](../../../security/benchmarks/overview.md)的防護措施。 |

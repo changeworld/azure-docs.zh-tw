@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 JAVA SDK for files & Acl
-description: 使用適用于 JAVA 的 Azure 儲存體程式庫來管理已啟用階層命名空間（HNS）之儲存體帳戶中的目錄和檔案和目錄存取控制清單（ACL）。
+description: 使用適用于 JAVA 的 Azure 儲存體程式庫來管理已啟用階層命名空間 (HNS) 之儲存體帳戶中的目錄和檔案和目錄存取控制清單 (ACL) 。
 author: normesta
 ms.service: storage
 ms.date: 03/20/2020
@@ -8,19 +8,20 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 15bdcbfc8e02ff06e09cb1e2a3d0621cb50e4da4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1118e584a235f90cc21c8d914f56ebcba7ea74f1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466097"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170202"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 JAVA 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
-本文說明如何使用 JAVA 來建立和管理已啟用階層命名空間（HNS）之儲存體帳戶中的目錄、檔案和許可權。 
+本文說明如何使用 JAVA 來建立和管理已啟用階層命名空間 (HNS) 的儲存體帳戶中的目錄、檔案和許可權。 
 
-[封裝（Maven）](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)  | [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)  | [API 參考](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html)  | [Gen1 至 Gen2 對應](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供意見](https://github.com/Azure/azure-sdk-for-java/issues)反應
+[封裝 (Maven) ](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)  | [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)  | [API 參考](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html)  | [Gen1 至 Gen2 對應](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供意見](https://github.com/Azure/azure-sdk-for-java/issues)反應
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
@@ -30,7 +31,7 @@ ms.locfileid: "84466097"
 
 若要開始使用，請開啟[此頁面](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)，並尋找最新版本的 JAVA 程式庫。 然後，在文字編輯器中開啟*pom.xml*檔案。 加入參考該版本的 dependency 元素。
 
-如果您打算使用 Azure Active Directory （AD）驗證您的用戶端應用程式，請將相依性新增至 Azure 密碼用戶端程式庫。 請參閱[將密碼用戶端程式庫套件新增至您的專案](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project)。
+如果您想要使用 Azure Active Directory (AD) 來驗證您的用戶端應用程式，請將相依性新增至 Azure 密碼用戶端程式庫。 請參閱[將密碼用戶端程式庫套件新增至您的專案](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project)。
 
 接下來，將這些 imports 語句加入至您的程式碼檔案。
 
@@ -77,7 +78,7 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 }      
 ```
 
-### <a name="connect-by-using-azure-active-directory-azure-ad"></a>使用 Azure Active Directory （Azure AD）連接
+### <a name="connect-by-using-azure-active-directory-azure-ad"></a>使用 Azure Active Directory (Azure AD 進行連接) 
 
 您可以使用[適用于 JAVA 的 Azure 身分識別用戶端程式庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)，透過 Azure AD 來驗證您的應用程式。
 
@@ -104,11 +105,11 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 > 如需更多範例，請參閱[適用于 JAVA 的 Azure 身分識別用戶端程式庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)檔。
 
 
-## <a name="create-a-file-system"></a>建立檔案系統
+## <a name="create-a-container"></a>建立容器
 
-檔案系統可做為您的檔案的容器。 您可以藉由呼叫**DataLakeServiceClient. createFileSystem**方法來建立一個。
+容器會作為檔案的檔案系統。 您可以藉由呼叫**DataLakeServiceClient. createFileSystem**方法來建立一個。
 
-此範例會建立名為 `my-file-system` 的檔案系統。 
+這個範例會建立名為的容器 `my-file-system` 。 
 
 ```java
 static public DataLakeFileSystemClient CreateFileSystem
@@ -122,7 +123,7 @@ static public DataLakeFileSystemClient CreateFileSystem
 
 藉由呼叫**DataLakeFileSystemClient. createDirectory**方法來建立目錄參考。
 
-這個範例會將名為的目錄新增 `my-directory` 至檔案系統，然後新增名為的子目錄 `my-subdirectory` 。 
+這個範例會將名為的目錄新增 `my-directory` 至容器，然後新增名為的子目錄 `my-subdirectory` 。 
 
 ```java
 static public DataLakeDirectoryClient CreateDirectory
@@ -191,7 +192,7 @@ static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
 這個範例會取得並設定名為之目錄的 ACL `my-directory` 。 這個範例提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供其他所有讀取權限。
 
 > [!NOTE]
-> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+> 如果您的應用程式使用 Azure Active Directory (Azure AD) 來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
 
 ```java
 static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
@@ -230,6 +231,8 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 }
 
 ```
+
+您也可以取得並設定容器根目錄的 ACL。 若要取得根目錄，請將空字串 (`""`) 傳遞至**DataLakeFileSystemClient. getDirectoryClient**方法。
 
 ## <a name="upload-a-file-to-a-directory"></a>將檔案上傳至目錄
 
@@ -288,7 +291,7 @@ static public void UploadFileBulk(DataLakeFileSystemClient fileSystemClient)
 這個範例會取得並設定名為之檔案的 ACL `upload-file.txt` 。 這個範例提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供其他所有讀取權限。
 
 > [!NOTE]
-> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+> 如果您的應用程式使用 Azure Active Directory (Azure AD) 來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
 
 ```java
 static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
@@ -392,7 +395,7 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 ## <a name="see-also"></a>另請參閱
 
 * [API 參考文件](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html)
-* [封裝（Maven）](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)
+* [封裝 (Maven) ](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)
 * [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
 * [Gen1 至 Gen2 對應](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [已知問題](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)

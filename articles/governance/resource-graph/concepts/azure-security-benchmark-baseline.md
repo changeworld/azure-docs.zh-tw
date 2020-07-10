@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4c4884b643c436eae377b294b2981aa61aa4689d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3a8b271a030de2ddd3aa40b5bb0af871319c0e1f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86137581"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171800"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>適用于 Azure 安全性基準測試的 Azure Resource Graph 安全性基準
 
@@ -22,11 +22,11 @@ ms.locfileid: "86137581"
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](../../../security/benchmarks/security-control-identity-access-control.md)。*
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指引**： Azure Resource Graph 根據角色型存取控制（RBAC）提供資源類型和屬性的存取權。 定期審查並審查授與安全性主體（使用者、群組和服務帳戶）的存取權，以確保查詢會傳回適當資源的結果。
+**指導**方針： Azure Resource Graph 提供以角色為基礎的存取控制 (RBAC) 的資源類型和屬性的存取權。 請定期審查並審查授與安全性主體的存取權 (使用者、群組和服務) 帳戶，以確保查詢會傳回適當資源的結果。
 
 * [Azure Resource Graph 中的權限](../overview.md#permissions-in-azure-resource-graph)
 
@@ -39,11 +39,11 @@ ms.locfileid: "86137581"
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱[安全性控制：資料保護](/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱[安全性控制：資料保護](../../../security/benchmarks/security-control-data-protection.md)。*
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
 
-**指導**方針：使用角色型存取控制（RBAC）來控制對資料和資源的存取。 若要使用 Azure Resource Graph，您也必須具有您想要查詢之資源的適當存取權。 此存取範圍應設定為 [唯讀]，而且只能授與必要的人員。
+**指導**方針：使用角色型存取控制 (RBAC) 來控制對資料和資源的存取。 若要使用 Azure Resource Graph，您也必須具有您想要查詢之資源的適當存取權。 此存取範圍應設定為 [唯讀]，而且只能授與必要的人員。
 
 * [Azure Resource Graph 中的權限](../overview.md#permissions-in-azure-resource-graph)
 
@@ -56,7 +56,7 @@ ms.locfileid: "86137581"
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱[安全性控制：清查和資產管理](/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱[安全性控制：清查和資產管理](../../../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
@@ -73,7 +73,7 @@ ms.locfileid: "86137581"
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定義並維護已核准 Azure 資源的清查
 
-**指導**方針：根據您的組織需求，建立已核准 Azure 資源的清查和適用于計算資源的已核准軟體。 使用 Azure Resource Graph 來查詢核准的 Azure 資源和變更歷程記錄（預覽），以查看快照集並查看變更的內容。
+**指導**方針：根據您的組織需求，建立已核准 Azure 資源的清查和適用于計算資源的已核准軟體。 使用 Azure Resource Graph 來查詢核准的 Azure 資源，並將歷程記錄變更 (預覽) 以審查快照集並查看變更的內容。
 
 * [使用 Azure Resource Graph 查詢 Azure 資源](../first-query-portal.md)
 
@@ -99,5 +99,5 @@ ms.locfileid: "86137581"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../../../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../../../security/benchmarks/security-baselines-overview.md)

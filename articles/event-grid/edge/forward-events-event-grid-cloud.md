@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfe150a45c70bc5bed18f8e929c9567905cd38f5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844712"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171596"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>教學課程：將事件轉寄至事件方格雲端
 
@@ -24,7 +23,7 @@ ms.locfileid: "76844712"
 
  若要完成本教學課程，您需要瞭解[edge](concepts.md)和[Azure](../concepts.md)上的事件方格概念。 如需其他目的地類型，請參閱[事件處理常式](event-handlers.md)。 
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 若要完成這個教學課程，您將需要：
 
 * **Azure 訂**用帳戶-如果您還沒有帳戶，請建立一個[免費帳戶](https://azure.microsoft.com/free)。 
@@ -104,7 +103,7 @@ ms.locfileid: "76844712"
    >[!NOTE]
    > **EndpointUrl**會指定雲端中的事件方格主題 URL。 **SasKey**是指事件方格雲端主題的金鑰。 **TopicName**中的值將用來將所有傳出事件標記為事件方格。 張貼到 Event Grid 網域主題時，這會很有用。 如需事件方格網域主題的詳細資訊，請參閱[事件網域](../event-domains.md)
 
-    例如，
+    例如
   
     ```json
         {
@@ -174,7 +173,7 @@ ms.locfileid: "76844712"
         ]
     ```
 
-1. 執行下列命令：
+1. 執行以下命令：
 
     ```sh
     curl -k -H "Content-Type: application/json" -X POST -g -d @event3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/events?api-version=2019-01-01-preview
@@ -192,9 +191,9 @@ ms.locfileid: "76844712"
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
 
-* 同時刪除在雲端中建立的主題和訂用帳戶（Azure 事件方格）。
+* 刪除在雲端中建立的主題和訂用帳戶 (Azure 事件方格) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本教學課程中，您已在 edge 上發佈事件並轉送至 Azure 雲端中的事件方格。 現在您已經知道要轉送到雲端中事件方格的基本步驟：
 

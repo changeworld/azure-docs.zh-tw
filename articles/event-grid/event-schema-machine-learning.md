@@ -3,12 +3,12 @@ title: 做為事件方格來源 Azure Machine Learning
 description: 說明使用 Azure 事件方格為 Machine Learning 工作區事件提供的屬性
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 11d8c38ee041ac9278e08166c4c060cdad87655f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b5a39539a6f39c78251a3cc7788b8e5ee4babbf9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102492"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181517"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>做為事件方格來源 Azure Machine Learning
 
@@ -23,10 +23,10 @@ Azure Machine Learning 會發出下列事件種類：
 | 事件類型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.machinelearningservices. ModelRegistered | 已成功註冊新的模型或模型版本時引發。 |
-| Microsoft.machinelearningservices. ModelDeployed | 當模型已成功部署至端點時引發。 |
+| Microsoft.machinelearningservices. ModelDeployed | 當模型 (s) 已成功部署至端點時引發。 |
 | Microsoft.machinelearningservices. RunCompleted | 成功完成執行時引發。 |
 | Microsoft.machinelearningservices. DatasetDriftDetected | 資料集漂移監視器偵測到漂移時引發。 |
-| Microsoft.machinelearningservices. RunStatusChanged | 當執行狀態變更為「失敗」時引發。 |
+| Microsoft.machinelearningservices. RunStatusChanged | 當執行狀態變更時引發。 |
 
 ### <a name="the-contents-of-an-event-response"></a>事件回應的內容
 
@@ -201,7 +201,7 @@ Azure Machine Learning 會發出下列事件種類：
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft.machinelearningservices. ModelRegistered
 
-| 屬性 | 類型 | Description |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | ModelName | 字串 | 已註冊的模型名稱。 |
 | ModelVersion | 字串 | 已註冊的模型版本。 |
@@ -210,10 +210,10 @@ Azure Machine Learning 會發出下列事件種類：
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.machinelearningservices. ModelDeployed
 
-| 屬性 | 類型 | Description |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | ServiceName | 字串 | 已部署之服務的名稱。 |
-| ServiceComputeType | 字串 | 已部署之服務的計算類型（例如 ACI、AKS）。 |
+| ServiceComputeType | 字串 | 計算類型 (例如 ACI、已部署服務的 AKS) 。 |
   | ModelIds | 字串 | 以逗號分隔的模型識別碼清單。 部署在服務中的模型識別碼。 |
 | ServiceTags | 物件 (object) | 已部署之服務的標記。 |
 | ServiceProperties | 物件 (object) | 已部署之服務的屬性。 |
@@ -255,7 +255,7 @@ Azure Machine Learning 會發出下列事件種類：
 | RunStatus | 字串 | 執行的狀態。 |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
-| Title | 描述 |
+| 標題 | 描述 |
 | ----- | ----- |
 | [取用 Azure Machine Learning 事件](../machine-learning/concept-event-grid-integration.md) | 整合 Azure Machine Learning 與事件方格的總覽。 |
 

@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: c15ed6e9409bee71a778986d8f38ae1ab126c180
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 95e156c17b723c679772293401c730cbdff2220b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828639"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169879"
 ---
 # <a name="create-modular-runbooks"></a>建立模組化 Runbook
 
@@ -19,12 +20,12 @@ ms.locfileid: "83828639"
 
 |  | 內嵌 | Cmdlet |
 |:--- |:--- |:--- |
-| 工作 (Job) |與父代在相同的工作中執行的子 Runbook。 |會為子 Runbook 建立個別的工作。 |
-| 執行 |父 Runbook 會等待子 Runbook 完成後再繼續執行。 |父 Runbook 會在子 Runbook 啟動後立刻繼續執行，或  父 Runbook 會等候子作業完成。 |
-| 輸出 |父 Runbook 可以直接從子 Runbook 取得輸出。 |父 Runbook 必須擷取子 Runbook 作業的輸出，或  父 Runbook 可以直接從子 Runbook 取得輸出。 |
-| 參數 |子 Runbook 參數的值是個別指定，而且可以使用任何資料類型。 |子 Runbook 參數的值必須結合成單一雜湊表。 這個雜湊表只能包含簡單、陣列，以及使用 JSON 序列化的物件資料類型。 |
-| 自動化帳戶 |父 Runbook 只能使用相同自動化帳戶中的子 Runbook。 |父 Runbook 使用的子 Runbook 可以來自任何自動化帳戶、相同的 Azure 訂用帳戶，甚至是您已連線的另一個訂用帳戶。 |
-| 發佈 |發佈父 Runbook 之前必須先發佈子 Runbook。 |啟動父 Runbook 之前可隨時發佈子 Runbook。 |
+| **工作 (Job)** |與父代在相同的工作中執行的子 Runbook。 |會為子 Runbook 建立個別的工作。 |
+| **執行** |父 Runbook 會等待子 Runbook 完成後再繼續執行。 |父 Runbook 會在子 Runbook 啟動後立刻繼續執行，或  父 Runbook 會等候子作業完成。 |
+| **輸出** |父 Runbook 可以直接從子 Runbook 取得輸出。 |父 Runbook 必須擷取子 Runbook 作業的輸出，或  父 Runbook 可以直接從子 Runbook 取得輸出。 |
+| **參數** |子 Runbook 參數的值是個別指定，而且可以使用任何資料類型。 |子 Runbook 參數的值必須結合成單一雜湊表。 這個雜湊表只能包含簡單、陣列，以及使用 JSON 序列化的物件資料類型。 |
+| **自動化帳戶** |父 Runbook 只能使用相同自動化帳戶中的子 Runbook。 |父 Runbook 使用的子 Runbook 可以來自任何自動化帳戶、相同的 Azure 訂用帳戶，甚至是您已連線的另一個訂用帳戶。 |
+| **發佈** |發佈父 Runbook 之前必須先發佈子 Runbook。 |啟動父 Runbook 之前可隨時發佈子 Runbook。 |
 
 ## <a name="invoke-a-child-runbook-using-inline-execution"></a>使用內嵌執行來叫用子 Runbook
 

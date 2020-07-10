@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 841b5092775353bbe3340dbbd55610026f998a15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 632227579fd021a0d2ce1d0b1bb0b8a8288c5f47
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76846465"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171664"
 ---
 # <a name="event-grid-configuration"></a>事件方格設定
 
@@ -55,7 +54,7 @@ ms.locfileid: "76846465"
 
 | 屬性名稱 | 描述 |
 | ---------------- | ------------ |
-|`outbound__webhook__httpsOnly`| 控制是否只允許 HTTPS 訂閱者的原則。 預設值為 true （僅限 HTTPS）。
+|`outbound__webhook__httpsOnly`| 控制是否只允許 HTTPS 訂閱者的原則。 預設值為 true (僅限 HTTPS) 。
 |`outbound__webhook__skipServerCertValidation`| 用來控制是否要驗證訂閱者憑證的旗標。 預設值為 true。
 |`outbound__webhook__allowUnknownCA`| 控制訂閱者是否可以出示自我簽署憑證的原則。 預設值為 true。 
 
@@ -66,7 +65,7 @@ ms.locfileid: "76846465"
 | 屬性名稱 | 描述 |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | 傳遞事件的嘗試次數上限。 預設值為 30。
-| `broker__defaultEventTimeToLiveInSeconds` | 存留時間（TTL），以秒為單位，如果未傳遞，則會捨棄事件。 預設值為**7200**秒
+| `broker__defaultEventTimeToLiveInSeconds` | 存留時間 (TTL) （秒），在此之後，事件將會在未傳遞時中斷。 預設值為**7200**秒
 
 ## <a name="output-batching"></a>輸出批次處理
 

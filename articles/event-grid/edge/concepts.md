@@ -5,16 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 73309e10e88c11e639e6ac6fd3bb061e1b5c685b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3babfe93012fae15e79362ba34f3f48856bc833
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72992544"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171732"
 ---
 # <a name="event-grid-concepts"></a>Event Grid 概念
 
@@ -62,4 +60,4 @@ Event Grid 提供訂閱主題和發佈主題的安全性。 如需詳細資訊�
 
 ## <a name="batching"></a>批次處理
 
-在使用自訂主題時，事件必須一律發佈在陣列中。 對於低輸送量案例，陣列只會有一個值。 針對大量使用案例，建議您在每次發佈時一併批次處理數個事件，以達到更高的效率。 批次最多可達 1 MB。 每個事件仍應大於 1 MB （預覽）。
+在使用自訂主題時，事件必須一律發佈在陣列中。 對於低輸送量案例，陣列只會有一個值。 針對大量使用案例，建議您在每次發佈時一併批次處理數個事件，以達到更高的效率。 批次最多可達 1 MB。 每個事件仍不得大於 1 MB (預覽) 。

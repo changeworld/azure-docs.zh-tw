@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9202eae49175615c4fffcd0b006ddda6e8281292
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb5eb18351f6411a8049e962deed35e5d8f181d9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718303"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185240"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>管理 Azure 自動化中的 Runbook
 
@@ -34,7 +35,7 @@ ms.locfileid: "84718303"
 
 ### <a name="create-a-runbook-with-powershell"></a>使用 PowerShell 建立 Runbook
 
-您可以使用 [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) \(英文\) Cmdlet 來建立空白 Runbook。 使用 `Type` 參數指定針對 `New-AzAutomationRunbook` 所定義四個 Runbook 類型的其中一個。
+您可以使用 [New-AzAutomationRunbook](/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) \(英文\) Cmdlet 來建立空白 Runbook。 使用 `Type` 參數指定針對 `New-AzAutomationRunbook` 所定義四個 Runbook 類型的其中一個。
 
 下列範例示範如何建立新的空白 Runbook。
 
@@ -76,7 +77,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ### <a name="import-a-runbook-with-windows-powershell"></a>使用 Windows PowerShell 匯入 Runbook
 
-使用 [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) \(英文\) Cmdlet，來匯入為指令碼檔案以作為草稿 Runbook。 如果 Runbook 已經存在，除非您搭配 Cmdlet 使用 `Force` 參數，否則匯入會失敗。
+使用 [Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) \(英文\) Cmdlet，來匯入為指令碼檔案以作為草稿 Runbook。 如果 Runbook 已經存在，除非您搭配 Cmdlet 使用 `Force` 參數，否則匯入會失敗。
 
 以下範例示範如何將指令碼檔案匯入 Runbook。
 
@@ -191,7 +192,7 @@ If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Stat
 
 ## <a name="work-with-multiple-subscriptions"></a>使用多個訂用帳戶
 
-您的 Runbook 必須能夠搭配[訂用帳戶](automation-runbook-execution.md#subscriptions)運作。 例如，若要處理多個訂用帳戶，Runbook 會使用 [Disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) \(英文\) Cmdlet。 此 Cmdlet 可確保系統不會從在相同沙箱中執行的另一個 Runbook 擷取驗證內容。 Runbook 也會使用 `Get-AzContext` Cmdlet 來取出目前會話的內容，並將它指派給變數 `$AzureContext` 。
+您的 Runbook 必須能夠搭配[訂用帳戶](automation-runbook-execution.md#subscriptions)運作。 例如，若要處理多個訂用帳戶，Runbook 會使用 [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) \(英文\) Cmdlet。 此 Cmdlet 可確保系統不會從在相同沙箱中執行的另一個 Runbook 擷取驗證內容。 Runbook 也會使用 `Get-AzContext` Cmdlet 來取出目前會話的內容，並將它指派給變數 `$AzureContext` 。
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -256,7 +257,7 @@ Start-AzAutomationRunbook `
 
 ### <a name="publish-a-runbook-using-powershell"></a>使用 PowerShell 發佈 Runbook
 
-您可以使用 [Publish-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) Cmdlet 來發佈 Runbook。 
+您可以使用 [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) Cmdlet 來發佈 Runbook。 
 
 ```azurepowershell-interactive
 $automationAccountName =  "AutomationAccount"
@@ -304,7 +305,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>使用 PowerShell 擷取作業狀態
 
-使用 [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) Cmdlet 擷取針對 Runbook 建立的工作以及特定工作的詳細資料。 如果您使用 `Start-AzAutomationRunbook` 啟動 Runbook，其會傳回產生的作業。 使用 [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) 來擷取作業輸出。
+使用 [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) Cmdlet 擷取針對 Runbook 建立的工作以及特定工作的詳細資料。 如果您使用 `Start-AzAutomationRunbook` 啟動 Runbook，其會傳回產生的作業。 使用 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) 來擷取作業輸出。
 
 下列範例會針對範例 Runbook 取得上一個作業並顯示其狀態、提供給 Runbook 參數的值，以及作業輸出。
 

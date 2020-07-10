@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa0b3a05fb26f6be951b697145d7b22e03b7792d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841707"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171613"
 ---
 # <a name="delivery-and-retry"></a>傳遞和重試
 
@@ -26,9 +25,9 @@ Event Grid 提供持久的傳遞。 它會嘗試立即為每個相符的訂用�
 
 事件方格在傳遞訊息之後，會等待最多60秒的回應。 如果訂閱者的端點未通知回應，則會將訊息加入其中一個後置佇列中，以供後續重試。
 
-有兩個預先設定的反向佇列，可決定嘗試重試的排程。 其中包括：
+有兩個預先設定的反向佇列，可決定嘗試重試的排程。 分別是：
 
-| 排程 | Description |
+| 排程 | 描述 |
 | ---------| ------------ |
 | 1 分鐘 | 每分鐘會嘗試在這裡結束的訊息。
 | 10 分鐘 | 每隔10分鐘就會嘗試在這裡結束的訊息。
@@ -42,10 +41,10 @@ Event Grid 提供持久的傳遞。 它會嘗試立即為每個相符的訂用�
 
 ## <a name="retry-policy-limits"></a>重試原則限制
 
-有兩個設定可決定重試原則。 其中包括：
+有兩個設定可決定重試原則。 分別是：
 
 * 嘗試次數上限
-* 事件存留時間（TTL）
+* 事件存留時間 (TTL) 
 
 如果達到重試原則的其中一個限制，則會捨棄事件。 重試排程本身已在重試排程一節中說明。 這些限制的設定可以針對所有訂閱者或每個訂用帳戶來進行。 下一節會進一步詳細說明每一個。
 

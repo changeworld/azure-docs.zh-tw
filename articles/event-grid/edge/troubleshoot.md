@@ -5,16 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/24/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0196522618d4b61f615f7cc6faeacbe9a8c7c5b4
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73100147"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171341"
 ---
 # <a name="common-issues"></a>常見的問題
 
@@ -92,7 +90,7 @@ sudo docker logs eventgridmodule
 
 常見的原因如下：
 
-* 事件從未成功張貼。 將事件張貼至事件方格模組時，應該會收到200（確定）的 HTTP StatusCode。
+* 事件從未成功張貼。 將事件張貼至事件方格模組時，應該會收到 200 (確定) 的 HTTP StatusCode。
 
 * 檢查事件訂用帳戶以確認：
     * 端點 URL 有效

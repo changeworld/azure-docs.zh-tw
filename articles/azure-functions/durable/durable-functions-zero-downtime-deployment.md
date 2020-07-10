@@ -5,11 +5,13 @@ author: tsushi
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 45f87898f7da432e5bdd09061e74c33a1a8fe41b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74231263"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165697"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停機部署
 
@@ -18,9 +20,6 @@ Durable Functions 的[可靠執行模型](durable-functions-checkpointing-and-re
 若要避免發生這些失敗，您有兩個選項： 
 - 延遲部署，直到所有執行中的協調流程實例都完成為止。
 - 請確定任何執行中的協調流程實例都使用您的函式的現有版本。 
-
-> [!NOTE]
-> 本文提供以 Durable Functions 1.x 為目標之函數應用程式的指引。 尚未更新，以將 Durable Functions 2.x 中引進的變更納入考慮。 如需有關延伸模組版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)。
 
 下圖比較三個主要策略，以達到 Durable Functions 的零停機部署： 
 
@@ -96,7 +95,7 @@ Durable Functions 的[可靠執行模型](durable-functions-checkpointing-and-re
 [FunctionName("StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
-    [OrchestrationClient] DurableOrchestrationClient client,
+    [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
     var runtimeStatus = new List<OrchestrationRuntimeStatus>();
@@ -104,8 +103,8 @@ public static async Task<IActionResult> StatusCheck(
     runtimeStatus.Add(OrchestrationRuntimeStatus.Pending);
     runtimeStatus.Add(OrchestrationRuntimeStatus.Running);
 
-    var status = await client.GetStatusAsync(new DateTime(2015,10,10), null, runtimeStatus);
-    return (ActionResult) new OkObjectResult(new Status() {HasRunning = (status.Count != 0)});
+    var result = await client.ListInstancesAsync(new OrchestrationStatusQueryCondition() { RuntimeStatus = runtimeStatus }, CancellationToken.None);
+    return (ActionResult)new OkObjectResult(new { HasRunning = result.DurableOrchestrationState.Any() });
 }
 ```
 
@@ -115,7 +114,7 @@ public static async Task<IActionResult> StatusCheck(
 
 Azure Pipelines 檢查函式應用程式，以在部署開始之前執行協調流程實例。
 
-![部署閘道（執行中）](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
+![部署閘道 (執行) ](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
 
 現在，您的函式應用程式的新版本應部署至預備位置。
 
@@ -147,17 +146,17 @@ Azure Pipelines 檢查函式應用程式，以在部署開始之前執行協調�
 
 路由器會管理您的應用程式代碼版本部署至 Azure 中哪個函式應用程式的狀態。
 
-![應用程式路由（第一次）](media/durable-functions-zero-downtime-deployment/application-routing.png)
+![第一次 (應用程式路由) ](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
 路由器會根據要求所傳送的版本，將部署和協調流程要求導向至適當的函式應用程式。 它會忽略修補程式版本。
 
 當您部署應用程式的新版本而未進行重大變更時，您可以遞增修補程式版本。 路由器會部署至您現有的函式應用程式，並傳送舊版和新版本之程式碼的要求，而這會路由至相同的函式應用程式。
 
-![應用程式路由（不中斷變更）](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
+![應用程式路由 (沒有重大變更) ](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
 
 當您使用重大變更來部署新版本的應用程式時，您可以遞增主要或次要版本。 然後，應用程式路由器會在 Azure 中建立新的函式應用程式、將其部署至其中，並將應用程式新版本的要求路由傳送至其中。 在下圖中，在應用程式的1.0.1 版上執行協調流程會繼續執行，但1.1.0 版本的要求會路由傳送至新的函式應用程式。
 
-![應用程式路由（重大變更）](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
+![應用程式路由 (重大變更) ](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
 
 路由器會監視1.0.1 版本上的協調流程狀態，並在所有協調流程完成之後移除應用程式。 
 

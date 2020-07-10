@@ -11,18 +11,19 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 06/03/2020
-ms.openlocfilehash: 576861265771977f7e13140dd595f47bf556e585
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: c3f3e7540f837722d4dd730c5635ac30c699ccd3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84331894"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184279"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自訂 Azure-SSIS Integration Runtime 的安裝
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory （ADF）中的 Azure SQL Server Integration Services （SSIS） Integration Runtime （IR）的自訂設定會提供介面，以在布建或重新設定 Azure SSIS IR 期間新增您自己的步驟。 
+在 () ADF Azure Data Factory 中，Azure SQL Server Integration Services (SSIS) Integration Runtime (IR) 的自訂設定會提供介面，以在布建或重新設定 Azure SSIS IR 期間新增您自己的步驟。 
 
 您可以使用自訂安裝，變更預設作業組態或環境 (例如，用以啟動其他 Windows 服務)、保存檔案共用的存取認證，或使用強式密碼編譯/更安全的網路通訊協定 (TLS 1.2)。 或者，您可以在 Azure SSIS IR 的每個節點上安裝其他自訂/協力廠商元件，例如元件、驅動程式或擴充功能。 如需內建/預先安裝元件的詳細資訊，請參閱 [Azure-SSIS IR 上的內建/預先安裝元件](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime) \(英文\)。
 
@@ -30,7 +31,7 @@ Azure Data Factory （ADF）中的 Azure SQL Server Integration Services （SSIS
 * **使用指令碼的標準自訂安裝**：準備指令碼及其相關聯的檔案，並將其一起上傳至您 Azure 儲存體帳戶中的 Blob 容器。 接著，當您安裝或重新設定 Azure-SSIS IR 時，您可以提供容器的共用存取簽章 (SAS) 統一資源識別項 (URI)。 之後，Azure-SSIS IR 的每個節點都會從您的容器下載指令碼及其相關聯的檔案，並使用提高的權限執行您的自訂安裝。 自訂安裝完成後，每個節點都會將執行的標準輸出和其他記錄上傳到您的容器中。
 * **不使用指令碼的快速自訂安裝**：執行一些常見的系統組態和 Windows 命令，或安裝一些熱門或建議的其他元件，而不使用任何指令碼。
 
-您可以使用標準和快速的自訂安裝，同時安裝免費、未授權的元件和付費的授權元件。 如果您是獨立軟體廠商（ISV），請參閱[開發 AZURE SSIS IR 的付費或授權元件](how-to-develop-azure-ssis-ir-licensed-components.md)。
+您可以使用標準和快速的自訂安裝，同時安裝免費、未授權的元件和付費的授權元件。 如果您是 (ISV) 的獨立軟體廠商，請參閱[開發 AZURE SSIS IR 的付費或授權元件](how-to-develop-azure-ssis-ir-licensed-components.md)。
 
 > [!IMPORTANT]
 > 若要從之後的增強功能中獲益，建議您使用適用於 Azure-SSIS IR 的 v3 或更新的節點系列搭配自訂安裝。
