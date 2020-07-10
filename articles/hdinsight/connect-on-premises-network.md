@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 13b6753d7c04951839852b3090e99fd8cde1fe2d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0d76bf29efeb40f9f29f80b6e3e6414f5e9b6fc8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079797"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203259"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>將 HDInsight 連線至內部部署網路
 
@@ -80,11 +80,11 @@ ms.locfileid: "86079797"
     |虛擬機器名稱 | 輸入此虛擬機器的易記名稱。 此範例使用 **DNSProxy**。|
     |區域 | 選取與先前建立之虛擬網路相同的區域。  並非所有 VM 大小在所有區域都可供使用。  |
     |可用性選項 |  選取所需的可用性層級。  Azure 提供各種選項以管理應用程式的可用性和復原。  建立解決方案的架構，以在「可用性區域」或「可用性設定組」中使用複寫的虛擬機器來保護您的應用程式和資料避免發生資料中心中斷，並維護事件。 此範例使用 [不需要基礎結構備援]****。 |
-    |Image | 離開**Ubuntu Server 18.04 LTS**。 |
+    |影像 | 離開**Ubuntu Server 18.04 LTS**。 |
     |驗證類型 | __密碼__或__SSH 公開金鑰__： ssh 帳戶的驗證方法。 我們建議使用公開金鑰，因為這些金鑰較安全。 這個範例會使用**Password**。  如需詳細資訊，請參閱[建立及使用適用於 Linux VM 的 SSH 金鑰](../virtual-machines/linux/mac-create-ssh-keys.md)文件。|
     |使用者名稱 |輸入虛擬機器的系統管理員使用者名稱。  此範例使用 **sshuser**。|
     |密碼或 SSH 公開金鑰 | 可用的欄位取決於您選擇的**驗證類型**而定。  輸入適當的值。|
-    |公用輸入連接埠|選取 [允許選取的連接埠]。 然後從 [**選取輸入埠**] 下拉式清單中選取 [ **SSH （22）** ]。|
+    |公用輸入連接埠|選取 [允許選取的連接埠]。 然後從 [**選取輸入埠**] 下拉式清單中選取 [ **SSH (22) ** 。|
 
     ![虛擬機器基本設定](./media/connect-on-premises-network/virtual-machine-basics.png)
 
@@ -131,29 +131,31 @@ ms.locfileid: "86079797"
 
 3. 若要將系結設定為將名稱解析要求轉寄到內部部署 DNS 伺服器，請使用下列文字做為檔案的內容 `/etc/bind/named.conf.options` ：
 
-        acl goodclients {
-            10.0.0.0/16; # Replace with the IP address range of the virtual network
-            10.1.0.0/16; # Replace with the IP address range of the on-premises network
-            localhost;
-            localnets;
-        };
+    ```DNS Zone file
+    acl goodclients {
+        10.0.0.0/16; # Replace with the IP address range of the virtual network
+        10.1.0.0/16; # Replace with the IP address range of the on-premises network
+        localhost;
+        localnets;
+    };
 
-        options {
-                directory "/var/cache/bind";
+    options {
+            directory "/var/cache/bind";
 
-                recursion yes;
+            recursion yes;
 
-                allow-query { goodclients; };
+            allow-query { goodclients; };
 
-                forwarders {
-                192.168.0.1; # Replace with the IP address of the on-premises DNS server
-                };
+            forwarders {
+            192.168.0.1; # Replace with the IP address of the on-premises DNS server
+            };
 
-                dnssec-validation auto;
+            dnssec-validation auto;
 
-                auth-nxdomain no;    # conform to RFC1035
-                listen-on { any; };
-        };
+            auth-nxdomain no;    # conform to RFC1035
+            listen-on { any; };
+    };
+    ```
 
     > [!IMPORTANT]  
     > 將 `goodclients` 區段中的值取代為虛擬網路與內部部署網路的 IP 位址範圍。 本章節會定義此 DNS 伺服器接受要求的來源位址。
@@ -184,11 +186,13 @@ ms.locfileid: "86079797"
 
 5. 若要將 Bind 設定為解析虛擬網路內資源的 DNS 名稱，請使用下列文字作為 `/etc/bind/named.conf.local` 檔案的內容：
 
-        // Replace the following with the DNS suffix for your virtual network
-        zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
-            type forward;
-            forwarders {168.63.129.16;}; # The Azure recursive resolver
-        };
+    ```DNS Zone file
+    // Replace the following with the DNS suffix for your virtual network
+    zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
+        type forward;
+        forwarders {168.63.129.16;}; # The Azure recursive resolver
+    };
+    ```
 
     > [!IMPORTANT]  
     > 您必須將 `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 取代為您先前擷取的 DNS 尾碼。
@@ -242,7 +246,7 @@ ms.locfileid: "86079797"
 
 4. 選取 [自訂]____，並輸入自訂 DNS 伺服器的**私人 IP 位址**。
 
-5. 選取 [儲存]。  <br />  
+5. 選取 [Save] \(儲存\)。  <br />  
 
     ![設定網路的自訂 DNS 伺服器](./media/connect-on-premises-network/configure-custom-dns.png)
 
@@ -256,10 +260,12 @@ ms.locfileid: "86079797"
 
 下列文字是 **Bind** DNS 軟體條件式轉寄站設定的範例：
 
-    zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
-        type forward;
-        forwarders {10.0.0.4;}; # The custom DNS server's internal IP address
-    };
+```DNS Zone file
+zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
+    type forward;
+    forwarders {10.0.0.4;}; # The custom DNS server's internal IP address
+};
+```
 
 如需有關在 **Windows Server 2016** 上使用 DNS 的資訊，請參閱 [Add-DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) 文件...
 

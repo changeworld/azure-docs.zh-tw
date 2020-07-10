@@ -6,24 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 07/08/2020
 ms.author: alkohli
-ms.openlocfilehash: 3aa48f42c767a8f1fb1c7bf0ad78fef8b8af1594
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85558534"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200135"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>針對與 Azure 資料箱和 Azure Data Box Heavy 相關的問題進行疑難排解
 
-本文詳細說明如何針對使用 Azure 資料箱或 Azure Data Box Heavy 時可能會看到的問題進行疑難排解。 此文章包含將資料複製到資料箱時，或從資料箱上傳資料時所看到的可能錯誤清單。
+本文詳細說明如何針對匯入訂單使用 Azure 資料箱或 Azure Data Box Heavy 時可能會看到的問題進行疑難排解。 此文章包含將資料複製到資料箱時，或從資料箱上傳資料以取得匯入順序時所看到的可能錯誤清單。
+
+本文中的資訊不適用於針對資料箱所建立的匯出訂單。
 
 ## <a name="error-classes"></a>錯誤類別
 
 資料箱和 Data Box Heavy 中的錯誤摘要如下：
 
-| 錯誤類別 *        | Description        | 建議的動作    |
+| 錯誤類別 *        | 描述        | 建議的動作    |
 |----------------------------------------------|---------|--------------------------------------|
 | 容器或共用名稱 | 容器或共用名稱不會遵循 Azure 命名規則。  |下載錯誤清單。 <br> 重新命名容器或共用。 [深入了解](#container-or-share-name-errors)。  |
 | 容器或共用大小限制 | 容器或共用中的資料總計超過 Azure 限制。   |下載錯誤清單。 <br> 減少容器或共用中的整體資料。 [深入了解](#container-or-share-size-limit-errors)。|
@@ -42,7 +44,7 @@ ms.locfileid: "85558534"
 
 **錯誤描述：** 容器或共用名稱必須介於3到63個字元之間。 
 
-**建議的解決方式：** 您已複製資料的資料箱或 Data Box Heavy 共用（SMB/NFS）底下的資料夾，會變成儲存體帳戶中的 Azure 容器。 
+**建議的解決方式：** 資料箱或 Data Box Heavy 共用下的資料夾，您已複製資料的 (SMB/NFS) 會成為儲存體帳戶中的 Azure 容器。 
 
 - 在裝置本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案，以找出有問題的資料夾名稱。
 - 變更資料箱或 Data Box Heavy 共用底下的資料夾名稱，以確保：
@@ -61,7 +63,7 @@ ms.locfileid: "85558534"
 
 **錯誤描述：** 容器或共用名稱必須只包含字母、數位或連字號。
 
-**建議的解決方式：** 您已複製資料的資料箱或 Data Box Heavy 共用（SMB/NFS）底下的資料夾，會變成儲存體帳戶中的 Azure 容器。 
+**建議的解決方式：** 資料箱或 Data Box Heavy 共用下的資料夾，您已複製資料的 (SMB/NFS) 會成為儲存體帳戶中的 Azure 容器。 
 
 - 在裝置本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案，以找出有問題的資料夾名稱。
 - 變更資料箱或 Data Box Heavy 共用底下的資料夾名稱，以確保：
@@ -79,7 +81,7 @@ ms.locfileid: "85558534"
 
 **錯誤描述：** 容器名稱和共用名稱不能以連字號開頭或結尾，而且不能有連續的連字號。
 
-**建議的解決方式：** 您已複製資料的資料箱或 Data Box Heavy 共用（SMB/NFS）底下的資料夾，會變成儲存體帳戶中的 Azure 容器。 
+**建議的解決方式：** 資料箱或 Data Box Heavy 共用下的資料夾，您已複製資料的 (SMB/NFS) 會成為儲存體帳戶中的 Azure 容器。 
 
 - 在裝置本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案，以找出有問題的資料夾名稱。
 - 變更資料箱或 Data Box Heavy 共用底下的資料夾名稱，以確保：
@@ -138,7 +140,7 @@ ms.locfileid: "85558534"
 
 **錯誤描述：** Blob 或檔案的對齊方式不正確。
 
-**建議的解決方式：** 資料箱或 Data Box Heavy 上的分頁 blob 共用僅支援512位元組對齊的檔案（例如，VHD/VHDX）。 任何複製到分頁 blob 共用的資料，都會以分頁 blob 的形式上傳至 Azure。
+**建議的解決方式：** 資料箱或 Data Box Heavy 上的分頁 blob 共用僅支援512位元組的對齊 (例如 VHD/VHDX) 的檔案。 任何複製到分頁 blob 共用的資料，都會以分頁 blob 的形式上傳至 Azure。
 
 從分頁 blob 共用移除任何非 VHD/VHDX 資料。 您可以針對一般資料使用區塊 blob 或 Azure 檔案共用。
 
@@ -159,7 +161,7 @@ ms.locfileid: "85558534"
 
 **建議的解決方式：** 針對每個共用中的受控磁片，會建立下列三個資料夾，對應至儲存體帳戶中的容器：進階 SSD、標準 HDD 和標準 SSD。 這些資料夾對應至受控磁片的效能層級。
 
-- 請確定您將分頁 blob 資料（Vhd）複製到其中一個現有的資料夾。
+- 請確定您將分頁 blob 資料 (Vhd) 複製到其中一個現有的資料夾中。
 - 在這些現有資料夾中不允許有資料夾或目錄。 移除您在預先存在的資料夾內建立的任何資料夾。
 
 如需詳細資訊，請參閱[複製到受控磁片](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box)。
@@ -247,7 +249,7 @@ ms.locfileid: "85558534"
 
 **建議的解決方式：** 針對每個共用中的受控磁片，會建立下列資料夾，對應至儲存體帳戶中的容器：進階 SSD、標準 HDD 和標準 SSD。 這些資料夾對應至受控磁片的效能層級。
 
-- 請確定您將分頁 blob 資料（Vhd）複製到其中一個現有的資料夾。 只有來自這些現有容器的資料才會上傳至 Azure。
+- 請確定您將分頁 blob 資料 (Vhd) 複製到其中一個現有的資料夾中。 只有來自這些現有容器的資料才會上傳至 Azure。
 - 在與進階 SSD、標準 HDD 和標準 SSD 相同層級建立的任何其他資料夾，都不會對應到有效的效能層級，因此無法使用。
 - 移除在效能層級外部建立的檔案或資料夾。
 

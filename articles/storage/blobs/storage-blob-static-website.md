@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: e2dcc070baa94ecf1ea27100fd49d4cde1dac637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccad51d18a5e76f68633103af64e9ba6cc3f19c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833341"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203388"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 儲存體中的靜態網站代管
 
@@ -76,13 +76,15 @@ ms.locfileid: "85833341"
 
 以下螢幕擷取畫面顯示 Azure 入口網站上中的公用存取層級設定：
 
-![螢幕擷取畫面顯示如何在入口網站中設定公用存取層級](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![螢幕擷取畫面顯示如何在入口網站中設定公用存取層級](./media/anonymous-read-access-configure/configure-public-access-container.png)
 
 雖然主要靜態網站端點不受影響，但對公用存取層級的變更會影響主要 Blob 服務端點。
 
 例如，如果您將 **$web** 容器的公用存取層級從**私人 (無匿名存取)** 變更為 **Blob (僅限 Blob 的匿名讀取存取)** ，則主要靜態網站端點的公用存取層級`https://contosoblobaccount.z22.web.core.windows.net/index.html`不會變更。
 
 不過，主要 Blob 服務端點的公用存取`https://contosoblobaccount.blob.core.windows.net/$web/index.html`會從私人變更至公用。 現在，使用者可以使用這兩個端點的其中一個來開啟該檔案。
+
+在儲存體帳戶上停用公用存取並不會影響裝載在該儲存體帳戶中的靜態網站。 如需詳細資訊，請參閱[設定容器和 blob 的匿名公用讀取權限](anonymous-read-access-configure.md)。
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>將自訂網域對應至靜態網站 URL
 

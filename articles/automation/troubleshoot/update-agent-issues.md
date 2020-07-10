@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: ff996227e23836bf85cc3885d9184ae6d7d6c61d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680837"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187127"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>針對 Windows 更新代理程式問題進行疑難排解
 
@@ -109,7 +110,7 @@ Crypto 資料夾存取權檢查會判斷本機系統帳戶是否能夠存取 C:\
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>離線疑難排解
 
-您可以藉由在本機執行指令碼，對「混合式 Runbook 背景工作角色」使用疑難排解員。 從 PowerShell 資源庫取得下列指令碼：[Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). 若要執行此指令碼，您必須安裝 WMF 4.0 或更新版本。 若要下載最新版的 PowerShell，請參閱[安裝各種版本的 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。
+您可以藉由在本機執行指令碼，對「混合式 Runbook 背景工作角色」使用疑難排解員。 從 PowerShell 資源庫取得下列指令碼：[Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). 若要執行此指令碼，您必須安裝 WMF 4.0 或更新版本。 若要下載最新版的 PowerShell，請參閱[安裝各種版本的 PowerShell](/powershell/scripting/install/installing-powershell)。
 
 此指令碼的輸出會如下列範例所示：
 

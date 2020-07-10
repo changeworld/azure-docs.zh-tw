@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: de637bc30420ce494e553100a9f1126e88027bd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af19586807bf676f1f449f7402b364a054721eec
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704126"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187586"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理員
 
@@ -30,7 +30,7 @@ Azure 流量管理員使用名為「流量管理員設定檔」的設定集合�
 
 每個流量管理員設定檔都以 'TrafficManagerProfiles' 類型的資源表示。 在 REST API 層級中，每個設定檔的 URI 如下：
 
-    https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
+`https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}`
 
 ## <a name="setting-up-azure-powershell"></a>設定 Azure PowerShell
 
@@ -59,9 +59,9 @@ $TmProfile = New-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
 
 下表描述參數：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --- | --- |
-| Name |流量管理員設定檔資源的資源名稱。 相同資源群組中的設定檔必須有唯一的名稱。 這個名稱是從用於 DNS 查詢的 DNS 名稱分割而來。 |
+| 名稱 |流量管理員設定檔資源的資源名稱。 相同資源群組中的設定檔必須有唯一的名稱。 這個名稱是從用於 DNS 查詢的 DNS 名稱分割而來。 |
 | resourceGroupName |包含設定檔資源的資源群組名稱。 |
 | TrafficRoutingMethod |指定流量路由方法，用來決定回應 DNS 查詢時傳回哪一個端點。 可能的值為 'Performance'、'Weighted' 或 'Priority'。 |
 | RelativeDnsName |指定此流量管理員設定檔所提供之 DNS 名稱的主機名稱部分。 這個值會與由 Azure 流量管理員使用的 DNS 網域名稱結合，形成設定檔的完整網域名稱 (FQDN)。 例如，值設為 'contoso' 會變成 'contoso.trafficmanager.net'。 |

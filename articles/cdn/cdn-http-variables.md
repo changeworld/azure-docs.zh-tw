@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e601e3e06965faf8ec0fd238c54115570150b61
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84340669"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203574"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 規則引擎的 HTTP 變數
 HTTP 變數能提供擷取 HTTP 要求和回應中繼資料的方法。 此中繼資料可以接著用來動態調整要求或回應。 HTTP 變數的使用，僅限於下列規則引擎功能：
@@ -186,7 +187,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 下表示範此語法的運作方式。
 
-| 範例語法 | 結果 | |
+| 範例語法 | 結果 | 描述 |
 | ------------- | ------- | --- |
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | 由於變數是以該模式作為開頭，因此會被取代。 |
 | %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | 由於變數沒有以該模式作為結尾，因此沒有任何變更。|

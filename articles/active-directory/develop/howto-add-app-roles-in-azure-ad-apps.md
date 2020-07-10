@@ -3,7 +3,7 @@ title: 新增應用程式角色並自權杖中取得 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何在 Azure Active Directory 註冊的應用程式中新增應用程式角色、將使用者和群組指派給這些角色，以及在權杖的 `roles` 中宣告接收它們。
 services: active-directory
-author: kkrishna
+author: kalyankrishna1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: aedf5d710b82185cb634fcd92e6981a2c358ad52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 940ef671ab58074aaded49acb70db68a4971c1f2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477884"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187025"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在您的應用程式中新增應用程式角色，並且在權杖中接收這些角色
 
@@ -122,7 +122,7 @@ ms.locfileid: "85477884"
 ## <a name="more-information"></a>詳細資訊
 
 - [使用應用程式角色與角色宣告將授權新增至 ASP.NET Core Web 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [在您的應用程式中使用安全性群組和應用程式角色 (影片)](https://www.youtube.com/watch?v=V8VUPixLSiM)
+- [使用 Microsoft 身分識別平臺，在您的應用程式中執行授權 (Video) ](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [Azure Active Directory 現在具有群組宣告和應用程式角色](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [AAD 存取權杖](access-tokens.md)

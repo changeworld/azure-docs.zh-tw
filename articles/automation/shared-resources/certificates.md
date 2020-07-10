@@ -9,15 +9,16 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ebd4bf0ff91342229edb4295489f0cbd0970699a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 918e34114faa7a57e54ec45c1cca8036462a8fa1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745034"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187382"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>管理 Azure 自動化中的憑證
 
-Azure 自動化使用 Azure Resource Manager 資源的 [Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) Cmdlet，安全地儲存憑證以供 Runbook 和 DSC 設定存取。 安全憑證存放區可供建立使用憑證進行驗證的 Runbook 和 DSC 設定，或將其新增至 Azure 或協力廠商資源。
+Azure 自動化使用 Azure Resource Manager 資源的 [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) Cmdlet，安全地儲存憑證以供 Runbook 和 DSC 設定存取。 安全憑證存放區可供建立使用憑證進行驗證的 Runbook 和 DSC 設定，或將其新增至 Azure 或協力廠商資源。
 
 >[!NOTE]
 >Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會使用為每個自動化帳戶產生的唯一金鑰來進行加密並儲存在自動化中。 自動化會將金鑰儲存在系統管理的 Key Vault 服務中。 在儲存安全資產之前，自動化會從 Key Vault 載入金鑰，然後將其用來加密資產。 
@@ -28,10 +29,10 @@ Azure 自動化使用 Azure Resource Manager 資源的 [Get-AzAutomationCertific
 
 |Cmdlet |描述|
 | --- | ---|
-|[Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|擷取要在 Runbook 或 DSC 組態中使用的憑證相關資訊。 您只能使用內部 `Get-AutomationCertificate` Cmdlet 來擷取憑證本身。|
-|[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|在自動化中建立新的憑證。|
-|[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|從自動化中移除憑證。|
-|[Set-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|設定現有憑證的屬性，包括上傳憑證檔案和設定 **.pfx** 檔案的密碼。|
+|[Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|擷取要在 Runbook 或 DSC 組態中使用的憑證相關資訊。 您只能使用內部 `Get-AutomationCertificate` Cmdlet 來擷取憑證本身。|
+|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|在自動化中建立新的憑證。|
+|[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|從自動化中移除憑證。|
+|[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|設定現有憑證的屬性，包括上傳憑證檔案和設定 **.pfx** 檔案的密碼。|
 
 您也可以使用 [Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate) Cmdlet 來上傳指定雲端服務的服務憑證。
 
@@ -126,7 +127,7 @@ New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName TestAzureAuto -Te
 
 ## <a name="get-a-certificate"></a>取得憑證
 
-若要擷取憑證，請使用內部 `Get-AutomationCertificate` Cmdlet。 您無法使用 [Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) Cmdlet，因為這會傳回憑證資產的資訊，而不是憑證本身。
+若要擷取憑證，請使用內部 `Get-AutomationCertificate` Cmdlet。 您無法使用 [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) Cmdlet，因為這會傳回憑證資產的資訊，而不是憑證本身。
 
 ### <a name="textual-runbook-example"></a>文字式 Runbook 範例
 

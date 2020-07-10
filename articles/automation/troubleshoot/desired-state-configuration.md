@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6e057f5c9525f3b4ca373897c865990eb29835c0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 8043369ebfef23ed84ccff8e7428fbd2048e10b0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681369"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187212"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>針對 Azure 自動化狀態設定的問題進行疑難排解
 
@@ -25,7 +26,7 @@ ms.locfileid: "83681369"
 
 ### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1.確定您的設定在本機電腦上成功編譯
 
-Azure 自動化狀態設定以 PowerShell Desired State Configuration (DSC) 為基礎。 您可以在 [PowerShell DSC](https://docs.microsoft.com/powershell/scripting/overview) 中找到 DSC 語言和語法的文件。
+Azure 自動化狀態設定以 PowerShell Desired State Configuration (DSC) 為基礎。 您可以在 [PowerShell DSC](/powershell/scripting/overview) 中找到 DSC 語言和語法的文件。
 
 您可以在本機電腦上編譯 DSC 設定，以探索並解決常見的錯誤，例如：
 
@@ -41,7 +42,7 @@ Azure 自動化狀態設定以 PowerShell Desired State Configuration (DSC) 為�
 
 您可以遵循[安裝穩定版模組](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)中的指示，在本機電腦上安裝 `xDscDiagnostics` 模組。
 
-若要在 Azure 電腦上安裝 `xDscDiagnostics` 模組，請使用 [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0)。 您也可以遵循[使用執行命令在 Windows VM 中執行 PowerShell 指令碼](../../virtual-machines/windows/run-command.md)中的步驟，在 Azure 入口網站中使用 [執行命令] 選項。
+若要在 Azure 電腦上安裝 `xDscDiagnostics` 模組，請使用 [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0)。 您也可以遵循[使用執行命令在 Windows VM 中執行 PowerShell 指令碼](../../virtual-machines/windows/run-command.md)中的步驟，在 Azure 入口網站中使用 [執行命令] 選項。
 
 如需使用 **xDscDiagnostics** 的詳細資訊，請參閱[使用 xDscDiagnostics 分析 DSC 記錄](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)。 另請參閱 [xDscDiagnostics Cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
 
@@ -65,13 +66,13 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 ### <a name="resolution"></a>解決方案
 
-使用 [Remove-AzAutomationDscConfiguration] (https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 ) Cmdlet 來刪除設定。
+使用[AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0) Cmdlet 來刪除設定。
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>案例：無法註冊 DSC 應用程式
 
 ### <a name="issue"></a>問題
 
-執行 [Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) 或另一個 DSC Cmdlet 時，您收到錯誤：
+執行 [Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) 或另一個 DSC Cmdlet 時，您收到錯誤：
 
 ```error
 Registration of the Dsc Agent with the server
@@ -176,7 +177,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 * 您可以使用 Azure 入口網站或 PowerShell Cmdlet，將節點設定指派給節點。
 
   * 在 Azure 入口網站中，移至 [首頁] > [自動化帳戶] > (您的自動化帳戶) > [狀態設定 (DSC)]。 然後選取節點，再選取 [指派節點設定]。
-  * 使用 [Set-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) Cmdlet。
+  * 使用 [Set-AzAutomationDscNode](/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) Cmdlet。
 
 ## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>案例：編譯設定時未產生任何節點設定 (MOF 檔案)
 
@@ -215,7 +216,7 @@ No instance found with given property values
 
 ### <a name="resolution"></a>解決方案
 
-請遵循 [DSC 已知問題和限制](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)中的指示進行。
+請遵循 [DSC 已知問題和限制](/powershell/scripting/wmf/known-issues/known-issues-dsc)中的指示進行。
 
 ## <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>案例：無法在 DSC 設定中使用認證
 
@@ -258,7 +259,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 ### <a name="issue"></a>問題
 
-當您使用 [Register-AzAutomationDSCNode](https://docs.microsoft.com/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) 或 [Register-AzureRMAutomationDSCNode](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0) 註冊節點時，您收到下列錯誤：
+當您使用 [Register-AzAutomationDSCNode](/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) 或 [Register-AzureRMAutomationDSCNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0) 註冊節點時，您收到下列錯誤：
 
 ```error
 One or more errors occurred.
@@ -337,7 +338,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 ### <a name="resolution"></a>解決方案
 
-您可以在任何 [Import-DSCResource](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) 呼叫中明確包含 `ModuleName` 參數，以加速剖析 DSC 設定。
+您可以在任何 [Import-DSCResource](/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) 呼叫中明確包含 `ModuleName` 參數，以加速剖析 DSC 設定。
 
 ## <a name="next-steps"></a>後續步驟
 

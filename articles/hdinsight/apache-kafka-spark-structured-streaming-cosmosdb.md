@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/18/2019
-ms.openlocfilehash: 629df1c43ff104d89f4b61a9aacb6c7f7720a1ce
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0a2e69a220f6752e5f0392c345b02967e2e76beb
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077131"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203465"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>搭配 Apache Kafka 和 Azure Cosmos DB 使用 Apache Spark 結構化串流
 
@@ -47,7 +47,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
 
-    Azure Resource Manager 範本位於此專案的 GitHub 存放庫（ [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) ）。
+    Azure Resource Manager 範本位於此專案的 GitHub 存放庫中 ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)) 。
 
     此範本會建立下列資源：
 
@@ -66,7 +66,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
     |屬性 |值 |
     |---|---|
-    |訂用帳戶|選取 Azure 訂用帳戶。|
+    |訂用帳戶|選取您的 Azure 訂用帳戶。|
     |資源群組|建立群組或選取現有的群組。 此群組包含 HDInsight 叢集。|
     |Cosmos DB 帳戶名稱|此值是作為 Cosmos DB 帳戶的名稱使用。 名稱只能包含小寫字母、數字及連字號 (-) 字元。 其長度必須介於 3 到 31 個字元之間。|
     |基底叢集名稱|此值會作為 Spark 和 Kafka 叢集的基底名稱。 例如，輸入 **myhdi** 以建立名為 __spark-myhdi__ 的 Spark 叢集，以及名為 **kafka-myhdi** 的 Kafka 叢集。|
@@ -136,7 +136,9 @@ az cosmosdb keys list --name $name --resource-group $resourceGroupName --type ke
 
 1. 在網頁瀏覽器中，連線到您 Spark 叢集上的 Jupyter Notebook。 在下列 URL 中，將 `CLUSTERNAME`取代為您的 __Spark__ 叢集名稱：
 
-        https://CLUSTERNAME.azurehdinsight.net/jupyter
+    ```http
+    https://CLUSTERNAME.azurehdinsight.net/jupyter
+    ```
 
     出現提示時，輸入您在建立叢集時所使用的叢集登入 (admin) 和密碼。
 

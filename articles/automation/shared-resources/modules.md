@@ -8,18 +8,19 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82bec23ac35f4f0e6c65720d0c3a36355fa4224d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 2bf3dda6e3d99b5ed67298343f5238d304df7e2b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713449"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187365"
 ---
 # <a name="manage-modules-in-azure-automation"></a>在 Azure 自動化中管理模組
 
 Azure 自動化會使用數個 PowerShell 模組，在 Runbook 中啟用 Cmdlet，以及在 DSC 設定中啟用 DSC 資源。 支援的模組包括：
 
 * [Azure PowerShell Az.Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)。
-* [Azure PowerShell AzureRM.Automation](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0)。
+* [Azure PowerShell AzureRM.Automation](/powershell/module/azurerm.automation/?view=azurermps-6.13.0)。
 * 其他 PowerShell 模組。
 * 內部 `Orchestrator.AssetManagement.Cmdlets` 模組。
 * Python 2 模組。
@@ -105,7 +106,7 @@ Azure 自動化可以匯入自訂模組，以使其 Cmdlet 可供使用。 就�
 
 ## <a name="migrate-to-az-modules"></a>移轉至 Az 模組
 
-此節說明如何在自動化中移轉至 Az 模組。 如需詳細資訊，請參閱[將 Azure PowerShell 從 AzureRM 移轉至 Az](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)。 
+此節說明如何在自動化中移轉至 Az 模組。 如需詳細資訊，請參閱[將 Azure PowerShell 從 AzureRM 移轉至 Az](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)。 
 
 我們不建議在相同的自動化帳戶中執行 AzureRM 模組和 Az 模組。 當您確定要從 AzureRM 移轉至 Az 時，最好完全認可至完整移轉。 自動化通常會重複使用自動化帳戶內的沙箱，以節省啟動時間。 如果您未進行完整模組移轉，您可能會啟動僅使用 AzureRM 模組的作業，然後啟動另一個只使用 Az 模組的作業。 沙箱很快就會損毀，而您會收到錯誤，指出模組不相容。 這種情況會導致任何特定 Runbook 或設定隨機發生損毀。 
 
@@ -120,18 +121,18 @@ Azure 自動化可以匯入自訂模組，以使其 Cmdlet 可供使用。 就�
 
 為了確保您不會執行任何使用 AzureRM 模組的現有 Runbook 或 DSC 設定，您必須停止並取消排程所有受影響的 Runbook 和設定。 首先，確定您會分別檢閱每個 Runbook 或 DSC 設定及其排程，以確保您可以在未來視需要重新排程項目。 
 
-當您準備好移除排程時，您可以使用 Azure 入口網站或 [Remove-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) \(英文\) Cmdlet。 請參閱[移除排程](schedules.md#remove-a-schedule)。
+當您準備好移除排程時，您可以使用 Azure 入口網站或 [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) \(英文\) Cmdlet。 請參閱[移除排程](schedules.md#remove-a-schedule)。
 
 ### <a name="remove-azurerm-modules"></a>移除 AzureRM 模組
 
-您可以先移除 AzureRM 模組，然後再匯入 Az 模組。 不過，如果這樣做，您可能會中斷原始程式碼控制同步處理，並導致任何仍排定的指令碼失敗。 如果您決定移除模組，請參閱[解除安裝 AzureRM](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm)。
+您可以先移除 AzureRM 模組，然後再匯入 Az 模組。 不過，如果這樣做，您可能會中斷原始程式碼控制同步處理，並導致任何仍排定的指令碼失敗。 如果您決定移除模組，請參閱[解除安裝 AzureRM](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm)。
 
 ### <a name="import-az-modules"></a>匯入 Az 模組
 
 在您的自動化帳戶中匯入 Az 模組，不會在 Runbook 使用的 PowerShell 工作階段中自動匯入該模組。 模組會在下列情況下匯入到 PowerShell 工作階段：
 
 * 當 Runbook 從模組中叫用 Cmdlet 時。
-* 當 Runbook 使用 [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) \(英文\) Cmdlet 明確匯入模組時。
+* 當 Runbook 使用 [Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) \(英文\) Cmdlet 明確匯入模組時。
 * 當 Runbook 匯入另一個相依模組時。
 
 您可以在 Azure 入口網站中匯入 Az 模組。 請記住，只匯入所需的 Az 模組，而不是整個 Az.Automation 模組。 由於 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) \(英文\) 是其他 Az 模組的相依性，因此，務必在任何其他模組之前匯入此模組。
@@ -155,7 +156,7 @@ Azure 自動化可以匯入自訂模組，以使其 Cmdlet 可供使用。 就�
 
 當您撰寫自訂 PowerShell 模組以在 Azure 自動化中使用時，建議您遵循此節中的考慮事項。 若要準備要匯入的模組，您至少必須建立一個 psd1、psm1 或 PowerShell 模組 **.dll** 檔案，且名稱與模組資料夾相同。 然後壓縮模組資料夾，讓 Azure 自動化能夠以單一檔案形式匯入。 **.zip** 套件的名稱應該與內含的模組資料夾相同。 
 
-若要深入了解如何撰寫 PowerShell 模組，請參閱[如何撰寫 PowerShell 指令碼模組](https://docs.microsoft.com/powershell/scripting/developer/module/how-to-write-a-powershell-script-module?view=powershell-7) \(部分機器翻譯\)。
+若要深入了解如何撰寫 PowerShell 模組，請參閱[如何撰寫 PowerShell 指令碼模組](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module?view=powershell-7) \(部分機器翻譯\)。
 
 ### <a name="version-folder"></a>版本資料夾
 
@@ -314,7 +315,7 @@ myModule
 
 ### <a name="import-modules-by-using-powershell"></a>使用 PowerShell 匯入模組
 
-您可以使用 [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationmodule?view=azps-3.7.0) \(英文\) Cmdlet，將模組匯入至您的自動化帳戶。 此 Cmdlet 會取得模組 .zip 套件的 URL。
+您可以使用 [New-AzAutomationModule](/powershell/module/az.automation/new-azautomationmodule?view=azps-3.7.0) \(英文\) Cmdlet，將模組匯入至您的自動化帳戶。 此 Cmdlet 會取得模組 .zip 套件的 URL。
 
 ```azurepowershell-interactive
 New-AzAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
@@ -371,5 +372,5 @@ Remove-AzAutomationModule -Name <moduleName> -AutomationAccountName <automationA
 
 ## <a name="next-steps"></a>後續步驟
 
-* [開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-3.7.0)
-* [撰寫 Windows PowerShell 模組](https://docs.microsoft.com/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7) \(部分機器翻譯\)
+* 如需使用 Azure PowerShell 模組的詳細資訊，請參閱[開始使用 Azure PowerShell](/powershell/azure/get-started-azureps?view=azps-3.7.0)。
+* 若要深入瞭解如何建立 PowerShell 模組，請參閱[撰寫 Windows powershell 模組](/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7)。

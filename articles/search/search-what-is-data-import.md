@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 9a4b6bc8ae20789c1420e68f91cee34ac5b3a3ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86982aa418433ecef6a81252363091714185fe22
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554255"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202291"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>資料匯入總覽-Azure 認知搜尋
 
@@ -22,7 +22,7 @@ ms.locfileid: "85554255"
 無論使用哪一種方法，目標都是要將資料從外部資料源載入 Azure 認知搜尋索引。 Azure 認知搜尋可讓您建立空的索引，但在您將資料推送或提取到其中時，它無法進行查詢。
 
 > [!NOTE]
-> 如果[AI 擴充](cognitive-search-concept-intro.md)是解決方案需求，您必須使用提取模型（索引子）來載入索引。 僅透過附加至索引子的技能集來支援外部處理。
+> 如果[AI 擴充](cognitive-search-concept-intro.md)是解決方案需求，您就必須使用提取模型 (索引子) 載入索引。 僅透過附加至索引子的技能集來支援外部處理。
 
 ## <a name="pushing-data-to-an-index"></a>將資料推送到索引
 
@@ -52,7 +52,7 @@ ms.locfileid: "85554255"
 在 .NET SDK 中，將您的資料封裝到 `IndexBatch` 物件中。 `IndexBatch`會封裝物件的集合 `IndexAction` ，其中每一個都包含一個檔和一個屬性，告訴 Azure 認知搜尋要對該檔執行什麼動作。 如需程式碼範例，請參閱[c # 快速入門](search-get-started-dotnet.md)。
 
 
-| @search.action | Description | 每個文件的必要欄位 | 備註 |
+| @search.action | 描述 | 每個文件的必要欄位 | 附註 |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |`upload` 動作類似「upsert」，如果是新文件，就會插入該文件，如果文件已經存在，就會更新/取代它。 |索引鍵以及其他任何您想要定義的欄位 |在更新/取代現有文件時，要求中未指定的欄位會將其欄位設定為 `null`。 即使先前已將欄位設定為非 null 值也是一樣。 |
 | `merge` |使用指定的欄位更新現有文件。 如果文件不存在於索引中，合併就會失敗。 |索引鍵以及其他任何您想要定義的欄位 |您在合併中指定的任何欄位將取代文件中現有的欄位。 在 .NET SDK 中，這包括類型的欄位 `DataType.Collection(DataType.String)` 。 在 REST API 中，這包括類型的欄位 `Collection(Edm.String)` 。 例如，如果文件包含欄位 `tags` 且值為 `["budget"]`，而您使用值 `["economy", "pool"]` 針對 `tags` 執行合併，則 `tags` 欄位最後的值會是 `["economy", "pool"]`。 而不會是 `["budget", "economy", "pool"]`。 |
@@ -67,7 +67,9 @@ ms.locfileid: "85554255"
 
 若為 GET，URL 結尾的「查詢字串」** 是您用來提供查詢參數的位置。 URL 的格式如下所示：
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2020-06-30
+```http
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+```
 
 POST 的格式是相同的，但 `api-version` 在查詢字串參數中則是。
 
@@ -76,7 +78,7 @@ POST 的格式是相同的，但 `api-version` 在查詢字串參數中則是。
 提取模型會將支援的資料來源編目，並自動將資料上傳到您的索引。 在「Azure 認知搜尋」中，這項功能是透過*索引子*來執行，目前適用于這些平臺：
 
 + [Blob 儲存體](search-howto-indexing-azure-blob-storage.md)
-+ [資料表儲存體](search-howto-indexing-azure-tables.md)
++ [表格儲存體](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure Vm 上的 Azure SQL Database、SQL 受控執行個體和 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 

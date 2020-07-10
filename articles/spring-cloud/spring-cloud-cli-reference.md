@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: brendm
-ms.openlocfilehash: 33d13d2d4fa9003ef041c4c96be83a69ac595a78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 957931407987e116924677341df4effe5347590e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80298786"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187637"
 ---
 # <a name="az-spring-cloud"></a>az 春季-雲端
 
@@ -20,7 +20,7 @@ ms.locfileid: "80298786"
 >[!Note]
 > Azure Spring Cloud 目前為預覽狀態。  這些命令可能會在未來的版本中變更或移除。
 
-| az 春季-雲端 |  |
+| az 春季-雲端 | 命令 |
 |------|------:|
 | [az 春季-cloud create](#az-spring-cloud-create) | 建立 Azure 春季雲端實例。 |
 | [az 春季-cloud delete](#az-spring-cloud-delete) | 刪除 Azure 春季雲端實例。 |
@@ -89,13 +89,13 @@ az spring-cloud create  --name -n
                         --no-wait
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | 此 Azure 春季雲端實例的名稱。 |
 | --resource-group -g | 指定此應用程式的資源群組。  使用設定預設群組`az configure --defaults group=<name>` |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --location -l | 指定此應用程式的伺服器位置。  使用尋找有效的位置`az account list-locations` |
 | --no-wait | 請不要讓長時間執行的作業完成。
 
@@ -117,13 +117,13 @@ az spring cloud --name -n
                 --no-wait
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | 要刪除之 Azure 春季雲端實例的名稱。 |
 | --resource-group -g | Azure 春季雲端所屬資源群組的名稱。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | -否-等候 | 請不要等候長時間執行的作業完成。 |
 
 ### <a name="example"></a>範例
@@ -142,8 +142,8 @@ az spring-cloud delete -n MyService -g MyResourceGroup
 az spring-cloud list --resource-group -g
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --resource-group -g | 資源群組的名稱。 |
 
 ## <a name="az-spring-cloud-show"></a>az 春季 cloud show
@@ -155,8 +155,8 @@ az spring-cloud show --name -n
                      -- resource-group -g
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | Azure 春季雲端實例的名稱。 |
 | --resource-group -g | Azure 春季雲端實例所屬資源群組的名稱。
 
@@ -175,14 +175,14 @@ az spring-cloud app create --name -n
                             --memory
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --cpu | 每個實例的虛擬核心數目。  預設值：1。 |
 | --啟用-持續性儲存體 | 布林值。  若為 true，則裝載具有預設路徑的50GB 磁片。 |
 | --instance-count | 實例的數目。  預設值：1。 |
@@ -213,8 +213,8 @@ az spring cloud app delete  --name -n
                             --service -s
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
@@ -240,14 +240,14 @@ az spring cloud app deploy  --name -n
                             --version
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --cpu | 每個實例的虛擬 CPI 核心數目。 |
 | --deployment-d | 現有應用程式部署的名稱。  如果未指定，則預設為生產部署。 |
 | --env | 以空格分隔的環境變數 ' key [= value] ' 格式。 |
@@ -289,8 +289,8 @@ az spring-cloud app list --resource-group -g
                          --service -s
 ```
 
-|必要參數 | |
-| --- | ---: |
+|必要參數 | 描述 |
+| --- | :--- |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
@@ -306,14 +306,14 @@ az spring-cloud app restart --name -n
                             --no-wait
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --deployment-d | 應用程式現有部署的名稱。  如果未指定，則預設為生產部署。 |
 | --no-wait | 請不要等候長時間執行的作業完成。 |
 
@@ -332,14 +332,14 @@ az spring-cloud app scale --name -n
                           --no-wait
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --cpu | 每個應用程式實例的虛擬 CPU 核心數目。 |
 | --deployment-d | 應用程式現有部署的名稱。  如果未指定，則預設為生產部署。 |
 | --instance-count | 此應用程式的實例數目。 |
@@ -372,15 +372,15 @@ az spring-cloud app set-deployment --deployment -d
                                    --no-wait
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --deployment-d | 應用程式現有部署的名稱。 |
 | --name-n | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --no-wait | 請不要等候長時間執行的作業完成。 |
 
 ### <a name="examples"></a>範例
@@ -401,8 +401,8 @@ az spring-cloud app show --name -n
                          --service -s
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
@@ -418,14 +418,14 @@ az spring-cloud app show-deploy-log --name -n
                                     --deployment -d
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --deployment-d | 應用程式現有部署的名稱。  預設為生產環境。 |
 
 ## <a name="az-spring-cloud-app-start"></a>az 春天-雲端應用程式啟動
@@ -440,14 +440,14 @@ az spring-cloud app start --name -n
                           --no-wait
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --deployment-d | 應用程式現有部署的名稱。  預設為生產環境。 |
 | --no-wait | 請不要等候長時間執行的作業完成。 |
 
@@ -463,14 +463,14 @@ az spring-cloud app stop --name -n
                          --no-wait
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --deployment-d | 應用程式現有部署的名稱。  預設為生產環境。 |
 | --no-wait | 請不要等候長時間執行的作業完成。 |
 
@@ -491,14 +491,14 @@ az spring-cloud app update --name -n
                            --runtime-version
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name-n | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --deployment-d | 應用程式現有部署的名稱。  預設為生產環境。 |
 | --啟用-持續性儲存體 | 布林值。  若為 true，則掛接具有預設路徑的50GB 磁片。 |
 | --env | 以空格分隔的環境變數 ' key [= value] ' 格式。 |
@@ -525,8 +525,8 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
@@ -542,8 +542,8 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --name | 要移除之服務系結的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
@@ -560,8 +560,8 @@ az spring-cloud app binding show --app
                                  --service -s
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --name | 服務系結的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
@@ -590,16 +590,16 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --api 類型 | 使用下列其中一個值來指定 API 類型： cassandra、gremlin、mongo、sql、table。 |
 | --應用程式 | 應用程式的名稱。 |
 | --name | 服務系結的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-|選擇性參數 | |
-| --- | ---: |
+|選擇性參數 | 描述 |
+| --- | :--- |
 | --collection-name | 集合的名稱。  使用 Gremlin 時的必要。 |
 | --資料庫-名稱 | 資料庫的名稱。  使用 Mongo、SQL 和 Gremlin 時的必要。 |
 | --索引鍵-空間 | Cassandra 索引鍵-空格。  使用 Cassandra 時的必要。 |
@@ -616,15 +616,15 @@ az spring-cloud app binding cosmos update --app
                                           --key-space
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --name | 服務系結的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-|選擇性參數 | |
-| --- | ---: |
+|選擇性參數 | 描述 |
+| --- | :--- |
 | --collection-name | 集合的名稱。  使用 Gremlin 時的必要。 |
 | --資料庫-名稱 | 資料庫的名稱。  使用 Mongo、SQL 和 Gremlin 時的必要。 |
 | --索引鍵-空間 | Cassandra 索引鍵-空格。  使用 Cassandra 時的必要。 |
@@ -641,8 +641,8 @@ az spring-cloud app binding mysql add --app
                                       --username
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --資料庫-名稱 | 資料庫的名稱。 |
 | --key | 服務的 API 金鑰。 |
@@ -666,15 +666,15 @@ az spring-cloud app binding mysql update --add
                                          --username
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --name | 服務系結的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --資料庫-名稱 | 資料庫的名稱。 |
 | --key | 服務的 API 金鑰。 |
 | --username | 資料庫存取的使用者名稱。 |
@@ -692,31 +692,31 @@ az spring-cloud app binding redis add --app
                                       --disable-ssl
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --name | 服務系結的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --資源識別碼 | 您想要系結之服務的 Azure 資源識別碼。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --disable-ssl | 停用 TLS。 |
 
 ## <a name="az-spring-cloud-app-binding-redis-update"></a>az 春季 cloud app binding redis update
 
 更新 Azure Cache for Redis 的服務系結。
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --name | 服務系結的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --disable-ssl | 停用 TLS。 |
 
 ## <a name="az-spring-cloud-app-deployment-create"></a>az 春天雲端應用程式部署建立
@@ -725,15 +725,15 @@ az spring-cloud app binding redis add --app
 
 若要部署程式碼，或將設定更新為現有的部署，請使用 `az spring-cloud app deploy --deployment <staging-deployment>` 或「az 春季-雲端應用程式更新--部署」 <staging deployment> 。
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --name | 服務系結的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --cpu | 每個實例的虛擬 CPU 核心數目。  預設值：1 |
 | --env | 以空格分隔的環境變數 ' key [= value] ' 格式。 |
 | --instance-count | 實例的數目。 預設值：1。 |
@@ -771,8 +771,8 @@ az spring-cloud app deployment delete --app
                                       --service -s
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --name | 部署的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
@@ -788,8 +788,8 @@ az spring-cloud app deployment list --app
                                     --service -s
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --service-s | Azure 春季雲端的名稱。  您可以使用來設定預設服務 `az configure --defaults spring-cloud=<name>` 。 |
@@ -805,8 +805,8 @@ az spring-cloud app deployment show --app
                                     --service -s
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --name | 部署的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
@@ -821,8 +821,8 @@ az spring-cloud config-server clear --name
                                         --resource-group -g
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name | Azure 春季雲端的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 
@@ -837,14 +837,14 @@ az spring-cloud config-server set --config-file
                                   --no-wait
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --config-file | 設定伺服器之設定的 YAML 資訊清單檔案路徑。 |
 | --name | Azure 春季雲端的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --no-wait | 請不要讓長時間執行的作業完成。
 
 ## <a name="az-spring-cloud-config-server-show"></a>az 春季-cloud config-server show
@@ -856,8 +856,8 @@ az spring-cloud config-server show --name -n
                                    --resource-group -g
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name | Azure 春季雲端的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 
@@ -880,14 +880,14 @@ az spring-cloud config-server git set --name -n
                                       --username
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name | Azure 春季雲端的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --uri | 已新增之設定的 URI。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --延遲 | 暫時將物件儲存在本機快取中，而不是傳送至 Azure。  使用 `az cache` 來觀看/清除。 |
 | --主機金鑰 | 新增之設定的主機金鑰。 |
 | --主機金鑰-演算法 | 新增之設定的主機金鑰演算法。 |
@@ -917,15 +917,15 @@ az spring-cloud config-server git repo add --name -n
                                            --username
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name | Azure 春季雲端的名稱。 |
 | --存放庫-名稱 | 存放庫的 URI。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --uri | 已新增之設定的 URI。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --延遲 | 暫時將物件儲存在本機快取中，而不是傳送至 Azure。  使用 `az cache` 來觀看/清除。 |
 | --主機金鑰 | 新增之設定的主機金鑰。 |
 | --主機金鑰-演算法 | 新增之設定的主機金鑰演算法。 |
@@ -947,13 +947,13 @@ az spring-cloud config-server git repo list --name -n
                                        --defer
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name | Azure 春季雲端的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --延遲 | 暫時將物件儲存在本機快取中，而不是傳送至 Azure。  使用 `az cache` 來觀看/清除。 |
 
 ## <a name="az-spring-cloud-config-server-git-repo-remove"></a>az 春季-cloud config-伺服器 git 存放庫移除
@@ -967,14 +967,14 @@ az spring-cloud config-server git repo remove --name -n
                                          --defer
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name | Azure 春季雲端的名稱。 |
 | --存放庫-名稱 | 存放庫的 URI。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --延遲 | 暫時將物件儲存在本機快取中，而不是傳送至 Azure。  使用 `az cache` 來觀看/清除。 |
 
 ## <a name="az-spring-cloud-test-endpoint-disable"></a>az 春天-雲端測試-端點停用
@@ -986,8 +986,8 @@ az spring-cloud test-endpoint disable --name -n
                                       --resource-group -g
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name | Azure 春季雲端的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 
@@ -1000,8 +1000,8 @@ az spring-cloud test-endpoint enable --name -n
                                      --resource-group -g
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name | Azure 春季雲端的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 
@@ -1016,13 +1016,13 @@ az spring-cloud test-endpoint list --name -n
                                    --deployment -d
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name | Azure 春季雲端的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 
-| 選擇性參數 | |
-| --- | ---: |
+| 選擇性參數 | 描述 |
+| --- | :--- |
 | --應用程式 | 應用程式的名稱。 |
 | --deployment-d | 應用程式現有部署的名稱。  如果未指定，則預設為生產環境。 |
 
@@ -1036,8 +1036,8 @@ az spring-cloud test-endpoint renew-key --name -n
                                         --type
 ```
 
-| 必要參數 | |
-| --- | ---: |
+| 必要參數 | 描述 |
+| --- | :--- |
 | --name | Azure 春季雲端的名稱。 |
 | --resource-group -g | 資源群組的名稱。  您可以使用 `az configure --defaults group=<name>` 來設定預設群組。 |
 | --類型 | 測試端點金鑰的類型。  允許的值：主要、次要。 |

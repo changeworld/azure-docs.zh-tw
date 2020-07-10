@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fe28ba0871009785b1bb8b263b42f453c2918be
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ddd41756f0e373e3bf627a88f441512fe0db91b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684861"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187229"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>針對變更追蹤和清查問題進行疑難排解
 
@@ -36,7 +37,7 @@ ms.locfileid: "83684861"
 * 無法下載變更追蹤和清查管理組件。
 * 正在啟用的 VM 可能來自於未使用系統準備 (sysprep) 做準備，且已安裝適用於 Windows 的 Log Analytics 代理程式的複製電腦。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 在 Log Analytics 代理程式電腦上，移至 **C:\Program Files\Microsoft Monitoring Agent\Agent\Tools** 並執行下列命令：
 
@@ -99,11 +100,11 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-如果您在查詢結果中看不到您的電腦，則其最近未簽入。 可能是本機設定問題，您應該重新安裝代理程式。 如需安裝和設定的相關資訊，請參閱[使用 Log Analytics 代理程式收集記錄資料](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。
+如果您在查詢結果中看不到您的電腦，則其最近未簽入。 可能是本機設定問題，您應該重新安裝代理程式。 如需安裝和設定的相關資訊，請參閱[使用 Log Analytics 代理程式收集記錄資料](../../azure-monitor/platform/log-analytics-agent.md)。
 
-如果您的電腦顯示在查詢結果中，請檢查範圍設定。 請參閱 [Azure 監視器中的目標監視解決方案](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)。
+如果您的電腦顯示在查詢結果中，請檢查範圍設定。 請參閱 [Azure 監視器中的目標監視解決方案](../../azure-monitor/insights/solution-targeting.md)。
 
-若要深入了解此問題的疑難排解，請參閱[問題：您沒有看到任何 Linux 資料](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data)。
+若要深入了解此問題的疑難排解，請參閱[問題：您沒有看到任何 Linux 資料](../../azure-monitor/platform/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data)。
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>未正確設定適用於 Linux 的 Log Analytics 代理程式
 
@@ -115,7 +116,7 @@ Azure 資訊安全中心的 FIM 功能可能未正確地驗證 Linux 檔案的�
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您在這裡沒有看到您的問題，或無法解決您的問題，請嘗試下列其中一個管道以取得其他支援：
+如果在這裡沒有看到問題或無法解決問題，請嘗試下列其中一個管道以取得其他支援：
 
 * 透過 [Azure 論壇](https://azure.microsoft.com/support/forums/)獲得由 Azure 專家所提供的解答。
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport)，這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 Azure 支援會將 Azure 社群連線到解答、支援及專家。

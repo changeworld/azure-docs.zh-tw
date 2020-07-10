@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 37df5ae8e88bf7832fbbeae37555d60943fca446
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828877"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187297"
 ---
 # <a name="use-source-control-integration"></a>使用原始檔控制整合
 
@@ -72,8 +73,7 @@ Azure 自動化支援三種類型的原始檔控制：
 
 ### <a name="configure-source-control-in-powershell"></a>在 PowerShell 中設定原始檔控制
 
-您也可以使用 PowerShell 來設定 Azure 自動化中的原始檔控制。 若要使用 PowerShell Cmdlet 進行此作業，您需要個人存取權杖 (PAT)。 使用 [New-AzAutomationSourceControl](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0
-) \(英文\) Cmdlet 來建立原始檔控制連線。 此 Cmdlet 需要安全的 PAT 字串。 若要了解如何建立安全字串，請參閱 [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)。
+您也可以使用 PowerShell 來設定 Azure 自動化中的原始檔控制。 若要使用 PowerShell Cmdlet 進行此作業，您需要個人存取權杖 (PAT)。 使用 [New-AzAutomationSourceControl](/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0) \(英文\) Cmdlet 來建立原始檔控制連線。 此 Cmdlet 需要安全的 PAT 字串。 若要了解如何建立安全字串，請參閱 [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)。
 
 下列小節說明如何建立適用於 GitHub、Azure Repos (Git) 和 Azure Repos (TFVC) 之原始檔控制連線的 PowerShell。 
 
@@ -122,7 +122,7 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Azure Repos 的最低 PAT 權限
 
-下列清單定義 Azure Repos 所需的最低 PAT 權限。 如需在 Azure Repos 中建立 PAT 的詳細資訊，請參閱[使用個人存取權杖驗證存取](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page) \(英文\)。
+下列清單定義 Azure Repos 所需的最低 PAT 權限。 如需在 Azure Repos 中建立 PAT 的詳細資訊，請參閱[使用個人存取權杖驗證存取](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page) \(英文\)。
 
 | 影響範圍  |  存取類型  |
 |---------| ----------|
@@ -195,14 +195,14 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 
 ## <a name="handle-encoding-issues"></a>處理編碼問題
 
-如果有多位使用者正在使用不同的編輯器編輯原始檔控制存放庫中的 Runbook，則可能會發生編碼問題。 若要深入了解這種情況，請參閱[編碼問題的常見原因](https://docs.microsoft.com/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues)。
+如果有多位使用者正在使用不同的編輯器編輯原始檔控制存放庫中的 Runbook，則可能會發生編碼問題。 若要深入了解這種情況，請參閱[編碼問題的常見原因](/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues)。
 
 ## <a name="update-the-pat"></a>更新 PAT
 
 目前，您無法使用 Azure 入口網站來更新原始檔控制中的 PAT。 當您的 PAT 過期或撤銷時，您可以使用這些方式的其中一種，以新的存取權杖來更新原始檔控制：
 
-* 使用 [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update) \(部分機器翻譯\)。
-* 使用 [Update-AzAutomationSourceControl](https://docs.microsoft.com//powershell/module/az.automation/update-azautomationsourcecontrol) \(英文\) Cmdlet。
+* 使用 [REST API](/rest/api/automation/sourcecontrol/update) \(部分機器翻譯\)。
+* 使用 [Update-AzAutomationSourceControl](//powershell/module/az.automation/update-azautomationsourcecontrol) \(英文\) Cmdlet。
 
 ## <a name="next-steps"></a>後續步驟
 

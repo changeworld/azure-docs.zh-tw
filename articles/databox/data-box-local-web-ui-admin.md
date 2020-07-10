@@ -5,14 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
-ms.date: 06/03/2019
+ms.topic: article
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608242"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202529"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本機 web UI 來管理您的資料箱和 Data Box Heavy
 
@@ -27,6 +28,8 @@ ms.locfileid: "84608242"
 - 下載 BOM 或資訊清單檔
 - 檢視裝置的可用容量
 - 跳過總和檢查碼驗證
+
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>產生支援套件
 
@@ -79,9 +82,9 @@ ms.locfileid: "84608242"
 
 ## <a name="download-bom-or-manifest-files"></a>下載 BOM 或資訊清單檔
 
-[物料單（BOM）] 或 [資訊清單檔案] 包含複製到資料箱或 Data Box Heavy 的檔案清單。 當您準備要寄送的裝置時，會產生這些檔案。
+材料的物料單 (BOM) 或資訊清單檔案包含複製到資料箱或 Data Box Heavy 的檔案清單。 當您準備要寄送的裝置時，系統會針對匯入順序產生這些檔案。
 
-開始之前，請確定您的裝置已完成**寄送準備**步驟。 請遵循下列步驟來下載 BOM 或資訊清單檔：
+開始之前，請確定您的裝置已完成**寄送準備**步驟。 請遵循下列步驟來下載您匯入順序的 BOM 或資訊清單檔案：
 
 1. 移至您裝置的本機 web UI。 您會看到裝置已完成寄送準備。 當裝置準備完成時，您的裝置狀態會顯示為 [準備好寄送]****。
 
@@ -101,7 +104,7 @@ ms.locfileid: "84608242"
     |---------|---------|---------|
     |databoxe2etest_BlockBlob.txt     |區塊 Blob         |SMB/NFS         |
     |databoxe2etest_PageBlob.txt     |分頁 Blob         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM.txt    |Azure 檔案         |SMB/NFS         |
+    |databoxe2etest_AzFile-BOM.txt    |Azure 檔案儲存體         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |分頁 Blob         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |區塊 Blob         |REST         |
     |mydbmdrg1_MDisk-BOM.txt    |受控磁碟         |SMB/NFS         |
@@ -110,7 +113,7 @@ ms.locfileid: "84608242"
 在資料箱返回 Azure 資料中心之後，您可使用這份清單來確認已上傳到 Azure 儲存體帳戶的檔案。 範例資訊清單檔如下所示。
 
 > [!NOTE]
-> 在 Data Box Heavy 上，會有兩組檔案（BOM 檔案）對應到裝置上的兩個節點。
+> 在 Data Box Heavy 上， () BOM 檔案的兩組檔案清單會對應到裝置上的兩個節點。
 
 ```xml
 <file size="52689" crc64="0x95a62e3f2095181e">\databox\media\data-box-deploy-copy-data\prepare-to-ship2.png</file>
@@ -167,6 +170,8 @@ ms.locfileid: "84608242"
 
 在您準備寄送時，系統預設會針對您的資料產生總和檢查碼。 在某些罕見的情況下，根據資料類型的不同 (小型檔案)，效能可能很緩慢。 在這種情況下，您可以跳過總和檢查碼。
 
+準備出貨期間的總和檢查碼計算只會針對匯入訂單，而不是針對匯出訂單進行。 
+
 我們強烈建議您不要停用總和檢查碼，除非效能已嚴重受到影響。
 
 1. 在裝置本機 web UI 的右上角，移至 [**設定**]。
@@ -176,7 +181,8 @@ ms.locfileid: "84608242"
 2. [停用]**** 總和檢查碼驗證
 3. 按一下 [套用]。
 
-## <a name="next-steps"></a>後續步驟
+> [!NOTE]
+> 只有在 Azure 資料箱解除鎖定時，才可以使用 [略過總和檢查碼計算] 選項。 當裝置鎖定時，您不會看到此選項。
 
 - 瞭解如何透過[Azure 入口網站管理資料箱和 Data Box Heavy](data-box-portal-admin.md)。
 

@@ -8,11 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78196921"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202590"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企業安全性套件的 HDInsight 中設定 Apache Hive 原則
 
@@ -55,7 +56,7 @@ ms.locfileid: "78196921"
     |---|---|
     |原則名稱|hivesampletable-全部|
     |Hive 資料庫|default|
-    |資料表|hivesampletable|
+    |table|hivesampletable|
     |Hive 資料行|*|
     |選取使用者|hiveuser1|
     |權限|select|
@@ -73,7 +74,7 @@ ms.locfileid: "78196921"
     |---|---|
     |原則名稱|hivesampletable-devicemake|
     |Hive 資料庫|default|
-    |資料表|hivesampletable|
+    |table|hivesampletable|
     |Hive 資料行|clientid、devicemake|
     |選取使用者|hiveuser2|
     |權限|select|
@@ -82,11 +83,11 @@ ms.locfileid: "78196921"
 
 在[建立 Hive ODBC 資料來源](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)中可找到相關指示。  
 
- | 屬性  |說明 |
+ | 屬性  |描述 |
  | --- | --- |
  | 資料來源名稱 | 為資料來源指定名稱 |
  | 主機 | 輸入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
- | Port | 使用 **443** (此連接埠已從 563 變更為 443)。 |
+ | 連接埠 | 使用 **443** (此連接埠已從 563 變更為 443)。 |
  | 資料庫 | 使用**預設值**。 |
  | Hive 伺服器類型 | 選取 [Hive Server 2]**** |
  | 機制 | 選取 [Azure HDInsight 服務]**** |
@@ -120,7 +121,9 @@ ms.locfileid: "78196921"
 
 1. 選取 [**定義**] 索引標籤。命令文字為：
 
-       SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"`
+    ```
 
    您定義的 Ranger 原則，hiveuser1 會有所有資料行的選取權限。  因此，此查詢適用于 hiveuser1 認證，但此查詢不適用於 hiveuser2 認證。
 
@@ -135,15 +138,21 @@ ms.locfileid: "78196921"
 1. 在 Excel 中新增工作表。
 2. 依照上一個程序匯入資料。  您會進行的唯一變更是使用 hiveuser2 的認證，而非使用 hiveuser1 的認證。 這會失敗，因為 hiveuser2 只有查看兩個資料行的權限。 您會收到下列錯誤︰
 
-        [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
-        
+    ```output
+    [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
+    ```
+
 3. 依照相同程序匯入資料。 這次使用 hiveuser2 的認證，並且修改 select 陳述式，從︰
 
-        SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```
 
     變更為：
 
-        SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```
 
     完成時，您應該會看到匯入的兩個數據行。
 

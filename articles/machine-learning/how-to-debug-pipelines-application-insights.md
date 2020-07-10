@@ -3,19 +3,19 @@ title: 監視 &收集管線記錄檔
 titleSuffix: Azure Machine Learning
 description: 將記錄新增至定型和批次計分管線，並在 Application Insights 中查看記錄的結果。
 services: machine-learning
-author: sanpil
-ms.author: sanpil
+author: NilsPohlmann
+ms.author: nilsp
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 01/16/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: a87ceb5a216b05f3fae6d570bbfed1c4a622c911
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6a4a32db18b881b702aacf7bb669ffa14f9d103e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055710"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201238"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>在警示和偵錯工具的 Application Insights 中收集機器學習管線記錄檔
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "86055710"
   ```python
   pip install opencensus-ext-azure
   ```
-* 建立[Application Insights 實例](../azure-monitor/app/opencensus-python.md)（本檔也包含取得資源連接字串的相關資訊）
+* 建立[Application Insights 實例](../azure-monitor/app/opencensus-python.md) (此檔也包含取得資源連接字串的相關資訊) 
 
 ## <a name="getting-started"></a>開始使用
 
@@ -96,7 +96,7 @@ logger.warning("I will be sent to Application Insights")
 
 若要加入這些欄位，可以加入自訂維度以提供內容給記錄訊息。 其中一個範例是當有人想要在相同的管線執行中跨多個步驟來查看記錄時。
 
-自訂維度會組成索引鍵/值的字典（儲存為字串、字串）組。 然後，此字典會傳送至 Application Insights，並顯示為查詢結果中的資料行。 其個別維度可用來做為[查詢參數](#additional-helpful-queries)。
+自訂維度會組成索引鍵/值的字典， (以字串、字串) 組的形式儲存。 然後，此字典會傳送至 Application Insights，並顯示為查詢結果中的資料行。 其個別維度可用來做為[查詢參數](#additional-helpful-queries)。
 
 ### <a name="helpful-context-to-include"></a>包含有用的內容
 
@@ -114,7 +114,7 @@ logger.warning("I will be sent to Application Insights")
 
 | 欄位                   | 推理/範例                                                                                                                                                                                                           |
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| build_url/build_version | 如果使用 CI/CD 來部署，此欄位可以將記錄與提供步驟和管線邏輯的程式碼版本相互關聯。 此連結可進一步協助診斷問題，或找出具有特定特性的模型（記錄/度量值） |
+| build_url/build_version | 如果使用 CI/CD 來部署，此欄位可以將記錄與提供步驟和管線邏輯的程式碼版本相互關聯。 此連結可進一步協助診斷問題，或找出具有特定特性 (記錄/度量值的模型)  |
 | run_type                       | 可以區別不同的模型類型，或定型與評分的執行 |
 
 ### <a name="creating-a-custom-dimensions-dictionary"></a>建立自訂維度字典

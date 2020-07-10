@@ -10,20 +10,21 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 5/14/2019
-ms.openlocfilehash: eb167f121027272330399f8345c90602d93ecbaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: fd9433c2482c4ddd907f7e30c0028dc2a15faed2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84113868"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187671"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>啟用適用於 Azure-SSIS Integration Runtime 的 Azure Active Directory 驗證
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本文說明如何使用適用于您 Azure Data Factory （ADF）的受控識別來啟用 Azure Active Directory （Azure AD）驗證，並使用它來取代傳統驗證方法（例如 SQL 驗證）來執行下列動作：
+本文說明如何使用 Azure Data Factory (ADF) 的受控識別來啟用 Azure Active Directory (Azure AD) 驗證，並使用它來取代傳統的驗證方法 (例如 SQL 驗證) 來執行下列動作：
 
-- 建立 Azure SSIS Integration Runtime （IR），以代表您在 SQL Database 或 SQL 受控執行個體中提供 SSIS 目錄資料庫（SSISDB）。
+- 建立 Azure SSIS Integration Runtime (IR) ，以代表您在) 或 SQL SQL Database 中提供 SSIS 目錄資料庫 (SSISDB 受控執行個體。
 
 - 在 Azure SSIS IR 上執行 SSIS 套件時，連接到各種 Azure 資源。
 
@@ -38,7 +39,7 @@ ms.locfileid: "84113868"
 
 ## <a name="enable-azure-ad-on-azure-sql-database"></a>在 Azure SQL Database 上啟用 Azure AD
 
-SQL Database 支援使用 Azure AD 使用者來建立資料庫。 首先，您需要以成員的身分，使用您 ADF 的受控識別，建立 Azure AD 群組。 接下來，您必須將 Azure AD 使用者設定為 SQL Database 的 Active Directory 管理員，然後使用該使用者在 SQL Server Management Studio （SSMS）上進行連接。 最後，您需要建立一個代表 Azure AD 群組的內含使用者，以便 Azure-SSIS IR 可以使用您 ADF 的受控識別，代表您建立 SSISDB。
+SQL Database 支援使用 Azure AD 使用者來建立資料庫。 首先，您需要以成員的身分，使用您 ADF 的受控識別，建立 Azure AD 群組。 接下來，您必須將 Azure AD 使用者設定為 SQL Database 的 Active Directory 系統管理員，然後在 SQL Server Management Studio (SSMS) 使用該使用者進行連接。 最後，您需要建立一個代表 Azure AD 群組的內含使用者，以便 Azure-SSIS IR 可以使用您 ADF 的受控識別，代表您建立 SSISDB。
 
 ### <a name="create-an-azure-ad-group-with-the-managed-identity-for-your-adf-as-a-member"></a>以成員的身分使用您 ADF 的受控識別，建立 Azure AD 群組
 
@@ -65,7 +66,7 @@ SQL Database 支援使用 Azure AD 使用者來建立資料庫。 首先，您�
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  將 ADF 的受控識別新增至群組。 您可以遵循 Data Factory 的[受控識別](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)一文來取得主體受控識別物件識別碼（例如 765ad4ab-xxxx-xxxx-xxxx-51ed985819dc-xxxx-xxxx 765ad4ab-xxxx-xxxx-xxxx-51ed985819dc，但不要使用受控識別應用程式識別碼來達到此目的）。
+3.  將 ADF 的受控識別新增至群組。 您可以遵循 Data Factory 的[受控識別](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)來取得主體受控識別物件識別碼 (例如 765ad4ab-xxxx-xxxx-xxxx-51ed985819dc-xxxx-xxxx-765ad4ab-xxxx-xxxx-xxxx-51ed985819dc，但不要針對此目的) 使用受控識別應用程式識別碼。
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -95,13 +96,13 @@ SQL Database 支援使用 Azure AD 使用者來建立資料庫。 首先，您�
 
 ### <a name="create-a-contained-user-in-sql-database-representing-the-azure-ad-group"></a>在代表 Azure AD 群組的 SQL Database 中建立包含的使用者
 
-在下一個步驟中，您需要 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   （SSMS）。
+在下一個步驟中，您需要 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   (SSMS) 。
 
 1. 啟動 SSMS。
 
 2. 在 [**連接到伺服器**] 對話方塊的 [**伺服器名稱**] 欄位中，輸入您的伺服器名稱。
 
-3. 在 [**驗證**] 欄位中，選取 [**具有 MFA 支援的 Active Directory-通用**] （您也可以使用其他兩個 Active Directory 驗證類型，請參閱[設定及管理使用 SQL 的 Azure AD 驗證](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)）。
+3. 在 [**驗證**] 欄位中，選取 [ **Active Directory-通用] 和 [MFA 支援**] (您也可以使用其他兩個 Active Directory 驗證類型，請參閱使用[SQL) 設定和管理 Azure AD 驗證](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)。
 
 4. 在 [**使用者名稱**] 欄位中，輸入您設定為伺服器管理員之 Azure AD 帳戶的名稱，例如 testuser@xxxonline.com 。
 
@@ -155,11 +156,11 @@ SQL 受控執行個體支援直接使用 ADF 的受控識別來建立資料庫�
 
 ### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-sql-managed-instance"></a>以 SQL 受控執行個體中的使用者身分新增 ADF 的受控識別
 
-在下一個步驟中，您需要 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   （SSMS）。
+在下一個步驟中，您需要 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   (SSMS) 。
 
 1.  啟動 SSMS。
 
-2.  使用屬於**系統管理員（sysadmin**）的 SQL Server 帳戶，連接到 SQL 受控執行個體。 這是暫時性的限制，一旦 Azure SQL 受控執行個體 Azure AD 的伺服器主體（登入）變成 GA 之後，就會移除此限制。 如果您嘗試使用 Azure AD 系統管理員帳戶來建立登入，則會看到下列錯誤：訊息15247、層級16、狀態1、第1行使用者沒有執行此動作的許可權。
+2.  使用屬於**系統管理員（sysadmin**）的 SQL Server 帳戶，連接到 SQL 受控執行個體。 這是一項暫時的限制，會在 Azure SQL 受控執行個體的 (登入) Azure AD 的伺服器主體變成 GA 之後移除一次。 如果您嘗試使用 Azure AD 系統管理員帳戶來建立登入，則會看到下列錯誤：訊息15247、層級16、狀態1、第1行使用者沒有執行此動作的許可權。
 
 3.  在 [物件總管]**** 中，展開 [資料庫]****[系統資料庫] -> **** 資料夾。
 

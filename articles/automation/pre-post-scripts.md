@@ -5,11 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f05e705f351d75fdf772d3197b94fcece40d43fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 246fcdb27737e99bb677e23216f0305037f54526
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100385"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187450"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>管理前指令碼和後指令碼
 
@@ -146,7 +147,7 @@ foreach($summary in $finalStatus)
 * 執行身分帳戶
 * 您想要執行的 Runbook
 
-若要與 Azure 機器互動，您應使用 [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) Cmdlet 與您的 Azure VM 互動。 如需執行此作業的範例，請參閱 Runbook 範例：[更新管理 – 使用 Run 命令執行指令碼](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)。
+若要與 Azure 機器互動，您應使用 [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) Cmdlet 與您的 Azure VM 互動。 如需執行此作業的範例，請參閱 Runbook 範例：[更新管理 – 使用 Run 命令執行指令碼](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)。
 
 ### <a name="interact-with-non-azure-machines"></a>與非 Azure 機器互動
 
@@ -157,7 +158,7 @@ foreach($summary in $finalStatus)
 * 您想要在本機上執行的 Runbook
 * 父 Runbook
 
-若要與非 Azure 機器互動，父 Runbook 需在 Azure 環境中執行。 此 Runbook 會使用 [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) Cmdlet 來呼叫子 Runbook。 您必須指定 `RunOn` 參數，並提供混合式 Runbook 背景工作角色的名稱，好讓指令碼在其中執行。 請參閱 Runbook 範例：[更新管理 – 在本機執行指令碼](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)。
+若要與非 Azure 機器互動，父 Runbook 需在 Azure 環境中執行。 此 Runbook 會使用 [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) Cmdlet 來呼叫子 Runbook。 您必須指定 `RunOn` 參數，並提供混合式 Runbook 背景工作角色的名稱，好讓指令碼在其中執行。 請參閱 Runbook 範例：[更新管理 – 在本機執行指令碼](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)。
 
 ## <a name="abort-patch-deployment"></a>中止修補程式部署
 
@@ -242,7 +243,7 @@ $variable = Get-AutomationVariable -Name $runId
 ```
 
 > [!NOTE]
-> 針對非圖形化 PowerShell Runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) 的別名。 您可使用這些 Cmdlet，也可以在您的自動化帳戶中[將您的模組更新](automation-update-azure-modules.md)為最新版本。 即使您才剛建立新的自動化帳戶，可能還是需要更新您的模組。
+> 針對非圖形化 PowerShell Runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) 的別名。 您可使用這些 Cmdlet，也可以在您的自動化帳戶中[將您的模組更新](automation-update-azure-modules.md)為最新版本。 即使您才剛建立新的自動化帳戶，可能還是需要更新您的模組。
 
 ## <a name="next-steps"></a>後續步驟
 

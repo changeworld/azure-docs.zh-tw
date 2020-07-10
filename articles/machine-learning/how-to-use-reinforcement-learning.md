@@ -1,7 +1,7 @@
 ---
-title: 定型及部署增強式學習模型。
+title: " (預覽) 訓練和部署增強式學習模型。"
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure Machine Learning 增強式學習 (RL) 將 RL 代理程式定型，以便進行 Pong 遊戲。
+description: 瞭解如何使用 Azure Machine Learning 增強式 Learning (preview) 訓練 RL 代理程式來玩。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,11 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.custom: tracking-python
-ms.openlocfilehash: f8559733de9b7acfb23e2846e4d92ce6db5e2df0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b918369f68c3b0047213c24f1d4666fd0593cf30
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84556947"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203285"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>具有 Azure Machine Learning 的增強式學習 (預覽)
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134043"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201211"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常見問題：Azure 至 Azure 災害復原
 
@@ -120,7 +120,7 @@ Site Recovery 不支援從複寫的 VM 對磁碟進行「熱移除」。 如果�
 複寫原則會定義復原點保留歷程記錄的設定。 此原則也會應用程式一致快照集的頻率。 Azure Site Recovery 預設會建立具有下列預設設定的新複寫原則：
 
 - 復原點的保留歷程記錄為 24 小時。
-- 應用程式一致快照集的頻率為 60 分鐘。
+- 應用程式一致快照的頻率為4小時。
 
 [深入了解複寫設定](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings)。
 

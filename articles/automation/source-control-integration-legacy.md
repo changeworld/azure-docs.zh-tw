@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e550489f34d84946d0a9e3df641a1484b85a60f0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828928"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187331"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>在 Azure 自動化中使用原始檔控制整合 - 舊版
 
@@ -55,7 +56,7 @@ ms.locfileid: "83828928"
 5. 按一下 [確定] 後，原始檔控制整合現已針對您的自動化帳戶設定，而且應以您的 GitHub 資訊進行更新。 您現在可以按一下此部分來檢視所有原始檔控制同步處理工作歷程記錄。  
 
     ![目前已設定的原始檔控制設定所擁有的值](media/source-control-integration-legacy/automation-RepoValues.png)
-6. 在設定原始檔控制後，系統會在您的自動化帳戶中建立兩個[變數資產](automation-variables.md)。 此外，您的 GitHub 帳戶中也會新增已授權的應用程式。
+6. 在設定原始檔控制後，系統會在您的自動化帳戶中建立兩個[變數資產](./shared-resources/variables.md)。 此外，您的 GitHub 帳戶中也會新增已授權的應用程式。
 
    * **Microsoft.Azure.Automation.SourceControl.Connection** 變數包含連接字串的值，如下所示。  
 
@@ -63,7 +64,7 @@ ms.locfileid: "83828928"
      |:--- |:--- |
      | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
      | `Type`  |String |
-     | `Value` |{"Branch":\<您的分支名稱>,"RunbookFolderPath":\<Runbook 資料夾路徑>,"ProviderType":\<GitHub 的值為 1>,"Repository":\<您的儲存機制名稱>,"Username":\<您的 GitHub 使用者名稱>} |
+     | `Value` |{"Branch"： \<*Your branch name*> ，"RunbookFolderPath"： \<*Runbook folder path*> ，"ProviderType"： \<*has a value 1 for GitHub*> ，"Repository"： \<*Name of your repository*> ，"Username"： \<*Your GitHub user name*> } |
 
    * **Microsoft.Azure.Automation.SourceControl.OauthToken**變數包含 OAuthToken 的安全加密值。  
 
@@ -83,7 +84,7 @@ ms.locfileid: "83828928"
 
 Runbook 簽入可讓您將對 Azure 自動化中的 Runbook 所做的變更推送至原始檔控制存放庫。 以下是簽入 Runbook 的步驟：
 
-1. 從您的自動化帳戶，[建立新的文字 Runbook](automation-first-runbook-textual.md)，或[編輯現有的文字 Runbook](automation-edit-textual-runbook.md)。 此 Runbook 可以是 PowerShell 工作流程或 PowerShell 指令碼 Runbook。  
+1. 從您的自動化帳戶，[建立新的文字 Runbook](./learn/automation-tutorial-runbook-textual.md)，或[編輯現有的文字 Runbook](automation-edit-textual-runbook.md)。 此 Runbook 可以是 PowerShell 工作流程或 PowerShell 指令碼 Runbook。  
 2. 編輯 Runbook 之後，加以儲存並按一下編輯頁面上的 [簽入]。  
 
     ![顯示 [簽入至 GitHub] 按鈕的視窗](media/source-control-integration-legacy/automation-CheckinButton.png)

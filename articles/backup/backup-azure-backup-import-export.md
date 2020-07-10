@@ -4,18 +4,18 @@ description: 瞭解如何使用 Azure 備份使用 Azure 匯入/匯出服務從�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 5611b5a6fc9ba8bbff11e35449caf0dd9d33fa21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5761f56106989084f12b80620ffc417b781965d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373297"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187824"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 備份中的離線備份工作流程
 
 Azure 備份有數個可提升效率的內建功能，能在資料初始完整備份至 Azure 的期間節省網路和儲存體成本。 初始完整備份通常會傳輸大量資料且需要更多網路頻寬，相較之下，後續備份只傳輸差異/增量部分。 透過離線植入程序，Azure 備份可以使用磁碟將離線備份資料上傳至 Azure。
 
-Azure 備份離線植入程式與[Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)緊密整合。 您可以使用此服務，使用磁片將初始備份資料傳輸至 Azure。 如果您需要透過高延遲和低頻寬網路傳輸的初始備份資料量 tb，您可以使用離線植入工作流程將初始備份複本傳送至 Azure 資料中心的一或多個硬碟。 下圖提供工作流程中的步驟概觀。
+Azure 備份離線植入程式與[Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)緊密整合。 您可以使用此服務，使用磁片將初始備份資料傳輸至 Azure。 如果您有 tb (Tb 的初始備份資料) 需要透過高延遲和低頻寬網路傳輸，您可以使用離線植入工作流程將初始備份複本傳送至 Azure 資料中心的一或多個硬碟。 下圖提供工作流程中的步驟概觀。
 
   ![離線匯入工作流程處理的總覽](./media/backup-azure-backup-import-export/offlinebackupworkflowoverview.png)
 
@@ -33,8 +33,8 @@ Azure 備份離線植入程式與[Azure 匯入/匯出服務](../storage/common/s
 
 > [!div class="checklist"]
 >
-> * 使用 Microsoft Azure 復原服務（MARS）代理程式來備份檔案和資料夾，也稱為 Azure 備份代理程式。
-> * 使用 System Center Data Protection Manager （DPM）來備份所有工作負載和檔案。
+> * 使用 Microsoft Azure 復原服務 (MARS) 代理程式（也稱為 Azure 備份代理程式）來備份檔案和資料夾。
+> * 使用 System Center Data Protection Manager (DPM) 來備份所有工作負載和檔案。
 > * 使用 Microsoft Azure 備份伺服器來備份所有工作負載和檔案。
 
    > [!NOTE]
@@ -123,20 +123,20 @@ Azure 備份離線植入程式與[Azure 匯入/匯出服務](../storage/common/s
    * 複製電腦可以使用「起始離線備份」一節的工作流程中所提供的相同網路路徑，存取離線植入工作流程的預備位置。
    * 已在複製電腦上啟用 BitLocker。
    * 已安裝 Azure PowerShell 3.7.0。
-   * 已安裝最新相容的瀏覽器（Microsoft Edge 或 Internet Explorer 11），並已啟用 JavaScript。
+   * 已安裝 Microsoft Edge 或 Internet Explorer 11)  (最新相容的瀏覽器，並已啟用 JavaScript。
    * 複製電腦可以存取 Azure 入口網站。 如有必要，複製電腦可以與來源電腦相同。
 
      > [!IMPORTANT]
      > 如果來源電腦是虛擬機器，則複製電腦必須是與來源電腦不同的實體伺服器或用戶端機器。
 
-1. 以*AzureOfflineBackupDiskPrep*公用程式目錄作為目前的目錄，在複製電腦上開啟提升許可權的命令提示字元。 執行下列命令：
+1. 以*AzureOfflineBackupDiskPrep*公用程式目錄作為目前的目錄，在複製電腦上開啟提升許可權的命令提示字元。 執行以下命令：
 
     ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
 
     | 參數 | 說明 |
     | --- | --- |
     | s:&lt;*預備位置路徑*&gt; |此強制輸入是用來提供您在「起始離線備份」一節的工作流程中所輸入的預備位置路徑。 |
-    | p:&lt;*PublishSettingsFile 的路徑*&gt; |此選擇性輸入是用來提供您在「起始離線備份」一節中的工作流程中所輸入的 Azure 發佈設定檔案的路徑。 |
+    | p:&lt;*PublishSettingsFile 的路徑*&gt; |此選擇性輸入是用來提供 Azure 發佈設定檔案的路徑。  |
 
     當您執行命令時，公用程式會要求選取對應于需要準備之磁片磁碟機的 Azure 匯入作業。 如果只有單一匯入作業與所提供的暫存位置相關聯，您會看到類似這一頁的頁面。
 

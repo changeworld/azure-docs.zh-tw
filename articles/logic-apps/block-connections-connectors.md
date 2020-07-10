@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 06/19/2020
-ms.openlocfilehash: 938f10b621d6081af84cf15d7e04c5f5ab517417
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6563f3e263867387332940db58abff62e085cded
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84977499"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187688"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>封鎖 Azure Logic Apps 中連接器所建立的連接
 
@@ -39,7 +39,7 @@ ms.locfileid: "84977499"
    
    `https://docs.microsoft.com/connectors/instagram/`
 
-1. 從頁面的 URL 複製並儲存結尾處的連接器參考識別碼，而不含正斜線（ `/` ），例如 `instagram` 。
+1. 從頁面的 URL 複製並儲存結尾處的連接器參考識別碼，但不含正斜線 (`/`) ，例如 `instagram` 。
 
    之後，當您建立原則定義時，您會在定義的條件陳述式中使用此識別碼，例如：
 
@@ -123,13 +123,13 @@ ms.locfileid: "84977499"
 
    ![原則定義屬性](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
-   | 屬性 | 必要 | 值 | 說明 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
-   | **定義位置** | 是 | <*Azure-subscription-name*> | 要用於原則定義的 Azure 訂用帳戶 <p><p>1. 若要尋找您的訂用帳戶，請選取省略號（**...**）按鈕。 <br>2. 從 [**訂**用帳戶] 清單中，尋找並選取您的訂用帳戶。 <br>3. 當您完成時，選取 [**選取**]。 |
-   | **名稱** | Yes | <*原則-定義-名稱*> | 要用於原則定義的名稱 |
-   | **描述** | No | <*原則-定義-名稱*> | 原則定義的描述 |
-   | **類別** | Yes | **邏輯應用程式** | 原則定義的現有分類或新類別的名稱 |
-   | **強制執行原則** | Yes | **已啟用** | 此設定指定當您儲存工作時，是否要啟用或停用原則定義。 |
+   | **定義位置** | 是 | <*Azure-subscription-name*> | 要用於原則定義的 Azure 訂用帳戶 <p><p>1. 若要尋找您的訂用帳戶，請選取省略號 (**...**) ] 按鈕。 <br>2. 從 [**訂**用帳戶] 清單中，尋找並選取您的訂用帳戶。 <br>3. 當您完成時，選取 [**選取**]。 |
+   | **名稱** | 是 | <*原則-定義-名稱*> | 要用於原則定義的名稱 |
+   | **描述** | 否 | <*原則-定義-名稱*> | 原則定義的描述 |
+   | **類別** | 是 | **邏輯應用程式** | 原則定義的現有分類或新類別的名稱 |
+   | **強制執行原則** | 是 | **啟用** | 此設定指定當您儲存工作時，是否要啟用或停用原則定義。 |
    ||||
 
 1. 在 [**原則規則**] 底下，JSON 編輯方塊會預先填入原則定義範本。 請根據下表中所述的屬性，以及遵循此語法，將此範本取代為您的[原則定義](../governance/policy/concepts/definition-structure.md)：
@@ -150,12 +150,12 @@ ms.locfileid: "84977499"
     }
     ```
 
-   | 屬性 | 值 | 說明 |
+   | 屬性 | 值 | 描述 |
    |----------|-------|-------------|
    | `mode` | `All` | 決定原則所評估之資源類型的模式。 <p><p>此案例會將設定 `mode` 為 `All` ，這會將原則套用至 Azure 資源群組、訂用帳戶和所有資源類型。 <p><p>如需詳細資訊，請參閱[原則定義結構模式](../governance/policy/concepts/definition-structure.md#mode)。 |
-   | `if` | `{condition-to-evaluate}` | 判斷何時強制執行原則規則的條件 <p><p>在此案例中，會 `{condition-to-evaluate}` 判斷 `api.id` 中的值是否 `Microsoft.Web/connections/api.id` 符合 `*managedApis/{connector-name}` （指定萬用字元（*）值）。 <p><p>如需詳細資訊，請參閱[原則定義結構-原則規則](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
+   | `if` | `{condition-to-evaluate}` | 判斷何時強制執行原則規則的條件 <p><p>在此案例中，會 `{condition-to-evaluate}` 判斷 `api.id` 中的值是否 `Microsoft.Web/connections/api.id` 符合 `*managedApis/{connector-name}` ，其指定萬用字元 ( * ) 值。 <p><p>如需詳細資訊，請參閱[原則定義結構-原則規則](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
    | `field` | `Microsoft.Web/connections/api.id` | `field`要與條件比較的值 <p><p>在此案例中，會 `field` 使用[*別名*](../governance/policy/concepts/definition-structure.md#aliases)（ `Microsoft.Web/connections/api.id` ）來存取 connector 屬性中的值 `api.id` 。 |
-   | `like` | `*managedApis/{connector-name}` | 要用來比較值的邏輯運算子和值 `field` <p><p>在此案例中， `like` 運算子和萬用字元（*）字元都會確保規則的運作方式（不論是哪個區域），而字串則是要比對的 `*managedApis/{connector-name}` 值，其中 `{connector-name}` 是您要封鎖之連接器的識別碼。 <p><p>例如，假設您想要封鎖建立社交媒體平臺或資料庫的連接： <p><p>Twitter`twitter` <br>Instagram`instagram` <br>Facebook`facebook` <br>Pinterest`pinterest` <br>-SQL Server 或 Azure SQL：`sql` <p><p>若要尋找這些連接器識別碼，請參閱本主題稍早的[尋找連接器參考識別碼](#connector-reference-ID)。 |
+   | `like` | `*managedApis/{connector-name}` | 要用來比較值的邏輯運算子和值 `field` <p><p>在此案例中， `like` 運算子和萬用字元 ( * ) 字元都會確保規則的運作方式與區域無關，而字串則是要比對的 `*managedApis/{connector-name}` 值，其中 `{connector-name}` 是您要封鎖之連接器的識別碼。 <p><p>例如，假設您想要封鎖建立社交媒體平臺或資料庫的連接： <p><p>Twitter`twitter` <br>Instagram`instagram` <br>Facebook`facebook` <br>Pinterest`pinterest` <br>-SQL Server 或 Azure SQL：`sql` <p><p>若要尋找這些連接器識別碼，請參閱本主題稍早的[尋找連接器參考識別碼](#connector-reference-ID)。 |
    | `then` | `{effect-to-apply}` | 符合條件時要套用的效果 `if` <p><p>在此案例中， `{effect-to-apply}` 會封鎖並使不符合原則的要求或作業失敗。 <p><p>如需詳細資訊，請參閱[原則定義結構-原則規則](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
    | `effect` | `deny` | `effect`是用來封鎖要求，也就是建立指定的連接。 <p><p>如需詳細資訊，請參閱[瞭解 Azure 原則效果-拒絕](../governance/policy/concepts/effects.md#deny)。 |
    ||||
@@ -244,13 +244,13 @@ ms.locfileid: "84977499"
 
    ![原則定義屬性](./media/block-connections-connectors/policy-definition-using-connections-1.png)
 
-   | 屬性 | 必要 | 值 | Description |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
-   | **定義位置** | 是 | <*Azure-subscription-name*> | 要用於原則定義的 Azure 訂用帳戶 <p><p>1. 若要尋找您的訂用帳戶，請選取省略號（**...**）按鈕。 <br>2. 從 [**訂**用帳戶] 清單中，尋找並選取您的訂用帳戶。 <br>3. 當您完成時，選取 [**選取**]。 |
-   | **名稱** | Yes | <*原則-定義-名稱*> | 要用於原則定義的名稱 |
-   | **描述** | No | <*原則-定義-名稱*> | 原則定義的描述 |
-   | **類別** | Yes | **邏輯應用程式** | 原則定義的現有分類或新類別的名稱 |
-   | **強制執行原則** | Yes | **已啟用** | 此設定指定當您儲存工作時，是否要啟用或停用原則定義。 |
+   | **定義位置** | 是 | <*Azure-subscription-name*> | 要用於原則定義的 Azure 訂用帳戶 <p><p>1. 若要尋找您的訂用帳戶，請選取省略號 (**...**) ] 按鈕。 <br>2. 從 [**訂**用帳戶] 清單中，尋找並選取您的訂用帳戶。 <br>3. 當您完成時，選取 [**選取**]。 |
+   | **名稱** | 是 | <*原則-定義-名稱*> | 要用於原則定義的名稱 |
+   | **描述** | 否 | <*原則-定義-名稱*> | 原則定義的描述 |
+   | **類別** | 是 | **邏輯應用程式** | 原則定義的現有分類或新類別的名稱 |
+   | **強制執行原則** | 是 | **啟用** | 此設定指定當您儲存工作時，是否要啟用或停用原則定義。 |
    ||||
 
 1. 在 [**原則規則**] 底下，JSON 編輯方塊會預先填入原則定義範本。 請根據下表中所述的屬性，以及遵循此語法，將此範本取代為您的[原則定義](../governance/policy/concepts/definition-structure.md)：
@@ -271,7 +271,7 @@ ms.locfileid: "84977499"
     }
     ```
 
-   | 屬性 | 值 | Description |
+   | 屬性 | 值 | 描述 |
    |----------|-------|-------------|
    | `mode` | `All` | 決定原則所評估之資源類型的模式。 <p><p>此案例會將設定 `mode` 為 `All` ，這會將原則套用至 Azure 資源群組、訂用帳戶和所有資源類型。 <p><p>如需詳細資訊，請參閱[原則定義結構模式](../governance/policy/concepts/definition-structure.md#mode)。 |
    | `if` | `{condition-to-evaluate}` | 判斷何時強制執行原則規則的條件 <p><p>在此案例中，會 `{condition-to-evaluate}` 判斷的字串輸出是否 `[string(field('Microsoft.Logic/workflows/parameters'))]` 包含字串 `{connector-name}` 。 <p><p>如需詳細資訊，請參閱[原則定義結構-原則規則](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
@@ -317,7 +317,7 @@ ms.locfileid: "84977499"
 
 ## <a name="create-policy-assignment"></a>建立原則指派
 
-接下來，您必須將原則定義指派至您要強制執行原則的位置，例如，套用至單一資源群組、多個資源群組、Azure Active Directory （Azure AD）租使用者或 Azure 訂用帳戶。 針對這項工作，請遵循下列步驟來建立原則指派：
+接下來，您必須將原則定義指派至您要強制執行原則的位置，例如，套用至單一資源群組、多個資源群組、Azure Active Directory (Azure AD) 租使用者或 Azure 訂用帳戶。 針對這項工作，請遵循下列步驟來建立原則指派：
 
 1. 如果您已登出，請重新登入[Azure 入口網站](https://portal.azure.com)。 在入口網站的 [搜尋] 方塊中，輸入 `policy` ，然後選取 [**原則**]。
 
@@ -329,16 +329,16 @@ ms.locfileid: "84977499"
 
 1. 在 [**基本**] 底下，為原則指派提供下列資訊：
 
-   | 屬性 | 必要 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | **範圍** | Yes | 您想要強制執行原則指派的資源。 <p><p>1. 在 [**範圍**] 方塊旁，選取省略號（**...**）按鈕。 <br>2. 從 [**訂**用帳戶] 清單中，選取 Azure 訂用帳戶。 <br>3. （選擇性）從 [**資源群組**] 清單中，選取 [資源群組]。 <br>4. 當您完成時，選取 [**選取**]。 |
-   | **名單** | No | 要從原則指派中排除的任何 Azure 資源。 <p><p>1. 在 [**排除**專案] 方塊旁，選取省略號（**...**）按鈕。 <br>2. 從**資源清單**中，選取資源 >**新增至選取的範圍**。 <br>3. 當您完成時，請選取 [**儲存**]。 |
-   | **原則定義** | Yes | 您想要指派和強制執行的原則定義名稱。 此範例會繼續進行範例 Instagram 原則「封鎖 Instagram 連接」。 <p><p>1. 在 [**原則定義**] 方塊旁，選取省略號（**...**）按鈕。 <br>2. 使用 [**類型**篩選] 或 [**搜尋**] 方塊，尋找並選取原則定義。 <br>3. 當您完成時，選取 [**選取**]。 |
-   | **指派名稱** | Yes | 原則指派所要使用的名稱（如果與原則定義不同） |
-   | **指派識別碼** | Yes | 自動產生的原則指派識別碼 |
-   | **描述** | No | 原則指派的描述 |
-   | **強制執行原則** | Yes | 啟用或停用原則指派的設定 |
-   | **指派者** | No | 建立和套用原則指派的人員名稱 |
+   | **範圍** | 是 | 您想要強制執行原則指派的資源。 <p><p>1. 在 [**範圍**] 方塊旁，選取省略號 (**...**) ] 按鈕。 <br>2. 從 [**訂**用帳戶] 清單中，選取 Azure 訂用帳戶。 <br>3. （選擇性）從 [**資源群組**] 清單中，選取 [資源群組]。 <br>4. 當您完成時，選取 [**選取**]。 |
+   | **名單** | 否 | 要從原則指派中排除的任何 Azure 資源。 <p><p>1. 在 [**排除**專案] 方塊旁，選取省略號 (**...**) ] 按鈕。 <br>2. 從**資源清單**中，選取資源 >**新增至選取的範圍**。 <br>3. 當您完成時，請選取 [**儲存**]。 |
+   | **原則定義** | 是 | 您想要指派和強制執行的原則定義名稱。 此範例會繼續進行範例 Instagram 原則「封鎖 Instagram 連接」。 <p><p>1. 在 [**原則定義**] 方塊旁，選取省略號 (**...**) ] 按鈕。 <br>2. 使用 [**類型**篩選] 或 [**搜尋**] 方塊，尋找並選取原則定義。 <br>3. 當您完成時，選取 [**選取**]。 |
+   | **指派名稱** | 是 | 原則指派所要使用的名稱（如果與原則定義不同） |
+   | **指派識別碼** | 是 | 自動產生的原則指派識別碼 |
+   | **描述** | 否 | 原則指派的描述 |
+   | **強制執行原則** | 是 | 啟用或停用原則指派的設定 |
+   | **指派者** | 否 | 建立和套用原則指派的人員名稱 |
    ||||
 
    例如，若要使用 Instagram 範例將原則指派給 Azure 資源群組：
@@ -363,7 +363,7 @@ ms.locfileid: "84977499"
 
 此訊息包含下列資訊：
 
-| | |
+| 描述 | 內容 |
 |---|---|
 | 失敗的原因 | `"Resource 'instagram' was disallowed by policy."` |
 | 指派名稱 | `"Block Instagram connections"` |

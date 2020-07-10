@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f12f080f2b1b7379b622fe4d7c5e0b35e358d0ef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5f4b48dfbef7362a0b49e53a17b080e127701c94
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041722"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199875"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什麼是自動化機器學習 (AutoML)？
 
@@ -105,7 +105,7 @@ ms.locfileid: "86041722"
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
 
-## <a name="feature-engineering"></a>特徵設計
+## <a name="feature-engineering"></a>特色工程
 
 特色工程是使用資料的領域知識來建立功能的程式，以協助 ML 演算法更深入瞭解。 在 Azure Machine Learning 中，會套用調整和正規化技術，以促進功能設計。 這些技術和特徵設計統稱為特徵化。
 
@@ -114,7 +114,7 @@ ms.locfileid: "86041722"
 > [!NOTE]
 > 自動化機器學習特徵化步驟 (功能標準化、處理遺漏的資料、將文字轉換為數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同特徵化步驟會自動套用至您的輸入資料。
 
-### <a name="automatic-featurization-standard"></a>自動特徵化（標準）
+### <a name="automatic-featurization-standard"></a> (標準) 的自動特徵化
 
 在每個自動化機器學習實驗中，您的資料都會自動調整或正規化，以協助演算法執行良好。 在模型定型期間，下列其中一個調整或正規化技術將會套用至每個模型。 瞭解 AutoML 如何協助[防止過度調整和不平衡](concept-manage-ml-pitfalls.md)模型中的資料。
 
@@ -136,7 +136,7 @@ ms.locfileid: "86041722"
 
 + Azure Machine Learning Studio：[透過這些步驟](how-to-use-automated-ml-for-ml-models.md#customize-featurization)，在 [檢視其他設定] 區段中啟用 [自動特徵化]。
 
-+ Python SDK： `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` 在您的[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)物件中指定。 深入瞭解 [啟用特徵化] （（如何設定-自動 features.md）。 
++ Python SDK： `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` 在您的[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)物件中指定。 深入瞭解 [啟用特徵化] ( # B1 how-to-configure-auto-features.md) 。 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a> 集團模型
 
@@ -220,21 +220,21 @@ Azure Machine Learning 提供兩種使用自動化 ML 的體驗
 
 | |Python SDK|Studio Web 體驗|
 ----|:----:|:----:
-將資料分割成定型/驗證集| ✓|✓
-支援 ML 工作：分類、迴歸和預測| ✓| ✓
-根據主要計量最佳化| ✓| ✓
-支援 AML 計算作為計算目標 | ✓|✓
-設定預測範圍、目標延遲與移動視窗|✓|✓
-設定允出準則 |✓|✓ 
-設定並行反覆項目| ✓|✓
-置放資料行| ✓|✓
-封鎖演算法|✓|✓
-交叉驗證 |✓|✓
-支援在 Azure Databricks 叢集上進行定型| ✓|
-檢視已進行工程特徵名稱|✓|
-特徵化摘要| ✓|
-假日的特徵化|✓|
-記錄檔詳細程度等級| ✓|
+|**將資料分割成定型/驗證集**| ✓|✓
+|**支援 ML 工作：分類、迴歸和預測**| ✓| ✓
+|**根據主要計量最佳化**| ✓| ✓
+|**支援 AML 計算作為計算目標** | ✓|✓
+|**設定預測水準，目標延遲 & 滾動時間範圍**|✓|✓
+|**設定允出準則** |✓|✓ 
+|**設定並行反覆項目**| ✓|✓
+|**置放資料行**| ✓|✓
+|**封鎖演算法**|✓|✓
+|**交叉驗證** |✓|✓
+|**支援在 Azure Databricks 叢集上進行定型**| ✓|
+|**檢視已進行工程特徵名稱**|✓|
+|**特徵化摘要**| ✓|
+|**假日的特徵化**|✓|
+|**記錄檔詳細程度等級**| ✓|
 
 ### <a name="model-settings"></a>模型設定
 
@@ -242,11 +242,11 @@ Azure Machine Learning 提供兩種使用自動化 ML 的體驗
 
 | |Python SDK|Studio Web 體驗|
 |----|:----:|:----:|
-|最佳模型註冊、部署、可解釋性| ✓|✓|
-|啟用投票集團與堆疊集團模型| ✓|✓|
-|根據非主要計量顯示最佳模型|✓||
-|啟用/停用 ONNX 模型相容性|✓||
-|測試模型 | ✓| |
+|**最佳模型註冊、部署、可解釋性**| ✓|✓|
+|**啟用投票集團 & stack 集團模型**| ✓|✓|
+|**根據非主要計量顯示最佳模型**|✓||
+|**啟用/停用 ONNX 模型相容性**|✓||
+|**測試模型** | ✓| |
 
 ### <a name="run-control-settings"></a>回合控制設定
 
@@ -254,10 +254,10 @@ Azure Machine Learning 提供兩種使用自動化 ML 的體驗
 
 | |Python SDK|Studio Web 體驗|
 |----|:----:|:----:|
-|回合摘要資料表| ✓|✓|
-|取消回合與子回合| ✓|✓|
-|取得護欄| ✓|✓|
-|暫停與繼續回合| ✓| |
+|**回合摘要資料表**| ✓|✓|
+|**取消執行 & 子執行**| ✓|✓|
+|**取得護欄**| ✓|✓|
+|**暫停 & 繼續執行**| ✓| |
 
 <a name="use-with-onnx"></a>
 

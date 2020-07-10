@@ -5,19 +5,20 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 28870a197af07e964a50a06ffeef08f3b71451f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6bf0010ddc7be2cb9e250f8b1beba28e0494ee1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891717"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187739"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric 版本
 
-| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">疑難排解指南</a>  
-| <a href="https://github.com/Azure/service-fabric-issues" target="blank">問題追蹤</a>  
-| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">支援選項</a>  
-| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">支援的版本</a>  
-| 程式<a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">代碼範例</a>
+- <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">疑難排解指南</a> 
+- <a href="https://github.com/Azure/service-fabric-issues" target="blank">問題追蹤</a> 
+- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">支援選項</a> 
+- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">支援的版本</a> 
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">程式碼範例</a>
 
 本文提供 Service Fabric 執行時間和 Sdk 最新版本和更新的詳細資訊。
 
@@ -36,21 +37,21 @@ ms.locfileid: "82891717"
 ## <a name="key-announcements"></a>金鑰公告
 - **General Availability** [ **Service Fabric 應用程式的 Service Fabric 受控**識別正式運作](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
 - [**支援 Ubuntu 18.04**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
- - [**預覽：虛擬機器擴展集暫時 os 磁片支援**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *：暫時 os 磁片是在本機虛擬機器上建立的儲存體，並不會儲存至遠端 Azure 儲存體。 針對所有 Service Fabric 節點類型（主要和次要），建議使用它們，因為相較于傳統的持續性 OS 磁片，暫時的 OS 磁片：
+ - [**預覽：虛擬機器擴展集暫時 os 磁片支援**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *：暫時 os 磁片是在本機虛擬機器上建立的儲存體，並不會儲存至遠端 Azure 儲存體。 這適用于所有 Service Fabric 節點類型 (主要和次要) ，因為相較于傳統的持續性 OS 磁片，暫時的 OS 磁片：
       -  減少 OS 磁片的讀取/寫入延遲
       -  啟用更快速的重設/重新映射節點管理作業
-      -  降低整體成本（磁片是免費的，不會產生額外的儲存體成本）
+      -  降低整體成本 (磁片是免費的，而且不會產生額外的儲存成本) 
 - 支援[**依主體一般名稱宣告 Service Fabric 應用程式的服務端點憑證**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)。
 - [**容器化服務的健康情況探查支援**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage)：支援容器化應用程式的活動探查機制。 活動探查有助於宣告容器化應用程式的活動，而當它們無法及時回應時，就會導致重新開機。 
-- 支援[容器](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview)和[來賓可執行檔](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-guest-executables-introduction)應用程式[**的初始化運算式程式碼套件**](https://docs.microsoft.com/azure/service-fabric/initializer-codepackages)。 這可讓您以指定的循序執行程式碼套件（例如容器），以執行服務封裝初始化。
+- 支援[容器](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview)和[來賓可執行檔](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-guest-executables-introduction)應用程式[**的初始化運算式程式碼套件**](https://docs.microsoft.com/azure/service-fabric/initializer-codepackages)。 這可讓您以指定的循序執行程式碼套件 (例如，) 的容器，以執行服務封裝初始化。
 - **FabricObserver 和 ClusterObserver**是無狀態應用程式，可捕捉與 SF 叢集不同層面相關 Service Fabric 遙測。 這兩個應用程式都已準備好部署至 Windows 生產叢集，以使用 ApplicationInsights、EventSource 和 LogAnalytics 的實作為支援來捕捉豐富的遙測。
-    - [**FabricObserver （FO） 2.0**](https://github.com/microsoft/service-fabric-observer)-在所有節點上執行、產生健全狀況事件、在達到使用者設定的資源使用量閾值時發出遙測。 此版本包含跨監視、資料管理、健康情況事件詳細資料、結構化遙測的數個增強功能。
-     - [**ClusterObserver （CO） 1.1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) -在一個節點上執行，並捕捉叢集層級的健康情況遙測。 在此版本中，ClusterObserver 也會監視節點狀態，並在節點關閉/停用/停用超過使用者指定的時間週期時發出遙測。
+    - [**FabricObserver (FO) 2.0**](https://github.com/microsoft/service-fabric-observer)-在所有節點上執行、產生健全狀況事件、在達到使用者設定的資源使用量閾值時發出遙測。 此版本包含跨監視、資料管理、健康情況事件詳細資料、結構化遙測的數個增強功能。
+     - [**ClusterObserver (CO) 1.1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) -在一個節點上執行，並捕捉叢集層級的健康情況遙測。 在此版本中，ClusterObserver 也會監視節點狀態，並在節點關閉/停用/停用超過使用者指定的時間週期時發出遙測。
 
 ### <a name="improve-application-life-cycle-experience"></a>改善應用程式生命週期經驗
 
 - **[預覽：要求清空](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-advanced#avoid-connection-drops-during-planned-downtime-of-stateless-services)**：在規劃的服務維護期間（例如服務升級或節點停用），您會想要允許服務正常地清空連接。 這項功能會在服務設定中加入實例關閉延遲持續時間。 在規劃的作業期間，SF 會從探索中移除服務的位址，然後在關閉服務之前等待此持續時間。
-- **[自動 Subcluster 偵測和平衡](https://docs.microsoft.com/azure/service-fabric/cluster-resource-manager-subclustering )**：當具有不同放置條件約束的服務具有一般[負載](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-metrics)計量時，就會發生 Subclustering。 如果不同組節點上的負載明顯不同，則 Service Fabric 叢集 Resource Manager 認為叢集不平衡，即使因為放置條件約束而有最佳平衡，也是如此。 因此，它會嘗試重新平衡叢集，這可能會造成不必要的服務移動（因為無法大幅改善「不平衡」）。 從這個版本開始，叢集 Resource Manager 現在會嘗試自動偵測這類設定，並瞭解何時可以透過移動來修正不平衡的情況，而改為在不進行大幅改善的情況下，只留下一些問題。  
+- **[自動 Subcluster 偵測和平衡](https://docs.microsoft.com/azure/service-fabric/cluster-resource-manager-subclustering )**：當具有不同放置條件約束的服務具有一般[負載](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-metrics)計量時，就會發生 Subclustering。 如果不同組節點上的負載明顯不同，則 Service Fabric 叢集 Resource Manager 認為叢集不平衡，即使因為放置條件約束而有最佳平衡，也是如此。 因此，它會嘗試重新平衡叢集，這可能會造成不必要的服務移動 (因為無法大幅改善) 的「不平衡」。 從這個版本開始，叢集 Resource Manager 現在會嘗試自動偵測這類設定，並瞭解何時可以透過移動來修正不平衡的情況，而改為在不進行大幅改善的情況下，只留下一些問題。  
 - [**次要複本的不同移動成本**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost)：我們引進了新的移動成本價值 VeryHigh，在某些情況下提供額外的彈性，以定義次要複本是否應該使用個別的移動成本。
 - 已啟用容器化應用程式的[**活動探查**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage )機制。 活動探查有助於宣告容器化應用程式的活動，而當它們無法及時回應時，就會導致重新開機。
 - [**針對服務執行至完成/一次**](https://docs.microsoft.com/azure/service-fabric/run-to-completion)**
@@ -82,7 +83,7 @@ Azure Service Fabric 7.0 現已推出！ 您將能夠透過 Azure 入口網站�
 這是 Service Fabric 的最新版本，並已載入主要功能和改進。
 
 ### <a name="key-announcements"></a>金鑰公告
- - [**KeyVaultReference 應用程式秘密的支援（預覽）**](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)：已啟用[受控](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)識別的 Service Fabric 應用程式現在可以直接參考 Key Vault 秘密 URL，做為環境變數、應用程式參數或容器存放庫認證。 Service Fabric 會自動使用應用程式的受控識別來解析秘密。 
+ - [** (Preview) 的應用程式密碼支援 KeyVaultReference **](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)： Service Fabric 已啟用[受控](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)識別的應用程式現在可以直接參考 Key Vault 秘密 URL 作為環境變數、應用程式參數或容器存放庫認證。 Service Fabric 會自動使用應用程式的受控識別來解析秘密。 
      
 - **改善無狀態服務的升級安全性**：為了保證應用程式升級期間的可用性，我們導入了新的設定，以定義可視為可用的[無狀態服務實例數目下限](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet)。 先前所有服務的這個值都是1，而且無法變更。 透過這項新的每一服務安全檢查，您可以確保您的服務在應用程式升級、叢集升級，以及依賴 Service Fabric 的健康狀態和安全檢查的其他維護期間，保留最少的實例數目。
   
@@ -120,19 +121,19 @@ Azure Service Fabric 7.0 現已推出！ 您將能夠透過 Azure 入口網站�
 
 - Service Fabric Explorer 包含[映射存放區檢視器](service-fabric-visualizing-your-cluster.md#image-store-viewer)，可檢查您已上傳至映射存放區的應用程式。
 
-- [修補程式協調流程應用程式（POA）](service-fabric-patch-orchestration-application.md)版本[1.4.0](https://github.com/microsoft/Service-Fabric-POA/releases/tag/v1.4.0)包含許多自我診斷改良功能。 建議將 POA 的客戶移至此版本。
+- [修補協調流程應用程式 (POA) ](service-fabric-patch-orchestration-application.md)版本[1.4.0](https://github.com/microsoft/Service-Fabric-POA/releases/tag/v1.4.0)包含許多自我診斷改良功能。 建議將 POA 的客戶移至此版本。
 
 - 除非您退出宣告，否則 Service Fabric 6.5 叢集的[EventStore 服務預設為啟用](service-fabric-visualizing-your-cluster.md#event-store)。
 
 - 已新增具狀態服務的[複本生命週期事件](service-fabric-diagnostics-event-generation-operational.md#replica-events)。
 
-- [較佳的種子節點狀態可見度](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#seed-node-status)，包括當種子節點狀況不良（*關閉*、*移除*或*不明*）時的叢集層級警告。
+- [較佳的種子節點狀態可見度](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#seed-node-status)，包括當種子節點狀況不良 (*關閉*、*移除*或*不明*) 時的叢集層級警告。
 
 - [Service Fabric 應用程式嚴重損壞修復工具](https://github.com/Microsoft/Service-Fabric-AppDRTool)可讓 Service Fabric 具狀態服務在主要叢集發生嚴重損壞時快速復原。 主要叢集的資料會使用定期備份和還原，持續在次要待命應用程式上進行同步處理。
 
 - Visual Studio 支援[將 .Net Core 應用程式發佈到以 Linux 為基礎](service-fabric-how-to-publish-linux-app-vs.md)的叢集。
 
-- 當您在 Azure 上升級或建立新的 Linux 叢集時，將會自動安裝適用于 Service Fabric 6.5 （和更新版本）的[azure SERVICE FABRIC CLI （SFCTL）](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) 。
+- 當您在 Azure 上升級或建立新的 Linux 叢集時，將會針對 Service Fabric 6.5 (和更新版本) 自動安裝[Azure SERVICE FABRIC CLI (SFCTL) ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) 。
 
 - [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)預設會安裝在 MacOS/Linux OneBox 叢集上。
 
@@ -146,7 +147,7 @@ Azure Service Fabric 7.0 現已推出！ 您將能夠透過 Azure 入口網站�
 | 2019 年 7 月 2 日 | [Azure Service Fabric 6.5 更新版本](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [版本資訊](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
 | 2019 年 7 月 29 日 | [Azure Service Fabric 6.5 更新版本](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Second-Refresh-Release/ba-p/800523)  | [版本資訊](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU2.pdf)  |
 | Aug 23, 2019 | [Azure Service Fabric 6.5 更新版本](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [版本資訊](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
-| 2019年10月14日 | [Azure Service Fabric 6.5 更新版本](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [版本資訊](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md  |
+| 2019年10月14日 | [Azure Service Fabric 6.5 更新版本](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [版本資訊] (https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md  |
 
 
 ## <a name="previous-versions"></a>舊版

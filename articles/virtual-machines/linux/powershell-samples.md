@@ -7,17 +7,18 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 8d7db5fe88890b7f807263e50757e637ad808eb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d476572ace6803dba6cd9cab97a55953be1d5f6
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759316"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202263"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 虛擬機器 PowerShell 範例
 
 下表包含可供建立和管理 Linux 虛擬機器之 PowerShell 指令碼範例的連結。
 
-| | |
+| 指令碼 | 描述 |
 |---|---|
 |**建立虛擬機器**||
 | [建立完整設定的虛擬機器](./../scripts/virtual-machines-linux-powershell-sample-create-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 建立資源群組、虛擬機器和所有相關資源。|

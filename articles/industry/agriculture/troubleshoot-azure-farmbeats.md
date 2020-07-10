@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656827"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187705"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
@@ -109,7 +110,7 @@ ms.locfileid: "83656827"
 > [!NOTE]
 > 所關注感應器合作夥伴的合作夥伴識別碼。
 
-3. 返回合作夥伴 API，然後選取 **Get/\<識別碼>** 。
+3. 返回合作夥伴 API，然後選取 [**取得/ \<ID> **]。
 4. 指定步驟 3 中的合作夥伴識別碼，然後選取 [執行]。
 
    API 回應應具有事件中樞連接字串。
@@ -249,7 +250,7 @@ ms.locfileid: "83656827"
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel：已達連線數目上限
 
-**作業失敗訊息**：「使用者 \<username>' 已達到兩個並行流程數目的上限」。
+**作業失敗訊息**：「使用者 ' ' 所達到的兩個並行流程數目上限」 \<username> 。
 
 **意義**：如果作業因為已達到連線數目上限而失敗，則會在多個作業中使用相同的 Sentinel 帳戶。
 
@@ -313,3 +314,39 @@ ms.locfileid: "83656827"
 1. 移至您的 FarmBeats Datahub 資源群組。
 2. 選取 [App Service]。  
 3. 移至 [App Service 定價頁面](https://azure.microsoft.com/pricing/details/app-service/windows/)，然後選取適當的定價層。
+
+## <a name="weather-data-job-failures"></a>天氣資料作業失敗
+
+**錯誤**：您執行作業來取得天氣資料，但作業失敗
+
+### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>收集記錄以針對天氣資料作業失敗進行疑難排解
+
+1. 移至 Azure 入口網站中的 FarmBeats 資源群組。
+2. 按一下屬於資源群組的 Data Factory 服務。 服務將會有「sku： Datahub」標記
+
+> [!NOTE]
+> 若要在資源群組中查看服務的標籤，請按一下 [編輯資料行]，然後將 [標籤] 新增至資源群組視圖
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="FarmBeats 專案":::
+
+3. 在 Data factory 的 [總覽] 頁面上，按一下 [**撰寫與監視**]。 您的瀏覽器上會開啟新的索引標籤。 按一下 [**監視**]
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="FarmBeats 專案":::
+
+4. 您會看到一份管線執行清單，其中包含屬於天氣作業執行的一部分。 按一下您要為其收集記錄的作業
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="FarmBeats 專案":::
+
+5. 在 [管線總覽] 頁面上，您會看到活動執行的清單。 記下您想要為其收集記錄的活動的執行識別碼
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="FarmBeats 專案":::
+
+6. 回到 Azure 入口網站中的 FarmBeats 資源群組，然後按一下名為**datahublogs**的儲存體帳戶
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="FarmBeats 專案":::
+
+7. 按一下 [**容器**]  ->  **adfjobs**。 在 [搜尋] 方塊中，輸入您在上述步驟5中記下的作業執行識別碼。
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="FarmBeats 專案":::
+
+8. 搜尋結果會包含具有作業相關記錄檔的資料夾。 下載記錄檔並將它傳送給，以 farmbeatssupport@microsoft.com 協助進行問題的偵錯工具。

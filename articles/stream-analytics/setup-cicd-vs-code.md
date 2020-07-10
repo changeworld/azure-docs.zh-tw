@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 7a7fe3f7e1c39837106471d118a8b1bb770a524e
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 75db20bdb746e7d15bef56ce7ac0a064993d3f3a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045819"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187756"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>使用 CI/CD npm 套件部署 Azure 串流分析作業 
 
@@ -32,7 +32,7 @@ ms.locfileid: "86045819"
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
 ```
-範例（在 macOS 上）
+MacOS) 上的範例 (
 ```powershell
 azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/script.asaql" 
 ```
@@ -41,15 +41,11 @@ azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/sc
 
 * Resource Manager 範本檔案
 
-   ```
-   [ProjectName].JobTemplate.json 
-   ```
+   `[ProjectName].JobTemplate.json`
 
 * Resource Manager 參數檔案
 
-   ```
-   [ProjectName].JobTemplate.parameters.json
-   ```   
+   `[ProjectName].JobTemplate.parameters.json`   
 
 檔案中 parameters.js的預設參數是來自 Visual Studio Code 專案中的設定。 如果您想要部署到其他環境，請據以取代參數。
 
@@ -112,7 +108,7 @@ azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/sc
 
    |參數|輸入|
    |-|-|
-   |顯示名稱|將檔案複製到： $ （build. artifactstagingdirectory）|
+   |顯示名稱|將檔案複製到： $ (artifactstagingdirectory) |
    |來源資料夾|`$(system.defaultworkingdirectory)`| 
    |目錄| `**\Deploy\**` |
    |目的檔案夾| `$(build.artifactstagingdirectory)`|
@@ -159,10 +155,10 @@ azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/sc
    |資源群組| 選擇將包含您串流分析作業的測試資源群組的名稱。|
    |位置|選擇測試資源群組的位置。|
    |範本位置| *連結的成品*|
-   |[範本]| $ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.js于 |
-   |範本參數|（$ （Build. ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.parameters.js于|
-   |覆寫範本參數|-Input_IoTHub1_iotHubNamespace $ （test_eventhubname）|
-   |部署模式|增量|
+   |範本| $ (ArtifactStagingDirectory) # B0 on |
+   |範本參數| ($ (組建。 ArtifactStagingDirectory) # B0 on|
+   |覆寫範本參數|-Input_IoTHub1_iotHubNamespace $ (test_eventhubname) |
+   |部署模式|累加|
 
 3. 從 [工作] 下拉式清單中，選取 [**將作業部署到生產環境**]。
 
@@ -176,10 +172,10 @@ azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/sc
    |資源群組| 選擇將包含您串流分析作業的生產資源群組的名稱。|
    |位置|選擇您的生產資源群組的位置。|
    |範本位置| *連結的成品*|
-   |[範本]| $ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.js于 |
-   |範本參數|（$ （Build. ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.parameters.js于|
-   |覆寫範本參數|-Input_IoTHub1_iotHubNamespace $ （eventhubname）|
-   |部署模式|增量|
+   |範本| $ (ArtifactStagingDirectory) # B0 on |
+   |範本參數| ($ (組建。 ArtifactStagingDirectory) # B0 on|
+   |覆寫範本參數|-Input_IoTHub1_iotHubNamespace $ (eventhubname) |
+   |部署模式|累加|
 
 ### <a name="create-release"></a>建立發行
 
@@ -194,6 +190,6 @@ azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/sc
 
 ## <a name="next-steps"></a>後續步驟
 
-* [快速入門：在 Visual Studio Code （預覽）中建立 Azure 串流分析雲端作業](quick-create-vs-code.md)
-* [使用 Visual Studio Code （預覽）在本機測試串流分析查詢](visual-studio-code-local-run.md)
-* [使用 Visual Studio Code 探索 Azure 串流分析（預覽）](visual-studio-code-explore-jobs.md)
+* [快速入門：在 Visual Studio Code (Preview 中建立 Azure 串流分析雲端作業) ](quick-create-vs-code.md)
+* [使用 Visual Studio Code (Preview 在本機測試串流分析查詢) ](visual-studio-code-local-run.md)
+* [使用 Visual Studio Code (Preview 探索 Azure 串流分析) ](visual-studio-code-explore-jobs.md)

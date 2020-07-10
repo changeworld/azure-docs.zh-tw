@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 56b94d66eb0929d2fd0ca74a1a631d229330adfa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f469196f96b97903f69e29d1a38900369653e02f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "69906403"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200517"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>搜尋 Bing 當地商家搜尋 API 的類別
 
@@ -36,49 +36,17 @@ Bing 當地商家搜尋 API 可讓您搜尋各種類別的當地商家實體，�
 ## <a name="sub-categories"></a>子類別
 子類別的傳遞方式與 `localCategories` 相同。 子類別會是更特定的類別。 它們是從屬的，如果您在相同的逗號分隔清單中指定類別 C 和該類別其中一個子類別 S，您將收到與單獨指定 C 相同的結果。
 
-### <a name="eat-drink"></a>Eat Drink 
-|  |  |  |  |
-| - | - | - | - |
-| BreweriesAndBrewPubs | CocktailLounges | AfricanRestaurants |
-| AmericanRestaurants | Bagels | BarbecueRestaurants |
-| Taverns | SportsBars | Bars |
-| BarsGrillsAndPubs | BuffetRestaurants| BelgianRestaurants | 
-| BritishRestaurants | CafeRestaurants | CaribbeanRestaurants |
-| ChineseRestaurants | CoffeeAndTea | Delicatessens | 
-| DeliveryService | Diners | DiscountStores | 
-| Donuts | FastFood | FrenchRestaurants | 
-| FrozenYogurt | GermanRestaurants | Supermarkets | 
-| GreekRestaurants | Grocers | HawaiianRestaurants | 
-| HungarianRestaurants | IceCreamAndFrozenDesserts | IndianRestaurants | 
-| ItalianRestaurants | JapaneseRestaurants | Juices | 
-| KoreanRestaurants | LiquorStores | MexicanRestaurants |
-| MiddleEasternRestaurants | Pizza | PolishRestaurants | 
-| PortugueseRestaurants | Pretzels | Restaurants | 
-| RussianAndUkrainianRestaurants | Sandwiches | SeafoodRestaurants | 
-| SpanishRestaurants | SteakHouseRestaurants | SushiRestaurants | 
-| TakeAway | ThaiRestaurants | TurkishRestaurants | 
-| VegetarianAndVeganRestaurants | VietnameseRestaurants|  |
- 
-### <a name="see-do"></a>See Do 
-|  |  |  |
-| -- | -- | -- |
-| AmusementParks | Attractions | Carnivals |
-| Casinos | LandmarksAndHistoricalSites | MiniatureGolfCourses |
-| MovieTheaters | Museums | Parks |
-| SightseeingTours | TouristInformation | Zoos |
- 
-### <a name="shop"></a>Shop 
-|  |  |  |
-| -- | -- | -- |
-| AntiqueStores | Bookstores | CDAndRecordStores |
-| ChildrensClothingStores | CigarAndTobaccoShops | ComicBookStores |
-| DepartmentStores | DiscountStores | FleaMarketsAndBazaars |
-| FurnitureStores | HomeImprovementStores | JewelryAndWatchesStores |
-| KitchenwareStores | LiquorStores | MallsAndShoppingCenters |
-| MensClothingStores | MusicStores | OutletStores |
-| PetShops | PetSupplyStores | SchoolAndOfficeSupplyStores |
-| ShoeStores | SportingGoodsStores | ToyAndGameStores |
-| VitaminAndSupplementStores | WomensClothingStores |  |
+### <a name="eat-drink"></a>Eat Drink
+
+> BreweriesAndBrewPubs、CocktailLounges、AfricanRestaurants、AmericanRestaurants、Bagels、BarbecueRestaurants、Taverns、SportsBars、橫條、BarsGrillsAndPubs、BuffetRestaurants |BelgianRestaurants、BritishRestaurants、CafeRestaurants、CaribbeanRestaurants、ChineseRestaurants、CoffeeAndTea、Delicatessens、DeliveryService、大來、DiscountStores、圈、FastFood、FrenchRestaurants、FrozenYogurt、GermanRestaurants、超市、GreekRestaurants、Grocers、HawaiianRestaurants、HungarianRestaurants、IceCreamAndFrozenDesserts、IndianRestaurants、ItalianRestaurants、JapaneseRestaurants、動力、KoreanRestaurants、LiquorStores、MexicanRestaurants、MiddleEasternRestaurants、比薩、PolishRestaurants、PortugueseRestaurants、Pretzels、飯店、RussianAndUkrainianRestaurants、三明治、SeafoodRestaurants、SpanishRestaurants、SteakHouseRestaurants、SushiRestaurants
+
+### <a name="see-do"></a>See Do
+
+> AmusementParks、景點、Carnivals、Casinos、LandmarksAndHistoricalSites、MiniatureGolfCourses、MovieTheaters、博物館、公園、SightseeingTours、TouristInformation、動物園
+
+### <a name="shop"></a>Shop
+
+> AntiqueStores, Bookstores, CDAndRecordStores, ChildrensClothingStores, CigarAndTobaccoShops, ComicBookStores, DepartmentStores, DiscountStores, FleaMarketsAndBazaars, FurnitureStores, HomeImprovementStores, JewelryAndWatchesStores, KitchenwareStores, LiquorStores, MallsAndShoppingCenters, MensClothingStores, MusicStores, OutletStores, PetShops, PetSupplyStores, SchoolAndOfficeSupplyStores, ShoeStores, SportingGoodsStores, ToyAndGameStores, VitaminAndSupplementStores, WomensClothingStores
 
 
 ## <a name="examples-of-local-categories-search"></a>當地類別搜尋的範例
@@ -216,7 +184,7 @@ X-MSEdge-Ref: Ref A: 68AFB51807C6485CAB8AAF20E232EFFF Ref B: CO1EDGE0108 Ref C: 
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - [地理搜尋界限](specify-geographic-search.md)
 - [查詢和回應](local-search-query-response.md)
 - [C# 快速入門](quickstarts/local-quickstart.md)

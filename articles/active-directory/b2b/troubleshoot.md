@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f8bafb04d0a5d9c6d25a7ed7e155888d492e9fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a835872d4a4fedfb5ef72a1cb9499e4f969adcd3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80050791"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202107"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>針對 Azure Active Directory B2B 共同作業問題進行疑難排解
 
@@ -87,7 +87,9 @@ ms.locfileid: "80050791"
 
 具有來賓帳戶的使用者無法登入，並收到下列錯誤訊息：
 
+```plaintext
     AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
+```
 
 使用者具有 Azure 使用者帳戶，而且是已被放棄或未受管理的病毒租使用者。 此外，租使用者中沒有全域或公司系統管理員。
 
@@ -99,7 +101,7 @@ ms.locfileid: "80050791"
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>來賓使用者無法使用 AzureAD PowerShell V1 模組
 
-自2019年11月18日起，您目錄中的來賓使用者（定義為**userType**屬性等於**guest**的使用者帳戶）會遭到封鎖而無法使用 AzureAD PowerShell V1 模組。 接下來，使用者必須是成員使用者（其中**userType**等於**member**）或使用 AzureAD PowerShell V2 模組。
+自2019年11月18日起，您目錄中的來賓使用者 (定義為使用者帳戶，其中**userType**屬性等於**來賓**) 遭到封鎖而無法使用 AzureAD PowerShell V1 模組。 接下來，使用者必須是成員使用者 (在其中， **userType**等於**member**) 或使用 AzureAD PowerShell V2 模組。
 
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>在 Azure 美國政府租使用者中，我無法邀請 B2B 共同作業來賓使用者
 

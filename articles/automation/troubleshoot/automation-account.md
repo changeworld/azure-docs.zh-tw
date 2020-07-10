@@ -8,11 +8,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: bebc89514da7f28015da5cb145ae50bf3fccdb6a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: edd57d3d77432f3bb37872ee26f414b56398cae0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680091"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187280"
 ---
 # <a name="troubleshoot-azure-automation-account-issues"></a>針對 Azure 自動化帳戶問題進行疑難排解
 
@@ -44,7 +45,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 4. 從資源提供者清單中，確認已註冊 **Microsoft.Automation** 資源提供者。
 
-5. 如果未列出提供者，請依照[解決資源提供者註冊的錯誤](/azure/azure-resource-manager/resource-manager-register-provider-errors)中所述進行註冊。
+5. 如果未列出提供者，請依照[解決資源提供者註冊的錯誤](../../azure-resource-manager/templates/error-register-resource-provider.md)中所述進行註冊。
 
 ## <a name="next-steps"></a>後續步驟
 

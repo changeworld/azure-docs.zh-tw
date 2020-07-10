@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5de4b6f16f52d7cab7088ab39aa70267110eed88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84606882"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187178"
 ---
 # <a name="troubleshoot-runbook-issues"></a>針對 Runbook 問題進行疑難排解
 
@@ -203,7 +204,7 @@ The subscription named <subscription name> cannot be found.
 遵循下列步驟，以判斷您是否已向 Azure 進行驗證，並取得您嘗試選取之訂用帳戶的存取權：
 
 1. 為了確定您的指令碼能夠獨立運作，請在 Azure 自動化外部進行測試。
-1. 執行 `Select-*` Cmdlet 之前，先確定您的指令碼會執行 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) \(英文\) Cmdlet。
+1. 執行 `Select-*` Cmdlet 之前，先確定您的指令碼會執行 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) \(英文\) Cmdlet。
 1. 在 Runbook 的開頭加上 `Disable-AzContextAutosave –Scope Process`。 這個 Cmdlet 確保所有認證只會套用到目前 Runbook 的執行。
 1. 如果您仍然看到錯誤訊息，可藉由新增 `Connect-AzAccount` 的 `AzContext` 參數來修改您的程式碼，然後執行程式碼。
 
@@ -400,7 +401,7 @@ Object reference not set to an instance of an object
 
 ### <a name="resolution"></a>解決方案
 
-實作輪詢邏輯，並使用 [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) \(英文\) Cmdlet 來擷取輸出。 這裡定義了此邏輯的範例：
+實作輪詢邏輯，並使用 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) \(英文\) Cmdlet 來擷取輸出。 這裡定義了此邏輯的範例：
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -485,7 +486,7 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 執行下列其中一個動作來解決此錯誤：
 
 * 編輯 Runbook，並減少它所發出的作業資料流數目。
-* 減少在執行 Cmdlet 時所要擷取的資料流數目。 若要這樣做，您可以設定 [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) \(英文\) Cmdlet 的 `Stream` 參數值，以便僅擷取輸出資料流。 
+* 減少在執行 Cmdlet 時所要擷取的資料流數目。 若要這樣做，您可以設定 [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) \(英文\) Cmdlet 的 `Stream` 參數值，以便僅擷取輸出資料流。 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>案例：Runbook 作業因為超過已配置的配額而失敗
 
@@ -558,7 +559,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 有兩種方法可以解決此錯誤：
 
-* 不使用 [Start-Job](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7) \(英文\)，而是改為使用 [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) \(英文\) 來啟動 Runbook。
+* 不使用 [Start-Job](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7) \(英文\)，而是改為使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) \(英文\) 來啟動 Runbook。
 * 嘗試在混合式 Runbook 背景工作角色上執行 Runbook。
 
 若要深入了解此行為和 Azure 自動化 Runbook 的其他行為，請參閱 [Azure 自動化中的 Runbook 執行](../automation-runbook-execution.md)。
@@ -587,8 +588,8 @@ Runbook 的執行時間已超過 Azure 沙箱中公平共用所允許的三小�
 
 啟用子 Runbook 案例的 PowerShell Cmdlet 是：
 
-* [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) \(英文\)。 此 Cmdlet 可讓您啟動 Runbook，並將參數傳遞給 Runbook。
-* [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) \(英文\)。 如果有需要在子 Runbook 完成後執行的作業，此 Cmdlet 可讓您檢查每個子項的作業狀態。
+* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) \(英文\)。 此 Cmdlet 可讓您啟動 Runbook，並將參數傳遞給 Runbook。
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) \(英文\)。 如果有需要在子 Runbook 完成後執行的作業，此 Cmdlet 可讓您檢查每個子項的作業狀態。
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>案例：作業資料流中有關 get_SerializationSettings 方法的錯誤
 
@@ -651,7 +652,7 @@ Operation returned an invalid status code 'Forbidden'
 
 #### <a name="not-using-a-run-as-account"></a>未使用執行身分帳戶
 
-遵循[步驟 5 - 加入驗證來管理 Azure 資源](../automation-first-runbook-textual-powershell.md#add-authentication-to-manage-azure-resources)，以確保您會使用執行身分帳戶來存取 Key Vault。
+遵循[步驟 5 - 加入驗證來管理 Azure 資源](../learn/automation-tutorial-runbook-textual-powershell.md#step-5---add-authentication-to-manage-azure-resources)，以確保您會使用執行身分帳戶來存取 Key Vault。
 
 #### <a name="insufficient-permissions"></a>權限不足
 
@@ -660,7 +661,7 @@ Operation returned an invalid status code 'Forbidden'
 ## <a name="recommended-documents"></a>建議的文件
 
 * [Azure 自動化中的 Runbook 執行](../automation-runbook-execution.md)
-* [在 Azure 自動化中啟動 Runbook](../automation-starting-a-runbook.md)
+* [在 Azure 自動化中啟動 Runbook](../start-runbooks.md)
 
 ## <a name="next-steps"></a>後續步驟
 

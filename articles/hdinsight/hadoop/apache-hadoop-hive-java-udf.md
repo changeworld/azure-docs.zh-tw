@@ -1,5 +1,5 @@
 ---
-title: JAVA 使用者定義函數（UDF）與 Apache Hive Azure HDInsight
+title: JAVA 使用者定義函數 (UDF) 與 Apache Hive Azure HDInsight
 description: 了解如何建立能配合 Apache Hive 使用的以 Java 為基礎的使用者定義函式 (UDF)。 此範例 UDF 會將文字字串的資料表轉換成小寫。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/20/2019
-ms.openlocfilehash: 5af8f2ed1a910e559393796102f0853c4f3f1fd8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8bb5f69bc43a6af27aa71d4cf1fe054d693cc085
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082041"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201224"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>在 HDInsight 中搭配使用 Java UDF 和 Apache Hive
 
@@ -22,7 +22,7 @@ ms.locfileid: "86082041"
 ## <a name="prerequisites"></a>必要條件
 
 * HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
-* [JAVA 開發人員套件（JDK）第8版](https://aka.ms/azure-jdks)
+* [JAVA 開發人員套件 (JDK) 第8版](https://aka.ms/azure-jdks)
 * 根據 Apache 正確[安裝](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是適用於 Java 專案的專案建置系統。
 * 您叢集主要儲存體的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 這會是 wasb://，適用于 Azure Data Lake Storage Gen1 的 Azure Data Lake Storage Gen2 或 adl://的 Azure 儲存體、abfs://。 如果已對 Azure 儲存體啟用安全傳輸，URI 會是 `wasbs://`。  另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 
@@ -234,26 +234,30 @@ cd C:\HDI
 
     此查詢會從資料表中選取狀態，並將字串轉換為小寫，然後將其與未修改的名稱一起顯示。 此輸出看起來類似下列文字：
 
-        +---------------+---------------+--+
-        |  exampleudf   |     state     |
-        +---------------+---------------+--+
-        | california    | California    |
-        | pennsylvania  | Pennsylvania  |
-        | pennsylvania  | Pennsylvania  |
-        | pennsylvania  | Pennsylvania  |
-        | colorado      | Colorado      |
-        | colorado      | Colorado      |
-        | colorado      | Colorado      |
-        | utah          | Utah          |
-        | utah          | Utah          |
-        | colorado      | Colorado      |
-        +---------------+---------------+--+
+    ```output
+    +---------------+---------------+--+
+    |  exampleudf   |     state     |
+    +---------------+---------------+--+
+    | california    | California    |
+    | pennsylvania  | Pennsylvania  |
+    | pennsylvania  | Pennsylvania  |
+    | pennsylvania  | Pennsylvania  |
+    | colorado      | Colorado      |
+    | colorado      | Colorado      |
+    | colorado      | Colorado      |
+    | utah          | Utah          |
+    | utah          | Utah          |
+    | colorado      | Colorado      |
+    +---------------+---------------+--+
+    ```
 
 ## <a name="troubleshooting"></a>疑難排解
 
 執行 hive 工作時，您可能會遇到類似下列文字的錯誤：
 
-    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+```output
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+```
 
 這個問題可能是由 Python 檔案中的行尾結束符號所引起。 許多 Windows 編輯器預設都是使用 CRLF 做為行尾結束符號，但是 Linux 應用程式通常預期使用 LF。
 

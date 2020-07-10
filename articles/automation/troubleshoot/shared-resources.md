@@ -8,11 +8,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680881"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187161"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>針對共用資源問題進行疑難排解
 
@@ -32,7 +33,7 @@ ms.locfileid: "83680881"
 
 #### <a name="resolution"></a>解決方案
 
-若要解決此問題，您必須使用 [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) Cmdlet 移除停滯的模組。 您可以稍後再重試匯入模組。
+若要解決此問題，您必須使用 [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) Cmdlet 移除停滯的模組。 您可以稍後再重試匯入模組。
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -69,7 +70,7 @@ Azure modules are being updated
 * 結構不符合自動化所需的結構。
 * 模組相依於另一個尚未部署到您自動化帳戶的模組。
 * 模組在資料夾中遺失其相依性。
-* 您使用 [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) Cmdlet 來上傳模組，但未提供完整的儲存體路徑，或未使用可公開存取的 URL 來載入模組。
+* 您使用 [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) Cmdlet 來上傳模組，但未提供完整的儲存體路徑，或未使用可公開存取的 URL 來載入模組。
 
 #### <a name="resolution"></a>解決方案
 

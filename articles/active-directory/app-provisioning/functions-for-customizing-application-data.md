@@ -10,11 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: 47f0502226e4227c6b94920da6f040004beb41f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42dcbf693b6ec685849b1523480506e9c8f5b54b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781662"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202887"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>如何：在 Azure AD 中撰寫屬性對應的運算式
 
@@ -25,13 +26,13 @@ ms.locfileid: "84781662"
 屬性對應的運算式語法是 Visual Basic for Applications (VBA) 函式。
 
 * 整個運算式必須以函式定義，由函式名稱後面接著以括號括住的引數組成： <br>
-  *FunctionName （ `<<argument 1>>` ， `<<argument N>>` ）*
-* 您可以在函式內互相巢狀函式。 例如： <br> *FunctionOne （FunctionTwo （ `<<argument1>>` ））*
+  *FunctionName (`<<argument 1>>` ， `<<argument N>>`) *
+* 您可以在函式內互相巢狀函式。 例如： <br> *FunctionOne (FunctionTwo (`<<argument1>>`) # B3*
 * 您可以將三種不同類型的引數傳入函式：
   
   1. 屬性，必須以方括弧括住。 例如：[attributeName]
   2. 字串常數，必須以雙引號括住。 例如："United States"
-  3. 其他函式。 例如： FunctionOne （ `<<argument1>>` ，FunctionTwo （ `<<argument2>>` ））
+  3. 其他函式。 例如： FunctionOne (`<<argument1>>` 、FunctionTwo (`<<argument2>>`) # A3
 * 對於字串常數，如果您在字串中需要反斜線 ( \ ) 或引號 ( " ) ，則必須使用反斜線 ( \ ) 符號逸出。 例如：「公司名稱： \\ "Contoso \\ "」
 
 ## <a name="list-of-functions"></a>函式的清單
@@ -39,7 +40,7 @@ ms.locfileid: "84781662"
 [Append](#append) &nbsp; &nbsp; 附加 &nbsp; &nbsp;[BitAnd](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp;[CBool](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp;[Coalesce](#coalesce) &nbsp; &nbsp; 聯合 &nbsp; &nbsp;[ConvertToBase64](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp;[ConvertToUTF8Hex](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp;[Count](#count) &nbsp; &nbsp; 計數 &nbsp; &nbsp;[CStr](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp;[DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp;[Guid](#guid) &nbsp; &nbsp; Guid &nbsp; &nbsp;[IIF](#iif) &nbsp; &nbsp; IIF &nbsp; &nbsp;[InStr](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp;[IsNull](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp;[IsNullOrEmpty](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp;[IsPresent](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp;[IsString](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp;[Item](#item) &nbsp; &nbsp; 專案 &nbsp; &nbsp;[Join](#join) &nbsp; &nbsp; 聯結 &nbsp; &nbsp;[Left](#left) &nbsp; &nbsp; 左方 &nbsp; &nbsp;[Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word)
 
 ---
-### <a name="append"></a>附加
+### <a name="append"></a>Append
 
 **函數**<br> Append(source, suffix)
 
@@ -47,14 +48,14 @@ ms.locfileid: "84781662"
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常為 source 物件的屬性名稱。 |
 | **尾碼** |必要 |String |您想要附加至 source 值結尾的字串。 |
 
 ---
 ### <a name="bitand"></a>BitAnd
-**函數**<br> BitAnd （value1，value2）
+**函數**<br> BitAnd (value1，value2) 
 
 **描述:**<br> 此函式會將這兩個參數轉換為二進位表示法，並將某一個位元設為：
 
@@ -65,7 +66,7 @@ ms.locfileid: "84781662"
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **value1** |必要 |num |應該使用 value2 AND'ed 的數值|
 | **value2** |必要 |num |應該使用 value1 AND'ed 的數值|
@@ -76,42 +77,42 @@ BitAnd(&HF, &HF7)
 
 ---
 ### <a name="cbool"></a>CBool
-**函數**<br> CBool （運算式）
+**函數**<br> CBool (運算式) 
 
 **描述:**<br> CBool 會根據評估的運算式傳回布林值（boolean）。 如果運算式評估為非零值，則 CBool 會傳回 True，否則會傳回 False。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **expression** |必要 | expression | 任何有效的運算式 |
 
 **範例︰**<br>
-CBool （[attribute1] = [attribute2]）                                                                    
+CBool ( [attribute1] = [attribute2] )                                                                     
 如果這兩個屬性的值相同，即會傳回 True。
 
 ---
 ### <a name="coalesce"></a>Coalesce
-**函數**<br> 聯合（source1.rc，source2，...，defaultValue）
+**函數**<br> 聯合 (source1.rc、source2、...、defaultValue) 
 
 **描述:**<br> 傳回第一個非 Null 的來源值。 如果所有引數都是 Null，而 defaultValue 存在，則會傳回 defaultValue。 如果所有引數都是 Null，而 defaultValue 不存在，則聯合會傳回 Null。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source1.rc .。。sourceN** | 必要 | String |必要，可變次數。 通常為 source 物件的屬性名稱。 |
 | **defaultValue** | 選用 | String | 當所有來源值都是 Null 時，所要使用的預設值。 可以是空字串 ("")。
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
-**函數**<br> ConvertToBase64 （來源）
+**函數**<br> ConvertToBase64 (來源) 
 
 **描述:**<br> ConvertToBase64 函式會將字串轉換為 Unicode Base64 字串。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |要轉換成基底64的字串|
 
@@ -121,13 +122,13 @@ ConvertToBase64("Hello world!")
 
 ---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
-**函數**<br> ConvertToUTF8Hex （來源）
+**函數**<br> ConvertToUTF8Hex (來源) 
 
 **描述:**<br> ConvertToUTF8Hex 函式會將字串轉換為 UTF8 十六進位編碼值。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |要轉換成 UTF8 十六進位的字串|
 
@@ -137,25 +138,25 @@ ConvertToUTF8Hex("Hello world!")
 
 ---
 ### <a name="count"></a>Count
-**函數**<br> Count （屬性）
+**函數**<br>  (屬性計數) 
 
 **描述:**<br> Count 函式會傳回多重值屬性中的元素個數
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **特性** |必要 |屬性 |會計算元素的多重值屬性|
 
 ---
 ### <a name="cstr"></a>CStr
-**函數**<br> CStr （值）
+**函數**<br> CStr (值) 
 
 **描述:**<br> CStr 函數會將值轉換成字串資料類型。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **value** |必要 | 數值、參考或布林值 | 可以是數值、參考屬性或布林值。 |
 
@@ -165,13 +166,13 @@ CStr([dn])
 
 ---
 ### <a name="datefromnum"></a>DateFromNum
-**函數**<br> DateFromNum （值）
+**函數**<br> DateFromNum (值) 
 
 **描述:**<br> DateFromNum 函式會將 AD 日期格式的值轉換為 DateTime 類型。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **value** |必要 | 日期 | 要轉換成日期時間類型的 AD 日期 |
 
@@ -188,7 +189,7 @@ DateFromNum(129699324000000000)
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常為 source 物件的屬性名稱。 |
 | **inputFormat** |必要 |String |source 值的預期格式。 如需支援的格式，請參閱 [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) 。 |
@@ -202,30 +203,30 @@ DateFromNum(129699324000000000)
 
 ---
 ### <a name="iif"></a>IIF
-**函數**<br> IIF （condition，valueIfTrue，valueIfFalse）
+**函數**<br> IIF (condition、valueIfTrue、valueIfFalse) 
 
 **描述:**<br> IIF 函式會根據指定的條件傳回其中一組可能值。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **條件** |必要 |變數或運算式 |可評估為 true 或 false 的任何值或運算式。 |
 | **valueIfTrue** |必要 |變數或字串 | 條件評估為 True 時所傳回的值。 |
 | **valueIfFalse** |必要 |變數或字串 |條件評估為 False 時所傳回的值。|
 
 **範例︰**<br>
-IIF （[country] = "USA"，[country]，[部門]）
+IIF ( [country] = "USA"，[country]，[部門] ) 
 
 ---
 ### <a name="instr"></a>InStr
-**函數**<br> InStr （value1，value2，start，compareType）
+**函數**<br> InStr (value1，value2，start，compareType) 
 
 **描述:**<br> InStr 函式會在字串中尋找第一個出現的子字串
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **value1** |必要 |String |要搜尋的字串 |
 | **value2** |必要 |String |要尋找的字串 |
@@ -241,13 +242,13 @@ InStr("repEated","e",3,vbBinaryCompare)
 
 ---
 ### <a name="isnull"></a>IsNull
-**函數**<br> IsNull （運算式）
+**函數**<br> IsNull (運算式) 
 
 **描述:**<br> 如果運算式評估為 Null，則 IsNull 函式會傳回 True。 針對屬性，Null 表示該屬性不存在。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **expression** |必要 |expression |要評估的運算式 |
 
@@ -257,30 +258,30 @@ IsNull([displayName])
 
 ---
 ### <a name="isnullorempty"></a>IsNullorEmpty
-**函數**<br> IsNullOrEmpty （運算式）
+**函數**<br> IsNullOrEmpty (運算式) 
 
 **描述:**<br> 如果運算式為 Null 或空字串，則 IsNullOrEmpty 函式會傳回 True。 針對屬性，如果屬性不存在，或存在但為空字串，即會評估為 True。
 此函式的相反函式名稱為 IsPresent。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **expression** |必要 |expression |要評估的運算式 |
 
 **範例︰**<br>
-IsNullOrEmpty （[displayName]）                                               
+IsNullOrEmpty ( [displayName] )                                                
 如果屬性不存在或為空字串，則傳回 True
 
 ---
 ### <a name="ispresent"></a>IsPresent
-**函數**<br> IsPresent （運算式）
+**函數**<br> IsPresent (運算式) 
 
 **描述:**<br> 如果運算式評估為非 Null 且不是空字串，則 IsPresent 函式會傳回 True。 這個函式的相反函式名稱為 IsNullOrEmpty。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **expression** |必要 |expression |要評估的運算式 |
 
@@ -289,31 +290,31 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 ---
 ### <a name="isstring"></a>IsString
-**函數**<br> IsString （運算式）
+**函數**<br> IsString (運算式) 
 
 **描述:**<br> 如果運算式可評估為字串類型，則 IsString 函式會評估為 True。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **expression** |必要 |expression |要評估的運算式 |
 
 ---
-### <a name="item"></a>項目
-**函數**<br> Item （屬性、索引）
+### <a name="item"></a>Item
+**函數**<br> 專案 (屬性，索引) 
 
 **描述:**<br> Item 函式會從多重值字串/屬性傳回一個項目。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **特性** |必要 |屬性 |要搜尋的多重值屬性 |
 | **指數** |必要 |整數 | 多重值字串中的專案索引|
 
 **範例︰**<br>
-Item （[proxyAddresses]，1）
+專案 ( [proxyAddresses]，1) 
 
 ---
 ### <a name="join"></a>Join
@@ -325,14 +326,14 @@ Item （[proxyAddresses]，1）
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **separator** |必要 |String |用來分隔串連成一個字串的 source 值的字串。 如果不需要分隔符號，可以是 ""。 |
 | **source1.rc .。。sourceN** |必要，變動次數 |String |要聯結在一起的字串值。 |
 
 ---
 ### <a name="left"></a>Left
-**函數**<br> Left （String，NumChars）
+**函數**<br> 左 (字串，NumChars) 
 
 **描述:**<br> Left 函式會從字串左邊傳回指定的字元數。 如果 numChars = 0，會傳回空字串。
 如果 numChars < 0，會傳回輸入字串。
@@ -341,13 +342,13 @@ Item （[proxyAddresses]，1）
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **String** |必要 |屬性 | 要從中傳回字元的字串 |
-| **NumChars** |必要 |整數 | 數位，識別要從字串的開頭（左邊）傳回的字元數。|
+| **NumChars** |必要 |整數 | 數位，識別要從字串的開頭 (左邊) 傳回的字元數|
 
 **範例︰**<br>
-Left （"John Doe"，3）                                                            
+Left ( "John Doe"，3)                                                             
 傳回 "Joh"
 
 ---
@@ -358,7 +359,7 @@ Left （"John Doe"，3）
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常為屬性的名稱。 |
 | **開始** |必要 |integer |**來源**字串中的索引，代表子字串的開頭。 字串第一個字元的索引為 1，第二個字元的索引為 2，依此類推。 |
@@ -372,7 +373,7 @@ Left （"John Doe"，3）
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String | 通常是名字或姓氏屬性。 |
 
@@ -384,19 +385,19 @@ Left （"John Doe"，3）
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |Boolean String |預期的**來源**值為 "True" 或 "False"。 |
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
-**函數**<br> NumFromDate （值）
+**函數**<br> NumFromDate (值) 
 
 **描述:**<br> NumFromDate 函數會將日期時間值轉換成設定屬性（例如[accountExpires](https://docs.microsoft.com/windows/win32/adschema/a-accountexpires)）所需的 Active Directory 格式。 使用此函式，將從雲端 HR 應用程式（例如 Workday 和 SuccessFactors）接收的日期時間值轉換為其對等的廣告表示。 
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **value** |必要 | String | 支援格式的日期時間字串。 如需支援的格式，請參閱https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx。 |
 
@@ -412,13 +413,13 @@ Left （"John Doe"，3）
 
 ---
 ### <a name="removeduplicates"></a>RemoveDuplicates
-**函數**<br> RemoveDuplicates （屬性）
+**函數**<br> RemoveDuplicates (屬性) 
 
 **描述:**<br> RemoveDuplicates 函式會接受多重值的字串，並確定每個值都是唯一的。
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **特性** |必要 |多重值屬性 |會移除重複專案的多重值屬性|
 
@@ -452,7 +453,7 @@ RemoveDuplicates([proxyAddresses])
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常是來自**來源**物件的屬性名稱。 |
 | **oldValue** |選用 |String |在 **source** 或 **template** 中要被取代的值。 |
@@ -477,7 +478,7 @@ RemoveDuplicates([proxyAddresses])
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |至少需要 2 個，沒有上限 |String | 要評估的唯一值產生規則清單。 |
 
@@ -490,7 +491,7 @@ RemoveDuplicates([proxyAddresses])
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |必要 |String |**[appRoleAssignments]** 物件。 |
 
@@ -502,7 +503,7 @@ RemoveDuplicates([proxyAddresses])
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |要更新的**來源**值。 |
 | **為止** |必要 |String |指定將用來分割字串的字元 (範例：",") |
@@ -515,7 +516,7 @@ RemoveDuplicates([proxyAddresses])
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |要更新的**來源**值。 |
 
@@ -527,7 +528,7 @@ RemoveDuplicates([proxyAddresses])
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |**Source** 值。 |
 | **defaultValue** |選用 |String |當 source 不符合任何 key 時要使用的預設值。 可以是空字串 ("")。 |
@@ -542,7 +543,7 @@ RemoveDuplicates([proxyAddresses])
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常為 source 物件的屬性名稱 |
 | **culture** |選用 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
@@ -555,14 +556,14 @@ RemoveDuplicates([proxyAddresses])
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常為 source 物件的屬性名稱。 |
 | **culture** |選用 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
 
 ---
 ### <a name="word"></a>Word
-**函數**<br> Word （String，WordNumber，分隔符號）
+**函數**<br> Word (字串、WordNumber、分隔符號) 
 
 **描述:**<br> Word 函式會根據描述要使用之分隔符號及要傳回之字數的參數，傳回字串內含的單字。 string 內以 delimiters 其中一個字元來分隔之字元的每個字串，都會被識別為單字：
 
@@ -572,17 +573,17 @@ RemoveDuplicates([proxyAddresses])
 
 **參數**<br> 
 
-| Name | 必要 / 重複 | 類型 | 注意 |
+| 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **String** |必要 |多重值屬性 |要從中傳回單字的字串。|
 | **WordNumber** |必要 | 整數 | 識別應傳回的文字數目|
-| **限定詞** |必要 |String| 字串，代表應該用來識別單字的分隔符號|
+| **限定詞** |必要 |String| 字串，代表應該用來識別單字的分隔符號 (s) |
 
 **範例︰**<br>
-Word （"quick 棕色 fox"，3，""）                                                                                       
+Word ( 「快速棕色 fox」，3，"" )                                                                                        
  傳回 "brown"
 
-Word （"This，string！ has&多個分隔符號"，3，"，！ & #"）                                                                       
+Word ( "This，string！&多個分隔符號"，3，"，！ & #" )                                                                        
 傳回 "has"
 
 ---
@@ -642,7 +643,7 @@ Split([extensionAttribute5], ",")
 
 **範例輸入/輸出：** <br>
 
-* **輸入**（extensionAttribute5）： "PermissionSetOne，PermisionSetTwo"
+* **輸入** (extensionAttribute5) ： "PermissionSetOne，PermisionSetTwo"
 * **輸出**：["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>以特定格式將日期輸出為字串
@@ -699,11 +700,13 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **運算式** <br>
 
+```ad-attr-mapping-expr
     SelectUniqueValue( 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
     )
+```
 
 **範例輸入/輸出：**
 
@@ -721,8 +724,8 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **範例輸入/輸出：** <br>
 
-* **輸入**（郵件）： Null
-* **輸入**（userPrincipalName）： " John.Doe@contoso.com "
+* **輸入** (郵件) ： Null
+* **輸入** (userPrincipalName) ： " John.Doe@contoso.com "
 * **輸出**： " John.Doe@contoso.com "
 
 ## <a name="related-articles"></a>相關文章

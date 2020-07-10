@@ -9,11 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 23e4d104697b5b688330c6ab3a93beebf62f3c6a
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 839347ce0a04cc1ca1bf16c68e0ccc36fcf0f7fc
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799958"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200793"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure 監視器中的計量
 
@@ -28,15 +29,15 @@ Azure 監視器中的計量非常輕量，能夠支援近乎即時的案例，�
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Azure 監視器計量有何功用？
 下表列出您可在 Azure 監視器中使用計量資料的各種方式。
 
-|  |  |
+|  | 描述 |
 |:---|:---|
-| 分析 | 使用[計量瀏覽器](metrics-charts.md)在圖表上分析所收集的計量，並比較來自不同資源的計量。 |
-| 視覺化 | 將圖表從計量瀏覽器釘選到 [Azure 儀表板](../learn/tutorial-app-dashboards.md)。<br>建立[活頁簿](../platform/workbooks-overview.md)，以在互動式報告中與多組資料結合。將查詢的結果匯出至 [Grafana](grafana-plugin.md) 以利用其儀表板功能，並與其他資料來源結合。 |
-| 警示 | 設定[計量警示規則](alerts-metric.md)，在計量值超出閾值時，傳送通知或採取[自動化動作](action-groups.md)。 |
-| 自動化 |  使用[自動調整規模](autoscale-overview.md)，根據超出閾值的計量值來增加或減少資源。 |
-| 匯出 | [將計量路由傳送到記錄](resource-logs-collect-storage.md)，來分析 Azure 監視器計量中的資料與 Azure 監視器記錄中的資料，以及儲存計量值超過 93 天。<br>將計量串流至[事件中樞](stream-monitoring-data-event-hubs.md)以將計量路由傳送至外部系統。 |
-| 擷取 | 使用 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 從命令列存取計量值<br>使用 [REST API](rest-api-walkthrough.md) 從自訂應用程式存取計量值。<br>使用 [CLI](/cli/azure/monitor/metrics) 從命令列存取計量值。 |
-| 封存 | [封存](..//learn/tutorial-archive-data.md)資源的效能或健全狀況歷程記錄，以用於相容性、稽核或離線報告。 |
+| **分析** | 使用[計量瀏覽器](metrics-charts.md)在圖表上分析所收集的計量，並比較來自不同資源的計量。 |
+| **視覺化** | 將圖表從計量瀏覽器釘選到 [Azure 儀表板](../learn/tutorial-app-dashboards.md)。<br>建立[活頁簿](../platform/workbooks-overview.md)，以在互動式報告中與多組資料結合。將查詢的結果匯出至 [Grafana](grafana-plugin.md) 以利用其儀表板功能，並與其他資料來源結合。 |
+| **警示** | 設定[計量警示規則](alerts-metric.md)，在計量值超出閾值時，傳送通知或採取[自動化動作](action-groups.md)。 |
+| **自動化** |  使用[自動調整規模](autoscale-overview.md)，根據超出閾值的計量值來增加或減少資源。 |
+| **匯出** | [將計量路由傳送到記錄](resource-logs-collect-storage.md)，來分析 Azure 監視器計量中的資料與 Azure 監視器記錄中的資料，以及儲存計量值超過 93 天。<br>將計量串流至[事件中樞](stream-monitoring-data-event-hubs.md)以將計量路由傳送至外部系統。 |
+| **擷取** | 使用 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 從命令列存取計量值<br>使用 [REST API](rest-api-walkthrough.md) 從自訂應用程式存取計量值。<br>使用 [CLI](/cli/azure/monitor/metrics) 從命令列存取計量值。 |
+| **封存** | [封存](..//learn/tutorial-archive-data.md)資源的效能或健全狀況歷程記錄，以用於相容性、稽核或離線報告。 |
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>資料如何在 Azure 監視器計量中結構化？
 Azure 監視器計量所收集的資料會儲存在時間序列資料庫中，其已進行最佳化而能分析有時間戳記的資料。 每組計量值都是具有下列屬性的時間序列：

@@ -11,11 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 03af572c94500e046265a5e9affa4f1742fae544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8f712604ae854a1870fe96112db3ae0f2ed60a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782019"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203010"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>檢查使用者布建的狀態
 
@@ -26,11 +27,11 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
  在應用程式的 [布建] 頁面上，您可以查看 Azure AD 布建**服務的狀態**。 頁面底部的 [**目前狀態**] 區段會顯示布建週期是否已開始布建使用者帳戶。 您可以觀賞迴圈的進度、查看已布建多少個使用者和群組，以及查看有多少角色已建立。
 
 當您第一次設定自動布建時，頁面底部的 [**目前狀態**] 區段會顯示初始布建週期的狀態。 此區段會在每次執行增量迴圈時進行更新。 會顯示下列詳細資料：
-- 目前正在執行或上次完成的布建週期類型（初始或增量）。
+- 布建週期的類型 (目前正在執行或上次完成的初始或累加) 。
 - 顯示已完成布建週期百分比的**進度**列。 百分比會反映已布建的頁面計數。 請注意，每個頁面都可以包含多個使用者或群組，因此百分比不會直接與所布建的使用者、群組或角色數目相互關聯。
 - 您可以使用 [重新整理 **] 按鈕來**讓視圖保持更新。
 - 連接器資料存放區中的**使用者**和**群組**數目。 一旦將物件新增至布建範圍，此計數就會增加。 如果使用者已虛刪除或遭到刪除，此計數將不會關閉，因為這不會從連接器資料存放區中移除物件。 [重設](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)cd 之後，此計數會重新計算第一次的同步處理 
-- **View Audit Logs**連結，會開啟 Azure AD 布建記錄檔，以取得使用者布建服務所執行之所有作業的詳細資料，包括個別使用者的布建狀態（請參閱下面的「使用布建[記錄](#use-provisioning-logs-to-check-a-users-provisioning-status)」一節）。
+- **View Audit Logs**連結會開啟 Azure AD 布建記錄檔，以取得使用者布建服務所執行之所有作業的詳細資料，包括個別使用者的布建狀態 (請參閱下面) 的「使用布建[記錄](#use-provisioning-logs-to-check-a-users-provisioning-status)」一節。
 
 布建週期完成之後，[**統計資料]** 區段會顯示已布建到 [日期] 的使用者和群組累計數目，以及最後一個週期的完成日期和持續時間。 **活動識別碼**會唯一識別最新的布建週期。 **工作**識別碼是布建工作的唯一識別碼，而且是您租使用者中的應用程式專用。
 
@@ -40,9 +41,9 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 
 ## <a name="use-provisioning-logs-to-check-a-users-provisioning-status"></a>使用布建記錄來檢查使用者的布建狀態
 
-若要查看所選使用者的布建狀態，請參閱 Azure AD 中的布建[記錄（預覽）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 。 使用者布建服務所執行的所有作業都會記錄在 Azure AD 布建記錄中。 這包括對來源和目標系統進行的所有讀取和寫入作業，以及在每個操作期間讀取或寫入的使用者資料。
+若要查看所選使用者的布建狀態，請參閱 Azure AD 中的布建[記錄 (預覽) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 。 使用者布建服務所執行的所有作業都會記錄在 Azure AD 布建記錄中。 這包括對來源和目標系統進行的所有讀取和寫入作業，以及在每個操作期間讀取或寫入的使用者資料。
 
-您可以在**Azure Active Directory** &gt; [活動] 區段中選取 [Azure Active Directory**企業應用程式**布建 &gt; **記錄（預覽）** ] **Activity** ，以存取 Azure 入口網站中的布建記錄。 您可以根據使用者名稱或來源系統或目標系統中的識別碼來搜尋布建資料。 如需詳細資訊，請參閱布建[記錄（預覽）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
+您可以在**Azure Active Directory** &gt; [活動] 區段中選取 [Azure Active Directory**企業應用程式**布建 &gt; **記錄] ([預覽) ** **Activity** ]，以存取 Azure 入口網站中的布建記錄。 您可以根據使用者名稱或來源系統或目標系統中的識別碼來搜尋布建資料。 如需詳細資訊，請參閱[ (預覽) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)布建記錄。 
 
 布建記錄會記錄布建服務所執行的所有作業，包括：
 
@@ -60,7 +61,7 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 
 - 在**初始迴圈**中，作業時間取決於許多因素，包括布建範圍中的使用者和群組數目，以及來源系統中的使用者和群組總數。 根據 Azure AD 目錄大小和佈建範圍中的使用者數目而定，Azure AD 和應用程式之間的第一次同步處理可能會花費 20 分鐘到數小時。 本節稍後會摘要說明會影響初始週期效能的完整因素清單。
 
-- 在初始週期後的**增量迴圈**中，工作時間通常會更快（例如在10分鐘內），因為布建服務會在初始週期後儲存代表兩個系統狀態的浮水印，以改善後續同步處理的效能。 作業時間取決於在該布建週期中偵測到的變更數目。 如果使用者或群組成員資格變更少於5000個，則工作可以在單一累加布建週期內完成。 
+- 在初始週期後的**增量迴圈**中，工作時間通常會更快 (例如在10分鐘內) ，因為布建服務會在初始週期後儲存代表兩個系統狀態的浮水印，以改善後續同步處理的效能。 作業時間取決於在該布建週期中偵測到的變更數目。 如果使用者或群組成員資格變更少於5000個，則工作可以在單一累加布建週期內完成。 
 
 下表摘要說明常見佈建案例的同步處理時間。 在這些案例中，來源系統是 Azure AD，而目標系統是 SaaS 應用程式。 同步處理時間衍生自 SaaS 應用程式 ServiceNow、Workplace、Salesforce 和 G Suite 的同步作業統計分析。
 
@@ -76,12 +77,11 @@ Azure AD 布建服務會對來源系統和目標系統執行初始布建週期�
 | 同步 Azure AD 中的所有使用者|  < 1,000  | < 30 分鐘 | < 30 分鐘 |
 | 同步 Azure AD 中的所有使用者 | 1,000 - 10,000  | 43 - 86 分鐘 | < 30 分鐘 |
 
-
 針對設定**同步已指派的使用者和群組**，您可以使用下列公式來判斷大約的最小和最大預期**初始週期**時間：
 
-    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
-    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
-    
+- 最小分鐘數 = 0.01 x [已指派的使用者、群組和群組成員數目]
+- 最長分鐘數 = 0.08 x [已指派的使用者、群組和群組成員數目]
+
 影響完成**初始週期**所需時間的因素摘要：
 
 - 佈建範圍中的使用者和群組總數。

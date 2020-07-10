@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca19ccb925721126f7e7d8495addd0794766f376
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610644"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202871"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>開始在 Azure Active Directory 中使用憑證式驗證
 
@@ -37,7 +37,7 @@ ms.locfileid: "82610644"
 
 若要設定憑證式驗證，必須符合下列陳述：
 
-- 僅針對瀏覽器應用程式、使用新式驗證（ADAL）的原生用戶端，或 MSAL 程式庫的同盟環境，才支援以憑證為基礎的驗證（CBA）。 唯一的例外狀況是適用於 Exchange Online (EXO) 的 Exchange Active Sync (EAS)，可以用於同盟和受控兩種帳戶。
+- 以憑證為基礎的驗證 (CBA) 僅支援瀏覽器應用程式的同盟環境、使用新式驗證 (ADAL) 或 MSAL 程式庫的原生用戶端。 唯一的例外狀況是適用於 Exchange Online (EXO) 的 Exchange Active Sync (EAS)，可以用於同盟和受控兩種帳戶。
 - 務必要在 Azure Active Directory 中設定根憑證授權單位和任何中繼憑證授權單位。
 - 每個憑證授權單位都必須有一份可透過網際網路對應 URL 來參考的憑證撤銷清單 (CRL)。
 - 您至少必須在 Azure Active Directory 中設定一個憑證授權單位。 您可以在[設定憑證授權單位](#step-2-configure-the-certificate-authorities)一節中找到相關步驟。
@@ -69,6 +69,7 @@ ms.locfileid: "82610644"
 
 憑證授權單位的結構描述看起來像這樣︰
 
+```csharp
     class TrustedCAsForPasswordlessAuth
     {
        CertificateAuthorityInformation[] certificateAuthorities;
@@ -90,13 +91,16 @@ ms.locfileid: "82610644"
         RootAuthority = 0,
         IntermediateAuthority = 1
     }
+```
 
 設定時，您可以使用 [Azure Active Directory PowerShell 第 2 版](/powershell/azure/install-adv2?view=azureadps-2.0)：
 
 1. 以系統管理員權限啟動 Windows PowerShell。
 2. 安裝 Azure AD 模組 [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 版或更新版本。
 
-        Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+```powershell
+    Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+```
 
 設定的第一個步驟，您需要與您的租用戶建立連線。 一旦您與租用戶的連線存在，您可以檢閱、新增、刪除、修改在您的目錄中定義的受信任的憑證授權單位。
 
@@ -104,39 +108,49 @@ ms.locfileid: "82610644"
 
 若要與您的租用戶建立連線，使用 [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) Cmdlet︰
 
+```azurepowershell
     Connect-AzureAD
+```
 
 ### <a name="retrieve"></a>擷取
 
 若要擷取您的目錄中所定義的受信任的憑證授權單位，使用 [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) Cmdlet。
 
+```azurepowershell
     Get-AzureADTrustedCertificateAuthority
+```
 
 ### <a name="add"></a>新增
 
-若要建立受信任的憑證授權單位，使用 [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) Cmdlet 並將 **crlDistributionPoint** 屬性設為正確值：
+若要建立受信任的憑證授權單位，使用 [New-AzureADTrustedCertificateAuthority](/azurepowershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) Cmdlet 並將 **crlDistributionPoint** 屬性設為正確值：
 
+```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
     $new_ca.AuthorityType=0
     $new_ca.TrustedCertificate=$cert
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
+```
 
 ### <a name="remove"></a>移除
 
 若要移除受信任的憑證授權單位，使用 [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) Cmdlet。
 
+```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
+```
 
 ### <a name="modify"></a>修改
 
 若要修改受信任的憑證授權單位，使用 [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) Cmdlet。
 
+```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
+```
 
 ## <a name="step-3-configure-revocation"></a>步驟 3︰設定撤銷
 
@@ -152,17 +166,23 @@ ms.locfileid: "82610644"
 
 1. 使用管理員認證連線到 MSOL 服務：
 
+```powershell
         $msolcred = get-credential
         connect-msolservice -credential $msolcred
+```
 
 2. 擷取使用者目前的 StsRefreshTokensValidFrom 值︰
 
+```powershell
         $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
         $user.StsRefreshTokensValidFrom
+```
 
 3. 將目前的時間戳記設定為使用者新的 StsRefreshTokensValidFrom 值︰
 
+```powershell
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
+```
 
 您設定的日期必須是未來的日期。 如果不是未來的日期，則不會設定 **StsRefreshTokensValidFrom** 屬性。 如果是未來的日期，才會將 **StsRefreshTokensValidFrom** 設定為目前的時間 (而非 Set-MsolUser 命令指示的日期)。
 

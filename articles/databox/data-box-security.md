@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817722"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200401"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure 資料箱安全性和資料保護
 
@@ -30,11 +30,14 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 - **連線至裝置的用戶端/主機** – 在基礎結構中，連線至資料箱裝置並包含需受保護資料的用戶端。
 - **雲端儲存體** – Azure 中儲存資料的位置。 這通常是儲存體帳戶，且連結到您所建立的 Azure 資料箱資源。
 
-下圖表示透過 Azure 資料箱解決方案從內部部署至 Azure 的資料流程。
+下圖表示透過 Azure 資料箱解決方案從內部部署至 Azure 的資料流程。 此流程適用于資料箱的匯入順序。
 
 ![資料箱安全性](media/data-box-security/data-box-security-2.png)
 
-當資料流經此解決方案時，就會記錄事件並產生記錄檔。 如需詳細資訊，請移至[您 Azure 資料箱的追蹤與事件記錄](data-box-logs.md)。
+當資料流經此解決方案時，就會記錄事件並產生記錄檔。 如需詳細資訊，請移至：
+
+- [追蹤 Azure 資料箱匯入訂單的事件記錄](data-box-logs.md)。
+- [追蹤和 Azure 資料箱匯出訂單的事件記錄](data-box-export-logs.md)
 
 ## <a name="security-features"></a>安全性功能
 
@@ -83,7 +86,7 @@ Azure 資料箱會在服務中收集並顯示下列金鑰執行個體的個人�
   - 街道地址
   - City
   - 郵遞區號
-  - State
+  - 狀態
   - 國家/地區/州/省/區域
   - 貨運公司帳戶號碼
   - 運送追蹤號碼
@@ -99,7 +102,7 @@ Azure 資料箱會在服務中收集並顯示下列金鑰執行個體的個人�
 
 資料箱中會實作下列安全性指導方針： 
 
-|指導方針   |Description   |
+|指導方針   |描述   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | 適用於防水防塵         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 適用於不利的運輸條件耐久性          |

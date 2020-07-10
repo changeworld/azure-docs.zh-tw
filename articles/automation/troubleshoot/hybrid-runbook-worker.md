@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680998"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187195"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>針對混合式 Runbook 背景工作角色問題進行疑難排解
 
@@ -57,7 +58,7 @@ Runbook 在嘗試執行三次後會立即暫停。 在某些情況下，Runbook 
 
 #### <a name="issue"></a>問題
 
-混合式 Runbook 背景工作角色收到事件 15011，表示查詢結果無效。 當背景工作角色嘗試開啟與 [SignalR 伺服器](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.1)的連線時，會出現下列錯誤。
+混合式 Runbook 背景工作角色收到事件 15011，表示查詢結果無效。 當背景工作角色嘗試開啟與 [SignalR 伺服器](/aspnet/core/signalr/introduction?view=aspnetcore-3.1)的連線時，會出現下列錯誤。
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -237,7 +238,7 @@ Windows 混合式 Runbook 背景工作角色仰賴[適用於 Windows 的 Log Ana
 
 #### <a name="issue"></a>問題
 
-在 Windows 混合式 Runbook 背景工作角色上執行的指令碼無法如預期般連線到 Orchestrator 沙箱上的 Office 365。 此指令碼會使用 [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) 來進行連線。 
+在 Windows 混合式 Runbook 背景工作角色上執行的指令碼無法如預期般連線到 Orchestrator 沙箱上的 Office 365。 此指令碼會使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) 來進行連線。 
 
 如果調整 **Orchestrator.Sandbox.exe.config** 來設定 Proxy 和略過清單，則仍然無法正確連線到沙箱。 具有相同 Proxy 和略過清單設定的 **Powershell_ise.exe.config** 檔案或許能提供協助。 Service Management Automation (SMA) 記錄檔和 PowerShell 記錄檔不會提供關於 Proxy 的任何資訊。
 
@@ -247,9 +248,9 @@ Windows 混合式 Runbook 背景工作角色仰賴[適用於 Windows 的 Log Ana
 
 #### <a name="resolution"></a>解決方案
 
-您可藉由移轉指令碼，以使用 Azure Active Directory 模組，而非 PowerShell Cmdlet 的 MSOnline 模組來解決 Orchestrator 沙箱問題。 如需詳細資訊，請參閱[從 Orchestrator 移轉至 Azure 自動化 (搶鮮版 (Beta))](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration)。
+您可藉由移轉指令碼，以使用 Azure Active Directory 模組，而非 PowerShell Cmdlet 的 MSOnline 模組來解決 Orchestrator 沙箱問題。 如需詳細資訊，請參閱[從 Orchestrator 移轉至 Azure 自動化 (搶鮮版 (Beta))](../automation-orchestrator-migration.md)。
 
-如果想要繼續使用 MSOnline 模組 Cmdlet，請將指令碼變更為使用 [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)。 指定 `ComputerName` 和 `Credential` 參數的值。 
+如果想要繼續使用 MSOnline 模組 Cmdlet，請將指令碼變更為使用 [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)。 指定 `ComputerName` 和 `Credential` 參數的值。 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential

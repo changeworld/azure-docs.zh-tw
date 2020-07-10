@@ -6,26 +6,27 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/01/2020
+ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: b0e18ec4665ede783145cd1aedf38c907f6f2905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118491"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187807"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>將 Azure-SSIS 整合執行階段加入虛擬網路
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在 Azure Data Factory 中使用 SQL Server Integration Services （SSIS）時，您應該在下列案例中，將您的 Azure SSIS 整合執行時間（IR）加入 Azure 虛擬網路：
+在 Azure Data Factory 中使用 SQL Server Integration Services (SSIS) 時，您應該在下列案例中，將您的 Azure SSIS 整合執行時間 (IR) 加入至 Azure 虛擬網路：
 
 - 您想要從 Azure SSIS IR 上執行的 SSIS 套件連接到內部部署資料存放區，而不需要設定或管理自我裝載 IR 作為 proxy。 
 
-- 您想要在具有 IP 防火牆規則/虛擬網路服務端點的 Azure SQL Database 中，或在具有私用端點的 SQL 受控執行個體中裝載 SSIS 目錄資料庫（SSISDB）。 
+- 您想要在具有 IP 防火牆規則/虛擬網路服務端點的 Azure SQL Database 中，或在具有私用端點的 SQL 受控執行個體中裝載 SSIS 目錄資料庫 (SSISDB) 。 
 
 - 您想要從 Azure SSIS IR 上執行的 SSIS 套件，連接到設定了虛擬網路服務端點的 Azure 資源。
 
@@ -36,13 +37,13 @@ Data Factory 可讓您將 Azure SSIS IR 加入透過傳統部署模型或 Azure 
 > [!IMPORTANT]
 > 傳統虛擬網路即將淘汰，因此請改用 Azure Resource Manager 的虛擬網路。  如果您已經使用傳統虛擬網路，請儘快切換到 Azure Resource Manager 的虛擬網路。
 
-設定[Azure SQL Server Integration Services （SSIS）整合執行時間（IR）以加入虛擬網路](tutorial-deploy-ssis-virtual-network.md)教學課程會顯示透過 Azure 入口網站的最小步驟。 本文會針對教學課程進行擴充，並說明所有的選擇性工作：
+設定[Azure SQL Server Integration Services (SSIS) 整合執行時間 (IR) 以加入虛擬網路](tutorial-deploy-ssis-virtual-network.md)教學課程會顯示透過 Azure 入口網站的最低步驟。 本文會針對教學課程進行擴充，並說明所有的選擇性工作：
 
-- 如果您使用的是虛擬網路（傳統）。
+- 如果您使用虛擬網路 (傳統) 。
 - 如果您為 Azure SSIS IR 帶入自己的公用 IP 位址。
-- 如果您使用自己的網域名稱系統（DNS）伺服器。
-- 如果您在子網上使用網路安全性群組（NSG）。
-- 如果您使用 Azure ExpressRoute 或使用者定義的路由（UDR）。
+- 如果您使用自己的網域名稱系統 (DNS) 伺服器。
+- 如果您使用網路安全性群組 (子網上的 NSG) 。
+- 如果您使用 Azure ExpressRoute 或使用者定義的路由 (UDR) 。
 - 如果您使用自訂的 Azure SSIS IR。
 - 如果您使用 Azure Powershell 布建。
 
@@ -64,7 +65,7 @@ Data Factory 可讓您將 Azure SSIS IR 加入透過傳統部署模型或 Azure 
 
 如果您在具有虛擬網路服務端點的 Azure SQL Database 中裝載 SSIS 目錄，請務必將您的 Azure SSIS IR 加入相同的虛擬網路和子網。
 
-如果您在具有私用端點的 SQL 受控執行個體中裝載 SSIS 目錄，請務必將您的 Azure SSIS IR 加入相同的虛擬網路，但在與受控實例不同的子網中。 若要將您的 Azure SSIS IR 加入與 SQL 受控執行個體不同的虛擬網路，我們建議虛擬網路對等互連（僅限於相同的區域）或從虛擬網路到虛擬網路的連線。 如需詳細資訊，請參閱[將您的應用程式連線到 AZURE SQL 受控執行個體](../azure-sql/managed-instance/connect-application-instance.md)。
+如果您在具有私用端點的 SQL 受控執行個體中裝載 SSIS 目錄，請務必將您的 Azure SSIS IR 加入相同的虛擬網路，但在與受控實例不同的子網中。 若要將您的 Azure SSIS IR 加入至與 SQL 受控執行個體不同的虛擬網路，我們建議虛擬網路對等互連 (，其限制為相同的區域) 或從虛擬網路到虛擬網路的連線。 如需詳細資訊，請參閱[將您的應用程式連線到 AZURE SQL 受控執行個體](../azure-sql/managed-instance/connect-application-instance.md)。
 
 ## <a name="access-to-azure-services"></a>對 Azure 服務的存取
 
@@ -90,13 +91,13 @@ Data Factory 可讓您將 Azure SSIS IR 加入透過傳統部署模型或 Azure 
 
 - 如果您為 Azure SSIS IR 帶入自己的公用 IP 位址，請參閱[選取靜態公用 ip 位址](#publicIP)
 
-- 如果您在虛擬網路上使用自己的網域名稱系統（DNS）伺服器，請參閱[設定 DNS 伺服器](#dns_server)。 
+- 如果您使用自己的網域名稱系統 (虛擬網路上的 DNS) 伺服器，請參閱[設定 dns 伺服器](#dns_server)。 
 
-- 如果您在子網上使用網路安全性群組（NSG），請參閱[設定 NSG](#nsg)。 
+- 如果您在子網上使用網路安全性群組 (NSG) ，請參閱[設定 NSG](#nsg)。 
 
-- 如果您使用 Azure ExpressRoute 或使用者定義的路由（UDR），請參閱[使用 Azure expressroute 或 UDR](#route)。 
+- 如果您使用 Azure ExpressRoute 或使用者定義的路由 (UDR) ，請參閱[使用 Azure expressroute 或 UDR](#route)。 
 
-- 請確定虛擬網路的資源群組（如果您攜帶自己的公用 IP 位址，則為公用 IP 位址的資源群組）可以建立和刪除特定的 Azure 網路資源。 如需詳細資訊，請參閱[設定資源群組](#resource-group)。 
+- 如果您攜帶自己的公用 IP 位址，請確定虛擬網路的資源群組 (或公用 IP 位址的資源群組) 可以建立和刪除特定的 Azure 網路資源。 如需詳細資訊，請參閱[設定資源群組](#resource-group)。 
 
 - 如果您依照[自訂 AZURE SSIS ir 的設定](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)中所述自訂您的 AZURE ssis ir，您的 AZURE ssis ir 節點將會從預先定義的172.16.0.0 範圍取得私人 IP 位址到172.31.255.255。 因此，請確定您虛擬或內部部署網路的私人 IP 位址範圍不會與此範圍衝突。
 
@@ -124,7 +125,7 @@ Data Factory 可讓您將 Azure SSIS IR 加入透過傳統部署模型或 Azure 
 
 - 請確定您選取的子網具有足夠的可用位址空間，以供 Azure SSIS IR 使用。 將可用的 IP 位址保留至少兩倍的 IR 節點編號。 Azure 會在每個子網路中保留一些 IP 位址。 無法使用這些位址。 子網的第一個和最後一個 IP 位址會保留給通訊協定一致性，而其他三個位址則用於 Azure 服務。 如需詳細資訊，請參閱 [在這些子網路內使用 IP 位址是否有任何限制？](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) 
 
-- 請勿使用由其他 Azure 服務（例如 SQL Database SQL 受控執行個體、App Service 等等）專門佔用的子網。 
+- 請勿使用其他 Azure 服務所獨佔的子網 (例如，SQL Database SQL 受控執行個體、App Service 等等，) 。 
 
 ### <a name="select-the-static-public-ip-addresses"></a><a name="publicIP"></a>選取靜態公用 IP 位址
 
@@ -141,16 +142,16 @@ Data Factory 可讓您將 Azure SSIS IR 加入透過傳統部署模型或 Azure 
 - 它們和虛擬網路應位於相同的訂用帳戶和相同區域中。
 
 ### <a name="set-up-the-dns-server"></a><a name="dns_server"></a>設定 DNS 伺服器 
-如果您需要在由 Azure SSIS IR 加入的虛擬網路中使用自己的 DNS 伺服器來解析您的私人主機名稱，請確定它也可以解析全域 Azure 主機名稱（例如，名為的 Azure 儲存體 blob `<your storage account>.blob.core.windows.net` ）。 
+如果您需要在由 Azure SSIS IR 加入的虛擬網路中使用自己的 DNS 伺服器來解析您的私人主機名稱，請確定它也可以解析全域 Azure 主機名稱 (例如，名為) 的 Azure 儲存體 blob `<your storage account>.blob.core.windows.net` 。 
 
 其中一個建議的方法如下： 
 
--   設定自訂 DNS 將要求轉送至 Azure DNS。 您可以將未解析的 DNS 記錄轉送至您自己的 DNS 伺服器上的 Azure 遞迴解析程式的 IP 位址（168.63.129.16）。 
+-   設定自訂 DNS 將要求轉送至 Azure DNS。 您可以將未解析的 DNS 記錄轉送至您自己的 DNS 伺服器上的 Azure 遞迴解析程式的 IP 位址 (168.63.129.16) 。 
 
 如需詳細資訊，請參閱[使用您自己的 DNS 伺服器的名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。 
 
 > [!NOTE]
-> 請為您的私用主機名稱使用完整功能變數名稱（FQDN），例如使用 `<your_private_server>.contoso.com` ，而不是 `<your_private_server>` ，因為 AZURE SSIS IR 不會自動附加您自己的 DNS 尾碼。
+> 請為您的私用主機名稱使用完整功能變數名稱 (FQDN) ，例如使用 `<your_private_server>.contoso.com` ，而不是 `<your_private_server>` ，因為 AZURE SSIS IR 不會自動附加您自己的 DNS 尾碼。
 
 ### <a name="set-up-an-nsg"></a><a name="nsg"></a>設定 NSG
 如果您需要為您的 Azure SSIS IR 所使用的子網執行 NSG，請允許透過下列埠的輸入和輸出流量： 
@@ -160,7 +161,7 @@ Data Factory 可讓您將 Azure SSIS IR 加入透過傳統部署模型或 Azure 
 | 方向 | 傳輸通訊協定 | 來源 | 來源連接埠範圍 | Destination | 目的地連接埠範圍 | 註解 |
 |---|---|---|---|---|---|---|
 | 輸入 | TCP | BatchNodeManagement | * | VirtualNetwork | 29876、29877 (如果您將 IR 加入 Resource Manager 虛擬網路) <br/><br/>10100、20100、30100 (如果您將 IR 加入傳統虛擬網路)| Data Factory 服務會使用這些連接埠與虛擬網路中的 Azure-SSIS IR 節點進行通訊。 <br/><br/> 無論您是否建立子網路層級的 NSG，Data Factory 一律會在連結至 Azure-SSIS IR 主控虛擬機器的網路介面卡 (NIC) 層級上設定 NSG。 該 NIC 層級的 NSG 僅允許來自指定連接埠上 Data Factory IP 位址的輸入流量。 即使您在子網路層級上對網際網路流量開啟這些連接埠，只要流量不是來自 Data Factory 的 IP 位址，就會在 NIC 層級上遭到封鎖。 |
-| 輸入 | TCP | CorpNetSaw | * | VirtualNetwork | 3389 | 選擇性只有在 Microsoft supporter 要求客戶開啟以進行先進的疑難排解時，才需要此規則，並可在進行疑難排解後立即關閉。 **CorpNetSaw** 服務標記只允許 Microsoft 公司網路上的安全存取工作站使用遠端桌面。 而且此服務標記無法從入口網站選取，只能透過 Azure PowerShell 或 Azure CLI 使用。 <br/><br/> 在 NIC 層級的 NSG 預設會開啟連接埠 3389，且可供控制子網層級 NSG 的連接埠 3389，同時 Azure-SSIS IR 預設會在每個 IR 節點上使用 Windows 防火牆規則來禁止連接埠 3389 輸出，以提供保護。 |
+| 輸入 | TCP | CorpNetSaw | * | VirtualNetwork | 3389 |  (選擇性) 只有在 Microsoft supporter 要求客戶開啟以進行先進的疑難排解時，才需要此規則，並可在進行疑難排解後立即關閉。 **CorpNetSaw** 服務標記只允許 Microsoft 公司網路上的安全存取工作站使用遠端桌面。 而且此服務標記無法從入口網站選取，只能透過 Azure PowerShell 或 Azure CLI 使用。 <br/><br/> 在 NIC 層級的 NSG 預設會開啟連接埠 3389，且可供控制子網層級 NSG 的連接埠 3389，同時 Azure-SSIS IR 預設會在每個 IR 節點上使用 Windows 防火牆規則來禁止連接埠 3389 輸出，以提供保護。 |
 ||||||||
 
 -   **Azure SSIS IR 的輸出需求**
@@ -169,13 +170,13 @@ Data Factory 可讓您將 Azure SSIS IR 加入透過傳統部署模型或 Azure 
 |---|---|---|---|---|---|---|
 | 輸出 | TCP | VirtualNetwork | * | AzureCloud | 443 | 虛擬網路中的 Azure-SSIS IR 節點會使用此連接埠來存取 Azure 服務，例如 Azure 儲存體和 Azure 事件中樞。 |
 | 輸出 | TCP | VirtualNetwork | * | Internet | 80 | (選擇性) 虛擬網路中的 Azure-SSIS IR 節點會使用此連接埠從網際網路下載憑證撤銷清單。 如果您封鎖此流量，則可能會在啟動 IR 時遇到效能降低的情況，且無法檢查憑證撤銷清單中是否有憑證使用情況。 如果您想要進一步將目的地縮小到特定 Fqdn，請參閱**使用 Azure ExpressRoute 或 UDR**一節|
-| 輸出 | TCP | VirtualNetwork | * | Sql | 1433、11000-11999 | 選擇性只有當虛擬網路中的 Azure SSIS IR 節點存取伺服器所裝載的 SSISDB 時，才需要此規則。 如果您的伺服器連線原則設定為 [ **Proxy** ] 而不是 [重新**導向**]，則只需要端口1433。 <br/><br/> 此輸出安全性規則不適用於您的 SQL 受控執行個體在虛擬網路中所裝載的 SSISDB，或 SQL Database 以私人端點設定的 SSISDB。 |
-| 輸出 | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000-11999 | 選擇性只有當虛擬網路中的 Azure SSIS IR 節點存取虛擬網路中的 SQL 受控執行個體所裝載的 SSISDB，或 SQL Database 設定了私用端點時，才需要此規則。 如果您的伺服器連線原則設定為 [ **Proxy** ] 而不是 [重新**導向**]，則只需要端口1433。 |
+| 輸出 | TCP | VirtualNetwork | * | Sql | 1433、11000-11999 |  (選擇性) 只有當虛擬網路中的 Azure SSIS IR 節點存取伺服器所裝載的 SSISDB 時，才需要此規則。 如果您的伺服器連線原則設定為 [ **Proxy** ] 而不是 [重新**導向**]，則只需要端口1433。 <br/><br/> 此輸出安全性規則不適用於您的 SQL 受控執行個體在虛擬網路中所裝載的 SSISDB，或 SQL Database 以私人端點設定的 SSISDB。 |
+| 輸出 | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000-11999 |  (選擇性) 只有當虛擬網路中的 Azure SSIS IR 節點存取虛擬網路中的 SQL 受控執行個體所裝載的 SSISDB，或 SQL Database 以私人端點設定時，才需要此規則。 如果您的伺服器連線原則設定為 [ **Proxy** ] 而不是 [重新**導向**]，則只需要端口1433。 |
 | 輸出 | TCP | VirtualNetwork | * | 儲存體 | 445 | (選擇性) 只有當想要執行儲存在 Azure 檔案儲存體中的 SSIS 套件時，才需要此規則。 |
 ||||||||
 
 ### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a>使用 Azure ExpressRoute 或 UDR
-如果您想要檢查來自 Azure SSIS IR 的輸出流量，您可以將從 Azure SSIS IR 起始的流量路由傳送至內部部署防火牆應用裝置，透過[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)強制通道（將 BGP 路由、0.0.0.0/0 通知到虛擬網路），或透過[Udr](../virtual-network/virtual-networks-udr-overview.md)將網路虛擬裝置（NVA）作為防火牆或[Azure 防火牆](https://docs.microsoft.com/azure/firewall/)。 
+如果您想要檢查來自 Azure SSIS IR 的輸出流量，您可以將[從 AZURE SSIS](https://azure.microsoft.com/services/expressroute/) ir 起始的流量路由傳送到內部部署防火牆應用裝置， (將 BGP 路由（0.0.0.0/0）公告至虛擬網路) 或網路虛擬裝置 (透過[udr](../virtual-network/virtual-networks-udr-overview.md)以防火牆或[Azure 防火牆](https://docs.microsoft.com/azure/firewall/)的形式 NVA) 。 
 
 ![Azure SSIS IR 的 NVA 案例](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir-nva.png)
 
@@ -233,9 +234,9 @@ else
 
     | Azure 環境 | 端點                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure 公用      | <ul><li><b>Azure Data Factory （管理）</b><ul><li>\*. frontend.clouddatahub.net</li></ul></li><li><b>Azure 儲存體（管理）</b><ul><li>\*.blob.core.windows.net</li><li>\*. table.core.windows.net</li></ul></li><li><b>Azure Container Registry （自訂安裝）</b><ul><li>\*.azurecr.io</li></ul></li><li><b>事件中樞（記錄）</b><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Microsoft 記錄服務（內部使用）</b><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
-    | Azure Government  | <ul><li><b>Azure Data Factory （管理）</b><ul><li>\*. frontend.datamovement.azure.us</li></ul></li><li><b>Azure 儲存體（管理）</b><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*. table.core.usgovcloudapi.net</li></ul></li><li><b>Azure Container Registry （自訂安裝）</b><ul><li>\*. azurecr.us</li></ul></li><li><b>事件中樞（記錄）</b><ul><li>\*. servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft 記錄服務（內部使用）</b><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
-    | Azure 中國 21Vianet     | <ul><li><b>Azure Data Factory （管理）</b><ul><li>\*. frontend.datamovement.azure.cn</li></ul></li><li><b>Azure 儲存體（管理）</b><ul><li>\*. blob.core.chinacloudapi.cn</li><li>\*. table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Container Registry （自訂安裝）</b><ul><li>\*. azurecr.cn</li></ul></li><li><b>事件中樞（記錄）</b><ul><li>\*. servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft 記錄服務（內部使用）</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
+    | Azure 公用      | <ul><li><b>Azure Data Factory (管理) </b><ul><li>\*. frontend.clouddatahub.net</li></ul></li><li><b>Azure 儲存體 (管理) </b><ul><li>\*.blob.core.windows.net</li><li>\*. table.core.windows.net</li></ul></li><li><b>Azure Container Registry (自訂安裝) </b><ul><li>\*.azurecr.io</li></ul></li><li><b>事件中樞 (記錄) </b><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Microsoft 記錄服務 (內部使用) </b><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
+    | Azure Government  | <ul><li><b>Azure Data Factory (管理) </b><ul><li>\*. frontend.datamovement.azure.us</li></ul></li><li><b>Azure 儲存體 (管理) </b><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*. table.core.usgovcloudapi.net</li></ul></li><li><b>Azure Container Registry (自訂安裝) </b><ul><li>\*. azurecr.us</li></ul></li><li><b>事件中樞 (記錄) </b><ul><li>\*. servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft 記錄服務 (內部使用) </b><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
+    | Azure China 21Vianet     | <ul><li><b>Azure Data Factory (管理) </b><ul><li>\*. frontend.datamovement.azure.cn</li></ul></li><li><b>Azure 儲存體 (管理) </b><ul><li>\*. blob.core.chinacloudapi.cn</li><li>\*. table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Container Registry (自訂安裝) </b><ul><li>\*. azurecr.cn</li></ul></li><li><b>事件中樞 (記錄) </b><ul><li>\*. servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft 記錄服務 (內部使用) </b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
 
     就 Azure 儲存體、Azure Container Registry 和事件中樞的 Fqdn 而言，您也可以選擇為您的虛擬網路啟用下列服務端點，讓這些端點的網路流量通過 Azure 骨幹網路，而不是路由傳送至您的防火牆設備：
     -  Microsoft.Storage
@@ -245,7 +246,7 @@ else
 
 -   目的地為 CRL 下載網站的埠80。
 
-    您應允許以下的 Fqdn 作為 CRL （憑證撤銷清單）下載適用于 Azure SSIS IR 管理用途的憑證網站：
+    您應允許以下的 Fqdn 作為 CRL (憑證撤銷清單) 下載適用于 Azure SSIS IR 管理用途的憑證網站：
     -  crl.microsoft.com:80
     -  mscrl.microsoft.com:80
     -  crl3.digicert.com:80
@@ -257,11 +258,11 @@ else
 
     如果您不允許此流量，則在啟動 Azure SSIS IR 並失去檢查憑證撤銷清單的功能時，您可能會遇到效能降級，但不建議從安全性的觀點來看。
 
--   埠1433、11000-11999 與目的地為 Azure SQL Database （只有當虛擬網路中的 Azure SSIS IR 的節點存取伺服器所裝載的 SSISDB 時才需要）。
+-   只有當虛擬網路中的 Azure SSIS IR 節點存取) 伺服器所裝載的 SSISDB 時，才需要端口1433、11000-11999 與目的地作為 Azure SQL Database (。
 
     如果您使用 Azure 防火牆，您可以使用 Azure SQL 服務標籤來指定網路規則，否則您可能會允許目的地作為防火牆應用裝置中的特定 Azure sql url。
 
--   目的地為 Azure 儲存體的埠445（只有在執行儲存于 Azure 檔案儲存體的 SSIS 套件時才需要）。
+-   只有當您執行儲存在 Azure 檔案儲存體) 中的 SSIS 封裝時，才需要使用目的地作為 Azure 儲存體的埠 445 (。
 
     如果您使用 Azure 防火牆，您可以指定具有儲存體服務標籤的網路規則，否則您可能會允許目的地作為防火牆應用裝置中的特定 Azure 檔案儲存體 url。
 
@@ -327,9 +328,9 @@ Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的
 
 ## <a name="azure-portal-data-factory-ui"></a>Azure 入口網站 (Data Factory UI)
 
-本節說明如何使用 Azure 入口網站和 Data Factory UI，將現有的 Azure SSIS IR 加入虛擬網路（傳統或 Azure Resource Manager）。 
+本節說明如何使用 Azure 入口網站和 Data Factory UI，將現有的 Azure SSIS IR 加入虛擬網路 (傳統或 Azure Resource Manager) 。 
 
-將您的 Azure SSIS IR 加入虛擬網路之前，您必須適當地設定虛擬網路。 請遵循適用于您的虛擬網路類型（傳統或 Azure Resource Manager）一節中的步驟。 然後依照第三節中的步驟，將您的 Azure SSIS IR 加入虛擬網路。 
+將您的 Azure SSIS IR 加入虛擬網路之前，您必須適當地設定虛擬網路。 依照適用于您的虛擬網路類型 (傳統或 Azure Resource Manager) 一節中的步驟進行。 然後依照第三節中的步驟，將您的 Azure SSIS IR 加入虛擬網路。 
 
 ### <a name="configure-an-azure-resource-manager-virtual-network"></a>設定 Azure Resource Manager 的虛擬網路
 
@@ -385,7 +386,7 @@ Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的
 
 1. 將 **MicrosoftAzureBatch** 加入虛擬網路的**傳統虛擬機器參與者**角色。 
 
-   1. 在左側功能表上，選取 [**存取控制（IAM）**]，然後選取 [**角色指派**] 索引標籤。 
+   1. 在左側功能表上，選取 [**存取控制] [ (IAM) **]，然後選取 [**角色指派**] 索引標籤。 
 
        ![[存取控制] 和 [新增] 按鈕](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 

@@ -6,13 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 496069ebf64340bc55f03df8dc15304b4888bec0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79259951"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200317"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure 資料箱的系統需求
 
@@ -32,13 +33,19 @@ ms.locfileid: "79259951"
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
-### <a name="supported-file-systems-for-linux-clients"></a>Linux 用戶端的支援檔案系統
+
+### <a name="supported-filesystems-for-linux-clients"></a>Linux 用戶端支援的檔案系統
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
+
+
+> [!IMPORTANT] 
+> 針對匯出訂單，不支援透過 REST 連接至資料箱共用。 
 
 ### <a name="supported-storage-accounts"></a>支援的儲存體帳戶
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
+
 
 ### <a name="supported-storage-types"></a>支援的儲存體類型
 
@@ -59,6 +66,6 @@ ms.locfileid: "79259951"
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [部署 Azure 資料箱](data-box-deploy-ordered.md)
