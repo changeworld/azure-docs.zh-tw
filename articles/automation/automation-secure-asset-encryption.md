@@ -9,11 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 1cb70109657343f41a1b3a19f3426377d97e261e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7d59ca60c7f90c227885927086511bd1f8ac7ca1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830118"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185835"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Azure 自動化中的安全資產加密
 
@@ -51,12 +52,12 @@ Azure 自動化中的安全資產包括認證、憑證、連接和加密的變�
 
  - 客戶管理的金鑰會儲存在 Azure Key Vault 中。 
  - 在金鑰保存庫上同時啟用 [虛刪除] 和 [不會清除] 屬性。 需有這些功能，才能在意外刪除時允許復原金鑰。
- - 只有 Azure 自動化加密支援 RSA 金鑰。 如需金鑰的詳細資訊，請參閱[關於 Key Vault 金鑰、秘密和憑證](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)。
+ - 只有 Azure 自動化加密支援 RSA 金鑰。 如需金鑰的詳細資訊，請參閱[關於 Key Vault 金鑰、秘密和憑證](../key-vault/general/about-keys-secrets-certificates.md)。
 - 自動化帳戶和金鑰保存庫可位於不同的訂用帳戶中，但必須位於相同的 Azure Active Directory 租用戶中。
 
 ### <a name="assignment-of-an-identity-to-the-automation-account"></a>將身分識別指派給自動化帳戶
 
-若要使用客戶管理的金鑰搭配自動化帳戶，您的自動化帳戶必須向儲存客戶管理金鑰的金鑰保存庫進行驗證。 Azure 自動化會使用系統指派的受控識別，向 Azure Key Vault 驗證帳戶。 如需受控識別的詳細資訊，請參閱[什麼是適用於 Azure 資源的受控識別？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+若要使用客戶管理的金鑰搭配自動化帳戶，您的自動化帳戶必須向儲存客戶管理金鑰的金鑰保存庫進行驗證。 Azure 自動化會使用系統指派的受控識別，向 Azure Key Vault 驗證帳戶。 如需受控識別的詳細資訊，請參閱[什麼是適用於 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md)
 
 使用下列 REST API 呼叫，將系統指派的受控識別設定為自動化帳戶：
 
@@ -184,7 +185,7 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 
 ## <a name="revocation-of-access-to-a-customer-managed-key"></a>撤銷客戶管理金鑰的存取權
 
-若要撤銷客戶管理金鑰的存取權，請使用 PowerShell 或 Azure CLI。 如需詳細資訊，請參閱 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) 或 [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 撤銷存取權可有效封鎖對自動化帳戶中所有安全資產的存取，因為 Azure 自動化無法存取加密金鑰。
+若要撤銷客戶管理金鑰的存取權，請使用 PowerShell 或 Azure CLI。 如需詳細資訊，請參閱 [Azure Key Vault PowerShell](/powershell/module/az.keyvault/) 或 [Azure Key Vault CLI](/cli/azure/keyvault)。 撤銷存取權可有效封鎖對自動化帳戶中所有安全資產的存取，因為 Azure 自動化無法存取加密金鑰。
 
 ## <a name="next-steps"></a>後續步驟
 

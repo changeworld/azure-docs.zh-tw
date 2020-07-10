@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 578e1580bdaafb1b309a7af44353602cc31cb5a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207002"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170406"
 ---
 # <a name="monitor-azure-functions"></a>監視 Azure Functions
 
@@ -264,7 +264,7 @@ Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，�
 }
 ```
 
-在2.x 版中，您可以從取樣中排除特定類型的遙測。 在上述範例中， `Request` 會從取樣中排除類型的資料。 這可確保記錄*所有*的函式執行（要求），而其他類型的遙測仍會受到取樣。
+在2.x 版中，您可以從取樣中排除特定類型的遙測。 在上述範例中， `Request` 會從取樣中排除類型的資料。 這可確保會記錄*所有*的函式執行 (要求) ，而其他類型的遙測仍會受到取樣。
 
 ### <a name="version-1x"></a>1\.x 版 
 
@@ -537,7 +537,7 @@ namespace functionapp0915
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>在 JavaScript 函式中記錄自訂遙測
 
-下列範例程式碼片段會使用 [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) \(英文\) 來傳送自訂遙測：
+以下是使用[Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js)傳送自訂遙測的範例程式碼片段：
 
 ### <a name="version-2x-and-later"></a>2\.x 版和更新版本
 
@@ -626,7 +626,7 @@ Functions v2 會自動收集 HTTP 要求、服務匯流排、事件中樞及 SQL
 
 ## <a name="streaming-logs"></a>串流記錄
 
-開發應用程式時，您通常會想要查看在 Azure 中執行時，以近乎即時方式寫入至記錄的內容。
+開發應用程式時，您通常會想要查看在 Azure 中執行時，以近乎即時的方式寫入記錄檔。
 
 有兩種方式可以檢視函式執行所產生之記錄檔的資料流。
 
@@ -688,27 +688,41 @@ Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscripti
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
 
-## <a name="scale-controller-logs"></a>調整控制器記錄
+## <a name="scale-controller-logs-preview"></a>調整控制器記錄 (預覽) 
 
-[Azure Functions 縮放控制器](./functions-scale.md#runtime-scaling)會監視執行應用程式的函式主機實例，並決定何時加入或移除函式主控制項實例。 如果您需要瞭解調整控制器在應用程式中進行的決策，您可以將它設定為將記錄發出至 Application Insights 或 Blob 儲存體。
+這項功能處於預覽狀態。 
 
-> [!WARNING]
-> 這項功能處於預覽狀態。 我們不建議您讓這項功能無限期地啟用，而且您應該改為在需要所收集的資訊時加以啟用，然後再加以停用。
+[Azure Functions 縮放控制器](./functions-scale.md#runtime-scaling)會監視您的應用程式執行所在 Azure Functions 主機的實例。 此控制器會決定何時要根據目前的效能來新增或移除實例。 您可以讓調整控制器發出記錄至 Application Insights 或 Blob 儲存體，以進一步瞭解調整控制器為您的函數應用程式所做的決策。
 
-若要啟用這項功能，請新增名為的應用程式設定 `SCALE_CONTROLLER_LOGGING_ENABLED` 。 此設定的值必須是格式 `{Destination}:{Verbosity}` ，其中：
-* `{Destination}`指定要傳送到之記錄的目的地，而且必須是 `AppInsights` 或 `Blob` 。
-* `{Verbosity}`指定您想要的記錄層級，而且必須是 `None` 、 `Warning` 或其中之一 `Verbose` 。
+若要啟用這項功能，請新增名為的應用程式設定 `SCALE_CONTROLLER_LOGGING_ENABLED` 。 此設定的值必須是格式 `<DESTINATION>:<VERBOSITY>` ，根據下列各項：
 
-例如，若要將詳細資訊從縮放控制器記錄到 Application Insights，請使用值 `AppInsights:Verbose` 。
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
 
-> [!NOTE]
-> 如果您啟用 `AppInsights` 目的地類型，您必須確定您已設定[函數應用程式的 Application Insights](#enable-application-insights-integration)。
+例如，下列 Azure CLI 命令會開啟從調整控制器到 Application Insights 的詳細資訊記錄：
 
-如果您將目的地設為 `Blob` ，則會在 `azure-functions-scale-controller` 應用程式設定中設定的儲存體帳戶中，建立名為的 blob 容器中的記錄 `AzureWebJobsStorage` 。
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:Verbose
+```
 
-如果您將詳細資訊設定為 `Verbose` ，調整控制器會記錄背景工作計數中每項變更的原因，以及參與調整控制器決策之觸發程式的相關資訊。 例如，記錄會包含觸發程式警告，以及在縮放控制器執行之前和之後的觸發程式所使用的雜湊。
+在此範例中，將和分別取代為您的函式 `<FUNCTION_APP_NAME>` `<RESOURCE_GROUP_NAME>` 應用程式名稱和資源組名。 
 
-若要停用縮放控制器記錄，請將的值設定 `{Verbosity}` 為， `None` 或移除 `SCALE_CONTROLLER_LOGGING_ENABLED` 應用程式設定。
+下列 Azure CLI 命令會藉由將詳細資訊設定為來停用記錄 `None` ：
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:None
+```
+
+您也可以 `SCALE_CONTROLLER_LOGGING_ENABLED` 使用下列 Azure CLI 命令移除設定，以停用記錄：
+
+```azurecli-interactive
+az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--setting-names SCALE_CONTROLLER_LOGGING_ENABLED
+```
 
 ## <a name="disable-built-in-logging"></a>停用內建記錄
 

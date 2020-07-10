@@ -5,19 +5,20 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 49655d11858086b16099a1864fd4d2dc5988f02a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 353f29d9b4c6599226619d40e4378e21618bcad4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117437"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185903"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>限制變更追蹤和清查部署範圍
 
-本文說明如何在使用[變更追蹤和清查](change-tracking.md)功能將變更部署至您的 vm 時，使用範圍設定。 如需詳細資訊，請參閱[以 Azure 監視器的目標監視解決方案（預覽）](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)。 
+本文說明如何在使用[變更追蹤和清查](change-tracking.md)功能將變更部署至您的 vm 時，使用範圍設定。 如需詳細資訊，請參閱[Azure 監視器 (Preview) 中的目標監視解決方案](../azure-monitor/insights/solution-targeting.md)。 
 
 ## <a name="about-scope-configurations"></a>關於範圍設定
 
-範圍設定是一或多個已儲存的搜尋（查詢）的群組，用來將變更追蹤和清查的範圍限制為特定的電腦。 在 Log Analytics 工作區中使用範圍設定，將目標設為要啟用的電腦。 當您從功能將電腦新增至變更時，電腦也會新增至工作區中已儲存的搜尋。
+範圍設定是一或多個已儲存搜尋的群組 (查詢) 用來將變更追蹤和清查範圍限制在特定電腦上。 在 Log Analytics 工作區中使用範圍設定，將目標設為要啟用的電腦。 當您從功能將電腦新增至變更時，電腦也會新增至工作區中已儲存的搜尋。
 
 ## <a name="set-the-scope-limit"></a>設定範圍限制
 
@@ -27,7 +28,7 @@ ms.locfileid: "84117437"
 
 2. 按一下 [**移至工作區**]。
 
-3. 選取 [**工作區資料來源**] 底下的 **[範圍設定（預覽）** ]。
+3. 選取 [**工作區] [資料來源**] 下的 [範圍設定] ** (預覽) ** 。
 
 4. 選取範圍設定右邊的省略號 `MicrosoftDefaultScopeConfig-ChangeTracking` ，然後按一下 [**編輯**]。 
 

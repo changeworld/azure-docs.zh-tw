@@ -5,17 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424069"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185869"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>停機期間啟動/停止 VM 概觀
 
 [在離峰期間啟動/停止 Vm] 功能會啟動或停止已啟用的 Azure Vm。 此功能會依使用者定義的排程來啟動或停止機器、透過 Azure 監視器記錄來提供深入解析，以及使用[動作群組](../azure-monitor/platform/action-groups.md)傳送選用的電子郵件。 在大多數情況下，Azure Resource Manager 和傳統 VM 上都可以啟用此功能。 
 
-這項功能會使用[update-azvm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) Cmdlet 來啟動 vm。 它會使用[停止 update-azvm](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)來停止 vm。
+這項功能會使用[update-azvm](/powershell/module/az.compute/start-azvm) Cmdlet 來啟動 vm。 它會使用[停止 update-azvm](/powershell/module/az.compute/stop-azvm)來停止 vm。
 
 > [!NOTE]
 > 雖然 runbook 已更新為使用新的 Azure Az module Cmdlet，但它們會使用 AzureRM 前置詞別名。
@@ -36,7 +37,7 @@ ms.locfileid: "84424069"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-「關機期間啟動/停止 VM」功能的 Runbook 支援 [Azure 執行身分帳戶](automation-create-runas-account.md)。 「執行身分帳戶」是較好的驗證方法，因為使用憑證驗證，而不是可能過期或經常變更的密碼。
+「關機期間啟動/停止 VM」功能的 Runbook 支援 [Azure 執行身分帳戶](./manage-runas-account.md)。 「執行身分帳戶」是較好的驗證方法，因為使用憑證驗證，而不是可能過期或經常變更的密碼。
 
 建議您以單獨的自動化帳戶來執行已啟用「停機期間啟動/停止 VM」功能的 VM。 Azure 模組版本經常升級，而且參數可能變更。 此功能不會隨之同步升級，還可能不適用於較新版的 Cmdlet。 建議先在測試自動化帳戶中測試模組更新，再將更新匯入至生產自動化帳戶。
 
@@ -106,7 +107,7 @@ ms.locfileid: "84424069"
 |Runbook | 參數 | 描述|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 從父系 Runbook 呼叫。 在自動停止案例中，此 Runbook 會為每個資源建立警示。|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目標訂用帳戶或資源群組中的 VM 上建立或更新 Azure 警示規則。 <br> `VMList`是以逗號分隔的 Vm 清單（不含空格），例如 `vm1,vm2,vm3` 。<br> `WhatIf` 可驗證 Runbook 邏輯但不執行。|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目標訂用帳戶或資源群組中的 VM 上建立或更新 Azure 警示規則。 <br> `VMList`是以逗號分隔的 Vm 清單， (不含空格) ，例如 `vm1,vm2,vm3` 。<br> `WhatIf` 可驗證 Runbook 邏輯但不執行。|
 |AutoStop_Disable | None | 停用「自動停止」警示和預設排程。|
 |AutoStop_VM_Child | WebHookData | 從父系 Runbook 呼叫。 警示規則會呼叫此 Runbook 以停止傳統 VM。|
 |AutoStop_VM_Child_ARM | WebHookData |從父系 Runbook 呼叫。 警示規則會呼叫此 Runbook 以停止 VM。  |
@@ -121,7 +122,7 @@ ms.locfileid: "84424069"
 下表列出在您自動化帳戶中建立的變數。 只修改開頭為 `External` 的變數。 修改開頭為 `Internal` 的變數會造成不良後果。
 
 > [!NOTE]
-> VM 名稱和資源群組的限制主要是由於變數大小。 請參閱 [Azure 自動化中的變數資產](https://docs.microsoft.com/azure/automation/shared-resources/variables)。
+> VM 名稱和資源群組的限制主要是由於變數大小。 請參閱 [Azure 自動化中的變數資產](./shared-resources/variables.md)。
 
 |變數 | 描述|
 |---------|------------|
@@ -172,11 +173,11 @@ ms.locfileid: "84424069"
 如果每個雲端服務有 20 個以上的 VM，以下提供一些建議：
 
 * 使用父代 Runbook **ScheduledStartStop_Parent** 建立多個排程，並為每個排程指定 20 個 VM。 
-* 在 [排程] 屬性中，使用 `VMList` 參數將 VM 名稱指定為逗號分隔清單（無空格）。 
+* 在 [排程] 屬性中，使用 `VMList` 參數將 VM 名稱指定為逗號分隔清單， (不會) 空格。 
 
 否則，如果此功能的自動化作業執行超過三個小時，則根據[公平共用](automation-runbook-execution.md#fair-share)限制，作業會暫時卸載或停止。
 
-Azure CSP 訂用帳戶僅支援 Azure Resource Manager 模型。 非 Azure Resource Manager 服務不在方案中。 當「停機期間啟動/停止 VM」功能執行時，因為此功能有 Cmdlet 來管理傳統資源，您可能會收到錯誤。 若要深入了解 CSP，請參閱 [CSP 訂用帳戶中可用的服務](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)。 如果您使用 CSP 訂用帳戶，則在部署之後，應該將 [External_EnableClassicVMs](#variables) 變數修改為 False。
+Azure CSP 訂用帳戶僅支援 Azure Resource Manager 模型。 非 Azure Resource Manager 服務不在方案中。 當「停機期間啟動/停止 VM」功能執行時，因為此功能有 Cmdlet 來管理傳統資源，您可能會收到錯誤。 若要深入了解 CSP，請參閱 [CSP 訂用帳戶中可用的服務](/azure/cloud-solution-provider/overview/azure-csp-available-services)。 如果您使用 CSP 訂用帳戶，則在部署之後，應該將 [External_EnableClassicVMs](#variables) 變數修改為 False。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

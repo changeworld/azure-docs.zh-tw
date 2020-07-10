@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4fb593f303eea0f4866dc248412af2f261993e92
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134610"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170338"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -23,7 +23,7 @@ ms.locfileid: "86134610"
 
 [待用資料加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)是組織中常見的隱私權和安全性需求。 您可讓 Azure 完全管理待用資料加密，同時有各種選項可密切管理加密或加密金鑰。
 
-Azure 監視器可確保所有待用資料都會使用 Azure 管理的金鑰加密。 Azure 監視器也可供選擇使用自己的金鑰來加密資料，該金鑰會儲存在 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 中，並供儲存體使用系統指派的 [受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)驗證來存取。 此金鑰可能 [受軟體或硬體 HSM 保護](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
+Azure 監視器使用 Microsoft 管理的金鑰 (MMK) ，確保所有資料和已儲存的查詢都在待用時加密。 Azure 監視器也會提供使用您自己的金鑰進行加密的選項，其儲存在您的[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)中，並使用系統指派的[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)驗證來存取儲存體。 此金鑰 (CMK) 可能是[軟體或硬體 HSM 保護](https://docs.microsoft.com/azure/key-vault/key-vault-overview)的。
 
 Azure 監視器使用加密的方式與  [Azure 儲存體加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)其運作方式相同。 
 
@@ -100,7 +100,7 @@ Authorization: Bearer eyJ0eXAiO....
 
 ### <a name="asynchronous-operations-and-status-check"></a>非同步作業和狀態檢查
 
-此設定程序中的某些作業因為無法快速完成而以非同步方式執行。 在設定中使用 REST 要求時，回應一開始會傳回 HTTP 狀態碼200（OK）和標頭，並在接受時使用*Azure AsyncOperation*屬性：
+此設定程序中的某些作業因為無法快速完成而以非同步方式執行。 在設定中使用 REST 要求時，回應一開始會傳回 HTTP 狀態碼 200 (OK) 和標頭，並在接受時使用*Azure AsyncOperation*屬性：
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
@@ -196,7 +196,7 @@ CMK 功能會在專用的 Log Analytics 叢集上提供。若要確認您的區�
 建立「叢集」資源時，您必須指定「容量保留」層級 (SKU)。 「容量保留」層級的範圍可介於每天 1,000 到 2,000 GB 之間，且可在稍後將其更新為 100 的間隔。 如果需要高於每天 2,000 GB 的容量保留層級，請透過 LAIngestionRate@microsoft.com 與我們連絡。 [深入了解](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
 
 *billingType* 屬性可判斷「叢集」資源及其資料的計費屬性：
-- 叢集（預設值）--*叢集的容量*保留成本會針對叢集資源*進行分類。*
+- 叢集* (預設*) --叢集的容量保留成本是以*叢集資源為*屬性。
 - *工作區*--叢集的容量保留成本會根據叢集中的工作區按比例進行屬性化，而如果當天的總內嵌資料低於容量保留 *，則會使用叢集資源來*計費。 若要深入瞭解叢集定價模式，請參閱[Log Analytics 專用](manage-cost-storage.md#log-analytics-dedicated-clusters)叢集。 
 
 > [!NOTE]
@@ -468,7 +468,7 @@ Log Analytics 中使用的查詢語言是可表達的，而且可以包含您新
 > [!NOTE]
 > 尚不支援用於活頁簿和 Azure 儀表板中的查詢 CMK。 這些查詢會使用 Microsoft 金鑰保持加密。  
 
-當您[攜帶自己的儲存體](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage)（BYOS）並將它與您的工作區產生關聯時，服務會將*已儲存的搜尋*和*記錄警示*查詢上傳至您的儲存體帳戶。 這表示您可以使用您用來加密 Log Analytics 叢集中資料的相同金鑰或不同的金鑰，來控制儲存體帳戶和待用[加密原則](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys)。 不過，您會負責與該儲存體帳戶相關聯的成本。 
+當您將[自己的儲存體](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage) (BYOS) ，並將它與您的工作區產生關聯時，服務會將*已儲存的搜尋*和*記錄警示*查詢上傳至您的儲存體帳戶。 這表示您可以使用您用來加密 Log Analytics 叢集中資料的相同金鑰或不同的金鑰，來控制儲存體帳戶和待用[加密原則](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys)。 不過，您會負責與該儲存體帳戶相關聯的成本。 
 
 **設定查詢的 CMK 之前的考慮**
 * 您必須對您的工作區和儲存體帳戶具有「寫入」許可權

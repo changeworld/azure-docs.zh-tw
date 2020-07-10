@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201696"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181330"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中使用複寫資料表的設計指引
 
@@ -149,9 +149,9 @@ SQL 集區是透過維護資料表的主要版本來實作複寫資料表。 會
 
 例如，以下載入模式會從四個來源載入資料，然後叫用四次重建。
 
-        Load from source 1.
+- 從來源 1 載入。
 - Select 陳述式觸發重建 1。
-        從來源 2 載入。
+- 從來源 2 載入。
 - Select 陳述式觸發重建 2。
 - 從來源 3 載入。
 - Select 陳述式觸發重建 3。

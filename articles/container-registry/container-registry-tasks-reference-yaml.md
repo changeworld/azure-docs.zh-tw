@@ -3,11 +3,12 @@ title: YAML 參考-ACR 工作
 description: 適用於以 YAML 為「ACR 工作」定義工作的參考，包括工作屬性、步驟類型、步驟屬性及內建變數。
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: 9558f698b4a9dbca46431fc02ced6ae30de29121
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11771c32db3b3d7c975c0262bda228903a58978f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79246977"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171052"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 工作參考：YAML
 
@@ -76,12 +77,12 @@ az configure --defaults acr=myregistry
 
 | 屬性 | 類型 | 選用 | 描述 | 支援覆寫 | 預設值 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | 字串 | Yes | 「ACR 工作」服務所剖析的 `acr-task.yaml` 檔案版本。 在「ACR 工作」努力維持回溯相容性的同時，此值則可讓「ACR 工作」在已定義的版本內維持相容性。 如果未指定，則預設為最新版本。 | 否 | None |
-| `stepTimeout` | 整數 (秒) | Yes | 步驟的可執行秒數上限。 如果在工作上指定屬性，則會設定 `timeout` 所有步驟的預設屬性。 如果在 `timeout` 步驟上指定屬性，它會覆寫工作所提供的屬性。 | Yes | 600 (10 分鐘) |
-| `workingDirectory` | 字串 | Yes | 容器在執行時間期間的工作目錄。 如果在工作上指定屬性，則會設定 `workingDirectory` 所有步驟的預設屬性。 如果在步驟上指定，它會覆寫工作所提供的屬性。 | Yes | `/workspace` |
-| `env` | [字串, 字串, ...] | Yes |  格式的字串陣列 `key=value` ，定義工作的環境變數。 如果在工作上指定屬性，則會設定 `env` 所有步驟的預設屬性。 如果在步驟上指定，它會覆寫任何繼承自工作的環境變數。 | None |
-| `secrets` | [秘密，秘密，...] | Yes | [秘密](#secret)物件的陣列。 | None |
-| `networks` | [network，network，...] | Yes | [網路](#network)物件的陣列。 | None |
+| `version` | 字串 | 是 | 「ACR 工作」服務所剖析的 `acr-task.yaml` 檔案版本。 在「ACR 工作」努力維持回溯相容性的同時，此值則可讓「ACR 工作」在已定義的版本內維持相容性。 如果未指定，則預設為最新版本。 | 否 | None |
+| `stepTimeout` | 整數 (秒) | 是 | 步驟的可執行秒數上限。 如果在工作上指定屬性，則會設定 `timeout` 所有步驟的預設屬性。 如果在 `timeout` 步驟上指定屬性，它會覆寫工作所提供的屬性。 | 是 | 600 (10 分鐘) |
+| `workingDirectory` | 字串 | 是 | 容器在執行時間期間的工作目錄。 如果在工作上指定屬性，則會設定 `workingDirectory` 所有步驟的預設屬性。 如果在步驟上指定，它會覆寫工作所提供的屬性。 | 是 | `/workspace` |
+| `env` | [字串, 字串, ...] | 是 |  格式的字串陣列 `key=value` ，定義工作的環境變數。 如果在工作上指定屬性，則會設定 `env` 所有步驟的預設屬性。 如果在步驟上指定，它會覆寫任何繼承自工作的環境變數。 | 無 |
+| `secrets` | [秘密，秘密，...] | 是 | [秘密](#secret)物件的陣列。 | 無 |
+| `networks` | [network，network，...] | 是 | [網路](#network)物件的陣列。 | 無 |
 
 ### <a name="secret"></a>secret
 
@@ -89,9 +90,9 @@ Secret 物件具有下列屬性。
 
 | 屬性 | 類型 | 選用 | 描述 | 預設值 |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | 字串 | No | 密碼的識別碼。 | None |
-| `keyvault` | 字串 | Yes | Azure Key Vault 秘密 URL。 | None |
-| `clientID` | 字串 | Yes | 適用于 Azure 資源之[使用者指派受控識別](container-registry-tasks-authentication-managed-identity.md)的用戶端識別碼。 | None |
+| `id` | 字串 | No | 密碼的識別碼。 | 無 |
+| `keyvault` | 字串 | 是 | Azure Key Vault 秘密 URL。 | 無 |
+| `clientID` | 字串 | 是 | 適用于 Azure 資源之[使用者指派受控識別](container-registry-tasks-authentication-managed-identity.md)的用戶端識別碼。 | 無 |
 
 ### <a name="network"></a>network
 
@@ -99,17 +100,17 @@ Network 物件具有下列屬性。
 
 | 屬性 | 類型 | 選用 | 描述 | 預設值 |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | 字串 | No | 網路的名稱。 | None |
-| `driver` | 字串 | Yes | 用來管理網路的驅動程式。 | None |
-| `ipv6` | bool | Yes | 是否啟用 IPv6 網路功能。 | `false` |
-| `skipCreation` | bool | Yes | 是否略過網路建立。 | `false` |
-| `isDefault` | bool | Yes | 網路是否為 Azure Container Registry 所提供的預設網路 | `false` |
+| `name` | 字串 | No | 網路的名稱。 | 無 |
+| `driver` | 字串 | 是 | 用來管理網路的驅動程式。 | 無 |
+| `ipv6` | bool | 是 | 是否啟用 IPv6 網路功能。 | `false` |
+| `skipCreation` | bool | 是 | 是否略過網路建立。 | `false` |
+| `isDefault` | bool | 是 | 網路是否為 Azure Container Registry 所提供的預設網路 | `false` |
 
 ## <a name="task-step-types"></a>工作步驟類型
 
 「ACR 工作」支援三種步驟類型。 每一種步驟類型都支援數個屬性，詳述於每一種步驟類型的小節中。
 
-| 步驟類型 | Description |
+| 步驟類型 | 描述 |
 | --------- | ----------- |
 | [`build`](#build) | 使用熟悉的 `docker build` 語法來建置容器映像。 |
 | [`push`](#push) | 執行新建置或重新標記之映像的 `docker push` 以推送至容器登錄。 支援 Azure Container Registry、其他私人登錄，以及公用 Docker Hub。 |
@@ -132,15 +133,15 @@ steps:
 
 | 參數 | 說明 | 選擇性 |
 | --------- | ----------- | :-------: |
-| `-t` &#124; `--image` | 定義所建置映像的完整 `image:tag`。<br /><br />由於映像可能會用於內部工作驗證 (例如功能測試)，因此並非所有映像都需要 `push` 來推送至登錄。 不過，若要在工作執行內將某個映像執行個體化，則該映像確實需要一個可供參考的名稱。<br /><br />不同于 `az acr build` ，執行 ACR 工作不會提供預設的推送行為。 使用「ACR 工作」時，預設案例會能夠建置、驗證，然後推送映像。 如需了解如何視需要推送所建置的映像，請參閱 [push](#push)。 | Yes |
-| `-f` &#124; `--file` | 指定傳遞給 `docker build` 的 Dockerfile。 如果未指定，則會假設使用內容根目錄中的預設 Dockerfile。 若要指定 Dockerfile，請傳遞相對於內容根目錄的檔案名。 | Yes |
-| `context` | 傳遞給 `docker build` 的根目錄。 每個工作的根目錄都會設定為共用的 [workingDirectory](#task-step-properties)，並且包含相關 Git 複製目錄的根目錄。 | No |
+| `-t` &#124; `--image` | 定義所建置映像的完整 `image:tag`。<br /><br />由於映像可能會用於內部工作驗證 (例如功能測試)，因此並非所有映像都需要 `push` 來推送至登錄。 不過，若要在工作執行內將某個映像執行個體化，則該映像確實需要一個可供參考的名稱。<br /><br />不同于 `az acr build` ，執行 ACR 工作不會提供預設的推送行為。 使用「ACR 工作」時，預設案例會能夠建置、驗證，然後推送映像。 如需了解如何視需要推送所建置的映像，請參閱 [push](#push)。 | 是 |
+| `-f` &#124; `--file` | 指定傳遞給 `docker build` 的 Dockerfile。 如果未指定，則會假設使用內容根目錄中的預設 Dockerfile。 若要指定 Dockerfile，請傳遞相對於內容根目錄的檔案名。 | 是 |
+| `context` | 傳遞給 `docker build` 的根目錄。 每個工作的根目錄都會設定為共用的 [workingDirectory](#task-step-properties)，並且包含相關 Git 複製目錄的根目錄。 | 否 |
 
 ### <a name="properties-build"></a>屬性：build
 
 `build` 步驟類型支援下列屬性。 在這篇文章的工作[步驟屬性](#task-step-properties)一節中，尋找這些屬性的詳細資料。
 
-| | | |
+| Properties | 類型 | 必要 |
 | -------- | ---- | -------- |
 | `detach` | bool | 選擇性 |
 | `disableWorkingDirectoryOverride` | bool | 選擇性 |
@@ -212,7 +213,7 @@ steps:
 
 `push` 步驟類型支援下列屬性。 在這篇文章的工作[步驟屬性](#task-step-properties)一節中，尋找這些屬性的詳細資料。
 
-| | | |
+| 屬性 | 類型 | 必要 |
 | -------- | ---- | -------- |
 | `env` | [字串, 字串, ...] | 選擇性 |
 | `id` | 字串 | 選擇性 |
@@ -257,7 +258,7 @@ steps:
 
 `cmd` 步驟類型支援下列屬性：
 
-| | | |
+| 屬性 | 類型 | 必要 |
 | -------- | ---- | -------- |
 | `detach` | bool | 選擇性 |
 | `disableWorkingDirectoryOverride` | bool | 選擇性 |
@@ -357,28 +358,28 @@ steps:
 
 | 屬性 | 類型 | 選用 | 描述 | 預設值 |
 | -------- | ---- | -------- | ----------- | ------- |
-| `detach` | bool | Yes | 執行時是否應將容器中斷連結。 | `false` |
-| `disableWorkingDirectoryOverride` | bool | Yes | 是否要停用覆 `workingDirectory` 寫功能。 將此與搭配使用， `workingDirectory` 即可完整控制容器的工作目錄。 | `false` |
-| `entryPoint` | 字串 | Yes | 覆寫步驟容器的 `[ENTRYPOINT]`。 | None |
-| `env` | [字串, 字串, ...] | Yes | `key=value` 格式的字串陣列，用來定義步驟的環境變數。 | None |
-| `expose` | [字串, 字串, ...] | Yes | 從容器公開的埠陣列。 |  None |
-| [`id`](#example-id) | 字串 | Yes | 可唯一識別工作內的步驟。 工作內的其他步驟可以參考步驟的 `id`，例如使用 `when`進行相依性檢查。<br /><br />`id` 同時也是執行中容器的名稱。 舉例來說，在工作內其他容器中執行的程序可以參考 `id` 作為其 DNS 主機名稱，或藉由 docker logs [id] 來存取它。 | `acb_step_%d`，其中 `%d` 是 YAML 檔案中步驟上階的以零為起始的索引。 |
-| `ignoreErrors` | bool | Yes | 不論容器執行期間是否發生錯誤，是否將步驟標記為成功。 | `false` |
-| `isolation` | 字串 | Yes | 容器的隔離等級。 | `default` |
-| `keep` | bool | Yes | 在執行後是否應保留步驟的容器。 | `false` |
-| `network` | 物件 (object) | Yes | 識別執行容器的網路。 | None |
-| `ports` | [字串, 字串, ...] | Yes | 從容器發佈到主機的埠陣列。 |  None |
-| `pull` | bool | Yes | 是否要先強制提取容器，再執行它以防止任何快取行為。 | `false` |
-| `privileged` | bool | Yes | 是否要以特殊許可權模式執行容器。 | `false` |
-| `repeat` | int | Yes | 重複執行容器的重試次數。 | 0 |
-| `retries` | int | Yes | 容器失敗執行時嘗試的重試次數。 只有當容器的結束代碼不是零時，才會嘗試重試。 | 0 |
-| `retryDelay` | 整數 (秒) | Yes | 容器執行重試之間的延遲（以秒為單位）。 | 0 |
-| `secret` | 物件 (object) | Yes | 識別 Azure 資源的 Azure Key Vault 秘密或[受控識別](container-registry-tasks-authentication-managed-identity.md)。 | None |
-| `startDelay` | 整數 (秒) | Yes | 延遲容器執行的秒數。 | 0 |
-| `timeout` | 整數 (秒) | Yes | 終止步驟前可允許步驟執行的秒數上限。 | 600 |
-| [`when`](#example-when) | [字串, 字串, ...] | Yes | 設定步驟與工作內一或多個其他步驟的相依性。 | None |
-| `user` | 字串 | Yes | 容器的使用者名稱或 UID | None |
-| `workingDirectory` | 字串 | Yes | 設定步驟的工作目錄。 「ACR 工作」預設會建立根目錄作為工作目錄。 不過，如果您的組建含有數個步驟，則可藉由指定相同的工作目錄，讓較前面的步驟與較後面的步驟共用成品。 | `/workspace` |
+| `detach` | bool | 是 | 執行時是否應將容器中斷連結。 | `false` |
+| `disableWorkingDirectoryOverride` | bool | 是 | 是否要停用覆 `workingDirectory` 寫功能。 將此與搭配使用， `workingDirectory` 即可完整控制容器的工作目錄。 | `false` |
+| `entryPoint` | 字串 | 是 | 覆寫步驟容器的 `[ENTRYPOINT]`。 | 無 |
+| `env` | [字串, 字串, ...] | 是 | `key=value` 格式的字串陣列，用來定義步驟的環境變數。 | 無 |
+| `expose` | [字串, 字串, ...] | 是 | 從容器公開的埠陣列。 |  無 |
+| [`id`](#example-id) | 字串 | 是 | 可唯一識別工作內的步驟。 工作內的其他步驟可以參考步驟的 `id`，例如使用 `when`進行相依性檢查。<br /><br />`id` 同時也是執行中容器的名稱。 舉例來說，在工作內其他容器中執行的程序可以參考 `id` 作為其 DNS 主機名稱，或藉由 docker logs [id] 來存取它。 | `acb_step_%d`，其中 `%d` 是 YAML 檔案中步驟上階的以零為起始的索引。 |
+| `ignoreErrors` | bool | 是 | 不論容器執行期間是否發生錯誤，是否將步驟標記為成功。 | `false` |
+| `isolation` | 字串 | 是 | 容器的隔離等級。 | `default` |
+| `keep` | bool | 是 | 在執行後是否應保留步驟的容器。 | `false` |
+| `network` | 物件 (object) | 是 | 識別執行容器的網路。 | 無 |
+| `ports` | [字串, 字串, ...] | 是 | 從容器發佈到主機的埠陣列。 |  無 |
+| `pull` | bool | 是 | 是否要先強制提取容器，再執行它以防止任何快取行為。 | `false` |
+| `privileged` | bool | 是 | 是否要以特殊許可權模式執行容器。 | `false` |
+| `repeat` | int | 是 | 重複執行容器的重試次數。 | 0 |
+| `retries` | int | 是 | 容器失敗執行時嘗試的重試次數。 只有當容器的結束代碼不是零時，才會嘗試重試。 | 0 |
+| `retryDelay` | 整數 (秒) | 是 | 容器執行重試之間的延遲（以秒為單位）。 | 0 |
+| `secret` | 物件 (object) | 是 | 識別 Azure 資源的 Azure Key Vault 秘密或[受控識別](container-registry-tasks-authentication-managed-identity.md)。 | 無 |
+| `startDelay` | 整數 (秒) | 是 | 延遲容器執行的秒數。 | 0 |
+| `timeout` | 整數 (秒) | 是 | 終止步驟前可允許步驟執行的秒數上限。 | 600 |
+| [`when`](#example-when) | [字串, 字串, ...] | 是 | 設定步驟與工作內一或多個其他步驟的相依性。 | 無 |
+| `user` | 字串 | 是 | 容器的使用者名稱或 UID | 無 |
+| `workingDirectory` | 字串 | 是 | 設定步驟的工作目錄。 「ACR 工作」預設會建立根目錄作為工作目錄。 不過，如果您的組建含有數個步驟，則可藉由指定相同的工作目錄，讓較前面的步驟與較後面的步驟共用成品。 | `/workspace` |
 
 ### <a name="examples-task-step-properties"></a>範例：工作步驟屬性
 
@@ -503,9 +504,9 @@ steps:
 
 ## <a name="aliases"></a>別名
 
-從到 `v1.1.0` ，ACR 工作支援可在執行工作步驟時使用的別名。 別名類似于 bash 中支援的別名（命令快捷方式）和一些其他命令 shell。 
+從到 `v1.1.0` ，ACR 工作支援可在執行工作步驟時使用的別名。 別名類似于 (命令快捷方式的別名，) bash 和一些其他命令 shell 中支援。 
 
-使用別名時，您可以藉由輸入單一單字，啟動任何命令或命令群組（包括選項和檔案名）。
+使用別名時，您可以藉由輸入單一單字，啟動任何命令或命令群組 (包括選項和檔案名) 。
 
 ACR 工作支援數個預先定義的別名，以及您所建立的自訂別名。
 
@@ -535,9 +536,9 @@ steps:
 
 ### <a name="image-aliases"></a>影像別名
 
-下列每個別名都會指向 Microsoft Container Registry （MCR）中的穩定映射。 您可以在工作檔案的區段中參考每個專案， `cmd` 而不使用指示詞。
+下列每個別名都會指向 Microsoft Container Registry 中的穩定映射 (MCR) 。 您可以在工作檔案的區段中參考每個專案， `cmd` 而不使用指示詞。
 
-| Alias | Image |
+| Alias | 映像 |
 | ----- | ----- |
 | `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
 | `az` | `mcr.microsoft.com/acr/azure-cli:a80af84` |

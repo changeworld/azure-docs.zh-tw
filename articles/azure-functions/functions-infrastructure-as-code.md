@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382532"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170389"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions 中函數應用程式的自動化資源部署
 
@@ -26,12 +26,12 @@ ms.locfileid: "81382532"
 
 Azure Functions 部署通常包含下列資源：
 
-| 資源                                                                           | 需求 | 語法和屬性參考                                                         |   |
-|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| 函數應用程式                                                                     | 必要    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| [Azure 儲存體](../storage/index.yml)帳戶                                   | 必要    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| [Application Insights](../azure-monitor/app/app-insights-overview.md)元件 | 選擇性    | [Microsoft Insights/元件](/azure/templates/microsoft.insights/components)         |   |
-| [主控方案](./functions-scale.md)                                             | 選擇性<sup>1</sup>    | [Microsoft Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| 資源                                                                           | 需求 | 語法和屬性參考                                                         |
+|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
+| 函數應用程式                                                                     | 必要    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |
+| [Azure 儲存體](../storage/index.yml)帳戶                                   | 必要    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md)元件 | 選擇性    | [Microsoft Insights/元件](/azure/templates/microsoft.insights/components)         |
+| [主控方案](./functions-scale.md)                                             | 選擇性<sup>1</sup>    | [Microsoft Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |
 
 <sup>1</sup>只有當您選擇在高階[方案](./functions-premium-plan.md)或[App Service 方案](../app-service/overview-hosting-plans.md)上執行函數應用程式時，才需要主控方案。
 
@@ -110,11 +110,11 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 ### <a name="hosting-plan"></a>主控方案
 
 主控方案的定義會有所不同，而且可以是下列其中一項：
-* [耗用量方案](#consumption)（預設值）
+* [使用量方案](#consumption) (預設) 
 * [進階方案](#premium)
 * [App Service 計劃](#app-service-plan)
 
-### <a name="function-app"></a>函式應用程式
+### <a name="function-app"></a>函數應用程式
 
 函數應用程式資源是使用**functionapp****類型的**資源來定義的：
 
@@ -641,9 +641,9 @@ Linux 應用程式也應該在底下包含 `linuxFxVersion` 屬性 `siteConfig` 
 }
 ```
 > [!TIP]
-> 此範本會使用 [[專案](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file)應用程式設定值]，以設定「函式部署引擎」（Kudu）在其中尋找可部署程式碼的基底目錄。 在我們的存放庫中，我們的函數是位於 **src** 資料夾的子資料夾中。 因此，在上述範例中，我們將應用程式設定值設定為 `src`。 如果您的函數位於您存放庫的根，或您並非從來源控制項進行部署，您可以移除此應用程式設定值。
+> 此範本會使用 [[專案](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file)應用程式設定值]，設定函式部署引擎 (Kudu) 尋找可部署程式碼的基礎目錄。 在我們的存放庫中，我們的函數是位於 **src** 資料夾的子資料夾中。 因此，在上述範例中，我們將應用程式設定值設定為 `src`。 如果您的函數位於您存放庫的根，或您並非從來源控制項進行部署，您可以移除此應用程式設定值。
 
-## <a name="deploy-your-template"></a>部署您的範本
+## <a name="deploy-your-template"></a>部署範本
 
 您可以使用以下任何方式來部署範本：
 

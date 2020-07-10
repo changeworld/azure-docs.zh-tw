@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: c6ff105a03181b588a9074675c97930696ac5e87
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 30573eb3b35152ab5769c1aab9c4af052cb454a6
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850196"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171018"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 的效能秘訣
 
@@ -37,52 +37,46 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 * **連線模式：使用直接模式**
 <a id="direct-connection"></a>
     
-    用戶端連線到 Azure Cosmos DB 的方式，對於效能有重大影響 (尤其對用戶端延遲而言)。 ConnectionMode 是設定用戶端的 ConnectionPolicy 時的主要組態設定。 Azure Cosmos DB JAVA SDK v4 兩種可用的 ConnectionMode 如下：  
-      
-    * [閘道 (預設)](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
-    * [直接](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
+    用戶端連線到 Azure Cosmos DB 的方式，對於效能有重大影響 (尤其對用戶端延遲而言)。 連線模式是可用來設定用戶端的金鑰設定。 針對 Azure Cosmos DB JAVA SDK v4，兩種可用的連線模式如下：  
 
-    這些 ConnectionMode 基本上是調整從用戶端機器到 Azure Cosmos DB 後端分割區的要求路由。 直接模式一般來說是達到最佳效能的慣用選項，可讓您的用戶端直接對 Azure Cosmos DB 後端的資料分割區開啟 TCP 連線，而且能在無需中繼的情況下直接傳送要求。 相反地，在閘道模式中，用戶端所提出的要求會路由傳送至 Azure Cosmos DB 前端的所謂「閘道」伺服器，進而將您的要求傳送到 Azure Cosmos DB 後端中的適當磁碟分割區。 如果您的應用程式在有嚴格防火牆限制的公司網路中執行，則閘道模式會是最佳的選擇，因為它會使用標準 HTTPS 連接埠與單一端點。 不過對於效能的影響，就在於每次讀取或寫入 Azure Cosmos DB 資料時，閘道模式都會涉及額外的網路躍點 (用戶端到閘道，以及閘道到分割區)。 因此，直接模式因為網路躍點較少，所以可提供較佳的效能。
+    * 直接模式 (預設)       
+    * 閘道模式
 
-    ConnectionMode 設定於使用 ConnectionPolicy 參數建構 Azure Cosmos DB 用戶端執行個體期間：
+    這些連線模式基本上會將資料平面要求的路由（檔讀取和寫入）條件設為從用戶端電腦到 Azure Cosmos DB 後端的磁碟分割。 一般直接模式是最佳效能的慣用選項，它可讓您的用戶端直接開啟 Azure Cosmos DB 後端中分割區的 TCP 連線，並傳送要求*直接*去年年初，而不會有任何媒介。 相反地，在閘道模式中，用戶端所提出的要求會路由傳送至 Azure Cosmos DB 前端的所謂「閘道」伺服器，進而將您的要求傳送到 Azure Cosmos DB 後端中的適當磁碟分割區。 如果您的應用程式在有嚴格防火牆限制的公司網路中執行，則閘道模式會是最佳的選擇，因為它會使用標準 HTTPS 連接埠與單一端點。 不過對於效能的影響，就在於每次讀取或寫入 Azure Cosmos DB 資料時，閘道模式都會涉及額外的網路躍點 (用戶端到閘道，以及閘道到分割區)。 因此，直接模式因為網路躍點較少，所以可提供較佳的效能。
+
+    資料平面要求的連線模式會使用*directMode ( # B1*或*GatewayMode ( # B3*方法設定在 Azure Cosmos DB 用戶端產生器中，如下所示。 若要使用預設設定來設定任一模式，請呼叫任一不含引數的方法。 否則，請將 configuration settings 類別實例當做引數傳遞 (*DirectConnectionConfig* for *DirectMode ( # B2 *， *GatewayConnectionConfig* for *gatewayMode ( # B4 *. ) 
     
-   #### <a name="async"></a>[非同步](#tab/api-async)
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-   ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
+    # <a name="async"></a>[非同步](#tab/api-async)
 
-    ```java
-    public ConnectionPolicy getConnectionPolicy() {
-        ConnectionPolicy policy = new ConnectionPolicy();
-        policy.setMaxPoolSize(1000);
-        return policy;
-    }
+    Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
 
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    CosmosAsyncClient client = new CosmosClientBuilder()
-        .setEndpoint(HOST)
-        .setKey(MASTER)
-        .setConnectionPolicy(connectionPolicy)
-        .buildAsyncClient();
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientConnectionModeAsync)]
 
-    #### <a name="sync"></a>[同步處理](#tab/api-sync)
+    # <a name="sync"></a>[同步](#tab/api-sync)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-connection-policy-sync"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+    Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
 
-    ```java
-    public ConnectionPolicy getConnectionPolicy() {
-        ConnectionPolicy policy = new ConnectionPolicy();
-        policy.setMaxPoolSize(1000);
-        return policy;
-    }
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceClientConnectionModeSync)]
 
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    CosmosClient client = new CosmosClientBuilder()
-        .setEndpoint(HOST)
-        .setKey(MASTER)
-        .setConnectionPolicy(connectionPolicy)
-        .buildClient();
-    ```
+    --- 
+
+    *DirectMode ( # B1*方法有額外的覆寫，原因如下。 控制平面作業（例如資料庫和容器 CRUD）*一律*會使用閘道模式;當使用者已設定資料平面作業的直接模式時，控制平面作業會使用預設閘道模式設定。 這適合大部分的使用者。 不過，想要直接模式進行資料平面作業的使用者以及控制平面閘道模式參數的 tunability，都可以使用下列*directMode ( # B1*覆寫：
+
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
+
+    # <a name="async"></a>[非同步](#tab/api-async)
+
+    Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientDirectOverrideAsync)]
+
+    # <a name="sync"></a>[同步](#tab/api-sync)
+
+    Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceClientDirectOverrideSync)]
 
     --- 
 
@@ -156,7 +150,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 * **調整 ConnectionPolicy**
 
-    根據預設，使用 Azure Cosmos DB JAVA SDK v4 時，會透過 TCP 提出直接模式 Cosmos DB 要求。 SDK 會在內部使用特殊的直接模式架構來動態管理網路資源，並達到最佳效能。
+    根據預設，使用 Azure Cosmos DB JAVA SDK v4 時，會透過 TCP 提出直接模式 Cosmos DB 要求。 內部直接模式會使用特殊的架構來動態管理網路資源，並獲得最佳效能。
 
     在 Azure Cosmos DB JAVA SDK v4 中，直接模式最適合用來改善工作負載最大的資料庫效能。 
 
@@ -166,30 +160,21 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
         直接模式中採用的用戶端架構，能讓網路使用率得以預測，並實現對 Azure Cosmos DB 複本的多工存取。 上圖顯示直接模式如何將用戶端要求路由傳送到 Cosmos DB 後端複本。 直接模式架構會在用戶端上為每個 DB 複本配置最多 10 個**通道**。 通道是前面加上要求緩衝區的 TCP 連線，深度為 30 個要求。 屬於複本的通道會視複本**服務端點**的需求動態配置。 當使用者在直接模式下發出要求時，**TransportClient** 會根據分割區索引鍵，將要求路由傳送到適當的服務端點。 **要求佇列**會在服務端點之前對要求進行緩衝處理。
 
-    * 直接模式的 ConnectionPolicy 設定選項
+    * ***Direct 模式的設定選項***
 
-        這些設定會控制用於控管直接模式 SDK 行為的 RNTBD 架構行為。
-        
-        首先請使用以下建議設定。 這些 ConnectionPolicy 選項屬於進階設定，可能會以非預期的方式影響 SDK 效能；建議使用者避免修改這類選項，除非確實瞭解修改的優缺點，而且真的必須修改。 如果遇到關於此特定主題的問題，請洽詢 [Azure Cosmos DB 小組](mailto:CosmosDBPerformanceSupport@service.microsoft.com)。
+        如果您想要使用非預設的直接模式行為，請建立*DirectConnectionConfig*實例並自訂其屬性，然後將自訂的屬性實例傳遞至 Azure Cosmos DB client builder 中的*DirectMode ( # B1*方法。
 
-        如果您使用 Azure Cosmos DB 作為參考資料庫 (亦即，資料庫用於多點讀取作業與少量寫入作業)，將 idleEndpointTimeout 設定為 0 (也就是無逾時) 是可接受的。
+        這些設定會控制上述所討論之基礎直接模式架構的行為。
 
+        首先，請使用下列建議的組態設定。 這些*DirectConnectionConfig*選項是先進的設定，可能會以非預期的方式影響 SDK 效能;我們建議使用者避免修改它們，除非他們覺得很樂意瞭解取捨，而且絕對必要。 如果遇到關於此特定主題的問題，請連絡 [Azure Cosmos DB 小組](mailto:CosmosDBPerformanceSupport@service.microsoft.com)。
 
         | 組態選項       | 預設    |
         | :------------------:       | :-----:    |
-        | bufferPageSize             | 8192       |
-        | connectionTimeout          | "PT1M"     |
-        | idleChannelTimeout         | "PT0S"     |
-        | idleEndpointTimeout        | "PT1M10S"  |
-        | maxBufferCapacity          | 8388608    |
-        | maxChannelsPerEndpoint     | 10         |
-        | maxRequestsPerChannel      | 30         |
-        | receiveHangDetectionTime   | "PT1M5S"   |
-        | requestExpiryInterval      | "PT5S"     |
-        | requestTimeout             | "PT1M"     |
-        | requestTimerResolution     | "PT0.5S"   |
-        | sendHangDetectionTime      | "PT10S"    |
-        | shutdownTimeout            | "PT15S"    |
+        | idleConnectionTimeout      | "PT1M"     |
+        | maxConnectionsPerEndpoint  | "PT0S"     |
+        | connectTimeout             | "PT1M10S"  |
+        | idleEndpointTimeout        | 8388608    |
+        | maxRequestsPerConnection   | 10         |
 
 * **微調分割之集合的平行查詢**
 
@@ -238,7 +223,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceNeedsSchedulerAsync)]
 
-    在收到結果之後，如果您需要對結果進行 CPU 密集工作，請避免在事件迴圈 IO netty 執行緒上進行。 您可以改為提供自己的排程器，以提供您自己的執行緒來執行您的工作，如下所示（需要 `import reactor.core.scheduler.Schedulers` ）。
+    在收到結果之後，如果您需要對結果進行 CPU 密集工作，請避免在事件迴圈 IO netty 執行緒上進行。 您可以改為提供自己的排程器，以提供您自己的執行緒來執行您的工作，如下所示 (需要 `import reactor.core.scheduler.Schedulers`) 。
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-scheduler"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同步 API
 
@@ -326,17 +311,11 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
  
 * **從索引編製中排除未使用的路徑以加快寫入速度**
 
-    Azure Cosmos DB 的索引編製原則可讓您利用檢索路徑 (setIncludedPaths 和 setExcludedPaths)，指定要在索引編製中包含或排除的文件路徑。 在事先知道查詢模式的案例中，使用檢索路徑可改善寫入效能並降低索引儲存空間，因為檢索成本與檢索的唯一路徑數目直接相互關聯。 例如，下列程式碼示範如何使用 "*" 萬用字元，將文件 (也稱為樹狀子目錄) 的整個區段自索引編製作業中排除。
+    Azure Cosmos DB 的索引編製原則可讓您利用檢索路徑 (setIncludedPaths 和 setExcludedPaths)，指定要在索引編製中包含或排除的文件路徑。 在事先知道查詢模式的案例中，使用檢索路徑可改善寫入效能並降低索引儲存空間，因為檢索成本與檢索的唯一路徑數目直接相互關聯。 例如，下列程式碼會示範如何使用 "*" 萬用字元，將檔的整個區段（也稱為子樹）包含和排除在索引) 的 (。
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-indexing"></a>Java SDK V4 (Maven com.azure::azure-cosmos)
-    ```java
-    Index numberIndex = Index.Range(DataType.Number);
-    indexes.add(numberIndex);
-    includedPath.setIndexes(indexes);
-    includedPaths.add(includedPath);
-    indexingPolicy.setIncludedPaths(includedPaths);        
-    containerProperties.setIndexingPolicy(indexingPolicy);
-    ``` 
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=MigrateIndexingAsync)]
 
     如需詳細資訊，請參閱 [Azure Cosmos DB 索引編製原則](indexing-policies.md)。
 

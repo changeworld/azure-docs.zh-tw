@@ -4,15 +4,15 @@ ms.author: joshuapa
 ms.service: azure-notebooks
 ms.topic: include
 ms.date: 07/01/2020
-ms.openlocfilehash: c866ebac9701f31dbdafab87cdda6fc26edcf88c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5011a5d265c61cf26520f6c012037a67a8afacae
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830295"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181485"
 ---
 > [!IMPORTANT]
-> Azure Notebooks 公開預覽網站將于9月29日淘汰，並以 Visual Studio、Azure 和 GitHub 的整合式服務取代。
+> 2020年10月9日將淘汰 Azure Notebooks 公開預覽網站，並將其取代為 Visual Studio、Azure 和 GitHub 的整合式服務。
 > [深入瞭解](https://aka.ms/aznb-notebooks-at-msft/)您的選項，以及其他 Microsoft 的筆記本體驗。
 >
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
