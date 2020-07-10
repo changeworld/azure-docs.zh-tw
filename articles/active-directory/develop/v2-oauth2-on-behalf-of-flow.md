@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 07/8/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9e653469eb5bffbf81a0e09982edcbd1e937ba61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a0d4d205e82f377d6ea02c91fbd6db7820c3868
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553542"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165867"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 代理者流程
 
@@ -47,7 +47,7 @@ OAuth2.0 代理者流程 (OBO) 的使用案例，是應用程式叫用服務/Web
 > [!NOTE]
 > 在此案例中，中介層服務不會利用使用者互動來取得使用者的下游 API 存取同意。 因此，在驗證期間必須先呈現授與存取下游 API 的選項，作為同意步驟的一部分。 若要深入了解如何為您的應用程式進行這個設定，請參閱[取得中介層應用程式的同意](#gaining-consent-for-the-middle-tier-application)。
 
-## <a name="service-to-service-access-token-request"></a>服務對服務存取權杖要求
+## <a name="middle-tier-access-token-request"></a>中介層存取權杖要求
 
 若要要求存取權杖，請使用下列參數，對租用戶特定的 Microsoft 身分識別平台權杖端點提出 HTTP POST。
 
@@ -66,7 +66,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 | `grant_type` | 必要 | 權杖要求的類型。 對於使用 JWT 的要求，值必須是 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
 | `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面指派給您應用程式的應用程式 (用戶端) 識別碼。 |
 | `client_secret` | 必要 | 您在 Azure 入口網站 - 應用程式註冊頁面中為應用程式產生的用戶端秘密。 |
-| `assertion` | 必要 | 要求中使用的權杖值。  此權杖必須有提出此 OBO 要求的應用程式對象 (以 `client-id` 欄位表示的應用程式)。 |
+| `assertion` | 必要 | 已傳送至中介層 API 的存取權杖。  此權杖必須有物件 (`aud` 應用程式的) 宣告， (由欄位) 所表示的應用程式來提出此 OBO 要求 `client-id` 。 應用程式無法兌換不同應用 (程式的權杖，例如，如果用戶端傳送 API 給 MS Graph 的權杖，則 API 無法使用 OBO 兌換。  它應該會改為拒絕) 的權杖。  |
 | `scope` | 必要 | 權杖要求範圍的清單，各項目之間以空格分隔。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。 |
 | `requested_token_use` | 必要 | 指定應該如何處理要求。 在 OBO 流程中，此值必須設定為 `on_behalf_of`。 |
 
@@ -99,7 +99,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 | `client_id` | 必要 |  [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面指派給您應用程式的應用程式 (用戶端) 識別碼。 |
 | `client_assertion_type` | 必要 | 值必須是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
 | `client_assertion` | 必要 | 您必須建立判斷提示 (JSON Web 權杖)，並使用註冊的憑證來簽署，以作為應用程式的認證。 若要深入了解如何註冊您的憑證與判斷提示的格式，請參閱[憑證認證](active-directory-certificate-credentials.md)。 |
-| `assertion` | 必要 | 要求中使用的權杖值。 |
+| `assertion` | 必要 |  已傳送至中介層 API 的存取權杖。  此權杖必須有物件 (`aud` 應用程式的) 宣告， (由欄位) 所表示的應用程式來提出此 OBO 要求 `client-id` 。 應用程式無法兌換不同應用 (程式的權杖，例如，如果用戶端傳送 API 給 MS Graph 的權杖，則 API 無法使用 OBO 兌換。  它應該會改為拒絕) 的權杖。  |
 | `requested_token_use` | 必要 | 指定應該如何處理要求。 在 OBO 流程中，此值必須設定為 `on_behalf_of`。 |
 | `scope` | 必要 | 權杖要求範圍的清單，各項目之間以空格分隔。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。|
 
@@ -125,7 +125,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="service-to-service-access-token-response"></a>服務對服務的存取權杖回應
+## <a name="middle-tier-access-token-response"></a>中介層存取權杖回應
 
 成功的回應是 JSON OAuth 2.0 回應，包含下列參數。
 

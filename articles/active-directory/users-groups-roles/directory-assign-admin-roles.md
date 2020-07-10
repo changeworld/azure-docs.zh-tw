@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70d53bf3d97f27caae7d3dee7cd03a4606d6761c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b1e648058e866be57deaf8dd159c89fc08141b68
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921756"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166666"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -208,7 +209,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 ### <a name="external-id-user-flow-administrator"></a>[外部識別碼使用者流程管理員](#external-id-user-flow-administrator-permissions)
 
-具有此角色的使用者可以建立和管理 Azure 入口網站中的使用者流程（也稱為「內建」原則）。 這些使用者可以自訂 HTML/CSS/JavaScript 內容、變更 MFA 需求、選取權杖中的宣告、管理 API 連接器，以及為 Azure AD 組織中的所有使用者流程設定會話設定。 另一方面，此角色並不包括檢查使用者資料的能力，或對組織架構中包含的屬性進行變更。 Identity Experience Framework 原則的變更（也稱為自訂原則）也不在此角色的範圍內。
+具有此角色的使用者可以建立和管理使用者流程， (也稱為 Azure 入口網站中) 的「內建」原則。 這些使用者可以自訂 HTML/CSS/JavaScript 內容、變更 MFA 需求、選取權杖中的宣告、管理 API 連接器，以及為 Azure AD 組織中的所有使用者流程設定會話設定。 另一方面，此角色並不包括檢查使用者資料的能力，或對組織架構中包含的屬性進行變更。 Identity Experience Framework 原則的變更 (也稱為自訂原則) 也在此角色的範圍外。
 
 ### <a name="external-id-user-flow-attribute-administrator"></a>[外部識別碼使用者流程屬性管理員](#external-id-user-flow-attribute-administrator-permissions)
 
@@ -488,7 +489,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 具有此角色的使用者可以建立使用者，以及管理具有部分限制使用者的所有層面 (如下所示)，而且可以上傳密碼到期原則。 此外，具有此角色的使用者可以建立與管理所有群組。 此角色也包含建立和管理使用者檢視、管理支援票證，以及監視服務健康情況的能力。 對於具有大部分系統管理員角色的使用者，使用者管理員沒有權限可管理其某些使用者屬性。 具有此角色的使用者沒有管理 MFA 的權限。 下表列出此限制的例外角色。
 
-| | |
+| 權限 | 可以執行 |
 | --- | --- |
 |一般權限|<p>建立 [使用者和群組]</p><p>建立和管理使用者檢視</p><p>建立 Office 支援票證<p>更新密碼到期原則|
 |<p>所有使用者，包括所有管理員</p>|<p>管理授權</p><p>管理使用者主體名稱以外的所有使用者屬性</p>

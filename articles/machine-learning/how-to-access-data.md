@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 03/24/2020
+ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: cb52935b731a507d2408d174a5aa571fb2bfc973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b1d5c66c1dd15fa12638dd451d1ce2fa8fa79f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609260"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146718"
 ---
 # <a name="connect-to-azure-storage-services"></a>連線至 Azure 儲存體服務
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,16 +52,16 @@ ms.locfileid: "85609260"
 
 資料存放區目前支援將連線資訊儲存至下列矩陣中所列的儲存體服務。
 
-| 儲存體類型&nbsp; | 驗證類型&nbsp; | [Azure&nbsp;Machine&nbsp;Learning Studio](https://ml.azure.com/) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;Machine&nbsp;Learning CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Rest API](https://docs.microsoft.com/rest/api/azureml/)
----|---|---|---|---|---
-[Azure&nbsp;Blob&nbsp;儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| 帳戶金鑰 <br> SAS 權杖 | ✓ | ✓ | ✓ |✓
-[Azure&nbsp;檔案共用](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)&nbsp;| 帳戶金鑰 <br> SAS 權杖 | ✓ | ✓ | ✓ |✓
-[Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| 服務主體| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| 服務主體| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;SQL&nbsp;Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| SQL 驗證 <br>服務主體| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview) | SQL 驗證| ✓ | ✓ | ✓ |✓
-[適用於&nbsp;MySQL&nbsp;的 Azure&nbsp;資料庫](https://docs.microsoft.com/azure/mysql/overview) | SQL 驗證|  | ✓* | ✓* |✓*
-[Databricks&nbsp;檔案系統](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)&nbsp;| 不需要驗證 | | ✓** | ✓ ** |✓** 
+| 儲存體類型&nbsp; | 驗證類型&nbsp; | [Azure&nbsp;Machine&nbsp;Learning Studio](https://ml.azure.com/) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;Machine&nbsp;Learning CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Rest API](https://docs.microsoft.com/rest/api/azureml/) | VS 程式碼
+---|---|---|---|---|---|---
+[Azure&nbsp;Blob&nbsp;儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| 帳戶金鑰 <br> SAS 權杖 | ✓ | ✓ | ✓ |✓ |✓
+[Azure&nbsp;檔案共用](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)&nbsp;| 帳戶金鑰 <br> SAS 權杖 | ✓ | ✓ | ✓ |✓|✓
+[Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| 服務主體| ✓ | ✓ | ✓ |✓|
+[Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| 服務主體| ✓ | ✓ | ✓ |✓|
+[Azure&nbsp;SQL&nbsp;Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| SQL 驗證 <br>服務主體| ✓ | ✓ | ✓ |✓|
+[Azure&nbsp;PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview) | SQL 驗證| ✓ | ✓ | ✓ |✓|
+[適用於&nbsp;MySQL&nbsp;的 Azure&nbsp;資料庫](https://docs.microsoft.com/azure/mysql/overview) | SQL 驗證|  | ✓* | ✓* |✓*|
+[Databricks&nbsp;檔案系統](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)&nbsp;| 不需要驗證 | | ✓** | ✓ ** |✓** |
 
 *只有管線 [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) 支援 MySQL。 <br>
 **只有管線 [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) 支援 Databricks
@@ -108,7 +108,7 @@ ms.locfileid: "85609260"
     * 其對應的 **[總覽**] 頁面將包含 [租使用者識別碼] 和 [用戶端識別碼] 等必要資訊
 
 > [!IMPORTANT]
-> 基於安全性理由，您可能需要變更 Azure 儲存體帳戶（帳戶金鑰或 SAS 權杖）的存取金鑰。 這麼做時，請務必將新認證與您的工作區和連線的資料存放區同步。 瞭解如何使用[這些步驟](how-to-change-storage-access-key.md)同步已更新的認證。 
+> 基於安全性理由，您可能需要變更 Azure 儲存體帳戶的存取金鑰， (帳戶金鑰或 SAS 權杖) 。 這麼做時，請務必將新認證與您的工作區和連線的資料存放區同步。 瞭解如何使用[這些步驟](how-to-change-storage-access-key.md)同步已更新的認證。 
 
 下列範例說明如何註冊 Azure Blob 容器、Azure 檔案共用，以及 Azure Data Lake Storage Generation 2 作為資料存放區。 這些範例中提供的參數，是建立和註冊資料存放區時**所需的參數**。 
 
@@ -185,7 +185,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 在 Azure Machine Learning Studio 中只需幾個步驟即可建立新的資料存放區：
 
 > [!IMPORTANT]
-> 如果您的資料儲存體帳戶位於虛擬網路中，則需要額外的設定步驟，以確保 studio 能夠存取您的資料。 請參閱 [網路隔離 & 隱私權] （how to enable-虛擬網路 md # machine learning-studio），以確保套用適當的設定步驟。 
+> 如果您的資料儲存體帳戶位於虛擬網路中，則需要額外的設定步驟，以確保 studio 能夠存取您的資料。 請參閱 [網路隔離 & 隱私權] (how to enable-虛擬網路 md # machine learning-studio) ，以確保套用適當的設定步驟。 
 
 1. 登入 [Azure Machine Learning Studio](https://ml.azure.com/)。
 1. 在左窗格中，選取 [管理] 底下的 [資料存放區]。
@@ -199,12 +199,15 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 * 針對租用戶識別碼和用戶端識別碼之類的服務主體項目，請移至您的**應用程式註冊**，並選取您要使用的應用程式。 其對應的 [概觀] 頁面會包含這些項目。 
 
 > [!IMPORTANT]
-> 基於安全性理由，您可能需要變更 Azure 儲存體帳戶（帳戶金鑰或 SAS 權杖）的存取金鑰。 這麼做時，請務必將新認證與您的工作區和連線的資料存放區同步。 瞭解如何使用[這些步驟](how-to-change-storage-access-key.md)同步已更新的認證。 
+> 基於安全性理由，您可能需要變更 Azure 儲存體帳戶的存取金鑰， (帳戶金鑰或 SAS 權杖) 。 這麼做時，請務必將新認證與您的工作區和連線的資料存放區同步。 瞭解如何使用[這些步驟](how-to-change-storage-access-key.md)同步已更新的認證。 
 
 下列範例示範當您建立**Azure blob 資料**存放區時，表單看起來的樣子： 
     
 ![新資料存放區的表單](media/how-to-access-data/new-datastore-form.png)
 
+### <a name="vs-code"></a>VS 程式碼
+
+您可以使用 Azure Machine Learning VS Code 延伸模組來建立和管理資料存放區。 若要深入瞭解，請造訪[VS Code 資源管理操作指南](how-to-manage-resources-vscode.md#datastores)。
 
 <a name="get"></a>
 

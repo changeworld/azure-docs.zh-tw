@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 7c2484892f3de3c8eca3f766793be83bc7a29dc8
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: a56e815e3a4ac04d20b29163139ab40332c4bec4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445537"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146964"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>驗證 Azure 認知服務要求
 
@@ -22,19 +22,19 @@ Azure 認知服務的每個要求必須包含驗證標頭。 此標頭會與訂�
 
 * 使用[單一服務](#authenticate-with-a-single-service-subscription-key)或[多服務](#authenticate-with-a-multi-service-subscription-key)訂用帳戶金鑰進行驗證
 * 使用[權杖](#authenticate-with-an-authentication-token)進行驗證
-* 使用[Azure Active Directory （AAD）](#authenticate-with-azure-active-directory)進行驗證
+* 使用[Azure Active Directory (AAD) ](#authenticate-with-azure-active-directory)進行驗證
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 提出要求之前，您需要 Azure 帳戶和 Azure 認知服務訂用帳戶。 如果您已經有帳戶，請繼續進行並跳至下一節。 如果您沒有帳戶，我們會引導您在幾分鐘內完成設定：[建立 Azure 的認知服務帳戶](cognitive-services-apis-create-account.md)。
 
-建立帳戶或啟用[免費試用版](https://azure.microsoft.com/try/cognitive-services/my-apis)之後，您可以從[Azure 入口網站](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)取得您的訂用帳戶金鑰。
+[建立帳戶](https://azure.microsoft.com/free/cognitive-services/)之後，您可以從[Azure 入口網站](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)取得您的訂用帳戶金鑰。
 
 ## <a name="authentication-headers"></a>驗證標頭
 
 讓我們快速檢閱適用於 Azure 認知服務的驗證標頭。
 
-| 頁首 | 描述 |
+| 標頭 | 描述 |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | 使用此標頭以特定服務的訂用帳戶金鑰或多服務訂用帳戶金鑰進行驗證。 |
 | Ocp-Apim-Subscription-Region | 只有在搭配[Translator 服務](./Translator/reference/v3-0-reference.md)使用多服務訂用帳戶金鑰時，才需要此標頭。 使用此標頭指定訂用帳戶區域。 |
@@ -75,7 +75,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="supported-regions"></a>支援區域
 
-當使用多服務訂用帳戶金鑰對 `api.cognitive.microsoft.com` 提出要求時，您必須在 URL 中包含區域。 例如： `westus.api.cognitive.microsoft.com` 。
+當使用多服務訂用帳戶金鑰對 `api.cognitive.microsoft.com` 提出要求時，您必須在 URL 中包含區域。 例如：`westus.api.cognitive.microsoft.com`。
 
 搭配 Translator 服務使用多服務訂用帳戶金鑰時，您必須使用標頭指定訂用帳戶區域 `Ocp-Apim-Subscription-Region` 。
 

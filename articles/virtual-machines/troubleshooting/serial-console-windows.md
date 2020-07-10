@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4f02d92e6264a05ed2cb4021adb5ae6312f58a85
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135253"
+ms.locfileid: "86146648"
 ---
 # <a name="azure-serial-console-for-windows"></a>適用於 Windows 的 Azure 序列主控台
 
@@ -100,11 +100,10 @@ Azure 上的新版 Windows Server 映像預設會啟用[特別系統管理主控
 
 1. 連線到序列主控台。 如果連線成功，則提示為 **SAC>** ：
 
-    ![連線到 SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
-
+   ![連線到 SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 1. 輸入 `cmd` 來建立具有 CMD 執行個體的通道。
 
-1. 輸入 `ch -si 1` 或按 `<esc>+<tab>` 快速鍵，以切換至執行 CMD 執行個體的通道。
+1. 輸入 `ch -si 1` 或按下 `<esc>+<tab>` 快速鍵，切換至執行 CMD 實例的通道。
 
 1. 按 **Enter** 鍵，然後輸入具有系統管理權限的登入認證。
 
@@ -112,7 +111,7 @@ Azure 上的新版 Windows Server 映像預設會啟用[特別系統管理主控
 
 1. 若要啟動 PowerShell 執行個體，在 CMD 執行個體中輸入 `PowerShell`，然後按 **Enter** 鍵。
 
-    ![開啟 PowerShell 執行個體](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+   ![開啟 PowerShell 執行個體](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
 ### <a name="use-the-serial-console-for-nmi-calls"></a>使用序列主控台進行 NMI 呼叫
 非遮罩式插斷 (NMI) 旨在建立虛擬機器上軟體不會忽略的訊號。 在過去，NMI 已用來監視系統上需要特定回應時間的硬體問題。 現在，程式設計人員和系統管理員通常會使用 NMI 作為對無回應系統進行偵錯和疑難排解的機制。

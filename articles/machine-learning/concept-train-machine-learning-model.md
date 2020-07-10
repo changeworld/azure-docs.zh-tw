@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: tracking-python
-ms.openlocfilehash: a8c70254c7ba7a9525b843240230ac158e29a338
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985730"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147055"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -131,6 +131,10 @@ R SDK 可讓您搭配使用 R 語言與 Azure Machine Learning。 SDK 會使用�
 
 * [使用適用於 Azure Machine Learning 的 CLI 擴充功能](reference-azure-machine-learning-cli.md)
 * [Azure 上的 MLOps](https://github.com/microsoft/MLOps)
+
+## <a name="vs-code"></a>VS 程式碼
+
+您可以使用 VS Code 擴充功能來執行和管理訓練作業。 若要深入瞭解，請參閱[VS Code 資源管理操作指南](how-to-manage-resources-vscode.md#experiments)。
 
 ## <a name="next-steps"></a>後續步驟
 

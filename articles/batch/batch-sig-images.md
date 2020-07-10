@@ -4,12 +4,12 @@ description: 自訂映射集區是設定計算節點來執行 Batch 工作負載
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 38233bc5d279c1c0ae7789dd06acff78ea26fb89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851722"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147280"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共用映射資源庫來建立自訂映射集區
 
@@ -30,7 +30,7 @@ ms.locfileid: "85851722"
 - **預先安裝應用程式。** 在 OS 磁碟上預先安裝應用程式，與在佈建計算節點之後使用開始工作來安裝應用程式相比，這樣更有效率且更不容易出錯。
 - **一次複製大量資料。** 藉由將靜態資料複製到受控映像的資料磁碟，使靜態資料成為受控共用映像的一部分。 這只需要執行一次，就能將資料提供給集區的每個節點。
 - **讓集區變大。** 使用共用映像庫時，您可以使用自訂映像及更多的共用映像複本來建立較大的集區。
-- **比僅使用受控映射作為自訂映射更好的效能。** 針對共用映射自訂映射集區，達到穩定狀態的時間最多可達25% 的 fasterm，而 VM 閒置延遲最高可達30%。
+- **比僅使用受控映射作為自訂映射更好的效能。** 針對共用映射自訂映射集區，達到穩定狀態的時間最多可快25%，且 VM 閒置延遲最高可達30%。
 - **對映像進行版本控制和分組，以便管理。** 映像群組定義包含建立映像的原因、目標作業系統，以及使用映像的相關資訊。 群組映像可讓您更輕鬆地管理映像。 如需詳細資訊，請參閱[映像定義](../virtual-machines/windows/shared-image-galleries.md#image-definitions)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -45,7 +45,7 @@ ms.locfileid: "85851722"
 > [!NOTE]
 > 您的共用映像必須與 Batch 帳戶位於相同的訂用帳戶中。 映像可以位於不同的區域，前提是其複本位於您 Batch 帳戶所在的區域中。
 
-如果您使用 Azure AD 應用程式來建立具有共用映射庫映射的自訂映射集區，該應用程式必須已被授與[Azure 內建角色](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)，讓它能夠存取共用映射。 您可以藉由流覽至共用映射、選取 [**存取控制（IAM）** ] 並新增應用程式的角色指派，在 Azure 入口網站中授與此存取權。
+如果您使用 Azure AD 應用程式來建立具有共用映射庫映射的自訂映射集區，該應用程式必須已被授與[Azure 內建角色](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)，讓它能夠存取共用映射。 若要在 Azure 入口網站中授與此存取權，您可以流覽至共用映射、選取 [**存取控制] (IAM) **並新增應用程式的角色指派。
 
 ## <a name="prepare-a-shared-image"></a>準備共用映射
 
@@ -83,7 +83,7 @@ ms.locfileid: "85851722"
 
 ### <a name="create-a-shared-image-gallery"></a>建立共用映像庫
 
-成功建立受控映像後，您必須建立共用映像庫，好讓您的自訂映像可供使用。 若要了解如何為您的映像建立共用映像庫，請參閱[使用 Azure CLI 建立共用映像庫](../virtual-machines/linux/shared-images.md)，或[使用 Azure 入口網站建立共用映像庫](../virtual-machines/linux/shared-images-portal.md)。
+成功建立受控映像後，您必須建立共用映像庫，好讓您的自訂映像可供使用。 若要了解如何為您的映像建立共用映像庫，請參閱[使用 Azure CLI 建立共用映像庫](../virtual-machines/shared-images-cli.md)，或[使用 Azure 入口網站建立共用映像庫](../virtual-machines/linux/shared-images-portal.md)。
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>使用 Azure CLI 從共用映像建立集區
 

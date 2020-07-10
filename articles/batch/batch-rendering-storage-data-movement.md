@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6fff0e224aaa6bb247543282ac16fbb33fe7e904
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965258"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147307"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>轉譯資產和輸出檔案的儲存體和資料移動選項
 
@@ -87,7 +87,7 @@ Blobfuse 是 Azure Blob 儲存體的虛擬檔案系統驅動程式，可讓您�
 
 [Azure 檔案服務](../storage/files/storage-files-introduction.md)可提供在雲端中完全受控、並且可透過 SMB 通訊協定來存取的檔案共用。  Azure 檔案服務以 Azure Blob 儲存體為基礎，不但[符合成本效益](https://azure.microsoft.com/pricing/details/storage/files/)，還能設定將資料複寫到另一個區域，而達成全域備援的目標。  您應檢閱[調整目標](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets)，以根據指定的預測集區大小和資產檔案數目，判斷是否應使用 Azure 檔案服務。
 
-您可以參考相關[部落格文章](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/)和[文件](../storage/files/storage-how-to-use-files-windows.md)以了解如何掛接 Azure 檔案共用。
+[檔涵蓋如何](../storage/files/storage-how-to-use-files-windows.md)掛接 Azure 檔案共用。
 
 ### <a name="mounting-an-azure-files-share"></a>掛接 Azure 檔案共用
 

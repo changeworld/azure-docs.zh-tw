@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: e9e809eb805e891fdf70a85d42eebc3e17da8902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210179"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147100"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>使用自動化機器學習來防止過度學習與不平衡資料
 
@@ -71,7 +71,7 @@ ms.locfileid: "85210179"
 **交叉驗證 (CV)** 是採納完整定型資料中的許多子集，並在個別子集上定型模型的程序。 其概念是，模型可能會「幸運地」在其中一個子集取得絕佳的正確性，但使用許多子集時，模型並不會每次都達到如此高的正確性。 執行 CV 時，您會提供驗證用的鑑效組資料集、指定 CV 摺疊 (子集數目)，然後自動化 ML 將定型模型並微調超參數，以將驗證集的錯誤降至最低。 單一 CV 摺疊可能會出現過度學習，但藉由使用許多摺疊，即可減少最終模型過度學習的機率。 其缺點是，CV 的定型時間較長，因而產生較高的成本，因為模型不會只定型一次，而是針對 *n* 個 CV 子集分別進行一次定型。 
 
 > [!NOTE]
-> 交叉驗證並非預設啟用項目；其必須在自動化 ML 設定中進行設定。 不過，在設定交叉驗證並提供驗證資料集之後，便能夠將程序自動化。 請參閱 
+> 交叉驗證並非預設啟用項目；其必須在自動化 ML 設定中進行設定。 不過，在設定交叉驗證並提供驗證資料集之後，便能夠將程序自動化。 深入瞭解[自動 ML 中的交叉驗證](how-to-configure-cross-validation-data-splits.md)設定
 
 <a name="imbalance"></a>
 
@@ -93,7 +93,7 @@ ms.locfileid: "85210179"
 
 - **權數資料行**：自動化 ML 支援加權的資料行做為輸入，導致資料中的資料列加權為相應增加或減少，這可用來讓類別變得更多或更少「重要」。
 
-- 自動化 ML 所使用演算法可適當地處理最高達 20:1 的不平衡，這表示在資料中，最常見類別相較於最少見類別可能會擁有 20 倍以上的資料列。
+- 當少數類別中的樣本數目等於或少於多數類別中樣本數的20% 時，自動化 ML 所使用的演算法會偵測不平衡，其中少數類別指的是具有最少樣本的範例，而多數類別則是指具有大部分樣本的範例。 接下來，AutoML 會執行含有子取樣資料的實驗，以檢查使用類別權數是否能夠解決此問題並改善效能。 如果透過此實驗 ascertains 較佳的效能，則會套用此補救措施。
 
 - 使用效能指標來更適當地處理不平衡資料。 例如，AUC_weighted 是一個主要的計量，它會根據代表該類別的樣本相對數目來計算每個類別的比重，因此在不平衡的情況下更健全。
 

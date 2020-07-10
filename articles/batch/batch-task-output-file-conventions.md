@@ -4,12 +4,12 @@ description: 了解如何使用適用於 .NET 的 Azure Batch 檔案慣例程式
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2e06bc90c95f9951895e0434ec8a8a7defaa6156
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965190"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147176"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用適用於 .NET 的 Batch 檔案慣例程式庫將作業和工作輸出保存到 Azure 儲存體
 
@@ -55,7 +55,7 @@ Azure Batch 提供多個方法來保存工作輸出。 檔案慣例最適合這�
 
 若要使用檔案慣例程式庫保存作業和工作輸出資料，請在 Azure 儲存體中建立容器，然後將輸出儲存至容器。 在您的工作程式碼中使用[適用於 .NET 的 Azure 儲存體用戶端程式庫](https://www.nuget.org/packages/WindowsAzure.Storage)，將工作輸出上傳到容器中。
 
-如需在 Azure 儲存體中使用容器和 Blob 的詳細資訊，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。
+如需在 Azure 儲存體中使用容器和 Blob 的詳細資訊，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-quickstart-blobs-dotnet.md)。
 
 > [!WARNING]
 > 使用檔案慣例程式庫保存的所有作業和工作輸出，都會儲存在相同容器中。 如果有大量的工作同時嘗試保存檔案，可能會強制執行 Azure 儲存體節流限制。 如需節流限制的詳細資訊，請參閱 [Blob 儲存體的效能和可擴縮性檢查清單](../storage/blobs/storage-performance-checklist.md)。
