@@ -7,11 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50d6bebd1e38149096b865ad3654a9604d685f5d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488744"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141953"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>整合 Azure 串流分析與 Azure Machine Learning (預覽)
 
@@ -27,7 +28,7 @@ ms.locfileid: "84488744"
 
 3. 請確定您的 Web 服務接受並傳回 JSON 序列化資料。
 
-4. 將模型部署到 [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) 上以進行大規模生產部署。 如果 Web 服務無法處理來自您作業的要求數，串流分析作業的效能會降低，因而影響延遲。 只有當您使用 Azure 入口網站時，才支援在 Azure 容器執行個體上部署的模型。
+4. 將模型部署到 [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) 上以進行大規模生產部署。 如果 Web 服務無法處理來自您作業的要求數，串流分析作業的效能會降低，因而影響延遲。 只有當您使用 Azure 入口網站時，才支援在 Azure 容器執行個體上部署的模型。 串流分析尚未支援使用[Azure Machine Learning 設計](https://docs.microsoft.com/azure/machine-learning/concept-designer)工具建立的模型。
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>將機器學習模型新增至您的作業
 
