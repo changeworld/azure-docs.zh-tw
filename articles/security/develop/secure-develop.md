@@ -13,11 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 34294bf29ec861d7bbb954ece7016de37769a332
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266758"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232690"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上開發安全的應用程式
 在本文中，我們會提供您在開發雲端應用程式時應考慮的安全性活動和控制。 其中涵蓋 Microsoft [安全性開發生命週期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) 執行期間和驗證階段所要考慮的安全性問題和概念。 其目標是要協助您定義活動和 Azure 服務，以便您用來開發更安全的應用程式。
@@ -133,7 +134,7 @@ DAST 與靜態應用程式安全性測試 (SAST) 不同。 SAST 工具會在程�
 
 在[模糊測試](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)中，您可以故意將格式錯誤或隨機的資料引進應用程式來引發程式失敗。 引發程式失敗有助於在發行應用程式之前，發現潛在的安全性問題。
 
-[安全性風險偵測](https://docs.microsoft.com/security-risk-detection/)是 Microsoft 獨特的模糊測試服務，用以尋找軟體中的安全性關鍵錯誤。
+[安全性風險偵測](https://www.microsoft.com/en-us/security-risk-detection/)是 Microsoft 獨特的模糊測試服務，用以尋找軟體中的安全性關鍵錯誤。
 
 ### <a name="conduct-attack-surface-review"></a>執行攻擊面檢閱
 

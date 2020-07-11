@@ -13,20 +13,21 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 720931cf9f955f63075e3881b6b9f2e884bd3a76
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78199643"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232452"
 ---
 # <a name="live-event-low-latency-settings"></a>即時事件低延遲設定
 
 本文說明如何在[實況活動](https://docs.microsoft.com/rest/api/media/liveevents)上設定低延遲。 它也會討論您在各種播放器中使用低延遲設定時會看到的典型結果。 結果會隨著 CDN 和網路延遲而有所不同。
 
-若要使用新的 **LowLatency** 功能，您可以在 **LiveEvent** 上將 **StreamOptionsFlag** 設定為 **LowLatency**。 在建立 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) 以便播放 HLS 時，請將 [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 設定為 1。 串流啟動並執行之後，您可以使用[Azure 媒體播放機](https://ampdemo.azureedge.net/)（AMP 示範頁面），並將播放選項設定為使用 [低延遲啟發學習法設定檔]。
+若要使用新的 **LowLatency** 功能，您可以在 **LiveEvent** 上將 **StreamOptionsFlag** 設定為 **LowLatency**。 在建立 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) 以便播放 HLS 時，請將 [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 設定為 1。 串流啟動並執行之後，您可以使用 [ [Azure 媒體播放機](https://ampdemo.azureedge.net/) (AMP 示範] 頁面) ，並將播放選項設定為使用 [低延遲啟發學習法設定檔]。
 
 > [!NOTE]
-> 目前，Azure 媒體播放機中的 LowLatency HeuristicProfile 是設計用來以 MPEG 破折號通訊協定播放資料流程，其中包含 CSF 或 CMAF 格式（例如 `format=mdp-time-csf` 或 `format=mdp-time-cmaf` ）。 
+> 目前，Azure 媒體播放機中的 LowLatency HeuristicProfile 是設計用來以 MPEG 破折號通訊協定播放資料流程，其中包含 CSF 或 CMAF 格式 (例如， `format=mdp-time-csf` 或 `format=mdp-time-cmaf`) 。 
 
 下列 .NET 範例會示範如何在 **LiveEvent** 上設定 **LowLatency**：
 
@@ -61,15 +62,15 @@ LiveEvent liveEvent = new LiveEvent(
 
 ||已啟用 2 秒 GOP 低延遲|已啟用 1 秒 GOP 低延遲|
 |---|---|---|
-|AMP 中的 DASH|10 秒|8 秒|
-|原生 iOS 播放程式上的 HLS|14 秒|10 秒|
+|**AMP 中的 DASH**|10 秒|8 秒|
+|**原生 iOS 播放程式上的 HLS**|14 秒|10 秒|
 
 ### <a name="live-encoding"></a>即時編碼
 
 ||已啟用 2 秒 GOP 低延遲|已啟用 1 秒 GOP 低延遲|
 |---|---|---|
-|AMP 中的 DASH|14 秒|10 秒|
-|原生 iOS 播放程式上的 HLS|18 秒|13 秒|
+|**AMP 中的 DASH**|14 秒|10 秒|
+|**原生 iOS 播放程式上的 HLS**|18 秒|13 秒|
 
 > [!NOTE]
 > 端對端延遲可能會因區域網路狀況或引進 CDN 快取層而有所不同。 建議您測試實際的設定。

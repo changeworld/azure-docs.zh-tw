@@ -8,23 +8,24 @@ ms.topic: conceptual
 description: 瞭解如何使用 Azure Dev Spaces 和 Azure Kubernetes Services 來供應商務持續性，並為嚴重損壞修復做準備
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e47d4b05dedb981d55c527f76ae1c3a120f23d0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996919"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232418"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Space 的商務持續性和災害復原
 
 ## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>檢閱 Azure Kubernetes Service (AKS) 的災害復原指引
 
-Azure Dev Spaces 是 Azure Kubernetes Service (AKS) 的功能之一。 您應留意 AKS 災害復原的指導方針，並考量那是否適用於您在 Dev Spaces 中使用的 AKS 叢集。 如需詳細資訊，請參閱 [Azure Kubernetes Service (AKS) 中的商務持續性和災害復原的最佳做法](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)
+Azure Dev Spaces 是 Azure Kubernetes Service (AKS) 的功能之一。 您應留意 AKS 災害復原的指導方針，並考量那是否適用於您在 Dev Spaces 中使用的 AKS 叢集。 如需詳細資訊，請參閱 [Azure Kubernetes Service (AKS) 中的商務持續性和災害復原的最佳做法](../../aks/operator-best-practices-multi-region.md)
 
 ## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>在不同區域的 AKS 叢集上啟用 Dev Spaces
 
 在不同區域的 AKS 叢集上啟用 Dev Spaces，可讓您在某個 Azure 區域失敗後能立即繼續使用 Dev Spaces。
 
-如需 AKS 多重區域部署的詳細資訊，請參閱[多重區域部署規劃](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
+如需 AKS 多重區域部署的詳細資訊，請參閱[多重區域部署規劃](../../aks/operator-best-practices-multi-region.md#plan-for-multiregion-deployment)
 
 ### <a name="enable-dev-spaces-via-the-azure-cli"></a>透過 Azure CLI 啟用 Dev Spaces
 

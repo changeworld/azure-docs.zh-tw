@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffd73e9dff06df4b5acdd004dddcfca5ff03ede0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512003"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232265"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>針對 Linux 中的 Azure 檔案服務問題進行疑難排解
 
@@ -30,14 +30,14 @@ ms.locfileid: "85512003"
 
 |   | SMB 2.1 <br>(掛接在相同 Azure 區域內的 VM 上) | SMB 3.0 <br>(從內部部署環境和跨區域掛接) |
 | --- | :---: | :---: |
-| Ubuntu Server | 14.04+ | 16.04+ |
-| RHEL | 7+ | 7.5+ |
-| CentOS | 7+ |  7.5+ |
-| Debian | 8+ |   |
-| openSUSE | 13.2+ | 42.3+ |
-| SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+| **Ubuntu Server** | 14.04+ | 16.04+ |
+| **RHEL** | 7+ | 7.5+ |
+| **CentOS** | 7+ |  7.5+ |
+| **Debian** | 8+ |   |
+| **openSUSE** | 13.2+ | 42.3+ |
+| **SUSE Linux Enterprise Server** | 12 | 12 SP3+ |
 
-- 用戶端上未安裝 CIFS 公用程式（cifs-utils）。
+- 用戶端上未安裝 cifs utils)  (cifs 公用程式。
 - 用戶端上未安裝 SMB/CIFS 的最低版本 (2.1 版)。
 - 用戶端不支援 SMB 3.0 加密。 上表提供 Linux 散發套件的清單，支援從內部部署環境和跨區域使用加密進行裝載。 其他散發套件需要核心 4.11 和更新版本。
 - 您嘗試透過 TCP 通訊埠 445 連線到儲存體帳戶，但目前並不支援。
@@ -54,7 +54,7 @@ ms.locfileid: "85512003"
 * 收集診斷追蹤。
 
 <a id="mounterror13"></a>
-## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>當您掛接 Azure 檔案共用時，發生「掛接錯誤（13）：許可權已拒絕」
+## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>當您掛接 Azure 檔案共用時，發生「掛接錯誤 (13) ：許可權已拒絕」
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>原因 1：通訊通道未加密
 
@@ -84,9 +84,9 @@ ms.locfileid: "85512003"
 
 ### <a name="cause"></a>原因
 
-您已達到檔案所允許的同時開啟控點上限。
+您已達到檔案或目錄允許的並行開啟控制碼上限。
 
-單一檔案的開啟控制代碼配額為 2,000 個。 當您擁有 2,000 個開啟控制代碼時，會顯示一則錯誤訊息以指出已達到配額。
+單一檔案或目錄上有2000個開啟控制碼的配額。 當您擁有 2,000 個開啟控制代碼時，會顯示一則錯誤訊息以指出已達到配額。
 
 ### <a name="solution"></a>解決方案
 
@@ -106,14 +106,14 @@ ms.locfileid: "85512003"
 - 使用正確的複製方法：
     - 在兩個檔案共用之間進行任何傳輸時，請使用[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 。
     - 使用具有平行的 cp 或 dd 可以改善複製速度，執行緒的數目取決於您的使用案例和工作負載。 下列範例使用六個： 
-    - cp 範例（cp 會使用檔案系統的預設區塊大小作為區塊大小）： `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` 。
-    - dd 範例（此命令會將區塊大小明確設定為 1 MiB）：`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
+    - cp 範例 (cp 會使用檔案系統的預設區塊大小，做為區塊大小) ： `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` 。
+    - dd 範例 (此命令會將區塊大小明確設定為 1 MiB) ：`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - 開放原始碼協力廠商工具，例如：
         - [GNU Parallel](https://www.gnu.org/software/parallel/)。
         - [Fpart](https://github.com/martymac/fpart) -排序檔案並將它們封裝成分割區。
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -使用 Fpart 和複製工具來產生多個實例，以將資料從 src_dir 遷移至 dst_url。
         - 以 GNU coreutils 為基礎的[多](https://github.com/pkolano/mutil)執行緒 cp 和 check md5sum。
-- 預先設定檔案大小，而不是讓每個寫入擴充寫入，而是在已知檔案大小的情況下，協助改善複製速度。 如果必須避免擴充寫入，您可以使用命令來設定目的地檔案大小 `truncate - size <size><file>` 。 之後， `dd if=<source> of=<target> bs=1M conv=notrunc` 命令會複製原始程式檔，而不需要重複更新目標檔案的大小。 例如，您可以針對想要複製的每個檔案設定目的地檔案大小（假設共用會裝載在/mnt/share 底下）：
+- 預先設定檔案大小，而不是讓每個寫入擴充寫入，而是在已知檔案大小的情況下，協助改善複製速度。 如果必須避免擴充寫入，您可以使用命令來設定目的地檔案大小 `truncate - size <size><file>` 。 之後， `dd if=<source> of=<target> bs=1M conv=notrunc` 命令會複製原始程式檔，而不需要重複更新目標檔案的大小。 例如，您可以設定您想要複製的每個檔案的目的地檔案大小 (假設共用已掛接在/mnt/share) ：
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
     - 然後-複製檔案，而不以平行方式擴充寫入：`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 

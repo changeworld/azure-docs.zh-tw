@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.author: victorh
-ms.openlocfilehash: 27cdff24672f70407e8f8f89c6c49a8c2de87d0a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3174576201f0068191c2918b47fbd99eaa1ec182
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078420"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232078"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -223,3 +223,7 @@ TCP Ping 不會實際連線到目標 FQDN。 這是因為 Azure 防火牆的背�
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>我可以在沒有公用 IP 位址的情況下部署 Azure 防火牆嗎？
 
 否，目前您必須部署具有公用 IP 位址的 Azure 防火牆。
+
+## <a name="where-does-azure-firewall-store-customer-data"></a>Azure 防火牆會將客戶資料儲存在哪裡？
+
+Azure 防火牆不會在其部署所在的區域中移動或儲存客戶資料。

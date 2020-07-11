@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: e93dbd085ce99b8d555d6b9bb04e7eb6f60de0ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9484b81622e208077f0659975f42f46d90d2137
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422900"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232231"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>啟用或停用 Azure VM 客體作業系統上的防火牆規則
 
@@ -97,7 +97,7 @@ ms.locfileid: "80422900"
 
 如果虛擬機器為連線狀態，而且可以在相同的虛擬網路上存取另一個虛擬機器，您可以在其他虛擬機器上使用[遠端登錄](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在疑難排解 VM 上，啟動登錄編輯程式（regedit.exe），**然後選取**  >  **[檔案] [連線網路登入]**。
+1.  在疑難排解 VM 上，啟動 [登錄編輯程式] ( # A0) ，然後**選取**  >  **[檔案] [連線網路登入]**。
 
 2.  開啟*目的機器*\SYSTEM 分支，然後指定下列值：
 
@@ -107,7 +107,7 @@ ms.locfileid: "80422900"
     
         然後，在字串中，將 **Active=FALSE** 變更為 **Active=TRUE**：
 
-        **v 2.22 |動作 = 允許 |Active = TRUE |Dir = In |通訊協定 = 6 |設定檔 = 網域 |設定檔 = 私用 |設定檔 = 公用 |LPort = 3389 |應用程式 =% SystemRoot% \system32\svchost.exe|Svc = termservice |名稱 = \@FirewallAPI.dll，-28775 |Desc = \@FirewallAPI.dll，-28756 |EmbedCtxt = \@FirewallAPI.dll，-28752 |**
+        `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
     
     * 若要停用規則，請開啟下列登錄值：
     
@@ -115,7 +115,7 @@ ms.locfileid: "80422900"
 
         然後，將 **Active =TRUE** 變更為 **Active=FALSE**：
         
-        **v 2.22 |動作 = 允許 |Active = FALSE |Dir = In |通訊協定 = 6 |設定檔 = 網域 |設定檔 = 私用 |設定檔 = 公用 |LPort = 3389 |應用程式 =% SystemRoot% \system32\svchost.exe|Svc = termservice |名稱 = \@FirewallAPI.dll，-28775 |Desc = \@FirewallAPI.dll，-28756 |EmbedCtxt = \@FirewallAPI.dll，-28752 |**
+        `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
 3.  重新啟動虛擬機器以套用變更。
 
@@ -154,7 +154,7 @@ ms.locfileid: "80422900"
         
         然後，將 **Active=FALSE** 變更為 **Active=True**。
         
-        **v 2.22 |動作 = 允許 |Active = TRUE |Dir = In |通訊協定 = 6 |設定檔 = 網域 |設定檔 = 私用 |設定檔 = 公用 |LPort = 3389 |應用程式 =% SystemRoot% \system32\svchost.exe|Svc = termservice |名稱 = \@FirewallAPI.dll，-28775 |Desc = \@FirewallAPI.dll，-28756 |EmbedCtxt = \@FirewallAPI.dll，-28752 |**
+        `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
     3.  若要停用規則，請開啟下列登錄機碼：
 
@@ -162,7 +162,7 @@ ms.locfileid: "80422900"
 
         然後，將 **Active=True** 變更為 **Active=FALSE**。
         
-        **v 2.22 |動作 = 允許 |Active = FALSE |Dir = In |通訊協定 = 6 |設定檔 = 網域 |設定檔 = 私用 |設定檔 = 公用 |LPort = 3389 |應用程式 =% SystemRoot% \system32\svchost.exe|Svc = termservice |名稱 = \@FirewallAPI.dll，-28775 |Desc = \@FirewallAPI.dll，-28756 |EmbedCtxt = \@FirewallAPI.dll，-28752 |**
+        `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
 9.  反白顯示**BROKENSYSTEM**，然後**File**  >  從功能表中選取 [檔案]**[卸載 Hive** ]。
 

@@ -6,11 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: fb3e4fd4935afc4869e50ccbc35c53333d43b1df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10f8e92138878381b5267742b8211df81e0c49d4
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515518"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232673"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>掛接 Azure HPC Cache
 
@@ -18,7 +19,7 @@ ms.locfileid: "85515518"
 
 Mount 命令是由下列元素所組成：
 
-* 其中一個快取的掛接位址（列于快取總覽頁面）
+* 快取 [總覽] 頁面上 (列出的其中一個快取掛接位址) 
 * 您在建立儲存體目標時所設定的虛擬命名空間路徑
 * 要在用戶端上使用的本機路徑
 * 可將這類 NFS 掛接的成功優化的命令參數
@@ -33,7 +34,7 @@ Mount 命令是由下列元素所組成：
 
 用戶端電腦必須具有快取的虛擬網路和私人子網的網路存取權。
 
-例如，在相同的虛擬網路內建立用戶端 Vm，或使用端點、閘道或虛擬網路中的其他解決方案，從外部進行存取。 （請記住，快取本身以外的任何內容都應該裝載于快取的子網內）。
+例如，在相同的虛擬網路內建立用戶端 Vm，或使用端點、閘道或虛擬網路中的其他解決方案，從外部進行存取。  (請記住，快取本身以外的任何東西都應該裝載于快取的子網內。 ) 
 
 ### <a name="install-utilities"></a>安裝公用程式
 
@@ -46,7 +47,7 @@ Mount 命令是由下列元素所組成：
 
 在每個用戶端上建立本機目錄路徑，以連接到快取。 為您要裝載的每個命名空間路徑建立路徑。
 
-範例：`sudo mkdir -p /mnt/hpc-cache-1/target3`
+範例： `sudo mkdir -p /mnt/hpc-cache-1/target3`
 
 Azure 入口網站中的 [[掛接指示](#use-the-mount-instructions-utility)] 頁面包含可供您複製的原型命令。
 
@@ -114,7 +115,7 @@ root@test-client:/tmp#
 
 > 掛接-o hard，proto = tcp，mountproto = tcp，重試 = 30 $ {CACHE_IP_ADDRESS}:/$ {NAMESPACE_PATH} $ {LOCAL_FILESYSTEM_MOUNT_POINT}
 
-| 建議的掛接命令設定 | |
+| 建議的掛接命令設定 | 描述 |
 --- | ---
 ``hard`` | 軟掛接至 Azure HPC 快取會與應用程式失敗和可能的資料遺失相關聯。
 ``proto=tcp`` | 此選項支援適當處理 NFS 網路錯誤的功能。
@@ -132,7 +133,7 @@ root@test-client:/tmp#
 
 虛擬命名空間路徑會顯示在每個儲存體目標的詳細資料頁面上。 按一下個別的儲存體目標名稱以查看其詳細資料，包括與其相關聯的匯總命名空間路徑。
 
-![儲存體目標詳細資料頁面（標頭「更新儲存體目標」）的螢幕擷取畫面。 資料表之 [虛擬命名空間路徑] 資料行中的專案周圍有一個醒目提示方塊](media/hpc-cache-view-namespace-paths.png)
+![儲存體目標詳細資料頁面的螢幕擷取畫面 (標頭「更新儲存體目標」 ) 。 資料表之 [虛擬命名空間路徑] 資料行中的專案周圍有一個醒目提示方塊](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="next-steps"></a>後續步驟
 

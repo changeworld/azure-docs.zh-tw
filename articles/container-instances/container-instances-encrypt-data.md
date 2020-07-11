@@ -5,15 +5,16 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f9aff2ea88c2334ab30c9819f68fd6cbb9124c5
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79080355"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232435"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署資料
 
-在雲端中執行 Azure 容器實例（ACI）資源時，ACI 服務會收集並保存與您的容器相關的資料。 ACI 會在此資料保存在雲端時，自動將其加密。 此加密可保護您的資料，以協助您符合組織的安全性和合規性承諾。 ACI 也可以讓您選擇使用自己的金鑰來加密此資料，讓您能夠更充分掌控與 ACI 部署相關的資料。
+在雲端中執行 Azure 容器實例 (ACI) 資源時，ACI 服務會收集並保存與您的容器相關的資料。 ACI 會在此資料保存在雲端時，自動將其加密。 此加密可保護您的資料，以協助您符合組織的安全性和合規性承諾。 ACI 也可以讓您選擇使用自己的金鑰來加密此資料，讓您能夠更充分掌控與 ACI 部署相關的資料。
 
 ## <a name="about-aci-data-encryption"></a>關於 ACI 資料加密 
 
@@ -25,12 +26,12 @@ ACI 中的資料會使用256位 AES 加密來加密和解密。 它會針對所�
 
 |    |    Microsoft 管理的金鑰     |     客戶管理的金鑰     |
 |----|----|----|
-|    加密/解密作業    |    Azure    |    Azure    |
-|    金鑰儲存體    |    Microsoft 金鑰存放區    |    Azure 金鑰保存庫    |
-|    金鑰輪替責任    |    Microsoft    |    客戶    |
-|    金鑰存取    |    僅限 Microsoft    |    Microsoft、客戶    |
+|    **加密/解密作業**    |    Azure    |    Azure    |
+|    **金鑰儲存體**    |    Microsoft 金鑰存放區    |    Azure 金鑰保存庫    |
+|    **金鑰輪替責任**    |    Microsoft    |    Customer    |
+|    **金鑰存取**    |    僅限 Microsoft    |    Microsoft、客戶    |
 
-本檔的其餘部分涵蓋以金鑰（客戶管理的金鑰）加密 ACI 部署資料所需的步驟。 
+本檔的其餘部分涵蓋使用您的金鑰來加密 ACI 部署資料所需的步驟， (客戶管理的金鑰) 。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -93,14 +94,14 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ### <a name="modify-your-json-deployment-template"></a>修改您的 JSON 部署範本
 
 > [!IMPORTANT]
-> 使用客戶管理的金鑰來加密部署資料，可在目前推出的最新 API 版本（2019-12-01）中取得。在您的部署範本中指定此 API 版本。 如果您有任何問題，請與 Azure 支援服務聯繫。
+> 使用客戶管理的金鑰來加密部署資料，可在目前推出的最新 API 版本 (2019-12-01) 中取得。在您的部署範本中指定此 API 版本。 如果您有任何問題，請與 Azure 支援服務聯繫。
 
 設定金鑰保存庫金鑰和存取原則之後，請將下列屬性新增至您的 ACI 部署範本。 在[教學課程：使用 Resource Manager 範本部署多容器群組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中，深入瞭解如何使用範本部署 ACI 資源。 
 * 在底下 `resources` ，將設 `apiVersion` 為 `2019-12-01` 。
 * 在部署範本的 [容器群組屬性] 區段底下，新增 `encryptionProperties` 包含下列值的：
   * `vaultBaseUrl`：您可以在入口網站中金鑰保存庫資源的 [總覽] 分頁上，找到金鑰保存庫的 DNS 名稱。
   * `keyName`：稍早產生的金鑰名稱
-  * `keyVersion`：金鑰的目前版本。 您可以按一下金鑰本身（在金鑰保存庫資源的 [設定] 區段中的 [金鑰] 底下）來找到此值
+  * `keyVersion`：金鑰的目前版本。 按一下金鑰保存庫資源的 [設定] 區段中的 [金鑰] 底下，即可找到這項 () 
 * 在容器群組屬性底下，新增 `sku` 具有值的屬性 `Standard` 。 `sku`在 API 版本2019-12-01 中需要屬性。
 
 下列範本程式碼片段顯示用來加密部署資料的其他屬性：

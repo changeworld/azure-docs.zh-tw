@@ -5,11 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解在啟用和使用 Azure Dev Spaces 時，如何針對常見問題進行疑難排解並加以解決
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b97bab7182e382801a57bcf7dd6f325e665438b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309640"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232486"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑難排解
 
@@ -131,7 +132,7 @@ Azure Dev Spaces 提供 C# 和 Node.js 的原生支援。 如果您在目錄中�
 
 ### <a name="timeout-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>AKS 虛擬節點在執行到「正在等待容器映像組建...」步驟時發生逾時
 
-當您嘗試使用 Dev Spaces 來執行服務，而服務已設定為在 [AKS 虛擬節點](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)上執行時，就會發生逾時。 Dev Spaces 目前不支援在虛擬節點上建置服務或對服務進行偵錯。
+當您嘗試使用 Dev Spaces 來執行服務，而服務已設定為在 [AKS 虛擬節點](../aks/virtual-nodes-portal.md)上執行時，就會發生逾時。 Dev Spaces 目前不支援在虛擬節點上建置服務或對服務進行偵錯。
 
 如果您執行 `azds up` 並搭配 `--verbose` 參數，或在 Visual Studio 中啟用詳細資訊記錄，則會看到其他詳細資料：
 

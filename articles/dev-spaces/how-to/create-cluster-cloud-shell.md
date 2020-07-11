@@ -5,11 +5,12 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: 了解如何在不安裝任何項目的情況下，直接從瀏覽器快速建立針對 Azure Dev Spaces 所啟用的 Kubernetes 叢集。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: 5e2e5cfd22eeedd3554737458caeca0b891b62fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6da9055e11b5c514d71122c3650bbc326fb8de8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77605296"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232282"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>建立 Kubernetes 叢集，並將 Azure Dev Spaces 啟用 Azure Cloud Shell
 
@@ -33,7 +34,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 
 ## <a name="next-steps"></a>後續步驟
 
-如需完整教學課程的連結，請參閱 [Azure Dev Spaces](/azure/dev-spaces/)。
+如需完整教學課程的連結，請參閱 [Azure Dev Spaces](../index.yml)。
 
 > [!IMPORTANT]
 > 許多 Azure Dev Spaces 快速入門和教學課程都使用 Azure Dev Spaces CLI 來執行作業。 您無法在 Azure Cloud Shell 中安裝 Azure Dev Spaces CLI。

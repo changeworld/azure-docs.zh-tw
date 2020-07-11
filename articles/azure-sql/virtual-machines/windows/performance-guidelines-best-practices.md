@@ -15,11 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f320ee7c6bab77c64215a0576852f1d895be157b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e840a9f78a4d6a9fef83abd7b0f011b700f985f
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668775"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231932"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上 SQL Server 的效能指導方針
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +31,7 @@ ms.locfileid: "84668775"
 
  在 Azure 虛擬機器上執行 SQL Server 時，建議您繼續使用適用于內部部署伺服器環境中 SQL Server 的相同資料庫效能微調選項。 不過，公用雲端中關聯式資料庫的效能優劣取決於許多因素，例如虛擬機器的大小和資料磁碟的組態。
 
-[在 Azure 入口網站中布建的 SQL Server 映射](sql-vm-create-portal-quickstart.md)遵循一般存放裝置設定最佳作法（如需有關如何設定儲存體的詳細資訊，請參閱[SQL Server 虛擬機器（Vm）的儲存體](storage-configuration.md)設定。 佈建之後，請考慮套用本文所討論的其他最佳化作業。 依據您的工作負載做選擇，並透過測試進行確認。
+[SQL Server 在 Azure 入口網站中布建的映射](sql-vm-create-portal-quickstart.md)遵循一般存放裝置設定最佳作法 (如需有關存放裝置設定方式的詳細資訊，請參閱[SQL Server 虛擬機器 (vm) ) 的存放裝置配置](storage-configuration.md)。 佈建之後，請考慮套用本文所討論的其他最佳化作業。 依據您的工作負載做選擇，並透過測試進行確認。
 
 > [!TIP]
 > 您通常必須在最佳化成本與最佳化效能之間做出取捨。 本文著重于取得 Azure 虛擬機器上 SQL Server 的*最佳*效能。 如果您的工作負載需求較低，可能就不需要採用下列每一項最佳化條件。 評估以下建議時，請考量您的效能需求、成本和工作負載模式。
@@ -42,7 +43,7 @@ ms.locfileid: "84668775"
 | 區域 | 最佳化 |
 | --- | --- |
 | [VM 大小](#vm-size-guidance) | - 使用具有 4 或更多 vCPU (例如 [E4S_v3](../../../virtual-machines/ev3-esv3-series.md) 或更高版本，或 [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md) 或更高版本) 的 VM 大小。<br/><br/> - [Es、Eas、Ds 和 Das 系列](../../../virtual-machines/sizes-general.md)提供 OLTP 工作負載效能所需的最佳記憶體與 vCPU 比例。 <br/><br/> - [M 系列](../../../virtual-machines/m-series.md)提供任務關鍵性效能所需的最高記憶體與 vCPU 比例，適合用於資料倉儲工作負載。 <br/><br/> - 依照[應用程式效能需求檢查清單](../../../virtual-machines/windows/premium-storage-performance.md#latency)來收集目標工作負載在尖峰時間的 [IOPS](../../../virtual-machines/windows/premium-storage-performance.md#iops)、[輸送量](../../../virtual-machines/windows/premium-storage-performance.md#throughput)和[延遲](../../../virtual-machines/windows/premium-storage-performance.md#application-performance-requirements-checklist)需求，然後選取可調整為配合工作負載效能需求的 [VM 大小](../../../virtual-machines/sizes-general.md)。|
-| [Storage](#storage-guidance) | -如需在 Azure 虛擬機器上使用 TPC-E 和 TPC_C 基準測試 SQL Server 效能的詳細測試，請參閱將[OLTP 效能優化](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794)的 blog。 <br/><br/> - 使用[進階 SSD](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794) 以獲得最佳價格/效能優勢。 為資料檔案設定[唯讀快取](../../../virtual-machines/windows/premium-storage-performance.md#disk-caching)，但記錄檔不設定快取。 <br/><br/> - 如果工作負載需要少於 1 毫秒的儲存延遲，請使用 [Ultra 磁碟](../../../virtual-machines/windows/disks-types.md#ultra-disk)。 <br/><br/> - 在選擇磁碟類型之前，[監視應用程式](../../../virtual-machines/windows/premium-storage-performance.md#application-performance-requirements-checklist)以收集 SQL Server 資料、記錄檔和暫存資料庫檔案的儲存延遲需求。 如果需要 < 1 毫秒的儲存延遲，請使用 Ultra 磁碟，否則請使用進階 SSD。 如果只有記錄檔才需要低延遲 (資料檔案不需要)，則僅針對記錄檔以所需的 IOPS 和輸送量層級[佈建 Ultra 磁碟](../../../virtual-machines/windows/disks-enable-ultra-ssd.md)。 <br/><br/> -  建議將[Premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md)作為 SQL Server 容錯移轉叢集實例的共用存放裝置。 相較於進階 SSD，進階檔案共用不支援快取，且提供的效能有限。 針對獨立 SQL 執行個體，選擇進階 SSD 受控磁碟 (而非進階檔案共用)；但請利用進階檔案共用作為容錯移轉叢集執行個體共用儲存體，以達到簡化維護和彈性擴充。 <br/><br/> - 標準儲存體僅建議用於開發和測試用途或備份檔案，而不應用於生產工作負載。 <br/><br/> - 將[儲存體帳戶](../../../storage/common/storage-create-storage-account.md)和 SQL Server VM 置於同一個區域。<br/><br/> - 停用儲存體帳戶上的 Azure [異地備援儲存體](../../../storage/common/storage-redundancy.md) (異地複寫)。  |
+| [Storage](#storage-guidance) | -如需在 Azure 虛擬機器上使用 TPC-E 和 TPC_C 基準測試 SQL Server 效能的詳細測試，請參閱將[OLTP 效能優化](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794)的 blog。 <br/><br/> - 使用[進階 SSD](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794) 以獲得最佳價格/效能優勢。 為資料檔案設定[唯讀快取](../../../virtual-machines/windows/premium-storage-performance.md#disk-caching)，但記錄檔不設定快取。 <br/><br/> - 如果工作負載需要少於 1 毫秒的儲存延遲，請使用 [Ultra 磁碟](../../../virtual-machines/windows/disks-types.md#ultra-disk)。 若要深入瞭解，請參閱[遷移至 ultra 磁片](storage-migrate-to-ultradisk.md)。 <br/><br/> - 在選擇磁碟類型之前，[監視應用程式](../../../virtual-machines/windows/premium-storage-performance.md#application-performance-requirements-checklist)以收集 SQL Server 資料、記錄檔和暫存資料庫檔案的儲存延遲需求。 如果需要 < 1 毫秒的儲存延遲，請使用 Ultra 磁碟，否則請使用進階 SSD。 如果只有記錄檔才需要低延遲 (資料檔案不需要)，則僅針對記錄檔以所需的 IOPS 和輸送量層級[佈建 Ultra 磁碟](../../../virtual-machines/windows/disks-enable-ultra-ssd.md)。 <br/><br/> -  建議將[Premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md)作為 SQL Server 容錯移轉叢集實例的共用存放裝置。 相較於進階 SSD，進階檔案共用不支援快取，且提供的效能有限。 針對獨立 SQL 執行個體，選擇進階 SSD 受控磁碟 (而非進階檔案共用)；但請利用進階檔案共用作為容錯移轉叢集執行個體共用儲存體，以達到簡化維護和彈性擴充。 <br/><br/> - 標準儲存體僅建議用於開發和測試用途或備份檔案，而不應用於生產工作負載。 <br/><br/> - 將[儲存體帳戶](../../../storage/common/storage-create-storage-account.md)和 SQL Server VM 置於同一個區域。<br/><br/> - 停用儲存體帳戶上的 Azure [異地備援儲存體](../../../storage/common/storage-redundancy.md) (異地複寫)。  |
 | [磁碟](#disks-guidance) | - 使用至少 2 個[進階 SSD](../../../virtual-machines/windows/disks-types.md#premium-ssd) (1 個用於儲存記錄檔，另 1 個用於儲存資料檔案)。 <br/><br/> - 對於需要 < 1 毫秒 IO 延遲的工作負載，啟用 M 系列寫入加速器，並考慮使用 E 系列和 DS 系列的 Ultra SSD。 <br/><br/> - 在託管資料檔案的磁碟上啟用[唯讀快取](../../../virtual-machines/windows/premium-storage-performance.md#disk-caching)功能。<br/><br/> -新增額外的 20% premium IOPS/輸送量容量[，以設定 SQL Server 資料、記錄檔和 TempDB 檔案的儲存空間時，](storage-configuration.md)您的工作負載所需 <br/><br/> - 避免使用作業系統或暫存磁碟作為資料儲存體或進行記錄。<br/><br/> - 不要啟用裝載記錄檔案的磁碟上的 [快取] 功能。  **重要**事項：變更 Azure 虛擬機器磁片的快取設定時，請停止 SQL Server 服務。<br/><br/> - 分割多個 Azure 資料磁碟，以提高儲存體輸送量。<br/><br/> - 以文件上記載的配置大小格式化。 <br/><br/> - 針對任務關鍵性 SQL Server 工作負載，將 TempDB 置於本機 SSD 的 `D:\` 磁碟機上 (在選擇正確的 VM 大小後)。 如果您從 Azure 入口網站或 Azure 快速入門範本建立 VM，並[將暫存資料庫放在本機磁片上](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583)，則不需要任何進一步的動作;針對所有其他情況，請遵循 blog 中的步驟來[使用 ssd 來儲存 TempDB](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) ，以避免在重新開機之後發生失敗。 如果本機磁碟的容量不足以供暫存資料庫大小使用，請將暫存資料庫放在存放集區 ([等量分配](../../../virtual-machines/windows/premium-storage-performance.md)在具[唯讀快取](../../../virtual-machines/windows/premium-storage-performance.md#disk-caching)的進階 SSD 磁碟上)。 |
 | [I/O](#io-guidance) |- 啟用 [資料庫頁面壓縮] 功能　。<br/><br/> - 針對資料檔案，啟用 [立即檔案初始化] 功能。<br/><br/> - 限制資料庫的 [自動成長] 功能。<br/><br/> - 停用資料庫的 [自動壓縮] 功能。<br/><br/> - 將所有的資料庫 (包括系統資料庫) 移到資料磁碟。<br/><br/> - 將 SQL Server 的錯誤記錄檔和追蹤檔案目錄移至資料磁碟。<br/><br/> - 設定預設備份和資料庫檔案位置。<br/><br/> - [啟用記憶體中的鎖定分頁](/sql/database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows?view=sql-server-2017)。<br/><br/> - 套用 SQL Server 效能修正程式。 |
 | [特定功能](#feature-specific-guidance) | -直接備份到 Azure Blob 儲存體。<br/><br/>- 針對大於 12 TB 的資料庫使用[檔案快照集備份](/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)。 <br/><br/>- 使用多個暫存資料庫檔案，每個核心 1 個檔案，最多 8 個檔案。<br/><br/>- 將最大伺服器記憶體設定為 90%，或為作業系統保留最多 50 GB 的記憶體。 <br/><br/>- 啟用軟體 NUMA。 |
@@ -68,7 +69,7 @@ ms.locfileid: "84668775"
 
 Azure 虛擬機器上有三種主要的磁片類型：
 
-* **OS 磁片**：當您建立 Azure 虛擬機器時，此平臺會至少將一個磁片（標示為**C**磁片磁碟機）連接到 VM 作為您的作業系統磁片。 此磁碟是以分頁 Blob 的形式儲存於儲存體的 VHD。
+* **OS 磁片**：當您建立 Azure 虛擬機器時，此平臺會至少連接一個磁片 (標示為適用于您作業系統磁片的 VM) **C**磁片磁碟機。 此磁碟是以分頁 Blob 的形式儲存於儲存體的 VHD。
 * **暫存磁碟**：Azure Stack 虛擬機器會包含另一個稱為暫存磁碟的磁碟 (標示為 **D**: 磁碟機)。 此磁碟位於可用於塗銷空間的節點上。
 * **資料磁碟**：您也可以將其他磁碟連接至虛擬機器作為資料磁碟，這些磁碟將會以分頁 Blob 形式儲存於儲存體。
 
@@ -122,7 +123,7 @@ Azure 虛擬機器上有三種主要的磁片類型：
 
   * 請根據您預期的負載量，決定與您的儲存體集區相關聯的磁碟數量。 請注意，各 VM 大小所允許連接的資料磁碟數量皆不同。 如需詳細資訊，請參閱[虛擬機器的大小](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-  * 如果您不是使用 premium Ssd （開發/測試案例），建議您新增[VM 大小](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)所支援的最大資料磁片數目，並使用磁片等量分割。
+  * 如果您未使用 premium Ssd (開發/測試案例) ，建議您新增[VM 大小](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)所支援的資料磁片數目上限，並使用磁片等量分割。
 
 * **快取原則**：請注意，下列快取原則的建議會視您的儲存體設定而有所不同。
 

@@ -15,18 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8f100d253dc5ecb321934eb49a1aba60595a5e8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919290"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232571"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒體分析偵測臉部和情緒
 
 > [!NOTE]
 > **Azure 媒體臉部偵測器**媒體處理器將被淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 **Azure 媒體臉部偵測器** 媒體處理器 (MP) 能讓您透過臉部表情針對對象的參與情形做出計算、追蹤移動，甚至進行量測。 此服務包含兩個功能： 
 
@@ -166,8 +167,8 @@ ms.locfileid: "77919290"
 
 || 預設 | 最大 | 最小 |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0.5 |2 |0.25|
-| AggregateEmotionIntervalMs |0.5 |1 |0.25|
+| **AggregateEmotionWindowMs** |0.5 |2 |0.25|
+| **AggregateEmotionIntervalMs** |0.5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON 輸出
 彙總情緒的 JSON 輸出 (已截斷)：
