@@ -18,5 +18,5 @@ ms.locfileid: "66244599"
 |-------------------|-----------------------------------------------------------|
 | 區塊 Blob        | ~ 4.75 TiB                                                 |
 | 分頁 Blob         | 8 TiB <br> 以分頁 Blob 格式上傳的每個檔案都必須是 512 位元組規格 (整數倍數)，否則上傳會失敗。 <br> VHD 和 VHDX 為 512 位元組規格。 |
-| Azure 檔案        | 1 TiB                                                      |
+| Azure 檔案儲存體        | 1 TiB                                                      |
 | 受控磁碟     | 4 TiB <br> 如需有關大小和限制的詳細資訊，請參閱： <li>[標準 Ssd 的擴充性目標](../articles/virtual-machines/windows/disks-types.md#standard-ssd)</li><li>[Premium Ssd 的擴充性目標](../articles/virtual-machines/windows/disks-types.md#standard-hdd)</li><li>[標準 Hdd 的擴充性目標](../articles/virtual-machines/windows/disks-types.md#premium-ssd)</li><li>[受控磁片的定價和計費](../articles/virtual-machines/windows/disks-types.md#billing)</li>  
