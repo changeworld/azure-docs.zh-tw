@@ -15,18 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918309"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231840"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒體視訊縮圖建立視訊摘要  
 
 > [!NOTE]
 > **Azure 媒體影片縮圖**媒體處理器將被淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 **Azure 媒體視訊縮圖** 媒體處理器 (MP) 可讓您建立視訊的摘要；當視訊較長而客戶只想預覽摘要時，就非常實用。 例如，客戶可能會想在將滑鼠移至縮圖上時，查看簡短的「視訊摘要」。 透過設定預設值，調整 **Azure 媒體視訊縮圖** 的參數，您即可使用 MP 強大的拍攝偵測和串連技術，以演算法來產生描述性的子剪輯。  
 
@@ -58,7 +59,7 @@ ms.locfileid: "77918309"
 
 目前，您可以變更下列參數：
 
-| Param | Description |
+| Param | 描述 |
 | --- | --- |
 | outputAudio |指定結果視訊是否要包含任何音訊。 <br/>允許的值為 True 或 False。 預設值是 True。 |
 | fadeInFadeOut |指定不同的動作縮圖之間是否要使用淡化轉換。  <br/>允許的值為 True 或 False。  預設值是 True。 |
@@ -66,10 +67,10 @@ ms.locfileid: "77918309"
 
 下表說明未使用 **maxMotionThumbnailInSecs** 時的預設持續時間。
 
-|  |  |  |
+|  | Small | 容量 |
 | --- | --- | --- |
-| 視訊持續時間 |d < 3 分鐘 |3 分鐘 < d < 15 分鐘 |
-| 縮圖持續時間 |15 秒 (2-3 個場景) |30 秒 (3-5 個場景) |
+| **視訊持續時間** |d < 3 分鐘 |3 分鐘 < d < 15 分鐘 |
+| **縮圖持續時間** |15 秒 (2-3 個場景) |30 秒 (3-5 個場景) |
 
 下列 JSON 會設定可用的參數。
 

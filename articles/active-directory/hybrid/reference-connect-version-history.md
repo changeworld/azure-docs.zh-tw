@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf5e161b46b9ec6e39702ddd8435a7c7672111f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72acf60bd9bc5baeba37d8ccffa79fe597954f16
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550133"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230378"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本發行歷程記錄
 Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
@@ -47,6 +47,22 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 >如果啟用了 Azure AD Connect 進行同步，您將會立即自動開始收到 Health 通知，以在執行其中一個舊版時，警告該版本即將淘汰。
 >
 >請參閱[本文](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)，以深入了解如何將 Azure AD Connect 升級至最新版本。
+
+## <a name="15420"></a>1.5.42.0
+
+### <a name="release-status"></a>發行狀態
+07/10/2020：已發行以供下載
+
+### <a name="functional-changes"></a>功能性變更
+此版本包含將現有 Azure AD Connect 伺服器的設定匯出至的功能公開預覽。JSON 檔案，可在安裝新的 Azure AD Connect 伺服器時用來建立源伺服器的複本。
+
+這項新功能的詳細描述可在[這篇文章](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config)中找到。
+
+### <a name="fixed-issues"></a>已修正的問題
+- 已修正在升級期間，當地語系化組建上有關本機 DB 大小的錯誤警告。
+- 已修正帳戶名稱/功能變數名稱交換的應用程式事件中，發生錯誤的 bug。
+- 已修正 Azure AD Connect 在 DC 上無法安裝的錯誤，並產生「找不到成員」錯誤。
+
 
 ## <a name="15300"></a>1.5.30.0
 
@@ -571,7 +587,7 @@ Azure AD Connect 1.1.654.0 版 (和更新版本) 已新增改進，以確保 Azu
 
 類型     | 名稱                          | 存取               | 套用至
 ---------|-------------------------------|----------------------|--------------|
-Allow    | 系統                        | 完全控制         | 此物件  |
+允許    | 系統                        | 完全控制         | 此物件  |
 Allow    | 企業系統管理員             | 完全控制         | 此物件  |
 Allow    | 網域管理員                 | 完全控制         | 此物件  |
 Allow    | 系統管理員                | 完全控制         | 此物件  |

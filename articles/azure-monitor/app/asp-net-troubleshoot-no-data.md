@@ -3,11 +3,12 @@ title: 沒有要進行疑難排解的資料 - Application Insights for .NET
 description: 在 Azure Application Insights 中看不到資料？ 試試這裡。
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485159"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221029"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>針對沒有資料進行疑難排解 - Application Insights for .NET/.NET Core
 
@@ -123,7 +124,7 @@ ApplicationInsights.config 中的檢測金鑰會控制遙測傳送的位置。 �
 我執行我的應用程式，然後在 Microsoft Azure 中開啟 Application Insights 服務，但是所有圖表都顯示「了解如何收集...」或「未設定」。 或者，只有頁面檢視和使用者資料，但卻沒有任何伺服器資料。
 
 * 在 Visual Studio 中以偵錯模式執行您的應用程式 (F5)。 使用您的應用程式以產生一些遙測。 請檢查您可以在 Visual Studio 的 [輸出] 視窗中看到所記錄的事件。  
-  ![](./media/asp-net-troubleshoot-no-data/output-window.png)
+  ![顯示在 Visual Studio 的 [偵測模式] 中執行應用程式的螢幕擷取畫面。](./media/asp-net-troubleshoot-no-data/output-window.png)
 * 在 Application Insights 入口網站中，開啟 [診斷搜尋](../../azure-monitor/app/diagnostic-search.md)。 這裡通常會先顯示資料。
 * 按一下 [重新整理] 按鈕。 刀鋒視窗會定期自行重新整理，但您也可以手動重新整理。 時間範圍越大，重新整理的間隔就越長。
 * 檢查檢測金鑰相符。 在 Application Insights 入口網站的應用程式主要刀鋒視窗中，在 [Essentials] 下拉式清單中，查看 [檢測金鑰]。 然後，在您的 Visual Studio 的專案中，開啟 ApplicationInsights.config，並尋找 `<instrumentationkey>`。 請檢查兩個金鑰是否相等。 如果不是：  

@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e53e9599da3c12fdf01c8902a7275fc75ce86643
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76264028"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223596"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企業推送架構指引
 
@@ -36,9 +37,9 @@ ms.locfileid: "76264028"
 
 ## <a name="architecture"></a>架構
 
-![][1]
+![顯示透過事件、訂用帳戶和推播訊息之流程的企業架構圖表。][1]
 
-本架構圖中的關鍵是提供主題/訂用帳戶程式撰寫模型的 Azure 服務匯流排 (如需詳細資料，請參閱[服務匯流排發行/訂用帳戶程式撰寫])。 在此情況下，接收者是行動後端（通常是[Azure 行動服務]，它會起始推送至行動應用程式）不會直接從後端系統接收訊息，而是由[Azure 服務匯流排]所提供的中繼抽象層，讓行動後端接收來自一或多個後端系統的訊息。 您需要為每個後端系統建立服務匯流排主題 (例如帳戶、HR、財務)，它們基本上是使用者感興趣的「主題」，能讓訊息以推播通知的形式傳送。 後端系統會將訊息傳送到這些主題。 藉由建立服務匯流排訂閱，行動後端能訂閱一或多個這類型的主題。 它能讓行動後端接收來自對應後端系統的通知。 行動後端會持續接聽與其訂閱相關的訊息，待訊息抵達後，它會立即轉向並以通知形式將訊息傳送到通知匯流排。 通知中樞接著會將訊息傳遞給行動應用程式。 以下是重要元件的清單：
+本架構圖中的關鍵是提供主題/訂用帳戶程式撰寫模型的 Azure 服務匯流排 (如需詳細資料，請參閱[服務匯流排發行/訂用帳戶程式撰寫])。 在此情況下，接收器是行動後端 (通常是[Azure 行動服務]，它會起始推送至行動應用程式) 不會直接從後端系統接收訊息，而是由[Azure 服務匯流排]提供的中繼抽象層，讓行動後端接收來自一或多個後端系統的訊息。 您需要為每個後端系統建立服務匯流排主題 (例如帳戶、HR、財務)，它們基本上是使用者感興趣的「主題」，能讓訊息以推播通知的形式傳送。 後端系統會將訊息傳送到這些主題。 藉由建立服務匯流排訂閱，行動後端能訂閱一或多個這類型的主題。 它能讓行動後端接收來自對應後端系統的通知。 行動後端會持續接聽與其訂閱相關的訊息，待訊息抵達後，它會立即轉向並以通知形式將訊息傳送到通知匯流排。 通知中樞接著會將訊息傳遞給行動應用程式。 以下是重要元件的清單：
 
 1. 後端系統 (LoB/舊版系統)
    * 建立服務匯流排主題
@@ -57,7 +58,7 @@ ms.locfileid: "76264028"
 
 ## <a name="sample"></a>範例
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 完成下列教學課程以熟悉概念，以及常用的建立和設定步驟：
 
@@ -227,15 +228,17 @@ ms.locfileid: "76264028"
 
     e. 若要將此應用程式發佈為 **WebJob**，請以滑鼠右鍵按一下 Visual Studio 中的解決方案，然後選取 [發佈為 WebJob]****。
 
-    ![][2]
+    ![以紅色概述的 [發行為 Azure WebJob] 顯示的滑鼠右鍵選項螢幕擷取畫面。][2]
 
     f. 選取發佈設定檔並建立要裝載此 WebJob 的新 Azure 網站 (如果它不存在的話)。備妥網站後，請予以 [發佈]****。
 
-    ![][3]
+    :::image type="complex" source="./media/notification-hubs-enterprise-push-architecture/PublishAsWebJob.png" alt-text="螢幕擷取畫面，顯示在 Azure 上建立網站的工作流程。":::
+    [發佈 Web] 對話方塊的螢幕擷取畫面，其中已選取 [Microsoft Azure 網站] 選項，並以綠色箭號指向 [選取現有網站] 對話方塊，其中包含以紅色概述的新選項，並以綠色箭號指向 [在 Microsoft Azure 上建立網站] 對話方塊，並以紅色概述的建立選項。
+    :::image-end:::
 
     如 將作業設定為 [連續執行]，如此一來，當您登入 [Azure 入口網站]時，應能看見與以下範例相似的內容：
 
-    ![][4]
+    ![Azure 入口網站的螢幕擷取畫面，其中顯示 enterprise push 後端 webjob，以及以紅色概述的名稱、排程和記錄值。][4]
 
 3. **EnterprisePushMobileApp**
 
@@ -269,11 +272,11 @@ ms.locfileid: "76264028"
 2. 執行**enterprisepushmobileapp 以**，這會啟動 Windows Store 應用程式。
 3. 執行 **EnterprisePushBackendSystem** 主控台應用程式來模擬 LoB 後端並開始傳送訊息，您應該會看見與以下影像類似的快顯通知：
 
-    ![][5]
+    ![執行企業推播後端系統應用程式的主控台，以及應用程式所傳送之訊息的螢幕擷取畫面。][5]
 
 4. 這些訊息最初是傳送至服務匯流排主題，這些主題是受到您 WebJob 中服務匯流排訂用帳戶所監視。 待服務匯流排主題接收到訊息後，它會建立通知並傳送給行動應用程式。 在 [Azure 入口網站]中，當您前往 WebJob 的 [記錄] 連結時，可以瀏覽 WebJob 記錄來確認處理狀態：
 
-    ![][6]
+    ![[連續 WebJob 詳細資料] 對話方塊的螢幕擷取畫面，其中包含以紅色概述的訊息。][6]
 
 <!-- Images -->
 [1]: ./media/notification-hubs-enterprise-push-architecture/architecture.png

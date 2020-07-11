@@ -7,11 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75360832"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223681"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在入口網站中設定雲端服務的自動調整
 
@@ -20,7 +21,7 @@ ms.locfileid: "75360832"
 > [!NOTE]
 > 本文著重於雲端服務 web 和背景工作角色。 當您直接建立虛擬機器 (傳統) 時，它會裝載於雲端服務中。 如果要調整標準虛擬機器，您可以將它與[可用性設定組](../virtual-machines/windows/classic/configure-availability-classic.md)產生關聯，還可以手動開啟或關閉它們。
 
-## <a name="considerations"></a>考量
+## <a name="considerations"></a>考量事項
 在設定應用程式的調整之前，您應該先考量下列資訊：
 
 * 調整受到核心使用量影響。
@@ -42,10 +43,10 @@ ms.locfileid: "75360832"
 1. 在 [雲端服務] 刀鋒視窗的 [角色和執行個體]**** 圖格上，選取雲端服務的名稱。   
    **重要**︰請務必按一下雲端服務角色，而不是角色底下的角色執行個體。
 
-    ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
+    ![[角色和實例] 磚的螢幕擷取畫面，其中的背景工作角色為 S B 佇列1選項，以紅色標示。](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. 選取 [調整] **** 磚。
 
-    ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
+    ![[作業] 頁面的螢幕擷取畫面，其中銷售磚以紅色概述。](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>自動調整
 您可以使用下列任一種模式來設定角色的調整規模設定：**手動**或**自動**。 「手動」是您預期的模式，您會設定執行個體的絕對計數。 但是，「自動」讓您能夠設定規則來控制您應該調整的方式和程度。
@@ -88,7 +89,7 @@ ms.locfileid: "75360832"
 
 規則觸發程序是以雲端服務的計量 (CPU 使用量、磁碟活動或網路活動) 為依據，您可以在其中新增條件值。 此外，您可以根據訊息佇列或一些與您訂用帳戶相關聯的其他 Azure 資源的計量來設定觸發程序。
 
-![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
+![[規則] 對話方塊的螢幕擷取畫面，其中的 [計量名稱] 選項以紅色概述。](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
 當您設定規則之後，請選取規則刀鋒視窗底部的 [確定] **** 按鈕。
 

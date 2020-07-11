@@ -3,8 +3,8 @@ title: 在 Azure Linux 虛擬機器上實作 Oracle Data Guard | Microsoft Docs
 description: 快速在您的 Azure 環境中啟動並執行 Oracle Data Guard。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: 96528dc34305e77602634110a0153f7623a15c96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: 2b0b85792fe1266d2ec6478561193ef0c80ac98f
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676759"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224293"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上實作 Oracle Data Guard 
 
@@ -281,7 +282,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-開啟重新開機（這可讓復原變得更簡單），並將待命檔案 \_ \_ 管理設定為 [自動]。結束 SQL * Plus。
+開啟閃 (，讓復原變得更容易) 並將待命 \_ 檔案 \_ 管理設定為自動。結束 SQL * Plus。
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -511,7 +512,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>在 myVM1 (主要) 上設定 Data Guard Broker
 
-啟動 Data Guard Manager，並使用 SYS 和密碼登入。 （請勿使用作業系統驗證。）執行下列動作：
+啟動 Data Guard Manager，並使用 SYS 和密碼登入。  (不使用作業系統驗證。 ) 執行下列動作：
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1

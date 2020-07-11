@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/08/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: d7a872121ca6560b8ede86abc35294ab8c9b0c1b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: f22b4bec17abe95be2a17d3e0e3c41fab3483fe0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86141992"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224805"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory 連接器總覽
 
@@ -34,6 +34,7 @@ Azure Data Factory 支援下列檔案格式。 請參閱每一篇文章，以取
 - [二進位格式](format-binary.md)
 - [Common Data Model 格式](format-common-data-model.md)
 - [分隔符號文字格式](format-delimited-text.md)
+- [差異格式](format-delta.md)
 - [Excel 格式](format-excel.md)
 - [JSON 格式](format-json.md)
 - [ORC 格式](format-orc.md)

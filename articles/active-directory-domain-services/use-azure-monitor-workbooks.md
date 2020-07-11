@@ -7,18 +7,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84733393"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223035"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>使用 Azure 監視器活頁簿審查 Azure Active Directory Domain Services 中的安全性 audit 事件
 
-為了協助您瞭解 Azure Active Directory Domain Services （Azure AD DS）受控網域的狀態，您可以啟用安全性 audit 事件。 然後您可以使用將文字、分析查詢和參數結合成豐富互動式報表的 Azure 監視器活頁簿，來檢查這些安全性 audit 事件。 Azure AD DS 包含適用于安全性總覽和帳戶活動的活頁簿範本，可讓您深入探索 audit 事件和管理您的環境。
+為了協助您瞭解 Azure Active Directory Domain Services (Azure AD DS) 受控網域的狀態，您可以啟用安全性 audit 事件。 然後您可以使用將文字、分析查詢和參數結合成豐富互動式報表的 Azure 監視器活頁簿，來檢查這些安全性 audit 事件。 Azure AD DS 包含適用于安全性總覽和帳戶活動的活頁簿範本，可讓您深入探索 audit 事件和管理您的環境。
 
 本文說明如何使用 Azure 監視器活頁簿來審查 Azure AD DS 中的安全性 audit 事件。
 
@@ -32,8 +32,8 @@ ms.locfileid: "84733393"
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
     * 如有需要，請完成教學課程，以[建立及設定 Azure Active Directory Domain Services 受控網域][create-azure-ad-ds-instance]。
-* 針對將資料串流至 Log Analytics 工作區的 Azure Active Directory Domain Services 受控網域，啟用了安全性 audit 事件。
-    * 如有需要，請[啟用 Azure Active Directory Domain Services 的安全性審核][enable-security-audits]。
+* 針對將資料串流至 Log Analytics 工作區的受控網域啟用的安全性 audit 事件。
+    * 如有需要，請[啟用 AZURE AD DS 的安全性審核][enable-security-audits]。
 
 ## <a name="azure-monitor-workbooks-overview"></a>Azure 監視器活頁簿總覽
 
@@ -61,11 +61,13 @@ Azure AD DS 包含下列兩個活頁簿範本：
     ![在 [Azure 入口網站中選取 [活頁簿] 功能表選項](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. 選擇 [**安全性總覽] 報告**。
-1. 從活頁簿頂端的下拉式功能表中，選取您的 Azure 訂用帳戶，然後 Azure 監視器工作區]。 選擇**時間範圍**，例如 [*過去7天*]。
+1. 從活頁簿頂端的下拉式功能表中，選取您的 Azure 訂用帳戶，然後選取 [Azure 監視器] 工作區。
+
+    選擇**時間範圍**，例如 [*過去7天*]，如下列範例螢幕擷取畫面所示：
 
     ![在 [Azure 入口網站中選取 [活頁簿] 功能表選項](./media/use-azure-monitor-workbooks/select-query-filters.png)
 
-    **磚視圖**和**圖表視圖**選項也可以變更，以視需要分析和視覺化資料
+    [**磚視圖**] 和 [**圖表視圖**] 選項也可以變更，以視需要分析和視覺化資料。
 
 1. 若要向下切入到特定的事件種類，請選取其中一個登**入結果**卡，例如 [*帳戶鎖定*]，如下列範例所示：
 
@@ -85,7 +87,11 @@ Azure AD DS 包含下列兩個活頁簿範本：
 1. 選取您的受控網域，例如*aaddscontoso.com*
 1. 從左側功能表中，選擇 [監視] [ **> 活頁簿**]
 1. 選擇 [**帳戶活動] 報表**。
-1. 從活頁簿頂端的下拉式功能表中，選取您的 Azure 訂用帳戶，然後 Azure 監視器工作區]。 選擇**時間範圍**，例如 [*過去30天*]，然後選取您希望**磚視圖**代表資料的方式。 您可以依**帳戶使用者名稱**進行篩選，例如*felix*，如下列範例報告所示：
+1. 從活頁簿頂端的下拉式功能表中，選取您的 Azure 訂用帳戶，然後選取 [Azure 監視器] 工作區。
+
+    選擇**時間範圍**，例如 [*過去30天*]，然後選取您希望**磚視圖**代表資料的方式。
+
+    您可以依**帳戶使用者名稱**進行篩選，例如*felix*，如下列範例報告所示：
 
     [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 3efccc44255067b7e47c468c9a35853def2fce69
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c2590a2c745969313ae73521dbcd110fbf3b7551
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085849"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221012"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 上將 Apache Spark 和 Apache Hive 與 Hive Warehouse Connector 整合起來
 
@@ -37,6 +37,9 @@ Hive Warehouse Connector 所支援的部分作業如下：
 * 使用 HiveStreaming 將資料框架或 Spark 串流寫入至 Hive
 
 ## <a name="hive-warehouse-connector-setup"></a>Hive Warehouse Connector 設定
+
+> [!IMPORTANT]
+> 在 Spark 2.4 企業安全性套件叢集上安裝的 HiveServer2 互動式實例，不支援與 Hive 倉儲連接器搭配使用。 相反地，您必須設定個別的 HiveServer2 互動式叢集，以裝載 HiveServer2 的互動式工作負載。 不支援利用單一 Spark 2.4 叢集的 Hive 倉儲連接器設定。
 
 Hive Warehouse Connector 需要為 Spark 和 Interactive Query 工作負載準備不同叢集。 請遵循下列步驟，在 Azure HDInsight 中設定這些叢集。
 
@@ -72,7 +75,7 @@ Hive Warehouse Connector 需要為 Spark 和 Interactive Query 工作負載準�
 
     | 組態 | 值 |
     |----|----|
-    |`spark.datasource.hive.warehouse.load.staging.dir`|第 1 課：建立 Windows Azure 儲存體物件`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`。 <br> 設定為適當的 HDFS 相容暫存目錄。 如果您有兩個不同的叢集，則暫存目錄必須是 LLAP 叢集儲存體帳戶的暫存目錄所含資料夾，HiveServer2 才能存取該目錄。  將 `STORAGE_ACCOUNT_NAME` 取代為叢集所使用儲存體帳戶的名稱，並將 `STORAGE_CONTAINER_NAME` 取代為儲存體容器的名稱。 |
+    |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. <br> 設定為適當的 HDFS 相容暫存目錄。 如果您有兩個不同的叢集，則暫存目錄必須是 LLAP 叢集儲存體帳戶的暫存目錄所含資料夾，HiveServer2 才能存取該目錄。  將 `STORAGE_ACCOUNT_NAME` 取代為叢集所使用儲存體帳戶的名稱，並將 `STORAGE_CONTAINER_NAME` 取代為儲存體容器的名稱。 |
     |`spark.sql.hive.hiveserver2.jdbc.url`| 您先前從 **HiveServer2 Interactive JDBC URL** 取得的值 |
     |`spark.datasource.hive.warehouse.metastoreUri`| 您先前從 **hive.metastore.uris** 取得的值。 |
     |`spark.security.credentials.hiveserver2.enabled`|若為 YARN 叢集模式則為 `true`，若為 YARN 用戶端模式則為 `false`。 |
@@ -95,7 +98,7 @@ Hive Warehouse Connector 需要為 Spark 和 Interactive Query 工作負載準�
     |----|----|
     | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
     
-    * 從網頁瀏覽器流覽至， `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` 其中 CLUSTERNAME 是您的互動式查詢叢集的名稱。 按一下 [ **HiveServer2 Interactive**]。 您會看到 LLAP 在其上執行之前端節點的完整功能變數名稱（FQDN），如螢幕擷取畫面所示。 取代 `<llap-headnode>` 為此值。
+    * 從網頁瀏覽器流覽至， `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` 其中 CLUSTERNAME 是您的互動式查詢叢集的名稱。 按一下 [ **HiveServer2 Interactive**]。 您會看到 LLAP 執行所在之前端節點的完整功能變數名稱 (FQDN) ，如螢幕擷取畫面所示。 取代 `<llap-headnode>` 為此值。
 
         ![hive 倉儲連接器前端節點](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
 

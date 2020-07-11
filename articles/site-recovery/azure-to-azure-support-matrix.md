@@ -2,14 +2,14 @@
 title: 使用 Azure Site Recovery 進行 Azure VM 災害復原的支援矩陣
 description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復原進行至次要區域的支援。
 ms.topic: article
-ms.date: 06/03/2020
+ms.date: 07/10/2020
 ms.author: raynew
-ms.openlocfilehash: c729645eadc192dba4d7bb4f2c346d7b9d36434a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d56a507586c9d62fdbeae01d47bb734b98bf385b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132672"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223800"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -105,13 +105,13 @@ Ubuntu 16.04 LTS 伺服器 | [支援的核心版本](#supported-ubuntu-kernel-ve
 Ubuntu 18.04 LTS 伺服器 | [支援的核心版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Debian 7 | 包含所有7的支援。 *x*版本[支援的核心版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | 包含所有8的支援。 *x*版本[支援的核心版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4、SP5 [（支援的核心版本）](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines) </br> （* * SP5 適用于 Azure 至 Azure DR 案例的最新9.33 修補程式）。
+SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4、SP5 [ (支援的核心版本) ](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines) </br>  ( * * SP5 可透過適用于 Azure 的最新修補程式9.33 至 Azure DR 案例) 提供。
 SUSE Linux Enterprise Server 15 | 15 和 15 SP1。 [(支援的核心版本)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> 不支援將複寫機器從 SP3 升級至 SP4。 如果已升級複寫的機器，您需要在升級後停用複寫，然後再重新啟用複寫。
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) <br/><br/> 執行 Red Hat 相容核心或 Unbreakable Enterprise Kernel 第 3、4 及 5 版 (UEK3、UEK4、UEK5)
 
-* * 注意：若要在發行後的30天內支援最新的 Linux 核心，Azure Site Recovery 會在最新的行動代理程式版本之上推出熱修復修補程式。 這項修正程式會在兩個主要版本之間推出。 若要更新為最新版本的行動代理程式（包括熱修復修補程式），請遵循[本文中所述的步驟](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)。 針對 Azure 至 Azure DR 案例中使用的行動代理程式，目前推出此修補程式。
+* * 注意：若要在發行後的30天內支援最新的 Linux 核心，Azure Site Recovery 會在最新的行動代理程式版本之上推出熱修復修補程式。 這項修正程式會在兩個主要版本之間推出。 若要更新為最新版的行動代理程式 (包括熱修復修補程式) 請[遵循本文中](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)所述的步驟。 針對 Azure 至 Azure DR 案例中使用的行動代理程式，目前推出此修補程式。
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 虛擬機器支援的 Ubuntu 核心版本
 
@@ -130,7 +130,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 18.04 LTS | 9.32| 4.15.0-20-generic 至 4.15.0-74-generic </br> 4.18.0-13-generic 至 4.18.0-25-generic </br> 5.0.0-15-generic 至 5.0.0-37-generic </br> 5.3.0-19-generic 至 5.3.0-24-generic </br> 4.15.0-1009-azure 至 4.15.0-1037-azure </br> 4.18.0-1006-azure 至 4.18.0-1025-azure </br> 5.0.0-1012-azure 至 5.0.0-1028-azure </br> 5.3.0-1007-azure 至 5.3.0-1009-azure|
 18.04 LTS | 9.31| 4.15.0-20-generic 至 4.15.0-72-generic </br> 4.18.0-13-generic 至 4.18.0-25-generic </br> 5.0.0-15-generic 至 5.0.0-37-generic </br> 5.3.0-19-generic 至 5.3.0-24-generic </br> 4.15.0-1009-azure 至 4.15.0-1037-azure </br> 4.18.0-1006-azure 至 4.18.0-1025-azure </br> 5.0.0-1012-azure 至 5.0.0-1025-azure </br> 5.3.0-1007-azure|
 
-* * 注意：若要在發行後的30天內支援最新的 Linux 核心，Azure Site Recovery 會在最新的行動代理程式版本之上推出熱修復修補程式。 這項修正程式會在兩個主要版本之間推出。 若要更新為最新版本的行動代理程式（包括熱修復修補程式），請遵循[本文中所述的步驟](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)。 針對 Azure 至 Azure DR 案例中使用的行動代理程式，目前推出此修補程式。
+* * 注意：若要在發行後的30天內支援最新的 Linux 核心，Azure Site Recovery 會在最新的行動代理程式版本之上推出熱修復修補程式。 這項修正程式會在兩個主要版本之間推出。 若要更新為最新版的行動代理程式 (包括熱修復修補程式) 請[遵循本文中](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)所述的步驟。 針對 Azure 至 Azure DR 案例中使用的行動代理程式，目前推出此修補程式。
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 虛擬機器支援的 Debian 核心版本
 
@@ -144,9 +144,9 @@ Debian 8 | 9.31、9.32、 [9.33](https://support.microsoft.com/help/4564347/)、
 
 **版本** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 （SP1、SP2、SP3、SP4、SP5） | [9.34](https://support.microsoft.com/help/4570609) | 支援所有 stock SUSE 12 SP1、SP2、SP3、SP4 核心。</br></br> 4.4.138-4.7-azure 至 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 至 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 至 4.12.14-16.19-azure  |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5)  | [9.34](https://support.microsoft.com/help/4570609) | 支援所有 stock SUSE 12 SP1、SP2、SP3、SP4 核心。</br></br> 4.4.138-4.7-azure 至 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 至 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 至 4.12.14-16.19-azure  |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.32、 [9.33](https://support.microsoft.com/help/4564347/) | 支援所有 stock SUSE 12 SP1、SP2、SP3、SP4 核心。</br></br> 4.4.138-4.7-azure 至 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 至 4.12.14-6.34-azure  |
-SUSE Linux Enterprise Server 12 （SP1、SP2、SP3、SP4、SP5） | 9.33 熱修復修補程式 | 支援所有 stock SUSE 12 SP1、SP2、SP3、SP4 核心。</br></br> 4.4.138-4.7-azure 至 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 至 4.12.14-6.34-azure </br> 4.12.14-16.7-azure 至 4.12.14-16.13-azure  |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5)  | 9.33 熱修復修補程式 | 支援所有 stock SUSE 12 SP1、SP2、SP3、SP4 核心。</br></br> 4.4.138-4.7-azure 至 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 至 4.12.14-6.34-azure </br> 4.12.14-16.7-azure 至 4.12.14-16.13-azure  |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.31 | 支援所有 stock SUSE 12 SP1、SP2、SP3、SP4 核心。</br></br> 4.4.138-4.7-azure 至 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 至 4.12.14-6.29-azure  |
 
 #### <a name="supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines"></a>Azure 虛擬機器支援的 SUSE Linux Enterprise Server 15 核心版本
@@ -205,7 +205,7 @@ OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/windows/
 資料磁碟的大小上限 | 8192 GB (若為受控磁碟)<br></br>4095 GB (若為非受控磁碟)|
 資料磁碟的大小下限 | 非受控磁碟沒有限制。 2 GB (若為受控磁碟) |
 資料磁碟的數目上限 | 最多 64 個 (根據特定的 Azure VM 大小支援) | [深入了解](../virtual-machines/windows/sizes.md) VM 大小。
-資料磁碟的變更率 | 進階儲存體的每個磁碟最多 10 MBps。 標準儲存體的每個磁碟最多 2 MBps。 | 如果磁碟的平均資料變更率持續高於最大值，複寫將趕不上進度。<br/><br/>  不過，如果是偶而超過最大值，則複寫可以趕上進度，但您可能會看到稍有延遲的復原點。
+資料磁碟的變更率 | Premium 儲存體的每個磁片最多 20 MBps。 標準儲存體的每個磁碟最多 2 MBps。 | 如果磁碟的平均資料變更率持續高於最大值，複寫將趕不上進度。<br/><br/>  不過，如果是偶而超過最大值，則複寫可以趕上進度，但您可能會看到稍有延遲的復原點。
 資料磁碟 - 標準儲存體帳戶 | 支援 |
 資料磁碟 - 進階儲存體帳戶 | 支援 | 如果 VM 的磁碟分散於進階和標準儲存體帳戶，您可以對於各個磁碟選取不同的目標儲存體帳戶，以確保目標區域有相同的儲存體設定。
 受控磁碟 - 標準 | 在支援 Azure Site Recovery 的 Azure 區域中會支援。 |
@@ -216,6 +216,7 @@ OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/windows/
 儲存空間 | 支援 |
 待用加密 (SSE) | 支援 | SSE 是儲存體帳戶上的預設設定。
 待用加密 (CMK) | 支援 | 受控磁碟同時支援軟體和 HSM 金鑰
+靜態加密 | 支援 | 深入瞭解[Windows](../virtual-machines/windows/disk-encryption.md)和[Linux](../virtual-machines/linux/disk-encryption.md)支援的區域
 適用於 Windows OS 的 Azure 磁碟加密 (ADE) | 僅具有受控磁碟的 VM 提供支援。 | 不支援使用非受控磁碟的 VM。 <br/><br/> 不支援 HSM 保護的金鑰。 <br/><br/> 不支援在單一磁片上加密個別卷。 |
 適用於 Linux OS 的 Azure 磁碟加密 (ADE) | 僅具有受控磁碟的 VM 提供支援。 | 不支援使用非受控磁碟的 VM。 <br/><br/> 不支援 HSM 保護的金鑰。 <br/><br/> 不支援在單一磁碟上加密個別磁碟區。 |
 熱新增    | 支援 | 使用受控磁碟的 VM 支援為您新增至所複寫 Azure VM 的資料磁碟啟用複寫。 <br/><br/> 一次只有一個磁碟可以熱新增至 Azure VM。 不支援平行新增多個磁碟。 |
@@ -234,6 +235,7 @@ ZRS | 不支援 |
 第2代 (UEFI 開機) | 支援
 NVMe 磁碟 | 不支援
 Azure 共用磁碟 | 不支援
+安全傳輸選項 | 支援
 
 >[!IMPORTANT]
 > 若要避免發生效能問題，請務必遵循 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 或 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁碟可擴縮性和效能目標。 如果您使用預設設定，Site Recovery 會根據來源組態建立必要的磁碟和儲存體帳戶。 如果您自訂並選取您自己的設定，請遵循來源 VM 的磁碟可擴縮性和效能目標。
@@ -282,5 +284,7 @@ IPv6  | 不支援 | 亦不支援同時包含 IPv4 和 IPv6 的混合組態。 �
 
 
 ## <a name="next-steps"></a>後續步驟
+
 - 閱讀複寫 Azure VM 的[網路指引](./azure-to-azure-about-networking.md)。
 - 透過[複寫 Azure VM](./azure-to-azure-quickstart.md) 來部署災害復原。
+

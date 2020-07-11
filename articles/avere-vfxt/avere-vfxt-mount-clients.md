@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: c6a4b2c1d95bc803d10697ce2164ea190f824d96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8850162847f2dd416b0951a797e2eb0cd7d55d2
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505438"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229562"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>掛接 Avere vFXT 叢集
 
@@ -68,7 +68,7 @@ function mount_round_robin() {
 
 Mount 命令有三個元素：
 
-* vFXT 路徑-叢集9described 上的 IP 位址與命名空間連接路徑的組合）
+* vFXT 路徑-叢集9described 上的 IP 位址與命名空間連接路徑的組合) 
 * 本機路徑 - 用戶端上的路徑
 * 掛接命令選項-列于[掛接命令引數](#mount-command-arguments)中
 
@@ -78,7 +78,7 @@ vserver 路徑由其 *IP 位址*和*命名空間連接點*的路徑組合而成�
 
 如果您的叢集是使用 Blob 儲存體所建立，則該容器的命名空間路徑為`/msazure`
 
-範例：``mount 10.0.0.12:/msazure /mnt/vfxt``
+範例： ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
 如果您在建立叢集之後新增儲存體，命名空間的連接路徑就是您在建立連接點時，于**命名空間路徑**中設定的值。 例如，如果您使用 ``/avere/files`` 作為命名空間路徑，則用戶端會將 *IP_address*:/ avere/files 掛接至其本機掛接點。
 
@@ -102,7 +102,7 @@ vserver 路徑由其 *IP 位址*和*命名空間連接點*的路徑組合而成�
 
 ``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| 必要的設定 | |
+| 必要的設定 | 描述 |
 --- | ---
 ``hard`` | 對 vFXT 叢集執行軟掛接可能會產生應用程式失敗和資料遺失的狀況。
 ``proto=netid`` | 此選項支援適當處理 NFS 網路錯誤的功能。

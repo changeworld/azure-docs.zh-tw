@@ -5,17 +5,17 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75772957"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226429"
 ---
-如果您在共用映像資源庫、映像定義及映像版本上執行任何作業時遇到問題，請再次以偵錯模式執行失敗的命令。 藉由使用 CLI 傳遞 **-debug**參數和 **-Debug**參數搭配 PowerShell 來啟用「偵測」模式。 一旦您找到錯誤，請遵循本文件來針對錯誤進行疑難排解。
+如果您在共用映像資源庫、映像定義及映像版本上執行任何作業時遇到問題，請再次以偵錯模式執行失敗的命令。 藉由使用 `--debug` CLI 傳遞參數和使用 PowerShell 來切換參數，即可啟動「偵測模式」 `-Debug` 。 一旦您找到錯誤，請遵循本文件來針對錯誤進行疑難排解。
 
 
 ## <a name="unable-to-create-a-shared-image-gallery"></a>無法建立共用映像資源庫
@@ -43,7 +43,7 @@ ms.locfileid: "75772957"
 
 名稱、發行者、供應項目、sku 和 OS 類型等都是必要屬性。 請確認是否正在傳遞所有屬性。
 
-請確定映像定義的 **OSType** (Linux 或 Windows) 是您用來建立映像版本的相同來源受控映像。 
+請確定映射定義的**OSType**（Linux 或 Windows）與您用來建立映射版本的來源相同。 
 
 
 ## <a name="unable-to-create-an-image-version"></a>無法建立映像版本 
@@ -84,11 +84,11 @@ ms.locfileid: "75772957"
 
 VM 或虛擬機器擴展集建立花費很長的時間。**
 
-確認您嘗試從中建立 VM 或虛擬機器擴展集的映像版本 **OSType**，與您用來建立映像版本的來源受控映像具有相同的 **OSType**。 
+請確認您嘗試用來建立 VM 或虛擬機器擴展集的映射版本**OSType** ，與您用來建立映射版本的來源具有相同的**OSType** 。 
 
 ## <a name="unable-to-share-resources"></a>無法共用資源
 
-在訂用帳戶之間共用共用映射資源庫、映射定義和映射版本資源，是使用以[角色為基礎的存取控制](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)（RBAC）來啟用。 
+在訂用帳戶之間共用共用映射庫、映射定義和映射版本資源，是使用以[角色為基礎的存取控制](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) 來啟用。 
 
 ## <a name="replication-is-slow"></a>複寫速度很慢
 

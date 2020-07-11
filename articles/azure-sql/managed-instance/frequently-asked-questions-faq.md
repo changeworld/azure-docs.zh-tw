@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: d2e4b07c97e09fce5cdaa034e2fe67a18ef0d7f1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171154"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224412"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 受控執行個體常見問題 (常見問題) 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -122,56 +122,121 @@ ms.locfileid: "86171154"
 - 使用 CliConfig 來定義別名。 此工具只是一個登錄設定包裝函式，因此也可以使用群組原則或腳本來完成。
 - 使用*CNAME*搭配*TrustServerCertificate = true*選項。
 
-## <a name="move-a-database-from-sql-managed-instance"></a>從 SQL 受控執行個體移動資料庫 
+## <a name="migration-options"></a>移轉選項
 
-**如何將資料庫從 SQL 受控執行個體移回 SQL Server 或 Azure SQL Database？**
+**如何從 Azure SQL Database 單一或彈性集區遷移至 SQL 受控執行個體？**
 
-您可以將[資料庫匯出至 bacpac](../database/database-export.md) ，然後匯[入 bacpac](../database/database-import.md)檔案。 如果您的資料庫小於 100 GB，則這是建議的方法。
+受控實例會針對每個計算和儲存體大小提供相同的效能等級，做為 Azure SQL Database 的其他部署選項。 如果您想要在單一實例上合併資料，或只需要在受控實例中以獨佔方式支援的功能，您可以使用匯出/匯入 (BACPAC) 功能來遷移資料。 以下是 SQL Database 遷移至 SQL 受控執行個體的其他考慮方式： 
+- 使用[外部資料源]()
+- 使用[SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182)
+- 使用[BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7)
 
-如果資料庫中的所有資料表都有主鍵，則可以使用異動複寫。
+**如何將實例資料庫移轉至單一 Azure SQL Database？**
 
-`COPY_ONLY`從 sql 受控執行個體取得的原生備份無法還原到 SQL Server，因為 sql 受控執行個體與 SQL Server 相比，資料庫版本較高。
+其中一個選項是將[資料庫匯出至 bacpac](../database/database-export.md) ，然後匯[入 bacpac](../database/database-import.md)檔案。 如果您的資料庫小於 100 GB，則這是建議的方法。
 
-## <a name="migrate-an-instance-database"></a>遷移實例資料庫
+如果資料庫中的所有資料表都有*主鍵*，而且資料庫中沒有記憶體內部 OLTP 物件，就可以使用[異動複寫](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017)。
 
-**如何將實例資料庫移轉至 Azure SQL Database？**
+從受控實例取得的原生 COPY_ONLY 備份無法還原到 SQL Server，因為相較于 SQL Server，受控實例具有更高的資料庫版本。 如需詳細資訊，請參閱[只複本備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)。
 
-其中一個選項是將[資料庫匯出至 bacpac](../database/database-export.md) ，然後匯[入 bacpac](../database/database-import.md)檔案。 
+**如何將我的 SQL Server 實例遷移至 SQL 受控執行個體？**
 
-如果您的資料庫小於 100 GB，則這是建議的方法。 如果資料庫中的所有資料表都有主鍵，則可以使用異動複寫。
+若要遷移您的 SQL Server 實例，請參閱[SQL Server 實例遷移至 AZURE SQL 受控執行個體](migrate-to-instance-from-sql-server.md)。
+
+**如何從其他平臺遷移至 SQL 受控執行個體？**
+
+如需從其他平台移轉的移轉資訊，請參閱 [Azure 資料庫移轉指南](https://datamigration.microsoft.com/) \(英文\)。
 
 ## <a name="switch-hardware-generation"></a>交換器硬體世代 
 
-**我可以在第4代與第5代連線之間切換 SQL 受控執行個體硬體世代嗎？**
+**我可以在第4代和第5代連線之間切換受控實例的硬體世代嗎？**
 
-如果在布建 SQL 受控執行個體的區域中有兩個硬體層代，則可以在硬體世代之間進行自動線上切換。 在這種情況下，您可以查看[vCore 模型的 [總覽] 頁面](../database/service-tiers-vcore.md)，其中說明如何在硬體層代之間切換。
+如果您的受控實例布建所在的區域中有第5代硬體可供使用，則可以從第4代自動線上切換至第5代。 在此情況下，您可以查看[vCore 模型總覽頁面](../database/service-tiers-vcore.md)，說明如何在硬體世代之間切換。
 
-這是長時間執行的作業，因為新的受控實例將會在背景中布建，而資料庫會在程式結束時自動在新的實例之間轉移。 
+這是長時間執行的作業，因為新的受控實例將會在背景中布建，且資料庫會在程式結束時，自動在舊實例和新實例之間傳輸，並進行快速容錯移轉。
 
-**如果同一個區域中不支援這兩個硬體層代，該怎麼辦？**
+注意：第4代硬體即將淘汰，不再適用于新的部署。 所有新的資料庫都必須部署在第5代硬體上。 也無法使用從第5代切換到第4代。
 
-如果相同區域中不支援這兩種硬體層代，則可以變更硬體世代，但必須手動完成。 這會要求您在需要產生硬體的區域中布建新的實例，並在舊的和新的實例之間手動備份和還原資料。
+## <a name="performance"></a>效能 
 
-**如果沒有足夠的 IP 位址可執行更新作業，會發生什麼事？**
+**如何比較受控執行個體效能與 SQL Server 效能？**
 
-如果您的受控實例布建所在的子網中沒有足夠的 IP 位址，您就必須在其中建立新的子網和新的受控實例。 我們也建議您建立新的子網，並將更多 IP 位址配置給它，讓未來的更新作業可以避免類似的情況。  (適當的子網大小，請檢查[如何判斷 VNet 子網的大小](vnet-subnet-determine-size.md)。 ) 布建新的實例之後，您可以在舊的和新的實例之間手動備份和還原資料，或執行跨實例的[時間點還原](point-in-time-restore.md?tabs=azure-powershell)。 
+如需受控實例與 SQL Server 之間的效能比較，最好的起點是[AZURE SQL 受控實例與 SQL Server 文章之間效能比較的最佳作法](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)。
 
+**造成受控執行個體和 SQL Server 之間的效能差異為何？**
 
-## <a name="tune-performance"></a>微調效能
+請參閱[SQL 受控實例與 SQL Server 之間效能差異的主要原因](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)。 如需記錄檔大小對一般用途受控執行個體效能影響的詳細資訊，請參閱[一般用途的記錄檔大小影響](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)。
 
-**如何? 微調 SQL 受控執行個體的效能嗎？**
+**如何? 調整受控實例的效能？**
 
-一般用途層中的 SQL 受控執行個體會使用遠端存放裝置，因此資料和記錄檔的大小對效能很重要。 如需詳細資訊，請參閱[一般用途 SQL 受控執行個體效能的記錄檔大小影響](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)。
+您可以藉由下列方式，將受控實例的效能優化：
+- [自動調整](../database/automatic-tuning-overview.md)可透過以 AI 和機器學習為基礎的持續效能微調，提供尖峰效能和穩定的工作負載。
+-   [記憶體內部 OLTP](../in-memory-oltp-overview.md) ，可改善交易處理工作負載的輸送量和延遲，並提供更快速的商業洞察力。 
 
-如果您的工作負載包含許多小型交易，請考慮將連線類型從 proxy 切換到重新導向模式。
+若要進一步調整效能，請考慮套用一些[應用程式和資料庫調整](../database/performance-guidance.md#tune-your-database)的*最佳作法*。
+如果您的工作負載包含許多小型交易，請考慮將連線[類型從 proxy 切換為重新導向模式](connection-types-overview.md#changing-connection-type)，以取得較低的延遲和更高的輸送量。
 
-## <a name="maximum-storage-size"></a>儲存體大小上限
+## <a name="monitoring-metrics-and-alerts"></a>監視、計量和警示
+
+**監視及警示受控實例的選項有哪些？**
+
+如需監視和警示 SQL 受控執行個體耗用量和效能的所有可能選項，請參閱[AZURE SQL 受控執行個體監視選項的 blog 文章](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416)。 如需 SQL MI 的即時效能監視，請參閱[AZURE SQL DB 受控執行個體的即時效能監視](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)。
+
+**我可以使用 SQL Profiler 進行效能追蹤嗎？**
+
+是，支援 SQL Profiler 或 SQL 受控執行個體。 如需詳細資訊，請參閱[SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15)。
+
+**受控執行個體資料庫是否支援 Database Advisor 和查詢效能深入解析？**
+
+否，不支援它們。 您可以使用[dmv](../database/monitoring-with-dmvs.md)和[查詢存放區](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15)搭配[SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15)和[XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15)來監視您的資料庫。
+
+**我可以在 SQL 受控執行個體上建立計量警示嗎？**
+
+是。 如需指示，請參閱[建立 SQL 受控執行個體的警示](alerts-create.md)。
+
+**我可以在受控實例中的資料庫上建立計量警示嗎？**
+
+您不能，警示計量僅適用于受控實例。 無法使用受控實例中個別資料庫的警示計量。
+
+## <a name="storage-size"></a>儲存體大小
 
 **SQL 受控執行個體的儲存體大小上限為何？**
 
 SQL 受控執行個體的儲存體大小取決於選取的服務層級 (一般用途或業務關鍵) 。 如需這些服務層級的儲存體限制，請參閱[服務層特性](../database/service-tiers-general-purpose-business-critical.md)。
 
-  
+**受控實例可用的最小儲存體大小為何？**
+
+實例中可用的最小儲存空間為 32 GB。 儲存體可以增加 32 GB，最多可達儲存體大小上限。 第一個32GB 是免費的。
+
+**我可以增加指派給實例的儲存空間，獨立于計算資源嗎？**
+
+是，您可以將附加元件儲存體獨立于計算之外購買到某種程度。 請參閱[資料表](resource-limits.md#hardware-generation-characteristics)中的*最大實例保留儲存體*。
+
+**如何將一般用途服務層級的儲存體效能優化？**
+
+若要將儲存體效能優化，請參閱[一般用途的儲存體最佳作法](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)。
+
+## <a name="backup-and-restore"></a>備份與還原
+
+**備份儲存體是否從我的受控實例儲存體中扣除？**
+
+不會，備份儲存體不會從您的受控實例儲存空間中扣除。 備份儲存體與實例儲存空間無關，而且大小不受限制。 備份儲存體受限於保留實例資料庫備份的時間週期，最多可設定35天。 如需詳細資訊，請參閱[自動備份](../database/automated-backups-overview.md)。
+
+**我要如何查看我的受控實例上自動備份的時間？**
+若要追蹤在受控執行個體上執行自動備份的時間，請參閱[如何追蹤 AZURE SQL 受控執行個體的自動備份](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355)。
+
+**是否支援隨選備份？**
+是，您可以在其 Azure Blob 儲存體中建立僅限複製的完整備份，但只能在受控執行個體中進行還原。 如需詳細資訊，請參閱[只複本備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)。 不過，如果資料庫是由服務管理的 TDE 加密，就無法進行僅限複本備份，因為用於加密的憑證無法存取。 在這種情況下，請使用還原時間點功能，將資料庫移至另一個 SQL 受控執行個體，或切換到客戶管理的金鑰。
+
+**是否 (從 .bak 檔案) 原生還原，以支援受控執行個體？**
+可以，這是支援的版本，而且適用于 SQL Server 2005 + 版本。  若要使用原生還原，請將您的 .bak 檔案上傳至 Azure blob 儲存體，並執行 T-sql 命令。 如需詳細資訊，請參閱[從 URL 原生還原](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url)。
+
+## <a name="business-continuity"></a>業務持續性
+
+**我的系統資料庫是否已複寫到容錯移轉群組中的次要實例？**
+
+系統資料庫不會複寫到容錯移轉群組中的次要實例。 因此，相依于系統資料庫中之物件的案例，將無法在次要實例上進行，除非物件是在次要複本上手動建立的。 如需因應措施，請參閱根據[系統資料庫中的物件來啟用案例](../database/auto-failover-group-overview.md?tabs=azure-powershell#enable-scenarios-dependent-on-objects-from-the-system-databases)。
+ 
 ## <a name="networking-requirements"></a>網路需求 
 
 **受控執行個體子網上的目前輸入/輸出 NSG 條件約束為何？**
@@ -231,6 +296,44 @@ SQL 受控執行個體負責設定管理埠上的規則。 這是透過名為[�
 
 不正確。 目前，我們不支援將受控執行個體放在已包含其他資源類型的子網中。
 
+## <a name="connectivity"></a>連接性 
+
+**我可以使用 IP 位址連接到我的受控實例嗎？**
+
+不行，不支援此方式。 受控執行個體的主機名稱會對應至受控執行個體虛擬叢集前方的負載平衡器。 當一個虛擬叢集可以裝載多個受控實例時，連接無法路由傳送至適當的受控執行個體，而不需要指定其名稱。
+如需 SQL 受控執行個體虛擬叢集架構的詳細資訊，請參閱[虛擬叢集連線架構](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)。
+
+**我的受控實例可以有靜態 IP 位址嗎？**
+
+目前不支援。
+
+在罕見但必要的情況下，我們可能需要在線上將受控實例遷移至新的虛擬叢集。 如有需要，這項遷移是因為我們的技術堆疊有所變更，目的在於改善服務的安全性和可靠性。 遷移至新的虛擬叢集會導致變更對應至受控實例主機名稱的 IP 位址。 受控實例服務不會宣告靜態 IP 位址支援，並保留變更的權利，而不會在一般維護週期中另行通知。
+
+基於這個理由，我們強烈建議您不要依賴不必要的 IP 位址，因為這可能會造成不必要的停機時間。
+
+**受控執行個體有公用端點嗎？**
+
+是。 受控執行個體具有僅供服務管理使用的公用端點，但客戶也可將其啟用資料存取。 如需詳細資訊，請參閱[使用具有公用端點的 SQL 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)。 若要設定公用端點，請移至[在 SQL 受控執行個體中設定公用端點](public-endpoint-configure.md)。
+
+**受控執行個體如何控制公用端點的存取權？**
+
+受控執行個體可控制對網路和應用層級的公用端點的存取。
+
+管理和部署服務會使用對應到外部負載平衡器的[管理端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint)，連接到受控實例。 只有在只有受控實例的管理元件使用的一組預先定義的埠上接收到時，才會將流量路由傳送至節點。 節點上的內建防火牆設定為只允許來自 Microsoft IP 範圍的流量。 憑證會相互驗證管理元件與管理平面之間的所有通訊。 如需詳細資訊，請參閱[SQL 受控執行個體的連接架構](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#virtual-cluster-connectivity-architecture)。
+
+**我可以使用公用端點來存取受控執行個體資料庫中的資料嗎？**
+
+是。 客戶必須從[Azure 入口網站](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)的 PowerShell/ARM 啟用公用端點資料存取  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) ，並將 NSG 設定為鎖定對資料埠的存取， (埠號碼 3342) 。 如需詳細資訊，請參閱[在 AZURE sql 受控執行個體中設定公用端點](public-endpoint-configure.md)和[使用 azure sql 受控執行個體安全地搭配公用端點](public-endpoint-overview.md)。 
+
+**我可以為 SQL 資料端點 (s) 指定自訂埠嗎？**
+
+否，無法使用此選項。  對於私用資料端點，受控執行個體會使用預設埠號碼1433，而對於公用資料端點，受控執行個體會使用預設埠號碼3342。
+
+**連接位於不同區域之受控實例的建議方式為何？**
+
+Express Route 線路對等互連是執行此動作的最佳方式。 這不會與跨區域虛擬網路對等互連混合，因為內部負載平衡器相關的[條件約束](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)不支援。
+
+如果不可能有 Express Route 線路對等互連，唯一的另一個選項是建立站對站 VPN 連線 ([Azure 入口網站](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)、 [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell) [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) 。
 
 ## <a name="mitigate-data-exfiltration-risks"></a>降低資料外泄風險  
 
@@ -277,21 +380,6 @@ DNS 設定最後會重新整理：
 - 平臺升級。
 
 因應措施是將 SQL 受控執行個體降級為4虛擬核心，之後再升級。 這會產生重新整理 DNS 設定的副作用。
-
-
-## <a name="ip-address"></a>IP 位址
-
-**我可以使用 IP 位址連接到 SQL 受控執行個體嗎？**
-
-不支援使用 IP 位址連接到 SQL 受控執行個體。 SQL 受控執行個體主機名稱會對應至 SQL 受控執行個體虛擬叢集前方的負載平衡器。 因為一個虛擬叢集可以裝載多個受控實例，所以連線無法路由傳送至適當的受控實例，而不需要明確指定名稱。
-
-如需 SQL 受控執行個體虛擬叢集架構的詳細資訊，請參閱[虛擬叢集連線架構](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)。
-
-**SQL 受控執行個體是否可以有靜態 IP 位址？**
-
-在罕見但必要的情況下，我們可能需要線上將 SQL 受控執行個體遷移至新的虛擬叢集。 如有需要，這項遷移是因為我們的技術堆疊有所變更，目的在於改善服務的安全性和可靠性。 遷移至新的虛擬叢集會導致變更對應至 SQL 受控執行個體主機名稱的 IP 位址。 SQL 受控執行個體服務不會宣告靜態 IP 位址支援，而且會保留變更的權利，而不會在一般維護週期中另行通知。
-
-基於這個理由，我們強烈建議您不要依賴不必要的 IP 位址，因為這可能會造成不必要的停機時間。
 
 ## <a name="change-time-zone"></a>變更時區
 

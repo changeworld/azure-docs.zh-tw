@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: b9770e46e8e52d8644143c9912c98e0f7913db9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79b5f4492d05880e263f8d489a64ba0cc218d355
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734277"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223392"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>瞭解健全狀況狀態，並在 Azure Active Directory Domain Services 中解決已擱置的網域
 
-當 Azure Active Directory Domain Services (Azure AD DS) 有很長的一段時間無法服務受控網域時，其會使該受控網域進入暫時停權狀態。 如果受控網域仍處於暫停狀態，則會自動刪除。 若要讓您的 Azure AD DS 受控網域保持良好狀態，並避免暫停，請儘快解決所有警示。
+當 Azure Active Directory Domain Services (Azure AD DS) 有很長的一段時間無法服務受控網域時，其會使該受控網域進入暫時停權狀態。 如果受控網域維持在暫停狀態，就會自動刪除。 若要讓您的 Azure AD DS 受控網域保持良好狀態，並避免暫停，請儘快解決所有警示。
 
 本文說明受控網域的暫止原因，以及如何復原已暫停的網域。
 
@@ -39,7 +39,7 @@ ms.locfileid: "84734277"
 
 ## <a name="running-state"></a>執行狀態
 
-已正確設定並在沒有問題的情況下執行的受控網域*處於 [執行*中] 狀態。 這是受控網域所需的狀態。
+已正確設定且沒有*問題的受控網域處於 [執行*中] 狀態。 這是受控網域所需的狀態。
 
 ### <a name="what-to-expect"></a>未來展望
 
@@ -50,7 +50,9 @@ ms.locfileid: "84734277"
 
 ## <a name="needs-attention-state"></a>需要注意狀態
 
-具有一或多個需要修正之問題的受控網域處於「*需要注意*」狀態。 受控網域的健康情況頁面會列出警示，並指出發生問題的位置。 某些警示是暫時性的，而且會由 Azure 平臺自動解決。 針對其他警示，您可以遵循所提供的解決步驟來修正問題。 這是重大警示，請[開啟 Azure 支援要求][azure-support]以取得額外的疑難排解協助。
+具有一或多個需要修正之問題的受控網域處於「*需要注意*」狀態。 受控網域的健康情況頁面會列出警示，並指出發生問題的位置。
+
+某些警示是暫時性的，而且會由 Azure 平臺自動解決。 針對其他警示，您可以遵循所提供的解決步驟來修正問題。 這是重大警示，請[開啟 Azure 支援要求][azure-support]以取得額外的疑難排解協助。
 
 警示的其中一個範例是有限制的網路安全性群組。 在此設定中，Azure 平臺可能無法更新及監視受控網域。 系統會產生警示，且狀態會變更為 [*需要注意*]。
 
@@ -58,7 +60,7 @@ ms.locfileid: "84734277"
 
 ### <a name="what-to-expect"></a>未來展望
 
-當受控網域處於「*需要注意*」狀態時，Azure 平臺可能無法定期監視、修補、更新或備份資料。 在某些情況下（例如，使用不正確網路設定），可能無法連線到受控網域的網域控制站。
+當受控網域處於「*需要注意*」狀態時，Azure 平臺可能無法定期監視、修補、更新或備份資料。 在某些情況下（例如，網路設定無效），可能無法連線到受控網域的網域控制站。
 
 * 受控網域處於狀況不良的狀態，而持續的健康情況監視可能會停止，直到警示解決為止。
 * 無法修補或更新受控網域的網域控制站。
@@ -113,7 +115,7 @@ ms.locfileid: "84734277"
 當受控網域進入*已刪除*狀態時，會出現下列行為：
 
 * 該受控網域的所有資源和備份都會被刪除。
-* 您無法還原受控網域，且必須建立替代的受控網域，才能重複使用 Azure AD DS。
+* 您無法還原受控網域。 您必須建立替代的受控網域，才能重複使用 Azure AD DS。
 * 將它刪除之後，您就不需繼續支付該受控網域的費用。
 
 ## <a name="next-steps"></a>後續步驟

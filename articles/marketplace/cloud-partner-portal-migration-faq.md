@@ -7,12 +7,12 @@ ms.topic: article
 author: anbene
 ms.author: mingshen
 ms.date: 06/29/2020
-ms.openlocfilehash: 2192b3757281bf6796fbf93f83cab6e71deb29f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e708d9a32d63c306a2d1ee8d06b044652f108dde
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120549"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231874"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>從 Cloud Partner 入口網站轉換到合作夥伴中心的常見問題
 
@@ -75,8 +75,8 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 | 容器 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請查看[建立 Azure 容器供應](partner-center-portal/create-azure-container-offer.md)專案。 |
 | 諮詢服務 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請到[建立諮詢服務供應](partner-center-portal/create-consulting-service-offer.md)專案。 |
 | 受控服務 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請到[建立受控服務供應](partner-center-portal/create-new-managed-service-offer.md)專案。 |
-| Dynamics Nav 受控服務 | No | Microsoft 已將 Dynamics NAV 受控服務演變為[dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/)，因此我們已從 AppSource 中取消列出 Dynamics Nav 受控服務的即時供應專案。 這些供應專案已不再由客戶探索，而且尚未移至合作夥伴中心。 若要在 AppSource 中提供您的供應專案，請將其調整為 Dynamics 365 Business Central 供應專案，並在[合作夥伴中心](https://partner.microsoft.com/)提交。 若要深入瞭解，請到[建立 Dynamics 365 Business Central 供應](partner-center-portal/create-new-business-central-offer.md)專案。 |
-| Cortana Intelligence | No | Microsoft 已發展 Cortana 情報的產品藍圖，因此我們已從 AppSource 中取消列出 Cortana 情報的現場優惠。 這些供應專案已不再由客戶探索，而且尚未移至合作夥伴中心。 若要在商業 marketplace 中提供您的供應專案，請將您的供應專案調整為軟體即服務（SaaS）供應專案，並在[合作夥伴中心](hhttps://partner.microsoft.com/)提交。 若要深入瞭解，請到[合作夥伴中心的 SaaS 供應專案建立檢查清單](partner-center-portal/offer-creation-checklist.md)。 |
+| Dynamics Nav 受控服務 | 否 | Microsoft 已將 Dynamics NAV 受控服務演變為[dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/)，因此我們已從 AppSource 中取消列出 Dynamics Nav 受控服務的即時供應專案。 這些供應專案已不再由客戶探索，而且尚未移至合作夥伴中心。 若要在 AppSource 中提供您的供應專案，請將其調整為 Dynamics 365 Business Central 供應專案，並在[合作夥伴中心](https://partner.microsoft.com/)提交。 若要深入瞭解，請到[建立 Dynamics 365 Business Central 供應](partner-center-portal/create-new-business-central-offer.md)專案。 |
+| Cortana Intelligence | 否 | Microsoft 已發展 Cortana 情報的產品藍圖，因此我們已從 AppSource 中取消列出 Cortana 情報的現場優惠。 這些供應專案已不再由客戶探索，而且尚未移至合作夥伴中心。 若要在商業 marketplace 中提供您的供應專案，請將您的供應專案調整為軟體即服務 (SaaS) 供應專案，並在[合作夥伴中心](https://partner.microsoft.com/)提交這些產品。 若要深入瞭解，請到[合作夥伴中心的 SaaS 供應專案建立檢查清單](partner-center-portal/offer-creation-checklist.md)。 |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>我在合作夥伴中心找不到我的 Cloud Partner 入口網站供應專案
 
@@ -140,7 +140,7 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 
 [![](media/cpp-pc-faq/plans.png "Shows the Partner Center Plans page")](media/cpp-pc-faq/plans.png#lightbox)
 
-此外，您先前在 Cloud Partner 入口網站的**Marketplace**或**店面詳細資料**（諮詢服務、Power BI 應用程式）頁面中提供的資訊，現在會在 [合作夥伴中心] 的 [供應專案]**清單**頁面上收集：
+此外，您先前在**Marketplace**或**店面詳細資料**中提供的資訊 (諮詢服務，Cloud Partner 入口網站中的 Power BI 應用程式) 頁面現在會在合作夥伴中心的**供應專案清單**頁面上收集：
 
 [![](media/cpp-pc-faq/offer-listing.png "Shows the Partner Center Offer listing page")](media/cpp-pc-faq/offer-listing.png#lightbox)
 
@@ -149,7 +149,7 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 - [計劃設定] 頁面
 - [計劃清單] 頁面
 - 計劃 [可用性] 頁面
-- [規劃技術設定] 頁面，如下所示： ![ ！ []（media/cpp-pc-常見問題/technical-configuration.png "顯示合作夥伴中心技術設定頁面"）](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- [規劃技術設定] 頁面，如下所示： ![ ！ [] (media/cpp-pc-常見問題/technical-configuration.png」顯示合作夥伴中心的 [技術設定] 頁面 [) ](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 您的供應專案識別碼現在會顯示在供應專案的左側導覽列上：
 

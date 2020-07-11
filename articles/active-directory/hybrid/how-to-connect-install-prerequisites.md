@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/27/2020
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bcf7b5b8791b813a28133d8a662d1736aacf35a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bd19093034b4427d9e1b637a653a90e0568cddf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358713"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223919"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的必要條件
 本主題描述 Azure AD Connect 的必要條件和硬體需求。
@@ -48,39 +48,40 @@ ms.locfileid: "85358713"
 * 建議您[啟用 Active Directory 資源回收筒](how-to-connect-sync-recycle-bin.md)。
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect 伺服器
->[!IMPORTANT]
->Azure AD Connect 伺服器包含重要的身分識別資料，應視為第0層元件，如[Active Directory 管理層模型中所](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)述
+Azure AD Connect 伺服器包含重要的身分識別資料。 請務必妥善保護此伺服器的系統管理存取權，遵循保護特殊許可權[存取](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)中所述的指導方針。 
 
-* Azure AD Connect 無法安裝至 2019 以前的 Small Business Server 或 Windows Server Essentials (支援 Windows Server Essentials 2019)。 伺服器必須使用 Windows Server Standard 或以上版本。
-* 不建議在網域控制站上安裝 Azure AD Connect，因為安全性作法和更嚴格的設定會使 Azure AD Connect 無法正確安裝。
-* Azure AD Connect 伺服器必須已安裝完整的 GUI。 **不**支援在伺服器核心上安裝。
->[!IMPORTANT]
->不支援在 small business server、server essentials 或 server core 上安裝 Azure AD Connect。
+Azure AD Connect 伺服器必須視為第0層元件，如[Active Directory 管理層模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中所述。  
 
-* Azure AD Connect 必須安裝在 Windows Server 2012 或更新版本上。 此伺服器必須已加入網域，而且可能是網域控制站或成員伺服器。
-* 如果您使用 Azure AD Connect wizard 來管理 ADFS 設定，Azure AD Connect 伺服器就不能群組原則啟用 PowerShell 轉譯。 如果您使用 Azure AD Connect 精靈來管理同步處理組態，您可以啟用 PowerShell 轉譯。
-* 如果部署的是 Active Directory Federation Services，則安裝 AD FS 或 Web 應用程式 Proxy 的伺服器必須是 Windows Server 2012 R2 或更新版本。 [Windows 遠端管理](#windows-remote-management) ，才能執行遠端安裝。
-* 如果正在部署 Active Directory 同盟服務，您需要[TLS/SSL 憑證](#tlsssl-certificate-requirements)。
-* 如果部署的是 Active Directory 同盟服務，您就需要設定 [名稱解析](#name-resolution-for-federation-servers)。
-* 如果您的全域系統管理員已啟用 MFA，則 URL **https://secure.aadcdn.microsoftonline-p.com** 必須位於信任的網站清單中。 在顯示 MFA 挑戰提示時，如果您尚未將此 URL 新增到信任的網站清單，系統會先提示您將它新增到清單。 您可以使用 Internet Explorer 將它新增到信任的網站。
-* Microsoft 建議強化您的 Azure AD Connect 伺服器，以降低 IT 環境中這項重要元件的安全性受攻擊面。  遵循下列建議將可降低貴組織的安全性風險。
+若要深入瞭解如何保護您的 Active Directory 環境，請參閱[保護 Active Directory 的最佳做法](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory)。
 
-* 在加入網域的伺服器上部署 Azure AD Connect，並將系統管理存取許可權制為網域系統管理員或其他嚴格控制的安全性群組。
+#### <a name="installation-prerequisites"></a>安裝必要條件 
 
-若要深入了解，請參閱： 
+- Azure AD Connect 必須安裝在已加入網域的 Windows Server 2012 或更新版本上。 強烈建議此伺服器為網域控制站。 
+- Azure AD Connect 無法安裝至 2019 以前的 Small Business Server 或 Windows Server Essentials (支援 Windows Server Essentials 2019)。 伺服器必須使用 Windows Server Standard 或以上版本。  
+- Azure AD Connect 伺服器必須已安裝完整的 GUI。 不支援在 Windows Server Core 上安裝 Azure AD Connect。 
+- 如果您使用 Azure AD Connect wizard 來管理 ADFS 設定，Azure AD Connect 伺服器就不能群組原則啟用 PowerShell 轉譯。 如果您使用 Azure AD Connect 精靈來管理同步處理組態，您可以啟用 PowerShell 轉譯。 
+- 如果正在部署 Active Directory 同盟服務，則： 
+    - 安裝 AD FS 或 Web 應用程式 Proxy 的伺服器必須是 Windows Server 2012 R2 或更新版本。 Windows 遠端管理 ，才能執行遠端安裝。 
+    - 您必須設定 TLS/SSL 憑證。  請參閱[管理 ssl/TLS 通訊協定和加密套件，以](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)[在 AD FS 中 AD FS 和管理 ssl 憑證](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)。
+    - 您必須設定名稱解析。 
+- 如果您的全域系統管理員已啟用 MFA，則 URL https://secure.aadcdn.microsoftonline-p.com **必須**位於信任的網站清單中。 在顯示 MFA 挑戰提示時，如果您尚未將此 URL 新增到信任的網站清單，系統會先提示您將它新增到清單。 您可以使用 Internet Explorer 將它新增到信任的網站。  
 
-* [保護系統管理員群組](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+#### <a name="hardening-your-azure-ad-connect-server"></a>強化您的 Azure AD Connect 伺服器 
+Microsoft 建議強化您的 Azure AD Connect 伺服器，以降低 IT 環境中這項重要元件的安全性受攻擊面。 遵循下列建議可協助降低貴組織的一些安全性風險。
 
-* [保護內建的系統管理員帳戶](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+- 您必須將 Azure AD Connect 視為網域控制站和其他第0層資源：https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material 
+- 您應該將 Azure AD Connect 伺服器的系統管理存取許可權制為只有網域系統管理員或其他嚴格控制的安全性群組。
+- 您應該[為具有特殊許可權存取權的所有人員建立專用帳戶](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)。 系統管理員不應以具備高特殊權限的帳戶瀏覽網頁、查看其電子郵件，以及執行日常生產力工作。
+- 您應遵循保護特殊許可權[存取](https://docs.microsoft.com/windows-server/security/credentials-protection-and-management/how-to-configure-protected-accounts)中所提供的指導方針。 
+- 您應該確定每部電腦都有唯一的本機系統管理員密碼。 [本機系統管理員密碼解決方案 (LAPS) ](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps)可以在每部工作站上設定唯一的隨機密碼，而伺服器則會將它們儲存在 ACL 所保護的 ACTIVE DIRECTORY (AD) 中。 只有合格的授權使用者才可讀取或要求重設這些本機系統管理員帳戶密碼。 您可以從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)取得要在工作站和伺服器上使用的 LAPS。 如需使用 LAPS 和 Paw 操作環境的其他指引，請參閱以[乾淨來源原則為基礎的操作標準](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)。 
+- 您應針對具有貴組織資訊系統特殊許可權存取權的所有人員，執行專用的特殊許可權[存取工作站 (PAW) ](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) 。 
+- 您應該遵循這些[額外的指導方針](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)，減少 Active Directory 環境的受攻擊面。
 
-* [透過減少受攻擊面來改善安全性和維持流程](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
-
-* [減少 Active Directory 的受攻擊面](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect 使用的 SQL Server
 * Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 預設會安裝 SQL Server 2012 Express LocalDB (SQL Server Express 的精簡版)。 SQL Server Express 有 10 GB 的大小限制，可讓您管理大約 100,000 個物件。 如果您需要管理更多數量的目錄物件，則必須將安裝精靈指向不同的 SQL Server 安裝。 SQL Server 安裝的類型可能會影響[Azure AD Connect 的效能](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors)。
 * 如果您使用不同的 SQL Server 安裝，則適用下列需求：
-  * Azure AD Connect 支援2012（含最新的 Service Pack）到 SQL Server 2019 的所有 Microsoft SQL Server 版本。 **不支援** 使用 Microsoft Azure SQL Database 作為資料庫。
+  * Azure AD Connect 支援 2012 (的所有 Microsoft SQL Server 版本，並將最新的 Service Pack) 到 SQL Server 2019。 **不支援** 使用 Microsoft Azure SQL Database 作為資料庫。
   * 您必須使用不區分大小寫的 SQL 定序。 這些定序是在其名稱中使用 \_CI_ 來識別。 **不支援**使用區分大小寫的定序 (在其名稱中以 \_CS_ 來識別)。
   * 您在每個 SQL 執行個體中只能有一個同步引擎。 **不支援** 使用 FIM/MIM Sync、DirSync 或 Azure AD Sync 來共用 SQL 執行個體。
 
@@ -89,7 +90,7 @@ ms.locfileid: "85358713"
 * 如果您使用[快速設定](reference-connect-accounts-permissions.md#express-settings-installation)或從 DirSync 升級，則您必須擁有內部部署 Active Directory 的企業系統管理員帳戶。
 * 如果您使用自訂設定安裝路徑，則會有更多選項。 如需詳細資訊，請參閱[自訂安裝設定](reference-connect-accounts-permissions.md#custom-installation-settings)。
 
-### <a name="connectivity"></a>連線能力
+### <a name="connectivity"></a>連接性
 * Azure AD Connect 伺服器需要內部網路和網際網路的 DNS 解析。 DNS 伺服器必須能夠將名稱解析成您的內部部署 Active Directory 和 Azure AD 端點。
 * 如果您的內部網路有防火牆，而您需要開放 Azure AD Connect 伺服器與網域控制站之間的連接埠，請參閱 [Azure AD Connect 連接埠](reference-connect-ports.md)以了解詳細資訊。
 * 如果您的 Proxy 或防火牆會限制可以存取的 URL，則必須開啟 [Office 365 URL 和 IP 位址範圍](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中記載的 URL。

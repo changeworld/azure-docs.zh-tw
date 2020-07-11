@@ -8,11 +8,12 @@ ms.topic: conceptual
 description: 在 Azure Dev Spaces 中使用自訂 NuGet 摘要以存取及使用 NuGet 套件。
 keywords: Docker、Kubernetes、Azure、AKS、Azure Container Service、容器
 manager: gwallace
-ms.openlocfilehash: 39984a3b3a1be64a497fb8088559ccfcdee4f1c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77c7b733b12d9b352f9a806cadc0f900b9283ef3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74325733"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229272"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>搭配 Azure Dev Spaces 使用自訂 NuGet 摘要
 
@@ -20,7 +21,7 @@ NuGet 摘要會提供在專案中包含套件來源的便利方式。 Azure Dev 
 
 ## <a name="set-up-a-nuget-feed"></a>設定 NuGet 摘要
 
-在節點下的檔案中，為您的相依性新增[套件參考](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) `*.csproj` `PackageReference` 。 例如：
+在節點下的檔案中，為您的相依性新增[套件參考](/nuget/consume-packages/package-references-in-project-files) `*.csproj` `PackageReference` 。 例如：
 
 ```xml
 <ItemGroup>
@@ -30,7 +31,7 @@ NuGet 摘要會提供在專案中包含套件來源的便利方式。 Azure Dev 
 </ItemGroup>
 ```
 
-在專案資料夾中建立[NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file)檔案，並 `packageSources` 為 NuGet 摘要設定和 `packageSourceCredentials` 區段。 `packageSources`區段包含您的摘要 url，必須可從您的 AKS 叢集存取。 `packageSourceCredentials`是用來存取摘要的認證。 例如：
+在專案資料夾中建立[NuGet.Config](/nuget/reference/nuget-config-file)檔案，並 `packageSources` 為 NuGet 摘要設定和 `packageSourceCredentials` 區段。 `packageSources`區段包含您的摘要 url，必須可從您的 AKS 叢集存取。 `packageSourceCredentials`是用來存取摘要的認證。 例如：
 
 ```xml
 <packageSources>
@@ -70,4 +71,4 @@ ignore:
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解[NuGet 及其運作方式](https://docs.microsoft.com/nuget/what-is-nuget)。
+深入瞭解[NuGet 及其運作方式](/nuget/what-is-nuget)。

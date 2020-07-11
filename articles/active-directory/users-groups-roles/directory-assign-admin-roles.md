@@ -1,5 +1,5 @@
 ---
-title: 管理員角色說明和權限 - Azure AD | Microsoft Docs
+title: Azure AD 角色描述和許可權-Azure Active Directory |Microsoft Docs
 description: 系統管理員角色可以新增使用者、指派系統管理角色、重設使用者密碼、管理使用者授權或管理網域。
 services: active-directory
 author: curtand
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/29/2020
+ms.date: 06/15/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e648058e866be57deaf8dd159c89fc08141b68
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dd0d17732991fd97b2406c9c5f182408f4746d96
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166666"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223868"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -42,6 +42,11 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 ## <a name="assign-or-remove-administrator-roles"></a>指派或移除系統管理員角色
 
 若要了解如何將系統管理角色指派給 Azure Active Directory 中的使用者，請參閱[在 Azure Active Directory 中檢視和指派系統管理員角色](directory-manage-roles-portal.md)。
+
+> [!Note]
+> 如果您有 Azure AD premium P2 授權，而且您已經是 Privileged Identity Management (PIM) 使用者，則所有角色管理工作都是在許可權身分識別管理中執行，而不是在 Azure AD 中執行。
+>
+> ![在 PIM 中為已經使用 PIM 並具有 Premium P2 授權的使用者，Azure AD 管理的角色](./media/directory-manage-roles-portal/pim-manages-roles-for-p2.png)
 
 ## <a name="available-roles"></a>可用的角色
 
@@ -180,6 +185,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 ### <a name="directory-readers"></a>[目錄讀取者](#directory-readers-permissions)
 
 具備此角色的使用者可讀取基本目錄資訊。 此角色應用於：
+
 * 將讀取權限授予一組特定的來賓使用者，而不是將其授予所有來賓使用者。
 * 當 [僅限系統管理員存取 Azure AD 入口網站] 設為 [是] 時，將 Azure 入口網站的存取權授予一組特定的非系統管理員使用者。
 * 如果 Directory.Read.All 不是選項，將目錄的存取權授予服務主體。
@@ -309,6 +315,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 此角色中的使用者可以在 [Office 365 訊息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)內，為他們的組織監視所設服務 (例如 Exchange、Intune 和 Microsoft Teams) 的通知和諮詢健康情況更新。 訊息中心讀者每週會收到貼文的電子郵件摘要和更新，並且可以在 Office 365 中分享訊息中心的貼文。 在 Azure AD 中，指派至此角色的使用者只會有 Azure AD 服務的唯讀存取權，與使用者和群組一樣。 這個角色沒有檢視、建立或管理支援票證的存取權。
 
 ### <a name="modern-commerce-administrator"></a>[Modern Commerce 管理員](#modern-commerce-administrator-permissions)
+
 請勿使用。 此角色會從 Commerce 自動指派，不適用於、也不支援任何其他用途。 請參閱下面的詳細資料。
 
 Modern Commerce 管理員角色可讓特定使用者有權存取 Microsoft 365 系統管理中心，以及查看 [首頁]、[計費] 和 [支援] 的左側導覽項目。 這些區域中可用的內容是由指派給使用者的[商務專用角色](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles)所控制，以管理其為自己或貴組織所購買的產品。 這可能包括支付帳單之類的工作，或對計費帳戶和帳單設定檔的存取權。 
@@ -316,17 +323,17 @@ Modern Commerce 管理員角色可讓特定使用者有權存取 Microsoft 365 �
 具有 Modern Commerce 管理員角色的使用者，在其他 Microsoft 採購系統中通常具有系統管理權限，但沒有用來存取系統管理中心的全域管理員或計費管理員角色。 
 
 **何時會指派 Modern Commerce 管理員角色？**
+
 * **Microsoft 365 系統管理中心的自助式採購** - 自助式採購讓使用者有機會藉由自行購買或註冊來試用新產品。 這些產品都是在系統管理中心進行管理。 進行自助式採購的使用者會被指派商務系統中的角色以及 Modern Commerce 管理員角色，以便在系統管理中心管理其採購項目。 系統管理員可透過 [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide) 來封鎖自助式採購 (針對 Power BI、Power Apps、Power Automate)。 如需詳細資訊，請參閱[自助式購買常見問題集](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide)。  
-* **從 Microsoft 商業市集採購** - 類似於自助式採購，當使用者從 Microsoft AppSource 或 Azure Marketplace 購買產品或服務時，如果他們沒有全域管理員或計費管理員角色，則會被指派 Modern Commerce 管理員角色。 在某些情況下，使用者可能會遭到封鎖而無法進行採購。 如需詳細資訊，請參閱 [Microsoft 商業市集](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)。   
-* **Microsoft 的提案** – 提案是來自 Microsoft 的正式報價，可供貴組織購買 Microsoft 產品和服務。 如果接受提案的人員在 Azure AD 中沒有全域管理員或計費管理員角色，他們就會被指派商務專用角色來完成提案，以及被指派 Modern Commerce 管理員角色來存取系統管理中心。 當他們存取系統管理中心時，只能使用其商務專用角色所授權的功能。 
+* **從 Microsoft 商業市集採購** - 類似於自助式採購，當使用者從 Microsoft AppSource 或 Azure Marketplace 購買產品或服務時，如果他們沒有全域管理員或計費管理員角色，則會被指派 Modern Commerce 管理員角色。 在某些情況下，使用者可能會遭到封鎖而無法進行採購。 如需詳細資訊，請參閱 [Microsoft 商業市集](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)。
+* **Microsoft 的提案** – 提案是來自 Microsoft 的正式報價，可供貴組織購買 Microsoft 產品和服務。 如果接受提案的人員在 Azure AD 中沒有全域管理員或計費管理員角色，他們就會被指派商務專用角色來完成提案，以及被指派 Modern Commerce 管理員角色來存取系統管理中心。 當他們存取系統管理中心時，只能使用其商務專用角色所授權的功能。
 * **商務專用角色** – 某些使用者會被指派商務專用角色。 如果使用者不是全域或計費管理員，他們會取得 Modern Commerce 管理員角色，以便存取系統管理中心。  
 
-如果取消指派使用者的 Modern Commerce 管理員角色，他們就會喪失 Microsoft 365 系統管理中心的存取權。 如果他們正為自己或貴組織管理任何產品，將無法管理這些產品。 這可能包括指派授權、變更付款方式、支付帳單，或其他管理訂用帳戶的工作。 
+如果取消指派使用者的 Modern Commerce 管理員角色，他們就會喪失 Microsoft 365 系統管理中心的存取權。 如果他們正為自己或貴組織管理任何產品，將無法管理這些產品。 這可能包括指派授權、變更付款方式、支付帳單，或其他管理訂用帳戶的工作。
 
 ### <a name="network-administrator"></a>[網路管理員](#network-administrator-permissions)
 
-具備此角色的使用者可以根據來自其使用者位置的網路遙測，檢閱 Microsoft 的網路周邊架構建議。 Office 365 的網路效能依賴嚴謹的企業客戶網路周邊架構，這通常是使用者位置專屬的架構。 此角色能夠編輯探索到的使用者位置及設定這些位置的網路參數，促使改善遙測測量和設計建議。 
-
+具備此角色的使用者可以根據來自其使用者位置的網路遙測，檢閱 Microsoft 的網路周邊架構建議。 Office 365 的網路效能依賴嚴謹的企業客戶網路周邊架構，這通常是使用者位置專屬的架構。 此角色可讓您編輯探索到的使用者位置及設定這些位置的網路參數，以加速遙測測量和設計建議
 ### <a name="office-apps-administrator"></a>[Office 應用程式管理員](#office-apps-administrator-permissions)
 
 具備此角色的使用者可以管理 Office 365 應用程式的雲端設定。 這包括管理雲端原則、自助式下載管理，以及檢視 Office 應用程式相關報告的功能。 此外，這個角色還能夠管理支援票證，以及監視主要系統管理中心內的服務健康情況。 指派給此角色的使用者也可以管理 Office 應用程式中新功能的通訊。 
@@ -460,7 +467,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，會將此角色識別為「SharePoint 服務管理員」。 在 [Azure 入口網站](https://portal.azure.com)中則是「SharePoint 管理員」。
 
 > [!NOTE]
-> 此角色也會將範圍許可權授與適用于 Microsoft Intune 的 Microsoft Graph API，讓您能夠管理和設定與 Sharepoint 和 Onedrive 資源相關的原則。
+> 此角色也會將範圍許可權授與適用于 Microsoft Intune 的 Microsoft Graph API，讓您能夠管理和設定與 SharePoint 和 OneDrive 資源相關的原則。
 
 ### <a name="skype-for-business--lync-administrator"></a>[商務用 Skype / Lync 管理員](#lync-service-administrator-permissions)
 
@@ -487,13 +494,13 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 ### <a name="user-administrator"></a>[使用者管理員](#user-administrator-permissions)
 
-具有此角色的使用者可以建立使用者，以及管理具有部分限制使用者的所有層面 (如下所示)，而且可以上傳密碼到期原則。 此外，具有此角色的使用者可以建立與管理所有群組。 此角色也包含建立和管理使用者檢視、管理支援票證，以及監視服務健康情況的能力。 對於具有大部分系統管理員角色的使用者，使用者管理員沒有權限可管理其某些使用者屬性。 具有此角色的使用者沒有管理 MFA 的權限。 下表列出此限制的例外角色。
+具有此角色的使用者可以建立使用者，並以一些限制管理使用者的所有層面 (查看資料表) ，並可更新密碼到期原則。 此外，具有此角色的使用者可以建立與管理所有群組。 此角色也包含建立和管理使用者檢視、管理支援票證，以及監視服務健康情況的能力。 對於具有大部分系統管理員角色的使用者，使用者管理員沒有權限可管理其某些使用者屬性。 具有此角色的使用者沒有管理 MFA 的權限。 下表列出此限制的例外角色。
 
-| 權限 | 可以執行 |
+| **權限** | **可以執行** |
 | --- | --- |
 |一般權限|<p>建立 [使用者和群組]</p><p>建立和管理使用者檢視</p><p>建立 Office 支援票證<p>更新密碼到期原則|
-|<p>所有使用者，包括所有管理員</p>|<p>管理授權</p><p>管理使用者主體名稱以外的所有使用者屬性</p>
-|只有非管理員或者下列任何有限管理員角色的使用者：<ul><li>目錄讀取器<li>來賓邀請者<li>服務台系統管理員<li>訊息中心讀取者<li>報告讀者<li>使用者管理員|<p>刪除及還原</p><p>停用和啟用</p><p>使重新整理權杖失效</p><p>管理包含使用者主體名稱的所有使用者屬性</p><p>重設密碼</p><p>更新 (FIDO) 裝置金鑰</p>|
+| <p>所有使用者，包括所有管理員</p>|<p>管理授權</p><p>管理使用者主體名稱以外的所有使用者屬性</p>
+| 只有非管理員或者下列任何有限管理員角色的使用者：<ul><li>目錄讀取器<li>來賓邀請者<li>服務台系統管理員<li>訊息中心讀取者<li>報告讀者<li>使用者管理員|<p>刪除及還原</p><p>停用和啟用</p><p>使重新整理權杖失效</p><p>管理包含使用者主體名稱的所有使用者屬性</p><p>重設密碼</p><p>更新 (FIDO) 裝置金鑰</p>|
 
 > [!IMPORTANT]
 > 具備此角色的使用者可以變更可存取機密或私人資訊或 Azure Active Directory 內外重要組態的人員密碼。 變更使用者的密碼表示可承擔該使用者身分識別和權限。 例如：

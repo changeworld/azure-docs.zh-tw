@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b7b2a75bff21825a47f4364a8936ee7d5f122c1a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144609"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223885"
 ---
 # <a name="what-is-single-sign-on-sso"></a>什麼是單一登入 (SSO)？
 
@@ -90,6 +90,9 @@ ms.locfileid: "86144609"
 - 應用程式不支援 SAML 單一登入通訊協定。
 - 應用程式使用使用者名稱和密碼進行驗證，而不是使用存取權杖和標頭。
 
+>[!NOTE]
+>您無法針對密碼型 SSO 套用條件式存取原則或多重要素驗證。
+
 有 HTML 型登入頁面的雲端應用程式支援密碼式單一登入。 使用者可以使用下列任何瀏覽器：
 
 - Windows 7 上的 Internet Explorer 11 或更新版本
@@ -136,6 +139,9 @@ ms.locfileid: "86144609"
 當您在一段時間內遷移應用程式時，連結的登入可以提供一致的使用者體驗。 如果您要將應用程式遷移至 Azure Active Directory，您可以使用連結的登入，快速地將連結發佈到您想要遷移的所有應用程式。  使用者可以在 [MyApps 入口網站](../user-help/active-directory-saas-access-panel-introduction.md)或 [Office 365 應用程式啟動器](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)中找到所有連結。 使用者不會知道他們存取的是已連結的應用程式或已移轉的應用程式。  
 
 使用者與連結的應用程式驗證之後，需要先建立帳戶記錄，系統才會提供使用者單一登入存取權。 佈建此帳戶記錄可以是自動執行，或是由系統管理員手動執行。
+
+>[!NOTE]
+>您無法將條件式存取原則或多重要素驗證套用至連結的應用程式。 這是因為連結的應用程式不會透過 Azure AD 提供單一登入功能。 當您設定連結的應用程式時，您只需要新增將會出現在應用程式啟動器或 MyApps 入口網站中的連結。 
 
 ## <a name="disabled-sso"></a>已停用的 SSO
 

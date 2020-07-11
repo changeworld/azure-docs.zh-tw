@@ -1,6 +1,6 @@
 ---
 title: Azure AD Domain Services 中的安全遠端 VM 存取 |Microsoft Docs
-description: 瞭解如何使用網路原則伺服器（NPS）和 Azure 多重要素驗證搭配 Azure Active Directory Domain Services 受控網域中的遠端桌面服務部署，來保護對 Vm 的遠端存取。
+description: 瞭解如何使用網路原則伺服器 (NPS) 和 Azure 多重要素驗證，透過 Azure Active Directory Domain Services 受控網域中的遠端桌面服務部署，保護對 Vm 的遠端存取。
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -8,20 +8,21 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 8a9382af630d80480e5bec50d629451ebe49bf73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ba64ac6d33f96979a05de383ffc02dd757fc906
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734464"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223409"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>安全地遠端存取 Azure Active Directory Domain Services 中的虛擬機器
 
-若要保護在 Azure Active Directory Domain Services （Azure AD DS）受控網域中執行之虛擬機器（Vm）的遠端存取，您可以使用遠端桌面服務（RDS）和網路原則伺服器（NPS）。 Azure AD DS 會在使用者透過 RDS 環境要求存取權時進行驗證。 為了加強安全性，您可以整合 Azure 多因素驗證，以在登入事件期間提供額外的驗證提示。 Azure 多重要素驗證會使用 NPS 的延伸模組來提供這項功能。
+若要保護虛擬機器的遠端存取 () 在 Azure Active Directory Domain Services (Azure AD DS) 受控網域中執行的 Vm，您可以使用遠端桌面服務 (RDS) 和網路原則伺服器 (NPS) 。 Azure AD DS 會在使用者透過 RDS 環境要求存取權時進行驗證。 為了加強安全性，您可以整合 Azure 多因素驗證，以在登入事件期間提供額外的驗證提示。 Azure 多重要素驗證會使用 NPS 的延伸模組來提供這項功能。
 
 > [!IMPORTANT]
-> 若要安全地連線到 Azure AD DS 受控網域中的 Vm，建議的方式是使用 Azure 防禦，這是您在虛擬網路中布建的完整平臺管理 PaaS 服務。 防禦主機透過 SSL 直接在 Azure 入口網站中，為您的 Vm 提供安全且順暢的遠端桌面通訊協定（RDP）連線。 當您透過防禦主機連線時，您的 Vm 不需要公用 IP 位址，而且您不需要使用網路安全性群組來公開存取 TCP 埠3389上的 RDP。
+> 若要安全地連線到 Azure AD DS 受控網域中的 Vm，建議的方式是使用 Azure 防禦，這是您在虛擬網路中布建的完整平臺管理 PaaS 服務。 防禦主機提供安全且順暢的遠端桌面通訊協定， (RDP) 透過 SSL 直接在 Azure 入口網站中連線到您的 Vm。 當您透過防禦主機連線時，您的 Vm 不需要公用 IP 位址，而且您不需要使用網路安全性群組來公開存取 TCP 埠3389上的 RDP。
 >
 > 我們強烈建議您在支援的所有區域中使用 Azure 防禦。 在沒有 Azure 防禦可用性的區域中，請遵循這篇文章中所述的步驟，直到有可用的 Azure 防禦為止。 請小心將公用 IP 位址指派給已聯結至已加入 Azure AD DS 的 Vm，其中允許所有傳入的 RDP 流量。
 >
@@ -29,7 +30,7 @@ ms.locfileid: "84734464"
 
 本文說明如何在 Azure AD DS 中設定 RDS，並選擇性地使用 Azure 多因素驗證 NPS 延伸模組。
 
-![遠端桌面服務（RDS）總覽](./media/enable-network-policy-server/remote-desktop-services-overview.png)
+![遠端桌面服務 (RDS) 總覽](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -47,7 +48,7 @@ ms.locfileid: "84734464"
 
 ## <a name="deploy-and-configure-the-remote-desktop-environment"></a>部署和設定遠端桌面環境
 
-若要開始使用，請至少建立兩個執行 Windows Server 2016 或 Windows Server 2019 的 Azure Vm。 如需遠端桌面（RD）環境的冗余和高可用性，您可以在稍後新增和負載平衡其他主機。
+若要開始使用，請至少建立兩個執行 Windows Server 2016 或 Windows Server 2019 的 Azure Vm。 如需遠端桌面 (RD) 環境的冗余和高可用性，您可以在稍後新增和負載平衡其他主機。
 
 建議的 RDS 部署包含下列兩個 Vm：
 
@@ -69,7 +70,7 @@ RD 環境部署包含幾個步驟。 您可以使用現有的 RD 部署指南，
 
 如果您想要提高使用者登入體驗的安全性，可以選擇性地整合 RD 環境與 Azure 多重要素驗證。 使用此設定時，使用者會在登入期間收到額外的提示，以確認其身分識別。
 
-若要提供這項功能，您的環境中會安裝額外的網路原則伺服器（NPS）以及 Azure 多因素驗證 NPS 延伸模組。 此延伸模組會與 Azure AD 整合，以要求並傳回多重要素驗證提示的狀態。
+若要提供這項功能，您的環境中會安裝額外的網路原則伺服器 (NPS) 以及 Azure 多因素驗證 NPS 延伸模組。 此延伸模組會與 Azure AD 整合，以要求並傳回多重要素驗證提示的狀態。
 
 使用者必須[註冊才能使用 Azure 多重要素驗證][user-mfa-registration]，這可能需要額外的 Azure AD 授權。
 
@@ -84,7 +85,7 @@ RD 環境部署包含幾個步驟。 您可以使用現有的 RD 部署指南，
 
 ## <a name="integrate-remote-desktop-gateway-and-azure-multi-factor-authentication"></a>整合遠端桌面閘道和 Azure 多重要素驗證
 
-若要整合 Azure 多因素驗證 NPS 延伸模組，請使用現有的操作說明文章，以[使用網路原則伺服器（NPS）延伸模組和 Azure AD 來整合您的遠端桌面閘道基礎結構][azure-mfa-nps-integration]。
+若要整合 Azure 多因素驗證 NPS 延伸模組，請使用現有的操作說明文章，將[您的遠端桌面閘道基礎結構與網路原則伺服器（ (NPS) 延伸模組和 Azure AD）整合][azure-mfa-nps-integration]。
 
 與受控網域整合需要下列其他設定選項：
 

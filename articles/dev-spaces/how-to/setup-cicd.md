@@ -8,11 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: 瞭解如何使用 Azure DevOps 搭配 Azure Dev Spaces 設定持續整合/持續部署
 keywords: Docker、Kubernetes、Azure、AKS、Azure Container Service、容器
-ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a5f232111bd01f707080cc1638970f8dc51e6fa
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81685622"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229324"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>使用 CI/CD 搭配 Azure Dev Spaces
 
@@ -22,10 +23,10 @@ ms.locfileid: "81685622"
 
 雖然此文章將引導您使用 Azure DevOps，但相同的概念適用於 Jenkins、TeamCity 等 CI/CD 系統。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 * [啟用 Azure Dev Spaces 的 Azure Kubernetes Service (AKS) 叢集](../get-started-netcore.md)
 * [已安裝 Azure Dev Spaces CLI](upgrade-tools.md)
-* [Azure DevOps 組織與專案](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
+* [Azure DevOps 組織與專案](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
     * 有 Azure Container Registry [系統管理員帳戶](../../container-registry/container-registry-authentication.md#admin-account)詳細資料可用
 * [授權您的 AKS 叢集從 Azure Container Registry 提取](../../aks/cluster-container-registry-integration.md)
@@ -67,7 +68,7 @@ _dev_ 空間將始終包含存放庫的最新狀態 (即基線)，以便開發�
 > [!Note]
 > 此時 Azure DevOps [新的 YAML 管線建立體驗]__ 預覽功能與建立預先定義的建置管線衝突。 您現在需要停用它才能部署我們預先定義的建置管線。
 
-在 _azds_updates_ 分支中，我們包含了一個簡單的 [Azure 管線 YAML](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema)，它定義了 *mywebapi* 和 *webfrontend* 所需的建置步驟。
+在 _azds_updates_ 分支中，我們包含了一個簡單的 [Azure 管線 YAML](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema)，它定義了 *mywebapi* 和 *webfrontend* 所需的建置步驟。
 
 根據您所選擇的語言，管線 YAML 已在類似於 `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml` 的路徑中簽入
 
@@ -76,7 +77,7 @@ _dev_ 空間將始終包含存放庫的最新狀態 (即基線)，以便開發�
 1. 選取選項以建立**新**的組建管線。
 1. 選取 [ **github** ] 做為來源，必要時請使用您的 GitHub 帳戶進行授權，然後從您的_開發人員空間_範例應用程式存放庫的分支版中選取 [ _azds_updates_ ] 分支。
 1. 選取 [設定**為程式碼**] 或 [ **YAML**] 作為您的範本。
-1. 現在，您將看到建置管線的組態頁面。 如前所述，使用 **...** 按鈕，流覽至**YAML 檔案路徑**的語言特定路徑。 例如： `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml` 。
+1. 現在，您將看到建置管線的組態頁面。 如前所述，使用 **...** 按鈕，流覽至**YAML 檔案路徑**的語言特定路徑。 例如，`samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`。
 1. 移至 [**變數**] 索引標籤。
 1. 手動將 _dockerId_ 新增為變數，該變數是 [Azure Container Registry 系統管理員帳戶](../../container-registry/container-registry-authentication.md#admin-account)的使用者名稱。 (如文章先決條件中所述)
 1. 手動將 _dockerPassword_ 新增為變數，該變數是 [Azure Container Registry 系統管理員帳戶](../../container-registry/container-registry-authentication.md#admin-account)的密碼。 基於安全性考量，請務必將 _dockerPassword_ 指定為祕密 (藉由選取鎖頭圖示)。
@@ -98,7 +99,7 @@ _dev_ 空間將始終包含存放庫的最新狀態 (即基線)，以便開發�
 1. 針對**預設版本**，請**從具有標記的組建管線預設分支選擇 [最新**]。
 1. 將 [**標記**] 保留空白。
 1. 將 [來源別名]**** 設定為 `drop`。 預先定義的發行工作會使用**來源別名**值，因此必須加以設定。
-1. 按一下 **[新增]** 。
+1. 按一下 [新增]。
 1. 現在按一下新建立的 `drop` 成品來源上的閃電圖示，如下所示：
 
     ![發行成品持續部署設定](../media/common/release-artifact-cd-setup.png)

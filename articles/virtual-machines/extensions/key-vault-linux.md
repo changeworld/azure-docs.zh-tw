@@ -8,11 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9b651776ccd8c93271b57eab0efa24c6a79f50a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f209a8b1d7ba5ab4fc213e43d56c04aebc3bd410
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676228"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224259"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>適用於 Linux 的金鑰保存庫虛擬機器擴充功能
 
@@ -57,8 +58,12 @@ Key Vault VM 擴充功能支援下列 Linux 發行版本：
           "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-        }      
-      }
+        },
+        "authenticationSettings": {
+                "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
+                "msiClientId":  <Optional MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+        }
+       }
       }
     }
 ```
@@ -67,6 +72,10 @@ Key Vault VM 擴充功能支援下列 Linux 發行版本：
 > 您觀察到的憑證 URL 格式應該是 `https://myVaultName.vault.azure.net/secrets/myCertName`。
 > 
 > 這是因為 `/secrets` 路徑會傳回完整憑證，私密金鑰也包括在內，`/certificates` 路徑則不會。 可以在這裡找到憑證的詳細資訊：[Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+
+> [!NOTE]
+> 當 VM 具有多個指派的身分識別時，' Authenticationsettings.instance.setsecretkey ' 屬性是選擇性的。
+> 它可讓指定身分識別用來驗證 Key Vault。
 
 
 ### <a name="property-values"></a>屬性值
@@ -83,6 +92,8 @@ Key Vault VM 擴充功能支援下列 Linux 發行版本：
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | 字串 |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字串陣列
+| msiEndpoint | http://169.254.169.254/metadata/identity | 字串 |
+| msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | 字串 |
 
 
 ## <a name="template-deployment"></a>範本部署

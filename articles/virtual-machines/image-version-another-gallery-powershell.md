@@ -1,5 +1,5 @@
 ---
-title: 從另一個資源庫複製映射
+title: 使用 PowerShell 從另一個資源庫複製映射
 description: 使用 Azure PowerShell 從另一個資源庫複製映射。
 author: cynthn
 ms.service: virtual-machines
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796924"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221216"
 ---
-# <a name="copy-an-image-from-another-gallery"></a>從另一個資源庫複製映射
+# <a name="copy-an-image-from-another-gallery-using-powershell"></a>使用 PowerShell 從另一個資源庫複製映射
 
 如果您的組織中有多個資源庫，您可以從儲存在其他資源庫中的影像建立映射。 例如，您可能有開發和測試資源庫，可用於建立和測試新的映射。 當他們準備好在生產環境中使用時，您可以使用此範例將它們複製到生產資源庫。 您也可以使用[Azure CLI](image-version-another-gallery-cli.md)，從另一個資源庫中的映射建立映射。
 
@@ -70,7 +70,7 @@ Get-AzGalleryImageDefinition `
 ```
 
 
-輸出會看起來類似這樣：
+輸出會如下所示：
 
 ```output
 {
@@ -164,4 +164,6 @@ $job.State
 
 從[一般化](vm-generalized-image-version-powershell.md)或[特製](vm-specialized-image-version-powershell.md)化映射版本建立 VM。
 
-[Azure 映射產生器（預覽）](./linux/image-builder-overview.md)可協助自動建立映射版本，您甚至可以使用它來更新和[建立現有映射版本的新映射版本](./linux/image-builder-gallery-update-image-version.md)。 
+[Azure 映射產生器 (preview) ](./linux/image-builder-overview.md)可以協助自動建立映射版本，您甚至可以使用它來更新和[建立現有映射版本的新映射版本](./linux/image-builder-gallery-update-image-version.md)。 
+
+如需有關如何提供採購方案資訊的詳細資訊，請參閱[在建立映射時提供 Azure Marketplace 購買方案資訊](marketplace-images.md)。

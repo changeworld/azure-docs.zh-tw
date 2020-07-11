@@ -3,7 +3,7 @@ title: Microsoft Azure 上的 Oracle 解決方案 | Microsoft Docs
 description: 深入了解可在 Microsoft Azure 上部署 Oracle 應用程式和解決方案的選項，包括完全在 Azure 基礎結構上執行，或者搭配 Oracle 雲端基礎結構 (OCI) 使用跨雲端的連線能力。
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
+author: rgardler
 tags: azure-resource-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -11,12 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
-ms.author: borisb
-ms.openlocfilehash: 7c15c96305cc1220d9ca3cdb9062d7ea7acb4e86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: e9a61c631e8a74bbbd58bb991848fcf60f81ff6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85098940"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224429"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 應用程式和解決方案概觀
 
@@ -54,7 +55,7 @@ ms.locfileid: "85098940"
 
 * 使用[Azure Site Recovery](../../../site-recovery/site-recovery-overview.md)來協調和管理 Azure 中 Oracle Linux vm 和實體伺服器的嚴重損壞修復。 
 
-* 使用[Azure VMware Solution](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)，在 Azure 中啟用 Oracle REAL Application 叢集（RAC）。
+* 使用[Azure VMware Solution](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)，在 AZURE 中啟用 (RAC) 的 Oracle Real 應用程式叢集。
 
 ## <a name="backup-oracle-workloads"></a>備份 Oracle 工作負載
 
@@ -85,7 +86,7 @@ ms.locfileid: "85098940"
 
 ### <a name="set-up-oracle-databases-in-oci"></a>在 OCI 中設定 Oracle 資料庫
 
-使用 Oracle Database 雲端服務（自發資料庫、RAC、Exadata、DBaaS、單一節點）搭配在 Azure 中執行的 Oracle 軟體。 深入了解 [OCI 資料庫選項](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
+使用 Oracle Database 雲端服務 (自發資料庫、RAC、Exadata、DBaaS、單一節點) 搭配在 Azure 中執行的 Oracle 軟體。 深入了解 [OCI 資料庫選項](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
  
 
 ## <a name="licensing"></a>授權

@@ -3,8 +3,8 @@ title: 在 Azure 上設計和實作 Oracle 資料庫 | Microsoft Docs
 description: 在 Azure 環境中設計和實作 Oracle 資料庫。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: b553256d3e6a498e36e8b5c98d90c6c14b10df75
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687531"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224565"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中設計和實作 Oracle 資料庫
 
@@ -45,17 +46,17 @@ ms.locfileid: "81687531"
 > 
 > |  | **內部部署實作** | **Azure 實作** |
 > | --- | --- | --- |
-> | **網路功能** |LAN/WAN  |SDN (軟體定義網路)|
-> | **安全性群組** |IP/連接埠限制工具 |[網路安全性群組（NSG）](https://azure.microsoft.com/blog/network-security-groups) |
+> | **網路** |LAN/WAN  |SDN (軟體定義網路)|
+> | **安全性群組** |IP/連接埠限制工具 |[ (NSG) 的網路安全性群組](https://azure.microsoft.com/blog/network-security-groups) |
 > | **恢復功能** |MTBF (平均失敗時間) |MTTR (平均復原時間)|
 > | **規劃的維護** |修補/升級|[可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (Azure 所管理的修補/升級) |
 > | **Resource** |專用  |與其他用戶端共用|
 > | **區域** |資料中心 |[區域配對](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Storage** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **縮放比例** |垂直調整 |水平調整|
+> | **儲存體** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **調整** |垂直調整 |水平調整|
 
 
-### <a name="requirements"></a>規格需求
+### <a name="requirements"></a>需求
 
 - 決定資料庫大小和成長率。
 - 決定 IOPS 需求，您可以根據 Oracle AWR 報表或其他網路監視工具進行評估。
@@ -71,11 +72,11 @@ ms.locfileid: "81687531"
 
 ### <a name="generate-an-awr-report"></a>產生 AWR 報表
 
-如果您目前已有 Oracle 資料庫，且打算移轉至 Azure，您會有數個選項。 如果您有 Oracle 實例的[診斷套件](https://www.oracle.com/technetwork/oem/pdf/511880.pdf)，您可以執行 oracle AWR 報表來取得計量（IOPS、Mbps、gib 等等）。 然後根據收集到的計量選擇 VM。 或者，連絡基礎結構小組，取得類似的資訊。
+如果您目前已有 Oracle 資料庫，且打算移轉至 Azure，您會有數個選項。 如果您有 Oracle 實例的[診斷套件](https://www.oracle.com/technetwork/oem/pdf/511880.pdf)，您可以執行 oracle AWR 報表，以取得 (IOPS、Mbps、gib 等) 的計量。 然後根據收集到的計量選擇 VM。 或者，連絡基礎結構小組，取得類似的資訊。
 
 您可以考慮在一般和尖峰工作負載期間執行 AWR 報表，以進行比較。 根據這些報表，您可以根據平均工作負載或最大工作負載來調整 VM 大小。
 
-以下是如何產生 AWR 報表的範例（如果您目前的安裝有一個，請使用您的 Oracle Enterprise Manager 產生 AWR 報表）：
+以下是如何產生 AWR 報表 (使用您的 Oracle Enterprise Manager 產生 AWR 報表的範例，如果您目前的安裝有一個) ：
 
 ```bash
 $ sqlplus / as sysdba
@@ -143,7 +144,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 - 與內部部署相較之下，網路延遲較高。 減少網路來回行程可以大幅改善效能。
 - 若要減少來回行程，請合併相同虛擬機器上具有高交易或 “Chatty” 應用程式的應用程式。
 - 使用具有[加速網路](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)的虛擬機器，以獲得更好的網路效能。
-- 針對特定 Linux distrubutions，請考慮啟用[修剪/](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)取消對應支援。
+- 針對特定 Linux 散發套件，請考慮啟用[修剪/](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)取消對應支援。
 - 在個別的虛擬機器上安裝[Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 。
 - 在 linux 上，預設不會啟用大量頁面。 請考慮啟用龐大的頁面，並 `use_large_pages = ONLY` 在 Oracle DB 上設定。 這可能有助於提升效能。 您可以在[這裡](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到詳細資訊。
 

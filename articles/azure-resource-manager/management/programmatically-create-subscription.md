@@ -1,17 +1,17 @@
 ---
 title: 以程式設計方式建立 Azure 訂用帳戶
 description: 瞭解如何以程式設計方式建立額外的 Azure 訂用帳戶。
-author: amberbhargava
+author: anuragdalmia
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: b53c81a52c06780378e45b2141cbef452b4d363a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7fac201de2fd623058eb5771e194ae697f879ee8
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170627"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224157"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>以程式設計方式建立 Azure 訂用帳戶 (預覽) 
 
@@ -156,7 +156,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | 是      | String | 訂用帳戶的供應項目方案。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
 | `owners`      | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「RBAC 擁有者」之使用者的「物件識別碼」。  |
 
-在回應中，您會取得 `Location` 用於監視的 url。 當訂用帳戶建立完成時，[取得 `Location` url] 將會傳回 `subscriptionLink` 具有訂用帳戶識別碼的物件。 如需詳細資訊，請參閱訂用帳戶[API 檔](https://docs.microsoft.com/rest/api/subscription/)
+在回應中，在標頭中 `Location` ，您會得到一個 url，讓您查詢訂閱建立作業的狀態。 當訂用帳戶建立完成時，[取得 `Location` url] 將會傳回 `subscriptionLink` 具有訂用帳戶識別碼的物件。 如需詳細資訊，請參閱訂用帳戶[API 檔](https://docs.microsoft.com/rest/api/subscription/)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

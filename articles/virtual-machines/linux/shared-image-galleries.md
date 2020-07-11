@@ -1,20 +1,20 @@
 ---
 title: 使用共用資源庫共用 VM 映像
 description: 了解如何使用共用映像資源庫，跨組織共用 VM 映像。
-author: cynthn
+author: axayjo
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 05/04/2020
-ms.author: cynthn
-ms.reviewer: akjosh
-ms.openlocfilehash: 7513e0256dc1b65a31ab9dff11f1495ea35acb71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: akjosh
+ms.reviewer: cynthn
+ms.openlocfilehash: 69ac505b49fdf6525e7f25bcf4e78e4957d12a5d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82789025"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221627"
 ---
 # <a name="shared-image-galleries-overview"></a>共用映像資源庫概觀
 

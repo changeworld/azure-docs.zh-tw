@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 89a5fa0be104c3a7b7e035f82d2fed80d4781701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a8fff374edab7e307cd6dc8fb9aa4a4f974d09c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511981"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224684"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>針對 Windows 中的 Azure 檔案服務問題進行疑難排解
 
@@ -46,7 +46,7 @@ Windows 8、Windows Server 2012 和更新版本的每個系統交涉都要求包
 
 ### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>原因3：使用以身分識別為基礎的驗證時，共用層級的許可權不正確
 
-如果使用者使用 Active Directory （AD）或 Azure Active Directory Domain Services （Azure AD DS）驗證來存取 Azure 檔案共用，則如果共用層級許可權不正確，檔案共用的存取將會失敗並出現「拒絕存取」錯誤。 
+如果使用者使用 Active Directory 來存取 Azure 檔案共用 (AD) 或 Azure Active Directory Domain Services (Azure AD DS) 驗證，如果共用層級許可權不正確，檔案共用的存取將會失敗並出現「拒絕存取」錯誤。 
 
 ### <a name="solution-for-cause-3"></a>原因 3 的解決方案
 
@@ -70,27 +70,31 @@ Windows 8、Windows Server 2012 和更新版本的每個系統交涉都要求包
 若要使用 `Test-NetConnection` Cmdlet，必須安裝 Azure PowerShell 模組，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)以取得詳細資訊。 請記得以儲存體帳戶的相關名稱取代 `<your-storage-account-name>` 和 `<your-resource-group-name>`。
 
    
-    $resourceGroupName = "<your-resource-group-name>"
-    $storageAccountName = "<your-storage-account-name>"
+```azurepowershell
+$resourceGroupName = "<your-resource-group-name>"
+$storageAccountName = "<your-storage-account-name>"
 
-    # This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
-    # already logged in.
-    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+# This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
+# already logged in.
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
-    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
-    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
-    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
+# The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
+# $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
+# or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
+Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
+```
     
 如果連線成功，您應會看見下列輸出：
     
   
-    ComputerName     : <your-storage-account-name>
-    RemoteAddress    : <storage-account-ip-address>
-    RemotePort       : 445
-    InterfaceAlias   : <your-network-interface>
-    SourceAddress    : <your-ip-address>
-    TcpTestSucceeded : True
+```azurepowershell
+ComputerName     : <your-storage-account-name>
+RemoteAddress    : <storage-account-ip-address>
+RemotePort       : 445
+InterfaceAlias   : <your-network-interface>
+SourceAddress    : <your-ip-address>
+TcpTestSucceeded : True
+```
  
 
 > [!Note]  
@@ -127,11 +131,11 @@ Azure 檔案儲存體也支援 SMB 以外的 REST。 REST 存取會透過連接�
   **HKLM\SYSTEM\CurrentControlSet\Control\Lsa**
 
 <a id="error1816"></a>
-## <a name="error-1816-not-enough-quota-is-available-to-process-this-command-when-you-copy-to-an-azure-file-share"></a>當您複製到 Azure 檔案共用時發生錯誤 1816「配額不足無法處理此命令」
+## <a name="error-1816---not-enough-quota-is-available-to-process-this-command"></a>錯誤 1816-沒有足夠的配額可用來處理此命令
 
 ### <a name="cause"></a>原因
 
-當您到達同時開啟的控制代碼上限時 (此為針對掛接檔案共用之電腦上的檔案所允許的上限)，即會發生錯誤 1816。
+當您達到 Azure 檔案共用上的檔案或目錄所允許的並行開啟控制碼上限時，就會發生錯誤1816。 如需詳細資訊，請參閱 [Azure 檔案服務擴展目標](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets)。
 
 ### <a name="solution"></a>解決方案
 
@@ -301,11 +305,11 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
  
 例如，您可以將它設定為 0x100000，然後看看效能是否有變好。
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>啟用 Azure Active Directory 網域服務（AAD DS）驗證時發生錯誤，Azure 檔案儲存體「找不到具有租使用者識別碼 AAD 租使用者識別碼的作用中租使用者」
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>啟用 Azure Active Directory 網域服務 (AAD DS) 驗證時發生錯誤 AadDsTenantNotFound，Azure 檔案儲存體「找不到使用租使用者識別碼 aad 租使用者識別碼的 Active tenant」
 
 ### <a name="cause"></a>原因
 
-當您嘗試在未于相關聯訂用帳戶的 AAD 租使用者上建立[Aad 網域服務（AAD DS）](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)的儲存體帳戶[Azure 檔案儲存體上啟用 AZURE ACTIVE DIRECTORY DOMAIN SERVICES （Azure AD DS）驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)時，就會發生錯誤 AadDsTenantNotFound。  
+當您嘗試在儲存體帳戶上[啟用 Azure Active Directory Domain Services (AZURE AD DS) 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)，但未在相關聯訂用帳戶的 aad 租使用者上建立[aad DS Azure 檔案儲存體](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)時，就會發生錯誤 AadDsTenantNotFound。  
 
 ### <a name="solution"></a>解決方案
 
@@ -313,7 +317,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>錯誤「發生系統錯誤1359。 啟用 Azure Active Directory 網域服務（AAD DS）驗證的檔案共用上，收到透過 SMB 存取的內部錯誤
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>錯誤「發生系統錯誤1359。 Azure Active Directory 網域服務 (AAD DS) 驗證已啟用時，透過 SMB 對檔案共用的存取所收到的內部錯誤
 
 ### <a name="cause"></a>原因
 
@@ -342,14 +346,14 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 Cmdlet 會依序執行下列檢查，並提供失敗的指引：
 1. CheckPort445Connectivity：檢查是否已針對 SMB 連線開啟埠445
 2. CheckDomainJoined：驗證用戶端電腦是否已加入 AD 網域
-3. CheckADObject：確認 Active Directory 中有代表儲存體帳戶的物件，而且具有正確的 SPN （服務主體名稱）。
+3. CheckADObject：確認 Active Directory 中有代表儲存體帳戶的物件，而且具有正確的 SPN (服務主體名稱) 。
 4. CheckGetKerberosTicket：嘗試取得 Kerberos 票證以連接到儲存體帳戶 
 5. CheckADObjectPasswordIsCorrect：確定在代表儲存體帳戶的 AD 身分識別上設定的密碼與儲存體帳戶 kerb1 或 kerb2 金鑰相符
 6. CheckSidHasAadUser：檢查已登入的 AD 使用者是否已同步處理至 Azure AD。 如果您想要查看特定 AD 使用者是否同步處理到 Azure AD，您可以在輸入參數中指定-UserName 和-Domain。
 7. CheckAadUserHasSid：檢查 Azure AD 的使用者在 AD 中是否有 SID，這項檢查需要使用者輸入具有參數-ObjectId 之 Azure AD 使用者的物件識別碼。 
 8. CheckStorageAccountDomainJoined：檢查儲存體帳戶的屬性，以查看 AD 驗證是否已啟用，以及是否已填入帳戶的 AD 屬性。
 
-## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>無法使用 Windows File Explorer 設定目錄/檔案層級許可權（Windows Acl）
+## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>無法使用 Windows File Explorer 設定目錄/檔案層級許可權 (Windows Acl) 
 
 ### <a name="symptom"></a>徵狀
 

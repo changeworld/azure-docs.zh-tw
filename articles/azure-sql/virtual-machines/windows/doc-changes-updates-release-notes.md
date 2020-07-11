@@ -11,17 +11,26 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: 43b2a02acc04a5c81b9e7bfbe3bfb1551b48ed52
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9f41cb11960dbe9487231f14b005376261075a83
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964612"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231500"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 文件變更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文會摘要說明 [Azure 虛擬機器上 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 最近版本中與新功能和改善項目建立關聯的文件變更。 
+
+## <a name="july-2020"></a>2020 年 7 月
+
+
+| 變更 | 詳細資料 |
+| --- | --- |
+| **將記錄遷移至 ultra 磁片** | 瞭解如何將[您的記錄檔遷移至 ultra 磁片](storage-migrate-to-ultradisk.md)，以利用高效能和低延遲。 | 
+
+
 
 
 ## <a name="june-2020"></a>2020 年 6 月
@@ -29,8 +38,8 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 
 | 變更 | 詳細資料 |
 | --- | --- |
-| **分散式網路名稱（DNN）** | Windows Server 2016 上的 SQL Server 2019 + 現在會使用[分散式網路名稱](hadr-distributed-network-name-dnn-configure.md)（而不是使用 Azure Load Balancer），預覽將流量路由傳送到容錯移轉叢集實例（FCI）的支援。 這項支援可簡化和簡化連線到 Azure 中的高可用性（HA）解決方案。 | 
-| **FCI 與 Azure 共用磁片** | 現在可以在 Windows Server 2016 + 虛擬機器上使用具有 SQL Server 2019 的[Azure 共用磁片](failover-cluster-instance-azure-shared-disks-manually-configure.md)，來部署您的[容錯移轉叢集實例（FCI）](failover-cluster-instance-overview.md) 。 |
+| **分散式網路名稱 (DNN) ** | Windows Server 2016 上的 SQL Server 2019 + 現在預覽支援使用[分散式網路名稱](hadr-distributed-network-name-dnn-configure.md)（而不是使用 Azure Load Balancer），將流量路由傳送至容錯移轉叢集實例 (FCI) 。 這項支援可讓您在 Azure 中簡化和簡化與高可用性 (HA) 解決方案的連接。 | 
+| **FCI 與 Azure 共用磁片** | 現在可以在 Windows Server 2016 + 虛擬機器上使用具有 SQL Server 2019 的[Azure 共用磁片](failover-cluster-instance-azure-shared-disks-manually-configure.md)，將您的[容錯移轉叢集實例部署 (FCI) ](failover-cluster-instance-overview.md) 。 |
 | **重新組織的 FCI 檔** | 針對[Azure vm 上 SQL Server 的容錯移轉叢集實例](failover-cluster-instance-overview.md)，其相關檔已重寫並重新組織，以供清楚瞭解。 我們已分隔一些設定內容，像是叢集設定的[最佳做法](hadr-cluster-best-practices.md)、如何準備[虛擬機器以進行 SQL Server FCI](failover-cluster-instance-prepare-vm.md)，以及如何設定[Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md)。 | 
 | &nbsp; | &nbsp; |
 

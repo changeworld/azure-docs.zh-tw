@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 7db8dcc87606e5c58ddac8f609d1538989af5ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d41893d734037e466ad786641fed98c461adcfc
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689294"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231806"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>使用 Azure 入口網站設定公用 IP 位址的路由喜好設定
 
-本文說明如何透過 ISP 網路 (**網際網路**選項) 為公用 IP 位址設定路由喜好設定。 建立公用 IP 位址之後，您可以將其與下列 Azure 資源建立關聯，以取得連至網際網路的輸入和輸出流量：
+本文說明如何透過 ISP 網路 (**網際網路**選項) 為公用 IP 位址設定[路由喜好](https://docs.microsoft.com/azure/virtual-network/routing-preference-overview)設定。 建立公用 IP 位址之後，您可以將其與下列 Azure 資源建立關聯，以取得連至網際網路的輸入和輸出流量：
 
 * 虛擬機器
 * 虛擬機器擴展集

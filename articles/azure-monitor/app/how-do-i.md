@@ -3,12 +3,12 @@ title: 我如何在 Azure Application Insights 中... | Microsoft Docs
 description: Application Insights 中的常見問題集。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110227"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224463"
 ---
 # <a name="how-do-i--in-application-insights"></a>我如何在 Application Insights 中...？
 ## <a name="get-an-email-when-"></a>... 時收到電子郵件
@@ -18,7 +18,7 @@ ms.locfileid: "86110227"
 ### <a name="email-if-my-site-is-overloaded"></a>我的網站多載時寄送電子郵件
 針對 **伺服器回應時間** 設定 [警示](../../azure-monitor/platform/alerts-log.md)。 介於 1 到 2 秒之間的閾值應該會運作。
 
-![](./media/how-do-i/030-server.png)
+![顯示如何在伺服器回應時間設定警示的螢幕擷取畫面。](./media/how-do-i/030-server.png)
 
 您的 app 也可能會藉由傳回失敗碼顯示資源耗盡的徵兆。 針對 [失敗的要求] 設定警示。
 
@@ -53,11 +53,11 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 在 [計量總管](../../azure-monitor/platform/metrics-charts.md) 中建立圖表來查看您的警示：
 
-![](./media/how-do-i/010-alarm.png)
+![顯示如何在 [計量瀏覽器] 中建立圖表來查看您的警示的螢幕擷取畫面。](./media/how-do-i/010-alarm.png)
 
 現在設定警示在計量一段短時間高於中間值時引發：
 
-![](./media/how-do-i/020-threshold.png)
+![螢幕擷取畫面：顯示如何設定當計量在短時間內超過中間值時引發警示。](./media/how-do-i/020-threshold.png)
 
 將平均期間設定為最小值。
 
@@ -106,11 +106,11 @@ Or
 
 * 搜尋特定使用者識別碼
 
-![](./media/how-do-i/110-search.png)
+![顯示特定使用者識別碼 searchin 選項的螢幕擷取畫面。](./media/how-do-i/110-search.png)
 
 * 篩選匿名或已驗證使用者的計量
 
-![](./media/how-do-i/115-metrics.png)
+![顯示篩選 metrixs 為匿名或已驗證使用者的螢幕擷取畫面。](./media/how-do-i/115-metrics.png)
 
 ## <a name="modify-property-names-or-values"></a>修改屬性名稱或值
 建立 [篩選器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。 這可讓您先修改或篩選遙測，然後再將它從您的應用程式傳送至 Application Insights。

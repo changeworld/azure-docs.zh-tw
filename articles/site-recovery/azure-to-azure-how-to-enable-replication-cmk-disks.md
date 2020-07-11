@@ -1,25 +1,25 @@
 ---
 title: 在 Azure Site Recovery 中為加密的 Azure Vm 啟用複寫
-description: 本文說明如何使用 Site Recovery，為已啟用客戶管理的金鑰（CMK）磁片從一個 Azure 區域複寫到另一個虛擬機器的 Vm 設定複寫。
+description: 本文說明如何使用 Site Recovery，為具有客戶管理之金鑰的 Vm 設定複寫 (CMK) 已從一個 Azure 區域將磁片啟用到另一個。
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 07/10/2020
 ms.author: mayg
-ms.openlocfilehash: 1e4dcd8847d7d79d816d80b453a37f58c45417fd
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 92b35284fd7bbb3d4f1196ee0d9bae4ce42d7c9e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135739"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224106"
 ---
-# <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>使用客戶管理的金鑰（CMK）啟用的磁片來複寫機器
+# <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>使用客戶管理的金鑰複寫電腦 (CMK) 啟用的磁片
 
-本文說明如何將 Azure Vm 與客戶管理的金鑰（CMK）啟用的受控磁片，從一個 Azure 區域複寫到另一個。
+本文說明如何使用客戶管理的金鑰複寫 Azure Vm， (CMK) 啟用的受控磁片，從一個 Azure 區域到另一個。
 
 ## <a name="prerequisite"></a>必要條件
-您必須先在目標訂用帳戶的目的地區域中建立磁片加密集，才能針對已啟用 CMK 的受控磁片的虛擬機器啟用複寫。
+針對已啟用 CMK 的受控磁片的虛擬機器啟用複寫之前，您必須先在目標訂用帳戶的目的地區域中，建立磁片加密集 (s) 。
 
 ## <a name="enable-replication"></a>啟用複寫
 
@@ -41,11 +41,11 @@ ms.locfileid: "86135739"
     - **目標訂**用帳戶：用於嚴重損壞修復的目標訂用帳戶。 根據預設，目標訂用帳戶會與來源訂用帳戶相同。
     - **目標資源群組**：所有已複寫虛擬機器所屬的資源群組。 根據預設，Site Recovery 會在目的地區域中建立新的資源群組。 名稱會取得 `asr` 尾碼。 如果 Azure Site Recovery 所建立的資源群組已經存在，就會重複使用它。 您也可以選擇進行自訂，如下一節所示。 目標資源群組的位置可以是任何 Azure 區域，但裝載來源虛擬機器所在的區域除外。
     - **目標虛擬網路**：根據預設，Site Recovery 會在目的地區域中建立新的虛擬網路。 名稱會取得 `asr` 尾碼。 它會對應至您的來源網路，並用於任何未來的保護。 [深入了解](./azure-to-azure-network-mapping.md)網路對應。
-    - **目標儲存體帳戶（如果您的來源 vm 不使用受控磁片）**：根據預設，Site Recovery 會藉由模擬您的來源 vm 儲存體設定來建立新的目標儲存體帳戶。 如果儲存體帳戶已經存在，就會重複使用它。
-    - **複本受控磁片（如果您的來源 VM 使用受控磁片）**： Site Recovery 會在目的地區域中建立新的複本受控磁片，以反映來源 vm 的受控磁片與來源 vm 的受控磁片相同的儲存體類型（標準或高階）。
+    - **目標儲存體帳戶 (如果來源 vm 未使用受控磁片) **：根據預設，Site Recovery 會藉由模擬您的來源 vm 儲存體設定來建立新的目標儲存體帳戶。 如果儲存體帳戶已經存在，就會重複使用它。
+    - **複本受控磁片 (如果您的來源 VM 使用受控磁片) **： Site Recovery 會在目的地區域中建立新的複本受控磁片，以將相同儲存體類型的來源 vm 受控磁片與來源 vm 的受控磁片 (標準或 premium) 鏡像。
     - 快取**儲存體帳戶**： Site Recovery 需要在來源區域中有額外的儲存體帳戶（稱為快取*儲存體*）。 系統會追蹤來源 Vm 上的所有變更，並將其傳送至快取儲存體帳戶。 然後，它們會複寫到目標位置。
     - **可用性設定組**：根據預設，Site Recovery 會在目的地區域中建立新的可用性設定組。 名稱具有 `asr` 尾碼。 如果 Site Recovery 所建立的可用性設定組已經存在，則會重複使用。
-    - **磁片加密集（DES）**： Site Recovery 需要將磁片加密組用於複本和目標受控磁片。 啟用複寫之前，您必須先在目標訂用帳戶和目的地區域中預先建立 DES。 根據預設，未選取 DES。 您必須按一下 [自訂] 以選擇每個來源磁片的 DES。
+    - **磁片加密設定 (DES) **： Site Recovery 需要將磁片加密集 (s) 用於複本和目標受控磁片。 啟用複寫之前，您必須先在目標訂用帳戶和目的地區域中預先建立 DES。 根據預設，未選取 DES。 您必須按一下 [自訂] 以選擇每個來源磁片的 DES。
     - **複寫原則**：定義復原點保留歷程記錄和應用程式一致快照集頻率的設定。 根據預設，Site Recovery 會使用*24 小時*的預設設定來建立新的複寫原則，以用於復原點保留，而*60 分鐘*會用於應用程式一致快照集頻率。
 
     ![為已啟用 CMK 之磁片的機器啟用複寫](./media/azure-to-azure-how-to-enable-replication-cmk-disks/cmk-enable-dr.png)
@@ -62,7 +62,7 @@ ms.locfileid: "86135739"
     - 針對**可用性設定組**，您可以將可用性設定組設定新增至 VM （如果它們是來源區域中可用性設定組的一部分）。
     - 針對 [**目標儲存體帳戶**]，選取要使用的帳戶。
 
-3. 選取 [儲存體加密設定] 旁的 [**自訂**]，以針對每個已啟用客戶管理的金鑰（CMK）的來源受控磁片選取目標 DES。 選取時，您也可以查看與 DES 相關聯的目標金鑰保存庫。
+3. 選取 [儲存體加密設定] 旁的 [**自訂**]，以選取每個客戶管理金鑰的目標 DES (CMK) 啟用的來源受控磁片。 選取時，您也可以查看與 DES 相關聯的目標金鑰保存庫。
 
 4. 選取 [**建立目標資源**] [  >  **啟用**複寫]。
 5. 在 Vm 啟用複寫之後，您可以在 [複寫的**專案**] 底下檢查 vm 的健全狀態。
@@ -76,8 +76,13 @@ ms.locfileid: "86135739"
 
 * 我已在現有複寫的專案上啟用 CMK，如何確保 CMK 也會套用到目的地區域？
 
-    您可以找出複本受控磁片的名稱（由 Azure Site Recovery 在目的地區域中建立），並將 DES 連結到此複本磁片。 不過，一旦您連接，就無法在 [磁片] 分頁中看到 DES 詳細資料。 或者，您可以選擇停用 VM 的複寫，然後再次啟用它。 它會確保您在複寫專案的 [磁片] 分頁中看到 DES 和金鑰保存庫詳細資料。
+    您可以找出 [目的地區域] 中 Azure Site Recovery 所建立之複本受控磁片 (的名稱) 並將 DES 連結到此複本磁片。 不過，一旦您連接，就無法在 [磁片] 分頁中看到 DES 詳細資料。 或者，您可以選擇停用 VM 的複寫，然後再次啟用它。 它會確保您在複寫專案的 [磁片] 分頁中看到 DES 和金鑰保存庫詳細資料。
 
 * 我已將啟用 CMK 的新磁片新增至複寫的專案。 如何使用 Azure Site Recovery 來複寫此磁片？
 
     不支援將新的 CMK 啟用磁片加入至現有的複寫專案。 請停用複寫，然後再次為虛擬機器啟用複寫。
+
+* 我已啟用平臺和客戶管理的金鑰，如何保護我的磁片？
+
+    Site Recovery 會版本同時啟用平臺和客戶管理金鑰的雙重加密。 請遵循本文中的指示來保護您的機器。 您必須事先在目的地區域中建立已啟用雙加密功能的 DES。 針對這類 VM 啟用複寫時，您可以將此 DES 提供給 Site Recovery。
+

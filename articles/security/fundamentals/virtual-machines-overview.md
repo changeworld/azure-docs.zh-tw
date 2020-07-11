@@ -16,11 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: a1726e18ea8c1ba86d77d7b9ca3d50c444620361
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77657158"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229358"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虛擬機器安全性概觀
 本文提供可與虛擬機器搭配使用的核心 Azure 安全性功能的總覽。
@@ -60,7 +61,7 @@ Azure 虛擬機器讓您能夠有彈性地進行虛擬化，而不需購買並�
 * [新一代的保護](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
 * [端點保護和回應](/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
 * [自動化調查和補救](/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
-* [安全分數](/windows/security/threat-protection/microsoft-defender-atp/configuration-score)
+* [安全分數](/windows/security/threat-protection/microsoft-defender-atp/tvm-microsoft-secure-score-devices)
 * [進階獵狩](/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
 * [管理和 API](/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Microsoft 威脅防護](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
@@ -78,7 +79,7 @@ Azure 虛擬機器讓您能夠有彈性地進行虛擬化，而不需購買並�
 
 深入了解：
 
-* [什麼是 Azure 金鑰保存庫？](/azure/key-vault/key-vault-overview)
+* [什麼是 Azure Key Vault？](/azure/key-vault/key-vault-overview)
 * [Azure 金鑰保存庫部落格](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>虛擬機器磁碟加密
@@ -98,7 +99,7 @@ Azure 備份是可調式解決方案，可以不需成本地協助保護您的�
 
 深入了解：
 
-* [何謂 Azure 備份？](/azure/backup/backup-introduction-to-azure-backup)
+* [什麼是 Azure 備份？](/azure/backup/backup-introduction-to-azure-backup)
 * [Azure 備份服務常見問題](/azure/backup/backup-azure-backup-faq)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
@@ -157,9 +158,9 @@ Azure 虛擬機器經過 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 及其他重�
 
 ## <a name="confidential-computing"></a>機密運算
 
-雖然就技術上而言，機密運算並不是虛擬機器安全性的一部分，虛擬機器安全性的主題仍位於「運算」安全性這個更高層級的主題之內。 機密運算位於「運算」安全性這個類別之內。
+雖然機密運算在技術上並不是虛擬機器安全性的一部分，但虛擬機器安全性的主題屬於較高層級的「計算」安全性主旨。 機密運算屬於「計算」安全性類別。
 
-機密運算能確保資料「暴露在外」(這對於有效進行處理來說是必要的) 時，該資料會被保護在受信任的執行環境 https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE，也稱為保護區) 之內，其範例如下圖所示。  
+機密計算可確保當資料處於「清楚」狀態時，這是有效率處理所需的資料，而在受信任的執行環境內會受到保護， https://en.wikipedia.org/wiki/Trusted_execution_environment (為記憶體保護區) ，例如下圖所示的範例。  
 
 TEE 能確保沒有任何方法可以從外部檢視資料或內部作業，就算是使用偵錯工具也一樣。 它們甚至能確保只有獲授權的程式碼可以存取該資料。 如果程式碼被修改或竄改，系統就會拒絕作業並停用環境。 TEE 能在位於其中的程式碼執行期間，強制執行這些保護。
 

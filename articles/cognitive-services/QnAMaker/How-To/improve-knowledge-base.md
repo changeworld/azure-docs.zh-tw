@@ -3,12 +3,12 @@ title: 改善知識庫 - QnA Maker
 description: 利用主動式學習來改善知識庫的品質。 在不移除或變更現有問題的情況下，進行審查、接受或拒絕、新增。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 88ccbc52e0eb3447d0b99cac9ba41761e292a6fd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650770"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231772"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知識庫中的主動式學習建議問題
 
@@ -71,7 +71,7 @@ Bot 或其他用戶端應用程式應該使用下列架構流程來使用主動�
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>使用分數屬性和商務邏輯來取得顯示使用者的答案清單
 
-當用戶端應用程式（例如聊天機器人）收到回應時，就會傳回前3個問題。 使用 `score` 屬性來分析分數之間的近距離。 這個鄰近範圍是由您自己的商務邏輯所決定。
+當用戶端應用程式 (例如聊天機器人) 收到回應時，就會傳回前3個問題。 使用 `score` 屬性來分析分數之間的近距離。 這個鄰近範圍是由您自己的商務邏輯所決定。
 
 ```json
 {
@@ -131,8 +131,8 @@ Content-Type: application/json
 |--|--|--|--|
 |URL 路由參數|知識庫識別碼|字串|測試您知識庫的 GUID。|
 |自訂子域|QnAMaker 資源名稱|字串|資源名稱會用來做為 QnA Maker 的自訂子域。 這會在您發佈知識庫之後的 [設定] 頁面上提供。 它會列為 `host` 。|
-|Header|Content-Type|字串|傳送至 API 的本文媒體類型。 預設值為：`application/json`|
-|Header|授權|字串|您的端點金鑰 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|標頭|Content-Type|字串|傳送至 API 的本文媒體類型。 預設值為：`application/json`|
+|標頭|授權|字串|您的端點金鑰 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |張貼本文|JSON 物件|JSON|訓練意見反應|
 
 JSON 主體有數個設定：
@@ -142,7 +142,7 @@ JSON 主體有數個設定：
 |`feedbackRecords`|array|意見反應清單。|
 |`userId`|字串|接受建議問題之人員的使用者識別碼。 使用者識別碼格式是由您負責。 例如，電子郵件地址可以是您架構中的有效使用者識別碼。 選擇性。|
 |`userQuestion`|字串|使用者查詢的確切文字。 必要。|
-|`qnaID`|數字|問題的識別碼，可在[GenerateAnswer 回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
+|`qnaID`|number|問題的識別碼，可在[GenerateAnswer 回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
 
 範例 JSON 主體如下所示：
 
@@ -199,7 +199,7 @@ JSON 主體有數個設定：
 * 判斷查詢是否應該用於主動式學習
 * 將查詢傳送回 QnA Maker 的訓練 API 以進行主動式學習
 
-在[Azure Bot 範例](https://aka.ms/activelearningsamplebot)中，這兩個活動都已經過編寫。
+在[Azure Bot 範例](https://github.com/microsoft/BotBuilder-Samples)中，這兩個活動都已經過編寫。
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>使用 Bot Framework 4.x 訓練 API 的範例 c # 程式碼
 
@@ -264,7 +264,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 }
 ```
 
-### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>使用 Bot Framework 4.x 訓練 API 的範例 node.js 程式碼
+### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>使用 Bot Framework 4.x 訓練 API 的範例 Node.js 程式碼
 
 下列程式碼說明如何使用定型 API 將資訊傳送回 QnA Maker。
 
@@ -334,7 +334,7 @@ async callTrain(stepContext){
 
 
 
-## <a name="best-practices"></a>最佳作法
+## <a name="best-practices"></a>最佳做法
 
 如需使用主動式學習時的最佳做法，請參閱[最佳做法](../Concepts/best-practices.md#active-learning)。
 

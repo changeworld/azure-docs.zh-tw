@@ -4,11 +4,12 @@ description: 了解 Azure Kubernetes Service (AKS) 中的調整功能，包括�
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 83cbaf49f26a53518b1aa1e211b61af1959642a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c9c3cf159d67d2f4acaaab943ecf9d99263ae55
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465332"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223834"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中調整應用程式的選項
 
@@ -79,7 +80,7 @@ Kubernetes 會使用水平 Pod 自動調整程式 (HPA) 來監視資源需求，
 
 ![Kubernetes 高載調整至 ACI](media/concepts-scale/burst-scaling.png)
 
-ACI 可讓您快速部署容器執行個體，不需要額外的基礎結構成本。 當您與 AKS 連線時，ACI 會變成您 AKS 叢集的安全邏輯擴充功能。 [虛擬節點][virtual-nodes-cli]元件是以[virtual Kubelet][virtual-kubelet]為基礎，安裝在您的 AKS 叢集中，以虛擬 Kubernetes 節點的形式呈現 ACI。 接著，Kubernetes 可以排程透過虛擬節點以 ACI 執行個體身分執行的 Pod，而非直接在 AKS 叢集中，以 VM 節點上的 Pod 身分執行。 虛擬節點目前在 AKS 中處於預覽狀態。
+ACI 可讓您快速部署容器執行個體，不需要額外的基礎結構成本。 當您與 AKS 連線時，ACI 會變成您 AKS 叢集的安全邏輯擴充功能。 [虛擬節點][virtual-nodes-cli]元件是以[virtual Kubelet][virtual-kubelet]為基礎，安裝在您的 AKS 叢集中，以虛擬 Kubernetes 節點的形式呈現 ACI。 接著，Kubernetes 可以排程透過虛擬節點以 ACI 執行個體身分執行的 Pod，而非直接在 AKS 叢集中，以 VM 節點上的 Pod 身分執行。
 
 您的應用程式不需要進行任何修改即可使用虛擬節點。 部署可以跨 AKS 和 ACI 調整，且當叢集自動調整程式在 AKS 叢集中部署新的節點時沒有延遲。
 

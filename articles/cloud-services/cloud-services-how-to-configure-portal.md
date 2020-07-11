@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
-ms.openlocfilehash: e862818a4fe2471af574d153d43f0096af7847b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 169b12ff4fbf2471270aa912d5d1f8242371036b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811407"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223732"
 ---
 # <a name="how-to-configure-cloud-services"></a>如何設定雲端服務
 
@@ -47,7 +48,7 @@ ms.locfileid: "80811407"
 
 您可以將警示新增至雲端服務。 按一下 [**設定**] [  >  **警示規則**] [  >  **新增警示**]。
 
-![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
+![具有反白顯示的 [警示規則] 選項的 [設定] [流覽] 的螢幕擷取畫面，並以紅色概述，而 [新增警示] 選項以紅色標示](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
 您可以從這裡設定警示。 您可以使用 [計量]**** 下拉式方塊，以設定下列資料類型的警示。
 
@@ -57,7 +58,7 @@ ms.locfileid: "80811407"
 * 網路輸出
 * CPU 百分比
 
-![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
+![[新增警示規則] 窗格的螢幕擷取畫面，其中包含所有設定選項組。](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>從計量圖格設定監視
 

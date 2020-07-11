@@ -5,11 +5,12 @@ ms.date: 07/03/2018
 ms.topic: conceptual
 description: 瞭解如何升級 Azure Dev Spaces 命令列工具、Visual Studio Code 延伸模組，以及 Visual Studio 擴充功能
 keywords: Docker、Kubernetes、Azure、AKS、Azure Container Service、容器
-ms.openlocfilehash: 1dad455b834bbef046b295b2cba040831a74f757
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: af4ef92d335c350042b74ccfbfaf5266615f92a6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873491"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229256"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>如何升級 Azure Dev Spaces 工具
 
@@ -40,4 +41,4 @@ Azure Dev Spaces 是 Azure 開發工作負載的一部份，而且包含在所�
 
 ## <a name="next-steps"></a>後續步驟
 
-藉由建立新叢集以測試新工具。 嘗試 [Azure Dev Spaces](/azure/dev-spaces) 的快速入門與教學課程。
+藉由建立新叢集以測試新工具。 嘗試 [Azure Dev Spaces](../index.yml) 的快速入門與教學課程。

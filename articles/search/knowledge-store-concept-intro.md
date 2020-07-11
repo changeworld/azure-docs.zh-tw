@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 75ecfcca24aa801c2ec277e810f60dbc0a9167fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78a8e0a46fd60f14ea3bae7485c737aa4fe3c60e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565266"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230769"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Azure 認知搜尋中的知識存放區
 
@@ -100,7 +100,7 @@ ms.locfileid: "85565266"
 
 ## <a name="how-to-create-a-knowledge-store"></a>如何建立知識存放區
 
-若要建立知識存放區，請使用入口網站或 REST API （ `api-version=2020-06-30` ）。
+若要建立知識存放區，請使用入口網站或 REST API (`api-version=2020-06-30`) 。
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
@@ -114,7 +114,7 @@ ms.locfileid: "85565266"
 
 1. 執行精靈。 在最後一個步驟中進行擷取、擴充及儲存。
 
-### <a name="use-create-skillset-rest-api"></a>使用 Create 技能集（REST API）]
+### <a name="use-create-skillset-rest-api"></a>使用 Create 技能集 (REST API) ]
 
 `knowledgeStore` 是在[技能集](cognitive-search-working-with-skillsets.md)內定義，而[索引子](search-indexer-overview.md)接著會叫用技能集。 在擴充期間，Azure 認知搜尋會在 Azure 儲存體帳戶中建立一個空間，並視設定將擴充文件投影為 Blob 或投影到資料表中，。
 
@@ -138,8 +138,8 @@ REST API 是您可以用程式設計方式建立知識存放區的一種機制�
 
 REST API 版本 `2020-06-30` 會透過技能集的其他定義來提供知識存放區。 除了參考以外，另請參閱[使用 Postman 建立知識存放區](knowledge-store-create-rest.md)，以取得如何呼叫 API 的詳細資料。
 
-+ [建立技能集（api 版本 = 2020-06-30）](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/create-skillset)
-+ [Update 技能集（api 版本 = 2020-06-30）](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/update-skillset)
++ [建立技能集 (api 版本 = 2020-06-30) ](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [更新技能集 (api 版本 = 2020-06-30) ](https://docs.microsoft.com/rest/api/searchservice/update-skillset)
 
 
 ## <a name="next-steps"></a>後續步驟

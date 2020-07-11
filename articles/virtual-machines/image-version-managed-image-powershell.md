@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e00538d1112492c5b7f9fc0f91c86df6d3500701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e59ee029b1705f6f789812b870de96bbb74a6e5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796586"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223545"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>從受控映射遷移至共用映射庫映射
 
@@ -134,3 +134,4 @@ Remove-AzImage `
 
 一旦確認複寫已完成，您就可以從[一般化映射](vm-generalized-image-version-powershell.md)建立 VM。
 
+如需有關如何提供採購方案資訊的詳細資訊，請參閱[在建立映射時提供 Azure Marketplace 購買方案資訊](marketplace-images.md)。

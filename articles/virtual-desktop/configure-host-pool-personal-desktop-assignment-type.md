@@ -5,15 +5,15 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 158ac92a930b53e02ee81570c62711ca27dc4ae8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfe428b9eba1f83f3e1bb05c3941c4c56317c9bc
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200387"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223103"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>設定個人桌面主機集區指派類型
 
@@ -28,7 +28,7 @@ ms.locfileid: "85200387"
 >[!NOTE]
 > 本文中的指示僅適用於個人桌面主機集區，而非集區式主機集區，因為集區式主機集區中的使用者不會指派給特定的工作階段主機。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本文假設您已下載並安裝 Windows 虛擬桌面 PowerShell 模組。 如果您尚未這麼做，請依照[設定 PowerShell 模組](powershell-module.md)中的指示進行。
 
@@ -71,6 +71,21 @@ New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtuali
 ```powershell
 Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -ResourceGroupName <resourcegroupname> -AssignedUser <userupn>
 ```
+
+若要直接將使用者指派給 Azure 入口網站中的工作階段主機：
+
+1. 在 <https://portal.azure.com> 登入 Azure 入口網站。
+2. 在搜尋列中輸入**Windows 虛擬桌面**。
+3. 在 [**服務**] 下，選取 [ **Windows 虛擬桌面**]。
+4. 在 [Windows 虛擬桌面] 頁面上，移至視窗左側的功能表，然後選取 [**主機**集區]。
+5. 選取您想要更新的主機集區名稱。
+6. 接下來，移至視窗左側的功能表，然後選取 [**應用程式群組**]。
+7. 選取您想要編輯的桌面應用程式群組的名稱，然後在視窗左側的功能表中選取 [**指派**]。
+8. 選取 [ **+ 新增**]，然後選取您想要發佈此桌面應用程式群組的使用者或使用者群組。
+9. 在資訊列中選取 [**指派 VM** ]，將工作階段主機指派給使用者。
+10. 選取您要指派給使用者的工作階段主機，然後選取 [**指派**]。
+11. 從可用的使用者清單中，選取您想要指派工作階段主機的使用者。
+12. 當您完成時，請選取 [**選取**]。
 
 ## <a name="next-steps"></a>後續步驟
 

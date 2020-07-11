@@ -10,24 +10,26 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 083580435c467a7d4b6a4cede0a821a2c271962f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 72fecbdc173a6174e54a28e48f983965f397ba6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589647"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224582"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>使用音訊內容建立工具改善合成
 
 [建立音訊內容](https://aka.ms/audiocontentcreation)是一種線上工具，可讓您針對應用程式和產品自訂及微調 Microsoft 的文字到語音轉換輸出。 您可以使用此工具來微調公用和自訂語音，以取得更精確的自然運算式，並管理您在雲端中的輸出。
 
-音訊內容建立工具是以[語音合成標記語言（SSML）](speech-synthesis-markup.md)為基礎。 為了簡化自訂和微調，音訊內容的建立可讓您以視覺化方式即時檢查文字轉換語音的輸出。
+音訊內容建立工具是以[語音合成標記語言 (SSML) ](speech-synthesis-markup.md)為基礎。 為了簡化自訂和微調，音訊內容的建立可讓您以視覺化方式即時檢查文字轉換語音的輸出。
 
-## <a name="how-does-it-work"></a>運作方式
+請參閱[影片教學](https://www.youtube.com/watch?v=O1wIJ7mts_w)課程，以瞭解如何建立音訊內容。
+
+## <a name="how-does-it-work"></a>如何運作？
 
 下圖顯示微調文字到語音轉換輸出所需的步驟。 若要深入瞭解每個步驟，請使用下列連結。
 
-![](media/audio-content-creation/audio-content-creation-diagram.jpg)
+![微調文字到語音轉換輸出所需的步驟圖表。](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
 1. [設定您的 Azure 帳戶和語音資源](#set-up-your-azure-account-and-speech-resource)以開始使用。
 2. 使用純文字或 SSML 腳本[建立音訊微調](#create-an-audio-tuning-file)檔案。
@@ -64,7 +66,7 @@ ms.locfileid: "83589647"
 
    | 屬性 | 值/附注 |
    |----------|---------------|
-   | 檔案格式 | 純文字 (.txt)<br/> SSML 文字（.txt）<br/> 不支援 Zip 檔案 |
+   | 檔案格式 | 純文字 (.txt)<br/> SSML 文字 ( .txt) <br/> 不支援 Zip 檔案 |
    | 編碼格式 | UTF-8 |
    | 檔案名稱 | 每個檔案都必須有唯一的名稱。 不支援重複的專案。 |
    | 文字長度 | 文字檔不得超過20000個字元。 |
@@ -94,7 +96,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 2. 選擇您調整音訊的輸出格式。 以下提供支援的格式清單和取樣率。
 3. 您可以在 [**匯出**工作] 索引標籤上，查看工作的狀態。如果工作失敗，請參閱詳細資訊頁面以取得完整的報表。
 4. 當工作完成時，您可以在 [**音訊媒體**櫃] 索引標籤上下載您的音訊。
-5. 按一下 [下載]  。 現在您已準備好在應用程式或產品中使用您的自訂調整音訊。
+5. 按一下 [下載] 。 現在您已準備好在應用程式或產品中使用您的自訂調整音訊。
 
 ### <a name="supported-audio-formats"></a>支援的音訊格式
 
@@ -110,4 +112,4 @@ Welcome to use Audio Content Creation to customize audio output for your product
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [Speech Studio](https://speech.microsoft.com)
+> [Speech Studio](https://speech.microsoft.com) \(英文\)

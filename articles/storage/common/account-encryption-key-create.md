@@ -10,12 +10,12 @@ ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 7e47440a54d733d0b5d849123633bf7e067fcd81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf7d72e6f16605827b55e3a460a9b28010842d2f
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805705"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220825"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>建立支援資料表和佇列之客戶管理金鑰的帳戶
 
@@ -141,7 +141,7 @@ N/A
 - 包含 `-EncryptionKeyTypeForQueue` 選項，並將其值設定為 `Account` ，以使用帳戶加密金鑰來加密佇列儲存體中的資料。
 - 包含 `-EncryptionKeyTypeForTable` 選項，並將其值設定為 `Account` ，以使用帳戶加密金鑰來加密資料表儲存體中的資料。
 
-下列範例示範如何建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體（RA-GRS），並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代括弧中的預留位置值：
+下列範例示範如何建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體 (GRS) ，並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代括弧中的預留位置值：
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -162,7 +162,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
 - 包含 `--encryption-key-type-for-queue` 選項，並將其值設定為 `Account` ，以使用帳戶加密金鑰來加密佇列儲存體中的資料。
 - 包含 `--encryption-key-type-for-table` 選項，並將其值設定為 `Account` ，以使用帳戶加密金鑰來加密資料表儲存體中的資料。
 
-下列範例示範如何建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體（RA-GRS），並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代括弧中的預留位置值：
+下列範例示範如何建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體 (GRS) ，並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代括弧中的預留位置值：
 
 ```azurecli
 az storage account create \
@@ -177,7 +177,7 @@ az storage account create \
 
 # <a name="template"></a>[範本](#tab/template)
 
-下列 JSON 範例會建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體（RA-GRS），並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代角括弧中的預留位置值：
+下列 JSON 範例會建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體 (GRS) ，並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代角括弧中的預留位置值：
 
 ```json
 "resources": [
@@ -237,7 +237,7 @@ $account.Encryption.Services.Table
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要確認儲存體帳戶中的服務是否使用帳戶加密金鑰，請呼叫[az storage account](/cli/azure/storage/account#az-storage-account-show)命令。 此命令會傳回一組儲存體帳戶屬性和其值。 在 `keyType` [加密] 屬性中尋找每個服務的欄位，並確認其設定為 `Account` 。
+若要確認儲存體帳戶中的服務是否使用帳戶加密金鑰，請呼叫[az storage account show](/cli/azure/storage/account#az-storage-account-show)命令。 此命令會傳回一組儲存體帳戶屬性和其值。 在 `keyType` [加密] 屬性中尋找每個服務的欄位，並確認其設定為 `Account` 。
 
 ```azurecli
 az storage account show /

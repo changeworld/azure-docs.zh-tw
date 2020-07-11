@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649141"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223851"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>設定 Azure App Service 的部署認證
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 支援兩種認證類，用於[本機 Git 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 這些認證與您的 Azure 訂用帳戶認證不同。
@@ -22,7 +23,7 @@ ms.locfileid: "83649141"
 
 ### <a name="in-the-cloud-shell"></a>在 Cloud Shell 中
 
-若要在 [Cloud Shell](https://shell.azure.com) 中設定部署使用者，請執行 [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令。 以部署使用者的使用者名稱和和密碼來取代「username」\<\<和「password」。 
+若要在 [Cloud Shell](https://shell.azure.com) 中設定部署使用者，請執行 [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令。 \<username>將和取代為 \<password> 部署使用者使用者名稱和密碼。 
 
 - 使用者名稱在 Azure 服務及本機 Git 推送中都必須是唯一的，且不能包含 ‘@’ 符號。 
 - 密碼長度必須至少為 8 個字元，包含下列三個元素其中兩個：字母、數字及符號。 
@@ -37,19 +38,19 @@ JSON 輸出會將密碼顯示為 `null`。 如果您收到 `'Conflict'. Details:
 
 在 Azure 入口網站中，您必須至少具有一個應用程式，才能存取部署認證頁面。 設定使用者層級認證：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [應用程式服務] > [\<any_app>] > [部署中心] > [FTP] > [儀表板]。
+1. 在[Azure 入口網站](https://portal.azure.com)中，從左側功能表中選取 [**應用程式服務**  >  **\<any_app>**  >  **部署中心**  >  **FTP**  >  **儀表板**]。
 
-    ![](./media/app-service-deployment-credentials/access-no-git.png)
+    ![說明如何從 [Azure App 服務] 中的 [部署中心] 選取 FTP 儀表板。](./media/app-service-deployment-credentials/access-no-git.png)
 
     或者，如果您已設定 Git 部署，請選取 [應用程式服務] > [&lt;any_app >] > [部署中心] > [FTP/認證]。
 
-    ![](./media/app-service-deployment-credentials/access-with-git.png)
+    ![示範如何在您設定的 Git 部署 Azure App 服務的 [部署中心] 中，選取 [FTP] 儀表板。](./media/app-service-deployment-credentials/access-with-git.png)
 
 2. 選取 [使用者認證]、設定使用者名稱和密碼，然後選取 [儲存認證]。
 
 一旦設定好您的部署認證，就可以在應用程式的 [概觀] 頁面中找到 *Git* 部署使用者名稱。
 
-![](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
+![示範如何在應用程式的 [總覽] 頁面上尋找 Git 部署使用者名稱。](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
 如果已設定 Git 部署，則頁面會顯示 [Git/部署使用者名稱]；否則，顯示 [FTP/部署使用者名稱]。
 

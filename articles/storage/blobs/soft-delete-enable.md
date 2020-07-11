@@ -9,11 +9,12 @@ ms.topic: how-to
 ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 970a6dfc167a6bef7984598c60e7ce89c6e4b34c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2914dfed14360c114476025c74f3dc0c03d82e25
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463717"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224888"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>啟用及管理 Blob 的虛刪除
 
@@ -39,31 +40,31 @@ ms.locfileid: "84463717"
 
 5. 選擇 [儲存] 按鈕以確認您的 [資料保護] 設定
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+![已選擇資料保護 blob 服務的 Azure 入口網站螢幕擷取畫面。](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
 若要檢視已虛刪除的 Blob，請選取 [顯示已刪除的 Blob] 核取方塊。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
+![[資料保護 blob 服務] 頁面的螢幕擷取畫面，其中已醒目提示 [顯示已刪除的 blob] 選項。](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
 若要檢視指定 Blob 的虛刪除快照集，請選取 Blob，然後按一下 [檢視快照集]。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
+![[資料保護 blob 服務] 頁面的螢幕擷取畫面，其中反白顯示 [View 快照集] 選項。](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
 請確定 [顯示已刪除的快照集] 核取方塊已選取。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
+![已醒目提示 [顯示已刪除的 blob] 選項之 [View 快照集] 頁面的螢幕擷取畫面。](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
 
 當您按一下已虛刪除的 Blob 或快照集時，請留意新的 Blob 屬性。 這些屬性會指出物件是何時刪除的，以及 Blob 或 Blob 快照集將在多少天後永久失效。 如果虛刪除的物件不是快照集，則您也可以選擇將其取消刪除。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
+![虛刪除之物件的詳細資料螢幕擷取畫面。](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
 
 請記住，取消刪除 Blob 時也會取消刪除所有相關聯的快照集。 若要取消刪除作用中 Blob 的虛刪除快照集，請按一下該 Blob，然後選取 [取消刪除所有快照集]。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
+![已虛刪除之 blob 的詳細資料螢幕擷取畫面。](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
 在您取消刪除 Blob 的快照集後，您可以按一下 [升階] 將快照集複製到根 Blob，藉以將 Blob 還原至該快照集。
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
+![[View 快照集] 頁面的螢幕擷取畫面，其中反白顯示 [升級] 選項。](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

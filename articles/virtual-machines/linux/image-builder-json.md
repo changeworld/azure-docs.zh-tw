@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135070"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221199"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure Image Builder 範本 
 
@@ -88,7 +88,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-根據預設，Image Builder 不會變更映像的大小，其會使用來源映像的大小。 您**只能**增加 OS 磁片（Win 和 Linux）的大小，這是選擇性的，值為0表示保留與來源映射相同的大小。 您無法將 OS 磁片大小減少為小於來源映射的大小。
+根據預設，Image Builder 不會變更映像的大小，其會使用來源映像的大小。 您**只能**增加 OS 磁片的大小 (Win 和 Linux) ，這是選擇性的，值為0表示保留與來源映射相同的大小。 您無法將 OS 磁片大小減少為小於來源映射的大小。
 
 ```json
  {
@@ -150,6 +150,9 @@ API 需要可定義映像建置來源的 'SourceType'，目前有三種類型：
 - PlatformImage - 指出來源映像是 Marketplace 映像。
 - ManagedImage - 從一般受控映像啟動時，使用此類型。
 - SharedImageVersion - 當您使用共用映像庫中的映像版本作為來源時，使用此類型。
+
+> [!NOTE]
+> 使用現有的 Windows 自訂映射時，您可以在單一 Windows 映像上執行 Sysprep 命令最多8次，如需詳細資訊，請參閱[Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)檔。
 
 ### <a name="iso-source"></a>ISO 來源
 我們正要從 Image Builder 中淘汰這項功能，因為現在有 [RHEL 自備訂用帳戶映像](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos)，請檢閱下列時間軸：
@@ -468,7 +471,10 @@ Azure Image Builder 支援三種散發目標：
 - **sharedImage** - 共用映像庫。
 - **VHD** - 儲存體帳戶中的 VHD。
 
-您可將映像散發到使用相同組態中的兩個目標類型，請參閱[範例](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)。
+您可以使用相同的設定，將影像散佈到這兩個目標型別。
+
+> [!NOTE]
+> 預設的 AIB sysprep 命令不包含 "/mode： vm"，不過，當建立將安裝 HyperV 角色的映射時，這可能是必要的。 如果您需要新增此命令引數，則必須覆寫 sysprep 命令。
 
 由於您可有一個以上要散發至的目標，因此 Image Builder 會針對可藉由查詢 `runOutputName` 來存取的每個散發目標維護一個狀態。  `runOutputName` 是您可在散發後查詢的物件，可供取得該散發的相關資訊。 例如，您可以查詢 VHD 的位置，或映像版本所複製到的區域，或已建立的 SIG 映像版本。 這是每個散發目標的屬性。 對每個散發目標而言，`runOutputName` 必須是唯一的。 以下是查詢共用映像庫散發的範例：
 

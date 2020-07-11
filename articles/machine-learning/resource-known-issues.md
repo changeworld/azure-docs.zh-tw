@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610059"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223453"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 中的已知問題和疑難排解
 
@@ -83,7 +83,7 @@ ms.locfileid: "85610059"
     
 * **Panda 錯誤：通常會在 AutoML 實驗期間看到：**
    
-   使用 pip 手動設定您的環境時，您可能會注意到屬性錯誤（特別是來自 pandas），因為安裝的套件版本不受支援。 為了避免這類錯誤，[請使用 automl_setup 安裝 AUTOML SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md)：
+   使用 pip 手動設定您的環境時，您可能會注意到屬性錯誤 (特別是 pandas) ，因為安裝了不支援的套件版本。 為了避免這類錯誤，[請使用 automl_setup 安裝 AUTOML SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md)：
    
     1. 開啟 Anaconda 提示，並複製一組範例筆記本的 GitHub 存放庫。
 
@@ -181,7 +181,27 @@ ms.locfileid: "85610059"
 |在審核影像時，不會顯示新加上標籤的影像。     |   若要載入所有加上標籤的影像，請選擇**第一個**按鈕。 **第一個**按鈕會將您帶回清單的前端，但會載入所有加上標籤的資料。      |
 |當物件偵測標記時按下 Esc 鍵，會在左上角建立零大小的標籤。 在此狀態下提交卷標失敗。     |   按一下旁邊的交叉標記來刪除標籤。  |
 
-### <a name="data-drift-monitors"></a>資料漂移監視器
+### <a name="data-drift-monitors"></a><a name="data-drift"></a>資料漂移監視器
+
+資料漂移監視的限制和已知問題：
+
+* 分析歷程記錄資料的時間範圍限制為監視頻率設定的31個間隔。 
+* 200功能的限制，除非未指定功能清單 () 使用的所有功能。
+* 計算大小必須夠大，才能處理資料。
+* 請確定您的資料集在指定的監視執行的開始和結束日期內有資料。
+* 資料集監視器僅適用于包含50個或更多資料列的資料集。
+* 資料集中的資料行或功能會根據下表中的條件分類為類別或數值。 如果功能不符合這些條件（例如，具有 >100 唯一值之 string 類型的資料行），則會從我們的資料漂移演算法中卸載此功能，但仍會進行分析。 
+
+    | 功能類型 | 資料類型 | 條件 | 限制 | 
+    | ------------ | --------- | --------- | ----------- |
+    | 類別 | string、bool、int、float | 此功能中的唯一值數目小於100，且小於5% 的資料列數目。 | Null 會被視為它自己的類別。 | 
+    | 數值 | int、float | 功能中的值是數值資料類型，而且不符合類別功能的條件。 | 如果 >的15% 值為 null，則會卸載功能。 | 
+
+* 當您已[建立 datadrift 監視器](how-to-monitor-datasets.md)，但在 Azure Machine Learning studio 中的 [**資料集監視器**] 頁面上看不到資料時，請嘗試下列操作。
+
+    1. 檢查您是否已在頁面頂端選取正確的日期範圍。  
+    1. 在 [**資料集監視器**] 索引標籤上，選取 [實驗] 連結以檢查執行狀態。  此連結位於資料表的最右邊。
+    1. 如果順利完成執行，請檢查驅動程式記錄檔，以查看已產生多少計量，或是否有任何警告訊息。  按一下實驗後，在 [**輸出 + 記錄**] 索引標籤中尋找驅動程式記錄檔。
 
 * 如果 SDK 函 `backfill()` 式不會產生預期的輸出，可能是因為驗證問題所造成。  當您建立要傳入此函數的計算時，請勿使用 `Run.get_context().experiment.workspace.compute_targets` 。  相反地，請使用如下所示的[ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py)來建立您傳遞至該函式的計算 `backfill()` ： 
 
@@ -203,7 +223,7 @@ ms.locfileid: "85610059"
 
 ## <a name="train-models"></a>將模型定型
 
-* **ModuleErrors （沒有名為的模組）**：如果您在 Azure ML 中提交實驗時遇到 ModuleErrors，這表示訓練腳本預期會安裝套件，但不會新增。 當您提供套件名稱之後，Azure ML 會在用於定型執行的環境中安裝套件。 
+* **ModuleErrors (沒有名為) 的模組**：如果您在 Azure ML 中提交實驗時遇到 ModuleErrors，這表示訓練腳本預期會安裝套件，但不會新增。 當您提供套件名稱之後，Azure ML 會在用於定型執行的環境中安裝套件。 
 
     如果您使用[估算器](concept-azure-machine-learning-architecture.md#estimators)來提交實驗，您可以 `pip_packages` `conda_packages` 根據要安裝封裝的來源，透過或估計工具中的參數來指定封裝名稱。 您也可以使用來指定具有所有相依性的 yml 檔案， `conda_dependencies_file` 或使用參數列出 txt 檔案中所有的 pip 需求 `pip_requirements_file` 。 如果您有自己的 Azure ML 環境物件，而您想要覆寫估計工具所使用的預設映射，您可以透過估計工具函數的參數來指定該環境 `environment` 。
 
@@ -215,7 +235,7 @@ ms.locfileid: "85610059"
     > [!Note]
     > 如果您認為特定套件很常見，可以在 Azure ML 維護的映射和環境中新增，請在[AzureML 容器](https://github.com/Azure/AzureML-Containers)中提出 GitHub 問題。 
  
-* **NameError （名稱未定義）、AttributeError （物件沒有屬性）**：這個例外狀況應該來自您的定型腳本。 您可以從 Azure 入口網站查看記錄檔，以取得有關未定義的特定名稱或屬性錯誤的詳細資訊。 從 SDK 中，您可以使用 `run.get_details()` 來查看錯誤訊息。 這也會列出針對您的執行所產生的所有記錄檔。 請務必先查看您的訓練腳本並修正錯誤，再重新提交執行。 
+* **未定義 NameError (名稱) ，AttributeError (物件沒有任何屬性) **：此例外狀況應該來自您的定型腳本。 您可以從 Azure 入口網站查看記錄檔，以取得有關未定義的特定名稱或屬性錯誤的詳細資訊。 從 SDK 中，您可以使用 `run.get_details()` 來查看錯誤訊息。 這也會列出針對您的執行所產生的所有記錄檔。 請務必先查看您的訓練腳本並修正錯誤，再重新提交執行。 
 
 * **Horovod 已關閉**：在大多數情況下，如果您遇到「AbortedError： Horovod 已關閉」，此例外狀況表示其中一個處理常式發生基礎例外狀況，導致 Horovod 關閉。 MPI 作業中的每個排名都會在 Azure ML 中取得專屬的專用記錄檔。 這些記錄檔的名稱為 `70_driver_logs` 。 如果是分散式訓練，記錄檔名稱的後面會加上， `_rank` 讓您更輕鬆地區分記錄檔。 若要找出造成 Horovod 關閉的確切錯誤，請流覽所有的記錄檔，然後在 `Traceback` driver_log 檔案的結尾尋找。 其中一個檔案會提供您實際的基礎例外狀況。 
 
@@ -242,7 +262,7 @@ ms.locfileid: "85610059"
    run_config = RunConfiguration()
    run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
   ```
-* **實驗圖表**：自4/12 起，自動化 ML 實驗反復專案中顯示的二元分類圖表（精確度-召回、ROC、增益曲線等）無法正確轉譯在使用者介面中。 圖表繪圖目前顯示的是反向結果，其中較佳的執行模型會以較低的結果顯示。 解決方案正在進行調查。
+* **實驗圖表**：二元分類圖表 (精確度-召回、ROC、增益曲線等等。自動化 ML 實驗反復專案中顯示的 ) ，在使用者介面中無法正確轉譯，自4/12 起。 圖表繪圖目前顯示的是反向結果，其中較佳的執行模型會以較低的結果顯示。 解決方案正在進行調查。
 
 * **Databricks 取消自動化機器學習服務執行**：當您在 Azure Databricks 上使用自動化機器學習功能時，若要取消執行並開始新的實驗執行，請重新開機您的 Azure Databricks 叢集。
 
@@ -258,7 +278,7 @@ ms.locfileid: "85610059"
 
 針對下列錯誤，請採取下列動作：
 
-|錯誤  | 解決方案  |
+|錯誤  | 解決方法  |
 |---------|---------|
 |部署 web 服務時映射建立失敗     |  將 "pynacl = = 1.2.1" 新增為 Conda 檔案的 pip 相依性以進行映射設定       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   將部署中所使用 Vm 的 SKU 變更為具有更多記憶體的 SKU。 |

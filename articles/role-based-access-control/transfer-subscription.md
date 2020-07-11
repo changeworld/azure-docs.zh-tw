@@ -1,6 +1,6 @@
 ---
-title: 將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄（預覽）
-description: 瞭解如何將 Azure 訂用帳戶和已知的相關資源轉移至不同的 Azure Active Directory （Azure AD）目錄。
+title: '將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽) '
+description: 瞭解如何將 Azure 訂用帳戶和已知的相關資源轉移至不同的 Azure Active Directory (Azure AD) 目錄。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -10,27 +10,27 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: f169cf45702d4a5051f9f6908b77c645c7a0018f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042385"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230837"
 ---
-# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄（預覽）
+# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽) 
 
 > [!IMPORTANT]
 > 遵循這些步驟，將訂用帳戶轉移至不同的 Azure AD 目錄，目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-組織可能會有數個 Azure 訂用帳戶。 每個訂用帳戶都會與特定的 Azure Active Directory （Azure AD）目錄相關聯。 為了簡化管理，您可能會想要將訂用帳戶轉移至不同的 Azure AD 目錄。 當您將訂用帳戶轉移至不同的 Azure AD 目錄時，某些資源不會傳送至目標目錄。 例如，Azure 角色型存取控制（Azure RBAC）中的所有角色指派和自訂角色都會從來原始目錄中**永久**刪除，而且不會傳輸到目標目錄。
+組織可能會有數個 Azure 訂用帳戶。 每個訂用帳戶都會與特定的 Azure Active Directory (Azure AD) 目錄相關聯。 為了簡化管理，您可能會想要將訂用帳戶轉移至不同的 Azure AD 目錄。 當您將訂用帳戶轉移至不同的 Azure AD 目錄時，某些資源不會傳送至目標目錄。 例如，Azure 角色型存取控制中的所有角色指派和自訂角色 (Azure RBAC) 會從來原始目錄中**永久**刪除，而且不會傳輸至目標目錄。
 
 本文說明您可以遵循的基本步驟，將訂用帳戶轉移至不同的 Azure AD 目錄，並在傳輸後重新建立部分資源。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
-將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄，是必須仔細規劃和執行的複雜程式。 許多 Azure 服務都需要安全性主體（身分識別）才能正常運作，甚至是管理其他 Azure 資源。 本文會嘗試涵蓋大部分依賴安全性主體的 Azure 服務，但並不完整。
+將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄，是必須仔細規劃和執行的複雜程式。 許多 Azure 服務都需要 (身分識別的安全性主體) ，才能正常運作或甚至管理其他 Azure 資源。 本文會嘗試涵蓋大部分依賴安全性主體的 Azure 服務，但並不完整。
 
 > [!IMPORTANT]
 > 轉移訂用帳戶需要停機時間才能完成程式。
@@ -66,19 +66,19 @@ ms.locfileid: "86042385"
 
 | 服務或資源 | 受 | 可復原 | 您是否受到影響？ | 您可以採取的方法 |
 | --------- | --------- | --------- | --------- | --------- |
-| 角色指派 | Yes | Yes | [列出角色指派](#save-all-role-assignments) | 系統會永久刪除所有角色指派。 您必須將使用者、群組和服務主體對應到目標目錄中的對應物件。 您必須重新建立角色指派。 |
-| 自訂角色 | Yes | Yes | [列出自訂角色](#save-custom-roles) | 系統會永久刪除所有自訂角色。 您必須重新建立自訂角色和任何角色指派。 |
-| 系統指派的受控識別 | Yes | Yes | [列出受控識別](#list-role-assignments-for-managed-identities) | 您必須停用並重新啟用受控識別。 您必須重新建立角色指派。 |
-| 使用者指派的受控識別 | Yes | Yes | [列出受控識別](#list-role-assignments-for-managed-identities) | 您必須刪除、重新建立受控識別，並將其附加至適當的資源。 您必須重新建立角色指派。 |
-| Azure 金鑰保存庫 | Yes | Yes | [列出 Key Vault 存取原則](#list-other-known-resources) | 您必須更新與金鑰保存庫相關聯的租使用者識別碼。 您必須移除並加入新的存取原則。 |
-| 具有 Azure AD 驗證的 Azure SQL 資料庫 | Yes | 否 | [使用 Azure AD authentication 檢查 Azure SQL 資料庫](#list-other-known-resources) |  |  |
-| Azure 儲存體和 Azure Data Lake Storage Gen2 | Yes | Yes |  | 您必須重新建立任何 Acl。 |
+| 角色指派 | 是 | 是 | [列出角色指派](#save-all-role-assignments) | 系統會永久刪除所有角色指派。 您必須將使用者、群組和服務主體對應到目標目錄中的對應物件。 您必須重新建立角色指派。 |
+| 自訂角色 | 是 | 是 | [列出自訂角色](#save-custom-roles) | 系統會永久刪除所有自訂角色。 您必須重新建立自訂角色和任何角色指派。 |
+| 系統指派的受控識別 | 是 | 是 | [列出受控識別](#list-role-assignments-for-managed-identities) | 您必須停用並重新啟用受控識別。 您必須重新建立角色指派。 |
+| 使用者指派的受控識別 | 是 | 是 | [列出受控識別](#list-role-assignments-for-managed-identities) | 您必須刪除、重新建立受控識別，並將其附加至適當的資源。 您必須重新建立角色指派。 |
+| Azure 金鑰保存庫 | 是 | 是 | [列出 Key Vault 存取原則](#list-other-known-resources) | 您必須更新與金鑰保存庫相關聯的租使用者識別碼。 您必須移除並加入新的存取原則。 |
+| 具有 Azure AD 驗證的 Azure SQL 資料庫 | 是 | 否 | [使用 Azure AD authentication 檢查 Azure SQL 資料庫](#list-other-known-resources) |  |  |
+| Azure 儲存體和 Azure Data Lake Storage Gen2 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
 | Azure Data Lake Storage Gen1 | 是 |  |  | 您必須重新建立任何 Acl。 |
-| Azure 檔案 | Yes | Yes |  | 您必須重新建立任何 Acl。 |
-| Azure 檔案同步 | Yes | Yes |  |  |
+| Azure 檔案儲存體 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
+| Azure 檔案同步 | 是 | 是 |  |  |
 | Azure 受控磁碟 | 是 | N/A |  |  |
-| 適用于 Kubernetes 的 Azure Container Service | Yes | Yes |  |  |
-| Azure Active Directory Domain Services | Yes | 否 |  |  |
+| 適用于 Kubernetes 的 Azure Container Service | 是 | 是 |  |  |
+| Azure Active Directory Domain Services | 是 | 否 |  |  |
 | 應用程式註冊 | 是 | 是 |  |  |
 
 如果您針對資源（例如儲存體帳戶或 SQL database）使用靜態加密，而該資源相依于不在所傳輸之相同訂用帳戶中的金鑰保存庫，可能會導致無法復原的情況。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
@@ -127,7 +127,7 @@ ms.locfileid: "86042385"
 
 ### <a name="save-all-role-assignments"></a>儲存所有角色指派
 
-1. 使用[az role 指派 list](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list)來列出所有角色指派（包括繼承的角色指派）。
+1. 使用[az role 指派 list](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list)來列出所有角色指派 (包括) 繼承的角色指派。
 
     為了讓您更輕鬆地查看清單，您可以將輸出匯出為 JSON、TSV 或資料表。 如需詳細資訊，請參閱[使用 AZURE RBAC 和 Azure CLI 列出角色指派](role-assignments-list-cli.md)。
 
@@ -189,7 +189,7 @@ ms.locfileid: "86042385"
 
 1. 請參閱[支援受控識別的 Azure 服務清單](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)，以記下您可能會使用受控識別的位置。
 
-1. 使用[az ad sp list](/azure/ad/sp#az-ad-sp-list)來列出系統指派和使用者指派的受控識別。
+1. 使用[az ad sp list](/cli/azure/identity?view=azure-cli-latest#az-identity-list)來列出系統指派和使用者指派的受控識別。
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6af9db5ed76ecb79f8891895eab52ff71bcab048
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4a732bd81b65c0c6b0cc227e1ed82de7bae3a1a0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146882"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230701"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中設定增量擴充的快取
 
@@ -174,7 +174,7 @@ api-key: [YOUR-ADMIN-KEY]
 | [建立索引子 (2020-06-30-Preview) ](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | 在第一次使用時建立並執行索引子，包括在索引子定義指定快取時建立快取。 |
 | [執行索引子](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | 視需要執行擴充管線。 此 API 會讀取快取（如果有的話），如果您已將快取新增至更新的索引子定義，則會建立快取。 當您執行已啟用快取的索引子時，如果可以使用快取的輸出，則索引子會省略步驟。 您可以使用此 API 的正式推出或預覽 API 版本。|
 | [重設索引子](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| 清除任何增量索引編制資訊的索引子。 下一個索引子會 (視需要或排程執行，) 從頭開始進行完整重新處理，包括重新執行所有技能和重建快取。 在功能上相當於刪除索引子並重新建立它。 您可以使用此 API 的正式推出或預覽 API 版本。|
-| [重設技能](https://docs.microsoft.com/rest/api/searchservice/reset-skills) | 指定在下一個索引子執行時要重新執行的技能，即使您未修改任何技能也一樣。 快取會隨之更新。 系統會根據快取中的可重複使用資料，以及每項更新技能的新內容，來重新整理輸出，例如知識存放區或搜尋索引。 |
+| [重設技能](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) | 指定在下一個索引子執行時要重新執行的技能，即使您未修改任何技能也一樣。 快取會隨之更新。 系統會根據快取中的可重複使用資料，以及每項更新技能的新內容，來重新整理輸出，例如知識存放區或搜尋索引。 |
 
 如需控制快取發生狀況的詳細資訊，請參閱快取[管理](cognitive-search-incremental-indexing-conceptual.md#cache-management)。
 

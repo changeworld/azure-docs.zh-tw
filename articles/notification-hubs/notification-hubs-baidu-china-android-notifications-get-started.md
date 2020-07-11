@@ -14,12 +14,12 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaaaedbd6d2262f632bd47aa6eefb4cc83ab1abd
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79536984"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223953"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>透過百度開始使用通知中樞
 
@@ -29,7 +29,7 @@ ms.locfileid: "79536984"
 
 由於中國無法使用 Google Play 和 FCM (Firebase Cloud Messaging)，因此必須使用不同的應用程式市集和推送服務。 百度是其中一種方法，且目前由通知中樞所使用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本教學課程需要：
 
@@ -415,8 +415,8 @@ ms.locfileid: "79536984"
 
 您可以在 [Azure 入口網站]中快速測試通知的接收：使用通知中樞設定畫面中的 [傳送]**** 按鈕 (如下列畫面所示)︰
 
-![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
-![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
+![Azure 入口網站的螢幕擷取畫面，其中的 [測試傳送] 選項以紅色概述，而紅色箭號指向它。 ](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
+ ![[Azure 入口網站中的百度測試傳送] 頁面的螢幕擷取畫面。](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
 
 推播通知通常會以後端服務傳送，例如行動服務或使用相容程式庫的 ASP.NET。 如果程式庫不適用於您的後端，您可以直接使用 REST API 來傳送通知訊息。
 
@@ -436,7 +436,7 @@ ms.locfileid: "79536984"
 
 1. 建立新的 Visual C# 主控台應用程式：
 
-    ![](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
+    ![已反白顯示 [主控台應用程式] Visual c # 選項的 [新增專案] 對話方塊的螢幕擷取畫面。](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
 2. 在 [套件管理員主控台] 視窗中，將 [預設專案] **** 設為新的主控台應用程式專案，然後在主控台視窗中執行下列命令：
 
@@ -446,7 +446,7 @@ ms.locfileid: "79536984"
 
     此指示會使用 [Microsoft.Azure.Notification Hubs NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)新增對 Azure 通知中樞 SDK 的參考。
 
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+    ![[套件管理員主控台] 對話方塊的螢幕擷取畫面，其中包含以紅色圈起的 [傳送至通知中樞] 選項。](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 3. 開啟 `Program.cs` 檔案，並新增下列 using 陳述式：
 
@@ -472,7 +472,7 @@ ms.locfileid: "79536984"
     Console.ReadLine();
     ```
 
-## <a name="test-your-app"></a>測試應用程式
+## <a name="test-your-app"></a>測試您的應用程式
 
 若要使用真正的手機來測試應用程式，您只需要使用 USB 纜線將其連接到電腦即可。 此動作會將應用程式載入連結的手機。
 

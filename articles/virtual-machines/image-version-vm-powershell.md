@@ -1,5 +1,5 @@
 ---
-title: 從 VM 建立映射（預覽）
+title: '從 VM 建立映射 (預覽) '
 description: 瞭解如何使用 Azure PowerShell，從 Azure 中的現有 VM 建立共用映射庫中的映射。
 author: cynthn
 ms.topic: how-to
@@ -9,11 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 454ed810f950924d3dd790a2442fe29816bf940d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa8e928a10deb3d6d97e601c607074c09e0572e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838462"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223511"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>預覽：從 VM 建立映射
 
@@ -74,7 +75,7 @@ Stop-AzVM `
 
 映像定義會建立映像的邏輯群組。 它們可用來管理影像的相關資訊。 映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 
 
-建立映射定義時，請確定具有所有正確的資訊。 如果您將 VM 一般化（使用適用于 Windows 的 Sysprep，或 waagent-取消布建 Linux），則應該使用建立映射定義 `-OsState generalized` 。 如果您未將 VM 一般化，請使用建立映射定義 `-OsState specialized` 。
+建立映射定義時，請確定具有所有正確的資訊。 如果您將 VM 一般化 (使用適用于 Windows 的 Sysprep，或針對 Linux) waagent-取消布建，則您應該使用來建立映射定義 `-OsState generalized` 。 如果您未將 VM 一般化，請使用建立映射定義 `-OsState specialized` 。
 
 若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
 
@@ -138,3 +139,5 @@ $job.State
 ## <a name="next-steps"></a>後續步驟
 
 一旦您確認新的映射版本能夠正常運作，您就可以建立 VM。 從[特製化映射版本](vm-specialized-image-version-powershell.md)或[一般化映射版本](vm-generalized-image-version-powershell.md)建立 VM。
+
+如需有關如何提供採購方案資訊的詳細資訊，請參閱[在建立映射時提供 Azure Marketplace 購買方案資訊](marketplace-images.md)。

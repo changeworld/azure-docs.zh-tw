@@ -6,11 +6,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77482967"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221131"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>將雲端資料夾的內容同步處理到 Azure App Service
 本文說明如何將您的內容從 Dropbox 和 OneDrive 同步處理到 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)。 
@@ -23,11 +24,11 @@ ms.locfileid: "77482967"
 
 在左側功能表中，按一下 [**部署中心**] [  >  **OneDrive** ] 或 [ **Dropbox**  >  **授權**]。 請遵循授權提示。 
 
-![](media/app-service-deploy-content-sync/choose-source.png)
+![示範如何在 Azure 入口網站的 [部署中心] 中授權 OneDrive 或 Dropbox。](media/app-service-deploy-content-sync/choose-source.png)
 
 您只需要對 OneDrive 或 Dropbox 授權一次。 如果您已獲授權，只需按一下 [繼續]**** 即可。 您可以按一下 [變更帳戶]**** 來變更授權的 OneDrive 或 Dropbox 帳戶。
 
-![](media/app-service-deploy-content-sync/continue.png)
+![示範如何在 Azure 入口網站的 [部署中心] 中變更授權的 OneDrive 或 Dropbox 帳戶。](media/app-service-deploy-content-sync/continue.png)
 
 在 [設定]**** 頁面上，選取您想要同步處理的資料夾。 這個資料夾就會在 OneDrive 或 Dropbox 的下列指定內容路徑下建立。 
    
@@ -42,7 +43,7 @@ ms.locfileid: "77482967"
 
 當您想要使用 App Service 同步處理雲端資料夾中的內容時，請回到 [部署中心]**** 頁面，然後按一下 [同步]****。
 
-![](media/app-service-deploy-content-sync/synchronize.png)
+![說明如何將您的雲端資料夾與 App Service 同步。](media/app-service-deploy-content-sync/synchronize.png)
    
    > [!NOTE]
    > 由於 API 中的基礎差異，目前不支援**商務用 OneDrive**。 
@@ -55,7 +56,7 @@ ms.locfileid: "77482967"
 
 在左側功能表中，按一下 [**部署中心**  >  **] [中斷連線]**。
 
-![](media/app-service-deploy-content-sync/disable.png)
+![示範如何在 Azure 入口網站中，將您的雲端資料夾同步與您的 App Service 應用程式中斷連線。](media/app-service-deploy-content-sync/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
