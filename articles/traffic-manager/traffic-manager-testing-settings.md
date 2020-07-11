@@ -10,11 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: b2ac056ef9140b4187eeb1850e56ba09b9755abb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 894f01244fef94e9f5a60823ba06ff38c01288a1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704024"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186991"
 ---
 # <a name="verify-traffic-manager-settings"></a>驗證流量管理員設定
 
@@ -34,7 +35,9 @@ ms.locfileid: "84704024"
 2. 輸入 `ipconfig /flushdns` 以排清 DNS 解析程式快取。
 3. 輸入 `nslookup <your Traffic Manager domain name>`。 例如，下列命令會檢查包含 myapp.contoso** 前置詞的網域名稱
 
-        nslookup myapp.contoso.trafficmanager.net
+    ```powershell
+    nslookup myapp.contoso.trafficmanager.net
+    ```
 
     典型的結果會顯示下列資訊：
 

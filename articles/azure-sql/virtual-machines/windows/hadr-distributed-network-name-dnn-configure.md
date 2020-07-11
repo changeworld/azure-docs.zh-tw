@@ -1,6 +1,6 @@
 ---
-title: 設定分散式網路名稱（DNN）
-description: 瞭解如何設定分散式網路名稱（DNN），以將流量路由至 Azure VM 容錯移轉叢集實例（FCI）上的 SQL Server。
+title: " (DNN) 設定分散式網路名稱"
+description: 瞭解如何設定分散式網路名稱 (DNN) ，以將流量路由至 Azure VM 容錯移轉叢集實例上的 SQL Server (FCI) 。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,19 +14,19 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae9b6bf41d90b0a9111414302b2eafea3c8332d3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7c40f4d9f86f27af34c1bc649483810f6756c41d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965470"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169811"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>設定 FCI 的分散式網路名稱 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-在 Azure 虛擬機器上，會使用分散式網路名稱（DNN）將流量路由傳送至適當的叢集資源。 它提供更簡單的方式來連接到 SQL Server 的容錯移轉叢集實例（FCI），而非虛擬網路名稱（VNN），而不需要 Azure Load Balancer。 這項功能目前為預覽狀態，僅適用于 SQL Server 2019 CU2 和更新版本以及 Windows Server 2016 及更新版本。 
+在 Azure 虛擬機器上， (DNN) 的分散式網路名稱會用來將流量路由傳送至適當的叢集資源。 它可讓您更輕鬆地連接到 SQL Server 容錯移轉叢集實例 (FCI) 與虛擬網路名稱 (VNN) 相比，而不需要 Azure Load Balancer。 這項功能目前為預覽狀態，僅適用于 SQL Server 2019 CU2 和更新版本以及 Windows Server 2016 及更新版本。 
 
-本文說明如何設定 DNN，以使用 Azure Vm 上的 SQL Server 將流量路由至您的 Fci，以提供高可用性和嚴重損壞修復（HADR）。 
+本文說明如何設定 DNN，以使用 Azure Vm 上的 SQL Server 將流量路由至您的 Fci，以 (HADR) 進行高可用性和嚴重損壞修復。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -81,6 +81,10 @@ Set-ClusterParameter -Name DnsName -Value FCIDNN
 
 用戶端現在會 `FCIDNN` 在連接到 SQL SERVER FCI 時，輸入其連接字串。 
 
+   > [!WARNING]
+   > 請勿 (VNN) 刪除目前的虛擬網路名稱，因為它是 FCI 基礎結構的必要元件。 
+
+
 ### <a name="rename-the-vnn"></a>重新命名 VNN 
 
 如果您有現有的虛擬網路名稱，而且您想要用戶端繼續使用此值來連接到 SQL Server FCI，您必須將目前的 VNN 重新命名為預留位置值。 在重新命名目前的 VNN 之後，您可以將 DNN 的 DNS 名稱值設定為 VNN。 
@@ -122,7 +126,7 @@ Start-ClusterResource -Name dnn-demo
 
 ## <a name="restart-sql-server-instance"></a>重新開機 SQL Server 實例 
 
-使用容錯移轉叢集管理員重新開機 SQL Server 實例。 請遵循下列步驟：
+使用容錯移轉叢集管理員重新開機 SQL Server 實例。 請遵循這些步驟：
 
 1. 前往容錯移轉叢集管理員中的 SQL Server 資源。
 1. 以滑鼠右鍵按一下 SQL Server 資源，並使其離線。 

@@ -1,9 +1,9 @@
 ---
 title: 將 Azure ExpressRoute 與 Oracle 雲端基礎結構連線 |Microsoft Docs
-description: 將 Azure ExpressRoute 與 Oracle 雲端基礎結構（OCI） FastConnect 連線，以啟用跨雲端 Oracle 應用程式解決方案
+description: 將 Azure ExpressRoute 與 Oracle 雲端基礎結構連線 (OCI) FastConnect，以啟用跨雲端 Oracle 應用程式解決方案
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -12,16 +12,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/16/2020
-ms.author: borisb
-ms.openlocfilehash: 70556cbbfefd6ad22ef96ee16065209031ea456c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: 95f1f7b42b88baaab6d89192f226ca67962544fb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683763"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220468"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>設定 Azure 與 Oracle 雲端基礎結構之間的直接互連  
 
-為了建立[整合式多雲端體驗](oracle-oci-overview.md)，Microsoft 和 Oracle 透過[ExpressRoute](../../../expressroute/expressroute-introduction.md)和[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)提供 Azure 與 oracle 雲端基礎結構（OCI）之間的直接互連。 透過 ExpressRoute 與 FastConnect 互連，客戶可以在這兩個雲端之間體驗低延遲、高輸送量、私人直接連線能力。
+為了建立[整合式多雲端體驗](oracle-oci-overview.md)，Microsoft 和 oracle 提供了 Azure 與 Oracle 雲端基礎結構之間的直接互連， (透過[ExpressRoute](../../../expressroute/expressroute-introduction.md)和[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)的 OCI) 。 透過 ExpressRoute 與 FastConnect 互連，客戶可以在這兩個雲端之間體驗低延遲、高輸送量、私人直接連線能力。
 
 > [!IMPORTANT]
 > 在 2020 年 5 月前使用 Azure/Oracle 雲端互連解決方案，Oracle 即會認證下列應用程式可在 Azure 中執行。
@@ -35,7 +36,7 @@ ms.locfileid: "81683763"
 
 ![跨雲端網路連線](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 若要建立 Azure 與 OCI 之間的連線，您必須擁有有效的 Azure 訂用帳戶和作用中的 OCI 租用。
 
@@ -53,10 +54,10 @@ ms.locfileid: "81683763"
     ![ExpressRoute 服務金鑰](media/configure-azure-oci-networking/exr-service-key.png)
 
     > [!IMPORTANT]
-    > 一旦布建 ExpressRoute 線路（即使**未布建****提供者狀態**），您才需要支付 expressroute 費用。
+    > 一旦布建 ExpressRoute 線路，就會立即向您收取 ExpressRoute 費用 (即使未) 布**建****提供者狀態**也一樣。
 
 1. 切割每個/30 的私人 IP 位址空間，而不會與您的 Azure 虛擬網路或 OCI 虛擬雲端網路 IP 位址空間重迭。 我們會將第一個 IP 位址空間稱為「主要位址空間」，並將第二個 IP 位址空間稱為「次要位址空間」。 記下位址，您在設定 FastConnect 線路時需要用到。
-1. 建立動態路由閘道（DRG.4）。 建立 FastConnect 線路時，您將需要此程式。 如需詳細資訊，請參閱[動態路由閘道](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm)檔。
+1.  (DRG.4) 建立動態路由閘道。 建立 FastConnect 線路時，您將需要此程式。 如需詳細資訊，請參閱[動態路由閘道](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm)檔。
 1. 在您的 Oracle 租使用者底下建立 FastConnect 電路。 如需詳細資訊，請參閱[Oracle 檔](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)集。
   
     * 在 [FastConnect 設定] 下，選取 [ **Microsoft Azure： ExpressRoute** ] 做為提供者。
@@ -64,7 +65,7 @@ ms.locfileid: "81683763"
     * 選取要布建的頻寬。 為了達到最佳效能，頻寬必須符合建立 ExpressRoute 線路時選取的頻寬。
     * 在 [**提供者服務金鑰**] 中，貼上 ExpressRoute 服務金鑰。
     * 在上一個步驟中使用第一個/30 私人 IP 位址空間劃分，以取得**主要 BGP Ip 位址**和**次要 bgp ip**位址的第二個/30 私人 ip 位址空間。
-        * 將 Oracle BGP IP 位址（主要和次要）的第一個可用位址和第二個位址指派給客戶 BGP IP 位址（從 FastConnect 的觀點來看）。 第一個可用的 IP 位址是/30 位址空間中的第二個 IP 位址（Microsoft 會保留第一個 IP 位址）。
+        * 將 Oracle BGP IP 位址的第一個可用位址 (主要和次要) ，並將第二個位址指派給 (從 FastConnect 觀點) 的客戶 BGP IP 位址。 第一個可用的 IP 位址是/30 位址空間中的第二個 IP 位址， (第一個 IP 位址是由 Microsoft) 保留。
     * 按一下 [建立]。
 1. 使用路由表，完成透過動態路由閘道，將 FastConnect 連結至 Oracle 租使用者下的虛擬雲端網路。
 1. 流覽至 Azure，並確定 ExpressRoute 線路的**提供者狀態**已變更為 [已布**建**]，而且已布建 [ **Azure 私**用] 類型的對等互連。 這是下列步驟的必要條件。
@@ -89,7 +90,7 @@ Microsoft 已建立 Terraform 腳本，以啟用網路互連的自動化部署�
 
 ## <a name="monitoring"></a>監視
 
-在這兩個雲端上安裝代理程式，您可以利用 Azure[網路效能監控（NPM）](../../../expressroute/how-to-npm.md)來監視端對端網路的效能。 NPM 可協助您立即找出網路問題，並協助消除它們。
+在這兩個雲端上安裝代理程式，您可以利用 Azure[網路效能監控 (NPM) ](../../../expressroute/how-to-npm.md)來監視端對端網路的效能。 NPM 可協助您立即找出網路問題，並協助消除它們。
 
 ## <a name="delete-the-interconnect-link"></a>刪除互連連結
 

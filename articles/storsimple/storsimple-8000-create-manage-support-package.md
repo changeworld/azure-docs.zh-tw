@@ -6,16 +6,16 @@ ms.service: storsimple
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: f8f84542cd52d8ad4affd64627637d4e95b1fb10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514041"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182010"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>建立及管理 StorSimple 8000 系列的支援封裝
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 支援封裝是一種簡便的機制，可收集所有相關的記錄以協助 Microsoft 支援服務針對任何 StorSimple 裝置問題進行疑難排解。 收集的記錄都會經過加密並壓縮。
 
@@ -64,7 +64,7 @@ StorSimple 支援封裝是一種簡便的機制，可收集所有相關的記錄
 
 您可以使用下列參數搭配 Export-HcsSupportPackage cmdlet。
 
-| 參數 | 必要/選用 | 說明 |
+| 參數 | 必要/選用 | 描述 |
 | --- | --- | --- |
 | `-Path` |必要 |用來提供存放支援封裝的網路共用資料夾位置。 |
 | `-EncryptionPassphrase` |必要 |用來提供複雜密碼，以協助加密支援封裝。 |
@@ -98,9 +98,11 @@ StorSimple 支援封裝是一種簡便的機制，可收集所有相關的記錄
     ![編輯支援封裝](./media/storsimple-8000-create-manage-support-package/IC750706.png)
 5. 當系統提示您輸入加密複雜密碼時，請輸入您在建立支援封裝時使用的複雜密碼。
    
-        cmdlet Open-HcsSupportPackage at command pipeline position 1
-   
-        Supply values for the following parameters:EncryptionPassphrase: ****
+    ```powershell
+    cmdlet Open-HcsSupportPackage at command pipeline position 1
+
+    Supply values for the following parameters:EncryptionPassphrase: ****
+    ```
 6. 瀏覽至包含記錄檔的資料夾。 因為記錄檔現在已解壓縮並解密，所以會顯示原始的副檔名。 修改這些檔案來移除客戶特定資訊，例如磁碟區名稱和裝置 IP 位址，然後儲存檔案。
 7. 關閉檔案會使用 Gzip 壓縮檔案，並使用 AES-256 加密。 這是為了透過網路傳輸支援封裝時提高速度和安全性。 若要壓縮及加密檔案，請輸入下列內容︰
    
@@ -109,33 +111,37 @@ StorSimple 支援封裝是一種簡便的機制，可收集所有相關的記錄
     ![編輯支援封裝](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. 出現提示時，提供加密複雜密碼給修改過的支援封裝。
    
-        cmdlet Close-HcsSupportPackage at command pipeline position 1
-        Supply values for the following parameters:EncryptionPassphrase: ****
+    ```powershell
+    cmdlet Close-HcsSupportPackage at command pipeline position 1
+    Supply values for the following parameters:EncryptionPassphrase: ****
+    ```
 9. 記下新的複雜密碼，當接到要求時就能提供給 Microsoft 支援服務。
 
 ### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>範例：在受密碼保護的共用中編輯支援封裝中的檔案
 
 下列範例將示範如何解密、編輯和重新加密支援封裝。
 
-        PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
+```powershell
+PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
 
-        PS C:\WINDOWS\system32> Open-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
+PS C:\WINDOWS\system32> Open-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
 
-        cmdlet Open-HcsSupportPackage at command pipeline position 1
+cmdlet Open-HcsSupportPackage at command pipeline position 1
 
-        Supply values for the following parameters:
+Supply values for the following parameters:
 
-        EncryptionPassphrase: ****
+EncryptionPassphrase: ****
 
-        PS C:\WINDOWS\system32> Close-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
+PS C:\WINDOWS\system32> Close-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
 
-        cmdlet Close-HcsSupportPackage at command pipeline position 1
+cmdlet Close-HcsSupportPackage at command pipeline position 1
 
-        Supply values for the following parameters:
+Supply values for the following parameters:
 
-        EncryptionPassphrase: ****
+EncryptionPassphrase: ****
 
-        PS C:\WINDOWS\system32>
+PS C:\WINDOWS\system32>
+```
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: f9fb250109a1c9000eae8da0d6337c96f19f0f89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c29e0f687e36eb679875ea7899aa1a0cd91bd122
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80410548"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169488"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>如何在 PHP 中透過 Twilio 使用語音和簡訊功能
 本指南示範如何在 Azure 上透過 Twilio API 服務執行常見的程式設計工作。 涵蓋的案例包括打電話和傳送簡訊 (SMS)。 如需有關在應用程式中 Twilio 及使用語音和 SMS 的詳細資訊，請參閱[後續步驟](#NextSteps)一節。
@@ -58,10 +58,12 @@ TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如�
 
 例如，下列 TwiML 會將 **Hello World** 文字轉換成語音。
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-       <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+    <Say>Hello World</Say>
+</Response>
+```
 
 當應用程式呼叫 Twilio API 時，其中一個 API 參數是傳回 TwiML 回應的 URL。 在開發用途上，您可以使用 Twilio 提供的 URL 來提供應用程式所使用的 TwiML 回應。 您也可以裝載您自己的 URL 來產生 TwiML 回應，另一種選擇是使用 **TwiMLResponse** 物件。
 
@@ -80,61 +82,67 @@ TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如�
 ## <a name="configure-your-application-to-use-twilio-libraries"></a><a id="configure_app"></a>設定應用程式以使用 Twilio 程式庫
 您可以透過兩種方式設定應用程式，以使用適用於 PHP 的 Twilio 程式庫：
 
-1. 從 GitHub 下載適用于 PHP 的 Twilio 程式庫（ [https://github.com/twilio/twilio-php][twilio_php] ），並將**服務**目錄新增至您的應用程式。
+1. 從 GitHub 下載適用于 PHP 的 Twilio 程式庫 ([https://github.com/twilio/twilio-php][twilio_php]) 並將**服務**目錄新增至您的應用程式。
    
     -或-
 2. 以 PEAR 封裝的形式，安裝適用於 PHP 的 Twilio 程式庫。 您可以使用下列命令進行此安裝：
-   
-        $ pear channel-discover twilio.github.com/pear
-        $ pear install twilio/Services_Twilio
+
+    ```bash
+    $ pear channel-discover twilio.github.com/pear
+    $ pear install twilio/Services_Twilio
+    ```
 
 在適用於 PHP 的 Twilio 程式庫安裝完成後，您可以在 PHP 檔案頂端新增 **require_once** 陳述式，以參考該程式庫：
 
-        require_once 'Services/Twilio.php';
+```php
+require_once 'Services/Twilio.php';
+```
 
 如需詳細資訊，請參閱 [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme]。
 
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>作法：撥出電話
 以下說明如何使用 **Services_Twilio** 類別來撥出電話。 此程式碼也使用 Twilio 提供的網站來傳回 Twilio 標記語言 (TwiML) 回應。 請將 **From** 和 **To** 電話號碼換成您的值，在執行程式碼之前，請記得先驗證 Twilio 帳戶的 **From** 電話號碼。
 
-    // Include the Twilio PHP library.
-    require_once 'Services/Twilio.php';
+```php
+// Include the Twilio PHP library.
+require_once 'Services/Twilio.php';
 
-    // Library version.
-    $version = "2010-04-01";
+// Library version.
+$version = "2010-04-01";
 
-    // Set your account ID and authentication token.
-    $sid = "your_twilio_account_sid";
-    $token = "your_twilio_authentication_token";
+// Set your account ID and authentication token.
+$sid = "your_twilio_account_sid";
+$token = "your_twilio_authentication_token";
 
-    // The number of the phone initiating the call.
-    $from_number = "NNNNNNNNNNN";
+// The number of the phone initiating the call.
+$from_number = "NNNNNNNNNNN";
 
-    // The number of the phone receiving call.
-    $to_number = "NNNNNNNNNNN";
+// The number of the phone receiving call.
+$to_number = "NNNNNNNNNNN";
 
-    // Use the Twilio-provided site for the TwiML response.
-    $url = "https://twimlets.com/message";
+// Use the Twilio-provided site for the TwiML response.
+$url = "https://twimlets.com/message";
 
-    // The phone message text.
-    $message = "Hello world.";
+// The phone message text.
+$message = "Hello world.";
 
-    // Create the call client.
-    $client = new Services_Twilio($sid, $token, $version);
+// Create the call client.
+$client = new Services_Twilio($sid, $token, $version);
 
-    //Make the call.
-    try
-    {
-        $call = $client->account->calls->create(
-            $from_number, 
-            $to_number,
-              $url.'?Message='.urlencode($message)
-        );
-    }
-    catch (Exception $e) 
-    {
-        echo 'Error: ' . $e->getMessage();
-    }
+//Make the call.
+try
+{
+    $call = $client->account->calls->create(
+        $from_number, 
+        $to_number,
+        $url.'?Message='.urlencode($message)
+    );
+}
+catch (Exception $e) 
+{
+    echo 'Error: ' . $e->getMessage();
+}
+```
 
 如前所述，此程式碼使用 Twilio 提供的網站來傳回 TwiML 回應。 您可以改用自己的網站來提供 TwiML 回應；如需詳細資訊，請參閱 [如何從您自己的網站提供 TwiML 回應](#howto_provide_twiml_responses)。
 
@@ -143,86 +151,94 @@ TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如�
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>作法：傳送簡訊
 以下說明如何使用 **Services_Twilio** 類別來傳送簡訊。 Twilio 會提供**From**號碼，供試用帳戶用來傳送 SMS 訊息。 執行程式碼之前，必須驗證您 Twilio 帳戶的 **To** 號碼。
 
-    // Include the Twilio PHP library.
-    require_once 'Services/Twilio.php';
+```php
+// Include the Twilio PHP library.
+require_once 'Services/Twilio.php';
 
-    // Library version.
-    $version = "2010-04-01";
+// Library version.
+$version = "2010-04-01";
 
-    // Set your account ID and authentication token.
-    $sid = "your_twilio_account_sid";
-    $token = "your_twilio_authentication_token";
+// Set your account ID and authentication token.
+$sid = "your_twilio_account_sid";
+$token = "your_twilio_authentication_token";
 
 
-    $from_number = "NNNNNNNNNNN"; // With trial account, texts can only be sent from your Twilio number.
-    $to_number = "NNNNNNNNNNN";
-    $message = "Hello world.";
+$from_number = "NNNNNNNNNNN"; // With trial account, texts can only be sent from your Twilio number.
+$to_number = "NNNNNNNNNNN";
+$message = "Hello world.";
 
-    // Create the call client.
-    $client = new Services_Twilio($sid, $token, $version);
+// Create the call client.
+$client = new Services_Twilio($sid, $token, $version);
 
-    // Send the SMS message.
-    try
-    {
-        $client->$client->account->messages->sendMessage($from_number, $to_number, $message);
-    }
-    catch (Exception $e) 
-    {
-        echo 'Error: ' . $e->getMessage();
-    }
+// Send the SMS message.
+try
+{
+    $client->$client->account->messages->sendMessage($from_number, $to_number, $message);
+}
+catch (Exception $e) 
+{
+    echo 'Error: ' . $e->getMessage();
+}
+```
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>作法：從您自己的網站提供 TwiML 回應
-當您的應用程式開始呼叫 Twilio API 時，Twilio 會將要求傳送至 URL，然後應該會傳回 TwiML 回應。 上述範例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 。 (雖然 TwiML 是設計給 Twilio 使用的，但您也可以在瀏覽器中檢視 TwiML。 例如，按一下 [https://twimlets.com/message][twimlet_message_url] 以查看空的專案 `<Response>` ; 如另一個範例，請按一下 [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] 以查看 `<Response>` 包含元素的元素 `<Say>` ）。
+當您的應用程式開始呼叫 Twilio API 時，Twilio 會將要求傳送至 URL，然後應該會傳回 TwiML 回應。 上述範例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 。 (雖然 TwiML 是設計給 Twilio 使用的，但您也可以在瀏覽器中檢視 TwiML。 例如，按一下 [https://twimlets.com/message][twimlet_message_url] 以查看空的專案 `<Response>` ; 另一個範例是按一下 [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] 以查看 `<Response>` 包含元素的元素 `<Say>` 。 ) 
 
 除了使用 Twilio 提供的 URL 以外，您也可以建立自己的網站來傳回 HTTP 回應。 您可以使用任何語言建立會傳回 XML 回應的網站；本主題假設您將使用 PHP 建立 TwiML。
 
 下列 PHP 頁面會產生一個在來電中顯示 **Hello World** 的 TwiML 回應。
 
-    <?php    
-        header("content-type: text/xml");    
-        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-    ?>
-    <Response>    
-        <Say>Hello world.</Say>
-    </Response>
+```xml
+<?php    
+    header("content-type: text/xml");    
+    echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+?>
+<Response>    
+    <Say>Hello world.</Say>
+</Response>
+```
 
 從以上範例中可知，TwiML 回應只是一份 XML 文件。 適用於 PHP 的 Twilio 程式庫包含可為您產生 TwiML 的類別。 下列範例會產生同上的回應，但改用適用於 PHP 的 Twilio 程式庫中的 **Services\_Twilio\_Twiml** 類別：
 
-    require_once('Services/Twilio.php');
+```php
+require_once('Services/Twilio.php');
 
-    $response = new Services_Twilio_Twiml();
-    $response->say("Hello world.");
-    print $response;
+$response = new Services_Twilio_Twiml();
+$response->say("Hello world.");
+print $response;
+```
 
 如需 TwiML 的詳細資訊，請參閱 [https://www.twilio.com/docs/api/twiml][twiml_reference] 。 
 
 設定 PHP 頁面來提供 TwiML 回應之後，請使用 PHP 頁面的 URL 作為傳遞到 `Services_Twilio->account->calls->create` 方法的 URL。 例如，如果您已將名為 **MyTwiML** 的 Web 應用程式部署至 Azure 託管服務，而 PHP 頁面的名稱為 **mytwiml.php**，則可將其 URL 傳至 **Services_Twilio->account->calls->create**，如下列範例所示：
 
-    require_once 'Services/Twilio.php';
+```php
+require_once 'Services/Twilio.php';
 
-    $sid = "your_twilio_account_sid";
-    $token = "your_twilio_authentication_token";
-    $from_number = "NNNNNNNNNNN";
-    $to_number = "NNNNNNNNNNN";
-    $url = "http://<your_hosted_service>.cloudapp.net/MyTwiML/mytwiml.php";
+$sid = "your_twilio_account_sid";
+$token = "your_twilio_authentication_token";
+$from_number = "NNNNNNNNNNN";
+$to_number = "NNNNNNNNNNN";
+$url = "http://<your_hosted_service>.cloudapp.net/MyTwiML/mytwiml.php";
 
-    // The phone message text.
-    $message = "Hello world.";
+// The phone message text.
+$message = "Hello world.";
 
-    $client = new Services_Twilio($sid, $token, "2010-04-01");
+$client = new Services_Twilio($sid, $token, "2010-04-01");
 
-    try
-    {
-        $call = $client->account->calls->create(
-            $from_number, 
-            $to_number,
-              $url.'?Message='.urlencode($message)
-        );
-    }
-    catch (Exception $e) 
-    {
-        echo 'Error: ' . $e->getMessage();
-    }
+try
+{
+    $call = $client->account->calls->create(
+        $from_number, 
+        $to_number,
+        $url.'?Message='.urlencode($message)
+    );
+}
+catch (Exception $e) 
+{
+    echo 'Error: ' . $e->getMessage();
+}
+```
 
 如需關於在 Azure 中利用 PHP 使用 Twilio 的詳細資訊，請參閱[如何在 Azure 上的 PHP 應用程式中使用 Twilio 撥打電話][howto_phonecall_php]。
 

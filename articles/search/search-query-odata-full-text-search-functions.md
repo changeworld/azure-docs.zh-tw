@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 837237be636e67f37f5c744cd4863f1eb159652a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72793358"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201386"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure 認知搜尋中的 OData 全文檢索搜尋功能- `search.ismatch` 和`search.ismatchscoring`
 
@@ -33,9 +33,9 @@ Azure 認知搜尋支援透過和函式，在[OData 篩選運算式](query-odata
 > [!NOTE]
 > `search.ismatch`只有在 `search.ismatchscoring` [搜尋 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)的篩選中才支援和函數。 [建議](https://docs.microsoft.com/rest/api/searchservice/suggestions)或[自動完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)api 不支援它們。
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
-下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定義和函式的 `search.ismatch` 文法 `search.ismatchscoring` ：
+下列 EBNF ([擴充巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義和函式的 `search.ismatch` 文法 `search.ismatchscoring` ：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -71,7 +71,7 @@ search_mode ::= "'any'" | "'all'"
 
 | 參數名稱 | 類型 | 描述 |
 | --- | --- | --- |
-| `search` | `Edm.String` | 搜尋查詢（[簡單](query-simple-syntax.md)或[完整](query-lucene-syntax.md)的 Lucene 查詢語法）。 |
+| `search` | `Edm.String` | 搜尋查詢 ([簡單](query-simple-syntax.md)或[完整](query-lucene-syntax.md)的 Lucene 查詢語法) 。 |
 | `searchFields` | `Edm.String` | 以逗號分隔的清單，其中列出要搜尋的可搜尋欄位;預設為索引中所有可搜尋的欄位。 在參數中使用[回復搜尋](query-lucene-syntax.md#bkmk_fields)時 `search` ，Lucene 查詢中的欄位規範會覆寫此參數中指定的任何欄位。 |
 | `queryType` | `Edm.String` | `'simple'`或 `'full'` ; 預設為 `'simple'` 。 指定 `search` 參數中使用的查詢語言。 |
 | `searchMode` | `Edm.String` | `'any'`或者 `'all'` ，預設為 `'any'` 。 指出是否必須符合參數中的任何或所有搜尋詞彙，才能將 `search` 檔計為相符的。 在參數中使用[Lucene 布林運算子](query-lucene-syntax.md#bkmk_boolean)時 `search` ，它們的優先順序高於此參數。 |
@@ -98,25 +98,35 @@ search_mode ::= "'any'" | "'all'"
 
 尋找含有「海濱」一詞的文件。 此篩選查詢等同於使用 `search=waterfront` 的[搜尋要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 
+```odata-filter-expr
     search.ismatchscoring('waterfront')
+```
 
 尋找含有「青年旅館」一詞、且評分為 4 或以上的文件，或含有「汽車旅館」一詞、且評分為 5 的文件。 請注意，此要求必須使用 `search.ismatchscoring` 函式來表示。
 
+```odata-filter-expr
     search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
+```
 
 尋找不含「豪華」一詞的文件。
 
+```odata-filter-expr
     not search.ismatch('luxury')
+```
 
 尋找含有「海景」一詞或評分為 5 的文件。 `search.ismatchscoring` 查詢只會對欄位 `HotelName` 和 `Rooms/Description` 執行。
 
 只會傳回比對之第二個子句相符的檔，也會傳回 `Rating` 等於5的飯店。 為了清楚說明這些檔不符合運算式的任何計分部分，它們會傳回，分數等於零。
 
+```odata-filter-expr
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
+```
 
 尋找「飯店」和「機場」這兩個詞彙在飯店的描述中的5個單字內，而且至少有部分房間中不允許吸煙的檔。 此查詢會使用[完整 Lucene 查詢語言](query-lucene-syntax.md)。
 
+```odata-filter-expr
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
+```
 
 ## <a name="next-steps"></a>後續步驟  
 

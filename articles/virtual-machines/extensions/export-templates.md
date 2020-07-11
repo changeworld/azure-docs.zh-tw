@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4919ce9ecaa3dc4f621aa5658b44aa53fad0bbf3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703990"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201033"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>匯出包含 VM 擴充功能的資源群組
 
@@ -32,18 +33,7 @@ Azure 資源群組可以匯出到之後會重新部署的新 Resource Manager �
 
 下列擴充功能可以使用自動化指令碼功能匯出。
 
-| 分機 ||||
-|---|---|---|---|
-| Acronis Backup | Datadog Windows Agent | OS Patching For Linux | VM Snapshot Linux
-| Acronis Backup Linux | Docker 延伸模組 | Puppet Agent |
-| Bg Info | DSC 延伸模組 | Site 24x7 Apm Insight |
-| BMC CTM Agent Linux | Dynatrace Linux | Site 24x7 Linux Server |
-| BMC CTM Agent Windows | Dynatrace Windows | Site 24x7 Windows Server |
-| Chef Client | HPE Security Application Defender | Trend Micro DSA |
-| Custom Script | IaaS Antimalware | Trend Micro DSA Linux |
-| 自訂指令碼延伸模組 | IaaS Diagnostics | VM Access For Linux |
-| Custom Script for Linux | Linux Chef Client | VM Access For Linux |
-| Datadog Linux Agent | Linux Diagnostic | VM Snapshot |
+> Acronis 備份，Acronis 備份 Linux，Bg 資訊，BMC CMT Agent Linux，BMC CMT 代理程式 Windows，Chef 用戶端，自訂腳本，自訂腳本擴充功能，適用于 Linux 的自訂腳本，Datadog Linux 代理程式，Datadog Windows 代理程式，Docker 擴充功能，DSC 擴充功能，Dynatrace Linux，Dynatrace Windows，HPE 安全性應用程式 Defender，IaaS 反惡意程式碼，IaaS 診斷，Linux Chef 用戶端，Linux 診斷，Site 24x7 Linux 伺服器，網站全天候 Windows Server，趨勢微 DSA，趨勢微 DSA Linux，適用于 Linux 的 VM 存取，Linux 的 VM 存取，vm 快照集，VM 快照集 Linux
 
 ## <a name="export-the-resource-group"></a>匯出資源群組
 

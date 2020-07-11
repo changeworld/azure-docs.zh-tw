@@ -1,17 +1,17 @@
 ---
 title: 常見問題集：Azure 中的網路效能監控解決方案 | Microsoft Docs
-description: 本文會針對 Azure 中的網路效能監控，提供常見問題。 網路效能監控（NPM）可協助您近乎即時地監視網路的效能，並偵測並找出網路效能瓶頸。
+description: 本文會針對 Azure 中的網路效能監控，提供常見問題。 網路效能監控 (NPM) 可協助您近乎即時地監視網路的效能，並偵測並找出網路效能瓶頸。
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 191c6d411418229d40b10704ea14d5a536c0d5f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110618"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184543"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>網路效能監控解決方案常見問題集
 
@@ -95,7 +95,7 @@ NPM 使用專用演算法來探索來源和目的地之間的所有路徑和躍�
 NPM 會根據其所屬之狀況不良的路徑數量，運用機率機制將故障機率指派給每個網路路徑、網路區段和組成網路躍點。 由於網路區段和躍點成為更多狀況不良路徑的一部分，與其相關聯的錯誤機率也隨之增加。 當您有許多 NPM 代理程式互相連接的節點時，此演算法的效果最佳，因為這會增加資料點以計算錯誤機率。
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>如何在 NPM 中建立警示？
-如需逐步說明，請參閱[說明文件中的警示章節](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts)。
+從 NPM UI 建立警示目前因問題而失敗。 請手動建立警示。
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>警示的預設 Log Analytics 查詢為何
 效能監視器查詢
@@ -204,7 +204,7 @@ NPM 使用追蹤路由的修改版本，來探索從來源代理程式到目的�
 當其中一個端點位於 Azure 中時，追蹤路由會顯示無法辨識的躍點，因為 Azure 基礎結構不會向追蹤路由顯示身分識別。 
 
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>我收到狀況不良測試的警示，但我在 NPM 的遺失和延遲圖表中看不到高的值。 如何? 檢查什麼狀況不良？
-如果來源與目的地之間的端對端延遲超出其之間任何路徑的臨界值，NPM 就會引發警示。 有些網路有多個路徑連接相同的來源和目的地。 NPM 引發警示是任何路徑狀況不良。 圖表中顯示的遺失和延遲是所有路徑的平均值，因此它可能不會顯示單一路徑的確切值。 若要瞭解臨界值被違反的位置，請尋找警示中的「子類型」資料行。 如果問題是由路徑所造成，則會 NetworkPath 子類型值（適用于效能監控測試）、EndpointPath （適用于服務連線能力監視測試）和 ExpressRoutePath （適用于 ExpressRotue 監視器測試）。 
+如果來源與目的地之間的端對端延遲超出其之間任何路徑的臨界值，NPM 就會引發警示。 有些網路有多個路徑連接相同的來源和目的地。 NPM 引發警示是任何路徑狀況不良。 圖表中顯示的遺失和延遲是所有路徑的平均值，因此它可能不會顯示單一路徑的確切值。 若要瞭解臨界值被違反的位置，請尋找警示中的「子類型」資料行。 如果問題是由路徑所造成，則會將 NetworkPath 的 [效能監控測試] 的子類型值 () 、[服務連線能力監視測試] 的 EndpointPath () 和 [ExpressRotue 監視器測試的 ExpressRoutePath (]) 。 
 
 尋找的範例查詢是 path 狀況不良：
 
@@ -216,7 +216,7 @@ NetworkMonitoring
 ```
 
 ### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>為什麼我的測試顯示狀況不良，但拓撲不會 
-NPM 會以不同的間隔監視端對端遺失、延遲和拓撲。 系統會每隔5秒測量一次遺失和延遲，並每隔三分鐘匯總一次（針對「效能監視器」和「Express Route 監視器」），同時使用追蹤路由每隔10分鐘計算一次。 例如，在3:44 與4:04 之間，拓撲可能會更新三次（3:44、3:54、4:04），但遺失和延遲會更新大約七次（3:44、3:47、3:50、3:53、3:56、3:59、4:02）。 3:54 產生的拓撲會針對在3:56、3:59 和4:02 計算的遺失和延遲呈現。 假設您收到一則警示，指出您的 ER 線路在3:59 狀況不良。 您登入 NPM，並嘗試將拓撲時間設定為3:59。 NPM 會轉譯在3:54 產生的拓撲。 若要瞭解網路的最後已知拓撲，請比較 TimeProcessed （計算遺失和延遲的時間）和 TracerouteCompletedTime （計算拓撲的時間）的欄位。 
+NPM 會以不同的間隔監視端對端遺失、延遲和拓撲。 系統會每隔5秒測量一次遺失和延遲，並每隔三分鐘匯總 (的效能監視器和 Express Route 監視器) ，而拓撲是使用追蹤路由每隔10分鐘計算一次。 例如，在3:44 與4:04 之間，拓撲可能會更新三次， (3:44、3:54、4:04) ，但遺失和延遲會更新大約7倍 (3:44、3:47、3:50、3:53、3:56、3:59、4:02) 。 3:54 產生的拓撲會針對在3:56、3:59 和4:02 計算的遺失和延遲呈現。 假設您收到一則警示，指出您的 ER 線路在3:59 狀況不良。 您登入 NPM，並嘗試將拓撲時間設定為3:59。 NPM 會轉譯在3:54 產生的拓撲。 若要瞭解網路的最後已知拓撲，請比較計算出遺失和延遲的 TimeProcessed (時間欄位) 和 TracerouteCompletedTime 計算拓撲的 (時間) 。 
 
 ### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>NetworkMonitoring 資料表中 E2EMedianLatency 和 AvgHopLatencyList 欄位之間的差異為何
 E2EMedianLatency 是在匯總 tcp ping 測試的結果之後每三分鐘更新一次的延遲，而 AvgHopLatencyList 會根據追蹤路由每隔10分鐘更新一次。 若要瞭解計算 E2EMedianLatency 的確切時間，請使用欄位 TimeProcessed。 若要瞭解追蹤路由完成和更新 AvgHopLatencyList 的確切時間，請使用欄位 TracerouteCompletedTime
@@ -255,7 +255,7 @@ NPM 現在會在使用者有權存取的所有訂用帳戶中，探索 ExpressRo
 * 監視設定中，選擇用於監控 ExpressRoute 線路的內部部署和 Azure 節點，並未在欲使用的 ExpressRoute 線路上相互連線。 請確定您選擇的是正確的節點，而這些節點有透過您要監控的 ExpressRoute 線路相互連線。
 
 ### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>為什麼 ExpressRoute 監視器會在可用並傳遞資料時，將我的線路/對等互連報告為狀況不良。
-ExpressRoute 監視會比較代理程式/服務所報告的網路效能值（遺失、延遲和頻寬使用率），以及設定期間所設定的閾值。 若為線路，如果所報告的頻寬使用率大於設定的閾值，線路就會標示為狀況不良。 針對對等互連，如果報告的 [遺失]、[延遲] 或 [頻寬使用率] 大於設定的 [閾值]，則對等互連會標示為 [狀況不良]。 NPM 不會利用計量或任何其他形式的資料，以 deicde 健全狀況狀態。
+ExpressRoute 監視器會比較代理程式/服務所報告的 (遺失、延遲和頻寬使用率) 的網路效能值，以及設定期間所設定的閾值。 若為線路，如果所報告的頻寬使用率大於設定的閾值，線路就會標示為狀況不良。 針對對等互連，如果報告的 [遺失]、[延遲] 或 [頻寬使用率] 大於設定的 [閾值]，則對等互連會標示為 [狀況不良]。 NPM 不會利用計量或任何其他形式的資料，以 deicde 健全狀況狀態。
 
 ### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>為什麼 ExpressRoute Monitor'bandwidth 使用率會回報從計量位 in/out differrent 的值
 針對 ExpressRoute 監視器，頻寬 utiliation 是過去20分鐘內連入和連出頻寬的平均，以位/碼錶示。針對 Express Route 計量，位 in/out 是每分鐘的資料點。兩者在內部使用的資料集都相同，但在 NPM 與 ER 計量之間的匯總 valies。 針對細微、分分鐘監視和快速警示，建議您直接在 ER 計量上設定警示

@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: c45921b75fff000185c7e24b998b761ecc088d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a65065a6f3cbc7264a8efb9bcf128b06897aacf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734787"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220264"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>設定 Azure Active Directory Domain Services 以支援 SharePoint Server 的使用者設定檔同步處理
 
-SharePoint Server 包含同步處理使用者設定檔的服務。 這項功能可讓使用者設定檔儲存在集中位置，並可跨多個 SharePoint 網站和伺服器陣列存取。 若要設定 SharePoint Server 使用者設定檔服務，必須在 Azure Active Directory Domain Services （Azure AD DS）受控網域中授與適當的許可權。 如需詳細資訊，請參閱[SharePoint Server 中的使用者設定檔同步](https://technet.microsoft.com/library/hh296982.aspx)處理。
+SharePoint Server 包含同步處理使用者設定檔的服務。 這項功能可讓使用者設定檔儲存在集中位置，並可跨多個 SharePoint 網站和伺服器陣列存取。 若要設定 SharePoint Server 使用者設定檔服務，必須在 Azure Active Directory Domain Services (Azure AD DS) 受控網域中授與適當的許可權。 如需詳細資訊，請參閱[SharePoint Server 中的使用者設定檔同步](https://technet.microsoft.com/library/hh296982.aspx)處理。
 
 本文說明如何設定 Azure AD DS 以允許 SharePoint Server 使用者設定檔同步處理服務。
 
@@ -42,18 +42,18 @@ SharePoint Server 包含同步處理使用者設定檔的服務。 這項功能�
 
 ## <a name="service-accounts-overview"></a>服務帳戶總覽
 
-在受控網域中，名為**AAD DC 服務帳戶**的安全性群組會當做*使用者*組織單位（OU）的一部分存在。 下列權限會委派給此安全性群組的成員：
+在受控網域中，名為*AAD DC 服務帳戶*的安全性群組會當做*使用者*組織單位 (OU) 的一部分存在。 下列權限會委派給此安全性群組的成員：
 
 - 在根 DSE 上複寫**目錄變更**的許可權。
-- *在設定命名內容*（容器）上複寫**目錄變更**許可權 `cn=configuration` 。
+- *在設定命名內容*上複寫**目錄變更**許可權 (`cn=configuration` 容器) 。
 
-**AAD DC 服務帳戶**安全性群組也是內建組**Windows 2000 之前相容存取**的成員。
+*AAD DC 服務帳戶*安全性群組也是內建組*Windows 2000 之前相容存取*的成員。
 
 新增到此安全性群組時，SharePoint Server 使用者設定檔同步處理服務的服務帳戶會被授與必要的許可權，才能正常運作。
 
 ## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>啟用 SharePoint Server 使用者設定檔同步處理的支援
 
-SharePoint Server 的服務帳戶需要有足夠的許可權，才能將變更複寫至目錄，並讓 SharePoint Server 使用者設定檔同步處理正常運作。 若要提供這些許可權，請將用於 SharePoint 使用者設定檔同步處理的服務帳戶新增至**AAD DC 服務帳戶**群組。
+SharePoint Server 的服務帳戶需要有足夠的許可權，才能將變更複寫至目錄，並讓 SharePoint Server 使用者設定檔同步處理正常運作。 若要提供這些許可權，請將用於 SharePoint 使用者設定檔同步處理的服務帳戶新增至*AAD DC 服務帳戶*群組。
 
 從您的 Azure AD DS 管理 VM，完成下列步驟：
 

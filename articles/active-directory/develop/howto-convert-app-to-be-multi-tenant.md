@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f4b76bd91a47f14104a9f7f23a4a545ee3d40e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a48467100e396ed1b43544d1b10ae5007415e3e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477850"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201955"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>操作說明：讓任何 Azure Active Directory (AD) 使用者以多租用戶應用程式的模式登入
 
@@ -71,15 +71,21 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 
 讓我們看看應用程式如何驗證它從 Microsoft 身分識別平臺收到的權杖。 單一租用戶應用程式通常會採用類似以下的端點值：
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com
+```
 
 並使用它來建構中繼資料 URL (在此例中為 OpenID Connect)，例如︰
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
+```
 
 以下載用來驗證權杖的兩項關鍵資訊︰租用戶的簽署金鑰和簽發者值。 每個 Azure AD 租用戶都有具有採用下列格式的唯一簽發者值︰
 
+```http
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
+```
 
 其中的 GUID 值是租用戶的租用戶識別碼重新命名安全版本。 如果您選取上述的 `contoso.onmicrosoft.com` 中繼資料連結，即可在文件中看到這個簽發者值。
 
@@ -87,7 +93,9 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 
 由於 /common 端點既不對應租用戶也不是簽發者，所以當您檢查 /common 中繼資料中的簽發者值時，它擁有的是一個樣板化的 URL 而不是實際值︰
 
+```http
     https://sts.windows.net/{tenantid}/
+```
 
 因此，多租用戶應用程式無法僅透過將中繼資料中的簽發者值與權杖中的 `issuer` 值做比對來驗證權杖。 多租用戶應用程式需要一種邏輯，以根據簽發者值的租用戶識別碼部分，來決定哪些簽發者值有效、哪些簽發者值無效。 
 
@@ -125,7 +133,7 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 如果應用程式需要系統管理員同意，但系統管理員登入時未傳送 `prompt=admin_consent` 參數，則當系統管理員順利同意此應用程式時，**只會針對其使用者帳戶**套用該參數。 一般使用者將仍然無法登入此應用程式或對其行使同意權。 當您想要先讓租用戶系統管理員能夠瀏覽您的應用程式，然後才允許其他使用者存取時，這個功能相當有用。
 
 > [!NOTE]
-> 有些應用程式想要提供一種體驗，讓一般使用者能夠一開始即表示同意，之後應用程式即可讓系統管理員參與操作並要求需要系統管理員同意的權限。 在今天的 Azure AD 中，沒有任何方法可以完成 v1.0 應用程式註冊;不過，使用 Microsoft 身分識別平臺（v2.0）端點可讓應用程式在執行時間（而不是在註冊階段）要求許可權，這會啟用此案例。 如需詳細資訊，請參閱[Microsoft 身分識別平臺端點][AAD-V2-Dev-Guide]。
+> 有些應用程式想要提供一種體驗，讓一般使用者能夠一開始即表示同意，之後應用程式即可讓系統管理員參與操作並要求需要系統管理員同意的權限。 在今天的 Azure AD 中，沒有任何方法可以完成 v1.0 應用程式註冊;不過，使用 Microsoft 身分識別平臺 (v2.0) 端點可讓應用程式在執行時間（而不是在註冊階段）要求許可權，這會啟用此案例。 如需詳細資訊，請參閱[Microsoft 身分識別平臺端點][AAD-V2-Dev-Guide]。
 
 ### <a name="consent-and-multi-tier-applications"></a>同意和多層應用程式
 
@@ -135,7 +143,9 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 
 如果您的邏輯應用程式包含兩個或更多個應用程式註冊 (例如個別的用戶端和資源)，這可能會造成問題。 如何先將資源新增到客戶租用戶中？ Azure AD 涵蓋此情況，支援在單一步驟中同意用戶端和資源。 使用者在同意頁面上會看到用戶端和資源所要求的權限總和。 若要啟用這項行為，在資源的[應用程式資訊清單][AAD-App-Manifest]中，資源的應用程式註冊就必須以 `knownClientApplications` 的形式包含用戶端的「應用程式識別碼」。 例如：
 
+```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
+```
 
 在本文最後的[相關內容](#related-content)一節中，會使用一個由多層原生用戶端呼叫 Web API 的範例來示範做法。 下圖為針對單一租用戶中註冊的多層應用程式表示同意的概觀。
 
@@ -148,7 +158,7 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 如果它是由 Microsoft 以外的組織所建立的 API，則 API 的開發人員必須提供一種方法，讓其客戶同意應用程式進入其客戶的租使用者。 建議的設計是讓協力廠商開發人員建立 API，使其也可以做為 web 用戶端來執行註冊。 作法：
 
 1. 遵循先前的章節，確保 API 實作多租用戶應用程式註冊/程式碼的需求。
-2. 除了公開 API 的範圍/角色，請確定註冊包含「登入和讀取使用者設定檔」許可權（預設為提供）。
+2. 除了公開 API 的範圍/角色，請確定註冊包含預設) 提供的「登入和讀取使用者設定檔」許可權 (。
 3. 在 Web 用戶端實作登入/註冊頁面，並依照[管理員同意](#admin-consent)指引操作。
 4. 當使用者同意應用程式後，就會在其租用戶中建立服務主體和同意委派連結，而原生應用程式可以取得 API 的權杖。
 

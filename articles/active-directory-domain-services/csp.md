@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: c8cdb75c821f45fe7fcf0f455145beb2b9be2a55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2760f0d91f7ed1066b0020c4aedc7572af095cfb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734855"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220315"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>適用于 Azure 雲端解決方案提供者的 Azure Active Directory Domain Services 部署和管理
 
-Azure 雲端解決方案提供者（CSP）是適用于 Microsoft 合作夥伴的方案，並提供各種 Microsoft 雲端服務的授權通道。 Azure CSP 使得合作夥伴能夠管理銷售、擁有計費關係、提供技術及計費支援，並成為客戶的單一連絡窗口。 此外，Azure CSP 會提供一組完整的工具，包括自助服務入口網站和隨附的 API。 這些工具使得 CSP 合作夥伴能夠輕鬆地佈建及管理 Azure 資源，以及提供客戶和其訂用帳戶的帳單。
+Azure 雲端解決方案提供者 (CSP) 是適用于 Microsoft 合作夥伴的方案，並提供各種 Microsoft 雲端服務的授權通道。 Azure CSP 使得合作夥伴能夠管理銷售、擁有計費關係、提供技術及計費支援，並成為客戶的單一連絡窗口。 此外，Azure CSP 會提供一組完整的工具，包括自助服務入口網站和隨附的 API。 這些工具使得 CSP 合作夥伴能夠輕鬆地佈建及管理 Azure 資源，以及提供客戶和其訂用帳戶的帳單。
 
 [合作夥伴中心入口網站](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)是所有 Azure CSP 合作夥伴的進入點，並提供豐富的客戶管理功能、自動化處理等等。 Azure CSP 合作夥伴可以使用網頁型 UI 或使用 PowerShell 與各種 API 呼叫來使用合作夥伴中心的功能。
 
-下圖說明 CSP 模型高層的運作方式。 在這裡，Contoso 有一個 Azure Active Directory （Azure AD）租使用者。 它們與某個 CSP 有合作關係，該 CSP 會在其 Azure CSP 訂用帳戶中部署和管理資源。 Contoso 可能也有定期 (直接) 的 Azure 訂用帳戶，這部分是直接向 Contoso 計費。
+下圖說明 CSP 模型高層的運作方式。 在這裡，Contoso 有 Azure Active Directory (Azure AD) 租使用者。 它們與某個 CSP 有合作關係，該 CSP 會在其 Azure CSP 訂用帳戶中部署和管理資源。 Contoso 可能也有定期 (直接) 的 Azure 訂用帳戶，這部分是直接向 Contoso 計費。
 
 ![CSP 模型概觀](./media/csp/csp_model_overview.png)
 
@@ -37,9 +37,9 @@ CSP 合作夥伴的租使用者有三個特殊的代理程式群組-*管理員*�
 
 ## <a name="benefits-of-using-azure-ad-ds-in-an-azure-csp-subscription"></a>在 Azure CSP 訂用帳戶中使用 Azure AD DS 的優點
 
-Azure Active Directory Domain Services （Azure AD DS）提供受控網域服務，例如網域加入、群組原則、LDAP、Kerberos/NTLM 驗證，與 Windows Server Active Directory Domain Services 完全相容。 十多年來，已經建置許多應用程式以對使用這些功能的 AD 運作。 許多獨立軟體廠商 (ISV) 已在其客戶的內部部署建置和部署應用程式。 這些應用程式很難支援，因為您通常需要存取部署應用程式的不同環境。 有了 Azure CSP 訂用帳戶，您便擁有 Azure 調整與彈性較簡單的替代方案。
+Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，例如網域加入、群組原則、LDAP、Kerberos/NTLM 驗證，與 Windows Server Active Directory Domain Services 完全相容。 十多年來，已經建置許多應用程式以對使用這些功能的 AD 運作。 許多獨立軟體廠商 (ISV) 已在其客戶的內部部署建置和部署應用程式。 這些應用程式很難支援，因為您通常需要存取部署應用程式的不同環境。 有了 Azure CSP 訂用帳戶，您便擁有 Azure 調整與彈性較簡單的替代方案。
 
-Azure AD DS 支援 Azure CSP 訂用帳戶。 您可以將應用程式部署在與客戶的 Azure AD 租使用者系結的 Azure CSP 訂用帳戶中。 因此，您的員工（支援人員）可以使用貴組織的公司認證來管理、管理和服務您的應用程式部署所在的 Vm。
+Azure AD DS 支援 Azure CSP 訂用帳戶。 您可以將應用程式部署在與客戶的 Azure AD 租使用者系結的 Azure CSP 訂用帳戶中。 因此，您的員工 (支援人員) 可以使用貴組織的公司認證來管理、管理和服務您的應用程式部署所在的 Vm。
 
 您也可以在客戶的 Azure AD 租使用者中部署 Azure AD DS 受控網域。 接著，您的應用程式會連線到客戶的受控網域。 應用程式內依賴 Kerberos/NTLM、LDAP 或[MICROSOFT.DIRECTORYSERVICES API](/dotnet/api/system.directoryservices)的功能，可順暢地與客戶的網域搭配運作。 終端客戶受益于取用應用程式即服務，而不需要擔心維護應用程式部署所在的基礎結構。
 

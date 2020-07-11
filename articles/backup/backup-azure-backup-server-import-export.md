@@ -3,27 +3,28 @@ title: 適用於 DPM 和 Azure 備份伺服器的離線備份
 description: 使用 Azure 備份，您可以使用 Azure 匯入/匯出服務從網路傳送資料。 本文說明 DPM 和 Azure 備份伺服器的離線備份工作流程。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 0ff6198eed4e3e365b443a51e5c63534c2cf0973
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3f02c48ddd2c5cd4831d8c7a84dbbf42f55a562a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921259"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187790"
 ---
-# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM 和 Azure 備份伺服器的離線備份工作流程（MABS）
+# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM 和 Azure 備份伺服器的離線備份工作流程 (MABS) 
 
 >[!IMPORTANT]
-> 這些步驟適用于 DPM 2019 UR1 （或更新版本）和 MABS v3 UR1 （或更新版本）。
+> 這些步驟適用于 DPM 2019 UR1 (或更新版本) 和 MABS v3 UR1 (或更新版本) 。
 
-System Center Data Protection Manager 和 Azure 備份伺服器（MABS）會與 Azure 備份整合，並使用數個內建效率，在將資料初始完整備份至 Azure 的期間，節省網路和儲存體成本。 初始完整備份通常會傳輸大量資料且需要更多網路頻寬，相較之下，後續備份只傳輸差異/增量部分。 Azure 備份會壓縮初始備份。 透過離線植入的程序，Azure 備份可以使用磁碟，將已壓縮的離線初始備份資料上傳至 Azure。
+System Center Data Protection Manager 和 Azure 備份伺服器 (MABS) 與 Azure 備份整合，並使用數個內建效率，在將資料初始完整備份至 Azure 的期間，節省網路和儲存體成本。 初始完整備份通常會傳輸大量資料且需要更多網路頻寬，相較之下，後續備份只傳輸差異/增量部分。 Azure 備份會壓縮初始備份。 透過離線植入的程序，Azure 備份可以使用磁碟，將已壓縮的離線初始備份資料上傳至 Azure。
 
-Azure 備份的離線植入程式與[Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)緊密整合。 您可以使用這項服務，使用磁片將資料傳輸至 Azure。 如果您需要透過高延遲和低頻寬網路傳輸的初始備份資料量 tb，您可以使用離線植入工作流程，將一或多個硬碟上的初始備份複本傳送至 Azure 資料中心。 本文提供針對 System Center Data Protection Manager （DPM）和 Microsoft Azure 備份 Server （MABS）完成此工作流程的總覽和後續步驟。
+Azure 備份的離線植入程式與[Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)緊密整合。 您可以使用這項服務，使用磁片將資料傳輸至 Azure。 如果您有 tb (Tb 的初始備份資料) 需要透過高延遲和低頻寬網路傳輸，您可以使用離線植入工作流程，將一或多個硬碟上的初始備份複本傳送至 Azure 資料中心。 本文提供針對 System Center Data Protection Manager (DPM) 和 Microsoft Azure 備份 Server (MABS) 完成此工作流程的總覽和後續步驟。
 
 > [!NOTE]
-> Microsoft Azure 復原服務（MARS）代理程式的離線備份進程與 DPM 和 MABS 不同。 如需搭配使用離線備份與 MARS 代理程式的相關資訊，請參閱[Azure 備份中的離線備份工作流程](backup-azure-backup-import-export.md)。 使用 Azure 備份代理程式完成的系統狀態備份不支援離線備份。
+> Microsoft Azure 復原服務 (MARS) 代理程式的離線備份程式，與 DPM 和 MABS 不同。 如需搭配使用離線備份與 MARS 代理程式的相關資訊，請參閱[Azure 備份中的離線備份工作流程](backup-azure-backup-import-export.md)。 使用 Azure 備份代理程式完成的系統狀態備份不支援離線備份。
 >
 > MABS UR1 update 也會使用 MABS 中的 Azure 資料箱，將離線備份的預覽帶入其中。 [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com)若要深入瞭解，請聯絡。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 透過 Azure 備份和 Azure 匯入/匯出服務的離線植入功能，您可以輕鬆地使用磁片將資料離線上傳至 Azure。 離線備份程序涉及下列步驟：
 
@@ -39,7 +40,7 @@ Azure 備份的離線植入程式與[Azure 匯入/匯出服務](../storage/commo
 
 啟動離線備份工作流程之前，請確定符合下列必要條件：
 
-* 已建立[復原服務保存庫](backup-azure-recovery-services-vault-overview.md) \(部分機器翻譯\)。 若要建立一個，請依照[建立復原服務保存庫](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)教學課程-備份-windows-伺服器到 azure # 建立-復原-服務-保存庫中的步驟進行。
+* 已建立[復原服務保存庫](backup-azure-recovery-services-vault-overview.md) \(部分機器翻譯\)。 若要建立一個，請遵循[建立復原服務保存庫](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)教學課程-備份-windows-伺服器到 azure # 建立-復原-服務-保存庫) 中的步驟。
 * 請確認 SC DPM 或 MABS 上只安裝了[最新版的 Microsoft Azure 復原服務代理程式](https://aka.ms/azurebackup_agent)，並已向復原服務保存庫註冊。
 * 更新彙總套件1安裝在 SC DPM 2019 或 MABS v3 上。
 
@@ -101,13 +102,13 @@ Azure 備份的離線植入程式與[Azure 匯入/匯出服務](../storage/commo
 
 ## <a name="prepare-sata-drives-and-ship-to-azure"></a>準備 SATA 磁碟機並寄送至 Azure
 
-*AzureOfflineBackupDiskPrep* 公用程式會準備要傳送到最近 Azure 資料中心的 SATA 磁碟機。 此公用程式可在 Azure 備份代理程式安裝目錄中取得（在下列路徑中）：`*\Microsoft Azure Recovery Services Agent\Utils\\*`
+*AzureOfflineBackupDiskPrep* 公用程式會準備要傳送到最近 Azure 資料中心的 SATA 磁碟機。 此公用程式適用于下列路徑) 的 Azure 備份代理程式安裝目錄 (：`*\Microsoft Azure Recovery Services Agent\Utils\\*`
 
 1. 移至該目錄，並將 [AzureOfflineBackupDiskPrep] 目錄複製到連接 SATA 磁碟機的另一部電腦。 在連接 SATA 磁碟機的電腦上，請確定：
 
    * 複製電腦可以使用「起始離線備份」一節的工作流程中所提供的相同網路路徑，存取離線植入工作流程的預備位置。
    * 已在複製電腦上啟用 BitLocker。
-   * Azure PowerShell 3.7.0 安裝在複本電腦上（如果您是在 DPM 或 MABS 伺服器上執行 AzureOfflineBackupDiskPrep 公用程式，則不需要）。
+   * Azure PowerShell 3.7.0 安裝在複製電腦上 (如果您是在 DPM 或 MABS 伺服器) 上執行 AzureOfflineBackupDiskPrep 公用程式，則不需要。
    * 已安裝最新的相容瀏覽器 (Microsoft Edge 或 Internet Explorer 11) 且已啟用 JavaScript。
    * 複製電腦可以存取 Azure 入口網站。 如有必要，複製電腦可以與來源電腦相同。
 
@@ -123,7 +124,7 @@ Azure 備份的離線植入程式與[Azure 匯入/匯出服務](../storage/commo
     | 參數 | 說明 |
     | --- | --- |
     | s:&lt;*預備位置路徑*&gt; |此強制輸入是用來提供您在「起始離線備份」一節的工作流程中所輸入的預備位置路徑。 |
-    | p:&lt;*PublishSettingsFile 的路徑*&gt; |此選擇性輸入是用來提供您在「起始離線備份」一節中的工作流程中所輸入的 Azure 發佈設定檔案的路徑。 |
+    | p:&lt;*PublishSettingsFile 的路徑*&gt; |此選擇性輸入是用來提供 Azure 發佈設定檔案的路徑。 |
 
     當您執行命令時，公用程式會要求選取 Azure 匯入作業 (對應至需要準備的磁碟機)。 如果只有單一匯入作業與所提供的預備位置相關聯，您會看到如下的畫面。
 

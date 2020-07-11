@@ -14,14 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 04c541dc10b2e25aa1e24ef704b4d939243f23ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5806266955eafab8c3c8c99695ff82736de92e9b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513729"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187059"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple 裝置部署問題的疑難排解
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本文提供對於 Microsoft Azure StorSimple 部署很有幫助的疑難排解指引。 文中將說明常見問題、可能原因和建議的步驟，可協助您解決在設定 StorSimple 時可能遇到的問題。 
 
 此資訊適用於 StorSimple 8000 系列實體裝置和 StorSimple 雲端設備。
@@ -68,7 +69,7 @@ ms.locfileid: "85513729"
 * 註冊裝置。
 
 ## <a name="errors-during-the-required-network-settings"></a>所需的網路設定期間發生錯誤
-| 否。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
+| 不正確。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：這個命令只能在主動控制器上執行。 |設定是在被動控制站上執行。 |從主動控制器執行這個命令。 如需詳細資訊，請參閱 [識別裝置上的主動控制器](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)。 |
 | 2 |Invoke-HcsSetupWizard：裝置尚未就緒。 |在 DATA 0 上發生網路連線問題。 |檢查 DATA 0 上的實體網路連線。 |
@@ -79,7 +80,7 @@ ms.locfileid: "85513729"
 | 7 |Invoke-HcsSetupWizard：端點對應器中無更多可用的端點。 (例外狀況發生於 HRESULT：0x800706D9) |叢集功能無法運作。 |[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以進行後續步驟。 |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>選用的 Web Proxy 設定期間發生錯誤
-| 否。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
+| 不正確。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：無效的參數 (例外狀況發生於 HRESULT：0x80070057) |針對 Proxy 設定提供的其中一個參數無效。 |未使用正確格式提供 URI。 請使用下列格式： HTTP:// *\<IP address or FQDN of the web proxy server>* ：*\<TCP port number>* |
 | 2 |Invoke-HcsSetupWizard：RPC 伺服器無法使用 (例外狀況發生於 HRESULT：0x800706ba) |根本原因是下列其中一項︰<ol><li>叢集未啟動。</li><li>被動控制器無法與主動控制器通訊，而命令是從被動控制器執行。</li></ol> |依據根本原因︰<ol><li>[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以確定叢集已啟動。</li><li>從主動控制器執行這個命令。 如果您想要從被動控制器執行命令，就必須確保被動控制器能與主動控制器通訊。 如果此連線中斷，您必須[連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md)。</li></ol> |
@@ -102,7 +103,7 @@ ms.locfileid: "85513729"
 
 在設定裝置系統管理員和 StorSimple Snapshot Manager 密碼時，可能會遇到下列一或多個錯誤。
 
-| 否。 | 錯誤訊息 | 建議的動作 |
+| 不正確。 | 錯誤訊息 | 建議的動作 |
 | --- | --- | --- |
 | 1 |密碼超過最大長度。 |您的裝置系統管理員密碼長度必須介於 8 到 15 個字元。 |
 | 2 |密碼不符合所需的長度。 |您的裝置系統管理員密碼長度必須介於 8 到 15 個字元。|
@@ -125,7 +126,7 @@ ms.locfileid: "85513729"
 ## <a name="errors-during-device-registration"></a>裝置註冊期間發生錯誤
 您使用在 Microsoft Azure 中執行的 StorSimple 裝置管理員服務來註冊裝置。 您可能會在裝置註冊期間遇到下列一或多個問題。
 
-| 否。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
+| 不正確。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 | --- | --- | --- | --- |
 | 1 |錯誤 350027：無法向 StorSimple 裝置管理員註冊裝置。 | |等候幾分鐘的時間，然後再次嘗試操作。 如果問題持續發生，[請連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md)。 |
 | 2 |錯誤 350013：註冊裝置時發生錯誤。 這可能是因為服務註冊金鑰不正確而引發。 | |請使用正確的服務註冊金鑰再次註冊裝置。 如需詳細資訊，請參閱 [取得服務註冊金鑰](storsimple-8000-manage-service.md#get-the-service-registration-key) |
@@ -138,7 +139,7 @@ ms.locfileid: "85513729"
 | 9 |警告：無法啟動裝置。 您的設定裝置系統管理員和 StorSimple Snapshot Manager 密碼尚未變更。 |如果註冊失敗，裝置系統管理員和 StorSimple Snapshot Manager 密碼就不會變更。 | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>適用於疑難排解 StorSimple 部署的工具
-StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。 這些包括：
+StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。 其中包括：
 
 * 支援封裝和裝置記錄。
 * 專為疑難排解而設計的 Cmdlet。
@@ -207,30 +208,34 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 
 以下是來自控制站 0 (被動控制站) 的輸出。 未連接 DATA 1、DATA 2 及 DATA 3。 不會列出 DATA 4 和 DATA 5，因為它們不存在於裝置上。
 
-     Controller0>Get-NetAdapter
-     Name                 InterfaceDescription                        ifIndex  Status
-     ------               --------------------                        -------  ----------
-     DATA3                Mellanox ConnectX-3 Ethernet Adapter #2     17       NotPresent
-     DATA2                Mellanox ConnectX-3 Ethernet Adapter        14       NotPresent
-     Ethernet 2           HCS VNIC                                    13       Up
-     DATA1                Intel(R) 82574L Gigabit Network Co...#2     16       NotPresent
-     DATA0                Intel(R) 82574L Gigabit Network Conn...     15       Up
+```output
+Controller0>Get-NetAdapter
+Name                 InterfaceDescription                        ifIndex  Status
+------               --------------------                        -------  ----------
+DATA3                Mellanox ConnectX-3 Ethernet Adapter #2     17       NotPresent
+DATA2                Mellanox ConnectX-3 Ethernet Adapter        14       NotPresent
+Ethernet 2           HCS VNIC                                    13       Up
+DATA1                Intel(R) 82574L Gigabit Network Co...#2     16       NotPresent
+DATA0                Intel(R) 82574L Gigabit Network Conn...     15       Up
+```
 
 
 **範例輸出 - 控制站 1**
 
 以下是來自控制器 1 (主動控制器) 的輸出。 只在裝置上設定了 DATA 0 網路介面且正在運作中。
 
-     Controller1>Get-NetAdapter
-     Name                 InterfaceDescription                        ifIndex  Status
-     ------               --------------------                        -------  ----------
-     DATA3                Mellanox ConnectX-3 Ethernet Adapter        18       NotPresent
-     DATA2                Mellanox ConnectX-3 Ethernet Adapter #2     19       NotPresent
-     DATA1                Intel(R) 82574L Gigabit Network Co...#2     16       NotPresent
-     DATA0                Intel(R) 82574L Gigabit Network Conn...     15       Up
-     Ethernet 2           HCS VNIC                                    13       Up
-     DATA5                Intel(R) Gigabit ET Dual Port Server...     14       NotPresent
-     DATA4                Intel(R) Gigabit ET Dual Port Serv...#2     17       NotPresent
+```output
+Controller1>Get-NetAdapter
+Name                 InterfaceDescription                        ifIndex  Status
+------               --------------------                        -------  ----------
+DATA3                Mellanox ConnectX-3 Ethernet Adapter        18       NotPresent
+DATA2                Mellanox ConnectX-3 Ethernet Adapter #2     19       NotPresent
+DATA1                Intel(R) 82574L Gigabit Network Co...#2     16       NotPresent
+DATA0                Intel(R) 82574L Gigabit Network Conn...     15       Up
+Ethernet 2           HCS VNIC                                    13       Up
+DATA5                Intel(R) Gigabit ET Dual Port Server...     14       NotPresent
+DATA4                Intel(R) Gigabit ET Dual Port Serv...#2     17       NotPresent
+```
 
 
 ## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>Test-Connection Cmdlet 的疑難排解
@@ -247,23 +252,27 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 
 在下列範例中，沒有任何 IPV4 與 IPV6 位址的輸出，表示不會解析 DNS。 這表示沒有外部網路的連線能力，而且必須提供正確的 DNS。
 
-     Source        Destination     IPV4Address      IPV6Address
-     ------        -----------     -----------      -----------
-     HCSNODE0      outlook.com
-     HCSNODE0      outlook.com
-     HCSNODE0      outlook.com
-     HCSNODE0      outlook.com
+```output
+Source        Destination     IPV4Address      IPV6Address
+------        -----------     -----------      -----------
+HCSNODE0      outlook.com
+HCSNODE0      outlook.com
+HCSNODE0      outlook.com
+HCSNODE0      outlook.com
+```
 
 **範例輸出 - 正確的 DNS**
 
 在下列範例中，DNS 會傳回的 IPV4 位址，表示已正確設定 DNS。 這確認具有外部網路的連線能力。
 
-     Source        Destination     IPV4Address      IPV6Address
-     ------        -----------     -----------      -----------
-     HCSNODE0      outlook.com     132.245.92.194
-     HCSNODE0      outlook.com     132.245.92.194
-     HCSNODE0      outlook.com     132.245.92.194
-     HCSNODE0      outlook.com     132.245.92.194
+```output
+Source        Destination     IPV4Address      IPV6Address
+------        -----------     -----------      -----------
+HCSNODE0      outlook.com     132.245.92.194
+HCSNODE0      outlook.com     132.245.92.194
+HCSNODE0      outlook.com     132.245.92.194
+HCSNODE0      outlook.com     132.245.92.194
+```
 
 ## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>Test-HcsmConnection Cmdlet 的疑難排解
 針對已經連線且已向 StorSimple 裝置管理員服務註冊的裝置使用 `Test-HcsmConnection` Cmdlet。 這個 Cmdlet 可協助您確認已註冊裝置與相對應的 StorSimple 裝置管理員服務間的連線。 您可以在 Windows PowerShell for StorSimple 上執行這個命令。
@@ -308,41 +317,45 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 
 **範例輸出 – 成功註冊執行 StorSimple Update 3 的裝置**
 
-      Controller1>Test-HcsmConnection
+```output
+Controller1>Test-HcsmConnection
 
-      Checking device registration state  ... Success
-      Device registered successfully
+Checking device registration state  ... Success
+Device registered successfully
 
-      Checking primary NTP server [time.windows.com] ... Success
+Checking primary NTP server [time.windows.com] ... Success
 
-      Checking web proxy  ... NOT SET
+Checking web proxy  ... NOT SET
 
-      Checking primary IPv4 DNS server [10.222.118.154] ... Success
-      Checking primary IPv6 DNS server  ... NOT SET
-      Checking secondary IPv4 DNS server [10.222.120.24] ... Success
-      Checking secondary IPv6 DNS server  ... NOT SET
+Checking primary IPv4 DNS server [10.222.118.154] ... Success
+Checking primary IPv6 DNS server  ... NOT SET
+Checking secondary IPv4 DNS server [10.222.120.24] ... Success
+Checking secondary IPv6 DNS server  ... NOT SET
 
-      Checking device online  ... Success
+Checking device online  ... Success
 
-      Checking device authentication  ... This will take a few minutes.
-      Checking device authentication  ... Success
+Checking device authentication  ... This will take a few minutes.
+Checking device authentication  ... Success
 
-      Checking connectivity from device to service  ... This will take a few minutes.
+Checking connectivity from device to service  ... This will take a few minutes.
 
-      Checking connectivity from device to service  ... Success
+Checking connectivity from device to service  ... Success
 
-      Checking connectivity from service to device  ... Success
+Checking connectivity from service to device  ... Success
 
-      Checking connectivity to Microsoft Update servers  ... Success
-      Controller1>
+Checking connectivity to Microsoft Update servers  ... Success
+Controller1>
+```
 
 **範例輸出 – 離線裝置** 
 
 這個範例是來自 Azure 入口網站中狀態為 [離線] **** 的裝置。
 
-     Checking device registrationstate: Success
-     Device is registered successfully
-     Checking connectivity from device to SaaS.. Failure
+```output
+Checking device registrationstate: Success
+Device is registered successfully
+Checking connectivity from device to SaaS.. Failure
+```
 
 該裝置無法使用目前的 Web Proxy 設定來連接。 這可能是 Web Proxy 設定問題或網路連線問題。 在此情況下，您應該確定 Web Proxy 設定正確無誤，而且您的 Web Proxy 伺服器在線上且可連線。
 
@@ -354,48 +367,54 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 
 **範例輸出 – 已使用 Sync-HcsTime 執行的強制同步時間作業**
 
-     Controller0>Sync-HcsTime
-     The current device time is 4/24/2015 4:05:40 PM UTC.
+```output
+Controller0>Sync-HcsTime
+The current device time is 4/24/2015 4:05:40 PM UTC.
 
-     Time difference between NTP server and appliance is 00.0824069 seconds. Do you want to resync time with NTP server?
-     [Y] Yes [N] No (Default is "Y"): Y
-     Controller0>
+Time difference between NTP server and appliance is 00.0824069 seconds. Do you want to resync time with NTP server?
+[Y] Yes [N] No (Default is "Y"): Y
+Controller0>
+```
 
 ## <a name="troubleshoot-with-the-enable-hcsping-and-disable-hcsping-cmdlets"></a>使用 Enable-HcsPing 和 Disable-HcsPing Cmdlet 疑難排解
 這兩個 Cmdlet 可確保您裝置上的網路介面正常回應 ICMP Ping 要求。 StorSimple 網路介面依預設不會回應 Ping 要求。 若要知道裝置是否處於線上和可以連線的狀態，執行此 Cmdlet 是最簡單的方式。
 
 **範例輸出 – 啟用 HcsPing 和停用 HcsPing**
 
-     Controller0>
-     Controller0>Enable-HcsPing
-     Successfully enabled ping.
-     Controller0>
-     Controller0>
-     Controller0>Disable-HcsPing
-     Successfully disabled ping.
-     Controller0>
+```output
+Controller0>
+Controller0>Enable-HcsPing
+Successfully enabled ping.
+Controller0>
+Controller0>
+Controller0>Disable-HcsPing
+Successfully disabled ping.
+Controller0>
+```
 
 ## <a name="troubleshoot-with-the-trace-hcsroute-cmdlet"></a>使用 Trace-HcsRoute Cmdlet 疑難排解
 此 Cmdlet 可做為路由追蹤工具。 每過一段時間，它就會在前往最終目的地時將封包傳送到每個路由器，然後根據每個躍點傳回的封包計算結果。 由於此 Cmdlet 會顯示封包在任何指定的路由器或連結中遺失的程度，因此您可以找出可能導致網路發生問題的路由器或連結。
 
 **示範如何使用 Trace-HcsRoute 追蹤封包的路由的範例輸出**
 
-     Controller0>Trace-HcsRoute -Target 10.126.174.25
+```output
+Controller0>Trace-HcsRoute -Target 10.126.174.25
 
-     Tracing route to contoso.com [10.126.174.25]
-     over a maximum of 30 hops:
-       0  HCSNode0 [10.126.173.90]
-       1  contoso.com [10.126.174.25]
+Tracing route to contoso.com [10.126.174.25]
+over a maximum of 30 hops:
+   0  HCSNode0 [10.126.173.90]
+   1  contoso.com [10.126.174.25]
 
-     Computing statistics for 25 seconds...
-                 Source to Here   This Node/Link
-     Hop  RTT    Lost/Sent = Pct  Lost/Sent = Pct  Address
-       0                                           HCSNode0 [10.126.173.90]
-                                     0/ 100 =  0%   |
-       1    0ms     0/ 100 =  0%     0/ 100 =  0%  contoso.com
-      [10.126.174.25]
+Computing statistics for 25 seconds...
+            Source to Here   This Node/Link
+Hop  RTT    Lost/Sent = Pct  Lost/Sent = Pct  Address
+   0                                           HCSNode0 [10.126.173.90]
+                                 0/ 100 =  0%   |
+   1    0ms     0/ 100 =  0%     0/ 100 =  0%  contoso.com
+[10.126.174.25]
 
-     Trace complete.
+Trace complete.
+```
 
 ## <a name="troubleshoot-with-the-get-hcsroutingtable-cmdlet"></a>使用 Get-HcsRoutingTable Cmdlet 疑難排解
 此 Cmdlet 可顯示您 StorSimple 裝置的路由表。 路由表是一組規則，可以協助您判斷經由網際網路通訊協定 (IP) 傳輸的資料封包會將被導向的位置。
@@ -408,78 +427,82 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 
 如果您執行 `Get-HcsRoutingTable` Cmdlet，但未指定任何參數 (如下列範例所示)，該 Cmdlet 會同時輸出 IPv4 和 IPv6 路由表。 您也可以指定 `Get-HcsRoutingTable -IPv4` 或 `Get-HcsRoutingTable -IPv6`，以取得相關的路由表。
 
-      Controller0>
-      Controller0>Get-HcsRoutingTable
-      ===========================================================================
-      Interface List
-       14...00 50 cc 79 63 40 ......Intel(R) 82574L Gigabit Network Connection
-       12...02 9a 0a 5b 98 1f ......Microsoft Failover Cluster Virtual Adapter
-       13...28 18 78 bc 4b 85 ......HCS VNIC
-        1...........................Software Loopback Interface 1
-       21...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter #2
-       22...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter #3
-      ===========================================================================
+```output
+Controller0>
+Controller0>Get-HcsRoutingTable
+===========================================================================
+Interface List
+   14...00 50 cc 79 63 40 ......Intel(R) 82574L Gigabit Network Connection
+   12...02 9a 0a 5b 98 1f ......Microsoft Failover Cluster Virtual Adapter
+   13...28 18 78 bc 4b 85 ......HCS VNIC
+   1...........................Software Loopback Interface 1
+   21...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter #2
+   22...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter #3
+===========================================================================
 
-      IPv4 Route Table
-      ===========================================================================
-      Active Routes:
-      Network Destination        Netmask          Gateway       Interface  Metric
-                0.0.0.0          0.0.0.0  192.168.111.100  192.168.111.101     15
-              127.0.0.0        255.0.0.0         On-link         127.0.0.1    306
-              127.0.0.1  255.255.255.255         On-link         127.0.0.1    306
-        127.255.255.255  255.255.255.255         On-link         127.0.0.1    306
-            169.254.0.0      255.255.0.0         On-link     169.254.1.235    261
-          169.254.1.235  255.255.255.255         On-link     169.254.1.235    261
-        169.254.255.255  255.255.255.255         On-link     169.254.1.235    261
-          192.168.111.0    255.255.255.0         On-link   192.168.111.101    266
-        192.168.111.101  255.255.255.255         On-link   192.168.111.101    266
-        192.168.111.255  255.255.255.255         On-link   192.168.111.101    266
-              224.0.0.0        240.0.0.0         On-link         127.0.0.1    306
-              224.0.0.0        240.0.0.0         On-link     169.254.1.235    261
-              224.0.0.0        240.0.0.0         On-link   192.168.111.101    266
-        255.255.255.255  255.255.255.255         On-link         127.0.0.1    306
-        255.255.255.255  255.255.255.255         On-link     169.254.1.235    261
-        255.255.255.255  255.255.255.255         On-link   192.168.111.101    266
-      ===========================================================================
-      Persistent Routes:
-        Network Address          Netmask  Gateway Address  Metric
-                0.0.0.0          0.0.0.0  192.168.111.100       5
-      ===========================================================================
+IPv4 Route Table
+===========================================================================
+Active Routes:
+Network Destination        Netmask          Gateway       Interface  Metric
+            0.0.0.0          0.0.0.0  192.168.111.100  192.168.111.101     15
+         127.0.0.0        255.0.0.0         On-link         127.0.0.1    306
+         127.0.0.1  255.255.255.255         On-link         127.0.0.1    306
+   127.255.255.255  255.255.255.255         On-link         127.0.0.1    306
+      169.254.0.0      255.255.0.0         On-link     169.254.1.235    261
+      169.254.1.235  255.255.255.255         On-link     169.254.1.235    261
+   169.254.255.255  255.255.255.255         On-link     169.254.1.235    261
+      192.168.111.0    255.255.255.0         On-link   192.168.111.101    266
+   192.168.111.101  255.255.255.255         On-link   192.168.111.101    266
+   192.168.111.255  255.255.255.255         On-link   192.168.111.101    266
+         224.0.0.0        240.0.0.0         On-link         127.0.0.1    306
+         224.0.0.0        240.0.0.0         On-link     169.254.1.235    261
+         224.0.0.0        240.0.0.0         On-link   192.168.111.101    266
+   255.255.255.255  255.255.255.255         On-link         127.0.0.1    306
+   255.255.255.255  255.255.255.255         On-link     169.254.1.235    261
+   255.255.255.255  255.255.255.255         On-link   192.168.111.101    266
+===========================================================================
+Persistent Routes:
+   Network Address          Netmask  Gateway Address  Metric
+            0.0.0.0          0.0.0.0  192.168.111.100       5
+===========================================================================
 
-      IPv6 Route Table
-      ===========================================================================
-      Active Routes:
-       If Metric Network Destination      Gateway
-        1    306 ::1/128                  On-link
-       13    276 fd99:4c5b:5525:d80b::/64 On-link
-       13    276 fd99:4c5b:5525:d80b::1/128
-                                          On-link
-       13    276 fd99:4c5b:5525:d80b::3/128
-                                          On-link
-       13    276 fe80::/64                On-link
-       12    261 fe80::/64                On-link
-       13    276 fe80::17a:4eba:7c80:727f/128
-                                          On-link
-       12    261 fe80::fc97:1a53:e81a:3454/128
-                                          On-link
-        1    306 ff00::/8                 On-link
-       13    276 ff00::/8                 On-link
-       12    261 ff00::/8                 On-link
-       14    266 ff00::/8                 On-link
-      ===========================================================================
-      Persistent Routes:
-        None
+IPv6 Route Table
+===========================================================================
+Active Routes:
+   If Metric Network Destination      Gateway
+   1    306 ::1/128                  On-link
+   13    276 fd99:4c5b:5525:d80b::/64 On-link
+   13    276 fd99:4c5b:5525:d80b::1/128
+                                    On-link
+   13    276 fd99:4c5b:5525:d80b::3/128
+                                    On-link
+   13    276 fe80::/64                On-link
+   12    261 fe80::/64                On-link
+   13    276 fe80::17a:4eba:7c80:727f/128
+                                    On-link
+   12    261 fe80::fc97:1a53:e81a:3454/128
+                                    On-link
+   1    306 ff00::/8                 On-link
+   13    276 ff00::/8                 On-link
+   12    261 ff00::/8                 On-link
+   14    266 ff00::/8                 On-link
+===========================================================================
+Persistent Routes:
+   None
 
-      Controller0>
+Controller0>
+```
 
 ## <a name="step-by-step-storsimple-troubleshooting-example"></a>StorSimple 逐步疑難排解範例
 下列範例示範 StorSimple 部署的逐步疑難排解。 在範例案例中，裝置註冊會失敗，且會有錯誤訊息指出網路設定或 DNS 名稱不正確。
 
 傳回的錯誤訊息如下：
 
-     Invoke-HcsSetupWizard: An error has occurred while registering the device. This could be due to incorrect IP address or DNS name. Please check your network settings and try again. If the problems persist, contact Microsoft Support.
-     +CategoryInfo: Not specified
-     +FullyQualifiedErrorID: CiSClientCommunicationErros, Microsoft.HCS.Management.PowerShell.Cmdlets.InvokeHcsSetupWizardCommand
+```output
+Invoke-HcsSetupWizard: An error has occurred while registering the device. This could be due to incorrect IP address or DNS name. Please check your network settings and try again. If the problems persist, contact Microsoft Support.
++CategoryInfo: Not specified
++FullyQualifiedErrorID: CiSClientCommunicationErros, Microsoft.HCS.Management.PowerShell.Cmdlets.InvokeHcsSetupWizardCommand
+```
 
 錯誤可能是因為下列其中一個原因所引發：
 

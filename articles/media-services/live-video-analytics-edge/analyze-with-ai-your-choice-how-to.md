@@ -3,11 +3,12 @@ title: 使用您選擇的 AI 來分析即時影片-Azure
 description: 在本文中，您將瞭解如何建立 IoT Edge 模組，以與 IoT Edge 上的即時影片分析整合，以使用您選擇的電腦視覺模型來分析即時影片。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 0ac2af280eefd5ce293a8be422551d5ee6f6d3f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a1ea3ebd8c7de4c691d7a982dbc08e9d08d9e38
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260641"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182860"
 ---
 # <a name="analyze-live-video-with-ai-of-your-choice"></a>使用您選擇的 AI 分析即時影片
 
@@ -45,11 +46,11 @@ HTTP 合約定義如下：
 
 從即時影片分析模組到您模組的要求會如下所示：
 
-|||
+| 機碼 | 值 |
 |---|---|
 |POST| `https://hostname/optional-path?optional-query`|
 |接受|application/json、*/*|
-|授權| 基本、摘要、持有人（透過自訂標頭支援）|
+|授權| 基本、摘要、持有者 (透過自訂標頭支援) |
 |Content-Type|image/jpeg<br/>image/png<br/>image/bmp<br/>影像/x-原始|
 |Content-Length|主體長度（以位元組為單位）|
 |User-Agent|Azure 媒體服務|
@@ -71,7 +72,7 @@ Content-Length: 519222
 
 從您的模組到 Live Video Analytics 模組的回應應如下所示
 
-|||
+| 機碼 | 值 |
 |---|---|
 |狀態碼|200確定-找到推斷結果<br/>204無內容-AI 找不到任何內容<br/>400不正確的要求-不應為<br/>500內部伺服器錯誤-不應為<br/>503伺服器忙碌-AMS 會根據「重試後」標頭，或根據預設的時間長度（如果未設定標頭，則為）。|
 |Content-Type|application/json|
@@ -114,7 +115,7 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
 如果您的模組傳回內容類型為 "application/json" 的回應，但 JSON 架構並未遵循[下面所述的推斷中繼資料架構](#inference-metadata-schema)，則會透過管線轉送訊息內容，但會降低互通性。
 
 > [!NOTE]
-> 如果您的模組不會產生任何結果，它應該會傳回 HTTP 204 狀態碼（沒有內容）與空白的回應主體。 即時影片分析將瞭解這是空的結果，而且不會在整個管線中轉送事件。
+> 如果您的模組未產生任何結果，它應該會傳回 HTTP 204 狀態碼， (沒有內容) 空白的回應主體。 即時影片分析將瞭解這是空的結果，而且不會在整個管線中轉送事件。
 
 ### <a name="inference-metadata-schema"></a>推斷中繼資料架構
 
@@ -264,7 +265,7 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
  
 ## <a name="sample-http-extension-modules"></a>HTTP 延伸模組範例
 
-您可以在[即時影片分析 GitHub](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)存放庫中找到一些範例 HTTP 延伸模組。 其中一個[影片分析範例示範](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx)如何使用[Yolov3](https://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/)模型來建立 IoT Edge 模組，以進行物件偵測。 您可以使用相同的方法，透過您選擇的 AI 模型來建立自己的模組。
+您可以在[即時影片分析 GitHub](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)存放庫中找到一些範例 HTTP 延伸模組。 其中一個[影片分析範例示範](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx)如何使用[YOLOv3](https://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/)模型來建立 IoT Edge 模組，以進行物件偵測。 另一個[影片分析範例示範](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx-tiny)如何使用小型 YOLOv3，這是輕量版的 YOLOv3 ONNX 模型。 您可以使用相同的方法，透過您選擇的 AI 模型來建立自己的模組。
 
 ## <a name="next-steps"></a>後續步驟
 

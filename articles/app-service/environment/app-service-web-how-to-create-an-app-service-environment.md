@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80477788"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220570"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>如何建立 App Service 環境 v1 
 
@@ -40,11 +40,11 @@ App Service 環境 (ASE) 是 Azure App Service 的進階服務選項，可提供
 
 1. 提供 ASE 的名稱。 您為 ASE 指定的名稱將用於在 ASE 中建立的應用程式。 如果 ASE 的名稱是 appsvcenvdemo，則子網域名稱會是 .appsvcenvdemo.p.azurewebsites.net**。 如果您以此建立名為 mytestapp** 的應用程式，會定址於 mytestapp.appsvcenvdemo.p.azurewebsites.net**。 您無法在 ASE 的名稱中使用空白字元。 如果您在名稱中使用大寫字元，則網域名稱會是該名稱的全小寫版本。 如果您是使用 ILB，ASE 名稱就不會用於您的子網域中，但是會在 ASE 建立期間明確指定。
    
-    ![][1]
-2. 選取您的訂用帳戶。 您的 ASE 使用的訂用帳戶也會套用到您在該 ASE 中建立的所有應用程式。 您無法將您的 ASE 放在另一個訂用帳戶的 VNet 中。
+    ![顯示如何 (ASE) 建立 App Service 環境的螢幕擷取畫面。][1]
+2. 選取您的訂閱。 您的 ASE 使用的訂用帳戶也會套用到您在該 ASE 中建立的所有應用程式。 您無法將您的 ASE 放在另一個訂用帳戶的 VNet 中。
 3. 選取或指定新的資源群組。 用於 ASE 的資源群組必須是與用於您的 VNet 的相同。 如果您選取既有的 VNet，您的 ASE 資源群組選取項目將會更新，以反映 VNet 的資源群組。
    
-    ![][2]
+    ![顯示如何選取或修改新資源群組的螢幕擷取畫面。][2]
 4. 請選取您的虛擬網路及位置選項。 您可以選擇建立新的 VNet，或選取既有的 VNet。 如果您選取新的 VNet，則可以指定名稱和位置。 新的 VNet 會有位址範圍 192.168.250.0/23，和定義為 192.168.250.0/24 名為 **default** 的子網路。 您也可以僅選取既有的傳統或 Resource Manager VNet。 [VIP 類型] 選項會決定您的 ASE 是否可以從網際網路 (外部) 直接存取，或者它使用內部負載平衡器 (ILB)。 若要深入了解，請參閱[在 App Service 環境中使用內部負載平衡器][ILBASE]。 如果您選取 [外部] VIP 類型，則可以根據 IP SSL 用途選取要建立系統的外部 IP 位址數目。 如果您選取 [內部]，則需要指定 ASE 將使用的子網域。 ASE 可以部署到使用** 公用位址範圍*或* RFC1918 位址空間 (也就是私人位址) 的虛擬網路。 若要搭配使用虛擬網路與公用位址範圍，您必須事先建立 VNet。 選取既有的 VNet 時，您必須在 ASE 建立期間建立新的子網路。 **您無法在入口網站中使用預先建立的子網。如果您使用 resource manager 範本建立 ASE，則可以使用既有的子網建立 ASE。** 若要使用此處的資訊透過範本建立 ASE，[從範本建立 App Service 環境][ILBAseTemplate]，以及這裡[從範本建立 ILB App Service 環境][ASEfromTemplate]。
 
 ### <a name="details"></a>詳細資料

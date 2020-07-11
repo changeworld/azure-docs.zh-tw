@@ -4,19 +4,19 @@ description: 包含檔案
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/16/2020
+ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 1ca9d41134bf33a9e007da4b5a56652ccdbd4e22
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2d0030549acdb55ce2be94534ec59bb07b11869d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218369"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221626"
 ---
-共用映像庫服務可協助您圍繞受控映像來建置結構和組織。 共用映像資源庫提供：
+共用映射資源庫是一種服務，可協助您建立影像周圍的結構和組織。 共用映像資源庫提供：
 
-- 映像的受控全域複寫。
+- 映像的全域複寫。
 - 對映像進行版本控制和分組，以便管理。
 - 在支援可用性區域的區域中，具有區域備援儲存體 (ZRS) 帳戶的高可用性映像。 ZRS 針對區域性失敗提供更佳的復原能力。
 - 進階儲存體支援 (Premium_LRS)。
@@ -33,7 +33,7 @@ ms.locfileid: "86218369"
 
 | 資源 | 描述|
 |----------|------------|
-| **映像來源** | 這是資源，可用來在映像庫中建立**映像版本**。 映像來源可以是現有的 Azure VM，其為[一般化或特殊化](#generalized-and-specialized-images)、受控映像、快照集，或另一個映像庫中的映像版本。 |
+| **映像來源** | 這是資源，可用來在映像庫中建立**映像版本**。 映射來源可以是已[一般化或特製](#generalized-and-specialized-images)化的現有 Azure VM、受控映射、快照集、VHD 或另一個映射庫中的映射版本。 |
 | **映像庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
 | **映像定義** | 映像定義會在資源庫內建立，並帶有映像資訊以及在內部使用時所需滿足的需求。 這包括映像是 Windows 還是 Linux、版本資訊以及最小和最大的記憶體需求。 這是映像類型的定義。 |
 | **映像版本** | **映像版本**是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
@@ -68,6 +68,7 @@ ms.locfileid: "86218369"
 * vCPU 和記憶體最小值和最大值建議 - 如果您的映像有 vCPU 和記憶體建議，您可以將該資訊附加至映像定義。
 * 不允許的磁碟類型 - 您可以提供 VM 儲存體需求的相關資訊。 例如，如果映像不適合標準 HDD 磁碟，您可以將其新增至不允許清單。
 * Hyper-V 產生 - 您可以指定映像是從 Gen 1 或 Gen 2 Hyper-V VHD 建立。
+* Marketplace 映射的購買方案資訊- `-PurchasePlanPublisher ` 、 `-PurchasePlanName` 和 `-PurchasePlanProduct` 。 如需購買方案資訊的詳細資訊，請參閱在[Azure Marketplace 中尋找影像](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)和[在建立映射時提供 Azure Marketplace 購買方案資訊](../articles/virtual-machines/marketplace-images.md)。
 
 ## <a name="generalized-and-specialized-images"></a>一般化和特殊化映像
 
@@ -82,11 +83,7 @@ ms.locfileid: "86218369"
 
 ## <a name="regional-support"></a>區域支援
 
-來源區域會列在下表中。 所有公用區域都可以是目標區域，但是若要複寫至澳大利亞中部和澳大利亞中部 2，您需要將您的訂用帳戶列入允許清單。 若欲要求加入允許清單，請移至： https://azure.microsoft.com/global-infrastructure/australia/contact/
-
-> 澳大利亞中部、中國東部、印度南部、西歐、澳大利亞中部2、中國東部2、東南亞、英國南部、澳大利亞東部、中國北部、日本東部、英國西部、澳大利亞東南部、中國北部2、日本西部、US DoD 中部、巴西南部、東亞、韓國中部、US DoD 東部、加拿大中部、美國東部、南韓南部、US Gov 亞利桑那州、加拿大東部、美國東部2、美國中北部，US Gov 德克薩斯州，印度中部，美國東部 2 EUAP，北歐，US Gov 維吉尼亞州，美國中部，法國中部，美國中南部，印度西部，美國中部 EUAP，法國南部，美國中西部，美國西部，美國西部 2 |
-
-
+所有公用區域都可以是目標區域，但是若要複寫至澳大利亞中部和澳大利亞中部 2，您需要將您的訂用帳戶列入允許清單。 若欲要求加入允許清單，請移至： https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>限制 
 
@@ -233,13 +230,7 @@ ms.locfileid: "86218369"
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以從特製化磁碟建立映像版本？
 
-是，支援映像形式的特殊化磁碟處於預覽狀態。 您只能使用入口網站、PowerShell 或 API，從特殊化映像建立 VM。 
-
-
-使用 [PowerShell 來建立特殊化 VM 的映像](../articles/virtual-machines/image-version-vm-powershell.md)。
-
-使用入口網站來建立 [Windows](../articles/virtual-machines/linux/shared-images-portal.md) 或 [Linux] (../articles/virtual-machines/linux/shared-images-portal.md) 映像。 
-
+是，可以使用[CLI](../articles/virtual-machines/vm-specialized-image-version-cli.md)、 [PowerShell](../articles/virtual-machines/vm-specialized-image-version-powershell.md)或 API，從特製化映射建立 VM。 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>共用映像庫資源是否可以在建立後移至不同訂用帳戶？
 

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 707cfb2e9bea3286daa92ea54f7bb9659a455caf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e37c680f6bf9e296230232c0d4e0fab5f50ad3cd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390511"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142369"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
-您環境中的實體會以[數位 twins](concepts-twins-graph.md)來表示。 管理您的數位 twins 可能包括建立、修改和移除。 若要執行這些作業，您可以使用[**選取 api**](how-to-use-apis-sdks.md)、 [.Net （c #） SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 數位 Twins CLI](how-to-use-cli.md)。
+您環境中的實體會以[數位 twins](concepts-twins-graph.md)來表示。 管理您的數位 twins 可能包括建立、修改和移除。 若要執行這些作業，您可以使用[**選取 api**](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 數位 Twins CLI](how-to-use-cli.md)。
 
 本文著重于管理數位 twins;若要使用關聯性和對應項[圖形](concepts-twins-graph.md)做為整體，請參閱[如何：使用關聯性管理](how-to-manage-graph.md)對應項圖形。
 
@@ -93,7 +93,7 @@ object result = await client.GetDigitalTwin(id);
 
 若要使用單一 API 呼叫來取出多個 twins，請參閱[如何：查詢](how-to-query-graph.md)對應項圖形中的查詢 API 範例。
 
-請考慮下列會定義*月球*的模型（以[數位 Twins 定義語言（DTDL）](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)撰寫）：
+請考慮下列以[數位 Twins 定義語言](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)撰寫的模型 ( (DTDL) ) ，其中定義了*月球*：
 
 ```json
 {
@@ -122,6 +122,7 @@ object result = await client.GetDigitalTwin(id);
 ```json
 {
   "$dtId": "myMoon-001",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "radius": 1737.1,
   "mass": 0.0734,
   "$metadata": {
@@ -146,14 +147,15 @@ object result = await client.GetDigitalTwin(id);
 
 數位對應項的定義屬性會以數位對應項上的最上層屬性傳回。 不屬於 DTDL 定義的中繼資料或系統資訊會以前置詞傳回 `$` 。 中繼資料屬性包括：
 * 此 Azure 數位 Twins 實例中數位對應項的識別碼，其為 `$dtId` 。
+* `$etag`，這是由 web 伺服器指派的標準 HTTP 欄位
 * 區段中的其他屬性 `$metadata` 。 其中包括：
     - 數位對應項的模型 DTMI。
-    - 每個可寫入屬性的同步處理狀態。 這對裝置而言最為有用，因為服務和裝置可能會有發散的狀態（例如，當裝置離線時）。 目前，此屬性僅適用于連接到 IoT 中樞的實體裝置。 使用中繼資料區段中的資料，您可以瞭解屬性的完整狀態，以及上次修改的時間戳記。 如需有關同步處理狀態的詳細資訊，請參閱[此 IoT 中樞](../iot-hub/tutorial-device-twins.md)有關同步處理裝置狀態的教學課程。
+    - 每個可寫入屬性的同步處理狀態。 這對裝置而言最為有用，因為在此情況下，服務和裝置可能會有 (的發散狀態，例如，當裝置離線) 時。 目前，此屬性僅適用于連接到 IoT 中樞的實體裝置。 使用中繼資料區段中的資料，您可以瞭解屬性的完整狀態，以及上次修改的時間戳記。 如需有關同步處理狀態的詳細資訊，請參閱[此 IoT 中樞](../iot-hub/tutorial-device-twins.md)有關同步處理裝置狀態的教學課程。
     - 服務特定的中繼資料，例如 IoT 中樞或 Azure 數位 Twins。 
 
 您可以使用所選的 JSON 剖析程式庫（例如），剖析對應項的傳回 JSON `System.Text.Json` 。
 
-您也可以使用 SDK 隨附的序列化協助 `BasicDigitalTwin` 程式類別，它會以預先剖析的形式傳回核心對應項中繼資料和屬性。 範例如下：
+您也可以使用 SDK 隨附的序列化協助 `BasicDigitalTwin` 程式類別，它會以預先剖析的形式傳回核心對應項中繼資料和屬性。 以下是範例：
 
 ```csharp
 Response<string> res = client.GetDigitalTwin(twin_id);

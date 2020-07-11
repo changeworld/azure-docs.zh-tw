@@ -5,16 +5,20 @@ author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 2421f8a9396b47d04db35a7cad843f6baa6f6177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 0956a38349ef7bc7571dfac2f3722dd9fea425a3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416098"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201655"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的 SSL/TLS 連線
 
 適用於 MySQL 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將資料庫伺服器連接至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。
+
+> [!NOTE]
+> 更新 `require_secure_transport` 伺服器參數值並不會影響 MySQL 服務的行為。 請使用本文中所述的 SSL 和 TLS 強制功能來保護與的連接。
 
 ## <a name="ssl-default-settings"></a>SSL 預設設定
 
@@ -24,11 +28,15 @@ ms.locfileid: "84416098"
 
 Azure 入口網站中會顯示多種程式設計語言的連接字串。 這些連接字串包含連接到您資料庫所需的 SSL 參數。 在 Azure 入口網站中選取您的伺服器。 在下 [設定]**** 標題之下，選取 [連接字串]****。 SSL 參數會根據連接器而有所不同，例如，"ssl=true" 或 "sslmode=require" 或 "sslmode=required" 及其他變化。
 
+在某些情況下，應用程式需要由受信任的憑證授權單位單位所產生的本機憑證檔案 (CA) 憑證檔案，以安全地連接。 用來連接到適用於 MySQL 的 Azure 資料庫伺服器的憑證位於 https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem 。 
+
+請參閱下列連結，以取得主權雲端中伺服器的憑證： [Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)、 [Azure 中國](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)和[azure 德國](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)。
+
 若要了解如何在開發應用程式時啟用或停用 SSL 連接，請參閱[如何設定 SSL](howto-configure-ssl.md)。
 
 ## <a name="tls-enforcement-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的 TLS 強制
 
-適用於 MySQL 的 Azure 資料庫支援使用傳輸層安全性（TLS）連接到您的資料庫伺服器之用戶端的加密。 TLS 是一種業界標準通訊協定，可確保您的資料庫伺服器和用戶端應用程式之間的安全網路連線，讓您遵守合規性需求。
+適用於 MySQL 的 Azure 資料庫支援使用傳輸層安全性 (TLS) 來連接到資料庫伺服器的用戶端加密。 TLS 是一種業界標準通訊協定，可確保您的資料庫伺服器和用戶端應用程式之間的安全網路連線，讓您遵守合規性需求。
 
 ### <a name="tls-settings"></a>TLS 設定
 
@@ -36,7 +44,7 @@ Azure 入口網站中會顯示多種程式設計語言的連接字串。 這些�
 
 |  最小 TLS 設定             | 支援的用戶端 TLS 版本                |
 |:---------------------------------|-------------------------------------:|
-| TLSEnforcementDisabled （預設值） | 不需要 TLS                      |
+| TLSEnforcementDisabled (預設)  | 不需要 TLS                      |
 | TLS1_0                           | TLS 1.0、TLS 1.1、TLS 1.2 和更高版本           |
 | TLS1_1                           | TLS 1.1、TLS 1.2 及更高版本                   |
 | TLS1_2                           | TLS 1.2 版和更新版本                     |
@@ -45,9 +53,9 @@ Azure 入口網站中會顯示多種程式設計語言的連接字串。 這些�
 例如，將 [最小 TLS 設定版本] 的值設定為 [TLS 1.0]，表示您的伺服器將允許使用 TLS 1.0、1.1 和 1.2 + 的用戶端進行連接。 或者，將此值設定為1.2，表示您只允許使用 TLS 1.2 + 的用戶端連線，且 TLS 1.0 和 TLS 1.1 的所有連線都會遭到拒絕。
 
 > [!Note] 
-> 適用於 MySQL 的 Azure 資料庫預設為停用所有新伺服器的 TLS。
+> 根據預設，適用於 MySQL 的 Azure 資料庫不會強制執行最低的 TLS 版本， (設定 `TLSEnforcementDisabled`) 。
 >
-> 適用於 MySQL 的 Azure 資料庫目前支援的 TLS 版本為 TLS 1.0、1.1 和1.2。 一旦強制執行至特定的最低 TLS 版本，您就無法將它變更為 [停用]。
+> 一旦您強制執行最低的 TLS 版本，您之後就無法停用最低版本強制。
 
 若要瞭解如何設定適用於 MySQL 的 Azure 資料庫的 TLS 設定，請參閱 how [to CONFIGURE tls 設定](howto-tls-configurations.md)。
 

@@ -4,11 +4,12 @@ description: 了解如何在 Azure Functions 的 Durable Functions 擴充中處�
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 387b5d920de4a295366cc7e948862a12cea901d3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76262957"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165544"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions (Azure Functions) 中處理外部事件
 
@@ -19,7 +20,7 @@ ms.locfileid: "76262957"
 
 ## <a name="wait-for-events"></a>等候事件
 
-協調流程觸發程式系結的 `WaitForExternalEvent` （.net）和 `waitForExternalEvent` （JavaScript）方法可讓協調器函式以非同步方式等候並接聽外來事件。 [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger) 接聽協調器函式會宣告事件的「名稱」** 和預期收到的「資料形式」**。
+協調流程觸發程式系結的[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) ( .net) 和 `waitForExternalEvent` (JavaScript) 方法，可讓協調器函式以非同步方式等候並接聽外來事件。 [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger) 接聽協調器函式會宣告事件的「名稱」** 和預期收到的「資料形式」**。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -172,7 +173,14 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>傳送事件
 
-`RaiseEventAsync` `raiseEvent` [協調流程用戶端](durable-functions-bindings.md#orchestration-client)系結的（.Net）或（javascript）方法會傳送 `WaitForExternalEvent` （.net）或 `waitForExternalEvent` （javascript）等候的事件。  `RaiseEventAsync` 方法接受 *eventName* 和 *eventData* 作為參數。 事件資料必須是 JSON 可序列化。
+您可以使用[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) ( .net) 或 `raiseEventAsync` (JavaScript) 方法，將外來事件傳送至協調流程。 這些方法是由[協調流程用戶端](durable-functions-bindings.md#orchestration-client)系結所公開。 您也可以使用內建的「[引發事件」 HTTP API](durable-functions-http-api.md#raise-event) ，將外來事件傳送至協調流程。
+
+引發的事件包括*實例識別碼*、*事件名稱*和*eventData*做為參數。 協調器函式會使用 `WaitForExternalEvent` ( .net) 或 `waitForExternalEvent` (JavaScript) api 來處理這些事件。 事件*名稱*在傳送和接收端上必須相符，才能處理事件。 事件資料也必須是可序列化的 JSON。
+
+就內部而言，「引發事件」機制會將等候協調器函式所挑選的訊息排入佇列。 如果執行個體不是在等候指定的「事件名稱」**，事件訊息就會新增至記憶體內部佇列。 如果協調流程執行個體稍後開始接聽該「事件名稱」**，它將會檢查佇列是否有事件訊息。
+
+> [!NOTE]
+> 如果沒有具有指定「執行個體識別碼」** 的協調流程執行個體，則會捨棄事件訊息。
 
 以下的範例佇列觸發函式會將「核准」事件傳送至協調器函式執行個體。 協調流程執行個體識別碼來自佇列訊息的本文。
 
@@ -208,6 +216,19 @@ module.exports = async function(context, instanceId) {
 
 > [!NOTE]
 > 如果沒有具有指定「執行個體識別碼」** 的協調流程執行個體，則會捨棄事件訊息。
+
+### <a name="http"></a>HTTP
+
+以下是將「核准」事件引發至協調流程實例的 HTTP 要求範例。 
+
+```http
+POST /runtime/webhooks/durabletask/instances/MyInstanceId/raiseEvent/Approval&code=XXX
+Content-Type: application/json
+
+"true"
+```
+
+在此情況下，實例識別碼會硬式編碼為*MyInstanceId*。
 
 ## <a name="next-steps"></a>後續步驟
 

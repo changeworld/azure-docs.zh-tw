@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: e1dd20514fcb14e411fbb7efee4157b670d462b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a832fe4e212ce39ca423263ed2554c2682455002
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389695"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165649"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的計時器觸發程序 
 
@@ -38,7 +38,7 @@ ms.locfileid: "85389695"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-下列範例顯示的[c #](functions-dotnet-class-library.md)函式會在每次分鐘具有由五個值整除時執行（例如，如果函式從18:57:00 開始，下一個效能將會是19:00:00）。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)物件會傳遞至函式。
+下列範例顯示的[c #](functions-dotnet-class-library.md)函式會在每一分鐘執行一個可被五個 (整除的值，例如，當函式從18:57:00 開始時，下一個效能將會是 19:00:00) 。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)物件會傳遞至函式。
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -264,7 +264,7 @@ Azure Functions 使用[NCronTab](https://github.com/atifaziz/NCrontab)程式庫�
 |所有值 (`*`)|<nobr>"0 * 5 * * *"</nobr>|於每天 5:mm:00，其中 mm 是小時中的每一分鐘 (一天 60 次)|
 |範圍 (`-` 運算子)|<nobr>"5-7 * * * * *"</nobr>|於 hh:mm:05、hh:mm:06 和 hh:mm:07，其中 hh: mm 是每小時的每一分鐘 (一分鐘 3 次)|
 |一組值 (`,` 運算子)|<nobr>"5,8,10 * * * * *"</nobr>|於 hh:mm:05、hh:mm:08 和 hh:mm:10，其中 hh: mm 是每小時的每一分鐘 (一分鐘 3 次)|
-|間隔值 (`/` 運算子)|<nobr>"0 */5 * * * *"</nobr>|在 hh：00：00、hh：05：00、hh：10：00，依此類推到 hh：55：00，其中 hh 是每小時（一小時12次）|
+|間隔值 (`/` 運算子)|<nobr>"0 */5 * * * *"</nobr>|在 hh：00：00、hh：05：00、hh：10：00，依此類推到 hh：55：00，其中 hh 是每小時 (12 次) |
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -287,24 +287,7 @@ Azure Functions 使用[NCronTab](https://github.com/atifaziz/NCrontab)程式庫�
 
 CRON 運算式中的數字代表時間和日期，而非時間範圍。 例如，`hour` 欄位中的 5 代表上午 5:00，而非每隔 5 小時。
 
-CRON 運算式使用的預設時區是國際標準時間 (UTC)。 若要讓 CRON 運算式以另一個時區為基礎，請為名為 `WEBSITE_TIME_ZONE` 的函式應用程式建立應用程式設定。 將值設定為所需的時區名稱，如 [Microsoft 時區索引](https://technet.microsoft.com/library/cc749073)中所示。
-
-  > [!NOTE]
-  > `WEBSITE_TIME_ZONE`Linux 使用量計畫目前不支援。
-
-例如，*美加東部標準時間*是 UTC-05:00。 若要讓計時器觸發程式在每天的上午10:00 觸發，請使用下列 NCRONTAB 運算式來表示 UTC 時區：
-
-```
-"0 0 15 * * *"
-``` 
-
-或者為名為 `WEBSITE_TIME_ZONE` 的函式應用程式建立應用程式設定，並將值設為**美加東部標準時間**。  然後使用下列 NCRONTAB 運算式： 
-
-```
-"0 0 10 * * *"
-``` 
-
-當您使用 `WEBSITE_TIME_ZONE` 時，時間會隨特定時區的時間變更 (例如日光節約時間) 而調整。 
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="timespan"></a>TimeSpan
 
@@ -312,7 +295,7 @@ CRON 運算式使用的預設時區是國際標準時間 (UTC)。 若要讓 CRON
 
 不同於 CRON 運算式，`TimeSpan` 值會指定每個函式引動過程之間的時間間隔。 如果函式在執行時間超過指定時間間隔之後完成，計時器會立即再次叫用函式。
 
-以字串表示，當 `hh` 低於 24 時，`TimeSpan` 格式為 `hh:mm:ss`。 當前兩個數字為 24 或更高時，格式為 `dd:hh:mm`。 以下是一些範例：
+以字串表示，當 `hh` 低於 24 時，`TimeSpan` 格式為 `hh:mm:ss`。 當前兩個數字為 24 或更高時，格式為 `dd:hh:mm`。 這裡有一些範例：
 
 |範例 |觸發時間  |
 |---------|---------|
@@ -331,7 +314,7 @@ CRON 運算式使用的預設時區是國際標準時間 (UTC)。 若要讓 CRON
 
 | Functions 版本 | 設定                                              |
 | ----------------- | ---------------------------------------------------- |
-| 2.x （和更新版本）  | `AzureFunctionsWebHost__hostid` 環境變數 |
+| 2.x (和更高的)   | `AzureFunctionsWebHost__hostid` 環境變數 |
 | 1.x               | `id`在*host.js開啟*                                  |
 
 您可以省略識別值，或手動將每個函數應用程式的識別設定設為不同的值。

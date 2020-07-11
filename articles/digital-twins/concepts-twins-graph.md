@@ -7,24 +7,25 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6b6da2a15441564ef0b67e76ee5a0e0c85839a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609311"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142405"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>瞭解數位 twins 及其對應項圖形
 
 在 Azure 數位 Twins 解決方案中，您環境中的實體會由 Azure**數位 Twins**表示。 數位對應項是其中一個自訂[模型](concepts-models.md)的實例。 它可以透過**關聯**性連線到其他數位 twins 來形成對應項**圖形**：此對應項圖形是您整個環境的標記法。
 
 > [!TIP]
-> 「Azure 數位 Twins」是指整個 Azure 服務。 「數位對應項」或只是「對應項」指的是服務實例內的個別對應項節點。
+> 「Azure 數位 Twins」是指整個 Azure 服務。 「數位對應項 (s) 」或只是「對應項 (s) 」是指服務實例內的個別對應項節點。
 
 ## <a name="creating-digital-twins"></a>建立數位分身
 
 在您的 Azure 數位 Twins 實例中建立數位對應項之前，您必須先將*模型*上傳至服務。 模型描述特定對應項可以擁有的一組屬性、遙測訊息和關聯性，還有其他專案。 如需模型中所定義的資訊類型，請參閱[概念：自訂模型](concepts-models.md)。
 
-建立和上傳模型之後，您的用戶端應用程式可以建立類型的實例。這是數位對應項。 例如，建立*樓層*的模型之後，您可以建立一或數個使用此類型的數位 twins （例如名為*GroundFloor*的*樓層*類型對應項，另一個稱為*Floor2*等等）。 
+建立和上傳模型之後，您的用戶端應用程式可以建立類型的實例。這是數位對應項。 例如，建立*樓層*的模型之後，您可以建立一或數個使用此類型的數位 twins， (像是名為*GroundFloor*的*Floor*類型對應項、另一個稱為*Floor2*等，) 。 
 
 以下是使用[選取 api](how-to-use-apis-sdks.md)來具現化類型*室*之對應項的用戶端程式代碼程式碼片段。
 
@@ -62,7 +63,7 @@ public Task<boolean> CreateRoom(string id, double temperature, double humidity)
 
 Twins 會依其關聯性連接至對應項圖形。 對應項可以擁有的關聯性會定義為其模型的一部分。  
 
-例如，模型*樓層*可能會定義*contains*關聯性，其目標為*聊天室*類型的 twins。 使用此定義時，Azure 數位 Twins 可讓您建立*包含*從任何*樓層*對應項到任何*房間*對應項的關聯性（包括*會議室*子類型的 Twins）。 
+例如，模型*樓層*可能會定義*contains*關聯性，其目標為*聊天室*類型的 twins。 使用此定義，Azure 數位 Twins 可讓您建立*包含*來自任何*樓層*對應項的關聯性到任何*房間*對應項 (包括) 的*房間*子類型的 Twins。 
 
 以下是一些範例用戶端程式代碼，它會使用[選取 api](how-to-use-apis-sdks.md) ，在名為*GroundFloor*的*Floor*類型數位對應項和名為*咖啡廳*的*房間*類型數位對應項之間建立關聯性。
 
@@ -84,7 +85,7 @@ try
 }
 ```
 
-此程式的結果是透過圖形中的邊緣（其關聯性）連接的一組節點（數位 twins）。
+此程式的結果是一組節點 (數位 twins) 透過邊緣連線， (它們在圖形中) 關聯性。
 
 ## <a name="json-representations-of-graph-elements"></a>圖表元素的 JSON 標記法
 
@@ -97,8 +98,9 @@ try
 | 欄位名稱 | 描述 |
 | --- | --- |
 | `$dtId` | 使用者提供的字串，代表數位對應項的識別碼 |
-| `$conformance` | 列舉，包含這個數位對應項的一致性狀態（*符合標準*、*不符合標準*、*未知*） |
-| `{propertyName}` | JSON 中的屬性值（ `string` 、數位類型或物件） |
+| `$etag` | Web 服務器指派的標準 HTTP 欄位 |
+| `$conformance` | 列舉，包含這個數位對應項的一致性狀態 (*一致*、*不一致*、*未知*的)  |
+| `{propertyName}` | JSON 中的屬性值 (`string` 、數位類型或物件)  |
 | `$relationships` | 關聯性集合的路徑 URL。 如果數位對應項沒有連出關聯性邊緣，則此欄位不存在。 |
 | `$metadata.$model` | 選擇性表示此數位對應項之模型介面的識別碼 |
 | `$metadata.{propertyName}.desiredValue` | [僅適用于可寫入屬性]所需的指定屬性值 |
@@ -107,7 +109,7 @@ try
 | `$metadata.{propertyName}.ackCode` | [僅適用于可寫入屬性]`ack`執行數位對應項的裝置應用程式所傳回的代碼 |
 | `$metadata.{propertyName}.ackDescription` | [僅適用于可寫入屬性]`ack`執行數位對應項的裝置應用程式所傳回的描述 |
 | `{componentName}` | JSON 物件，其中包含元件的屬性值和中繼資料，類似于根物件。 即使元件沒有屬性，這個物件仍存在。 |
-| `{componentName}.{propertyName}` | 元件在 JSON 中的屬性值（ `string` 、數位類型或物件） |
+| `{componentName}.{propertyName}` | 元件在 JSON 中的屬性值 (`string` 、數位類型或物件)  |
 | `{componentName}.$metadata` | 元件的中繼資料資訊，類似于根層級`$metadata` |
 
 以下是格式化為 JSON 物件的數位對應項範例：
@@ -115,6 +117,7 @@ try
 ```json
 {
   "$dtId": "Cafe",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "Temperature": 72,
   "Location": {
     "x": 101,
@@ -162,10 +165,11 @@ try
 | 欄位名稱 | 描述 |
 | --- | --- |
 | `$relationshipId` | 使用者提供的字串，代表此關聯性的識別碼。 此字串在來源數位對應項的內容中是唯一的，這也表示在 `sourceId`  +  `relationshipId` Azure 數位 Twins 實例的內容中是唯一的。 |
+| `$etag` | Web 服務器指派的標準 HTTP 欄位 |
 | `$sourceId` | 來源數位對應項的識別碼 |
 | `$targetId` | 目標數位對應項的識別碼 |
 | `$relationshipName` | 關聯性的名稱 |
-| `{propertyName}` | 選擇性此關聯性的屬性值（以 JSON （ `string` 、數位類型或物件）為格式） |
+| `{propertyName}` | 選擇性此關聯性的屬性值，以 JSON (`string` 、數位類型或物件)  |
 
 以下是格式化為 JSON 物件之關聯性的範例：
 

@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: c9978be9182bbb2923fa5db0b4e5ada422ef0da9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05a67ab33c12e9f2bdbc0cd0098c39252db37e8e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511606"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187076"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在執行 CentOS 的 StorSimple 主機上設定 MPIO
 本文說明在 Centos 6.6 主機伺服器上設定多重路徑 IO (MPIO) 所需的步驟。 主機伺服器會連線到您的 Microsoft Azure StorSimple 裝置，以透過 iSCSI 啟動器取得高可用性。 文中詳細描述多重路徑裝置的自動探索，以及 StorSimple 磁碟區特有的設定。
@@ -60,7 +60,7 @@ multipath.conf 有五個區段：
 
 下列程序描述有兩個網路介面的 StorSimple 裝置連接到有兩個網路介面的主機時，要如何設定多重路徑。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 本節將詳細說明 CentOS 伺服器和 StorSimple 裝置的設定必要條件。
 
 ### <a name="on-centos-host"></a>在 CentOS 主機上
@@ -70,35 +70,37 @@ multipath.conf 有五個區段：
    
     下列範例顯示兩個網路介面 (`eth0` 和 `eth1`) 都出現在主機上時的輸出。
    
-        [root@centosSS ~]# ifconfig
-        eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
-          inet addr:10.126.162.65  Bcast:10.126.163.255  Mask:255.255.252.0
-          inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3341/64 Scope:Global
-          inet6 addr: fe80::215:5dff:fea2:3341/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-         RX packets:36536 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:6312 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:13994127 (13.3 MiB)  TX bytes:645654 (630.5 KiB)
-   
-        eth1  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:42  
-          inet addr:10.126.162.66  Bcast:10.126.163.255  Mask:255.255.252.0
-          inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3342/64 Scope:Global
-          inet6 addr: fe80::215:5dff:fea2:3342/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:25962 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:2597350 (2.4 MiB)  TX bytes:754 (754.0 b)
-   
-        loLink encap:Local Loopback  
-          inet addr:127.0.0.1  Mask:255.0.0.0
-          inet6 addr: ::1/128 Scope:Host
-          UP LOOPBACK RUNNING  MTU:65536  Metric:1
-          RX packets:12 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0
-          RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
+    ```output
+    [root@centosSS ~]# ifconfig
+    eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
+        inet addr:10.126.162.65  Bcast:10.126.163.255  Mask:255.255.252.0
+        inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3341/64 Scope:Global
+        inet6 addr: fe80::215:5dff:fea2:3341/64 Scope:Link
+        UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+        RX packets:36536 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:6312 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:1000
+        RX bytes:13994127 (13.3 MiB)  TX bytes:645654 (630.5 KiB)
+
+    eth1  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:42  
+        inet addr:10.126.162.66  Bcast:10.126.163.255  Mask:255.255.252.0
+        inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3342/64 Scope:Global
+        inet6 addr: fe80::215:5dff:fea2:3342/64 Scope:Link
+        UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+        RX packets:25962 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:1000
+        RX bytes:2597350 (2.4 MiB)  TX bytes:754 (754.0 b)
+
+    loLink encap:Local Loopback  
+        inet addr:127.0.0.1  Mask:255.0.0.0
+        inet6 addr: ::1/128 Scope:Host
+        UP LOOPBACK RUNNING  MTU:65536  Metric:1
+        RX packets:12 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:0
+        RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
+    ```
 1. 在 CentOS 伺服器上安裝 *iSCSI-initiator-utils* 。 執行下列步驟以安裝 *iSCSI-initiator-utils*。
    
    1. 以 `root` 身分登入到 CentOS 主機。
@@ -119,8 +121,10 @@ multipath.conf 有五個區段：
       
        下方顯示一項範例輸出。
       
-           iscsi   0:off   1:off   2:on3:on4:on5:on6:off
-           iscsid  0:off   1:off   2:on3:on4:on5:on6:off
+        ```output
+        iscsi   0:off   1:off   2:on3:on4:on5:on6:off
+        iscsid  0:off   1:off   2:on3:on4:on5:on6:off
+        ```
       
        在上述範例中，您可以看到 iSCSI 環境將在開機時於執行層級 2、 3、 4 和 5 執行。
 1. 安裝 *device-mapper-multipath*。 輸入：
@@ -149,9 +153,11 @@ multipath.conf 有五個區段：
 * 應可從 CentOS 伺服器存取 StorSimple 裝置上的 iSCSI 介面。
       若要確認這點，您需要在主機伺服器上提供 StorSimple 已啟用 iSCSI 的網路介面的 IP 位址。 使用的命令以及 DATA2 (10.126.162.25) 和 DATA3 (10.126.162.26) 的對應輸出如下所示：
   
-        [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
-        10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
-        10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
+    ```console
+    [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
+    10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
+    10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
+    ```
 
 ### <a name="hardware-configuration"></a>硬體組態
 建議您連接不同路徑上的兩個 iSCSI 網路介面，以獲得備援。 下圖顯示可取得高可用性以及使 CentOS 伺服器與 StorSimple 裝置的多重路徑達到平衡負載的建議硬體組態。
@@ -197,11 +203,13 @@ multipath.conf 有五個區段：
    
     這將會修改 `multipath.conf` 的預設區段，如下所示：
    
-        defaults {
-        find_multipaths yes
-        user_friendly_names yes
-        path_grouping_policy multibus
-        }
+    ```config
+    defaults {
+    find_multipaths yes
+    user_friendly_names yes
+    path_grouping_policy multibus
+    }
+    ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>步驟 2：為 StorSimple 磁碟區設定多重路徑
 根據預設，所有裝置都會列入 multipath.conf 檔案的封鎖清單並遭到略過。 您必須建立封鎖清單例外狀況，允許 StorSimple 裝置中的磁碟區啟動多重路徑。
@@ -211,16 +219,18 @@ multipath.conf 有五個區段：
     `vi /etc/multipath.conf`
 1. 找出 multipath.conf 檔案中的 blacklist_exceptions 區段。 您的 StorSimple 裝置必須列為本節中的封鎖清單例外狀況。 您可以在此檔案中取消註解相關行，如下所示修改該檔案 (僅使用您所用裝置的特定模型)︰
    
-        blacklist_exceptions {
-            device {
-                       vendor  "MSFT"
-                       product "STORSIMPLE 8100*"
-            }
-            device {
-                       vendor  "MSFT"
-                       product "STORSIMPLE 8600*"
-            }
-           }
+    ```config
+    blacklist_exceptions {
+        device {
+                    vendor  "MSFT"
+                    product "STORSIMPLE 8100*"
+        }
+        device {
+                    vendor  "MSFT"
+                    product "STORSIMPLE 8600*"
+        }
+    }
+    ```
 
 ### <a name="step-3-configure-round-robin-multipathing"></a>步驟 3：設定循環配置資源多重路徑
 此負載平衡演算法會以平衡且循環配置資源的方式，使用作用中控制器的所有可用多重路徑。
@@ -230,10 +240,12 @@ multipath.conf 有五個區段：
     `vi /etc/multipath.conf`
 1. 在 `defaults` 區段之下，將 `path_grouping_policy` 設定為 `multibus`。 `path_grouping_policy` 指定預設路徑群組原則，以要套用到未指定的多重路徑。 defaults 區段會如下所示。
    
-        defaults {
-                user_friendly_names yes
-                path_grouping_policy multibus
-        }
+    ```config
+    defaults {
+            user_friendly_names yes
+            path_grouping_policy multibus
+    }
+    ```
 
 > [!NOTE]
 > 最常見的 `path_grouping_policy` 值包括︰
@@ -249,21 +261,21 @@ multipath.conf 有五個區段：
     `service multipathd restart`
 1. 輸出應如下所示：
    
-        [root@centosSS ~]# service multipathd start
-        Starting multipathd daemon:  [OK]
+    ```output
+    [root@centosSS ~]# service multipathd start
+    Starting multipathd daemon:  [OK]
+    ```
 
 ### <a name="step-5-verify-multipathing"></a>步驟 5：驗證多重路徑
 1. 如下所示，先確定 iSCSI 連接是以 StorSimple 裝置建立︰
    
    a. 探索您的 StorSimple 裝置。 輸入：
       
-    ```
-    iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
-    ```
+    `iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>`
     
     當 DATA0 的 IP 位址為 10.126.162.25 且連接埠 3260 在 StorSimple 裝置上開啟以便處理輸出 iSCSI 流量時，輸出會如下所示︰
     
-    ```
+    ```output
     10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     ```
@@ -272,13 +284,11 @@ multipath.conf 有五個區段：
 
    b. 使用目標 IQN 連接到此裝置。 StorSimple 裝置在此是 iSCSI 目標。 輸入：
 
-    ```
-    iscsiadm -m node --login -T <IQN of iSCSI target>
-    ```
+      `iscsiadm -m node --login -T <IQN of iSCSI target>`
 
     下列範例顯示目標 IQN 為 `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`的輸出。 此輸出指出您已順利連接到您的裝置上已啟用 iSCSI 的兩個網路介面。
 
-    ```
+    ```output
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
     Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] (multiple)
@@ -295,33 +305,31 @@ multipath.conf 有五個區段：
 
 1. 驗證可用的路徑。 輸入：
 
-      ```
-      multipath -l
-      ```
+    `multipath -l`
 
       下列範例顯示透過兩個可用路徑連接到單一主機網路介面的 StorSimple 裝置上兩個網路介面的輸出。
 
-        ```
-        mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
-        size=100G features='0' hwhandler='0' wp=rw
-        `-+- policy='round-robin 0' prio=0 status=active
-        |- 7:0:0:1 sdc 8:32 active undef running
-        `- 6:0:0:1 sdd 8:48 active undef running
-        ```
+    ```output
+    mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
+    size=100G features='0' hwhandler='0' wp=rw
+    `-+- policy='round-robin 0' prio=0 status=active
+    |- 7:0:0:1 sdc 8:32 active undef running
+    `- 6:0:0:1 sdd 8:48 active undef running
+    ```
 
-        The following example shows the output for two network interfaces on a StorSimple device connected to two host network interfaces with four available paths.
+    下列範例顯示透過四個可用路徑連接到兩個主機網路介面的 StorSimple 裝置上兩個網路介面的輸出。
 
-        ```
-        mpathb (36486fd27a23feba1b096226f11420f6b) dm-2 MSFT,STORSIMPLE 8100
-        size=100G features='0' hwhandler='0' wp=rw
-        `-+- policy='round-robin 0' prio=0 status=active
-        |- 17:0:0:0 sdb 8:16 active undef running
-        |- 15:0:0:0 sdd 8:48 active undef running
-        |- 14:0:0:0 sdc 8:32 active undef running
-        `- 16:0:0:0 sde 8:64 active undef running
-        ```
+    ```output
+    mpathb (36486fd27a23feba1b096226f11420f6b) dm-2 MSFT,STORSIMPLE 8100
+    size=100G features='0' hwhandler='0' wp=rw
+    `-+- policy='round-robin 0' prio=0 status=active
+    |- 17:0:0:0 sdb 8:16 active undef running
+    |- 15:0:0:0 sdd 8:48 active undef running
+    |- 14:0:0:0 sdc 8:32 active undef running
+    `- 16:0:0:0 sde 8:64 active undef running
+    ```
 
-        After the paths are configured, refer to the specific instructions on your host operating system (Centos 6.6) to mount and format this volume.
+    設定路徑之後，請參閱主機作業系統 (Centos 6.6) 的特定指示來掛接及格式化這個磁碟區。
 
 ## <a name="troubleshoot-multipathing"></a>多重路徑疑難排解
 如果您在多重路徑設定期間遇到任何問題，請參閱本節所提供的一些實用秘訣。
@@ -330,7 +338,7 @@ Q. 我未看見 `multipath.conf` 檔案的變更生效。
 
 A. 如果您已對 `multipath.conf` 檔案進行任何變更，您必須重新啟動多重路徑服務。 輸入以下命令：
 
-    service multipathd restart
+`service multipathd restart`
 
 Q. 我已在 StorSimple 裝置上啟用兩個網路介面以及在主機上啟用兩個網路介面。 當我列出可用的路徑時，我只看到兩個路徑。 我預計看見四個可用的路徑。
 
@@ -344,12 +352,12 @@ A. 一般來說，看不到任何多重路徑路徑，都是指多重路徑 daem
 
 * 使用下列命令來重新掃描 SCSI 匯流排：
   
-    `$ rescan-scsi-bus.sh`（sg3_utils 封裝的一部分）
+    `$ rescan-scsi-bus.sh` (sg3_utils 套件的一部分) 
 * 輸入下列命令：
   
     `$ dmesg | grep sd*`
      
-     Or
+     或
   
     `$ fdisk -l`
   
@@ -362,58 +370,60 @@ A. 一般來說，看不到任何多重路徑路徑，都是指多重路徑 daem
 
 有一個比較不可能的可能原因也可能是 iscsid pid 過時。 使用下列命令從 iSCSI 工作階段登出：
 
-    iscsiadm -m node --logout -p <Target_IP>
+`iscsiadm -m node --logout -p <Target_IP>`
 
 對 ISCSI 目標 (也就是您的 StorSimple 裝置) 上所有連接的網路介面重複此命令。 從所有 iSCSI 工作階段登出後，請使用 iSCSI 目標 IQN 來重新建立 iSCSI 工作階段。 輸入以下命令：
 
-    iscsiadm -m node --login -T <TARGET_IQN>
+`iscsiadm -m node --login -T <TARGET_IQN>`
 
 
 Q. 我不確定我的裝置是否已列入允許清單。
 
 A. 若要驗證您的裝置是否已列入允許清單，請使用下列疑難排解互動式命令︰
 
-    multipathd -k
-    multipathd> show devices
-    available block devices:
-    ram0 devnode blacklisted, unmonitored
-    ram1 devnode blacklisted, unmonitored
-    ram2 devnode blacklisted, unmonitored
-    ram3 devnode blacklisted, unmonitored
-    ram4 devnode blacklisted, unmonitored
-    ram5 devnode blacklisted, unmonitored
-    ram6 devnode blacklisted, unmonitored
-    ram7 devnode blacklisted, unmonitored
-    ram8 devnode blacklisted, unmonitored
-    ram9 devnode blacklisted, unmonitored
-    ram10 devnode blacklisted, unmonitored
-    ram11 devnode blacklisted, unmonitored
-    ram12 devnode blacklisted, unmonitored
-    ram13 devnode blacklisted, unmonitored
-    ram14 devnode blacklisted, unmonitored
-    ram15 devnode blacklisted, unmonitored
-    loop0 devnode blacklisted, unmonitored
-    loop1 devnode blacklisted, unmonitored
-    loop2 devnode blacklisted, unmonitored
-    loop3 devnode blacklisted, unmonitored
-    loop4 devnode blacklisted, unmonitored
-    loop5 devnode blacklisted, unmonitored
-    loop6 devnode blacklisted, unmonitored
-    loop7 devnode blacklisted, unmonitored
-    sr0 devnode blacklisted, unmonitored
-    sda devnode whitelisted, monitored
-    dm-0 devnode blacklisted, unmonitored
-    dm-1 devnode blacklisted, unmonitored
-    dm-2 devnode blacklisted, unmonitored
-    sdb devnode whitelisted, monitored
-    sdc devnode whitelisted, monitored
-    dm-3 devnode blacklisted, unmonitored
+```console
+multipathd -k
+multipathd> show devices
+available block devices:
+ram0 devnode blacklisted, unmonitored
+ram1 devnode blacklisted, unmonitored
+ram2 devnode blacklisted, unmonitored
+ram3 devnode blacklisted, unmonitored
+ram4 devnode blacklisted, unmonitored
+ram5 devnode blacklisted, unmonitored
+ram6 devnode blacklisted, unmonitored
+ram7 devnode blacklisted, unmonitored
+ram8 devnode blacklisted, unmonitored
+ram9 devnode blacklisted, unmonitored
+ram10 devnode blacklisted, unmonitored
+ram11 devnode blacklisted, unmonitored
+ram12 devnode blacklisted, unmonitored
+ram13 devnode blacklisted, unmonitored
+ram14 devnode blacklisted, unmonitored
+ram15 devnode blacklisted, unmonitored
+loop0 devnode blacklisted, unmonitored
+loop1 devnode blacklisted, unmonitored
+loop2 devnode blacklisted, unmonitored
+loop3 devnode blacklisted, unmonitored
+loop4 devnode blacklisted, unmonitored
+loop5 devnode blacklisted, unmonitored
+loop6 devnode blacklisted, unmonitored
+loop7 devnode blacklisted, unmonitored
+sr0 devnode blacklisted, unmonitored
+sda devnode whitelisted, monitored
+dm-0 devnode blacklisted, unmonitored
+dm-1 devnode blacklisted, unmonitored
+dm-2 devnode blacklisted, unmonitored
+sdb devnode whitelisted, monitored
+sdc devnode whitelisted, monitored
+dm-3 devnode blacklisted, unmonitored
+```
 
 
 如需詳細資訊，請移至[多重路徑的疑難排解](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)。
 
 ## <a name="list-of-useful-commands"></a>有用的命令清單
-| 類型 | Command | 說明 |
+| 類型 | 命令 | 描述 |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |啟動 iSCSI 服務 |
 | &nbsp; |`service iscsid stop` |停止 iSCSI 服務 |

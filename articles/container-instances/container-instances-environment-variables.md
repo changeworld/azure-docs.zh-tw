@@ -3,11 +3,12 @@ title: 在容器實例中設定環境變數
 description: 了解如何在執行於 Azure 容器執行個體中的容器內設定環境變數
 ms.topic: article
 ms.date: 04/17/2019
-ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92ae59f69b7cb43fee1d3ce8190a85fc20a11f60
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686727"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169760"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>在容器實例中設定環境變數
 
@@ -27,7 +28,7 @@ ms.locfileid: "84686727"
 
 ## <a name="azure-cli-example"></a>Azure CLI 的範例
 
-若要查看[aci wordcount][aci-wordcount]容器的預設輸出，請先使用這個[az container create][az-container-create]命令來執行它（未指定任何環境變數）：
+若要查看[aci wordcount][aci-wordcount]容器的預設輸出，請先使用此[az container create][az-container-create]命令執行它， (不) 指定任何環境變數：
 
 ```azurecli-interactive
 az container create \
@@ -105,7 +106,7 @@ New-AzContainerGroup `
     -EnvironmentVariable $envVars
 ```
 
-當兩個容器的狀態都*終止*後（使用[AzContainerInstanceLog][azure-instance-log]來檢查狀態），請使用[AzContainerInstanceLog][azure-instance-log]命令提取其記錄。
+當兩個容器的狀態都*終止*之後 (使用[AzContainerInstanceLog][azure-instance-log]來檢查狀態) ，使用[AzContainerInstanceLog][azure-instance-log]命令提取其記錄。
 
 ```azurepowershell-interactive
 Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
@@ -165,7 +166,7 @@ Azure:\
 使用下列程式碼片段來建立 `secure-env.yaml` 檔案。
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: securetest
 properties:

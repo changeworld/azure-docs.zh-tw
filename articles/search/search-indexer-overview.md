@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a728eff7addc7f835f82e795457e722fd60d2e30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 253cd8174ec523f6c8a6aae2b94f7ed367701fec
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564587"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146769"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 認知搜尋中的索引子
 
@@ -47,7 +47,7 @@ Azure 認知搜尋中的*索引子*是一種編目程式，它會從外部 Azure
 索引子會搜耙 Azure 上的資料存放區。
 
 * [Azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)
-* [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) （處於預覽階段）
+* 預覽中的[Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) () 
 * [Azure 資料表儲存體](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL Database 和 SQL 受控執行個體](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
@@ -63,13 +63,13 @@ Azure 認知搜尋中的*索引子*是一種編目程式，它會從外部 Azure
 資料來源和使用資料來源的索引子是各自獨立設定與管理，這表示多個索引子可使用同一個資料來源來一次載入多個索引。
 
 ### <a name="step-2-create-an-index"></a>步驟 2：建立索引
-索引子會自動執行有關資料擷取的某些工作，但是通常不包括建立索引。 若要滿足必要條件，您必須擁有預先定義的索引，且欄位必須與外部資料來源中的欄位相符。 欄位必須依名稱和資料類型進行比對。 如需結構化索引的詳細資訊，請參閱[建立索引（Azure 認知搜尋 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Index)或[索引類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)。 如需欄位關聯的說明，請參閱[Azure 認知搜尋索引子中的欄位](search-indexer-field-mappings.md)對應。
+索引子會自動執行有關資料擷取的某些工作，但是通常不包括建立索引。 若要滿足必要條件，您必須擁有預先定義的索引，且欄位必須與外部資料來源中的欄位相符。 欄位必須依名稱和資料類型進行比對。 如需結構化索引的詳細資訊，請參閱[ (Azure 認知搜尋建立索引 REST API) ](https://docs.microsoft.com/rest/api/searchservice/Create-Index)或[索引類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)。 如需欄位關聯的說明，請參閱[Azure 認知搜尋索引子中的欄位](search-indexer-field-mappings.md)對應。
 
 > [!Tip]
 > 雖然索引子不能為您產生索引，但入口網站中的 [匯入資料]**** 精靈有所幫助。 在大部分情況下，此精靈可以從來源中的現有中繼資料推斷索引結構描述，並呈現您可以在精靈作用中時以內嵌方式編輯的初步索引結構描述。 一旦在服務上建立索引後，在入口網站中的進一步編輯大部分都受限於新增欄位。 請考慮使用精靈進行建立，但非修改索引。 如需實際操作學習，請逐步執行[入口網站逐步解說](search-get-started-portal.md)。
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>步驟 3：建立和排程索引子
-索引子定義是一種結構，可將與資料內嵌相關的所有元素結合在一起。 必要的元素包括資料來源和索引。 選擇性元素包括排程和欄位對應。 只有當來源欄位和索引欄位清楚地對應時，欄位對應才是選擇性的。 如需結構化索引子的詳細資訊，請參閱[建立索引子（Azure 認知搜尋 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)。
+索引子定義是一種結構，可將與資料內嵌相關的所有元素結合在一起。 必要的元素包括資料來源和索引。 選擇性元素包括排程和欄位對應。 只有當來源欄位和索引欄位清楚地對應時，欄位對應才是選擇性的。 如需結構化索引子的詳細資訊，請參閱[建立索引子 (Azure 認知搜尋 REST API) ](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)。
 
 <a id="RunIndexer"></a>
 
@@ -77,8 +77,10 @@ Azure 認知搜尋中的*索引子*是一種編目程式，它會從外部 Azure
 
 雖然排程編制索引很常見，但也可以在需要時使用[Run 命令](https://docs.microsoft.com/rest/api/searchservice/run-indexer)叫用索引子：
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
-    api-key: [Search service admin key]
+```http
+POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 > [!NOTE]
 > 當執行 API 成功傳回時，索引子叫用已經排程，但實際處理不會同步發生。 
@@ -91,37 +93,40 @@ Azure 認知搜尋中的*索引子*是一種編目程式，它會從外部 Azure
 
 您可以透過[取得索引子狀態命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)來抓取索引子的狀態和執行歷程記錄：
 
-
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
-    api-key: [Search service admin key]
+```http
+GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 回應包含整體索引子的狀態、最後 (或進行中) 的索引子叫用，以及最新的索引子叫用歷程記錄。
 
-    {
-        "status":"running",
-        "lastResult": {
-            "status":"success",
-            "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-         },
-        "executionHistory":[ {
-            "status":"success",
-             "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-        }]
-    }
+```output
+{
+    "status":"running",
+    "lastResult": {
+        "status":"success",
+        "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+     },
+    "executionHistory":[ {
+        "status":"success",
+         "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+    }]
+}
+```
 
 執行歷程記錄包含多達 50 個最近完成的執行，以倒序的方式進行儲存 (因此最新的執行會排在回應中的第一位)。
 

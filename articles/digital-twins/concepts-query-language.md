@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3196004015046b4d3d2789745c80d323bacdced9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 6da539ccd8ad293aed402a4a6d130b6701e7b9c2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985236"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187110"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>關於 Azure 數位 Twins 的查詢語言
 
@@ -28,12 +28,12 @@ Azure 數位 Twins 會針對對應項圖形提供廣泛的查詢功能。 查詢
 * 以數位 twins 的屬性取得 twins。
 * 取得 twins by 數位 twins 的介面。
 * 依關聯性屬性取得 twins。
-* 取得多個關聯性類型（ `JOIN` 查詢）的 twins。 允許的數目有所限制 `JOIN` （一層公開預覽）。
+*  (查詢) 取得多個關聯性類型 `JOIN` 的 twins。 `JOIN`公開預覽)  (一層級的數目有所限制。
 * 使用自訂函式 `IS_OF_MODEL(twinCollection, twinTypeName)` ，允許根據對應項的[模型](concepts-models.md)進行篩選。 它支援繼承。
-* 使用上述的任何組合（ `AND` 、 `OR` 、 `NOT` 運算子）。
 * 使用純量函數： `IS_BOOL` 、 `IS_DEFINED` 、 `IS_NULL` 、 `IS_NUMBER` 、 `IS_OBJECT` `IS_PRIMITIVE` `IS_STRING` `STARTS_WITH` `ENDS_WITH` 、、、、。
-* 使用查詢比較運算子： `AND` / `OR` / `NOT` 、 `IN` / `NOT IN` 、 `STARTSWITH` / `ENDSWITH` 、 `=` 、 `!=` 、、、 `<` `>` `<=` 、 `>=` 。
-* 使用接續：查詢物件會具現化頁面大小（最多100）。 您可以藉由重複呼叫方法，一次取出數位 twins 一頁 `nextAsTwin` 。
+* 使用查詢比較運算子： `IN` / `NIN` 、 `=` 、 `!=` 、 `<` 、 `>` 、 `<=` 、 `>=` 。
+* 使用 `AND` 上述 (、 `OR` 、 `NOT` 運算子) 的任何組合。
+* 使用接續：查詢物件是以頁面大小具現化， (最多 100) 。 您可以在後續的 API 呼叫中提供接續 token，一次取出數位 twins 一頁。
 
 ## <a name="next-steps"></a>後續步驟
 

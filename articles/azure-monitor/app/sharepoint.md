@@ -3,11 +3,12 @@ title: 使用 Application Insights 監視 SharePoint 網站
 description: 開始使用新的檢測金鑰監視新的應用程式
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671438"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221046"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>使用 Application Insights 監視 SharePoint 網站
 Azure Application Insights 會監視應用程式的可用性、效能和使用情況。 您將在這裡深入了解如何針對 SharePoint 網站進行設定。
@@ -48,18 +49,18 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 簽出主要頁面，並且使用 SharePoint Designer 或任何其他編輯器來編輯。
 
-![](./media/sharepoint/03-master.png)
+![螢幕擷取畫面：顯示如何使用 Sharepoint 設計工具或其他編輯器編輯主版頁面。](./media/sharepoint/03-master.png)
 
 將程式碼新增至 </head> 的相片或視訊。 
 
-![](./media/sharepoint/04-code.png)
+![螢幕擷取畫面：顯示要將程式碼新增至網站頁面的位置。](./media/sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>或在個別的頁面上
 若要監視一組有限的頁面，將指令碼個別加入至每個頁面。 
 
 插入網頁組件並在其中嵌入程式碼片段。
 
-![](./media/sharepoint/05-page.png)
+![螢幕擷取畫面：顯示新增腳本以監視有限的一組頁面。](./media/sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>檢視應用程式相關的資料
 重新部署您的應用程式。
@@ -68,7 +69,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 前幾個事件將出現在搜尋中。 
 
-![](./media/sharepoint/09-search.png)
+![螢幕擷取畫面：顯示您可以在應用程式中查看的新資料。](./media/sharepoint/09-search.png)
 
 如果您預期有更多資料，請在幾秒之後按一下 [重新整理]。
 
@@ -77,7 +78,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 1. 從 Application Insights 中的 [Essentials] 下拉式清單複製您應用程式的檢測金鑰。 
 
-    ![](./media/sharepoint/02-props.png)
+    ![螢幕擷取畫面：顯示如何從 Application Insights 中的 [基本功能] 下拉式清單複製應用程式的檢測。](./media/sharepoint/02-props.png)
 
 1. 使用檢測金鑰替換下列程式碼片段中的 'XXXX'。 
 2. 在您的 SharePoint 應用程式中內嵌指令碼，而非您從入口網站取得的程式碼片段。

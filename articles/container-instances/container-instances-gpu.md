@@ -2,12 +2,13 @@
 title: 部署已啟用 GPU 的容器實例
 description: 瞭解如何部署 Azure 容器實例，以使用 GPU 資源來執行計算密集型容器應用程式。
 ms.topic: article
-ms.date: 02/19/2020
-ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77525281"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169743"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 資源的容器執行個體
 
@@ -72,7 +73,7 @@ ms.locfileid: "77525281"
 
 ```YAML
 additional_properties: {}
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 name: gpucontainergroup
 properties:
   containers:
@@ -138,7 +139,7 @@ Done
       {
         "name": "[parameters('containerGroupName')]",
         "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2018-10-01",
+        "apiVersion": "2019-12-01",
         "location": "[resourceGroup().location]",
         "properties": {
             "containers": [
@@ -167,10 +168,10 @@ Done
 }
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令部署範本。 您需要提供資源群組的名稱，且該資源群組需要是建立在支援 GPU 資源的區域 (如 *eastus*)。
+使用[az deployment group create][az-deployment-group-create]命令來部署範本。 您需要提供資源群組的名稱，且該資源群組需要是建立在支援 GPU 資源的區域 (如 *eastus*)。
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file gpudeploy.json
+az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
 部署需要數分鐘才能完成。 然後，容器會啟動並執行 TensorFlow 作業。 執行 [az container logs][az-container-logs] 命令以檢視記錄輸出：
@@ -239,4 +240,4 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 [az-container-show]: /cli/azure/container#az-container-show
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

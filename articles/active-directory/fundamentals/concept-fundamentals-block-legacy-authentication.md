@@ -12,28 +12,29 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e17421b27082a079d078f53c38d0c942db7ae71
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196380"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200550"
 ---
 # <a name="blocking-legacy-authentication"></a>封鎖舊版驗證
  
 為了讓您的使用者能夠輕鬆存取雲端應用程式，Azure Active Directory (Azure AD) 支援多種驗證通訊協定，包括舊式驗證。 「舊版驗證」一詞，是指由以下幾者提出的驗證要求：
 
-- 不使用新式驗證的舊版 Office 用戶端（例如，Office 2010 用戶端）
+- 未使用新式驗證的舊版 Office 用戶端 (例如 Office 2010 用戶端) 
 - 任何使用舊版郵件通訊協定的用戶端，例如 IMAP/SMTP/POP3
 
-現今，所有危害的登入嘗試都是來自舊版驗證。 舊版驗證不支援多重要素驗證（MFA）。 即使您的目錄已啟用 MFA 原則，不良的執行者仍可使用舊版通訊協定進行驗證，並略過 MFA。 保護您的帳戶免于舊版通訊協定所提出之惡意驗證要求的最佳方式，就是完全封鎖這些嘗試。
+現今，所有危害的登入嘗試都是來自舊版驗證。 舊版驗證不支援 MFA)  (多重要素驗證。 即使您的目錄已啟用 MFA 原則，不良的執行者仍可使用舊版通訊協定進行驗證，並略過 MFA。 保護您的帳戶免于舊版通訊協定所提出之惡意驗證要求的最佳方式，就是完全封鎖這些嘗試。
 
 ## <a name="identify-legacy-authentication-use"></a>辨識是否使用舊式驗證
 
 首先需要先了解您的使用者是否有應用程式在使用舊式驗證，以及舊式驗證會對您的整體目錄產生何種影響，如此才能在目錄中封鎖舊式驗證。 可以使用 Azure AD 登入記錄來確認是否在使用舊式驗證。
 
-1. 流覽至 **Azure 入口網站**   >  **Azure Active Directory**登   >  **入**。
+1. 瀏覽至 [Azure 入口網站]  >  [Azure Active Directory]  >  [登入]。
 1. 新增 [**用戶端應用程式**] 欄（如果未顯示，請按一下 [資料 **行**] [   >  **用戶端應用程式**]）
-1. 依 **用戶端應用程式**篩選  > 檢查呈現的所有**舊版驗證用戶端**選項。
+1. 依**用戶端應用程式**篩選 > 檢查呈現的所有**舊版驗證用戶端**選項。
 1. 依**狀態**  >  **成功**篩選。 
 1. 如有必要，請使用**日期**篩選器來展開您的日期範圍。
 
@@ -66,7 +67,7 @@ Office 2010 不支援新式驗證。 您必須將任何使用 Office 2010 的使
 
 ### <a name="step-3-exchange-and-sharepoint"></a>步驟3： Exchange 和 SharePoint
 
-對於以 Windows 為基礎的 Outlook 用戶端若要使用新式驗證，Exchange Online 也必須啟用新式驗證。 如果已停用 Exchange Online 的新式驗證，支援新式驗證的 Windows 型 Outlook 用戶端（Outlook 2013 或更新版本）會使用基本驗證來連線至 Exchange Online 信箱。
+對於以 Windows 為基礎的 Outlook 用戶端若要使用新式驗證，Exchange Online 也必須啟用新式驗證。 如果已停用 Exchange Online 的新式驗證，支援新式驗證的 Windows 型 Outlook 用戶端 (Outlook 2013 或更新版本) 會使用基本驗證來連接 Exchange Online 信箱。
 
 SharePoint Online 已啟用新式驗證預設值。 針對2017年8月1日之後建立的目錄，Exchange Online 預設會啟用新式驗證。 不過，如果您先前已停用新式驗證，或使用在此日期之前建立的目錄，請遵循下列文章中的步驟， [在 Exchange Online 中啟用新式驗證](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)。
 
@@ -86,17 +87,17 @@ SharePoint Online 已啟用新式驗證預設值。 針對2017年8月1日之後�
 
 ### <a name="step-6-on-premises-clients"></a>步驟6：內部部署用戶端
 
-如果您是使用內部部署 Exchange Server 和商務用 Skype 內部部署的混合式客戶，這兩項服務都必須更新以啟用新式驗證。 在混合式環境中使用新式驗證時，您仍在驗證內部部署使用者。 授權其存取資源（檔案或電子郵件）變更的案例。
+如果您是使用內部部署 Exchange Server 和商務用 Skype 內部部署的混合式客戶，這兩項服務都必須更新以啟用新式驗證。 在混合式環境中使用新式驗證時，您仍在驗證內部部署使用者。 授權其存取資源 (檔案或電子郵件) 變更的案例。
 
 在您開始啟用內部部署的新式驗證之前，請確定您已符合先決條件。 您現在已經準備好啟用內部部署的新式驗證。
 
 您可以在下列文章中找到啟用新式驗證的步驟：
 
 * [如何設定 Exchange Server 內部部署以使用混合式新式驗證](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
-* [如何搭配使用新式驗證（ADAL）與商務用 Skype](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
+* [如何使用新式驗證 (ADAL) 與商務用 Skype](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
 
 ## <a name="next-steps"></a>後續步驟
 
 - [如何設定 Exchange Server 內部部署以使用混合式新式驗證](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
-- [如何搭配使用新式驗證（ADAL）與商務用 Skype](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
+- [如何使用新式驗證 (ADAL) 與商務用 Skype](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
 - [封鎖舊式驗證](../conditional-access/block-legacy-authentication.md)

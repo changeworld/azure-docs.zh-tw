@@ -3,11 +3,12 @@ title: Azure Functions 的應用程式設定參考
 description: Azure Functions 應用程式設定或環境變數的參考文件。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84235357"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169899"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的應用程式設定參考
 
@@ -33,6 +34,42 @@ Application Insights 的連接字串。 當您的函式 `APPLICATIONINSIGHTS_CON
 |---|------------|
 |APPLICATIONINSIGHTS_CONNECTION_STRING|InstrumentationKey = [key]; IngestionEndpoint = [url];LiveEndpoint = [url];ProfilerEndpoint = [url];SnapshotEndpoint = [url];|
 
+## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+
+根據預設，函式 proxy 會使用快捷[方式，將](functions-proxies.md)來自 PROXY 的 API 呼叫直接傳送至相同函式應用程式中的函式。 使用此快捷方式，而不是建立新的 HTTP 要求。 此設定可讓您停用該快捷方式行為。
+
+|機碼|值|描述|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|具有指向本機函式應用程式中函式之後端 URL 的呼叫不會直接傳送至函式。 相反地，要求會被導向回到函數應用程式的 HTTP 前端。|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|具有指向本機函式應用程式中函式之後端 URL 的呼叫會直接轉送至函式。 這是預設值。 |
+
+## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+
+此設定可控制當字元 `%2F` 插入後端 URL 時，是否要將它們解碼為路由參數中的斜線。 
+
+|機碼|值|描述|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|已編碼的斜線的路由參數會解碼。 |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|所有路由參數都會沿著不變的方式傳遞，這是預設行為。 |
+
+例如，請考慮在網域上的函式應用程式的檔案 proxies.js`myfunction.com` 。
+
+```JSON
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "root": {
+            "matchCondition": {
+                "route": "/{*all}"
+            },
+            "backendUri": "example.com/{all}"
+        }
+    }
+}
+```
+
+當 `AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES` 設定為時 `true` ，URL 會 `example.com/api%2ftest` 解析為 `example.com/api/test` 。 根據預設，URL 會保持不變 `example.com/test%2fapi` 。 如需詳細資訊，請參閱[函數](functions-proxies.md)proxy。
+
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
 在2.x 版和更新版本的函式執行時間中，會根據執行時間環境設定應用程式行為。 此值會[在初始化期間讀取](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)。 您可以將設定 `AZURE_FUNCTIONS_ENVIRONMENT` 為任何值，但支援[三個值](/dotnet/api/microsoft.aspnetcore.hosting.environmentname)：[開發](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[預備](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)和[生產環境](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production)。 `AZURE_FUNCTIONS_ENVIRONMENT`若未設定，則會 `Development` 在本機環境和 `Production` Azure 上預設為。 應該使用此設定，而不是 `ASPNETCORE_ENVIRONMENT` 設定執行時間環境。 
@@ -54,7 +91,7 @@ Application Insights 的連接字串。 當您的函式 `APPLICATIONINSIGHTS_CON
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true` 表示停用針對函式應用程式根 URL 所顯示的預設登陸頁面。 預設值為 `false`。
+`true` 表示停用針對函式應用程式根 URL 所顯示的預設登陸頁面。 預設為 `false`。
 
 |答案|範例值|
 |---|------------|
@@ -66,7 +103,7 @@ Application Insights 的連接字串。 當您的函式 `APPLICATIONINSIGHTS_CON
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true` 表示在編譯 .NET 程式碼時使用「釋放」模式；`false` 表示使用「偵錯」模式。 預設值為 `true`。
+`true` 表示在編譯 .NET 程式碼時使用「釋放」模式；`false` 表示使用「偵錯」模式。 預設為 `true`。
 
 |答案|範例值|
 |---|------------|
@@ -86,7 +123,7 @@ Application Insights 的連接字串。 當您的函式 `APPLICATIONINSIGHTS_CON
 
 |答案|範例值|
 |---|------------|
-|AzureWebJobsSecretStorageType|檔案儲存體|
+|AzureWebJobsSecretStorageType|檔案|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -144,13 +181,37 @@ Azure Functions 執行階段會將此儲存體帳戶連接字串用於所有函�
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-要在函式應用程式中載入的語言背景工作角色執行階段。  這會對應至您應用程式 (例如，"dotnet") 中所使用的語言。 對於使用多種語言的函式，您必須將其發佈到多個應用程式，每個都有對應的背景工作角色執行階段值。  有效的值為 `dotnet` （c #/f #）、 `node` （JavaScript/TypeScript）、（ `java` JAVA）、 `powershell` （PowerShell）和 `python` （Python）。
+要在函式應用程式中載入的語言背景工作角色執行階段。  這會對應至您應用程式 (例如，"dotnet") 中所使用的語言。 對於使用多種語言的函式，您必須將其發佈到多個應用程式，每個都有對應的背景工作角色執行階段值。  有效的值為 `dotnet` (c #/f # ) 、 `node` (JavaScript/TypeScript) 、 `java` (JAVA) 、 `powershell` (PowerShell) 和 `python` (Python) 。
 
 |答案|範例值|
 |---|------------|
 |FUNCTIONS\_WORKER\_RUNTIME|dotnet|
 
-## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
+## <a name="pip_extra_index_url"></a>PIP \_ 額外的 \_ 索引 \_ URL
+
+此設定的值表示 Python 應用程式的自訂套件索引 URL。 當您需要使用在額外封裝索引中找到的自訂相依性來執行遠端組建時，請使用此設定。   
+
+|答案|範例值|
+|---|------------|
+|PIP \_ 額外的 \_ 索引 \_ URL|http://my.custom.package.repo/simple |
+
+若要深入瞭解，請參閱 Python 開發人員參考中的[自訂](functions-reference-python.md#remote-build-with-extra-index-url)相依性。
+
+## <a name="scale_controller_logging_enable"></a>調整 \_ 控制器 \_ 記錄 \_ 啟用
+
+_此設定目前為預覽狀態。_  
+
+此設定會控制來自 Azure Functions 縮放控制器的記錄。 如需詳細資訊，請參閱[調整控制器記錄](functions-monitoring.md#scale-controller-logs-preview)。
+
+|答案|範例值|
+|-|-|
+|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights： Verbose|
+
+此機碼的值是以格式提供 `<DESTINATION>:<VERBOSITY>` ，其定義如下：
+
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
+
+## <a name="website_contentazurefileconnectionstring"></a>網站 \_ CONTENTAZUREFILECONNECTIONSTRING
 
 僅限耗用量 & Premium 方案。 函式應用程式碼和設定儲存所在之儲存體帳戶的連接字串。 請參閱[建立函式應用程式](functions-infrastructure-as-code.md#create-a-function-app)。
 
@@ -180,7 +241,7 @@ Azure Functions 執行階段會將此儲存體帳戶連接字串用於所有函�
 ## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
 _僅限 Windows。_  
-設定在 Windows 上執行函數應用程式時所要使用的 Node.js 版本。 您應該使用波狀符號（~）讓執行時間使用目標主要版本的最新可用版本。 例如，當設定為時 `~10` ，會使用最新版本的 Node.js 10。 當主要版本以波狀符號為目標時，您不需要手動更新次要版本。 
+設定在 Windows 上執行函數應用程式時所要使用的 Node.js 版本。 您應該使用波狀符號 (~) ，讓執行時間使用目標主要版本的最新可用版本。 例如，當設定為時 `~10` ，會使用最新版本的 Node.js 10。 當主要版本以波狀符號為目標時，您不需要手動更新次要版本。 
 
 |答案|範例值|
 |---|------------|
@@ -196,47 +257,16 @@ _僅限 Windows。_
 
 有效值為 URL (可解析為部署套件檔案的位置) 或 `1`。 設定為 `1` 時，套件必須位於 `d:\home\data\SitePackages` 資料夾。 搭配使用 ZIP 部署與這項設定時，系統會將套件自動上傳到這個位置。 在預覽中，這項設定命名為 `WEBSITE_RUN_FROM_ZIP`。 如需詳細資訊，請參閱[從套件檔案執行函式](run-functions-from-deployment-package.md)。
 
-## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+## <a name="website_time_zone"></a>網站 \_ 時區 \_
 
-根據預設，Functions Proxy 將利用捷徑來將 API 呼叫從 Proxy 直接傳送到同一個函數應用程式中的函式，而不是建立新的 HTTP 要求。 此設定可讓您停用該行為。
+可讓您設定函數應用程式的時區。 
 
-|機碼|值|說明|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|具有指向本機函數應用程式中函式之後端 URL 的呼叫將不再直接傳送至函式，而會改為導向回到函數應用程式的 HTTP 前端|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|這是預設值。 具有指向本機函數應用程式中函式之後端 URL 的呼叫將會直接轉送至該函式|
+|答案|OS|範例值|
+|---|--|------------|
+|網站 \_ 時區 \_|Windows|美加東部標準時間|
+|網站 \_ 時區 \_|Linux|美洲/New_York|
 
-
-## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
-
-此設定控制在將路由參數插入到後端 URL 時，是否要將其中的 %2F 解碼為斜線。 
-
-|機碼|值|說明|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|若路由參數含有已編碼的斜線，就必須將它們解碼。 `example.com/api%2ftest` 將成為 `example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|此為預設行為。 所有路由參數都將依原樣傳遞|
-
-### <a name="example"></a>範例
-
-以下是在 URL myfunction.com 上函數應用程式中的範例 proxies.json
-
-```JSON
-{
-    "$schema": "http://json.schemastore.org/proxies",
-    "proxies": {
-        "root": {
-            "matchCondition": {
-                "route": "/{*all}"
-            },
-            "backendUri": "example.com/{all}"
-        }
-    }
-}
-```
-|URL 解碼|輸入|輸出|
-|-|-|-|
-|true|myfunction.com/test%2fapi|example.com/test/api
-|false|myfunction.com/test%2fapi|example.com/test%2fapi|
-
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

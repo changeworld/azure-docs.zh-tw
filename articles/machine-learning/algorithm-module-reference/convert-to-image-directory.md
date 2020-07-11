@@ -9,26 +9,30 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 41724753df0d529e4c44344e8e975e68ee5eafd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84904587"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171137"
 ---
 # <a name="convert-to-image-directory"></a>轉換至映像目錄
 
-本文說明如何使用 [轉換成映射目錄] 模組，協助將影像資料集轉換為「影像目錄」資料類型，這是影像相關工作中的標準化資料格式，例如 Azure Machine Learning 設計工具（預覽）中的影像分類。
+本文說明如何使用 [轉換成映射目錄] 模組，協助將影像資料集轉換為「影像目錄」資料類型，這是影像相關工作中的標準化資料格式，例如 Azure Machine Learning 設計工具中的影像分類 (預覽) 。
 
 ## <a name="how-to-use-convert-to-image-directory"></a>如何使用轉換成影像目錄  
 
 1.  將 [**轉換成映射目錄**] 模組新增至您的實驗。 您可以在模組清單的 [電腦視覺/影像資料轉換] 類別中找到此模組。 
 
-2.  連接影像資料集做為輸入。 請確認輸入資料集內有影像。
+2.  [註冊映射資料集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)，並將它連接到模組輸入埠。 請確認輸入資料集內有影像。 
     支援下列資料集格式：
 
     - 這些延伸模組中的壓縮檔案： ' .zip '、'. tar '、'. gz '、'. bz2 '。
     - 包含影像的資料夾。 **強烈建議先壓縮這類資料夾，然後使用壓縮檔案作為資料集**。
+
+    > [!WARNING]
+    > 您**不能**使用 [匯**入資料**] 模組匯入影像資料集，因為 [匯**入資料**] 模組的輸出類型是 [資料框架目錄]，其中只包含檔案路徑字串。
+    
 
     > [!NOTE]
     > 如果在監督式學習中使用影像資料集，則需要標籤。
@@ -54,13 +58,13 @@ ms.locfileid: "84904587"
 
 ###  <a name="expected-inputs"></a>預期的輸入  
 
-| 名稱          | 類型                  | Description   |
+| 名稱          | 類型                  | 描述   |
 | ------------- | --------------------- | ------------- |
 | 輸入資料集 | AnyDirectory、ZipFile | 輸入資料集 |
 
 ###  <a name="output"></a>輸出  
 
-| 名稱                   | 類型           | Description            |
+| 名稱                   | 類型           | 描述            |
 | ---------------------- | -------------- | ---------------------- |
 | 輸出影像目錄 | ImageDirectory | 輸出影像目錄 |
 

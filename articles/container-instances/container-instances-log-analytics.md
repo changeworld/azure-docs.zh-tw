@@ -2,13 +2,14 @@
 title: 收集 & 分析資源記錄
 description: 瞭解如何從 Azure 容器實例中的容器群組，將資源記錄和事件資料傳送至 Azure 監視器記錄
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c76d8a2e7e468c511f0df47ebb240a787f40e026
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80892388"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169726"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>具有 Azure 監視器記錄的容器群組和實例記錄
 
@@ -23,7 +24,7 @@ Log Analytics 工作區提供集中的位置，不僅可以儲存和查詢來自
 > [!NOTE]
 > 目前，您只能將來自 Linux 容器執行個體的事件資料傳送至 Log Analytics。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要在您的容器執行個體中啟用記錄，您必須具備下列項目：
 
@@ -38,7 +39,7 @@ Azure 容器執行個體必須具備將資料傳送至 Log Analytics 工作區�
 
 1. 在 Azure 入口網站中瀏覽至您的 Log Analytics 工作區
 1. 在 [**設定**] 底下，選取 [ **Advanced Settings** ]
-1. 選取**已連線的來源**  >  **Windows 伺服器**（或**Linux 伺服器**--兩者的識別碼和金鑰都相同）
+1. 選取**已連線的來源**  >  **Windows 伺服器** (或**Linux 伺服器**--兩者的識別碼和金鑰都相同) 
 1. 記下：
    * **工作區識別碼**
    * **主要金鑰**
@@ -67,7 +68,7 @@ az container create \
 如果您想要使用 YAML 部署容器群組，請使用此方法。 下列 YAML 會定義具有單一容器的容器群組。 請將 YAML 複製到新檔案中，然後將 `LOG_ANALYTICS_WORKSPACE_ID` 和 `LOG_ANALYTICS_WORKSPACE_KEY` 取代為您在先前的步驟中取得的值。 將檔案儲存為 **deploy-aci.yaml**。
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: mycontainergroup001
 properties:
@@ -104,7 +105,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 在您部署容器群組後，可能需要幾分鐘的時間 (最多 10 分鐘)，第一個記錄項目才會出現在 Azure 入口網站中。 若要在 `ContainerInstanceLog_CL` 資料表中檢視容器群組的記錄：
 
 1. 在 Azure 入口網站中瀏覽至您的 Log Analytics 工作區
-1. 在 [一般]**** 之下，選取 [記錄]****  
+1. 在 **[一般**] 底下，選取 [**記錄**]  
 1. 執行下列查詢：`ContainerInstanceLog_CL | limit 50`
 1. 選取**執行**
 
@@ -117,7 +118,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 您也可以在 Azure 入口網站中，檢視容器執行個體的事件。 事件包括執行個體的建立時間和啟動時間。 若要在 `ContainerEvent_CL` 資料表中檢視事件資料：
 
 1. 在 Azure 入口網站中瀏覽至您的 Log Analytics 工作區
-1. 在 [一般]**** 之下，選取 [記錄]****  
+1. 在 **[一般**] 底下，選取 [**記錄**]  
 1. 執行下列查詢：`ContainerEvent_CL | limit 50`
 1. 選取**執行**
 

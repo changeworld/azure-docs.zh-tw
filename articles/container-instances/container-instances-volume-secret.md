@@ -2,12 +2,13 @@
 title: 將秘密磁片區掛接至容器群組
 description: 了解如何掛接秘密磁碟區，以儲存供您的容器執行個體存取的機密資訊
 ms.topic: article
-ms.date: 04/03/2020
-ms.openlocfilehash: 756828e71174246450245938595c8872afc62961
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: ea82ba5994feaf102d4622eada284df431e004d0
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657158"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169556"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>在 Azure 容器執行個體中掛接秘密磁碟區
 
@@ -61,7 +62,7 @@ Bye.
 下列 YAML 範本可定義含有一個容器的容器群組，而該容器會在 `/mnt/secrets` 掛接「祕密」** 磁碟區。 秘密磁片區有兩個檔案，其中包含秘密 "mysecret1" 和 "mysecret2"。
 
 ```yaml
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: eastus
 name: secret-volume-demo
 properties:

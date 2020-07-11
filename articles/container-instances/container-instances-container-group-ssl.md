@@ -2,12 +2,13 @@
 title: 啟用具有側車容器的 TLS
 description: 在側車容器中執行 Nginx，為在 Azure 容器實例中執行的容器群組建立 SSL 或 TLS 端點
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: f7f5d8e8136f4357067888f5a39fa0c3635122d1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80984601"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169845"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>啟用側車容器中的 TLS 端點
 
@@ -31,7 +32,7 @@ ms.locfileid: "80984601"
 
 若要建立自我簽署的 TLS/SSL 憑證，請使用 Azure Cloud Shell 和許多 Linux 散發套件中提供的[OpenSSL](https://www.openssl.org/)工具，或在您的作業系統中使用類似的用戶端工具。
 
-首先，在本機工作目錄中建立憑證要求（csr 檔案）：
+首先， ( 在本機工作目錄中建立憑證要求) ：
 
 ```console
 openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
@@ -39,13 +40,13 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 依照提示來新增識別資訊。 針對 [一般名稱]，輸入與憑證相關聯的主機名稱。 當系統提示您輸入密碼時，請按 Enter 而不輸入，以略過加入密碼。
 
-執行下列命令，從憑證要求建立自我簽署憑證（.crt 檔案）。 例如：
+執行下列命令，從憑證要求) 建立自我簽署憑證 ( .crt 檔案。 例如：
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 ```
 
-您現在應該會在目錄中看到三個檔案：憑證要求（ `ssl.csr` ）、私密金鑰（ `ssl.key` ），以及自我簽署憑證（ `ssl.crt` ）。 您 `ssl.key` `ssl.crt` 在稍後的步驟中會使用和。
+您現在應該會在目錄中看到三個檔案：憑證要求 (`ssl.csr`) 、私密金鑰 (`ssl.key`) ，以及自我簽署憑證 (`ssl.crt`) 。 您 `ssl.key` `ssl.crt` 在稍後的步驟中會使用和。
 
 ## <a name="configure-nginx-to-use-tls"></a>將 Nginx 設定為使用 TLS
 
@@ -146,7 +147,7 @@ code deploy-aci.yaml
 輸入以 base64 編碼的檔案內容，其中有指示 `secret` 。 例如， `cat` 每個 base64 編碼的檔案都會看到其內容。 在部署期間，這些檔案會新增至容器群組中的[秘密磁片](container-instances-volume-secret.md)區。 在此範例中，秘密磁片區會掛接至 Nginx 容器。
 
 ```YAML
-api-version: 2018-10-01
+api-version: 2019-12-01
 location: westus
 name: app-with-ssl
 properties:
@@ -233,7 +234,7 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 ## <a name="next-steps"></a>後續步驟
 
-本文說明如何設定 Nginx 容器，以啟用對容器群組中執行之 web 應用程式的 TLS 連線。 針對接聽埠80以外埠的應用程式，您可以調整此範例。 您也可以更新 Nginx 設定檔，將埠80（HTTP）上的伺服器連線自動重新導向至使用 HTTPS。
+本文說明如何設定 Nginx 容器，以啟用對容器群組中執行之 web 應用程式的 TLS 連線。 針對接聽埠80以外埠的應用程式，您可以調整此範例。 您也可以更新 Nginx 設定檔，以自動將埠80上的伺服器連線重新導向 (HTTP) 以使用 HTTPS。
 
 雖然本文使用側車中的 Nginx，但您可以使用另一個 TLS 提供者，例如[Caddy](https://caddyserver.com/)。
 

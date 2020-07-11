@@ -2,13 +2,13 @@
 title: 在容器群組中啟用受控識別
 description: 瞭解如何在 Azure 容器實例中啟用可向其他 Azure 服務進行驗證的受控識別
 ms.topic: article
-ms.date: 04/15/2020
-ms.openlocfilehash: 31dc198bfb2023684f3a9022bec5a5f50f0d9a72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: 9bc96ed29039650082bdfa8b7b2b1b48ecb6bd3f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82115715"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169777"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何搭配 Azure 容器執行個體使用受控識別
 
@@ -38,7 +38,7 @@ ms.locfileid: "82115715"
 
 ### <a name="use-a-managed-identity"></a>建立受控識別
 
-若要使用受控識別，必須在訂用帳戶中將身分識別授與一或多個 Azure 服務資源（例如 web 應用程式、金鑰保存庫或儲存體帳戶）的存取權。 在執行中的容器中使用受控識別，類似于在 Azure VM 中使用身分識別。 如需了解如何使用[權杖](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)、[Azure PowerShell 或 Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) 或 [Azure SDKs](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md)，請參閱 VM 指引。
+若要使用受控識別，身分識別必須被授與一或多個 Azure 服務資源的存取權 (例如 web 應用程式、金鑰保存庫，或訂用帳戶中) 的儲存體帳戶。 在執行中的容器中使用受控識別，類似于在 Azure VM 中使用身分識別。 如需了解如何使用[權杖](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)、[Azure PowerShell 或 Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) 或 [Azure SDKs](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md)，請參閱 VM 指引。
 
 ### <a name="limitations"></a>限制
 
@@ -190,7 +190,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-現在，使用存取權杖向 key vault 進行驗證並讀取秘密。 請務必以您的金鑰保存庫名稱取代 URL （*HTTPs： \/ /mykeyvault.vault.azure.net/...*）：
+現在，使用存取權杖向 key vault 進行驗證並讀取秘密。 請務必以您的金鑰保存庫名稱取代 URL 中的 (*HTTPs： \/ /mykeyvault.vault.azure.net/...*) ：
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

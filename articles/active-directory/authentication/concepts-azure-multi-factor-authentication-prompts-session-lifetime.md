@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77f2e78fa3df6c7ac6a422a03335f93d2a19d99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4834cccff11a70249140f49b498b8f7891787c72
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255744"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169335"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>優化重新驗證提示，並瞭解 Azure 多重要素驗證的會話存留期
 
-Azure Active Directory （Azure AD）有多個設定，可決定使用者需要重新驗證的頻率。 這種重新驗證可能是第一個因素，例如 password、FIDO 或無密碼 Microsoft Authenticator，或是執行多重要素驗證（MFA）。 您可以視需要針對自己的環境和您想要的使用者體驗，設定這些重新驗證設定。
+Azure Active Directory (Azure AD) 有多項設定，可決定使用者需要重新驗證的頻率。 這種重新驗證可能是第一個因素，例如 password、FIDO 或無密碼 Microsoft Authenticator，或是 (MFA) 執行多重要素驗證。 您可以視需要針對自己的環境和您想要的使用者體驗，設定這些重新驗證設定。
 
 本文詳細說明建議的設定，以及不同設定的工作和互動方式。
 
@@ -29,11 +29,11 @@ Azure Active Directory （Azure AD）有多個設定，可決定使用者需要�
 為了讓您的使用者能夠以正確的頻率登入，以取得正確的安全性和易用性，我們建議您進行下列設定：
 
 * 如果您有 Azure AD Premium：
-    * 使用[受管理的裝置](../devices/overview.md)或[無縫 SSO](../hybrid/how-to-connect-sso.md)，跨應用程式啟用單一登入（SSO）。
+    * 使用[受管理的裝置](../devices/overview.md)或[無縫 SSO](../hybrid/how-to-connect-sso.md)，啟用跨應用程式的單一登入 (SSO) 。
     * 如果需要重新驗證，請使用條件式存取登[入頻率原則](../conditional-access/howto-conditional-access-session-lifetime.md)。
     * 針對從非受控裝置或行動裝置案例登入的使用者，請使用條件式存取來啟用持續性瀏覽器會話和登入頻率原則。
 * 如果您有 Office 365 應用程式授權或免費的 Azure AD 層：
-    * 使用[受管理的裝置](../devices/overview.md)或[無縫 SSO](../hybrid/how-to-connect-sso.md)，跨應用程式啟用單一登入（SSO）。
+    * 使用[受管理的裝置](../devices/overview.md)或[無縫 SSO](../hybrid/how-to-connect-sso.md)，啟用跨應用程式的單一登入 (SSO) 。
     * 保持已啟用 [*保持登入*] 選項，並引導使用者接受它。
 
 我們的研究顯示這些設定對大部分的租使用者而言都是合適的。 這些設定的某些組合（例如，*記住 MFA*並*保持簽章*）可能會導致使用者出現太常驗證的提示。 定期重新驗證提示對使用者生產力而言是不好的，而且可能會使它們更容易遭受攻擊。
@@ -44,7 +44,7 @@ Azure Active Directory （Azure AD）有多個設定，可決定使用者需要�
 
 ### <a name="evaluate-session-lifetime-policies"></a>評估會話存留期原則
 
-如果沒有任何會話存留期設定，瀏覽器會話中就不會有持續的 cookie。 每次使用者關閉並開啟瀏覽器時，都會收到重新驗證的提示。 在 Office 用戶端中，預設時間週期是90天的滾動視窗。 使用此預設的 Office 設定時，如果使用者已重設其密碼，或超過90天的非使用狀態，則使用者必須以所有必要的因素（第一個和第二個因素）重新驗證。
+如果沒有任何會話存留期設定，瀏覽器會話中就不會有持續的 cookie。 每次使用者關閉並開啟瀏覽器時，都會收到重新驗證的提示。 在 Office 用戶端中，預設時間週期是90天的滾動視窗。 使用此預設的 Office 設定時，如果使用者已重設其密碼，或有超過90天的非使用狀態，則使用者必須以 (第一個和第二個因素) 的所有必要因素進行重新驗證。
 
 在 Azure AD 中，會話存留期最嚴格的原則會決定使用者何時需要重新驗證。 請考慮下列案例：
 
@@ -55,7 +55,7 @@ Azure Active Directory （Azure AD）有多個設定，可決定使用者需要�
 
 ### <a name="managed-devices"></a>受管理的裝置
 
-使用 Azure AD Join 或混合式 Azure AD Join 加入 Azure AD 的裝置會收到主要的重新整理[權杖（PRT）](../devices/concept-primary-refresh-token.md) ，以在應用程式間使用單一登入（SSO）。 此 PRT 可讓使用者在裝置上登入一次，並讓 IT 人員確保符合安全性和合規性的標準。 如果需要在某些應用程式或案例的已聯結裝置上要求使用者更頻繁地登入，則可以使用[條件式存取登入頻率](../conditional-access/howto-conditional-access-session-lifetime.md)來達成此目的。
+使用 Azure AD Join 或混合式 Azure AD Join 加入 Azure AD 的裝置會收到主要的重新整理[權杖 (PRT) ](../devices/concept-primary-refresh-token.md)以跨應用程式使用單一登入 (SSO) 。 此 PRT 可讓使用者在裝置上登入一次，並讓 IT 人員確保符合安全性和合規性的標準。 如果需要在某些應用程式或案例的已聯結裝置上要求使用者更頻繁地登入，則可以使用[條件式存取登入頻率](../conditional-access/howto-conditional-access-session-lifetime.md)來達成此目的。
 
 ### <a name="show-option-to-remain-signed-in"></a>顯示保持登入的選項
 
@@ -122,10 +122,10 @@ Azure Active Directory （Azure AD）有多個設定，可決定使用者需要�
 
 下表摘要說明以授權為基礎的建議：
 
-|                              | Azure AD Free 和 Office 365 應用程式 | Azure AD Premium |
+|              | Azure AD Free 和 Office 365 應用程式 | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
-| SSO                          | 針對未受管理的裝置， [Azure AD 聯結](../devices/concept-azure-ad-join.md)或[混合式 Azure AD 聯結](../devices/concept-azure-ad-join-hybrid.md)，或[無縫 SSO](../hybrid/how-to-connect-sso.md) 。 | Azure AD Join<br />混合式 Azure AD Join |
-| 重新驗證設定    | 仍已登入                  | 針對登入頻率和持續性瀏覽器會話使用條件式存取原則 |
+| **SSO**                      | 針對未受管理的裝置， [Azure AD 聯結](../devices/concept-azure-ad-join.md)或[混合式 Azure AD 聯結](../devices/concept-azure-ad-join-hybrid.md)，或[無縫 SSO](../hybrid/how-to-connect-sso.md) 。 | Azure AD Join<br />混合式 Azure AD Join |
+| **重新驗證設定** | 仍已登入                  | 針對登入頻率和持續性瀏覽器會話使用條件式存取原則 |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,21 +1,21 @@
 ---
-title: 管理 StorSimple 磁片區（Update 3）
+title: '管理 StorSimple 磁片區 (Update 3) '
 description: 說明如何加入、修改及監視 StorSimple 磁碟區，以及如何在必要時使其離線。
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 3d8ab6da9327048469c8b781657bb03b6a4b9669
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508243"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204452"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 裝置管理員服務來管理磁碟區 (Update 3 或更新版本)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明如何使用 StorSimple 裝置管理員服務來建立和管理執行 Update 3 和更新版本之 StorSimple 8000 系列裝置上的磁碟區。
 
@@ -51,7 +51,7 @@ StorSimple 磁碟區可以是：
 
 請參閱下表以取得每個裝置與磁碟區類型的最大佈建容量。 (請注意，固定在本機的磁碟區無法在虛擬裝置上使用。)
 
-|  | 最大的分層磁碟區大小 | 最大的固定在本機的磁碟區大小 |
+| 類型 | 最大的分層磁碟區大小 | 最大的固定在本機的磁碟區大小 |
 | --- | --- | --- |
 | **實體裝置** | | |
 | 8100 |64 TB |8 TB |
@@ -157,7 +157,7 @@ StorSimple 磁碟區可以是：
 
        ![檢閱讓磁碟區離線的影響](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. 按一下 [確定] 儲存變更。 當提示確認時，請按一下 [是]****。 Azure 入口網站將會顯示更新磁碟區訊息。 如果磁碟區已成功更新，即會顯示成功訊息。
+5. 按一下 [儲存] 以儲存變更。 當提示確認時，請按一下 [是]****。 Azure 入口網站將會顯示更新磁碟區訊息。 如果磁碟區已成功更新，即會顯示成功訊息。
 
     ![檢閱讓磁碟區離線的影響](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
@@ -165,7 +165,7 @@ StorSimple 磁碟區可以是：
    
    1. 移至 [**電腦管理**] [  -> **磁片管理**]。
    2. 以滑鼠右鍵按一下 [磁碟管理]****，並選取 [重新掃描磁碟]****。
-   3. 在磁碟清單中，選取您已更新的磁碟區，按一下滑鼠右鍵，然後選取 [延伸磁碟區] ****。 [延伸磁碟區精靈] 隨即啟動。 按 [下一步] 。
+   3. 在磁碟清單中，選取您已更新的磁碟區，按一下滑鼠右鍵，然後選取 [延伸磁碟區] ****。 [延伸磁碟區精靈] 隨即啟動。 按一下 [下一步]。
    4. 接受預設值，完成精靈。 完成精靈後，磁碟區應該會顯示增加的大小。
       
       > [!NOTE]
@@ -229,7 +229,7 @@ StorSimple 磁碟區可以是：
    
      ![變更磁碟區類型訊息](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
-7. 按一下 [儲存]  儲存變更。 當系統提示您確認時，按一下 [是]**** 以開始轉換程序。 
+7. 按一下 [儲存] 儲存變更。 當系統提示您確認時，按一下 [是]**** 以開始轉換程序。 
 
     ![儲存並確認](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 

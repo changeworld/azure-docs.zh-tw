@@ -5,13 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 6/2/2020
+ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299293"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187569"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立度量警示
 
@@ -562,12 +563,12 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>可監視多個準則的靜態臨界值計量警示範本
 
-較新的計量警示支援多維度度量的警示，以及定義多個條件的支援（每個警示規則最多5使用準則來）。 您可以使用下列範本，針對維度計量建立更先進的度量警示規則，並指定多個準則。
+較新的計量警示支援多維度度量的警示，以及支援定義多個準則， (每個警示規則) 最多5使用準則來。 您可以使用下列範本，針對維度計量建立更先進的度量警示規則，並指定多個準則。
 
 在包含多個準則的警示規則中使用維度時，請注意下列條件約束：
 - 在每個準則中，您只能為每個維度選取一個值。
 - 您不能使用 "\*" 作為維度值。
-- 當不同使用準則來中設定的計量支援相同的維度時，您必須以相同的方式，針對所有這些計量（在相關的使用準則來中）明確設定已設定的維度值。
+- 當不同使用準則來中設定的計量支援相同的維度時，您必須以相同的方式，針對相關使用準則來) 中的所有這些計量 (明確設定已設定的維度值。
     - 在下列範例中，因為 **Transactions** 和 **SuccessE2ELatency** 計量都有 **ApiName** 維度，而且 *criterion1* 為 **ApiName** 維度指定了 *"GetBlob"* 值，所以 *criterion2* 也必須要為 **ApiName**維度設定 *"GetBlob"* 值。
 
 
@@ -1023,7 +1024,7 @@ az group deployment create \
 
 您可以使用下列範本，針對維度計量建立更先進的動態閾值計量警示規則。
 
-單一動態閾值警示規則可同時為數百個計量時間序列（甚至不同類型）建立量身打造的臨界值，這會導致較少的警示規則進行管理。
+單一動態閾值警示規則可針對數百個計量時間序列建立量身打造的閾值 (即使是一次) 不同的類型，這會導致較少的警示規則進行管理。
 
 在下列範例中，警示規則會監視**交易**度量的**ResponseType**和**ApiName**維度的維度值組合：
 1. **ResponsType** - 針對 **ResponseType** 維度的每個值 (包括未來的值)，都會分別監視不同的時間序列。
@@ -1508,7 +1509,7 @@ az group deployment create \
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>監視多個資源的計量警示範本
 
-前幾節已說明用來建立計量警示以監視單一資源的 Azure Resource Manager 範本範例。 Azure 監視器現在支援針對存在於相同 Azure 區域中的資源，使用單一計量警示規則監視多個資源（屬於相同類型）。 這項功能目前僅在 Azure 公用雲端中受到支援，而且僅適用于虛擬機器、SQL server 資料庫、SQL server 彈性集區和 Databox 邊緣裝置。 此外，這項功能僅適用於平台計量，且不支援自訂計量。
+前幾節已說明用來建立計量警示以監視單一資源的 Azure Resource Manager 範本範例。 Azure 監視器現在支援以單一計量警示規則，針對存在於相同 Azure 區域中的資源，監視相同類型的多個資源 () 。 這項功能目前僅在 Azure 公用雲端中受到支援，而且僅適用于虛擬機器、SQL server 資料庫、SQL server 彈性集區和 Databox 邊緣裝置。 此外，這項功能僅適用於平台計量，且不支援自訂計量。
 
 動態閾值警示規則也可一次為數百個計量序列 (甚至不同類型) 建立合適的閾值，讓需要管理的警示規則變少。
 
@@ -1520,7 +1521,9 @@ az group deployment create \
 
 > [!NOTE]
 >
-> 在監視多個資源的計量警示規則中，只允許一個準則。
+> 在監視多個資源的計量警示規則中，適用下列限制：
+> - 警示規則的範圍必須至少包含一個所選資源類型的資源。
+> - 警示規則只能包含一個條件。
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>一個或多個資源群組中所有虛擬機器上的靜態閾值警示
 

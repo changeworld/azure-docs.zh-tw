@@ -19,19 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 959adec9f74a8cda7fde941ccea7db75e981a650
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692796"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201548"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 OData $filter 語法
 
 Azure 認知搜尋會使用[OData 篩選條件運算式](query-odata-filter-orderby-syntax.md)，將額外的準則套用至除了全文檢索搜尋詞彙以外的搜尋查詢。 本文詳細說明篩選準則的語法。 如需有關哪些篩選準則，以及如何使用它們來實現特定查詢案例的一般資訊，請參閱[Azure 認知搜尋中的篩選](search-filters.md)。
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
-OData 語言中的篩選是布林運算式，它可以是數種運算式類型的其中一種，如下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）所示：
+OData 語言中的篩選是布林運算式，它可以是數種運算式類型之一，如下列 EBNF ([Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 所示：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -74,7 +75,7 @@ variable ::= identifier | field_path
 
 如果您撰寫的篩選條件運算式的子運算式周圍沒有括弧，Azure 認知搜尋會根據一組運算子優先順序規則來進行評估。 這些規則是以用來結合子運算式的運算子為基礎。 下表列出運算子群組，順序從最高到最低優先順序：
 
-| 群組 | 運算子 |
+| 群組 | 運算子 (s)  |
 | --- | --- |
 | 邏輯運算子 | `not` |
 | 比較運算子 | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
@@ -83,20 +84,28 @@ variable ::= identifier | field_path
 
 上表中較高的運算子會將「系結更緊密」地「系結」到其運算元，而不是其他運算子。 例如， `and` 的優先順序高於 `or` ，而比較運算子的優先順序高於其中之一，因此下列兩個運算式是相等的：
 
+```odata-filter-expr
     Rating gt 0 and Rating lt 3 or Rating gt 7 and Rating lt 10
     ((Rating gt 0) and (Rating lt 3)) or ((Rating gt 7) and (Rating lt 10))
+```
 
 `not`運算子的優先順序最高，甚至比比較運算子高。 因此，如果您嘗試撰寫如下所示的篩選器：
 
+```odata-filter-expr
     not Rating gt 5
+```
 
 您會收到下列錯誤訊息：
 
+```text
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
+```
 
 這個錯誤發生的原因是，運算子只與欄位相關聯 `Rating` ，其類型為 `Edm.Int32` ，而不是整個比較運算式。 修正方法是將的運算元放 `not` 在括弧中：
 
+```odata-filter-expr
     not (Rating gt 5)
+```
 
 <a name="bkmk_limits"></a>
 
@@ -111,87 +120,129 @@ variable ::= identifier | field_path
 
 找出至少有一個房間小於 $200 且評分為或高於4的飯店：
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/BaseRate lt 200.0) and Rating ge 4
+```
 
 尋找自2010以來已翻新的所有旅館（「海洋 View Motel」除外）：
 
+```odata-filter-expr
     $filter=HotelName ne 'Sea View Motel' and LastRenovationDate ge 2010-01-01T00:00:00Z
+```
 
 尋找在2010或更新版本中翻新的所有旅館。 日期時間常值包含太平洋標準時間的時區資訊：  
 
+```odata-filter-expr
     $filter=LastRenovationDate ge 2010-01-01T00:00:00-08:00
+```
 
 尋找所有具有停車的飯店，而且所有房間都不會吸煙：
 
+```odata-filter-expr
     $filter=ParkingIncluded and Rooms/all(room: not room/SmokingAllowed)
+```
 
  \- 或 -  
 
+```odata-filter-expr
     $filter=ParkingIncluded eq true and Rooms/all(room: room/SmokingAllowed eq false)
+```
 
 尋找所有屬豪華等級，或附停車位且獲評為 5 星級的飯店：  
 
+```odata-filter-expr
     $filter=(Category eq 'Luxury' or ParkingIncluded eq true) and Rating eq 5
+```
 
-在至少一個房間中尋找所有具有標記 "wifi" 的飯店（其中每個房間都有儲存在欄位中的標記 `Collection(Edm.String)` ）：  
+在至少一個會議室中尋找所有具有標籤 "wifi" 的飯店 (，其中每個房間的標籤都儲存在 `Collection(Edm.String)` 欄位) 中：  
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: tag eq 'wifi'))
+```
 
 尋找任何會議室的所有旅館：  
 
+```odata-filter-expr
     $filter=Rooms/any()
+```
 
 尋找沒有會議室的所有旅館：
 
+```odata-filter-expr
     $filter=not Rooms/any()
+```
 
-尋找在指定參考點的10公里內的所有旅館（其中 `Location` 是類型的欄位 `Edm.GeographyPoint` ）：
+尋找在指定參考點的10公里內的所有旅館 (其中 `Location` 是) 類型的 `Edm.GeographyPoint` 欄位：
 
+```odata-filter-expr
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
-尋找指定的範圍內的所有旅館，並以多邊形（其中 `Location` 是 GeographyPoint 類型的欄位）的形式來說明。 多邊形必須關閉，表示第一個和最後一個點集合必須相同。 此外，[這些點必須以逆時針順序列出](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
+尋找指定的範圍內的所有旅館，以多邊形 (，其中 `Location` 是 GeographyPoint) 類型的欄位。 多邊形必須關閉，表示第一個和最後一個點集合必須相同。 此外，[這些點必須以逆時針順序列出](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
 
+```odata-filter-expr
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
 尋找 [描述] 欄位為 null 的所有旅館。 如果絕對不會設定此欄位，或如果已將它明確設定為 null，則會是 null：  
 
+```odata-filter-expr
     $filter=Description eq null
+```
 
-尋找名稱等於「海洋 View motel」或「預算飯店」的所有旅館。 這些片語包含空格，而 space 是預設的分隔符號。 您可以使用單引號來指定替代分隔符號，做為第三個字串參數：  
+尋找名稱等於「海洋視圖 motel」或「預算飯店」 ) 的所有旅館。 這些片語包含空格，而 space 是預設的分隔符號。 您可以使用單引號來指定替代分隔符號，做為第三個字串參數：  
 
+```odata-filter-expr
     $filter=search.in(HotelName, 'Sea View motel,Budget hotel', ',')
+```
 
-尋找名稱等於「海運視圖 motel」或「預算飯店」（以 ' | ' 分隔）的所有旅館：  
+尋找名稱等於「海運視圖 motel」或「預算飯店」的所有飯店，並以 ' | ' 分隔) ：  
 
+```odata-filter-expr
     $filter=search.in(HotelName, 'Sea View motel|Budget hotel', '|')
+```
 
 尋找所有房間都具有標記 ' wifi ' 或 ' 浴盆 ' 的所有旅館：
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub'))
+```
 
 尋找集合中片語的相符項，例如標記中的「加熱式的紙巾機架」或「hairdryer 包含」。
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
+```
 
 尋找含有「海濱」一詞的文件。 此篩選查詢等同於使用 `search=waterfront` 的[搜尋要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 
+```odata-filter-expr
     $filter=search.ismatchscoring('waterfront')
+```
 
 尋找含有「青年旅館」一詞、且評分為 4 或以上的文件，或含有「汽車旅館」一詞、且評分為 5 的文件。 無法以函數表示此要求， `search.ismatchscoring` 因為它會使用將全文檢索搜尋與篩選作業結合 `or` 。
 
+```odata-filter-expr
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
+```
 
 尋找不含「豪華」一詞的文件。
 
+```odata-filter-expr
     $filter=not search.ismatch('luxury')
+```
 
 尋找含有「海景」一詞或評分為 5 的文件。 `search.ismatchscoring` 查詢只會對欄位 `HotelName` 和 `Description` 執行。 只會傳回比對之第二個子句相符的檔，也會傳回 `Rating` 等於5的飯店。 這些檔會以等於零的分數傳回，使其清楚指出不符合運算式的任何計分部分。
 
+```odata-filter-expr
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5
+```
 
 尋找「飯店」和「機場」詞彙在描述中不超過五個單字，而且所有房間都不吸煙的旅館。 此查詢會使用[完整 Lucene 查詢語言](query-lucene-syntax.md)。
 
+```odata-filter-expr
     $filter=search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and not Rooms/any(room: room/SmokingAllowed)
+```
 
 ## <a name="next-steps"></a>後續步驟  
 

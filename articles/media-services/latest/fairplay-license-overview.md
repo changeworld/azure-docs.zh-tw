@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d348f2696ef865616669af311477cb3a90a59a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a3516d96e397944adcd31628a561a243e178c2d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995856"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183030"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 授權需求和設定 
 
@@ -26,7 +27,7 @@ Azure 媒體服務可讓您使用 **Apple FairPlay** (AES-128 CBC) 來加密您�
 
 媒體服務也會提供您可以用來設定 FairPlay 授權的 API。 本主題討論 FairPlay 授權需求，並示範如何使用媒體服務 API 設定 **FairPlay** 授權。 
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 當使用媒體服務搭配 **Apple FairPlay** 來加密您的 HLS 內容，以及使用媒體服務來傳遞 FairPlay 授權時，需要下列項目：
 
@@ -60,6 +61,9 @@ Azure 媒體服務可讓您使用 **Apple FairPlay** (AES-128 CBC) 來加密您�
   * .der 檔案
   * .pfx 檔案
   * .pfx 的密碼
+  
+> [!NOTE]
+> Azure 媒體服務不會在封裝或金鑰傳遞期間檢查憑證到期日。 憑證過期後，它將繼續正常執行。
 
 ## <a name="fairplay-and-player-apps"></a>FairPlay 和播放應用程式
 

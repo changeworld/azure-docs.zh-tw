@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 87b4f0573fbcc73573c508a7f8e39acadcfa05af
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 84e9dab149cfed265833336577d718e57bd9bc2d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056458"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165323"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常見問題集
 
@@ -254,7 +254,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何判斷 IP 是惡意的？ 
 
-流量分析會依賴 Microsoft 內部威脅情報系統，將 IP 視為惡意。 這些系統會運用各種遙測來源，例如 Microsoft 產品和服務、Microsoft 數位犯罪單位（DCU）、Microsoft Security Response Center （MSRC）和外部摘要，並在其上建立許多智慧。 這其中一些資料是 Microsoft Internal。 如果已知的 IP 標示為惡意，請提出支援票證以瞭解詳細資料。
+流量分析會依賴 Microsoft 內部威脅情報系統，將 IP 視為惡意。 這些系統會運用各種遙測來源，例如 Microsoft 產品和服務、Microsoft 數位犯罪單位 (DCU) 、Microsoft 安全性回應中心 (MSRC) 和外部摘要，並在其上建立許多智慧。 這其中一些資料是 Microsoft Internal。 如果已知的 IP 標示為惡意，請提出支援票證以瞭解詳細資料。
 
 ## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>如何設定流量分析資料的警示？
 
@@ -266,65 +266,74 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>如何? 檢查哪些 Vm 會接收大部分的內部部署流量？
 
-            AzureNetworkAnalytics_CL
-            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
-            | where <Scoping condition>
-            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
-            | where isnotempty(vm) 
-             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
-            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
-            | render timechart
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+| where <Scoping condition>
+| mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+| where isnotempty(vm) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+| make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
+| render timechart
+```
 
   針對 Ip：
 
-            AzureNetworkAnalytics_CL
-            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
-            //| where <Scoping condition>
-            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
-            | where isnotempty(IP) 
-            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
-            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
-            | render timechart
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+//| where <Scoping condition>
+| mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+| where isnotempty(IP) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+| make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
+| render timechart
+```
 
 針對時間，請使用格式： yyyy-mm-dd 00:00:00
 
 ## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>如何? 檢查我的 Vm 從內部部署機器收到的流量標準差嗎？
 
-            AzureNetworkAnalytics_CL
-            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
-            //| where <Scoping condition>
-            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
-            | where isnotempty(vm) 
-            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
-            | summarize deviation = stdev(traffic)  by vm
-
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+//| where <Scoping condition>
+| mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+| where isnotempty(vm) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + utboundBytes_d
+| summarize deviation = stdev(traffic)  by vm
+```
 
 針對 Ip：
 
-            AzureNetworkAnalytics_CL
-            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
-            //| where <Scoping condition>
-            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
-            | where isnotempty(IP) 
-            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
-            | summarize deviation = stdev(traffic)  by IP
-            
-## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何? 檢查 IP 組與 NSG 規則之間可連線（或封鎖）哪些埠？
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+//| where <Scoping condition>
+| mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+| where isnotempty(IP) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+| summarize deviation = stdev(traffic)  by IP
+```
 
-            AzureNetworkAnalytics_CL
-            | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
-            | extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
-            destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
-            | mvexpand SourceIp = sourceIPs to typeof(string)
-            | mvexpand DestIp = destIPs to typeof(string)
-            | project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
-            | summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
+## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何? 檢查哪些埠可在 IP 配對之間以 NSG 規則連線 (或封鎖) ？
+
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
+| extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
+destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
+| mvexpand SourceIp = sourceIPs to typeof(string)
+| mvexpand DestIp = destIPs to typeof(string)
+| project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
+| summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
+```
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>如何在地理地圖檢視中使用鍵盤來瀏覽？
 
 地理地圖頁面包含兩大區段：
     
-- **橫幅**：地理地圖頂端的橫幅會提供按鈕來選取流量發佈篩選器（例如，部署、來自國家/地區的流量，以及惡意的流量）。 當您選取按鈕時，個別篩選條件便會套用至地圖。 例如，如果您選取 [使用中] 按鈕，地圖就會將部署中的使用中資料中心醒目提示。
+- **橫幅**：地理地圖頂端的橫幅會提供按鈕來選取流量發佈篩選器 (例如，部署、來自國家/地區的流量，以及惡意) 。 當您選取按鈕時，個別篩選條件便會套用至地圖。 例如，如果您選取 [使用中] 按鈕，地圖就會將部署中的使用中資料中心醒目提示。
 - **Map**：在橫幅底下，[地圖] 區段會顯示 Azure 資料中心與國家/地區之間的流量分配。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>橫幅上的鍵盤瀏覽

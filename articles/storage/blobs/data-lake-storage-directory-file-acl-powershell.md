@@ -1,6 +1,6 @@
 ---
 title: 適用于檔案 & Acl 的 Azure Data Lake Storage Gen2 PowerShell
-description: 使用 PowerShell Cmdlet 來管理已啟用階層命名空間（HNS）之儲存體帳戶中的目錄和檔案和目錄存取控制清單（ACL）。
+description: 使用 PowerShell Cmdlet 來管理已啟用階層命名空間 (HNS) 之儲存體帳戶中 (ACL) 的目錄和檔案和目錄存取控制清單。
 services: storage
 author: normesta
 ms.service: storage
@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 67aa9fcb51742432dcd629073f15a65d14bf3597
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961195"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142536"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
-本文說明如何使用 PowerShell 來建立和管理已啟用階層命名空間（HNS）之儲存體帳戶中的目錄、檔案和許可權。 
+本文說明如何使用 PowerShell 來建立和管理已啟用階層命名空間 (HNS) 的儲存體帳戶中的目錄、檔案和許可權。 
 
 [Gen1 至 Gen2 對應](#gen1-gen2-map) | [提供意見反應](https://github.com/Azure/azure-powershell/issues)
 
@@ -64,9 +64,9 @@ Select-AzSubscription -SubscriptionId <subscription-id>
 
 接下來，選擇您希望命令取得儲存體帳戶授權的方式。 
 
-### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>選項1：使用 Azure Active Directory （AD）取得授權
+### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>選項1：使用 Azure Active Directory (AD 來取得授權) 
 
-使用此方法時，系統可確保您的使用者帳戶具有適當的角色型存取控制（RBAC）指派和 ACL 許可權。 
+使用此方法時，系統可確保您的使用者帳戶具有適當的角色型存取控制， (RBAC) 指派和 ACL 許可權。 
 
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
@@ -81,11 +81,11 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-file-system"></a>建立檔案系統
+## <a name="create-a-container"></a>建立容器
 
-檔案系統可做為您的檔案的容器。 您可以使用 Cmdlet 來建立一個 `New-AzStorageContainer` 。 
+容器會作為檔案的檔案系統。 您可以使用 Cmdlet 來建立一個 `New-AzStorageContainer` 。 
 
-此範例會建立名為 `my-file-system` 的檔案系統。
+這個範例會建立名為的容器 `my-file-system` 。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -96,7 +96,7 @@ New-AzStorageContainer -Context $ctx -Name $filesystemName
 
 使用 Cmdlet 建立目錄參考 `New-AzDataLakeGen2Item` 。 
 
-這個範例會將名為的目錄新增 `my-directory` 至檔案系統。
+這個範例會將名為的目錄新增 `my-directory` 至容器。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -180,7 +180,7 @@ Get-AzDataLakeGen2ItemContent -Context $ctx -FileSystem $filesystemName -Path $f
 
 ## <a name="list-directory-contents"></a>列出目錄內容
 
-使用 Cmdlet 來列出目錄的內容 `Get-AzDataLakeGen2ChildItem` 。 您可以使用選擇性參數 `-OutputUserPrincipalName` 來取得使用者的名稱（而不是物件識別碼）。
+使用 Cmdlet 來列出目錄的內容 `Get-AzDataLakeGen2ChildItem` 。 您可以使用選擇性參數 `-OutputUserPrincipalName` 來取得 (的名稱，而不是使用者的物件識別碼) 。
 
 這個範例會列出名為之目錄的內容 `my-directory` 。
 
@@ -202,7 +202,7 @@ $properties.Group
 $properties.Owner
 ```
 
-若要列出檔案系統的內容，請省略 `-Path` 命令中的參數。
+若要列出容器的內容，請省略 `-Path` 命令中的參數。
 
 ## <a name="upload-a-file-to-a-directory"></a>將檔案上傳至目錄
 
@@ -261,7 +261,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 ## <a name="manage-access-permissions"></a>管理存取權限
 
-您可以取得、設定及更新目錄和檔案的存取權限。 這些許可權是在存取控制清單（Acl）中加以捕捉。
+您可以取得、設定及更新目錄和檔案的存取權限。 這些許可權會在 (Acl) 的存取控制清單中加以捕捉。
 
 > [!NOTE]
 > 如果您使用 Azure Active Directory (Azure AD) 來授權命令，請確定已將[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)指派給您的安全性主體。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
@@ -270,7 +270,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 使用 Cmdlet 取得目錄或檔案的 ACL `Get-AzDataLakeGen2Item` 。
 
-這個範例會取得**檔案系統**根目錄的 acl，然後將 acl 列印到主控台。
+這個範例會取得**容器**根目錄的 acl，然後將 acl 列印到主控台。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -305,7 +305,7 @@ $file.ACL
 
 使用 `set-AzDataLakeGen2ItemAclObject` Cmdlet 來建立擁有使用者、擁有群組或其他使用者的 ACL。 然後，使用 `Update-AzDataLakeGen2Item` Cmdlet 來認可 ACL。
 
-這個範例會針對擁有使用者、擁有群組或其他使用者，在**檔案系統**的根目錄上設定 acl，然後將 acl 列印到主控台。
+這個範例會針對擁有使用者、擁有群組或其他使用者，在**容器**的根目錄上設定 acl，然後將 acl 列印到主控台。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -349,9 +349,9 @@ $file.ACL
 在此範例中，擁有使用者和擁有群組只有讀取和寫入權限。 所有其他使用者具備寫入和執行權限。 如需存取控制清單的詳細資訊，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](data-lake-storage-access-control.md)。
 
 
-### <a name="set-acls-on-all-items-in-a-file-system"></a>在檔案系統中設定所有專案的 Acl
+### <a name="set-acls-on-all-items-in-a-container"></a>在容器中的所有專案上設定 Acl
 
-您可以使用 `Get-AzDataLakeGen2Item` 和 `-Recurse` 參數搭配 `Update-AzDataLakeGen2Item` Cmdlet，以遞迴方式設定檔案系統中目錄和檔案的 ACL。 
+您可以使用 `Get-AzDataLakeGen2Item` 和 `-Recurse` 參數搭配 Cmdlet，以 `Update-AzDataLakeGen2Item` 遞迴方式設定容器中目錄和檔案的 ACL。 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -411,7 +411,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 下表顯示用於 Data Lake Storage Gen1 的 Cmdlet 對應至 Data Lake Storage Gen2 之 Cmdlet 的方式。
 
-|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 備註 |
+|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 附註 |
 |--------|---------|-----|
 |AzDataLakeStoreChildItem|AzDataLakeGen2ChildItem|根據預設，AzDataLakeGen2ChildItem Cmdlet 只會列出第一個層級的子專案。 -遞迴參數會以遞迴方式列出子專案。 |
 |AzDataLakeStoreItem<br>AzDataLakeStoreItemAclEntry<br>AzDataLakeStoreItemOwner<br>AzDataLakeStoreItemPermission|AzDataLakeGen2Item|AzDataLakeGen2Item 指令程式的輸出專案具有下列屬性： Acl、擁有者、群組、許可權。|

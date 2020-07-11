@@ -16,13 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76263739"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219958"
 ---
-# <a name="templates"></a>範本
+# <a name="notification-hubs-templates"></a>通知中樞範本
 
 範本可讓用戶端應用程式指定它要接收的確切通知格式。 使用範本時，app 可以獲得數個不同的好處，包括下列各項：
 
@@ -61,7 +62,7 @@ ms.locfileid: "76263739"
 
 下圖說明整個程序：
 
-![](./media/notification-hubs-templates/notification-hubs-hello.png)
+![此圖顯示使用跨平臺的範本流程](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 iOS 用戶端 app 註冊的範本如下：
 
@@ -120,7 +121,7 @@ iOS 用戶端 app 註冊的範本如下：
 
 藉由使用此模式，後端只需傳送單一訊息，而不需儲存 app 使用者的特定個人化選項。 下圖說明這個案例：
 
-![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
+![此圖顯示後端只會將單一訊息傳送到每個平臺。](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>如何註冊範本
 
@@ -144,7 +145,7 @@ iOS 用戶端 app 註冊的範本如下：
 
 運算式可以是前述任一形式。
 
-使用串連時，整個運算式必須包含在 `{}` 中。 例如： `{$(prop) + ‘ - ’ + $(prop2)}` 。
+使用串連時，整個運算式必須包含在 `{}` 中。 例如，`{$(prop) + ‘ - ’ + $(prop2)}`。
 
 例如，以下的範本不是有效的 XML 範本：
 

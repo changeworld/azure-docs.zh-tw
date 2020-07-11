@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure PowerShell 新增或移除 Azure 角色指派-Azure RBAC
-description: 瞭解如何使用 Azure PowerShell 和 Azure 角色型存取控制（Azure RBAC），為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
+description: 瞭解如何使用 Azure PowerShell 和 Azure 角色型存取控制 (Azure RBAC) ，為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,11 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 46aea9ab113a0c75ed24497ee39793d08c4f7165
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b0df4337a5e5faff3427222fb66caf8e02184a3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790886"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146652"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 新增或移除 Azure 角色指派
 
@@ -26,7 +27,7 @@ ms.locfileid: "84790886"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要新增或移除角色指派，您必須具有：
 
@@ -55,9 +56,9 @@ Get-AzADGroup -SearchString <group_name_in_quotes>
 (Get-AzADGroup -DisplayName <group_name_in_quotes>).id
 ```
 
-### <a name="application"></a>Application
+### <a name="application"></a>應用程式
 
-若要取得 Azure AD 服務主體（應用程式所使用的身分識別）的物件識別碼，您可以使用[new-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal)。 對於服務主體，請使用物件識別碼，而**不是**應用程式識別碼。
+若要取得應用程式) 所使用之 Azure AD 服務主體 (身分識別的物件識別碼，您可以使用[new-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal)。 對於服務主體，請使用物件識別碼，而**不是**應用程式識別碼。
 
 ```azurepowershell
 Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
@@ -97,7 +98,7 @@ CanDelegate        : False
 有一些時間可能會變更角色名稱，例如：
 
 - 您會使用自己的自訂角色，並決定變更名稱。
-- 您在名稱中使用的預覽角色具有 **（預覽）** 。 釋放角色時，會重新命名角色。
+- 您使用的預覽角色在名稱中有** (預覽) ** 。 釋放角色時，會重新命名角色。
 
 > [!IMPORTANT]
 > 預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
@@ -108,7 +109,7 @@ CanDelegate        : False
 若要使用唯一角色識別碼（而非角色名稱）新增角色指派，請使用[new-azroleassignment](/powershell/module/az.resources/new-azroleassignment)。
 
 ```azurepowershell
-New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
+New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -Scope <resource_group_name/resource/management groups>
 ```
 
 下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍中的*alain \@ example.com* user。 若要取得唯一的角色識別碼，您可以使用[get-azroledefinition](/powershell/module/az.resources/get-azroledefinition)或查看[Azure 內建角色](built-in-roles.md)。

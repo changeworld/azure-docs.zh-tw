@@ -1,5 +1,5 @@
 ---
-title: 自動化 ML 中的可解釋性
+title: 自動化 ML (預覽) 中的可解釋性
 titleSuffix: Azure Machine Learning
 description: 瞭解如何取得自動化 ML 模型判斷功能重要性的說明，並在使用 Azure Machine Learning SDK 時進行預測。
 services: machine-learning
@@ -8,18 +8,19 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: mesameki
 author: mesameki
-ms.date: 03/11/2020
-ms.openlocfilehash: 6fcebb34f82565fcf83a9535e8c036231c5b3cf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: af3fe7bffbf985936a1648088daaf1a294a69905
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430523"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206596"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretability：自動化機器學習中的模型說明
+# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretability：自動化機器學習服務 (預覽) 中的模型說明
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解如何在 Azure Machine Learning 中取得自動化機器學習（ML）的說明。 自動化 ML 可協助您瞭解工程特性的重要性。 
+在本文中，您將瞭解如何在 Azure Machine Learning 中取得自動化機器學習服務 (ML) 的說明。 自動化 ML 可協助您瞭解工程特性的重要性。 
 
 預設會設定1.0.85 之後的所有 SDK 版本 `model_explainability=True` 。 在 SDK 版本1.0.85 和較舊版本中，使用者必須在物件中設定，才能 `model_explainability=True` `AutoMLConfig` 使用模型 interpretability。 
 
@@ -29,7 +30,7 @@ ms.locfileid: "84430523"
 - 啟用視覺效果，協助您查看資料和說明中的模式。
 - 在推斷或評分期間，執行 interpretability。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - Interpretability 功能。 執行 `pip install azureml-interpret azureml-contrib-interpret` 以取得必要的套件。
 - 建立自動化 ML 實驗的知識。 如需如何使用 Azure Machine Learning SDK 的詳細資訊，請完成此[回歸模型教學](tutorial-auto-train-models.md)課程，或查看如何[設定自動化 ML 實驗](how-to-configure-auto-train.md)。

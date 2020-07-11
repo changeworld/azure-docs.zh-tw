@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 8ba34edfc382f0f03abe080d78a6a47dcb65501b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f06b8f9a2d41fc5400aa0fa610a2be3f31e21f1c
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82105755"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169794"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service 內部項目
 
@@ -84,7 +84,9 @@ Azure SignalR Service 建置在 ASP.NET Core SignalR 架構之上。 它也支�
 
 此時，應用程式伺服器便會收到事件，其中會有來自新用戶端的資訊。 應用程式伺服器中會建立連往用戶端的邏輯連線。 系統會透過 SignalR Service 建立從用戶端至應用程式伺服器的資料通道。
 
-SignalR Service 會將資料從用戶端傳輸到配對的應用程式伺服器。 而來自應用程式伺服器的資料則會傳送至對應的用戶端。
+SignalR Service 會將資料從用戶端傳輸至配對應用程式伺服器。 而來自應用程式伺服器的資料則會傳送至對應的用戶端。
+
+SignalR Service 不會儲存或儲存客戶資料，所有收到的客戶資料都會即時傳輸到目標伺服器或用戶端。
 
 如您所見，Azure SignalR Service 本質上是應用程式伺服器與用戶端之間的邏輯傳輸層。 所有的持續性連線都會卸載至 SignalR Service。
 應用程式伺服器只需要處理中樞類別中的商務邏輯，而不必擔心用戶端連線。

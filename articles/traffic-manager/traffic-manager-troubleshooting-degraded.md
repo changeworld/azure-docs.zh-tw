@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
-ms.openlocfilehash: b0585c755e8dd9a6625a8259dc71ca521f156afb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88c2536ad53be0beb583dc64e633322b2a531d15
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704058"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183438"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>疑難排解 Azure 流量管理員上的已降級狀態
 
@@ -55,9 +56,11 @@ Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirectio
 
 範例輸出︰
 
-    StatusCode StatusDescription
-    ---------- -----------------
-           301 Moved Permanently
+```output
+StatusCode StatusDescription
+---------- -----------------
+        301 Moved Permanently
+```
 
 請注意，我們收到重新導向回應。 如先前所述，200 以外的任何 StatusCode 都視為失敗。 流量管理員將端點狀態變更為「離線」。 若要解決此問題，請檢查網站設定，確保可以從探查路徑傳回適當的 StatusCode。 重新設定流量管理員探查，以指向傳回 200 的路徑。
 

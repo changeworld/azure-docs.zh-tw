@@ -1,7 +1,7 @@
 ---
 title: 包含多個檔的索引 blob
 titleSuffix: Azure Cognitive Search
-description: 使用 Azure 識別搜尋 Blob 索引子來編目適用于文字內容的 Azure blob，其中每個 blob 可能會產生一或多個搜尋索引檔。
+description: 使用 Azure 認知搜尋 Blob 索引子來編目適用于文字內容的 Azure blob，其中每個 blob 可能會產生一或多個搜尋索引檔。
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,11 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f93ae8a017c889f6c465b3ccbbb66382577e871
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74112275"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146796"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>編制 blob 的索引以產生多個搜尋檔
 根據預設，blob 索引子會將 blob 的內容視為單一搜尋檔。 某些**parsingMode**值支援個別 blob 可能會導致多個搜尋檔的案例。 不同類型的**parsingMode**可讓索引子從 blob 解壓縮一個以上的搜尋檔，如下所示：
@@ -41,25 +42,31 @@ ms.locfileid: "74112275"
 
 _Blob1.js于_
 
+```json
     { "temperature": 100, "pressure": 100, "timestamp": "2019-02-13T00:00:00Z" }
     { "temperature" : 33, "pressure" : 30, "timestamp": "2019-02-14T00:00:00Z" }
+```
 
 _Blob2.js于_
 
+```json
     { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
     { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
+```
 
 當您建立索引子並將**parsingMode**設定為 `jsonLines` -但未指定索引鍵欄位的任何明確欄位對應時，將會隱含套用下列對應
-    
+
+```http
     {
         "sourceFieldName" : "AzureSearch_DocumentKey",
         "targetFieldName": "id",
         "mappingFunction": { "name" : "base64Encode" }
     }
+```
 
-此設定會導致 Azure 認知搜尋索引包含下列資訊（為了簡潔起見，已縮短 base64 編碼識別碼）
+此設定會產生 Azure 認知搜尋索引，其中包含下列資訊 (base64 編碼識別碼會縮短以求簡潔) 
 
-| id | 溫度 | pressure | timestamp |
+| id | 溫度 | 壓力 | timestamp |
 |----|-------------|----------|-----------|
 | aHR0 ...YjEuanNvbjsx | 100 | 100 | 2019-02-13T00：00：00Z |
 | aHR0 ...YjEuanNvbjsy | 33 | 30 | 2019-02-14T00：00：00Z |
@@ -72,22 +79,28 @@ _Blob2.js于_
 
 _Blob1.js于_
 
+```json
     recordid, temperature, pressure, timestamp
     1, 100, 100,"2019-02-13T00:00:00Z" 
     2, 33, 30,"2019-02-14T00:00:00Z" 
+```
 
 _Blob2.js于_
 
+```json
     recordid, temperature, pressure, timestamp
     1, 1, 1,"2018-01-12T00:00:00Z" 
     2, 120, 3,"2013-05-11T00:00:00Z" 
+```
 
 當您使用 parsingMode 建立索引子時 `delimitedText` ** **，可能會很自然地將欄位對應函數設定為索引鍵欄位，如下所示：
 
+```http
     {
         "sourceFieldName" : "recordid",
         "targetFieldName": "id"
     }
+```
 
 不過，此對應_不_會導致在索引中顯示4份檔，因為欄位在 `recordid` _blob 之間_不是唯一的。 因此，我們建議您將隱含欄位對應從屬性套用至「一對多」 `AzureSearch_DocumentKey` 剖析模式的索引鍵索引欄位。
 

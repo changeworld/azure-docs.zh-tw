@@ -2,12 +2,13 @@
 title: 在容器實例上設定活動探查
 description: 了解如何在 Azure 容器執行個體中設定活躍度探查，以重新啟動狀況不良的容器
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 11c6c9d39067c536bf4325f74eb24b2ab64ef515
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: befe9693be1413abf455d915814c53aab20db53c
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76934169"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169692"
 ---
 # <a name="configure-liveness-probes"></a>設定活躍度探查
 
@@ -25,7 +26,7 @@ Azure 容器實例也支援[就緒探查](container-instances-readiness-probe.md
 使用下列程式碼片段來建立 `liveness-probe.yaml` 檔案。 此檔案所定義的容器群組是由最終會變成狀況不良的 NGNIX 容器所組成的。
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: livenesstest
 properties:
