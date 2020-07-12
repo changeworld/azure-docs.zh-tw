@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ac4df0b63d48e590bfdfc49f1c8b5607b4651cd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c18a09b494de7ecb639fbc5639b7162bdb02d2a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310184"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241976"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure 地圖服務氣象涵蓋範圍
 
@@ -110,7 +111,7 @@ Azure 地圖服務對於所有國家/地區沒有相同層級的資訊和精確�
 | 查德                        | ✓               |                              |        ✓| 
 | 葛摩                     | ✓               |                              |        ✓| 
 | 剛果民主共和國                 | ✓               |                              |        ✓|
-| 科特迪瓦 (Côte d’Ivoire)               | ✓               |                              |        ✓| 
+| 象牙海岸 (科特迪瓦)               | ✓               |                              |        ✓| 
 | 吉布地                    | ✓               |                              |        ✓| 
 | 埃及                       | ✓               |                              |        ✓| 
 | 赤道幾內亞           | ✓               |                              |        ✓| 

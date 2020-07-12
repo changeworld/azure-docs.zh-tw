@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d666f7e3e43b5429423a5356aa00e074ed020869
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 153532b3c33158ee1a43db7883eb7a9ec621ade7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615327"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241670"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows 虛擬桌面環境
 
@@ -44,7 +44,7 @@ Windows 虛擬桌面租使用者是用來管理 Windows 虛擬桌面環境的主
 - RemoteApp，使用者可在其中存取您個別選取併發布至應用程式群組的 Remoteapp
 - 桌面，使用者在其中存取完整桌面
 
-根據預設，每當您建立主機集區時，就會自動建立桌面應用程式群組（名為「桌面應用程式群組」）。 您可以隨時移除此應用程式群組。 不過，當桌面應用程式群組存在時，您無法在主機集區中建立另一個桌面應用程式群組。 若要發佈 Remoteapp，您必須建立 RemoteApp 應用程式群組。 您可以建立多個 RemoteApp 應用程式群組來配合不同的背景工作案例。 不同的 RemoteApp 應用程式群組也可以包含重迭的 Remoteapp。
+根據預設，每當您建立主機集區時，就會自動建立名為「桌面應用程式群組」 ) 的桌面應用程式群組 (。 您可以隨時移除此應用程式群組。 不過，當桌面應用程式群組存在時，您無法在主機集區中建立另一個桌面應用程式群組。 若要發佈 Remoteapp，您必須建立 RemoteApp 應用程式群組。 您可以建立多個 RemoteApp 應用程式群組來配合不同的背景工作案例。 不同的 RemoteApp 應用程式群組也可以包含重迭的 Remoteapp。
 
 若要將資源發佈給使用者，您必須將它們指派給應用程式群組。 將使用者指派給應用程式群組時，請考慮下列事項：
 
@@ -53,7 +53,7 @@ Windows 虛擬桌面租使用者是用來管理 Windows 虛擬桌面環境的主
 
 ## <a name="tenant-groups"></a>租使用者群組
 
-在 Windows 虛擬桌面中，Windows 虛擬桌面租使用者是大部分的安裝和設定發生所在的位置。 Windows 虛擬桌面租使用者包含主機集區、應用程式群組和應用程式群組使用者指派。 不過，在某些情況下，您可能需要一次管理多個 Windows 虛擬桌面的租使用者，特別是當您是雲端服務提供者（CSP）或主控夥伴時。 在這些情況下，您可以使用自訂的 Windows 虛擬桌面租使用者群組，將每個客戶的 Windows 虛擬桌面租使用者，集中管理存取權。 不過，如果您只是管理單一 Windows 虛擬桌面租使用者，則不會套用租使用者群組概念，而且您可以繼續操作及管理存在於預設租使用者群組中的租使用者。
+在 Windows 虛擬桌面中，Windows 虛擬桌面租使用者是大部分的安裝和設定發生所在的位置。 Windows 虛擬桌面租使用者包含主機集區、應用程式群組和應用程式群組使用者指派。 不過，在某些情況下，您可能需要一次管理多個 Windows 虛擬桌面的租使用者，特別是如果您是雲端服務提供者 (CSP) 或主控夥伴。 在這些情況下，您可以使用自訂的 Windows 虛擬桌面租使用者群組，將每個客戶的 Windows 虛擬桌面租使用者，集中管理存取權。 不過，如果您只是管理單一 Windows 虛擬桌面租使用者，則不會套用租使用者群組概念，而且您可以繼續操作及管理存在於預設租使用者群組中的租使用者。
 
 ## <a name="end-users"></a>使用者
 
@@ -67,5 +67,5 @@ Windows 虛擬桌面租使用者是用來管理 Windows 虛擬桌面環境的主
 
 若要瞭解如何連接到 Windows 虛擬桌面，請參閱下列其中一篇文章：
 
-- [從 Windows 10 或 Windows 7 連線](../connect-windows-7-and-10.md)
+- [從 Windows 10 或 Windows 7 連線](connect-windows-7-10-2019.md)
 - [從網頁瀏覽器連線](connect-web-2019.md)

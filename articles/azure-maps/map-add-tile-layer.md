@@ -9,11 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bb3cfa7266688ac8973bd3838d0d03e9efe8d50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76988595"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242299"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>將圖格圖層新增至地圖
 
@@ -23,7 +24,7 @@ ms.locfileid: "76988595"
 
 * X、Y、縮放標記法-X 是資料行，Y 是磚方格中磚的資料列位置，而 Zoom 標記法是以縮放層級為基礎的值。
 * Quadkey 標記法-將 x、y 和 zoom 資訊結合成單一字串值。 這個字串值會變成單一磚的唯一識別碼。
-* 周框方塊-以周框方塊座標格式指定影像： `{west},{south},{east},{north}` 。 [Web 對應服務（WMS）](https://www.opengeospatial.org/standards/wms)通常會使用此格式。
+* 周框方塊-以周框方塊座標格式指定影像： `{west},{south},{east},{north}` 。 [Web 對應服務 (WMS) ](https://www.opengeospatial.org/standards/wms)通常會使用此格式。
 
 > [!TIP]
 > [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) 是視覺化地圖上大型資料集的好方法。 圖格圖層不僅可以從影像產生，向量資料也可以呈現為磚圖層。 藉由將向量資料轉譯為圖格圖層，地圖控制項只需要載入檔案大小較小的磚，而不是它們所代表的向量資料。 這項技術通常用來在地圖上轉譯數百萬個數據列。
@@ -36,6 +37,7 @@ ms.locfileid: "76988595"
 * `{quadkey}` -圖格 quadkey 識別碼，以 Bing Maps 圖格系統的命名慣例為基礎。
 * `{bbox-epsg-3857}` - 使用 `{west},{south},{east},{north}` 格式的週框方塊字串，位在 EPSG 3857 空間參考系統中。
 * `{subdomain}`-子域值的預留位置（如果有指定）， `subdomain` 將會加入。
+* `{azMapsDomain}`-一個預留位置，用來對齊具有對應所使用之相同值的磚要求的網域和驗證。
 
 ## <a name="add-a-tile-layer"></a>新增圖格圖層
 

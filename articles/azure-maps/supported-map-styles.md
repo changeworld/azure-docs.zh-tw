@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db8ae98302ad6df7355ce03f5a33b5d21f1ea09
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334029"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242095"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure 地圖服務支援的地圖樣式
 「Azure 地圖服務」支援數個不同的內建地圖樣式，如下所述。
@@ -28,6 +28,7 @@ ms.locfileid: "80334029"
 * [地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK 地圖控制項
 * Android 地圖控制項
+* Power BI 視覺效果
 
 ## <a name="blank-and-blank_accessible"></a>空白和 blank_accessible
 
@@ -48,6 +49,7 @@ ms.locfileid: "80334029"
 * [衛星底圖](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
 * Web SDK 地圖控制項
 * Android 地圖控制項
+* Power BI 視覺效果
 
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 此地圖樣式包含道路及覆蓋在衛星和空拍影像上的標籤。
@@ -57,6 +59,7 @@ ms.locfileid: "80334029"
 **適用 API：**
 * Web SDK 地圖控制項
 * Android 地圖控制項
+* Power BI 視覺效果
 
 ## <a name="grayscale_dark"></a>grayscale_dark
 **深灰階**是路段圖樣式的深色版本。
@@ -68,6 +71,7 @@ ms.locfileid: "80334029"
 * [地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK 地圖控制項 
 * Android 地圖控制項
+* Power BI 視覺效果
 
 
 ## <a name="grayscale_light"></a>grayscale_light
@@ -78,6 +82,7 @@ ms.locfileid: "80334029"
 **適用 API：**
 * Web SDK 地圖控制項
 * Android 地圖控制項
+* Power BI 視覺效果
 
 
 ## <a name="night"></a>夜間
@@ -88,6 +93,7 @@ ms.locfileid: "80334029"
 **適用 API：**
 * Web SDK 地圖控制項
 * Android 地圖控制項
+* Power BI 視覺效果
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 **路段陰影起伏圖**是以地球等高線完成的「Azure 地圖服務」的主要樣式。
@@ -98,6 +104,7 @@ ms.locfileid: "80334029"
 * [地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK 地圖控制項
 * Android 地圖控制項
+* Power BI 視覺效果
 
 ## <a name="high_contrast_dark"></a>high_contrast_dark
 
@@ -107,6 +114,7 @@ ms.locfileid: "80334029"
 
 **適用 API：**
 * Web SDK 地圖控制項
+* Power BI 視覺效果
 
 ## <a name="next-steps"></a>後續步驟
 

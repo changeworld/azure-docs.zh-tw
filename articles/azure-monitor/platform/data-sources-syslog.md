@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cce74358a206c7103d537ba80c62d6561606b818
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847407"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242027"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure 監視器中的 Syslog 資料來源
 Syslog 是通用於 Linux 的事件記錄通訊協定。 應用程式將傳送的訊息可能會儲存在本機電腦上，或傳遞到 Syslog 收集器。 安裝 Log Analytics Linux 代理程式時，它會設定本機 Syslog 精靈來將訊息轉送到代理程式。 然後，代理程式會將訊息傳送至 Azure 監視器 (建立相對應記錄的位置)。  
@@ -64,87 +64,94 @@ Log Analytics Linux 代理程式只會收集具有其設定中指定之設備和
 #### <a name="rsyslog"></a>rsyslog
 Rsyslog 的組態檔位於 **/etc/rsyslog.d/95-omsagent.conf**。 其預設內容如下所示。 這會針對層級為警告或以上的所有設備收集傳送自本機代理程式的 syslog 訊息。
 
-    kern.warning       @127.0.0.1:25224
-    user.warning       @127.0.0.1:25224
-    daemon.warning     @127.0.0.1:25224
-    auth.warning       @127.0.0.1:25224
-    syslog.warning     @127.0.0.1:25224
-    uucp.warning       @127.0.0.1:25224
-    authpriv.warning   @127.0.0.1:25224
-    ftp.warning        @127.0.0.1:25224
-    cron.warning       @127.0.0.1:25224
-    local0.warning     @127.0.0.1:25224
-    local1.warning     @127.0.0.1:25224
-    local2.warning     @127.0.0.1:25224
-    local3.warning     @127.0.0.1:25224
-    local4.warning     @127.0.0.1:25224
-    local5.warning     @127.0.0.1:25224
-    local6.warning     @127.0.0.1:25224
-    local7.warning     @127.0.0.1:25224
+```config
+kern.warning       @127.0.0.1:25224
+user.warning       @127.0.0.1:25224
+daemon.warning     @127.0.0.1:25224
+auth.warning       @127.0.0.1:25224
+syslog.warning     @127.0.0.1:25224
+uucp.warning       @127.0.0.1:25224
+authpriv.warning   @127.0.0.1:25224
+ftp.warning        @127.0.0.1:25224
+cron.warning       @127.0.0.1:25224
+local0.warning     @127.0.0.1:25224
+local1.warning     @127.0.0.1:25224
+local2.warning     @127.0.0.1:25224
+local3.warning     @127.0.0.1:25224
+local4.warning     @127.0.0.1:25224
+local5.warning     @127.0.0.1:25224
+local6.warning     @127.0.0.1:25224
+local7.warning     @127.0.0.1:25224
+```
 
 您可以藉由移除組態檔的設備區段來移除該設備。 您可以藉由修改特定設備的項目，來限制針對該設備所收集的嚴重性。 例如，若要將使用者設備限制為嚴重性為錯誤或以上的訊息，您要將組態檔的那一行修改為下列內容：
 
-    user.error    @127.0.0.1:25224
+```config
+user.error    @127.0.0.1:25224
+```
 
 
 #### <a name="syslog-ng"></a>syslog-ng
 Syslog-ng 的組態檔位於 **/etc/syslog-ng/syslog-ng.conf**。  其預設內容如下所示。 這會針對所有設備和所有嚴重性收集傳送自本機代理程式的 syslog 訊息。   
 
-    #
-    # Warnings (except iptables) in one file:
-    #
-    destination warn { file("/var/log/warn" fsync(yes)); };
-    log { source(src); filter(f_warn); destination(warn); };
+```config
+#
+# Warnings (except iptables) in one file:
+#
+destination warn { file("/var/log/warn" fsync(yes)); };
+log { source(src); filter(f_warn); destination(warn); };
 
-    #OMS_Destination
-    destination d_oms { udp("127.0.0.1" port(25224)); };
+#OMS_Destination
+destination d_oms { udp("127.0.0.1" port(25224)); };
 
-    #OMS_facility = auth
-    filter f_auth_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(auth); };
-    log { source(src); filter(f_auth_oms); destination(d_oms); };
+#OMS_facility = auth
+filter f_auth_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(auth); };
+log { source(src); filter(f_auth_oms); destination(d_oms); };
 
-    #OMS_facility = authpriv
-    filter f_authpriv_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(authpriv); };
-    log { source(src); filter(f_authpriv_oms); destination(d_oms); };
+#OMS_facility = authpriv
+filter f_authpriv_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(authpriv); };
+log { source(src); filter(f_authpriv_oms); destination(d_oms); };
 
-    #OMS_facility = cron
-    filter f_cron_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(cron); };
-    log { source(src); filter(f_cron_oms); destination(d_oms); };
+#OMS_facility = cron
+filter f_cron_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(cron); };
+log { source(src); filter(f_cron_oms); destination(d_oms); };
 
-    #OMS_facility = daemon
-    filter f_daemon_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(daemon); };
-    log { source(src); filter(f_daemon_oms); destination(d_oms); };
+#OMS_facility = daemon
+filter f_daemon_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(daemon); };
+log { source(src); filter(f_daemon_oms); destination(d_oms); };
 
-    #OMS_facility = kern
-    filter f_kern_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(kern); };
-    log { source(src); filter(f_kern_oms); destination(d_oms); };
+#OMS_facility = kern
+filter f_kern_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(kern); };
+log { source(src); filter(f_kern_oms); destination(d_oms); };
 
-    #OMS_facility = local0
-    filter f_local0_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(local0); };
-    log { source(src); filter(f_local0_oms); destination(d_oms); };
+#OMS_facility = local0
+filter f_local0_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(local0); };
+log { source(src); filter(f_local0_oms); destination(d_oms); };
 
-    #OMS_facility = local1
-    filter f_local1_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(local1); };
-    log { source(src); filter(f_local1_oms); destination(d_oms); };
+#OMS_facility = local1
+filter f_local1_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(local1); };
+log { source(src); filter(f_local1_oms); destination(d_oms); };
 
-    #OMS_facility = mail
-    filter f_mail_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(mail); };
-    log { source(src); filter(f_mail_oms); destination(d_oms); };
+#OMS_facility = mail
+filter f_mail_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(mail); };
+log { source(src); filter(f_mail_oms); destination(d_oms); };
 
-    #OMS_facility = syslog
-    filter f_syslog_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(syslog); };
-    log { source(src); filter(f_syslog_oms); destination(d_oms); };
+#OMS_facility = syslog
+filter f_syslog_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(syslog); };
+log { source(src); filter(f_syslog_oms); destination(d_oms); };
 
-    #OMS_facility = user
-    filter f_user_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(user); };
-    log { source(src); filter(f_user_oms); destination(d_oms); };
+#OMS_facility = user
+filter f_user_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(user); };
+log { source(src); filter(f_user_oms); destination(d_oms); };
+```
 
 您可以藉由移除組態檔的設備區段來移除該設備。 您可以限制針對特定設備收集的嚴重性，方法是從其清單中移除它們。  例如，若要將使用者設備限制為只有警示和重大訊息，您要將組態檔的那一個區段修改為下列內容：
 
-    #OMS_facility = user
-    filter f_user_oms { level(alert,crit) and facility(user); };
-    log { source(src); filter(f_user_oms); destination(d_oms); };
-
+```config
+#OMS_facility = user
+filter f_user_oms { level(alert,crit) and facility(user); };
+log { source(src); filter(f_user_oms); destination(d_oms); };
+```
 
 ### <a name="collecting-data-from-additional-syslog-ports"></a>從其他 Syslog 連接埠收集資料
 Log Analytics 代理程式會在本機用戶端的連接埠 25224 上接聽 Syslog 訊息。  安裝代理程式時，會套用預設 syslog 組態，並可在下列位置找到：
@@ -156,16 +163,18 @@ Log Analytics 代理程式會在本機用戶端的連接埠 25224 上接聽 Sysl
 
 * FluentD 組態檔應該是新的檔案，位於：`/etc/opt/microsoft/omsagent/conf/omsagent.d`，且會將**連接埠**項目中的值取代為自訂連接埠號碼。
 
-        <source>
-          type syslog
-          port %SYSLOG_PORT%
-          bind 127.0.0.1
-          protocol_type udp
-          tag oms.syslog
-        </source>
-        <filter oms.syslog.**>
-          type filter_syslog
-        </filter>
+    ```config
+    <source>
+      type syslog
+      port %SYSLOG_PORT%
+      bind 127.0.0.1
+      protocol_type udp
+      tag oms.syslog
+    </source>
+    <filter oms.syslog.**>
+      type filter_syslog
+    </filter>
+    ```
 
 * 針對 rsyslog，您應建立新的組態檔，位於：`/etc/rsyslog.d/`，並將 %SYSLOG_PORT% 值取代為您的自訂連接埠號碼。  
 
@@ -173,11 +182,13 @@ Log Analytics 代理程式會在本機用戶端的連接埠 25224 上接聽 Sysl
     > 如果您在 `95-omsagent.conf` 組態檔中修改這個值，就會在代理程式套用預設組態時將它覆寫。
     >
 
-        # OMS Syslog collection for workspace %WORKSPACE_ID%
-        kern.warning              @127.0.0.1:%SYSLOG_PORT%
-        user.warning              @127.0.0.1:%SYSLOG_PORT%
-        daemon.warning            @127.0.0.1:%SYSLOG_PORT%
-        auth.warning              @127.0.0.1:%SYSLOG_PORT%
+    ```config
+    # OMS Syslog collection for workspace %WORKSPACE_ID%
+    kern.warning              @127.0.0.1:%SYSLOG_PORT%
+    user.warning              @127.0.0.1:%SYSLOG_PORT%
+    daemon.warning            @127.0.0.1:%SYSLOG_PORT%
+    auth.warning              @127.0.0.1:%SYSLOG_PORT%
+    ```
 
 * 應修改 syslog ng 組態，方法是複製如下所示的範例組態，並將自訂修改的設定新增至位於 `/etc/syslog-ng/` 之 syslog ng.conf 組態檔的結尾。 請**勿**使用預設標籤 **%workspace_id%_oms** 或 **%workspace_id_oms**，定義自訂標籤可協助您辨別變更。  
 
@@ -185,9 +196,11 @@ Log Analytics 代理程式會在本機用戶端的連接埠 25224 上接聽 Sysl
     > 如果您在組態檔中修改預設值，就會在代理程式套用預設組態時將它覆寫。
     >
 
-        filter f_custom_filter { level(warning) and facility(auth; };
-        destination d_custom_dest { udp("127.0.0.1" port(%SYSLOG_PORT%)); };
-        log { source(s_src); filter(f_custom_filter); destination(d_custom_dest); };
+    ```config
+    filter f_custom_filter { level(warning) and facility(auth; };
+    destination d_custom_dest { udp("127.0.0.1" port(%SYSLOG_PORT%)); };
+    log { source(s_src); filter(f_custom_filter); destination(d_custom_dest); };
+    ```
 
 完成變更後，必須將 Syslog 和 Log Analytics 代理程式服務重新啟動，才能確保設定變更生效。   
 

@@ -5,18 +5,19 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 751af36c630d1b0faa0c07bdd3a8b7519bd328c9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464634"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241925"
 ---
 # <a name="report-and-check-service-health"></a>回報和檢查服務健康情況
 當您的服務發生問題時，您回應並修正事件和中斷的能力，取決於您快速偵測問題的能力。 如果您從服務程式碼向 Azure Service Fabric 健全狀況管理員回報問題和失敗，您便可以使用 Service Fabric 提供的標準健全狀況監視工具來檢查健全狀況。
 
 有三種方式可讓您回報服務的健全狀況：
 
-* 使用 [Partition](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) 或 [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) 物件。  
+* 使用 [Partition](/dotnet/api/system.fabric.istatefulservicepartition) 或 [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext) 物件。  
   您可以使用 `Partition` 和 `CodePackageActivationContext` 物件在屬於目前內容一部分的項目中回報健全狀況。 比方說，做為複本一部分執行的程式碼只能回報該複本、其所屬的分割區，以及其所屬應用程式的健全狀況。
 * 使用 `FabricClient`。   
   當叢集不是[安全的](service-fabric-cluster-security.md)或者服務是以系統管理員權限執行時，您才能使用 `FabricClient`，從服務程式碼回報健全狀況。 大部分的實際案例不會使用不安全的叢集，或提供系統管理員權限。 您可以使用 `FabricClient`，回報任何屬於叢集一部分之實體的健全狀況。 然而在理想的情況下，服務程式碼應該只會傳送與其本身健全狀況相關的報告。
@@ -140,6 +141,5 @@ activationContext.ReportApplicationHealth(healthInformation);
 
 ## <a name="next-steps"></a>後續步驟
 * [深入了解 Service Fabric 健康情況](service-fabric-health-introduction.md)
-* [回報服務健全狀況的 REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
-* [回報應用程式健全狀況的 REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
-
+* [回報服務健全狀況的 REST API](/rest/api/servicefabric/report-the-health-of-a-service)
+* [回報應用程式健全狀況的 REST API](/rest/api/servicefabric/report-the-health-of-an-application)

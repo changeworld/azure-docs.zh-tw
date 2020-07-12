@@ -5,12 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: b97b373936f9c485eaa96cdd34ed33c49e75ad9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77201266"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242061"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的于 postgresql 擴充功能-單一伺服器
 PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能。 延伸模組會將多個相關的 SQL 物件組合在單一封裝中，您可以使用單一命令從您的資料庫中載入或移除它們。 載入資料庫之後，擴充功能就像內建功能一樣。
@@ -25,7 +26,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 在 Postgres 版本11的適用於 PostgreSQL 的 Azure 資料庫伺服器中，可以使用下列延伸模組。 
 
 > [!div class="mx-tableFixed"]
-> | **分機**| **延伸模組版本** | **描述** |
+> | **延伸模組**| **延伸模組版本** | **描述** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US 資料集範例|
@@ -37,7 +38,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1.0             | 整數的文字搜尋字典範本|
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | 在地球表面上計算大圓距離|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/11/fuzzystrmatch.html)                | 1.1             | 判斷字串之間的相似和距離|
-> |[hstore](https://www.postgresql.org/docs/11/hstore.html)                       | 1.5             | 用於儲存（索引鍵、值）組集合的資料類型|
+> |[hstore](https://www.postgresql.org/docs/11/hstore.html)                       | 1.5             | 用於儲存 (索引鍵、值) 組之集合的資料類型|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.2           | 于 postgresql 的假設索引|
 > |[intarray](https://www.postgresql.org/docs/11/intarray.html)                     | 1.2             | 一維整數陣列的函數、運算子和索引支援|
 > |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | 國際產品編號標準的資料類型|
@@ -54,7 +55,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | 追蹤所有已執行之 SQL 語句的執行統計資料|
 > |[pg_trgm](https://www.postgresql.org/docs/11/pgtrgm.html)                      | 1.4             | 根據 trigrams 的文字相似性測量和索引搜尋|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL 程式語言|
-> |[plv8](https://plv8.github.io/)                         | 2.3.11          | PL/JavaScript （v8）信任的程式語言|
+> |[plv8](https://plv8.github.io/)                         | 2.3.11          | PL/JavaScript (v8) 信任的程式語言|
 > |[postgis](https://www.postgis.net/)                      | 2.5.1           | PostGIS geometry、geography 和點陣空間類型和函數|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | PostGIS SFCGAL 函式|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS tiger geocoder 和 reverse geocoder|
@@ -63,14 +64,14 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | 操作整個資料表的函數，包括交叉資料表|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | 啟用可調整的插入和複雜的時間序列資料查詢|
 > |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | 移除重音的文字搜尋字典|
-> |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | 產生通用唯一識別碼（Uuid）|
+> |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             |  (Uuid 產生通用唯一識別碼) |
 
 ## <a name="postgres-10-extensions"></a>Postgres 10 延伸模組 
 
 在 Postgres 第10版的適用於 PostgreSQL 的 Azure 資料庫伺服器中，可以使用下列延伸模組。
 
 > [!div class="mx-tableFixed"]
-> | **分機**| **延伸模組版本** | **描述** |
+> | **延伸模組**| **延伸模組版本** | **描述** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US 資料集範例|
@@ -83,7 +84,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[dict_int](https://www.postgresql.org/docs/10/dict-int.html)                     | 1.0             | 整數的文字搜尋字典範本|
 > |[earthdistance](https://www.postgresql.org/docs/10/earthdistance.html)                | 1.1             | 在地球表面上計算大圓距離|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/10/fuzzystrmatch.html)                | 1.1             | 判斷字串之間的相似和距離|
-> |[hstore](https://www.postgresql.org/docs/10/hstore.html)                       | 1.4             | 用於儲存（索引鍵、值）組集合的資料類型|
+> |[hstore](https://www.postgresql.org/docs/10/hstore.html)                       | 1.4             | 用於儲存 (索引鍵、值) 組之集合的資料類型|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | 于 postgresql 的假設索引|
 > |[intarray](https://www.postgresql.org/docs/10/intarray.html)                     | 1.2             | 一維整數陣列的函數、運算子和索引支援|
 > |[isn](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | 國際產品編號標準的資料類型|
@@ -100,7 +101,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[pg_stat_statements](https://www.postgresql.org/docs/10/pgstatstatements.html)           | 1.6             | 追蹤所有已執行之 SQL 語句的執行統計資料|
 > |[pg_trgm](https://www.postgresql.org/docs/10/pgtrgm.html)                      | 1.3             | 根據 trigrams 的文字相似性測量和索引搜尋|
 > |[plpgsql](https://www.postgresql.org/docs/10/plpgsql.html)                      | 1.0             | PL/pgSQL 程式語言|
-> |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript （v8）信任的程式語言|
+> |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript (v8) 信任的程式語言|
 > |[postgis](https://www.postgis.net/)                      | 2.4.3           | PostGIS geometry、geography 和點陣空間類型和函數|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.4.3           | PostGIS SFCGAL 函式|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.4.3           | PostGIS tiger geocoder 和 reverse geocoder|
@@ -109,14 +110,14 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[tablefunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1.0             | 操作整個資料表的函數，包括交叉資料表|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | 啟用可調整的插入和複雜的時間序列資料查詢|
 > |[unaccent](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | 移除重音的文字搜尋字典|
-> |[uuid-ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | 產生通用唯一識別碼（Uuid）|
+> |[uuid-ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             |  (Uuid 產生通用唯一識別碼) |
 
 ## <a name="postgres-96-extensions"></a>Postgres 9.6 延伸模組 
 
 下列擴充功能適用于 Postgres 9.6 版的適用於 PostgreSQL 的 Azure 資料庫伺服器。
 
 > [!div class="mx-tableFixed"]
-> | **分機**| **延伸模組版本** | **描述** |
+> | **延伸模組**| **延伸模組版本** | **描述** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Address Standardizer US 資料集範例|
@@ -129,7 +130,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[dict_int](https://www.postgresql.org/docs/9.6/dict-int.html)                     | 1.0             | 整數的文字搜尋字典範本|
 > |[earthdistance](https://www.postgresql.org/docs/9.6/earthdistance.html)                | 1.1             | 在地球表面上計算大圓距離|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/9.6/fuzzystrmatch.html)                | 1.1             | 判斷字串之間的相似和距離|
-> |[hstore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1.4             | 用於儲存（索引鍵、值）組集合的資料類型|
+> |[hstore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1.4             | 用於儲存 (索引鍵、值) 組之集合的資料類型|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | 于 postgresql 的假設索引|
 > |[intarray](https://www.postgresql.org/docs/9.6/intarray.html)                     | 1.2             | 一維整數陣列的函數、運算子和索引支援|
 > |[isn](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | 國際產品編號標準的資料類型|
@@ -146,7 +147,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[pg_stat_statements](https://www.postgresql.org/docs/9.6/pgstatstatements.html)           | 1.4             | 追蹤所有已執行之 SQL 語句的執行統計資料|
 > |[pg_trgm](https://www.postgresql.org/docs/9.6/pgtrgm.html)                      | 1.3             | 根據 trigrams 的文字相似性測量和索引搜尋|
 > |[plpgsql](https://www.postgresql.org/docs/9.6/plpgsql.html)                      | 1.0             | PL/pgSQL 程式語言|
-> |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript （v8）信任的程式語言|
+> |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript (v8) 信任的程式語言|
 > |[postgis](https://www.postgis.net/)                      | 2.3.2           | PostGIS geometry、geography 和點陣空間類型和函數|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.3.2           | PostGIS SFCGAL 函式|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.3.2           | PostGIS tiger geocoder 和 reverse geocoder|
@@ -155,14 +156,14 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[tablefunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1.0             | 操作整個資料表的函數，包括交叉資料表|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | 啟用可調整的插入和複雜的時間序列資料查詢|
 > |[unaccent](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | 移除重音的文字搜尋字典|
-> |[uuid-ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | 產生通用唯一識別碼（Uuid）|
+> |[uuid-ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             |  (Uuid 產生通用唯一識別碼) |
 
 ## <a name="postgres-95-extensions"></a>Postgres 9.5 延伸模組 
 
 下列擴充功能適用于 Postgres 9.5 版的適用於 PostgreSQL 的 Azure 資料庫伺服器。
 
 > [!div class="mx-tableFixed"]
-> | **分機**| **延伸模組版本** | **描述** |
+> | **延伸模組**| **延伸模組版本** | **描述** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Address Standardizer US 資料集範例|
@@ -175,7 +176,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[dict_int](https://www.postgresql.org/docs/9.5/dict-int.html)                     | 1.0             | 整數的文字搜尋字典範本|
 > |[earthdistance](https://www.postgresql.org/docs/9.5/earthdistance.html)                | 1.0             | 在地球表面上計算大圓距離|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/9.5/fuzzystrmatch.html)                | 1.0             | 判斷字串之間的相似和距離|
-> |[hstore](https://www.postgresql.org/docs/9.5/hstore.html)                       | 1.3             | 用於儲存（索引鍵、值）組集合的資料類型|
+> |[hstore](https://www.postgresql.org/docs/9.5/hstore.html)                       | 1.3             | 用於儲存 (索引鍵、值) 組之集合的資料類型|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | 于 postgresql 的假設索引|
 > |[intarray](https://www.postgresql.org/docs/9.5/intarray.html)                     | 1.0             | 一維整數陣列的函數、運算子和索引支援|
 > |[isn](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | 國際產品編號標準的資料類型|
@@ -199,7 +200,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[postgres_fdw](https://www.postgresql.org/docs/9.5/postgres-fdw.html)                 | 1.0             | 遠端于 postgresql 伺服器的外部資料包裝函式|
 > |[tablefunc](https://www.postgresql.org/docs/9.5/tablefunc.html)                    | 1.0             | 操作整個資料表的函數，包括交叉資料表|
 > |[unaccent](https://www.postgresql.org/docs/9.5/unaccent.html)                     | 1.0             | 移除重音的文字搜尋字典|
-> |[uuid-ossp](https://www.postgresql.org/docs/9.5/uuid-ossp.html)                    | 1.0             | 產生通用唯一識別碼（Uuid）|
+> |[uuid-ossp](https://www.postgresql.org/docs/9.5/uuid-ossp.html)                    | 1.0             |  (Uuid 產生通用唯一識別碼) |
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
@@ -211,7 +212,7 @@ pg_stat_statements 提供查詢執行資訊，不過會對於伺服器效能造�
 ## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
 [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html)和[postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html)可讓您從一個于 postgresql 伺服器連線到另一個，或連接到相同伺服器中的另一個資料庫。 接收端伺服器必須允許來自傳送端伺服器通過其防火牆的連線。 將這些延伸模組用於「適用於 PostgreSQL 的 Azure 資料庫」伺服器之間的連線時，可藉由將 [允許存取 Azure 服務] 設為 [開啟] 來執行此動作。 如果您想要使用延伸模組來回路到相同的伺服器，也需要執行此動作。 [允許存取 Azure 服務] 設定可在「適用於 PostgreSQL 的 Azure 資料庫」伺服器的 Azure 入口網站頁面中找到，位於 [連線安全性] 下方。 開啟 [允許存取 Azure 服務] 時，會將所有 Azure Ip 放在允許清單上。
 
-目前不支援來自適用於 PostgreSQL 的 Azure 資料庫的輸出連線，但與其他適用於 PostgreSQL 的 Azure 資料庫伺服器的連接除外。
+目前不支援來自適用於 PostgreSQL 的 Azure 資料庫的輸出連線，但連接至相同區域中的其他適用於 PostgreSQL 的 Azure 資料庫伺服器。
 
 ## <a name="uuid"></a>uuid
 如果您打算 `uuid_generate_v4()` 從[uuid-ossp 擴充功能](https://www.postgresql.org/docs/current/uuid-ossp.html)中使用，請考慮與 pgcrypto 延伸模組的比較， `gen_random_uuid()` 以取得效能優勢。 [pgcrypto extension](https://www.postgresql.org/docs/current/pgcrypto.html)

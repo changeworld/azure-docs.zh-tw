@@ -8,11 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: febfdf5405038e5b60a3133a554eba7a756f617d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648568"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242367"
 ---
 # <a name="building-an-accessible-application"></a>建置無障礙應用程式
 
@@ -21,7 +22,7 @@ ms.locfileid: "83648568"
 若應用程式會提供地圖之類的豐富互動式內容，則以下是一些常見的協助工具考慮事項：
 - 為對於看到 Web 應用程式有困難的使用者提供螢幕助讀程式的支援。
 - 有多種方法可以與 Web 應用程式進行互動和瀏覽，例如滑鼠、觸控和鍵盤。
-- 確保色彩對比不會讓色彩混合在一起，因而變得難以區分。 
+- 確保色彩對比，讓色彩不會混合在一起，並且變得難以區分。 
 
 Azure 地圖服務 Web SDK 預先建置了許多協助工具功能，例如：
 - 螢幕助讀程式會在地圖移動時，以及當使用者的焦點位於控制項或快顯時提供描述。
@@ -45,6 +46,7 @@ Azure 地圖服務 Web SDK 預先建置了許多協助工具功能，例如：
 - 將焦點放在地圖上，使用減號 (`-`) 或底線 (`_`) 來縮小一個等級。
 - 使用縮放控制項並搭配滑鼠、觸控或鍵盤 Tab/Enter 鍵。
 - 按住 `Shift` 按鈕並在地圖上按下滑鼠左鍵，然後拖曳來繪製一個區域，以將地圖縮放至其中。
+- 使用一些多點觸控板，將兩個手指上下拖曳以縮小，或向下縮放。
 
 **移動瀏覽地圖**
 
@@ -109,7 +111,7 @@ map.getMapContainer().classList.contains("high-contrast-light")
 | 減號、連字號 (`-`) 或 <sup>*</sup>底線 (`_`) | 縮小 | 
 | `Shift` + 在地圖上拖曳滑鼠以繪製區域 | 放大區域 |
 
-<sup>*</sup> 這些按鍵快速鍵通常會共用鍵盤上的相同按鍵。 這些快速鍵已新增來改善使用者體驗。 不論使用者是否會針對這些快速鍵使用 Shift 鍵，也都不會有任何影響。
+<sup>*</sup> 這些按鍵快速鍵通常會共用鍵盤上的相同按鍵。 這些快速鍵已新增來改善使用者體驗。 如果使用者使用 shift 鍵，或不是針對這些快捷方式，也不會有任何影響。
 
 ## <a name="screen-reader-support"></a>螢幕助讀程式支援
 
