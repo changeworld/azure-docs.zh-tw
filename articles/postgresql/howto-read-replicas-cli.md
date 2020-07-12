@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: b8da326ea48133d2029f385fc55450c00aecf656
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/10/2020
+ms.openlocfilehash: de74258cadcdf81da211561a84ff06927830e690
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106606"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274402"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>從 Azure CLI 建立及管理讀取複本，REST API
 
 在本文中，您將瞭解如何使用 Azure CLI 和 REST API 來建立和管理適用於 PostgreSQL 的 Azure 資料庫中的讀取複本。 若要深入了解讀取複本，請參閱[概觀](concepts-read-replicas.md)。
 
 ## <a name="azure-replication-support"></a>Azure 複寫支援
-[讀取複本](concepts-read-replicas.md)和[邏輯解碼](concepts-logical.md)兩者都相依于 Postgres 寫前記錄檔（WAL）以取得資訊。 這兩個功能需要來自 Postgres 的不同記錄層級。 邏輯解碼需要比讀取複本更高的記錄層級。
+[讀取複本](concepts-read-replicas.md)和[邏輯解碼](concepts-logical.md)兩者都相依于 Postgres 寫 (WAL) 以取得資訊。 這兩個功能需要來自 Postgres 的不同記錄層級。 邏輯解碼需要比讀取複本更高的記錄層級。
 
 若要設定正確的記錄層級，請使用 Azure 複寫支援參數。 Azure 複寫支援有三個設定選項：
 
@@ -64,7 +64,7 @@ ms.locfileid: "86106606"
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  將在其中建立複本伺服器的資源群組。  |
-| NAME | mydemoserver-複本 | 所建立的新複本伺服器名稱。 |
+| name | mydemoserver-複本 | 所建立的新複本伺服器名稱。 |
 | source-server | mydemoserver | 要從中複寫之現有主伺服器的名稱或資源識別碼。 如果您想要複本和主機的資源群組不同，請使用 [資源識別碼]。 |
 
 在下列 CLI 範例中，會在與主伺服器相同的區域中建立複本。
@@ -84,9 +84,9 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 
 如果您尚未在 `azure.replication_support` 一般用途或記憶體優化的主伺服器上，將參數設定為 [**複本**]，並重新啟動伺服器，就會收到錯誤。 建立複本之前，請先完成這兩個步驟。
 
-使用與主伺服器相同的計算和儲存設定來建立複本。 建立複本之後，以下設定可以個別地從主要伺服器進行變更：計算世代、虛擬核心、儲存體及備份保留期間。 定價層也可以個別變更，但不能變更為基本層，或從基本層變更為別的層。
-
 > [!IMPORTANT]
+> 請參閱[讀取複本總覽的考慮一節](concepts-read-replicas.md#considerations)。
+>
 > 將主伺服器設定更新為新值之前，請將複本設定更新為相等或更大的值。 此動作可協助複本跟上對主伺服器所做的任何變更。
 
 ### <a name="list-replicas"></a>列出複本

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/24/2020
-ms.openlocfilehash: 0d678d900ec31b00d27eba19617d533c5010c1dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367985"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276646"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>讀取適用於 PostgreSQL 的 Azure 資料庫中的複本-單一伺服器
 
@@ -136,18 +136,18 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 1. 停止複寫至複本<br/>
    若要讓複本伺服器能夠接受寫入，必須執行此步驟。 在此過程中，複本伺服器將會重新開機，並從主要 delinked。 一旦您起始停止複寫，後端進程通常需要大約2分鐘的時間才能完成。 請參閱本文的[停止](#stop-replication)複寫一節，以瞭解此動作的含意。
     
-2. 將您的應用程式指向（先前的）複本<br/>
-   每部伺服器都有唯一的連接字串。 更新您的應用程式，使其指向（先前）複本，而不是 master。
+2. 將您的應用程式指向 (先前) 複本<br/>
+   每部伺服器都有唯一的連接字串。 更新您的應用程式，使其指向 (之前的) 複本，而不是 master。
     
 一旦您的應用程式成功處理讀取和寫入，您就已完成容錯移轉。 您的應用程式體驗所需的停機時間將取決於您偵測到問題，並完成上述步驟1和2。
 
 
-## <a name="considerations"></a>考量
+## <a name="considerations"></a>考量事項
 
 本節將摘要說明有關讀取複本功能的考量。
 
 ### <a name="prerequisites"></a>必要條件
-讀取複本和[邏輯解碼](concepts-logical.md)兩者都相依于 Postgres 寫前記錄檔（WAL）以取得資訊。 這兩個功能需要來自 Postgres 的不同記錄層級。 邏輯解碼需要比讀取複本更高的記錄層級。
+讀取複本和[邏輯解碼](concepts-logical.md)兩者都相依于 Postgres 寫 (WAL) 以取得資訊。 這兩個功能需要來自 Postgres 的不同記錄層級。 邏輯解碼需要比讀取複本更高的記錄層級。
 
 若要設定正確的記錄層級，請使用 Azure 複寫支援參數。 Azure 複寫支援有三個設定選項：
 
@@ -161,12 +161,14 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 讀取複本會建立為最新適用於 PostgreSQL 的 Azure 資料庫伺服器。 現有伺服器無法設定為複本。 您無法為另一個讀取複本建立複本。
 
 ### <a name="replica-configuration"></a>複本設定
-使用與主伺服器相同的計算和儲存設定來建立複本。 建立複本之後，以下設定可以個別地從主要伺服器進行變更：計算世代、虛擬核心、儲存體及備份保留期間。 定價層也可以個別變更，但不能變更為基本層，或從基本層變更為別的層。
+使用與主伺服器相同的計算和儲存設定來建立複本。 建立複本之後，可以變更數個設定，包括儲存體和備份保留期限。
+
+在下列情況下，您也可以在複本上變更虛擬核心和定價層：
+* PostgreSQL 會要求讀取複本上的 `max_connections` 參數值大於或等於主要伺服器的值，否則讀取複本將不會啟動。 在適用於 PostgreSQL 的 Azure 資料庫中， `max_connections` 參數值是以 SKU (虛擬核心和定價層) 為基礎。 如需詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫限制](concepts-limits.md)。 
+* 不支援從基本定價層進行調整
 
 > [!IMPORTANT]
 > 將主要設定更新為新值之前，請將複本設定更新為相等或更大的值。 此動作可確保複本可以跟上主要伺服器上所做的變更。
-
-PostgreSQL 會要求讀取複本上的 `max_connections` 參數值大於或等於主要伺服器的值，否則讀取複本將不會啟動。 在適用於 PostgreSQL 的 Azure 資料庫中，`max_connections` 參數值會以 SKU 作為基礎。 如需詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫限制](concepts-limits.md)。 
 
 如果您嘗試更新上述的伺服器值，但未遵守限制，您會收到錯誤。
 

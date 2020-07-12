@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: 89450e5518d854fbc31b43324ecb05f47e1ab5ac
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.date: 07/10/2020
+ms.openlocfilehash: fc41b76fa14d464b2e4ddcca7e98997011a51cd4
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970989"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276629"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>監視和調整「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」
 監視伺服器的相關資料，可協助您疑難排解並最佳化您的工作負載。 「適用於 PostgreSQL 的 Azure 資料庫」提供各種監視選項，可讓您深入了解伺服器的行為。
@@ -22,11 +22,11 @@ ms.locfileid: "85970989"
 ### <a name="list-of-metrics"></a>計量清單
 這些計量可供適用於 PostgreSQL 的 Azure 資料庫使用：
 
-|計量|計量顯示名稱|單位|Description|
+|計量|計量顯示名稱|單位|描述|
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用中的 CPU 百分比。|
 |memory_percent|記憶體百分比|百分比|使用中記憶體的百分比。|
-|io_consumption_percent|IO 百分比|百分比|使用中 IO 的百分比。 （不適用於基本層伺服器）。|
+|io_consumption_percent|IO 百分比|百分比|使用中 IO 的百分比。  (不適用於基本層伺服器。 ) |
 |storage_percent|儲存體百分比|百分比|使用的儲存體佔伺服器最大值的百分比。|
 |storage_used|已使用儲存體|位元組|使用中的儲存體數量。 此服務所使用的儲存體可能包括資料庫檔案、交易記錄和伺服器記錄。|
 |storage_limit|儲存體限制|位元組|此伺服器的儲存體上限。|
@@ -34,7 +34,7 @@ ms.locfileid: "85970989"
 |serverlog_storage_usage|使用的伺服器記錄儲存體|位元組|使用中的伺服器記錄儲存體數量。|
 |serverlog_storage_limit|伺服器記錄儲存體限制|位元組|此伺服器的伺服器記錄儲存體上限。|
 |active_connections|作用中的連線|Count|伺服器的使用中連線數量。|
-|connections_failed|失敗的連線|Count|伺服器的失敗連線數量。|
+|connections_failed|失敗的連線|Count|失敗的已建立連接數目。|
 |network_bytes_egress|Network Out|位元組|跨作用中連線的網路輸出。|
 |network_bytes_ingress|Network In|位元組|跨作用中連線的網路輸入。|
 |backup_storage_used|已使用的備份儲存體|位元組|已使用的備份儲存體數量。|
@@ -67,7 +67,7 @@ ms.locfileid: "85970989"
 3. 選取 [ **+ 新增服務健康情況警示**]，並填寫欄位。
 4. 填寫必要欄位。 
 5. 選擇 [**事件種類**]，選取 [**預定的維護**] 或 [全**選**]
-6. 在 [**動作群組**] 中，定義您想要如何接收警示（取得電子郵件、觸發邏輯應用程式等）。  
+6. 在 [**動作群組**] 中，定義您想要如何接收警示 (取得電子郵件、觸發邏輯應用程式等等 )   
 7. 確定 [在建立時啟用規則] 設定為 [是]。
 8. 選取 [**建立警示規則**] 以完成警示
 

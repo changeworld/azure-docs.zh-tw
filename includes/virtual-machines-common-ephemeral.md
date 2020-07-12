@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d8d712e4eecb930b52a519a1aaddf97c744a24ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 6a400ae798245cc4912724c16840421d5282b3a0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218143"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277776"
 ---
 暫時 OS 磁片會建立在本機虛擬機器上 (VM) 儲存體，而不會儲存到遠端 Azure 儲存體。 暫時 OS 磁片適用于無狀態工作負載，其中應用程式可容忍個別 VM 失敗，但會受到 VM 部署時間的影響，或重新製作個別 VM 實例的映射。 有了暫時的 OS 磁片，您可以取得 OS 磁片的讀取/寫入延遲較低，並加快 VM 重新安裝映射的速度。 
  
@@ -33,7 +33,7 @@ ms.locfileid: "86218143"
 |                             | 持續性作業系統磁片                          | 暫時性 OS 磁碟                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | **OS 磁片的大小限制**      | 2 TiB                                                                                        | VM 大小或2TiB 的快取大小，以較小者為准。 如需**GiB 中**的快取大小，請參閱[DS](../articles/virtual-machines/linux/sizes-general.md)、 [ES](../articles/virtual-machines/linux/sizes-memory.md)、 [M](../articles/virtual-machines/linux/sizes-memory.md)、 [FS](../articles/virtual-machines/linux/sizes-compute.md)和[GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
-| **支援的 VM 大小**          | 全部                                                                                          | DSv1，DSv2，DSv3，Esv3，Fs，FsV2，GS，M                                               |
+| **支援的 VM 大小**          | 全部                                                                                          | 支援 Premium 儲存體的 VM 大小，例如 DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、LSv2、M                                               |
 | **磁片類型支援**           | 受控和非受控 OS 磁片                                                                | 僅限受控 OS 磁片                                                               |
 | **區域支援**              | 所有區域                                                                                  | 所有區域                              |
 | **資料持續性**            | 寫入 OS 磁片的 OS 磁片資料會儲存在 Azure 儲存體                                  | 寫入 OS 磁片的資料會儲存至本機 VM 儲存體，而且不會保存到 Azure 儲存體。 |

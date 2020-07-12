@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 07/10/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 2589c2abf13edc19b930d597a4d75a2be823f45d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83868128"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277737"
 ---
 Azure 共用磁碟 (預覽) 是 Azure 受控磁碟的新功能，可讓您同時同時將 Azure 管理的磁碟連結到多部虛擬機器 (VM)。將受控磁碟連結到多部 VM 可讓您部署新的或移轉現有叢集應用程式到 Azure。 Attaching a managed disk to multiple VMs allows you to either deploy new or migrate existing clustered applications to Azure.
 
@@ -41,7 +41,7 @@ Azure 共用磁碟 (預覽) 是 Azure 受控磁碟的新功能，可讓您同時
 
 WSFC 上執行的一些熱門應用程式包括：
 
-- SQL Server 容錯移轉叢集執行個體 (FCI)
+- [在 Azure Vm 上使用 Azure 共用磁片 (SQL Server 建立 FCI) ](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
 - 擴充檔案伺服器 (SoFS)
 - 一般用途的檔案伺服器 (IW 工作負載)
 - 遠端桌面伺服器使用者設定檔磁碟 (RDS UPD)
@@ -87,7 +87,12 @@ Ultra 磁碟提供額外的節流，總共兩個節流。 因此，Ultra 磁碟�
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="資料表的影像，描述保留持有者、已註冊和其他的唯讀或讀取/寫入存取權。":::
 
-## <a name="ultra-disk-performance-throttles"></a>Ultra 磁碟效能節流
+## <a name="performance-throttles"></a>效能節流
+
+### <a name="premium-ssd-performance-throttles"></a>Premium ssd 效能節流
+使用 premium ssd 時，會修正磁片 IOPS 和輸送量，例如 P30 的 IOPS 為5000。 此值會維持在2部 Vm 或5個 Vm 之間是否共用磁片。 磁片限制可以從單一 VM 連線，或分散到兩個以上的 Vm。 
+
+### <a name="ultra-disk-performance-throttles"></a>Ultra 磁碟效能節流
 
 Ultra 磁碟具有獨特的功能，可讓您藉由公開可修改的屬性來設定效能，並可讓您加以修改。 根據預設，只有兩個可修改的屬性，但共用的 Ultra 磁碟有兩個額外的屬性。
 
@@ -111,23 +116,23 @@ Ultra 磁碟具有獨特的功能，可讓您藉由公開可修改的屬性來�
     - 對於每個佈建的 IOPS，單一磁碟的輸送量上限為 256 KiB/秒，最多可達每個磁碟 2000 MBps
     - 針對每個佈建的 IOPS，每個磁碟的保證最小輸送量為 4KiB/s，整體基準最小為 1 MBps
 
-### <a name="examples"></a>範例
+#### <a name="examples"></a>範例
 
 下列範例說明一些示範節流如何與共享的 Ultra 磁碟具體搭配使用的案例。
 
-#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>使用叢集共用磁碟區的兩個節點叢集
+##### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>使用叢集共用磁碟區的兩個節點叢集
 
 以下是使用叢集共用磁碟區的 2 節點 WSFC 範例。 使用此設定時，這兩個 VM 會同時對磁碟進行寫入存取，這會導致兩個 VM 上的 ReadWrite 節流被分割，而未使用 ReadOnly 節流。
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV 2 節點 Ultra 範例":::
 
-#### <a name="two-node-cluster-without-cluster-share-volumes"></a>沒有叢集共用磁碟區的 2 節點叢集
+##### <a name="two-node-cluster-without-cluster-share-volumes"></a>沒有叢集共用磁碟區的 2 節點叢集
 
 以下是未使用叢集共用磁碟區的 2 節點 WSFC 範例。 使用此設定時，只有一個 VM 具有磁碟的寫入存取權。 這會導致主要 VM 僅使用 ReadWrite 節流，而只有次要資料庫才使用 ReadOnly 節流。
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV 2 節點沒有 csv ultra 磁碟範例":::
 
-#### <a name="four-node-linux-cluster"></a>4 節點的 Linux 叢集
+##### <a name="four-node-linux-cluster"></a>4 節點的 Linux 叢集
 
 以下範例是具有單一寫入器和三個向外延展讀取器的 4 節點 Linux 叢集。 使用此設定時，只有一個 VM 具有磁碟的寫入存取權。 這會導致主要 VM 專用的 ReadWrite 節流，以及由次要 VM 分割的 ReadOnly 節流。
 

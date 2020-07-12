@@ -5,18 +5,20 @@ author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 5/6/2019
-ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/09/2020
+ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116347"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274504"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>優化適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的自動資料清理
+
 本文描述如何有效地將適用於 PostgreSQL 的 Azure 資料庫伺服器上的自動資料清理最佳化。
 
 ## <a name="overview-of-autovacuum"></a>自動資料清理的概觀
+
 PostgreSQL 使用多版本並行控制 (MVCC)，來達到更好的資料庫並行。 每次更新都會導致插入和刪除，且每次刪除都會導致資料列虛標示為要刪除。 虛標示會識別無效且會在稍後被清除的 Tuple。 為了執行這些工作，PostgreSQL 會執行資料清理作業。
 
 資料清理作業可以由手動或自動的方式觸發。 當資料庫經歷大量更新或刪除作業時，會有更多無效 Tuple。 當資料庫閒置時，會有較少無效 Tuple。 當資料庫的負載較大時，您需要更頻繁地執行資料清理，因此「手動」** 執行資料清理作業會變得不方便。
@@ -36,6 +38,7 @@ PostgreSQL 使用多版本並行控制 (MVCC)，來達到更好的資料庫並�
 - I/O 增加。
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>使用自動資料清理查詢監視膨脹
+
 下列範例查詢是設計來識別名為 XYZ 的資料表中，無效和有效 Tuple 的數目：
 
 ```sql
@@ -43,7 +46,9 @@ SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRa
 ```
 
 ## <a name="autovacuum-configurations"></a>自動資料清理設定
+
 根據兩個重要問題的解答，來決定控制自動資料清理的設定參數：
+
 - 它應該在何時啟動？
 - 啟動之後它應該清除多少？
 
@@ -55,10 +60,10 @@ autovacuum_vacuum_threshold|指定在任一資料表中，觸發資料清理作�
 autovacuum_vacuum_scale_factor|指定當決定是否要觸發資料清理作業時，要加入至 autovacuum_vacuum_threshold 之資料表大小的比例。 預設值為 0.2，即資料表大小的百分之 20。 只在 postgresql.conf 檔案中或在伺服器命令列上設定此參數。 若要覆寫個別資料表的設定，請變更資料表儲存體參數。|0.2
 autovacuum_vacuum_cost_limit|指定用於自動資料清理作業中的成本限制值。 如果指定 -1 (這是預設值)，系統會使用一般 vacuum_cost_limit 值。 如果有超過一個的背景工作角色，該值會在執行中的自動資料清理背景工作角色之間按比例分散。 每個背景工作角色的上限之總和不會超過此變數的值。 只在 postgresql.conf 檔案中或在伺服器命令列上設定此參數。 若要覆寫個別資料表的設定，請變更資料表儲存體參數。|-1
 autovacuum_vacuum_cost_delay|指定用於自動資料清理作業中的成本延遲值。 如果指定 -1，系統會使用一般 vacuum_cost_delay 值。 預設值是 20 毫秒。 只在 postgresql.conf 檔案中或在伺服器命令列上設定此參數。 若要覆寫個別資料表的設定，請變更資料表儲存體參數。|20 毫秒
-autovacuum_nap_time|指定在任何給定的資料庫上，每回合自動資料清理之間的最小延遲。 精靈會在每回合中檢查資料庫，並針對該資料庫中的資料表視需要發出 VACUUM 和 ANALYZE 命令。 延遲是以秒為單位，預設值為一分鐘 (1 min)。 只在 postgresql.conf 檔案中或在伺服器命令列上設定此參數。|15 秒
-autovacuum_max_workers|指定在任何時間可執行的自動資料清理處理序 (不是自動資料清理啟動程式) 的最大數目。 預設值為三。 只在伺服器啟動時設定此參數。|3
+autovacuum_naptime | 指定在任何給定的資料庫上，每回合自動資料清理之間的最小延遲。 精靈會在每回合中檢查資料庫，並針對該資料庫中的資料表視需要發出 VACUUM 和 ANALYZE 命令。 延遲是以秒為單位來測量。 只在 postgresql.conf 檔案中或在伺服器命令列上設定此參數。| 15 秒
+autovacuum_max_workers | 指定在任何時間可執行的自動資料清理處理序 (不是自動資料清理啟動程式) 的最大數目。 預設值為三。 只在伺服器啟動時設定此參數。|3
 
-若要覆寫個別資料表的設定，請變更資料表儲存體參數。 
+若要覆寫個別資料表的設定，請變更資料表儲存體參數。
 
 ## <a name="autovacuum-cost"></a>自動資料清理成本
 
@@ -82,12 +87,14 @@ autovacuum_max_workers|指定在任何時間可執行的自動資料清理處理
 使用 PostgreSQL 時，您可以在資料表層級或執行個體層級設定這些參數。 您目前只能在適用於 PostgreSQL 的 Azure 資料庫中，於資料表層級設定這些參數。
 
 ## <a name="estimate-the-cost-of-autovacuum"></a>估計自動資料清理的成本
+
 執行自動資料清理的成本很高，因此系統有控制資料清理作業執行階段的參數。 下列參數可協助您估計執行資料清理的成本：
+
 - vacuum_cost_page_hit = 1
 - vacuum_cost_page_miss = 10
 - vacuum_cost_page_dirty = 20
 
-資料清理處理序會讀取實體頁面並檢查無效 Tuple。 shared_buffers 中的每個分頁都當作成本為 1 (vacuum_cost_page_hit)。 對於所有其他分頁，有無效 Tuple 的成本為 20 (vacuum_cost_page_dirty)，沒有無效 Tuple 的成本為 10 (vacuum_cost_page_miss)。 當處理序超過 autovacuum_vacuum_cost_limit 時，資料清理作業就會停止。 
+資料清理處理序會讀取實體頁面並檢查無效 Tuple。 shared_buffers 中的每個分頁都當作成本為 1 (vacuum_cost_page_hit)。 對於所有其他分頁，有無效 Tuple 的成本為 20 (vacuum_cost_page_dirty)，沒有無效 Tuple 的成本為 10 (vacuum_cost_page_miss)。 當處理序超過 autovacuum_vacuum_cost_limit 時，資料清理作業就會停止。
 
 到達上限之後，處理序會根據 autovacuum_vacuum_cost_delay 參數指定的值睡眠一段時間，然後才再次啟動。 如果沒有到達上限，自動資料清理會根據 autovacuum_nap_time parameter 指定的值過一段時間之後啟動。
 

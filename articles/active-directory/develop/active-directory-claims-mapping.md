@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d9c46368b42cac1d06f7d78d5e0d03ad2de0bada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d240ed426bb270ac4cf09f3806bd36a6a52d3633
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478394"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275388"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
@@ -362,7 +362,7 @@ ms.locfileid: "85478394"
 |TransformationMethod|預期的輸入|預期的輸出|描述|
 |-----|-----|-----|-----|
 |Join|string1、string2、分隔符號|outputClaim|可在輸入字串之間使用分隔符號來聯結這些字串。 例如：string1:"foo@bar.com" , string2:"sandbox" , separator:"." 會導致 outputClaim:"foo@bar.com.sandbox"|
-|ExtractMailPrefix|mail|outputClaim|擷取電子郵件地址的本機部分。 例如：mail:"foo@bar.com" 會導致 outputClaim:"foo"。 如果沒有 \@ 符號，原始輸入字串會以現狀傳回。|
+|ExtractMailPrefix|電子郵件或 UPN|UPN|ExtensionAttributes 1-15 或其他為使用者儲存 UPN 或電子郵件地址值的任何其他架構延伸模組，例如 johndoe@contoso.com 。 擷取電子郵件地址的本機部分。 例如：mail:"foo@bar.com" 會導致 outputClaim:"foo"。 如果沒有 \@ 符號，原始輸入字串會以現狀傳回。|
 
 **InputClaims：** 使用 InputClaims 元素可從宣告結構描述項目將資料傳遞至轉換。 它有兩個屬性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
@@ -385,26 +385,26 @@ ms.locfileid: "85478394"
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允許作為 SAML NameID 資料來源的屬性
 
-|來源|ID|Description|
+|來源|ID|描述|
 |-----|-----|-----|
-| User | mail|電子郵件地址|
-| User | userprincipalname|使用者主體名稱|
-| User | onpremisessamaccountname|內部部署的 Sam 帳戶名稱|
+| 使用者 | mail|電子郵件地址|
+| 使用者 | userprincipalname|使用者主體名稱|
+| 使用者 | onpremisessamaccountname|內部部署的 Sam 帳戶名稱|
 | User | employeeid|員工識別碼|
-| User | extensionattribute1 | 擴充屬性 1 |
-| User | extensionattribute2 | 擴充屬性 2 |
-| User | extensionattribute3 | 擴充屬性 3 |
-| User | extensionattribute4 | 擴充屬性 4 |
-| User | extensionattribute5 | 擴充屬性 5 |
-| User | extensionattribute6 | 擴充屬性 6 |
-| User | extensionattribute7 | 擴充屬性 7 |
-| User | extensionattribute8 | 擴充屬性 8 |
-| User | extensionattribute9 | 擴充屬性 9 |
-| User | extensionattribute10 | 擴充屬性 10 |
-| User | extensionattribute11 | 擴充屬性 11 |
-| User | extensionattribute12 | 擴充屬性 12 |
-| User | extensionattribute13 | 擴充屬性 13 |
-| User | extensionattribute14 | 擴充屬性 14 |
+| 使用者 | extensionattribute1 | 擴充屬性 1 |
+| 使用者 | extensionattribute2 | 擴充屬性 2 |
+| 使用者 | extensionattribute3 | 擴充屬性 3 |
+| 使用者 | extensionattribute4 | 擴充屬性 4 |
+| 使用者 | extensionattribute5 | 擴充屬性 5 |
+| 使用者 | extensionattribute6 | 擴充屬性 6 |
+| 使用者 | extensionattribute7 | 擴充屬性 7 |
+| 使用者 | extensionattribute8 | 擴充屬性 8 |
+| 使用者 | extensionattribute9 | 擴充屬性 9 |
+| 使用者 | extensionattribute10 | 擴充屬性 10 |
+| 使用者 | extensionattribute11 | 擴充屬性 11 |
+| 使用者 | extensionattribute12 | 擴充屬性 12 |
+| 使用者 | extensionattribute13 | 擴充屬性 13 |
+| 使用者 | extensionattribute14 | 擴充屬性 14 |
 | User | extensionattribute15 | 擴充屬性 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>表 6：允許 SAML NameID 使用的轉換方法

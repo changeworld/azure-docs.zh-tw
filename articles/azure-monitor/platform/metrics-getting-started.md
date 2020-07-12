@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14f21b1c0bff5f4d5f77b1547c09ddd6c370ece0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696978"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276425"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>開始使用 Azure 計量瀏覽器
 
@@ -28,7 +29,7 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
 若要建立度量圖表，請從資源、資源群組、訂用帳戶或 Azure 監視器視圖中開啟 [**計量**] 索引標籤，並遵循下列步驟執行：
 
-1. 使用資源選擇器，選取您要查看其計量的資源。 （如果您在特定資源的內容中開啟**計量**，則會預先選取資源）。
+1. 使用資源選擇器，選取您要查看其計量的資源。 如果您在特定資源) 的內容中開啟**計量**， (會預先選取資源。
 
     > ![選取資源](./media/metrics-getting-started/resource-picker.png)
 
@@ -38,7 +39,7 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
     > ![選取計量](./media/metrics-getting-started/metric-picker.png)
 
-4. （選擇性）您可以變更計量匯總。 例如，您可能想要讓圖表顯示度量的最小值、最大值或平均值。
+4. （選擇性）您可以[變更計量匯總](metrics-charts.md#changing-aggregation)。 例如，您可能想要讓圖表顯示度量的最小值、最大值或平均值。
 
 > [!NOTE]
 > 如果您想要查看在相同圖表中繪製的多個計量，請使用 [新增計量]**** 按鈕，並重複前述步驟。 針對單一視圖中的多個圖表，選取頂端的 [**新增圖表**] 按鈕。
@@ -50,11 +51,11 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 ![變更時間範圍面板](./media/metrics-getting-started/time-picker.png)
 
 > [!NOTE]
-> 使用**時間筆刷**來調查圖表的有趣區域（尖峰或 dip）。 將滑鼠指標放在區域的開頭，按一下並按住滑鼠左鍵，拖曳至 [區域] 的另一端，然後放開按鈕。 圖表將會放大該時間範圍。 
+> 使用**時間筆刷**來調查圖表的有趣區域 (尖峰或 dip) 。 將滑鼠指標放在區域的開頭，按一下並按住滑鼠左鍵，拖曳至 [區域] 的另一端，然後放開按鈕。 圖表將會放大該時間範圍。 
 
 ## <a name="apply-dimension-filters-and-splitting"></a>套用維度篩選和分割
 
-[篩選](metrics-charts.md#apply-filters-to-charts)和[分割](metrics-charts.md#apply-splitting-to-a-chart)是具有維度之計量的強大診斷工具。 這些功能顯示各種計量區段（「維度值」）如何影響度量的整體值，並可讓您識別可能的極端值。
+[篩選](metrics-charts.md#apply-filters-to-charts)和[分割](metrics-charts.md#apply-splitting-to-a-chart)是具有維度之計量的強大診斷工具。 這些功能顯示不同的計量區段 ( 「維度值」 ) 如何影響度量的整體值，並可讓您識別可能的極端值。
 
 - **篩選**可讓您選擇要包含在圖表中的維度值。 例如，您可能會想要在繪製*伺服器回應時間*度量的圖表時，顯示成功的要求。 您必須在 [要求] 維度的 [*成功*] 上套用篩選準則。 
 

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 005932f4a4be9e4a7bae85a6b380c934de5e9874
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84012971"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276527"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概觀
 
@@ -116,9 +117,13 @@ CLE 具有內建函式，可供您使用對稱或非對稱金鑰、憑證的公�
 
 Azure 提供許多機制，可在將資料從一個位置移至另一個位置時，確保資料的隱私權。
 
-### <a name="tlsssl-encryption-in-azure"></a>Azure 的 TLS/SSL 加密
+### <a name="data-link-layer-encryption-in-azure"></a>Azure 中的資料連結層加密
 
-在雲端服務與客戶之間移動資料時，Microsoft 使用[傳輸層安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) 通訊協定來保護資料。 Microsoft 資料中心會與連線到 Azure 服務的用戶端系統進行交涉以達成 TLS 連線。 TLS 提供增強式驗證、訊息隱私權、完整性 (可偵測訊息竄改、攔截和偽造)、互通性、演算法彈性，以及方便部署和使用。
+每當 Azure 客戶流量在資料中心之間移動時--不受 Microsoft (或代表 Microsoft) 控制的外部實體界限--使用[IEEE 802.1 AE MAC 安全性標準](https://1.ieee802.org/security/802-1ae/)的資料連結層加密方法 (也稱為 MACsec) 會在基礎網路硬體上從點對點套用。  封包在傳送之前會先在裝置上加密和解密，以防止實體「中間人」或窺探/wiretapping 攻擊。  由於這項技術是與網路硬體本身整合，因此在網路硬體上提供線路速率加密，而不會增加任何可測量的連結延遲。  針對某個區域內或區域間的所有 Azure 流量，此 MACsec 加密預設為開啟，而且客戶不需要採取任何動作即可啟用。 
+
+### <a name="tls-encryption-in-azure"></a>Azure 中的 TLS 加密
+
+Microsoft 讓客戶能夠使用[傳輸層安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) 通訊協定來保護在雲端服務與客戶之間進行的資料。 Microsoft 資料中心會與連線到 Azure 服務的用戶端系統進行交涉以達成 TLS 連線。 TLS 提供增強式驗證、訊息隱私權、完整性 (可偵測訊息竄改、攔截和偽造)、互通性、演算法彈性，以及方便部署和使用。
 
 [完整轉寄密碼](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) \(英文\) 會透過唯一金鑰來保護客戶的用戶端系統與 Microsoft 雲端服務之間的連線。 這些連線也會使用 RSA 型 2048 位元加密金鑰長度。 這種組合讓其他人很難攔截和存取傳輸中的資料。
 
@@ -140,7 +145,7 @@ Azure 提供許多機制，可在將資料從一個位置移至另一個位置�
 
 ## <a name="in-transit-encryption-in-vms"></a>VM 中的傳輸中加密
 
-在執行 Windows 的 VM 之間來回傳輸的資料是根據連線本質透過數種方式加密的。
+視連線的本質而定，在執行 Windows 的 Vm 之間傳輸的資料可以透過數種方式來加密。
 
 ### <a name="rdp-sessions"></a>RDP 工作階段
 

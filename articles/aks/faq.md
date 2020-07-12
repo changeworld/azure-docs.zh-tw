@@ -3,11 +3,12 @@ title: Azure Kubernetes Service (AKS) 的常見問題集
 description: 尋找一些關於 Azure Kubernetes Service (AKS) 的常見問題解答。
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300921"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275711"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 
@@ -80,7 +81,7 @@ AKS 會根據一些 Azure 基礎結構資源來建置，包括虛擬機器擴展
 
 如果您修改或刪除節點資源群組中 Azure 所建立的標記和其他資源屬性，可能就會得到非預期的結果，例如，調整和升級錯誤。 AKS 可讓您建立及修改使用者所建立的自訂標記。 例如，您可以建立或修改自訂標記，以指派業務單位或成本中心。 這可以藉由在受控資源群組上建立具有範圍的 Azure 原則來達成。
 
-不過，在 AKS 叢集中的節點資源群組下，修改資源的任何**Azure 建立的標記**都是不支援的動作，這會中斷服務層級目標（SLO）。 如需詳細資訊，請參閱 [AKS 是否提供服務等級協定？](#does-aks-offer-a-service-level-agreement)
+不過，在 AKS 叢集中，針對節點資源群組下的資源修改任何**Azure 建立的標記**是不支援的動作，這會中斷服務層級目標 (SLO) 。 如需詳細資訊，請參閱 [AKS 是否提供服務等級協定？](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS 支援哪些 Kubernetes 許可控制器？ 是否可以新增或移除許可控制器？
 
@@ -136,7 +137,7 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>我可以在 Azure 租用戶之間移動/移轉叢集嗎？
 
-`az aks update-credentials` 命令可以用來在 Azure 租用戶之間移動 AKS 叢集。 依序遵循[選擇更新或建立服務主體](https://docs.microsoft.com/azure/aks/update-credentials) \(部分機器翻譯\) 和[以新的認證更新 AKS 叢集](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials) \(部分機器翻譯\) 中的指示。
+`az aks update-credentials` 命令可以用來在 Azure 租用戶之間移動 AKS 叢集。 依序遵循[選擇更新或建立服務主體](./update-credentials.md) \(部分機器翻譯\) 和[以新的認證更新 AKS 叢集](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials) \(部分機器翻譯\) 中的指示。
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>我可以在訂用帳戶之間移動/移轉叢集嗎？
 
@@ -145,6 +146,10 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 ## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>我可以將 AKS 叢集從目前的 Azure 訂用帳戶移至另一個嗎？ 
 
 不支援在 Azure 訂用帳戶之間移動您的 AKS 叢集及其相關聯的資源。
+
+## <a name="can-i-move-my-aks-cluster-or-aks-infrastructure-resources-to-other-resource-groups-or-rename-them"></a>我可以將 AKS 叢集或 AKS 基礎結構資源移至其他資源群組，或將它們重新命名嗎？
+
+不支援移動或重新命名您的 AKS 叢集及其相關聯的資源。
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>為何叢集刪除如此耗時？ 
 
@@ -164,11 +169,11 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>我已執行升級，但現在我的 Pod 處於損毀迴圈，整備度探查失敗了嗎？
 
-請確認您的服務主體並未過期。  請參閱：[AKS 服務主體](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) \(部分機器翻譯\) 和 [AKS 更新認證](https://docs.microsoft.com/azure/aks/update-credentials) \(部分機器翻譯\)。
+請確認您的服務主體並未過期。  請參閱：[AKS 服務主體](./kubernetes-service-principal.md) \(部分機器翻譯\) 和 [AKS 更新認證](./update-credentials.md) \(部分機器翻譯\)。
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>我的叢集已正常運作，但突然無法佈建 LoadBalancers、掛接 PVC 等？ 
 
-請確認您的服務主體並未過期。  請參閱：[AKS 服務主體](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) \(部分機器翻譯\) 和 [AKS 更新認證](https://docs.microsoft.com/azure/aks/update-credentials) \(部分機器翻譯\)。
+請確認您的服務主體並未過期。  請參閱：[AKS 服務主體](./kubernetes-service-principal.md) \(部分機器翻譯\) 和 [AKS 更新認證](./update-credentials.md) \(部分機器翻譯\)。
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>我可以使用虛擬機器擴展集 API 進行手動調整嗎？
 
@@ -189,9 +194,9 @@ AKS 不是受控服務，且不支援操作 IaaS 資源。 若要安裝自訂元
 <!-- LINKS - internal -->
 
 [aks-upgrade]: ./upgrade-cluster.md
-[aks-cluster-autoscale]: ./autoscaler.md
+[aks-cluster-autoscale]: ./cluster-autoscaler.md
 [aks-advanced-networking]: ./configure-azure-cni.md
-[aks-rbac-aad]: ./azure-ad-integration.md
+[aks-rbac-aad]: ./azure-ad-integration-cli.md
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create

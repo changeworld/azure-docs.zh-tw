@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: 8e148a3dac8435a08c0f1735cd35d06c700e1e84
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106623"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274538"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>從 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的讀取複本
 
@@ -23,7 +23,7 @@ ms.locfileid: "86106623"
 
 ## <a name="azure-replication-support"></a>Azure 複寫支援
 
-[讀取複本](concepts-read-replicas.md)和[邏輯解碼](concepts-logical.md)兩者都相依于 Postgres 寫前記錄檔（WAL）以取得資訊。 這兩個功能需要來自 Postgres 的不同記錄層級。 邏輯解碼需要比讀取複本更高的記錄層級。
+[讀取複本](concepts-read-replicas.md)和[邏輯解碼](concepts-logical.md)兩者都相依于 Postgres 寫 (WAL) 以取得資訊。 這兩個功能需要來自 Postgres 的不同記錄層級。 邏輯解碼需要比讀取複本更高的記錄層級。
 
 若要設定正確的記錄層級，請使用 Azure 複寫支援參數。 Azure 複寫支援有三個設定選項：
 
@@ -78,15 +78,15 @@ ms.locfileid: "86106623"
 
 6. 選取 [確定]**** 來確認建立複本。
 
-使用與主伺服器相同的計算和儲存設定來建立複本。 建立複本之後，以下設定可以個別地從主要伺服器進行變更：計算世代、虛擬核心、儲存體及備份保留期間。 定價層也可以個別變更，但不能變更為基本層，或從基本層變更為別的層。
-
-> [!IMPORTANT]
-> 將主伺服器設定更新為新值之前，請將複本設定更新為相等或更大的值。 此動作可協助複本跟上對主伺服器所做的任何變更。
-
 建立讀取複本之後，可從 [複寫]**** 視窗檢視該複本：
 
 ![在 [複寫] 視窗中檢視新複本](./media/howto-read-replicas-portal/list-replica.png)
  
+
+> [!IMPORTANT]
+> 請參閱[讀取複本總覽的考慮一節](concepts-read-replicas.md#considerations)。
+>
+> 將主伺服器設定更新為新值之前，請將複本設定更新為相等或更大的值。 此動作可協助複本跟上對主伺服器所做的任何變更。
 
 ## <a name="stop-replication"></a>停止複寫
 您可以停止主要伺服器與讀取複本之間的複寫。
@@ -123,7 +123,7 @@ ms.locfileid: "86106623"
 
 1. 在 Azure 入口網站中，選取適用於 PostgreSQL 的 Azure 資料庫的主要伺服器。
 
-2. 開啟該伺服器的**概觀**頁面。 選取 [刪除] 。
+2. 開啟該伺服器的**概觀**頁面。 選取 [刪除]。
 
    ![在伺服器的 [概觀] 頁面中，選取要刪除主要伺服器](./media/howto-read-replicas-portal/delete-server.png)
  
@@ -135,7 +135,7 @@ ms.locfileid: "86106623"
 ## <a name="delete-a-replica"></a>刪除複本伺服器
 刪除讀取複本的方式類似於刪除主要伺服器。
 
-- 在 Azure 入口網站中，開啟讀取複本的 [概觀]**** 頁面。 選取 [刪除] 。
+- 在 Azure 入口網站中，開啟讀取複本的 [概觀]**** 頁面。 選取 [刪除]。
 
    ![在複本的概觀頁面上，選取要刪除複本](./media/howto-read-replicas-portal/delete-replica.png)
  

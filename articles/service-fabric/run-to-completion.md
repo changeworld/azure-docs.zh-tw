@@ -5,12 +5,12 @@ author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
-ms.openlocfilehash: adf4b11412aa752144d4ed4fef06d2de1d76598d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f2f6aa4380fcf6909957118bf682275350ce68c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431289"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261214"
 ---
 # <a name="runtocompletion"></a>RunToCompletion
 
@@ -36,7 +36,7 @@ ms.locfileid: "81431289"
 * **類型：** **RunToCompletion**目前是此屬性唯一允許的值。
 * **重新開機：** 這個屬性會指定在失敗時，套用至組成 ServicePackage 之 Codepackage 的重新開機原則。 以**非零結束代碼**結束的 CodePackage 會被視為失敗。 此屬性允許的值為**OnFailure** ，而且**永遠不會**使用**OnFailure**做為預設值。
 
-當重新開機原則設定為**OnFailure**時，如果有任何 CodePackage 失敗 **（非零的結束代碼）**，則會重新開機，並在重複失敗之間進行轉型。 當重新開機原則設定為 [**永不**] 時，如果有任何 CodePackage 失敗，則 DeployedServicePackage 的部署狀態會標示為 [**失敗**]，但允許其他 codepackage 繼續執行。 如果組成 ServicePackage 的所有 Codepackage 都執行到成功完成 **（結束代碼0）**，則 DeployedServicePackage 的部署狀態會標示為**RanToCompletion**。 
+當重新開機原則設定為**OnFailure**時，如果有任何 CodePackage 失敗** (非零的結束代碼) **，則會重新開機，並在重複的失敗之間進行轉型。 當重新開機原則設定為 [**永不**] 時，如果有任何 CodePackage 失敗，則 DeployedServicePackage 的部署狀態會標示為 [**失敗**]，但允許其他 codepackage 繼續執行。 如果組成 ServicePackage 的所有 Codepackage 都執行到成功完成** (結束代碼 0) **，則 DeployedServicePackage 的部署狀態會標示為**RanToCompletion**。 
 
 ## <a name="complete-example-using-runtocompletion-semantics"></a>使用 RunToCompletion 語義的完整範例
 
@@ -45,7 +45,7 @@ ms.locfileid: "81431289"
 > [!IMPORTANT]
 > 下列範例假設您已熟悉如何[使用 Service Fabric 和 Docker 建立 Windows 容器應用程式][containers-getting-started-link]。
 >
-> 這個範例會參考 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器在主機 OS 的所有版本之間不相容。 若要深入了解，請參閱 [Windows 容器版本相容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
+> 這個範例會參考 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器在主機 OS 的所有版本之間不相容。 若要深入了解，請參閱 [Windows 容器版本相容性](/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
 下列 ServiceManifest.xml 描述由兩個 Codepackage 組成的 ServicePackage，代表容器。 *RunToCompletionCodePackage1*只會將訊息記錄到**stdout**並結束。 *RunToCompletionCodePackage2*會 ping 回送位址一段時間，然後結束代碼為**0**、 **1**或**2**。
 
@@ -78,7 +78,7 @@ ms.locfileid: "81431289"
 </ServiceManifest>
 ```
 
-下列 ApplicationManifest.xml 會根據上面討論的 ServiceManifest.xml 來描述應用程式。 它會使用**OnFailure**的重新開機原則指定*WindowsRunToCompletionServicePackage*的**RunToCompletion** **ExecutionPolicy** 。 啟用*WindowsRunToCompletionServicePackage*時，將會啟動其構成 codepackage。 *RunToCompletionCodePackage1*應該在第一次啟用時成功結束。 不過， *RunToCompletionCodePackage2*可能會失敗 **（非零的結束代碼）**，在這種情況下，它會在**OnFailure**重新開機原則之後重新開機。
+下列 ApplicationManifest.xml 會根據上面討論的 ServiceManifest.xml 來描述應用程式。 它會使用**OnFailure**的重新開機原則指定*WindowsRunToCompletionServicePackage*的**RunToCompletion** **ExecutionPolicy** 。 啟用*WindowsRunToCompletionServicePackage*時，將會啟動其構成 codepackage。 *RunToCompletionCodePackage1*應該在第一次啟用時成功結束。 不過， *RunToCompletionCodePackage2*可能會失敗** (非零的結束代碼) **，在這種情況下，它會在**OnFailure**重新開機原則之後重新開機。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -103,7 +103,7 @@ ms.locfileid: "81431289"
 </ApplicationManifest>
 ```
 ## <a name="querying-deployment-status-of-a-deployedservicepackage"></a>查詢 DeployedServicePackage 的部署狀態
-DeployedServicePackage 的部署狀態可以使用[ServiceFabricDeployedServicePackage][deployed-service-package-link]從 PowerShell 查詢，或從 c # 使用[FabricClient][fabric-client-link] API [fabricclient.queryclient.getdeployedservicepackagelistasync （string，Uri，string）][deployed-service-package-fabricclient-link]
+您可以從 PowerShell 使用[ServiceFabricDeployedServicePackage][deployed-service-package-link]或從 c # 查詢 DeployedServicePackage 的部署狀態，並使用[FabricClient][fabric-client-link] API [fabricclient.queryclient.getdeployedservicepackagelistasync (字串、Uri、字串) ][deployed-service-package-fabricclient-link]
 
 ## <a name="considerations-when-using-runtocompletion-semantics"></a>使用 RunToCompletion 語義時的考慮
 
@@ -129,8 +129,7 @@ DeployedServicePackage 的部署狀態可以使用[ServiceFabricDeployedServiceP
 [application-and-service-manifests-link]: service-fabric-application-and-service-manifests.md
 [setup-entry-point-link]: service-fabric-run-script-at-service-startup.md
 [deployed-service-package-working-with-link]: service-fabric-hosting-model.md#work-with-a-deployed-service-package
-[deployed-code-package-link]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedcodepackage
-[deployed-service-package-link]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicePackage
-[fabric-client-link]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient
-[deployed-service-package-fabricclient-link]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync
-
+[deployed-code-package-link]: /powershell/module/servicefabric/get-servicefabricdeployedcodepackage
+[deployed-service-package-link]: /powershell/module/servicefabric/get-servicefabricdeployedservicepackage
+[fabric-client-link]: /dotnet/api/system.fabric.fabricclient
+[deployed-service-package-fabricclient-link]: /dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 8be070826de0334483f4150925c05cb4dfb73f2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f472865c131b873f1ae0a21fa9ec55865fb2b29
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806008"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277904"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -22,7 +22,11 @@ ms.locfileid: "85806008"
 az login
 az account set --subscription <your-Azure-subscription-ID>
 ```
-
+> [!TIP]
+> 您也可以使用您的訂用帳戶名稱來設定訂用帳戶。 請使用此命令： 
+> ```azurecli
+> az account set --subscription "your-Azure-subscription-name"
+> 
 如果這是您第一次使用此包含 Azure Digital Twins 的訂用帳戶，請執行此命令以向 Azure Digital Twins 命名空間註冊。 (如果不確定，您可以再執行一次，即使以前執行過也沒關係。)
 
 ```azurecli
@@ -46,13 +50,13 @@ az extension list
    az extension update --name azure-iot
    ```
 
-* 如果清單**不包含** `azure-iot` ：您必須安裝延伸模組。 使用此命令：
+* 如果清單**不包含** `azure-iot` ：您必須安裝延伸模組。 請使用此命令：
 
     ```azurecli-interactive
     az extension add --name azure-iot
     ```
 
-* 如果清單包含 `azure-iot-cli-ext` ：這是延伸模組的舊版版本。 一次只能安裝一個延伸模組版本，因此您應該卸載舊版的延伸模組。 使用此命令：
+* 如果清單包含 `azure-iot-cli-ext` ：這是延伸模組的舊版版本。 一次只能安裝一個延伸模組版本，因此您應該卸載舊版的延伸模組。 請使用此命令：
 
    ```azurecli-interactive
    az extension remove --name azure-cli-iot-ext

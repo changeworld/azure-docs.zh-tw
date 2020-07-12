@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9409f14b20684afa1a39d45e663ff316f405cc97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48e6d8870baad60c79cf392894db8b71003bb875
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76717921"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276944"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可調整的資料科學︰完整的逐步解說
 本逐步解說示範如何使用 Azure Data Lake，在 NYC 計程車車程和車費資料集上執行資料探索和二元分類，以預測車費是否會支付小費。 其中，從取得資料開始，經過模型訓練，然後部署 Web 服務來發佈模型，從頭到尾逐步引導您完成 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。
@@ -35,7 +36,7 @@ ms.locfileid: "76717921"
 
 Data Lake Analytics 也是 Cortana Analytics 套件的重要組成部分，可搭配 Azure SQL 資料倉儲、Power BI 與 Data Factory 一起使用。 這種組合提供了完整的雲端 big data 和 advanced analytics 平臺。
 
-本逐步解說首先描述如何安裝完成資料科學程序工作所需的必要條件和資源。 接著，它會使用 U-SQL 概述資料處理步驟，並示範如何搭配使用 Python 和 Hive 與 Azure Machine Learning Studio （傳統）來建立和部署預測模型。
+本逐步解說首先描述如何安裝完成資料科學程序工作所需的必要條件和資源。 接著，它會使用 U-SQL 概述資料處理步驟，並示範如何搭配使用 Python 和 Hive 與 Azure Machine Learning Studio (傳統) 來建立和部署預測模型。
 
 ### <a name="u-sql-and-visual-studio"></a>U-SQL 和 Visual Studio
 本逐步解說建議使用 Visual Studio 編輯 U-SQL 指令碼來處理資料集。 這些 U-SQL 指令碼說明於此，也在個別檔案中提供 。 過程包括擷取、探索和取樣資料。 同時還會示範如何從 Azure 入口網站執行 U-SQL 指令碼作業。 相關聯的 HDInsight 叢集中會為資料建立 Hive 資料表，以利於 Azure Machine Learning Studio 中建置和部署二元分類模型。
@@ -44,7 +45,7 @@ Data Lake Analytics 也是 Cortana Analytics 套件的重要組成部分，可�
 本逐步解說也包含一個小節，示範如何搭配 Azure Machine Learning Studio 使用 Python 來建置和部署預測模型。 它針對此程序中的步驟提供 Jupyter Notebook 和 Python 指令碼。 除了此處所述的二元分類模型，此 Notebook 還包含一些額外特徵工程步驟和模型建構的程式碼，例如多類別分類和迴歸模型。 迴歸工作是根據其他小費特徵來預測小費金額。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning 
-Azure Machine Learning Studio （傳統）是用來建立和部署使用兩種方法的預測模型：首先使用 Python 腳本，然後在 HDInsight （Hadoop）叢集上使用 Hive 資料表。
+Azure Machine Learning Studio (傳統) 是用來建立和部署使用兩種方法的預測模型：首先使用 Python 腳本，然後在 HDInsight (Hadoop) 叢集上使用 Hive 資料表。
 
 ### <a name="scripts"></a>指令碼
 本逐步解說只概述主要步驟。 您可以從 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下載完整的 **U-SQL 指令碼**和 **Jupyter Notebook**。
@@ -64,10 +65,10 @@ Azure Machine Learning Studio （傳統）是用來建立和部署使用兩種�
 ## <a name="prepare-data-science-environment-for-azure-data-lake"></a>準備 Azure Data Lake 的資料科學環境
 若要準備本逐步解說的資料科學環境，請建立下列資源︰
 
-* Azure Data Lake Storage （ADLS）
+* Azure Data Lake Storage (ADLS) 
 * Azure Data Lake Analytics (ADLA)
 * Azure Blob 儲存體帳戶
-* Azure Machine Learning Studio （傳統）帳戶
+* Azure Machine Learning Studio (傳統) 帳戶
 * Azure Data Lake Tools for Visual Studio (建議)
 
 本節提供如何建立這些資源的指示。 如果您選擇搭配 Azure Machine Learning 使用 Hive 資料表 (而不是 Python) 來建置模型，您也必須佈建 HDInsight (Hadoop) 叢集。 這個替代程序將於＜選項 2＞一節中加以說明。
@@ -95,8 +96,8 @@ Azure Machine Learning Studio （傳統）是用來建立和部署使用兩種�
 
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
-### <a name="set-up-an-azure-machine-learning-studio-classic-account"></a>設定 Azure Machine Learning Studio （傳統）帳戶
-從[Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning/)頁面註冊/登入 Azure Machine Learning Studio （傳統）。 按一下 [立即開始使用]**** 按鈕，然後選擇 [免費工作區] 或 [標準工作區]。 您現在能夠在 Azure Machine Learning Studio 中建立實驗。
+### <a name="set-up-an-azure-machine-learning-studio-classic-account"></a>設定 Azure Machine Learning Studio (傳統) 帳戶
+從[Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning/)頁面註冊/登入 Azure Machine Learning Studio (傳統) 。 按一下 [立即開始使用]**** 按鈕，然後選擇 [免費工作區] 或 [標準工作區]。 您現在能夠在 Azure Machine Learning Studio 中建立實驗。
 
 ### <a name="install-azure-data-lake-tools-recommended"></a>安裝 Azure Data Lake 工具 [建議]
 依照您的 Visual Studio 版本，從 [Azure Data Lake Tools for Visual Studio (Visual Studio 適用的 Azure Data Lake 工具)](https://www.microsoft.com/download/details.aspx?id=49504)中安裝適合的 Azure Data Lake 工具。
@@ -112,23 +113,21 @@ Azure Machine Learning Studio （傳統）是用來建立和部署使用兩種�
 
 「trip_data」CSV 檔案包含車程的詳細資訊，例如，乘客數、上車和下車地點、車程持續時間，以及車程長度。 以下是一些範例記錄：
 
-       medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-       89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-       0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-       0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-       DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-       DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-
-
+`medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude`
+`89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171`
+`0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066`
+`0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002`
+`DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388`
+`DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868`
 
 「trip_fare」CSV 檔案包含針對每趟車程所支付之費用的詳細資訊，例如付款類型、費用金額、銷售稅和稅金、小費和服務費，以及支付的總金額。 以下是一些範例記錄：
 
-       medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-       89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
-       0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
-       0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
-       DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
-       DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
+`medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount`
+`89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7`
+`0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7`
+`0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7`
+`DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6`
+`DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5`
 
 聯結 trip\_data 和 trip\_fare 的唯一索引鍵是由下列三個欄位所組成：medallion、hack\_license 和 pickup\_datetime。 您可以從 Azure 儲存體 blob 存取原始 CSV 檔案。 適用於此聯結的 U-SQL 指令碼位於 [聯結車程和費用資料表](#join) 一節中。
 
@@ -157,60 +156,64 @@ Azure Machine Learning Studio （傳統）是用來建立和部署使用兩種�
 
 ### <a name="data-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>資料擷取：從公用 Blob 讀取資料
 
-Azure blob 中的資料位置會參考為**wasb://container \_ 名稱 \@ blob \_ 儲存體 \_ 帳戶 \_ name.blob.core.windows.net/blob_name** ，並可使用**Extractors.Csv （）** 加以解壓縮。 在下列腳本中，以您自己的容器名稱和儲存體帳戶名稱取代 \_ \@ wasb 位址中的容器名稱 blob \_ 儲存體 \_ 帳戶 \_ 名稱。 由於檔案名的格式相同，因此可以使用**旅程 \_ 資料 \_ \{ \* \} .csv**在所有12個旅程檔案中讀取。
+Azure blob 中的資料位置會參考為**wasb://container \_ 名稱 \@ blob \_ 儲存體 \_ 帳戶 \_ name.blob.core.windows.net/blob_name** ，而且可以使用**Extractors.Csv ( # B2**加以解壓縮。 在下列腳本中，以您自己的容器名稱和儲存體帳戶名稱取代 \_ \@ wasb 位址中的容器名稱 blob \_ 儲存體 \_ 帳戶 \_ 名稱。 由於檔案名的格式相同，因此可以使用**旅程 \_ 資料 \_ \{ \* \} .csv**在所有12個旅程檔案中讀取。
 
-    ///Read in Trip data
-    @trip0 =
-        EXTRACT
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        rate_code string,
-        store_and_fwd_flag string,
-        pickup_datetime string,
-        dropoff_datetime string,
-        passenger_count string,
-        trip_time_in_secs string,
-        trip_distance string,
-        pickup_longitude string,
-        pickup_latitude string,
-        dropoff_longitude string,
-        dropoff_latitude string
-    // This is reading 12 trip data from blob
-    FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
-    USING Extractors.Csv();
+```sql
+///Read in Trip data
+@trip0 =
+    EXTRACT
+    medallion string,
+    hack_license string,
+    vendor_id string,
+    rate_code string,
+    store_and_fwd_flag string,
+    pickup_datetime string,
+    dropoff_datetime string,
+    passenger_count string,
+    trip_time_in_secs string,
+    trip_distance string,
+    pickup_longitude string,
+    pickup_latitude string,
+    dropoff_longitude string,
+    dropoff_latitude string
+// This is reading 12 trip data from blob
+FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
+USING Extractors.Csv();
+```
 
 由於第一列有標頭，您必須移除標頭，並將資料行類型變更為適當的類型。 您可以使用**swebhdfs：//data_lake_storage_name. net/folder_name/file_name**_ 或使用**wasb：//Container_name \@ blob_storage_account_name**的 Azure Blob 儲存體帳戶，將已處理的資料儲存到 Azure Data Lake Storage。
 
-    // change data types
-    @trip =
-        SELECT
-        medallion,
-        hack_license,
-        vendor_id,
-        rate_code,
-        store_and_fwd_flag,
-        DateTime.Parse(pickup_datetime) AS pickup_datetime,
-        DateTime.Parse(dropoff_datetime) AS dropoff_datetime,
-        Int32.Parse(passenger_count) AS passenger_count,
-        Double.Parse(trip_time_in_secs) AS trip_time_in_secs,
-        Double.Parse(trip_distance) AS trip_distance,
-        (pickup_longitude==string.Empty ? 0: float.Parse(pickup_longitude)) AS pickup_longitude,
-        (pickup_latitude==string.Empty ? 0: float.Parse(pickup_latitude)) AS pickup_latitude,
-        (dropoff_longitude==string.Empty ? 0: float.Parse(dropoff_longitude)) AS dropoff_longitude,
-        (dropoff_latitude==string.Empty ? 0: float.Parse(dropoff_latitude)) AS dropoff_latitude
-    FROM @trip0
-    WHERE medallion != "medallion";
+```sql
+// change data types
+@trip =
+    SELECT
+    medallion,
+    hack_license,
+    vendor_id,
+    rate_code,
+    store_and_fwd_flag,
+    DateTime.Parse(pickup_datetime) AS pickup_datetime,
+    DateTime.Parse(dropoff_datetime) AS dropoff_datetime,
+    Int32.Parse(passenger_count) AS passenger_count,
+    Double.Parse(trip_time_in_secs) AS trip_time_in_secs,
+    Double.Parse(trip_distance) AS trip_distance,
+    (pickup_longitude==string.Empty ? 0: float.Parse(pickup_longitude)) AS pickup_longitude,
+    (pickup_latitude==string.Empty ? 0: float.Parse(pickup_latitude)) AS pickup_latitude,
+    (dropoff_longitude==string.Empty ? 0: float.Parse(dropoff_longitude)) AS dropoff_longitude,
+    (dropoff_latitude==string.Empty ? 0: float.Parse(dropoff_latitude)) AS dropoff_latitude
+FROM @trip0
+WHERE medallion != "medallion";
 
-    ////output data to ADL
-    OUTPUT @trip
-    TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_trip.csv"
-    USING Outputters.Csv();
+////output data to ADL
+OUTPUT @trip
+TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_trip.csv"
+USING Outputters.Csv();
 
-    ////Output data to blob
-    OUTPUT @trip
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_trip.csv"
-    USING Outputters.Csv();
+////Output data to blob
+OUTPUT @trip
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_trip.csv"
+USING Outputters.Csv();
+```
 
 同樣地，您可以讀取費用資料集。 以滑鼠右鍵按一下 [Azure Data Lake Storage]，您可以選擇在 Visual Studio 中的 [ **Azure 入口網站] > 資料總管**或 [檔案**瀏覽器**] 中查看您的資料。
 
@@ -223,221 +226,239 @@ Azure blob 中的資料位置會參考為**wasb://container \_ 名稱 \@ blob \_
 
 尋找獎章數目和卓越的獎章數目：
 
-    ///check the number of medallions and unique number of medallions
-    @trip2 =
-        SELECT
-        medallion,
-        vendor_id,
-        pickup_datetime.Month AS pickup_month
-        FROM @trip;
+```sql
+///check the number of medallions and unique number of medallions
+@trip2 =
+    SELECT
+    medallion,
+    vendor_id,
+    pickup_datetime.Month AS pickup_month
+    FROM @trip;
 
-    @ex_1 =
-        SELECT
-        pickup_month,
-        COUNT(medallion) AS cnt_medallion,
-        COUNT(DISTINCT(medallion)) AS unique_medallion
-        FROM @trip2
-        GROUP BY pickup_month;
-        OUTPUT @ex_1
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_1.csv"
-    USING Outputters.Csv();
+@ex_1 =
+    SELECT
+    pickup_month,
+    COUNT(medallion) AS cnt_medallion,
+    COUNT(DISTINCT(medallion)) AS unique_medallion
+    FROM @trip2
+    GROUP BY pickup_month;
+    OUTPUT @ex_1
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_1.csv"
+USING Outputters.Csv();
+```
 
 尋找有超過 100 個車程的牌照：
 
-    ///find those medallions that had more than 100 trips
-    @ex_2 =
-        SELECT medallion,
-               COUNT(medallion) AS cnt_medallion
-        FROM @trip2
-        //where pickup_datetime >= "2013-01-01t00:00:00.0000000" and pickup_datetime <= "2013-04-01t00:00:00.0000000"
-        GROUP BY medallion
-        HAVING COUNT(medallion) > 100;
-        OUTPUT @ex_2
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_2.csv"
-    USING Outputters.Csv();
+```sql
+///find those medallions that had more than 100 trips
+@ex_2 =
+    SELECT medallion,
+           COUNT(medallion) AS cnt_medallion
+    FROM @trip2
+    //where pickup_datetime >= "2013-01-01t00:00:00.0000000" and pickup_datetime <= "2013-04-01t00:00:00.0000000"
+    GROUP BY medallion
+    HAVING COUNT(medallion) > 100;
+    OUTPUT @ex_2
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_2.csv"
+USING Outputters.Csv();
+```
 
 找到 pickup_longitude 方面的無效記錄︰
 
-    ///find those invalid records in terms of pickup_longitude
-    @ex_3 =
-        SELECT COUNT(medallion) AS cnt_invalid_pickup_longitude
-        FROM @trip
-        WHERE
-        pickup_longitude <- 90 OR pickup_longitude > 90;
-        OUTPUT @ex_3
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_3.csv"
-    USING Outputters.Csv();
+```sql
+///find those invalid records in terms of pickup_longitude
+@ex_3 =
+    SELECT COUNT(medallion) AS cnt_invalid_pickup_longitude
+    FROM @trip
+    WHERE
+    pickup_longitude <- 90 OR pickup_longitude > 90;
+    OUTPUT @ex_3
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_3.csv"
+USING Outputters.Csv();
+```
 
 尋找一些變數的遺漏值︰
 
-    //check missing values
-    @res =
-        SELECT *,
-               (medallion == null? 1 : 0) AS missing_medallion
-        FROM @trip;
+```sql
+//check missing values
+@res =
+    SELECT *,
+           (medallion == null? 1 : 0) AS missing_medallion
+    FROM @trip;
 
-    @trip_summary6 =
-        SELECT
-            vendor_id,
-        SUM(missing_medallion) AS medallion_empty,
-        COUNT(medallion) AS medallion_total,
-        COUNT(DISTINCT(medallion)) AS medallion_total_unique
-        FROM @res
-        GROUP BY vendor_id;
-    OUTPUT @trip_summary6
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_16.csv"
-    USING Outputters.Csv();
-
-
+@trip_summary6 =
+    SELECT
+        vendor_id,
+    SUM(missing_medallion) AS medallion_empty,
+    COUNT(medallion) AS medallion_total,
+    COUNT(DISTINCT(medallion)) AS medallion_total_unique
+    FROM @res
+    GROUP BY vendor_id;
+OUTPUT @trip_summary6
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_16.csv"
+USING Outputters.Csv();
+```
 
 ### <a name="data-exploration"></a><a name="explore"></a>資料探索
 使用下列指令碼稍微探索資料，可以更充分了解資料。
 
 尋找有小費和無小費車程的分佈︰
 
-    ///tipped vs. not tipped distribution
-    @tip_or_not =
-        SELECT *,
-               (tip_amount > 0 ? 1: 0) AS tipped
-        FROM @fare;
+```sql
+///tipped vs. not tipped distribution
+@tip_or_not =
+    SELECT *,
+           (tip_amount > 0 ? 1: 0) AS tipped
+    FROM @fare;
 
-    @ex_4 =
-        SELECT tipped,
-               COUNT(*) AS tip_freq
-        FROM @tip_or_not
-        GROUP BY tipped;
-        OUTPUT @ex_4
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_4.csv"
-    USING Outputters.Csv();
+@ex_4 =
+    SELECT tipped,
+           COUNT(*) AS tip_freq
+    FROM @tip_or_not
+    GROUP BY tipped;
+    OUTPUT @ex_4
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_4.csv"
+USING Outputters.Csv();
+```
 
 尋找有截止值的小費金額分佈︰0、5、10 和 20 美金。
 
-    //tip class/range distribution
-    @tip_class =
-        SELECT *,
-               (tip_amount >20? 4: (tip_amount >10? 3:(tip_amount >5 ? 2:(tip_amount > 0 ? 1: 0)))) AS tip_class
-        FROM @fare;
-    @ex_5 =
-        SELECT tip_class,
-               COUNT(*) AS tip_freq
-        FROM @tip_class
-        GROUP BY tip_class;
-        OUTPUT @ex_5
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_5.csv"
-    USING Outputters.Csv();
+```sql
+//tip class/range distribution
+@tip_class =
+    SELECT *,
+           (tip_amount >20? 4: (tip_amount >10? 3:(tip_amount >5 ? 2:(tip_amount > 0 ? 1: 0)))) AS tip_class
+    FROM @fare;
+@ex_5 =
+    SELECT tip_class,
+           COUNT(*) AS tip_freq
+    FROM @tip_class
+    GROUP BY tip_class;
+    OUTPUT @ex_5
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_5.csv"
+USING Outputters.Csv();
+```
 
 尋找車程距離的基本統計資料︰
 
-    // find basic statistics for trip_distance
-    @trip_summary4 =
-        SELECT
-            vendor_id,
-            COUNT(*) AS cnt_row,
-            MIN(trip_distance) AS min_trip_distance,
-            MAX(trip_distance) AS max_trip_distance,
-            AVG(trip_distance) AS avg_trip_distance
-        FROM @trip
-        GROUP BY vendor_id;
-    OUTPUT @trip_summary4
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_14.csv"
-    USING Outputters.Csv();
+```sql
+// find basic statistics for trip_distance
+@trip_summary4 =
+    SELECT
+        vendor_id,
+        COUNT(*) AS cnt_row,
+        MIN(trip_distance) AS min_trip_distance,
+        MAX(trip_distance) AS max_trip_distance,
+        AVG(trip_distance) AS avg_trip_distance
+    FROM @trip
+    GROUP BY vendor_id;
+OUTPUT @trip_summary4
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_14.csv"
+USING Outputters.Csv();
+```
 
 尋找車程距離的百分位數︰
 
-    // find percentiles of trip_distance
-    @trip_summary3 =
-        SELECT DISTINCT vendor_id AS vendor,
-                        PERCENTILE_DISC(0.25) WITHIN GROUP(ORDER BY trip_distance) OVER(PARTITION BY vendor_id) AS median_trip_distance_disc,
-                        PERCENTILE_DISC(0.5) WITHIN GROUP(ORDER BY trip_distance) OVER(PARTITION BY vendor_id) AS median_trip_distance_disc,
-                        PERCENTILE_DISC(0.75) WITHIN GROUP(ORDER BY trip_distance) OVER(PARTITION BY vendor_id) AS median_trip_distance_disc
-        FROM @trip;
-       // group by vendor_id;
-    OUTPUT @trip_summary3
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_13.csv"
-    USING Outputters.Csv();
-
+```sql
+// find percentiles of trip_distance
+@trip_summary3 =
+    SELECT DISTINCT vendor_id AS vendor,
+                    PERCENTILE_DISC(0.25) WITHIN GROUP(ORDER BY trip_distance) OVER(PARTITION BY vendor_id) AS median_trip_distance_disc,
+                    PERCENTILE_DISC(0.5) WITHIN GROUP(ORDER BY trip_distance) OVER(PARTITION BY vendor_id) AS median_trip_distance_disc,
+                    PERCENTILE_DISC(0.75) WITHIN GROUP(ORDER BY trip_distance) OVER(PARTITION BY vendor_id) AS median_trip_distance_disc
+    FROM @trip;
+   // group by vendor_id;
+OUTPUT @trip_summary3
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_13.csv"
+USING Outputters.Csv();
+```
 
 ### <a name="join-trip-and-fare-tables"></a><a name="join"></a>聯結車程和費用資料表
 車程和費用資料表可以由 medallion、hack_license 和 pickup_time 聯結。
 
-    //join trip and fare table
+```sql
+//join trip and fare table
 
-    @model_data_full =
-    SELECT t.*,
-    f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,  f.total_amount, f.tip_amount,
-    (f.tip_amount > 0 ? 1: 0) AS tipped,
-    (f.tip_amount >20? 4: (f.tip_amount >10? 3:(f.tip_amount >5 ? 2:(f.tip_amount > 0 ? 1: 0)))) AS tip_class
-    FROM @trip AS t JOIN  @fare AS f
-    ON   (t.medallion == f.medallion AND t.hack_license == f.hack_license AND t.pickup_datetime == f.pickup_datetime)
-    WHERE   (pickup_longitude != 0 AND dropoff_longitude != 0 );
+@model_data_full =
+SELECT t.*,
+f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,  f.total_amount, f.tip_amount,
+(f.tip_amount > 0 ? 1: 0) AS tipped,
+(f.tip_amount >20? 4: (f.tip_amount >10? 3:(f.tip_amount >5 ? 2:(f.tip_amount > 0 ? 1: 0)))) AS tip_class
+FROM @trip AS t JOIN  @fare AS f
+ON   (t.medallion == f.medallion AND t.hack_license == f.hack_license AND t.pickup_datetime == f.pickup_datetime)
+WHERE   (pickup_longitude != 0 AND dropoff_longitude != 0 );
 
-    //// output to blob
-    OUTPUT @model_data_full
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_full_data.csv"
-    USING Outputters.Csv();
+//// output to blob
+OUTPUT @model_data_full
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_full_data.csv"
+USING Outputters.Csv();
 
-    ////output data to ADL
-    OUTPUT @model_data_full
-    TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_7_full_data.csv"
-    USING Outputters.Csv();
-
+////output data to ADL
+OUTPUT @model_data_full
+TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_7_full_data.csv"
+USING Outputters.Csv();
+```
 
 對於每個層級的乘客計數，計算記錄數、平均小費金額、小費金額變異數、小費車程的百分比。
 
-    // contingency table
-    @trip_summary8 =
-        SELECT passenger_count,
-               COUNT(*) AS cnt,
-               AVG(tip_amount) AS avg_tip_amount,
-               VAR(tip_amount) AS var_tip_amount,
-               SUM(tipped) AS cnt_tipped,
-               (float)SUM(tipped)/COUNT(*) AS pct_tipped
-        FROM @model_data_full
-        GROUP BY passenger_count;
-        OUTPUT @trip_summary8
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_17.csv"
-    USING Outputters.Csv();
-
+```sql
+// contingency table
+@trip_summary8 =
+    SELECT passenger_count,
+           COUNT(*) AS cnt,
+           AVG(tip_amount) AS avg_tip_amount,
+           VAR(tip_amount) AS var_tip_amount,
+           SUM(tipped) AS cnt_tipped,
+           (float)SUM(tipped)/COUNT(*) AS pct_tipped
+    FROM @model_data_full
+    GROUP BY passenger_count;
+    OUTPUT @trip_summary8
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_17.csv"
+USING Outputters.Csv();
+```
 
 ### <a name="data-sampling"></a><a name="sample"></a>資料取樣
 首先，我們從聯結的資料表隨機選取 0.1% 的資料︰
 
-    //random select 1/1000 data for modeling purpose
-    @addrownumberres_randomsample =
-    SELECT *,
-            ROW_NUMBER() OVER() AS rownum
-    FROM @model_data_full;
+```sql
+//random select 1/1000 data for modeling purpose
+@addrownumberres_randomsample =
+SELECT *,
+        ROW_NUMBER() OVER() AS rownum
+FROM @model_data_full;
 
-    @model_data_random_sample_1_1000 =
-    SELECT *
-    FROM @addrownumberres_randomsample
-    WHERE rownum % 1000 == 0;
+@model_data_random_sample_1_1000 =
+SELECT *
+FROM @addrownumberres_randomsample
+WHERE rownum % 1000 == 0;
 
-    OUTPUT @model_data_random_sample_1_1000
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_random_1_1000.csv"
-    USING Outputters.Csv();
+OUTPUT @model_data_random_sample_1_1000
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_random_1_1000.csv"
+USING Outputters.Csv();
+```
 
 接著，以二元變數 tip_class 進行分層取樣：
 
-    //stratified random select 1/1000 data for modeling purpose
-    @addrownumberres_stratifiedsample =
-    SELECT *,
-            ROW_NUMBER() OVER(PARTITION BY tip_class) AS rownum
-    FROM @model_data_full;
+```sql
+//stratified random select 1/1000 data for modeling purpose
+@addrownumberres_stratifiedsample =
+SELECT *,
+        ROW_NUMBER() OVER(PARTITION BY tip_class) AS rownum
+FROM @model_data_full;
 
-    @model_data_stratified_sample_1_1000 =
-    SELECT *
-    FROM @addrownumberres_stratifiedsample
-    WHERE rownum % 1000 == 0;
-    //// output to blob
-    OUTPUT @model_data_stratified_sample_1_1000
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_9_stratified_1_1000.csv"
-    USING Outputters.Csv();
-    ////output data to ADL
-    OUTPUT @model_data_stratified_sample_1_1000
-    TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_9_stratified_1_1000.csv"
-    USING Outputters.Csv();
-
+@model_data_stratified_sample_1_1000 =
+SELECT *
+FROM @addrownumberres_stratifiedsample
+WHERE rownum % 1000 == 0;
+//// output to blob
+OUTPUT @model_data_stratified_sample_1_1000
+TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_9_stratified_1_1000.csv"
+USING Outputters.Csv();
+////output data to ADL
+OUTPUT @model_data_stratified_sample_1_1000
+TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_9_stratified_1_1000.csv"
+USING Outputters.Csv();
+```
 
 ### <a name="run-u-sql-jobs"></a><a name="run"></a>執行 U-SQL 作業
 編輯完 U-SQL 腳本之後，您可以使用 Azure Data Lake Analytics 帳戶將它們提交到伺服器。 依序按一下 [Data Lake]**** 和 [提交作業]****，並選取您的 [Analytics 帳戶]****，然後選擇 [平行處理原則]****，再按一下 [提交]**** 按鈕。
@@ -468,142 +489,181 @@ Azure blob 中的資料位置會參考為**wasb://container \_ 名稱 \@ blob \_
 ### <a name="import-python-libraries"></a>匯入 Python 程式庫
 若要執行範例 Jupyter Notebook 或 Python 指令碼檔案，您需要下列 Python 封裝。 如果您使用 Azure Machine Learning Notebook 服務，則已預先安裝這些套件。
 
-    import pandas as pd
-    from pandas import Series, DataFrame
-    import numpy as np
-    import matplotlib.pyplot as plt
-    from time import time
-    import pyodbc
-    import os
-    from azure.storage.blob import BlobService
-    import tables
-    import time
-    import zipfile
-    import random
-    import sklearn
-    from sklearn.linear_model import LogisticRegression
-    from sklearn.cross_validation import train_test_split
-    from sklearn import metrics
-    from __future__ import division
-    from sklearn import linear_model
-    from azureml import services
-
+```python
+import pandas as pd
+from pandas import Series, DataFrame
+import numpy as np
+import matplotlib.pyplot as plt
+from time import time
+import pyodbc
+import os
+from azure.storage.blob import BlobService
+import tables
+import time
+import zipfile
+import random
+import sklearn
+from sklearn.linear_model import LogisticRegression
+from sklearn.cross_validation import train_test_split
+from sklearn import metrics
+from __future__ import division
+from sklearn import linear_model
+from azureml import services
+```
 
 ### <a name="read-in-the-data-from-blob"></a>從 blob 讀取資料
 * 連接字串
 
-        CONTAINERNAME = 'test1'
-        STORAGEACCOUNTNAME = 'XXXXXXXXX'
-        STORAGEACCOUNTKEY = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYY'
-        BLOBNAME = 'demo_ex_9_stratified_1_1000_copy.csv'
-        blob_service = BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
+  ```text
+  CONTAINERNAME = 'test1'
+  STORAGEACCOUNTNAME = 'XXXXXXXXX'
+  STORAGEACCOUNTKEY = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYY'
+  BLOBNAME = 'demo_ex_9_stratified_1_1000_copy.csv'
+  blob_service = BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
+  ```
+
 * 以文字形式讀取
 
-        t1 = time.time()
-        data = blob_service.get_blob_to_text(CONTAINERNAME,BLOBNAME).split("\n")
-        t2 = time.time()
-        print(("It takes %s seconds to read in "+BLOBNAME) % (t2 - t1))
+  ```text
+  t1 = time.time()
+  data = blob_service.get_blob_to_text(CONTAINERNAME,BLOBNAME).split("\n")
+  t2 = time.time()
+  print(("It takes %s seconds to read in "+BLOBNAME) % (t2 - t1))
+  ```
 
   ![17](./media/data-lake-walkthrough/17-python_readin_csv.PNG)
+
 * 加入資料行名稱和分隔資料行
 
-        colnames = ['medallion','hack_license','vendor_id','rate_code','store_and_fwd_flag','pickup_datetime','dropoff_datetime',
-        'passenger_count','trip_time_in_secs','trip_distance','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude',
-        'payment_type', 'fare_amount', 'surcharge', 'mta_tax', 'tolls_amount',  'total_amount', 'tip_amount', 'tipped', 'tip_class', 'rownum']
-        df1 = pd.DataFrame([sub.split(",") for sub in data], columns = colnames)
+  ```text
+  colnames = ['medallion','hack_license','vendor_id','rate_code','store_and_fwd_flag','pickup_datetime','dropoff_datetime',
+  'passenger_count','trip_time_in_secs','trip_distance','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude',
+  'payment_type', 'fare_amount', 'surcharge', 'mta_tax', 'tolls_amount',  'total_amount', 'tip_amount', 'tipped', 'tip_class', 'rownum']
+  df1 = pd.DataFrame([sub.split(",") for sub in data], columns = colnames)
+  ```
+
 * 將某些資料行變更為數值
 
-        cols_2_float = ['trip_time_in_secs','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude',
-        'fare_amount', 'surcharge','mta_tax','tolls_amount','total_amount','tip_amount', 'passenger_count','trip_distance'
-        ,'tipped','tip_class','rownum']
-        for col in cols_2_float:
-            df1[col] = df1[col].astype(float)
+  ```text
+  cols_2_float = ['trip_time_in_secs','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude',
+  'fare_amount', 'surcharge','mta_tax','tolls_amount','total_amount','tip_amount', 'passenger_count','trip_distance'
+  ,'tipped','tip_class','rownum']
+  for col in cols_2_float:
+      df1[col] = df1[col].astype(float)
+  ```
 
 ### <a name="build-machine-learning-models"></a>建置機器學習服務模型
 在此，您可建置二元分類模型，預測一趟車程是否收到小費。 在 Jupyter Notebook 中，您可以發現其他兩個模型︰多類別分類和迴歸模型。
 
 * 首先，您必須建立可在 scikit-learn 模型中使用的虛擬變數
 
-        df1_payment_type_dummy = pd.get_dummies(df1['payment_type'], prefix='payment_type_dummy')
-        df1_vendor_id_dummy = pd.get_dummies(df1['vendor_id'], prefix='vendor_id_dummy')
+  ```python
+  df1_payment_type_dummy = pd.get_dummies(df1['payment_type'], prefix='payment_type_dummy')
+  df1_vendor_id_dummy = pd.get_dummies(df1['vendor_id'], prefix='vendor_id_dummy')
+  ```
+
 * 建立模型化的資料框架
 
-        cols_to_keep = ['tipped', 'trip_distance', 'passenger_count']
-        data = df1[cols_to_keep].join([df1_payment_type_dummy,df1_vendor_id_dummy])
+  ```python
+  cols_to_keep = ['tipped', 'trip_distance', 'passenger_count']
+  data = df1[cols_to_keep].join([df1_payment_type_dummy,df1_vendor_id_dummy])
 
-        X = data.iloc[:,1:]
-        Y = data.tipped
+  X = data.iloc[:,1:]
+  Y = data.tipped
+    ```
+
 * 訓練和測試 60-40 分割
 
-        X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.4, random_state=0)
+  ```python
+  X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.4, random_state=0)
+  ```
+
 * 訓練集中的羅吉斯迴歸
 
-        model = LogisticRegression()
-        logit_fit = model.fit(X_train, Y_train)
-        print ('Coefficients: \n', logit_fit.coef_)
-        Y_train_pred = logit_fit.predict(X_train)
+  ```python
+  model = LogisticRegression()
+  logit_fit = model.fit(X_train, Y_train)
+  print ('Coefficients: \n', logit_fit.coef_)
+  Y_train_pred = logit_fit.predict(X_train)
+  ```
 
-       ![c1](./media/data-lake-walkthrough/c1-py-logit-coefficient.PNG)
+    ![c1](./media/data-lake-walkthrough/c1-py-logit-coefficient.PNG)
+
 * 評分測試資料集
 
-        Y_test_pred = logit_fit.predict(X_test)
+  ```python
+  Y_test_pred = logit_fit.predict(X_test)
+  ```
+
 * 計算評估度量
 
-        fpr_train, tpr_train, thresholds_train = metrics.roc_curve(Y_train, Y_train_pred)
-        print fpr_train, tpr_train, thresholds_train
+  ```python
+  fpr_train, tpr_train, thresholds_train = metrics.roc_curve(Y_train, Y_train_pred)
+  print fpr_train, tpr_train, thresholds_train
 
-        fpr_test, tpr_test, thresholds_test = metrics.roc_curve(Y_test, Y_test_pred)
-        print fpr_test, tpr_test, thresholds_test
+  fpr_test, tpr_test, thresholds_test = metrics.roc_curve(Y_test, Y_test_pred)
+  print fpr_test, tpr_test, thresholds_test
 
-        #AUC
-        print metrics.auc(fpr_train,tpr_train)
-        print metrics.auc(fpr_test,tpr_test)
+  #AUC
+  print metrics.auc(fpr_train,tpr_train)
+  print metrics.auc(fpr_test,tpr_test)
 
-        #Confusion Matrix
-        print metrics.confusion_matrix(Y_train,Y_train_pred)
-        print metrics.confusion_matrix(Y_test,Y_test_pred)
+  #Confusion Matrix
+  print metrics.confusion_matrix(Y_train,Y_train_pred)
+  print metrics.confusion_matrix(Y_test,Y_test_pred)
+  ```
 
-       ![c2](./media/data-lake-walkthrough/c2-py-logit-evaluation.PNG)
+    ![c2](./media/data-lake-walkthrough/c2-py-logit-evaluation.PNG)
 
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>建置 Web 服務 API 並在 Python 中使用
-您希望機器學習服務模型在建置後開始運作。 我們在此以二元羅吉斯模型為例。 請確定您的本機電腦中的 scikit-learn-學習版本已0.15.1 （Azure Machine Learning Studio 已至少為此版本）。
+您希望機器學習服務模型在建置後開始運作。 我們在此以二元羅吉斯模型為例。 請確定您的本機電腦中的 scikit-learn-瞭解版本是 0.15.1 (Azure Machine Learning Studio 已至少是此版本) 。
 
-* 從 [Azure Machine Learning Studio （傳統）] 設定尋找您的工作區認證。 在 Azure Machine Learning Studio 中，按一下 [**設定**] [名稱] [  -->  **Name**  -->  **授權權杖**]。
+* 從 Azure Machine Learning Studio (傳統) 設定尋找您的工作區認證。 在 Azure Machine Learning Studio 中，按一下 [**設定**] [名稱] [  -->  **Name**  -->  **授權權杖**]。
 
     ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
-        workspaceid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        auth_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  ```output
+  workspaceid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  auth_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  ```
 
 * 建立 Web 服務
 
-        @services.publish(workspaceid, auth_token)
-        @services.types(trip_distance = float, passenger_count = float, payment_type_dummy_CRD = float, payment_type_dummy_CSH=float, payment_type_dummy_DIS = float, payment_type_dummy_NOC = float, payment_type_dummy_UNK = float, vendor_id_dummy_CMT = float, vendor_id_dummy_VTS = float)
-        @services.returns(int) #0, or 1
-        def predictNYCTAXI(trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH,payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS ):
-            inputArray = [trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH, payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS]
-            return logit_fit.predict(inputArray)
+  ```python
+  @services.publish(workspaceid, auth_token)
+  @services.types(trip_distance = float, passenger_count = float, payment_type_dummy_CRD = float, payment_type_dummy_CSH=float, payment_type_dummy_DIS = float, payment_type_dummy_NOC = float, payment_type_dummy_UNK = float, vendor_id_dummy_CMT = float, vendor_id_dummy_VTS = float)
+  @services.returns(int) #0, or 1
+  def predictNYCTAXI(trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH,payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS ):
+      inputArray = [trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH, payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS]
+      return logit_fit.predict(inputArray)
+  ```
+
 * 取得 Web 服務認證
 
-        url = predictNYCTAXI.service.url
-        api_key =  predictNYCTAXI.service.api_key
+  ```python
+  url = predictNYCTAXI.service.url
+  api_key =  predictNYCTAXI.service.api_key
 
-        print url
-        print api_key
+  print url
+  print api_key
 
-        @services.service(url, api_key)
-        @services.types(trip_distance = float, passenger_count = float, payment_type_dummy_CRD = float, payment_type_dummy_CSH=float,payment_type_dummy_DIS = float, payment_type_dummy_NOC = float, payment_type_dummy_UNK = float, vendor_id_dummy_CMT = float, vendor_id_dummy_VTS = float)
-        @services.returns(float)
-        def NYCTAXIPredictor(trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH,payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS ):
-            pass
+  @services.service(url, api_key)
+  @services.types(trip_distance = float, passenger_count = float, payment_type_dummy_CRD = float, payment_type_dummy_CSH=float,payment_type_dummy_DIS = float, payment_type_dummy_NOC = float, payment_type_dummy_UNK = float, vendor_id_dummy_CMT = float, vendor_id_dummy_VTS = float)
+  @services.returns(float)
+  def NYCTAXIPredictor(trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH,payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS ):
+      pass
+  ```
+
 * 呼叫 Web 服務 API。 一般來說，在上一個步驟之後，請等候5-10 秒。
 
-        NYCTAXIPredictor(1,2,1,0,0,0,0,0,1)
+  ```python
+  NYCTAXIPredictor(1,2,1,0,0,0,0,0,1)
+  ```
 
-       ![c4](./media/data-lake-walkthrough/c4-call-API.PNG)
+    ![c4](./media/data-lake-walkthrough/c4-call-API.PNG)
 
 ## <a name="option-2-create-and-deploy-models-directly-in-azure-machine-learning"></a>選項 2：直接在 Azure Machine Learning 中建立和部署模型
-Azure Machine Learning Studio （傳統）可以直接從 Azure Data Lake Storage 讀取資料，然後用來建立和部署模型。 這個方法會使用指向 Azure Data Lake Storage 的 Hive 資料表。 必須為 Hive 資料表布建個別的 Azure HDInsight 叢集。 
+Azure Machine Learning Studio (傳統) 可以直接從 Azure Data Lake Storage 讀取資料，然後用來建立和部署模型。 這個方法會使用指向 Azure Data Lake Storage 的 Hive 資料表。 必須為 Hive 資料表布建個別的 Azure HDInsight 叢集。 
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>建立 HDInsight Linux 叢集
 從 [Azure 入口網站](https://portal.azure.com)建立 HDInsight 叢集 (Linux)。 如需詳細資訊，請參閱[使用 Azure 入口網站建立具有 Data Lake Store 的 hdinsight](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)叢集中的**建立可存取的 hdinsight 叢集 Azure Data Lake Storage**一節。
@@ -611,7 +671,7 @@ Azure Machine Learning Studio （傳統）可以直接從 Azure Data Lake Storag
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>在 HDInsight 中建立 Hive 資料表
-現在您可以使用上一個步驟中 Azure Data Lake Storage 所儲存的資料，建立要用於 HDInsight 叢集中 Azure Machine Learning Studio （傳統）的 Hive 資料表。 移至所建立的 HDInsight 叢集。 按一下 [**設定**] [屬性] [叢集  -->  **Properties**  -->  **AAD 身分識別**  -->  **ADLS 存取**]，確定您的 Azure Data Lake Storage 帳戶已新增至具有讀取、寫入和執行許可權的清單中。
+現在您可以使用上一個步驟 Azure Data Lake Storage 中儲存的資料，建立要在 HDInsight 叢集中 Azure Machine Learning Studio (傳統) 中使用的 Hive 資料表。 移至所建立的 HDInsight 叢集。 按一下 [**設定**] [屬性] [叢集  -->  **Properties**  -->  **AAD 身分識別**  -->  **ADLS 存取**]，確定您的 Azure Data Lake Storage 帳戶已新增至具有讀取、寫入和執行許可權的清單中。
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
@@ -623,36 +683,37 @@ Azure Machine Learning Studio （傳統）可以直接從 Azure Data Lake Storag
 
 貼上下列 Hive 指令碼來建立資料表。 資料來源的位置以這種方式 Azure Data Lake Storage 參考： adl： **//data_lake_store_name. azuredatalakestore. net： 443/folder_name/file_name**。
 
-    CREATE EXTERNAL TABLE nyc_stratified_sample
-    (
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        rate_code string,
-        store_and_fwd_flag string,
-        pickup_datetime string,
-        dropoff_datetime string,
-        passenger_count string,
-        trip_time_in_secs string,
-        trip_distance string,
-        pickup_longitude string,
-        pickup_latitude string,
-        dropoff_longitude string,
-        dropoff_latitude string,
-      payment_type string,
-      fare_amount string,
-      surcharge string,
-      mta_tax string,
-      tolls_amount string,
-      total_amount string,
-      tip_amount string,
-      tipped string,
-      tip_class string,
-      rownum string
-      )
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
-    LOCATION 'adl://data_lake_storage_name.azuredatalakestore.net:443/nyctaxi_folder/demo_ex_9_stratified_1_1000_copy.csv';
-
+```hiveql
+CREATE EXTERNAL TABLE nyc_stratified_sample
+(
+    medallion string,
+    hack_license string,
+    vendor_id string,
+    rate_code string,
+    store_and_fwd_flag string,
+    pickup_datetime string,
+    dropoff_datetime string,
+    passenger_count string,
+    trip_time_in_secs string,
+    trip_distance string,
+    pickup_longitude string,
+    pickup_latitude string,
+    dropoff_longitude string,
+    dropoff_latitude string,
+  payment_type string,
+  fare_amount string,
+  surcharge string,
+  mta_tax string,
+  tolls_amount string,
+  total_amount string,
+  tip_amount string,
+  tipped string,
+  tip_class string,
+  rownum string
+  )
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
+LOCATION 'adl://data_lake_storage_name.azuredatalakestore.net:443/nyctaxi_folder/demo_ex_9_stratified_1_1000_copy.csv';
+```
 
 當查詢完成時，您應該會看到如下所示的結果：
 
@@ -661,12 +722,15 @@ Azure Machine Learning Studio （傳統）可以直接從 Azure Data Lake Storag
 ### <a name="build-and-deploy-models-in-azure-machine-learning-studio"></a>在 Azure Machine Learning Studio 中建置和部署模型
 您現在已準備好要建置和部署使用 Azure Machine Learning 來預測是否會支付小費的模型。 分層範例資料已經備妥，可在這個二元分類 (有無小費) 問題中使用。 使用多類別分類 (tip_class) 和迴歸 (tip_amount) 的預測模型也會使用 Azure Machine Learning Studio 來建置和部署，但是這裡只會示範如何使用二元分類模型來處理此案例。
 
-1. 使用匯**入資料**模組（可從**資料輸入和輸出**一節取得），將資料匯入 Azure Machine Learning Studio （傳統）。 如需詳細資訊，請參閱 [匯入資料](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) 模組參考頁面。
+1. 使用匯**入資料**模組（可從**資料輸入和輸出**一節取得），將資料匯入 Azure Machine Learning Studio (傳統) 。 如需詳細資訊，請參閱 [匯入資料](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) 模組參考頁面。
 2. 在 [屬性]**** 面板中，選取 [Hive 查詢]**** 做為 [資料來源]****。
 3. 將下列 Hive 指令碼貼到 [Hive 資料庫查詢]**** 編輯器中
 
-        select * from nyc_stratified_sample;
-4. 輸入 HDInsight 叢集的 URI （此 URI 可在 Azure 入口網站中找到）、Hadoop 認證、輸出資料的位置，以及 Azure 儲存體帳戶名稱/金鑰/容器名稱。
+    ```hiveql
+    select * from nyc_stratified_sample;
+    ```
+
+4. 輸入 HDInsight 叢集的 URI (此 URI 可在 Azure 入口網站) 、Hadoop 認證、輸出資料的位置，以及 Azure 儲存體帳戶名稱/金鑰/容器名稱中找到。
 
    ![23](./media/data-lake-walkthrough/23-reader-module-v3.PNG)
 
@@ -686,10 +750,10 @@ Azure Machine Learning Studio （傳統）可以直接從 Azure Data Lake Storag
 
  ![27](./media/data-lake-walkthrough/27-AML-web-api.PNG)
 
-## <a name="summary"></a>摘要
-藉由完成此逐步解說，您已建立資料科學環境，以在 Azure Data Lake 中建立可調整的端對端解決方案。 這個環境可用來分析大型公用資料集，透過資料科學程序的標準步驟來取得此公用資料集，過程中從取得資料開始、經過模型訓練，最後將模型部署成 Web 服務。 U-SQL 是用來處理、流覽和取樣資料。 Python 和 Hive 與 Azure Machine Learning Studio （傳統）搭配使用，以建立和部署預測模型。
+## <a name="summary"></a>總結
+藉由完成此逐步解說，您已建立資料科學環境，以在 Azure Data Lake 中建立可調整的端對端解決方案。 這個環境可用來分析大型公用資料集，透過資料科學程序的標準步驟來取得此公用資料集，過程中從取得資料開始、經過模型訓練，最後將模型部署成 Web 服務。 U-SQL 是用來處理、流覽和取樣資料。 Python 和 Hive 用於 Azure Machine Learning Studio (傳統) 來建立和部署預測模型。
 
-## <a name="whats-next"></a>下一步
+## <a name="whats-next"></a>後續步驟？
 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 的學習路徑提供可說明進階分析程序中每個步驟的主題連結。 [Team Data Science Process 逐步解說](walkthroughs.md) 頁面上分項列出一系列逐步解說，示範如何在各種不同預測性分析案例中使用資源和服務：
 
 * [Team Data Science Process 實務：使用 SQL 資料倉儲](sqldw-walkthrough.md)

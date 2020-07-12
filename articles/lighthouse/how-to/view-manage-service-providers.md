@@ -1,14 +1,14 @@
 ---
 title: 檢視和管理服務提供者
 description: 客戶可以使用 Azure 入口網站中的 [服務提供者] 頁面，檢視服務提供者、服務提供者供應項目與委派的資源的相關資訊。
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 56ba5b8c88cd4653c9d41f7f3fcc6219cc376256
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111621"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273773"
 ---
 # <a name="view-and-manage-service-providers"></a>檢視和管理服務提供者
 
@@ -17,9 +17,9 @@ ms.locfileid: "86111621"
 若要存取 Azure 入口網站中的 [服務提供者]**** 頁面，客戶可選取 [所有服務]****，然後搜尋**服務提供者**並選取它。 他們也可以在靠近 Azure 入口網站頂端的搜尋方塊中輸入「服務提供者」或「Azure 燈塔」來尋找它。
 
 > [!NOTE]
-> 若要查看 [**服務提供者**] 頁面，客戶租使用者中的使用者必須具有 [[讀取器] 內建角色](../../role-based-access-control/built-in-roles.md#reader)（或另一個包含讀取器存取權的內建角色）。
+> 若要查看 [**服務提供者**] 頁面，客戶租使用者中的使用者必須具有 [讀取器][內建角色](../../role-based-access-control/built-in-roles.md#reader) (或另一個內建角色，其中包含) 的讀者存取權。
 >
-> 若要新增供應專案、委派資源和移除供應專案，使用者必須擁有訂用帳戶的[擁有者內建角色](../../role-based-access-control/built-in-roles.md#owner)。
+> 若要新增或更新供應專案、委派資源，以及移除供應專案，使用者必須擁有訂用帳戶的[擁有者內建角色](../../role-based-access-control/built-in-roles.md#owner)。
 
 請記住，[**服務提供者**] 頁面只會顯示可透過 Azure 燈塔存取客戶訂用帳戶或資源群組的服務提供者的相關資訊。 如果客戶與其他不使用 Azure 燈塔來存取客戶資源的服務提供者合作，這裡就不會顯示這些服務提供者的相關資訊。
 
@@ -73,7 +73,7 @@ ms.locfileid: "86111621"
 
 客戶可能會想要瞭解已委派給 Azure 燈塔的訂用帳戶和/或資源群組。 這對於具有大量訂用帳戶的客戶，或擁有許多執行管理工作的使用者而言特別有用。
 
-我們提供[Azure 原則內建原則定義](../../governance/policy/samples/built-in-policies.md#lighthouse)，以將範圍委派審查至管理租使用者。 您可以將此原則指派給包含您要審核之所有訂用帳戶的管理群組。 當您檢查是否符合此原則時，任何委派的訂用帳戶和（或）資源群組（在指派原則的管理群組內）都會顯示為不相容的狀態。 然後您可以檢查結果，並確認沒有任何未預期的委派。
+我們提供[Azure 原則內建原則定義](../../governance/policy/samples/built-in-policies.md#lighthouse)，以將範圍委派審查至管理租使用者。 您可以將此原則指派給包含您要審核之所有訂用帳戶的管理群組。 當您檢查是否符合此原則時，任何委派的訂用帳戶和（或）資源群組 (在指派原則的管理群組中) 將會顯示為不符合規範的狀態。 然後您可以檢查結果，並確認沒有任何未預期的委派。
 
 如需如何指派原則和查看合規性狀態結果的詳細資訊，請參閱[快速入門：建立原則指派](../../governance/policy/assign-policy-portal.md)。
 

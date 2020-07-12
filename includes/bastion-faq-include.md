@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b8d30e7fe3138a26d9b64ec35d18260933df7999
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780297"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276104"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>哪些區域可用？
 
@@ -48,6 +48,10 @@ RDP 和 SSH 都是以使用方式為基礎的通訊協定。 工作階段的高�
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>支援哪些瀏覽器？
 
 在 Windows 中，請使用 Microsoft Edge 瀏覽器或 Google Chrome。 若為 Apple Mac，請使用 Google Chrome 瀏覽器。 Windows 和 Mac 也支援 Microsoft Edge Chromium。
+
+### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Azure 防禦會將客戶資料儲存在何處？
+
+Azure 防禦不會在其部署所在的區域中移動或儲存客戶資料。
 
 ### <a name="are-any-roles-required-to-access-a-virtual-machine"></a><a name="roles"></a>需要哪些角色權限才能存取虛擬機器？
 
